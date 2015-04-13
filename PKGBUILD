@@ -2,7 +2,7 @@
 
 pkgname=bar-aint-recursive-git
 _pkgname=bar
-pkgver=142.6959085
+pkgver=168.ebb625b
 pkgrel=1
 pkgdesc="A lightweight xcb based bar."
 arch=('i686' 'x86_64')
@@ -29,7 +29,4 @@ package() {
   cd "$srcdir/$_pkgname"
   make PREFIX=/usr DESTDIR="$pkgdir" install
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  
-  # rename binary to avoid conflicting with 'bar' package in community:
-  mv "$pkgdir/usr/bin/bar" "$pkgdir/usr/bin/bar-aint-recursive"
 }
