@@ -1,0 +1,12 @@
+pkgbase = lighthouse
+	pkgdesc = Specialised Bitcoin wallet that uses the advanced smart contracts features of the Bitcoin protocol to provide all-or-nothing crowdfunding
+	pkgver = 25
+	pkgrel = 1
+	url = https://www.vinumeris.com/lighthouse
+	arch = any
+	license = APACHE
+	depends = bash
+	depends = java-runtime
+
+pkgname = lighthouse
+
