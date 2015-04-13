@@ -5,26 +5,26 @@
 # IMPORTANT!!! Modify this list for your specific installation
 _module_list=(
   'alarm'
-  'cpu'
-  'diskio'
+# 'cpu'                  # not compatible with Enlightenment < 0.19.99
+# 'diskio'               # not compatible with EFL >= 1.13
   'eenvader.fractal'
 # 'elev8'                # adds dep on v8, not compatible with v8 >= 3.19.16
 # 'elfe'                 # not compatible with Enlightenemnt >= 0.19.0
 # 'empris'               # not compatible with Enlightenment >= 0.19.0, adds dep on e_dbus
   'everything-places'
   'everything-websearch' # adds dep on e_dbus
-  'forecasts'
+# 'forecasts'            # not compatible with Enlightenment < 0.19.99
 # 'mail'                 # not compatible with Enlightenment >= 0.19.0
-  'mem'
+# 'mem'                  # not compatible with Enlightenment < 0.19.99
 # 'moon'                 # not compatible with Enlightenment >= 0.19.0
-  'mpdule'               # adds dep on libmpd
-  'net'
+  'mpdule'               # not compatible with Enlightenment >= 0.19.99, adds dep on libmpd
+# 'net'                  # not compatible with Enlightenment < 0.19.99
 # 'news'                 # not compatible with Enlightenment >= 0.19.0
   'penguins'
 # 'photo'                # not compatible with Enlightenment >= 0.18.0
 # 'share'                # not compatible with Enlightenment >= 0.19.0, adds dep on libbsd
-  'tclock'
-  'wallpaper2'
+# 'tclock'               # not compatible with Enlightenment < 0.19.99
+# 'wallpaper2'           # not compatible with Enlightenment < 0.19.99
   'wlan'
 )
 
@@ -41,12 +41,14 @@ pkgdesc="Enlightenment modules: Extra unsupported modules in Git not already pac
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('GPL' 'MIT')
+
 depends=('enlightenment')
   containsElement "elev8" "${_module_list[@]}" && depends+=('v8<3.19.16')
   containsElement "empris" "${_module_list[@]}" && depends+=('e_dbus')
   containsElement "everything-websearch" "${_module_list[@]}" && depends+=('e_dbus')
   containsElement "mpdule" "${_module_list[@]}" && depends+=('libmpd')
   containsElement "share" "${_module_list[@]}" && depends+=('libbsd')
+
 makedepends=('git')
 provides=("${pkgname%-*}")
 for _module in ${_module_list[@]}; do
