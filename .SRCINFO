@@ -1,6 +1,6 @@
 pkgbase = ocserv-git
 	pkgdesc = OpenConnect VPN Server
-	pkgver = 0.8.9.r57.gefe61fa
+	pkgver = 0.10.2.r33.g0ee9d94
 	pkgrel = 1
 	url = http://www.infradead.org/ocserv/
 	arch = i686
