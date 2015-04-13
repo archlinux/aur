@@ -9,7 +9,7 @@ url="http://nzjrs.github.com/osm-gps-map/"
 license=('GPL2')
 source=("https://github.com/nzjrs/osm-gps-map/archive/$pkgver.tar.gz")
 depends=('gtk3' 'libsoup') 
-makedepends=('gnome-common' 'gtk-doc')
+makedepends=('gnome-common' 'gtk-doc' 'gobject-introspection')
 optdepends=('python2-osmgpsmap: Python bindings')
 sha256sums=('5cc98624926191a06848ee694884bea830be084cc19f25dbf30a25befec01004')
 
