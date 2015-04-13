@@ -3,8 +3,8 @@
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: xaw <xawl.ch@gmail.com>
 pkgname=cwm
-pkgver=5.5
-pkgrel=2
+pkgver=5.6
+pkgrel=1
 pkgdesc="OpenBSD fork of calmwm, a clean and lightweight window manager"
 arch=('i686' 'x86_64')
 url="http://www.openbsd.org/cgi-bin/man.cgi?query=cwm&sektion=1"
