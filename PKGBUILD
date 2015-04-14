@@ -3,12 +3,12 @@
 pkgname=grpc
 pkgver=0.6.0
 _pkgver=$(echo $pkgver | tr . _)
-pkgrel=1
+pkgrel=2
 pkgdesc="A high performance, open source, general RPC framework that puts mobile and HTTP/2 first."
 arch=('i686' 'x86_64')
 url='http://www.grpc.io/'
 license=('BSD')
-depends=('openssl' 'protobuf-cpp>=3.0.0')
+depends=('openssl' 'protobuf3')
 source=(https://github.com/$pkgname/$pkgname/archive/release-$_pkgver.tar.gz)
 md5sums=('b50254e9149723b97654186b66f64571')
 
