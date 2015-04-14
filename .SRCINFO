@@ -16,7 +16,10 @@ pkgbase = protobuf3
 
 pkgname = protobuf3
 	provides = protobuf
+	provides = protobuf-cpp
 	conflicts = protobuf
+	conflicts = protobuf-cpp
+	replaces = protobuf-cpp
 
 pkgname = python2-protobuf3
 	pkgdesc = Python 2 bindings for Google Protocol Buffers

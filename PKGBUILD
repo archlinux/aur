@@ -17,7 +17,7 @@ url='https://developers.google.com/protocol-buffers/'
 license=('BSD')
 depends=('gcc-libs' 'zlib')
 makedepends=('unzip' 'python-setuptools' 'python2-setuptools')
-source=(https://github.com/google/protobuf/archive/v${_pkgver}.tar.gz)
+source=("https://github.com/google/${_pkgbase}/archive/v${_pkgver}.tar.gz")
 md5sums=('2caac6446bf8e6c958b70a9599017afe')
 
 build() {
@@ -32,8 +32,9 @@ check() {
 }
 
 package_protobuf3() {
-  conflicts=("protobuf")
-  provides=("protobuf")
+  conflicts=('protobuf' 'protobuf-cpp')
+  provides=('protobuf' 'protobuf-cpp')
+  replaces=('protobuf-cpp')
 
   cd $_pkgbase-$_pkgver
   make DESTDIR="$pkgdir" install
@@ -45,9 +46,9 @@ package_protobuf3() {
 
 package_python2-protobuf3() {
   pkgdesc='Python 2 bindings for Google Protocol Buffers'
-  depends=("python2" "protobuf3=${pkgver}")
-  conflicts=("python2-protobuf")
-  provides=("python2-protobuf")
+  depends=('python2' "protobuf3=${pkgver}")
+  conflicts=('python2-protobuf')
+  provides=('python2-protobuf')
 
   cd $_pkgbase-$_pkgver/python
   python2 setup.py install --prefix=/usr --root="$pkgdir"
@@ -58,9 +59,9 @@ package_python2-protobuf3() {
 
 package_python-protobuf3() {
   pkgdesc='Python 3 bindings for Google Protocol Buffers'
-  depends=("python" "protobuf3=${pkgver}")
-  conflicts=("python-protobuf")
-  provides=("python-protobuf")
+  depends=('python' "protobuf3=${pkgver}")
+  conflicts=('python-protobuf')
+  provides=('python-protobuf')
 
   cd $_pkgbase-$_pkgver/python
   python3 setup.py install --prefix=/usr --root="$pkgdir"
