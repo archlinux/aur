@@ -61,13 +61,13 @@ package() {
 
   cd "$srcdir/$_pkgname2-$_pkgver2"
   make DESTDIR="$pkgdir/" PREFIX=/usr install
-  
+
   # create symlinks to executables in order to make this look like in
   # debian
   ln -s -r $pkgdir/usr/share/dh-python/dh_pypy $pkgdir/usr/bin/dh_pypy
   ln -s -r $pkgdir/usr/share/dh-python/dh_python3 $pkgdir/usr/bin/dh_python3
   ln -s -r $pkgdir/usr/share/dh-python/pybuild $pkgdir/usr/bin/pybuild
-  
+
   mkdir -p $pkgdir/usr/share/perl5/vendor_perl
   mv $pkgdir/usr/share/perl5/Debian $pkgdir/usr/share/perl5/vendor_perl/Debian
   # python2.pm is in debhelper-python2
