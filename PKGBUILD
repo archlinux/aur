@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 226052 2014-11-11 12:21:44Z bpiotrowski $
 # Maintainer: Aleksey Filippov <sarum9in@gmail.com>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
@@ -25,6 +24,10 @@ build() {
   ./autogen.sh
   ./configure --prefix=/usr
   make $MAKEFLAGS
+
+  rm -rf python3
+  cp -r python python3
+  find python3 -name '*.py' -exec 2to3 --write --nobackups '{}' '+'
 }
 
 check() {
@@ -63,7 +66,7 @@ package_python-protobuf3() {
   conflicts=('python-protobuf')
   provides=('python-protobuf')
 
-  cd $_pkgbase-$_pkgver/python
+  cd $_pkgbase-$_pkgver/python3
   python3 setup.py install --prefix=/usr --root="$pkgdir"
 
   install -d "$pkgdir"/usr/share/licenses/$pkgname
