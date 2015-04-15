@@ -4,13 +4,12 @@
 _gemname=cairo
 pkgname=ruby-$_gemname
 pkgver=1.14.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Ruby bindings for cairo'
 arch=(i686 x86_64)
 url='http://cairographics.org/rcairo'
 license=(Ruby)
-depends=(ruby cairo)
-makedepends=(ruby-pkgconfig)
+depends=(ruby cairo ruby-pkgconfig)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
