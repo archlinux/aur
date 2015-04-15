@@ -4,17 +4,27 @@
 _gemname=glib2
 pkgname=ruby-$_gemname
 pkgver=2.2.4
-pkgrel=3
+pkgrel=4
 pkgdesc='Ruby/GLib2 is a Ruby binding of GLib-2.x.'
 arch=(i686 x86_64)
 url='http://ruby-gnome2.sourceforge.jp/'
 license=(LGPL2.1)
-depends=(ruby glib2)
-makedepends=(ruby-pkgconfig)
+depends=(ruby glib2 ruby-pkgconfig)
 options=(!emptydirs)
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
+source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem
+        0001-glib2-support-GLib-2.44.patch)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('2387c5a151a7bb324de604234960cf4a6e2aa232')
+sha1sums=('2387c5a151a7bb324de604234960cf4a6e2aa232'
+          '54e83b3de30cfcf1f79232a98dc5ec1a1f1c116b')
+
+prepare() {
+  gem unpack $_gemname-$pkgver.gem
+  gem spec $_gemname-$pkgver.gem --ruby > $_gemname.gemspec
+  cd $_gemname-$pkgver
+  patch -p2 < ../0001-glib2-support-GLib-2.44.patch
+  gem build ../$_gemname.gemspec
+  mv $_gemname-$pkgver.gem ..
+}
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
