@@ -1,15 +1,15 @@
 pkgbase = rage
 	pkgdesc = Video Player based on EFL
-	pkgver = 0.1.0
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://www.enlightenment.org/p.php?p=about/rage
 	install = rage.install
 	arch = i686
 	arch = x86_64
 	license = BSD
-	depends = elementary>=1.11
-	source = http://download.enlightenment.org/rel/apps/rage/rage-0.1.0.tar.bz2
-	sha256sums = e477125bbc86adee91803a9585e83e670b3e5933890338d43c9f156161f06955
+	depends = elementary
+	source = http://download.enlightenment.org/rel/apps/rage/rage-0.1.2.tar.bz2
+	sha256sums = 89f1660bffc7ced1c6e706f9eccd85255cc2858dd82050b2cd62df6bc458ad58
 
 pkgname = rage
 

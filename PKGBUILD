@@ -1,19 +1,19 @@
 # Maintainer: Doug Newgard <scimmia at archlinux dot info>
 
 pkgname=rage
-pkgver=0.1.0
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Video Player based on EFL"
 arch=('i686' 'x86_64')
 url="https://www.enlightenment.org/p.php?p=about/rage"
 license=('BSD')
-depends=('elementary>=1.11')
+depends=('elementary')
 install=$pkgname.install
 source=("http://download.enlightenment.org/rel/apps/$pkgname/$pkgname-$pkgver.tar.bz2")
-sha256sums=('e477125bbc86adee91803a9585e83e670b3e5933890338d43c9f156161f06955')
+sha256sums=('89f1660bffc7ced1c6e706f9eccd85255cc2858dd82050b2cd62df6bc458ad58')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-$pkgver
 
   export CFLAGS="$CFLAGS -fvisibility=hidden"
 
@@ -24,7 +24,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-$pkgver
 
   make -j1 DESTDIR="$pkgdir" install
 
