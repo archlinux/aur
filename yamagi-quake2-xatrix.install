@@ -1,0 +1,9 @@
+
+post_install() {
+  echo "You need Quake II - Mission Pack 1 ('The Reckoning') data files to play,"
+  echo "copy them to '~/.yq2/xatrix'."
+}
+
+post_upgrade() {
+  post_install
+}
