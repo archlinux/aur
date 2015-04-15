@@ -1,6 +1,6 @@
 # Maintainer: Marcel Campello Ferreira <marcel@prafrentex.com.br>
 pkgname=neo4j
-pkgver=2.1.7
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="A fully transactional graph database implemented in Java"
 arch=(any)
@@ -22,10 +22,10 @@ source=(http://dist.neo4j.org/neo4j-community-$pkgver-unix.tar.gz
         neo4j.install
         neo4j.service
         neo4j-tmpfile.conf)
-sha256sums=('a71e1d31f288a03187d9e18890bee2924f8aa3ab1e740ab8be920ad68dbb3209'
-            'e52e0f353ce80e09fe74662e77223f5ff35a36f874653795ad173aa8a6bd5525'
-            '63426ed3ee522c2ce5f1505b15502742187156c9f09b3b1e8b2eff2379fa2a89'
-            'b39e3a898328bc98723245bef7f467cd1cb3636a2d750e4b0d7a17d671d0a1e7'
+sha256sums=('86c5366f99bd8d97131110c52b231352ea07e39093bbfd7960b2f0f211b35def'
+            'd161c1b0397843a78c16cf06f3087ca52f01efb300749874d52013fde87d26f8'
+            'bb9ea8ae8a684e9981a24ca7bb242a4c2aaa8fdacb820abf8da7f56f413d1e5f'
+            '3c4f3daea1623a5bc4c56d87ff4d76ff4737722eb730e2f9b65a0980bf3633a3'
             'ee451a5b4ac3f733ab725bb3babeefc4d852115fe24ee29a3060922716212ad7'
             'e9ecbf86072ca92129ab1889b5f91e2494b86e84248bd15a37681a3997892d7d')
 
@@ -35,7 +35,7 @@ prepare() {
 
   rm conf/windows-wrapper-logging.properties
   rm bin/neo4j-installer
-  rm bin/org.neo4j.server.plist
+  rm -rf system/resources
 
   # Adjust configuration to match new directory structure
   patch -Np1 -i ../conf.patch
@@ -65,10 +65,15 @@ package() {
   install -dm755 $pkgdir/usr/bin
   ln -s /usr/share/neo4j/bin/neo4j $pkgdir/usr/bin/neo4j
   ln -s /usr/share/neo4j/bin/neo4j-shell $pkgdir/usr/bin/neo4j-shell
+  ln -s /usr/share/neo4j/bin/neo4j-import $pkgdir/usr/bin/neo4j-import
 
   # Data and log files
   install -dm755 $pkgdir/var/lib/neo4j/data
   install -dm755 $pkgdir/var/log/neo4j
+
+  # Documentation
+  install -dm755 $pkgdir/usr/share/doc/neo4j
+  cp CHANGES.txt README.txt UPGRADE.txt $pkgdir/usr/share/doc/neo4j
 
   # License files
   install -dm755 $pkgdir/usr/share/licenses/neo4j

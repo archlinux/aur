@@ -1,6 +1,6 @@
-diff -U 3 -H -d -r -N -- neo4j-community-2.1.5-orig/conf/logging.properties neo4j-community-2.1.5-mod/conf/logging.properties
---- neo4j-community-2.1.5-orig/conf/logging.properties	2014-09-30 03:35:40.000000000 -0300
-+++ neo4j-community-2.1.5-mod/conf/logging.properties	2014-11-05 07:38:53.457072034 -0200
+diff -U 3 -H -d -r -N -- neo4j-community-2.2.0-orig/conf/logging.properties neo4j-community-2.2.0-mod/conf/logging.properties
+--- neo4j-community-2.2.0-orig/conf/logging.properties	2015-03-24 09:59:49.000000000 -0300
++++ neo4j-community-2.2.0-mod/conf/logging.properties	2015-03-31 11:05:19.973195104 -0300
 @@ -51,7 +51,7 @@
  #    "%g" the generation number to distinguish rotated logs
  #    "%u" a unique number to resolve conflicts
@@ -10,9 +10,9 @@ diff -U 3 -H -d -r -N -- neo4j-community-2.1.5-orig/conf/logging.properties neo4
  
  # Specifies whether the FileHandler should append onto any existing files
  # (defaults to false):
-diff -U 3 -H -d -r -N -- neo4j-community-2.1.5-orig/conf/neo4j-http-logging.xml neo4j-community-2.1.5-mod/conf/neo4j-http-logging.xml
---- neo4j-community-2.1.5-orig/conf/neo4j-http-logging.xml	2014-09-30 03:35:40.000000000 -0300
-+++ neo4j-community-2.1.5-mod/conf/neo4j-http-logging.xml	2014-11-05 07:38:53.457072034 -0200
+diff -U 3 -H -d -r -N -- neo4j-community-2.2.0-orig/conf/neo4j-http-logging.xml neo4j-community-2.2.0-mod/conf/neo4j-http-logging.xml
+--- neo4j-community-2.2.0-orig/conf/neo4j-http-logging.xml	2015-03-24 09:59:49.000000000 -0300
++++ neo4j-community-2.2.0-mod/conf/neo4j-http-logging.xml	2015-03-31 11:06:24.753192294 -0300
 @@ -21,9 +21,9 @@
  -->
  <configuration>
@@ -20,24 +20,38 @@ diff -U 3 -H -d -r -N -- neo4j-community-2.1.5-orig/conf/neo4j-http-logging.xml 
 -    <file>data/log/http.log</file>
 +    <file>/var/log/neo4j/http.log</file>
      <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
--      <fileNamePattern>data/log/http.%d{yyyy-MM-dd_HH}.log</fileNamePattern>
-+      <fileNamePattern>/var/log/neo4j/http.%d{yyyy-MM-dd_HH}.log</fileNamePattern>
-       <maxHistory>30</maxHistory>
+-      <fileNamePattern>data/log/http.%d{yyyy-MM-dd}.log</fileNamePattern>
++      <fileNamePattern>/var/log/neo4j/http.%d{yyyy-MM-dd}.log</fileNamePattern>
+       <maxHistory>7</maxHistory>
      </rollingPolicy>
  
-diff -U 3 -H -d -r -N -- neo4j-community-2.1.5-orig/conf/neo4j-server.properties neo4j-community-2.1.5-mod/conf/neo4j-server.properties
---- neo4j-community-2.1.5-orig/conf/neo4j-server.properties	2014-09-30 03:35:40.000000000 -0300
-+++ neo4j-community-2.1.5-mod/conf/neo4j-server.properties	2014-11-05 07:38:53.457072034 -0200
-@@ -8,7 +8,7 @@
+diff -U 3 -H -d -r -N -- neo4j-community-2.2.0-orig/conf/neo4j-server.properties neo4j-community-2.2.0-mod/conf/neo4j-server.properties
+--- neo4j-community-2.2.0-orig/conf/neo4j-server.properties	2015-03-24 09:59:49.000000000 -0300
++++ neo4j-community-2.2.0-mod/conf/neo4j-server.properties	2015-04-15 09:52:34.556610762 -0300
+@@ -10,10 +10,10 @@
  #***************************************************************
  
- # location of the database directory 
+ # location of the database directory
 -org.neo4j.server.database.location=data/graph.db
 +org.neo4j.server.database.location=/var/lib/neo4j/data/graph.db
  
+ # Low-level graph engine tuning file
+-org.neo4j.server.db.tuning.properties=conf/neo4j.properties
++org.neo4j.server.db.tuning.properties=/etc/neo4j/neo4j.properties
+ 
  # Let the webserver only listen on the specified IP. Default is localhost (only
  # accept local connections). Uncomment to allow any connection. Please see the
-@@ -33,14 +33,14 @@
+@@ -23,6 +23,9 @@
+ # Require (or disable the requirement of) auth to access Neo4j
+ dbms.security.auth_enabled=true
+ 
++# User auth data directory
++dbms.security.auth_store.location=/var/lib/neo4j/data/dbms/auth
++
+ #
+ # HTTP Connector
+ #
+@@ -41,14 +44,14 @@
  org.neo4j.server.webserver.https.port=7473
  
  # Certificate location (auto generated if the file does not exist)
@@ -53,37 +67,30 @@ diff -U 3 -H -d -r -N -- neo4j-community-2.1.5-orig/conf/neo4j-server.properties
 -org.neo4j.server.webserver.https.keystore.location=data/keystore
 +org.neo4j.server.webserver.https.keystore.location=/var/lib/neo4j/data/keystore
  
- #*****************************************************************
- # Administration client configuration
-@@ -50,7 +50,7 @@
- # - absolute path like /var/rrd
- # - path relative to the server working directory like data/rrd
- # - commented out, will default to the database data directory.
--org.neo4j.server.webadmin.rrdb.location=data/rrd
-+org.neo4j.server.webadmin.rrdb.location=/var/lib/neo4j/data/rrd
- 
- # REST endpoint for the data API
- # Note the / in the end is mandatory
-@@ -60,7 +60,7 @@
- org.neo4j.server.webadmin.management.uri=/db/manage/
- 
- # Low-level graph engine tuning file
--org.neo4j.server.db.tuning.properties=conf/neo4j.properties
-+org.neo4j.server.db.tuning.properties=/etc/neo4j/neo4j.properties
- 
- # The console services to be enabled
- org.neo4j.server.manage.console_engines=shell
-@@ -87,5 +87,5 @@
+ # Comma separated list of JAX-RS packages containing JAX-RS resources, one
+ # package name for each mountpoint. The listed package names will be loaded
+@@ -71,7 +74,7 @@
  # archived. Note: changing the rollover and retention policy is sensible, but
  # changing the output format is less so, since it is configured to use the
  # ubiquitous common log format
 -org.neo4j.server.http.log.config=conf/neo4j-http-logging.xml
 +org.neo4j.server.http.log.config=/etc/neo4j/neo4j-http-logging.xml
  
-diff -U 3 -H -d -r -N -- neo4j-community-2.1.5-orig/conf/neo4j-wrapper.conf neo4j-community-2.1.5-mod/conf/neo4j-wrapper.conf
---- neo4j-community-2.1.5-orig/conf/neo4j-wrapper.conf	2014-09-30 03:35:40.000000000 -0300
-+++ neo4j-community-2.1.5-mod/conf/neo4j-wrapper.conf	2014-11-05 07:38:53.457072034 -0200
-@@ -1,6 +1,6 @@
+ 
+ #*****************************************************************
+@@ -82,4 +85,4 @@
+ # - absolute path like /var/rrd
+ # - path relative to the server working directory like data/rrd
+ # - commented out, will default to the database data directory.
+-org.neo4j.server.webadmin.rrdb.location=data/rrd
++org.neo4j.server.webadmin.rrdb.location=/var/lib/neo4j/data/rrd
+diff -U 3 -H -d -r -N -- neo4j-community-2.2.0-orig/conf/neo4j-wrapper.conf neo4j-community-2.2.0-mod/conf/neo4j-wrapper.conf
+--- neo4j-community-2.2.0-orig/conf/neo4j-wrapper.conf	2015-03-24 09:59:49.000000000 -0300
++++ neo4j-community-2.2.0-mod/conf/neo4j-wrapper.conf	2015-03-31 12:28:30.216312067 -0300
+@@ -2,9 +2,9 @@
+ # Property file references
+ #********************************************************************
+ 
 -wrapper.java.additional=-Dorg.neo4j.server.properties=conf/neo4j-server.properties
 -wrapper.java.additional=-Djava.util.logging.config.file=conf/logging.properties
 -wrapper.java.additional=-Dlog4j.configuration=file:conf/log4j.properties
@@ -93,8 +100,8 @@ diff -U 3 -H -d -r -N -- neo4j-community-2.1.5-orig/conf/neo4j-wrapper.conf neo4
  
  #********************************************************************
  # JVM Parameters
-@@ -10,7 +10,7 @@
- wrapper.java.additional=-XX:+CMSClassUnloadingEnabled
+@@ -16,7 +16,7 @@
+ wrapper.java.additional=-XX:hashCode=5
  
  # Uncomment the following lines to enable garbage collection logging
 -#wrapper.java.additional=-Xloggc:data/log/neo4j-gc.log
@@ -102,20 +109,22 @@ diff -U 3 -H -d -r -N -- neo4j-community-2.1.5-orig/conf/neo4j-wrapper.conf neo4
  #wrapper.java.additional=-XX:+PrintGCDetails
  #wrapper.java.additional=-XX:+PrintGCDateStamps
  #wrapper.java.additional=-XX:+PrintGCApplicationStoppedTime
-@@ -27,8 +27,7 @@
+@@ -33,8 +33,7 @@
  #********************************************************************
  # Wrapper settings
  #********************************************************************
 -# path is relative to the bin dir
 -wrapper.pidfile=../data/neo4j-server.pid
-+wrapper.pidfile=/var/lib/neo4j/data/neo4j-server.pid
++wrapper.pidfile=/run/neo4j/neo4j-server.pid
  
  #********************************************************************
  # Wrapper Windows NT/2000/XP Service Properties
-@@ -43,5 +42,5 @@
+@@ -49,7 +48,7 @@
  
  # User account to be used for linux installs. Will default to current
  # user if not set.
 -wrapper.user=
 +wrapper.user=neo4j
  
+ #********************************************************************
+ # Other Neo4j system properties

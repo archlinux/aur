@@ -6,13 +6,10 @@ post_install() {
   chown -R neo4j.neo4j /etc/neo4j
 
   /usr/bin/systemd-tmpfiles --create neo4j.conf
-
-  warn_about_java_home
 }
 
 post_upgrade() {
   assert_user_and_group_exist
-  warn_about_java_home
 }
 
 post_remove() {
@@ -31,37 +28,4 @@ assert_user_and_group_exist() {
   if ! getent passwd neo4j >/dev/null; then
     useradd --system -g neo4j -d /var/lib/neo4j -s /bin/false neo4j
   fi
-}
-
-warn_about_java_home() {
-  echo "---------------"
-  echo "--- HOORAY!! --"
-  echo "---------------"
-  echo "If it is the first time you install Neo4j in your"
-  echo "Arch box, that's it, you are done. Enjoy your graphs"
-  echo "and please disregard all that is said from now on..."
-  echo ""
-  echo "If you are upgrading Neo4j from a previous version and"
-  echo "were given the following advice:"
-  echo ""
-  echo "  >> ------------------------------"
-  echo "  >> --- ACHTUNG ACHTUNG ALARM! ---"
-  echo "  >> ------------------------------"
-  echo "  >> Before starting the Neo4j service, create this file"
-  echo "  >> "
-  echo "  >> /etc/systemd/system/neo4j.service.d/java_home.conf"
-  echo "  >> "
-  echo "  >> with the following content:"
-  echo "  >> "
-  echo "  >> [Service]"
-  echo "  >> Environment=JAVA_HOME=/your/java/home/path"
-  echo "  >> "
-  echo "  >> changing '/your/java/home/path' to your actual JAVA_HOME path."
-  echo ""
-  echo "then now you are free to delete that file. Actually,"
-  echo "pursuant to the new Arch's Java Way of Life"
-  echo "(https://wiki.archlinux.org/index.php/Java#Former_.22One_time_setup.22_trick)"
-  echo "you shall delete it. Thereupon, enjoy your graphs."
-  echo ""
-  echo "This message will self-destruct in 1 s̶e̶c̶o̶n̶d̶ release..."
 }

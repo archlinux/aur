@@ -1,6 +1,6 @@
-diff -U 3 -H -d -r -N -- neo4j-community-2.1.5-orig/bin/neo4j neo4j-community-2.1.5-mod/bin/neo4j
---- neo4j-community-2.1.5-orig/bin/neo4j	2014-09-30 03:35:40.000000000 -0300
-+++ neo4j-community-2.1.5-mod/bin/neo4j	2014-11-05 07:57:26.549286965 -0200
+diff -U 3 -H -d -r -N -- neo4j-community-2.2.0-orig/bin/neo4j neo4j-community-2.2.0-mod/bin/neo4j
+--- neo4j-community-2.2.0-orig/bin/neo4j	2015-03-24 09:59:49.000000000 -0300
++++ neo4j-community-2.2.0-mod/bin/neo4j	2015-03-31 10:50:57.546565829 -0300
 @@ -33,23 +33,12 @@
  LAUNCHD_NAME="org.neo4j.server"
  
@@ -86,7 +86,7 @@ diff -U 3 -H -d -r -N -- neo4j-community-2.1.5-orig/bin/neo4j neo4j-community-2.
        newpid=${newpid:1}
    fi
  }
-@@ -289,15 +278,15 @@
+@@ -287,16 +276,16 @@
  # pass in "true" for created to mark that the user was created (instead than pre-existing)
  modify_user_config() {
    created=${2:-"false"}
@@ -108,9 +108,10 @@ diff -U 3 -H -d -r -N -- neo4j-community-2.1.5-orig/bin/neo4j neo4j-community-2.
 +    echo "wrapper.user.created=${created}" >> "$NEO4J_CONFIG/neo4j-wrapper.conf"
    fi
  }
-diff -U 3 -H -d -r -N -- neo4j-community-2.1.5-orig/bin/neo4j-shell neo4j-community-2.1.5-mod/bin/neo4j-shell
---- neo4j-community-2.1.5-orig/bin/neo4j-shell	2014-09-30 03:35:40.000000000 -0300
-+++ neo4j-community-2.1.5-mod/bin/neo4j-shell	2014-11-05 07:39:00.153752030 -0200
+ 
+diff -U 3 -H -d -r -N -- neo4j-community-2.2.0-orig/bin/neo4j-import neo4j-community-2.2.0-mod/bin/neo4j-import
+--- neo4j-community-2.2.0-orig/bin/neo4j-import	2015-03-24 09:59:49.000000000 -0300
++++ neo4j-community-2.2.0-mod/bin/neo4j-import	2015-03-31 10:51:08.903232004 -0300
 @@ -86,7 +86,7 @@
  
  if [ -z "$REPO" ]
@@ -120,9 +121,21 @@ diff -U 3 -H -d -r -N -- neo4j-community-2.1.5-orig/bin/neo4j-shell neo4j-commun
  fi
  
  LIBRARY_JARS=""
-diff -U 3 -H -d -r -N -- neo4j-community-2.1.5-orig/bin/utils neo4j-community-2.1.5-mod/bin/utils
---- neo4j-community-2.1.5-orig/bin/utils	2014-09-30 03:35:40.000000000 -0300
-+++ neo4j-community-2.1.5-mod/bin/utils	2014-11-05 07:39:00.153752030 -0200
+diff -U 3 -H -d -r -N -- neo4j-community-2.2.0-orig/bin/neo4j-shell neo4j-community-2.2.0-mod/bin/neo4j-shell
+--- neo4j-community-2.2.0-orig/bin/neo4j-shell	2015-03-24 09:59:49.000000000 -0300
++++ neo4j-community-2.2.0-mod/bin/neo4j-shell	2015-03-31 10:51:20.503231501 -0300
+@@ -86,7 +86,7 @@
+ 
+ if [ -z "$REPO" ]
+ then
+-  REPO="$BASEDIR"/lib
++  REPO=/usr/share/java/neo4j
+ fi
+ 
+ LIBRARY_JARS=""
+diff -U 3 -H -d -r -N -- neo4j-community-2.2.0-orig/bin/utils neo4j-community-2.2.0-mod/bin/utils
+--- neo4j-community-2.2.0-orig/bin/utils	2015-03-24 09:59:49.000000000 -0300
++++ neo4j-community-2.2.0-mod/bin/utils	2015-03-31 10:55:24.576554252 -0300
 @@ -324,11 +324,11 @@
  # in place.
  checkandrepairenv() {
