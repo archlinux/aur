@@ -1,6 +1,6 @@
 pkgbase = par2cmdline-git
 	pkgdesc = A file verification and repair tool
-	pkgver = 20150409.52294f0
+	pkgver = 20150414.43a0ebe
 	pkgrel = 1
 	url = https://github.com/BlackIkeEagle/par2cmdline
 	arch = i686
