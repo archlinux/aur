@@ -1,8 +1,7 @@
-# Maintainer: carstene1ns <url/mail: arch carsten-teibes de>
+# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributors: Frederic Bezies, Ronan Rabouin
 
-_pkgbase=quake2-ctf
-pkgname=yamagi-$_pkgbase
+pkgname=yamagi-quake2-ctf
 pkgver=1.02
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -11,20 +10,18 @@ url="http://www.yamagi.org/quake2/"
 license=('GPL' 'custom')
 depends=('sh' 'yamagi-quake2')
 changelog=$pkgname.ChangeLog
-source=("http://deponie.yamagi.org/quake2/$_pkgbase-$pkgver.tar.xz"
+source=("http://deponie.yamagi.org/quake2/${pkgname#*-}-$pkgver.tar.xz"
         "$pkgname.sh" "$pkgname.desktop")
 sha256sums=('86ec927da7f05cb6b9e238b3a09f22690ae8dbdb3b73bb2e35d916df6269915f'
             '9a9abd8d720a719180713163261fed154ec34787c82dda2b9465aefd9890b64c'
             'da8c69eb05eb9aab8526616b2808c7535ae38c1e28b5e7db341ff633bc09be31')
 
 build() {
-  cd $_pkgbase-$pkgver
-
-  make
+  make -C ${pkgname#*-}-$pkgver
 }
 
 package() {
-  cd $_pkgbase-$pkgver
+  cd ${pkgname#*-}-$pkgver
 
   # game launcher
   install -Dm755 ../$pkgname.sh "$pkgdir"/usr/bin/$pkgname
