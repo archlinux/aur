@@ -1,6 +1,6 @@
 pkgbase = tomahawk
 	pkgdesc = A Music Player App written in C++/Qt
-	pkgver = 0.8.3
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = http://tomahawk-player.org/
 	install = tomahawk.install
@@ -27,8 +27,8 @@ pkgbase = tomahawk
 	optdepends = telepathy-qt4: integration with Telepathy
 	provides = tomahawk
 	conflicts = tomahawk-git
-	source = http://download.tomahawk-player.org/tomahawk-0.8.3.tar.bz2
-	md5sums = 03994bad84eee3dcb46fdabb7c8434a3
+	source = http://download.tomahawk-player.org/tomahawk-0.8.4.tar.bz2
+	md5sums = 04832abe1786edcc55805875b5882445
 
 pkgname = tomahawk
 
