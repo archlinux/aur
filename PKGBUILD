@@ -16,6 +16,10 @@ sha256sums=('d8d21e27f4a21cd77c41914548c184ddb98693ba23851aa66c8e51c0be4b90b7')
 prepare() {
 # Turn off -Werror, causes too many build failures for things we don't care about
   sed -i '/-Werror/d' $pkgname/Source/cmake/WebKitHelpers.cmake
+
+# Build with glib 2.43+
+  sed -i '/^\s\?\+GMutexLocker/ s/GMutexLocker/WebCore::GMutexLocker/' \
+    $pkgname/Source/WebCore/platform/graphics/gstreamer/{WebKitWebSourceGStreamer.cpp,MediaPlayerPrivateGStreamerBase.cpp,VideoSinkGStreamer.cpp}
 }
 
 build() {
@@ -37,4 +41,3 @@ package() {
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
   install -m644 Source/WebCore/LICENSE-{APPLE,LGPL-2} "$pkgdir/usr/share/licenses/$pkgname/"
 }
-
