@@ -20,7 +20,7 @@ optdepends=(
 conflicts=('runescape-client-bin')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/HikariKnight/rsu-client/archive/v$pkgver.tar.gz")
-md5sums=('b669c13907161a8a0963f19009c48362')
+md5sums=('8713524866e2b2bd97cccbee87ef3aa3')
 
 package() {
   local _instdir="$pkgdir"/opt/runescape

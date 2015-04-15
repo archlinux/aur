@@ -22,7 +22,7 @@ pkgbase = unix-runescape-client
 	optdepends = cairo-nogl: if game crashes during loading/auto-setup
 	conflicts = runescape-client-bin
 	source = unix-runescape-client-4.3.2.tar.gz::https://github.com/HikariKnight/rsu-client/archive/v4.3.2.tar.gz
-	md5sums = b669c13907161a8a0963f19009c48362
+	md5sums = 8713524866e2b2bd97cccbee87ef3aa3
 
 pkgname = unix-runescape-client
 
