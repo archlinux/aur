@@ -1,18 +1,18 @@
-# Maintainer: carstene1ns <url/mail: arch carsten-teibes de>
+# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: PHAM Van Diep <imeo at favadi dot com>
 # Contributor: Alexander Fehr <pizzapunk gmail com>
 
 pkgname=volti
 pkgver=0.2.3
-pkgrel=3
+pkgrel=4
 pkgdesc="GTK+ mixer application for controlling alsa audio volume from system tray"
 arch=('any')
-url="http://code.google.com/p/volti/"
+url="https://github.com/gen2brain/volti"
 license=('GPL3')
 depends=('pygtk' 'python2-pyalsaaudio' 'python2-dbus')
 optdepends=('python2-xlib: Multimedia keys support')
-source=("http://volti.googlecode.com/files/volti-$pkgver.tar.gz")
-sha256sums=('216ca23cd4e8921ea73922125048e4f23fd3146045c0ef17cc4e10108dbd80dc')
+source=(volti-$pkgver.tar.gz::"https://github.com/gen2brain/volti/archive/$pkgver.tar.gz")
+sha256sums=('b0d614d720510261696401b87452a30a490dc34e1023fa42fbab8b2ef3989ed6')
 
 build() {
   cd volti-$pkgver

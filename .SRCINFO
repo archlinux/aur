@@ -1,16 +1,16 @@
 pkgbase = volti
 	pkgdesc = GTK+ mixer application for controlling alsa audio volume from system tray
 	pkgver = 0.2.3
-	pkgrel = 3
-	url = http://code.google.com/p/volti/
+	pkgrel = 4
+	url = https://github.com/gen2brain/volti
 	arch = any
 	license = GPL3
 	depends = pygtk
 	depends = python2-pyalsaaudio
 	depends = python2-dbus
 	optdepends = python2-xlib: Multimedia keys support
-	source = http://volti.googlecode.com/files/volti-0.2.3.tar.gz
-	sha256sums = 216ca23cd4e8921ea73922125048e4f23fd3146045c0ef17cc4e10108dbd80dc
+	source = volti-0.2.3.tar.gz::https://github.com/gen2brain/volti/archive/0.2.3.tar.gz
+	sha256sums = b0d614d720510261696401b87452a30a490dc34e1023fa42fbab8b2ef3989ed6
 
 pkgname = volti
 
