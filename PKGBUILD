@@ -10,7 +10,6 @@ arch=(i686 x86_64)
 url='http://ruby-gnome2.sourceforge.jp/'
 license=(LGPL2.1)
 depends=(ruby pango ruby-cairo ruby-glib2=$pkgver)
-makedepends=(ruby-pkgconfig)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
