@@ -13,12 +13,13 @@ makedepends=('cmake' 'perl' 'python2' 'ruby' 'gperf')
 source=("http://download.enlightenment.org/rel/libs/webkit-efl/$pkgname-$pkgver.tar.xz")
 sha256sums=('d8d21e27f4a21cd77c41914548c184ddb98693ba23851aa66c8e51c0be4b90b7')
 
-build() {
-  cd "$srcdir/$pkgname"
+prepare() {
+# Turn off -Werror, causes too many build failures for things we don't care about
+  sed -i '/-Werror/d' $pkgname/Source/cmake/WebKitHelpers.cmake
+}
 
-# build with glib 2.38/libsoup 2.44
-  export CFLAGS="$CFLAGS -Wno-deprecated-declarations"
-  export CXXFLAGS="$CXXFLAGS -Wno-deprecated-declarations"
+build() {
+  cd $pkgname
 
   cmake . \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -28,11 +29,12 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd $pkgname
 
   make DESTDIR="$pkgdir" install
 
 # install license files
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
-  install -m644 -t "$pkgdir/usr/share/licenses/$pkgname/" Source/WebCore/LICENSE-{APPLE,LGPL-2}
+  install -m644 Source/WebCore/LICENSE-{APPLE,LGPL-2} "$pkgdir/usr/share/licenses/$pkgname/"
 }
+
