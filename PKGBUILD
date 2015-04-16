@@ -4,7 +4,7 @@ pkgdesc="ROS - Conversion functions between: - Eigen and KDL - Eigen and geometr
 url='http://ros.org/wiki/eigen_conversions'
 
 pkgname='ros-indigo-eigen-conversions'
-pkgver='1.11.5'
+pkgver='1.11.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
