@@ -4,7 +4,7 @@ pkgdesc="ROS - Single image rectification and color processing."
 url='http://www.ros.org/wiki/image_proc'
 
 pkgname='ros-indigo-image-proc'
-pkgver='1.12.12'
+pkgver='1.12.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -16,7 +16,6 @@ ros_makedepends=(ros-indigo-image-geometry
   ros-indigo-catkin
   ros-indigo-image-transport
   ros-indigo-sensor-msgs
-  ros-indigo-camera-calibration-parsers
   ros-indigo-dynamic-reconfigure
   ros-indigo-nodelet)
 makedepends=('cmake' 'git' 'ros-build-tools'
