@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-tf
 	pkgdesc = ROS - tf is a package that lets the user keep track of multiple coordinate frames over time.
-	pkgver = 1.11.5
+	pkgver = 1.11.6
 	pkgrel = 1
 	url = http://www.ros.org/wiki/tf
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = ros-indigo-tf
 	depends = ros-indigo-message-filters
 	depends = ros-indigo-tf2
 	depends = graphviz
-	source = tf::git+https://github.com/ros-gbp/geometry-release.git#tag=release/indigo/tf/1.11.5-0
+	source = tf::git+https://github.com/ros-gbp/geometry-release.git#tag=release/indigo/tf/1.11.6-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-tf
