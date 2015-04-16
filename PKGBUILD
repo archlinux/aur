@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains a set of conversion functions to convert co
 url='http://www.ros.org/wiki/tf_conversions'
 
 pkgname='ros-indigo-tf-conversions'
-pkgver='1.11.5'
+pkgver='1.11.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
