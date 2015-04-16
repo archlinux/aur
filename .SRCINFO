@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-genlisp
 	pkgdesc = ROS - Common-Lisp ROS message and service generators.
-	pkgver = 0.4.14
+	pkgver = 0.4.15
 	pkgrel = 1
 	url = http://www.ros.org/wiki/roslisp
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = ros-indigo-genlisp
 	makedepends = ros-indigo-genmsg
 	makedepends = ros-indigo-catkin
 	depends = ros-indigo-genmsg
-	source = genlisp::git+https://github.com/ros-gbp/genlisp-release.git#tag=release/indigo/genlisp/0.4.14-0
+	source = genlisp::git+https://github.com/ros-gbp/genlisp-release.git#tag=release/indigo/genlisp/0.4.15-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-genlisp
