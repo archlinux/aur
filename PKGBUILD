@@ -4,36 +4,31 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=41.0.2272.118
-pkgrel=2
+pkgver=42.0.2311.90
+pkgrel=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
 license=('BSD')
 depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss' 'icu'
          'libexif' 'libgcrypt' 'ttf-font' 'systemd' 'dbus' 'flac' 'snappy'
-         'speech-dispatcher' 'pciutils' 'libpulse' 'harfbuzz'
-         'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('python2' 'perl' 'gperf' 'yasm' 'mesa' 'libgnome-keyring'
-             'elfutils' 'subversion' 'ninja' 'clang')
+         'speech-dispatcher' 'pciutils' 'libpulse' 'harfbuzz' 'libsecret'
+         'perl' 'perl-file-basedir' 'desktop-file-utils' 'hicolor-icon-theme')
+makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'git')
 makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
-            'libgnome-keyring: for storing passwords in GNOME keyring'
             'kdeutils-kwalletmanager: for storing passwords in KWallet')
-backup=('etc/chromium/default')
 options=('!strip')
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.xz
+        git+https://github.com/foutrelis/chromium-launcher.git
         chromium.desktop
-        chromium.default
-        chromium.sh
-        chromium-webkit-buffer-overflow.patch)
-sha256sums=('c043d2eca41acaabd4f7068a5d9a21835dac2ca7705dd865d376c8a732ec8c3c'
+        chromium-widevine.patch)
+sha256sums=('60b0eb38c1c3d0cc998dae70b7333e53b715cff2847c1652e03d1723300db4c9'
+            'SKIP'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
-            '478340d5760a9bd6c549e19b1b5d1c5b4933ebf5f8cfb2b3e2d70d07443fe232'
-            'db3a2ea59c64f5aa4618a385b9db0ac488e900664126af578676b5f09939f9f6'
-            '870ca4516a0a5407b1e2da822a1ca4f201349c8699877f6bd248cd8e08e7f2f1')
+            '379b746e187de28f80f5a7cd19edcfa31859656826f802a1ede054fcb6dfb221')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -44,8 +39,8 @@ _google_default_client_id=413772536636.apps.googleusercontent.com
 _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 
 # We can't build (P)NaCL on i686 because the toolchain is x86_64 only and the
-# instructions to build the toolchain from source don't work that well (at least
-# from within the Chromium 39 source tree).
+# instructions on how to build the toolchain from source don't work that well
+# (at least not from within the Chromium 39 source tree).
 # https://sites.google.com/a/chromium.org/dev/nativeclient/pnacl/building-pnacl-components-for-distribution-packagers
 _build_nacl=1
 if [[ $CARCH == i686 ]]; then
@@ -55,14 +50,18 @@ fi
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
 
+  # Enable support for the Widevine CDM plugin
+  # The actual libraries are not included, but can be copied over from Chrome:
+  #   libwidevinecdmadapter.so
+  #   libwidevinecdm.so
+  # (Version string doesn't seem to matter so let's go with "Pinkie Pie")
+  sed "s/@WIDEVINE_VERSION@/Pinkie Pie/" ../chromium-widevine.patch |
+    patch -Np1
+
   # Remove bundled ICU; its header files appear to get picked up instead of
   # the system ones, leading to errors during the final link stage
   # https://groups.google.com/a/chromium.org/d/topic/chromium-packagers/BNGvJc08B6Q
   find third_party/icu -type f \! -regex '.*\.\(gyp\|gypi\|isolate\)' -delete
-
-  # Fix a buffer overflow in blink::HarfBuzzShaper::resolveCandidateRuns()
-  # https://code.google.com/p/chromium/issues/detail?id=445075#c10
-  patch -d third_party/WebKit -Np1 <../chromium-webkit-buffer-overflow.patch
 
   # Use Python 2
   find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
@@ -79,6 +78,10 @@ prepare() {
 }
 
 build() {
+  cd "$srcdir/chromium-launcher"
+
+  make PREFIX=/usr
+
   cd "$srcdir/$pkgname-$pkgver"
 
   export PATH="$srcdir/python2-path:$PATH"
@@ -107,6 +110,7 @@ build() {
     -Dlibspeechd_h_prefix=speech-dispatcher/
     -Dffmpeg_branding=Chrome
     -Dproprietary_codecs=1
+    -Duse_gnome_keyring=0
     -Duse_system_bzip2=1
     -Duse_system_flac=1
     -Duse_system_ffmpeg=0
@@ -141,35 +145,35 @@ build() {
 }
 
 package() {
+  cd "$srcdir/chromium-launcher"
+
+  make PREFIX=/usr DESTDIR="$pkgdir" install
+  strip $STRIP_BINARIES "$pkgdir/usr/lib/chromium-launcher/launcher-derp"
+  install -Dm644 LICENSE \
+    "$pkgdir/usr/share/licenses/chromium/LICENSE.launcher"
+
   cd "$srcdir/$pkgname-$pkgver"
 
   install -D out/Release/chrome "$pkgdir/usr/lib/chromium/chromium"
 
-  install -Dm4755 -o root -g root out/Release/chrome_sandbox \
+  install -Dm4755 out/Release/chrome_sandbox \
     "$pkgdir/usr/lib/chromium/chrome-sandbox"
 
   install -D out/Release/chromedriver "$pkgdir/usr/lib/chromium/chromedriver"
 
-  cp out/Release/{*.pak,*.bin,libffmpegsumo.so,libpdf.so} \
+  cp out/Release/{*.pak,*.bin,libffmpegsumo.so} \
     "$pkgdir/usr/lib/chromium/"
-
-  if (( $_build_nacl )); then
-    cp out/Release/nacl_helper{,_bootstrap} out/Release/nacl_irt_*.nexe \
-      "$pkgdir/usr/lib/chromium/"
-  fi
 
   # Manually strip binaries so that 'nacl_irt_*.nexe' is left intact
   strip $STRIP_BINARIES "$pkgdir/usr/lib/chromium/"{chromium,chrome-sandbox} \
     "$pkgdir/usr/lib/chromium/chromedriver"
-  strip $STRIP_SHARED "$pkgdir/usr/lib/chromium/libffmpegsumo.so" \
-    "$pkgdir/usr/lib/chromium/libpdf.so"
+  strip $STRIP_SHARED "$pkgdir/usr/lib/chromium/libffmpegsumo.so"
 
   if (( $_build_nacl )); then
+    cp out/Release/nacl_helper{,_bootstrap} out/Release/nacl_irt_*.nexe \
+      "$pkgdir/usr/lib/chromium/"
     strip $STRIP_BINARIES "$pkgdir/usr/lib/chromium/"nacl_helper{,_bootstrap}
   fi
-
-  # Allow users to override command-line options
-  install -Dm644 "$srcdir/chromium.default" "$pkgdir/etc/chromium/default"
 
   cp -a out/Release/locales "$pkgdir/usr/lib/chromium/"
 
@@ -188,7 +192,6 @@ package() {
       "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/chromium.png"
   done
 
-  install -D "$srcdir/chromium.sh" "$pkgdir/usr/bin/chromium"
   ln -s /usr/lib/chromium/chromedriver "$pkgdir/usr/bin/chromedriver"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/chromium/LICENSE"
