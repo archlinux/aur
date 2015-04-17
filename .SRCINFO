@@ -1,0 +1,14 @@
+pkgbase = python-svn
+	pkgdesc = Lightweight Subversion library for Python.
+	pkgver = 0.3.36
+	pkgrel = 1
+	url = https://github.com/dsoprea/PySvn
+	arch = any
+	license = GPL2
+	depends = python>=3.3
+	depends = subversion
+	source = https://pypi.python.org/packages/source/s/svn/svn-0.3.36.tar.gz
+	md5sums = 1538aeddf535de894dc81b6ffb76be34
+
+pkgname = python-svn
+
