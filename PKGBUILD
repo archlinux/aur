@@ -7,22 +7,20 @@ pkgrel=1
 pkgdesc="EditorConfig plugin for Geany"
 arch=('x86_64' 'i686')
 url="https://github.com/editorconfig/editorconfig-geany"
-license=('BSD')
+license=('GPL')
 depends=('geany' 'editorconfig-core-c')
-_gitversion="8d332f12ba58bd91ac2753c8008d0558799c3aaa"
+_gitversion="de6ff50b86b34297b3425f9c5fc64b83c64578c1"
 source=("https://github.com/editorconfig/editorconfig-geany/archive/$_gitversion.tar.gz")
-sha256sums=('cbbe791bf1e43807e8ff31b76a9dbe6f58ba4d98cde44187adb2ad239567fb36')
+sha256sums=('388c1e46cb7d49b33e4b51a28e409c71bd8c516d9a5208dde310a650532130f1')
 
 build() {
   cd "$srcdir/$pkgname-$_gitversion/"
   make EDITORCONFIG_PREFIX=/usr
-  sed -n '/Copyright/,/SUCH DAMAGE./p' editorconfig-geany.c > "$srcdir/LICENSE"
-  sed -i 's/ \* //g' "$srcdir/LICENSE"
 }
 
 package() {
   install -Dm644 "$srcdir/$pkgname-$_gitversion/$pkgname.so" "$pkgdir/usr/lib/geany/$pkgname.so"
-  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/$pkgname-$_gitversion/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:

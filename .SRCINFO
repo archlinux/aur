@@ -5,11 +5,11 @@ pkgbase = editorconfig-geany
 	url = https://github.com/editorconfig/editorconfig-geany
 	arch = x86_64
 	arch = i686
-	license = BSD
+	license = GPL
 	depends = geany
 	depends = editorconfig-core-c
-	source = https://github.com/editorconfig/editorconfig-geany/archive/8d332f12ba58bd91ac2753c8008d0558799c3aaa.tar.gz
-	sha256sums = cbbe791bf1e43807e8ff31b76a9dbe6f58ba4d98cde44187adb2ad239567fb36
+	source = https://github.com/editorconfig/editorconfig-geany/archive/de6ff50b86b34297b3425f9c5fc64b83c64578c1.tar.gz
+	sha256sums = 388c1e46cb7d49b33e4b51a28e409c71bd8c516d9a5208dde310a650532130f1
 
 pkgname = editorconfig-geany
 
