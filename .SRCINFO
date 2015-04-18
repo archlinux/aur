@@ -1,45 +1,38 @@
 pkgbase = gnupg-largekeys
 	pkgdesc = Complete and free implementation of the OpenPGP standard
-	pkgver = 2.1.0
-	pkgrel = 6
+	pkgver = 2.0.27
+	pkgrel = 1
 	url = http://www.gnupg.org/
 	install = install
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = curl
 	makedepends = libldap
 	makedepends = libusb-compat
-	depends = npth
-	depends = libgpg-error
-	depends = libgcrypt
-	depends = libksba
-	depends = libassuan
-	depends = pinentry
 	depends = bzip2
+	depends = libksba
+	depends = libgcrypt
+	depends = pth
+	depends = libassuan
 	depends = readline
+	depends = pinentry
+	depends = dirmngr
+	optdepends = curl: gpg2keys_curl
 	optdepends = libldap: gpg2keys_ldap
 	optdepends = libusb-compat: scdaemon
-	provides = dirmngr
-	provides = gnupg2=2.1.0
-	provides = gnupg=2.1.0
-	conflicts = dirmngr
+	provides = gnupg2=2.0.27
+	provides = gnupg=2.0.27
 	conflicts = gnupg2
 	conflicts = gnupg
-	replaces = dirmngr
 	replaces = gnupg2
 	replaces = gnupg
-	source = ftp://ftp.gnupg.org/gcrypt/gnupg/gnupg-2.1.0.tar.bz2
-	source = ftp://ftp.gnupg.org/gcrypt/gnupg/gnupg-2.1.0.tar.bz2.sig
-	source = oid2str-overflow.patch
-	source = subpacket-off.patch
-	source = refresh-keys.patch
-	source = hash-ecdsa.patch
-	sha1sums = 2fcd0ca6889ef6cb59e3275e8411f8b7778c2f33
-	sha1sums = SKIP
-	sha1sums = 774f7fe541428f45ee145c763cf5634264e3bc69
-	sha1sums = 1a86b834904c7d18d932ad1bb44d3642990d3cbd
-	sha1sums = 246bea8776882f4c0293685482558f6ead1cf902
-	sha1sums = b9bd644276aa1c1a3fcaed82e65eecccfd1f36ed
+	source = ftp://ftp.gnupg.org/gcrypt/gnupg/gnupg-2.0.27.tar.bz2
+	source = gnupg2-large-keys.patch
+	source = install
+	sha1sums = d065be185f5bac8ea07b210ab7756e79b83b63d4
+	sha1sums = 49c93544a6ff7522845dbd94a2a545559a608e62
+	sha1sums = ff80fc79329cfa631c19ae1ea6fc4a390ab851f7
 
 pkgname = gnupg-largekeys
 

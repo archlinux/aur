@@ -1,39 +1,30 @@
-diff --git a/g10/gpg.c b/g10/gpg.c
-index 1a8e6e7..0d1e15e 100644
---- a/g10/gpg.c
-+++ b/g10/gpg.c
-@@ -2059,7 +2059,7 @@ main (int argc, char **argv)
- #endif
- 
-     /* Initialize the secure memory. */
--    if (!gcry_control (GCRYCTL_INIT_SECMEM, 32768, 0))
-+    if (!gcry_control (GCRYCTL_INIT_SECMEM, 131072, 0))
-       got_secmem = 1;
- #if defined(HAVE_GETUID) && defined(HAVE_GETEUID)
-     /* There should be no way to get to this spot while still carrying
+diff --git a/configure b/configure
+index d974ec3..bda0b0f 100755
+--- a/configure
++++ b/configure
+@@ -5307,7 +5307,7 @@ fi
+ { $as_echo "$as_me:${as_lineno-$LINENO}: result: $large_secmem" >&5
+ $as_echo "$large_secmem" >&6; }
+ if test "$large_secmem" = yes ; then
+-   SECMEM_BUFFER_SIZE=65536
++   SECMEM_BUFFER_SIZE=131072
+ else
+    SECMEM_BUFFER_SIZE=32768
+ fi
 diff --git a/g10/keygen.c b/g10/keygen.c
-index 6d3dfa6..6d362c0 100644
+index 560480d..7a89c05 100644
 --- a/g10/keygen.c
 +++ b/g10/keygen.c
-@@ -1175,7 +1175,7 @@ gen_elg (int algo, unsigned int nbits,
-       nbits = 2048;
-       log_info (_("keysize invalid; using %u bits\n"), nbits );
-     }
--  else if (nbits > 4096)
-+  else if (nbits > 65535)
-     {
-       nbits = 4096;
-       log_info (_("keysize invalid; using %u bits\n"), nbits );
-@@ -1442,7 +1442,7 @@ gen_rsa (int algo, unsigned nbits, KBNODE pub_root, KBNODE sec_root, DEK *dek,
-       nbits = 2048;
-       log_info (_("keysize invalid; using %u bits\n"), nbits );
-     }
--  else if (nbits > 4096)
-+  else if (nbits > 65535)
-     {
-       nbits = 4096;
-       log_info (_("keysize invalid; using %u bits\n"), nbits );
-@@ -1781,7 +1781,7 @@ ask_algo (int addmode, int *r_subkey_algo, unsigned int *r_usage)
+@@ -1429,7 +1429,7 @@ gen_rsa (int algo, unsigned nbits, KBNODE pub_root, KBNODE sec_root, DEK *dek,
+   PKT_secret_key *sk;
+   PKT_public_key *pk;
+   gcry_sexp_t s_parms, s_key;
+-  const unsigned maxsize = (opt.flags.large_rsa ? 8192 : 4096);
++  const unsigned maxsize = (opt.flags.large_rsa ? 65535 : 4096);
+ 
+   assert (is_RSA(algo));
+ 
+@@ -1798,7 +1798,7 @@ ask_algo (int addmode, int *r_subkey_algo, unsigned int *r_usage)
  static unsigned
  ask_keysize (int algo, unsigned int primary_keysize)
  {
