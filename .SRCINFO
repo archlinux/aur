@@ -1,0 +1,13 @@
+pkgbase = gtksourceview3-asm-intel
+	pkgdesc = x86 (Intel) assembly language syntax highlight support in gtksourceview3 for gedit 3 and others
+	pkgver = 20120501
+	pkgrel = 1
+	url = https://wiki.gnome.org/action/show/Projects/GtkSourceView/LanguageDefinitions
+	arch = any
+	license = unknown
+	depends = gtksourceview3
+	source = asm-intel.lang::https://wiki.gnome.org/Projects/GtkSourceView/LanguageDefinitions?action=AttachFile&do=get&target=asm-intel.lang
+	md5sums = d5b196c1c17b2c7081e12f1f1f24e690
+
+pkgname = gtksourceview3-asm-intel
+
