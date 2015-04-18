@@ -3,7 +3,7 @@
 # Maintainer: Eric Bélanger <eric@archlinux.org>
 
 pkgname=directfb
-pkgver=1.7.5
+pkgver=1.7.7
 pkgrel=1
 pkgdesc="A thin library that provides hardware graphics acceleration, input device handling and abstraction, integrated windowing system on top of the Linux Framebuffer Device"
 arch=('i686' 'x86_64')
@@ -14,6 +14,7 @@ source=(http://www.directfb.org/downloads/Core/DirectFB-${pkgver%.*}/DirectFB-${
 sha1sums=('095852479098a55be2b0c6a0250af4159ee16e7c')
 sha1sums=('ff3dc6885f2875586849d88ee9f87fca866259b0')
 sha1sums=('13f769b5fc0a38b123968761fad3058bc923b01f')
+sha1sums=('205d824906906303db9b096cc2d3bea0662e8860')
 
 build() {
   cd DirectFB-${pkgver}
