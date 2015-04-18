@@ -1,6 +1,6 @@
 pkgbase = docker-git
 	pkgdesc = Pack, ship and run any application as a lightweight container
-	pkgver = 1.5.0.dev.13153.99ca215
+	pkgver = 1.7.0.dev.14855.c158cdb
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/dotcloud/docker
@@ -11,6 +11,7 @@ pkgbase = docker-git
 	makedepends = git
 	makedepends = go
 	makedepends = btrfs-progs
+	makedepends = go-md2man
 	depends = bridge-utils
 	depends = iproute2
 	depends = device-mapper

@@ -3,6 +3,7 @@
 # Contributor: Sébastien "Seblu" Luttringer
 # Contributor: Marcel Wysocki <maci@satgnu.net>
 # Contributor: Daniel YC Lin <dlin.tw@gmail>
+# Contributor: Joerg <joerg@higgsboson.tk>
 #
 # NOTE: To request changes to this package, please submit a pull request
 #       to the GitHub repository at https://github.com/ido/packages-archlinux
@@ -10,7 +11,7 @@
 #
 
 pkgname=docker-git
-pkgver=1.5.0.dev.13153.99ca215
+pkgver=1.7.0.dev.14855.c158cdb
 pkgrel=1
 epoch=1
 pkgdesc='Pack, ship and run any application as a lightweight container'
@@ -18,7 +19,7 @@ arch=(i686 'x86_64')
 url="https://github.com/dotcloud/docker"
 license=('Apache')
 depends=('bridge-utils' 'iproute2' 'device-mapper' 'sqlite' 'systemd')
-makedepends=('git' 'go' 'btrfs-progs')
+makedepends=('git' 'go' 'btrfs-progs' 'go-md2man')
 backup=(etc/sysctl.d/docker.conf)
 provides=('docker')
 conflicts=('docker')
@@ -56,6 +57,9 @@ build() {
   cd docker
   export AUTO_GOPATH=1
   ./hack/make.sh dynbinary
+  for i in docs/man/*.md; do
+    go-md2man -in "$i" -out "${i%.md}"
+  done
 }
 
 #check() {
@@ -76,6 +80,13 @@ package() {
   # systemd
   install -Dm644 "$srcdir/docker.service" "$pkgdir/usr/lib/systemd/system/docker.service"
   install -Dm644 "$srcdir/docker.conf" "$pkgdir/etc/sysctl.d/docker.conf"
+  
+  cd docs/man
+  for section in 1 5; do
+    for i in *.$section; do
+      install -Dm644 "$i" "$pkgdir/usr/share/man/man$section/$i"
+    done
+  done
 }
 
 # vim:set ts=2 sw=2 et:
