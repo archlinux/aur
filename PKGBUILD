@@ -3,7 +3,7 @@
 # Maintained at : https://github.com/jarondl/aur-pkgbuilds-jarondl
 pkgname=python-isort
 _pkgname=isort
-pkgver=3.9.4
+pkgver=3.9.6
 pkgrel=1
 pkgdesc="isort your python imports for you so you don't have to."
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=(python python-pies python-natsort)
 makedepends=(python-setuptools)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
-sha512sums=('397111db9b2ee71d9067f37550599338c687b203a97f6b9e0dbd2a231130fb7c2505d98591a4d903334c548d8cc5cc38e696d30bf233810fc3b599afea023d79')
+sha512sums=('70a186b5a4b837b524dc60080631cdf159ccc17616a4224644069cc364c9484a9db7941e9ab60681fa8f4066ea38c83c66cdcc17eac0329efd1d30ee011576a8')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
