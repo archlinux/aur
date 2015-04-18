@@ -12,7 +12,7 @@ url='http://w3m.sourceforge.net/'
 license=('custom')
 arch=('i686' 'x86_64')
 makedepends=('imlib2')
-optdepends=('imlib2: for graphics support') 
+optdepends=('imlib2: for graphics support')
 depends=('openssl' 'gc' 'ncurses')
 provides=('w3m')
 conflicts=('w3m')
@@ -21,11 +21,11 @@ source=("http://downloads.sourceforge.net/project/${w3m_pkgname}/${w3m_pkgname}/
         'file_handle.patch'
         'https.patch'
         'gc72.patch')
-sha1sums=('444b6c8cf7094ee95f8e9de96b37f814b9d83237'
-          '23d648033ad77f3c67d370c62cf7b7ed86b5c6f2'
-          '457de43be7eabc652614461a7ab25e3ba76b2aff'
-          '66affb2f695fe0bdde25cf774642bfd6a9404e88'
-          '7baa06ca684fd140503a2adc65e2d606970c4662')
+sha256sums=('e994d263f2fd2c22febfbe45103526e00145a7674a0fda79c822b97c2770a9e3'
+            '7d2f4ff43eeb1b81fb6126063cf091902205c375fdcdffe0998ff51e73ff9d27'
+            'dbf746808b64cd163dbcc6d299d80abdbbb7b5eff633d39c3f73dd42370633bc'
+            'ab8f2b6c7e1cf2d8485fa9928784c8dbd2f0d8cd26a5c32384543eea173de986'
+            '1e0e573e5fc6c0938b1941a81cffdd604a0167f7cf46e1a8479e2e10969e1d04')
 
 prepare() {
 	cd "${srcdir}/${w3m_pkgname}-${pkgver}"
