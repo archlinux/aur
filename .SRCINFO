@@ -1,7 +1,8 @@
 pkgbase = pacbuilder-svn
 	pkgdesc = A tool to massively recompile archlinux packages from sources
-	pkgver = 138
-	pkgrel = 4
+	pkgver = r138
+	pkgrel = 1
+	epoch = 1
 	url = http://code.google.com/p/pacbuilder/
 	arch = any
 	license = GPL3

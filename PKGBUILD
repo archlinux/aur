@@ -3,8 +3,9 @@
 # Contributor: Antony Male <antony dot male at gmail dot com>
 
 pkgname=pacbuilder-svn
-pkgver=138
-pkgrel=4
+epoch=1
+pkgver=r138
+pkgrel=1
 pkgdesc="A tool to massively recompile archlinux packages from sources"
 arch=('any')
 url="http://code.google.com/p/pacbuilder/"
@@ -19,11 +20,12 @@ md5sums=('SKIP')
 pkgver() {
 	cd pacbuilder
 
-	svnversion
+	local ver="$(svnversion)"
+	printf "r%s" "${ver//[[:alpha:]]}"
 }
 
 package() {
-  cd pacbuilder
+	cd pacbuilder
 
-  make DESTDIR="$pkgdir" install
+	make DESTDIR="$pkgdir" install
 }
