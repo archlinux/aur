@@ -6,6 +6,7 @@
 pkgname=chromium
 pkgver=42.0.2311.90
 pkgrel=1
+_launcher_ver=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
@@ -14,7 +15,7 @@ depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss' 'icu'
          'libexif' 'libgcrypt' 'ttf-font' 'systemd' 'dbus' 'flac' 'snappy'
          'speech-dispatcher' 'pciutils' 'libpulse' 'harfbuzz' 'libsecret'
          'perl' 'perl-file-basedir' 'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'git')
+makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja')
 makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
@@ -22,11 +23,11 @@ optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
 options=('!strip')
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.xz
-        git+https://github.com/foutrelis/chromium-launcher.git
+        chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
         chromium-widevine.patch)
 sha256sums=('60b0eb38c1c3d0cc998dae70b7333e53b715cff2847c1652e03d1723300db4c9'
-            'SKIP'
+            '3c77e58e74e4f9613cdf74b6db40c06dce157e0565034727e15485414af78c71'
             '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
             '379b746e187de28f80f5a7cd19edcfa31859656826f802a1ede054fcb6dfb221')
 
@@ -78,7 +79,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/chromium-launcher"
+  cd "$srcdir/chromium-launcher-$_launcher_ver"
 
   make PREFIX=/usr
 
@@ -145,10 +146,9 @@ build() {
 }
 
 package() {
-  cd "$srcdir/chromium-launcher"
+  cd "$srcdir/chromium-launcher-$_launcher_ver"
 
-  make PREFIX=/usr DESTDIR="$pkgdir" install
-  strip $STRIP_BINARIES "$pkgdir/usr/lib/chromium-launcher/launcher-derp"
+  make PREFIX=/usr DESTDIR="$pkgdir" install-strip
   install -Dm644 LICENSE \
     "$pkgdir/usr/share/licenses/chromium/LICENSE.launcher"
 
