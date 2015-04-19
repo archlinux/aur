@@ -1,6 +1,6 @@
 pkgbase = qutebrowser
 	pkgdesc = A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = http://www.qutebrowser.org/
 	install = qutebrowser.install
@@ -26,9 +26,9 @@ pkgbase = qutebrowser
 	optdepends = gst-plugins-bad: media playback
 	optdepends = gst-plugins-ugly: media playback
 	options = !emptydirs
-	source = http://qutebrowser.org/releases/v0.2.0/qutebrowser-0.2.0.tar.gz
+	source = http://qutebrowser.org/releases/v0.2.1/qutebrowser-0.2.1.tar.gz
 	source = qutebrowser.install
-	sha256sums = 33a63d7985070d5154b5e26cdd092ffcce6a7d78870593ebb0d02f3e06e952ba
+	sha256sums = 5bce4602342f2e8c54ca3e1b0c337c1242657d7505923417d295585351498738
 	sha256sums = 4a88871e91f894890ce96feb620e4174c686db12e4fa91b5a7306454dc96bf67
 
 pkgname = qutebrowser
