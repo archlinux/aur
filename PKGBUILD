@@ -2,7 +2,7 @@
 
 pkgname=plasma-meta
 pkgver=5.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Meta package to install KDE Plasma'
 arch=('any')
 url='https://www.archlinux.org/'
