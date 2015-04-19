@@ -3,7 +3,7 @@
 
 pkgbase=python-librtmp
 pkgname=(python-librtmp python2-librtmp)
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Python interface to librtmp"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'python-cffi'
              'python2-setuptools' 'python2-cffi' 'python2-singledispatch'
              'rtmpdump')
 source=("https://pypi.python.org/packages/source/p/$pkgbase/$pkgbase-$pkgver.tar.gz")
-sha256sums=('118993a1a044fcd5709fe98bf953ddc5b2d0c08c0ece5618af4a44117acf0588')
+sha256sums=('4586f043a1071a189f16cadabb4056569bd083adaf8b1e17187fe2210699a765')
 
 prepare() {
   # copy folder, so we can cleanly build for both python versions
