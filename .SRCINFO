@@ -1,0 +1,17 @@
+pkgbase = linxpy-git
+	pkgdesc = A Python client for linx.li.
+	pkgver = 20.751b9ac
+	pkgrel = 1
+	url = https://github.com/mutantmonkey/linxpy
+	arch = any
+	license = WTFPL
+	makedepends = git
+	depends = python
+	depends = python-requests>=2.4
+	provides = linxpy
+	conflicts = linxpy
+	source = git+https://github.com/mutantmonkey/linxpy.git
+	sha256sums = SKIP
+
+pkgname = linxpy-git
+
