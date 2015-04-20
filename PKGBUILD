@@ -3,10 +3,10 @@
 
 _pkgname=enlightenment
 pkgname=$_pkgname-wayland-git
-pkgver=0.19.99.19711.dbcd030
+pkgver=0.19.99.19840.1fb1f17
 pkgrel=1
 pkgdesc="Highly expermimental Enlightenment window manager for Wayland - Development version"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.enlightenment.org"
 license=('BSD')
 depends=('elementary-git' 'xcb-util-keysyms' 'hicolor-icon-theme'
