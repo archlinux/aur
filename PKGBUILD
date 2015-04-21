@@ -4,7 +4,7 @@ pkgdesc="ROS - rosgraph contains the rosgraph command-line tool, which prints in
 url='http://ros.org/wiki/rosgraph'
 
 pkgname='ros-indigo-rosgraph'
-pkgver='1.11.10'
+pkgver='1.11.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
