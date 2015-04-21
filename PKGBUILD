@@ -35,8 +35,7 @@ source=(${_icedtea_url}/source/icedtea-${_icedtea_ver}.tar.gz
         icedtea_${_icedtea_ver}_langtools.tar.bz2::${_drops_url}/langtools.tar.bz2
         icedtea_${_icedtea_ver}_hotspot.tar.bz2::${_drops_url}/hotspot.tar.bz2
         fontconfig-paths.diff
-        openjdk7_nonreparenting-wm.diff
-        giflib_5.1.diff)
+        openjdk7_nonreparenting-wm.diff)
 
 sha256sums=('5301b9a8592af2cf8e3e7a3650e5e1fe744c6d2de7f8ff78080b2eeae86a9800'
             '88c92a3cab37446352086876771733229b1602d4f79ef68629a151180652e1f1'
@@ -47,8 +46,7 @@ sha256sums=('5301b9a8592af2cf8e3e7a3650e5e1fe744c6d2de7f8ff78080b2eeae86a9800'
             '4fd76cbdf18174128863514b4d3997cb623368697bf4f5af6d079dbbcd7b378a'
             '4825f8543aa0c065530b05b0a95915a44eea153bbb696d2ffc4b50a398813e34'
             '9ad943ceb3dbcdf45d72974fc3667886a7ed65c69ab9abc17be5412827551a7f'
-            '56b919ababb13bd6afdcdaceb112b529b6e82539255f2dae9a7e5eb91645164b'
-            '77fba3032edf6cce549cd4e174d9296684b20f4589dc59179fcc8cba7426a4e9')
+            '56b919ababb13bd6afdcdaceb112b529b6e82539255f2dae9a7e5eb91645164b')
 
 noextract=(icedtea_${_icedtea_ver}_openjdk.tar.bz2
            icedtea_${_icedtea_ver}_corba.tar.bz2
@@ -78,8 +76,7 @@ build() {
 
   cp "${srcdir}"/*.diff "${srcdir}"/icedtea-${_icedtea_ver}/patches
   export DISTRIBUTION_PATCHES="patches/fontconfig-paths.diff \
-                               patches/openjdk7_nonreparenting-wm.diff \
-                               patches/giflib_5.1.diff"
+                               patches/openjdk7_nonreparenting-wm.diff"
 
   if [ "$_bootstrap" = "1" ]; then
      BOOTSTRAPOPT="--enable-bootstrap --with-ecj-jar=/usr/share/java/ecj.jar"
