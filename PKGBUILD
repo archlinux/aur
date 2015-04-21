@@ -1,7 +1,7 @@
-# Maintainer: Yngve Inntjore Levinsen <yngveTODlevinsenTAcernTODch>
+# Maintainer: Thomas Gläßle <t_glaessleATgmxDOTnet>
 
 pkgname=madx-dev
-pkgver=5.02.04
+pkgver=5.02.05
 pkgrel=1
 pkgdesc="Accelerator Optics simulation code, latest development release"
 url="http://cern.ch/mad"
@@ -13,7 +13,7 @@ makedepends=('cmake')
 arch=('x86_64')
 
 
-tarball=madx-${pkgver}.tgz
+tarball=madx-src.tgz
 sources=madx-${pkgver}
 
 source=("http://madx.web.cern.ch/madx/releases/${pkgver}/${tarball}")
@@ -22,6 +22,8 @@ md5sums=('SKIP')
 prepare() {
     mkdir build
     cd build
+
+    find . -name '._*' -print0 | xargs -0 -r rm
 
     cmake \
         -DCMAKE_C_COMPILER=gcc \
