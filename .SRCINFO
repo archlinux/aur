@@ -1,13 +1,11 @@
 pkgbase = kdebase-workspace-consolekit
 	pkgdesc = kdebase-workspace with ConsoleKit support for non-systemd systems
-	pkgver = 4.11.17
+	pkgver = 4.11.18
 	pkgrel = 1
 	url = https://projects.kde.org/projects/kde/kde-workspace
 	install = kdebase-workspace.install
 	arch = i686
 	arch = x86_64
-	groups = kde
-	groups = kdebase
 	license = GPL
 	license = LGPL
 	license = FDL
@@ -16,7 +14,7 @@ pkgbase = kdebase-workspace-consolekit
 	makedepends = boost
 	makedepends = kdebindings-python2
 	makedepends = networkmanager
-	depends = kdelibs>=4.11.17
+	depends = kdelibs>=4.11.18
 	depends = kdepim-runtime
 	depends = lm_sensors
 	depends = libraw1394
@@ -46,13 +44,13 @@ pkgbase = kdebase-workspace-consolekit
 	depends = glu
 	optdepends = kde-wallpapers: wallpapers for KDE Plasma Workspaces
 	optdepends = appmenu-qt: menu applications over dbus
-	provides = kdebase-workspace=4.11.17
+	provides = kdebase-workspace=4.11.18
 	conflicts = kdebase-workspace
 	backup = usr/share/config/kdm/kdmrc
 	backup = etc/pam.d/kde
 	backup = etc/pam.d/kde-np
 	backup = etc/pam.d/kscreensaver
-	source = http://download.kde.org/stable/applications/14.12.3/src/kde-workspace-4.11.17.tar.xz
+	source = http://download.kde.org/stable/applications/15.04.0/src/kde-workspace-4.11.18.tar.xz
 	source = kdm
 	source = kde.pam
 	source = kde-np.pam
@@ -63,7 +61,7 @@ pkgbase = kdebase-workspace-consolekit
 	source = terminate-server.patch
 	source = kdm-xinitrd.patch
 	source = khotkeys-qt4.patch
-	sha1sums = d50c0c79dd09c42fd5251fe74d81b051b24dcb79
+	sha1sums = a83479e966eac138fa473e71e7595084f3a85a83
 	sha1sums = 5db3a245201bd4a50e65aa2ef583cf5490e4f646
 	sha1sums = 660eae40a707d2711d8d7f32a93214865506b795
 	sha1sums = 6aeecc9e0e221f0515c6bf544f9a3c11cb6961fe
