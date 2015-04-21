@@ -1,0 +1,18 @@
+pkgbase = fanficfare-git
+	pkgdesc = A tool for downloading fanfiction to eBook formats
+	pkgver = 2.2.3.r4.gb16aee2
+	pkgrel = 1
+	url = https://github.com/JimmXinu/FanFicFare
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = python2
+	depends = python2-beautifulsoup4
+	depends = python2-chardet
+	depends = python2-html5lib
+	provides = fanficfare
+	source = git://github.com/JimmXinu/FanFicFare
+	sha256sums = SKIP
+
+pkgname = fanficfare-git
+
