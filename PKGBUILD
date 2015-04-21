@@ -4,7 +4,7 @@ pkgdesc="ROS - Base dependencies and support libraries for ROS."
 url='http://ros.org/wiki/roslib'
 
 pkgname='ros-indigo-roslib'
-pkgver='1.11.6'
+pkgver='1.11.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
