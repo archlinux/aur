@@ -1,21 +1,21 @@
 # Maintainer: Alexandre Ferrando <alferpal@gmail.com>
 
 pkgname=iojs
-pkgver=1.6.3
+pkgver=1.8.1
 _foldername=iojs-v${pkgver}
 pkgrel=1
 pkgdesc='Evented I/O for V8 JavaScript - Node.js fork'
 url='http://iojs.org/'
 license=('MIT')
 arch=('i686' 'x86_64')
-depends=('openssl' 'zlib' 'libuv')
+depends=('openssl' 'zlib')
 makedepends=('python2' 'git')
 optdepends=('python2: for node-gyp')
 provides=('nodejs')
 conflicts=('nodejs' 'iojs-bin')
 options=('!emptydirs')
 source=("https://iojs.org/dist/v${pkgver}/iojs-v${pkgver}.tar.gz")
-sha256sums=('7ab455fc96af90512325848e8c508c19a622a52b1371d233f1c8fa9c41e64660')
+sha256sums=('07d407b600cf1e7446d694338a595f1f265625b9f0b51c4366434a63bb70e11b')
 
 prepare() {
 
@@ -38,9 +38,7 @@ build() {
   ./configure \
     --prefix=/usr \
     --shared-openssl \
-    --shared-zlib \
-    --shared-libuv
-
+    --shared-zlib 
   make
 }
 
