@@ -3,7 +3,7 @@
 
 pkgname=libvirt
 pkgver=1.2.14
-pkgrel=2
+pkgrel=3
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -81,7 +81,8 @@ prepare() {
     tools/{libvirt-guests.service,libvirt-guests.sh,virt-pki-validate}.in \
     src/locking/virtlockd.service.in
   sed -i 's|@sbindir@|/usr/bin|g' src/locking/virtlockd.service.in
-  sed -i 's|#group =.*|group="kvm"|' src/qemu/qemu.conf
+  # 78 is kvm group: https://wiki.archlinux.org/index.php/DeveloperWiki:UID_/_GID_Database
+  sed -i 's|#group =.*|group="78"|' src/qemu/qemu.conf
   sed -i 's|/usr/libexec/qemu-bridge-helper|/usr/lib/qemu/qemu-bridge-helper|g' \
     src/qemu/qemu{.conf,_conf.c} \
     src/qemu/test_libvirtd_qemu.aug.in
