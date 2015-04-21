@@ -4,7 +4,7 @@
 # Contributor: Daniel YC Lin <dlin.tw at gmail>
 
 pkgname=python-texttable
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="Generate a formatted text table using ASCII characters."
 arch=('any')
@@ -13,7 +13,7 @@ license=('LGPL')
 depends=('python')
 options=('!emptydirs')
 source=("https://pypi.python.org/packages/source/t/texttable/texttable-${pkgver}.tar.gz")
-sha512sums=('af37f9bcbcf59e7887af612c36c93cb1cd98f5e724c2db91a81320d69d77aa662d5c0ed2e3dcd5a5f48c957e14682deae0fa7e026ecbc5f7803cc8bd151aeb28')
+sha512sums=('d9a50f6fd9cd2a6d55afd5e686ac8ff2b2ebcf8c8041209ffae3e3864529c54a384840a65df2b87a942528005ca864d00bb01dfaeb33308843c01db7471931c8')
 
 package() {
 	cd "$srcdir/texttable-$pkgver"
