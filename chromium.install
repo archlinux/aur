@@ -17,7 +17,7 @@ post_upgrade() {
     echo '   quoting rules apply but no further parsing is performed.'
   fi
 
-  #post_install
+  post_install
 }
 
 post_remove() {
