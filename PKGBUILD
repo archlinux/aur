@@ -4,7 +4,7 @@ pkgdesc="ROS - Messages relating to the ROS Computation Graph."
 url='http://ros.org/wiki/rosgraph_msgs'
 
 pkgname='ros-indigo-rosgraph-msgs'
-pkgver='1.11.0'
+pkgver='1.11.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
