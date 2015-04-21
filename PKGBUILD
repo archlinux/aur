@@ -4,7 +4,7 @@ pkgdesc="ROS - This is a set of tools for recording from and playing back ROS me
 url='http://www.ros.org/'
 
 pkgname='ros-indigo-rosbag-storage'
-pkgver='1.11.10'
+pkgver='1.11.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
