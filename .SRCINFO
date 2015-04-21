@@ -2,14 +2,16 @@
 # Sun Aug 28 21:07:44 UTC 2016
 pkgbase = python2-jellyfish
 	pkgdesc = A python library for doing approximate and phonetic matching of strings
-	pkgver = 0.2.0
+	pkgver = 0.4.0
 	pkgrel = 1
-	url = https://pypi.python.org/pypi/jellyfish/0.1.2
-	arch = any
+	url = https://github.com/sunlightlabs/jellyfish
+	arch = i686
+	arch = x86_64
 	license = BSD
+	makedepends = python2-setuptools
 	depends = python2
-	source = http://pypi.python.org/packages/source/j/jellyfish/jellyfish-0.2.0.tar.gz
-	md5sums = 8f5d27bddd8986408f7004814982b202
+	source = https://pypi.python.org/packages/source/j/jellyfish/jellyfish-0.4.0.tar.gz
+	sha256sums = 89f6264b98b11a40528c0faf6e2035c15023b628b3e51c62fd2082d103b100cc
 
 pkgname = python2-jellyfish
 
