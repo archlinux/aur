@@ -7,8 +7,7 @@ pkgname=zeal-git
 # But he's using ``0.0+1snapshot201305312045+0100-1'' on PPA.
 # Guess it's safe to use 3-digit for now.
 _appname=zeal
-_pkgver=0.0.0
-pkgver=0.0.0.823.f860a3e
+pkgver=0.1.1.3.g32b059e
 pkgrel=1
 pkgdesc="An offline API documentation browser"
 arch=('i686' 'x86_64')
@@ -21,7 +20,7 @@ sha1sums=('SKIP')
 
 pkgver() {
 	cd ${srcdir}/${_appname}
-	echo "$_pkgver.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+	git describe | sed 's/^v//;s/-/./g'
 }
 
 build() {
