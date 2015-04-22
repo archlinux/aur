@@ -1,0 +1,15 @@
+pkgbase = pguri
+	pkgdesc = uri data type for PostgreSQL
+	pkgver = 1.20150415
+	pkgrel = 1
+	url = https://github.com/petere/pguri/
+	arch = i686
+	arch = x86_64
+	license = none
+	depends = postgresql
+	depends = uriparser
+	source = https://github.com/petere/pguri/archive/1.20150415.tar.gz
+	sha256sums = 97d671469678360432237777ffbde1f7a093c956676c46fb6c89b6a4576134db
+
+pkgname = pguri
+
