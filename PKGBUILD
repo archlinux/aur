@@ -1,7 +1,7 @@
 # Maintainer: Doug Newgard <scimmia at archlinux dot info>
 
 pkgname=rage
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Video Player based on EFL"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('elementary')
 install=$pkgname.install
 source=("http://download.enlightenment.org/rel/apps/$pkgname/$pkgname-$pkgver.tar.bz2")
-sha256sums=('89f1660bffc7ced1c6e706f9eccd85255cc2858dd82050b2cd62df6bc458ad58')
+sha256sums=('5a07e8968c0175199bdf23d30b51ad57fae5d8136a13db11ffeeb80575476b39')
 
 build() {
   cd $pkgname-$pkgver
