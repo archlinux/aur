@@ -1,0 +1,20 @@
+pkgbase = hid-azio-lv-mech5-dkms-git
+	pkgdesc = Linux dkms kernel module to allow use of extra keys on the Azio Levetron Mech5 Keyboard (azio-levetron-mech5-linux-driver)
+	pkgver = r12.9a8289c
+	pkgrel = 1
+	url = http://github.com/forivall/azio-levetron-mech5-linux-driver
+	install = hid-azio-lv-mech5-dkms.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	depends = linux-headers
+	conflicts = hid-azio-lv-mech5
+	source = hid-azio-lv-mech5::git://github.com/forivall/azio-levetron-mech5-linux-driver.git
+	source = hid-ids.h
+	md5sums = SKIP
+	md5sums = 0b7c66ac1d363b00f124af748214e413
+
+pkgname = hid-azio-lv-mech5-dkms-git
+
