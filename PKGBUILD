@@ -54,8 +54,8 @@ prepare() {
 
 build() {
 # Make it so geoclue support can find glib2
-  export CFLAGS="$CFLAGS -I/usr/include/gio-unix-2.0"
-  export CXXFLAGS="$CXXFLAGS -I/usr/include/gio-unix-2.0"
+  export CFLAGS="$CFLAGS $(pkg-config --cflags gio-2.0)"
+  export CXXFLAGS="$CXXFLAGS $(pkg-config --cflags gio-2.0)"
 
   cmake . \
     -DPORT=Efl \
