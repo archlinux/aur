@@ -1,0 +1,17 @@
+[Unit]
+Description=A secure server providing multi-client access to task data
+Documentation=man:taskd(1)
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/conf.d/taskd
+ExecReload=/usr/bin/taskdctl graceful
+ExecStart=/usr/bin/taskdctl start
+ExecStop=/usr/bin/taskdctl stop
+PIDFile=/var/lib/taskd/taskd.pid
+Group=taskd
+User=taskd
+Type=forking
+
+[Install]
+WantedBy=multi-user.target

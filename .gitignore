@@ -1,0 +1,7 @@
+*
+!.gitignore
+!PKGBUILD
+!taskd.conf
+!taskd.install
+!taskd.notes
+!taskd.service
