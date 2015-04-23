@@ -28,7 +28,7 @@ sha256sums=('SKIP'
             '87a2a6f68d91b73e3c838f11b09a1156cd4e2525a6e00a53af30cc7638ae7311')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd $_pkgname
 
   for _i in v_maj v_min v_mic; do
     local v_ver=${v_ver#.}.$(grep -m1 $_i configure.ac | sed 's/m4//' | grep -o "[[:digit:]]*")
@@ -40,7 +40,7 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd $_pkgname
 
   export CFLAGS="$CFLAGS -fvisibility=hidden"
 
@@ -53,7 +53,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd $_pkgname
 
   make DESTDIR="$pkgdir" install
 
