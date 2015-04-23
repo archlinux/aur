@@ -11,11 +11,11 @@
 # update and just generally don't seem to care much.
 pkgname=synergy
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="http://synergy-foss.org"
 arch=('i686' 'x86_64')
-depends=('gcc-libs' 'libxtst' 'libxinerama' 'crypto++' 'libxkbcommon-x11' 'avahi')
+depends=('gcc-libs' 'libxtst' 'libxinerama' 'libxkbcommon-x11' 'avahi')
 makedepends=('libxt' 'cmake' 'qt5-base' 'unzip' 'subversion')
 optdepends=('qt5-base: gui support')
 license=('GPL2')
@@ -53,6 +53,7 @@ package() {
   install -Dm755 bin/synergy "$pkgdir/usr/bin/synergy"
   install -Dm755 bin/synergyc "$pkgdir/usr/bin/synergyc"
   install -Dm755 bin/synergys "$pkgdir/usr/bin/synergys"
+  install -Dm755 bin/syntool "$pkgdir/usr/bin/syntool"
 
   # install config
   install -Dm644 "doc/${pkgname}.conf.example" "${pkgdir}/etc/${pkgname}.conf.example" 
