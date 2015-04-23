@@ -47,11 +47,7 @@ build() {
   ./autogen.sh \
     --prefix=/opt/enlightenment-wayland \
     --enable-wl-drm \
-    --enable-wayland-only \
-    --disable-shot \
-    --disable-xkbswitch \
-    --disable-conf-randr \
-    --disable-wl-x11
+    --enable-wayland-only
 
   make
 }
