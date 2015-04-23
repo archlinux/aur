@@ -3,7 +3,7 @@
 
 _pkgname=ewebkit
 pkgname=$_pkgname-svn
-pkgver=1.11.0.r182891
+pkgver=1.11.0.r183168
 pkgrel=1
 pkgdesc="WebKit ported to the Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64')
@@ -14,9 +14,13 @@ makedepends=('cmake' 'subversion' 'perl' 'python2' 'ruby' 'gperf')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("$pkgname/Source::svn+https://svn.webkit.org/repository/webkit/trunk/Source"
-        "$pkgname/Tools::svn+https://svn.webkit.org/repository/webkit/trunk/Tools")
+        "$pkgname/Tools::svn+https://svn.webkit.org/repository/webkit/trunk/Tools"
+        'fix_gio-unix.patch'
+        'fix_libXext_linking.patch')
 sha256sums=('SKIP'
-            'SKIP')
+            'SKIP'
+            '0b302a01aad0287a5240cc60b06e01880db960dc67b689c74ecb1ab571b8d423'
+            'cbed18fde023d83cf810a31c6b77aab2247d78481cbbd264144f6bf5f6e5126c')
 
 pkgver() {
   cd Source/cmake
@@ -32,8 +36,11 @@ prepare() {
 # Turn off -Werror, causes too many build failures for things we don't care about
   sed -i '/-Werror/d' Source/cmake/WebKitHelpers.cmake
 
-# Don't need this, and it's causing build error for some reason
-  sed -i '/XSetExtensionErrorHandler/d' Source/WebKit2/WebProcess/efl/WebProcessMainEfl.cpp
+# Fix gio-unix cflag detection
+  patch -Np0 -i fix_gio-unix.patch
+
+# Let the linker find libXext for WebKit2
+  patch -Np0 -i fix_libXext_linking.patch
 
 # Make sure Tools is at the same rev as Source
   svn update --revision ${pkgver#*.r} Tools
@@ -53,10 +60,6 @@ prepare() {
 }
 
 build() {
-# Make it so geoclue support can find glib2
-  export CFLAGS="$CFLAGS $(pkg-config --cflags gio-2.0)"
-  export CXXFLAGS="$CXXFLAGS $(pkg-config --cflags gio-2.0)"
-
   cmake . \
     -DPORT=Efl \
     -DCMAKE_INSTALL_PREFIX=/usr \

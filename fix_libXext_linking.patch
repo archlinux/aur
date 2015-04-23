@@ -1,0 +1,12 @@
+Index: WebKit2/PlatformEfl.cmake
+===================================================================
+--- Source/WebKit2/PlatformEfl.cmake	(revision 183168)
++++ Source/WebKit2/PlatformEfl.cmake	(working copy)
+@@ -346,6 +346,7 @@
+     )
+     list(APPEND WebKit2_LIBRARIES
+         ${ECORE_X_LIBRARIES}
++        ${X11_Xext_LIB}
+     )
+ endif ()
+ 
