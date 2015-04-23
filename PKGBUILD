@@ -10,7 +10,7 @@
 # installed version of that library. They change around paths every
 # update and just generally don't seem to care much.
 pkgname=synergy
-pkgver=1.6.3
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="http://synergy-foss.org"
@@ -19,23 +19,26 @@ depends=('gcc-libs' 'libxtst' 'libxinerama' 'crypto++' 'libxkbcommon-x11' 'avahi
 makedepends=('libxt' 'cmake' 'qt5-base' 'unzip' 'subversion')
 optdepends=('qt5-base: gui support')
 license=('GPL2')
-source=("synergy-${pkgver}.tar.gz::https://github.com/synergy/synergy/archive/${pkgver}.tar.gz"
+source=("synergy-${pkgver}.tar.gz::https://github.com/synergy/synergy/archive/v${pkgver}-stable.tar.gz"
         "synergys_at.socket"
-        "synergys_at.service"
-        "unfuck-cryptopp-thanks-gentoo.patch")
-sha1sums=('c4c26ee983f0684a5cbe45520adc0b50a71a3524'
+        "synergys_at.service")
+sha1sums=('241056f377dbf6ec488be24adbe216a5ac0e7cd7'
           '7ec33221725fc496b807e0f435c5e87b590beb5d'
-          '65ab58cc3546d6374a05a6a260f15045632e43ce'
-          '8e321e664ae4b7a763175524dd938a88d85c7909')
+          '65ab58cc3546d6374a05a6a260f15045632e43ce')
+
+prepare() {
+  cd "${srcdir}/synergy-${pkgver}-stable"
+
+  cd ext
+  unzip gmock-1.6.0.zip -d gmock-1.6.0
+  unzip gtest-1.6.0.zip -d gtest-1.6.0
+}
 
 build() {
-  cd "${srcdir}/synergy-${pkgver}"
+  cd "${srcdir}/synergy-${pkgver}-stable"
 
-  # Unfuck the bundled cryptopp stuff. Thanks a lot, Gentoo!
-  # You and Fedora are our only friends in this crazy world.
-  patch -Np1 < "${srcdir}/unfuck-cryptopp-thanks-gentoo.patch"
-
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_CXX_FLAGS="${CXXFLAGS} -pthread" .
+  #cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_CXX_FLAGS="${CXXFLAGS} -pthread" .
+  cmake -DCMAKE_INSTALL_PREFIX=/usr .
   make -j1
 
   cd src/gui
@@ -44,7 +47,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/synergy-${pkgver}"
+  cd "${srcdir}/synergy-${pkgver}-stable"
 
   # install binary
   install -Dm755 bin/synergy "$pkgdir/usr/bin/synergy"
