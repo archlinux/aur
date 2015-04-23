@@ -3,7 +3,7 @@
 
 _pkgname="pika-python3"
 pkgname="python-pika"
-pkgver=0.9.14
+pkgver=0.9.14rb1
 pkgrel=1
 pkgdesc="Python 3 fork of Pure Python RabbitMQ/AMQP 0-9-1 client library."
 arch=("any")
@@ -12,7 +12,7 @@ license=("MPL2")
 depends=("python")
 options=("!emptydirs")
 source=("https://github.com/renshawbay/pika-python3/archive/$pkgver.tar.gz")
-sha1sums=('5d7c5fdc4791ef25b884d087a402a264c8db3631')
+sha1sums=('2d9d49ffe3eb6de5553d88d65fc49f5c93d5d666')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
