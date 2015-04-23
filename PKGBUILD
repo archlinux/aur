@@ -3,7 +3,7 @@
 
 pkgbase=python-kombu
 pkgname=('python-kombu' 'python2-kombu')
-pkgver=3.0.25
+pkgver=3.0.26
 pkgrel=1
 pkgdesc='A messaging library for Python'
 arch=('any')
@@ -15,7 +15,7 @@ checkdepends=('python-redis' 'python2-redis' 'python-yaml' 'python2-yaml' 'pytho
               'python-boto' 'python2-boto' 'python-pycurl' 'python2-pycurl' 'python-nose' 'python2-nose'
               'python-amqp' 'python2-amqp' 'python-mock' 'python2-mock')
 source=("http://pypi.python.org/packages/source/k/kombu/kombu-${pkgver}.tar.gz")
-sha256sums=('8d9de68e8d42403c10a2d28c32221f334da16a44801f02b59ca7ad22585c7261')
+sha256sums=('1f565abd44c4b7dfaa4dd543d52f982d2f006aba0a2b3830542b4d25a801fe09')
 
 prepare() {
   cp -a kombu-$pkgver{,-py2}
