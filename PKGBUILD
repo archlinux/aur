@@ -1,34 +1,31 @@
-# Maintainer: Sergio Correia <sergio@correia.cc>
+# Maintainer: Doug Newgard <scimmia at archlinux dot info>
+# Contributor: Sergio Correia <sergio@correia.cc>
 # Contributor: Nicolas Vivet <nizzox@gmail.com>
 
-pkgname=arcanist-git
 _pkgname=arcanist
-pkgver=conduit.5.693.ge4b1e8e
+pkgname=$_pkgname-git
+pkgver=6.r828.g9ddf37b
 pkgrel=1
-pkgdesc='Arcanist (commonly, "arc") is the command-line frontend to Phabricator'
+pkgdesc='The command-line frontend to Phabricator, commonly called arc'
 arch=('any')
 url="http://phabricator.com"
 license=('Apache')
-depends=('libphutil-git')
+depends=('libphutil-git' 'python')
 makedepends=('git')
-provides=('arcanist')
-install='arcanist.install'
-source=('git://github.com/facebook/arcanist.git')
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
+source=("git://github.com/facebook/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
-  git describe --always | sed 's|-|.|g' # Use the tag of the last commit
+  cd $_pkgname
+  git describe --tags --always | sed 's/^conduit-//;s/-/.r/;s/-/./'
 }
 
 package() {
-  install -Dd "${srcdir}"/usr/share/php/"${_pkgname}" "${pkgdir}"/etc/bash_completion.d "${pkgdir}"/usr/bin
-
-  # do not copy hidden directories
-  mkdir -p  "${pkgdir}"/usr/share/php/"${_pkgname}"
-  cp -a "${srcdir}"/"${_pkgname}"/* "${pkgdir}"/usr/share/php/"${_pkgname}"/
-  ln -s ../../usr/share/php/"${_pkgname}"/resources/shell/bash-completion "${pkgdir}"/etc/bash_completion.d/"${_pkgname}"
-  ln -s ../share/php/"${_pkgname}"/bin/arc "${pkgdir}"/usr/bin/arc
+  install -d "$pkgdir/usr/share/php/$_pkgname" "$pkgdir/usr/bin"
+# do not copy hidden directories
+  cp -a $_pkgname/* "$pkgdir/usr/share/php/$_pkgname/"
+  install -Dm644 $_pkgname/resources/shell/bash-completion "$pkgdir/usr/share/bash-completion/completions/arc"
+  ln -s ../share/php/$_pkgname/bin/arc "$pkgdir/usr/bin/arc"
 }
-
-# vim:set ts=2 sw=2 et:
