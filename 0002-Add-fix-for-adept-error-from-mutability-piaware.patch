@@ -1,0 +1,27 @@
+From baae92ae9c8abd546835a17a226aefe6effdc46d Mon Sep 17 00:00:00 2001
+From: Anish Bhatt <anish7@gmail.com>
+Date: Fri, 24 Apr 2015 01:32:18 -0700
+Subject: [PATCH 2/2] Add fix for adept error from mutability/piaware
+
+---
+ programs/piaware/helpers.tcl | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/programs/piaware/helpers.tcl b/programs/piaware/helpers.tcl
+index c4ff0da..2da3131 100644
+--- a/programs/piaware/helpers.tcl
++++ b/programs/piaware/helpers.tcl
+@@ -12,6 +12,10 @@ package require tls
+ proc logger {text} {
+ 	#::bsd::syslog log info $text
+ 	log_locally $text
++	if {[llength [info commands "adept"]] < 1} {
++	     # adept client has not yet loaded
++	     return 0
++	}
+ 	adept send_log_message $text
+ }
+ 
+-- 
+2.3.6
+

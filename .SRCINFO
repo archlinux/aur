@@ -1,0 +1,31 @@
+pkgbase = piaware-git
+	pkgdesc = Client-side package and programs for forwarding ADS-B data to FlightAware
+	pkgver = 1.18.1.r30.g43ca50a
+	pkgrel = 1
+	url = https://github.com/flightaware/piaware
+	install = piaware-git.install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = BSD
+	makedepends = git
+	makedepends = autoconf
+	makedepends = tcl
+	depends = dump1090_mr-git
+	depends = tcl
+	depends = tcllib
+	depends = tclx
+	depends = tk
+	depends = tls
+	source = piaware::git+git://github.com/flightaware/piaware
+	source = tcllauncher::git+git://github.com/flightaware/tcllauncher.git
+	source = 0001-Add-ability-to-specify-custom-install-prefix-for-pac.patch
+	source = 0002-Add-fix-for-adept-error-from-mutability-piaware.patch
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = 57d43fc9803c99bd7f32f882bf42fc08
+	md5sums = e8a43e9a5f22d52bb2c47168b00d92ac
+
+pkgname = piaware-git
+

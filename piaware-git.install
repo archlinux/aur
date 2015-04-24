@@ -1,0 +1,8 @@
+post_install() {
+	systemctl enable piaware
+}
+
+pre_remove() {
+	systemctl stop piaware
+	systemctl disable piaware
+}
