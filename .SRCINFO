@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-resource-retriever
 	pkgdesc = ROS - This package retrieves data from url-format files such as http://, ftp://, package:// file://, etc., and loads the data into memory.
-	pkgver = 1.11.0
-	pkgrel = 3
+	pkgver = 1.11.6
+	pkgrel = 1
 	url = http://ros.org/wiki/resource_retriever
 	arch = any
 	license = BSD
@@ -15,7 +15,7 @@ pkgbase = ros-indigo-resource-retriever
 	depends = ros-indigo-roslib
 	depends = ros-indigo-rosconsole
 	depends = curl
-	source = resource_retriever::git+https://github.com/ros-gbp/resource_retriever-release.git#tag=release/indigo/resource_retriever/1.11.0-2
+	source = resource_retriever::git+https://github.com/ros-gbp/resource_retriever-release.git#tag=release/indigo/resource_retriever/1.11.6-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-resource-retriever
