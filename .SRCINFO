@@ -10,7 +10,7 @@ pkgbase = arcanist-git
 	depends = python
 	provides = arcanist=6.r828.g9ddf37b
 	conflicts = arcanist
-	source = git://github.com/facebook/arcanist.git
+	source = git+https://secure.phabricator.com/diffusion/ARC/arcanist.git
 	sha256sums = SKIP
 
 pkgname = arcanist-git

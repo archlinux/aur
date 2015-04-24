@@ -14,7 +14,7 @@ depends=('libphutil-git' 'python')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("git://github.com/facebook/$_pkgname.git")
+source=("git+https://secure.phabricator.com/diffusion/ARC/arcanist.git")
 sha256sums=('SKIP')
 
 pkgver() {
