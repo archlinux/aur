@@ -29,7 +29,7 @@ prepare() {
 
 package() {
   install -d "$pkgdir/usr/share/php/$_pkgname" "$pkgdir/etc/php/conf.d/"
-  # do not copy hidden directories
-  cp -a "$srcdir/$_pkgname/"* "$pkgdir/usr/share/php/$_pkgname/"
-  echo 'open_basedir = "${open_basedir}:/usr/share/php/"' > "$pkgdir/etc/php/conf.d/libphutil.conf"
+# do not copy hidden directories
+  cp -a $_pkgname/* "$pkgdir/usr/share/php/$_pkgname/"
+  echo 'open_basedir = "${open_basedir}:/usr/share/php/"' > "$pkgdir/etc/php/conf.d/libphutil.ini"
 }
