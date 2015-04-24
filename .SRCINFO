@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-common-msgs
 	pkgdesc = ROS - common_msgs contains messages that are widely used by other ROS packages.
-	pkgver = 1.11.7
+	pkgver = 1.11.8
 	pkgrel = 1
 	url = http://www.ros.org/wiki/common_msgs
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = ros-indigo-common-msgs
 	depends = ros-indigo-sensor-msgs
 	depends = ros-indigo-nav-msgs
 	depends = ros-indigo-visualization-msgs
-	source = common_msgs::git+https://github.com/ros-gbp/common_msgs-release.git#tag=release/indigo/common_msgs/1.11.7-0
+	source = common_msgs::git+https://github.com/ros-gbp/common_msgs-release.git#tag=release/indigo/common_msgs/1.11.8-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-common-msgs

@@ -4,7 +4,7 @@ pkgdesc="ROS - common_msgs contains messages that are widely used by other ROS p
 url='http://www.ros.org/wiki/common_msgs'
 
 pkgname='ros-indigo-common-msgs'
-pkgver='1.11.7'
+pkgver='1.11.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
