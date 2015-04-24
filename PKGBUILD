@@ -19,7 +19,7 @@ depends=('libgnome-sharp' 'webkit-sharp')
 makedepends=('gconf-sharp' 'git' 'zip')
 install=$pkgname.install
 options=('!makeflags')
-source=(https://github.com/mono/mono-tools/archive/3.10.tar.gz
+source=($pkgname-$pkgver.tar.gz::https://github.com/mono/mono-tools/archive/$pkgver.tar.gz
 	fix-build.patch
 	monodoc.xml)
 #source=(http://download.mono-project.com/sources/${pkgname}/${pkgname}-${pkgver}.tar.gz)
