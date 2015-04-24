@@ -4,7 +4,7 @@ pkgdesc="ROS - tf is a package that lets the user keep track of multiple coordin
 url='http://www.ros.org/wiki/tf'
 
 pkgname='ros-indigo-tf'
-pkgver='1.11.6'
+pkgver='1.11.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
