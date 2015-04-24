@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-robot-model
 	pkgdesc = ROS - robot_model contains packages for modeling various aspects of robot information, specified in the Xml Robot Description Format (URDF).
-	pkgver = 1.11.6
+	pkgver = 1.11.7
 	pkgrel = 1
 	url = http://ros.org/wiki/robot_model
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = ros-indigo-robot-model
 	depends = ros-indigo-urdf-parser-plugin
 	depends = ros-indigo-collada-parser
 	depends = ros-indigo-urdf
-	source = robot_model::git+https://github.com/ros-gbp/robot_model-release.git#tag=release/indigo/robot_model/1.11.6-0
+	source = robot_model::git+https://github.com/ros-gbp/robot_model-release.git#tag=release/indigo/robot_model/1.11.7-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-robot-model
