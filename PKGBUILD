@@ -4,7 +4,7 @@ pkgdesc="ROS - actionlib_msgs defines the common messages to interact with an ac
 url='http://ros.org/wiki/actionlib_msgs'
 
 pkgname='ros-indigo-actionlib-msgs'
-pkgver='1.11.7'
+pkgver='1.11.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
