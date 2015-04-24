@@ -1,0 +1,5 @@
+post_install() {
+    echo "You must add the path /usr/share/php to the open_basedir variable"
+    echo "of your /etc/php/php.ini configuration file in order to execute"
+    echo "the arc command."
+}

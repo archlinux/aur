@@ -1,0 +1,16 @@
+pkgbase = arcanist-git
+	pkgdesc = Arcanist (commonly, "arc") is the command-line frontend to Phabricator
+	pkgver = conduit.5.693.ge4b1e8e
+	pkgrel = 1
+	url = http://phabricator.com
+	install = arcanist.install
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = libphutil-git
+	provides = arcanist
+	source = git://github.com/facebook/arcanist.git
+	sha256sums = SKIP
+
+pkgname = arcanist-git
+
