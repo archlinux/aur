@@ -4,7 +4,7 @@ pkgdesc="ROS - geometry_msgs provides messages for common geometric primitives s
 url='http://ros.org/wiki/geometry_msgs'
 
 pkgname='ros-indigo-geometry-msgs'
-pkgver='1.11.7'
+pkgver='1.11.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
