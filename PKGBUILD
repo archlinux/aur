@@ -52,7 +52,6 @@ package() {
   cd "${srcdir}/${_gitname}"
   make install PREFIX=${pkgdir}
 
-  mv "${pkgdir}/etc/systemd/system" "${pkgdir}/usr/lib/systemd"
-  rmdir "${pkgdir}/etc/systemd"
+  mv "${pkgdir}/etc/systemd" "${pkgdir}/usr/lib/systemd"
   rmdir "${pkgdir}/etc"
 }
