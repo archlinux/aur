@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-eigen-conversions
 	pkgdesc = ROS - Conversion functions between: - Eigen and KDL - Eigen and geometry_msgs.
-	pkgver = 1.11.6
+	pkgver = 1.11.7
 	pkgrel = 1
 	url = http://ros.org/wiki/eigen_conversions
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = ros-indigo-eigen-conversions
 	depends = ros-indigo-orocos-kdl
 	depends = ros-indigo-geometry-msgs
 	depends = eigen3
-	source = eigen_conversions::git+https://github.com/ros-gbp/geometry-release.git#tag=release/indigo/eigen_conversions/1.11.6-0
+	source = eigen_conversions::git+https://github.com/ros-gbp/geometry-release.git#tag=release/indigo/eigen_conversions/1.11.7-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-eigen-conversions
