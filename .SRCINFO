@@ -9,7 +9,7 @@ pkgbase = libphutil-git
 	depends = php
 	provides = libphutil=5.r793.g20d4310
 	conflicts = libphutil
-	source = git://github.com/facebook/libphutil.git
+	source = git+https://secure.phabricator.com/diffusion/PHU/libphutil.git
 	sha256sums = SKIP
 
 pkgname = libphutil-git
