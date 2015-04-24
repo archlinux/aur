@@ -11,7 +11,7 @@ depends=('mono' 'libglade' 'gtk2')
 makedepends=('pkgconfig' 'monodoc')
 conflicts=('gtk#')
 options=('!makeflags')
-source=(https://github.com/mono/gtk-sharp/archive/${pkgver}.tar.gz)
+source=(gtk-sharp-${pkgver}.tar.gz::https://github.com/mono/gtk-sharp/archive/${pkgver}.tar.gz)
 md5sums=('0cdaef41857e29c23942a148c83122ac')
 
 build() {
