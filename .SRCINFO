@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-joint-state-publisher
 	pkgdesc = ROS - This package contains a tool for setting and publishing joint state values for a given URDF.
-	pkgver = 1.11.6
+	pkgver = 1.11.7
 	pkgrel = 1
 	url = http://www.ros.org/wiki/joint_state_publisher
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = ros-indigo-joint-state-publisher
 	depends = ros-indigo-rospy
 	depends = ros-indigo-sensor-msgs
 	depends = wxpython
-	source = joint_state_publisher::git+https://github.com/ros-gbp/robot_model-release.git#tag=release/indigo/joint_state_publisher/1.11.6-0
+	source = joint_state_publisher::git+https://github.com/ros-gbp/robot_model-release.git#tag=release/indigo/joint_state_publisher/1.11.7-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-joint-state-publisher
