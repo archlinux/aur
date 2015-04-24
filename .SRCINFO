@@ -1,13 +1,14 @@
 pkgbase = libphutil-git
 	pkgdesc = Library system which organizes PHP classes and functions into modules
-	pkgver = conduit.5.464.g54dbec7
+	pkgver = 5.r793.g20d4310
 	pkgrel = 1
 	url = http://phabricator.com
 	arch = any
 	license = Apache
 	makedepends = git
 	depends = php
-	provides = libphutil
+	provides = libphutil=5.r793.g20d4310
+	conflicts = libphutil
 	source = git://github.com/facebook/libphutil.git
 	sha256sums = SKIP
 
