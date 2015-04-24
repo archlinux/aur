@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-urdf
 	pkgdesc = ROS - This package contains a C++ parser for the Unified Robot Description Format (URDF), which is an XML format for representing a robot model.
-	pkgver = 1.11.6
+	pkgver = 1.11.7
 	pkgrel = 1
 	url = http://ros.org/wiki/urdf
 	arch = any
@@ -15,15 +15,17 @@ pkgbase = ros-indigo-urdf
 	makedepends = ros-indigo-rosconsole-bridge
 	makedepends = ros-indigo-cmake-modules
 	makedepends = ros-indigo-pluginlib
+	makedepends = pcre
 	makedepends = urdfdom
 	makedepends = urdfdom-headers
 	depends = ros-indigo-urdf-parser-plugin
 	depends = ros-indigo-rosconsole-bridge
 	depends = ros-indigo-pluginlib
 	depends = ros-indigo-roscpp
+	depends = pcre
 	depends = urdfdom
 	depends = urdfdom-headers
-	source = urdf::git+https://github.com/ros-gbp/robot_model-release.git#tag=release/indigo/urdf/1.11.6-0
+	source = urdf::git+https://github.com/ros-gbp/robot_model-release.git#tag=release/indigo/urdf/1.11.7-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-urdf
