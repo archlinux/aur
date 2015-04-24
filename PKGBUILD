@@ -11,7 +11,7 @@
 
 pkgname='stanc'
 pkgdesc="A package for obtaining Bayesian inference using the No-U-Turn sampler, a variant of Hamiltonian Monte Carlo."
-pkgver=2.6.0
+pkgver=2.6.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://mc-stan.org/'
@@ -19,33 +19,31 @@ license=('BSD')
 depends=('gcc-libs')
 makedepends=('texlive-bin' 'texlive-core' 'doxygen')
 options=('!libtool' '!strip' '!makeflags')
-source=(https://github.com/stan-dev/stan/archive/v${pkgver}.tar.gz
-        makefile-add-bin-to-libstan-target.patch)
-sha512sums=('10ea577bd197a456b6a89446f1ab1b0e1deff8b3d1de6d63ceb88f69ae72483ce7dc7673801f7e5031dcde99467c37e761bfeaf1daa0cff5d0b1da2306ed0434'
-            'd8ffd7ebcbe019117027097c3f135a9ec267b3fd6aac81a37035dcacfcf034cc1ccbcc98d6f07a783d09e41dbb90b1e3fa7d4601c7ab270f5e089c06d2434d43')
+source=(https://github.com/stan-dev/cmdstan/releases/download/v2.6.2/cmdstan-$pkgver.tar.gz)
+sha512sums=('d5de808f8c274f67baf2c9e3e3672468264d17319562e0cac4910b0d6cfe06efc353077cfdc0fe2f899ee7831f20f8dff3a172c7634bfcdb8fdaa1407ccf3bb2')
 
 prepare() {
-  cd "${srcdir}/stan-${pkgver}"
+  cd "${srcdir}/cmdstan-${pkgver}"
   
-  #patch makefile "${srcdir}/makefile-add-bin-to-libstan-target.patch"
 }
 
 build() {
-  cd "${srcdir}/stan-${pkgver}"
-  
-  make bin/libstan.a
-  make bin/libstanc.a
+  cd "${srcdir}/cmdstan-${pkgver}"
+ 
   make bin/stanc
+  make bin/print
+  
 }
 
 check() {
-  cd "${srcdir}/stan-${pkgver}"
+  cd "${srcdir}/cmdstan-${pkgver}"
 
-  #make test-all
+  # There are tests for the CmdStan interface
+  # make src/test/interface
 }
 
 package() {
-  cd "${srcdir}/stan-${pkgver}"
+  cd "${srcdir}/cmdstan-${pkgver}"
   
   # Stan's makefile doesn't have a make install command...
   # Install binaries:
@@ -55,26 +53,20 @@ package() {
 
   # Install static library:
   install -dm755                  "${pkgdir}/usr/lib"
-  install -m644 bin/libstan.a     "${pkgdir}/usr/lib"
-  install -m644 bin/libstanc.a    "${pkgdir}/usr/lib"
+  install -m644 bin/libstanc.a     "${pkgdir}/usr/lib"
 
-  # Install header files:
   install -dm755                  "${pkgdir}/usr/include/stan"
-  cd src
+  cd stan/src
   find . -iregex './stan.*.hpp$' -type f -exec install -DTm644 "{}" "${pkgdir}/usr/include/{}" \;
-  cd .. 
+  cd ../.. 
  
-  # Copy RStan:
-  install -dm755                  "${pkgdir}/usr/share/doc/stanc/rstan"
-  cp -r rstan/.                   "${pkgdir}/usr/share/doc/stanc/rstan/."
-
   # Install LICENSE file:
-  install -dm755                  "${pkgdir}/usr/share/licenses/stanc"
-  cp -r licenses/.                "${pkgdir}/usr/share/licenses/stanc/."
+  install -dm755                  "${pkgdir}/usr/share/licenses/stan"
+  cp -r stan/licenses/.                "${pkgdir}/usr/share/licenses/stan/."
 
   # Install documentation:
-  install -dm755                  "${pkgdir}/usr/share/doc/stanc/api"
-  install -m644 doc/stan-reference-1.3.0.pdf \
-                                  "${pkgdir}/usr/share/doc/stanc"
-  cp -r doc/api/.                 "${pkgdir}/usr/share/doc/stanc/api/."
+  install -dm755                  "${pkgdir}/usr/share/doc/stan/api"
+  install -m644 doc/*.pdf \
+                                  "${pkgdir}/usr/share/doc/stan"
+  cp -r stan/doc/api/.                 "${pkgdir}/usr/share/doc/stan/api/."
 }
