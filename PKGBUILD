@@ -23,9 +23,10 @@ pkgver() {
 }
 
 package() {
-  install -d "$pkgdir/usr/share/php/$_pkgname" "$pkgdir/usr/bin"
+  install -d "$pkgdir/usr/share/php/$_pkgname/" "$pkgdir/usr/bin/" "$pkgdir/etc/php/conf.d/"
 # do not copy hidden directories
   cp -a $_pkgname/* "$pkgdir/usr/share/php/$_pkgname/"
   install -Dm644 $_pkgname/resources/shell/bash-completion "$pkgdir/usr/share/bash-completion/completions/arc"
   ln -s ../share/php/$_pkgname/bin/arc "$pkgdir/usr/bin/arc"
+  echo 'open_basedir = "${open_basedir}:/etc/"' > "$pkgdir/etc/php/conf.d/arcanist.ini"
 }
