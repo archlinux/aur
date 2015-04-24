@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains the ROS bindings for the tf2 library, for b
 url='http://www.ros.org/wiki/tf2_ros'
 
 pkgname='ros-indigo-tf2-ros'
-pkgver='0.5.9'
+pkgver='0.5.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
