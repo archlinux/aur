@@ -7,7 +7,7 @@ pkgname='ros-indigo-python-qt-binding'
 pkgver='0.2.14'
 _pkgver_patch=0
 arch=('any')
-pkgrel=4
+pkgrel=5
 license=('BSD, LGPL, GPL')
 
 ros_makedepends=(ros-indigo-catkin
@@ -26,7 +26,7 @@ _dir=python_qt_binding
 source=("${_dir}"::"git+https://github.com/ros-gbp/python_qt_binding-release.git"#tag=${_tag}
         "pyqt411.patch")
 md5sums=('SKIP'
-         '49dd47f7971958fdca1c2ae06ab2f8bb')
+         '1b9558147faf9231e59c9b0d0113d7f5')
 
 build() {
   # Use ROS environment variables
