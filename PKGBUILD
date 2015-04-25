@@ -28,7 +28,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         chromium-widevine.patch)
 sha256sums=('60b0eb38c1c3d0cc998dae70b7333e53b715cff2847c1652e03d1723300db4c9'
             '3c77e58e74e4f9613cdf74b6db40c06dce157e0565034727e15485414af78c71'
-            '09bfac44104f4ccda4c228053f689c947b3e97da9a4ab6fa34ce061ee83d0322'
+            '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             '379b746e187de28f80f5a7cd19edcfa31859656826f802a1ede054fcb6dfb221')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
