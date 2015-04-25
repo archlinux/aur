@@ -1,0 +1,16 @@
+pkgbase = ros-indigo-ivcon
+	pkgdesc = ROS - Mesh Conversion Utility Used to generate .iv files from .stl files.
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://sourceforge.net/projects/ivcon/
+	arch = any
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	source = ivcon::git+https://github.com/ros-gbp/ivcon-release.git#tag=release/indigo/ivcon/0.1.5-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-ivcon
+
