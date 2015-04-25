@@ -18,6 +18,7 @@ md5sums=('cb84e97634c2735e3a5a4c63542141f5'
          'e1bee1f098fdf483db8dc9b9b132bcb6')
 
 package() {
+   mv "$srcdir"/usr/{s,}bin
    cp -R "$srcdir"/{etc,usr} "$pkgdir"
    install -D -m644 HPSLA.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
