@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains a number of URDF tutorials."
 url='http://ros.org/wiki/urdf_tutorial'
 
 pkgname='ros-indigo-urdf-tutorial'
-pkgver='0.2.3'
+pkgver='0.2.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -15,7 +15,12 @@ ros_makedepends=(ros-indigo-urdf
 makedepends=('cmake' 'git' 'ros-build-tools'
   ${ros_makedepends[@]})
 
-ros_depends=(ros-indigo-urdf)
+ros_depends=(ros-indigo-pr2-description
+  ros-indigo-rviz
+  ros-indigo-joint-state-publisher
+  ros-indigo-xacro
+  ros-indigo-robot-state-publisher
+  ros-indigo-urdf)
 depends=(${ros_depends[@]})
 
 _tag=release/indigo/urdf_tutorial/${pkgver}-${_pkgver_patch}
@@ -43,6 +48,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
