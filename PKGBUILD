@@ -1,17 +1,21 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
-# Contributor: birdflesh <antkoul at gmail dot com>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=libkscreen
-pkgver=1.0.5
+pkgver=5.3.0
 pkgrel=1
-pkgdesc="KDE's screen management library"
+pkgdesc='KDE screen management software'
 arch=('i686' 'x86_64')
-url='https://projects.kde.org/libkscreen'
-license=('GPL')
-depends=('kdelibs' 'qjson')
-makedepends=('cmake' 'automoc4')
-source=("http://download.kde.org/stable/${pkgname}/${pkgver}/src/${pkgname}-${pkgver}.tar.xz")
-md5sums=('b1cc2805cd5ff468d534d75cbab69426')
+url='https://projects.kde.org/projects/extragear/libs/libkscreen'
+license=('LGPL')
+depends=('qt5-x11extras' 'libxrandr')
+makedepends=('extra-cmake-modules')
+conflicts=('libkscreen-frameworks')
+replaces=('libkscreen-frameworks')
+provides=('libkscreen-frameworks')
+source=("http://download.kde.org/stable/plasma/${pkgver}/libkscreen-$pkgver.tar.xz")
+md5sums=('13475823e0a69ec263b284e1fd65b0c3')
 
 prepare() {
   mkdir build
@@ -19,10 +23,13 @@ prepare() {
 
 build() {
   cd build
-  cmake ../$pkgname-$pkgver \
-    -DQT_QMAKE_EXECUTABLE=qmake-qt4 \
+  cmake ../libkscreen-${pkgver} \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DLIB_INSTALL_DIR=lib \
+    -DLIBEXEC_INSTALL_DIR=lib \
+    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+    -DBUILD_TESTING=OFF
   make
 }
 
