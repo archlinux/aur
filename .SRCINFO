@@ -1,0 +1,19 @@
+pkgbase = ros-indigo-pr2-description
+	pkgdesc = ROS - This package contains the description (mechanical, kinematic, visual, etc.) of the PR2 robot.
+	pkgver = 1.11.9
+	pkgrel = 1
+	url = http://ros.org/wiki/pr2_description
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-convex-decomposition
+	makedepends = ros-indigo-ivcon
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-xacro
+	source = pr2_description::git+https://github.com/pr2-gbp/pr2_common-release.git#tag=release/indigo/pr2_description/1.11.9-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-pr2-description
+
