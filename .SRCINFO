@@ -1,15 +1,15 @@
 pkgbase = hprest
 	pkgdesc = HP RESTful Interface Tool
-	pkgver = 1.0_58
+	pkgver = 1.1_41
 	pkgrel = 1
 	url = http://www8.hp.com/us/en/products/servers/proliant/restful-interface-tool.html
 	install = hprest.install
 	arch = x86_64
 	license = custom:HPSLA
 	options = !strip
-	source = http://ftp.hp.com/pub/softlib2/software1/pubsw-linux/p2048115036/v95054/RPMS/x86_64/hprest-1.0-58.x86_64.rpm
+	source = http://ftp.hp.com/pub/softlib2/software1/pubsw-linux/p2048115036/v102552/RPMS/x86_64/hprest-1.1-41.x86_64.rpm
 	source = HPSLA.txt
-	md5sums = 1f8e40620733cde65b798e633974ae79
+	md5sums = cb84e97634c2735e3a5a4c63542141f5
 	md5sums = e1bee1f098fdf483db8dc9b9b132bcb6
 
 pkgname = hprest
