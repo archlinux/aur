@@ -1,3 +1,13 @@
+2015-04-26 Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+
+	* 5.0.3-1
+	Version bump.
+
+	Upstream changelog:
+	- Updated for 1.8.4.
+	- Fixed Forge detection for newer versions.
+	- Sync with recent launcher changes.
+
 2015-02-21 Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 
 	* 5.0.2-1
