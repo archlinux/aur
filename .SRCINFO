@@ -1,0 +1,18 @@
+pkgbase = snorenotify
+	pkgdesc = Multi-platform Qt5 notification framework
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/Snorenotify/Snorenotify
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = extra-cmake-modules
+	depends = qt5-base
+	depends = qt5-quick1
+	source = snorenotify-0.5.2.tar.gz::https://github.com/Snorenotify/Snorenotify/archive/v0.5.2.tar.gz
+	md5sums = 508dafd77c2cb1b57239c1dc6ad73727
+
+pkgname = snorenotify
+
