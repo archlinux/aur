@@ -5,7 +5,7 @@
 
 pkgname=xlockmore-nomotif
 _pkgname=xlockmore
-pkgver=5.43
+pkgver=5.46
 pkgrel=1
 pkgdesc="screen saver / locker for the X Window System - no motif"
 arch=(i686 x86_64)
@@ -17,9 +17,9 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 url="http://www.tux.org/~bagleyd/xlockmore.html"
 options=('!makeflags')
-source=(http://www.tux.org/~bagleyd/xlock/xlockmore-$pkgver/xlockmore-$pkgver.tar.bz2
+source=(http://www.tux.org/~bagleyd/xlock/xlockmore-$pkgver.tar.xz
 	LICENSE)
-md5sums=('76af9c0a698aec1e32770a1183df72eb'
+md5sums=('068b9c2bfbcdd02461edbac4d729cd27'
          'a64afab4283f53972a6702c2e59850d7')
 
 build() {
