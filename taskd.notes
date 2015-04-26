@@ -1,19 +1,20 @@
-# Reference http://taskwarrior.org/docs/server_setup.html
+# Taskserver configuration reference can be found at
+# http://taskwarrior.org/docs/server_setup.html
 
-# Add the taskd group to your user and logout and back in.
-# sudo usermod -a -G taskd $USER
+# In order to control the server as a user, add the taskd group to your user.
+#
+# $ sudo usermod -a -G taskd $USER
+# $ exec newgrp taskd
+
+# Before anything else, set the configuration variables in /etc/conf.d/taskd
+# (server storage and other conf) and /usr/lib/taskd/pki/var (certificates
+# generation).
 
 # Source the environment variable(s).
 export $(cat /etc/conf.d/taskd)
 
 # Initialize the database
 taskd init
-
-# Add the organization
-taskd add org Public
-
-# Add your user
-task add user 'Public' 'Your Name' > ~/taskd.key
 
 # Generate and install your self-signed cert
 cd /usr/lib/taskd/pki
@@ -31,5 +32,10 @@ taskd config --force ca.cert $TASKDDATA/ca.cert.pem
 # Various settings
 taskd config --force log $TASKDDATA/taskd.log
 taskd config --force pid.file $TASKDDATA/taskd.pid
-taskd config --force server localhost:53859
-taskd config --force client.allow '^task [2-9]'
+taskd config --force server $TASKDSERVER:$TASKDPORT
+
+# Add the organization
+# $ taskd add org Public
+
+# Add your user
+# $ task add user 'Public' 'Your Name' > ~/taskd.key

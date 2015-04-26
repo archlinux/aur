@@ -1,50 +1,37 @@
-# See https://github.com/torrancew/arch-taskd/blob/master/taskd.install for
-# possible theiving purposes, especially a way to do a basic config.
-
 pre_install() {
-
   # add taskd group if it doesn't exist
-  getent group taskd > /dev/null || groupadd -r taskd
+  getent group taskd &> /dev/null || groupadd --system taskd
 
-  # add taskd  user if it doesn't exist
-  getent passwd taskd > /dev/null || \
-    useradd -r -g taskd -s /sbin/nologin \
-    -c "Task Server system user" taskd
-
-  install -o$(id -g taskd) -g$(id -u taskd) -m2770 -d "${pkgdir}/var/lib/taskd"
-
+  # add taskd user if it doesn't exist
+  getent passwd taskd &> /dev/null || \
+      useradd --system -d /var/lib/taskd -g taskd taskd
 }
 
 post_install() {
-
   systemctl preset taskd.service
 
+  echo "Please follow the configuration instructions at
+ /usr/lib/taskd/taskd.notes to finish setting up Taskserver."
 }
 
 pre_upgrade() {
-
   pre_install
-
 }
 
 post_upgrade() {
-
   post_install
-
 }
 
 pre_remove() {
-
   systemctl --no-reload disable taskd.service
   systemctl stop taskd.service
-
 }
 
 post_remove() {
-
-  getent passwd taskd > /dev/null && userdel  taskd > /dev/null
-  getent group  taskd > /dev/null && groupdel taskd > /dev/null
+  getent passwd taskd &> /dev/null && userdel  taskd &> /dev/null
+  getent group  taskd &> /dev/null && groupdel taskd &> /dev/null
 
   systemctl daemon-reload
 
+  echo "User 'taskd' and group 'taskd' have been removed."
 }

@@ -1,21 +1,20 @@
-# Maintainer: Alan Young <harleypig@gmail.com>
+# Maintainer: Pablo Couto <pablo at 0x221e dot net>
+# Contributor: Alan Young <harleypig at gmail dot com>
+# Contributor: Phil Pirozhkov <pirjsuka at gmail dot com>
 #
-# Stolen and modified from https://aur.archlinux.org/packages/taskd-git/
-#
-# Found and stole various bits and pieces from
-#
-# http://threebean.org/rpm/taskd-config
-# http://threebean.org/rpm/taskd.service
-# http://threebean.org/rpm/taskd.spec
+# This PKGBUILD is based on the one written by Alan Young <harleypig at gmail
+# dot com> (https://github.com/harleypig/abs/tree/463a8ac/aur/taskd-git)
 
 _pkgname=taskd
-pkgname=$_pkgname-git
-pkgver=1.1.0
+pkgname=${_pkgname}-git
+_pkgver=1.1.0
+pkgver=${_pkgver}
 pkgrel=1
-pkgdesc="A lightweight, secure server providing multi-user, multi-client access to task data"
+pkgdesc="A lightweight secure server providing multi-user, multi-client
+ access to task data"
 
 arch=('i686' 'x86_64')
-depends=('gnutls')
+depends=('libutil-linux' 'gnutls')
 license=('MIT')
 makedepends=('git' 'cmake')
 provides=('taskd')
@@ -23,76 +22,54 @@ url='http://tasktools.org/projects/taskd.html'
 
 install=taskd.install
 
-source=('git+https://git.tasktools.org/scm/tm/taskd.git'
+source=("${_pkgname}::git+https://git.tasktools.org/scm/tm/taskd.git#branch=${_pkgver}"
         'taskd.conf'
         'taskd.notes'
         'taskd.service')
 
-md5sums=('SKIP'
-         '8e644fd70bea84c8fabe8a24e26a4549'
-         '455f7ef0c9c5ed292f82b4864ef56aef'
-         '7e2f6b38ea5b03a75611d20b1add4d3f')
+sha256sums=('SKIP'
+            '5e518f8dda08c8b8d564f2a52452227924ebb15ec8182e7af83cc1f82cfa4cf1'
+            '2f8fc3465073b208986e1c2ba96fb2c84763c8fa5ebbaff3b306e4bc9558e1ac'
+            '786b05f40e0613febaf8a165963058a51ea6b1b46246449637832fee08d555b6')
 
-#pkgver() {
-#
-#  # https://wiki.archlinux.org/index.php/VCS_PKGBUILD_Guidelines#Git
-#
-#  cd "${srcdir}/${_pkgname}"
-#  #git describe --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
-#  #git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
-#  git describe --long --tags | sed -r 's/^[^[:digit:]]+//;s/([^-]*-g)/r\1/;s/-/./g'
-#
-#}
+pkgver() {
+    cd "${_pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
+    cd "${srcdir}/${_pkgname}"
 
-  cd "${srcdir}/${_pkgname}"
+    cmake_opts="${cmake_opts} -Wno-devs"
+#    cmake_opts="${cmake_opts} -DCMAKE_BUILD_TYPE=Release"
+    cmake_opts="${cmake_opts} -DCMAKE_INSTALL_PREFIX=/usr"
 
-  cmake_opts="${cmake_opts} -DCMAKE_BUILD_TYPE=Release"
-  cmake_opts="${cmake_opts} -DTASKD_BINDIR=/usr/bin"
-  cmake_opts="${cmake_opts} -DTASKD_DOCDIR=/usr/share/doc/taskd"
-  cmake_opts="${cmake_opts} -DTASKD_MAN1DIR=/usr/share/man/man1"
-  cmake_opts="${cmake_opts} -DTASKD_MAN5DIR=/usr/share/man/man5"
-
-  cmake $cmake_opts .
-
-  make
-
+    cmake $cmake_opts .
+    make
 }
 
 check() {
-
-  cd "${srcdir}/${_pkgname}"
-  make test
-  cd test
-  make
-  ./run_all
-
+    cd "${srcdir}/${_pkgname}"
+    make test
+    cd test
+    make
+    ./run_all
 }
 
 package() {
+    cd "${srcdir}/${_pkgname}"
 
-  cd "${srcdir}/${_pkgname}"
+    make DESTDIR="${pkgdir}" install
 
-  make DESTDIR="${pkgdir}" install
-
-  install -Dm644 doc/client.txt      "${pkgdir}/usr/share/doc/taskd"
-  install -Dm644 doc/extensions.txt  "${pkgdir}/usr/share/doc/taskd"
-  install -Dm644 doc/operation.txt   "${pkgdir}/usr/share/doc/taskd"
-  install -Dm644 doc/protocol.txt    "${pkgdir}/usr/share/doc/taskd"
-  install -Dm644 doc/request.txt     "${pkgdir}/usr/share/doc/taskd"
-  install -Dm644 doc/sync.txt        "${pkgdir}/usr/share/doc/taskd"
-  install -Dm644 doc/task.txt        "${pkgdir}/usr/share/doc/taskd"
-  install -Dm644 doc/template.txt    "${pkgdir}/usr/share/doc/taskd"
-  install -Dm644 LICENSE             "${pkgdir}/usr/share/licenses/taskd/LICENSE"
-  install -Dm644 ../taskd.conf       "${pkgdir}/etc/conf.d/taskd"
-  install -Dm644 ../taskd.service    "${pkgdir}/usr/lib/systemd/system/taskd.service"
-  install -Dm644 ../taskd.notes      "${pkgdir}/usr/lib/taskd/taskd.notes"
-  install -Dm755 pki/generate.ca     "${pkgdir}/usr/lib/taskd/pki/generate.ca"
-  install -Dm755 pki/generate.client "${pkgdir}/usr/lib/taskd/pki/generate.client"
-  install -Dm755 pki/generate.crl    "${pkgdir}/usr/lib/taskd/pki/generate.crl"
-  install -Dm755 pki/generate        "${pkgdir}/usr/lib/taskd/pki/generate"
-  install -Dm755 pki/generate.server "${pkgdir}/usr/lib/taskd/pki/generate.server"
-  install -Dm644 pki/README          "${pkgdir}/usr/lib/taskd/pki/README"
-
+    install -Dm644 LICENSE             "${pkgdir}/usr/share/licenses/taskd-git/LICENSE"
+    install -Dm644 ../taskd.conf       "${pkgdir}/etc/conf.d/taskd"
+    install -Dm644 ../taskd.service    "${pkgdir}/usr/lib/systemd/system/taskd.service"
+    install -Dm644 ../taskd.notes      "${pkgdir}/usr/lib/taskd/taskd.notes"
+    install -Dm755 pki/generate.ca     "${pkgdir}/usr/lib/taskd/pki/generate.ca"
+    install -Dm755 pki/generate.client "${pkgdir}/usr/lib/taskd/pki/generate.client"
+    install -Dm755 pki/generate.crl    "${pkgdir}/usr/lib/taskd/pki/generate.crl"
+    install -Dm755 pki/generate        "${pkgdir}/usr/lib/taskd/pki/generate"
+    install -Dm755 pki/generate.server "${pkgdir}/usr/lib/taskd/pki/generate.server"
+    install -Dm644 pki/vars            "${pkgdir}/usr/lib/taskd/pki/vars"
+    install -Dm644 pki/README          "${pkgdir}/usr/lib/taskd/pki/README"
 }
