@@ -7,7 +7,7 @@ pkgdesc="open source netflow probe"
 url='http://www.mindrot.org/projects/softflowd/'
 license=("BSD")
 arch=('i686' 'x86_64')
-depends=()
+depends=('automake')
 
 source=("https://github.com/Thermi/softflowd/archive/softflowd-${pkgver}.tar.gz")
 

@@ -6,6 +6,7 @@ pkgbase = softflowd
 	arch = i686
 	arch = x86_64
 	license = BSD
+	depends = automake
 	source = https://github.com/Thermi/softflowd/archive/softflowd-0.9.9.tar.gz
 	sha256sums = 835a52c641e2e4bfc3afae0f5c667ad69d0af35fded4ff4d20ea2904f8b6cad2
 
