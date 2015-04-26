@@ -7,20 +7,27 @@
 # $ exec newgrp taskd
 
 # Before anything else, set the configuration variables in /etc/conf.d/taskd
-# (server storage and other conf) and /usr/lib/taskd/pki/var (certificates
+# (server storage and other conf) and /usr/lib/taskd/pki/var (certificate
 # generation).
 
-# Source the environment variable(s).
-export $(cat /etc/conf.d/taskd)
+# Source the environment variables
+export $(cat /etc/conf.d/taskd | sed -e '/^#/d' -e '/^\s*$/d')
+
+# Create the storage path
+sudo install -o taskd -g taskd -Dm775 -d /var/lib/taskd
 
 # Initialize the database
 taskd init
 
-# Generate and install your self-signed cert
+# Initial configuration
+taskd config --force server $TASKDSERVER:$TASKDPORT
+
+# Generate and install your self-signed cert (assuming that the configuration at
+# /var/lib/taskd/pki/vars has been set)
 cd /usr/lib/taskd/pki
 sudo ./generate
+sudo chown taskd: *.pem
 sudo mv *.pem $TASKDDATA
-chown -R taskd. $TASKDDATA
 
 taskd config --force client.cert $TASKDDATA/client.cert.pem
 taskd config --force client.key $TASKDDATA/client.key.pem
@@ -32,7 +39,6 @@ taskd config --force ca.cert $TASKDDATA/ca.cert.pem
 # Various settings
 taskd config --force log $TASKDDATA/taskd.log
 taskd config --force pid.file $TASKDDATA/taskd.pid
-taskd config --force server $TASKDSERVER:$TASKDPORT
 
 # Add the organization
 # $ taskd add org Public
