@@ -53,5 +53,6 @@ package() {
   make install PREFIX=${pkgdir}
 
   mv "${pkgdir}/etc/systemd" "${pkgdir}/usr/lib/systemd"
+  chmod -x "${pkgdir}/usr/lib/systemd/system/piaware.service"
   rmdir "${pkgdir}/etc"
 }
