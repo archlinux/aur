@@ -23,7 +23,7 @@ source=("${_pkgname}::git+https://git.tasktools.org/scm/tm/taskd.git#branch=${_p
 
 sha256sums=('SKIP'
             '5e518f8dda08c8b8d564f2a52452227924ebb15ec8182e7af83cc1f82cfa4cf1'
-            '53a37339be5eba6466b6124c04f409b99ab0523af6c62fef79bee50a3713d22f')
+            'a84693eb0f6e9d4565fe6c6312ef337ba0049ce577751a68d835f8e46124427c')
 
 arch=('i686' 'x86_64' 'armv6h')
 backup=('etc/conf.d/taskd')
