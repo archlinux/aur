@@ -1,39 +1,41 @@
 # Maintainer: Frederik "Freso" S. Olesen <archlinux@freso.dk>
 
-pkgname=amidst
-pkgver='3.7'
-_jarver="${pkgver//_/-}"
-_jarfile="${pkgname^^}-$_jarver.jar"
+pkgname=amidstexporter
+pkgver='1.32'
+_jarfile='AmidstExporter.jar'
 pkgrel=1
-pkgdesc='Advanced Minecraft Interface and Data/Structure Tracking'
+pkgdesc='Advanced Minecraft Interface and Data/Structure Tracking; fork with location export.'
 arch=('any')
 license=('GPL3')
-url='http://www.minecraftforum.net/topic/626786-'
+url='http://www.buildingwithblocks.info/exportfromseed.html'
 depends=('java-runtime')
 optdepends=('minecraft: the game itself')
 noextract=("$_jarfile")
 changelog=ChangeLog
-source=("https://github.com/skiphs/AMIDST/releases/download/$_jarver/$_jarfile"
-        amidst.sh
-        amidst.desktop)
-md5sums=('be52f1eaf644fca9c95e1fbe7e2ee5dc'
-         '783c4040c9736f96ce72e9997833a0bf'
-         '3c6900ac68e3175768322e684f9f1bcb')
+source=("https://github.com/Treer/AMIDST/releases/download/v${pkgver}/${_jarfile}"
+        amidstexporter.sh
+        amidstexporter.desktop)
+md5sums=('9254cdf1eec26df090dd5c9d76fc3fc9'
+         '365558c0aadf7a879ff8f4514943b10c'
+         'abe95f51b3ec61a2ae371a05c6edfc1f')
 
 prepare() {
     cd "$srcdir"
 
     # Extract icon
-    bsdcpio --extract --make-directories --insecure 'amidst/resources/icon.png' < "$_jarfile"
+    bsdcpio --extract --make-directories --insecure 'amidst/resources/icon16.png' 'amidst/resources/icon32.png' 'amidst/resources/icon64.png' < "$_jarfile"
 }
 
 package() {
     cd "$srcdir"
 
-    install -vDm755 'amidst.sh'                 "$pkgdir/usr/bin/amidst"
-    install -vDm644 'amidst/resources/icon.png' "$pkgdir/usr/share/pixmaps/amidst.png"
-    install -vDm644 'amidst.desktop'            "$pkgdir/usr/share/applications/amidst.desktop"
-    install -vDm644 "$_jarfile"                 "$pkgdir/usr/share/java/$pkgname/AMIDST.jar"
+    install -vDm755 'amidstexporter.sh'           "$pkgdir/usr/bin/amidstexporter"
+    install -vDm644 'amidst/resources/icon16.png' "$pkgdir/usr/share/pixmaps/amidstexporter-16.png"
+    install -vDm644 'amidst/resources/icon32.png' "$pkgdir/usr/share/pixmaps/amidstexporter-32.png"
+    install -vDm644 'amidst/resources/icon64.png' "$pkgdir/usr/share/pixmaps/amidstexporter-64.png"
+    ln -s ./amidstexporter-64.png "$pkgdir/usr/share/pixmaps/amidstexporter.png"
+    install -vDm644 'amidstexporter.desktop'      "$pkgdir/usr/share/applications/amidstexporter.desktop"
+    install -vDm644 "$_jarfile"                   "$pkgdir/usr/share/java/$pkgname/$_jarfile"
 }
 
 # vim:set ts=4 sw=4 et:

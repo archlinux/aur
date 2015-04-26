@@ -1,11 +1,11 @@
 [Desktop Entry]
 Type=Application
 Version=1.0
-Name=AMIDST
+Name=Amidst Exporter
 Comment=Advanced Minecraft Interface and Data/Structure Tracking
-TryExec=amidst
-Exec=java -noverify -jar /usr/share/java/amidst/AMIDST.jar
-Icon=/usr/share/pixmaps/amidst.png
+TryExec=amidstexporter
+Exec=java -noverify -jar /usr/share/java/amidstexporter/AmidstExporter.jar
+Icon=amidstexporter
 Terminal=false
 Categories=Game;
 Keywords=minecraft;
