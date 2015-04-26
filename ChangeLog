@@ -1,3 +1,13 @@
+2015-04-25 Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+
+	* 1.7.2-1 :
+	Version bump.
+
+	Upstream changelog:
+	* Changed "Enable commands" to "enable cheats", as some commands are
+	still accessable in single player.
+	* Fixed issue #3, TAG_Int_Array is now implemented
+
 2012-10-03 Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 
 	* 1.7.1-2 :

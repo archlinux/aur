@@ -1,7 +1,7 @@
 # Maintainer: Frederik "Freso" S. Olesen <freso.dk@gmail.com>
 pkgname=minecraft-save-seed-reader
-pkgver=1.7.1
-pkgrel=2
+pkgver=1.7.2
+pkgrel=1
 pkgdesc='Allows you to toggle the game mode of Minecraft worlds/saves.'
 arch=(any)
 url='https://github.com/thedarkfreak/Minecraft-Save-Seed-Reader/wiki'
@@ -11,10 +11,10 @@ optdepends=('minecraft: The game whose files this program modifies')
 changelog=ChangeLog
 source=(minecraft-save-seed-reader
         minecraft-save-seed-reader.desktop
-       'https://github.com/downloads/thedarkfreak/Minecraft-Save-Seed-Reader/MinecraftSeed.zip')
+        "https://github.com/thedarkfreak/Minecraft-Save-Seed-Reader/releases/download/version-${pkgver}/MinecraftSeed.${pkgver}.zip")
 md5sums=('f103f56c33d74318ac25cf5de8ecc541'
          'e84426095bec15f3df09aa5900015c90'
-         'fa8e5c9764c2763d4f63d33a42064e3c')
+         '13f7238c9c900519bf884c3184792383')
 
 package() {
   cd "$srcdir"
