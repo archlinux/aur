@@ -13,7 +13,7 @@ pkgrel=1
 pkgdesc="A lightweight secure server providing multi-user, multi-client
  access to task data"
 
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h')
 depends=('libutil-linux' 'gnutls')
 license=('MIT')
 makedepends=('git' 'cmake')
