@@ -24,13 +24,11 @@ install=taskd.install
 
 source=("${_pkgname}::git+https://git.tasktools.org/scm/tm/taskd.git#branch=${_pkgver}"
         'taskd.conf'
-        'taskd.notes'
-        'taskd.service')
+        'taskd.notes')
 
 sha256sums=('SKIP'
             '5e518f8dda08c8b8d564f2a52452227924ebb15ec8182e7af83cc1f82cfa4cf1'
-            '2f8fc3465073b208986e1c2ba96fb2c84763c8fa5ebbaff3b306e4bc9558e1ac'
-            '786b05f40e0613febaf8a165963058a51ea6b1b46246449637832fee08d555b6')
+            '53a37339be5eba6466b6124c04f409b99ab0523af6c62fef79bee50a3713d22f')
 
 pkgver() {
     cd "${_pkgname}"
@@ -60,15 +58,26 @@ package() {
 
     make DESTDIR="${pkgdir}" install
 
-    install -Dm644 LICENSE             "${pkgdir}/usr/share/licenses/taskd-git/LICENSE"
-    install -Dm644 ../taskd.conf       "${pkgdir}/etc/conf.d/taskd"
-    install -Dm644 ../taskd.service    "${pkgdir}/usr/lib/systemd/system/taskd.service"
-    install -Dm644 ../taskd.notes      "${pkgdir}/usr/lib/taskd/taskd.notes"
-    install -Dm755 pki/generate.ca     "${pkgdir}/usr/lib/taskd/pki/generate.ca"
-    install -Dm755 pki/generate.client "${pkgdir}/usr/lib/taskd/pki/generate.client"
-    install -Dm755 pki/generate.crl    "${pkgdir}/usr/lib/taskd/pki/generate.crl"
-    install -Dm755 pki/generate        "${pkgdir}/usr/lib/taskd/pki/generate"
-    install -Dm755 pki/generate.server "${pkgdir}/usr/lib/taskd/pki/generate.server"
-    install -Dm644 pki/vars            "${pkgdir}/usr/lib/taskd/pki/vars"
-    install -Dm644 pki/README          "${pkgdir}/usr/lib/taskd/pki/README"
+    install -Dm644 LICENSE \
+            "${pkgdir}/usr/share/licenses/taskd-git/LICENSE"
+    install -Dm644 ../taskd.conf \
+            "${pkgdir}/etc/conf.d/taskd"
+    install -Dm644 ../taskd.notes \
+            "${pkgdir}/usr/lib/taskd/taskd.notes"
+    install -Dm755 pki/generate.ca \
+            "${pkgdir}/usr/lib/taskd/pki/generate.ca"
+    install -Dm755 pki/generate.client \
+            "${pkgdir}/usr/lib/taskd/pki/generate.client"
+    install -Dm755 pki/generate.crl \
+            "${pkgdir}/usr/lib/taskd/pki/generate.crl"
+    install -Dm755 pki/generate \
+            "${pkgdir}/usr/lib/taskd/pki/generate"
+    install -Dm755 pki/generate.server \
+            "${pkgdir}/usr/lib/taskd/pki/generate.server"
+    install -Dm644 pki/vars \
+            "${pkgdir}/usr/lib/taskd/pki/vars"
+    install -Dm644 pki/README \
+            "${pkgdir}/usr/lib/taskd/pki/README"
+    install -Dm644 scripts/systemd/taskd.service \
+            "${pkgdir}/usr/lib/systemd/system/taskd.service"
 }
