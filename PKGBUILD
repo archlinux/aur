@@ -2,14 +2,14 @@
 
 pkgname=libcec-git
 epoch=1
-pkgver=2.1.4.4.ga560d24
+pkgver=2.1.4.149.gd2f8cf7
 pkgrel=1
 pkgdesc="Pulse-Eight's libcec for the Pulse-Eight USB-CEC adapter"
 arch=('i686' 'x86_64')
 url="https://github.com/Pulse-Eight/libcec"
 license=('GPL')
-makedepends=('git')
-depends=('udev>=151' 'lockdev')
+makedepends=('git' 'libplatform')
+depends=('udev>=151' 'lockdev' 'libplatform' 'libxrandr')
 provides=('libcec')
 conflicts=('libcec')
 options=('!libtool')
@@ -23,9 +23,10 @@ pkgver() {
 
 build() {
   cd "$srcdir"/libcec
-
-  autoreconf -vif
-  ./configure --prefix=/usr
+  cmake . \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+    -DCMAKE_INSTALL_LIBDIR_NOARCH=/usr/lib
   make
 }
 
