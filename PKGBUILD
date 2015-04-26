@@ -41,7 +41,6 @@ build() {
     cd "${srcdir}/${_pkgname}"
 
     cmake_opts="${cmake_opts} -Wno-devs"
-#    cmake_opts="${cmake_opts} -DCMAKE_BUILD_TYPE=Release"
     cmake_opts="${cmake_opts} -DCMAKE_INSTALL_PREFIX=/usr"
 
     cmake $cmake_opts .
