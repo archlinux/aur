@@ -1,7 +1,7 @@
 # Maintainer: Zhuoyun Wei <wzyboy@wzyboy.org>
 
 pkgname=govpn
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc="Simple secure free software VPN daemon"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ makedepends=('go' 'plantuml') # PlantUML is for generating HTML docs only.
 license=('GPL')
 source=(https://github.com/stargrave/${pkgname}/archive/${pkgver}.tar.gz)
 noextract=("${pkgver}.tar.gz")
-sha256sums=('25c8b3171296c68f12f48a9da1e7049821b7da8eeffd6eee73e6f87b662b3796')
+sha256sums=('b5e1e99a8cdbbed2f64cc667f10e29bfd44edc2326cc4954ac436c3d2488abce')
 
 build() {
   mkdir -p $pkgname/src
