@@ -1,0 +1,13 @@
+pkgbase = disque-git
+	pkgdesc = Distributed message broker
+	pkgver = d01f47d
+	pkgrel = 1
+	url = https://github.com/antirez/disque
+	arch = any
+	license = MIT
+	provides = disque
+	source = disque-git::git+https://github.com/antirez/disque
+	sha1sums = SKIP
+
+pkgname = disque-git
+
