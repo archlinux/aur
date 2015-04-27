@@ -1,27 +1,28 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=plasma-meta
-pkgver=5.2.0
-pkgrel=5
+pkgver=5.3
+pkgrel=1
 pkgdesc='Meta package to install KDE Plasma'
 arch=('any')
 url='https://www.archlinux.org/'
 license=('GPL')
-depends=('bluedevil-frameworks'
+depends=('bluedevil'
         'drkonqi'
-        'kde-gtk-config-frameworks'
-        'kdeplasma-addons-frameworks'
+        'kde-gtk-config'
+        'kdeplasma-addons'
         'khelpcenter'
         'kinfocenter'
         'kio-extras'
         'ksysguard'
-        'kscreen-frameworks'
+        'kscreen'
         'ksshaskpass'
         'kwrited'
-        'milou'
         'oxygen'
         'oxygen-cursors'
         'plasma-desktop'
         'plasma-nm'
         'plasma-workspace-wallpapers'
+	'plasma-mediacenter'
 )
+
