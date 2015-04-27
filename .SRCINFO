@@ -1,7 +1,7 @@
 pkgbase = network-ups-tools-git
 	pkgdesc = NUT is a collection of programs for monitoring and administering UPS hardware
-	pkgver = v2.7.1.signed.r8.gb11d66f
-	pkgrel = 2
+	pkgver = v2.7.3.r2.g980aa03
+	pkgrel = 1
 	url = http://www.networkupstools.org/
 	install = nut.install
 	arch = i686

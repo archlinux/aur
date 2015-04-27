@@ -4,8 +4,8 @@
 # Contributor: Giuseppe Lucarelli <luk@rebelsoft.org>
 
 pkgname=network-ups-tools-git
-pkgver=v2.7.1.signed.r8.gb11d66f
-pkgrel=2
+pkgver=v2.7.3.r2.g980aa03
+pkgrel=1
 pkgdesc="NUT is a collection of programs for monitoring and administering UPS hardware"
 arch=('i686' 'x86_64')
 url="http://www.networkupstools.org/"
@@ -41,7 +41,7 @@ build() {
          --with-usb \
          --prefix=/usr \
          --with-udev-dir=/usr/lib/udev \
-         --with-systemdsystemunitdir=/lib/systemd/system \
+         --with-systemdsystemunitdir=/usr/lib/systemd/system \
          --datadir=/usr/share/ups \
          --sbindir=/usr/bin \
          --with-drvpath=/usr/bin \
