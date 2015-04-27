@@ -5,10 +5,8 @@
 # This PKGBUILD is based on the one written by Alan Young <harleypig at gmail
 # dot com> (https://github.com/harleypig/abs/tree/463a8ac/aur/taskd-git)
 
-_pkgname=taskd
-pkgname=${_pkgname}-git
-_pkgver=1.1.0
-pkgver=${_pkgver}
+pkgname=taskd-git
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A lightweight secure server providing multi-user, multi-client
  access to task data"
@@ -17,7 +15,7 @@ license=('MIT')
 
 install=taskd.install
 
-source=("${_pkgname}::git+https://git.tasktools.org/scm/tm/taskd.git#branch=${_pkgver}"
+source=("${pkgname}::git+https://git.tasktools.org/scm/tm/taskd.git#branch=1.1.0"
         'taskd.conf'
         'taskd.notes')
 
@@ -32,12 +30,12 @@ makedepends=('git' 'cmake')
 provides=('taskd')
 
 pkgver() {
-    cd "${_pkgname}"
+    cd "${pkgname}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "${srcdir}/${_pkgname}"
+    cd "${srcdir}/${pkgname}"
 
     cmake_opts="${cmake_opts} -Wno-devs"
     cmake_opts="${cmake_opts} -DCMAKE_INSTALL_PREFIX=/usr"
@@ -47,7 +45,7 @@ build() {
 }
 
 check() {
-    cd "${srcdir}/${_pkgname}"
+    cd "${srcdir}/${pkgname}"
     make test
     cd test
     make
@@ -55,7 +53,7 @@ check() {
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}"
+    cd "${srcdir}/${pkgname}"
 
     make DESTDIR="${pkgdir}" install
 
