@@ -1,7 +1,7 @@
 pkgbase = disque-git
 	pkgdesc = Distributed message broker
 	pkgver = d01f47d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/antirez/disque
 	arch = any
 	license = MIT
