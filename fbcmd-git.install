@@ -1,0 +1,5 @@
+post_install() {
+	echo "You have to manually edit your /etc/php/php.ini for this package to work:"
+	echo "1. add :/usr/lib to the open_basedir line"
+	echo "2. adjust the timezone by changing ;date.timezone = to e.g. date.timezone = \"Europe/Berlin\""
+}

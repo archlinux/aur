@@ -1,0 +1,17 @@
+pkgbase = fbcmd-git
+	pkgdesc = Facebook Command Line Interface
+	pkgver = 20120720.190
+	pkgrel = 1
+	url = https://github.com/dtompkins/fbcmd
+	install = fbcmd-git.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = php
+	provides = fbcmd
+	conflicts = fbcmd
+	source = fbcmd::git+git://github.com/dtompkins/fbcmd.git
+	md5sums = SKIP
+
+pkgname = fbcmd-git
+
