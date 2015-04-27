@@ -6,7 +6,7 @@
 
 pkgname=network-ups-tools
 pkgver=2.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="NUT is a collection of programs for monitoring and administering UPS hardware"
 arch=('i686' 'x86_64')
 url="http://www.networkupstools.org/"
@@ -39,7 +39,7 @@ build() {
     --without-cgi \
     --prefix=/usr \
     --with-udev-dir=/usr/lib/udev \
-    --with-systemdsystemunitdir=/lib/systemd/system \
+    --with-systemdsystemunitdir=/usr/lib/systemd/system \
     --datadir=/usr/share/ups \
     --sbindir=/usr/bin \
     --with-drvpath=/usr/bin \
