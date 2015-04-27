@@ -1,14 +1,14 @@
 pkgbase = python-pyroma-hg
 	pkgdesc = Test your project's packaging friendliness (hg version)
-	pkgver = 137.08ebf489e2b7
+	pkgver = 149.0f8a385ac93e
 	pkgrel = 1
 	url = https://bitbucket.org/regebro/pyroma
 	arch = any
 	license = MIT
 	makedepends = mercurial
-	makedepends = python-distribute
 	depends = python
 	depends = python-docutils
+	depends = python-setuptools
 	provides = python-pyroma
 	conflicts = python-pyroma
 	options = !emptydirs

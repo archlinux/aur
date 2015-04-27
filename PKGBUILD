@@ -2,14 +2,14 @@
 pkgname=python-pyroma-hg
 _pyname=pyroma
 _hgname=pyroma
-pkgver=137.08ebf489e2b7
+pkgver=149.0f8a385ac93e
 pkgrel=1
 pkgdesc="Test your project's packaging friendliness  (hg version)"
 arch=('any')
 url='https://bitbucket.org/regebro/pyroma'
 license=('MIT')
-depends=('python' 'python-docutils')
-makedepends=('mercurial' 'python-distribute')
+depends=('python' 'python-docutils' 'python-setuptools')
+makedepends=('mercurial')
 options=(!emptydirs)
 provides=('python-pyroma')
 conflicts=('python-pyroma')
