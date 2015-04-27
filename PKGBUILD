@@ -1,5 +1,5 @@
 pkgname=spim-svn
-pkgver=657
+pkgver=658
 pkgrel=1
 pkgdesc="A MIPS32 simulator (SVN version)"
 arch=('i686' 'x86_64')
