@@ -1,17 +1,16 @@
 # Maintainer: Chris Warrick <aur@chriswarrick.com>
 pkgname=python-pyroma
 _pyname=pyroma
-pkgver=1.7
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Test your project's packaging friendliness"
 arch=('any')
 url='https://bitbucket.org/regebro/pyroma'
 license=('MIT')
-depends=('python' 'python-docutils')
-makedepends=('python-distribute')
+depends=('python' 'python-docutils' 'python-setuptools')
 options=(!emptydirs)
-source=("http://pypi.python.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.zip")
-md5sums=('436b1401c5d4a9c7d307336128ccfd30')
+source=("http://pypi.python.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+md5sums=('d9d471be51bae92619a37d6edfdff89d')
 
 package() {
   cd "${srcdir}/${_pyname}-${pkgver}"
