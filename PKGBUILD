@@ -6,13 +6,14 @@
 # Contributor: Ismael Carnales <icarnales@gamail.com
 
 pkgname=pidgin-light
-pkgver=2.10.10
+pkgver=2.10.11
 pkgrel=1
 pkgdesc="A light pidgin version: msn, jabber, irc supported protocols without gstreamer, tcl, tk, xscreensaver support.No video/voice.  Includes finch "
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
 license=('GPL')
-depends=('startup-notification' 'libidn' 'nss' 'python' 'gtkspell' 'hicolor-icon-theme' 'libxml2')
+depends=('startup-notification' 'libidn' 'nss' 'python' 'gtkspell'
+         'hicolor-icon-theme' 'libxml2' 'gtk-update-icon-cache')
 makedepends=('ca-certificates' 'perl-xml-parser' 'intltool')
 optdepends=('dbus-python: needed for purple-remote & purple-url-handler only' 'gstreamer0.10-good: sound')
 replaces=('gaim')
@@ -22,8 +23,8 @@ options=('!libtool')
 install=pidgin-light.install
 source=(http://downloads.sourceforge.net/project/pidgin/Pidgin/$pkgver/pidgin-$pkgver.tar.bz2 pidgin-light.install )
 
-md5sums=('5030d4750c73b211c7e82bb67ea3d016'
-         '8cc4ec58d3288bb171fc8359c25674f7')
+sha256sums=('f2ae211341fc77efb9945d40e9932aa535cdf3a6c8993fe7919fca8cc1c04007'
+            '62ef35bfbe91bd1b970ae8cf8b40da7504e971bf1a78e4091d648ba0219cc428')
 
 build() {
 
