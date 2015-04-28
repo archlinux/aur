@@ -1,6 +1,6 @@
 pkgbase = vivaldi
-	pkgdesc = A new browser for our friends
-	pkgver = 1.0.118.19
+	pkgdesc = An advanced browser made with the power user in mind.
+	pkgver = 1.0.162.4
 	pkgrel = 1
 	url = https://vivaldi.com
 	install = vivaldi.install
@@ -20,10 +20,10 @@ pkgbase = vivaldi
 	optdepends = ffmpeg: playback of proprietary formats
 	options = !strip
 	options = !zipman
-	source_x86_64 = https://vivaldi.com/download/vivaldi-preview_1.0.118.19-1_amd64.deb
-	sha256sums_x86_64 = f7f9ba45c303d1461a6ff28548300bdf0d4c066c007999e8a0d945a734316a60
-	source_i686 = https://vivaldi.com/download/vivaldi-preview_1.0.118.19-1_i386.deb
-	sha256sums_i686 = 5040d0fcda3dc76cd621439b7b54253e5bd57ef08789b2f17b1a7de54ee135fe
+	source_x86_64 = https://vivaldi.com/download/Vivaldi_TP3.1.0.162.4-1_amd64.deb
+	sha256sums_x86_64 = e318e8100adf72e936618b18685ef107bc1e465559e3b78853fef4be5d9ee4b9
+	source_i686 = https://vivaldi.com/download/Vivaldi_TP3.1.0.162.4-1_i386.deb
+	sha256sums_i686 = 07aecd6835996606e82f6c9d158a1c228ef8d1767680b15fc9fa493d16973f36
 
 pkgname = vivaldi
 
