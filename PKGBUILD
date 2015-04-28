@@ -26,6 +26,7 @@ package() {
   cd ${pkgname}
   python setup.py install --root="${pkgdir}/" --optimize=1
   mv "${pkgdir}/usr/share/bash-completion/completions/youtube-dl.bash-completion" \
-    "${pkgdir}/usr/share/bash-completion/completions/youtube-dl"
+     "${pkgdir}/usr/share/bash-completion/completions/youtube-dl"
+  install -Dm644 youtube-dl.zsh "${pkgdir}/usr/share/zsh/site-functions/_youtube-dl"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
