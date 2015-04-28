@@ -1,25 +1,25 @@
-# Contributors: Mladen Pejaković <pejakm@gmail.com>
+# Maintainer: James An <james@jamesan.ca>
+# Contributor: Mladen Pejaković <pejakm@gmail.com>
 
 pkgname=slimrat
-_realver=1.1-beta2
 pkgver=1.1_beta2
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line application for automated downloading from file hosters like Rapidshare, Megaupload, Depositfiles and many more"
 url="http://code.google.com/p/slimrat"
 license=('MIT')
 arch=('any' )
 depends=('perl' 'perl-www-mechanize' 'perl-http-response-encoding' 'perl-json')
-optdepends=('slimrat-gui:	for GUI'
-            'aview:		for CAPTCHA support in command line')
+optdepends=('slimrat-gui: for GUI'
+            'aview:   for CAPTCHA support in command line')
 
 backup=('etc/slimrat.conf')
 install=${pkgname}.install
-source=(http://slimrat.googlecode.com/files/${pkgname}-${_realver}.tar.bz2)
+source=(http://slimrat.googlecode.com/files/${pkgname}-${pkgver/_/-}.tar.bz2)
 
 md5sums=('ed244022741611f7d587016280e94263')
 
-build() {
-  cd ${srcdir}/${pkgname}-${_realver}
+package() {
+  cd ${pkgname}-${pkgver/_/-}
   install -m 755 -d ${pkgdir}/usr/lib/${pkgname}/plugins ${pkgdir}/usr/bin
   install -m 644 -D src/plugins/* ${pkgdir}/usr/lib/${pkgname}/plugins
   install -m 644 -D src/Common.pm ${pkgdir}/usr/lib/${pkgname}/
