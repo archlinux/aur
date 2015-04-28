@@ -9,7 +9,7 @@
 # Contributor: eworm
 
 pkgname=opera
-pkgver=28.0.1750.51
+pkgver=29.0.1795.47
 pkgrel=1
 pkgdesc="A fast and secure web browser and Internet suite."
 url="http://www.opera.com/"
@@ -17,17 +17,23 @@ install=${pkgname}.install
 options=(!strip !zipman)
 license=('custom:opera')
 backup=("etc/$pkgname/default")
-arch=('x86_64')
-source=(
-	"http://deb.opera.com/opera/pool/non-free/o/${pkgname}-stable/${pkgname}-stable_${pkgver}_amd64.deb"
-	"opera"
-	"default"
-)
 depends=('gtk2' 'desktop-file-utils' 'shared-mime-info' 'libxtst' 'gconf' 'libxss' 'gcc-libs' 'alsa-lib' 'nss' 'freetype2' 'ttf-font')
 optdepends=(
 	'curl: opera crash reporter and autoupdate checker'
 	'ffmpeg: playback of proprietary formats'
 )
+arch=('x86_64')
+source_x86_64=(
+	#"http://deb.opera.com/opera/pool/non-free/o/${pkgname}-stable/${pkgname}-stable_${pkgver}_amd64.deb"
+	"http://get.geo.opera.com/pub/${pkgname}/desktop/${pkgver}/linux/${pkgname}-stable_${pkgver}_amd64.deb"
+)
+source=(
+	"opera"
+	"default"
+)
+sha256sums=('508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5'
+            '4913d97dec0ddc99d1e089b029b9123c2c86b7c88d631c4d1111b119b09da027')
+sha256sums_x86_64=('7183b0741844b24c454d0d40f34ef185474296af579470b03a7bc82a64c320b9')
 
 prepare() {
 	sed -e "s/%pkgname%/$pkgname/g" -i "$srcdir/opera"
@@ -58,6 +64,3 @@ package() {
 		"$pkgdir/usr/share/licenses/$pkgname/copyright"
 }
 
-sha256sums=('2c73cf04b70fe95e674a16c98727ba2a9a6b1fbd8bfb5df3a3ba911330c69543'
-            '508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5'
-            '4913d97dec0ddc99d1e089b029b9123c2c86b7c88d631c4d1111b119b09da027')
