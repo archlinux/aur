@@ -1,7 +1,8 @@
 # Maintainer: Eli Schwartz <eschwartz93@gmail.com>
+
 _gitname=KindleTool
 pkgname=kindletool-git
-pkgver=1.6.3.r20.gd054749
+pkgver=1.6.3.r24.g6a3a3e5
 pkgrel=1
 pkgdesc="Tool for creating/extracting Kindle updates and more"
 arch=('i686' 'x86_64')
@@ -22,7 +23,6 @@ build() {
     cd "${srcdir}/${_gitname}"
     make
 }
-
 
 package() {
     cd "${srcdir}/${_gitname}"
