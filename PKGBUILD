@@ -5,22 +5,21 @@ pkgname=linux-linode
 _basekernel=4.0
 _kernelname=${pkgname#linux}
 _srcname=linux-${_basekernel}
-pkgver=${_basekernel}.0
+pkgver=${_basekernel}.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/yardenac/linux-linode"
 license=(GPL2)
 makedepends=(xmlto docbook-xsl kmod inetutils bc 'gcc>=4.9.0')
 options=('!strip')
-source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-#        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-#        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar."{xz,sign}
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}."{xz,sign}
         'config'
         'config.x86_64'
         'menu.lst'
         'preset')
 sha512sums=('ce13d2c1c17908fd9a4aa42bb6348a0cb13dd22e560bd54c61b8bfdf62726d6095f130c59177a2fe4793b7dc399481bf10d3556d1d571616000f180304e5a995' 'SKIP'
+            '3f4547c759a7ce9f75671676d9d57e516ba8a6617d1c195aa5d728bc10926e200ac4285aa2612a7e3a8f4e4f4e3038e250563f139fb4f76d0f93b73222eb7d30' 'SKIP'
             'b736319f6d28e7b0de18ff8ebe3bd103b56669bc9ee11f6f128b5429ced39ee54da9a58596716950013a53d9fd7fb654cb6facf67bb8c38724c823b763193303'
             '79a389365fd8b6571d9d512f029814053d98de7684cf68c23b9d6b4285b4da6e69fba061a22fdc2ce551a2fd00eb29e9717858c4abab49ffc0c307dd61bb555c'
             '0ddff435474213f6c6e62576b6b3042aeffd1df84c47ca6195714a92c2655c33c56ce211c14934f4268afdf246077e1ea04e0958efc263c71aabfb497481022c'
@@ -38,7 +37,7 @@ install=install
 
 prepare() {
   cd "${srcdir}/${_srcname}"
-#  patch -p1 -i "${srcdir}/patch-${pkgver}"
+  patch -p1 -i "${srcdir}/patch-${pkgver}"
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
   else
