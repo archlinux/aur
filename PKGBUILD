@@ -2,28 +2,26 @@
 # tracks: https://projects.archlinux.org/svntogit/packages.git/log/trunk?h=packages/linux
 
 pkgname=linux-linode
-_basekernel=3.19
+_basekernel=4.0
 _kernelname=${pkgname#linux}
 _srcname=linux-${_basekernel}
-pkgver=${_basekernel}.5
+pkgver=${_basekernel}.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/yardenac/linux-linode"
 license=(GPL2)
 makedepends=(xmlto docbook-xsl kmod inetutils bc 'gcc>=4.9.0')
 options=('!strip')
-source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
-        "https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.sign"
-        "https://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
-        "https://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.sign"
+source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar."{xz,sign}
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}."{xz,sign}
         'config'
         'config.x86_64'
         'menu.lst'
         'preset')
-sha512sums=('d77bfd9b1cd524ac50bb5a93808955be2f9bcd2ec0badcc8aa6a63401e212f891fd14bd27c6441174ba5d70ab875b9e76c7ebc95f046e31aff1d40790d30351c' 'SKIP'
-            '11ebad2372b34b4f2f1636abe212660ace6af83adebb9935cb9aa6430d14b90b8ec1b1ba1844bc1ddce802d42bbf26d8e3aa14d4a86b25fe61dc5551624f5598' 'SKIP'
-            '6735f2aa01e4f3cd0d270b514f87ded2db2ab8315721bb9fddc6079185d7c0bfb94ae9cb01d7a6d2a8690e7aeaa317e0c214ef7bbf086ec304472786a3393069'
-            '8d19284d9e82e7df0612cd589347908ac7ade766d81e3083c1fb4f0560400193a1334bc3f8720ce37e7bf81ca0141595b06ea57578097b186f2cd656c657cdf7'
+sha512sums=('ce13d2c1c17908fd9a4aa42bb6348a0cb13dd22e560bd54c61b8bfdf62726d6095f130c59177a2fe4793b7dc399481bf10d3556d1d571616000f180304e5a995' 'SKIP'
+            '3f4547c759a7ce9f75671676d9d57e516ba8a6617d1c195aa5d728bc10926e200ac4285aa2612a7e3a8f4e4f4e3038e250563f139fb4f76d0f93b73222eb7d30' 'SKIP'
+            'b736319f6d28e7b0de18ff8ebe3bd103b56669bc9ee11f6f128b5429ced39ee54da9a58596716950013a53d9fd7fb654cb6facf67bb8c38724c823b763193303'
+            '79a389365fd8b6571d9d512f029814053d98de7684cf68c23b9d6b4285b4da6e69fba061a22fdc2ce551a2fd00eb29e9717858c4abab49ffc0c307dd61bb555c'
             '0ddff435474213f6c6e62576b6b3042aeffd1df84c47ca6195714a92c2655c33c56ce211c14934f4268afdf246077e1ea04e0958efc263c71aabfb497481022c'
             'a0a78831075336edef0a8faa34fa550986c3c4d89a89f4f39d798da0211129dc90257d162bec2cdefabef2eb5886a710e70c72074b2f3016788861d05d1e2a1f')
 validpgpkeys=(
