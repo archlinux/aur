@@ -4,9 +4,9 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=42.0.2311.90
+pkgver=42.0.2311.135
+_launcher_ver=2
 pkgrel=1
-_launcher_ver=1
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
@@ -26,8 +26,8 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
         chromium-widevine.patch)
-sha256sums=('60b0eb38c1c3d0cc998dae70b7333e53b715cff2847c1652e03d1723300db4c9'
-            '3c77e58e74e4f9613cdf74b6db40c06dce157e0565034727e15485414af78c71'
+sha256sums=('c269d40e653794c219fd3eca2922d881199af5acff5d0a55b3e79f3b6a5a2aa9'
+            '7f91c81721092d707d7b94e6555a48bc7fd0bc0e1174df4649bdcd745930e52f'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             '379b746e187de28f80f5a7cd19edcfa31859656826f802a1ede054fcb6dfb221')
 
