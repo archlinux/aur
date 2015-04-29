@@ -2,7 +2,7 @@
 # Contributor : Dan Vratil <dan@progdan.cz>
 # Contributor  : andy123 < ajs AT online DOT de >
 pkgname=lib32-boost-libs
-pkgver=1.57.0
+pkgver=1.58.0
 _boostver=${pkgver//./_}
 pkgrel=1
 url="http://www.boost.org"
@@ -13,7 +13,7 @@ groups=('lib32')
 depends=('lib32-bzip2' 'lib32-zlib' 'lib32-icu' 'lib32-gcc-libs')
 makedepends=('lib32-icu>=51.1' 'lib32-bzip2' 'lib32-zlib' 'gcc-multilib' 'python' 'python2')
 source=(http://downloads.sourceforge.net/sourceforge/boost/boost_${_boostver}.tar.gz)
-sha1sums=('55366a96bb76440ab140047065650f1d73dbfd8c')
+sha1sums=('a27b010b9d5de0c07df9dddc9c336767725b1e6b')
 
 
 
