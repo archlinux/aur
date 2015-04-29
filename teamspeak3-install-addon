@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+
+set -o errexit
+
+REL=1
+URL=$1
+
+if [[ -z "$URL" || "$URL" == "-h" ]] ; then
+  echo "Usage: teamspeak3-install-addon [URL] (url is the download link)"
+  if [[ "$URL" == "-h" ]] ; then exit ; fi
+  exit 1
+fi
+
+TMPDIR="$(mktemp -d --suffix=-teamspeak3-install-addon)"
+
+cd "$TMPDIR"
+echo "Using temporary directory $TMPDIR"
+curl -L -o addon.zip "$URL"
+unzip -d addon addon.zip
+
+TYPE="$(< addon/package.ini grep '^Type *='|cut -d= -f2|sed 's/ //g'|tr "[:upper:]" "[:lower:]"|tr ' ' -|tr -d '\r\n')"
+VERSION="$(< addon/package.ini grep -i '^Version *='|cut -d= -f2|tr -d ' \r\n')"
+NAME="$(< addon/package.ini grep -i '^Name *='|cut -d= -f2|sed 's/^ //g'|tr -d '\r\n')"
+PKGNAME="teamspeak3-addon-$TYPE-$(echo "$NAME"|tr "[:upper:]" "[:lower:]"|tr ' ' -|tr -d '\r\n')"
+
+mkdir "$PKGNAME"
+mv addon.zip "$PKGNAME"
+cd "$PKGNAME"
+
+> PKGBUILD sed \
+  -e "s/{TYPE}/$TYPE/" \
+  -e "s/{VERSION}/$VERSION/" \
+  -e "s/{NAME}/$NAME/" \
+  -e "s/{PKGNAME}/$PKGNAME/" \
+  -e "s|{URL}|$URL|" \
+<<PKGBUILD_END
+# Maintainer: You
+pkgname='{PKGNAME}'
+pkgver='{VERSION}'
+pkgrel=$REL
+pkgdesc='An addon for Teamspeak 3 - {NAME}'
+arch=('any')
+url='http://addons.teamspeak.com'
+license=('Unknown')
+depends=('teamspeak3')
+source=('addon.zip::{URL}')
+sha1sums=('UNUSED')
+
+package() {
+  cd -- "\$srcdir"
+  mkdir -p -- "\$pkgdir/opt/teamspeak3"
+  rm package.ini
+  rm addon.zip
+  find . -type f -exec chmod a-x {} \+
+  cp -R . "\$pkgdir/opt/teamspeak3"
+}
+PKGBUILD_END
+
+updpkgsums
+
+makepkg -S
+echo
+echo "Feel free to submit this package to AUR"
+echo "$TMPDIR/$PKGNAME"
+echo
+echo "Building binary package"
+echo
+makepkg
+echo
+echo "Installing package"
+sudo pacman -U "$PKGNAME-$VERSION-$REL-any.pkg.tar.xz"
