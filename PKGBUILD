@@ -7,7 +7,7 @@ pkgname='ros-indigo-rqt-rviz'
 pkgver='0.4.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-indigo-rqt-gui
