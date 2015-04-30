@@ -7,7 +7,7 @@ pkgname='ros-indigo-robot-state-publisher'
 pkgver='1.10.4'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-indigo-kdl-parser
