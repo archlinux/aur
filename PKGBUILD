@@ -12,8 +12,8 @@
 # Check the AUR package 'fs2_open-data' for details.
 
 pkgname=fs2_open
-pkgver=3.7.2~rc5
-_pkgver=3_7_2_RC5 # Upstream's url/dirs ...
+pkgver=3.7.2
+_pkgver=3_7_2 # Upstream's url/dirs ...
 pkgrel=1
 epoch=1
 pkgdesc="An enhancement of the FreeSpace 2 engine"
@@ -29,11 +29,11 @@ source=(http://swc.fs2downloads.com/builds/fs2_open_${_pkgver}_src.tgz
         'fs2_open.desktop'
         'increase_joy_buttons_fixed.patch'
         'options')
-sha256sums=('a68ed22e2868e987c7ab5167207a9da3ab192c0efa32c49f6f5ab364609d6090'
-            '6b79b1989692cd0e03106403d2c96a70d3ef6f75f488142ece6a4db9acd260c9'
+sha256sums=('3e266eb84a4c289e21cb08f3bde8e6e6e0d1bf97953e8cc06db1a179cc127ea2'
+            'c978c91ced574a0904a883d41c72248796e0cf50a0c5e06bc5f890d92bb244c1'
             'cac8914fb96eb4f09d8dec0005ccb3626499ab9f3f4c5f64c11bd8d2e913e372'
-            'b5d6574fbb6cb84294502140c74310178f6d588092ffe33692274d95a882096b'
-            '6e8148aea5d23658e74a2893652de8889af45d542c079d086b8fd586c8b73229')
+            '015b57bafd327e7b549a09e0a03619fabdc7be63afe88860fbe0f4114dc81731'
+            'c593dacd19705f1aaf23170d7b65b4621945200d3a496e256f77e3f1f0279741')
 
 prepare() {
   cd "$srcdir/${pkgname}_${_pkgver}"
