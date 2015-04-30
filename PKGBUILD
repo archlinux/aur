@@ -3,7 +3,7 @@
 
 _pkgname=ewebkit
 pkgname=$_pkgname-svn
-pkgver=1.11.0.r183168
+pkgver=1.11.0.r183545
 pkgrel=1
 pkgdesc="WebKit ported to the Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64')
@@ -15,11 +15,9 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("$pkgname/Source::svn+https://svn.webkit.org/repository/webkit/trunk/Source"
         "$pkgname/Tools::svn+https://svn.webkit.org/repository/webkit/trunk/Tools"
-        'fix_gio-unix.patch'
         'fix_libXext_linking.patch')
 sha256sums=('SKIP'
             'SKIP'
-            '0b302a01aad0287a5240cc60b06e01880db960dc67b689c74ecb1ab571b8d423'
             'cbed18fde023d83cf810a31c6b77aab2247d78481cbbd264144f6bf5f6e5126c')
 
 pkgver() {
@@ -35,9 +33,6 @@ pkgver() {
 prepare() {
 # Turn off -Werror, causes too many build failures for things we don't care about
   sed -i '/-Werror/d' Source/cmake/WebKitHelpers.cmake
-
-# Fix gio-unix cflag detection
-  patch -Np0 -i fix_gio-unix.patch
 
 # Let the linker find libXext for WebKit2
   patch -Np0 -i fix_libXext_linking.patch
