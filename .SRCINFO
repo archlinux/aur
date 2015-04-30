@@ -1,0 +1,16 @@
+pkgbase = python2-memprof
+	pkgdesc = A memory profiler for Python. As easy as adding a decorator.
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = http://jmdana.github.io/memprof/
+	arch = any
+	license = CUSTOM
+	makedepends = python2
+	depends = python2
+	depends = python2-matplotlib
+	depends = cython2
+	source = https://pypi.python.org/packages/source/m/memprof/memprof-0.3.3.tar.gz
+	md5sums = f8a41a19e9bcb5c2a86373e95f252c6f
+
+pkgname = python2-memprof
+
