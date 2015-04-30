@@ -7,7 +7,7 @@ pkgname='ros-indigo-nodelet-tutorial-math'
 pkgver='0.1.8'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-indigo-std-msgs
