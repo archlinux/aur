@@ -1,12 +1,12 @@
 pkgname=sdformat
 pkgver=2.3.0
-pkgrel=1
+pkgrel=3
 pkgdesc="SDF Converter for gazebo"
 arch=('i686' 'x86_64')
 url="http://sdformat.org/"
 license=('Apache')
 depends=('boost' 'tinyxml')
-makedepends=('cmake' 'doxygen')
+makedepends=('cmake' 'doxygen' 'ruby>=1.9.1')
 
 _commit="517c99d40b47"
 source=("https://bitbucket.org/osrf/${pkgname}/get/${pkgname}2_${pkgver}.tar.bz2")

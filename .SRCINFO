@@ -1,13 +1,14 @@
 pkgbase = sdformat
 	pkgdesc = SDF Converter for gazebo
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 3
 	url = http://sdformat.org/
 	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
 	makedepends = doxygen
+	makedepends = ruby>=1.9.1
 	depends = boost
 	depends = tinyxml
 	source = https://bitbucket.org/osrf/sdformat/get/sdformat2_2.3.0.tar.bz2
