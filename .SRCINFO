@@ -1,0 +1,21 @@
+pkgbase = xorg-xrandr-git
+	pkgdesc = Primitive command line interface to RandR extension. Git version.
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = http://www.x.org/wiki/Projects/XRandR
+	arch = i686
+	arch = x86_64
+	groups = xorg-apps
+	groups = xorg
+	license = custom
+	makedepends = xorg-util-macros
+	makedepends = git
+	depends = libxrandr>=1.5.0
+	depends = libx11
+	provides = xorg-xrandr=1.5.0
+	conflicts = xorg-xrandr
+	source = xrandr::git+http://anongit.freedesktop.org/git/xorg/app/xrandr.git
+	md5sums = SKIP
+
+pkgname = xorg-xrandr-git
+
