@@ -6,11 +6,11 @@ pkgrel=1
 pkgdesc="Simple secure free software VPN daemon"
 arch=('i686' 'x86_64')
 url="http://www.cypherpunks.ru/govpn/"
-makedepends=('go' 'plantuml') # PlantUML is for generating HTML docs only.
+makedepends=('go')
 license=('GPL')
-source=(https://github.com/stargrave/${pkgname}/archive/${pkgver}.tar.gz)
-noextract=("${pkgver}.tar.gz")
-sha256sums=('b5e1e99a8cdbbed2f64cc667f10e29bfd44edc2326cc4954ac436c3d2488abce')
+source=(http://sourceforge.net/projects/${pkgname}/files/${pkgname}-${pkgver}.tar.xz)
+noextract=("${pkgver}.tar.xz")
+sha256sums=('92986ec6d6da107c6cc1143659e5a154cd19b8f2ede5fa7f5ccc4525ae468e97')
 
 build() {
   mkdir -p $pkgname/src
@@ -18,10 +18,6 @@ build() {
   mv $pkgname/src/$pkgname-$pkgver $pkgname/src/$pkgname
   export GOPATH=$(pwd)/$pkgname:$GOPATH
   cd $pkgname/src/$pkgname
-  make
-
-  # Generating HTML docs with PlantUML.
-  cd doc
   make
 }
 
