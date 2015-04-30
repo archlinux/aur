@@ -1,7 +1,7 @@
 pkgbase = roboptim-core
 	pkgdesc = Numerical Optimization for Robotics
-	pkgver = 2.0
-	pkgrel = 2
+	pkgver = 3.0
+	pkgrel = 1
 	url = http://roboptim.net/
 	arch = i686
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = roboptim-core
 	depends = log4cxx
 	provides = roboptim-core
 	conflicts = roboptim-core-git
-	source = https://github.com/roboptim/roboptim-core/releases/download/v2.0/roboptim-core-2.0.tar.bz2
-	md5sums = 84bfe74fe4bf7826bbf98fc64a225025
+	source = https://github.com/roboptim/roboptim-core/releases/download/v3.0/roboptim-core-3.0.tar.bz2
+	md5sums = aabf85d2cacea67c7944dc65629316c3
 
 pkgname = roboptim-core
 
