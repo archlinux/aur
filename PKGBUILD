@@ -7,7 +7,7 @@ pkgname='ros-indigo-rosconsole'
 pkgver='1.11.11'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-indigo-rosunit
