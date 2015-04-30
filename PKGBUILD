@@ -2,7 +2,7 @@
 
 pkgname=govpn
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple secure free software VPN daemon"
 arch=('i686' 'x86_64')
 url="http://www.cypherpunks.ru/govpn/"
@@ -14,7 +14,7 @@ sha256sums=('92986ec6d6da107c6cc1143659e5a154cd19b8f2ede5fa7f5ccc4525ae468e97')
 
 build() {
   mkdir -p $pkgname/src
-  tar xfC ${pkgver}.tar.gz $pkgname/src
+  tar xfC ${pkgname}-${pkgver}.tar.xz $pkgname/src
   mv $pkgname/src/$pkgname-$pkgver $pkgname/src/$pkgname
   export GOPATH=$(pwd)/$pkgname:$GOPATH
   cd $pkgname/src/$pkgname
