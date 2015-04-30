@@ -1,7 +1,7 @@
 # Maintainer: Yuval Adam <yuval at y3xz dot com> PGP-Key: 271386AA2EB7672F
 
 pkgname=coreclr-git
-pkgver=f1573b6
+pkgver=39c5df9
 pkgrel=1
 pkgdesc="The .NET Core Runtime"
 arch=('x86_64')
@@ -24,10 +24,10 @@ build() {
 }
 
 package() {
-  install -Dm755 ${srcdir}/${_gitname}/binaries/Product/amd64/debug/corerun ${pkgdir}/usr/bin/corerun
+  install -Dm755 ${srcdir}/${_gitname}/bin/Product/Linux.x64.Debug/corerun ${pkgdir}/usr/bin/corerun
   install -d ${pkgdir}/usr/{lib,include}
-  install ${srcdir}/${_gitname}/binaries/Product/amd64/debug/*.so ${pkgdir}/usr/lib/
-  install ${srcdir}/${_gitname}/binaries/Product/amd64/debug/inc/*.h ${pkgdir}/usr/include/
+  install ${srcdir}/${_gitname}/bin/Product/Linux.x64.Debug/*.so ${pkgdir}/usr/lib/
+  install ${srcdir}/${_gitname}/bin/Product/Linux.x64.Debug/inc/*.h ${pkgdir}/usr/include/
 }
 
 # vim:set ts=2 sw=2 et:
