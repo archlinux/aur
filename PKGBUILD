@@ -7,7 +7,7 @@ pkgname='ros-indigo-compressed-image-transport'
 pkgver='1.9.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=4
+pkgrel=5
 license=('BSD')
 
 ros_makedepends=(ros-indigo-image-transport
