@@ -1,6 +1,6 @@
 # Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
 pkgname=cpplog-git
-pkgver=20140129
+pkgver=20150430
 pkgrel=1
 pkgdesc="A simple, header-only, MIT-licensed C++ logging library."
 arch=('i686' 'x86_64')
