@@ -3,33 +3,28 @@
 # Contributor: Gordin <9ordin @t gmail d@t com>
 
 pkgname=screenkey-git
-pkgver=0.2.b3634a2
-_pkgver=0.2
+pkgver=0.3.67216f6
 pkgrel=1
-pkgdesc="Screencast tool to show your keys inspired by Screenflick, based on key-mon. Patched version available on GitHub."
+pkgdesc="Screencast tool to show your keys inspired by Screenflick, based on key-mon. Active fork with new features."
 arch=('any')
-url="https://github.com/scs3jb/screenkey"
+url="https://github.com/wavexx/screenkey"
 license=('GPL3')
-depends=('python2' 'pygtk' 'python2-xlib'
-         'python2-keybinder2' 'xorg-xmodmap')
-makedepends=('git' 'python2-distutils-extra')
-source=("$pkgname"::"git+https://github.com/scs3jb/screenkey.git")
+depends=('python2' 'pygtk' 'python2-xlib' 'python2-keybinder2' 'xorg-xmodmap')
+makedepends=('git' 'python2-distutils-extra' 'python2-setuptools')
+source=("$pkgname"::"git+https://github.com/wavexx/screenkey.git")
 sha1sums=('SKIP')
 conflicts=('screenkey')
 replaces=('screenkey')
 
 pkgver() {
   cd "$srcdir/$pkgname"
+  _rel=`git describe | sed 's/screenkey-\([0-9]\+[.0-9]\+\).*/\1/g'`
   _hash=`git log --pretty=format:'%h' -n 1`
-  echo $_pkgver"."$_hash
+  echo $_rel"."$_hash
 }
 
 build() {
   cd "$srcdir/$pkgname"
-
-  # Fix hardcoded install path...
-  sed -i "s|/usr/share/|share/|" setup.py
-  sed -i "1s|env python|env python2|" Screenkey/modmap.py
 
   python2 setup.py build
 }
@@ -37,7 +32,7 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
 
-  python2 setup.py install --skip-build --prefix=${pkgdir}/usr
+  python2 setup.py install --skip-build --optimize=1 --root="$pkgdir/"
 }
 
 # vim:set ts=2 sw=2 et:

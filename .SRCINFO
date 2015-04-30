@@ -1,12 +1,13 @@
 pkgbase = screenkey-git
-	pkgdesc = Screencast tool to show your keys inspired by Screenflick, based on key-mon. Patched version available on GitHub.
-	pkgver = 0.2.b3634a2
+	pkgdesc = Screencast tool to show your keys inspired by Screenflick, based on key-mon. Active fork with new features.
+	pkgver = 0.3.67216f6
 	pkgrel = 1
-	url = https://github.com/scs3jb/screenkey
+	url = https://github.com/wavexx/screenkey
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = python2-distutils-extra
+	makedepends = python2-setuptools
 	depends = python2
 	depends = pygtk
 	depends = python2-xlib
@@ -14,7 +15,7 @@ pkgbase = screenkey-git
 	depends = xorg-xmodmap
 	conflicts = screenkey
 	replaces = screenkey
-	source = screenkey-git::git+https://github.com/scs3jb/screenkey.git
+	source = screenkey-git::git+https://github.com/wavexx/screenkey.git
 	sha1sums = SKIP
 
 pkgname = screenkey-git
