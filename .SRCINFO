@@ -1,6 +1,6 @@
 pkgbase = roboptim-core-plugin-nlopt-git
 	pkgdesc = NLopt interface for RobOptim Core.
-	pkgver = 0.1.r0.g0956b6e
+	pkgver = 3.0.r0.gd4723a1
 	pkgrel = 1
 	url = http://roboptim.net/
 	arch = i686

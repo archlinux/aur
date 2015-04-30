@@ -1,6 +1,6 @@
 # Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
 pkgname=roboptim-core-plugin-nlopt-git
-pkgver=0.1.r0.g0956b6e
+pkgver=3.0.r0.gd4723a1
 pkgrel=1
 pkgdesc="NLopt interface for RobOptim Core."
 arch=('i686' 'x86_64')
@@ -47,6 +47,7 @@ build() {
     # Run CMake in release
     cmake -DCMAKE_BUILD_TYPE="${_buildtype}" \
           -DCMAKE_INSTALL_PREFIX="/usr" \
+          -DDISABLE_TESTS=ON \
           "${srcdir}/${_gitname}"
 
     # Compile the library
