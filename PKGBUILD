@@ -1,13 +1,13 @@
 # Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
 pkgname=choreonoid
 pkgver=1.4.0
-pkgrel=3
+pkgrel=5
 pkgdesc="An integrated robotics GUI environment."
 arch=('any')
 url="http://choreonoid.org"
 license=('LGPL2')
 depends=('boost' 'bullet' 'eigen3' 'glew' 'glibc' 'libgl' 'libpng' 'libjpeg-turbo'
-         'libyaml' 'libx11' 'qt4' 'zlib')
+         'libyaml' 'libx11' 'openscenegraph' 'qt4' 'zlib')
 makedepends=('cmake')
 
 source=(http://choreonoid.org/_downloads/$pkgname-${pkgver}.zip)
