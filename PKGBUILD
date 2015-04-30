@@ -1,7 +1,7 @@
 # Maintainer: James An <james@jamesan.ca>
 
 pkgname=bash-utils-git
-pkgver=r62.51a4005
+pkgver=r65.5861540
 pkgrel=1
 pkgdesc="Misc. small utilities mainly for bash"
 arch=('any')
