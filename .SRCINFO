@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-rostest
 	pkgdesc = ROS - Integration test suite based on roslaunch that is compatible with xUnit frameworks.
 	pkgver = 1.11.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ros.org/wiki/rostest
 	arch = any
 	license = BSD
