@@ -7,7 +7,7 @@ pkgname='ros-indigo-laser-assembler'
 pkgver='1.7.2'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-indigo-roscpp
