@@ -1,0 +1,14 @@
+pkgbase = python2-dill
+	pkgdesc = Serialize all of python (almost)
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = http://www.cacr.caltech.edu/~mmckerns/dill.htm
+	arch = any
+	license = CUSTOM
+	makedepends = python2
+	depends = python2
+	source = https://pypi.python.org/packages/source/d/dill/dill-0.2.2.zip
+	md5sums = a282b81a6d289f91218bba8d07f49bd8
+
+pkgname = python2-dill
+
