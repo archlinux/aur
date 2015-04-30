@@ -2,8 +2,8 @@
 
 _pkgname=webui-aria2
 pkgname="$_pkgname-git"
-pkgver=r305.091fbb0
-pkgrel=2
+pkgver=r325.e217686
+pkgrel=1
 pkgdesc="Pure HTML/CSS/JS frontend for aria2"
 arch=('any')
 url="https://github.com/ziahamza/webui-aria2"
