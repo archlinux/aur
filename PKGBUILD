@@ -7,7 +7,7 @@ pkgname='ros-indigo-diagnostic-aggregator'
 pkgver='1.8.7'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-indigo-roscpp
