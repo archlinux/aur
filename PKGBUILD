@@ -26,4 +26,5 @@ package() {
   python setup.py install --root="$pkgdir"
 } 
 
+# getver: -d 2 -u 5
 # vim:set ts=2 sw=2 et:
