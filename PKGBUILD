@@ -3,7 +3,7 @@
 pkgname=cuda-z
 _relver=231
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="CUDA Information Utility."
 url="http://cuda-z.sourceforge.net/"
 license="GPL2"
@@ -17,6 +17,11 @@ build(){
 
   # Support for sm_10 dropped in CUDA 6.5
   sed -i 's/+= sm_10/+=/g' cuda-z.pro
+
+  # Support for sm_11/sm_12/sm_13 dropped in CUDA 7
+  sed -i 's/+= sm_11/+=/g' cuda-z.pro
+  sed -i 's/+= sm_12/+=/g' cuda-z.pro
+  sed -i 's/+= sm_13/+=/g' cuda-z.pro
 
   sed -i 's/\/usr\/local\/cuda/\/opt\/cuda/g' cuda-z.pro
   sed -i 's/\/usr\/local\/cuda/\/opt\/cuda/g' cuda.pri

@@ -1,7 +1,7 @@
 pkgbase = cuda-z
 	pkgdesc = CUDA Information Utility.
 	pkgver = 0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cuda-z.sourceforge.net/
 	arch = x86_64
 	license = GPL2
