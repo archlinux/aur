@@ -7,7 +7,7 @@ pkgname='ros-indigo-rviz'
 pkgver='1.11.7'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD, Creative Commons')
 
 ros_makedepends=(ros-indigo-geometry-msgs
