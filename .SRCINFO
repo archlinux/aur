@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-rosbag-storage
 	pkgdesc = ROS - This is a set of tools for recording from and playing back ROS message without relying on the ROS client library.
 	pkgver = 1.11.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ros.org/
 	arch = any
 	license = BSD
