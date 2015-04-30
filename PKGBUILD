@@ -1,6 +1,6 @@
 # Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
 pkgname=roboptim-core-git
-pkgver=2.0.r266.g3dae58c
+pkgver=3.0.r5.ga4dcac7
 pkgrel=1
 pkgdesc="Numerical Optimization for Robotics"
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ _builddir="${_gitname}-build"
 pkgver() {
     cd "$srcdir/${_gitname}"
     # Use the tag of the last commit
-    git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^v([0-9])/\1/'
+    git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^v([0-9])/\1/'
 }
 
 # Build the project
@@ -49,6 +49,7 @@ build() {
     # Run CMake in release
     cmake -DCMAKE_BUILD_TYPE="${_buildtype}" \
           -DCMAKE_INSTALL_PREFIX="/usr" \
+          -DSTORAGE_ORDER="ColMajor" \
           "${srcdir}/${_gitname}"
 
     # Compile the library
