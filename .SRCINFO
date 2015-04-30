@@ -1,7 +1,7 @@
 pkgbase = ros-indigo-joy
 	pkgdesc = ROS - ROS driver for a generic Linux joystick.
 	pkgver = 1.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.ros.org/wiki/joy
 	arch = any
 	license = BSD
