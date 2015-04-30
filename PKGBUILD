@@ -7,7 +7,7 @@ pkgname='ros-indigo-stage-ros'
 pkgver='1.7.4'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-indigo-roscpp
