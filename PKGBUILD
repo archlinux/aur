@@ -2,7 +2,7 @@
 
 _pkgname=provision
 pkgname=aegir-$_pkgname
-pkgver=7.x_3.0_alpha2
+pkgver=7.x_3.0_beta1
 pkgrel=1
 pkgdesc="mass Drupal hosting system - backend"
 arch=('any')
