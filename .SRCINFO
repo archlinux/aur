@@ -1,0 +1,20 @@
+pkgbase = libxrandr-git
+	pkgdesc = X11 RandR extension library. Git version.
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = http://xorg.freedesktop.org
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = xorg-util-macros
+	makedepends = git
+	depends = libxext
+	depends = libxrender
+	depends = randrproto>=1.5.0
+	provides = libxrandr=1.5.0
+	conflicts = libxrandr
+	source = libxrandr::git+http://anongit.freedesktop.org/git/xorg/lib/libXrandr.git
+	md5sums = SKIP
+
+pkgname = libxrandr-git
+
