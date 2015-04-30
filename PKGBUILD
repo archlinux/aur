@@ -28,4 +28,6 @@ package() {
   mkdir -p $pkgdir/usr/share/doc/$pkgname/
   install -Dm644 doc/${pkgname}.html/* $pkgdir/usr/share/doc/$pkgname/
   install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
+  mkdir -p $pkgdir/usr/share/$pkgname/
+  install -Dm755 utils/newclient.sh $pkgdir/usr/share/$pkgname/newclient.sh
 }
