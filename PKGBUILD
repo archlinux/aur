@@ -1,7 +1,7 @@
 # Maintainer: James An <james@jamesan.ca>
 _pkgname=creepy
 pkgname=python2-$_pkgname-git
-pkgver=r17.e051e44
+pkgver=r25.dece1aa
 pkgrel=1
 pkgdesc="Dead simple web crawler for Python"
 arch=('any')
