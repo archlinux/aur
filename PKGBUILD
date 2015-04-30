@@ -7,7 +7,7 @@ pkgname='ros-indigo-filters'
 pkgver='1.7.4'
 _pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(ros-indigo-roscpp
