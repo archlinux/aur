@@ -1,6 +1,6 @@
 # Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
 pkgname=roboptim-core-python-git
-pkgver=20150218
+pkgver=3.0.r0.ga48b485
 pkgrel=1
 pkgdesc="Python bindings for RobOptim"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ provides=('roboptim-core-python')
 conflicts=('roboptim-core-python')
 
 # Repository location
-_gitroot="git+https://github.com/roboptim/roboptim-core-python.git"
+_gitroot="git+https://github.com/roboptim/roboptim-core-python.git#branch=master"
 _gitname="roboptim-core-python"
 
 source=("${_gitname}"::${_gitroot})
@@ -28,7 +28,9 @@ _builddir="${_gitname}-build"
 _doxytag="usr/share/doc/roboptim-core-python/doxygen-html/roboptim-core-python.doxytag"
 
 pkgver() {
-    date +%Y%m%d
+    cd "$srcdir/${_gitname}"
+    # Use the tag of the last commit
+    git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^v([0-9])/\1/'
 }
 
 # Build the project
