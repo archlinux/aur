@@ -3,7 +3,7 @@
 
 pkgname=piaware-git
 _gitname=piaware
-pkgver=1.18.1.r30.g43ca50a
+pkgver=1.81.1.r35.g9178d2e
 pkgrel=1
 
 pkgdesc="Client-side package and programs for forwarding ADS-B data to FlightAware"
@@ -16,13 +16,9 @@ depends=('dump1090_mr-git' 'tcl' 'tcllib' 'tclx' 'tk' 'tls')
 makedepends=('git' 'autoconf' 'tcl')
 
 source=('piaware::git+git://github.com/flightaware/piaware'
-	'tcllauncher::git+git://github.com/flightaware/tcllauncher.git'
-	'0001-Add-ability-to-specify-custom-install-prefix-for-pac.patch'
-	'0002-Add-fix-for-adept-error-from-mutability-piaware.patch')
+	'tcllauncher::git+git://github.com/flightaware/tcllauncher.git')
 md5sums=('SKIP'
-         'SKIP'
-         '57d43fc9803c99bd7f32f882bf42fc08'
-         'e8a43e9a5f22d52bb2c47168b00d92ac')
+         'SKIP')
 install=piaware-git.install
 
 _gitname=piaware
@@ -34,10 +30,6 @@ pkgver() {
 }
 
 prepare() {
-  cd "${srcdir}/${_gitname}"
-  patch -p1 < ../0001-Add-ability-to-specify-custom-install-prefix-for-pac.patch
-  patch -p1 < ../0002-Add-fix-for-adept-error-from-mutability-piaware.patch
-
   cd "${srcdir}/${_gitname2}"
   autoconf
   ./configure 
