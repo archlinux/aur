@@ -18,41 +18,46 @@ echo "Using temporary directory $TMPDIR"
 curl -L -o addon.zip "$URL"
 unzip -d addon addon.zip
 
-TYPE="$(< addon/package.ini grep '^Type *='|cut -d= -f2|sed 's/ //g'|tr "[:upper:]" "[:lower:]"|tr ' ' -|tr -d '\r\n')"
-VERSION="$(< addon/package.ini grep -i '^Version *='|cut -d= -f2|tr -d ' \r\n')"
-NAME="$(< addon/package.ini grep -i '^Name *='|cut -d= -f2|sed 's/^ //g'|tr -d '\r\n')"
+ADDONDIR="$(dirname "$(cd addon; find . -name package.ini)")"
+SETTINGSINI="$(cd addon; find . -name settings.ini)"
+
+TYPE="$(< "addon/$ADDONDIR/package.ini" grep '^Type *='|cut -d= -f2|sed 's/ //g'|tr "[:upper:]" "[:lower:]"|tr ' ' -|tr -d '\r\n')"
+if [[ -z "$TYPE" ]] ; then if < "addon/$SETTINGSINI" grep '\[soundfiles\]' >/dev/null ; then TYPE="soundpack" ; fi ; fi
+VERSION="$(< "addon/$ADDONDIR/package.ini" grep -i '^Version *='|cut -d= -f2|tr -d ' \r\n')"
+if [[ -z "$VERSION" ]] ; then VERSION="$(< "addon/$SETTINGSINI" grep -i '^version *='|cut -d= -f2|tr -d ' \r\n')" ; fi
+NAME="$(< "addon/$ADDONDIR/package.ini" grep -i '^Name *='|cut -d= -f2|sed 's/^ //g'|tr -d '\r\n')"
+if [[ -z "$NAME" ]] ; then NAME="$(< "addon/$SETTINGSINI" grep -i '^name *='|cut -d= -f2|tr -d ' \r\n')" ; fi
 PKGNAME="teamspeak3-addon-$TYPE-$(echo "$NAME"|tr "[:upper:]" "[:lower:]"|tr ' ' -|tr -d '\r\n')"
+
+CP_CMD="cp -R \"$ADDONDIR\" \"\$pkgdir/opt/teamspeak3\""
+if [[ "$TYPE" == 'soundpack' && ! -d 'addon/sound' ]] ; then
+  CP_CMD="mkdir \"\$pkgdir/opt/teamspeak3/sound\"; cp -R \"$(dirname "$SETTINGSINI")\" \"\$pkgdir/opt/teamspeak3/sound\""
+fi
 
 mkdir "$PKGNAME"
 mv addon.zip "$PKGNAME"
 cd "$PKGNAME"
 
-> PKGBUILD sed \
-  -e "s/{TYPE}/$TYPE/" \
-  -e "s/{VERSION}/$VERSION/" \
-  -e "s/{NAME}/$NAME/" \
-  -e "s/{PKGNAME}/$PKGNAME/" \
-  -e "s|{URL}|$URL|" \
-<<PKGBUILD_END
+> PKGBUILD cat <<PKGBUILD_END
 # Maintainer: You
-pkgname='{PKGNAME}'
-pkgver='{VERSION}'
+pkgname='$PKGNAME'
+pkgver='$VERSION'
 pkgrel=$REL
-pkgdesc='An addon for Teamspeak 3 - {NAME}'
+pkgdesc='An addon for Teamspeak 3 - $TYPE: $NAME'
 arch=('any')
 url='http://addons.teamspeak.com'
 license=('Unknown')
 depends=('teamspeak3')
-source=('addon.zip::{URL}')
+source=('addon.zip::$URL')
 sha1sums=('UNUSED')
 
 package() {
   cd -- "\$srcdir"
   mkdir -p -- "\$pkgdir/opt/teamspeak3"
-  rm package.ini
+  rm "$ADDONDIR/package.ini"
   rm addon.zip
-  find . -type f -exec chmod a-x {} \+
-  cp -R . "\$pkgdir/opt/teamspeak3"
+  find "$ADDONDIR" -type f -exec chmod a-x {} \+
+  $CP_CMD
 }
 PKGBUILD_END
 
