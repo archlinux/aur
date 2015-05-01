@@ -2,7 +2,7 @@
 
 pkgname=govpn
 pkgver=2.4
-pkgrel=2
+pkgrel=1
 pkgdesc="Simple secure free software VPN daemon"
 arch=('i686' 'x86_64')
 url="http://www.cypherpunks.ru/govpn/"
