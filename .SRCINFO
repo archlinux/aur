@@ -1,6 +1,6 @@
 pkgbase = coreclr-git
 	pkgdesc = The .NET Core Runtime
-	pkgver = 39c5df9
+	pkgver = 7309fb8
 	pkgrel = 1
 	url = https://github.com/dotnet/coreclr
 	arch = x86_64

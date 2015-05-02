@@ -1,7 +1,7 @@
 # Maintainer: Yuval Adam <yuval at y3xz dot com> PGP-Key: 271386AA2EB7672F
 
 pkgname=coreclr-git
-pkgver=39c5df9
+pkgver=7309fb8
 pkgrel=1
 pkgdesc="The .NET Core Runtime"
 arch=('x86_64')
