@@ -1,6 +1,6 @@
 pkgbase = linux-vfio
-	pkgver = 4.0
-	pkgrel = 2
+	pkgver = 4.0.1
+	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,8 @@ pkgbase = linux-vfio
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.1.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.1.sign
 	source = config
 	source = config.x86_64
 	source = linux.preset
@@ -20,6 +22,8 @@ pkgbase = linux-vfio
 	source = override_for_missing_acs_capabilities.patch
 	source = i915_317.patch
 	sha256sums = 0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991
+	sha256sums = SKIP
+	sha256sums = 9b4b47eb6584dc39aaa5db46843b83f7c60975abecbda4dc106a8722eabe96fb
 	sha256sums = SKIP
 	sha256sums = 514aa8a9d03d2419c8084725fcdb2b5b4ce07966f5bd6a51224a5f7a5f8c3694
 	sha256sums = b268b03a042e3f604a12a80c6e24c42006e4d9bf4a6d9b3201eb006942718128
@@ -36,20 +40,20 @@ pkgname = linux-vfio
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = kernel26-vfio=4.0
+	provides = kernel26-vfio=4.0.1
 	conflicts = kernel26-vfio
 	replaces = kernel26-vfio
 	backup = etc/mkinitcpio.d/linux-vfio.preset
 
 pkgname = linux-vfio-headers
 	pkgdesc = Header files and scripts for building modules for Linux-vfio kernel
-	provides = kernel26-vfio-headers=4.0
+	provides = kernel26-vfio-headers=4.0.1
 	conflicts = kernel26-vfio-headers
 	replaces = kernel26-vfio-headers
 
 pkgname = linux-vfio-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-vfio kernel
-	provides = kernel26-vfio-docs=4.0
+	provides = kernel26-vfio-docs=4.0.1
 	conflicts = kernel26-vfio-docs
 	replaces = kernel26-vfio-docs
 
