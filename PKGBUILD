@@ -1,7 +1,7 @@
 # Maintainer: oi_wtf <brainpower at gulli dot com>
 
 pkgname=sfml-git
-pkgver=2.2.r22.gc303d1f
+pkgver=2.2.r126.g93f389e
 pkgrel=1
 pkgdesc="A simple, fast, cross-platform, and object-oriented multimedia API"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ conflicts=('sfml')
 replaces=('sfml')
 options=('debug')
 
-source=("git+https://github.com/LaurentGomila/SFML.git"
+source=("git+https://github.com/SFML/SFML.git"
         "0001-fix_cmake_module_install_path.patch")
 sha256sums=('SKIP'
             'c0be2636b1d342f636f2587e043dbfa8becdd8d9c65044cf7749ab4b2c81eb47')
