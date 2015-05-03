@@ -1,7 +1,7 @@
 # Maintainer: Zhuoyun Wei <wzyboy@wzyboy.org>
 
 pkgname=govpn
-pkgver=2.4
+pkgver=3.0
 pkgrel=1
 pkgdesc="Simple secure free software VPN daemon"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ makedepends=('go')
 license=('GPL')
 source=(http://sourceforge.net/projects/${pkgname}/files/${pkgname}-${pkgver}.tar.xz)
 noextract=("${pkgver}.tar.xz")
-sha256sums=('df45225bac2384c5eed73c5cdb05dc3581495e08d365317beb03a2487d46b98c')
+sha256sums=('12579c5c3cccfe73c66b5893335bc70c42d7b13b8e94c7751ec65d421eaff9a5')
 
 build() {
   mkdir -p $pkgname/src
@@ -25,9 +25,11 @@ package() {
   cd $srcdir/$pkgname/src/$pkgname
   install -D govpn-client $pkgdir/usr/bin/govpn-client
   install -D govpn-server $pkgdir/usr/bin/govpn-server
+  install -D govpn-verifier $pkgdir/usr/bin/govpn-verifier
   mkdir -p $pkgdir/usr/share/doc/$pkgname/
   install -Dm644 doc/${pkgname}.html/* $pkgdir/usr/share/doc/$pkgname/
   install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
   mkdir -p $pkgdir/usr/share/$pkgname/
   install -Dm755 utils/newclient.sh $pkgdir/usr/share/$pkgname/newclient.sh
+  install -Dm755 utils/storekey.sh $pkgdir/usr/share/$pkgname/storekey.sh
 }
