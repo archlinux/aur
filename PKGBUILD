@@ -3,12 +3,12 @@
 _pkgname=nolimips
 pkgname=${_pkgname}-git
 pkgver=0.9.40.geec6f00
-pkgrel=2
+pkgrel=3
 pkgdesc='Nolimips is a MIPS-based simulator with "infinitely many registers".'
 url="https://www.lrde.epita.fr/wiki/Nolimips"
 arch=('x86_64' 'i686')
 license=('GPL3')
-makedepends=('git')
+makedepends=('git' 'python2')
 depends=()
 source=("git://git.lrde.epita.fr/${_pkgname}")
 md5sums=('SKIP')
