@@ -1,0 +1,26 @@
+--- src/VMMonad.hs.orig	2015-05-03 02:22:24.504191179 +0200
++++ src/VMMonad.hs	2015-05-03 02:23:48.101173777 +0200
+@@ -27,6 +27,9 @@
+ import qualified Level (initialize, lfetch, lstore)
+ import qualified Memory (initialize, mfetch, mstore, mstoren, mreserve)
+ 
++import Control.Applicative (Applicative(..))
++import Control.Monad       (liftM, ap)
++
+ data State =
+     State { reg :: Registry,
+ 	    mem :: Memory,
+@@ -38,6 +41,13 @@
+             profileHandle :: Maybe Handle,
+ 	    profile :: ! (Map String Int) }
+ 
++instance Functor Mnd where
++    fmap  = liftM
++
++instance Applicative Mnd where
++    pure  = return
++    (<*>) = ap
++
+ newtype Mnd a =
+     Mnd (IORef State -> IO a)
+ 
