@@ -7,9 +7,9 @@ pkgrel=1
 pkgdesc='Nolimips is a MIPS-based simulator with "infinitely many registers".'
 url="https://www.lrde.epita.fr/wiki/Nolimips"
 arch=('x86_64' 'i686')
-license=('GPLv3')
+license=('GPL3')
 makedepends=('git')
-depends=('python2' 'flex' 'bison')
+depends=()
 source=("git://git.lrde.epita.fr/${_pkgname}")
 md5sums=('SKIP')
 
