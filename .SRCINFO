@@ -1,0 +1,13 @@
+pkgbase = thinkalert
+	pkgdesc = program for manipulating the ThinkLight LED on Thinkpad laptops.
+	pkgver = 0.1
+	pkgrel = 2
+	url = http://www.mike.tl/other/ThinkAlert.html
+	arch = i686
+	arch = x86_64
+	license = unknown
+	source = https://github.com/floriandejonckheere/thinkalert/archive/v0.1.tar.gz
+	md5sums = f71c5eccbf98d75053e0af2b4490257e
+
+pkgname = thinkalert
+
