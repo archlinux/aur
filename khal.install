@@ -6,6 +6,6 @@ post_install() {
 
 post_upgrade() {
   echo 'The configuration file has changed.'
-  echo 'Please compare your own version in ~/.config/khal/khal.conf with the new one put in /etc/skel/khal.conf.'
+  echo 'Please compare your own version in ~/.config/khal/khal.conf with the new one put in /usr/share/doc/khal/examples/khal.conf.'
   echo 'You may also need to delete your sqlite file (in ~/.config/khal/khal.db) to take into account any changes, which might have occured in the database schema.'
 }
