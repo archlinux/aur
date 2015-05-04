@@ -2,8 +2,8 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=libvirt
-pkgver=1.2.14
-pkgrel=3
+pkgver=1.2.15
+pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
@@ -63,7 +63,7 @@ source=("http://libvirt.org/sources/$pkgname-$pkgver.tar.gz"
 	libvirtd.conf.d
 	libvirtd-guests.conf.d
 	libvirt.tmpfiles.d)
-md5sums=('983345c4ee6535437a6ba408dd59289a'
+md5sums=('08c2ea825d076ee67b1bbc600c220b97'
          '5e31269067dbd12ca871234450bb66bb'
          '384fff96c6248d4f020f6fa66c32b357'
          '020971887442ebbf1b6949e031c8dd3f')
@@ -112,8 +112,8 @@ package() {
   install -D -m644 "$srcdir"/libvirtd-guests.conf.d "$pkgdir"/etc/conf.d/libvirt-guests
   install -D -m644 "$srcdir"/libvirt.tmpfiles.d "$pkgdir"/usr/lib/tmpfiles.d/libvirt.conf
 
-  chown -R 0:78 $pkgdir/var/lib/libvirt/qemu/channel/target/
-  chmod 0770 $pkgdir/var/lib/libvirt/qemu/channel/target/
+  chown -R 0:78 $pkgdir/var/lib/libvirt/qemu
+  chmod 0770 $pkgdir/var/lib/libvirt/qemu
 
   rm -rf \
 	"$pkgdir"/var/run \
