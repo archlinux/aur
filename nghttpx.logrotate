@@ -1,0 +1,8 @@
+/var/log/nghttpx/access.log {
+   daily
+   rotate 30
+   missingok
+   postrotate
+      killall -USR1 nghttpx 2> /dev/null || true
+   endscript
+}
