@@ -1,7 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 pkgname=firestorm-bin
-pkgver=4.6.9.42974
-pkgrel=2
+pkgver=4.7.1.45325
+pkgrel=1
 pkgdesc="Firestorm is a feature-packed third-party viewer for Second Life."
 url="http://www.firestormviewer.org/"
 license=('GPL')
@@ -36,12 +36,11 @@ elif [ "$CARCH" = "x86_64" ]; then
       'lib32-freealut: for OpenAL support')
 fi
 install=firestorm.install
-options=(!strip)
-source=("http://downloads.firestormviewer.org/linux/Phoenix_FirestormOS-Release_i686_$pkgver.tar.bz2"
+source=("http://downloads.firestormviewer.org/linux/Phoenix_FirestormOS-Beta_i686_$pkgver.tar.xz"
         "firestorm.install"
         "firestorm.desktop"
         "firestorm.launcher")
-sha256sums=('211b931cb808c48baa1f13f707790366654fad7a2cd18046c02c02af72ce850d'
+sha256sums=('87ddc945c8a729d3b077c719445df97cb2caf4c49934e85daee4735c9036f320'
             'cd919be5e2d28ff86e9b51ffe1076ba8c13acf9c0953fc2f4bb78fe7e79cdbb3'
             '6dffebc474fd98d23bf8d9f4a7592795642dbddf3a0b585f89d25ff11ae15cc1'
             'b2ce32d268f76f4324807d50c4098a3480b489ec447133ce8d9b9c4a7bc05530')
@@ -50,10 +49,15 @@ package() {
   cd "$srcdir"
 
   # Rename Data Directory
-  mv Phoenix_FirestormOS-Release_i686_$pkgver firestorm
+  mv Phoenix_FirestormOS-Beta_i686_$pkgver firestorm
 
   # Fix fontconfig >= 2.9.0 issue
   ln -si libfontconfig.so.1.4.4 firestorm/lib/libfontconfig.so.1
+
+  # File modes fix.
+  find firestorm -type d -execdir chmod 755 "{}" \;
+  find firestorm -type f -execdir chmod 644 "{}" \;
+  chmod 755 firestorm/bin/* firestorm/firestorm
 
   # Install Desktop File
   install -D -m644 "$srcdir"/firestorm.desktop \
