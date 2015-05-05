@@ -1,7 +1,7 @@
 # Maintainer: Chris Warrick <aur@chriswarrick.com>
 pkgname=python-doit
 _pyname=doit
-pkgver=0.27.0
+pkgver=0.28.0
 pkgrel=1
 pkgdesc='Automation Tool'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'python-pyinotify' 'python-six')
 options=(!emptydirs)
 source=("http://pypi.python.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "LICENSE")
-md5sums=('d3171edb1267a915e0ff0c9756d4b0db'
+md5sums=('ff08327b41d8d0f97bbb7ad1885a366a'
          '7d6fd7c8e022bae9010af272c31eb45f')
 
 package() {
