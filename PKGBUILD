@@ -2,7 +2,7 @@
 pkgname=python-nikola-git
 _pyname=nikola
 _gitname=nikola
-pkgver=7.3.1.r0.gd956c31
+pkgver=7.4.0.r0.g3f3a051
 pkgrel=1
 pkgdesc='A modular, fast, simple, static website generator.  (git version)'
 arch=('any')
