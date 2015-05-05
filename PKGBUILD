@@ -2,7 +2,7 @@
 # Contributor: Stéphane Gaudreault <stephane@archlinux.org>
 
 pkgname=openmpi
-pkgver=1.8.4
+pkgver=1.8.5
 pkgrel=1
 pkgdesc='High performance message passing library (MPI)'
 arch=(i686 x86_64)
@@ -12,23 +12,13 @@ depends=(libltdl hwloc)
 makedepends=(inetutils valgrind gcc-fortran)
 optdepends=('gcc-fortran: fortran support')
 options=(staticlibs)
-source=(http://www.open-mpi.org/software/ompi/v1.8/downloads/${pkgname}-${pkgver}.tar.bz2
-        system_ltdl.patch)
-sha1sums=('88ae39850fcf0db05ac20e35dd9e4cacc75bde4d'
-          'd5f8a3d463f1a1f29ca4725d6fb3b9f8c40799dc')
-
-prepare() {
-   cd $pkgname-$pkgver
-
-   # Make sure we use the system ltdl library rather than the ones in the tarball
-   rm -r opal/libltdl
-   patch -p1 < ../system_ltdl.patch
-   ./autogen.pl
-}
+source=(http://www.open-mpi.org/software/ompi/v1.8/downloads/${pkgname}-${pkgver}.tar.bz2)
+sha1sums=('2e0408dbb033b0df21d1f95fffb872f2a8237de6')
 
 build() {
    cd $pkgname-$pkgver
 
+   ./autogen.pl
    ./configure --prefix=/usr \
                --sysconfdir=/etc/${pkgname} \
                --enable-mpi-fortran=all \
