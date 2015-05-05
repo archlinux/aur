@@ -14,7 +14,7 @@ _runkernver=$(uname -r)
 _shortkernver=${_runkernver%.*}
 
 pkgname=backports-patched
-pkgver=3.19_rc1_1
+pkgver=4.1_rc1_1
 _upver="${pkgver//_/-}"
 pkgrel=7
 pkgdesc='Backports provides drivers released on newer kernels backported for usage on older kernels. Patched flavor'
@@ -29,7 +29,7 @@ install=backports.install
 source=("http://www.kernel.org/pub/linux/kernel/projects/backports/stable/v${_upver%-*}/backports-${_upver}.tar.xz")
 # Snapshot:
 #source=("http://www.kernel.org/pub/linux/kernel/projects/backports/${pkgver:0:4}/${pkgver:4:2}/${pkgver:6:2}/backports-${pkgver}.tar.xz")
-sha256sums=('d782422d664b84128154fc5d0e9b8cd04bb208e53546d68856ad3f7f53f7de98')
+sha256sums=('dae80880dc2c40a4d0638946605c78382b6b9b909ccceedf153cf2db3f5380ef')
 
 # Check for daily pkgver eg. 20370718
 date -d "$pkgver" > /dev/null 2>&1
