@@ -1,0 +1,17 @@
+--- freeplane-1.3.15/freeplane.sh	2015-02-07 18:04:56.000000000 +0000
++++ ./freeplane.sh	2015-05-05 20:36:04.737382474 +0100
+@@ -181,7 +181,7 @@
+  $JAVA_OPTS\
+  $xdockname\
+  -jar "${freedir}/freeplanelauncher.jar"\
+- $*
++ "$*"
+ ( echo "${DEBUG}" | grep -qe "exit" ) && exit 0 # do not start Freeplane
+ 
+ # now actually launch Freeplane
+@@ -192,4 +192,4 @@
+  $JAVA_OPTS\
+  $xdockname\
+  -jar "${freedir}/freeplanelauncher.jar"\
+- $*
++ "$*"

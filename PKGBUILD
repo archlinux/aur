@@ -3,7 +3,7 @@
 
 pkgname=freeplane
 pkgver=1.3.15
-pkgrel=1
+pkgrel=2
 pkgdesc="A Java mindmapping tool"
 arch=('any')
 url="http://freeplane.sourceforge.net"
@@ -11,12 +11,19 @@ license=('GPL')
 makedepends=('unzip')
 depends=('java-environment' 'desktop-file-utils')
 source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}_bin-${pkgver}.zip
-        freeplane.desktop freeplane.run freeplane.svg)
+        freeplane.desktop freeplane.run freeplane.svg freeplane_sh_fix_spaces.patch)
 md5sums=('5b53a13bb60a7f8bfbab7a178f9e47fa'
          '85d40893aef0b71f9ffdf2dec4fbb0f0'
          'f1505d5b6872e2dffe8ef2e82d065551'
-         '8b5495861133945b4c0e485260d1c536')
+         '8b5495861133945b4c0e485260d1c536'
+         '4e16ea24ea49f71847eb5242674eab2b')
 install=freeplane.install
+
+prepare(){
+  cd "${pkgname}-${pkgver}"
+  patch -p1 -i "${srcdir}/freeplane_sh_fix_spaces.patch"
+}
+
 
 package() {
   # Create required directories
