@@ -1,0 +1,43 @@
+From 157f4f47617c9dd1fb8d7dae099f16664aab19bc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Nirgal=20Vourg=C3=A8re?= <contact_mdbtools@nirgal.com>
+Date: Fri, 17 Oct 2014 17:15:46 +0200
+Subject: [PATCH] fix ENABLE_SK undefined, autoconf summary
+
+---
+ configure.ac | 32 ++++++++++++++++++++++++++++++--
+ 1 file changed, 30 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 26377e2..a907f02 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -253,3 +255,29 @@ mdbtools.spec
+ include/mdbver.h])
+ AC_OUTPUT
+ dnl doc/reference/libmdb/Makefile])
++
++##################################################
++# Print summary
++##################################################
++
++
++bold_red=$(tput bold)$(tput setf 4)
++bold_green=$(tput bold)$(tput setf 2)
++bold=$(tput bold)
++reset=$(tput sgr0)
++AC_MSG_NOTICE([])
++AC_MSG_NOTICE([${bold}MDB Tools $VERSION - Configuration summary${reset}])
++AC_MSG_NOTICE([])
++if test x$sql = xtrue; then summary=${bold_green}enabled; else summary=${bold_red}disabled; fi
++AC_MSG_NOTICE([   SQL          : ${summary}${reset}])
++if test x$HAVE_ODBC = xtrue; then summary=${bold_green}enabled; else summary=${bold_red}disabled; fi
++AC_MSG_NOTICE([   ODBC         : ${summary}${reset}])
++if test x$build_gmdb2 = xyes; then summary=${bold_green}enabled; else summary=${bold_red}disabled; fi
++AC_MSG_NOTICE([   UI           : ${summary}${reset}])
++if test x$enable_gtk_doc = xyes; then summary=${bold_green}enabled; else summary=${bold_red}disabled; fi
++AC_MSG_NOTICE([   Gtk doc      : ${summary}${reset}])
++if test x$enable_man = xyes; then summary=${bold_green}enabled; else summary=${bold_red}disabled; fi
++AC_MSG_NOTICE([   man          : ${summary}${reset}])
++if test -n "$DOCBOOK_DSL"; then summary=${bold_green}enabled; else summary=${bold_red}disabled; fi
++AC_MSG_NOTICE([   html docbook : ${summary}${reset}])
++AC_MSG_NOTICE([])
