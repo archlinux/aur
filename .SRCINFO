@@ -1,6 +1,6 @@
 pkgbase = systemd-selinux
-	pkgver = 218
-	pkgrel = 2
+	pkgver = 219
+	pkgrel = 6
 	url = http://www.freedesktop.org/wiki/Software/systemd
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = systemd-selinux
 	makedepends = gperf
 	makedepends = gtk-doc
 	makedepends = intltool
+	makedepends = iptables
 	makedepends = kmod
 	makedepends = libcap
 	makedepends = libidn
@@ -31,50 +32,32 @@ pkgbase = systemd-selinux
 	makedepends = libselinux
 	options = strip
 	options = debug
-	source = http://www.freedesktop.org/software/systemd/systemd-218.tar.xz
+	source = http://www.freedesktop.org/software/systemd/systemd-219.tar.xz
 	source = initcpio-hook-udev
 	source = initcpio-install-systemd
 	source = initcpio-install-udev
-	source = 0001-journal-fix-dangling-else-ambiguity.patch
-	source = 0002-nspawn-properly-validate-machine-names.patch
-	source = 0003-systemctl-fix-argument-handling-when-invoked-as-shut.patch
-	source = 0004-systemctl-properly-iterate-through-service-array-whe.patch
-	source = 0005-nss-myhostname-always-will-in-canonical-hostname-fie.patch
-	source = 0010-log-fix-log_full_errno-with-custom-facilities.patch
-	source = 0014-timesyncd-consider-too-long-packets-as-invalid.patch
-	source = 0016-logind-fix-sd_eviocrevoke-ioctl-call.patch
-	source = 0019-sd-bus-fix-handling-of-double-parameters-in-sd_bus_m.patch
-	source = 0021-units-fix-all-TTY-paths-for-container-gettys.patch
-	source = 0024-sd-dhcp-chop-of-trailing-dot-of-DHCP-supplied-host-a.patch
-	source = 0025-logind-handle-closing-sessions-over-daemon-restarts.patch
-	source = 0026-core-make-setting-the-shutdown-watchdog-configuratio.patch
-	source = 0027-sd-rtnl-don-t-fail-event-handler-when-callback-fails.patch
-	source = 0029-config_parse_set_status-put-signals-in-the-correct-s.patch
-	source = 0030-network-address-test-network-avoid-undefined-behavio.patch
-	source = 0033-core-disarm-shutdown-watchdog-if-we-fail-to-set-time.patch
-	source = 0034-exit-on-idle-only-exit-if-actually-idle.patch
-	md5sums = 4e2c511b0a7932d7fc9d79822273aac6
+	source = 0001-tmpfiles-avoid-creating-duplicate-acl-entries.patch
+	source = 0001-nspawn-when-connected-to-pipes-for-stdin-stdout-pass.patch
+	source = 0001-core-shared-in-deserializing-match-same-files-reache.patch
+	source = 0001-tmpfiles-Fix-handling-of-duplicate-lines.patch
+	source = 0001-core-do-not-spawn-jobs-or-touch-other-units-during-c.patch
+	source = 0001-use-x-machine-unix-prefix-for-the-container-bus-on-dbus1.patch
+	source = 0001-unit-use-weaker-dependencies-between-mount-and-devic.patch
+	source = 0001-core-rework-device-state-logic.patch
+	source = 0001-core-don-t-change-removed-devices-to-state-tentative.patch
+	md5sums = e0d6c9a4b4f69f66932d2230298c9a34
 	md5sums = 90ea67a7bb237502094914622a39e281
-	md5sums = c9db3010602913559295de3481019681
+	md5sums = 58af51bd4c0464f195b3433b4e17cf6c
 	md5sums = bde43090d4ac0ef048e3eaee8202a407
-	md5sums = 22920ff32e345a26a9c05662ec274314
-	md5sums = 6960b43aaec4f899fdf0fe87d0457901
-	md5sums = 715cefd0e803d8b441811688fd4da1c3
-	md5sums = 3bb57f2812572ee999928ba33b489afe
-	md5sums = 5d42fda1f10c02861ee454277b516716
-	md5sums = a079c6e5c8d0184adf47794aaf338ac4
-	md5sums = c9b4e7bff3d1c073852c3d1b3bb8002e
-	md5sums = ae4d820582570ceb7b7c80b6810596f1
-	md5sums = 5b212435622f69c2a24b01ef7380bc94
-	md5sums = 0523c9ae27abdd30b847625b1c9c7a03
-	md5sums = c0d236b41dd4afad3f91dee72bb296a8
-	md5sums = 25e191463fb877fd5dabecb95f15ee8f
-	md5sums = 5911ef7d3ab5c5a06076fdea221ea27e
-	md5sums = ab7baf675e224cf19b9194fc1e4ea5ff
-	md5sums = 1d6cb563b3864fd8d724982bc2007f16
-	md5sums = 529c4fba7e0a709fda9e108e658e76c3
-	md5sums = 9d0d909507294afb879965e74fef79c8
-	md5sums = c0b68cefe7f00ea5ec856c64f799cca4
+	md5sums = 7cdefc73bf61934c353e4450e280e551
+	md5sums = cb8550749cd52b5902ed6fdf0eb465ec
+	md5sums = 9d46aebfc04cc849fd4295f449b239a2
+	md5sums = c4c9c0f0a06314450563ed571962881e
+	md5sums = 6b9d611dffd92c94641360c3ef2659c1
+	md5sums = 3a0fc672b34ced18ca1364edf8644165
+	md5sums = cd2719e8e93ad662c00bf9f195fdce66
+	md5sums = 12e01f00c91e54680098a799517698f2
+	md5sums = d0aa4e5ec598063eab2e79fb95bceece
 
 pkgname = systemd-selinux
 	pkgdesc = system and service manager with SELinux support
@@ -86,6 +69,7 @@ pkgname = systemd-selinux
 	depends = bash
 	depends = dbus
 	depends = glib2
+	depends = iptables
 	depends = kbd
 	depends = kmod
 	depends = hwids
@@ -107,9 +91,9 @@ pkgname = systemd-selinux
 	optdepends = systemd-sysvcompat: symlink package to provide sysvinit binaries
 	optdepends = polkit: allow administration as unprivileged user
 	provides = nss-myhostname
-	provides = systemd-tools=218
-	provides = udev=218
-	provides = systemd=218-2
+	provides = systemd-tools=219
+	provides = udev=219
+	provides = systemd=219-6
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -125,10 +109,14 @@ pkgname = systemd-selinux
 	backup = etc/dbus-1/system.d/org.freedesktop.locale1.conf
 	backup = etc/dbus-1/system.d/org.freedesktop.machine1.conf
 	backup = etc/dbus-1/system.d/org.freedesktop.timedate1.conf
+	backup = etc/dbus-1/system.d/org.freedesktop.import1.conf
+	backup = etc/dbus-1/system.d/org.freedesktop.network1.conf
 	backup = etc/pam.d/systemd-user
 	backup = etc/systemd/bootchart.conf
 	backup = etc/systemd/coredump.conf
 	backup = etc/systemd/journald.conf
+	backup = etc/systemd/journal-remote.conf
+	backup = etc/systemd/journal-upload.conf
 	backup = etc/systemd/logind.conf
 	backup = etc/systemd/system.conf
 	backup = etc/systemd/timesyncd.conf
@@ -151,15 +139,15 @@ pkgname = libsystemd-selinux
 	provides = libsystemd-journal.so
 	provides = libsystemd-login.so
 	provides = libudev.so
-	provides = libsystemd=218-2
+	provides = libsystemd=219-6
 	conflicts = libsystemd
 
 pkgname = systemd-sysvcompat-selinux
 	pkgdesc = sysvinit compat for systemd with SELinux support
 	license = GPL2
 	depends = systemd-selinux
-	provides = systemd-sysvcompat=218-2
-	provides = selinux-systemd-sysvcompat=218-2
+	provides = systemd-sysvcompat=219-6
+	provides = selinux-systemd-sysvcompat=219-6
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 	conflicts = selinux-systemd-sysvcompat
