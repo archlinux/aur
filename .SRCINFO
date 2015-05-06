@@ -1,6 +1,6 @@
 pkgbase = warzone2100-git
 	pkgdesc = 3D realtime strategy game on a future Earth (Git version)
-	pkgver = master_base.r24.g3176ab1
+	pkgver = master_base.r28.g4437024
 	pkgrel = 1
 	url = http://wz2100.net/
 	arch = i686
