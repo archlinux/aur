@@ -2,8 +2,8 @@
 # Contributors: Arkham, Christoph Zeiler, JD Steffen
 
 pkgname=eduke32
-_pkgdate=20141230
-_pkgrev=4873
+_pkgdate=20150505
+_pkgrev=5181
 pkgver=$_pkgdate.r$_pkgrev
 pkgrel=1
 pkgdesc="An advanced Duke Nukem 3D source port"
@@ -12,7 +12,7 @@ url="http://eduke32.com/"
 license=('GPL' 'custom: BUILD')
 depends=('sdl2_mixer' 'libgl' 'libvpx' 'flac' 'gtk2')
 makedepends=('mesa' 'glu')
-[ "$CARCH" == "i686" ] && makedepends+=('nasm') # nasm is x86-only
+makedepends_i686=('nasm')
 optdepends=('eduke32-hrp: High Resolution Pack'
             'eduke32-dukeplus: Enhanced Mod'
             'timidity-freepats: a free soundfont for music'
@@ -22,9 +22,9 @@ install=$pkgname.install
 source=("http://dukeworld.duke4.net/$pkgname/synthesis/$_pkgdate-$_pkgrev/${pkgname}_src_$_pkgdate-$_pkgrev.tar.xz"
         "$pkgname.png"
         "$pkgname.desktop")
-sha256sums=('135266b38cca11d0150ec2c07839cccaa137a85551b157098ce7de1a51d38672'
+sha256sums=('90267f38ed79e3b6b8daaad40a7b5dc1fbebad280c74cf84771057d336ab0aa7'
             'b55a264b4682afabd49587d700d4c85ce6c2e7af7ce2764dd217ebe167549863'
-            '9224aadf634448726d2e863ba9a455887dc3b90049238fe592b7f7b5634cbd79')
+            'cf2ea2c6a0d85ab15e30171ed5b921f1fcf5644de7af9638c0ef60de21c44f24')
 
 build() {
   cd ${pkgname}_$_pkgdate-$_pkgrev
