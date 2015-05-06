@@ -2,12 +2,12 @@
 
 pkgname=libquvi-scripts
 pkgver=0.9.20131130
-pkgrel=2
+pkgrel=3
 pkgdesc='Library for parsing video download links.'
 arch=('any')
 url='http://quvi.sourceforge.net/'
 license=('AGPL3')
-depends=('lua-socket' 'lua-bitop' 'lua-expat' 'lua-luajson')
+depends=('lua52-socket' 'lua52-bitop' 'lua52-expat' 'lua52-luajson')
 source=("http://downloads.sourceforge.net/sourceforge/quvi/${pkgname}-${pkgver}.tar.xz"{,.sig})
 md5sums=('46ddfd887260a515199c2e1ba8c46d8a'
          'SKIP')
