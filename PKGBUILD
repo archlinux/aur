@@ -4,8 +4,8 @@
 # SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgbase=linux-selinux
-_srcname=linux-3.19
-pkgver=3.19.3
+_srcname=linux-4.0
+pkgver=4.0.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -13,27 +13,23 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 groups=(selinux)
-source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
-        "https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.sign"
-        "https://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
-        "https://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.sign"
+source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux-selinux.preset'
-        'change-default-console-loglevel.patch'
-        '0001-fix-btrfs-mount-deadlock.patch'
-        '0001-fixup-drm.patch')
-sha256sums=('be42511fe5321012bb4a2009167ce56a9e5fe362b4af43e8c371b3666859806c'
+        'change-default-console-loglevel.patch')
+sha256sums=('0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991'
             'SKIP'
-            'cd9474b61b859d68f83ff0b769bafef8489d2090e0a933d2a7e5f76a23cc071a'
+            '9b4b47eb6584dc39aaa5db46843b83f7c60975abecbda4dc106a8722eabe96fb'
             'SKIP'
-            '2b9ccd0a4617d0f7d1d25369e360d46aa0ee3ee679c2582f8df1dbf63ccb2863'
-            'a32270d86a84685345f75167fb6fc77a0ce0ca49cecb3d32d18e4947fff2a7b1'
+            '7c1867af29316d20dc3636c71ab98f5bb0ae3d45b8283d892139b5ffd9b7061c'
+            '8dceabda72c7a124c225c550c3f149e5c4d2ab2112d8af5df369cdd240548319'
             '375da3b030f17581cbf5be9140b79029ca85eebc70197f419a4de77e00fa84e9'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '5967cf53cb9db9f070e8f346c3d7045748e4823a7fe2ee330acd18c9d02bbb77'
-            '911872ef7000af471e649aaeb3490094a0b4c1514ca1024757ca2e90ac1d2a3d')
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -54,13 +50,6 @@ prepare() {
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
-
-  # fix #44495 and #44385 deadlock on btrfs mount
-  # https://btrfs.wiki.kernel.org/index.php/Gotchas
-  patch -Np1 -i "${srcdir}/0001-fix-btrfs-mount-deadlock.patch"
-
-  # fix #44491
-  patch -Np1 -i "${srcdir}/0001-fixup-drm.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
