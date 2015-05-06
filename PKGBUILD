@@ -1,7 +1,7 @@
 # Maintainer: Zhuoyun Wei <wzyboy@wzyboy.org>
 
 pkgname=govpn
-pkgver=3.0
+pkgver=3.1
 pkgrel=1
 pkgdesc="Simple secure free software VPN daemon"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ makedepends=('go')
 license=('GPL')
 source=(http://sourceforge.net/projects/${pkgname}/files/${pkgname}-${pkgver}.tar.xz)
 noextract=("${pkgver}.tar.xz")
-sha256sums=('12579c5c3cccfe73c66b5893335bc70c42d7b13b8e94c7751ec65d421eaff9a5')
+sha256sums=('4034a67eb472e33760ed1783ca871f531c3a6be99b9bd6213f4f83c1147c344b')
 
 build() {
   mkdir -p $pkgname/src
