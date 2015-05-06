@@ -1,0 +1,27 @@
+pkgbase = pasystray
+	pkgdesc = PulseAudio system tray (a replacement for padevchooser)
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/christophgysin/pasystray
+	install = pasystray.install
+	arch = i686
+	arch = x86_64
+	groups = multimedia
+	license = LGPL
+	makedepends = pkg-config
+	depends = libpulse
+	depends = gtk3
+	depends = libnotify
+	depends = avahi
+	depends = libx11
+	depends = gnome-icon-theme
+	depends = gtk-update-icon-cache
+	optdepends = paman: Launch PulseAudio manager from tray icon
+	optdepends = pavucontrol: Launch PulseAudio mixer from tray icon
+	optdepends = pavumeter: Launch PulseAudio volume meter from tray icon
+	optdepends = paprefs: Launch PulseAudio preferences from tray icon
+	source = https://github.com/christophgysin/pasystray/archive/pasystray-0.5.2.tar.gz
+	md5sums = 0ea894a47a8ab10b830051e3bd89294d
+
+pkgname = pasystray
+
