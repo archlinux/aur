@@ -3,13 +3,15 @@
 _pkgname=monoburg
 pkgname=${_pkgname}-git
 pkgver=1.0.6.12.g111a578
-pkgrel=2
+pkgrel=3
 pkgdesc='MonoBURG is a tree-rewriting system originating from Mono.'
 url='https://www.lrde.epita.fr/wiki/MonoBURG'
 arch=('x86_64' 'i686')
 license=('GPL3')
 makedepends=('git')
 depends=('glib2')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=("git+https://gitlab.lrde.epita.fr/tiger/$_pkgname.git")
 md5sums=('SKIP')
 
