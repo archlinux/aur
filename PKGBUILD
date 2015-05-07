@@ -3,13 +3,15 @@
 _pkgname=havm
 pkgname=${_pkgname}-git
 pkgver=0.26.7.gb493ecf
-pkgrel=2
+pkgrel=3
 pkgdesc='HAVM is a Tree intermediate language interpreter.'
 url='https://www.lrde.epita.fr/wiki/Havm'
 arch=('x86_64' 'i686')
 license=('GPL3')
 makedepends=('git' 'ghc')
 depends=('libffi' 'gmp')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=("git+https://gitlab.lrde.epita.fr/tiger/$_pkgname.git"
         '001-fix_ghc_7.10.patch')
 md5sums=('SKIP'
