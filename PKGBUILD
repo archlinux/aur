@@ -10,8 +10,8 @@
 # installed version of that library. They change around paths every
 # update and just generally don't seem to care much.
 pkgname=synergy
-pkgver=1.7.1
-pkgrel=2
+pkgver=1.7.2
+pkgrel=1
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="http://synergy-foss.org"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ license=('GPL2')
 source=("synergy-${pkgver}.tar.gz::https://github.com/synergy/synergy/archive/v${pkgver}-stable.tar.gz"
         "synergys_at.socket"
         "synergys_at.service")
-sha1sums=('241056f377dbf6ec488be24adbe216a5ac0e7cd7'
+sha1sums=('a2fad5d72cf81a634f0b856ce701ca352ec6d9a8'
           '7ec33221725fc496b807e0f435c5e87b590beb5d'
           '65ab58cc3546d6374a05a6a260f15045632e43ce')
 
