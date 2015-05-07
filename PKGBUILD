@@ -1,4 +1,5 @@
 # Maintainer: Jochen Schalanda <jochen+aur (at) schalanda.name>
+# Contributor: C. Dominik Bódi <dominik.bodi@gmx.de>
 # Contributor: Pierre Carrier <pierre@spotify.com>
 # Contributor: Thomas Dziedzic <gostrc (at) gmail>
 # Contributor: Chris Giles <Chris.G.27 (at) Gmail.com>
@@ -12,7 +13,7 @@
 #       Otherwise, open a GitHub issue.  Thank you! -Ido
 #
 pkgname=dpkg
-pkgver=1.16.15
+pkgver=1.17.25
 pkgrel=1
 pkgdesc="The Debian Package Manager.  Don't use it instead of Arch's 'pacman'."
 arch=('i686' 'x86_64')
@@ -27,8 +28,8 @@ source=(
 	http://ftp.debian.org/debian/pool/main/d/${pkgname}/${pkgname}_${pkgver}.tar.xz
 	dpkg-gzip-rsyncable.patch
 )
-md5sums=('0e7d105a57839cdab2b0bf5e3612442f'
-         '5ab63758999e9bb10f84bce79a0307b2')
+md5sums=('e48fcfdb2162e77d72c2a83432d537ca'
+         '71fd0c244ca1fc7132c708022ca50ef0')
 
 build() {
 	cd "${pkgname}-${pkgver}"

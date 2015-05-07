@@ -1,6 +1,6 @@
 pkgbase = dpkg
 	pkgdesc = The Debian Package Manager. Don't use it instead of Arch's 'pacman'.
-	pkgver = 1.16.15
+	pkgver = 1.17.25
 	pkgrel = 1
 	url = http://packages.debian.org/dpkg
 	arch = i686
@@ -19,10 +19,10 @@ pkgbase = dpkg
 	optdepends = fakeroot
 	conflicts = dpkg-ubuntu
 	replaces = dpkg-ubuntu
-	source = http://ftp.debian.org/debian/pool/main/d/dpkg/dpkg_1.16.15.tar.xz
+	source = http://ftp.debian.org/debian/pool/main/d/dpkg/dpkg_1.17.25.tar.xz
 	source = dpkg-gzip-rsyncable.patch
-	md5sums = 0e7d105a57839cdab2b0bf5e3612442f
-	md5sums = 5ab63758999e9bb10f84bce79a0307b2
+	md5sums = e48fcfdb2162e77d72c2a83432d537ca
+	md5sums = 71fd0c244ca1fc7132c708022ca50ef0
 
 pkgname = dpkg
 
