@@ -1,5 +1,5 @@
 post_upgrade() {
-  (( $(vercmp 0.8.3 $2) > 0 )) && cat <<MSG
+  (( $(vercmp $2 0.8.3) < 0 )) && cat <<MSG
 ATTENTION:
   /etc/NetworkManager/nm-system-settings.conf has been replaced
   by /etc/NetworkManager/NetworkManager.conf. Make sure you move

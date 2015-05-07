@@ -10,8 +10,8 @@
 
 pkgname=networkmanager-consolekit
 _pkgname=NetworkManager
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.2
+pkgrel=1
 _pppver=2.4.7
 pkgdesc="NetworkManager with ConsoleKit support for non-systemd systems"
 arch=('i686' 'x86_64')
@@ -38,16 +38,19 @@ source=(http://ftp.gnome.org/pub/gnome/sources/$_pkgname/${pkgver:0:3}/$_pkgname
         NetworkManager.conf 
         disable_set_hostname.patch 
         networkmanager.rc
+        0001-dns-Fix-falling-back-in-the-resolv.conf-methods.patch
         )
-sha256sums=('3a66afec670c975edd9832e620b725a5f16ed267a1b9e1b2d51ef27250d85947'
-            '759db295ddae7a6dc6b29211fc0ec08695f875584d456dd146d3679e2c33e2e3'
+sha256sums=('359385707494bedbb48cfe0992ccfbcc4ac147dae1f7a47055c71e96439508ff'
+            '2c6a647b5aec9f3c356d5d95251976a21297c6e64bd8d2a59339f8450a86cb3b'
             '25056837ea92e559f09563ed817e3e0cd9333be861b8914e45f62ceaae2e0460'
-            'e39a2a0401518abd1d1d060200e2ca0f0854cdc49a5cb286919be177a7cd90fc')
+            'e39a2a0401518abd1d1d060200e2ca0f0854cdc49a5cb286919be177a7cd90fc'
+            '4c5cbd0871437c43c2081fe4a1e58d6464c9b960798fd57fd80a79135647e50a')
 
 prepare() {
   cd $_pkgname-$pkgver
 
   patch -Np1 -i ../disable_set_hostname.patch
+  patch -Np1 -i ../0001-dns-Fix-falling-back-in-the-resolv.conf-methods.patch
   NOCONFIGURE=1 ./autogen.sh
 }
 
