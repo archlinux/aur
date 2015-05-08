@@ -2,8 +2,8 @@
 
 _pkgname=FanFicFare
 pkgname=fanficfare-git
-pkgver=2.2.4.r0.g3d07257
-pkgrel=2
+pkgver=2.2.5.r0.g872f000
+pkgrel=1
 pkgdesc="A tool for downloading fanfiction to eBook formats"
 arch=('any')
 url="https://github.com/JimmXinu/${_pkgname}"
