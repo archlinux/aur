@@ -4,14 +4,13 @@
 _hkgname=syb
 pkgname=haskell-syb
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for client-side HTTP"
 url="http://hackage.haskell.org/package/${_hkgname}"
 license=('custom:BSD3')
 arch=('i686' 'x86_64')
 depends=(
     'ghc>=6.0.0'
-    'ghc<7.10.0'
     'haskell-base>=4.0'
     'haskell-base<5.0'
 )

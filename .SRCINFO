@@ -1,18 +1,19 @@
 pkgbase = haskell-syb
 	pkgdesc = A library for client-side HTTP
-	pkgver = 0.4.2
-	pkgrel = 1
+	pkgver = 0.4.4
+	pkgrel = 2
 	url = http://hackage.haskell.org/package/syb
 	install = haskell-syb.install
 	arch = i686
 	arch = x86_64
 	license = custom:BSD3
-	depends = ghc<7.10.0
+	depends = ghc>=6.0.0
 	depends = haskell-base>=4.0
 	depends = haskell-base<5.0
 	options = staticlibs
-	source = http://hackage.haskell.org/packages/archive/syb/0.4.2/syb-0.4.2.tar.gz
-	md5sums = 5dae1c576c3139931574c397c996cf19
+	source = http://hackage.haskell.org/packages/archive/syb/0.4.4/syb-0.4.4.tar.gz
+	sha1sums = 93b01feab9b0868e266174f188e618d57af5a347
+	sha256sums = 0610677803931a3355aae00fdd13145f80e26d7dee08e1ba5bc9b2edea4c4c87
 
 pkgname = haskell-syb
 
