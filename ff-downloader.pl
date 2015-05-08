@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# ff-downloader v0.5.10.4
+# ff-downloader v0.6.0.0
 ## Copyright 2011-15 Simone Sclavi 'Ito'
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
