@@ -2,7 +2,7 @@
 
 _pkgname=emotion_generic_players
 pkgname=$_pkgname-git
-pkgver=1.10.99.91.8001b50
+pkgver=1.14.99.121.g3c7812b
 pkgrel=1
 pkgdesc="Emotion external binary executable players - Development version"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ pkgver() {
 
   v_ver=$(awk -F , -v v_ver=$v_ver '/^AC_INIT/ {gsub(/v_ver/, v_ver); gsub(/[\[\] -]/, ""); print $2}' configure.ac)
 
-  printf "$v_ver.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  printf "%s.%s.g%s" "$v_ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
