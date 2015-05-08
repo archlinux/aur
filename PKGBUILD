@@ -34,25 +34,21 @@ build() {
    # The header is already in INCLUDEPATH but the code needs adding to SOURCES.
    echo 'SOURCES += ../../../File_Extractor/fex/Data_Reader.cpp' >> Game_Music_Emu.pro
 
-   cp -r . ../Game_Music_Emu_dynamic
+   # Don't request a static lib, it prevents a dynamic one from being built.
+   sed -i '/^CONFIG /s/staticlib //' Game_Music_Emu.pro
 
-   qmake Game_Music_Emu.pro
-   make
-
-   cd ../Game_Music_Emu_dynamic
-   sed -i '/^CONFIG /s/staticlib/dll/' Game_Music_Emu.pro
+   # Install the header file too.
    cat >> Game_Music_Emu.pro <<EOF
 headers.path = /usr/include/gme
 headers.files += ../../gme/gme.h
 INSTALLS += headers
 EOF
+
    qmake Game_Music_Emu.pro
    make
 }
 
 package() {
    cd "$srcdir/$pkgname"/prj/Game_Music_Emu
-   make INSTALL_ROOT="$pkgdir" install
-   cd ../Game_Music_Emu_dynamic
    make INSTALL_ROOT="$pkgdir" install
 }
