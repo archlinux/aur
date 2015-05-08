@@ -1,15 +1,15 @@
 pkgbase = kindletool
 	pkgdesc = Tool for creating/extracting Kindle updates and more
-	pkgver = 1.6.3
-	pkgrel = 2
+	pkgver = 1.6.4
+	pkgrel = 1
 	url = https://github.com/NiLuJe/KindleTool
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = libarchive
 	depends = nettle
-	source = https://github.com/NiLuJe/KindleTool/archive/v1.6.3.tar.gz
-	sha256sums = 884bc2586d0c3901c58f5fdfab602c8d7d888feb9bbbbba2a5d3b3dd1c58510e
+	source = https://github.com/NiLuJe/KindleTool/archive/v1.6.4.tar.gz
+	sha256sums = 1876e13f33fe1026c51632ce3602ef8a011738af9ed7ed933fd18767f967da21
 
 pkgname = kindletool
 
