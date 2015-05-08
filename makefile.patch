@@ -1,0 +1,8 @@
+diff --git c/Makefile i/Makefile
+new file mode 100644
+--- /dev/null
++++ i/Makefile
+@@ -0,0 +1,3 @@
++CFLAGS += -fPIC -DEMU_COMPILE -DEMU_LITTLE_ENDIAN
++libupse.so: upse_bios_manager.o upse_container_xsf.o upse_eventloop.o upse_filesystem.o upse_loader.o upse_loader_psf1.o upse_loader_psf2.o upse_module.o upse_ps1_bios_base.o upse_ps1_counters.o upse_ps1_dma_manager.o upse_ps1_executive.o upse_ps1_gpu.o upse_ps1_hal.o upse_ps1_memory_manager.o upse_ps1_spu_base.o upse_ps1_spu_dma_handler.o upse_ps1_spu_lowpass_filter.o upse_ps1_spu_nyquist_filter.o upse_ps1_spu_register_io.o upse_ps2_iop_base.o upse_r3000_abstract.o upse_r3000_bytecode_evaluator.o upse_string.o upse_util.o Neill/spu.o Neill/spucore.o
++	$(CC) -shared -lz -o $@ $^
