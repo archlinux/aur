@@ -68,7 +68,7 @@ sub read_config
        return $lang_code;
    }
 }
-my ($VER, $PACKAGE, $LANG);
+my ($VER, $BUILD, $PACKAGE, $LANG);
 my $pkg = 'ff'; #default value for "--package"
 my $res = GetOptions("version|v=s" => \$VER,
                      "package|p=s" => \$pkg );
@@ -81,6 +81,9 @@ given ($pkg)
     default { die qq{:: "$pkg" is not a valid value for "--package"! Please use "ff" or "tb"\n}}
 }
 die qq{:: "--version" option is mandatory!\n} unless $VER;
+# Keep the version and build number (when there is one) separate
+($VER, $BUILD) = split("rc", $VER);
+
 $LANG = read_config($pkg);
 
 if (!$LANG)
@@ -266,7 +269,14 @@ chomp $ARCH;
 $| = 1; # turn on autoflush;
 
 my $ff_bz2 = "${PACKAGE}-${VER}.tar.bz2";
-my $ff_path = "/pub/${PACKAGE}/releases/${VER}/linux-${ARCH}/${LANG}/${ff_bz2}";
+my $ff_basepath;
+if (!$BUILD) {
+    $ff_basepath = "/pub/${PACKAGE}/releases/${VER}";
+} else {
+    # build candidate
+    $ff_basepath = "/pub/${PACKAGE}/candidates/${VER}-candidates/build${BUILD}";
+}
+my $ff_path = "${ff_basepath}/linux-${ARCH}/${LANG}/${ff_bz2}";
 my $ff_url = URI->new('https://ftp.mozilla.org');
 my $ff_cdn_url = URI->new('http://releases.mozilla.org');
 $ff_url->path($ff_path);
@@ -278,8 +288,8 @@ $ff_cdn_url->path($ff_path);
 get_url( $ff_cdn_url, $ff_bz2 ) or die qq(:: ERROR - can't download $ff_bz2\n);
 
 ##downloading md5sums##
-$ff_url->path("/pub/${PACKAGE}/releases/${VER}/MD5SUMS");
-get_url( $ff_url, 'MD5SUMS' ) or die qq(:: ERROR - can't download MD5SUMS\n); 
+$ff_url->path("${ff_basepath}/MD5SUMS");
+get_url( $ff_url, 'MD5SUMS' ) or die qq(:: ERROR - can't download MD5SUMS\n);
 
 ## calculating & comparing md5 digest
 print ':: verifying MD5 checksum ... ';
