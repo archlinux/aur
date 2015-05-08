@@ -50,7 +50,7 @@ sub read_config
             "# ff=en-US\n",
             "# tb=en-US\n"
             );
-       write_file($conf_file, @file);     
+       write_file($conf_file, @file);
        return
    }
    else
@@ -63,7 +63,7 @@ sub read_config
            if ($line =~ /^$p=([-a-zA-Z]+)$/)
            {
                $lang_code = $1;
-           }      
+           }
        }
        return $lang_code;
    }
@@ -71,14 +71,14 @@ sub read_config
 my ($VER, $PACKAGE, $LANG);
 my $pkg = 'ff'; #default value for "--package"
 my $res = GetOptions("version|v=s" => \$VER,
-                     "package|p=s" => \$pkg );	
+                     "package|p=s" => \$pkg );
 
 die ":: usage: $0 -p|--package=<package name [ff|tb]> -v|--version=<version number>\n" unless $res and (scalar @ARGV == 0);
 given ($pkg)
 {
     when ('ff')  { $PACKAGE = 'firefox' }
     when ('tb')  { $PACKAGE = 'thunderbird'}
-    default { die qq{:: "$pkg" is not a valid value for "--package"! Please use "ff" or "tb"\n}}  
+    default { die qq{:: "$pkg" is not a valid value for "--package"! Please use "ff" or "tb"\n}}
 }
 die qq{:: "--version" option is mandatory!\n} unless $VER;
 $LANG = read_config($pkg);
@@ -233,7 +233,7 @@ if (!$LANG)
     { language => 'Vietnamese', code => 'vi' },
     { language => 'Chinese (Simplified)', code => 'zh-CN' },
     { language => 'Chinese (Traditional)', code => 'zh-TW' },
-    );	
+    );
     my @u_i18n;
     ( $pkg eq 'ff' ) ? ( @u_i18n = @ff_i18n ) : (@u_i18n = @tb_i18n );
     my @i18n = sort { $a->{language} cmp $b->{language} } @u_i18n;
@@ -255,7 +255,7 @@ if (!$LANG)
 	    $choice =~ s/\s+$//;
 	    last if $choice ~~ [ 1 .. $size ];
 	    print ":: WRONG SELECTION!\n:: please select your language (type corresponding number)\n> ";
-    }	
+    }
     $LANG = $i18n[$choice - 1]{code};
     say ":: \"$i18n[$choice - 1]{language}\" selected\n::";
     say qq{:: HINT: put "$pkg=$LANG" (without quotes) in $HOME/.ff-downloader to avoid being asked about your language each time you build the package\n::};
@@ -275,14 +275,14 @@ $ff_cdn_url->path($ff_path);
 
 
 ##Downloading firefox##
-get_url( $ff_cdn_url, $ff_bz2 ) or die qq(:: ERROR - can't download $ff_bz2\n); 
+get_url( $ff_cdn_url, $ff_bz2 ) or die qq(:: ERROR - can't download $ff_bz2\n);
 
 ##downloading md5sums##
 $ff_url->path("/pub/${PACKAGE}/releases/${VER}/MD5SUMS");
 get_url( $ff_url, 'MD5SUMS' ) or die qq(:: ERROR - can't download MD5SUMS\n); 
 
 ## calculating & comparing md5 digest
-print ':: verifying MD5 checksum ... '; 
+print ':: verifying MD5 checksum ... ';
 
 my @md5_file = read_file('MD5SUMS');
 my $search_string = "linux-${ARCH}/${LANG}/${ff_bz2}";
@@ -303,4 +303,3 @@ my $digest = Digest::MD5->new->addfile(*FILE)->hexdigest;
 close(FILE);
 
 ( $digest eq $md5s ) ? say 'DONE' : do {say 'FAILED'; exit 1};
-
