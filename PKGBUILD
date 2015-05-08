@@ -20,7 +20,7 @@ pkgver() {
    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
+prepare() {
    cd "$srcdir/$pkgname"/prj/Game_Music_Emu
 
    # Call it libgme instead of libGame_Music_Emu.
@@ -43,7 +43,10 @@ headers.path = /usr/include/gme
 headers.files += ../../gme/gme.h
 INSTALLS += headers
 EOF
+}
 
+build() {
+   cd "$srcdir/$pkgname"/prj/Game_Music_Emu
    qmake Game_Music_Emu.pro
    make
 }
