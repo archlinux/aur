@@ -267,11 +267,15 @@ $| = 1; # turn on autoflush;
 
 my $ff_bz2 = "${PACKAGE}-${VER}.tar.bz2";
 my $ff_path = "/pub/${PACKAGE}/releases/${VER}/linux-${ARCH}/${LANG}/${ff_bz2}";
-my $ff_url = URI->new('http://ftp.mozilla.org');
+my $ff_url = URI->new('https://ftp.mozilla.org');
+my $ff_cdn_url = URI->new('http://releases.mozilla.org');
 $ff_url->path($ff_path);
+$ff_cdn_url->path($ff_path);
+# both URLs host the same files, but the CDN is not reachable via HTTPS
+
 
 ##Downloading firefox##
-get_url( $ff_url, $ff_bz2 ) or die qq(:: ERROR - can't download $ff_bz2\n); 
+get_url( $ff_cdn_url, $ff_bz2 ) or die qq(:: ERROR - can't download $ff_bz2\n); 
 
 ##downloading md5sums##
 $ff_url->path("/pub/${PACKAGE}/releases/${VER}/MD5SUMS");
