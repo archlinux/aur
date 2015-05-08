@@ -1,8 +1,9 @@
 pkgbase = fanficfare
 	pkgdesc = A tool for downloading fanfiction to eBook formats
 	pkgver = 2.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JimmXinu/FanFicFare
+	changelog = auto-changelog.txt
 	arch = any
 	license = Apache
 	depends = python2
