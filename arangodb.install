@@ -1,0 +1,79 @@
+pre_install() {
+  getent group arangodb >/dev/null || groupadd -r arangodb
+  getent passwd arangodb >/dev/null || useradd -r -g arangodb -d \
+  /usr/share/arangodb -s /bin/false -c "ArangoDB Application User" \
+  arangodb
+
+  install -o arangodb -g arangodb -m 755 -d /var/lib/arangodb
+  install -o arangodb -g arangodb -m 755 -d /var/lib/arangodb-apps
+  install -o arangodb -g arangodb -m 755 -d /var/log/arangodb
+  install -o arangodb -g arangodb -m 755 -d /var/run/arangodb
+}
+
+post_install() {
+
+  chown arangodb:arangodb /var/lib/arangodb &> /dev/null
+  chown arangodb:arangodb /var/lib/arangodb-apps &> /dev/null
+  chown arangodb:arangodb /var/log/arangodb &> /dev/null
+
+  cat <<-EOF
+
+  Welcome to ArangoDB.
+
+  To get started you will need to enable and start the service:
+
+   sudo systemctl enable arangodb.service
+   sudo systemctl start arangodb.service
+
+  Then you can access the administrative interface at:
+
+    http://localhost:8529
+
+    or try things out at the shell:
+
+    $> arangosh
+
+  Getting help:
+    http://stackoverflow.com/questions/tagged/arangodb
+    https://groups.google.com/forum/#!forum/arangodb
+    https://docs.arangodb.com/cookbook/
+    https://docs.arangodb.com/
+    #arangodb on irc.freenode.net
+
+EOF
+}
+
+post_upgrade() {
+  cat <<-EOF
+
+  The format of some of ArangoDB's internal files change sometimes
+  between versions. To upgrade existing data files run /usr/bin/arangod
+  with the upgrade option:
+
+    sudo arangod --upgrade
+
+  You might also need to reload the systemd service definition:
+
+    sudo systemctl daemon-reload
+
+  Or restart the service:
+
+    sudo systemctl restart arangodb.service
+
+EOF
+}
+
+pre_remove() {
+  systemctl stop arangodb.service &> /dev/null
+}
+
+post_remove() {
+  userdel arangodb &> /dev/null
+  groupdel arangodb &> /dev/null
+  # remove all the files
+  rm -rf /usr/share/arangodb/js/apps
+  rm -rf /var/log/arangodb
+  rm -rf /var/lib/arangodb
+  rm -rf /var/lib/arangodb-apps
+  rm -rf /var/run/arangodb
+}
