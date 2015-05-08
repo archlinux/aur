@@ -3,7 +3,7 @@
 
 _pkgname=efl
 pkgname=$_pkgname-git
-pkgver=1.14.0alpha1.30061.dea4bcf
+pkgver=1.14.99.30544.ga00bbff
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64')
@@ -11,7 +11,8 @@ url="http://www.enlightenment.org"
 license=('BSD' 'LGPL2.1' 'GPL2' 'custom')
 depends=('avahi' 'bullet' 'curl' 'fontconfig' 'fribidi' 'gst-plugins-base-libs' 'luajit' 'libexif'
          'libgl' 'libinput' 'libpulse' 'libwebp' 'libxcomposite' 'libxcursor' 'libxinerama'
-         'libxkbcommon' 'libxp' 'libxrandr' 'libxss' 'openjpeg' 'shared-mime-info' 'wayland')
+         'libxkbcommon' 'libxp' 'libxrandr' 'libxss' 'libunwind' 'openjpeg' 'shared-mime-info'
+         'wayland')
 makedepends=('git' 'python2')
 optdepends=('evas_generic_loaders-git: More video/graphic/icon loaders for Evas'
             'geoclue: For elocation'
@@ -34,7 +35,7 @@ pkgver() {
   local efl_version=$(grep -m1 EFL_VERSION configure.ac | awk -F [][] '{print $2 "." $4 "." $6}')
   efl_version=$(awk -F , -v efl_version=${efl_version%.} '/^AC_INIT/ {gsub(/efl_version/, efl_version); gsub(/[\[\] -]/, ""); print $2}' configure.ac)
 
-  printf "$efl_version.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  printf "%s.%s.g%s" "$efl_version" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
