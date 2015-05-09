@@ -5,7 +5,7 @@
 pkgname=('pure-python-otr' 'pure-python2-otr')
 pkgbase=pure-python-otr
 pkgver=1.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A pure python implementation of the OTR encryption protocol."
 arch=('any')
 url=https://github.com/afflux/pure-python-otr

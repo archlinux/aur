@@ -1,7 +1,7 @@
 pkgbase = pure-python-otr
 	pkgdesc = A pure python implementation of the OTR encryption protocol.
 	pkgver = 1.0.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/afflux/pure-python-otr
 	arch = any
 	license = LGPL3
