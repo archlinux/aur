@@ -4,7 +4,7 @@
 
 pkgname=vicious-git
 _gitname=vicious
-pkgver=2.1.3.7.g3408831
+pkgver=2.1.3.9.g02e1142
 _luaver="5.2"
 pkgrel=1
 pkgdesc="Modular widget library for window managers"
