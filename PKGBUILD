@@ -5,7 +5,7 @@
 
 pkgname=fluxbox-git
 pkgdesc="Lightweight stacking WM with tabbing, dockapps, etc."
-pkgver=1.3.5.162.g140b971
+pkgver=1.3.5.182.g169d640
 pkgrel=1
 arch=(i686 x86_64)
 url=http://www.fluxbox.org/
