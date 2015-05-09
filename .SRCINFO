@@ -1,6 +1,6 @@
 pkgbase = dwm-git
 	pkgdesc = A dynamic window manager for X
-	pkgver = 6.0.42.g35db6d8
+	pkgver = 6.0.43.g14343e6
 	pkgrel = 1
 	epoch = 1
 	url = http://dwm.suckless.org
