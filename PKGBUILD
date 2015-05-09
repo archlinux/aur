@@ -4,11 +4,11 @@
 
 pkgname=perl-alien-wxwidgets
 _cpan_name=Alien-wxWidgets
-pkgver=0.65
+pkgver=0.67
 pkgrel=1
 pkgdesc="building, finding and using wxWidgets binaries"
 arch=('any')
-url="http://search.cpan.org/dist/${_cpan_name}"
+url="https://metacpan.org/release/${_cpan_name}"
 license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0' 'wxgtk' 'perl-module-pluggable') # Install perl-module-pluggable from AUR
 makedepends=()
@@ -17,7 +17,7 @@ source=("http://www.cpan.org/modules/by-module/${_cpan_name%%-*}/${_cpan_name}-$
         'https://rt.cpan.org/Ticket/Attachment/1400329/743429/wx-config-version-and-env.patch'
         'https://rt.cpan.org/Ticket/Attachment/1239555/655334/Alien-wxWidgets-0.64-returnor.patch'
        )
-md5sums=('219a4f572d24eaa98c3dc2d118c5d9f0'
+md5sums=('510a7817fdaf59089b50a877a621d770'
          '1d21142e0a60bec1a4fab11dc545f955'
          '0011e91d60a7a669426341687cb6a5e2')
 
@@ -39,11 +39,11 @@ prepare() {
 ### We are now patching issues, so compilation against 3.x is possible
 # https://rt.cpan.org/Public/Bug/Display.html?id=94367
 # https://rt.cpan.org/Public/Bug/Display.html?id=87202
-  {
-    cd "$_src_dir"
-    patch < ${srcdir}/wx-config-version-and-env.patch
-    patch ./lib/Alien/wxWidgets/Utility.pm < ${srcdir}/Alien-wxWidgets-0.64-returnor.patch
-  }
+# {
+#   cd "$_src_dir"
+#   patch < ${srcdir}/wx-config-version-and-env.patch
+#   patch ./lib/Alien/wxWidgets/Utility.pm < ${srcdir}/Alien-wxWidgets-0.64-returnor.patch
+# }
 }
 
 build() {
