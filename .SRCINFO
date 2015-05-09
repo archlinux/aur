@@ -8,6 +8,7 @@ pkgbase = python-doit
 	depends = python
 	depends = python-pyinotify
 	depends = python-six
+	depends = python-setuptools
 	options = !emptydirs
 	source = http://pypi.python.org/packages/source/d/doit/doit-0.28.0.tar.gz
 	source = LICENSE

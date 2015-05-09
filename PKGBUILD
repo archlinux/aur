@@ -7,7 +7,7 @@ pkgdesc='Automation Tool'
 arch=('any')
 url='http://pydoit.org/'
 license=('MIT')
-depends=('python' 'python-pyinotify' 'python-six')
+depends=('python' 'python-pyinotify' 'python-six' 'python-setuptools')
 options=(!emptydirs)
 source=("http://pypi.python.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "LICENSE")
