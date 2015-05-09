@@ -7,7 +7,7 @@
 
 pkgname=perl-tk-git
 _pkgname=perl-tk
-pkgver=804.032_501.r4.ga3a2832
+pkgver=804.033.r5.g15af2ca
 pkgrel=1
 pkgdesc="A graphical user interface toolkit for Perl"
 arch=('i686' 'x86_64')
