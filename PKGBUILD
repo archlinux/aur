@@ -3,8 +3,8 @@
 # Maintained at : https://github.com/jarondl/aur-pkgbuilds-jarondl
 pkgname=python-pies
 _pkgname=pies
-pkgver=2.6.3
-pkgrel=2
+pkgver=2.6.5
+pkgrel=1
 pkgdesc="The simplest (and tastiest) way to write one program that runs on both Python 2.6+ and Python 3."
 arch=('any')
 url="https://github.com/timothycrosley/pies"
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python')
 makedepends=(python-setuptools)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha512sums=('7a6bb0bdcc0ddb13c2d7cd6929ffeada3d7f08d12527a098aa590b1e76e530719c68e6e5f99ed07c3f2f4aa52d5b730f54638c0aab04bb3cc606f8077ed0f74b')
+sha512sums=('c16f72114fe14c8c93774364b739f74b3d84c38189fd9c0590ef807efc1ed4a366dc26da2837b7c804b4f04ff25ad3a148420a7d0d0f084ba656ae56330bb0fb')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
