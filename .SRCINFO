@@ -9,6 +9,7 @@ pkgbase = python-doit-git
 	depends = python
 	depends = python-pyinotify
 	depends = python-six
+	depends = python-setuptools
 	options = !emptydirs
 	source = git://github.com/pydoit/doit.git
 	source = LICENSE
