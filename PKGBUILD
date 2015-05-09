@@ -5,7 +5,7 @@
 
 _pkgname=xorg-xinit
 pkgname=xorg-xinit-git
-pkgver=1.3.4.r2.ge3bab0c
+pkgver=1.3.4.r8.gc5e40f5
 pkgrel=1
 epoch=1
 pkgdesc="X.Org initialisation program "
@@ -38,7 +38,7 @@ pkgver() {
 prepare() {
   cd $pkgname
   patch -Np1 -i ../06_move_serverauthfile_into_tmp.diff
-  patch -Np1 -i ../fs25361.patch
+# patch -Np1 -i ../fs25361.patch
   sed -i -e 's/XSLASHGLOB.sh/XSLASHGLOB/' xinitrc.cpp
 }
 
