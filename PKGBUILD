@@ -2,7 +2,7 @@
 # Visit https://github.com/radioxoma/aur for pull requests or issue solving.
 
 pkgname=micromanager-git
-pkgver=1.4.18.r636.g42ff01b
+pkgver=1.4.21.r39.ge60756c
 pkgrel=1
 epoch=
 pkgdesc="Software package for control of automated microscopes. CMMCore and python2 bindings only."
@@ -22,7 +22,7 @@ options=()
 install=mm.install
 changelog=ChangeLog
 # Alternative repo: https://github.com/openspim/micromanager/tree/svn/git-svn
-source=($pkgname::git+https://github.com/mdcurtis/micromanager-upstream.git#commit=42ff01b
+source=($pkgname::git+https://github.com/mdcurtis/micromanager-upstream.git#commit=e60756c
         'micromanager-lib.conf')
 noextract=()
 md5sums=('SKIP'
@@ -73,5 +73,5 @@ package() {
 }
 
 # This script print 'DemoCamera' property list if CMMCore and python bindings
-# was installed well.
+# had installed well.
 # $ python2 -c 'import MMCorePy; DEVICE = ["Camera", "DemoCamera", "DCam"]; mmc = MMCorePy.CMMCore(); mmc.loadDevice(*DEVICE); mmc.initializeDevice(DEVICE[0]); mmc.setCameraDevice(DEVICE[0]); print mmc.getDevicePropertyNames(DEVICE[0])'

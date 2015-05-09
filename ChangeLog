@@ -1,8 +1,12 @@
+2015-05-09 Eugene Dvoretsky <radioxoma at gmail com>
+
+    1.4.21.r39.ge60756c
+
 2014-11-15 Eugene Dvoretsky <radioxoma at gmail com>
 
     1.4.18.r636.g42ff01b
     * Version bump to 1.4.19 (SVN trunk r14582)
-    * Building Micro-Manager no longer requires zlib (Mark Tsuchida) 
+    * Building Micro-Manager no longer requires zlib (Mark Tsuchida)
 
 
 2014-05-24 Eugene Dvoretsky <radioxoma at gmail com>
