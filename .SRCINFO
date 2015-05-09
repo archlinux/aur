@@ -1,6 +1,6 @@
 pkgbase = bar-aint-recursive-git
 	pkgdesc = A lightweight xcb based bar.
-	pkgver = 168.ebb625b
+	pkgver = 172.a9f285f
 	pkgrel = 1
 	url = https://github.com/LemonBoy/bar
 	arch = i686
