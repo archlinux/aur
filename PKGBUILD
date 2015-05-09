@@ -5,7 +5,7 @@
 
 pkgbase=python-sphinx
 pkgname=('python-sphinx' 'python2-sphinx')
-pkgver=1.2.3
+pkgver=1.3.1
 pkgrel=1
 arch=('any')
 url='http://sphinx.pocoo.org/'
@@ -15,18 +15,24 @@ makedepends=(
   'python-docutils'
   'python-jinja'
   'python-pygments'
+  'python-six'
   'python2-setuptools'
   'python2-docutils'
   'python2-jinja'
   'python2-pygments'
+  'python2-six'
 )
 checkdepends=(
-  'python-nose'
-  'python2-nose'
+  'python-nose' 'python2-nose'
   'texlive-latexextra'
+  'python-snowballstemmer' 'python2-snowballstemmer'
+  'python-babel' 'python2-babel'
+  'python-sphinx-alabaster-theme' 'python2-sphinx-alabaster-theme'
+  'python-sphinx_rtd_theme' 'python2-sphinx_rtd_theme'
+  'python2-mock'
 )
 source=("http://pypi.python.org/packages/source/S/Sphinx/Sphinx-$pkgver.tar.gz")
-md5sums=('a98c93124035b4cd7183604aec656cb3')
+md5sums=('8786a194acf9673464c5455b11fd4332')
 
 prepare() {
   # souce duplication is required because makefile modify source code
@@ -53,11 +59,12 @@ check() {
   msg2 'Python 3 version'
   cd "$srcdir"/Sphinx-$pkgver
   make PYTHON=python3 test
-  rm -r build/lib/tests
+  rm -r tests
+
   msg2 'Python 2 version'
   cd "$srcdir"/Sphinx-${pkgver}2
   make PYTHON=python2 test
-  rm -r build/lib/tests
+  rm -r tests
 }
 
 package_python-sphinx() {
