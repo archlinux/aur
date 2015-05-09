@@ -1,6 +1,6 @@
 pkgbase = ctwm-git
 	pkgdesc = Claude's Tab Window Manager
-	pkgver = 3.8.2.r519.gc0647aa
+	pkgver = 3.8.2.r521.g53f6772
 	pkgrel = 1
 	url = http://ctwm.org/
 	arch = i686
