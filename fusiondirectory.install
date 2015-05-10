@@ -1,0 +1,23 @@
+post_install() {
+  fusiondirectory-setup --update-cache --update-locales
+
+  echo '---------------------------------------------------------------------------'
+  echo 'Add this line in your /etc/httpd/conf/httpd.conf'
+  echo 'Include conf/extra/httpd-fusiondirectory.conf'
+  echo '---------------------------------------------------------------------------'
+
+  fusiondirectory-setup --yes --check-directories
+}
+
+post_remove() {
+  echo '---------------------------------------------------------------------------' 
+  echo 'Removing of /var/cache/fusiondirectory/'
+  rm -Rf /var/cache/fusiondirectory/
+  echo '---------------------------------------------------------------------------'
+  echo ''
+  echo '---------------------------------------------------------------------------'
+  echo 'Remove this line in your /etc/httpd/conf/httpd.conf'
+  echo 'Include conf/extra/httpd-fusiondirectory.conf'
+  echo '---------------------------------------------------------------------------'
+}
+

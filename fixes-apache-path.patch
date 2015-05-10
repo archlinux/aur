@@ -1,0 +1,13 @@
+--- a/contrib/apache/fusiondirectory-apache.conf	2015-06-04 14:47:07.837860500 +0200
++++ b/contrib/apache/fusiondirectory-apache.conf	2015-06-04 14:48:38.402860800 +0200
+@@ -1,8 +1,9 @@
+ # Include FusionDirectory to your web service
+-Alias /fusiondirectory /var/www/fusiondirectory/html
++Alias /fusiondirectory /usr/share/webapps/fusiondirectory/html
+ 
+ <IfModule mod_php5.c>
+ <Location /fusiondirectory>
++    Require all granted
+     php_admin_flag engine on
+     php_admin_flag register_globals off
+     php_admin_flag allow_call_time_pass_reference off
