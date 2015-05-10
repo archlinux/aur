@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=fluidsynth-git
-pkgver=1.1.6.r418.3e08eae
+pkgver=1.1.6.r423.048c51c
 pkgrel=1
 pkgdesc="A real-time software synthesizer based on the SoundFont 2 specifications (development version)"
 arch=('i686' 'x86_64')

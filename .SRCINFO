@@ -1,6 +1,6 @@
 pkgbase = fluidsynth-git
 	pkgdesc = A real-time software synthesizer based on the SoundFont 2 specifications (development version)
-	pkgver = 1.1.6.r418.3e08eae
+	pkgver = 1.1.6.r423.048c51c
 	pkgrel = 1
 	url = http://www.fluidsynth.org/
 	arch = i686
