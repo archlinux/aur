@@ -1,6 +1,6 @@
 pkgbase = sdl_sound-patched-hg
-	pkgdesc = A library to decode several popular sound file formats, patched for SDL2 (development version)
-	pkgver = r596.719dade41745
+	pkgdesc = A library to decode several popular sound file formats, patched for SDL2, pkg-config and ima-adpcm support (development version)
+	pkgver = 1.0.3.r48.719dade41745
 	pkgrel = 1
 	url = http://icculus.org/SDL_sound/
 	arch = i686
@@ -15,10 +15,12 @@ pkgbase = sdl_sound-patched-hg
 	provides = sdl_sound
 	conflicts = sdl_sound
 	source = sdl_sound::hg+http://hg.icculus.org/icculus/SDL_sound
-	source = pkgconfig.patch
-	source = physfs-renamed-export.patch
+	source = sdl_sound-pkgconfig.patch
+	source = sdl_sound-ima-adpcm.patch
+	source = sdl_sound-renamed-physfs-export.patch
 	sha256sums = SKIP
 	sha256sums = c2ebc5487c678ca4d77f5530a01c14602b9794861f4f75a1097fe47f9a8bd7ff
+	sha256sums = b3a58c1db0281192d129832971b8912467ee88d67cc926b8fa8738b621f48fd7
 	sha256sums = d7bd96390d9bc877c0204922c7c4666cadfdccc5e6c0cfcf9477d113377f5d10
 
 pkgname = sdl_sound-patched-hg
