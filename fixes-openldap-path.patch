@@ -1,0 +1,11 @@
+--- a/contrib/bin/fusiondirectory-insert-schema	2014-09-24 18:41:56.000000000 +0200
++++ b/contrib/bin/fusiondirectory-insert-schema	2014-08-25 21:51:55.830013784 +0200
+@@ -27,7 +27,7 @@
+ use 5.008;
+ 
+ my $ldap_host_options = '-Y EXTERNAL -H ldapi:///';
+-my $path              = "/etc/ldap/schema/fusiondirectory/";
++my $path              = "/etc/openldap/schema/fusiondirectory/";
+ my $full_cmd          = "";
+ my $schema2ldif       = "schema2ldif";
+ 

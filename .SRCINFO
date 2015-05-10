@@ -1,0 +1,14 @@
+pkgbase = fusiondirectory-schema
+	pkgdesc = LDAP core schemas and insert script.
+	pkgver = 1.0.8.8
+	pkgrel = 1
+	url = http://fusiondirectory.org/
+	arch = any
+	license = LGPL
+	source = http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-1.0.8.8.tar.gz
+	source = fixes-openldap-path.patch
+	md5sums = e169b4ca7ac809a6b939ed06d81c0f2a
+	md5sums = d1126008d8486f24f4c081256ac2a7e4
+
+pkgname = fusiondirectory-schema
+
