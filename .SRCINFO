@@ -1,0 +1,12 @@
+pkgbase = smarty3-i18n
+	pkgdesc = smarty3-i18n provides gettext support for Smarty, the popular PHP templating engine (http://smarty.php.net/).
+	pkgver = 1.0
+	pkgrel = 3
+	url = https://forge.fusiondirectory.org/projects/smarty3-i18n
+	arch = any
+	depends = smarty3
+	source = http://repos.fusiondirectory.org/sources/1.0/smarty3-i18n/smarty3-i18n-1.0.tar.gz
+	md5sums = 63ab56cdf5cf01aba170ba5fbd932fcd
+
+pkgname = smarty3-i18n
+
