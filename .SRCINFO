@@ -1,0 +1,12 @@
+pkgbase = scriptaculous
+	pkgdesc = script.aculo.us is a JavaScript library providing dynamic visual effects and user interface elements via the Document Object Model.
+	pkgver = 1.9.0
+	pkgrel = 2
+	url = http://script.aculo.us/
+	arch = any
+	license = MIT
+	source = http://script.aculo.us/dist/scriptaculous-js-1.9.0.zip
+	md5sums = c9d74b367df4abe91cb76695a55860c7
+
+pkgname = scriptaculous
+
