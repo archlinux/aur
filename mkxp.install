@@ -1,8 +1,8 @@
 
 post_install() {
-  echo "To use mkxp, change into the directory of the RPG Maker XP game you want to play"
-  echo "and launch 'mkxp'. You may want to add a mkxp.conf to the game directory for"
-  echo "customisation, see sample file in '/usr/share/doc/mkxp'."
+  echo "=> To use mkxp, change into the directory of the RPG Maker XP game you want to"
+  echo "=> play and launch 'mkxp'. You may want to add a mkxp.conf to the game directory"
+  echo "=> for customisation, a sample file is provided in '/usr/share/doc/mkxp'."
 }
 
 post_upgrade() {
