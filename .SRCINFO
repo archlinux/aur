@@ -1,0 +1,13 @@
+pkgbase = javascript-common
+	pkgdesc = Group javascript libraries in /usr/share/javascript/
+	pkgver = 1.0
+	pkgrel = 4
+	url = http://www.invalid.invalid
+	install = javascript-common.install
+	arch = any
+	license = GPL
+	source = javascript-common.conf::http://git.fusiondirectory.org/gitweb/?p=packaging/archlinux.git;a=blob_plain;f=scripts/javascript-common/javascript-common.conf;hb=refs/heads/master
+	md5sums = f9b66751e66c39bb23269d0251a76242
+
+pkgname = javascript-common
+

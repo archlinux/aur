@@ -1,0 +1,13 @@
+post_install() {
+  echo ''
+  echo 'Add this line in your /etc/httpd/conf/httpd.conf'
+  echo 'Include conf/extra/httpd-javascript-common.conf'
+}
+
+post_remove() {
+  echo '---------------------------------------------------------------------------'
+  echo 'Remove this line in your /etc/httpd/conf/httpd.conf :'
+  echo 'Include conf/extra/httpd-javascript-common.conf'
+  echo 'Remove /etc/httpd/conf/extra/httpd-javascript-common.conf if you will'
+  echo '---------------------------------------------------------------------------'
+}
