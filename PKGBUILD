@@ -1,22 +1,22 @@
-# Maintainer: Christophe Robin <crobin@php.net>
-
+# Maintainer: Christophe Robin <crobin@nekoo.com>
+# CVS for PKGBUILD is available at https://github.com/christopherobin/pkgbuilds/tree/master/minecraft
 pkgname=minecraft
 pkgver=latest
-pkgrel=23
+pkgrel=24
 pkgdesc="An open-world game whose gameplay revolves around breaking and placing blocks"
 arch=(any)
 license=('custom')
 url="http://www.minecraft.net/"
-depends=('java-runtime' 'xorg-xrandr' 'ttf-dejavu')
+depends=('java-runtime' 'xorg-xrandr' 'ttf-font' 'libxtst')
 noextract=('minecraft.jar')
 source=(minecraft http://s3.amazonaws.com/Minecraft.Download/launcher/Minecraft.jar
          minecraft.desktop minecraft.png minecraft.install LICENSE)
 md5sums=('9652c0548bc2aec58039588fcec1e4e4'
          '85273e24404cc6865805f951487b8a1e'
-         'dad9b69540dac246ced70b98f07e8e08'
+         'ecb1bd9b6e6305987b6fb5832ab0b468'
          'dfecf76f9db4497399f4b7c171150c89'
          '30f8fd3deb598757bb21bac3c1c55110'
-         'b82eddf7100b63e2fc52e53028327589')
+         '18ba2aa04f32b92fbc969d05c5c32052')
 install='minecraft.install'
 
 package() {
