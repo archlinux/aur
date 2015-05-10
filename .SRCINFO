@@ -1,0 +1,16 @@
+pkgbase = fusiondirectory-plugin-openstack-compute-schema
+	pkgdesc = LDAP schema for FusionDirectory openstack-compute plugin
+	pkgver = 1.0.8.8
+	pkgrel = 1
+	url = http://fusiondirectory.org/
+	install = fusiondirectory-plugin-openstack-compute.install
+	arch = any
+	license = LGPL
+	depends = -schema
+	source = http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-1.0.8.8.tar.gz
+	source = http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-1.0.8.8.tar.gz
+	md5sums = 7ea8890ffbdf05ef4f6478ab1c49afea
+	md5sums = e169b4ca7ac809a6b939ed06d81c0f2a
+
+pkgname = fusiondirectory-plugin-openstack-compute-schema
+
