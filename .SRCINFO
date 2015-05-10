@@ -1,0 +1,12 @@
+pkgbase = prototype
+	pkgdesc = Prototype is a JavaScript Framework that aims to ease development of dynamic web applications.
+	pkgver = 1.7.1.0
+	pkgrel = 1
+	url = http://prototypejs.org/
+	arch = any
+	license = MIT
+	source = http://ajax.googleapis.com/ajax/libs/prototype/1.7.1.0/prototype.js
+	md5sums = 34171a46fc699bfb7d5d887b53bd530d
+
+pkgname = prototype
+
