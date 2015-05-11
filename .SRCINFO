@@ -1,6 +1,6 @@
 pkgbase = bitlbee-bzr
 	pkgdesc = Brings instant messaging (XMPP, MSN, Yahoo!, AIM, ICQ, Twitter) to IRC
-	pkgver = 1025
+	pkgver = 1148
 	pkgrel = 1
 	url = http://www.bitlbee.org/
 	install = bitlbee.install

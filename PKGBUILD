@@ -4,7 +4,7 @@
 # Maintainer: Florian Bruhin (The-Compiler) <archlinux.org@the-compiler.org>
 
 pkgname=bitlbee-bzr
-pkgver=1025
+pkgver=1148
 pkgrel=1
 pkgdesc='Brings instant messaging (XMPP, MSN, Yahoo!, AIM, ICQ, Twitter) to IRC'
 url='http://www.bitlbee.org/'
