@@ -9,11 +9,9 @@ url="http://www.cypherpunks.ru/govpn/"
 makedepends=('go')
 license=('GPL')
 source=(http://sourceforge.net/projects/${pkgname}/files/${pkgname}-${pkgver}.tar.xz)
-noextract=("${pkgver}.tar.xz")
 sha256sums=('388e98d6adef5ebf3431b0d48419f54d2e2064c657de67e23c669ebcf273126d')
 
 build() {
-  tar xf ${pkgname}-${pkgver}.tar.xz
   make -C ${pkgname}-${pkgver}
 }
 
