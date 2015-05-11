@@ -9,9 +9,12 @@
 #
 # Any suggestions welcome; please submit paches via Github:
 # https://github.com/alerque/aur/tree/master/git-annex-bin
+#
+# Warning: some builds not up-to-date: x86_64: 5.20150508, i686: 5.20150508, armv6h: 5.20150507
+
 
 pkgname=git-annex-bin
-pkgver=5.20150420
+pkgver=5.20150508
 pkgrel=1
 pkgdesc='Standalone precompiled version of git-annex with no Haskell dependencies, batteries included.'
 arch=('i686' 'x86_64' 'armv6h')
@@ -35,15 +38,15 @@ depends=('coreutils' 'curl' 'git' 'gnupg' 'lsof' 'rsync' 'bash' 'openssh' 'wget'
 if [[ $CARCH == "x86_64" ]] ; then
     _file=git-annex-standalone-amd64-${pkgver}.tar.gz
     source+=("${_file}::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-amd64.tar.gz")
-    sha256sums+=('2a7d63f7b3e81f48b22005243d398417e81eee5223aa26d5d180e0f3a01bf38c')
+    sha256sums+=('efe5ca30bbfd5b7428b92b14f2bed2f33d486a34d345a60b52ceb2e257487629')
 elif [[ $CARCH == "i686" ]] ; then
     _file=git-annex-standalone-i386-${pkgver}.tar.gz
     source+=("${_file}::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-i386.tar.gz")
-    sha256sums+=('1aea9ed5f048630189bd4b4e6fc92c4b08af7bd98c64a31e42c9461dc6cd729c')
+    sha256sums+=('bd997b13c4d55054dbbbd01c84f0e7c7f23fa0ec0e22ef372315833abe8fc3bb')
 elif [[ $CARCH == "armv6h" ]] ; then
     _file=git-annex-standalone-armel-${pkgver}.tar.gz
     source+=("${_file}::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-armel.tar.gz")
-    sha256sums+=('39adbc11c2e049875c031e18f0634d4661000a44adcbdbc8c452269086ebc5f5')
+    sha256sums+=('190fa50e61dd250b6c4cc8fe461c308deefad03f0b4b88971594b9165105186b')
 fi
 
 package() {
