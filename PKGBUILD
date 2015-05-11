@@ -1,6 +1,6 @@
 # Maintainer: Thomas Jost <schnouki@schnouki.net>
 pkgname=kcc
-pkgver=4.5
+pkgver=4.5.1
 pkgrel=1
 pkgdesc="Kindle Comic Converter converts comic files or folders to ePub or Panel View MOBI"
 arch=(any)
@@ -14,23 +14,21 @@ optdepends=(
   'p7zip: for 7z/CB7 support'
 )
 source=(https://github.com/ciromattia/$pkgname/archive/$pkgver.tar.gz)
-md5sums=('8cdbaf65466fa183ac24f585ff0ac033')
-sha256sums=('057a7a7c639e282fc84c0f2fbd0d3ad38902159d8f913989a50f44006238eca5')
+md5sums=('553cb29f96074a55b353ee2b6a669a45')
+sha256sums=('1b17c31618777b219f226f0011b14e2b868ea80c74a1445e67a9b00b593a0661')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  sh setup.sh
-
-  [[ -d "$srcdir/build" ]] && rm -rf "$srcdir/build"
-  mkdir "$srcdir/build"
-  tar -xf KindleComicConverter_linux_$pkgver.tar.gz -C "$srcdir/build"
+  python setup.py build
 }
 
 package() {
-  cd "$srcdir/build"
-  for bin in kcc kcc-c2e kcc-c2p; do
-    install -Dm755 $bin $pkgdir/usr/bin/$bin
-  done
-  install -Dm644 kcc.png $pkgdir/usr/share/pixmaps/kcc.png
-  install -Dm644 LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE.txt
+  cd "$srcdir/$pkgname-$pkgver"
+  python setup.py install -O2 --root "$pkgdir"
+
+  install -Dm644 icons/comic2ebook.png "$pkgdir"/usr/share/pixmaps/comic2ebook.png
+  install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
+
+  cd "$pkgdir"/usr/share/pixmaps
+  ln -s comic2ebook.png kcc.png
 }
