@@ -33,7 +33,7 @@ headers_common.path = /usr/include/vbam/common
 headers_apu.path = /usr/include/vbam/apu
 headers_gba.files += vbam/gba/GBA.h vbam/gba/Sound.h vbam/gba/Globals.h
 headers_common.files += vbam/common/Types.h
-headers_apu.files += vbam/apu/Gb_Apu.h vbam/apu/Multi_Buffer.h vbam/apu/blargg_common.h vbam/apu/Blip_Buffer.h vbam/apu/blargg_config.h
+headers_apu.files += vbam/apu/Gb_Apu.h vbam/apu/Gb_Oscs.h vbam/apu/Multi_Buffer.h vbam/apu/blargg_common.h vbam/apu/Blip_Buffer.h vbam/apu/blargg_config.h
 INSTALLS += headers_gba headers_common headers_apu
 EOF
 }
