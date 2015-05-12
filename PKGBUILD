@@ -8,7 +8,7 @@ url="http://www.un4seen.com/"
 license=(custom)
 depends=(alsa-lib)
 source=(http://dl.un4seen.com/files/bass24-linux.zip LICENSE)
-md5sums=('07cc66370c415f512682d679ec723573'
+md5sums=('0d2666ec0f23162752f9ada62e01a19a'
          '3ab2a50d2f88f284eb854a6a9a35f51f')
 
 build () {
