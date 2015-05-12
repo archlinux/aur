@@ -1,6 +1,6 @@
 pkgbase = ewebkit-svn
 	pkgdesc = WebKit ported to the Enlightenment Foundation Libraries - Development version
-	pkgver = 1.11.0.r183545
+	pkgver = 1.11.0.r184205
 	pkgrel = 1
 	url = http://trac.webkit.org/wiki/EFLWebKit
 	arch = i686
@@ -22,12 +22,10 @@ pkgbase = ewebkit-svn
 	depends = geoclue2
 	depends = harfbuzz-icu
 	depends = libxslt
-	provides = ewebkit=1.11.0.r183545
+	provides = ewebkit=1.11.0.r184205
 	conflicts = ewebkit
 	source = ewebkit-svn/Source::svn+https://svn.webkit.org/repository/webkit/trunk/Source
-	source = ewebkit-svn/Tools::svn+https://svn.webkit.org/repository/webkit/trunk/Tools
 	source = fix_libXext_linking.patch
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = cbed18fde023d83cf810a31c6b77aab2247d78481cbbd264144f6bf5f6e5126c
 

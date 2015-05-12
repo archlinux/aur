@@ -3,7 +3,7 @@
 
 _pkgname=ewebkit
 pkgname=$_pkgname-svn
-pkgver=1.11.0.r183545
+pkgver=1.11.0.r184205
 pkgrel=1
 pkgdesc="WebKit ported to the Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64')
@@ -14,10 +14,8 @@ makedepends=('cmake' 'subversion' 'perl' 'python2' 'ruby' 'gperf')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("$pkgname/Source::svn+https://svn.webkit.org/repository/webkit/trunk/Source"
-        "$pkgname/Tools::svn+https://svn.webkit.org/repository/webkit/trunk/Tools"
         'fix_libXext_linking.patch')
 sha256sums=('SKIP'
-            'SKIP'
             'cbed18fde023d83cf810a31c6b77aab2247d78481cbbd264144f6bf5f6e5126c')
 
 pkgver() {
@@ -39,9 +37,6 @@ prepare() {
   svn revert WebKit2/PlatformEfl.cmake
   patch -Np1 -i ../fix_libXext_linking.patch
 
-# Make sure Tools is at the same rev as Source
-  svn update --revision ${pkgver#*.r} Tools
-
 # Get CMakeLists.txt from SVN root
   cd "$SRCDEST"
 
@@ -60,8 +55,7 @@ build() {
   cmake . \
     -DPORT=Efl \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DDEVELOPER_MODE=ON
+    -DCMAKE_BUILD_TYPE=Release
 
   make
 }
