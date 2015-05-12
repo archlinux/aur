@@ -35,7 +35,9 @@ prepare() {
   sed -i '/-Werror/d' Source/cmake/WebKitHelpers.cmake
 
 # Let the linker find libXext for WebKit2
-  patch -Np0 -i fix_libXext_linking.patch
+  cd "$srcdir/Source"
+  svn revert WebKit2/PlatformEfl.cmake
+  patch -Np1 -i ../fix_libXext_linking.patch
 
 # Make sure Tools is at the same rev as Source
   svn update --revision ${pkgver#*.r} Tools
