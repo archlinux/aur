@@ -1,7 +1,7 @@
 # Maintainer: Thomas Hebb <tommyhebb@gmail.com>
 pkgname=chromecast-tools-git
-pkgver=4.23c235e
-pkgrel=2
+pkgver=12.bf20224
+pkgrel=1
 pkgdesc="A set of simple utilities for working with Chromecast USB boot image files"
 arch=('i686' 'x86_64')
 url="https://github.com/tchebb/chromecast-tools"
@@ -12,16 +12,14 @@ source=('git+https://github.com/tchebb/chromecast-tools.git')
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/chromecast-tools"
+	cd "chromecast-tools"
 	printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
 	cd "$srcdir/chromecast-tools"
 
-	for SRC in *.c ; do
-		make ${SRC%.c}
-	done
+	make
 }
 
 package() {
