@@ -26,7 +26,7 @@ prepare() {
    # Install the header files too.
    cat >> Core.pro <<EOF
 headers.path = /usr/include/PSX/Core
-headers.files += psx.h emuconfig.h
+headers.files += bios.h emuconfig.h iop.h mkhebios.h psx.h r3000.h spu.h
 INSTALLS += headers
 EOF
 }
