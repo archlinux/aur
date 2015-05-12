@@ -7,13 +7,13 @@ pkgname=zeal-git
 # But he's using ``0.0+1snapshot201305312045+0100-1'' on PPA.
 # Guess it's safe to use 3-digit for now.
 _appname=zeal
-pkgver=0.1.1.3.g32b059e
+pkgver=0.1.1.33.g1848e7a
 pkgrel=1
 pkgdesc="An offline API documentation browser"
 arch=('i686' 'x86_64')
 url="http://zealdocs.org/"
 license=('GPL3')
-depends=('libarchive' 'qt5-webkit' 'qt5-imageformats')
+depends=('libarchive' 'qt5-webkit' 'qt5-imageformats' 'qt5-x11extras')
 makedepends=('git')
 source=("git://github.com/zealdocs/$_appname")
 sha1sums=('SKIP')
