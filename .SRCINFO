@@ -1,0 +1,21 @@
+pkgbase = naufrago
+	pkgdesc = Naufrago! is a simple offline RSS reader (including images) written in Python2.
+	pkgver = 0.4
+	pkgrel = 3
+	url = http://sourceforge.net/projects/naufrago/
+	arch = any
+	license = GPL
+	depends = python2-feedparser
+	depends = pygtk
+	depends = python2-pysqlite
+	depends = python2-notify
+	depends = pywebkitgtk
+	source = http://downloads.sourceforge.net/project/naufrago/naufrago-0.4.tar.bz2
+	source = naufrago_launcher.sh
+	source = naufrago.desktop
+	md5sums = 9bd8e692de2357224ff05b5c6207b65b
+	md5sums = 7d2abc8b6cd0421aeabf07d624a240d7
+	md5sums = a0df923165a8a594c13329df1a93b9b9
+
+pkgname = naufrago
+
