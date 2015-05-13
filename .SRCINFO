@@ -1,7 +1,7 @@
 pkgbase = hal
 	pkgdesc = Hardware Abstraction Layer
 	pkgver = 0.5.14
-	pkgrel = 21
+	pkgrel = 22
 	url = http://www.freedesktop.org/wiki/Software/hal
 	install = hal.install
 	arch = i686

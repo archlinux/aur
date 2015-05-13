@@ -1,4 +1,5 @@
-# Maintainer:  Rohit Manokaran <rohit000@live.com>
+# Maintainer: David Roheim <david.roheim@gmail.com>
+# Contributor: Rohit Manokaran <rohit000@live.com>
 # Contributor: James An <james@jamesan.ca>
 # Contributor: Rohit Manokaran <rohitmanokaran@yahoo.com>
 # Contributor: Pawel "l0ner" Soltys <pwslts@gmail.com>
@@ -9,7 +10,7 @@
 
 pkgname=hal
 pkgver=0.5.14
-pkgrel=21
+pkgrel=22
 pkgdesc="Hardware Abstraction Layer"
 arch=(i686 x86_64)
 license=('GPL' 'custom')
@@ -39,7 +40,7 @@ md5sums=('e9163df591a6f38f59fdbfe33e73bf20'
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -Np1 -d ${srcdir} -i ${srcdir}/hal.patch
+  patch -Np0 -d ${srcdir} -i ${srcdir}/hal.patch
 
   patch -Np1 -i ${srcdir}/hal-libudev-events.patch
   patch -Np1 -i ${srcdir}/hal-glib-2.3-compile-fix.patch
