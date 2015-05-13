@@ -1,0 +1,14 @@
+pkgbase = memoir-git
+	pkgdesc = minimal cli diary
+	pkgver = r7.2d73a99
+	pkgrel = 1
+	url = https://github.com/gostrc/memoir
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = python
+	source = git://github.com/gostrc/memoir.git
+	md5sums = SKIP
+
+pkgname = memoir-git
+
