@@ -1,7 +1,7 @@
 pkgbase = yeahlaunch
 	pkgdesc = Very simple application launcher which puts a horizontal menu on top of your screen.
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://phrat.de/yeahtools.html
 	arch = i686
 	arch = x86_64
