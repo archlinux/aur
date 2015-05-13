@@ -1,0 +1,21 @@
+pkgbase = sylpheed-lite
+	pkgdesc = Lightweight in lightweight and user-friendly e-mail client
+	pkgver = 3.4.2
+	pkgrel = 2
+	url = http://sylpheed.sraoss.jp/en/
+	install = sylpheed-lite.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = openssl
+	depends = gpgme
+	depends = desktop-file-utils
+	conflicts = sylpheed
+	options = !libtool
+	source = http://sylpheed.sraoss.jp/sylpheed/v3.4/sylpheed-3.4.2.tar.gz
+	source = http://sylpheed.sraoss.jp/sylpheed/v3.4/sylpheed-3.4.2.tar.gz.asc
+	sha256sums = a4c47b570a5b565d14ff9933cf2e03fcb895034c1f072f9cd2c4a9867a2f2263
+	sha256sums = SKIP
+
+pkgname = sylpheed-lite
+
