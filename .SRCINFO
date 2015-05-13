@@ -1,0 +1,15 @@
+pkgbase = giftrans
+	pkgdesc = Making transparent GIF images
+	pkgver = 1.12.2
+	pkgrel = 4
+	url = http://www.abdn.ac.uk/tools/ibmpc/giftrans/index.hti
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://ftp.debian.org/debian/pool/main/g/giftrans/giftrans_1.12.2.orig.tar.gz
+	source = http://ftp.debian.org/debian/pool/main/g/giftrans/giftrans_1.12.2-18.debian.tar.gz
+	md5sums = 886782be6f9bef1798615264ea7ed9f6
+	md5sums = 7ce0b20fc8a866e69890694b5496ec94
+
+pkgname = giftrans
+
