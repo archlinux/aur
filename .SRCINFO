@@ -1,0 +1,14 @@
+pkgbase = dhtfs
+	pkgdesc = Tagging based filesystem, providing dynamic directory hierarchies based on tags associated with files
+	pkgver = 0.3.0
+	pkgrel = 3
+	url = http://code.google.com/p/dhtfs/
+	arch = any
+	license = custom
+	depends = python2
+	depends = python2-fuse
+	source = http://dhtfs.googlecode.com/files/dhtfs-0.3.0.tar.gz
+	md5sums = 9e2c16ef88f925453aac5935354f5a35
+
+pkgname = dhtfs
+
