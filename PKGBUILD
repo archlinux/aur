@@ -26,7 +26,7 @@ prepare() {
    # Install the header files too.
    cat >> Core.pro <<EOF
 headers.path = /usr/include/Sega/Core
-headers.files += sega.h emuconfig.h
+headers.files += sega.h emuconfig.h satsound.h dcsound.h yam.h arm.h
 INSTALLS += headers
 EOF
 }
