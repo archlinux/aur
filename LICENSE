@@ -1,0 +1,345 @@
+Copyright (c) 2013-2015 Coinffeine S.L.
+
+1. Introduction
+
+1.1 The Coinffeine Software (referred to in this License Agreement as the 
+"Coinffeine" and specifically including the Coinffeine source code files, 
+packaged APIs, and add-ons) is licensed to you subject to the terms of this 
+License Agreement, written in English. This License Agreement forms a legally
+binding contract between you and Coinffeine in relation to your use of this Software.
+
+1.2 "Coinffeine" means the Coinffeine Software, as made available under the 
+Coinffeine Open Source Project, which is located at the following 
+URL: http://github.com/Coinffeine/coinffeine/, as updated from time to time.
+
+1.3 "Coinffeine Company" means Coinffeine S.L., a Spain corporation with 
+principal place of business at Ancora, 14, Bajo B, Postal Code 28045, 
+Madrid, Spain. Read more about Coinffeine Company at www.coinffeine.com.
+
+1.4 "NonCommercial" means not intended for related to or directed towards 
+commercial purposes.
+
+2. Accepting this License Agreement
+
+2.1 In order to use, copy, modify, adapt, redistribute, decompile, 
+reverse engineer, disassemble, or create derivative works of the 
+Coinfeine Software, you must first agree to this License Agreement. You may not
+use the Coinffeine Software if you do not accept this License Agreement.
+
+2.2 By using, copying, modifying, adapting, redistributing, decompiling, reverse
+engineering, disassembling, creating derivative works or contributing to the 
+Coinffeine Sofware, you hereby agree to the terms of this License Agreement.
+
+2.3 You may not use the Coinffeine Software and may not accept the 
+License Agreement if you are a person barred from receiving the 
+Coinffeine Software under the laws of Spain or other countries including the 
+country in which you are resident or from which you use the Coinffeine Software.
+
+2.4 If you are agreeing to be bound by this License Agreement on behalf of your
+employer or other entity, you represent and warrant that you have full legal 
+authority to bind your employer or such entity to this License Agreement. If you
+do not have the requisite authority, you may not accept the License Agreement or
+use the Coinffeine Software on behalf of your employer or other entity.
+
+
+3. Coinffeine License from Coinffeine Company
+
+3.1 Subject to the terms of this License Agreement, Coinffeine Company grants 
+you a limited, worldwide, royalty-free, non-transferable and non-exclusive 
+license to use the Coinffeine Software solely to:
+
+A. Develop plugins for the Coinffeine Software.
+
+B. Develop applications for NonCommercial purposes to run using the 
+Coinffeine Software, Coinffeine Software APIs or Coinffeine Network information.
+
+C. Use the Coinffeine Software for NonCommercial purposes.
+
+3.2 You agree that Coinffeine Company or third parties own all legal right, 
+title and interest in and to the Coinffeine Software, including any Intellectual
+Property Rights that subsist in the Coinffeine Software. 
+"Intellectual Property Rights" means any and all rights under patent law,
+copyright law, trade secret law, trademark law, and any and all other 
+proprietary rights. Coinffeine Company reserves all rights not expressly granted
+to you.
+
+3.3 You may not use the Coinffeine Software for any purpose not expressly 
+permitted by this License Agreement.  Except to the extent required by 
+applicable third party licenses, you may not: (a) copy 
+(except for backup purposes), modify, adapt, redistribute, decompile, 
+reverse engineer, disassemble, or create derivative works of the 
+Coinffeine Software or any part of the Coinffeine Software.
+
+3.4 You agree that you will not take any actions that may cause or result in the
+fragmentation of Coinffeine Software nor the Coinffeine network, including but
+not limited to distributing, participating in the creation of, or promoting in
+any way a software derived from the Coinffeine Software.
+
+3.5 Use, reproduction and distribution of components of the Coinffeine Software 
+licensed under an open source software license are governed solely by the terms 
+of that open source software license and not this License Agreement.
+
+3.6 You agree that the form and nature of the Coinffeine Software that 
+Coinffeine Company provides may change without prior notice to you and that 
+future versions of the Coinffeine Software may be incompatible with applications
+developed on previous versions of the Coinffeine Software. You agree that 
+Coinffeine Company may stop (permanently or temporarily) providing the 
+Coinffeine Software (or any features within the Coinffeine Software) to you or 
+to users generally at Coinffeine Company's sole discretion, without prior 
+notice to you.
+
+3.7 Nothing in this License Agreement gives you a right to use any of 
+Coinffeine Company trade names, trademarks, service marks, logos, domain names,
+or other distinctive brand features.
+
+3.8 You agree that you will not remove, obscure, or alter any 
+proprietary rights notices (including copyright and trademark notices) that may
+be affixed to or contained within the Coinffeine Software.
+
+
+4. Use of the Coinffeine Software by You
+
+4.1 Coinffeine Company agrees that it obtains no right, title or interest from
+you (or your licensors) under this License Agreement in or to any software
+applications that you develop using the Coinffeine Software, including any
+intellectual property rights that subsist in those applications.
+
+4.2 You agree to use the Coinffeine Software and write applications only for
+purposes that are permitted by (a) this License Agreement and (b) any applicable
+law, regulation or generally accepted practices or guidelines in the relevant
+jurisdictions (including any laws regarding the export of data or software to
+and from Spain or other relevant countries).
+
+4.3 You agree that if you use the Coinffeine Software to develop applications
+for general public users, you will protect the privacy and legal rights of those
+users. If the users provide you with user names, passwords, or other login
+information or personal information, you must make the users aware that the
+information will be available to your application, and you must provide legally
+adequate privacy notice and protection for those users. If your application
+stores personal or sensitive information provided by users, it must do so
+securely. If the user provides your application with Coinffeine 
+Company Account information, your application may only use that information to
+access the user's Coinffeine Company Account when, and for the limited purposes
+for which, the user has given you permission to do so.
+
+4.4 You agree that you will not engage in any activity with the 
+Coinffeine Software, including the development or distribution of an 
+application, that interferes with, disrupts, damages, or accesses in an 
+unauthorized manner the servers, networks, or other properties or services of 
+any third party including, but not limited to, Coinffeine Company.
+
+4.5 You agree that you are solely responsible for (and that Coinffeine Company
+has no responsibility to you or to any third party for) any data, content, or 
+resources that you create, transmit or display through the Coinffeine Software 
+and/or applications for Coinffeine Software, and for the consequences of your 
+actions (including any loss or damage which Coinffeine Company may suffer) 
+by doing so.
+
+4.6 You agree that you are solely responsible for (and that Coinffeine Company 
+has no responsibility to you or to any third party for) any breach of your 
+obligations under this License Agreement, any applicable third party contract 
+or Terms of Service, or any applicable law or regulation, and for the 
+consequences (including any loss or damage which Coinffeine Company or any 
+third party may suffer) of any such breach.
+
+
+5. Your Developer Credentials
+
+5.1 You agree that you are responsible for maintaining the confidentiality of 
+any developer credentials that may be issued to you by Coinffeine Company or 
+which you may choose yourself and that you will be solely responsible for all 
+applications that are developed under your developer credentials.
+
+
+6. Privacy and Information
+
+6.1 In order to continually innovate and improve the Coinffeine Software, 
+Coinffeine Company may collect certain usage statistics from the software 
+including but not limited to a unique identifier, associated IP address, 
+version number of the software, and information on which plugins and/or services
+in the Coinffeine Software are being used and how they are being used. Before 
+any of this information is collected, the Coinffeine Software will notify you 
+and seek your consent. If you withhold consent, the information will not be 
+collected.
+
+6.2 The data collected is examined in the aggregate to improve the 
+Coinffeine Software and is maintained in accordance with Coinffeine Company's 
+Privacy Policy.
+
+
+7. Third Party Applications
+
+7.1 If you use the Coinffeine Software to run plugins developed by a 
+third party or that access data, content or resources provided by a third party,
+you agree that Coinffeine Company is not responsible for those plugins, data,
+content, or resources. You understand that all data, content or resources which
+you may access through such third party plugins are the sole responsibility of
+the person from which they originated and that Coinffeine Company is not liable
+for any loss or damage that you may experience as a result of the use or access
+of any of those third party applications, data, content, or resources.
+
+7.2 You should be aware the data, content, and resources presented to you
+through such a third party plugin may be protected by intellectual property
+rights which are owned by the providers (or by other persons or companies on
+their behalf). You may not modify, rent, lease, loan, sell, distribute or create
+derivative works based on these data, content, or resources (either in whole or
+in part) unless you have been specifically given permission to do so by the
+relevant owners.
+
+7.3 You acknowledge that your use of such third party plugins, data, content, or
+resources may be subject to separate terms between you and the relevant third
+party. In that case, this License Agreement does not affect your legal
+relationship with these third parties.
+
+
+8. Using Coinffeine APIs
+
+8.1 Coinffeine Company Data APIs
+
+8.1.1 If you use the Coinffeine Software or any Coinffeine API to retrieve data
+from Coinffeine Software network, you acknowledge that the data may be protected
+by intellectual property rights which are owned by Coinffeine Company or those
+parties that provide the data (or by other persons or companies on their
+behalf). Your use of any such API may be subject to additional Terms of Service.
+You may not modify, rent, lease, loan, sell, distribute or create derivative
+works based on this data (either in whole or in part) unless allowed by the
+relevant Terms of Service.
+
+8.1.2 If you use any API to retrieve a user's data from Coinffeine Software,
+you acknowledge and agree that you shall retrieve data only with the user's
+explicit consent and only when, and for the limited purposes for which, the user
+has given you permission to do so.
+
+
+9. Terminating this License Agreement
+
+9.1 This License Agreement will continue to apply until terminated by either you
+or Coinffeine Company as set out below.
+
+9.2 If you want to terminate this License Agreement, you may do so by ceasing 
+your use of the Coinffeine Software and any relevant developer credentials.
+
+9.3 Coinffeine Company may at any time, terminate this License Agreement with 
+you if:
+(A) you have breached any provision of this License Agreement; or
+(B) Coinffeine Company is required to do so by law; or
+(C) the partner with whom Coinffeine Company offered certain parts of Coinffeine
+Software (such as APIs) to you has terminated its relationship with Coinffeine 
+Company or ceased to offer certain parts of the Coinffeine Software to you; or
+(D) Coinffeine Company decides to no longer provide the Coinffeine Software or 
+certain parts of the Coinffeine Software to users in the country in which you 
+are resident or from which you use the service, or the provision of the 
+Coinffeine Software or certain Coinffeine Software services to you by 
+Coinffeine Company is, in Coinffeine Company's sole discretion, no longer 
+commercially viable.
+
+9.4 When this License Agreement comes to an end, all of the legal rights, 
+obligations and liabilities that you and Coinffeine Company have benefited from,
+been subject to (or which have accrued over time whilst this License Agreement 
+has been in force) or which are expressed to continue indefinitely, shall be 
+unaffected by this cessation, and the provisions of paragraph 14.7 shall 
+continue to apply to such rights, obligations and liabilities indefinitely.
+
+
+10. DISCLAIMER OF WARRANTIES
+
+10.1 YOU EXPRESSLY UNDERSTAND AND AGREE THAT YOUR USE OF THE COINFFEINE SOFTWARE
+IS AT YOUR SOLE RISK AND THAT THE COINFFEINE SOFTWARE IS PROVIDED "AS IS" AND 
+"AS AVAILABLE" WITHOUT WARRANTY OF ANY KIND FROM COINFFEINE COMPANY.
+
+10.2 YOUR USE OF THE COINFFEINE SOFTWARE AND ANY MATERIAL DOWNLOADED OR 
+OTHERWISE OBTAINED THROUGH THE USE OF THE COINFFEINE SOFTWARE IS AT YOUR OWN 
+DISCRETION AND RISK AND YOU ARE SOLELY RESPONSIBLE FOR ANY DAMAGE TO YOUR 
+COMPUTER SYSTEM OR OTHER DEVICE OR LOSS OF DATA THAT RESULTS FROM SUCH USE.
+
+10.3 COINFFEINE COMPANY FURTHER EXPRESSLY DISCLAIMS ALL WARRANTIES AND 
+CONDITIONS OF ANY KIND, WHETHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED 
+TO THE IMPLIED WARRANTIES AND CONDITIONS OF MERCHANTABILITY, FITNESS FOR A 
+PARTICULAR PURPOSE AND NON-INFRINGEMENT.
+
+
+11. LIMITATION OF LIABILITY
+
+11.1 YOU EXPRESSLY UNDERSTAND AND AGREE THAT COINFFEINE COMPANY, ITS 
+SUBSIDIARIES AND AFFILIATES, AND ITS LICENSORS SHALL NOT BE LIABLE TO YOU UNDER 
+ANY THEORY OF LIABILITY FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, 
+CONSEQUENTIAL OR EXEMPLARY DAMAGES THAT MAY BE INCURRED BY YOU, INCLUDING ANY 
+LOSS OF DATA, WHETHER OR NOT COINFFEINE COMPANY OR ITS REPRESENTATIVES HAVE 
+BEEN ADVISED OF OR SHOULD HAVE BEEN AWARE OF THE POSSIBILITY OF ANY SUCH LOSSES 
+ARISING.
+
+
+12. Indemnification
+
+12.1 To the maximum extent permitted by law, you agree to defend, indemnify and 
+hold harmless Coinffeine Company, its affiliates and their respective directors,
+officers, employees and agents from and against any and all claims, actions, 
+suits or proceedings, as well as any and all losses, liabilities, damages, costs
+and expenses (including reasonable attorneys fees) arising out of or accruing 
+from (a) your use of the Coinffeine Software, (b) any application you develop 
+using the Coinffeine Software that infringes any copyright, trademark, trade 
+secret, trade dress, patent or other intellectual property right of any person 
+or defames any person or violates their rights of publicity or privacy, and (c) 
+any non-compliance by you with this License Agreement.
+
+
+13. Changes to the License Agreement
+
+13.1 Coinffeine Company may make changes to the License Agreement as it 
+distributes new versions of the Coinffeine Software. When these changes are 
+made, Coinffeine Company will make a new version of the License Agreement 
+available on the website where the Coinffeine Software is made available.
+
+
+14. General Legal Terms
+
+14.1 This License Agreement constitutes the whole legal agreement between you 
+and Coinffeine Company and governs your use of the Coinffeine Software 
+(excluding any services which Coinffeine Company may provide to you under a 
+separate written agreement), and completely replaces any prior agreements 
+between you and Coinffeine Company in relation to the Coinffeine Software.
+
+14.2 This License Agreement, along with the files, will be permanently
+available on the Coinffeine website: www.coinffeine.com, where you can also
+find futher information. Thus, it won’t be kept a copy of ths License
+Agreement for each user.
+
+14.3 You agree that if Coinffeine Company does not exercise or enforce any legal
+right or remedy which is contained in this License Agreement (or which 
+Coinffeine Company has the benefit of under any applicable law), this will not 
+be taken to be a formal waiver of Coinffeine Company's rights and that those 
+rights or remedies will still be available to Coinffeine Company.
+
+14.4 If any court of law, having the jurisdiction to decide on this matter,
+rules that any provision of this License Agreement is invalid, then that 
+provision will be removed from this License Agreement without affecting the 
+rest of this License Agreement. The remaining provisions of this 
+License Agreement will continue to be valid and enforceable.
+
+14.5 You acknowledge and agree that each member of the group of companies of
+which Coinffeine Company is the parent shall be third party beneficiaries to 
+this License Agreement and that such other companies shall be entitled to 
+directly enforce, and rely upon, any provision of this License Agreement that 
+confers a benefit on (or rights in favor of) them. Other than this, no other 
+person or company shall be third party beneficiaries to this License Agreement.
+
+14.6 EXPORT RESTRICTIONS. THE COINFFEINE SOFTWARE IS SUBJECT TO SPAIN EXPORT
+LAWS AND REGULATIONS. YOU MUST COMPLY WITH ALL DOMESTIC AND INTERNATIONAL EXPORT
+LAWS AND REGULATIONS THAT APPLY TO THE COINFFEINE SOFTWARE. THESE LAWS INCLUDE 
+RESTRICTIONS ON DESTINATIONS, END USERS AND END USE.
+
+14.7 The rights granted in this License Agreement may not be assigned or
+transferred by either you or Coinffeine Company without the prior written 
+approval of the other party. Neither you nor Coinffeine Company shall be 
+permitted to delegate their responsibilities or obligations under this 
+License Agreement without the prior written approval of the other party.
+
+14.8 This License Agreement, and your relationship with Coinffeine Company under
+this License Agreement, shall be governed by the laws of Spain without regard 
+to its conflict of laws provisions. Unless you are considered a consumer or a
+user according to the Spanish regulation, you and Coinffeine Company agree to
+submit to the exclusive jurisdiction of the courts located within the city of
+Madrid, Spain to resolve any legal matter arising from this License Agreement. 
+Notwithstanding this, you agree that Coinffeine Company shall still be allowed 
+to apply for injunctive remedies (or an equivalent type of urgent legal relief)
+in any jurisdiction.
