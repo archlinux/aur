@@ -3,7 +3,7 @@
 
 pkgname=yaehmop
 pkgver=3.1.0b2
-pkgrel=3
+pkgrel=4
 pkgdesc="Yet Another extended Huckel Molecular Orbital Package (YAeHMOP)"
 arch=('x86_64' 'i686')
 url="http://yaehmop.sourceforge.net/"
@@ -35,9 +35,9 @@ build() {
 	rm -f tightbind/utils/fit_dos
 	rm -f tightbind/utils/fit_dos.o
 	rm -f tightbind/utils/genutil.o
-	patch -p1 < ../../0001-Fix-build-problems.patch
-	patch -p1 < ../../0002-Fix-implicit-declaration.patch
-	patch -p1 < ../../0003-Fix-hard-coded-data-path.patch
+	patch -p1 < "${srcdir}/0001-Fix-build-problems.patch"
+	patch -p1 < "${srcdir}/0002-Fix-implicit-declaration.patch"
+	patch -p1 < "${srcdir}/0003-Fix-hard-coded-data-path.patch"
 	cd tightbind
 	make -f makefile.linux install
 	cd ../viewkel
