@@ -1,0 +1,18 @@
+pkgbase = elettra
+	pkgdesc = Encryption utility by Julia Identity
+	pkgver = 1.0
+	pkgrel = 3
+	url = http://www.winstonsmith.info/julia/elettra/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	depends = libmcrypt
+	depends = mhash
+	depends = zlib
+	source = http://www.winstonsmith.info/julia/elettra/elettra-src.tar.gz
+	md5sums = 8ece5fdfccea33001ac8d4f61080b2fe
+	sha1sums = f198264d9fc66c9c97cfe70bbe1c592b710f9e73
+
+pkgname = elettra
+
