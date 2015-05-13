@@ -1,0 +1,161 @@
+--- xdg-utils/scripts/xdg-utils-common.in
++++ xdg-utils/scripts/xdg-utils-common.in
+@@ -286,6 +286,7 @@
+       elif xprop -root _DT_SAVE_MODE 2> /dev/null | grep ' = \"xfce4\"$' >/dev/null 2>&1; then DE=xfce;
+       elif xprop -root 2> /dev/null | grep -i '^xfce_desktop_window' >/dev/null 2>&1; then DE=xfce
+       elif echo $DESKTOP | grep -q '^Enlightenment'; then DE=enlightenment;
++      elif which mimeo > /dev/null; then DE=mimeo;
+       fi
+     fi
+ 
+
+--- xdg-utils/scripts/xdg-open.in
++++ xdg-utils/scripts/xdg-open.in
+@@ -147,6 +147,17 @@
+ {
+     enlightenment_open "$1"
+ 
++    if [ $? -eq 0 ]; then
++        exit_success
++    else
++        exit_failure_operation_failed
++    fi
++}
++
++open_mimeo()
++{
++    DEBUG 1 "Running mimeo \"$1\""
++    mimeo "$1"
+     if [ $? -eq 0 ]; then
+         exit_success
+     else
+@@ -420,6 +431,10 @@
+     open_enlightenment "$url"
+     ;;
+ 
++    mimeo)
++    open_mimeo "$url"
++    ;;
++
+     generic)
+     open_generic "$url"
+     ;;
+
+--- xdg-utils/scripts/xdg-email.in
++++ xdg-utils/scripts/xdg-email.in
+@@ -180,6 +180,18 @@
+ {
+     DEBUG 1 "Running exo-open \"$1\""
+     exo-open "$1"
++
++    if [ $? -eq 0 ]; then
++        exit_success
++    else
++        exit_failure_operation_failed
++    fi
++}
++
++open_mimeo()
++{
++    DEBUG 1 "Running mimeo \"$1\""
++    mimeo "$1"
+ 
+     if [ $? -eq 0 ]; then
+         exit_success
+@@ -409,6 +421,10 @@
+     open_xfce "${mailto}"
+     ;;
+ 
++    mimeo)
++    open_mimeo "${mailto}"
++    ;;
++
+     generic|lxde)
+     open_generic "${mailto}"
+     ;;
+
+--- xdg-utils/scripts/xdg-mime.in
++++ xdg-utils/scripts/xdg-mime.in
+@@ -88,6 +88,16 @@
+        info_generic "$1"
+     fi
+ 
++    if [ $? -eq 0 ]; then
++        exit_success
++    else
++        exit_failure_operation_failed
++    fi
++}
++
++info_mimeo()
++{
++    mimeo -m "$1"
+     if [ $? -eq 0 ]; then
+         exit_success
+     else
+@@ -565,6 +575,10 @@
+         info_gnome "$filename"
+         ;;
+ 
++        mimeo)
++        info_mimeo "$filename"
++        ;;
++
+         *)
+         info_generic "$filename"
+         ;;
+
+--- xdg-utils/scripts/xdg-settings.in
++++ xdg-utils/scripts/xdg-settings.in
+@@ -463,6 +463,42 @@
+ }
+ 
+ # }}} xfce
++# {{{ mimeo
++
++get_browser_mimeo()
++{
++    DEBUG 1 "Running mimeo -c 'http:'"
++    mimeo -d http: | sed -rn '2s/  ([^ ]+) +.*/\1/p'
++    if [ $? -eq 0 ]; then
++        exit_success
++    else
++        exit_failure_operation_failed
++    fi
++}
++
++check_browser_mimeo()
++{
++    browser=`get_browser_mimeo $1`
++    if [ x"$browser" != x"$1" ]; then
++        echo no
++        exit_success
++    fi
++    echo yes
++    exit_success
++}
++
++set_browser_mimeo()
++{
++    DEBUG 1 "Running mimeo --prefer x-scheme-handler/http \"$1\""
++    mimeo --prefer x-scheme-handler/http \"$1\"
++    if [ $? -eq 0 ]; then
++        exit_success
++    else
++        exit_failure_operation_failed
++    fi
++}
++
++# }}} mimeo
+ # }}} default browser
+ 
+ # {{{ default url scheme handler
+@@ -754,7 +790,7 @@
+ detectDE
+ 
+ case "$DE" in
+-    kde|gnome*|xfce)
++    kde|gnome*|xfce|mimeo)
+     dispatch_specific "$@"
+     ;;
+ 

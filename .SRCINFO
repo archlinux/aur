@@ -1,0 +1,30 @@
+pkgbase = xdg-utils-mimeo
+	pkgdesc = Command line tools that assist applications with a variety of desktop integration tasks; patched to use mimeo
+	pkgver = 1.1.0.git20150323
+	pkgrel = 1
+	url = http://cgit.freedesktop.org/xdg/xdg-utils/
+	arch = any
+	license = MIT
+	makedepends = docbook-xsl
+	makedepends = lynx
+	makedepends = xmlto
+	makedepends = git
+	depends = sh
+	depends = xorg-xset
+	optdepends = kdebase-runtime: for KDE4 support in xdg-open
+	optdepends = kde-cli-tools: for KDE Plasma5 support in xdg-open
+	optdepends = libgnome: for GNOME support in xdg-open
+	optdepends = exo: for Xfce support in xdg-open
+	optdepends = xorg-xprop: for Xfce support in xdg-open
+	optdepends = pcmanfm: for LXDE support in xdg-open
+	optdepends = mimeo: for mimeo support in xdg-open
+	optdepends = perl-file-mimeinfo: for generic support in xdg-open
+	provides = xdg-utils
+	conflicts = xdg-utils
+	source = git://anongit.freedesktop.org/xdg/xdg-utils#commit=686f6f48f6ff939c757881e3fc7a852b61d32c94
+	source = mimeo-detection.diff
+	md5sums = SKIP
+	md5sums = 5f38d0201009df739bb70452f2a3f5b4
+
+pkgname = xdg-utils-mimeo
+
