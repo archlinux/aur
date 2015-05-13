@@ -26,7 +26,7 @@ prepare() {
    # Install the header files too.
    cat >> Core.pro <<EOF
 headers.path = /usr/include/QSound/Core
-headers.files += qsound.h emuconfig.h
+headers.files += qsound.h emuconfig.h kabuki.h qmix.h z80.h
 INSTALLS += headers
 EOF
 }
