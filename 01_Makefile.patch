@@ -1,0 +1,13 @@
+--- pdfresurrect-0.12/Makefile.in
++++ pdfresurrect-0.12/Makefile.in
+@@ -15,8 +15,8 @@
+ 	$(CC) -o $@ -c $< $(CFLAGS)
+ 
+ install:
+-	cp $(APP) $(DESTDIR)$(PREFIX)/bin/
+-	cp $(MANPAGE) $(DESTDIR)$(PREFIX)/man/man1/
++	install -D $(APP) $(DESTDIR)$(PREFIX)/bin/$(APP)
++	install -D $(MANPAGE) $(DESTDIR)$(PREFIX)/man/man1/$(MANPAGE)
+ 
+ uninstall:
+ 	rm $(DESTDIR)$(PREFIX)/bin/$(APP)

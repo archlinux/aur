@@ -1,0 +1,16 @@
+pkgbase = pdfresurrect
+	pkgdesc = PDFResurrect is a tool aimed at analyzing PDF documents
+	pkgver = 0.12
+	pkgrel = 1
+	url = http://757labs.org/wiki/Projects/pdfresurrect
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	depends = glibc
+	source = pdfresurrect-0.12.tar.gz::https://github.com/enferex/pdfresurrect/archive/v0.12.tar.gz
+	source = 01_Makefile.patch
+	md5sums = 01223952c2b9b46f7a80ea1aece791c1
+	md5sums = 550daedf7a2fa3a948447f881bd03e1f
+
+pkgname = pdfresurrect
+
