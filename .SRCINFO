@@ -1,0 +1,16 @@
+pkgbase = cli-google-git
+	pkgdesc = Google Search from command line
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/henux/cli-google.git
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	provides = cli-google
+	conflicts = cli-google
+	source = git://github.com/Narrat/cli-google.git
+	md5sums = SKIP
+
+pkgname = cli-google-git
+
