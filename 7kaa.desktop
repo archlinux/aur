@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Seven Kingdoms: Ancient Adversaries
+Comment=Real-time strategy computer game
+Exec=/usr/bin/7kaa
+Icon=7kaa.ico
+Terminal=false
+Type=Application
+Categories=Application;Game;
