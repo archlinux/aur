@@ -1,0 +1,10 @@
+# mkinitcpio preset file for the 'llvmlinux-git' package
+
+ALL_config="/etc/mkinitcpio.conf"
+ALL_kver="/boot/vmlinuz-llvmlinux"
+
+PRESETS=('default')
+
+#default_config="/etc/mkinitcpio.conf"
+default_image="/boot/initramfs-llvmlinux.img"
+#default_options=""

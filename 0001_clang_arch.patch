@@ -1,0 +1,11 @@
+--- llvmlinux/toolchain/clang/clang-native.mk
++++ llvmlinux/toolchain/clang/clang-native.mk
+@@ -30,7 +30,7 @@
+ CLANG_MINOR		= 5
+ 
+ clang-check-version:
+-	@${LLC} -version | grep -q ${ARCH} || $(call error1,Your native clang does not have ${ARCH} support)
++	@${LLC} -version | grep -q i386 || $(call error1,Your native clang does not have ${ARCH} support)
+ 	@$(call assert, \
+ 		`echo __clang_major__ | ${CLANG} -E -x c - | tail -1` -ge ${CLANG_MAJOR} -a \
+ 		`echo __clang_minor__ | ${CLANG} -E -x c - | tail -1` -ge ${CLANG_MINOR}, \
