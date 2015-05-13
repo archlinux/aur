@@ -9,8 +9,10 @@ url='https://bitbucket.org/kode54/vio2sf'
 license=(GPL2)
 depends=(glibc zlib)
 makedepends=(git)
-source=(${pkgname}::git+https://bitbucket.org/kode54/vio2sf.git)
-sha256sums=('SKIP')
+source=(${pkgname}::git+https://bitbucket.org/kode54/vio2sf.git
+        remove-noise.patch)
+sha256sums=('SKIP'
+            '6604e83f363915984a186d670ca5d2fcb4e3d466cf46d566633bf0bef9a2f030')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -18,6 +20,11 @@ pkgver() {
     git describe --long 2>/dev/null | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
+}
+
+prepare() {
+  cd "$srcdir/$pkgname"
+  patch -p1 < "$srcdir"/remove-noise.patch
 }
 
 build() {

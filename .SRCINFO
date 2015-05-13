@@ -10,7 +10,9 @@ pkgbase = vio2sf-git
 	depends = glibc
 	depends = zlib
 	source = vio2sf-git::git+https://bitbucket.org/kode54/vio2sf.git
+	source = remove-noise.patch
 	sha256sums = SKIP
+	sha256sums = 6604e83f363915984a186d670ca5d2fcb4e3d466cf46d566633bf0bef9a2f030
 
 pkgname = vio2sf-git
 
