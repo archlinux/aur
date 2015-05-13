@@ -1,0 +1,21 @@
+pkgbase = leafpad-noheader
+	pkgdesc = A notepad clone for GTK+ 2.0 with print header disabled
+	pkgver = 0.8.18.1
+	pkgrel = 2
+	url = http://tarot.freeshell.org/leafpad/
+	install = leafpad.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	depends = gtk2
+	depends = desktop-file-utils
+	provides = leafpad
+	conflicts = leafpad
+	source = http://download.savannah.gnu.org/releases/leafpad/leafpad-0.8.18.1.tar.gz
+	source = gtkprint.c.diff
+	md5sums = 254a72fc67505e3aa52884c729cd7b97
+	md5sums = a01afce5b77fd78845e1d4985fd3c0f7
+
+pkgname = leafpad-noheader
+

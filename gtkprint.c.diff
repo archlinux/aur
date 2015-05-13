@@ -1,0 +1,19 @@
+--- src/gtkprint.c.orig	2012-01-16 11:13:30.107709300 +0100
++++ src/gtkprint.c	2012-01-16 11:14:19.627707187 +0100
+@@ -94,14 +94,14 @@
+ 	
+ 	layout_lh = gtk_print_context_create_pango_layout(ctx);
+ 	pango_layout_set_font_description(layout_lh, font_desc);
+-	pango_layout_set_text(layout_lh, page_title, -1);
++//	pango_layout_set_text(layout_lh, page_title, -1);
+ 	cairo_move_to(cr, 0, - 72 / 25.4 * 10);
+ 	pango_cairo_show_layout(cr, layout_lh);
+ 	
+ 	page_text = g_strdup_printf("%d / %d", page_nr + 1, n_pages);
+ 	layout_rh = gtk_print_context_create_pango_layout(ctx);
+ 	pango_layout_set_font_description(layout_rh, font_desc);
+-	pango_layout_set_text(layout_rh, page_text, -1);
++//	pango_layout_set_text(layout_rh, page_text, -1);
+ //	pango_layout_set_alignment(layout_rh, PANGO_ALIGN_RIGHT);
+ 	pango_layout_get_size(layout_rh, &layout_width, NULL);
+ 	cairo_move_to(cr,
