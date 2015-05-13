@@ -1,0 +1,19 @@
+pkgbase = ccx2-git
+	pkgdesc = Console client for xmms2
+	pkgver = 0.2.0.18.g04e2f10
+	pkgrel = 3
+	url = http://github.com/palbo/ccx2
+	arch = any
+	license = BSD
+	depends = ncurses
+	depends = python2
+	depends = xmms2
+	optdepends = python2-imaging: display Cover Art
+	optdepends = python2-lxml: display lyrics
+	provides = ccx2
+	conflicts = ccx2
+	source = git://github.com/palbo/ccx2.git
+	md5sums = SKIP
+
+pkgname = ccx2-git
+
