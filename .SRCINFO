@@ -1,0 +1,14 @@
+pkgbase = translate-git
+	pkgdesc = Google Translator command line interface
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Narrat/translate.git
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	source = git://github.com/Narrat/translate.git#branch=master
+	md5sums = SKIP
+
+pkgname = translate-git
+
