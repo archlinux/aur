@@ -30,7 +30,7 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname/src/vio2sf"
   make CFLAGS="$CFLAGS -c -fPIC" CXXFLAGS="$CXXFLAGS -c -fPIC"
-  "${CC-cc}" "$CFLAGS" -shared -lz -o libvio2sf.so desmume/*.o
+  "${CXX-c++}" "$CFLAGS" -shared -lz -o libvio2sf.so desmume/*.o
 }
 
 package() {
