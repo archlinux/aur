@@ -12,9 +12,9 @@ pre_install() {
 
 post_install() {
 
-  chown arangodb:arangodb /var/lib/arangodb &> /dev/null
-  chown arangodb:arangodb /var/lib/arangodb-apps &> /dev/null
-  chown arangodb:arangodb /var/log/arangodb &> /dev/null
+  chown -R arangodb:arangodb /var/lib/arangodb &> /dev/null
+  chown -R arangodb:arangodb /var/lib/arangodb-apps &> /dev/null
+  chown -R arangodb:arangodb /var/log/arangodb &> /dev/null
 
   cat <<-EOF
 

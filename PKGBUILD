@@ -11,7 +11,11 @@ pkgdesc="A multi-model NoSQL database, combining key-value, document and graph d
 arch=("i686" "x86_64")
 url="https://www.arangodb.com/"
 license=('APACHE')
-depends=("glibc" "gcc-libs" "openssl" "readline" "systemd" "v8" "libev" "icu")
+# The depends line should look like this but Arango bundles V8, libev
+# & ICU. This is why its slow to compile and takes a lot of space when
+# building. TODO: is it possible to get Arango to use the system V8?
+# depends=("glibc" "gcc-libs" "openssl" "readline" "systemd" "v8" "libev" "icu")
+depends=("glibc" "gcc-libs" "openssl" "readline" "systemd")
 makedepends=("python2 go>=1.4")
 provides=("arangodb=$pkgver")
 conflicts=("arangodb-latest" "arangodb-git")
@@ -20,7 +24,7 @@ options=()
 install=arangodb.install
 source=("https://www.arangodb.com/repositories/Source/$pkgname-$pkgver.tar.bz2" "arangodb.service")
 sha256sums=('43119a5962cd788f2edc613f3daa449612bd47452e5c51965c8f92e88cf9a268'
-            'd7e23bdff47355e5225cec30a94ec9012e8096f117b66c0c45202bf9aee480a3')
+            '351e765ceebccf6ea6d02ff140441b4cc068727c2ab8ed9f133f6825f321ae56')
 
 build() {
   msg2 "Symlinking 'python' to python2."
