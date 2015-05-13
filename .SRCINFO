@@ -1,0 +1,13 @@
+pkgbase = pim
+	pkgdesc = Python image viewer with vim-like keybindings
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/Narrat/Pim
+	arch = any
+	license = MIT
+	depends = python-gobject
+	source = pim-0.7.0.tar.gz::https://github.com/Narrat/Pim/archive/0.7.0.tar.gz
+	sha256sums = 299f1390f8dfdc43e7fce3aa6420ff0aeddb3d05fa533020818850051e05a40d
+
+pkgname = pim
+
