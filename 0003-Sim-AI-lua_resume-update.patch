@@ -1,0 +1,27 @@
+From 75a63fddd58d6586568846fd6c53be3615fb6429 Mon Sep 17 00:00:00 2001
+From: Narrat <autumn-wind@web.de>
+Date: Thu, 29 Jan 2015 12:10:10 +0100
+Subject: [PATCH 3/5] Sim/AI: lua_resume update
+
+With lua5.2 this functions needs three arguments.
+http://www.lua.org/manual/5.2/manual.html#lua_resume
+---
+  sim/ai.cc | 2 +-
+ 1 files changed, 1 insertions(+), 1 deletion(-)
+
+diff --git a/sim/ai.cc b/sim/ai.cc
+index a9cd019..64ef0c6 100644
+--- a/sim/ai.cc
++++ b/sim/ai.cc
+@@ -233,7 +233,7 @@ void LuaAI::tick() {
+ 
+   lua_pushnumber(G, ship.game->time);
+   lua_setglobal(G, "_time");
+-  auto result = lua_resume(L, 0);
++  auto result = lua_resume(L, NULL, 0);
+   if (result == 0) {
+     throw std::runtime_error("AI exited");
+   } else if (result == LUA_YIELD) {
+-- 
+2.2.2
+

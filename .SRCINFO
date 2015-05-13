@@ -1,0 +1,28 @@
+pkgbase = oort-git
+	pkgdesc = space fleet programming game
+	pkgver = r394.7aacb6d
+	pkgrel = 2
+	url = https://github.com/rlane/Oort
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = automake-1.11
+	makedepends = boost
+	makedepends = sdl
+	depends = boost-libs
+	depends = box2d
+	depends = glib2
+	depends = glew
+	depends = lua
+	optdepends = sdl: for oort_sdl
+	source = oort::git://github.com/rlane/Oort
+	source = 0002-headless-Included-iostream-else-it-failed-of-cerr.patch
+	source = 0003-Sim-AI-lua_resume-update.patch
+	source = 0004-Sim-Ship-Update-on-box2d-functions.patch
+	md5sums = SKIP
+	md5sums = 7eb888feddcf89eba7f22c1cf88928b6
+	md5sums = e6e2a9aaecb1186dd4907a18880f860e
+	md5sums = 656f4d154950976b937f7c7e7209b0d9
+
+pkgname = oort-git
+

@@ -1,0 +1,30 @@
+From 191256d23aa1c8e4e67435da2c1a404aacb57f17 Mon Sep 17 00:00:00 2001
+From: Narrat <autumn-wind@web.de>
+Date: Thu, 29 Jan 2015 12:22:00 +0100
+Subject: [PATCH 4/5] Sim/Ship: Update on box2d functions
+
+Those need now two arguments.
+They additionally wake up the body.
+See /usr/include/Box2D/Dynamics/b2Body.h:757 and 776
+---
+ sim/ship.cc | 4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/sim/ship.cc b/sim/ship.cc
+index 9818e53..92c3252 100644
+--- a/sim/ship.cc
++++ b/sim/ship.cc
+@@ -173,8 +173,8 @@ void Ship::update_forces() {
+   auto local_force_vec = vec2(main_thrust, lateral_thrust);
+   auto world_force_vec =
+     glm::rotate(local_force_vec, glm::degrees(get_heading()));
+-  body->ApplyForceToCenter(n2b(world_force_vec));
+-  body->ApplyTorque(torque);
++  body->ApplyForceToCenter(n2b(world_force_vec), 1);
++  body->ApplyTorque(torque, 1);
+ }
+ 
+ }
+-- 
+2.2.2
+
