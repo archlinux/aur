@@ -1,0 +1,24 @@
+pkgbase = gate88
+	pkgdesc = An abstract realtime strategy/action game in space
+	pkgver = Mar19_05
+	pkgrel = 2
+	url = http://www.queasygames.com/gate88/
+	arch = i686
+	groups = games
+	license = custom
+	depends = sdl
+	depends = sdl_mixer
+	depends = sdl_net
+	depends = libvorbis
+	depends = mesa
+	source = http://www.queasygames.com/gate88/Gate88_Mar19_05.tar.gz
+	source = gate88
+	source = gate88.desktop
+	source = gate88.png
+	md5sums = 57b3d8432462954947b8737bbab81e91
+	md5sums = ec20608ab2f0b34625befd31aae03bcb
+	md5sums = ed2f767b002d320631952d4bf3bf2ac9
+	md5sums = c193292eea050401134ef3c83ba07a0e
+
+pkgname = gate88
+

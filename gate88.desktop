@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Gate 88
+Comment=Abstract real time action/strategy in space
+Exec=gate88
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Game;Strategy;
+Icon=/usr/share/gate88/gate88.png
+GenericName=Game
