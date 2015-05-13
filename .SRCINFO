@@ -1,0 +1,20 @@
+pkgbase = z600
+	pkgdesc = Lexmark Z600 Printer Driver
+	pkgver = 1.0
+	pkgrel = 3
+	url = http://www.lexmark.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = rpmextract
+	makedepends = gzip
+	source = http://downloads.lexmark.com/downloads/cpd/CJLZ600LE-CUPS-1.0-1.TAR.gz
+	md5sums = c0e35c9819b25e587e75a5a743c49f18
+	depends_i686 = cups
+	depends_i686 = libstdc++5
+	depends_x86_64 = cups
+	depends_x86_64 = lib32-libcups
+	depends_x86_64 = lib32-libstdc++5
+
+pkgname = z600
+
