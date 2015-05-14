@@ -6,10 +6,10 @@
 pkgbase=python-sphinx
 pkgname=('python-sphinx' 'python2-sphinx')
 pkgver=1.3.1
-pkgrel=6
+pkgrel=7
 arch=('any')
 url='http://sphinx.pocoo.org/'
-license=('GPL')
+license=('BSD')
 makedepends=(
   'python-setuptools'
   'python-docutils'
@@ -75,6 +75,8 @@ package_python-sphinx() {
 
   cd Sphinx-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
+
+  install -Dm644 "$srcdir"/Sphinx-$pkgver/LICENSE "$pkgdir"/usr/share/licenses/python-sphinx/LICENSE
 }
 
 package_python2-sphinx() {
@@ -85,6 +87,8 @@ package_python2-sphinx() {
 
   cd Sphinx-${pkgver}2
   python2 setup.py install --root="$pkgdir" --optimize=1
+
+  install -Dm644 "$srcdir"/Sphinx-$pkgver/LICENSE "$pkgdir"/usr/share/licenses/python2-sphinx/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
