@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=easyrpg-player-git
-pkgver=0.2.1.r0.g865f469
+pkgver=0.3.r0.gec95975
 pkgrel=1
 pkgdesc="FLOSS RPG Maker 2000/2003 and EasyRPG games interpreter (development version)"
 arch=('i686' 'x86_64')
