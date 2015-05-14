@@ -14,6 +14,7 @@ makedepends=('kdepimlibs' 'libkexiv2' 'libkdcraw' 'libkipi' 'libksane' 'liblqr'
              'kdeedu-marble' 'opencv' 'boost' 'libgpod' 'qjson' 'hugin' 'libgphoto2'
              'cmake' 'automoc4' 'doxygen' 'lensfun' 'qt-gstreamer' 'imagemagick' 'eigen' 
 	     'libbaloo4' 'libpgf' 'libusb-compat' 'libkface' 'libkgeomap')
+optdepends=('hugin: panorama tools')
 source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
 sha1sums=('d44ab133f152b84599507dd6a02aef4b22033dd4')
 
