@@ -1,0 +1,17 @@
+pkgbase = slatec-git
+	pkgdesc = SLATEC Common Mathematical Library
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/Rufflewind/slatec
+	arch = i686
+	arch = x86_64
+	license = PD
+	makedepends = git
+	makedepends = gcc-fortran
+	provides = slatec
+	conflicts = slatec
+	source = slatec-git::git://github.com/Rufflewind/slatec
+	sha256sums = SKIP
+
+pkgname = slatec-git
+
