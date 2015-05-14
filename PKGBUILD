@@ -3,9 +3,6 @@
 # URL: https://github.com/trollixx/aur-packages
 
 pkgname=zeal-git
-# The author of Zeal hasn't settled on a versioning scheme yet.
-# But he's using ``0.0+1snapshot201305312045+0100-1'' on PPA.
-# Guess it's safe to use 3-digit for now.
 _appname=zeal
 pkgver=0.1.1.33.g1848e7a
 pkgrel=1
