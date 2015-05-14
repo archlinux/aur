@@ -3,16 +3,16 @@
 # Contributor: Nathan Owe <ndowens04+AUR @ gmail.com>
 
 pkgname=afick
-pkgver=3.4.3
+pkgver=3.5.0
 pkgrel=1
-pkgdesc="Alternative to tripwire"
+pkgdesc="A security tool similar to tripwire"
 arch=('any')
 url="http://afick.sourceforge.net/"
 license=('GPL')
 depends=('perl')
 backup=('etc/afick.conf')
 source=(http://sourceforge.net/projects/afick/files/$pkgname/$pkgver/$pkgname-$pkgver.tgz)
-md5sums=('63be575dadc77a6a7d92fb815edbc5ca')
+md5sums=('fc388425d401c7c8126572c7cc9cd87b')
 
 prepare() {
   cd "${srcdir}"/$pkgname-$pkgver
