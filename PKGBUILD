@@ -6,34 +6,39 @@
 #   gpg --recv-keys 090B11993D9AEBB5
 
 pkgname=guix
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="GNU guix is a purely functional package manager"
 arch=('x86_64' 'i686')
 url="https://www.gnu.org/software/guix/"
 license=('GPL')
 makedepends=(
+  'bash-completion'
   'emacs') # Please remove this if you are not going to use guix in emacs
 depends=(
   'guile>=2.0.5'
   'sqlite>=3.6.19'
   'bzip2'
   'libgcrypt')
-optdepends=('emacs: to enable Emacs Interface')
+optdepends=(
+  'bash-completion: to enable bash programmable completion'
+  'emacs: to enable Emacs Interface')
 source=(
   "ftp://alpha.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig}
   "guix.service")
 install="${pkgname}.install"
-sha256sums=('c54d19e948eae7ed15f63c6ad69bd8193fd1ed8128d3a6a8511f381f64a3058a'
-            '932f3d021ae6ea3101961c346cd8caf6aed42db23a515fd70be4c41cb49f301d'
+sha256sums=('ff1380a551f8ba18057f7c5e8fdbcc6a371c89817718ff4b7ceef013e0b4afa8'
+            '6bf1b3ea501109feb11ec550dec9619fd1f8fe703986b50a58921b51d5e02cc0'
             'd0a014de859c4f5d6f760be84991b88f4855ead933368f3ab815a1deabc361ce')
 validpgpkeys=('3CE464558A84FDC69DB40CFB090B11993D9AEBB5')
 
 build() {
 	current_arch="`uname -m`"
+	bash_completion_dir="`pkg-config --variable=completionsdir bash-completion`"
 	cd ${srcdir}/${pkgname}-${pkgver}
-	./configure --prefix=/usr --sbindir=/usr/bin \
-		--localstatedir=/var --disable-rpath
+	./configure --prefix=/usr --sbindir=/usr/bin --localstatedir=/var \
+		--sysconfdir=/etc --with-bash-completion-dir="${bash_completion_dir}" \
+		--disable-rpath
 	make
 }
 
