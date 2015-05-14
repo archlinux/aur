@@ -16,7 +16,7 @@ diff --git i/Makefile w/Makefile
  	$(AR) rcs $@ $^
  
 +liblazyusf.so : $(OBJS)
-+	$(CC) $(CFLAGS) -shared -lm -lz -o $@ $^
++	$(CC) $(CFLAGS) -Wl,-Bsymbolic -shared -lm -lz -o $@ $^
 +
  bench : test/bench.o liblazyusf.a
  	$(CC) -o $@ $^ ../psflib/libpsflib.a -lz

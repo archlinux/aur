@@ -13,7 +13,7 @@ source=(${pkgname}::git+https://bitbucket.org/kode54/lazyusf2.git
         makefile.patch
         LICENSE.CC0)
 sha256sums=('SKIP'
-            '3433556bff919955b1dcae7a86fe5de474e4dda88a44a79872057d3ac54828f7'
+            '7a48693ef6e9d41d7f0fa93094603b5decad888454a1fc9bbf6de8fdf88e3995'
             'a90051e82202a5dc51162127c6834f8434fb2ece57795317951420fe6a8f4562')
 
 pkgver() {

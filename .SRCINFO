@@ -15,7 +15,7 @@ pkgbase = lazyusf2-git
 	source = makefile.patch
 	source = LICENSE.CC0
 	sha256sums = SKIP
-	sha256sums = 3433556bff919955b1dcae7a86fe5de474e4dda88a44a79872057d3ac54828f7
+	sha256sums = 7a48693ef6e9d41d7f0fa93094603b5decad888454a1fc9bbf6de8fdf88e3995
 	sha256sums = a90051e82202a5dc51162127c6834f8434fb2ece57795317951420fe6a8f4562
 
 pkgname = lazyusf2-git
