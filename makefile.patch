@@ -1,0 +1,27 @@
+diff --git i/Makefile w/Makefile
+index 430334f..942b542 100644
+--- i/Makefile
++++ w/Makefile
+@@ -1,16 +1,19 @@
+-CXXFLAGS := --std=c++11 -O2 -MMD -MP
++CXXFLAGS := --std=c++11 -O2 -MMD -MP -fPIC
+ 
+ SRCS := $(shell find -name '*.cpp')
+ OBJS := $(SRCS:%.cpp=%.o)
+ DEPS := $(SRCS:%.cpp=%.d)
+ 
+-TARGET := SSEQPlayer.a
++TARGET := libSSEQPlayer.a libSSEQPlayer.so
+ 
+ all: $(TARGET)
+ 
+-$(TARGET): $(OBJS)
++libSSEQPlayer.a: $(OBJS)
+ 	ar rcs $@ $^
+ 
++libSSEQPlayer.so: $(OBJS)
++	$(CXX) -shared -o $@ $^
++
+ clean:
+ 	@rm -f $(OBJS)
+ 	@rm -f $(DEPS)
