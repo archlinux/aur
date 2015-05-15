@@ -2,7 +2,7 @@
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 
 pkgname=mingw-w64-sfml
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc="A simple, fast, cross-platform, and object-oriented multimedia API (mingw-w64)"
 arch=(any)
@@ -13,7 +13,7 @@ depends=(mingw-w64-crt mingw-w64-libsndfile mingw-w64-libjpeg-turbo mingw-w64-op
 conflicts=(mingw-w64-sfml-static)
 provides=(mingw-w64-sfml-static)
 options=(staticlibs !strip !buildflags)
-source=("git+https://github.com/LaurentGomila/SFML.git#tag=${pkgver}")
+source=("git+https://github.com/SFML/SFML.git#tag=${pkgver}")
 md5sums=('SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -43,7 +43,7 @@ package() {
     find "$pkgdir/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} +
     find "$pkgdir/usr/${_arch}" -name '*.a' -o -name '*.dll' -exec ${_arch}-strip -g {} +
     find "$pkgdir/usr/${_arch}" -name '*.txt' -delete
-    rm -f "$pkgdir/usr/$_arch/bin/"{libsndfile-1,openal32}.dll
-    rm -f "$pkgdir/usr/$_arch/lib/lib"{glew32,freetype,jpeg,sndfile}.a
+    rm "$pkgdir/usr/$_arch/bin/openal32.dll"
+    rm "$pkgdir/usr/$_arch/lib/lib"{FLAC,freetype,jpeg,ogg,openal32,vorbis,vorbisenc,vorbisfile}.a
   done
 }
