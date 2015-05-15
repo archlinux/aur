@@ -6,7 +6,7 @@
 
 _pkgname=translate
 pkgname=translate-git
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Google Translator command line interface"
 arch=('any')
