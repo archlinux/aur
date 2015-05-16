@@ -3,7 +3,7 @@
 pkgname=nghttp2
 pkgver=1.0.0
 _pkgver=v1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="HTTP/2 C Library"
 arch=('i686' 'x86_64')
 url="https://nghttp2.org/"
@@ -17,7 +17,10 @@ sha256sums=('c71017a62b746292e1007bbbfb7572286ad350595e3d925b6f24d79b27d84f0f')
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  ./configure --prefix=/usr
+  ./configure \
+    --prefix=/usr \
+    --disable-examples \
+    --disable-python-bindings
   make
 }
 
