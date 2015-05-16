@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://geo.rkkda.com/"
 license=('Public Domain')
 depends=('bc' 'curl' 'perl' 'units' 'gpsbabel')
-makedepends=('ghostscript' 'hd2u' 'sharutils' 'txt2man')
+makedepends=('ghostscript' 'dos2unix' 'sharutils' 'txt2man')
 optdepends=('gpsd: for GPS management'
             'gpsdrive: for GPS management'
             'tangogps: for GPS management'
