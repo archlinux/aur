@@ -1,7 +1,7 @@
 # Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 
 _plugin_name=https-everywhere
-_plugin_version=5.0.2
+_plugin_version=5.0.4
 pkgname=firefox-extension-$_plugin_name
 pkgver=$_plugin_version
 pkgrel=1
@@ -13,13 +13,13 @@ depends=("firefox")
 makedepends=("unzip")
 source=("https://www.eff.org/files/https-everywhere-${_plugin_version}.xpi")
 noextract=("https://www.eff.org/files/https-everywhere-${_plugin_version}.xpi")
-sha256sums=('a600ad019c982c8c90b8c5022dbf56722974bc1143f49c0db77704986f1b2ced')
+sha256sums=('127f269ba52cca217a3ac7f3d8f077a286175fd484227bcfd65a584c87be1b7b')
 
 prepare() {
   cd $srcdir
 
   # Ugly hack, bsdtar does not extract the xpi properly...
-  unzip -qqo ../https-everywhere-${_plugin_version}.xpi
+  unzip -qqo https-everywhere-${_plugin_version}.xpi
 }
 
 package() {
