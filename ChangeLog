@@ -1,5 +1,8 @@
 2014-06-08 FoolEcho <foolecho at gmail dot com>
 
+	* 4.0.1-1 :
+	Update.
+
 	* 4.0.0-1 :
 	Update.
 	Dependances use now Qt5 (the binaries should provide all you need).
