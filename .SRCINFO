@@ -1,6 +1,6 @@
 pkgbase = awesome-git
 	pkgdesc = Highly configurable framework window manager
-	pkgver = 3.5.2.344.g2f0a7f9
+	pkgver = 3.5.2.424.g3618d95
 	pkgrel = 1
 	url = http://awesome.naquadah.org/
 	arch = i686

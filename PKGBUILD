@@ -10,7 +10,7 @@
 
 _pkgname=awesome
 pkgname=${_pkgname}-git
-pkgver=3.5.2.344.g2f0a7f9
+pkgver=3.5.2.424.g3618d95
 pkgrel=1
 pkgdesc='Highly configurable framework window manager'
 arch=('i686' 'x86_64')
@@ -44,7 +44,7 @@ build() {
     -DCMAKE_BUILD_TYPE=RELEASE \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DSYSCONFDIR=/etc \
-    -DLUA_LIBRARY=/usr/lib/liblua.so.5.2
+    -DLUA_LIBRARY=/usr/lib/liblua.so.5.3
   make
 }
 
