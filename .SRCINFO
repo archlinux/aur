@@ -1,0 +1,17 @@
+pkgbase = sc68-svn
+	pkgdesc = Atari ST and Amiga music player
+	pkgver = r571
+	pkgrel = 1
+	url = http://sc68.atari.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = svn
+	depends = curl
+	depends = libao
+	depends = zlib
+	source = sc68-svn::svn+svn://svn.code.sf.net/p/sc68/code/
+	sha256sums = SKIP
+
+pkgname = sc68-svn
+
