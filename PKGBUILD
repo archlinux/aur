@@ -4,7 +4,7 @@
 
 _pkgname=xfwm4
 pkgname=$_pkgname-better-smartplacement
-pkgver=4.12.2
+pkgver=4.12.3
 pkgrel=1
 pkgdesc="Xfce window manager w/ better smart placement of new windows"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ source=(http://archive.xfce.org/src/xfce/${_pkgname}/4.12/${_pkgname}-${pkgver}.
         0001-Rewrote-smartPlacement.patch
         0002-smartPlacement-w-snap_to_border-we-snap-to-bottom-ri.patch
         0003-Fix-new-window-always-top-left-when-screen-not-full.patch)
-sha1sums=('fb9e9bd6f8a5e1838933355565b92cd40941b90b'
+sha1sums=('9f7688bd444ff0517c72c5ed86c2de80d9bf6f2a'
           'ea46b6b9561bdd2e4f5225b4aeed811b2ed5d890'
           'e179b132c8da76a6b75e51bb7364e19ba9ecf7de'
           '9356911cd08c9703f356c0b7993a6392302dbcad')
