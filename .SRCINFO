@@ -10,6 +10,7 @@ pkgbase = sc68-svn
 	depends = curl
 	depends = libao
 	depends = zlib
+	conflicts = sc68
 	source = sc68-svn::svn+svn://svn.code.sf.net/p/sc68/code/
 	sha256sums = SKIP
 

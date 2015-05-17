@@ -9,6 +9,7 @@ url='http://sc68.atari.org'
 license=(GPL2)
 depends=(curl libao zlib)
 makedepends=(svn)
+conflicts=(sc68)
 source=(${pkgname}::svn+svn://svn.code.sf.net/p/sc68/code/)
 sha256sums=('SKIP')
 
