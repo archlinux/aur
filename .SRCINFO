@@ -1,6 +1,6 @@
 pkgbase = xdg-launch
 	pkgdesc = A command line XDG compliant launcher
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = http://github.com/bbidulock/xdg-launch
 	install = xdg-launch.install
@@ -14,8 +14,8 @@ pkgbase = xdg-launch
 	depends = libnotify
 	depends = startup-notification
 	optdepends = dmenu: to use dmenu_launch script
-	source = https://github.com/bbidulock/xdg-launch/releases/download/0.2/xdg-launch-0.2.tar.xz
-	md5sums = ffd72d5b14aec199cb6d067209c57726
+	source = https://github.com/bbidulock/xdg-launch/releases/download/0.3/xdg-launch-0.3.tar.xz
+	md5sums = 5953e3eda8d7d0f7eee343394c41b985
 
 pkgname = xdg-launch
 
