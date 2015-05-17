@@ -1,0 +1,13 @@
+pkgbase = turtle
+	pkgdesc = A C++ Mock_object library based on Boost with a focus on usability, simplicity and flexibility.
+	pkgver = 1.2.7
+	pkgrel = 1
+	url = http://turtle.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = Boost
+	source = http://downloads.sourceforge.net/project/turtle/turtle/1.2.7/turtle-1.2.7.tar.bz2
+	sha256sums = 06067133ddcc33ec58df1f43843d96936d747b2011f0013b395ff23009da88a3
+
+pkgname = turtle
+
