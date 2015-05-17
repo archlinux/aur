@@ -1,0 +1,16 @@
+pkgbase = libguess-git
+	pkgdesc = High-speed character set detection library (development version)
+	pkgver = 1.2.r37.31197ce
+	pkgrel = 1
+	url = https://github.com/kaniini/libguess
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glibc
+	provides = libguess
+	conflicts = libguess
+	source = git+https://github.com/kaniini/libguess.git
+	md5sums = SKIP
+
+pkgname = libguess-git
+
