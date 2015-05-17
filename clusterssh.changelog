@@ -1,12 +1,15 @@
-2014-10-16 Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+2015-05-17 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* clusterssh 4.03_06-1
+
+2014-10-16 Jaroslav Lichtblau <svetlemodry@archlinux.org>
 	* clusterssh 4.02_04-3 FS#40797 fixed
 
-2014-05-25 Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+2014-05-25 Jaroslav Lichtblau <svetlemodry@archlinux.org>
 	* clusterssh 4.02_04-3 FS#40551 fixed
 
-2013-10-06 Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+2013-10-06 Jaroslav Lichtblau <svetlemodry@archlinux.org>
 	* clusterssh 3.28-4 - changelog properly added, changed to 'any' architecture
 
-2009-12-26 Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+2009-12-26 Jaroslav Lichtblau <svetlemodry@archlinux.org>
 	* Package moved to [community]
 	* version 3.28 - 39 votes in AUR
