@@ -2,7 +2,7 @@
 # Fri Dec  4 11:58:26 UTC 2015
 pkgbase = xde-theme-blackbirds
 	pkgdesc = SR-71 Blackbird theme pack for XDE
-	pkgver = 1.1.4
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = http://www.unexicon.com/
 	arch = any
