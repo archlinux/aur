@@ -1,7 +1,7 @@
 #Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgdesc="Airforce theme pack for XDE"
 pkgname=xde-theme-airforce
-pkgver=1.1.12
+pkgver=1.1.13
 pkgrel=1
 url="http://www.unexicon.com/"
 license=('CCPL:by-nc-nd')
