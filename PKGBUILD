@@ -1,14 +1,14 @@
 # Maintainer: Philipp Klein <philipptheklein@gmail.com>
 pkgname=gdrive
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line utility for uploading and downloading single files to your Google Drive"
-arch=('i686' 'x86_64')
+arch=('x86_64' 'i686')
 url="https://github.com/prasmussen/gdrive"
 license=('MIT')
 groups=()
 depends=()
-makedepends=()
+makedepends=(git go mercurial)
 optdepends=()
 provides=()
 conflicts=()
@@ -17,19 +17,26 @@ backup=()
 options=()
 install=
 changelog=
-source=("LICENSE")
-source_i686=("gdrive-linux-i686::https://drive.google.com/uc?id=0B3X9GlR6EmbnZ1JESlBlX2s4XzQ")
-source_x86_64=("gdrive-linux-x86_64::https://drive.google.com/uc?id=0B3X9GlR6EmbnSWFxaExoUEk1NFk")
+source=("https://github.com/prasmussen/$pkgname/archive/$pkgver.tar.gz")
+sha256sums=('50d5851c6f6cfa52713c001dae03a2c189ee3d9a255e8bf58ce8d4dadab5b9fc')
 noextract=()
-sha256sums=('141e360fe52a5f5a873ac9c49a08d2f50bce82212a8c8d6196a91b79820dd717')
-sha256sums_i686=('ae89a67e35a3426c6ad969c61973b06202a3b23134269bce577c824ea2ad2ccc')
-sha256sums_x86_64=('52f7a20707e63868b7d1d8a458c1942f876d472f414b982d0f5164458d20bc2a')
+_gourl="github.com/prasmussen/gdrive"
+
+prepare() {
+    cd "$srcdir/$pkgname-$pkgver"
+    GOPATH="$srcdir" go get -fix -v -x $_gourl
+}
+
+build() {
+    cd "$srcdir/$pkgname-$pkgver"
+    GOPATH="$srcdir" go build -o "$srcdir/bin/$pkgname"
+}
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
-    install -dm755 "$pkgdir/usr/share/licenses/gdrive"
-    install -m755 "$srcdir/gdrive-linux-$CARCH" "$pkgdir/usr/bin/gdrive"
-    install -m644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/gdrive"
+    install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+    install -m755 "$srcdir/bin/$pkgname" "$pkgdir/usr/bin"
+    install -m644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim:sw=4:ts=4:et
