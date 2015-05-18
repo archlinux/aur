@@ -15,8 +15,8 @@ sha256sums=('SKIP')
 
 prepare() {
   cd "${srcdir}/${pkgname}"
-  git submodule update --init --recursive
   git checkout $_pkgver
+  git submodule update --init --recursive
 }
 
 build() {
