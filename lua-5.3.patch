@@ -1,0 +1,64 @@
+From 82c0aa33c904274d9d62b629c2d15990aab45050 Mon Sep 17 00:00:00 2001
+From: Johannes Dewender <rpm@JonnyJD.net>
+Date: Mon, 18 May 2015 10:11:13 +0200
+Subject: [PATCH] remove luaL_checkint, deprecated in lua 5.3
+
+luaL_checkint and luaL_optint are deprecated in lua 5.3
+The variants luaL_checkinteger and luaL_optinteger work
+the same with an implicit typecast (lua_integer -> int).
+---
+ luaext/lposix.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/luaext/lposix.c b/luaext/lposix.c
+index a59be3e..51ea2b3 100644
+--- a/luaext/lposix.c
++++ b/luaext/lposix.c
+@@ -361,22 +361,22 @@ static int Pfork(lua_State *L)			/** fork() */
+ 
+ static int Pwait(lua_State *L)			/** wait([pid]) */
+ {
+-	pid_t pid = luaL_optint(L, 1, -1);
++	pid_t pid = luaL_optinteger(L, 1, -1);
+ 	return pushresult(L, waitpid(pid, NULL, 0), NULL);
+ }
+ 
+ 
+ static int Pkill(lua_State *L)			/** kill(pid,[sig]) */
+ {
+-	pid_t pid = luaL_checkint(L, 1);
+-	int sig = luaL_optint(L, 2, SIGTERM);
++	pid_t pid = luaL_checkinteger(L, 1);
++	int sig = luaL_optinteger(L, 2, SIGTERM);
+ 	return pushresult(L, kill(pid, sig), NULL);
+ }
+ 
+ 
+ static int Psleep(lua_State *L)			/** sleep(seconds) */
+ {
+-	unsigned int seconds = luaL_checkint(L, 1);
++	unsigned int seconds = luaL_checkinteger(L, 1);
+ 	lua_pushnumber(L, sleep(seconds));
+ 	return 1;
+ }
+@@ -529,7 +529,7 @@ static int Pgetprocessid(lua_State *L)		/** getprocessid([selector]) */
+ 
+ static int Pttyname(lua_State *L)		/** ttyname(fd) */
+ {
+-	int fd=luaL_optint(L, 1, 0);
++	int fd=luaL_optinteger(L, 1, 0);
+ 	lua_pushstring(L, ttyname(fd));
+ 	return 1;
+ }
+@@ -880,7 +880,7 @@ static int exit_override(lua_State *L)
+     if (!have_forked)
+ 	return luaL_error(L, "exit not permitted in this context");
+ 
+-    exit(luaL_optint(L, 1, EXIT_SUCCESS));
++    exit(luaL_optinteger(L, 1, EXIT_SUCCESS));
+ }
+ 
+ static const luaL_Reg os_overrides[] =
+-- 
+2.1.3
+
