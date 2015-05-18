@@ -24,6 +24,8 @@ pkgver() {
 build() {
   cd "$srcdir"/libcec
   cmake . \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_SHARED_LIBS=1 \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DCMAKE_INSTALL_LIBDIR_NOARCH=/usr/lib
