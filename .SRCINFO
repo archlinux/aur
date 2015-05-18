@@ -1,5 +1,5 @@
 pkgbase = linux-vfio
-	pkgver = 4.0.3
+	pkgver = 4.0.4
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = linux-vfio
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.3.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.3.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.4.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.4.sign
 	source = config
 	source = config.x86_64
 	source = linux.preset
@@ -23,7 +23,7 @@ pkgbase = linux-vfio
 	source = i915_317.patch
 	sha256sums = 0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991
 	sha256sums = SKIP
-	sha256sums = e8e42b67cd5ca28d3cd85b868a8caf6c0b971c948d6695ea6e399e132664de83
+	sha256sums = c268985a82483fe75f0f397217208e262f85a356d1d9f34b9e22255e549d7ce9
 	sha256sums = SKIP
 	sha256sums = f70f2935b1881697ff986b80b444de422cf1869740ca33c25d3d1f20f5e56ba5
 	sha256sums = 03b740ce5c70593d26634974499eefc9fc24841d972c38c05f9febd2d0b77249
@@ -40,20 +40,20 @@ pkgname = linux-vfio
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = kernel26-vfio=4.0.3
+	provides = kernel26-vfio=4.0.4
 	conflicts = kernel26-vfio
 	replaces = kernel26-vfio
 	backup = etc/mkinitcpio.d/linux-vfio.preset
 
 pkgname = linux-vfio-headers
 	pkgdesc = Header files and scripts for building modules for Linux-vfio kernel
-	provides = kernel26-vfio-headers=4.0.3
+	provides = kernel26-vfio-headers=4.0.4
 	conflicts = kernel26-vfio-headers
 	replaces = kernel26-vfio-headers
 
 pkgname = linux-vfio-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-vfio kernel
-	provides = kernel26-vfio-docs=4.0.3
+	provides = kernel26-vfio-docs=4.0.4
 	conflicts = kernel26-vfio-docs
 	replaces = kernel26-vfio-docs
 
