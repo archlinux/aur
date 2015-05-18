@@ -50,16 +50,12 @@ post_upgrade() {
   between versions. To upgrade existing data files run /usr/bin/arangod
   with the upgrade option:
 
+    sudo systemctl stop arangodb.service
     sudo arangod --upgrade
+    sudo systemctl start arangodb.service
 
-  You might also need to reload the systemd service definition:
-
-    sudo systemctl daemon-reload
-
-  Or restart the service:
-
-    sudo systemctl restart arangodb.service
-
+  Take a look at the Changelog to see what is new in $1:
+  https://github.com/arangodb/arangodb/blob/devel/CHANGELOG
 EOF
 }
 
