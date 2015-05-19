@@ -10,7 +10,7 @@ license=('custom')
 source=(http://files.drdteam.org/index.php/files/download/12950/harmony.zip)
 md5sums=('51b4b38e16622946edfd01d74d246120')
 
-build() {
+package() {
   cd "$srcdir"
 
   install -Dm644 harm1.wad "$pkgdir"/usr/share/games/harmony/harm1.wad
