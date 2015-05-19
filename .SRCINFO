@@ -1,0 +1,13 @@
+pkgbase = bitaddress
+	pkgdesc = JavaScript Client-Side Bitcoin Wallet Generator
+	pkgver = 2.9.8
+	pkgrel = 1
+	url = https://github.com/pointbiz/bitaddress.org
+	arch = any
+	license = MIT
+	provides = bitsquare
+	source = bitaddress::git+https://github.com/pointbiz/bitaddress.org.git
+	sha256sums = SKIP
+
+pkgname = bitaddress
+
