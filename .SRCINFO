@@ -1,0 +1,25 @@
+pkgbase = linux-can-dkms
+	pkgdesc = CAN kernel modules (DKMS)
+	pkgver = 4.0.3
+	pkgrel = 1
+	url = https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/plain/Documentation/networking/can.txt
+	install = linux-can-dkms.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = dkms
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.3.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.3.sign
+	source = dkms.conf
+	source = Makefile
+	sha256sums = 0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991
+	sha256sums = SKIP
+	sha256sums = e8e42b67cd5ca28d3cd85b868a8caf6c0b971c948d6695ea6e399e132664de83
+	sha256sums = SKIP
+	sha256sums = b213142af20f9c0bdfdb52104cc2daed2de3edb2e45a6e4e243b9e980ce3c5db
+	sha256sums = 93f31ca57203d3914753939b78e8405e7770fe8984723d010f89b7993bb8a477
+
+pkgname = linux-can-dkms
+
