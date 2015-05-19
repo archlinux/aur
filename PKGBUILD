@@ -19,32 +19,35 @@ sha256sums=('1b2f9d014c71db78a063fe4cf70d9bfabe027c789245079abeb041b2a381df06'
             '20b95ae8676678de686d2f5ad179ff3741be375c46418c8c5455bfea3bb81fae')
 
 prepare() {
-  cd "$srcdir/Oblige-$pkgver-source"
+  cd Oblige-$pkgver-source
 
   patch -p1 <"$srcdir/compile-fix.patch"
   patch -p1 <"$srcdir/unix-fix.patch"
 }
 
 build() {
-  cd "$srcdir/Oblige-$pkgver-source"
+  cd Oblige-$pkgver-source
 
   g++ -o obj_linux/oblige_res.o -x c++ -c - <<<''
   make -f Makefile.xming \
-    PROGRAM=Oblige \
-    OBJ_DIR=obj_linux \
-    OS=UNIX \
-    CXX=g++ \
-    CXXFLAGS="$CXXFLAGS -Wall -DUNIX -Ilua_src -Iglbsp_src -Iajpoly_src `fltk-config --use-images --cxxflags`" \
-    LDFLAGS="`fltk-config --use-images --ldflags`" \
-    LIBS="-lm -lz"
+       PROGRAM=Oblige \
+       OBJ_DIR=obj_linux \
+       OS=UNIX \
+       CXX=g++ \
+       CXXFLAGS="$CXXFLAGS -Wall -DUNIX -Ilua_src -Iglbsp_src -Iajpoly_src `fltk-config --use-images --cxxflags`" \
+       LDFLAGS="`fltk-config --use-images --ldflags`" \
+       LIBS="-lm -lz"
 
-  (cd tools/qsavetex && exec make CXXFLAGS="$CXXFLAGS -Wall -DUNIX")
+  (
+    cd tools/qsavetex
+    exec make CXXFLAGS="$CXXFLAGS -Wall -DUNIX"
+  )
 
   convert "gui/oblige.ico[0]" oblige.png
 }
 
 package() {
-  cd "$srcdir/Oblige-$pkgver-source"
+  cd Oblige-$pkgver-source
 
   install -Dm755 Oblige "$pkgdir/usr/bin/Oblige"
   ln -s /usr/bin/Oblige "$pkgdir/usr/bin/oblige"
