@@ -8,7 +8,7 @@ arch=('any')
 url="http://www.idsoftware.com/games/vintage/heretic"
 license=('custom')
 source=(ftp://ftp.fu-berlin.de/pc/msdos/games/idgames/idstuff/heretic/htic_v12.zip)
-md5sums=('420b23b3d8f2cbd164c121369eaa2b09')
+sha256sums=('5ffbb47e4a5750fef144c312973ee5782266b4a63474b77478103b6c1aaed39d')
 
 prepare() {
   cd "$srcdir"
