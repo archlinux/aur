@@ -14,19 +14,19 @@ sha256sums=('e3b7c4bce21c2f9b77732a9b5920b6877e884b31dd1ed9273776538dba48a75c')
 
 build() {
   cd $pkgname-$pkgver-source
-  
-  ln -sf Makefile.unx Makefile
 
-  make glBSPX BASE_FLAGS="${CFLAGS} -Isrc -DUNIX -DINLINE_G=inline" || return 1
+  make -f Makefile.unx glBSPX \
+       BASE_FLAGS="$CFLAGS -Isrc -DUNIX -DINLINE_G=inline"
 }
 
 package() {
   cd $pkgname-$pkgver-source
 
   mkdir -p $pkgdir/usr/{bin,share/man/man1}
-  make INSTALL_PREFIX=$pkgdir/usr install
+  make -f Makefile.unx install \
+       INSTALL_PREFIX="$pkgdir/usr"
 
-  install -m755 glBSPX $pkgdir/usr/bin/glbspx
-  install -Dm644 libglbsp.a $pkgdir/usr/lib/libglbsp.a
-  install -Dm644 src/glbsp.h $pkgdir/usr/include/glbsp.h
+  install -m755 glBSPX "$pkgdir/usr/bin/glbspx"
+  install -Dm644 libglbsp.a "$pkgdir/usr/lib/libglbsp.a"
+  install -Dm644 src/glbsp.h "$pkgdir/usr/include/glbsp.h"
 }
