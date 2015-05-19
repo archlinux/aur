@@ -11,7 +11,7 @@ depends=('gcc-libs' 'zlib')
 makedepends=('cmake')
 source=(http://zdoom.org/files/utils/zdbsp/${pkgname}-${pkgver}-src.zip)
 noextract=(${pkgname}-${pkgver}-src.zip)
-md5sums=('e2402ef8acf5364a58b70acecf5e9b9b')
+sha256sums=('f04ae1c1ee7cda6efc0ac341fcde9bfa48b929becf0057d4deb0ede09f133cd4')
 
 prepare() {
   cd "$srcdir"
