@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=BitAddress
+Type=Application
+Comment=JavaScript Client-Side Bitcoin Wallet Generator
+Exec=bitaddress
+Categories=Utility;Finance;
+GenericName=Bitcoin Paper Wallet Utility
