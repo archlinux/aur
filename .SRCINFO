@@ -1,12 +1,12 @@
 pkgbase = harmony-wad
 	pkgdesc = Harmony IWAD (game data)
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://rabotik.nl/harmony.htm
 	arch = any
 	license = custom
-	source = http://files.drdteam.org/index.php/files/download/12950/harmony.zip
-	md5sums = 51b4b38e16622946edfd01d74d246120
+	source = http://www.evil-soft.com/Heretic/harmonyv1.1.zip
+	md5sums = 0f7ca801b131a8ddb52914e6ec5629b3
 
 pkgname = harmony-wad
 

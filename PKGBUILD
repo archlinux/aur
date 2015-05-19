@@ -2,16 +2,16 @@
 
 pkgname=harmony-wad
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Harmony IWAD (game data)"
 arch=('any')
 url="http://rabotik.nl/harmony.htm"
 license=('custom')
-source=(http://files.drdteam.org/index.php/files/download/12950/harmony.zip)
-md5sums=('51b4b38e16622946edfd01d74d246120')
+source=(http://www.evil-soft.com/Heretic/harmonyv1.1.zip)
+md5sums=('0f7ca801b131a8ddb52914e6ec5629b3')
 
 package() {
-  cd "$srcdir"
+  cd "harmony v1.1"
 
   install -Dm644 harm1.wad "$pkgdir"/usr/share/games/harmony/harm1.wad
   install -Dm644 Harmony.txt "$pkgdir"/usr/share/licenses/${pkgname}/Harmony.txt
