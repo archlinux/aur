@@ -3,7 +3,7 @@
 _npmname=jpm
 pkgname=nodejs-$_npmname # All lowercase
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Jetpack Mechanic utilities for creating, testing, running and packaging Mozilla Jetpack Addons'
 arch=(any)
 url='https://developer.mozilla.org/en-US/Add-ons/SDK/Tools/jpm'
