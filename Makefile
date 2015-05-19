@@ -8,8 +8,9 @@ export CONFIG_CAN_GW         := m
 export CONFIG_CAN_VCAN       := m
 
 # drives/net/can
-export CONFIG_CAN_DEV        := m
-export CONFIG_CAN_KVASER_USB := m
+export CONFIG_CAN_CALC_BITTIMING := y
+export CONFIG_CAN_DEV            := m
+export CONFIG_CAN_KVASER_USB     := m
 
 SRC_DIRS := net/can drivers/net/can
 
