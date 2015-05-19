@@ -46,6 +46,7 @@ _sharedir=/usr/share/games/gzdoom
 
 pkgver() {
   cd gzdoom
+
   git describe --long --tags --match 'G*' | sed -r 's/^G//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
