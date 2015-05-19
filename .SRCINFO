@@ -7,7 +7,7 @@ pkgbase = fmodex4.26.36
 	arch = x86_64
 	license = custom
 	source = http://www.fmod.org/download/fmodex/api/Linux/fmodapi42636linux.tar.gz
-	md5sums = 220a54f330bdf3056d6207a0facf2096
+	sha256sums = 80a25118bd7cbf38ec71a79ef9cd276abe21767c6617046c41d00de139d73994
 
 pkgname = fmodex4.26.36
 

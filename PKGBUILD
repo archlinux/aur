@@ -10,10 +10,10 @@ pkgdesc="An advanced audio engine (version 4.26.36)"
 arch=('i686' 'x86_64')
 url="http://www.fmod.org/"
 license=('custom')
-md5sums=('220a54f330bdf3056d6207a0facf2096')
+sha256sums=('80a25118bd7cbf38ec71a79ef9cd276abe21767c6617046c41d00de139d73994')
 [ "$CARCH" = "x86_64" ] && {
 	_pkgarch=64
-	md5sums=('355cba00a34eb5f7d027da68b452f6d9')
+	sha256sums=('cad0064bd9904addfb63b82466acdb83d99adb273d5e63b8ac1f78100d4d75c0')
 }
 source=("http://www.fmod.org/download/fmodex/api/Linux/fmodapi${pkgver//./}linux${_pkgarch}.tar.gz")
 
