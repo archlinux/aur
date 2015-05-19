@@ -8,7 +8,7 @@ arch=('any')
 url="http://www.chucktropolis.com/gamers.htm"
 license=('custom')
 source=(http://www.chucktropolis.com/downloads/ChexQuest3.zip)
-md5sums=('e6e9bec61c1678ee0c883731dd43b60d')
+sha256sums=('29abab521cf9de4cc561afb84cf804793d90f1cf40f6384e19b34f72923dd446')
 
 package() {
   cd "$srcdir"
