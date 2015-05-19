@@ -10,8 +10,8 @@ url="http://www.idsoftware.com/games/doom/doom-ultimate"
 license=('custom')
 source=(ftp://ftp.fu-berlin.de/pc/msdos/games/idgames/idstuff/doom/doom19s.zip \
         LICENSE)
-md5sums=('244d181457c9be5f28b91b488e67e042'
-         '8a65f7e6e006f3e769f8172115bbf7b6')
+sha256sums=('cacf0142b31ca1af00796b4a0339e07992ac5f21bc3f81e7532fe1b5e1b486e6'
+            'fb21ac76f0192ef13c2c88b4d71b64a494552601e8fc91afcd2e8e2306c79c63')
 
 prepare() {
   cd "$srcdir"
