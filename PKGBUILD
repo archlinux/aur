@@ -25,10 +25,10 @@ source=(zdoom::git://github.com/rheit/zdoom.git \
         doom-share-dir.patch \
         stack-noexec.patch \
         zdoom.desktop)
-md5sums=('SKIP'
-         'c8a3905f172f6d9de548e70fa660a300'
-         'e1e1160df8dcf969d9acae76dab27bed'
-         '83e47fdae2768da78cd4ac151ec92ad1')
+sha256sums=('SKIP'
+            '6ee28485ecb282157134c1621f9514c29db461b2c996eeee344b6bb59e7212c0'
+            '0a6c16cbc3b7f9a23232eb8683c9d04333efec91318790bc280ce8a38dea2748'
+            '2badd2c2de643172242c441f5e4aedb8c3c6969b10a7e87f8fc83f257b64c1b0')
 
 _fmodver=4.26.36
 _libdir=/usr/lib/zdoom
