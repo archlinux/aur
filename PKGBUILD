@@ -25,10 +25,10 @@ source=(gzdoom::git://github.com/coelckers/gzdoom.git \
         doom-share-dir.patch \
         stack-noexec.patch \
         gzdoom.desktop)
-md5sums=('SKIP'
-         'ed6c7d1175146bedac3f5a59d09d8f4b'
-         'b83081e982b742010df0afe36b4d49b6'
-         '3f5920d839086c9ad04ed1338c3fb546')
+sha256sums=('SKIP'
+            '7fa660bdff8dd0aa9151173c2ddc9122e639d3b0a2c6f98573d37b92765bab7d'
+            'a23277cc90ef8bd720417b097609ede6f5054b252843742209f794e0d1306205'
+            '2a0b837ddc423d3a6be50f60735c55ee27cd26f58c42540b44aab395030b9cc4')
 
 _fmodver=4.26.36
 _libdir=/usr/lib/gzdoom
