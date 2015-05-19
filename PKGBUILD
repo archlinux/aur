@@ -11,8 +11,8 @@ depends=('fluidsynth' 'freeimage' 'ftgl' 'libmodplug' 'sfml' 'webkitgtk2' 'wxgtk
 makedepends=('cmake' 'imagemagick' 'zip')
 source=(https://github.com/sirjuddington/SLADE/archive/$pkgver.tar.gz
         slade.desktop)
-md5sums=('c7f86e7353f3b8d2dccb762161ddabae'
-         '49eb1692463e2aa93ea2754a5df7a6e4')
+sha256sums=('ca49e7b0a334109312dc60681db2f8b36b874a469dcc7375b9ace959e02b1d2c'
+            '5d619cdae8a993b07bb72aed54c7e814db48e66aac61a809dd2c5ab1373cd811')
 
 build() {
   cd SLADE-$pkgver
