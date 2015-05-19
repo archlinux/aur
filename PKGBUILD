@@ -18,6 +18,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd slade
+
   git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
