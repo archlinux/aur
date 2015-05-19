@@ -10,11 +10,15 @@ license=('custom')
 source=(ftp://ftp.fu-berlin.de/pc/msdos/games/idgames/idstuff/heretic/htic_v12.zip)
 md5sums=('420b23b3d8f2cbd164c121369eaa2b09')
 
-build() {
+prepare() {
   cd "$srcdir"
 
   cat HTIC_V12.1 HTIC_V12.2 > HTIC_V12.EXE
   unzip -o HTIC_V12.EXE HERETIC1.WAD LICENSE.DOC || return 1
+}
+
+package() {
+  cd "$srcdir"
 
   install -Dm644 HERETIC1.WAD "$pkgdir"/usr/share/games/heretic/heretic1.wad
   install -Dm644 LICENSE.DOC "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
