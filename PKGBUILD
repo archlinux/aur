@@ -21,5 +21,5 @@ package() {
   mkdir -p "$pkgdir/usr/share/doom"
   ln -s /usr/share/games/heretic/heretic1.wad "$pkgdir/usr/share/doom/heretic1.wad"
 
-  install -Dm644 LICENSE.DOC "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE.DOC "$pkgdir/usr/share/licenses/$pkgname/license.doc"
 }
