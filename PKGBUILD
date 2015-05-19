@@ -36,6 +36,7 @@ _sharedir=/usr/share/games/zdoom
 
 pkgver() {
   cd zdoom
+
   git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
