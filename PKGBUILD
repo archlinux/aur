@@ -13,11 +13,13 @@ source=(http://zdoom.org/files/utils/zdbsp/${pkgname}-${pkgver}-src.zip)
 noextract=(${pkgname}-${pkgver}-src.zip)
 md5sums=('e2402ef8acf5364a58b70acecf5e9b9b')
 
-build() {
+prepare() {
   cd "$srcdir"
 
   unzip -d ${pkgname}-${pkgver} -o -q ${pkgname}-${pkgver}-src.zip || return 1
+}
 
+build() {
   cd ${pkgname}-${pkgver}
 
   cmake -DCMAKE_BUILD_TYPE=Release . || return 1
