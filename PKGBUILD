@@ -30,16 +30,16 @@ source=(https://github.com/coelckers/gzdoom/archive/g${pkgver}.tar.gz
         doom-share-dir.patch
         stack-noexec.patch
         gzdoom.desktop)
-md5sums=('9ea9aece6aaf6c31ce7c7f079d86bd80'
-         'e4d8f20a4e97ba6eade49862421a6039'
-         'f293adb5f585ec1d245cc422ebd3a8f3'
-         '25c80530b4540bf805a5b14a22b8ec37'
-         '5536e58fdeb11a7618f39bc5a325dafe'
-         '94d5d45d4fab4896c4c20b9daeacdb46'
-         'eed301389f533effbd127681a3ddc2c5'
-         '3ee3d6bb1f777445438bc40ae81a95df'
-         '4778bb22190c445a4ed764c64432de12'
-         '3f5920d839086c9ad04ed1338c3fb546')
+sha256sums=('7d03f13fad52ff58944283dff566a4622cfeb2e8680e1a529a72ac2a16191203'
+            '6a8721bead8b4f080ec7ca4a10dbcd628e96f072e31a7c295f1689bf0aead596'
+            '121d25ee4bbcc13cceb0f51559f126551d704523ba63736baa4624502b26cd14'
+            '48562c7a6110b19cdd4d795b5d28b5445243831533269f8bb25cc19ba67333ff'
+            '5150353839bc653282720b8e434b09930b2747d91115afdb1eda32daa6162f59'
+            'acb5a37bff36f866345c68b8b512bc3bb4c549d347020ea8e1f0c52b271049bc'
+            '7c68a97e95987117093552b5b0628db7e0f19e8ffa2c1919eaaa7b84d973e0ea'
+            '0b22552e0550a01cf6c652804aff6a7157471740630a9c7158e4ee709bc24b80'
+            'cd13c6582fa1eb09ccba377f4593d3c552e97e07d231911e152e5dd5395b3529'
+            '2a0b837ddc423d3a6be50f60735c55ee27cd26f58c42540b44aab395030b9cc4')
 
 _fmodver=4.26.36
 _libdir=/usr/lib/gzdoom
