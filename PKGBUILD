@@ -10,7 +10,7 @@ license=('custom')
 source=(ftp://ftp.fu-berlin.de/pc/msdos/games/idgames/levels/doom2/Ports/a-c/action2.zip)
 md5sums=('643e9acbd26481c17274909501b2a1f9')
 
-build() {
+package() {
   cd "$srcdir"
 
   install -Dm644 action2.wad "$pkgdir"/usr/share/games/urbanbrawl/action2.wad
