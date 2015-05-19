@@ -13,8 +13,8 @@ conflicts=('slade')
 provides=('slade')
 source=(slade::git://github.com/sirjuddington/SLADE.git \
         slade.desktop)
-md5sums=('SKIP'
-         '49eb1692463e2aa93ea2754a5df7a6e4')
+sha256sums=('SKIP'
+            '5d619cdae8a993b07bb72aed54c7e814db48e66aac61a809dd2c5ab1373cd811')
 
 pkgver() {
   cd slade
