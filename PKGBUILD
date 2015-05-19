@@ -3,7 +3,7 @@
 _srcname=linux-4.0
 pkgname=linux-can-dkms
 pkgver=4.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="CAN kernel modules (DKMS)"
 arch=('i686' 'x86_64')
 url="https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/plain/Documentation/networking/can.txt"
@@ -22,7 +22,7 @@ sha256sums=('0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991'
             'e8e42b67cd5ca28d3cd85b868a8caf6c0b971c948d6695ea6e399e132664de83'
             'SKIP'
             'b213142af20f9c0bdfdb52104cc2daed2de3edb2e45a6e4e243b9e980ce3c5db'
-            '6c509db125d67fee4ca1b1814ea28419538aa66dc008785ee6e572aeec3bda3a')
+            '3653b26f843ad66d31ffe3c916d2b26bd59e2e6273e9d967bfdb8af4e693162d')
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
              )

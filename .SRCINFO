@@ -1,7 +1,7 @@
 pkgbase = linux-can-dkms
 	pkgdesc = CAN kernel modules (DKMS)
 	pkgver = 4.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/plain/Documentation/networking/can.txt
 	install = linux-can-dkms.install
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = linux-can-dkms
 	sha256sums = e8e42b67cd5ca28d3cd85b868a8caf6c0b971c948d6695ea6e399e132664de83
 	sha256sums = SKIP
 	sha256sums = b213142af20f9c0bdfdb52104cc2daed2de3edb2e45a6e4e243b9e980ce3c5db
-	sha256sums = 6c509db125d67fee4ca1b1814ea28419538aa66dc008785ee6e572aeec3bda3a
+	sha256sums = 3653b26f843ad66d31ffe3c916d2b26bd59e2e6273e9d967bfdb8af4e693162d
 
 pkgname = linux-can-dkms
 
