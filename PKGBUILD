@@ -1,3 +1,5 @@
+# Maintainer: Yen Chi Hsuan <yan12125 at gmail dot com>
+
 _npmname=jpm
 pkgname=nodejs-$_npmname # All lowercase
 pkgver=1.0.0
@@ -7,7 +9,8 @@ arch=(any)
 url='https://developer.mozilla.org/en-US/Add-ons/SDK/Tools/jpm'
 license=('custom:MPL2')
 depends=('nodejs')
-source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
+makedepends=('npm')
+source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 sha1sums=(42c10a9aaabba2b8fc06bfc3c54a8b7bb5eca3f5)
 
 package() {
