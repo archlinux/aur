@@ -2,8 +2,8 @@
 
 pkgname=rcs-fast-import
 pkgver=1.0
-pkgrel=1
-pkgdesc="Simple Revision Control with modern UI for single-file projects"
+pkgrel=2
+pkgdesc="Unpack a Git fast-import stream into an RCS file tree"
 arch=('any')
 url="http://www.catb.org/esr/$pkgname/"
 license=('BSD')
