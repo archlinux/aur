@@ -10,7 +10,7 @@ url="http://glbsp.sourceforge.net/"
 license=('GPL')
 depends=('fltk>=1.1.7')
 source=(http://downloads.sourceforge.net/$pkgname/${pkgname}_src_224.tar.gz)
-md5sums=('3f33320cd9cb58075e5e9d76f92940a5')
+sha256sums=('e3b7c4bce21c2f9b77732a9b5920b6877e884b31dd1ed9273776538dba48a75c')
 
 build() {
   cd $pkgname-$pkgver-source
