@@ -13,10 +13,10 @@ source=(http://downloads.sourceforge.net/$pkgname/$pkgname-${pkgver/./}-source.z
         compile-fix.patch
         unix-fix.patch
         oblige.desktop)
-md5sums=('3d18e3b0477190755c390e764c8fafa3'
-         '94f94c1d48dc42f030c2b5f74de0fde4'
-         '3211b2b8dcbfde6a84af2adfb288da9a'
-         'ee8efdcf10d4e71bf5b0f3ba45be5d4f')
+sha256sums=('1b2f9d014c71db78a063fe4cf70d9bfabe027c789245079abeb041b2a381df06'
+            'ccc1163f6b2fa78a38bde724b5fd677d54415ed98a412433043f51062ba56235'
+            'e3a8dff89e78172c73a891c43e509887e8cee93b9ac4e0bed783552dc5a20ed5'
+            '20b95ae8676678de686d2f5ad179ff3741be375c46418c8c5455bfea3bb81fae')
 
 prepare() {
   cd "$srcdir/Oblige-$pkgver-source"
