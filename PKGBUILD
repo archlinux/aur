@@ -18,6 +18,10 @@ build() {
   ln -sf Makefile.unx Makefile
 
   make glBSPX BASE_FLAGS="${CFLAGS} -Isrc -DUNIX -DINLINE_G=inline" || return 1
+}
+
+package() {
+  cd $pkgname-$pkgver-source
 
   mkdir -p $pkgdir/usr/{bin,share/man/man1}
   make INSTALL_PREFIX=$pkgdir/usr install
