@@ -9,25 +9,23 @@ url="http://www.zdoom.org/"
 license=('GPL2')
 depends=('gcc-libs' 'zlib')
 makedepends=('cmake')
-source=(http://zdoom.org/files/utils/zdbsp/${pkgname}-${pkgver}-src.zip)
-noextract=(${pkgname}-${pkgver}-src.zip)
+source=(http://zdoom.org/files/utils/$pkgname/$pkgname-$pkgver-src.zip)
+noextract=($pkgname-$pkgver-src.zip)
 sha256sums=('f04ae1c1ee7cda6efc0ac341fcde9bfa48b929becf0057d4deb0ede09f133cd4')
 
 prepare() {
-  cd "$srcdir"
-
-  unzip -d ${pkgname}-${pkgver} -o -q ${pkgname}-${pkgver}-src.zip || return 1
+  unzip -d $pkgname-$pkgver -o -q $pkgname-$pkgver-src.zip
 }
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd $pkgname-$pkgver
 
-  cmake -DCMAKE_BUILD_TYPE=Release . || return 1
-  make || return 1
+  cmake -DCMAKE_BUILD_TYPE=Release .
+  make
 }
 
 package() {
-  cd "$srcdir"/${pkgname}-${pkgver}
+  cd $pkgname-$pkgver
 
-  install -m755 -D zdbsp "$pkgdir"/usr/bin/zdbsp
+  install -m755 -D zdbsp "$pkgdir/usr/bin/zdbsp"
 }
