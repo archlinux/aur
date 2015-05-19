@@ -8,7 +8,7 @@ arch=('any')
 url="http://action.mancubus.net/"
 license=('custom')
 source=(ftp://ftp.fu-berlin.de/pc/msdos/games/idgames/levels/doom2/Ports/a-c/action2.zip)
-md5sums=('643e9acbd26481c17274909501b2a1f9')
+sha256sums=('cb5f127bfdb6f43d5acbbb197a4d45daa80dc6b2edfc464235f3cdcbb00db484')
 
 package() {
   cd "$srcdir"
