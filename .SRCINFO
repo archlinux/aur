@@ -30,10 +30,10 @@ pkgbase = zdoom
 	source = doom-share-dir.patch
 	source = stack-noexec.patch
 	source = zdoom.desktop
-	md5sums = 900a13cca9283fa91874210eeef0c839
-	md5sums = 4885de42e92dc1d5250db561f7ce9537
-	md5sums = 7437cdf6478360c87649564e6e1dcb3b
-	md5sums = 83e47fdae2768da78cd4ac151ec92ad1
+	sha256sums = 7419c95cdb598882c42f8afb0f5911241b31f21f4028da19185278c984b4cf19
+	sha256sums = a260c4b3be21a05a000433a160ed90f8aff64610fc60600a99c063b3ece0bfc7
+	sha256sums = 17ee253f20f94b316d09de5306559c7fa1ec671ea9a1c85ae18581badb03242b
+	sha256sums = 2badd2c2de643172242c441f5e4aedb8c3c6969b10a7e87f8fc83f257b64c1b0
 
 pkgname = zdoom
 

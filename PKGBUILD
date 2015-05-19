@@ -25,10 +25,10 @@ source=(http://zdoom.org/files/zdoom/2.7/zdoom-$pkgver-src.7z \
         stack-noexec.patch \
         zdoom.desktop)
 noextract=(zdoom-$pkgver-src.7z)
-md5sums=('900a13cca9283fa91874210eeef0c839'
-         '4885de42e92dc1d5250db561f7ce9537'
-         '7437cdf6478360c87649564e6e1dcb3b'
-         '83e47fdae2768da78cd4ac151ec92ad1')
+sha256sums=('7419c95cdb598882c42f8afb0f5911241b31f21f4028da19185278c984b4cf19'
+            'a260c4b3be21a05a000433a160ed90f8aff64610fc60600a99c063b3ece0bfc7'
+            '17ee253f20f94b316d09de5306559c7fa1ec671ea9a1c85ae18581badb03242b'
+            '2badd2c2de643172242c441f5e4aedb8c3c6969b10a7e87f8fc83f257b64c1b0')
 
 _fmodver=4.26.36
 _libdir=/usr/lib/zdoom
