@@ -8,7 +8,7 @@ arch=('any')
 url="http://www.mobygames.com/game/dos/strife"
 license=('unknown')
 source=(ftp://ftp.fu-berlin.de/pc/msdos/games/idgames/roguestuff/strife11.zip)
-md5sums=('972070afb30c96fc3c69d954dfab2424')
+sha256sums=('ab63419992dfc82e40cee8aad3a83944425ada2259f8cf3cc0e5a0d57199bc47')
 
 package() {
   cd "$srcdir"
