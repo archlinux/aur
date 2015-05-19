@@ -1,11 +1,9 @@
-# Maintainer: radioxoma
+# Maintainer: Eugene Dvoretsky <radioxoma from gmail com>
+# Visit https://github.com/radioxoma/aur for pull requests or issue solving.
 # Contributor: dreieck
 
-# PKGBUILD repository:
-# https://github.com/radioxoma/aur/tree/master/fiji-binary
-
 pkgname="fiji-binary"
-pkgver="20140602"
+pkgver="20141125"
 pkgrel="1"
 pkgdesc="ImageJ distribution with a lot of plugins for scientific (especially biology related) image processing."
 arch=('i686' 'x86_64')
@@ -18,13 +16,22 @@ provides=("fiji=${pkgver}" "fiji-binary=${pkgver}")
 replaces=("fiji<=${pkgver}" "fiji-binary<=${pkgver}")
 conflicts=("fiji-binary-latest")
 install=fiji.install
-source=(
-        "http://fiji.sc/downloads/Life-Line/fiji-nojre-${pkgver}.zip"
-        # "http://jenkins.imagej.net/job/Stable-Fiji/lastSuccessfulBuild/artifact/fiji-nojre.zip" ## This one is the "continuous build".
+
+## Life-line
+source=("http://fiji.sc/downloads/Life-Line/fiji-nojre-${pkgver}.zip"
         "fiji.desktop"
-        )
-md5sums=('0b33c507ec65ff1f7bd888c27a4db3ab'
-         '4c59f5f24368b179aab17eac1e1dfd2a')
+        "fiji.install")
+sha256sums=('43e74e668a83e78d323bf7bcb71e8cc587f453164eedf6460d7aba3736c6d307'
+            'aabd26ddf25802e852f14000b19c714f8f1016c863ba1ceed28b840fee332b07'
+            '6dcc861af9328076282893ffcecc77a7fee448cec51fb7ccd51c5cece9740fa1')
+
+## Latest (continuous) build
+# source=("http://jenkins.imagej.net/job/Stable-Fiji/lastSuccessfulBuild/artifact/fiji-nojre.zip"
+#         "fiji.desktop"
+#         "fiji.install")
+# sha256sums=('SKIP'
+#             'aabd26ddf25802e852f14000b19c714f8f1016c863ba1ceed28b840fee332b07'
+#             '6dcc861af9328076282893ffcecc77a7fee448cec51fb7ccd51c5cece9740fa1')
 
 _userexecutable="fiji" # That name to be presented to the user.
 
@@ -49,9 +56,10 @@ build()
                       'plugins/Fiji_Updater.jar'
                       )
   _executablebak="$(mktemp)" || exit 21 # Save the executable matching our architecture.
-  
+
   # Dry run to update plugins status
-  "./${_executable}" --update list-local-only
+  # This was a fix for 20140602, but brokes distribution in newer versions
+  # "./${_executable}" --update list-local-only
 
   cp "${_executable}" "${_executablebak}" || exit 31
   rm -Rf "${_removefrompackage[@]}" || exit 41
@@ -61,6 +69,8 @@ build()
 
   # Associate fiji.desktop with appropriate binary
   sed -ie "s/Exec=.*$/Exec=${_executable} %F/g" "${srcdir}/fiji.desktop"
+  # FIJI creates own invalid desktop entry by
+  # plugins/Scripts/Plugins/Utilities/Create_Desktop_Icon.bsh
 }
 
 package()
