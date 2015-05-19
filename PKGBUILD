@@ -8,7 +8,7 @@ arch=('any')
 url="http://rabotik.nl/harmony.htm"
 license=('custom')
 source=(http://www.evil-soft.com/Heretic/harmonyv1.1.zip)
-md5sums=('0f7ca801b131a8ddb52914e6ec5629b3')
+sha256sums=('efe0f2914858abb3b8131b7479a5d0c3f97a7895c51be21859ed5f4eeaba0823')
 
 package() {
   cd "harmony v1.1"
