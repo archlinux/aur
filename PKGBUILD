@@ -9,7 +9,7 @@ arch=('any')
 url="http://hhexen.sourceforge.net/"
 license=('unknown')
 source=(http://downloads.sourceforge.net/hhexen/hexen_demo_wad_$pkgver.tgz)
-md5sums=('59338254c9528d785a3bc4b47962eb78')
+sha256sums=('08e9b57ce9111be04f8b7fa7fc98bd8ecb2af58914497d9a726f610377c406fc')
 
 package() {
   install -Dm644 hexen.wad "$pkgdir"/usr/share/doom/hexen.wad
