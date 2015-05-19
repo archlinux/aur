@@ -12,7 +12,5 @@ source=(http://downloads.sourceforge.net/hhexen/hexen_demo_wad_$pkgver.tgz)
 sha256sums=('08e9b57ce9111be04f8b7fa7fc98bd8ecb2af58914497d9a726f610377c406fc')
 
 package() {
-  install -Dm644 hexen.wad "$pkgdir"/usr/share/doom/hexen.wad
+  install -Dm644 hexen.wad "$pkgdir/usr/share/doom/hexen.wad"
 }
-
-# vim:set ts=2 sw=2 et:
