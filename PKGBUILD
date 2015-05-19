@@ -8,7 +8,7 @@ arch=('any')
 url="http://www.drnostromo.com/hacx/"
 license=('custom')
 source=(http://www.drnostromo.com/hacx/files/hacx12.zip)
-md5sums=('38cdd2baa912e771da562b44448206ec')
+sha256sums=('70d25e8f4b48906759db32213927859a99b3b045d3291d468357b225d64cbf8b')
 
 package() {
   cd "$srcdir"
