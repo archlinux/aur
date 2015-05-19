@@ -11,11 +11,10 @@ source=(ftp://ftp.fu-berlin.de/pc/msdos/games/idgames/levels/doom2/Ports/a-c/act
 sha256sums=('cb5f127bfdb6f43d5acbbb197a4d45daa80dc6b2edfc464235f3cdcbb00db484')
 
 package() {
-  cd "$srcdir"
+  install -Dm644 action2.wad "$pkgdir/usr/share/games/urbanbrawl/action2.wad"
 
-  install -Dm644 action2.wad "$pkgdir"/usr/share/games/urbanbrawl/action2.wad
-  install -Dm644 action2.txt "$pkgdir"/usr/share/licenses/${pkgname}/action2.txt
+  mkdir -p "$pkgdir/usr/share/doom"
+  ln -s /usr/share/games/urbanbrawl/action2.wad "$pkgdir/usr/share/doom/action2.wad"
 
-  mkdir -p "$pkgdir"/usr/share/doom
-  ln -s /usr/share/games/urbanbrawl/action2.wad "$pkgdir"/usr/share/doom/action2.wad
+  install -Dm644 action2.txt "$pkgdir/usr/share/licenses/$pkgname/action2.txt"
 }
