@@ -2,7 +2,7 @@
 
 pkgbase=grails
 pkgname=('grails' 'grails-docs')
-pkgver=2.4.4
+pkgver=3.0.1
 pkgrel=1
 pkgdesc='Groovy on rails, web framework'
 arch=('any')
@@ -13,11 +13,11 @@ optdepends=('groovy: the groovy programming language'
             'grails-docs: documentation for grails')
 options=('!emptydirs')
 noextract=("${pkgname[1]}-$pkgver.zip")
-source=("http://dist.springframework.org.s3.amazonaws.com/release/GRAILS/${pkgname[0]}-$pkgver.zip"
-        "http://dist.springframework.org.s3.amazonaws.com/release/GRAILS/${pkgname[1]}-$pkgver.zip"
+source=("https://github.com/grails/grails-core/releases/download/v$pkgver/grails-$pkgver.zip"
+        "https://github.com/grails/grails-doc/releases/download/v$pkgver/grails-docs-$pkgver.zip"
         "$pkgbase.sh")
-sha256sums=('2310e6c0ecb4ba05c51c426893218252b7ec451a16bfb445f4b6d96f8bd3cc77'
-            'a2278d39ec8e88bf6c3e6ea2e24bec457ee5617579a3e12731444597f27e4176'
+sha256sums=('c58da97ad7fb9635c6fb5631755501b97d6ce9ee6668dc12f0722928ffa5abee'
+            'eabbd3a187cc63793d8214c27a1d9a3a19203cf7040b2957adcba508c070e62e'
             '15553ae56fd39f049edfa65a05413ef6d68ae37ed1ccc69570bf81e888239bf4')
 
 prepare() {
@@ -63,4 +63,5 @@ package_grails-docs() {
   ln -s "/usr/share/doc/grails-$pkgver" "$pkgdir/usr/share/grails/doc"
 }
 
+# getver: https://grails.org/download.html
 # vim:set ts=2 sw=2 et:
