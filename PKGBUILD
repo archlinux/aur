@@ -2,7 +2,7 @@
 # Contributor: Daniel Plaza <daniel.plaza.espi@gmail.com>
 
 pkgname=ccid
-pkgver=1.4.18
+pkgver=1.4.19
 pkgrel=1
 pkgdesc="A generic USB Chip/Smart Card Interface Devices driver"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ license=('LGPL' 'GPL')
 depends=('pcsclite' 'libusbx' 'flex')
 makedepends=('pkg-config')
 backup=(etc/reader.conf.d/libccidtwin)
-source=("https://alioth.debian.org/frs/download.php/file/4111/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('8d57342bda53aaee706ef2d02409c4f4')
+source=("https://alioth.debian.org/frs/download.php/file/4132/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('d1eed995ba9a2eb395a65a8a78090f52')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
