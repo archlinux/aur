@@ -7,6 +7,7 @@ pkgbase = perl-wx-glcanvas
 	license = GPL
 	license = PerlArtistic
 	makedepends = perl-alien-wxwidgets
+	makedepends = xorg-server-xvfb
 	depends = perl>=5.10.0
 	depends = perl-wx
 	options = !emptydirs

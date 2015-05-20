@@ -8,6 +8,7 @@ url="https://metacpan.org/release/Wx-GLCanvas/"
 license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0' 'perl-wx')
 makedepends=('perl-alien-wxwidgets')
+[ -z "$DISPLAY" ] && makedepends+=('xorg-server-xvfb')
 provides=()
 conflicts=()
 replaces=()
@@ -40,7 +41,12 @@ build() {
 check () {
   cd "$_src_dir"
   warning "If tests do fail - uninstall this package before compiling"
-  prove -Iblib/arch -Iblib/lib/ t/
+  if [ -z "$DISPLAY" ]; then
+    warning "Empty \$DISPLAY - falling back to xvfb-run (xorg-server-xvfb)"
+    xvfb-run -a -s "+extension GLX -screen 0 1280x1024x24" prove -Iblib/arch -Iblib/lib/ t/
+  else
+    prove -Iblib/arch -Iblib/lib/ t/
+  fi
 }
 
 package () {
