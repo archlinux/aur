@@ -1,0 +1,24 @@
+pkgbase = uavcan-git
+	pkgdesc = UAVCAN is a lightweight protocol designed for reliable communication in aerospace and robotic applications via CAN bus (git version)
+	pkgver = 1030.f9b946a
+	pkgrel = 1
+	url = http://uavcan.org
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = cmake
+	optdepends = can-utils
+	provides = uavcan
+	provides = libuavcan
+	conflicts = uavcan
+	conflicts = libuavcan
+	options = !strip
+	source = uavcan::git+https://github.com/UAVCAN/uavcan.git
+	md5sums = SKIP
+
+pkgname = uavcan-git
+
+pkgname = libuavcan-git
+
