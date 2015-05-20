@@ -3,7 +3,7 @@
 pkgname=('uavcan-git' 'libuavcan-git')
 _gitname=uavcan
 pkgver=1030.f9b946a
-pkgrel=2
+pkgrel=3
 pkgdesc="UAVCAN is a lightweight protocol designed for reliable communication in aerospace and robotic applications via CAN bus (git version)"
 arch=('i686' 'x86_64')
 url="http://uavcan.org"
@@ -50,7 +50,11 @@ package_libuavcan-git() {
   conflicts=('libuavcan')
 
   make -C "$srcdir/${_gitname}/build" DESTDIR=${pkgdir} install
-  
+
+  cd "$srcdir/${_gitname}/libuavcan/dsdl_compiler"
+  python setup.py install --skip-build -O1 --root="$pkgdir"
+
+
   # FIXME: there has to be a way to do a more selective install
   rm -rf ${pkgdir}/usr/bin
 }
