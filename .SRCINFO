@@ -1,0 +1,22 @@
+pkgbase = perl-zabbix2-api
+	pkgdesc = Access the JSON-RPC API of a Zabbix server
+	pkgver = 0.012
+	pkgrel = 1
+	url = https://metacpan.org/release/Zabbix2-API
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	depends = perl-json
+	depends = perl-log-any
+	depends = perl-libwww
+	depends = perl-moo>=1.001000
+	depends = perl-moo-lax
+	depends = perl-params-validate
+	depends = perl-uri
+	options = !emptydirs
+	source = http://cpan.metacpan.org/authors/id/F/FG/FGA/Zabbix2-API-0.012.tar.gz
+	md5sums = 83dc1afca04e1e409f7758dfda1b8955
+
+pkgname = perl-zabbix2-api
+
