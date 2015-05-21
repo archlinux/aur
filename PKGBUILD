@@ -6,8 +6,8 @@
 # SELinux Contributor: Nicky726 <nicky726@gmail.com>
 
 pkgname=pam-selinux
-pkgver=1.1.8
-pkgrel=6
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="SELinux aware PAM (Pluggable Authentication Modules) library"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -19,26 +19,19 @@ provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 backup=(etc/security/{access.conf,group.conf,limits.conf,namespace.conf,namespace.init,pam_env.conf,time.conf} etc/default/passwd etc/environment)
 groups=('selinux')
-source=(https://fedorahosted.org/releases/l/i/linux-pam/Linux-PAM-$pkgver.tar.bz2
+source=(http://linux-pam.org/library/Linux-PAM-$pkgver.tar.bz2
         https://sources.archlinux.org/other/pam_unix2/pam_unix2-2.9.1.tar.bz2
         pam_unix2-glibc216.patch
-        pam-1.1.8-cve-2013-7041.patch
-        pam-1.1.8-cve-2014-2583.patch
         pam_unix2-rm_selinux_check_access.patch)
-md5sums=('35b6091af95981b1b2cd60d813b5e4ee'
+md5sums=('ee4a480d77b341c99e8b1375f8f180c0'
          'da6a46e5f8cd3eaa7cbc4fc3a7e2b555'
          'dac109f68e04a4df37575fda6001ea17'
-         '653661bea920de3bb2713bb85b408bc2'
-         '144ea8e2f9d49a0f4021027ca2c1558f'
          '6a0a6bb6f6f249ef14f6b21ab9880916')
 
 options=('!emptydirs')
 
 prepare () {
   cd $srcdir/Linux-PAM-$pkgver
-  # fix CVEs in pam
-  patch -Np1 -i  "${srcdir}/pam-1.1.8-cve-2013-7041.patch"
-  patch -Np1 -i  "${srcdir}/pam-1.1.8-cve-2014-2583.patch"
 
   # fix pam_unix2 building
   cd $srcdir/pam_unix2-2.9.1
