@@ -4,7 +4,7 @@ pkgdesc="ROS - roscpp_traits contains the message traits code as described in Me
 url='http://ros.org/wiki/roscpp_traits'
 
 pkgname='ros-indigo-roscpp-traits'
-pkgver='0.5.5'
+pkgver='0.5.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
