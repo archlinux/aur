@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-roscpp-core
 	pkgdesc = ROS - Underlying data libraries for roscpp messages.
-	pkgver = 0.5.5
+	pkgver = 0.5.6
 	pkgrel = 1
 	url = http://www.ros.org/wiki/roscpp_core
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = ros-indigo-roscpp-core
 	depends = ros-indigo-rostime
 	depends = ros-indigo-cpp-common
 	depends = ros-indigo-roscpp-traits
-	source = roscpp_core::git+https://github.com/ros-gbp/roscpp_core-release.git#tag=release/indigo/roscpp_core/0.5.5-0
+	source = roscpp_core::git+https://github.com/ros-gbp/roscpp_core-release.git#tag=release/indigo/roscpp_core/0.5.6-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-roscpp-core

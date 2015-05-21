@@ -4,7 +4,7 @@ pkgdesc="ROS - Underlying data libraries for roscpp messages."
 url='http://www.ros.org/wiki/roscpp_core'
 
 pkgname='ros-indigo-roscpp-core'
-pkgver='0.5.5'
+pkgver='0.5.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
