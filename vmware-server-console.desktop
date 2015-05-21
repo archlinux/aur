@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=VMware Server Console
+Icon=vmware-server-console
+Exec=vmware-server-console
+Categories=System;

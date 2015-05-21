@@ -1,0 +1,56 @@
+post_install() {
+  # Generate not_configured file
+  touch etc/vmware-server-console/not_configured
+  chmod 644 etc/vmware-server-console/not_configured
+
+  # Generate config file
+  touch etc/vmware-server-console/config
+  chmod 644 etc/vmware-server-console/config
+  echo "libdir = \"/usr/lib/vmware-server-console\"" >> etc/vmware-server-console/config
+
+  # Generate locations file
+  touch etc/vmware-server-console/locations
+  chmod 644 etc/vmware-server-console/locations
+  echo "answer BINDIR /usr/bin" >> etc/vmware-server-console/locations
+  echo "answer LIBDIR /usr/lib/vmware-server-console" >> etc/vmware-server-console/locations
+  echo "answer MANDIR /usr/share/man" >> etc/vmware-server-console/locations
+  echo "answer DOCDIR /usr/share/licenses/vmware-server-console" \
+    >> etc/vmware-server-console/locations
+  echo "file /etc/vmware-server-console/locations" >> etc/vmware-server-console/locations
+  echo "file /etc/vmware-server-console/not_configured" \
+    `date -r etc/vmware-server-console/not_configured +%s` >> etc/vmware-server-console/locations
+  echo "file /etc/vmware-server-console/config" \
+    `date -r etc/vmware-server-console/config +%s` >> etc/vmware-server-console/locations
+
+  cat << _EOF
+
+  You need to configure VMware Server Console by invoking
+  /usr/bin/vmware-config-server-console.pl.
+
+_EOF
+}
+
+post_upgrade() {
+  if [ ! -f etc/vmware-server-console/not_configured ]; then
+    # Generate not_configured file
+    touch etc/vmware-server-console/not_configured
+    chmod 644 etc/vmware-server-console/not_configured
+
+    # Update locations file
+    echo "file /etc/vmware-server-console/not_configured" \
+      `date -r etc/vmware-server-console/not_configured +%s` \
+      >> etc/vmware-server-console/locations
+  fi
+
+  cat << _EOF
+
+  You need to configure VMware Server Console by invoking
+  /usr/bin/vmware-config-server-console.pl.
+
+_EOF
+}
+
+pre_remove() {
+  # Uninstall files installed by vmware-config-server-console.pl
+  usr/bin/vmware-uninstall-server-console.pl
+}

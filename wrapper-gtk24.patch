@@ -1,0 +1,14 @@
+diff -ur origin/wrapper-gtk24.sh new/wrapper-gtk24.sh 
+--- origin/wrapper-gtk24.sh	2008-10-31 02:49:20.000000000 +0200
++++ new/wrapper-gtk24.sh	2009-01-25 19:52:24.000000000 +0200
+@@ -115,6 +115,10 @@
+ vm_run() {
+    local exitCode;
+ 
++   # MEDVED added:
++   export GDK_PIXBUF_MODULE_FILE="/usr/lib/vmware-server-console/libconf/etc/gtk-2.0/gdk-pixbuf.loaders"
++   export PANGO_RC_FILE="/usr/lib/vmware-server-console/libconf/etc/pango/pangorc"
++
+    # Append any libraries that are still missing.
+    if [ "$VMWARE_USE_SHIPPED_GTK" = 'force' ]; then
+       export LD_PRELOAD="$LD_PRELOAD":"`LANGUAGE=C LANG=C ldd "$binary" | vm_append_missing`"

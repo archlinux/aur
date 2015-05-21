@@ -1,0 +1,33 @@
+pkgbase = bin32-vmware-server-console
+	pkgdesc = Remote console for VMware Server
+	pkgver = 1.0.10
+	pkgrel = 6
+	url = http://www.vmware.com/products/server/
+	install = bin32-vmware-server-console.install
+	arch = x86_64
+	license = custom
+	depends = lib32-glibmm
+	depends = lib32-libgnomecanvas
+	depends = lib32-libxdamage
+	depends = lib32-libxt
+	depends = lib32-libxtst
+	depends = lib32-libstdc++5
+	depends = perl
+	noextract = bin32-vmware-server-console-add-libs.tar.gz
+	options = !strip
+	options = !libtool
+	source = http://download3.vmware.com/software/vmserver/VMware-mui-1.0.10-203137.tar.gz
+	source = https://mortzu.de/files/aur/bin32-vmware-server-console/vmware-server-console_1.0.8-intrepid-patch.tgz
+	source = https://mortzu.de/files/aur/bin32-vmware-server-console/bin32-vmware-server-console-add-libs.tar.gz
+	source = vmware-server-console.desktop
+	source = wrapper-gtk24.patch
+	source = wrapper-gtk24-2.patch
+	md5sums = 0f01e9bdeee3fa2aa84f87f66b69dc83
+	md5sums = 64b74873ab7d677db3a811642e0ae029
+	md5sums = 337555e917e817afda21b1615c52ab33
+	md5sums = d5f9319812fffe7bd832a64e1f333231
+	md5sums = 444b6865f665813aaaf751c8ef0c7cd3
+	md5sums = 1e69aaf7c72cf2347d8d552e2954f686
+
+pkgname = bin32-vmware-server-console
+
