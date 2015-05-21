@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-desktop-full
 	pkgdesc = ROS - A metapackage to aggregate several packages.
-	pkgver = 1.1.3
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = http://www.ros.org/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = ros-indigo-desktop-full
 	depends = ros-indigo-perception
 	depends = ros-indigo-simulators
 	depends = ros-indigo-desktop
-	source = desktop_full::git+https://github.com/ros-gbp/metapackages-release.git#tag=release/indigo/desktop_full/1.1.3-0
+	source = desktop_full::git+https://github.com/ros-gbp/metapackages-release.git#tag=release/indigo/desktop_full/1.1.4-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-desktop-full
