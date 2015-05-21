@@ -1,0 +1,10 @@
+[Unit]
+Description=ChaosVPN
+
+[Service]
+ExecStart=/usr/bin/chaosvpn
+KillMode=process
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

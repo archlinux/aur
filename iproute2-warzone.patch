@@ -1,0 +1,11 @@
+--- warzone.conf	2012-03-13 13:07:11.620997519 +0100
++++ ../../../src/chaosvpn/warzone.conf	2012-03-13 11:45:41.507498334 +0100
+@@ -28,7 +28,7 @@
+ $routeadd6		= "/sbin/ip -6 route add %s metric $routemetric dev \$INTERFACE";
+ $routedel		= "/sbin/ip -4 route del %s metric $routemetric dev \$INTERFACE";
+ $routedel6		= "/sbin/ip -6 route del %s metric $routemetric dev \$INTERFACE";
+-$ifconfig		= "/sbin/ifconfig \$INTERFACE $my_vpn_ip netmask 255.255.255.255";
++$ifconfig		= "/sbin/ip addr add $my_vpn_ip/32 dev \$INTERFACE";
+ $ifconfig6		= "/sbin/ip addr add $my_vpn_ip6/128 dev \$INTERFACE";
+ 
+ $master_url		= "http://warzone-conf.hamburg.ccc.de/warzone-data/$my_peerid.dat";

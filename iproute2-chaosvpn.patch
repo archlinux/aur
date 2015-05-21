@@ -1,0 +1,11 @@
+--- chaosvpn.conf	2012-03-13 13:04:35.850992235 +0100
++++ ../../../src/chaosvpn/chaosvpn.conf	2012-03-13 11:45:41.500831669 +0100
+@@ -43,7 +43,7 @@
+ $routeadd6		= "/sbin/ip -6 route add %s metric $routemetric dev \$INTERFACE";
+ $routedel		= "/sbin/ip -4 route del %s metric $routemetric dev \$INTERFACE";
+ $routedel6		= "/sbin/ip -6 route del %s metric $routemetric dev \$INTERFACE";
+-$ifconfig		= "/sbin/ifconfig \$INTERFACE $my_vpn_ip netmask 255.255.255.255 up";
++$ifconfig		= "/sbin/ip addr add $my_vpn_ip/32 dev \$INTERFACE";
+ $ifconfig6		= "/sbin/ip addr add $my_vpn_ip6/128 dev \$INTERFACE";
+ 
+ @mergeroutes_supernet	= ("172.31.0.0/16", "10.100.0.0/14");

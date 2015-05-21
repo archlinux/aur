@@ -1,0 +1,24 @@
+pkgbase = chaosvpn
+	pkgdesc = Config generator for chaosVPN
+	pkgver = 2.18
+	pkgrel = 1
+	url = http://wiki.hamburg.ccc.de
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = flex
+	depends = tinc
+	depends = iproute2
+	backup = etc/tinc/chaosvpn.conf
+	source = git://github.com/ryd/chaosvpn.git
+	source = iproute2-chaosvpn.patch
+	source = iproute2-warzone.patch
+	source = chaosvpn.service
+	md5sums = SKIP
+	md5sums = 31f1d9c064d3cdefb424e6b44805e824
+	md5sums = 8d8a99003bf186b6dd7e5fd2e80e0cad
+	md5sums = 97e364f361231d1f2cba0c784719be55
+
+pkgname = chaosvpn
+
