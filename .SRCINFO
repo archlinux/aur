@@ -1,0 +1,14 @@
+pkgbase = naturalscrolling
+	pkgdesc = Natural Scrolling application
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/cemmanouilidis/naturalscrolling
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	depends = python2
+	source = git+https://github.com/cemmanouilidis/naturalscrolling.git
+	sha256sums = SKIP
+
+pkgname = naturalscrolling
+
