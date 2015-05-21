@@ -1,7 +1,7 @@
 # Maintainer: Daniel Leining <daniel@the-beach.co>
 # Old Maintainer: Lakota Morris <lakota[at]lakotamorris[dot]com>
 pkgname=chunky
-pkgver=1.3.4
+pkgver=1.3.5
 basever=1.3
 pkgrel=1
 pkgdesc="Chunky is a Minecraft mapping and rendering tool created by Jesper Öqvist."
@@ -13,7 +13,7 @@ makedepends=('apache-ant' 'gendesk' 'unzip')
 source=(https://launchpad.net/"$pkgname"/"$basever"/"$pkgver"/+download/Chunky-"$pkgver".zip
        chunky.sh)
 noextract=(Chunky-"$pkgver".zip)
-sha256sums=('e562a2d8349e26a694f26febac702e1c408cfa3f5a28d122eb1f0c53efe17428'
+sha256sums=('728e21d384d38d7038d2a1372b3fe45627b9ef913fd1ae5f22a3210328eadaf3'
             '73389b938eaaf1eeac656a762fe16fab68e89ab499d11ac8427e2177a5059c57')
 
 build() {
