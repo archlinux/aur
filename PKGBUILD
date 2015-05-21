@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_topic provides a GUI plugin for displaying debug information 
 url='http://ros.org/wiki/rqt_topic'
 
 pkgname='ros-indigo-rqt-topic'
-pkgver='0.3.10'
+pkgver='0.3.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
