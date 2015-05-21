@@ -1,0 +1,11 @@
+diff -ur signing-party-svn.2/caff/caff signing-party-svn/caff/caff
+--- signing-party-svn.2/caff/caff	2014-07-30 19:00:19.314029856 +0200
++++ signing-party-svn/caff/caff	2014-07-30 19:03:38.662354341 +0200
+@@ -538,6 +538,7 @@
+ 		print "No configfile $config present, I will use this template:\n";
+ 		my $template = generate_config();
+ 		print "$template\nPlease edit $config and run caff again.\n";
++		mkdir $ENV{'HOME'} . '/.config/caff' or die "unable to create $ENV{'HOME'}/.config/caff";
+ 		open F, '>', $config or die "$config: $!";
+ 		print F $template;
+ 		close F;

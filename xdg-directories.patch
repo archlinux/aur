@@ -1,0 +1,177 @@
+diff -ur signing-party-svn.2/caff/caff signing-party-svn/caff/caff
+--- signing-party-svn.2/caff/caff	2014-07-30 18:34:22.510819657 +0200
++++ signing-party-svn/caff/caff	2014-07-30 18:46:43.800478467 +0200
+@@ -110,13 +110,13 @@
+ 
+ =over
+ 
+-=item $HOME/.caffrc  -  configuration file
++=item $HOME/.config/caff/caffrc  -  configuration file
+ 
+-=item $HOME/.caff/keys/yyyy-mm-dd/  -  processed keys
++=item $HOME/.config/caff/keys/yyyy-mm-dd/  -  processed keys
+ 
+-=item $HOME/.caff/gnupghome/  -  caff's working dir for gpg
++=item $HOME/.config/caff/gnupghome/  -  caff's working dir for gpg
+ 
+-=item $HOME/.caff/gnupghome/gpg.conf  -  gpg configuration
++=item $HOME/.config/caff/gnupghome/gpg.conf  -  gpg configuration
+ 
+ useful options include use-agent, keyserver-options, default-cert-level, etc.
+ 
+@@ -159,7 +159,7 @@
+ 
+ =item B<caffhome> [string]
+ 
+-Base directory for the files caff stores.  Default: B<$HOME/.caff/>.
++Base directory for the files caff stores.  Default: B<$HOME/.config/caff/>.
+ 
+ =back
+ 
+@@ -482,7 +482,7 @@
+ 	};
+ 
+ 	my $template = <<EOT;
+-# .caffrc -- vim:ft=perl:
++# .config/caff/caffrc -- vim:ft=perl:
+ # This file is in perl(1) format - see caff(1) for details.
+ 
+ $Cgecos\$CONFIG{'owner'} = '$gecos';
+@@ -533,7 +533,7 @@
+ };
+ 
+ sub load_config() {
+-	my $config = $ENV{'HOME'} . '/.caffrc';
++	my $config = $ENV{'HOME'} . '/.config/caff/caffrc';
+ 	unless (-f $config) {
+ 		print "No configfile $config present, I will use this template:\n";
+ 		my $template = generate_config();
+@@ -547,7 +547,7 @@
+ 		die "Couldn't parse $config: $EVAL_ERROR\n" if $EVAL_ERROR;
+ 	};
+ 
+-	$CONFIG{'caffhome'} //= $ENV{'HOME'}.'/.caff';
++	$CONFIG{'caffhome'} //= $ENV{'HOME'}.'/.config/caff';
+ 	die ("$PROGRAM_NAME: owner is not defined in $config.\n") unless defined $CONFIG{'owner'};
+ 	die ("$PROGRAM_NAME: email is not defined in $config.\n") unless defined $CONFIG{'email'};
+ 	die ("$PROGRAM_NAME: keyid is not defined in $config.\n") unless defined $CONFIG{'keyid'};
+@@ -1007,8 +1007,8 @@
+ # Check the local user keys.
+ #
+ # This function checks if the keyids defined through the --local-user
+-# command line option or set in ~/.caffrc are valid and known to be one of the
+-# keyids listed in ~/.caffrc.
++# command line option or set in ~/.config/caff/caffrc are valid and known to be one of the
++# keyids listed in ~/.config/caff/caffrc.
+ #
+ # @return an array containing the local user keys\n
+ #         (undef) if no valid key has been found
+@@ -1037,7 +1037,7 @@
+ 		$user_key =~ y/ //d;
+ 
+ 		unless (grep {$user_key =~ /$_$/} @{$CONFIG{'keyid'}}) {
+-			mywarn "Local-user $user_key is not defined as one of your keyid in ~/.caffrc (it will not be used).";
++			mywarn "Local-user $user_key is not defined as one of your keyid in ~/.config/caff/caffrc (it will not be used).";
+ 			next;
+ 		}
+ 		
+@@ -1045,7 +1045,7 @@
+ 	}
+ 
+ 	# If no local-user key are valid, there is no need to go further
+-	myerror	(1, "None of the local-user keys seem to be known as a keyid listed in ~/.caffrc.") unless defined $local_user[0];
++	myerror	(1, "None of the local-user keys seem to be known as a keyid listed in ~/.config/caff/caffrc.") unless defined $local_user[0];
+ 	return @local_user;
+ }
+ 
+diff -ur signing-party-svn.2/caff/caff.1 signing-party-svn/caff/caff.1
+--- signing-party-svn.2/caff/caff.1	2014-07-30 18:34:22.510819657 +0200
++++ signing-party-svn/caff/caff.1	2014-07-30 18:45:34.469881248 +0200
+@@ -196,19 +196,19 @@
+ Try to import keys from your standard GnuPG keyrings.
+ .SH "FILES"
+ .IX Header "FILES"
+-.ie n .IP "$HOME/.caffrc  \-  configuration file" 4
+-.el .IP "\f(CW$HOME\fR/.caffrc  \-  configuration file" 4
+-.IX Item "$HOME/.caffrc - configuration file"
++.ie n .IP "$HOME/.config/caff/caffrc  \-  configuration file" 4
++.el .IP "\f(CW$HOME\fR/.config/caff/caffrc  \-  configuration file" 4
++.IX Item "$HOME/.config/caff/caffrc - configuration file"
+ .PD 0
+-.ie n .IP "$HOME/.caff/keys/yyyy\-mm\-dd/  \-  processed keys" 4
+-.el .IP "\f(CW$HOME\fR/.caff/keys/yyyy\-mm\-dd/  \-  processed keys" 4
+-.IX Item "$HOME/.caff/keys/yyyy-mm-dd/ - processed keys"
+-.ie n .IP "$HOME/.caff/gnupghome/  \-  caff's working dir for gpg" 4
+-.el .IP "\f(CW$HOME\fR/.caff/gnupghome/  \-  caff's working dir for gpg" 4
+-.IX Item "$HOME/.caff/gnupghome/ - caff's working dir for gpg"
+-.ie n .IP "$HOME/.caff/gnupghome/gpg.conf  \-  gpg configuration" 4
+-.el .IP "\f(CW$HOME\fR/.caff/gnupghome/gpg.conf  \-  gpg configuration" 4
+-.IX Item "$HOME/.caff/gnupghome/gpg.conf - gpg configuration"
++.ie n .IP "$HOME/.config/caff/keys/yyyy\-mm\-dd/  \-  processed keys" 4
++.el .IP "\f(CW$HOME\fR/.config/caff/keys/yyyy\-mm\-dd/  \-  processed keys" 4
++.IX Item "$HOME/.config/caff/keys/yyyy-mm-dd/ - processed keys"
++.ie n .IP "$HOME/.config/caff/gnupghome/  \-  caff's working dir for gpg" 4
++.el .IP "\f(CW$HOME\fR/.config/caff/gnupghome/  \-  caff's working dir for gpg" 4
++.IX Item "$HOME/.config/caff/gnupghome/ - caff's working dir for gpg"
++.ie n .IP "$HOME/.config/caff/gnupghome/gpg.conf  \-  gpg configuration" 4
++.el .IP "\f(CW$HOME\fR/.config/caff/gnupghome/gpg.conf  \-  gpg configuration" 4
++.IX Item "$HOME/.config/caff/gnupghome/gpg.conf - gpg configuration"
+ .PD
+ useful options include use-agent, keyserver-options, default-cert-level, etc.
+ .SH "CONFIGURATION FILE OPTIONS"
+@@ -240,7 +240,7 @@
+ .IX Subsection "General settings"
+ .IP "\fBcaffhome\fR [string]" 4
+ .IX Item "caffhome [string]"
+-Base directory for the files caff stores.  Default: \fB\f(CB$HOME\fB/.caff/\fR.
++Base directory for the files caff stores.  Default: \fB\f(CB$HOME\fB/.config/caff/\fR.
+ .SS "GnuPG settings"
+ .IX Subsection "GnuPG settings"
+ .IP "\fBgpg\fR [string]" 4
+diff -ur signing-party-svn.2/caff/caffrc.sample signing-party-svn/caff/caffrc.sample
+--- signing-party-svn.2/caff/caffrc.sample	2014-07-30 18:34:22.510819657 +0200
++++ signing-party-svn/caff/caffrc.sample	2014-07-30 18:41:07.830925654 +0200
+@@ -15,7 +15,7 @@
+ # local-user.  See the manpage for further details.
+ $CONFIG{'keyid'}       = [ qw{DE7AAF6E94C09C7F 62AF4031C82E0039} ];
+ $CONFIG{'also-encrypt-to'} = [ qw{DE7AAF6E94C09C7F} ];
+-$CONFIG{'caffhome'}    = $ENV{'HOME'}.'/.caff';
++$CONFIG{'caffhome'}    = $ENV{'HOME'}.'/.config/caff';
+ 
+ # The options below need not be changed for normal operation.
+ 
+diff -ur signing-party-svn.2/caff/README signing-party-svn/caff/README
+--- signing-party-svn.2/caff/README	2014-07-30 18:34:22.510819657 +0200
++++ signing-party-svn/caff/README	2014-07-30 18:48:54.904942845 +0200
+@@ -40,7 +40,7 @@
+ INSTALLATION
+ ------------
+ 
+-After creating a ~/.caffrc from the template, caff almost works out of the box.
++After creating a ~/.config/caff/caffrc from the template, caff almost works out of the box.
+ 
+ -- 
+ Peter
+diff -ur signing-party-svn.2/caff/README.gpg-agent signing-party-svn/caff/README.gpg-agent
+--- signing-party-svn.2/caff/README.gpg-agent	2014-07-30 18:34:22.510819657 +0200
++++ signing-party-svn/caff/README.gpg-agent	2014-07-30 18:43:21.768740308 +0200
+@@ -5,7 +5,7 @@
+ 
+ 0. Debian users apt-get install gnupg-agent and one of the pinentry-* packages.
+ 
+-1. Put "use-agent" in ~/.caff/gnupghome/gpg.conf.
++1. Put "use-agent" in ~/.config/caff/gnupghome/gpg.conf.
+ 
+ 2. Optionally edit ~/.gnupg/gpg-agent.conf, e.g.:
+    default-cache-ttl 600
+diff -ur signing-party-svn.2/caff/README.many-keys signing-party-svn/caff/README.many-keys
+--- signing-party-svn.2/caff/README.many-keys	2014-07-30 18:34:22.510819657 +0200
++++ signing-party-svn/caff/README.many-keys	2014-07-30 18:43:37.888878736 +0200
+@@ -91,6 +91,6 @@
+   you do not have to type "save" for each key. The disadvantage is that you
+   cannot choose which UIDs to sign by answering "no" at the "Really sign?"
+   prompt any more; you will have *not* to send out some mails. (And you have
+-  unwanted signatures lingering around in ~/.caff/gnupghome/pubring.gpg.)
++  unwanted signatures lingering around in ~/.config/caff/gnupghome/pubring.gpg.)
+ 
+  -- Guilhem Moulin <guilhem@guilhem.org>  Thu, 03 Apr 2014 12:43:13 +0200

@@ -1,0 +1,58 @@
+Index: gpg-key2ps/Makefile
+===================================================================
+--- gpg-key2ps/Makefile	(Revision 419)
++++ gpg-key2ps/Makefile	(Arbeitskopie)
+@@ -4,6 +4,8 @@
+ 	pod2man $< > $@
+ 
+ install:
++	install -D gpg-key2ps $(DESTDIR)/usr/bin/gpg-key2ps
++	install -D -m644 gpg-key2ps.1 $(DESTDIR)/usr/share/man/man1/gpg-key2ps.1
+ 
+ clean:
+ 	rm -f gpg-key2ps.1
+Index: caff/Makefile
+===================================================================
+--- caff/Makefile	(Revision 419)
++++ caff/Makefile	(Arbeitskopie)
+@@ -6,6 +6,13 @@
+ 	pod2man $< > $@
+ 
+ install:
++	install -D caff $(DESTDIR)/usr/bin/caff
++	install -D pgp-clean $(DESTDIR)/usr/bin/pgp-clean
++	install -D pgp-fixkey $(DESTDIR)/usr/bin/pgp-fixkey
++	install -D -m644 caff.1 $(DESTDIR)/usr/share/man/man1/caff.1
++	install -D -m644 pgp-clean.1 $(DESTDIR)/usr/share/man/man1/pgp-clean.1
++	install -D -m644 pgp-fixkey.1 $(DESTDIR)/usr/share/man/man1/pgp-fixkey.1
++	install -D caffrc.sample $(DESTDIR)/usr/share/signing-party/caffrc.sample
+ 
+ clean:
+ 	rm -f $(MAN)
+Index: gpgwrap/Makefile
+===================================================================
+--- gpgwrap/Makefile	(Revision 419)
++++ gpgwrap/Makefile	(Arbeitskopie)
+@@ -5,5 +5,9 @@
+ all:
+ 	cd src && ${MAKE} all DIET="${DIET}"
+ 
++install:
++	install -D bin/gpgwrap $(DESTDIR)/usr/bin/gpgwrap
++	install -D -m644 doc/gpgwrap.1 $(DESTDIR)/usr/share/man/man1/gpgwrap.1
++
+ clean:
+ 	cd src && ${MAKE} clean
+Index: gpglist/Makefile
+===================================================================
+--- gpglist/Makefile	(Revision 419)
++++ gpglist/Makefile	(Arbeitskopie)
+@@ -6,6 +6,8 @@
+ 	pod2man $< > $@
+ 
+ install:
++	install -D gpglist $(DESTDIR)/usr/bin/gpglist
++	install -D -m644 gpglist.1 $(DESTDIR)/usr/share/man/man1/gpglist.1
+ 
+ clean:
+ 	rm -f $(MAN)
