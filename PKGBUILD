@@ -5,7 +5,7 @@ pkgdesc="Tag various music files with data from musicbrainz.org"
 arch=('any')
 url="http://github.com/mineo/pymbtag"
 license=('MIT')
-depends=('python2' 'mutagen' 'python-musicbrainz2')
+depends=('python2' 'mutagen' 'python2-musicbrainz2')
 source=("https://mortzu.de/files/aur/$pkgname/$pkgname-$pkgver.tar.gz")
 md5sums=('540defe831fb5baa3ba9b6904f4955ac')
 
