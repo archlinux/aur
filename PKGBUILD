@@ -4,10 +4,10 @@ pkgdesc="ROS - This stack provides Python bindings for Qt."
 url='http://ros.org/wiki/python_qt_binding'
 
 pkgname='ros-indigo-python-qt-binding'
-pkgver='0.2.14'
+pkgver='0.2.16'
 _pkgver_patch=0
 arch=('any')
-pkgrel=5
+pkgrel=1
 license=('BSD, LGPL, GPL')
 
 ros_makedepends=(ros-indigo-catkin
@@ -23,20 +23,13 @@ depends=(${ros_depends[@]}
 
 _tag=release/indigo/python_qt_binding/${pkgver}-${_pkgver_patch}
 _dir=python_qt_binding
-source=("${_dir}"::"git+https://github.com/ros-gbp/python_qt_binding-release.git"#tag=${_tag}
-        "pyqt411.patch")
-md5sums=('SKIP'
-         '1b9558147faf9231e59c9b0d0113d7f5')
+source=("${_dir}"::"git+https://github.com/ros-gbp/python_qt_binding-release.git"#tag=${_tag})
+md5sums=('SKIP')
 
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
   [ -f /opt/ros/indigo/setup.bash ] && source /opt/ros/indigo/setup.bash
-
-  # Apply patch
-  msg "Patching source code"
-  cd ${srcdir}/${_dir}
-  git apply ${srcdir}/pyqt411.patch
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
@@ -53,6 +46,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
