@@ -1,0 +1,78 @@
+<?xml version="1.0" ?>
+<pyirct>
+    <!-- This file contains options to be configured by the server administrator. -->
+    <!-- Please read through all the options in this file -->
+
+    <!-- The JabberID of the transport -->
+    <jid>irc.localhost</jid>
+
+    <!-- The component JID of the transport. Unless you're doing clustering, leave this alone -->
+    <!-- <compjid>irc1</compjid> -->
+
+    <!-- The public IP or DNS name of the machine the transport is running on -->
+    <!-- This is used to select the outgoing IP address used to connect to IRC networks -->
+    <!--  otherwise known as the vanity address, it's safe to leave it commented -->
+    <!--<host>vanity.host.example.net</host>-->
+
+    <!-- The name of the transport in the service discovery list. -->
+    <!-- <discoName>IRC Transport</discoName> -->
+
+    <!-- The location of the spool file.. if relative, relative to the PyIRCt dir. -->
+    <!-- Include the jid of the transport, if running multiple copies of the same transport -->
+    <spoolFile>/var/spool/pyirct/ircuser.dbm</spoolFile>
+
+    <!-- The location of the PID file, relative to the PyIRCt directory -->
+    <!-- Comment out if you do not want a PID file -->
+    <pid>/var/run/pyirct/pyirct.pid</pid>
+
+    <!-- The IP address or DNS name of the main Jabber server -->
+    <mainServer>127.0.0.1</mainServer>
+
+    <!-- The JID of the main Jabber server -->
+    <mainServerJID>jabber.localhost</mainServerJID>
+
+    <!-- The TCP port to connect to the Jabber server on (this is the default for Jabberd2) -->
+    <port>5347</port>
+
+    <!-- The authentication token to use when connecting to the Jabber server -->
+    <secret>secret</secret>
+
+    <!-- SASL username used to bind to Jabber server. -->
+    <!-- secret, above, is used for sasl password -->
+    <!--<saslUsername>username-for-jabberd2-connection</saslUsername>-->
+
+    <!-- Allow users to register with this transport -->
+    <allowRegister/>
+
+    <!-- Require users to be registered before allowing them to join a room -->
+    <!-- <requireRegister/> -->
+
+    <!-- Send activity messages to users (for clients that don't support MUC)  -->
+    <activityMessages/>
+
+    <!-- Use external component binding. -->
+    <!-- This dodges the need to manually configure all jids that talk to this transport. -->
+    <!-- Jabberd2 requires saslUsername and useRouteWrap for this to work. -->
+    <!-- Wildfire as of 2.6.0 requires just this. -->
+    <!--<useComponentBinding/>-->
+
+    <!-- Wrap stanzas in <route> stanza. -->
+    <!-- Jabberd2 requires this for useComponentBinding. -->
+    <!--<useRouteWrap/>-->
+
+    <!-- You can choose which users you wish to have as administrators. These users can perform some tasks with Ad-Hoc commands that others cannot -->
+    <!--<admins>
+        <jid>romeo@montague.net</jid>
+        <jid>juliet@capulet.com</jid>
+    </admins>-->
+
+    <!-- The file to log to. Leave this disabled for stdout only -->
+    <debugFile>ircerror.log</debugFile>
+
+    <!-- Show the raw data being sent and received from the xmpp and irc servers -->
+    <!--<dumpProtocol/>-->
+
+    <!-- The default charset to use for the transport, if not supplied by the user when registering -->
+    <!-- <charset>utf-8</charset> -->
+
+</pyirct>

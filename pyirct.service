@@ -1,0 +1,12 @@
+[Unit]
+Description=IRC transport for Jabber
+
+[Service]
+Type=simple
+PIDFile=/var/run/pyirct/pyirct.pid
+ExecStart=/usr/bin/python2 /usr/lib/pyirct/irc.py
+WorkingDirectory=/usr/lib/pyirct
+
+[Install]
+WantedBy=multi-user.target
+StandardOutput=syslog

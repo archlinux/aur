@@ -1,0 +1,22 @@
+pkgbase = pyirct
+	pkgdesc = IRC transport for Jabber
+	pkgver = 0.4
+	pkgrel = 6
+	url = http://xmpppy.sourceforge.net/irc/
+	install = pyirct.install
+	arch = any
+	license = GPL
+	depends = python2-irc
+	depends = xmpppy
+	depends = python2-dnspython
+	source = http://downloads.sourceforge.net/project/xmpppy/PyIRCt/0.4/irc-transport-0.4.tar.gz
+	source = pyirct.service
+	source = pyirct.tmpfiles
+	source = config.xml
+	md5sums = 414411cc20a1cfd3559d1ff546dfd424
+	md5sums = b88b73469f8a609edfe0997a4ea536db
+	md5sums = 627964de07a39c472a6d9e188b900ede
+	md5sums = 9c7f68595294ff6e567fd395b1711a67
+
+pkgname = pyirct
+
