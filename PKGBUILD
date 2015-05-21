@@ -4,7 +4,7 @@ pkgdesc="ROS - A metapackage to aggregate several packages."
 url='http://www.ros.org/'
 
 pkgname='ros-indigo-desktop'
-pkgver='1.1.3'
+pkgver='1.1.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -19,9 +19,11 @@ ros_depends=(ros-indigo-visualization-tutorials
   ros-indigo-viz
   ros-indigo-urdf-tutorial
   ros-indigo-rqt-common-plugins
+  ros-indigo-common-tutorials
   ros-indigo-geometry-tutorials
   ros-indigo-roslint
-  ros-indigo-rqt-robot-plugins)
+  ros-indigo-rqt-robot-plugins
+  ros-indigo-ros-tutorials)
 depends=(${ros_depends[@]})
 
 _tag=release/indigo/desktop/${pkgver}-${_pkgver_patch}
@@ -49,6 +51,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
