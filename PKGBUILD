@@ -4,7 +4,7 @@
 # SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgname=iproute2-selinux
-pkgver=3.19.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="IP Routing Utilities with SELinux support"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ validpgpkeys=('9F6FC345B05BE7E766B83C8F80A77F6095CDE47E') # Stephen Hemminger
 source=("http://www.kernel.org/pub/linux/utils/net/${pkgname/-selinux}/${pkgname/-selinux}-$pkgver.tar."{xz,sign}
         iproute2-fhs.patch
         unwanted-link-help.patch)
-sha1sums=('109b076dc12d4af7c7b5299b0a66e0c4bd8e5e60'
+sha1sums=('d24385ae619966d1bd71e146322d6035d60aaa1a'
           'SKIP'
           '35b8cf2dc94b73eccad427235c07596146cd6f6c'
           '3b1335f4025f657f388fbf4e5a740871e3129c2a')
