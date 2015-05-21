@@ -4,7 +4,7 @@ pkgdesc="ROS - ROS packaging system."
 url='http://www.ros.org/wiki/ROS'
 
 pkgname='ros-indigo-ros'
-pkgver='1.11.7'
+pkgver='1.11.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
