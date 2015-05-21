@@ -4,7 +4,7 @@ pkgdesc="ROS - rosbuild contains scripts for managing the CMake-based build syst
 url='http://ros.org/wiki/rosbuild'
 
 pkgname='ros-indigo-rosbuild'
-pkgver='1.11.7'
+pkgver='1.11.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
