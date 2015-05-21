@@ -7,7 +7,7 @@ url="http://www.net.princeton.edu/software/dhcp_probe/"
 license=('GPL')
 source=(http://www.net.princeton.edu/software/dhcp_probe/$pkgname-$pkgver.tar.gz)
 md5sums=('8067e696fbd88120bdcc2ffef4b64da2')
-depends=('libnet')
+depends=('libnet' 'libpcap')
 
 build() {
   cd "$pkgname-$pkgver"
