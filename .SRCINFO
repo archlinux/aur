@@ -1,0 +1,14 @@
+pkgbase = dhcp_probe
+	pkgdesc = Allows network administrators to make calculations that will assist in subnetting a network
+	pkgver = 1.3.0
+	pkgrel = 4
+	url = http://www.net.princeton.edu/software/dhcp_probe/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libnet
+	source = http://www.net.princeton.edu/software/dhcp_probe/dhcp_probe-1.3.0.tar.gz
+	md5sums = 8067e696fbd88120bdcc2ffef4b64da2
+
+pkgname = dhcp_probe
+
