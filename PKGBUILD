@@ -4,7 +4,7 @@ pkgdesc="ROS - Metapackage of rqt plugins that are particularly used with robots
 url='http://ros.org/wiki/rqt_robot_plugins'
 
 pkgname='ros-indigo-rqt-robot-plugins'
-pkgver='0.4.0'
+pkgver='0.4.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
