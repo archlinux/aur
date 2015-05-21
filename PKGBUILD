@@ -7,7 +7,7 @@
 _pkgbasename=nettle
 pkgname=lib32-${_pkgbasename}4
 pkgver=2.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A low-level cryptographic library (32-bit, legacy version)"
 arch=('x86_64')
 url="http://www.lysator.liu.se/~nisse/nettle/"
@@ -45,7 +45,7 @@ package() {
   # remove static libs	#--disable-static - build would break (since nettle 2.6) - and had no effect before
   rm -f ${pkgdir}/usr/lib32/{libhogweed,libnettle}.a
 
-  install -m 0755 -d "${pkgdir}"/usr/include/nettle4 
-  mv "${pkgdir}"/usr/include/nettle{,4/}
+  install -m 0755 -d "${pkgdir}"/usr/lib32/nettle4 
+  mv "${pkgdir}"/usr/{include,lib32/nettle4}
   rm -rf "${pkgdir}"/usr/{share,bin,lib32/{*.so,pkgconfig}}
 }
