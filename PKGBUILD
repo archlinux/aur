@@ -4,7 +4,7 @@ pkgdesc="ROS - ros_tutorials contains packages that demonstrate various features
 url='http://www.ros.org/wiki/ros_tutorials'
 
 pkgname='ros-indigo-ros-tutorials'
-pkgver='0.5.2'
+pkgver='0.5.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1

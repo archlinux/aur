@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-ros-tutorials
 	pkgdesc = ROS - ros_tutorials contains packages that demonstrate various features of ROS, as well as support packages which help demonstrate those features.
-	pkgver = 0.5.2
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = http://www.ros.org/wiki/ros_tutorials
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = ros-indigo-ros-tutorials
 	depends = ros-indigo-rospy-tutorials
 	depends = ros-indigo-roscpp-tutorials
 	depends = ros-indigo-turtlesim
-	source = ros_tutorials::git+https://github.com/ros-gbp/ros_tutorials-release.git#tag=release/indigo/ros_tutorials/0.5.2-0
+	source = ros_tutorials::git+https://github.com/ros-gbp/ros_tutorials-release.git#tag=release/indigo/ros_tutorials/0.5.3-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-ros-tutorials
