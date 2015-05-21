@@ -8,7 +8,7 @@
 _pkgbasename=gnutls
 pkgname=lib32-${_pkgbasename}28
 pkgver=3.3.13
-pkgrel=1
+pkgrel=2
 pkgdesc="A library which provides a secure layer over a reliable transport layer (32-bit, legacy version)"
 arch=('x86_64')
 license=('GPL3' 'LGPL2.1')
@@ -37,13 +37,13 @@ build() {
     --disable-static \
     --disable-guile \
     --disable-valgrind-tests --disable-hardware-acceleration \
-    --disable-cxx --disable-openssl-compatibility
+    --disable-cxx --disable-openssl-compatibility --enable-local-libopts
   make
 }
 
 check() {
   cd ${srcdir}/${_pkgbasename}-${pkgver}
-  #make -k check
+  make -k check
 }
 
 package() {
@@ -51,6 +51,7 @@ package() {
   make DESTDIR="${pkgdir}" install
   find $pkgdir
 
-  rm -rf "${pkgdir}"/usr/{bin,include,share,lib32/{*.so,pkgconfig}}
-  #rm -rf "${pkgdir}"/usr/{bin,include,share,lib32/{*.so,*-openssl.*,libgnutlsxx.*,pkgconfig}}
+  install -m 755 -d "${pkgdir}"/usr/include/gnutls28
+  mv "${pkgdir}"/usr/include/gnutls{,28}
+  rm -rf "${pkgdir}"/usr/{bin,share,lib32/{*.so,pkgconfig}}
 }
