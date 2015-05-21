@@ -4,7 +4,7 @@ pkgdesc="ROS - turtlesim is a tool made for teaching ROS and ROS packages."
 url='http://www.ros.org/wiki/turtlesim'
 
 pkgname='ros-indigo-turtlesim'
-pkgver='0.5.2'
+pkgver='0.5.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
