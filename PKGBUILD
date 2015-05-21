@@ -7,7 +7,7 @@ url="http://github.com/mineo/pymbtag"
 license=('MIT')
 depends=('python2' 'mutagen' 'python2-musicbrainz2')
 source=("https://mortzu.de/files/aur/$pkgname/$pkgname-$pkgver.tar.bz2")
-md5sums=('540defe831fb5baa3ba9b6904f4955ac')
+md5sums=('b4c489f859a15eafd7e903f46402cf57')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
