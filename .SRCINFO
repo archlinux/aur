@@ -1,5 +1,5 @@
 pkgbase = linux-selinux
-	pkgver = 4.0.2
+	pkgver = 4.0.4
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
@@ -14,15 +14,15 @@ pkgbase = linux-selinux
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.2.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.2.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.4.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.4.sign
 	source = config
 	source = config.x86_64
 	source = linux-selinux.preset
 	source = change-default-console-loglevel.patch
 	sha256sums = 0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991
 	sha256sums = SKIP
-	sha256sums = c879ac300e9c1c8d2433ad9c66be5d374d15cf2175ac9876fb22d7d53a6b2e3b
+	sha256sums = c268985a82483fe75f0f397217208e262f85a356d1d9f34b9e22255e549d7ce9
 	sha256sums = SKIP
 	sha256sums = ee059db34898d66b61b3886af9ca071e9a3cee1e749d8165e87f53de56fe24d1
 	sha256sums = 2606bebe23db385f67910ec880684ca7dcf754b12f1625c9814688041d47a509
@@ -38,20 +38,20 @@ pkgname = linux-selinux
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = kernel26-selinux=4.0.2
+	provides = kernel26-selinux=4.0.4
 	conflicts = kernel26-selinux
 	replaces = kernel26-selinux
 	backup = etc/mkinitcpio.d/linux-selinux.preset
 
 pkgname = linux-selinux-headers
 	pkgdesc = Header files and scripts for building modules for Linux-selinux kernel
-	provides = kernel26-selinux-headers=4.0.2
+	provides = kernel26-selinux-headers=4.0.4
 	conflicts = kernel26-selinux-headers
 	replaces = kernel26-selinux-headers
 
 pkgname = linux-selinux-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-selinux kernel
-	provides = kernel26-selinux-docs=4.0.2
+	provides = kernel26-selinux-docs=4.0.4
 	conflicts = kernel26-selinux-docs
 	replaces = kernel26-selinux-docs
 
