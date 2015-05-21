@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-rqt-service-caller
 	pkgdesc = ROS - rqt_service_caller provides a GUI plugin for calling arbitrary services.
-	pkgver = 0.3.10
+	pkgver = 0.3.11
 	pkgrel = 1
 	url = http://ros.org/wiki/rqt_service_caller
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = ros-indigo-rqt-service-caller
 	depends = ros-indigo-rqt-gui-py
 	depends = ros-indigo-rqt-py-common
 	depends = python2-rospkg
-	source = rqt_service_caller::git+https://github.com/ros-gbp/rqt_common_plugins-release.git#tag=release/indigo/rqt_service_caller/0.3.10-0
+	source = rqt_service_caller::git+https://github.com/ros-gbp/rqt_common_plugins-release.git#tag=release/indigo/rqt_service_caller/0.3.11-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-rqt-service-caller
