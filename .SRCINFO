@@ -1,7 +1,7 @@
 pkgbase = sks
 	pkgdesc = Synchronizing OpenPGP Key Server
 	pkgver = 1.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/skskeyserver/sks-keyserver/
 	install = sks.install
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = sks
 	license = GPL
 	makedepends = ocaml
 	makedepends = db
+	makedepends = camlp4
 	backup = etc/sks/sksconf
 	backup = etc/sks/forward.exim
 	backup = etc/sks/forward.postfix
