@@ -1,0 +1,17 @@
+pkgbase = ipsc
+	pkgdesc = Allows network administrators to make calculations that will assist in subnetting a network
+	pkgver = 0.4.3
+	pkgrel = 6
+	url = http://packages.ubuntu.com/dapper/ipsc
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://old-releases.ubuntu.com/ubuntu/pool/universe/i/ipsc/ipsc_0.4.3.orig.tar.gz
+	source = http://old-releases.ubuntu.com/ubuntu/pool/universe/i/ipsc/ipsc_0.4.3-2.diff.gz
+	source = http://ftp.de.debian.org/debian/pool/main/p/prips/prips_0.9.7.orig.tar.gz
+	md5sums = 0adc2e6073d4aaba8a2e43215d9d25a0
+	md5sums = e08a7f11e60223d59de0c5df93e99c24
+	md5sums = 66efd4f714275413e48749d43903134f
+
+pkgname = ipsc
+
