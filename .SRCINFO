@@ -1,0 +1,15 @@
+pkgbase = python-odorik
+	pkgdesc = Python module and command line utility to interact with Odorik API
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://cihar.com/software/odorik/
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python-xdg
+	depends = python-dateutil
+	source = python-odorik-0.4.tar.gz::https://github.com/nijel/odorik/archive/0.4.tar.gz
+	md5sums = 94abcf9425b224e9b8b1794487db21d5
+
+pkgname = python-odorik
+
