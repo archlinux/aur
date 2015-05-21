@@ -1,0 +1,13 @@
+pkgbase = libcrystalhd
+	pkgdesc = Broadcom Crystal HD library
+	pkgver = 20100703
+	pkgrel = 3
+	url = http://git.wilsonet.com/crystalhd.git/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	source = http://www.broadcom.com/docs/support/crystalhd/crystalhd_linux_20100703.zip
+	md5sums = f14c0e418b36ea14f8d25f9a7d6f7507
+
+pkgname = libcrystalhd
+
