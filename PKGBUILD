@@ -1,7 +1,7 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=gzdoom-git
-pkgver=1.9pre.r1589.ga95edc3
+pkgver=1.9pre.r2136.ga59824c
 pkgrel=1
 pkgdesc="Doom source port based on ZDoom with an OpenGL renderer (git version)."
 arch=('i686' 'x86_64')
@@ -22,12 +22,10 @@ optdepends=('blasphemer: Blasphemer (free Heretic) game data'
 provides=('gzdoom')
 conflicts=('gzdoom')
 source=(gzdoom::git://github.com/coelckers/gzdoom.git \
-        config-update-fix.patch \
         doom-share-dir.patch \
         stack-noexec.patch \
         gzdoom.desktop)
 md5sums=('SKIP'
-         'd1df774110f513225760b83fcb271171'
          'ed6c7d1175146bedac3f5a59d09d8f4b'
          'b83081e982b742010df0afe36b4d49b6'
          '3f5920d839086c9ad04ed1338c3fb546')
@@ -44,7 +42,6 @@ pkgver() {
 prepare() {
   cd gzdoom
 
-  patch -p1 <"$srcdir/config-update-fix.patch"
   patch -p1 <"$srcdir/doom-share-dir.patch"
   patch -p1 <"$srcdir/stack-noexec.patch"
 
