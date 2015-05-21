@@ -4,7 +4,7 @@ pkgdesc="ROS - A Python GUI plugin for introspecting available ROS message types
 url='http://ros.org/wiki/rqt_srv'
 
 pkgname='ros-indigo-rqt-srv'
-pkgver='0.3.10'
+pkgver='0.3.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
