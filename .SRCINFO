@@ -1,0 +1,17 @@
+pkgbase = pump
+	pkgdesc = BootP and DHCP client
+	pkgver = 0.8.24
+	pkgrel = 10
+	url = http://packages.debian.org/wheezy/pump
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = libnewt
+	depends = glibc
+	source = http://cdn.debian.net/debian/pool/main/p/pump/pump_0.8.24.orig.tar.gz
+	source = http://cdn.debian.net/debian/pool/main/p/pump/pump_0.8.24-7.diff.gz
+	md5sums = 866fc9f62b8161eb1514a6a06597edc9
+	md5sums = 29b66e30daaccb1ec34123e292aa36b4
+
+pkgname = pump
+
