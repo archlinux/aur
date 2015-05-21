@@ -1,0 +1,14 @@
+pkgbase = ip-sentinel
+	pkgdesc = prevent usage of IPs by giving answers to ARP-requests
+	pkgver = 0.12
+	pkgrel = 4
+	url = http://www.nongnu.org/ip-sentinel/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://savannah.nongnu.org/download/ip-sentinel/ip-sentinel-0.12.tar.bz2
+	md5sums = eb83cda53fcfed7d9826eab1640a2d2a
+
+pkgname = ip-sentinel
+
