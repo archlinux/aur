@@ -1,0 +1,15 @@
+pkgbase = lib32-nettle4
+	pkgdesc = A low-level cryptographic library (32-bit, legacy version)
+	pkgver = 2.7.1
+	pkgrel = 1
+	url = http://www.lysator.liu.se/~nisse/nettle/
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc-multilib
+	depends = lib32-gmp
+	depends = nettle
+	source = ftp://ftp.gnu.org/gnu/nettle/nettle-2.7.1.tar.gz
+	md5sums = 003d5147911317931dd453520eb234a5
+
+pkgname = lib32-nettle4
+
