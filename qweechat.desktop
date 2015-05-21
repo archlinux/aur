@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=QWeeChat
+Comment=QT GUI for WeeChat
+Encoding=UTF-8
+Exec=python2 /usr/lib/python2.7/site-packages/qweechat/qweechat.py
+Icon=qweechat
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Network

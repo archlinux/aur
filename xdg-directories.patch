@@ -1,0 +1,20 @@
+diff -ru qweechat.bu/qweechat/config.py qweechat/qweechat/config.py
+--- qweechat.bu/qweechat/config.py	2014-07-31 11:05:11.111575651 +0200
++++ qweechat/qweechat/config.py	2014-07-31 11:08:33.604345972 +0200
+@@ -23,8 +23,14 @@
+ import ConfigParser
+ import os
+ 
+-CONFIG_DIR = '%s/.qweechat' % os.getenv('HOME')
+-CONFIG_FILENAME = '%s/qweechat.conf' % CONFIG_DIR
++from xdg import BaseDirectory
++
++CONFIG_DIR = os.path.join(BaseDirectory.xdg_config_home, "qweechat")
++
++if not os.path.isdir(CONFIG_DIR):
++    os.mkdir(CONFIG_DIR)
++
++CONFIG_FILENAME = os.path.join(CONFIG_DIR, "qweechat.conf")
+ 
+ CONFIG_DEFAULT_RELAY_LINES = 50
+ 

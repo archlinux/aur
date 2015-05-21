@@ -1,0 +1,21 @@
+pkgbase = qweechat
+	pkgdesc = QT GUI for WeeChat
+	pkgver = 1.1_rc2
+	pkgrel = 1
+	url = http://weechat.org
+	arch = any
+	license = GPL
+	depends = python2
+	depends = python2-pyqt
+	depends = python2-sip
+	depends = python2-setuptools
+	depends = python2-xdg
+	source = http://weechat.org/files/src/qweechat-devel.tar.bz2
+	source = qweechat.desktop
+	source = xdg-directories.patch
+	md5sums = d56d7f12720c5fe2571590940b5ac01a
+	md5sums = df3ad9d12c1d71199e21ec7136ea6cc5
+	md5sums = d5813c226362e7f3b41a0eaf3041570e
+
+pkgname = qweechat
+
