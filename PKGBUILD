@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_robot_dashboard provides an infrastructure for building robot
 url='http://ros.org/wiki/rqt_robot_dashboard'
 
 pkgname='ros-indigo-rqt-robot-dashboard'
-pkgver='0.4.0'
+pkgver='0.4.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
