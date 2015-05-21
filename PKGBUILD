@@ -4,10 +4,10 @@ pkgdesc="ROS - This package attempts to show the features of ROS step-by-step, i
 url='http://www.ros.org/wiki/roscpp_tutorials'
 
 pkgname='ros-indigo-roscpp-tutorials'
-pkgver='0.5.2'
+pkgver='0.5.3'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-roscpp-serialization
