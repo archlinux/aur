@@ -1,6 +1,6 @@
 # Maintainer: Graham Edgecombe <graham@grahamedgecombe.com>
 pkgname=openrct2-git
-pkgver=r2942.8499d38
+pkgver=r3168.2ed1963
 pkgrel=1
 pkgdesc="Open source clone of RollerCoaster Tycoon 2"
 arch=('i686' 'x86_64')
@@ -26,6 +26,14 @@ build() {
   cd "$srcdir/$pkgname"
   cmake -DCMAKE_TOOLCHAIN_FILE=CMakeLists_mingw.txt -DCMAKE_BUILD_TYPE=Debug .
   make
+
+  # Create g2.dat. See the comment in the package() function for why we need to
+  # symlink the DLLs here. openrct2.exe also seems to return a non-zero exit
+  # code even if it builds the sprites successfully, so we have to ignore its
+  # exit code.
+  ln -sf /usr/i686-w64-mingw32/bin/SDL2.dll
+  ln -sf /usr/i686-w64-mingw32/bin/libwinpthread-1.dll
+  wine openrct2.exe sprite build data/g2.dat resources/g2 || true
 }
 
 package() {
@@ -34,6 +42,8 @@ package() {
   # Standard OpenRCT2 distribution files.
   install -Dm644 openrct2.dll "$pkgdir/usr/share/openrct2/openrct2.dll"
   install -Dm755 openrct2.exe "$pkgdir/usr/share/openrct2/openrct2.exe"
+
+  install -Dm644 data/g2.dat "$pkgdir/usr/share/openrct2/data/g2.dat"
 
   install -dm755 "$pkgdir/usr/share/openrct2/data/language"
   install -m644 data/language/* "$pkgdir/usr/share/openrct2/data/language/"
