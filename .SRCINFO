@@ -1,0 +1,27 @@
+pkgbase = redsocks-git
+	pkgdesc = Transparent redirector of any TCP connection to proxy using your firewall
+	pkgver = 0.1.r43.g2e3f648
+	pkgrel = 1
+	url = http://darkk.net.ru/redsocks/
+	install = redsocks.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = libevent
+	provides = redsocks
+	conflicts = redsocks
+	backup = etc/redsocks.conf
+	backup = etc/conf.d/redsocks
+	backup = etc/iptables/redsocks.rules
+	source = redsocks-git::git+https://github.com/darkk/redsocks.git
+	source = redsocks.conf
+	source = redsocks.tmpfiles
+	source = redsocks.rules
+	md5sums = SKIP
+	md5sums = ed8b0090ded9de0940b1cd7539c78422
+	md5sums = 9be5e8bea768b1a8fdec55a8e8af33fd
+	md5sums = 04702a7faf31d707d3df4c116bd58a6d
+
+pkgname = redsocks-git
+
