@@ -1,0 +1,16 @@
+pkgbase = ipv6calc
+	pkgdesc = Small utility to manipulate, convert and calculate (more than) IPv6 addresses
+	pkgver = 0.97.4
+	pkgrel = 1
+	url = http://www.deepspace6.net/projects/ipv6calc.html
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	checkdepends = perl-digest-sha1
+	checkdepends = perl-uri
+	options = !buildflags
+	source = ftp://ftp.bieringer.de/pub/linux/IPv6/ipv6calc/ipv6calc-0.97.4.tar.gz
+	md5sums = a7414ca72f66eb6d515b58c687705d55
+
+pkgname = ipv6calc
+
