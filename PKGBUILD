@@ -3,7 +3,7 @@
 
 _pkgname=ewebkit
 pkgname=$_pkgname-svn
-pkgver=1.11.0.r184646
+pkgver=1.11.0.r184695
 pkgrel=1
 pkgdesc="WebKit ported to the Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64')
@@ -48,7 +48,8 @@ build() {
   cmake . \
     -DPORT=Efl \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_BUILD_TYPE=Release \
+    -DENABLE_MEDIA_STREAM=OFF
 
   make
 }

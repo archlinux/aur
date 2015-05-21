@@ -1,6 +1,6 @@
 pkgbase = ewebkit-svn
 	pkgdesc = WebKit ported to the Enlightenment Foundation Libraries - Development version
-	pkgver = 1.11.0.r184646
+	pkgver = 1.11.0.r184695
 	pkgrel = 1
 	url = http://trac.webkit.org/wiki/EFLWebKit
 	arch = i686
@@ -22,7 +22,7 @@ pkgbase = ewebkit-svn
 	depends = geoclue2
 	depends = harfbuzz-icu
 	depends = libxslt
-	provides = ewebkit=1.11.0.r184646
+	provides = ewebkit=1.11.0.r184695
 	conflicts = ewebkit
 	source = ewebkit-svn/Source::svn+https://svn.webkit.org/repository/webkit/trunk/Source
 	sha256sums = SKIP
