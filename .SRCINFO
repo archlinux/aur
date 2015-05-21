@@ -19,6 +19,7 @@ pkgbase = ewebkit-svn
 	depends = efl
 	depends = enchant
 	depends = espeak
+	depends = gst-plugins-bad
 	depends = geoclue2
 	depends = harfbuzz-icu
 	depends = libxslt
