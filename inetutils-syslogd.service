@@ -1,0 +1,13 @@
+[Unit]
+Description=System Logger Daemon
+Documentation=man:syslogd(8)
+
+[Service]
+Sockets=syslog.socket
+ExecStart=/usr/bin/syslogd --no-forward
+ExecReload=/bin/kill -HUP $MAINPID
+StandardOutput=null
+
+[Install]
+WantedBy=multi-user.target
+Alias=syslog.service
