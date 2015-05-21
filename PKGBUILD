@@ -4,7 +4,7 @@ pkgdesc="ROS - rosparam contains the rosparam command-line tool for getting and 
 url='http://ros.org/wiki/rosparam'
 
 pkgname='ros-indigo-rosparam'
-pkgver='1.11.11'
+pkgver='1.11.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
