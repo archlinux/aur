@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_robot_monitor displays diagnostics_agg topics messages that a
 url='http://ros.org/wiki/rqt_robot_monitor'
 
 pkgname='ros-indigo-rqt-robot-monitor'
-pkgver='0.4.0'
+pkgver='0.4.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
