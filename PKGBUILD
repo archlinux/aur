@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_py_common provides common functionality for rqt plugins writt
 url='http://ros.org/wiki/rqt_py_common'
 
 pkgname='ros-indigo-rqt-py-common'
-pkgver='0.3.10'
+pkgver='0.3.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
