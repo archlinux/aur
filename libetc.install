@@ -1,0 +1,8 @@
+post_install() {
+	echo "To use libetc, you may add the following line to your .xsession and .*shrc:"
+	echo "export LD_PRELOAD=libetc.so"
+	echo "You can also use /etc/ld.so.preload to use libetc with each user on your system"
+	echo "but it is a little bit dangerous (if you misstype the path to the library, or if"
+	echo "the library is buggy, you will need to use your rescue disk to restore"
+	echo "/etc/ld.so.preload)"
+}

@@ -1,0 +1,308 @@
+diff --git a/libetc.c b/libetc.c
+index 79ba1ae..57041b7 100644
+--- a/libetc.c
++++ b/libetc.c
+@@ -29,6 +29,7 @@
+ #include <sys/socket.h>
+ #include <sys/un.h>
+ #include <stddef.h>
++#include <alloca.h>
+ 
+ #include "libetc.h"
+ 
+@@ -79,11 +80,11 @@ static int (*orig_mkstemp64) (char *template);
+ 
+ static char *ETCDIR = ".config";
+ static char *orig, *home, *etcdir;
+-static int started = 0;
+-static int blacklisted = 0;
++static int do_translate = 0;
++static int prefix_size = 0;
+ 
+ // is the running exec blacklisted ?
+-static void am_i_blacklisted () {
++static int am_i_blacklisted () {
+ 	char running_exec[4096], *exec_blacklist, *str;
+ 	int len;
+ 
+@@ -94,18 +95,20 @@ static void am_i_blacklisted () {
+ 			PRINT_DEBUG ("blacklist: %s\n", exec_blacklist);
+ 			while ((str = strrchr (exec_blacklist, ':'))) {
+ 				if (0 == strcmp (++str, running_exec)) {
+-					blacklisted = 1;
+ 					PRINT_DEBUG ("I am blacklisted !\n");
++					return 1;
+ 				}
+ 				str--;
+ 				str[0] = '\0';
+ 			}
+ 			if (0 == strcmp (exec_blacklist, running_exec)) {
+-				blacklisted = 1;
+ 				PRINT_DEBUG ("I am blacklisted !\n");
++				return 1;
+ 			}
+ 		}
+ 	}
++	
++	return 0;
+ }
+ 
+ // find where to put the dotfiles
+@@ -170,10 +173,7 @@ static void xauthority_hack (const char* etcdir) {
+ #endif // XAUTH_HACK
+ 
+ // called only once on program startup
+-static void start_up () {
+-	if (LIKELY (started))
+-		return;
+-
++static void __attribute__ ((constructor)) start_up () {
+ 	orig_fopen = dlsym (RTLD_NEXT, "fopen");	
+ 	orig_fopen64 = dlsym (RTLD_NEXT, "fopen64");
+ 	orig_freopen = dlsym (RTLD_NEXT, "freopen");
+@@ -211,13 +211,12 @@ static void start_up () {
+ 	orig_mkstemp = dlsym (RTLD_NEXT, "mkstemp");
+ 	orig_mkstemp64 = dlsym (RTLD_NEXT, "mkstemp64");
+ 
+-	am_i_blacklisted ();
++	if (am_i_blacklisted ())
++		return;
+ 
+ 	home = getenv ("HOME");
+-	if (home == NULL) {
+-		started = 1;
++	if (home == NULL)
+ 		return;
+-	}
+ 
+ 	orig = malloc (strlen (home) + 3);
+ 	sprintf (orig, "%s/.", home);
+@@ -229,20 +228,22 @@ static void start_up () {
+ #endif
+ 
+ 	PRINT_DEBUG("etcdir: %s\n", etcdir);
+-	started = 1;
++	prefix_size = strlen (etcdir);
++	do_translate = 1;
+ }
+ 
+ // rename filename if it's a dotfile in $HOME
+-static char *translate (const char *filename) {
+-	char *wd, *newfilename;
+-
+-	if (UNLIKELY (!started)) start_up();
+-	if (UNLIKELY (home == NULL)) return strdup (filename);
+-	if (UNLIKELY (blacklisted)) return strdup (filename);
++static void translate (const char *filename, char *newfilename, const char **dest) {
++	char *wd;
++	
++	*dest = filename;
++	
++	if (UNLIKELY (do_translate == 0)) return;
+ 	
+ 	if (UNLIKELY (!filename)) {
+ 		PRINT_DEBUG("Filename is NULL !\n");
+-		return NULL;
++		*dest = NULL;
++		return;
+ 	}
+ 
+ 	wd = get_current_dir_name ();
+@@ -254,85 +255,80 @@ static char *translate (const char *filename) {
+ 	    && (0 != strncmp (filename, "..", 2))) {
+ 		char tmpfilename [strlen (home) + strlen (filename) + 2];
+ 		sprintf (tmpfilename, "%s/%s", home, filename);
+-		if (0 == strncmp (tmpfilename, etcdir, strlen(etcdir))) { // do not translate if trying to read/write in $XDG_CONFIG_HOME
+-			newfilename = strdup (filename);
+-		} else {
++		if (0 != strncmp (tmpfilename, etcdir, strlen(etcdir))) { // do not translate if trying to read/write in $XDG_CONFIG_HOME
+ 			filename++; // remove the dot
+-			newfilename = malloc (strlen (filename) + strlen (etcdir) + 2);
+ 			sprintf (newfilename, "%s/%s", etcdir, filename);
++			*dest = newfilename;
+ 			PRINT_DEBUG("RENAMED IN $HOME --> %s\n", newfilename);
+ 		}
+ 	} else if (0 == strncmp (filename, orig, strlen (orig)) // if file name is $HOME/.something
+ 		   && 0!= strncmp (filename, etcdir, strlen (etcdir)) ) { // do not translate if trying to read/write in $XDG_CONFIG_HOME
+ 		filename += strlen (home) + 2; // remove "$HOME/." from the filename
+-		newfilename = malloc (strlen (filename) + strlen (etcdir) + 2);
+ 		sprintf (newfilename, "%s/%s", etcdir, filename);
++		*dest = newfilename;
+ 		PRINT_DEBUG("RENAMED --> %s\n", newfilename);
+-	} else { // not a dotfile
+-		newfilename = strdup (filename);
+ 	}
+ 	
+ 	free (wd);
+-	return newfilename;
+ }
+ 
+-#define REWRITE_FUNCTION_SIMPLE(return_type, function_name, signature, orig_call) \
++#define REWRITE_FUNCTION_SIMPLE(return_type, function_name, signature, orig_call, error_return) \
+ return_type function_name signature { \
+-	return_type return_value; \
+-	char *new_path; \
++	char *rewritten_path; \
++	const char *new_path; \
+ 	\
+ 	PRINT_DEBUG(#function_name ": %s\n", path); \
+ 	\
+-	new_path = translate (path); \
+-	return_value = orig_##function_name orig_call; \
+-	free (new_path); \
+-	return return_value; \
++	if (UNLIKELY (orig_##function_name == NULL)) return error_return; \
++	rewritten_path = alloca (prefix_size + strlen (path) + 2); \
++	translate (path, rewritten_path, &new_path); \
++	return orig_##function_name orig_call; \
+ }
+ //#define NPATH  NEWPATH(new_path, path)
+ 
+-REWRITE_FUNCTION_SIMPLE(FILE*, fopen, (const char *path, const char *mode), (new_path, mode))
+-REWRITE_FUNCTION_SIMPLE(FILE*, fopen64, (const char *path, const char *mode), (new_path, mode))
+-REWRITE_FUNCTION_SIMPLE(FILE*, freopen, (const char *path, const char *mode, FILE *stream), (new_path, mode, stream))
+-REWRITE_FUNCTION_SIMPLE(FILE*, freopen64, (const char *path, const char *mode, FILE *stream), (new_path, mode, stream))
+-REWRITE_FUNCTION_SIMPLE(int, open, (const char *path, int flags, mode_t mode), (new_path, flags, mode))
+-REWRITE_FUNCTION_SIMPLE(int, open64, (const char *path, int flags, mode_t mode), (new_path, flags, mode))
+-REWRITE_FUNCTION_SIMPLE(int, mkdir, (const char *path, mode_t mode), (new_path, mode))
+-REWRITE_FUNCTION_SIMPLE(int, unlink, (const char *path), (new_path))
+-REWRITE_FUNCTION_SIMPLE(int, remove, (const char *path), (new_path))
+-REWRITE_FUNCTION_SIMPLE(DIR*, opendir, (const char *path), (new_path))
+-REWRITE_FUNCTION_SIMPLE(int, chdir, (const char *path), (new_path))
+-REWRITE_FUNCTION_SIMPLE(int, __xstat, (int ver, const char *path, struct stat *buf), (ver, new_path, buf))
+-REWRITE_FUNCTION_SIMPLE(int, __xstat64, (int ver, const char *path, struct stat64 *buf), (ver, new_path, buf))
+-REWRITE_FUNCTION_SIMPLE(int, __lxstat, (int ver, const char *path, struct stat *buf), (ver, new_path, buf))
+-REWRITE_FUNCTION_SIMPLE(int, __lxstat64, (int ver, const char *path, struct stat64 *buf), (ver, new_path, buf))
+-REWRITE_FUNCTION_SIMPLE(int, access, (const char *path, int mode), (new_path, mode))
+-REWRITE_FUNCTION_SIMPLE(int, chmod, (const char *path, mode_t mode), (new_path, mode))
+-REWRITE_FUNCTION_SIMPLE(int, chown, (const char *path, uid_t owner, gid_t group), (new_path, owner, group))
+-REWRITE_FUNCTION_SIMPLE(int, lchown, (const char *path, uid_t owner, gid_t group), (new_path, owner, group))
+-REWRITE_FUNCTION_SIMPLE(int, utime, (const char *path, struct utimbuf *buf), (new_path, buf))
+-REWRITE_FUNCTION_SIMPLE(int, utimes, (const char *path, struct timeval *tvp), (new_path, tvp))
+-REWRITE_FUNCTION_SIMPLE(int, truncate, (const char *path, off_t length), (new_path, length))
+-REWRITE_FUNCTION_SIMPLE(int, truncate64, (const char *path, off_t length), (new_path, length))
+-REWRITE_FUNCTION_SIMPLE(int, __xmknod, (int ver, const char *path, mode_t mode, dev_t dev), (ver, new_path, mode, dev))
+-REWRITE_FUNCTION_SIMPLE(int, mkfifo, (const char *path, mode_t mode), (new_path, mode))
+-REWRITE_FUNCTION_SIMPLE(int, creat, (const char *path, mode_t mode), (new_path, mode))
+-REWRITE_FUNCTION_SIMPLE(int, creat64, (const char *path, mode_t mode), (new_path, mode))
+-REWRITE_FUNCTION_SIMPLE(int, readlink, (const char *path, char *buf, size_t bufsize), (new_path, buf, bufsize))
+-REWRITE_FUNCTION_SIMPLE(int, rmdir, (const char *path), (new_path))
++REWRITE_FUNCTION_SIMPLE(FILE*, fopen, (const char *path, const char *mode), (new_path, mode), NULL)
++REWRITE_FUNCTION_SIMPLE(FILE*, fopen64, (const char *path, const char *mode), (new_path, mode), NULL)
++REWRITE_FUNCTION_SIMPLE(FILE*, freopen, (const char *path, const char *mode, FILE *stream), (new_path, mode, stream), NULL)
++REWRITE_FUNCTION_SIMPLE(FILE*, freopen64, (const char *path, const char *mode, FILE *stream), (new_path, mode, stream), NULL)
++REWRITE_FUNCTION_SIMPLE(int, open, (const char *path, int flags, mode_t mode), (new_path, flags, mode), -1)
++REWRITE_FUNCTION_SIMPLE(int, open64, (const char *path, int flags, mode_t mode), (new_path, flags, mode), -1)
++REWRITE_FUNCTION_SIMPLE(int, mkdir, (const char *path, mode_t mode), (new_path, mode), -1)
++REWRITE_FUNCTION_SIMPLE(int, unlink, (const char *path), (new_path), -1)
++REWRITE_FUNCTION_SIMPLE(int, remove, (const char *path), (new_path), -1)
++REWRITE_FUNCTION_SIMPLE(DIR*, opendir, (const char *path), (new_path), NULL)
++REWRITE_FUNCTION_SIMPLE(int, chdir, (const char *path), (new_path), -1)
++REWRITE_FUNCTION_SIMPLE(int, __xstat, (int ver, const char *path, struct stat *buf), (ver, new_path, buf), -1)
++REWRITE_FUNCTION_SIMPLE(int, __xstat64, (int ver, const char *path, struct stat64 *buf), (ver, new_path, buf), -1)
++REWRITE_FUNCTION_SIMPLE(int, __lxstat, (int ver, const char *path, struct stat *buf), (ver, new_path, buf), -1)
++REWRITE_FUNCTION_SIMPLE(int, __lxstat64, (int ver, const char *path, struct stat64 *buf), (ver, new_path, buf), -1)
++REWRITE_FUNCTION_SIMPLE(int, access, (const char *path, int mode), (new_path, mode), -1)
++REWRITE_FUNCTION_SIMPLE(int, chmod, (const char *path, mode_t mode), (new_path, mode), -1)
++REWRITE_FUNCTION_SIMPLE(int, chown, (const char *path, uid_t owner, gid_t group), (new_path, owner, group), -1)
++REWRITE_FUNCTION_SIMPLE(int, lchown, (const char *path, uid_t owner, gid_t group), (new_path, owner, group), -1)
++REWRITE_FUNCTION_SIMPLE(int, utime, (const char *path, struct utimbuf *buf), (new_path, buf), -1)
++REWRITE_FUNCTION_SIMPLE(int, utimes, (const char *path, struct timeval *tvp), (new_path, tvp), -1)
++REWRITE_FUNCTION_SIMPLE(int, truncate, (const char *path, off_t length), (new_path, length), -1)
++REWRITE_FUNCTION_SIMPLE(int, truncate64, (const char *path, off_t length), (new_path, length), -1)
++REWRITE_FUNCTION_SIMPLE(int, __xmknod, (int ver, const char *path, mode_t mode, dev_t dev), (ver, new_path, mode, dev), -1)
++REWRITE_FUNCTION_SIMPLE(int, mkfifo, (const char *path, mode_t mode), (new_path, mode), -1)
++REWRITE_FUNCTION_SIMPLE(int, creat, (const char *path, mode_t mode), (new_path, mode), -1)
++REWRITE_FUNCTION_SIMPLE(int, creat64, (const char *path, mode_t mode), (new_path, mode), -1)
++REWRITE_FUNCTION_SIMPLE(int, readlink, (const char *path, char *buf, size_t bufsize), (new_path, buf, bufsize), -1)
++REWRITE_FUNCTION_SIMPLE(int, rmdir, (const char *path), (new_path), -1)
+ 
+ #define REWRITE_FUNCTION_DOUBLE(return_type, function_name, signature, orig_call) \
+ return_type function_name signature { \
+-	return_type return_value; \
+-	char *new_path1, *new_path2; \
++	const char *new_path1, *new_path2; \
++	char *rewritten_path1, *rewritten_path2; \
+ 	\
+ 	PRINT_DEBUG(#function_name ": %s %s\n", path1, path2); \
+ 	\
+-	new_path1 = translate (path1); \
+-	new_path2 = translate (path2); \
+-	return_value = orig_##function_name orig_call; \
+-	free (new_path1); \
+-	free (new_path2); \
+-	return return_value; \
++	if (UNLIKELY (orig_##function_name == NULL)) return -1; \
++	rewritten_path1 = alloca (prefix_size + strlen (path1) + 2); \
++	rewritten_path2 = alloca (prefix_size + strlen (path2) + 2); \
++	translate (path1, rewritten_path1, &new_path1); \
++	translate (path2, rewritten_path2, &new_path2); \
++	return orig_##function_name orig_call; \
+ }
+ 
+ REWRITE_FUNCTION_DOUBLE(int, rename, (const char *path1, const char *path2), (new_path1, new_path2))
+@@ -342,20 +338,22 @@ REWRITE_FUNCTION_DOUBLE(int, symlink, (const char *path1, const char *path2), (n
+ #define REWRITE_FUNCTION_MKSTEMP(function_name) \
+ int function_name(char *path) { \
+ 	int return_value, i; \
+-	char *new_path; \
++	char *rewritten_path; \
++	const char *new_path; \
+ 	size_t size, new_size; \
+ 	\
+ 	PRINT_DEBUG(#function_name ": %s\n", path); \
+ 	\
+-	new_path = translate (path); \
++	if (UNLIKELY (orig_##function_name == NULL)) return -1; \
++	rewritten_path = alloca (prefix_size + strlen (path) + 2); \
++	translate (path, rewritten_path, &new_path); \
+ 	if(LIKELY(new_path != NULL)) { \
+-		return_value = orig_##function_name (new_path); \
++		return_value = orig_##function_name ((char*)new_path); \
+ 		size = strlen (path); \
+ 		new_size = strlen (new_path); \
+ 		for (i = 0; i <= 6; i++) { \
+ 			path[size - i] = new_path[new_size - i]; \
+ 		} \
+-		free(new_path); \
+ 		return return_value; \
+ 	} \
+ 	else { \
+@@ -370,14 +368,16 @@ REWRITE_FUNCTION_MKSTEMP(mkstemp64);
+ int function_name(int sockfd, const struct sockaddr *serv_addr, socklen_t addrlen) { \
+ 	int offset; \
+         struct sockaddr_un newaddr; \
+-        char *path, *new_path; \
+-	int return_value; \
++        char *path, *rewritten_path; \
++	const char *new_path; \
+ 	\
++	if (UNLIKELY (orig_##function_name == NULL)) return -1; \
+ 	if (serv_addr->sa_family == AF_LOCAL) { \
+ 		path = ((struct sockaddr_un*)serv_addr)->sun_path; \
+ 		offset = (path[0] == '\0'); \
+ 		path += offset; \
+-		new_path = translate (path); \
++		rewritten_path = alloca (prefix_size + strlen (path) + 2); \
++		translate (path, rewritten_path, &new_path); \
+ 		\
+ 		PRINT_DEBUG(#function_name": %s\n", path); \
+ 		\
+@@ -386,16 +386,13 @@ int function_name(int sockfd, const struct sockaddr *serv_addr, socklen_t addrle
+ 			newaddr.sun_path[0] = '\0'; \
+ 			strncpy (newaddr.sun_path + offset, new_path, sizeof (newaddr.sun_path) - offset); \
+ 			newaddr.sun_path[sizeof (newaddr.sun_path) - 1] = '\0'; \
+-			return_value = orig_##function_name (sockfd, (struct sockaddr*) &newaddr, \
++			return orig_##function_name (sockfd, (struct sockaddr*) &newaddr, \
+ 				offsetof (struct sockaddr_un, sun_path) + strlen(new_path) + offset); \
+-			free (new_path); \
+-			return return_value; \
+ 		} \
+ 		else { \
+ 			return orig_##function_name (sockfd, serv_addr, addrlen); \
+ 		} \
+ 	} else { \
+-	        if (UNLIKELY (!started)) start_up(); \
+ 		return orig_##function_name (sockfd, serv_addr, addrlen);  \
+ 	} \
+ }

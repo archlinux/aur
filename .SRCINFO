@@ -1,0 +1,19 @@
+pkgbase = libetc
+	pkgdesc = Automatically translate ~/.* to ~/.config/*
+	pkgver = 0.4
+	pkgrel = 4
+	url = http://ordiluc.net/fs/libetc/
+	install = libetc.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = make
+	source = http://ordiluc.net/fs/libetc/libetc-0.4.tar.gz
+	source = libetc-0.4-makefile.patch
+	source = libetc-0.4-firefox35.patch
+	md5sums = d72901834a7246c871f5985a30940f4c
+	md5sums = 9c06072dc4d817db25a6c83fe3071e8a
+	md5sums = fbe2dce5013d5d89b1d75387247618eb
+
+pkgname = libetc
+
