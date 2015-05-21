@@ -1,0 +1,10 @@
+service auth
+{
+        socket_type     = stream
+        protocol        = tcp
+        wait            = no
+        user            = nobody
+        server          = /usr/sbin/identd
+        disable         = yes
+        flags           = IPv6
+}
