@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-ros-core
 	pkgdesc = ROS - A metapackage to aggregate the packages required to use publish / subscribe, services, launch files, and other core ROS concepts.
-	pkgver = 1.1.3
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = http://www.ros.org/
 	arch = any
@@ -27,9 +27,8 @@ pkgbase = ros-indigo-ros-core
 	depends = ros-indigo-rosgraph-msgs
 	depends = ros-indigo-common-msgs
 	depends = ros-indigo-rospack
-	depends = ros-indigo-ros-tutorials
 	depends = ros-indigo-rosbag-migration-rule
-	source = ros_core::git+https://github.com/ros-gbp/metapackages-release.git#tag=release/indigo/ros_core/1.1.3-0
+	source = ros_core::git+https://github.com/ros-gbp/metapackages-release.git#tag=release/indigo/ros_core/1.1.4-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-ros-core
