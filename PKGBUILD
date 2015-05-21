@@ -1,7 +1,7 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=slade-git
-pkgver=3.1.0_b4.r142.gfed50b8
+pkgver=3.1.0.2.r20.g172b236
 pkgrel=1
 pkgdesc="SLADE3 Doom editor."
 arch=('i686' 'x86_64')
@@ -28,10 +28,6 @@ build() {
         .
   make
 
-  pushd dist/res
-  zip -r ../slade.pk3 *
-  popd
-
   convert "slade.ico[0]" slade.png
 }
 
@@ -39,7 +35,7 @@ package() {
   cd slade
 
   install -Dm755 slade "$pkgdir/usr/bin/slade"
-  install -Dm644 dist/slade.pk3 "$pkgdir/usr/share/slade3/slade.pk3"
+  install -Dm644 slade.pk3 "$pkgdir/usr/share/slade3/slade.pk3"
 
   install -Dm644 slade.png "$pkgdir/usr/share/pixmaps/slade.png"
   install -Dm644 "$srcdir/slade.desktop" "$pkgdir/usr/share/applications/slade.desktop"
