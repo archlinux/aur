@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_action provides a feature to introspect all available ROS act
 url='http://ros.org/wiki/rqt_action'
 
 pkgname='ros-indigo-rqt-action'
-pkgver='0.3.10'
+pkgver='0.3.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
