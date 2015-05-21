@@ -1,39 +1,39 @@
 pkgbase = ros-indigo-geometric-shapes
 	pkgdesc = ROS - This package contains generic definitions of geometric shapes and bodies.
-	pkgver = 0.4.1
-	pkgrel = 2
+	pkgver = 0.4.3
+	pkgrel = 1
 	url = http://ros.org/wiki/geometric_shapes
 	arch = any
 	license = BSD
 	makedepends = cmake
 	makedepends = git
 	makedepends = ros-build-tools
-	makedepends = ros-indigo-shape-tools
+	makedepends = ros-indigo-shape-msgs
 	makedepends = ros-indigo-random-numbers
 	makedepends = ros-indigo-resource-retriever
 	makedepends = ros-indigo-eigen-stl-containers
 	makedepends = ros-indigo-catkin
-	makedepends = ros-indigo-shape-msgs
 	makedepends = ros-indigo-cmake-modules
 	makedepends = ros-indigo-octomap
+	makedepends = ros-indigo-visualization-msgs
 	makedepends = qhull
 	makedepends = assimp
 	makedepends = eigen3
 	makedepends = boost
 	makedepends = console-bridge
 	makedepends = pkg-config
-	depends = ros-indigo-shape-tools
+	depends = ros-indigo-shape-msgs
 	depends = ros-indigo-random-numbers
 	depends = ros-indigo-resource-retriever
 	depends = ros-indigo-eigen-stl-containers
-	depends = ros-indigo-shape-msgs
 	depends = ros-indigo-octomap
+	depends = ros-indigo-visualization-msgs
 	depends = assimp
 	depends = boost
 	depends = eigen3
 	depends = console-bridge
 	depends = qhull
-	source = geometric_shapes::git+https://github.com/ros-gbp/geometric_shapes-release.git#tag=release/indigo/geometric_shapes/0.4.1-0
+	source = geometric_shapes::git+https://github.com/ros-gbp/geometric_shapes-release.git#tag=release/indigo/geometric_shapes/0.4.3-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-geometric-shapes
