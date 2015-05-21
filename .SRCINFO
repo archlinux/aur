@@ -8,7 +8,7 @@ pkgbase = pymbtag
 	depends = python2
 	depends = mutagen
 	depends = python2-musicbrainz2
-	source = https://mortzu.de/files/aur/pymbtag/pymbtag-0.1.6.tar.gz
+	source = https://mortzu.de/files/aur/pymbtag/pymbtag-0.1.6.tar.bz2
 	md5sums = 540defe831fb5baa3ba9b6904f4955ac
 
 pkgname = pymbtag
