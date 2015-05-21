@@ -3,7 +3,7 @@
 
 _pkgname=ewebkit
 pkgname=$_pkgname-svn
-pkgver=1.11.0.r184205
+pkgver=1.11.0.r184646
 pkgrel=1
 pkgdesc="WebKit ported to the Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64')
@@ -13,10 +13,8 @@ depends=('atk' 'cairo' 'efl' 'enchant' 'espeak' 'geoclue2' 'harfbuzz-icu' 'libxs
 makedepends=('cmake' 'subversion' 'perl' 'python2' 'ruby' 'gperf')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("$pkgname/Source::svn+https://svn.webkit.org/repository/webkit/trunk/Source"
-        'fix_libXext_linking.patch')
-sha256sums=('SKIP'
-            'cbed18fde023d83cf810a31c6b77aab2247d78481cbbd264144f6bf5f6e5126c')
+source=("$pkgname/Source::svn+https://svn.webkit.org/repository/webkit/trunk/Source")
+sha256sums=('SKIP')
 
 pkgver() {
   cd Source/cmake
@@ -31,11 +29,6 @@ pkgver() {
 prepare() {
 # Turn off -Werror, causes too many build failures for things we don't care about
   sed -i '/-Werror/d' Source/cmake/WebKitHelpers.cmake
-
-# Let the linker find libXext for WebKit2
-  cd "$srcdir/Source"
-  svn revert WebKit2/PlatformEfl.cmake
-  patch -Np1 -i ../fix_libXext_linking.patch
 
 # Get CMakeLists.txt from SVN root
   cd "$SRCDEST"
