@@ -1,0 +1,12 @@
+[Unit]
+Description=Synchronizing key server recon instance
+After=network.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=simple
+User=sks
+PIDFile=/var/run/sks/sksrecon.pid
+ExecStart=/usr/bin/sks recon
+
+[Install]
+WantedBy=multi-user.target

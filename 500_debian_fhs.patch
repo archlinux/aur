@@ -1,0 +1,113 @@
+diff -ru sks-1.1.4/common.ml sks-1.1.4.new/common.ml
+--- sks-1.1.4/common.ml	2012-10-07 19:59:39.000000000 +0000
++++ sks-1.1.4.new/common.ml	2013-02-05 14:58:40.000000000 +0000
+@@ -93,7 +93,7 @@
+ 
+ let set_logfile extension =
+   if !Settings.filelog then
+-    let fname = (Filename.concat !Settings.basedir extension) ^ ".log" in
++    let fname = (Filename.concat !Settings.basedir "/var/log/sks/") ^ extension ^ ".log" in
+     stored_logfile_name := Some fname;
+     logfile := open_out_gen [ Open_wronly; Open_creat; Open_append; ]
+       0o600 fname;
+@@ -221,8 +221,8 @@
+ let recon_address = !Settings.recon_address
+ let http_port = !Settings.hkp_port
+ let http_address = !Settings.hkp_address
+-let db_command_name = Filename.concat !Settings.basedir "db_com_sock"
+-let recon_command_name = Filename.concat !Settings.basedir "recon_com_sock"
++let db_command_name = Filename.concat !Settings.basedir "/var/run/sks/db_com_sock"
++let recon_command_name = Filename.concat !Settings.basedir "/var/run/sks/recon_com_sock"
+ 
+ let db_command_addr = Unix.ADDR_UNIX db_command_name
+ let recon_command_addr = Unix.ADDR_UNIX recon_command_name
+diff -ru sks-1.1.4/dbserver.ml sks-1.1.4.new/dbserver.ml
+--- sks-1.1.4/dbserver.ml	2012-10-07 19:59:39.000000000 +0000
++++ sks-1.1.4.new/dbserver.ml	2013-02-05 14:58:40.000000000 +0000
+@@ -406,7 +406,7 @@
+ 
+   let convert_web_fname fname =
+     if verify_web_fname fname then
+-      Filename.concat !Settings.basedir (Filename.concat "web" fname)
++      Filename.concat !Settings.basedir (Filename.concat "/var/lib/sks/www" fname)
+     else raise (Wserver.Misc_error "Malformed requst")
+ 
+   let supported_extensions =
+diff -ru sks-1.1.4/getfileopts.ml sks-1.1.4.new/getfileopts.ml
+--- sks-1.1.4/getfileopts.ml	2012-10-07 19:59:39.000000000 +0000
++++ sks-1.1.4.new/getfileopts.ml	2013-02-05 14:58:40.000000000 +0000
+@@ -110,7 +110,7 @@
+ (**************************************************************)
+ (**************************************************************)
+ 
+-let config_fname = "sksconf"
++let config_fname = "/etc/sks/sksconf"
+ 
+ let parse args =
+   Arg.current := 0;
+diff -ru sks-1.1.4/reconserver.ml sks-1.1.4.new/reconserver.ml
+--- sks-1.1.4/reconserver.ml	2012-10-07 19:59:39.000000000 +0000
++++ sks-1.1.4.new/reconserver.ml	2013-02-05 14:58:40.000000000 +0000
+@@ -192,7 +192,7 @@
+         let elements = ZSet.elements results in
+         let hashes = hashconvert elements in
+         print_hashes (sockaddr_to_string http_addr) hashes;
+-        log_diffs (sprintf "diff-%s.txt" (sockaddr_to_name http_addr)) hashes;
++        log_diffs (sprintf "/var/spool/sks/diff-%s.txt" (sockaddr_to_name http_addr)) hashes;
+         if List.length elements > 0
+         then
+           begin
+@@ -229,7 +229,7 @@
+         plerror 4 "Reconciliation complete";
+         let hashes = hashconvert results in
+         print_hashes (sockaddr_to_string http_addr) hashes;
+-        log_diffs (sprintf "diff-%s.txt" (sockaddr_to_name http_addr)) hashes;
++        log_diffs (sprintf "/var/spool/sks/diff-%s.txt" (sockaddr_to_name http_addr)) hashes;
+         match results with
+             [] -> []
+           | _ ->
+diff -ru sks-1.1.4/settings.ml sks-1.1.4.new/settings.ml
+--- sks-1.1.4/settings.ml	2012-10-07 19:59:39.000000000 +0000
++++ sks-1.1.4.new/settings.ml	2013-02-05 14:58:40.000000000 +0000
+@@ -200,7 +200,7 @@
+ let command_timeout = ref 60
+ let set_command_timeout value = command_timeout := value
+ 
+-let sendmail_cmd = ref "sendmail -t -oi"
++let sendmail_cmd = ref "/usr/lib/sendmail -t -oi"
+ let set_sendmail_cmd value = sendmail_cmd := value
+ 
+ let membership_reload_time = ref (60. *. 60. *. 6.)
+@@ -226,15 +226,15 @@
+ 
+ let use_stdin = ref false
+ 
+-let basedir = ref "."
++let basedir = ref ""
+ 
+-let base_dbdir = "KDB"
+-let base_ptree_dbdir = "PTree"
+-let base_membership_file = "membership"
+-let base_mailsync_file = "mailsync"
+-let base_dumpdir = "dump"
+-let base_msgdir = "messages"
+-let base_failed_msgdir = "failed_messages"
++let base_dbdir = "/var/lib/sks/DB"
++let base_ptree_dbdir = "/var/lib/sks/PTree"
++let base_membership_file = "/etc/sks/membership"
++let base_mailsync_file = "/etc/sks/mailsync"
++let base_dumpdir = "/var/lib/sks/dump"
++let base_msgdir = "/var/spool/sks/messages"
++let base_failed_msgdir = "/var/spool/sks/failed_messages"
+ 
+ let dbdir = lazy (Filename.concat !basedir base_dbdir)
+ let ptree_dbdir = lazy (Filename.concat !basedir base_ptree_dbdir)
+@@ -290,7 +290,7 @@
+     ("-hkp_address",Arg.String set_hkp_address, " Set hkp binding address");
+     ("-use_port_80",Arg.Set use_port_80,
+      " Have the HKP interface listen on port 80, as well as the hkp_port");
+-    ("-basedir", Arg.Set_string basedir, " Base directory");
++    ("-basedir", Arg.Set_string basedir, " Base directory (Take special care if running the Debian package!)");
+     ("-stdoutlog", Arg.Clear filelog,
+      " Send log messages to stdout instead of log file");
+     ("-diskptree", Arg.Set disk_ptree,

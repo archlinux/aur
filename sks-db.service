@@ -1,0 +1,12 @@
+[Unit]
+Description=Synchronizing key server db instance
+After=network.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=simple
+User=sks
+PIDFile=/var/run/sks/sksdb.pid
+ExecStart=/usr/bin/sks db
+
+[Install]
+WantedBy=multi-user.target

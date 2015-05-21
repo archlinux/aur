@@ -1,0 +1,40 @@
+post_install() {
+  echo -n "adding sks system group... "
+  groupadd -r sks && echo -n "done."
+  echo
+
+  echo -n "adding sks system user... "
+  useradd -c "Synchronizing OpenPGP Key Server" -r -d /var/lib/sks -g sks -s /bin/bash sks && echo -n "done."
+  echo
+
+  mkdir -p /var/run/sks
+  chown sks:sks /var/run/sks
+  chmod 775 /var/run/sks
+
+  mkdir -p /var/log/sks
+  chown sks:sks /var/log/sks
+
+  mkdir -p /var/lib/sks
+  chown sks:sks /var/lib/sks
+
+  mkdir -p /var/spool/sks
+  chown sks:sks /var/spool/sks
+
+  echo ">> Place 'sks' in DAEMONS= in /etc/rc.conf to enable sks on system boot."
+}
+
+post_remove() {
+  echo -n -e "\nremoving sks system user... "
+  userdel sks && echo "done."
+ 
+  rm -r /var/run/sks
+ 
+  echo "Not removing tmp and log directories"
+}
+
+op=$1
+shift
+
+$op $*
+
+# vim: ft=sh ts=2 sw=2

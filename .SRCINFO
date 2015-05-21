@@ -1,0 +1,28 @@
+pkgbase = sks
+	pkgdesc = Synchronizing OpenPGP Key Server
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://bitbucket.org/skskeyserver/sks-keyserver/
+	install = sks.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = ocaml
+	makedepends = db
+	backup = etc/sks/sksconf
+	backup = etc/sks/forward.exim
+	backup = etc/sks/forward.postfix
+	backup = etc/sks/mailsync
+	backup = etc/sks/membership
+	backup = etc/sks/procmail
+	source = https://bitbucket.org/skskeyserver/sks-keyserver/downloads/sks-1.1.5.tgz
+	source = 500_debian_fhs.patch
+	source = sks-db.service
+	source = sks-recon.service
+	md5sums = 60bb0ce429e5d223fd4662c286f46e7b
+	md5sums = 9cf5495b95e84ed91788c04c9ce1b8c1
+	md5sums = e8c7dcbb7db3ad879d391a7c0127a068
+	md5sums = f28a2d0b151996a99bb006b8e1d29408
+
+pkgname = sks
+
