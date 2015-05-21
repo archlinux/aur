@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_tf_tree provides a GUI plugin for visualizing the ROS TF fram
 url='http://ros.org/wiki/rqt_tf_tree'
 
 pkgname='ros-indigo-rqt-tf-tree'
-pkgver='0.4.0'
+pkgver='0.4.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
