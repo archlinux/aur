@@ -4,7 +4,7 @@ pkgdesc="ROS - A set of message filters which take in messages and may output th
 url='http://ros.org/wiki/message_filters'
 
 pkgname='ros-indigo-message-filters'
-pkgver='1.11.11'
+pkgver='1.11.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
