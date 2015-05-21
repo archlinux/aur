@@ -4,10 +4,10 @@ pkgdesc="ROS - qt_gui provides the infrastructure for an integrated graphical us
 url='http://ros.org/wiki/qt_gui'
 
 pkgname='ros-indigo-qt-gui'
-pkgver='0.2.26'
+pkgver='0.2.27'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
@@ -46,6 +46,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
