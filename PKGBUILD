@@ -5,7 +5,7 @@ pkgdesc='Natural Scrolling application'
 arch=('x86_64' 'i686')
 url='https://github.com/cemmanouilidis/naturalscrolling'
 license=('GPL3')
-depends=('python2' 'python-distutils-extra')
+depends=('python2' 'python2-distutils-extra')
 source=('git+https://github.com/cemmanouilidis/naturalscrolling.git')
 sha256sums=('SKIP')
 

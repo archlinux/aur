@@ -7,7 +7,7 @@ pkgbase = naturalscrolling
 	arch = i686
 	license = GPL3
 	depends = python2
-	depends = python-distutils-extra
+	depends = python2-distutils-extra
 	source = git+https://github.com/cemmanouilidis/naturalscrolling.git
 	sha256sums = SKIP
 
