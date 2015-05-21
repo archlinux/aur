@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-image-transport-plugins
 	pkgdesc = ROS - A set of plugins for publishing and subscribing to sensor_msgs/Image topics in representations other than raw pixel data.
-	pkgver = 1.9.1
+	pkgver = 1.9.2
 	pkgrel = 1
 	url = http://www.ros.org/wiki/image_transport_plugins
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = ros-indigo-image-transport-plugins
 	depends = ros-indigo-compressed-depth-image-transport
 	depends = ros-indigo-theora-image-transport
 	depends = ros-indigo-compressed-image-transport
-	source = image_transport_plugins::git+https://github.com/ros-gbp/image_transport_plugins-release.git#tag=release/indigo/image_transport_plugins/1.9.1-0
+	source = image_transport_plugins::git+https://github.com/ros-gbp/image_transport_plugins-release.git#tag=release/indigo/image_transport_plugins/1.9.2-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-image-transport-plugins
