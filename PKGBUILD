@@ -4,10 +4,10 @@ pkgdesc="ROS - This package contains a class for converting from a 2D laser scan
 url='http://ros.org/wiki/laser_geometry'
 
 pkgname='ros-indigo-laser-geometry'
-pkgver='1.6.3'
+pkgver='1.6.4'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-roscpp
