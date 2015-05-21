@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-rqt-graph
 	pkgdesc = ROS - rqt_graph provides a GUI plugin for visualizing the ROS computation graph.
-	pkgver = 0.3.10
+	pkgver = 0.3.11
 	pkgrel = 1
 	url = http://ros.org/wiki/rqt_graph
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = ros-indigo-rqt-graph
 	depends = ros-indigo-rosnode
 	depends = ros-indigo-rosgraph-msgs
 	depends = python2-rospkg
-	source = rqt_graph::git+https://github.com/ros-gbp/rqt_common_plugins-release.git#tag=release/indigo/rqt_graph/0.3.10-0
+	source = rqt_graph::git+https://github.com/ros-gbp/rqt_common_plugins-release.git#tag=release/indigo/rqt_graph/0.3.11-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-rqt-graph

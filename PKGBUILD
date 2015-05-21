@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_graph provides a GUI plugin for visualizing the ROS computati
 url='http://ros.org/wiki/rqt_graph'
 
 pkgname='ros-indigo-rqt-graph'
-pkgver='0.3.10'
+pkgver='0.3.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
