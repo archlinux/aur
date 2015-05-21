@@ -1,0 +1,13 @@
+pkgbase = fcgi-cgi
+	pkgdesc = FastCGI application to run cgi applications
+	pkgver = 0.2.2.r0.g42b7646
+	pkgrel = 1
+	url = http://cgit.stbuehler.de/gitosis/fcgi-cgi/
+	arch = any
+	license = MIT
+	makedepends = libev
+	source = git://git.lighttpd.net/fcgi-cgi.git
+	md5sums = SKIP
+
+pkgname = fcgi-cgi
+
