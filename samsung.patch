@@ -1,0 +1,22 @@
++++ coherence/upnp/core/DIDLLite.py	2010-10-24 16:09:53.218250816 -0700
+@@ -190,6 +190,10 @@
+         additional_info = ['*']
+     if content_format == 'video/x-ms-wmv':
+         additional_info = ['DLNA.ORG_PN=WMV_BASE']+simple_dlna_tags
++    if content_format in ['video/avi', 'video/divx']: 
++        additional_info = ['DLNA.ORG_PN=AVI']+simple_dlna_tags 
++    if content_format == 'video/quicktime': 
++        additional_info = ['DLNA.ORG_PN=QUICKTIME']+simple_dlna_tags
+     if content_format == '*':
+         additional_info = simple_dlna_tags
+ 
++++ coherence/backends/fs_storage.py	2010-10-21 21:55:10.814224348 -0700
+@@ -24,7 +24,7 @@
+ mimetypes.add_type('video/mpegts', '.ts')
+ mimetypes.add_type('video/divx', '.divx')
+ mimetypes.add_type('video/divx', '.avi')
+-mimetypes.add_type('video/x-matroska', '.mkv')
++mimetypes.add_type('video/mpeg', '.mkv')
+ 
+ from urlparse import urlsplit
+ 

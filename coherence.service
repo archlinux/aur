@@ -1,0 +1,11 @@
+[Unit]
+Description=coherence
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/coherence -d -c /etc/coherence.conf
+PIDFile=/run/coherence.pid
+
+[Install]
+WantedBy=multi-user.target
