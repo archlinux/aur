@@ -4,10 +4,10 @@ pkgdesc="ROS - rqt_common_plugins metapackage provides ROS backend graphical too
 url='http://ros.org/wiki/rqt_common_plugins'
 
 pkgname='ros-indigo-rqt-common-plugins'
-pkgver='0.3.10'
+pkgver='0.3.11'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
@@ -26,7 +26,7 @@ ros_depends=(ros-indigo-rqt-top
   ros-indigo-rqt-console
   ros-indigo-rqt-logger-level
   ros-indigo-rqt-bag-plugins
-  #ros-indigo-rqt-plot
+  ros-indigo-rqt-plot
   ros-indigo-rqt-service-caller
   ros-indigo-rqt-reconfigure
   ros-indigo-rqt-graph
