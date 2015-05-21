@@ -1,0 +1,30 @@
+pkgbase = calendarserver
+	pkgdesc = standalone CalDAV server
+	pkgver = 6.0
+	pkgrel = 1
+	url = http://calendarserver.org/
+	install = calendarserver.install
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = subversion
+	makedepends = curl
+	depends = glibc
+	depends = python2-twisted
+	depends = python2-zope-interface
+	depends = python2-vobject
+	depends = python2-pyopenssl
+	depends = python2-pyflakes
+	depends = krb5
+	depends = python2-memcached
+	depends = memcached
+	depends = postgresql
+	backup = etc/caldavd/caldavd-dev.plist
+	backup = etc/caldavd/auth/accounts.xml
+	source = calendarserver::svn+http://svn.calendarserver.org/repository/calendarserver/CalendarServer/tags/release/CalendarServer-6.0
+	source = caldavd.plist
+	md5sums = SKIP
+	md5sums = 6760eb45c54a5c40575fac82a02c8b00
+
+pkgname = calendarserver
+

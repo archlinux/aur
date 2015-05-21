@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Copyright (c) 2006-2007 Apple Inc. All rights reserved.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+  -->
+
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+
+    <!--
+        Public network address information
+
+        This is the server's public network address, which is provided to
+        clients in URLs and the like.  It may or may not be the network
+        address that the server is listening to directly, though it is by
+        default.  For example, it may be the address of a load balancer or
+        proxy which forwards connections to the server.
+      -->
+
+    <!-- Network host name [empty = system host name] -->
+    <key>ServerHostName</key>
+    <string></string> <!-- The hostname clients use when connecting -->
+
+    <!-- HTTP port [0 = disable HTTP] -->
+    <key>HTTPPort</key>
+    <integer>8008</integer>
+
+    <!-- SSL port [0 = disable HTTPS] -->
+    <!-- (Must also configure SSLCertificate and SSLPrivateKey below) -->
+    <!--
+    <key>SSLPort</key>
+    <integer>443</integer>
+    -->
+
+    <!-- Redirect non-SSL ports to an SSL port (if configured for SSL) -->
+    <key>RedirectHTTPToHTTPS</key>
+    <false/>
+
+
+    <!--
+        Network address configuration information
+
+        This configures the actual network address that the server binds to.
+      -->
+
+    <!-- List of IP addresses to bind to [empty = all] -->
+    <key>BindAddresses</key>
+    <array>
+    </array>
+
+    <!-- List of port numbers to bind to for HTTP [empty = same as "Port"] -->
+    <key>BindHTTPPorts</key>
+    <array>
+    </array>
+
+    <!-- List of port numbers to bind to for SSL [empty = same as "SSLPort"] -->
+    <key>BindSSLPorts</key>
+    <array>
+    </array>
+
+
+    <!--
+        Data Store
+      -->
+
+    <!-- Data root -->
+    <key>DataRoot</key>
+    <string>/var/run/caldavd/</string>
+
+    <!-- Document root -->
+    <key>DocumentRoot</key>
+    <string>/var/spool/caldavd/</string>
+
+    <!-- Child aliases -->
+    <key>Aliases</key>
+    <dict>
+      <!--
+      <key>foo</key>
+      <dict>
+        <key>path</key>
+        <string>/path/to/foo</string>
+      </dict>
+       -->
+    </dict>
+
+    <!-- User quota (in bytes) -->
+    <key>UserQuota</key>
+    <integer>104857600</integer><!-- 100Mb -->
+
+    <!-- Attachment size limit (in bytes) -->
+    <key>MaximumAttachmentSize</key>
+    <integer>1048576</integer><!-- 1Mb -->
+
+    <!-- Maximum number of unique attendees per entire event -->
+    <!-- 0 for no limit -->
+    <key>MaxAttendeesPerInstance</key>
+    <integer>100</integer>
+
+    <!-- Maximum number of instances allowed for a single RRULE -->
+    <!-- 0 for no limit -->
+    <key>MaxInstancesForRRULE</key>
+    <integer>400</integer>
+
+
+    <!--
+        Directory service
+
+        A directory service provides information about principals (eg.
+        users, groups, locations and resources) to the server.
+
+        A variety of directory services are available for use.
+      -->
+
+    <!-- XML File Directory Service -->
+    <key>DirectoryService</key>
+    <dict>
+      <key>type</key>
+      <string>twistedcaldav.directory.xmlfile.XMLDirectoryService</string>
+      
+      <key>params</key>
+      <dict>
+        <key>xmlFile</key>
+        <string>/etc/caldavd/auth/accounts.xml</string>
+      </dict>
+    </dict>
+    
+    <!-- Open Directory Service (Mac OS X) -->
+    <!--
+    <key>DirectoryService</key>
+    <dict>
+      <key>type</key>
+      <string>twistedcaldav.directory.appleopendirectory.OpenDirectoryService</string>
+      
+      <key>params</key>
+      <dict>
+        <key>node</key>
+        <string>/Search</string>
+        <key>restrictEnabledRecords</key>
+        <false/>
+        <key>restrictToGroup</key>
+        <string></string>
+        <key>cacheTimeout</key>
+        <integer>30</integer>
+      </dict>
+    </dict>
+     -->
+
+    <!--
+        Special principals
+
+        These principals are granted special access and/or perform
+        special roles on the server.
+      -->
+
+    <!-- Principals with "DAV:all" access (relative URLs) -->
+    <key>AdminPrincipals</key>
+    <array>
+      <!-- <string>/principals/__uids__/AEB68DD7-D2B8-4D4D-A574-2A4533DF36A4/</string> -->
+    </array>
+
+    <!-- Principals with "DAV:read" access (relative URLs) -->
+    <key>ReadPrincipals</key>
+    <array>
+      <!-- <string>/principals/__uids__/983C8238-FB6B-4D92-9242-89C0A39E5F81/</string> -->
+    </array>
+
+    <!-- Principals that can pose as other principals -->
+    <key>SudoersFile</key>
+    <string>/etc/caldavd/sudoers.plist</string>
+
+    <!-- Create "proxy access" principals -->
+    <key>EnableProxyPrincipals</key>
+    <true/>
+
+
+    <!--
+        Permissions
+      -->
+
+    <!-- Anonymous read access for root resource -->
+    <key>EnableAnonymousReadRoot</key>
+    <true/>
+
+    <!-- Anonymous read access for resource hierarchy -->
+    <key>EnableAnonymousReadNav</key>
+    <false/>
+
+    <!-- Enables directory listings for principals -->
+    <key>EnablePrincipalListings</key>
+    <false/>
+
+    <!-- Render calendar collections as a monolithic iCalendar object -->
+    <key>EnableMonolithicCalendars</key>
+    <true/>
+
+
+    <!--
+        Authentication
+      -->
+
+    <key>Authentication</key>
+    <dict>
+
+      <!-- Clear text; best avoided -->
+      <key>Basic</key>
+      <dict>
+        <key>Enabled</key>
+        <false/>
+      </dict>
+
+      <!-- Digest challenge/response -->
+      <key>Digest</key>
+      <dict>
+        <key>Enabled</key>
+        <true/>
+        <key>Algorithm</key>
+        <string>md5</string>
+        <key>Qop</key>
+        <string></string>
+      </dict>
+
+      <!-- Kerberos/SPNEGO -->
+      <key>Kerberos</key>
+      <dict>
+        <key>Disabled</key>
+        <true/>
+        <key>ServicePrincipal</key>
+        <string></string>
+      </dict>
+
+    </dict>
+
+
+    <!--
+        Logging
+      -->
+
+    <!-- Apache-style access log -->
+    <key>AccessLogFile</key>
+    <string>/var/log/caldavd/access.log</string>
+    <key>RotateAccessLog</key>
+    <true/>
+
+    <!-- Server activity log -->
+    <key>ErrorLogFile</key>
+    <string>/var/log/caldavd/error.log</string>
+
+    <!-- Log levels -->
+    <key>DefaultLogLevel</key>
+    <string>warn</string> <!-- debug, info, warn, error -->
+
+    <!-- Global server stats --> 
+    <key>GlobalStatsSocket</key> 
+    <string>/var/run/caldavd/caldavd-stats.sock</string> 
+
+    <!-- Server statistics file -->
+    <key>ServerStatsFile</key>
+    <string>/var/run/caldavd/caldavd/stats.plist</string>
+
+    <!-- Server process ID file -->
+    <key>PIDFile</key>
+    <string>/var/run/caldavd/caldavd.pid</string>
+
+
+    <!--
+        SSL/TLS
+      -->
+
+    <!-- Public key -->
+    <key>SSLCertificate</key>
+    <string>/etc/caldavd/cal.pem</string>
+
+    <!-- Private key -->
+    <key>SSLPrivateKey</key>
+    <string>/etc/caldavd/cal.key</string>
+
+
+    <!--
+        Process management
+      -->
+
+    <key>UserName</key>
+    <string>caldavd</string>
+
+    <key>GroupName</key>
+    <string>caldavd</string>
+
+    <key>ProcessType</key>
+    <string>Combined</string>
+
+    <key>MultiProcess</key>
+    <dict>
+      <key>ProcessCount</key>
+      <integer>0</integer> <!-- 0 = larger of: 4 or (2 * CPU count) -->
+    </dict>
+
+
+    <!--
+        Notifications
+      -->
+
+    <key>Notifications</key>
+    <dict>
+      <!-- Time spent coalescing notifications before delivery -->
+      <key>CoalesceSeconds</key>
+      <integer>3</integer>
+
+      <key>Services</key>
+      <dict>
+        <key>XMPPNotifier</key>
+        <dict>
+          <!-- XMPP notification service -->
+          <key>Service</key>
+          <string>twistedcaldav.notify.XMPPNotifierService</string>
+          <key>Enabled</key>
+          <false/>
+
+          <!-- XMPP host and port to contact -->
+          <key>Host</key>
+          <string>xmpp.host.name</string>
+          <key>Port</key>
+          <integer>5222</integer>
+
+          <!-- Jabber ID and password for the server -->
+          <key>JID</key>
+          <string>jid@xmpp.host.name/resource</string>
+          <key>Password</key>
+          <string>password_goes_here</string>
+
+          <!-- PubSub service address -->
+          <key>ServiceAddress</key>
+          <string>pubsub.xmpp.host.name</string>
+        </dict>
+      </dict>
+    </dict>
+
+
+    <!--
+        Server-to-server protocol
+      -->
+
+    <key>Scheduling</key>
+    <dict>
+
+      <!-- CalDAV protocol options -->
+      <key>CalDAV</key>
+      <dict>
+        <key>EmailDomain</key>
+        <string></string>
+        <key>HTTPDomain</key>
+        <string></string>
+        <key>AddressPatterns</key>
+        <array>
+        </array>
+      </dict>
+
+      <!-- iSchedule protocol options -->
+      <key>iSchedule</key>
+      <dict>
+        <key>Enabled</key>
+        <false/>
+        <key>AddressPatterns</key>
+        <array>
+        </array>
+        <key>Servers</key>
+        <string>/etc/caldavd/servertoserver.xml</string>
+      </dict>
+
+      <!-- iMIP protocol options -->
+      <key>iMIP</key>
+      <dict>
+        <key>Enabled</key>
+        <false/>
+        <key>MailGatewayServer</key>
+        <string>localhost</string>
+        <key>MailGatewayPort</key>
+        <integer>62310</integer>
+        <key>Sending</key>
+        <dict>
+          <key>Server</key>
+          <string></string>
+          <key>Port</key>
+          <integer>587</integer>
+          <key>UseSSL</key>
+          <true/>
+          <key>Username</key>
+          <string></string>
+          <key>Password</key>
+          <string></string>
+          <key>Address</key>
+          <string></string> <!-- Address email will be sent from -->
+        </dict>
+        <key>Receiving</key>
+        <dict>
+          <key>Server</key>
+          <string></string>
+          <key>Port</key>
+          <integer>995</integer>
+          <key>Type</key>
+          <string></string> <!-- Either "pop" or "imap" -->
+          <key>UseSSL</key>
+          <true/>
+          <key>Username</key>
+          <string></string>
+          <key>Password</key>
+          <string></string>
+          <key>PollingSeconds</key>
+          <integer>30</integer>
+        </dict>
+        <key>AddressPatterns</key>
+        <array>
+          <string>mailto:.*</string>
+        </array>
+      </dict>
+
+    </dict>
+
+
+    <!--
+        Free-busy URL protocol
+      -->
+
+    <key>FreeBusyURL</key>
+    <dict>
+      <key>Enabled</key>
+      <true/>
+      <key>TimePeriod</key>
+      <integer>14</integer>
+      <key>AnonymousAccess</key>
+      <false/>
+    </dict>
+
+
+    <!--
+        Non-standard CalDAV extensions
+      -->
+
+    <!-- Private Events -->
+    <key>EnablePrivateEvents</key>
+    <true/>
+
+
+    <!--
+        Miscellaneous items
+      -->
+
+    <!-- Web-based administration -->
+    <key>EnableWebAdmin</key>
+    <true/>
+
+    <key>Twisted</key>
+    <dict>
+	<key>twistd</key>
+	<string>/opt/caldavd/Twisted/bin/twistd</string>
+    </dict>
+
+    <key>PythonDirector</key>
+    <dict>
+        <key>pydir</key>
+	<string>/opt/caldavd/pydirector-1.0.0/pydir.py</string>
+	<key>ControlSocket</key>
+	<string>/var/run/caldavd/caldavd-pydir.sock</string>
+    </dict>
+
+    <key>ControlSocket</key>
+    <string>/var/run/caldavd/caldavd.socket</string>
+
+  </dict>
+</plist>

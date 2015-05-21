@@ -1,0 +1,31 @@
+post_install () {
+  echo -n "adding calendarserver system group... "
+  groupadd caldavd && echo -n "done."
+  echo
+
+  echo -n "adding calendarserver system user... "
+  useradd -c "calendarserver daemon" -d /var/spool/caldavd -g caldavd -s /bin/false caldavd && echo -n "done."
+  echo
+
+  passwd -l caldavd &>/dev/null
+
+  for dir in spool run log; do
+    mkdir -p /var/$dir/caldavd
+    chown caldavd:caldavd /var/$dir/caldavd
+  done
+
+  echo ">> You have to remount the filesystem which contains /var with user_xattr"
+  echo ">> Place 'calendarserver' in DAEMONS= in /etc/rc.conf to enable calendarserver on system boot."
+}
+
+post_remove() {
+  echo -n -e "\nremoving caldavd system user... "
+  userdel caldavd && echo "done."
+ 
+  echo "Not removing tmp and log directories"
+}
+
+op=$1
+shift
+$op $*
+	  

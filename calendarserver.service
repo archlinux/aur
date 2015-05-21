@@ -1,0 +1,11 @@
+[Unit]
+Description=standalone CalDAV server
+
+[Service]
+ExecStart=/usr/bin/syslogd --no-forward
+ExecReload=/bin/kill -HUP $MAINPID
+StandardOutput=null
+
+[Install]
+WantedBy=multi-user.target
+Alias=syslog.service
