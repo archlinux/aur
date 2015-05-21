@@ -13,14 +13,14 @@ options=('!strip' '!libtool')
 install=bin32-vmware-server-console.install
 noextract=(bin32-vmware-server-console-add-libs.tar.gz)
 source=(http://download3.vmware.com/software/vmserver/VMware-mui-${pkgver}-203137.tar.gz
-        https://mortzu.de/files/aur/bin32-vmware-server-console/vmware-server-console_1.0.8-intrepid-patch.tgz
-        https://mortzu.de/files/aur/bin32-vmware-server-console/bin32-vmware-server-console-add-libs.tar.gz
+        https://mortzu.de/files/aur/bin32-vmware-server-console/vmware-server-console_1.0.8-intrepid-patch.tar.xz
+        https://mortzu.de/files/aur/bin32-vmware-server-console/bin32-vmware-server-console-add-libs.tar.xz
         vmware-server-console.desktop
         wrapper-gtk24.patch
         wrapper-gtk24-2.patch)
 md5sums=('0f01e9bdeee3fa2aa84f87f66b69dc83'
-         '64b74873ab7d677db3a811642e0ae029'
-         '337555e917e817afda21b1615c52ab33'
+         'b8923f2ae7eb8729b9337e152c4ffcc2'
+         'ff02106a33ced366b54b5220e1212fb7'
          'd5f9319812fffe7bd832a64e1f333231'
          '444b6865f665813aaaf751c8ef0c7cd3'
          '1e69aaf7c72cf2347d8d552e2954f686')
@@ -70,7 +70,7 @@ package() {
 
   patch -Np1 -i "$srcdir/wrapper-gtk24-2.patch" -d "$pkgdir/usr/lib/vmware-server-console/lib"
 
-  tar -C "$pkgdir/usr/lib/vmware-server-console/lib" -xzf "$srcdir/bin32-vmware-server-console-add-libs.tar.gz"
+  tar -C "$pkgdir/usr/lib/vmware-server-console/lib" -xf "$srcdir/bin32-vmware-server-console-add-libs.tar.xz"
 
   rm -f $pkgdir/usr/bin/vmware-server-console.bkp
   rm -f $pkgdir/usr/lib/vmware-server-console/lib/wrapper-gtk24.sh.bkp
