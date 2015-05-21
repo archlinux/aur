@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_dep provides a GUI plugin for visualizing the ROS dependency 
 url='http://ros.org/wiki/rqt_dep'
 
 pkgname='ros-indigo-rqt-dep'
-pkgver='0.3.10'
+pkgver='0.3.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
