@@ -1,0 +1,31 @@
+diff -Naur totd-1.5.1/Makefile.in totd-1.5.1-new/Makefile.in
+--- totd-1.5.1/Makefile.in	2005-01-31 05:55:14.000000000 -0600
++++ totd-1.5.1-new/Makefile.in	2011-10-13 18:55:35.664818486 -0500
+@@ -12,14 +12,15 @@
+ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+ 
++DESTDIR=?
+ INSTALLDIR = @sbindir@
+ INSTALLLIB = @libdir@
+ INSTALLMAN = @mandir@
+ TOT_CONFIG_FILE=@sysconfdir@/totd.conf
+ 
+ INSTALL = /usr/bin/install
+ 
+-CFLAGS  = @CFLAGS@ @DEFS@  -Werror -Wall -DTOTCONF=\"$(TOT_CONFIG_FILE)\" @OPTFLAGS@ $(INCLUDEPATH)
++CFLAGS  = @CFLAGS@ @DEFS@  -Wall -DTOTCONF=\"$(TOT_CONFIG_FILE)\" @OPTFLAGS@ $(INCLUDEPATH)
+ 
+ # When debugging is enabled by --enable-malloc-debug flag to the configure
+ # script, the @DBMALLOC@ substitution will contain the empty string, thus
+@@ -66,8 +67,8 @@
+ 	-ranlib libswill.a
+ 
+ install: $(PROG)
+-	$(INSTALL) -c -s -m 0555 -o bin -g bin $(PROG) $(INSTALLDIR)
+-	$(INSTALL) -c -m 0444 -o root -g wheel $(MAN) $(INSTALLMAN)/man8
++	$(INSTALL) $(PROG) $(DESTDIR)$(INSTALLDIR)
++	$(INSTALL) $(MAN) $(DESTDIR)$(INSTALLMAN)/man8
+ 
+ lint:
+ 	lint ${SRCS}

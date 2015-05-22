@@ -1,0 +1,10 @@
+[Unit]
+Description=Trick Or Treat Daemon
+
+[Service]
+ExecStart=/usr/bin/totd -d1 -u totd -g totd -c /etc/totd.conf
+KillMode=process
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

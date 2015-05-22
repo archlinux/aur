@@ -1,0 +1,36 @@
+post_install() {
+  groupadd -g 111 totd
+  useradd -u 111 -g totd -d / -s /bin/false totd & > /dev/null
+
+  post_upgrade
+
+  echo "==> totd: "
+  echo "==> totd: Adjust /etc/totd.conf if you use other then"
+  echo "==> totd: locally binded DNS server - ie. 127.0.0.1:53"
+  echo "==> totd: "
+  echo "==> totd: TOTD uses UDPv6/TCPv6 port 5005 and runs uder"
+  echo "==> totd: separate totd user for security reasons."
+  echo "==> totd: If you would like to use TOTD directly as 'fake'"
+  echo "==> totd: DNS server for your LAN you have to setup some"
+  echo "==> totd: port-forwarding or other tricks because only root"
+  echo "==> totd: can bind ports <1024; ip6tables is not able to" 
+  echo "==> totd: do REDIRECT right now :("
+  echo "==> totd: "
+  echo "==> totd: Example with 'socat', child processes run under"
+  echo "==> totd: totd user."
+  echo "==> totd: "
+  echo "==> totd: # socat \\"
+  echo "==> totd: UDP6-LISTEN:ingress_ipv6:53,bind=[::1],reuseaddr,fork,su=totd \\"
+  echo "==> totd: UDP6:[::1]:5005,bind=[::1]"
+  echo "==> totd: "
+}
+
+post_upgrade() {
+  if [[ ! -d run/totd ]]; then
+    usr/bin/systemd-tmpfiles --create usr/lib/tmpfiles.d/totd.conf
+  fi
+}
+
+pre_remove() {
+  userdel totd & > /dev/null
+}

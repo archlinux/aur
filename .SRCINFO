@@ -1,0 +1,26 @@
+pkgbase = totd
+	pkgdesc = Totd (Trick Or Treat Daemon) is DNS-proxy for IPv4/IPv6 translation (DNS-ALG)
+	pkgver = 1.5.1
+	pkgrel = 7
+	url = http://www.dillema.net/software/totd.html
+	install = totd.install
+	arch = x86_64
+	arch = i686
+	groups = network
+	license = BSD
+	depends = glibc
+	optdepends = socat
+	backup = etc/totd.conf
+	source = http://www.dillema.net/software/totd/totd-1.5.1.tar.gz
+	source = Makefile.in.patch
+	source = totd.conf
+	source = totd.service
+	source = totd.tmpfiles
+	md5sums = 7edaedae9f6aca5912dd6c123582cf08
+	md5sums = d2700ca1d451747d937fd3c1a3cf465f
+	md5sums = ff07c559419f8b7ee05351182a140483
+	md5sums = 0ac3d9982a2c79842778bdb5fa60435f
+	md5sums = 07b927909c9c440f15552ddf1a5ff56e
+
+pkgname = totd
+
