@@ -10,12 +10,12 @@ depends=('glibc')
 optdepends=(socat)
 backup=(etc/totd.conf)
 install=totd.install
-source=("http://www.dillema.net/software/$pkgname/$pkgname-$pkgver.tar.gz"
+source=("https://mortzu.de/files/aur/$pkgname/$pkgname-$pkgver.tar.xz"
         Makefile.in.patch
         totd.conf
         totd.service
         totd.tmpfiles)
-md5sums=('7edaedae9f6aca5912dd6c123582cf08'
+md5sums=('f9689c681f8accd39179a8323cc0a182'
          'd2700ca1d451747d937fd3c1a3cf465f'
          'ff07c559419f8b7ee05351182a140483'
          '0ac3d9982a2c79842778bdb5fa60435f'
