@@ -7,7 +7,7 @@ url="http://cgit.stbuehler.de/gitosis/fcgi-cgi/"
 license=('MIT')
 source=('git://git.lighttpd.net/fcgi-cgi.git')
 md5sums=('SKIP')
-makedepends=('libev')
+depends=('libev')
 
 pkgver() {
   cd "$pkgname"

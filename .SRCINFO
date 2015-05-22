@@ -5,7 +5,7 @@ pkgbase = fcgi-cgi
 	url = http://cgit.stbuehler.de/gitosis/fcgi-cgi/
 	arch = any
 	license = MIT
-	makedepends = libev
+	depends = libev
 	source = git://git.lighttpd.net/fcgi-cgi.git
 	md5sums = SKIP
 
