@@ -1,20 +1,17 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
-# Old Maintainer: Ezekiel Sulastin <zekesulastin@gmail.com>
 
-# Warning: this package is BIG - 1.6 GiB for the GOG installer,
-#   2 GiB for the actual unpacked game data, and 2 GiB for
-#   the finished package if uncompressed.  mv is used over cp
-#   in the package phase to save a bit of space, but make sure
-#   there is enough room for everything.
+# WARNING: This package is very large.  It requires upwards 6 GiB of
+#   space to completely build, so make sure you have plenty of room
+#   where you do so.
 
 # This package preferentially uses GOG's installer, using the
 #   build function to extract the data.  Please ensure the
 #   file is available in the build directory via copy or
 #   symlink, i.e. ~/aur/fs2_open-data/setup_freespace_2.exe.
-#	If using a copy of the retail CD, follow the instructions
+#       If using a copy of the retail CD, follow the instructions
 #   from the website below to extract the data. Once extracted, place
 #   the data directly in the $builddir/src directory, i.e.
-#	~/aur/fs2_open-data/src/.
+#       ~/aur/fs2_open-data/src/.
 #   http://www.hard-light.net/wiki/index.php/Fs2_open_on_Linux/Acquiring_the_Game_Data
 
 # TODO: acquire copy of CDs to test, refine, and include CD installer
@@ -22,18 +19,12 @@
 
 pkgname=fs2_open-data
 pkgver=1.20
-pkgrel=5
-pkgdesc="Freespace 2 retail data for fs2_open"
+pkgrel=6
+pkgdesc="FreeSpace 2 retail data for fs2_open"
 arch=('any')
 url="http://www.gog.com/en/gamecard/freespace_2"
 license=('custom:freespace2')
-makedepends=('graphicsmagick' 'innoextract' 'p7zip' 'recode')
-
-# This package is about 2 GiB uncompressed and takes
-#	a while to recompress for not too much space savings;
-#	the following PKGEXT disables compression of the
-#	package.  Add .xz or similar to the end of PKGEXT
-#	to compress the package.
+makedepends=('icoutils' 'innoextract' 'recode')
 PKGEXT=".pkg.tar"
 
 prepare() {
@@ -41,7 +32,7 @@ prepare() {
   # but it's worth it to have the latest version.
   local _gog_md5="2870b98722a1e56a360e3a959019e678"
   local _gog_exe="setup_freespace2_2.0.0.8.exe"
-  if [[ -f ../$_gog_exe ]]; then
+  if [ -f ../$_gog_exe ]; then
     echo "GOG installer detected; checking md5sum ..."
     if ! echo "$_gog_md5 ../$_gog_exe" | md5sum -c --status; then
       error "Invalid md5sum; verify your download and try again."
@@ -50,7 +41,7 @@ prepare() {
       ln -s ../$_gog_exe .
       innoextract $_gog_exe
     fi
-  elif [[ -f readme.txt ]]; then
+  elif [ -f readme.txt ]; then
     echo "Retail CD files detected."
   else
     error "You must have either $_gog_exe or the extracted files\
@@ -62,12 +53,13 @@ prepare() {
 
   # Extract and convert the icon
   # Untested with the CD version
-  if [[ -f readme.txt ]]; then
-    7z e FreeSpace2.exe .rsrc/ICON/3.ico
+  if [ -f readme.txt ]; then
+    wrestool -x -t 14 -o . FreeSpace2.exe
   else
-    7z e app/FreeSpace2.exe .rsrc/ICON/3.ico
+    wrestool -x -t 14 -o . app/FreeSpace2.exe
   fi
-  gm convert 3.ico freespace2.png
+  icotool -x -i 3 -o . FreeSpace2.exe_14_128.ico
+  mv FreeSpace2.exe_14_128_3_48x48x8.png freespace2.png
 }
 
 package() {
