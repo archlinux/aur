@@ -5,9 +5,9 @@ pkgdesc="FastCGI application to run cgi applications"
 arch=('any')
 url="http://cgit.stbuehler.de/gitosis/fcgi-cgi/"
 license=('MIT')
+depends=('libev')
 source=('git://git.lighttpd.net/fcgi-cgi.git')
 md5sums=('SKIP')
-depends=('libev')
 
 pkgver() {
   cd "$pkgname"
