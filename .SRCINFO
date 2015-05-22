@@ -1,0 +1,22 @@
+pkgbase = gitlab-ci-runner
+	pkgdesc = Gitlab-CI runner
+	pkgver = 5.2.1
+	pkgrel = 1
+	url = https://github.com/gitlabhq/gitlab-ci-runner
+	install = gitlab-ci-runner.install
+	arch = any
+	license = GPL2
+	depends = ruby
+	depends = libxml2
+	depends = libxslt
+	depends = git
+	provides = gitlab-ci-runner
+	source = gitlab-ci-runner-5.2.1.tar.gz::https://gitlab.com/gitlab-org/gitlab-ci-runner/repository/archive.tar.gz?ref=v5.2.1
+	source = gitlab-ci-runner.service
+	source = gitlab-ci-runner.install
+	md5sums = 6cd87adb07405a2fa0acbefe31fef5c1
+	md5sums = af4748081599d3379ab63fb2f6e4e94f
+	md5sums = 6c24857d02eba34082ba0437daa6e91d
+
+pkgname = gitlab-ci-runner
+

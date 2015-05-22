@@ -1,0 +1,14 @@
+post_install() {
+	echo "You have to configure few things.
+Install the gems for the runner: 
+bundle install --deployment
+
+Setup the runner interactively:
+bundle exec ./bin/setup
+
+OR
+
+Setup the runner non-interactively:
+CI_SERVER_URL=https://ci.example.com REGISTRATION_TOKEN=replaceme bundle exec ./bin/setup"
+
+}

@@ -1,0 +1,22 @@
+#####################################################
+#
+# GitLab-CI-Runner version    : 5.x
+# Contributors                : imperial
+#####################################################
+
+[Unit]
+Description=GitLabCI Runner
+
+[Service]
+User=gitlab
+WorkingDirectory=/usr/share/webapps/gitlab-ci-runner
+#Environment=RAILS_ENV=production
+SyslogIdentifier=gitlab-ci-runner
+PIDFile=/var/run/gitlab-ci/runner.pid
+
+ExecStart=/usr/bin/bundle exec "/usr/share/webapps/gitlab-ci-runner/bin/runner"
+ExecStop=/usr/bin/kill -QUIT 
+ExecReload=/usr/bin/kill -USR2 
+
+[Install]
+WantedBy=gitlab.target
