@@ -1,40 +1,41 @@
-# Maintainer: David Roheim <david dot roheim at gmail dot com>
-# Contributer: Julien Nicoulaud <julien.nicoulaud@gmail.com>
-# Source: https://github.com/nicoulaj/archlinux-packages
+# Maintainer: Kevin Houdebert <kevin@qwazerty.eu>
+# Contributor: David Roheim <david dot roheim at gmail dot com>
+# Contributor: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 # TODO Add serverAgent stuff to the package.
 pkgname=jmeter-plugins
-pkgver=1.1.3
-_saver=2.2.1
+pkgver=1.2.1
+#_saver=2.2.1
 pkgrel=1
 pkgdesc="Custom set of plugins for Apache JMeter."
 arch=('x86_64' 'i686')
 url=http://jmeter-plugins.org/
 license=(APACHE)
+makedepends=('unzip')
 depends=('java-runtime>=6' 'jmeter>=2.10')
 optdepends=('zsh-completions: auto-completion for the jmeter-plugins command on Zsh')
-changelog=Changelog
 options=(!strip)
+
 _dl_url=http://jmeter-plugins.org/downloads/file
 source=(
   "${_dl_url}/JMeterPlugins-Standard-${pkgver}.zip"
-#  "${_dl_url}/ServerAgent-${_saver}.zip"
+# "${_dl_url}/ServerAgent-${_saver}.zip"
   "${_dl_url}/JMeterPlugins-Extras-${pkgver}.zip"
   "${_dl_url}/JMeterPlugins-ExtrasLibs-${pkgver}.zip"
-#  "${_dl_url}/JMeterPlugins-Hadoop-${pkgver}.zip"
-#  "${_dl_url}/JMeterPlugins-WebDriver-${pkgver}.zip"
+# "${_dl_url}/JMeterPlugins-Hadoop-${pkgver}.zip"
+# "${_dl_url}/JMeterPlugins-WebDriver-${pkgver}.zip"
 )
+sha256sums=('196948e10762f446c00f5e5ba89e474e933d270eff4d79a842b15e8ffb8cfb87'
+            '7d19e0b7a99fdc71db93a37383202e91a73f89fab59b0a87636b4c00436b9aa0'
+            'b32b9f96d93130250764868c5302def04c73db6466cb50c5834c0ab5c62a5557')
 
 noextract=(
   "JMeterPlugins-Standard-${pkgver}.zip"
-#  "ServerAgent-${_saver}.zip"
+# "ServerAgent-${_saver}.zip"
   "JMeterPlugins-Extras-${pkgver}.zip"
   "JMeterPlugins-ExtrasLibs-${pkgver}.zip"
-#  "JMeterPlugins-Hadoop-${pkgver}.zip"
-#  "JMeterPlugins-WebDriver-${pkgver}.zip"
+# "JMeterPlugins-Hadoop-${pkgver}.zip"
+# "JMeterPlugins-WebDriver-${pkgver}.zip"
 )
-sha256sums=('548f2949d8cdd8b5c571938eae260e36104a672f650aa53d766bc4df1325d28d'
-            '0b561399a79fdd6f080127a35c88ef2addfe97a8e40a23318d5f8e5ffb50f527'
-            'ff55f42ac166c24ab06330242a16eb24aabb62437fb215e9c04426ee8262d266')
 
 prepare() {
   rm -rf ${srcdir}/{Standard,Extras,ExtrasLibs,WebDriver,Hadoop,ServerAgent}
@@ -45,17 +46,12 @@ prepare() {
   unzip ${srcdir}/JMeterPlugins-Extras-${pkgver}.zip
   cd ${srcdir}/ExtrasLibs
   unzip ${srcdir}/JMeterPlugins-ExtrasLibs-${pkgver}.zip
-#  cd ${srcdir}/WebDriver
-#  unzip ${srcdir}/JMeterPlugins-WebDriver-${pkgver}.zip
-#  cd ${srcdir}/Hadoop
-#  unzip ${srcdir}/JMeterPlugins-Hadoop-${pkgver}.zip
-#  cd ${srcdir}/ServerAgent
-#  unzip ${srcdir}/ServerAgent-${_saver}.zip
-}
-
-build() {
-  #msg2 "Generate executable script for /usr/bin..."
-  true
+# cd ${srcdir}/WebDriver
+# unzip ${srcdir}/JMeterPlugins-WebDriver-${pkgver}.zip
+# cd ${srcdir}/Hadoop
+# unzip ${srcdir}/JMeterPlugins-Hadoop-${pkgver}.zip
+# cd ${srcdir}/ServerAgent
+# unzip ${srcdir}/ServerAgent-${_saver}.zip
 }
 
 package() {
@@ -70,47 +66,50 @@ package() {
 
   install -Dm644 ${srcdir}/ExtrasLibs/lib/ext/JMeterPlugins-ExtrasLibs.jar \
                  ${pkgdir}/opt/jmeter/lib/ext/JMeterPlugins-ExtrasLibs.jar
-  mv ${srcdir}/ExtrasLibs/lib/*.jar ${pkgdir}/opt/jmeter/lib/
 
-#  install -Dm644 ${srcdir}/WebDriver/lib/ext/JMeterPlugins-WebDriver.jar \
-#                 ${pkgdir}/opt/jmeter/lib/ext/JMeterPlugins-WebDriver.jar
-#  mv ${srcdir}/WebDriver/lib/*.jar ${pkgdir}/opt/jmeter/lib/
+# install -Dm644 ${srcdir}/WebDriver/lib/ext/JMeterPlugins-WebDriver.jar \
+#                ${pkgdir}/opt/jmeter/lib/ext/JMeterPlugins-WebDriver.jar
+# mv ${srcdir}/WebDriver/lib/*.jar ${pkgdir}/opt/jmeter/lib/
 
-#  install -Dm644 ${srcdir}/Hadoop/lib/ext/JMeterPlugins-Hadoop.jar \
-#                 ${pkgdir}/opt/jmeter/lib/ext/JMeterPlugins-Hadoop.jar
-#  mv ${srcdir}/Hadoop/lib/*.jar ${pkgdir}/opt/jmeter/lib/
+# install -Dm644 ${srcdir}/Hadoop/lib/ext/JMeterPlugins-Hadoop.jar \
+#                ${pkgdir}/opt/jmeter/lib/ext/JMeterPlugins-Hadoop.jar
+# mv ${srcdir}/Hadoop/lib/*.jar ${pkgdir}/opt/jmeter/lib/
 
-#  install -Dm644 ${srcdir}/ServerAgent/CMDRunner.jar  ${pkgdir}/opt/jmeter/lib/ext/CMDRunner.jar
-#  install -Dm644 ${srcdir}/ServerAgent/ServerAgent.jar  ${pkgdir}/opt/jmeter/lib/ext/ServerAgent.jar
-#  install -Dm755 ${srcdir}/ServerAgent/startAgent.sh  ${pkgdir}/opt/jmeter/lib/ext/startAgent.sh
-#  mv ${srcdir}/ServerAgent/lib/*.jar  ${pkgdir}/opt/jmeter/lib/
-#  if [ "$CTYPE" = "i686" ]; then
-#    mv ${srcdir}/ServerAgent/lib/libsigar-x86-linux.so ${pkgdir}/opt/jmeter/lib/
-#  else
-#    mv ${srcdir}/ServerAgent/lib/libsigar-amd64-linux.so ${pkgdir}/opt/jmeter/lib/
-#  fi
+# install -Dm644 ${srcdir}/ServerAgent/CMDRunner.jar \
+#                ${pkgdir}/opt/jmeter/lib/ext/CMDRunner.jar
+# install -Dm644 ${srcdir}/ServerAgent/ServerAgent.jar \
+#                ${pkgdir}/opt/jmeter/lib/ext/ServerAgent.jar
+# install -Dm755 ${srcdir}/ServerAgent/startAgent.sh \
+#                ${pkgdir}/opt/jmeter/lib/ext/startAgent.sh
+# mv ${srcdir}/ServerAgent/lib/*.jar ${pkgdir}/opt/jmeter/lib/
 
-#  rm ${pkgdir}/opt/jmeter/lib/logkit-2.0.jar
-#  rm ${pkgdir}/opt/jmeter/lib/xercesImpl-2.9.1.jar
+# if [ "$CTYPE" = "i686" ]; then
+#   mv ${srcdir}/ServerAgent/lib/libsigar-x86-linux.so ${pkgdir}/opt/jmeter/lib/
+# else
+#   mv ${srcdir}/ServerAgent/lib/libsigar-amd64-linux.so ${pkgdir}/opt/jmeter/lib/
+# fi
+
+# rm ${pkgdir}/opt/jmeter/lib/logkit-2.0.jar
+# rm ${pkgdir}/opt/jmeter/lib/xercesImpl-2.9.1.jar
 
   msg2 "Install documentation ..."
   install -Dm644 ${srcdir}/Standard/README ${pkgdir}/usr/share/doc/${pkgname}/README
   install -Dm644 ${srcdir}/Extras/README ${pkgdir}/usr/share/doc/${pkgname}/README_Extras
   install -Dm644 ${srcdir}/ExtrasLibs/README ${pkgdir}/usr/share/doc/${pkgname}/README_ExtrasLibs
-#  install -Dm644 ${srcdir}/WebDriver/README ${pkgdir}/usr/share/doc/${pkgname}/README_WebDriver
-#  install -Dm644 ${srcdir}/Hadoop/README ${pkgdir}/usr/share/doc/${pkgname}/README_Hadoop
+# install -Dm644 ${srcdir}/WebDriver/README ${pkgdir}/usr/share/doc/${pkgname}/README_WebDriver
+# install -Dm644 ${srcdir}/Hadoop/README ${pkgdir}/usr/share/doc/${pkgname}/README_Hadoop
 
   msg2 "Install licenses ..."
   install -Dm644 ${srcdir}/Standard/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
   install -Dm644 ${srcdir}/Extras/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE_Extras
   install -Dm644 ${srcdir}/ExtrasLibs/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE_ExtrasLibs
-  #install -Dm644 ${srcdir}/WebDriver/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE_WebDriver
-#  install -Dm644 ${srcdir}/Hadoop/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE_Hadoop
-#  install -Dm644 ${srcdir}/ServerAgent/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE_ServerAgent
+# install -Dm644 ${srcdir}/WebDriver/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE_WebDriver
+# install -Dm644 ${srcdir}/Hadoop/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE_Hadoop
+# install -Dm644 ${srcdir}/ServerAgent/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE_ServerAgent
 
   msg2 "Install executables ..."
   install -Dm755  ${srcdir}/Standard/lib/ext/JMeterPluginsCMD.sh ${pkgdir}/opt/jmeter/bin/JMeterPluginsCMD.sh
-#  install -Dm755  ${srcdir}/ServerAgent/startAgent.sh ${pkgdir}/opt/jmeter/bin/startAgent.sh
+# install -Dm755  ${srcdir}/ServerAgent/startAgent.sh ${pkgdir}/opt/jmeter/bin/startAgent.sh
 }
 
 # vim:set ts=2 sw=2 et:
