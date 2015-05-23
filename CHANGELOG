@@ -1,0 +1,8 @@
+2015.02.11: Fixed moar bugs! Gtk 3.14 now supported.
+2014.09.04: Fixed many bugs in Gtk 2 treeview, add Nemo theming, fixed Popover issues and added Budgie Desktop theming. Slight changed in menu colours.
+2014.08.04: Fixed bugs with Java app menus and distortion of insensitive menu items in Gtk2.
+2014.06.23: Hacky support for new aura-based Chrome.
+2014.05.10: Updated to Gtk 3.12 and added support for new Unity theming.
+2014.03.16: Fixed bugs in Chrome as well as other tweaks.
+2014.02.17: Tweaks and experimental Unity CSD support for Ubuntu 14.04
+2014.02.02: Fixed bugs with Firefox and tweaked Terminal.
