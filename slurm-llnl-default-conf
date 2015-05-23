@@ -1,0 +1,16 @@
+# Defaults for slurm initscript
+# sourced by /lib/systemd/system/slurm*.service
+# installed at /etc/default/slurm-llnl by the maintainer scripts
+#
+# This is a POSIX shell fragment
+#
+# Additional options that are passed to the slurmctld daemon
+#SLURMCTLD_OPTIONS=""
+
+
+# Additional options that are passed to the slurmd daemon
+#SLURMD_OPTIONS=""
+
+
+# Additional options that are passed to the slurmdbd daemon
+#SLURMDBD_OPTIONS=""
