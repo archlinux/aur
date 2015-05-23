@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/bunhere/elbow"
 license=('LGPL3')
 depends=('elementary' 'ewebkit')
-makedepends=('git')
+makedepends=('git' 'cmake')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("git://github.com/bunhere/elbow.git")
