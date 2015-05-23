@@ -2,7 +2,7 @@
 
 _pkgname=edgar
 pkgname=$_pkgname-git
-pkgver=0.2.0.r20.3375984
+pkgver=0.2.0.r27.4855de6
 pkgrel=1
 pkgdesc="Enlightenment module: Load Python gadgets"
 arch=('i686' 'x86_64')
@@ -36,11 +36,10 @@ build() {
 
   make
 
-  pushd GADGETS
+  cd GADGETS
   for _gadget in *; do
     make -C "$_gadget"
   done
-  popd
 }
 
 package() {
