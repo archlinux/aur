@@ -10,12 +10,12 @@
 
 pkgbase=mesa-git
 pkgname=('opencl-mesa-git' 'libva-mesa-driver-git' 'mesa-vdpau-git' 'mesa-git' 'mesa-libgl-git')
-pkgver=10.5.0_devel.67119
+pkgver=10.5.0_devel.67557
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('python2' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
              'libxshmfence' 'libxxf86vm'  'libxdamage' 'libvdpau' 'libva' 'wayland' 'elfutils' 'llvm'
-             'systemd' 'libomxil-bellagio' 'libclc' 'clang' 'git')
+             'systemd' 'libomxil-bellagio' 'libclc' 'clang' 'python2-mako' 'git')
 url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=('mesa::git://anongit.freedesktop.org/mesa/mesa#branch=master'
