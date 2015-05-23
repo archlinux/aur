@@ -1,6 +1,6 @@
 pkgbase = python-efl-git
 	pkgdesc = Python bindings for the Enlightenment Foundation Libraries - Development Version
-	pkgver = 1.13.0beta2.a809.8106e2b
+	pkgver = 1.14.0beta1.a914.9a19db3
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
@@ -9,9 +9,9 @@ pkgbase = python-efl-git
 	license = GPL3
 	makedepends = git
 	makedepends = cython
-	depends = elementary>=1.13.0beta2.
+	depends = elementary>=1.14.0beta1.
 	depends = python-dbus
-	provides = python-efl=1.13.0beta2.a809.8106e2b
+	provides = python-efl=1.14.0beta1.a914.9a19db3
 	conflicts = python-efl
 	source = git://git.enlightenment.org/bindings/python/python-efl.git
 	sha256sums = SKIP

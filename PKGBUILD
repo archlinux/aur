@@ -3,7 +3,7 @@
 _python=python
 _pkgname=python-efl
 pkgname=$_python-efl-git
-pkgver=1.13.0beta2.a809.8106e2b
+pkgver=1.14.0beta1.a914.9a19db3
 pkgrel=1
 pkgdesc="${_python^} bindings for the Enlightenment Foundation Libraries - Development Version"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ pkgver() {
   local v_ver=$($_python setup.py -V | sed 's/-//')
   [[ "$v_ver" =~ ".99a" ]] || v_ver="${v_ver}.a$(git rev-list --count HEAD)"
 
-  printf "$v_ver.$(git rev-parse --short HEAD)"
+  printf "%s.g%s" "$v_ver" "$(git rev-parse --short HEAD)"
 }
 
 build() {
