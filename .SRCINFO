@@ -20,8 +20,9 @@ pkgbase = ewebkit-svn
 	depends = enchant
 	depends = espeak
 	depends = gst-plugins-bad
-	depends = geoclue2
+	depends = geoclue
 	depends = harfbuzz-icu
+	depends = libsoup
 	depends = libxslt
 	provides = ewebkit=1.11.0.r184695
 	conflicts = ewebkit

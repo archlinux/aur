@@ -9,7 +9,7 @@ pkgdesc="WebKit ported to the Enlightenment Foundation Libraries - Development v
 arch=('i686' 'x86_64')
 url="http://trac.webkit.org/wiki/EFLWebKit"
 license=('LGPL2' 'LGPL2.1' 'BSD')
-depends=('atk' 'cairo' 'efl' 'enchant' 'espeak' 'gst-plugins-bad' 'geoclue2' 'harfbuzz-icu' 'libxslt')
+depends=('atk' 'cairo' 'efl' 'enchant' 'espeak' 'gst-plugins-bad' 'geoclue' 'harfbuzz-icu' 'libsoup' 'libxslt')
 makedepends=('cmake' 'subversion' 'perl' 'python2' 'ruby' 'gperf')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
