@@ -1,0 +1,17 @@
+pkgbase = pcs-git
+	pkgdesc = pacemaker corosync shell utility for cluster configuration
+	pkgver = r1281.8982045
+	pkgrel = 1
+	url = http://clusterlabs.org/
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = unzip
+	depends = glibc
+	depends = openssl
+	depends = python2
+	source = pcs-git::git+https://github.com/feist/pcs
+	md5sums = SKIP
+
+pkgname = pcs-git
+
