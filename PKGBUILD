@@ -1,19 +1,17 @@
-# Contributor: Doug Newgard <scimmia22 at outlook dot com>
+# Contributor: Doug Newgard <scimmia at archlinux dot info>
 # Contributor: fancris3 <fancris3 at aol.com>
 
 _pkgname=places
-pkgname=$_pkgname-git
-pkgver=0.19.r183.6d6a3ba
+pkgname=$_pkgname
+pkgver=0.19.r197.b736f06
 pkgrel=1
 pkgdesc="Enlightenment module: Manage the mounting of volumes"
 arch=('i686' 'x86_64')
 url="https://phab.enlightenment.org/w/emodules/places/"
 license=('MIT')
-depends=('enlightenment>=0.18.99' 'udisks')
+depends=('enlightenment<0.19.99' 'udisks')
 makedepends=('git')
-provides=("$_pkgname=$pkgver")
-conflicts=("$_pkgname")
-source=("git://git.enlightenment.org/enlightenment/modules/$_pkgname.git")
+source=("git://git.enlightenment.org/enlightenment/modules/$_pkgname.git#branch=enlightenment-0.19")
 sha256sums=('SKIP')
 
 pkgver() {
