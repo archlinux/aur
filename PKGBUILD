@@ -36,7 +36,7 @@ pkgver() {
 
   v_ver=$(awk -F , -v v_ver=$v_ver '/^AC_INIT/ {gsub(/v_ver/, v_ver); gsub(/[\[\] -]/, ""); print $2}' configure.ac)
 
-  printf "$v_ver.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  printf "%s.%s.g%s" "$v_ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
