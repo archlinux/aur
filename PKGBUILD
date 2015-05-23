@@ -7,10 +7,10 @@ pkgdesc="Drivers and libraries for the Xbox Kinect device on Linux"
 arch=('i686' 'x86_64')
 url="http://openkinect.org"
 license=('GPL')
-depends=('libusb' 'glu' 'freeglut' 'bash' 'python' 'cython')
-makedepends=('cmake' 'libxmu' 'python-numpy' 'python2')
+depends=('libusb' 'glu' 'freeglut' 'bash' 'python2')
+makedepends=('cmake' 'libxmu' 'python2-numpy')
 optdepends=('opencv: support for python demos'
-            'python-matplotlib: support for python demos')
+            'python2-matplotlib: support for python demos')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/OpenKinect/libfreenect/archive/v${pkgver}.tar.gz)
 md5sums=('4d683cffe79f741aeb777cacaa88fd44')
 sha256sums=('91af5c09b7eae217c4be69234ae5a6371f24da8ff6986f98c2db19f1993f2a71')
@@ -20,12 +20,13 @@ sha512sums=('26224a8d4cb0c57ce058754d691631fa14fe4547b3a6b9afbcc9b0fd29577e7b767
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  sed 's/systemupdate\/FFFE07DF00000001/Systemupdate\/FFFE07DF00000001/g' -i src/fwfetcher.py
+  sed 's/systemupdate\/FFFE07DF00000001/SystemUpdate\/FFFE07DF00000001/g' -i src/fwfetcher.py
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
     -DPROJECT_INCLUDE_INSTALL_DIR=/usr/include -DLIB_SUFFIX="" \
     -DBUILD_REDIST_PACKAGE=OFF \
     -DBUILD_OPENNI2_DRIVER=ON \
+    -DPYTHON_EXECUTABLE=/usr/bin/python2 \
     -DBUILD_PYTHON=ON .
 
   make
