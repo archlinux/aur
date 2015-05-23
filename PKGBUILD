@@ -4,7 +4,7 @@
 # Contributor: Sebastien Binet <binet@lblbox>
 
 pkgname=(pypy-pip pypy3-pip)
-pkgver=6.1.1
+pkgver=7.0.1
 pkgrel=1
 pkgdesc="The PyPA recommended tool for installing Python packages"
 url="https://pip.pypa.io/"
@@ -12,7 +12,7 @@ arch=('any')
 license=('MIT')
 makedepends=('pypy-setuptools' 'pypy3-setuptools') # pypy included in pypy-setuptools
 source=(http://pypi.python.org/packages/source/p/pip/pip-${pkgver}.tar.gz)
-sha256sums=('89f3b626d225e08e7f20d85044afa40f612eb3284484169813dc2d0631f2a556')
+sha256sums=('cfec177552fdd0b2d12b72651c8e874f955b4c62c1c2c9f2588cbdc1c0d0d416')
 
 executable_files=(
   __init__.py
