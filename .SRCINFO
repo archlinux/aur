@@ -1,0 +1,25 @@
+pkgbase = jmeter-plugins
+	pkgdesc = Custom set of plugins for Apache JMeter.
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = http://jmeter-plugins.org/
+	changelog = Changelog
+	arch = x86_64
+	arch = i686
+	license = APACHE
+	depends = java-runtime>=6
+	depends = jmeter>=2.10
+	optdepends = zsh-completions: auto-completion for the jmeter-plugins command on Zsh
+	noextract = JMeterPlugins-Standard-1.1.3.zip
+	noextract = JMeterPlugins-Extras-1.1.3.zip
+	noextract = JMeterPlugins-ExtrasLibs-1.1.3.zip
+	options = !strip
+	source = http://jmeter-plugins.org/downloads/file/JMeterPlugins-Standard-1.1.3.zip
+	source = http://jmeter-plugins.org/downloads/file/JMeterPlugins-Extras-1.1.3.zip
+	source = http://jmeter-plugins.org/downloads/file/JMeterPlugins-ExtrasLibs-1.1.3.zip
+	sha256sums = 548f2949d8cdd8b5c571938eae260e36104a672f650aa53d766bc4df1325d28d
+	sha256sums = 0b561399a79fdd6f080127a35c88ef2addfe97a8e40a23318d5f8e5ffb50f527
+	sha256sums = ff55f42ac166c24ab06330242a16eb24aabb62437fb215e9c04426ee8262d266
+
+pkgname = jmeter-plugins
+

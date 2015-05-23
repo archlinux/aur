@@ -1,0 +1,31 @@
+2014-02-27 David Roheim <david.roheim@gmail.com>
+
+        * 1.1.3-1 :
+        Updated to new version
+
+
+2014-01-09 David Roheim <david.roheim@gmail.com>
+
+	* 1.1.2-1 :
+	Updated to new version and added more plugins
+
+2012-01-17 Julien Nicoulaud <julien.nicoulaud@gmail.com>
+
+	* 0.5.1-2 :
+	Fix incorrect optdepends syntax.
+
+2011-12-26 Julien Nicoulaud <julien.nicoulaud@gmail.com>
+
+	* 0.5.0-1 :
+	New upstream release.
+
+2011-10-16 Julien Nicoulaud <julien.nicoulaud@gmail.com>
+
+	* 0.4.2-2 :
+	Fixed script not executable.
+
+2011-10-12 Julien Nicoulaud <julien.nicoulaud@gmail.com>
+
+	* 0.4.2-1 :
+	Initial release of the package.
+
