@@ -20,4 +20,7 @@ pkgver() {
 package() {
   cd "${srcdir}/${pkgname}"
   make DESTDIR=${pkgdir} install
+  mkdir -p ${pkgdir}/usr/bin
+  mv ${pkgdir}/usr/sbin/* ${pkgdir}/usr/bin/
+  rmdir ${pkgdir}/usr/sbin
 }
