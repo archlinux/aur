@@ -1,7 +1,7 @@
 # Maintainer: polyzen <polycitizen@gmail.com>
 
 pkgname=firefox-extension-noscript-dev
-pkgver=2.6.9.22rc1
+pkgver=2.6.9.23rc4
 pkgrel=1
 pkgdesc='Allows JavaScript, Java (and other plugins) only for trusted domains of your choice.'
 url=https://noscript.net
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('firefox')
 conflicts=('firefox-noscript')
 source=("https://secure.informaction.com/download/betas/noscript-$pkgver.xpi")
-sha256sums=('99ef7a533cc095dfeff2778e677191edce91dbf44f93ae879f24d6865820f234')
+sha256sums=('b8eb4255d75e1ff21e7e265e20d671647bca3ce92511f1338c7eafe24492f11b')
 
 package() {
   local GLOBIGNORE=*.xpi:GPL.txt
