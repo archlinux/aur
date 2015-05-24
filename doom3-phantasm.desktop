@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Doom 3 - Phantasm
+GenericName=
+Comment=Based on the Phantasm horror movies
+Icon=/opt/doom3/doom3.png
+Exec=/usr/bin/doom3-phantasm
+Terminal=false
+Categories=Game;ActionGame;

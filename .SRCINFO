@@ -1,0 +1,21 @@
+pkgbase = doom3-phantasm
+	pkgdesc = A Doom 3 mod based on the Phantasm horror movies
+	pkgver = 1.2
+	pkgrel = 5
+	url = http://doom3.filefront.com/file/Phantasm_D3;72040
+	arch = i686
+	arch = x86_64
+	license = custom:doom3-phantasm
+	makedepends = unzip
+	depends = doom3
+	source = ftp://files.mhgaming.com/doom3/mods/phantasm_d3_1.2.zip
+	source = http://ducttape.glenmurphy.com/ducttape0006.zip
+	source = doom3-phantasm.sh
+	source = doom3-phantasm.desktop
+	md5sums = e7ec9729b3a90e29b7ccdda94d9e3463
+	md5sums = b890d978f3bc5b5c8ecbe52e4934e368
+	md5sums = ccfbd73953c480c86bb0b2a6eef0f05f
+	md5sums = 0efbe5d6d7937f1bb275cc908e2ee361
+
+pkgname = doom3-phantasm
+
