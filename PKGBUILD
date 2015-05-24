@@ -1,11 +1,12 @@
-# Maintainer: Limao Luo <luolimao+AUR@gmail.com>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Limao Luo <luolimao+AUR@gmail.com>
 # Contributor: Devin Cofer <ranguvar@archlinux.us>
 # Contributor: Cainã Costa <sryche@archlinux-br.org>
 # Contributor: Patrick Bartels <p4ddy.b@gmail.com>
 
 pkgname=fluxbox-git
 pkgdesc="Lightweight stacking WM with tabbing, dockapps, etc."
-pkgver=1.3.5.182.g169d640
+pkgver=1.3.7.16.g69d1333
 pkgrel=1
 arch=(i686 x86_64)
 url=http://www.fluxbox.org/
@@ -25,7 +26,7 @@ sha512sums=('SKIP'
 
 pkgver() {
     cd $pkgname/
-    git describe | sed 's|Release-||;s|[_-]|.|g'
+    git describe --tags --long | sed 's|Release-||;s|[_-]|.|g'
 }
 
 build() {
