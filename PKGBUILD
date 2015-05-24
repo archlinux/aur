@@ -3,7 +3,7 @@
 pkgname=bitwig-studio-demo
 _pkgname=bitwig-studio
 pkgver=1.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Music production system for production, remixing and performance"
 arch=( 'x86_64' )
 url="http://www.bitwig.com"
@@ -44,7 +44,7 @@ package() {
 
   # Install icons
   mkdir -p $pkgdir/usr/share/pixmaps
-  install -m644 $pkgdir/usr/share/icons/gnome/48x48/apps/bitwig-studio.png \
+  install -m644 "$pkgdir/usr/share/icons/gnome/48x48/apps/Bitwig Studio.png" \
     $pkgdir/usr/share/pixmaps/
   mv $pkgdir/usr/share/icons/gnome $pkgdir/usr/share/icons/hicolor
 }
