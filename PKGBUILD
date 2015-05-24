@@ -2,7 +2,7 @@
 
 pkgname=fsport
 pkgver=3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The original FreeSpace campaigns ported to FreeSpace 2"
 arch=('any')
 url="http://fsport.hard-light.net/website/"
@@ -14,16 +14,18 @@ optdepends=('fs2_open-mediavps: Hi-res FS2 resources'
 source=(fsport.sh fsport.desktop LICENSE
         'http://fsport.freespacemods.net/releases/fsport3_5.7z'
         'http://fsport.freespacemods.net/releases/fsport-missions.7z'
-        'http://fsport.freespacemods.net/releases/sparky_hi_fs1.7z')
+        'http://fsport.freespacemods.net/releases/odeon_fs1.zip'
+        'http://fsport.freespacemods.net/releases/sparky_hi_fs1.7z'
+        'http://fsport.freespacemods.net/releases/stu_fs1.7z')
 sha256sums=('e443c079fe7c2bc6ed85028aa16cfe83d4b159511e83f0ae2448bb8f845e8b2f'
             'c7c64510205f78eabc4ff52fa134da7a0877e1a768253cd2e8de9c67af994f3e'
             '79462ffe82b8cf371f37a3444a8e17165d293e797a865b9c4312f86d00ddf4ec'
             '6af05e1ac58aeecb6e61cb3f9dd5e72499f59b1c577e78a78c537928a6f8319b'
             '13c5d2f78c72d6f6acf1dcc1009467c9627fe1378f5e5097c63802dce236c658'
-            '6a202a6d954fcc52c0483d2b532cef1e2be61dc08f1d0f5a07609b6e889c3452')
-noextract=(fsport3_5.7z
-           fsport-missions.7z
-           sparky_hi_fs1.7z)
+            'e3ea303b0686abe3ec5f4f5f0f3da119e5fabc2e98ec41888dd3ee0a653e6ddf'
+            '6a202a6d954fcc52c0483d2b532cef1e2be61dc08f1d0f5a07609b6e889c3452'
+            'f657ef8ba47056d26d69ae0a68b1f9e2b37c32ca4af7b053c799c3b1286939ce')
+noextract=(fsport3_5.7z fsport-missions.7z odeon_fs1.zip {sparky_hi,stu}_fs1.7z)
 
 # Prevent compression
 PKGEXT=".pkg.tar"
@@ -34,6 +36,7 @@ prepare() {
   for sz in ../*.7z; do
     bsdtar -xf $sz
   done
+  bsdtar -xf ../*.zip
 
   rm -f *.bat
 }
