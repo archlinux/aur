@@ -3,14 +3,16 @@
 
 pkgname=wmtrash
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple yet useful trash dockapp"
 arch=('i686' 'x86_64')
-url="http://dockapps.windowmaker.org/file.php/id/266"
+#url="http://dockapps.windowmaker.org/file.php/id/266"
+url="http://web.archive.org/web/20121201053438/http://dockapps.windowmaker.org/file.php/id/266"
 license=('GPL')
 groups=('x11')
 depends=('gtk')
-source=(http://dockapps.windowmaker.org/download.php/id/555/$pkgname-$pkgver.tar.gz)
+#source=(http://dockapps.windowmaker.org/download.php/id/555/$pkgname-$pkgver.tar.gz)
+source=($pkgname-$pkgver.tar.gz)
 md5sums=(f804a71a5537d1c7373815bbf0cd9b86)
 
 build() {
