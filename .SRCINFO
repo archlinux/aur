@@ -1,0 +1,15 @@
+pkgbase = copper
+	pkgdesc = experimental programming language
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://tibleiz.net/copper/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	source = http://tibleiz.net/download/copper-1.6-src.tar.gz
+	source = llvm-lib.patch
+	md5sums = 7f36f1b9ce28e3c366f9442aa6155384
+	md5sums = 30724dadbbd8d409218e17bfb299f1d2
+
+pkgname = copper
+

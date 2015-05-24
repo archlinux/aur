@@ -1,0 +1,11 @@
+--- Makefile	2013-02-22 21:11:48.542140372 -0700
++++ Makefile	2013-02-22 21:11:23.998635848 -0700
+@@ -55,7 +55,7 @@
+ 	@echo Compiling obj...
+ 	llc -filetype=obj boot/copper-llvm-unix-64.bc -o $(OUTDIR)/copper-llvm.o
+ 	@echo Linking...
+-	g++ $(LFLAGS) $(OUTDIR)/copper-llvm.o $(OUTDIR)/io.o -lLLVMBitWriter -lLLVMCore -lLLVMSupport -lpthread -ldl -lm -o $(OUTDIR)/copper-llvm
++	g++ $(LFLAGS) $(OUTDIR)/copper-llvm.o $(OUTDIR)/io.o -L/usr/lib/llvm -lLLVMBitWriter -lLLVMCore -lLLVMSupport -L/usr/lib -lpthread -ldl -lm -o $(OUTDIR)/copper-llvm
+ 	
+ $(OUTDIR)/copper-coff: $(OUTDIR)/copper-coff.o $(OUTDIR)/io.o
+ 	@echo Linking...
