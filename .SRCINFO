@@ -1,0 +1,12 @@
+pkgbase = quake2world-data-git
+	pkgdesc = A free, stand-alone, multiplayer-only iteration of Quake2 (game data)
+	pkgver = r408.1324b25
+	pkgrel = 1
+	url = http://quetoo.org
+	arch = any
+	license = GPL
+	source = git+https://github.com/jdolan/quake2world-data.git
+	md5sums = SKIP
+
+pkgname = quake2world-data-git
+
