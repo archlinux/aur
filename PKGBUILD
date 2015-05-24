@@ -1,5 +1,5 @@
 pkgname=shaman-git
-pkgver=2.0.0.α.r12.gea0f6aa
+pkgver=2.0.0.α.r22.g1ded016
 pkgrel=1
 
 pkgdesc="A small, native C library and utility to fetch weather"
