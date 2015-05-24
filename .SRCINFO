@@ -1,7 +1,7 @@
 pkgbase = copper
 	pkgdesc = experimental programming language
 	pkgver = 1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tibleiz.net/copper/
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = copper
 	source = llvm-lib.patch
 	md5sums = 7f36f1b9ce28e3c366f9442aa6155384
 	md5sums = 30724dadbbd8d409218e17bfb299f1d2
+	depends_x86_64 = llvm
 
 pkgname = copper
 
