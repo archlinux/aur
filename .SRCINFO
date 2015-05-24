@@ -1,0 +1,24 @@
+pkgbase = quake4-multiplayer-demo
+	pkgdesc = Quake 4 Multiplayer demo
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = http://www.quake4game.com/
+	install = quake4-multiplayer-demo.install
+	arch = i686
+	license = custom:"Quake 4 Multiplayer Demo"
+	makedepends = aria2
+	depends = alsa-lib
+	depends = sdl
+	depends = libxext
+	depends = libgl
+	source = ftp://ftp.idsoftware.com/idstuff/quake4/demo/quake4-multiplayer-demo.x86.run
+	source = quake4-multiplayer-demo.sh
+	source = quake4-multiplayer-demo-dedicated.sh
+	source = quake4-multiplayer-demo-smp.sh
+	md5sums = 48188680efcf15421803d2af7f7750ca
+	md5sums = c80e55efbead2cae5e5326904a82d4d2
+	md5sums = 791cf1d51a96213859f1608e08667d70
+	md5sums = 95bcafe7217f4a67bca54f41dcab8d11
+
+pkgname = quake4-multiplayer-demo
+
