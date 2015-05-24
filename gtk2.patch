@@ -1,0 +1,79 @@
+diff -up src/wmtrash-0.2/Makefile.orig src/wmtrash-0.2/Makefile
+--- src/wmtrash-0.2/Makefile.orig	2004-12-27 08:25:06.000000000 -0700
++++ src/wmtrash-0.2/Makefile	2014-05-16 05:33:55.000000000 -0600
+@@ -25,7 +25,7 @@ CONFIGFILE = default.cf
+ CFLAGS = -g -Wall
+ DEFINE = -D__CONFPATH='"$(CONFDIR)"' -D__CONFFILE='"$(CONFIGFILE)"' -D__ICONPATH='"$(PREFIX)$(SHAREDIR)"'
+ 
+-LIBCONFIG = `gtk-config --cflags --libs`
++LIBCONFIG = `pkg-config x11 gtk+-2.0 --cflags --libs`
+ 
+ 
+ $(BIN) : $(SRC)
+diff -up src/wmtrash-0.2/wmtrash.c.orig src/wmtrash-0.2/wmtrash.c
+--- src/wmtrash-0.2/wmtrash.c.orig	2014-05-16 05:34:16.000000000 -0600
++++ src/wmtrash-0.2/wmtrash.c	2014-05-16 05:52:22.000000000 -0600
+@@ -17,6 +17,27 @@
+ #include <gdk/gdkx.h>
+ #include "wmtrash.h"
+ 
++void show_dockapp(GtkWidget *dockapp)
++{
++	Window w, p, dummy1, *dummy2;
++	unsigned int dummy3;
++	XWMHints *hints;
++
++	XQueryTree(GDK_DISPLAY(), GDK_WINDOW_XID(dockapp->window), &dummy1, &p, &dummy2, &dummy3);
++	if (dummy2)
++		XFree(dummy2);
++	w = XCreateSimpleWindow(GDK_DISPLAY(), p, 0, 0, 1, 1, 0, 0, 0);
++	XReparentWindow(GDK_DISPLAY(), GDK_WINDOW_XID(dockapp->window), w, 0, 0);
++	gtk_widget_show_all(dockapp);
++	hints = XGetWMHints(GDK_DISPLAY(), GDK_WINDOW_XID(dockapp->window));
++	hints->flags |= StateHint;
++	hints->initial_state = WithdrawnState;
++	XSetWMHints(GDK_DISPLAY(), GDK_WINDOW_XID(dockapp->window), hints);
++	XFree(hints);
++	XReparentWindow(GDK_DISPLAY(), GDK_WINDOW_XID(dockapp->window), p, 0, 0);
++	XDestroyWindow(GDK_DISPLAY(), w);
++}
++
+ 
+ // Start main *******************************************************************
+ 
+@@ -68,14 +89,14 @@ int main( int argc, char *argv[] ) {
+ 	
+ 	gtk_init(&argc, &argv);
+ 	dockapp = (GtkWidget *) build_dockapp(configfile);
+-	gtk_widget_show_all (dockapp);
++	show_dockapp (dockapp);
+ 	gtk_main ();
+ 	return(0);
+ } // end main
+ 
+ 
+ GtkWidget * build_dockapp(char *configfile) {
+-	static GtkWidget *mainwin;
++	static GtkWidget *mainwin = NULL;
+ 	static GtkWidget *mainbox;
+ 	static GtkWidget *box;
+ 	static GtkWidget *pixmap;
+@@ -102,7 +123,8 @@ GtkWidget * build_dockapp(char *configfi
+ 	parse_from_config(wmtrash->configfile, wmtrash->param_path, wmtrash->path);
+ 		
+ 	// GTK stuff *******************************************************************
+-	gtk_widget_destroy(mainwin);
++	if (mainwin)
++		gtk_widget_destroy(mainwin);
+ 	mainwin = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+ 	gtk_widget_realize(mainwin);
+ 	mainbox = create_main_dockapp_icon_window(mainwin, 52);
+@@ -287,7 +309,7 @@ void close_callback(
+ 	parent = gtk_widget_get_ancestor(entry, GTK_TYPE_WINDOW); 
+ 	gtk_widget_destroy(parent);	// close the dialog box
+ 	dockapp = (GtkWidget *) build_dockapp(data->configfile);	// will redraw icons
+-	gtk_widget_show_all (dockapp);
++	show_dockapp (dockapp);
+ }
+ 
+ 

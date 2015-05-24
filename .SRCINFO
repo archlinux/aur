@@ -1,0 +1,17 @@
+pkgbase = wmtrash
+	pkgdesc = Simple yet useful trash dockapp
+	pkgver = 0.2
+	pkgrel = 4
+	url = http://web.archive.org/web/20121201053438/http://dockapps.windowmaker.org/file.php/id/266
+	arch = i686
+	arch = x86_64
+	groups = x11
+	license = GPL
+	depends = gtk2
+	source = wmtrash-0.2.tar.gz
+	source = gtk2.patch
+	md5sums = f804a71a5537d1c7373815bbf0cd9b86
+	md5sums = f25a33787d871f08ca338d5b352886f4
+
+pkgname = wmtrash
+
