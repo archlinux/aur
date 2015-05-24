@@ -1,0 +1,11 @@
+--- src/ogrelistener.cpp
++++ src/ogrelistener.cpp
+@@ -130,7 +130,7 @@
+ 
+ 
+ 	// Show debug info?
+-	if(GameApplication::mGameConfig->GetValue("graphics", "debug_info", "off") == "on") {
++	if(strcmp(GameApplication::mGameConfig->GetValue("graphics", "debug_info", "off"),"on") == 0) {
+ 		showDebugOverlay(true);
+ 		mStatsOn = true;
+ 	}

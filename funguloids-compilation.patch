@@ -1,0 +1,208 @@
+--- a/bin/Makefile.am
++++ b/bin/Makefile.am
+@@ -18,16 +18,16 @@ all:
+ 
+ install-data-hook:
+ 	if test "x@highscoredir@" != "x"; then \
+-		mkdir -p "@highscoredir@"; \
+-		if test ! -e "@highscoredir@/hiscore.lst"; then cp hiscore.lst.in "@highscoredir@/hiscore.lst"; fi; \
+-		chgrp -R @highscoregroup@ "@highscoredir@"; \
+-		chmod -R g+w "@highscoredir@"; \
++		mkdir -p "$(DESTDIR)@highscoredir@"; \
++		if test ! -e "(DESTDIR)@highscoredir@/hiscore.lst"; then cp hiscore.lst.in "(DESTDIR)@highscoredir@/hiscore.lst"; fi; \
++		chgrp -R @highscoregroup@ "(DESTDIR)@highscoredir@"; \
++		chmod -R g+w "(DESTDIR)@highscoredir@"; \
+ 	fi; \
+-	if test -r bootstrap.mpk; then cp bootstrap.mpk "@gameinstalldir@"; fi; \
+-	if test -r funguloids.mpk; then cp funguloids.mpk "@gameinstalldir@"; fi
++	if test -r bootstrap.mpk; then cp bootstrap.mpk "$(DESTDIR)@gameinstalldir@"; fi; \
++	if test -r funguloids.mpk; then cp funguloids.mpk "$(DESTDIR)@gameinstalldir@"; fi
+ 
+ uninstall-hook:
+-	rm -rf "@docinstalldir@"
++	rm -rf "$(DESTDIR)@docinstalldir@"
+ 
+ distclean: clean
+ 
+--- a/bin/music/Makefile.am
++++ b/bin/music/Makefile.am
+@@ -6,7 +6,7 @@ playlist.lua: playlist.lua.in
+ 	cat playlist.lua.in | sed 's,%%musicinstalldir%%,@musicinstalldir@,' > playlist.lua
+ 
+ install-data-hook:
+-	if test -r MarylandInMay.ogg; then cp MarylandInMay.ogg "@musicinstalldir@"; fi;
++	if test -r MarylandInMay.ogg; then cp MarylandInMay.ogg "$(DESTDIR)@musicinstalldir@"; fi;
+ 
+ 
+ distclean: clean
+--- a/include/hiscore.h
++++ b/include/hiscore.h
+@@ -50,7 +50,7 @@ public:
+ 
+ 	void clear();								// Clear the list
+ 	void sort();								// Sort the list
+-	int addName(char *name, long score);		// Add a record
++	int addName(const char *name, long score);		// Add a record
+ 	void save(const String &file);					// Save the list
+ 	void load(const String &file);					// Load the list
+ 	void updateOverlay();						// Update the overlay
+--- a/include/mpakogre.h
++++ b/include/mpakogre.h
+@@ -54,7 +54,7 @@
+ 	FileInfoListPtr listFileInfo(bool recursive = true, bool dirs = false);
+ 
+ 	StringVectorPtr find(const String &pattern, bool recursive = true, bool dirs = false);
+-	FileInfoListPtr findFileInfo(const String &pattern, bool recursive, bool dirs = false);
++	FileInfoListPtr findFileInfo(const String &pattern, bool recursive, bool dirs = false) const;
+ 
+ 	bool exists(const String &filename);
+ 
+--- a/include/SimpleIni/SimpleIni.h
++++ b/include/SimpleIni/SimpleIni.h
+@@ -407,7 +407,7 @@
+             return *this;
+         }
+         bool ConvertToStore(const SI_CHAR * a_pszString) {
+-            size_t uLen = SizeToStore(a_pszString);
++            size_t uLen = this->SizeToStore(a_pszString);
+             if (uLen == (size_t)(-1)) {
+                 return false;
+             }
+--- a/src/fmodexsoundsystem.cpp
++++ b/src/fmodexsoundsystem.cpp
+@@ -32,7 +32,7 @@
+ #include "playlist.h"
+ #include "mpakogre.h"
+ 
+-template<> FMODExSoundSystem* Singleton<FMODExSoundSystem>::ms_Singleton = 0;
++template<> FMODExSoundSystem* Singleton<FMODExSoundSystem>::msSingleton = 0;
+ 
+ 
+ // Checks for FMOD error and prints an error message
+@@ -332,12 +332,12 @@ void FMODExSoundSystem::update() {
+ 	}
+ }
+ FMODExSoundSystem *FMODExSoundSystem::getSingletonPtr() {
+-	return ms_Singleton;
++	return msSingleton;
+ }
+ 
+ FMODExSoundSystem &FMODExSoundSystem::getSingleton() {
+-	assert(ms_Singleton);
+-	return *ms_Singleton;
++	assert(msSingleton);
++	return *msSingleton;
+ }
+ 
+ #endif
+--- a/src/hiscore.cpp
++++ b/src/hiscore.cpp
+@@ -171,7 +171,7 @@ void HiscoreList::load(const String &file) {
+ 
+ 
+ // Add a name to the list. Returns the place.
+-int HiscoreList::addName(char *name, long score) {
++int HiscoreList::addName(const char *name, long score) {
+ 	// Check if we qualify
+ 	if(mList[NUM_NAMES-1].score >= score)
+ 		return -1;
+--- a/src/mpakogre.cpp
++++ b/src/mpakogre.cpp
+@@ -180,10 +180,10 @@ StringVectorPtr MPakArchive::find(const
+ 	return ret;
+ }
+ 
+-FileInfoListPtr MPakArchive::findFileInfo(const String &pattern, bool recursive, bool dirs) {
++FileInfoListPtr MPakArchive::findFileInfo(const String &pattern, bool recursive, bool dirs) const {
+ 	FileInfoListPtr ret = FileInfoListPtr(new FileInfoList());
+ 
+-	FileInfoList::iterator i, iend;
++	FileInfoList::const_iterator i, iend;
+ 	iend = mFileList.end();
+ 	for(i = mFileList.begin(); i != iend; ++i) {
+ 		if(StringUtil::match(i->filename, pattern, true))
+--- a/src/objectsystem.cpp
++++ b/src/objectsystem.cpp
+@@ -26,7 +26,7 @@
+ #include "objectsystem.h"
+ #include "game.h"
+ 
+-template<> ObjectSystem* Singleton<ObjectSystem>::ms_Singleton = 0;
++template<> ObjectSystem* Singleton<ObjectSystem>::msSingleton = 0;
+ 
+ 
+ // ObjectSystem constructor
+@@ -135,11 +135,11 @@ void ObjectSystem::findFreePosition(Vect
+ 
+ 
+ ObjectSystem *ObjectSystem::getSingletonPtr() {
+-	return ms_Singleton;
++	return msSingleton;
+ }
+ 
+ ObjectSystem &ObjectSystem::getSingleton() {
+-	assert(ms_Singleton);
+-	return *ms_Singleton;
++	assert(msSingleton);
++	return *msSingleton;
+ }
+ 
+--- a/src/openalsoundsystem.cpp
++++ b/src/openalsoundsystem.cpp
+@@ -35,16 +35,16 @@
+ #include "playlist.h"
+ #include "mpakogre.h"
+ 
+-template<> OpenALSoundSystem* Singleton<OpenALSoundSystem>::ms_Singleton = 0;
++template<> OpenALSoundSystem* Singleton<OpenALSoundSystem>::msSingleton = 0;
+ 
+ OpenALSoundSystem* OpenALSoundSystem::getSingletonPtr() {
+-	return ms_Singleton;
++	return msSingleton;
+ }
+ 
+ 
+ OpenALSoundSystem& OpenALSoundSystem::getSingleton() {
+-	assert(ms_Singleton);
+-	return *ms_Singleton;
++	assert(msSingleton);
++	return *msSingleton;
+ }
+ 
+ 
+--- a/src/scriptsystem.cpp
++++ b/src/scriptsystem.cpp
+@@ -38,7 +38,7 @@
+ #include "mpakogre.h"
+ #include <vector>
+ 
+-template<> ScriptSystem* Singleton<ScriptSystem>::ms_Singleton = 0;
++template<> ScriptSystem* Singleton<ScriptSystem>::msSingleton = 0;
+ 
+ 
+ // Log error messages
+@@ -439,7 +439,7 @@ ScriptSystem::ScriptSystem(SceneManager
+ 
+ 	LogManager::getSingleton().logMessage("Using " + String(LUA_VERSION));
+ 	// Create the script engine
+-	mLuaVM = lua_open();
++	mLuaVM = luaL_newstate();
+ 	if(!mLuaVM)
+ 		LogManager::getSingleton().logMessage(LML_CRITICAL, "Unable to create the script engine!");
+ 
+@@ -564,12 +564,12 @@ bool ScriptSystem::executeScript(const c
+ 
+ 
+ ScriptSystem *ScriptSystem::getSingletonPtr() {
+-	return ms_Singleton;
++	return msSingleton;
+ }
+ 
+ ScriptSystem &ScriptSystem::getSingleton() {
+-	assert(ms_Singleton);
+-	return *ms_Singleton;
++	assert(msSingleton);
++	return *msSingleton;
+ }
+ 
+ 

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Funguloids
+Comment=Those Funny Funguloids!
+Exec=funguloids
+Icon=funguloids
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Game;

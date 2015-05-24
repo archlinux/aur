@@ -1,0 +1,12 @@
+diff --git a/configure.ac b/configure.ac
+--- a/configure.ac
++++ b/configure.ac
+@@ -286,6 +267,8 @@ if test "x${shared_hs}" != "x"; then
+ 	AC_MSG_NOTICE([Using system-wide highscore file in ${highscoredir}])
+ fi
+ 
++# Add boost
++AC_CHECK_LIB([boost_system], [main])
+ 
+ AC_CONFIG_FILES([Makefile src/Makefile include/Makefile bin/Makefile bin/docs/Makefile bin/music/Makefile bin/icon/Makefile ])
+ AC_OUTPUT

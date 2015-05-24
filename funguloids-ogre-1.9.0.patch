@@ -1,0 +1,173 @@
+From: Nicolas Iooss
+Date: Sat, 2 Aug 2014 19:12:11 +0200
+Subject: Fix compilation issues with OGRE 1.9.0
+
+* Add OGRE-Overlay to configure.ac and src/Makefile.am
+* Add missing semicolons after OGRE_LOCK_MUTEX
+* Include OgreOverlayManager.h
+* Initialize the newly-separated Overlay System with doc from
+  http://www.ogre3d.org/tikiwiki/tiki-index.php?page=Manual+Resource+Loading#Overlay_2
+---
+diff --git a/configure.ac b/configure.ac
+--- a/configure.ac
++++ b/configure.ac
+@@ -31,10 +31,14 @@ AC_HEADER_STDC
+ AC_CHECK_HEADERS([stdlib.h string.h sys/param.h wchar.h])
+ 
+ # OGRE ----------------------------------------------------
+-PKG_CHECK_MODULES(OGRE, [OGRE >= 1.4])
++PKG_CHECK_MODULES(OGRE, [OGRE >= 1.9.0])
+ AC_SUBST(OGRE_CFLAGS)
+ AC_SUBST(OGRE_LIBS)
+ 
++PKG_CHECK_MODULES(OGRE_OVERLAY, [OGRE-Overlay >= 1.9.0])
++AC_SUBST([OGRE_OVERLAY_CFLAGS])
++AC_SUBST([OGRE_OVERLAY_LIBS])
++
+ # Ogre plugin directory for bin/plugins.cfg
+ ogreplugindir=`pkg-config --variable=plugindir OGRE`
+ AC_SUBST(ogreplugindir)
+diff --git a/src/Makefile.am b/src/Makefile.am
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1,7 +1,7 @@
+ bininstall_PROGRAMS = funguloids
+ funguloids_CPPFLAGS = -I$(top_srcdir)/include -I$(top_srcdir)/include/SimpleIni
+-funguloids_LDADD = @OIS_LIBS@ @OGRE_LIBS@ @LUA_LIBS@
+-funguloids_CXXFLAGS = @OIS_CFLAGS@ @OGRE_CFLAGS@ @LUA_CFLAGS@
++funguloids_LDADD = @OIS_LIBS@ @OGRE_LIBS@ @OGRE_OVERLAY_LIBS@ @LUA_LIBS@
++funguloids_CXXFLAGS = @OIS_CFLAGS@ @OGRE_CFLAGS@ @OGRE_OVERLAY_CFLAGS@ @LUA_CFLAGS@
+ 
+ funguloids_SOURCES = asteroid.cpp \
+ 	ballworm.cpp \
+diff --git a/include/mpakogre.h b/include/mpakogre.h
+--- a/include/mpakogre.h
++++ b/include/mpakogre.h
+@@ -83,7 +83,7 @@ public:
+ 	virtual ~MPakArchiveFactory() {}
+ 	const String &getType(void) const;
+ 
+-	Archive *createInstance(const String &name) {
++	Archive *createInstance(const String &name, bool readOnly) {
+ 		return new MPakArchive(name, "MPK");
+ 	}
+ 
+diff --git a/include/ogrelistener.h b/include/ogrelistener.h
+--- a/include/ogrelistener.h
++++ b/include/ogrelistener.h
+@@ -29,6 +29,7 @@
+ #include <Ogre.h>
+ #include <OgreStringConverter.h>
+ #include <OgreException.h>
++#include <OgreOverlay.h>
+ 
+ #include "input.h"
+ 
+diff --git a/include/soundsystem.h b/include/soundsystem.h
+--- a/include/soundsystem.h
++++ b/include/soundsystem.h
+@@ -66,7 +66,7 @@ public:
+ 		if(!grp)
+ 			OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND, "Cannot locate a resource group called 'General'", "ResourceGroupManager::openResource");
+ 
+-		OGRE_LOCK_MUTEX(grp->OGRE_AUTO_MUTEX_NAME) // lock group mutex
++		OGRE_LOCK_MUTEX(grp->OGRE_AUTO_MUTEX_NAME); // lock group mutex
+ 		ResourceLocationIndex::iterator rit = grp->resourceIndexCaseSensitive.find(filename);
+ 		if(rit != grp->resourceIndexCaseSensitive.end()) {
+ 			// Found in the index
+diff --git a/src/game.cpp b/src/game.cpp
+--- a/src/game.cpp
++++ b/src/game.cpp
+@@ -33,6 +33,7 @@
+ #include "scriptsystem.h"
+ #include "soundsystem.h"
+ #include "hiscore.h"
++#include <OgreOverlayManager.h>
+ 
+ 
+ // Playfield size (which is really read from the level script..)
+diff --git a/src/hiscore.cpp b/src/hiscore.cpp
+--- a/src/hiscore.cpp
++++ b/src/hiscore.cpp
+@@ -29,6 +29,7 @@
+ #include "game.h"
+ #include "hiscore.h"
+ #include <OgreTextAreaOverlayElement.h>
++#include <OgreOverlayManager.h>
+ 
+ // Global high score list
+ HiscoreList hiscoreList;
+diff --git a/src/menu.cpp b/src/menu.cpp
+--- a/src/menu.cpp
++++ b/src/menu.cpp
+@@ -29,6 +29,7 @@
+ #include "soundsystem.h"
+ #include "hiscore.h"
+ #include <OgreTextAreaOverlayElement.h>
++#include <OgreOverlayManager.h>
+ 
+ 
+ // Version string
+diff --git a/src/ogreapp.cpp b/src/ogreapp.cpp
+--- a/src/ogreapp.cpp
++++ b/src/ogreapp.cpp
+@@ -29,6 +29,7 @@
+ #include "scriptsystem.h"
+ #include "soundsystem.h"
+ #include "mpakogre.h"
++#include <OgreOverlaySystem.h>
+ 
+ #if(OGRE_PLATFORM == OGRE_PLATFORM_WIN32)
+ #define WIN32_LEAN_AND_MEAN
+@@ -74,6 +75,9 @@ bool OgreApplication::setup() {
+ 	// Random seed
+ 	srand(time(NULL));
+ 
++	// Initialize the overlay system
++	OverlaySystem *overlaySys = new OverlaySystem();
++
+ 	// Add the MPK archive support
+ 	mMPakFactory = new MPakArchiveFactory();
+ 	ArchiveManager::getSingleton().addArchiveFactory(mMPakFactory);
+@@ -115,6 +119,7 @@ bool OgreApplication::setup() {
+ 
+ 	// Create the SceneManager
+ 	createSceneManager();
++	mSceneMgr->addRenderQueueListener(overlaySys);
+ 
+ 	// Set up the scene
+ 	createCamera();
+diff --git a/src/ogrelistener.cpp b/src/ogrelistener.cpp
+--- a/src/ogrelistener.cpp
++++ b/src/ogrelistener.cpp
+@@ -27,6 +27,7 @@
+ #include "ogreapp.h"
+ #include "objectsystem.h"
+ #include "game.h"
++#include <OgreOverlayManager.h>
+ 
+ 
+ // After a rendered frame
+diff --git a/src/player.cpp b/src/player.cpp
+--- a/src/player.cpp
++++ b/src/player.cpp
+@@ -33,6 +33,7 @@
+ #include "effects.h"
+ #include "scriptsystem.h"
+ #include "base.h"
++#include <OgreOverlayManager.h>
+ 
+ 
+ // Player constructor
+diff --git a/src/scriptsystem.cpp b/src/scriptsystem.cpp
+--- a/src/scriptsystem.cpp
++++ b/src/scriptsystem.cpp
+@@ -63,7 +63,7 @@ public:
+ 		if(!grp)
+ 			OGRE_EXCEPT(Exception::ERR_ITEM_NOT_FOUND, "Cannot locate a resource group called 'General'", "ResourceGroupManager::openResource");
+ 		
+-		OGRE_LOCK_MUTEX(grp->OGRE_AUTO_MUTEX_NAME) // lock group mutex
++		OGRE_LOCK_MUTEX(grp->OGRE_AUTO_MUTEX_NAME); // lock group mutex
+ 		ResourceLocationIndex::iterator rit = grp->resourceIndexCaseSensitive.find(filename);
+ 		if(rit != grp->resourceIndexCaseSensitive.end()) {
+ 			// Found in the index

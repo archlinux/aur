@@ -1,0 +1,68 @@
+--- src/openalsoundsystem.cpp	2007-05-22 11:11:46.000000000 -0400
++++ src/openalsoundsystem.cpp.ok	2009-12-12 03:56:37.341800903 -0500
+@@ -21,9 +21,9 @@
+ //
+ //  3. This notice may not be removed or altered from any source distribution.
+ //
+-//***************************************************************************/
+-
+-// NOTICE: This file is written by Piet (thanks! :), <funguloids@superpiet.de>,
++//***************************************************************************/
++
++// NOTICE: This file is written by Piet (thanks! :), <funguloids@superpiet.de>,
+ // for the Linux version of Funguloids.
+ 
+ #include "soundsystem.h"
+@@ -266,14 +266,14 @@
+ 
+ 	int attributes[] = { 0 };
+ 	mContext = alcCreateContext(mDevice, attributes);
+-	if ( (err = alGetError()) != AL_NO_ERROR) {
++	if ( (err = alcGetError(mDevice)) != ALC_NO_ERROR) {
+ 		LogManager::getSingleton().logMessage("OpanAL: error creating context: " + lastALError(err) );
+ 		return 1;
+ 	}
+ //	check_alc_error("Couldn't create audio context: ");
+ 	alcMakeContextCurrent(mContext);
+ //	check_alc_error("Couldn't select audio context: ");
+-	if ( (err = alGetError()) != AL_NO_ERROR) {
++	if ( (err = alcGetError(mDevice)) != ALC_NO_ERROR) {
+ 		LogManager::getSingleton().logMessage("OpanAL: error making context current: " + lastALError(err) );
+ 		return 2;
+ 	}
+@@ -312,12 +312,12 @@
+ 	mSoundChannels->setVolume(vol);
+ 
+ 	// add a music player
+-	mStreamPlayer = new StreamPlayer();
+-	
+-	// Set the music volume
++	mStreamPlayer = new StreamPlayer();
++	
++	// Set the music volume
+ 	svol = GameApplication::mGameConfig->GetValue("audio", "music_volume", "1.0");
+ 	vol = StringConverter::parseReal(svol);
+-	mStreamPlayer->setVolume(vol);
++	mStreamPlayer->setVolume(vol);
+ 	
+ 	return 0;
+ }
+@@ -480,14 +480,14 @@
+ 	if(mSoundDisabled) return;
+ 	if(file.empty()) return;
+ 	LogManager::getSingleton().logMessage("Going to play '" + file + "'..");
+-	assert(mStreamPlayer);
+-	
+-	// Set the volume
++	assert(mStreamPlayer);
++	
++	// Set the volume
+ 	String svol = GameApplication::mGameConfig->GetValue("audio", "music_volume", "1.0");
+ 	Real vol = StringConverter::parseReal(svol);
+ 	
+ 	mStreamPlayer->play(file);
+-	mStreamPlayer->setVolume(vol);
++	mStreamPlayer->setVolume(vol);
+ }
+ 
+ 

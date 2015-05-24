@@ -1,0 +1,11 @@
+diff -Nur funguloids.old/src/mp3stream.cpp funguloids/src/mp3stream.cpp
+--- funguloids.old/src/mp3stream.cpp	2007-05-22 15:27:40.000000000 +0200
++++ funguloids/src/mp3stream.cpp	2009-06-02 21:22:57.808497421 +0200
+@@ -34,6 +34,7 @@
+ 
+ #include <sys/stat.h>
+ #include <sstream>
++#include <climits>
+ #include "Ogre.h"
+ 
+ #include "mp3stream.h"

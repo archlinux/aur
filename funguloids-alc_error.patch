@@ -1,0 +1,21 @@
+Check ALC errors instead of AL errors.
+=====================================================================
+--- src/openalsoundsystem.cpp.bak	2008-05-04 16:41:32.000000000 -0400
++++ src/openalsoundsystem.cpp	2008-05-04 16:20:52.000000000 -0400
+@@ -266,14 +266,14 @@
+ 
+ 	int attributes[] = { 0 };
+ 	mContext = alcCreateContext(mDevice, attributes);
+-	if ( (err = alGetError()) != AL_NO_ERROR) {
++	if ( (err = alcGetError(mDevice)) != ALC_NO_ERROR) {
+ 		LogManager::getSingleton().logMessage("OpanAL: error creating context: " + lastALError(err) );
+ 		return 1;
+ 	}
+ //	check_alc_error("Couldn't create audio context: ");
+ 	alcMakeContextCurrent(mContext);
+ //	check_alc_error("Couldn't select audio context: ");
+-	if ( (err = alGetError()) != AL_NO_ERROR) {
++	if ( (err = alcGetError(mDevice)) != ALC_NO_ERROR) {
+ 		LogManager::getSingleton().logMessage("OpanAL: error making context current: " + lastALError(err) );
+ 		return 2;
+ 	}

@@ -1,0 +1,36 @@
+--- include/mpakogre.h
++++ include/mpakogre.h
+@@ -56,6 +56,22 @@
+ 	FileInfoListPtr findFileInfo(const String &pattern, bool recursive, bool dirs = false);
+ 
+ 	bool exists(const String &filename);
++
++	time_t getModifiedTime(const String& filename)
++	{
++		struct stat tagStat;
++		bool ret = (stat(mName.c_str(), &tagStat) == 0);
++
++		if (ret)
++		{
++			return tagStat.st_mtime;
++		}
++		else
++		{
++			return 0;
++		}
++
++	}
+ };
+ 
+ 
+--- src/scriptsystem.cpp
++++ src/scriptsystem.cpp
+@@ -137,7 +137,7 @@
+ 	Asteroid *roid = new Asteroid(String(name), ScriptSystem::getSingleton().getSceneMgr(), String(mesh), String(mat), pos);
+ 	roid->setScale(scale, scale, scale);
+ 	roid->setMass(scale * 10.0f);
+-	roid->getEntity()->setNormaliseNormals(true);
++	//roid->getEntity()->setNormaliseNormals(true);
+ 	return 0;
+ }
+ 

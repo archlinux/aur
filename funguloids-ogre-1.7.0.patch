@@ -1,0 +1,112 @@
+diff -Naur funguloids-org/include/mpakogre.h funguloids/include/mpakogre.h
+--- funguloids-org/include/mpakogre.h	2007-03-11 16:53:04.000000000 +0100
++++ funguloids/include/mpakogre.h	2010-03-03 16:17:43.000000000 +0100
+@@ -49,6 +49,7 @@
+ 	void unload();
+ 
+ 	DataStreamPtr open(const String &filename) const;
++	DataStreamPtr open(const String &filename, bool) const { return open(filename); };
+ 	StringVectorPtr list(bool recursive = true, bool dirs = false);
+ 	FileInfoListPtr listFileInfo(bool recursive = true, bool dirs = false);
+ 
+diff -Naur funguloids-org/include/objectsystem.h funguloids/include/objectsystem.h
+--- funguloids-org/include/objectsystem.h	2007-02-26 19:43:56.000000000 +0100
++++ funguloids/include/objectsystem.h	2010-03-03 16:17:59.000000000 +0100
+@@ -34,7 +34,7 @@
+ using namespace std;
+ using namespace Ogre;
+ 
+-typedef map<String, MovingObject*> ObjectMapType;
++typedef std::map<String, MovingObject*> ObjectMapType;
+ 
+ // ObjectSystem
+ class ObjectSystem : public Singleton<ObjectSystem> {
+diff -Naur funguloids-org/include/openalsoundsystem.h funguloids/include/openalsoundsystem.h
+--- funguloids-org/include/openalsoundsystem.h	2007-05-22 15:47:31.000000000 +0200
++++ funguloids/include/openalsoundsystem.h	2010-03-03 16:18:13.000000000 +0100
+@@ -47,7 +47,7 @@
+ using namespace std;
+ 
+ 
+-typedef map<String, ALuint> SoundMapType;
++typedef std::map<String, ALuint> SoundMapType;
+ 
+ // Number of independent channels for sound fx
+ const int NUM_SOUND_CHANNELS = 32;
+diff -Naur funguloids-org/src/mp3stream.cpp funguloids/src/mp3stream.cpp
+--- funguloids-org/src/mp3stream.cpp	2007-05-22 15:27:40.000000000 +0200
++++ funguloids/src/mp3stream.cpp	2010-03-03 17:38:08.000000000 +0100
+@@ -1,4 +1,4 @@
+-//****************************************************************************
++/****************************************************************************
+ // "Those Funny Funguloids!"
+ // http://funguloids.sourceforge.net
+ // Copyright (c) 2006-2007, Mika Halttunen
+@@ -31,7 +31,9 @@
+ #endif
+ 
+ #ifdef SOUND_STREAM_MP3
+-
++#include <unistd.h>
++#include <cstdlib>
++#include <sys/types.h>
+ #include <sys/stat.h>
+ #include <sstream>
+ #include <climits>
+@@ -233,7 +235,7 @@
+ //----------------------------------------------------------------------------
+ void MP3Stream::logInfo( struct mad_header *Header )
+ {
+-	stringstream ss;
++	std::stringstream ss;
+ 
+ 	/* Convert the layer number to it's printed representation. */
+ 	ss << "mpeg 1 layer ";
+diff -Naur funguloids-org/src/oggstream.cpp funguloids/src/oggstream.cpp
+--- funguloids-org/src/oggstream.cpp	2007-05-22 15:27:56.000000000 +0200
++++ funguloids/src/oggstream.cpp	2010-03-03 17:35:07.000000000 +0100
+@@ -269,7 +269,7 @@
+ //----------------------------------------------------------------------------
+ void OggStream::logInfo()
+ {
+-	stringstream ss;
++	std::stringstream ss;
+ 	ss	<< "version         " << mVorbisInfo->version         << "\n"
+ 		<< "channels        " << mVorbisInfo->channels        << "\n"
+ 		<< "rate (hz)       " << mVorbisInfo->rate            << "\n"
+diff -Naur funguloids-org/src/openalsoundsystem.cpp funguloids/src/openalsoundsystem.cpp
+--- funguloids-org/src/openalsoundsystem.cpp	2007-05-22 17:11:46.000000000 +0200
++++ funguloids/src/openalsoundsystem.cpp	2010-03-03 17:37:49.000000000 +0100
+@@ -287,7 +287,7 @@
+ 		LogManager::getSingleton().logMessage("OpenALSoundSystem(): initialised OpenAL" );
+ 	}
+ 
+-	stringstream ss;
++	std::stringstream ss;
+ 	ss << "OpenAL Vendor: " << alGetString(AL_VENDOR) << std::endl;
+ 	ss << "OpenAL Version: " << alGetString(AL_VERSION) << std::endl;
+ 	ss << "OpenAL Renderer: " << alGetString(AL_RENDERER) << std::endl;
+diff -Naur funguloids-org/src/playlist.cpp funguloids/src/playlist.cpp
+--- funguloids-org/src/playlist.cpp	2007-05-22 15:17:41.000000000 +0200
++++ funguloids/src/playlist.cpp	2010-03-03 17:41:12.000000000 +0100
+@@ -42,7 +42,7 @@
+ using namespace std;
+ 
+ // Play list files
+-static vector<String> playList;
++static std::vector<String> playList;
+ static unsigned int currentSong = -1;
+ 
+ 
+diff -Naur funguloids-org/src/scriptsystem.cpp funguloids/src/scriptsystem.cpp
+--- funguloids-org/src/scriptsystem.cpp	2007-05-04 12:28:10.000000000 +0200
++++ funguloids/src/scriptsystem.cpp	2010-03-03 17:43:52.000000000 +0100
+@@ -48,7 +48,7 @@
+ 
+ 
+ // This keeps track of the lights created in script
+-static vector<Light*> scriptLights;
++static std::vector<Light*> scriptLights;
+ 
+ 
+ // File locator for script files
