@@ -1,0 +1,48 @@
+diff -purN wmbattery.orig/apm.h wmbattery/apm.h
+--- wmbattery.orig/apm.h	2013-04-11 10:08:58.000000000 -0600
++++ wmbattery/apm.h	2013-04-11 10:14:23.000000000 -0600
+@@ -1,4 +1,17 @@
+-#include <apm.h>
++typedef struct apm_info
++{
++	const char driver_version[10];
++	int apm_version_major;
++	int apm_version_minor;
++	int apm_flags;
++	int ac_line_status;
++	int battery_status;
++	int battery_flags;
++	int battery_percentage;
++	int battery_time;
++	int using_minutes;
++}
++apm_info;
+ 
+ /* Symbolic constants for apm may be in system apm.h, or may not. */
+ #ifndef AC_LINE_STATUS_ON
+diff -purN wmbattery.orig/wmbattery.c wmbattery/wmbattery.c
+--- wmbattery.orig/wmbattery.c	2013-04-11 10:08:58.000000000 -0600
++++ wmbattery/wmbattery.c	2013-04-11 10:15:29.000000000 -0600
+@@ -528,10 +528,6 @@ void alarmhandler(int sig) {
+ 			error("Cannot read HAL information.");
+ 	}
+ #endif
+-	else if (! use_sonypi) {
+-		if (apm_read(&cur_info) != 0)
+-			error("Cannot read APM information.");
+-	}
+ 	else {
+ 		if (sonypi_read(&cur_info) != 0)
+ 			error("Cannot read sonypi information.");
+@@ -583,10 +579,7 @@ void check_battery_num(int real, int req
+ int main(int argc, char *argv[]) {
+ 	make_window(parse_commandline(argc, argv), argc ,argv);
+ 
+-	/*  Check for APM support (returns 0 on success). */
+-	if (apm_exists() == 0) {
+-		if (! delay)
+-			delay = 1;
++	if (0) {
+ 	}
+ #ifdef HAL
+ 	/* Check for hal support. */
