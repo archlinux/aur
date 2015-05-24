@@ -1,0 +1,13 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=IOGraphica
+GenericName=IOGraphica
+Comment=record your mouse movement
+Exec=/usr/bin/iographica
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/iographica.png
+Categories=Graphics;
+
+
+
