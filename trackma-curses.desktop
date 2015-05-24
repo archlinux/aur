@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Trackma (ncurses)
+Exec=trackma-curses
+Type=Application
+Categories=Network;
+Icon=trackma
+Comment=Trackma Updater (ncurses frontend)
+Terminal=true
+
+#comment out  the following line if you want to use the ncurses frontend
+NoDisplay=true
+

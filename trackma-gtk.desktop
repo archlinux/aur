@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Trackma
+Exec=trackma-gtk
+OnlyShowIn=GNOME;MATE;X-Cinnamon;XFCE;Unity;
+Type=Application
+Categories=Network;
+Icon=trackma
+Comment=Trackma Updater (Gtk-frontend)
+StartupWMClass=trackma-gtk

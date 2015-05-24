@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Trackma
+Exec=trackma-qt
+OnlyShowIn=KDE;
+Type=Application
+Categories=Network;
+Icon=trackma
+Comment=Trackma Updater (Qt-frontend)
+StartupWMClass=trackma-qt
