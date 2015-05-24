@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Remobo
+GenericName=IPN Service
+Comment=A zero-configuration IPN service
+Exec=remobo-gui
+Terminal=false
+Type=Application
+Icon=remobo
+Categories=Gnome;GTK;Network;FileTransfer;P2P
