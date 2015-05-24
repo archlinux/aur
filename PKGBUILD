@@ -3,7 +3,7 @@
 pkgname=grpc
 pkgver=0.6.0
 _pkgver=$(echo $pkgver | tr . _)
-pkgrel=3
+pkgrel=4
 pkgdesc="A high performance, open source, general RPC framework that puts mobile and HTTP/2 first."
 arch=('i686' 'x86_64')
 url='http://www.grpc.io/'
@@ -15,6 +15,7 @@ md5sums=('b50254e9149723b97654186b66f64571')
 build() {
   cd $pkgname-release-$_pkgver
   # Avoid collision with yaourt's environment variable
+  find . -type f -exec sed -r 's|__FUNCTION__|__func__|g' -i '{}' ';'
   env --unset=BUILDDIR make $MAKEFLAGS prefix=/usr
 }
 
