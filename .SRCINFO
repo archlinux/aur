@@ -1,6 +1,6 @@
 pkgbase = roxterm-gtk2-git
 	pkgdesc = Tabbed, VTE-based terminal emulator (GTK2 version)
-	pkgver = 2.9.0.r10.g4415109
+	pkgver = 2.8.1.4
 	pkgrel = 1
 	url = http://roxterm.sourceforge.net
 	install = roxterm-gtk2-git.install
@@ -17,12 +17,12 @@ pkgbase = roxterm-gtk2-git
 	makedepends = librsvg
 	depends = dbus-glib
 	depends = vte
-	depends = libsm
+	depends = hicolor-icon-theme
 	provides = roxterm
 	conflicts = roxterm
 	conflicts = roxterm-git
 	conflicts = roxterm-gtk2
-	source = roxterm-gtk2-git::git://git.code.sf.net/p/roxterm/code
+	source = git://roxterm.git.sourceforge.net/gitroot/roxterm/roxterm
 	md5sums = SKIP
 
 pkgname = roxterm-gtk2-git
