@@ -1,0 +1,14 @@
+pkgbase = cdiff
+	pkgdesc = Colored, incremental, side-by-side diff viewer
+	pkgver = 0.9.6
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/cdiff/
+	arch = any
+	license = BSD
+	depends = python
+	conflicts = colordiff
+	source = http://pypi.python.org/packages/source/c/cdiff/cdiff-0.9.6.tar.gz
+	md5sums = e71be83591535621b5c11504563d859b
+
+pkgname = cdiff
+
