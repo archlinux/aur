@@ -1,5 +1,5 @@
 pkgname=src-git
-pkgver=0.16.r1.g312a8b6
+pkgver=0.18.r0.gc89b187
 pkgrel=1
 
 pkgdesc="Simple Revision Control with modern UI for single-file projects"
@@ -9,7 +9,7 @@ license=('BSD')
 
 depends=('python2' 'rcs')
 optdepends=('rcs-fast-import: required for src fast-import')
-makedepends=('asciidoc')
+makedepends=('asciidoc' 'git')
 
 source=('git+https://gitorious.org/src-vcs/src-vcs.git')
 
