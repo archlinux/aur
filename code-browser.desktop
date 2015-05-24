@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Code Browser 3.0
+Comment=Folding text editor
+Exec=code-browser %F
+Terminal=false
+Type=Application
+StartupNotify=true
+MimeType=text/plain;
+Icon=cb
+Categories=Utility;TextEditor;
