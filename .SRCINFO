@@ -2,13 +2,12 @@ pkgbase = quake2-retexture
 	pkgdesc = A true color retexture pak for Quetoo and other Quake2 engines supporting 32bpp tga textures
 	pkgver = 1
 	pkgrel = 1
-	url = http://jdolan.dyndns.org/trac/wiki/Retexture
-	arch = i686
-	arch = x86_64
+	url = http://quetoo.org/
+	arch = any
 	license = unknown
 	makedepends = unzip
 	source = http://tastyspleen.net/~jdolan/pak8.zip
-	md5sums = 671fff24139c3e0012fffd052cf9f7cb
+	sha256sums = 2d1e3d11c26ec14e49b7334be66f205c7554aaa3309c0702c11d54ec0e0cd437
 
 pkgname = quake2-retexture
 
