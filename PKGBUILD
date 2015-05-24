@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=wmdiskmon
 pkgver=0.0.2
-pkgrel=5
+pkgrel=6
 pkgdesc="A dockapp that monitors your disks usage in a portable way, using the POSIX command df -P."
 arch=('i686' 'x86_64')
 license=('GPL')
