@@ -7,7 +7,7 @@
 pkgname=fluxbox-git
 pkgdesc="Lightweight stacking WM with tabbing, dockapps, etc."
 pkgver=1.3.7.16.g69d1333
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 url=http://www.fluxbox.org/
 license=(MIT)
@@ -19,10 +19,8 @@ conflicts=(${pkgname%-*})
 options=(!libtool)
 source=($pkgname::git://git.fluxbox.org/${pkgname%-*}.git
     $pkgname.desktop)
-sha256sums=('SKIP'
-    '32ed3d444c938a3778520a641d5e0196a0fdf2984390d69a6546f8b86805c841')
-sha512sums=('SKIP'
-    '4c46bb22745849982b2e1ea02cc84f77bf81eeac827b10574eabcb5f2375805fe8b204a58aed15555b2477b1b9cc3f9e0aa4575a92ad9315495735a8e7ba40d1')
+md5sums=('SKIP'
+         'c3cf99bfa58862724e0061e3881679aa')
 
 pkgver() {
     cd $pkgname/
