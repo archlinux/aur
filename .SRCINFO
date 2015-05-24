@@ -1,0 +1,15 @@
+pkgbase = perl-text-levenshtein-damerau-xs
+	pkgdesc = XS Damerau Levenshtein edit distance
+	pkgver = 3.0
+	pkgrel = 1
+	url = http://search.cpan.org/~ugexe/Text-Levenshtein-Damerau-XS
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/U/UG/UGEXE/Text-Levenshtein-Damerau-XS-3.0.tar.gz
+	md5sums = b06badbeef34f5ba4a574a86706bf01d
+
+pkgname = perl-text-levenshtein-damerau-xs
+
