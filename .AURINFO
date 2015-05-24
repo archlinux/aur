@@ -23,7 +23,6 @@ pkgbase = roxterm-gtk2-git
 	conflicts = roxterm-git
 	conflicts = roxterm-gtk2
 	source = roxterm-gtk2-git::git://git.code.sf.net/p/roxterm/code
-	md5sums = SKIP
 
 pkgname = roxterm-gtk2-git
 
