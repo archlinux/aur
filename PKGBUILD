@@ -2,8 +2,8 @@
 # Contributor: Mario Blättermann <mariobl@gnome.org>
 
 pkgname=wmblob
-pkgver=1.0.3
-pkgrel=5
+pkgver=1.0.4
+pkgrel=1
 pkgdesc="wmblob shows some blobs moving around"
 arch=('i686' 'x86_64')
 #url="http://dockapps.windowmaker.org/file.php/id/155"
@@ -16,7 +16,7 @@ depends=('gtk2')
 #source=("wmblob-1.0.3.tar.bz2")
 source=("https://github.com/bbidulock/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2")
 noextract=()
-md5sums=('5821d20d4e4b86f8ff996320ece2424b')
+md5sums=('0b4f9ac8cefd943e2db6882e877a971d')
 
 build() {
   cd $startdir/src/$pkgname-$pkgver
