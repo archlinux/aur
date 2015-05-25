@@ -1,6 +1,6 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=ocserv-git
-pkgver=0.10.4.r17.g8919085
+pkgver=0.10.5.r2.g36bd7e1
 pkgrel=1
 pkgdesc="OpenConnect VPN Server"
 arch=('i686' 'x86_64')
