@@ -1,7 +1,7 @@
 pkgbase = java-gcj-compat
 	pkgdesc = Wrapper package to wrap free tools into a java 1.5.0.0 compatible java environment
 	pkgver = 1.0.80
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.eclipse.org/
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = java-gcj-compat
 	options = !makeflags
 	source = ftp://sources.redhat.com/pub/rhug/java-gcj-compat-1.0.80.tar.gz
 	source = java-gcj-compat.profile
-	source = ca-bundle.crt
+	source = https://gist.githubusercontent.com/bbidulock/93d0b5e65a957c9d0905/raw/8ad70648954c65bf8b26c5912ae61eb599b6677d/ca-bundle.crt
 	md5sums = 34369925c7a22e21c3d3b91e8b774396
 	md5sums = eee3645b754a5dc77644e8973c077c0e
 	md5sums = 02410297423b187bd4c6e6e295314e4c
