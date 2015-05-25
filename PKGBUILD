@@ -44,7 +44,7 @@ build() {
     --sysconfdir=/etc \
     --localstatedir=/var \
     --enable-all-in-one-etcd \
-    --enable_armv7
+    --enable-armv7
 
   msg2 "Building ArangoDB."
   make -j $(nproc)
