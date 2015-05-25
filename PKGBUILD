@@ -4,7 +4,7 @@
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 
 pkgname=windowmaker-crm-git
-pkgver=0.95.6.r276.gc3ba9ae
+pkgver=0.95.6.r296.gbae28b2
 pkgrel=1
 pkgdesc="An X11 window manager with a NEXTSTEP look and feel"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('GPL' 'custom')
 provides=('windowmaker')
 conflicts=('windowmaker' 'windowmaker-git')
 makedepends=('git')
-depends=('imagemagick' 'libxinerama' 'libxrandr' 'libxmu' 'libbsd' 'libxpm' 'libxft' 'giflib' 'libexif')
+depends=('imagemagick' 'libxinerama' 'libxrandr' 'libxmu' 'libbsd' 'libxpm' 'libxft' 'libwebp' 'libexif')
 source=("$pkgname::git://repo.or.cz/wmaker-crm.git#branch=next"
 	wmaker.desktop)
 md5sums=('SKIP'
@@ -44,7 +44,7 @@ build() {
   [ -z "$LINGUAS" ] && export LINGUAS="`ls po/*.po | sed 's:po/\(.*\)\.po$:\1:'|tr '\n' ' '`"
   ./configure --prefix=/usr --sysconfdir=/etc --enable-xinerama \
     --localedir=/usr/share/locale --with-gnustepdir=/usr/lib/GNUstep \
-    --enable-usermenu --enable-modelock --enable-xrandr
+    --enable-usermenu --enable-modelock
   make V=0
 }
 
