@@ -6,13 +6,13 @@
 # Fixes in AUR by: ogarcia
 
 pkgname=libqtelegram-ae-git
-pkgver=v3.3.r0.g2f47ec9
-pkgrel=1
+pkgver=3.3.r0.g2f47ec9
+pkgrel=2
 pkgdesc="Telegram library written in Qt based on telegram-cli code"
 arch=('x86_64' 'x64')
 license=('GPL3')
 url=("https://launchpad.net/libqtelegram")
-provides=('libqtelegram-ae')
+provides=("libqtelegram-ae=$pkgver")
 conflicts=('libqtelegram-ae')
 depends=('qt5-base' 'qt5-multimedia')
 makedepends=('cmake' 'git')
@@ -22,7 +22,7 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/$pkgname"
   ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
