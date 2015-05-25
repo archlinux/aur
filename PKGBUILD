@@ -6,7 +6,7 @@
 # Contributor in Chakra: totoloco <totoloco@gmx.com>
 
 pkgname=cutegram-git
-pkgver=v2.3.0.stable.r0.ga72f093
+pkgver=2.3.0.stable.r2.g29583d8
 pkgrel=1
 pkgdesc="Telegram client by Aseman Land"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ url="http://aseman.co/cutegram"
 license=('GPL')
 depends=('qt5-base' 'qt5-declarative' 'qt5-multimedia' 'qt5-quick1'
          'qt5-webengine' 'qt5-imageformats' 'qt5-graphicaleffects' 
-         'qt5-quickcontrols' 'libqtelegram-ae-git')
+         'qt5-quickcontrols' 'libqtelegram-ae>=3.3')
 makedepends=('git')
 source=("${pkgname}"::"git+https://github.com/Aseman-Land/Cutegram.git")
 md5sums=('SKIP')
@@ -22,7 +22,7 @@ md5sums=('SKIP')
 pkgver() {
   cd "${srcdir}/${pkgname}"
   ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
