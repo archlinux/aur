@@ -1,6 +1,6 @@
 pkgbase = beancount-hg
 	pkgdesc = Double-Entry Accounting from Text Input
-	pkgver = r1711.26890d8c857d
+	pkgver = r2586.dbba632103c9
 	pkgrel = 1
 	url = http://furius.ca/beancount/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = beancount-hg
 	makedepends = mercurial
 	depends = python-bottle
 	depends = wget
-	source = beancount-hg::hg+https://hg.furius.ca/public/beancount/
+	source = beancount-hg::hg+https://bitbucket.org/blais/beancount/
 	sha1sums = SKIP
 
 pkgname = beancount-hg

@@ -1,30 +1,15 @@
 # Maintainer: Adrian Perez <aperez@igalia.com>
 pkgname='beancount-hg'
 pkgdesc='Double-Entry Accounting from Text Input'
-pkgver=r1711.26890d8c857d
+pkgver=r2586.dbba632103c9
 pkgrel=1
 arch=('any')
 url="http://furius.ca/beancount/"
 license=('GPL')
-source=("${pkgname}::hg+https://hg.furius.ca/public/beancount/")
+source=("${pkgname}::hg+https://bitbucket.org/blais/beancount/")
 sha1sums=('SKIP')
 depends=('python-dateutil')
 makedepends=('mercurial')
-
-export HGOPTIONS=--insecure
-
-# Hack to make sure we pass --insecure to Mercurial when cloning/pulling
-hg () {
-	if [[ $1 == clone ]] ; then
-		shift
-		command hg clone --insecure "$@"
-	elif [[ $1 == pull ]] ; then
-		shift
-		command hg pull --insecure "$@"
-	else
-		command hg "$@"
-	fi
-}
 
 # TODO: Add python-cdecimal when package is available
 depends=(
