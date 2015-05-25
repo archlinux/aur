@@ -8,7 +8,7 @@ pkgname=arangodb
 pkgver=2.5.4
 pkgrel=1
 pkgdesc="A multi-model NoSQL database, combining key-value, document and graph data models."
-arch=("i686" "x86_64")
+arch=("i686" "x86_64" "armv7h")
 url="https://www.arangodb.com/"
 license=('APACHE')
 # The depends line should look like this but Arango bundles V8, libev
@@ -43,7 +43,8 @@ build() {
     --sbindir=/usr/bin \
     --sysconfdir=/etc \
     --localstatedir=/var \
-    --enable-all-in-one-etcd
+    --enable-all-in-one-etcd \
+    --enable_armv7
 
   msg2 "Building ArangoDB."
   make -j $(nproc)
