@@ -1,0 +1,22 @@
+pkgbase = python-pyflakes-git
+	pkgdesc = A lint-like tool for Python to identify common errors quickly without executing code (Git version)
+	pkgver = 0.8.1.r35.g03ffc76
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/pyflakes
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = pyflakes::git+https://github.com/pyflakes/pyflakes/
+	sha1sums = SKIP
+
+pkgname = python-pyflakes-git
+	depends = python-setuptools
+	provides = python-pyflakes
+	conflicts = python-pyflakes
+
+pkgname = python2-pyflakes-git
+	depends = python2-setuptools
+	provides = python2-pyflakes
+	conflicts = python2-pyflakes
+
