@@ -1,13 +1,13 @@
 pkgbase = wmsystray
 	pkgdesc = dockapplet to provide systemtray
 	pkgver = 0.1.1
-	pkgrel = 6
-	url = http://www.sacredchao.net/~arashi/wmsystray/download.shtml
+	pkgrel = 7
+	url = https://github.com/bbidulock/wmsystray
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = libxpm
-	source = http://www.sacredchao.net/~arashi/wmsystray/release/wmsystray-0.1.1.tar.bz2
+	source = https://github.com/bbidulock/wmsystray/releases/download/0.1.1/wmsystray-0.1.1.tar.bz2
 	md5sums = 398cbc1139d53dbf65c00010bf2297fb
 
 pkgname = wmsystray
