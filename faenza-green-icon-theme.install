@@ -1,0 +1,20 @@
+pkgname=faenza-green-icon-theme
+
+post_install() {
+	printf "Updating Faenza Green icons\n"
+	gtk-update-icon-cache -q -t -f "/usr/share/icons/Faenza-Green"
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	post_install
+}
+
+pre_remove() {
+	rm "/usr/share/icons/Faenza-Green/icon-theme.cache"
+}
+
+# vim:set ts=2 sw=2 et:
