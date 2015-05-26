@@ -1,0 +1,24 @@
+pkgbase = hfsutils
+	pkgdesc = A comprehensive software to permit manipulation of HFS volume
+	pkgver = 3.2.6
+	pkgrel = 6
+	url = http://www.mars.org/home/rob/proj/hfs/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	optdepends = tcl: For the graphical interface [rebuild using --with-tcl]
+	optdepends = tk: For the graphical interface [rebuild using --with-tk]
+	source = ftp://ftp.mars.org/pub/hfs/hfsutils-3.2.6.tar.gz
+	source = Makefile-install.patch
+	source = hfsutils-3.2.6-errno.patch
+	source = largerthan2gb.patch
+	source = hfsutils-3.2.6-fix-tcl-8.6.patch
+	md5sums = fa572afd6da969e25c1455f728750ec4
+	md5sums = af48f3ff82c6aa8607c10271c2e56c77
+	md5sums = 4f5ea10416823de9fd38f6121dd3b8f0
+	md5sums = 7ab54a275889301df989c4a0351781c6
+	md5sums = a4b7920d3302f4c79f162923d8c1c654
+
+pkgname = hfsutils
+

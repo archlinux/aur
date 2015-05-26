@@ -1,0 +1,70 @@
+*** Makefile.in.orig	2013-05-05 16:48:26.065525171 +0100
+--- Makefile.in	2013-05-05 16:53:14.065321352 +0100
+*************** INCDEST =	@includedir@
+*** 36,42 ****
+  
+  MANEXT =	1
+  
+! INSTALL =	@INSTALL@
+  BININSTALL =	@INSTALL_PROGRAM@ -m 755
+  LIBINSTALL =	@INSTALL_DATA@
+  HARDLINK =	ln -f
+--- 36,42 ----
+  
+  MANEXT =	1
+  
+! INSTALL =	@INSTALL@ -D
+  BININSTALL =	@INSTALL_PROGRAM@ -m 755
+  LIBINSTALL =	@INSTALL_DATA@
+  HARDLINK =	ln -f
+*************** check :: all
+*** 111,117 ****
+  install :: @INSTALL_TARGETS@
+  
+  install_cli :: all_cli
+! 	$(BININSTALL) $(HFSUTIL) "$(BINDEST)/."
+  
+  	for file in $(CLITARGETS); do  \
+  		$(HARDLINK) "$(BINDEST)/$(HFSUTIL)" "$(BINDEST)/$$file";  \
+--- 111,117 ----
+  install :: @INSTALL_TARGETS@
+  
+  install_cli :: all_cli
+! 	$(BININSTALL) $(HFSUTIL) "$(BINDEST)/$(HFSUTIL)"
+  
+  	for file in $(CLITARGETS); do  \
+  		$(HARDLINK) "$(BINDEST)/$(HFSUTIL)" "$(BINDEST)/$$file";  \
+*************** install_cli :: all_cli
+*** 126,132 ****
+  
+  install_tcl :: all_tcl
+  	for file in $(TCLTARGETS); do  \
+! 		$(BININSTALL) $$file "$(BINDEST)/.";  \
+  	done
+  
+  	if [ -f "$(BINDEST)/hfs" ]; then  \
+--- 126,132 ----
+  
+  install_tcl :: all_tcl
+  	for file in $(TCLTARGETS); do  \
+! 		$(BININSTALL) $$file "$(BINDEST)/$$file";  \
+  	done
+  
+  	if [ -f "$(BINDEST)/hfs" ]; then  \
+*************** install_tcl :: all_tcl
+*** 142,148 ****
+  
+  install_tk :: all_tk
+  	for file in $(TKTARGETS); do  \
+! 		$(BININSTALL) $$file "$(BINDEST)/.";  \
+  	done
+  
+  	for file in $(TKDOCS); do  \
+--- 142,148 ----
+  
+  install_tk :: all_tk
+  	for file in $(TKTARGETS); do  \
+! 		$(BININSTALL) $$file "$(BINDEST)/$(TKTARGETS)";  \
+  	done
+  
+  	for file in $(TKDOCS); do  \
