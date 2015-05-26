@@ -21,7 +21,7 @@ pkgver () {
 
 build () {
 	cd shaman
-	LANG=en_US.utf-8 tup upd
+	LANG='en_US.utf8' tup upd
 }
 
 check () {
