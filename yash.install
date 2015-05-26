@@ -1,0 +1,11 @@
+post_install() {
+	grep -q '/usr/bin/yash' etc/shells || echo '/usr/bin/yash' >> etc/shells
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+	sed -i '/^\/bin\/yash/d' etc/shells
+}
