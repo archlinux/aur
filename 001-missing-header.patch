@@ -1,0 +1,11 @@
+diff -Naur apngopt-a/apngopt.cpp apngopt-b/apngopt.cpp
+--- apngopt-a/apngopt.cpp	2014-10-29 21:00:04.000000000 -0300
++++ apngopt-b/apngopt.cpp	2015-03-28 02:40:38.343773305 -0300
+@@ -29,6 +29,7 @@
+  */
+ #include <stdlib.h>
+ #include <stdio.h>
++#include <string.h>
+ #include <vector>
+ #include "png.h"     /* original (unpatched) libpng is ok */
+ #include "zlib.h"
