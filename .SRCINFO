@@ -1,0 +1,17 @@
+pkgbase = ttf-celestia
+	pkgdesc = A font based off of the one used in My Little Pony : Friendship is Magic (MLP:FIM), originally created by Purple Tinker - Redux by Mattyhex
+	pkgver = 1.55
+	pkgrel = 3
+	url = http://www.mattyhex.net/CMR/
+	install = ttf-celestia.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.mattyhex.net/CMR/media/fonts/CelestiaMediumRedux1.55.ttf
+	source = http://www.mattyhex.net/CMR/media/fonts/CelestiaMediumRedux_alt1.55.ttf
+	md5sums = 363a277c00badde21964523184d3c1c4
+	md5sums = 42b203c5113594b9e5f0589269f3f8d3
+
+pkgname = ttf-celestia
+
