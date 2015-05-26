@@ -1,0 +1,9 @@
+post_install(){
+	printf ">> Is desirable add -b43legacy- to modules in /etc/modules-load.d/ \n"
+}
+post_upgrade(){
+	 printf ">> Is desirable add -b43legacy- to modules in /etc/modules-load.d/ \n"
+}
+post_remove(){
+	printf ">> Remember remove any module depending on this like -b43legacy- \n"
+}
