@@ -1,0 +1,21 @@
+pkgbase = sozi-git
+	pkgdesc = An Inkscape extension that creates SVG-based presentations, using JavaScript
+	pkgver = 12.09.a.r605
+	pkgrel = 1
+	url = http://sozi.baierouge.fr/
+	arch = any
+	license = GPL3
+	license = MIT
+	makedepends = git
+	makedepends = scons
+	depends = python2
+	depends = inkscape
+	depends = pygtk
+	depends = python2-lxml
+	provides = sozi
+	conflicts = sozi
+	source = Sozi::git+http://github.com/senshu/Sozi
+	md5sums = SKIP
+
+pkgname = sozi-git
+
