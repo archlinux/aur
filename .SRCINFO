@@ -1,0 +1,18 @@
+pkgbase = b43-firmware-lts
+	pkgdesc = Firmware for Broadcom B43 wireless networking chips for the linux-lts kernel
+	pkgver = 5.10.56.27.3
+	pkgrel = 7
+	url = http://linuxwireless.org/en/users/Drivers/b43
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = b43-fwcutter>=014
+	depends = linux-lts>=3.2
+	provides = b43-firmware=5.10.45.37.3
+	conflicts = b43-firmware
+	options = !emptydirs
+	source = http://mirror2.openwrt.org/sources/broadcom-wl-5.10.56.27.3_mipsel.tar.bz2
+	sha1sums = 0732e266f36755ae62fdc940c57bf989f7ee62ea
+
+pkgname = b43-firmware-lts
+
