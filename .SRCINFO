@@ -1,0 +1,29 @@
+pkgbase = rox-filer-git
+	pkgdesc = A small and fast file manager which can optionally manage the desktop background and panels
+	pkgver = 2.11.r2531
+	pkgrel = 1
+	url = http://roscidus.com/desktop/
+	arch = i686
+	arch = x86_64
+	groups = rox-desktop
+	license = GPL
+	makedepends = librsvg
+	makedepends = python2
+	depends = sh
+	depends = libsm
+	depends = gtk2
+	provides = rox
+	provides = rox-filer
+	replaces = rox
+	replaces = rox-filer
+	source = rox-filer::git+https://github.com/rox-desktop/rox-filer.git
+	source = rox.desktop
+	source = rox.svg
+	source = rox.sh
+	md5sums = SKIP
+	md5sums = de05c906395abd4402b0470c1bc2ae6e
+	md5sums = 658c8648b51e215558e13e6afb2b5c76
+	md5sums = 31578a90b241f0a8d09c9f8587608d00
+
+pkgname = rox-filer-git
+
