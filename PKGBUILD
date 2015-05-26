@@ -15,7 +15,7 @@ source=("http://downloads.sourceforge.net/project/adchpp/Releases/ADCH%2B%2B%202
         'adchpp.sh'
         'adchpp.service'
         'adchpp.tmpfile'
-        'adchpp-sysuser.conf'
+        'adchpp.sysuser'
         'http://data.gpo.zugaina.org/klondike/net-p2p/adchpp/files/adchpp-2.8.0-fix_config_paths.patch'
         'http://data.gpo.zugaina.org/klondike/net-p2p/adchpp/files/adchpp-2.11.0-fix_cflags.patch'
         'https://dl.dropboxusercontent.com/u/6596386/adchpp-2.9.0-fix_store_files_in_config_dir_access.guard_plugin.patch'
@@ -98,5 +98,5 @@ package() {
 
   install -Dm644 ../adchpp.service "${pkgdir}/usr/lib/systemd/system/adchpp.service"
   install -Dm644 ../adchpp.tmpfile "${pkgdir}/usr/lib/tmpfiles.d/adchpp.conf"
-  install -Dm644 ../adchpp-sysuser.conf "${pkgdir}/usr/lib/sysusers.d/adchpp.conf"
+  install -Dm644 ../adchpp.sysuser "${pkgdir}/usr/lib/sysusers.d/adchpp.conf"
 }

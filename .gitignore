@@ -6,4 +6,4 @@
 !adchpp.install
 !adchpp.service
 !adchpp.tmpfile
-!adchpp-sysuser.conf
+!adchpp.sysuser
