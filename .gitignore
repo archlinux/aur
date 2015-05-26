@@ -1,0 +1,9 @@
+src
+pkg
+srcdir
+pkgdir
+stardir
+*.xz
+*.gz
+xfce4-whiskermenu-plugin*
+!xfce4-whisker-menu-plugin-git.install
