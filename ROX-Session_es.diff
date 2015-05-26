@@ -1,0 +1,1217 @@
+# Copyright © Jose Luis Lara Carrascal 2011 <manualinux@yahoo.es> 
+# <http://manualinux.freehostia.com> <http://manualinux.exofire.net> <http://manualinux.my-place.us>
+# Este parche se distribuye bajo la Licencia General GNU
+
+diff -ruN ROX-Session/AppInfo.xml ROX-Session_a/AppInfo.xml
+--- ROX-Session/AppInfo.xml	2009-09-09 23:36:19.000000000 +0200
++++ ROX-Session_a/AppInfo.xml	2011-04-27 03:10:04.869544895 +0200
+@@ -1,7 +1,7 @@
+ <?xml version="1.0"?>
+ <AppInfo>
+   <Summary xml:lang="en">Sets up your desktop when you log in, and lets you log out again</Summary>
+-  <Summary xml:lang="es">Configura tu escritorio cuando ingresas y te permite salir</Summary>
++  <Summary xml:lang="es">Configura el escritorio cuando se conecta, y le permite terminar la sesi√≥n</Summary>
+   <Summary xml:lang="fr">Met en place le bureau quand vous vous connectez, et permet de vous d√©connecter</Summary>
+   <Summary xml:lang="it">Configura il desktop dopo l'accesso al sistema e permette di terminare la sessione</Summary>
+   <Summary xml:lang="zh_CN">ÁôªÂÖ•ÁôªÂá∫ÂèäÊ°åÈù¢ÁÆ°ÁêÜ</Summary>
+@@ -27,7 +27,7 @@
+     <Homepage label="Sito web"/>
+   </About>
+   <About xml:lang="es">
+-    <Purpose label="Prop√≥sito">Administrador de sesi√≥n</Purpose>
++    <Purpose label="Funci√≥n">Administrador de sesi√≥n</Purpose>
+     <Version label="Versi√≥n"/>
+     <Author label="Autor"/>
+     <License label="Licencia">Licencia P√∫blica General GNU</License>
+@@ -50,6 +50,7 @@
+   <AppMenu>
+     <Item option='--install'>
+       <Label xml:lang="en">Install...</Label>
++      <Label xml:lang="es">Instalar...</Label>
+       <Label xml:lang="fr">Installer...</Label>
+       <Label xml:lang='it'>Installa...</Label>
+       <Label xml:lang="zh_CN">ÂÆâË£Ö....</Label>
+@@ -57,6 +58,7 @@
+     </Item>
+     <Item option='--options'>
+       <Label xml:lang="en">Session Settings...</Label>
++      <Label xml:lang="es">Opciones de sesi√≥n...</Label>
+       <Label xml:lang="fr">Options de session...</Label>
+       <Label xml:lang='it'>Impostazioni di sessione...</Label>
+       <Label xml:lang="zh_CN">Session ËÆæÂÆö...</Label>
+@@ -64,9 +66,11 @@
+     </Item>
+     <Item option='--winmgr'>
+       <Label>Window Manager...</Label>
++      <Label xml:lang="es">Administrador de ventanas...</Label>
+     </Item>
+     <Item option='--setup'>
+       <Label xml:lang="en">Auto Start...</Label>
++      <Label xml:lang="es">Iniciar autom√°ticamente...</Label>
+       <Label xml:lang="fr">D√©marrage automatique...</Label>
+       <Label xml:lang='es'>Iniciar Autom&#x00E1;ticamente...</Label>
+       <Label xml:lang='it'>Esecuzione automatica...</Label>
+@@ -75,6 +79,7 @@
+     </Item>
+     <Item option='--messages'>
+       <Label xml:lang="en">Message Log...</Label>
++      <Label xml:lang="es">Registro de mensajes...</Label>
+       <Label xml:lang="fr">Journal...</Label>
+       <Label xml:lang='it'>Messaggi di log...</Label>
+       <Label xml:lang="zh_CN">ËÆØÊÅØÊó•Âøó...</Label>
+diff -ruN ROX-Session/choose_wm.py ROX-Session_a/choose_wm.py
+--- ROX-Session/choose_wm.py	2008-07-02 02:32:46.000000000 +0200
++++ ROX-Session_a/choose_wm.py	2011-05-20 22:23:38.440267841 +0200
+@@ -23,10 +23,10 @@
+ 		gtk.Dialog.__init__(self, _("ROX-Session"),
+ 				buttons = (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
+ 						gtk.STOCK_OK, gtk.RESPONSE_OK))
+-		frame = gtk.Frame(_("<b>Window Manager</b>"))
++		frame = gtk.Frame(_("<b>Administrador de Ventanas</b>"))
+ 		frame.get_label_widget().set_use_markup(True)
+ 		frame.set_shadow_type(gtk.SHADOW_NONE)
+-		label = gtk.Label(_("Enter a window manager command here"))
++		label = gtk.Label(_("Introduzca el comando del gestor de ventanas"))
+ 		vbox = gtk.VBox(True)
+ 		self.vbox.pack_start(frame)
+ 		frame.add(vbox)
+diff -ruN ROX-Session/src/po/es.po ROX-Session_a/src/po/es.po
+--- ROX-Session/src/po/es.po	2009-09-14 19:26:34.000000000 +0200
++++ ROX-Session_a/src/po/es.po	2011-05-20 20:14:55.133675288 +0200
+@@ -1,40 +1,44 @@
+-# Spanish messages for ROX-Session.
+-# Copyright (C) 2003-2004 Marcelo Ramos <mramos@montevideo.com.uy>
+-# Marcelo Ramos <mramos@montevideo.com.uy>
++# SOME DESCRIPTIVE TITLE.
++# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
++# This file is distributed under the same license as the PACKAGE package.
++# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+ #
+ msgid ""
+ msgstr ""
+-"Project-Id-Version: ROX-Session 0.1.20 (19-Jun-2003)\n"
++"Project-Id-Version: Traducci√≥n al espa√±ol de ROX-Session\n"
+ "Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2009-09-14 18:26+0100\n"
+-"PO-Revision-Date: 2003-10-02\n"
+-"Last-Translator: Marcelo Ramos <mramos@montevideo.com.uy>\n"
+-"Language-Team: ROX Mailing list <rox-devel@lists.sourceforge.net>\n"
++"POT-Creation-Date: 2011-04-18 00:15+0200\n"
++"PO-Revision-Date: 2011-05-20 20:14+0100\n"
++"Last-Translator: Jos√© Luis Lara Carrascal <manualinux@yahoo.es>\n"
++"Language-Team: http://manualinux.freehostia.com <manualinux@yahoo.es>\n"
++"Language: \n"
+ "MIME-Version: 1.0\n"
+-"Content-Type: text/plain; charset=iso-8859-1\n"
++"Content-Type: text/plain; charset=UTF-8\n"
+ "Content-Transfer-Encoding: 8bit\n"
++"X-Poedit-Language: Spanish\n"
++"X-Poedit-Country: SPAIN\n"
+ 
+ #: dbus.c:89
+ #, c-format
+ msgid "Unable to read session bus address from dbus-launch: %s"
+-msgstr ""
++msgstr "No se puede leer el bus de mensajes de sesi√≥n desde dbus-launch: %s"
+ 
+-#: dbus.c:90 settings.c:142
++#: dbus.c:90
++#: settings.c:142
+ msgid "unknown error"
+-msgstr ""
++msgstr "error desconocido"
+ 
+ #: dbus.c:149
+ msgid ""
+ "ROX-Session lost its connection to the D-BUS session bus.\n"
+-"You should save your work and logout as soon as possible (many things won't "
+-"work correctly without the bus, and this is the only way to restart it)."
++"You should save your work and logout as soon as possible (many things won't work correctly without the bus, and this is the only way to restart it)."
+ msgstr ""
++"ROX-Session ha perdido la conexi√≥n al bus de mensajes D-BUS.\n"
++"Usted debe guardar su trabajo y cerrar la sesi√≥n tan pronto como sea posible (muchas cosas no funcionar√°n correctamente sin el bus de mensajes, y esta es la √∫nica manera de reiniciar)."
+ 
+ #: dbus.c:318
+-#, fuzzy
+ msgid "ROX-Session is already running. Can't manage your session twice!"
+-msgstr ""
+-"ROX-Session ya est· manejando tu sesiÛn - °no puedo manejarla dos veces!"
++msgstr "ROX-Sesi√≥n ya se est√° ejecutando. ¬°No se puede administrar su sesi√≥n dos veces!"
+ 
+ #: dbus.c:418
+ #, c-format
+@@ -44,54 +48,54 @@
+ "You can get D-BUS from freedesktop.org.\n"
+ "ROX-Session will not work correctly without it!"
+ msgstr ""
++"%s\n"
++"\n"
++"Usted puede obtener D-BUS desde freedesktop.org.\n"
++"¬°ROX-Session no funcionar√° correctamente sin el mismo!"
+ 
+ #: dpms.c:37
+ msgid "DPMS extension not supported"
+-msgstr ""
++msgstr "La extensi√≥n DPMS no est√° soportada"
+ 
+ #: dpms.c:42
+ msgid "Display not capable of DPMS"
+-msgstr ""
++msgstr "La pantalla no soporta DPMS"
+ 
+ #: dpms.c:57
+ msgid "DPMS timeout under 10 seconds, rounding up"
+-msgstr ""
++msgstr "Interrupci√≥n DPMS de 10 segundos, redondeando"
+ 
+ #: dpms.c:64
+ msgid "Unable to read previous DPMS timeouts"
+-msgstr ""
++msgstr "No se pudo leer las interrupciones previas DPMS"
+ 
+ #: dpms.c:70
+ msgid "Unable to set DPMS timeouts"
+-msgstr ""
++msgstr "No se han podido establecer los l√≠mites de tiempo DPMS"
+ 
+ #: dpms.c:83
+ msgid "Unable to get DPMS state"
+-msgstr ""
++msgstr "No se ha podido obtener el estado DPMS"
+ 
+ #: dpms.c:89
+ msgid "Unable to set DPMS state"
+-msgstr ""
++msgstr "No se ha podido establecer el estado DPMS"
+ 
+ #: i18n.c:38
+-msgid ""
+-"Note that you must save your choices, logout and log back in again before "
+-"the new settings will take full effect."
+-msgstr ""
+-"Ten en cuenta que debes guardar tus opciones, salir e ingresar de nuevo para "
+-"que las nuevas opciones surtan efecto."
++msgid "Note that you must save your choices, logout and log back in again before the new settings will take full effect."
++msgstr "Tenga en cuenta que tendr√° que guardar sus opciones, cerrar sesi√≥n e iniciarla de nuevo antes de que las nuevas opciones tengan efecto."
+ 
+ #: log.c:378
+ msgid "ROX-Session: write to stderr failed!\n"
+-msgstr "ROX-Session: °la escritura en stderr fallÛ!\n"
++msgstr "ROX-Session: ¬°ha fallado la escritura a stderr!\n"
+ 
+ #: log.c:402
+ msgid "ROX-Session: read(stderr) failed!\n"
+-msgstr "ROX-Session: °read(stderr) fallÛ!\n"
++msgstr "ROX-Session: ¬°read(stderr) ha fallado!\n"
+ 
+ #: log.c:459
+ msgid "ROX-Session message log"
+-msgstr "Registro de mensajes de ROX-Session "
++msgstr "Registro de mensajes de ROX-Session"
+ 
+ #: log.c:513
+ msgid "Show message log"
+@@ -107,19 +111,19 @@
+ "For more information about these matters, see the file named COPYING.\n"
+ msgstr ""
+ "Copyright (C) 2002 Thomas Leonard.\n"
+-"ROX-Filer viene con ABSOLUTAMENTE NINGUNA GARANTIA,\n"
+-"dentro de lo permitido por la ley.\n"
+-"Puedes distribuir copias de ROX-Filer\n"
+-"bajo los tÈrminos de la Licencia P˙blica General GNU.\n"
+-"Por m·s informaciÛn sobre Èstos temas consulta el archivo llamado COPYING.\n"
++"ROX-Session viene con ABSOLUTAMENTE NINGUNA GARANT√çA,\n"
++"hasta el m√°ximo permitido por la ley.\n"
++"Usted puede redistribuir copias de ROX-Session\n"
++"bajo los t√©rminos de la Licencia General P√∫blica GNU.\n"
++"Para m√°s informaci√≥n sobre estas materias, lea el archivo COPYING.\n"
+ 
+ #: main.c:69
+ msgid "Try `ROX-Session/AppRun --help' for more information.\n"
+-msgstr "Intenta con `ROX-Session/AppRun --help' para m·s informaciÛn.\n"
++msgstr "Pruebe `ROX-Session/AppRun --help' para m√°s informaci√≥n.\n"
+ 
+ #: main.c:72
+ msgid "Try `ROX-Session/AppRun -h' for more information.\n"
+-msgstr "Intenta con `ROX-Session/AppRun -h' para m·s informaciÛn.\n"
++msgstr "Pruebe `ROX-Session/AppRun -h' para m√°s informaci√≥n.\n"
+ 
+ #: main.c:74
+ msgid ""
+@@ -127,12 +131,11 @@
+ "you must use the short versions instead.\n"
+ "\n"
+ msgstr ""
+-"AVISO: Tu sistema no soporta opciones largas - \n"
+-"debes utilizar las versiones cortas.\n"
++"NOTA: Su sistema no soporta opciones largas - \n"
++"tiene que utilizar las versiones cortas en su lugar.\n"
+ "\n"
+ 
+ #: main.c:78
+-#, fuzzy
+ msgid ""
+ "Usage: ROX-Session/AppRun [OPTION]...\n"
+ "If ROX-Session is already managing your session then display\n"
+@@ -142,53 +145,51 @@
+ "  -h, --help        display this help and exit\n"
+ "  -v, --version     display the version information and exit\n"
+ "  -w, --wait        simply wait until run again (internal use)\n"
+-"  -k, --no-xkb      disable control of keyboard; use to "
+-"avoid                     problems when running in a VNC server\n"
++"  -k, --no-xkb      disable control of keyboard; use to avoid                     problems when running in a VNC server\n"
+ "\n"
+ "The latest version can be found at:\n"
+ "\thttp://rox.sourceforge.net\n"
+ "\n"
+ "Report bugs to <tal197@users.sourceforge.net>.\n"
+ msgstr ""
+-"Uso: ROX-Session/AppRun [OPCION]...\n"
+-"Si ROX-Session ya est· manejando tu sesiÛn entonces muestra\n"
+-"la ventana para salir. Si no, ofrece hacer que ROX-Session\n"
+-"sea tu manejador de sesiÛn para las sesiones futuras.\n"
+-"  -h, --help\t\tmuestra Èsta ayuda y termina\n"
+-"  -v, --version\t\tmuestra la versiÛn y termina\n"
+-"  -w, --wait\t\tsimplemente espera hasta ejecutarse de nuevo (uso interno)\n"
++"Uso: ROX-Session/AppRun [OPCI√ìN]...\n"
++"Si ROX-Session ya est√° gestionando su sesi√≥n se desplegar√°\n"
++"la ventana de cierre de sesi√≥n. Si no es as√≠, le sugiero que haga\n"
++"que ROX-Session sea su gestor de sesi√≥n para pr√≥ximas sesiones.\n"
++"\n"
++"  -h, --help        muestra esta ayuda y termina\n"
++"  -v, --version     muestra la informaci√≥n de la versi√≥n y termina\n"
++"  -w, --wait        espera de nuevo hasta volver a ejecutarse (uso interno)\n"
++"  -k, --no-xkb      desactiva el control del teclado; usado para evitar                     problemas cuando est√° corriendo un servidor VNC\n"
+ "\n"
+-"La ˙ltima versiÛn se encuentra en:\n"
++"La √∫ltima versi√≥n la puede encontrar en:\n"
+ "\thttp://rox.sourceforge.net\n"
+ "\n"
+-"Informa sobre fallos a <tal197@users.sourceforge.net>.\n"
++"Informar de fallos en <tal197@users.sourceforge.net>.\n"
+ 
+ #: main.c:239
+ #, c-format
+ msgid "Your login script (%s) died"
+-msgstr "Tu script de login (%s) muriÛ"
++msgstr "Su script de acceso (%s) ha fallado"
+ 
+ #: main.c:242
+ #, c-format
+ msgid "Your login script (%s) exited with exit status %d"
+-msgstr "Tu script de login (%s) terminÛ con cÛdigo de salida %d"
++msgstr "Su script de acceso (%s) ha finalizado con el estado de salida %d"
+ 
+ #: main.c:247
+-msgid ""
+-". I'll give you an xterm to try and fix it. ROX-Session itself is running "
+-"fine though - run me a second time to logout."
+-msgstr ""
+-".  Te darÈ una xterm para que intentes arreglarlo. ROX-Session est· "
+-"corriendo correctamente sin embargo - ejec˙tame otra vez para salir."
++msgid ". I'll give you an xterm to try and fix it. ROX-Session itself is running fine though - run me a second time to logout."
++msgstr ". Le dar√© una xterm para tratar de arreglarlo. ROX-Session s√≠ est√° funcionando bien, aunque - se ejecuta una segunda vez para cerrar la sesi√≥n."
+ 
+-#: options.c:464 options.c:1187
++#: options.c:464
++#: options.c:1187
+ msgid "(use default)"
+-msgstr "(usar predeterminado)"
++msgstr "(usar predefinido)"
+ 
+ #: options.c:735
+ #, c-format
+ msgid "Internal error: %s unreadable"
+-msgstr "Error interno: no se puede leer %s"
++msgstr "Error interno: %s ilegible"
+ 
+ #: options.c:846
+ msgid "Options"
+@@ -196,13 +197,11 @@
+ 
+ #: options.c:891
+ msgid "_Revert"
+-msgstr "_Deshacer"
++msgstr "_Revertir"
+ 
+ #: options.c:897
+ msgid "Restore all choices to how they were when the Options box was opened."
+-msgstr ""
+-"Restaurar todas las opciones a como estaban cuando la ventana Opciones fue "
+-"abierta"
++msgstr "Restaurar todas las opciones a su estado inicial cuando la ventana de opciones sea abierta."
+ 
+ #: options.c:912
+ #, c-format
+@@ -210,14 +209,15 @@
+ "Choices will be saved as:\n"
+ "%s"
+ msgstr ""
+-"Las opciones ser·n guardadas como:\n"
++"Las Opciones ser√°n guardadas como:\n"
+ "%s"
+ 
+ #: options.c:920
+ msgid "(saving disabled by CHOICESPATH)"
+-msgstr "(el guardado de las opciones est· deshabilitado por CHOICESPATH)"
++msgstr "(guardado desactivado por CHOICESPATH)"
+ 
+-#: options.c:1093 settings.c:545
++#: options.c:1093
++#: settings.c:545
+ #, c-format
+ msgid "Error saving %s: %s"
+ msgstr "Error guardando %s: %s"
+@@ -225,13 +225,12 @@
+ #: rox_gettext.c:93
+ #, c-format
+ msgid "Invalid .gmo translation file (too short): %s"
+-msgstr "Archivo de traducciÛn .gmo inv·lido (demasiado corto): %s"
++msgstr "archivo de traducci√≥n incorrecto (demasiado corto): %s"
+ 
+ #: rox_gettext.c:106
+ #, c-format
+ msgid "Invalid .gmo translation file (GNU magic number not found): %s"
+-msgstr ""
+-"Archivo de traducciÛn .gmo inv·lido (N˙mero m·gico GNU no encontrado): %s"
++msgstr "archivo de traducci√≥n .gmo incorrecto (n√∫mero m√°gico GNU no encontrado): %s"
+ 
+ #: session.c:217
+ #, c-format
+@@ -239,18 +238,16 @@
+ "Failed to run login script:\n"
+ "%s"
+ msgstr ""
+-"FallÛ la ejecuciÛn del script de login:\n"
++"El script de acceso ha fallado al ejecutarse:\n"
+ "%s"
+ 
+ #: session.c:268
+-msgid ""
+-"ROX-Filer has terminated (crashed?).You should probably try to restart it."
+-msgstr ""
+-"ROX-Filer ha terminado (øcaÌdo?). Es probable que debas intentar reiniciarlo."
++msgid "ROX-Filer has terminated (crashed?).You should probably try to restart it."
++msgstr "ROX-Filer ha terminado (¬øse colg√≥?). Usted probablemente deber√≠a tratar de reiniciarlo."
+ 
+ #: session.c:270
+ msgid "Do nothing"
+-msgstr "Hacer nada"
++msgstr "No hacer nada"
+ 
+ #: session.c:271
+ msgid "Run Xterm"
+@@ -266,18 +263,18 @@
+ "Failed to run '%s':\n"
+ "%s"
+ msgstr ""
+-"FallÛ la ejecuciÛn de '%s':\n"
++"Error al ejecutar '%s':\n"
+ "%s"
+ 
+ #: session.c:351
+ #, c-format
+ msgid "The following XDG autostart entries failed: '%s'"
+-msgstr ""
++msgstr "La siguiente entrada de inicio autom√°tico XDG ha fallado: '%s'"
+ 
+ #: settings.c:140
+ #, c-format
+ msgid "Unable to launch settings manager '%s': %s"
+-msgstr ""
++msgstr "No se puede iniciar el administrador de opciones '%s': %s"
+ 
+ #: settings.c:383
+ #, c-format
+@@ -286,34 +283,34 @@
+ "%s\n"
+ "You can use the Mouse configuration application to change the setting."
+ msgstr ""
++"No se ha podido cambiar el tema del cursor:\n"
++"%s\n"
++"Usted puede utilizar la aplicaci√≥n de configuraci√≥n del rat√≥n para cambiar esta opci√≥n."
+ 
+ #: wm.c:79
+-msgid ""
+-"Your window manager has crashed (or quit). Please restart it, or choose "
+-"another window manager."
+-msgstr ""
+-"Tu manejador de ventanas se ha caÌdo (o terminÛ). Por favor reinÌcialo, o "
+-"elige otro manejador de ventanas."
++msgid "Your window manager has crashed (or quit). Please restart it, or choose another window manager."
++msgstr "Su administrador de ventanas ha fallado (o terminado). Por favor, rein√≠cielo o seleccione otro administrador de ventanas."
+ 
+ #: wm.c:131
+ #, c-format
+ msgid ""
+ "Your default window manager is now '%s'.\n"
+-"Would you like to quit your current window manager and start the new one "
+-"right now?"
++"Would you like to quit your current window manager and start the new one right now?"
+ msgstr ""
++"Su administrador de ventanas predefinido es ahora '%s'.\n"
++"¬øLe gustar√≠a salir del gestor de ventanas actual e iniciar uno nuevo en este momento?"
+ 
+ #: wm.c:138
+ msgid "Use window manager replace protocol (--replace)"
+-msgstr ""
++msgstr "Usar protocolo de reemplazo del administrador de ventanas (--replace)"
++
++#: wm.c:173
++msgid "Choose window manager"
++msgstr "Seleccionar un administrador de ventanas"
+ 
+ #: wm.c:218
+-msgid ""
+-"The window manager which ROX-Session started for you is still running. Quit "
+-"it before starting a new one."
+-msgstr ""
+-"El manejador de ventanas que ROX-Session ejecutÛ para tÌ todavÌa est· "
+-"corriendo. TermÌnalo antes de ejecutar uno nuevo."
++msgid "The window manager which ROX-Session started for you is still running. Quit it before starting a new one."
++msgstr "El administrador de ventanas que inici√≥ ROX-Session a√∫n se est√° ejecutando. Salga del mismo antes de iniciar uno nuevo."
+ 
+ #: wm.c:241
+ #, c-format
+@@ -322,27 +319,27 @@
+ "%s\n"
+ "Please choose a new window manager and try again."
+ msgstr ""
+-"FallÛ la ejecuciÛn del manejador de ventanas:\n"
++"No se pudo iniciar el administrador de ventanas:\n"
+ "%s\n"
+-"Por favor elige un nuevo manejador de ventanas e intenta de nuevo."
++"Por favor, seleccione un nuevo administrador de ventanas y pruebe de nuevo."
+ 
+ #: xdgautostart.c:51
+ msgid "No name"
+-msgstr ""
++msgstr "Sin nombre"
+ 
+ #: xdgautostart.c:83
+ #, c-format
+ msgid "Can't load key-file '%s': %s"
+-msgstr ""
++msgstr "No se puede cargar el archivo-clave '%s': %s"
+ 
+ #: xdgautostart.c:84
+ msgid "unknown reason"
+-msgstr ""
++msgstr "raz√≥n desconocida"
+ 
+ #: xdgautostart.c:90
+ #, c-format
+ msgid "'%s' is not a .desktop file"
+-msgstr ""
++msgstr "'%s' no es un archivo desktop"
+ 
+ #: xkb.c:96
+ #, c-format
+@@ -351,22 +348,25 @@
+ "%s\n"
+ "You can use the Keyboard configuration application to change the setting."
+ msgstr ""
++"No se pudo ajustar el mapa del teclado:\n"
++"%s\n"
++"Usted puede utilizar la aplicaci√≥n de configuraci√≥n del Teclado para cambiar esta opci√≥n."
+ 
+ #: xkb.c:117
+ msgid "Failed to set auto repeat rate/interval"
+-msgstr ""
++msgstr "No se pudo ajustar el ratio/intervalo de repetici√≥n autom√°tica"
+ 
+ #: xkb.c:136
+ msgid "error in reading keyboard indicator states"
+-msgstr ""
++msgstr "error de lectura en el indicador de estado del teclado"
+ 
+ #: xkb.c:151
+ msgid "error while sending fake key events"
+-msgstr ""
++msgstr "error cuando se enviaban eventos de teclado falso"
+ 
+ #: tips:1
+ msgid "Translation"
+-msgstr "TraducciÛn"
++msgstr "Traducci√≥n"
+ 
+ #: tips:2
+ msgid "Language"
+@@ -374,31 +374,31 @@
+ 
+ #: tips:3
+ msgid "Chinese(Simplified)"
+-msgstr ""
++msgstr "Chino (Simplificado)"
+ 
+ #: tips:4
+ msgid "Chinese(Traditional)"
+-msgstr ""
++msgstr "Chino (Tradicional)"
+ 
+ #: tips:5
+ msgid "Danish"
+-msgstr "DanÈs"
++msgstr "Dan√©s"
+ 
+ #: tips:6
+ msgid "Dutch"
+-msgstr "Alem·n"
++msgstr "Holand√©s"
+ 
+ #: tips:7
+ msgid "English (no translation)"
+-msgstr "InglÈs (sin traducciÛn)"
++msgstr "Ingl√©s (sin traducci√≥n)"
+ 
+ #: tips:8
+ msgid "French"
+-msgstr ""
++msgstr "Franc√©s"
+ 
+ #: tips:9
+ msgid "German"
+-msgstr "Alem·n"
++msgstr "Alem√°n"
+ 
+ #: tips:10
+ msgid "Italian"
+@@ -410,15 +410,15 @@
+ 
+ #: tips:12
+ msgid "Portuguese (Brasil)"
+-msgstr ""
++msgstr "Portugu√©s (Brasil)"
+ 
+ #: tips:13
+ msgid "Spanish"
+-msgstr "EspaÒol"
++msgstr "Espa√±ol"
+ 
+ #: tips:14
+ msgid "Japanese"
+-msgstr "JaponÈs"
++msgstr "Japon√©s"
+ 
+ #: tips:15
+ msgid "Russian"
+@@ -426,39 +426,27 @@
+ 
+ #: tips:16
+ msgid "Use the LANG environment variable"
+-msgstr "Utilizar la variable de entorno LANG"
++msgstr "Usar la variable de entorno LANG"
+ 
+ #: tips:17
+ msgid "Messages"
+ msgstr "Mensajes"
+ 
+ #: tips:18
+-msgid ""
+-"All programs have a 'standard error stream' which they can write text "
+-"messages to. ROX-Session creates such a connection between itself and every "
+-"program it starts. It displays all the messages it collects this way briefly "
+-"on screen."
+-msgstr ""
+-"Todos los programas tienen un 'flujo de error est·ndar', al cual pueden "
+-"escribir mensajes de texto. ROX-Session crea tal conecciÛn entre Èl mismo y "
+-"cada programa que Èl inicia. Muestra todos los mensajes que recoge de Èsa "
+-"forma brevemente en la pantalla."
++msgid "All programs have a 'standard error stream' which they can write text messages to. ROX-Session creates such a connection between itself and every program it starts. It displays all the messages it collects this way briefly on screen."
++msgstr "Todos los programas tienen un 'flujo est√°ndar de errores' que les permite escribir mensajes de texto de salida. ROX-Session crea una conexi√≥n entre √©l y cada programa en el inicio. Y muestra brevemente en la pantalla, todos los mensajes que va recopilando."
+ 
+ #: tips:19
+ msgid "On-screen message log"
+-msgstr "Registro de mensajes en-pantalla"
++msgstr "Registro de mensajes en pantalla"
+ 
+ #: tips:20
+-msgid ""
+-"You can click button-3 on an error message to switch to the log window "
+-"display, or use this button:"
+-msgstr ""
+-"Puedes hacer click con el botÛn-3 en un mensaje de error para ir a la "
+-"ventana de muestra de registros, o puedes utilizar Èste botÛn:"
++msgid "You can click button-3 on an error message to switch to the log window display, or use this button:"
++msgstr "Usted puede hacer clic con el bot√≥n-3 en un mensaje de error para conmutar a la ventana de registros, o utilizar este bot√≥n:"
+ 
+ #: tips:21
+ msgid "Show messages for:"
+-msgstr "Mostrar mensajes de:"
++msgstr "Mostrar mensajes para:"
+ 
+ #: tips:22
+ msgid "seconds"
+@@ -466,154 +454,121 @@
+ 
+ #: tips:23
+ msgid "Number of seconds to display each message for"
+-msgstr "Cantidad de segundos a mostrar cada mensaje"
++msgstr "N√∫mero de segundos para mostrar cada mensaje para"
+ 
+ #: tips:24
+ msgid "Max area for popup display:"
+-msgstr "Area m·xima para la ventana emergente:"
++msgstr "Espacio m√°ximo para desplegar la emergente:"
+ 
+ #: tips:25
+ msgid "%"
+ msgstr "%"
+ 
+ #: tips:26
+-msgid ""
+-"Normally, messages are shown overlayed on the screen for a few seconds. If "
+-"there are a large number of messages (more than this amount of the screen is "
+-"covered) then the view switches to the window style."
+-msgstr ""
+-"Normalmente, los mensajes se muestran sobre la pantalla por unos pocos "
+-"segundos. Si existe una gran cantidad de mensajes (m·s que lo que cubre Èsta "
+-"·rea de pantalla) entonces la vista cambia al estilo de ventana."
++msgid "Normally, messages are shown overlayed on the screen for a few seconds. If there are a large number of messages (more than this amount of the screen is covered) then the view switches to the window style."
++msgstr "Normalmente, los mensajes se muestran superpuestos en la pantalla por unos segundos. Si se muestran un n√∫mero extenso de mensajes (m√°s de los que puedan cubrir este espacio de la pantalla), √©stos se mostrar√°n en modo ventana."
+ 
+-#: tips:27 tips:28
++#: tips:27
++#: tips:28
+ msgid "Power"
+-msgstr "EnergÌa"
++msgstr "Energ√≠a"
+ 
+ #: tips:29
+-#, fuzzy
+-msgid ""
+-"These functions can be selected in the Logout box as alternatives to logging "
+-"out. If your system is running gdm it will be used to implement Halt and "
+-"Reboot, otherwise these commands are used. Similarly, a Power Manager such "
+-"as gnome-power-manager will be used, if available, to suspend the system "
+-"rather than the command below. The correct settings vary between different "
+-"systems. You may need to use xsu or sudo with the command if your system "
+-"doesn't give normal users permission to shutdown the system."
+-msgstr ""
+-"Esos comandos pueden seleccionarse en la ventana Salir como alternativas a "
+-"salir. Las opciones correctas varÌan entre diferentes sistemas. Tal vez "
+-"necesites utilizar xsu o sudo con el comando si tu sistema no permite apagar "
+-"el sistema a los usuarios normales."
++msgid "These functions can be selected in the Logout box as alternatives to logging out. If your system is running gdm it will be used to implement Halt and Reboot, otherwise these commands are used. Similarly, a Power Manager such as gnome-power-manager will be used, if available, to suspend the system rather than the command below. The correct settings vary between different systems. You may need to use xsu or sudo with the command if your system doesn't give normal users permission to shutdown the system."
++msgstr "Estas funciones pueden ser seleccionadas desde el di√°logo de Cierre de Sesi√≥n como alternativas para salir de la sesi√≥n. Si se est√° ejecutando gdm en su sistema, √©ste ser√° utilizado para implementar el Apagado y el Reinicio, en otro caso, estos comandos ser√°n los utilizados. Igualmente, si est√° disponible un gestor de ahorro de energ√≠a como gnome-power-manager, √©ste ser√° utilizado para suspender el sistema o en su lugar el comando siguiente. Las opciones correctas pueden variar de un sistema o otro. Usted puede llegar a necesitar usar xsu o sudo con el comando, si su sistema no permite a los usuarios normales apagar el mismo."
+ 
+ #: tips:30
+ msgid "Halt command:"
+-msgstr "Comando Detener:"
++msgstr "Comando de apagado:"
+ 
+ #: tips:31
+ msgid "Likely commands for halting are 'halt' and 'shutdown -t now'"
+-msgstr "Comandos probables para detener son 'halt' y 'shutdown -t now'"
++msgstr "Los comandos probables para apagar son 'halt' y 'shutdown -t now"
+ 
+ #: tips:32
+ msgid "Reboot command:"
+-msgstr "Comando Reiniciar:"
++msgstr "Comando de reinicio:"
+ 
+ #: tips:33
+ msgid "Likely rebooting commands are 'reboot' and 'shutdown -t now -r'"
+-msgstr "Comandos probables para reiniciar son 'reboot' y 'shutdown -t now -r'"
++msgstr "Probablemente son los comandos \"reboot\" y \"shutdown -t now -r"
+ 
+ #: tips:34
+ msgid "Suspend command:"
+-msgstr "Comando Suspender:"
++msgstr "Comando de suspensi√≥n:"
+ 
+ #: tips:35
+ msgid "Try installing pm-utils and using the pm-suspend command here."
+-msgstr ""
++msgstr "Pruebe a instalar pm-utils y utilice el comando pm-suspend aqu√≠."
+ 
+ #: tips:36
+-#, fuzzy
+ msgid "Settings"
+-msgstr "Opciones de sesiÛn"
++msgstr "Opciones"
+ 
+ #: tips:37
+-#, fuzzy
+ msgid "Settings management"
+-msgstr "Iniciar manejador de ventanas"
++msgstr "Administraci√≥n de las opciones"
+ 
+ #: tips:38
+-msgid ""
+-"The desktop configuration is usually managed by ROX-Session in conjunction "
+-"with the ROX configlets. An alternative settings manager, eg gnome-settings-"
+-"daemon, may be used by setting these options. You must log out and in again "
+-"for any changes to take effect."
+-msgstr ""
++msgid "The desktop configuration is usually managed by ROX-Session in conjunction with the ROX configlets. An alternative settings manager, eg gnome-settings-daemon, may be used by setting these options. You must log out and in again for any changes to take effect."
++msgstr "La configuraci√≥n del escritorio est√° administrada normalmente por ROX-Session en conjunci√≥n con las aplicaciones auxiliares de configuraci√≥n de ROX. Puede utilizarse tambi√©n un gestor de opciones alternativo, como gnome-settings-daemon. Usted tiene que cerrar la sesi√≥n para que los cambios tengan efecto."
+ 
+ #: tips:39
+ msgid "Manage settings with ROX-Session"
+-msgstr ""
++msgstr "Administrar las opciones con ROX-Session"
+ 
+ #: tips:40
+-msgid ""
+-"Check this option to use ROX-Session's settings manager and the ROX "
+-"configlets."
+-msgstr ""
++msgid "Check this option to use ROX-Session's settings manager and the ROX configlets."
++msgstr "Marque esta opci√≥n para utilizar el gestor de opciones de ROX-Session y las aplicaciones auxiliares de configuraci√≥n de ROX."
+ 
+ #: tips:41
+-#, fuzzy
+ msgid "Settings manager"
+-msgstr "Iniciar manejador de ventanas"
++msgstr "Administrador de opciones"
+ 
+ #: tips:42
+-msgid ""
+-"Enter an alternative settings manager program here if not using ROX-"
+-"Session's settings manager. Leave this blank if your settings manager is "
+-"started by some other means."
+-msgstr ""
++msgid "Enter an alternative settings manager program here if not using ROX-Session's settings manager. Leave this blank if your settings manager is started by some other means."
++msgstr "Introduzca un programa administrador de opciones alternativo aqu√≠ si no est√° utilizando para tal cometido, ROX-Session. Dejar en blanco si su administrador de opciones se inicia por cualquier otro medio"
+ 
+-#: ../choose_wm.py:23 ../logout.py:205
+-#, fuzzy
++#: ../choose_wm.py:23
++#: ../logout.py:205
+ msgid "ROX-Session"
+-msgstr "Registro de mensajes de ROX-Session "
++msgstr "ROX-Session"
+ 
+ #: ../choose_wm.py:26
+-#, fuzzy
+ msgid "<b>Window Manager</b>"
+-msgstr "Manejador de ventanas"
++msgstr "<b>Administrador de Ventanas</b>"
+ 
+ #: ../choose_wm.py:29
+-#, fuzzy
+ msgid "Enter a window manager command here"
+-msgstr "Iniciar manejador de ventanas"
++msgstr "Introduzca un comando de ejecuci√≥n aqu√≠"
+ 
+ #: ../gdm.py:56
+ msgid "Incorrect response to GDM version message"
+-msgstr ""
++msgstr "Respuesta incorrecta al mensaje de la versi√≥n de GDM"
+ 
+ #: ../gdm.py:59
+ msgid "Failed to authenticate with GDM server"
+-msgstr ""
++msgstr "No se pudo autenticar con el servidor GDM"
+ 
+ #: ../interactive.py:75
+ msgid "Unknown argument '%s'"
+-msgstr ""
++msgstr "Argumento desconocido '%s'"
+ 
+ #: ../logout.py:152
+-#, fuzzy
+ msgid "Attempting to suspend the system using Power Manager..."
+-msgstr "Intentando reiniciar el sistema..."
++msgstr "Intentando suspender el sistema usando el gestor de ahorro de energ√≠a..."
+ 
+ #: ../logout.py:156
+-#, fuzzy
+ msgid "Attempting to suspend the system with user command..."
+-msgstr "Intentando reiniciar el sistema..."
++msgstr "Intentando suspender el sistema con el comando del usuario..."
+ 
+ #: ../logout.py:178
+ msgid "S_hutdown"
+-msgstr ""
++msgstr "_Apagar"
+ 
+ #: ../logout.py:180
+ msgid "Attempting to halt the system..."
+-msgstr "Intentando detener el sistema..."
++msgstr "Intentando apagar el sistema..."
+ 
+ #: ../logout.py:184
+ msgid "_Reboot"
+@@ -632,330 +587,100 @@
+ "Really logout?\n"
+ "(unsaved data will be lost)"
+ msgstr ""
+-"øEst·s seguro que quieres salir?\n"
+-"(los datos no guardados se perder·n)"
++"¬øSalir realmente?\n"
++"(Se perder√°n los datos no guardados)"
+ 
+ #: ../logout.py:198
+ msgid "Session Settings"
+-msgstr "Opciones de sesiÛn"
++msgstr "Opciones de sesi√≥n"
+ 
+ #: ../logout.py:211
+ msgid "_Switch User"
+-msgstr ""
++msgstr "_Cambiar de usuario"
+ 
+ #: ../logout.py:213
+-#, fuzzy
+ msgid "Attempting to switch user..."
+-msgstr "Intentando detener el sistema..."
++msgstr "Intentando cambiar de usuario..."
+ 
+ #: ../logout.py:218
+ msgid "Logout"
+-msgstr "Salir"
++msgstr "Cerrar sesi√≥n"
+ 
+ #: ../setup.py:25
+ msgid ""
+-"Tried to make a backup of your old '%s' file, but the backup file ('%s') "
+-"already exists.\n"
++"Tried to make a backup of your old '%s' file, but the backup file ('%s') already exists.\n"
+ "If you want to keep it, move it somewhere safe. Otherwise, delete it."
+ msgstr ""
++"Se trat√≥ de hacer una copia de seguridad de su archivo antiguo '%s', pero el archivo de copia de seguridad ('%s') ya existe.\n"
++"Si lo desea mantener, mu√©valo a un sitio seguro. O en su lugar, b√≥rrelo."
+ 
+ #: ../setup.py:37
+ msgid ""
+-"Do you want to make ROX a choice on your login screen (affects all users and "
+-"requires the root password), or do you just want to set the session for your "
+-"current user?\n"
++"Do you want to make ROX a choice on your login screen (affects all users and requires the root password), or do you just want to set the session for your current user?\n"
+ "\n"
+-"If you know the root password and use a graphical display manager such as "
+-"gdm or kdm, you should probably choose that option."
++"If you know the root password and use a graphical display manager such as gdm or kdm, you should probably choose that option."
+ msgstr ""
++"¬øQuiere usted que ROX sea una opci√≥n en su pantalla de acceso (afecta a todos los usuarios y requiere la contrase√±a del administrador), o establecer la sesi√≥n para el usuario actual?\n"
++"\n"
++"Si conoce la contrase√±a del administrador y utiliza un administrador de sesiones, como gdm o kdm, probablemente deber√≠a elegir la primera opci√≥n."
+ 
+ #: ../setup.py:45
+ msgid "Setup for user"
+-msgstr ""
++msgstr "Instalaci√≥n para el usuario"
+ 
+ #: ../setup.py:46
+ msgid "Add to login"
+-msgstr ""
++msgstr "A√±adir al inicio de sesi√≥n"
+ 
+ #: ../setup.py:131
+ msgid ""
+-"OK, now logout by your usual method and when you log in again, I should be "
+-"your session manager.\n"
+-"Note: you may need to select 'Default' as your desktop type after entering "
+-"your user name on the login screen."
+-msgstr ""
+-"OK, ahora sal con tu mÈtodo usual y cuando ingreses de nuevo, yo serÈ tu "
+-"manejador de sesiÛn.\n"
+-"Nota: tal vez tengas que seleccionar 'Default' como tu tipo de escritorio "
+-"despuÈs de ingresar tu nombre de usuario en la pantalla de login."
++"OK, now logout by your usual method and when you log in again, I should be your session manager.\n"
++"Note: you may need to select 'Default' as your desktop type after entering your user name on the login screen."
++msgstr ""
++"Bien, cierre sesi√≥n nuevamente por el m√©todo habitual y cuando usted se conecte de nuevo, aparecer√° su administrador de sesiones.\n"
++"Nota: es posible que tenga que seleccionar 'Default' como el tipo de escritorio despu√©s de introducir su nombre de usuario en la pantalla de acceso."
+ 
+ #: ../setup.py:149
+ msgid ""
+-"I wanted to install a rox.desktop file in your session directory, but I "
+-"couldn't find one! I tried these places (defaults for gdm2, at least):\n"
++"I wanted to install a rox.desktop file in your session directory, but I couldn't find one! I tried these places (defaults for gdm2, at least):\n"
+ "\n"
+-msgstr ""
++msgstr "Se tiene que instalar un archivo rox.desktop en su directorio de sesi√≥n, ¬°pero no se encuentra ninguno! Se intent√≥ estas ubicaciones (por defecto para gdm2, al menos):\n"
+ 
+ #: ../setup.py:156
+-msgid ""
+-"/usr/local/sbin directory is missing! I want to install the rox-session "
+-"script there... Please create it and try again."
+-msgstr ""
++msgid "/usr/local/sbin directory is missing! I want to install the rox-session script there... Please create it and try again."
++msgstr "¬°El directorio /usr/local/sbin no existe! El script rox-session se tiene que instalar all√≠... Por favor, cr√©elo e intente de nuevo."
+ 
+ #: ../setup.py:203
+-#, fuzzy
+-msgid ""
+-"OK, now logout by your usual method, and choose ROX from the session menu on "
+-"your login screen just after entering your user name (but before entering "
+-"your password)."
+-msgstr ""
+-"OK, ahora sal con tu mÈtodo usual y cuando ingreses de nuevo, yo serÈ tu "
+-"manejador de sesiÛn.\n"
+-"Nota: tal vez tengas que seleccionar 'Default' como tu tipo de escritorio "
+-"despuÈs de ingresar tu nombre de usuario en la pantalla de login."
++msgid "OK, now logout by your usual method, and choose ROX from the session menu on your login screen just after entering your user name (but before entering your password)."
++msgstr "Bien, cierre sesi√≥n nuevamente por el m√©todo habitual, y seleccione ROX desde el men√∫ de sesi√≥n en su pantalla de acceso, s√≥lo despu√©s de haber introducido su nombre de usuario (pero antes de introducir su contrase√±a)."
+ 
+ #: ../setup.py:220
+ msgid ""
+-"OK, I don't know what the problem is. Please ask on the rox-users mailing "
+-"list. When we know what the problem is, we can add an extra check here to "
+-"help out others in future.\n"
++"OK, I don't know what the problem is. Please ask on the rox-users mailing list. When we know what the problem is, we can add an extra check here to help out others in future.\n"
+ "\n"
+ "http://rox.sourceforge.net/phpwiki/index.php/MailingLists\n"
+ "(you can copy and paste that address into your browser)"
+ msgstr ""
++"Bueno, no s√© cu√°l es el problema. Por favor, pregunte en la lista de correo de los usuarios de rox. Cuando sepamos cu√°l es el problema, podremos a√±adir un control adicional aqu√≠ para ayudar a otros en el futuro.\n"
++"\n"
++"http://rox.sourceforge.net/phpwiki/index.php/MailingLists\n"
++"(usted puede copiar y pegar esta direcci√≥n en su navegador web)"
+ 
+ #: ../setup.py:231
+ msgid ""
+-"ROX-Session does not appear to be managing your session. Would you like to "
+-"set it up now?\n"
++"ROX-Session does not appear to be managing your session. Would you like to set it up now?\n"
+ "\n"
+ "If you think it should already be set up, click on Help."
+ msgstr ""
++"ROX-Session no parece ser que est√© gestionando su sesi√≥n. ¬øQuiere instalarlo ahora?\n"
++"\n"
++"Si usted piensa que deber√≠a estar ya instalado, haga clic en Ayuda."
+ 
+ #: ../setup.py:236
+ msgid "Set up ROX"
+-msgstr ""
++msgstr "Instalar ROX"
+ 
+ #: ../setup.py:239
+ msgid "Set up ROX-Session"
+-msgstr ""
++msgstr "Instalar ROX-Session"
+ 
+-#~ msgid ""
+-#~ "If your system uses APM for power management, try 'apm -s' or similar. "
+-#~ "ACPI users could try 'xset dpms force off; echo 1 > /proc/acpi/sleep'. "
+-#~ "You'll need a kernel with the correct system compiled in and enabled."
+-#~ msgstr ""
+-#~ "Si tu sistema utiliza APM para el manejo de energÌa, intenta con 'apm -s' "
+-#~ "o similar. Usuarios de ACPI pueden intentar 'xset dpms force off; echo 1 "
+-#~ "> /proc/acpi/sleep'. Necesitar·s un kernel con el sistema correcto "
+-#~ "compilado en Èl y activado."
+-
+-#~ msgid "_Halt"
+-#~ msgstr "_Detener"
+-
+-#~ msgid "Attempting to enter suspend mode..."
+-#~ msgstr "Intentando ingresar en modo suspendido..."
+-
+-#, fuzzy
+-#~ msgid "Failed to create '%s'"
+-#~ msgstr ""
+-#~ "FallÛ la ejecuciÛn de '%s':\n"
+-#~ "%s"
+-
+-#~ msgid "Would you like to make ROX-Session your session manager?"
+-#~ msgstr "øQuieres que ROX-Session sea tu manejador de sesiÛn?"
+-
+-#~ msgid ""
+-#~ "Oh dear; it didn't work and I don't know why!\n"
+-#~ "Error was:\n"
+-#~ "%s\n"
+-#~ "Make sure your .xsession and .xinitrc files are OK, then report the "
+-#~ "problem to tal197@users.sourceforge.net - thanks"
+-#~ msgstr ""
+-#~ "Oh mi amigo; °no funcionÛ y no sÈ porque!\n"
+-#~ "El error fue:\n"
+-#~ "%s\n"
+-#~ "Verifica que tus archivos .xsession y .xinitrc est·n bien, luego informa "
+-#~ "sobre el problema a tal197@users.sourceforge.net - gracias"
+-
+-#~ msgid "Single click!"
+-#~ msgstr "°Un sÛlo click!"
+-
+-#~ msgid "Double click!!"
+-#~ msgstr "°°Dos clicks!!"
+-
+-#~ msgid "Triple click!!!"
+-#~ msgstr "°°°Tres clicks!!!"
+-
+-#~ msgid "Double-click here to test mouse"
+-#~ msgstr "Haz click dos veces aquÌ para probar el ratÛn"
+-
+-#~ msgid ""
+-#~ "ROX-Session not managing XSettings, so changes will have no immediate "
+-#~ "effect..."
+-#~ msgstr ""
+-#~ "ROX-Session no est· manejando los XSettings, asÌ que los cambios no "
+-#~ "tendr·n efecto inmediato..."
+-
+-#~ msgid ""
+-#~ "Error loading window manager list '%s':\n"
+-#~ "%s"
+-#~ msgstr ""
+-#~ "Error cargando la lista de manejadores de ventanas '%s':\n"
+-#~ "%s"
+-
+-#~ msgid ""
+-#~ "No window manager is currently selected.\n"
+-#~ "Please choose a window manager now."
+-#~ msgstr ""
+-#~ "Ning˙n manejador de ventanas est· seleccionado actualmente.\n"
+-#~ "Por favor elige un manejador de ventanas ahora."
+-
+-#~ msgid ""
+-#~ "The window manager is a program which puts title bars and frames on "
+-#~ "windows. It allows you to move windows around, resize them, close them "
+-#~ "and so on."
+-#~ msgstr ""
+-#~ "El manejador de ventanas es un programa que coloca barras de tÌtulo y "
+-#~ "marcos en las ventanas. Te permite mover las ventans, cambiar su tamaÒo, "
+-#~ "cerrarlas, etc"
+-
+-#~ msgid "Default window manager"
+-#~ msgstr "Manejador de ventanas predeterminado"
+-
+-#~ msgid "Display"
+-#~ msgstr "Pantalla"
+-
+-#~ msgid "Text"
+-#~ msgstr "Texto"
+-
+-#~ msgid ""
+-#~ "On newer systems, you can install fonts by dragging them into your ~/."
+-#~ "fonts directory."
+-#~ msgstr ""
+-#~ "En sistemas m·s nuevos puedes instalar fuentes arrastr·ndolas al "
+-#~ "directorio ~/.fonts"
+-
+-#~ msgid "Default font"
+-#~ msgstr "Fuente predeterminada"
+-
+-#~ msgid "The font used by Gtk+-2.0 applications"
+-#~ msgstr "La fuente utilizada por las aplicaciones Gtk+-2.0"
+-
+-#~ msgid "Desktop background"
+-#~ msgstr "Fondo de escritorio"
+-
+-#~ msgid ""
+-#~ "Bring up the menu over the desktop background to set the backdrop image "
+-#~ "or change the pinboard options."
+-#~ msgstr ""
+-#~ "Utiliza el men˙ sobre el fondo de escritorio para establecer la im·gen de "
+-#~ "fondo o para cambiar las opciones del escritorio."
+-
+-#~ msgid "Theme"
+-#~ msgstr "Tema"
+-
+-#~ msgid "GTK theme"
+-#~ msgstr "Tema GTK"
+-
+-#~ msgid "Mouse"
+-#~ msgstr "RatÛn"
+-
+-#~ msgid "Motion"
+-#~ msgstr "Movimiento"
+-
+-#~ msgid "Acceleration threshold"
+-#~ msgstr "Umbral de aceleraciÛn"
+-
+-#~ msgid ""
+-#~ "Controls how fast you have to move the pointer before the acceleration "
+-#~ "(below) kicks in."
+-#~ msgstr ""
+-#~ "Controla cuan r·pido tienes que mover el puntero del ratÛn antes de que "
+-#~ "la aceleraciÛn (abajo) se active."
+-
+-#~ msgid "Acceleration (none)"
+-#~ msgstr "AceleraciÛn (ninguna)"
+-
+-#~ msgid "(10x)"
+-#~ msgstr "(10x)"
+-
+-#~ msgid ""
+-#~ "When the pointer is moved quickly more than the threshold number of "
+-#~ "pixels, its speed is multiplied by this number."
+-#~ msgstr ""
+-#~ "Cuando el puntero es desplazado r·pidamente m·s que el n˙mero umbral de "
+-#~ "pixeles, su velocidad es multiplicada por Èste n˙mero."
+-
+-#~ msgid "DnD Drag Threshold"
+-#~ msgstr "Umbral de arrastre DnD"
+-
+-#~ msgid ""
+-#~ "Controls how far you have to drag the mouse to start a drag-and-drop "
+-#~ "operation.\n"
+-#~ "Set this high if you find yourself dragging things unintentionally."
+-#~ msgstr ""
+-#~ "Controla cuan lejos tienes que arrastrar el ratÛn para que comience una "
+-#~ "operaciÛn arrastrar-y-soltar.\n"
+-#~ "EstablÈcelo alto si descubres que est·s arrastrando cosas sin querer."
+-
+-#~ msgid "Buttons"
+-#~ msgstr "Botones"
+-
+-#~ msgid "Double-click speed: (fast)"
+-#~ msgstr "Velocidad del click doble: (r·pido)"
+-
+-#~ msgid "(slow)"
+-#~ msgstr "(lento)"
+-
+-#~ msgid ""
+-#~ "Time allowed between the two clicks that make up a double click. Make "
+-#~ "this bigger if you have trouble double-clicking fast enough; set it "
+-#~ "smaller if two single-clicks sometimes get treated as a double click."
+-#~ msgstr ""
+-#~ "PerÌodo de tiempo permitido entre dos clicks que forman un click doble. "
+-#~ "Hazlo mayor si tienes problemas para hacer click doble lo suficientemente "
+-#~ "r·pido; hazlo menor si dos clicks algunas veces son tratados como un "
+-#~ "click doble."
+-
+-#~ msgid "Keyboard"
+-#~ msgstr "Teclado"
+-
+-#~ msgid "Cursor"
+-#~ msgstr "Cursor"
+-
+-#~ msgid "Blinking cursor"
+-#~ msgstr "Cursor intermitente"
+-
+-#~ msgid "Speed: (fast)"
+-#~ msgstr "Velocidad: (r·pido)"
+-
+-#~ msgid ""
+-#~ "Speed at which the text entry cursor flashes (if flashing is enabled)."
+-#~ msgstr ""
+-#~ "Velocidad con la cual el cursor de ingreso de texto parpadea (si el "
+-#~ "parpadeo est· activado)"
+-
+-#~ msgid "Shortcuts"
+-#~ msgstr "Atajos"
+-
+-#~ msgid "Allow keybindings to be changed from menus"
+-#~ msgstr "Permite que los atajos de teclado sean modificados en los men˙es"
+-
+-#~ msgid ""
+-#~ "When this is on, you can set up a short-cut for a menu item by holding to "
+-#~ "pointer over the menu item and pressing the key. If off, short-cuts "
+-#~ "cannot be changed."
+-#~ msgstr ""
+-#~ "Cuando Èsto est· activado puedes establecer un atajo de teclado para un "
+-#~ "elemento de men˙ colocando el puntero sobre el elemento del men˙ y "
+-#~ "presionando la tecla. Si est· desactivado, los atajos de teclado no "
+-#~ "pueden ser modificados."
+-
+-#~ msgid ""
+-#~ "You can set global shortcuts (which work from any\n"
+-#~ "application) by assigning them to icons on a ROX-Filer pinboard or panel."
+-#~ msgstr ""
+-#~ "Puedes establecer atajos de teclado globales (los cuales funcionan desde\n"
+-#~ "cualquier aplicaciÛn) asign·ndolos a Ìconos en un escritorio o panel de\n"
+-#~ "ROX-Filer."
+diff -ruN ROX-Session/src/wm.c ROX-Session_a/src/wm.c
+--- ROX-Session/src/wm.c	2008-07-02 02:32:46.000000000 +0200
++++ ROX-Session_a/src/wm.c	2011-05-20 20:38:21.291390702 +0200
+@@ -170,7 +170,7 @@
+ 	GtkWidget *box;
+ 	GtkWidget *vbox, *entry;
+ 
+-	box = gtk_dialog_new_with_buttons("Choose window manager",
++	box = gtk_dialog_new_with_buttons(_("Choose window manager"),
+ 			NULL, GTK_DIALOG_MODAL | GTK_DIALOG_NO_SEPARATOR,
+ 			GTK_STOCK_CLOSE, GTK_RESPONSE_CANCEL,
+ 			GTK_STOCK_EXECUTE, GTK_RESPONSE_OK,

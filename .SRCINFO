@@ -1,0 +1,20 @@
+pkgbase = rox-session-git
+	pkgdesc = ROX Filer session manager
+	pkgver = 0.41.0.r399
+	pkgrel = 1
+	url = http://roscidus.com/desktop/ROX_Session
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = rox-lib-git
+	depends = rox-filer-git
+	depends = dbus
+	depends = xterm
+	depends = dbus-python
+	depends = libxtst
+	depends = librsvg
+	source = rox-session::git+https://github.com/rox-desktop/ROX-Session.git
+	md5sums = SKIP
+
+pkgname = rox-session-git
+
