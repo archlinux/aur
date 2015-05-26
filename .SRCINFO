@@ -1,0 +1,36 @@
+pkgbase = pony-plataforming-project
+	pkgdesc = Pony Plataformimng Poject 4: A colection of pony games (not all are plataforming games)
+	pkgver = 4
+	pkgrel = 4
+	url = http://www.dragon-mango.com/ponygame
+	arch = any
+	license = freeware
+	depends = flashplayer-standalone>=10
+	depends = java-environment>=6
+	source = minuette.swf::http://www.dragon-mango.com/ponygame/tardy/PPP4.swf
+	source = minty.swf::http://www.dragon-mango.com/ponygame/Minty/intro.swf
+	source = minuette.png::http://www.deviantart.com/download/298768764/minuette__s_cutie_mark__aka_colgate__by_wuzzyfuzzybunny-d4xvngc.png
+	source = minuette.desktop
+	source = minuette.sh
+	source = minty.png::http://www.dragon-mango.com/ponygame/CherryMint.png
+	source = minty.desktop
+	source = minty.sh
+	source = PataPony.zip::http://folk.ntnu.no/oddvahu/Permanent/PataPony.zip
+	source = patapony.png::http://fc00.deviantart.net/fs71/f/2011/114/a/a/pinkie_pie_cutie_mark_by_blackgryph0n-d3e1k3f.png
+	source = patapony.desktop
+	source = patapony.sh
+	md5sums = 6e02cab8d0e9d6012196f453586604b1
+	md5sums = ea95a08b7d4149011c14dec7be066507
+	md5sums = 6cdc5f665479a80751493c9018894651
+	md5sums = eda9a884b7946ce29cd67a0ccbb8d1a3
+	md5sums = 6ee227d859f62cf3beea8c8d6abf8b4c
+	md5sums = 0c58817c93dadc1e4f5eeffecce0ce74
+	md5sums = 9f9a34b90aba0f6d6866ae5a7cae52af
+	md5sums = 6632ae1f002feb65899b2b492440da48
+	md5sums = a747897dcd1ce231452da43e74dbc0c0
+	md5sums = e89d937080ee5b651393d9cba5feee82
+	md5sums = f90e0fc8c237c5f6afa806642afdff8e
+	md5sums = 2af74b2a676127a7c3550575668bc17f
+
+pkgname = pony-plataforming-project
+
