@@ -1,0 +1,10 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!adchpp-bzr.install
+!adchpp-bzr.service
+!adchpp-bzr.sysuser
+!adchpp-bzr.tmpfile
+!adchpp.sh
+
