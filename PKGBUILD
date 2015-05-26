@@ -13,7 +13,7 @@ pkgdesc="Telegram library written in Qt based on telegram-cli code"
 arch=('x86_64' 'x64')
 license=('GPL3')
 url=("https://launchpad.net/libqtelegram")
-provides=("libqtelegram-ae=$pkgver")
+provides=("libqtelegram-ae=$epoch:$pkgver")
 conflicts=('libqtelegram-ae')
 depends=('qt5-base' 'qt5-multimedia')
 makedepends=('cmake' 'git')
