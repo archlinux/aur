@@ -4,7 +4,7 @@
 
 pkgname=libkscreen
 pkgver=5.3.1
-pkgrel=3
+pkgrel=1
 pkgdesc='KDE screen management software'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/extragear/libs/libkscreen'
