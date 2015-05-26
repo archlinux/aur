@@ -1,17 +1,17 @@
 pkgbase = xrdp
 	pkgdesc = An open source remote desktop protocol (RDP) server
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://xrdp.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	license = GPL
 	depends = tigervnc
-	source = http://downloads.sourceforge.net/project/xrdp/xrdp/0.6.1/xrdp-v0.6.1.tar.gz
+	source = https://github.com/neutrinolabs/xrdp/archive/v0.6.1.tar.gz
 	source = xrdp.service
 	source = xrdp-sesman.service
-	md5sums = 26099c6588943262023607c1b4e774d8
+	md5sums = ada45a1e8ca0be779b6ef0eda782aa13
 	md5sums = 0cb760b3e8a34f9bdf4daa871444d74c
 	md5sums = 58eb44bdc7ca5bb436d6fd66826f9b0f
 
