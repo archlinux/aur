@@ -1,29 +1,25 @@
 pkgbase = xrdp-git
-	pkgdesc = An open source remote desktop protocol (RDP) server - GIT version
-	pkgver = 0.8.0.r432.g2ed8108
+	pkgdesc = An open source remote desktop protocol(rdp) server - GIT version
+	pkgver = 0.9.0.04b729c
 	pkgrel = 1
-	epoch = 1
 	url = https://github.com/neutrinolabs/xrdp
 	install = xrdp-git.install
 	arch = i686
 	arch = x86_64
-	arch = armv6h
 	license = Apache
-	makedepends = libpulse
-	makedepends = fuse
 	makedepends = git
-	depends = tigervnc
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
 	depends = libxrandr
-	optdepends = libpulse: to use the pule audio module
-	optdepends = fuse: to use the file clipboard module
-	provides = xrdp=0.8.0
+	depends = tigervnc
 	conflicts = xrdp
 	backup = etc/xrdp/sesman.ini
 	backup = etc/xrdp/xrdp.ini
-	source = xrdp-git::git+https://github.com/neutrinolabs/xrdp.git
+	source = xrdp-git::git+https://github.com/neutrinolabs/xrdp.git#commit=04b729c
 	source = arch-config.diff
 	md5sums = SKIP
-	md5sums = d08f0984fc543e2478eaa79337726da7
+	md5sums = 12bcbdf83cae9754da5e39aaf5e013e8
 
 pkgname = xrdp-git
 
