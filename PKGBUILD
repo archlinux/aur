@@ -1,7 +1,7 @@
-# Maintainer: Felix Yan <felixonmars@gmail.com>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=fcitx-skk
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Fcitx Wrapper for libskk"
 arch=('i686' 'x86_64')
@@ -24,4 +24,4 @@ package() {
   make DESTDIR="${pkgdir}" install
 }
 
-sha512sums=('2482d5bd1f8ed10bc368164930f1bbbbb12f3475e777f09cf0234deca29f9ec90c0fdc5f207d3f9a8a49ef2d34f1aceae1eb5872cd2f0b5e3c678b3e4689df51')
+sha512sums=('040ae86a687e036be724d856808dd0c713517c216a44fd9ec65d5da708115681d3a1865947db3fcc597dee19bc350a94114b1b780a90c3444309db15f1a3e868')
