@@ -1,7 +1,7 @@
 pkgbase = mitmproxy
 	pkgdesc = SSL-capable man-in-the-middle HTTP proxy
-	pkgver = 0.11.3
-	pkgrel = 2
+	pkgver = 0.12.0
+	pkgrel = 1
 	url = http://mitmproxy.org/
 	arch = any
 	license = GPL
@@ -21,7 +21,7 @@ pkgbase = mitmproxy
 	optdepends = python2-cssutils: Contentviews - Beautifies CSS files
 	provides = python2-libmproxy
 	conflicts = mitmproxy-git
-	source = http://mitmproxy.org/download/mitmproxy-0.11.3.tar.gz
-	sha256sums = e774760fc33864caa708eeaafb756e110d7adeb619f3734f2f50b2a0e4910d5c
+	source = http://mitmproxy.org/download/mitmproxy-0.12.0.tar.gz
+	sha256sums = 7c317b06d94c63ab3b44c6162a4a6eab4d3e829494b0ae8cba8a18d4e4addcc8
 
 pkgname = mitmproxy
