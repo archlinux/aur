@@ -1,0 +1,19 @@
+pkgbase = ponysay-devel-git
+	pkgdesc = Pony wrapper for cowsay. (develop branch)
+	pkgver = 3.0.1.git2243
+	pkgrel = 1
+	url = https://github.com/erkin/ponysay
+	arch = any
+	license = GPL3
+	license = FDL
+	makedepends = git
+	makedepends = texinfo
+	makedepends = util-say-git
+	depends = python3
+	depends = coreutils
+	provides = ponysay
+	source = ponysay::git+https://github.com/erkin/ponysay#branch=develop
+	md5sums = SKIP
+
+pkgname = ponysay-devel-git
+
