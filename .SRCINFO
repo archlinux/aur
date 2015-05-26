@@ -1,0 +1,29 @@
+pkgbase = gstreamer-fluendo-mp3
+	pkgdesc = GStreamer fluendo/Oneplay mp3 plugin
+	pkgver = 0.10.32
+	pkgrel = 2
+	url = http://eu.fluendo.com/oneplay/oneplay-mp3-decoder/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = pkgconfig
+	makedepends = gst-plugins-base-libs
+	depends = gstreamer0.10-base
+	provides = gstreamer-oneplay-mp3
+	source = http://core.fluendo.com/gstreamer/src/gst-fluendo-mp3/gst-fluendo-mp3-0.10.32.tar.bz2
+	md5sums = 20ae57ed3a27a11555b2fc82ff3d333f
+
+pkgname = gstreamer0.10-fluendo-mp3
+	groups = gstreamer0.10-plugins
+	provides = gst0.10-fluendo-mp3
+	provides = gst0.10-oneplay-mp3
+	provides = gstreamer0.10-oneplay-mp3
+	conflicts = gst0.10-fluendo-mp3
+	conflicts = gst0.10-oneplay-mp3
+	conflicts = gstreamer0.10-oneplay-mp3
+
+pkgname = gst-fluendo-mp3
+	groups = gst-plugins
+	depends = gst-plugins-base-libs
+	provides = gst-oneplay-mp3
+
