@@ -1,0 +1,20 @@
+pkgbase = thunar-nilfs2-plugin-git
+	pkgdesc = You can see a list of checkpoints created by NILFS2 in Thunar
+	pkgver = 0.git4
+	pkgrel = 1
+	url = https://github.com/kazuki/thunar-nilfs2-plugin
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = thunar
+	makedepends = xfce4-dev-tools
+	depends = nilfs-utils
+	provides = thunar-nilfs2-plugin
+	conflicts = thunar-nilfs2-plugin
+	conflicts = thunar-nilfs2-plugin-git
+	source = thunar-nilfs2-plugin::git+https://github.com/jristz/thunar-nilfs2-plugin.git
+	md5sums = SKIP
+
+pkgname = thunar-nilfs2-plugin-git
+
