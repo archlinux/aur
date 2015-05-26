@@ -1,8 +1,8 @@
-# Maintainer: Felix Yan <felixonmars@gmail.com>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: csslayer <wengxt AT gmail com>
 
 pkgname=fcitx-kkc
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Fcitx Wrapper for libkkc"
 arch=('i686' 'x86_64')
@@ -25,4 +25,4 @@ package() {
   make DESTDIR="${pkgdir}" install
 }
 
-sha512sums=('595a4a728112827a6eae4bcbeda87926660fad494c547396da4e5d951aa53aa372261170c261b421056dc626d04fd4bf4728d51fd84e1ec9b7d260ca8d9b0353')
+sha512sums=('fee5bc30cd9db1f333bb8dd58658f70894e188472767e0dd08b86ee4f711395ec423b29dc5c530613af6b8c4926f2e5253e61941e69ec0eecd2db135c50e9ff5')
