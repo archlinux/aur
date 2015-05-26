@@ -1,0 +1,21 @@
+pkgbase = xubuntu-artwork
+	pkgdesc = Xubuntu themes and artwork
+	pkgver = 15.04.4
+	pkgrel = 3
+	url = https://launchpad.net/xubuntu-artwork
+	arch = any
+	license = GPL
+	optdepends = plymouth: For plymouth theme to work
+	optdepends = lightdm-gtk-greeter: For LightDM GTK-3 Greeter theme to work
+	optdepends = shimmer-wallpapers: Wallpapers not included in the main package
+	optdepends = xfce-theme-albatross: Official theming, git or stable versions are ok
+	optdepends = xfce-theme-bluebird: Official theming, git or stable version are ok
+	optdepends = xfce-theme-greybird: Official theming, git or stable version are ok
+	optdepends = elementary-xfce-icons: For matching icon theme, or if you want use the git version
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/xubuntu-artwork_15.04.4.tar.xz
+	source = 0001_Plymouth_dir.patch
+	md5sums = 288b5e87f7ee4e5f5d2b4f9e99f94aca
+	md5sums = c9a1b1997abf7d43dda91bf7991ed42c
+
+pkgname = xubuntu-artwork
+
