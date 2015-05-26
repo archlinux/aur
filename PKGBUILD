@@ -3,12 +3,12 @@
 
 pkgname=nodejs-pageres
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Get screenshots of websites in different resolutions"
 arch=('i686' 'x86_64')
 url="https://github.com/sindresorhus/pageres"
 license=("MIT")
-depends=('nodejs')
+depends=('nodejs' 'npm')
 optdepends=()
 source=(
     "http://registry.npmjs.org/${pkgname/nodejs-/}/-/${pkgname/nodejs-/}-${pkgver}.tgz"
