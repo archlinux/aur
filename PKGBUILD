@@ -1,4 +1,5 @@
-# Maintainer: Cedric Girard <girard.cedric@gmail.com>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Cedric Girard <girard.cedric@gmail.com>
 # Contributor: Florian Pritz <flo@xinu.at>
 # Contributor: Adam Hani Schakaki (krzd) <krzd@krzd.net>
 # Contributor: Det <nimetonmaili at gmail a-dot com>
@@ -9,14 +10,14 @@
 
 pkgname=cairo-compmgr
 pkgver=0.3.1
-pkgrel=9
+pkgrel=10
 epoch=2
 pkgdesc="A Cairo based composite manager"
 arch=(i686 x86_64)
 url="https://github.com/gandalfn/Cairo-Composite-Manager"
 license=(LGPL)
 makedepends=(gettext gtk-doc "intltool>=0.41" git)
-depends=("gtk2>=2.16.0" "vala>=0.26" libsm libgl gconf)
+depends=("gtk2>=2.16.0" "vala>=0.28" "vala<0.30" libsm gconf)
 install=cairo-compmgr.install
 options=(!libtool)
 source=(https://github.com/downloads/gandalfn/Cairo-Composite-Manager/$pkgname-$pkgver.tar.bz2
@@ -30,9 +31,9 @@ md5sums=('4ef285e0735b1a61b5db2205a2d8f8b3'
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  #patch for compatibility with vala 0.26
-  sed -i 's!libvala-0.16!libvala-0.26!' configure.ac
-  sed -i 's!libvala-0.16!libvala-0.26!' vapi/cairo-compmgr.deps
+  #patch for compatibility with vala 0.28
+  sed -i 's!libvala-0.16!libvala-0.28!' configure.ac
+  sed -i 's!libvala-0.16!libvala-0.28!' vapi/cairo-compmgr.deps
 
   #patch needed to build with newer deps version
   patch -p1 < ../4.diff
