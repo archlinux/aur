@@ -1,0 +1,17 @@
+pkgbase = xfce-theme-bluebird-git
+	pkgdesc = A light blue Xfce theme, introduced in the release of Xubuntu 10.10
+	pkgver = 1.2_7_g11053fd
+	pkgrel = 1
+	url = https://github.com/shimmerproject/Bluebird
+	arch = any
+	license = GPL2
+	license = CCPL
+	makedepends = git
+	depends = gtk-engine-murrine
+	provides = xfce-theme-bluebird
+	conflicts = xfce-theme-bluebird
+	source = git+http://github.com/shimmerproject/Bluebird
+	md5sums = SKIP
+
+pkgname = xfce-theme-bluebird-git
+
