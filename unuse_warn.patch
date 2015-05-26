@@ -1,0 +1,11 @@
+*** lib/fts.c	Thu Feb 14 15:10:10 2013
+--- lib/fts.c	Fri Jul 29 17:55:25 2005
+*************** fts_set(sp, p, instr)
+*** 472,474 ****
+  {
+! sp = NULL;	/* stop compiler whinging */
+  	if (instr != 0 && instr != FTS_AGAIN && instr != FTS_FOLLOW &&
+--- 472,474 ----
+  {
+! 	(void)sp;  /* stop compiler whinging */
+  	if (instr != 0 && instr != FTS_AGAIN && instr != FTS_FOLLOW &&
