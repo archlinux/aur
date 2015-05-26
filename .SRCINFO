@@ -1,0 +1,17 @@
+pkgbase = sonar-icon-theme
+	pkgdesc = Icon theme from Suse 11.3 (tecnically from factory), based on the default gnome 3.0.0 icon theme.
+	pkgver = 11.3.1.70.3
+	pkgrel = 1
+	url = http://www.opensuse.org
+	install = sonar-icon-theme.install
+	arch = any
+	license = GPL3
+	makedepends = rpmextract
+	optdepends = gnome-icon-theme: For correct integration into the desktop
+	provides = icon-theme-sonar
+	provides = sonar-icon-theme
+	source = http://download.opensuse.org/repositories/GNOME:/Factory/openSUSE_Factory/noarch/sonar-icon-theme-11.3.1-70.3.noarch.rpm
+	md5sums = 92778f8fce735d4e37689e4c47fc0ab8
+
+pkgname = sonar-icon-theme
+
