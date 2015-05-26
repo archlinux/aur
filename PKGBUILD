@@ -1,8 +1,8 @@
-# Maintainer: Felix Yan <felixonmars@gmail.com>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: lh <jason52lh@gmail.com>
 
 pkgname=fcitx-anthy
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Fcitx Wrapper for anthy."
 arch=('i686' 'x86_64')
@@ -25,4 +25,4 @@ package() {
   make DESTDIR=${pkgdir} install
 }
 
-md5sums=('23ce628c01c5c09f9d4f1402c50fb19b')
+md5sums=('956660d67900f59fa7fd80d68cc4ad7c')
