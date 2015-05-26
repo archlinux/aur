@@ -1,0 +1,13 @@
+pkgbase = archlinux-artwork
+	pkgdesc = Official logos, icons, CD labels and other artwork for Arch Linux
+	pkgver = 1.6
+	pkgrel = 3
+	url = http://www.archlinux.org/
+	arch = any
+	license = CCPL:cc-by-nc-sa
+	license = custom:TRADEMARKS
+	source = archlinux-artwork-1.6.tar.gz::https://github.com/jristz/archlinux-artwork/archive/1.6.tar.gz
+	md5sums = ce4aefa72574465eb74e4d0a795aee5a
+
+pkgname = archlinux-artwork
+
