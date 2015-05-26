@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Exec=rssowl
+Name=RSSOwl
+GenericName=RSS Reader
+X-KDE-StartupNotify=true
+Comment=RSS Reader
+Icon=/usr/share/rssowl/icon.xpm
+Terminal=false
+Type=Application
+Categories=Network;

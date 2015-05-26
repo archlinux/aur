@@ -1,0 +1,8 @@
+post_install() {
+  /usr/share/rssowl/xulrunner/xulrunner --register-user
+}
+
+pre_remove() {
+  /usr/share/rssowl/xulrunner/xulrunner --unregister-user
+}
+
