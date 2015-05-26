@@ -1,6 +1,6 @@
 pkgbase = xf86-input-synaptics-gesturesonly
 	pkgdesc = Synaptics driver for notebook touchpads
-	pkgver = 1.7.4.r0.g8a5533a
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = http://patchwork.freedesktop.org/patch/14393/
 	arch = i686
@@ -18,18 +18,15 @@ pkgbase = xf86-input-synaptics-gesturesonly
 	conflicts = synaptics
 	options = !libtool
 	options = zipman
-	source = xf86-input-synaptics::git://anongit.freedesktop.org/xorg/driver/xf86-input-synaptics#branch=synaptics-1.7-branch
+	source = xf86-input-synaptics::git://anongit.freedesktop.org/xorg/driver/xf86-input-synaptics#tag=xf86-input-synaptics-1.8.2
 	source = 50-synaptics.conf.patch
 	source = 14393-gestures-only.patch
-	source = 14393-gestures-only.master.patch
 	md5sums = SKIP
 	md5sums = 5ae00aad3e70265defa5bd08da621b5c
-	md5sums = ccbc1ece7233f41dceeb7243d09cf8f1
-	md5sums = b3ccf67c831b3e9a81dd670c4dfa8e8c
+	md5sums = 21afe2219d3bf9a628bbae1e4922978e
 	sha256sums = SKIP
 	sha256sums = 8c24a04508acfab32b78e8dfbebe589e35f908cc74f1225215eed6fd48c530c3
-	sha256sums = 6251c0b586e8679857a9b5edc66568ae47d838520bf5da114d39210cbefbe3f8
-	sha256sums = 05ab21d33fe7131e7a16a3b69ef741f950fedadb507364d3bbd3d486c3b55270
+	sha256sums = 781ed57c18b55c3826f5b3be7c966c6d6dadf2234b9e42fb1052150c987172be
 
 pkgname = xf86-input-synaptics-gesturesonly
 
