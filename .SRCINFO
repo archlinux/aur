@@ -1,0 +1,22 @@
+pkgbase = libxfcegui4
+	pkgdesc = Various Gtk widgets for Xfce4
+	pkgver = 4.10.0
+	pkgrel = 5
+	url = http://www.xfce.org/
+	install = libxfcegui4.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = intltool
+	depends = startup-notification
+	depends = xfconf
+	depends = libglade
+	depends = libsm
+	depends = hicolor-icon-theme
+	source = http://archive.xfce.org/src/xfce/libxfcegui4/4.10/libxfcegui4-4.10.0.tar.bz2
+	source = libxfcegui4-4.10.0-no-xfce_setenv.patch
+	sha256sums = 2b82f9979175d8856880c8f349e6eede491ca92fe6940c69c8958115418d4533
+	sha256sums = d1f4603b5eeef92d5d256d8f766e516395947d72e16db68ce47e472130b94616
+
+pkgname = libxfcegui4
+
