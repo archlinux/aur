@@ -1,0 +1,103 @@
+diff -Nur -x '*.orig' -x '*~' xfce4-quicklauncher-plugin-1.9.4/configure xfce4-quicklauncher-plugin-1.9.4.new/configure
+--- xfce4-quicklauncher-plugin-1.9.4/configure	2007-06-27 21:07:14.000000000 +0200
++++ xfce4-quicklauncher-plugin-1.9.4.new/configure	2008-03-04 22:11:23.000000000 +0100
+@@ -21181,7 +21181,7 @@
+ 
+ 
+ 
+-    ALL_LINGUAS="cs el eu fr gl hu ja pl ru vi"
++    ALL_LINGUAS="cs el en eu fr gl hu ja pl ru vi"
+ 
+ 
+ for ac_header in locale.h
+diff -Nur -x '*.orig' -x '*~' xfce4-quicklauncher-plugin-1.9.4/po/en.po xfce4-quicklauncher-plugin-1.9.4.new/po/en.po
+--- xfce4-quicklauncher-plugin-1.9.4/po/en.po	1970-01-01 01:00:00.000000000 +0100
++++ xfce4-quicklauncher-plugin-1.9.4.new/po/en.po	2008-03-04 22:10:58.000000000 +0100
+@@ -0,0 +1,87 @@
++# English translation of xfce4-quicklauncher-plugin.
++# Copyright (C) 2007 THE xfce4-quicklauncher-plugin'S COPYRIGHT HOLDER
++# This file is distributed under the same license as the xfce4-quicklauncher-plugin package.
++# Jeff Bailes <thepizzaking@gmail.com>, 2007.
++# , fuzzy
++# 
++# 
++msgid ""
++msgstr ""
++"Project-Id-Version: xfce4-quicklauncher-plugin\n"
++"Report-Msgid-Bugs-To: \n"
++"POT-Creation-Date: 2007-05-17 21:37+0200\n"
++"PO-Revision-Date: 2007-03-31 10:17+1000\n"
++"Last-Translator: Jeff Bailes <thepizzaking@gmail.com>\n"
++"Language-Team: English\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=UTF-8\n"
++"Content-Transfer-Encoding: 8bit"
++
++#: ../panel-plugin/callbacks.c:79
++msgid "Configure Quicklauncher"
++msgstr "Configure Quicklauncher"
++
++#: ../panel-plugin/callbacks.c:93
++msgid "Lines: "
++msgstr "Lines: "
++
++#: ../panel-plugin/callbacks.c:123
++msgid "Espace entre les lanceurs :"
++msgstr "Space between launchers"
++
++#: ../panel-plugin/callbacks.c:131
++msgid "afficher les tooltips"
++msgstr "Show tooltips"
++
++#: ../panel-plugin/callbacks.c:135
++msgid "afficher les labels"
++msgstr "Show labels"
++
++#: ../panel-plugin/callbacks.c:216
++msgid "icone"
++msgstr "icon"
++
++#: ../panel-plugin/callbacks.c:222
++msgid "commande"
++msgstr "command"
++
++#: ../panel-plugin/callbacks.c:228
++msgid "nom"
++msgstr "name"
++
++#: ../panel-plugin/callbacks.c:327
++msgid "Open icon"
++msgstr "Open icon"
++
++#: ../panel-plugin/main.c:163 ../panel-plugin/quicklauncher.desktop.in.in.h:2
++msgid "Quicklauncher"
++msgstr "Quicklauncher"
++
++#: ../panel-plugin/main.c:166
++msgid "Allows you to add launchers easily and display them on many lines."
++msgstr "Allows you to add launchers easily and display them on many lines."
++
++#: ../panel-plugin/main.c:168
++msgid "Other plugins available here"
++msgstr "Other plugins available here"
++
++#: ../panel-plugin/main.c:320
++msgid "Lock"
++msgstr "Lock"
++
++#: ../panel-plugin/main.c:323
++msgid "Parameters"
++msgstr "Parameters"
++
++#: ../panel-plugin/main.c:326
++msgid "Applications"
++msgstr "Applications"
++
++#: ../panel-plugin/main.c:329
++msgid "Help"
++msgstr "Help"
++
++#: ../panel-plugin/quicklauncher.desktop.in.in.h:1
++msgid "Program with several launchers"
++msgstr "Program with several launchers"
++

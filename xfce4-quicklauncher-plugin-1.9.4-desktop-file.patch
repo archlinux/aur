@@ -1,0 +1,10 @@
+--- panel-plugin/quicklauncher.desktop.in.in.orig	2009-07-04 00:46:34.000000000 +0200
++++ panel-plugin/quicklauncher.desktop.in.in	2009-07-04 00:46:51.000000000 +0200
+@@ -4,4 +4,6 @@
+ _Name=Quicklauncher
+ _Comment=Program with several launchers
+ Icon=gnome-fs-executable
+-X-XFCE-Module=@INTERNAL_PLUGIN_PATH@/libquicklauncher.so
++X-XFCE-Module=quicklauncher
++X-XFCE-Module-Path=@INTERNAL_PLUGIN_PATH@
++X-XFCE-Unique=false

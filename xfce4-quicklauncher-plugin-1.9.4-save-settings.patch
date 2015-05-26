@@ -1,0 +1,12 @@
+Index: xfce4-quicklauncher-plugin-1.9.4/panel-plugin/main.c
+===================================================================
+--- xfce4-quicklauncher-plugin-1.9.4/panel-plugin/main.c	(révision 3779)
++++ xfce4-quicklauncher-plugin-1.9.4/panel-plugin/main.c	(révision 3780)
+@@ -151,6 +151,7 @@
+         gtk_window_set_screen (GTK_WINDOW (dlg->dialog), gtk_widget_get_screen (plugin));
+ 	qck_launcher_opt_dlg_set_quicklauncher(quicklauncher);
+ 	gtk_dialog_run(GTK_DIALOG(dlg->dialog));
++	quicklauncher_save(plugin, quicklauncher);
+ 	xfce_panel_plugin_unblock_menu(plugin);
+ }
+ 

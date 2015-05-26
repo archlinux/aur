@@ -1,0 +1,27 @@
+pkgbase = xfce4-quicklauncher-plugin
+	pkgdesc = Plugin that creates little application launchers in the Xfce4 panel
+	pkgver = 1.9.4
+	pkgrel = 11
+	url = http://goodies.xfce.org/projects/panel-plugins/xfce4-quicklauncher-plugin
+	arch = i686
+	arch = x86_64
+	groups = xfce4-goodies
+	license = GPL2
+	makedepends = intltool
+	depends = xfce4-panel
+	depends = libxfcegui4
+	source = http://archive.xfce.org/src/panel-plugins/xfce4-quicklauncher-plugin/1.9/xfce4-quicklauncher-plugin-1.9.4.tar.bz2
+	source = xfce4-quicklauncher-plugin-1.9.4-desktop-file.patch
+	source = xfce4-quicklauncher-plugin-1.9.4-fix-missing-english-translation.patch
+	source = xfce4-quicklauncher-plugin-1.9.4-fix-multiscreen.patch
+	source = xfce4-quicklauncher-plugin-1.9.4-save-settings.patch
+	source = xfce4-quicklauncher-plugin-1.9.4-xfce4-settings-manager.patch
+	sha256sums = 0b253d96e3b3fb02508e1100cbf39bfb8b40e9c75da75053e6432d83dedfffdf
+	sha256sums = b652819d9f4b1c1b1851e7fbd6f811c9087ca500cd8231abf7aa28072293254e
+	sha256sums = 3d7b41a5f4c8a7506f57f612b68b6b92cdd2d251cc7d3b7a7762bbaed60d612d
+	sha256sums = f2ec190adcf1d4bef2317b29a3005ce3066b34f9cf5d6a48c045112f1c16c4c3
+	sha256sums = 7944d9ac739cefd37fc00abca2ed6d7c45b00ed7afd02bb8779d9a11b54d986e
+	sha256sums = 0c678f3128df6b3061fa409a06c2399e43031f7424a1aaa6643fa98aa02e25c7
+
+pkgname = xfce4-quicklauncher-plugin
+

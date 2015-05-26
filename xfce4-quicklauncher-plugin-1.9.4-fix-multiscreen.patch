@@ -1,0 +1,27 @@
+--- panel-plugin/main.c.org	2008-05-13 09:29:29.000000000 -0600
++++ panel-plugin/main.c	2008-05-13 09:29:33.000000000 -0600
+@@ -148,6 +148,7 @@
+ 	t_qck_launcher_opt_dlg* dlg;
+ 	xfce_panel_plugin_block_menu(plugin);
+ 	dlg = create_qck_launcher_dlg();
++        gtk_window_set_screen (GTK_WINDOW (dlg->dialog), gtk_widget_get_screen (plugin));
+ 	qck_launcher_opt_dlg_set_quicklauncher(quicklauncher);
+ 	gtk_dialog_run(GTK_DIALOG(dlg->dialog));
+ 	xfce_panel_plugin_unblock_menu(plugin);
+@@ -160,6 +161,7 @@
+ 	GtkWidget *about;
+ 	const gchar* authors[2] = {"Bountykiller <masse_nicolas@yahoo.fr>", NULL};
+ 	about = gtk_about_dialog_new();
++        gtk_window_set_screen (GTK_WINDOW (about), gtk_widget_get_screen (plugin));
+ 	gtk_about_dialog_set_name(GTK_ABOUT_DIALOG(about), _("Quicklauncher"));
+ 	gtk_about_dialog_set_logo(GTK_ABOUT_DIALOG(about), NULL);
+ 	gtk_about_dialog_set_authors(GTK_ABOUT_DIALOG(about), (const gchar**) authors);
+@@ -461,7 +463,7 @@
+ 		if(launcher->quicklauncher->_last_zoomed_launcher == launcher)
+ 		{
+ 			g_return_val_if_fail(launcher->clicked_img, FALSE);
+-			xfce_exec(launcher->command, FALSE, FALSE, NULL);
++			xfce_exec_on_screen(gtk_widget_get_screen (box), launcher->command, FALSE, FALSE, NULL);
+ 			gtk_image_set_from_pixbuf (GTK_IMAGE(launcher->image), launcher->def_img);
+ 		}
+ 		else

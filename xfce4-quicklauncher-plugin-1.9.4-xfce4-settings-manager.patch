@@ -1,0 +1,11 @@
+--- panel-plugin/main.c.orig	2009-09-09 21:15:01.000000000 +0200
++++ panel-plugin/main.c	2009-09-09 21:23:12.000000000 +0200
+@@ -320,7 +320,7 @@
+ 	launcher = launcher_new(_("Lock"), "xflock4", XFCE_ICON_CATEGORY_SYSTEM,
+ 							NULL, quicklauncher);
+ 	quicklauncher_add_element(quicklauncher, launcher);
+-	launcher = launcher_new(_("Parameters"),"xfce-setting-show", XFCE_ICON_CATEGORY_SETTINGS,
++	launcher = launcher_new(_("Parameters"),"xfce4-settings-manager", XFCE_ICON_CATEGORY_SETTINGS,
+ 							NULL, quicklauncher);
+ 	quicklauncher_add_element(quicklauncher, launcher);
+ 	launcher = launcher_new(_("Applications"), "xfce4-appfinder", XFCE_ICON_CATEGORY_UTILITY,
