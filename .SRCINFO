@@ -1,0 +1,22 @@
+pkgbase = rox-lib-git
+	pkgdesc = Shared code which can be used by other ROX applications. This is rox-lib2
+	pkgver = 2.0.6.r472
+	pkgrel = 1
+	url = http://rox.sourceforge.net/desktop/ROX-Lib
+	arch = any
+	groups = rox-desktop
+	license = LGPL
+	depends = pygtk
+	provides = rox-lib2
+	provides = rox-lib2-git
+	provides = rox-lib
+	provides = rox-lib-git
+	conflicts = rox-lib
+	conflicts = rox-lib2
+	conflicts = rox-lib2-git
+	conflicts = rox-lib-git
+	source = rox-lib::git+https://github.com/rox-desktop/rox-lib.git
+	md5sums = SKIP
+
+pkgname = rox-lib-git
+
