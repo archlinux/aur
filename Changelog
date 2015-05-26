@@ -1,0 +1,44 @@
+2015-03-18  Ivy Foster  <joyfulgirl@archlinux.us>
+	* 120527.1.225.g5bd1200-1:
+	- Update PKGBUILD to use conkeror's new Makefile features
+	- Remove conkeror_gimpfile.xpm
+	- Remove conkeror.sh
+
+2013-04-07  Ivy Foster  <joyfulgirl@archlinux.us>
+
+	* 120527.1.87.g7abe992-1:
+	- Update PKGBUILD to make use of pacman/makepkg 4.1.0's
+	  version control features. Thanks to StefanHusmann.
+
+2012-12-12  Ivy Foster  <joyfulgirl@archlinux.us>
+
+	* 20121212-1:
+	- Correct arch (formerly `any', now either `i686' or `x86_64') to
+	  reflect inclusion of compiled conkeror-spawn-helper. Thanks to
+	  StefanHussmann.
+
+2012-09-13  Ivy Foster  <joyfulgirl@archlinux.us>
+
+	* 20120913:
+	- Depend on xulrunner.
+
+2012-07-18  Ivy Foster  <joyfulgirl@archlinux.us>
+
+	* 20120718:
+	- Temporarily dependend on Firefox rather than xulrunner, until
+	  xul 16 makes it to Arch. See
+	  https://bugzilla.mozilla.org/show_bug.cgi?id=756786 for more
+	  information.
+
+2012-02-10  Ivy Foster  <joyfulgirl@archlinux.us>
+
+	* 20120210-1:
+	- Add conkeror-spawn-helper to /usr/bin
+
+2012-01-10  Ivy Foster  <joyfulgirl@archlinux.us>
+
+	* 20120110-1:
+	- Move in AUR from [community]
+	- No longer fetch a fixed commit (use standard makepkg+git
+	  handling)
+	- New maintainer: Ivy Foster (joyfulgirl)
