@@ -1,0 +1,22 @@
+pkgname=dracut
+
+post_install() {
+	printf "\n Introduce /usr/lib/dracut/dracut.conf.d/ drop-in directory"
+	printf "\n"
+	printf "\n /usr/lib/dracut/dracut.conf.d/*.conf can be overwritten by the same"
+	printf "\n filenames in /etc/dracut.conf.d."
+	printf "\n" 
+ 	printf "\n Packages should use /usr/lib/dracut/dracut.conf.d rather than"
+	printf "\n /etc/dracut.conf.d for drop-in configuration files."
+	printf "\n"
+	printf "\n /etc/dracut.conf and /etc/dracut.conf.d belong to the system"
+	printf "\n administrator."
+	printf "\n"
+	printf "\n To set the default font for your distribution, add"
+	printf "\n i18n_default_font="latarcyrheb-sun16"" 
+	printf "\n to your /lib/dracut/dracut.conf.d/01-dist.conf distribution config."
+}
+
+post_upgrade(){
+	post_install $1
+}
