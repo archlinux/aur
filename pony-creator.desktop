@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Pony Creator
+GenericName=Pony Creator
+Comment=Create your own pony character inspired by My Little Pony: Friendship is Magic
+Version=1.0
+Type=Application
+Terminal=false
+Icon=pony-creator
+Exec=pony-creator
+Categories=Game;
