@@ -1,14 +1,11 @@
-#!/usr/bin/env xdg-open
 [Desktop Entry]
-Encoding=UTF-8
 Name=VSEdit
 GenericName=VapourSynth Editor
 Comment=Create or edit VapourSynth Scripts
 Type=Application
-MimeType=text/x-vpy
+MimeType=text/x-vpy;
 Exec=vsedit
 Icon=vsedit
 Terminal=false
 StartupNotify=false
 Categories=AudioVideo;
-MimeType=text/x-vpy
