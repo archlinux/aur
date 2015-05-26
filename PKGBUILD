@@ -1,7 +1,7 @@
 # Maintainer: tailinchu <use_my_id at gmail dot com>
 
 pkgname=connman-git
-pkgver=1.28.48.gc89ffc1
+pkgver=1.29.22.g71657ff
 pkgrel=1
 pkgdesc="Wireless LAN network manager (git version)"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ _gitroot="connman"
 
 pkgver () {
 	cd "$srcdir/$_gitroot"
-	git describe --always | sed 's|-|.|g' 
+	git describe --always | sed 's|-|.|g'
 }
 
 build() {

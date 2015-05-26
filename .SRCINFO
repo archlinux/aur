@@ -1,6 +1,6 @@
 pkgbase = connman-git
 	pkgdesc = Wireless LAN network manager (git version)
-	pkgver = 1.28.48.gc89ffc1
+	pkgver = 1.29.22.g71657ff
 	pkgrel = 1
 	url = https://01.org/connman
 	arch = i686
