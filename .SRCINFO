@@ -1,0 +1,12 @@
+pkgbase = dvb-firmware
+	pkgdesc = LinuxTV-firmware bundle containing many firmwares
+	pkgver = 2014.11.25
+	pkgrel = 1
+	url = http://linuxtv.org/downloads/firmware/
+	arch = any
+	license = custom
+	source = dvb-firmware-2014.11.25.tar.bz2::http://linuxtv.org/downloads/firmware/dvb-firmwares.tar.bz2
+	md5sums = a77a0564e1c2ade6dd552669cb12b71f
+
+pkgname = dvb-firmware
+
