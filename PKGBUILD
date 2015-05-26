@@ -1,7 +1,7 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 pkgname=('python-rtslib-fb' 'python2-rtslib-fb')
 _pkgname=rtslib-fb
-pkgver=2.1.fb53
+pkgver=2.1.fb55
 pkgrel=1
 pkgdesc="free branch version of the LIO target API"
 arch=('any')
@@ -11,9 +11,15 @@ makedepends=('python-setuptools' 'python2-setuptools')
 backup=()
 options=()
 install=
-source=(https://fedorahosted.org/releases/t/a/targetcli-fb/$_pkgname-$pkgver.tar.gz target.service)
-sha256sums=('0578a8c32227cda5129e41dd4142ad43325d1aafe56d4e60a31430b15a269744'
-            '74b9e5c11eab1781aa8b43680b429080ae800fbcdafd29626791b5426a4cdea8')
+source=(https://fedorahosted.org/releases/t/a/targetcli-fb/$_pkgname-$pkgver.tar.gz target.service setup-syntax.patch)
+sha256sums=('3e6f142289c540894339a252b5c7552d7494c3c46975733171983dafd3c7363f'
+            '74b9e5c11eab1781aa8b43680b429080ae800fbcdafd29626791b5426a4cdea8'
+            'da47785c0a285c114c3f718e88fc4990f469608d5b1958d02e5c2f91d3550e14')
+
+prepare() {
+  cd "$srcdir/$_pkgname-$pkgver"
+  patch -p1 < ../setup-syntax.patch
+}
 
 
 package_python-rtslib-fb() {

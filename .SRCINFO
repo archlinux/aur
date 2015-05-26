@@ -1,16 +1,18 @@
 pkgbase = python-rtslib-fb
 	pkgdesc = free branch version of the LIO target API
-	pkgver = 2.1.fb53
+	pkgver = 2.1.fb55
 	pkgrel = 1
 	url = https://github.com/agrover/rtslib-fb
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://fedorahosted.org/releases/t/a/targetcli-fb/rtslib-fb-2.1.fb53.tar.gz
+	source = https://fedorahosted.org/releases/t/a/targetcli-fb/rtslib-fb-2.1.fb55.tar.gz
 	source = target.service
-	sha256sums = 0578a8c32227cda5129e41dd4142ad43325d1aafe56d4e60a31430b15a269744
+	source = setup-syntax.patch
+	sha256sums = 3e6f142289c540894339a252b5c7552d7494c3c46975733171983dafd3c7363f
 	sha256sums = 74b9e5c11eab1781aa8b43680b429080ae800fbcdafd29626791b5426a4cdea8
+	sha256sums = da47785c0a285c114c3f718e88fc4990f469608d5b1958d02e5c2f91d3550e14
 
 pkgname = python-rtslib-fb
 	depends = python
