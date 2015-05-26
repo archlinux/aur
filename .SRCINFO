@@ -1,24 +1,19 @@
 pkgbase = xrdp
 	pkgdesc = An open source remote desktop protocol (RDP) server
-	pkgver = 0.8.0
-	pkgrel = 2
+	pkgver = 0.6.1
+	pkgrel = 1
 	url = http://xrdp.sourceforge.net/
-	install = xrdp.install
 	arch = i686
 	arch = x86_64
 	arch = armv6h
-	license = Apache
+	license = GPL
 	depends = tigervnc
-	depends = libjpeg-turbo
-	depends = libxrandr
-	depends = libpulse
-	depends = fuse
-	backup = etc/xrdp/sesman.ini
-	backup = etc/xrdp/xrdp.ini
-	source = https://github.com/neutrinolabs/xrdp/archive/v0.8.0.tar.gz
-	source = fixups.patch
-	md5sums = 2b0c3affc65ee77ad251514c62896757
-	md5sums = 07f35f8700cd9384f5d13117fd3a4e04
+	source = http://downloads.sourceforge.net/project/xrdp/xrdp/0.6.1/xrdp-v0.6.1.tar.gz
+	source = xrdp.service
+	source = xrdp-sesman.service
+	md5sums = 26099c6588943262023607c1b4e774d8
+	md5sums = 0cb760b3e8a34f9bdf4daa871444d74c
+	md5sums = 58eb44bdc7ca5bb436d6fd66826f9b0f
 
 pkgname = xrdp
 
