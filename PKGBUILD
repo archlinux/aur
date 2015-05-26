@@ -1,7 +1,7 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 pkgname=('python-rtslib-fb' 'python2-rtslib-fb')
 _pkgname=rtslib-fb
-pkgver=2.1.fb55
+pkgver=2.1.fb56
 pkgrel=1
 pkgdesc="free branch version of the LIO target API"
 arch=('any')
@@ -11,19 +11,18 @@ makedepends=('python-setuptools' 'python2-setuptools')
 backup=()
 options=()
 install=
-source=(https://fedorahosted.org/releases/t/a/targetcli-fb/$_pkgname-$pkgver.tar.gz target.service setup-syntax.patch)
-sha256sums=('3e6f142289c540894339a252b5c7552d7494c3c46975733171983dafd3c7363f'
-            '74b9e5c11eab1781aa8b43680b429080ae800fbcdafd29626791b5426a4cdea8'
-            'da47785c0a285c114c3f718e88fc4990f469608d5b1958d02e5c2f91d3550e14')
+source=(https://fedorahosted.org/releases/t/a/targetcli-fb/$_pkgname-$pkgver.tar.gz target.service)
+sha256sums=('d93c2e45c3d3c3c8cf3bf544014e58b5156a7b7ceb3eab4d36e0b56840abbd0f'
+            '74b9e5c11eab1781aa8b43680b429080ae800fbcdafd29626791b5426a4cdea8')
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
-  patch -p1 < ../setup-syntax.patch
+  #patch -p1 < ../setup-syntax.patch
 }
 
 
 package_python-rtslib-fb() {
-  depends=('python')
+  depends=('python' 'python-six')
   conflicts=('python2-rtslib' 'targetcli-fb<=2.1.fb31')
 
   cd "$srcdir/$_pkgname-$pkgver"
@@ -42,7 +41,7 @@ package_python-rtslib-fb() {
 }
 
 package_python2-rtslib-fb() {
-  depends=('python2')
+  depends=('python2' 'python2-six')
   conflicts=('python2-rtslib')
 
   cd "$srcdir/$_pkgname-$pkgver"
