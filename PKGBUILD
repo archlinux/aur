@@ -4,19 +4,22 @@
 
 pkgbase=fcitx
 pkgname=('fcitx' 'fcitx-gtk2' 'fcitx-gtk3' 'fcitx-qt4')
-pkgver=4.2.8.6
-pkgrel=2
+pkgver=4.2.9
+pkgrel=1
 groups=('fcitx-im')
 arch=('i686' 'x86_64')
 url="http://fcitx-im.org"
 license=('GPL' 'LGPL')
-makedepends=('cmake' 'doxygen' 'gtk2' 'gtk3' 'qt4' 'icu' 'mesa' 'opencc' \
+makedepends=('extra-cmake-modules' 'doxygen' 'gtk2' 'gtk3' 'qt4' 'icu' 'mesa' 'opencc' \
              'iso-codes' 'gobject-introspection' 'libxkbfile' 'enchant' 'python2')
-source=(http://download.fcitx-im.org/$pkgbase/$pkgbase-${pkgver}_dict.tar.xz)
-sha512sums=('822e448932e735fe3087384eaf91c6b029b06d3461aa3798501bfbf8f79b8ebc5ea3ac57f01ec32674cc3cb74fcb34b6e285ef265bb49be54543f34dcaf624e4')
+source=("http://download.fcitx-im.org/$pkgbase/$pkgbase-${pkgver}_dict.tar.xz")
+sha512sums=('4bad2efc283858bf9af7f7f283f7beefb210aa361ff034464ff97ea0e536f084c99d876f3595a5375114b68cd51714bd0b5c622a53efc57154a4e629fd416093')
+
+prepare() {
+  mkdir build
+}
 
 build() {
-  mkdir -p build
   cd build
 
   cmake ../${pkgbase}-${pkgver} \
@@ -43,7 +46,7 @@ package_fcitx() {
   pkgdesc="Flexible Context-aware Input Tool with eXtension"
   depends=('pango' 'libxinerama' 'gtk-update-icon-cache' 'shared-mime-info' \
            'hicolor-icon-theme' 'desktop-file-utils' 'libxkbfile' \
-           'libxfixes' 'dbus' 'icu')
+           'libxfixes' 'dbus' 'icu' 'libxkbcommon')
   optdepends=('enchant: for word predication support'
               'opencc: optional engine to do chinese convert'
               'gettext: for fcitx-po-parser')
