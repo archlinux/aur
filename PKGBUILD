@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Tau Tsao <realturner at gmail.com>
 pkgname=xrdp-devel-git
-pkgver=0.8.0.r411.g9fb02e3
+pkgver=0.8.0.r410.g8904252
 pkgrel=1
 pkgdesc="An open source remote desktop protocol (RDP) server - GIT version"
 url="https://github.com/neutrinolabs/xrdp"
