@@ -5,15 +5,14 @@
 
 pkgname=mitmproxy
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="SSL-capable man-in-the-middle HTTP proxy"
 arch=('any')
 url="http://mitmproxy.org/"
 license=('GPL')
-makedepends=('python2-setuptools')
 depends=('python2-netlib' 'python2-pyasn1' 'python2-pyopenssl' 
          'python2-configargparse' 'python2-tornado'
-         'python2-pyperclip' 'python2-blinker'
+         'python2-pyperclip' 'python2-blinker' 'python2-setuptools'
          'python2-urwid' 'python2-lxml' 'python2-pillow')
 optdepends=('python2-pyamf: Contentviews - Decodes AMF files'
             'python2-protobuf: Contentviews - Extended content decoding'
