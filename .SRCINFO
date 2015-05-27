@@ -1,0 +1,17 @@
+pkgbase = 3delight
+	pkgdesc = Fast, high quality, RenderMan-compliant renderer
+	pkgver = 11.0.168
+	pkgrel = 1
+	url = http://www.3delight.com/
+	arch = x86_64
+	license = custom
+	makedepends = wget
+	depends = mesa
+	depends = gtk2
+	depends = libpng12
+	depends = libxxf86vm
+	source = http://www.3delight.com/downloads/free/3delight-11.0.168-Linux-x86_64.tar.xz
+	md5sums = 26070c799ae1c30a4358048018b92223
+
+pkgname = 3delight
+
