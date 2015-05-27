@@ -2,7 +2,7 @@
 
 pkgname=mount-gtk2
 _pkgname=mount-gtk
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="A graphical front end for udisks and mount (compiled for Gtk2)"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ conflicts=($_pkgname)
 depends=('c++-gtk-utils-gtk2' 'udisks2>=1.94.0' 'libnotify')
 options=('!buildflags')
 source=(http://downloads.sourceforge.net/$_pkgname/$_pkgname-$pkgver.tar.gz)
-sha256sums=('755a4aae98c8c14c909dfc8da2e46f32ce720137edecdb3d8fcdc99fa02dbd03')
+sha256sums=('6a245837c68214c133af96239aa772461074e57115a229ec695b2d5dbd9d2fe6')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
