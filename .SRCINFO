@@ -1,13 +1,13 @@
 pkgbase = mount-gtk2
 	pkgdesc = A graphical front end for udisks and mount (compiled for Gtk2)
 	pkgver = 1.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mount-gtk.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = c++-gtk-utils-gtk2
-	depends = udisks2>=1.94.0
+	depends = udisks2
 	depends = libnotify
 	provides = mount-gtk=1.4.3
 	conflicts = mount-gtk
