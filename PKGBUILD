@@ -14,6 +14,7 @@ url="http://aseman.co/cutegram"
 license=('GPL')
 depends=('qt5-base' 'qt5-declarative' 'qt5-multimedia' 'qt5-quick1'
          'qt5-webengine' 'qt5-imageformats' 'qt5-graphicaleffects' 
+         'gstreamer0.10-base-plugins' 'gstreamer0.10-good-plugins'
          'qt5-quickcontrols' 'libqtelegram-ae>=1:3.3')
 makedepends=('git')
 source=("${pkgname}"::"git+https://github.com/Aseman-Land/Cutegram.git")
