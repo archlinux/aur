@@ -42,7 +42,10 @@ package() {
     rmdir usr/sbin
     mv usr/lib/pilight/libpilight.so.${pkgver} usr/lib/libpilight.so.${pkgver}
     ln -s usr/lib/libpilight.so.${pkgver} usr/lib/libpilight.so
-    mkdir -p usr/share/webapps/${pkgname}
+
+    # Web GUI
+    mkdir -p usr/share/webapps
+    mv usr/local/share/pilight usr/share/webapps/pilight
 
     # Cleanup
     rm -rf usr/local usr/lib/pilight etc/init.d
