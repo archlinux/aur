@@ -1,7 +1,8 @@
-# Maintainer: Steven Hiscocks <steven _at_ hiscocks _dot_ me _dot_ uk>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Steven Hiscocks <steven _at_ hiscocks _dot_ me _dot_ uk>
 
 pkgname=xplanetfx
-pkgver=2.5.30
+pkgver=2.6.5
 pkgrel=1
 pkgdesc="xplanet earth with realistic clouding and lightning effects as your wallpaper."
 arch=('any')
@@ -12,7 +13,7 @@ optdepends=('perlmagick: cloud image verification'
             'libnotify: status messages'
             'acpi: check battery state before rendering')
 source=(http://repository.mein-neues-blog.de:9000/archive/xplanetfx-${pkgver}_all.tar.gz)
-md5sums=('1fed9050155ca1c8aad1a508323666c0')
+md5sums=('99cf8b65a7a69f573103e91473688838')
 
 prepare() {
   cd "${srcdir}"
