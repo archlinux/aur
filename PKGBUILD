@@ -20,5 +20,5 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}-pre2"
-  make SBINDIR=/bin DESTDIR=${pkgdir} install
+  make SBINDIR=/usr/bin DESTDIR=${pkgdir} install
 }
