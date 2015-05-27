@@ -1,25 +1,24 @@
 pkgbase = xrdp
 	pkgdesc = An open source remote desktop protocol (RDP) server
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://xrdp.sourceforge.net/
 	install = xrdp.install
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	license = Apache
-	makedepends = libpulse
-	makedepends = fuse
 	depends = tigervnc
+	depends = libjpeg-turbo
 	depends = libxrandr
-	optdepends = libpulse: to use the pule audio module
-	optdepends = fuse: to use the file clipboard module
+	depends = libpulse
+	depends = fuse
 	backup = etc/xrdp/sesman.ini
 	backup = etc/xrdp/xrdp.ini
 	source = https://github.com/neutrinolabs/xrdp/archive/v0.8.0.tar.gz
-	source = arch-config.diff
+	source = fixups.patch
 	md5sums = 2b0c3affc65ee77ad251514c62896757
-	md5sums = 12bcbdf83cae9754da5e39aaf5e013e8
+	md5sums = 07f35f8700cd9384f5d13117fd3a4e04
 
 pkgname = xrdp
 
