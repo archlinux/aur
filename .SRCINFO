@@ -1,13 +1,13 @@
 pkgbase = wmix
 	pkgdesc = Dockapp mixer for OSS or ALSA
-	pkgver = 3.2
+	pkgver = 3.2+20141005
 	pkgrel = 3
 	url = http://windowmaker.org/dockapps/?name=wmix
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = libxpm
-	source = wmix-3.2.tar.gz::http://windowmaker.org/dockapps/?download=wmix-3.2.tar.gz
+	source = wmix-3.2+20141005.tar.gz::http://windowmaker.org/dockapps/?download=wmix-3.2+20141005.tar.gz
 	md5sums = SKIP
 
 pkgname = wmix
