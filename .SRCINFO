@@ -1,0 +1,20 @@
+pkgbase = haskell-regex-tdfa
+	pkgdesc = Replaces/Enhances Text.Regex
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/regex-tdfa
+	install = haskell-regex-tdfa.install
+	arch = i686
+	arch = x86_64
+	license = BSD3
+	depends = ghc
+	depends = haskell-mtl
+	depends = haskell-parsec
+	depends = haskell-regex-base
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/regex-tdfa/1.2.0/regex-tdfa-1.2.0.tar.gz
+	sha256sums = fc82ac14aae378c543a55cdac3f944aae5bff9918c4a342e1da87d38ba4ef401
+
+pkgname = haskell-regex-tdfa
+
