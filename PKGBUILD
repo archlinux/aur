@@ -4,24 +4,21 @@
 
 pkgname=wmix
 pkgver=3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Dockapp mixer for OSS or ALSA"
 arch=('i686' 'x86_64')
-#url="http://dockapps.windowmaker.org/file.php/id/58"
-url="http://web.archive.org/web/20121102151324/http://dockapps.windowmaker.org/file.php/id/58"
+url="http://windowmaker.org/dockapps/?name=$pkgname"
 license=('GPL')
 depends=('libxpm')
-#source=("http://dockapps.windowmaker.org/download.php/id/528/${pkgname}-${pkgver}.tar.gz")
-source=("${pkgname}-${pkgver}.tar.gz")
-md5sums=('ce87c48cadf51b3cd6224ef698d3f2cc')
+source=("$pkgname-$pkgver.tar.gz::http://windowmaker.org/dockapps/?download=$pkgname-$pkgver.tar.gz")
+md5sums=('SKIP')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir"/dockapps-c5828a9
   make
 }
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  install -dm755 "$pkgdir/usr/bin"
-  make PREFIX="$pkgdir/usr" install
-  install -D -m644 wmix.1x.gz "$pkgdir/usr/share/man/man1/wmix.1x.gz"
+  cd "$srcdir"/dockapps-c5828a9
+  install -Dm755 wmix "$pkgdir/usr/bin/wmix"
+  install -Dm644 wmix.1x "$pkgdir/usr/share/man/man1/wmix.1"
 }
