@@ -1,0 +1,14 @@
+pkgbase = amrenc
+	pkgdesc = An AMR encoder
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = http://teknoraver.net/software/mp4tools/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = glibc
+	source = http://ppa.launchpad.net/teknoraver/ppa/ubuntu/pool/main/a/amrenc/amrenc_0.5.3.tar.gz
+	md5sums = 4d2e76b836b7b081817b198084424a1b
+
+pkgname = amrenc
+
