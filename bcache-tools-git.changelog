@@ -1,0 +1,21 @@
+2013-01-07
+	* Added dependency on util-linux
+	* Fixed up now-unecessary patches due to initcpio udev hook being applied upstream
+	* Added warning on update to change mkinitcpio.conf to use bcache rule instead of the now-defunct bcache_udev
+	* Fixed minor packaging issues that caused namcap to complain
+	* Changed versioning method as there are now unannotated tags available
+
+2014-01-06
+	* Added conflicts/provides to support bcache-tools package
+	* Changed to tracking g2p's version of bcache-tools as it has tagged versions for the non-git release
+
+2013-11-28
+	* Took over as maintainer (Justin Dray)
+	* Updated to work with the latest git version
+	* Added a working udev rule written by Mikeserv, adapted from mdadm
+	* Removed unecessary patches
+	* Updated to comply with current VCS PKGBUILD guidelines
+
+2013-03-10
+	* First package. Forked from f2fs-tools-git package.
+	* created arch.patch to remove upstreem initcpio stuff (probably for fedora) and add in arch linux initcpio bcache hook

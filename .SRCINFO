@@ -1,0 +1,21 @@
+pkgbase = bcache-tools-git
+	pkgdesc = Userspace tools for bcache until bcache merges with either dm or md
+	pkgver = 1.0.8.r0.ga73679b
+	pkgrel = 1
+	url = http://bcache.evilpiepirate.org/
+	install = bcache-tools-git.install
+	changelog = bcache-tools-git.changelog
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = util-linux
+	provides = bcache-tools
+	conflicts = bcache-tools
+	source = git+https://github.com/g2p/bcache-tools.git
+	source = initcpio-arch.patch
+	md5sums = SKIP
+	md5sums = 208d7024340b8db3cf21325df40b6267
+
+pkgname = bcache-tools-git
+
