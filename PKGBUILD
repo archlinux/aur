@@ -1,6 +1,6 @@
 # Maintainer: Graham Edgecombe <graham@grahamedgecombe.com>
 pkgname=openrct2-git
-pkgver=r3215.9dc19c6
+pkgver=r3217.cf0ce5f
 pkgrel=1
 pkgdesc='Open source clone of RollerCoaster Tycoon 2'
 arch=('i686' 'x86_64')
@@ -12,12 +12,10 @@ options=('!buildflags')
 install=openrct2.install
 source=("$pkgname"::'git://github.com/IntelOrca/OpenRCT2.git#branch=develop'
         'openrct2'
-        'openrct2.desktop'
-        'fix-disable-twitch.patch')
+        'openrct2.desktop')
 md5sums=('SKIP'
          'b750eaf997a27e981232b21a68fa868e'
-         '035a407b940492c584c72f4f59f1bd69'
-         '8fbe437672f65f4f821690ca55541ed9')
+         '035a407b940492c584c72f4f59f1bd69')
 
 # Enable Twitch support. This pulls in lots of mingw-w64-* packages from the AUR
 # which takes a while to build. If you don't need Twitch support, it's probably
@@ -40,8 +38,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$pkgname"
-
-  patch -p1 < "$srcdir/fix-disable-twitch.patch"
 
   # The ArchLinux jansson header files are directly under
   # /usr/i686-w64-mingw32/include.
