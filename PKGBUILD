@@ -4,13 +4,13 @@
 _pkgbase=smuxi
 pkgbase=${_pkgbase}-git
 pkgname=('smuxi-server-git' 'smuxi-git')
-pkgver=1.0.rc4.r6.g1ab6ef1
+pkgver=1.0.rc4.r29.ga84de16
 pkgrel=1
 pkgdesc="free, distributed and user-friendly IRC / Twitter / XMPP / Campfire / JabbR client for GNOME/GTK+"
 arch=('any')
 url="https://www.smuxi.im/"
 license=('GPL')
-makedepends=('intltool' 'git' 'notify-sharp' 'log4net' 'nini' 'gtkspell' 'stfl')
+makedepends=('intltool' 'git' 'notify-sharp' 'log4net' 'nini' 'gtkspell' 'stfl' 'sqlite')
 #options=('!emptydirs')
 source=('git://github.com/meebey/smuxi')
 md5sums=('SKIP')
@@ -46,6 +46,7 @@ build() {
 package_smuxi-server-git() {
   pkgdesc+=" (common files and server)"
   depends=('log4net' 'nini')
+  optdepends=('sqlite: alternative for persistent message storing')
   conflicts=('smuxi-server')
   provides=('smuxi-server')
 
