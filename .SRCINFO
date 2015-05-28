@@ -1,17 +1,15 @@
 pkgbase = wmcdplay
 	pkgdesc = A CD player WindowMaker dock app
-	pkgver = 1.0beta1
+	pkgver = 1.1
 	pkgrel = 1
-	url = http://www.geocities.com/SiliconValley/Vista/2471/wmcdplay.html
+	url = http://windowmaker.org/dockapps/?name=wmcdplay
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = imake
 	depends = libxpm
-	source = http://http.us.debian.org/debian/pool/main/w/wmcdplay/wmcdplay_1.0beta1.orig.tar.gz
-	source = http://http.us.debian.org/debian/pool/main/w/wmcdplay/wmcdplay_1.0beta1-11.diff.gz
-	md5sums = 3b84b902186ba65770c268841ca12ae2
-	md5sums = dd781aa4d8e4c79b7a3397bbc220d993
+	source = wmcdplay-1.1.tar.gz::http://windowmaker.org/dockapps/?download=wmcdplay-1.1.tar.gz
+	md5sums = SKIP
 
 pkgname = wmcdplay
 
