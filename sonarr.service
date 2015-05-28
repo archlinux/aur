@@ -1,0 +1,13 @@
+[Unit]
+Description=Sonarr Service
+After=network.target
+
+[Service]
+User=sonarr
+Group=sonarr
+ExecStart=/usr/bin/sonarr -nobrowser -data=/var/lib/sonarr
+Type=simple
+TimeoutStopSec=20
+
+[Install]
+WantedBy=multi-user.target
