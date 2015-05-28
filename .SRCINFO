@@ -1,0 +1,23 @@
+pkgbase = crashplan
+	pkgdesc = An online/offsite backup solution
+	pkgver = 4.2.0
+	pkgrel = 2
+	url = http://www.crashplan.com
+	install = crashplan.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = cpio
+	depends = bash
+	depends = java-runtime-headless
+	source = http://download.crashplan.com/installs/linux/install/CrashPlan/CrashPlan_4.2.0_Linux.tgz
+	source = crashplan.service
+	source = install.vars
+	source = sysctl-crashplan.conf
+	sha256sums = 634b651042be9e403cc687490ca66b3ff69ae88d9a3be1ea00b2db7931bed67c
+	sha256sums = e5600d9d102fa8668183895fbe208d00cc353706f5b4a78302eca00f70b60800
+	sha256sums = c6dc626a180671d6b01f46f22158857c3fa86cd3eec79e3388284a2ab2682617
+	sha256sums = 2ec3d9cea180e92f1410ff89ece85c01f79d454cfc2e814f583c0e2b3ff8ce30
+
+pkgname = crashplan
+
