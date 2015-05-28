@@ -1,4 +1,4 @@
-# Maintainer: kfgz <kfgz at interia pl>
+# Maintainer:  Hyacinthe Cartiaux <hyacinthe.cartiaux at free.fr>                                                                                                     # Contributor: kfgz <kfgz at interia pl>
 # Contributor: Kaspar Bumke <kaspar dot bumke at gmail dot com>
 # Contributor: maleadt <tim dot besard at gmail dot com>
 
