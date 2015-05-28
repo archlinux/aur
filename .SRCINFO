@@ -1,16 +1,14 @@
 pkgbase = wmmixer
 	pkgdesc = A mixer application written for the WindowMaker dock.
-	pkgver = 1.5
-	pkgrel = 3
+	pkgver = 1.6
+	pkgrel = 1
 	url = http://windowmaker.org/dockapps/?name=wmmixer
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = libxpm
-	source = wmmixer-1.5.tar.gz::http://windowmaker.org/dockapps/?download=wmmixer-1.5.tar.gz
-	source = wmmixer.patch
+	source = wmmixer-1.6.tar.gz::http://windowmaker.org/dockapps/?download=wmmixer-1.6.tar.gz
 	md5sums = SKIP
-	md5sums = 2b79b2be0ae022b0dd68ea966b28e65b
 
 pkgname = wmmixer
 
