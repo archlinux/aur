@@ -1,12 +1,13 @@
 # Maintainer: Graham Edgecombe <graham@grahamedgecombe.com>
 pkgname=openrct2-git
-pkgver=r3168.2ed1963
+pkgver=r3215.9dc19c6
 pkgrel=1
 pkgdesc='Open source clone of RollerCoaster Tycoon 2'
 arch=('i686' 'x86_64')
 url='https://github.com/IntelOrca/OpenRCT2'
 license=('GPL3')
-depends=('wine' 'mingw-w64-sdl2' 'gtk-update-icon-cache' 'desktop-file-utils')
+depends=('wine' 'mingw-w64-sdl2' 'gtk-update-icon-cache' 'desktop-file-utils'
+         'mingw-w64-curl' 'mingw-w64-jansson')
 makedepends=('git' 'cmake' 'mingw-w64-gcc')
 options=('!buildflags')
 install=openrct2.install
@@ -16,10 +17,22 @@ source=("$pkgname"::'git://github.com/IntelOrca/OpenRCT2.git#branch=develop'
 md5sums=('SKIP'
          'b750eaf997a27e981232b21a68fa868e'
          '035a407b940492c584c72f4f59f1bd69')
+_dlls=(SDL2.dll libwinpthread-1.dll libcurl-4.dll libjansson-4.dll libeay32.dll
+       libgcc_s_sjlj-1.dll libidn-11.dll libssh2-1.dll ssleay32.dll zlib1.dll
+       libiconv-2.dll libintl-8.dll)
 
 pkgver() {
   cd "$srcdir/$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$srcdir/$pkgname"
+
+  # The ArchLinux jansson header files are directly under
+  # /usr/i686-w64-mingw32/include.
+  find src \( -name '*.c' -or -name '*.h' -or -name '*.cpp' \) \
+    -exec sed -i 's@#include <jansson/@#include <@g' {} \;
 }
 
 build() {
@@ -31,8 +44,9 @@ build() {
   # symlink the DLLs here. openrct2.exe also seems to return a non-zero exit
   # code even if it builds the sprites successfully, so we have to ignore its
   # exit code.
-  ln -sf /usr/i686-w64-mingw32/bin/SDL2.dll
-  ln -sf /usr/i686-w64-mingw32/bin/libwinpthread-1.dll
+  for dll in ${_dlls[@]}; do
+    ln -sf /usr/i686-w64-mingw32/bin/$dll
+  done
   wine openrct2.exe sprite build data/g2.dat resources/g2 || true
 }
 
@@ -58,6 +72,7 @@ package() {
   # use $CARCH here because on x86_64 OpenRCT2 is compiled with -m32,
   # therefore we always want to use the i686 DLLs. OpenRCT2 relies on
   # Wine's WoW64 support to actually run on x86_64 machines.
-  ln -s /usr/i686-w64-mingw32/bin/SDL2.dll "$pkgdir/usr/share/openrct2"
-  ln -s /usr/i686-w64-mingw32/bin/libwinpthread-1.dll "$pkgdir/usr/share/openrct2"
+  for dll in ${_dlls[@]}; do
+    ln -s /usr/i686-w64-mingw32/bin/$dll "$pkgdir/usr/share/openrct2"
+  done
 }
