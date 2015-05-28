@@ -1,0 +1,8 @@
+2013-01-07
+        * Added dependency on util-linux
+        * Fixed up now-unecessary patches due to initcpio udev hook being applied upstream
+        * Added warning on update to change mkinitcpio.conf to use bcache rule instead of the now-defunct bcache_udev
+        * Fixed minor packaging issues that caused namcap to complain
+
+2014-01-06
+	* Initial version based off of bcache-tools-git package

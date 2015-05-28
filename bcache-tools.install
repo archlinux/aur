@@ -1,0 +1,16 @@
+post_install() {
+	cat <<-EOF
+	If you intend to boot from a udev device, make sure to add the bcache hook and
+	module to your mkinitcpio.conf
+	EOF
+}
+
+post_upgrade() {
+	if [[ $2 < 1.0.6 ]]
+	then
+		cat <<-EOF
+		As of v1.0.5 please make sure to change references to bcache_udev in
+		mkinitcpio.conf to 'bcache' as upstream has adopted the udev rules as default
+		EOF
+	fi
+}
