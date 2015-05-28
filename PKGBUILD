@@ -3,8 +3,8 @@
 
 pkgname=xubuntu-artwork
 pkgver=15.04.4
-pkgrel=3
-uver=wily
+pkgrel=5
+_uver=wily
 pkgdesc="Xubuntu themes and artwork"
 arch=("any")
 url="https://launchpad.net/xubuntu-artwork"
@@ -17,7 +17,7 @@ optdepends=("plymouth: For plymouth theme to work"
         "xfce-theme-bluebird: Official theming, git or stable version are ok"
         "xfce-theme-greybird: Official theming, git or stable version are ok"
 	"elementary-xfce-icons: For matching icon theme, or if you want use the git version")
-source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.tar.xz"
+source=("http://security.ubuntu.com/ubuntu/pool/universe/x/${pkgname}/${pkgname}_${pkgver}.tar.xz"
         "0001_Plymouth_dir.patch")
 
 prepare() {
@@ -37,7 +37,7 @@ package() {
   msg2 "Install the rest of the files."
   cp -av usr/share/ "${pkgdir}/usr/"
 
-  msg2 "Remove Elementary-Xfce bundled with this artwork, is seriously outdated."
+  msg2 "Remove Elementary-Xfce bundled with this artwork, is hella outdated."
   rm -frv "${pkgdir}"/usr/share/icons
 
   msg2 "Move backdrops to a better place for Xfce 4.12+."

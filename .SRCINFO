@@ -1,7 +1,7 @@
 pkgbase = xubuntu-artwork
 	pkgdesc = Xubuntu themes and artwork
 	pkgver = 15.04.4
-	pkgrel = 3
+	pkgrel = 5
 	url = https://launchpad.net/xubuntu-artwork
 	arch = any
 	license = GPL
@@ -12,7 +12,7 @@ pkgbase = xubuntu-artwork
 	optdepends = xfce-theme-bluebird: Official theming, git or stable version are ok
 	optdepends = xfce-theme-greybird: Official theming, git or stable version are ok
 	optdepends = elementary-xfce-icons: For matching icon theme, or if you want use the git version
-	source = https://launchpad.net/ubuntu/+archive/primary/+files/xubuntu-artwork_15.04.4.tar.xz
+	source = http://security.ubuntu.com/ubuntu/pool/universe/x/xubuntu-artwork/xubuntu-artwork_15.04.4.tar.xz
 	source = 0001_Plymouth_dir.patch
 	md5sums = 288b5e87f7ee4e5f5d2b4f9e99f94aca
 	md5sums = c9a1b1997abf7d43dda91bf7991ed42c
