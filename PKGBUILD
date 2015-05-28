@@ -2,22 +2,24 @@
 
 pkgname=wmmixer
 pkgver=1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A mixer application written for the WindowMaker dock."
 arch=('i686' 'x86_64')
-url="http://dockapps.windowmaker.org/file.php/id/101"
+url="http://windowmaker.org/dockapps/?name=$pkgname"
 license=('GPL')
-source=("${pkgname}-${pkgver}.tar.gz" "wmmixer.patch")
-source=("http://linux-bsd-unix.strefa.pl/${pkgname}-${pkgver}.tar.gz" "wmmixer.patch")
-md5sums=('bfb1ded801910dd39e1bb0b273c4e1c3'
+depends=('libxpm')
+source=("$pkgname-$pkgver.tar.gz::http://windowmaker.org/dockapps/?download=$pkgname-$pkgver.tar.gz"
+	"wmmixer.patch")
+md5sums=('SKIP'
          '2b79b2be0ae022b0dd68ea966b28e65b')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "$srcdir"/dockapps-ad70c26
   patch -p1 <"$srcdir/wmmixer.patch"
   make prefix=/usr
 }
+
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "$srcdir"/dockapps-ad70c26
   make prefix=/usr DESTDIR="$pkgdir" install
 }
