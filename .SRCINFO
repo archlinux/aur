@@ -1,0 +1,14 @@
+pkgbase = lsiutil
+	pkgdesc = Configuration utility for LSI MPT adapters (FC, SCSI, and SAS/SATA)
+	pkgver = 1.63
+	pkgrel = 2
+	url = http://http://karlsbakk.net/LSIUtil%20Kit%201.63/Source/
+	arch = x86_64
+	arch = i686
+	license = none
+	depends = glibc
+	source = https://copy.com/D1X42Cf78kCl/public/packages/lsiutil-1.63.tar.gz
+	md5sums = 9d62c819ee8d70db43ec651680cb5233
+
+pkgname = lsiutil
+
