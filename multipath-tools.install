@@ -1,0 +1,9 @@
+post_install() {
+
+	cat <<-EOF
+	 * For full functonality ensure that the dm_multipath kernel module is loaded"
+	 * Make sure to create /etc/multipath.conf based off of the defaults found in
+	   /usr/share/multipath/examples
+	EOF
+
+}
