@@ -2,13 +2,13 @@
 
 pkgname=alsamixer.app
 _appname=AlsaMixer.app
-pkgver=0.1
-pkgrel=5
+pkgver=0.1+20141204
+pkgrel=1
 pkgdesc="Simple dockable mixer application for Linux with ALSA drivers."
 arch=('i686' 'x86_64')
 url="http://www.dockapps.org/file.php/id/253"
 url="https://web.archive.org/web/20130814154026/http://dockapps.windowmaker.org/file.php/id/253"
-url="http://windowmaker.org/docaps/?name=AlsaMixer.app"
+url="http://windowmaker.org/docapps/?name=$_appname"
 license=('GPL')
 groups=()
 depends=('alsa-lib' 'libxpm')
@@ -19,11 +19,11 @@ source=($_appname-$pkgver.tar.gz::http://windowmaker.org/dockapps/?download=$_ap
 md5sums=('SKIP')
 
 build() {
-  cd "$srcdir"/dockapps-93d9932
+  cd "$srcdir"/dockapps-61ac0a5
   make
 }
 
 package() {
-  cd "$srcdir"/dockapps-93d9932
+  cd "$srcdir"/dockapps-61ac0a5
   install -D -m755 $_appname "$pkgdir"/usr/bin/$_appname
 }
