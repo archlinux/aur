@@ -1,0 +1,23 @@
+pkgbase = shellcheck-git
+	pkgdesc = A shell script static analysis tool: Git Release
+	pkgver = 0.3.7.r1.gbb7ef58
+	pkgrel = 1
+	url = http://www.shellcheck.net/
+	arch = i686
+	arch = x86_64
+	license = AGPL3
+	makedepends = git
+	makedepends = ghc
+	makedepends = haskell-json
+	makedepends = haskell-mtl
+	makedepends = haskell-parsec
+	makedepends = haskell-quickcheck
+	makedepends = haskell-regex-tdfa
+	depends = gmp
+	provides = shellcheck
+	conflicts = shellcheck
+	source = shellcheck-git::git+https://github.com/koalaman/shellcheck.git
+	md5sums = SKIP
+
+pkgname = shellcheck-git
+
