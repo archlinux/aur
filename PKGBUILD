@@ -1,7 +1,7 @@
 # Maintainer: Doug Newgard <scimmia at archlinux dot info>
 
 pkgname=enventor
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Editor for EDC files (edje/efl)"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://phab.enlightenment.org/w/projects/enventor/"
 license=('BSD')
 depends=('elementary')
 source=("http://download.enlightenment.org/rel/apps/$pkgname/$pkgname-$pkgver.tar.xz")
-sha256sums=('d55787104c0a5fd57e7c1cba83edc960b6ab2f4efd346fa2ffb565bbad8ec874')
+sha256sums=('829f6cde04e46346cdd57edf5cecd2a7ed6a2a4992da2a5898f60b324e60be27')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
