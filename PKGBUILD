@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=wmmixer
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 pkgdesc="A mixer application written for the WindowMaker dock."
 arch=('i686' 'x86_64')
