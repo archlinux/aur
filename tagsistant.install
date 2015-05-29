@@ -1,0 +1,7 @@
+post_install() {
+  echo '************************************************************************'
+  echo 'In order to use tagsistant, you must enable fuse (see the fuse package'
+  echo 'post-install instructions), and add a line containing "user_allow_other"'
+  echo '(no quotes) to /etc/fuse.conf. It is okay to create that file.'
+  echo '************************************************************************'
+}

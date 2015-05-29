@@ -1,0 +1,25 @@
+pkgbase = tagsistant
+	pkgdesc = A semantic File System based on Fuse for Linux kernel
+	pkgver = 0.8.1a
+	pkgrel = 1
+	url = http://www.tagsistant.net/
+	install = tagsistant.install
+	changelog = ChangeLog
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = fuse
+	depends = libdbi
+	depends = libdbi-drivers
+	depends = sqlite2
+	depends = sqlite
+	depends = libmariadbclient
+	depends = postgresql-libs
+	depends = glib2
+	depends = libextractor
+	conflicts = tagsistant-svn
+	source = tagsistant.tar.gz::http://www.tagsistant.net/download/tagsistant-0-8-1a-tar-gz/finish/11-tagsistant-0-8-1a/31-tagsistant-0-8-1a/0
+	sha1sums = fd689f29f8d44158bd03aee86bf8d74bc0f4947c
+
+pkgname = tagsistant
+
