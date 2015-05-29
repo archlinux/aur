@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Knime SDK
+Comment=Software Development Kit for Knime
+Exec=knime-sdk
+Icon=knime-sdk
+Terminal=false
+StartupNotify=false
+Categories=Application;

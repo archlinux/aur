@@ -1,0 +1,27 @@
+pkgbase = knime-sdk
+	pkgdesc = Software Development Kit for Knime
+	pkgver = 2.11.3
+	pkgrel = 1
+	url = http://www.knime.org/
+	changelog = ChangeLog
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	depends = java-environment
+	depends = cairo
+	depends = python2
+	optdepends = bash: Required for bash-scriptable nodes
+	optdepends = r: Required for R-scriptable nodes
+	options = !emptydirs
+	source = http://www.knime.org/knime_downloads/linux/eclipse_knime_2.11.3.linux.gtk..tar.gz
+	source = knime.sh
+	source = knime-sdk.desktop
+	source = LICENSE
+	md5sums = adce712518c2e1cf889fe23bf08b1fbb
+	md5sums = db5bad392dda08e0694bc3b4b72734db
+	md5sums = e51afecee76a22937b5d5500056eeabd
+	md5sums = 9e93e4def16f04f7808bddb48da3c009
+
+pkgname = knime-sdk
+
