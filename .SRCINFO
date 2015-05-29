@@ -1,0 +1,21 @@
+pkgbase = budgetwarrior-git
+	pkgdesc = Simple command line utility to helps keeping track of your expenses and the state of your budget.
+	pkgver = 0.4.1.1.r5.g13de1b0
+	pkgrel = 1
+	url = https://github.com/wichtounet/budgetwarrior
+	changelog = ChangeLog
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = clang
+	depends = boost
+	depends = util-linux
+	provides = budgetwarrior
+	conflicts = budgetwarrior
+	source = budgetwarrior::git+https://github.com/wichtounet/budgetwarrior#branch=develop
+	md5sums = SKIP
+
+pkgname = budgetwarrior-git
+

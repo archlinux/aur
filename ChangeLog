@@ -1,0 +1,30 @@
+2014-09-24 Fabien Dubosson <fabien.dubosson@gmail.com>
+
+	* 0.4.1.1.r5.g13de1b0-1:
+	Remove patch now included upstream
+
+2014-09-21 Fabien Dubosson <fabien.dubosson@gmail.com>
+
+	* 0.3.1.r158.gab633c8:
+	Add clang in makedepends
+
+2014-07-06 Fabien Dubosson <fabien.dubosson@gmail.com>
+
+	* 0.4.r0.g1b853ae-1:
+	Adapt to new build system
+
+2014-02-04 Fabien Dubosson <fabien.dubosson@gmail.com>
+
+	* 0.3.0.r2.g52282f6-2:
+	Add `git` as make dependency
+
+2014-02-04 Fabien Dubosson <fabien.dubosson@gmail.com>
+
+	* 0.3.0.r2.g52282f6-1:
+	Unformalize PKGBUILD notations
+
+2014-01-27 Fabien Dubosson <fabien.dubosson@gmail.com>
+
+	* 0.2.2.r36.g9212ff1-1:
+	Package created
+
