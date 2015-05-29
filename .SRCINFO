@@ -1,0 +1,16 @@
+pkgbase = q
+	pkgdesc = SQL-like queries on tabular text data, including joins and subqueries
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/harelba/q
+	changelog = ChangeLog
+	arch = any
+	license = GPL3
+	depends = python2
+	source = https://github.com/harelba/q/archive/1.5.0.tar.gz
+	source = https://github.com/harelba/packages-for-q/raw/master/rpms/q-text-as-data-1.5.0-1.noarch.rpm
+	sha1sums = 772c1bc7a49d725042ffc130e3c9328fc9da67dc
+	sha1sums = 7880898b6ca5e298a4b2d686e70b0b889a6e76cf
+
+pkgname = q
+
