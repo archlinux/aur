@@ -1,0 +1,10 @@
+Index: vstax/src/usr/share/vstax2014/vstax2014.sh
+===================================================================
+--- vstax.orig/src/usr/share/vstax2014/vstax2014.sh
++++ vstax/src/usr/share/vstax2014/vstax2014.sh
+@@ -1,3 +1,3 @@
+ #!/bin/sh
+-cd /usr/share/vstax2014
+-./jre/bin/java -Xmx320m -Xms320m  -jar jfw-launcher-4.0.32-obf.jar "$1"
++cd /usr/share/java/vstax2014
++"${JAVA_HOME}/bin/java" -Xmx320m -Xms320m  -jar jfw-launcher-4.0.32-obf.jar "$1"
