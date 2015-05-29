@@ -1,0 +1,9 @@
+2015-03-10 Fabien Dubosson <fabien.dubosson@gmail.com>
+
+	* 10.5.23-2 :
+	Add provides wfdb flag
+
+2015-03-09 Fabien Dubosson <fabien.dubosson@gmail.com>
+
+	* 10.5.23-1 :
+	Package created
