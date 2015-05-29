@@ -1,0 +1,18 @@
+pkgbase = groupman-git
+	pkgdesc = Gather your Arch Linux packages in groups to simplify their management.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/StreakyCobra/groupman
+	changelog = ChangeLog
+	arch = any
+	license = MIT
+	depends = git
+	depends = python>=3.4
+	depends = python-termcolor
+	provides = groupman
+	conflicts = groupman
+	source = groupman::git+https://github.com/StreakyCobra/groupman.git#branch=develop
+	md5sums = SKIP
+
+pkgname = groupman-git
+
