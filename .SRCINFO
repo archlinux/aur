@@ -1,0 +1,18 @@
+pkgbase = synchost-git
+	pkgdesc = A command-line tool to keep an host synchronized
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/StreakyCobra/synchost
+	changelog = ChangeLog
+	arch = any
+	license = MIT
+	depends = git
+	depends = python>=3.4
+	depends = python-termcolor
+	provides = synchost
+	conflicts = synchost
+	source = synchost::git+https://github.com/StreakyCobra/synchost.git#branch=develop
+	md5sums = SKIP
+
+pkgname = synchost-git
+
