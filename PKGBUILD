@@ -1,7 +1,7 @@
 #Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgdesc="Icons for the X Desktop Environment (XDE)"
 pkgname=xde-icons
-pkgver=1.1.22
+pkgver=1.1.23
 pkgrel=1
 arch=(any)
 license=(CCPL:by-sa)
