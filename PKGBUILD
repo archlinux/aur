@@ -3,7 +3,7 @@
 
 _pkgname=john
 pkgname=john-git
-pkgver=r125.93bae2b
+pkgver=r10260.8ebb42d
 pkgrel=1
 pkgdesc="fast password cracker (using the git repository of the jumbo patch)"
 arch=('i686' 'x86_64')
@@ -22,50 +22,31 @@ conflicts=('john')
 backup=('etc/john/john.conf')
 install=john.install
 options=('!strip')
-source=("$_pkgname::git://github.com/magnumripper/JohnTheRipper.git"
+source=("$_pkgname::git+https://github.com/magnumripper/JohnTheRipper.git"
         "params.h.patch")
 md5sums=('SKIP'
         'f69ed632eba8fb9e45847a4b4a323787')
 
 
 pkgver() {
-  cd $_pkgbase
+  cd "$srcdir/$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "$_pkgname/src"
+	cd "$srcdir/$_pkgname/src"
 
 	patch -p0 -i ${srcdir}/params.h.patch
-	if [ "$CARCH" == "x86_64" ]; then
-			sed -i 's|CFLAGS = -c -Wall -O2|CFLAGS = -c -Wall -O2 -march=x86-64 -DJOHN_SYSTEMWIDE=1|' Makefile
-			sed -i 's|^LDFLAGS =\(.*\)|LDFLAGS =\1 -lm|' Makefile
-			sed -i -e 's|-m486||g' Makefile
-		else sed -i 's|CFLAGS = -c -Wall -O2|CFLAGS = -c -Wall -O2 -march=i686 -DJOHN_SYSTEMWIDE=1|' Makefile
-	fi
-
-	# correct some paths
-	sed -i 's|/usr/local/cuda|/opt/cuda-toolkit|' Makefile
-	sed -i 's|/usr/local|/usr|' Makefile
-
-	# enable OMP
-	sed -i 's|#OMPFLAGS = -fopenmp$|OMPFLAGS = -fopenmp|' Makefile
-
-	# enable NSS for mozilla2john
-	sed -i 's|#HAVE_NSS |HAVE_NSS |' Makefile
 }
 
 build() {
-    cd "$_pkgname"
+  cd "$srcdir/$_pkgname/src"
 
-	if [ "$CARCH" == "x86_64" ]; then
-			# if active it depends on cuda-toolkit
-			#make linux-x86-64-cuda
-			make linux-x86-64
-		else make linux-x86-mmx
-	fi
+  ./configure --with-systemwide
 
-	make office2john
+  make clean
+
+  make
 }
 
 package() {
@@ -84,9 +65,9 @@ package() {
 	install -m644 ${srcdir}/$_pkgname/run/password.lst ${pkgdir}/usr/share/john/
 	install -m644 ${srcdir}/$_pkgname/run/dictionary.rfc2865 ${pkgdir}/usr/share/john/
 	install -m644 ${srcdir}/$_pkgname/run/stats ${pkgdir}/usr/share/john/
-	install -m644 ${srcdir}/$_pkgname/run/{all,alnum,alpha,digits,lanman}.chr \
+	install -m644 ${srcdir}/$_pkgname/run/*.chr \
 			${pkgdir}/usr/share/john/
-	install -m644 ${srcdir}/$_pkgname/run/{dumb16,dumb32,dynamic}.conf \
+	install -m644 ${srcdir}/$_pkgname/run/{dumb16,dumb32,dynamic,dynamic_flat_sse_formats,korelogic,regex_alphabets,repeats16,repeats32}.conf \
 			${pkgdir}/usr/share/john/
 
 	# install scripts
@@ -124,7 +105,7 @@ package() {
 	install -Dm755 ${srcdir}/$_pkgname/run/tgtsnarf ${pkgdir}/usr/bin/tgtsnarf
 	install -Dm755 ${srcdir}/$_pkgname/run/mailer ${pkgdir}/usr/bin/john-mailer
 	install -Dm755 ${srcdir}/$_pkgname/run/raw2dyna ${pkgdir}/usr/bin/raw2dyna
-	install -Dm755 ${srcdir}/$_pkgname/run/office2john ${pkgdir}/usr/bin/office2john
+	install -Dm755 ${srcdir}/$_pkgname/run/office2john.py ${pkgdir}/usr/bin/office2john
 
 	# create links
 	cd ${pkgdir}/usr/bin
