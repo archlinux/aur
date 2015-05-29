@@ -1,0 +1,17 @@
+pkgbase = emacs-navi2ch-git
+	pkgdesc = A '2ch bbs' browser worked on Emacsen.
+	pkgver = 1225.faebfd1
+	pkgrel = 1
+	url = http://navi2ch.sourceforge.net/
+	install = navi2ch.install
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = emacs
+	provides = emacs-navi2ch
+	conflicts = emacs-navi2ch
+	source = emacs-navi2ch::git://github.com/naota/navi2ch.git
+	md5sums = SKIP
+
+pkgname = emacs-navi2ch-git
+
