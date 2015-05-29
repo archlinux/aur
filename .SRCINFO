@@ -1,0 +1,27 @@
+pkgbase = tagsistant-svn
+	pkgdesc = Semantic File System for Linux kernels
+	pkgver = 462
+	pkgrel = 1
+	url = https://www.tagsistant.net/
+	install = tagsistant.install
+	changelog = ChangeLog
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	depends = fuse
+	depends = libdbi
+	depends = libdbi-drivers
+	depends = sqlite2
+	depends = sqlite
+	depends = libmariadbclient
+	depends = postgresql-libs
+	depends = glib2
+	depends = libextractor
+	provides = tagsistant
+	conflicts = tagsistant
+	source = tagsistant::svn+http://svn.gna.org/svn/tagfs/trunk
+	sha1sums = SKIP
+
+pkgname = tagsistant-svn
+
