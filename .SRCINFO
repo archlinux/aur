@@ -1,0 +1,19 @@
+pkgbase = hws-git
+	pkgdesc = A workspace manager for hackers
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/StreakyCobra/hws
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = ocaml
+	makedepends = ocaml-findlib
+	makedepends = git
+	depends = glibc
+	provides = hws
+	conflicts = hws
+	source = hws::git+http://github.com/StreakyCobra/hws.git#branch=develop
+	md5sums = SKIP
+
+pkgname = hws-git
+
