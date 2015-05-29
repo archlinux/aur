@@ -1,0 +1,27 @@
+pkgbase = knime-desktop
+	pkgdesc = A user-friendly graphical workbench for the entire data analysis process
+	pkgver = 2.11.3
+	pkgrel = 1
+	url = http://www.knime.org/
+	changelog = ChangeLog
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	depends = java-environment
+	depends = cairo
+	depends = python2
+	optdepends = bash: Required for bash-scriptable nodes
+	optdepends = r: Required for R-scriptable nodes
+	options = !emptydirs
+	source = http://www.knime.org/knime_downloads/linux/knime_2.11.3.linux.gtk..tar.gz
+	source = knime.sh
+	source = knime-desktop.desktop
+	source = LICENSE
+	md5sums = 142d974f5a8cbe50cda43b0d09c78767
+	md5sums = 597314dbe6d4aae1d8381388d83d4b81
+	md5sums = 4de9d5ea5f332ce712dc80b52f0e8501
+	md5sums = 9e93e4def16f04f7808bddb48da3c009
+
+pkgname = knime-desktop
+

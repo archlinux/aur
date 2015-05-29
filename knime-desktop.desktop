@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Knime Desktop
+Comment=A user-friendly graphical workbench for the entire data analysis process
+Exec=knime-desktop
+Icon=knime-desktop
+Terminal=false
+StartupNotify=false
+Categories=Application;

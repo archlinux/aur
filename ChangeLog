@@ -1,0 +1,42 @@
+2015-02-13 Fabien Dubosson <fabien.dubosson@gmail.com>
+
+	* 2.11.2-1:
+	New upstream release
+
+2015-01-05 Fabien Dubosson <fabien.dubosson@gmail.com>
+
+	* 2.11.0-1:
+	New upstream release
+
+2014-09-24 Fabien Dubosson <fabien.dubosson@gmail.com>
+
+	* 2.10.2-1:
+	New upstream release
+
+2014-07-14 Fabien Dubosson <fabien.dubosson@gmail.com>
+
+	* 2.10.0-1:
+	New upstream release
+	Add desktop specification
+
+2014-03-05 Fabien Dubosson <fabien.dubosson@gmail.com>
+
+	* 2.9.2-1:
+	New upstream release
+
+2014-02-04 Fabien Dubosson <fabien.dubosson@gmail.com>
+
+	* 2.9.1-2:
+	Uniformalize PKGBUILD notations
+
+2014-01-16 Fabien Dubosson <fabien.dubosson@gmail.com>
+
+	* 2.9.1-1:
+	New upstream release
+
+2013-12-23 Fabien Dubosson <fabien.dubosson@gmail.com>
+
+	* 2.9.0-2:
+	Add ChangeLog
+	Update PKGBUILD to follow Guidelines
+
