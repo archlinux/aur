@@ -1,0 +1,17 @@
+pkgbase = ecgpuwave
+	pkgdesc = Physionet QRS detector and waveform limit locator
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = http://physionet.org/physiotools/ecgpuwave/
+	changelog = ChangeLog
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-fortran-multilib
+	depends = lib32-wfdb
+	optdepends = wfdb-samples
+	source = ecgpuwave.tar.gz::http://www.physionet.org/physiotools/ecgpuwave/src/ecgpuwave-1.3.2.tar.gz
+	md5sums = 277f5b8365ec30297d8467ac8095a13d
+
+pkgname = ecgpuwave
+
