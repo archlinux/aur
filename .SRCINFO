@@ -1,0 +1,23 @@
+pkgbase = wfdb
+	pkgdesc = Software from PhysioNet for viewing, analyzing, and creating recordings of physiologic signals
+	pkgver = 10.5.23
+	pkgrel = 2
+	url = http://www.physionet.org/physiotools/wfdb.shtml
+	install = wfdb.install
+	changelog = ChangeLog
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = chrpath
+	depends = curl>=7.10
+	depends = expat
+	optdepends = wfdb-samples
+	source = http://www.physionet.org/physiotools/wfdb.tar.gz
+	md5sums = 0c4dd0bc86408709fe2364f6703c5c66
+
+pkgname = wfdb
+
+pkgname = wfdb-samples
+	arch = any
+

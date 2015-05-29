@@ -1,0 +1,13 @@
+post_install() {
+    echo '========================================================================='
+    echo 'In order to use `wfdb` tools, you will need to source `/usr/bin/setwfdb`:'
+    echo '    $ . setwfdb'
+    echo ''
+    echo 'This is also the place to add the paths to your databases if they are not'
+    echo 'in one of the following paths:'
+    echo '    * .'
+    echo '    * ${HOME}/database'
+    echo '    * /usr/database'
+    echo '    * /cdrom'
+    echo '========================================================================='
+}
