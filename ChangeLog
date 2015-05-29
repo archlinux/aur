@@ -1,0 +1,6 @@
+2015-03-22 Fabien Dubosson <fabien.dubosson@gmail.com>
+
+        * 0.1.0-1 :
+        New upstream release
+        PKGBUILD cleaned
+        Switch to python3

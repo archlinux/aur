@@ -1,0 +1,18 @@
+pkgbase = percol
+	pkgdesc = Adds flavor of interactive filtering to the traditional pipe concept of UNIX shell
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mooz/percol
+	changelog = ChangeLog
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	optdepends = python-cmigemo
+	conflicts = percol-git
+	options = !emptydirs
+	source = https://github.com/mooz/percol/archive/v0.1.0.tar.gz
+	sha256sums = bc47dceef46d3e8443a166e30a0c5c6f36992bb6c2775e07110fc01a82d7699d
+
+pkgname = percol
+
