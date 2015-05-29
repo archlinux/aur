@@ -7,7 +7,7 @@
 
 _pkgbase="protobuf"
 pkgname=('protobuf3' 'python2-protobuf3' 'python-protobuf3')
-pkgver=3.0.0_alpha_2
+pkgver=3.0.0_alpha_3
 _pkgver=$(echo $pkgver | tr _ -)
 pkgrel=1
 pkgdesc="Protocol Buffers - Google's data interchange format"
@@ -17,7 +17,7 @@ license=('BSD')
 depends=('gcc-libs' 'zlib')
 makedepends=('unzip' 'python-setuptools' 'python2-setuptools')
 source=("https://github.com/google/${_pkgbase}/archive/v${_pkgver}.tar.gz")
-md5sums=('2caac6446bf8e6c958b70a9599017afe')
+md5sums=('faf6179c156ad34b2f2e53a5a9d36551')
 
 build() {
   cd $_pkgbase-$_pkgver
