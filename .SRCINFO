@@ -1,0 +1,20 @@
+pkgbase = nffm-git
+	pkgdesc = Not a Fancy File Manager, a mouseless ncurses file manager written in C.
+	pkgver = r89.7ab56aa
+	pkgrel = 1
+	url = https://github.com/mariostg/nffm
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = ncurses
+	depends = libtar
+	depends = gzip
+	provides = nffm
+	backup = etc/nffm/color.conf
+	backup = etc/nffm/extension.conf
+	source = git://github.com/mariostg/nffm
+	md5sums = SKIP
+
+pkgname = nffm-git
+
