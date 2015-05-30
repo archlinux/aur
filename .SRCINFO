@@ -1,0 +1,18 @@
+pkgbase = youbot_driver-git
+	pkgdesc = Drivers for the KUKA youBot robot
+	pkgver = 20150530
+	pkgrel = 1
+	url = http://www.youbot-store.com/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	depends = boost-libs
+	provides = youbot-driver
+	conflicts = youbot-driver
+
+pkgname = youbot_driver-git
+
