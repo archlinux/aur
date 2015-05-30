@@ -13,7 +13,7 @@ depends=('boost-libs' 'pcre' 'curl' 'libquvi' 'glibmm')
 makedepends=('boost')
 source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgver%.*}/${pkgname}-${pkgver}.tar.xz"
         iostream.patch
-        boost.m4)
+        boost.m4) # https://github.com/tsuna/boost.m4
 md5sums=('c336f97e29327d92ead62765a0ef0b65'
          'd5a2f6aee7832683bcffe2ea6b1561ad'
          'c2ed0f4a18fa2da46706705cc6d37dbd')
