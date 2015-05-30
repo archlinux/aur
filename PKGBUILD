@@ -10,7 +10,11 @@
 _libname=openjfx
 pkgbase=java-${_libname}
 pkgname=('java-openjfx' 'java-openjfx-doc' 'java-openjfx-src')
-pkgver='8u45_b13'
+_java_ver=8
+_jdk_update=45
+_build_ver=13
+_hgtag=${_java_ver}u${_jdk_update}-b${_build_ver}
+pkgver=${_java_ver}.u${_jdk_update}
 pkgrel=1
 pkgdesc='Java OpenJFX 8 client application platform (open-source implementation of JavaFX)'
 arch=('i686' 'x86_64')
@@ -19,7 +23,7 @@ license=('GPL')
 depends=('java-runtime-openjdk=8' 'gstreamer' 'libxtst' 'webkitgtk2' 'ffmpeg' 'qt5-base')
 makedepends=('java-environment-openjdk=8' 'mercurial' 'bison' 'gperf' 'qtchooser' 'gtk2'
              'libxtst' 'ffmpeg' 'python' 'qt5-base' 'webkitgtk2')
-source=(openjfx::hg+http://hg.openjdk.java.net/openjfx/8u-dev/rt#tag=${pkgver/_/-}
+source=(openjfx::hg+http://hg.openjdk.java.net/openjfx/8u-dev/rt#tag=${_hgtag}
         gradle.properties
         https://services.gradle.org/distributions/gradle-1.8-bin.zip)
 sha256sums=('SKIP'
