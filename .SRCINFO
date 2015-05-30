@@ -1,0 +1,14 @@
+pkgbase = pxview
+	pkgdesc = Program to read Paradox database files and output them as csv, sql, sqlite or html (configured without "--with-sqlite" option)
+	pkgver = 0.2.5
+	pkgrel = 2
+	url = http://pxlib.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = pxlib
+	source = http://downloads.sourceforge.net/sourceforge/pxlib/pxview_0.2.5.orig.tar.gz
+	md5sums = 954dbb0371986d6e27802de8043c6807
+
+pkgname = pxview
+
