@@ -1,6 +1,6 @@
 pkgbase = python-librtmp
 	pkgdesc = Python interface to librtmp
-	pkgver = 0.2.2
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/chrippa/python-librtmp
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = python-librtmp
 	makedepends = python2-cffi
 	makedepends = python2-singledispatch
 	makedepends = rtmpdump
-	source = https://pypi.python.org/packages/source/p/python-librtmp/python-librtmp-0.2.2.tar.gz
-	sha256sums = 4586f043a1071a189f16cadabb4056569bd083adaf8b1e17187fe2210699a765
+	source = https://pypi.python.org/packages/source/p/python-librtmp/python-librtmp-0.3.0.tar.gz
+	sha256sums = 4a41ada646270baa5b388f17481d08679d23b2947835901d0db7602c59ec772b
 
 pkgname = python-librtmp
 	pkgdesc = Python interface to librtmp (python3 version)
