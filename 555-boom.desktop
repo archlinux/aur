@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Exec=555-boom.sh 
+Type=Application
+Categories=Application;Game;BoardGame;
+Name=555-boom
+GenericName=555-boom
+Comment=A Puzzle Game and Electromechanical Sandbox.
+Terminal=false
+StartupNotify=false
+Icon=/usr/share/555-boom/Game/Resources/images/boom.png
