@@ -1,0 +1,14 @@
+*.asc
+*.bz2
+*.gz
+*.log
+*.part
+*.pkg
+pkg/
+*.scm
+*.sig
+*.sign
+src/
+*.txt
+*.xz
+*.zip

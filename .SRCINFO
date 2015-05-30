@@ -1,0 +1,15 @@
+pkgbase = bashtagger
+	pkgdesc = A menu-driven bash script for the management of OGG and FLAC tags
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://www.sourceforge.net/projects/bashtagger/
+	arch = any
+	license = GPL2
+	depends = flac
+	depends = vorbis-tools
+	backup = etc/bashtagger.conf
+	source = http://downloads.sourceforge.net/bashtagger/bashtagger-1.1.0.tar.gz
+	sha256sums = 687149f1170c5d16ca0734b15c7ab06063f7e3c804ea79f5c1db4537b613c5cf
+
+pkgname = bashtagger
+
