@@ -1,11 +1,11 @@
-# $Id:$
+# $Id$
 # Maintainer: Ronald van Haren <ronald.archlinux.org>
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 # SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgname=iproute2-selinux
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="IP Routing Utilities with SELinux support"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -23,11 +23,13 @@ backup=('etc/iproute2/ematch_map' 'etc/iproute2/rt_dsfield' 'etc/iproute2/rt_pro
 validpgpkeys=('9F6FC345B05BE7E766B83C8F80A77F6095CDE47E') # Stephen Hemminger
 source=("http://www.kernel.org/pub/linux/utils/net/${pkgname/-selinux}/${pkgname/-selinux}-$pkgver.tar."{xz,sign}
         iproute2-fhs.patch
-        unwanted-link-help.patch)
+        unwanted-link-help.patch
+	tc.patch)
 sha1sums=('d24385ae619966d1bd71e146322d6035d60aaa1a'
           'SKIP'
           '35b8cf2dc94b73eccad427235c07596146cd6f6c'
-          '3b1335f4025f657f388fbf4e5a740871e3129c2a')
+          '3b1335f4025f657f388fbf4e5a740871e3129c2a'
+          '81124e20802ff06bad616debab827b03a3c75679')
 
 prepare() {
   cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
@@ -38,8 +40,12 @@ prepare() {
   # allow operations on links called "h", "he", "hel", "help"
   patch -Np1 -i "${srcdir}/unwanted-link-help.patch"
 
+  # upstream patch for FS#45031: tc qdisc show broken
+  patch -Np1 -i "${srcdir}/tc.patch"
+
   # do not treat warnings as errors
   sed -i 's/-Werror//' Makefile
+
 }
 
 build() {
