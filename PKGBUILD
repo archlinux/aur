@@ -3,8 +3,8 @@
 
 pkgname=gcalctool-oldgui
 _pkgname=gcalctool
-pkgver=5.91.93
-_majver=5.91
+pkgver=6.0.2
+_majver=6.0
 pkgrel=1
 pkgdesc="GCalctool is an application that solves mathematical equations and is suitable as a default application in a Desktop environment."
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ install=$_pkgname.install
 source=("https://download.gnome.org/sources/$_pkgname/${_majver}/$_pkgname-${pkgver}.tar.bz2")
 provides=("$_pkgname" 'gnome-calculator')
 conflicts=("$_pkgname" 'gnome-calculator')
-md5sums=('5f4d7cb8ea6733ad57bd4fad9879152b')
+md5sums=('53156dd96aeeecf6a2669292025de75c')
 
 build() {
   cd "${srcdir}/${provides}-${pkgver}"
