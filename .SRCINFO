@@ -1,0 +1,15 @@
+pkgbase = think
+	pkgdesc = Terminal Think Music
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Kwpolska/think
+	arch = any
+	license = BSD
+	depends = python
+	depends = python-setuptools
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/t/think/think-0.1.0.tar.gz
+	md5sums = 4d5f931942326f6b3e2f520ddcdd0808
+
+pkgname = think
+
