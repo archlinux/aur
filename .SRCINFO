@@ -1,7 +1,7 @@
 pkgbase = coreutils-selinux
 	pkgdesc = The basic file, shell and text manipulation utilities of the GNU operating system with SELinux support
 	pkgver = 8.23
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.gnu.org/software/coreutils
 	install = coreutils.install
 	arch = i686
@@ -9,20 +9,22 @@ pkgbase = coreutils-selinux
 	groups = selinux
 	license = GPL3
 	depends = glibc
-	depends = pam-selinux
 	depends = acl
+	depends = attr
 	depends = gmp
 	depends = libcap
 	depends = openssl
 	depends = libselinux
-	provides = coreutils=8.23-2
-	provides = selinux-coreutils=8.23-2
+	provides = coreutils=8.23-3
+	provides = selinux-coreutils=8.23-3
 	conflicts = coreutils
 	conflicts = selinux-coreutils
 	source = ftp://ftp.gnu.org/gnu/coreutils/coreutils-8.23.tar.xz
 	source = ftp://ftp.gnu.org/gnu/coreutils/coreutils-8.23.tar.xz.sig
+	source = 01-btrfs-alloc.patch
 	md5sums = abed135279f87ad6762ce57ff6d89c41
 	md5sums = SKIP
+	md5sums = 7333cea9afddff017dd0445fc5b8cc8f
 
 pkgname = coreutils-selinux
 
