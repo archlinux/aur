@@ -1,21 +1,22 @@
 pkgbase = gcalctool-oldgui
 	pkgdesc = GCalctool is an application that solves mathematical equations and is suitable as a default application in a Desktop environment.
-	pkgver = 5.30.2
+	pkgver = 5.31.91
 	pkgrel = 1
 	url = https://webstats.gnome.org/Gcalctool
+	install = gcalctool.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = intltool
 	makedepends = gnome-doc-utils>=0.8.0
 	depends = gtk2>=2.14.0
-	depends = gconf-gtk2
+	depends = dconf
 	provides = gcalctool
 	provides = gnome-calculator
 	conflicts = gcalctool
 	conflicts = gnome-calculator
-	source = https://download.gnome.org/sources/gcalctool/5.30/gcalctool-5.30.2.tar.bz2
-	md5sums = 9357de6835da305ee4f0ebad509b509a
+	source = https://download.gnome.org/sources/gcalctool/5.31/gcalctool-5.31.91.tar.bz2
+	md5sums = f10cd6e39788c4582b5e1d08e7ad455c
 
 pkgname = gcalctool-oldgui
 
