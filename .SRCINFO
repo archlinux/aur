@@ -1,0 +1,17 @@
+pkgbase = apulse-git
+	pkgdesc = Pulseaudio emulation for ALSA
+	pkgver = 0.1.5_2_gaa73e4e
+	pkgrel = 1
+	url = http://github.com/i-rinat/apulse
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = alsa-lib
+	depends = glib2
+	source = git+https://github.com/i-rinat/apulse.git
+	md5sums = SKIP
+
+pkgname = apulse-git
+
