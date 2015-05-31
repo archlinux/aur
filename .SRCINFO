@@ -1,0 +1,17 @@
+pkgbase = snowflake-client
+	pkgdesc = Snowflake Database command line and JDBC client
+	pkgver = 2.4
+	pkgrel = 2
+	url = http://www.snowflake.net/
+	arch = i686
+	arch = x86_64
+	license = custom: commercial
+	depends = gcc-libs
+	depends = java-environment
+	depends = bash
+	depends = libtinfo
+	source = sfsql.patch
+	md5sums = 3ab11cead59dab3a869d22f15cdff050
+
+pkgname = snowflake-client
+

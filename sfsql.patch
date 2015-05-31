@@ -1,0 +1,20 @@
+--- a/client/sfsql	2015-04-27 10:51:46.081074936 +0300
++++ b/client/sfsql	2015-04-27 10:51:09.323555791 +0300
+@@ -4,7 +4,7 @@
+ #   options are ignored if SF_SQL_CONNECT_URL if set
+ 
+ #default values for command line options
+-CLIENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
++CLIENT_DIR="/opt/snowflake-client"
+ HENPLUS_DIR="$( cd "${CLIENT_DIR}/henplus" && pwd )"
+ 
+ Usage()
+@@ -50,7 +50,7 @@
+ FOUND=0
+ for JAVA in "$JAVA1" "$JAVA2"; do
+ 
+-  JAVA_VERSION=$("$JAVA" -version 2>&1 | sed 's/java version "\(.*\)\.\(.*\)\..*"/\1\2/; 1q')
++  JAVA_VERSION=$("$JAVA" -version 2>&1| awk -F\" '/version/ {print $2}' | awk -F '.' '{print $1$2}')
+ 
+   # if not integer, java not installed
+   if [ "$JAVA_VERSION" -eq "$JAVA_VERSION" ] 2>/dev/null ; then
