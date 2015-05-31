@@ -1,0 +1,14 @@
+pkgbase = r-cran-mvtnorm
+	pkgdesc = Multivariate Normal and t Distributions
+	pkgver = 1.0_2
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/mvtnorm/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = r
+	source = http://cran.r-project.org/src/contrib/mvtnorm_1.0-2.tar.gz
+	md5sums = 2b43310efdee3e553c2ca571c4fd6b1a
+
+pkgname = r-cran-mvtnorm
+
