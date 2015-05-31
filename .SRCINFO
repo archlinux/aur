@@ -1,0 +1,14 @@
+pkgbase = python2-dictdlib
+	pkgdesc = Python library for generating dictd dictionaries
+	pkgver = 2.0.4.1
+	pkgrel = 1
+	url = http://packages.qa.debian.org/d/dictdlib.html
+	arch = any
+	license = GPL2
+	depends = python2
+	options = !emptydirs
+	source = http://ftp.debian.org/debian/pool/main/d/dictdlib/dictdlib_2.0.4.1.tar.gz
+	md5sums = 4efbf499c7fc7a2c25ef063a3a349e74
+
+pkgname = python2-dictdlib
+
