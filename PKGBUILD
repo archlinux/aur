@@ -1,7 +1,7 @@
 #Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgdesc="XDE .desktop entry helpers"
 pkgname=xde-helpers
-pkgver=1.1.81
+pkgver=1.1.101
 pkgrel=1
 arch=('any')
 license=('GPL')
