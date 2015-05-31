@@ -1,0 +1,13 @@
+pkgbase = r-cran-wikibooks
+	pkgdesc = collection of functions and datas used in the german WikiBook 'GNU R'
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/wikibooks/index.html
+	arch = any
+	license = GPL3
+	depends = r
+	source = http://cran.r-project.org/src/contrib/wikibooks_0.2.tar.gz
+	md5sums = e7e28894723f66fd83bdc551bc431390
+
+pkgname = r-cran-wikibooks
+
