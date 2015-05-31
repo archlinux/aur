@@ -1,0 +1,4 @@
+125c125
+< linkflags  := -L/usr/lib $(LDFLAGS) $(sort $(LIBS))
+---
+> linkflags  := $(LDFLAGS) $(sort $(LIBS)) -L/usr/lib

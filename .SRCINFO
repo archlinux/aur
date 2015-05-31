@@ -1,0 +1,33 @@
+pkgbase = ultrastardx-svn
+	pkgdesc = Free and open source karaoke game.
+	pkgver = 3068
+	pkgrel = 1
+	epoch = 1
+	url = http://ultrastardeluxe.org/
+	arch = i686
+	arch = x86_64
+	groups = usdx
+	license = GPL
+	makedepends = subversion
+	makedepends = fpc
+	depends = ffmpeg-usdx
+	depends = lua51
+	depends = portaudio
+	depends = sdl_image
+	depends = sqlite
+	depends = ttf-dejavu
+	depends = ttf-freefont
+	depends = wqy-microhei
+	depends = pcre
+	provides = ultrastardx
+	conflicts = ultrastardx
+	options = !libtool
+	source = ultrastardx::svn+http://svn.code.sf.net/p/ultrastardx/svn/trunk
+	source = Makefile.in.patch
+	source = ultrastardx.sh
+	sha256sums = SKIP
+	sha256sums = fbe8489745d4553885689b21415f795dee6d004ff2f1e573b093516421554428
+	sha256sums = 4dafd4314ce99cbc3e4ede811db031dc7e78d77d6033b948d74ee49576edeba7
+
+pkgname = ultrastardx-svn
+
