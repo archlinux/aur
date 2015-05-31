@@ -1,0 +1,14 @@
+pkgbase = abcpp
+	pkgdesc = A simple yet powerful preprocessor designed for, but not limited to, ABC music files
+	pkgver = 1.4.5
+	pkgrel = 1
+	url = http://abcplus.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://abcplus.sourceforge.net/abcpp-1.4.5.tar.gz
+	sha256sums = c45a7c3152233dd42970ac146f0e795cd1c6602bbcd1367abcf9cc65ae611183
+
+pkgname = abcpp
+
