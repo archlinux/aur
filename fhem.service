@@ -1,0 +1,13 @@
+[Unit]
+Description=FHEM Perl Server
+After=syslog.target network.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+User=fhem
+WorkingDirectory=/opt/fhem
+ExecStart=/usr/bin/perl fhem.pl fhem.cfg
+
+[Install]
+WantedBy=multi-user.target

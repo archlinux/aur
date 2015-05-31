@@ -1,0 +1,16 @@
+pkgbase = fhem
+	pkgdesc = A perl server for house automation
+	pkgver = 5.6
+	pkgrel = 1
+	url = http://fhem.de
+	arch = any
+	license = GPL
+	depends = perl
+	backup = opt/fhem/fhem.cfg
+	source = http://fhem.de/fhem-5.6.tar.gz
+	source = fhem.service
+	sha256sums = 19cb2d939bc76524c232ea619b27f25f262109c9b351bd9b83411d6886be4ba9
+	sha256sums = 999335174932e30ac5d4ee80fb74a576ff76dbb52d64704f6f7240c58b19a697
+
+pkgname = fhem
+
