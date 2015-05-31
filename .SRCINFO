@@ -1,0 +1,19 @@
+pkgbase = lmao
+	pkgdesc = Low-level Malbolge Assembler, Ooh! is a tool that builds Malbolge programs from HeLL
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://www.matthias-ernst.eu/malbolgeassembler.html
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = bison
+	makedepends = flex
+	makedepends = make
+	makedepends = gcc
+	makedepends = doxygen
+	depends = glibc
+	source = http://www.matthias-ernst.eu/malbolge/lmao.tar.gz
+	md5sums = 62a495a91e75ecef333d7a7e3e814f29
+
+pkgname = lmao
+
