@@ -1,0 +1,15 @@
+pkgbase = asoundconf
+	pkgdesc = Get and set configuration parameters in ~/.asoundrc.asoundconf
+	pkgver = 1.2
+	pkgrel = 1
+	epoch = 1
+	url = https://bitbucket.org/stativ/asoundconf
+	arch = any
+	license = GPL
+	depends = python2
+	optdepends = pygtk: asoundconf-gtk GUI
+	source = asoundconf-1.2.tar.gz::https://bitbucket.org/stativ/asoundconf/get/1.2.tar.gz
+	md5sums = aa12135497217f248e70c6aee286f453
+
+pkgname = asoundconf
+
