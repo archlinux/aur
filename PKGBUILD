@@ -17,11 +17,17 @@ provides=("${_gitname}")
 conflicts=("${_gitname}")
 source=("git+https://github.com/${_ghuser}/${_gitname}.git/"
 mbm-gpsd.service
+0001-Fix-incorrect-syntax-in-udev.patch
 )
 
 pkgver() {
 	cd "${srcdir}/${_gitname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	cd "${srcdir}/${_gitname}"
+	patch -p1 < 0001-Fix-incorrect-syntax-in-udev.patch
 }
 
 build() {
@@ -42,6 +48,5 @@ package() {
 	rmdir "${pkgdir}/var" "${pkgdir}/usr/sbin/"
 }
 md5sums=('SKIP'
-'1c4fd254cd00834f644ab614a76f5c96')
-md5sums=('SKIP'
-         'c436e8bcf6b459f8f939e434aed0b9d4')
+         'c436e8bcf6b459f8f939e434aed0b9d4'
+         '32275446e564eccb76ea907a63a610fa')
