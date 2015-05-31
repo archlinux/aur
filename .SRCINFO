@@ -1,0 +1,18 @@
+pkgbase = phpredis-git
+	pkgdesc = A PHP extension for Redis
+	pkgver = 2.2.5.r11.gb9a16b5
+	pkgrel = 1
+	url = https://github.com/nicolasff/phpredis
+	arch = i686
+	arch = x86_64
+	license = PHP
+	makedepends = git
+	depends = php
+	backup = etc/php/conf.d/phpredis.ini
+	source = git+https://github.com/nicolasff/phpredis.git
+	source = phpredis.ini
+	md5sums = SKIP
+	md5sums = 1fc22a23c6b24a223dd235a15d5e194f
+
+pkgname = phpredis-git
+
