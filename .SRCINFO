@@ -1,0 +1,15 @@
+pkgbase = r-cran-catools
+	pkgdesc = several Tools for moving window statistics, GIF, Base64, ROC AUC, etc
+	pkgver = 1.17.1
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/caTools/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = r
+	depends = r-cran-bitops
+	source = http://cran.r-project.org/src/contrib/caTools_1.17.1.tar.gz
+	md5sums = 5c872bbc78b177b306f36709deb44498
+
+pkgname = r-cran-catools
+
