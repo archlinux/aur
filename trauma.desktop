@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Trauma
+Comment=Dive into the mind of a traumatized young woman to learn and understand.
+Version=1
+Type=Application
+Categories=Game;
+Icon=/usr/share/icons/trauma.png
+Exec=/usr/bin/trauma
+Encoding=UTF-8
+Terminal=false

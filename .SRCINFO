@@ -1,0 +1,19 @@
+pkgbase = trauma
+	pkgdesc = TRAUMA is a unique photographic experience by game designer Krystian Majewski. Dive into the mind of a traumatized young woman to learn and understand.
+	pkgver = 3
+	pkgrel = 4
+	url = http://www.traumagame.com/
+	install = trauma.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = flashplayer-standalone
+	source = trauma.png
+	source = trauma.desktop
+	source = trauma.sh
+	md5sums = 41951abca248a5e2f4831cab92b6c281
+	md5sums = 6560fcfccf2f48f955efdaab81413eda
+	md5sums = 618a5bd22abe98666d1e7980256e70ce
+
+pkgname = trauma
+
