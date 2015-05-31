@@ -1,0 +1,13 @@
+pkgbase = r-cran-random
+	pkgdesc = interface to true random number source random.org for r language
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/random/index.html
+	arch = any
+	license = GPL3
+	depends = r
+	source = http://cran.r-project.org/src/contrib/random_0.2.3.tar.gz
+	md5sums = 298eac68e17d3be20c065956ba1796fe
+
+pkgname = r-cran-random
+
