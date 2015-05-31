@@ -1,0 +1,8 @@
+post_install() {
+ echo "==> Note: The cardsets have time limited licenses."
+ echo "==> See http://free-doko.sourceforge.net/en/FreeDoko.html for more informations."
+}
+
+post_upgrade() {
+  post_install $1
+}
