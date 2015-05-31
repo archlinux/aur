@@ -1,0 +1,21 @@
+pkgbase = webalizer
+	pkgdesc = A web server log file analysis program producing HTML reports
+	pkgver = 2.23.08.20140101
+	pkgrel = 1
+	url = http://www.webalizer.com/
+	install = webalizer.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = db
+	depends = gd
+	depends = geoip
+	source = ftp://ftp.mrunix.net/pub/webalizer/webalizer-2.23-08-src.tgz
+	source = ftp://ftp.mrunix.net/pub/webalizer/geodb/webalizer-geodb-20140101.tgz
+	source = ftp://ftp.mrunix.net/pub/webalizer/webalizer-flags.tgz
+	sha256sums = edaddb5aa41cc4a081a1500e3fa96615d4b41bc12086bcedf9938018ce79ed8d
+	sha256sums = a3cd4b001c040e20cdf1acf5f5dce5581ff76851f305f998b502336729303119
+	sha256sums = df9961fec7da2c16ed3faefb763f912c2db5ddce6a24e4f46647d7e64b8ab29a
+
+pkgname = webalizer
+
