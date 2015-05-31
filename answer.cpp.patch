@@ -1,0 +1,20 @@
+--- answer.cpp	2012-08-06 22:56:30.000000000 +0200
++++ answer.cpp.new	2015-03-29 14:39:33.433983097 +0200
+@@ -55,7 +55,7 @@
+     ui->videoPlayer->setVisible(false);
+ 
+     if(sound)
+-        this->music = Phonon::createPlayer(Phonon::NoCategory, Phonon::MediaSource("sound/jeopardy.wav"));
++        this->music = Phonon::createPlayer(Phonon::NoCategory, Phonon::MediaSource("/usr/share/jeopardy/sound/jeopardy.wav"));
+ 
+     this->isVideo = false;
+ }
+@@ -217,7 +217,7 @@
+ 
+ void Answer::prependDir(QString *answer)
+ {
+-    answer->prepend(QString("/answers/%1/").arg(this->round));
++    answer->prepend(QString("/usr/share/jeopardy/answers/%1/").arg(this->round));
+     answer->prepend(QDir::currentPath());
+ }
+ 

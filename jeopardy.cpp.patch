@@ -1,0 +1,29 @@
+--- jeopardy.cpp	2012-08-06 22:56:30.000000000 +0200
++++ jeopardy.cpp.new	2015-03-29 14:39:54.657201454 +0200
+@@ -99,7 +99,7 @@
+ 
+     if(this->sound)
+     {
+-        this->music = Phonon::createPlayer(Phonon::NoCategory, Phonon::MediaSource("sound/title.ogg"));
++        this->music = Phonon::createPlayer(Phonon::NoCategory, Phonon::MediaSource("/usr/share/jeopardy/sound/title.ogg"));
+         this->music->play();
+     }
+ 
+@@ -159,7 +159,7 @@
+     QDir dir;
+     QFile *file;
+ 
+-    this->fileString = QString("answers/%1.jrf").arg(this->round);
++    this->fileString = QString("/usr/share/jeopardy/answers/%1.jrf").arg(this->round);
+     this->fileString = dir.absoluteFilePath(this->fileString);
+ 
+     file = new QFile(this->fileString);
+@@ -168,7 +168,7 @@
+     {
+         QMessageBox::critical(this, tr("Error"), tr("Could not open round file, please select one by yourself"));
+ 
+-        this->fileString = QFileDialog::getOpenFileName(this, tr("Open File"), "answers/", tr("Jeopardy Round File (*.jrf)"));
++        this->fileString = QFileDialog::getOpenFileName(this, tr("Open File"), "/usr/share/jeopardy/answers/", tr("Jeopardy Round File (*.jrf)"));
+         this->fileString = dir.absoluteFilePath(this->fileString);
+         file = new QFile(this->fileString);
+ 
