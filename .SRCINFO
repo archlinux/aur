@@ -1,0 +1,22 @@
+pkgbase = lua51-dbi
+	pkgdesc = Database interface library for Lua (5.1)
+	pkgver = 0.5.8d7ad667f956
+	pkgrel = 1
+	url = http://code.google.com/p/luadbi/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = sqlite3
+	makedepends = libmariadbclient
+	makedepends = postgresql-libs
+	depends = lua51
+	optdepends = sqlite3: sqlite3 Support
+	optdepends = postgresql-libs: postgresql Support
+	optdepends = libmariadbclient: mysql Support
+	source = luadbi.0.5.8d7ad667f956.tar.gz::https://luadbi.googlecode.com/archive/8d7ad667f956a52235295e62176703cae1a7dedc.zip
+	source = mycommit.patch
+	sha1sums = SKIP
+	sha1sums = d92128ab05ecb86dae7e95161f36b8bf0d3cf2fc
+
+pkgname = lua51-dbi
+
