@@ -1,0 +1,26 @@
+pkgbase = visual-studio-code
+	pkgdesc = Editor for building and debugging modern web and cloud applications
+	pkgver = 0.1.0
+	pkgrel = 2
+	url = https://code.visualstudio.com/
+	arch = x86_64
+	license = custom: commercial
+	depends = fontconfig
+	depends = libxtst
+	depends = gtk2
+	depends = python
+	depends = cairo
+	depends = alsa-lib
+	depends = gconf
+	depends = nss
+	depends = gcc-libs
+	provides = vscode,visualstudiocode
+	source = http://download.microsoft.com/download/0/D/5/0D57186C-834B-463A-AECB-BC55A8E466AE/VSCode-linux-x64.zip
+	source = visual-studio-code.png
+	source = visual-studio-code.desktop
+	md5sums = 50d4547e3617ace370f040edace6d7cd
+	md5sums = 6dfffd3ebb0f173f5cd13b432fcdb2db
+	md5sums = 94c9ab66cc24c2683873e07b2a5aada4
+
+pkgname = visual-studio-code
+
