@@ -1,0 +1,8 @@
+--- make_package_info.orig	2013-07-31 13:08:28.889700359 +0200
++++ make_package_info	2013-07-31 13:08:35.769700399 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ import sys, os, pprint
+ 

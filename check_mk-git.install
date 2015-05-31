@@ -1,0 +1,16 @@
+post_install() {
+  echo " ==> Check_MF is now installed."
+  echo " ==> To use it, please do the following steps:"
+  echo "  1. Edit /etc/check_mk/main.mk and add your hosts."
+  echo "  2. Install the check_mk_agent and start xinetd on every host."
+  echo "  3. Run cmk -I to autodetect services on the hosts."
+  echo "  4. Run check_mk -O to generate /etc/nagios/objects/check_mk_objects.cfg"
+  echo "  5. Add the following lines to your /etc/nagios/nagios.cfg:"
+  echo "      cfg_file=/etc/nagios/objects/check_mk_objects.cfg"
+  echo "      cfg_file=/etc/nagios/objects/check_mk_templates.cfg"
+  echo "  6. Add the following line to your /etc/httpd/conf/httpd.conf:"
+  echo "      Include conf/extra/zzz_check_mk.conf"
+  echo "  7. Add the user your webserver is running as to the nagios group."
+  echo "  8. Configure mod_python."
+  echo "  9. Restart your webserver and nagios."
+}

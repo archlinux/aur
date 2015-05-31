@@ -1,0 +1,20 @@
+--- check_mk.py.orig    2013-07-31 13:47:46.429598036 +0200
++++ check_mk.py 2013-07-31 13:48:30.769596215 +0200
+@@ -2790,7 +2790,7 @@
+         return
+
+     output = file(source_filename + ".new", "w")
+-    output.write("#!/usr/bin/python\n")
++    output.write("#!/usr/bin/python2\n")
+     output.write("# encoding: utf-8\n")
+
+     # Self-compile: replace symlink with precompiled python-code, if
+@@ -5126,7 +5126,7 @@
+         g_profile.dump_stats(g_profile_path)
+         show_profile = os.path.join(os.path.dirname(g_profile_path), 'show_profile.py')
+         file(show_profile, "w")\
+-            .write("#!/usr/bin/python\n"
++            .write("#!/usr/bin/python2\n"
+                    "import pstats\n"
+                    "stats = pstats.Stats('%s')\n"
+                    "stats.sort_stats('time').print_stats()\n" % g_profile_path)

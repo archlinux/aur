@@ -1,0 +1,35 @@
+pkgbase = check_mk-git
+	pkgdesc = A new general purpose Nagios-plugin for retrieving data.
+	pkgver = v1.2.3i1.522.g6223c5e
+	pkgrel = 1
+	url = http://mathias-kettner.de/check_mk.html
+	install = check_mk-git.install
+	arch = any
+	license = GPL2
+	depends = python2
+	depends = nagios
+	depends = nagios-plugins
+	depends = xinetd
+	depends = mod_python
+	depends = apache
+	source = git+http://git.mathias-kettner.de/check_mk.git
+	source = files_shebang.txt
+	source = check_mk_templates.cfg.patch
+	source = index.py.patch
+	source = mkp.patch
+	source = check_mk.patch
+	source = make_package_info.patch
+	source = check_mk.py.patch
+	source = agent_vsphere.patch
+	sha256sums = SKIP
+	sha256sums = 8f02d8f28cd608580a43ee2b57a16e498347ea07f61d41c6a83eae61375913b0
+	sha256sums = f0bb81a195347ab0d46c8b34921021200f67f490fbe4be538e5d0c99b21e1400
+	sha256sums = 7488ab4d5d5e0686f477a14456585015a9d2c9cdb3cdeea383507b70db8a060a
+	sha256sums = f68f4593e15010004b3abf1c8fd92638efd34c92e0a93e7810b3a972ce0bfee7
+	sha256sums = e577f3549b5f3a39e974aa9ab979c67722f8ef0a8bbb434cf6b1b5ca165fe473
+	sha256sums = f34bd87f353ee557a58a9ad8fa190580becfcb9f3eaea1aa87a239de8e490d7c
+	sha256sums = eca4b307fc099767ae28bbcd0248f6797b34f07dfbb745ade43a5549f59edc64
+	sha256sums = 198be7f46addd0999f39f1ba33aa049d112b92f2e3c6ec61cffc643d1ad3d092
+
+pkgname = check_mk-git
+

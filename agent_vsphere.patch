@@ -1,0 +1,17 @@
+--- agent_vsphere.orig  2013-07-31 13:49:35.096260334 +0200
++++ agent_vsphere       2013-07-31 13:49:55.529591883 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ # encoding: utf-8
+ # +------------------------------------------------------------------+
+ # |             ____ _               _        __  __ _  __           |
+@@ -230,7 +230,7 @@
+     g_profile.dump_stats(g_profile_path)
+     show_profile = os.path.join(os.path.dirname(g_profile_path), 'show_profile.py')
+     file(show_profile, "w")\
+-        .write("#!/usr/bin/python\n"
++        .write("#!/usr/bin/python2\n"
+                "import pstats\n"
+                "stats = pstats.Stats('%s')\n"
+                "stats.sort_stats('time').print_stats()\n" % g_profile_path)

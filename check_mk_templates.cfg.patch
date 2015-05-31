@@ -1,0 +1,11 @@
+--- check_mk_templates.cfg.orig	2013-07-30 22:34:47.631192925 +0200
++++ check_mk_templates.cfg	2013-07-30 22:35:25.001529537 +0200
+@@ -294,7 +294,7 @@
+ # Calling check_mk with precompiled checks
+ define command {
+   command_name	check-mk
+-  command_line  python /var/lib/check_mk/precompiled/"$HOSTNAME$"
++  command_line  python2 /var/lib/check_mk/precompiled/"$HOSTNAME$"
+ }
+ 
+ # Use this variant of if you are working without precompiled
