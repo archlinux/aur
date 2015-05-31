@@ -1,0 +1,17 @@
+pkgbase = vertica-client
+	pkgdesc = Client for the Vertica Analytic Database
+	pkgver = 7.1.1
+	pkgrel = 2
+	url = https://www.vertica.com/
+	install = vertica-client.install
+	arch = i686
+	arch = x86_64
+	license = custom: commercial
+	depends = zlib
+	depends = gcc-libs
+	optdepends = java-environment: Needed for the JDBC client
+	source = LICENSE
+	md5sums = 411c631addb1ecdc934c0cb2fab1e52e
+
+pkgname = vertica-client
+
