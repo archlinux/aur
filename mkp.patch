@@ -1,0 +1,6 @@
+--- mkp.orig	2013-07-30 22:39:58.703994904 +0200
++++ mkp	2013-07-30 22:40:09.600759723 +0200
+@@ -1,2 +1,2 @@
+ #!/bin/sh
+-exec python /usr/share/check_mk/modules/check_mk.py -P "$@"
++exec python2 /usr/share/check_mk/modules/check_mk.py -P "$@"
