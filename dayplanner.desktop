@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Day Planner
+Comment=A simple time manager
+TryExec=/usr/bin/dayplanner
+Exec=dayplanner
+Icon=dayplanner
+Categories=Office;ProjectManagement;
