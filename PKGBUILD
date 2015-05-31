@@ -1,7 +1,7 @@
 # Maintainer: Chris Warrick <aur@chriswarrick.com>
 pkgname=think
 _pyname=think
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Terminal Think Music'
 arch=('any')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('python' 'python-setuptools')
 options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('4d5f931942326f6b3e2f520ddcdd0808')
+md5sums=('9aa19f2add8f11e3d51a21075a8d2f38')
 
 package() {
   cd "${srcdir}/${_pyname}-${pkgver}"
