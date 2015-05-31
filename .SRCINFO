@@ -1,0 +1,35 @@
+pkgbase = ffmpeg-usdx
+	pkgdesc = Complete and free Internet live audio and video broadcasting solution for Linux/Unix (older version for USDX)
+	pkgver = 0.10.5
+	pkgrel = 3
+	url = http://ffmpeg.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = yasm
+	makedepends = git
+	makedepends = libvdpau
+	depends = alsa-lib
+	depends = bzip2
+	depends = gsm
+	depends = lame
+	depends = libpulse
+	depends = libtheora
+	depends = libva
+	depends = libvorbis
+	depends = libvpx
+	depends = opencore-amr
+	depends = openjpeg
+	depends = rtmpdump
+	depends = schroedinger
+	depends = sdl
+	depends = speex
+	depends = v4l-utils
+	depends = x264
+	depends = xvidcore
+	depends = zlib
+	source = http://ffmpeg.org/releases/ffmpeg-0.10.5.tar.bz2
+	sha256sums = 47f26011e2d0d31641e91bb1fbcb907f4aa654d93732d5362711f38c2db4faa9
+
+pkgname = ffmpeg-usdx
+
