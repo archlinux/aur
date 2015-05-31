@@ -1,0 +1,15 @@
+pkgbase = xerox-phaser-3040
+	pkgdesc = Driver for the Xerox Phaser 3040
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://www.support.xerox.com/support/phaser-3040/downloads/enin.html?operatingSystem=linux&fileLanguage=en_GB
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = rpmextract
+	depends = foomatic-db-engine
+	source = http://download.support.xerox.com/pub/drivers/3010/drivers/linux/en_GB/Xerox-Phaser-3010_3040-1.0-28.i586.zip
+	md5sums = 4a9876e41e0ac9022d482a2316426bec
+
+pkgname = xerox-phaser-3040
+
