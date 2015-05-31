@@ -1,0 +1,22 @@
+pkgbase = factorio-experimental
+	pkgdesc = A 2D game about building and maintaining factories. - Experimental Version
+	pkgver = 0.11.22
+	pkgrel = 1
+	url = http://www.factorio.com/
+	arch = i686
+	arch = x86_64
+	license = custom: commercial
+	depends = libxcursor
+	depends = gcc-libs
+	depends = alsa-lib
+	depends = libxrandr
+	depends = libxinerama
+	depends = mesa
+	conflicts = factorio
+	source = factorio.desktop
+	source = LICENSE
+	md5sums = 5cacd198a3156c157a482aeab368e9a1
+	md5sums = 22fce67d66c080fa5c89ab437b3d8724
+
+pkgname = factorio-experimental
+
