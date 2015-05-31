@@ -1,0 +1,16 @@
+pkgbase = akia
+	pkgdesc = View and modify files,folders and objects in an AKIS smartcard
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://www.akiskart.com.tr
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = pcsclite
+	depends = ccid
+	depends = java-environment
+	source = akia
+	md5sums = 9a7bf17f1f36f0d936b23b72786e0282
+
+pkgname = akia
+
