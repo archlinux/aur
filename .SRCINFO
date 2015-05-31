@@ -1,0 +1,17 @@
+pkgbase = voltdb-enterprise
+	pkgdesc = An in-memory database with pre-compiled Java stored procedures (Enterprise Edition)
+	pkgver = 5.2.2
+	pkgrel = 1
+	url = http://voltdb.com/
+	install = voltdb-enterprise.install
+	arch = i686
+	arch = x86_64
+	license = proprietary
+	depends = python2
+	depends = java-environment
+	conflicts = voltdb
+	source = LICENSE
+	md5sums = 3215b6fd0649bdc4d988b7b934139851
+
+pkgname = voltdb-enterprise
+
