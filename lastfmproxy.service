@@ -1,0 +1,9 @@
+[Unit]
+Description=LastFMproxy
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python2 /usr/share/lastfmproxy/main.py
+
+[Install]
+WantedBy=multi-user.target

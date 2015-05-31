@@ -1,0 +1,18 @@
+pkgbase = lastfmproxy
+	pkgdesc = A proxy server for the last.fm radio streams that allows you to use your regular old audio player to listen to the last.fm streams
+	pkgver = 1.3b
+	pkgrel = 5
+	url = http://vidar.gimp.org/lastfmproxy
+	install = lastfmproxy.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = python2
+	backup = usr/share/lastfmproxy/config.py
+	source = http://vidar.gimp.org/wp-content/uploads/2007/12/lastfmproxy-1.3b.tar.gz
+	source = lastfmproxy.service
+	sha256sums = b66be0fcc76e557d1306660162db946f97262335f3528cf5d303b3ab3410a881
+	sha256sums = 46470d3ee7aa51a40950fbe550a033ad990ccd2db33bab0dac8bf9ecdd833e07
+
+pkgname = lastfmproxy
+
