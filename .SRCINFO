@@ -1,0 +1,30 @@
+pkgbase = aqsis
+	pkgdesc = A high quality, photorealistic, 3D rendering solution
+	pkgver = 1.8.2
+	pkgrel = 2
+	url = http://www.aqsis.org
+	install = aqsis.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = boost
+	makedepends = openexr
+	makedepends = libpng
+	makedepends = qt4
+	makedepends = mesa
+	depends = boost-libs
+	depends = openexr
+	depends = hicolor-icon-theme
+	depends = shared-mime-info
+	depends = desktop-file-utils
+	optdepends = qt4: graphical interface
+	optdepends = libgl: ptview
+	options = !libtool
+	source = http://downloads.sourceforge.net/project/aqsis/aqsis-source/1.8.2/aqsis-1.8.2.tar.gz
+	source = imfinputfile-forward-declaration.diff
+	md5sums = 399967e99f12cfbd1a7385c4e1d39c3b
+	md5sums = e52f27d3041e88a63531b691ad05a6aa
+
+pkgname = aqsis
+

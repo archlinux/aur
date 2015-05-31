@@ -1,0 +1,18 @@
+diff -rup aqsis-1.8.2/libs/tex/io/exrinputfile.h aqsis-1.8.2.new/libs/tex/io/exrinputfile.h
+--- aqsis-1.8.2/libs/tex/io/exrinputfile.h	2012-08-24 13:26:50.000000000 +0100
++++ aqsis-1.8.2.new/libs/tex/io/exrinputfile.h	2013-04-29 17:50:17.556770200 +0100
+@@ -48,10 +48,11 @@
+ 
+ #include <aqsis/tex/io/itexinputfile.h>
+ 
++#include <OpenEXR/ImfInputFile.h>
+ //------------------------------------------------------------------------------
+-namespace Imf {
+-	class InputFile;
+-}
++//namespace Imf {
++//	class InputFile;
++//}
+ 
+ namespace Aqsis {
+ 

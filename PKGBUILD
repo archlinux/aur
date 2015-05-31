@@ -1,0 +1,42 @@
+# Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
+# Contributor: Gino Pezzin <pezzin@gmail.com>
+pkgname=aqsis
+pkgver=1.8.2
+pkgrel=2
+pkgdesc="A high quality, photorealistic, 3D rendering solution"
+arch=('i686' 'x86_64')
+url="http://www.aqsis.org"
+license=('GPL2')
+optdepends=('qt4: graphical interface' 'libgl: ptview')
+depends=('boost-libs' 'openexr' 'hicolor-icon-theme' 'shared-mime-info' 'desktop-file-utils')
+makedepends=('cmake' 'boost' 'openexr' 'libpng' 'qt4' 'mesa')
+options=('!libtool')
+install=aqsis.install
+source=(http://downloads.sourceforge.net/project/aqsis/aqsis-source/$pkgver/$pkgname-$pkgver.tar.gz \
+		imfinputfile-forward-declaration.diff)
+md5sums=('399967e99f12cfbd1a7385c4e1d39c3b'
+         'e52f27d3041e88a63531b691ad05a6aa')
+
+prepare() {
+  cd "$srcdir"/$pkgname-$pkgver
+  # fix build with OpenEXR 2.0 (?)
+  patch -Np1 < "$srcdir"/imfinputfile-forward-declaration.diff || true
+}
+
+build() {
+  cd "$srcdir"/$pkgname-$pkgver
+
+  mkdir -p "$srcdir"/$pkgname-build
+  cd "$srcdir"/$pkgname-build
+
+  cmake "$srcdir"/$pkgname-$pkgver \
+    -DCMAKE_SKIP_RPATH=ON \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DSYSCONFDIR=/etc/aqsis
+  make
+}
+
+package() {
+  cd "$srcdir"/$pkgname-build
+  make DESTDIR="$pkgdir" install
+}
