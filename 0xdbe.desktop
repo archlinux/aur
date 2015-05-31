@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=0xDBE
+Comment=Intelligent IDE for DBAs and SQL Developers
+Exec=0xdbe %u
+Icon=0xdbe
+Terminal=false
+Type=Application
+Categories=Development;IDE;
