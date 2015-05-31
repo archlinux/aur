@@ -1,0 +1,18 @@
+pkgbase = the-entertainment
+	pkgdesc = The Entertainment - Kentucky Route Zero
+	pkgver = 1
+	pkgrel = 1
+	url = http://kentuckyroutezero.com/the-entertainment/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libgl
+	source = http://kentuckyroutezero.com/the-entertainment/TheEntertainment_Linux.zip
+	source = the-entertainment.desktop
+	source = the-entertainment.png
+	md5sums = 025c9455b1501ab029c979c22c0a4d45
+	md5sums = ea2aaac64fb39dc1bd7b843447d15a1a
+	md5sums = 0419c3664dfb775393b30459d6d2d0a8
+
+pkgname = the-entertainment
+

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=Game;AdventureGame;
+Exec=/usr/bin/the-entertainment
+Icon=the-entertainment
+Terminal=false
+Type=Application
+Name=The Entertainment
+Comment=The Entertainment - Kentucky Route Zero
