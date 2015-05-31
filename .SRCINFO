@@ -1,0 +1,15 @@
+pkgbase = wicd-mono-icons
+	pkgdesc = Mono icons for Wicd Network Manager
+	pkgver = 2
+	pkgrel = 3
+	url = http://gnome-look.org/content/show.php/wicd+icons+mixup?content=113544
+	arch = any
+	license = GPL
+	depends = wicd-gtk
+	conflicts = wicd-pale-icons
+	conflicts = wicd-dark-icons
+	source = http://gnome-look.org/CONTENT/content-files/113544-wicd-icons-mixup-06012010.tar.bz2
+	md5sums = e1db447eeacef8758736951ddb4727bc
+
+pkgname = wicd-mono-icons
+
