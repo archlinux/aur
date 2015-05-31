@@ -1,0 +1,17 @@
+pkgbase = activitydiary
+	pkgdesc = Analyse and manage all your recorded GPS-tracks
+	pkgver = 0.2
+	pkgrel = 5
+	url = http://www.activitydiary.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt4
+	depends = qwt5
+	source = http://tomstar.ath.cx/activitydiary/public/ad/activitydiary-0.2.tar.gz
+	source = activitydiary.pro.patch
+	sha256sums = a4df70a8a86daf724548659d192e0e87b76c284fdce2562cc6d80b4f2429f861
+	sha256sums = 248508e05845d533bdb3134ac9f66007c7e68736b4e71abcf877af3ee8e744c9
+
+pkgname = activitydiary
+

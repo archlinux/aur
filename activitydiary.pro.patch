@@ -1,0 +1,12 @@
+16c16
+<     INCLUDEPATH += /usr/include/qwt \
+---
+>     INCLUDEPATH += /usr/include/qwt5 \
+26c26
+<         LIBS += -L/usr/lib -lqwt
+---
+>         LIBS += -L/usr/lib -lqwt5
+29c29
+<         LIBS += -L/usr/lib64 -lqwt
+---
+>         LIBS += -L/usr/lib64 -lqwt5
