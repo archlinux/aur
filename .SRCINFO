@@ -1,0 +1,18 @@
+pkgbase = limits-and-demonstrations
+	pkgdesc = A Lula Chamberlain Retrospective - Kentucky Route Zero
+	pkgver = 1
+	pkgrel = 1
+	url = http://kentuckyroutezero.com/limits-and-demonstrations/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libgl
+	source = http://kentuckyroutezero.com/limits-and-demonstrations/LimitsAndDemonstrations_LINUX.zip
+	source = limits-and-demonstrations.desktop
+	source = limits-and-demonstrations.png
+	md5sums = 427775cc193f58d225f06fb3fbdfeaad
+	md5sums = ba5859dc49a124c21654711b325dedd9
+	md5sums = 2377b27b5c95bba8fc7c6cd2ea92fe25
+
+pkgname = limits-and-demonstrations
+
