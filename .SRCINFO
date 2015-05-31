@@ -1,0 +1,15 @@
+pkgbase = writerscafe
+	pkgdesc = A set of power tools for all fiction writers, whether experienced or just starting out
+	pkgver = 2.37
+	pkgrel = 4
+	url = http://writerscafe.co.uk/
+	install = writerscafe.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libpng12
+	source = http://writerscafe.co.uk/WritersCafe-2.37-x86_64.tar.gz
+	md5sums = e6104ea968706aae14f2a2886b28e43f
+
+pkgname = writerscafe
+

@@ -1,0 +1,7 @@
+post_install() {
+ln -s /usr/share/writerscafe2/writerscafe /usr/bin/writerscafe
+}
+
+pre_remove() {
+rm -f /usr/bin/writerscafe
+}
