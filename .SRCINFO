@@ -1,0 +1,16 @@
+pkgbase = castles-in-the-sky
+	pkgdesc = A game by the Tall Trees
+	pkgver = 1
+	pkgrel = 3
+	url = http://thetalltreesgames.co.uk/CastlesInTheSky/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = p7zip
+	depends = wine
+	noextract = castlesinthesky_win_12232013.exe
+	source = castles-in-the-sky
+	md5sums = 67b7e26884e1cc0d73c338e531ebff2a
+
+pkgname = castles-in-the-sky
+
