@@ -1,0 +1,13 @@
+pkgbase = r-cran-coda
+	pkgdesc = Output analysis and diagnostics for Markov Chain Monte Carlo simulations
+	pkgver = 0.17_1
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/coda/index.html
+	arch = any
+	license = GPL3
+	depends = r
+	source = http://cran.r-project.org/src/contrib/coda_0.17-1.tar.gz
+	md5sums = 4c6f3daae3f4420729924497091c54ef
+
+pkgname = r-cran-coda
+
