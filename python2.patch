@@ -1,0 +1,25 @@
+diff -aur package.pristine/configure package.new/configure
+--- package.pristine/configure	2011-03-12 23:12:15.000000000 +0200
++++ package.new/configure	2011-03-12 23:21:31.000000000 +0200
+@@ -13307,9 +13307,9 @@
+   fi
+ 
+ 
+-PYTHON_CFLAGS="`python-config --includes`"
+-PYTHON_LIBS="`python-config --libs`"
+-PYTHON_LDFLAGS="`python-config --ldflags`"
++PYTHON_CFLAGS="`python2-config --includes`"
++PYTHON_LIBS="`python2-config --libs`"
++PYTHON_LDFLAGS="`python2-config --ldflags`"
+ 
+ 
+ 
+@@ -13339,7 +13339,7 @@
+ 
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for pygtk codegen" >&5
+ $as_echo_n "checking for pygtk codegen... " >&6; }
+-PYGTK_CODEGEN="/usr/bin/python `$PKG_CONFIG --variable=codegendir pygobject-2.0`/codegen.py"
++PYGTK_CODEGEN="$PYTHON `$PKG_CONFIG --variable=codegendir pygobject-2.0`/codegen.py"
+ 
+ { $as_echo "$as_me:${as_lineno-$LINENO}: result: $PYGTK_CODEGEN" >&5
+ $as_echo "$PYGTK_CODEGEN" >&6; }
