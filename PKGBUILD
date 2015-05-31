@@ -2,9 +2,9 @@
 # Contributors: Ner0, Sevenseven
 
 pkgname=qbittorrent-git
-pkgver=3.2.0.r5793.2c1d76c
+pkgver=3.2.0.r17.2c1d76c
 pkgrel=1
-pkgdesc="A bittorrent client written in C++ / Qt5 using the good libtorrent library (development version)"
+pkgdesc="A bittorrent client written in C++ / Qt4 using the good libtorrent library (development version)"
 arch=('i686' 'x86_64')
 url="http://www.qbittorrent.org/"
 license=('custom' 'GPL')
@@ -21,7 +21,7 @@ pkgver() {
   cd ${pkgname%-*}
 
   _tag=$(git tag -l | sort -r | head -n1 | tr -cd 0-9.)
-  _rev=$(git rev-list --count HEAD)
+  _rev=$(git rev-list --count release-${_tag}..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.%s" "$_tag" "$_rev" "$_hash"
 }
