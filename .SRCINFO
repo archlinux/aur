@@ -1,0 +1,13 @@
+pkgbase = r-cran-sfsmisc
+	pkgdesc = Tools for Generating, Visualizing, and Analysing Link Communities in Networks
+	pkgver = 1.0_27
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/sfsmisc/index.html
+	arch = any
+	license = GPL3
+	depends = r
+	source = http://cran.r-project.org/src/contrib/sfsmisc_1.0-27.tar.gz
+	md5sums = 273f45e3cb81d2931830233999782698
+
+pkgname = r-cran-sfsmisc
+
