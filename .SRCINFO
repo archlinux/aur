@@ -1,0 +1,15 @@
+pkgbase = r-cran-linkcomm
+	pkgdesc = Tools for Generating, Visualizing, and Analysing Link Communities in Networks
+	pkgver = 1.0_7
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/linkcomm/index.html
+	arch = 1686
+	arch = x86_64
+	license = GPLv2
+	depends = r
+	depends = r-cran-rcolorbrewer
+	source = http://cran.r-project.org/src/contrib/Archive/linkcomm/linkcomm_1.0-8.tar.gz
+	md5sums = 6a192714c91501d684a6cbc82c624d92
+
+pkgname = r-cran-linkcomm
+
