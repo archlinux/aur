@@ -1,0 +1,19 @@
+pkgbase = eternally-us
+	pkgdesc = A tale of love, life and friendship.
+	pkgver = 1
+	pkgrel = 3
+	url = http://www.undergrowthgames.com/index.php?show=games&gameid=3
+	install = eternallyus.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = unrar
+	depends = wine
+	noextract = Eternally%20Us.rar
+	source = eternally-us
+	source = http://www.undergrowthgames.com/Eternally%20Us.rar
+	md5sums = 3231439e67f11a7477f0fd839563e20d
+	md5sums = b3c475a57900081bc07bca4c12bbdad6
+
+pkgname = eternally-us
+

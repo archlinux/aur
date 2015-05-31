@@ -1,0 +1,17 @@
+post_install () {
+echo "Launch the game with typing eternally-us in a terminal"
+echo " "
+echo "Controls"
+echo "------------------------------------------------------------"
+echo " "
+echo "Control the game with your mouse. The left mouse button"
+echo "makes Amber use things in the game, the right mouse button"
+echo "makes her examine things."
+echo " "
+echo "When Amber picks up an item it goes to her inventory. You"
+echo "can access the items she has picked up by moving your mouse"
+echo "to the top of the screen and clicking on them. When an"
+echo "item is selected, left click to make Amber use it in the"
+echo "game world, or right click to deselect it."
+
+}
