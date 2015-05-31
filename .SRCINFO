@@ -1,0 +1,13 @@
+pkgbase = r-cran-ipsur
+	pkgdesc = Introduction to Probability and Statistics Using R
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/IPSUR/index.html
+	arch = any
+	license = GPL3
+	depends = r
+	source = http://cran.r-project.org/src/contrib/IPSUR_1.5.tar.gz
+	md5sums = fc87b98777cf4912b723459a96b92d1c
+
+pkgname = r-cran-ipsur
+
