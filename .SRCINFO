@@ -1,0 +1,15 @@
+pkgbase = oinkmaster
+	pkgdesc = A script that will help you update and manage your Snort rules
+	pkgver = 2.0
+	pkgrel = 7
+	url = http://oinkmaster.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = snort
+	backup = etc/oinkmaster.conf
+	source = http://downloads.sourceforge.net/oinkmaster/oinkmaster-2.0.tar.gz
+	sha256sums = 3d52f0426aa7c81b122cef22b80d708d8bb8337537e48754a065804f46c46162
+
+pkgname = oinkmaster
+
