@@ -1,0 +1,15 @@
+pkgbase = sccs2rcs
+	pkgdesc = Move an SCCS repository to RCS
+	pkgver = 1.9
+	pkgrel = 1
+	url = http://www.catb.org/esr/sccs2rcs/
+	arch = any
+	license = BSD
+	depends = cssc
+	depends = python2
+	depends = rcs
+	source = http://www.catb.org/esr/sccs2rcs/sccs2rcs-1.9.tar.gz
+	sha256sums = 29734657f123375e2e15bae0743ba41bc2a40c9f0736768782b4e6440f56bb25
+
+pkgname = sccs2rcs
+
