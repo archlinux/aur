@@ -1,0 +1,16 @@
+pkgbase = the-binding-of-isaac
+	pkgdesc = A randomly generated action RPG shooter with heavy Rogue-like elements.
+	pkgver = 20111101
+	pkgrel = 4
+	url = http://www.bindingofisaac.com
+	arch = i686
+	arch = x86_64
+	license = custom: "commercial"
+	options = !strip
+	source = isaac.desktop
+	source = isaac.png
+	md5sums = bd7ab23bafd88705b42c0c328f8f6717
+	md5sums = bbc59b1fabb6036e4db450811bd3ab39
+
+pkgname = the-binding-of-isaac
+

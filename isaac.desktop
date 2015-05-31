@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=Game;ActionGame;AdventureGame;
+Exec=/usr/bin/isaac
+Icon=isaac
+Terminal=false
+Type=Application
+Name=The Binding of Isaac
+Comment=A randomly generated action RPG shooter with heavy Rogue-like elements.
