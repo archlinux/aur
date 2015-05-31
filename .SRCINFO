@@ -1,0 +1,15 @@
+pkgbase = geoip-citydata
+	pkgdesc = City database for geoip IP location lookups
+	pkgver = 20150204
+	pkgrel = 2
+	url = http://www.maxmind.com/
+	arch = any
+	license = CCPL
+	depends = geoip
+	source = http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.xz
+	source = http://geolite.maxmind.com/download/geoip/database/GeoLiteCityv6-beta/GeoLiteCityv6.dat.gz
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = geoip-citydata
+
