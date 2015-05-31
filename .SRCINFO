@@ -1,0 +1,17 @@
+pkgbase = ices2
+	pkgdesc = A source client for broadcasting in Ogg Vorbis format to an icecast2 server
+	pkgver = 2.0.2
+	pkgrel = 2
+	url = http://icecast.org/ices.php
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libogg
+	depends = libvorbis
+	depends = libxml2
+	depends = libshout
+	source = http://downloads.us.xiph.org/releases/ices/ices-2.0.2.tar.gz
+	sha256sums = 7bf7a9c5bce1b6465df8dd1491e303544990006b8ef01f8ba8eeb38844588859
+
+pkgname = ices2
+
