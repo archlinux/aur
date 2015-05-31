@@ -1,0 +1,14 @@
+pkgbase = backup-gmail
+	pkgdesc = CLI and GUI interface to backup and restore Gmail data via IMAP
+	pkgver = 0.1.2.1
+	pkgrel = 2
+	url = https://launchpad.net/backup-gmail
+	arch = any
+	license = GPL3
+	depends = python2
+	optdepends = python2-pyside: GUI
+	source = http://launchpad.net/backup-gmail/trunk/backup-gmail-0.1/+download/backup-gmail-0.1.2.1.tar.gz
+	md5sums = 3e4290ca08119445426633693638943d
+
+pkgname = backup-gmail
+
