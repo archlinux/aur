@@ -1,6 +1,6 @@
 # Maintainer: Graham Edgecombe <graham@grahamedgecombe.com>
 pkgname=openrct2-git
-pkgver=r3217.cf0ce5f
+pkgver=r3270.15791a2
 pkgrel=1
 pkgdesc='Open source clone of RollerCoaster Tycoon 2'
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ _enable_twitch=1
 _dlls=(SDL2.dll libwinpthread-1.dll)
 
 if [ $_enable_twitch -eq 1 ]; then
-  _depends+=('mingw-w64-curl' 'mingw-w64-jansson')
+  depends+=('mingw-w64-curl' 'mingw-w64-jansson')
   _dlls+=(libcurl-4.dll libjansson-4.dll libeay32.dll
          libgcc_s_sjlj-1.dll libidn-11.dll libssh2-1.dll ssleay32.dll zlib1.dll
          libiconv-2.dll libintl-8.dll)
