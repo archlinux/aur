@@ -1,0 +1,26 @@
+pkgbase = netsniff-ng
+	pkgdesc = A high performance Linux network sniffer for packet inspection (without curvetun tool).
+	pkgver = 0.5.9
+	pkgrel = 1
+	url = http://netsniff-ng.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = flex
+	makedepends = bison
+	depends = ncurses
+	depends = geoip
+	depends = zlib
+	depends = libnetfilter_conntrack
+	depends = libpcap
+	depends = liburcu
+	depends = libnl
+	depends = libcli
+	depends = libnet
+	optdepends = libnacl: Needed for curvetun
+	source = http://pub.netsniff-ng.org/netsniff-ng/netsniff-ng-0.5.9.tar.gz
+	md5sums = f62d7d9f1567c8ef80e2650428baee9d
+
+pkgname = netsniff-ng
+
