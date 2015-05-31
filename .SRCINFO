@@ -1,0 +1,14 @@
+pkgbase = demolition
+	pkgdesc = A destruction testing tool for LADSPA plugins
+	pkgver = 0.9
+	pkgrel = 4
+	url = http://devel.tlrmx.org/audio/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glib
+	source = http://devel.tlrmx.org/audio/source/demolition-0.9.tar.gz
+	sha256sums = 7190334c6cad449f26e8613029265cab7687a2bef506c8fcff48715cc1d0f08f
+
+pkgname = demolition
+
