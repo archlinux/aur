@@ -1,0 +1,12 @@
+post_install() {
+    echo "Inserting kernel module..."
+    /sbin/depmod -a || return 1
+    modprobe heci
+    
+}
+pre_remove() {
+    echo "Removing kernel module..."
+    modprobe -r heci
+    /sbin/depmod -a || return 1
+
+}

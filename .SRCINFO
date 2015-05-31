@@ -1,0 +1,15 @@
+pkgbase = intel-openamt
+	pkgdesc = Intel OpenAMT HECI kernel module
+	pkgver = 213
+	pkgrel = 2
+	url = http://www.openamt.org/
+	install = intel-openamt.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = linux
+	source = remove-depmod.patch
+	md5sums = 8fd09c5398c5674e0c8d1a443362c1b1
+
+pkgname = intel-openamt
+

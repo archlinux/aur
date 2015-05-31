@@ -1,0 +1,27 @@
+--- openamt/heci/trunk/src/Makefile	2010-05-11 23:18:36.503759545 +0300
++++ openamt2/heci/trunk/src/Makefile	2010-05-11 23:35:21.460743437 +0300
+@@ -233,15 +233,15 @@
+ 	    rm -f /etc/init.d/heci ; \
+ 	fi
+ 	install -D -m 644 $(TARGET) $(INSTALL_MOD_PATH)$(INSTDIR)/$(TARGET)
+-ifeq (,$(INSTALL_MOD_PATH))
+-	/sbin/depmod -a || true
+-else
+-  ifeq ($(DEPVER),1 )
+-	/sbin/depmod -r $(INSTALL_MOD_PATH) -a || true
+-  else
+-	/sbin/depmod -b $(INSTALL_MOD_PATH) -a -n > /dev/null || true
+-  endif
+-endif
++
++
++
++
++
++
++
++
++
+ 
+ .PHONY: clean install uninstall test
+ 
