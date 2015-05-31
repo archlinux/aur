@@ -1,0 +1,20 @@
+pkgbase = activitydiary-git
+	pkgdesc = Analyse and manage all your recorded GPS-tracks
+	pkgver = 0.92.bb8ecab
+	pkgrel = 1
+	epoch = 1
+	url = http://www.activitydiary.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt4
+	depends = qwt5
+	provides = activitydiary
+	conflicts = activitydiary
+	source = git+git://gitorious.org/activitydiary/activitydiary.git
+	source = activitydiary.pro.patch
+	sha256sums = SKIP
+	sha256sums = 248508e05845d533bdb3134ac9f66007c7e68736b4e71abcf877af3ee8e744c9
+
+pkgname = activitydiary-git
+
