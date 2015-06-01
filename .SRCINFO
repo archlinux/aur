@@ -1,0 +1,19 @@
+pkgbase = apache-mod_form
+	pkgdesc = A utility to decode data submitted from Web forms. It deals with both GET and POST methods where the data are encoded using the default content type application/x-www-form-urlencoded.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://apache.webthing.com/mod_form/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = patch
+	depends = apache
+	source = http://apache.webthing.com/svn/apache/forms/mod_form.c
+	source = http://apache.webthing.com/svn/apache/forms/mod_form.h
+	source = preserve-args.patch
+	md5sums = 8339effe63ec1ea8ade1e8b90aabb23c
+	md5sums = e524cf838ae990bf6e118d985b1b91ca
+	md5sums = 24f531501e999ff46bdbb920edf7a4a4
+
+pkgname = apache-mod_form
+
