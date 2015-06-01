@@ -1,0 +1,26 @@
+APP_PATH="/usr/share/webapps/rutorrent"
+
+post_install() {
+    cat << EOF
+
+[Webserver Alias Examples]
+    Lighttpd: alias.url = ("/rutorrent/" => \""${APP_PATH}/"\")
+      Apache: Alias /rutorrent/ /usr/share/webapps/rutorrent/
+    Hiawatha: Alias = /rutorrent:/usr/share/webapps/rutorrent
+       Nginx: ln -s /usr/share/webapps/rutorrent /srv/http/rutorrent
+
+EOF
+
+post_upgrade
+}
+
+post_upgrade() {
+
+    chown -R http:http "${APP_PATH}"
+    chmod -R 755 "${APP_PATH}"
+    cd "$APP_PATH"
+
+    chmod 750 {conf,share/{users,settings}}
+    chmod 777 {tmp,share/torrents}
+    chmod 640 {.htaccess,share/.htaccess}
+}
