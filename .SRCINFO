@@ -1,0 +1,31 @@
+pkgbase = ros-jade-topic-tools
+	pkgdesc = ROS - Tools for directing, throttling, selecting, and otherwise messing with ROS topics at a meta level.
+	pkgver = 1.11.13
+	pkgrel = 1
+	url = http://ros.org/wiki/topic_tools
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-rosunit
+	makedepends = ros-jade-rostest
+	makedepends = ros-jade-std-msgs
+	makedepends = ros-jade-message-generation
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-xmlrpcpp
+	makedepends = ros-jade-rosconsole
+	makedepends = ros-jade-cpp-common
+	makedepends = ros-jade-rostime
+	depends = ros-jade-std-msgs
+	depends = ros-jade-message-runtime
+	depends = ros-jade-roscpp
+	depends = ros-jade-xmlrpcpp
+	depends = ros-jade-rosconsole
+	depends = ros-jade-rostime
+	source = topic_tools::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/jade/topic_tools/1.11.13-0
+	md5sums = SKIP
+
+pkgname = ros-jade-topic-tools
+
