@@ -1,0 +1,27 @@
+pkgbase = ros-jade-bondcpp
+	pkgdesc = ROS - C++ implementation of bond, a mechanism for checking when another process has terminated.
+	pkgver = 1.7.16
+	pkgrel = 1
+	url = http://www.ros.org/wiki/bondcpp
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-cmake-modules
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-smclib
+	makedepends = ros-jade-bond
+	makedepends = ros-jade-catkin
+	makedepends = util-linux
+	makedepends = boost
+	depends = ros-jade-smclib
+	depends = ros-jade-roscpp
+	depends = ros-jade-bond
+	depends = util-linux
+	depends = boost
+	source = bondcpp::git+https://github.com/ros-gbp/bond_core-release.git#tag=release/jade/bondcpp/1.7.16-0
+	md5sums = SKIP
+
+pkgname = ros-jade-bondcpp
+
