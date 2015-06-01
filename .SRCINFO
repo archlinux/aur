@@ -2,7 +2,7 @@
 # Fri Dec  4 11:51:11 UTC 2015
 pkgbase = xde-helpers
 	pkgdesc = XDE .desktop entry helpers
-	pkgver = 1.1.102
+	pkgver = 1.1.104
 	pkgrel = 1
 	url = http://github.com/bbidulock/xde-helpers
 	arch = any
