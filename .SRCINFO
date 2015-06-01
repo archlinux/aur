@@ -1,0 +1,19 @@
+pkgbase = ros-jade-rosout
+	pkgdesc = ROS - System-wide logging mechanism for messages sent to the /rosout topic.
+	pkgver = 1.11.13
+	pkgrel = 1
+	url = http://ros.org/wiki/rosout
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-rosgraph-msgs
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-catkin
+	depends = ros-jade-roscpp
+	source = rosout::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/jade/rosout/1.11.13-0
+	md5sums = SKIP
+
+pkgname = ros-jade-rosout
+
