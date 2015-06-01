@@ -1,0 +1,18 @@
+pkgbase = ros-jade-genlisp
+	pkgdesc = ROS - Common-Lisp ROS message and service generators.
+	pkgver = 0.4.15
+	pkgrel = 1
+	url = http://www.ros.org/wiki/roslisp
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-genmsg
+	makedepends = ros-jade-catkin
+	depends = ros-jade-genmsg
+	source = genlisp::git+https://github.com/ros-gbp/genlisp-release.git#tag=release/jade/genlisp/0.4.15-0
+	md5sums = SKIP
+
+pkgname = ros-jade-genlisp
+
