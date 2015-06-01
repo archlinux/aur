@@ -1,0 +1,18 @@
+pkgbase = ros-jade-rosmake
+	pkgdesc = ROS - rosmake is a ros dependency aware build tool which can be used to build all dependencies in the correct order.
+	pkgver = 1.12.2
+	pkgrel = 1
+	url = http://ros.org/wiki/rosmake
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = ros-jade-catkin
+	depends = python2-rospkg
+	source = rosmake::git+https://github.com/ros-gbp/ros-release.git#tag=release/jade/rosmake/1.12.2-0
+	md5sums = SKIP
+
+pkgname = ros-jade-rosmake
+
