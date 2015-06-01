@@ -1,0 +1,17 @@
+pkgbase = ros-jade-rosclean
+	pkgdesc = ROS - rosclean: cleanup filesystem resources (e.g.
+	pkgver = 1.12.2
+	pkgrel = 1
+	url = http://ros.org/wiki/rosclean
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = python2-rospkg
+	source = rosclean::git+https://github.com/ros-gbp/ros-release.git#tag=release/jade/rosclean/1.12.2-0
+	md5sums = SKIP
+
+pkgname = ros-jade-rosclean
+
