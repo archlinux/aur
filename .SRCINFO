@@ -1,0 +1,18 @@
+pkgbase = ros-jade-xmlrpcpp
+	pkgdesc = ROS - XmlRpc++ is a C++ implementation of the XML-RPC protocol.
+	pkgver = 1.11.13
+	pkgrel = 1
+	url = http://xmlrpcpp.sourceforge.net
+	arch = any
+	license = LGPL-2.1
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-cpp-common
+	makedepends = ros-jade-catkin
+	depends = ros-jade-cpp-common
+	source = xmlrpcpp::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/jade/xmlrpcpp/1.11.13-0
+	md5sums = SKIP
+
+pkgname = ros-jade-xmlrpcpp
+
