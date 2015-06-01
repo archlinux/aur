@@ -1,0 +1,16 @@
+pkgbase = ros-jade-cmake-modules
+	pkgdesc = ROS - A common repository for CMake Modules which are not distributed with CMake but are commonly used by ROS packages.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	source = cmake_modules::git+https://github.com/ros-gbp/cmake_modules-release.git#tag=release/jade/cmake_modules/0.4.0-0
+	md5sums = SKIP
+
+pkgname = ros-jade-cmake-modules
+
