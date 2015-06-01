@@ -1,0 +1,27 @@
+pkgbase = ros-jade-ros
+	pkgdesc = ROS - ROS packaging system.
+	pkgver = 1.12.2
+	pkgrel = 1
+	url = http://www.ros.org/wiki/ROS
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = ros-jade-roslib
+	depends = ros-jade-rosunit
+	depends = ros-jade-rosboost-cfg
+	depends = ros-jade-mk
+	depends = ros-jade-rosbuild
+	depends = ros-jade-rosclean
+	depends = ros-jade-roslang
+	depends = ros-jade-catkin
+	depends = ros-jade-rosbash
+	depends = ros-jade-rosmake
+	depends = ros-jade-roscreate
+	source = ros::git+https://github.com/ros-gbp/ros-release.git#tag=release/jade/ros/1.12.2-0
+	md5sums = SKIP
+
+pkgname = ros-jade-ros
+
