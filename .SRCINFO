@@ -1,0 +1,19 @@
+pkgbase = ros-jade-rosnode
+	pkgdesc = ROS - rosnode is a command-line tool for displaying debug information about ROS Nodes, including publications, subscriptions and connections.
+	pkgver = 1.11.13
+	pkgrel = 1
+	url = http://ros.org/wiki/rosnode
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-rostest
+	makedepends = ros-jade-catkin
+	depends = ros-jade-rostopic
+	depends = ros-jade-rosgraph
+	source = rosnode::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/jade/rosnode/1.11.13-0
+	md5sums = SKIP
+
+pkgname = ros-jade-rosnode
+
