@@ -1,16 +1,18 @@
-# Maintainer: Sean Pringle <sean.pringle@gmail.com>
+# Maintainer: Brian Bidulock <bidulock@Openss7.org>
+# Contributor: Sean Pringle <sean.pringle@gmail.com>
 # Contributor: SanskritFritz (gmail)
 
 pkgname=goomwwm-git
 _pkgname=goomwwm
 pkgver=1.0.0.73.g25c9a12
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Get out of my way, Window Manager!"
 arch=('i686' 'x86_64')
 url="http://github.com/seanpringle/goomwwm"
 license=('MIT')
 depends=('libxft' 'libxinerama')
+optdepends=('dmenu')
 makedepends=('git')
 conflicts=($_pkgname)
 provides=($_pkgname)
