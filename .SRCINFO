@@ -1,19 +1,17 @@
 pkgbase = goomwwm-git
 	pkgdesc = Get out of my way, Window Manager!
-	pkgver = 1.0.0.73.g25c9a12
-	pkgrel = 2
-	epoch = 1
+	pkgver = 20150518
+	pkgrel = 1
 	url = http://github.com/seanpringle/goomwwm
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	depends = libx11
 	depends = libxft
-	depends = libxinerama
-	optdepends = dmenu
+	depends = freetype2
 	provides = goomwwm
-	conflicts = goomwwm
-	source = goomwwm-git::git://github.com/seanpringle/goomwwm.git
+	source = git://github.com/seanpringle/goomwwm.git
 	md5sums = SKIP
 
 pkgname = goomwwm-git
