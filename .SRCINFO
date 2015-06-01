@@ -1,0 +1,17 @@
+pkgbase = ros-jade-roscreate
+	pkgdesc = ROS - roscreate contains a tool that assists in the creation of ROS filesystem resources.
+	pkgver = 1.12.2
+	pkgrel = 1
+	url = http://ros.org/wiki/roscreate
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = python2-rospkg
+	source = roscreate::git+https://github.com/ros-gbp/ros-release.git#tag=release/jade/roscreate/1.12.2-0
+	md5sums = SKIP
+
+pkgname = ros-jade-roscreate
+
