@@ -1,0 +1,37 @@
+this_java='java-7-embedded/jre'
+default=$(archlinux-java get)
+
+post_install() {
+    echo "- The ejre package is licensed software"
+    echo "  You MUST agree to the license available at"
+    echo "  http://java.com/license before using it"
+    echo
+
+    if [[ -z "${default}" ]]; then
+        echo this install
+        archlinux-java set ${this_java}
+    elif [[ "${default/\/jre}" = "${this_java/\/jre}" ]]; then
+        echo that install
+        archlinux-java fix
+    else
+        echo "- Default Java environment is already set to '${default}'"
+        echo "  To set '${this_java}' as default, consider using:"
+        echo "  archlinux-java set '${this_java}'"
+    fi
+}
+
+post_upgrade() {
+    if [[ -z "${default}" ]]; then
+        echo this
+        archlinux-java set ${this_java}
+    elif [[ "${default/\/jre}" = "${this_java/\/jre}" ]]; then
+        echo that
+        archlinux-java fix
+    fi
+}
+
+post_remove() {
+    if [[ "${default/\/jre}" = "${this_java/\/jre}" ]]; then
+        archlinux-java fix
+    fi
+}

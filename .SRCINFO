@@ -1,0 +1,23 @@
+pkgbase = jre7-embedded
+	pkgdesc = Java SE Embedded Runtime Environment 7 (alongside OpenJDK)
+	pkgver = 7.u75
+	pkgrel = 1
+	epoch = 1
+	url = http://www.oracle.com/technetwork/java/embedded/embedded-se/downloads/index.html
+	install = jre.install
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = custom
+	depends = java-runtime-common
+	depends = ca-certificates-java
+	provides = java-runtime=7
+	provides = java-runtime-headless=7
+	provides = java-runtime-embedded=7
+	provides = java-runtime-headless-embedded=7
+	options = !strip
+	source = https://github.com/skydrome/ejre/archive/.zip
+
+pkgname = jre7-embedded
+
