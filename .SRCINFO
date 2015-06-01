@@ -1,0 +1,18 @@
+pkgbase = ros-jade-std-srvs
+	pkgdesc = ROS - Common service definitions.
+	pkgver = 1.11.1
+	pkgrel = 1
+	url = http://ros.org/wiki/std_srvs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-message-generation
+	makedepends = ros-jade-catkin
+	depends = ros-jade-message-runtime
+	source = std_srvs::git+https://github.com/ros-gbp/ros_comm_msgs-release.git#tag=release/jade/std_srvs/1.11.1-0
+	md5sums = SKIP
+
+pkgname = ros-jade-std-srvs
+
