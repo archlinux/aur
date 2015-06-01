@@ -124,9 +124,10 @@ fi
 prepare() {
   pushd "${srcdir}"
 
-  pushd ${_upname}
-  sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
-  popd
+  # This is incorrect (even in the official package), disabling for now
+  #pushd ${_upname}
+  #sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
+  #popd
 
   # Get rid of old build dirs
   rm -rf ${pkgname}-{32,64}-build
