@@ -1,0 +1,24 @@
+post_install() {
+  getent passwd freenet &>/dev/null || {
+        echo -n ">>> Creating freenet system user... "
+        useradd --system \
+                --user-group \
+                --home /opt/freenet \
+                freenet &&
+        echo "ok" || echo "fail"
+    }
+    chown -R freenet:freenet /opt/freenet /run/freenet
+    echo "Please visit http://127.0.0.1:8888/ to configure your node"
+}
+
+post_upgrade() {
+    chown -R freenet:freenet /opt/freenet /run/freenet
+}
+
+pre_remove() {
+    getent passwd freenet &>/dev/null && {
+        echo -n ">>> Removing freenet system user... "
+        userdel freenet
+        echo "ok"
+    }
+}
