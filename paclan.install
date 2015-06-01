@@ -1,0 +1,22 @@
+post_install()
+{
+  systemctl enable paclan.service
+  systemctl start paclan.service
+
+  echo "Don't forget to edit /etc/pacman.conf and include
+    Include = /etc/pacman.d/paclan.conf
+to each repo where you would like to see paclan being used (that would be at least [core], [extra] and [community])"
+}
+
+pre_remove()
+{
+  systemctl stop paclan.service
+  systemctl disable paclan.service
+}
+
+post_remove()
+{
+  echo "Don't forget to remove the additional Include lines from /etc/pacman.conf. They should look like:
+    Include = /etc/pacman.d/paclan.conf"
+  systemctl daemon-reload
+}

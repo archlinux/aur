@@ -1,0 +1,15 @@
+pkgbase = paclan
+	pkgdesc = Share pacman packages on the LAN. A replacement for pacserve
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/rakoo/paclan
+	install = paclan.install
+	arch = i686
+	arch = x86_64
+	license = CC0
+	makedepends = go
+	source = https://github.com/rakoo/paclan/archive/v0.1.2.zip
+	sha256sums = 29efca936520d4e8458ffbc758cdbb7992e944a7a7dbcfccce54c13229a8c997
+
+pkgname = paclan
+
