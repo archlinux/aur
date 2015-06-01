@@ -1,0 +1,27 @@
+pkgbase = tcpcrypt-git
+	pkgdesc = Transparent user space implementation for the tcpcrypt TCP extensions
+	pkgver = 308.bb990b1
+	pkgrel = 1
+	url = http://tcpcrypt.org
+	install = tcpcrypt.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = libnetfilter_queue
+	depends = libnfnetlink
+	depends = libcap
+	depends = openssl
+	depends = iptables
+	provides = tcpcrypt
+	conflicts = tcpcrypt
+	backup = etc/conf.d/tcpcryptd.conf
+	source = git+https://github.com/scslab/tcpcrypt.git
+	source = tcpcryptd.conf
+	source = tcpcryptd.service
+	sha256sums = SKIP
+	sha256sums = a41bfa7b0c8f527f96c993f68e0a02265ad672fe6c2e10f41bc00b8b1f819305
+	sha256sums = 68a3227f971dce0056bbe8768b570fade4ee8b17aca2e354c35352f2bf0a7028
+
+pkgname = tcpcrypt-git
+

@@ -1,0 +1,16 @@
+[Unit]
+Description=User-space implementation of tcpcrypt
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/conf.d/tcpcryptd.conf
+ExecStartPre=/usr/sbin/iptables -I INPUT  ! --in-interface lo  -p tcp --sport $PORT -j NFQUEUE --queue-num $NFQUEUE_NUM
+ExecStartPre=/usr/sbin/iptables -I OUTPUT ! --out-interface lo -p tcp --dport $PORT -j NFQUEUE --queue-num $NFQUEUE_NUM
+ExecStart=/usr/bin/tcpcryptd $OPTS -p $NFQUEUE_NUM
+ExecStopPost=/usr/sbin/iptables -D INPUT  ! --in-interface lo  -p tcp --sport $PORT -j NFQUEUE --queue-num $NFQUEUE_NUM
+ExecStopPost=/usr/sbin/iptables -D OUTPUT ! --out-interface lo -p tcp --dport $PORT -j NFQUEUE --queue-num $NFQUEUE_NUM
+KillSignal=SIGINT
+
+[Install]
+WantedBy=multi-user.target
