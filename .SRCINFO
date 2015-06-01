@@ -1,0 +1,36 @@
+pkgbase = ros-jade-nodelet
+	pkgdesc = ROS - The nodelet package is designed to provide a way to run multiple algorithms in the same process with zero copy transport between algorithms.
+	pkgver = 1.9.2
+	pkgrel = 1
+	url = http://ros.org/wiki/nodelet
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-cmake-modules
+	makedepends = ros-jade-std-msgs
+	makedepends = ros-jade-message-generation
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-bondcpp
+	makedepends = ros-jade-rosconsole
+	makedepends = ros-jade-pluginlib
+	makedepends = ros-jade-rospy
+	makedepends = util-linux
+	makedepends = boost
+	makedepends = tinyxml
+	depends = ros-jade-std-msgs
+	depends = ros-jade-message-runtime
+	depends = ros-jade-roscpp
+	depends = ros-jade-bondcpp
+	depends = ros-jade-rosconsole
+	depends = ros-jade-pluginlib
+	depends = util-linux
+	depends = boost
+	depends = tinyxml
+	source = nodelet::git+https://github.com/ros-gbp/nodelet_core-release.git#tag=release/jade/nodelet/1.9.2-0
+	md5sums = SKIP
+
+pkgname = ros-jade-nodelet
+
