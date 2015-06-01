@@ -1,0 +1,16 @@
+pkgbase = ros-jade-rosboost-cfg
+	pkgdesc = ROS - Contains scripts used by the rosboost-cfg tool for determining cflags/lflags/etc.
+	pkgver = 1.12.2
+	pkgrel = 1
+	url = http://ros.org/wiki/rosboost_cfg
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	source = rosboost_cfg::git+https://github.com/ros-gbp/ros-release.git#tag=release/jade/rosboost_cfg/1.12.2-0
+	md5sums = SKIP
+
+pkgname = ros-jade-rosboost-cfg
+
