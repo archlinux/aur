@@ -1,0 +1,26 @@
+pkgbase = ros-jade-roslaunch
+	pkgdesc = ROS - roslaunch is a tool for easily launching multiple ROS nodes locally and remotely via SSH, as well as setting parameters on the Parameter Server.
+	pkgver = 1.11.13
+	pkgrel = 1
+	url = http://ros.org/wiki/roslaunch
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = ros-jade-rosgraph-msgs
+	depends = ros-jade-roslib
+	depends = ros-jade-rosmaster
+	depends = ros-jade-rosclean
+	depends = ros-jade-rosunit
+	depends = ros-jade-rosparam
+	depends = ros-jade-rosout
+	depends = python2-rospkg
+	depends = python2-paramiko
+	depends = python2-yaml
+	source = roslaunch::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/jade/roslaunch/1.11.13-0
+	md5sums = SKIP
+
+pkgname = ros-jade-roslaunch
+
