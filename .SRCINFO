@@ -1,0 +1,17 @@
+pkgbase = bcprov151
+	pkgdesc = Java cryptography APIs (Bouncy Castle)
+	pkgver = 1.52
+	pkgrel = 1
+	url = http://www.bouncycastle.org/java.html
+	arch = any
+	license = MIT
+	provides = bcprov
+	conflicts = bcprov
+	noextract = bcprov*.jar
+	source = http://www.bouncycastle.org/download/bcprov-jdk15on-152.jar
+	source = LICENSE.html
+	md5sums = 873ac611cb0d7160c0a3d30eee964454
+	md5sums = 38ea7412daeed75d7d755033d0fad407
+
+pkgname = bcprov151
+
