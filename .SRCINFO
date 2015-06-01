@@ -1,0 +1,18 @@
+pkgbase = ros-jade-rosgraph
+	pkgdesc = ROS - rosgraph contains the rosgraph command-line tool, which prints information about the ROS Computation Graph.
+	pkgver = 1.11.13
+	pkgrel = 1
+	url = http://ros.org/wiki/rosgraph
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = python2-rospkg
+	depends = python2-netifaces
+	source = rosgraph::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/jade/rosgraph/1.11.13-0
+	md5sums = SKIP
+
+pkgname = ros-jade-rosgraph
+
