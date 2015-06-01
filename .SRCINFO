@@ -1,0 +1,18 @@
+pkgbase = herder-cpusim-git
+	pkgdesc = Pseudo Assembly/CPU-Simulator for educational purposes - QT-Version
+	pkgver = 1.0.3.r2.g4bfc9b2
+	pkgrel = 1
+	url = https://github.com/HERDER2014/CPUSim
+	arch = x86_64
+	license = (L)GPL
+	makedepends = git
+	makedepends = lazarus
+	makedepends = qt4pas
+	makedepends = lazarus-qt
+	depends = qt4pas
+	optdepends = qtcurve-qt4: Confirmed-working theme
+	source = CPUSim::git+https://github.com/HERDER2014/CPUSim#branch=master
+	md5sums = SKIP
+
+pkgname = herder-cpusim-git
+
