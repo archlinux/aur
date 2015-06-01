@@ -1,0 +1,21 @@
+pkgbase = ros-jade-rosmsg
+	pkgdesc = ROS - rosmsg contains two command-line tools: rosmsg and rossrv.
+	pkgver = 1.11.13
+	pkgrel = 1
+	url = http://ros.org/wiki/rosmsg
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = ros-jade-genmsg
+	depends = ros-jade-catkin
+	depends = ros-jade-roslib
+	depends = ros-jade-rosbag
+	depends = python2-rospkg
+	source = rosmsg::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/jade/rosmsg/1.11.13-0
+	md5sums = SKIP
+
+pkgname = ros-jade-rosmsg
+
