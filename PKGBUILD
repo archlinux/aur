@@ -4,7 +4,7 @@
 pkgname=wine-staging
 pkgver=1.7.44
 pkgrel=1
-pkgdesc="wine-staging, wine patched with extra funtionality including NPAPI plugin compatibility"
+pkgdesc="wine-staging, wine patched with extra funtionality including CSMT, PulseAudio, ACL and CUDA support"
 url="http://www.wine-staging.com/"
 license=('LGPL2.1')
 arch=('x86_64' 'i686')
@@ -136,7 +136,7 @@ prepare() {
     mkdir ${pkgname}-64-build
   fi
 
-  #Remove -O2 to fix build failures 
+  #Remove -O2 to fix runtime failures 
   export CFLAGS="${CFLAGS/-O2/} -O0"
   export CPPFLAGS="${CPPLAGS/-O2/} -O0"
 

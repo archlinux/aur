@@ -1,5 +1,5 @@
 pkgbase = wine-staging
-	pkgdesc = wine-staging, wine patched with extra funtionality including NPAPI plugin compatibility
+	pkgdesc = wine-staging, wine patched with extra funtionality including CSMT, PulseAudio, ACL and CUDA support
 	pkgver = 1.7.44
 	pkgrel = 1
 	url = http://www.wine-staging.com/
