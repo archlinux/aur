@@ -1,0 +1,16 @@
+pkgbase = snowshoe-git
+	pkgdesc = Snowshoe is an open source project to build a cross platform browser application with multiple user interfaces while sharing the same core engine, based on Qt5 and WebKit2 technologies.
+	pkgver = r452.f131998
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/snowshoe/snowshoe
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	depends = qt5-quick1
+	source = snowshoe::git+https://github.com/snowshoe/snowshoe#branch=master
+	md5sums = SKIP
+
+pkgname = snowshoe-git
+
