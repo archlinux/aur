@@ -1,0 +1,32 @@
+pkgbase = ros-jade-rosbag-storage
+	pkgdesc = ROS - This is a set of tools for recording from and playing back ROS message without relying on the ROS client library.
+	pkgver = 1.11.13
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-cpp-common
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-roscpp-traits
+	makedepends = ros-jade-roscpp-serialization
+	makedepends = ros-jade-roslz4
+	makedepends = ros-jade-rostime
+	makedepends = bzip2
+	makedepends = boost
+	makedepends = console-bridge
+	depends = ros-jade-roslz4
+	depends = ros-jade-rostime
+	depends = ros-jade-cpp-common
+	depends = ros-jade-roscpp-serialization
+	depends = ros-jade-roscpp-traits
+	depends = bzip2
+	depends = boost
+	depends = console-bridge
+	source = rosbag_storage::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/jade/rosbag_storage/1.11.13-0
+	md5sums = SKIP
+
+pkgname = ros-jade-rosbag-storage
+
