@@ -15,6 +15,7 @@ pkgbase = grive-git
 	depends = boost-libs
 	depends = json-c
 	depends = expat
+	optdepends = cppunit: unit tests
 	provides = grive
 	conflicts = grive
 	source = grive-git::git+https://github.com/vitalif/grive2

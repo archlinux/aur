@@ -13,6 +13,7 @@ arch=('i686' 'x86_64')
 url='https://github.com/vitalif/grive2'
 license=('GPL2')
 depends=('yajl' 'curl' 'libgcrypt' 'boost-libs' 'json-c' 'expat')
+optdepends=('cppunit: unit tests')
 makedepends=('cmake' 'git' 'boost')
 provides=('grive')
 conflicts=('grive')
