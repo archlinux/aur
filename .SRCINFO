@@ -1,0 +1,21 @@
+pkgbase = ros-jade-message-runtime
+	pkgdesc = ROS - Package modeling the run-time dependencies for language bindings of messages.
+	pkgver = 0.4.12
+	pkgrel = 1
+	url = http://ros.org/wiki/message_runtime
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = ros-jade-genpy
+	depends = ros-jade-rostime
+	depends = ros-jade-cpp-common
+	depends = ros-jade-roscpp-serialization
+	depends = ros-jade-roscpp-traits
+	source = message_runtime::git+https://github.com/ros-gbp/message_runtime-release.git#tag=release/jade/message_runtime/0.4.12-0
+	md5sums = SKIP
+
+pkgname = ros-jade-message-runtime
+
