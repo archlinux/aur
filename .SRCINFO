@@ -1,0 +1,20 @@
+pkgbase = ros-jade-rosbuild
+	pkgdesc = ROS - rosbuild contains scripts for managing the CMake-based build system for ROS.
+	pkgver = 1.12.2
+	pkgrel = 1
+	url = http://ros.org/wiki/rosbuild
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	makedepends = pkg-config
+	depends = ros-jade-message-runtime
+	depends = ros-jade-message-generation
+	depends = ros-jade-catkin
+	source = rosbuild::git+https://github.com/ros-gbp/ros-release.git#tag=release/jade/rosbuild/1.12.2-0
+	md5sums = SKIP
+
+pkgname = ros-jade-rosbuild
+
