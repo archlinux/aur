@@ -1,0 +1,11 @@
+[Unit]
+Description=Deluge Daemon
+After=network.target
+
+[Service]
+User=deluge
+ExecStart=/usr/bin/deluged -d
+UMask=0002
+
+[Install]
+WantedBy=multi-user.target
