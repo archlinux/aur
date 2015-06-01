@@ -1,0 +1,18 @@
+pkgbase = ros-jade-nodelet-core
+	pkgdesc = ROS - Nodelet Core Metapackage.
+	pkgver = 1.9.2
+	pkgrel = 1
+	url = http://www.ros.org/wiki/nodelet_core
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = ros-jade-nodelet
+	depends = ros-jade-nodelet-topic-tools
+	source = nodelet_core::git+https://github.com/ros-gbp/nodelet_core-release.git#tag=release/jade/nodelet_core/1.9.2-0
+	md5sums = SKIP
+
+pkgname = ros-jade-nodelet-core
+
