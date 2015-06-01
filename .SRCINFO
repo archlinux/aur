@@ -1,0 +1,20 @@
+pkgbase = apache-mod_bw
+	pkgdesc = DSO module for Apache that throttles HTTP traffic
+	pkgver = 0.7
+	pkgrel = 3
+	url = http://bwmod.sourceforge.net
+	install = apache-mod_bw.install
+	arch = i686
+	arch = x86_64
+	license = apache
+	makedepends = apache
+	depends = apache
+	source = http://bwmod.sourceforge.net/files/mod_bw-0.7.tgz
+	source = apr_atomic_fix.patch
+	source = apache24.patch
+	md5sums = d792a892517ca89f21ac2a6c01e6ccb2
+	md5sums = f9cdca58c58678a2e334086ccf81f898
+	md5sums = 23f29e631f65ba05e650a5b0cf57dba7
+
+pkgname = apache-mod_bw
+

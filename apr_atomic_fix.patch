@@ -1,0 +1,18 @@
+--- mod_bw.c.orig	2009-12-09 12:56:13.629281024 +1100
++++ mod_bw.c	2009-12-09 12:56:30.598862905 +1100
+@@ -58,15 +58,6 @@
+ #define BANDWIDTH_ENABLED              1<<1
+ #define SHARED_FILENAME "logs/bwmod_runtime_status"
+ 
+-/* Compatibility for ARP < 1 */
+-#if (APR_MAJOR_VERSION < 1)
+-    #define apr_atomic_inc32 apr_atomic_inc
+-    #define apr_atomic_dec32 apr_atomic_dec
+-    #define apr_atomic_add32 apr_atomic_add
+-    #define apr_atomic_cas32 apr_atomic_cas
+-    #define apr_atomic_set32 apr_atomic_set
+-#endif
+-
+ /* Enum types of "from address" */
+ enum from_type {
+     T_ALL,

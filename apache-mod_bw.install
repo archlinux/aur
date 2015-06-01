@@ -1,0 +1,28 @@
+post_install()
+{
+
+   PATH="$PATH:/sbin"
+   ldconfig -n /usr/lib/httpd/modules
+
+/bin/cat <<EOT
+
+Setting it up
+-------------
+
+1. add the following to /etc/httpd/conf/httpd.conf
+		LoadModule bw_module	modules/mod_bw.so
+
+2. add the module settings to httpd.conf
+		<IfModule mod_bw.c>
+			#Some bandwidth control parameters.
+			BandwidthModule On
+			ForceBandWidthModule On
+			LargeFileLimit .mp3 1 30000
+		</IfModule>
+
+EOT
+}
+
+op=$1
+shift
+$op $*

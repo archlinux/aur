@@ -1,0 +1,29 @@
+--- mod_bw.c.NEW	2014-10-06 12:14:47.963722589 +1100
++++ mod_bw.c	2014-10-06 12:15:44.767721163 +1100
+@@ -472,7 +472,7 @@
+             return e[i].rate;
+ 
+         case T_IP:
+-            if (apr_ipsubnet_test(e[i].x.ip, r->connection->remote_addr)) {
++            if (apr_ipsubnet_test(e[i].x.ip, r->connection->client_addr)) {
+                 return e[i].rate;
+             }
+             break;
+@@ -555,7 +555,7 @@
+             return e[i].max;
+ 
+         case T_IP:
+-            if (apr_ipsubnet_test(e[i].x.ip, r->connection->remote_addr)) {
++            if (apr_ipsubnet_test(e[i].x.ip, r->connection->client_addr)) {
+                 return e[i].max;
+             }
+             break;
+@@ -600,7 +600,7 @@
+             return e[i].sid;
+ 
+         case T_IP:
+-            if (apr_ipsubnet_test(e[i].x.ip, r->connection->remote_addr)) {
++            if (apr_ipsubnet_test(e[i].x.ip, r->connection->client_addr)) {
+                 return e[i].sid;
+             }
+             break;
