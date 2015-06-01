@@ -1,0 +1,22 @@
+pkgbase = ros-jade-stereo-msgs
+	pkgdesc = ROS - stereo_msgs contains messages specific to stereo processing, such as disparity images.
+	pkgver = 1.12.3
+	pkgrel = 1
+	url = http://wiki.ros.org/stereo_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-sensor-msgs
+	makedepends = ros-jade-message-generation
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-std-msgs
+	depends = ros-jade-sensor-msgs
+	depends = ros-jade-message-runtime
+	depends = ros-jade-std-msgs
+	source = stereo_msgs::git+https://github.com/ros-gbp/common_msgs-release.git#tag=release/jade/stereo_msgs/1.12.3-0
+	md5sums = SKIP
+
+pkgname = ros-jade-stereo-msgs
+
