@@ -1,0 +1,15 @@
+pkgbase = devtodo-git
+	pkgdesc = A hierarchical command-line task manager.
+	pkgver = 2.1.r18.gd90696a
+	pkgrel = 1
+	url = http://swapoff.org/devtodo.html
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go
+	source = git+https://github.com/alecthomas/devtodo2.git
+	sha256sums = SKIP
+
+pkgname = devtodo-git
+
