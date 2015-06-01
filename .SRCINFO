@@ -1,0 +1,22 @@
+pkgbase = ros-jade-bondpy
+	pkgdesc = ROS - Python implementation of bond, a mechanism for checking when another process has terminated.
+	pkgver = 1.7.16
+	pkgrel = 1
+	url = http://www.ros.org/wiki/bondpy
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-smclib
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-bond
+	makedepends = ros-jade-rospy
+	depends = ros-jade-smclib
+	depends = ros-jade-rospy
+	depends = util-linux
+	source = bondpy::git+https://github.com/ros-gbp/bond_core-release.git#tag=release/jade/bondpy/1.7.16-0
+	md5sums = SKIP
+
+pkgname = ros-jade-bondpy
+
