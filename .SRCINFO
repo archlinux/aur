@@ -1,0 +1,28 @@
+pkgbase = ros-jade-rospack
+	pkgdesc = ROS - ROS Package Tool.
+	pkgver = 2.2.5
+	pkgrel = 1
+	url = http://wiki.ros.org/rospack
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-cmake-modules
+	makedepends = ros-jade-catkin
+	makedepends = gtest
+	makedepends = pkg-config
+	makedepends = boost
+	makedepends = tinyxml
+	makedepends = python2
+	depends = python2-rosdep
+	depends = tinyxml
+	depends = python2-catkin_pkg
+	depends = python2
+	depends = boost
+	depends = pkg-config
+	source = rospack::git+https://github.com/ros-gbp/rospack-release.git#tag=release/jade/rospack/2.2.5-0
+	md5sums = SKIP
+
+pkgname = ros-jade-rospack
+
