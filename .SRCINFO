@@ -1,0 +1,23 @@
+pkgbase = ros-jade-trajectory-msgs
+	pkgdesc = ROS - This package defines messages for defining robot trajectories.
+	pkgver = 1.12.3
+	pkgrel = 1
+	url = http://wiki.ros.org/trajectory_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-message-generation
+	makedepends = ros-jade-geometry-msgs
+	makedepends = ros-jade-std-msgs
+	depends = ros-jade-message-runtime
+	depends = ros-jade-geometry-msgs
+	depends = ros-jade-rosbag-migration-rule
+	depends = ros-jade-std-msgs
+	source = trajectory_msgs::git+https://github.com/ros-gbp/common_msgs-release.git#tag=release/jade/trajectory_msgs/1.12.3-0
+	md5sums = SKIP
+
+pkgname = ros-jade-trajectory-msgs
+
