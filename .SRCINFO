@@ -1,0 +1,21 @@
+pkgbase = ros-jade-rosservice
+	pkgdesc = ROS - rosservice contains the rosservice command-line tool for listing and querying ROS Services.
+	pkgver = 1.11.13
+	pkgrel = 1
+	url = http://ros.org/wiki/rosservice
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = ros-jade-genpy
+	depends = ros-jade-roslib
+	depends = ros-jade-rosmsg
+	depends = ros-jade-rosgraph
+	depends = ros-jade-rospy
+	source = rosservice::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/jade/rosservice/1.11.13-0
+	md5sums = SKIP
+
+pkgname = ros-jade-rosservice
+
