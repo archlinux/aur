@@ -1,0 +1,23 @@
+pkgbase = ros-jade-ros-base
+	pkgdesc = ROS - A metapackage which extends ros_core and includes other basic non-robot tools like actionlib, dynamic reconfigure, nodelets, and pluginlib.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = ros-jade-dynamic-reconfigure
+	depends = ros-jade-class-loader
+	depends = ros-jade-ros-core
+	depends = ros-jade-actionlib
+	depends = ros-jade-bond-core
+	depends = ros-jade-nodelet-core
+	depends = ros-jade-pluginlib
+	source = ros_base::git+https://github.com/ros-gbp/metapackages-release.git#tag=release/jade/ros_base/1.2.0-0
+	md5sums = SKIP
+
+pkgname = ros-jade-ros-base
+
