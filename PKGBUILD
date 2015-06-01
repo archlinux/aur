@@ -2,34 +2,37 @@
 # Contributor: SanskritFritz (gmail)
 
 pkgname=goomwwm-git
-_gitname=goomwwm
-pkgver=20150518
+_pkgname=goomwwm
+pkgver=1.0.0.73.g25c9a12
 pkgrel=1
+epoch=1
 pkgdesc="Get out of my way, Window Manager!"
 arch=('i686' 'x86_64')
 url="http://github.com/seanpringle/goomwwm"
 license=('MIT')
-depends=('libx11' 'libxft' 'freetype2')
+depends=('libxft' 'libxinerama')
 makedepends=('git')
-provides=('goomwwm')
-source=("git://github.com/seanpringle/goomwwm.git")
+conflicts=($_pkgname)
+provides=($_pkgname)
+source=("$pkgname::git://github.com/seanpringle/goomwwm.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$_gitname"
-  git log -1 --format="%cd" --date=short | sed 's|-||g'
+  cd "$pkgname"
+  git describe --tags --long|sed 's,[-_],.,g'
 }
 
 build() {
-  cd "$srcdir/$_gitname"
+  cd "$srcdir/$pkgname"
   make
 }
 
 package() {
-  cd "$srcdir/$_gitname"
-  install -Dm 755 $_gitname "$pkgdir/usr/bin/$_gitname"
-  install -Dm 644 "$_gitname.desktop" "$pkgdir/usr/share/xsessions/$_gitname.desktop"
-  gzip -c "$_gitname.1" > "$_gitname.1.gz"
-  install -Dm644 "$_gitname.1.gz" "$pkgdir/usr/share/man/man1/$_gitname.1.gz"
+  cd "$srcdir/$pkgname"
+  install -Dm 755 $_pkgname "$pkgdir/usr/bin/$_pkgname"
+  install -Dm 644 "$_pkgname.desktop" "$pkgdir/usr/share/xsessions/$_pkgname.desktop"
+  gzip -c "$_pkgname.1" > "$_pkgname.1.gz"
+  install -Dm644 "$_pkgname.1.gz" "$pkgdir/usr/share/man/man1/$_pkgname.1.gz"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
