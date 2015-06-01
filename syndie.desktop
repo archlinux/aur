@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Syndie - Secure Distributed Forums
+Comment=Distributed forum/blog reader
+Exec=syndie
+Icon=syndie
+Terminal=false
+Type=Application
+Categories=Network;
+StartupNotify=true;
