@@ -1,0 +1,18 @@
+pkgbase = ros-jade-roslang
+	pkgdesc = ROS - roslang is a common package that all ROS client libraries depend on.
+	pkgver = 1.12.2
+	pkgrel = 1
+	url = http://ros.org/wiki/roslang
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = ros-jade-genmsg
+	depends = ros-jade-catkin
+	source = roslang::git+https://github.com/ros-gbp/ros-release.git#tag=release/jade/roslang/1.12.2-0
+	md5sums = SKIP
+
+pkgname = ros-jade-roslang
+
