@@ -1,0 +1,23 @@
+pkgbase = ros-jade-class-loader
+	pkgdesc = ROS - The class_loader package is a ROS-independent package for loading plugins during runtime and the foundation of the higher level ROS pluginlib library.
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = http://ros.org/wiki/class_loader
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-cmake-modules
+	makedepends = ros-jade-catkin
+	makedepends = poco
+	makedepends = boost
+	makedepends = console-bridge
+	depends = poco
+	depends = boost
+	depends = console-bridge
+	source = class_loader::git+https://github.com/ros-gbp/class_loader-release.git#tag=release/jade/class_loader/0.3.2-0
+	md5sums = SKIP
+
+pkgname = ros-jade-class-loader
+
