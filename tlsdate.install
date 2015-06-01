@@ -1,0 +1,23 @@
+post_install() {
+    getent passwd tlsdate &>/dev/null || {
+        echo -n ">>> Creating tlsdate system user... "
+        useradd --system --no-create-home \
+                --user-group \
+                --home /var/cache/tlsdated \
+                tlsdate &&
+        echo "ok" || echo "fail"
+    }
+    chown -R tlsdate:tlsdate /var/cache/tlsdated
+}
+
+post_upgrade() {
+    chown -R tlsdate:tlsdate /var/cache/tlsdated
+}
+
+pre_remove() {
+    getent passwd tlsdate &>/dev/null && {
+        echo -n ">>> Removing tlsdate system user... "
+        userdel tlsdate
+        echo "ok"
+    }
+}
