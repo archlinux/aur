@@ -1,0 +1,31 @@
+From 03fc9b5fa72fd3197ca1e496f2c22e640304a602 Mon Sep 17 00:00:00 2001
+From: Maxim Doucet <maxim.doucet@gmail.com>
+Date: Wed, 27 May 2015 18:34:47 +0200
+Subject: [PATCH] Fix issue synergy/synergy#4720
+
+---
+ src/gui/src/PluginManager.cpp | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
+
+diff --git a/src/gui/src/PluginManager.cpp b/src/gui/src/PluginManager.cpp
+index fd3a24e..d1dc876 100644
+--- a/src/gui/src/PluginManager.cpp
++++ b/src/gui/src/PluginManager.cpp
+@@ -194,13 +194,7 @@ QString PluginManager::getPluginUrl(const QString& pluginName)
+ 	process.start(program, args);
+ 	bool success = process.waitForStarted();
+ 
+-	if (!success || !process.waitForFinished())
+-	{
+-		emit error(tr("Could not get Linux package type."));
+-		return "";
+-	}
+-
+-	bool isDeb = (process.exitCode() == 0);
++	bool isDeb = (success && process.waitForFinished() & (process.exitCode() == 0));
+ 
+ 	int arch = getProcessorArch();
+ 	if (arch == kProcessorArchLinux32) {
+-- 
+2.4.2
+

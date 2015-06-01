@@ -12,7 +12,7 @@
 # update and just generally don't seem to care much.
 pkgname=synergy
 pkgver=1.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="http://synergy-foss.org"
 arch=('i686' 'x86_64')
@@ -25,13 +25,16 @@ optdepends=(
 license=('GPL2')
 source=("synergy-${pkgver}.tar.gz::https://github.com/synergy/synergy/archive/v${pkgver}-stable.tar.gz"
         "synergys_at.socket"
-        "synergys_at.service")
+        "synergys_at.service"
+        fix-incompetence.patch)
 sha1sums=('8b29b172ef6d025f3cdf8fb434eb0e23b6ed896f'
           '7ec33221725fc496b807e0f435c5e87b590beb5d'
-          '65ab58cc3546d6374a05a6a260f15045632e43ce')
+          '65ab58cc3546d6374a05a6a260f15045632e43ce'
+          '10a899901ef62828280f21979625495f4da159f5')
 
 prepare() {
   cd "${srcdir}/synergy-${pkgver}-stable"
+  patch -p1 < ../fix-incompetence.patch
 
   cd ext
   unzip gmock-1.6.0.zip -d gmock-1.6.0
