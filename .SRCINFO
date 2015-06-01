@@ -1,14 +1,14 @@
 pkgbase = java-gcj-compat
 	pkgdesc = Wrapper package to wrap free tools into a java 1.5.0.0 compatible java environment
 	pkgver = 1.0.80
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.eclipse.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = perl
 	makedepends = python2
-	depends = gcc-gcj>=4.9.2
+	depends = gcc-gcj>=5.1.0
 	depends = gjdoc>=0.7.9
 	provides = java-environment=5
 	provides = java-runtime=5

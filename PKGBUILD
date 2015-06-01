@@ -3,12 +3,12 @@
 
 pkgname=java-gcj-compat
 pkgver=1.0.80
-pkgrel=3
+pkgrel=4
 pkgdesc="Wrapper package to wrap free tools into a java 1.5.0.0 compatible java environment"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.eclipse.org/"
-depends=('gcc-gcj>=4.9.2' 'gjdoc>=0.7.9')
+depends=('gcc-gcj>=5.1.0' 'gjdoc>=0.7.9')
 makedepends=('perl' 'python2')
 provides=('java-environment=5' 'java-runtime=5')
 conflicts=('java-environment' 'java-runtime')
