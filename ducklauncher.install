@@ -1,0 +1,20 @@
+post_install() {
+  /usr/bin/python2.7 -m compileall /usr/lib/duck_launcher
+  update-desktop-database -q
+}
+
+pre_upgrade() {
+  find "/usr/lib/duck_launcher" -type f -iname "*.pyc" -exec rm {} \;
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  pre_upgrade
+}
+
+post_remove() {
+  update-desktop-database -q
+}

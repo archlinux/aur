@@ -1,0 +1,32 @@
+pkgbase = ducklauncher-git
+	pkgdesc = Duck Launcher Application Laucher by Mark Spurgeon <markspurgeon96@hotmail.com>
+	pkgver = r61.e160dd1
+	pkgrel = 2
+	url = https://the-duck.github.io/
+	install = ducklauncher.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = python2-pyside
+	depends = python2-xlib
+	depends = pygtk
+	depends = python2-wnck
+	depends = python2-cssutils
+	depends = hicolor-icon-theme
+	depends = python2-simplejson
+	depends = python2-xdg
+	depends = python2-notify2
+	depends = python2-pyqt4
+	provides = ducklauncher
+	conflicts = ducklauncher
+	replaces = ducklauncher
+	source = launcher::git+https://github.com/the-duck/launcher#branch=master
+	source = duck-launcher.desktop
+	source = ducklauncher.install
+	md5sums = SKIP
+	md5sums = 95f61db7e9523f315f5898fe6f1eec10
+	md5sums = SKIP
+
+pkgname = ducklauncher-git
+
