@@ -1,0 +1,20 @@
+pkgbase = ros-jade-roscpp-core
+	pkgdesc = ROS - Underlying data libraries for roscpp messages.
+	pkgver = 0.5.6
+	pkgrel = 1
+	url = http://www.ros.org/wiki/roscpp_core
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = ros-jade-rostime
+	depends = ros-jade-cpp-common
+	depends = ros-jade-roscpp-serialization
+	depends = ros-jade-roscpp-traits
+	source = roscpp_core::git+https://github.com/ros-gbp/roscpp_core-release.git#tag=release/jade/roscpp_core/0.5.6-0
+	md5sums = SKIP
+
+pkgname = ros-jade-roscpp-core
+
