@@ -649,7 +649,8 @@ def main():
                     ' to exclude from the generated PKGBUILD file.')
   parser.add_option('--python-version', metavar='python_version', default='',
                     help='Python version that will be used. Accepted values are'
-                    ' 2.7 or 3. Note that Python 3 is only supported in Indigo.')
+                    ' 2.7 or 3. Note that Python 3 is only supported in Indigo '
+                    'and Jade.')
   parser.add_option('-f', '--force', dest='force', action='store_true',
                     default=False,
                     help='Always overwrite exiting PKGBUILD files.')
@@ -672,13 +673,15 @@ def main():
   valid_python_versions = {"fuerte": ["2.7"],
                            "groovy": ["2.7"],
                            "hydro":  ["2.7"],
-                           "indigo": ["2.7", "3.4"]}
+                           "indigo": ["2.7", "3.4"],
+                           "jade": ["2.7", "3.4"]}
 
   # Default Python version that will be used
   default_python_version = {"fuerte": "2.7",
                             "groovy": "2.7",
                             "hydro":  "2.7",
-                            "indigo": "2.7"}
+                            "indigo": "2.7",
+                            "jade": "2.7"}
 
   python_version = default_python_version[options.distro]
   if options.python_version != "":
