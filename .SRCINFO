@@ -1,0 +1,25 @@
+pkgbase = ros-jade-message-filters
+	pkgdesc = ROS - A set of message filters which take in messages and may output those messages at a later time, based on the conditions that filter needs met.
+	pkgver = 1.11.13
+	pkgrel = 1
+	url = http://ros.org/wiki/message_filters
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-rosunit
+	makedepends = ros-jade-rostest
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-xmlrpcpp
+	makedepends = ros-jade-rosconsole
+	makedepends = boost
+	depends = ros-jade-rosconsole
+	depends = ros-jade-xmlrpcpp
+	depends = ros-jade-roscpp
+	source = message_filters::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/jade/message_filters/1.11.13-0
+	md5sums = SKIP
+
+pkgname = ros-jade-message-filters
+
