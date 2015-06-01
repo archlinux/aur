@@ -1,0 +1,21 @@
+pkgbase = ros-jade-message-generation
+	pkgdesc = ROS - Package modeling the build-time dependencies for generating language bindings of messages.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = http://ros.org/wiki/message_generation
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = ros-jade-genpy
+	depends = ros-jade-genmsg
+	depends = ros-jade-geneus
+	depends = ros-jade-genlisp
+	depends = ros-jade-gencpp
+	source = message_generation::git+https://github.com/ros-gbp/message_generation-release.git#tag=release/jade/message_generation/0.3.0-0
+	md5sums = SKIP
+
+pkgname = ros-jade-message-generation
+
