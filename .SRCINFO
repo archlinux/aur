@@ -1,0 +1,17 @@
+pkgbase = ros-jade-rosbash
+	pkgdesc = ROS - Assorted shell commands for using ros with bash.
+	pkgver = 1.12.2
+	pkgrel = 1
+	url = http://www.ros.org/wiki/rosbash
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = ros-jade-catkin
+	source = rosbash::git+https://github.com/ros-gbp/ros-release.git#tag=release/jade/rosbash/1.12.2-0
+	md5sums = SKIP
+
+pkgname = ros-jade-rosbash
+
