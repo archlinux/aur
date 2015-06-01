@@ -1,0 +1,21 @@
+pkgbase = ros-jade-actionlib-msgs
+	pkgdesc = ROS - actionlib_msgs defines the common messages to interact with an action server and an action client.
+	pkgver = 1.12.3
+	pkgrel = 1
+	url = http://wiki.ros.org/actionlib_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-message-generation
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-std-msgs
+	depends = ros-jade-message-runtime
+	depends = ros-jade-message-generation
+	depends = ros-jade-std-msgs
+	source = actionlib_msgs::git+https://github.com/ros-gbp/common_msgs-release.git#tag=release/jade/actionlib_msgs/1.12.3-0
+	md5sums = SKIP
+
+pkgname = ros-jade-actionlib-msgs
+
