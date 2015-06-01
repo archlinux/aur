@@ -1,0 +1,14 @@
+[Unit]
+Description=debloat interface %I
+Wants=network.target
+After=network.target
+BindsTo=sys-subsystem-net-devices-%i.device
+After=sys-subsystem-net-devices-%i.device
+
+[Service]
+Type=oneshot
+Environment="IFACE=%I"
+ExecStart=/usr/lib/debloat/debloat.sh
+
+[Install]
+WantedBy=multi-user.target

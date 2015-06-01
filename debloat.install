@@ -1,0 +1,8 @@
+post_install() {
+    echo '>>> To enable debloating of an interface, enable the debloat@IFACE systemd unit.'
+    echo '>>> For example to debloat eth0, run `systemctl enable debloat@eth0`.'
+}
+
+post_upgrade() {
+  post_install
+}
