@@ -1,0 +1,22 @@
+pkgbase = ros-jade-visualization-msgs
+	pkgdesc = ROS - visualization_msgs is a set of messages used by higher level packages, such as rviz, that deal in visualization-specific data.
+	pkgver = 1.12.3
+	pkgrel = 1
+	url = http://ros.org/wiki/visualization_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-message-generation
+	makedepends = ros-jade-geometry-msgs
+	makedepends = ros-jade-std-msgs
+	depends = ros-jade-message-runtime
+	depends = ros-jade-geometry-msgs
+	depends = ros-jade-std-msgs
+	source = visualization_msgs::git+https://github.com/ros-gbp/common_msgs-release.git#tag=release/jade/visualization_msgs/1.12.3-0
+	md5sums = SKIP
+
+pkgname = ros-jade-visualization-msgs
+
