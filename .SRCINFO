@@ -1,0 +1,36 @@
+pkgbase = ros-jade-ros-core
+	pkgdesc = ROS - A metapackage to aggregate the packages required to use publish / subscribe, services, launch files, and other core ROS concepts.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = ros-jade-std-srvs
+	depends = ros-jade-rosgraph-msgs
+	depends = ros-jade-cmake-modules
+	depends = ros-jade-geneus
+	depends = ros-jade-std-msgs
+	depends = ros-jade-genpy
+	depends = ros-jade-genmsg
+	depends = ros-jade-message-generation
+	depends = ros-jade-catkin
+	depends = ros-jade-gencpp
+	depends = ros-jade-roscpp-core
+	depends = ros-jade-rosconsole-bridge
+	depends = ros-jade-common-msgs
+	depends = ros-jade-rospack
+	depends = ros-jade-ros
+	depends = ros-jade-genlisp
+	depends = ros-jade-ros-comm
+	depends = ros-jade-roslisp
+	depends = ros-jade-message-runtime
+	depends = ros-jade-rosbag-migration-rule
+	source = ros_core::git+https://github.com/ros-gbp/metapackages-release.git#tag=release/jade/ros_core/1.2.0-0
+	md5sums = SKIP
+
+pkgname = ros-jade-ros-core
+
