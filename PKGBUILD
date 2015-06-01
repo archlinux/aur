@@ -76,7 +76,8 @@ build() {
     --disable-optimizations \
     --enable-libbluray \
     --with-lirc-device=/run/lirc/lircd \
-    ac_cv_lib_bluetooth_hci_devid=no
+    ac_cv_lib_bluetooth_hci_devid=no \
+    ac_cv_type__Bool=yes
 
   # Now (finally) build
   make
