@@ -1,0 +1,16 @@
+pkgbase = ros-jade-genmsg
+	pkgdesc = ROS - Standalone Python library for generating ROS message and service data structures for various languages.
+	pkgver = 0.5.6
+	pkgrel = 1
+	url = http://www.ros.org/wiki/genmsg
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	source = genmsg::git+https://github.com/ros-gbp/genmsg-release.git#tag=release/jade/genmsg/0.5.6-0
+	md5sums = SKIP
+
+pkgname = ros-jade-genmsg
+
