@@ -2,14 +2,15 @@
 
 pkgname=gjdoc
 pkgver=0.7.9
-pkgrel=3
+pkgrel=4
 pkgdesc="GNU Classpath JavaDoc implementation"
 arch=(i686 x86_64)
 license=('GPL')
 url="http://savannah.gnu.org/projects/classpath/"
-depends=('gcc-gcj>=4.9.2')
+depends=('gcc-gcj>=5.1.0' 'java-environment')
 options=('!libtool' '!buildflags')
 noextract=('antlr-2.7.7.jar')
+install=$pkgname.install
 source=(http://ftp.gnu.org/gnu/classpath/${pkgname}-${pkgver}.tar.gz
 	http://www.antlr2.org/download/antlr-2.7.7.jar)
 md5sums=('24cade2efe22d5adefcbabb21f094803'
