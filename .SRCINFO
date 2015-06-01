@@ -1,0 +1,20 @@
+pkgbase = ros-jade-rostime
+	pkgdesc = ROS - Time and Duration implementations for C++ libraries, including roscpp.
+	pkgver = 0.5.6
+	pkgrel = 1
+	url = http://ros.org/wiki/rostime
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-cpp-common
+	makedepends = ros-jade-catkin
+	makedepends = boost
+	depends = ros-jade-cpp-common
+	depends = boost
+	source = rostime::git+https://github.com/ros-gbp/roscpp_core-release.git#tag=release/jade/rostime/0.5.6-0
+	md5sums = SKIP
+
+pkgname = ros-jade-rostime
+
