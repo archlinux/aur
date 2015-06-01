@@ -1,24 +1,44 @@
 # Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
+# Adapted for dp1 version by Semyon Maryasin <simeon@maryasin.name>
+# Adapted for beta12/release by Adam Goldsmith <contact@adamgoldsmith.name>
 # vim: ft=sh
 
 pkgname=pebble-sdk
-pkgver=2.9
+pkgver=3.0
 pkgrel=1
 pkgdesc="Pebble SDK, used to develop applications and watchfaces for the Pebble Smartwatch."
 url="https://developer.getpebble.com/2/getting-started/"
 arch=('i386' 'x86_64')
 license=('custom' 'MIT')
 install='pebble-sdk.install'
-depends=('arm-none-eabi-gcc' 'python2-pypng' 'python2-sh' 'python2-freetype-py'
-         'python2-websocket-client' 'arm-none-eabi-binutils')
+depends=('arm-none-eabi-gcc' 'arm-none-eabi-newlib' 'arm-none-eabi-binutils'
+         'libpng12'
+         'python2-freetype-py'
+         'python2-sh'
+         'python2-websocket-client-pebble'
+         'python2-pypng'
+         'python2-oauth2client'
+         'python2-requests'
+         'python2-gevent'
+         'python2-gevent-websocket'
+         'python2-greenlet'
+         'python2-peewee'
+         'python2-pygeoip'
+         'python2-dateutil'
+         'python2-six'
+         'python2-wsgiref'
+         'python2-twisted'
+         'python2-autobahn'
+         'qemu-fdt')
+#         'pypy-backports.ssl_match_hostname'
+
 optdepends=('python2-pyserial: To connect to the Pebble via serial port')
-source=("http://assets.getpebble.com.s3-website-us-east-1.amazonaws.com/sdk2/PebbleSDK-${pkgver}.tar.gz"
-        'python-waf.patch'
+conflicts=('pebble-sdk-beta')
+source=("http://assets.getpebble.com.s3-website-us-east-1.amazonaws.com/sdk2/PebbleSDK-${pkgver/_/-}.tar.gz"
         'build-command.patch'
         'pebble-sdk.install')
-sha1sums=('d4c46177d07a61d90bd0dac888ca1cf3768bcc09'
-          '526d2071bc8b60a3102fb5d592e67c8ea1057990'
-          '215c4e3d6b3d4649b4baae27fae66c3d596a307c'
+sha1sums=('de170797466b8f981f0189456dfed52d9078a830'
+          '488ab70f3b21ca59e784ed47f45daf853ce94142'
           '7ea5244f828e682d073434078569fab62a1ad996')
 options=('staticlibs' '!strip')
 
@@ -34,7 +54,7 @@ prepare() {
   cd .waf*
   find . -type f -name '*.py' -exec \
     sed -i '1s|^#! /usr/bin/env python$|#!/usr/bin/python2|' {} \;
-  patch -p0 -i "$srcdir/python-waf.patch"
+  #patch -p0 -i "$srcdir/python-waf.patch"
 }
 
 package() {
