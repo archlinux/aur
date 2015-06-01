@@ -1,0 +1,36 @@
+pkgbase = ros-jade-rosbag
+	pkgdesc = ROS - This is a set of tools for recording from and playing back to ROS topics.
+	pkgver = 1.11.13
+	pkgrel = 1
+	url = http://ros.org/wiki/rosbag
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-rosbag-storage
+	makedepends = ros-jade-cpp-common
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-xmlrpcpp
+	makedepends = ros-jade-roscpp-serialization
+	makedepends = ros-jade-topic-tools
+	makedepends = ros-jade-rosconsole
+	makedepends = python2-pillow
+	makedepends = boost
+	depends = ros-jade-rosbag-storage
+	depends = ros-jade-roslib
+	depends = ros-jade-genpy
+	depends = ros-jade-genmsg
+	depends = ros-jade-roscpp
+	depends = ros-jade-xmlrpcpp
+	depends = ros-jade-topic-tools
+	depends = ros-jade-rosconsole
+	depends = ros-jade-rospy
+	depends = python2-rospkg
+	depends = boost
+	source = rosbag::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/jade/rosbag/1.11.13-0
+	md5sums = SKIP
+
+pkgname = ros-jade-rosbag
+
