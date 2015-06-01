@@ -1,0 +1,16 @@
+pkgbase = ros-jade-smclib
+	pkgdesc = ROS - The State Machine Compiler (SMC) from http://smc.sourceforge.net/ converts a language-independent description of a state machine into the source code to support that state machine.
+	pkgver = 1.7.16
+	pkgrel = 1
+	url = http://smc.sourceforge.net/
+	arch = any
+	license = Mozilla Public License Version 1.1
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	source = smclib::git+https://github.com/ros-gbp/bond_core-release.git#tag=release/jade/smclib/1.7.16-0
+	md5sums = SKIP
+
+pkgname = ros-jade-smclib
+
