@@ -1,4 +1,4 @@
-# vim:set ft=sh:
+# vim:set ts=2 sw=2 et:
 # Maintainer: BlackIkeEagle < ike DOT devolder AT gmail DOT com >
 # Contributor: DonVla <donvla@users.sourceforge.net>
 # Contributor: Ulf Winkelvos <ulf [at] winkelvos [dot] de>
@@ -18,7 +18,7 @@
 pkgbase=kodi-git
 pkgname=('kodi-git' 'kodi-eventclients-git')
 _gitname='xbmc'
-pkgver=20150519.da65bf6
+pkgver=20150531.cdd0fee
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://kodi.tv"
@@ -33,25 +33,25 @@ makedepends=(
   'shairplay' 'smbclient' 'swig' 'taglib' 'tinyxml' 'unzip' 'upower' 'yajl' 'zip'
 )
 source=(
-	"$_gitname::git://github.com/xbmc/xbmc.git"
+  "$_gitname::git://github.com/xbmc/xbmc.git"
 )
 sha256sums=(
-	'SKIP'
+  'SKIP'
 )
 
 _prefix='/usr'
 
 pkgver() {
-	cd "$srcdir/$_gitname"
-	git log -1 --date=short --format="%cd.%h" | tr -d '-'
+  cd "$srcdir/$_gitname"
+  git log -1 --date=short --format="%cd.%h" | tr -d '-'
 }
 
 prepare() {
-	cd ${_gitname}
+  cd ${_gitname}
 
-	find -type f -name *.py -exec sed 's|^#!.*python$|#!/usr/bin/python2|' -i "{}" +
-	sed 's|^#!.*python$|#!/usr/bin/python2|' -i tools/depends/native/rpl-native/rpl
-	sed 's/python/python2/' -i tools/Linux/kodi.sh.in
+  find -type f -name *.py -exec sed 's|^#!.*python$|#!/usr/bin/python2|' -i "{}" +
+  sed 's|^#!.*python$|#!/usr/bin/python2|' -i tools/depends/native/rpl-native/rpl
+  sed 's/python/python2/' -i tools/Linux/kodi.sh.in
   sed 's/shell python/shell python2/' -i tools/EventClients/Makefile.in
   # disable wiiremote due to incompatibility with bluez-5.29
   sed '/WiiRemote/d' -i tools/EventClients/Makefile.in
@@ -60,79 +60,82 @@ install:' -i tools/EventClients/Makefile.in
 }
 
 build() {
-	cd ${_gitname}
+  cd ${_gitname}
 
-	# Bootstrapping
-	MAKEFLAGS=-j1 ./bootstrap
+  # Bootstrapping
+  MAKEFLAGS=-j1 ./bootstrap
 
-	# Configuring XBMC
-	export PYTHON_VERSION=2  # external python v2
-	./configure --prefix=$_prefix --exec-prefix=$_prefix \
-		--enable-debug \
-		--disable-optimizations \
-		--enable-libbluray \
-		--enable-external-libraries \
-		--with-lirc-device=/run/lirc/lircd \
-		ac_cv_lib_bluetooth_hci_devid=no
+  #./configure --help
+  #return 1
 
-	# Now (finally) build
-	make
+  # Configuring XBMC
+  export PYTHON_VERSION=2  # external python v2
+  ./configure --prefix=$_prefix --exec-prefix=$_prefix \
+    --enable-debug \
+    --enable-profiling \
+    --disable-optimizations \
+    --enable-libbluray \
+    --with-lirc-device=/run/lirc/lircd \
+    ac_cv_lib_bluetooth_hci_devid=no
+
+  # Now (finally) build
+  make
 }
 
 package_kodi-git() {
-	pkgdesc="A software media player and entertainment hub for digital media"
+  pkgdesc="A software media player and entertainment hub for digital media"
 
-	# depends expected for kodi plugins:
-	# 'python2-pillow' 'python2-pybluez' 'python2-simplejson'
-	# depends expeced in FEH.py
-	# 'mesa-demos' 'xorg-xdpyinfo'
-	depends=(
-		'python2-pillow' 'python2-pybluez' 'python2-simplejson'
-		'mesa-demos' 'xorg-xdpyinfo'
-		'bluez-libs' 'fribidi' 'glew' 'hicolor-icon-theme' 'libcdio'
-		'libjpeg-turbo' 'libmariadbclient' 'libmicrohttpd' 'libpulse' 'libssh'
-		'libva' 'libxrandr' 'libxslt' 'lzo' 'sdl2' 'smbclient' 'taglib' 'tinyxml'
-		'yajl'
-	)
-	optdepends=(
-		'gdb: for meaningful backtraces in case of trouble - STRONGLY RECOMMENDED'
-		'afpfs-ng: Apple shares support'
-		'bluez: Blutooth support'
-		'libnfs: NFS shares support'
-		'libplist: AirPlay support'
-		'libcec: Pulse-Eight USB-CEC adapter support'
-		'lirc: Remote controller support'
-		'pulseaudio: PulseAudio support'
-		'shairplay: AirPlay support'
-		'udisks: Automount external drives'
-		'unrar: Archives support'
-		'unzip: Archives support'
-		'upower: Display battery level'
-	)
-	install="kodi-git.install"
-	provides=('xbmc' 'kodi')
-	conflicts=('xbmc' 'kodi')
-	replaces=('xbmc-svn' 'xbmc-git')
+  # depends expected for kodi plugins:
+  # 'python2-pillow' 'python2-pybluez' 'python2-simplejson'
+  # depends expeced in FEH.py
+  # 'mesa-demos' 'xorg-xdpyinfo'
+  depends=(
+    'python2-pillow' 'python2-pybluez' 'python2-simplejson'
+    'mesa-demos' 'xorg-xdpyinfo'
+    'bluez-libs' 'fribidi' 'glew' 'hicolor-icon-theme' 'libcdio'
+    'libjpeg-turbo' 'libmariadbclient' 'libmicrohttpd' 'libpulse' 'libssh'
+    'libva' 'libxrandr' 'libxslt' 'lzo' 'sdl2' 'smbclient' 'taglib' 'tinyxml'
+    'yajl'
+  )
+  optdepends=(
+    'gdb: for meaningful backtraces in case of trouble - STRONGLY RECOMMENDED'
+    'afpfs-ng: Apple shares support'
+    'bluez: Blutooth support'
+    'libnfs: NFS shares support'
+    'libplist: AirPlay support'
+    'libcec: Pulse-Eight USB-CEC adapter support'
+    'lirc: Remote controller support'
+    'pulseaudio: PulseAudio support'
+    'shairplay: AirPlay support'
+    'udisks: Automount external drives'
+    'unrar: Archives support'
+    'unzip: Archives support'
+    'upower: Display battery level'
+  )
+  install="kodi-git.install"
+  provides=('xbmc' 'kodi')
+  conflicts=('xbmc' 'kodi')
+  replaces=('xbmc-svn' 'xbmc-git')
 
-	cd ${_gitname}
-	# Running make install
-	make DESTDIR="$pkgdir" install
+  cd ${_gitname}
+  # Running make install
+  make DESTDIR="$pkgdir" install
 
-	# Licenses
-	install -dm755 ${pkgdir}${_prefix}/share/licenses/${pkgname}
-	for licensef in LICENSE.GPL copying.txt; do
-		mv ${pkgdir}${_prefix}/share/doc/kodi/${licensef} \
-			${pkgdir}${_prefix}/share/licenses/${pkgname}
-	done
+  # Licenses
+  install -dm755 ${pkgdir}${_prefix}/share/licenses/${pkgname}
+  for licensef in LICENSE.GPL copying.txt; do
+    mv ${pkgdir}${_prefix}/share/doc/kodi/${licensef} \
+      ${pkgdir}${_prefix}/share/licenses/${pkgname}
+  done
 }
 
 package_kodi-eventclients-git() {
-	pkgdesc="Kodi Event Clients (master branch)"
-	conflicts=('kodi-eventclients')
+  pkgdesc="Kodi Event Clients (master branch)"
+  conflicts=('kodi-eventclients')
 
-	depends=('cwiid')
+  depends=('cwiid')
 
-	cd ${_gitname}
+  cd ${_gitname}
 
-	make DESTDIR="$pkgdir" eventclients WII_EXTRA_OPTS=-DCWIID_OLD
+  make DESTDIR="$pkgdir" eventclients WII_EXTRA_OPTS=-DCWIID_OLD
 }
