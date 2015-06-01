@@ -1,0 +1,28 @@
+CC = gcc
+CCFLAGS = -Wno-pointer-sign
+
+
+linux:
+	@if [ -f "mirdef_linux.h" ]; then echo "Using mirdef_linux.h ..."; cp mirdef_linux.h mirdef.h;echo; fi
+
+	$(CC) $(CCFLAGS) -c -static SHA-256.c
+	$(CC) $(CCFLAGS) -c -static base64.c
+	$(CC) $(CCFLAGS) -c -static blowfish.c
+	$(CC) $(CCFLAGS) -c -static cfgopts.c
+	$(CC) $(CCFLAGS) -c -static DH1080.c
+	$(CC) $(CCFLAGS) -static -shared DH1080.o miracl.a SHA-256.o base64.o -o DH1080.so
+	$(CC) $(CCFLAGS) -I. -static -O2 -Wall -c FiSH.c -fPIC -DPIC -o FiSH.o
+	$(CC) $(CCFLAGS) -static -shared FiSH.o SHA-256.o base64.o blowfish.o cfgopts.o DH1080.o miracl.a -o xfish.so
+
+
+linux64:
+	@if [ -f "mirdef_amd64.h" ]; then echo; echo "Using mirdef_amd64.h ..."; cp mirdef_amd64.h mirdef.h;echo; fi
+
+	$(CC) $(CCFLAGS) -c -static -fPIC SHA-256.c
+	$(CC) $(CCFLAGS) -c -static -fPIC base64.c
+	$(CC) $(CCFLAGS) -c -static -fPIC blowfish.c
+	$(CC) $(CCFLAGS) -c -static -fPIC cfgopts.c
+	$(CC) $(CCFLAGS) -c -static -fPIC DH1080.c
+	$(CC) $(CCFLAGS) -fPIC -shared DH1080.o miracl.a SHA-256.o base64.o -o DH1080.so
+	$(CC) $(CCFLAGS) -I. -static -O2 -Wall -c FiSH.c -fPIC -DPIC -o FiSH.o
+	$(CC) $(CCFLAGS) -fPIC -shared FiSH.o SHA-256.o base64.o blowfish.o cfgopts.o DH1080.o miracl.a -o xfish.so

@@ -1,0 +1,21 @@
+pkgbase = xchat-fish
+	pkgdesc = Blowfish encryption plugin compatible to original blowcrypt script
+	pkgver = 0.98
+	pkgrel = 2
+	url = http://fish.secure.la
+	arch = i686
+	arch = x86_64
+	license = Copyleft
+	license = AGPL3
+	makedepends = unzip
+	depends = xchat
+	noextract = miracl.zip
+	source = http://distfiles.icmpv6.org/distfiles/FiSH-XChat.v0.98-source.zip
+	source = http://ftp.nsysu.edu.tw/FreeBSD/ports/local-distfiles/jase/miracl-5.6.zip
+	source = xfish_makefile
+	sha256sums = a065ace34c5a59cf51c194d9ac6aa5c8f00241488df38345e88174f5f345ecd6
+	sha256sums = c9e3fe5ff071486f5b6ed61ebb79bb6f3edd2f3bb5031cb4e5b7ce64a17fff9c
+	sha256sums = 9cc579cdb284e7a4978ef81d5a792cb17a97961006622a16eb093c221bdff73a
+
+pkgname = xchat-fish
+
