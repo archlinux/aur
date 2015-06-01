@@ -1,0 +1,36 @@
+pkgbase = ros-jade-roscpp
+	pkgdesc = ROS - roscpp is a C++ implementation of ROS.
+	pkgver = 1.11.13
+	pkgrel = 1
+	url = http://ros.org/wiki/roscpp
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-rosgraph-msgs
+	makedepends = ros-jade-cpp-common
+	makedepends = ros-jade-std-msgs
+	makedepends = ros-jade-message-generation
+	makedepends = ros-jade-roslang
+	makedepends = ros-jade-roscpp-traits
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-xmlrpcpp
+	makedepends = ros-jade-roscpp-serialization
+	makedepends = ros-jade-rosconsole
+	makedepends = ros-jade-rostime
+	makedepends = pkg-config
+	depends = ros-jade-rosgraph-msgs
+	depends = ros-jade-cpp-common
+	depends = ros-jade-std-msgs
+	depends = ros-jade-message-runtime
+	depends = ros-jade-roscpp-traits
+	depends = ros-jade-xmlrpcpp
+	depends = ros-jade-roscpp-serialization
+	depends = ros-jade-rosconsole
+	depends = ros-jade-rostime
+	source = roscpp::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/jade/roscpp/1.11.13-0
+	md5sums = SKIP
+
+pkgname = ros-jade-roscpp
+
