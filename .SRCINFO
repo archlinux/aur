@@ -1,0 +1,20 @@
+pkgbase = ros-jade-rosconsole-bridge
+	pkgdesc = ROS - rosconsole_bridge is a package used in conjunction with console_bridge and rosconsole for connecting console_bridge-based logging to rosconsole-based logging.
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = http://www.ros.org/wiki/rosconsole_bridge
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-rosconsole
+	makedepends = ros-jade-catkin
+	makedepends = console-bridge
+	depends = ros-jade-rosconsole
+	depends = console-bridge
+	source = rosconsole_bridge::git+https://github.com/ros-gbp/rosconsole_bridge-release.git#tag=release/jade/rosconsole_bridge/0.4.2-0
+	md5sums = SKIP
+
+pkgname = ros-jade-rosconsole-bridge
+
