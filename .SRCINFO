@@ -1,0 +1,37 @@
+pkgbase = ros-jade-ros-comm
+	pkgdesc = ROS - ROS communications-related packages, including core client libraries (roscpp, rospy) and graph introspection tools (rostopic, rosnode, rosservice, rosparam).
+	pkgver = 1.11.13
+	pkgrel = 1
+	url = http://www.ros.org/wiki/ros_comm
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = ros-jade-rosgraph-msgs
+	depends = ros-jade-rostest
+	depends = ros-jade-roscpp
+	depends = ros-jade-roswtf
+	depends = ros-jade-message-filters
+	depends = ros-jade-rosout
+	depends = ros-jade-rosservice
+	depends = ros-jade-rospy
+	depends = ros-jade-rosmaster
+	depends = ros-jade-rostopic
+	depends = ros-jade-rosnode
+	depends = ros-jade-xmlrpcpp
+	depends = ros-jade-std-srvs
+	depends = ros-jade-rosbag
+	depends = ros-jade-roslaunch
+	depends = ros-jade-rosmsg
+	depends = ros-jade-rosparam
+	depends = ros-jade-ros
+	depends = ros-jade-rosgraph
+	depends = ros-jade-topic-tools
+	depends = ros-jade-rosconsole
+	source = ros_comm::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/jade/ros_comm/1.11.13-0
+	md5sums = SKIP
+
+pkgname = ros-jade-ros-comm
+
