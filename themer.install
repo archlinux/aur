@@ -1,0 +1,19 @@
+post_install() {
+	echo "
+  Installation
+  ============
+  Every configuration file you want themer to update needs to be added to `~/.config/themer/templates/<name>/config.yaml`.
+  The rendered config file will appear in `~/.config/themer/current/` and the configration file should be symlinked there, e.g.:
+
+      $ touch ~/.config/themer/templates/i3/Xdefaults.tpl
+      $ echo "Xdefaults.tpl: Xdefaults" >> ~/.config/themer/templates/i3/config.yaml
+      $ ln -s ~/.config/themer/current/Xdefaults ~/.Xdefaults
+
+  Now you can use themer to generate a theme and apply it:
+
+      $ themer generate newtheme wallpaper.jpg
+      Activate now? yN y
+
+  Additional information is available at https://github.com/S0lll0s/themer
+"
+}
