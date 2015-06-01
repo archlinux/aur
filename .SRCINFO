@@ -1,0 +1,27 @@
+pkgbase = ros-jade-pluginlib
+	pkgdesc = ROS - The pluginlib package provides tools for writing and dynamically loading plugins using the ROS build infrastructure.
+	pkgver = 1.10.1
+	pkgrel = 1
+	url = http://www.ros.org/wiki/pluginlib
+	arch = any
+	license = BSD, Boost Software License
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-rosconsole
+	makedepends = ros-jade-class-loader
+	makedepends = ros-jade-roslib
+	makedepends = ros-jade-cmake-modules
+	makedepends = ros-jade-catkin
+	makedepends = boost
+	makedepends = tinyxml
+	depends = ros-jade-rosconsole
+	depends = ros-jade-class-loader
+	depends = ros-jade-roslib
+	depends = boost
+	depends = tinyxml
+	source = pluginlib::git+https://github.com/ros-gbp/pluginlib-release.git#tag=release/jade/pluginlib/1.10.1-0
+	md5sums = SKIP
+
+pkgname = ros-jade-pluginlib
+
