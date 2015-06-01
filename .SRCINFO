@@ -1,0 +1,14 @@
+pkgbase = ondir
+	pkgdesc = Automatically execute commands as you traverse directories in the shell.
+	pkgver = 0.2.2
+	pkgrel = 3
+	url = http://swapoff.org/ondir.html
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = glibc
+	source = http://swapoff.org/files/ondir/ondir-0.2.2.tar.gz
+	md5sums = 892592d33f82f0264f27f63d9df9db75
+
+pkgname = ondir
+
