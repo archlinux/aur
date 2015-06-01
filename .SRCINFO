@@ -1,0 +1,25 @@
+pkgbase = ros-jade-common-msgs
+	pkgdesc = ROS - common_msgs contains messages that are widely used by other ROS packages.
+	pkgver = 1.12.3
+	pkgrel = 1
+	url = http://wiki.ros.org/common_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = ros-jade-actionlib-msgs
+	depends = ros-jade-stereo-msgs
+	depends = ros-jade-geometry-msgs
+	depends = ros-jade-shape-msgs
+	depends = ros-jade-nav-msgs
+	depends = ros-jade-trajectory-msgs
+	depends = ros-jade-visualization-msgs
+	depends = ros-jade-sensor-msgs
+	depends = ros-jade-diagnostic-msgs
+	source = common_msgs::git+https://github.com/ros-gbp/common_msgs-release.git#tag=release/jade/common_msgs/1.12.3-0
+	md5sums = SKIP
+
+pkgname = ros-jade-common-msgs
+
