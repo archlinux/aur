@@ -1,0 +1,21 @@
+pkgbase = ros-jade-roslib
+	pkgdesc = ROS - Base dependencies and support libraries for ROS.
+	pkgver = 1.12.2
+	pkgrel = 1
+	url = http://ros.org/wiki/roslib
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-rospack
+	makedepends = ros-jade-catkin
+	makedepends = boost
+	depends = ros-jade-rospack
+	depends = ros-jade-catkin
+	depends = python2-rospkg
+	source = roslib::git+https://github.com/ros-gbp/ros-release.git#tag=release/jade/roslib/1.12.2-0
+	md5sums = SKIP
+
+pkgname = ros-jade-roslib
+
