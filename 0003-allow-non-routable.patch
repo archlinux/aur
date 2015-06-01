@@ -1,0 +1,34 @@
+From: Kill Your TV <killyourtv@i2pmail.org>
+Date: Wed, 27 Jun 2012 20:00:22 +0000
+Subject: allow non-routable
+
+---
+ src/allmydata/node.py |    8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/src/allmydata/node.py b/src/allmydata/node.py
+index 84d1a98..6ea303a 100644
+--- a/src/allmydata/node.py
++++ b/src/allmydata/node.py
+@@ -280,7 +280,11 @@ class Node(service.MultiService):
+ 
+         service.MultiService.startService(self)
+         d = defer.succeed(None)
+-        d.addCallback(lambda res: iputil.get_local_addresses_async())
++        location = self.get_config("node", "tub.location", None)
++        if location == "":
++            d.addCallback(lambda res: ['127.0.0.1'])
++        else:
++            d.addCallback(lambda res: iputil.get_local_addresses_async())
+         d.addCallback(self._setup_tub)
+         def _ready(res):
+             self.log("%s running" % self.NODETYPE)
+@@ -356,6 +360,8 @@ class Node(service.MultiService):
+         base_location = ",".join([ "%s:%d" % (addr, portnum)
+                                    for addr in local_addresses ])
+         location = self.get_config("node", "tub.location", base_location)
++        if location == "":
++            location = base_location
+         self.log("Tub location set to %s" % location)
+         self.tub.setLocation(location)
+ 

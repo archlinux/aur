@@ -1,0 +1,36 @@
+From: Kill Your TV <killyourtv@i2pmail.org>
+Date: Wed, 27 Jun 2012 20:59:53 +0000
+Subject: proxy support
+
+---
+ src/allmydata/node.py                |    4 ++++
+ src/allmydata/scripts/create_node.py |    1 +
+ 2 files changed, 5 insertions(+)
+
+diff --git a/src/allmydata/node.py b/src/allmydata/node.py
+index a971c4e..84d1a98 100644
+--- a/src/allmydata/node.py
++++ b/src/allmydata/node.py
+@@ -185,6 +185,10 @@ class Node(service.MultiService):
+             # N.B.: this is in seconds, so use "1800" to get 30min
+             self.tub.setOption("disconnectTimeout", int(disconnect_timeout_s))
+ 
++        http_proxy = self.get_config("node", "http_proxy", "")
++        if http_proxy:
++            self.tub.setOption("http-proxy", http_proxy)
++
+         self.nodeid = b32decode(self.tub.tubID.upper()) # binary format
+         self.write_config("my_nodeid", b32encode(self.nodeid).lower() + "\n")
+         self.short_nodeid = b32encode(self.nodeid).lower()[:8] # ready for printing
+diff --git a/src/allmydata/scripts/create_node.py b/src/allmydata/scripts/create_node.py
+index 7e9dcf7..09ef9bf 100644
+--- a/src/allmydata/scripts/create_node.py
++++ b/src/allmydata/scripts/create_node.py
+@@ -91,6 +91,7 @@ def write_node_config(c, config):
+         webport = ""
+     c.write("web.port = %s\n" % (webport.encode('utf-8'),))
+     c.write("web.static = public_html\n")
++    c.write("#http_proxy =\n")
+     c.write("#tub.port =\n")
+     c.write("#tub.location = \n")
+     c.write("#log_gatherer.furl =\n")

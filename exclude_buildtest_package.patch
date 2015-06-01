@@ -1,0 +1,38 @@
+ By default tahoe-lafs also install a buildtest package but this isn't relevant
+ in the context of the Debian package.
+Author: bertagaz <bertagaz@ptitcanardnoir.org>
+Index: tahoe/setup.py
+===================================================================
+--- tahoe.orig/setup.py	2012-07-04 21:42:07.000000000 +0200
++++ tahoe/setup.py	2012-07-04 21:59:45.051169297 +0200
+@@ -467,8 +467,7 @@
+                 'allmydata.util',
+                 'allmydata.web',
+                 'allmydata.web.static',
+-                'allmydata.windows',
+-                'buildtest'],
++                'allmydata.windows'],
+       classifiers=trove_classifiers,
+       test_suite="allmydata.test",
+       install_requires=install_requires,
+Index: tahoe/src/allmydata_tahoe.egg-info/SOURCES.txt
+===================================================================
+--- tahoe.orig/src/allmydata_tahoe.egg-info/SOURCES.txt	2012-07-04 21:41:43.000000000 +0200
++++ tahoe/src/allmydata_tahoe.egg-info/SOURCES.txt	2012-07-04 21:59:25.615659017 +0200
+@@ -431,7 +431,5 @@
+ src/allmydata_tahoe.egg-info/not-zip-safe
+ src/allmydata_tahoe.egg-info/requires.txt
+ src/allmydata_tahoe.egg-info/top_level.txt
+-src/buildtest/__init__.py
+-src/buildtest/test_build_with_fake_dist.py
+ static/tahoe.py
+-twisted/plugins/allmydata_trial.py
+\ No newline at end of file
++twisted/plugins/allmydata_trial.py
+Index: tahoe/src/allmydata_tahoe.egg-info/top_level.txt
+===================================================================
+--- tahoe.orig/src/allmydata_tahoe.egg-info/top_level.txt	2012-07-04 21:41:43.295659068 +0200
++++ tahoe/src/allmydata_tahoe.egg-info/top_level.txt	2012-07-04 21:59:25.615659017 +0200
+@@ -1,2 +1 @@
+ allmydata
+-buildtest
