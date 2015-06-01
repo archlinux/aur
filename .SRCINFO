@@ -1,0 +1,17 @@
+pkgbase = ros-jade-rosmaster
+	pkgdesc = ROS - ROS Master implementation.
+	pkgver = 1.11.13
+	pkgrel = 1
+	url = http://ros.org/wiki/rosmaster
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = ros-jade-rosgraph
+	source = rosmaster::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/jade/rosmaster/1.11.13-0
+	md5sums = SKIP
+
+pkgname = ros-jade-rosmaster
+
