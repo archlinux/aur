@@ -1,0 +1,18 @@
+pkgbase = ros-jade-rosparam
+	pkgdesc = ROS - rosparam contains the rosparam command-line tool for getting and setting ROS Parameters on the Parameter Server using YAML-encoded files.
+	pkgver = 1.11.13
+	pkgrel = 1
+	url = http://ros.org/wiki/rosparam
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = ros-jade-rosgraph
+	depends = python2-yaml
+	source = rosparam::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/jade/rosparam/1.11.13-0
+	md5sums = SKIP
+
+pkgname = ros-jade-rosparam
+
