@@ -1,0 +1,20 @@
+pkgbase = ros-jade-bond
+	pkgdesc = ROS - A bond allows two processes, A and B, to know when the other has terminated, either cleanly or by crashing.
+	pkgver = 1.7.16
+	pkgrel = 1
+	url = http://www.ros.org/wiki/bond
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-message-generation
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-std-msgs
+	depends = ros-jade-message-runtime
+	depends = ros-jade-std-msgs
+	source = bond::git+https://github.com/ros-gbp/bond_core-release.git#tag=release/jade/bond/1.7.16-0
+	md5sums = SKIP
+
+pkgname = ros-jade-bond
+
