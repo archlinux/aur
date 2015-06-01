@@ -1,0 +1,3 @@
+d /etc/quagga 0750 quagga quagga
+d /var/log/quagga 0750 quagga quagga
+d /run/quagga 0750 quagga quagga
