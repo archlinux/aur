@@ -1,0 +1,30 @@
+pkgbase = ros-jade-actionlib
+	pkgdesc = ROS - The actionlib stack provides a standardized interface for interfacing with preemptable tasks.
+	pkgver = 1.11.4
+	pkgrel = 1
+	url = http://www.ros.org/wiki/actionlib
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-actionlib-msgs
+	makedepends = ros-jade-rostest
+	makedepends = ros-jade-std-msgs
+	makedepends = ros-jade-message-generation
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-rospy
+	makedepends = boost
+	depends = ros-jade-actionlib-msgs
+	depends = ros-jade-rostest
+	depends = ros-jade-std-msgs
+	depends = ros-jade-message-runtime
+	depends = ros-jade-roscpp
+	depends = ros-jade-rospy
+	depends = boost
+	source = actionlib::git+https://github.com/ros-gbp/actionlib-release.git#tag=release/jade/actionlib/1.11.4-0
+	md5sums = SKIP
+
+pkgname = ros-jade-actionlib
+
