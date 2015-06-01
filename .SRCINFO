@@ -1,0 +1,18 @@
+pkgbase = thunderbird-enigmail-nightly
+	pkgdesc = OpenPGP security extension for Thunderbird - Nightly build
+	pkgver = 1.9a1
+	pkgrel = 2
+	url = http://www.mozilla-enigmail.org/download/nightly.php
+	arch = i686
+	arch = x86_64
+	license = MPL
+	makedepends = unzip
+	depends = thunderbird-nightly>=41.0a1.20150518
+	depends = gnupg
+	provides = enigmail-nightly
+	options = !strip
+	source = https://www.enigmail.net/download/nightly/enigmail-nightly-all.xpi
+	md5sums = SKIP
+
+pkgname = thunderbird-enigmail-nightly
+
