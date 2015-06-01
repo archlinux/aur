@@ -1,0 +1,23 @@
+pkgbase = ros-jade-rostest
+	pkgdesc = ROS - Integration test suite based on roslaunch that is compatible with xUnit frameworks.
+	pkgver = 1.11.13
+	pkgrel = 1
+	url = http://ros.org/wiki/rostest
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-rosunit
+	makedepends = ros-jade-catkin
+	makedepends = boost
+	depends = ros-jade-rosmaster
+	depends = ros-jade-rosunit
+	depends = ros-jade-roslaunch
+	depends = ros-jade-rospy
+	depends = boost
+	source = rostest::git+https://github.com/ros-gbp/ros_comm-release.git#tag=release/jade/rostest/1.11.13-0
+	md5sums = SKIP
+
+pkgname = ros-jade-rostest
+
