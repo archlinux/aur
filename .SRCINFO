@@ -1,0 +1,25 @@
+pkgbase = privoxy-cvs
+	pkgdesc = A web proxy with advanced filtering capabilities. CVS version
+	pkgver = 20130420
+	pkgrel = 1
+	url = http://www.privoxy.org
+	install = privoxy.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cvs
+	optdepends = logrotate
+	provides = privoxy
+	conflicts = privoxy
+	backup = etc/privoxy/config
+	backup = etc/privoxy/trust
+	backup = etc/privoxy/user.filter
+	backup = etc/privoxy/default.filter
+	backup = etc/privoxy/user.action
+	source = privoxy.logrotate.d
+	source = privoxy.service
+	md5sums = 61a9436114bcad89d75f2f7468d0d429
+	md5sums = 358e614190247fc1671bbcadddf500db
+
+pkgname = privoxy-cvs
+
