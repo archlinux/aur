@@ -1,0 +1,18 @@
+pkgbase = ros-jade-gencpp
+	pkgdesc = ROS - C++ ROS message and service generators.
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-genmsg
+	makedepends = ros-jade-catkin
+	depends = ros-jade-genmsg
+	source = gencpp::git+https://github.com/ros-gbp/gencpp-release.git#tag=release/jade/gencpp/0.5.3-0
+	md5sums = SKIP
+
+pkgname = ros-jade-gencpp
+
