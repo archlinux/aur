@@ -1,0 +1,18 @@
+pkgbase = ros-jade-rosunit
+	pkgdesc = ROS - Unit-testing package for ROS.
+	pkgver = 1.12.2
+	pkgrel = 1
+	url = http://ros.org/wiki/rosunit
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = ros-jade-roslib
+	depends = python2-rospkg
+	source = rosunit::git+https://github.com/ros-gbp/ros-release.git#tag=release/jade/rosunit/1.12.2-0
+	md5sums = SKIP
+
+pkgname = ros-jade-rosunit
+
