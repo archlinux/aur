@@ -1,0 +1,14 @@
+pkgbase = nuvola-app-google-play-git
+	pkgdesc = Google Play Music integration for Nuvola Player.
+	pkgver = r24.ebe1744
+	pkgrel = 1
+	url = https://github.com/tiliado/nuvola-app-google-play
+	arch = any
+	license = custom:BSD
+	makedepends = git
+	depends = nuvolaplayer-git
+	source = nuvola-app-google-play-git::git+https://github.com/tiliado/nuvola-app-google-play.git
+	sha256sums = SKIP
+
+pkgname = nuvola-app-google-play-git
+
