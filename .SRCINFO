@@ -1,0 +1,21 @@
+pkgbase = rar-beta
+	pkgdesc = A command-line port of the rar compression utility Beta Version
+	pkgver = 5.2.1
+	pkgrel = 1
+	url = http://www.rarlab.com/rarnew.htm
+	arch = i686
+	arch = x86_64
+	license = custom
+	provides = rar
+	provides = unrar
+	conflicts = rar
+	conflicts = unrar
+	backup = etc/rarfiles.lst
+	source = rar.1
+	source = unrar.1
+	md5sums = 4cffd2771bb4a51e4a68500d799550d8
+	md5sums = 594b777453751ee331ef241160f31499
+	md5sums = SKIP
+
+pkgname = rar-beta
+
