@@ -1,0 +1,14 @@
+pkgbase = authpgsql
+	pkgdesc = A NSS library to authenticate users against postgresql.
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = http://sourceforge.net/projects/authpgsql/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = postgresql-libs
+	source = http://download.sourceforge.net/authpgsql/nss_postgresql-0.6.1.tar.gz
+	md5sums = ddce846553a25d341ebba50d69748bdb
+
+pkgname = authpgsql
+
