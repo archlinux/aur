@@ -1,0 +1,46 @@
+#!/bin/bash
+
+post_install() {
+	dkms_install $1
+}
+
+pre_upgrade() {
+	dkms_remove $2
+}
+
+pre_remove() {
+	dkms_remove $1
+}
+
+post_upgrade() {
+	dkms_install $1
+}
+
+dkms_remove() {
+	local line=`dkms status -m netatop`
+	# in cases where the passed ${1%%-*} fails, use this as a fallback for detecting
+	# which version is installed:
+	# version=`dkms status netatop | tr -d ' \n' | awk -F ',' '{print $2}'`
+	if echo "$line" | grep -E 'added|built|installed'; then
+		dkms remove -m netatop -v ${1%%-*} --all
+	else
+		echo "No current dkms module found, skipping dkms remove"
+	fi
+}
+
+dkms_install() {
+	echo ">>> DKMS: Module install"
+
+	dkms install -m netatop -v ${1%%-*}
+
+	echo ''
+	echo ''
+
+cat << EOF
+It's recommended to execute the following commands to load the module:
+
+ rmmod netatop
+ modprobe netatop
+ /usr/bin/depmod -a
+EOF
+}

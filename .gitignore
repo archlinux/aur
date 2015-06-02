@@ -1,0 +1,9 @@
+src/
+pkg/
+*.xz
+*.gz
+
+# inspiration folders
+broadcom-wl-dkms
+netatop
+virtualbox
