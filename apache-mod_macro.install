@@ -1,0 +1,24 @@
+post_install()
+{
+
+   PATH="$PATH:/sbin"
+   ldconfig -n /usr/lib/httpd/modules
+
+/bin/cat <<EOT
+
+Setting it up
+-------------
+
+1. add the following to /etc/httpd/conf/httpd.conf
+		LoadModule macro_module		modules/mod_macro.so
+
+2. documentation is can be found in the following locations:
+		/usr/share/doc/apache-mod_macro/mod_macro.html
+		http://www.cri.ensmp.fr/~coelho/mod_macro/
+
+EOT
+}
+
+op=$1
+shift
+$op $*

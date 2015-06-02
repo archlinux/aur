@@ -1,0 +1,16 @@
+pkgbase = apache-mod_macro
+	pkgdesc = DSO module for Apache that allows the definition and use of macros within apache runtime configuration files.
+	pkgver = 1.1.11
+	pkgrel = 1
+	url = http://coelho.net/mod_macro/
+	install = apache-mod_macro.install
+	arch = i686
+	arch = x86_64
+	license = apache
+	makedepends = apache
+	depends = apache
+	source = http://coelho.net/mod_macro/mod_macro-1.1.11.tar.gz
+	md5sums = dd372f31d788728cfead785eec420d22
+
+pkgname = apache-mod_macro
+
