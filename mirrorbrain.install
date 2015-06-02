@@ -1,0 +1,12 @@
+post_install() {
+  [[ -e '/usr/bin/mb.py' ]]   && rm -f /usr/bin/mb.py
+  [[ -e '/usr/bin/mb.pyc' ]]  && rm -f /usr/bin/mb.pyc
+  echo "Creating group 'mirrorbrain'"
+  groupadd -r -g 998 mirrorbrain
+  echo "Creating user 'mirrorbrain'"
+  useradd -r -u 998 -g mirrorbrain -m -c 'Mirrorbrain' -d /home/mirrorbrain mirrorbrain
+  echo "mirrorbrain: Configuration instructions need to be followed:"
+  echo "             http://mirrorbrain.org/docs/installation/source/"
+}
+
+# vim:set ts=2 sw=2 et:

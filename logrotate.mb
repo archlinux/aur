@@ -1,0 +1,7 @@
+/home/mirrorbrain/logs/mirrorprobe.log {
+	noolddir
+	missingok
+	daily
+	rotate 90
+	compress
+}
