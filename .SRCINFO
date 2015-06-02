@@ -1,0 +1,13 @@
+pkgbase = editix-free
+	pkgdesc = EditiX is a powerful and easy to use XML editor, Visual Schema Editor, XQuery Editor and XSLT debugger
+	pkgver = 020110
+	pkgrel = 1
+	url = http://free.editix.com/
+	arch = any
+	license = custom
+	depends = java-runtime
+	source = http://free.editix.com/download/editix-free-2010.tar.gz
+	md5sums = a7dd16c50e2448e121fa618a75658b46
+
+pkgname = editix-free
+
