@@ -1,0 +1,9 @@
+[Unit]
+Description=Diamond daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/diamond --foreground --log-stdout
+
+[Install]
+WantedBy=multi-user.target

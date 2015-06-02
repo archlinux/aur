@@ -1,0 +1,22 @@
+pkgbase = diamond
+	pkgdesc = Diamond is daemon that collects system metrics and publishes them to graphite and others
+	pkgver = 4.0.41
+	pkgrel = 2
+	url = https://github.com/python-diamond/Diamond
+	arch = any
+	license = mit
+	makedepends = unzip
+	depends = python2
+	depends = python2-configobj
+	optdepends = python2-psycopg2: Postgresql collector
+	optdepends = python2-pysensors: LMSensors collector
+	optdepends = libvirt-python: LibvirtKVM collector
+	optdepends = python2-yaml: PuppetAgent collector
+	backup = etc/diamond/diamond.conf
+	source = https://pypi.python.org/packages/source/d/diamond/diamond-4.0.41.tar.gz
+	source = diamond.service
+	md5sums = 063ee62fc30a678260df582335a583c3
+	md5sums = 98d7bd00ba751ab416c325eda82e740f
+
+pkgname = diamond
+
