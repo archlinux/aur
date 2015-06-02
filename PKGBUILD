@@ -19,7 +19,7 @@ arch=('any')
 url="http://m.a.tt/er/massh.html"
 license=('GPL3')
 depends=('openssh')
-source=("http://m.a.tt/er/$pkgname.tgz"
+source=("$pkgname-$pkgver.tgz::http://m.a.tt/er/$pkgname.tgz"
         'fix-paths.patch')
 md5sums=('57585bb5328baf2e5ef8588815287ebe'
          '5990a49e673c0fda73a446bb7e562ddd')
