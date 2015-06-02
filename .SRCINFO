@@ -1,0 +1,15 @@
+pkgbase = perl-net-rabbitmq
+	pkgdesc = Interact with RabbitMQ over AMQP using librabbitmq
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Net--RabbitMQ/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JE/JESUS/Net--RabbitMQ-0.2.7.tar.gz
+	md5sums = 1a429260ec4584642b670ba393350461
+
+pkgname = perl-net-rabbitmq
+

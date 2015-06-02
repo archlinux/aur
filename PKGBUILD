@@ -1,0 +1,37 @@
+# Contributor: Phillip Smith <fukawi2@NO-SPAM.gmail.com>
+
+### I AM ONLY THE PACKAGER, NOT THE DEVELOPER
+### Please ask support questions about this software in one of:
+###   1) The AUR comments; OR
+###   2) Upstream forums/maillist etc; OR
+###   3) The ArchLinux forums
+### I do not always know enough about the software itself, or don't have the
+### time to promptly respond to direct emails.
+### If you have found a problem with the package/PKGBUILD (as opposed to
+### the software) then please do email me or post an AUR comment.
+
+pkgname=perl-net-rabbitmq
+pkgver=0.2.7
+pkgrel=1
+pkgdesc="Interact with RabbitMQ over AMQP using librabbitmq"
+arch=('any')
+url="http://search.cpan.org/dist/Net--RabbitMQ/"
+license=('GPL' 'PerlArtistic')
+depends=('perl' )
+options=('!emptydirs')
+source=("http://search.cpan.org/CPAN/authors/id/J/JE/JESUS/Net--RabbitMQ-${pkgver}.tar.gz")
+md5sums=('1a429260ec4584642b670ba393350461')
+
+build() {
+  cd "$srcdir"/Net--RabbitMQ-$pkgver
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  make
+}
+
+package() {
+  cd "$srcdir"/Net--RabbitMQ-$pkgver
+  make DESTDIR="$pkgdir" install
+  chmod -R u=rwX,go=rwX "$pkgdir"
+}
+
+# vim:set ts=2 sw=2 et:
