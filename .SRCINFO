@@ -1,0 +1,14 @@
+pkgbase = katarina
+	pkgdesc = a perl backup system using rsync as transport
+	pkgver = 1.7
+	pkgrel = 1
+	url = http://katarina.sourceforge.net/
+	arch = any
+	license = GPL2
+	depends = perl
+	depends = rsync
+	source = http://downloads.sourceforge.net/katarina/katarina-1.7.tar.gz
+	md5sums = 03e8ba04fa3de848168c04e246a01f63
+
+pkgname = katarina
+
