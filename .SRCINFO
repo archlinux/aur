@@ -1,0 +1,14 @@
+pkgbase = rutorrent-mobile-git
+	pkgdesc = Plugin for ruTorrent to use it with mobile devies (Android, iOS, etc)
+	pkgver = 0.9.r78.gcc47ee8
+	pkgrel = 1
+	url = https://github.com/xombiemp/rutorrentMobile/
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = rutorrent
+	source = git+https://github.com/xombiemp/rutorrentMobile.git
+	sha1sums = SKIP
+
+pkgname = rutorrent-mobile-git
+
