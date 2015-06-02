@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-extension-atom-panel-git
+	pkgdesc = A panel extension for gnome-shell as part of Ozon OS
+	pkgver = 14.129a781
+	pkgrel = 1
+	url = https://github.com/ozonos/atom-panel
+	arch = any
+	groups = gnome-shell-extensions
+	license = GPL3
+	depends = gnome-shell
+	source = git+https://github.com/ozonos/atom-panel.git
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-atom-panel-git
+
