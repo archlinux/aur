@@ -1,0 +1,15 @@
+pkgbase = sshfp
+	pkgdesc = Generates DNS SSHFP-type records from SSH public keys from public keys from a known_hosts file or from scanning the host's sshd daemon.
+	pkgver = 1.2.2
+	pkgrel = 2
+	url = http://www.xelerance.com/software/sshfp/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2
+	depends = python2-dnspython
+	source = sshfp-1.2.2.tar.gz::https://github.com/xelerance/sshfp/archive/1.2.2.tar.gz
+	md5sums = ebf3abb952ffa90914913ef2060ac125
+
+pkgname = sshfp
+
