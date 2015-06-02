@@ -1,0 +1,27 @@
+pkgbase = foxtrotgps
+	pkgdesc = a lightweight and fast mapping application (fork of tangoGPS)
+	pkgver = 1.1.1
+	pkgrel = 2
+	url = http://www.foxtrotgps.org/
+	install = foxtrotgps.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = bluez
+	depends = libglade
+	depends = gconf
+	depends = libxml2
+	depends = libexif
+	depends = curl
+	depends = gpsd
+	depends = sqlite3
+	optdepends = python2: import GeoRSS points
+	optdepends = gpscorrelate: photo-geotagging
+	optdepends = jhead: photo-geotagging
+	optdepends = bluez: Zephyr HxM heartrate-monitor support
+	source = http://www.foxtrotgps.org/releases/foxtrotgps-1.1.1.tar.gz
+	md5sums = 6777d448ee9d3ba195f9d26ea90e3163
+
+pkgname = foxtrotgps
+

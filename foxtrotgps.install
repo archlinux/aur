@@ -1,0 +1,4 @@
+post_upgrade() {
+    echo "The URL for OpenCycleMap has changed, please update your configuration."
+    echo "http://www.gravitystorm.co.uk/shine/change-of-tileserver-url/"
+}
