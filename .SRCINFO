@@ -1,0 +1,17 @@
+pkgbase = perl-mac-itunes-library
+	pkgdesc = Perl module for representing an iTunes library
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://search.cpan.org/~dinomite/Mac-iTunes-Library-1.0/
+	arch = i686
+	arch = x86_64
+	license = perl-artistic
+	depends = perl
+	depends = perl-xml-parser
+	depends = perl-extutils-makemaker
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DI/DINOMITE/Mac-iTunes-Library-1.0.tar.gz
+	md5sums = 03042a25f92c8a669f67c7e32fe9d15a
+
+pkgname = perl-mac-itunes-library
+
