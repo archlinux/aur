@@ -1,0 +1,14 @@
+pkgbase = pingtunnel
+	pkgdesc = An application that tunnels TCP connections using ICMP echo request and reply packets.
+	pkgver = 0.72
+	pkgrel = 1
+	url = http://www.cs.uit.no/~daniels/PingTunnel/index.html
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = libpcap
+	source = http://www.cs.uit.no/~daniels/PingTunnel/PingTunnel-0.72.tar.gz
+	md5sums = c5f0c36d1a48d84ce7b5217f1ba52dd0
+
+pkgname = pingtunnel
+
