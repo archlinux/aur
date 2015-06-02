@@ -1,0 +1,25 @@
+pkgbase = firetable
+	pkgdesc = An iptables firewall script
+	pkgver = 5.4
+	pkgrel = 1
+	url = http://projects.leisink.net/Firetable/
+	install = firetable.install
+	arch = any
+	license = GPL
+	makedepends = patch
+	depends = iptables
+	depends = php
+	backup = etc/firetable/firetable.conf
+	backup = etc/firetable/ipv6_eth0
+	backup = etc/firetable/ipv4_eth0
+	source = http://projects.leisink.net/Firetable/firetable-5.4.tar.gz
+	source = firetable.service
+	source = firetable-start
+	source = fix-bin-paths.patch
+	md5sums = e30e086bcc3458ef7531033148fed375
+	md5sums = 54db225ce6f7287f69f97a398cdec01f
+	md5sums = 2232c8c0fdb53d297c99038ae08cc05a
+	md5sums = a5c4057f31c6b4ea662ab0268e817adc
+
+pkgname = firetable
+
