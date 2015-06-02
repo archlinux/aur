@@ -1,0 +1,16 @@
+pkgbase = perl-config-inifiles
+	pkgdesc = A Perl module for reading .ini-style configuration files
+	pkgver = 2.83
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Config-IniFiles/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-list-moreutils
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/Config-IniFiles-2.83.tar.gz
+	md5sums = c34156374d3842289e537aaafa7b937f
+
+pkgname = perl-config-inifiles
+
