@@ -1,0 +1,15 @@
+pkgbase = cppo
+	pkgdesc = The C preprocessor written in OCaml
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = http://mjambon.com/cppo.html
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = ocaml-findlib
+	depends = glibc
+	source = http://mjambon.com/releases/cppo/cppo-1.1.2.tar.gz
+	md5sums = f1a551639c0c667ee8840d95ea5b2ab7
+
+pkgname = cppo
+
