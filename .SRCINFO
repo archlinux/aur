@@ -1,0 +1,12 @@
+pkgbase = freshwall
+	pkgdesc = Wallpaper rotator for Gnome using files found in ~/.gnome2/backgrounds.xml
+	pkgver = 1.1.2
+	pkgrel = 3
+	url = http://pypi.python.org/pypi/freshwall/
+	arch = any
+	license = Apache
+	source = http://pypi.python.org/packages/source/f/freshwall/freshwall-1.1.2.tar.gz
+	md5sums = bf8911f94ab37766f64bfd5c1f39cb30
+
+pkgname = freshwall
+
