@@ -1,0 +1,15 @@
+pkgbase = backup-tube
+	pkgdesc = Backup all videos in a YouTube channel by providing the ID of the user you wish to backup.
+	pkgver = 0.22
+	pkgrel = 1
+	url = https://code.google.com/p/backup-tube/
+	arch = any
+	license = MIT
+	depends = java-runtime
+	source = https://backup-tube.googlecode.com/files/backup-tube.cmd.0.22.zip
+	source = backup-tube.sh
+	md5sums = ad54fb7a2baaafb4f44b97fa9be3507c
+	md5sums = 349c20e392dbc6959878f4ecd7c6eb3b
+
+pkgname = backup-tube
+
