@@ -1,0 +1,13 @@
+pkgbase = backupchecker
+	pkgdesc = A fully automated backup checker
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://github.com/backupchecker/backupchecker
+	arch = any
+	license = GPLv3
+	depends = python>=3.4
+	source = http://pypi.python.org/packages/source/b/backupchecker/backupchecker-1.7.tar.gz
+	md5sums = 1af45f0e18f49effb7ea8942672aa2a4
+
+pkgname = backupchecker
+
