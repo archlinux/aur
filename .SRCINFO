@@ -1,0 +1,16 @@
+pkgbase = perl-geo-google
+	pkgdesc = Perform geographical queries using Google Maps
+	pkgver = 0.05
+	pkgrel = 2
+	url = http://search.cpan.org/~allenday/Geo-Google-0.05/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = perl
+	depends = perl-json
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AL/ALLENDAY/Geo-Google-0.05.tar.gz
+	md5sums = 9da8c911f3576c5bba942fdd5b367b90
+
+pkgname = perl-geo-google
+
