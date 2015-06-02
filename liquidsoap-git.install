@@ -1,0 +1,34 @@
+# arg 1:  the new package version
+post_install() {
+  # Make sure the group and user "liquidsoap" exists on this system and have the correct values
+  if getent group liquidsoap &> /dev/null ; then
+    groupmod -g 140 -n liquidsoap liquidsoap &> /dev/null
+  else
+    groupadd -g 140 liquidsoap &> /dev/null
+  fi
+
+  if getent passwd liquidsoap &> /dev/null ; then
+    usermod -s /bin/false -c "liquidsoap user" -d /var/lib/liquidsoap -u 140 -g liquidsoap -G audio -a liquidsoap &> /dev/null
+  else
+    useradd -m -s /bin/false -c "liquidsoap user" -d /var/lib/liquidsoap -u 140 -g liquidsoap -G audio -r liquidsoap &> /dev/null
+  fi
+  # create the logs folder
+  install -do140 -g19 -m0755 /var/log/liquidsoap
+# Create /run/liquidsoap 
+        if [[ ! -d run/liquidsoap ]]; then
+                usr/bin/systemd-tmpfiles --create liquidsoap.conf
+        fi
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+    post_install $1
+}
+
+# arg 1:  the old package version
+pre_remove() {
+    userdel liquidsoap &> /dev/null
+    groupdel liquidsoap &> /dev/null || /bin/true
+    rm -rf /var/log/liquidsoap/ &> /dev/null || /bin/true
+}
