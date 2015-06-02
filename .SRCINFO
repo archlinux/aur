@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-extension-atom-workspaces-git
+	pkgdesc = A workspaces extension for gnome-shell as part of Ozon OS
+	pkgver = 3.b7b715f
+	pkgrel = 1
+	url = https://github.com/ozonos/atom-workspaces
+	arch = any
+	groups = gnome-shell-extensions
+	license = GPL3
+	depends = gnome-shell
+	source = git+https://github.com/ozonos/atom-workspaces.git
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-atom-workspaces-git
+
