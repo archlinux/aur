@@ -1,0 +1,10 @@
+[Unit]
+Description=Daemon to accept passive Nagios data from remote hosts
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/nsca -c /etc/nsca/nsca.cfg --daemon
+
+[Install]
+WantedBy=multi-user.target

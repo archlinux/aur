@@ -1,0 +1,22 @@
+post_install() {
+  if [ -z "$(getent group nsca)" ]; then
+    groupadd -g 32 nsca
+  fi
+  if [ -z "$(getent passwd nsca)" ]; then
+    useradd -u 32 -g nsca -c "Nagios NSCA" -d /dev/null -s /bin/false nsca
+  fi
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+pre_remove() {
+  userdel nsca &> /dev/null
+  groupdel nsca &> /dev/null
+}
+
+op=$1
+shift
+
+$op $*
