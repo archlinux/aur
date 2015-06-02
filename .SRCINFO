@@ -1,0 +1,15 @@
+pkgbase = massh
+	pkgdesc = Mass ssh'er that allows for parallel execution of commands on remote systems
+	pkgver = 2.0.57
+	pkgrel = 1
+	url = http://m.a.tt/er/massh.html
+	arch = any
+	license = GPL3
+	depends = openssh
+	source = http://m.a.tt/er/massh.tgz
+	source = fix-paths.patch
+	md5sums = 57585bb5328baf2e5ef8588815287ebe
+	md5sums = 5990a49e673c0fda73a446bb7e562ddd
+
+pkgname = massh
+

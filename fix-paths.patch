@@ -1,0 +1,62 @@
+diff -ru local-orig//bin/ambit local//bin/ambit
+--- local-orig//bin/ambit	2011-04-01 22:54:51.278221191 +1100
++++ local//bin/ambit	2011-04-01 22:55:10.484486191 +1100
+@@ -22,8 +22,8 @@
+ IDOWOT=`basename $0`
+ 
+ # System Wide Config File and Massh Dir 
+-[ -f /usr/local/etc/$IDOWOT ] && source /usr/local/etc/$IDOWOT
+-[ -z $ALLFILES ] && ALLFILES="/usr/local/var/massh"
++[ -f /etc/$IDOWOT ] && source /etc/$IDOWOT
++[ -z $ALLFILES ] && ALLFILES="/var/massh"
+ 
+ # User Specific Config File and Massh Dir 
+ [ -f $HOME/.$IDOWOT ] && source $HOME/.$IDOWOT
+diff -ru local-orig//bin/massh local//bin/massh
+--- local-orig//bin/massh	2011-04-01 22:54:51.274886191 +1100
++++ local//bin/massh	2011-04-01 22:55:27.663071190 +1100
+@@ -41,8 +41,8 @@
+ trap "kill 0" EXIT
+ 
+ # System Wide Config File and Massh Dir 
+-[ -f /usr/local/etc/$IDOWOT ] && source /usr/local/etc/$IDOWOT
+-[ -z $ALLFILES ] && ALLFILES="/usr/local/var/massh"
++[ -f /etc/$IDOWOT ] && source /etc/$IDOWOT
++[ -z $ALLFILES ] && ALLFILES="/var/massh"
+ 
+ # User Specific Config File and Massh Dir 
+ [ -f $HOME/.$IDOWOT ] && source $HOME/.$IDOWOT
+diff -ru local-orig//bin/pingz local//bin/pingz
+--- local-orig//bin/pingz	2011-04-01 22:54:51.274886191 +1100
++++ local//bin/pingz	2011-04-01 22:55:38.965386190 +1100
+@@ -22,8 +22,8 @@
+ IDOWOT=`basename $0`
+ 
+ # System Wide Config File and Massh Dir 
+-[ -f /usr/local/etc/$IDOWOT ] && source /usr/local/etc/$IDOWOT
+-[ -z $ALLFILES ] && ALLFILES="/usr/local/var/massh"
++[ -f /etc/$IDOWOT ] && source /etc/$IDOWOT
++[ -z $ALLFILES ] && ALLFILES="/var/massh"
+ 
+ # User Specific Config File and Massh Dir 
+ [ -f $HOME/.$IDOWOT ] && source $HOME/.$IDOWOT
+diff -ru local-orig//etc/ambit local//etc/ambit
+--- local-orig//etc/ambit	2011-04-01 22:54:51.278221191 +1100
++++ local//etc/ambit	2011-04-01 22:55:48.526831191 +1100
+@@ -1,5 +1,5 @@
+ # System wide 'hosts.' files to be used by ambit.
+-ALLFILES="/usr/local/var/massh"
++ALLFILES="/var/massh"
+ 
+ # User specific 'hosts.' files to be used by ambit.
+ MYFILES="$HOME/massh"
+diff -ru local-orig//etc/massh local//etc/massh
+--- local-orig//etc/massh	2011-04-01 22:54:51.278221191 +1100
++++ local//etc/massh	2011-04-01 22:55:53.255861191 +1100
+@@ -1,5 +1,5 @@
+ # System wide files.
+-ALLFILES="/usr/local/var/massh"
++ALLFILES="/var/massh"
+ 
+ # User specific files.
+ MYFILES="$HOME/massh"
