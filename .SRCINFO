@@ -1,0 +1,15 @@
+pkgbase = perl-iptables-rule
+	pkgdesc = Perl extension for holding iptables rule information in objects
+	pkgver = 0.01
+	pkgrel = 1
+	url = http://search.cpan.org/dist/IPTables-Rule/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PH/PHILLIPS/IPTables-Rule-0.01.tar.gz
+	md5sums = 5105e0d0bd1e360a9b1351f55f1aee85
+
+pkgname = perl-iptables-rule
+
