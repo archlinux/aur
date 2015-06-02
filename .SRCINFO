@@ -1,0 +1,14 @@
+pkgbase = tcptraceroute
+	pkgdesc = A traceroute implementation using TCP packets.
+	pkgver = 2.0.21
+	pkgrel = 1
+	url = http://traceroute.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libpcap>=1.0.0
+	depends = libnet
+	source = http://downloads.sourceforge.net/tcptraceroute/tcptraceroute-2.0.21.tar.gz
+
+pkgname = tcptraceroute
+
