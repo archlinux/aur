@@ -1,0 +1,18 @@
+pkgbase = ocaml-yojson
+	pkgdesc = An optimized parsing and printing library for JSON
+	pkgver = 1.1.8
+	pkgrel = 2
+	url = http://mjambon.com/yojson.html
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = ocaml-biniou
+	makedepends = ocaml-findlib
+	makedepends = cppo
+	depends = ocaml-easy-format
+	options = !makeflags
+	source = http://mjambon.com/releases/yojson/yojson-1.1.8.tar.gz
+	md5sums = e3c53004f74410c3835d851b02c1bf21
+
+pkgname = ocaml-yojson
+
