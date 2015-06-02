@@ -1,0 +1,13 @@
+pkgbase = pgdbf
+	pkgdesc = Convert XBase databases - particularly FoxPro tables with memo files - into a format that PostgreSQL can directly import
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/kstrauser/pgdbf
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	source = pgdbf-0.6.2.tar.gz::https://github.com/kstrauser/pgdbf/archive/v{0.6.2}.tar.gz
+	md5sums = f9a63ce5e5794b67f20092bf9daf875a
+
+pkgname = pgdbf
+
