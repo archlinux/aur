@@ -1,0 +1,11 @@
+--- Makefile.OLD	2013-12-02 12:03:00.352853949 +1100
++++ Makefile	2013-12-02 12:03:17.991990818 +1100
+@@ -73,7 +73,7 @@
+ 	(cd $(top_builddir); ./config.status)
+ 
+ $(top_srcdir)/configure:	$(top_srcdir)/configure.in
+-	cd $(top_srcdir) && autoconf
++	cd $(top_srcdir) && autoreconf
+ 
+ $(top_srcdir)/config.h.in:	$(top_srcdir)/configure.in
+ 	cd $(top_srcdir) && autoheader

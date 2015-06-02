@@ -1,0 +1,27 @@
+diff -up dump-0.4b44/configure.in.buildfix dump-0.4b44/configure.in
+--- dump-0.4b44/configure.in.buildfix	2011-06-14 14:37:49.659652746 +0200
++++ dump-0.4b44/configure.in	2011-06-14 14:40:47.361349814 +0200
+@@ -415,6 +415,11 @@ if test "$ext2fs_h" = no -o "x$EXT2FS_LI
+ 	AC_MSG_ERROR(You need to install the Ext2fs libraries from the E2fsprogs distribution first - hint: make install-libs)
+ fi
+ 
++PKG_CHECK_MODULES(COM_ERR, [com_err])
++if test -n "$STATIC" ; then
++	COM_ERR_LIBS=`$PKG_CONFIG --libs --static com_err`
++fi
++
+ dnl
+ dnl Check for ext2fs_read_inode_full
+ dnl
+diff -up dump-0.4b44/MCONFIG.in.buildfix dump-0.4b44/MCONFIG.in
+--- dump-0.4b44/MCONFIG.in.buildfix	2011-06-14 14:41:00.869323616 +0200
++++ dump-0.4b44/MCONFIG.in	2011-06-14 14:41:12.947300187 +0200
+@@ -40,7 +40,7 @@ GINC+=		@EXT2FS_CFLAGS@
+ # indicate where the ext2fs library can be found (this is not needed if you
+ # have run `make install-libs' in the e2fsprogs source directory).
+ #GLIBDIR=	-L/usr/src/e2fsprogs-0.5c/lib
+-GLIBS=		$(GLIBDIR) -L../compat/lib -lcompat @EXT2FS_LIBS@
++GLIBS=		$(GLIBDIR) -L../compat/lib -lcompat @EXT2FS_LIBS@ @COM_ERR_LIBS@
+ 
+ #
+ # Definitions (don't change them unless you know what you are doing)
