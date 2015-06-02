@@ -1,0 +1,23 @@
+pkgbase = cryptkeeper
+	pkgdesc = A Linux system tray applet that manages EncFS encrypted folders.
+	pkgver = 0.9.5
+	pkgrel = 5
+	url = http://tom.noflag.org.uk/cryptkeeper.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = autoconf
+	depends = gtk2
+	depends = gconf
+	depends = encfs
+	source = http://tom.noflag.org.uk/cryptkeeper/cryptkeeper-0.9.5.tar.gz
+	source = cryptkeeper.desktop
+	source = cryptkeeper-0.9.5-fix-linking.patch
+	source = cryptkeeper-0.9.5-add-unistd-to-lsof.patch
+	md5sums = d02918b2058854177d2f59b837c2743f
+	md5sums = 37484e52a1557a18c0cc2443b3104007
+	md5sums = aa864cea6a81ef8e8cb3efa5ef2b9541
+	md5sums = 2e21a1e82942213108774d768e12e4ee
+
+pkgname = cryptkeeper
+

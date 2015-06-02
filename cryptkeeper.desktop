@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=cryptkeeper
+GenericName="Cryptkeeper manages EncFs encrypted folders"
+GenericName[de]="Cryptkeeper verwaltet verschluesselte Ordner"
+Comment="Cryptkeeper is a FreeDesktop.org (KDE, Gnome, XFce, etc.) system tray applet that manages EncFS encrypted folders.
+Exec=cryptkeeper
+Icon=/usr/share/pixmaps/cryptkeeper.png
+Terminal=0
+Type=Application
+# Categories=Qt;KDE;Math;Education
+Categories=System
+

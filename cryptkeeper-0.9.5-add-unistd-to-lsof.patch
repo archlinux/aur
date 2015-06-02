@@ -1,0 +1,10 @@
+--- cryptkeeper-0.9.5/src/lsof.cpp.old	2012-04-22 10:00:24.655295117 -0500
++++ cryptkeeper-0.9.5/src/lsof.cpp	2012-04-22 10:00:35.838624366 -0500
+@@ -21,6 +21,7 @@
+ #include <vector>
+ #include <assert.h>
+ #include <cstring>
++#include <unistd.h>
+ #include "lsof.h"
+ 
+ fsuser::fsuser(const char *pid, const char *name)
