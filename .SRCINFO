@@ -1,0 +1,15 @@
+pkgbase = stenc
+	pkgdesc = SCSI Tape Encryption Manager
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = http://stenc.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	source = http://downloads.sourceforge.net/stenc/stenc-1.0.6.tar.gz
+	source = include-unistd-h.patch
+	md5sums = 310664c64cf3f9a1007367072bccb5b8
+	md5sums = f58feb684189a14afda06859337181f3
+
+pkgname = stenc
+
