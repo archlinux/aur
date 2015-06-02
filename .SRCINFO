@@ -1,0 +1,13 @@
+pkgbase = publishr-gimp
+	pkgdesc = Publish to Flickr and Picasaweb from within the GIMP interface
+	pkgver = 0.5.0
+	pkgrel = 2
+	url = http://code.google.com/p/altcanvas/wiki/GimpPublishr
+	arch = any
+	license = GPL
+	depends = gimp
+	source = http://altcanvas.googlecode.com/files/publishr-gimp-0.5.0.tar.gz
+	md5sums = 16002d262fffa02ed75b1f27467c9f6e
+
+pkgname = publishr-gimp
+
