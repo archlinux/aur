@@ -1,0 +1,21 @@
+pkgbase = sshmenu
+	pkgdesc = GNOME panel applet that allows you to start up an SSH connection in a new terminal window with a single click.
+	pkgver = 3.18
+	pkgrel = 4
+	url = http://sshmenu.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = openssh
+	depends = gnome-ssh-askpass2
+	depends = ruby
+	depends = ruby-gtk2
+	depends = ruby-gnome2
+	depends = ruby-gconf2
+	depends = ruby-panelapplet2
+	depends = gnome-terminal
+	source = http://downloads.sourceforge.net/sshmenu/sshmenu-3.18.tar.gz
+	md5sums = 7e7f43135fd112be3c173ec8585d6b98
+
+pkgname = sshmenu
+
