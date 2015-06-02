@@ -1,0 +1,15 @@
+pkgbase = influx-cli-git
+	pkgdesc = Graphite-web, without the interface. Just the rendering HTTP API.
+	pkgver = r48.c79592e
+	pkgrel = 1
+	url = https://github.com/Dieterbe/influx-cli
+	arch = i686
+	arch = x86_64
+	license = Apache
+	depends = go
+	options = !strip
+	source = influx-cli::git+https://github.com/Dieterbe/influx-cli
+	md5sums = SKIP
+
+pkgname = influx-cli-git
+
