@@ -1,0 +1,4 @@
+post_install() {
+  echo "==> Installing the PHP 'db' module using pear"
+  pear install db
+}
