@@ -1,0 +1,4 @@
+post_install() {
+	echo "apitest has been installed to /opt/apitest"
+}
+

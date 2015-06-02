@@ -1,0 +1,14 @@
+pkgbase = apitest-git
+	pkgdesc = Simple comparison framework for graphics APIs
+	pkgver = 122.cde1d33
+	pkgrel = 4
+	url = https://github.com/nvMcJohn/apitest
+	install = apitest-git.install
+	arch = i686
+	arch = x86_64
+	license = Unlicense
+	makedepends = cmake
+	source = git+https://github.com/nvMcJohn/apitest.git
+
+pkgname = apitest-git
+
