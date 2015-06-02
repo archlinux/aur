@@ -1,4 +1,5 @@
 # Maintainer: James An <james@jamesan.ca>
+# Contributor: anatol's gem2arch (https://github.com/anatol/gem2arch)
 
 _pkgname=tuple
 pkgname=ruby-$_pkgname
