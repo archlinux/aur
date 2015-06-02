@@ -1,0 +1,12 @@
+## arg 1:  the new package version
+post_install() {
+  echo "Don't forget to add a cron job to execute the pgsql-backup script daily!"
+  echo "IMPORTANT: configuration has moved from /etc/pgsql-backup/ directory to /etc/pgsql-backup.conf"
+}
+
+## arg 1:  the old package version
+post_remove() {
+  echo "Don't forget to remove your cron job that excutes the pgsql-backup script"
+}
+
+# vim:set ts=2 sw=2 et:

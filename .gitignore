@@ -1,0 +1,4 @@
+/pgsql-backup-*.pkg.tar.xz
+/pgsql-backup-*.tar.gz
+/pkg/
+/src/

@@ -1,0 +1,21 @@
+pkgbase = pgsql-backup
+	pkgdesc = Automatic rolling backups for PostgreSQL
+	pkgver = 0.9.16
+	pkgrel = 1
+	url = http://fukawi2.nl/index.php?page=code-pgsql-backup
+	install = pgsql-backup.install
+	arch = any
+	license = GPL
+	makedepends = perl
+	depends = coreutils
+	depends = postgresql
+	optdepends = gzip: compression of backups
+	optdepends = bzip2: better compression of backups
+	optdepends = xz: even better compression of backups
+	optdepends = openssl: encryption of backups
+	backup = etc/pgsql-backup.conf
+	source = pgsql-backup-0.9.16.tar.gz::https://github.com/fukawi2/pgsql-backup/archive/v0.9.16.tar.gz
+	md5sums = d01ebf5f43a272d29c6843d9edf79c55
+
+pkgname = pgsql-backup
+
