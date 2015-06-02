@@ -1,0 +1,5 @@
+# This is the local configuration for whitelisted IP addresses for sqlgrey.
+# Add any IP addresses you need whitelisted to this file. One IP address per line.
+# To add a /24 address space, omit the last octet of the address.
+# For example, to whitelist 202.14.166.0/24, add the line:
+#   202.14.166

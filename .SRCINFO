@@ -1,0 +1,34 @@
+pkgbase = sqlgrey
+	pkgdesc = Postfix greylisting policy service with auto-white-listing with SQL database as storage backend.
+	pkgver = 1.8.0
+	pkgrel = 3
+	url = http://sqlgrey.sourceforge.net/
+	install = sqlgrey.install
+	arch = any
+	license = GPL
+	depends = perl
+	depends = perl-net-server
+	depends = perl-io-multiplex
+	depends = perl-dbi
+	depends = perl-date-calc
+	depends = postfix>=2.1
+	optdepends = perl-dbd-pg: for using postgresql as backend database
+	optdepends = perl-dbd-mysql: for using mysql as backend database
+	backup = etc/sqlgrey/sqlgrey.conf
+	backup = etc/sqlgrey/clients_ip_whitelist.local
+	backup = etc/sqlgrey/clients_fqdn_whitelist.local
+	source = http://downloads.sourceforge.net/project/sqlgrey/sqlgrey-1.8%20%28stable%29/sqlgrey-1.8.0.tar.gz
+	source = fix-Makefile-path-to-perldoc.patch
+	source = fix-Makefile-sbinpath.patch
+	source = sqlgrey.service
+	source = clients_fqdn_whitelist.local
+	source = clients_ip_whitelist.local
+	md5sums = de9c6d0740fd2589d4e353e76c40e2c7
+	md5sums = 0f87aa737aec1d1ac8a1bb6915f619a0
+	md5sums = ee03f586291b6f377ab28d5c1d5aca60
+	md5sums = bcf0940abe01a48fbfc9a4c5c5a7ae6f
+	md5sums = 235535e43def87509936e13f5a9bab44
+	md5sums = 9ad7dd44af527e10674c79e511fc1dfc
+
+pkgname = sqlgrey
+

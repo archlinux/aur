@@ -1,0 +1,11 @@
+--- Makefile.ORIG	2013-06-04 11:46:26.823448692 +1000
++++ Makefile	2013-06-04 11:46:35.723021110 +1000
+@@ -1,7 +1,7 @@
+ INSTALL = install
+ ETCDIR = $(ROOTDIR)/etc
+ CONFDIR = $(ETCDIR)/sqlgrey
+-SBINDIR = $(ROOTDIR)/usr/sbin
++SBINDIR = $(ROOTDIR)/usr/bin
+ BINDIR = $(ROOTDIR)/usr/bin
+ INITDIR = $(ETCDIR)/init.d
+ MANDIR = $(ROOTDIR)/usr/share/man/man1

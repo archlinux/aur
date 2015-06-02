@@ -1,0 +1,11 @@
+# This is the local configuration for whitelisted hostnames for sqlgrey.
+#
+# hostname.domain.com # whole system name (least CPU intensive)
+# *.domain.com        # whitelist any fqdn in the domain 'domain.com'
+# /regexp/            # whitelist any fqdn matching the regexp (by far most CPU intensive)
+
+# Note you need the following two lines to allow both
+# <lots of mtas>.example.com and example.com
+# *.example.com
+# example.com 
+

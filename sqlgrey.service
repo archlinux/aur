@@ -1,0 +1,10 @@
+[Unit]
+Description=Postfix greylisting policy service
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/sqlgrey -d
+
+[Install]
+WantedBy=multi-user.target

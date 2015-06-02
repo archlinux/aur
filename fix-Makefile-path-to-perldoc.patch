@@ -1,0 +1,11 @@
+--- Makefile.ORIG	2013-06-04 11:43:45.401204266 +1000
++++ Makefile	2013-06-04 11:44:00.380484590 +1000
+@@ -35,7 +35,7 @@
+ 	chmod a+x sqlgrey
+ 
+ manpage:
+-	perldoc -u sqlgrey | pod2man -n sqlgrey > sqlgrey.1
++	/usr/bin/core_perl/perldoc -u sqlgrey | pod2man -n sqlgrey > sqlgrey.1
+ 
+ clean:
+ 	rm -f sqlgrey.1

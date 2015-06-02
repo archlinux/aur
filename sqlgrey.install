@@ -1,0 +1,22 @@
+post_install() {
+  if [ -z "`getent group sqlgrey`" ]; then
+    groupadd -g 111 sqlgrey
+  fi
+  if [ -z "`getent passwd sqlgrey`" ]; then
+    useradd -u 111 -g sqlgrey -c "SQLgrey Daemon" -d /var/lib/sqlgrey -m -s /bin/false sqlgrey
+  fi
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+pre_remove() {
+  userdel sqlgrey &> /dev/null
+  groupdel sqlgrey &> /dev/null
+}
+
+op=$1
+shift
+
+$op $*
