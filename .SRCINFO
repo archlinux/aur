@@ -1,0 +1,14 @@
+pkgbase = sgwi
+	pkgdesc = A web-interface to the SQLGrey greylister for Postfix.
+	pkgver = 0.7
+	pkgrel = 2
+	url = http://www.vanheusden.com/sgwi/
+	arch = any
+	license = GPL
+	depends = sqlgrey
+	backup = srv/http/sgwi/config.inc.php
+	source = sgwi-0.7.tgz::http://www.vanheusden.com/sgwi/sqlgreywebinterface-{0.7}.tgz
+	md5sums = e7d5cc531651f8a2703ea8490c3f6ae4
+
+pkgname = sgwi
+
