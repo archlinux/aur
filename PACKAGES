@@ -1,0 +1,158 @@
+# Edit this file by (un)commenting the libraries that you (don't) want to
+# build in order to get the corresponding features in liquidsoap.
+
+# The default file has every dependency enabled.
+# It is certain that you don't need everything.
+# If you don't know why you should have something, uncomment it,
+# especially if it does not build for some reason.
+
+# It is useless to add savonet packages that are not listed below,
+# like ocaml-fetch, ocaml-smbclient, etc. These are not dependencies of
+# liquidsoap.
+
+
+# ============================================================================
+# Input/output
+# ============================================================================
+
+# Cry is the lib for streaming to icecast and compatible servers.
+ocaml-cry
+
+# AO is portable and stable, but it does only output.
+ocaml-ao
+
+# Portaudio is a portable audio library with both input and output.
+ocaml-portaudio
+
+# ALSA is only for LINUX, and is sometimes not working.
+ocaml-alsa
+
+# PulseAudio is a cross-plateform audio sound server. It is intended to
+# be a single replacement for sound support under linux, windows or OSX.
+ocaml-pulseaudio
+
+# JACK is an audio connection kit, designed for low latency
+# and easy communication between audio applications.
+ocaml-bjack
+
+# Gstreamer is a library for constructing graphs of media-handling components.
+# It is currently used to provide audio and video encoding and decoding
+# as well as input and outputs such as V4l inputs.
+ocaml-gstreamer
+
+# ============================================================================
+# Codecs
+# ============================================================================
+
+# MAD is for MP3 decoding.
+ocaml-mad
+
+# TAGLIB is for MP3 ID3 tag reading
+ocaml-taglib
+
+# LAME is for MP3 encoding.
+ocaml-lame
+
+# SHINE is for fixed-point MP3 encoding.
+#ocaml-shine
+
+# AACPLUS is for AAC+ encoding.
+#ocaml-aacplus
+
+# OGG is for ogg/vorbis and ogg/theora encoding and decoding
+ocaml-ogg
+
+# VORBIS is for ogg/vorbis encoding and decoding.
+# you need ocaml-ogg to enable ocaml-vorbis.
+ocaml-vorbis
+
+# SPEEX is for ogg/speex encoding and decoding
+# you need ocaml-ogg to enable ocaml-speex
+ocaml-speex
+
+# THEORA is for ogg/theora encoding and decoding
+# you need ocaml-ogg to enable ocaml-theora
+ocaml-theora
+
+# OPUS is s a lossy audio compression format made especially
+# suitable for interactive real-time applications over the Internet.
+# you need ocaml-ogg to enable ocaml-opus
+ocaml-opus
+
+# SCHROEDINGER is for ogg/dirac encoding and decoding
+# you need ocaml-ogg to enable ocaml-schroedinger
+ocaml-schroedinger
+
+# VOAACENC is for AAC encoding.
+#ocaml-voaacenc
+
+# FDK-AAC is for AAC and AAC+ encoding
+ocaml-fdkaac
+
+# FAAD for AAC decoding.
+ocaml-faad
+
+# FLAC is for flac, native and/or ogg (if using ocaml-ogg)
+# format decoding and encoding.
+ocaml-flac
+
+# ============================================================================
+# Sound processing
+# ============================================================================
+
+# LADSPA are audio plugins providing sound effects
+ocaml-ladspa
+
+# SoundTouch is for changing pitch and tempo of sound
+ocaml-soundtouch
+
+# Samplerate is for having better quality resampling
+ocaml-samplerate
+
+# ============================================================================
+# Video processing
+# ============================================================================
+
+# GAVL converts from and to many formats,
+# is very efficient and has a quality setting for
+# tweaking load vs. quality of the conversion.
+# It is the recommended module to use with video
+ocaml-gavl
+
+# FFMPEG is currently only used to convert from
+# and to many formats.
+ocaml-ffmpeg
+
+# Frei0r is a minimalistic plugin API for video sources and filters.
+ocaml-frei0r
+
+# ============================================================================
+# Sound synthesis
+# ============================================================================
+
+# DSSI is a standard for synthesizer plugins
+ocaml-dssi
+
+# ============================================================================
+# Various modules
+# ============================================================================
+
+# Xmlplaylist allow support for various xml format, such as rss, podcast, etc..
+ocaml-xmlplaylist
+
+# Lastfm allow support for lastfm radios and the audioscrobbler protocol
+# It should be listed *after* ocaml-xmlplaylist in this file
+ocaml-lastfm
+
+# A library supporting the OSC protocol to have external controls
+# such as faders
+ocaml-lo
+
+# ============================================================================
+# Finally, the mandatory lib dtools, duppy and liquidsoap...
+# ============================================================================
+
+ocaml-dtools
+ocaml-duppy
+ocaml-mm
+liquidsoap

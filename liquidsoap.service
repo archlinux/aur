@@ -1,0 +1,15 @@
+[Unit]
+Description=Liquidsoap service for channel %I
+Documentation=man:liquidsoap(1)
+After=network.target
+ConditionPathExists=/etc/liquidsoap/%I.liq
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/liquidsoap --quiet /etc/liquidsoap/%I.liq
+User=liquidsoap
+Group=liquidsoap
+
+[Install]
+WantedBy=multi-user.target
+
