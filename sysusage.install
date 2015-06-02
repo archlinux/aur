@@ -1,0 +1,12 @@
+## arg 1:  the new package version
+post_install() {
+  cat << EOM
+==> sysusage:  Now you can run sysusage into you crontab as follow:
+==> sysusage:
+==> sysusage:    */1 * * * *  /usr/bin/sysusage > /dev/null 2>&1
+==> sysusage:    */5 * * * *  /usr/bin/sysusagegraph > /dev/null 2>&1
+==> sysusage:
+==> sysusage: If you need to monitor your host under the minute, you can use DEAMON mode.
+==> sysusage: See /usr/share/doc/sysusage/README file.
+EOM
+}
