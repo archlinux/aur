@@ -1,0 +1,22 @@
+pkgbase = telnet-bsd
+	pkgdesc = Telnet and telnetd ported from OpenBSD
+	pkgver = 1.2
+	pkgrel = 2
+	url = ftp://ftp.suse.com/pub/people/kukuk/ipv6/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = ncurses
+	conflicts = netkit-telnet
+	conflicts = inetutils
+	source = ftp://ftp.suse.com/pub/people/kukuk/ipv6/telnet-bsd-1.2.tar.bz2
+	source = telnet.xinetd
+	source = telnet.socket
+	source = telnet@.service
+	md5sums = 72d72c65e7796dfec999f347da1c295f
+	md5sums = 02a3909411d2f2d4983f4f785c94d23c
+	md5sums = 46d57ace47af36468334e1d4124a2495
+	md5sums = c6f8c6f4da2687e5772a52e0b87bf70b
+
+pkgname = telnet-bsd
+
