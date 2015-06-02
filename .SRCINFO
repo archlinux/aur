@@ -1,0 +1,19 @@
+pkgbase = ocaml-biniou
+	pkgdesc = A binary data serialization format inspired by JSON
+	pkgver = 1.0.9
+	pkgrel = 1
+	url = http://mjambon.com/biniou.html
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = ocaml-easy-format
+	makedepends = ocaml-findlib
+	depends = glibc
+	options = !strip
+	options = !makeflags
+	options = staticlibs
+	source = http://mjambon.com/releases/biniou/biniou-1.0.9.tar.gz
+	md5sums = 2f9f355281817912ac04c589eb463ef2
+
+pkgname = ocaml-biniou
+
