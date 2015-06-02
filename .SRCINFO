@@ -1,0 +1,15 @@
+pkgbase = perl-date-parse
+	pkgdesc = Parse date strings into time values
+	pkgver = 2.30
+	pkgrel = 2
+	url = http://search.cpan.org/~gbarr/TimeDate-2.30/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GB/GBARR/TimeDate-2.30.tar.gz
+	md5sums = b1d91153ac971347aee84292ed886c1c
+
+pkgname = perl-date-parse
+
