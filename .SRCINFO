@@ -1,0 +1,33 @@
+pkgbase = icecast-kh-git
+	pkgdesc = The KH branche extends the official release of Icecast with features that may be (if found to be working out well) merged into the next official release. This package installs the most recent version from GitHub.
+	pkgver = 2_kh
+	pkgrel = 3
+	url = http://karlheyes.github.com
+	install = icecast-kh-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = libxslt
+	depends = libvorbis
+	depends = libtheora
+	depends = speex
+	depends = curl
+	optdepends = ices-kh: client for icecast server
+	provides = icecast=2
+	conflicts = icecast
+	conflicts = icecast-svn
+	conflicts = icecast-kh
+	backup = etc/icecast.xml
+	backup = etc/logrotate.d/icecast
+	source = icecast-kh-git::git://github.com/karlheyes/icecast-kh.git
+	source = icecast-kh-git.logrotate
+	source = start-by-icecast.patch
+	source = icecast-kh-git.service
+	md5sums = SKIP
+	md5sums = c619028040f547621e62ebd6f644c233
+	md5sums = a4a7a21a1c21ded249913edf45606068
+	md5sums = a0ba8a1e301acf2945e498331d1fced0
+
+pkgname = icecast-kh-git
+

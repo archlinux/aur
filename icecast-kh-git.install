@@ -1,0 +1,29 @@
+# arg 1:  the new package version
+post_install() {
+  # Make sure the group and user "icecast" exists on this system and have the correct values
+  if getent group icecast &> /dev/null ; then
+    groupmod -g 88 -n icecast icecast &> /dev/null
+  else
+    groupadd -g 88 icecast &> /dev/null
+  fi
+
+  if getent passwd icecast &> /dev/null ; then
+    usermod -s /bin/false -c "icecast user" -d /usr/share/icecast -u 88 -g icecast icecast &> /dev/null
+  else
+    useradd -s /bin/false -c "icecast user" -d /usr/share/icecast -u 88 -g icecast -r icecast &> /dev/null
+  fi
+  # create the logs folder
+  install -do88 -g19 -m0755 /var/log/icecast
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+    post_install $1
+}
+
+# arg 1:  the old package version
+pre_remove() {
+    userdel icecast &> /dev/null
+    groupdel icecast &> /dev/null || /bin/true
+}
