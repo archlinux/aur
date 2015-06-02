@@ -1,0 +1,20 @@
+pkgbase = fina
+	pkgdesc = A simple, robust shell script that loads iptables rules from a rules directory.
+	pkgver = 0.2.4
+	pkgrel = 2
+	url = http://www.schwarzvogel.de/software-fina.shtml
+	arch = any
+	license = GPLv2
+	source = http://www.schwarzvogel.de/pkgs/fina-0.2.4.tar.gz
+	source = systemd.fina
+	source = systemd.fina6
+	source = flush-iptables.sh
+	source = flush-ip6tables.sh
+	md5sums = 8790e6640cd09779db04ded631dc1d88
+	md5sums = a286f87648a0f84ac448cbfffcd53faf
+	md5sums = 184204d4e357f90d332a69a60e63f752
+	md5sums = faa4d6181f1b109c0e4e2dbf5faa9408
+	md5sums = d0a12e11a4252f8a7b5a43580c24ea71
+
+pkgname = fina
+

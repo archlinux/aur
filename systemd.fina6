@@ -1,0 +1,12 @@
+[Unit]
+Description=Application of IPv6 firewall rules created by Fina
+Wants=network.target
+Before=network.target
+ 
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/fina6 --load
+ExecStop=/usr/bin/flush-ip6tables
+  
+[Install]
+WantedBy=multi-user.target
