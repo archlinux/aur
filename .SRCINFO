@@ -1,0 +1,16 @@
+pkgbase = ocaml-easy-format
+	pkgdesc = Data pretty printing made easy
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://mjambon.com/easy-format.html
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = ocaml-findlib
+	options = !strip
+	options = staticlibs
+	source = http://mjambon.com/releases/easy-format/easy-format-1.0.2.tar.gz
+	md5sums = 82f6db85477831cab11e4cfe80321225
+
+pkgname = ocaml-easy-format
+
