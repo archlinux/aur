@@ -1,0 +1,22 @@
+pkgbase = mod_musicindex
+	pkgdesc = An Apache module which allows nice displaying of directories containing MP3, FLAC, Ogg Vorbis or MP4/AAC files.
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = http://hacks.slashdirt.org/musicindex/
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	depends = apache
+	depends = flac
+	depends = libarchive
+	depends = libid3tag
+	depends = libmad
+	depends = libmariadbclient
+	depends = libmp4v2
+	depends = libvorbis
+	options = !strip
+	source = http://hacks.slashdirt.org/musicindex/mod_musicindex-1.4.1.tar.gz
+	md5sums = cf758050b689fe16c5ff8f8c5da5cfa4
+
+pkgname = mod_musicindex
+
