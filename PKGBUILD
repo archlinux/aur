@@ -12,7 +12,7 @@
 ### the software) then please do email me or post an AUR comment.
 
 pkgname=katarina
-pkgver=1.7
+pkgver=2.0
 pkgrel=1
 pkgdesc="a perl backup system using rsync as transport"
 arch=('any')
@@ -20,7 +20,7 @@ url="http://katarina.sourceforge.net/"
 license=('GPL2')
 depends=('perl' 'rsync')
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('03e8ba04fa3de848168c04e246a01f63')
+md5sums=('0fc4aad047c42342ed7d5d656d9bc2fe')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
