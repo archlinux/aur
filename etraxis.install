@@ -1,0 +1,16 @@
+## arg 1:  the new package version
+post_install() {
+  echo "==> You must configure etraxis before you can use it: http://www.etraxis.org/docs-config-etraxis.php"
+}
+
+
+post_upgrade() {
+  return 0
+}
+
+## arg 1:  the old package version
+post_remove() {
+  return 0
+}
+
+# vim:set ts=2 sw=2 et:

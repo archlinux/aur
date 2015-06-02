@@ -1,0 +1,19 @@
+pkgbase = etraxis
+	pkgdesc = web-based bug tracking system written on PHP. Includes fully custom templates, advanced filters, LDAP support, email notifications, subscriptions, reminders, flexible permissions management and graphical project metrics
+	pkgver = 3.2.1
+	pkgrel = 1
+	url = http://code.google.com/p/etraxis/
+	install = etraxis.install
+	arch = any
+	license = GPL
+	depends = php>=5.1
+	depends = php-gd
+	depends = php-xsl
+	optdepends = php-pgsql: for postgresql database support
+	optdepends = php-ldap: for ldap authentication
+	backup = srv/http/etraxis/engine/config.php
+	source = http://etraxis.googlecode.com/files/etraxis-3.2.1.zip
+	md5sums = 5a37762870f73d4b4643580071c3bb5e
+
+pkgname = etraxis
+
