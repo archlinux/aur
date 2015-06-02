@@ -1,0 +1,13 @@
+pkgbase = gnome-shell-extension-atom-dock-git
+	pkgdesc = A dock extension for gnome-shell as part of Ozon OS
+	pkgver = 79.f046ff2
+	pkgrel = 1
+	url = https://github.com/ozonos/atom-dock
+	arch = any
+	groups = gnome-shell-extensions
+	license = GPL3
+	source = git+https://github.com/ozonos/atom-dock.git
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-atom-dock-git
+
