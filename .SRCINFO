@@ -1,0 +1,15 @@
+pkgbase = perl-proc-queue
+	pkgdesc = Limit the number of child processes running.
+	pkgver = 1.23
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Proc-Queue/
+	arch = i686
+	arch = x86_64
+	license = Perl
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SA/SALVA/Proc-Queue-1.23.tar.gz
+	md5sums = 57a153870f697b2dbf261bdfe09d61a0
+
+pkgname = perl-proc-queue
+
