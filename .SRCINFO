@@ -1,0 +1,18 @@
+pkgbase = yasat
+	pkgdesc = A simple stupid audit tool
+	pkgver = 700
+	pkgrel = 1
+	url = http://yasat.sourceforge.net/
+	arch = any
+	license = GPL3
+	depends = sed
+	depends = grep
+	depends = coreutils
+	backup = etc/yasat/yasat.conf
+	source = http://downloads.sourceforge.net/yasat/yasat-700.tar.gz
+	source = yasat.conf
+	md5sums = 07376f163804b38a4dfb4ecc4db05a93
+	md5sums = f4d5f19153febd51680a3895e769abdf
+
+pkgname = yasat
+
