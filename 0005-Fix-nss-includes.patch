@@ -1,0 +1,40 @@
+From e4a871010d86affbf1a3e9d29bf3ec366056f55a Mon Sep 17 00:00:00 2001
+From: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+Date: Wed, 16 Apr 2014 19:34:03 -0400
+Subject: [PATCH 5/7] Fix nss includes
+
+---
+ util/ipa_pwd.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/util/ipa_pwd.c b/util/ipa_pwd.c
+index 761d1ef..4363706 100644
+--- a/util/ipa_pwd.c
++++ b/util/ipa_pwd.c
+@@ -27,10 +27,10 @@
+ #include <stdio.h>
+ #include <time.h>
+ #include <ctype.h>
+-#include <nss3/nss.h>
+-#include <nss3/nssb64.h>
+-#include <nss3/hasht.h>
+-#include <nss3/pk11pub.h>
++#include <nss/nss.h>
++#include <nss/nssb64.h>
++#include <nss/hasht.h>
++#include <nss/pk11pub.h>
+ #include <errno.h>
+ #include "ipa_pwd.h"
+ 
+@@ -159,7 +159,7 @@ static int ipapwd_gentime_cmp(const void *p1, const void *p2)
+ 
+ #define SHA_SALT_LENGTH 8
+ 
+-/* SHA*_LENGTH leghts come from nss3/hasht.h */
++/* SHA*_LENGTH leghts come from nss/hasht.h */
+ #define SHA_HASH_MAX_LENGTH SHA512_LENGTH
+ 
+ static int ipapwd_hash_type_to_alg(char *hash_type,
+-- 
+1.9.2
+

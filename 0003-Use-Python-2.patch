@@ -1,0 +1,657 @@
+From df24bf0bad4a41262217e6864c76eae7e09d7bc8 Mon Sep 17 00:00:00 2001
+From: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+Date: Wed, 16 Apr 2014 19:32:58 -0400
+Subject: [PATCH 3/7] Use Python 2
+
+---
+ checks/check-ra.py                                  | 2 +-
+ contrib/RHEL4/ipa-client-setup                      | 2 +-
+ contrib/RHEL4/setup.py                              | 2 +-
+ daemons/ipa-otpd/test.py                            | 2 +-
+ doc/examples/python-api.py                          | 2 +-
+ install/certmonger/dogtag-ipa-retrieve-agent-submit | 2 +-
+ install/po/pygettext.py                             | 2 +-
+ install/restart_scripts/renew_ca_cert               | 2 +-
+ install/restart_scripts/renew_ra_cert               | 2 +-
+ install/restart_scripts/restart_dirsrv              | 2 +-
+ install/restart_scripts/restart_httpd               | 2 +-
+ install/restart_scripts/restart_pkicad              | 2 +-
+ install/restart_scripts/stop_pkicad                 | 2 +-
+ install/share/copy-schema-to-ca.py                  | 2 +-
+ install/tools/ipa-adtrust-install                   | 2 +-
+ install/tools/ipa-advise                            | 2 +-
+ install/tools/ipa-backup                            | 2 +-
+ install/tools/ipa-ca-install                        | 2 +-
+ install/tools/ipa-compat-manage                     | 2 +-
+ install/tools/ipa-csreplica-manage                  | 2 +-
+ install/tools/ipa-dns-install                       | 2 +-
+ install/tools/ipa-ldap-updater                      | 2 +-
+ install/tools/ipa-managed-entries                   | 2 +-
+ install/tools/ipa-nis-manage                        | 2 +-
+ install/tools/ipa-replica-conncheck                 | 2 +-
+ install/tools/ipa-replica-install                   | 2 +-
+ install/tools/ipa-replica-manage                    | 2 +-
+ install/tools/ipa-replica-prepare                   | 2 +-
+ install/tools/ipa-restore                           | 2 +-
+ install/tools/ipa-server-certinstall                | 2 +-
+ install/tools/ipa-server-install                    | 2 +-
+ install/tools/ipa-upgradeconfig                     | 2 +-
+ install/tools/ipactl                                | 2 +-
+ ipa                                                 | 2 +-
+ ipa-client/ipa-install/ipa-client-automount         | 2 +-
+ ipa-client/ipa-install/ipa-client-install           | 2 +-
+ ipapython/Makefile                                  | 8 ++++----
+ ipapython/py_default_encoding/Makefile              | 8 ++++----
+ ipapython/setup.py.in                               | 2 +-
+ ipapython/test/test_ipautil.py                      | 2 +-
+ ipapython/test/test_ipavalidate.py                  | 2 +-
+ ipaserver/install/ipa_server_certinstall.py         | 2 +-
+ ipatests/i18n.py                                    | 2 +-
+ ipatests/ipa-run-tests                              | 2 +-
+ ipatests/ipa-test-config                            | 2 +-
+ ipatests/ipa-test-task                              | 2 +-
+ ipatests/setup.py.in                                | 2 +-
+ ipatests/test_ipapython/test_dn.py                  | 2 +-
+ lite-server.py                                      | 2 +-
+ make-lint                                           | 4 ++--
+ make-test                                           | 2 +-
+ make-testcert                                       | 2 +-
+ makeapi                                             | 2 +-
+ setup-client.py                                     | 2 +-
+ setup.py                                            | 2 +-
+ 55 files changed, 62 insertions(+), 62 deletions(-)
+
+diff --git a/checks/check-ra.py b/checks/check-ra.py
+index 13a4126..a1df50b 100755
+--- a/checks/check-ra.py
++++ b/checks/check-ra.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ # Authors:
+ #   Jason Gerard DeRose <jderose@redhat.com>
+ #   John Dennis <jdennis@redhat.com>
+diff --git a/contrib/RHEL4/ipa-client-setup b/contrib/RHEL4/ipa-client-setup
+index 4d1fead..d8f78c1 100644
+--- a/contrib/RHEL4/ipa-client-setup
++++ b/contrib/RHEL4/ipa-client-setup
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python -E
++#! /usr/bin/python2 -E
+ # Authors: Simo Sorce <ssorce@redhat.com>
+ #          Karl MacMillan <kmacmillan@mentalrootkit.com>
+ #
+diff --git a/contrib/RHEL4/setup.py b/contrib/RHEL4/setup.py
+index f535875..5d34930 100644
+--- a/contrib/RHEL4/setup.py
++++ b/contrib/RHEL4/setup.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ # Copyright (C) 2007  Red Hat
+ # see file 'COPYING' for use and warranty information
+ #
+diff --git a/daemons/ipa-otpd/test.py b/daemons/ipa-otpd/test.py
+index d748c82..824f8a2 100644
+--- a/daemons/ipa-otpd/test.py
++++ b/daemons/ipa-otpd/test.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #
+ # FreeIPA 2FA companion daemon
+ #
+diff --git a/doc/examples/python-api.py b/doc/examples/python-api.py
+index 60578e8..9f315fc 100755
+--- a/doc/examples/python-api.py
++++ b/doc/examples/python-api.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ # Authors:
+ #   Jason Gerard DeRose <jderose@redhat.com>
+ #
+diff --git a/install/certmonger/dogtag-ipa-retrieve-agent-submit b/install/certmonger/dogtag-ipa-retrieve-agent-submit
+index 70cbd82..973af26 100644
+--- a/install/certmonger/dogtag-ipa-retrieve-agent-submit
++++ b/install/certmonger/dogtag-ipa-retrieve-agent-submit
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python -E
++#!/usr/bin/python2 -E
+ #
+ # Authors:
+ #   Rob Crittenden <rcritten@redhat.com>
+diff --git a/install/po/pygettext.py b/install/po/pygettext.py
+index 5293ebf..4e4212e 100755
+--- a/install/po/pygettext.py
++++ b/install/po/pygettext.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python
++#! /usr/bin/python2
+ # -*- coding: iso-8859-1 -*-
+ # Originally written by Barry Warsaw <barry@zope.com>
+ #
+diff --git a/install/restart_scripts/renew_ca_cert b/install/restart_scripts/renew_ca_cert
+index b10e4b8..da2253b 100644
+--- a/install/restart_scripts/renew_ca_cert
++++ b/install/restart_scripts/renew_ca_cert
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python -E
++#!/usr/bin/python2 -E
+ #
+ # Authors:
+ #   Rob Crittenden <rcritten@redhat.com>
+diff --git a/install/restart_scripts/renew_ra_cert b/install/restart_scripts/renew_ra_cert
+index e541e4b..919f8fc 100644
+--- a/install/restart_scripts/renew_ra_cert
++++ b/install/restart_scripts/renew_ra_cert
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python -E
++#!/usr/bin/python2 -E
+ #
+ # Authors:
+ #   Rob Crittenden <rcritten@redhat.com>
+diff --git a/install/restart_scripts/restart_dirsrv b/install/restart_scripts/restart_dirsrv
+index a9bb897..9b22d08 100644
+--- a/install/restart_scripts/restart_dirsrv
++++ b/install/restart_scripts/restart_dirsrv
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python -E
++#!/usr/bin/python2 -E
+ #
+ # Authors:
+ #   Rob Crittenden <rcritten@redhat.com>
+diff --git a/install/restart_scripts/restart_httpd b/install/restart_scripts/restart_httpd
+index 96f80bd..16a41ee 100644
+--- a/install/restart_scripts/restart_httpd
++++ b/install/restart_scripts/restart_httpd
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python -E
++#!/usr/bin/python2 -E
+ #
+ # Authors:
+ #   Rob Crittenden <rcritten@redhat.com>
+diff --git a/install/restart_scripts/restart_pkicad b/install/restart_scripts/restart_pkicad
+index f840aeb..9a3d480 100644
+--- a/install/restart_scripts/restart_pkicad
++++ b/install/restart_scripts/restart_pkicad
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python -E
++#!/usr/bin/python2 -E
+ #
+ # Authors:
+ #   Rob Crittenden <rcritten@redhat.com>
+diff --git a/install/restart_scripts/stop_pkicad b/install/restart_scripts/stop_pkicad
+index bbaf889..c275eae 100644
+--- a/install/restart_scripts/stop_pkicad
++++ b/install/restart_scripts/stop_pkicad
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python -E
++#!/usr/bin/python2 -E
+ #
+ # Authors:
+ #   Rob Crittenden <rcritten@redhat.com>
+diff --git a/install/share/copy-schema-to-ca.py b/install/share/copy-schema-to-ca.py
+index 1888f12..a5646cd 100755
+--- a/install/share/copy-schema-to-ca.py
++++ b/install/share/copy-schema-to-ca.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python
++#! /usr/bin/python2
+ 
+ """Copy the IPA schema to the CA directory server instance
+ 
+diff --git a/install/tools/ipa-adtrust-install b/install/tools/ipa-adtrust-install
+index fe86a94..e81d0ec 100755
+--- a/install/tools/ipa-adtrust-install
++++ b/install/tools/ipa-adtrust-install
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python
++#! /usr/bin/python2
+ #
+ # Authors: Sumit Bose <sbose@redhat.com>
+ # Based on ipa-server-install by Karl MacMillan <kmacmillan@mentalrootkit.com>
+diff --git a/install/tools/ipa-advise b/install/tools/ipa-advise
+index 4ec3c48..6d0d9b9 100755
+--- a/install/tools/ipa-advise
++++ b/install/tools/ipa-advise
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python -E
++#! /usr/bin/python2 -E
+ # Authors: Tomas Babej <tbabej@redhat.com>
+ #
+ # Copyright (C) 2013  Red Hat
+diff --git a/install/tools/ipa-backup b/install/tools/ipa-backup
+index 5bcaa1d..bcdcb30 100755
+--- a/install/tools/ipa-backup
++++ b/install/tools/ipa-backup
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python -E
++#! /usr/bin/python2 -E
+ # Authors: Rob Crittenden <rcritten@redhat.com>
+ #
+ # Copyright (C) 2013  Red Hat
+diff --git a/install/tools/ipa-ca-install b/install/tools/ipa-ca-install
+index bb3e595..26f6993 100755
+--- a/install/tools/ipa-ca-install
++++ b/install/tools/ipa-ca-install
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python -E
++#! /usr/bin/python2 -E
+ # Authors: Rob Crittenden <rcritten@redhat.com>
+ #
+ # Copyright (C) 2011  Red Hat
+diff --git a/install/tools/ipa-compat-manage b/install/tools/ipa-compat-manage
+index 7061a3e..bdfb718 100755
+--- a/install/tools/ipa-compat-manage
++++ b/install/tools/ipa-compat-manage
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ # Authors: Rob Crittenden <rcritten@redhat.com>
+ # Authors: Simo Sorce <ssorce@redhat.com>
+ #
+diff --git a/install/tools/ipa-csreplica-manage b/install/tools/ipa-csreplica-manage
+index ce027be..f2490b9 100755
+--- a/install/tools/ipa-csreplica-manage
++++ b/install/tools/ipa-csreplica-manage
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python -E
++#! /usr/bin/python2 -E
+ # Authors: Rob Crittenden <rcritten@redhat.com>
+ #
+ # Based on ipa-replica-manage by Karl MacMillan <kmacmillan@mentalrootkit.com>
+diff --git a/install/tools/ipa-dns-install b/install/tools/ipa-dns-install
+index 37a07f8..d87007d 100755
+--- a/install/tools/ipa-dns-install
++++ b/install/tools/ipa-dns-install
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python -E
++#! /usr/bin/python2 -E
+ # Authors: Martin Nagy <mnagy@redhat.com>
+ # Based on ipa-server-install by Karl MacMillan <kmacmillan@mentalrootkit.com>
+ #
+diff --git a/install/tools/ipa-ldap-updater b/install/tools/ipa-ldap-updater
+index 0fc5a5b..98081d7 100755
+--- a/install/tools/ipa-ldap-updater
++++ b/install/tools/ipa-ldap-updater
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ # Authors: Rob Crittenden <rcritten@redhat.com>
+ #
+ # Copyright (C) 2008  Red Hat
+diff --git a/install/tools/ipa-managed-entries b/install/tools/ipa-managed-entries
+index 2cf37e2..6baae74 100755
+--- a/install/tools/ipa-managed-entries
++++ b/install/tools/ipa-managed-entries
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ # Authors: Jr Aquino <jr.aquino@citrix.com>
+ #
+ # Copyright (C) 2011  Red Hat
+diff --git a/install/tools/ipa-nis-manage b/install/tools/ipa-nis-manage
+index 71c0761..3320be7 100755
+--- a/install/tools/ipa-nis-manage
++++ b/install/tools/ipa-nis-manage
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ # Authors: Rob Crittenden <rcritten@redhat.com>
+ # Authors: Simo Sorce <ssorce@redhat.com>
+ #
+diff --git a/install/tools/ipa-replica-conncheck b/install/tools/ipa-replica-conncheck
+index c861e30..2c92eb9 100755
+--- a/install/tools/ipa-replica-conncheck
++++ b/install/tools/ipa-replica-conncheck
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python -E
++#! /usr/bin/python2 -E
+ # Authors: Martin Kosek <mkosek@redhat.com>
+ #
+ # Copyright (C) 2011  Red Hat
+diff --git a/install/tools/ipa-replica-install b/install/tools/ipa-replica-install
+index 4418b41..512a4fb 100755
+--- a/install/tools/ipa-replica-install
++++ b/install/tools/ipa-replica-install
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python -E
++#! /usr/bin/python2 -E
+ # Authors: Karl MacMillan <kmacmillan@mentalrootkit.com>
+ #
+ # Copyright (C) 2007  Red Hat
+diff --git a/install/tools/ipa-replica-manage b/install/tools/ipa-replica-manage
+index 8e0948e..b768ea4 100755
+--- a/install/tools/ipa-replica-manage
++++ b/install/tools/ipa-replica-manage
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python -E
++#! /usr/bin/python2 -E
+ # Authors: Karl MacMillan <kmacmillan@mentalrootkit.com>
+ #
+ # Copyright (C) 2007  Red Hat
+diff --git a/install/tools/ipa-replica-prepare b/install/tools/ipa-replica-prepare
+index 21df341..4f37b4b 100755
+--- a/install/tools/ipa-replica-prepare
++++ b/install/tools/ipa-replica-prepare
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python -E
++#! /usr/bin/python2 -E
+ # Authors: Petr Viktorin <pviktori@redhat.com>
+ #
+ # Copyright (C) 2012  Red Hat
+diff --git a/install/tools/ipa-restore b/install/tools/ipa-restore
+index 604175b..f2572d5 100755
+--- a/install/tools/ipa-restore
++++ b/install/tools/ipa-restore
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python -E
++#! /usr/bin/python2 -E
+ # Authors: Rob Crittenden <rcritten@redhat.com>
+ #
+ # Copyright (C) 2013  Red Hat
+diff --git a/install/tools/ipa-server-certinstall b/install/tools/ipa-server-certinstall
+index 9bb0ef8..a0013f6 100755
+--- a/install/tools/ipa-server-certinstall
++++ b/install/tools/ipa-server-certinstall
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python -E
++#! /usr/bin/python2 -E
+ # Authors: Jan Cholasta <jcholast@redhat.com>
+ #
+ # Copyright (C) 2013  Red Hat
+diff --git a/install/tools/ipa-server-install b/install/tools/ipa-server-install
+index dfbbb91..753c7f0 100755
+--- a/install/tools/ipa-server-install
++++ b/install/tools/ipa-server-install
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python -E
++#! /usr/bin/python2 -E
+ # Authors: Karl MacMillan <kmacmillan@mentalrootkit.com>
+ #          Simo Sorce <ssorce@redhat.com>
+ #          Rob Crittenden <rcritten@redhat.com>
+diff --git a/install/tools/ipa-upgradeconfig b/install/tools/ipa-upgradeconfig
+index c565d27..174ab1b 100644
+--- a/install/tools/ipa-upgradeconfig
++++ b/install/tools/ipa-upgradeconfig
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #
+ # Authors:
+ #   Rob Crittenden <rcritten@redhat.com>
+diff --git a/install/tools/ipactl b/install/tools/ipactl
+index df0d6f5..48bbab5 100755
+--- a/install/tools/ipactl
++++ b/install/tools/ipactl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ # Authors: Simo Sorce <ssorce@redhat.com>
+ #
+ # Copyright (C) 2008-2010  Red Hat
+diff --git a/ipa b/ipa
+index c9b7338..64ceea4 100755
+--- a/ipa
++++ b/ipa
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ # Authors:
+ #   Jason Gerard DeRose <jderose@redhat.com>
+diff --git a/ipa-client/ipa-install/ipa-client-automount b/ipa-client/ipa-install/ipa-client-automount
+index 000de4e..050bbf3 100755
+--- a/ipa-client/ipa-install/ipa-client-automount
++++ b/ipa-client/ipa-install/ipa-client-automount
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python -E
++#!/usr/bin/python2 -E
+ #
+ # Authors:
+ #   Rob Crittenden <rcritten@redhat.com>
+diff --git a/ipa-client/ipa-install/ipa-client-install b/ipa-client/ipa-install/ipa-client-install
+index 0f42e4b..19bfe9c 100755
+--- a/ipa-client/ipa-install/ipa-client-install
++++ b/ipa-client/ipa-install/ipa-client-install
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python -E
++#! /usr/bin/python2 -E
+ # Authors: Simo Sorce <ssorce@redhat.com>
+ #          Karl MacMillan <kmacmillan@mentalrootkit.com>
+ #
+diff --git a/ipapython/Makefile b/ipapython/Makefile
+index a09ffd1..d1a3ff5 100644
+--- a/ipapython/Makefile
++++ b/ipapython/Makefile
+@@ -1,4 +1,4 @@
+-PYTHONLIBDIR ?= $(shell  python -c "from distutils.sysconfig import *; print get_python_lib()")
++PYTHONLIBDIR ?= $(shell  python2 -c "from distutils.sysconfig import *; print get_python_lib()")
+ PACKAGEDIR ?= $(DESTDIR)/$(PYTHONLIBDIR)/ipa
+ CONFIGDIR ?= $(DESTDIR)/etc/ipa
+ TESTS = $(wildcard test/*.py)
+@@ -12,9 +12,9 @@ all:
+ 
+ install:
+ 	if [ "$(DESTDIR)" = "" ]; then \
+-		python setup.py install; \
++		python2 setup.py install; \
+ 	else \
+-		python setup.py install --root $(DESTDIR); \
++		python2 setup.py install --root $(DESTDIR); \
+ 	fi
+ 	@for subdir in $(SUBDIRS); do \
+ 		(cd $$subdir && $(MAKE) $@) || exit 1; \
+@@ -42,4 +42,4 @@ maintainer-clean: distclean
+ test: $(subst .py,.tst,$(TESTS))
+ 
+ %.tst: %.py
+-	python $<
++	python2 $<
+diff --git a/ipapython/py_default_encoding/Makefile b/ipapython/py_default_encoding/Makefile
+index 7cd1f6c..88f17f7 100644
+--- a/ipapython/py_default_encoding/Makefile
++++ b/ipapython/py_default_encoding/Makefile
+@@ -1,15 +1,15 @@
+-PYTHONLIBDIR ?= $(shell  python -c "from distutils.sysconfig import *; print get_python_lib()")
++PYTHONLIBDIR ?= $(shell  python2 -c "from distutils.sysconfig import *; print get_python_lib()")
+ PACKAGEDIR ?= $(DESTDIR)/$(PYTHONLIBDIR)/ipa
+ CONFIGDIR ?= $(DESTDIR)/etc/ipa
+ 
+ all:
+-	python setup.py build
++	python2 setup.py build
+ 
+ install:
+ 	if [ "$(DESTDIR)" = "" ]; then \
+-		python setup.py install; \
++		python2 setup.py install; \
+ 	else \
+-		python setup.py install --root $(DESTDIR); \
++		python2 setup.py install --root $(DESTDIR); \
+ 	fi
+ 
+ clean:
+diff --git a/ipapython/setup.py.in b/ipapython/setup.py.in
+index c7c6845..2860daf 100644
+--- a/ipapython/setup.py.in
++++ b/ipapython/setup.py.in
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ # Copyright (C) 2007  Red Hat
+ # see file 'COPYING' for use and warranty information
+ #
+diff --git a/ipapython/test/test_ipautil.py b/ipapython/test/test_ipautil.py
+index ff9f282..abc19b3 100644
+--- a/ipapython/test/test_ipautil.py
++++ b/ipapython/test/test_ipautil.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python -E
++#! /usr/bin/python2 -E
+ #
+ # Copyright (C) 2007    Red Hat
+ # see file 'COPYING' for use and warranty information
+diff --git a/ipapython/test/test_ipavalidate.py b/ipapython/test/test_ipavalidate.py
+index 12b1577..3393de0 100644
+--- a/ipapython/test/test_ipavalidate.py
++++ b/ipapython/test/test_ipavalidate.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python -E
++#! /usr/bin/python2 -E
+ #
+ # Copyright (C) 2007    Red Hat
+ # see file 'COPYING' for use and warranty information
+diff --git a/ipaserver/install/ipa_server_certinstall.py b/ipaserver/install/ipa_server_certinstall.py
+index 87c4eaf..09d8fba 100644
+--- a/ipaserver/install/ipa_server_certinstall.py
++++ b/ipaserver/install/ipa_server_certinstall.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python
++#! /usr/bin/python2
+ # Authors: Karl MacMillan <kmacmillan@mentalrootkit.com>
+ #          Jan Cholasta <jcholast@redhat.com>
+ #
+diff --git a/ipatests/i18n.py b/ipatests/i18n.py
+index 9c8479b..e0ddfda 100755
+--- a/ipatests/i18n.py
++++ b/ipatests/i18n.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ # Authors:
+ #   John Dennis <jdennis@redhat.com>
+ #
+diff --git a/ipatests/ipa-run-tests b/ipatests/ipa-run-tests
+index 2b61d3c..7e3270b 100755
+--- a/ipatests/ipa-run-tests
++++ b/ipatests/ipa-run-tests
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ # Authors:
+ #   Petr Viktorin <pviktori@redhat.com>
+diff --git a/ipatests/ipa-test-config b/ipatests/ipa-test-config
+index ea6d2ce..dc94b8a 100755
+--- a/ipatests/ipa-test-config
++++ b/ipatests/ipa-test-config
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python
++#! /usr/bin/python2
+ 
+ # Authors:
+ #   Petr Viktorin <pviktori@redhat.com>
+diff --git a/ipatests/ipa-test-task b/ipatests/ipa-test-task
+index 9daad1c..91bc868 100755
+--- a/ipatests/ipa-test-task
++++ b/ipatests/ipa-test-task
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python
++#! /usr/bin/python2
+ 
+ # Authors:
+ #   Petr Viktorin <pviktori@redhat.com>
+diff --git a/ipatests/setup.py.in b/ipatests/setup.py.in
+index afbe9ab..dabf6d9 100644
+--- a/ipatests/setup.py.in
++++ b/ipatests/setup.py.in
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ # Copyright (C) 2007  Red Hat
+ # see file 'COPYING' for use and warranty information
+ #
+diff --git a/ipatests/test_ipapython/test_dn.py b/ipatests/test_ipapython/test_dn.py
+index cdeab93..60802b7 100644
+--- a/ipatests/test_ipapython/test_dn.py
++++ b/ipatests/test_ipapython/test_dn.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ import unittest
+ from ipapython.dn import *
+diff --git a/lite-server.py b/lite-server.py
+index e065357..99089b0 100755
+--- a/lite-server.py
++++ b/lite-server.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ # Authors:
+ #   Jason Gerard DeRose <jderose@redhat.com>
+diff --git a/make-lint b/make-lint
+index d9c66a8..21d7b53 100755
+--- a/make-lint
++++ b/make-lint
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #
+ # Authors:
+ #   Jakub Hrozek <jhrozek@redhat.com>
+@@ -198,7 +198,7 @@ def find_files(path, basepath):
+         line = file.readline(128)
+         file.close()
+ 
+-        if line[:2] == '#!' and line.find('python') >= 0:
++        if line[:2] == '#!' and line.find('python2') >= 0:
+             result.append(filepath)
+ 
+     return result
+diff --git a/make-test b/make-test
+index b39e4db..1cf5bb3 100755
+--- a/make-test
++++ b/make-test
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ """
+ Run IPA unit tests under multiple versions of Python (if present).
+diff --git a/make-testcert b/make-testcert
+index 19c188a..ff25b39 100755
+--- a/make-testcert
++++ b/make-testcert
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #
+ # Authors:
+ #   Rob Crittenden <rcritten@redhat.com>
+diff --git a/makeapi b/makeapi
+index 86907bd..df8497c 100755
+--- a/makeapi
++++ b/makeapi
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ # Authors:
+ #   Rob Crittenden <rcritten@redhat.com>
+ #   John Dennis <jdennis@redhat.com>
+diff --git a/setup-client.py b/setup-client.py
+index 332d292..a424440 100755
+--- a/setup-client.py
++++ b/setup-client.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ # Authors:
+ #   Jason Gerard DeRose <jderose@redhat.com>
+diff --git a/setup.py b/setup.py
+index 4a01b1e..af7964d 100755
+--- a/setup.py
++++ b/setup.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ # Authors:
+ #   Jason Gerard DeRose <jderose@redhat.com>
+-- 
+1.9.2
+

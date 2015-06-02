@@ -1,0 +1,454 @@
+From ba36f963a8eac68990459b1e5fc54413584b4fd1 Mon Sep 17 00:00:00 2001
+From: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+Date: Wed, 16 Apr 2014 19:31:08 -0400
+Subject: [PATCH 1/7] Use Arch Linux Paths
+
+---
+ init/systemd/ipa_memcached.service          |  2 +-
+ install/conf/ca_renewal                     |  2 +-
+ install/conf/ipa.conf                       |  2 +-
+ install/tools/ipa-upgradeconfig             | 10 +++++-----
+ install/tools/man/ipa-upgradeconfig.8       |  2 +-
+ ipa-client/ipa-install/ipa-client-automount |  4 ++--
+ ipa-client/ipa-install/ipa-client-install   |  2 +-
+ ipa-client/ipaclient/ntpconf.py             |  2 +-
+ ipa-client/man/ipa-client-automount.1       |  4 ++--
+ ipa-client/man/ipa-client-install.1         |  2 +-
+ ipapython/certmonger.py                     |  2 +-
+ ipapython/platform/base/systemd.py          | 22 +++++++++++-----------
+ ipaserver/install/cainstance.py             |  2 +-
+ ipaserver/install/httpinstance.py           | 26 +++++++++++++-------------
+ ipaserver/install/ipa_backup.py             | 10 +++++-----
+ ipaserver/install/ntpinstance.py            |  6 +++---
+ 16 files changed, 50 insertions(+), 50 deletions(-)
+
+diff --git a/init/systemd/ipa_memcached.service b/init/systemd/ipa_memcached.service
+index a4857cd..2f73f39 100644
+--- a/init/systemd/ipa_memcached.service
++++ b/init/systemd/ipa_memcached.service
+@@ -4,7 +4,7 @@ After=network.target
+ 
+ [Service]
+ Type=forking
+-EnvironmentFile=/etc/sysconfig/ipa_memcached
++EnvironmentFile=/etc/conf.d/ipa_memcached.conf
+ PIDFile=/var/run/ipa_memcached/ipa_memcached.pid
+ ExecStart=/usr/bin/memcached -d -s $SOCKET_PATH -u $USER -m $CACHESIZE -c $MAXCONN -P /var/run/ipa_memcached/ipa_memcached.pid $OPTIONS
+ 
+diff --git a/install/conf/ca_renewal b/install/conf/ca_renewal
+index 57a9e9c..449e2de 100644
+--- a/install/conf/ca_renewal
++++ b/install/conf/ca_renewal
+@@ -3,4 +3,4 @@
+ id=dogtag-ipa-retrieve-agent-submit
+ ca_is_default=0
+ ca_type=EXTERNAL
+-ca_external_helper=/usr/libexec/certmonger/dogtag-ipa-retrieve-agent-submit
++ca_external_helper=/usr/lib/certmonger/certmonger/dogtag-ipa-retrieve-agent-submit
+diff --git a/install/conf/ipa.conf b/install/conf/ipa.conf
+index 1a33f62..8184f8a 100644
+--- a/install/conf/ipa.conf
++++ b/install/conf/ipa.conf
+@@ -36,7 +36,7 @@ Header unset ETag
+ FileETag None
+ 
+ # FIXME: WSGISocketPrefix is a server-scope directive.  The mod_wsgi package
+-# should really be fixed by adding this its /etc/httpd/conf.d/wsgi.conf:
++# should really be fixed by adding this its /etc/httpd/conf/extra/wsgi.conf:
+ WSGISocketPrefix /run/httpd/wsgi
+ 
+ 
+diff --git a/install/tools/ipa-upgradeconfig b/install/tools/ipa-upgradeconfig
+index 41c5126..c565d27 100644
+--- a/install/tools/ipa-upgradeconfig
++++ b/install/tools/ipa-upgradeconfig
+@@ -112,7 +112,7 @@ def update_conf(sub_dict, filename, template_filename):
+ 
+ def find_hostname():
+     """Find the hostname currently configured in ipa-rewrite.conf"""
+-    filename="/etc/httpd/conf.d/ipa-rewrite.conf"
++    filename="/etc/httpd/conf/extra/ipa-rewrite.conf"
+ 
+     if not ipautil.file_exists(filename):
+         return None
+@@ -135,7 +135,7 @@ def find_autoredirect(fqdn):
+ 
+     Returns True if autoredirect is enabled, False otherwise
+     """
+-    filename = '/etc/httpd/conf.d/ipa-rewrite.conf'
++    filename = '/etc/httpd/conf/extra/ipa-rewrite.conf'
+     if os.path.exists(filename):
+         pattern = "^RewriteRule \^/\$ https://%s/ipa/ui \[L,NC,R=301\]" % fqdn
+         p = re.compile(pattern)
+@@ -1030,9 +1030,9 @@ def main():
+     certmap_dir = dsinstance.config_dirname(
+         dsinstance.realm_to_serverid(api.env.realm))
+ 
+-    upgrade(sub_dict, "/etc/httpd/conf.d/ipa.conf", ipautil.SHARE_DIR + "ipa.conf")
+-    upgrade(sub_dict, "/etc/httpd/conf.d/ipa-rewrite.conf", ipautil.SHARE_DIR + "ipa-rewrite.conf")
+-    upgrade(sub_dict, "/etc/httpd/conf.d/ipa-pki-proxy.conf", ipautil.SHARE_DIR + "ipa-pki-proxy.conf", add=True)
++    upgrade(sub_dict, "/etc/httpd/conf/extra/ipa.conf", ipautil.SHARE_DIR + "ipa.conf")
++    upgrade(sub_dict, "/etc/httpd/conf/extra/ipa-rewrite.conf", ipautil.SHARE_DIR + "ipa-rewrite.conf")
++    upgrade(sub_dict, "/etc/httpd/conf/extra/ipa-pki-proxy.conf", ipautil.SHARE_DIR + "ipa-pki-proxy.conf", add=True)
+     if subject_base:
+         upgrade(
+             sub_dict,
+diff --git a/install/tools/man/ipa-upgradeconfig.8 b/install/tools/man/ipa-upgradeconfig.8
+index 43e2ab9..48bc1b6 100644
+--- a/install/tools/man/ipa-upgradeconfig.8
++++ b/install/tools/man/ipa-upgradeconfig.8
+@@ -24,7 +24,7 @@ ipa\-upgradeconfig
+ .SH "DESCRIPTION"
+ A tool to update the IPA Apache configuration during an upgrade.
+ 
+-It examines the VERSION value in the head of \fI/etc/httpd/conf.d/ipa.conf\fR and \fI/etc/httpd/conf.d/ipa\-rewrite.conf\fR and compares this with the templates. If an update is needed then new files are written.
++It examines the VERSION value in the head of \fI/etc/httpd/conf/extra/ipa.conf\fR and \fI/etc/httpd/conf/extra/ipa\-rewrite.conf\fR and compares this with the templates. If an update is needed then new files are written.
+ 
+ It also will convert a CA configured to be accessible via ports 9443, 9444, 9445 and 9446 to be proxied by the IPA web server on ports 80 and 443.
+ 
+diff --git a/ipa-client/ipa-install/ipa-client-automount b/ipa-client/ipa-install/ipa-client-automount
+index 62531bf..000de4e 100755
+--- a/ipa-client/ipa-install/ipa-client-automount
++++ b/ipa-client/ipa-install/ipa-client-automount
+@@ -39,10 +39,10 @@ from ipapython.ipa_log_manager import *
+ from ipapython.dn import DN
+ from ipapython import services as ipaservices
+ 
+-AUTOFS_CONF = '/etc/sysconfig/autofs'
++AUTOFS_CONF = '/etc/conf.d/autofs'
+ NSSWITCH_CONF = '/etc/nsswitch.conf'
+ AUTOFS_LDAP_AUTH = '/etc/autofs_ldap_auth.conf'
+-NFS_CONF = '/etc/sysconfig/nfs'
++NFS_CONF = '/etc/conf.d/nfs'
+ IDMAPD_CONF = '/etc/idmapd.conf'
+ 
+ def parse_options():
+diff --git a/ipa-client/ipa-install/ipa-client-install b/ipa-client/ipa-install/ipa-client-install
+index afed54e..0f42e4b 100755
+--- a/ipa-client/ipa-install/ipa-client-install
++++ b/ipa-client/ipa-install/ipa-client-install
+@@ -603,7 +603,7 @@ def uninstall(options, env):
+             # to this version but not unenrolled/enrolled again
+             # In such case it is OK to fail
+             restored = fstore.restore_file("/etc/ntp.conf")
+-            restored |= fstore.restore_file("/etc/sysconfig/ntpd")
++            restored |= fstore.restore_file("/etc/conf.d/ntpd.conf")
+             if ntp_step_tickers:
+                restored |= fstore.restore_file("/etc/ntp/step-tickers")
+         except Exception:
+diff --git a/ipa-client/ipaclient/ntpconf.py b/ipa-client/ipaclient/ntpconf.py
+index 8c4c653..7c95a46 100644
+--- a/ipa-client/ipaclient/ntpconf.py
++++ b/ipa-client/ipaclient/ntpconf.py
+@@ -98,7 +98,7 @@ def __write_config(path, content):
+ def config_ntp(server_fqdn, fstore = None, sysstore = None):
+     path_step_tickers = "/etc/ntp/step-tickers"
+     path_ntp_conf = "/etc/ntp.conf"
+-    path_ntp_sysconfig = "/etc/sysconfig/ntpd"
++    path_ntp_sysconfig = "/etc/conf.d/ntpd.conf"
+     sub_dict = { }
+     sub_dict["SERVER"] = server_fqdn
+ 
+diff --git a/ipa-client/man/ipa-client-automount.1 b/ipa-client/man/ipa-client-automount.1
+index 5b60503..16ccbea 100644
+--- a/ipa-client/man/ipa-client-automount.1
++++ b/ipa-client/man/ipa-client-automount.1
+@@ -29,7 +29,7 @@ The automount configuration consists of three files:
+ .IP  o
+ /etc/nsswitch.conf
+ .IP  o
+-/etc/sysconfig/autofs
++/etc/conf.d/autofs
+ .IP  o
+ /etc/autofs_ldap_auth.conf
+ 
+@@ -79,7 +79,7 @@ Files that will be configured when SSSD is the automount client (default):
+ .TP
+ Files that will be configured when using the ldap automount client:
+ 
+-/etc/sysconfig/autofs
++/etc/conf.d/autofs
+ 
+ /etc/autofs_ldap_auth.conf
+ 
+diff --git a/ipa-client/man/ipa-client-install.1 b/ipa-client/man/ipa-client-install.1
+index 3496ee3..38df29f 100644
+--- a/ipa-client/man/ipa-client-install.1
++++ b/ipa-client/man/ipa-client-install.1
+@@ -202,7 +202,7 @@ Files that will be replaced if they exist and SSSD is not configured (\-\-no\-ss
+ Files replaced if NTP is enabled:
+ 
+ /etc/ntp.conf\p
+-/etc/sysconfig/ntpd\p
++/etc/conf.d/ntpd.conf\p
+ /etc/ntp/step\-tickers\p
+ .TP
+ Files always created (replacing existing content):
+diff --git a/ipapython/certmonger.py b/ipapython/certmonger.py
+index 03f4b23..7401ae0 100644
+--- a/ipapython/certmonger.py
++++ b/ipapython/certmonger.py
+@@ -298,7 +298,7 @@ def add_principal_to_cas(principal):
+     If the hostname we were passed to use in ipa-client-install doesn't
+     match the value of gethostname() then we need to append
+     -k host/HOSTNAME@REALM to the ca helper defined for
+-    /usr/libexec/certmonger/ipa-submit.
++    /usr/lib/certmonger/certmonger/ipa-submit.
+ 
+     We also need to restore this on uninstall.
+ 
+diff --git a/ipapython/platform/base/systemd.py b/ipapython/platform/base/systemd.py
+index f122018..6f4f6d7 100644
+--- a/ipapython/platform/base/systemd.py
++++ b/ipapython/platform/base/systemd.py
+@@ -25,7 +25,7 @@ from ipalib import api
+ 
+ class SystemdService(base.PlatformService):
+     SYSTEMD_ETC_PATH = "/etc/systemd/system/"
+-    SYSTEMD_LIB_PATH = "/lib/systemd/system/"
++    SYSTEMD_LIB_PATH = "/usr/lib/systemd/system/"
+     SYSTEMD_SRV_TARGET = "%s.target.wants"
+ 
+     def __init__(self, service_name, systemd_name):
+@@ -98,7 +98,7 @@ class SystemdService(base.PlatformService):
+ 
+     def stop(self, instance_name="", capture_output=True):
+         instance = self.service_instance(instance_name)
+-        args = ["/bin/systemctl", "stop", instance]
++        args = ["/usr/bin/systemctl", "stop", instance]
+ 
+         # The --ignore-dependencies switch is used to avoid possible
+         # deadlock during the shutdown transaction. For more details, see
+@@ -116,7 +116,7 @@ class SystemdService(base.PlatformService):
+         super(SystemdService, self).stop(instance_name,update_service_list=update_service_list)
+ 
+     def start(self, instance_name="", capture_output=True, wait=True):
+-        ipautil.run(["/bin/systemctl", "start", self.service_instance(instance_name)], capture_output=capture_output)
++        ipautil.run(["/usr/bin/systemctl", "start", self.service_instance(instance_name)], capture_output=capture_output)
+         if 'context' in api.env and api.env.context in ['ipactl', 'installer']:
+             update_service_list = True
+         else:
+@@ -128,7 +128,7 @@ class SystemdService(base.PlatformService):
+     def restart(self, instance_name="", capture_output=True, wait=True):
+         # Restart command is broken before systemd-36-3.fc16
+         # If you have older systemd version, restart of dependent services will hang systemd indefinetly
+-        ipautil.run(["/bin/systemctl", "restart", self.service_instance(instance_name)], capture_output=capture_output)
++        ipautil.run(["/usr/bin/systemctl", "restart", self.service_instance(instance_name)], capture_output=capture_output)
+         if wait and self.is_running(instance_name):
+             self.__wait_for_open_ports(self.service_instance(instance_name))
+ 
+@@ -138,7 +138,7 @@ class SystemdService(base.PlatformService):
+         while True:
+             try:
+                 (sout, serr, rcode) = ipautil.run(
+-                    ["/bin/systemctl", "is-active", instance],
++                    ["/usr/bin/systemctl", "is-active", instance],
+                     capture_output=True
+                 )
+             except ipautil.CalledProcessError as e:
+@@ -158,7 +158,7 @@ class SystemdService(base.PlatformService):
+     def is_installed(self):
+         installed = True
+         try:
+-            (sout,serr,rcode) = ipautil.run(["/bin/systemctl", "list-unit-files", "--full"])
++            (sout,serr,rcode) = ipautil.run(["/usr/bin/systemctl", "list-unit-files", "--full"])
+             if rcode != 0:
+                 installed = False
+             else:
+@@ -173,7 +173,7 @@ class SystemdService(base.PlatformService):
+     def is_enabled(self, instance_name=""):
+         enabled = True
+         try:
+-            (sout,serr,rcode) = ipautil.run(["/bin/systemctl", "is-enabled", self.service_instance(instance_name)])
++            (sout,serr,rcode) = ipautil.run(["/usr/bin/systemctl", "is-enabled", self.service_instance(instance_name)])
+             if rcode != 0:
+                 enabled = False
+         except ipautil.CalledProcessError, e:
+@@ -218,7 +218,7 @@ class SystemdService(base.PlatformService):
+                         # Link exists and it is broken, make new one
+                         os.unlink(srv_lnk)
+                         os.symlink(self.lib_path, srv_lnk)
+-                ipautil.run(["/bin/systemctl", "--system", "daemon-reload"])
++                ipautil.run(["/usr/bin/systemctl", "--system", "daemon-reload"])
+             except:
+                 pass
+         else:
+@@ -236,7 +236,7 @@ class SystemdService(base.PlatformService):
+                 if ipautil.dir_exists(srv_tgt):
+                     if os.path.islink(srv_lnk):
+                         os.unlink(srv_lnk)
+-                ipautil.run(["/bin/systemctl", "--system", "daemon-reload"])
++                ipautil.run(["/usr/bin/systemctl", "--system", "daemon-reload"])
+             except:
+                 pass
+         else:
+@@ -244,13 +244,13 @@ class SystemdService(base.PlatformService):
+ 
+     def __enable(self, instance_name=""):
+         try:
+-            ipautil.run(["/bin/systemctl", "enable", self.service_instance(instance_name)])
++            ipautil.run(["/usr/bin/systemctl", "enable", self.service_instance(instance_name)])
+         except ipautil.CalledProcessError, e:
+             pass
+ 
+     def __disable(self, instance_name=""):
+         try:
+-            ipautil.run(["/bin/systemctl", "disable", self.service_instance(instance_name)])
++            ipautil.run(["/usr/bin/systemctl", "disable", self.service_instance(instance_name)])
+         except ipautil.CalledProcessError, e:
+             pass
+ 
+diff --git a/ipaserver/install/cainstance.py b/ipaserver/install/cainstance.py
+index 126bbae..a1f729e 100644
+--- a/ipaserver/install/cainstance.py
++++ b/ipaserver/install/cainstance.py
+@@ -57,7 +57,7 @@ from ipaserver.install.installutils import stopped_service
+ from ipaserver.plugins import ldap2
+ from ipapython.ipa_log_manager import *
+ 
+-HTTPD_CONFD = "/etc/httpd/conf.d/"
++HTTPD_CONFD = "/etc/httpd/conf/extra/"
+ DEFAULT_DSPORT = dogtag.install_constants.DS_PORT
+ 
+ PKI_USER = "pkiuser"
+diff --git a/ipaserver/install/httpinstance.py b/ipaserver/install/httpinstance.py
+index 689e657..d4a3252 100644
+--- a/ipaserver/install/httpinstance.py
++++ b/ipaserver/install/httpinstance.py
+@@ -37,8 +37,8 @@ from ipaserver.install import sysupgrade
+ from ipalib import api
+ 
+ HTTPD_DIR = "/etc/httpd"
+-SSL_CONF = HTTPD_DIR + "/conf.d/ssl.conf"
+-NSS_CONF = HTTPD_DIR + "/conf.d/nss.conf"
++SSL_CONF = HTTPD_DIR + "/conf/extra/ssl.conf"
++NSS_CONF = HTTPD_DIR + "/conf/extra/nss.conf"
+ 
+ selinux_warning = """
+ WARNING: could not set selinux boolean(s) %(var)s to true.  The web
+@@ -223,7 +223,7 @@ class HTTPInstance(service.Service):
+     def configure_httpd_ccache(self):
+         pent = pwd.getpwnam("apache")
+         ccache = '/tmp/krb5cc_%d' % pent.pw_uid
+-        filepath = '/etc/sysconfig/httpd'
++        filepath = '/etc/conf.d/apache'
+         if not os.path.exists(filepath):
+             # file doesn't exist; create it with correct ownership & mode
+             open(filepath, 'a').close()
+@@ -237,17 +237,17 @@ class HTTPInstance(service.Service):
+         ipaservices.restore_context(filepath)
+ 
+     def __configure_http(self):
+-        target_fname = '/etc/httpd/conf.d/ipa.conf'
++        target_fname = '/etc/httpd/conf/extra/ipa.conf'
+         http_txt = ipautil.template_file(ipautil.SHARE_DIR + "ipa.conf", self.sub_dict)
+-        self.fstore.backup_file("/etc/httpd/conf.d/ipa.conf")
++        self.fstore.backup_file("/etc/httpd/conf/extra/ipa.conf")
+         http_fd = open(target_fname, "w")
+         http_fd.write(http_txt)
+         http_fd.close()
+         os.chmod(target_fname, 0644)
+ 
+-        target_fname = '/etc/httpd/conf.d/ipa-rewrite.conf'
++        target_fname = '/etc/httpd/conf/extra/ipa-rewrite.conf'
+         http_txt = ipautil.template_file(ipautil.SHARE_DIR + "ipa-rewrite.conf", self.sub_dict)
+-        self.fstore.backup_file("/etc/httpd/conf.d/ipa-rewrite.conf")
++        self.fstore.backup_file("/etc/httpd/conf/extra/ipa-rewrite.conf")
+         http_fd = open(target_fname, "w")
+         http_fd.write(http_txt)
+         http_fd.close()
+@@ -285,8 +285,8 @@ class HTTPInstance(service.Service):
+ 
+     def __add_include(self):
+         """This should run after __set_mod_nss_port so is already backed up"""
+-        if installutils.update_file(NSS_CONF, '</VirtualHost>', 'Include conf.d/ipa-rewrite.conf\n</VirtualHost>') != 0:
+-            print "Adding Include conf.d/ipa-rewrite to %s failed." % NSS_CONF
++        if installutils.update_file(NSS_CONF, '</VirtualHost>', 'Include conf/extra/ipa-rewrite.conf\n</VirtualHost>') != 0:
++            print "Adding Include conf/extra/ipa-rewrite to %s failed." % NSS_CONF
+ 
+     def __setup_ssl(self):
+         fqdn = self.fqdn
+@@ -425,7 +425,7 @@ class HTTPInstance(service.Service):
+         if not enabled is None and not enabled:
+             self.disable()
+ 
+-        for f in ["/etc/httpd/conf.d/ipa.conf", SSL_CONF, NSS_CONF]:
++        for f in ["/etc/httpd/conf/extra/ipa.conf", SSL_CONF, NSS_CONF]:
+             try:
+                 self.fstore.restore_file(f)
+             except ValueError, error:
+@@ -433,9 +433,9 @@ class HTTPInstance(service.Service):
+                 pass
+ 
+         # Remove the configuration files we create
+-        installutils.remove_file("/etc/httpd/conf.d/ipa-rewrite.conf")
+-        installutils.remove_file("/etc/httpd/conf.d/ipa.conf")
+-        installutils.remove_file("/etc/httpd/conf.d/ipa-pki-proxy.conf")
++        installutils.remove_file("/etc/httpd/conf/extra/ipa-rewrite.conf")
++        installutils.remove_file("/etc/httpd/conf/extra/ipa.conf")
++        installutils.remove_file("/etc/httpd/conf/extra/ipa-pki-proxy.conf")
+ 
+         for var in ["httpd_can_network_connect", "httpd_manage_ipa"]:
+             sebool_state = self.restore_state(var)
+diff --git a/ipaserver/install/ipa_backup.py b/ipaserver/install/ipa_backup.py
+index 12c6215..1fb8334 100644
+--- a/ipaserver/install/ipa_backup.py
++++ b/ipaserver/install/ipa_backup.py
+@@ -126,7 +126,7 @@ class Backup(admintool.AdminTool):
+         '/etc/sysconfig/pki-ca',
+         '/etc/sysconfig/pki-tomcat',
+         '/etc/sysconfig/dirsrv',
+-        '/etc/sysconfig/ntpd',
++        '/etc/conf.d/ntpd.conf',
+         '/etc/sysconfig/krb5kdc',
+         '/etc/sysconfig/pki/ca/pki-ca',
+         '/etc/sysconfig/authconfig',
+@@ -140,10 +140,10 @@ class Backup(admintool.AdminTool):
+         '/etc/security/limits.conf',
+         '/etc/httpd/conf/password.conf',
+         '/etc/httpd/conf/ipa.keytab',
+-        '/etc/httpd/conf.d/ipa-pki-proxy.conf',
+-        '/etc/httpd/conf.d/ipa-rewrite.conf',
+-        '/etc/httpd/conf.d/nss.conf',
+-        '/etc/httpd/conf.d/ipa.conf',
++        '/etc/httpd/conf/extra/ipa-pki-proxy.conf',
++        '/etc/httpd/conf/extra/ipa-rewrite.conf',
++        '/etc/httpd/conf/extra/nss.conf',
++        '/etc/httpd/conf/extra/ipa.conf',
+         '/etc/ssh/sshd_config',
+         '/etc/ssh/ssh_config',
+         '/etc/krb5.conf',
+diff --git a/ipaserver/install/ntpinstance.py b/ipaserver/install/ntpinstance.py
+index f2e8ffe..00615b9 100644
+--- a/ipaserver/install/ntpinstance.py
++++ b/ipaserver/install/ntpinstance.py
+@@ -35,7 +35,7 @@ class NTPInstance(service.Service):
+     def __write_config(self):
+ 
+         self.fstore.backup_file("/etc/ntp.conf")
+-        self.fstore.backup_file("/etc/sysconfig/ntpd")
++        self.fstore.backup_file("/etc/conf.d/ntpd.conf")
+ 
+         # We use the OS variable to point it towards either the rhel
+         # or fedora pools. Other distros should be added in the future
+@@ -99,7 +99,7 @@ class NTPInstance(service.Service):
+         #read in memory, find OPTIONS, check/change it, then overwrite file
+         needopts = [ {'val':'-x', 'need':True},
+                      {'val':'-g', 'need':True} ]
+-        fd = open("/etc/sysconfig/ntpd", "r")
++        fd = open("/etc/conf.d/ntpd.conf", "r")
+         lines = fd.readlines()
+         fd.close()
+         for line in lines:
+@@ -118,7 +118,7 @@ class NTPInstance(service.Service):
+ 
+         done = False
+         if newopts:
+-            fd = open("/etc/sysconfig/ntpd", "w")
++            fd = open("/etc/conf.d/ntpd.conf", "w")
+             for line in lines:
+                 if not done:
+                     sline = line.strip()
+-- 
+1.9.2
+

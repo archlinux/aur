@@ -1,0 +1,24 @@
+From e4288e533f9dc3111d4b552b51b9e236459c7415 Mon Sep 17 00:00:00 2001
+From: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+Date: Wed, 16 Apr 2014 19:34:24 -0400
+Subject: [PATCH 6/7] Disable make testcert
+
+---
+ Makefile | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index eeeb605..c80ff33 100644
+--- a/Makefile
++++ b/Makefile
+@@ -110,7 +110,6 @@ lint: bootstrap-autogen
+ 
+ 
+ test:
+-	./make-testcert
+ 	./make-test
+ 
+ release-update:
+-- 
+1.9.2
+

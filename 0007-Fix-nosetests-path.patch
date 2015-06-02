@@ -1,0 +1,25 @@
+From 9a3ed6203f651568f2f02debbaa223cb3e95fcfc Mon Sep 17 00:00:00 2001
+From: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+Date: Wed, 16 Apr 2014 19:34:55 -0400
+Subject: [PATCH 7/7] Fix nosetests path
+
+---
+ make-test | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/make-test b/make-test
+index 1cf5bb3..23a5790 100755
+--- a/make-test
++++ b/make-test
+@@ -12,7 +12,7 @@ from subprocess import call
+ 
+ versions = ('2.4', '2.5', '2.6', '2.7')
+ python = '/usr/bin/python'
+-nose = '/usr/bin/nosetests'
++nose = '/usr/bin/nosetests2'
+ ran = []
+ fail = []
+ 
+-- 
+1.9.2
+
