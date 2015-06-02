@@ -1,0 +1,11 @@
+--- iptrafvol.pl.ORIG	2013-05-31 08:52:33.991052429 +1000
++++ iptrafvol.pl	2013-05-31 08:52:44.260592272 +1000
+@@ -569,6 +569,8 @@
+ 
+ Suppress version information in output.
+ 
++=back
++
+ =head1 FILES
+ 
+ The default logging directory for iptrafvol's data is F</var/log/iptrafvol>. You can configure this by editing the config section in the header area of F<iptrafvol.pl>.
