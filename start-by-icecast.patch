@@ -1,0 +1,16 @@
+--- source/conf/icecast.xml.in~	2014-02-19 21:10:37.000000000 +0100
++++ source/conf/icecast.xml.in	2014-02-19 21:11:54.000000000 +0100
+@@ -230,11 +230,9 @@
+ 
+     <security>
+         <chroot>0</chroot>
+-        <!--
+         <changeowner>
+-            <user>nobody</user>
+-            <group>nogroup</group>
++            <user>icecast</user>
++            <group>icecast</group>
+         </changeowner>
+-        -->
+     </security>
+ </icecast>

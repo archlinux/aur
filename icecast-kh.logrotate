@@ -1,0 +1,12 @@
+/var/log/icecast/*log {
+    missingok
+    notifempty
+    sharedscripts
+    postrotate
+        PID=`pgrep icecast`
+        if [ $PID ]; then
+	         		/bin/kill -hup $PID
+      		fi
+    endscript
+}
+
