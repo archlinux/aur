@@ -1,0 +1,18 @@
+pkgbase = husk-git
+	pkgdesc = An iptables front-end to allow rules to be expressed in a more flexible, free-form style using language.
+	pkgver = 20130604
+	pkgrel = 1
+	url = http://huskfw.info/
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = perl
+	depends = perl-config-inifiles
+	depends = perl-config-simple
+	conflicts = husk
+	backup = etc/husk/addr_groups.conf
+	backup = etc/husk/husk.conf
+	backup = etc/husk/interfaces.conf
+
+pkgname = husk-git
+
