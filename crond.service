@@ -1,0 +1,9 @@
+[Unit]
+Description=Vixie-cron Periodic Command Scheduler
+
+[Service]
+ExecStart=/usr/bin/cron
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,5 @@
+/vixie-cron-*.pkg.tar.xz
+/vixie-cron-*.patch.bz2
+/vixie-cron-*.tar.bz2
+/pkg/
+/src/

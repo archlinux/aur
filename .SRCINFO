@@ -1,0 +1,25 @@
+pkgbase = vixie-cron
+	pkgdesc = Paul Vixie's cron daemon, a fully featured crond implementation
+	pkgver = 4.1
+	pkgrel = 12
+	url = ftp://ftp.isc.org/isc/cron/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	provides = cron
+	provides = dcron
+	backup = etc/crontab
+	source = ftp://ftp.snt.utwente.nl/pub/linux/gentoo/distfiles//vixie-cron-4.1.tar.bz2
+	source = ftp://ftp.snt.utwente.nl/pub/linux/gentoo/distfiles//vixie-cron-4.1-gentoo-r4.patch.bz2
+	source = crond.service
+	source = cronrunparts
+	source = crontab
+	md5sums = 09dc04f9879684d27c64c910174a9536
+	md5sums = c674b03c6e76798b1c74f6070df167cc
+	md5sums = 2765095708207c2ae4ff31b5af94181d
+	md5sums = 00ede56aadf073c839e600033fbd6cb4
+	md5sums = b8b1d315dd2f92528dc6fa7ae8cef32b
+
+pkgname = vixie-cron
+
