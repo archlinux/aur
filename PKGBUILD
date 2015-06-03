@@ -3,15 +3,22 @@
 
 pkgname=agendav
 pkgver=1.2.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source multilanguage CalDAV web client"
 arch=(any)
 url="http://agendav.org/"
 license=('GPL')
 depends=('php')
+# FIXME
+# The last 3 entries are there so we don't nuke configs from the old broken
+# package. We should probably remove them with the next update so we don't back
+# those file up every time...
 backup=("etc/webapps/agendav/config.php"
         "etc/webapps/agendav/caldav.php"
-        "etc/webapps/agendav/database.php")
+        "etc/webapps/agendav/database.php"
+        "usr/share/webapps/agendav/web/config/config.php"
+        "usr/share/webapps/agendav/web/config/caldav.php"
+        "usr/share/webapps/agendav/web/config/database.php")
 source=($pkgname-$pkgver.tar.gz::https://github.com/adobo/${pkgname}/archive/${pkgver}.tar.gz
         nginx.example.conf
         apache.example.conf)
@@ -23,21 +30,22 @@ sha1sums=('621a7fbb8909b4852ffa7e53dab086ca314d3cae'
 package() {
     cd "$srcdir/$pkgname-$pkgver"
 
+    mkdir -p "${pkgdir}/usr/share/webapps/agendav/web/config"
     mkdir -p "${pkgdir}/etc/webapps/agendav"
 
     install -Dm644 web/config/config.php.template \
-        "${pkgdir}/usr/share/webapps/agendav/web/config/config.php"
-    install -Dm644 web/config/caldav.php.template \
-        "${pkgdir}/usr/share/webapps/agendav/web/config/caldav.php"
-    install -Dm644 web/config/database.php.template \
-        "${pkgdir}/usr/share/webapps/agendav/web/config/database.php"
-
-    ln -s /usr/share/webapps/agendav/web/config/config.php \
         "${pkgdir}/etc/webapps/agendav/config.php"
-    ln -s /usr/share/webapps/agendav/web/config/caldav.php \
+    install -Dm644 web/config/caldav.php.template \
         "${pkgdir}/etc/webapps/agendav/caldav.php"
-    ln -s /usr/share/webapps/agendav/web/config/database.php \
+    install -Dm644 web/config/database.php.template \
         "${pkgdir}/etc/webapps/agendav/database.php"
+
+    ln -s /etc/webapps/agendav/config.php \
+        "${pkgdir}/usr/share/webapps/agendav/web/config/config.php"
+    ln -s /etc/webapps/agendav/caldav.php \
+        "${pkgdir}/usr/share/webapps/agendav/web/config/caldav.php"
+    ln -s /etc/webapps/agendav/database.php \
+        "${pkgdir}/usr/share/webapps/agendav/web/config/database.php"
 
     install -Dm644 "$srcdir/nginx.example.conf" \
         "$pkgdir/etc/webapps/agendav/nginx.example.conf"

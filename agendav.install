@@ -1,3 +1,16 @@
 post_install() {
    echo "Check http://wiki.archlinux.org/index.php/AgenDAV for details."
 }
+
+post_upgrade() {
+    echo "Since pkgrel -3, the incorrect symlinking of config files in this "
+    echo "package has been fixed. This however means pacman will install "
+    echo "the correct files as /etc/webapps/agendav/*.php.pacnew and leave a "
+    echo "broken symlink as *.php. This means AgenDAV will report no config "
+    echo "has been found."
+    echo
+    echo "Your existing config files should have been backed up in "
+    echo "/usr/share/webapps/agendav/config/web/*.php.pacbak. This means you "
+    echo "can probably fix things up by running this now:"
+    echo "FIXME"
+}
