@@ -1,0 +1,10 @@
+post_install() {
+	id grafana 2>/dev/null || useradd -d /var/lib/grafana -r -U -M -s /bin/false grafana
+	mkdir -p "/var/lib/grafana" "/var/log/grafana/"
+	chown grafana.grafana /var/lib/grafana /var/log/grafana
+}
+
+
+post_remove() {
+	userdel grafana
+}

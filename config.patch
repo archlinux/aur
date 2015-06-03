@@ -1,0 +1,49 @@
+diff --git a/conf/defaults.ini b/conf/defaults.ini
+index 258a019..6a7bd6b 100644
+--- a/conf/defaults.ini
++++ b/conf/defaults.ini
+@@ -9,11 +9,11 @@ app_mode = production
+ [paths]
+ # Path to where grafana can store temp files, sessions, and the sqlite3 db (if that is used)
+ #
+-data = data
++data = /var/lib/grafana
+ #
+ # Directory where grafana can store logs
+ #
+-logs = data/log
++logs = /var/log/grafana
+ 
+ #################################### Server ####################################
+ [server]
+@@ -40,7 +40,7 @@ root_url = %(protocol)s://%(domain)s:%(http_port)s/
+ router_logging = false
+ 
+ # the path relative working path
+-static_root_path = public
++static_root_path = /usr/share/grafana/public
+ 
+ # enable gzip
+ enable_gzip = false
+@@ -62,7 +62,7 @@ password =
+ ssl_mode = disable
+ 
+ # For "sqlite3" only, path relative to data_path setting
+-path = grafana.db
++path = /var/lib/grafanagrafana.db
+ 
+ #################################### Session ####################################
+ [session]
+diff --git a/pkg/components/renderer/renderer.go b/pkg/components/renderer/renderer.go
+index 9d5ddd0..aa0aa9e 100644
+--- a/pkg/components/renderer/renderer.go
++++ b/pkg/components/renderer/renderer.go
+@@ -21,7 +21,7 @@ type RenderOpts struct {
+ 
+ func RenderToPng(params *RenderOpts) (string, error) {
+ 	log.Info("PhantomRenderer::renderToPng url %v", params.Url)
+-	binPath, _ := filepath.Abs(filepath.Join(setting.PhantomDir, "phantomjs"))
++	binPath := "/usr/bin/phantomjs"
+ 	scriptPath, _ := filepath.Abs(filepath.Join(setting.PhantomDir, "render.js"))
+ 	pngPath, _ := filepath.Abs(filepath.Join(setting.ImagesDir, util.GetRandomString(20)))
+ 	pngPath = pngPath + ".png"
