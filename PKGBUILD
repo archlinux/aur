@@ -6,12 +6,12 @@
 
 pkgname=xpdf
 pkgver=3.04
-pkgrel=2
+pkgrel=3
 pkgdesc='Viewer for Portable Document Format (PDF) files'
 url='http://www.foolabs.com/xpdf/'
 license=('GPL2')
 arch=('i686' 'x86_64')
-depends=('lesstif' 'gsfonts' 'libxt')
+depends=('lesstif' 'gsfonts' 'libxt' 'libpaper')
 optdepends=('poppler: tools that used to be included in xpdf'
             'desktop-file-utils: for desktop environments')
 source=("ftp://ftp.foolabs.com/pub/${pkgname}/${pkgname}-${pkgver%_*}.tar.gz"

@@ -1,7 +1,7 @@
 pkgbase = xpdf
 	pkgdesc = Viewer for Portable Document Format (PDF) files
 	pkgver = 3.04
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.foolabs.com/xpdf/
 	install = install
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = xpdf
 	depends = lesstif
 	depends = gsfonts
 	depends = libxt
+	depends = libpaper
 	optdepends = poppler: tools that used to be included in xpdf
 	optdepends = desktop-file-utils: for desktop environments
 	backup = etc/xpdfrc
