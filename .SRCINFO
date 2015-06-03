@@ -1,7 +1,7 @@
 pkgbase = eterm
 	pkgdesc = A vt102 terminal emulator intended as a replacement for xterm.
 	pkgver = 0.9.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.eterm.org/
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,8 @@ pkgbase = eterm
 	depends = libast>=0.7
 	depends = libxmu
 	depends = libxres
+	provides = esetroot
+	conflicts = esetroot
 	options = !libtool
 	source = http://www.eterm.org/download/Eterm-0.9.6.tar.gz
 	md5sums = 90e424584c22d4050496874d14f78bb1
