@@ -7,7 +7,7 @@
 ###########################################################
 
 pkgname=i2p-bin
-pkgver=0.9.19
+pkgver=0.9.20
 pkgrel=1
 pkgdesc="A distributed anonymous network (pre-compiled binary)"
 url="http://www.i2p2.de"
@@ -35,12 +35,12 @@ source=("${_url}/i2pinstall_${pkgver}.jar"
             'i2prouter.service' 'i2prouter.sh' 'wrapper.config' 'router.config')
 }
 
-sha256sums=('d16f68fff3a34d161843a09e90fff1ac5eae8ccb319a43257244ec0e764a11c1'
+sha256sums=('f8116f2559a40b835854aa2fdb1aedcab518d1b29414e60bdd714c86412bb27d'
             'SKIP'
             '842b529ae23bc82fd78e986dd7cc683bd7b671e93421de57f279dc3f4d5d0fd2'
             'ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53'
             'a76e7b6ccd8f49b51d22012887e1f0101db3bfe6aeebe1bc416b48da4e206b27'
-            'c001f045e52ab82154b21125384dbc4f1d2437376fc65c5d83987051e42b5409')
+            '1527afbadcf849ef551b3b7b68d1a29eec316ee620f5320f2933f73ee9924978')
 
 # https://geti2p.net/en/get-involved/develop/release-signing-key
 validpgpkeys=('2D3D2D03910C6504C1210C65EE60C0C8EE7256A8')
