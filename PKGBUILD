@@ -3,7 +3,7 @@
 
 pkgname=gtk2-perl
 pkgver=1.2495
-pkgrel=1
+pkgrel=2
 pkgdesc="Perl bindings for GTK+ 2.x"
 arch=(i686 x86_64)
 license=('LGPL')
@@ -35,4 +35,11 @@ build() {
 package() {
   cd Gtk2-$pkgver
   make install DESTDIR="${pkgdir}"
+# template start; name=perl-binary-module-dependency; version=1;
+if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
+	_perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
+	_perlver_max=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]+1);')
+	depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
+fi
+# template end;
 }
