@@ -5,13 +5,13 @@
 _pkgbase=julia
 pkgbase=${_pkgbase}-git
 pkgname=('julia-git' 'julia-git-docs')
-pkgver=0.4.0.dev.5049.g556bbe3
+pkgver=0.4.0.dev.5181.g98c144b
 pkgrel=1
 pkgdesc='High-level, high-performance, dynamic programming language'
 arch=('i686' 'x86_64')
 url="http://julialang.org"
 license=('GPL')
-makedepends=('gcc-fortran' 'arpack' 'fftw' 'git' 'gmp' 'libgit2' 'libunwind' 'llvm' 'mpfr' 'openlibm' 'openspecfun' 'pcre' 'suitesparse' 'patchelf')
+makedepends=('gcc-fortran' 'arpack' 'fftw' 'git' 'gmp' 'libgit2' 'libunwind' 'llvm' 'mpfr' 'openlibm' 'openspecfun' 'pcre2' 'suitesparse' 'patchelf')
 # Needed if building the documentation
 #makedepends+=('python2-sphinx' 'python2-sphinx_rtd_theme' 'python-pip' 'texlive-langcjk' 'texlive-latexextra')
 options=('!emptydirs')
@@ -73,7 +73,7 @@ build() {
 }
 
 package_julia-git() {
-  depends=('arpack' 'fftw' 'gmp' 'libgit2' 'libunwind' 'llvm' 'mpfr' 'openlibm' 'openspecfun' 'pcre' 'suitesparse' 'patchelf' 'hicolor-icon-theme' 'xdg-utils') # 'utf8proc' (AUR) 'intel-mkl' (AUR)
+  depends=('arpack' 'fftw' 'gmp' 'libgit2' 'libunwind' 'llvm' 'mpfr' 'openlibm' 'openspecfun' 'pcre2' 'suitesparse' 'patchelf' 'hicolor-icon-theme' 'xdg-utils') # 'utf8proc' (AUR) 'intel-mkl' (AUR)
   optdepends=('gnuplot: If using the Gaston Package from julia')
   install=julia.install
   provides=('julia')
