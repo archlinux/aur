@@ -15,10 +15,7 @@ depends=('php')
 # those file up every time...
 backup=("etc/webapps/agendav/config.php"
         "etc/webapps/agendav/caldav.php"
-        "etc/webapps/agendav/database.php"
-        "usr/share/webapps/agendav/web/config/config.php"
-        "usr/share/webapps/agendav/web/config/caldav.php"
-        "usr/share/webapps/agendav/web/config/database.php")
+        "etc/webapps/agendav/database.php")
 source=($pkgname-$pkgver.tar.gz::https://github.com/adobo/${pkgname}/archive/${pkgver}.tar.gz
         nginx.example.conf
         apache.example.conf)

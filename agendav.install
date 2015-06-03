@@ -2,15 +2,19 @@ post_install() {
    echo "Check http://wiki.archlinux.org/index.php/AgenDAV for details."
 }
 
-post_upgrade() {
-    echo "Since pkgrel -3, the incorrect symlinking of config files in this "
-    echo "package has been fixed. This however means pacman will install "
-    echo "the correct files as /etc/webapps/agendav/*.php.pacnew and leave a "
-    echo "broken symlink as *.php. This means AgenDAV will report no config "
-    echo "has been found."
-    echo
-    echo "Your existing config files should have been backed up in "
-    echo "/usr/share/webapps/agendav/config/web/*.php.pacbak. This means you "
-    echo "can probably fix things up by running this now:"
-    echo "FIXME"
+pre_upgrade() {
+    ## Fix mess caused by the old package which had the symlinks the wrong way
+    ## around, so the user's config doesn't get lost...
+    for f in config.php caldav.php database.php; do
+        if [[ -h "/etc/webapps/agendav/$f" ]]; then
+            echo
+            echo "==> Fixing broken $f symlink from old package..."
+            # remove symlink first
+            echo "rm /etc/webapps/agendav/$f"
+            rm "/etc/webapps/agendav/$f"
+            # now move the real file (with the user's config) to /etc
+            echo "mv /usr/share/webapps/agendav/web/config/$f /etc/webapps/agendav"
+            mv "/usr/share/webapps/agendav/web/config/$f" /etc/webapps/agendav
+        fi
+    done
 }
