@@ -5,15 +5,13 @@
 # Contributor: Brad Fanella <bradfanella@archlinux.us>
 pkgname=eterm
 pkgver=0.9.6
-pkgrel=2
+pkgrel=1
 pkgdesc="A vt102 terminal emulator intended as a replacement for xterm."
 arch=('i686' 'x86_64')
 url="http://www.eterm.org/"
 license=('custom')
 depends=('freetype2>=2.3.5' 'libast>=0.7' 'libxmu' 'libxres')
 options=('!libtool')
-provides=('esetroot')
-conflicts=('esetroot')
 source=(http://www.eterm.org/download/Eterm-${pkgver}.tar.gz)
 md5sums=('90e424584c22d4050496874d14f78bb1')
 
