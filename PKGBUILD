@@ -1,16 +1,16 @@
 # Maintainer: Aleksey Filippov <sarum9in@gmail.com>
 
 pkgname=grpc
-pkgver=0.9.0
+pkgver=0.9.1
 _pkgver=$(echo $pkgver | tr . _)
-pkgrel=2
+pkgrel=1
 pkgdesc="A high performance, open source, general RPC framework that puts mobile and HTTP/2 first."
 arch=('i686' 'x86_64')
 url='http://www.grpc.io/'
 license=('BSD')
 depends=('openssl' 'protobuf3')
 source=(https://github.com/$pkgname/$pkgname/archive/release-$_pkgver.tar.gz)
-md5sums=('e500db71cb1f114c4a15a5d6d141df7a')
+md5sums=('5d5aa48b07e9316d1633eda5c2f61d96')
 
 build() {
   cd $pkgname-release-$_pkgver
