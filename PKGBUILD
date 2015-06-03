@@ -3,13 +3,12 @@
 
 pkgname=esetroot
 pkgver=20030422
-pkgrel=6
+pkgrel=7
 pkgdesc="Eterm's root background setter, packaged separately."
 url="http://www.eterm.org/"
 arch=('i686' 'x86_64')
 license=('custom')
 depends=('imlib2')
-conflicts=('eterm')
 source=(https://celti.name/arch/$pkgname-$pkgver.tar.gz)
 md5sums=('6a22103b84f6c46f8b18f4ce1222cfc8')
 

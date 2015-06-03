@@ -1,13 +1,12 @@
 pkgbase = esetroot
 	pkgdesc = Eterm's root background setter, packaged separately.
 	pkgver = 20030422
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.eterm.org/
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = imlib2
-	conflicts = eterm
 	source = https://celti.name/arch/esetroot-20030422.tar.gz
 	md5sums = 6a22103b84f6c46f8b18f4ce1222cfc8
 
