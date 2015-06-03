@@ -1,7 +1,7 @@
 pkgbase = geoip-citydata
 	pkgdesc = City database for geoip IP location lookups
-	pkgver = 20150204
-	pkgrel = 2
+	pkgver = 20150603
+	pkgrel = 1
 	url = http://www.maxmind.com/
 	arch = any
 	license = CCPL
