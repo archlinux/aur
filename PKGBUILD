@@ -1,18 +1,18 @@
-# Maintainer: Felix Yan <felixonmars@gmail.com>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: N30N <archlinux@alunamation.com>
 # Contributor: giniu <gginiu@gmail.com>
 
 pkgbase=python-ipdb
 pkgname=(python-ipdb python2-ipdb)
-pkgver=0.8
-pkgrel=2
+pkgver=0.8.1
+pkgrel=1
 pkgdesc="IPython-enabled pdb"
 url="http://pypi.python.org/pypi/ipdb"
 makedepends=('python-setuptools' 'python2-setuptools' 'ipython' 'ipython2')
 arch=("any")
 license=("GPL")
 source=("https://pypi.python.org/packages/source/i/ipdb/ipdb-${pkgver}.zip")
-md5sums=("96dca0712efa01aa5eaf6b22071dd3ed")
+md5sums=('dbaded677eae99ed391fccc83e737c4f')
 
 prepare() {
   cp -a ipdb-${pkgver}{,-py2}
