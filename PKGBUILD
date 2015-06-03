@@ -4,8 +4,8 @@
 # Contributor: David Rosenstrauch <darose@darose.net>
 
 pkgname=ddclient
-pkgver=3.8.2
-pkgrel=3
+pkgver=3.8.3
+pkgrel=1
 pkgdesc="Update dynamic DNS entries for accounts on many dynamic DNS services"
 arch=('any')
 url="http://ddclient.sourceforge.net"
@@ -14,7 +14,7 @@ depends=('perl-io-socket-ssl' 'perl-digest-sha1' 'net-tools')
 backup=('etc/ddclient/ddclient.conf')
 source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.bz2
         $pkgname.service)
-md5sums=('62cd5fe93ced2c794d5f441f9d908841'
+md5sums=('3b426ae52d509e463b42eeb08fb89e0b'
          '1bcd3e75309e658931532adef2a0608a')
 
 package() {
