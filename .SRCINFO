@@ -1,0 +1,23 @@
+pkgbase = lua-messagepack
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://fperrad.github.io/lua-MessagePack
+	arch = any
+	license = MIT
+	source = https://github.com/fperrad/lua-MessagePack/archive/0.3.3.tar.gz
+	sha256sums = 40e86eacac87f4deaa566cdefaaa1ec6ca90ad14a9419805ea90d069736cfda6
+
+pkgname = lua51-messagepack
+	pkgdesc = Implementation of MessagePack spec v5 for Lua 5.1.
+	depends = lua51
+
+pkgname = lua52-messagepack
+	pkgdesc = Implementation of MessagePack spec v5 for Lua 5.2.
+	depends = lua52
+
+pkgname = lua-messagepack
+	pkgdesc = Implementation of MessagePack spec v5 for Lua 5.3.
+	depends = lua
+	provides = lua53-messagepack=0.3.3
+	conflicts = lua53-messagepack
+
