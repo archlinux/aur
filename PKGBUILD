@@ -2,14 +2,14 @@
 # Contributor: Joker-jar <joker-jar@yandex.ru>
 
 pkgname="psi-plus-webkit-git"
-pkgver=0.16.441
+pkgver=0.16.457
 pkgrel=1
 pkgdesc="Psi+ is a powerful Jabber client (Qt, C++) designed for the Jabber power users (with webkit support)"
 url="http://psi-plus.com"
 license=('GPL2')
 arch=('i686' 'x86_64')
 depends=('qt4' 'qca-ossl' 'qtwebkit' 'libidn' 'aspell' 'libxss')
-makedepends=('git' 'patch' 'qconf')
+makedepends=('git' 'patch' 'qconf-git')
 optdepends=('qca-gnupg: encrypted client-to-client connection')
 provides=("psi-plus=$pkgver" "psi-plus-git=$pkgver")
 replaces=('psi-plus' 'psi-plus-git')
@@ -47,7 +47,7 @@ prepare() {
   done
 
   # additional icon themes
-  cp -a "$srcdir/psi-plus/iconsets" .
+  cp -a "$srcdir"/psi-plus/iconsets .
 
   # make build date in --version output a bit more readable
   #sed "s/yyyyMMdd/yyyy-MM-dd/" -i qcm/conf.qcm
@@ -62,7 +62,8 @@ build() {
               --libdir=/usr/lib \
               --enable-webkit \
               --enable-plugins \
-              --disable-enchant
+              --disable-enchant \
+	      --qtdir="/usr/lib/qt4"
   make
 }
 
