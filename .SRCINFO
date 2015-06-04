@@ -1,0 +1,32 @@
+pkgbase = armory
+	pkgdesc = Python-Based Bitcoin Software
+	pkgver = 0.93.1
+	pkgrel = 3
+	url = https://github.com/etotheipi/BitcoinArmory
+	arch = i686
+	arch = x86_64
+	license = AGPL3
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	depends = crypto++
+	depends = swig
+	depends = python2
+	depends = twisted
+	depends = qt4
+	depends = python2-pyqt4
+	depends = python2-bsddb
+	depends = python2-psutil
+	optdepends = bitcoin-daemon: Connect to BitCoin network
+	provides = armory
+	conflicts = armory
+	conflicts = armory-git
+	source = run-armory.sh
+	source = http://github.com/etotheipi/BitcoinArmory/archive/v0.93.1.tar.gz
+	source = armory.desktop
+	sha256sums = baa1d335273af1f1f4d12dd68f066035e5b4485b215172690c307877ac62168c
+	sha256sums = 39f07b3a8bddd3ed6259b730b9ca87a7756ef5f52edb14bff868a57c90aaa8d3
+	sha256sums = 9625e81c0d914176689ce40779e5b49376dc85efb84827ef4b006920d5726680
+
+pkgname = armory
+
