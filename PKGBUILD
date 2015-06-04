@@ -52,20 +52,22 @@
 ## Mozc compile option
 _bldtype=Release
 
-_zipcode_rel=201504
-_mozcver=2.17.2097.102
-_utdicver=20150529
+_zipcode_rel=201507
+_mozcver=2.17.2102.102
+_utdicver=20150822
 _protobuf_rev=172019c40bf548908ab09bfd276074c929d48415
 _gyp_rev=cdf037c1edc0ba3b5d25f8e3973661efe00980cc
 _jsoncpp_rev=11086dd6a7eba04289944367ca82cea71299ed70
 _japanese_usage_dictionary_rev=10
-_mozc_rev=2ceaee96e4acabb39c45f071fc39df485870da96
+_mozc_rev=3648b9bf06d5d9b36bed2425640bfd18ae05b588
+_fonttools_rev=5ba7d98a4153fad57258fca23b0bcb238717aec3
+_jsr305_ver=2.0.2
 
 _pkgbase=mozc
 pkgname=fcitx-mozc-ut
 pkgdesc="Fcitx Module of A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input) with Mozc UT Dictionary (additional dictionary)"
 pkgver=${_mozcver}.${_utdicver}
-_fcitx_patchver=2.16.2037.102.2
+_fcitx_patchver=2.17.2102.102.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc_01.html"
@@ -79,12 +81,14 @@ source=(mozc-${_mozcver}::git+https://github.com/google/mozc.git#commit=${_mozc_
         japanese_usage_dictionary::svn+http://japanese-usage-dictionary.googlecode.com/svn/trunk#revision=$_japanese_usage_dictionary_rev
         gyp::git+https://chromium.googlesource.com/external/gyp#commit=${_gyp_rev}
         protobuf::git+https://github.com/google/protobuf.git#commit=${_protobuf_rev}
-        http://downloads.sourceforge.net/project/mdk-ut/30-source/source/mozcdic-ut-${_utdicver}.tar.bz2
-        http://downloads.sourceforge.net/project/pnsft-aur/mozc/edict-${_utdicver}.gz
+        fontTools::git+https://github.com/googlei18n/fonttools.git#commit=${_fonttools_rev}
+        "x-ken-all-${_zipcode_rel}.zip::https://www.codeplex.com/Download/Release?ProjectName=naoina&DownloadId=1481657&FileTime=130854558240170000&Build=21031"
+        "edict-${_utdicver}.gz::https://www.codeplex.com/Download/Release?ProjectName=naoina&DownloadId=1481658&FileTime=130854558241600000&Build=21031"
+        "jigyosyo-${_zipcode_rel}.zip::https://www.codeplex.com/Download/Release?ProjectName=naoina&DownloadId=1481659&FileTime=130854558244230000&Build=21031"
+        mozcdic-ut-${_utdicver}.tar.bz2::http://osdn.jp/frs/chamber_redir.php?f=%2Fusers%2F8%2F8903%2Fmozcdic-ut-${_utdicver}.tar.bz2
         EDICT_license.html
         mod-generate-mozc-ut.sh
-        http://downloads.sourceforge.net/pnsft-aur/x-ken-all-${_zipcode_rel}.zip
-        http://downloads.sourceforge.net/pnsft-aur/jigyosyo-${_zipcode_rel}.zip
+        http://findbugs.googlecode.com/svn/repos/release-repository/com/google/code/findbugs/jsr305/$_jsr305_ver/jsr305-$_jsr305_ver.jar
         http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-${_fcitx_patchver}.patch
         http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz)
 
@@ -118,10 +122,12 @@ prepare() {
 
   # Copy third party deps
   cd "$srcdir"
-  for dep in jsoncpp gyp protobuf japanese_usage_dictionary
+  for dep in jsoncpp gyp protobuf japanese_usage_dictionary fontTools
   do
     cp -a $dep mozc-ut-${pkgver}/third_party/
   done
+
+  install -D jsr305-$_jsr305_ver.jar mozc/src/third_party/jsr305/jsr305-$_jsr305_ver.jar
 }
 
 build() {
@@ -185,11 +191,13 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'd3e5321aee991c0fe11ed46c7abefc650a3750b70b5c54a5ff014afe25b343252cff695b383c773e59282d0575602301cd906c95672cdbdc3a03f01f0c645d52'
-            'ad834fcb445cc7daf4cda56b3c8b23bdda9bf76bb1c38d0142ecc3e6527a9f1d83266897f3c3672da9ceae38fa0d9674ddc416d814380e62dcf3b146731ca738'
+            'SKIP'
+            '612e7e41557f7549047c9a08d520995d2fb59114e31c619b866b1249038c8fb34075241db05a91d604718d59bc56a198a43c117a3012abf0b0467b0da5404a7f'
+            'c9d703f5d218ce3e5885d69acd7573afded85d1cfa76091d9c45a04c4221ad0c6c1c18514bce79399b40d1f8ed2de8ebc8fe6e081f685015b636d176fc758003'
+            '35cf18f04763ed473dec67266ee7d92266d0c5543cf9785393cc53bb6a37d42f32f7962a2c85a60845a4869540f003ccd52f6885e81b058f3b6196e58946230e'
+            '114b9ec0ab02a2e2e5baf35599d327cbe9bbfe76968c468151047aa89c479cb3b8f006f1b2fa3fbe6b63a14a03d8be1eb45f332de380ce8a2b491a00846a3a16'
             '4899c7ee01e387c7c5c628356a0b32e7ba28643580701b779138361ca657864ec17ae0f38d298d60e44093e52a3dfe37d922f780b791e3bd17fc4f056f22dbbb'
             '4668967b324261b4643cf4876a65f82a7157df140ca9fa0aa89d5cd39c87961eeabfbe63b20a2acc393acdff6c6284477d47f5a1d4967db64e0521c65ef9c0e4'
-            '60c053fd3ffec28e0e2eca33834e4cc212127e032b30d0638dcb7ce3faa45c7c87ceae9f98eb03f0ec0e3d1429d2c105f4590e30b39e0818cfcf50646584c459'
-            'fb1ad9d279e34a1e55b6dc182ad503abd250d4773ce488a12c4b07bf67eccda65ae7d83b41db6489afd867e303468448dc13d8797ed3bbc038de60ff744f0b9f'
-            '22b885859588bb8e0efd354d153da461a654203729c723156a419bf33fae473e3f7165964aa3cb3b5c969f97c2727f9d87b0d587330e4eeab67f07d4458542a3'
+            'b3b832489ef9249b22d8a0b9d6eee1895c9d93ef53d5968724a65184cb3f04e17cc74938128b98916da7829c6566be0bc6d60fa8801248cc24620730a060eac6'
+            '096673f036d236d262c05d7b0625504024899d8208c7c4ecd1250dff05dcedb2f066e8c96e05241f66c846931dab6ac466927f1a0339467c7ef4808883a36ee1'
             '5507c637e5a65c44ccf6e32118b6d16647ece865171b9a77dd3c78e6790fbd97e6b219e68d2e27750e22074eb536bccf8d553c295d939066b72994b86b2f251a')
