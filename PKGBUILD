@@ -2,14 +2,14 @@
 # Contributor: Joker-jar <joker-jar@yandex.ru>
 
 pkgname="psi-plus-git"
-pkgver=0.16.441
+pkgver=0.16.457
 pkgrel=1
 pkgdesc="Psi+ is a powerful Jabber client (Qt, C++) designed for the Jabber power users"
 url="http://psi-plus.com"
 license=('GPL2')
 arch=('i686' 'x86_64')
 depends=('qt4' 'qca-ossl' 'libidn' 'aspell' 'libxss')
-makedepends=('git' 'patch' 'qconf')
+makedepends=('git' 'patch' 'qconf-git')
 optdepends=('qca-gnupg: encrypted client-to-client connection')
 provides=("psi-plus=$pkgver")
 replaces=('psi-plus' 'psi-plus-webkit-git')
@@ -47,7 +47,7 @@ prepare() {
   done
 
   # additional icon themes
-  cp -a "$srcdir/psi-plus/iconsets" .
+  cp -a "$srcdir"/psi-plus/iconsets .
 
   # make build date in --version output a bit more readable
   #sed "s/yyyyMMdd/yyyy-MM-dd/" -i qcm/conf.qcm
@@ -61,7 +61,8 @@ build() {
   ./configure --prefix=/usr \
               --libdir=/usr/lib \
               --enable-plugins \
-              --disable-enchant # enchant spell engine doesn't support multi-language spelling, use aspell instead
+              --disable-enchant \
+	      --qtdir="/usr/lib/qt4"
   make
 }
 
