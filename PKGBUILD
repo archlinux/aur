@@ -20,6 +20,11 @@ sha256sums=('6bd6f79ecb88fb857bea7e89c767a3bd0f413ff01bae9298dd2e563478947897'
             '828aaf27696ffe2aa4b80755a09bdf264f644d9539366981697a73bb23340d7b'
             'f3031ea8217e01ba42cea14606169e3e27affa5918968ffd5a03c21ae92fe2b8')
 
+prepare() {
+  cd ${_pkgbase}-$pkgver
+  patch -p1 -i ../../fix_ssl_check.patch
+}
+
 build() {
   cd "${srcdir}"
   [[ ! -d build ]] && mkdir build
