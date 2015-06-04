@@ -1,0 +1,31 @@
+pkgbase = i2p
+	pkgdesc = A distributed anonymous network
+	pkgver = 0.9.20
+	pkgrel = 1
+	url = https://geti2p.net
+	install = i2p.install
+	arch = any
+	license = GPL2
+	makedepends = apache-ant
+	makedepends = java-environment
+	depends = java-runtime
+	depends = java-service-wrapper
+	optdepends = robert: I2P BitTorrent client
+	conflicts = i2p-bin
+	conflicts = i2p-dev
+	backup = opt/i2p/wrapper.config
+	source = https://launchpad.net/i2p/trunk/0.9.20/+download/i2psource_0.9.20.tar.bz2
+	source = https://launchpad.net/i2p/trunk/0.9.20/+download/i2psource_0.9.20.tar.bz2.sig
+	source = i2prouter.service
+	source = i2prouter.sh
+	source = wrapper.config
+	source = router.config
+	sha256sums = bcd900a9001bdda37ed70cdec78e9096ed370e44513aae5e29a02886d0babd33
+	sha256sums = SKIP
+	sha256sums = 842b529ae23bc82fd78e986dd7cc683bd7b671e93421de57f279dc3f4d5d0fd2
+	sha256sums = ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53
+	sha256sums = 72c0944cd2b04c747673a534475f2ec42c64d52fdda76714f1165c4655113de2
+	sha256sums = 1527afbadcf849ef551b3b7b68d1a29eec316ee620f5320f2933f73ee9924978
+
+pkgname = i2p
+
