@@ -24,6 +24,13 @@ sha1sums=('621a7fbb8909b4852ffa7e53dab086ca314d3cae'
           '8c2b1b02c09db5518cdccefd940094535957c3a7'
           'c742ec9ca86af8c984a3124db59004b30fd424a9')
 
+prepare() {
+    cd "$srcdir/$pkgname-$pkgver"
+    sed -i \
+        "s|require_once('\\([^']*\\)');|require_once('/usr/share/webapps/agendav/web/config/\\1');|" \
+        web/config/config.php.template
+}
+
 package() {
     cd "$srcdir/$pkgname-$pkgver"
 
