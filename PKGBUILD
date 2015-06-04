@@ -10,7 +10,10 @@ url="https://github.com/python-diamond/Diamond"
 license=('mit')
 depends=('python2' 'python2-configobj')
 makedepends=('unzip')
-optdepends=('python2-psycopg2: Collect data from postgresql database')
+optdepends=('python2-psycopg2: Postgresql collector'
+            'python2-pysensors: LMSensors collector'
+	    'libvirt-python: LibvirtKVM collector'
+	    'python2-yaml: PuppetAgent collector')
 backup=(etc/diamond/diamond.conf)
 source=("https://pypi.python.org/packages/source/d/diamond/diamond-${pkgver}.tar.gz"
         'diamond.service')
