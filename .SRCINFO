@@ -1,6 +1,6 @@
 pkgbase = qconf-git
 	pkgdesc = Qt5 compatible qconf - Qt configuration tool
-	pkgver = 1.5_20150603
+	pkgver = 1.5_20150604
 	pkgrel = 1
 	url = https://github.com/psi-plus/qconf
 	arch = i686

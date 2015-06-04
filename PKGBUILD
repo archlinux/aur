@@ -1,6 +1,6 @@
 # Maintainer: Hyacinthe Cartiaux
 pkgname=qconf-git
-pkgver=1.5_20150603
+pkgver=1.5_20150604
 pkgrel=1
 pkgdesc="Qt5 compatible qconf - Qt configuration tool"
 arch=('i686' 'x86_64')
@@ -17,27 +17,8 @@ pkgver() {
   echo  1.5_$(date +"%Y%m%d")
 }
 
-_gitroot=https://github.com/psi-plus/
-_gitname=qconf
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build/"
-
-  # BUILD HERE
+  cd $srcdir/qconf
 
   ./configure --prefix=/usr
   make
@@ -45,8 +26,7 @@ build() {
 }
 
 package() {
-  cd $srcdir/qconf-build
-
+  cd $srcdir/qconf
   make INSTALL_ROOT="$pkgdir" install
 }
 
