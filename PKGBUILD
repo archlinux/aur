@@ -4,7 +4,7 @@
 # Contributor: Sebastien Binet <binet@lblbox>
 
 pkgname=pypy-pip
-pkgver=7.0.1
+pkgver=7.0.3
 pkgrel=1
 pkgdesc="The PyPA recommended tool for installing Python packages"
 url="https://pip.pypa.io/"
@@ -12,7 +12,7 @@ arch=('any')
 license=('MIT')
 makedepends=('pypy-setuptools') # pypy included in pypy-setuptools
 source=(http://pypi.python.org/packages/source/p/pip/pip-${pkgver}.tar.gz)
-sha256sums=('cfec177552fdd0b2d12b72651c8e874f955b4c62c1c2c9f2588cbdc1c0d0d416')
+sha256sums=('b4c598825a6f6dc2cac65968feb28e6be6c1f7f1408493c60a07eaa731a0affd')
 
 executable_files=(
   __init__.py
