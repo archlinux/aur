@@ -1,6 +1,6 @@
 pkgbase = fcitx-mozc-ut
 	pkgdesc = Fcitx Module of A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input) with Mozc UT Dictionary (additional dictionary)
-	pkgver = 2.16.2037.102.20150405
+	pkgver = 2.17.2097.102.20150529
 	pkgrel = 1
 	url = http://www.geocities.jp/ep3797/mozc_01.html
 	arch = i686
@@ -8,7 +8,6 @@ pkgbase = fcitx-mozc-ut
 	license = custom
 	makedepends = pkg-config
 	makedepends = python2
-	makedepends = gtest
 	makedepends = curl
 	makedepends = gtk2
 	makedepends = mesa
@@ -28,13 +27,13 @@ pkgbase = fcitx-mozc-ut
 	conflicts = fcitx-mozc
 	replaces = mozc-fcitx
 	replaces = fcitx-mozc
-	source = mozc-2.16.2037.102::svn+http://mozc.googlecode.com/svn/trunk/src#revision=510
+	source = mozc-2.17.2097.102::git+https://github.com/google/mozc.git#commit=2ceaee96e4acabb39c45f071fc39df485870da96
 	source = jsoncpp::git+https://github.com/open-source-parsers/jsoncpp.git#commit=11086dd6a7eba04289944367ca82cea71299ed70
 	source = japanese_usage_dictionary::svn+http://japanese-usage-dictionary.googlecode.com/svn/trunk#revision=10
-	source = gyp::svn+http://gyp.googlecode.com/svn/trunk#revision=2012
-	source = git+https://github.com/google/protobuf.git#commit=172019c40bf548908ab09bfd276074c929d48415
-	source = http://downloads.sourceforge.net/project/mdk-ut/30-source/source/mozcdic-ut-20150405.tar.bz2
-	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/edict-20150405.gz
+	source = gyp::git+https://chromium.googlesource.com/external/gyp#commit=cdf037c1edc0ba3b5d25f8e3973661efe00980cc
+	source = protobuf::git+https://github.com/google/protobuf.git#commit=172019c40bf548908ab09bfd276074c929d48415
+	source = http://downloads.sourceforge.net/project/mdk-ut/30-source/source/mozcdic-ut-20150529.tar.bz2
+	source = http://downloads.sourceforge.net/project/pnsft-aur/mozc/edict-20150529.gz
 	source = EDICT_license.html
 	source = mod-generate-mozc-ut.sh
 	source = http://downloads.sourceforge.net/pnsft-aur/x-ken-all-201504.zip
@@ -46,10 +45,10 @@ pkgbase = fcitx-mozc-ut
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = 98558040324f7b21c7c9d5eb563d55895c05c112feeef70415f9fe05b0696869f1cccd2ae3f0ac99f60989cd4e4a7551785288bff9afe1e48056bd05e0f398f8
-	sha512sums = dcf94c0e3b3fb5e9526d4d3b4ba77daa9daf6deda2a47078959cefb7d508f9c25892ea159266b0d79e8ede7790cd2318cf801b60b066af9ac81760085da21385
+	sha512sums = d3e5321aee991c0fe11ed46c7abefc650a3750b70b5c54a5ff014afe25b343252cff695b383c773e59282d0575602301cd906c95672cdbdc3a03f01f0c645d52
+	sha512sums = ad834fcb445cc7daf4cda56b3c8b23bdda9bf76bb1c38d0142ecc3e6527a9f1d83266897f3c3672da9ceae38fa0d9674ddc416d814380e62dcf3b146731ca738
 	sha512sums = 4899c7ee01e387c7c5c628356a0b32e7ba28643580701b779138361ca657864ec17ae0f38d298d60e44093e52a3dfe37d922f780b791e3bd17fc4f056f22dbbb
-	sha512sums = f74d2ddf95706b2925d87b3effa9490aa7cba1f5ce2c20e537f2ac4dfc4c6b6b531f90f8c128bca0f1eafd9197abb6e1f004c11a1ea7a978b2ccad5e85ad0d55
+	sha512sums = 4668967b324261b4643cf4876a65f82a7157df140ca9fa0aa89d5cd39c87961eeabfbe63b20a2acc393acdff6c6284477d47f5a1d4967db64e0521c65ef9c0e4
 	sha512sums = 60c053fd3ffec28e0e2eca33834e4cc212127e032b30d0638dcb7ce3faa45c7c87ceae9f98eb03f0ec0e3d1429d2c105f4590e30b39e0818cfcf50646584c459
 	sha512sums = fb1ad9d279e34a1e55b6dc182ad503abd250d4773ce488a12c4b07bf67eccda65ae7d83b41db6489afd867e303468448dc13d8797ed3bbc038de60ff744f0b9f
 	sha512sums = 22b885859588bb8e0efd354d153da461a654203729c723156a419bf33fae473e3f7165964aa3cb3b5c969f97c2727f9d87b0d587330e4eeab67f07d4458542a3

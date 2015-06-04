@@ -15,6 +15,7 @@ sed -i \
     -e '/rm -f chimei\/\*.zip/d' \
     -e '/rm -f chimei\/gen_zip_code_seed.py/d' \
     -e '/rm -rf ..\/mozc-$MOZCVER\//d' \
+    -e 's|\(mozc-\$MOZCVER\)|\1/src|g' \
     -e '/# unpack official mozc/,+6d' \
     -e '/# generate zip code dic/,+11d' \
     -e 's/sh generate-katakanago.sh/& || exit 1/' \

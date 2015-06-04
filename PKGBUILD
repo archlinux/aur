@@ -53,41 +53,39 @@
 _bldtype=Release
 
 _zipcode_rel=201504
-
-_mozcver=2.16.2037.102
-_utdicver=20150405
+_mozcver=2.17.2097.102
+_utdicver=20150529
 _protobuf_rev=172019c40bf548908ab09bfd276074c929d48415
-_gyp_rev=2012
+_gyp_rev=cdf037c1edc0ba3b5d25f8e3973661efe00980cc
 _jsoncpp_rev=11086dd6a7eba04289944367ca82cea71299ed70
 _japanese_usage_dictionary_rev=10
-_mozc_rev=510
+_mozc_rev=2ceaee96e4acabb39c45f071fc39df485870da96
 
 _pkgbase=mozc
 pkgname=fcitx-mozc-ut
 pkgdesc="Fcitx Module of A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input) with Mozc UT Dictionary (additional dictionary)"
 pkgver=${_mozcver}.${_utdicver}
-_patchver=${_mozcver}.2
-#_patchver=1.15.1834.102.1
+_fcitx_patchver=2.16.2037.102.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc_01.html"
 license=('custom')
 depends=('qt4' 'fcitx' 'zinnia')
-makedepends=('pkg-config' 'python2' 'gtest' 'curl' 'gtk2' 'mesa' 'subversion' 'ninja' 'ruby' 'git' 'clang')
+makedepends=('pkg-config' 'python2' 'curl' 'gtk2' 'mesa' 'subversion' 'ninja' 'ruby' 'git' 'clang')
 replaces=('mozc-fcitx' 'fcitx-mozc')
 conflicts=('mozc' 'mozc-server' 'mozc-utils-gui' 'mozc-fcitx' 'mozc-ut' 'fcitx-mozc')
-source=(mozc-${_mozcver}::svn+http://mozc.googlecode.com/svn/trunk/src#revision=$_mozc_rev
+source=(mozc-${_mozcver}::git+https://github.com/google/mozc.git#commit=${_mozc_rev}
         jsoncpp::git+https://github.com/open-source-parsers/jsoncpp.git#commit=${_jsoncpp_rev}
         japanese_usage_dictionary::svn+http://japanese-usage-dictionary.googlecode.com/svn/trunk#revision=$_japanese_usage_dictionary_rev
-        gyp::svn+http://gyp.googlecode.com/svn/trunk#revision=$_gyp_rev
-        git+https://github.com/google/protobuf.git#commit=${_protobuf_rev}
+        gyp::git+https://chromium.googlesource.com/external/gyp#commit=${_gyp_rev}
+        protobuf::git+https://github.com/google/protobuf.git#commit=${_protobuf_rev}
         http://downloads.sourceforge.net/project/mdk-ut/30-source/source/mozcdic-ut-${_utdicver}.tar.bz2
         http://downloads.sourceforge.net/project/pnsft-aur/mozc/edict-${_utdicver}.gz
         EDICT_license.html
         mod-generate-mozc-ut.sh
         http://downloads.sourceforge.net/pnsft-aur/x-ken-all-${_zipcode_rel}.zip
         http://downloads.sourceforge.net/pnsft-aur/jigyosyo-${_zipcode_rel}.zip
-        http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-${_patchver}.patch
+        http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-${_fcitx_patchver}.patch
         http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz)
 
 prepare() {
@@ -103,7 +101,7 @@ prepare() {
 
   # Apply fcitx patch
   rm unix/fcitx -rf
-  patch -Np2 -i "$srcdir/fcitx-mozc-${_patchver}.patch"
+  patch -Np2 -i "$srcdir/fcitx-mozc-${_fcitx_patchver}.patch"
 
   # Fix qt4 binary path
   sed -i 's|(qt_dir)/bin|(qt_dir)/lib/qt4/bin|' gui/*.gyp{,i}
@@ -187,10 +185,10 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '98558040324f7b21c7c9d5eb563d55895c05c112feeef70415f9fe05b0696869f1cccd2ae3f0ac99f60989cd4e4a7551785288bff9afe1e48056bd05e0f398f8'
-            'dcf94c0e3b3fb5e9526d4d3b4ba77daa9daf6deda2a47078959cefb7d508f9c25892ea159266b0d79e8ede7790cd2318cf801b60b066af9ac81760085da21385'
+            'd3e5321aee991c0fe11ed46c7abefc650a3750b70b5c54a5ff014afe25b343252cff695b383c773e59282d0575602301cd906c95672cdbdc3a03f01f0c645d52'
+            'ad834fcb445cc7daf4cda56b3c8b23bdda9bf76bb1c38d0142ecc3e6527a9f1d83266897f3c3672da9ceae38fa0d9674ddc416d814380e62dcf3b146731ca738'
             '4899c7ee01e387c7c5c628356a0b32e7ba28643580701b779138361ca657864ec17ae0f38d298d60e44093e52a3dfe37d922f780b791e3bd17fc4f056f22dbbb'
-            'f74d2ddf95706b2925d87b3effa9490aa7cba1f5ce2c20e537f2ac4dfc4c6b6b531f90f8c128bca0f1eafd9197abb6e1f004c11a1ea7a978b2ccad5e85ad0d55'
+            '4668967b324261b4643cf4876a65f82a7157df140ca9fa0aa89d5cd39c87961eeabfbe63b20a2acc393acdff6c6284477d47f5a1d4967db64e0521c65ef9c0e4'
             '60c053fd3ffec28e0e2eca33834e4cc212127e032b30d0638dcb7ce3faa45c7c87ceae9f98eb03f0ec0e3d1429d2c105f4590e30b39e0818cfcf50646584c459'
             'fb1ad9d279e34a1e55b6dc182ad503abd250d4773ce488a12c4b07bf67eccda65ae7d83b41db6489afd867e303468448dc13d8797ed3bbc038de60ff744f0b9f'
             '22b885859588bb8e0efd354d153da461a654203729c723156a419bf33fae473e3f7165964aa3cb3b5c969f97c2727f9d87b0d587330e4eeab67f07d4458542a3'
