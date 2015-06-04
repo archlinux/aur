@@ -1,0 +1,12 @@
+
+[Desktop Entry]
+Name=Alice
+GenericName=3D computer programming education
+Comment=An educational software that teaches students computer programming in a 3D environment
+Encoding=UTF-8
+Version=2.0.0
+Type=Application
+Terminal=false
+Icon=alice.png
+Exec=alice
+Categories=Application;Education;Construction;ComputerScience
