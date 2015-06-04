@@ -1,0 +1,26 @@
+pkgbase = psi-qt5-git
+	pkgdesc = A jabber client. GIT version
+	pkgver = 0.16_dev_20150604
+	pkgrel = 1
+	url = http://psi-im.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = qconf-git
+	depends = qt5-base
+	depends = qca-qt5
+	depends = qt5-x11extras
+	depends = enchant
+	depends = libxss
+	depends = openssl
+	depends = dbus
+	depends = zlib
+	provides = psi-git
+	conflicts = psi
+	conflicts = psi-git
+	source = git+https://github.com/psi-im/psi.git
+	md5sums = SKIP
+
+pkgname = psi-qt5-git
+
