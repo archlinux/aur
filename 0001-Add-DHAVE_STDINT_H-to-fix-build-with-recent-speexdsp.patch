@@ -1,0 +1,25 @@
+From 610e7e84e868608f9ca5b940811639b0aec06f1b Mon Sep 17 00:00:00 2001
+From: Aaron Hamilton <aaron@correspondwith.me>
+Date: Wed, 25 Feb 2015 22:32:28 +0000
+Subject: [PATCH] Add -DHAVE_STDINT_H to fix build with recent speexdsp.
+
+---
+ ebur128/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ebur128/CMakeLists.txt b/ebur128/CMakeLists.txt
+index 1a13bb2..b859dd6 100644
+--- a/ebur128/CMakeLists.txt
++++ b/ebur128/CMakeLists.txt
+@@ -23,7 +23,7 @@ if(NOT DISABLE_SPEEXDSP)
+     find_pkg_config(SPEEXDSP speexdsp)
+     if(SPEEXDSP_FOUND)
+         include_directories(SYSTEM ${SPEEXDSP_INCLUDE_DIRS})
+-        add_definitions(-DUSE_SPEEX_RESAMPLER)
++        add_definitions(-DUSE_SPEEX_RESAMPLER -DHAVE_STDINT_H)
+     endif()
+ endif()
+ 
+-- 
+2.4.1
+
