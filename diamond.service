@@ -3,7 +3,7 @@ Description=Diamond daemon
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/diamond --foreground --log-stdout
+ExecStart=/usr/bin/diamond --foreground
 
 [Install]
 WantedBy=multi-user.target
