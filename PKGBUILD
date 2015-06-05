@@ -1,7 +1,7 @@
 # Maintainer: Amir Mohammadi <183.amir@gmail.com>
 pkgname=gahshomar
 pkgver=4.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A Persian (Jalali/Farsi) calendar"
 arch=('any')
 url="https://gahshomar.github.io/gahshomar/"
@@ -9,7 +9,7 @@ license=('GPL3')
 replaces=('persian-calendar')
 conflicts=('persian-calendar')
 depends=('python-gobject' 'jcal-git' 'libpeas' 'gtk3' 'gsettings-desktop-schemas' 'yelp')
-makedepends=('intltool' 'yelp-tools') # 'gobject-introspection'
+makedepends=('intltool' 'yelp-tools' 'gnome-common') # 'gobject-introspection'
 optdepends=('libappindicator-gtk3: for the app indicator plugin'
 			'gnome-shell: for the gnome-shell extension')
 install=gahshomar.install

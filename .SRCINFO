@@ -1,13 +1,14 @@
 pkgbase = gahshomar
 	pkgdesc = A Persian (Jalali/Farsi) calendar
 	pkgver = 4.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gahshomar.github.io/gahshomar/
 	install = gahshomar.install
 	arch = any
 	license = GPL3
 	makedepends = intltool
 	makedepends = yelp-tools
+	makedepends = gnome-common
 	depends = python-gobject
 	depends = jcal-git
 	depends = libpeas
