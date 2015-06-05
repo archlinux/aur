@@ -73,3 +73,4 @@ package() {
   
   install "$srcdir"/crontab -m 600 -o root "$pkgdir"/etc
 }
+# vim:set ts=2 sw=2 et:
