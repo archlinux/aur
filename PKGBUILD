@@ -19,7 +19,7 @@ _gentoo_patchver=4
 pkgname=vixie-cron
 arch=("i686" "x86_64")
 pkgver=4.1
-pkgrel=12
+pkgrel=13
 license=("GPL")
 pkgdesc="Paul Vixie's cron daemon, a fully featured crond implementation"
 url="ftp://ftp.isc.org/isc/cron/"
@@ -33,7 +33,7 @@ source=("$_gentoo_mirror/${pkgname}-${pkgver}.tar.bz2"
         'crontab') 
 md5sums=('09dc04f9879684d27c64c910174a9536'
          'c674b03c6e76798b1c74f6070df167cc'
-         '2765095708207c2ae4ff31b5af94181d'
+         'ad6b114d11ecd7fc8b9cd35a244e574d'
          '00ede56aadf073c839e600033fbd6cb4'
          'b8b1d315dd2f92528dc6fa7ae8cef32b')
 
