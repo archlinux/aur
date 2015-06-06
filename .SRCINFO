@@ -1,0 +1,23 @@
+pkgbase = vdirsyncer
+	pkgdesc = Synchronize CalDAV and CardDAV.
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://vdirsyncer.readthedocs.org/
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-wsgi-intercept
+	checkdepends = radicale
+	checkdepends = python-werkzeug-git
+	checkdepends = python-pytest-xprocess
+	checkdepends = python-pytest-localserver
+	depends = python-click
+	depends = python-setuptools
+	depends = python-lxml
+	depends = python-requests-toolbelt
+	depends = python-atomicwrites
+	source = https://github.com/untitaker/vdirsyncer/archive/0.5.1.zip
+	md5sums = 5e73eb6f306157c8179ef3e608037caf
+
+pkgname = vdirsyncer
+
