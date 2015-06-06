@@ -1,5 +1,5 @@
 pkgbase = php-requests
-	pkgdesc = PHP library to access MusicBrainz's Web Service v2
+	pkgdesc = PHP library to make HTTP requests
 	pkgver = 1.6.1
 	pkgrel = 1
 	url = http://requests.ryanmccue.info/
