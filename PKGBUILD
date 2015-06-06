@@ -1,18 +1,19 @@
-# Maintainer: Chris Warrick <aur@chriswarrick.com0
+# Maintainer: Chris Warrick <aur@chriswarrick.com>
 pkgname=trashman-git
 _pyname=trashman
-pkgver=1.0.4
+_gitname=trashman
+pkgver=1.5.0.r1.g0bc27dc
 pkgrel=1
-pkgdesc='A Python trash manager.  (git version)'
+pkgdesc='A Python trash manager. (git version)'
 arch=('any')
 url='https://github.com/Kwpolska/trashman'
 license=('BSD')
-depends=('python')
+depends=('python' 'python-setuptools')
 makedepends=('git')
 options=(!emptydirs)
 provides=('trashman')
 conflicts=('trashman')
-source=("git://github.com/Kwpolska/${_gitname}.git")
+source=("git+https://github.com/Kwpolska/${_gitname}")
 md5sums=('SKIP')
 
 package() {
@@ -23,7 +24,7 @@ package() {
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
-  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^v//'
 }
 
 # vim:set ts=2 sw=2 et:
