@@ -1,12 +1,12 @@
-# $Id: PKGBUILD 226292 2014-11-15 14:56:22Z bpiotrowski $
+# $Id: PKGBUILD 239466 2015-05-16 16:21:31Z anatolik $
 # Maintainer: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Sarah Hay <sarahhay@mb.sympatico.ca>
 # Contributor: Martin Sandsmark <martin.sandsmark@kde.org>
 
 _pkgname=vlc
 pkgname=vlc-decklink
-pkgver=2.1.5
-pkgrel=5
+pkgver=2.2.1
+pkgrel=4
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (with decklink module)"
 arch=('i686' 'x86_64')
 url="http://www.videolan.org/vlc/"
@@ -17,7 +17,7 @@ depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'qt4' 'libproxy'
          'libshout' 'libmad' 'libmpeg2' 'xcb-util-keysyms' 'libtar'
          'libxinerama')
 makedepends=('live-media' 'libnotify' 'libbluray' 'flac' 'kdelibs'
-             'libdc1394' 'libavc1394' 'lirc-utils' 'libcaca'
+             'libdc1394' 'libavc1394' 'lirc' 'libcaca' 'gtk2'
              'librsvg' 'portaudio' 'libgme' 'xosd' 'projectm'
              'twolame' 'aalib' 'libmtp' 'libdvdcss' 'gnome-vfs'
              'libgoom2' 'vcdimager' 'opus' 'libssh2' 'mesa'
@@ -26,7 +26,7 @@ optdepends=('avahi: for service discovery using bonjour protocol'
             'libnotify: for notification plugin'
             'ncurses: for ncurses interface support'
             'libdvdcss: for decoding encrypted DVDs'
-            'lirc-utils: for lirc plugin'
+            'lirc: for lirc plugin'
             'libavc1394: for devices using the 1394ta AV/C'
             'libdc1394: for IEEE 1394 plugin'
             'kdelibs: KDE Solid hardware integration'
@@ -61,28 +61,28 @@ backup=('usr/share/vlc/lua/http/.hosts'
 options=('!emptydirs')
 install=vlc.install
 source=("http://download.videolan.org/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tar.xz"
-        'vlc-2.0.7-vaapi-compat.patch'
-        'vlc-2.1.5-ffmpeg-2.4.patch'
-        'vlc-2.1.5-avformat-initialize-probe-data-fixes-11851.patch')
-md5sums=('3941b561f590cc95ca5e795213cba2f2'
-         '6df10774bb7acf20e09d6139e5c7839e'
-         '068a1b792064bb1aff0765a3ffa8a27a'
-         '787a854f3acde37cd6e76a8fa8e6f1d0')
+        "vlc-gcc5-sse-target-workaround.patch"
+        "lua53_compat.patch")
+md5sums=('42273945758b521c408fabc7fd6d9946'
+         'cf5b92e290da2f1b0b4d0cd0eda6b32b'
+         '96d3b346d9149ffb1b430066dfb6249a')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  patch -p1 -i "${srcdir}/vlc-2.0.7-vaapi-compat.patch"
-  patch -p1 -i "${srcdir}/vlc-2.1.5-ffmpeg-2.4.patch"
-  patch -p1 -i "${srcdir}/vlc-2.1.5-avformat-initialize-probe-data-fixes-11851.patch"
-  autoreconf -fi
+  sed -i -e 's:truetype/freefont:TTF:g' modules/text_renderer/freetype.c
+  sed -i -e 's:truetype/ttf-dejavu:TTF:g' modules/visualization/projectm.cpp
+
+  # Fix build with GCC 5 on i686
+  # GCC PR URL: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=66047
+  # Workaround: https://bugzilla.redhat.com/show_bug.cgi?id=1215630#c11
+  patch -p1 < "${srcdir}/vlc-gcc5-sse-target-workaround.patch"
+
+  patch -p1 < "${srcdir}/lua53_compat.patch"
 
   # dirty hack because of VLC's configure
   [ -d decklink-sdk ] || mkdir decklink-sdk
   ln -sf /usr/src/decklink-sdk decklink-sdk/include
-
-  sed -i -e 's:truetype/freefont:TTF:g' modules/text_renderer/freetype.c
-  sed -i -e 's:truetype/ttf-dejavu:TTF:g' modules/visualization/projectm.cpp
 }
 
 build() {

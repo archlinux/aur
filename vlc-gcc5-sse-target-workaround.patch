@@ -1,0 +1,12 @@
+diff -upr vlc-2.2.1.orig/include/vlc_cpu.h vlc-2.2.1/include/vlc_cpu.h
+--- vlc-2.2.1.orig/include/vlc_cpu.h	2014-06-14 18:14:12.000000000 +0300
++++ vlc-2.2.1/include/vlc_cpu.h	2015-05-12 02:31:29.843264593 +0300
+@@ -65,7 +65,7 @@ VLC_API unsigned vlc_CPU(void);
+ #  define vlc_CPU_MMXEXT() ((vlc_CPU() & VLC_CPU_MMXEXT) != 0)
+ #  define vlc_CPU_SSE() ((vlc_CPU() & VLC_CPU_SSE) != 0)
+ #  if VLC_GCC_VERSION(4, 4) || defined(__clang__)
+-#   define VLC_SSE __attribute__ ((__target__ ("sse")))
++#   define VLC_SSE __attribute__ ((used)) __attribute__ ((__target__ ("sse")))
+ #  else
+ #   define VLC_SSE VLC_SSE_is_not_implemented_on_this_compiler
+ #  endif
