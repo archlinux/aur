@@ -1,8 +1,8 @@
 # Maintainer: Zhuoyun Wei <wzyboy@wzyboy.org>
 
 pkgname=telegram-purple
-pkgver=1.0.0beta
-_pkgver=v1.0.0-beta
+pkgver=1.1.0beta2
+_pkgver=v1.1.0-beta2
 pkgrel=1
 pkgdesc="Adds support for Telegram to Pidgin, Adium, Finch and other Libpurple based messengers."
 arch=('i686' 'x86_64')
@@ -16,6 +16,7 @@ sha256sums=('SKIP')
 prepare() {
   cd "${srcdir}/${pkgname}"
   git checkout $_pkgver
+  git submodule sync
   git submodule update --init --recursive
 }
 
