@@ -1,13 +1,18 @@
-# Maintainer: Johannes Dewender   arch at JonnyJD dot net
+# Contributor: Johannes Dewender   arch at JonnyJD dot net
 pkgname=('php-musicbrainz')
 _pkgname=MusicBrainz
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="PHP library to access MusicBrainz's Web Service v2"
 arch=('any')
 url="https://github.com/mikealmond/MusicBrainz"
 license=('MIT')
-depends=('php>=5')
+depends=('php>=5.3.8')
+optdepends=(
+'guzzle: for the GuzzleHttpAdapter'
+'php-requests: for the RequestsHttpAdapter'
+)
+
 source=(https://github.com/mikealmond/$_pkgname/archive/v$pkgver.tar.gz)
 sha256sums=('55ec80f4156a6ed0a5054bdc0c7d9c2473281f919fe1c9982b899f96a453b2b8')
 
