@@ -1,6 +1,6 @@
 # Maintainer: Max Bruckner
 pkgname=lampe
-pkgver=1.0.0
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Interactive bash-script to control your Philips Hue lights."
 arch=("any")
