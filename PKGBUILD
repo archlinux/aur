@@ -1,29 +1,44 @@
 # Maintainer: Chris Warrick <aur@chriswarrick.com>
-pkgname=python-bbcode-git
+pkgbase=python-bbcode-git
+pkgname=('python-bbcode-git' 'python2-bbcode-git')
 _pyname=bbcode
 _gitname=bbcode
-pkgver=20150101
+pkgver=20150606
 pkgrel=1
 pkgdesc='A pure python bbcode parser and formatter.  (git version)'
 arch=('any')
-url='http://pypi.python.org/pypi/bbcode'
+url='https://pypi.python.org/pypi/bbcode'
 license=('BSD')
-depends=('python')
-makedepends=('git')
+makedepends=('git' 'python' 'python2' 'python-setuptools' 'python2-setuptools')
 options=(!emptydirs)
-provides=('python-bbcode')
-conflicts=('python-bbcode')
-source=("git://github.com/dcwatson/${_gitname}.git")
+source=("git+https://github.com/dcwatson/${_gitname}")
 md5sums=('SKIP')
 
-package() {
+prepare() {
+  cd "${srcdir}/${_gitname}"
+  cp -R "${srcdir}/${_gitname}" "${srcdir}/${_gitname}-py2"
+}
+
+package_python-bbcode-git() {
+  depends=('python' 'python-setuptools')
+  provides=('python-bbcode')
+  conflicts=('python-bbcode')
   cd "${srcdir}/${_gitname}"
   python3 setup.py install --root="${pkgdir}/" --optimize=1
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
+  #ln -s ${_pyname} "${pkgdir}/usr/bin/${_pyname}3"
+}
+
+package_python2-bbcode-git() {
+  depends=('python2' 'python2-setuptools')
+  provides=('python2-bbcode')
+  conflicts=('python2-bbcode')
+  cd "${srcdir}/${_gitname}-py2"
+  python2 setup.py install --root="${pkgdir}/" --optimize=1
+  #mv "${pkgdir}/usr/bin/${_pyname}" "${pkgdir}/usr/bin/${_pyname}2"
 }
 
 pkgver() {
-  # upstream has no tags, falling back to dates
   date '+%Y%m%d'
 }
 
