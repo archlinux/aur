@@ -9,7 +9,7 @@ url='https://github.com/Kwpolska/pkgbuilder'
 license=('BSD')
 depends=('python' 'python-setuptools' 'pyalpm>=0.5.1-1' 'python-requests' 'rsync')
 options=(!emptydirs)
-source=("http://pypi.python.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+source=("https://pypi.python.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('de59f0d26c502df3f39273437bb74d22')
 
 package() {
