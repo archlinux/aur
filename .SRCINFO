@@ -1,10 +1,19 @@
 pkgbase = python-nikola
 	pkgdesc = A modular, fast, simple, static website generator.
 	pkgver = 7.4.1
-	pkgrel = 1
-	url = http://getnikola.com/
+	pkgrel = 2
+	url = https://getnikola.com/
 	arch = any
-	license = custom
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/N/Nikola/nikola-7.4.1.tgz
+	md5sums = 262700559382e1e1c4cf9eb2a952b201
+
+pkgname = python-nikola
 	depends = python
 	depends = python-doit
 	depends = python-pygments
@@ -19,12 +28,54 @@ pkgbase = python-nikola
 	depends = python-logbook
 	depends = python-blinker
 	depends = python-natsort
-	conflicts = python2-nikola
+	depends = python-nikola-doc
+	optdepends = python-requests: for theme and plugin installation, and various web services
+	optdepends = python-markdown: for Markdown support
+	optdepends = python-jinja: for Jinja2 themes
+	optdepends = python-livereload==2.3.2: for automatically refreshing browsers
+	optdepends = python-pyphen>=0.9.1: for hyphenation
+	optdepends = python-pygal==1.7.0: for SVG graph plotting
+	optdepends = python-typogrify>=2.0.4: for typographical enhancements
+	optdepends = python-webassets: for bundling assets
+	optdepends = ipython-notebook: for ipynb support
+	optdepends = ipython: for ipynb support
+	optdepends = python-ghp-import>=0.4.1: for uploading to GitHub Pages
+	optdepends = python-micawber: for embedding media in posts
+	optdepends = python-phpserialize: for WordPress imports
 	conflicts = python-nikola-git
-	conflicts = python2-nikola-git
-	options = !emptydirs
-	source = http://pypi.python.org/packages/source/N/Nikola/nikola-7.4.1.tgz
-	md5sums = 262700559382e1e1c4cf9eb2a952b201
 
-pkgname = python-nikola
+pkgname = python2-nikola
+	depends = python2
+	depends = python2-doit
+	depends = python2-pygments
+	depends = python2-pillow
+	depends = python2-docutils
+	depends = python2-mako
+	depends = python2-unidecode
+	depends = python2-lxml
+	depends = python2-yapsy
+	depends = python2-pyrss2gen
+	depends = python2-dateutil
+	depends = python2-logbook
+	depends = python2-blinker
+	depends = python2-natsort
+	depends = python-nikola-doc
+	optdepends = python2-requests: for theme and plugin installation, and various web services
+	optdepends = python2-markdown: for Markdown support
+	optdepends = python2-jinja: for Jinja2 themes
+	optdepends = python2-livereload==2.3.2: for automatically refreshing browsers
+	optdepends = python2-pyphen>=0.9.1: for hyphenation
+	optdepends = python2-pygal==1.7.0: for SVG graph plotting
+	optdepends = python2-typogrify>=2.0.4: for typographical enhancements
+	optdepends = python2-webassets: for bundling assets
+	optdepends = ipython2-notebook: for ipynb support
+	optdepends = ipython2: for ipynb support
+	optdepends = python2-ghp-import>=0.4.1: for uploading to GitHub Pages
+	optdepends = python2-micawber: for embedding media in posts
+	optdepends = python2-phpserialize: for WordPress imports
+	conflicts = python2-nikola-git
+
+pkgname = python-nikola-doc
+	pkgdesc = Nikola documentation, license and man page
+	conflicts = python-nikola-doc-git
 
