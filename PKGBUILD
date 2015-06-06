@@ -1,23 +1,37 @@
 # Maintainer: Chris Warrick <aur@chriswarrick.com>
-pkgname=python-yapsy-hg
-pkgver=333.25f431f9e003
+pkgbase=python-yapsy-hg
+pkgname=('python-yapsy-hg' 'python2-yapsy-hg')
+pkgver=347.4de12c3e5416
 pkgrel=1
-pkgdesc='Yet another plugin system  (hg version)'
+pkgdesc='Yet another plugin system (hg version)'
 arch=('any')
 url='http://yapsy.sourceforge.net/'
 license=('BSD')
-depends=('python')
-makedepends=('mercurial')
+makedepends=('mercurial' 'python' 'python2' 'python-setuptools' 'python2-setuptools')
 options=(!emptydirs)
-provides=('python-yapsy')
-conflicts=('python-yapsy')
 source=("hg+http://hg.code.sf.net/p/yapsy/code")
 md5sums=('SKIP')
 
-package() {
+prepare() {
+  cd "${srcdir}/code/package"
+  cp -R "${srcdir}/code/package" "${srcdir}/code/package-py2"
+}
+
+package_python-yapsy-hg() {
+  depends=('python' 'python-setuptools')
+  provides=('python-yapsy')
+  conflicts=('python-yapsy')
   cd "${srcdir}/code/package"
   python3 setup.py install --root="${pkgdir}/" --optimize=1
-  install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
+}
+
+package_python2-yapsy-hg() {
+  depends=('python2' 'python2-setuptools')
+  provides=('python2-yapsy')
+  conflicts=('python2-yapsy')
+  cd "${srcdir}/code/package-py2"
+  python2 setup.py install --root="${pkgdir}/" --optimize=1
 }
 
 pkgver() {
