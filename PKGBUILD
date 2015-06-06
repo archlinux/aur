@@ -12,5 +12,5 @@ source=('ob-autostart') #from http://www.ad-comp.be/public/projets/ob-autostart/
 md5sums=('7e19c8d8c02f296e7235e2dbe31b7b00')
 
 package() {
-  install -D -m755 ${srcdir}/ob-autostart ${pkgdir}/usr/bin/ob-autostart
+  install -D -m755 "${srcdir}/ob-autostart" "${pkgdir}/usr/bin/ob-autostart"
 }
