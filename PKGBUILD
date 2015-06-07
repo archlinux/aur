@@ -18,7 +18,7 @@ backup=(etc/diamond/diamond.conf)
 source=("https://pypi.python.org/packages/source/d/diamond/diamond-${pkgver}.tar.gz"
         'diamond.service')
 md5sums=('063ee62fc30a678260df582335a583c3'
-         '65b275caf75c19e5040d3dbcd2a7e688')
+         '98d7bd00ba751ab416c325eda82e740f')
 
 package() {
 	cd "$srcdir/diamond-${pkgver}"
