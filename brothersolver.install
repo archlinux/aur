@@ -1,0 +1,9 @@
+post_install() {
+    echo "You have to put your Account Information into the File .brother_solver inside your home directory."
+    echo "Required format is:"
+    echo "[account]"
+    echo "user: accountname"
+    echo "password: accountpassword"
+    
+  }
+

@@ -1,0 +1,14 @@
+pkgbase = brotherhood-gui-git
+	pkgdesc = This is a cross plattform client for the Captcha Brotherhood network. Its main feature is the ability to solve captchas in Linux.
+	pkgver = 20150607
+	pkgrel = 1
+	url = http://github.com/gidder/brotherhood-gui
+	install = brothersolver.install
+	arch = x86_64
+	arch = i686
+	license = GPLv3
+	makedepends = git
+	depends = python-pyqt4
+
+pkgname = brotherhood-gui-git
+
