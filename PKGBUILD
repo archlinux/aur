@@ -1,6 +1,6 @@
-# Maintainer: Elbarto
+# Maintainer: SebRmv
 pkgname=binfmt_aout
-pkgver=3.19
+pkgver=4.0
 pkgrel=1
 pkgdesc='binfmt_aout kernel module, for running an a.out binary format'
 arch=('i686')
