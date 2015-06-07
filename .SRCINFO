@@ -1,0 +1,19 @@
+pkgbase = ia32_aout
+	pkgdesc = ia32_aout kernel module, for running an a.out binary format
+	pkgver = 4.0
+	pkgrel = 1
+	url = https://www.kernel.org
+	install = ia32_aout.install
+	arch = x86_64
+	license = GPLv3
+	makedepends = linux-headers
+	makedepends = linux-api-headers
+	makedepends = gzip
+	options = !strip
+	source = https://raw.githubusercontent.com/torvalds/linux/v{4.0}/arch/x86/ia32/ia32_aout.c
+	source = Makefile
+	sha1sums = c635114660009c57014eb2a38e50e3abbb5f2e5f
+	sha1sums = 7afa0aad8856552718cc4c2b49625965537406a9
+
+pkgname = ia32_aout
+
