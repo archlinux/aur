@@ -5,7 +5,7 @@ pkgname=cross-m68k-atari-mint-binutils
 _pkgname=binutils
 _target="m68k-atari-mint"
 pkgver=2.23.2
-pkgrel=4
+pkgrel=5
 pkgdesc="A set of programs to assemble and manipulate binary and object files for the M68K architecture"
 url="http://www.gnu.org/software/binutils/"
 arch=('i686' 'x86_64')
@@ -26,6 +26,7 @@ build() {
 	cd ${srcdir}/${_pkgname}-${pkgver}
 
         CFLAGS=${CFLAGS//-D_FORTIFY_SOURCE=?/}
+        CFLAGS="${CFLAGS} -Wno-unused-value"
         export CFLAGS
         
         CPPFLAGS=${CPPFLAGS//-D_FORTIFY_SOURCE=?/}
