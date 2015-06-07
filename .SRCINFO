@@ -1,6 +1,6 @@
 pkgbase = spacefm-gtk2
 	pkgdesc = Multi-panel tabbed file manager
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = http://ignorantguru.github.com/spacefm/
 	install = spacefm.install
@@ -20,8 +20,8 @@ pkgbase = spacefm-gtk2
 	optdepends = udisks2: mount as non-root user
 	provides = spacefm
 	conflicts = spacefm
-	source = spacefm-1.0.1.tar.gz::https://github.com/IgnorantGuru/spacefm/archive/1.0.1.tar.gz
-	md5sums = 3665b0cf08dcbebefcc832afc19d613e
+	source = spacefm-1.0.2.tar.gz::https://github.com/IgnorantGuru/spacefm/archive/1.0.2.tar.gz
+	md5sums = cef34680fc5b76d8aefc1efa5e4b8824
 
 pkgname = spacefm-gtk2
 

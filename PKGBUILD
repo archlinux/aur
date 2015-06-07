@@ -7,7 +7,7 @@
 
 pkgname=spacefm-gtk2
 _pkgname=spacefm
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Multi-panel tabbed file manager'
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ optdepends=('lsof: device processes'
             'udevil: mount as non-root user and mount networks'
             'udisks2: mount as non-root user')
 source=($_pkgname-$pkgver.tar.gz::https://github.com/IgnorantGuru/spacefm/archive/$pkgver.tar.gz)
-md5sums=('3665b0cf08dcbebefcc832afc19d613e')
+md5sums=('cef34680fc5b76d8aefc1efa5e4b8824')
 
 build() {
   cd $_pkgname-$pkgver
