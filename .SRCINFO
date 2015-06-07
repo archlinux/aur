@@ -1,0 +1,17 @@
+pkgbase = perl-log-loglite
+	pkgdesc = Class helps us create simple logs for our application.
+	pkgver = 0.82
+	pkgrel = 1
+	url = https://metacpan.org/release/Log-LogLite
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-io-lockedfile
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/R/RA/RANI/Log-LogLite-0.82.tar.gz
+	sha256sums = 0509fb8bc543ac9675a48eb1a65a63528608c6c3fdf62a19e17073500e511a6b
+
+pkgname = perl-log-loglite
+
