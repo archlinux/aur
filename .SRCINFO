@@ -1,0 +1,24 @@
+pkgbase = virtualjaguar-git
+	pkgdesc = A portable Atari Jaguar emulator
+	pkgver = r497.40e59fa
+	pkgrel = 1
+	url = http://icculus.org/virtualjaguar/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = qt4
+	depends = gcc
+	depends = gdb
+	depends = sdl
+	depends = zlib
+	depends = libcdio
+	depends = freeglut
+	provides = virtualjaguar
+	conflicts = virtualjaguar
+	conflicts = virtualjaguar-svn
+	source = virtualjaguar::git+http://shamusworld.gotdns.org/git/virtualjaguar
+	sha1sums = SKIP
+
+pkgname = virtualjaguar-git
+
