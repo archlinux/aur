@@ -1,0 +1,16 @@
+pkgbase = perl-io-lockedfile
+	pkgdesc = Supply object methods for locking files.
+	pkgver = 0.23
+	pkgrel = 2
+	url = https://metacpan.org/release/IO-LockedFile
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/R/RA/RANI/IO-LockedFile-0.23.tar.gz
+	sha256sums = b1db7e6a6bf1be1e0615a6ecb5cebe78b00e287b127d5856d3f16b35dd47f8b5
+
+pkgname = perl-io-lockedfile
+
