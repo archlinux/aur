@@ -1,6 +1,6 @@
 pkgbase = binfmt_aout
 	pkgdesc = binfmt_aout kernel module, for running an a.out binary format
-	pkgver = 3.19
+	pkgver = 4.0
 	pkgrel = 1
 	url = https://www.kernel.org
 	install = binfmt_aout.install
@@ -10,7 +10,7 @@ pkgbase = binfmt_aout
 	makedepends = linux-api-headers
 	makedepends = gzip
 	options = !strip
-	source = https://raw.githubusercontent.com/torvalds/linux/v{3.19}/fs/binfmt_aout.c
+	source = https://raw.githubusercontent.com/torvalds/linux/v{4.0}/fs/binfmt_aout.c
 	source = Makefile
 	sha1sums = 461efd1c09b0b2420c1544ba5ec94952ecef4255
 	sha1sums = 24969cd0bfe0eba16b15a714839891615001842f
