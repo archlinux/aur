@@ -1,0 +1,11 @@
+post_install() {
+  cat << 'EOM'
+
+  Before starting the Longview service, paste the Longview
+  API key for this client into /etc/linode/longview.key
+
+  For Apache, MariaDB and Nginx plugin configuration please see the
+  documentation at https://www.linode.com/docs/platform/longview
+
+EOM
+}

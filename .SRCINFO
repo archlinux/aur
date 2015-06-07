@@ -1,0 +1,27 @@
+pkgbase = longview
+	pkgdesc = A system monitoring agent for Linode customers.
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/linode/longview
+	install = longview.install
+	arch = any
+	license = GPL2
+	depends = perl-libwww
+	depends = perl-crypt-ssleay
+	depends = perl-io-socket-inet6
+	depends = perl-linux-distribution
+	depends = perl-json-pp
+	depends = perl-json
+	depends = perl-log-loglite
+	depends = perl-try-tiny
+	depends = perl-dbi
+	optdepends = perl-dbd-mysql: MySQL support
+	backup = etc/linode/longview.key
+	backup = etc/linode/longview.d/Apache.conf
+	backup = etc/linode/longview.d/MySQL.conf
+	backup = etc/linode/longview.d/Nginx.conf
+	source = https://github.com/linode/longview/archive/v1.1.4.tar.gz
+	sha256sums = 735811fd9118af91f03a4659d7aaa1b9ccb1c29043ebc97dfeb4b08994a18638
+
+pkgname = longview
+
