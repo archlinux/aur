@@ -1,0 +1,29 @@
+--- gas/config/tc-m68k.c	2012-05-16 12:26:47.000000000 +0200
++++ gas/config/tc-m68k.c	2013-11-24 12:36:00.639003638 +0100
+@@ -4782,6 +4782,26 @@
+   record_alignment (data_section, 2);
+   record_alignment (bss_section, 2);
+ #endif
++
++  {
++    unsigned int cpu = bfd_mach_m68020;
++    if(selected_cpu) {
++      switch(selected_cpu->arch) {
++      case m68000:
++        cpu = bfd_mach_m68000;
++        break;
++      case m68010:
++        cpu = bfd_mach_m68010;
++        break;
++      default:
++        cpu = bfd_mach_m68020;
++        break;
++      }
++    }
++
++    if (! bfd_set_arch_mach (stdoutput, bfd_arch_m68k, cpu))
++      as_warn (_("could not set architecture and machine"));
++  }
+ }
+ 
+ 
