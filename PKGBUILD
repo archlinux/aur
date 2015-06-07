@@ -26,6 +26,8 @@ package() {
 	install -D -m644 "$srcdir/diamond.service" "$pkgdir/usr/lib/systemd/system/diamond.service"
 	python2 setup.py install --root="$pkgdir/" --optimize=1
 	rm "$pkgdir/etc/diamond/diamond.conf.example.windows"
+	rm "$pkgdir/etc/diamond/collectors/"*
+	rm "$pkgdir/etc/diamond/handlers/"*
 	mv "$pkgdir/etc/diamond/diamond.conf.example" "$pkgdir/etc/diamond/diamond.conf"
 
 	mkdir -p "$pkgdir/var/log/diamond" "$pkgdir/etc/diamond/collectors"
