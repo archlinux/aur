@@ -1,0 +1,31 @@
+pkgbase = m68k-atari-mint-gcc
+	pkgdesc = The GNU Compiler Collection for the Motorola M68000 architecture
+	pkgver = 4.6.4
+	pkgrel = 5
+	url = http://www.gnu.org/software/gcc/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = mpfr
+	depends = sh
+	depends = m68k-atari-mint-binutils
+	depends = cloog
+	depends = ppl
+	provides = m68k-atari-mint-gcc-core
+	conflicts = cross-m68k-atari-mint-gcc
+	conflicts = cross-m68k-atari-mint-gcc-core
+	conflicts = m68k-atari-mint-gcc-core
+	replaces = cross-m68k-atari-mint-gcc
+	options = !ccache
+	options = !distcc
+	options = !emptydirs
+	options = !libtool
+	options = !strip
+	options = staticlibs
+	source = ftp://ftp.gnu.org/gnu/gcc/gcc-4.6.4/gcc-4.6.4.tar.bz2
+	source = gcc-4.6.4-mint-20130415.patch.bz2
+	sha1sums = 63933a8a5cf725626585dbba993c8b0f6db1335d
+	sha1sums = bd2e88f2b862cc404f47144fb67375b1fe17291b
+
+pkgname = m68k-atari-mint-gcc
+
