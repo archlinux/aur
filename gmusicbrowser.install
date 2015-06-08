@@ -1,0 +1,23 @@
+post_install() {
+  cat << _EOF
+ 
+==> In order to play your music with gmusicbrowser, you need to install:
+- perl-glib-object-introspection + gstreamer plugins or
+- mpg321/vorbis-tools/flac123/alsa-utils or  
+- mplayer
+(look at optdepends for details)
+     
+_EOF
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+  update-desktop-database -q
+}
+
+post_upgrade() {
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+  update-desktop-database -q
+}
+
+post_remove() {
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+  update-desktop-database -q
+}
