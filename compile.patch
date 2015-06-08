@@ -1,0 +1,77 @@
+diff -Naur a/src/cdialogfind.h b/src/cdialogfind.h
+--- a/src/cdialogfind.h	2006-01-13 10:56:45.000000000 +0100
++++ b/src/cdialogfind.h	2010-07-27 23:04:09.932520353 +0200
+@@ -21,6 +21,7 @@
+ #ifndef CDIALOGFIND_H
+ #define CDIALOGFIND_H
+ 
++#include <stdint.h>
+ #include <qdialog.h>
+ #include <ui_find_dlg.h>
+ 
+diff -Naur a/src/cdialogsetdirectory.h b/src/cdialogsetdirectory.h
+--- a/src/cdialogsetdirectory.h	2006-01-13 10:56:45.000000000 +0100
++++ b/src/cdialogsetdirectory.h	2010-07-27 23:04:09.932520353 +0200
+@@ -20,6 +20,7 @@
+ 
+ #ifndef CDIALOGSETDIRECTORY_H
+ #define CDIALOGSETDIRECTORY_H
++#include <stdint.h>
+ #include <QStringList>
+ #include <ui_setdirectory_dlg.h>
+ 
+diff -Naur a/src/mainwindow.h b/src/mainwindow.h
+--- a/src/mainwindow.h	2006-01-13 10:56:45.000000000 +0100
++++ b/src/mainwindow.h	2010-07-27 23:04:09.932520353 +0200
+@@ -21,6 +21,7 @@
+ #ifndef MAINWINDOW_H
+ #define MAINWINDOW_H
+ 
++#include <stdint.h>
+ #include <QStringList>
+ #include <QMainWindow>
+ #include <QDir>
+diff -Naur a/src/mdichild.h b/src/mdichild.h
+--- a/src/mdichild.h	2006-01-13 10:56:45.000000000 +0100
++++ b/src/mdichild.h	2010-07-27 23:04:09.932520353 +0200
+@@ -23,6 +23,7 @@
+     #ifndef MDICHILD_H
+     #define MDICHILD_H
+ 
++    #include <stdint.h>
+     #include <QSplitter>
+ 
+ #define PARSER_NORMALTEXT 0
+diff -Naur a/src/qrfceditor.h b/src/qrfceditor.h
+--- a/src/qrfceditor.h	2006-01-13 10:56:45.000000000 +0100
++++ b/src/qrfceditor.h	2010-07-27 23:04:09.932520353 +0200
+@@ -21,6 +21,7 @@
+ #ifndef QRFCEDITOR_H
+ #define QRFCEDITOR_H
+ 
++#include <stdint.h>
+ #include <qtextbrowser.h>
+ class QStringList;
+ 
+diff -Naur a/src/rfcloader.h b/src/rfcloader.h
+--- a/src/rfcloader.h	2006-01-13 10:56:45.000000000 +0100
++++ b/src/rfcloader.h	2010-07-27 23:04:09.932520353 +0200
+@@ -21,6 +21,7 @@
+ #ifndef RFCLOADER_H
+ #define RFCLOADER_H
+ 
++#include <stdint.h>
+ #include <qobject.h>
+ #include <QStringList>
+ #include <QMap>
+diff -Naur a/src/TitleModel.h b/src/TitleModel.h
+--- a/src/TitleModel.h	2006-01-13 10:56:45.000000000 +0100
++++ b/src/TitleModel.h	2010-07-27 23:04:09.935853191 +0200
+@@ -26,6 +26,7 @@
+ #ifndef TITLEMODEL_H
+ #define TITLEMODEL_H
+ 
++#include <stdint.h>
+ #include <QAbstractItemModel>
+ #include <QModelIndex>
+ #include <QVariant>
