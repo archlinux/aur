@@ -1,0 +1,30 @@
+post_install() {
+
+  getent group zarafa &>/dev/null || groupadd -r zarafa
+  getent passwd zarafa &>/dev/null || useradd -r -c 'Zarafa Groupware Suite' -g zarafa -d /dev/null -s /bin/false zarafa
+  passwd -l zarafa &>/dev/null
+  
+  chown root:zarafa /var/log/zarafa
+  chown root:zarafa /var/lib/zarafa
+  chown root:zarafa /var/lib/zarafa-webaccess
+
+  echo
+  echo ">>> MySQL user zarafa, with unrestricted access to a "zarafa" database, must exist"
+  echo "    > CREATE DATABASE zarafa;"
+  echo "    > GRANT ALL PRIVILEGES ON zarafa.* TO zarafa@localhost IDENTIFIED BY 'zarafa';"
+  echo ">>> Ensure the GLOBAL MySQL variable, max_allowed_packet, is >= 16MB, or is SESSION writable"
+  echo "    > SET GLOBAL max_allowed_packet=16777216;"
+  echo ">>> Log files located at /var/log/zarafa"
+  echo
+
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+pre_remove() {
+  userdel zarafa &> /dev/null
+  groupdel zarafa &> /dev/null
+  return 0
+}

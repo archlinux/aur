@@ -1,0 +1,15 @@
+[Unit]
+Description=zarafa-gateway - Start the Zarafa IMAP/POP3 Gateway
+Documentation=man:zarafa-gateway(1)
+Wants=zarafa-server.service
+After=network.target mysqld.service zarafa-server.service
+
+[Service]
+Type=forking
+GuessMainPID=no
+Environment=LC_ALL=C LANG=C
+ExecStart=/usr/bin/zarafa-gateway -c /etc/zarafa/gateway.cfg
+TimeoutSec=65
+
+[Install]
+WantedBy=multi-user.target
