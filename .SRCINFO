@@ -1,0 +1,36 @@
+pkgbase = lxsession-git
+	pkgdesc = Lightweight X11 session manager for LXDE
+	pkgver = 0.5.2.r966.20150208
+	pkgrel = 1
+	epoch = 1
+	url = http://lxde.org/
+	arch = i686
+	arch = x86_64
+	groups = lxde
+	license = GPL2
+	makedepends = pkgconfig
+	makedepends = intltool
+	makedepends = docbook-xml
+	makedepends = docbook-xsl
+	makedepends = vala
+	depends = polkit
+	depends = dbus-glib
+	depends = libunique
+	depends = libkeybinder2
+	provides = lxsession
+	provides = lxsession-edit
+	provides = lxpolkit
+	provides = lxde-settings-daemon
+	provides = lxsession-lite
+	conflicts = lxsession
+	conflicts = lxsession-edit
+	conflicts = lxpolkit
+	conflicts = lxde-settings-daemon
+	conflicts = lxsession-lite
+	source = lxsession-git::git+http://git.lxde.org/git/lxde/lxsession.git
+	source = lxclipboard-startup.desktop
+	sha256sums = SKIP
+	sha256sums = 0c8b776b74da5bb7b126a6bde058318ed84808c50599849ce73ada88db4d58d0
+
+pkgname = lxsession-git
+

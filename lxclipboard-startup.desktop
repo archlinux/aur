@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=LXClipboard autostart
+Comment=LXDE Clipboard Manager Autostart
+Icon=lxclipboard
+Exec=lxclipboard
+Terminal=false
+Type=Application
+X-GNOME-Autostart-enabled=true
