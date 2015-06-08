@@ -1,0 +1,16 @@
+pkgbase = emacs-jabber
+	pkgdesc = Jabber.el: a minimal jabber client for emacs
+	pkgver = 0.8.92
+	pkgrel = 1
+	url = http://emacs-jabber.sourceforge.net
+	install = jabber.el.install
+	arch = any
+	license = GPL
+	depends = emacs
+	depends = gnutls
+	depends = gconf
+	source = http://downloads.sourceforge.net/sourceforge/emacs-jabber/emacs-jabber-0.8.92.tar.xz
+	md5sums = 91064079677fbabb7c7540b452b5edcd
+
+pkgname = emacs-jabber
+
