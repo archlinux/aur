@@ -1,0 +1,23 @@
+pkgbase = webcamoid
+	pkgdesc = Webcamoid is a full featured webcam capture application.
+	pkgver = 6.0.0
+	pkgrel = 3
+	url = https://github.com/hipersayanX/webcamoid
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = qt5-tools
+	depends = qt5-quickcontrols
+	depends = qt5-multimedia
+	depends = qt5-graphicaleffects
+	depends = qt5-svg
+	depends = ffmpeg
+	depends = opencv
+	provides = webcamoid
+	conflicts = kdeplasma-applets-webcamoid
+	conflicts = webcamoid-git
+	source = https://github.com/hipersayanX/webcamoid/archive/6.0.0.tar.gz
+	md5sums = 866ac8f0243ee54c30e997448eb44e8a
+
+pkgname = webcamoid
+
