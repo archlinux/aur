@@ -1,0 +1,21 @@
+pkgbase = psp-pspirkeyb
+	pkgdesc = This is a library for using IRDA keyboards with Playstation Portable (psp)
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/pspdev/psp-ports
+	arch = any
+	groups = psp
+	license = GPL
+	makedepends = psp-gcc
+	makedepends = git
+	depends = psp-sdk
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = git+https://github.com/pspdev/psp-ports.git
+	source = 0001-Use-PSPDIR-var-in-pspirkeyb-pspgl.patch
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = psp-pspirkeyb
+

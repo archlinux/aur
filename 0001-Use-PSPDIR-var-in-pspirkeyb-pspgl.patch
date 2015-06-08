@@ -1,0 +1,114 @@
+From cf8b34861ced176af04ce51c8633fec46f574d65 Mon Sep 17 00:00:00 2001
+From: xantares <xantares09@hotmail.com>
+Date: Mon, 12 May 2014 19:23:07 +0200
+Subject: [PATCH 1/1] Use PSPDIR var in pspirkeyb/pspgl
+
+---
+ pspgl/Makefile                  | 20 ++++++++++----------
+ pspirkeyb/Makefile              | 17 +++++++++--------
+ pspirkeyb/libpspirkeyb/Makefile | 16 ++++++++++------
+ 3 files changed, 29 insertions(+), 24 deletions(-)
+
+diff --git a/pspgl/Makefile b/pspgl/Makefile
+index 5ba7da2..71dbe11 100644
+--- a/pspgl/Makefile
++++ b/pspgl/Makefile
+@@ -1,4 +1,4 @@
+-PSPPATH := $(shell psp-config --psp-prefix)
++PSPDIR := $(shell psp-config --psp-prefix)
+ PSPSDK := $(shell psp-config --pspsdk-path)
+ ARCH = psp-
+ 
+@@ -6,8 +6,8 @@ CC = $(ARCH)gcc -std=gnu99
+ AR = $(ARCH)ar
+ RANLIB = $(ARCH)ranlib
+ RM = rm -f
+-CFLAGS = -g -Wall -Wmissing-prototypes -Os -G0 -fsingle-precision-constant -I. -I $(PSPPATH)/include -I $(PSPSDK)/include -funit-at-a-time
+-LFLAGS = -g -Wall -Os -G0 -L$(PSPPATH)/lib
++CFLAGS = -g -Wall -Wmissing-prototypes -Os -G0 -fsingle-precision-constant -I. -I $(PSPDIR)/include -I $(PSPSDK)/include -funit-at-a-time
++LFLAGS = -g -Wall -Os -G0 -L$(PSPDIR)/lib
+ 
+ DEPDIR = .deps
+ 
+@@ -216,13 +216,13 @@ clean:
+ 	make -C test-vfpu clean
+ 
+ install: all
+-	mkdir -p $(PSPPATH)/include $(PSPPATH)/lib
+-	mkdir -p $(PSPPATH)/include/GL $(PSPPATH)/include/GLES
+-	cp GL/*.h $(PSPPATH)/include/GL
+-	cp GLES/*.h $(PSPPATH)/include/GLES
+-	cp libGL.a $(PSPPATH)/lib
+-	cp libGLU.a $(PSPPATH)/lib
+-	cp libglut.a $(PSPPATH)/lib
++	mkdir -p $(PSPDIR)/include $(PSPDIR)/lib
++	mkdir -p $(PSPDIR)/include/GL $(PSPDIR)/include/GLES
++	cp GL/*.h $(PSPDIR)/include/GL
++	cp GLES/*.h $(PSPDIR)/include/GLES
++	cp libGL.a $(PSPDIR)/lib
++	cp libGLU.a $(PSPDIR)/lib
++	cp libglut.a $(PSPDIR)/lib
+ 
+ -include $(wildcard $(DEPDIR)/*.d) dummy
+ 
+diff --git a/pspirkeyb/Makefile b/pspirkeyb/Makefile
+index 0d4af2c..52be66a 100644
+--- a/pspirkeyb/Makefile
++++ b/pspirkeyb/Makefile
+@@ -29,17 +29,18 @@ release: all
+ 	cp asciidemoprx/EBOOT.PBP release/psp/game/asciidemoprx
+ 
+ PSPSDK=$(shell psp-config --pspsdk-path)
++PSPDIR = $(shell psp-config --psp-prefix)
+ 
+ install: all
+ 	$(MAKE) -C libpspirkeyb install
+-	mkdir -p $(PSPSDK)/samples/irkeyb
+-	mkdir -p $(PSPSDK)/samples/irkeyb/keymap
+-	cp libpspirkeyb/keymap/*.ini $(PSPSDK)/samples/irkeyb/keymap
+-	cp libpspirkeyb/keymap/README.txt $(PSPSDK)/samples/irkeyb/keymap
+-	cp libpspirkeyb/config/pspirkeyb.ini $(PSPSDK)/samples/irkeyb
+-	cp asciidemo/main.c $(PSPSDK)/samples/irkeyb
+-	cp asciidemo/Makefile.sdk $(PSPSDK)/samples/irkeyb/Makefile
++	mkdir -p $(PSPDIR)/samples/irkeyb
++	mkdir -p $(PSPDIR)/samples/irkeyb/keymap
++	cp libpspirkeyb/keymap/*.ini $(PSPDIR)/samples/irkeyb/keymap
++	cp libpspirkeyb/keymap/README.txt $(PSPDIR)/samples/irkeyb/keymap
++	cp libpspirkeyb/config/pspirkeyb.ini $(PSPDIR)/samples/irkeyb
++	cp asciidemo/main.c $(PSPDIR)/samples/irkeyb
++	cp asciidemo/Makefile.sdk $(PSPDIR)/samples/irkeyb/Makefile
+ 
+ uninstall:
+ 	$(MAKE) -C libpspirkeyb install
+-	rm -rf $(PSPSDK)/samples/irkeyb
++	rm -rf $(PSPDIR)/samples/irkeyb
+diff --git a/pspirkeyb/libpspirkeyb/Makefile b/pspirkeyb/libpspirkeyb/Makefile
+index a1d5dd9..99f1f0a 100644
+--- a/pspirkeyb/libpspirkeyb/Makefile
++++ b/pspirkeyb/libpspirkeyb/Makefile
+@@ -12,12 +12,16 @@ LDFLAGS =
+ PSPSDK=$(shell psp-config --pspsdk-path)
+ include $(PSPSDK)/lib/build.mak
+ 
++PSPDIR = $(shell psp-config --psp-prefix)
++
+ install: all
+-	cp libpspirkeyb.a $(PSPSDK)/lib
+-	cp include/pspirkeyb.h $(PSPSDK)/include
+-	cp include/pspirkeyb_rawkeys.h $(PSPSDK)/include
++	install -d $(PSPDIR)/lib
++	cp libpspirkeyb.a $(PSPDIR)/lib
++	install -d $(PSPDIR)/include
++	cp include/pspirkeyb.h $(PSPDIR)/include
++	cp include/pspirkeyb_rawkeys.h $(PSPDIR)/include
+ 
+ uninstall:
+-	rm -f $(PSPSDK)/lib/libpspirkeyb.a
+-	rm -f $(PSPSDK)/include/pspirkeyb.h
+-	rm -f $(PSPSDK)/include/pspirkeyb_rawkeys.h
++	rm -f $(PSPDIR)/lib/libpspirkeyb.a
++	rm -f $(PSPDIR)/include/pspirkeyb.h
++	rm -f $(PSPDIR)/include/pspirkeyb_rawkeys.h
+-- 
+1.9.2
+
