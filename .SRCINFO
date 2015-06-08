@@ -1,0 +1,23 @@
+pkgbase = dragonplayer-git
+	pkgdesc = A multimedia player where the focus is on simplicity, instead of features
+	pkgver = r638.a108f61
+	pkgrel = 1
+	url = http://kde.org/applications/multimedia/dragon
+	install = dragonplayer-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = kdoctools
+	makedepends = python
+	depends = kparts
+	provides = dragonplayer
+	conflicts = kdemultimedia-dragonplayer
+	conflicts = dragonplayer
+	replaces = dragonplayer-frameworks-git
+	source = git://anongit.kde.org/dragon.git
+	sha256sums = SKIP
+
+pkgname = dragonplayer-git
+
