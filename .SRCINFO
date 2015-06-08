@@ -1,0 +1,14 @@
+pkgbase = wikititle-git
+	pkgdesc = Simple PHP script for grabbing episode titles out of List of Episodes pages on Wikipedia with the Wikipedia API
+	pkgver = r17.bb8b4da
+	pkgrel = 1
+	url = https://github.com/javajawa/wikititle
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = php
+	source = wikititle-git::git+https://github.com/javajawa/wikititle.git
+	md5sums = SKIP
+
+pkgname = wikititle-git
+
