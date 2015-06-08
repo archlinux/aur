@@ -1,0 +1,14 @@
+pkgbase = binclock
+	pkgdesc = Displays system time in binary format.
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://www.ngolde.de/binclock.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gcc
+	source = http://www.ngolde.de/download/binclock-1.5.tar.gz
+	md5sums = d26ea67970c782ee56c87595ed3bfef0
+
+pkgname = binclock
+
