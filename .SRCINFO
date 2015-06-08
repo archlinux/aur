@@ -1,0 +1,18 @@
+pkgbase = mcabber-crew-modules
+	pkgdesc = All modules from MCabber repository. PKGBUILD for crew edition.
+	pkgver = 40
+	pkgrel = 1
+	url = http://wiki.mcabber.com/index.php/Modules
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	makedepends = mercurial
+	depends = mcabber-crew-hg
+	optdepends = screen: for extsay module
+	provides = mcabber-crew-modules
+	conflicts = mcabber-modules
+	conflicts = mcabber-modules-hg
+
+pkgname = mcabber-crew-modules
+
