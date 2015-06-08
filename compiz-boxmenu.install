@@ -1,0 +1,28 @@
+post_install() {
+cat <<-EndOfMessage
+==> compiz-deskmenu usage:
+you can run "compiz-boxmenu-autoconfig" or manually set following in ccsm:
+ + General Options > Commands > Commands > Command line 0 to "compiz-boxmenu"
+ + General Options > Commands > Key bindings > Run command 0 to "<Control>space"
+ + Viewport Switcher > Desktop-based Viewport Switching > Plugin for initiate
+   action to "core"
+ + Viewport Switcher > Desktop-based Viewport Switching > Action name for
+   initiate to "run_command0_key"
+EndOfMessage
+cat <<-EndOfMessage
+==> If you don't set an open method
+for the recent documents item, then it will automatically use xdg-open. If you don't like this,
+change the open command via the editor.
+EndOfMessage
+cat <<-EndOfMessage
+==> If you are upgrading from a previous version of compiz-boxmenu or compiz-deskmenu,
+rename or copy your ~/.config/compiz/deskmenu folder as ~/.config/compiz/boxmenu.
+==> There are also some other binaries: compiz-boxmenu-vplist, compiz-boxmenu-dlist, and compiz-boxmenu-wlist.
+These allow you to call up these items on their own. All options you can configure are allowed here.
+EndOfMessage
+/bin/true
+}
+
+post_upgrade() {
+	post_install
+}
