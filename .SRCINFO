@@ -1,0 +1,33 @@
+pkgbase = synergy-fixed
+	pkgdesc = Share a single mouse and keyboard between multiple computers. (nulljobbuildup fixed)
+	pkgver = 1.7.3
+	pkgrel = 2
+	url = http://synergy-foss.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = python2
+	makedepends = libxt
+	makedepends = cmake
+	makedepends = qt5-base
+	makedepends = unzip
+	depends = gcc-libs
+	depends = libxtst
+	depends = libxinerama
+	depends = crypto++
+	depends = libxkbcommon-x11
+	depends = avahi
+	optdepends = qt5-base: gui support
+	provides = synergy=1.7.3
+	conflicts = synergy
+	source = https://github.com/synergy/synergy/archive/v1.7.3-stable.tar.gz
+	source = socketmultiplexer.patch
+	source = synergys.socket
+	source = synergys.service
+	md5sums = cb8dfa78f87b9daa2d7abe480e55288a
+	md5sums = b9fd9f3faa673dfa30b924b120e16c12
+	md5sums = 58f48336836d6faf3d5eecbe4155b77e
+	md5sums = b95e4b83d8a19c0bd81a15280078fcd5
+
+pkgname = synergy-fixed
+

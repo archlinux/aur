@@ -1,0 +1,10 @@
+--- a/src/lib/net/SocketMultiplexer.cpp.old	2013-07-16 21:02:30.000000000 +0200
++++ b/src/lib/net/SocketMultiplexer.cpp	2013-11-16 09:58:35.113448538 +0100
+@@ -243,6 +243,7 @@
+ 		for (SocketJobMap::iterator i = m_socketJobMap.begin();
+ 							i != m_socketJobMap.end();) {
+ 			if (*(i->second) == NULL) {
++				m_socketJobs.erase(i->second);
+ 				m_socketJobMap.erase(i++);
+ 				m_update = true;
+ 			}
