@@ -1,0 +1,13 @@
+pkgbase = firefox-extension-saved-password-editor
+	pkgdesc = Adds the ability to create and edit entries in the password manager.
+	pkgver = 2.9
+	pkgrel = 1
+	url = https://addons.mozilla.org/firefox/addon/saved-password-editor/
+	arch = any
+	license = GPLv3
+	depends = firefox
+	source = https://addons.cdn.mozilla.net/user-media/addons/60265/saved_password_editor-2.9-sm+tb+fx.xpi
+	sha256sums = 40d0e4fae8c511dfd08b51102ed384fca0ea5b05ca8f0192b01d30d5122e49b0
+
+pkgname = firefox-extension-saved-password-editor
+
