@@ -1,0 +1,22 @@
+diff --git a/play.cpp b/play.cpp
+index 269426d..ccf87c2 100644
+--- a/play.cpp
++++ b/play.cpp
+@@ -1352,7 +1352,7 @@ void cMyOsd::Flush(void)
+     }
+ 
+     LOCK_PIXMAPS;
+-    while ((pm = RenderPixmaps())) {
++    while ((pm = dynamic_cast<cPixmapMemory *>(RenderPixmaps()))) {
+ 	int x;
+ 	int y;
+ 	int w;
+@@ -1367,7 +1367,7 @@ void cMyOsd::Flush(void)
+ 	    pm->Data());
+ 	OsdDrawARGB(x, y, w, h, pm->Data());
+ 
+-	delete pm;
++	DestroyPixmap(pm);
+     }
+     cMyOsd::Dirty = 0;
+ }

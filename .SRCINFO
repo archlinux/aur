@@ -1,0 +1,27 @@
+pkgbase = vdr-play
+	pkgdesc = Mediaplayer plugin for VDR and X11
+	pkgver = 0.0.14_21_g8035264
+	pkgrel = 13
+	url = http://projects.vdr-developer.org/projects/plg-play
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = AGPL3
+	makedepends = git
+	depends = mplayer
+	depends = vdr-api=2.2.0
+	depends = xcb-util-image
+	depends = xcb-util-keysyms
+	depends = xcb-util-wm
+	backup = etc/vdr/conf.avail/50-play.conf
+	source = git://projects.vdr-developer.org/vdr-plugin-play.git#commit=8035264d471f75407222a48f2fa707795e25d461
+	source = play-vdr2.1.10compat.diff
+	source = 50-play.conf
+	md5sums = SKIP
+	md5sums = 88bd08bead28aab75bd002daccf7e5b5
+	md5sums = 19d455b69728f7e6469763b2b2424074
+
+pkgname = vdr-play
+
