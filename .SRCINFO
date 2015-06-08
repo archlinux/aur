@@ -1,0 +1,21 @@
+pkgbase = geneticinvasion
+	pkgdesc = A Tower Defence game that uses evolutionary algorithm
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = http://projects.haxx.es/p/genetic-invasion
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	makedepends = cmake
+	depends = libeo
+	depends = mesa
+	source = http://projects.haxx.es/media/upload/genetic-invasion/files/genetic-invasion-v0.5.2.zip
+	source = http://downloads.sourceforge.net/sfml/SFML-1.6-sdk-linux-64.tar.gz
+	source = FindSFML.cmake
+	md5sums = a9b3b6e128170afb167a45616d6ea022
+	md5sums = 7a9b3a1ef6d14cd25090e440ccdbb3a8
+	md5sums = f6358382450150804d773a1d0b0777db
+
+pkgname = geneticinvasion
+
