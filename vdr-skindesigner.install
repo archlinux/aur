@@ -1,0 +1,9 @@
+post_install() {
+  ln -sr /etc/fonts/conf.avail/99-skindesigner.conf /etc/fonts/conf.d/99-skindesigner.conf
+}
+
+post_upgrade() {
+  if [ $(vercmp "0.5.2-1" "$2") -eq 1 ]; then
+    post_install
+  fi
+}
