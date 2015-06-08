@@ -1,0 +1,26 @@
+pkgbase = ripit
+	pkgdesc = Command line tool to rip tracks from audio cds and encode them
+	pkgver = 4.0.0_beta20140508
+	pkgrel = 1
+	url = http://www.suwald.com/ripit
+	arch = any
+	license = GPL
+	depends = cdparanoia
+	depends = cddb_get
+	depends = perl-xml-simple
+	depends = perl-mp3-tag
+	optdepends = flac: Encoding (FLAC)
+	optdepends = lame: Encoding (MP3)
+	optdepends = vorbis-tools: Encoding (Vorbis)
+	optdepends = wavpack: Encoding (WAV)
+	optdepends = musepack-tools: Encoding (MPC/MPP)
+	optdepends = faac: Encoding (M4A/AAC)
+	optdepends = normalize: Normalizing
+	optdepends = perl-libwww: Submitting to CDDB
+	optdepends = libmusicbrainz3: Tagging (Musicbrainz.org)
+	backup = etc/ripit/config
+	source = http://www.suwald.com/ripit/ripit-4.0.0_beta20140508.tar.bz2
+	md5sums = aba1187fc3040ef4814c43e5c788bbeb
+
+pkgname = ripit
+
