@@ -1,0 +1,15 @@
+pkgbase = zalc
+	pkgdesc = A small, FLTK-based calculator
+	pkgver = 1.2.4
+	pkgrel = 2
+	url = http://ziggi.org/category/developments/zalc/
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	depends = fltk
+	provides = zalc
+	source = https://github.com/ziggi/zalc/archive/1.2.4.tar.gz
+	md5sums = eb4bfd74884cc8205324fdbdcbf7cbae
+
+pkgname = zalc
+
