@@ -1,0 +1,21 @@
+pkgbase = ktexteditor-git
+	pkgdesc = KTextEditor framework
+	pkgver = r807.d13bfd1
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/ktexteditor
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	depends = kparts-git
+	depends = libgit2
+	provides = ktexteditor
+	conflicts = ktexteditor
+	source = git://anongit.kde.org/ktexteditor.git
+	source = pkgbuild-syntax-highlight.patch
+	md5sums = SKIP
+	md5sums = cc66f75c967dd7ac7c97375875772d69
+
+pkgname = ktexteditor-git
+
