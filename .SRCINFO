@@ -1,6 +1,6 @@
 pkgbase = qamqp-git
 	pkgdesc = Qt4/Qt5 implementation of AMQP 0.9.1
-	pkgver = r253.5c7eca5
+	pkgver = r273.73d80de
 	pkgrel = 1
 	url = https://github.com/mbroadst/qamqp
 	arch = i686

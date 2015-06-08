@@ -1,5 +1,5 @@
 pkgname=qamqp-git
-pkgver=r253.5c7eca5
+pkgver=r273.73d80de
 pkgver() {
   cd "$srcdir/qamqp"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
