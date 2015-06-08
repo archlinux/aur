@@ -1,0 +1,15 @@
+pkgbase = php-cs-fixer
+	pkgdesc = Analyzes some PHP source code and tries to fix coding standards issues (PSR-1 and PSR-2 compatible).
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = http://cs.sensiolabs.org/
+	arch = any
+	license = MIT
+	makedepends = php-box
+	makedepends = php-composer
+	depends = php>=5.3.6
+	source = https://github.com/FriendsOfPHP/PHP-CS-Fixer/archive/v1.8.1.tar.gz
+	sha512sums = 55d5dea180ca5f05c54e34f19f0a6c705b256ca6b836fc12d53d88b34fb4ad2ea9ef0270084867042c2eccc29f1f03025671df5888910c6525e7a3cb76838b2e
+
+pkgname = php-cs-fixer
+
