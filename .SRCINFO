@@ -1,0 +1,17 @@
+pkgbase = fortune-mod-farscape
+	pkgdesc = Fortune cookies: Farscape (TV series), scraped from https://en.wikiquote.org/wiki/Farscape
+	pkgver = r1813446
+	pkgrel = 1
+	url = http://github.com/dwoffinden/fortune-mod-farscape
+	arch = any
+	groups = fortune-mods
+	license = CCPL:by-sa3.0
+	makedepends = perl
+	makedepends = perl-mediawiki-api
+	makedepends = perl-libwww
+	depends = fortune-mod
+	source = wiki.pl
+	md5sums = c298998fe5c54870fbc12ce315ef311f
+
+pkgname = fortune-mod-farscape
+
