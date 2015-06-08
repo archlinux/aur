@@ -1,0 +1,123 @@
+--- src/props.h	(revision 2471)
++++ src/props.h	(revision 2472)
+@@ -36,7 +36,7 @@
+ /** Set a property by name and data/datalen. */
+ int prp__set(hash_t db, const char *name, const char *data, int datalen);
+ /** Set a property by svn_string_t. */
+-inline int prp__set_svnstr(hash_t db, 
++int prp__set_svnstr(hash_t db, 
+ 		const char *name, 
+ 		const svn_string_t *utf8_value);
+ 
+--- src/est_ops.c	(revision 2471)
++++ src/est_ops.c	(revision 2472)
+@@ -499,7 +499,7 @@
+ 		[sizeof(buffer)-1]=0xff,
+ 		[sizeof(buffer)-2]=0x0,
+ 	};
+-	int is_dir, is_dev, status, is_spec;
++	int is_dir, is_dev, status;
+ 	int intnum;
+ 
+ 
+@@ -518,8 +518,6 @@
+ 
+ 	is_dir = S_ISDIR(sts->st.mode);
+ 	is_dev = S_ISBLK(sts->st.mode) || S_ISCHR(sts->st.mode);
+-	is_spec = S_ISBLK(sts->st.mode) || S_ISCHR(sts->st.mode) ||
+-		S_ISLNK(sts->st.mode);
+ 
+ 
+ 	if (sts->match_pattern)
+--- src/diff.c	(revision 2471)
++++ src/diff.c	(revision 2472)
+@@ -721,7 +721,7 @@
+ 	int status;
+ 	struct estat **sts;
+ 	int removed;
+-	char *fn, *special_stg;
++	char *fn;
+ 	apr_pool_t *subpool;
+ 
+ 
+@@ -774,8 +774,6 @@
+ 			else if (entry->entry_status || entry->remote_status)
+ 			{
+ 				/* Local changes, or changes to repository. */
+-				special_stg=NULL;
+-
+ 				if (S_ISDIR(entry->st.mode))
+ 				{
+ 					/* TODO: meta-data diff? */
+--- src/waa.c	(revision 2471)
++++ src/waa.c	(revision 2472)
+@@ -121,7 +121,7 @@
+ 
+ 
+ /** Convenience function for creating two paths. */
+-inline void waa___init_path(enum opt__settings_e which,
++static inline void waa___init_path(enum opt__settings_e which,
+ 		char *dest, char **eos)
+ {
+ 	int l;
+@@ -1824,7 +1824,7 @@
+  *   - it was freshly added.
+  *
+  * */
+-inline int waa___check_dir_for_update(struct estat *sts)
++static inline int waa___check_dir_for_update(struct estat *sts)
+ {
+ 	int status;
+ 
+@@ -2738,7 +2738,7 @@
+ 
+ 
+ /** Abbreviation function for tree recursion. */
+-inline int waa___recurse_tree(struct estat **list, action_t handler, 
++static inline int waa___recurse_tree(struct estat **list, action_t handler, 
+ 		int (*me)(struct estat *, action_t ))
+ {
+ 	struct estat *sts;
+--- src/racallback.c	(revision 2471)
++++ src/racallback.c	(revision 2472)
+@@ -42,6 +42,7 @@
+ 	char *cfg_usr_path;
+ 
+ 
++	cfg_usr_path = NULL;
+ 	STOPIF( hlp__get_svn_config(&cfg_hash), NULL);
+ 
+ 	cfg = apr_hash_get(cfg_hash, SVN_CONFIG_CATEGORY_CONFIG,
+--- src/cache.c	(revision 2471)
++++ src/cache.c	(revision 2472)
+@@ -46,7 +46,7 @@
+  *
+  * Please note that memory may have to be reallocated, causing \c *cache to 
+  * change! */
+-inline int cch__entry_set(struct cache_entry_t **cache, 
++int cch__entry_set(struct cache_entry_t **cache, 
+ 		cache_value_t id, const char *data, int len,
+ 		int copy_old_data,
+ 		char **copy)
+--- src/cache.h	(revision 2471)
++++ src/cache.h	(revision 2472)
+@@ -94,7 +94,7 @@
+ 		int *index, char **data, int *len);
+ 
+ /** Copy the given data into the given cache entry. */
+-inline int cch__entry_set(struct cache_entry_t **cache, 
++int cch__entry_set(struct cache_entry_t **cache, 
+ 		cache_value_t id, const char *data, int len,
+ 		int copy_old_data,
+ 		char **copy);
+--- src/helper.c	(revision 2471)
++++ src/helper.c	(revision 2472)
+@@ -84,7 +84,7 @@
+  * \note If there's an irreparable conversion error, we must not print 
+  * (parts of) the strings. One or even both might not be suitable for 
+  * printing on the current console - so we do not know what could happen. */
+-inline int hlp___do_convert(iconv_t cd, 
++static inline int hlp___do_convert(iconv_t cd, 
+ 		const char* from, char** to, 
+ 		int len)
+ {
