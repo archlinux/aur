@@ -1,0 +1,16 @@
+pkgbase = epson-inkjet-printer-workforce-840-series
+	pkgdesc = Epson printer driver (Stylus Office BX925FWD / WorkForce 840)
+	pkgver = 1.0.0
+	pkgrel = 8
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom:Epson Licence Agreement
+	depends = cups
+	depends = ghostscript
+	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-workforce-840-series-1.0.0-1lsb3.2.src.rpm
+	sha256sums = ad3627126833a91ff039961821edab3bdc76717f2cdaa0f24ee45a4e3cc98db8
+
+pkgname = epson-inkjet-printer-workforce-840-series
+
