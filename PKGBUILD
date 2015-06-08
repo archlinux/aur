@@ -1,4 +1,4 @@
-# Maintainer: Patrik Plihal <patrik.plihal@gmail.com>
+# Maintainer: Patrik Plihal <patrik.plihal at gmail dot com>
 
 pkgname=nunit3
 
@@ -13,7 +13,7 @@ license=('custom')
 url="http://www.nunit.com"
 depends=('mono' 'sed')
 source=("https://github.com/nunit/nunit/releases/download/${pkgver_link}/NUnit-${pkgver_linkname}.zip")
-md5sums=('ecbbccd4d154ed81d94013915eb37be7')
+sha256sums=('aa9ed227cd420e98c196c2e42f1109219ae5b504b95077a55ff223fdf1dc6dba')
 
 package() {  
   mkdir -p $pkgdir/usr/{share/doc,share/licenses,lib}/$pkgname
