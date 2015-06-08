@@ -1,0 +1,15 @@
+pkgbase = vlc-media-context
+	pkgdesc = Displays contextual information about the currently playing media
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = http://addons.videolan.org/content/show.php/Media+Context?content=143241
+	arch = any
+	license = GPL3
+	depends = vlc>=2.0.1
+	depends = lua
+	options = !emptydirs
+	source = http://addons.videolan.org/CONTENT/content-files/143241-Media-Context.lua
+	sha1sums = 8e69e9083be5e617db616f73f3a8c5f6ce3afcdb
+
+pkgname = vlc-media-context
+
