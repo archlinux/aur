@@ -1,0 +1,18 @@
+pkgbase = ompp
+	pkgdesc = Profiling tool for OpenMP applications
+	pkgver = 0.8.5
+	pkgrel = 3
+	url = http://www.ompp-tool.com/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = bash
+	depends = papi
+	options = staticlibs
+	options = libtool
+	options = !strip
+	source = http://projekt17.pub.lab.nm.ifi.lmu.de/ompp/downloads/ompp-0.8.5.tgz
+	sha256sums = 6164d9673df15536f8d9f0a4d50bf039066f6140b740df4c7d0ba1fa095bd8b5
+
+pkgname = ompp
+
