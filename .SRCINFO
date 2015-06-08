@@ -1,0 +1,16 @@
+pkgbase = slider-git
+	pkgdesc = PDF presentation tool
+	pkgver = 3.163.017c896
+	pkgrel = 1
+	url = https://github.com/TrilbyWhite/Slider
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	depends = poppler-glib
+	depends = libxinerama
+	source = slider::git://github.com/TrilbyWhite/Slider.git
+	sha256sums = SKIP
+
+pkgname = slider-git
+
