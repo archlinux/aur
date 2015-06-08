@@ -1,0 +1,13 @@
+--- a/CMakeLists.txt	2011-08-07 23:46:57.000000000 +0200
++++ b/CMakeLists.txt	2011-08-10 18:27:17.928057478 +0200
+@@ -1,4 +1,10 @@
+ add_subdirectory(kqrcode)
+ add_subdirectory(icons)
+
++add_subdirectory(qrweblink)
++add_subdirectory(qrsms)
++add_subdirectory(qrwifi)
++add_subdirectory(qremail)
++add_subdirectory(qrcontact)
++
+ cmake_minimum_required(VERSION 2.6.2) # may be lower
