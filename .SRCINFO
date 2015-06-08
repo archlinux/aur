@@ -1,0 +1,14 @@
+pkgbase = libinjection
+	pkgdesc = SQL / SQLI tokenizer parser analyzer.
+	pkgver = 3.9.1
+	pkgrel = 1
+	url = https://github.com/client9/libinjection
+	arch = i686
+	arch = x86_64
+	license = BSD
+	options = !strip
+	source = libinjection-3.9.1.tar.gz::https://github.com/client9/libinjection/archive/v3.9.1.tar.gz
+	md5sums = 3aedccb303c187645e41a13af2805795
+
+pkgname = libinjection
+
