@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Name=NetBeans IDE
+Comment=A Java (SE) IDE
+Icon=/usr/share/netbeans/nb/netbeans.png
+Exec=/usr/share/netbeans/bin/netbeans --laf GTK
+Terminal=false
+Type=Application
+Categories=Development;
+StartupNotify=true
+GenericName=
