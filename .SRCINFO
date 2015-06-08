@@ -1,0 +1,36 @@
+pkgbase = vdr-streamdev
+	pkgdesc = implementation of the VTP (Video Transfer Protocol)
+	pkgver = 0.6.1_24_g7b17f77
+	pkgrel = 2
+	url = http://projects.vdr-developer.org/projects/show/plg-streamdev
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	makedepends = git
+	depends = gcc-libs
+	depends = vdr-api=2.2.0
+	source = git://projects.vdr-developer.org/vdr-plugin-streamdev.git#commit=7b17f7725cd3bd97dd3921d96575c50a86e3fac2
+	source = http://projects.vdr-developer.org/attachments/download/1844/vdr-plugin-streamdev-filter-patch.diff
+	source = http://projects.vdr-developer.org/attachments/download/1853/vdr-plugin-streamdev-filter-patch2.diff
+	source = 50-streamdev-server.conf
+	md5sums = SKIP
+	md5sums = a1e4b3807ede87b810abc973666a88eb
+	md5sums = e0ddaa269ce0727dd2e434a417b42bf5
+	md5sums = 8c352d8ee7401eeb34fe5ab82e791a21
+
+pkgname = vdr-streamdev-client
+	pkgdesc = implementation of the VTP (Video Transfer Protocol): client-side
+	conflicts = vdr-streamdev
+	replaces = vdr-streamdev
+	backup = etc/vdr/conf.avail/50-streamdev-client.conf
+
+pkgname = vdr-streamdev-server
+	pkgdesc = implementation of the VTP (Video Transfer Protocol): server-side
+	conflicts = vdr-streamdev
+	replaces = vdr-streamdev
+	backup = etc/vdr/conf.avail/50-streamdev-server.conf
+	backup = var/lib/vdr/plugins/streamdev-server/streamdevhosts.conf
+
