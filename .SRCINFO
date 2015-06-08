@@ -1,0 +1,23 @@
+pkgbase = lib32-libdbusmenu-gtk2
+	pkgdesc = Small library that passes a menu structure across DBus (GTK+ 2 library) (32-bit)
+	pkgver = 12.10.2
+	pkgrel = 10
+	url = https://launchpad.net/libdbusmenu
+	install = lib32-libdbusmenu-gtk2.install
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc-multilib
+	makedepends = intltool
+	makedepends = gnome-doc-utils
+	makedepends = gobject-introspection
+	makedepends = vala
+	makedepends = lib32-json-glib
+	depends = lib32-gtk2
+	depends = lib32-libdbusmenu-glib
+	depends = libdbusmenu-gtk2
+	options = !emptydirs
+	source = http://launchpad.net/dbusmenu/12.10/12.10.2/+download/libdbusmenu-12.10.2.tar.gz
+	sha256sums = 9d6ad4a0b918b342ad2ee9230cce8a095eb601cb0cee6ddc1122d0481f9d04c9
+
+pkgname = lib32-libdbusmenu-gtk2
+
