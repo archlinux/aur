@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-wwxd-git
+	pkgdesc = Plugin for Vapoursynth: wwxd (GIT version)
+	pkgver = v1.0.0.ga587086
+	pkgrel = 1
+	url = http://forum.doom9.org/showthread.php?t=170546
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = vapoursynth
+	provides = vapoursynth-plugin-wwxd
+	conflicts = vapoursynth-plugin-wwxd
+	source = wwxd::git+https://github.com/dubhater/vapoursynth-wwxd.git
+	md5sums = SKIP
+
+pkgname = vapoursynth-plugin-wwxd-git
+
