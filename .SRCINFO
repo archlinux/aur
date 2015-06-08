@@ -1,0 +1,16 @@
+pkgbase = epson-inkjet-printer-201210j
+	pkgdesc = Epson printer driver (EP-775A)
+	pkgver = 1.0.0
+	pkgrel = 8
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom:Epson Licence Agreement
+	depends = cups
+	depends = ghostscript
+	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201210j-1.0.0-1lsb3.2.src.rpm
+	sha256sums = 0b2fb79c5b4650c38f6a2dee37a1b3eaadcb6aa1b10bfce8f90f1c473c415a8b
+
+pkgname = epson-inkjet-printer-201210j
+
