@@ -1,0 +1,15 @@
+pkgbase = pyching
+	pkgdesc = pyChing is a program that allows you to 'consult' the I Ching using the coin oracle and then to look up a brief interpretation.
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = http://pyching.sourceforge.net/
+	arch = any
+	license = GPL
+	depends = python2
+	source = http://sourceforge.net/projects/pyching/files/pyChing/1.2.2/pyching-1.2.2.tar.gz
+	source = pyching.desktop
+	md5sums = a11f3b34d195ed72514ffad68912329c
+	md5sums = e014b26d6bd3d3d4b037ef8563728ded
+
+pkgname = pyching
+

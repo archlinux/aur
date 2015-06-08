@@ -1,0 +1,12 @@
+[Desktop Entry]
+Exec=pyching
+GenericName[en_US]=I Ching Coin Oracle
+GenericName=I Ching Coin Oracle
+Icon=pyching
+Name[en_US]=PyChing
+Name=PyChing
+StartupNotify=true
+Terminal=false
+Category=Accessories
+Type=Application
+
