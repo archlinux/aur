@@ -1,0 +1,36 @@
+pkgbase = lilypond-git
+	pkgdesc = An automated music engraving system (Git snapshot)
+	pkgver = 2.19.21.1.58.gb6f1797
+	pkgrel = 1
+	url = http://lilypond.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = fontforge
+	makedepends = git
+	makedepends = gsfonts-cyr
+	makedepends = t1utils
+	makedepends = texlive-core>=2011.23170
+	depends = fontconfig
+	depends = freetype2
+	depends = guile=2.0.11
+	depends = pango
+	depends = python2
+	depends = ghostscript
+	depends = dblatex
+	optdepends = netpbm: building HTML documentation
+	optdepends = imagemagick: building HTML documentation
+	optdepends = ttf-kochi-substitute: building HTML documentation
+	optdepends = texi2html>=1.82: building HTML documentation
+	optdepends = rsync: installing HTML documentation
+	provides = lilypond
+	conflicts = lilypond
+	conflicts = lilypond-devel
+	options = !makeflags
+	source = git://git.sv.gnu.org/lilypond.git
+	source = no_fontforge-versioncheck.patch
+	md5sums = SKIP
+	md5sums = 84c92f047d703a4b798092cfc4d83e32
+
+pkgname = lilypond-git
+

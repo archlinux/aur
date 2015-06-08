@@ -1,0 +1,12 @@
+diff -Naur lilypond-2.19.16.orig/configure.ac lilypond-2.19.16.new/configure.ac
+--- lilypond-2.19.16.orig/configure.ac	2015-03-03 21:38:23.340077656 +0100
++++ lilypond-2.19.16.new/configure.ac	2015-03-03 21:42:39.231862408 +0100
+@@ -186,7 +186,7 @@
+ 
+ STEPMAKE_PYTHON_DEVEL(REQUIRED, 2.4, 3.0)
+ 
+-STEPMAKE_PATH_PROG(FONTFORGE, fontforge, REQUIRED, 20110222)
++STEPMAKE_PATH_PROG(FONTFORGE, fontforge, REQUIRED)
+ 
+ STEPMAKE_PATH_PROG(T1ASM, t1asm, REQUIRED)
+ 
