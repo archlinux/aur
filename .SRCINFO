@@ -1,7 +1,7 @@
 pkgbase = scid-git
 	pkgdesc = A Free Chess Database Application - git-Checkout
-	pkgver = 4.5.2.r99.g317dfab
-	pkgrel = 2
+	pkgver = 4.6.1
+	pkgrel = 1
 	url = http://scid.sourceforge.net
 	arch = x86_64
 	arch = i686
