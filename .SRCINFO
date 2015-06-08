@@ -1,0 +1,15 @@
+pkgbase = iceweasel-i18n-nb-no
+	pkgdesc = Bokmål language package for Iceweasel (Norway)
+	pkgver = 38.0.1.deb5
+	pkgrel = 1
+	url = http://www.mozilla.com/
+	arch = any
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = iceweasel>=38.0.1
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-nb-no_38.0.1-5_all.deb
+	sha256sums = 10f41688ca0fa52927ae7bdbfdb450eeae564975b48db18507433306059a0247
+
+pkgname = iceweasel-i18n-nb-no
+
