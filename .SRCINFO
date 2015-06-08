@@ -1,0 +1,18 @@
+pkgbase = agedu-svn
+	pkgdesc = Track down wasted disk space
+	pkgver = 10297
+	pkgrel = 1
+	url = http://www.chiark.greenend.org.uk/~sgtatham/agedu/
+	arch = i686
+	arch = x86_64
+	license = custom:MIT
+	makedepends = subversion
+	makedepends = halibut
+	depends = glibc
+	provides = agedu
+	conflicts = agedu
+	source = svn://svn.tartarus.org/sgt/agedu
+	md5sums = SKIP
+
+pkgname = agedu-svn
+
