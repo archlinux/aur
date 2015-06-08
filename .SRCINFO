@@ -1,0 +1,22 @@
+pkgbase = qphotobooth-git
+	pkgdesc = Photo booth implementation for parties.
+	pkgver = 929f8d6
+	pkgrel = 1
+	url = http://projects.haxx.es/p/qphotobooth/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	depends = opencv
+	depends = qt5-base
+	depends = qt5-sensors
+	depends = qt5-webkit
+	depends = qt5-multimedia
+	provides = qphotobooth
+	replaces = qphotobooth
+	source = git://haxx.es/qphotobooth.git
+	sha256sums = SKIP
+
+pkgname = qphotobooth-git
+
