@@ -1,0 +1,19 @@
+pkgbase = kidentitymanagement-git
+	pkgdesc = KDE PIM libraries
+	pkgver = r3317.76fe915
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/pim/kidentitymanagement
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	makedepends = python
+	depends = kpimtextedit-git
+	provides = kidentitymanagement
+	conflicts = kidentitymanagement
+	source = git://anongit.kde.org/kidentitymanagement.git
+	md5sums = SKIP
+
+pkgname = kidentitymanagement-git
+
