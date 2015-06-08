@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=CsoundQt
+Comment=Csound Qt signal processing environment/editor
+Exec=csoundqt
+Icon=csoundqt
+Terminal=false
+Type=Application
+Categories=Application;AudioVideo;Audio;
