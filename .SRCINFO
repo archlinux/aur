@@ -1,0 +1,14 @@
+pkgbase = acme
+	pkgdesc = A free crossassembler, that can produce code for the 6502, 65c02 and 65816 processors.
+	pkgver = 091
+	pkgrel = 2
+	url = http://www.esw-heim.tu-clausthal.de/~marco/smorbrod/acme
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://www.esw-heim.tu-clausthal.de/~marco/smorbrod/acme/current/acme091src.tar.bz2
+	md5sums = 5f7af22cc82307b8e9b29a0314a01b76
+
+pkgname = acme
+
