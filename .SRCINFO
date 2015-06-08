@@ -1,0 +1,27 @@
+pkgbase = gens-gs-ii-git
+	pkgdesc = A Sega Genesis/CD/32X emulator
+	pkgver = r2642.8454ae5
+	pkgrel = 1
+	url = http://segaretro.org/Gens/GS_II
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = nasm
+	makedepends = python
+	conflicts = gens-gs
+	conflicts = gens-gs-ii
+	source = git+git://dusers.drexel.edu/srv/git/~korth/gens-gs-ii.git
+	sha256sums = SKIP
+	depends_i686 = glew
+	depends_i686 = minizip
+	depends_i686 = portaudio
+	depends_i686 = qt4
+	depends_x86_64 = lib32-glew
+	depends_x86_64 = lib32-portaudio
+	depends_x86_64 = lib32-qt4
+	makedepends_x86_64 = gcc-multilib
+
+pkgname = gens-gs-ii-git
+
