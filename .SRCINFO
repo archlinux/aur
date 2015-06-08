@@ -1,0 +1,16 @@
+pkgbase = wrk2-git
+	pkgdesc = a HTTP benchmarking tool based mostly on wrk
+	pkgver = r76.49fef15
+	pkgrel = 1
+	url = https://github.com/giltene/wrk2
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	options = !makeflags
+	options = !buildflags
+	source = git+https://github.com/giltene/wrk2.git
+	sha1sums = SKIP
+
+pkgname = wrk2-git
+
