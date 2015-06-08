@@ -1,0 +1,13 @@
+pkgbase = eclipse-eclemma
+	pkgdesc = A free Java code coverage tool for Eclipse
+	pkgver = 2.3.2
+	pkgrel = 1
+	url = http://www.eclemma.org/
+	arch = any
+	license = EPL
+	depends = eclipse
+	source = http://download.eclipselab.org/eclemma/release/eclemma-2.3.2.zip
+	sha256sums = 5e3c04fdfe1d9d4d6423fb1860c924dc68d2d9c497a67ac123160470b2fc1cd9
+
+pkgname = eclipse-eclemma
+
