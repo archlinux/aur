@@ -8,7 +8,7 @@ pkgbase = nunit3
 	depends = mono
 	depends = sed
 	source = https://github.com/nunit/nunit/releases/download/3.0.0-beta-2/NUnit-3.0.0-beta-2.zip
-	md5sums = ecbbccd4d154ed81d94013915eb37be7
+	sha256sums = aa9ed227cd420e98c196c2e42f1109219ae5b504b95077a55ff223fdf1dc6dba
 
 pkgname = nunit3
 
