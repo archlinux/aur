@@ -1,0 +1,18 @@
+pkgbase = haskell-byteable
+	pkgdesc = collection of crypto hashes, fast, pure and practical
+	pkgver = 0.1.1
+	pkgrel = 2
+	url = http://hackage.haskell.org/package/byteable
+	install = haskell-byteable.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = haskell-bytestring
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/byteable/0.1.1/byteable-0.1.1.tar.gz
+	md5sums = ebe2d61954382fcfe3be483951d8a77b
+
+pkgname = haskell-byteable
+
