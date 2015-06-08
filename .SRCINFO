@@ -1,0 +1,21 @@
+pkgbase = ntrack
+	pkgdesc = A network connectivity tracking library
+	pkgver = 16
+	pkgrel = 3
+	epoch = 1
+	url = http://launchpad.net/ntrack/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = python2
+	depends = qt4
+	depends = libnl
+	options = !libtool
+	options = !emptydirs
+	source = http://launchpad.net/ntrack/main/016/+download/ntrack-016.tar.gz
+	source = libnl3.patch
+	md5sums = 21691dac43460a6791cba3decbc68242
+	md5sums = 0a1f6b7f9a01c323e81d6da95cad93cd
+
+pkgname = ntrack
+

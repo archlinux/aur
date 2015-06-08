@@ -1,0 +1,99 @@
+From: Mathieu Trudel-Lapierre <mathieu.trudel-lapierre@canonical.com>
+Subject: Disable -pedantic, it makes ntrack fail to build against libnl3 3.2 and glib.
+
+Index: ntrack/glib/Makefile.am
+===================================================================
+--- ntrack.orig/glib/Makefile.am	2011-12-22 19:25:13.137470000 -0500
++++ ntrack/glib/Makefile.am	2011-12-22 20:07:10.243344976 -0500
+@@ -26,7 +26,6 @@
+ AM_CFLAGS = \
+ 	-Wall \
+ 	-Werror \
+-	-pedantic \
+ 	-I$(srcdir)/../common/
+ 
+ AM_LDFLAGS =
+Index: ntrack/glib/Makefile.in
+===================================================================
+--- ntrack.orig/glib/Makefile.in	2011-12-22 20:05:46.243208000 -0500
++++ ntrack/glib/Makefile.in	2011-12-22 20:07:14.871344769 -0500
+@@ -325,7 +325,6 @@
+ AM_CFLAGS = \
+ 	-Wall \
+ 	-Werror \
+-	-pedantic \
+ 	-I$(srcdir)/../common/
+ 
+ AM_LDFLAGS = 
+Index: ntrack/glib/test/Makefile.am
+===================================================================
+--- ntrack.orig/glib/test/Makefile.am	2011-12-22 19:25:13.137470000 -0500
++++ ntrack/glib/test/Makefile.am	2011-12-22 20:07:19.451344565 -0500
+@@ -27,7 +27,6 @@
+ 	../../common/libntrack.la
+ 
+ AM_CFLAGS = \
+-	-pedantic \
+ 	-Wall \
+ 	-Werror \
+ 	-I$(srcdir)/.. \
+Index: ntrack/glib/test/Makefile.in
+===================================================================
+--- ntrack.orig/glib/test/Makefile.in	2011-12-22 20:05:46.243208000 -0500
++++ ntrack/glib/test/Makefile.in	2011-12-22 20:07:23.903344367 -0500
+@@ -260,7 +260,6 @@
+ 	../../common/libntrack.la
+ 
+ AM_CFLAGS = \
+-	-pedantic \
+ 	-Wall \
+ 	-Werror \
+ 	-I$(srcdir)/.. \
+Index: ntrack/gobject/Makefile.am
+===================================================================
+--- ntrack.orig/gobject/Makefile.am	2011-12-22 20:05:46.243208000 -0500
++++ ntrack/gobject/Makefile.am	2011-12-22 20:07:27.515344206 -0500
+@@ -26,7 +26,6 @@
+ AM_CFLAGS = \
+ 	-Wall \
+ 	-Werror \
+-	-pedantic \
+ 	-I$(srcdir)/../common/ \
+ 	-I$(srcdir)/../glib/
+ 
+Index: ntrack/gobject/Makefile.in
+===================================================================
+--- ntrack.orig/gobject/Makefile.in	2011-12-22 20:05:46.243208000 -0500
++++ ntrack/gobject/Makefile.in	2011-12-22 20:07:31.519344028 -0500
+@@ -347,7 +347,6 @@
+ AM_CFLAGS = \
+ 	-Wall \
+ 	-Werror \
+-	-pedantic \
+ 	-I$(srcdir)/../common/ \
+ 	-I$(srcdir)/../glib/
+ 
+Index: ntrack/modules/Makefile.am
+===================================================================
+--- ntrack.orig/modules/Makefile.am	2011-12-22 20:05:46.243208000 -0500
++++ ntrack/modules/Makefile.am	2011-12-22 20:07:35.519343851 -0500
+@@ -26,7 +26,6 @@
+ 	-Wall \
+ 	-Werror \
+ 	-Wno-variadic-macros \
+-	-pedantic \
+ 	-I$(top_srcdir)/common/
+ 
+ AM_LDFLAGS =
+Index: ntrack/modules/Makefile.in
+===================================================================
+--- ntrack.orig/modules/Makefile.in	2011-12-22 20:05:46.243208000 -0500
++++ ntrack/modules/Makefile.in	2011-12-22 20:07:39.391343676 -0500
+@@ -352,7 +352,6 @@
+ 	-Wall \
+ 	-Werror \
+ 	-Wno-variadic-macros \
+-	-pedantic \
+ 	-I$(top_srcdir)/common/
+ 
+ AM_LDFLAGS = 
