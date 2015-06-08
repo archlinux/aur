@@ -1,0 +1,31 @@
+pkgbase = digikam-git
+	pkgdesc = Digital photo management application for KDE
+	pkgver = r30759.aa59cf9
+	pkgrel = 1
+	url = http://www.digikam.org/
+	install = digikam-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = kdebase-runtime
+	depends = kdepimlibs
+	depends = libgphoto2
+	depends = opencv
+	depends = liblqr
+	depends = libkipi-git
+	depends = libkexiv2-git
+	depends = libkdcraw-git
+	depends = libkface-git
+	depends = libkgeomap-git
+	depends = lensfun
+	depends = libpgf
+	depends = libbaloo4
+	optdepends = kipi-plugins: more tools and plugins
+	optdepends = kdebase-workspace: Theme configuration dialog
+	provides = digikam
+	conflicts = digikam
+	source = git://anongit.kde.org/digikam.git
+	md5sums = SKIP
+
+pkgname = digikam-git
+
