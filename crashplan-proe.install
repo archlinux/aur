@@ -1,0 +1,12 @@
+pre_install () {
+	echo "This software comes with an EULA, located in:"
+	echo "/usr/share/licenses/crashplan-proe/LICENSE"
+	echo "By using this software, you are agreeing to the terms of this agreement"
+	echo "If you do not agree with the terms, you should uninstall this package"
+	echo "Press enter to continue"
+	read
+}
+
+post_install () {
+	echo "INSTALLDATE=$(date +%Y%m%d)" >> "/opt/crashplan-proe/install.vars"
+}

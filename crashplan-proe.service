@@ -1,0 +1,15 @@
+[Unit]
+Description=CrashPlan PROe Backup Engine
+After=network.target
+
+[Service]
+
+Type=forking
+PIDFile=/opt/crashplan-proe/CrashPlanEngine.pid
+EnvironmentFile=/opt/crashplan-proe/bin/run.conf
+WorkingDirectory=/opt/crashplan-proe
+ExecStart=/opt/crashplan-proe/bin/CrashPlanEngine start
+ExecStop=/opt/crashplan-proe/bin/CrashPlanEngine stop
+
+[Install]
+WantedBy=multi-user.target

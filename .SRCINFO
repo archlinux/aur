@@ -1,0 +1,23 @@
+pkgbase = crashplan-proe
+	pkgdesc = An online/offsite backup solution (enterprise edition)
+	pkgver = 3.7.0
+	pkgrel = 1
+	url = http://www.crashplan.com
+	install = crashplan-proe.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = cpio
+	depends = bash
+	depends = java-runtime-headless
+	source = http://download.crashplan.com/installs/linux/install/CrashPlanPROe/CrashPlanPROe_3.7.0_Linux.tgz
+	source = crashplan-proe.service
+	source = install.vars
+	source = sysctl-crashplan-proe.conf
+	sha256sums = SKIP
+	sha256sums = 42fa959e102c353403230ba035b4f97cd4603925444d7326d6928c8e12896600
+	sha256sums = 0312ca31d1612cca459dfa9db81373c2a5562c9d93807aea3752e880479999ec
+	sha256sums = 2ec3d9cea180e92f1410ff89ece85c01f79d454cfc2e814f583c0e2b3ff8ce30
+
+pkgname = crashplan-proe
+
