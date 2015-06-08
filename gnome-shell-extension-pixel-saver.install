@@ -1,0 +1,7 @@
+post_install() {
+  echo ''
+  echo '==> To enable pixel-saver:'
+  echo '==> Reload Gnome Shell with Alt-F2 r'
+  echo '==> Enable it with gnome-tweak-tool or "gnome-shell-extension-tool -e pixel-saver@deadalnix.me"'
+  echo ''
+}
