@@ -1,0 +1,18 @@
+pkgbase = navitconfigurator-git
+	pkgdesc = NavitConfigurator is an editor for configuring the open source navigation program Navit. It supports Android devices to test the result directly.
+	pkgver = 16.20130127
+	pkgrel = 3
+	url = https://sourceforge.net/projects/navitconfigurat/
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	depends = qt4
+	depends = qtwebkit
+	provides = navitconfigurator
+	conflicts = navitconfigurator
+	source = git://git.code.sf.net/p/navitconfigurat/code
+	md5sums = SKIP
+
+pkgname = navitconfigurator-git
+
