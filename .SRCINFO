@@ -1,0 +1,13 @@
+pkgbase = firefox-extension-fireftp
+	pkgdesc = A free, secure, cross-platform FTP/SFTP client for Mozilla Firefox.
+	pkgver = 2.0.24
+	pkgrel = 1
+	url = https://addons.mozilla.org/firefox/addon/fireftp
+	arch = any
+	license = MPL
+	depends = firefox
+	source = firefox-extension-fireftp-2.0.24.xpi::https://addons.cdn.mozilla.net/user-media/addons/684/fireftp-2.0.24-sm+fx.xpi
+	sha256sums = caeb5283f421d8e9dc9aabd65f938af0e53c53898ea45c2dcfda65cddcfc3b81
+
+pkgname = firefox-extension-fireftp
+
