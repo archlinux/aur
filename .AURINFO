@@ -1,0 +1,19 @@
+pkgbase = kmldonkey
+	pkgdesc = An MLDonkey frontend for KDE
+	pkgver = 2.0.7
+	pkgrel = 2
+	url = http://userbase.kde.org/KMLDonkey
+	install = kmldonkey.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdebase-runtime
+	depends = mldonkey
+	optdepends = kdebase-workspace: to use the plasma applet
+	source = ftp://mirror.de.leaseweb.net/gentoo/distfiles/kmldonkey-2.0.7.tar.bz2
+	source = ftp://ftp.kde.org/pub/kde/stable/extragear/kmldonkey-2.0.2-kde4.4.0.tar.bz2
+
+pkgname = kmldonkey
+
