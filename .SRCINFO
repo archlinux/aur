@@ -1,0 +1,18 @@
+pkgbase = vapoursynth-plugin-lsmashsource-git
+	pkgdesc = Plugin for Vapoursynth: lsmashsource (GIT version)
+	pkgver = r783.49b0813
+	pkgrel = 1
+	url = http://forum.doom9.org/showthread.php?t=167435
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = vapoursynth
+	depends = l-smash-git
+	provides = vapoursynth-plugin-lsmashsource
+	conflicts = vapoursynth-plugin-lsmashsource
+	source = lsmashsource::git+https://github.com/VFR-maniac/L-SMASH-Works.git
+	md5sums = SKIP
+
+pkgname = vapoursynth-plugin-lsmashsource-git
+
