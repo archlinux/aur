@@ -1,0 +1,18 @@
+pkgbase = emacs-pov-mode
+	pkgdesc = POV-Ray mode for Emacs
+	pkgver = v3.3
+	pkgrel = 1
+	url = http://xahlee.org/3d/povray_emacs.html
+	install = emacs-pov-mode.install
+	changelog = emacs-pov-mode.changelog
+	arch = any
+	license = GPL3
+	depends = emacs
+	noextract = povray-imenu-3.6.tar.gz
+	source = http://www.imagico.de/imenu/povray-imenu-3.6.tar.gz
+	source = git://gitorious.org/pov-mode/pov-mode.git
+	sha256sums = c99e00f3ba1de305b9859af43be4fbb4caf54426479461b9922dd7b2989c038b
+	sha256sums = SKIP
+
+pkgname = emacs-pov-mode
+
