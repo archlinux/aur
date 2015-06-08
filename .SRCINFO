@@ -1,0 +1,15 @@
+pkgbase = sdhcp
+	pkgdesc = Suckless dhcp client
+	pkgver = 0.1
+	pkgrel = 3
+	url = http://git.2f30.org/sdhcp/
+	arch = i686
+	arch = x86_64
+	license = MIT/X
+	makedepends = git
+	options = strip
+	source = http://git.2f30.org/sdhcp/snapshot/sdhcp-0.1.tar.gz
+	md5sums = 373d165250030441d6225c6b9b324336
+
+pkgname = sdhcp
+
