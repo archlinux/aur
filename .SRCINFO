@@ -1,0 +1,18 @@
+pkgbase = python-pluginbase
+	pkgdesc = A support library for building plugins sytems in Python.
+	pkgver = 0.3
+	pkgrel = 2
+	url = http://pluginbase.pocoo.org/
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/p/pluginbase/pluginbase-0.3.tar.gz
+	sha256sums = d9486a2d50017551c3f0e474648b71ea2e39429720977119a437713ebae2257f
+
+pkgname = python-pluginbase
+	depends = python
+
+pkgname = python2-pluginbase
+	depends = python2
+
