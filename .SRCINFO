@@ -1,0 +1,18 @@
+pkgbase = mopidy-podcast-gpodder
+	pkgdesc = Mopidy-Podcast extension for searching and browsing podcasts on gpodder.net
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/tkem/mopidy-podcast-gpodder
+	arch = any
+	license = APACHE
+	makedepends = python2
+	makedepends = git
+	depends = mopidy>=1.0
+	depends = python2-setuptools
+	depends = python2-requests
+	depends = mopidy-podcast
+	source = https://pypi.python.org/packages/source/M/Mopidy-Podcast-gpodder.net/Mopidy-Podcast-gpodder.net-1.0.0.tar.gz
+	md5sums = bb8400a38ae5e035e04c9dd0d8bec1a8
+
+pkgname = mopidy-podcast-gpodder
+
