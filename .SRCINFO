@@ -1,0 +1,17 @@
+pkgbase = python-texttable-git
+	pkgdesc = For easy printing of ascii tables within Python
+	pkgver = r1
+	pkgrel = 1
+	url = https://github.com/bufordtaylor/python-texttable
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = python-texttable
+	conflicts = python-texttable
+	source = python-texttable::git+https://github.com/bufordtaylor/python-texttable.git
+	sha512sums = SKIP
+
+pkgname = python-texttable-git
+
