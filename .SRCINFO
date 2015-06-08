@@ -1,0 +1,38 @@
+pkgbase = perl-rdf-trine
+	pkgdesc = An RDF Framework for Perl
+	pkgver = 1.006
+	pkgrel = 1
+	url = http://search.cpan.org/dist/RDF-Trine
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-exception
+	makedepends = perl-test-json
+	makedepends = perl-trycatch
+	depends = perl>=5.010
+	depends = perl-algorithm-combinatorics
+	depends = perl-data-uuid
+	depends = perl-dbd-sqlite>=1.14
+	depends = perl-dbi
+	depends = perl-dbix-connector
+	depends = perl-error
+	depends = perl-http-negotiate
+	depends = perl-json>=2
+	depends = perl-libwww
+	depends = perl-log-log4perl
+	depends = perl-moose>=2
+	depends = perl-moosex-arrayref
+	depends = perl-set-scalar
+	depends = perl-text-csv
+	depends = perl-text-table
+	depends = perl-uri>=1.52
+	depends = perl-xml-commonns>=0.04
+	depends = perl-xml-namespace
+	depends = perl-xml-sax>=0.96
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GW/GWILLIAMS/RDF-Trine-1.006.tar.gz
+	md5sums = 0268d65aa0d3261384619e0348597db2
+	sha512sums = b0be91884c2ec9b8381f021bed0779ee04c50c9274cb8a131051b9305602edc236da547090ac6572162f1d94134205698b67ed9abef31501f048b667a1e9dce6
+
+pkgname = perl-rdf-trine
+
