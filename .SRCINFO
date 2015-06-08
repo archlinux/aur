@@ -1,0 +1,14 @@
+pkgbase = emacs-planner
+	pkgdesc = PlannerMode: a Personal Information Management tool.
+	pkgver = 3.42
+	pkgrel = 3
+	url = http://www.emacswiki.org/cgi-bin/wiki/PlannerMode
+	install = emacs-planner.install
+	arch = any
+	license = GPL3
+	depends = emacs-muse
+	source = http://download.gna.org/planner-el/planner-3.42.tar.gz
+	md5sums = 904774959e64f0edbb587bc6f732b39b
+
+pkgname = emacs-planner
+
