@@ -1,0 +1,15 @@
+pkgbase = ssl-fetch
+	pkgdesc = python-ssl-fetch, a dependency of gentoo-mirrorselect.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/dol-sen/ssl-fetch
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = python
+	depends = python-requests
+	source = git+https://github.com/dol-sen/ssl-fetch.git#tag=0.1
+	md5sums = SKIP
+
+pkgname = ssl-fetch
+

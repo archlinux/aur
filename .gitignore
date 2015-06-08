@@ -1,0 +1,5 @@
+pkg/
+src/
+ssl-fetch
+*.tar.xz
+*.tar.gz
