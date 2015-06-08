@@ -1,0 +1,19 @@
+pkgbase = surfraw-git
+	pkgdesc = Shell Users' Revolutionary Front Rage Against the Web
+	pkgver = 2014.10.11.g48d3c11
+	pkgrel = 1
+	url = http://surfraw.alioth.debian.org/
+	install = surfraw-git.install
+	arch = any
+	license = custom
+	makedepends = git
+	depends = perl
+	provides = surfraw
+	conflicts = surfraw
+	backup = etc/xdg/surfraw/conf
+	backup = etc/xdg/surfraw/bookmarks
+	source = surfraw::git://git.debian.org/surfraw/surfraw.git
+	sha1sums = SKIP
+
+pkgname = surfraw-git
+

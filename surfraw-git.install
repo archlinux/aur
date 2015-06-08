@@ -1,0 +1,9 @@
+post_install() {
+    echo "==> NOTE: Config files have moved since surfraw v2.2.5!"
+    echo "==> Global config is now located in /etc/xdg/surfraw/conf"
+    echo "==> Local config is now in ${HOME}/.config/surfraw/conf"
+}
+
+post_upgrade() {
+  post_install $1
+}
