@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-bifrost-git
+	pkgdesc = Plugin for Vapoursynth: bifrost (GIT version)
+	pkgver = v2.2.0.ga3c8d23
+	pkgrel = 1
+	url = https://github.com/dubhater/vapoursynth-bifrost
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = vapoursynth
+	provides = vapoursynth-plugin-bifrost
+	conflicts = vapoursynth-plugin-bifrost
+	source = bifrost::git+https://github.com/dubhater/vapoursynth-bifrost.git
+	sha1sums = SKIP
+
+pkgname = vapoursynth-plugin-bifrost-git
+
