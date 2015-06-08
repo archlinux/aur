@@ -1,0 +1,21 @@
+pkgbase = perl-math-numseq
+	pkgdesc = number sequences
+	pkgver = 71
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Math-NumSeq
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-file-homedir>=0
+	depends = perl-math-factor-xs>=0.40
+	depends = perl-math-libm>=0
+	depends = perl-math-prime-xs>=0.23
+	depends = perl-module-pluggable>=0
+	depends = perl-module-util>=0
+	depends = perl-constant-defer>=1
+	depends = perl>=5.004
+	source = http://search.cpan.org/CPAN/authors/id/K/KR/KRYDE/Math-NumSeq-71.tar.gz
+	options = !emptydirs
+
+pkgname = perl-math-numseq
+
