@@ -1,0 +1,44 @@
+--- a/crap-clone.c
++++ b/crap-clone.c
+@@ -926,8 +926,31 @@ int main (int argc, char * const argv[])
+             "%s/crap/version-cache%s%s.txt",
+             git_dir, *remote ? "." : "", remote);
+ 
++    // Remove trailing slashes
++    char *fixroot;
++    fixroot= argv[optind] + strlen(argv[optind]) - 1;
++    while( fixroot > argv[optind] && *fixroot == '/' )
++        *fixroot-- = 0;
++    // Convert relative paths to absolute
++    char *root= argv[optind], *realroot= NULL;
++    if( root[0] != '/' && strchr (root, ':') == NULL )
++    {
++        size_t pathlen= PATH_MAX / 4, cwdlen;
++        while( pathlen < PATH_MAX * 4 ) {
++            pathlen *= 2;
++            realroot= malloc(pathlen);
++            if( realroot && getcwd(realroot, pathlen) &&
++                (cwdlen= strlen(realroot)) + strlen(root) + 1 < pathlen ) {
++                realroot[cwdlen]= '/';
++                strncpy(realroot + cwdlen + 1, root, pathlen - cwdlen - 1);
++                root= realroot;
++                break;
++            }
++        }
++    }
++
+     cvs_connection_t stream;
+-    connect_to_cvs (&stream, argv[optind]);
++    connect_to_cvs (&stream, root);
+ 
+     if (zlevel != 0)
+         cvs_connection_compress (&stream, zlevel);
+@@ -1148,6 +1171,8 @@ int main (int argc, char * const argv[])
+ 
+     database_destroy (&db);
+     string_cache_destroy();
++    if( realroot )
++        free(realroot);
+ 
+     return 0;
+ }
