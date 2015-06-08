@@ -1,16 +1,14 @@
 pkgbase = openbox-theme-surreal
 	pkgdesc = A dark gray theme for Openbox.
 	pkgver = 20070916
-	pkgrel = 1
+	pkgrel = 2
 	url = http://box-look.org/content/show.php?content=66397
 	arch = any
-	license = GPL
+	license = GPL3
 	depends = openbox
 	provides = openbox-theme-surreal=20070916
 	conflicts = openbox-theme-surreal
-	replaces = openbox-theme-surreal
 	source = http://box-look.org/CONTENT/content-files/66397-Surreal.tar.bz2
-	sha384sums = feef8c585b65838cb5426bb7cd9ffb83d80218669ee74be775bb79b920811263ae4262153397b998ab569dd8dc61c13a
 	sha512sums = 7f8170f2296ceb47864fe7cd589e3807aa28be7d0d0dc1925a95641f0c78b8c3c265b6874e41559f8048f2ee1abfcd1c92031869172462719820919a810c63a8
 
 pkgname = openbox-theme-surreal
