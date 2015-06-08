@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-sdl2_net
+	pkgdesc = A small sample cross-platform networking library (Version 2) (mingw-w64)
+	pkgver = 2.0.0
+	pkgrel = 6
+	url = http://libsdl.org
+	arch = any
+	license = MIT
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-sdl2
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = http://www.libsdl.org/projects/SDL_net/release/SDL2_net-2.0.0.tar.gz
+	md5sums = 83bcd0e67796b81b35b08a014c677200
+
+pkgname = mingw-w64-sdl2_net
+
