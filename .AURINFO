@@ -1,0 +1,21 @@
+pkgbase = milou-git
+	pkgdesc = A dedicated search application built on top of Baloo
+	pkgver = r393.f70d1ee
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/workspace/milou/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = kdoctools
+	depends = krunner-git
+	provides = milou
+	provides = milou-frameworks-git
+	conflicts = milou
+	conflicts = milou-frameworks-git
+	replaces = milou-frameworks-git
+	source = git://anongit.kde.org/milou
+
+pkgname = milou-git
+
