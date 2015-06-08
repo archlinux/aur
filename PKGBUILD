@@ -25,7 +25,7 @@ options=('!strip' 'emptydirs')
 source=("https://github.com/Bluewind/filebin/archive/${pkgver}.tar.gz"
         'filebin-nginx.conf'
 )
-sha256sums=('SKIP'
+sha256sums=('bbb0f339922145e166951a737378b68a4fb2fc3ccf2ba2ed5c14421936f6dc31'
             '5500d423d798478bf4f7bb0a147fe8a42b00e843513dd70665ec81f304a6c729')
 
 package() {

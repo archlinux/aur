@@ -21,7 +21,7 @@ pkgbase = filebin
 	backup = etc/webapps/filebin/memcached.php
 	source = https://github.com/Bluewind/filebin/archive/0.9.2.tar.gz
 	source = filebin-nginx.conf
-	sha256sums = SKIP
+	sha256sums = bbb0f339922145e166951a737378b68a4fb2fc3ccf2ba2ed5c14421936f6dc31
 	sha256sums = 5500d423d798478bf4f7bb0a147fe8a42b00e843513dd70665ec81f304a6c729
 
 pkgname = filebin
