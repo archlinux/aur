@@ -1,0 +1,23 @@
+pkgbase = vdr-extrecmenu
+	pkgdesc = provides additional functions to VDR's recordings menu
+	pkgver = 1.2.4
+	pkgrel = 7
+	epoch = 1
+	url = http://projects.vdr-developer.org/projects/show/plg-extrecmenu
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	makedepends = git
+	depends = gcc-libs
+	depends = vdr-api=2.2.0
+	backup = etc/vdr/conf.avail/50-extrecmenu.conf
+	source = git://projects.vdr-developer.org/vdr-plugin-extrecmenu.git#commit=c10ed8ab9894bc3e601091f005f24338c525939d
+	source = epgsearch-newmakefile-vdr-1.7.36.tgz::http://www.vdr-portal.de/index.php?page=Attachment&attachmentID=32667
+	md5sums = SKIP
+	md5sums = da93e7d1b5b6b59bcbee8730c9b9e97a
+
+pkgname = vdr-extrecmenu
+
