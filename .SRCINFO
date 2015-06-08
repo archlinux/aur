@@ -1,0 +1,23 @@
+pkgbase = geda-gaf-unstable
+	pkgdesc = gEDA/gaf suite - contains gschem, gnetlist, gsymcheck, gattrib, utilities and documentation from the gEDA project
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = http://www.geda-project.org/
+	install = geda-gaf.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	depends = guile
+	depends = libstroke
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	optdepends = python2: for two of the commands (garchive, tragesym)
+	optdepends = gawk: for sw2asc
+	provides = geda-gaf
+	conflicts = geda-gaf
+	source = http://ftp.geda-project.org/geda-gaf/unstable/v1.9/1.9.1/geda-gaf-1.9.1.tar.gz
+	md5sums = bf8949956e18f34513e503fa1f11f3d5
+
+pkgname = geda-gaf-unstable
+
