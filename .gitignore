@@ -1,0 +1,4 @@
+*.pkg.tar.xz
+pkg/
+src/
+version-1.5.zip

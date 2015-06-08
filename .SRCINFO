@@ -1,0 +1,12 @@
+pkgbase = csvfix
+	pkgdesc = Command-line stream editor designed to deal with CSV data
+	pkgver = 1.5
+	pkgrel = 2
+	url = http://code.google.com/p/csvfix/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gcc-libs
+	source = https://bitbucket.org/neilb/csvfix/get/version-1.5.zip
+
+pkgname = csvfix
