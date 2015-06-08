@@ -1,0 +1,21 @@
+pkgbase = vdr-peer
+	pkgdesc = Wrapper for the plugins remotetimers and remoteosd
+	pkgver = 0.0.1
+	pkgrel = 14
+	url = http://vdr.schmirler.de/
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	depends = gcc-libs
+	depends = vdr-api=2.2.0
+	optdepends = remoteosd: Add/edit/remove timers on local and peer VDR or move timers between them
+	optdepends = remotetimers: Access menu of peer
+	backup = etc/vdr/conf.avail/50-peer.conf
+	source = http://vdr.schmirler.de/peer/vdr-peer-0.0.1.tgz
+	md5sums = 6a50045f82d3a5784cb26d7e6cf4fb39
+
+pkgname = vdr-peer
+
