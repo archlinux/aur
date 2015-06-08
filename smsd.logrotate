@@ -1,0 +1,7 @@
+/var/log/smsd/smsd.log {
+	notifempty
+	missingok
+	sharedscripts
+	copytruncate
+	su root smsd
+}

@@ -1,0 +1,33 @@
+# arg 1:  the new package version
+post_install() {
+	getent group smsd >/dev/null 2>&1 || groupadd smsd
+	if getent passwd smsd >/dev/null 2>&1; then
+		usermod -d /var/spool/sms -c 'SMS Gateway Daemon' \
+			-s /sbin/nologin smsd >/dev/null 2>&1
+	else
+		useradd -c 'SMS Gateway Daemon' -g smsd \
+			-d /var/spool/sms -s /sbin/nologin smsd >/dev/null 2>&1
+	fi
+	groupmems -g uucp -a smsd >/dev/null 2>&1
+	passwd -l smsd >/dev/null 2>&1
+	chown root:smsd $pkgdir/var/spool/sms
+	chmod -R 0750 $pkgdir/var/spool/sms
+	chown smsd:smsd $pkgdir/var/spool/sms/*
+	chmod -R 0770 $pkgdir/var/spool/sms/*
+	chown root:smsd $pkgdir/var/log/smsd
+	chmod -R 0770 $pkgdir/var/log/smsd
+	systemd-tmpfiles --create /usr/lib/tmpfiles.d/smsd.conf >/dev/null 2>&1
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+	post_install $1
+	systemctl --system daemon-reload >/dev/null 2>&1
+}
+
+# arg 1:  the old package version
+pre_remove() {
+	getent passwd smsd >/dev/null 2>&1 && userdel smsd
+}
+

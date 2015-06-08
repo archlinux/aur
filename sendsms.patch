@@ -1,0 +1,38 @@
+--- ./smstools3/scripts/sendsms.old	2010-07-08 16:41:13.000000000 +0400
++++ ./smstools3/scripts/sendsms	2010-10-30 13:37:44.000000000 +0400
+@@ -18,7 +18,7 @@
+ # When creating keys, remember to use -n for echo:
+ # echo -n "key" | md5sum
+ 
+-smsd_user="smsd"
++smsd_group="smsd"
+ 
+ # Will need echo which accepts -n argument:
+ ECHO=echo
+@@ -85,10 +85,10 @@
+   fi
+ fi
+ 
+-owner=""
+-if [ -f /etc/passwd ]; then
+-  if grep $smsd_user: /etc/passwd >/dev/null; then
+-    owner=$smsd_user
++group=""
++if [ -f /etc/group ]; then
++  if grep $smsd_group: /etc/group >/dev/null; then
++    group=$smsd_group
+   fi
+ fi
+ 
+@@ -107,8 +107,9 @@
+     $ECHO -n "$TEXT" | iconv -t UNICODEBIG >> $TMPFILE
+   fi
+ 
+-  if [ "x$owner" != x ]; then
+-    chown $owner $TMPFILE
++  if [ "x$group" != x ]; then
++    chgrp $group $TMPFILE
++    chmod 0660 $TMPFILE
+   fi
+ 
+   FILE=`mktemp /var/spool/sms/outgoing/send_XXXXXX`
