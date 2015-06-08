@@ -1,0 +1,13 @@
+pkgbase = ore_algebra
+	pkgdesc = An implementation of Ore algebras for Sage
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://www.risc.jku.at/research/combinat/software/ore_algebra/
+	arch = any
+	license = GPL
+	depends = sage-mathematics
+	source = http://www.risc.jku.at/research/combinat/software/ore_algebra/ore_algebra-0.2.spkg
+	md5sums = 4fb623fe037919d324c1eff4d7e469cd
+
+pkgname = ore_algebra
+
