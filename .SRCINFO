@@ -1,0 +1,18 @@
+pkgbase = qt4-private-headers-dev
+	pkgdesc = Qt4 private headers for development
+	pkgver = 4.8.7
+	pkgrel = 1
+	url = http://qt-project.org/
+	arch = any
+	license = GPL3
+	license = LGPL
+	depends = qt4=4.8.7
+	provides = qt4-private-headers
+	conflicts = qt-private-headers
+	conflicts = qt4-private-headers
+	replaces = qt-private-headers
+	source = http://download.qt-project.org/official_releases/qt/4.8/4.8.7/qt-everywhere-opensource-src-4.8.7.tar.gz
+	md5sums = d990ee66bf7ab0c785589776f35ba6ad
+
+pkgname = qt4-private-headers-dev
+
