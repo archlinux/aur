@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-tcanny-git
+	pkgdesc = Plugin for Vapoursynth: tcanny (GIT version)
+	pkgver = r2.1.g0861e87
+	pkgrel = 1
+	url = http://forum.doom9.org/showthread.php?t=171136
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = vapoursynth
+	provides = vapoursynth-plugin-tcanny
+	conflicts = vapoursynth-plugin-tcanny
+	source = tcanny::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-TCanny.git
+	sha1sums = SKIP
+
+pkgname = vapoursynth-plugin-tcanny-git
+
