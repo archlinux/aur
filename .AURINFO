@@ -1,0 +1,15 @@
+pkgbase = tuxonice-resume-hook
+	pkgdesc = TuxOnIce resume hook for the ArchLinux initramfs
+	pkgver = 1.0
+	pkgrel = 2
+	url = https://aur.archlinux.org/packages/tuxonice-resume-hook/
+	install = tuxonice-resume-hook.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = initcpio-install
+	source = initcpio-hook
+	options = !makeflags
+
+pkgname = tuxonice-resume-hook
+

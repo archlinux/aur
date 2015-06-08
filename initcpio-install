@@ -1,0 +1,12 @@
+build ()
+{
+    SCRIPT="tuxonice"
+}
+
+help ()
+{
+cat <<HELPEOF
+  This hook adds tuxonice resume support to your initramfs. This works better
+  with tuxonice than the generic resume hook.
+HELPEOF
+}

@@ -1,0 +1,14 @@
+# vim:set ft=sh:
+run_hook () {
+    if [ ! -d /sys/power/tuxonice  ]; then
+        err "resume: tux-on-ice syntax detected, but no support found"
+        return 1
+    fi
+    if [ -n "$resume" ]; then
+    # tux-on-ice syntax: swap:/dev/sda2 or file:/dev/sda2:0xdeadbeef
+        echo "$resume" >/sys/power/tuxonice/resume
+    fi
+    # try to resume anyway, tuxonice will try to automatically find the
+    # hibernation image and just revert to booting normally if it doesn't find one
+    echo >/sys/power/tuxonice/do_resume
+}

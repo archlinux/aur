@@ -1,0 +1,8 @@
+post_install() {
+    printf '==>  Add the tuxonice hook instead of resume /etc/mkinitcpio.conf to enable easier resuming with\n'
+    printf '     tuxonice. This hook will allow tuxonice to resume even without a resume= kernel command line\n'
+}
+
+post_upgrade() {
+    post_install
+}
