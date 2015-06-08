@@ -1,0 +1,42 @@
+pkgbase = broadcom-wl-ck
+	pkgdesc = Broadcom 802.11abgn hybrid Linux networking device driver for linux-ck.
+	pkgver = 6.30.223.248
+	pkgrel = 26
+	url = http://www.broadcom.com/support/802.11/linux_sta.php
+	install = broadcom-wl-ck.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = linux-ck-headers>=4.0
+	makedepends = linux-ck-headers<4.1
+	depends = linux-ck>=4.0
+	depends = linux-ck<4.1
+	conflicts = broadcom-wl-ck-atom
+	conflicts = broadcom-wl-ck-barcelona
+	conflicts = broadcom-wl-ck-bulldozer
+	conflicts = broadcom-wl-ck-corex
+	conflicts = broadcom-wl-ck-core2
+	conflicts = broadcom-wl-ck-haswell
+	conflicts = broadcom-wl-ck-broadwell
+	conflicts = broadcom-wl-ck-ivybridge
+	conflicts = broadcom-wl-ck-kx
+	conflicts = broadcom-wl-ck-k10
+	conflicts = broadcom-wl-ck-nehalem
+	conflicts = broadcom-wl-ck-p4
+	conflicts = broadcom-wl-ck-piledriver
+	conflicts = broadcom-wl-ck-pentm
+	conflicts = broadcom-wl-ck-sandybridge
+	conflicts = broadcom-wl-ck-silvermont
+	source = modprobe.d
+	source = linux-recent.patch
+	source = gcc.patch
+	sha256sums = b4aca51ac5ed20cb79057437be7baf3650563b7a9d5efc515f0b9b34fbb9dc32
+	sha256sums = ea2da813f890aa029d41b117f1b78d4379720c108101aef46aeb54df3c261f66
+	sha256sums = b07ce80f2e079cce08c8ec006dda091f6f73f158c8a62df5bac2fbabb6989849
+	source_i686 = http://www.broadcom.com/docs/linux_sta/hybrid-v35-nodebug-pcoem-6_30_223_248.tar.gz
+	sha256sums_i686 = b196543a429c22b2b8d75d0c1d9e6e7ff212c3d3e1f42cc6fd9e4858f01da1ad
+	source_x86_64 = http://www.broadcom.com/docs/linux_sta/hybrid-v35_64-nodebug-pcoem-6_30_223_248.tar.gz
+	sha256sums_x86_64 = 3d994cc6c05198f4b6f07a213ac1e9e45a45159899e6c4a7feca5e6c395c3022
+
+pkgname = broadcom-wl-ck
+
