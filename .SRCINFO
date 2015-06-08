@@ -1,0 +1,29 @@
+pkgbase = python2-openmdao
+	pkgdesc = An open-source engineering analysis framework
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = http://openmdao.org/
+	arch = any
+	license = apache
+	makedepends = python2-setuptools
+	makedepends = python2-sphinx
+	depends = python2-decorator
+	depends = python2-mock
+	depends = python2-networkx
+	depends = python2-crypto
+	depends = python2-pyparsing
+	depends = python2-requests
+	depends = python2-traits
+	depends = python2-zope-interface
+	depends = pyevolve
+	depends = python2-pytz
+	depends = python2-scipy
+	depends = python2-decorator
+	depends = python2-matplotlib
+	depends = python2-jinja
+	depends = python2-pygments
+	source = https://github.com/OpenMDAO/OpenMDAO-Framework/archive/0.13.0.tar.gz
+	md5sums = 5de5c047aac13cc8d03791f50db54e26
+
+pkgname = python2-openmdao
+
