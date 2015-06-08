@@ -1,0 +1,36 @@
+diff -Naur sam2p-0.49.2.orig/aclocal.m4 sam2p-0.49.2.new/aclocal.m4
+--- sam2p-0.49.2.orig/aclocal.m4	2013-09-03 16:32:54.000000000 +0200
++++ sam2p-0.49.2.new/aclocal.m4	2015-02-23 20:27:49.944550310 +0100
+@@ -777,7 +777,7 @@
+ #ifdef __cplusplus
+ extern "C" void exit(int);
+ #endif                     
+-#define _BSD_SOURCE 1 /* vsnprintf */
++#define _DEFAULT_SOURCE 1 /* vsnprintf */
+ #define _POSIX_SOURCE 1
+ #define _POSIX_C_SOURCE 2
+ #include <stdio.h>
+diff -Naur sam2p-0.49.2.orig/configure sam2p-0.49.2.new/configure
+--- sam2p-0.49.2.orig/configure	2013-09-03 16:32:54.000000000 +0200
++++ sam2p-0.49.2.new/configure	2015-02-23 20:24:48.251635254 +0100
+@@ -5218,7 +5218,7 @@
+ #ifdef __cplusplus
+ extern "C" void exit(int);
+ #endif
+-#define _BSD_SOURCE 1 /* vsnprintf */
++#define _DEFAULT_SOURCE 1 /* vsnprintf */
+ #define _POSIX_SOURCE 1
+ #define _POSIX_C_SOURCE 2
+ #include <stdio.h>
+diff -Naur sam2p-0.49.2.orig/gensio.cpp sam2p-0.49.2.new/gensio.cpp
+--- sam2p-0.49.2.orig/gensio.cpp	2013-09-03 16:32:54.000000000 +0200
++++ sam2p-0.49.2.new/gensio.cpp	2015-02-23 20:28:40.624393545 +0100
+@@ -15,7 +15,7 @@
+ extern "C" int _v_s_n_printf ( char *str, size_t n, const char *format, va_list ap );
+ #else
+ #undef __STRICT_ANSI__ /* for __MINGW32__ */
+-#define _BSD_SOURCE 1 /* vsnprintf(); may be emulated with fixup_vsnprintf() */
++#define _DEFAULT_SOURCE 1 /* vsnprintf(); may be emulated with fixup_vsnprintf() */
+ #ifndef __APPLE__ /* SUXX: Max OS X has #ifndef _POSIX_SOURCE around lstat() :-( */
+ #define _POSIX_SOURCE 1 /* also popen() */
+ #endif
