@@ -1,0 +1,66 @@
+diff -rupN bgrabitmap8.5.1/bgraqtbitmap.pas bgrabitmap8.5.1_p/bgraqtbitmap.pas
+--- bgrabitmap8.5.1/bgraqtbitmap.pas	2015-04-15 15:09:04.000000000 +0200
++++ bgrabitmap8.5.1_p/bgraqtbitmap.pas	2015-05-05 22:16:21.450982555 +0200
+@@ -28,14 +28,14 @@ interface
+ 
+ uses
+   Classes, SysUtils, BGRALCLBitmap, Graphics,
+-  GraphType;
++  GraphType, BGRABitmapTypes;
+ 
+ type
+   { TBGRAQtBitmap }
+ 
+   TBGRAQtBitmap = class(TBGRALCLBitmap)
+   private
+-    procedure SlowDrawTransparent(ABitmap: TBGRALCLBitmap;
++    procedure SlowDrawTransparent(ABitmap: TBGRACustomBitmap;
+       ACanvas: TCanvas; ARect: TRect);
+   public
+     procedure DataDrawTransparent(ACanvas: TCanvas; Rect: TRect;
+@@ -51,12 +51,12 @@ type
+ 
+ implementation
+ 
+-uses BGRABitmapTypes, LCLType,
++uses LCLType,
+   LCLIntf, IntfGraphics,
+   qtobjects, qt4,
+   FPImage;
+ 
+-procedure TBGRAQtBitmap.SlowDrawTransparent(ABitmap: TBGRALCLBitmap;
++procedure TBGRAQtBitmap.SlowDrawTransparent(ABitmap: TBGRACustomBitmap;
+   ACanvas: TCanvas; ARect: TRect);
+ begin
+   ACanvas.StretchDraw(ARect, ABitmap.Bitmap);
+@@ -65,9 +65,9 @@ end;
+ procedure TBGRAQtBitmap.DataDrawTransparent(ACanvas: TCanvas; Rect: TRect;
+   AData: Pointer; ALineOrder: TRawImageLineOrder; AWidth, AHeight: integer);
+ var
+-  Temp: TBGRAPtrBitmap;
++  Temp: TBGRALCLPtrBitmap;
+ begin
+-  Temp := TBGRAPtrBitmap.Create(AWidth, AHeight, AData);
++  Temp := TBGRALCLPtrBitmap.Create(AWidth, AHeight, AData);
+   Temp.LineOrder := ALineOrder;
+   SlowDrawTransparent(Temp, ACanvas, Rect);
+   Temp.Free;
+@@ -143,7 +143,6 @@ begin
+   SrcX     := x + Ofs.X;
+   SrcY     := y + Ofs.Y;
+ 
+-  {$warning QT: recheck this}
+   if (dcSource.vImage <> nil) and (dcSource.vImage.Handle <> nil) then
+   begin
+     // we must stop painting on device
+@@ -156,10 +155,6 @@ begin
+       QPainter_begin(dcDest.Widget, TQtImage(bmp.Handle).Handle);
+   end;
+ 
+-  (*
+-  gdk_window_copy_area(dcDest.Drawable, dcDest.GC, 0, 0, dcSource.Drawable,
+-    SrcX, SrcY, Width, Height);
+-  *)
+   LoadFromRawImage(bmp.RawImage, 255, True);
+   bmp.Free;
+   InvalidateBitmap;
