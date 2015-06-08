@@ -1,0 +1,35 @@
+pkgbase = mumble-jack-git
+	pkgdesc = A voice chat application similar to TeamSpeak (GIT version with JACK Audio patch (QT5))
+	pkgver = 2015.06.01
+	pkgrel = 1
+	url = https://github.com/mumble-voip/mumble
+	install = mumble.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = boost
+	makedepends = mesa
+	makedepends = git
+	depends = qt5-base
+	depends = speex
+	depends = lsb-release
+	depends = libxi
+	depends = avahi
+	depends = libsndfile
+	depends = protobuf
+	depends = opus
+	depends = xdg-utils
+	depends = jack
+	depends = qt5-svg
+	depends = qt5-tools
+	provides = mumble
+	conflicts = mumble
+	source = mumble-jack-git::git://github.com/mumble-voip/mumble.git
+	source = http://sourceforge.net/p/mumble/patches/_discuss/thread/1bfdbda2/a90e/attachment/mumble-jack-support.patch
+	source = revert-tray.patch
+	sha256sums = SKIP
+	sha256sums = ae56abc2d9b5725e7ff768b8ca29a569dc9051ef192d792372ef10f0e6c3f53d
+	sha256sums = b4bac794f25a3748baa7ccfd174c60d6fef20694ccbad72612c0679e2445c769
+
+pkgname = mumble-jack-git
+

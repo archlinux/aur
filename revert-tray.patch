@@ -1,0 +1,33 @@
+From 53dfcc438e389343403c6075b5f6464d66111099 Mon Sep 17 00:00:00 2001
+From: Brottweiler <tibell.christoffer@gmail.com>
+Date: Thu, 30 Oct 2014 21:15:52 +0100
+Subject: [PATCH] Revert to workaround tray bug
+
+---
+ src/mumble/MainWindow.cpp | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/src/mumble/MainWindow.cpp b/src/mumble/MainWindow.cpp
+index 24116b9..9ab45f6 100644
+--- a/src/mumble/MainWindow.cpp
++++ b/src/mumble/MainWindow.cpp
+@@ -2694,10 +2694,15 @@ void MainWindow::on_Icon_activated(QSystemTrayIcon::ActivationReason reason) {
+ 		case QSystemTrayIcon::Trigger:
+ 		case QSystemTrayIcon::DoubleClick:
+ 		case QSystemTrayIcon::MiddleClick:
+-			setWindowState((windowState() & ~Qt::WindowMinimized) | Qt::WindowActive);
+-			show();
+-			raise();
+-			activateWindow();
++			if (isMinimized()) {
++				setWindowState((windowState() & ~Qt::WindowMinimized) | Qt::WindowActive);
++				show();
++				raise();
++				activateWindow();
++			} else {
++				showMinimized();
++			}
++			break;
+ 		default: break;
+ 	}
+ }
