@@ -1,0 +1,18 @@
+pkgbase = chromium-widevine-dev
+	pkgdesc = The Widevine Media Optimizer is a browser plugin designed for the viewing of premium video content (only for chromium-dev)
+	pkgver = 1.4.8.824
+	pkgrel = 1
+	url = http://www.google.com/chrome
+	arch = i686
+	arch = x86_64
+	license = custom:chrome
+	depends = gcc-libs
+	noextract = google-chrome-unstable--..rpm
+	options = !strip
+	source = https://www.google.com/chrome/intl/en/eula_text.html
+	source = http://dl.google.com/linux/chrome/rpm/stable//google-chrome-unstable--..rpm
+	sha1sums = 1ffba5152cb749300a016efec909b828eba9a64a
+	sha1sums = 
+
+pkgname = chromium-widevine-dev
+
