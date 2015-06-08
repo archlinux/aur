@@ -1,0 +1,14 @@
+pkgbase = ttm
+	pkgdesc = TeX to MathML translator
+	pkgver = 4.04
+	pkgrel = 2
+	url = http://hutchinson.belmont.ma.us/tth/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	optdepends = tth: for providing some scripts ttm could also use
+	source = http://hutchinson.belmont.ma.us/tth/mml/ttmC.tar.gz
+	md5sums = 491aefd525efa804c5a203c5a8c4a281
+
+pkgname = ttm
+
