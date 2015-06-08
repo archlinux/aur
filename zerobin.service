@@ -1,0 +1,12 @@
+[Unit]
+Description=0bin server, a client side encrypted pastebin
+After=network.target
+
+[Service]
+Type=normal
+User=zerobin
+ExecStart=/usr/bin/zerobin
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

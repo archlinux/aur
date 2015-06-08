@@ -1,0 +1,26 @@
+pkgbase = 0bin-git
+	pkgdesc = A python2 client side encrypted pastebin that can run without a database.
+	pkgver = r209.391df05
+	pkgrel = 2
+	url = https://0bin.readthedocs.org/en/latest/
+	arch = any
+	license = WTFPL
+	makedepends = git
+	depends = python2
+	depends = python2-setuptools
+	depends = python2-bottle
+	depends = python2-cherrypy
+	depends = python2-clize
+	depends = python2-privilege
+	backup = usr/lib/python2.7/site-packages/zerobin/default_settings.py
+	source = 0bin-git::git+https://github.com/sametmax/0bin.git
+	source = LICENSE
+	source = zerobin.install
+	source = zerobin.service
+	md5sums = SKIP
+	md5sums = 1b71aebc25e7533ebaa5b320a20e7ed2
+	md5sums = fe5002a67ee21f5cd66f6d8f709607bc
+	md5sums = a8650e18bde8928f49c1d4cd6e0327be
+
+pkgname = 0bin-git
+

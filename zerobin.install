@@ -1,0 +1,11 @@
+post_install(){
+	echo "Even if the programm is named 0bin, the binary is named zerobin, as well as the service and user and group"
+	getent group zerobin &>/dev/null || groupadd -r -g 1337 zerobin >/dev/null
+	getent passwd zerobin &>/dev/null || useradd -r -u 1337 -g zerobin -s /bin/false zerobin >/dev/null
+}
+
+post_remove() {
+	getent passwd zerobin &>/dev/null && userdel zerobin >/dev/null
+	getent group zerobin &>/dev/null && groupdel zerobin >/dev/null
+	true
+}
