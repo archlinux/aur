@@ -1,0 +1,17 @@
+pkgbase = amd-adl-sdk
+	pkgdesc = API to access display driver functionality for AMD graphics cards.
+	pkgver = 7.0
+	pkgrel = 1
+	url = http://developer.amd.com/tools-and-sdks/graphics-development/display-library-adl-sdk/
+	install = amd-adl-sdk.install
+	arch = i686
+	arch = x86_64
+	license = AMD-ADL
+	depends = catalyst-utils
+	depends = gcc
+	options = !strip
+	source = ADL_SDK.zip::http://developer.amd.com/tools-and-sdks/graphics-development/display-library-adl-sdk/
+	md5sums = c484535e8680a6fb27e2f9114cab5201
+
+pkgname = amd-adl-sdk
+

@@ -1,0 +1,5 @@
+post_install() {
+    echo " adlutil --> /usr/bin"
+    echo " headers --> /usr/include/ADL"
+    echo " docs/samples/license --> /usr/share/doc/ADL"
+}
