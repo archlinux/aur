@@ -1,0 +1,37 @@
+pkgbase = gajim-hg
+	pkgdesc = Jabber/XMPP instant messenger client written in PyGTK
+	pkgver = 15618.2dc6bce0eddc
+	pkgrel = 1
+	url = http://hg.gajim.org/gajim
+	install = gajim.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = mercurial
+	makedepends = intltool
+	depends = pygtk
+	depends = python2-pyopenssl
+	depends = dnsutils
+	depends = hicolor-icon-theme
+	depends = python2-pyasn1
+	depends = python2-nbxmpp-hg
+	optdepends = dbus-python: dbus support
+	optdepends = farstream-0.1: for video/voice support
+	optdepends = gstreamer0.10-bad: for video/voice support
+	optdepends = gstreamer0.10-python: for video/voice support
+	optdepends = gtkspell: for spelling support
+	optdepends = libxss: for idle module
+	optdepends = notification-daemon: for desktop notification
+	optdepends = python2-gnomekeyring: for GnomeKeyring support
+	optdepends = python2-crypto: support for E2E encryption
+	optdepends = python2-docutils: for RST generator support
+	optdepends = gupnp-igd: for UPnP-IGD support
+	provides = gajim
+	conflicts = gajim
+	conflicts = gajim-svn
+	replaces = gajim-svn
+	source = gajim-hg::hg+http://hg.gajim.org/gajim#branch=gajim_0.16
+	md5sums = SKIP
+
+pkgname = gajim-hg
+
