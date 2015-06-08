@@ -1,0 +1,20 @@
+pkgbase = sawfish-pager-git
+	pkgdesc = A pager for the git-version of sawfish
+	pkgver = 0.90.4.1.gfdc0976
+	pkgrel = 1
+	url = http://sawfish.wikia.com
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = rep-gtk-git
+	makedepends = gettext
+	depends = sawfish-git
+	provides = sawfish-pager
+	conflicts = sawfish-pager
+	options = !libtool
+	source = git://github.com/SawfishWM/sawfish-pager.git
+	md5sums = SKIP
+
+pkgname = sawfish-pager-git
+
