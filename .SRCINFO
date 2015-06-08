@@ -1,0 +1,31 @@
+pkgbase = weston-git
+	pkgdesc = Reference implementation of a Wayland compositor
+	pkgver = 1.8.90.4666.883ac02
+	pkgrel = 1
+	url = http://wayland.freedesktop.org
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libxkbcommon
+	depends = wayland-git
+	depends = mesa
+	depends = poppler-glib
+	depends = mtdev
+	depends = libva
+	depends = libinput
+	depends = libxcursor
+	depends = glu
+	depends = cairo
+	depends = pixman
+	depends = libunwind
+	depends = pango
+	depends = colord
+	depends = libwebp
+	provides = weston
+	conflicts = weston
+	source = git://anongit.freedesktop.org/wayland/weston
+	sha1sums = SKIP
+
+pkgname = weston-git
+
