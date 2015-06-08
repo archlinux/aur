@@ -1,0 +1,11 @@
+--- a/src/arch/unix/x11/xaw/x11video.c	2012-10-28 22:26:24.000000000 +0100
++++ b/src/arch/unix/x11/xaw/x11video.c	2012-11-03 18:54:08.000000000 +0100
+@@ -60,6 +60,8 @@
+ #include <X11/Xutil.h>
+ #include <X11/Intrinsic.h>
+ #include <X11/cursorfont.h>
++#include <X11/Xmd.h>
++#include <X11/extensions/shmproto.h>
+ 
+ #include <stdio.h>
+ #include <stdlib.h>

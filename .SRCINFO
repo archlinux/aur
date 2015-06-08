@@ -1,0 +1,39 @@
+pkgbase = vice-gtkglext
+	pkgdesc = A Versatile Commodore Emulator , with enabled gtkglext
+	pkgver = 2.4
+	pkgrel = 4
+	url = http://vice-emu.sourceforge.net
+	install = vice-gtkglext.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkg-config
+	depends = alsa-lib
+	depends = gtkglext
+	depends = giflib
+	depends = libjpeg
+	depends = libpng
+	depends = libxrandr
+	depends = vte
+	depends = lame
+	depends = libpcap
+	depends = libnet
+	provides = vice=2.4
+	conflicts = vice
+	conflicts = vice-gnomeui
+	conflicts = vice-sdl
+	conflicts = vice-ethernet
+	replaces = vice
+	source = http://downloads.sourceforge.net/project/vice-emu/releases/vice-2.4.tar.gz
+	source = vice-no-fc-cache.patch
+	source = vice-notexi-notxt.patch
+	source = vice-x11video.patch
+	source = vice-2.4-giflib-5.1.0.patch
+	md5sums = b017647a0c159bbe43cdb81762d1c577
+	md5sums = c7ba8ff930bee0e41565f4a1d9594922
+	md5sums = 877f93db1550ea81386aae7c3b578442
+	md5sums = 99931efcb779734c9df069e94f0b38a5
+	md5sums = 94563e3023d804341f1d252c0e6d1384
+
+pkgname = vice-gtkglext
+

@@ -1,0 +1,8 @@
+post_install() {
+  cat << _EOF 
+
+==> To use the CBM font in gui, enter: 
+==> cp /usr/lib/vice/fonts/CBM.ttf ~/.fonts
+
+_EOF
+}
