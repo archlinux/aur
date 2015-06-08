@@ -1,0 +1,14 @@
+pkgbase = dmake
+	pkgdesc = A make utility similar to GNU make or the Workshop dmake, formerly used by the OpenOffice.org build system.
+	pkgver = 4.12.2
+	pkgrel = 1
+	url = http://tools.openoffice.org/dmake/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = https://dmake.apache-extras.org.codespot.com/files/dmake-4.12.2.tar.bz2
+	md5sums = 9194f727c31d1db18bf5dd02e7b2dd09
+
+pkgname = dmake
+
