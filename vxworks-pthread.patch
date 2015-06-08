@@ -1,0 +1,145 @@
+From 2cf34e06f47345884f234bb870714ed2896745a6 Mon Sep 17 00:00:00 2001
+From: rbmj <rbmj@verizon.net>
+Date: Sat, 4 Jan 2014 09:11:02 -0500
+Subject: [PATCH] Allowed posix as a thread option for vxworks
+
+Note: VxWorks defines all of the _POSIX_TIMERS functions, but doesn't
+define the macro.  Configure looks for the _POSIX_TIMERS macro when
+checking for these functions.  This seems strange to me.  It seems like
+if the try_compile can find them, then everything should be fine.
+I'm not an expert though, and acinclude.m4 notes that there is a similar
+situation for darwin, so I'll just let it be this way for now.
+---
+ gcc/config.gcc                              |  1 +
+ libgcc/config.host                          |  8 ++++++
+ libgcc/config/t-vxworks-pthread             | 14 +++++++++++
+ libgcc/gthr-posix.h                         | 38 ++++++++++++++++++++++++++++-
+ libstdc++-v3/config/os/vxworks/os_defines.h |  3 +++
+ 5 files changed, 63 insertions(+), 1 deletion(-)
+ create mode 100644 libgcc/config/t-vxworks-pthread
+
+diff --git a/gcc/config.gcc b/gcc/config.gcc
+index 92d57dd..3fd9bb5 100644
+--- a/gcc/config.gcc
++++ b/gcc/config.gcc
+@@ -804,6 +804,7 @@ case ${target} in
+   case ${enable_threads} in
+     no) ;;
+     "" | yes | vxworks) thread_file='vxworks' ;;
++    posix) thread_file='posix' ;;
+     *) echo 'Unknown thread configuration for VxWorks'; exit 1 ;;
+   esac
+   ;;
+diff --git a/libgcc/config.host b/libgcc/config.host
+index 259c9a7..21471db 100644
+--- a/libgcc/config.host
++++ b/libgcc/config.host
+@@ -261,6 +261,14 @@ case ${host} in
+   ;;
+ *-*-vxworks*)
+   tmake_file=t-vxworks
++  case ${target_thread_file} in
++    vxworks)
++      tmake_file=t-vxworks
++      ;;
++    posix)
++      tmake_file=t-vxworks-pthread
++	  ;;
++  esac
+   ;;
+ *-*-elf)
+   extra_parts="crtbegin.o crtend.o"
+diff --git a/libgcc/config/t-vxworks-pthread b/libgcc/config/t-vxworks-pthread
+new file mode 100644
+index 0000000..4e538f9
+--- /dev/null
++++ b/libgcc/config/t-vxworks-pthread
+@@ -0,0 +1,14 @@
++# Don't build libgcc.a with debug info
++LIBGCC2_DEBUG_CFLAGS =
++
++# No out-of line help needed
++LIB2ADD = 
++
++# This ensures that the correct target headers are used; some
++# VxWorks system headers have names that collide with GCC's
++# internal (host) headers, e.g. regs.h.
++LIBGCC2_INCLUDES = -nostdinc -I \
++  `case "/$$(MULTIDIR)" in \
++     */mrtp*) echo $(WIND_USR)/h ;; \
++     *) echo $(WIND_BASE)/target/h ;; \
++   esac`
+diff --git a/libgcc/gthr-posix.h b/libgcc/gthr-posix.h
+index f0d8cd7..b6a6069 100644
+--- a/libgcc/gthr-posix.h
++++ b/libgcc/gthr-posix.h
+@@ -33,6 +33,10 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
+ #define __GTHREADS_CXX0X 1
+ 
+ #include <pthread.h>
++/* For timespec, in case pthread.h doesn't include this */
++#include <time.h>
++/* For sched_yield, in case pthread.h doesn't include this */
++#include <sched.h>
+ 
+ #if ((defined(_LIBOBJC) || defined(_LIBOBJC_WEAK)) \
+      || !defined(_GTHREAD_USE_MUTEX_TIMEDLOCK))
+@@ -130,10 +134,42 @@ __gthrw(pthread_cond_destroy)
+ 
+ __gthrw(pthread_key_create)
+ __gthrw(pthread_key_delete)
++
+ __gthrw(pthread_mutexattr_init)
+-__gthrw(pthread_mutexattr_settype)
+ __gthrw(pthread_mutexattr_destroy)
+ 
++/* VxWorks does not define pthread_mutexattr_settype itself, and we need
++   the constants and a prototype to be defined somewhere so the rest of 
++   this file will compile (they will be ignored) */
++#ifdef __VXWORKS__
++
++#define ATTRIBUTE_UNUSED __attribute__((unused))
++
++static inline int
++__gthrw_pthread_mutexattr_settype (pthread_mutexattr_t *a ATTRIBUTE_UNUSED, int t ATTRIBUTE_UNUSED)
++{
++  /* TODO:  It might be possible to override the mutex machinery to
++     simulate non-recursive mutexes, but this doesn't seem to be
++     necessary because all vxworks mutexes are recursive, and recursive
++     mutexes cover the most general case. */
++  return 0;
++}
++
++#undef ATTRIBUTE_UNUSED
++
++#define PTHREAD_MUTEX_NORMAL 0
++#define PTHREAD_MUTEX_ERRORCHECK 0
++#define PTHREAD_MUTEX_RECURSIVE 0
++#define PTHREAD_MUTEX_DEFAULT 0
++
++#else
++
++__gthrw(pthread_mutexattr_settype)
++
++#endif 
++
++
++
+ 
+ #if defined(_LIBOBJC) || defined(_LIBOBJC_WEAK)
+ /* Objective-C.  */
+diff --git a/libstdc++-v3/config/os/vxworks/os_defines.h b/libstdc++-v3/config/os/vxworks/os_defines.h
+index de2522e..edb6693 100644
+--- a/libstdc++-v3/config/os/vxworks/os_defines.h
++++ b/libstdc++-v3/config/os/vxworks/os_defines.h
+@@ -39,4 +39,7 @@
+ #endif
+ #define NOMINMAX 1
+ 
++#define _GLIBCXX_USE_NANOSLEEP 1
++#define _GLIBCXX_USE_CLOCK_REALTIME 1
++
+ #endif
+-- 
+1.8.4.rc3
+

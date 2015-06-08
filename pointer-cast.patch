@@ -1,0 +1,12 @@
+diff -ur gcc-4.9.0/libstdc++-v3/src/c++11/random.cc gcc-4.9.0/libstdc++-v3/src/c++11/random.cc
+--- gcc-4.9.0/libstdc++-v3/src/c++11/random.cc	2014-05-02 14:06:57.868789531 -0700
++++ gcc-4.9.0/libstdc++-v3/src/c++11/random.cc	2014-05-02 14:07:04.481813566 -0700
+@@ -131,7 +131,7 @@
+     result_type __ret;
+ #ifdef _GLIBCXX_HAVE_UNISTD_H
+     read(fileno(static_cast<FILE*>(_M_file)),
+-	 static_cast<void*>(&__ret), sizeof(result_type));
++	 static_cast<char*>(static_cast<void*>(&__ret)), sizeof(result_type));
+ #else
+     std::fread(static_cast<void*>(&__ret), sizeof(result_type),
+ 	       1, static_cast<FILE*>(_M_file));
