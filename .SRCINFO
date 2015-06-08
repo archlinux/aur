@@ -1,0 +1,18 @@
+pkgbase = ruby-grooveshark
+	pkgdesc = Unofficial ruby library for consuming the Grooveshark API
+	pkgver = 0.2.11
+	pkgrel = 1
+	url = http://github.com/sosedoff/grooveshark
+	arch = any
+	license = unknown
+	makedepends = rubygems
+	depends = ruby
+	depends = ruby-json>=1.4.6
+	depends = ruby-rest-client>=1.5.1
+	depends = ruby-uuid>=2.0
+	noextract = grooveshark-0.2.11.gem
+	source = http://gems.rubyforge.org/gems/grooveshark-0.2.11.gem
+	sha512sums = f106629bf0ef8d790a28dddad27cdb71e9e3b1579ea7ace41e97e06d31ca324be18bce030cdbef4dd43829406351a2f8c1a0d75de82a111ce2bd0bc98299c51d
+
+pkgname = ruby-grooveshark
+
