@@ -1,0 +1,19 @@
+pkgbase = ttf-carlito
+	pkgdesc = Googles Carlito font
+	pkgver = 20130920
+	pkgrel = 1
+	url = https://code.google.com/p/chromium/issues/detail?id=280557
+	install = ttf.install
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	provides = ttf-font
+	source = http://commondatastorage.googleapis.com/chromeos-localmirror/distfiles/crosextrafonts-carlito-20130920.tar.gz
+	source = 30-0-carlito.conf
+	md5sums = c74b7223abe75949b4af367942d96c7a
+	md5sums = 175d57bd2f40045df180a7dc18e2d513
+
+pkgname = ttf-carlito
+
