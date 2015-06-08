@@ -1,0 +1,15 @@
+pkgbase = python-pulsar
+	pkgdesc = Event driven concurrent framework using asyncio
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://pythonhosted.org/pulsar/
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = cython
+	depends = python
+	source = https://pypi.python.org/packages/source/p/pulsar/pulsar-1.0.0.tar.gz
+	md5sums = 7dae2538589c574fe74ab6006c88afc7
+
+pkgname = python-pulsar
+
