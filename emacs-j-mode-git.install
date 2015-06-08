@@ -1,0 +1,14 @@
+post_install() {
+cat << EOM
+;; Add this to your emacs config
+(autoload 'j-mode "j-mode.el" "Major mode for editing J files" t)
+
+;; Add for detection of j source files if the auto-load fails
+(add-to-list 'auto-mode-alist '("\\.ij[rstp]$" . j-mode))
+EOM
+}
+
+post_upgrade() {
+	post_install
+}
+
