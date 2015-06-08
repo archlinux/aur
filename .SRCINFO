@@ -1,0 +1,20 @@
+pkgbase = shivavg
+	pkgdesc = OpenVG Implementation in OpenGL
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = http://shivavg.sourceforge.net/
+	arch = any
+	license = LGPL
+	license = GPL
+	makedepends = git
+	makedepends = make
+	depends = glibc
+	depends = libgl
+	optdepends = libjpeg-turbo: display jpeg images
+	provides = libOpenVG.so
+	source = git+https://github.com/ileben/ShivaVG.git
+	md5sums = SKIP
+	sha256sums = SKIP
+
+pkgname = shivavg
+
