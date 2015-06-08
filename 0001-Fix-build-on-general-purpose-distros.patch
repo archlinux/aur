@@ -1,0 +1,66 @@
+From b412e9a9f8e1f31f50b9c16267c970c4f89e0d60 Mon Sep 17 00:00:00 2001
+From: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+Date: Sun, 22 Feb 2015 19:51:13 +0000
+Subject: [PATCH] Fix build on general purpose distros
+
+General purpose distros do not build with Raspberry Pi mkspecs, hence
+we need to manually add include directories and libraries.
+---
+ config.tests/brcm_egl/brcm_egl.pro                       | 4 ++--
+ src/hardwareintegration/client/brcm-egl/brcm-egl.pri     | 4 ++--
+ src/hardwareintegration/compositor/brcm-egl/brcm-egl.pri | 4 ++--
+ 3 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/config.tests/brcm_egl/brcm_egl.pro b/config.tests/brcm_egl/brcm_egl.pro
+index a6b416f..c1fdadc 100644
+--- a/config.tests/brcm_egl/brcm_egl.pro
++++ b/config.tests/brcm_egl/brcm_egl.pro
+@@ -1,13 +1,13 @@
+ TARGET = brcm_egl
+ CONFIG -= qt
+ 
+-INCLUDEPATH += $$QMAKE_INCDIR_EGL
++INCLUDEPATH += /opt/vc/include /opt/vc/include/interface/vcos/pthreads
+ 
+ for(p, QMAKE_LIBDIR_EGL) {
+     exists($$p):LIBS += -L$$p
+ }
+ 
+-LIBS += $$QMAKE_LIBS_EGL
++LIBS += -L/opt/vc/lib -lGLESv2 -lEGL -lm -lbcm_host
+ 
+ # Input
+ SOURCES += main.cpp
+diff --git a/src/hardwareintegration/client/brcm-egl/brcm-egl.pri b/src/hardwareintegration/client/brcm-egl/brcm-egl.pri
+index eb8e450..866f179 100644
+--- a/src/hardwareintegration/client/brcm-egl/brcm-egl.pri
++++ b/src/hardwareintegration/client/brcm-egl/brcm-egl.pri
+@@ -11,8 +11,8 @@ for(p, QMAKE_LIBDIR_EGL) {
+     exists($$p):LIBS += -L$$p
+ }
+ 
+-LIBS += $$QMAKE_LIBS_EGL
+-INCLUDEPATH += $$QMAKE_INCDIR_EGL
++LIBS += -L/opt/vc/lib -lEGL -lGLESv2 -lm -lbcm_host
++INCLUDEPATH += /opt/vc/include /opt/vc/include/interface/vcos/pthreads
+ 
+ SOURCES += $$PWD/qwaylandbrcmeglintegration.cpp \
+            $$PWD/qwaylandbrcmglcontext.cpp \
+diff --git a/src/hardwareintegration/compositor/brcm-egl/brcm-egl.pri b/src/hardwareintegration/compositor/brcm-egl/brcm-egl.pri
+index 6c4234c..b4aaf80 100644
+--- a/src/hardwareintegration/compositor/brcm-egl/brcm-egl.pri
++++ b/src/hardwareintegration/compositor/brcm-egl/brcm-egl.pri
+@@ -13,8 +13,8 @@ for(p, QMAKE_LIBDIR_EGL) {
+     exists($$p):LIBS += -L$$p
+ }
+ 
+-LIBS += $$QMAKE_LIBS_EGL
+-INCLUDEPATH += $$QMAKE_INCDIR_EGL
++LIBS += -L/opt/vc/lib -lEGL -lGLESv2 -lm -lbcm_host
++INCLUDEPATH += /opt/vc/include /opt/vc/include/interface/vcos/pthreads
+ 
+ SOURCES += \
+     $$PWD/brcmeglintegration.cpp \
+-- 
+2.3.5
+

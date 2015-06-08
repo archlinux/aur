@@ -1,0 +1,26 @@
+From 98c959f7b086ef2274157c34bacd3db3eb816531 Mon Sep 17 00:00:00 2001
+From: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+Date: Wed, 4 Mar 2015 19:28:15 +0000
+Subject: [PATCH] brcm-egl: Disambiguate wl_registry
+
+Include wayland-client.h to disambiguate between QtWaylandClient::wl_registry
+and wl_registry.
+---
+ src/hardwareintegration/client/brcm-egl/qwaylandbrcmeglintegration.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/hardwareintegration/client/brcm-egl/qwaylandbrcmeglintegration.h b/src/hardwareintegration/client/brcm-egl/qwaylandbrcmeglintegration.h
+index 0dd3e41..7fe557f 100644
+--- a/src/hardwareintegration/client/brcm-egl/qwaylandbrcmeglintegration.h
++++ b/src/hardwareintegration/client/brcm-egl/qwaylandbrcmeglintegration.h
+@@ -35,6 +35,7 @@
+ #define QWAYLANDBRCMEGLINTEGRATION_H
+ 
+ #include <QtWaylandClient/private/qwaylandclientbufferintegration_p.h>
++#include <wayland-client.h>
+ 
+ #include <EGL/egl.h>
+ #include <EGL/eglext.h>
+-- 
+2.3.0
+

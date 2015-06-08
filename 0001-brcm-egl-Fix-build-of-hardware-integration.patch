@@ -1,0 +1,26 @@
+From 32420feeaa1f7aeb16e22c04b8cdfd9dd2f75ad2 Mon Sep 17 00:00:00 2001
+From: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+Date: Wed, 4 Mar 2015 22:00:35 +0000
+Subject: [PATCH] brcm-egl: Fix build of hardware integration
+
+wl_buffer's buffer is now called buffer_object.
+---
+ src/hardwareintegration/compositor/brcm-egl/brcmbuffer.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/hardwareintegration/compositor/brcm-egl/brcmbuffer.h b/src/hardwareintegration/compositor/brcm-egl/brcmbuffer.h
+index 988db84..d44a1cd 100644
+--- a/src/hardwareintegration/compositor/brcm-egl/brcmbuffer.h
++++ b/src/hardwareintegration/compositor/brcm-egl/brcmbuffer.h
+@@ -64,7 +64,7 @@ public:
+ 
+     QSize size() { return m_size; }
+ 
+-    static BrcmBuffer *fromResource(struct ::wl_resource *resource) { return static_cast<BrcmBuffer*>(Resource::fromResource(resource)->buffer); }
++    static BrcmBuffer *fromResource(struct ::wl_resource *resource) { return static_cast<BrcmBuffer*>(Resource::fromResource(resource)->buffer_object); }
+ 
+ protected:
+     void buffer_destroy_resource(Resource *resource) Q_DECL_OVERRIDE;
+-- 
+2.3.0
+

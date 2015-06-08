@@ -1,0 +1,35 @@
+pkgbase = hawaii-qt5-wayland-rpi-git
+	pkgdesc = A cross-platform application and UI framework (QtWayland)
+	pkgver = 20150405.7a3f6dc
+	pkgrel = 1
+	url = http://www.qt.io/
+	arch = armv6h
+	arch = armv7h
+	license = GPL3
+	license = LGPL
+	makedepends = git
+	makedepends = gdb
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = libxcomposite
+	depends = libxrender
+	depends = mtdev
+	depends = wayland
+	depends = raspberrypi-firmware-tools
+	provides = qt5-wayland
+	provides = hawaii-qt5-wayland-git
+	conflicts = qt5-wayland
+	conflicts = hawaii-qt5-wayland-git
+	replaces = qt5-wayland
+	replaces = hawaii-qt5-wayland-git
+	options = !libtool
+	options = debug
+	source = hawaii-qtwayland::git://github.com/maui-packages/qtwayland#branch=output54
+	source = 0001-Fix-build-on-general-purpose-distros.patch
+	source = 0001-brcm-egl-Avoid-conflicts-with-GLES3.patch
+	md5sums = SKIP
+	md5sums = ae08121dd500084d88be708f454729bd
+	md5sums = 17bbee0eeab0096f725daa0b887650c4
+
+pkgname = hawaii-qt5-wayland-rpi-git
+

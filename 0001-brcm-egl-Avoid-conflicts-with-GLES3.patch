@@ -1,0 +1,42 @@
+From 6e0e8fafbf6b2a0ce1694acb9f26930d85dc2fbc Mon Sep 17 00:00:00 2001
+From: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+Date: Wed, 4 Mar 2015 22:30:00 +0000
+Subject: [PATCH] brcm-egl: Avoid conflicts with GLES3
+
+qopengl.h includes GLES3 which conflicts with GLES2 declarations.
+Might happen because Qt is built with desktop GL.
+
+This patch fixes the following build error.
+
+In file included from ../../../../hardwareintegration/compositor/brcm-egl/brcmeglintegration.cpp:61:0:
+/opt/vc/include/GLES2/gl2.h:600:125: error: conflicting declaration of C function 'void glShaderSource(GLuint, GLsizei, const GLchar**, const GLint*)'
+ GL_APICALL void         GL_APIENTRY glShaderSource (GLuint shader, GLsizei count, const GLchar** string, const GLint* length);
+                                                                                                                             ^
+In file included from /usr/include/qt/QtGui/qopengl.h:97:0,
+                 from ../../../../../include/QtCompositor/5.5.0/QtCompositor/private/../../../../../src/compositor/hardware_integration/qwlclientbufferintegration_p.h:46,
+                 from ../../../../../include/QtCompositor/5.5.0/QtCompositor/private/qwlclientbufferintegration_p.h:1,
+                 from ../../../../hardwareintegration/compositor/brcm-egl/brcmeglintegration.h:44,
+                 from ../../../../hardwareintegration/compositor/brcm-egl/brcmeglintegration.cpp:44:
+
+/usr/include/GLES3/gl3.h:475:29: note: previous declaration 'void glShaderSource(GLuint, GLsizei, const GLchar* const*, const GLint*)'
+ GL_APICALL void GL_APIENTRY glShaderSource (GLuint shader, GLsizei count, const GLchar *const*string, const GLint *length);
+---
+ src/hardwareintegration/compositor/brcm-egl/brcm-egl.pri | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/hardwareintegration/compositor/brcm-egl/brcm-egl.pri b/src/hardwareintegration/compositor/brcm-egl/brcm-egl.pri
+index b4aaf80..e2fb65b 100644
+--- a/src/hardwareintegration/compositor/brcm-egl/brcm-egl.pri
++++ b/src/hardwareintegration/compositor/brcm-egl/brcm-egl.pri
+@@ -2,6 +2,8 @@ QT = compositor compositor-private core-private gui-private
+ 
+ INCLUDEPATH += $$PWD
+ 
++DEFINES += QT_NO_OPENGL_ES_3
++
+ !contains(QT_CONFIG, no-pkg-config) {
+     CONFIG += link_pkgconfig
+     PKGCONFIG += wayland-server
+-- 
+2.3.1
+
