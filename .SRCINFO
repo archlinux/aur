@@ -1,0 +1,15 @@
+pkgbase = iceweasel-i18n-is
+	pkgdesc = Icelandic language pack for Iceweasel
+	pkgver = 38.0.1.deb5
+	pkgrel = 1
+	url = http://www.mozilla.com/
+	arch = any
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = iceweasel>=38.0.1
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-is_38.0.1-5_all.deb
+	sha256sums = 769e0596f9611c03e467ca1a367ffcf01c59d39e956fa5a539af23937d51a08f
+
+pkgname = iceweasel-i18n-is
+
