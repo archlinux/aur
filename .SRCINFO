@@ -1,0 +1,20 @@
+pkgbase = libsquish
+	pkgdesc = DXT compression library
+	pkgver = 1.11
+	pkgrel = 2
+	url = http://code.google.com/p/libsquish
+	arch = i686
+	arch = x86_64
+	license = MIT
+	options = staticlibs
+	source = http://libsquish.googlecode.com/files/squish-1.11.zip
+	source = gcc440.patch
+	source = config
+	source = LICENSE
+	sha1sums = 1fdff1ba72a002900c877baebcf0aeab9af4922b
+	sha1sums = 51bcc11eafbf79d9cde24769397c7a42f886154a
+	sha1sums = db587e6251b850820d7ce6edaf8eccb180c24b99
+	sha1sums = e285c60d401f91f282de6ad6b6f549e9f5e9ff1d
+
+pkgname = libsquish
+
