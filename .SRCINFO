@@ -1,0 +1,19 @@
+pkgbase = kdeplasma-applets-miniplayer-git
+	pkgdesc = A plasmoid for playing multimedia. (GIT version)
+	pkgver = v2.5.18.g5ca780f
+	pkgrel = 1
+	url = http://www.kde-look.org/content/show.php/Mini+Player?content=95501
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = git
+	depends = kdelibs
+	provides = kdeplasma-applets-miniplayer
+	conflicts = kdeplasma-applets-miniplayer
+	source = miniplayer::git+https://github.com/Emdek/plasmoid-mini-player.git
+	sha1sums = SKIP
+
+pkgname = kdeplasma-applets-miniplayer-git
+
