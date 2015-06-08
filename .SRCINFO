@@ -1,0 +1,14 @@
+pkgbase = arpalert
+	pkgdesc = Monitor ARP changes in ethernet networks
+	pkgver = 2.0.11
+	pkgrel = 2
+	url = http://www.arpalert.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libpcap
+	source = http://www.arpalert.org/src/arpalert-2.0.11.tar.gz
+	sha256sums = d3166f0de57729902d84a61626794494c4eac80ee58241d07c813809328e62cd
+
+pkgname = arpalert
+
