@@ -1,0 +1,18 @@
+pkgbase = icon-slicer
+	pkgdesc = A utility for generating icon themes and libXcursor cursor themes
+	pkgver = 0.3
+	pkgrel = 6
+	url = http://freedesktop.org/wiki/Software/icon-slicer
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gdk-pixbuf2
+	depends = popt
+	depends = xorg-xcursorgen
+	source = http://freedesktop.org/software/icon-slicer/releases/icon-slicer-0.3.tar.gz
+	source = hotspots.patch
+	sha1sums = 82284a87061ad9e1872e61963597c39ddcba53da
+	sha1sums = b9bf8e11ebc444fbcb3f6995d7e5a649f79d346f
+
+pkgname = icon-slicer
+
