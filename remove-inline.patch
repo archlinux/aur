@@ -1,0 +1,152 @@
+*** gnome-mpv-0.4/src/common.c	2015-05-30 15:01:05.199253876 -0600
+--- gnome-mpv-0.4/src/common.c	2015-05-30 15:01:05.199253876 -0600
+***************
+*** 28,41 ****
+  #include "control_box.h"
+  #include "playlist_widget.h"
+  
+! inline gchar *get_config_string(	gmpv_handle *ctx,
+  					const gchar *group,
+  					const gchar *key )
+  {
+  	return g_key_file_get_string(ctx->config_file, group, key, NULL);
+  }
+  
+! inline void set_config_string(	gmpv_handle *ctx,
+  				const gchar *group,
+  				const gchar *key,
+  				const gchar *value)
+--- 28,41 ----
+  #include "control_box.h"
+  #include "playlist_widget.h"
+  
+! gchar *get_config_string(	gmpv_handle *ctx,
+  					const gchar *group,
+  					const gchar *key )
+  {
+  	return g_key_file_get_string(ctx->config_file, group, key, NULL);
+  }
+  
+! void set_config_string(	gmpv_handle *ctx,
+  				const gchar *group,
+  				const gchar *key,
+  				const gchar *value)
+***************
+*** 44,50 ****
+  	g_key_file_set_string(ctx->config_file, group, key, value?value:"");
+  }
+  
+! inline gboolean get_config_boolean(	gmpv_handle *ctx,
+  					const gchar *group,
+  					const gchar *key,
+  					gboolean defaultval )
+--- 44,50 ----
+  	g_key_file_set_string(ctx->config_file, group, key, value?value:"");
+  }
+  
+! gboolean get_config_boolean(	gmpv_handle *ctx,
+  					const gchar *group,
+  					const gchar *key,
+  					gboolean defaultval )
+***************
+*** 60,66 ****
+  	return !keyfile_error?result:defaultval;
+  }
+  
+! inline void set_config_boolean(	gmpv_handle *ctx,
+  				const gchar *group,
+  				const gchar *key,
+  				gboolean value)
+--- 60,66 ----
+  	return !keyfile_error?result:defaultval;
+  }
+  
+! void set_config_boolean(	gmpv_handle *ctx,
+  				const gchar *group,
+  				const gchar *key,
+  				gboolean value)
+***************
+*** 68,74 ****
+  	g_key_file_set_boolean(ctx->config_file, group, key, value);
+  }
+  
+! inline gchar *get_config_dir_path(void)
+  {
+  	return g_strconcat(	g_get_user_config_dir(),
+  				"/",
+--- 68,74 ----
+  	g_key_file_set_boolean(ctx->config_file, group, key, value);
+  }
+  
+! gchar *get_config_dir_path(void)
+  {
+  	return g_strconcat(	g_get_user_config_dir(),
+  				"/",
+***************
+*** 76,82 ****
+  				NULL );
+  }
+  
+! inline gchar *get_config_file_path(void)
+  {
+  	return g_strconcat(	get_config_dir_path(),
+  				"/"
+--- 76,82 ----
+  				NULL );
+  }
+  
+! gchar *get_config_file_path(void)
+  {
+  	return g_strconcat(	get_config_dir_path(),
+  				"/"
+*** gnome-mpv-0.4/src/common.h	2015-05-30 15:01:05.199253876 -0600
+--- gnome-mpv-0.4/src/common.h	2015-05-30 15:01:05.199253876 -0600
+***************
+*** 47,69 ****
+  	GtkListStore *playlist_store;
+  };
+  
+! inline gchar *get_config_string(	gmpv_handle *ctx,
+  					const gchar *group,
+  					const gchar *key );
+! inline void set_config_string(	gmpv_handle *ctx,
+  				const gchar *group,
+  				const gchar *key,
+  				const gchar *value );
+! inline gboolean get_config_boolean(	gmpv_handle *ctx,
+  					const gchar *group,
+  					const gchar *key,
+  					gboolean defaultval );
+! inline void set_config_boolean(	gmpv_handle *ctx,
+  				const gchar *group,
+  				const gchar *key,
+  				gboolean value);
+! inline gchar *get_config_dir_path(void);
+! inline gchar *get_config_file_path(void);
+  gboolean load_config(gmpv_handle *ctx);
+  gboolean save_config(gmpv_handle *ctx);
+  gchar *get_path_from_uri(const gchar *uri);
+--- 47,69 ----
+  	GtkListStore *playlist_store;
+  };
+  
+! gchar *get_config_string(	gmpv_handle *ctx,
+  					const gchar *group,
+  					const gchar *key );
+! void set_config_string(	gmpv_handle *ctx,
+  				const gchar *group,
+  				const gchar *key,
+  				const gchar *value );
+! gboolean get_config_boolean(	gmpv_handle *ctx,
+  					const gchar *group,
+  					const gchar *key,
+  					gboolean defaultval );
+! void set_config_boolean(	gmpv_handle *ctx,
+  				const gchar *group,
+  				const gchar *key,
+  				gboolean value);
+! gchar *get_config_dir_path(void);
+! gchar *get_config_file_path(void);
+  gboolean load_config(gmpv_handle *ctx);
+  gboolean save_config(gmpv_handle *ctx);
+  gchar *get_path_from_uri(const gchar *uri);
