@@ -1,0 +1,30 @@
+pkgbase = openage-git
+	pkgdesc = A free (as in freedom) clone of the Age of Empires II engine
+	pkgver = v0.2.3.r270.g6ca863a
+	pkgrel = 1
+	url = http://openage.sft.mx/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = python-pillow
+	depends = python
+	depends = libgl
+	depends = libepoxy
+	depends = ftgl
+	depends = fontconfig
+	depends = sdl2
+	depends = sdl2_image
+	depends = opusfile
+	optdepends = python-pillow: for the media convert script
+	optdepends = python-numpy: for the media convert script
+	optdepends = opus-tools: for the media convert script
+	optdepends = ttf-dejavu: for text display, but you can use any font
+	provides = openage
+	conflicts = openage
+	source = openage::git+https://github.com/SFTtech/openage
+	md5sums = SKIP
+
+pkgname = openage-git
+
