@@ -1,0 +1,16 @@
+pkgbase = epson-inkjet-printer-stylus-photo-tx650-series
+	pkgdesc = Epson printer driver (Stylus Photo PX650, TX650, TX659)
+	pkgver = 1.0.0
+	pkgrel = 8
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom:Epson Licence Agreement
+	depends = cups
+	depends = ghostscript
+	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-stylus-photo-tx650-series-1.0.0-1lsb3.2.src.rpm
+	sha256sums = 4f6ac91bded62884e58b6b83b2f5a164815cf2a6dabd63c8ab62b77b9863fa59
+
+pkgname = epson-inkjet-printer-stylus-photo-tx650-series
+
