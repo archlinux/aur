@@ -1,0 +1,14 @@
+[Unit]
+Description=oVirt Guest Agent
+After=network.target
+
+[Service]
+Type=simple
+PIDFile=/tmp/ovirt-guest-agent.pid
+User=ovirtagent
+Group=ovirtagent
+ExecStartPre=/usr/bin/modprobe virtio_console
+ExecStart=/usr/bin/python2 /usr/share/ovirt-guest-agent/ovirt-guest-agent.py -p /tmp/ovirt-guest-agent.pid
+
+[Install]
+WantedBy=multi-user.target

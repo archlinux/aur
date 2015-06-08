@@ -1,0 +1,30 @@
+pkgbase = ovirt-guest-agent
+	pkgdesc = The oVirt Guest Agent
+	pkgver = 1.0.10
+	pkgrel = 3
+	url = http://wiki.ovirt.org/Category:Ovirt_guest_agent
+	install = ovirt-guest-agent.install
+	arch = any
+	license = ASL 2.0
+	makedepends = pam
+	makedepends = libtool
+	makedepends = python2
+	makedepends = python2-pep8
+	makedepends = pep8
+	depends = systemd
+	depends = python2
+	depends = python2-dbus
+	depends = python2-gobject2
+	depends = dbus-glib
+	depends = python2-ethtool
+	depends = usermode
+	backup = etc/ovirt-guest-agent.conf
+	source = ovirt-guest-agent.install
+	source = ovirt-guest-agent.service
+	source = https://evilissimo.fedorapeople.org/releases/ovirt-guest-agent/1.0.10/ovirt-guest-agent-1.0.10.3.tar.bz2
+	sha256sums = 10c5dc2fa265e6944d9316003fb04163ff005debddd3e86ad4ce3e4ec00ee893
+	sha256sums = 545235630d6da51b547c1e8c177ddbf9f57aa81017b8683274a449d46e765cc4
+	sha256sums = d11e1a6a9a36a2e318cfc7f063f22a30b29594284f31e5a5903bbd3984c1070b
+
+pkgname = ovirt-guest-agent
+

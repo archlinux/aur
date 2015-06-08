@@ -1,0 +1,36 @@
+pre_install() {
+getent group ovirtagent >/dev/null || groupadd -r -g 175 ovirtagent
+getent passwd ovirtagent > /dev/null || \
+    /usr/bin/useradd -u 175 -g 175 -o -r ovirtagent \
+    -c "oVirt Guest Agent" -d /usr/share/ovirt-guest-agent -s /usr/bin/nologin
+exit 0
+}
+
+post_install() {
+/usr/bin/udevadm trigger --subsystem-match="virtio-ports" \
+    --attr-match="name=com.redhat.rhevm.vdsm"
+
+/usr/bin/systemctl daemon-reload
+}
+
+pre_remove() {
+    /usr/bin/systemctl stop ovirt-guest-agent.service > /dev/null 2>&1
+    # Send an "uninstalled" notification to vdsm.
+    VIRTIO=`grep "^device" /etc/ovirt-guest-agent.conf | awk '{ print $3; }'`
+    if [ -w $VIRTIO ]
+    then
+        # Non blocking uninstalled notification
+        echo -e '{"__name__": "uninstalled"}\n' | dd of=$VIRTIO \
+            oflag=nonblock status=noxfer conv=nocreat 1>& /dev/null || :
+    fi
+}
+post_remove() {
+    /usr/bin/systemctl daemon-reload
+    # Let udev clear access rights
+    /usr/bin/udevadm trigger --subsystem-match="virtio-ports" \
+        --attr-match="name=com.redhat.rhevm.vdsm"
+}
+
+post_upgrade() {
+    /usr/bin/systemctl try-restart ovirt-guest-agent.service >/dev/null 2>&1 || :
+}
