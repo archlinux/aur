@@ -1,0 +1,15 @@
+pkgbase = jappix
+	pkgdesc = Another way to think social networks!
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = http://jappix.org
+	install = jappix.install
+	arch = any
+	license = AGPL
+	depends = php
+	depends = php-gd
+	source = http://download.jappix.org/1.1.4/jappix-1.1.4-primo.tar.bz2
+	sha256sums = 28c1d268c37b340cfd72973fd3d30fb886db2d406fe0fc31695c6da4c4bea4b0
+
+pkgname = jappix
+

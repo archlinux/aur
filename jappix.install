@@ -1,0 +1,21 @@
+post_install() {
+  _ensure_perms
+}
+
+post_upgrade() {
+  _ensure_perms
+}
+
+_ensure_perms() {
+  mkdir -p /var/lib/webapps/jappix
+  if id http > /dev/null 2>&1; then
+    chown -R http:http /var/lib/webapps/jappix
+    chown -R http:http /usr/share/webapps/jappix
+    chmod -R ug=rwX /var/lib/webapps/jappix
+    chmod -R o=-rwx /var/lib/webapps/jappix
+  fi
+  
+  echo "  Ensure /var/lib/webapps is in open_basedir in your php.ini!"
+}
+
+# vim:set ts=2 sw=2 et:
