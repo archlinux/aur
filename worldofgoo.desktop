@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=World of Goo
+Comment=A physics based puzzle/construction game.
+Icon=worldofgoo
+Exec=worldofgoo
+Categories=Game;LogicGame;

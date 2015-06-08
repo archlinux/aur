@@ -1,0 +1,21 @@
+pkgbase = worldofgoo
+	pkgdesc = A physics based puzzle/construction game (requires copy of the full game).
+	pkgver = 1.41
+	pkgrel = 6
+	url = http://2dboy.com/games.php
+	install = worldofgoo.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gtk-update-icon-cache
+	depends = sdl_mixer
+	depends = hicolor-icon-theme
+	optdepends = worldofgoo-gootool: for creating and installing fan levels
+	options = !strip
+	source = hib://WorldOfGooSetup.1.41.tar.gz
+	source = worldofgoo.desktop
+	md5sums = f5afa40893d0fbcc37885191404f6d8c
+	md5sums = 706ff492ea8096e1a2a7ee9a4d171aca
+
+pkgname = worldofgoo
+
