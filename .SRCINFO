@@ -1,0 +1,20 @@
+pkgbase = eel-language-git
+	pkgdesc = A scripting and programming language, git version
+	pkgver = 0.3.6.65.ga9e7e34
+	pkgrel = 1
+	url = http://www.olofson.net
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = bash
+	depends = audiality
+	provides = eel-language
+	conflicts = eel-language
+	options = !libtool
+	options = staticlibs
+	source = git+https://github.com/olofson/eel.git
+	md5sums = SKIP
+
+pkgname = eel-language-git
+
