@@ -1,0 +1,14 @@
+pkgbase = undms
+	pkgdesc = Decompress Amiga DMS disk images to ADF
+	pkgver = 1.3
+	pkgrel = 1
+	url = http://aminet.net/package/misc/unix/undms-1.3.c
+	arch = i686
+	arch = x86_64
+	license = freedist
+	makedepends = p7zip
+	source = http://aminet.net/misc/unix/undms-1.3.c.Z
+	md5sums = 7c9d5a4830d0e1ded7eab3a287f15c4b
+
+pkgname = undms
+
