@@ -1,0 +1,15 @@
+pkgbase = wallpapy
+	pkgdesc = Simple wallpaper changer that uses nitrogen as its backend.
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = https://github.com/XenGi/wallpapy
+	arch = any
+	license = MIT
+	depends = nitrogen
+	depends = python
+	depends = python-docopt
+	source = https://github.com/XenGi/wallpapy/archive/v1.0.0.tar.gz
+	md5sums = SKIP
+
+pkgname = wallpapy
+
