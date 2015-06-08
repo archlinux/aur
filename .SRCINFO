@@ -1,0 +1,14 @@
+pkgbase = eclipse-h2-database
+	pkgdesc = Support for H2 databases in Eclipse
+	pkgver = 1.1.117
+	pkgrel = 2
+	url = http://www.eclipse.org/orbit/
+	arch = any
+	license = EPL
+	depends = eclipse
+	noextract = org.h2_1.1.117.v201105142352.jar
+	source = http://www.eclipse.org/downloads/download.php?r=1&file=/tools/orbit/downloads/drops/R20120119162704/repository/plugins/org.h2_1.1.117.v201105142352.jar
+	md5sums = 4c7fb64c54bc630bf83f9a87b70982fe
+
+pkgname = eclipse-h2-database
+
