@@ -1,0 +1,20 @@
+pkgbase = codequery
+	pkgdesc = A code-understanding, code-browsing or code-search tool.
+	pkgver = 0.15a
+	pkgrel = 3
+	url = http://ruben2020.github.io/codequery/
+	install = codequery.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = qscintilla
+	optdepends = cscope: creation of CodeQuery databases
+	optdepends = ctags: creation of CodeQuery databases
+	optdepends = python2-pycscope: creation of CodeQuery databases for Python source code
+	optdepends = ruby-starscope: creation of CodeQuery databases for Ruby and Go source code
+	source = https://github.com/ruben2020/codequery/archive/v0.15a.tar.gz
+	source = codequery.desktop
+
+pkgname = codequery
+

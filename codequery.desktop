@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=Development;IDE;
+Encoding=UTF-8
+Name=CodeQuery
+GenericName=Tool for Indexing and Querying C, C++, Java and Python Sources
+Type=Application
+Exec=codequery
+Icon=codequery.png
+

@@ -1,0 +1,17 @@
+update_icons() {
+  xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+}
+
+post_install() {
+  update_icons
+  echo 'See tutorial at https://github.com/ruben2020/codequery/blob/master/doc/HOWTO-LINUX.md to learn how to create CodeQuery databases'
+}
+
+post_upgrade() {
+  update_icons
+}
+
+post_remove() {
+  update_icons
+}
+
