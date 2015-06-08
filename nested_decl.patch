@@ -1,0 +1,12 @@
+diff -ru gnumeric-1.12.1.old/configure.ac gnumeric-1.12.1/configure.ac
+--- gnumeric-1.12.1.old/configure	2013-03-02 00:00:37.000000000 +0100
++++ gnumeric-1.12.1/configure	2013-03-09 22:03:58.000000000 +0100
+@@ -269,7 +269,7 @@
+ 			 -Wchar-subscripts -Wwrite-strings \
+ 			 -Wdeclaration-after-statement -Wnested-externs \
+ 			 -Wmissing-noreturn \
+-			 -Werror=missing-prototypes -Werror=nested-externs \
++			 -Werror=missing-prototypes \
+ 			 -Werror=implicit-function-declaration \
+ 			 -Wmissing-declarations -Wno-pointer-sign \
+ 			 -Werror=format-security -Wbitwise -Wcast-to-as \
