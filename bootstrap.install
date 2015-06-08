@@ -1,0 +1,12 @@
+post_install() {
+    echo "You now need to bootstrap pkgsrc as root via the following commands:"
+    echo "==> cd /usr/pkgsrc/bootstrap"
+    echo "==> rm -rf work"
+    echo "==> ./bootstrap --prefix /usr/pkg"
+}
+
+post_remove() {
+    echo "Not removing /usr/pkg/* so that anything installed via pkgsrc still exists"
+    echo "Remove it manually if you don't want it anymore"
+    rm -rf /usr/pkgsrc
+}
