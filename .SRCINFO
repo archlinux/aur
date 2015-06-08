@@ -1,0 +1,14 @@
+pkgbase = qbrew
+	pkgdesc = Homebrewer's beer recipe calculator
+	pkgver = 0.4.1
+	pkgrel = 4
+	url = http://www.usermode.org/code.html
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = qt4
+	source = http://www.usermode.org/code/qbrew-0.4.1.tar.gz
+	sha512sums = 9910c9070129b14bb4bd0f2d0356e07f53bbc2d1750e9eece8cbb668ee9eb8bd534fd0641f0cf8be4194f5f470b8b7d193d413c59aa0b69cc6d87d6453f247a4
+
+pkgname = qbrew
+
