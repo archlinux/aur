@@ -1,0 +1,21 @@
+pkgbase = yarock-qt5
+	pkgdesc = Qt Modern Music Player with collection browse based on cover art
+	pkgver = 1.1.2
+	pkgrel = 2
+	url = https://launchpad.net/yarock
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = mpv
+	depends = qt5-x11extras
+	depends = phonon-qt5
+	depends = taglib
+	optdepends = mpv: alternative (working) engine
+	source = https://launchpad.net/yarock/1.x/1.1.2/+download/Yarock_1.1.2_source.tar.gz
+	source = phonon.patch
+	md5sums = 88733d9bed252c132a378dfecb158697
+	md5sums = d6f84a05159c8b7035723cbdeb6fc611
+
+pkgname = yarock-qt5
+

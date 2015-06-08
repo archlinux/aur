@@ -1,0 +1,12 @@
+diff -ruN Yarock_1.1.2_source-orig/src/core/player/phonon/CMakeLists.txt Yarock_1.1.2_source/src/core/player/phonon/CMakeLists.txt
+--- Yarock_1.1.2_source-orig/src/core/player/phonon/CMakeLists.txt	2015-05-21 00:42:46.627611703 +0300
++++ Yarock_1.1.2_source/src/core/player/phonon/CMakeLists.txt	2015-05-21 00:43:25.852867232 +0300
+@@ -34,7 +34,7 @@
+ 
+ 
+ if (ENABLE_QT5)
+-    INCLUDE_DIRECTORIES( ${PHONON_INCLUDE_DIR}/phonon4qt5 )
++    INCLUDE_DIRECTORIES( /usr/include/phonon4qt5 )
+ else (ENABLE_QT5)
+     INCLUDE_DIRECTORIES( ${PHONON_INCLUDES} )
+ endif (ENABLE_QT5)  
