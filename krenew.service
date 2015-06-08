@@ -1,0 +1,11 @@
+[Unit]
+Description=Kerberos Ticket Renewal Daemon
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/krenew -v -L -b -K 30 -i
+ExecReload=/bin/kill -s ALRM $MAINPID
+StandardOutput=null
+
+[Install]
+WantedBy=default.target
