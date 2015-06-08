@@ -1,0 +1,15 @@
+pkgbase = coin-or-blis
+	pkgdesc = BLIS (BiCePS Linear Integer Solver)
+	pkgver = 0.93.11
+	pkgrel = 1
+	url = https://projects.coin-or.org/CHiPPS
+	arch = i686
+	arch = x86_64
+	groups = coin-or
+	license = EPL
+	depends = coin-or-bcps
+	source = http://www.coin-or.org/download/pkgsource/CHiPPS/Blis-0.93.11.tgz
+	sha1sums = 2ba385b5d3706d55f36e7a12f7e22a0fbbd6210d
+
+pkgname = coin-or-blis
+
