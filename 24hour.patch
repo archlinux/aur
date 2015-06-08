@@ -1,0 +1,13 @@
+Only in b: tags
+diff -ru a/unlock_indicator.c b/unlock_indicator.c
+--- a/unlock_indicator.c	2015-05-22 11:00:01.849040047 +0200
++++ b/unlock_indicator.c	2015-05-22 11:00:45.945473675 +0200
+@@ -25,7 +25,7 @@
+ #define BUTTON_SPACE (BUTTON_RADIUS + 5)
+ #define BUTTON_CENTER (BUTTON_RADIUS + 5)
+ #define BUTTON_DIAMETER (2 * BUTTON_SPACE)
+-#define TIME_FORMAT "%l:%M%p"
++#define TIME_FORMAT "%H:%M"
+ 
+ /*******************************************************************************
+  * Variables defined in i3lock.c.
