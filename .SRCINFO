@@ -1,0 +1,14 @@
+pkgbase = sblim-sfcc
+	pkgdesc = Small Footprint CIM Client Library
+	pkgver = 2.2.8
+	pkgrel = 1
+	url = http://sourceforge.net/projects/sblim/
+	arch = i686
+	arch = x86_64
+	license = EPL
+	depends = curl
+	source = http://downloads.sourceforge.net/project/sblim/sblim-sfcc/sblim-sfcc-2.2.8.tar.bz2
+	md5sums = 0bac0dec19f17ec065b6c332a56d7bae
+
+pkgname = sblim-sfcc
+
