@@ -1,0 +1,18 @@
+pkgbase = vapoursynth-plugin-scoll-git
+	pkgdesc = Plugin for Vapoursynth: scoll (GIT version)
+	pkgver = r1
+	pkgrel = 1
+	url = https://gist.github.com/4re
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = vapoursynth
+	depends = vapoursynth-plugin-havsfunc
+	depends = vapoursynth-plugin-vshelpers-git
+	provides = vapoursynth-plugin-scoll
+	conflicts = vapoursynth-plugin-scoll
+	source = scoll::git+https://gist.github.com/3acdb8d90abf78643d4e.git
+	sha1sums = SKIP
+
+pkgname = vapoursynth-plugin-scoll-git
+
