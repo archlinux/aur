@@ -1,0 +1,17 @@
+pkgbase = fxmediainfo
+	pkgdesc = MediaInfo front-end based by FOX Toolkit
+	pkgver = 6.30
+	pkgrel = 1
+	url = https://bitbucket.org/daltomi/fxmediainfo
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = fox-devel
+	depends = libmediainfo
+	optdepends = ttf-ms-fonts: Courier font
+	optdepends = xdg-utils: for HTML help
+
+pkgname = fxmediainfo
+
