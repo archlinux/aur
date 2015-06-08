@@ -1,0 +1,13 @@
+pkgbase = python-unicodeblocks
+	pkgdesc = Supplements unicodedata standard library module with ability to lookup and work with Unicode blocks
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/unicodeblocks
+	arch = any
+	license = ISC
+	depends = python
+	source = https://pypi.python.org/packages/source/u/unicodeblocks/unicodeblocks-0.3.tar.gz
+	md5sums = 6d5c1a27c6080b092d35c939fd64c8f5
+
+pkgname = python-unicodeblocks
+
