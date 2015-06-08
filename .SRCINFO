@@ -1,0 +1,20 @@
+pkgbase = sxiv-git
+	pkgdesc = Simple (or small or suckless) X Image Viewer
+	pkgver = 2015.01.05.g47e6cd0
+	pkgrel = 1
+	url = https://github.com/muennich/sxiv
+	install = sxiv.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = imlib2
+	depends = libexif
+	depends = desktop-file-utils
+	provides = sxiv
+	conflicts = sxiv
+	source = sxiv::git+https://github.com/muennich/sxiv.git
+	sha256sums = SKIP
+
+pkgname = sxiv-git
+
