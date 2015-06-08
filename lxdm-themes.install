@@ -1,0 +1,11 @@
+post_install() {
+  echo "==> Don't forget to manually edit /etc/lxdm/lxdm.conf and set your prefered theme"
+  echo "    eg. theme=ArchlinuxFull or theme=Arch-Dark"
+  echo "    ls /usr/share/lxdm/themes, to see all available themes"
+}
+
+post_upgrade() {
+  echo "==> Don't forget to manually edit /etc/lxdm/lxdm.conf and set your prefered theme"
+  echo "    eg. theme=ArchlinuxFull or theme=Arch-Dark"
+  echo "    ls /usr/share/lxdm/themes, to see all available themes"
+}
