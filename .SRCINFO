@@ -1,0 +1,15 @@
+pkgbase = lockee
+	pkgdesc = Temporary encrypted file lockers on the web
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/hbons/Lockee
+	arch = any
+	license = AGPL3
+	makedepends = npm
+	depends = nodejs
+	options = !emptydirs
+	source = https://github.com/hbons/Lockee/archive/1.0.0.tar.gz
+	sha256sums = 241c555d4422b53ba144c55e4ac749c7a1b86e813537473666e8397d6d30d739
+
+pkgname = lockee
+
