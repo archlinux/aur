@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-coin-or-alps
+	pkgdesc = COIN-OR High-Performance Parallel Search Framework (mingw-w64)
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://projects.coin-or.org/Alps
+	arch = any
+	groups = coin-or
+	license = EPL
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-coin-or-cgl
+	depends = mingw-w64-coin-or-clp
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = http://www.coin-or.org/download/pkgsource/CHiPPS/Alps-1.5.1.tgz
+	sha1sums = 99653744e3855b7d8b8a76b2f7814344bbb56b85
+
+pkgname = mingw-w64-coin-or-alps
+
