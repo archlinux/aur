@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=LaTeXDraw
+Comment=Vector drawing program for LaTeX using PSTricks 
+Icon=/usr/share/pixmaps/latexdraw.png
+Exec=latexdraw
+Type=Application
+Categories=Graphics;VectorGraphics;

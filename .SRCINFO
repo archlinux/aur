@@ -1,0 +1,23 @@
+pkgbase = latexdraw-git
+	pkgdesc = Create svg graphics and/or pstricks code usable in latex documents. (GIT version)
+	pkgver = 1308.d4bcf14
+	pkgrel = 1
+	url = http://latexdraw.sourceforge.net
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = jdk7-openjdk
+	makedepends = maven
+	makedepends = unzip
+	depends = jdk7-openjdk
+	optdepends = texlive-pstricks: use generated code in latex documents
+	conflicts = latexdraw
+	source = latexdraw::git+https://github.com/arnobl/latexdraw.git
+	source = latexdraw.desktop
+	source = latexdraw.sh
+	md5sums = SKIP
+	md5sums = 9674cf3a8d85b4d09bd27ebed416bb71
+	md5sums = a306ee12d3f992c66493359ebc1159e4
+
+pkgname = latexdraw-git
+
