@@ -1,0 +1,15 @@
+pkgbase = kdeartwork-wallpapers-manjaro-redefined
+	pkgdesc = Manjaro Redefined Wallpaper.
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://kde-look.org/content/show.php?content=166289
+	arch = any
+	groups = kde
+	groups = kdeartwork
+	license = GPL
+	depends = kdebase-workspace
+	source = manjaro-redefined.tar.gz::https://copy.com/tQSfRdWAT1bd/manjaro-redefined.tar.gz?download=1
+	md5sums = 723e1deb0f62c12c57dfa9b951175021
+
+pkgname = kdeartwork-wallpapers-manjaro-redefined
+
