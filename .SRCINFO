@@ -1,0 +1,86 @@
+pkgbase = linux-libre
+	pkgver = 4.0.5_gnu
+	pkgrel = 1
+	url = http://linux-libre.fsfla.org/
+	arch = i686
+	arch = x86_64
+	arch = mips64el
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	options = !strip
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0-gnu/linux-libre-4.0-gnu.tar.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0-gnu/linux-libre-4.0-gnu.tar.xz.sign
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0.5-gnu/patch-4.0-gnu-4.0.5-gnu.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0.5-gnu/patch-4.0-gnu-4.0.5-gnu.xz.sign
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm.sig
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm.sig
+	source = config.i686
+	source = config.x86_64
+	source = config.mips64el
+	source = linux.preset
+	source = change-default-console-loglevel.patch
+	source = https://repo.parabola.nu/other/linux-libre/patches/4.0.2-ae91f13af5-loongson-community.patch
+	sha256sums = 0e2dd5be12c1f82ab3d03b89cbe3f1a20e14332ec42c102efb226a6283fdd38a
+	sha256sums = SKIP
+	sha256sums = 5ac82d1955fee5abccda157ef2399b34d4fd1c2310a33d19c09ca5953b308172
+	sha256sums = SKIP
+	sha256sums = bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494
+	sha256sums = SKIP
+	sha256sums = 13bd7a8d9ed6b6bc971e4cd162262c5a20448a83796af39ce394d827b0e5de74
+	sha256sums = SKIP
+	sha256sums = 6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a
+	sha256sums = SKIP
+	sha256sums = 5fa50ffbe7b6e82c70d1d15947c34caa0b484ecd264f01149f40b910e7c8f394
+	sha256sums = 33f68753bc12456e601492f870f7e04cd116f36b81630d9bad954093d72bc57a
+	sha256sums = 7b6954ed843d17149129cc04064d00db791767ad8b7dca5a4833a2febafce50a
+	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
+	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
+	sha256sums = 13e141279af2bc17decfc041e015710daac9a6cd1c9b4e871a76cb8f916b9e22
+
+pkgname = linux-libre
+	pkgdesc = The Linux-libre kernel and modules
+	install = linux.install
+	depends = coreutils
+	depends = linux-libre-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = linux=4.0.5
+	conflicts = linux
+	conflicts = kernel26
+	conflicts = kernel26-libre
+	conflicts = linux-libre-kmod-alx
+	replaces = linux
+	replaces = kernel26
+	replaces = kernel26-libre
+	replaces = linux-libre-kmod-alx
+	backup = etc/mkinitcpio.d/linux-libre.preset
+
+pkgname = linux-libre-headers
+	pkgdesc = Header files and scripts for building modules for Linux-libre kernel
+	provides = linux-headers=4.0.5
+	conflicts = linux-headers
+	conflicts = kernel26-headers
+	conflicts = kernel26-libre-headers
+	replaces = linux-headers
+	replaces = kernel26-headers
+	replaces = kernel26-libre-headers
+
+pkgname = linux-libre-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre kernel
+	provides = linux-docs=4.0.5
+	conflicts = linux-docs
+	conflicts = kernel26-docs
+	conflicts = kernel26-libre-docs
+	replaces = linux-docs
+	replaces = kernel26-docs
+	replaces = kernel26-libre-docs
+
