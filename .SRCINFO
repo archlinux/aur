@@ -1,0 +1,20 @@
+pkgbase = abcl-svn
+	pkgdesc = Full implementation of the Common Lisp language in the JVM
+	pkgver = r14786
+	pkgrel = 1
+	url = http://common-lisp.net/project/armedbear/
+	arch = any
+	license = GPL
+	makedepends = apache-ant
+	makedepends = net-tools
+	makedepends = subversion
+	depends = java-environment
+	provides = abcl
+	conflicts = abcl
+	source = svn+http://abcl.org/svn/trunk/abcl/
+	source = abcl.sh
+	md5sums = SKIP
+	md5sums = d51ffd115b32f9a47f849fc7630ced4f
+
+pkgname = abcl-svn
+
