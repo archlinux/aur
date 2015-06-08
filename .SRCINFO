@@ -1,0 +1,16 @@
+pkgbase = newspost
+	pkgdesc = A usenet binary autoposter for unix
+	pkgver = 2.1.1
+	pkgrel = 3
+	url = http://newspost.unixcab.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://newspost.unixcab.org/download/newspost-2.1.1.tar.gz
+	source = getline.patch
+	sha1sums = 244f31c6e5aa8e41224310295e477ab4a8a17071
+	sha1sums = c64d67627b72fea3bd23d2c81f2dbfbbddbd1fb2
+
+pkgname = newspost
+

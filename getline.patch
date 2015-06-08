@@ -1,0 +1,97 @@
+diff -crB newspost-2.1.1.org/base/newspost.c newspost-2.1.1/base/newspost.c
+*** newspost-2.1.1.org/base/newspost.c	2003-04-23 17:33:23.000000000 +0200
+--- newspost-2.1.1/base/newspost.c	2009-12-29 20:18:19.000000000 +0100
+***************
+*** 342,348 ****
+  	file = fopen(filename, "r");
+  	if (file != NULL) {
+  		while (!feof(file)) {
+! 			line = getline(line, file);
+  			if(line == NULL){
+  				text_buffer = buff_add(text_buffer, "\r\n");
+  				continue;
+--- 342,348 ----
+  	file = fopen(filename, "r");
+  	if (file != NULL) {
+  		while (!feof(file)) {
+! 			line = get_line(line, file);
+  			if(line == NULL){
+  				text_buffer = buff_add(text_buffer, "\r\n");
+  				continue;
+diff -crB newspost-2.1.1.org/base/utils.c newspost-2.1.1/base/utils.c
+*** newspost-2.1.1.org/base/utils.c	2003-04-23 17:33:23.000000000 +0200
+--- newspost-2.1.1/base/utils.c	2009-12-29 20:18:34.000000000 +0100
+***************
+*** 43,49 ****
+  	return NULL;
+  }
+  
+! Buff * getline(Buff *buff, FILE *file){
+  	char c = fgetc(file);
+  	buff = buff_free(buff);
+  	while(TRUE){
+--- 43,49 ----
+  	return NULL;
+  }
+  
+! Buff * get_line(Buff *buff, FILE *file){
+  	char c = fgetc(file);
+  	buff = buff_free(buff);
+  	while(TRUE){
+diff -crB newspost-2.1.1.org/base/utils.h newspost-2.1.1/base/utils.h
+*** newspost-2.1.1.org/base/utils.h	2003-02-08 16:09:41.000000000 +0100
+--- newspost-2.1.1/base/utils.h	2009-12-29 20:18:45.000000000 +0100
+***************
+*** 26,32 ****
+  file_entry * file_entry_alloc();
+  file_entry * file_entry_free(file_entry *fe);
+  
+! Buff * getline(Buff *buff, FILE *file);
+  Buff *buff_add(Buff *buff, char *data, ... );
+  Buff * buff_free(Buff *buff);
+  Buff *buff_create(Buff *buff, char *data, ... );
+--- 26,32 ----
+  file_entry * file_entry_alloc();
+  file_entry * file_entry_free(file_entry *fe);
+  
+! Buff * get_line(Buff *buff, FILE *file);
+  Buff *buff_add(Buff *buff, char *data, ... );
+  Buff * buff_free(Buff *buff);
+  Buff *buff_create(Buff *buff, char *data, ... );
+diff -crB newspost-2.1.1.org/ui/options.c newspost-2.1.1/ui/options.c
+*** newspost-2.1.1.org/ui/options.c	2003-04-23 17:33:33.000000000 +0200
+--- newspost-2.1.1/ui/options.c	2009-12-29 20:19:06.000000000 +0100
+***************
+*** 332,338 ****
+  		file = fopen(filename->data, "r");
+  		if (file != NULL) {
+  			while (!feof(file)) {
+! 				line = getline(line, file);
+  				linenum++;
+  				if(line == NULL) continue;
+  
+--- 332,338 ----
+  		file = fopen(filename->data, "r");
+  		if (file != NULL) {
+  			while (!feof(file)) {
+! 				line = get_line(line, file);
+  				linenum++;
+  				if(line == NULL) continue;
+  
+***************
+*** 429,435 ****
+  				linenum = 0;
+  				while (linenum < 8) {
+  					linenum++;
+! 					line = getline(line, file);
+  					if(line == NULL) continue;
+  
+  					switch (linenum) {
+--- 429,435 ----
+  				linenum = 0;
+  				while (linenum < 8) {
+  					linenum++;
+! 					line = get_line(line, file);
+  					if(line == NULL) continue;
+  
+  					switch (linenum) {
