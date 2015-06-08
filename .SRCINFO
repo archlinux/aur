@@ -1,0 +1,15 @@
+pkgbase = editorconfig-vim
+	pkgdesc = EditorConfig plugin for Vim - editorconfig.org
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/editorconfig/editorconfig-vim
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = custom
+	depends = vim
+	source = https://github.com/editorconfig/editorconfig-vim/archive/v0.3.2.tar.gz
+	sha256sums = 841661603c94cb0e259734576b5eca3d21692ff5543a25d83526a16d3a65d4a3
+
+pkgname = editorconfig-vim
+
