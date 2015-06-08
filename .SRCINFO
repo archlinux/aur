@@ -1,0 +1,19 @@
+pkgbase = limbo
+	pkgdesc = LIMBO is a modern classic, putting players in control of a boy's journey through a tense and hostile world.
+	pkgver = 20140618
+	pkgrel = 1
+	url = http://playdead.com/limbo/
+	arch = i686
+	arch = x86_64
+	license = custom: "commercial"
+	makedepends = unzip
+	depends = sdl2
+	conflicts = limbo_wine
+	noextract = Limbo-Linux-2014-06-18.sh
+	source = limbo.desktop
+	source = hib://Limbo-Linux-2014-06-18.sh
+	sha256sums = be458f507ea5e730967c2dc6e3daec356da75d5b77b29c5d8184093fada02161
+	sha256sums = e7843c8aaf3d3225814dd98ae1dc39238d9b247f1915b98964a91d10f11f27d3
+
+pkgname = limbo
+
