@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Octopi Repo Editor
+Icon=octopi-repoeditor
+Exec=octopi-repoeditor
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;System;
+#NotShowIn=GNOME;XFCE;LXDE;KDE;
+StartupNotify=true
