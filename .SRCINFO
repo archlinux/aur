@@ -1,0 +1,20 @@
+pkgbase = jd-svn
+	pkgdesc = A 2channel browser written in C++ using gtkmm
+	pkgver = r4212
+	pkgrel = 1
+	url = http://jd4linux.sourceforge.jp/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = subversion
+	depends = gnutls
+	depends = libsm
+	depends = gtkmm
+	provides = jd
+	conflicts = jd
+	source = jd::svn+http://svn.sourceforge.jp/svnroot/jd4linux/jd/trunk
+	md5sums = SKIP
+	sha256sums = SKIP
+
+pkgname = jd-svn
+
