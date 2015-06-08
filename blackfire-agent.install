@@ -1,0 +1,24 @@
+post_install() {
+  if [[ -z $(getent group blackfire-agent) ]]; then
+    groupadd -g 487 blackfire-agent
+  fi
+  if [[ -z $(getent passwd blackfire-agent) ]]; then
+    useradd -c 'Blackfire Agent user' -u 487 -g blackfire-agent -d / -s /usr/bin/nologin blackfire-agent
+  fi
+  passwd -l blackfire-agent > /dev/null
+
+  echo "You need to configure your Blackfire credentials via: sudo -u blackfire-agent blackfire-agent -register"
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  if [[ -n $(getent passwd blackfire-agent) ]]; then
+    userdel blackfire-agent
+  fi
+  if [[ -n $(getent group blackfire-agent) ]]; then
+    groupdel blackfire-agent
+  fi
+}

@@ -1,0 +1,12 @@
+[Unit]
+Description=Blackfire Agent
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/blackfire-agent
+User=blackfire-agent
+Group=blackfire-agent
+RuntimeDirectory=blackfire
+
+[Install]
+WantedBy=multi-user.target
