@@ -1,18 +1,16 @@
 pkgbase = xfce-theme-simplix
 	pkgdesc = A very bright, simple but daily usable theme for Xfce.
 	pkgver = r3.888f015
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sixsixfive.deviantart.com/art/simpliX-346404452
 	arch = any
 	license = CCPL:cc-by-sa-4.0
 	makedepends = git
 	depends = gtk-engines
 	depends = gtk-engine-murrine
-	optdepends = slim-theme-simplix: SLiM theme
-	optdepends = kdm-theme-simplix: KDM theme
 	provides = xfce-theme-simplix=r3.888f015
+	conflicts = xfce-theme-simplix
 	source = git+https://github.com/sixsixfive/simpliX.git
-	sha384sums = SKIP
 	sha512sums = SKIP
 
 pkgname = xfce-theme-simplix
