@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-dctfilter-git
+	pkgdesc = Plugin for Vapoursynth: dctfilter (GIT version)
+	pkgver = r2.0.g9a4e93b
+	pkgrel = 1
+	url = http://forum.doom9.org/showthread.php?t=171039
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = vapoursynth
+	provides = vapoursynth-plugin-dctfilter
+	conflicts = vapoursynth-plugin-dctfilter
+	source = dctfilter::git+https://github.com/VFR-maniac/VapourSynth-DCTFilter.git
+	sha1sums = SKIP
+
+pkgname = vapoursynth-plugin-dctfilter-git
+
