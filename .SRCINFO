@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-theme-black
+	pkgdesc = Black GNOME Shell theme
+	pkgver = 20150428
+	pkgrel = 1
+	url = http://opendesktop.org/content/show.php?content=158356
+	arch = any
+	license = GPL3
+	depends = gnome-shell
+	optdepends = gnome-tweak-tool: A tool to customize advanced GNOME 3 options.
+	source = gnome-shell-theme-black-20150428.tar.lzma::https://copy.com/yf867ODCSJ4jsJfu/gnome-shell-theme-black-20150428.tar.lzma?download=1
+	sha256sums = 30c010215f531a727db532be254b8b8c8a783fe5a6ae7dbf2aceda13a792ecb3
+
+pkgname = gnome-shell-theme-black
+
