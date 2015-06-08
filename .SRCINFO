@@ -1,0 +1,13 @@
+pkgbase = nodejs-jade
+	pkgdesc = Jade template engine
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/visionmedia/jade
+	arch = any
+	depends = nodejs
+	noextract = jade-1.5.0.tgz
+	source = http://registry.npmjs.org/jade/-/jade-1.5.0.tgz
+	sha1sums = 74a93a5a290e11296c8b919b7a4d72301739b27e
+
+pkgname = nodejs-jade
+
