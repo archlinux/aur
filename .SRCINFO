@@ -21,7 +21,7 @@ pkgbase = ola-git
 	optdepends = openslp
 	provides = ola
 	conflicts = ola
-	source = ola-git::git+https://github.com/OpenLightingProject/ola.git
+	source = git+https://github.com/OpenLightingProject/ola.git
 	sha256sums = SKIP
 
 pkgname = ola-git
