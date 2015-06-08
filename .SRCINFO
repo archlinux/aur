@@ -1,0 +1,15 @@
+pkgbase = ruby-build-git
+	pkgdesc = Compile and install Ruby
+	pkgver = v20141225.r7.g4aeeac2
+	pkgrel = 1
+	url = http://github.com/sstephenson/ruby-build
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = ruby-build
+	conflicts = ruby-build
+	source = git://github.com/sstephenson/ruby-build.git
+	sha1sums = SKIP
+
+pkgname = ruby-build-git
+
