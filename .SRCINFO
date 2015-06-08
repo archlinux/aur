@@ -1,0 +1,15 @@
+pkgbase = eclipse-dltk-python
+	pkgdesc = Python IDE for Eclipse (Stable Stream)
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = http://www.eclipse.org/dltk/
+	arch = i686
+	arch = x86_64
+	license = EPL
+	depends = eclipse-dltk-core
+	depends = eclipse-antlr-runtime>=3.0.0
+	source = http://www.eclipse.org/downloads/download.php?r=1&file=/technology/dltk/downloads/drops/R3.0/S-3.0.1-201108261011/dltk-python-S-3.0.1-201108261011.zip
+	md5sums = 0a713a146c2af010ef6c4054145d4663
+
+pkgname = eclipse-dltk-python
+
