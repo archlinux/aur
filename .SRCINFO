@@ -1,0 +1,17 @@
+pkgbase = isic
+	pkgdesc = IP Stack Integrity Checker
+	pkgver = 0.07
+	pkgrel = 1
+	url = http://isic.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = libnet>=1.1.0
+	options = !buildflags
+	source = http://downloads.sourceforge.net/project/isic/isic/ISIC%20v0.07/isic-0.07.tgz
+	source = isic-0.07.patch
+	md5sums = 29f70c9bde9aa9128b8f7e66a315f9a4
+	md5sums = 85a7672c471222eef29195a470ce6b1f
+
+pkgname = isic
+
