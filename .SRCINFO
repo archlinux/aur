@@ -1,0 +1,16 @@
+pkgbase = ocaml-bisect
+	pkgdesc = Code coverage tool for OCaml
+	pkgver = 1.3
+	pkgrel = 1
+	url = http://bisect.x9c.fr
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = ocaml
+	depends = ocaml
+	depends = ocaml-findlib
+	source = http://bisect.x9c.fr/distrib/bisect-1.3.tar.gz
+	md5sums = 8481342a3d9f17d5502bc84c04c206e3
+
+pkgname = ocaml-bisect
+
