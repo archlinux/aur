@@ -1,0 +1,24 @@
+pkgbase = mythtv-indicator-bzr
+	pkgdesc = MythTV panel indicator
+	pkgver = r9
+	pkgrel = 2
+	url = http://www.mythtv.org/wiki/MythTV-indicator
+	install = mythtv-indicator-bzr.install
+	arch = any
+	license = GPL3
+	makedepends = bzr
+	depends = gtk3
+	depends = python2-gobject
+	depends = libappindicator-gtk3
+	depends = libnotify
+	depends = python2-lxml
+	depends = python2-simplejson
+	depends = python2-dateutil
+	depends = python2-pillow
+	provides = mythtv-indicator
+	conflicts = mythtv-indicator
+	source = mythtv-indicator-bzr::bzr+http://bazaar.launchpad.net/~r-d-vaughan/mythtv-indicator/trunk/
+	md5sums = SKIP
+
+pkgname = mythtv-indicator-bzr
+
