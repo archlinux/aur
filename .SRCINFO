@@ -1,0 +1,19 @@
+pkgbase = mkinitcpio-shredkeyfiles
+	pkgdesc = mkinitcpio hook to shred keyfiles during the boot
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/mkinitcpio-shredkeyfiles/
+	install = usage.install
+	arch = any
+	license = unknown
+	depends = mkinitcpio
+	backup = etc/encrypt2.conf
+	source = encrypt2.hook
+	source = encrypt2.install
+	source = encrypt2.conf
+	md5sums = ac1b3ad839f3461bd3bc967c58a804be
+	md5sums = 6c4f19ba9a331e5b40825f7857bb40cd
+	md5sums = 50030f303d861649cfdc9f2ce7d9bb75
+
+pkgname = mkinitcpio-shredkeyfiles
+

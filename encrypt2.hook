@@ -1,0 +1,20 @@
+run_hook ()
+{
+    source encrypt2.conf
+    echo "Waiting 10 seconds for device $cryptkey_device ..."
+    sleep 10
+    
+    mkdir encrypt2_device
+    mount $cryptkey_device encrypt2_device &> /dev/null
+
+    cat encrypt2_file.list | while read keyfile; do
+        dd  if=/dev/urandom of="encrypt2_device/$keyfile" \
+            bs=1024 count=2 &> /dev/null
+        dd  if=/dev/urandom of="encrypt2_device/$keyfile" \
+            bs=1024 count=2 &> /dev/null
+        dd  if=/dev/urandom of="encrypt2_device/$keyfile" \
+            bs=1024 count=2 &> /dev/null
+    done
+    
+    umount encrypt2_device &> /dev/null
+}

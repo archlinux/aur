@@ -1,0 +1,5 @@
+post_install() {
+	echo ""
+	echo "Don't forget to add the encrypt2 before encrypt in your /etc/mkinitcpio.conf and run mkinitcpio -p linux..."
+	echo ""
+}

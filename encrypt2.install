@@ -1,0 +1,22 @@
+build ()
+{
+    grep "cryptkey_device=" /etc/encrypt2.conf  > "$BUILDROOT/encrypt2.conf"
+
+    source "/etc/encrypt2.conf"
+
+    if [ -e "$BUILDROOT/encrypt2_file.list" ]; then
+       rm "$BUILDROOT/encrypt2_file.list"
+    fi 
+
+    for keyfile in ${keyfiles[@]}; do
+        echo $keyfile >> "$BUILDROOT/encrypt2_file.list"
+    done
+
+    add_runscript
+}
+help ()
+{
+cat<<HELPEOF
+  Shreds keyfiles on boot
+HELPEOF
+}
