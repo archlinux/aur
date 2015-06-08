@@ -1,0 +1,15 @@
+pkgbase = dcap
+	pkgdesc = Client Tools for dCache
+	pkgver = 2.47.9
+	pkgrel = 1
+	url = https://github.com/dCache/dcap
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = openssl
+	depends = krb5
+	source = dcap-2.47.9.tar.gz::https://github.com/dCache/dcap/archive/2.47.9.tar.gz
+	sha256sums = 2a36a497bdf798d58375f24c1633b6e6032b51243c19a6cda18533228d21c2c5
+
+pkgname = dcap
+
