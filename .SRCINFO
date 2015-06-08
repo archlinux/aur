@@ -1,0 +1,18 @@
+pkgbase = lua-posix
+	pkgdesc = POSIX library for Lua
+	pkgver = 33.2.1.21.g33a18d1
+	pkgrel = 1
+	url = https://github.com/luaposix/luaposix
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = help2man
+	makedepends = ldoc
+	depends = lua
+	options = !makeflags
+	source = lua-posix::git://github.com/luaposix/luaposix.git
+	md5sums = SKIP
+
+pkgname = lua-posix
+
