@@ -1,0 +1,16 @@
+pkgbase = hawaii-widget-styles-git
+	pkgdesc = Hawaii widget styles
+	pkgver = 20150330.b1e5148
+	pkgrel = 1
+	url = https://github.com/hawaii-desktop
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = qt5-quickcontrols
+	source = widget-styles::git://github.com/mauios/hawaii-widget-styles.git#branch=master
+	md5sums = SKIP
+
+pkgname = hawaii-widget-styles-git
+
