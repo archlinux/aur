@@ -1,0 +1,22 @@
+pkgbase = q7z
+	pkgdesc = An alternative 7-Zip GUI - replaced by the 'j7z' package
+	pkgver = 0.9.1
+	pkgrel = 2
+	url = http://Q7Z.Xavion.name
+	install = Q7Z.install
+	arch = any
+	license = LGPL3
+	depends = pyqt
+	depends = p7zip
+	depends = tar
+	optdepends = p7zip-gui: The GUI component of P7Zip
+	optdepends = xz-utils: Supports XZ archives
+	optdepends = bzip2: Supports BZip2 archives
+	optdepends = gzip: Supports GZip archives
+	conflicts = k7z
+	replaces = k7z
+	source = http://prdownloads.sourceforge.net/k7z/Q7Z-0.9.1.tar.bz2
+	sha1sums = d6571cd7fe5acdb7863d50dad6700feefc534276
+
+pkgname = q7z
+
