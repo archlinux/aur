@@ -1,0 +1,23 @@
+pkgbase = domoticz-svn
+	pkgdesc = Web based home automation
+	pkgver = r2362
+	pkgrel = 1
+	url = http://www.domoticz.com
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	makedepends = cmake
+	makedepends = boost
+	depends = openzwave
+	depends = libusb-compat
+	depends = curl
+	depends = sqlite
+	depends = boost-libs
+	source = domoticz::svn://svn.code.sf.net/p/domoticz/code/trunk
+	source = domoticz.service
+	sha256sums = SKIP
+	sha256sums = 48834ff12ca6a0a45536428a8125bd74cc4b79dc59fe99649782e4d915642dce
+
+pkgname = domoticz-svn
+

@@ -1,0 +1,9 @@
+[Unit]
+Description=Domoticz Daemon
+After=network-online.target
+
+[Service]
+ExecStart=/opt/domoticz/domoticz
+
+[Install]
+WantedBy=multi-user.target
