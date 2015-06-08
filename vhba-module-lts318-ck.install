@@ -1,0 +1,17 @@
+_updatemod() {
+  echo "  > Updating module dependencies..."
+  EXTRAMODULES='extramodules-3.18-lts318-ck'
+  depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
+}
+
+post_install() {
+  post_upgrade
+}
+
+post_upgrade() {
+  _updatemod
+}
+
+post_remove() {
+  _updatemod
+}
