@@ -1,0 +1,19 @@
+pkgbase = gtk
+	pkgdesc = A multi-platform toolkit (v1)
+	pkgver = 1.2.10
+	pkgrel = 15
+	url = http://www.gtk.org/
+	install = gtk.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = libxt
+	depends = libxi
+	depends = glib
+	source = ftp://ftp.gnome.org/pub/gnome/sources/gtk+/1.2/gtk+-1.2.10.tar.gz
+	source = aclocal-fixes.patch
+	sha1sums = a5adcb909257da01ae4d4761e1d41081d06e4d7c
+	sha1sums = b034e33efb85d27f3f3fb082c404e3b6ea79259f
+
+pkgname = gtk
+
