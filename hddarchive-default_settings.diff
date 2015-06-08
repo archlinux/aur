@@ -1,0 +1,40 @@
+diff -ruN hddarchive-0.0.1/vdr_move_to_hdd.sh hddarchive-0.0.1.edit/vdr_move_to_hdd.sh
+--- hddarchive-0.0.1/vdr_move_to_hdd.sh	2013-10-21 18:06:53.000000000 +0200
++++ hddarchive-0.0.1.edit/vdr_move_to_hdd.sh	2013-10-30 10:44:34.057256892 +0100
+@@ -1,11 +1,11 @@
+ #!/bin/bash
+-
+-ARCHIVEHDD=/media/archive-hdd
++(
++ARCHIVEHDD=/mnt/archive-hdd
+ 
+ HDDMOUNTED=0
+ 
+ VID_FULLPATH="`cd \"$VIDEO\" 2>/dev/null && pwd || echo \"$VIDEO\"`/"
+ 
+ SRC_FULLPATH="`cd \"$1\" 2>/dev/null && pwd || echo \"${1}\"`/"
+ 
+ VIDPATH="`cd \"$1\" && cd \"..\" 2>/dev/null && pwd || echo \"${1}\"`/"
+@@ -24,7 +24,6 @@
+     exit 1
+ fi
+ 
+-
+ # Test, if Archive-HDD can be mounted
+ if [ ! -f ${ARCHIVEHDD}/hdd.vdr ]; then
+     mount ${ARCHIVEHDD}
+@@ -37,7 +36,7 @@
+ 
+ # Test if there is enough disk space on Archive-HDD
+ SIZE_SRC="`du $SRC_FULLPATH | cut -f 1`"
+-SIZE_DEST="`df -Pk /media/archive-hdd | tail -n 1 | tr -s ' ' | cut -d' ' -f 4`"
++SIZE_DEST="`df -Pk $ARCHIVEHDD | tail -n 1 | tr -s ' ' | cut -d' ' -f 4`"
+ 
+ if [ $SIZE_DEST -lt $SIZE_SRC ]; then
+     svdrpsend mesg "Not enough space on Archive-HDD!"
+@@ -93,3 +92,5 @@
+ fi
+ 
+ svdrpsend mesg "Successfully moved Recording to Archive-HDD."
++) &
++

@@ -1,0 +1,11 @@
+post_install() {
+  echo 'Archive HDDs are expected at /mnt/archive-hdd'
+  echo 'Make sure that your archive HDDs are mountable by user vdr'
+  echo 'for example by adding something like this to your fstab'
+  echo ''
+  echo 'UUID=... /mnt/archive-hdd auto defaults,user,noauto 0 0'
+  echo ''
+  echo 'To move recordings with vdr add this to your /var/lib/vdr/reccmds.conf'
+  echo ''
+  echo 'Archive?: /usr/local/bin/vdr_move_to_hdd.sh'
+}
