@@ -1,0 +1,16 @@
+pkgbase = urbit-git
+	pkgdesc = An Operating Function
+	pkgver = 71085e0
+	pkgrel = 1
+	url = http://www.urbit.org
+	arch = i686
+	arch = x86_64
+	license = public_domain
+	depends = libsigsegv
+	depends = termcap
+	depends = openssl
+	source = urbit::git+https://github.com/urbit/urbit
+	sha1sums = SKIP
+
+pkgname = urbit-git
+
