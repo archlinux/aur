@@ -1,0 +1,27 @@
+pkgbase = kscreengenie-git
+	pkgdesc = Screenshot Capture Utility
+	pkgver = r40.fbe3172
+	pkgrel = 1
+	url = https://projects.kde.org/projects/playground/graphics/kscreengenie
+	install = kscreengenie-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = kdoctools
+	makedepends = python
+	depends = libkipi-frameworks-git
+	depends = kdeclarative
+	depends = libkscreen
+	depends = qt5-x11extras
+	depends = xcb-util-cursor
+	provides = kscreengenie
+	conflicts = kscreengenie
+	conflicts = ksnapshot
+	conflicts = kdegraphics-ksnapshot
+	source = git://anongit.kde.org/kscreengenie.git
+	sha256sums = SKIP
+
+pkgname = kscreengenie-git
+
