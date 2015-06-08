@@ -1,0 +1,21 @@
+diff -aur man2texi-0.01.orig/man2texi.sin man2texi-0.01.new/man2texi.sin
+--- man2texi-0.01.orig/man2texi.sin	2002-12-23 14:53:25.000000000 +0100
++++ man2texi-0.01.new/man2texi.sin	2009-10-22 02:22:08.000000000 +0200
+@@ -237,8 +237,7 @@
+ 			exit 1
+ 		else
+ 			test -f $texifile && $MV -f $texifile $texifile.org
+-			$AWK -v Filename="$infile" -f $SHRLIBDIR/man2texi.awk $infile |
+-				$SED -f $SHRLIBDIR/iso8859-1-to-texinfo.sed > $texifile
++			$AWK -v Filename="$infile" -f $SHRLIBDIR/man2texi.awk $infile 
+ 			if test "$DVI" = "yes"
+ 			then
+ 				test "$TRACE" = yes && echo $texifile " -> " $dvifile
+@@ -254,6 +253,5 @@
+ 		fi
+ 	done
+ else # not batch: output to stdout (and thus no -dvi or -info support!)
+-	$AWK -v Filename="$FILENAME" -f $SHRLIBDIR/man2texi.awk $FILES |
+-		$SED -f $SHRLIBDIR/iso8859-1-to-texinfo.sed
++	$AWK -v Filename="$FILENAME" -f $SHRLIBDIR/man2texi.awk $FILES 
+ fi
