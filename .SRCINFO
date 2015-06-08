@@ -1,0 +1,18 @@
+pkgbase = macaw-movies-git
+	pkgdesc = An open movie organizer (alpha version)
+	pkgver = v0.1.1
+	pkgrel = 1
+	url = https://macawmovies.wordpress.com
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-base
+	depends = sqlite
+	provides = macaw-movies
+	source = git+https://github.com/macaw-movies/macaw-movies.git#tag=v0.1.1
+	sha256sums = SKIP
+
+pkgname = macaw-movies-git
+
