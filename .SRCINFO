@@ -1,0 +1,20 @@
+pkgbase = perl-net-pcap-easy
+	pkgdesc = Net::Pcap is awesome, but it's difficult to bootstrap
+	pkgver = 1.4207
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Net-Pcap-Easy
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.6.1
+	depends = perl-file-slurp
+	depends = perl-net-netmask
+	depends = perl-net-pcap
+	depends = perl-netpacket
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JE/JETTERO/Net-Pcap-Easy-1.4207.tar.gz
+	md5sums = 4baf443c329c8246ad1f85f6d0de9a5d
+	sha512sums = 51a109272788f7942e749cd709bbe986c803829ae0423954c239b65c245e1c4c4dd774752b60d0a4f53762e4f0b6df3848060f886bd6202b7db546e1e9354ec0
+
+pkgname = perl-net-pcap-easy
+
