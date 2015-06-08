@@ -1,0 +1,33 @@
+diff -up podofo-0.9.2/tools/podofocolor/luaconverter.cpp.lua52 podofo-0.9.2/tools/podofocolor/luaconverter.cpp
+--- podofo-0.9.2/tools/podofocolor/luaconverter.cpp.lua52	2010-12-29 16:08:31.000000000 -0200
++++ podofo-0.9.2/tools/podofocolor/luaconverter.cpp	2013-06-22 15:48:26.151524350 -0300
+@@ -44,7 +44,7 @@ using namespace PoDoFo;
+ LuaMachina::LuaMachina()
+ {
+ 	/* Init the Lua interpreter */
+-	L = lua_open();
++	L = luaL_newstate();
+ 	if (!L)
+ 	{
+ 		throw std::runtime_error("Whoops! Failed to open lua!");
+@@ -117,7 +117,7 @@ PdfColor LuaConverter::GetColorFromRetur
+     size_t len;
+ 
+     luaL_checktype(m_machina.State(), 1, LUA_TTABLE);
+-    len = luaL_getn( m_machina.State(), -1 );
++    len = lua_rawlen( m_machina.State(), -1 );
+     // Lua 5.1 only
+     //len = lua_objlen( m_machina.State(), -1 );
+ 
+diff -up podofo-0.9.2/tools/podofoimpose/planreader_lua.cpp.lua52 podofo-0.9.2/tools/podofoimpose/planreader_lua.cpp
+--- podofo-0.9.2/tools/podofoimpose/planreader_lua.cpp.lua52	2011-06-18 08:52:58.000000000 -0300
++++ podofo-0.9.2/tools/podofoimpose/planreader_lua.cpp	2013-06-22 15:48:26.151524350 -0300
+@@ -23,7 +23,7 @@
+ LuaMachina::LuaMachina()
+ {
+ 	/* Init the Lua interpreter */
+-	L = lua_open();
++	L = luaL_newstate();
+ 	if (!L)
+ 	{
+ 		throw std::runtime_error("Whoops! Failed to open lua!");
