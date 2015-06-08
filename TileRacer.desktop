@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Tile Racer 0.702
+Comment=The ultimate stunt racing game
+Exec=/usr/share/tileracer/TileRacer.sh
+Icon=/usr/share/tileracer/TileRacer128.png
+Terminal=0
+Type=Application
+Categories=Application;Game;X-Red-Hat-Base;

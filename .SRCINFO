@@ -1,0 +1,24 @@
+pkgbase = tileracer
+	pkgdesc = 3D stunt racing game which features realistic car physics and an in game track editor
+	pkgver = 0.702
+	pkgrel = 3
+	url = http://tileracer.model-view.com
+	arch = i686
+	arch = x86_64
+	license = None
+	conflicts = physx
+	conflicts = lib32-physx
+	noextract = mirrordownload.php?file=TileRacer0.702.tar.gz
+	source = http://tileracer.model-view.com/mirrordownload.php?file=TileRacer0.702.tar.gz
+	source = TileRacer.desktop
+	md5sums = c9d1d9fcc835aaf07933b7608f03d542
+	md5sums = b81904a3a0a59df5ce5631a8f2f89fae
+	depends_i686 = libgl
+	depends_i686 = mesa
+	depends_i686 = libxmu
+	depends_x86_64 = lib32-libgl
+	depends_x86_64 = lib32-mesa
+	depends_x86_64 = lib32-libxmu
+
+pkgname = tileracer
+
