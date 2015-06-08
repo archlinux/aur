@@ -1,0 +1,19 @@
+pkgbase = capnproto-git
+	pkgdesc = Cap'n Proto serialization/RPC system
+	pkgver = 1337.1702050
+	pkgrel = 2
+	url = http://kentonv.github.io/capnproto/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = subversion
+	provides = capnproto
+	conflicts = capnproto
+	source = git+https://github.com/kentonv/capnproto.git
+	source = gtest::svn+http://googletest.googlecode.com/svn/tags/release-1.7.0
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = capnproto-git
+
