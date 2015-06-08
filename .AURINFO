@@ -1,0 +1,16 @@
+pkgbase = perl-mojolicious-plugin-mongodb
+	pkgdesc = Use MongoDB in Mojolicious
+	pkgver = 1.16
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Mojolicious-Plugin-Mongodb
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-mojolicious>=0
+	depends = perl-mongodb>=0
+	depends = perl-tie-ixhash>=0
+	source = http://search.cpan.org/CPAN/authors/id/M/MA/MADCAT/Mojolicious-Plugin-Mongodb-1.16.tar.gz
+	options = !emptydirs
+
+pkgname = perl-mojolicious-plugin-mongodb
+
