@@ -1,0 +1,25 @@
+pkgbase = choqok-git
+	pkgdesc = Microblogging client for KDE with support for Pump.io, GNU social and Twitter.com
+	pkgver = r1830.5f0ea6f
+	pkgrel = 1
+	url = http://choqok.gnufolks.org/
+	install = choqok-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = kdoctools
+	makedepends = python
+	depends = knotifyconfig
+	depends = kcmutils
+	depends = kemoticons
+	depends = qoauth-git
+	provides = choqok
+	conflicts = choqok
+	replaces = choqok-frameworks-git
+	source = git://anongit.kde.org/choqok.git
+	sha256sums = SKIP
+
+pkgname = choqok-git
+
