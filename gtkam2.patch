@@ -1,0 +1,11 @@
+diff -aurpN gtkam-0.1.18-old/configure.ac gtkam-0.1.18/configure.ac
+--- gtkam-0.1.18-old/configure.ac       2011-12-29 00:04:37.298593338 +0100
++++ gtkam-0.1.18/configure.ac   2011-12-29 00:05:11.678595916 +0100
+@@ -86,9 +86,7 @@ AC_CHECK_FUNC(gp_port_info_get_name,
+ )
+ LIBS="$save_LIBS"
+ 
+-PKG_CHECK_MODULES([GTK], [gtk+-2.0])
+-AC_SUBST([GTK_CFLAGS])
+-AC_SUBST([GTK_LIBS])
++GP_CHECK_LIBRARY([GTK], [gtk+-2.0])

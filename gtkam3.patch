@@ -1,0 +1,75 @@
+diff -aurpN gtkam-0.1.18/configure.ac gtkam-0.1.18.new/configure.ac
+--- gtkam-0.1.18/configure.ac	2012-05-25 18:16:12.132473203 +0200
++++ gtkam-0.1.18.new/configure.ac	2012-05-25 18:15:26.042469751 +0200
+@@ -86,7 +86,7 @@ AC_CHECK_FUNC(gp_port_info_get_name,
+ )
+ LIBS="$save_LIBS"
+ 
+-GP_CHECK_LIBRARY([GTK], [gtk+-2.0])
++GP_CHECK_LIBRARY([GTK2], [gtk+-2.0])
+ 
+ 
+ dnl ---------------------------------------------------------------------------
+diff -aurpN gtkam-0.1.18/src/Makefile.am gtkam-0.1.18.new/src/Makefile.am
+--- gtkam-0.1.18/src/Makefile.am	2012-05-25 18:16:12.129139870 +0200
++++ gtkam-0.1.18.new/src/Makefile.am	2012-05-25 18:15:26.042469751 +0200
+@@ -6,7 +6,7 @@ MY_CPPFLAGS =				\
+ 	$(LIBEXIF_GTK_CFLAGS)		\
+ 	$(LIBGPHOTO2_CFLAGS)		\
+ 	$(GNOME_CFLAGS) 		\
+-	$(GTK_CFLAGS)			\
++	$(GTK2_CFLAGS)			\
+ 	$(BONOBO_CFLAGS)		\
+ 	$(GTKAM_GIMP_CFLAGS)
+ 
+@@ -46,14 +46,14 @@ gtkam_SOURCES =					\
+ 	gtkam-exif.c gtkam-exif.h 		\
+ 	gtkam-main.c gtkam-main.h 		\
+ 	i18n.h main.c
+-gtkam_LDADD = \
+-	libgtkam.a	\
+-	$(LIBEXIF_LIBS) \
+-	$(LIBEXIF_GTK_LIBS) \
++gtkam_LDADD = 			\
++	libgtkam.a		\
++	$(LIBEXIF_LIBS) 	\
++	$(LIBEXIF_GTK_LIBS) 	\
+ 	$(LIBGPHOTO2_LIBS)	\
+-	$(GTK_LIBS) 	\
+-	$(BONOBO_LIBS)	\
+-	$(GNOME_LIBS)	\
++	$(GTK2_LIBS) 		\
++	$(BONOBO_LIBS)		\
++	$(GNOME_LIBS)		\
+ 	$(INTLLIBS)
+ 
+ if HAVE_GIMP
+@@ -69,6 +69,7 @@ gtkam_gimp_LDADD = \
+ 	$(LIBEXIF_LIBS)		\
+ 	$(LIBEXIF_GTK_LIBS) 	\
+ 	$(LIBGPHOTO2_LIBS)	\
++	$(GTK2_LIBS) 		\
+ 	$(BONOBO_LIBS)		\
+ 	$(GNOME_LIBS)		\
+ 	$(INTLLIBS)
+diff -aurpN gtkam-0.1.18/test/Makefile.am gtkam-0.1.18.new/test/Makefile.am
+--- gtkam-0.1.18/test/Makefile.am	2009-10-10 11:10:25.000000000 +0200
++++ gtkam-0.1.18.new/test/Makefile.am	2012-05-25 18:15:25.559136406 +0200
+@@ -4,7 +4,7 @@ MY_CPPFLAGS =				\
+ 	$(LIBEXIF_GTK_CFLAGS)		\
+ 	$(LIBGPHOTO2_CFLAGS)		\
+ 	$(GNOME_CFLAGS) 		\
+-	$(GTK_CFLAGS)			\
++	$(GTK2_CFLAGS)			\
+ 	$(BONOBO_CFLAGS)		\
+ 	$(GTKAM_GIMP_CFLAGS)
+ 
+@@ -13,7 +13,7 @@ MY_LIBS = \
+ 	$(LIBEXIF_LIBS)			\
+ 	$(LIBEXIF_GTK_LIBS)		\
+ 	$(LIBGPHOTO2_LIBS)	\
+-	$(GTK_LIBS)			\
++	$(GTK2_LIBS)			\
+ 	$(BONOBO_LIBS)			\
+ 	$(INTLLIBS)
+ 

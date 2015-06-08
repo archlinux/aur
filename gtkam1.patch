@@ -1,0 +1,11 @@
+--- a/src/Makefile.am	2009-10-10 11:10:26.000000000 +0200
++++ b/src/Makefile.am	2011-12-22 09:50:00.793860213 +0100
+@@ -51,7 +51,7 @@ gtkam_LDADD = \
+ 	$(LIBEXIF_LIBS) \
+ 	$(LIBEXIF_GTK_LIBS) \
+ 	$(LIBGPHOTO2_LIBS)	\
+-	$(GTKAM_LIBS) 	\
++	$(GTK_LIBS) 	\
+ 	$(BONOBO_LIBS)	\
+ 	$(GNOME_LIBS)	\
+ 	$(INTLLIBS)

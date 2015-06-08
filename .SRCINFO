@@ -1,0 +1,27 @@
+pkgbase = gtkam
+	pkgdesc = A graphical GTK front-end to gphoto2
+	pkgver = 0.2.0
+	pkgrel = 2
+	url = http://gphoto.sourceforge.net/proj/gtkam/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gimp
+	makedepends = intltool
+	depends = libgphoto2>=2.5.0
+	depends = libexif-gtk
+	depends = gdk-pixbuf2
+	depends = libpng
+	source = http://downloads.sourceforge.net/sourceforge/gphoto/gtkam-0.2.0.tar.gz
+	source = gtkam1.patch
+	source = gtkam2.patch
+	source = gtkam3.patch
+	source = gtkam4.patch
+	md5sums = cbec9eb6ac36b9bedaa5762392ee54bc
+	md5sums = eef28ce7fceb27f92c08d5c59a75331d
+	md5sums = 7c28b263ec83e70b2a96c3b110483727
+	md5sums = d703b0fabdd4d7d81a4fcd294d937c34
+	md5sums = 1bd50bdaa806ff74435781745b55962d
+
+pkgname = gtkam
+

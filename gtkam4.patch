@@ -1,0 +1,11 @@
+diff -aurpN gtkam-0.2.0-a/configure.ac gtkam-0.2.0-b/configure.ac
+--- gtkam-0.2.0-a/configure.ac	2012-07-10 09:50:52.000000000 +0200
++++ gtkam-0.2.0-b/configure.ac	2013-01-20 14:48:23.657405520 +0100
+@@ -32,7 +32,6 @@ dnl ------------------------------------
+ dnl Some programs we need
+ dnl ---------------------------------------------------------------------------
+ AC_PROG_CC
+-AM_PROG_CC_STDC
+ AC_HEADER_STDC
+ AM_PROG_LIBTOOL
+ AC_PROG_INSTALL
