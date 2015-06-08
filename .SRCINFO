@@ -1,0 +1,28 @@
+pkgbase = firewalld-git
+	pkgdesc = A firewall daemon with D-BUS interface providing a dynamic firewall
+	pkgver = 0.3.12.1.r8.3580db3
+	pkgrel = 1
+	url = http://fedorahosted.org/firewalld
+	install = firewalld.install
+	arch = any
+	license = GPL2
+	makedepends = docbook-xsl
+	makedepends = git
+	makedepends = intltool
+	depends = ebtables
+	depends = gtk3
+	depends = iptables
+	depends = libnotify
+	depends = networkmanager
+	depends = python-slip
+	provides = firewalld
+	conflicts = firewalld
+	backup = etc/conf.d/firewalld
+	backup = etc/firewalld/firewalld.conf
+	source = git+http://git.fedorahosted.org/git/firewalld.git
+	source = firewalld-arch.patch
+	sha256sums = SKIP
+	sha256sums = 91dbd5c580d3603e77c905880ca99ebddf398cf72f86ad37d0134ff7aa119ced
+
+pkgname = firewalld-git
+

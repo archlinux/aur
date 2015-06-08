@@ -1,0 +1,156 @@
+diff -rupN firewalld.orig/config/firewalld.service.in firewalld/config/firewalld.service.in
+--- firewalld.orig/config/firewalld.service.in	2014-02-27 09:22:50.519837109 +0100
++++ firewalld/config/firewalld.service.in	2014-02-27 09:26:47.452013636 +0100
+@@ -6,7 +6,7 @@ Before=NetworkManager.service
+ Conflicts=iptables.service ip6tables.service ebtables.service
+ 
+ [Service]
+-EnvironmentFile=-/etc/sysconfig/firewalld
++EnvironmentFile=-/etc/conf.d/firewalld
+ ExecStart=@sbindir@/firewalld --nofork --nopid $FIREWALLD_ARGS
+ ExecReload=/bin/kill -HUP $MAINPID
+ # supress to log debug and error output also to /var/log/messages
+diff -rupN firewalld.orig/config/Makefile.am firewalld/config/Makefile.am
+--- firewalld.orig/config/Makefile.am	2014-02-27 09:22:50.519837109 +0100
++++ firewalld/config/Makefile.am	2014-02-27 09:25:25.875010521 +0100
+@@ -143,12 +143,12 @@ firewalld.service: firewalld.service.in
+ 	$(edit) $< >$@
+ 
+ install-sysconfig:
+-	$(MKDIR_P) $(DESTDIR)$(sysconfdir)/sysconfig
+-	$(INSTALL_DATA) $(srcdir)/firewalld.sysconfig $(DESTDIR)$(sysconfdir)/sysconfig/firewalld
++	$(MKDIR_P) $(DESTDIR)$(sysconfdir)/conf.d
++	$(INSTALL_DATA) $(srcdir)/firewalld.sysconfig $(DESTDIR)$(sysconfdir)/conf.d/firewalld
+ 
+ uninstall-sysconfig:
+-	rm -f $(DESTDIR)$(sysconfdir)/sysconfig/firewalld
+-	rmdir $(DESTDIR)$(sysconfdir)/sysconfig || :
++	rm -f $(DESTDIR)$(sysconfdir)/conf.d/firewalld
++	rmdir $(DESTDIR)$(sysconfdir)/conf.d || :
+ 
+ install-init: install-sysconfig
+ 	$(MKDIR_P) $(DESTDIR)$(sysconfdir)/rc.d/init.d
+diff -rupN firewalld.orig/firewalld.spec firewalld/firewalld.spec
+--- firewalld.orig/firewalld.spec	2014-02-27 09:22:50.596501411 +0100
++++ firewalld/firewalld.spec	2014-02-27 09:32:37.082641586 +0100
+@@ -128,7 +128,7 @@ fi
+ %attr(0750,root,root) %dir %{_sysconfdir}/firewalld/services
+ %attr(0750,root,root) %dir %{_sysconfdir}/firewalld/zones
+ %defattr(0644,root,root)
+-%config(noreplace) %{_sysconfdir}/sysconfig/firewalld
++%config(noreplace) %{_sysconfdir}/conf.d/firewalld
+ #%attr(0755,root,root) %{_initrddir}/firewalld
+ %{_unitdir}/firewalld.service
+ %config(noreplace) %{_sysconfdir}/dbus-1/system.d/FirewallD.conf
+diff -rupN firewalld.orig/src/firewall/core/ebtables.py firewalld/src/firewall/core/ebtables.py
+--- firewalld.orig/src/firewall/core/ebtables.py	2014-02-27 09:22:50.616500794 +0100
++++ firewalld/src/firewall/core/ebtables.py	2014-02-27 09:30:27.740690840 +0100
+@@ -37,7 +37,7 @@ class ebtables:
+     ipv = "ipv4"
+ 
+     def __init__(self):
+-        self._command = "/sbin/ebtables"
++        self._command = "/usr/bin/ebtables"
+ 
+     def __run(self, args):
+         # convert to string list
+diff -rupN firewalld.orig/src/firewall/core/ipXtables.py firewalld/src/firewall/core/ipXtables.py
+--- firewalld.orig/src/firewall/core/ipXtables.py	2014-02-27 09:22:50.643166638 +0100
++++ firewalld/src/firewall/core/ipXtables.py	2014-02-27 09:31:03.532723907 +0100
+@@ -25,8 +25,8 @@ from firewall.core.prog import runProg
+ from firewall.core.logger import log
+ 
+ COMMAND = {
+-    "ipv4": "/sbin/iptables",
+-    "ipv6": "/sbin/ip6tables",
++    "ipv4": "/usr/bin/iptables",
++    "ipv6": "/usr/bin/ip6tables",
+ }
+ 
+ PROC_IPxTABLE_NAMES = {
+diff -rupN firewalld.orig/src/firewall-offline-cmd firewalld/src/firewall-offline-cmd
+--- firewalld.orig/src/firewall-offline-cmd	2014-02-27 09:22:50.616500794 +0100
++++ firewalld/src/firewall-offline-cmd	2014-02-27 09:28:41.451288466 +0100
+@@ -44,7 +44,7 @@ def __usage():
+     print ("""
+ Usage: firewall-offline-cmd [OPTIONS...]
+ 
+-If no options are given, configuration from '/etc/sysconfig/system-config-firewall' will be migrated.
++If no options are given, configuration from '/etc/conf.d/system-config-firewall' will be migrated.
+ 
+ General Options
+   -h, --help           Prints a short help text and exists
+@@ -70,7 +70,7 @@ Lokkit Compatibility Options
+   --custom-rules=[<type>:][<table>:]<filename>
+                         Ignored option. Was used to add custom rules to the
+                         firewall (Example:
+-                        ipv4:filter:/etc/sysconfig/ipv4_filter_addon)
++                        ipv4:filter:/etc/conf.d/ipv4_filter_addon)
+   --forward-port=if=<interface>:port=<port>:proto=<protocol>[:toport=<destination port>][:toaddr=<destination address>]
+                         Forward the port with protocol for the interface to
+                         either another local destination port (no destination
+@@ -360,7 +360,7 @@ def __print_query_result(value):
+         __print_and_exit("no", 1)
+ 
+ # system-config-firewall: fw_sysconfig
+-CONFIG = '/etc/sysconfig/system-config-firewall'
++CONFIG = '/etc/conf.d/system-config-firewall'
+ def read_sysconfig_args():
+     filename = None
+     if os.path.exists(CONFIG) and os.path.isfile(CONFIG):
+@@ -523,7 +523,7 @@ parser_direct.add_argument("--get-all-ru
+ if len(sys.argv) > 1:
+     a = parser.parse_args()
+ else:
+-    # migrate configuration from /etc/sysconfig/system-config-firewall
++    # migrate configuration from /etc/conf.d/system-config-firewall
+     args = read_sysconfig_args()
+     if args:
+         a = parser.parse_args(args)
+diff -rupN firewalld.orig/src/tests/firewall-offline-cmd_test.sh firewalld/src/tests/firewall-offline-cmd_test.sh
+--- firewalld.orig/src/tests/firewall-offline-cmd_test.sh	2014-02-27 09:22:50.676498942 +0100
++++ firewalld/src/tests/firewall-offline-cmd_test.sh	2014-02-27 09:33:49.063368985 +0100
+@@ -162,7 +162,7 @@ assert_good     "--query-forward-port ${
+ failures=0
+ 
+ while true; do
+-    read -p "This test overwrites your /etc/firewalld/zones/* and /etc/sysconfig/system-config-firewall. Do you want to continue ?" yn
++    read -p "This test overwrites your /etc/firewalld/zones/* and /etc/conf.d/system-config-firewall. Do you want to continue ?" yn
+     case $yn in
+         [Yy]* ) break;;
+         [Nn]* ) exit;;
+@@ -187,14 +187,14 @@ fw_port2="port=333:proto=udp:toport=444"
+ lokkit_opts="--enabled --addmodule=abc --addmodule=efg --removemodule=xyz
+  --trust=${trusted_iface1} --trust=${trusted_iface2}
+  --masq=tun+ --masq=tap+ --port=7:tcp --port=666:udp
+- --custom-rules=ipv4:mangle:/etc/sysconfig/ebtables-config
++ --custom-rules=ipv4:mangle:/etc/conf.d/ebtables-config
+  --service=${service1} --service=${service2} --remove-service=${service3}
+  --block-icmp=${icmp1} --block-icmp=${icmp2}
+  --forward-port=if=ippp+:${fw_port1}
+  --forward-port=if=ippp+:${fw_port2}"
+ test_lokkit_opts
+ 
+-cat << EOF > /etc/sysconfig/system-config-firewall
++cat << EOF > /etc/conf.d/system-config-firewall
+ --enabled
+ --addmodule=abc
+ --addmodule=efg
+@@ -205,7 +205,7 @@ cat << EOF > /etc/sysconfig/system-confi
+ --masq=tap+
+ --port=7:tcp
+ --port=666:udp
+---custom-rules=ipv4:mangle:/etc/sysconfig/ebtables-config
++--custom-rules=ipv4:mangle:/etc/conf.d/ebtables-config
+ --service=${service1}
+ --service=${service2}
+ --remove-service=${service3}
+@@ -215,7 +215,7 @@ cat << EOF > /etc/sysconfig/system-confi
+ --forward-port=if=ippp+:${fw_port2}
+ EOF
+ 
+-# running firewall-offline-cmd without options should import /etc/sysconfig/system-config-firewall
++# running firewall-offline-cmd without options should import /etc/conf.d/system-config-firewall
+ lokkit_opts=""
+ test_lokkit_opts
+ 
