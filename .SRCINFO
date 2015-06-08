@@ -1,0 +1,17 @@
+pkgbase = kde-thumbnailer-qml
+	pkgdesc = QML(Qt Markup Language File) thumbnailer plugin for KDE 4.x.
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://kde-apps.org/content/show.php/KDE+QML+Thumbnailer?content=148662
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = automoc4
+	makedepends = cmake
+	makedepends = kdelibs
+	depends = kdelibs
+	source = kde-thumbnailer-qml-1.0.tar.bz2::http://kde-apps.org/CONTENT/content-files/148662-kde-thumbnailer-qml-1.0.tar.bz2
+	sha256sums = 4a16152be74479817f878f5d22fd8dce69a62a2694dbb729a2141e2df26ab78b
+
+pkgname = kde-thumbnailer-qml
+
