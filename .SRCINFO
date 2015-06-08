@@ -1,0 +1,18 @@
+pkgbase = python-salib
+	pkgdesc = Sensitivity Analysis Library in Python (Numpy). Contains Sobol, Morris, and FAST methods.
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/jdherman/SALib
+	arch = any
+	license = LGPL
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://github.com/jdherman/SALib/archive/v0.4.tar.gz
+	md5sums = 6f93928c45a43c2cffa0512fda407100
+
+pkgname = python-salib
+	depends = python-scikit-learn
+
+pkgname = python2-salib
+	depends = python2-scikit-learn
+
