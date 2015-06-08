@@ -1,0 +1,25 @@
+available() {
+        which "$1" >/dev/null 2>&1
+}
+
+updateiconcache() {
+        touch --no-create /usr/share/icons/hicolor
+
+        if available gtk-update-icon-cache
+        then
+                gtk-update-icon-cache -tq /usr/share/icons/hicolor
+        fi
+}
+
+post_install() {
+  updateiconcache
+}
+
+post_upgrade() {
+  updateiconcache
+}
+
+pre_remove() {
+  updateiconcache
+}
+

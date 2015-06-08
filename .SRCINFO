@@ -1,0 +1,25 @@
+pkgbase = tvbrowser
+	pkgdesc = Java-based TV guide which is easily extensible using plugins
+	pkgver = 3.4.1.0
+	pkgrel = 3
+	url = http://www.tvbrowser.org
+	install = tvbrowser.install
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = giflib
+	depends = hicolor-icon-theme
+	depends = java-runtime
+	source = http://downloads.sourceforge.net/project/tvbrowser/TV-Browser%20Releases%20%28Java%206%20and%20higher%29/3.4.1.0/tvbrowser_3.4.1.0_bin.tar.gz
+	source = http://www.tvbrowser.org/images/tvbrowser/tvbrowser_logo.svg
+	source = tvbrowser.sh
+	source = tvbrowser.desktop
+	source = tvbrowser.install
+	sha256sums = 4b5e8c87774470688cadc2f8568777237e231de7cc5cd8bf43b42f0af7e40992
+	sha256sums = b8f8c8bade17ad3667e6cebb837288430458c9ce0eee6e7b09c7d37c1454fece
+	sha256sums = 9b7f35f6f30a2048ef70740929d327d34ac412dcf4c8850620370dafab6c1ca5
+	sha256sums = 61fe7278dcfb3a8b4557af36890cd68bc2e804b1e9bd1b6187e581c6d05e5693
+	sha256sums = 2fee8410377967df66bae9118d2160ea5ed5d6d116e772c8500a81b91b2ec5a1
+
+pkgname = tvbrowser
+
