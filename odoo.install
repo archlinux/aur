@@ -1,0 +1,28 @@
+pre_install(){
+  if [ ! `grep odoo /etc/group` ]; then
+    groupadd odoo &>/dev/null;
+  fi
+  id odoo &>/dev/null || useradd -r -m -g odoo -d /var/lib/odoo  odoo
+}
+
+post_install() {
+  systemctl --system daemon-reload
+  echo "-- Make sure PostgreSQL is correctly installed (see wiki), start it,"
+  echo "-- create user with database creation rights for odoo in PostgreSQL"
+  echo "-- e.g: # su - postgres -c \"createuser -dRSP <myodoouser>\""
+  echo "-- then edit '/etc/openerp/openerp-server.conf' accordingly."
+  echo "-- Starting odoo will automatically start PostgreSQL as well."
+}
+
+post_upgrade() {
+  post_install
+  systemctl --system daemon-reload
+}
+
+post_remove() {
+  userdel odoo &> /dev/null
+  groupdel odoo &> /dev/null
+  systemctl --system daemon-reload
+}
+
+# vim:set ts=2 sw=2 et:
