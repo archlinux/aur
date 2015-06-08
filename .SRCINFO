@@ -1,0 +1,27 @@
+pkgbase = vdr-dbus2vdr
+	pkgdesc = Expose some methods via DBus to control the vdr
+	pkgver = 23
+	pkgrel = 2
+	url = https://github.com/flensrocker/vdr-plugin-dbus2vdr
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	makedepends = png++
+	depends = dbus
+	depends = gcc-libs
+	depends = glib2
+	depends = libpng
+	depends = vdr-api=2.2.0
+	backup = etc/dbus-1/system.d/de.tvdr.vdr.conf
+	backup = etc/vdr/conf.avail/50-dbus2vdr.conf
+	backup = var/lib/vdr/plugins/dbus2vdr/network.conf
+	source = https://github.com/flensrocker/vdr-plugin-dbus2vdr/archive/v23.tar.gz
+	source = 50-dbus2vdr.conf
+	md5sums = 818e18b98fff2b2a937e2368226529b9
+	md5sums = 52f40de6d5a5ca72528f5d65f573ccd2
+
+pkgname = vdr-dbus2vdr
+
