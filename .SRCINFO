@@ -1,0 +1,30 @@
+pkgbase = xtensa-unknown-elf-binutils
+	pkgdesc = A set of programs to assemble and manipulate binary and object files
+	pkgver = 2.25
+	pkgrel = 5
+	url = http://www.gnu.org/software/binutils/
+	install = binutils.install
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	arch = mips64el
+	groups = cross-devel
+	license = GPL
+	checkdepends = dejagnu
+	checkdepends = bc
+	makedepends = git
+	depends = glibc>=2.20
+	depends = zlib
+	options = staticlibs
+	options = !distcc
+	options = !ccache
+	source = git://sourceware.org/git/binutils-gdb.git#commit=69352378
+	source = binutils-e9c1bdad.patch
+	source = binutils-xtensa.patch::https://raw.githubusercontent.com/qca/open-ath9k-htc-firmware/1.3.2/local/patches/binutils.patch
+	md5sums = SKIP
+	md5sums = eb3aceaab8ed26e06d505f82beb30f8f
+	md5sums = 7077126d96e9a755a0eaddb5505efe68
+
+pkgname = xtensa-unknown-elf-binutils
+
