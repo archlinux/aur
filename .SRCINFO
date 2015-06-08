@@ -1,0 +1,18 @@
+pkgbase = scrm
+	pkgdesc = A Coalescent Simulator for Genome-Scale Biological Sequences
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://scrm.github.io
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL3
+	checkdepends = cppunit
+	makedepends = gcc>=4.8.1
+	depends = gcc-libs
+	source = https://github.com/scrm/scrm/releases/download/v1.6.0/scrm-src.tar.gz
+	md5sums = 6dbb8ead1d7d0374a4c5c439d2538a23
+	sha256sums = f7ab5cea3c722ba2a25b53526447c4f3b7968bd675afe4bdbed692abf8cd7075
+
+pkgname = scrm
+
