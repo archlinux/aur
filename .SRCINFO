@@ -1,0 +1,35 @@
+pkgbase = medit-hg
+	pkgdesc = A GTK2 text editor
+	pkgver = 4830.162e414c908b
+	pkgrel = 1
+	url = http://medit.bitbucket.org
+	install = medit.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = perl-xml-parser
+	makedepends = intltool
+	makedepends = gcc-objc
+	makedepends = mercurial
+	makedepends = txt2tags
+	makedepends = libxslt
+	depends = pygtk
+	depends = libxml2
+	depends = pcre
+	depends = libsm
+	depends = python2
+	depends = gtk2
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	optdepends = ctags
+	optdepends = vte: terminal emulator
+	provides = medit
+	conflicts = medit
+	options = !emptydirs
+	source = hg+https://medit@bitbucket.org/medit/medit
+	md5sums = SKIP
+
+pkgname = medit-hg
+
