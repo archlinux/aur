@@ -1,0 +1,18 @@
+pkgbase = python2-boto-git
+	pkgdesc = A Python package that provides interfaces to Amazon Web Services, includes everything from the boto git
+	pkgver = 2.31.1
+	pkgrel = 1
+	url = https://github.com/boto/boto
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python2-nose
+	makedepends = python2-pip
+	provides = python2-boto
+	conflicts = python2-boto
+	options = !emptydirs
+	source = git://github.com/boto/boto.git
+	md5sums = SKIP
+
+pkgname = python2-boto-git
+
