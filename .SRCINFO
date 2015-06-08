@@ -1,0 +1,21 @@
+pkgbase = purpose-git
+	pkgdesc = Framework for providing abstractions to get the developer's purposes fulfilled
+	pkgver = r970.6563124
+	pkgrel = 1
+	url = https://projects.kde.org/projects/playground/libs/purpose
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	makedepends = python
+	depends = kio-git
+	depends = kdeclarative-git
+	depends = kaccounts-integration-git
+	provides = purpose
+	conflicts = purpose-git
+	source = git://anongit.kde.org/purpose.git
+	sha256sums = SKIP
+
+pkgname = purpose-git
+
