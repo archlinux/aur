@@ -1,0 +1,15 @@
+pkgbase = rpm2cpio
+	pkgdesc = Convert .rpm files for extraction with /usr/bin/cpio
+	pkgver = 20040702
+	pkgrel = 2
+	url = http://www.paldo.org/paldo/sources
+	arch = any
+	license = custom
+	depends = bzip2
+	depends = gzip
+	depends = perl
+	source = http://www.paldo.org/paldo/sources/rpm2cpio/rpm2cpio-20040702
+	md5sums = 07f64fa3dae6eb8b1b578d01473a5c07
+
+pkgname = rpm2cpio
+
