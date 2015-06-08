@@ -1,0 +1,19 @@
+pkgbase = vim-clang-complete-git
+	pkgdesc = Plugin which uses clang for accurately completing C and C++ code. Git version.
+	pkgver = 20130623
+	pkgrel = 1
+	url = https://github.com/Rip-Rip/clang_complete
+	arch = any
+	license = custom
+	makedepends = git
+	depends = vim
+	depends = clang
+	depends = python2
+	conflicts = vim-clang-complete
+	source = git://github.com/Rip-Rip/clang_complete
+	source = set_default_library_path.patch
+	md5sums = SKIP
+	md5sums = c217f1489facdd8148bb5c3453380404
+
+pkgname = vim-clang-complete-git
+

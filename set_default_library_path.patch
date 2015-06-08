@@ -1,0 +1,11 @@
+--- clang_complete/plugin/clang_complete.vim	2013-01-29 00:23:47.391951233 +0100
++++ clang_complete/plugin/clang_complete.vim_new	2013-01-29 00:28:35.408624138 +0100
+@@ -78,7 +78,7 @@ function! s:ClangCompleteInit()
+   endif
+ 
+   if !exists('g:clang_library_path')
+-    let g:clang_library_path = ''
++    let g:clang_library_path = '/usr/lib'
+   endif
+ 
+   if !exists('g:clang_complete_macros')
