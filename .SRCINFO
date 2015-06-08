@@ -1,0 +1,12 @@
+pkgbase = btparse
+	pkgdesc = C library for parsing and processing BibTeX data files
+	pkgver = 0.34
+	pkgrel = 2
+	url = http://www.gerg.ca/software/btOOL/
+	arch = any
+	license = GPL2
+	source = http://www.gerg.ca/software/btOOL/btparse-0.34.tar.gz
+	md5sums = 87d09ce6331c57cc2da30b5c83f545e0
+
+pkgname = btparse
+
