@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=digger
+Comment=the digger game, cloned and remastered with additional features
+Exec=digger
+Encoding=UTF-8
+Icon=/usr/share/icons/digger.xpm
+Categories=Game;ArcadeGame;
+Terminal=false
+StartupNotify=false

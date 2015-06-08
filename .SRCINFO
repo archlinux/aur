@@ -1,0 +1,19 @@
+pkgbase = digger
+	pkgdesc = the digger game, cloned and remastered with additional features
+	pkgver = 20020314
+	pkgrel = 6
+	url = http://www.digger.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl
+	depends = zlib
+	source = http://www.digger.org/digger-20020314.tar.gz
+	source = digger.xpm
+	source = digger.desktop
+	md5sums = a16e90a49ed8ea90099b254d3ef5edfa
+	md5sums = 3c4f1b57aca1cc6974626b1f263f2f08
+	md5sums = 9c0913e55398bc236ac86c1e9ddc0740
+
+pkgname = digger
+
