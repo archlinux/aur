@@ -1,0 +1,15 @@
+pkgbase = patchrom
+	pkgdesc = Patches jump tables into ROM dumps
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/KnightOS/patchrom
+	arch = i386
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = asciidoc
+	source = https://github.com/KnightOS/patchrom/archive/1.1.2.tar.gz
+	sha1sums = 266747516f98df8b7ec2edcebd7bf5aa35a4df50
+
+pkgname = patchrom
+
