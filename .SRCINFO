@@ -1,0 +1,14 @@
+pkgbase = eclipse-htmleditor
+	pkgdesc = Eclipse plugin for HTML/JSP/XML Editing
+	pkgver = 2.1.0
+	pkgrel = 2
+	url = http://amateras.sourceforge.jp
+	arch = any
+	license = APACHE
+	depends = eclipse
+	noextract = tk.eclipse.plugin.htmleditor_2.1.0.jar
+	source = http://globalbase.dl.sourceforge.jp/amateras/51002/tk.eclipse.plugin.htmleditor_2.1.0.jar
+	md5sums = 062a351ec9d5f95e6e5e331b244becf3
+
+pkgname = eclipse-htmleditor
+
