@@ -1,0 +1,40 @@
+post_install() {
+	DKMS=`which dkms 2>/dev/null`
+
+	echo ">>> DKMS: Module add, build, and install"
+
+	$DKMS add -m pl2501 -v 20121021
+	$DKMS build -m pl2501 -v 20121021
+	$DKMS install -m pl2501 -v 20121021
+	modprobe pl2501
+
+	/sbin/depmod -a
+
+	cat <<EOF
+EOF
+}
+
+pre_upgrade() {
+	pre_remove
+}
+
+pre_remove() {
+	DKMS=`which dkms 2>/dev/null`
+	echo ">>> DKMS: Module uninstall"
+
+	line=`$DKMS status -m pl2501`
+	if echo "$line" | grep -E 'added|built|installed'; then
+		version=`echo "$line" | sed "s/pl2501,\([^,]*\)[,:].*/\1/;t;d"`
+		$DKMS remove -m pl2501 -v $version --all
+	fi
+
+	/sbin/depmod -a
+
+}
+
+post_upgrade() {
+	cd lib/modules
+	for i in extramodules-*; do depmod $(cat "$i/version"); done
+	cd ../..
+}
+
