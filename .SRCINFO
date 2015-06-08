@@ -1,0 +1,23 @@
+pkgbase = dontwaitup-indicator-bzr
+	pkgdesc = Run a command on window event
+	pkgver = r27
+	pkgrel = 1
+	url = https://launchpad.net/dontwaitup
+	install = dontwaitup-indicator-bzr.install
+	arch = any
+	license = GPL3
+	makedepends = bzr
+	makedepends = python2-distutils-extra
+	depends = gtk3
+	depends = libappindicator-gtk3
+	depends = libnotify
+	depends = libwnck3
+	depends = python2-gobject
+	depends = yelp
+	provides = dontwaitup-indicator
+	conflicts = dontwaitup-indicator
+	source = dontwaitup-indicator-bzr::bzr+https://code.launchpad.net/~alessandro-blarco/dontwaitup/trunk
+	md5sums = SKIP
+
+pkgname = dontwaitup-indicator-bzr
+
