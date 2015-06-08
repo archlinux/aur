@@ -1,0 +1,17 @@
+pkgbase = blt
+	pkgdesc = Adds new commands and widgets to the Tcl interpreter.
+	pkgver = 2.4z
+	pkgrel = 11
+	url = http://blt.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = tk
+	source = git+https://github.com/thillux/blt.git
+	source = COPYING
+	md5sums = SKIP
+	md5sums = 49ab6c4bd72e045108c92d839368df04
+
+pkgname = blt
+
