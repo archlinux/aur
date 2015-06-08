@@ -1,0 +1,15 @@
+pkgbase = lib32-libmms
+	pkgdesc = MMS stream protocol library (32 bit)
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = http://sourceforge.net/projects/libmms/
+	arch = x86_64
+	license = LGPL
+	makedepends = gcc-multilib
+	depends = lib32-glibc
+	depends = libmms
+	source = http://download.sourceforge.net/libmms/libmms-0.6.4.tar.gz
+	md5sums = d6b665b335a6360e000976e770da7691
+
+pkgname = lib32-libmms
+
