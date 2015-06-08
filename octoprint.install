@@ -1,0 +1,22 @@
+post_install() {
+	local HOMEDIR=/var/lib/octoprint
+	getent group octoprint > /dev/null || groupadd octoprint
+	getent passwd octoprint > /dev/null || useradd -d $HOMEDIR -g octoprint -s /usr/bin/nologin octoprint
+	usermod -a -G octoprint,network,uucp,tty octoprint
+	mkdir -p $HOMEDIR
+	chmod 700 $HOMEDIR
+	chown -R octoprint:octoprint $HOMEDIR
+
+	echo "To start octoprint, run: systemctl start octoprint"
+	echo "To enable octoprint at boot, run: systemctl enable octoprint"
+}
+
+post_upgrade() {
+ 	post_install $1
+}
+
+post_remove() {
+	echo "To stop octoprint, run: systemctl stop octoprint"
+	echo "To disable octoprint at boot, run: systemctl disable octoprint"
+ 	echo "You may want to remove octoprint user and group"
+}

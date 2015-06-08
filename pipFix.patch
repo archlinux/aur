@@ -1,0 +1,11 @@
+--- src/octoprint/plugins/pluginmanager/__init__.py	2015-06-01 14:59:02.157864655 +0000
++++ src/octoprint/plugins/pluginmanager/__init__.py	2015-06-01 14:58:45.348420799 +0000
+@@ -339,7 +339,7 @@
+ 			python_command = sys.executable
+ 			binary_dir = os.path.dirname(python_command)
+ 
+-			pip_command = os.path.join(binary_dir, "pip")
++			pip_command = os.path.join(binary_dir, "pip2")
+ 			if sys.platform == "win32":
+ 				# Windows is a bit special... first of all the file will be called pip.exe, not just pip, and secondly
+ 				# for a non-virtualenv install (e.g. global install) the pip binary will not be located in the

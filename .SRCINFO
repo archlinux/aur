@@ -1,0 +1,45 @@
+pkgbase = octoprint-devel-git
+	pkgdesc = OctoPrint provides a responsive web interface for controlling a 3D printer (RepRap, Ultimaker, ...)
+	pkgver = 1.1.2.r793.g106b21f
+	pkgrel = 1
+	url = https://github.com/foosel/OctoPrint
+	install = octoprint.install
+	arch = i686
+	arch = x86_64
+	arch = armv6
+	arch = armv6h
+	license = GPL
+	makedepends = git
+	depends = python2-flask
+	depends = python2-werkzeug
+	depends = python2-tornado
+	depends = python2-sockjs-tornado-git
+	depends = python2-yaml
+	depends = python2-flask-login
+	depends = python2-flask-principal
+	depends = python2-flask-babel
+	depends = python2-pyserial
+	depends = python2-netaddr
+	depends = python2-watchdog
+	depends = python2-sarge
+	depends = python2-netifaces
+	depends = python2-pylru
+	depends = python2-rsa
+	depends = python2-pkginfo
+	depends = python2-requests
+	depends = python2-semantic-version
+	optdepends = ffmpeg: timelapse support
+	optdepends = mjpg-streamer: stream images from webcam
+	optdepends = v4l-mjpg-stream: stream images from a Video4Linux capable camera
+	optdepends = python2-pip: automatic plugin installation
+	provides = octoprint
+	conflicts = octoprint
+	source = octoprint-devel-git::git+https://github.com/foosel/OctoPrint.git#branch=devel
+	source = octoprint.service
+	source = pipFix.patch
+	md5sums = SKIP
+	md5sums = ec5e51f876bb5fb223801bf28850908a
+	md5sums = af3a1ada9348312803ef38593b77d7ef
+
+pkgname = octoprint-devel-git
+
