@@ -1,0 +1,16 @@
+pkgbase = python2-pacal
+	pkgdesc = ProbAbilistic CALculator
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://pacal.sourceforge.net/
+	arch = any
+	license = GPL
+	makedepends = cython
+	depends = python2-scipy
+	depends = python2-sympy
+	depends = python2-matplotlib
+	source = http://download.sourceforge.net/sourceforge/pacal/PaCal-1.5.tar.gz
+	md5sums = 8c8dbfa2db6907bb5f3328e68ffa123c
+
+pkgname = python2-pacal
+
