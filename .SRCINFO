@@ -1,0 +1,17 @@
+pkgbase = bindechexascii
+	pkgdesc = simple ASCII,binary,decimal and hex converter
+	pkgver = 0.0+20140524.git7dcd86
+	pkgrel = 1
+	url = https://packages.debian.org/sid/bindechexascii
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	source = http://ftp.us.debian.org/debian/pool/main/b/bindechexascii/bindechexascii_0.0+20140524.git7dcd86.orig.tar.bz2
+	source = fix_makefile.patch::https://raw.githubusercontent.com/marciosouza20/bindechexascii/master/patches/fix_makefile
+	source = fix_source_code.patch::https://raw.githubusercontent.com/marciosouza20/bindechexascii/master/patches/fix_source_code
+	md5sums = a2fa24acd96d39c264e99bab86dbcb31
+	md5sums = 8a33200ffff9b38f13a247ca6e9ecb84
+	md5sums = 7ccba3a1a8dccb65676a1cb8c791ee81
+
+pkgname = bindechexascii
+
