@@ -1,0 +1,17 @@
+pkgbase = aranym
+	pkgdesc = Atari Running on Any Machine
+	pkgver = 1.0.2
+	pkgrel = 2
+	url = http://aranym.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gcc-libs
+	depends = bash
+	depends = sdl_image
+	depends = mpfr
+	source = http://downloads.sourceforge.net/sourceforge/aranym/aranym_1.0.2.orig.tar.gz
+	md5sums = 4eeaf781e41785d83b966df44dead249
+
+pkgname = aranym
+
