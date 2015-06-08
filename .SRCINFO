@@ -1,0 +1,23 @@
+pkgbase = kakawana-svn
+	pkgdesc = RSS reader specialized for comics
+	pkgver = r212
+	pkgrel = 1
+	url = http://kakawana.googlecode.com/
+	arch = any
+	license = GPL2
+	makedepends = subversion
+	depends = pyqt
+	depends = python2-sqlalchemy-0.7.9
+	depends = python2-beautifulsoup4
+	depends = python2-elixir
+	depends = python2-httplib2
+	depends = python2-keyring
+	depends = python2-lxml
+	depends = python2-oauth2
+	provides = kakawana
+	conflicts = kakawana
+	source = kakawana-svn::svn+http://kakawana.googlecode.com/svn/trunk/
+	md5sums = SKIP
+
+pkgname = kakawana-svn
+
