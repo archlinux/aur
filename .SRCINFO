@@ -1,0 +1,16 @@
+pkgbase = emacs-mew
+	pkgdesc = Messaging in the Emacs World
+	pkgver = 6.6
+	pkgrel = 1
+	url = http://www.mew.org/
+	install = emacs-mew.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = emacs
+	optdepends = ruby
+	source = http://mew.org/Release/mew-6.6.tar.gz
+	md5sums = 86fc96f5c68508072c2ba8d49adea978
+
+pkgname = emacs-mew
+
