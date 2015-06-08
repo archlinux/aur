@@ -1,0 +1,17 @@
+pkgbase = ptex
+	pkgdesc = Per-Face Texture Mapping for Production Rendering.
+	pkgver = 2.0.62
+	pkgrel = 1
+	url = http://ptex.us/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom
+	makedepends = python2
+	makedepends = doxygen
+	depends = zlib
+	source = https://github.com/wdas/ptex/tarball/v2.0.62
+	md5sums = 4d264b88fcc8c95fa923c33ea3d2bad0
+
+pkgname = ptex
+
