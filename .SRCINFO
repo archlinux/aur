@@ -1,0 +1,15 @@
+pkgbase = emacs-screencast-mode-git
+	pkgdesc = screencasting from within emacs
+	pkgver = 7.9f342c9
+	pkgrel = 1
+	url = https://github.com/esbena/screencast-mode
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = emacs
+	depends = recordmydesktop
+	source = git+https://github.com/esbena/screencast-mode
+	md5sums = SKIP
+
+pkgname = emacs-screencast-mode-git
+
