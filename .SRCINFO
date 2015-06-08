@@ -1,0 +1,21 @@
+pkgbase = khtml-git
+	pkgdesc = KHtml
+	pkgver = r157.cd43a79
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/khtml
+	arch = i686
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	depends = kparts-git
+	depends = kjs-git
+	depends = giflib
+	provides = khtml
+	conflicts = khtml
+	source = git://anongit.kde.org/khtml.git
+	md5sums = SKIP
+
+pkgname = khtml-git
+
