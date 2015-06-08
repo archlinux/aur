@@ -1,0 +1,12 @@
+pkgbase = java-testng-doc
+	pkgdesc = Documentation for TestNG
+	pkgver = 6.9.4
+	pkgrel = 2
+	url = http://testng.org/doc/index.html
+	arch = any
+	license = APACHE
+	source = https://github.com/cbeust/testng/archive/testng-6.9.4.zip
+	md5sums = 0f9f67d68e9786fd2d6c6c871ffe6241
+
+pkgname = java-testng-doc
+
