@@ -1,0 +1,122 @@
+--- a/linux/drivers/media/pci/cx23885/cx23885-cards.c
++++ b/linux/drivers/media/pci/cx23885/cx23885-cards.c
+@@ -706,6 +706,11 @@ struct cx23885_board cx23885_boards[] =
+ 		.portb		= CX23885_MPEG_DVB,
+ 		.portc		= CX23885_MPEG_DVB,
+ 	},
++	[CX23885_BOARD_DVBSKY_C2800E_CI] = {
++		.ci_type	= 3,
++		.name		= "DVBSKY C2800E DVB-C CI",
++		.portb		= CX23885_MPEG_DVB,
++	},
+ };
+ const unsigned int cx23885_bcount = ARRAY_SIZE(cx23885_boards);
+ 
+@@ -989,7 +994,13 @@ struct cx23885_subid cx23885_subids[] =
+ 		.subvendor = 0x4254,
+ 		.subdevice = 0x0982,
+ 		.card      = CX23885_BOARD_DVBSKY_T982,
++	}, {
++		.subvendor = 0x4254,
++		.subdevice = 0x2800,
++		.card      = CX23885_BOARD_DVBSKY_C2800E_CI,
+ 	},
++
++
+ };
+ const unsigned int cx23885_idcount = ARRAY_SIZE(cx23885_subids);
+ 
+@@ -1595,6 +1606,7 @@ void cx23885_gpio_setup(struct cx23885_d
+ 		break;
+ 	case CX23885_BOARD_DVBSKY_T980C:
+ 	case CX23885_BOARD_DVBSKY_S950C:
++	case CX23885_BOARD_DVBSKY_C2800E_CI:
+ 	case CX23885_BOARD_TT_CT2_4500_CI:
+ 		/*
+ 		 * GPIO-0 INTA from CiMax, input
+@@ -1719,6 +1731,7 @@ int cx23885_ir_init(struct cx23885_dev *
+ 	case CX23885_BOARD_DVBSKY_S950:
+ 	case CX23885_BOARD_DVBSKY_S952:
+ 	case CX23885_BOARD_DVBSKY_T982:
++	case CX23885_BOARD_DVBSKY_C2800E_CI:
+ 		if (!enable_885_ir)
+ 			break;
+ 		dev->sd_ir = cx23885_find_hw(dev, CX23885_HW_AV_CORE);
+@@ -1772,6 +1785,7 @@ void cx23885_ir_fini(struct cx23885_dev
+ 	case CX23885_BOARD_DVBSKY_S950:
+ 	case CX23885_BOARD_DVBSKY_S952:
+ 	case CX23885_BOARD_DVBSKY_T982:
++	case CX23885_BOARD_DVBSKY_C2800E_CI:
+ 		cx23885_irq_remove(dev, PCI_MSK_AV_CORE);
+ 		/* sd_ir is a duplicate pointer to the AV Core, just clear it */
+ 		dev->sd_ir = NULL;
+@@ -1826,6 +1840,7 @@ void cx23885_ir_pci_int_enable(struct cx
+ 	case CX23885_BOARD_DVBSKY_S950:
+ 	case CX23885_BOARD_DVBSKY_S952:
+ 	case CX23885_BOARD_DVBSKY_T982:
++	case CX23885_BOARD_DVBSKY_C2800E_CI:
+ 		if (dev->sd_ir)
+ 			cx23885_irq_add_enable(dev, PCI_MSK_AV_CORE);
+ 		break;
+@@ -1933,6 +1948,7 @@ void cx23885_card_setup(struct cx23885_d
+ 	case CX23885_BOARD_DVBSKY_S950C:
+ 	case CX23885_BOARD_TT_CT2_4500_CI:
+ 	case CX23885_BOARD_DVBSKY_S950:
++	case CX23885_BOARD_DVBSKY_C2800E_CI:
+ 		ts1->gen_ctrl_val  = 0x5; /* Parallel */
+ 		ts1->ts_clk_en_val = 0x1; /* Enable TS_CLK */
+ 		ts1->src_sel_val   = CX23885_SRC_SEL_PARALLEL_MPEG_VIDEO;
+@@ -2066,6 +2082,7 @@ void cx23885_card_setup(struct cx23885_d
+ 	case CX23885_BOARD_DVBSKY_S950:
+ 	case CX23885_BOARD_DVBSKY_S952:
+ 	case CX23885_BOARD_DVBSKY_T982:
++	case CX23885_BOARD_DVBSKY_C2800E_CI:
+ 		dev->sd_cx25840 = v4l2_i2c_new_subdev(&dev->v4l2_dev,
+ 				&dev->i2c_bus[2].i2c_adap,
+ 				"cx25840", 0x88 >> 1, NULL);
+--- a/linux/drivers/media/pci/cx23885/cx23885-input.c
++++ b/linux/drivers/media/pci/cx23885/cx23885-input.c
+@@ -94,6 +94,7 @@ void cx23885_input_rx_work_handler(struc
+ 	case CX23885_BOARD_DVBSKY_S950:
+ 	case CX23885_BOARD_DVBSKY_S952:
+ 	case CX23885_BOARD_DVBSKY_T982:
++	case CX23885_BOARD_DVBSKY_C2800E_CI:
+ 		/*
+ 		 * The only boards we handle right now.  However other boards
+ 		 * using the CX2388x integrated IR controller should be similar
+@@ -153,6 +154,7 @@ static int cx23885_input_ir_start(struct
+ 	case CX23885_BOARD_DVBSKY_S950:
+ 	case CX23885_BOARD_DVBSKY_S952:
+ 	case CX23885_BOARD_DVBSKY_T982:
++	case CX23885_BOARD_DVBSKY_C2800E_CI:
+ 		/*
+ 		 * The IR controller on this board only returns pulse widths.
+ 		 * Any other mode setting will fail to set up the device.
+@@ -325,6 +327,7 @@ int cx23885_input_init(struct cx23885_de
+ 	case CX23885_BOARD_DVBSKY_S950:
+ 	case CX23885_BOARD_DVBSKY_S952:
+ 	case CX23885_BOARD_DVBSKY_T982:
++	case CX23885_BOARD_DVBSKY_C2800E_CI:
+ 		/* Integrated CX23885 IR controller */
+ 		driver_type = RC_DRIVER_IR_RAW;
+ 		allowed_protos = RC_BIT_ALL;
+--- a/linux/drivers/media/dvb-frontends/dvbsky_m88dc2800.c
++++ b/linux/drivers/media/dvb-frontends/dvbsky_m88dc2800.c
+@@ -2062,7 +2062,7 @@ static void m88dc2800_release(struct dvb
+ 
+ static struct dvb_frontend_ops m88dc2800_ops;
+ 
+-struct dvb_frontend *m88dc2800_attach(const struct dvbsky_m88dc2800_config
++struct dvb_frontend *dvbsky_m88dc2800_attach(const struct dvbsky_m88dc2800_config
+ 				      *config, struct i2c_adapter *i2c)
+ {
+ 	struct m88dc2800_state *state = NULL;
+@@ -2093,7 +2093,7 @@ struct dvb_frontend *m88dc2800_attach(co
+ 	return NULL;
+ }
+ 
+-EXPORT_SYMBOL(m88dc2800_attach);
++EXPORT_SYMBOL(dvbsky_m88dc2800_attach);
+ 
+ static struct dvb_frontend_ops m88dc2800_ops = {
+ 	.delsys = {SYS_DVBC_ANNEX_A, SYS_DVBC_ANNEX_C},
