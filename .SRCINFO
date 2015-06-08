@@ -1,0 +1,27 @@
+pkgbase = vdr-filebrowser
+	pkgdesc = filebrowser with custom commands for vdr
+	pkgver = 0.2.1
+	pkgrel = 16
+	url = http://opensource.holgerbrunn.net/vdr/filebrowser/
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL3
+	depends = gcc-libs
+	depends = vdr-api=2.2.0
+	conflicts = vdr-plugin-filebrowser
+	replaces = vdr-plugin-filebrowser
+	backup = var/lib/vdr/plugins/filebrowser/commands.conf
+	backup = var/lib/vdr/plugins/filebrowser/order.conf
+	backup = var/lib/vdr/plugins/filebrowser/othercommands.conf
+	backup = var/lib/vdr/plugins/filebrowser/sources.conf
+	backup = etc/vdr/conf.avail/50-filebrowser.conf
+	source = http://opensource.holgerbrunn.net/vdr/filebrowser/vdr-filebrowser-0.2.1.tgz
+	source = filebrowser-makefile-1.7.36.tar.gz::http://www.vdr-portal.de/index.php?page=Attachment&attachmentID=32857
+	md5sums = a1813fec39604b62c38c3ab44fe4aa5f
+	md5sums = d6bd0a727bb17e01a029391ec93e3630
+
+pkgname = vdr-filebrowser
+
