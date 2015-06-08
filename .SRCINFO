@@ -1,0 +1,32 @@
+pkgbase = perl-anyevent-subprocess
+	pkgdesc = flexible, OO, asynchronous process spawning and management
+	pkgver = 1.102912
+	pkgrel = 1
+	url = http://search.cpan.org/dist/AnyEvent-Subprocess
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-exception
+	makedepends = perl-test-use-ok
+	depends = perl-anyevent
+	depends = perl-ev>=4.0
+	depends = perl-event-join>=0.05
+	depends = perl-io-tty
+	depends = perl-json>=2
+	depends = perl-moose>=1.15
+	depends = perl-moosex-clone
+	depends = perl-moosex-role-parameterized
+	depends = perl-moosex-strictconstructor
+	depends = perl-moosex-types
+	depends = perl-moosex-types-signal
+	depends = perl-namespace-autoclean
+	depends = perl-namespace-clean
+	depends = perl-sub-exporter
+	depends = perl-try-tiny
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JR/JROCKWAY/AnyEvent-Subprocess-1.102912.tar.gz
+	md5sums = 3e3f95874d8fcce0a50f585682485a58
+	sha512sums = b4d72960ff5aebc5f4f0c96791e5204e87eed0ef8ac4b0f0e48a3c0397f3de053899864a6ba23741aede1187cc6bdb99433b8e55721fff4a327fee83c28459e6
+
+pkgname = perl-anyevent-subprocess
+
