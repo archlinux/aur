@@ -1,0 +1,21 @@
+pkgbase = ecl-unicode
+	pkgdesc = Embeddable Common Lisp (with unicode support)
+	pkgver = 13.5.1
+	pkgrel = 1
+	url = http://sourceforge.net/projects/ecls/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = texinfo
+	depends = bash
+	depends = gmp
+	provides = common-lisp
+	provides = ecl
+	provides = cl-asdf
+	conflicts = ecl
+	options = !makeflags
+	source = http://downloads.sourceforge.net/project/ecls/ecls/13.5/ecl-13.5.1.tgz
+	sha256sums = f91c57ce065fe9748bc8104e191e4b2dcfe854d634315fe7800dd0a613472ca2
+
+pkgname = ecl-unicode
+
