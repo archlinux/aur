@@ -1,0 +1,18 @@
+pkgbase = handlebars
+	pkgdesc = Handlebars.js is an extension to the Mustache templating language created by Chris Wanstrath. Handlebars.js and Mustache are both logicless templating languages that keep the view and the code separated like we all know they should be.
+	pkgver = 1.0.0
+	pkgrel = 8
+	url = http://handlebarsjs.com
+	arch = any
+	license = MIT
+	depends = nodejs
+	optdepends = nodejs-optimist
+	source = https://raw.github.com/wycats/handlebars.js/1.0.0/dist/handlebars.js
+	source = https://raw.github.com/wycats/handlebars.js/1.0.0/bin/handlebars
+	source = https://raw.github.com/wycats/handlebars.js/1.0.0/LICENSE
+	md5sums = 6f95155fd6469590d96c9651ee156795
+	md5sums = 30978ded6d8d63531dd6fa7bd99e0c03
+	md5sums = a2163f3c5de1e75a2210655d3448d598
+
+pkgname = handlebars
+
