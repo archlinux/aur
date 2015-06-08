@@ -1,0 +1,15 @@
+pkgbase = patchwork-git
+	pkgdesc = Web-based patch tracking system
+	pkgver = 9cab078
+	pkgrel = 1
+	url = http://jk.ozlabs.org/projects/patchwork/
+	arch = x86
+	arch = x86_64
+	license = GPL
+	depends = python-django
+	depends = django-registration
+	source = git://ozlabs.org/home/jk/git/patchwork
+	md5sums = SKIP
+
+pkgname = patchwork-git
+
