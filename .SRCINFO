@@ -1,0 +1,29 @@
+pkgbase = bmdc-bzr
+	pkgdesc = DC + + client based on the source code FreeDC + + with Ignore Users.
+	pkgver = 324
+	pkgrel = 1
+	url = http://launchpad.net/bmdc++
+	install = bmdc-bzr.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	makedepends = bzr
+	makedepends = scons
+	makedepends = gcc
+	depends = bzip2
+	depends = gtk3>=3.6
+	depends = libnotify
+	depends = openssl
+	depends = geoip
+	depends = libtar
+	depends = libcanberra
+	depends = gettext
+	provides = bmdc
+	conflicts = linuxdcpp
+	conflicts = linuxdcpp-bzr
+	conflicts = linuxdcpp-bzr-i18n
+	conflicts = freedcpp
+
+pkgname = bmdc-bzr
+
