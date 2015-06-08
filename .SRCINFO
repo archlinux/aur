@@ -1,0 +1,23 @@
+pkgbase = libkexiv2-git
+	pkgdesc = A library to manipulate pictures metadata
+	pkgver = r641.48a2e4c
+	pkgrel = 1
+	url = http://www.kde.org
+	arch = i686
+	arch = x86_64
+	groups = digikam-git
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = git
+	makedepends = automoc4
+	makedepends = cmake
+	depends = kdelibs
+	depends = exiv2
+	provides = libkexiv2
+	conflicts = libkexiv2
+	source = libkexiv2::git+git://anongit.kde.org/libkexiv2
+	md5sums = SKIP
+
+pkgname = libkexiv2-git
+
