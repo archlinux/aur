@@ -1,0 +1,16 @@
+pkgbase = lake-git
+	pkgdesc = Lua-based Build Tool
+	pkgver = 1.4.1.r2.g065ac45
+	pkgrel = 1
+	url = https://github.com/stevedonovan/Lake
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = lua-filesystem
+	provides = lake
+	conflicts = lake
+	source = git://github.com/stevedonovan/Lake.git
+	md5sums = SKIP
+
+pkgname = lake-git
+
