@@ -1,0 +1,16 @@
+pkgbase = gtk-engine-nodoka
+	pkgdesc = Default gtk engine provided by Fedora8
+	pkgver = 0.7.5
+	pkgrel = 2
+	url = https://fedorahosted.org/nodoka/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	depends = gtk2>2.18
+	options = !libtool
+	source = https://fedorahosted.org/releases/n/o/nodoka/gtk-nodoka-engine-0.7.5.tar.gz
+	md5sums = 22227adf29231ba2b87202ac3522e70f
+
+pkgname = gtk-engine-nodoka
+
