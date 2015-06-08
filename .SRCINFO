@@ -1,0 +1,14 @@
+pkgbase = python-envoy
+	pkgdesc = Simple API for running external processes.
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/kennethreitz/envoy
+	arch = any
+	license = MIT
+	makedepends = python
+	depends = python
+	source = https://pypi.python.org/packages/source/e/envoy/envoy-0.0.3.tar.gz
+	md5sums = 548cc52576b6d73fa886439e3100d576
+
+pkgname = python-envoy
+
