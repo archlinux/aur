@@ -1,0 +1,26 @@
+pkgbase = josm-latest
+	pkgdesc = Nightly build of an editor for OpenStreetMap written in Java.
+	pkgver = 8433
+	pkgrel = 1
+	url = http://josm.openstreetmap.de/
+	arch = any
+	license = GPL
+	makedepends = unzip
+	depends = java-runtime
+	provides = josm
+	conflicts = josm
+	noextract = josm-latest.jar
+	backup = etc/conf.d/josm
+	source = http://josm.openstreetmap.de/josm-latest.jar
+	source = josm.1.man::http://josm.openstreetmap.de/browser/josm/trunk/linux/latest/usr/share/man/man1/josm-latest.1?format=raw
+	source = josm.desktop
+	source = josm.sh
+	source = josm.conf.d
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = 0068111faa29d1026e7808ba320e8a3c
+	md5sums = 97fe42c35e8a90fef9621de2ce027052
+	md5sums = a0c7d3add20a2ed0f673fb9cfacab776
+
+pkgname = josm-latest
+
