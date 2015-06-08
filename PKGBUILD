@@ -1,4 +1,4 @@
-# Maintainer: Stephan Friedrichs <deduktionstheorem@gmail.com>
+# Maintainer: Stephan Friedrichs <deduktionstheorem at gmail dot com>
 
 pkgname='simple-svg'
 pkgver='1.0.0'
