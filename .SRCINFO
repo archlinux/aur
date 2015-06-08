@@ -1,0 +1,20 @@
+pkgbase = haskell-lifted-base
+	pkgdesc = lifted-base exports IO operations from the base library lifted to any instance of MonadBase or MonadBaseControl.
+	pkgver = 0.2.3.6
+	pkgrel = 2
+	url = http://hackage.haskell.org/package/lifted-base
+	install = haskell-lifted-base.install
+	arch = i686
+	arch = x86_64
+	license = BSD3
+	depends = ghc
+	depends = haskell-base-unicode-symbols
+	depends = haskell-monad-control
+	depends = haskell-transformers-base
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/lifted-base/0.2.3.6/lifted-base-0.2.3.6.tar.gz
+	sha256sums = 57c5837d83f569bb72136ca89256e50e1ac168ee935804a8e7763e9d8322e1fb
+
+pkgname = haskell-lifted-base
+
