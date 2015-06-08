@@ -1,0 +1,11 @@
+--- src/pxz-4.999.9beta/Makefile	2010-04-11 01:54:44.841991802 -0700
++++ src/pxz-4.999.9beta/Makefile.new	2010-04-11 01:55:06.482050429 -0700
+@@ -15,7 +15,7 @@
+ all: $(OBJECTS) $(NAME)
+ 
+ $(NAME): $(SOURCES) $(OBJECTS)
+-	$(CC) $(WARNINGS) $(OBJECTS) $(CFLAGS) $(LDFLAGS) $(NAME).c -o $(NAME)
++	$(CC) $(WARNINGS) $(OBJECTS) $(CFLAGS) $(NAME).c $(LDFLAGS) -o $(NAME)
+ 
+ clean:
+ 	rm -f *.o $(NAME)

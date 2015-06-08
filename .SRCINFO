@@ -1,0 +1,16 @@
+pkgbase = pxz
+	pkgdesc = Runs LZMA compression of different parts of an input file on multiple cores and processors simultaneously
+	pkgver = 4.999.9beta.20091201
+	pkgrel = 4
+	url = http://jnovy.fedorapeople.org/pxz/
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	depends = xz
+	source = http://jnovy.fedorapeople.org/pxz/pxz-4.999.9beta.20091201git.tar.xz
+	source = Makefile.patch
+	md5sums = 4ae3926185978f5c95c9414dc4634451
+	md5sums = 08db9905383919be1ae37861f0389773
+
+pkgname = pxz
+
