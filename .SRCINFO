@@ -1,0 +1,18 @@
+pkgbase = vapoursynth-plugin-resamplehq-git
+	pkgdesc = Plugin for Vapoursynth: resamplehq (GIT version)
+	pkgver = r4
+	pkgrel = 1
+	url = http://forum.doom9.org/showpost.php?p=1715171&postcount=6
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = vapoursynth
+	depends = vapoursynth-plugin-dither-git
+	depends = vapoursynth-plugin-fmtconv
+	provides = vapoursynth-plugin-resamplehq
+	conflicts = vapoursynth-plugin-resamplehq
+	source = resamplehq::git+https://gist.github.com/64642122e359c37543fe.git
+	sha1sums = SKIP
+
+pkgname = vapoursynth-plugin-resamplehq-git
+
