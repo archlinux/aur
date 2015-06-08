@@ -1,0 +1,18 @@
+pkgbase = haskell-mime-types
+	pkgdesc = Basic mime-type handling types and functions
+	pkgver = 0.1.0.5
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/mime-types
+	install = haskell-mime-types.install
+	arch = i686
+	arch = x86_64
+	license = custom:MIT
+	depends = ghc
+	depends = haskell-text>=0.11.0.5
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/mime-types/0.1.0.5/mime-types-0.1.0.5.tar.gz
+	md5sums = 343e1b90e0b047c0bfd08e7c308b6f21
+
+pkgname = haskell-mime-types
+
