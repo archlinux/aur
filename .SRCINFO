@@ -1,0 +1,15 @@
+pkgbase = xkcdpass
+	pkgdesc = Generate secure multiword passwords/passphrases, inspired by XKCD
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = https://github.com/redacted/XKCD-password-generator
+	arch = any
+	license = BSD
+	depends = python
+	depends = python-setuptools
+	options = !emptydirs
+	source = https://github.com/redacted/XKCD-password-generator/archive/xkcdpass-1.2.5.tar.gz
+	md5sums = 09a01e430099fc853ef910398f4558be
+
+pkgname = xkcdpass
+
