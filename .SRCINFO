@@ -1,0 +1,14 @@
+pkgbase = lua-stdlib
+	pkgdesc = Standard library for Lua
+	pkgver = 41.1.1
+	pkgrel = 1
+	url = http://github.com/lua-stdlib/lua-stdlib
+	arch = any
+	arch = x86_64
+	license = MIT
+	depends = lua
+	source = http://github.com/lua-stdlib/lua-stdlib/archive/release-v41.1.1.zip
+	md5sums = 01182a1858336e8d927eee83641ee711
+
+pkgname = lua-stdlib
+
