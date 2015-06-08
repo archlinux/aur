@@ -1,0 +1,18 @@
+pkgbase = coin-or-lemon
+	pkgdesc = A C++ template library providing many common graph algorithms
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = http://lemon.cs.elte.hu/trac/lemon
+	arch = i686
+	arch = x86_64
+	groups = coin-or
+	license = BSD
+	makedepends = cmake
+	depends = coin-or-cbc
+	depends = coin-or-clp
+	depends = glpk
+	source = http://lemon.cs.elte.hu/pub/sources/lemon-1.3.1.tar.gz
+	sha1sums = b23d64c21b4b9088ad51e85316964a4a4138f82a
+
+pkgname = coin-or-lemon
+
