@@ -1,0 +1,40 @@
+pkgbase = python-neutronclient
+	pkgdesc = CLI and Client Library for OpenStack Networking
+	pkgver = 2.6.0
+	pkgrel = 1
+	url = https://github.com/openstack/python-neutronclient
+	arch = any
+	license = Apache
+	makedepends = python-pbr>=0.11
+	makedepends = python2-pbr>=0.11
+	source = https://pypi.python.org/packages/source/p/python-neutronclient/python-neutronclient-2.6.0.tar.gz
+	sha256sums = ce72506c0720825edcb0e93b643340e044f1de9235d398fe1c45d851971020df
+
+pkgname = python-neutronclient
+	depends = python-babel>=1.3
+	depends = python-cliff>=1.10.0
+	depends = python-iso8601>=0.1.9
+	depends = python-keystoneclient>=1.3.0
+	depends = python-netaddr>=0.7.12
+	depends = python-oslo-i18n>=1.5.0
+	depends = python-oslo-serialization>=1.4.0
+	depends = python-oslo-utils>=1.4.0
+	depends = python-pbr>=0.11
+	depends = python-requests>=2.5.2
+	depends = python-simplejson>=2.2.0
+	depends = python-six>=1.9.0
+
+pkgname = python2-neutronclient
+	depends = python2-babel>=1.3
+	depends = python2-cliff>=1.10.0
+	depends = python2-iso8601>=0.1.9
+	depends = python2-keystoneclient>=1.3.0
+	depends = python2-netaddr>=0.7.12
+	depends = python2-oslo-i18n>=1.5.0
+	depends = python2-oslo-serialization>=1.4.0
+	depends = python2-oslo-utils>=1.4.0
+	depends = python2-pbr>=0.11
+	depends = python2-requests>=2.5.2
+	depends = python2-simplejson>=2.2.0
+	depends = python2-six>=1.9.0
+
