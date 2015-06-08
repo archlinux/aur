@@ -1,0 +1,12 @@
+--- os_cmd/Linux/ossvermagic/ossvermagic.c	2013-06-14 06:55:00.000000000 +0200
++++ os_cmd/Linux/ossvermagic/ossvermagic.c	2013-11-14 18:42:23.910206071 +0100
+@@ -81,6 +81,8 @@
+   if (!ok)
+     ok = ELF_LOAD_SYMTAB (fname, "__mod_vermagic", sym_callback);
+   if (!ok)
++    ok = ELF_LOAD_SYMTAB (fname, "__UNIQUE_ID_vermagic0", sym_callback);
++  if (!ok)
+     ELF_LOAD_SYMTAB (fname, "__oss_compile_vermagic", sym_callback);
+ }
+ 
+

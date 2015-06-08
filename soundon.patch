@@ -1,0 +1,28 @@
+--- usr/sbin/soundon.old	2009-09-04 06:35:26.000000000 +0100
++++ usr/sbin/soundon	2009-11-15 13:59:53.000000000 +0000
+@@ -255,7 +255,10 @@
+   then
+      if test "`uname -m` " = "x86_64 "
+      then
+-       ln -sf $OSSLIBDIR/lib/libsalsa.so.2.0.0 /usr/lib64/libasound.so.2
++       # Fix for compatibility with Arch's directory structure
++       # Not that we use it, there is no $OSSLIBDIR/.libsalsa_installed
++       ln -sf $OSSLIBDIR/lib/libsalsa.so.2.0.0 /usr/lib/libasound.so.2
++       #ln -sf $OSSLIBDIR/lib/libsalsa.so.2.0.0 /usr/lib64/libasound.so.2
+        #ln -sf $OSSLIBDIR/lib/libOSSlib.so /usr/lib64
+      else
+        if test -s /lib/libasound.so.2
+@@ -278,8 +281,11 @@
+ then
+    if test "`uname -m` " = "x86_64 "
+    then
+-     ln -sf $OSSLIBDIR/lib/libOSSlib.so /usr/lib64
+-     ln -sf $OSSLIBDIR/lib/libossmix.so /usr/lib64
++     # Fix for compatibility with Arch's directory structure
++     ln -sf $OSSLIBDIR/lib/libOSSlib.so /usr/lib
++     ln -sf $OSSLIBDIR/lib/libossmix.so /usr/lib
++     #ln -sf $OSSLIBDIR/lib/libOSSlib.so /usr/lib64
++     #ln -sf $OSSLIBDIR/lib/libossmix.so /usr/lib64
+    else
+      if test -s /lib/libasound.so.2
+      then

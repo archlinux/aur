@@ -1,0 +1,20 @@
+Date: Tue Aug  2 16:37:31 CEST 2011
+Author: Florian Pritz <bluewind@xinu.at>
+This removes all hal dependencies
+
+References:
+http://www.archlinux.org/todo/92/
+
+--- usr/lib/oss/build/install_2011-08-02_162647.sh	2011-08-02 16:26:47.000000000 +0200
++++ usr/lib/oss/build/install.sh	2011-08-02 16:27:13.000000000 +0200
+@@ -336,10 +336,4 @@
+   echo "autosave_mixer yes" > $OSSLIBDIR/etc/userdefs
+ fi
+ 
+-# Hal 0.5.0+ hotplug
+-mkdir -p /usr/lib/hal/scripts
+-ln -sf $OSSLIBDIR/scripts/oss_usb-create-devices /usr/lib/hal/scripts/
+-mkdir -p /usr/share/hal/fdi/policy/20thirdparty/
+-ln -sf $OSSLIBDIR/scripts/90-oss_usb-create-device.fdi /usr/share/hal/fdi/policy/20thirdparty/
+-
+ exit 0
