@@ -1,0 +1,30 @@
+--- do.sh.old   2011-12-15 23:43:08.000000000 +0100
++++ do.sh	2011-12-28 11:52:21.000000000 +0100
+@@ -98,11 +98,11 @@
+   for C in $SOURCES; do OS="$OS ${C%.*}.o"; done
+   set -e
+   for C in $SOURCES; do
+-    echo + $L_CC $CPPFLAGS $CFLAGS $CFLAGSB -c $C
+-    $L_CC $CPPFLAGS $CFLAGS $CFLAGSB -c $C
++    echo + $L_CC $CPPFLAGS $CFLAGS $CFLAGSB -c $C $EXTRAFLAGS
++    $L_CC $CPPFLAGS $CFLAGS $CFLAGSB -c $C $EXTRAFLAGS
+   done
+-  echo + $L_LD $LDFLAGS $OS -o "$TARGET" $LIBS
+-  $L_LD $LDFLAGS $OS -o "$TARGET" $LIBS
++  echo + $L_LD $LDFLAGS $OS -o "$TARGET" $LIBS $EXTRAFLAGS
++  $L_LD $LDFLAGS $OS -o "$TARGET" $LIBS $EXTRAFLAGS
+   set +e
+   export TARGET
+   echo "Created executable file: $TARGET (size: `perl -e 'print -s $ENV{TARGET}'`)."
+@@ -111,9 +111,11 @@
+ SOURCES='ptspnm.c minigimp.c miniglib.c ptstiff3.c tif22pnm.c'
+ TARGET=tif22pnm
+ LIBS="$LIBS_TIFF"
++EXTRAFLAGS=""
+ build
+ 
+ SOURCES='png22pnm.c'
+ TARGET=png22pnm
+ LIBS="$LIBS_PNG"
++EXTRAFLAGS="-lz -lm"
+ build
