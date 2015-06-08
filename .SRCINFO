@@ -1,0 +1,28 @@
+pkgbase = kdeplasma-applets-awesome-widgets-git
+	pkgdesc = Collection of minimalistic Plasmoids which look like Awesome WM widgets (ex-PyTextMonitor)
+	pkgver = 2.2.1.r2.ga098c9d
+	pkgrel = 1
+	url = http://arcanis.name/projects/awesome-widgets
+	install = kdeplasma-applets-awesome-widgets-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = automoc4
+	makedepends = cmake
+	makedepends = git
+	depends = kdebase-workspace
+	depends = lm_sensors
+	optdepends = amarok: for music player monitor
+	optdepends = clementine: for music player monitor
+	optdepends = catalyst: for GPU monitor
+	optdepends = hddtemp: for HDD temperature monitor
+	optdepends = smartmontools: for HDD temperature monitor
+	optdepends = mpd: for music player monitor
+	optdepends = nvidia-utils: for GPU monitor
+	optdepends = qmmp: for music player monitor
+	backup = usr/share/config/plasma-dataengine-extsysmon.conf
+	source = awesome-widgets::git+https://github.com/arcan1s/awesome-widgets.git#branch=release-2.2.1
+	md5sums = SKIP
+
+pkgname = kdeplasma-applets-awesome-widgets-git
+
