@@ -1,0 +1,15 @@
+pkgbase = fcdctlpp
+	pkgdesc = A simple command line utility to set the frequency and gain of the Funcube Dongle SDR Receiver - Pro Plus version
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = http://www.oz9aec.net/index.php/funcube-dongle
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = libusb
+	conflicts = fcdctl
+	source = https://github.com/csete/fcdctl/archive/v0.4.4.tar.gz
+	sha512sums = 5ee17c4d5dc6203a311077c293bcfbd3d3d6ae2ae3adad6d3f891e88736508946c07774e3057fe03f19807960f99ccfe3eb9af62bd5821ff8c0a12d6c3f65cab
+
+pkgname = fcdctlpp
+
