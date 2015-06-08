@@ -1,0 +1,14 @@
+pkgbase = ttf-jenna-sue
+	pkgdesc = The free TTF desktop version of the Jenna Sue font
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.dafont.com/jenna-sue.font
+	install = ttf-jenna-sue.install
+	arch = any
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://dl.dafont.com/dl/?f=jenna_sue
+	md5sums = 95e36cde53d7b94ee2435ce62a7f49e1
+
+pkgname = ttf-jenna-sue
+
