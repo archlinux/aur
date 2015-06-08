@@ -1,0 +1,34 @@
+pkgbase = openafs
+	pkgdesc = Open source implementation of the AFS distributed file system
+	pkgver = 1.6.11.1
+	pkgrel = 1
+	url = http://www.openafs.org
+	install = openafs.install
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = custom:"IBM Public License Version 1.0"
+	depends = krb5
+	optdepends = openafs-modules: Kernel module for OpenAFS
+	optdepends = openafs-modules-dkms: Kernel module for OpenAFS, built automatically using dkms
+	conflicts = openafs-features
+	options = !emptydirs
+	backup = etc/conf.d/openafs
+	backup = etc/openafs/ThisCell
+	backup = etc/openafs/cacheinfo
+	backup = etc/openafs/CellServDB
+	source = http://openafs.org/dl/1.6.11.1/openafs-1.6.11.1-src.tar.bz2
+	source = http://openafs.org/dl/1.6.11.1/openafs-1.6.11.1-doc.tar.bz2
+	source = 0001-Adjust-RedHat-config-and-service-files.patch
+	source = 0002-Add-configure-option-to-not-install-kauth.patch
+	source = 0003-Do-not-install-kauth-manpages-when-kauth-is-disabled.patch
+	source = tmpfiles.d-openafs.conf
+	sha256sums = ae1a87faec8ee273f7d4baa69d1346f798415b38de72888decde011405423dc7
+	sha256sums = cb398583931e7f0edf17b2321a858afc62cffa3c48cf69021eccc198d3e764f9
+	sha256sums = 06bf2185eb6988e66a5b01edf53ca813161043ef774b82636274b7c6442593c7
+	sha256sums = a1e886a282d1e52bdd5002c52f7340f659a9659bd1d629803a5b6c00bd6f4ce1
+	sha256sums = 904c8a463c4874266344fb1d86b9bdd52a80cc3df88614dbffbcb8603f8834ec
+	sha256sums = 5ef549180d1ac4e9530b65df7ddbdc1eceac6d6d6398fb2f32b06e96c1d9b5f0
+
+pkgname = openafs
+
