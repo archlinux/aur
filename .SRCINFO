@@ -1,0 +1,13 @@
+pkgbase = firefox-extension-fastestfox
+	pkgdesc = Save time by speeding up repetitive tasks.
+	pkgver = 5.2.1
+	pkgrel = 1
+	url = https://addons.mozilla.org/firefox/addon/9825
+	arch = any
+	license = MPL
+	depends = firefox
+	source = https://addons.mozilla.org/firefox/downloads/file/197174/fastestfox_browse_faster-5.2.1-fx.xpi
+	md5sums = 74d509053e6fafeb3617732ab107dceb
+
+pkgname = firefox-extension-fastestfox
+
