@@ -1,0 +1,19 @@
+pkgbase = kguiaddons-git
+	pkgdesc = KGuiAddons
+	pkgver = r54.9625907
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/kguiaddons
+	arch = i686
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	depends = qt5-x11extras
+	provides = kguiaddons
+	conflicts = kguiaddons
+	source = git://anongit.kde.org/kguiaddons.git
+	md5sums = SKIP
+
+pkgname = kguiaddons-git
+
