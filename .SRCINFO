@@ -1,0 +1,16 @@
+pkgbase = athcool
+	pkgdesc = Enables powersaving mode on AMD Duron/Athlon/Athlon XP processors.
+	pkgver = 0.3.12
+	pkgrel = 7
+	url = http://members.jcom.home.ne.jp/jacobi/linux/softwares.html#athcool
+	arch = i686
+	license = GPL
+	source = http://members.jcom.home.ne.jp/jacobi/linux/files/athcool-0.3.12.tar.gz
+	source = non-verbose.patch
+	source = athcool.service
+	sha256sums = 8a80654cb616064d60e6188fe6d426fe104a439930fceab865930bf1c9ffbbc9
+	sha256sums = ba239c3887502ee7986de6a1707c48cbc772053401dc6c287b9c37aee06e24e5
+	sha256sums = fa80fd0c1b52c0103bc3581969d328734cf19ae509e81cbd6aa3e6d7d4283bab
+
+pkgname = athcool
+

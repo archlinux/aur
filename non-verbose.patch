@@ -1,0 +1,12 @@
+--- a/athcool.c	2005-02-10 00:58:12.000000000 -0500
++++ b/athcool.c	2013-09-16 08:40:49.158674011 -0400
+@@ -464,7 +464,8 @@
+ 
+   if (fixup) { mode |= ATHLONPM_FIXUP; }
+ 
+-  print_warnings();
++  /* suppress superfluous warning */
++	/* print_warnings(); */
+ 
+   if ( iopl( 3 ) < 0 ) {
+     printf( "%s : must run as root. exit\n", argv[0] );

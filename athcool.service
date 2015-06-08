@@ -1,0 +1,12 @@
+[Unit]
+Description=Athcool
+Wants=local-fs.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/athcool on
+ExecStop=/usr/bin/athcool off
+
+[Install]
+WantedBy=multi-user.target
