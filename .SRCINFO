@@ -1,0 +1,17 @@
+pkgbase = divideandsucceed
+	pkgdesc = A game in which you must divide polygons into the rigth number of equal parts.
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = http://projects.haxx.es/p/divide-and-succeed/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	makedepends = cmake
+	depends = sdl
+	depends = sdl_ttf
+	source = http://projects.haxx.es/media/upload/divide-and-succeed/files/divide-and-succeed-0.9.4.tar.gz
+	md5sums = 3166dfd45e04e641e0d45f5e485616b4
+
+pkgname = divideandsucceed
+
