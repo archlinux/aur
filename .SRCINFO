@@ -1,0 +1,25 @@
+pkgbase = afutrainer
+	pkgdesc = ham radio test trainer
+	pkgver = 3.0
+	pkgrel = 2
+	url = http://www.oliver-saal.de/software/afutrainer/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = make
+	makedepends = gcc
+	depends = qt4
+	noextract = DL_Technik_Klasse_A_2007.aqz
+	noextract = DL_Technik_Klasse_E_2007.aqz
+	noextract = DL_Betriebstechnik_und_Vorschriften_2007.aqz
+	source = http://www.oliver-saal.de/software/afutrainer/download/afutrainer-3.0-src.zip
+	source = DL_Technik_Klasse_A_2007.aqz::http://www.oliver-saal.de/software/afutrainer/download/DL%20Technik%20Klasse%20A%202007.aqz
+	source = DL_Technik_Klasse_E_2007.aqz::http://www.oliver-saal.de/software/afutrainer/download/DL%20Technik%20Klasse%20E%202007.aqz
+	source = DL_Betriebstechnik_und_Vorschriften_2007.aqz::http://www.oliver-saal.de/software/afutrainer/download/DL%20Betriebstechnik%20und%20Vorschriften%202007.aqz
+	md5sums = a91f6cbadcac91e39ad7b2af1c0ce0e5
+	md5sums = 93cdb5502297d895eab09e34162621ed
+	md5sums = fd421cf643f3d8118cec041023492eaa
+	md5sums = fbd0d697fa7f12aa4d902a602ca55026
+
+pkgname = afutrainer
+
