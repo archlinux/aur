@@ -1,0 +1,18 @@
+pkgbase = vapoursynth-plugin-reduceflicker-git
+	pkgdesc = Plugin for Vapoursynth: reduceflicker (GIT version)
+	pkgver = r2.8766391
+	pkgrel = 1
+	url = https://github.com/VFR-maniac/VapourSynth-ReduceFlicker
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = vapoursynth
+	depends = fftw
+	provides = vapoursynth-plugin-reduceflicker
+	conflicts = vapoursynth-plugin-reduceflicker
+	source = reduceflicker::git+https://github.com/VFR-maniac/VapourSynth-ReduceFlicker.git
+	sha1sums = SKIP
+
+pkgname = vapoursynth-plugin-reduceflicker-git
+
