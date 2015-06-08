@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-deblock-git
+	pkgdesc = Plugin for Vapoursynth: deblock (GIT version)
+	pkgver = r3.10.g0961114
+	pkgrel = 1
+	url = http://forum.doom9.org/showthread.php?t=170975
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = vapoursynth
+	provides = vapoursynth-plugin-deblock
+	conflicts = vapoursynth-plugin-deblock
+	source = deblock::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-Deblock.git
+	sha1sums = SKIP
+
+pkgname = vapoursynth-plugin-deblock-git
+
