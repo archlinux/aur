@@ -1,0 +1,19 @@
+pkgbase = parboiled
+	pkgdesc = A pure Java library providing for lightweight and easy-to-use, yet powerful and elegant parsing of arbitrary input text based on Parsing expression grammars (PEGs)
+	pkgver = 1.1.6
+	pkgrel = 2
+	url = http://parboiled.org/
+	arch = any
+	license = APACHE
+	depends = java-environment
+	depends = java-asm
+	depends = bash
+	source = http://repo1.maven.org/maven2/org/parboiled/parboiled-core/1.1.6/parboiled-core-1.1.6.jar
+	source = http://repo1.maven.org/maven2/org/parboiled/parboiled-java/1.1.6/parboiled-java-1.1.6.jar
+	source = setClasspath.sh
+	sha1sums = 11bd0c34fc6ac3c3cbf440ab8180cc6422c044e9
+	sha1sums = cb2ffa720f75b2fce8cfd1875599319e75ea9557
+	sha1sums = 6ad50f7f1e4f24981f3a1b6397eca8f2bf329046
+
+pkgname = parboiled
+
