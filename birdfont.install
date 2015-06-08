@@ -1,0 +1,17 @@
+post_install() { 
+	gtk-update-icon-cache
+	update-desktop-database -q
+	update-mime-database /usr/share/mime
+}
+
+post_upgrade() {
+	gtk-update-icon-cache
+	update-desktop-database -q
+	update-mime-database /usr/share/mime
+}
+
+post_remove() {
+	gtk-update-icon-cache
+	update-desktop-database -q
+	update-mime-database /usr/share/mime
+}

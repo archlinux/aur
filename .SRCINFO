@@ -1,0 +1,24 @@
+pkgbase = birdfont
+	pkgdesc = A free font editor that lets you create vector graphics and export TTF, EOT & SVG fonts
+	pkgver = 1.9
+	pkgrel = 2
+	url = http://birdfont.org/
+	install = birdfont.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = vala
+	makedepends = gettext
+	makedepends = libgee
+	makedepends = python2
+	makedepends = gettext
+	depends = libgee
+	depends = webkitgtk
+	depends = libnotify
+	source = http://birdfont.org/releases/birdfont-1.9.tar.gz
+	source = http://www.unicode.org/Public/UNIDATA/NamesList.txt
+	md5sums = 4e6d5eac52874c65464674479b65d1e8
+	md5sums = a07e68e9cc6fb9c5001727d2813930ab
+
+pkgname = birdfont
+
