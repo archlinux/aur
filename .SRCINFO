@@ -1,0 +1,16 @@
+pkgbase = libexif-gtk
+	pkgdesc = GTK frontend to the libexif library
+	pkgver = 0.4.0
+	pkgrel = 2
+	url = http://libexif.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libexif
+	depends = gtk2
+	options = !libtool
+	source = http://downloads.sourceforge.net/project/libexif/libexif-gtk/0.4.0/libexif-gtk-0.4.0.tar.bz2
+	md5sums = 777fe42272a3ef49fb65a4b62109731c
+
+pkgname = libexif-gtk
+
