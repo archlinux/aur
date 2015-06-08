@@ -1,0 +1,21 @@
+post_install() {
+    update-desktop-database -q
+}
+
+post_upgrade() {
+    newVersion=$1
+    oldVersion=$2
+
+    if [ $newVersion = 2.0 ]; then
+        for user in /home/*; do
+            edisDir=/home/${user}/.edis
+            [ -d $edisDir ] && rm $edisDir
+        done
+    fi
+
+    post_install
+}
+
+post_remove() {
+    post_install
+}

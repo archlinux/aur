@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Edis
+GenericName=C IDE
+GenericName[es]=IDE para C
+Comment=A simple cross-platform C IDE
+Comment[es]=Simple IDE para C multiplataforma
+Icon=edis
+Exec=/usr/bin/edis
+Terminal=false
+Categories=Application;IDE;TextEditor
+Name=edis.desktop
