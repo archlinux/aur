@@ -1,0 +1,19 @@
+pkgbase = vapoursynth-plugin-videoscope-git
+	pkgdesc = Plugin for Vapoursynth: videoscope (GIT version)
+	pkgver = v1.0.1.g511aeeb
+	pkgrel = 1
+	url = https://github.com/dubhater/vapoursynth-videoscope
+	arch = i686
+	arch = x86_64
+	license = custom:WTFPL
+	makedepends = git
+	depends = vapoursynth
+	provides = vapoursynth-plugin-videoscope
+	conflicts = vapoursynth-plugin-videoscope
+	source = videoscope::git+https://github.com/dubhater/vapoursynth-videoscope.git
+	source = LICENSE::http://www.wtfpl.net/txt/copying/
+	md5sums = SKIP
+	md5sums = 8365d07beeb5f39d87e846dca3ae7b64
+
+pkgname = vapoursynth-plugin-videoscope-git
+
