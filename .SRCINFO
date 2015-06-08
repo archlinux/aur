@@ -1,0 +1,26 @@
+pkgbase = pyqglviewer
+	pkgdesc = Python binding for libQGLViewer C++ library
+	pkgver = 0.11
+	pkgrel = 4
+	url = http://pyqglviewer.gforge.inria.fr/wiki/doku.php
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = GPL3
+	license = custom
+	makedepends = patch
+	makedepends = python2
+	depends = qt4
+	depends = python2
+	depends = python2-opengl
+	depends = glu
+	depends = mesa
+	depends = python2-pyqt
+	options = !makeflags
+	source = https://gforge.inria.fr/frs/download.php/30908//PyQGLViewer-0.11.zip
+	source = https://gforge.inria.fr/frs/download.php/30907/libQGLViewer-2.3.17-py.tgz
+	md5sums = cc7d847989fd6af9ac51736cec864e4b
+	md5sums = 75bc31ba4742d5fd9ddf5abba3bfa532
+
+pkgname = pyqglviewer
+
