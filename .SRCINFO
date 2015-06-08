@@ -1,0 +1,17 @@
+pkgbase = haskell-bzlib
+	pkgdesc = Compression and decompression in the bzip2 format
+	pkgver = 0.5.0.5
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/bzlib
+	install = haskell-bzlib.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = bzip2
+	options = strip
+	source = http://hackage.haskell.org/packages/archive/bzlib/0.5.0.5/bzlib-0.5.0.5.tar.gz
+	md5sums = f4980e89910eccf9ce82c4d711159f27
+
+pkgname = haskell-bzlib
+
