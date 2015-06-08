@@ -1,0 +1,24 @@
+pkgbase = knotifications-git
+	pkgdesc = KNotifications
+	pkgver = r108.b792a14
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/knotifications
+	arch = i686
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	makedepends = qt5-tools
+	makedepends = python
+	depends = libdbusmenu-qt5
+	depends = phonon-qt5
+	depends = kservice-git
+	depends = kiconthemes-git
+	provides = knotifications
+	conflicts = knotifications
+	source = git://anongit.kde.org/knotifications.git
+	md5sums = SKIP
+
+pkgname = knotifications-git
+
