@@ -1,0 +1,18 @@
+pkgbase = ktsuss-git
+	pkgdesc = Graphical version of su written in C and GTK+
+	pkgver = 0.r19.e1358de
+	pkgrel = 1
+	url = https://github.com/nomius/ktsuss
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = util-linux
+	depends = gtk2
+	provides = ktsuss
+	conflicts = ktsuss
+	source = ktsuss::git+https://github.com/nomius/ktsuss.git
+	md5sums = SKIP
+
+pkgname = ktsuss-git
+
