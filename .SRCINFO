@@ -1,0 +1,17 @@
+pkgbase = perl-rdf-prefixes
+	pkgdesc = simple way to turn URIs into QNames
+	pkgver = 0.004
+	pkgrel = 1
+	url = http://search.cpan.org/dist/RDF-Prefixes
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-warn
+	depends = perl>=5.010
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/RDF-Prefixes-0.004.tar.gz
+	md5sums = aa4a083e2afe98f0df7b93de0342fd27
+	sha512sums = cb244e62062a9083546763df59e13aee6331021acd0e5e8751ec954508e690d39a80bd47097595dee0d7fa11b2da52cb8d12f0a87a5c0e345c35209a6a0bb1f5
+
+pkgname = perl-rdf-prefixes
+
