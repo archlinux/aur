@@ -1,0 +1,15 @@
+pkgbase = perl-cgi-application-plugin-requiressl
+	pkgdesc = CGI::Application::Plugin::RequireSSL - Force SSL in specified pages or modules
+	pkgver = 0.04
+	pkgrel = 1
+	url = http://search.cpan.org/~dhorne/CGI-Application-Plugin-RequireSSL-0.04/
+	arch = any
+	license = unknown
+	depends = perl>=5.10.0
+	depends = perl-cgi-application
+	options = !emptydirs
+	source = http://cpan.perl.org/modules/by-authors/id/D/DH/DHORNE/CGI-Application-Plugin-RequireSSL-0.04.tar.gz
+	md5sums = ffa4fbe3014ded658dc796aafc01a5f8
+
+pkgname = perl-cgi-application-plugin-requiressl
+
