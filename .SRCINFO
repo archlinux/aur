@@ -1,0 +1,14 @@
+pkgbase = plasma-theme-infinity
+	pkgdesc = Dark-grey plasma theme. Icons from KDE 5 VDG.
+	pkgver = 11.3
+	pkgrel = 2
+	url = http://opendesktop.org/content/show.php?content=169134
+	arch = any
+	license = GPL
+	depends = kdelibs
+	depends = kdebase-workspace
+	source = plasma-theme-infinity-11.3.tar.gz::http://opendesktop.org/CONTENT/content-files/169134-Infinity.tar.gz
+	sha256sums = abdff199da0a4099292897770660d822067df26669b81aee2b751282f30c6f20
+
+pkgname = plasma-theme-infinity
+
