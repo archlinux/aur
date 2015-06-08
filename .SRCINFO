@@ -1,0 +1,14 @@
+pkgbase = xpenguins
+	pkgdesc = Ever wanted cute little penguins walking along the tops of your windows?
+	pkgver = 2.2
+	pkgrel = 2
+	url = http://xpenguins.seul.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = libxpm
+	source = http://xpenguins.seul.org/xpenguins-2.2.tar.gz
+	md5sums = 2ccf555d55f9b0377017322b3b3d27a4
+
+pkgname = xpenguins
+
