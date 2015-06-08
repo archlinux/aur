@@ -1,0 +1,330 @@
+diff -Naur SDL_gfx-2.0.25/autogen.sh SDL_gfx/autogen.sh
+--- SDL_gfx-2.0.25/autogen.sh	2011-12-04 04:28:17.000000000 +0100
++++ SDL_gfx/autogen.sh	2015-03-23 20:45:49.141107394 +0100
+@@ -1,19 +1,7 @@
+ #!/bin/sh
+ #
+ 
+-# Hack for MacPorts
+-cp /usr/local/share/aclocal/sdl.m4 m4
+-
+-# Prep
+-make distclean
+-aclocal --force -I /usr/local/share/aclocal
+-libtoolize --force --copy
+-autoreconf -fvi
+-rm -rf autom4te.cache
+-
+-# Setup
+-aclocal -I /usr/local/share/aclocal
+-autoheader
++aclocal
+ automake --foreign
+ autoconf
+ 
+diff -Naur SDL_gfx-2.0.25/config.sub SDL_gfx/config.sub
+--- SDL_gfx-2.0.25/config.sub	2013-10-27 23:04:13.000000000 +0100
++++ SDL_gfx/config.sub	2015-03-23 21:00:42.569395753 +0100
+@@ -1015,6 +1015,10 @@
+ 	ps2)
+ 		basic_machine=i386-ibm
+ 		;;
++	psp)
++		basic_machine=mipsallegrexel-psp
++		os=-elf
++		;;
+ 	pw32)
+ 		basic_machine=i586-unknown
+ 		os=-pw32
+diff -Naur SDL_gfx-2.0.25/configure.in SDL_gfx/configure.in
+--- SDL_gfx-2.0.25/configure.in	2013-10-27 23:04:13.000000000 +0100
++++ SDL_gfx/configure.in	2015-03-23 20:41:27.757850617 +0100
+@@ -63,6 +63,26 @@
+ dnl Set for C compiler by default
+ AC_LANG_C
+ 
++dnl Check for a valid PSPSDK installation
++CheckPSPSDK()
++{
++    AC_CHECK_PROG(psp_config, psp-config, psp-config, no)
++    if test x$psp_config = xno; then
++        AC_MSG_ERROR(Couldn't locate psp-config.)
++    fi
++
++    AC_MSG_CHECKING(for PSPSDK)
++    pspsdk_path=`$psp_config --pspsdk-path`
++    if test ! -d $pspsdk_path -o -z $pspsdk_path; then
++        AC_MSG_RESULT(not found)
++        AC_MSG_ERROR(Couldn't locate PSPSDK.)
++    fi
++    AC_MSG_RESULT($pspsdk_path)
++   
++    # Compile SDL with -G0 to disable the $gp register.
++    CFLAGS="$CFLAGS -G0 -I\"${pspsdk_path}/include\""
++}
++
+ dnl Setup target flagsw
+ case "$target" in
+     *-*-cygwin* | *-*-mingw32*)
+@@ -78,6 +98,10 @@
+ 
+ dnl Figure out which math library to use
+ case "$target" in
++    *-psp-*)
++        ARCH=psp
++        CheckPSPSDK
++        ;;
+     *-*-cygwin* | *-*-mingw32*)
+         MATHLIB=""
+         ;;
+diff -Naur SDL_gfx-2.0.25/README.PSP SDL_gfx/README.PSP
+--- SDL_gfx-2.0.25/README.PSP	1970-01-01 01:00:00.000000000 +0100
++++ SDL_gfx/README.PSP	2015-03-23 20:24:20.715637225 +0100
+@@ -0,0 +1,11 @@
++To configure:
++
++   ./autogen.sh
++   LDFLAGS="-L$(psp-config --pspsdk-path)/lib" LIBS="-lc -lpspuser" \
++     ./configure --host psp --with-sdl-prefix=$(psp-config --psp-prefix) \
++     --prefix=$(psp-config --psp-prefix) --disable-mmx --disable-shared
++
++Then run:
++
++   make
++   make install
+diff -Naur SDL_gfx-2.0.25/Test/autogen.sh SDL_gfx/Test/autogen.sh
+--- SDL_gfx-2.0.25/Test/autogen.sh	2011-12-04 04:28:17.000000000 +0100
++++ SDL_gfx/Test/autogen.sh	2015-03-23 20:29:15.135702460 +0100
+@@ -1,19 +1,7 @@
+ #!/bin/sh
+ #
+ 
+-# Hack for MacPorts
+-cp /usr/local/share/aclocal/sdl.m4 m4
+-
+-# Prep
+-make distclean
+-aclocal --force -I /usr/local/share/aclocal
+-libtoolize --force --copy
+-autoreconf -fvi
+-rm -rf autom4te.cache
+-
+-# Setup
+-aclocal -I /usr/local/share/aclocal
+-autoheader
++aclocal
+ automake --foreign
+ autoconf
+ 
+diff -Naur SDL_gfx-2.0.25/Test/config.sub SDL_gfx/Test/config.sub
+--- SDL_gfx-2.0.25/Test/config.sub	2013-10-28 01:23:09.000000000 +0100
++++ SDL_gfx/Test/config.sub	2015-03-23 21:23:22.613629164 +0100
+@@ -1015,6 +1015,10 @@
+ 	ps2)
+ 		basic_machine=i386-ibm
+ 		;;
++	psp)
++		basic_machine=mipsallegrexel-psp
++		os=-elf
++		;;
+ 	pw32)
+ 		basic_machine=i586-unknown
+ 		os=-pw32
+diff -Naur SDL_gfx-2.0.25/Test/configure.in SDL_gfx/Test/configure.in
+--- SDL_gfx-2.0.25/Test/configure.in	2010-01-26 06:55:07.000000000 +0100
++++ SDL_gfx/Test/configure.in	2015-03-23 20:22:41.351213566 +0100
+@@ -26,8 +26,32 @@
+ dnl Set for C compiler by default
+ AC_LANG_C
+ 
++dnl Check for a valid PSPSDK installation
++CheckPSPSDK()
++{   
++    AC_CHECK_PROG(psp_config, psp-config, psp-config, no)
++    if test x$psp_config = xno; then
++        AC_MSG_ERROR(Couldn't locate psp-config.)
++    fi
++
++    AC_MSG_CHECKING(for PSPSDK)
++    pspsdk_path=`$psp_config --pspsdk-path`
++    if test ! -d $pspsdk_path -o -z $pspsdk_path; then
++        AC_MSG_RESULT(not found)
++        AC_MSG_ERROR(Couldn't locate PSPSDK.)
++    fi
++    AC_MSG_RESULT($pspsdk_path)
++
++    # Compile SDL with -G0 to disable the $gp register.
++    CFLAGS="$CFLAGS -G0 -I\"${pspsdk_path}/include\""
++}
++
+ dnl Setup target flagsw
+ case "$target" in
++    *-psp-*)
++        ARCH=psp
++        CheckPSPSDK
++        ;;
+     *-*-cygwin* | *-*-mingw32*)
+ 	CFLAGS="$CFLAGS -DWIN32"
+         if test "$build" != "$target"; then # cross-compiling
+diff -Naur SDL_gfx-2.0.25/Test/TestFonts.c SDL_gfx/Test/TestFonts.c
+--- SDL_gfx-2.0.25/Test/TestFonts.c	2015-03-24 21:41:26.182871260 +0100
++++ SDL_gfx/Test/TestFonts.c	2015-03-24 21:38:35.800523005 +0100
+@@ -21,8 +21,13 @@
+ #include "SDL/SDL_gfxPrimitives.h"
+ #endif
+ 
+-#define WIDTH	1024
+-#define HEIGHT	768
++#ifdef PSP
++#	define WIDTH	480
++#	define HEIGHT	272
++#else
++#	define WIDTH	1024
++#	define HEIGHT	768
++#endif
+ 
+ void WaitForEvent()
+ {
+@@ -137,7 +142,11 @@
+ 	if (myfont) {
+ 		if (strcmp(fontfile[i],"default")) {
+ 			/* Load a font data */
++#ifdef PSP
++            sprintf(filename,"%s",fontfile[i]);
++#else
+ 			sprintf(filename,"../Fonts/%s",fontfile[i]);
++#endif
+ 			if (!FileExists(filename))
+ 			{
+ 				sprintf(filename,"..\\Fonts\\%s",fontfile[i]);
+@@ -341,7 +350,9 @@
+ 	}
+ 
+ 	/* Force double buffering */
++#ifndef PSP
+ 	videoflags |= SDL_DOUBLEBUF;
++#endif
+ 
+ 	/* Set video mode */
+ 	if ( (screen=SDL_SetVideoMode(WIDTH, HEIGHT, video_bpp, videoflags)) == NULL ) {
+diff -Naur SDL_gfx-2.0.25/Test/TestGfxPrimitives.c SDL_gfx/Test/TestGfxPrimitives.c
+--- SDL_gfx-2.0.25/Test/TestGfxPrimitives.c	2012-07-21 18:30:59.000000000 +0200
++++ SDL_gfx/Test/TestGfxPrimitives.c	2015-03-24 21:35:47.198196085 +0100
+@@ -21,8 +21,13 @@
+ #include "SDL/SDL_gfxPrimitives.h"
+ #endif
+ 
+-#define WIDTH	640
+-#define HEIGHT	480
++#ifdef PSP
++#	define WIDTH	480
++#	define HEIGHT	272
++#else
++#	define WIDTH	640
++#	define HEIGHT	480
++#endif
+ 
+ #define NUM_RANDOM	512
+ 
+@@ -1972,14 +1977,14 @@
+ 	}
+ 
+ 	/* Draw A=various */
+-	boxRGBA(texture,0,0,1,1,255,255,255,ra[i]); 
++	boxRGBA(texture,0,0,1,1,255,255,255,ra[NUM_RANDOM-1]);
+ 	SetClip(screen,WIDTH/2,60,WIDTH,60+(HEIGHT-80)/2);
+ 	for (i=0; i<NUM_RANDOM; i++) {
+ 		texturedPolygon(screen, &tx2[i][0], &ty1[i][0], 3, texture, 0, 0);
+ 	}
+ 
+ 	/* Draw A=various */
+-	boxRGBA(texture,0,0,1,1,255,255,255,ra[i]); 
++	boxRGBA(texture,0,0,1,1,255,255,255,ra[NUM_RANDOM-1]);
+ 	SetClip(screen,WIDTH/2,80+(HEIGHT-80)/2,WIDTH,HEIGHT);
+ 	for (i=0; i<NUM_RANDOM; i++) {
+ 		texturedPolygon(screen, &tx2[i][0], &ty2[i][0], 3, texture, 0, 0);
+@@ -2810,17 +2815,34 @@
+ 	SDL_Event event;
+ 	int oldprim, curprim;
+ 	char title[64];
++	Uint32 sdlflags;
+ 
+ 	/* Generate title string */
+ 	sprintf (title,"TestGfxPrimitives - v%i.%i.%i",SDL_GFXPRIMITIVES_MAJOR, SDL_GFXPRIMITIVES_MINOR, SDL_GFXPRIMITIVES_MICRO);
+ 
+ 	/* Initialize SDL */
+-	if ( SDL_Init(SDL_INIT_VIDEO) < 0 ) {
++#ifdef PSP
++	sdlflags = (SDL_INIT_VIDEO | SDL_INIT_JOYSTICK);
++#else
++	sdlflags = SDL_INIT_VIDEO;
++#endif
++	if ( SDL_Init(sdlflags) < 0 ) {
++
+ 		fprintf(stderr, "Couldn't initialize SDL: %s\n",SDL_GetError());
+ 		exit(1);
+ 	}
+ 	atexit(SDL_Quit);
+ 
++#ifdef PSP
++	if (!SDL_JoystickOpen(0))
++	{   
++		fprintf(stderr,
++				"\nWarning: Could not open joystick 1.\n"
++				"The Simple DirectMedia error that occured was:\n"
++				"%s\n\n", SDL_GetError());
++	}
++#endif
++
+ 	/* Alpha blending doesn't work well at 8-bit color */
+ 	info = SDL_GetVideoInfo();
+ 	if ( info->vfmt->BitsPerPixel > 8 ) {
+@@ -3188,6 +3210,17 @@
+ 						curprim--;
+ 					}
+ 					break;
++#ifdef PSP
++				case SDL_JOYBUTTONDOWN:
++					if ( event.jbutton.button == 7 /* LEFT */) {
++						curprim++;
++					} else if ( event.jbutton.button == 9 /* RIGHT */ ) {
++						curprim--;
++					} else if ( event.jbutton.button == 11 /* START */ ) {
++						done = 1;
++					}
++					break;
++#endif
+ 				case SDL_KEYDOWN:
+ 					/* Any keypress quits the app... */
+ 				case SDL_QUIT:
+diff -Naur SDL_gfx-2.0.25/Test/TestRotozoom.c SDL_gfx/Test/TestRotozoom.c
+--- SDL_gfx-2.0.25/Test/TestRotozoom.c	2011-12-04 08:00:09.000000000 +0100
++++ SDL_gfx/Test/TestRotozoom.c	2015-03-23 21:40:58.983054303 +0100
+@@ -983,10 +983,17 @@
+ 	messageText = (char *)malloc(128);
+ 
+ 	/* Set default options and check command-line */
++#ifdef PSP
++	w = 480;
++	h = 272;
++	desired_bpp = 32;
++	video_flags = SDL_SWSURFACE;
++#else
+ 	w = 640;
+ 	h = 480;
+ 	desired_bpp = 0;
+ 	video_flags = 0;
++#endif
+ 	start = 1;
+ 	end = 9999;
+ 	delay = 0;
+@@ -1105,7 +1112,9 @@
+ 	}
+ 
+ 	/* Force double buffering */
++#ifndef PSP
+ 	video_flags |= SDL_DOUBLEBUF;
++#endif
+ 
+ 	/* Initialize SDL */
+ 	if ( SDL_Init(SDL_INIT_VIDEO) < 0 ) {

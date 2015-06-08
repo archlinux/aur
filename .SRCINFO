@@ -1,0 +1,20 @@
+pkgbase = psp-sdl_gfx
+	pkgdesc = SDL Graphic Primitives (psp)
+	pkgver = 2.0.25
+	pkgrel = 1
+	url = http://www.ferzkopp.net/joomla/software-mainmenu-14/4-ferzkopps-linux-software/19-sdlgfx
+	arch = any
+	license = LGPL
+	makedepends = psp-gcc
+	depends = psp-sdk
+	depends = psp-sdl
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = http://sourceforge.net/projects/sdlgfx/files/SDL_gfx-2.0.25.tar.gz
+	source = SDL_gfx-2.0.25-PSP.patch
+	md5sums = ea24ed4b82ff1304809c363494fa8e16
+	md5sums = ce83717bf7014358698d408dd5dceff6
+
+pkgname = psp-sdl_gfx
+
