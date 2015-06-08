@@ -1,0 +1,24 @@
+pkgbase = fancontrol-gui-git
+	pkgdesc = GUI for the fancontrol script and systemd service
+	pkgver = 0.1.r7.gd6de588
+	pkgrel = 1
+	url = https://github.com/Maldela/Fancontrol-GUI
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = qt5-base
+	depends = qt5-quickcontrols
+	depends = qt5-declarative
+	depends = lm_sensors
+	depends = kauth
+	depends = systemd
+	provides = fancontrol-gui
+	conflicts = fancontrol-gui
+	source = https://github.com/Maldela/Fancontrol-GUI.git
+	md5sums = SKIP
+
+pkgname = fancontrol-gui-git
+
