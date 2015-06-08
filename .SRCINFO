@@ -1,0 +1,13 @@
+pkgbase = xcursor-lliurex
+	pkgdesc = A cursor theme inspirated on oxygen theme, but drawn from the scratch.
+	pkgver = 20120801
+	pkgrel = 1
+	url = http://gnome-look.org/content/show.php/Lliurex+cursors?content=153068
+	arch = any
+	license = GPL
+	depends = libxcursor
+	source = xcursor-lliurex-20120801.tar.xz::http://gnome-look.org/CONTENT/content-files/153068-lliurex-cursors.tar.xz
+	md5sums = 1a22fb7cda1ba4aff50c9e48d2a3ce88
+
+pkgname = xcursor-lliurex
+
