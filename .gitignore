@@ -1,0 +1,6 @@
+/pkg/
+/src/
+*~
+*.xz
+*.gz
+/carla-git/

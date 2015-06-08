@@ -1,0 +1,34 @@
+pkgbase = carla-git
+	pkgdesc = Audio Plugin Host
+	pkgver = 1.9.6.r118.g3130631
+	pkgrel = 1
+	url = http://kxstudio.sf.net/carla
+	install = carla-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = python-pyqt4
+	depends = clthreads
+	depends = fluidsynth
+	depends = gtk2
+	depends = gtk3
+	depends = liblo
+	depends = linuxsampler-svn
+	depends = mxml
+	depends = zita-convolver
+	depends = zita-resampler
+	depends = clxclient
+	depends = ntk-git
+	depends = qt5-base
+	depends = libpng12
+	optdepends = pygtk: NekoFilter UI
+	optdepends = zlib: extra native plugins
+	optdepends = zynaddsubfx-git: zynaddsubfx banks
+	provides = carla
+	conflicts = carla
+	source = carla-git::git://github.com/falkTX/Carla.git
+	md5sums = SKIP
+
+pkgname = carla-git
+
