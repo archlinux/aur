@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Battle Cube
+Comment=Play Battle Cube
+Exec=battle-cube
+Icon=battle-cube
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;AudioVideo;
+Encoding=UTF-8

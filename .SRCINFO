@@ -1,0 +1,18 @@
+pkgbase = battle-cube
+	pkgdesc = A Unity experiment by Nifflas
+	pkgver = 1
+	pkgrel = 2
+	url = http://nifflas.ni2.se/?page=Miscellaneous
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glu
+	depends = libxcursor
+	depends = libxext
+	source = battle-cube.zip::http://nifflas.ni2.se/content/Misc/Battle%20Cube%20Linux.zip
+	source = battle-cube.desktop
+	sha256sums = d15a537076565561edd0370d808ba55c90008d48242a79639a0c8c886518faf5
+	sha256sums = 67a7dedbafdf68d658974484bdcdbdfdcbce453815cf2420ceefec8195d58058
+
+pkgname = battle-cube
+
