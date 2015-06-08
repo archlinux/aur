@@ -1,0 +1,17 @@
+pkgbase = plastex-git
+	pkgdesc = Python-based LaTeX document processing framework
+	pkgver = 1.0.0.13.ga8c0556
+	pkgrel = 1
+	url = http://tiarno.github.io/plastex/
+	arch = any
+	license = custom
+	makedepends = git
+	depends = python2
+	depends = texlive-core
+	provides = plastex
+	conflicts = plastex
+	source = git+https://github.com/tiarno/plastex.git
+	md5sums = SKIP
+
+pkgname = plastex-git
+
