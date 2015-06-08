@@ -1,0 +1,27 @@
+# Q7Z: Installer: Arch
+# Contributor: Xavion <Xavion (dot) 0 (at) Gmail (dot) com>
+
+post_install() {
+	# Messages
+	echo "==> Ensure that the 'COLOR' option is enabled in '/etc/pacman.conf' as well."
+
+	#/bin/true
+}
+
+post_upgrade() {
+	post_install
+	#/bin/true
+}
+
+pre_remove() {
+	/bin/true
+}
+
+post_remove() {
+	/bin/true
+}
+
+op=$1
+shift
+
+$op "$@"

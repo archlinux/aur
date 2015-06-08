@@ -1,0 +1,31 @@
+diff -aur packer.old/packer packer.new/packer
+--- packer.old/packer	2011-08-22 16:36:38.000000000 +1000
++++ packer.new/packer	2011-08-22 16:39:32.000000000 +1000
+@@ -580,14 +580,22 @@
+       results="$(pacman -Ssq -- "${packageargs[@]}")"
+     else
+       results="$(pacman -Ss -- "${packageargs[@]}")"
++      # Repo
+       results="$(sed -r "s|^[^ ][^/]*/|$S${COLOR3}&$S${COLOR1}|" <<< "$results")"
++      # Package
+       results="$(sed -r "s|^([^ ]+) ([^ ]+)(.*)$|\1 $S${COLOR2}\2$S${ENDCOLOR}\3|" <<< "$results")"
++      # Group
++      results="$(sed -r "s|^([^ ]+ [^ ]+ \[.*\]) (\(.*\))(.*)$|\1 $S${COLOR5}\2$S${ENDCOLOR}\3|" <<< "$results")"
++      # Status
++      results="$(sed -r "s|^([^ ]+ [^ ]+ \[.*\].*) (\[.*\])$|\1 $S${COLOR4}\2$S${ENDCOLOR}|" <<< "$results")"
++    fi
++    if [ "$results" ]; then
++      if [[ $option = search ]]; then
++        echo -e "$results" | fmt -"$_WIDTH" -s
++      else  # interactive
++        echo -e "$results" | fmt -"$_WIDTH" -s | nl -v 0 -w 1 -s ' ' -b 'p^[^ ]'
++      fi | sed '/^$/d'
+     fi
+-    if [[ $option = search ]]; then
+-      echo -e "$results" | fmt -"$_WIDTH" -s
+-    else  # interactive
+-      echo -e "$results" | fmt -"$_WIDTH" -s | nl -v 0 -w 1 -s ' ' -b 'p^[^ ]'
+-    fi | sed '/^$/d'
+     pacname=( $(pacman -Ssq -- "${packageargs[@]}") )
+     pactotal="${#pacname[@]}"
+   else
