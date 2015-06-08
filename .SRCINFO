@@ -1,0 +1,17 @@
+pkgbase = cueplot
+	pkgdesc = A GUI front-end to gnuplot, which uses Qt library
+	pkgver = 0.0.8
+	pkgrel = 6
+	url = http://sourceforge.jp/projects/cueplot/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = qt4
+	depends = gnuplot
+	conflicts = cueplot-svn
+	source = http://dl.sourceforge.jp/cueplot/43138/cueplot-0.0.8.tar.bz2
+	md5sums = 2835cae50eb47aee570ee4003198f9e5
+
+pkgname = cueplot
+
