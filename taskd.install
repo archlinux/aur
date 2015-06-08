@@ -1,0 +1,20 @@
+datadir=/var/lib/taskd
+
+post_install() {
+    systemd-sysusers taskd.conf
+    if [[ ! -e $datadir ]]; then
+      echo "Initializing taskd data."
+      install -dm770 $datadir
+      taskd init --data $datadir
+      chown -R taskd:taskd $datadir
+    fi
+
+}
+
+post_remove() {
+    # Delete the taskd username and group if they exist
+    [[ $(getent passwd taskd) ]] && userdel taskd
+    [[ $(getent group taskd) ]] && groupdel taskd
+    echo "The 'taskd' user and group have been removed."
+    echo "/var/lib/taskd must be removed manually."
+}
