@@ -1,0 +1,16 @@
+pkgbase = pfscalibration
+	pkgdesc = Photometric calibration and recovery of high dynamic range (HDR) images from multiple exposures
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://pfstools.sourceforge.net/pfscalibration.html
+	arch = i686
+	arch = x86_64
+	license = GPL LGPL FDL
+	depends = pfstools
+	depends = jhead
+	provides = pfscalibration
+	source = http://downloads.sourceforge.net/pfstools/pfscalibration-1.6.tar.gz
+	md5sums = 901b8a58438ec7006e21ee1ee310f158
+
+pkgname = pfscalibration
+
