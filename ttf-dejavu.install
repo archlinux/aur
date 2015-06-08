@@ -1,0 +1,57 @@
+configs=(20-unhint-small-dejavu-sans-mono.conf
+         20-unhint-small-dejavu-sans.conf
+         20-unhint-small-dejavu-serif.conf
+         57-dejavu-sans-mono.conf
+         57-dejavu-sans.conf
+         57-dejavu-serif.conf)
+
+post_install() {
+  pushd etc/fonts/conf.d > /dev/null
+  for config in "${configs[@]}"; do
+    ln -sf ../conf.avail/${config} .
+  done
+  popd > /dev/null
+  fc-cache -fs
+  mkfontscale usr/share/fonts/TTF
+  mkfontdir usr/share/fonts/TTF
+}
+
+post_upgrade() {
+  if [ `vercmp 2.30-2 $2` -gt 0 ]; then 
+    pushd etc/fonts/conf.d > /dev/null
+    for config in "${configs[@]}"; do
+      ln -sf ../conf.avail/${config} .
+    done
+    popd > /dev/null
+  fi
+  for config in etc/fonts/conf.d/*; do
+    if [ ! -f ${config} ]; then
+      rm -f ${config}
+    fi
+  done
+  fc-cache -fs
+  mkfontscale usr/share/fonts/TTF
+  mkfontdir usr/share/fonts/TTF
+}
+
+pre_upgrade() {
+  # Link new config files not present on system yet
+  pushd etc/fonts/conf.d > /dev/null
+  for config in "${configs[@]}"; do
+    if [ ! -f ../conf.avail/${config} ]; then
+      ln -sf ../conf.avail/${config} .
+    fi
+  done
+  popd > /dev/null
+}
+
+post_remove() {
+  pushd etc/fonts/conf.d > /dev/null
+  for config in "${configs[@]}"; do
+    rm -f ${config}
+  done
+  popd > /dev/null
+  fc-cache -fs
+  mkfontscale usr/share/fonts/TTF
+  mkfontdir usr/share/fonts/TTF
+}
