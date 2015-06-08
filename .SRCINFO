@@ -1,0 +1,14 @@
+pkgbase = nodejs-browserify
+	pkgdesc = browser-side require() the node way
+	pkgver = 4.1.11
+	pkgrel = 1
+	url = http://github.com/substack/node-browserify
+	arch = any
+	license = MIT
+	depends = nodejs
+	noextract = browserify-4.1.11.tgz
+	source = http://registry.npmjs.org/browserify/-/browserify-4.1.11.tgz
+	sha1sums = 91652e0eabb43a8a69661f566ea35e356abbf6d1
+
+pkgname = nodejs-browserify
+
