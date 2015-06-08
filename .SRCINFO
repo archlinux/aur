@@ -1,0 +1,14 @@
+pkgbase = python2-sphinxcontrib-newsfeed
+	pkgdesc = News Feed extension for Sphinx
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://bitbucket.org/prometheus/sphinxcontrib-newsfeed
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = python2-sphinx
+	source = https://pypi.python.org/packages/source/s/sphinxcontrib-newsfeed/sphinxcontrib-newsfeed-0.1.4.tar.gz
+	sha256sums = f78c865b1a32d249644a9c46f395b547df0dc21ed69b70898d64235b4755efb4
+
+pkgname = python2-sphinxcontrib-newsfeed
+
