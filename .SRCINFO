@@ -1,0 +1,13 @@
+pkgbase = fortune-mod-limericks
+	pkgdesc = A collection of really funny and perverse limericks.
+	pkgver = 3
+	pkgrel = 2
+	url = http://stormdragon.us/fortunes/limericks
+	arch = any
+	license = WTFPL
+	depends = fortune-mod
+	source = http://stormdragon.us/fortunes/limericks
+	md5sums = 063b9c9916003dfb67094998e00b6480
+
+pkgname = fortune-mod-limericks
+
