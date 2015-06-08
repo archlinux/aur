@@ -1,0 +1,21 @@
+print_info() {
+	echo "Zend debugger settings are in /etc/php/conf.d/zend_debugger.ini"
+	echo "For any problem restart manually your web server"
+}
+
+reload_httpd() {
+	systemctl restart httpd
+}
+
+post_install() {
+	print_info
+	reload_httpd
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	reload_httpd
+}
