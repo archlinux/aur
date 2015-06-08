@@ -1,0 +1,23 @@
+pkgbase = lib32-libmad
+	pkgdesc = A high-quality MPEG audio decoder
+	pkgver = 0.15.1b
+	pkgrel = 1
+	url = http://www.underbit.com/products/mad/
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	depends = libmad
+	options = !libtool
+	source = http://downloads.sourceforge.net/sourceforge/mad/libmad-0.15.1b.tar.gz
+	source = libmad.patch
+	source = amd64-64bit.diff
+	source = frame_length.diff
+	source = optimize.diff
+	md5sums = 1be543bc30c56fb6bea1d7bf6a64e66c
+	md5sums = fbcca0267a423bae45389666f4cb04d5
+	md5sums = 8d8bd64a2842dd59153b3a6642059e23
+	md5sums = 3329b032118a68e18908197e65b3198d
+	md5sums = 3e52afe2103f367810a18bef9e82eb9f
+
+pkgname = lib32-libmad
+
