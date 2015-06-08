@@ -1,0 +1,13 @@
+pkgbase = ilisp
+	pkgdesc = (X)Emacs interface for an inferior Common Lisp, or other Lisp based languages
+	pkgver = 20021222
+	pkgrel = 1
+	url = http://sourceforge.net/projects/ilisp/?source=directory
+	arch = any
+	license = GPL
+	makedepends = tcsh
+	source = http://netcologne.dl.sourceforge.net/project/ilisp/ilisp/ilisp-snapshot/ilisp-20021222.tar.gz
+	md5sums = e7a467c9e587640a81c66e53e367b914
+
+pkgname = ilisp
+
