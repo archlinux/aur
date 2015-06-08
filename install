@@ -1,0 +1,6 @@
+post_install() {
+    cp -n /etc/webapps/zarafa-webapp/config.example.php /etc/webapps/zarafa-webapp/config.php
+    cp -n /etc/webapps/zarafa-webapp/debug.example.php /etc/webapps/zarafa-webapp/debug.php
+    chown -R http:http /var/log/zarafa-webapp
+    chown -R http:http /var/lib/zarafa-webapp
+}
