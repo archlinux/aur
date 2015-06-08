@@ -1,0 +1,8 @@
+post_install() {
+  echo <<EOF
+Install game files somewhere and set AVP_DATA to that location.
+If AVP is unset, the game will look in /opt/avp/.
+All data files must be in lowercase only.
+See /opt/avp/README for a list of files and md5sums.
+EOF
+}

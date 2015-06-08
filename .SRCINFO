@@ -1,0 +1,22 @@
+pkgbase = avp
+	pkgdesc = Alien Versus Predator Gold engine
+	pkgver = 20150214
+	pkgrel = 1
+	url = https://www.icculus.org/avp
+	install = avp.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = glu
+	depends = sdl
+	depends = libgl
+	depends = openal
+	optdepends = avp-data
+	source = https://www.icculus.org/avp/files/avp-20150214.tar.gz
+	source = avp
+	sha512sums = c485a55ff455498bcf82bc17f2056d35d4c646bdf7809f4c326fc7063a9ce5db9e4893af67dff3f6bedb7d5f96e82f792d7f516044fdbab638113091a5505158
+	sha512sums = b9d2923123e6ecc8703ed15e7df170ec5a8607d444800434887ec540aba51b7dc5e39f56b511584560ffab7b9c04db7e24d820b6f1fab30f8b95f332a4a176b1
+
+pkgname = avp
+
