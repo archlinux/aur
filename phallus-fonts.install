@@ -1,0 +1,11 @@
+post_install() {
+    echo "Updating font cache..."
+    xset +fp /usr/share/fonts/misc
+    xset fp rehash
+    fc-cache -fv
+}
+
+post_remove() {
+    echo "Updating font cache..."
+    fc-cache -fv
+}
