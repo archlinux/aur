@@ -1,0 +1,13 @@
+post_install() {
+  chown -R 33:33 /usr/share/nagvis/
+
+  echo '==> Enable php and uncomment extension=pdo_sqlite.so in /etc/php/php.ini
+    Include conf/extra/nagvis.conf in httpd.conf, then copy
+    /usr/share/nagvis/etc/nagvis.ini.php-sample to /usr/share/nagvis/etc/nagvis.ini.php
+    Restart Apache and browse to http://localhost/nagvis
+    The default logins are "admin, admin" and "guest, guest"'
+}
+
+post_upgrade() {
+  post_install
+}

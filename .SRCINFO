@@ -1,0 +1,35 @@
+pkgbase = nagvis
+	pkgdesc = Visualization addon for the well known network managment system Nagios
+	pkgver = 1.7.10
+	pkgrel = 3
+	url = http://www.nagvis.org
+	install = nagvis.install
+	arch = any
+	license = GPL
+	depends = graphviz
+	depends = php-sqlite
+	depends = apache
+	depends = php-apache
+	backup = usr/share/nagvis/etc/geomap/links.xml
+	backup = usr/share/nagvis/etc/geomap/viewpoints.xml
+	backup = usr/share/nagvis/etc/geomap/locations.xml
+	backup = usr/share/nagvis/etc/geomap/settings.xml
+	backup = usr/share/nagvis/etc/geomap/demo-locations.csv
+	backup = usr/share/nagvis/etc/maps/demo-overview.cfg
+	backup = usr/share/nagvis/etc/maps/demo-automap2.cfg
+	backup = usr/share/nagvis/etc/maps/demo-load.cfg
+	backup = usr/share/nagvis/etc/maps/demo-germany.cfg
+	backup = usr/share/nagvis/etc/maps/demo-geomap.cfg
+	backup = usr/share/nagvis/etc/maps/demo-ham-racks.cfg
+	backup = usr/share/nagvis/etc/maps/demo-muc-srv1.cfg
+	backup = usr/share/nagvis/etc/maps/demo-automap.cfg
+	backup = usr/share/nagvis/etc/.htaccess
+	backup = usr/share/nagvis/etc/conf.d/demo.ini.php
+	backup = etc/httpd/conf/extra/nagvis.conf
+	source = http://downloads.sourceforge.net/nagvis/nagvis-1.7.10.tar.gz
+	source = nagvis.conf
+	md5sums = b9defcf6153525c9927a7e631fc0ff5c
+	md5sums = 05fe86ccd6e950105532bed926164f3c
+
+pkgname = nagvis
+
