@@ -1,0 +1,16 @@
+pkgbase = maruku
+	pkgdesc = A Markdown-superset interpreter
+	pkgver = 0.6.1
+	pkgrel = 2
+	url = http://maruku.rubyforge.org/
+	arch = any
+	license = GPL2
+	makedepends = rubygems
+	depends = ruby
+	depends = ruby-syntax
+	noextract = maruku-0.6.1.gem
+	source = http://gems.rubyforge.org/gems/maruku-0.6.1.gem
+	md5sums = b919c2b706ca83502a8bec0be5c16c6d
+
+pkgname = maruku
+
