@@ -8,6 +8,7 @@ pkgbase = duck
 	arch = i686
 	license = GPL
 	makedepends = rpmextract
+	depends = java-runtime
 	options = !strip
 	source_x86_64 = https://repo.cyberduck.io/stable/x86_64/duck-4.7.17418.x86_64.rpm
 	md5sums_x86_64 = 48fc1c17350adda930f8b4b1c3d16de0
