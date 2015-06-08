@@ -1,0 +1,16 @@
+pkgbase = planarity
+	pkgdesc = A library for implementing graph algorithms
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://code.google.com/p/planarity/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = glibc
+	source = http://mirrors.mit.edu/sage/spkg/upstream/planarity/planarity-2.2.0.tar.bz2
+	source = no-nauty.patch
+	md5sums = 3e05f05ad8bf777e6a7ad48958a18c06
+	md5sums = fd0368575784dafb0e97d229494cdfc2
+
+pkgname = planarity
+
