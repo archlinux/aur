@@ -1,0 +1,36 @@
+pkgbase = monogame-git
+	pkgdesc = XNA Implementation for Mono based platforms (git)
+	pkgver = v3.2.2792
+	pkgrel = 1
+	url = http://monogame.codeplex.com
+	arch = i686
+	arch = x86_64
+	license = Microsoft Public License
+	makedepends = nant
+	makedepends = nvidia-texture-tools
+	makedepends = dos2unix
+	makedepends = monodevelop
+	makedepends = sharpfont
+	makedepends = assimp-net
+	depends = opentk
+	depends = sdl_mixer
+	depends = sdl_ttf
+	depends = sdl_image
+	depends = sdl_net
+	depends = smpeg
+	depends = sdl_gfx
+	provides = monogame
+	conflicts = monogame
+	conflicts = tao-framework
+	conflicts = tao-framework-svn
+	source = monogame::git+https://github.com/mono/MonoGame.git
+	source = Dependencies::git+https://github.com/Mono-Game/MonoGame.Dependencies.git
+	source = monogame.pc.in
+	source = mgcb.sh
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = ca37d66293d3aac43cac32628ed5d6b6
+	md5sums = 3cad3825e124ea7b7d060ba492adee47
+
+pkgname = monogame-git
+
