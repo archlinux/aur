@@ -1,0 +1,13 @@
+pkgbase = igcc
+	pkgdesc = Interactive GCC. Real-eval-print loop for C/C++ programmers.
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://www.artificialworlds.net/wiki/IGCC/IGCC
+	arch = any
+	license = GPL
+	depends = python2
+	source = http://downloads.sourceforge.net/sourceforge/igcc/igcc-0.2.tar.bz2
+	md5sums = e3fb5a491e02e524059e357903487785
+
+pkgname = igcc
+
