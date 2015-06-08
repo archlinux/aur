@@ -1,0 +1,21 @@
+pkgbase = lightdm-gtk-greeter-settings
+	pkgdesc = Settings editor for LightDM GTK+ Greeter
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://launchpad.net/lightdm-gtk-greeter-settings
+	install = lightdm-gtk-greeter-settings.install
+	arch = any
+	license = GPL3
+	license = LGPL3
+	makedepends = python-distutils-extra
+	depends = gtk3
+	depends = python-gobject
+	depends = python
+	depends = gtk-update-icon-cache
+	depends = desktop-file-utils
+	provides = lightdm-gtk-greeter-settings
+	source = https://launchpad.net/lightdm-gtk-greeter-settings/1.2/1.2.0/+download/lightdm-gtk-greeter-settings-1.2.0.tar.gz
+	sha256sums = 0450202639b947434695d5ff60b4c4b655d7399f52e5b56db4593241c8080a55
+
+pkgname = lightdm-gtk-greeter-settings
+
