@@ -1,0 +1,12 @@
+[Unit]
+Description=Load speakup configuration
+DefaultDependencies=no
+After=espeakup.service
+
+[Service]
+Type=oneshot
+ExecStart=-/usr/bin/speakupconf load
+StandardOutput=syslog
+
+[Install]
+WantedBy=sound.target

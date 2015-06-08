@@ -1,0 +1,16 @@
+[Unit]
+Description=Software speech output system wide settings
+# espeakup needs to start after the audio devices appear, hopefully this should go away in the future
+Wants=systemd-udev-settle.service
+After=systemd-udev-settle.service sound.target
+
+[Service]
+Type=forking
+EnvironmentFile=/etc/conf.d/espeakup
+PIDFile=/run/espeakup.pid
+ExecStart=/usr/bin/espeakup --default-voice=${default_voice}
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+
+[Install]
+WantedBy=sound.target
