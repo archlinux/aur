@@ -1,0 +1,28 @@
+pkgbase = edis-git
+	pkgdesc = a simple cross-platform IDE for C
+	pkgver = r1053.3761ba5
+	pkgrel = 1
+	url = http://centaurialpha.github.io/edis
+	install = edis-git.install
+	arch = any
+	license = GPLv3
+	makedepends = git
+	depends = python
+	depends = python-pyqt4
+	depends = python-qscintilla
+	optdepends = ctags: soporte para generar árbol de símbolos
+	optdepends = cppcheck: análisis estático de errores
+	provides = edis
+	conflicts = edis
+	conflicts = edis-c
+	conflicts = edis-c-git
+	replaces = edis-c-git
+	source = edis::git+https://github.com/centaurialpha/edis.git
+	source = edis.png
+	source = edis.desktop
+	md5sums = SKIP
+	md5sums = b62bba84e3be425a165f78f4261de1c7
+	md5sums = 4657b48c3efce21a9e5f8804d4892431
+
+pkgname = edis-git
+
