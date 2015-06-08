@@ -1,0 +1,26 @@
+pkgbase = dropbox-kfilebox-icons
+	pkgdesc = Dropbox systray icons from the Kfilebox program
+	pkgver = 1
+	pkgrel = 1
+	url = http://i.imgur.com/ZQNQM.png
+	install = dropbox-kfilebox-icons.install
+	arch = any
+	license = GPL
+	depends = hicolor-icon-theme
+	depends = dropbox
+	conflicts = dropbox-dark-panel-icons
+	conflicts = dropbox-humanity-dark-icons
+	conflicts = dropbox-humanity-emblems
+	conflicts = dropbox-humanity-icons
+	conflicts = dropbox-kde-systray-icons
+	conflicts = dropbox-light-panel-icons
+	conflicts = dropbox-tango-emblems
+	conflicts = dropbox-ubuntu-mono-dark
+	conflicts = dropbox-ubuntu-mono-light
+	conflicts = dropbox-faenza-dark
+	conflicts = dropbox-white-icons
+	source = https://dl.dropbox.com/u/6596386/dropbox-kfilebox-icons/dropbox-kfilebox-icons.tar.gz
+	md5sums = 408a9440ff4d4ca23150ec5bc6cd0265
+
+pkgname = dropbox-kfilebox-icons
+
