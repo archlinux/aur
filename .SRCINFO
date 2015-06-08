@@ -1,0 +1,13 @@
+pkgbase = nagios-cli-git
+	pkgdesc = a nagios command line interface, exposing some features that are available via the web based graphical user interface.
+	pkgver = 20141020
+	pkgrel = 1
+	url = https://github.com/tehmaze/nagios-cli
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = python2
+	provides = nagios-cli
+
+pkgname = nagios-cli-git
+
