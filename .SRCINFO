@@ -1,0 +1,20 @@
+pkgbase = kded-git
+	pkgdesc = KDE Daemon
+	pkgver = r54.d53b508
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/kded
+	arch = i686
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	makedepends = kdoctools-git
+	depends = kinit-git
+	provides = kded
+	conflicts = kded
+	source = git://anongit.kde.org/kded.git
+	md5sums = SKIP
+
+pkgname = kded-git
+
