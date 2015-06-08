@@ -1,0 +1,27 @@
+pkgbase = uim-git
+	pkgdesc = A multilingual input method framework
+	pkgver = 1.8.0.alpha.r264.gfe60773
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/uim/uim
+	install = uim-git.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = intltool
+	makedepends = perl
+	makedepends = ruby
+	makedepends = librsvg
+	makedepends = asciidoc
+	makedepends = ed
+	depends = gtk2
+	provides = uim
+	conflicts = uim
+	conflicts = uim-svn
+	source = git+https://github.com/uim/uim.git
+	md5sums = SKIP
+	sha256sums = SKIP
+
+pkgname = uim-git
+
