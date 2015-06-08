@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Micropolis
+Comment=Open Source Micropolis, based on the original SimCity Classic from Maxis, by Will Wright.
+Exec=/usr/bin/micropolis-java 
+Icon=micropolisj
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Game;Simulation;
+Encoding=UTF-8
