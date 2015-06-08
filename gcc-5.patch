@@ -1,0 +1,56 @@
+From 23b6426dfa1a17b05860c3a9e0ce08c4cd45b64b Mon Sep 17 00:00:00 2001
+From: Hefee <hefee@netzguerilla.net>
+Date: Thu, 7 May 2015 01:15:55 +0200
+Subject: [PATCH] Compile with GCC 5
+
+this fixes the error and makes complete oCC compile with GCC 5.
+error: ISO C does not support '__FUNCTION__' predefined identifier
+[-Wpedantic]
+
+According to the porting guide:
+The fix is either to use the standard predefined identifier __func__
+(since C99), or to use the __extension__ keyword.
+---
+ csync/src/csync_log.h                     | 2 +-
+ csync/src/httpbf/src/httpbf.c             | 2 +-
+ csync/tests/csync_tests/check_csync_log.c | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/csync/src/csync_log.h b/csync/src/csync_log.h
+index 38f5f9c..0cd0d01 100644
+--- a/csync/src/csync_log.h
++++ b/csync/src/csync_log.h
+@@ -61,7 +61,7 @@ enum csync_log_priority_e {
+ };
+ 
+ #define CSYNC_LOG(priority, ...) \
+-  csync_log(priority, __FUNCTION__, __VA_ARGS__)
++  csync_log(priority, __func__, __VA_ARGS__)
+ 
+ void csync_log(int verbosity,
+                const char *function,
+diff --git a/csync/src/httpbf/src/httpbf.c b/csync/src/httpbf/src/httpbf.c
+index 815b07e..2489e8d 100644
+--- a/csync/src/httpbf/src/httpbf.c
++++ b/csync/src/httpbf/src/httpbf.c
+@@ -42,7 +42,7 @@
+ #define DEBUG_HBF(...) { if(transfer->log_cb) { \
+         char buf[1024];                         \
+         snprintf(buf, 1024, __VA_ARGS__);       \
+-        transfer->log_cb(__FUNCTION__, buf, transfer->user_data);    \
++        transfer->log_cb(__func__, buf, transfer->user_data);    \
+   }  }
+ 
+ // #endif
+diff --git a/csync/tests/csync_tests/check_csync_log.c b/csync/tests/csync_tests/check_csync_log.c
+index 4c88c14..65a8ae9 100644
+--- a/csync/tests/csync_tests/check_csync_log.c
++++ b/csync/tests/csync_tests/check_csync_log.c
+@@ -131,7 +131,7 @@ static void check_logging(void **state)
+     rc = csync_set_log_callback(check_log_callback);
+     assert_int_equal(rc, 0);
+ 
+-    csync_log(1, __FUNCTION__, "rc = %d", rc);
++    csync_log(1, __func__, "rc = %d", rc);
+ 
+     rc = _tstat(path, &sb);

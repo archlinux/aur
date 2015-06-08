@@ -1,0 +1,24 @@
+pkgbase = owncloud-client-qt5
+	pkgdesc = ownCloud client based on mirall built with Qt 5
+	pkgver = 1.8.1
+	pkgrel = 2
+	url = http://owncloud.org/
+	install = owncloud-client-qt5.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = python-sphinx
+	depends = qtkeychain-qt5
+	depends = qt5-tools
+	optdepends = python2-nautilus: integration with Nautilus
+	optdepends = nemo-python: integration with Nemo
+	conflicts = owncloud-client
+	backup = etc/ownCloud/sync-exclude.lst
+	source = https://download.owncloud.com/desktop/stable/owncloudclient-1.8.1.tar.xz
+	source = gcc-5.patch
+	md5sums = 94c38c8cc15f2e34fae49e06ee3dc66e
+	md5sums = 6ab771260982b6d6417cda75e7d40750
+
+pkgname = owncloud-client-qt5
+
