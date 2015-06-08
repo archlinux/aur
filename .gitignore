@@ -1,0 +1,5 @@
+libfreenect2/
+pkg/
+src/
+
+libfreenect2-git-*.pkg.tar.xz
