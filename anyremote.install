@@ -1,0 +1,6 @@
+post_install () {
+    echo "
+    >>>Download the java client for your phone at
+    >>>http://anyremote.sourceforge.net/dload.html
+    "
+}
