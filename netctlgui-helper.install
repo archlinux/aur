@@ -1,0 +1,11 @@
+post_install() {
+  setcap cap_setuid=ep usr/bin/netctlgui-helper 2>/dev/null || chmod +s usr/bin/netctlgui-helper
+  cat << EOF
+Note: users should be in network group if you want to get them access to the system bus
+See http://arcanis.name/devs/netctl-gui-security-notes.html#helper
+EOF
+}
+
+post_upgrade() {
+  post_install "$1"
+}
