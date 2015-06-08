@@ -1,0 +1,22 @@
+pkgbase = libkipi-frameworks-git
+	pkgdesc = A interface to use kipi-plugins from a KDE image management program like digiKam. KF5 Frameworks branch (GIT version)
+	pkgver = 5.0.0.r1103.1a65688
+	pkgrel = 1
+	url = http://www.digikam.org/sharedlibs
+	install = libkipi-frameworks-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	makedepends = git
+	depends = kxmlgui
+	depends = hicolor-icon-theme
+	conflicts = libkipi
+	source = git://anongit.kde.org/libkipi#branch=frameworks
+	sha1sums = SKIP
+
+pkgname = libkipi-frameworks-git
+
