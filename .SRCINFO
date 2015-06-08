@@ -1,0 +1,24 @@
+pkgbase = haskell-reform-happstack
+	pkgdesc = Happstack support for reform.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/reform-happstack
+	install = haskell-reform-happstack.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = haskell-bytestring>=0.9
+	depends = haskell-happstack-server>=7.0
+	depends = haskell-mtl>=2.0
+	depends = haskell-random>=1.0
+	depends = haskell-reform>=0.1
+	depends = haskell-text>=0.11
+	depends = haskell-utf8-string>=0.3
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/reform-happstack/0.2.0/reform-happstack-0.2.0.tar.gz
+	md5sums = f82c16f821437f6be2dda48048c04554
+
+pkgname = haskell-reform-happstack
+
