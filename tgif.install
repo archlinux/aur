@@ -1,0 +1,13 @@
+post_install() {
+   echo 'tgif needs a font package with a font matching'
+   echo '-*-courier-medium-r-normal-*-14-*-*-*-*-*-iso8859-1'
+   echo 'to run. The package xorg-fonts-75dpi would be'
+   echo 'a candidate, but there may be others.' 
+   update-desktop-database -q
+}
+post_update() {
+   update-desktop-database -q
+}
+post_remove() {
+   update-desktop-database -q
+}

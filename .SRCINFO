@@ -1,0 +1,18 @@
+pkgbase = tgif
+	pkgdesc = Vector-based drawing tool (for technical, not artistic, stuff)
+	pkgver = 4.2.5
+	pkgrel = 6
+	url = http://bourbon.usc.edu/tgif/
+	install = tgif.install
+	arch = i686
+	arch = x86_64
+	license = custom:QPL
+	makedepends = imake
+	depends = libxt
+	depends = zlib
+	depends = desktop-file-utils
+	source = ftp://bourbon.usc.edu/pub/tgif/tgif-QPL-4.2.5.tar.gz
+	md5sums = a622240ce2377f15b6d8261e4c49b8f6
+
+pkgname = tgif
+
