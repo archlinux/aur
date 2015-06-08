@@ -1,0 +1,16 @@
+pkgbase = auto-reencode
+	pkgdesc = Mass convert any format readable by handbrake to mp4 contained x264.
+	pkgver = 2.75
+	pkgrel = 1
+	url = https://github.com/graysky2/auto-reencode
+	arch = any
+	license = MIT
+	depends = mediainfo>=0.7.2
+	depends = handbrake-cli
+	conflicts = autoflv2x264
+	replaces = autoflv2x264
+	source = http://repo-ck.com/source/auto-reencode/auto-reencode-2.75.tar.xz
+	sha256sums = 51c26ee98663e101f2a125e386d785aa3276a5876d5b4d88844d1444f90d4a89
+
+pkgname = auto-reencode
+
