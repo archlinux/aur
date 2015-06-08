@@ -1,0 +1,22 @@
+pkgbase = menumaker-compiz
+	pkgdesc = Heuristics-driven menu generator for Deskmenu, FluxBox, IceWM, OpenBox, WindowMaker and XFCE. Now with Compiz, MyGTKMenu, urxvt, and roxterm support.
+	pkgver = 0.99.7
+	pkgrel = 9
+	url = http://menumaker.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = python2
+	provides = menumaker
+	conflicts = menumaker
+	source = http://downloads.sourceforge.net/menumaker/menumaker-0.99.7.tar.gz
+	source = menumaker.patch
+	source = Compiz.py
+	source = MyGTKMenu.py
+	md5sums = a54cb7ec32db1bc8e04218e0be727b1e
+	md5sums = 3b55790ad700c556e4d62c0e83904b8b
+	md5sums = f9d52fcfe857dc875437e4669b4929df
+	md5sums = 88d96bf417641e463fc4b2ccb9553dae
+
+pkgname = menumaker-compiz
+
