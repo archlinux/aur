@@ -1,0 +1,25 @@
+pkgbase = cb-pipemenus-git
+	pkgdesc = various Openbox pipemenus
+	pkgver = 0.13
+	pkgrel = 1
+	url = https://github.com/TamCore/cb-pipemenus
+	arch = any
+	license = custom
+	depends = openbox
+	depends = zenity
+	depends = terminator
+	optdepends = python2-paramiko: for cb-sshconfig-pipemenu
+	optdepends = mesa-demos: for cb-compositor
+	optdepends = gksu: for cb-printing-pipemenu
+	optdepends = compton: for cb-compton
+	optdepends = wget: for cb-dropbox-pipemenu
+	optdepends = curl: for cb-dropbox-pipemenu
+	optdepends = tar: for cb-dropbox-pipemenu
+	provides = cb-pipemenus
+	conflicts = cb-pipemenus
+	replaces = cb-pipemenus
+	source = git://github.com/TamCore/cb-pipemenus.git
+	sha256sums = SKIP
+
+pkgname = cb-pipemenus-git
+
