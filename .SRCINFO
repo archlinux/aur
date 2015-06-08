@@ -1,0 +1,26 @@
+pkgbase = kdeconnect-git
+	pkgdesc = Adds communication between KDE and your smartphone
+	pkgver = r804.e34a291
+	pkgrel = 1
+	url = https://projects.kde.org/projects/playground/base/kdeconnect-kde
+	install = kdeconnect-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = python
+	depends = kio
+	depends = kcmutils
+	depends = qca-qt5
+	depends = libfakekey
+	depends = hicolor-icon-theme
+	provides = kdeconnect
+	conflicts = kdeconnect-frameworks
+	conflicts = kdeconnect
+	replaces = kdeconnect-frameworks-git
+	source = git://anongit.kde.org/kdeconnect-kde.git
+	sha256sums = SKIP
+
+pkgname = kdeconnect-git
+
