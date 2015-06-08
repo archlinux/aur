@@ -1,0 +1,8 @@
+post_upgrade() {
+	EXTRAMODULES='extramodules-4.0-uksm'
+	depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
+}
+
+post_install() {
+	post_upgrade
+}
