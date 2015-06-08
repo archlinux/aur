@@ -1,0 +1,25 @@
+pkgbase = perl-mongodbx-autoderef
+	pkgdesc = Automagically dereference MongoDB DBRefs lazily
+	pkgver = 1.110560
+	pkgrel = 1
+	url = http://search.cpan.org/dist/MongoDBx-AutoDeref
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-class-load
+	depends = perl-data-visitor
+	depends = perl-digest-sha1
+	depends = perl-mongodb
+	depends = perl-moose
+	depends = perl-moosex-types
+	depends = perl-moosex-types-structured
+	depends = perl-namespace-autoclean
+	depends = perl-perl6-junction
+	depends = perl-try-tiny
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/N/NP/NPEREZ/MongoDBx-AutoDeref-1.110560.tar.gz
+	md5sums = 66d0d911b5791ff0c346e051a85373de
+	sha512sums = 08063d83ee5f791a13718517ff5a18c78601057d125c52d53045b92d7af242abad4fa650355a709f035fc17130570709e94cac39e68dda2348ead800d179d2d7
+
+pkgname = perl-mongodbx-autoderef
+
