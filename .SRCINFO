@@ -1,0 +1,15 @@
+pkgbase = nodejs-nodemon
+	pkgdesc = Simple monitor script for use during development of a node.js app.
+	pkgver = 1.3.7
+	pkgrel = 1
+	url = http://nodemon.io
+	arch = any
+	license = MIT
+	depends = nodejs
+	noextract = nodemon-1.3.7.tgz
+	options = !strip
+	source = http://registry.npmjs.org/nodemon/-/nodemon-1.3.7.tgz
+	sha1sums = 447bc2e01bf499cbf5853f9937496e0a04835449
+
+pkgname = nodejs-nodemon
+
