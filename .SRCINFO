@@ -1,0 +1,15 @@
+pkgbase = iceweasel-i18n-sr
+	pkgdesc = Serbian language package for Iceweasel
+	pkgver = 38.0.1.deb5
+	pkgrel = 1
+	url = http://www.mozilla.com/
+	arch = any
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = iceweasel>=38.0.1
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-sr_38.0.1-5_all.deb
+	sha256sums = ca2685262f921d1e67fcfd68beca709e6615a7c2741225d74db1f43266e1a9c5
+
+pkgname = iceweasel-i18n-sr
+
