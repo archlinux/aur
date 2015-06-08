@@ -1,0 +1,18 @@
+pkgbase = kdeplasma-applets-stdin-svn
+	pkgdesc = This plasmoid executes a process and captures its stdout or stderr output stream
+	pkgver = r57
+	pkgrel = 1
+	url = http://www.kde-look.org/content/show.php/STDIN+Plasmoid?content=92309
+	install = kdeplasma-applets-stdin-svn.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = automoc4
+	makedepends = cmake
+	makedepends = subversion
+	depends = kdebase-workspace
+	source = kdeplasma-applets-stdin-svn::svn+https://svn.code.sf.net/p/plasmoidstdin/code/0.2/branches/0.2-workarounds
+	md5sums = SKIP
+
+pkgname = kdeplasma-applets-stdin-svn
+
