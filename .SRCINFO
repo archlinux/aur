@@ -1,0 +1,18 @@
+pkgbase = libinjection-git
+	pkgdesc = SQL / SQLI tokenizer parser analyzer.
+	pkgver = v3.6.0.4.g7250af6
+	pkgrel = 1
+	url = https://github.com/client9/libinjection
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = rsync
+	depends = bash
+	provides = libinjection
+	conflicts = libinjection
+	options = !strip
+	source = git+https://github.com/client9/libinjection
+	sha1sums = SKIP
+
+pkgname = libinjection-git
+
