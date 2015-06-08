@@ -1,0 +1,16 @@
+## arg 1:  the new package version
+post_install() {
+  echo "  To make LINQ technology work with MySQL Connector/NET you must edit the \"/usr/lib/mono/4.5/sqlmetal.exe.config\" file, and change the line:"
+  echo "    <provider name=\"MySQL\" dbLinqSchemaLoader=\"DbLinq.MySql.MySqlSchemaLoader, System.Data.Linq, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\" databaseConnection=\"ByteFX.Data.MySqlClient.MySqlConnection, ByteFX.Data\" />"
+  echo "  to:"
+  echo "    <provider name=\"MySQL\" dbLinqSchemaLoader=\"DbLinq.MySql.MySqlSchemaLoader, System.Data.Linq, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\" databaseConnection=\"MySql.Data.MySqlClient.MySqlConnection, MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d\" />"
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  echo "  To make LINQ technology work with MySQL Connector/NET you must edit the \"/usr/lib/mono/4.5/sqlmetal.exe.config\" file, and change the line:"
+  echo "    <provider name=\"MySQL\" dbLinqSchemaLoader=\"DbLinq.MySql.MySqlSchemaLoader, System.Data.Linq, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\" databaseConnection=\"ByteFX.Data.MySqlClient.MySqlConnection, ByteFX.Data\" />"
+  echo "  to:"
+  echo "    <provider name=\"MySQL\" dbLinqSchemaLoader=\"DbLinq.MySql.MySqlSchemaLoader, System.Data.Linq, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\" databaseConnection=\"MySql.Data.MySqlClient.MySqlConnection, MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d\" />"  
+}
