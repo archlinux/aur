@@ -1,0 +1,14 @@
+pkgbase = python-george
+	pkgdesc = Fast Gaussian Processes for regression
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://dan.iel.fm/george
+	arch = any
+	license = MIT
+	makedepends = hodlr
+	depends = python-scipy
+	source = https://github.com/dfm/george/archive/v0.2.0.tar.gz
+	md5sums = SKIP
+
+pkgname = python-george
+
