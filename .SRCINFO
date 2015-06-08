@@ -1,0 +1,18 @@
+pkgbase = vcsi
+	pkgdesc = Create video contact sheets, thumbnails
+	pkgver = 3
+	pkgrel = 1
+	url = https://github.com/amietn/vcsi
+	arch = any
+	license = MIT
+	depends = python
+	depends = ffmpeg
+	depends = python-numpy
+	depends = python-pillow
+	depends = python-jinja
+	options = !emptydirs
+	source = vcsi::git+https://github.com/amietn/vcsi.git#tag=v3
+	md5sums = SKIP
+
+pkgname = vcsi
+
