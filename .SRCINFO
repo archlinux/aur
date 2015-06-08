@@ -1,0 +1,17 @@
+pkgbase = python-st7036
+	pkgdesc = Python bindings for ST7036 LCD.
+	pkgver = r20.a33546b
+	pkgrel = 1
+	url = https://github.com/pimoroni/st7036
+	arch = armv6h
+	license = GPL
+	makedepends = python
+	makedepends = git
+	depends = python
+	depends = python-spidev
+	depends = python-raspberry-gpio
+	source = python-st7036::git://github.com/pimoroni/st7036.git
+	sha256sums = SKIP
+
+pkgname = python-st7036
+
