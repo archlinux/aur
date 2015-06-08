@@ -1,0 +1,19 @@
+pkgbase = haskell-unordered-containers
+	pkgdesc = Efficient hashing-based container types
+	pkgver = 0.2.5.1
+	pkgrel = 1
+	url = https://github.com/tibbe/unordered-containers
+	install = haskell-unordered-containers.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = haskell-deepseq>=1.1
+	depends = haskell-hashable>=1.0.1.1
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/unordered-containers/0.2.5.1/unordered-containers-0.2.5.1.tar.gz
+	md5sums = c330100ca1d5e6b3cb8242d0bde706f9
+
+pkgname = haskell-unordered-containers
+
