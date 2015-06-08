@@ -1,0 +1,14 @@
+[Unit]
+Description=Pcap_DNSProxy Service
+After=network.target
+
+[Service]
+Type=forking
+User=root
+WorkingDirectory=/usr/share/pcap-dnsproxy
+ExecStart=/usr/share/pcap-dnsproxy/Pcap_DNSProxy
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
