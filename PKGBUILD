@@ -2,7 +2,7 @@
 
 pkgname=fskit-git
 pkgver=r209.bddabd0
-pkgrel=1
+pkgrel=2
 pkgdesc='Filesystem utility library and SDK'
 url='https://github.com/jcnelson/fskit.git'
 arch=( 'x86_64' 'i686' )
