@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Terasology
+GenericName=Terasology
+Comment=Yet another high resolution game with blocks...
+Exec=terasology
+Terminal=false
+Type=Application
+Icon=terasology
+Categories=Game;
