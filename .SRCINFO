@@ -1,0 +1,20 @@
+pkgbase = mingw-w64-polyclipping
+	pkgdesc = Polygon clipping library (mingw-w64)
+	pkgver = 6.2.1
+	pkgrel = 1
+	url = http://sourceforge.net/projects/polyclipping/
+	arch = any
+	license = custom
+	makedepends = mingw-w64-cmake
+	makedepends = dos2unix
+	depends = mingw-w64-crt
+	options = !buildflags
+	options = staticlibs
+	options = !strip
+	source = http://downloads.sourceforge.net/polyclipping/clipper_ver6.2.1.zip
+	source = http://pkgs.fedoraproject.org/cgit/mingw-polyclipping.git/plain/polyclipping.patch
+	md5sums = 040821e66ec529f3d78f8ff7c4e256b2
+	md5sums = c410dc52e80d6798b924aaeef6a4181b
+
+pkgname = mingw-w64-polyclipping
+
