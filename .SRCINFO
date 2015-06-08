@@ -1,0 +1,17 @@
+pkgbase = mooni
+	pkgdesc = Simple interactive MoonScript.
+	pkgver = 0.5
+	pkgrel = 2
+	url = https://rocks.moonscript.org/modules/steved/mooni
+	arch = any
+	license = MIT
+	license = X11
+	depends = moonscript
+	depends = lua-linenoise
+	source = http://stevedonovan.github.com/files/mooni-0.5.tgz
+	source = mooni.patch
+	sha256sums = 5ebde048351c5e6a99c7d496f66285be95c8d3f49aa8a024aa8ecef5be3b8b01
+	sha256sums = 1b50a2a362ccc50051a18538911218e48c4aa81ec2efad26682b42d1817d0b1a
+
+pkgname = mooni
+

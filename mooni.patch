@@ -1,0 +1,4 @@
+206c206
+< print 'MoonScript version 0.2.3'
+---
+> print "MoonScript version #{require('moonscript/version').version}"
