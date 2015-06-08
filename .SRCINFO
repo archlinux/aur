@@ -1,0 +1,22 @@
+pkgbase = vdr-ddci2
+	pkgdesc = Support for stand alone CI by Digital Devices for VDR 2.1.6 and higher.
+	pkgver = 0.0.13
+	pkgrel = 6
+	url = https://github.com/jasmin-j/vdr-plugin-ddci2
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	makedepends = git
+	depends = gcc-libs
+	depends = vdr-api=2.2.0
+	backup = etc/vdr/conf.avail/50-ddci2.conf
+	source = git+https://github.com/jasmin-j/vdr-plugin-ddci2.git#commit=381a83d8c7a2d975f0c60bf21105f1f85a1003be
+	source = 50-ddci2.conf
+	md5sums = SKIP
+	md5sums = 5dc8a287efe1419aaf1162cb6a6f28f3
+
+pkgname = vdr-ddci2
+
