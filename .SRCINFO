@@ -1,0 +1,26 @@
+pkgbase = communigatepro
+	pkgdesc = Unified Communications platform
+	pkgver = 6.1.2
+	pkgrel = 1
+	url = http://www.stalker.com/
+	install = install
+	arch = x86_64
+	license = custom
+	makedepends = rpmextract
+	optdepends = communigatepro-av: Spam and AV scanner for Communigate Pro
+	provides = smtp-server
+	provides = imap-server
+	provides = pop3-server
+	conflicts = smtp-server
+	conflicts = imap-server
+	conflicts = pop3-server
+	options = !strip
+	source = ftp://ftp.stalker.com/pub/CommuniGatePro/6.1/CGatePro-Linux-6.1-2.x86_64.rpm
+	source = cgatepro.service
+	source = LICENCE
+	sha512sums = cba14aa4dc81b1ba1674df3d510e03cf007d23e3c1fb89a6bbf4bdd21b11e6cbb9b0c586bce3d815ddc8cd69211c01131004d09e3048c9fa0324eb23abbe43d7
+	sha512sums = b307a6d2878f100a07cd65e0ec838ab35ec524415d082ac94e1a02d22b37bc361ed71664d8bbc797e97b79afe6eb34fe26bfcb985846b881e8a17ecb310d5d0c
+	sha512sums = a220724c78e715c577dca1001437942e29d32c4f6e1d3e4d7e99b5ced198dac45966084be3f23b2f64522b6d005d7faa50c14e76cf71297500618ec9ed3cd066
+
+pkgname = communigatepro
+

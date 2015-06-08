@@ -1,0 +1,12 @@
+[Unit]
+Description=CommuniGate Pro
+
+[Service]
+Type=forking
+Group=mail
+PIDFile=/var/lib/CommuniGate/ProcessID
+ExecStart=/opt/CommuniGate/CGServer --Base /var/lib/CommuniGate --Daemon --AirSyncNonProvisionable (WindowsOutlook15)
+
+[Install]
+WantedBy=multi-user.target
+
