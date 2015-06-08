@@ -1,0 +1,13 @@
+pkgbase = firefox-extension-mozilla-archive-format
+	pkgdesc = Opens and saves all the Web sites in a single file. It supports MHTML (MHT) and archives MAF based on ZIP archive system.
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://addons.mozilla.org/firefox/addon/mozilla-archive-format/
+	arch = any
+	license = MPL
+	depends = firefox
+	source = mozilla_archive_format_with_mht_and_faithful_save-3.1.0.xpi::https://addons.cdn.mozilla.net/user-media/addons/212/mozilla_archive_format_with_mht_and_faithful_save-3.1.0-sm+fx.xpi
+	sha256sums = 52f6c3851024ddc357a256461f4da5446a3a70a28e5d112529dd651a8ae99549
+
+pkgname = firefox-extension-mozilla-archive-format
+
