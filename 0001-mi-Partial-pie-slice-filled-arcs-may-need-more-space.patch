@@ -1,0 +1,42 @@
+From 41932dfbc841a1adc6512d41085ea3f8ebecb42c Mon Sep 17 00:00:00 2001
+From: Keith Packard <keithp@keithp.com>
+Date: Wed, 8 Apr 2015 07:45:28 -0700
+Subject: [PATCH] mi: Partial pie-slice filled arcs may need more space for
+ spans
+
+The mi filled arc code estimates that a filled arc will produce no
+more spans than the arc is tall. This is true for most arcs except
+for pie-slice arcs strictly between 180 and 360 degrees where the missing
+portion of the arc faces up or down such that we get two spans on some
+scanlines.
+
+For those, we need to reserve room for another height/2 spans. This
+patch just does it for all partial pie-sliced arcs to make the test
+easier to understand; it's just over-allocating a bit of memory, so
+that's safe.
+
+Signed-off-by: Keith Packard <keithp@keithp.com>
+Reviewed-by: Adam Jackson <ajax@redhat.com>
+---
+ mi/mifillarc.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/mi/mifillarc.c b/mi/mifillarc.c
+index 246d70f..888519e 100644
+--- a/mi/mifillarc.c
++++ b/mi/mifillarc.c
+@@ -660,6 +660,11 @@ miPolyFillArc(DrawablePtr pDraw, GCPtr pGC, int narcs_all, xArc * parcs)
+             if (narcs && nspans + arc->height > MAX_SPANS_PER_LOOP)
+                 break;
+             nspans += arc->height;
++
++            /* A pie-slice arc may add another pile of spans */
++            if (pGC->arcMode == ArcPieSlice &&
++                (-FULLCIRCLE < arc->angle2 && arc->angle2 < FULLCIRCLE))
++                nspans += (arc->height + 1) >> 1;
+         }
+ 
+         pts = points = malloc (sizeof (DDXPointRec) * nspans +
+-- 
+2.3.5
+
