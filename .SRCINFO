@@ -1,0 +1,15 @@
+pkgbase = urxvt-fullscreen
+	pkgdesc = script to switch fullscreen and above-other-windows on urxvt
+	pkgver = 1
+	pkgrel = 1
+	url = http://wiki.archlinux.org/index.php/Rxvt-unicode
+	install = urxvt-fullscreen.install
+	arch = any
+	license = GPL
+	depends = rxvt-unicode
+	depends = wmctrl
+	source = fullscreen
+	md5sums = 886bd05ab7931dbf019edd624b591378
+
+pkgname = urxvt-fullscreen
+

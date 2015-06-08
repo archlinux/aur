@@ -1,0 +1,12 @@
+post_install ()
+{
+  echo "Add \"fullscreen\" to the \"urxvt*perl-ext-common\" field in ~/.Xdefaults and"
+  echo "a keysym to the function \"switch\", like: urxvt*keysym.F11: perl:fullscreen:switch"
+}
+
+post_remove ()
+{
+  echo "Don't forget to remove \"fullscreen\" from the \"urxvt*perl-ext-common\" field"
+  echo "and the keysym assigned to the fullscreen switch function in ~/.Xdefaults."
+}
+
