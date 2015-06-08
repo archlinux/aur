@@ -1,0 +1,23 @@
+pkgbase = libkdcraw-git
+	pkgdesc = A C++ interface used to decode RAW picture
+	pkgver = r937.baf426f
+	pkgrel = 1
+	url = http://www.kde.org
+	arch = i686
+	arch = x86_64
+	groups = digikam-git
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = git
+	makedepends = automoc4
+	makedepends = cmake
+	depends = kdelibs
+	depends = libraw
+	provides = libkdcraw
+	conflicts = libkdcraw
+	source = libkdcraw::git+git://anongit.kde.org/libkdcraw
+	md5sums = SKIP
+
+pkgname = libkdcraw-git
+
