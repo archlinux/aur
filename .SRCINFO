@@ -1,0 +1,27 @@
+pkgbase = kio-git
+	pkgdesc = Resource and network access abstraction
+	pkgver = r1598.8b43a9e
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/kio
+	install = kio-git.install
+	arch = i686
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	makedepends = kdoctools
+	depends = karchive-git
+	depends = kbookmarks-git
+	depends = kjobwidgets-git
+	depends = kwallet-git
+	depends = solid-git
+	depends = libxslt
+	depends = desktop-file-utils
+	provides = kio
+	conflicts = kio
+	source = git://anongit.kde.org/kio.git
+	md5sums = SKIP
+
+pkgname = kio-git
+
