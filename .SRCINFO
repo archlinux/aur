@@ -1,0 +1,17 @@
+pkgbase = ant
+	pkgdesc = GTK+ based network tool to grapchical creating TCP/IP frames.
+	pkgver = 0.1.1
+	pkgrel = 4
+	url = http://ant.sourceforge.net/
+	changelog = ChangeLog
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	depends = libnet
+	depends = libpcap
+	source = http://downloads.sourceforge.net/ant/ant-0.1.1.tar.bz2
+	sha256sums = a886a3aa329f37db82f58207291cbb950a781b1da443a8064963e545cf894232
+
+pkgname = ant
+

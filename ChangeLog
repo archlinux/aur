@@ -1,0 +1,14 @@
+2015-01-27  Mariusz Libera  <mariusz.libera@gmail.com>
+
+    0.1.1-4:
+    * added missing libpcap depencency
+
+2014-11-03  Mariusz Libera  <mariusz.libera@gmail.com>
+
+    0.1.1-3:
+    * modernized PKGBUILD
+    * added LDFLAGS+=" -lm" to fix linking
+    * renamed binary to ant_mw (after author's initials) to avoid conflict
+    with apache-ant
+    * added ChangeLog
+
