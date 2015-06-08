@@ -1,0 +1,31 @@
+pkgbase = netatalk
+	pkgdesc = Open-source implementation of the Apple Filing Protocol
+	pkgver = 3.1.7
+	pkgrel = 1
+	url = http://netatalk.sourceforge.net
+	install = netatalk.install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL
+	depends = avahi>=0.6
+	depends = libldap
+	depends = libgcrypt>=1.2.3
+	depends = libevent
+	depends = python2
+	depends = dbus-glib
+	depends = python2-dbus
+	replaces = netatalk-git
+	replaces = netatalk2
+	backup = etc/afp.conf
+	backup = etc/extmap.conf
+	source = http://downloads.sourceforge.net/project/netatalk/netatalk/3.1.7/netatalk-3.1.7.tar.bz2
+	source = avahi-client.patch
+	source = python2.patch
+	md5sums = 831ec8bf9e084b64f965d16c528af299
+	md5sums = 00379aacb88dcac8c1e0513da1a5f24c
+	md5sums = 97bc0467dd8a866d9f0835d6440e3c19
+
+pkgname = netatalk
+
