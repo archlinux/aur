@@ -1,0 +1,20 @@
+pkgbase = kldap-git
+	pkgdesc = LDAP access API for KDE
+	pkgver = r427.9b3971b
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/pim/kldap
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	makedepends = python
+	depends = kcompletion
+	depends = ki18n
+	provides = kldap
+	conflicts = kldap
+	source = git://anongit.kde.org/kldap.git
+	md5sums = SKIP
+
+pkgname = kldap-git
+
