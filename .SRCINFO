@@ -1,0 +1,15 @@
+pkgbase = singularityviewer-skins-git
+	pkgdesc = Extra skins for Singularity (and any other V1-type viewers) for Second Life (secondlife) and OpenSim (opensimulator).
+	pkgver = 1.8.6.361.ga4da61a
+	pkgrel = 1
+	url = http://github.com/singularity-viewer/SingularityViewer/tree/master/indra/newview/skins
+	arch = any
+	license = GPL
+	depends = singularityviewer
+	conflicts = singularityviewer-skins
+	replaces = singularityviewer-skins
+	source = git://github.com/singularity-viewer/SingularityViewer.git
+	md5sums = SKIP
+
+pkgname = singularityviewer-skins-git
+
