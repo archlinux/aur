@@ -1,0 +1,29 @@
+pkgbase = kio-extras-git
+	pkgdesc = Additional components to increase the functionality of KIO
+	pkgver = r5821.11665af
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/workspace/kio-extras
+	install = kio-extras-git.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = openslp
+	makedepends = kdoctools
+	depends = kdelibs4support-git
+	depends = khtml-git
+	depends = kdnssd-git
+	depends = kpty-git
+	depends = libssh
+	depends = smbclient
+	depends = exiv2
+	depends = openexr
+	depends = libmtp
+	provides = kio-extras
+	conflicts = kio-extras
+	source = git://anongit.kde.org/kio-extras.git
+	md5sums = SKIP
+
+pkgname = kio-extras-git
+
