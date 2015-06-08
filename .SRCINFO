@@ -1,0 +1,18 @@
+pkgbase = bbswitch-uksm
+	pkgdesc = Kernel module allowing to switch dedicated graphics card on Optimus laptops for linux-uksm
+	pkgver = 0.8
+	pkgrel = 7
+	url = http://github.com/Bumblebee-Project/bbswitch
+	install = bbswitch-uksm.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = linux-uksm-headers>=4.0
+	makedepends = linux-uksm-headers<4.1
+	depends = linux-uksm>=4.0
+	depends = linux-uksm<4.1
+	source = http://github.com/Bumblebee-Project/bbswitch/archive/v0.8.tar.gz
+	md5sums = 5b116b31ace3604ddf9d1fc1f4bc5807
+
+pkgname = bbswitch-uksm
+
