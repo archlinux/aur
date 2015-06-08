@@ -1,0 +1,16 @@
+pkgbase = jasspa-me
+	pkgdesc = Jasspa.org microemacs editor
+	pkgver = 20091011
+	pkgrel = 1
+	url = http://www.jasspa.com
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	source = http://www.jasspa.com/release_20090909/jasspa-mesrc-20091011.tar.gz
+	source = http://www.jasspa.com/release_20090909/jasspa-metree-20091011.tar.gz
+	md5sums = a4db0f1b9bf6fd9699d13366e15305b9
+	md5sums = ac2554dfd26c354f4e82860ab6a37089
+
+pkgname = jasspa-me
+
