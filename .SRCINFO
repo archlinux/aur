@@ -1,0 +1,22 @@
+pkgbase = python-pyraf
+	pkgdesc = Python interface for IRAF
+	pkgver = 2.1.8
+	pkgrel = 1
+	url = http://www.stsci.edu/institute/software_hardware/pyraf/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = python
+	depends = iraf-bin
+	depends = python-stscitools
+	depends = python-matplotlib
+	depends = python-numpy
+	depends = python-urwid
+	depends = tcl
+	depends = tk
+	optdepends = ipython
+	source = https://pypi.python.org/packages/source/p/pyraf/pyraf-2.1.8.tgz
+	md5sums = b2daa5a0e967810d1ac3583419f26b43
+
+pkgname = python-pyraf
+
