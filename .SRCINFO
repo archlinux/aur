@@ -1,0 +1,13 @@
+pkgbase = plank-theme-numix
+	pkgdesc = Numix theme for plank
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://numixproject.org/
+	arch = any
+	license = GPL3
+	depends = plank
+	source = https://launchpad.net/~numix/+archive/ppa/+files/numix-plank-theme_0.1~ppa.tar.gz
+	sha256sums = 951377d49be903e9257ad72bde18689d3471798e6bc21ea84e1249f0646759ed
+
+pkgname = plank-theme-numix
+
