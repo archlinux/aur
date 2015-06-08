@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=FrozenWay
+Encoding=UTF-8
+Comment=Give the ability to pass through any firewall or proxy
+Comment[fr]=Offre la possibilité de passer à travers n'importe quel pare-feu ou proxy
+Exec=/usr/bin/frozenway
+Icon=frozenway.png
+Type=Application
+Categories=Network;
