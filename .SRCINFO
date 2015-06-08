@@ -1,0 +1,23 @@
+pkgbase = cairo-dock-git
+	pkgdesc = Light eye-candy fully themable animated dock
+	pkgver = 3.4.1.r1.9e74374
+	pkgrel = 1
+	url = http://glx-dock.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	depends = curl
+	depends = dbus-glib
+	depends = glu
+	depends = gtk3
+	depends = librsvg
+	optdepends = cairo-dock-plugins-git: Plugins for Cairo-Dock
+	provides = cairo-dock
+	conflicts = cairo-dock
+	source = cairo-dock::git+https://github.com/Cairo-Dock/cairo-dock-core.git
+	sha256sums = SKIP
+
+pkgname = cairo-dock-git
+
