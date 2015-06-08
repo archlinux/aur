@@ -1,0 +1,19 @@
+pkgbase = vapoursynth-plugin-mvtools-git
+	pkgdesc = Plugin for Vapoursynth: mvtools (GIT version)
+	pkgver = v9.0.ga2609f1
+	pkgrel = 1
+	url = http://forum.doom9.org/showthread.php?t=171207
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = yasm
+	depends = vapoursynth
+	depends = fftw
+	provides = vapoursynth-plugin-mvtools
+	conflicts = vapoursynth-plugin-mvtools
+	source = mvtools::git+https://github.com/dubhater/vapoursynth-mvtools.git
+	sha1sums = SKIP
+
+pkgname = vapoursynth-plugin-mvtools-git
+
