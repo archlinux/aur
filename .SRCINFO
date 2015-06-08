@@ -1,0 +1,19 @@
+pkgbase = qtstalker
+	pkgdesc = Stock market, commodity and technical analysis charting application
+	pkgver = 0.36
+	pkgrel = 2
+	url = http://qtstalker.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = gpl
+	depends = qt3>=3.3
+	depends = db>=4.1
+	depends = ta-lib>=0.3.0
+	options = docs
+	source = http://downloads.sourceforge.net/qtstalker/qtstalker-0.36.tar.gz
+	source = qtstalker.desktop
+	md5sums = 599589c4e84e828bd888fce6be81dab3
+	md5sums = ef3ab3f9d43440b10aa59515d5368cf9
+
+pkgname = qtstalker
+

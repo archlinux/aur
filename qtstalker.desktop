@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=QtStalker
+Exec=/usr/bin/qtstalker
+Icon=/usr/share/pixmaps/qtstalker.xpm
+Type=Application
+Categories=Application;Office;Finance;
+Comment=Stock market, commodity and technical analysis charting application
+Encoding=UTF-8
+StartupNotify=true
