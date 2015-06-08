@@ -1,0 +1,20 @@
+pkgbase = jenn3d-git
+	pkgdesc = A toy for visualizing Coxeter polytopes
+	pkgver = r21.d2eae24
+	pkgrel = 2
+	url = http://www.math.cmu.edu/~fho/jenn/
+	install = jenn3d.install
+	arch = any
+	license = GPL2
+	depends = freeglut
+	depends = glu
+	depends = libpng
+	source = git+https://github.com/fritzo/jenn3d
+	source = jenn.desktop
+	source = jenn3d.install
+	md5sums = SKIP
+	md5sums = 499c4275fb4ae1afd9a1b034c51ad54d
+	md5sums = 45ab05125b7409da2768c18182818bb0
+
+pkgname = jenn3d-git
+

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Jenn3d
+Comment=A toy for visualizing Coxeter polytopes
+Exec=jenn
+Icon=jenn
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Categories=Science;DataVisualization;
