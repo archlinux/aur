@@ -5,19 +5,20 @@
 
 pkgname=arch-aurora-search
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Firefox-Aurora Arch search engines (AUR, Pkgs, BBS, Wiki, etc.)"
 arch=('any')
 url="http://archlinux.org/"
 license=('GPL')
 depends=("firefox-aurora")
-source=(arch-bugs-fs.xml
-	arch-bugs-t.xml
-	arch-forum-a.xml
-	arch-forum-c.xml
-	arch-pkgs.xml
-	arch-wiki.xml
-	aur.xml)
+source=("arch-bugs-fs.xml"
+	"arch-bugs-t.xml"
+	"arch-forum-a.xml"
+	"arch-forum-c.xml"
+	"arch-pkgs.xml"
+	"arch-wiki.xml"
+	"aur.xml")
+
 md5sums=('df18835df1ea78bc3fc0e05f934b1e46'
          '0226a317c8bf23feaa80e21d1706f2d5'
          '4eaa3d26ac41077ee25b66127ad9ef0a'

@@ -1,7 +1,7 @@
 pkgbase = arch-aurora-search
 	pkgdesc = Firefox-Aurora Arch search engines (AUR, Pkgs, BBS, Wiki, etc.)
 	pkgver = 0.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://archlinux.org/
 	arch = any
 	license = GPL
