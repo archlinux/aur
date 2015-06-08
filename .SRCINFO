@@ -1,0 +1,14 @@
+pkgbase = nodejs-recess
+	pkgdesc = A simple, attractive code quality tool for CSS built on top of LESS
+	pkgver = 1.1.9
+	pkgrel = 1
+	url = http://twitter.github.com/recess
+	arch = any
+	license = Apache-2.0
+	depends = nodejs
+	noextract = recess-1.1.9.tgz
+	source = http://registry.npmjs.org/recess/-/recess-1.1.9.tgz
+	sha1sums = 831c551f45df87d484c6123ffde91030bef1581a
+
+pkgname = nodejs-recess
+
