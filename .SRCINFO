@@ -1,0 +1,26 @@
+pkgbase = go-cross-all-platforms
+	pkgdesc = Compiler and tools for the Go programming language from Google (all supported platform)
+	pkgver = 1.4.2
+	pkgrel = 1
+	epoch = 2
+	url = http://golang.org/doc/install/source#environment
+	install = go-cross-all-platforms.install
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = inetutils
+	makedepends = git
+	makedepends = mercurial
+	optdepends = mercurial: for fetching sources from mercurial repositories
+	optdepends = git: for fetching sources from git repositories
+	optdepends = bzr: for fetching sources from bazaar repositories
+	optdepends = subversion: for fetching sources from subversion repositories
+	provides = go
+	conflicts = go
+	options = !strip
+	options = staticlibs
+	source = go-cross-all-platforms-1.4.2::git+https://go.googlesource.com/go#tag=go1.4.2
+	md5sums = SKIP
+
+pkgname = go-cross-all-platforms
+
