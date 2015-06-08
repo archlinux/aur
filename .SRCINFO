@@ -1,0 +1,15 @@
+pkgbase = python2-utils
+	pkgdesc = Collected functions which should be in the standard library
+	pkgver = 0.7
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/utils
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
+	source = http://pypi.python.org/packages/source/u/utils/utils-0.7.tar.gz
+	sha256sums = 6bf9dae704fbffb4fed2b9c4d12ee7547af6b773273ca5142ec68912099ca8c9
+
+pkgname = python2-utils
+	depends = python2
+
