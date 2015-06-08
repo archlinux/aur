@@ -1,0 +1,19 @@
+pkgbase = qt5-qpa-rpi-plugin
+	pkgdesc = Qt5 eglfs plugin built against Broadcom's GL libs.
+	pkgver = 5.4.0
+	pkgrel = 1
+	url = http://qt.io
+	arch = armv6h
+	arch = armv7h
+	license = GPL3
+	license = LGPL
+	license = FDL
+	license = custom
+	depends = qt5-base
+	depends = mtdev
+	conflicts = qt5-qpa-rpi-plugin-git
+	source = https://github.com/greenisland/qt5-qpa-rpi-plugin/archive/v5.4.0.tar.gz
+	md5sums = b8a58bc5c438c11d105ece4b297d4cfc
+
+pkgname = qt5-qpa-rpi-plugin
+
