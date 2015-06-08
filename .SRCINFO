@@ -1,0 +1,16 @@
+pkgbase = lib32-libffi5
+	pkgdesc = A portable, high level programming interface to various calling conventions (ABI version 5)
+	pkgver = 3.0.10
+	pkgrel = 2
+	url = http://sourceware.org/libffi
+	arch = x86_64
+	license = MIT
+	checkdepends = dejagnu
+	makedepends = gcc-multilib
+	depends = lib32-glibc
+	options = !libtool
+	source = ftp://sourceware.org/pub/libffi/libffi-3.0.10.tar.gz
+	md5sums = 79390673f5d07a8fb342bc09b5055b6f
+
+pkgname = lib32-libffi5
+
