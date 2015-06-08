@@ -1,0 +1,17 @@
+pkgbase = eclipse-bazaar-plugin
+	pkgdesc = Bazaar Plugin for Eclipse
+	pkgver = 1.1.1.210
+	pkgrel = 1
+	url = https://launchpad.net/bzr-eclipse
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = bzr-xmloutput>=0.8.1
+	depends = eclipse
+	conflicts = eclipse-bzr
+	replaces = eclipse-bzr
+	source = http://verterok.com.ar/bzr-eclipse/archive/update-site-1.1.1.210.zip
+	md5sums = f70a5246563b7e1d0656098545d04aa5
+
+pkgname = eclipse-bazaar-plugin
+
