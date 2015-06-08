@@ -1,0 +1,15 @@
+pkgbase = combblas
+	pkgdesc = Combinatorial BLAS Library
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = http://gauss.cs.ucsb.edu/~aydin/CombBLAS/html/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = openmpi
+	source = http://gauss.cs.ucsb.edu/~aydin/CombBLAS_FILES/CombBLAS_beta_14_0.tgz
+	md5sums = 57aed213d7e794153ea29465559e7cfa
+
+pkgname = combblas
+
