@@ -7,14 +7,14 @@ pkgdesc='Command line music player for Sharp X68000 MDX files'
 arch=(i686 x86_64)
 url='https://github.com/BouKiCHi/mdxplayer/tree/master/jni/mdxmini'
 license=(GPL2)
-depends=(libiconv sdl)
+depends=(sdl)
 makedepends=(git)
 provides=(mdxplay)
 conflicts=(mdxplay)
 source=("$pkgname"::'git+https://github.com/BouKiCHi/mdxplayer.git'
         makefile.patch)
 sha256sums=('SKIP'
-            'edf0e80f51b0840f95e121f784b8ffb95fafbaa2afaa35038dae26b94e397e29')
+            '65459a3a37cf3fd493da9b79e0848d9fcc6a5d39db383f80a52f510011b56e77')
 
 pkgver() {
   cd "$srcdir/$pkgname"

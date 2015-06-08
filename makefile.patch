@@ -1,13 +1,14 @@
 diff --git i/jni/mdxmini/mak/general.mak w/jni/mdxmini/mak/general.mak
-index e56323b..8f01823 100644
+index e56323b..fff9e7c 100644
 --- i/jni/mdxmini/mak/general.mak
 +++ w/jni/mdxmini/mak/general.mak
-@@ -5,7 +5,7 @@
- CC = gcc
- LD = gcc
- AR = ar
--LIBS = 
-+LIBS = -lm
- SLIBS =
- LFLAGS =
-  
+@@ -19,8 +19,7 @@ endif
+ 
+ # iconv
+ ifneq ($(OS),Windows_NT)
+-CFLAGS += -DUSE_ICONV
+-LIBS += -liconv
++LIBS += -lm
+ endif
+ 
+ #

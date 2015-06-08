@@ -7,14 +7,13 @@ pkgbase = mdxplay-git
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	depends = libiconv
 	depends = sdl
 	provides = mdxplay
 	conflicts = mdxplay
 	source = mdxplay-git::git+https://github.com/BouKiCHi/mdxplayer.git
 	source = makefile.patch
 	sha256sums = SKIP
-	sha256sums = edf0e80f51b0840f95e121f784b8ffb95fafbaa2afaa35038dae26b94e397e29
+	sha256sums = 65459a3a37cf3fd493da9b79e0848d9fcc6a5d39db383f80a52f510011b56e77
 
 pkgname = mdxplay-git
 
