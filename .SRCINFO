@@ -1,0 +1,16 @@
+pkgbase = epson-inkjet-printer-ep-902a-series
+	pkgdesc = Epson printer driver (EP-802A, EP-902A)
+	pkgver = 1.0.0
+	pkgrel = 8
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom:Epson Licence Agreement
+	depends = cups
+	depends = ghostscript
+	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-ep-902a-series-1.0.0-1lsb3.2.src.rpm
+	sha256sums = 6cc0994c89581c64cb12f223d0da574668fe30391a7adf2ba93463116b7d20ca
+
+pkgname = epson-inkjet-printer-ep-902a-series
+
