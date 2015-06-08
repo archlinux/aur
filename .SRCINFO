@@ -1,0 +1,21 @@
+pkgbase = qtikz-svn
+	pkgdesc = A small application helping you to create TikZ diagrams (from the LaTeX pgf package)
+	pkgver = 231
+	pkgrel = 1
+	url = http://www.hackenberger.at/blog/ktikz-editor-for-the-tikz-language/
+	install = qtikz.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	depends = poppler-qt5
+	depends = shared-mime-info
+	depends = desktop-file-utils
+	provides = ktikz
+	conflicts = ktikz
+	conflicts = ktikz-svn
+	source = qtikz::svn://hackenberger.at/svnroot/ktikz/trunk
+	md5sums = SKIP
+
+pkgname = qtikz-svn
+
