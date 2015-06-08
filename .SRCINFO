@@ -1,0 +1,16 @@
+pkgbase = vapoursynth-plugin-finesharp-git
+	pkgdesc = Plugin for Vapoursynth: finesharp (GIT Version)
+	pkgver = r5
+	pkgrel = 1
+	url = http://forum.doom9.org/showthread.php?t=166524
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = vapoursynth
+	provides = vapoursynth-plugin-finesharp
+	conflicts = vapoursynth-plugin-finesharp
+	source = finesharp::git+https://gist.github.com/8676fd350d4b5b223ab9.git
+	sha1sums = SKIP
+
+pkgname = vapoursynth-plugin-finesharp-git
+
