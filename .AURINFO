@@ -1,0 +1,15 @@
+pkgbase = slickpicker-git
+	pkgdesc = A small PyQt color picker widget (can be run on its own)
+	pkgver = 20131118
+	pkgrel = 1
+	url = https://github.com/ShadowKyogre/slickpicker
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python
+	depends = pyqt
+	source = git://github.com/ShadowKyogre/slickpicker.git
+	md5sums = SKIP
+
+pkgname = slickpicker-git
+
