@@ -1,0 +1,21 @@
+pkgbase = howdoi-git
+	pkgdesc = A code search tool. (from git, build for python 3)
+	pkgver = 1.1.7.210.14116ff
+	pkgrel = 1
+	url = https://github.com/gleitz/howdoi
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-cssselect
+	depends = python-lxml
+	depends = python-pyquery
+	depends = python-requests
+	depends = python-requests-cache
+	depends = python-pygments
+	conflicts = python2-howdoi
+	conflicts = howdoi
+	source = howdoi::git+https://github.com/gleitz/howdoi.git
+	md5sums = SKIP
+
+pkgname = howdoi-git
+
