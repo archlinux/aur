@@ -1,0 +1,21 @@
+pkgbase = actor-framework
+	pkgdesc = An Open Source Implementation of the Actor Model in C++
+	pkgver = 0.13.2
+	pkgrel = 1
+	url = http://actor-framework.org
+	arch = i686
+	arch = x86_64
+	license = custom:"BSD-3-Clause",
+	license = custom:"Boost Software License"
+	makedepends = cmake
+	makedepends = valgrind
+	makedepends = gperftools
+	makedepends = protobuf
+	makedepends = opencl-headers
+	depends = boost
+	depends = libcl
+	source = actor-framework-0.13.2.tar.gz::https://github.com/actor-framework/actor-framework/archive/0.13.2.tar.gz
+	sha256sums = 3ccf7e469740e750eef31f14b965b00f7b6e3a89b05086a088ca905b3b1a04e6
+
+pkgname = actor-framework
+
