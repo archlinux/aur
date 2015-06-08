@@ -1,0 +1,23 @@
+pkgbase = psp-sdl_image
+	pkgdesc = A simple library to load images of various formats as SDL surfaces (psp)
+	pkgver = 1.2.12
+	pkgrel = 1
+	url = http://www.libsdl.org/projects/SDL_image/
+	arch = any
+	license = custom
+	makedepends = psp-gcc
+	makedepends = psp-pkg-config
+	depends = psp-sdk
+	depends = psp-sdl
+	depends = psp-libpng
+	depends = psp-libjpeg
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = http://www.libsdl.org/projects/SDL_image/release/SDL_image-1.2.12.tar.gz
+	source = SDL_image-1.2.12-PSP.patch
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = psp-sdl_image
+
