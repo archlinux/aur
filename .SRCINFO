@@ -1,0 +1,14 @@
+pkgbase = chkrootkit
+	pkgdesc = rootkit detector
+	pkgver = 0.50
+	pkgrel = 2
+	url = http://www.chkrootkit.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = net-tools
+	source = ftp://ftp.pangeia.com.br/pub/seg/pac/chkrootkit.tar.gz
+	sha256sums = 9548fc922b0cb8ddf055faff4a4887f140a31c45f2f5e3aa64aad91ecfa56cc7
+
+pkgname = chkrootkit
+
