@@ -1,0 +1,22 @@
+pkgbase = sawfish-theming-git
+	pkgdesc = A window manager extensible using a Lisp-based scripting language.
+	pkgver = 20120328
+	pkgrel = 1
+	url = http://sawfish.wikia.com
+	install = sawfish.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gettext
+	makedepends = emacs
+	depends = libsm
+	depends = rep-gtk-git
+	depends = hicolor-icon-theme
+	optdepends = emacs: for using sawfish.el
+	provides = sawfish-git
+	conflicts = sawfish
+	options = !libtool
+
+pkgname = sawfish-theming-git
+
