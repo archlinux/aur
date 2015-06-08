@@ -1,0 +1,41 @@
+pkgbase = backintime
+	pkgver = 1.1.4
+	pkgrel = 2
+	url = https://launchpad.net/backintime
+	arch = any
+	license = GPL
+	makedepends = python
+	source = https://launchpadlibrarian.net/200955618/backintime-1.1.4.tar.gz
+	source = https://launchpadlibrarian.net/200955619/backintime-1.1.4.tar.gz.asc
+	sha256sums = 434fc1fb6d9ac20d7b04c791e39bf9e077773c696e18f2bf1aa8f3e7fb59a770
+	sha256sums = SKIP
+
+pkgname = backintime
+	pkgdesc = Simple backup system inspired from the Flyback Project and TimeVault. QT4 GUI version.
+	depends = backintime-cli=1.1.4
+	depends = xorg-xdpyinfo
+	depends = python-pyqt4
+	depends = libnotify
+	depends = ttf-font
+	depends = icu
+	depends = polkit
+	optdepends = kdesdk-kompare: diff/patch frontend
+	optdepends = meld: diff/patch frontend
+	optdepends = python-keyring: store and access passwords safely
+	conflicts = backintime<1.1.0
+	replaces = backintime<1.1.0
+
+pkgname = backintime-cli
+	pkgdesc = Simple backup system inspired from the Flyback Project and TimeVault. CLI version.
+	depends = rsync
+	depends = cron
+	depends = openssh
+	depends = python-keyring
+	depends = python-dbus
+	optdepends = backintime: QT4 GUI version
+	optdepends = encfs: encrypted filesystem in user-space
+	optdepends = pm-utils: for laptops allows an option to not snapshot on battery
+	optdepends = sshfs: FUSE client based on the ssh file transfer protocol
+	conflicts = backintime<1.1.0
+	replaces = backintime<1.1.0
+
