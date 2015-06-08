@@ -1,0 +1,58 @@
+# J7Z: Installer: Arch
+# Contributor: Xavion <Xavion (dot) 0 (at) Gmail (dot) com>
+
+post_install() {
+	# Change file permissions
+	#chmod 777 /usr/share/J7Z/Source/
+
+	# Remove old files
+	user_remove
+
+	#/bin/true
+}
+
+post_upgrade() {
+	post_install
+	#/bin/true
+}
+
+pre_remove() {
+	/bin/true
+}
+
+user_remove() {
+	# User
+	if [ ${USER} ]; then
+		export USER=${LOGNAME}
+	fi
+
+	# Home
+	if [ ${SUDO_USER} ]; then
+		export HOME=/home/${SUDO_USER}
+	else
+		export HOME=/home/${USER}
+	fi
+
+	# KDE
+	rm -f ${HOME}/.kde*/share/kde4/services/ServiceMenus/?7Z*
+	rm -f ${HOME}/.kde*/share/apps/konqueror/servicemenus/?7Z*
+
+	# Gnome
+	rm -rf ${HOME}/.gnome2/nautilus-scripts/?7Z*
+
+	# Xfce
+	rm -f ${HOME}/.config/Thunar/uca.xml.?7Z
+}
+
+post_remove() {
+	#rm -rf /usr/share/J7Z/
+
+	user_remove
+
+	#/bin/true
+}
+
+op=$1
+shift
+
+$op "$@"
