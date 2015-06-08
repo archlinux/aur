@@ -1,0 +1,15 @@
+pkgbase = iceweasel-i18n-ar
+	pkgdesc = Arabic language package for Iceweasel
+	pkgver = 38.0.1.deb5
+	pkgrel = 1
+	url = http://www.mozilla.com/
+	arch = any
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = iceweasel>=38.0.1
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-ar_38.0.1-5_all.deb
+	sha256sums = 1fec5ebeb5ca41a494c1c9b2d0ef72516bc019119ecabda1e2e38eab7676dca7
+
+pkgname = iceweasel-i18n-ar
+
