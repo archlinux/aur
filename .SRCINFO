@@ -1,0 +1,15 @@
+pkgbase = pidgin-xmpp-receipts
+	pkgdesc = This pidgin-plugin implements xmpp message delivery receipts (XEP-0184)
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://www.assembla.com/code/pidgin-xmpp-receipts/git/nodes
+	arch = x86_64
+	arch = i686
+	license = GPLv3
+	depends = pidgin
+	depends = libpurple
+	source = https://www.assembla.com/spaces/pidgin-xmpp-receipts/documents/ckA6jCV5Kr4OkjacwqjQXA/download/ckA6jCV5Kr4OkjacwqjQXA
+	md5sums = 820e06e823b01caf452b2500aecdc246
+
+pkgname = pidgin-xmpp-receipts
+
