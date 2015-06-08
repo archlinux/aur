@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Hydra Slayer
+Comment=A game featuring hydras and mathematics
+Exec=hydraslayer
+Icon=hydraslayer
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;AudioVideo;
+Encoding=UTF-8

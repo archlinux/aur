@@ -1,0 +1,28 @@
+pkgbase = hydraslayer
+	pkgdesc = Hydra Slayer is a Roguelike inspired by Greek mythology and mathematical puzzles about slaying many-headed beasts.
+	pkgver = 16.1
+	pkgrel = 1
+	url = http://www.roguetemple.com/z/hydra.php
+	install = hydraslayer.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = icoutils
+	depends = lua51
+	depends = sdl2_net
+	depends = sdl2_ttf
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = glu
+	depends = hicolor-icon-theme
+	source = http://www.roguetemple.com/z/noteye/noteye-81.zip
+	source = hydraslayer.sh
+	source = hydraslayer.install
+	source = hydraslayer.desktop
+	sha256sums = 9855be240991ef3817089c615d4f681d02ce00f7adfea74dc536bf4cbf539245
+	sha256sums = 273a77d6101d3fb27f6e7678754507d6b40b6902b058ff71c984d46720ac43b0
+	sha256sums = 0d6b23fc77c1a329af42c5eea29319811d639bfb044958ed1de7c4f94e3879e1
+	sha256sums = 9893af1a84b89c3a6279f67a389405e0421f04ee17682bcac6dd80e5710cec1e
+
+pkgname = hydraslayer
+

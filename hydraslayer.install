@@ -1,0 +1,15 @@
+post_install(){
+  update-desktop-database -q
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+  echo " "
+  echo "For system-wide high scores, create a 'games' group,"
+  echo "  add desired users to 'games' and then run as root:"
+  echo " "
+  echo "# touch /usr/share/hydraslayer/hydrascores.sav"
+  echo "# chown -R :games /usr/share/hydraslayer/hydrascores.sav"
+  echo "# chmod g+w /usr/share/hydraslayer/hydrascores.sav"
+  echo " "
+}
+
+# vim:set ts=2 sw=2 et:
