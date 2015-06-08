@@ -1,0 +1,22 @@
+pkgbase = fritzing
+	pkgdesc = PCB layout prototyping application
+	pkgver = 0.9.2b
+	pkgrel = 1
+	url = http://fritzing.org
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = boost
+	depends = java-environment
+	depends = libsm
+	depends = libxkbcommon-x11
+	depends = python2
+	depends = qt5-serialport
+	depends = qt5-svg
+	source = https://github.com/fritzing/fritzing-app/archive/0.9.2b.tar.gz
+	source = https://github.com/fritzing/fritzing-parts/archive/de7f8a4c8f7df4ed57386edf68275cdd66a1910d.tar.gz
+	sha256sums = 6e9dbb94a4ca5e23effc2056f471c78913b9efa4c154ced94de8f72bfe29735f
+	sha256sums = b9eeac2d8b169eb80162f607b5bedd9a2c92191690685955d674c14ba7aefcc1
+
+pkgname = fritzing
+
