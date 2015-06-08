@@ -1,0 +1,15 @@
+pkgbase = libjpeg6
+	pkgdesc = Library of JPEG support functions
+	pkgver = 6b1
+	pkgrel = 2
+	url = http://www.ijg.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glibc
+	options = !makeflags
+	source = ftp://ftp.debian.org/debian/pool/main/libj/libjpeg6b/libjpeg6b_6b1.orig.tar.gz
+	md5sums = 18a8acd0251aca7d4ffd1f62a362d7cc
+
+pkgname = libjpeg6
+
