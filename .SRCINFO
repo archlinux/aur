@@ -1,0 +1,31 @@
+pkgbase = vdr-live
+	pkgdesc = Adds the possibility to control VDR and some of it's plugins by a web interface.
+	pkgver = 0.3.0_21_g6ea279a
+	pkgrel = 1
+	epoch = 1
+	url = http://projects.vdr-developer.org/projects/plg-live
+	install = vdr-live.install
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	makedepends = git
+	depends = pcre
+	depends = tntnet
+	depends = vdr-api=2.2.0
+	optdepends = vdr-epgsearch: Manage searchtimers
+	optdepends = vdr-streamdev: Stream live TV
+	backup = etc/vdr/conf.avail/50-live.conf
+	source = git://projects.vdr-developer.org/vdr-plugin-live.git#commit=6ea279a74a84b13aa72237448c9ed848c8fdcad4
+	source = live-folderstatecookie-v2.diff::http://www.vdr-portal.de/index.php?page=Attachment&attachmentID=34407
+	source = live-osd-patch_150221.diff::http://www.vdr-portal.de/index.php?page=Attachment&attachmentID=37780
+	source = 50-live.conf
+	md5sums = SKIP
+	md5sums = 6abb3d1724057e765e98e1a9b5326fe3
+	md5sums = c045e5e6ec376eebee834e6dc178327c
+	md5sums = 563961eb90d9f2b3d2a0a34472ef51ee
+
+pkgname = vdr-live
+
