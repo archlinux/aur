@@ -1,0 +1,22 @@
+pkgbase = perl-rdf-trinex-functions
+	pkgdesc = some shortcut functions for RDF::Trine's object-oriented interface
+	pkgver = 0.004
+	pkgrel = 1
+	url = http://search.cpan.org/dist/RDF-TrineX-Functions
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.010
+	depends = perl-perlx-maybe
+	depends = perl-rdf-ns
+	depends = perl-rdf-trine>=0.135
+	depends = perl-scalar-does
+	depends = perl-sub-exporter
+	depends = perl-uri
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/RDF-TrineX-Functions-0.004.tar.gz
+	md5sums = 3ddbb1d6c296e40dd146826aa195a5a8
+	sha512sums = 3c064be2be4090ae6560fbb973beb8ece497ff9d7dc25920436e4dbd5365fc16382e5764108d172d4aaa69c028ebbda4212246476938492fbb63c74b4de85c3a
+
+pkgname = perl-rdf-trinex-functions
+
