@@ -1,0 +1,14 @@
+pkgbase = nodejs-uglifycss
+	pkgdesc = Port of YUI CSS Compressor from Java to NodeJS.
+	pkgver = 0.0.11
+	pkgrel = 1
+	url = https://github.com/fmarcia/UglifyCSS
+	arch = any
+	license = MIT
+	depends = nodejs
+	noextract = uglifycss-0.0.11.tgz
+	source = http://registry.npmjs.org/uglifycss/-/uglifycss-0.0.11.tgz
+	sha1sums = 78621ebf7544e1ad37ab3814e7318c1ae777922d
+
+pkgname = nodejs-uglifycss
+
