@@ -1,0 +1,11 @@
+[Unit]
+Description=Graphite-api daemon
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/conf.d/graphite-api.conf
+ExecStart=/usr/bin/graphite-api
+Type=simple
+
+[Install]
+WantedBy=multi-user.target

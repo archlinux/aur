@@ -1,0 +1,21 @@
+#!/bin/bash
+
+post_install() {
+  post_upgrade
+}
+
+
+post_upgrade() {
+  getent group "graphite" &>/dev/null || groupadd -r "graphite" 1>/dev/null
+  getent passwd "graphite" &>/dev/null || useradd -r -g "graphite" -d "/var/lib/graphite" -s "/bin/bash" "graphite" 1>/dev/null
+  chown -R graphite. "/var/lib/graphite" 1>/dev/null
+}
+
+post_remove() {
+  if getent passwd "graphite" >/dev/null; then
+    userdel "graphite" >/dev/null
+  fi
+  if getent group "graphite" >/dev/null; then
+    groupdel "graphite" >/dev/null
+  fi
+}
