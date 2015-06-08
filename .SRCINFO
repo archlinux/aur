@@ -1,0 +1,16 @@
+pkgbase = dvi2gr
+	pkgdesc = Utility that generates grace formatting directives from latex
+	pkgver = 0.4
+	pkgrel = 4
+	url = http://plasma-gate.weizmann.ac.il/Grace/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = t1lib
+	source = ftp://plasma-gate.weizmann.ac.il/pub/grace/src/devel/dvi2gr-0.4.tar.gz
+	source = tex2gr
+	md5sums = 37a5fc6ff4f8634364ca15871714d3b0
+	md5sums = c0cff2533f1c52ac06386d12e237ceb3
+
+pkgname = dvi2gr
+
