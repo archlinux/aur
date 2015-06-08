@@ -1,0 +1,20 @@
+pkgbase = completion
+	pkgdesc = Editor and language agnostic completion backend
+	pkgver = r245.a54c2c5
+	pkgrel = 1
+	url = https://github.com/quarnster/completion
+	install = completion.install
+	arch = i636,
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = go
+	options = !strip
+	options = !emptydirs
+	source = git://github.com/quarnster/completion.git
+	source = completion.install
+	sha256sums = SKIP
+	sha256sums = baaa75b8f8e1edbd5d8eeb72456c55ed056214f3df337521d6334d67372bb8ae
+
+pkgname = completion
+

@@ -1,0 +1,5 @@
+post_install() {
+  echo "Run completion install -st to install the Sublime Text plugin,"
+  echo "correct daemon path in completion.sublime-settings afterwards"
+  echo 'and add "sublimeclang_options": ["-xc++"] to your user settings'
+}
