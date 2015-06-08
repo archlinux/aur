@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-histogram-git
+	pkgdesc = Plugin for Vapoursynth: histogram (GIT version)
+	pkgver = v1.0.4.ge2b45ed
+	pkgrel = 1
+	url = https://github.com/dubhater/vapoursynth-histogram
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = vapoursynth
+	provides = vapoursynth-plugin-histogram
+	conflicts = vapoursynth-plugin-histogram
+	source = histogram::git+https://github.com/dubhater/vapoursynth-histogram.git
+	md5sums = SKIP
+
+pkgname = vapoursynth-plugin-histogram-git
+
