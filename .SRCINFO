@@ -1,0 +1,18 @@
+pkgbase = dupeguru-pe
+	pkgdesc = Find duplicate pictures on your system
+	pkgver = 2.10.1
+	pkgrel = 1
+	url = http://www.hardcoded.net/dupeguru_pe/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = python-sphinx
+	makedepends = gcc
+	depends = python
+	depends = python-pyqt5
+	depends = libxkbcommon-x11
+	source = http://download.hardcoded.net/dupeguru-pe-src-2.10.1.tar.gz
+	md5sums = 6b3da615e7ab7270d1df4cf7c165d6c1
+
+pkgname = dupeguru-pe
+
