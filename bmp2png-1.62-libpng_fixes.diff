@@ -1,0 +1,38 @@
+diff -c -r bmp2png-1.62.orig/png2bmp.c bmp2png-1.62/png2bmp.c
+*** bmp2png-1.62.orig/png2bmp.c	2005-09-03 18:00:00.000000000 +0200
+--- bmp2png-1.62/png2bmp.c	2008-12-31 10:20:00.000000000 +0100
+***************
+*** 370,385 ****
+  */
+  static int skip_macbinary(png_structp png_ptr)
+  {
+! 	void png_read_data(png_structp, png_bytep, png_size_t);
+  	enum { PNG_BYTES_TO_CHECK = 8, MACBIN_SIZE = 128 };	/* ^ in pngrio.c */
+  	png_byte buf[MACBIN_SIZE];
+  	png_bytep sig;
+  
+! 	png_read_data(png_ptr, buf, PNG_BYTES_TO_CHECK);
+  	if (png_sig_cmp(buf, 0, PNG_BYTES_TO_CHECK) == 0)
+  								return PNG_BYTES_TO_CHECK;
+  
+! 	png_read_data(png_ptr, buf, MACBIN_SIZE);
+  	sig = buf + MACBIN_SIZE - PNG_BYTES_TO_CHECK;
+  	if (png_sig_cmp(sig, 0, PNG_BYTES_TO_CHECK) == 0)
+  								return PNG_BYTES_TO_CHECK;
+--- 370,385 ----
+  */
+  static int skip_macbinary(png_structp png_ptr)
+  {
+! 	void png_read_data(png_structp, png_bytep);
+  	enum { PNG_BYTES_TO_CHECK = 8, MACBIN_SIZE = 128 };	/* ^ in pngrio.c */
+  	png_byte buf[MACBIN_SIZE];
+  	png_bytep sig;
+  
+! 	png_read_image(png_ptr, buf);
+  	if (png_sig_cmp(buf, 0, PNG_BYTES_TO_CHECK) == 0)
+  								return PNG_BYTES_TO_CHECK;
+  
+! 	png_read_image(png_ptr, buf);
+  	sig = buf + MACBIN_SIZE - PNG_BYTES_TO_CHECK;
+  	if (png_sig_cmp(sig, 0, PNG_BYTES_TO_CHECK) == 0)
+  								return PNG_BYTES_TO_CHECK;

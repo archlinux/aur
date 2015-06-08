@@ -1,0 +1,24 @@
+pkgbase = pmt
+	pkgdesc = PNG and MNG tools
+	pkgver = 2009.07.18
+	pkgrel = 2
+	url = http://pmt.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libpng
+	source = http://downloads.sourceforge.net/sourceforge/pmt/pngmeta-1.11.tar.gz
+	source = http://cetus.sakura.ne.jp/softlab/b2p-home/archives/bmp2png-1.62.tar.gz
+	source = LICENSE-pngmeta
+	source = LICENSE-bmp2png
+	source = pngmeta-1.11-libpng_fixes.diff
+	source = bmp2png-1.62-libpng_fixes.diff
+	md5sums = 5d495f7668f7ccc64a1576c8cfd15506
+	md5sums = 29562be8cb5300ecf0361904abff54dd
+	md5sums = 84f94275e10bd5d6b9833b8ce6907e78
+	md5sums = 689f14faf70cec4940b3106c4c65d610
+	md5sums = a9178000d0a29aabf5e041e83149e793
+	md5sums = ba86b1e14f75491c04a1b9a7719506df
+
+pkgname = pmt
+
