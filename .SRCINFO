@@ -1,0 +1,18 @@
+pkgbase = mx2000drv-git
+	pkgdesc = Perixx MX 2000 II gaming mouse driver
+	pkgver = r82.b6a752c
+	pkgrel = 1
+	url = https://github.com/pzl/mx2000drv
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = make
+	depends = libusb
+	provides = mx2000drv
+	conflicts = mx2000drv
+	source = git+https://github.com/pzl/mx2000drv.git
+	md5sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mx2000drv-git
+
