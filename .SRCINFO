@@ -1,0 +1,14 @@
+pkgbase = hoc
+	pkgdesc = An extended version of the Kernighan & Pike High Order Calculator
+	pkgver = 9.2
+	pkgrel = 1
+	url = http://nadav.harel.org.il/homepage/hoc/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = bison
+	source = http://nadav.harel.org.il/homepage/hoc/hoc-9.2.tgz
+	md5sums = 3d11ba6f6731502b6c7efa8078573adc
+
+pkgname = hoc
+
