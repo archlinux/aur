@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Feed The Beast
+Comment=Feed The Beast offers many different styles of Minecraft modpacks to the community, catering to all tastes.
+Exec=feedthebeast
+Icon=feedthebeast
+Terminal=false
+Type=Application
+Categories=Game;AudioVideo;
