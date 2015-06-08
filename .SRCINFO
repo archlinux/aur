@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-dynamic-top-bar-git
+	pkgdesc = Extension that make the top bar transparent when no window is maximized
+	pkgver = 3.0.r1.gce58fc3
+	pkgrel = 1
+	url = https://github.com/AMDG2/GnomeShell_DynamicTopBar
+	install = gnome-shell-extension-dynamic-top-bar-git.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gnome-shell
+	conflicts = gnome-shell-extension-dynamic-top-bar
+	source = git://github.com/AMDG2/GnomeShell_DynamicTopBar.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-dynamic-top-bar-git
+

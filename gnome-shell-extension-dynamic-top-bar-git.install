@@ -1,0 +1,19 @@
+post_install() {
+  post_upgrade
+
+  echo ''
+  echo '==> To enable Dynamic Top Bar:'
+  echo '==> Reload Gnome Shell with Alt-F2 r'
+  echo '==> Enable it with the gnome-tweak-tool'
+  echo '==> or run "gnome-shell-extension-tool -e dynamicTopBar@gnomeshell.feildel.fr"'
+  echo ''
+}
+
+post_upgrade() {
+  glib-compile-schemas /usr/share/glib-2.0/schemas
+}
+
+post_remove() {
+  post_upgrade
+}
+
