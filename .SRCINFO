@@ -1,0 +1,26 @@
+pkgbase = cataclysm-dda-ncurses
+	pkgdesc = Cataclysm: Dark Days Ahead is an actively maintained roguelike set in a post-apocalyptic world, forked from the original. (ncurses only)
+	pkgver = 0.C
+	pkgrel = 3
+	url = http://www.cataclysmdda.com/
+	install = cataclysm-dda-ncurses.install
+	arch = i686
+	arch = x86_64
+	license = CCPL:by-sa
+	makedepends = gettext
+	makedepends = clang
+	depends = glibc
+	depends = gcc-libs
+	depends = sh
+	depends = ncurses
+	optdepends = lua51
+	conflicts = cataclysm-dda
+	conflicts = cataclysm-dda-git
+	conflicts = cataclysm-dda-ncurses-bin
+	source = https://github.com/CleverRaven/Cataclysm-DDA/archive/0.C.tar.gz
+	source = clang36.patch::https://github.com/narc0tiq/Cataclysm-DDA/commit/2e12a15fdbb32b5941d597e3cc774030445d483a.patch
+	md5sums = 805132ab7651ba93e5247ced7fe1fc97
+	md5sums = 4b57e948da3daae3753a23200482c497
+
+pkgname = cataclysm-dda-ncurses
+
