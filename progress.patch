@@ -1,0 +1,8 @@
+diff -rupN scurve-0.2/scurve/progress.py scurvep/scurve/progress.py
+--- scurve-0.2/scurve/progress.py	2014-07-10 01:35:46.126395423 +0200
++++ scurvep-0.2/scurve/progress.py	2014-07-10 01:39:39.260000746 +0200
+@@ -1,4 +1,3 @@
+-#!/usr/local/bin/python
+ import sys, time, math, datetime
+ 
+ class Inplace:

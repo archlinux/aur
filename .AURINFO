@@ -1,0 +1,16 @@
+pkgbase = scurve
+	pkgdesc = A collection of algorithms and visualisation tools related to space-filling curves.
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/cortesi/scurve
+	arch = any
+	license = custom:unknown
+	makedepends = python2-setuptools
+	depends = python2-pillow
+	depends = python2-cairo
+	source = https://pypi.python.org/packages/source/s/scurve/scurve-0.2.tar.gz
+	source = pillow.patch
+	source = progress.patch
+
+pkgname = scurve
+

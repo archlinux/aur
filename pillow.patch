@@ -1,0 +1,36 @@
+diff -rupN scurve-0.2/binvis scurvep/binvis
+--- scurve-0.2/binvis	2014-07-10 01:25:26.333477204 +0200
++++ scurvep-0.2/binvis	2014-07-10 01:31:54.662815913 +0200
+@@ -2,7 +2,7 @@
+ import os.path, math, string, sys
+ import scurve
+ from scurve import progress, utils, draw
+-import Image, ImageDraw
++from PIL import Image, ImageDraw
+ 
+ 
+ class _Color:
+diff -rupN scurve-0.2/colormap scurvep/colormap
+--- scurve-0.2/colormap	2014-07-10 01:25:26.433478743 +0200
++++ scurvep-0.2/colormap	2014-07-10 01:32:20.116543018 +0200
+@@ -2,7 +2,7 @@
+ import os.path, math
+ import scurve
+ from scurve import progress
+-import Image, ImageDraw
++from PIL import Image, ImageDraw
+ 
+ def sortedPixels(csource, img, quiet):
+     img = Image.open(img, "r")
+diff -rupN scurve-0.2/testpattern scurvep/testpattern
+--- scurve-0.2/testpattern	2014-07-10 01:25:26.346810714 +0200
++++ scurvep-0.2/testpattern	2014-07-10 01:32:28.383337383 +0200
+@@ -2,7 +2,7 @@
+ import os.path, math
+ import scurve
+ from scurve import progress
+-import Image, ImageDraw
++from PIL import Image, ImageDraw
+ 
+ 
+ def drawmap(map, csource, name, quiet):
