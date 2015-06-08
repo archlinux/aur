@@ -1,0 +1,19 @@
+pkgbase = lib32-libx264-stable-git
+	pkgdesc = Free library for encoding H264/AVC video streams, lib32
+	pkgver = 142.r2495.6a301b6
+	pkgrel = 1
+	url = http://www.videolan.org/developers/x264.html
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gcc-multilib
+	makedepends = yasm
+	depends = libx264
+	provides = lib32-libx264
+	conflicts = lib32-libx264
+	replaces = lib32-libx264
+	source = git://git.videolan.org/x264.git#branch=stable
+	md5sums = SKIP
+
+pkgname = lib32-libx264-stable-git
+
