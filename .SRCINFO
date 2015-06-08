@@ -1,0 +1,27 @@
+pkgbase = perl-rdf-rdfa-parser
+	pkgdesc = flexible RDFa parser
+	pkgver = 1.097
+	pkgrel = 1
+	url = http://search.cpan.org/dist/RDF-RDFa-Parser
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-http-message
+	depends = perl>=5.010
+	depends = perl-common-sense
+	depends = perl-data-uuid
+	depends = perl-file-sharedir
+	depends = perl-html-html5-parser
+	depends = perl-html-html5-sanity
+	depends = perl-libwww
+	depends = perl-rdf-trine>=0.130
+	depends = perl-uri
+	depends = perl-xml-libxml>=1.66
+	depends = perl-xml-regexp
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/RDF-RDFa-Parser-1.097.tar.gz
+	md5sums = 3a12177fe21d2230ca496e121005db27
+	sha512sums = 844b512b467a2bf3a86cbc894ce52ac6b98ad70331654f5e0ce91c3ef851d59984e455d185f46fb3c1808d805f412861f87626db32e859c0980d0167050ccc8e
+
+pkgname = perl-rdf-rdfa-parser
+
