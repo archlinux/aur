@@ -1,0 +1,31 @@
+pkgbase = geolog
+	pkgdesc = Make your own geocaching website with statistics
+	pkgver = 2.92
+	pkgrel = 1
+	url = http://geolog.sourceforge.net/geolog.html
+	arch = any
+	license = GPL
+	depends = perl
+	depends = perl-http-cookies
+	depends = perl-file-which
+	depends = perl-file-homedir
+	depends = perl-archive-zip
+	depends = perl-term-readkey
+	depends = perl-geo-inverse
+	depends = perl-dbi
+	depends = perl-math-round
+	depends = perl-dbd-sqlite
+	depends = perl-xml-xpath
+	depends = perl-www-mechanize-gzip
+	depends = perl-lwp-protocol-https
+	depends = perl-json-xs
+	depends = perl-date-calc
+	depends = perl-log-log4perl
+	depends = perl-math-polygon
+	depends = perl-gd
+	optdepends = ocprop: Synchronize with OpenCaching
+	source = https://sourceforge.net/project/downloading.php?groupname=geolog&filename=geolog-2.92.tgz
+	md5sums = 7d0d0227993c9e01500de26d763f852e
+
+pkgname = geolog
+
