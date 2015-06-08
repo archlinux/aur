@@ -1,0 +1,13 @@
+[Unit]
+Description=Wildfly Application Server
+
+[Service]
+Type=simple
+User=wildfly
+PIDFile=/run/wildfly-devel/wildfly-devel.pid
+ExecStart=/opt/wildfly-devel/bin/systemd-wrapper.sh
+ExecReload=/opt/wildfly-devel/bin/jboss-cli.sh --connect command=:reload
+ExecStop=/opt/wildfly-devel/bin/jboss-cli.sh --connect command=:shutdown
+
+[Install]
+WantedBy=multi-user.target
