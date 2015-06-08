@@ -1,0 +1,18 @@
+pkgbase = videotrans
+	pkgdesc = A set of scripts that allow reformatting movies into the VOB format that is used on DVDs
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = http://videotrans.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = bc
+	depends = ffmpeg
+	depends = dvdauthor
+	depends = mjpegtools
+	depends = mplayer
+	source = http://downloads.sourceforge.net/sourceforge/videotrans/videotrans-1.6.1.tar.bz2
+	md5sums = 2bb7f0c8194d3f248bb0f666b5e87210
+
+pkgname = videotrans
+
