@@ -1,0 +1,21 @@
+pkgbase = haskell-monad-control
+	pkgdesc = Lift control operations, like exception catching, through monad transformers
+	pkgver = 1.0.0.4
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/monad-control
+	install = haskell-monad-control.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = haskell-stm
+	depends = haskell-transformers>=0.2
+	depends = haskell-transformers-base>=0.4.4
+	depends = haskell-transformers-compat
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/monad-control/1.0.0.4/monad-control-1.0.0.4.tar.gz
+	md5sums = 0b7a04457195df963ae088ac2ff1b057
+
+pkgname = haskell-monad-control
+
