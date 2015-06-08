@@ -1,0 +1,13 @@
+pkgbase = plasma-theme-invisible-black
+	pkgdesc = Invisible Plasma Theme for KDE4. Black color variant.
+	pkgver = 0.7
+	pkgrel = 2
+	url = http://kde-look.org/content/show.php/Invisible?content=164089
+	arch = any
+	license = GPL
+	depends = kdebase-workspace
+	source = Invisible-Black-0.7.tar.gz::https://copy.com/sJZnwoqxps8Z/Invisible-Black.tar.gz?download=1
+	md5sums = 360686389ca65dae8766e0f4e2e2ec8d
+
+pkgname = plasma-theme-invisible-black
+
