@@ -1,0 +1,16 @@
+pkgbase = dupeguru-se
+	pkgdesc = Find duplicate files on your system
+	pkgver = 3.9.1
+	pkgrel = 1
+	url = http://www.hardcoded.net/dupeguru/
+	arch = any
+	license = BSD
+	makedepends = python-sphinx
+	depends = python
+	depends = python-pyqt5
+	depends = libxkbcommon-x11
+	source = http://download.hardcoded.net/dupeguru-se-src-3.9.1.tar.gz
+	md5sums = 8f78859b3a18455339e7919fc4d684ce
+
+pkgname = dupeguru-se
+
