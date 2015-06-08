@@ -1,0 +1,20 @@
+pkgbase = perl-rdf-rdfa-generator
+	pkgdesc = generate some data in RDFa
+	pkgver = 0.103
+	pkgrel = 1
+	url = http://search.cpan.org/dist/RDF-RDFa-Generator
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.008
+	depends = perl-icon-famfamfam-silk
+	depends = perl-rdf-prefixes
+	depends = perl-rdf-trine>=0.112
+	depends = perl-xml-libxml>=1.60
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/RDF-RDFa-Generator-0.103.tar.gz
+	md5sums = 73aa7f161568fdaebf78d00c304482dd
+	sha512sums = 270ffd01f03b89d731676aad7644322f163e96e679dd41ca0b69821cab55f3c3c20a8787a66f25fc1df8253a972ec9adc5d12f664f1c04fe91a9f4315ef4a20e
+
+pkgname = perl-rdf-rdfa-generator
+
