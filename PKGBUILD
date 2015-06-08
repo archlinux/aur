@@ -5,7 +5,7 @@
 pkgname=amnesia-tdd
 pkgver=1.2.1
 pkgrel=2
-pkgdesc="Amnesia: The Dark Descent is a first person survival horror game. (Humble Bundle version)"
+pkgdesc="Amnesia: The Dark Descent is a first person survival horror game."
 arch=('i686' 'x86_64')
 url="http://www.amnesiagame.com/"
 license=('custom')
