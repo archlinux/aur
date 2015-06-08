@@ -1,0 +1,21 @@
+#! /bin/bash
+
+vpnc_up() {
+	VpncConfig="${VpncConfig:-/etc/vpnc/default.conf}"
+	VpncFlags="${VpncFlags:-}"
+
+	if ! /usr/bin/vpnc $VpncFlags "$VpncConfig"; then
+		report_error "Establishing vpnc connection failed."
+		return 1
+	fi
+}
+
+vpnc_down() {
+	if ! /usr/bin/vpnc-disconnect; then
+        report_error "Could not disconnect vpnc connection. Trying to kill process."
+        if ! pkill -9 -x vpnc &>/dev/null; then
+            report_error "Unable to terminate or find vpnc process."
+        fi
+		return 1
+    fi
+}

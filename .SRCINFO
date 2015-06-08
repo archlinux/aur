@@ -1,0 +1,18 @@
+pkgbase = netctl-vpnc
+	pkgdesc = VPNC support for netctl
+	pkgver = 20130521
+	pkgrel = 1
+	url = http://www.archlinux.org
+	arch = any
+	license = GPL
+	depends = netctl
+	depends = vpnc
+	source = vpnc.profile
+	source = vpnc
+	md5sums = c29a06961b7e8d48cc854c29f4219e77
+	md5sums = a7992c43b6e2ee8806773181e317afaf
+	sha256sums = c463f7db0928be90b97988d992ace61b476a8c4c3e8eedc5be33a2393c81ed46
+	sha256sums = 7cb902b19474b9842584e7b4f0f2146a1f11c89c29d3737013816bcecd0b756e
+
+pkgname = netctl-vpnc
+
