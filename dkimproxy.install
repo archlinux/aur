@@ -1,0 +1,7 @@
+post_install() {
+    useradd -c "DKIM Proxy" -s /sbin/nologin -d /var/empty dkimproxy
+}
+
+post_remove() {
+    userdel dkimproxy
+}

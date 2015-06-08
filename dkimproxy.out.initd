@@ -1,0 +1,11 @@
+[Unit]
+Description=DKIMproxy Outgoing
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/dkimproxy.out --conf_file=/etc/dkimproxy/dkimproxy_out.conf --user=dkimproxy --group=mail --daemonize --pidfile=/var/run/dkimproxy_out.pid
+PIDFile=/var/run/dkimproxy_out.pid
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,22 @@
+pkgbase = dkimproxy
+	pkgdesc = An SMTP-proxy that signs and/or verifies emails, using the Mail::DKIM module.
+	pkgver = 1.4.1
+	pkgrel = 6
+	url = http://dkimproxy.sourceforge.net/
+	install = dkimproxy.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = perl-mail-dkim
+	depends = perl-net-server
+	depends = perl-error
+	options = !emptydirs
+	source = http://downloads.sourceforge.net/dkimproxy/dkimproxy-1.4.1.tar.gz
+	source = dkimproxy.in.initd
+	source = dkimproxy.out.initd
+	md5sums = 3ecaa38a8c865a5b7682f7f261354218
+	md5sums = b2cc167d684590c0f84d6a0c58bc292f
+	md5sums = 7f078a99ade398b44ba83210b378e84c
+
+pkgname = dkimproxy
+
