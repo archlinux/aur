@@ -1,0 +1,18 @@
+pkgbase = python-libcloud
+	pkgdesc = A standard Python library that abstracts away differences among multiple cloud provider APIs.
+	pkgver = 0.17.0
+	pkgrel = 2
+	url = https://libcloud.apache.org
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/a/apache-libcloud/apache-libcloud-0.17.0.tar.gz
+	sha256sums = 8ac4895c5ed2fa51812237dfd587675e3cbc4b7e57d9b44722ce849eab2131c2
+
+pkgname = python-libcloud
+	depends = python
+
+pkgname = python2-libcloud
+	depends = python2
+
