@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-flann
+	pkgdesc = FLANN is a library for performing fast approximate nearest neighbor searches in high dimensional spaces (mingw-w64)
+	pkgver = 1.8.4
+	pkgrel = 1
+	url = http://www.cs.ubc.ca/~mariusm/index.php/FLANN/FLANN
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = flann-1.8.4-src::git+https://github.com/mariusmuja/flann.git
+	md5sums = SKIP
+
+pkgname = mingw-w64-flann
+
