@@ -1,0 +1,15 @@
+pkgbase = hawaii-wallpapers-git
+	pkgdesc = Wallpapers for the Hawaii desktop environment
+	pkgver = 20150311.8882721
+	pkgrel = 1
+	url = https://github.com/hawaii-desktop
+	arch = any
+	groups = hawaii-git
+	license = GPL
+	makedepends = git
+	makedepends = extra-cmake-modules
+	source = wallpapers::git://github.com/hawaii-desktop/hawaii-wallpapers.git#branch=master
+	md5sums = SKIP
+
+pkgname = hawaii-wallpapers-git
+
