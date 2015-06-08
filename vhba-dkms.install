@@ -1,0 +1,19 @@
+post_install() {
+  getent group cdemu &>/dev/null || groupadd -r cdemu
+  dkms install -m vhba/${1%-*}
+}
+
+pre_upgrade() {
+  dkms remove -m vhba/${2%-*} --all
+}
+
+post_upgrade() {
+  dkms install -m vhba/${1%-*}
+}
+
+pre_remove() {
+  dkms remove -m vhba/${1%-*} --all
+  groupdel cdemu
+}
+
+# vim: ts=2 sw=2 et:

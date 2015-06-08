@@ -1,0 +1,22 @@
+pkgbase = vhba-dkms
+	pkgdesc = VHBA kernel module sources (DKMS)
+	pkgver = 20140928
+	pkgrel = 2
+	url = http://cdemu.sourceforge.net/
+	install = vhba-dkms.install
+	arch = any
+	license = GPL2
+	depends = dkms
+	optdepends = linux-headers: build the module against Arch kernel
+	optdepends = linux-lts-headers: build the module against LTS Arch kernel
+	provides = vhba-module=20140928
+	conflicts = vhba-module
+	source = http://downloads.sourceforge.net/cdemu/vhba-module-20140928.tar.bz2
+	source = dkms.conf
+	source = 60-vhba.rules
+	sha256sums = 45f56e4972b5aa7175903307901ca42d29da6fc8f92ab4c47007f53bc5bb55a2
+	sha256sums = a663db5183d0c7e2d830d33d56aeaaeded2f3d13d72f602bca6c74549c7696ae
+	sha256sums = 3052cb1cadbdf4bfb0b588bb8ed80691940d8dd63dc5502943d597eaf9f40c3b
+
+pkgname = vhba-dkms
+

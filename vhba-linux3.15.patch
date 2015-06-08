@@ -1,0 +1,54 @@
+From 6545ad1e266f4eb2428e93ba0fdb43d8b87d5fcd Mon Sep 17 00:00:00 2001
+From: Rok Mandeljc <rok.mandeljc@gmail.com>
+Date: Sat, 19 Apr 2014 12:06:23 +0200
+Subject: [PATCH] VHBA module: define scmd_dbg() and scmd_warn() macros only if
+ they are not defined already; fix for compilation on kernel 3.15 and newer
+ (bug #76)
+
+---
+ vhba-module/vhba.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/vhba-module/vhba.c b/vhba-module/vhba.c
+index ae9b554..eb1c5e6 100644
+--- a/vhba-module/vhba.c
++++ b/vhba-module/vhba.c
+@@ -54,12 +54,16 @@ MODULE_LICENSE("GPL");
+ #define DPRINTK(fmt, args...)
+ #endif
+ 
++/* scmd_dbg was introduced in 3.15 */
++#ifndef scmd_dbg
+ #define scmd_dbg(scmd, fmt, a...)       \
+     dev_dbg(&(scmd)->device->sdev_gendev, fmt, ##a)
++#endif
+ 
++#ifndef scmd_warn
+ #define scmd_warn(scmd, fmt, a...)      \
+     dev_warn(&(scmd)->device->sdev_gendev, fmt, ##a)
+-
++#endif
+ 
+ #define VHBA_MAX_SECTORS_PER_IO 256
+ #define VHBA_MAX_ID 32
+@@ -276,7 +280,7 @@ static void vhba_scan_devices (struct work_struct *work)
+         }
+         change = vhost->chgtype[id];
+         exists = vhost->devices[id] != NULL;
+-        
++
+         vhost->chgtype[id] = 0;
+         clear_bit(id, vhost->chgmap);
+ 
+@@ -289,7 +293,7 @@ static void vhba_scan_devices (struct work_struct *work)
+             dev_dbg(&vhost->shost->shost_gendev, "trying to add target 0:%d:0\n", id);
+             vhba_scan_devices_add(vhost, id);
+         } else {
+-            /* quick sequence of add/remove or remove/add; we determine 
++            /* quick sequence of add/remove or remove/add; we determine
+                which one it was by checking if device structure exists */
+             if (exists) {
+                 /* remove followed by add: remove and (re)add */
+-- 
+2.0.0
+
