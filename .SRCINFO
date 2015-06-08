@@ -1,0 +1,20 @@
+pkgbase = mpdlcd
+	pkgdesc = Display MPD status on a lcdproc server
+	pkgver = 0.4.3
+	pkgrel = 2
+	url = https://github.com/rbarrois/mpdlcd
+	arch = any
+	license = MIT
+	makedepends = python2-pip
+	depends = python2
+	depends = python2-lcdproc
+	depends = mpd
+	options = !emptydirs
+	backup = etc/mpdlcd.conf
+	source = https://pypi.python.org/packages/source/m/mpdlcd/mpdlcd-0.4.3.tar.gz
+	source = service
+	md5sums = d7c6f61d556b9c1585806468d6e8c4cf
+	md5sums = 724210e824ec35e6308fc6b6c19c634d
+
+pkgname = mpdlcd
+

@@ -1,0 +1,11 @@
+[Unit]
+Description=Display MPD status on a lcdproc server.
+After=mpd.service
+
+[Service]
+User=nobody
+ExecStart=/usr/bin/mpdlcd
+
+[Install]
+WantedBy=multi-user.target
+
