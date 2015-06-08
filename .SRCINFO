@@ -1,0 +1,14 @@
+pkgbase = ip2location-ruby
+	pkgdesc = Ruby library enables the user to find info of any IP address or hostname
+	pkgver = 7.0.0
+	pkgrel = 1
+	url = http://www.ip2location.com/developers/ruby
+	arch = any
+	license = GPL3
+	depends = ruby
+	depends = rubygems
+	source = http://www.ip2location.com/downloads/ip2location-ruby-7.0.0.tar.gz
+	sha256sums = 27880b6ff5917c74f64f9dfd60eac311d075200eb63a23e35ab51ae7c1c3fc1f
+
+pkgname = ip2location-ruby
+
