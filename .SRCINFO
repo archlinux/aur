@@ -1,0 +1,15 @@
+pkgbase = fluent-plugin-mongo
+	pkgdesc = MongoDB plugin for Fluent event collector
+	pkgver = 0.7.7
+	pkgrel = 1
+	url = http://docs.fluentd.org/articles/out_mongo
+	arch = any
+	license = Apache
+	depends = fluentd
+	depends = ruby-mongo
+	options = !emptydirs
+	source = http://rubygems.org/downloads/fluent-plugin-mongo-0.7.7.gem
+	md5sums = ad85e1aa01876ec0fc5e17d7e4871aed
+
+pkgname = fluent-plugin-mongo
+
