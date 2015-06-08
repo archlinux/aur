@@ -1,0 +1,20 @@
+pkgbase = mpdscribble
+	pkgdesc = MPD client which submits track info to {Libre,Last}.fm
+	pkgver = 0.22
+	pkgrel = 12
+	url = http://mpd.wikia.com/wiki/Client:Mpdscribble
+	install = mpdscribble.install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = GPL
+	depends = libsoup
+	depends = glib2
+	depends = libmpdclient
+	source = http://www.musicpd.org/download/mpdscribble/0.22/mpdscribble-0.22.tar.bz2
+	source = service
+	md5sums = 652ee927b797e9a4cef45494e77047db
+	md5sums = a57d7d3d41b37fb23b45835aa0cfc325
+
+pkgname = mpdscribble
+
