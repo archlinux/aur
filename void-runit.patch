@@ -1,0 +1,122 @@
+diff --git a/1 b/1
+index 6938bc8..65d64c5 100755
+--- a/1
++++ b/1
+@@ -4,8 +4,11 @@
+ PATH=/usr/bin:/usr/sbin
+ 
+ . /etc/runit/functions
++if ! mountpoint -q /run; then
++	[ -d /run ] && rm -rf /run
++fi
+ 
+-msg "Welcome to Void!"
++msg "Welcome to Arch with runit!"
+ 
+ [ -r /etc/rc.conf ] && . /etc/rc.conf
+ 
+@@ -23,6 +26,7 @@ else
+ fi
+ 
+ mkdir -p /run/runit
++[ ! -d /run/lock ] && mkdir /run/lock
+ install -m100 /dev/null /run/runit/stopit
+ 
+ msg "Initialization complete, running stage 2..."
+diff --git a/2 b/2
+index 0a39298..0020949 100755
+--- a/2
++++ b/2
+@@ -5,6 +5,9 @@ PATH=/usr/bin:/usr/sbin
+ 
+ runlevel=default
+ for arg in $(cat /proc/cmdline); do
++    case $arg in
++        single) echo "Initializing single user mode..."; runlevel=single;;
++    esac
+     if [ -d /etc/runit/runsvdir/"$arg" ]; then
+         echo "Runlevel detected: '$arg' (via kernel cmdline)"
+         runlevel="$arg"
+diff --git a/Makefile b/Makefile
+index 5747f5f..2406ee0 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,4 +1,4 @@
+-PREFIX ?=	/usr/local
++PREFIX ?=	usr
+ SCRIPTS=	1 2 3 ctrlaltdel
+ 
+ all:
+@@ -6,15 +6,15 @@ all:
+ 	$(CC) $(CFLAGS) pause.c -o pause $(LDFLAGS)
+ 
+ install:
+-	install -d ${DESTDIR}/${PREFIX}/sbin
+-	install -m755 halt ${DESTDIR}/${PREFIX}/sbin
+-	install -m755 pause ${DESTDIR}/${PREFIX}/sbin
+-	install -m755 shutdown ${DESTDIR}/${PREFIX}/sbin/shutdown
+-	install -m755 modules-load ${DESTDIR}/${PREFIX}/sbin/modules-load
+-	install -m755 zzz ${DESTDIR}/${PREFIX}/sbin
+-	ln -sf zzz ${DESTDIR}/${PREFIX}/sbin/ZZZ
+-	ln -sf halt ${DESTDIR}/${PREFIX}/sbin/poweroff
+-	ln -sf halt ${DESTDIR}/${PREFIX}/sbin/reboot
++	install -d ${DESTDIR}/${PREFIX}/bin
++	install -m755 halt ${DESTDIR}/${PREFIX}/bin
++	install -m755 pause ${DESTDIR}/${PREFIX}/bin
++	install -m755 shutdown ${DESTDIR}/${PREFIX}/bin/shutdown
++	install -m755 modules-load ${DESTDIR}/${PREFIX}/bin/modules-load
++	install -m755 zzz ${DESTDIR}/${PREFIX}/bin
++	ln -sf zzz ${DESTDIR}/${PREFIX}/bin/ZZZ
++	ln -sf halt ${DESTDIR}/${PREFIX}/bin/poweroff
++	ln -sf halt ${DESTDIR}/${PREFIX}/bin/reboot
+ 	install -d ${DESTDIR}/${PREFIX}/share/man/man1
+ 	install -m644 pause.1 ${DESTDIR}/${PREFIX}/share/man/man1
+ 	install -d ${DESTDIR}/${PREFIX}/share/man/man8
+@@ -33,8 +33,6 @@ install:
+ 	install -m644 rc.conf ${DESTDIR}/etc
+ 	install -m755 rc.local ${DESTDIR}/etc
+ 	install -m755 rc.shutdown ${DESTDIR}/etc
+-	install -d ${DESTDIR}/${PREFIX}/lib/dracut/dracut.conf.d
+-	install -m644 dracut/*.conf ${DESTDIR}/${PREFIX}/lib/dracut/dracut.conf.d
+ 	ln -sf /run/runit/reboot ${DESTDIR}/etc/runit/
+ 	ln -sf /run/runit/stopit ${DESTDIR}/etc/runit/
+ 	cp -aP runsvdir/* ${DESTDIR}/etc/runit/runsvdir/
+diff --git a/rc.conf b/rc.conf
+index 5dbad2e..7af3e37 100644
+--- a/rc.conf
++++ b/rc.conf
+@@ -1,20 +1,20 @@
+-# /etc/rc.conf - system configuration for void
++# /etc/rc.conf - system configuration for arch
+ 
+ # Set the host name.
+ #
+ # NOTE: it's preferred to declare the hostname in /etc/hostname instead:
+ # 	- echo myhost > /etc/hostname
+ #
+-#HOSTNAME="void-live"
++#HOSTNAME="arch-vm"
+ 
+ # Set RTC to UTC or localtime.
+ #HARDWARECLOCK="UTC"
+ 
+ # Set timezone, availables timezones at /usr/share/zoneinfo.
+-#TIMEZONE="Europe/Madrid"
++#TIMEZONE="Europe/London"
+ 
+ # Keymap to load, see loadkeys(8).
+-#KEYMAP="es"
++#KEYMAP="uk"
+ 
+ # Console font to load, see setfont(8).
+ #FONT="lat9w-16"
+diff --git a/rc.local b/rc.local
+index 3b80f85..7f65986 100644
+--- a/rc.local
++++ b/rc.local
+@@ -1,4 +1,4 @@
+-# Default rc.local for void; add your custom commands here.
++# Default rc.local for arch; add your custom commands here.
+ #
+ # This is run by runit in stage 2 before the services are executed
+ # (see /etc/runit/2).
