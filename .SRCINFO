@@ -1,12 +1,13 @@
 pkgbase = autotrash-git
 	pkgdesc = Tool to automatically purge old trashed files.
 	pkgver = r59.1e3c902
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.logfish.net/pr/autotrash/
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = git docbook2x
+	makedepends = git
+	makedepends = docbook2x
 	depends = python
 	conflicts = autotrash
 	source = autotrash-git::git://github.com/bneijt/autotrash.git
