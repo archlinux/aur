@@ -1,7 +1,7 @@
 pkgbase = amnesia-tdd
 	pkgdesc = Amnesia: The Dark Descent is a first person survival horror game.
 	pkgver = 1.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.amnesiagame.com/
 	arch = i686
 	arch = x86_64
