@@ -1,0 +1,20 @@
+pkgbase = adcli-git
+	pkgdesc = DBus service for configuring kerberos and other online identities.
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = http://freedesktop.org/software/realmd/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = docbook-xsl
+	makedepends = intltool
+	makedepends = xmlto
+	depends = krb5
+	depends = openldap
+	provides = adcli=0.7.3
+	conflicts = adcli
+	source = git://anongit.freedesktop.org/realmd/adcli
+	sha256sums = SKIP
+
+pkgname = adcli-git
+
