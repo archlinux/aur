@@ -1,10 +1,11 @@
-# Maintainer: Simone Sclavi 'Ito' <darkhado@gmail.com>
+# Maintainer: Simon Brulhart <simon@brulhart.me>
+# Contributor: Simone Sclavi 'Ito' <darkhado@gmail.com>
 
 pkgname=firefox-beta-bin-all-localizations
 _mypkgn=firefox-beta
 pkgdesc='Perl script for installing latest FF beta in the language of your choice'
 url='http://www.mozilla.com/firefox/channel/'
-pkgver=38.0b8
+pkgver=39.0b3
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL' 'GPL3')
@@ -17,15 +18,15 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 	    'gstreamer0.10-ugly-plugins: h.264 and mp3 decoding'
 	    'gstreamer0.10-ffmpeg: more decoders'
             'libpulse: PulseAudio audio driver')
-makedepends=('perl-file-slurp' 'perl-libwww' 'perl-switch')
+makedepends=('perl-file-slurp' 'perl-lwp-protocol-https' 'perl-switch')
 install=firefox.install
-source=('firefox-beta-bin.desktop' 'firefox-beta-bin-safe.desktop' 'ff-downloader.pl')   
+source=('firefox-beta-bin.desktop' 'firefox-beta-bin-safe.desktop' 'ff-downloader.pl')
 build() {
-  perl ff-downloader.pl -v $pkgver 
-} 
+  perl ff-downloader.pl -v $pkgver
+}
 
 package() {
-  bsdtar -jxf firefox-${pkgver}.tar.bz2
+  bsdtar -jxf firefox-${pkgver//rc*/}.tar.bz2
   mkdir -p $pkgdir/usr/{lib,bin,share/{applications,pixmaps}}
 
   cp -r firefox "${pkgdir}/usr/lib/${_mypkgn}"
@@ -36,4 +37,4 @@ package() {
 }
 md5sums=('09569434d20ceb6c7e6a267249f8ab48'
          '6fc7dee182dd7cca644c9d8a5861cf62'
-         '15fd33eec28fdd0367199604e28fae74')
+         'd1c065767aba9677bea343afba248410')
