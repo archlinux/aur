@@ -1,0 +1,19 @@
+pkgbase = brutal-legend-hib
+	pkgdesc = Brütal Legend is an action-adventure game with real-time strategy game elements created by Double Fine Productions (Humble Bundle version).
+	pkgver = 2013_06_15
+	pkgrel = 1
+	url = http://www.brutallegend.com
+	arch = i686
+	arch = x86_64
+	license = custom: commercial
+	makedepends = unzip
+	noextract = BrutalLegend-Linux-2013-06-15-setup.bin
+	source = hib://BrutalLegend-Linux-2013-06-15-setup.bin
+	source = brutal-legend-hib.desktop
+	sha256sums = 133cc6f565966503d347722a9bd13dd27f86c6ff75f5586cbc4e6ef6bbb8640a
+	sha256sums = d032332fc97efafb3befa639e9568d38881ba3c8d43e58a0af1ba351ae5aad0f
+	depends_i686 = glu
+	depends_x86_64 = lib32-glu
+
+pkgname = brutal-legend-hib
+

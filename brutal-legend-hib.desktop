@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Brütal Legend
+GenericName=Brütal Legend
+Comment=Play Brütal Legend
+Exec=brutal-legend-hib
+Icon=brutal-legend-hib
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Game;AudioVideo;
