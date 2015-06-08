@@ -1,0 +1,14 @@
+pkgbase = subnetcalc
+	pkgdesc = Subnet Calculator for IPv4/IPv6
+	pkgver = 2.4.2
+	pkgrel = 1
+	url = http://www.iem.uni-due.de/~dreibh/subnetcalc/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = geoip
+	source = http://www.iem.uni-due.de/~dreibh/subnetcalc/download/subnetcalc-2.4.2.tar.gz
+	md5sums = ff38d18844a81cd94255876e48a858f1
+
+pkgname = subnetcalc
+
