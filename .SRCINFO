@@ -1,0 +1,23 @@
+pkgbase = haskell-threads
+	pkgdesc = Fork threads and wait for their result
+	pkgver = 0.5.0.3
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/threads
+	install = haskell-threads.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = haskell-base>=4.4
+	depends = haskell-base<4.7
+	depends = haskell-base-unicode-symbols>=0.1.1
+	depends = haskell-base-unicode-symbols<0.3
+	depends = haskell-stm>=2.1
+	depends = haskell-stm<2.5
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/threads/0.5.0.3/threads-0.5.0.3.tar.gz
+	md5sums = fcec4de94766325b8f66feb9084eac76
+
+pkgname = haskell-threads
+
