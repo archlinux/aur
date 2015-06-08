@@ -1,0 +1,14 @@
+pkgbase = luamacro
+	pkgdesc = A macro preprocessor for Lua
+	pkgver = 2.5.0.2.gf38ecbf
+	pkgrel = 1
+	url = http://yaml.luaforge.net/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	license = custom
+	depends = lua
+	options = !makeflags
+
+pkgname = luamacro
+
