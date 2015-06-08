@@ -1,0 +1,17 @@
+pkgbase = eqe
+	pkgdesc = Linux LaTeX equation editor.
+	pkgver = 1.3.0
+	pkgrel = 2
+	url = http://rlehy.free.fr/
+	arch = any
+	license = GPL2
+	depends = gtk2-perl
+	depends = imagemagick
+	depends = tetex
+	depends = perl-file-slurp
+	depends = perl-template-toolkit
+	source = http://rlehy.free.fr/eqe-1.3.0.tar.bz2
+	md5sums = 74b27a201302ea33033d9ccb496e1e34
+
+pkgname = eqe
+
