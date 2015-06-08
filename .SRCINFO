@@ -1,0 +1,19 @@
+pkgbase = bbswitch-mainline
+	pkgdesc = Kernel module allowing to switch dedicated graphics card on Optimus laptops for linux-mainline
+	pkgver = 0.8
+	pkgrel = 5
+	url = http://github.com/Bumblebee-Project/bbswitch
+	install = bbswitch-mainline.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = linux-mainline-headers>=4.1rc1
+	makedepends = linux-mainline-headers<4.2rc1
+	depends = linux-mainline>=4.1rc1
+	depends = linux-mainline<4.2rc1
+	provides = bbswitch
+	source = https://github.com/Bumblebee-Project/bbswitch/archive/v0.8.tar.gz
+	md5sums = 5b116b31ace3604ddf9d1fc1f4bc5807
+
+pkgname = bbswitch-mainline
+
