@@ -1,0 +1,17 @@
+pkgbase = haskell-objectname
+	pkgdesc = Explicitly handled object names
+	pkgver = 1.1.0.0
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/ObjectName
+	install = haskell-objectname.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = haskell-transformers
+	options = strip
+	source = http://hackage.haskell.org/packages/archive/ObjectName/1.1.0.0/ObjectName-1.1.0.0.tar.gz
+	md5sums = 3f9dcdae4d1a83aac7c3e000b3c78fa9
+
+pkgname = haskell-objectname
+
