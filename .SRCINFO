@@ -1,0 +1,17 @@
+pkgbase = python2-code-chat-hg
+	pkgdesc = Source code to HTML translator (literate programming)
+	pkgver = r526.8536898ac3f4
+	pkgrel = 1
+	url = https://bitbucket.org/bjones/documentation/overview
+	arch = any
+	license = GPL3
+	makedepends = mercurial
+	makedepends = python2-setuptools
+	depends = python2-docutils
+	provides = python2-code-chat
+	conflicts = python2-code-chat
+	source = python2-code-chat-hg::hg+https://bitbucket.org/bjones/documentation
+	md5sums = SKIP
+
+pkgname = python2-code-chat-hg
+
