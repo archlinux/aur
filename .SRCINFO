@@ -1,0 +1,23 @@
+pkgbase = catacomb-snatch
+	pkgdesc = Catacomb Snatch is a real-time strategy shoot'em up with a steampunk ancient Egypt theme
+	pkgver = 1.1.0
+	pkgrel = 297
+	url = http://catacombsnatch.net/
+	arch = any
+	license = custom
+	depends = java-runtime
+	depends = xorg-server-utils
+	depends = openal
+	source = catacomb-snatch.jar::http://ci.catacombsnatch.net/job/Catacomb-Snatch/297/artifact/build/libs/Catacomb-Snatch-1.1.0-BETA.jar
+	source = catacomb-snatch.png::https://raw.github.com/Maescool/Catacomb-Snatch/develop/res/art/icon/icon64.png
+	source = catacomb-snatch.desktop
+	source = catacomb-snatch
+	source = LICENSE::https://raw.github.com/Maescool/Catacomb-Snatch/develop/LICENSE
+	md5sums = ecf29c4d44a8593b543170d21dd6ef56
+	md5sums = a1654d780d1a5d838b30cffc41b48450
+	md5sums = 040847ddc7698129b98d302075adc8f9
+	md5sums = 9c26092103b98564f9127936faf72fdb
+	md5sums = 2abf3da47075351544e764f3b4c89317
+
+pkgname = catacomb-snatch
+

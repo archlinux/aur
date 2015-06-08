@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Catacomb Snatch
+GenericName=catacomb-snatch
+Exec=/usr/bin/catacomb-snatch
+Icon=catacomb-snatch
+Terminal=false
+Type=Application
+Categories=Game;
+StartupNotify=false
+
