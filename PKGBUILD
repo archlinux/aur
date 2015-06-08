@@ -1,7 +1,7 @@
 # Maintainer: Allen Zhong <moeallenz@gmail.com>
 pkgname=asar-apache
-pkgver=r40
-pkgrel=2
+pkgver=r54
+pkgrel=1
 pkgdesc="A System Activity Reporter of apache httpd"
 arch=(i686 x86_64)
 url="http://code.google.com/p/python-asar/"
