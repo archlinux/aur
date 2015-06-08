@@ -1,0 +1,16 @@
+## arg 1:  the new package version
+## arg 2:  the old package version
+
+post_upgrade() {
+	for test in 2.55-1 2.17-1 2.22-1; do
+		if [ "$(vercmp $2 $test)" -lt 1 ]; then
+			echo
+			echo '--> Please check ~/.config/clean-chroot-manager.conf against the'
+			echo '--> provided /usr/share/clean-chroot-manager/ccm.skel to ensure it is'
+			echo '--> updated as the script does not do this automatically.'
+			exit 0
+		else
+			/bin/true
+		fi
+	done
+}
