@@ -1,0 +1,16 @@
+pkgbase = libreoffice-extension-greek-dictionary
+	pkgdesc = Greek dictionary from the OpenOffice.org project that works on LibreOffice
+	pkgver = 1.1.0
+	pkgrel = 2
+	url = http://extensions.services.openoffice.org/en/project/el_dict
+	arch = any
+	groups = libreoffice-extensions
+	license = LGPL
+	makedepends = unzip
+	depends = libreoffice
+	conflicts = languagetool
+	source = http://liquidtelecom.dl.sourceforge.net/project/aoo-extensions/1411/2/el_gr_v110.oxt
+	md5sums = bf9c22ea03e81ef21aa41c4869b3f38d
+
+pkgname = libreoffice-extension-greek-dictionary
+
