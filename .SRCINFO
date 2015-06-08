@@ -1,0 +1,20 @@
+pkgbase = perl-crypt-gpgme
+	pkgdesc = Perl interface to libgpgme
+	pkgver = 0.09
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Crypt-GpgME
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-exception
+	depends = gpgme>=1.3.2
+	depends = libassuan>=2.1.0
+	depends = libgpg-error>=1.11
+	depends = perl-io-stringy
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/F/FL/FLORA/Crypt-GpgME-0.09.tar.gz
+	md5sums = 5bf11c59c057df342f82fbb53f941adf
+	sha512sums = 9e85012bcb3ea5dd2cdd06e780be00061f3502b70e59a36fe93db296b6b90a4d85cd5d8b28a238a51b3db3830dff552ef319c72f45d2f35246cfa2bbe7b5c324
+
+pkgname = perl-crypt-gpgme
+
