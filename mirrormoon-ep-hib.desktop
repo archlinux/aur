@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=MirrorMoon EP
+Comment=A space adventure that begins on a red planet and its unique moon.
+Exec=mirrormoon-ep-hib
+Icon=mirrormoon-ep-hib
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;AudioVideo;
+Encoding=UTF-8

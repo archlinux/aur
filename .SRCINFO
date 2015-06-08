@@ -1,0 +1,18 @@
+pkgbase = mirrormoon-ep-hib
+	pkgdesc = MirrorMoon EP is a space adventure that begins on a red planet and its unique moon.
+	pkgver = 1392070609
+	pkgrel = 1
+	url = http://www.mirrormoongame.com/
+	arch = i686
+	arch = x86_64
+	license = custom: commercial
+	depends = glu
+	source = hib://MirrorMoonEP_linux_1392070609.tar.gz
+	source = mirrormoon-ep-hib.desktop
+	sha256sums = 9b3a30e18503941621eb111f8754729bd764bf3efb847383ffa867d18f05c4de
+	sha256sums = a1b40b1a6a9bf1541c1c8d6af73a142790c595ffda3b9335d00145670f64e15e
+	depends_i686 = gtk2
+	depends_x86_64 = lib32-gtk2
+
+pkgname = mirrormoon-ep-hib
+
