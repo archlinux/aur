@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=OpenJK Multi Player
+Comment="Open Source Jedi Knight II + III Engine - Multi Player"
+Exec=openjk
+Icon=openjkmp
+Terminal=false
+StartupNotify=false
+Categories=Game
