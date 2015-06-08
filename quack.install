@@ -1,0 +1,11 @@
+### quack.install:
+post_install () {
+cat << EOF
+==> Put this in your .emacs file to enable quack
+(require 'quack)
+EOF
+}
+
+post_upgrade () {
+	post_install $1
+}

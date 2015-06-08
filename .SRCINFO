@@ -1,0 +1,15 @@
+pkgbase = quack
+	pkgdesc = [Emacs] enhanced support for editing and running Scheme code.
+	pkgver = 0.47
+	pkgrel = 2
+	url = http://www.neilvandyke.org/quack
+	install = quack.install
+	arch = any
+	license = GPL
+	makedepends = emacs
+	depends = emacs
+	source = http://www.neilvandyke.org/quack/quack.el
+	md5sums = e926875c9eedbc9515c10c2e5ec54111
+
+pkgname = quack
+
