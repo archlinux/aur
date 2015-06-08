@@ -1,0 +1,38 @@
+*** pkg/usr/share/cups/model/canonip4500.ppd	2007-11-20 11:04:53.000000000 +0100
+--- /etc/cups/ppd/Pixma.ppd	2010-02-28 16:19:41.000000000 +0100
+***************
+*** 61,74 ****
+--- 61,93 ----
+  
+  *OpenUI *Resolution/Output Resolution: PickOne
+  *DefaultResolution: 600
++ *Resolution 300/300 dpi: "<</HWResolution[300 300]>>setpagedevice"
+  *Resolution 600/600 dpi: "<</HWResolution[600 600]>>setpagedevice"
++ *Resolution 1200/1200 dpi: "<</HWResolution[1200 1200]>>setpagedevice"
++ *Resolution 2400/2400 dpi: "<</HWResolution[2400 2400]>>setpagedevice"
++ *Resolution 4800/4800 dpi: "<</HWResolution[4800 4800]>>setpagedevice"
+  *CloseUI: *Resolution
+  
++ *OpenUI *CNQuality/Quality: PickOne
++ *DefaultCNQuality: 3
++ *CNQuality 1/Super High: "1"
++ *CNQuality 2/High: "2"
++ *CNQuality 3/Normal: "3"
++ *CNQuality 4/Standard: "4"
++ *CNQuality 5/Economy: "5"
++ *CloseUI: *CNQuality
++ 
+  *OpenUI *ColorModel/Color Model: PickOne
+  *DefaultColorModel: rgb
+  *ColorModel rgb/RGB: "<</cupsColorOrder 0/cupsColorSpace 1/cupsCompression 0/cupsBitsPerColor 8>>setpagedevice"
+  *CloseUI: *ColorModel
+  
++ *OpenUI *CNGrayscale/Grayscale: PickOne
++ *DefaultCNGrayscale: false
++ *CNGrayscale false/Off: "false"
++ *CNGrayscale true/On: "true"
++ *CloseUI: *CNGrayscale
++ 
+  *OpenUI *PageSize/Paper Size: PickOne
+  *DefaultPageSize: A4
+  *PageSize Letter/Letter 8.5"x11" 215.9x279.4mm: "<</CNPageSizeName(Letter)/PageSize[612 792]/ImagingBBox null>>setpagedevice"

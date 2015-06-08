@@ -1,0 +1,30 @@
+pkgbase = cnijfilter-ip4500
+	pkgdesc = Canon IJ Printer Driver for Pixma IP4700 series Inkjet Printers
+	pkgver = 2.80
+	pkgrel = 3
+	url = http://software.canon-europe.com/software/0028476.asp
+	install = cnijfilter-ip4500.install
+	arch = x86_64
+	license = custom
+	makedepends = rpmextract
+	depends = lib32-libpng12
+	depends = cups
+	depends = lib32-e2fsprogs
+	depends = lib32-glibc
+	depends = lib32-gnutls
+	depends = lib32-libcups
+	depends = lib32-libgcrypt
+	depends = lib32-libgpg-error
+	depends = lib32-libtasn1
+	depends = lib32-openssl
+	depends = lib32-popt
+	depends = lib32-sqlite3
+	depends = lib32-zlib
+	depends = lib32-libtiff3
+	source = http://files.canon-europe.com/files/soft28476/software/28476.tgz
+	source = canonip4500.ppd.patch
+	md5sums = 5daca73347d7db20920f4fdcd661c33c
+	md5sums = 9378f8b1d4ff3992f3d87c7ebfe04502
+
+pkgname = cnijfilter-ip4500
+
