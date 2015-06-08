@@ -1,0 +1,21 @@
+pkgbase = guipdftk
+	pkgdesc = GUI for PDFTK, lazarus-gtk2 needed
+	pkgver = 0.33
+	pkgrel = 3
+	url = http://www.paehl.de/pdf/gui_pdftk.html
+	install = guipdftk.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = lazarus
+	optdepends = pdftk: you want it, but technically you do not need it
+	options = !emptydirs
+	source = http://www.paehl.de/pdf/downloads/linux_source.zip
+	source = guipdftk.desktop
+	source = guipdftk.config
+	md5sums = 9bdee03b0c1bc9c71468cdae0d5096ee
+	md5sums = 0d4df8e390030d63e0f3adf2b234ed81
+	md5sums = 2a4b26260ce1651934b15eaf5a82d57f
+
+pkgname = guipdftk
+

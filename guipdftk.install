@@ -1,0 +1,7 @@
+## arg 1:  the new package version
+post_install() {
+  echo "\tlazarus isn't needed anymore"
+  echo "\tuninstall with pacman -Rs lazarus"
+}
+
+# vim:set ts=2 sw=2 et:

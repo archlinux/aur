@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Categories=System;Utility;Office;
+Name=GUI for PDFtk
+GenericName=GUI for PDFtk
+Comment=GUI for PDFtk Tools
+TryExec=guipdftk
+Exec=guipdftk
+Icon=okular
