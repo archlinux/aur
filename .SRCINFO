@@ -1,0 +1,20 @@
+pkgbase = python2-xray
+	pkgdesc = N-D labeled arrays and datasets in Python
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/xray
+	arch = any
+	license = Apache
+	checkdepends = python2-nose
+	makedepends = python2-setuptools
+	depends = python2-numpy
+	depends = python2-pandas
+	optdepends = python2-netcdf4: NetCDF4 support
+	optdepends = python2-bottleneck: Faster NaN operations
+	optdepends = python2-cyordereddict: Speed up most internal operations
+	optdepends = python2-scipy: OPeNDAP support
+	source = https://github.com/xray/xray/archive/v0.4.1.tar.gz
+	md5sums = b124d83249156c60de73dafc5be712e8
+
+pkgname = python2-xray
+
