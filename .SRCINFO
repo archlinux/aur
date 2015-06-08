@@ -1,0 +1,14 @@
+pkgbase = hunspell-lv
+	pkgdesc = Latvian hunspell dictionary
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://dict.dv.lv/download.php?prj=lv
+	arch = any
+	license = LGPL2
+	depends = hunspell
+	depends = hyphen
+	source = http://dict.dv.lv/download/lv_LV-1.1.0.zip
+	sha256sums = 1845ee1ce23614ccb0ad29b1441827a53d137d7afdd7d40a835e996e8f899aa3
+
+pkgname = hunspell-lv
+
