@@ -1,0 +1,88 @@
+--- 14.1/common/etc/ati/authatieventsd.sh	2014-01-30 15:36:26.000000000 +0100
++++ 14.1/common/etc/ati/authatieventsd.sh	2014-02-02 14:10:19.529653688 +0100
+@@ -32,7 +32,7 @@
+     # vary depending upon whether X was started via xdm/kdm, gdm or startx, so
+     # check each one in turn.
+ 
+-    # Check xdm/kdm
++    # Check xdm
+ 
+     XDM_AUTH_MASK=/var/lib/xdm/authdir/authfiles/A$1*
+     XDM_AUTH_FILE=`ls -t $XDM_AUTH_MASK 2>/dev/null | head -n 1`   # Choose the newest file
+@@ -42,12 +42,32 @@
+         return 0
+     fi
+ 
+-    # Check gdm
++    # Check kdm
+ 
+-    GDM_AUTH_FILE=/var/lib/gdm/$1.Xauth
++    KDM_AUTH_MASK=/var/run/xauth/A$1*
++    KDM_AUTH_FILE=`ls -t $KDM_AUTH_MASK 2>/dev/null | head -n 1`   # Choose the newest file
++    if [ -n "$KDM_AUTH_FILE" ]; then
++        SERVER_AUTH_FILE=$KDM_AUTH_FILE
++        DISP_SEARCH_STRING="#ffff#"
++        return 0
++    fi
++
++    # Check gdm 3
++
++    GDM_AUTH_FILE=/var/run/gdm/auth-for-gdm-*/database
+     if [ -e $GDM_AUTH_FILE ]; then
+         SERVER_AUTH_FILE=$GDM_AUTH_FILE
+-        DISP_SEARCH_STRING="$1"
++        DISP_SEARCH_STRING="unix$1"
++        return 0
++    fi
++
++    # Check lightdm
++    # Not sure if this will work
++    LIGHTDM_AUTH_FILE=/var/run/lightdm/root/$1
++    if [ -e $LIGHTDM_AUTH_FILE ]; then
++        SERVER_AUTH_FILE=$LIGHTDM_AUTH_FILE
++        # Not sure if this is correct
++        DISP_SEARCH_STRING="unix$1"
+         return 0
+     fi
+ 
+@@ -65,7 +85,7 @@
+ 
+     # Couldn't find the key
+ 
+-    return -1
++    return 255
+ }
+ 
+ # Main part of script
+@@ -78,25 +98,25 @@
+ #
+ 
+ PATH=$PATH:/usr/bin:/usr/X11R6/bin
+-which xauth > /dev/null || exit -1
++which xauth > /dev/null || exit 255
+ 
+ case "$1" in
+     grant)
+-        GetServerAuthFile $2 || exit -1
++        GetServerAuthFile $2 || exit 255
+         DISP_AUTH_KEY=`xauth -f $SERVER_AUTH_FILE list | grep $DISP_SEARCH_STRING | awk '{ print $3 }'`
+         if [ -n "$DISP_AUTH_KEY" ]; then
+-            xauth -f $3 add $2 . $DISP_AUTH_KEY || exit -1
++            xauth -f $3 add $2 . $DISP_AUTH_KEY || exit 255
+         else
+-            exit -1
++            exit 255
+         fi
+         ;;
+ 
+     revoke)
+-        xauth -f $3 remove $2 || exit -1
++        xauth -f $3 remove $2 || exit 255
+         ;;
+ 
+     *)
+-        exit -1
++        exit 255
+         ;;
+ esac
+ exit 0

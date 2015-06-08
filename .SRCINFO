@@ -1,0 +1,79 @@
+pkgbase = catalyst-utils
+	pkgver = 15.5
+	pkgrel = 1
+	url = http://www.amd.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	options = staticlibs
+	options = libtool
+	options = !strip
+	options = !upx
+	source = http://www2.ati.com/drivers/linux/amd-catalyst-omega-15.5-linux-run-installers.zip
+	source = catalyst.sh
+	source = atieventsd.sh
+	source = atieventsd.service
+	source = catalyst.conf
+	source = arch-fglrx-authatieventsd_new.patch
+	source = switchlibGL
+	source = switchlibglx
+	source = pxp_switch_catalyst
+	source = temp_links_catalyst
+	source = temp-links-catalyst.service
+	md5sums = 979f9f2e0948fa6e92ff0125f5c6b575
+	md5sums = bdafe749e046bfddee2d1c5e90eabd83
+	md5sums = 9d9ea496eadf7e883d56723d65e96edf
+	md5sums = 90a37e010f4e5f45e270cd000894d553
+	md5sums = 3e19c2285c76f4cb92108435a1e9c302
+	md5sums = b3ceefeb97c609037845f65d0956c4f0
+	md5sums = 394bc493fdf493a5093f9e2095096d02
+	md5sums = 3226230592fa3c91ff22389114fc5dc7
+	md5sums = 9e706c272feb167be55ba7201dfa8d51
+	md5sums = 0e6d963436dd23dbb45ae0f4fc9b661c
+	md5sums = 2c22bb4d4f828cb8b024f670c1ae7e45
+
+pkgname = catalyst-utils
+	pkgdesc = AMD/ATI drivers. Utilities and libraries. Radeons HD 2 3 4 xxx ARE NOT SUPPORTED
+	install = catalyst-utils.install
+	depends = xorg-server>=1.7.0
+	depends = xorg-server<1.17.0
+	depends = libxrandr
+	depends = libsm
+	depends = fontconfig
+	depends = libxcursor
+	depends = libxi
+	depends = gcc-libs
+	depends = libxinerama
+	optdepends = qt4: to run ATi Catalyst Control Center (amdcccle)
+	optdepends = libxxf86vm: to run ATi Catalyst Control Center (amdcccle)
+	optdepends = acpid: acpi event support / atieventsd
+	optdepends = catalyst-libgl: Catalyst drivers libraries symlinks.
+	optdepends = opencl-catalyst: OpenCL implemention for AMD Catalyst
+	optdepends = lib32-catalyst-utils: Utilities and libraries (32-bit)
+	provides = libatical=15.5
+	provides = dri
+	provides = libtxc_dxtn
+	conflicts = catalyst-test
+	conflicts = catalyst-total
+	conflicts = catalyst-total-pxp
+	conflicts = catalyst-utils-pxp
+
+pkgname = catalyst-libgl
+	pkgdesc = AMD/ATI drivers. Catalyst drivers libraries symlinks + experimental powerXpress support.
+	install = catalyst-libgl.install
+	depends = catalyst-utils
+	depends = mesa>=10.1.0-4
+	provides = libgl
+	provides = mesa-libgl
+	provides = mesa-libgl-git
+	conflicts = libgl
+	conflicts = mesa-libgl
+	conflicts = mesa-libgl-git
+
+pkgname = opencl-catalyst
+	pkgdesc = AMD/ATI drivers. OpenCL implemention for AMD Catalyst
+	depends = gcc-libs
+	optdepends = opencl-headers: headers necessary for OpenCL development
+	provides = libcl
+	conflicts = libcl
+

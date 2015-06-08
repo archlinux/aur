@@ -1,0 +1,72 @@
+signa() {
+    #get rid of Testing use only watermark
+    echo "3249c5b75bccae3ce4f3a65e88154133:037beb866bf8830dd7c3956cb0746c02077cfc8e628f837db0ba8666b127700b07:027af2d53eae960ad291c066b0267157567ea68462f9985f86c3916abe767101027ef2d43daf9659d2c19e38b02676575079a7d663fa980a86c29469bf257151027e" > etc/ati/signature
+}
+
+bug_whisper(){
+    echo -e '\E[37;44m'"\033[1m---------------- I/O BUG ---------------------------------------\033[0m"
+    echo "There's a bug in fglrx found by lano1106 which generates"
+    echo "great amount of unneeded I/O operations"
+    echo ""
+    echo "To activate workaround enable systemd service:"
+    echo "systemctl enable temp-links-catalyst"
+    echo "systemctl start temp-links-catalyst"
+    echo ""
+    echo "More infos:"
+    echo "https://bbs.archlinux.org/viewtopic.php?pid=1279977#p1279977"
+    echo "https://bbs.archlinux.org/viewtopic.php?pid=1280193#p1280193"
+    echo -e '\E[37;44m'"\033[1m----------------------------------------------------------------\033[0m"
+}
+
+post_install() {
+    echo "----------------------------------------------------------------"
+    echo "PLEASE NOTE:"
+    echo "For these drivers to work, you must install kernel modules."
+    echo ""
+    echo "Simply use packages that provides auto re-compilation:"
+    echo "catalyst-hook or catalyst-daemon"
+    echo ""
+    echo "OR use catalyst-generator package to generate catalyst-{kernver}"
+    echo "packages"
+    echo "----------------------------------------------------------------"
+    echo "You can use the tool 'aticonfig' to generate an xorg.conf file."
+    echo "--------------------- ^^^^^^^^^ --------------------------------"
+    echo "Add nomodeset to your kernel line in /boot/grub/menu.lst , ie.:"
+    echo "kernel /boot/vmlinuz-linux root=/dev/sda1 ro nomodeset"
+    echo "----------------------------------------------------------------"
+    echo "IMPORTANT:"
+    echo "fglrx was added into /etc/modules-load.d/catalyst.conf"
+    echo "----------------------------------------------------------------"
+    echo "	atieventsd (needs acpid pkg) on systemd:"
+    echo "systemctl enable atieventsd"
+    echo "systemctl start atieventsd"
+    echo "----------------------------------------------------------------"
+    echo "For more info and troubleshooting visit:"
+    echo "http://wiki.archlinux.org/index.php/ATI_Catalyst"
+    echo "----------------------------------------------------------------"
+    echo -e "\e[1;31m-------------------------- SPLIT -------------------------------\e[0m"
+    echo "catalyst-utils is now splitted into:"
+    echo "catalyst-utils"
+    echo "catalyst-libgl"
+    echo "opencl-catalyst"
+    echo ""
+    echo -e "You MOST probably want to also install \e[1;31mcatalyst-libgl\e[0m"
+    echo -e "\e[1;31m----------------------------------------------------------------\e[0m"
+#    bug_whisper
+#    signa
+}
+
+post_upgrade(){
+    echo -e "\e[1;31m-------------------------- SPLIT -------------------------------\e[0m"
+    echo "catalyst-utils is now splitted into:"
+    echo "catalyst-utils"
+    echo "catalyst-libgl"
+    echo "opencl-catalyst"
+    echo -e "\e[1;31m----------------------------------------------------------------\e[0m"
+#    bug_whisper
+#    signa
+}
+
+post_remove() {
+     echo "NOTE: Don't forget to recover your original xorg.conf file."
+}
