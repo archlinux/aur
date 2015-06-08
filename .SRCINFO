@@ -1,0 +1,25 @@
+pkgbase = mupdf-git
+	pkgdesc = Lightweight PDF, XPS and CBZ viewer
+	pkgver = 20150605.c22548d
+	pkgrel = 1
+	url = http://mupdf.com/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL3
+	makedepends = git
+	depends = freetype2
+	depends = jbig2dec
+	depends = libjpeg
+	depends = libxext
+	provides = mupdf=1.7.git
+	conflicts = mupdf
+	options = staticlibs
+	backup = usr/bin/mupdf
+	source = git://git.ghostscript.com/mupdf.git
+	source = desktop
+	sha1sums = SKIP
+	sha1sums = 31573e5da3fbf0162c0926511fc9858f2052fa6c
+
+pkgname = mupdf-git
+
