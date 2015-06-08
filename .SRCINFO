@@ -1,0 +1,17 @@
+pkgbase = rumpeltreepp-git
+	pkgdesc = C++ Rumpelstiltskin tree-graph library
+	pkgver = r47.2831391
+	pkgrel = 1
+	url = http://pibara.github.io/Rumpeltreepp/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = crypto++
+	source = Rumpeltreepp::git+git://github.com/pibara/Rumpeltreepp.git
+	source = fix.patch
+	sha256sums = SKIP
+	sha256sums = 3db1f5e8244d957bc6684c6c89bf299e3b9ec09443681c590fe84b3c3e5eee05
+
+pkgname = rumpeltreepp-git
+
