@@ -1,0 +1,15 @@
+pkgbase = python2-smmap
+	pkgdesc = A pure git implementation of a sliding window memory map manager
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/smmap
+	arch = any
+	license = BSD
+	makedepends = python2
+	makedepends = python2-distribute
+	depends = python2
+	source = http://pypi.python.org/packages/source/s/smmap/smmap-0.9.0.tar.gz
+	md5sums = d7932d5ace206bf4ae15198cf36fb6ab
+
+pkgname = python2-smmap
+
