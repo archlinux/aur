@@ -1,0 +1,20 @@
+pkgbase = encuentro-bzr
+	pkgdesc = Busque, descargue, y vea el maravilloso contenido ofrecido por el Canal Encuentro, Paka Paka, Educ.ar y otros.
+	pkgver = 3.1+r260
+	pkgrel = 1
+	url = http://encuentro.taniquetil.com.ar
+	arch = any
+	license = GPL v3
+	makedepends = python2-distribute
+	depends = python2
+	depends = python2-pyqt4
+	depends = python2-defer
+	depends = python2-requests
+	depends = python2-beautifulsoup4
+	depends = python2-notify
+	depends = python2-xdg
+	source = encuentro-bzr::bzr+http://bazaar.launchpad.net/~facundo/encuentro/trunk/
+	md5sums = SKIP
+
+pkgname = encuentro-bzr
+
