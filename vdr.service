@@ -1,0 +1,14 @@
+[Unit]
+Description=Video Disk Recorder
+After=oscam.service
+After=sundtek.service
+After=xlogin@vdr.service
+
+[Service]
+Type=notify
+ExecStart=/usr/bin/vdr
+Restart=on-failure
+RestartPreventExitStatus=2
+
+[Install]
+WantedBy=multi-user.target

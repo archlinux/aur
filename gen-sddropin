@@ -1,0 +1,19 @@
+#!/usr/bin/bash
+FILE=/etc/systemd/system/vdr.service.d/wait-for-devices.conf
+
+if [ -d /dev/dvb/adapter0 ]; then
+  mkdir -p $(dirname $FILE)
+  echo "Replace or create the file $FILE"
+  echo "with the following"
+  echo
+  echo '[Unit]'
+
+  cd /dev
+  for dev in dvb/adapter*/*; do
+    stringpart=$(tr / - <<< $dev)
+    echo "Wants=dev-$stringpart.device"
+    echo "After=dev-$stringpart.device"
+  done
+else
+  echo "No DVB devices detected. No systemd rule needed"
+fi
