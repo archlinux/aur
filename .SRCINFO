@@ -1,0 +1,19 @@
+pkgbase = hasmail
+	pkgdesc = System tray application that checks for and notifies about new mail
+	pkgver = 20150302
+	pkgrel = 1
+	url = http://github.com/Jonhoo/hasmail
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = go
+	makedepends = git
+	makedepends = mercurial
+	depends = gtk2
+	depends = libnotify
+	depends = notify-osd
+	options = !strip
+	options = !emptydirs
+
+pkgname = hasmail
+
