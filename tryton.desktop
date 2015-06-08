@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Tryton
+GenericName=Client of the Tryton application platform
+Icon=/usr/share/pixmaps/tryton/tryton-icon.png
+Exec=/usr/bin/tryton
+Type=Application
+Categories=Office;Finance;
+
