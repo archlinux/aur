@@ -1,0 +1,15 @@
+pkgbase = vapoursynth-plugin-havsfunc
+	pkgdesc = Plugin for Vapoursynth: havsfunc
+	pkgver = r17
+	pkgrel = 1
+	url = http://forum.doom9.org/showthread.php?t=166582
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = vapoursynth
+	source = https://dl.dropbox.com/u/6596386/vapoursynth-plugins/havsfunc-r17.7z
+	sha1sums = 490a7b067b2bbca84db624285cc24b6b3c91c713
+
+pkgname = vapoursynth-plugin-havsfunc
+
