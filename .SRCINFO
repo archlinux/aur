@@ -1,0 +1,18 @@
+pkgbase = python2-eventlet
+	pkgdesc = Highly concurrent networking library
+	pkgver = 0.17.4
+	pkgrel = 1
+	url = http://eventlet.net
+	arch = any
+	license = MIT
+	source = http://pypi.python.org/packages/source/e/eventlet/eventlet-0.17.4.tar.gz
+	md5sums = fea0993b14cc7322f944bdd535c4f24a
+
+pkgname = python2-eventlet
+	depends = python2-greenlet
+	depends = python2-setuptools
+
+pkgname = python-eventlet
+	depends = python-greenlet
+	depends = python-setuptools
+
