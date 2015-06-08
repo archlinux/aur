@@ -1,0 +1,15 @@
+pkgbase = pari-seadata
+	pkgdesc = pari package needed by ellap for large primes
+	pkgver = 20150112
+	pkgrel = 1
+	url = http://pari.math.u-bordeaux.fr/packages.html
+	arch = any
+	license = GPL
+	depends = pari
+	provides = pari-seadata-small
+	conflicts = pari-seadata-small
+	source = http://pari.math.u-bordeaux.fr/pub/pari/packages/seadata.tgz
+	sha1sums = fa3deb36df0ce71a466eb0ff0d4a18d48d44e8b9
+
+pkgname = pari-seadata
+
