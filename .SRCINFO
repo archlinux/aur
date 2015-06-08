@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-bilateral-git
+	pkgdesc = Plugin for Vapoursynth: bilateral (GIT version)
+	pkgver = r3.0.gdf53c02
+	pkgrel = 1
+	url = http://forum.doom9.org/showthread.php?t=171306
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = vapoursynth
+	provides = vapoursynth-plugin-bilateral
+	conflicts = vapoursynth-plugin-bilateral
+	source = bilateral::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-Bilateral.git
+	sha1sums = SKIP
+
+pkgname = vapoursynth-plugin-bilateral-git
+
