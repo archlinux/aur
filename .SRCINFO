@@ -1,0 +1,35 @@
+pkgbase = vdr-epgsearch
+	pkgdesc = Searchtimer and replacement of the VDR program menu
+	pkgver = 1.0.1.beta5_12_ga908daa
+	pkgrel = 1
+	epoch = 1
+	url = http://winni.vdr-developer.org/epgsearch
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	depends = gcc-libs
+	depends = vdr-api=2.2.0
+	optdepends = msmtp: To send notification mails (Simpler replacement for sendmail)
+	optdepends = ssmtp: To send notification mails (Another simpler replacement for sendmail)
+	options = !emptydirs
+	backup = etc/vdr/conf.avail/50-conflictcheckonly.conf
+	backup = etc/vdr/conf.avail/50-epgsearch.conf
+	backup = etc/vdr/conf.avail/50-epgsearchonly.conf
+	backup = etc/vdr/conf.avail/50-quickepgsearch.conf
+	backup = var/lib/vdr/plugins/epgsearch/epgsearchcats.conf-epgdata
+	backup = var/lib/vdr/plugins/epgsearch/epgsearchcats.conf-tvm2vdr-hoerzu
+	backup = var/lib/vdr/plugins/epgsearch/epgsearchcats.conf-tvm2vdr-tvmovie
+	backup = var/lib/vdr/plugins/epgsearch/epgsearchconflmail.templ
+	backup = var/lib/vdr/plugins/epgsearch/epgsearchmenu.conf
+	backup = var/lib/vdr/plugins/epgsearch/epgsearchupdmail-html.templ
+	backup = var/lib/vdr/plugins/epgsearch/epgsearchupdmail.templ
+	source = git://projects.vdr-developer.org/vdr-plugin-epgsearch.git#commit=a908daa4c5c6edd6c560ed96939358b4352e9b42
+	source = 50-epgsearch.conf
+	md5sums = SKIP
+	md5sums = 9a936790ce844d011d8bbb3bf13ec336
+
+pkgname = vdr-epgsearch
+
