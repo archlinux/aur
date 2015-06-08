@@ -1,0 +1,33 @@
+pkgbase = aegisub-git
+	pkgdesc = A general-purpose subtitle editor with ASS/SSA support
+	pkgver = 3.2.2.r165.ba9f5a7
+	pkgrel = 1
+	url = http://www.aegisub.org
+	install = aegisub.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = BSD
+	makedepends = boost
+	makedepends = git
+	makedepends = intltool
+	makedepends = mesa
+	depends = boost-libs
+	depends = desktop-file-utils
+	depends = ffms2
+	depends = fftw
+	depends = hunspell
+	depends = wxgtk
+	optdepends = libpulse: Pulseaudio backend
+	optdepends = openal: OpenAL backend
+	optdepends = oss: OSS backend
+	optdepends = portaudio: Portaudio backend
+	provides = aegisub
+	conflicts = aegisub
+	source = aegisub::git+https://github.com/Aegisub/Aegisub.git
+	source = git+https://github.com/Aegisub/assdraw.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = aegisub-git
+
