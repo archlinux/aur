@@ -1,0 +1,11 @@
+[Unit]
+Description=Apple Remote IR Init Script
+After=network.target
+
+[Service]
+Type=simple
+ExecStartPre=/usr/bin/ir-keytable -c -s rc0
+ExecStart=/usr/bin/ir-keytable -p NEC,RC6 -w /etc/rc_keymaps/apple_remote_sab -s rc0
+
+[Install]
+WantedBy=multi-user.target
