@@ -1,0 +1,14 @@
+pkgbase = dictionary
+	pkgdesc = Emacs interface to dictd dictionary servers.
+	pkgver = 1.10
+	pkgrel = 1
+	url = http://www.myrkr.in-berlin.de/dictionary/
+	install = dictionary.install
+	arch = any
+	license = GPL
+	depends = emacs
+	source = http://www.myrkr.in-berlin.de/dictionary/dictionary-1.10.tar.gz
+	md5sums = fdd7d53d1010261276dbb23ea15f017a
+
+pkgname = dictionary
+

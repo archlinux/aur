@@ -1,0 +1,8 @@
+post_install() {
+  echo ">>" Add the following to your .emacs:
+  echo ">> (add-to-list 'load-path \"/usr/share/emacs/site-lisp/dictionary/\")"
+  echo ">>   (load \"dictionary-init\")"
+  echo ">>" Useful keybindings:
+  echo ">>   (global-set-key \"\\C-cs\" 'dictionary-search)"
+  echo ">>   (global-set-key \"\\C-cm\" 'dictionary-match-words)"
+}
