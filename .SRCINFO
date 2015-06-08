@@ -1,0 +1,11 @@
+pkgbase = phonon-qt5-null
+	pkgdesc = Phonon Null (Dummy) backend for Qt5
+	pkgver = 1
+	pkgrel = 1
+	url = http://phonon.kde.org/
+	arch = any
+	license = LGPL
+	provides = phonon-qt5-backend
+
+pkgname = phonon-qt5-null
+
