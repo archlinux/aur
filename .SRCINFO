@@ -1,0 +1,35 @@
+pkgbase = hpoj
+	pkgdesc = Hewlett-Packard OfficeJet, PSC, LaserJet, and PhotoSmart printer multi-function peripherals (MFPs) drivers
+	pkgver = 0.91
+	pkgrel = 20
+	url = http://hpoj.sourceforge.net
+	install = hpoj.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom
+	depends = perl
+	depends = libusb-compat
+	depends = net-snmp
+	depends = hplip>=1.7.2
+	source = http://downloads.sourceforge.net/sourceforge/hpoj/hpoj-0.91.tgz
+	source = hpoj-gcc4.patch
+	source = hpoj-kernel26.patch
+	source = hpoj-pack.patch
+	source = hpoj_gcc43.diff
+	source = hpoj0.91-snmp5.5.patch
+	md5sums = 0e083aeab9b00495aa433fa9465456e0
+	md5sums = 347bb155c5dde443a93d92d8e64579a2
+	md5sums = 18481d3dcf6e9cadf0a3d196ee164e37
+	md5sums = 1c3b99f1a2178675d56ece29daba0fd7
+	md5sums = 42bb57791cacf83e4d339e3653ad003e
+	md5sums = af1cf13e95ff2654b84e470d0e18f537
+	sha1sums = 36785cf1a925f569ed3983b8c068620e2c9b4456
+	sha1sums = cd2d37c2620e29b92b96fe779d10a6635c7f31b7
+	sha1sums = fe3328fd7a43ec83d76d0d7fb7be6c41027cddb3
+	sha1sums = 80258e3190ffb514c20386e8a7cf70ee18df95a5
+	sha1sums = 22409b96d7bc67a10384a88c6b710981c0b90078
+	sha1sums = 4827cfa319bcd74ff8956e1bc69360f319a26c6a
+
+pkgname = hpoj
+
