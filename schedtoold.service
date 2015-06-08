@@ -1,0 +1,12 @@
+[Unit]
+Description=schedtoold service
+
+[Service]
+Type=forking
+PIDFile=/var/run/schedtoold.pid
+User=root
+ExecStart=/usr/bin/schedtoold -p /var/run/schedtoold.pid
+ExecStop=/bin/kill -15 $MAINPID
+
+[Install]
+WantedBy=multi-user.target

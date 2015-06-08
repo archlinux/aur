@@ -1,0 +1,20 @@
+--- Makefile.old	2006-06-07 19:37:11.000000000 +0200
++++ Makefile	2006-06-07 19:43:31.000000000 +0200
+@@ -3,7 +3,7 @@
+ OBJ = utils.o pid-handler.o config-handler.o main.o
+ DEPS = utils.h pid-handler.h config-handler.h
+ INSTALL = install
+-
++DESTDIR = 
+ 
+ 
+ all: schedtoold
+@@ -17,7 +17,7 @@
+ 
+ install: schedtoold
+ 	strip ./schedtoold
+-	$(INSTALL) -m 755 -s ./schedtoold /usr/bin/schedtoold
++	$(INSTALL) -D -m 755 -s ./schedtoold $(DESTDIR)/usr/bin/schedtoold
+ clean:
+ 	-rm -f ./$(OBJ) ./schedtoold
+ 

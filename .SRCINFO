@@ -1,0 +1,23 @@
+pkgbase = schedtoold
+	pkgdesc = Simple daemon to renice/nice and change priorities of processes while running them.
+	pkgver = 0.3
+	pkgrel = 6
+	url = http://www.darav.de/schedtoold.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = bash
+	depends = schedtool
+	source = http://www.darav.de/schedtoold-0.3.tar.bz2
+	source = schedtoold.patch
+	source = schedtoold.conf
+	source = schedtoold
+	source = schedtoold.service
+	md5sums = c8f1d73c0f0d0b3dba005d2853f2cfa4
+	md5sums = b449800d8f99d6acb83b2255eaed6166
+	md5sums = 2f095a0e26a341c99e0425ce58dd3b90
+	md5sums = b50e8e0580e68bc076216b9cb663bb76
+	md5sums = d32da7c1fa24a4a9baf7802db088a4c1
+
+pkgname = schedtoold
+
