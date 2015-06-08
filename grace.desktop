@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Terminal=false
+Name=Grace
+Type=Application
+Icon=/usr/share/pixmaps/grace.png
+Exec=/usr/bin/xmgrace %f
+Comment=An application for 2D plotting
+Categories=Science;X-Plotting;

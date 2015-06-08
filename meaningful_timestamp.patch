@@ -1,0 +1,12 @@
+diff -ru grace-5.1.23.orig/src/utils.c grace-5.1.23/src/utils.c
+--- grace-5.1.23.orig/src/utils.c	2013-12-26 14:12:41.000000000 -0800
++++ grace-5.1.23/src/utils.c	2013-12-26 14:13:25.000000000 -0800
+@@ -1342,6 +1342,8 @@
+     time_t time_value;
+     char *str;
+ 
++    if (!inwin) return;
++
+     (void) time(&time_value);
+     tm = *localtime(&time_value);
+     str = asctime(&tm);

@@ -1,0 +1,20 @@
+diff -ru grace-5.1.23.orig/src/ssdata.c grace-5.1.23/src/ssdata.c
+--- grace-5.1.23.orig/src/ssdata.c	2015-03-01 16:13:28.394687611 -0500
++++ grace-5.1.23/src/ssdata.c	2015-03-01 16:06:15.303700533 -0500
+@@ -275,8 +275,14 @@
+             (*nncols)++;
+         } else {
+             /* last resort - treat the field as string, even if not quoted */
+-            (*formats)[ncols] = FFORMAT_STRING;
+-            (*nscols)++;
++	    if (!strncmp(token, "inf", 3) || !strncmp(token, "-inf", 4) ||
++	        !strncmp(token, "nan", 3) || !strncmp(token, "-nan", 4)) {
++		(*formats)[ncols] = FFORMAT_NUMBER;
++		(*nncols)++;
++	    } else {
++                (*formats)[ncols] = FFORMAT_STRING;
++                (*nscols)++;
++	    }
+         }
+     }
+     xfree(buf);

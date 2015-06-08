@@ -1,0 +1,33 @@
+diff -Naur grace-5.1.22/configure grace-5.1.22.new/configure
+--- grace-5.1.22/configure	2007-02-16 22:44:49.000000000 +0000
++++ grace-5.1.22.new/configure	2007-09-28 23:03:29.000000000 +0100
+@@ -15614,7 +15614,7 @@
+       int main(void) {
+         char *vlib;
+         vlib = nc_inq_libvers();
+-        if (strcmp(vlib, "3.0") < 0) {
++        if (((vlib[0] == '"') && (strcmp(vlib, "\"3.0") < 0)) || ((vlib[0] != '"') && (strcmp(vlib, "3.0") < 0))){
+           exit(1);
+         }
+         exit(0);
+@@ -15722,7 +15722,7 @@
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+ 
+-#include <fftw.h>
++#include <dfftw.h>
+ #include <string.h>
+       int main(void) {
+         char *vlib = (char *) fftw_version;
+diff -Naur grace-5.1.22/src/fourier.c grace-5.1.22.new/src/fourier.c
+--- grace-5.1.22/src/fourier.c	2004-07-04 03:47:45.000000000 +0700
++++ grace-5.1.22.new/src/fourier.c	2009-06-16 02:51:37.229858237 +0700
+@@ -230,7 +230,7 @@
+ #else
+ /* Start of new FFTW-based transforms by Marcus H. Mendenhall */
+ 
+-#include <fftw.h>
++#include <dfftw.h>
+ #include <string.h>
+ 
+ static char  *wisdom_file=0;

@@ -1,0 +1,12 @@
+diff -ru grace-5.1.23.orig/src/setwin.c grace-5.1.23/src/setwin.c
+--- grace-5.1.23.orig/src/setwin.c	2013-12-26 14:12:41.000000000 -0800
++++ grace-5.1.23/src/setwin.c	2013-12-26 14:16:56.000000000 -0800
+@@ -695,7 +695,7 @@
+         char **cells[MAX_SET_COLS];
+         char *rowlabels[MAX_SET_COLS];
+         short column_widths[1] = {50};
+-        int column_maxlengths[1] = {256};
++        int column_maxlengths[1] = {8192};
+ 
+ 	levalui.top = CreateDialogForm(app_shell, "Load & evaluate");
+ 

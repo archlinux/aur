@@ -1,0 +1,44 @@
+diff -ru grace-5.1.23.orig/src/setwin.c grace-5.1.23/src/setwin.c
+--- grace-5.1.23.orig/src/setwin.c	2013-12-26 14:12:41.000000000 -0800
++++ grace-5.1.23/src/setwin.c	2013-12-26 16:12:58.000000000 -0800
+@@ -758,6 +758,7 @@
+     char *formula[MAX_SET_COLS];
+     int res;
+     int setno, gno;
++    int comment_chars;
+     grarr *t;
+     
+     gno = levalui.gno;
+@@ -814,9 +815,11 @@
+     }
+     
+     set_parser_setno(gno, setno);
++    comment_chars = 0;
+ 
+     for (i = 0; i < nscols; i++) {
+         char buf[32], *expr;
++	comment_chars += strlen(formula[i]);
+         
+         /* preparing the expression */
+         sprintf(buf, "GRAPH[%d].SET[%d].%s = ", gno, setno, dataset_colname(i));
+@@ -838,6 +841,20 @@
+         }
+     }
+     
++    char *comment = malloc((comment_chars + 2 * nscols + 1) * sizeof(char));
++    strcpy(comment, "(");
++    for (i = 0; i < nscols; i++) {
++    	strcat(comment, formula[i]);
++
++	if (i != (nscols - 1)) {
++	    strcat(comment, ", ");
++	}
++    }
++    strcat(comment, ")");
++    comment[comment_chars + 2 * nscols] = '\0';
++    setcomment(gno, setno, comment);
++    free(comment);
++
+     XCFREE(t->data);
+     t->length = 0;
+     
