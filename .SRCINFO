@@ -1,0 +1,14 @@
+pkgbase = chartjs
+	pkgdesc = Simple HTML5 Charts using the canvas element
+	pkgver = 0.1
+	pkgrel = 5
+	url = http://www.chartjs.org
+	arch = any
+	license = MIT
+	source = https://raw.github.com/nnnick/Chart.js/master/Chart.js
+	source = https://raw.github.com/nnnick/Chart.js/master/Chart.min.js
+	md5sums = 056159bd669cc625e0a3591cccb6d92b
+	md5sums = 40db8115a035daf1ed6cc9d626e34dcb
+
+pkgname = chartjs
+
