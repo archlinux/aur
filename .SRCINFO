@@ -1,0 +1,16 @@
+pkgbase = coffee-script-git
+	pkgdesc = Language that compiles into JavaScript
+	pkgver = 1.9.3.3.g1f197fc
+	pkgrel = 1
+	url = http://coffeescript.org
+	arch = any
+	license = custom
+	depends = nodejs
+	depends = underscorejs
+	provides = coffee-script
+	conflicts = coffee-script
+	source = git://github.com/jashkenas/coffee-script.git
+	md5sums = SKIP
+
+pkgname = coffee-script-git
+
