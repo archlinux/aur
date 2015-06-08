@@ -1,0 +1,19 @@
+pkgbase = katecpp-helper-plugin
+	pkgdesc = Kate C++ Helper plugin
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/zaufi/kate-cpp-helper-plugin
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = automoc4
+	makedepends = cmake
+	depends = boost
+	depends = clang>=3.3
+	depends = kdesdk-kate
+	depends = xapian-core
+	source = http://kde-apps.org/CONTENT/content-files/148606-KateCppHelperPlugin-1.0.4.tar.bz2
+	md5sums = d7d21b39548bbe2e99032f718afc2c32
+
+pkgname = katecpp-helper-plugin
+
