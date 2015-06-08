@@ -1,0 +1,11 @@
+[Unit]
+Description=Courier Authentification Daemon
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/authdaemond start
+ExecStop=/usr/bin/authdaemon stop
+PIDFile=/var/run/authdaemon/pid
+
+[Install]
+WantedBy=multi-user.target
