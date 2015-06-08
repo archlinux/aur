@@ -1,0 +1,15 @@
+pkgbase = wps-office-extension-czech-dictionary
+	pkgdesc = Czech dictionary for WPS Office
+	pkgver = 20140617
+	pkgrel = 2
+	url = http://wps-community.org/download/dicts
+	arch = any
+	groups = wps-office-extensions
+	license = custom
+	makedepends = unzip
+	depends = wps-office
+	source = http://wps-community.org/download/dicts/cs_CZ.zip
+	sha1sums = e1679916ec803e711c8b11d06e60d5f3918ea7cb
+
+pkgname = wps-office-extension-czech-dictionary
+
