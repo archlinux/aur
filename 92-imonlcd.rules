@@ -1,0 +1,2 @@
+ACTION=="add", KERNEL=="lcd*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="15c2", ATTRS{idProduct}=="0038", MODE="0660", GROUP="vdr", SYMLINK+="imon_0038"
+ACTION=="add", KERNEL=="lcd*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="15c2", ATTRS{idProduct}=="ffdc", MODE="0660", GROUP="vdr", SYMLINK+="imon_ffdc"
