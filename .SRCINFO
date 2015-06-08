@@ -1,0 +1,16 @@
+pkgbase = eclipse-dltk-tcl
+	pkgdesc = TCL IDE for Eclipse
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = http://www.eclipse.org/dltk/
+	arch = i686
+	arch = x86_64
+	license = EPL
+	depends = eclipse-dltk-core
+	optdepends = eclipse-dltk-itcl
+	optdepends = eclipse-dltk-xotcl
+	source = http://www.eclipse.org/downloads/download.php?r=1&file=/technology/dltk/downloads/drops/R5.0/R-5.0-201306060709/dltk-tcl-I-201306060709.zip
+	md5sums = 33fbbea1abd130851b9194e45fee22f8
+
+pkgname = eclipse-dltk-tcl
+
