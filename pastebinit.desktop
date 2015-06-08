@@ -1,0 +1,34 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin
+MimeType=text/plain;
+Actions=paste
+X-KDE-StartupNotify=false
+X-KDE-Priority=TopLevel
+
+[Desktop Action paste]
+Name=Send to paste server
+Name[pl]=Wyślij na serwer
+Exec=cat %u | pastebinit -b http://paste2.org | xclip -selection clipboard
+Icon=edit-paste 
+
+# Additional working websites:
+# - cxg.de
+# - fpaste.org
+# - lpaste.net
+# - p.defau.lt
+# - paste.debian.net
+# - paste.drizzle.org
+# - paste.kde.org
+# - paste.openstack.org
+# - paste.pound-python.org
+# - paste.ubuntu.com
+# - paste.ubuntu.org.cn
+# - paste2.org
+# - pastebin.com 
+# - pastebin.mate-desktop.org
+# - pb.daviey.com
+# - slexy.org
+# - sprunge.us
+
+# Credits of Exec: NetBit73 
