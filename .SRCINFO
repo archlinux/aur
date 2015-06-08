@@ -1,0 +1,21 @@
+pkgbase = crctk-git
+	pkgdesc = Toolkit for working with CRC32 checksums from the command line
+	pkgver = 0.5.1.r9.g6d8ead4
+	pkgrel = 1
+	url = https://github.com/2ion/crctk
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = automake
+	makedepends = autoconf
+	depends = kyotocabinet
+	depends = zlib
+	depends = ncurses
+	provides = crctk
+	conflicts = crctk
+	source = crctk::git+https://github.com/2ion/crctk.git#branch=master
+	md5sums = SKIP
+
+pkgname = crctk-git
+
