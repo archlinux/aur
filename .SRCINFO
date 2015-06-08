@@ -1,0 +1,15 @@
+pkgbase = compiz-pipeitems
+	pkgdesc = Compiz boxmenu pipeitems, most converted from some openbox pipemenus
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://sourceforge.net/projects/compizboxmenupi
+	install = compiz-pipeitems.install
+	arch = any
+	license = GPL
+	depends = python2
+	depends = bash
+	source = http://master.dl.sourceforge.net/project/compizboxmenupi/tarballs/compiz-boxmenu-pipeitems_-_1.0.1.tar.gz
+	md5sums = 096152235a1fa18567649a56120f2fbe
+
+pkgname = compiz-pipeitems
+
