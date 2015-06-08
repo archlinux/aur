@@ -1,0 +1,21 @@
+pkgbase = vdr-channellists
+	pkgdesc = Plugin to manage your Channellists
+	pkgver = 0.0.5
+	pkgrel = 6
+	url = http://www.zulu-entertainment.de/content.php?f=VDR-Plugins&sub=Channellists
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	depends = libcdio-paranoia
+	depends = vdr-api=2.2.0
+	backup = etc/vdr/conf.avail/50-channellists.conf
+	source = http://www.zulu-entertainment.de/files/vdr-channellists/vdr-channellists-0.0.5.tgz
+	source = 50-channellists.conf
+	md5sums = 20ab294c48164b513ed0557acee5c66c
+	md5sums = 6a30260380a577d8514d37d8f318f8fd
+
+pkgname = vdr-channellists
+
