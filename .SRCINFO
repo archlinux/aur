@@ -1,0 +1,24 @@
+pkgbase = lib32-flex
+	pkgdesc = A tool for generating text-scanning programs
+	pkgver = 2.5.39
+	pkgrel = 1
+	url = http://flex.sourceforge.net
+	arch = x86_64
+	groups = base-devel
+	license = custom
+	depends = lib32-glibc
+	depends = m4
+	depends = sh
+	depends = gcc-multilib
+	depends = flex
+	options = libtool
+	options = staticlibs
+	source = http://downloads.sourceforge.net/sourceforge/flex/flex-2.5.39.tar.bz2
+	source = flex-2.5.38-no-bison.patch
+	source = lex.sh
+	sha256sums = add2b55f3bc38cb512b48fad7d72f43b11ef244487ff25fc00aabec1e32b617f
+	sha256sums = 5ee23f97533c991b82e2aadc06d4682d7d05d99ee2abaf1ef9a82225ba9d0858
+	sha256sums = 9d03016a7c4ae1adb051f50f94407b3d7dee9d55924b5c1904261c9f0c1f86f6
+
+pkgname = lib32-flex
+
