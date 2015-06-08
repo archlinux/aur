@@ -1,7 +1,7 @@
 # Maintainer: Nigel Michki <nigeil@yahoo.com>
 pkgname=sonic-pi-git
-pkgver=v2.3.0.r15.gabcd931
-pkgrel=2
+pkgver=v2.5.0.r342.gdeb449e
+pkgrel=3
 pkgdesc="A music-centric programming environment, originally built for the raspberry pi."
 arch=('i686' 
       'x86_64')
@@ -21,19 +21,19 @@ makedepends=('cmake'
 optdepends=('qjackctl: for graphical jackd spawning/configuration'
 	    'jack2: better jackd if you want to use without gui')
 source=('sonic-pi::git+https://github.com/samaaron/sonic-pi.git'
-	'Qt5scintilla2_archLib.patch'
 	'launcher.sh'
    'sonic-pi-git.png'
    'sonic-pi-git.desktop')
 md5sums=('SKIP'
-         '68932f655fca2779a9e8a001d917ca6d'
          '9c6a820718f549d9c49dfb3d9a8b102e'
          'ba86680be610cc3d6f12d4a89b0f434d'
          'f283c44f25e1297008a34f42af3588bc')
 
 prepare() {
   msg2 "Fix wrongly-named (on Arch) QT library"
-  patch -p1 $srcdir/sonic-pi/app/gui/qt/SonicPi.pro $srcdir/Qt5scintilla2_archLib.patch
+  cd $srcdir/sonic-pi
+  find . -type f -name "*" -exec sed -i 's/lqscintilla2/lqt5scintilla2/g' {} +
+
 }
 
 build() {
