@@ -1,9 +1,9 @@
 #!/bin/bash
 set -e -v
 
+VERSION=$1
 API_JSON=$(printf '{"tag_name": "v%s", "target_commitish": "master", "name": "v%s", "body": "v%s", "draft": false, "prerelease": false}' $VERSION $VERSION $VERSION)
 RELEASE_URL=https://api.github.com/repos/joneshf/purescript/releases
-VERSION=$1
 
 # Grab the original tar.
 curl -L "https://github.com/purescript/purescript/releases/download/v$VERSION/linux64.tar.gz"> orig.tar.gz
@@ -11,6 +11,8 @@ curl -L "https://github.com/purescript/purescript/releases/download/v$VERSION/li
 curl --data "$API_JSON" $RELEASE_URL?access_token=$PURESCRIPT_BIN_TOKEN
 # Upload the tar.
 ASSET_URL=$(curl "$RELEASE_URL/tags/v$VERSION?access_token=$PURESCRIPT_BIN_TOKEN" | json upload_url | sed "s/{.*//")
+echo $RELEASE_URL
+echo $ASSET_URL
 curl -X POST -H "Content-Type:application/gzip" "$ASSET_URL?access_token=$PURESCRIPT_BIN_TOKEN&name=linux64.tar.gz" -T orig.tar.gz
 
 # Continue with what we normally do.
