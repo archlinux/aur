@@ -1,0 +1,23 @@
+pkgbase = asymmetricfs-git
+	pkgdesc = An Asymmetric, Encrypting Filesystem for Userspace
+	pkgver = r129.31da328
+	pkgrel = 2
+	url = https://github.com/ckennelly/asymmetricfs
+	install = asymmetricfs.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	makedepends = clang
+	makedepends = valgrind
+	depends = fuse
+	depends = boost-libs
+	source = git+https://github.com/ckennelly/asymmetricfs.git
+	source = git+http://git.chromium.org/external/googletest.git
+	sha1sums = SKIP
+	sha1sums = SKIP
+
+pkgname = asymmetricfs-git
+

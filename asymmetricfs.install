@@ -1,0 +1,19 @@
+post_install() {
+
+	post_upgrade
+
+}
+
+post_upgrade() {
+
+cat << EOF
+
+    If you see error from mlockall, then you might need to increase the default
+    locked memory size allowed.
+
+    - Edit /etc/security/limits.conf
+    - Add "root - memlock [enough size in bytes for files you're using]"
+
+EOF
+
+}
