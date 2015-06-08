@@ -1,0 +1,15 @@
+[Unit]
+Description=Twonky Server
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/lib/twonky/twonkyserver \
+    -inifile /etc/twonky.ini \
+    -logfile /var/log/twonky.log \
+    -appdata /var/twonky
+Restart=always
+WorkingDirectory=/usr/lib/twonky
+
+[Install]
+WantedBy=multi-user.target
