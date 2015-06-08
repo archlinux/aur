@@ -1,0 +1,16 @@
+pkgbase = to-do-list-manager
+	pkgdesc = A Simple To Do List Manager Written In Qt5
+	pkgver = 0.11
+	pkgrel = 2
+	url = https://github.com/computerfr33k/To-Do-List-Manager
+	arch = any
+	groups = office
+	license = GPL3
+	depends = qt5-base
+	source = https://github.com/computerfr33k/To-Do-List-Manager/archive/0.11.tar.gz
+	source = To-Do-List-Manager.desktop
+	md5sums = 240aea69f728262c0667ba56e10825ab
+	md5sums = 0616a650c9e0a64d1897cf394c6c75d3
+
+pkgname = to-do-list-manager
+

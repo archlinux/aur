@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=To-Do-List-Manager
+Exec=/opt/To-Do-List-Manager/To-Do-List-Manager
+Type=Application
+Categories=office
