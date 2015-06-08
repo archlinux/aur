@@ -1,0 +1,21 @@
+pkgbase = python2-polymode-svn
+	pkgdesc = A python library for the modal analysis of microstructured optical fibers
+	pkgver = 75
+	pkgrel = 2
+	url = https://code.google.com/p/polymode/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = subversion
+	depends = python2-numpy
+	depends = python2-scipy
+	depends = atlas-lapack
+	depends = python2-matplotlib
+	depends = boost-libs
+	provides = python2-polymode
+	conflicts = python2-polymode
+	source = polymode::svn+http://polymode.googlecode.com/svn/trunk/
+	md5sums = SKIP
+
+pkgname = python2-polymode-svn
+
