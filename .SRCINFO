@@ -1,0 +1,19 @@
+pkgbase = fdm-git
+	pkgdesc = Program to fetch mail and deliver it in various ways
+	pkgver = 20150605.808be67
+	pkgrel = 1
+	url = https://github.com/nicm/fdm
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = BSD
+	makedepends = git
+	depends = openssl
+	depends = tdb
+	provides = fdm
+	conflicts = fdm
+	source = git+https://github.com/nicm/fdm.git
+	sha1sums = SKIP
+
+pkgname = fdm-git
+
