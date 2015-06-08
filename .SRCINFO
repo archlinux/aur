@@ -1,0 +1,15 @@
+pkgbase = libreoffice-extension-libregreek
+	pkgdesc = An advanced Greek & English dictionary for LibreOffice
+	pkgver = 1.0
+	pkgrel = 3
+	url = https://github.com/squibbylinux/LibreGreek
+	arch = any
+	groups = libreoffice-extensions
+	license = BSD-3
+	depends = libreoffice
+	conflicts = languagetool
+	source = https://github.com/squibbylinux/LibreGreek/archive/master.tar.gz
+	sha512sums = 6604237e300fdd873c03da58c87d4bce001593cf13173187da1c886eba5ef8f7dff108f3636024c5243288f483477f15c874ed5ec0a525ac0dad1c3f50dbfdd7
+
+pkgname = libreoffice-extension-libregreek
+
