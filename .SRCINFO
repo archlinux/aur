@@ -1,0 +1,19 @@
+pkgbase = kunitconversion-git
+	pkgdesc = KUnitConversion
+	pkgver = r87.366d2ff
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/kunitconversion
+	arch = i686
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	depends = ki18n-git
+	provides = kunitconversion
+	conflicts = kunitconversion
+	source = git://anongit.kde.org/kunitconversion.git
+	md5sums = SKIP
+
+pkgname = kunitconversion-git
+
