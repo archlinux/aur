@@ -1,0 +1,15 @@
+pkgbase = betty-git
+	pkgdesc = Friendly English-like interface for your command line
+	pkgver = 0.1.7.r0.g3829fc7
+	pkgrel = 1
+	url = https://github.com/pickhardt/betty
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = ruby
+	conflicts = betty
+	source = git://github.com/pickhardt/betty.git
+	sha256sums = SKIP
+
+pkgname = betty-git
+
