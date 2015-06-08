@@ -1,0 +1,20 @@
+pkgbase = vdr-gamepad
+	pkgdesc = Control VDR via a joystick device.
+	pkgver = 0.0.1
+	pkgrel = 14
+	url = http://projects.vdr-developer.org/projects/plg-gamepad
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	depends = gcc-libs
+	depends = vdr-api=2.2.0
+	backup = etc/vdr/conf.avail/50-gamepad.conf
+	backup = var/lib/vdr/plugins/gamepad/keymap.txt
+	source = http://projects.vdr-developer.org/attachments/download/1562/vdr-plugin-gamepad-0.0.1.tgz
+	md5sums = dc9112ec8bd40c042bf1a10ba4ecba5e
+
+pkgname = vdr-gamepad
+
