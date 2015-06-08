@@ -1,0 +1,21 @@
+pkgbase = vulcan-editor-git
+	pkgdesc = A minimalistic editor for gtk3
+	pkgver = 0.1
+	pkgrel = 2
+	url = https://github.com/zesterer/vulcan
+	arch = i686
+	arch = x86_64
+	license = unknown OpenSource
+	makedepends = git
+	depends = gtk3
+	depends = vte
+	depends = pango
+	depends = gtksourceview3
+	depends = glib2
+	depends = vala
+	provides = vulcan-editor
+	source = vulcan-editor-git::git+https://github.com/zesterer/vulcan.git
+	md5sums = SKIP
+
+pkgname = vulcan-editor-git
+
