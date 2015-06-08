@@ -1,0 +1,20 @@
+pkgbase = kdeclarative-git
+	pkgdesc = KDeclarative
+	pkgver = r313.d27b914
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/kdeclarative
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	depends = kpackage-git
+	depends = kio-git
+	depends = libepoxy
+	provides = kdeclarative
+	conflicts = kdeclarative
+	source = git://anongit.kde.org/kdeclarative.git
+	md5sums = SKIP
+
+pkgname = kdeclarative-git
+
