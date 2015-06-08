@@ -1,0 +1,28 @@
+pkgbase = haskell-webkit
+	pkgdesc = Binding to the Webkit library.
+	pkgver = 0.13.1.1
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/webkit
+	install = haskell-webkit.install
+	arch = i686
+	arch = x86_64
+	license = LGPL-2.1
+	depends = ghc
+	depends = haskell-cairo>=0.13
+	depends = haskell-bytestring
+	depends = haskell-text
+	depends = haskell-mtl
+	depends = haskell-glib>=0.13
+	depends = haskell-gtk>=0.13
+	depends = haskell-pango>=0.13
+	depends = libwebkit
+	depends = gtk2hs-buildtools
+	depends = gtk2hs-buildtools
+	depends = gtk2hs-buildtools
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/webkit/0.13.1.1/webkit-0.13.1.1.tar.gz
+	sha256sums = e53792e0c806d4a3de5ff929cf7d7e8c411db7169e84ce2a565201cc9356a218
+
+pkgname = haskell-webkit
+
