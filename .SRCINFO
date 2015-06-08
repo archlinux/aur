@@ -1,0 +1,16 @@
+pkgbase = haskell-cond
+	pkgdesc = Basic conditional and boolean operators with monadic variants.
+	pkgver = 0.4.1.1
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/cond
+	install = haskell-cond.install
+	arch = i686
+	arch = x86_64
+	license = custom:OtherLicense
+	makedepends = ghc
+	options = strip
+	source = http://hackage.haskell.org/packages/archive/cond/0.4.1.1/cond-0.4.1.1.tar.gz
+	sha1sums = 79612a6d9a570c267885255f85a5dc5159fcb228
+
+pkgname = haskell-cond
+
