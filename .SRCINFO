@@ -1,0 +1,21 @@
+pkgbase = perl-catalyst-plugin-static-simple
+	pkgdesc = Catalyst::Plugin::Static::Simple Make serving static pages painless.
+	pkgver = 0.32
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Catalyst-Plugin-Static-Simple
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-extutils-makemaker>=6.36
+	depends = perl
+	depends = perl-catalyst-runtime>=5.80008
+	depends = perl-mime-types>=2.03
+	depends = perl-moose
+	depends = perl-moosex-types
+	depends = perl-namespace-autoclean
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JJ/JJNAPIORK/Catalyst-Plugin-Static-Simple-0.32.tar.gz
+	sha512sums = c2a2d3efd0ce9ff75f5c8633896350243893be3821c5ad35d8b72adb7ce49a084a02f7d20a82a27ce1cf9e3202f2bec2c02cc14e3f2284593aecb76b6df5b0d3
+
+pkgname = perl-catalyst-plugin-static-simple
+
