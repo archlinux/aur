@@ -1,0 +1,15 @@
+pkgbase = luabcrypt5.1
+	pkgdesc = A Lua wrapper for bcrypt
+	pkgver = 1.5_1
+	pkgrel = 2
+	url = http://github.com/mikejsavage/lua-bcrypt
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = luarocks5.1
+	depends = lua51
+	source = http://rocks.moonscript.org/manifests/luarocks/bcrypt-1.5-1.src.rock
+	sha256sums = 444f08a2566f6354247df20c76a7af38fae184c517841fbeeff23fc55364b757
+
+pkgname = luabcrypt5.1
+
