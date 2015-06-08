@@ -1,0 +1,16 @@
+pkgbase = howl-editor
+	pkgdesc = General purpose, light-weight customizable editor
+	pkgver = 0.2.1
+	pkgrel = 2
+	url = http://howl.io/
+	install = howl-editor.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = desktop-file-utils
+	source = http://download.howl.io/release/howl-0.2.1.tgz
+	md5sums = 8caf43a8631041677a4bc4df9c6c0f18
+
+pkgname = howl-editor
+
