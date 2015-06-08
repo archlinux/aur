@@ -1,0 +1,11 @@
+post_install(){
+	echo ' '
+	echo 'After installation, please run the following inside Vim as root:'
+	echo '  :helptags $VIM/vimfiles/doc'
+	echo 'This is to generate the Csound helpfiles accessed via Shift-K'
+	echo 'There will likely be some errors due to conflicts, feel free to ignore them.'
+	echo 'In order to use templates, help tags and syntax highlighting, put:'
+	echo '  syntax on'
+	echo 'in your ~/.vimrc file'
+	echo ' '
+}
