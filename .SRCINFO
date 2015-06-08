@@ -1,0 +1,26 @@
+pkgbase = hawaii-baseapps-git
+	pkgdesc = Hawaii base applications
+	pkgver = 20150516.c21ae64
+	pkgrel = 1
+	url = https://github.com/hawaii-desktop/hawaii-baseapps
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	groups = hawaii-git
+	license = GPL2
+	makedepends = git
+	makedepends = gdb
+	makedepends = extra-cmake-modules
+	depends = qt5-base
+	depends = qt5-quickcontrols
+	depends = polkit-qt5
+	optdepends = weston: nested mode support
+	optdepends = pulseaudio: audio support
+	optdepends = networkmanager: networking support
+	options = debug
+	source = hawaii-baseapps::git://github.com/hawaii-desktop/hawaii-baseapps.git#branch=master
+	md5sums = SKIP
+
+pkgname = hawaii-baseapps-git
+
