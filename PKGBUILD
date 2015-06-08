@@ -7,7 +7,6 @@ pkgdesc='Adaptec command line interface utility'
 arch=('i686' 'x86_64')
 url=('http://adaptec.com/')
 license=('freeware')
-depends=('bash')
 sha256sums=('b9ec025ed6e7167551dc2a034b39999f5b43a3a6544e3e8989f75a89dd99c7b3')
 source=("http://download.adaptec.com/raid/storage_manager/arcconf_v1_7_${pkgrel}.zip")
 
