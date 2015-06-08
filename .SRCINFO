@@ -1,0 +1,16 @@
+pkgbase = epson-inkjet-printer-l100l200
+	pkgdesc = Epson printer driver (L100, L200)
+	pkgver = 1.0.0
+	pkgrel = 8
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom:Epson Licence Agreement
+	depends = cups
+	depends = ghostscript
+	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-l100l200-1.0.0-1lsb3.2.src.rpm
+	sha256sums = 6acf28a25e4af7e62b0d12d7f4a570dfd284ed61b6d0d28aa7be50f71ed600c6
+
+pkgname = epson-inkjet-printer-l100l200
+
