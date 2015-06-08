@@ -1,0 +1,15 @@
+pkgbase = postgresql-musicbrainz-unaccent
+	pkgdesc = MusicBrainz' unaccent extension to PostgreSQL
+	pkgver = v1.0.0.r0.gdb45982
+	pkgrel = 1
+	url = http://musicbrainz.org/doc/MusicBrainz_Server
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = postgresql
+	depends = icu
+	source = git+https://github.com/metabrainz/postgresql-musicbrainz-unaccent
+	md5sums = SKIP
+
+pkgname = postgresql-musicbrainz-unaccent
+
