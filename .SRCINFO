@@ -1,0 +1,16 @@
+pkgbase = epson-inkjet-printer-201115w
+	pkgdesc = Epson printer driver (WF-7010, WF-7011, WF-7012, WF-7015, WF-7018, WF-7520, WF-7521, WF-7525)
+	pkgver = 1.0.1
+	pkgrel = 8
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom:Epson Licence Agreement
+	depends = cups
+	depends = ghostscript
+	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201115w-1.0.1-1lsb3.2.src.rpm
+	sha256sums = 30eccdea860822277c6441153e6fa614899c918209d35460666404e258ddda25
+
+pkgname = epson-inkjet-printer-201115w
+
