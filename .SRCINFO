@@ -1,0 +1,51 @@
+pkgbase = linux-mainline
+	pkgver = 4.1rc6
+	pkgrel = 1
+	url = http://www.hurrdurr.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/testing/patch-4.1-rc6.xz
+	source = config
+	source = config.x86_64
+	source = linux.preset
+	source = change-default-console-loglevel.patch
+	sha256sums = 0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991
+	sha256sums = a74eceb7f0b9aabeb5dc13dc9e8429eeb40ae8f79e1c85d1dfb506a3b45ab158
+	sha256sums = 514aa8a9d03d2419c8084725fcdb2b5b4ce07966f5bd6a51224a5f7a5f8c3694
+	sha256sums = b268b03a042e3f604a12a80c6e24c42006e4d9bf4a6d9b3201eb006942718128
+	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
+	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
+
+pkgname = linux-mainline
+	pkgdesc = The Linux-mainline kernel and modules
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = kernel26-mainline=4.1rc6
+	conflicts = kernel26-mainline
+	replaces = kernel26-mainline
+	backup = etc/mkinitcpio.d/linux-mainline.preset
+
+pkgname = linux-mainline-headers
+	pkgdesc = Header files and scripts for building modules for Linux-mainline kernel
+	provides = kernel26-mainline-headers=4.1rc6
+	conflicts = kernel26-mainline-headers
+	replaces = kernel26-mainline-headers
+
+pkgname = linux-mainline-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-mainline kernel
+	provides = kernel26-mainline-docs=4.1rc6
+	conflicts = kernel26-mainline-docs
+	replaces = kernel26-mainline-docs
+
