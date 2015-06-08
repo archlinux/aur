@@ -1,0 +1,16 @@
+pkgbase = ttf-futhark-adapted
+	pkgdesc = The Elder Futhark adapted to the characteristics of today's computers.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://openfontlibrary.org/font/futhark-adapted
+	install = futhark-adapted.install
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = http://openfontlibrary.org/assets/downloads/futhark-adapted/5c02df4a239c746506a3acdb36f815ad/futhark-adapted.zip
+	md5sums = 5c02df4a239c746506a3acdb36f815ad
+
+pkgname = ttf-futhark-adapted
+
