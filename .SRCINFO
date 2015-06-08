@@ -1,0 +1,18 @@
+pkgbase = parsec47
+	pkgdesc = Fast-paced retro shoot'em up in an abstract world
+	pkgver = 0.2
+	pkgrel = 2
+	url = http://www.asahi-net.or.jp/~cs8k-cyu/windows/p47_e.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = gdc
+	depends = sdl_mixer
+	depends = libbulletml
+	source = http://abagames.sakura.ne.jp/windows/p47_0_2.zip
+	source = http://ftp.de.debian.org/debian/pool/main/p/parsec47/parsec47_0.2.dfsg1-6.debian.tar.gz
+	md5sums = 9d90057a269591fe992b7ed44de2d29f
+	md5sums = 98d19456f1bf69709b20dbf9fd175ab5
+
+pkgname = parsec47
+
