@@ -1,0 +1,21 @@
+pkgbase = libqglviewer-qt4
+	pkgdesc = C++ library based on Qt that eases the creation of OpenGL 3D viewers
+	pkgver = 2.6.1
+	pkgrel = 1
+	url = http://www.libqglviewer.com/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = GPL3
+	license = custom
+	depends = qt4
+	depends = glu
+	depends = mesa
+	options = !makeflags
+	source = http://www.libqglviewer.com/src/libQGLViewer-2.6.1.tar.gz
+	source = qglviewer.patch
+	md5sums = 2fa216dff83a352bf4bc0ef40b341036
+	md5sums = 9bbabb77b4961b616e999a15bd80a1cc
+
+pkgname = libqglviewer-qt4
+
