@@ -1,0 +1,20 @@
+pkgbase = libosmocore
+	pkgdesc = core libs for osmocom
+	pkgver = 0.8.0
+	pkgrel = 2
+	url = http://bb.osmocom.org/trac/wiki/libosmocore
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = make
+	makedepends = gcc
+	makedepends = libtool
+	makedepends = git
+	depends = pcsclite
+	source = git://git.osmocom.org/libosmocore.git#tag=0.8.0
+	md5sums = SKIP
+
+pkgname = libosmocore
+
