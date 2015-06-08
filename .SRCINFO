@@ -1,0 +1,26 @@
+pkgbase = zoiper
+	pkgdesc = An IAX and SIP VoIP softphone
+	pkgver = 3.3
+	pkgrel = 1
+	url = http://www.zoiper.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gtk2
+	depends = alsa-lib
+	depends = libxdamage
+	source = LICENSE
+	source = zoiper.desktop
+	source = zoiper.png
+	source = zoiper-24.png
+	source = zoiper-48.png
+	source = zoiper-96.png
+	sha1sums = 74e9f2d5dc6ec7174923e824b3db64b47b6d3b3c
+	sha1sums = 2a9cfa52d01a65137d88241c7ca04976e4be0a5d
+	sha1sums = c1eea005beb7587b24b0a0d242eebc49a67f9026
+	sha1sums = 1a0f4c83c6b538584865df327702f800689493b0
+	sha1sums = 7fef1f81c32fc4be2d876fadf34178f60ea0a29e
+	sha1sums = 11fb63a8353353d28288a644aeb4cdf9a3ab3e8c
+
+pkgname = zoiper
+
