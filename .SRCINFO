@@ -1,0 +1,37 @@
+pkgbase = craftbukkit-spigot
+	pkgdesc = CraftBukkit & Spigot Minecraft servers
+	pkgver = 1.8.7
+	pkgrel = 1
+	url = http://www.spigotmc.org/
+	install = craftbukkit-spigot.install
+	arch = any
+	license = BSD
+	depends = java-runtime-headless
+	depends = fontconfig
+	depends = git
+	depends = mcrcon
+	provides = craftbukkit=1.8.7
+	conflicts = bukkit
+	conflicts = craftbukkit
+	conflicts = craftbukkit-stable
+	source = https://hub.spigotmc.org/jenkins/job/BuildTools/38/artifact/target/BuildTools.jar
+	source = minecraft.service
+	source = craftbukkit.service
+	source = spigot.service
+	source = send_command.sh
+	source = start_server.sh
+	source = stop_server.sh
+	source = backup.sh
+	source = readme.md
+	md5sums = 162fb5b90a51fca3408cd17aa885e819
+	md5sums = 8ac1ef7ff8be744fa0312ebb608fda42
+	md5sums = 5bddd0dff4f3d25fd86c240f81078174
+	md5sums = 32c6641316b0adc7e1f63e3cc8033700
+	md5sums = a8dc97fcf4ef62e279e9ea835a73b42d
+	md5sums = 48e64eff8419e7f831513720885ebd6d
+	md5sums = dc210f0284dff6865cafbca5990f0e2d
+	md5sums = a5978eb14131a6b02e566b4b6225659c
+	md5sums = 28ba7da9e8488c7da2fd25ec16512d4a
+
+pkgname = craftbukkit-spigot
+

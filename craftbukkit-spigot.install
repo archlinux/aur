@@ -1,0 +1,43 @@
+post_install() {
+  echo ">>> The server root is /srv/craftbukkit"
+  getent group craftbukkit >/dev/null 2>&1 || groupadd craftbukkit
+  getent passwd craftbukkit >/dev/null 2>&1 || useradd -g craftbukkit -d /srv/craftbukkit -s /bin/bash craftbukkit
+  chown -R craftbukkit:craftbukkit /srv/craftbukkit/
+  echo ">>> Members of the craftbukkit group can manage the server"
+
+  # Create server.properties if it does not exist yet and configure rcon
+  CONF_FILE=/srv/craftbukkit/server.properties
+
+  if [ ! -e "$CONF_FILE" ]; then
+    touch "$CONF_FILE"
+    chown craftbukkit:craftbukkit "$CONF_FILE"
+    chmod 660 "$CONF_FILE"
+    PASSWORD="$(dd if=/dev/urandom count=1 bs=9 2> /dev/null | base64)"
+    echo "enable-rcon=true" > "$CONF_FILE"
+    echo "rcon.password=$PASSWORD" >> "$CONF_FILE"
+  elif [ -z `grep "enable-rcon=true" "$CONF_FILE"` ]; then
+    echo ">>> For full functionality, enable RCON in $CONF_FILE by adding:"
+    echo "    enable-rcon=true"
+    echo "    rcon.password=<your password>"
+  fi
+
+  echo ">>> Make sure JAVA_HOME is set correctly"
+  echo ">>> Start the spigot server with the following command:"
+  echo "    sudo systemctl start spigot"
+  echo ">>> Alternatively, start the craftbukkit server with the following command:"
+  echo "    sudo systemctl start craftbukkit"
+}
+
+post_upgrade() {
+  post_install $1
+  echo ">>> Make sure you backup your world before starting the server again."
+}
+
+post_remove() {
+  if getent passwd craftbukkit >/dev/null 2>&1; then
+    userdel craftbukkit
+  fi
+  if getent group craftbukkit >/dev/null 2>&1; then
+    groupdel craftbukkit
+  fi
+}

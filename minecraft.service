@@ -1,0 +1,12 @@
+[Unit]
+Description=Minecraft server
+Conflicts=craftbukkit.service spigot.service
+
+[Service]
+ExecStart=/srv/craftbukkit/start_server.sh minecraft
+ExecStop=/srv/craftbukkit/stop_server.sh
+PIDFile=/var/run/minecraft.pid
+Type=forking
+
+[Install]
+WantedBy=multi-user.target
