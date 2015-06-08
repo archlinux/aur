@@ -1,0 +1,32 @@
+pkgbase = armory-git
+	pkgdesc = Full-featured Bitcoin wallet management application
+	pkgver = v0.93.1.r2.g35320e7
+	pkgrel = 1
+	url = https://github.com/etotheipi/BitcoinArmory
+	install = armory-git.install
+	arch = i686
+	arch = x86_64
+	license = AGPL3
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	depends = crypto++
+	depends = swig
+	depends = python2
+	depends = twisted
+	depends = qt4
+	depends = python2-pyqt4
+	depends = python2-bsddb
+	depends = python2-psutil
+	optdepends = bitcoin-daemon: Communicate with the Bitcoin network
+	provides = armory
+	conflicts = armory
+	source = armory-git::git+https://github.com/etotheipi/BitcoinArmory.git
+	source = run-armory.sh
+	source = makefile-01.patch
+	sha256sums = SKIP
+	sha256sums = 4b8ab285588ec07601fb4d9580b84e11a513635a102d92ee7c283261d0b6c0dc
+	sha256sums = 5091c0e66bba8bb2daff320224dc3643279d2d5e014ac52a880b7e20ee67dd91
+
+pkgname = armory-git
+
