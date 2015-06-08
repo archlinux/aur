@@ -1,0 +1,15 @@
+pkgbase = eclipse-cvs
+	pkgdesc = CVS Integration - Separated from Eclipse SDK package. Use with eclipse-platform
+	pkgver = 3.7.2
+	pkgrel = 1
+	url = http://www.eclipse.org/eclipse/platform-cvs/
+	arch = any
+	license = EPL
+	makedepends = unzip
+	depends = eclipse-platform
+	options = !strip
+	source = http://www.eclipse.org/downloads/download.php?r=1&file=/eclipse/downloads/drops/R-3.7.2-201202080800/org.eclipse.cvs-3.7.2.zip
+	md5sums = f14cb419dc444411db5d309fe3b28433
+
+pkgname = eclipse-cvs
+
