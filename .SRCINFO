@@ -1,0 +1,18 @@
+pkgbase = easyhg
+	pkgdesc = Simple user interface for the Mercurial distributed version contol system.
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = http://easyhg.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = qt4
+	depends = mercurial
+	optdepends = pyqt: authentication extension
+	optdepends = python-crypto: password store
+	optdepends = kdiff3: external diff/merge tool
+	source = https://code.soundsoftware.ac.uk/attachments/download/639/EasyMercurial-1.3.0-src.tar.gz
+	md5sums = 728858917b2b121e2ee7ce160ff4151f
+
+pkgname = easyhg
+
