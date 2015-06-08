@@ -1,0 +1,16 @@
+pkgbase = x_x
+	pkgdesc = Excel file CLI Reader
+	pkgver = 0.9
+	pkgrel = 1
+	url = http://github.com/krockode/x_x
+	arch = any
+	license = Apache 2.0
+	makedepends = python-setuptools
+	depends = python-six
+	depends = python-click
+	depends = python-xlrd
+	source = https://pypi.python.org/packages/source/x/x_x/x_x-0.9.tar.gz
+	md5sums = fa0c660f4ce00a4501ee1845e339fb7f
+
+pkgname = x_x
+
