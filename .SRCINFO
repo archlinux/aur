@@ -1,0 +1,17 @@
+pkgbase = haskell-monadprompt
+	pkgdesc = MonadPrompt, implementation & examples
+	pkgver = 1.0.0.3
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/MonadPrompt
+	install = haskell-monadprompt.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = haskell-mtl
+	options = strip
+	source = http://hackage.haskell.org/packages/archive/MonadPrompt/1.0.0.3/MonadPrompt-1.0.0.3.tar.gz
+	md5sums = 2168e8448aa4b0325a58cb20549670fd
+
+pkgname = haskell-monadprompt
+
