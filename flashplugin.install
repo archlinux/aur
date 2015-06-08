@@ -1,0 +1,14 @@
+post_install() {
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+    echo " >> "
+    echo " >> If you have an NVIDIA card that supports libvdpau or Broadcom Crystal HD chips,"
+    echo " >> uncomment EnableLinuxHWVideoDecode=1 from /etc/adobe/mms.cfg."
+    echo " >> If you run into problems, please contact nVidia or Broadcom along with your system config info / driver version."
+    echo " >> "
+}
+
+post_upgrade() {
+    if  [ "$(vercmp $2 10.2.152.27-2)" -lt 0 ]; then
+        post_install $1
+    fi
+}
