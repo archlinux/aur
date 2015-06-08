@@ -1,0 +1,19 @@
+pkgbase = powerdevil-git
+	pkgdesc = KDE power management tools
+	pkgver = r1619.a559a93
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/kde-workspace
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = kdoctools
+	depends = plasma-workspace-git
+	provides = powerdevil
+	conflicts = powerdevil
+	source = git://anongit.kde.org/powerdevil.git
+	md5sums = SKIP
+
+pkgname = powerdevil-git
+
