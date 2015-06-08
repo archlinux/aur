@@ -1,0 +1,20 @@
+pkgbase = efitools
+	pkgdesc = Tools for manipulating UEFI secure boot platforms
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = https://build.opensuse.org/package/show/home:jejb1:UEFI/efitools
+	install = efitools.install
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	makedepends = gnu-efi-libs
+	makedepends = help2man
+	makedepends = perl-file-slurp
+	makedepends = sbsigntools
+	depends = openssl
+	optdepends = mactel-boot: For bless command in Apple Mac systems
+	source = https://build.opensuse.org/source/home:jejb1:UEFI/efitools/efitools-1.5.3.tar.gz
+	sha256sums = 96f7805a628d0fb9a7b6ba3cea7db782276fc48313e2ae528503b9ad9e209915
+
+pkgname = efitools
+
