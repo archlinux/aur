@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-transmission-daemon-git
+	pkgdesc = Gnome Shell indicator for transmission-daemon
+	pkgver = r104.fe6fe88
+	pkgrel = 1
+	url = https://github.com/eonpatapon/gnome-shell-extension-transmission-daemon
+	install = gnome-shell-extension-transmission-daemon-git.install
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = gnome-shell
+	conflicts = gnome-shell-extension-transmission-daemon
+	source = git://github.com/eonpatapon/gnome-shell-extension-transmission-daemon.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-transmission-daemon-git
+
