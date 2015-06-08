@@ -1,0 +1,19 @@
+pkgbase = enhanceio-dkms-git
+	pkgdesc = dkms module for EnhanceIO block device caching
+	pkgver = 108.01
+	pkgrel = 1
+	url = https://github.com/stec-inc/EnhanceIO
+	install = enhanceio-dkms-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = dkms
+	depends = python2>=2.6.6
+	source = enhanceio-dkms-git::git+https://github.com/Frontier314/EnhanceIO
+	source = enhanceio-dkms-git.install
+	sha256sums = SKIP
+	sha256sums = 198a30cb82934828d1e49aa13ba6c726b11ecfe4eb7d310e70b074be2524e2b8
+
+pkgname = enhanceio-dkms-git
+

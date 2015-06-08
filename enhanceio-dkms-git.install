@@ -1,0 +1,13 @@
+post_install() {
+	dkms install -m enhanceio -v ${1%%-*}
+	echo -e "######\nplease check 'man eio_cli' for use\n######"
+}
+pre_upgrade() {
+	dkms remove -m enhanceio -v ${2%%-*} --all
+}
+post_upgrade() {
+    post_install ${1%%-*}
+}
+pre_remove() {
+	dkms remove -m enhanceio -v ${1%%-*} --all
+}
