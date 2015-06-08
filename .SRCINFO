@@ -1,0 +1,15 @@
+pkgbase = iceweasel-i18n-gd
+	pkgdesc = Scottish Gaelic language package for Iceweasel
+	pkgver = 38.0.1.deb5
+	pkgrel = 1
+	url = http://www.mozilla.com/
+	arch = any
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = iceweasel>=38.0.1
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-gd_38.0.1-5_all.deb
+	sha256sums = 8ea2555cc419f8f5e3069d38a27eaa4b564933fbef9a9e11950eabf7d566b369
+
+pkgname = iceweasel-i18n-gd
+
