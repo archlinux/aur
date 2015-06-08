@@ -1,0 +1,20 @@
+pkgbase = hsclock
+	pkgdesc = An elegant analog clock using Haskell, GTK and Cairo
+	pkgver = 1.0
+	pkgrel = 3
+	url = http://hackage.haskell.org/package/hsclock
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = ghc
+	makedepends = haskell-cairo
+	makedepends = haskell-glib
+	makedepends = haskell-gtk
+	makedepends = haskell-old-time=1.0.0.5
+	depends = gmp
+	options = strip
+	source = http://hackage.haskell.org/packages/archive/hsclock/1.0/hsclock-1.0.tar.gz
+	md5sums = 1b8b100f8729e8e47fe99bd18632e8d4
+
+pkgname = hsclock
+
