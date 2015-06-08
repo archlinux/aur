@@ -1,0 +1,12 @@
+pkgbase = qarithmancy-git
+	pkgdesc = Comprehensive numerology application using PyQt
+	pkgver = 20130111
+	pkgrel = 1
+	url = https://github.com/ShadowKyogre/QArithmancy
+	arch = any
+	license = GPL
+	depends = pyqt
+	depends = python-dateutil
+
+pkgname = qarithmancy-git
+
