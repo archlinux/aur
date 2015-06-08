@@ -1,0 +1,16 @@
+pkgbase = pidgin-tlen-git
+	pkgdesc = An Tlen.pl protocol plugin for Pidgin
+	pkgver = b8c464e
+	pkgrel = 2
+	url = https://github.com/pelotasplus/pidgin-tlen
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = libpurple
+	provides = pidgin-tlen
+	conflicts = pidgin-tlen
+	source = pidgin-tlen-git::git://github.com/pelotasplus/pidgin-tlen.git
+	md5sums = SKIP
+
+pkgname = pidgin-tlen-git
+
