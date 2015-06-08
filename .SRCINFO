@@ -1,0 +1,42 @@
+pkgbase = gitea-git-dev
+	pkgdesc = Git with a cup of tea, forked from Gogs. Is a Self Hosted Git Service in the Go Programming Language. This is the current git version from branch dev.
+	pkgver = 20150116
+	pkgrel = 1
+	epoch = 1
+	url = http://gitea.io
+	install = gogs.install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = go>=1.2
+	makedepends = git
+	makedepends = mercurial
+	makedepends = patch
+	depends = git>=1.7.1
+	optdepends = sqlite: SQLite support
+	optdepends = mariadb: MariaDB support
+	optdepends = postgresql: PostgreSQL support
+	optdepends = redis: Redis support
+	optdepends = memcached: MemCached support
+	optdepends = openssh: GIT over SSH support
+	conflicts = gogs-bin
+	conflicts = gogs
+	conflicts = gogs-git
+	options = !strip
+	options = !emptydirs
+	backup = srv/gogs/conf/app.ini
+	source = gogs.service
+	source = app.ini.patch
+	source = start.sh
+	source = helper.sh
+	source = gitea::git+https://github.com/gogits/gitea.git#branch=dev
+	sha512sums = 65bd06d530809917134b4fa2668136ada3e0cdc5a9c684ac422a973ad1c40c341d62cebf2ef14ee6275a134979d67cb314ec801a5a35ff1fb4e823aab671a151
+	sha512sums = a09134a50b7369715f65553003db954ca3193ee2556fc3d8aa98c717aa2f2b275d691f1c7c62464ec8f32e800d8ddf814c75546317ab623d2bd9331c5702380d
+	sha512sums = d759778b73d78fb705dad7b3cb486a2e366fdf3222bd170823579407a9aba9d281423b1026a22d142fc9abf620a40a14880254105129071956870e3048dd8bc3
+	sha512sums = 1e83441ebb24efe00e80f35eea6ed6d64a48194df3a3c90b02cd52a65099e8dfe046e0f914ac3dac7e4a30c854d967e2d5c928ee801f44053208dde2728fa17f
+	sha512sums = SKIP
+
+pkgname = gitea-git-dev
+
