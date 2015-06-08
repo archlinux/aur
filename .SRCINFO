@@ -1,0 +1,19 @@
+pkgbase = lcov
+	pkgdesc = front-end for GCC's coverage testing tool gcov
+	pkgver = 1.11
+	pkgrel = 2
+	url = http://ltp.sourceforge.net/coverage/lcov.php
+	arch = any
+	license = GPL
+	depends = perl
+	source = http://downloads.sourceforge.net/ltp/lcov-1.11.tar.gz
+	source = demangle-fixup.patch
+	source = fix-undef-behaviour.patch
+	source = handle-equals-signs.patch
+	sha1sums = bf8ed68c06805a71528a2a67dd714830afd3ccb5
+	sha1sums = bed4025628c45e2ed23ffa9b8dafc8926e874193
+	sha1sums = 6379bbc44710f3b3a16d61ff1c4e93d3c2430a69
+	sha1sums = a795e5bc0018a8a6210a1921a46f6a83cac78973
+
+pkgname = lcov
+

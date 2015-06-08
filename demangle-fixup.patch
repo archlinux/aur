@@ -1,0 +1,53 @@
+Author: Peter Oberparleiter
+Descrition: Fix virtual destructors bug
+Bug:  http://bugs.debian.org/752451
+Forwarded: yes
+Last-Updated: 2014-06-24
+
+Index: lcov-1.11/bin/geninfo
+===================================================================
+--- lcov-1.11.orig/bin/geninfo
++++ lcov-1.11/bin/geninfo
+@@ -174,6 +174,7 @@ sub graph_error($$);
+ sub graph_expect($);
+ sub graph_read(*$;$$);
+ sub graph_skip(*$;$);
++sub uniq(@);
+ sub sort_uniq(@);
+ sub sort_uniq_lex(@);
+ sub graph_cleanup($);
+@@ -2529,6 +2530,25 @@ sub graph_skip(*$;$)
+ 	return 0;
+ }
+ 
++# uniq(list)
++#
++# Return list without duplicate entries.
++#
++
++sub uniq(@)
++{
++       my (@list) = @_;
++       my @new_list;
++       my %known;
++
++       foreach my $item (@list) {
++               next if ($known{$item});
++               $known{$item} = 1;
++               push(@new_list, $item);
++           }
++       return @new_list;
++}
++
+ #
+ # sort_uniq(list)
+ #
+@@ -2715,7 +2735,7 @@ sub graph_cleanup($)
+ 				next;
+ 			}
+ 			# Normalize list
+-			$per_file->{$function} = [ sort_uniq(@$lines) ];
++			$per_file->{$function} = [ uniq(@$lines) ];
+ 		}
+ 		if (scalar(keys(%{$per_file})) == 0) {
+ 			# Remove empty file

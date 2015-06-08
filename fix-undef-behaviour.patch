@@ -1,0 +1,36 @@
+Author: Alastair McKinstry <mckinstry@debian.org>
+Description: Fix for undefined behavior in perl5.20
+Origin: http://bugs.debian.org/761308
+Forwarded: no
+Last-Updated: 2014-09-13
+
+Index: lcov-1.11/bin/lcov
+===================================================================
+--- lcov-1.11.orig/bin/lcov
++++ lcov-1.11/bin/lcov
+@@ -230,7 +230,9 @@ GetOptions("config-file=s" => \$opt_conf
+ Getopt::Long::Configure("default");
+ 
+ # Remove spaces around rc options
+-while (my ($key, $value) = each(%opt_rc)) {
++my @keys = keys %opt_rc;
++for my $key (@keys) {
++    my $value = $opt_rc{$key};
+ 	delete($opt_rc{$key});
+ 
+ 	$key =~ s/^\s+|\s+$//g;
+Index: lcov-1.11/bin/geninfo
+===================================================================
+--- lcov-1.11.orig/bin/geninfo
++++ lcov-1.11/bin/geninfo
+@@ -283,7 +283,9 @@ GetOptions("config-file=s" => \$opt_conf
+ Getopt::Long::Configure("default");
+ 
+ # Remove spaces around rc options
+-while (my ($key, $value) = each(%opt_rc)) {
++my @keys = keys %opt_rc;
++for my $key (@keys) {
++    my $value = $opt_rc{$key};
+ 	delete($opt_rc{$key});
+ 
+ 	$key =~ s/^\s+|\s+$//g;
