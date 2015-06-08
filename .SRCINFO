@@ -1,0 +1,14 @@
+pkgbase = goplot
+	pkgdesc = goplot is an easy to use plotting tool written in golang.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/skoo87/goplot
+	arch = any
+	license = other
+	makedepends = git
+	makedepends = go
+	source = goplot::git://github.com/skoo87/goplot.git
+	md5sums = SKIP
+
+pkgname = goplot
+
