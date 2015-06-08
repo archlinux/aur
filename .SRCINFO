@@ -1,0 +1,17 @@
+pkgbase = apoo
+	pkgdesc = An environment for a first course in assembly language programming
+	pkgver = 2.2
+	pkgrel = 2
+	url = http://www.ncc.up.pt/Apoo/
+	install = apoo.install
+	arch = any
+	license = GPL
+	makedepends = gendesk
+	depends = pygtk>=2.10
+	depends = desktop-file-utils
+	options = !emptydirs
+	source = http://http.debian.net/debian/pool/main/a/apoo/apoo_2.2.orig.tar.gz
+	md5sums = d27455bbefe361d53c95ba9d746f52a6
+
+pkgname = apoo
+
