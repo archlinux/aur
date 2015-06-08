@@ -1,0 +1,13 @@
+diff --git a/pearlhd.c b/pearlhd.c
+index 78d1d23..a57da02 100644
+--- a/pearlhd.c
++++ b/pearlhd.c
+@@ -188,7 +188,7 @@ cSkinPearlHDDisplayChannel::cSkinPearlHDDisplayChannel(bool WithInfo)
+     osd->DrawText(x2ChannelInfo - 237, y2ChannelInfo, PearlHDConfig.ButtonBlueText, Theme.Color(clrMessageWhite), clrTransparent, fontSansBook27, 237, 0, taCenter);
+   }
+   
+-  logoPath = cPlugin::ConfigDirectory();
++  logoPath = cPlugin::ResourceDirectory();
+   logoPath += "/skinpearlhd/logos/";
+   switch (PearlHDConfig.ChannelLogoFormat)
+   {

@@ -1,0 +1,28 @@
+pkgbase = vdr-skinpearlhd
+	pkgdesc = conversion of the PearlHD-Skin written by mapovi to a native vdr-plugin
+	pkgver = 0.0.1_28_g9899940
+	pkgrel = 25
+	url = http://projects.vdr-developer.org/projects/show/plg-skinpearlhd
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	makedepends = git
+	depends = graphicsmagick
+	depends = vdr-api=2.2.0
+	backup = etc/vdr/conf.avail/50-skinpearlhd.conf
+	source = git://projects.vdr-developer.org/vdr-plugin-skinpearlhd.git#commit=9899940a4920e77d1d6c14a3b1bb16be47f5045d
+	source = pearlhd-use_graphicsmagick.diff
+	source = skinpearlhd-search_for_logos_in_resourcedir.diff
+	source = http://projects.vdr-developer.org/attachments/download/1386/setup-page-fix.diff
+	source = 50-skinpearlhd.conf
+	md5sums = SKIP
+	md5sums = 7906df33146a0d65cbf7dcb8d524e07a
+	md5sums = a3863c199b78f405a79b46b2e10c9dc9
+	md5sums = 2a8bfca1077129fbcc0d777075336878
+	md5sums = e4ffd0d1adf41aa6e5729ea5132e5616
+
+pkgname = vdr-skinpearlhd
+

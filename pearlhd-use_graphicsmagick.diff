@@ -1,0 +1,21 @@
+diff -ruN vdr-plugin-skinpearlhd-9899940/Makefile vdr-plugin-skinpearlhd-9899940.new/Makefile
+--- vdr-plugin-skinpearlhd-9899940/Makefile	2013-01-22 15:43:58.000000000 +0100
++++ vdr-plugin-skinpearlhd-9899940.new/Makefile	2013-03-31 14:13:27.997773148 +0200
+@@ -48,7 +48,7 @@
+ 
+ ### Includes and Defines (add further entries here):
+ 
+-INCLUDES += -I/usr/include/ImageMagick
++INCLUDES += $(shell pkg-config --cflags GraphicsMagick++)
+ 
+ DEFINES += -DPLUGIN_NAME_I18N='"$(PLUGIN)"'
+ 
+@@ -60,7 +60,7 @@
+ 
+ OBJS = $(PLUGIN).o pearlhd.o bitmap.o config.o setup.o
+ 
+-LIBS = -lMagick++
++LIBS = $(shell pkg-config --libs GraphicsMagick++)
+ 
+ ### The main target:
+ 
