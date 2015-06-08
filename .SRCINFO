@@ -1,0 +1,21 @@
+pkgbase = spice-xpi
+	pkgdesc = XPI client for interacting with SPICE servers. This package contains a mozilla browser client for interacting with SPICE servers.
+	pkgver = 2.8.90
+	pkgrel = 9
+	url = http://spice-space.com/
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python2
+	makedepends = xulrunner
+	depends = firefox
+	depends = spice
+	provides = browser-plugin-spice
+	conflicts = browser-plugin-spice
+	source = git://anongit.freedesktop.org/spice/spice-xpi
+	source = git://anongit.freedesktop.org/spice/spice-protocol
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = spice-xpi
+
