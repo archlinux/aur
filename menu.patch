@@ -1,0 +1,28 @@
+--- jumpnbump-menu.orig	2011-06-25 12:47:35.000000000 +0200
++++ jumpnbump-menu	2015-05-22 13:26:47.153275252 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ # Author: Martin Willemoes Hansen
+ # License: Gnu GPL
+@@ -17,8 +17,8 @@
+ import shutil
+ import gettext
+ 
+-RESOURCE_DIR='/usr/share/games/jumpnbump'
+-BINARY_DIR='/usr/games'
++RESOURCE_DIR='/usr/share/jumpnbump'
++BINARY_DIR='/usr/bin'
+ 
+ application = "jumpnbump-menu"
+ gettext.install(application)
+@@ -214,6 +214,8 @@
+     noflies = gui.get_widget ('noflies')
+     withmusic = gui.get_widget ('withmusic')
+     image = gui.get_widget ('image')
++    mainwindow = gui.get_widget ('main')
++    mainwindow.set_icon_from_file('/usr/share/icons/jumpnbump.png')
+     
+     gui.signal_autoconnect ({'standalone_mode': standalone_mode,
+                              'client_mode': client_mode,

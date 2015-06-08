@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Jump'n'Bump
+Comment=Jump on your opponents to make them explode
+Exec=jumpnbump-menu
+Icon=/usr/share/icons/jumpnbump.png
+Terminal=false
+Type=Application
+Categories=Game;
