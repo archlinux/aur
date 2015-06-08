@@ -1,0 +1,30 @@
+--- xemeraldia-0.4.3.orig/Makefile.in	2009-02-10 07:33:00.000000000 +0500
++++ xemeraldia-0.4.3/Makefile.in	2012-02-28 15:45:09.406143623 +0600
+@@ -242,7 +242,7 @@
+ ACLOCAL_AMFLAGS = -I m4
+ EXTRA_DIST = config.rpath NEWS README.jp xemeraldia.desktop.in TODO
+ AM_CPPFLAGS = -DLOCALEDIR=\"$(datadir)/locale\" \
+-	-DHIGH_SCORE_TABLE=\"/var/games/xemeraldia.scores\"
++	-DHIGH_SCORE_TABLE=\"/var/lib/xemeraldia/xemeraldia.scores\"
+ 
+ all: config.h
+ 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
+--- xemeraldia-0.4.3.orig/graphics.c	2009-02-10 05:55:24.000000000 +0500
++++ xemeraldia-0.4.3/graphics.c	2012-02-28 15:44:48.346143504 +0600
+@@ -7,6 +7,7 @@
+ #endif
+ 
+ #include "games.h"
++#include "gtk-2.0/gtk/gtkprivate.h"
+ 
+ static gboolean animateTmpScore (void *);
+ 
+@@ -32,7 +33,7 @@
+ 
+ static void invalidate_area(GtkWidget *widget, gint x, gint y, gint w, gint h)
+ {
+-	while(GTK_WIDGET_FLAGS(widget) & GTK_NO_WINDOW)
++	while(GTK_PRIVATE_FLAGS(widget) & GTK_NO_WINDOW)
+ 	{
+ 		x += widget->allocation.x;
+ 		y += widget->allocation.y;

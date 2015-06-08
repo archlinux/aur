@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=XEmeraldia
+Comment=A Tetris-like falling blocks game
+Exec=xemeraldia
+Icon=xemeraldia.png
+Terminal=false
+Categories=Game;BlocksGame;
