@@ -1,0 +1,18 @@
+pkgbase = pingstats
+	pkgdesc = A tool to ping a server and make plots with ping's data
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = http://www.art-software.fr
+	arch = any
+	license = GPL2
+	depends = bash
+	depends = fping
+	depends = coreutils
+	depends = sed
+	depends = gnuplot
+	depends = traceroute
+	source = http://www.art-software.fr/files/archive/stats-1.1.3.tar.xz
+	md5sums = fb12242ce69b89913698d2910e9ea80f
+
+pkgname = pingstats
+
