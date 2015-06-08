@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-vsrawsource-git
+	pkgdesc = Plugin for Vapoursynth: vsrawsource (GIT version)
+	pkgver = 20140216.9634f88
+	pkgrel = 1
+	url = https://github.com/myrsloik/vsrawsource
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	depends = vapoursynth
+	provides = vapoursynth-plugin-vsrawsource
+	conflicts = vapoursynth-plugin-vsrawsource
+	source = git+https://github.com/myrsloik/vsrawsource.git
+	md5sums = SKIP
+
+pkgname = vapoursynth-plugin-vsrawsource-git
+
