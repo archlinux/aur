@@ -1,0 +1,44 @@
+pkgbase = catalyst
+	pkgdesc = AMD/ATI Catalyst drivers for linux. fglrx kernel module only. Radeons HD 2 3 4 xxx ARE NOT SUPPORTED
+	pkgver = 15.5
+	pkgrel = 1
+	url = http://www.amd.com
+	install = catalyst.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = gcc-libs
+	makedepends = gcc>4.0.0
+	makedepends = make
+	makedepends = linux-headers
+	depends = linux>=3.0
+	depends = linux<4.2
+	depends = catalyst-utils
+	conflicts = catalyst-test
+	source = http://www2.ati.com/drivers/linux/amd-catalyst-omega-15.5-linux-run-installers.zip
+	source = ati_make.sh
+	source = makefile_compat.patch
+	source = lano1106_fglrx_intel_iommu.patch
+	source = lano1106_kcl_agp_13_4.patch
+	source = lano1106_fglrx-13.8_proc.patch
+	source = cold-fglrx-3.14-current_euid.patch
+	source = fglrx_gpl_symbol.patch
+	source = fglrx_3.17rc6-no_hotplug.patch
+	source = kolasa-3.19-get_cpu_var.patch
+	source = kolasa_4.0-cr4-strn.patch
+	source = kolasa_4.1_remove-IRQF_DISABLED.patch
+	md5sums = 979f9f2e0948fa6e92ff0125f5c6b575
+	md5sums = fd98b7e486d7fd4cad8de7b95b5b031e
+	md5sums = 3e1b82bd69774ea808da69c983d6a43b
+	md5sums = 5184b94a2a40216a67996999481dd9ee
+	md5sums = c5156eddf81c8a1719b160d05a2e8d67
+	md5sums = 2ab4837233de42332753882445373d7b
+	md5sums = ba33b6ef10896d3e1b5e4cd96390b771
+	md5sums = ef97fc080ce7e5a275fe0c372bc2a418
+	md5sums = 67a22f624bae95a76638ce269392cb01
+	md5sums = 3aa45013515b724a71bbd8e01f98ad99
+	md5sums = dee3df1c5d3ed87363f4304da917fc00
+	md5sums = 81a9e38dee025151cccb7e5db2362cfb
+
+pkgname = catalyst
+

@@ -1,0 +1,32 @@
+KERNEL_VERSION=4.1.0-1-mainline
+EXTRAMODULES=extramodules-4.1-mainline
+
+
+dep_extr_mod(){
+if [ $EXTRAMODULES != null ]; then
+    depmod $(cat usr/lib/modules/$EXTRAMODULES/version)
+else
+    depmod $KERNEL_VERSION
+fi
+}
+
+whisperer(){
+    echo "----------------------------------------------------------------"
+    echo "For more info and troubleshooting visit:"
+    echo "http://wiki.archlinux.org/index.php/AMD_Catalyst"
+    echo "----------------------------------------------------------------"
+}
+
+
+post_install() {
+    dep_extr_mod
+    whisperer
+}
+
+post_upgrade() {
+    dep_extr_mod
+}
+
+post_remove() {
+    dep_extr_mod
+}
