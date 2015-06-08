@@ -1,0 +1,14 @@
+post_install() {
+       # do something here
+       post_upgrade
+}
+post_upgrade() {
+       # do something here
+       [[ -x /usr/bin/xdg-icon-resource ]] && xdg-icon-resource forceupdate --theme hicolor
+       [[ -x /usr/bin/update-desktop-database ]] && update-desktop-database -q
+       [[ -x /usr/bin/gtk-update-icon-cache ]] && gtk-update-icon-cache -f /usr/share/icons/hicolor
+}
+post_remove() {
+       # do something here
+       post_upgrade
+}
