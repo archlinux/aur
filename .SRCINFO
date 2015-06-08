@@ -1,0 +1,24 @@
+pkgbase = avxsynth-git
+	pkgdesc = Linux Port of AviSynth. (Git version)
+	pkgver = 20150407.80dcb7e
+	pkgrel = 1
+	url = http://www.avxsynth.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = yasm
+	makedepends = subversion
+	makedepends = python2
+	depends = qt4
+	depends = mplayer
+	depends = log4cpp
+	depends = pango
+	depends = ffms2
+	provides = avxsynth
+	conflicts = avxsynth
+	source = git+https://github.com/avxsynth/avxsynth.git
+	sha1sums = SKIP
+
+pkgname = avxsynth-git
+
