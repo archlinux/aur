@@ -1,0 +1,14 @@
+pkgbase = cinderella
+	pkgdesc = Interactive geometry software
+	pkgver = 2.8
+	pkgrel = 3
+	url = http://www.cinderella.de/
+	arch = any
+	license = Proprietary
+	depends = java-runtime
+	depends = xdg-utils
+	source = http://www.cinderella.de/files/release/Cinderella_unix_2_8.sh
+	md5sums = bb6ca0c41e22d8949ccbb5b58434d159
+
+pkgname = cinderella
+
