@@ -1,0 +1,23 @@
+pkgbase = glmark2-git
+	pkgdesc = OpenGL (ES) 2.0 benchmark (X11, Wayland, DRM)
+	pkgver = r823.e1969fb
+	pkgrel = 1
+	url = https://launchpad.net/glmark2
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = python2
+	depends = libjpeg-turbo
+	depends = libpng12
+	depends = libx11
+	depends = libxcb
+	depends = libgl
+	depends = wayland
+	provides = glmark2
+	conflicts = glmark2
+	source = glmark2-git::git://github.com/glmark2/glmark2.git
+	md5sums = SKIP
+
+pkgname = glmark2-git
+
