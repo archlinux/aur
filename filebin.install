@@ -1,0 +1,16 @@
+post_install() {
+	echo "-------------------------------------------------------------------------------"
+	echo "run install.php to make sure all dependecies are installed"
+	echo "update 'open_base_dir' in php's config to include '/usr/share/webapps/filebin' and
+	'/etc/webapps/filebin'"
+	echo "enable exif, phar and any of mysql, mysqli, pgsql, pdo_mysql or pdo_pgsql for database access"
+	echo "edit the files in '/etc/webapps/filebin'"
+	echo "do not edit config.php! use config-local.php to override it when needed"
+	echo "add '/usr/share/webapps/filebin/crontab' to the user's crontab"
+	echo "run 'php index.php tools update_database' to initialize your database'"
+	echo "run 'php index.php user add_user' to add your first user"
+	echo "additional information can be found in '/usr/share/webapps/filebin/INSTALL'"
+	echo "there is a sample nginx configuration file in '/usr/share/webapps/filebin'"
+	echo "-------------------------------------------------------------------------------"
+
+}
