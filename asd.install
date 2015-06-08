@@ -1,0 +1,64 @@
+DAEMON_FILE="/run/asd"
+
+pre_upgrade() {
+	## arg 1:  the new package version
+	## arg 2:  the old package version
+	oldpkgver=${2%-*}
+
+	if [[ $oldpkgver < 5.69 ]]; then
+		if [ -e $DAEMON_FILE ]; then
+			if ! systemd-notify --booted; then # not using systemd  
+				echo '--> Pacman must stop asd before it can upgrade.'
+				echo '--> Please start it manually once the upgrade is complete.'
+				/etc/rc.d/asd stop
+			else
+				echo '--> Pacman must stop asd before it can upgrade.'
+				echo '--> Please start it manually once the upgrade is complete.'
+				/usr/bin/systemctl stop asd
+			fi
+		fi
+	fi
+}
+
+post_install() {
+	echo '--------------------------------------------------------------------------'
+	echo '  Define what to sync in /etc/asd.conf'
+	echo '  Read the manpage before use and also see the wiki page'
+	echo '  https://wiki.archlinux.org/index.php/Anything-sync-daemon'
+	echo
+	echo '  ALWAYS backup your important data before using utils like asd!'
+	echo '--------------------------------------------------------------------------'
+}
+
+post_upgrade() {
+	## arg 1:  the new package version
+	## arg 2:  the old package version
+	oldpkgver=${2%-*}
+	#newpkgver=${1%-*}
+
+	if [[ $oldpkgver < 3.13 ]]; then
+		echo '-------------------------------------------------------------------'
+		echo ' Support for cron has been deprecated in favor of a systemd timer.'
+		echo ' This package now provides both asd.service and asd-resync.service'
+		echo
+		echo ' systemctl enable asd asd-resync'
+		echo ' systemctl start asd asd-resync'
+		echo
+		echo ' See the wiki or man page for more info.'
+		echo '-------------------------------------------------------------------'
+	else
+		/bin/true
+	fi
+}
+
+pre_remove() {
+	if [ -e $DAEMON_FILE ]; then
+		if ! systemd-notify --booted; then # not using systemd  
+			echo '--> Automatically stopping asd to rotate data back out of tmpfs.'
+			/etc/rc.d/asd stop
+		else
+			echo '--> Automatically stopping asd to rotate data back out of tmpfs.'
+			/usr/bin/systemctl stop asd
+		fi
+	fi
+}
