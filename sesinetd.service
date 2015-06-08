@@ -1,0 +1,11 @@
+[Unit]
+Description=Houdini License server
+
+[Service]
+Type=forking
+ExecStart=/opt/houdini/houdini/sbin/sesinetd -R /var/run/sesinetd.pid
+ExecStop=/opt/houdini/houdini/sbin/sesictrl -h 127.0.0.1 -Q
+PIDFile=/var/run/sesinetd.pid
+
+[Install]
+WantedBy=multi-user.target
