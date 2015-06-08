@@ -1,0 +1,31 @@
+post_install() {
+    post_remove $1
+
+    cat << EOF
+==> One way to solve Policykit/UDisks2 related errors ("Error:org.freedesktop.UDisks2.Error.NotAuthorized: Not authorized to perform operation") is to define the following rules in file /etc/polkit-1/rules.d/50-udisks.rules:
+
+    polkit.addRule(function(action, subject) {
+      var YES = polkit.Result.YES;
+      var permission = {
+        // only required for udisks2:
+        "org.freedesktop.udisks2.ata-check-power": YES,
+        "org.freedesktop.udisks2.ata-smart-update": YES,
+      };
+      if (subject.isInGroup("users")) {
+        return permission[action.id];
+      }
+    });
+
+    Then restart the polkit service.
+EOF
+}
+
+post_upgrade() {
+    post_remove $1
+}
+
+post_remove() {
+    glib-compile-schemas usr/share/glib-2.0/schemas
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+}
+
