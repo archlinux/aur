@@ -1,0 +1,13 @@
+pkgbase = gtk2-theme-win31x
+	pkgdesc = Windows 3.1 GTK2 Theme
+	pkgver = 1.4
+	pkgrel = 2
+	url = http://opendesktop.org/content/show.php?content=169112
+	arch = any
+	license = GPL
+	depends = gtk-engines
+	source = gtk2-theme-win31x-1.4.tgz::http://opendesktop.org/CONTENT/content-files/169112-win31x.tgz
+	sha256sums = 8adc326d5ce10487a06c3181cf3cc2e074e60206c2193c33ef3ec76874fe523d
+
+pkgname = gtk2-theme-win31x
+
