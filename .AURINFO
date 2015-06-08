@@ -1,0 +1,16 @@
+pkgbase = python-pysocks-git
+	pkgdesc = Routes sockets of any TCP service through a SOCKS4, SOCKS5 or HTTP proxy (Anorov fork of socksipy)
+	pkgver = 20130319
+	pkgrel = 1
+	url = https://github.com/Anorov/PySocks
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = python
+	provides = socksipy
+	conflicts = socksipy
+	source = setup.py
+	source = pysocks::git+git://github.com/Anorov/PySocks.git
+
+pkgname = python-pysocks-git
+
