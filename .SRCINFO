@@ -1,0 +1,17 @@
+pkgbase = libusbmuxd-git
+	pkgdesc = The usbmuxd communication interface library
+	pkgver = 1.0.10.r2.g6799f3b
+	pkgrel = 1
+	url = http://www.libimobiledevice.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	depends = libplist-git
+	provides = libusbmuxd
+	conflicts = libusbmuxd
+	source = git://git.sukimashita.com/libusbmuxd.git
+	sha512sums = SKIP
+
+pkgname = libusbmuxd-git
+
