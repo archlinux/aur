@@ -1,0 +1,41 @@
+diff -durN oss-v4.2-build2011-src-gpl/setup/Linux/oss/build/osscore.c oss-v4.2-build2011-src-gpl-patched/setup/Linux/oss/build/osscore.c
+--- oss-v4.2-build2011-src-gpl/setup/Linux/oss/build/osscore.c	2014-09-04 00:15:31.000000000 +0200
++++ oss-v4.2-build2011-src-gpl-patched/setup/Linux/oss/build/osscore.c	2015-04-25 23:16:19.502116503 +0200
+@@ -1950,8 +1950,13 @@
+     }
+   else
+     {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,0,0)
+       flags[1] = read_cr4 ();
+       write_cr4 (flags[1] | 0x600);	/* Set OSFXSR & OSXMMEXCEPT */
++#else
++      flags[1] = __read_cr4 ();
++      __write_cr4 (flags[1] | 0x600);	/* Set OSFXSR & OSXMMEXCEPT */
++#endif
+       FX_SAVE (envbuf);
+       asm ("fninit");
+       asm ("fwait");
+@@ -1971,7 +1976,11 @@
+   else
+     {
+       FX_RESTORE (envbuf);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,0,0)
+       write_cr4 (flags[1]);	/* Restore cr4 */
++#else
++      __write_cr4 (flags[1]);	/* Restore cr4 */
++#endif
+     }
+   write_cr0 (flags[0]);		/* Restore cr0 */
+ }
+diff -durN oss-v4.2-build2011-src-gpl/setup/setupdir.sh oss-v4.2-build2011-src-gpl-patched/setup/setupdir.sh
+--- oss-v4.2-build2011-src-gpl/setup/setupdir.sh	2015-04-25 23:03:34.173985609 +0200
++++ oss-v4.2-build2011-src-gpl-patched/setup/setupdir.sh	2015-04-25 23:03:14.267351737 +0200
+@@ -36,7 +36,7 @@
+ # Use Linux24 as the OS name for Linux 2.4.x
+ if test "$OS " = "Linux "
+ then
+-  if test "`uname -r|sed 's/2.//'|sed 's/\..*//'` " = "4 "
++  if test "`uname -r | cut -d '.' -f 1-2` " = "2.4 "
+   then
+ 	OS=Linux24
+   fi

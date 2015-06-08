@@ -1,0 +1,52 @@
+--- kernel/OS/Linux/os_linux.h	2015-01-28 08:07:23.000000000 +0000
++++ kernel/OS/Linux/os_linux.h	2015-06-01 23:12:46.044784820 +0100
+@@ -119,7 +119,7 @@
+ /* System wall timer access */
+ #define GET_JIFFIES()	oss_get_jiffies()
+ 
+-extern inline unsigned int
++__attribute__ ((gnu_inline)) extern inline unsigned int
+ __inb (unsigned short port)
+ {
+   unsigned int _v;
+@@ -127,7 +127,7 @@
+ 			"0" (0));
+   return _v;
+ }
+-extern inline unsigned int
++__attribute__ ((gnu_inline)) extern inline unsigned int
+ __inw (unsigned short port)
+ {
+   unsigned int _v;
+@@ -135,7 +135,7 @@
+ 			"0" (0));
+   return _v;
+ }
+-extern inline unsigned int
++__attribute__ ((gnu_inline)) extern inline unsigned int
+ __inl (unsigned short port)
+ {
+   unsigned int _v;
+@@ -143,19 +143,19 @@
+   return _v;
+ }
+ 
+-extern inline void
++__attribute__ ((gnu_inline)) extern inline unsigned int
+ __outb (unsigned char value, unsigned short port)
+ {
+   __asm__ __volatile__ ("out" "b" " %" "b" "0,%" "w" "1"::"a" (value),
+ 			"d" (port));
+ }
+-extern inline void
++__attribute__ ((gnu_inline)) extern inline unsigned int
+ __outw (unsigned short value, unsigned short port)
+ {
+   __asm__ __volatile__ ("out" "w" " %" "w" "0,%" "w" "1"::"a" (value),
+ 			"d" (port));
+ }
+-extern inline void
++__attribute__ ((gnu_inline)) extern inline unsigned int
+ __outl (unsigned int value, unsigned short port)
+ {
+   __asm__ __volatile__ ("out" "l" " %" "0,%" "w" "1"::"a" (value),

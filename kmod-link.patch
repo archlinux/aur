@@ -1,0 +1,27 @@
+--- setup/Linux/oss/build/install.sh	2012-05-22 00:23:41.000000000 +0200
++++ setup/Linux/oss/build/install.sh	2013-11-10 21:00:08.858276861 +0100
+@@ -203,11 +203,8 @@
+ 	exit 3
+ fi
+ 
+-if ! $LD -r osscore.ko osscore_mainline.o -o /lib/modules/$UNAME/kernel/oss/osscore.ko
+-then
+-	echo Linking the osscore module failed
+-	exit 5
+-fi
++
++cp -f osscore.ko /lib/modules/$UNAME/kernel/oss/osscore.ko
+ 
+ if test -f Module.symvers
+ then
+--- setup/Linux/oss/build/Makefile.osscore	2012-05-22 00:23:41.000000000 +0200
++++ setup/Linux/oss/build/Makefile.osscore	2013-11-14 18:57:44.270163268 +0100
+@@ -5,6 +5,7 @@
+ ifneq ($(KERNELRELEASE),)
+ 
+ 	obj-m := osscore.o
++	osscore-y := osscore_wrapper.o osscore_mainline.o
+ 
+ else
+ 
+
