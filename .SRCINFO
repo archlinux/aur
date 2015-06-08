@@ -1,0 +1,26 @@
+pkgbase = freefem++-hg
+	pkgdesc = A PDE oriented language using the finite element method (Mercurial)
+	pkgver = r3332.04dfe36ed186
+	pkgrel = 1
+	url = http://www.freefem.org/ff++/index.htm
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = mercurial
+	makedepends = gcc-fortran
+	depends = arpack
+	depends = fftw
+	depends = freeglut
+	depends = glu
+	depends = suitesparse
+	depends = hdf5-cpp-fortran
+	depends = gsl
+	provides = freefem++
+	conflicts = freefem++
+	options = !buildflags
+	backup = etc/freefem++.pref
+	source = hg+http://www.freefem.org/ff++/ff++/
+	sha256sums = SKIP
+
+pkgname = freefem++-hg
+
