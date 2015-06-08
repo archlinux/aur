@@ -1,7 +1,7 @@
 # Maintainer: Bidossessi Sodonon
 
 pkgname=odoo
-pkgver=8.0_20150515
+pkgver=8.0_20150608
 pkgrel=1
 pkgdesc="Web-based Open Source Business Apps"
 url=http://odoo.com/
@@ -83,7 +83,7 @@ package()
   install -Dm 644 ${srcdir}/odoo.service ${pkgdir}/usr/lib/systemd/system/odoo.service
   install -Dm 644 ${srcdir}/odoo.conf ${pkgdir}/etc/odoo/odoo.conf
 }
-md5sums=('1594516d5115f50a490671ed62364e40'
+md5sums=('31c2002c73e1e3d7668c9fd793c93e4c'
          '742fa9ad94a92ac2aa910197a26af4e8'
          '00314ef227c9075767d0165527de9841'
          '0c205f95168a60d140411cce4e173eb8')
