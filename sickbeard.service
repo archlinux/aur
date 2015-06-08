@@ -1,0 +1,14 @@
+[Unit]
+Description=SickBeard daemon
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/conf.d/sickbeard
+User=sickbeard
+Group=sickbeard
+ExecStart=/usr/bin/python2 /usr/lib/sickbeard/SickBeard.py --nolaunch --quiet --config "$SB_CONF" --datadir "$SB_DATA" --port "$SB_PORT" --pidfile=/run/sickbeard/sickbeard.pid
+TimeoutStopSec=20
+PIDFile=/run/sickbeard/sickbeard.pid
+
+[Install]
+WantedBy=multi-user.target

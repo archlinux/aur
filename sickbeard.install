@@ -1,0 +1,22 @@
+post_install() {
+    # Source SickBeard config.
+    . /etc/conf.d/sickbeard
+
+    # Create SickBeard group.
+    getent group  sickbeard &> /dev/null || \
+    groupadd -r sickbeard &> /dev/null
+
+    # Create SickBeard user.
+    getent passwd sickbeard &> /dev/null || \
+    useradd -r -g sickbeard -d "${SB_DATA}" -s /usr/bin/nologin -c "SickBeard daemon user" sickbeard &> /dev/null
+
+    # Create or repair Sick-Beard owned directories.
+    mkdir -p            /etc/sickbeard /var/log/sickbeard "${SB_DATA}"
+    chown -R sickbeard: /etc/sickbeard /var/log/sickbeard "${SB_DATA}"
+}
+
+post_upgrade() {
+    post_install
+}
+
+# vim:set ts=4 sw=4 et:

@@ -1,0 +1,29 @@
+pkgbase = sickbeard
+	pkgdesc = A PVR application that downloads and manages your TV shows.
+	pkgver = 507
+	pkgrel = 1
+	url = http://sickbeard.com
+	install = sickbeard.install
+	arch = any
+	license = GPL3
+	depends = python2-cheetah
+	optdepends = sabnzbd: a NZB downloader that integrates well with Sick-Beard
+	optdepends = python-notify: to enable desktop notifications
+	conflicts = sickbeard-git
+	backup = etc/conf.d/sickbeard
+	backup = var/lib/sickbeard/config.ini
+	source = sickbeard-507.tar.gz::https://github.com/midgetspy/Sick-Beard/tarball/build-507
+	source = sickbeard.sh
+	source = sickbeard.conf.d
+	source = sickbeard.service
+	source = sickbeard.tmpfiles
+	source = sickbeard.ini
+	sha256sums = 5d5eed641e6493d9d765feba3e87cd1b17d8b415cce8d5f21956ba5bf7283a59
+	sha256sums = 92124fb1f92b1f28e9e5454fead8ee361ac6bc952e17672fdd324cc495be1d33
+	sha256sums = 6e8a542ab64a98db29f9f7ff5f259a2dad2980005f94b6b54f8fe0a014fce2e4
+	sha256sums = 410143de1f90a8bb432f48b9f30c0abea29ba17e54d3f2fb339edcbdf913c5f1
+	sha256sums = c370f3a7539bcb1a65de6a7e95935279a33c1f8944939a1fd1e091552daa09e4
+	sha256sums = 04f02a812ab2eff2ba806d4b59b2fc408ee24e9872ac2b43dd871a153c66d77e
+
+pkgname = sickbeard
+
