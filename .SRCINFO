@@ -1,0 +1,19 @@
+pkgbase = upnp-inspector-svn
+	pkgdesc = UPnP Device and Service analyzer
+	pkgver = r1676
+	pkgrel = 1
+	url = https://coherence.beebits.net/
+	arch = any
+	license = MIT
+	makedepends = setuptools
+	makedepends = subversion
+	depends = python2
+	depends = coherence
+	depends = pygtk
+	provides = upnp-inspector
+	conflicts = upnp-inspector
+	source = upnp-inspector-svn::svn+https://coherence.beebits.net/svn/trunk/UPnP-Inspector
+	md5sums = SKIP
+
+pkgname = upnp-inspector-svn
+
