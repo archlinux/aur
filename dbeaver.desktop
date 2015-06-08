@@ -1,0 +1,10 @@
+[Desktop Entry]
+Exec=/opt/dbeaver/dbeaver
+Type=Application
+Terminal=false
+Icon=dbeaver
+Categories=Development;Java;
+
+Name=DBeaver
+GenericName=Database Client
+
