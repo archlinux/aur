@@ -1,0 +1,14 @@
+pkgbase = nodejs-ws
+	pkgdesc = simple to use, blazing fast and thoroughly tested websocket client, server and console for node.js, up-to-date against RFC-6455
+	pkgver = 0.4.30
+	pkgrel = 1
+	url = http://github.com/einaros/ws
+	arch = any
+	license = MIT
+	depends = nodejs
+	noextract = ws-0.4.30.tgz
+	source = http://registry.npmjs.org/ws/-/ws-0.4.30.tgz
+	sha1sums = 5e2c18b7bb7ee0f9c9fcc3d3ec50f513ba5f99e8
+
+pkgname = nodejs-ws
+
