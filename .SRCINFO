@@ -1,7 +1,7 @@
 pkgbase = whippet
-	pkgdesc = Opens files and URLs with applications associated by name or mimetype; an xdg-open replacement for control freaks. Applications and associations may be customized using an SQLite database.
+	pkgdesc = A launcher and xdg-open replacement for control freaks. Opens files and URLs with applications associated by name and/or mimetype. Applications and associations may be customized using an SQLite database.
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mcfadzean.org.uk/appstogo/linux.html#whippet
 	arch = any
 	license = custom:MPL2

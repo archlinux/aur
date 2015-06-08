@@ -2,8 +2,8 @@
 
 pkgname=whippet
 pkgver=2.0.2
-pkgrel=1
-pkgdesc="Opens files and URLs with applications associated by name or mimetype; an xdg-open replacement for control freaks. Applications and associations may be customized using an SQLite database."
+pkgrel=2
+pkgdesc="A launcher and xdg-open replacement for control freaks. Opens files and URLs with applications associated by name and/or mimetype. Applications and associations may be customized using an SQLite database."
 arch=('any')
 url="http://mcfadzean.org.uk/appstogo/linux.html#whippet"
 license=('custom:MPL2')
