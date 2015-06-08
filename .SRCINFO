@@ -1,0 +1,15 @@
+pkgbase = lib32-wavpack
+	pkgdesc = Audio compression format with lossless, lossy, and hybrid compression modes
+	pkgver = 4.75.0
+	pkgrel = 1
+	url = http://www.wavpack.com/
+	arch = x86_64
+	license = BSD
+	depends = glibc
+	depends = wavpack
+	options = !libtool
+	source = http://www.wavpack.com/wavpack-4.75.0.tar.bz2
+	md5sums = 14e49c65efd0f3b0dea708e176a112d2
+
+pkgname = lib32-wavpack
+
