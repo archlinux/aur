@@ -1,0 +1,16 @@
+pkgbase = dmagick
+	pkgdesc = D wrapper for ImageMagick
+	pkgver = 6.9.0
+	pkgrel = 1
+	url = https://github.com/MikeWey/DMagick
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = dmd
+	depends = dtools
+	depends = imagemagick
+	source = https://github.com/MikeWey/DMagick/archive/ImageMagick_6.9.0.tar.gz
+	md5sums = 31e73ba27cb4505e76d4a67fcef56e5f
+
+pkgname = dmagick
+
