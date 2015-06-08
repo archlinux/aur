@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Transmission Remote GUI
+GenericName=TransGUI
+Comment=Cross platform remote GUI for the Transmission daemon
+Exec=/usr/bin/transgui
+Icon=/usr/share/pixmaps/transgui.png
+Terminal=false
+Type=Application
+Categories=Network;FileTransfer;P2P;GTK;
+
