@@ -1,0 +1,13 @@
+pkgbase = nunit2
+	pkgdesc = Unit-testing framework for all .NET languages. (This seems to be the last 2.X release)
+	pkgver = 2.6.4
+	pkgrel = 2
+	url = http://www.nunit.com
+	arch = any
+	license = custom
+	depends = mono
+	source = http://github.com/nunit/nunitv2/releases/download/2.6.4/NUnit-2.6.4.zip
+	md5sums = 57b094983ee6c84f0d2e3d7dc0678dca
+
+pkgname = nunit2
+
