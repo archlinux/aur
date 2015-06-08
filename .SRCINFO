@@ -1,0 +1,14 @@
+pkgbase = as31
+	pkgdesc = An 8031/8051 assembler.
+	pkgver = 2.3.1
+	pkgrel = 2
+	url = http://wiki.erazor-zone.de/wiki:projects:linux:as31
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = glibc
+	source = http://wiki.erazor-zone.de/_media/wiki:projects:linux:as31:as31-2.3.1.tar.gz
+	md5sums = e70d7a2d6b80dc37082e79480bb2d1da
+
+pkgname = as31
+
