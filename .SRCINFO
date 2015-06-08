@@ -1,0 +1,30 @@
+pkgbase = openrave-git
+	pkgdesc = An environment for testing, developing, and deploying motion planning algorithms in real-world robotics applications.
+	pkgver = 3364.1cf3710
+	pkgrel = 1
+	url = http://openrave.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = Apache
+	makedepends = git
+	makedepends = cmake
+	depends = boost
+	depends = soqt
+	depends = bullet
+	depends = ffmpeg
+	depends = python2-numpy
+	depends = python2-sympy
+	depends = python2-h5py
+	depends = ode
+	depends = collada-dom
+	depends = assimp
+	depends = mpfr
+	depends = openscenegraph
+	optdepends = cmake: plugin compilation
+	optdepends = qhull
+	source = git+https://github.com/rdiankov/openrave.git
+	md5sums = SKIP
+
+pkgname = openrave-git
+
