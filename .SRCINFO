@@ -1,0 +1,13 @@
+pkgbase = fcitx-skin-dunkel
+	pkgdesc = Dark fcitx theme. Based on margueritesu's Default theme.
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://kde-look.org/content/show.php/Dunkel?content=160618
+	arch = any
+	license = GPL
+	depends = fcitx>=4.2.6
+	source = dunkel.fskin::http://kde-look.org/CONTENT/content-files/160618-Dunkel.fskin
+	md5sums = 866d787e7d53ab7b9fe3de44ee5ae0d7
+
+pkgname = fcitx-skin-dunkel
+
