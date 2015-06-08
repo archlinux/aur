@@ -1,0 +1,15 @@
+pkgbase = autosubst
+	pkgdesc = Automation for de Bruijn syntax and substition in Coq.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.ps.uni-saarland.de/autosubst/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = coq<8.5
+	source = https://www.ps.uni-saarland.de/autosubst/releases/autosubst_v1.0.tar.gz
+	sha256sums = d659898e0e0bafa740c2368a0510a36c77b22a6b9b0386971e49cfc7b8027a1f
+	sha512sums = 4a9f2d3db11a14ccca5ff364814bebf1e4f659f79ee5ded4f6d38d12d8c10b904b9b538b61be7094aae40f3e15d2e018095d8959940b4450256d4637f061fe80
+
+pkgname = autosubst
+
