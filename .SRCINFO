@@ -1,0 +1,34 @@
+pkgbase = keytouch
+	pkgdesc = A program to easily configure the extra function keys of your keyboard
+	pkgver = 2.4.1
+	pkgrel = 8
+	url = http://keytouch.sourceforge.net/
+	install = keytouch.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxtst
+	depends = gnome-menus2
+	depends = alsa-lib
+	depends = gtk2
+	optdepends = acpid: for ACPI support
+	options = !makeflags
+	backup = etc/X11/Xsession
+	source = http://downloads.sourceforge.net/sourceforge/keytouch/keytouch-2.4.1.tar.gz
+	source = keytouch.daemon
+	source = keytouch.desktop
+	source = Xsession
+	source = automake.patch
+	md5sums = c3a917ae9666c9649d43d9aa09ecc96a
+	md5sums = 5bd72f347f56c0524c7a7c8f44fc9a3a
+	md5sums = c5ffe28988dc74fae812ffe204f8883b
+	md5sums = 795430001f4fdb6691d0e93b09a241a9
+	md5sums = 6eb8756a6b639fe62e1a0b5303f9d8f6
+	sha1sums = f1f26dc95c21afd404aebe2b1066e75c8313ca80
+	sha1sums = 9c3ff4fd979fd0322014768bec132ddf005c7f7b
+	sha1sums = 5bac2f62f1ac26caa32da02a8075dc090d981cfb
+	sha1sums = 960b2fa51cfdeb2bc3fa7e086dc9f3a3be483dff
+	sha1sums = 5560d66e372cad3a1991e4a2f38b9645721a37e3
+
+pkgname = keytouch
+
