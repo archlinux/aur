@@ -1,0 +1,61 @@
+# Maintainer: Vi0L0 <vi0l093@gmail.com>
+# Great Contributor: Eduardo "kensai" Romero (previous maintainer)
+# Contributor: Spasswolf
+# Contributor: aidanlinz
+
+PKGEXT='.pkg.tar'
+
+_kernver=whatever
+_pakaver=whatever
+_destdir=whatever
+
+pkgname=catalyst-${_pakaver}
+pkgver=whatever
+pkgrel=whatever
+pkgdesc="AMD/ATI Catalyst drivers. fglrx kernel module for ${_kernver} kernel"
+arch=('i686' 'x86_64')
+url="http://www.ati.amd.com"
+license=('custom')
+depends=('catalyst-generator')
+install=catalyst.install
+
+
+
+build() {
+    msg "Unpacking archive ..."
+    if [ "${CARCH}" = "x86_64" ]; then
+	BUILDARCH=x86_64
+    fi
+    if [ "${CARCH}" = "i686" ]; then
+	BUILDARCH=i386
+    fi
+
+    cd ${srcdir}
+      ln -s ../*.c .
+      ln -s ../*.h .
+      ln -s ../*.patch .
+      ln -s ../Makefile .
+      ln -s ../ati_make.sh .
+      ln -s ../libfglrx_ip.a .
+
+    msg "Setting compilation variables ..."
+  ## include ati_make.sh and use _ati_check function from it
+    . ati_make.sh
+    _ati_check
+
+    msg "Compiling fglrx module ..."
+   ## Compile module using _ati_check variables
+    CFLAGS_MODULE="-DMODULE -DATI -DFGL -DPAGE_ATTR_FIX=$PAGE_ATTR_FIX -DCOMPAT_ALLOC_USER_SPACE=$COMPAT_ALLOC_USER_SPACE $def_smp $def_modversions"
+    make -C /usr/lib/modules/${_kernver}/build SUBDIRS="`pwd`" ARCH=${BUILDARCH} \
+      MODFLAGS="$CFLAGS_MODULE" \
+      CFLAGS_MODULE="$CFLAGS_MODULE" \
+      PAGE_ATTR_FIX=$PAGE_ATTR_FIX COMPAT_ALLOC_USER_SPACE=$COMPAT_ALLOC_USER_SPACE modules
+}
+
+package() {
+    install -m755 -d ${pkgdir}/usr/lib/modules/${_destdir}
+    install -m644 fglrx.ko ${pkgdir}/usr/lib/modules/${_destdir}
+    find "${pkgdir}" -name '*.ko' -exec gzip -9 {} \;
+    sed -i -e "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/" $startdir/catalyst.install
+    sed -i -e "s/EXTRAMODULES=.*/EXTRAMODULES=${_destdir}/" $startdir/catalyst.install
+}

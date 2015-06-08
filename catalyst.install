@@ -1,0 +1,22 @@
+KERNEL_VERSION=whatever
+EXTRAMODULES=whatever
+
+dep_extr_mod(){
+if [ $EXTRAMODULES != null ]; then
+    depmod $(cat usr/lib/modules/$EXTRAMODULES/version)
+else
+    depmod $KERNEL_VERSION
+fi
+}
+
+post_install() {
+    dep_extr_mod
+}
+
+post_upgrade() {
+    dep_extr_mod
+}
+
+post_remove() {
+    dep_extr_mod
+}

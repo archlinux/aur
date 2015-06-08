@@ -1,0 +1,84 @@
+post_install(){
+    echo "----------------------------------------------------------------"
+    echo "Add nomodeset to your kernel line in /boot/grub/menu.lst , ie.:"
+    echo "kernel /boot/vmlinuz-linux root=/dev/sda1 ro nomodeset"
+    echo "-------------------------------------------- ^^^^^^^^^ ---------"
+    echo "If experiencing problems with building module or using more than"
+    echo "one kernel use catalyst_build_module command as root, more info:"
+    echo "# catalyst_build_module help"
+    echo "- ^^^^^^^^^^^^^^^^^^^^^ ----------------------------------------"
+    echo "For more info and more troubleshooting visit:"
+    echo "http://wiki.archlinux.org/index.php/ATI_Catalyst"
+    echo "----------------------------------------------------------------"
+    echo ""
+    echo "Now you MUST to run:"
+    echo " catalyst_build_module"
+    echo "Running this command as non-root is a better way"
+    echo ""
+    echo "If while updating generated packages there are some conflicting"
+    echo "fglrx modules - remove them manually with"
+    echo " rm  OR"
+    echo " pacman -R catalyst-{kernver} (recommended)"
+}
+
+post_upgrade(){
+    echo ""
+    echo "Don't forget to manually rebuild packages"
+    echo "BTW: catalyst_build_module now has got autocompletion on bash and zsh"
+}
+
+post_remove(){
+    # remove log
+     rm -f var/log/catalyst-install.log
+
+    echo ""
+    echo "Manually remove (with pacman -R) those packages:"
+
+if [ -d "/usr/lib/modules" ]; then
+        for p in /usr/lib/modules/*; do
+	    if [[ ${p:17:3} != "ext" ]]; then
+	      if [[ -e $p/video/fglrx.ko.gz ]]; then
+		    echo "catalyst-${p##*/usr/lib/modules/}"
+	      fi
+	    elif [[ ${p:17:3} = "ext" ]]; then
+	      if [[ -e $p/fglrx.ko.gz ]]; then
+		    echo "catalyst-${p##*/usr/lib/modules/extramodules-}"
+	      fi
+	    fi
+        done
+fi
+if [ -d "/lib/modules" ] && [ -d "/usr/lib/modules" ]; then
+        for ls_lib in /lib/modules/*; do
+                repeat=0
+                for ls_usr in /usr/lib/modules/*; do
+                        if [ ${ls_lib##*/lib/modules/} = ${ls_usr##*/usr/lib/modules/} ];then
+                                repeat=1
+                                break
+                        fi
+                done
+                if [[ $repeat == "0" ]]; then
+		    if [[ ${ls_lib:13:3} != "ext" ]]; then
+		      if [[ -e $ls_lib/video/fglrx.ko.gz ]]; then
+			    echo "catalyst-${ls_lib##*/lib/modules/}"
+		      fi
+		    elif [[ ${ls_lib:13:3} = "ext" ]]; then
+		      if [[ -e $ls_lib/fglrx.ko.gz ]]; then
+			    echo "catalyst-${ls_lib##*/lib/modules/extramodules-}"
+		      fi
+		    fi
+		fi
+        done
+elif [[ -d "/lib/modules" ]] && [[ ! -d "/usr/lib/modules" ]]; then
+        for p in /lib/modules/*; do
+		      if [[ ${p:13:3} != "ext" ]]; then
+			if [[ -e $p/video/fglrx.ko.gz ]]; then
+			      echo "catalyst-${p##*/lib/modules/}"
+			fi
+		      elif [[ ${p:13:3} = "ext" ]]; then
+			if [[ -e $p/fglrx.ko.gz ]]; then
+			      echo "catalyst-${p##*/lib/modules/extramodules-}"
+			fi
+		      fi
+        done
+fi
+}

@@ -1,0 +1,25 @@
+# catalyst_build_module completion
+
+_arguments()
+{
+    find -L /usr/lib/modules -maxdepth 1 -mindepth 1 -type d ! -name "ext*" -printf "%f\n"
+    echo "help"
+    echo "all"
+    echo "remove"
+    echo "remove_all"
+    echo "ra"
+}
+
+_catalyst_build_module()
+{
+    COMPREPLY=()
+    local cur=${COMP_WORDS[COMP_CWORD]}
+
+    case $COMP_CWORD in
+        1)
+            COMPREPLY=( $(compgen -W "$(_arguments)" -- "$cur") )
+            return 0
+        ;;
+    esac
+} &&
+complete -F _catalyst_build_module catalyst_build_module
