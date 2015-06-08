@@ -1,0 +1,83 @@
+IF YOU ARE IN A HURRY
+=====================
+
+Go to any directory that contains a PKGBUILD and run
+
+	arch.build i686
+
+This will build your package for the given architecture. You may also append a
+list of repositories to use on top of [core], [extra], and [community], for
+instance:
+
+	arch.build x86_64 testing multilib-testing multilib
+
+
+FOR BETTER PERFORMANCES
+=======================
+
+Make sure that hardware virtualization is enabled.
+
+Make sure that your /tmp is a tmpfs; this is where the copy-on-write drive is
+stored and there is no point that it ever be synced to disk.
+
+Make your host and guest share their pacman package cache through the use of
+the /usr/share/buildstuff/proxy.cgi script; proceed as follows:
+- install any HTTP server on your host computer
+- make this sript run as CGI when called as http://localhost/proxy.cgi
+- make /var/cache/pacman/pkg writeable by the user running this CGI instance
+
+
+HOW THIS ALL WORKS
+==================
+
+The arch.install script creates a base Arch Linux disk image, and configures it
+for unattended use in qemu. You may simply call it as:
+
+	arch.install i686 ~/vm.img
+
+It creates a sparse disk image and partitions it as 8 GB swap, 64 MB ext2 boot,
+8 GB JFS root, and 16 GB JFS home (where packages are built), and installs it
+with [base] and [base-devel] using syslinux as boot loader and systemd as init.
+All this is to reduce VM latency as much as possible. Eventually the disk image
+amounts roughly to 700 MB of actual disk space.
+
+Any other Arch installer would do too, provided that:
+- the guest system has a "user" user able to sudo at will
+- the guest system runs an SSH server at bootup
+- the host user is able to access the guest "user" user account
+
+The latter is achieved in arch.install by copying the host user's SSH public
+keys into the guest user's authorized_keys file.
+
+Once created, these disk images will be used as read-only most of the time: the
+virtual machines run in arch.build do copy-on-write on top of those base disk
+images, storing the changes into a temporary file discarded after each use. The
+base images are then only updated if they have not been in a day.
+
+Let us go through what happens step by step in arch.build:
+
+1. A (hopefully unique to this instance) random number gets picked: vport; it
+is used as the dmsetup device name, port of the host that gets forwarded to the
+guest SSH's, and name for the temporary copy-on-write drive.
+
+2. If the base disk image does not exist yet, create it by calling arch.install
+
+3. If the base disk image has not been updated for a day, run it within qemu
+and update it. Note that this image never runs any repository beyond [core],
+[extra], and [community].
+
+4. Create the temporary drive and set up the dmsetup copy-on-write instance.
+Run this within qemu.
+
+5. Add to this qemu instance the repositories that the user provided as
+arguments; for instance, above, that was [testing], [multilib-testing], and
+[multilib] so that the former takes precedence over the latter.
+
+6. Update the qemu instance.
+
+7. Run the build job.
+
+8. If everything went well, run cleanup instructions located in cleanup.$vport;
+if anything went wrong, arch.build aborts and it is up to you to kill the qemu
+instance and then run cleanup.$vport after you have investigated the build
+problem.

@@ -1,0 +1,5 @@
+tmpfs           /tmp            tmpfs   nodev,nosuid    0       0
+/dev/sda1       swap            swap    defaults        0       0
+/dev/sda2       /boot           ext2    defaults        0       1
+/dev/sda3       /               jfs     defaults        0       1
+/dev/sda4       /home           jfs     defaults        0       2
