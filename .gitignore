@@ -1,0 +1,6 @@
+/libgig-svn/
+/pkg/
+/src/
+*~
+*.gz
+*.xz

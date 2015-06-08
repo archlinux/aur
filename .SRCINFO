@@ -1,0 +1,18 @@
+pkgbase = libgig-svn
+	pkgdesc = Gigasampler file access library
+	pkgver = r2658
+	pkgrel = 1
+	url = http://www.linuxsampler.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	depends = libsndfile
+	depends = util-linux
+	provides = libgig
+	conflicts = libgig
+	source = libgig-svn::svn+https://svn.linuxsampler.org/svn/libgig/trunk
+	md5sums = SKIP
+
+pkgname = libgig-svn
+
