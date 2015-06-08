@@ -1,0 +1,9 @@
+[Unit]
+Description=Easy-to-configure Static Web & Reverse Proxy Server in Go
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/boxcars -port=80 -uid=99 -gid=99 -secure /etc/boxcars.json
+
+[Install]
+WantedBy=multi-user.target

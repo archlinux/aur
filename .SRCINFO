@@ -1,0 +1,20 @@
+pkgbase = boxcars
+	pkgdesc = Easy-to-configure Static Web & Reverse Proxy Server in Go
+	pkgver = r59.2e02b6d
+	pkgrel = 2
+	url = https://github.com/azer/boxcars
+	arch = x86_64
+	arch = i686
+	license = WTFPL
+	makedepends = git
+	makedepends = go
+	options = !strip
+	options = !emptydirs
+	backup = etc/boxcars.json
+	source = git://github.com/azer/boxcars.git
+	source = boxcars.service
+	sha256sums = SKIP
+	sha256sums = 9261145e259f0c3ac2a69983f9e8671b967af9da6043723eaf1ccbe64e132ed5
+
+pkgname = boxcars
+
