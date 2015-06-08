@@ -1,0 +1,25 @@
+From 02dcf788ba288ddebb7164b86aef22e0e5fbf96a Mon Sep 17 00:00:00 2001
+From: Mikael Eriksson <mikael_eriksson@miffe.org>
+Date: Mon, 17 Dec 2012 12:04:02 +0100
+Subject: [PATCH] Fix WAD path
+
+---
+ common/d_main.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/common/d_main.cpp b/common/d_main.cpp
+index a31cb62..4abf6be 100644
+--- a/common/d_main.cpp
++++ b/common/d_main.cpp
+@@ -490,6 +490,8 @@ static std::string BaseFileSearch(std::string file, std::string ext = "", std::s
+ 	dirs.push_back(progdir);
+ 
+ 	D_AddSearchDir(dirs, Args.CheckValue("-waddir"), separator);
++	D_AddSearchDir(dirs, "/usr/share/odamex", separator);
++	D_AddSearchDir(dirs, "/usr/share/doom", separator);
+ 	D_AddSearchDir(dirs, getenv("DOOMWADDIR"), separator);
+ 	D_AddSearchDir(dirs, getenv("DOOMWADPATH"), separator);
+ 	D_AddSearchDir(dirs, getenv("HOME"), separator);
+-- 
+1.8.0.2
+
