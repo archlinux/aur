@@ -1,0 +1,16 @@
+pkgbase = mpd_notifyd
+	pkgdesc = Notifier daemon type for MPD using libnotify. The start of reproduction is reported.
+	pkgver = 0.16
+	pkgrel = 1
+	url = https://bitbucket.org/daltomi/mpd_notifyd
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = gtk2
+	depends = libnotify
+	depends = libmpd
+
+pkgname = mpd_notifyd
+
