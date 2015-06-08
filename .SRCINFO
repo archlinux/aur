@@ -1,0 +1,15 @@
+pkgbase = python2-lcdproc
+	pkgdesc = Python OOP Wrapper Library for LCDproc Telnet API
+	pkgver = 0.03
+	pkgrel = 3
+	url = http://github.com/jingleman/lcdproc
+	arch = any
+	license = BSD
+	makedepends = python2-pip
+	depends = python2
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/l/lcdproc/lcdproc-0.03.tar.gz
+	md5sums = 177328fd30c973151b5e75f9c1b992c7
+
+pkgname = python2-lcdproc
+
