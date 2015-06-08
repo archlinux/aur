@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-coin-or-qpoases
+	pkgdesc = COIN-OR QP solver with online active set strategy (mingw-w64)
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://projects.coin-or.org/qpOASES/
+	arch = any
+	groups = coin-or
+	license = LGPL2.1
+	checkdepends = wine
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-lapack
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = http://www.coin-or.org/download/source/qpOASES/qpOASES-3.1.0.tgz
+	sha1sums = 7e14ec6f2c2c39814e985cdeaffe002dee92e47c
+
+pkgname = mingw-w64-coin-or-qpoases
+
