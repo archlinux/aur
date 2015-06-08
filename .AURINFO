@@ -1,0 +1,14 @@
+pkgbase = gnulib-git
+	pkgdesc = GNU Portability Library
+	pkgver = v0.1.77.gd9361da
+	pkgrel = 1
+	url = http://www.gnu.org/software/gnulib
+	arch = any
+	license = custom
+	makedepends = git
+	provides = gnulib
+	conflicts = gnulib
+	source = git+git://git.sv.gnu.org/gnulib.git
+
+pkgname = gnulib-git
+
