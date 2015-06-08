@@ -1,0 +1,23 @@
+pkgbase = openct
+	pkgdesc = Implements drivers for several smart card readers
+	pkgver = 0.6.20
+	pkgrel = 8
+	url = https://github.com/OpenSC/openct/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = doxygen
+	depends = pcsclite
+	depends = libusb-compat
+	depends = libtool
+	options = !libtool
+	backup = etc/openct.conf
+	source = https://github.com/OpenSC/openct/archive/openct-0.6.20.tar.gz
+	source = openct.rc
+	source = udev-sleep.patch
+	md5sums = 30e416c6c414466f685a5e2db8591c71
+	md5sums = 000bab3e5a98e49159e8190e2b318c74
+	md5sums = 1c8484195d3b8445ebdb9fdc2ee87736
+
+pkgname = openct
+
