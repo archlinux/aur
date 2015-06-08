@@ -1,6 +1,6 @@
 # Maintainer: Doug Newgard <scimmia at archlinux dot info>
 
-_python=python
+_python=python2
 _pkgname=python-efl
 pkgname=$_python-efl-git
 pkgver=1.14.0beta1.a914.9a19db3
