@@ -1,6 +1,6 @@
 pkgbase = xf86-input-evdev-ahm
 	pkgdesc = X.org evdev input driver + at-home-modifier patch
-	pkgver = 2.9.1
+	pkgver = 2.9.2
 	pkgrel = 1
 	url = https://gitorious.org/at-home-modifier
 	install = ahm.install
@@ -16,18 +16,18 @@ pkgbase = xf86-input-evdev-ahm
 	depends = systemd
 	depends = mtdev
 	depends = libevdev
-	provides = xf86-input-evdev=2.9.1
+	provides = xf86-input-evdev=2.9.2
 	conflicts = xorg-server<1.16.0
 	conflicts = X-ABI-XINPUT_VERSION<21
 	conflicts = X-ABI-XINPUT_VERSION>=22
 	conflicts = xf86-input-evdev
 	options = !makeflags
-	source = http://xorg.freedesktop.org//releases/individual/driver/xf86-input-evdev-2.9.1.tar.bz2
-	source = http://xorg.freedesktop.org//releases/individual/driver/xf86-input-evdev-2.9.1.tar.bz2.sig
-	source = ahm-2.9.1.patch
-	sha256sums = 0ce30328adfeac90a6f4b508d992fb834d8e50b484b29d3d58cf6683fa8502f9
+	source = http://xorg.freedesktop.org//releases/individual/driver/xf86-input-evdev-2.9.2.tar.bz2
+	source = http://xorg.freedesktop.org//releases/individual/driver/xf86-input-evdev-2.9.2.tar.bz2.sig
+	source = ahm-2.9.2.patch
+	sha256sums = 792329b531afc6928ccda94e4b51a5520d4ddf8ef9a00890a5d0d31898acefec
 	sha256sums = SKIP
-	sha256sums = 9415bfff270a1117693e29eb61b02475fd43d8913e606cb57b456b97c292aa57
+	sha256sums = ad66def281b6f7b3a97e85e162b9f52bc906ff807de9893009801d8adeeb34be
 
 pkgname = xf86-input-evdev-ahm
 
