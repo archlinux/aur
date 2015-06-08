@@ -1,0 +1,18 @@
+pkgbase = gog-tri
+	pkgdesc = Puzzle game about triangles and foxes (GOG.com version)
+	pkgver = 1.4.0.6
+	pkgrel = 1
+	url = http://www.gog.com/game/tri
+	arch = i686
+	arch = x86_64
+	license = custom: GOG.com EULA
+	depends = glu
+	source = gog://gog_tri_1.4.0.6.tar.gz
+	source = gog-tri
+	source = gog-tri.desktop
+	sha256sums = 018662c5b112939c5247a4d59f2f5583526c87f164d2e66c92bd344e95998c06
+	sha256sums = 7a01b6e86edf010c170816e3b55bb5f762b719096dfe05081e49bed487365498
+	sha256sums = 6bf4fc465f259b0e4a2b025ba1b1a12b865d24dda3a12b161fddd776a3311f5c
+
+pkgname = gog-tri
+

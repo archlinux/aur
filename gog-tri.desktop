@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=TRI
+Comment=Puzzle game about triangles and foxes
+Exec=/opt/TRI/start.sh
+Icon=gog-tri
+Path=/opt/TRI
+Terminal=false
+Type=Application
+Categories=Game;AdventureGame;LogicGame;
