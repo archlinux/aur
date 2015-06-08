@@ -1,0 +1,24 @@
+pkgbase = pkgconf-git
+	pkgdesc = pkg-config compatible utility which does not depend on glib
+	pkgver = 0.9.11.3.gfc18a9d
+	pkgrel = 2
+	url = https://github.com/pkgconf/pkgconf
+	arch = i686
+	arch = x86_64
+	license = ISC
+	makedepends = popt
+	makedepends = git
+	provides = pkg-config
+	provides = pkgconfig
+	provides = pkgconf
+	conflicts = pkg-config
+	conflicts = pkgconfig
+	conflicts = pkgconf
+	replaces = pkg-config
+	replaces = pkgconfig
+	replaces = pkgconf
+	source = git://github.com/pkgconf/pkgconf.git
+	md5sums = SKIP
+
+pkgname = pkgconf-git
+
