@@ -1,0 +1,13 @@
+pkgbase = fcitx-skin-dartmouth
+	pkgdesc = Dartmouth is a fcitx theme.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://kde-look.org/content/show.php/%22Dartmouth%22+-+Fcitx+openSUSE+12.3+Theme?content=156641
+	arch = any
+	license = GPL
+	depends = fcitx>=4.2.6
+	source = dartmouth.fskin::http://kde-look.org/CONTENT/content-files/156641-fcitx-openSUSE-12.3.fskin
+	md5sums = d744f95174a27aa5756e8719a88b1ddc
+
+pkgname = fcitx-skin-dartmouth
+
