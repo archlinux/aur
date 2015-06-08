@@ -4,8 +4,8 @@
 # Contributor: Jeramy Rutley <jrutley@gmail.com>
 
 pkgname=('ruby-2.1' 'ruby-docs-2.1')
-pkgver=2.1.5
-pkgrel=6
+pkgver=2.1.6
+pkgrel=1
 arch=('i686' 'x86_64')
 url='http://www.ruby-lang.org/en/'
 license=('BSD' 'custom')
@@ -15,19 +15,10 @@ license=('BSD' 'custom')
 makedepends=('gdbm' 'openssl' 'libffi' 'doxygen' 'graphviz' 'libyaml' 'ttf-dejavu') # 'tk'
 options=('!emptydirs' '!makeflags' 'staticlibs')
 source=("http://cache.ruby-lang.org/pub/ruby/${pkgver:0:3}/ruby-${pkgver}.tar.xz"
-        'gemrc'
-        'disable_sse2_on_i686.patch')
-sha1sums=('52f8bafb4349eaf32fb99ba3d71e46fd924af966'
-          'de4b760b7e2cd9af88ca67536ce37b950f1ee514'
-          '6e919c4892ef1f02d99e5620c6aac1251fc4597c')
+        'gemrc')
+sha256sums=('137b27bffefd795fd97c288fff539d135f42320f8a1afddde99a34e1fbe7314e'
+            '4bb7eb2fe66e396ed16b589cdb656831407b39ad4e138d88536754c0448ac614')
 
-
-prepare() {
-  cd ruby-${pkgver}
-
-  # FS#39470
-  patch -Np1 -i ${srcdir}/disable_sse2_on_i686.patch
-}
 
 build() {
   cd ruby-${pkgver}
