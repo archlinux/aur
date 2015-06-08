@@ -1,0 +1,16 @@
+pkgbase = dirsyncpro
+	pkgdesc = A small but powerfull utility for file and folder synchronisation
+	pkgver = 1.50
+	pkgrel = 1
+	url = http://www.dirsyncpro.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = java-runtime
+	source = http://downloads.sourceforge.net/project/directorysync/DirSync%20Pro%20%28stable%29/1.50/DirSyncPro-1.50-Linux.zip
+	source = dirsyncpro-home-wd.patch
+	md5sums = 974f9994eb2588b157a1449ec60a5483
+	md5sums = 993f88251a96e733da71165ec31ce21a
+
+pkgname = dirsyncpro
+

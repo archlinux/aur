@@ -1,0 +1,25 @@
+diff -crB a/DirSyncPro-1.4-Linux/dirsyncpro.sh b/DirSyncPro-1.4-Linux/dirsyncpro.sh
+*** a/DirSyncPro-1.4-Linux/dirsyncpro.sh	2011-01-21 17:25:06.000000000 +0100
+--- b/DirSyncPro-1.4-Linux/dirsyncpro.sh	2011-02-18 11:04:31.723203497 +0100
+***************
+*** 1,7 ****
+  #!/bin/bash
+  
+  # get dirsyncpro home
+! DIRSYNCPRO_HOME=$(dirname "$0")
+  
+  # start programm and pass any parameters
+! java -Xmx512M -jar "$DIRSYNCPRO_HOME/dirsyncpro.jar" $* 
+--- 1,12 ----
+  #!/bin/bash
+  
+  # get dirsyncpro home
+! DIRSYNCPRO_HOME=/opt/dirsyncpro
+! 
+! WORKING_DIRECTORY="${HOME}/.dirsyncpro"
+! 
+! [ ! -d "${WORKING_DIRECTORY}" ] && mkdir -p "${WORKING_DIRECTORY}"
+  
+  # start programm and pass any parameters
+! cd "${WORKING_DIRECTORY}" && java -Xmx512M -jar "$DIRSYNCPRO_HOME/dirsyncpro.jar" $*
+! 
