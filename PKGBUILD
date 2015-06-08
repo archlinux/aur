@@ -1,6 +1,6 @@
 # Maintainer: Doug Newgard <scimmia at archlinux dot info>
 
-_python=python
+_python=python2
 pkgname=$_python-elmextensions
 pkgdesc="${_python^} library that contains a few more complex elementary objects for easy importing/usage"
 pkgver=0.1.3
