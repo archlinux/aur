@@ -1,0 +1,22 @@
+pkgbase = mingw-w64-curl
+	pkgdesc = An URL retrival utility and library (mingw-w64)
+	pkgver = 7.40.0
+	pkgrel = 1
+	url = http://curl.haxx.se
+	arch = any
+	license = MIT
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	depends = mingw-w64-gnutls
+	depends = mingw-w64-libidn
+	depends = mingw-w64-libssh2
+	depends = mingw-w64-openssl
+	depends = mingw-w64-zlib
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = http://curl.haxx.se/download/curl-7.40.0.tar.bz2
+	md5sums = SKIP
+
+pkgname = mingw-w64-curl
+
