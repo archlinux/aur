@@ -1,0 +1,20 @@
+pkgbase = perl-scalar-does
+	pkgdesc = like ref() but useful
+	pkgver = 0.202
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Scalar-Does
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-nowarnings>=0
+	checkdepends = perl-test-requires>=0.06
+	depends = perl-exporter-tiny>=0.026
+	depends = perl-type-tiny>=0.004
+	depends = perl-uri>=0
+	depends = perl-lexical-underscore>=0
+	depends = perl-namespace-clean>=0.19
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/Scalar-Does-0.202.tar.gz
+	options = !emptydirs
+
+pkgname = perl-scalar-does
+
