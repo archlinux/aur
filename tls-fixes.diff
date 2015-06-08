@@ -1,0 +1,162 @@
+--- TLS.pm.orig	2006-01-17 15:36:34.000000000 +0100
++++ TLS.pm	2012-08-12 22:45:36.000000000 +0200
+@@ -52,6 +52,8 @@
+ 
+ Password - password for SMTP AUTH
+ 
++Debug - if true, print log of SMTP session to stdout
++
+ =back
+ 
+ =back
+@@ -114,6 +116,7 @@
+ 			or croak "Connect failed :$@\n";
+ 	
+ 	my $me	= bless \%args, $pkg;
++	print STDERR "Welcome to Net::SMTP::TLS - Debug is ON\n" if $me->{Debug};
+ 	# read the line immediately after connecting
+ 	my ($rsp,$txt) = $me->_response();
+ 	if(not $rsp == 220){
+@@ -129,6 +132,7 @@
+ sub _command {
+ 	my $me	= shift;
+ 	my $command = shift;
++	print STDERR "> $command\n" if $me->{Debug};
+ 	$me->{sock}->printf($command."\015\012");
+ }
+ 
+@@ -137,6 +141,7 @@
+ sub _response {
+ 	my $me	= shift;
+ 	my $line = $me->{sock}->getline();
++	print STDERR "< $line" if $me->{Debug};
+ 	my @rsp = ($line =~ /(\d+)(.)([^\r]*)/);
+ 	# reverse things so the seperator is at the end...
+ 	# that way we don't have to get fancy with the return
+@@ -173,13 +178,14 @@
+ # plain old socket into an SSL socket
+ sub starttls {
+ 	my $me	= shift;
++	print STDERR "Starting TLS...\n" if $me->{Debug};
+ 	$me->_command("STARTTLS");
+ 	my ($num,$txt) = $me->_response();
+ 	if(not $num == 220){
+ 		croak "Invalid response for STARTTLS: $num $txt\n";
+ 	}
+ 	if(not IO::Socket::SSL::socket_to_SSL($me->{sock},
+-		SSL_version	=>	"SSLv3 TLSv1")){
++		SSL_version	=>	"TLSv1")){
+ 			croak "Couldn't start TLS: ".IO::Socket::SSL::errstr."\n";
+ 	}
+ 	$me->hello();
+@@ -193,11 +199,15 @@
+ 	if(not $type){
+ 		croak "Server did not return AUTH in capabilities\n";
+ 	}
++	print STDERR "Supported AUTH methods: $type\n" if $me->{Debug};
+ 	if($type =~ /CRAM\-MD5/){
++	  	print STDERR "Using CRAM-MD5\n" if $me->{Debug};
+ 		$me->auth_MD5();
+ 	}elsif($type =~ /LOGIN/){
++	  	print STDERR "Using LOGIN\n" if $me->{Debug};
+ 		$me->auth_LOGIN();
+ 	}elsif($type =~ /PLAIN/){
++	  	print STDERR "Using PLAIN\n" if $me->{Debug};
+ 		$me->auth_PLAIN();
+ 	}else{
+ 		croak "Unsupported Authentication mechanism\n";
+@@ -223,6 +233,8 @@
+ 	if(not $num == 235){
+ 		croak "Auth failed: $num $txt\n";
+ 	}
++	print STDERR "Authentication of ", $me->{User}, " succeeded\n"
++		if $me->{Debug};
+ }
+ 
+ # use MD5 to login... gets the ticket from the text
+@@ -251,7 +263,7 @@
+ 	my $me	= shift;
+ 	my $user= $me->{User};
+ 	my $pass= $me->{Password};
+-	$me->_command(sprintf("AUTH PLAIN %S",
++	$me->_command(sprintf("AUTH PLAIN %s",
+ 		encode_base64("$user\0$user\0$pass","")));
+ 	my ($num,$txt) = $me->_response();
+ 	if(not $num == 235){
+@@ -278,6 +290,7 @@
+ 	if(not $num == 250){
+ 		croak "Could't set FROM: $num $txt\n";
+ 	}
++	return 1;
+ }
+ 
+ # send the RCPT TO: <addr> command
+@@ -295,6 +308,7 @@
+ 			croak "Couldn't send TO <$addr>: $num $txt\n";
+ 		}
+ 	}
++	return 1;
+ }
+ 
+ BEGIN {
+@@ -315,6 +329,13 @@
+ 	if(not $num == 354){
+ 		croak "Data failed: $num $txt\n";
+ 	}
++	# We try to send data as well, if we have additional parameters,
++	# since Net::SMTP does this.
++	if (scalar(@_)) {
++		$me->datasend(@_);
++		$me->dataend();
++	}
++	return 1;
+ }
+ 
+ # send stuff over raw (for use as message body)
+@@ -325,6 +346,8 @@
+ 
+ 	return 0 unless defined(fileno($cmd->{sock}));
+ 
++	print STDERR "Transmitting data...\n" if $cmd->{Debug};
++
+ 	my $last_ch = $cmd->{last_ch};
+ 	$last_ch = $cmd->{last_ch} = "\012" unless defined $last_ch;
+ 
+@@ -367,6 +390,7 @@
+ 				return undef;
+ 			}
+ 			$len -= $w;
++			$offset += $w;
+ 		}
+ 		else
+ 		{
+@@ -374,6 +398,7 @@
+ 			return undef;
+ 		}
+ 	}
++	return 1;
+ 
+ }
+ 
+@@ -381,11 +406,13 @@
+ # but a period on it.
+ sub dataend {
+ 	my $me = shift;
++	print STDERR "Concluding data...\n" if $me->{Debug};
+ 	$me->_command("\015\012.");
+ 	my ($num,$txt) = $me->_response();
+ 	if(not $num == 250){
+ 		croak "Couldn't send mail: $num $txt\n";
+ 	}
++	return 1;
+ }
+ 
+ # politely disconnect from the SMTP server.
+@@ -396,6 +423,7 @@
+ 	if(not $num == 221){
+ 		croak "An error occurred disconnecting from the mail server: $num $txt\n";
+ 	}
++	return 1;
+ }
+ 
+ 1;
