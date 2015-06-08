@@ -1,0 +1,17 @@
+pkgbase = kde-thumbnailer-gimpresources
+	pkgdesc = Plugin for KDE to display GIMP resource files like brushes and patterns as thumbnails.
+	pkgver = 2.1.2
+	pkgrel = 2
+	url = http://kde-apps.org/content/show.php/GimpResourcesThumbnailer?content=107128
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = automoc4
+	makedepends = cmake
+	depends = kdelibs
+	depends = gimp
+	source = kde-thumbnailer-gimpresources-2.1.2.tar.gz::https://github.com/aclemens/GimpResourcesThumbnailer/archive/2.1.2.tar.gz
+	sha256sums = a8e964e74a4be92070a9817247d5e7dc12ef4add0fc8165cffbc1d24b5e8ac51
+
+pkgname = kde-thumbnailer-gimpresources
+
