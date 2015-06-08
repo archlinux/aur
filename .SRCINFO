@@ -1,0 +1,35 @@
+pkgbase = okular-frameworks-git
+	pkgdesc = Universal document viewer
+	pkgver = r7036.dcf4d93
+	pkgrel = 1
+	url = http://kde.org/applications/graphics/okular/
+	install = okular-frameworks-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	makedepends = git
+	makedepends = python
+	makedepends = ebook-tools
+	makedepends = qca-qt5
+	depends = kpty
+	depends = kdelibs4support
+	depends = threadweaver
+	depends = kactivities-frameworks
+	depends = khtml
+	depends = chmlib
+	depends = djvulibre
+	depends = libspectre
+	depends = poppler-qt5
+	depends = libkscreen
+	optdepends = ebook-tools: mobi and epub support
+	optdepends = qca-qt5: support for encrypted ODF documents
+	provides = okular
+	conflicts = kdegraphics-okular
+	conflicts = okular
+	source = git://anongit.kde.org/okular.git#branch=frameworks
+	sha256sums = SKIP
+
+pkgname = okular-frameworks-git
+
