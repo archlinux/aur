@@ -1,0 +1,22 @@
+pkgbase = kiconthemes-git
+	pkgdesc = KIconThemes
+	pkgver = r80.52fe08d
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/kiconthemes
+	arch = i686
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	makedepends = python
+	depends = qt5-svg
+	depends = kconfigwidgets-git
+	depends = kitemviews-git
+	provides = kiconthemes
+	conflicts = kiconthemes
+	source = git://anongit.kde.org/kiconthemes.git
+	md5sums = SKIP
+
+pkgname = kiconthemes-git
+
