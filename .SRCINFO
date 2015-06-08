@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-tinyxml2
+	pkgdesc = Simple, small, C++ XML parser that can be easily integrated into other programs (mingw-w64)
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/leethomason/tinyxml2
+	arch = any
+	license = zlib
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = https://github.com/leethomason/tinyxml2/archive/2.2.0.tar.gz
+	md5sums = 3c7a9191c8f26e4f056a89902ac848b1
+
+pkgname = mingw-w64-tinyxml2
+
