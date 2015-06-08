@@ -1,0 +1,16 @@
+pkgbase = hawaii-widget-styles
+	pkgdesc = Hawaii widget styles
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://www.maui-project.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = qtchooser
+	depends = qt5-quickcontrols
+	source = http://sourceforge.net/projects/mauios/files/hawaii/hawaii-widget-styles/hawaii-widget-styles-0.2.0.tar.gz
+	md5sums = fbbfe25fd6f22829ede9cbc79a2ea781
+
+pkgname = hawaii-widget-styles
+
