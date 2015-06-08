@@ -1,0 +1,19 @@
+post_install() {
+	echo "------------------------------------------------------------"
+	echo "> Place your favourite grml iso image(s) in /boot/grml/    <"
+	echo "> To have them added to grub automatically, run            <"
+	echo ">   grub-mkconfig -o /boot/grub/grub.cfg                   <"
+	echo "------------------------------------------------------------"
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	echo "------------------------------------------------------------"
+	echo "> You may want to remove your grml images in /boot/grml/   <"
+	echo "> and regenerate your grub config by running               <"
+	echo ">   grub-mkconfig -o /boot/grub/grub.cfg                   <"
+	echo "------------------------------------------------------------"
+}
