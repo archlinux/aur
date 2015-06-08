@@ -1,0 +1,14 @@
+pkgbase = nodejs-aur
+	pkgdesc = Archlinux AUR cli
+	pkgver = 0.1.2
+	pkgrel = 2
+	url = https://github.com/Filirom1/nodejs-aur
+	arch = any
+	license = MIT
+	depends = nodejs
+	noextract = aur-0.1.2.tgz
+	source = http://registry.npmjs.org/aur/-/aur-0.1.2.tgz
+	sha1sums = 7bbe7ce1c7be3ef86e88869833466541d2901b05
+
+pkgname = nodejs-aur
+
