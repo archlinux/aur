@@ -1,0 +1,19 @@
+pkgbase = eclipse-rse
+	pkgdesc = Manage remote projects in Eclipse
+	pkgver = 3.5
+	pkgrel = 3
+	url = http://www.eclipse.org/dsdp/tm/
+	arch = i686
+	arch = x86_64
+	license = EPL
+	depends = eclipse>=3.4
+	optdepends = openssh
+	source = http://www.eclipse.org/downloads/download.php?r=1&file=/tm/downloads/drops/R-3.5GA-201305311734/RSE-runtime-3.5-GA.zip
+	source = http://www.eclipse.org/downloads/download.php?r=1&file=/tm/downloads/drops/R-3.5GA-201305311734/RSE-useractions-3.5-GA.zip
+	source = http://www.eclipse.org/downloads/download.php?r=1&file=/tm/downloads/drops/R-3.5GA-201305311734/TM-terminal-3.5-GA.zip
+	md5sums = 9d99c20b3521b9ee234f0d7853a11f7b
+	md5sums = eb445e154c589fdc1ec8a4a9cdb5538f
+	md5sums = 1a30d8fb8e38dd9f71ba57e58e50ce7e
+
+pkgname = eclipse-rse
+
