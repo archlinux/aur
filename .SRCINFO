@@ -1,0 +1,20 @@
+pkgbase = ruby-capifony
+	pkgdesc = Deploying symfony and Symfony2 Applications with Capistrano
+	pkgver = 2.8.3
+	pkgrel = 1
+	url = http://capifony.org/
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = rubygems
+	depends = ruby-capistrano-2>=2.13.5
+	depends = ruby-capistrano-maintenance=0.0.3
+	depends = ruby-colored>=1.2
+	depends = ruby-inifile>=2.0.2,
+	depends = ruby-progressbar=1.4.1
+	noextract = capifony-2.8.3.gem
+	source = http://rubygems.org/downloads/capifony-2.8.3.gem
+	sha1sums = 6eaa9867e44ef7c0df3e3a4052e2dd443c633830
+
+pkgname = ruby-capifony
+
