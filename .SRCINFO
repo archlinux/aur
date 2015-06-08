@@ -1,0 +1,29 @@
+pkgbase = jinkell-git
+	pkgdesc = jing.fm CLI client
+	pkgver = 20140720
+	pkgrel = 1
+	url = https://github.com/rnons/jinkell
+	arch = i686
+	arch = x86_64
+	license = Unkown
+	makedepends = ghc
+	makedepends = haskell-http
+	makedepends = haskell-configurator>=0.2
+	makedepends = haskell-directory>=1.1.0.0
+	makedepends = haskell-haskeline>=0.7
+	makedepends = haskell-jinglib-git
+	makedepends = haskell-lifted-base
+	makedepends = haskell-mtl
+	makedepends = haskell-process
+	makedepends = haskell-text>=0.11.0.5
+	makedepends = haskell-transformers
+	makedepends = haskell-utf8-string>=0.3
+	depends = gmp
+	depends = mplayer
+	provides = jinkell
+	options = strip
+	source = jinkell::git://github.com/rnons/jinkell.git
+	md5sums = SKIP
+
+pkgname = jinkell-git
+
