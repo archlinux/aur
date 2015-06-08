@@ -1,0 +1,17 @@
+pkgbase = otf-asana-math
+	pkgdesc = A font to typeset maths in Xe(La)TeX and Lua(La)TeX by Apostolos Syropoulos
+	pkgver = 000.955
+	pkgrel = 1
+	url = http://www.ctan.org/pkg/asana-math
+	install = otf-asana-math.install
+	arch = any
+	license = Custom: OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = ftp://ftp.rrzn.uni-hannover.de/pub/mirror/tex-archive/fonts/Asana-Math/Asana-Math.otf
+	source = http://scripts.sil.org/cms/scripts/render_download.php?&format=file&media_id=OFL_plaintext&filename=OFL.txt
+	md5sums = 211fab1e4aab4e3464cc99cefc1e80ce
+	md5sums = 6ed93967ff0dc6dd9c8d31c17f817a06
+
+pkgname = otf-asana-math
+
