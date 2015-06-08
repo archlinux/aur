@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=5.5
+Name=DRAWxtl
+Type=Application
+Terminal=false
+GenericName=Crystal structure visualization tool
+Comment=Display crystal structures
+Exec=drawxtl
+Icon=drawxtl
+Categories=Science
+MimeType=chemical/x-cif;chemical/x-shelx;
