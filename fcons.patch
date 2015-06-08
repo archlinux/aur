@@ -1,0 +1,31 @@
+diff -Naur librep_0.92.5.orig/src/repint.h librep_0.92.5.new/src/repint.h
+--- librep_0.92.5.orig/src/repint.h	2015-06-02 22:44:39.565894699 +0200
++++ librep_0.92.5.new/src/repint.h	2015-06-02 22:46:39.865254294 +0200
+@@ -240,27 +240,6 @@
+ 
+ #include "repint_subrs.h"
+ 
+-/* If using GCC, make inline_Fcons be Fcons that only takes a procedure
+-   call when the heap needs to grow. */
+-
+-#if defined __GNUC__ && defined __OPTIMIZE__
+-extern __inline__ repv inline_Fcons (repv x, repv y);
+-extern __inline__ repv
+-inline_Fcons (repv x, repv y)
+-{
+-    rep_cons *c = rep_cons_freelist;
+-    if (c == 0)
+-	c = rep_allocate_cons ();
+-    rep_cons_freelist = rep_CONS (c->cdr);
+-    rep_used_cons++;
+-    rep_data_after_gc += sizeof(rep_cons);
+-
+-    c->car = (x);
+-    c->cdr = (y);
+-    return rep_CONS_VAL (c);
+-}
+-#else
+ # define inline_Fcons Fcons
+-#endif
+ 
+ #endif /* REPINT_H */
