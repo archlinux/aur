@@ -1,0 +1,13 @@
+post_install () {
+  post_upgrade
+}
+
+post_upgrade () {
+  # Create new database
+  echo "You must have a keypair:
+    /usr/bin/gpg --gen-key"
+  echo
+  echo "To create a new password database run:
+    /usr/bin/create-cpmdb"
+  echo
+}

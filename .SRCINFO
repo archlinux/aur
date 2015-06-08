@@ -1,0 +1,21 @@
+pkgbase = cpm-git
+	pkgdesc = Curses based password manager using PGP-encryption
+	pkgver = 0.32.r0.ge90c7f0
+	pkgrel = 1
+	url = http://github.com/comotion/cpm
+	install = cpm-git.install
+	arch = i686
+	arch = x86_64
+	license = GNU2
+	makedepends = git
+	makedepends = libcdk>=5.0
+	makedepends = txt2man
+	depends = gpgme
+	depends = libxml2>=2.6.16
+	depends = cracklib
+	provides = cpm
+	source = cpm-git::git://github.com/comotion/cpm.git
+	sha512sums = SKIP
+
+pkgname = cpm-git
+
