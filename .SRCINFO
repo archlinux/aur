@@ -1,0 +1,16 @@
+pkgbase = grub2-theme-manjaro-redefined
+	pkgdesc = Manjaro Redefined GRUB2 theme.
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://kde-look.org/content/show.php?content=166302
+	install = grub2-theme-manjaro-redefined.install
+	arch = any
+	license = GPL
+	depends = grub
+	source = http://switch.dl.sourceforge.net/project/manjaroredefined/Manjaro-Redefined-Grub-1.0.tar.gz
+	source = grub2-theme-manjaro-redefined.install
+	md5sums = SKIP
+	md5sums = e0683af9130adcc56d1ab9a28db1ff4a
+
+pkgname = grub2-theme-manjaro-redefined
+
