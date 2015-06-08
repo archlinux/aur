@@ -1,0 +1,26 @@
+pkgbase = kget-frameworks-git
+	pkgdesc = KDE Download Manager
+	pkgver = r2717.db16a8b
+	pkgrel = 1
+	url = https://www.kde.org/applications/internet/kget/
+	install = kget-frameworks-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = kdoctools
+	makedepends = python
+	depends = kdelibs4support
+	depends = kcmutils
+	depends = knotifyconfig
+	depends = qca-qt5
+	depends = gpgmepp-git
+	provides = kget
+	conflicts = kdenetwork-kget
+	conflicts = kget
+	source = git://anongit.kde.org/kget.git#branch=kf5_port
+	sha256sums = SKIP
+
+pkgname = kget-frameworks-git
+
