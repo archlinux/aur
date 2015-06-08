@@ -7,20 +7,12 @@ pkgbase = python-orange
 	arch = x86_64
 	license = GPL3
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	optdepends = python-pyqt4: GUI support
-	source = https://github.com/biolab/orange3/archive/3.1.tar.gz
-	source = http://orange.biolab.si/download/files/archive/Orange-2.7.2.tar.gz
-	md5sums = bb6011d0db23f3ba2720431342614a65
-	md5sums = SKIP
-
-pkgname = python-orange
 	depends = python-matplotlib
 	depends = python-scikit-learn
 	depends = python-pyqt4
+	optdepends = python-pyqt4: GUI support
+	source = https://github.com/biolab/orange3/archive/3.1.tar.gz
+	md5sums = bb6011d0db23f3ba2720431342614a65
 
-pkgname = python2-orange
-	depends = python2-matplotlib
-	depends = python2-scikit-learn
-	depends = python2-pyqt4
+pkgname = python-orange
 
