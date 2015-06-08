@@ -1,0 +1,25 @@
+info_dir=/usr/share/info
+info_files=(gnupg.info gnupg.info-1 gnupg.info-2)
+
+post_install() {
+	[ -x usr/bin/install-info ] || return 0
+	for f in ${info_files[@]}; do
+		usr/bin/install-info ${info_dir}/$f ${info_dir}/dir 2> /dev/null
+	done
+}
+
+pre_remove() {
+	[ -x usr/bin/install-info ] || return 0
+	for f in ${info_files[@]}; do
+		usr/bin/install-info --delete ${info_dir}/$f ${info_dir}/dir 2> /dev/null
+	done
+}
+
+post_upgrade() {
+	post_install
+
+	# Fix upgrade to 2.1; see FS#42798
+	[ $(vercmp $2 2.1.0-4) = -1 ] &&
+	dirmngr </dev/null &>/dev/null ||
+	return 0
+}
