@@ -1,0 +1,13 @@
+Only in new: build
+diff -ur old/graphite_influxdb.py new/graphite_influxdb.py
+--- old/graphite_influxdb.py	2014-09-17 05:54:38.000000000 +1000
++++ new/graphite_influxdb.py	2015-06-02 19:48:39.729199677 +1000
+@@ -32,7 +32,7 @@
+ # uncomment following to enable debugging logger
+ #    log.infoLogger.setLevel(logging.DEBUG)
+ 
+-from influxdb import InfluxDBClient
++from influxdb.influxdb08 import InfluxDBClient
+ 
+ # uncomment the following block if you suspect that logger output is often not visible for some reason, but printing works, when you ctrl-c gunicorn at least (this is still a mystery to me)
+ 

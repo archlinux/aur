@@ -1,0 +1,20 @@
+pkgbase = graphite-influxdb
+	pkgdesc = An influxdb (0.8-rc5 or higher) backend for Graphite-web (source or 0.10.x) or graphite-api.
+	pkgver = 0.4
+	pkgrel = 2
+	url = https://github.com/vimeo/graphite-influxdb
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = python-influxdb
+	optdepends = graphite-web
+	optdepends = graphite-api
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/g/graphite-influxdb/graphite-influxdb-0.4.tar.gz
+	source = influxdb08.patch
+	sha256sums = d8ee54b2645b8022d0bf1ce939502bc049827bd71220822c1230ecbd8ed07b32
+	sha256sums = 6e0fcf4f084d8022461f83df35ee79949ebf34b11736d841e4d91f57e1b228e3
+
+pkgname = graphite-influxdb
+
