@@ -1,0 +1,4 @@
+post_install() {
+  echo "==> Don't forget that you need a notification server for this."
+  echo "    You can configure notifications by editing /etc/systemd-denotify.conf"
+}
