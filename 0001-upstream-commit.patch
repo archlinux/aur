@@ -1,0 +1,301 @@
+From 657a5fbc0d0aff309079ff8fb386f17e964963c2 Mon Sep 17 00:00:00 2001
+From: "deraadt@openbsd.org" <deraadt@openbsd.org>
+Date: Fri, 24 Apr 2015 01:36:00 +0000
+Subject: [PATCH] upstream commit
+
+rename xrealloc() to xreallocarray() since it follows
+ that form. ok djm
+---
+ channels.c    | 14 +++++++-------
+ misc.c        |  4 ++--
+ mux.c         |  4 ++--
+ readconf.c    |  6 +++---
+ scp.c         |  4 ++--
+ servconf.c    |  4 ++--
+ session.c     |  8 ++++----
+ sftp-client.c |  4 ++--
+ sftp-server.c |  6 +++---
+ ssh-agent.c   |  4 ++--
+ ssh-keygen.c  |  4 ++--
+ ssh-pkcs11.c  |  4 ++--
+ xmalloc.c     | 18 +++++-------------
+ xmalloc.h     |  4 ++--
+ 14 files changed, 40 insertions(+), 48 deletions(-)
+
+diff --git a/channels.c b/channels.c
+index 9486c1c..f72b8cc 100644
+--- a/channels.c
++++ b/channels.c
+@@ -306,7 +306,7 @@ channel_new(char *ctype, int type, int rfd, int wfd, int efd,
+ 		if (channels_alloc > 10000)
+ 			fatal("channel_new: internal error: channels_alloc %d "
+ 			    "too big.", channels_alloc);
+-		channels = xrealloc(channels, channels_alloc + 10,
++		channels = xreallocarray(channels, channels_alloc + 10,
+ 		    sizeof(Channel *));
+ 		channels_alloc += 10;
+ 		debug2("channel: expanding %d", channels_alloc);
+@@ -2192,8 +2192,8 @@ channel_prepare_select(fd_set **readsetp, fd_set **writesetp, int *maxfdp,
+ 
+ 	/* perhaps check sz < nalloc/2 and shrink? */
+ 	if (*readsetp == NULL || sz > *nallocp) {
+-		*readsetp = xrealloc(*readsetp, nfdset, sizeof(fd_mask));
+-		*writesetp = xrealloc(*writesetp, nfdset, sizeof(fd_mask));
++		*readsetp = xreallocarray(*readsetp, nfdset, sizeof(fd_mask));
++		*writesetp = xreallocarray(*writesetp, nfdset, sizeof(fd_mask));
+ 		*nallocp = sz;
+ 	}
+ 	*maxfdp = n;
+@@ -3237,7 +3237,7 @@ channel_request_remote_forwarding(struct Forward *fwd)
+ 	}
+ 	if (success) {
+ 		/* Record that connection to this host/port is permitted. */
+-		permitted_opens = xrealloc(permitted_opens,
++		permitted_opens = xreallocarray(permitted_opens,
+ 		    num_permitted_opens + 1, sizeof(*permitted_opens));
+ 		idx = num_permitted_opens++;
+ 		if (fwd->connect_path != NULL) {
+@@ -3468,7 +3468,7 @@ channel_add_permitted_opens(char *host, int port)
+ {
+ 	debug("allow port forwarding to host %s port %d", host, port);
+ 
+-	permitted_opens = xrealloc(permitted_opens,
++	permitted_opens = xreallocarray(permitted_opens,
+ 	    num_permitted_opens + 1, sizeof(*permitted_opens));
+ 	permitted_opens[num_permitted_opens].host_to_connect = xstrdup(host);
+ 	permitted_opens[num_permitted_opens].port_to_connect = port;
+@@ -3518,7 +3518,7 @@ channel_add_adm_permitted_opens(char *host, int port)
+ {
+ 	debug("config allows port forwarding to host %s port %d", host, port);
+ 
+-	permitted_adm_opens = xrealloc(permitted_adm_opens,
++	permitted_adm_opens = xreallocarray(permitted_adm_opens,
+ 	    num_adm_permitted_opens + 1, sizeof(*permitted_adm_opens));
+ 	permitted_adm_opens[num_adm_permitted_opens].host_to_connect
+ 	     = xstrdup(host);
+diff --git a/misc.c b/misc.c
+index 38af3df..ddd2b2d 100644
+--- a/misc.c
++++ b/misc.c
+@@ -472,7 +472,7 @@ addargs(arglist *args, char *fmt, ...)
+ 	} else if (args->num+2 >= nalloc)
+ 		nalloc *= 2;
+ 
+-	args->list = xrealloc(args->list, nalloc, sizeof(char *));
++	args->list = xreallocarray(args->list, nalloc, sizeof(char *));
+ 	args->nalloc = nalloc;
+ 	args->list[args->num++] = cp;
+ 	args->list[args->num] = NULL;
+diff --git a/mux.c b/mux.c
+index f3faaee..f05f90c 100644
+--- a/mux.c
++++ b/mux.c
+@@ -350,7 +350,7 @@ process_mux_new_session(u_int rid, Channel *c, Buffer *m, Buffer *r)
+ 			free(cp);
+ 			continue;
+ 		}
+-		cctx->env = xrealloc(cctx->env, env_len + 2,
++		cctx->env = xreallocarray(cctx->env, env_len + 2,
+ 		    sizeof(*cctx->env));
+ 		cctx->env[env_len++] = cp;
+ 		cctx->env[env_len] = NULL;
+diff --git a/readconf.c b/readconf.c
+index 9e15f27..66090e3 100644
+--- a/readconf.c
++++ b/readconf.c
+@@ -295,7 +295,7 @@ add_local_forward(Options *options, const struct Forward *newfwd)
+ 	    newfwd->listen_path == NULL)
+ 		fatal("Privileged ports can only be forwarded by root.");
+ #endif
+-	options->local_forwards = xrealloc(options->local_forwards,
++	options->local_forwards = xreallocarray(options->local_forwards,
+ 	    options->num_local_forwards + 1,
+ 	    sizeof(*options->local_forwards));
+ 	fwd = &options->local_forwards[options->num_local_forwards++];
+@@ -318,7 +318,7 @@ add_remote_forward(Options *options, const struct Forward *newfwd)
+ {
+ 	struct Forward *fwd;
+ 
+-	options->remote_forwards = xrealloc(options->remote_forwards,
++	options->remote_forwards = xreallocarray(options->remote_forwards,
+ 	    options->num_remote_forwards + 1,
+ 	    sizeof(*options->remote_forwards));
+ 	fwd = &options->remote_forwards[options->num_remote_forwards++];
+diff --git a/scp.c b/scp.c
+index 887b014..593fe89 100644
+--- a/scp.c
++++ b/scp.c
+@@ -1333,7 +1333,7 @@ allocbuf(BUF *bp, int fd, int blksize)
+ 	if (bp->buf == NULL)
+ 		bp->buf = xmalloc(size);
+ 	else
+-		bp->buf = xrealloc(bp->buf, 1, size);
++		bp->buf = xreallocarray(bp->buf, 1, size);
+ 	memset(bp->buf, 0, size);
+ 	bp->cnt = size;
+ 	return (bp);
+diff --git a/servconf.c b/servconf.c
+index fb1d024..d4a48a0 100644
+--- a/servconf.c
++++ b/servconf.c
+@@ -1444,7 +1444,7 @@ process_server_config_line(ServerOptions *options, char *line,
+ 		len = strlen(p) + 1;
+ 		while ((arg = strdelim(&cp)) != NULL && *arg != '\0') {
+ 			len += 1 + strlen(arg);
+-			p = xrealloc(p, 1, len);
++			p = xreallocarray(p, 1, len);
+ 			strlcat(p, " ", len);
+ 			strlcat(p, arg, len);
+ 		}
+diff --git a/session.c b/session.c
+index 54bac36..5a64715 100644
+--- a/session.c
++++ b/session.c
+@@ -997,7 +997,7 @@ child_set_env(char ***envp, u_int *envsizep, const char *name,
+ 			if (envsize >= 1000)
+ 				fatal("child_set_env: too many env vars");
+ 			envsize += 50;
+-			env = (*envp) = xrealloc(env, envsize, sizeof(char *));
++			env = (*envp) = xreallocarray(env, envsize, sizeof(char *));
+ 			*envsizep = envsize;
+ 		}
+ 		/* Need to set the NULL pointer at end of array beyond the new slot. */
+@@ -1914,7 +1914,7 @@ session_new(void)
+ 			return NULL;
+ 		debug2("%s: allocate (allocated %d max %d)",
+ 		    __func__, sessions_nalloc, options.max_sessions);
+-		tmp = xrealloc(sessions, sessions_nalloc + 1,
++		tmp = xreallocarray(sessions, sessions_nalloc + 1,
+ 		    sizeof(*sessions));
+ 		if (tmp == NULL) {
+ 			error("%s: cannot allocate %d sessions",
+@@ -2241,7 +2241,7 @@ session_env_req(Session *s)
+ 	for (i = 0; i < options.num_accept_env; i++) {
+ 		if (match_pattern(name, options.accept_env[i])) {
+ 			debug2("Setting env %d: %s=%s", s->num_env, name, val);
+-			s->env = xrealloc(s->env, s->num_env + 1,
++			s->env = xreallocarray(s->env, s->num_env + 1,
+ 			    sizeof(*s->env));
+ 			s->env[s->num_env].name = name;
+ 			s->env[s->num_env].val = val;
+diff --git a/sftp-client.c b/sftp-client.c
+index 80f4805..32deaa7 100644
+--- a/sftp-client.c
++++ b/sftp-client.c
+@@ -621,7 +621,7 @@ do_lsreaddir(struct sftp_conn *conn, const char *path, int print_flag,
+ 				error("Server sent suspect path \"%s\" "
+ 				    "during readdir of \"%s\"", filename, path);
+ 			} else if (dir) {
+-				*dir = xrealloc(*dir, ents + 2, sizeof(**dir));
++				*dir = xreallocarray(*dir, ents + 2, sizeof(**dir));
+ 				(*dir)[ents] = xcalloc(1, sizeof(***dir));
+ 				(*dir)[ents]->filename = xstrdup(filename);
+ 				(*dir)[ents]->longname = xstrdup(longname);
+diff --git a/sftp-server.c b/sftp-server.c
+index 85fa5ac..d1831bf 100644
+--- a/sftp-server.c
++++ b/sftp-server.c
+@@ -309,7 +309,7 @@ handle_new(int use, const char *name, int fd, int flags, DIR *dirp)
+ 		if (num_handles + 1 <= num_handles)
+ 			return -1;
+ 		num_handles++;
+-		handles = xrealloc(handles, num_handles, sizeof(Handle));
++		handles = xreallocarray(handles, num_handles, sizeof(Handle));
+ 		handle_unused(num_handles - 1);
+ 	}
+ 
+@@ -1062,7 +1062,7 @@ process_readdir(u_int32_t id)
+ 		while ((dp = readdir(dirp)) != NULL) {
+ 			if (count >= nstats) {
+ 				nstats *= 2;
+-				stats = xrealloc(stats, nstats, sizeof(Stat));
++				stats = xreallocarray(stats, nstats, sizeof(Stat));
+ 			}
+ /* XXX OVERFLOW ? */
+ 			snprintf(pathname, sizeof pathname, "%s%s%s", path,
+diff --git a/ssh-agent.c b/ssh-agent.c
+index aeda656..2eb3322 100644
+--- a/ssh-agent.c
++++ b/ssh-agent.c
+@@ -929,7 +929,7 @@ new_socket(sock_type type, int fd)
+ 		}
+ 	old_alloc = sockets_alloc;
+ 	new_alloc = sockets_alloc + 10;
+-	sockets = xrealloc(sockets, new_alloc, sizeof(sockets[0]));
++	sockets = xreallocarray(sockets, new_alloc, sizeof(sockets[0]));
+ 	for (i = old_alloc; i < new_alloc; i++)
+ 		sockets[i].type = AUTH_UNUSED;
+ 	sockets_alloc = new_alloc;
+diff --git a/ssh-keygen.c b/ssh-keygen.c
+index d3c4122..ad9f302 100644
+--- a/ssh-keygen.c
++++ b/ssh-keygen.c
+@@ -1592,7 +1592,7 @@ do_ca_sign(struct passwd *pw, int argc, char **argv)
+ 			otmp = tmp = xstrdup(cert_principals);
+ 			plist = NULL;
+ 			for (; (cp = strsep(&tmp, ",")) != NULL; n++) {
+-				plist = xrealloc(plist, n + 1, sizeof(*plist));
++				plist = xreallocarray(plist, n + 1, sizeof(*plist));
+ 				if (*(plist[n] = xstrdup(cp)) == '\0')
+ 					fatal("Empty principal name");
+ 			}
+diff --git a/ssh-pkcs11.c b/ssh-pkcs11.c
+index c3a112f..f4971ad 100644
+--- a/ssh-pkcs11.c
++++ b/ssh-pkcs11.c
+@@ -527,7 +527,7 @@ pkcs11_fetch_keys_filter(struct pkcs11_provider *p, CK_ULONG slotidx,
+ 				sshkey_free(key);
+ 			} else {
+ 				/* expand key array and add key */
+-				*keysp = xrealloc(*keysp, *nkeys + 1,
++				*keysp = xreallocarray(*keysp, *nkeys + 1,
+ 				    sizeof(struct sshkey *));
+ 				(*keysp)[*nkeys] = key;
+ 				*nkeys = *nkeys + 1;
+diff --git a/xmalloc.c b/xmalloc.c
+index cd59dc2..98cbf87 100644
+--- a/xmalloc.c
++++ b/xmalloc.c
+@@ -56,22 +56,14 @@ xcalloc(size_t nmemb, size_t size)
+ }
+ 
+ void *
+-xrealloc(void *ptr, size_t nmemb, size_t size)
++xreallocarray(void *ptr, size_t nmemb, size_t size)
+ {
+ 	void *new_ptr;
+-	size_t new_size = nmemb * size;
+ 
+-	if (new_size == 0)
+-		fatal("xrealloc: zero size");
+-	if (SIZE_MAX / nmemb < size)
+-		fatal("xrealloc: nmemb * size > SIZE_MAX");
+-	if (ptr == NULL)
+-		new_ptr = malloc(new_size);
+-	else
+-		new_ptr = realloc(ptr, new_size);
++	new_ptr = reallocarray(ptr, nmemb, size);
+ 	if (new_ptr == NULL)
+-		fatal("xrealloc: out of memory (new_size %zu bytes)",
+-		    new_size);
++		fatal("xreallocarray: out of memory (%zu elements of %zu bytes)",
++		    nmemb, size);
+ 	return new_ptr;
+ }
+ 
+diff --git a/xmalloc.h b/xmalloc.h
+index 261dfd6..2bec77b 100644
+--- a/xmalloc.h
++++ b/xmalloc.h
+@@ -18,7 +18,7 @@
+ 
+ void	*xmalloc(size_t);
+ void	*xcalloc(size_t, size_t);
+-void	*xrealloc(void *, size_t, size_t);
++void	*xreallocarray(void *, size_t, size_t);
+ char	*xstrdup(const char *);
+ int	 xasprintf(char **, const char *, ...)
+                 __attribute__((__format__ (printf, 2, 3)))
+-- 
+2.4.1
+

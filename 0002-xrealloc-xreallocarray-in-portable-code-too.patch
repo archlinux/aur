@@ -1,0 +1,57 @@
+From d1680d36e17244d9af3843aeb5025cb8e40d6c07 Mon Sep 17 00:00:00 2001
+From: Darren Tucker <dtucker@zip.com.au>
+Date: Thu, 30 Apr 2015 09:18:11 +1000
+Subject: [PATCH] xrealloc -> xreallocarray in portable code too.
+
+---
+ auth-pam.c | 4 ++--
+ uidswap.c  | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/auth-pam.c b/auth-pam.c
+index d789bad..d94c828 100644
+--- a/auth-pam.c
++++ b/auth-pam.c
+@@ -738,7 +738,7 @@ sshpam_query(void *ctx, char **name, char **info,
+ 		case PAM_PROMPT_ECHO_OFF:
+ 			*num = 1;
+ 			len = plen + mlen + 1;
+-			**prompts = xrealloc(**prompts, 1, len);
++			**prompts = xreallocarray(**prompts, 1, len);
+ 			strlcpy(**prompts + plen, msg, len - plen);
+ 			plen += mlen;
+ 			**echo_on = (type == PAM_PROMPT_ECHO_ON);
+@@ -748,7 +748,7 @@ sshpam_query(void *ctx, char **name, char **info,
+ 		case PAM_TEXT_INFO:
+ 			/* accumulate messages */
+ 			len = plen + mlen + 2;
+-			**prompts = xrealloc(**prompts, 1, len);
++			**prompts = xreallocarray(**prompts, 1, len);
+ 			strlcpy(**prompts + plen, msg, len - plen);
+ 			plen += mlen;
+ 			strlcat(**prompts + plen, "\n", len - plen);
+diff --git a/uidswap.c b/uidswap.c
+index c339283..f2713fd 100644
+--- a/uidswap.c
++++ b/uidswap.c
+@@ -86,7 +86,7 @@ temporarily_use_uid(struct passwd *pw)
+ 	if (saved_egroupslen < 0)
+ 		fatal("getgroups: %.100s", strerror(errno));
+ 	if (saved_egroupslen > 0) {
+-		saved_egroups = xrealloc(saved_egroups,
++		saved_egroups = xreallocarray(saved_egroups,
+ 		    saved_egroupslen, sizeof(gid_t));
+ 		if (getgroups(saved_egroupslen, saved_egroups) < 0)
+ 			fatal("getgroups: %.100s", strerror(errno));
+@@ -104,7 +104,7 @@ temporarily_use_uid(struct passwd *pw)
+ 		if (user_groupslen < 0)
+ 			fatal("getgroups: %.100s", strerror(errno));
+ 		if (user_groupslen > 0) {
+-			user_groups = xrealloc(user_groups,
++			user_groups = xreallocarray(user_groups,
+ 			    user_groupslen, sizeof(gid_t));
+ 			if (getgroups(user_groupslen, user_groups) < 0)
+ 				fatal("getgroups: %.100s", strerror(errno));
+-- 
+2.4.1
+
