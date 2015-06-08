@@ -1,0 +1,35 @@
+pkgbase = digikam-frameworks-git
+	pkgdesc = Digital photo management application for KDE. KF5 Frameworks branch (GIT Version)
+	pkgver = 5.0.0.r32077.929ac0f
+	pkgrel = 1
+	url = http://www.digikam.org/
+	install = digikam-frameworks-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = eigen
+	makedepends = doxygen
+	makedepends = python
+	makedepends = boost
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	makedepends = git
+	depends = knotifyconfig
+	depends = kfilemetadata
+	depends = libkdcraw-frameworks-git
+	depends = libkexiv2-frameworks-git
+	depends = libkipi-frameworks-git
+	depends = libkface-frameworks-git
+	depends = libkgeomap-frameworks-git
+	depends = libpgf
+	depends = libgphoto2
+	depends = liblqr
+	depends = lensfun
+	optdepends = kipi-plugins-frameworks-git: for more tools and plugins
+	provides = digikam
+	conflicts = digikam
+	source = git://anongit.kde.org/digikam.git#branch=frameworks
+	sha1sums = SKIP
+
+pkgname = digikam-frameworks-git
+

@@ -1,0 +1,5 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!digikam-frameworks-git.install
