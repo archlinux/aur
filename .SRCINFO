@@ -1,0 +1,44 @@
+pkgbase = epiphany-git
+	pkgdesc = A GNOME web browser based on the WebKit rendering engine.
+	pkgver = 3.16.1.6.ga966acc
+	pkgrel = 1
+	url = http://www.gnome.org/projects/epiphany/
+	install = epiphany.install
+	arch = i686
+	arch = x86_64
+	groups = gnome
+	license = GPL
+	makedepends = intltool
+	makedepends = gnome-doc-utils
+	makedepends = gnome-common
+	makedepends = git
+	makedepends = startup-notification
+	makedepends = yelp-tools
+	depends = glib2
+	depends = gtk3>=3.13.0
+	depends = libsoup>=2.48.0
+	depends = libnotify
+	depends = gsettings-desktop-schemas
+	depends = webkit2gtk>=2.7.4
+	depends = nss
+	depends = iso-codes
+	depends = dconf
+	depends = gobject-introspection
+	depends = desktop-file-utils
+	depends = libxml2
+	depends = libsecret
+	depends = hicolor-icon-theme
+	depends = gcr
+	depends = gnome-desktop
+	depends = libwnck3
+	depends = avahi
+	provides = epiphany=3.16.1
+	conflicts = epiphany
+	replaces = epiphany
+	options = !libtool
+	options = !emptydirs
+	source = git://git.gnome.org/epiphany
+	sha256sums = SKIP
+
+pkgname = epiphany-git
+
