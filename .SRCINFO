@@ -1,0 +1,21 @@
+pkgbase = package-query
+	pkgdesc = Query ALPM and AUR
+	pkgver = 1.5
+	pkgrel = 2
+	url = https://github.com/archlinuxfr/package-query/
+	arch = i686
+	arch = x86_64
+	arch = mips64el
+	arch = armv6h
+	arch = armv7h
+	arch = arm
+	license = GPL
+	depends = pacman>=4.1
+	depends = pacman<4.3
+	depends = curl
+	depends = yajl>=2.0
+	source = http://mir.archlinux.fr/~tuxce/releases/package-query/package-query-1.5.tar.gz
+	md5sums = 3ad043d6aa87c497a1e6f0a5d2543e33
+
+pkgname = package-query
+
