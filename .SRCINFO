@@ -1,0 +1,81 @@
+pkgbase = kde-baseapps-git
+	pkgdesc = Collection of applications used for file and Internet browsing.
+	pkgver = r19777.e511533
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/applications/kde-baseapps
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = kdoctools
+	makedepends = kdesu
+	makedepends = kdelibs4support
+	makedepends = kactivities-frameworks
+	makedepends = knewstuff
+	makedepends = python
+	makedepends = khtml
+	makedepends = kded
+	makedepends = tidyhtml
+	source = git://anongit.kde.org/kde-baseapps#branch=frameworks
+	md5sums = SKIP
+
+pkgname = konqueror-frameworks-git
+	pkgdesc = KDE File Manager & Web Browser
+	url = http://kde.org/applications/system/konqueror/
+	install = kde-baseapps-git.install
+	depends = keditbookmarks-frameworks-git
+	depends = dolphin-git
+	depends = kded
+	provides = konqueror
+	conflicts = kdebase-konqueror
+	conflicts = konqueror
+
+pkgname = kdepasswd-frameworks-git
+	pkgdesc = Change Password
+	depends = kwidgetsaddons
+	depends = kdesu
+	provides = kdepasswd
+	conflicts = kdebase-kdepasswd
+	conflicts = kdepasswd
+
+pkgname = kdialog-frameworks-git
+	pkgdesc = A utility for displaying dialog boxes from shell scripts
+	depends = kdelibs4support
+	provides = kdialog
+	conflicts = kdebase-kdialog
+	conflicts = kdialog
+
+pkgname = kfind-frameworks-git
+	pkgdesc = Find Files/Folders
+	url = http://kde.org/applications/utilities/kfind/
+	install = kde-baseapps-git.install
+	depends = libkonq-frameworks-git
+	provides = kfind
+	conflicts = kdebase-kfind
+	conflicts = kfind
+
+pkgname = keditbookmarks-frameworks-git
+	pkgdesc = Bookmark organizer and editor
+	url = http://www.kde.org/
+	install = kde-baseapps-git.install
+	depends = libkonq-frameworks-git
+	provides = keditbookmarks
+	conflicts = kdebase-keditbookmarks
+	conflicts = keditbookmarks
+
+pkgname = libkonq-frameworks-git
+	pkgdesc = KDE libraries for the basic desktop applications
+	depends = kdelibs4support
+	conflicts = kdebase-lib
+
+pkgname = konq-plugins-frameworks-git
+	pkgdesc = Extra plugins for Konqueror
+	install = kde-baseapps-git.install
+	depends = kdelibs4support
+	depends = khtml
+	depends = tidyhtml
+	provides = konq-plugins
+	conflicts = kdebase-konq-plugins
+	conflicts = konq-plugins
+
