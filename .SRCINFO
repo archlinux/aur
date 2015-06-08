@@ -1,0 +1,15 @@
+pkgbase = imgur
+	pkgdesc = Upload image to imgur.com image sharing service.
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://imgur.com/apps
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = curl
+	depends = bash
+	source = http://imgur.com/tools/imgurbash.sh
+	md5sums = c5fd5a619959b4e31ba815c8a772f8bb
+
+pkgname = imgur
+
