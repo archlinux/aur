@@ -1,0 +1,13 @@
+pkgbase = firefox-extension-tab-scope
+	pkgdesc = Preview and navigate tab contents through popup
+	pkgver = 1.6.1
+	pkgrel = 2
+	url = https://addons.mozilla.org/en-US/firefox/addon/tab-scope/?src=search
+	arch = any
+	license = MPL
+	depends = firefox
+	source = https://addons.mozilla.org/firefox/downloads/latest/4882/addon-4882-latest.xpi
+	md5sums = d2f0a4ef3013451b0debf59712418f3b
+
+pkgname = firefox-extension-tab-scope
+
