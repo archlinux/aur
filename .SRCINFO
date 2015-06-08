@@ -1,0 +1,16 @@
+pkgbase = profile-cleaner
+	pkgdesc = Reduces profile size by cleaning their sqlite databases.
+	pkgver = 2.34
+	pkgrel = 1
+	url = https://github.com/graysky2/profile-cleaner
+	install = readme.install
+	arch = any
+	license = MIT
+	depends = bc
+	depends = parallel
+	depends = sqlite
+	source = http://repo-ck.com/source/profile-cleaner/profile-cleaner-2.34.tar.xz
+	sha256sums = 840001094760e69c891f2ccc82605b8caca4e637e794552149b25930c64de42d
+
+pkgname = profile-cleaner
+
