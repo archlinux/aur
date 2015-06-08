@@ -1,0 +1,17 @@
+pkgbase = vitamtpmod-git
+	pkgdesc = Library to interact with Vita's USB MTP protocol (fork) (GIT version
+	pkgver = v2.5.6.6.ge98d0ec
+	pkgrel = 1
+	url = https://github.com/codestation/VitaMTP
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libusb
+	depends = libxml2
+	provides = vitamtpmod
+	conflicts = vitamtpmod
+	source = vitamtp::git+https://github.com/codestation/VitaMTP.git
+	sha1sums = SKIP
+
+pkgname = vitamtpmod-git
+
