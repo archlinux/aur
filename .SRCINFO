@@ -1,0 +1,15 @@
+pkgbase = python2-pylru-git
+	pkgdesc = A least recently used (LRU) cache for Python.
+	pkgver = r62.eca0254
+	pkgrel = 1
+	url = https://github.com/jlhutch/pylru
+	arch = any
+	license = GPL
+	depends = python2
+	provides = python2-pylru
+	conflicts = python2-pylru
+	source = git+https://github.com/jlhutch/pylru.git
+	md5sums = SKIP
+
+pkgname = python2-pylru-git
+
