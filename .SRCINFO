@@ -1,0 +1,25 @@
+pkgbase = mysql-connector-net
+	pkgdesc = A MySQL database connector for .NET Framework 4.5
+	pkgver = 6.8.3
+	pkgrel = 1
+	url = http://dev.mysql.com/downloads/connector/net/
+	install = mysql-connector-net.install
+	arch = any
+	license = GPL
+	depends = mono
+	depends = mysql-clients
+	conflicts = mysql-connector-net-2.0
+	conflicts = mysql-connector-net-4.0
+	source = http://cdn.mysql.com/Downloads/Connector-Net/mysql-connector-net-6.8.3-noinstall.zip
+	source = MySql.Data.Entity.EF6.pc
+	source = MySql.Data.Entity.EF5.pc
+	source = MySql.Data.pc
+	source = MySql.Web.pc
+	md5sums = 75d93e8c12376fb255648d0f00ae935e
+	md5sums = bcc68388070e08719f4ede85bf52bb56
+	md5sums = a6670383e74be37e0cb695387e2f2858
+	md5sums = 0da037b9ed24ade65a91db148862a01a
+	md5sums = 6282ae4b6efa683532f1c07c7aeada0f
+
+pkgname = mysql-connector-net
+
