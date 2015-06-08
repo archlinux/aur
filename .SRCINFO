@@ -1,0 +1,16 @@
+pkgbase = lua-pc
+	pkgdesc = Lua Process Call
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = https://github.com/LuaDist/lpc
+	arch = i686
+	arch = x86_64
+	license = MIT/X11
+	depends = lua
+	source = https://github.com/LuaDist/lpc/tarball/1.0.0
+	source = lpc-lua5.2-compat.patch
+	md5sums = d25afbbb5feaf6d966306e80dfef11fd
+	md5sums = 97c3a94797b03b84c6340781b413e5be
+
+pkgname = lua-pc
+
