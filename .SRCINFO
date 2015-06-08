@@ -1,0 +1,20 @@
+pkgbase = gtk-kde4
+	pkgdesc = Allows you to change style, icons, font of GTK applications in KDE4.
+	pkgver = 0.9.5b
+	pkgrel = 2
+	url = http://kde-look.org/content/show.php?content=74689
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdebase-workspace
+	depends = gtk-engines
+	provides = gtk-qt-engine
+	source = http://kde-look.org/CONTENT/content-files/74689-gtk-kde4(src)0.9.5.tar.gz
+	source = fix-permission.patch
+	md5sums = d5998e4ccd4bd4b4d6a61e7afe8bbecb
+	md5sums = f52fa3288c728e5fad72c5d136b49bc5
+
+pkgname = gtk-kde4
+
