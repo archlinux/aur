@@ -1,0 +1,13 @@
+pkgbase = ofxstatement-austrian
+	pkgdesc = A plugin for ofxstatement to convert proprietary banking statements to OFX.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/nblock/ofxstatement-austrian
+	arch = any
+	license = GPL3
+	depends = python
+	depends = ofxstatement
+	source = https://pypi.python.org/packages/source/o/ofxstatement-austrian/ofxstatement-austrian-0.0.1.tar.gz
+
+pkgname = ofxstatement-austrian
+
