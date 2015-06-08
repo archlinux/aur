@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Technic Launcher
+GenericName=Technic Launcher
+Comment=Choose from thousands of community-made Minecraft modpacks available on the Technic Platform.
+Exec=technic-launcher
+Icon=technic-launcher
+Terminal=false
+Type=Application
+Categories=Game;AudioVideo;
