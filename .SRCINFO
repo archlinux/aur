@@ -1,0 +1,14 @@
+pkgbase = nodejs-mkdirp
+	pkgdesc = Recursively mkdir, like mkdir -p, but in node.js
+	pkgver = 0.5.0
+	pkgrel = 3
+	url = https://github.com/substack/node-mkdirp
+	arch = any
+	license = MIT
+	depends = nodejs
+	provides = nodejs-mkdirp
+	source = .AURINFO
+	md5sums = SKIP
+
+pkgname = nodejs-mkdirp
+
