@@ -1,0 +1,23 @@
+pkgbase = libksane-git
+	pkgdesc = An image scanning library
+	pkgver = r345.a37669b
+	pkgrel = 1
+	url = http://www.kde.org
+	arch = i686
+	arch = x86_64
+	groups = digikam-git
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = git
+	makedepends = automoc4
+	makedepends = cmake
+	depends = kdelibs
+	depends = sane
+	provides = libksane
+	conflicts = libksane
+	source = libksane::git+git://anongit.kde.org/libksane
+	md5sums = SKIP
+
+pkgname = libksane-git
+
