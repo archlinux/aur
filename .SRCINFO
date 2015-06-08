@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-libodbc++
+	pkgdesc = Libodbc++ is a c++ class library for accessing SQL databases. Include gentoo's fix patch for GCC 4.4. (mingw-w64)
+	pkgver = 0.2.5
+	pkgrel = 2
+	url = http://libodbcxx.sourceforge.net/
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	options = !buildflags
+	options = staticlibs
+	options = !strip
+	source = http://downloads.sourceforge.net/libodbcxx/libodbc++/libodbc++-0.2.5.tar.gz
+	source = libodbc++-1-win32.patch
+	md5sums = cadc519ef0164e92fe911ae624c985c1
+	md5sums = 541a56d18fe4b439e2d6fff81a9de3ee
+
+pkgname = mingw-w64-libodbc++
+

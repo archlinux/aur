@@ -1,0 +1,36 @@
+This file is part of MXE.
+See index.html for further information.
+
+--- libodbc++-0.2.5.orig/configure.ac	2009-08-20 23:39:08.000000000 +0200
++++ libodbc++-0.2.5/configure.ac	2010-02-04 22:40:32.000000000 +0100
+@@ -118,7 +118,7 @@
+ if test "x$iodbc_ok" != "xyes" &&
+    test "x$odbc_ok" != "xyes" 
+ then
+-	AC_MSG_ERROR([No ODBC driver manager configured. Pperhaps you need to give configure --with-odbc=/some/location?])
++	AC_MSG_WARN([No ODBC driver manager configured. Pperhaps you need to give configure --with-odbc=/some/location?])
+ fi
+ 
+ AC_ARG_WITH(odbc-version,
+--- libodbc++-0.2.5.orig/src/datastream.h	2009-01-06 12:20:05.000000000 +0100
++++ libodbc++-0.2.5/src/datastream.h	2009-10-27 23:14:22.000000000 +0100
+@@ -35,7 +35,7 @@
+ #if defined(ODBCXX_QT)
+ # include <qiodevice.h>
+ #endif
+-
++#include <stdio.h>
+ namespace odbc {
+ 
+ #if !defined(ODBCXX_QT)
+--- libodbc++-0.2.5.orig/include/odbc++/resultset.h	2009-03-07 07:41:09.000000000 +0100
++++ libodbc++-0.2.5/include/odbc++/resultset.h	2009-10-27 23:07:54.000000000 +0100
+@@ -474,7 +474,7 @@
+      * @param idx The column index, starting at 1
+      * @param val The value to set
+      */
+-	Guid ResultSet::getGuid(int idx);
++	Guid getGuid(int idx);
+ #endif
+     /** Sets the value of a column to an int
+      * @param idx The column index, starting at 1
