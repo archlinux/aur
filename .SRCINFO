@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-zimg-git
+	pkgdesc = Plugin for Vapoursynth: zimg (GIT version)
+	pkgver = 1.1.1.g4c0fbfd
+	pkgrel = 1
+	url = http://forum.doom9.org/showthread.php?t=171334
+	arch = i686
+	arch = x86_64
+	license = custom:WTFPL
+	makedepends = git
+	depends = vapoursynth
+	provides = vapoursynth-plugin-zimg
+	conflicts = vapoursynth-plugin-zimg
+	source = zimg::git+https://github.com/sekrit-twc/zimg.git
+	sha1sums = SKIP
+
+pkgname = vapoursynth-plugin-zimg-git
+
