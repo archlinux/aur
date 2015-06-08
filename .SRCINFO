@@ -1,0 +1,15 @@
+pkgbase = mkinitcpio-nbd
+	pkgdesc = mkinitcpio hook to boot from a Network Block Device (NBD)
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/mus65/mkinitcpio-nbd
+	arch = any
+	license = BSD
+	depends = mkinitcpio
+	depends = mkinitcpio-nfs-utils
+	depends = nbd
+	source = https://github.com/mus65/mkinitcpio-nbd/archive/0.4.2.tar.gz
+	md5sums = ab1bc75a2f657cf3a42255b50472e10a
+
+pkgname = mkinitcpio-nbd
+
