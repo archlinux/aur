@@ -1,0 +1,18 @@
+pkgbase = haskell-missingpy
+	pkgdesc = Haskell interface to Python
+	pkgver = 0.10.6
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/MissingPy
+	install = haskell-missingpy.install
+	arch = i686
+	arch = x86_64
+	license = custom:MIT
+	depends = ghc
+	depends = haskell-missingh>=1.0.1
+	depends = haskell-anydbm>=1.0.5
+	options = strip
+	source = http://hackage.haskell.org/packages/archive/MissingPy/0.10.6/MissingPy-0.10.6.tar.gz
+	md5sums = a96f38a012d59f57ff1b7729d0d6ffa4
+
+pkgname = haskell-missingpy
+
