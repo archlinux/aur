@@ -1,0 +1,35 @@
+pkgbase = plasma-desktop-git
+	pkgdesc = KDE Plasma Desktop
+	pkgver = r2353.f98326a
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/kde-workspace
+	install = plasma-desktop-git.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = xorg-server-devel
+	makedepends = xf86-input-synaptics
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = kdoctools
+	depends = libxkbfile
+	depends = libusb-compat
+	depends = libcanberra
+	depends = systemsettings-git
+	depends = ksysguard-git
+	depends = powerdevil-git
+	depends = kmenuedit-git
+	depends = kinfocenter-git
+	depends = polkit-kde-agent-git
+	optdepends = plasma-nm-git: Network manager applet
+	provides = plasma-desktop
+	conflicts = plasma-desktop
+	conflicts = kdebase-workspace
+	conflicts = kdebase-kdepasswd
+	conflicts = kcm-touchpad-frameworks
+	replaces = kcm-touchpad-git
+	source = git://anongit.kde.org/plasma-desktop.git
+	md5sums = SKIP
+
+pkgname = plasma-desktop-git
+
