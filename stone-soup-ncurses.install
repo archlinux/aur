@@ -1,0 +1,15 @@
+post_install() {
+    echo "Run crawl to play the game."
+}
+
+post_upgrade() {
+
+    # return if old pkgver >= 0.9.0-2
+    [[ $(vercmp $2 0.9.0-2) -ge 0 ]] && return
+
+    echo "---------------------------------------------------------------------
+    stone-soup saves have moved to ~/.crawl.
+    If you want to keep your old saves, move ~/.stone-soup to
+    ~/.crawl.
+---------------------------------------------------------------------"
+}
