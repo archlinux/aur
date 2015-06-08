@@ -1,0 +1,63 @@
+
+whisperer(){
+    echo "----------------------------------------------------------------"
+    echo "Automatic re-compilation is enabled now."
+    echo "----------------------------------------------------------------"
+    echo "Provide headers to your kernel ie:"
+    echo "linux-headers if you are using linux."
+    echo "Most of custom kernels provides own headers."
+    echo "----------------------------------------------------------------"
+    echo "You may safely remove fglrx from MODULES array of /etc/rc.conf"
+    echo "----------------------------------------------------------------"
+    echo "Add nomodeset to your kernel line in /boot/grub/menu.lst , ie.:"
+    echo "kernel /boot/vmlinuz-linux root=/dev/sda1 ro nomodeset"
+    echo "---------------------------------------- ^^^^^^^^^ -------------"
+    echo "If experiencing problems with building module or using more than"
+    echo "one kernel use catalyst_build_module command as root, more info:"
+    echo "# catalyst_build_module help"
+    echo "- ^^^^^^^^^^^^^^^^^^^^^ ----------------------------------------"
+    echo "For more info and more troubleshooting visit:"
+    echo "http://wiki.archlinux.org/index.php/ATI_Catalyst"
+    echo "----------------------------------------------------------------"
+}
+
+mr_daemon(){
+   ##removing hook's entries
+    # remove hook fglrx
+     sed '/^HOOKS/s/ *fglrx//' -i etc/mkinitcpio.conf
+    # remove heads
+     sed '/^SyncFirst/s/ *kernel26-headers//' -i etc/pacman.conf
+
+    # add autofglrx daemon to rc.conf
+    angel=$(grep ^DAEMONS etc/rc.conf | grep autofglrx)
+    if [ "$angel" = "" ]; then
+      sed 's/DAEMONS=(/DAEMONS=(autofglrx /' -i etc/rc.conf
+    fi
+}
+
+
+post_install(){
+    mr_daemon
+    usr/bin/catalyst_build_module remove_old
+    usr/bin/catalyst_build_module
+    whisperer
+}
+
+post_upgrade(){
+    mr_daemon
+    usr/bin/catalyst_build_module remove_old
+    usr/bin/catalyst_build_module
+}
+
+pre_remove(){
+    usr/bin/catalyst_build_module remove_all
+}
+
+post_remove(){
+    # remove autofglrx
+     sed 's/DAEMONS=(autofglrx /DAEMONS=(/' -i etc/rc.conf
+    # If the symlink is dead, remove it
+
+    # remove log
+     rm -f var/log/catalyst-install.log
+}
