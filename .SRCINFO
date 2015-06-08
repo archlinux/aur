@@ -1,6 +1,6 @@
 pkgbase = python-pysocks-git
 	pkgdesc = Routes sockets of any TCP service through a SOCKS4, SOCKS5 or HTTP proxy (Anorov fork of socksipy)
-	pkgver = 20130319
+	pkgver = 20150605
 	pkgrel = 1
 	url = https://github.com/Anorov/PySocks
 	arch = any
