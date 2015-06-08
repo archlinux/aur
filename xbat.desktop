@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=XBat
+Comment=A vertical scrolling shooter based on the arcade game Xevious
+Exec=xbat
+Icon=xbat
+Terminal=false
+Categories=Game;ArcadeGame;

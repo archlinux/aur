@@ -1,0 +1,11 @@
+--- Xev111.orig/xev.c	1997-03-17 10:40:52.000000000 +0500
++++ Xev111/xev.c	2012-05-14 17:29:16.668376799 +0600
+@@ -231,7 +231,7 @@
+ 	    Chijou();
+ 	    EMissile();
+ 	    Enemy();
+-	    JikiBomb(i%6);
++	    JikiBomb(i%5);
+ 	    Score(nokori);
+ 	    Scroll(0);
+ 	    u_sleep(wait_tbl[wait_val]);
