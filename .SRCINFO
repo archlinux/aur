@@ -1,0 +1,12 @@
+pkgbase = dvbsky-firmware
+	pkgdesc = Firmware for DVBSky cards/boxes
+	pkgver = 20141128
+	pkgrel = 1
+	url = http://www.dvbsky.net/Support_linux.html
+	arch = any
+	license = unknown
+	source = http://www.dvbsky.net/download/linux/dvbsky-firmware.tar.gz
+	md5sums = b1aa72c5625e3deb9c8c9199d3b8789e
+
+pkgname = dvbsky-firmware
+
