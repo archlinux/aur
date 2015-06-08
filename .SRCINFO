@@ -1,0 +1,14 @@
+pkgbase = afuse
+	pkgdesc = Automounting file system implemented in user-space using FUSE
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/pcarrier/afuse/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = fuse
+	source = https://afuse.googlecode.com/files/afuse-0.4.1.tar.gz
+	md5sums = 317efdda85d5585d085c61a0d262b83b
+
+pkgname = afuse
+
