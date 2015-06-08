@@ -1,0 +1,15 @@
+pkgbase = divfix++
+	pkgdesc = A DivX avi video repair tool.
+	pkgver = 0.34
+	pkgrel = 1
+	url = http://www.divfix.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = wxgtk
+	provides = DivFix++
+	source = http://downloads.sourceforge.net/project/divfixpp/DivFix++/v0.34/DivFix++_v0.34-src.tar.bz2
+	md5sums = a3809d7f325b10192c840c7fd5a1156e
+
+pkgname = divfix++
+
