@@ -1,0 +1,14 @@
+pkgbase = gzstream
+	pkgdesc = C++ wrapper providing stream classes for zlib
+	pkgver = 1.5
+	pkgrel = 2
+	url = http://www.cs.unc.edu/Research/compgeom/gzstream
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = zlib>=1.1.3
+	source = http://www.cs.unc.edu/Research/compgeom/gzstream/gzstream.tgz
+	md5sums = 74a0beaa4e185b883993d537a7019a53
+
+pkgname = gzstream
+
