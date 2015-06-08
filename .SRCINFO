@@ -1,0 +1,18 @@
+pkgbase = mdcharm
+	pkgdesc = A wiki editor, currently it supports markdown(markdown extra) and Multi-Markdown.
+	pkgver = 1.2.0
+	pkgrel = 2
+	url = http://www.mdcharm.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = qtwebkit
+	depends = hunspell
+	depends = zlib
+	depends = gcc-libs
+	depends = python2
+	source = https://github.com/zhangshine/MdCharm/archive/1.2.0.tar.gz
+	sha1sums = 6179ebd14b862fdd6ae160e3bf5f1ab95cd59d48
+
+pkgname = mdcharm
+
