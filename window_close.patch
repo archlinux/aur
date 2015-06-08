@@ -1,0 +1,10 @@
+--- src/gg.c.orig	2013-07-23 23:44:44.000000000 -0700
++++ src/gg.c	2013-07-23 23:45:44.000000000 -0700
+@@ -528,6 +528,7 @@
+   /* Main window */
+   if (w_main_window != NULL) return;
+   w_main_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
++  g_signal_connect		 (G_OBJECT (w_main_window), "destroy", G_CALLBACK (gtk_main_quit), NULL);
+   gtk_window_set_title           (GTK_WINDOW (w_main_window), "GraceGTK");
+   gtk_container_set_border_width (GTK_CONTAINER (w_main_window), 2);
+   gtk_window_set_default_size    (GTK_WINDOW (w_main_window), popup_width, popup_height);

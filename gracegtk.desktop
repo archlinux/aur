@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Terminal=false
+Name=Grace-GTK
+Type=Application
+Icon=/usr/share/pixmaps/gracegtk.png
+Exec=/usr/bin/ggrace %f
+Comment=An application for 2D plotting
+Categories=Science;X-Plotting;

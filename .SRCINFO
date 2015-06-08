@@ -1,0 +1,32 @@
+pkgbase = gracegtk
+	pkgdesc = A port of the Grace plotting tool to gtk2
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = http://plasma-gate.weizmann.ac.il/Grace/
+	install = gracegtk.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = linuxdoc-tools
+	makedepends = gcc-fortran
+	depends = libjpeg
+	depends = fftw
+	depends = t1lib
+	depends = netcdf
+	depends = pdflib-lite
+	depends = gtk2
+	source = http://downloads.sourceforge.net/sourceforge/gracegtk/gracegtk-0.9.2_2014_08_25_08h44.tgz
+	source = window_close.patch
+	source = gracegtk.png
+	source = gracegtk.desktop
+	source = gracegtk-mimetypes
+	source = ggrace
+	md5sums = 4b63d4e98c21ad2c56257b5f2b1971b5
+	md5sums = 05b430f86615ab1aea79cee6ca204792
+	md5sums = ef085e503d30207035f5dfbef648ed36
+	md5sums = 8427067a73698b5425901866ca3195d0
+	md5sums = 3beba5237f56a2ff28b6cd878865b25c
+	md5sums = c22c24f810bf0e1f9b8ca8713be19e3e
+
+pkgname = gracegtk
+
