@@ -1,0 +1,20 @@
+pkgbase = luasec-hg
+	pkgdesc = Lua bindings for OpenSSL library to provide TLS/SSL communication.
+	pkgver = 45.5be249c0ae71
+	pkgrel = 2
+	url = http://code.matthewwild.co.uk/luasec-hg
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = openssl>=0.9.7
+	depends = lua51
+	depends = lua51-socket>=2.0.2
+	provides = luasec
+	conflicts = luasec
+	source = luasec-hg::hg+http://code.matthewwild.co.uk/luasec-hg
+	source = luasec.patch
+	md5sums = SKIP
+	md5sums = 210496f81708daf79c799ceecd168391
+
+pkgname = luasec-hg
+

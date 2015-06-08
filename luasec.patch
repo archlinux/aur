@@ -1,0 +1,27 @@
+--- Makefile.orig	2009-12-19 14:54:45.000000000 -0500
++++ Makefile	2009-12-19 14:57:22.000000000 -0500
+@@ -1,11 +1,11 @@
+ # Inform the location to intall the modules
+-LUAPATH=/usr/local/share/lua/5.1
+-LUACPATH=/usr/local/lib/lua/5.1
++LUAPATH=/usr/share/lua/5.1
++LUACPATH=/usr/lib/lua/5.1
+ 
+ # Edit the lines below to inform new path, if necessary
+ #
+-#INCDIR=-I/usr/local/lua-5.1/include -I/usr/local/openssl-0.9.8/include
+-#LIBDIR=-L/usr/local/openssl-0.9.8/lib -R/usr/local/openssl-0.9.8/lib
++INCDIR=-I/usr/include/lua5.1 -I/usr/include/openssl
++LIBDIR=-L/usr/lib
+ 
+ # For Mac OS X: set the system version
+ MACOSX_VERSION=10.4
+@@ -26,7 +26,7 @@
+ 	@echo "  * macosx"
+ 
+ install:
+-	@cd src ; $(MAKE) LUACPATH="$(LUACPATH)" LUAPATH="$(LUAPATH)" install
++	@cd src ; $(MAKE) LUACPATH="$(DESTDIR)$(LUACPATH)" LUAPATH="$(DESTDIR)$(LUAPATH)" install
+ 
+ linux:
+ 	@echo "---------------------"
