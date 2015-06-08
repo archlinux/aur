@@ -1,0 +1,24 @@
+pkgbase = lib32-libid3tag
+	pkgdesc = library for id3 tagging, lib32.
+	pkgver = 0.15.1b
+	pkgrel = 1
+	url = http://www.underbit.com/products/mad/
+	arch = x86_64
+	license = GPL
+	makedepends = gperf
+	depends = lib32-zlib
+	depends = libid3tag
+	options = !libtool
+	source = ftp://ftp.mars.org/pub/mpeg/libid3tag-0.15.1b.tar.gz
+	source = id3tag.pc
+	source = 10_utf16.diff
+	source = 11_unknown_encoding.diff
+	source = CVE-2008-2109.patch
+	md5sums = e5808ad997ba32c498803822078748c3
+	md5sums = 8bb41fd814fafcc37ec8bc88f5545a4a
+	md5sums = 4f9df4011e6a8c23240fff5de2d05f6e
+	md5sums = 3ca856b97924d48a0fdfeff0bd83ce7d
+	md5sums = c51822ea6301b1ca469975f0c9ee8e34
+
+pkgname = lib32-libid3tag
+
