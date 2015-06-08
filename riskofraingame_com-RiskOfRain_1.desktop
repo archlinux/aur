@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Risk of Rain
+GenericName=Risk of Rain
+Icon=/opt/riskofrain-hib/assets/icon.png
+Exec="/opt/riskofrain-hib/ROR.sh"
+Categories=Game;
+Path=/opt/riskofrain-hib
+

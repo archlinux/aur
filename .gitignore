@@ -1,0 +1,5 @@
+pkg/
+src/
+*x86_64.pkg.tar
+*.src.tar.gz
+RoR-Linux-*.sh

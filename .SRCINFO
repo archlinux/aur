@@ -1,0 +1,15 @@
+pkgbase = riskofrain-hib
+	pkgdesc = A roguelike action platformer/adventure game with randomized elements. (Humble Bundle Version)
+	pkgver = 1.2.8
+	pkgrel = 1
+	url = http://riskofraingame.com
+	arch = i686
+	arch = x86_64
+	license = custom:commercial
+	source = hib://RoR-Linux-2015-05-07.sh
+	source = riskofraingame_com-RiskOfRain_1.desktop
+	sha256sums = 75a1d750aeb4b668af0d1e5588ec80f5a9a74c5774c1b0bf5b7d431b3588c8e7
+	sha256sums = d84193e489e52c80348b77978b549e4f682b4a08a66d515fa588013b37ed5d74
+
+pkgname = riskofrain-hib
+
