@@ -63,10 +63,10 @@ optdepends=(
 )
 
 source=(
-"http://nightly.odoo.com/8.0/nightly/src/${pkgname}_${pkgver//_/.}.tar.gz"
-odoo.confd
-odoo.service
-odoo.conf
+  "http://nightly.odoo.com/8.0/nightly/src/${pkgname}_${pkgver//_/.}.tar.gz"
+  odoo.confd
+  odoo.service
+  odoo.conf
 )
 backup=('etc/odoo/odoo.conf')
 install=odoo.install
