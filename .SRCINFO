@@ -1,0 +1,14 @@
+pkgbase = irssi-script-sasl
+	pkgdesc = Freenode SASL support for irssi
+	pkgver = 1.10
+	pkgrel = 1
+	url = https://freenode.net/sasl/
+	arch = any
+	license = GPL
+	depends = irssi
+	optdepends = perl-cryptx: for ECDSA-NIST256p-CHALLENGE
+	source = https://raw.githubusercontent.com/irssi/scripts.irssi.org/gh-pages/scripts/cap_sasl.pl
+	md5sums = a1483240b9e3ca25b93400ab9a4743f3
+
+pkgname = irssi-script-sasl
+
