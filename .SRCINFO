@@ -1,0 +1,14 @@
+pkgbase = vboxhost-hook
+	pkgdesc = mkinitcpio hook to compile the virtualbox host modules
+	pkgver = 1.0
+	pkgrel = 3
+	url = https://github.com/alucryd/mkinitcpio-hooks
+	install = vboxhost-hook.install
+	arch = any
+	license = GPL3
+	depends = virtualbox-host-dkms
+	source = https://raw.github.com/alucryd/mkinitcpio-hooks/master/vboxhost
+	sha256sums = 6c5e321b6dac90ca6b7c7e45c842081762d140679bf186dcb948d65eb702bd15
+
+pkgname = vboxhost-hook
+
