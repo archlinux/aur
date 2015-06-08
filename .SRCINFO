@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-coin-or-bcp
+	pkgdesc = COIN-OR parallel branch-cut-price algorithms for mixed-integer linear programs (mingw-w64)
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://projects.coin-or.org/Bcp
+	arch = any
+	groups = coin-or
+	license = EPL
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-coin-or-cgl
+	depends = mingw-w64-coin-or-clp
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = http://www.coin-or.org/download/source/Bcp/Bcp-1.4.0.tgz
+	sha1sums = addf63bda07f85ea6a6b16ff32088afd08a3b56e
+
+pkgname = mingw-w64-coin-or-bcp
+
