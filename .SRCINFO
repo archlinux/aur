@@ -1,0 +1,18 @@
+pkgbase = jd
+	pkgdesc = A 2channel browser written in C++ using gtkmm
+	pkgver = 2.8.9
+	pkgrel = 1
+	url = http://jd4linux.sourceforge.jp/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = gnutls
+	depends = libsm
+	depends = gtkmm
+	conflicts = jd-svn
+	source = http://dl.sourceforge.jp/jd4linux/62877/jd-2.8.9-150226.tgz
+	md5sums = 8b9bae5fa50e5e381f4a1890d50b0b31
+	sha256sums = f011665d3b2ed6c3b41e28ee3029e511ea248faad142b1a32a89faf1dd5eeb7d
+
+pkgname = jd
+
