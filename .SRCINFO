@@ -1,0 +1,33 @@
+pkgbase = minetest-git
+	pkgdesc = Infiniminer/Minecraft inspired game
+	pkgver = 20150606.8383a61
+	pkgrel = 1
+	url = http://www.minetest.net/
+	install = install
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	license = CCPL:by-sa
+	makedepends = git
+	makedepends = cmake
+	depends = bzip2
+	depends = libpng
+	depends = libjpeg
+	depends = mesa
+	depends = sqlite
+	depends = openal
+	depends = libvorbis
+	depends = irrlicht
+	provides = minetest
+	provides = minetest-common
+	provides = minetest-server
+	conflicts = minetest
+	conflicts = minetest-common
+	conflicts = minetest-server
+	source = git://github.com/minetest/minetest.git
+	source = git://github.com/minetest/minetest_game.git
+	sha1sums = SKIP
+	sha1sums = SKIP
+
+pkgname = minetest-git
+
