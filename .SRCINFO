@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-sharpaamcmod-git
+	pkgdesc = Plugin for Vapoursynth: sharpaamcmod (GIT version)
+	pkgver = r4
+	pkgrel = 1
+	url = https://gist.github.com/4re
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = vapoursynth
+	depends = vapoursynth-plugin-havsfunc
+	provides = vapoursynth-plugin-sharpaamcmod
+	conflicts = vapoursynth-plugin-sharpaamcmod
+	source = sharpaamcmod::git+https://gist.github.com/8fee7aa32ba9ac566ed0.git
+	sha1sums = SKIP
+
+pkgname = vapoursynth-plugin-sharpaamcmod-git
+
