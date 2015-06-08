@@ -1,0 +1,14 @@
+pkgbase = food_gui
+	pkgdesc = A simple calculator, that calculates proteins, fats, carbohydrates, food energy and glycemic index
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/arcan1s/food_gui
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2-pyqt4
+	source = https://github.com/arcan1s/food_gui/releases/download/V.1.2.1/food_gui-1.2.1-src.zip
+	md5sums = f4f6df25131af05ae4ec8b03936cedc9
+
+pkgname = food_gui
+
