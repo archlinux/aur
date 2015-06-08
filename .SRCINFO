@@ -1,0 +1,19 @@
+pkgbase = eclipse-mercurial
+	pkgdesc = Eclipse plugin for Mercurial Version Control System
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://code.google.com/a/eclipselabs.org/p/mercurialeclipse/
+	arch = i686
+	arch = x86_64
+	license = EPL
+	depends = eclipse>=3.4
+	depends = mercurial
+	noextract = com.vectrace.MercurialEclipse_2.1.0.201304290948.jar
+	noextract = mercurialeclipse_2.1.0.201304290948.jar
+	source = http://mercurialeclipse.eclipselabs.org.codespot.com/files/com.vectrace.MercurialEclipse_2.1.0.201304290948.jar
+	source = http://mercurialeclipse.eclipselabs.org.codespot.com/hg.wiki/update_site/stable/features/mercurialeclipse_2.1.0.201304290948.jar
+	md5sums = e66b2600a005eb3c7649bd0686bd06f8
+	md5sums = cceb9b7d523c38c1d2a0317a9f1a28b4
+
+pkgname = eclipse-mercurial
+
