@@ -1,0 +1,15 @@
+pkgbase = kio_rar
+	pkgdesc = A kioslave for RAR archives
+	pkgver = 0.6
+	pkgrel = 8
+	url = http://kde-apps.org/content/show.php?content=17527
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = kdebase
+	depends = unrar
+	source = http://kde-apps.org/CONTENT/content-files/17527-kio_rar-0.6.tar.bz2
+	md5sums = 670c4a3cce504be4224e35de3d996148
+
+pkgname = kio_rar
+
