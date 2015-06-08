@@ -1,0 +1,16 @@
+pkgbase = kdeplasma-wallpapers-dayandnight
+	pkgdesc = Wallpaper plugin that allows you to select different wallpaper for day and night
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://kde-look.org/content/show.php?content=118636
+	install = kdeplasma-wallpapers-dayandnight.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = kdebase-workspace
+	depends = kdebindings-python2
+	source = http://kde-look.org/CONTENT/content-files/118636-day-and-night.plasmoid
+	md5sums = 1be7e0bf85563029f1158e5685e4f256
+
+pkgname = kdeplasma-wallpapers-dayandnight
+
