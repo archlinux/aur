@@ -1,0 +1,15 @@
+pkgbase = ampsharp
+	pkgdesc = Asynchronous Messaging Protocol library for the CLI
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = https://launchpad.net/ampsharp
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = mono
+	depends = log4net
+	source = https://launchpad.net/ampsharp/2.0/2.0.4/+download/AMPSharp-src-2.0.4.tar.gz
+	sha256sums = c277012c340baf174fbc147cf3fe4e5ddd5dda02228e81ca03871d4f81fcedbc
+
+pkgname = ampsharp
+
