@@ -1,0 +1,24 @@
+pkgbase = pcsxr-svn
+	pkgdesc = A Sony PlayStation emulator based on the PCSX-df Project
+	pkgver = 1.9.93.r91911
+	pkgrel = 1
+	url = http://pcsxr.codeplex.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = mesa
+	makedepends = subversion
+	depends = gtk3
+	depends = libarchive
+	depends = libcdio
+	depends = libxv
+	depends = sdl2
+	provides = pcsxr
+	conflicts = pcsxr
+	conflicts = pcsx-df
+	source = svn+https://pcsxr.svn.codeplex.com/svn/pcsxr
+	sha256sums = SKIP
+
+pkgname = pcsxr-svn
+
