@@ -1,0 +1,16 @@
+pkgbase = epson-inkjet-printer-workforce-525
+	pkgdesc = Epson printer driver (Stylus Office BX320FW, TX525FW / WorkForce 520, 525)
+	pkgver = 1.0.0
+	pkgrel = 8
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom:Epson Licence Agreement
+	depends = cups
+	depends = ghostscript
+	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-workforce-525-1.0.0-1lsb3.2.src.rpm
+	sha256sums = af15409af9e7121f9daef9ea54070471f5558c171801a944289e8c42b7cb1fae
+
+pkgname = epson-inkjet-printer-workforce-525
+
