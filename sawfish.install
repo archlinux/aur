@@ -1,0 +1,21 @@
+infodir=/usr/share/info
+file=sawfish.info
+
+post_install() {
+  [ -x usr/bin/install-info ] || return 0
+  install-info $infodir/$file.gz $infodir/dir 2> /dev/null
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  [ -x usr/bin/install-info ] || return 0
+  install-info --delete $infodir/$file.gz $infodir/dir 2> /dev/null
+}
+
+post_remove() {
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor 
+}
