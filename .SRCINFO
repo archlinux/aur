@@ -1,0 +1,18 @@
+pkgbase = bibtool-git
+	pkgdesc = Command line manipulation of BibTeX files - from git-repo
+	pkgver = 2.59.4.g554c916
+	pkgrel = 1
+	url = http://www.gerd-neugebauer.de/software/TeX/BibTool/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = texlive-bin
+	provides = bibtool
+	conflicts = bibtool
+	options = !makeflags
+	source = git+https://github.com/ge-ne/bibtool
+	md5sums = SKIP
+
+pkgname = bibtool-git
+
