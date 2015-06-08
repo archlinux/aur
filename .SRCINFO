@@ -1,0 +1,25 @@
+pkgbase = rawstudio-git
+	pkgdesc = Raw-image converter written in GTK2
+	pkgver = 20150511.983bda1
+	pkgrel = 1
+	url = http://rawstudio.org/
+	install = rawstudio.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = osm-gps-map
+	depends = desktop-file-utils
+	depends = libgphoto2
+	depends = fftw
+	depends = gconf
+	depends = lcms2
+	depends = exiv2
+	depends = lensfun
+	provides = rawstudio
+	conflicts = rawstudio
+	source = git://github.com/rawstudio/rawstudio.git
+	md5sums = SKIP
+
+pkgname = rawstudio-git
+
