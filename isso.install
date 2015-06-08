@@ -1,0 +1,10 @@
+post_install() {
+	getent group isso &>/dev/null || groupadd -r -g 1337 isso >/dev/null
+	getent passwd isso &>/dev/null || useradd -r -u 1337 -g isso -d /var/lib/isso -s /bin/false isso >/dev/null
+}
+
+post_remove() {
+	getent passwd isso &>/dev/null && userdel isso >/dev/null
+	getent group isso &>/dev/null && groupdel isso >/dev/null
+	true
+}

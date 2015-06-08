@@ -1,0 +1,31 @@
+pkgbase = isso
+	pkgdesc = A commenting python server similar to disqus
+	pkgver = 0.9.9
+	pkgrel = 1
+	url = http://posativ.org/isso/
+	install = isso.install
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python
+	depends = python-werkzeug
+	depends = python-html5lib
+	depends = python-misaka
+	depends = python-itsdangerous
+	depends = python-six
+	depends = sqlite
+	depends = python-setuptools
+	backup = etc/conf.d/isso
+	source = https://pypi.python.org/packages/source/i/isso/isso-0.9.9.tar.gz
+	source = https://pypi.python.org/packages/source/i/isso/isso-0.9.9.tar.gz.asc
+	source = isso.service
+	source = isso.conf
+	source = LICENSE
+	sha1sums = b6fa8b1c05e1edcd2089c1512ce6f8e0cd2acdaa
+	sha1sums = SKIP
+	sha1sums = f3ca306eee19b55b14b791c728e4c57d6fd4a970
+	sha1sums = aed76333e2abcfe6e977965444de8f23596d533d
+	sha1sums = 71e993a27a10d294a2c0bef68eaba039e1d46916
+
+pkgname = isso
+
