@@ -1,0 +1,21 @@
+pkgbase = qmmp-plugin-pack-svn
+	pkgdesc = Qmmp Plugin Pack. (SVN Version)
+	pkgver = 0.9.0.svn.r4802
+	pkgrel = 1
+	url = http://qmmp.ylsoftware.com
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	makedepends = cmake
+	makedepends = yasm
+	makedepends = mpg123
+	depends = qmmp-svn>=0.9.0.svn.r4802
+	optdepends = mpg123: alternative Mpeg-1-2-3 support
+	provides = qmmp-plugin-pack
+	conflicts = qmmp-plugin-pack
+	source = svn://svn.code.sf.net/p/qmmp-dev/code/trunk/qmmp-plugin-pack
+	sha1sums = SKIP
+
+pkgname = qmmp-plugin-pack-svn
+
