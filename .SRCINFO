@@ -1,0 +1,19 @@
+pkgbase = python-twitter
+	pkgdesc = An API and command-line toolset for Twitter (twitter.com)
+	pkgver = 1.17.0
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/twitter/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	optdepends = python-irclib: twitterbot utility dependency
+	conflicts = python-twitter-tools
+	conflicts = python-twitter-tools-git
+	conflicts = python-twitter-git
+	replaces = python-twitter-tools
+	source = http://pypi.python.org/packages/source/t/twitter/twitter-1.17.0.tar.gz
+	sha256sums = 85396c4c33b9b213f3d2d805caaf6b386b9e277af9117eb51e5a782f77257376
+
+pkgname = python-twitter
+
