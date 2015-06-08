@@ -1,0 +1,15 @@
+pkgbase = eclipse-shelled
+	pkgdesc = Superb shell script editor for Eclipse
+	pkgver = 2.0.3
+	pkgrel = 2
+	url = http://shelled.sourceforge.net/
+	arch = any
+	license = EPL
+	depends = eclipse
+	depends = eclipse-dltk-core
+	optdepends = openssh
+	source = http://freefr.dl.sourceforge.net/project/shelled/shelled/ShellEd%202.0.3/net.sourceforge.shelled-site-2.0.3.zip
+	md5sums = 1a675ac069c628b311b1007690ca055f
+
+pkgname = eclipse-shelled
+
