@@ -1,0 +1,23 @@
+pkgbase = kwalletmanager-git
+	pkgdesc = Wallet management tool
+	pkgver = r818.bd78050
+	pkgrel = 1
+	url = http://www.kde.org/applications/system/kwalletmanager/
+	install = kwalletmanager-git.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = python
+	makedepends = kdoctools
+	depends = kwallet
+	depends = kdelibs4support
+	provides = kwalletmanager
+	conflicts = kwalletmanager
+	conflicts = kdeutils-kwalletmanager
+	source = git://anongit.kde.org/kwalletmanager.git#branch=frameworks
+	md5sums = SKIP
+
+pkgname = kwalletmanager-git
+
