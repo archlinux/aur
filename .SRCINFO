@@ -1,0 +1,19 @@
+pkgbase = avxsynth-plugin-masktools2-git
+	pkgdesc = Plugin for Avxsynth. masktools2 (GIT Version)
+	pkgver = 20120620.d1028fd
+	pkgrel = 1
+	url = https://github.com/fundies/MaskTools2-linux
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = yasm
+	makedepends = boost
+	depends = avxsynth
+	provides = avxsynth-plugin-masktools2
+	conflicts = avxsynth-plugin-masktools2
+	source = masktools2::git://github.com/fundies/MaskTools2-linux.git
+	md5sums = SKIP
+
+pkgname = avxsynth-plugin-masktools2-git
+
