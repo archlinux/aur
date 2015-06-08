@@ -1,0 +1,178 @@
+diff -burN SDL_mixer-1.2.12/build-scripts/config.sub SDL_mixer-1.2.12-PSP/build-scripts/config.sub
+--- SDL_mixer-1.2.12/build-scripts/config.sub	2012-01-15 23:01:05.000000000 +0100
++++ SDL_mixer-1.2.12-PSP/build-scripts/config.sub	2012-06-06 13:23:45.771642501 +0200
+@@ -942,6 +942,10 @@
+ 	ps2)
+ 		basic_machine=i386-ibm
+ 		;;
++	psp)
++		basic_machine=mipsallegrexel-psp
++		os=-elf
++		;;
+ 	pw32)
+ 		basic_machine=i586-unknown
+ 		os=-pw32
+diff -burN SDL_mixer-1.2.12/configure.in SDL_mixer-1.2.12-PSP/configure.in
+--- SDL_mixer-1.2.12/configure.in	2012-01-15 23:01:05.000000000 +0100
++++ SDL_mixer-1.2.12-PSP/configure.in	2012-06-06 13:38:51.014670720 +0200
+@@ -56,6 +56,29 @@
+ fi
+ AC_CHECK_PROGS(WINDRES, [windres $hostaliaswindres $host_os-windres])
+ 
++MIKMOD_PATH=$PATH
++
++dnl Check for a valid PSPSDK installation
++CheckPSPSDK()     
++{                 
++    AC_CHECK_PROG(psp_config, psp-config, psp-config, no)
++    if test x$psp_config = xno; then 
++        AC_MSG_ERROR(Couldn't locate psp-config.)
++    fi
++
++    AC_MSG_CHECKING(for PSPSDK)
++    pspsdk_path=`$psp_config --pspsdk-path`
++    if test ! -d $pspsdk_path -o -z $pspsdk_path; then
++        AC_MSG_RESULT(not found)     
++        AC_MSG_ERROR(Couldn't locate PSPSDK.)
++    fi             
++    AC_MSG_RESULT($pspsdk_path)
++                              
++    # Compile SDL with -G0 to disable the $gp register.
++    CFLAGS="$CFLAGS -G0 -I\"${pspsdk_path}/include\""
++    MIKMOD_PATH=`$psp_config --psp-prefix`/bin
++}
++
+ dnl Set up the compiler and linker flags
+ case "$host" in
+     *-*-cygwin*)
+@@ -63,6 +86,9 @@
+         BASE_CFLAGS="-I/usr/include/mingw -mno-cygwin"
+         BASE_LDFLAGS="-mno-cygwin"
+         ;;
++    *-psp-*) 
++        CheckPSPSDK
++        ;;
+     *)
+         BASE_CFLAGS="-D_GNU_SOURCE=1"
+         BASE_LDFLAGS=""
+@@ -251,7 +277,7 @@
+     libmikmod_min=1
+     libmikmod_rev=10
+     libmikmod_ver="$libmikmod_maj.$libmikmod_min.$libmikmod_rev"
+-    AC_PATH_PROG(LIBMIKMOD_CONFIG, libmikmod-config, no, [$PATH])
++    AC_PATH_PROG(LIBMIKMOD_CONFIG, libmikmod-config, no, [$MIKMOD_PATH])
+     if test "$LIBMIKMOD_CONFIG" != "no" ; then
+         
+         CFLAGS_SAVED="$CFLAGS"
+@@ -648,31 +674,41 @@
+ $(objects)/\2.o: \1/\2.rc\\
+ 	\$(WINDRES) \$< \$@,g'`
+ VERSION_DEPENDS=`echo "$VERSION_DEPENDS" | sed 's,\\$,\\\\$,g'`
+-
+-PLAYWAVE_SOURCES="$srcdir/playwave.c"
+-PLAYWAVE_OBJECTS=`echo $PLAYWAVE_SOURCES`
+-PLAYWAVE_DEPENDS=`echo $PLAYWAVE_SOURCES`
+-PLAYWAVE_OBJECTS=`echo "$PLAYWAVE_OBJECTS" | sed 's,[[^ ]]*/\([[^ ]]*\)\.c,$(objects)/\1.lo,g'`
+-PLAYWAVE_DEPENDS=`echo "$PLAYWAVE_DEPENDS" | sed 's,\([[^ ]]*\)/\([[^ ]]*\)\.c,\\
+-$(objects)/\2.lo: \1/\2.c\\
++case "$host" in
++	*-psp-*)
++	;;
++	*)
++	PLAYWAVE_SOURCES="$srcdir/playwave.c"
++	PLAYWAVE_OBJECTS=`echo $PLAYWAVE_SOURCES`
++	PLAYWAVE_DEPENDS=`echo $PLAYWAVE_SOURCES`
++	PLAYWAVE_OBJECTS=`echo "$PLAYWAVE_OBJECTS" | sed 's,[[^ ]]*/\([[^ ]]*\)\.c,$(objects)/\1.lo,g'`
++	PLAYWAVE_DEPENDS=`echo "$PLAYWAVE_DEPENDS" | sed 's,\([[^ ]]*\)/\([[^ ]]*\)\.c,\\
++	$(objects)/\2.lo: \1/\2.c\\
+ 	\$(LIBTOOL) --mode=compile \$(CC) \$(CFLAGS) \$(EXTRA_CFLAGS) '"$DEPENDENCY_TRACKING_OPTIONS"' -c \$< -o \$@,g'`
+-PLAYWAVE_DEPENDS=`echo "$PLAYWAVE_DEPENDS" | sed 's,\\$,\\\\$,g'`
++	PLAYWAVE_DEPENDS=`echo "$PLAYWAVE_DEPENDS" | sed 's,\\$,\\\\$,g'`
+ 
+-PLAYMUS_SOURCES="$srcdir/playmus.c"
+-PLAYMUS_OBJECTS=`echo $PLAYMUS_SOURCES`
+-PLAYMUS_DEPENDS=`echo $PLAYMUS_SOURCES`
+-PLAYMUS_OBJECTS=`echo "$PLAYMUS_OBJECTS" | sed 's,[[^ ]]*/\([[^ ]]*\)\.c,$(objects)/\1.lo,g'`
+-PLAYMUS_DEPENDS=`echo "$PLAYMUS_DEPENDS" | sed 's,\([[^ ]]*\)/\([[^ ]]*\)\.c,\\
+-$(objects)/\2.lo: \1/\2.c\\
++	PLAYMUS_SOURCES="$srcdir/playmus.c"
++	PLAYMUS_OBJECTS=`echo $PLAYMUS_SOURCES`
++	PLAYMUS_DEPENDS=`echo $PLAYMUS_SOURCES`
++	PLAYMUS_OBJECTS=`echo "$PLAYMUS_OBJECTS" | sed 's,[[^ ]]*/\([[^ ]]*\)\.c,$(objects)/\1.lo,g'`
++	PLAYMUS_DEPENDS=`echo "$PLAYMUS_DEPENDS" | sed 's,\([[^ ]]*\)/\([[^ ]]*\)\.c,\\
++	$(objects)/\2.lo: \1/\2.c\\
+ 	\$(LIBTOOL) --mode=compile \$(CC) \$(CFLAGS) \$(EXTRA_CFLAGS) '"$DEPENDENCY_TRACKING_OPTIONS"' -c \$< -o \$@,g'`
+-PLAYMUS_DEPENDS=`echo "$PLAYMUS_DEPENDS" | sed 's,\\$,\\\\$,g'`
+-
++	PLAYMUS_DEPENDS=`echo "$PLAYMUS_DEPENDS" | sed 's,\\$,\\\\$,g'`
++	;;
++esac
+ dnl Expand the sources and objects needed to build the library
+ AC_SUBST(ac_aux_dir)
+ AC_SUBST(OBJECTS)
+ AC_SUBST(VERSION_OBJECTS)
++case "$host" in
++	*-psp-*)
++	;;
++	*)
+ AC_SUBST(PLAYWAVE_OBJECTS)
+ AC_SUBST(PLAYMUS_OBJECTS)
++	;;
++esac
+ AC_SUBST(BUILD_CFLAGS)
+ AC_SUBST(EXTRA_CFLAGS)
+ AC_SUBST(BUILD_LDFLAGS)
+diff -burN SDL_mixer-1.2.12/Makefile.in SDL_mixer-1.2.12-PSP/Makefile.in
+--- SDL_mixer-1.2.12/Makefile.in	2012-01-15 23:01:04.000000000 +0100
++++ SDL_mixer-1.2.12-PSP/Makefile.in	2012-06-06 13:23:55.639642810 +0200
+@@ -47,7 +47,7 @@
+ LT_REVISION = @LT_REVISION@
+ LT_LDFLAGS  = -no-undefined -rpath $(libdir) -release $(LT_RELEASE) -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
+ 
+-all: $(srcdir)/configure Makefile $(objects) $(objects)/$(TARGET) $(objects)/playwave$(EXE) $(objects)/playmus$(EXE)
++all: $(srcdir)/configure Makefile $(objects) $(objects)/$(TARGET) #$(objects)/playwave$(EXE) $(objects)/playmus$(EXE)
+ 
+ $(srcdir)/configure: $(srcdir)/configure.in
+ 	@echo "Warning, configure.in is out of date"
+diff -burN SDL_mixer-1.2.12/music_cmd.h SDL_mixer-1.2.12-PSP/music_cmd.h
+--- SDL_mixer-1.2.12/music_cmd.h	2012-01-15 23:01:05.000000000 +0100
++++ SDL_mixer-1.2.12-PSP/music_cmd.h	2012-06-06 13:23:55.640642810 +0200
+@@ -29,6 +29,11 @@
+ #if defined(__linux__) && defined(__arm__)
+ # include <linux/limits.h>
+ #endif
++
++#ifndef PATH_MAX
++# define PATH_MAX 255
++#endif
++
+ typedef struct {
+ 	char file[PATH_MAX];
+ 	char cmd[PATH_MAX];
+diff -burN SDL_mixer-1.2.12/README.PSP SDL_mixer-1.2.12-PSP/README.PSP
+--- SDL_mixer-1.2.12/README.PSP	1970-01-01 01:00:00.000000000 +0100
++++ SDL_mixer-1.2.12-PSP/README.PSP	2012-06-06 13:23:55.640642810 +0200
+@@ -0,0 +1,23 @@
++Prerequisites:
++
++   SDL
++   libogg (optional)
++   libvorbis (optional)
++   libTremor (optional)
++
++   Note: If libTremor is detected it will be used instead of libogg and
++   libvorbis.  To disable this behavior pass --disable-music-ogg-tremor to
++   configure.
++
++To configure:
++
++   ./autogen.sh
++   LDFLAGS="-L$(psp-config --pspsdk-path)/lib" LIBS="-lc -lpspuser" \
++     ./configure --host psp --with-sdl-prefix=$(psp-config --psp-prefix) \
++     --disable-music-mp3 --prefix=$(psp-config --psp-prefix) \
++     --disable-music-libmikmod --enable-music-mod
++
++Then run:
++
++   make
++   make install
