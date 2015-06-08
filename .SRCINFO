@@ -1,0 +1,14 @@
+pkgbase = libpstat-git
+	pkgdesc = Library for getting information about running processes
+	pkgver = r15.5ae5764
+	pkgrel = 1
+	url = https://github.com/jcnelson/libpstat
+	arch = x86_64
+	arch = i686
+	license = ISC
+	provides = libpstat
+	source = libpstat-git::git+https://github.com/jcnelson/libpstat.git
+	sha1sums = SKIP
+
+pkgname = libpstat-git
+
