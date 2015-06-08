@@ -1,0 +1,20 @@
+pkgbase = roccat-dkms
+	pkgdesc = Kernel modules for ROCCAT devices
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://roccat.sourceforge.net
+	install = roccat-dkms.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = dkms
+	optdepends = linux-headers: build the module against Arch kernel
+	optdepends = linux-lts-headers: build the module against LTS Arch kernel
+	optdepends = roccat-tools: graphical tools to adjust the mouse settings
+	provides = kmod-roccat
+	conflicts = kmod-roccat
+	source = http://downloads.sourceforge.net/project/roccat/linux/kmod-roccat/kmod-roccat-1.0.0.tar.bz2
+	sha256sums = 432c5100bdfbd19f54938129ff18331f70c12d3fd4f145ea5a1093a363ce9594
+
+pkgname = roccat-dkms
+
