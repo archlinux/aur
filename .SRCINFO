@@ -1,0 +1,16 @@
+pkgbase = vim-pythonhelper
+	pkgdesc = Displays Python class, method or function the cursor is in on the status line
+	pkgver = 0.83
+	pkgrel = 4
+	url = http://www.vim.org/scripts/script.php?script_id=435
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = unknown
+	depends = vim
+	depends = python2
+	source = pythonhelper.vim::http://www.vim.org/scripts/download_script.php?src_id=12010
+	md5sums = 84b9e7c94167eb859b6a729559294869
+
+pkgname = vim-pythonhelper
+

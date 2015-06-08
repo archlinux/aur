@@ -1,0 +1,21 @@
+post_install() {
+    cat <<EOF
+Make sure that vim is compiled with python support:
+    issue :ver inside vim and look for '+python'
+
+you will need to reconfigure vim with python support in order to use this plugin.
+EOF
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+    true
+}
+
+op=$1
+shift
+
+$op $*
