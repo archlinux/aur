@@ -1,0 +1,17 @@
+pkgbase = icon
+	pkgdesc = The Icon programming language
+	pkgver = 951
+	pkgrel = 2
+	url = http://www.cs.arizona.edu/icon/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = sh
+	depends = libx11
+	source = http://www.cs.arizona.edu/icon/ftp/packages/unix/icon-v951src.tgz
+	source = LICENSE
+	md5sums = 8fdeb7c5408d9d9bf06bc5e7f4f54498
+	md5sums = 46e837548bf46e5b0db662322650eb4f
+
+pkgname = icon
+
