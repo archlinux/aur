@@ -1,0 +1,17 @@
+pkgbase = isl-git
+	pkgdesc = Library for manipulating sets and relations of integer points bounded by linear constraints (development version)
+	pkgver = 0.14.1.496.g47edc76
+	pkgrel = 1
+	url = http://isl.gforge.inria.fr/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = gmp
+	provides = isl
+	conflicts = isl
+	options = !libtool
+	source = git://repo.or.cz/isl.git
+	md5sums = SKIP
+
+pkgname = isl-git
+
