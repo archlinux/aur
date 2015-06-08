@@ -1,0 +1,15 @@
+pkgbase = fort77
+	pkgdesc = Compile Fortran code with your favourite C compiler (set CC).
+	pkgver = 1.18
+	pkgrel = 3
+	url = http://pubs.opengroup.org/onlinepubs/009696699/utilities/fort77.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = f2c
+	depends = perl
+	source = ftp://ftp.icm.edu.pl/pub/Linux/sunsite/devel/lang/fortran/fort77-1.18.tar.gz
+	sha256sums = bfb3d054b92f97c63bdeb4bd31193824d8ab0469b47aed7d43ec5a66368e097d
+
+pkgname = fort77
+
