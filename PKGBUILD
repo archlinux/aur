@@ -1,7 +1,7 @@
 # Maintainer: BrainDamage
 pkgname=python2-scikit-rf
 pkgver=0.14
-pkgrel=2
+pkgrel=3
 pkgdesc="Scikit-rf (aka skrf) is a python package for RF/Microwave engineering"
 arch=(any)
 url="http://scikit-rf-web.readthedocs.org"
@@ -17,7 +17,12 @@ optdepends=(
 md5sums=("32dad98c349b72912a5529f940741f34")
 source=("https://pypi.python.org/packages/source/s/scikit-rf/scikit-rf-$pkgver.zip")
 
+build () {
+	cd "$srcdir/scikit-rf-$pkgver"
+	python2 setup.py build
+}
+
 package() {
 	cd "$srcdir/scikit-rf-$pkgver"
-	python2 setup.py install --optimize=1 --root="$pkgdir/" --prefix="/usr"
+	python2 setup.py install --root="$pkgdir/" --prefix="/usr"
 }
