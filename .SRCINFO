@@ -1,0 +1,14 @@
+pkgbase = python-schema
+	pkgdesc = Python module to validate and convert data structures.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/halst/schema
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = python
+	source = https://pypi.python.org/packages/source/s/schema/schema-0.3.1.tar.gz
+	sha1sums = 732ef97af28bcc8667ab3cbb1e8c1ac2668623d4
+
+pkgname = python-schema
+
