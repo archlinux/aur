@@ -1,0 +1,16 @@
+pkgbase = arm-frc-linux-gnueabi-eglibc-headers
+	pkgdesc = Embedded GNU C Library. Stage 1 - headers only. Needed for initialy build toolchain (arm-frc-linux-gnueabi)
+	pkgver = 2.17
+	pkgrel = 1
+	url = http://www.eglibc.org
+	arch = any
+	license = GPL
+	makedepends = arm-frc-linux-gnueabi-gcc-stage1
+	makedepends = subversion
+	depends = arm-frc-linux-gnueabi-linux-api-headers
+	options = !strip
+	source = eglibc-2.17::svn://svn.eglibc.org/branches/eglibc-2_17/libc
+	md5sums = SKIP
+
+pkgname = arm-frc-linux-gnueabi-eglibc-headers
+
