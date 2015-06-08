@@ -1,0 +1,17 @@
+pkgbase = gcube
+	pkgdesc = A GameCube emulator, part of the devkitPPC project (including various utilities)
+	pkgver = 0.4.0
+	pkgrel = 2
+	url = http://www.devkitpro.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl
+	depends = libgl
+	depends = libjpeg
+	depends = zlib
+	source = http://downloads.sourceforge.net/sourceforge/devkitpro/emulators/gcube%200.4.0/gcube-0.4.0-src.tar.bz2
+	md5sums = 2354b60a9494fe5669addaf915efeda9
+
+pkgname = gcube
+
