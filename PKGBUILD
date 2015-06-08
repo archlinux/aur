@@ -8,7 +8,7 @@ pkgdesc="Hoe is a rake/rubygems helper for project Rakefiles"
 arch=(any)
 url="http://www.zenspider.com/projects/hoe.html"
 license=("MIT")
-depends=('ruby' 'rake>=0.8' 'rake<=11.0')
+depends=('ruby')
 makedepends=('rubygems')
 source=(http://rubygems.org/downloads/${_gemname}-${pkgver}.gem)
 noextract=(${_gemname}-${pkgver}.gem)

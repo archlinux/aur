@@ -7,8 +7,6 @@ pkgbase = ruby-hoe
 	license = MIT
 	makedepends = rubygems
 	depends = ruby
-	depends = rake>=0.8
-	depends = rake<=11.0
 	noextract = hoe-3.13.1.gem
 	source = http://rubygems.org/downloads/hoe-3.13.1.gem
 	md5sums = 739d4ede50ba5bf9fabb03cef59c3737
