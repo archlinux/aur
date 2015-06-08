@@ -1,0 +1,21 @@
+pkgbase = swordfish-git
+	pkgdesc = File manager
+	pkgver = 20140309.0f1d929
+	pkgrel = 1
+	url = http://www.maui-project.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-declarative
+	depends = qt5-quickcontrols
+	depends = qt5-tools
+	conflicts = hawaii-swordfish-git
+	replaces = hawaii-swordfish-git
+	options = debug
+	source = swordfish::git://github.com/mauios/swordfish.git#branch=master
+	md5sums = SKIP
+
+pkgname = swordfish-git
+
