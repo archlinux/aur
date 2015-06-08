@@ -1,0 +1,11 @@
+update_icon() {
+	xdg-icon-resource forceupdate --theme hicolor
+}
+
+post_install() {
+	update_icon
+}
+
+post_upgrade() {
+	update_icon
+}

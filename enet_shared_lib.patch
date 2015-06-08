@@ -1,0 +1,11 @@
+--- a/src/main.cpp	2015-05-11 22:23:13.147964508 -0500
++++ b/src/main.cpp	2015-05-11 22:24:50.488518671 -0500
+@@ -59,7 +59,7 @@ along with Freeminer.  If not, see <http
+ 
+ #if USE_ENET
+ // todo: move to connection
+-#include "enet/enet.h"
++#include <enet/enet.h>
+ #endif
+ 
+ #ifdef HAVE_TOUCHSCREENGUI

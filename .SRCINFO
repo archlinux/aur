@@ -1,0 +1,35 @@
+pkgbase = freeminer-git
+	pkgdesc = An open source sandbox game inspired by Minecraft. Development version.
+	pkgver = 0.4.12.6.r874.gf1085d3
+	pkgrel = 2
+	url = http://freeminer.org/
+	install = freeminer-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = CCPL:cc-by-sa-3.0
+	makedepends = cmake
+	makedepends = git
+	makedepends = msgpack-c
+	depends = leveldb
+	depends = curl
+	depends = hiredis
+	depends = sqlite
+	depends = luajit
+	depends = xdg-utils
+	depends = irrlicht
+	depends = openal
+	depends = enet
+	depends = libvorbis
+	depends = hicolor-icon-theme
+	provides = freeminer=0.4.12.6.r874.gf1085d3
+	conflicts = freeminer
+	source = git+https://github.com/freeminer/freeminer.git
+	source = freeminer-git.install
+	source = enet_shared_lib.patch
+	sha512sums = SKIP
+	sha512sums = d590345e9b87e4350b7420eebf8f69e4ad65a53415257573b569ed1c85568a40b4f65fc8df5925f7c03af75d340c52a10a4d1389e5d868816aef9711102ebef1
+	sha512sums = abce96de2c2221f1373fc07fc2766de19d1fc2c1339ada0cb98d6b571649413f72ca2ea8c53dc7257f0700dc0509cdfeb0346144f806a626b28d5514b598accd
+
+pkgname = freeminer-git
+
