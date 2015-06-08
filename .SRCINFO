@@ -1,0 +1,14 @@
+pkgbase = firefox-extension-shumway
+	pkgdesc = HTML5 implementation of flash for Firefox
+	pkgver = 0.11.303
+	pkgrel = 1
+	url = https://mozilla.github.io/shumway/
+	arch = any
+	license = MIT
+	makedepends = unzip
+	depends = firefox>=18
+	source = firefox-extension-shumway-0.11.303.xpi::https://mozilla.github.io/shumway/extension/firefox/shumway.xpi
+	sha1sums = SKIP
+
+pkgname = firefox-extension-shumway
+
