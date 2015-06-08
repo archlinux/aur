@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Dreamfall Chapters
+Comment=Dreamfall Chapters
+GenericName=Dreamfall Chapters
+Exec=/usr/bin/dreamfallchapters
+Type=Application
+Terminal=false
+Icon=dreamfallchapters
+StartupNotify=true
+Categories=Game;
+X-Desktop-File-Install-Version=0.22
