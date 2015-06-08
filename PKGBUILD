@@ -1,6 +1,6 @@
 # Maintainer: George Ornbo <george@shapeshed.com>
 
-pkgname=st
+pkgname=st-solarized-light
 pkgver=0.5
 pkgrel=1
 pkgdesc='A simple virtual terminal emulator for X.'
