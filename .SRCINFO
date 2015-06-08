@@ -1,0 +1,33 @@
+pkgbase = xarchiver-assume-name
+	pkgdesc = Xarchiver with the ability to archive directories without a name change
+	pkgver = 0.5.4
+	pkgrel = 1
+	url = http://xarchiver.sourceforge.net/
+	install = xarchiver.install
+	arch = i686
+	arch = x86_64
+	groups = xfce4-goodies
+	license = GPL
+	makedepends = intltool
+	depends = gtk2
+	depends = desktop-file-utils
+	optdepends = zip: ZIP support
+	optdepends = unzip: ZIP support
+	optdepends = p7zip: 7z support
+	optdepends = arj: ARJ support
+	optdepends = lzop: LZOP support
+	optdepends = cpio: RPM support
+	optdepends = unrar: RAR support
+	source = http://downloads.sourceforge.net/xarchiver/xarchiver-0.5.4.tar.bz2
+	source = fix-rpm-support.patch
+	source = fix-password-protected.patch
+	source = add-mime-types.patch
+	source = explicit-extension.patch
+	md5sums = 1b4cd37a6af03afc957a8e307417e8d0
+	md5sums = 812b93339f5e3332621f3c5abebfe277
+	md5sums = 35ab96d98521a0a36f3e9e9ec0969107
+	md5sums = 0cee887b3c989ba2cdce9154813843fb
+	md5sums = 5fb11bb9842f60dd29a0b3267c1ca804
+
+pkgname = xarchiver-assume-name
+
