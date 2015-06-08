@@ -1,0 +1,19 @@
+pkgbase = knotifyconfig-git
+	pkgdesc = KNotifyConfig
+	pkgver = r62.9fcec57
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/knotifyconfig
+	arch = i686
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	depends = kio-git
+	provides = knotifyconfig
+	conflicts = knotifyconfig
+	source = git://anongit.kde.org/knotifyconfig.git
+	md5sums = SKIP
+
+pkgname = knotifyconfig-git
+
