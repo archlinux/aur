@@ -1,0 +1,14 @@
+pkgbase = stlport
+	pkgdesc = An implementation of the C++ Standard Library
+	pkgver = 5.2.1
+	pkgrel = 2
+	url = http://www.stlport.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gcc-libs
+	source = http://downloads.sourceforge.net/project/stlport/STLport/STLport-5.2.1/STLport-5.2.1.tar.gz
+	md5sums = b20ace9f4a487b2614dfbb205bee112c
+
+pkgname = stlport
+
