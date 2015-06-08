@@ -1,0 +1,18 @@
+pkgbase = psp-libjpeg
+	pkgdesc = JPEG image codec (psp)
+	pkgver = 8c
+	pkgrel = 1
+	url = http://freetype.sourceforge.net
+	arch = any
+	groups = psp
+	license = GPL
+	makedepends = psp-gcc
+	depends = psp-sdk
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = git+https://github.com/pspdev/psp-ports.git
+	md5sums = SKIP
+
+pkgname = psp-libjpeg
+
