@@ -1,0 +1,17 @@
+pkgbase = mustache-c-git
+	pkgdesc = Mustache templates implementation in pure c
+	pkgver = 17.c00262c
+	pkgrel = 2
+	url = https://github.com/x86-64/mustache-c
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	depends = glibc
+	provides = mustache-c
+	conflicts = mustache-c
+	source = git+https://github.com/x86-64/mustache-c
+	sha1sums = SKIP
+
+pkgname = mustache-c-git
+
