@@ -1,0 +1,29 @@
+pkgbase = sage-notebook-git
+	pkgdesc = Web-based notebook interface for Sage
+	pkgver = 0.11.2.r4.gc5b3a94
+	pkgrel = 1
+	url = http://www.sagemath.org
+	install = sage-notebook-git.install
+	arch = any
+	license = GPL3
+	makedepends = gendesk
+	depends = sage-mathematics-git
+	depends = python2-twisted
+	depends = python2-flask-oldsessions
+	depends = python2-flask-openid
+	depends = python2-flask-autoindex
+	depends = python2-flask-babel
+	depends = python2-flask-silk
+	depends = python2-webassets
+	optdepends = python2-pyopenssl: to use the notebook in secure mode
+	provides = sage-notebook
+	conflicts = sage-notebook
+	source = git://github.com/sagemath/sagenb
+	source = sage.service
+	source = jmol.patch
+	md5sums = SKIP
+	md5sums = 61620179a7ecd85401d8e5a6ece3ea41
+	md5sums = b29760c97a5328faa179a46008391bf0
+
+pkgname = sage-notebook-git
+
