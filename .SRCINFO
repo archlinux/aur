@@ -1,0 +1,22 @@
+pkgbase = kjobwidgets-git
+	pkgdesc = KJobWidgets
+	pkgver = r63.fe7f90f
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/kjobwidgets
+	arch = i686
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	makedepends = qt5-tools
+	depends = kcoreaddons-git
+	depends = kwidgetsaddons-git
+	depends = qt5-x11extras
+	provides = kjobwidgets
+	conflicts = kjobwidgets
+	source = git://anongit.kde.org/kjobwidgets.git
+	md5sums = SKIP
+
+pkgname = kjobwidgets-git
+
