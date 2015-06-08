@@ -1,0 +1,34 @@
+pkgbase = kazam
+	pkgdesc = A screencasting program with design in mind
+	pkgver = 1.4.5
+	pkgrel = 1
+	url = https://launchpad.net/kazam
+	install = kazam.install
+	arch = any
+	license = GPL
+	depends = python
+	depends = python-cairo
+	depends = python-xdg
+	depends = python-dbus
+	depends = python-distutils-extra
+	depends = python-gobject
+	depends = gobject-introspection
+	depends = gstreamer
+	depends = gtk3
+	depends = pango
+	depends = gdk-pixbuf2
+	depends = libwnck3
+	depends = ffmpeg
+	depends = libmatroska
+	depends = libtheora
+	optdepends = libkeybinder3: hotkeys support
+	optdepends = libappindicator3: indicator on Unity panel support
+	conflicts = kazam-bzr
+	conflicts = kazam-stable-bzr
+	source = https://launchpad.net/kazam/stable/1.4.5/+download/kazam-1.4.5.tar.gz
+	source = version.patch
+	md5sums = 522ac80fef7123875271b30298ed6877
+	md5sums = 847ae2478ae5e35f6e1af49aa9fb3fa9
+
+pkgname = kazam
+
