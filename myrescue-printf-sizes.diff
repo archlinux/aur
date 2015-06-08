@@ -1,0 +1,20 @@
+--- src/myrescue.c.orig	2007-08-26 23:58:58.000000000 +0200
++++ src/myrescue.c	2013-02-14 20:56:28.686584358 +0100
+@@ -98,7 +98,7 @@
+ 			return errno;
+ 		} else {
+ 			fprintf(stderr,"short read: %d of %d\n",
+-				src_count, block_size);
++				(int)src_count, block_size);
+ 			return -1;
+ 		}
+ 	}
+@@ -110,7 +110,7 @@
+ 			return errno;
+ 		} else {
+ 			fprintf(stderr,"short write: %d of %d\n",
+-				dst_count, block_size);
++				(int)dst_count, block_size);
+ 			return -1;
+ 		}
+ 	}
