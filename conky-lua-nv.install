@@ -1,0 +1,9 @@
+post_install() {
+  echo "You must install one of the nvidia packages suitable"
+  echo "for your GPU for the nvidia support to properly work"
+}
+
+post_upgrade() {
+  post_install $1
+}
+
