@@ -1,0 +1,16 @@
+pkgbase = epson-inkjet-printer-stylus-office-tx610fw-series
+	pkgdesc = Epson printer driver (Stylus Office BX610FW, TX610FW / Stylus SX610FW / WorkForce 610, 615)
+	pkgver = 1.0.0
+	pkgrel = 8
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom:Epson Licence Agreement
+	depends = cups
+	depends = ghostscript
+	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-stylus-office-tx610fw-series-1.0.0-1lsb3.2.src.rpm
+	sha256sums = f85b07603aba73b183f814d782451951226132a9db5cd0b5377c3f2cf1a5956c
+
+pkgname = epson-inkjet-printer-stylus-office-tx610fw-series
+
