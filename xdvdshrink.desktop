@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=XDVDShrink
+Comment=Create fair-use archival copies of DVD content on single-layer writable DVDs.
+Exec=xdvdshrink.pl
+Terminal=false
+Type=Application
+Icon=dvdshrink
+Categories=Application;AudioVideo

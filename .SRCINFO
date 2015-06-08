@@ -1,0 +1,25 @@
+pkgbase = xdvdshrink
+	pkgdesc = Create fair-use archival copies of DVD content on single-layer writable DVDs
+	pkgver = 2.6.1.10
+	pkgrel = 8
+	url = http://dvdshrink.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = imagemagick
+	depends = gtk2-perl
+	depends = transcode
+	depends = mjpegtools
+	depends = cdrkit
+	depends = dvd+rw-tools
+	depends = dvdauthor
+	conflicts = dvdshrink
+	source = http://downloads.sourceforge.net/sourceforge/dvdshrink/dvdshrink-2.6.1-10mdk.tar.gz
+	source = xdvdshrink.desktop
+	source = fixes.diff
+	md5sums = 97af304a32d9eb49420a8eb7dffce671
+	md5sums = 5729d34edfdcfacea1bc2398e578afa6
+	md5sums = 231b3789b337acebbce19b1a0e0ac7a1
+
+pkgname = xdvdshrink
+

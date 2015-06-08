@@ -1,0 +1,97 @@
+diff -ru bin.orig/dvdsfunctions bin/dvdsfunctions
+--- bin.orig/dvdsfunctions	2011-01-29 15:31:04.000000000 -0500
++++ bin/dvdsfunctions	2011-01-29 15:31:15.000000000 -0500
+@@ -766,7 +766,7 @@
+    WORKDIR=$BASEDIR/$PROJNAME                  # Working directory
+    VIDEOFILE=$WORKDIR/$PROJNAME.m2v            # MPG2 Video filename
+    SHRNKFILE=$WORKDIR/shrunken.$PROJNAME.m2v   # Shrunken MPG2 Video
+-   AUDIOFILE=$WORKDIR/$PROJNAME.ac3            # AC3 Audio filename
++   AUDIOFILE=$WORKDIR/$PROJNAME.mp3            # MP3 Audio filename
+    SUBFILE=$WORKDIR/$PROJNAME.sub              # Subtitle filename
+    MPGFILE=$WORKDIR/$PROJNAME.mpg              # Final MPGE2 filename
+    MUXFILE=$WORKDIR/muxed.mpg                  # Muxed file (subtitles in)
+@@ -1289,7 +1289,8 @@
+    # Start the stream extraction
+ 
+    tcextract -i $VFIFO -t vob -x mpeg2 > $VIDEOFILE 2> /dev/null &
+-   tcextract -i $AFIFO -a $AUDIO -x ac3 -t vob > $AUDIOFILE 2> /dev/null &
++   tcextract -i $AFIFO -a $AUDIO -x mp3 -t vob > $AUDIOFILE 2> /dev/null &
++   
+    if (($ADDTITLES)); then
+       if [ ! -p $SFIFO ]; then mkfifo $SFIFO > /dev/null 2>&1; fi
+       if (($?)); then
+@@ -1306,7 +1307,7 @@
+    # one pass.
+ 
+    echo -en "   Ripping Title                             \033[31m\033[5mWorking!\033[0m"
+-   TCCMD="nice -n +19 tccat -i $RDEVICE -T $TITLE,-1 -L 2> $DEBUGFILE | tee $FIFOLIST >/dev/null 2> /dev/null"
++   TCCMD="nice -n +19 tccat -i $RDEVICE -T $TITLE,-1 2> $DEBUGFILE | tee $FIFOLIST >/dev/null 2> /dev/null"
+    eval "$TCCMD"
+    if (($?)); then errortrap 2; fi
+ 
+@@ -1933,7 +1934,7 @@
+    if ! ((`ps -C xdvdshrink.pl > /dev/null 2>&1`)); then GUI=1; fi
+    SAVEISO=0            # Save an ISO along with the burn(s)
+ 
+-   APPDIR=/usr/share/applications/dvdshrink
++   APPDIR=/usr/share/dvdshrink
+ }
+ 
+ # Build a minimal but usable XML file for 'dvdauthor'
+diff -ru bin.orig/xdvdshrink.pl bin/xdvdshrink.pl
+--- bin.orig/xdvdshrink.pl	2011-01-29 15:31:04.000000000 -0500
++++ bin/xdvdshrink.pl	2011-01-29 15:31:35.000000000 -0500
+@@ -22,7 +22,7 @@
+ 
+ my $login       =  getlogin || getpwuid($<); # Userid of current user
+ my $homedir     = "/home/" . $login;         # Home dir of current user
+-my $app_dir     = "/usr/share/applications/dvdshrink";
++my $app_dir     = "/usr/share/dvdshrink";
+ my $false       = 0;    # A 'false'
+ my $true        = 1;    # A 'true'
+ my $srunning    = 0;    # Is the bash script running
+@@ -297,7 +297,7 @@
+ $page1_label->show();
+ 
+ $notebook->append_page( $s_main_vbox, $page1_label );
+-$notebook->set_size_request( 690, 450 );
++$notebook->set_size_request( 690, 550 );
+ $s_main_vbox->show();
+ 
+ # Add the 'episode' mode notebook page
+@@ -366,7 +366,7 @@
+    $episode_main_hbox->show();
+    
+    my $episode_l_vbox = Gtk2::VBox->new( $false, 0 );
+-   $episode_l_vbox->set_size_request( 400, 400 );
++   $episode_l_vbox->set_size_request( 400, 500 );
+    $episode_main_hbox->pack_start( $episode_l_vbox, $false, $false, 0 );
+    $episode_l_vbox->show();
+    
+@@ -440,7 +440,7 @@
+          
+    my $subtitlestream_label = Gtk2::Label->new( "Set default subtitle stream (optional)" );
+    $subtitlestream_label->set_alignment( 0, 0 );
+-   $episode_l_vbox->pack_start( $subtitlestream_label, $false, $false, 0 );
++   $episode_l_vbox->pack_start( $subtitlestream_label, $true, $true, 0 );
+    $subtitlestream_label->show();
+ 
+    my $u_hbox = Gtk2::HBox->new( $false, 0 );
+@@ -717,7 +717,7 @@
+ 
+ # The 'remove working files' button.
+ 
+-   $erm_check = Gtk2::CheckButton->new_with_mnemonic( "_Remove working files" );
++   $erm_check = Gtk2::CheckButton->new_with_mnemonic( "_Remove ALL working files" );
+    $erm_check->set_active( $episode_values{ 'RMFILES' } );
+    $erm_check->signal_connect( 'clicked' => sub { 
+       $episode_values{ 'RMFILES' } = $erm_check->get_active() ? $true : $false;
+@@ -997,7 +997,7 @@
+ # The checkbox widgets
+ 
+    $siso_save_check = Gtk2::CheckButton->new_with_mnemonic( "Save ISO with bur_n" );
+-   $rmcheck = Gtk2::CheckButton->new_with_mnemonic( "_Remove working files" );   
++   $rmcheck = Gtk2::CheckButton->new_with_mnemonic( "_Remove ALL working files" );   
+    $aucheck = Gtk2::CheckButton->new_with_mnemonic( "_Author DVD on drive only" );   
+    $shcheck = Gtk2::CheckButton->new_with_mnemonic( "Shrin_k selected title to fit DVD5" );  
+    $sicheck = Gtk2::CheckButton->new_with_mnemonic( "Create _ISO file only" ); 
