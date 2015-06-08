@@ -1,0 +1,6 @@
+post_install() {
+	# This is needed because makepkg doesn't look at AUR repositories for dependencies
+	echo -n "  * Now you have to install coderay with:\n"
+	echo -n "    yaourt -S ruby-coderay\n"
+	echo -n "  (ruby-coderay is a dependency of arcadia).\n"
+}
