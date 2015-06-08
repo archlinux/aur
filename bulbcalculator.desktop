@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=2.1.0
+Name=BulbCalculator
+GenericName=BulbCalculator
+TryExec=BulbCalculator
+Exec=BulbCalculator
+Comment=BulbCalculator - Design your bulb
+Icon=bulbcalculator
+Terminal=false
+Categories=Qt;Science;
+

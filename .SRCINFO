@@ -1,0 +1,18 @@
+pkgbase = bulbcalculator
+	pkgdesc = A progran to design bulbs of sailboat based on Qt and libQGLViewer
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = http://bulbcalculator.wordpress.org
+	install = bulbcalculator.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qt5-base
+	depends = libqglviewer
+	source = http://grys.it/BulbCalculator/bulbcalculator-src-2.2.0.tar.gz
+	source = bulbcalculator.desktop
+	md5sums = 01c4f35f3f8cfd5694d47ea1e18a2723
+	md5sums = 02dc7515355a97830c2796c7b86614dc
+
+pkgname = bulbcalculator
+
