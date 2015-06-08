@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-fmtconv_wrapper-git
+	pkgdesc = Plugin for Vapoursynth: fmtconv_wrapper (GIT version)
+	pkgver = r7
+	pkgrel = 1
+	url = http://forum.doom9.org/showthread.php?t=170633
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = vapoursynth
+	provides = vapoursynth-plugin-fmtconv_wrapper
+	conflicts = vapoursynth-plugin-fmtconv_wrapper
+	source = fmtconv_wrapper::git+https://gist.github.com/c250a0dfefbfb113e925.git
+	md5sums = SKIP
+
+pkgname = vapoursynth-plugin-fmtconv_wrapper-git
+
