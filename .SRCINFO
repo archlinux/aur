@@ -1,0 +1,14 @@
+pkgbase = lib32-enca
+	pkgdesc = Charset analyser and converter (32 bit)
+	pkgver = 1.16
+	pkgrel = 1
+	url = http://cihar.com/software/enca/
+	arch = x86_64
+	license = GPL
+	depends = recode
+	depends = enca
+	source = http://dl.cihar.com/enca/enca-1.16.tar.xz
+	md5sums = 0a1483530b1fdb9e2a54786489ee0b69
+
+pkgname = lib32-enca
+
