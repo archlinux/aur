@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin
+MimeType=all/allfiles;
+Actions=makeTemplate;
+X-KDE-StartupNotify=false
+X-KDE-Priority=TopLevel
+
+[Desktop Action makeTemplate]
+Name=Create template...
+Name[pl]=Stwórz szablon...
+Exec=mktemplate "%u"
+Icon=text-x-generic-template

@@ -1,0 +1,16 @@
+pkgbase = kde-servicemenus-mktemplate
+	pkgdesc = Create user templates from existing files.
+	pkgver = 20140503
+	pkgrel = 1
+	url = http://opendesktop.org/content/show.php?content=165089
+	arch = any
+	license = GPL
+	depends = kdebase-dolphin
+	depends = bash
+	source = mktemplate
+	source = mktemplate.desktop
+	sha256sums = 6654f85ae29a8df1916e956f9ff4c157050573087693163c3f36bde4ff26ad86
+	sha256sums = 2687523aa3cb1161e15b82e5087b1f03fba9a81d1c70a64ee030fd73f8bc5066
+
+pkgname = kde-servicemenus-mktemplate
+
