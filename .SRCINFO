@@ -1,0 +1,28 @@
+pkgbase = kdeplasma-addons-git
+	pkgdesc = All kind of addons to improve your Plasma experience
+	pkgver = r6824.5c16df7
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/workspace/kdeplasma-addons
+	install = kdeplasma-addons-git.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = kdoctools
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = scim
+	makedepends = libibus
+	makedepends = purpose-git
+	depends = plasma-workspace-git
+	depends = kross-git
+	optdepends = scim: SCIM backend for kimpanel
+	optdepends = fcitx: FCITX backend for kimpanel
+	optdepends = libibus: IBUS backend for kimpanel
+	optdepends = purpose-git: quickshare applet
+	provides = kdeplasma-addons
+	conflicts = kdeplasma-addons
+	source = git://anongit.kde.org/kdeplasma-addons.git
+	md5sums = SKIP
+
+pkgname = kdeplasma-addons-git
+
