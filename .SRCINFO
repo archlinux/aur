@@ -1,0 +1,28 @@
+pkgbase = konversation-git
+	pkgdesc = A user friendly IRC client for KDE. (GIT Version)
+	pkgver = 1.6.master.5004.r8097.8efbd55
+	pkgrel = 1
+	url = http://konversation.kde.org
+	install = konversation-git.install
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	license = FDL
+	makedepends = git
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	makedepends = python
+	depends = knotifyconfig
+	depends = kemoticons
+	depends = kparts
+	depends = kidletime
+	depends = qca-qt5
+	depends = hicolor-icon-theme
+	optdepends = python: python scripting support
+	provides = konversation
+	conflicts = konversation
+	source = git://anongit.kde.org/konversation
+	sha1sums = SKIP
+
+pkgname = konversation-git
+
