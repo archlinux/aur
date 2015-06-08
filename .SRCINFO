@@ -1,0 +1,19 @@
+pkgbase = flybird
+	pkgdesc = A dual-paned GTK+ file manager with integrated tabbed consoles and gnome-vfs support
+	pkgver = 0.3.0
+	pkgrel = 2
+	url = http://daafm.sourceforge.net/
+	install = flybird.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	makedepends = scons
+	depends = eel-language
+	depends = gnome-menus
+	depends = vte
+	source = http://downloads.sourceforge.net/daafm/flybird_0_3_0.tar.bz2
+	md5sums = eeeb707d388dbc6ba91d8d1d6b22e457
+
+pkgname = flybird
+
