@@ -1,0 +1,20 @@
+pkgbase = psp-zlib
+	pkgdesc = Compression library implementing the deflate compression method found in gzip and PKZIP (psp)
+	pkgver = 1.2.8
+	pkgrel = 1
+	url = http://www.zlib.net/
+	arch = any
+	groups = psp
+	license = custom
+	makedepends = psp-gcc
+	depends = psp-sdk
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = http://sourceforge.net/projects/libpng/files/zlib/1.2.8/zlib-1.2.8.tar.gz
+	source = https://raw.githubusercontent.com/pspdev/psplibraries/master/patches/zlib-1.2.8-PSP.patch
+	md5sums = 44d667c142d7cda120332623eab69f40
+	md5sums = SKIP
+
+pkgname = psp-zlib
+
