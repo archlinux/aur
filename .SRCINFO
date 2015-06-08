@@ -7,7 +7,7 @@ pkgbase = yakuake-skin-breeze
 	license = GPL
 	depends = yakuake
 	source = breeze.tar.xz::https://copy.com/PyyxvzP1XCLLsG8Q/breeze.tar.xz?download=1
-	sha256sums = f05e284b904b6604fa041bbde958a60671b6d8639c137d8edcaeda29a57fe001
+	sha256sums = c2cd3f9e529d29fa5f29d4e35e27ba3f8d06e90cd449cfc325c5d648e874f654
 
 pkgname = yakuake-skin-breeze
 

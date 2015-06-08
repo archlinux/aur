@@ -1,7 +1,7 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
-_basename=breeze
-pkgname=yakuake-skin-${_basename}
+_pkgname=breeze
+pkgname=yakuake-skin-${_pkgname}
 pkgver=1.0
 pkgrel=2
 pkgdesc="A Breeze skin for Yakuake"
@@ -9,13 +9,10 @@ arch=('any')
 url="http://opendesktop.org/content/show.php?content=167519"
 license=('GPL')
 depends=('yakuake')
-source=("${_basename}.tar.xz::https://copy.com/PyyxvzP1XCLLsG8Q/breeze.tar.xz?download=1")
-sha256sums=('f05e284b904b6604fa041bbde958a60671b6d8639c137d8edcaeda29a57fe001')
+source=("${_pkgname}.tar.xz::https://copy.com/PyyxvzP1XCLLsG8Q/breeze.tar.xz?download=1")
+sha256sums=('c2cd3f9e529d29fa5f29d4e35e27ba3f8d06e90cd449cfc325c5d648e874f654')
 
 package() {
     cd ${srcdir}
-    find ${_basename}/* -type f -exec install -Dm644 '{}' "${pkgdir}/usr/share/apps/yakuake/skins/{}" \;
-    find ${pkgdir}/usr -type f -exec chmod 644 {} \;
-    find ${pkgdir}/usr -type d -exec chmod 755 {} \;
-    find ${pkgdir}/usr -type f -name '.directory' -delete
+    find ${_pkgname}/* -type f -exec install -Dm644 '{}' "${pkgdir}/usr/share/apps/yakuake/skins/{}" \;
 }  
