@@ -1,0 +1,16 @@
+pkgbase = pynetfilter_conntrack
+	pkgdesc = pynetfilter_conntrack is a Python binding of libnetfilter_conntrack. The binding is the file pynetfilter_conntrack.py and you have also a clone of conntrack program: conntrack.py.
+	pkgver = 0.4.2
+	pkgrel = 2
+	url = https://pypi.python.org/pypi/pynetfilter_conntrack
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libnetfilter_conntrack>=0.0.75
+	depends = python2
+	depends = python2-ipy
+	source = http://cheeseshop.python.org/packages/source/p/pynetfilter_conntrack/pynetfilter_conntrack-0.4.2.tar.gz
+	md5sums = 78be53e165f5851b31d2cbea4c8bd3f2
+
+pkgname = pynetfilter_conntrack
+
