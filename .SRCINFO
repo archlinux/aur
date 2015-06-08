@@ -1,0 +1,16 @@
+pkgbase = perl-moosex-event
+	pkgdesc = MooseX::Event - A Node style event Role for Moose
+	pkgver = v0.2.0
+	pkgrel = 1
+	url = http://search.cpan.org/dist/MooseX-Event
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-any-moose>=0.15
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/W/WI/WINTER/MooseX-Event-v0.2.0.tar.gz
+	md5sums = cd91d58d052d2bfdc99c56eb2f340d65
+	sha512sums = 172abe452daab784f24f78f0a05836c18b28634c8281966066890a92be886d61569a9d5fbc3146ba2885149631c1a88fd0cd23ca625889c4392f71834555f7c3
+
+pkgname = perl-moosex-event
+
