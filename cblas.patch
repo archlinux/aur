@@ -1,0 +1,11 @@
+--- src/Makefile.orig	2011-01-05 11:39:24.000000000 +0100
++++ src/Makefile	2011-01-05 11:42:20.000000000 +0100
+@@ -234,7 +234,7 @@
+ all: $(alev)  
+ 	$(ARCH) $(ARCHFLAGS)  $(CBLIB) $(alev) 
+ 	$(RANLIB) $(CBLIB)
+-
++	$(CC) $(CCFLAGS) -shared -Wl,--allow-multiple-definition,--out-implib,lib/libcblas.dll.a -o $(CBSHLIB) $(alev) -lm -lblas
+ 
+ .SUFFIXES: .o .c .f
+ 

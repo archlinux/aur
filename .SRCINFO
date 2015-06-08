@@ -1,0 +1,24 @@
+pkgbase = mingw-w64-cblas
+	pkgdesc = C interface to the BLAS. (mingw-w64)
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = http://www.netlib.org/blas
+	arch = any
+	license = custom
+	makedepends = mingw-w64-gcc
+	depends = mingw-w64-crt
+	depends = mingw-w64-blas
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = http://www.netlib.org/blas/blast-forum/cblas.tgz
+	source = cblas.patch
+	source = Makefile.in
+	source = LICENSE
+	md5sums = 1e8830f622d2112239a4a8a83b84209a
+	md5sums = 0c60051f82c02d2d2e4744b906ad5417
+	md5sums = 5a6fcfc51b57e432b6bbfaf9038e03d3
+	md5sums = 38b6acb8ed5691d25863319d30a8b365
+
+pkgname = mingw-w64-cblas
+
