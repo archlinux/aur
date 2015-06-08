@@ -1,0 +1,13 @@
+pkgbase = eclipse-wickedshell
+	pkgdesc = a plugin that enables the use of the system shell directly from the eclipse IDE
+	pkgver = 2.0.6
+	pkgrel = 1
+	url = http://www.wickedshell.net/
+	arch = any
+	license = EPL
+	depends = eclipse
+	source = http://downloads.sourceforge.net/wickedshell/net.sf.wickedshell.feature_2.0.6.zip
+	sha256sums = 536f3dd994b108ae3b0562bdb8e1195713f19e85b152199d2b48bd8948559087
+
+pkgname = eclipse-wickedshell
+
