@@ -1,3 +1,0 @@
-USER="smsd"
-GROUP="smsd"
-
