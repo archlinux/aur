@@ -1,0 +1,22 @@
+pkgbase = psp-sdl_ttf
+	pkgdesc = A simple library to load ttfs of various formats as SDL surfaces (psp)
+	pkgver = 2.0.11
+	pkgrel = 1
+	url = http://www.libsdl.org/projects/SDL_ttf/
+	arch = any
+	license = custom
+	makedepends = psp-gcc
+	makedepends = psp-pkg-config
+	depends = psp-sdk
+	depends = psp-sdl
+	depends = psp-freetype2
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = http://www.libsdl.org/projects/SDL_ttf/release/SDL_ttf-2.0.11.tar.gz
+	source = SDL_ttf-2.0.11-PSP.patch
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = psp-sdl_ttf
+

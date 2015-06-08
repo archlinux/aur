@@ -1,0 +1,56 @@
+diff -burN SDL_ttf-2.0.10/config.sub SDL_ttf/config.sub
+--- SDL_ttf-2.0.10/config.sub	2009-10-13 01:06:38.000000000 +0200
++++ SDL_ttf/config.sub	2012-01-15 23:22:35.440349052 +0100
+@@ -942,6 +942,10 @@
+ 	ps2)
+ 		basic_machine=i386-ibm
+ 		;;
++	psp)
++		basic_machine=mipsallegrexel-psp
++		os=-elf
++		;;
+ 	pw32)
+ 		basic_machine=i586-unknown
+ 		os=-pw32
+diff -burN SDL_ttf-2.0.10/configure.in SDL_ttf/configure.in
+--- SDL_ttf-2.0.10/configure.in	2009-10-13 01:06:38.000000000 +0200
++++ SDL_ttf/configure.in	2012-01-15 23:22:35.440349052 +0100
+@@ -87,6 +87,9 @@
+             use_version_rc=true
+         fi
+         ;;
++    *-psp-*)
++        CFLAGS="$CFLAGS -G0"
++    ;;
+ esac
+ AM_CONDITIONAL(USE_VERSION_RC, test x$use_version_rc = xtrue)
+ 
+@@ -154,6 +157,10 @@
+ 	fi
+         SYS_GL_LIBS=""
+         ;;
++    *-psp-*)
++        MATHLIB="-lm"
++        SYS_GL_LIBS="-lGL -lpsprtc"
++        ;;
+     *)
+         MATHLIB="-lm"
+         AC_PATH_X
+diff -burN SDL_ttf-2.0.10/README.PSP SDL_ttf/README.PSP
+--- SDL_ttf-2.0.10/README.PSP	1970-01-01 01:00:00.000000000 +0100
++++ SDL_ttf/README.PSP	2012-01-15 23:22:35.441349036 +0100
+@@ -0,0 +1,14 @@
++Requirements:
++
++   freetype
++   SDL
++
++To build and install:
++
++   ./autogen.sh
++   LDFLAGS="-L$(psp-config --pspsdk-path)/lib" LIBS="-lc -lpspuser" \
++     ./configure --host psp --with-sdl-prefix=$(psp-config --psp-prefix) \
++     --with-freetype-prefix=$(psp-config --psp-prefix) \
++     --without-x --prefix=$(psp-config --psp-prefix)
++   make
++   make install
