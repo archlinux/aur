@@ -1,10 +1,11 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
-# Contributor: Kuba Serafinowski <zizzfizzix(at)gmail(dot)com>
-
+# Maintainer: Moritz Kaspar Rudert <me@mortzu.de>
+# Contributors:
+#  Kuba Serafinowski <zizzfizzix(at)gmail(dot)com>
+#  Antonio Rojas <arojas@archlinux.org>
 pkgname=oxd4l
 pkgver=0.0.1
 pkgrel=1
-pkgdesc='Open-Xchange based on the Owncloud client'
+pkgdesc='Open-Xchange drive client based on the Owncloud client'
 arch=(i686 x86_64)
 url='https://github.com/mortzu/OXd4L'
 license=(GPL2)

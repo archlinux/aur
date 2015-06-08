@@ -1,5 +1,5 @@
 pkgbase = oxd4l
-	pkgdesc = Open-Xchange based on the Owncloud client
+	pkgdesc = Open-Xchange drive client based on the Owncloud client
 	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://github.com/mortzu/OXd4L
