@@ -1,0 +1,29 @@
+--- a/finger/display.c
++++ b/finger/display.c
+@@ -117,9 +117,12 @@ fxputc(FILE *f, int ch)
+ 	 * 
+ 	 * It would be nice if we could set the terminal to display in the
+ 	 * right charset, but we have no way to know what it is. feh.
++	 *
++	 * (Stripping of 128-159 is no longer necessary and in fact actively
++	 * harmful with UTF-8-capable terminals. Removed. --grawity)
+ 	 */
+ 	
+-	if (((ch&0x7f) >= 32 && (ch&0x7f) != 0x7f) || ch=='\t') {
++	if ((ch >= 32 && ch != 0x7f) || ch=='\t') {
+ 		putc(ch, f);
+ 		return;
+ 	}
+@@ -130,12 +133,6 @@ fxputc(FILE *f, int ch)
+ 		return;
+ 	}
+ 
+-	if (ch&0x80) {
+-		putc('M', f);
+-		putc('-', f);
+-		ch &= 0x7f;
+-	}
+-
+ 	putc('^', f);
+ 	if (ch==0x7f) putc('?', f);
+ 	else putc(ch+'@', f);

@@ -1,0 +1,11 @@
+[Unit]
+Description=Finger remote user information server
+Documentation=man:in.fingerd(8)
+Documentation=man:finger(1)
+
+[Socket]
+ListenStream=79
+Accept=yes
+
+[Install]
+WantedBy=sockets.target

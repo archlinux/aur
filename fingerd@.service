@@ -1,0 +1,8 @@
+[Unit]
+Description=Finger remote user information server
+Documentation=man:in.fingerd(8)
+Documentation=man:finger(1)
+
+[Service]
+ExecStart=/usr/bin/in.fingerd
+StandardInput=socket

@@ -1,0 +1,9 @@
+service finger
+{
+	disable		= yes
+	socket_type	= stream
+	wait		= no
+	user		= nobody
+	server		= /usr/bin/in.fingerd
+	flags		= IPv6
+}
