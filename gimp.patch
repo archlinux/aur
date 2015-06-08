@@ -1,0 +1,23 @@
+67a68,69
+> static char cur_filename[256];
+> 
+88a91
+> static void on_edit( GtkWidget* btn, MainWin* mw );
+337a341,342
+>       strncpy(cur_filename, filename, 255);
+>       cur_filename[255] = '\0';
+920a926,932
+> void on_edit( GtkWidget* btn, MainWin* mw )
+> {
+>     if (!fork()) {
+>         execlp("gimp", "gimp", cur_filename, (char *)NULL);
+>     }
+> }
+> 
+1184a1197,1200
+>         case GDK_e:
+>         case GDK_E:
+>             on_edit( NULL, mw );
+>             break;
+1460a1477
+>         PTK_IMG_MENU_ITEM( N_("Edit with GIMP"), GTK_STOCK_EDIT, G_CALLBACK(on_edit), GDK_E, 0 ),
