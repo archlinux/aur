@@ -1,0 +1,85 @@
+From cd956a7023bfc0d123394afd04469710d53f358e Mon Sep 17 00:00:00 2001
+From: Maxime Gauduin <alucryd@gmail.com>
+Date: Fri, 13 Mar 2015 14:46:03 +0100
+Subject: [PATCH] Use GTK3 Mono bindings
+
+---
+ CMakeLists.txt                      | 20 +++++++++++++++-----
+ Dbus/interfaces/mono/CDApplet.cs    |  2 +-
+ Dbus/interfaces/mono/CMakeLists.txt | 19 +++++++++++++------
+ 3 files changed, 29 insertions(+), 12 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7b835ef..4be60eb 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -573,12 +573,22 @@ if (enable-mono-interface)
+ 	if (NOT GMCS_EXECUTABLE OR NOT EXISTS ${GMCS_EXECUTABLE})
+ 		message (STATUS "Could not find Mono compiler gmcs, won't build Mono interface.")
+ 	else()
+-		pkg_check_modules (MONO_PACKAGE dbus-sharp-2.0 dbus-sharp-glib-2.0 glib-sharp-2.0)
++		pkg_check_modules (MONO_PACKAGE dbus-sharp-2.0 dbus-sharp-glib-2.0)
++		pkg_search_module (GLIB_SHARP glib-sharp-3.0 glib-sharp-2.0)
+ 		if (NOT MONO_PACKAGE_FOUND)
+-			message (STATUS "Could not find dbus-sharp-2.0, dbus-sharp-glib-2.0 or glib-sharp-2.0; won't be built Mono interface.")
+-			message (WARNING "These modules are required to compile DBus applet with Mono interface: dbus-sharp-2.0, dbus-sharp-glib-2.0 and glib-sharp-2.0")
+-			set (MODULES_MISSING "${MODULES_MISSING} dbus-sharp-2.0 dbus-sharp-glib-2.0 glib-sharp-2.0")
+-		else()
++			message (STATUS "Could not find dbus-sharp-2.0 and dbus-sharp-glib-2.0; won't build Mono interface.")
++			message (WARNING "These modules are required to compile DBus applet with Mono interface: dbus-sharp-2.0 and dbus-sharp-glib-2.0")
++			set (MODULES_MISSING "${MODULES_MISSING} dbus-sharp-2.0 dbus-sharp-glib-2.0")
++		endif()
++		if (NOT GLIB_SHARP_FOUND)
++			message (STATUS "Could not find either glib-sharp-3.0 or glib-sharp-2.0; won't build Mono interface.")
++			message (WARNING "One of these modules is required to compile DBus applet with Mono interface: glib-sharp-3.0 or glib-sharp-2.0")
++			set (MODULES_MISSING "${MODULES_MISSING} glib-sharp-3.0")
++		endif()
++		if (MONO_PACKAGE_FOUND AND GLIB_SHARP_FOUND)
++			if (GLIB_SHARP_VERSION VERSION_GREATER 2.99.0)
++				set (GLIB_SHARP_3 TRUE)
++			endif()
+ 			set (MONO_FOUND TRUE)
+ 			set (with_mono yes)
+ 		endif()
+diff --git a/Dbus/interfaces/mono/CDApplet.cs b/Dbus/interfaces/mono/CDApplet.cs
+index 2ced75a..3b047be 100644
+--- a/Dbus/interfaces/mono/CDApplet.cs
++++ b/Dbus/interfaces/mono/CDApplet.cs
+@@ -21,7 +21,7 @@
+ // Make your own class derive from a CDApplet, and override the functions you need (the ones which don't start with an underscore).
+ 
+ // Compile it with the following command, then rename 'demo_mono.exe' to 'demo_mono'.
+-// gmcs /target:library CDApplet.cs ISubApplet.cs IApplet.cs -pkg:dbus-sharp-2.0 -pkg:dbus-sharp-glib-2.0 -pkg:glib-sharp-2.0
++// gmcs /target:library CDApplet.cs ISubApplet.cs IApplet.cs -pkg:dbus-sharp-2.0 -pkg:dbus-sharp-glib-2.0 -pkg:glib-sharp-3.0
+   //////////////////////////
+  ////// dependancies //////
+ //////////////////////////
+diff --git a/Dbus/interfaces/mono/CMakeLists.txt b/Dbus/interfaces/mono/CMakeLists.txt
+index d7a27a2..eba8069 100644
+--- a/Dbus/interfaces/mono/CMakeLists.txt
++++ b/Dbus/interfaces/mono/CMakeLists.txt
+@@ -1,11 +1,18 @@
+ 	
+ ########### install files ###############
+-
+-execute_process(COMMAND ${GMCS_EXECUTABLE}
+-	-target:library
+-	-pkg:dbus-sharp-2.0 -pkg:dbus-sharp-glib-2.0 -pkg:glib-sharp-2.0
+-	-out:${CMAKE_CURRENT_BINARY_DIR}/CDApplet.dll
+-	${CMAKE_CURRENT_SOURCE_DIR}/CDApplet.cs ${CMAKE_CURRENT_SOURCE_DIR}/ISubApplet.cs ${CMAKE_CURRENT_SOURCE_DIR}/IApplet.cs)
++if (GLIB_SHARP_3)
++	execute_process(COMMAND ${GMCS_EXECUTABLE}
++		-target:library
++		-pkg:dbus-sharp-2.0 -pkg:dbus-sharp-glib-2.0 -pkg:glib-sharp-3.0
++		-out:${CMAKE_CURRENT_BINARY_DIR}/CDApplet.dll
++		${CMAKE_CURRENT_SOURCE_DIR}/CDApplet.cs ${CMAKE_CURRENT_SOURCE_DIR}/ISubApplet.cs ${CMAKE_CURRENT_SOURCE_DIR}/IApplet.cs)
++else()
++	execute_process(COMMAND ${GMCS_EXECUTABLE}
++		-target:library
++		-pkg:dbus-sharp-2.0 -pkg:dbus-sharp-glib-2.0 -pkg:glib-sharp-2.0
++		-out:${CMAKE_CURRENT_BINARY_DIR}/CDApplet.dll
++		${CMAKE_CURRENT_SOURCE_DIR}/CDApplet.cs ${CMAKE_CURRENT_SOURCE_DIR}/ISubApplet.cs ${CMAKE_CURRENT_SOURCE_DIR}/IApplet.cs)
++endif()
+ ### find how to register to GAC ...
+ set (MONO_LIB_DIR "${CMAKE_INSTALL_PREFIX}/lib/cli/cairo-dock-plug-ins")
+ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/CDApplet.dll
