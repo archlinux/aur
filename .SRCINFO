@@ -1,0 +1,18 @@
+pkgbase = qscite
+	pkgdesc = A code editor written in C++ and Qt4; A clone of SciTE
+	pkgver = 0.5_svn211
+	pkgrel = 2
+	url = http://qscite.googlecode.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt4
+	source = http://qscite.googlecode.com/files/qscite-r211.tar.gz
+	source = get_qsci.sh.patch
+	source = qscite.pro.patch
+	md5sums = 2ce7a915e5560725d897816688a4bef7
+	md5sums = 0bb49a6179912d6d0b674c5623a45a34
+	md5sums = c13cc624b2ed1ce7a980afbb2d2bbc15
+
+pkgname = qscite
+

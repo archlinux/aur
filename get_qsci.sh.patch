@@ -1,0 +1,11 @@
+--- get_qsci.sh.old	2011-03-22 15:20:40.000000000 +0300
++++ get_qsci.sh	2013-09-17 01:46:11.755695009 +0400
+@@ -6,7 +6,7 @@
+     /snapshot/ {next}
+     /tar\.gz/ { print $2 }
+   ' )
+-_download_link="http://www.riverbankcomputing.co.uk$_download_path"
++_download_link=`echo $_download_path | sed "s#http://#http://optimate.dl.#" | sed "s#projects/pyqt/files#project/pyqt#"`
+ _archive_filename=$( basename "$_download_path" )
+ _archive_dir=$( echo "$_archive_filename" | sed 's/.tar.gz//' )
+ _archive_size=$(
