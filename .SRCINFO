@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-nlopt
+	pkgdesc = nonlinear optimization library (mingw-w64)
+	pkgver = 2.4.2
+	pkgrel = 2
+	url = http://ab-initio.mit.edu/wiki/index.php/NLopt
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = http://ab-initio.mit.edu/nlopt/nlopt-2.4.2.tar.gz
+	md5sums = d0b8f139a4acf29b76dbae69ade8ac54
+
+pkgname = mingw-w64-nlopt
+
