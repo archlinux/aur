@@ -1,7 +1,7 @@
 # Maintainer: Jack L. Frost <fbt@fleshless.org>
 
 pkgname=fskit-git
-pkgver=r197.e626604
+pkgver=r209.bddabd0
 pkgrel=1
 pkgdesc='Filesystem utility library and SDK'
 url='https://github.com/jcnelson/fskit.git'
@@ -31,7 +31,8 @@ build() {
 
 package() {
 	cd "${pkgname}"
-	make DESTDIR="${pkgdir}" install
+	make INCLUDEDIR="${pkgdir}/usr/include" \
+	     LIBDIR="${pkgdir}/usr/lib" \
+	     PKGCONFIGDIR="${pkgdir}/usr/lib/pkgconfig" \
+	     install
 }
-
-# vim: noet 
