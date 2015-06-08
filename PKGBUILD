@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-theme-copernico-git
 _pkgname=copernico
-pkgver=7.bc76060
+pkgver=8.db365d0
 pkgrel=1
 pkgdesc="A theme for the GNOME Shell which provides a slightly more pleasant visual impression."
 arch=('any')
