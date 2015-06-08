@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=Game;AdventureGame;
+Exec=/usr/bin/here-and-there-along-the-echo
+Icon=here-and-there-along-the-echo
+Terminal=false
+Type=Application
+Name=Here And There Along The Echo
+Comment=Here And There Along The Echo - Kentucky Route Zero
