@@ -1,0 +1,17 @@
+pkgbase = mmaker
+	pkgdesc = MagicPoint Preprocessor
+	pkgver = 1.24.2
+	pkgrel = 2
+	url = http://www.icir.org/mallman/software/mmaker
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = magicpoint
+	depends = perl
+	source = http://www.icir.org/mallman/software/mmaker/mmaker-1.24.2.tar.gz
+	source = mmaker-resetarea.diff
+	md5sums = e6ed3aa51fce1126994df84c1f24dc22
+	md5sums = 3f5a84a9e508d88befb225d089ce6d6a
+
+pkgname = mmaker
+
