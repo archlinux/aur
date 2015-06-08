@@ -1,0 +1,78 @@
+diff -burN orig.gdb-7.3.1/bfd/doc/bfd.texinfo gdb-7.3.1/bfd/doc/bfd.texinfo
+--- orig.gdb-7.3.1/bfd/doc/bfd.texinfo	2010-10-28 13:40:25.000000000 +0200
++++ gdb-7.3.1/bfd/doc/bfd.texinfo	2013-08-29 23:05:29.319533968 +0200
+@@ -321,9 +321,9 @@
+ @unnumbered BFD Index
+ @printindex cp
+ 
++@c I think something like @colophon should be in texinfo.  In the
++@c meantime:
+ @tex
+-% I think something like @colophon should be in texinfo.  In the
+-% meantime:
+ \long\def\colophon{\hbox to0pt{}\vfill
+ \centerline{The body of this manual is set in}
+ \centerline{\fontname\tenrm,}
+@@ -333,7 +333,7 @@
+ \centerline{{\sl\fontname\tensl\/}}
+ \centerline{are used for emphasis.}\vfill}
+ \page\colophon
+-% Blame: doc@cygnus.com, 28mar91.
+ @end tex
++@c Blame: doc@cygnus.com, 28mar91.
+ 
+ @bye
+diff -burN orig.gdb-7.3.1/gdb/doc/gdbint.texinfo gdb-7.3.1/gdb/doc/gdbint.texinfo
+--- orig.gdb-7.3.1/gdb/doc/gdbint.texinfo	2011-02-04 20:10:12.000000000 +0100
++++ gdb-7.3.1/gdb/doc/gdbint.texinfo	2013-08-29 23:09:03.514998167 +0200
+@@ -35,7 +35,7 @@
+ 
+ @titlepage
+ @title @value{GDBN} Internals
+-@subtitle{A guide to the internals of the GNU debugger}
++@subtitle A guide to the internals of the GNU debugger
+ @author John Gilmore
+ @author Cygnus Solutions
+ @author Second Edition:
+diff -burN orig.gdb-7.3.1/gdb/doc/gdb.texinfo gdb-7.3.1/gdb/doc/gdb.texinfo
+--- orig.gdb-7.3.1/gdb/doc/gdb.texinfo	2011-09-04 19:10:37.000000000 +0200
++++ gdb-7.3.1/gdb/doc/gdb.texinfo	2013-08-29 23:07:59.951032483 +0200
+@@ -4792,7 +4792,7 @@
+ 
+ 
+ @kindex advance @var{location}
+-@itemx advance @var{location}
++@item advance @var{location}
+ Continue running the program up to the given @var{location}.  An argument is
+ required, which should be of one of the forms described in
+ @ref{Specify Location}.
+@@ -5582,7 +5582,7 @@
+ @kindex set exec-direction
+ @item set exec-direction
+ Set the direction of target execution.
+-@itemx set exec-direction reverse
++@item set exec-direction reverse
+ @cindex execute forward or backward in time
+ @value{GDBN} will perform all execution commands in reverse, until the
+ exec-direction mode is changed to ``forward''.  Affected commands include
+@@ -36953,9 +36953,9 @@
+ 
+ @printindex cp
+ 
++@c I think something like @colophon should be in texinfo.  In the
++@c meantime:
+ @tex
+-% I think something like @colophon should be in texinfo.  In the
+-% meantime:
+ \long\def\colophon{\hbox to0pt{}\vfill
+ \centerline{The body of this manual is set in}
+ \centerline{\fontname\tenrm,}
+@@ -36966,7 +36966,7 @@
+ \centerline{{\sl\fontname\tensl\/}}
+ \centerline{are used for emphasis.}\vfill}
+ \page\colophon
+-% Blame: doc@cygnus.com, 1991.
+ @end tex
++@c Blame: doc@cygnus.com, 1991.
+ 
+ @bye
