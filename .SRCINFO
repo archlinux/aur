@@ -1,0 +1,20 @@
+pkgbase = kwidgetsaddons-git
+	pkgdesc = KWidgetsAddons
+	pkgver = r104.f916635
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/kwidgetsaddons
+	arch = i686
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	makedepends = qt5-tools
+	depends = qt5-base
+	provides = kwidgetsaddons
+	conflicts = kwidgetsaddons
+	source = git://anongit.kde.org/kwidgetsaddons.git
+	md5sums = SKIP
+
+pkgname = kwidgetsaddons-git
+
