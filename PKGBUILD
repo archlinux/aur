@@ -3,7 +3,7 @@
 
 pkgname=rbdoom-3-bfg
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Doom 3 BFG source code (Robert Beckebans repo)."
 arch=('i686' 'x86_64')
 url="https://github.com/RobertBeckebans/RBDOOM-3-BFG"
@@ -18,7 +18,7 @@ optdepends=('alsa-plugins: pulseaudio-support'
 source=("https://github.com/RobertBeckebans/RBDOOM-3-BFG/archive/${pkgver}.tar.gz"
         'rbdoom-3-bfg.desktop')
 sha256sums=('961182e741529c0a3634f1892d067b724ddd800cca936522c1d70415789e6bfb'
-            'b138577e7716e770e189acc58ac145d7426bd2c0719236630e93743ff1345bb3')
+            '4c357bd33249b75ee05d0f3f54168f2affc0d56c8a270ba3c4f567b411d57939')
 
 build() {
   mkdir "$srcdir/RBDOOM-3-BFG-$pkgver/build"
