@@ -1,0 +1,17 @@
+pkgbase = mspgcc-mcu-bin
+	pkgdesc = Spec files, headers and linker scripts for TI's MSP430 targets
+	pkgver = 20120406
+	pkgrel = 1
+	url = https://launchpad.net/ubuntu/+source/msp430mcu
+	arch = any
+	license = GPL
+	provides = mspgcc-mcu
+	conflicts = mspgcc-mcu
+	options = libtool
+	options = staticlibs
+	options = !strip
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/msp430mcu_20120406-2_all.deb
+	md5sums = 9d9485684954c803654ecbe3856a8949
+
+pkgname = mspgcc-mcu-bin
+
