@@ -1,0 +1,18 @@
+pkgbase = mach64drm
+	pkgdesc = Mach64 DRM module
+	pkgver = 20150222
+	pkgrel = 1
+	url = http://dri.freedesktop.org/wiki/DRM
+	install = mach64drm.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = linux-headers
+	depends = linux
+	optdepends = mach64-dri: Mesa DRI drivers for Mach64
+	optdepends = xf86-video-mach64: X.Org Mach64 video driver
+	source = http://trya.alwaysdata.net/linux/mach64-20150222.tar.gz
+	md5sums = b763647c584bb524db3d7418651dcd4e
+
+pkgname = mach64drm
+
