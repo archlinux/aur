@@ -1,0 +1,15 @@
+pkgbase = megacmd
+	pkgdesc = A command-line client for mega.co.nz storage service
+	pkgver = 0.012
+	pkgrel = 1
+	url = https://github.com/t3rm1n4l/megacmd/
+	install = megacmd.install
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	options = !strip
+	options = !emptydirs
+
+pkgname = megacmd
+

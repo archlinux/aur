@@ -1,0 +1,11 @@
+post_install() {
+  echo "Create a ~/.megacmd.json file, like this:"
+  echo "{"
+  echo ' "User" : "youremail@email.com",'
+  echo ' "Password" : "yourpassword",'
+  echo ' "DownloadWorkers" : 4,'
+  echo ' "UploadWorkers" : 4,'
+  echo ' "SkipSameSize" : true,'
+  echo ' "Verbose" : 1'
+  echo "}"
+}
