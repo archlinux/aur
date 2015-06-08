@@ -3,12 +3,11 @@ pkgbase = rdictcc-git
 	pkgver = 20120324
 	pkgrel = 1
 	url = https://github.com/tsdh/rdictcc
-	install = rdictcc-git.install
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = ruby
 	depends = gdbm
-	provides = rdictcc
 	conflicts = rdictcc
 
 pkgname = rdictcc-git
