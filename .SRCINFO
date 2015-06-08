@@ -1,0 +1,29 @@
+pkgbase = loudmouth-ossl
+	pkgdesc = A lightweight Jabber client library written in C/Glib. Build with OpenSSL instead of gnutsl (build with gnutls don't work with latest mcabber)
+	pkgver = 1.4.3
+	pkgrel = 5
+	url = http://groups.google.com/group/loudmouth-dev
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = intltool
+	makedepends = pkgconfig
+	makedepends = gtk-doc
+	depends = glib2
+	depends = openssl
+	depends = libidn
+	conflicts = loudmouth
+	options = !libtool
+	source = http://ftp.gnome.org/pub/gnome/sources/loudmouth/1.4/loudmouth-1.4.3.tar.bz2
+	source = 01-fix-sasl-md5-digest-uri.patch
+	source = 03-drop-stanzas-on-fail.patch
+	source = 07-glib-single-include.patch
+	source = 08-fix-ipv6-connect.patch
+	md5sums = 55339ca42494690c3942ee1465a96937
+	md5sums = dc799cea18b24847b1e008c7424010a3
+	md5sums = b7b2d81b01a5eee5fd5e21cae67b4af7
+	md5sums = d1546ed54740de536f6bb79a18c5dccb
+	md5sums = 8e3071299776d32b9be27bba7d3f9ae0
+
+pkgname = loudmouth-ossl
+
