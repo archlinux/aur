@@ -1,0 +1,31 @@
+pkgbase = scribus-svn
+	pkgdesc = A desktop publishing program - Version from SVN
+	pkgver = 20145
+	pkgrel = 1
+	url = http://www.scribus.net
+	install = scribus-svn.install
+	arch = i686
+	arch = x86_64
+	license = custom:(L)GPL
+	makedepends = subversion
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = qt5-webkit
+	depends = hunspell
+	depends = podofo
+	depends = python2
+	depends = libcups
+	depends = graphicsmagick
+	depends = shared-mime-info
+	depends = poppler
+	depends = libcdr
+	depends = desktop-file-utils
+	depends = libvisio
+	provides = scribus
+	conflicts = scribus
+	options = !makeflags
+	source = scribus::svn://scribus.net/trunk
+	md5sums = SKIP
+
+pkgname = scribus-svn
+
