@@ -1,0 +1,15 @@
+pkgbase = gajim-penguins
+	pkgdesc = Kadu Penguins emoticons, adopted for gajim
+	pkgver = 1.8
+	pkgrel = 2
+	url = http://www.kde-look.org/content/show.php/Kadu+Penguins?content=66357
+	arch = any
+	license = GPL
+	depends = gajim
+	source = penguins-1.8.tar.gz::http://kde-look.org/CONTENT/content-files/66357-Kadu%20Penguins-1.8.tar.gz
+	source = emoticons.py
+	md5sums = e39dde3d74336ed6dd0e9076b90cca2c
+	md5sums = 33403f80daeda338437d39782cc65008
+
+pkgname = gajim-penguins
+
