@@ -1,0 +1,16 @@
+pkgbase = dbmodel
+	pkgdesc = A qt tool for drawing entity-relationalship diagrams.
+	pkgver = 0.3
+	pkgrel = 5
+	url = http://oxygene.sk/lukas/dbmodel/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt4>=4.0
+	source = http://launchpad.net/dbmodel/trunk/0.3/+download/dbmodel-0.3.tar.gz
+	source = dbmodel-0.3-qt-4.6.patch
+	md5sums = 1b8e34a92d61d3819f4d7850e2bb5311
+	md5sums = d6efa801e99d8531a08769829def0be8
+
+pkgname = dbmodel
+
