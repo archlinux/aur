@@ -1,0 +1,30 @@
+pkgbase = ajenti
+	pkgdesc = An easy server administration frontend.
+	pkgver = 1.2.22.16
+	pkgrel = 1
+	url = http://ajenti.org/
+	install = ajenti.install
+	arch = any
+	license = LGPL
+	makedepends = python2-setuptools
+	depends = python2-gevent-socketio
+	depends = python2-lxml
+	depends = python2-passlib
+	depends = python2-psutil
+	depends = python2-daemon
+	depends = python2-catcher
+	depends = python2-reconfigure
+	depends = python2-pillow
+	depends = python2-exconsole
+	optdepends = python2-dbus: services plugin dependency
+	optdepends = python2-ldap: LDAP and Active Directory user synchronization support
+	backup = etc/ajenti/config.json
+	source = https://pypi.python.org/packages/source/a/ajenti/ajenti-1.2.22.16.tar.gz
+	source = ajenti.service
+	source = revert_f6167e92d1be92901c97567f7f53a59b12418eb1
+	md5sums = bd84c1ecc0511b94e6e86ad182904b36
+	md5sums = 74e13666013eea439b08e6fcbeef3a6d
+	md5sums = 82057a64704a208d059573188ca71d8f
+
+pkgname = ajenti
+
