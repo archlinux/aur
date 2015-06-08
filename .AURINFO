@@ -1,0 +1,14 @@
+pkgbase = gtk-theme-black-widow
+	pkgdesc = GTK2/GTK3 theme based off of adwaita and recolored to be more black and red.
+	pkgver = 20130602
+	pkgrel = 3
+	url = http://craazyt.deviantart.com/art/Black-Widow-GTK-285404067
+	arch = any
+	license = GPL2
+	optdepends = gnome-themes-standard: For GTK3
+	optdepends = gtk-engine-murrine: For GTK2
+	optdepends = metacity: For Metacity window manager theme
+	source = http://fc04.deviantart.com/fs71/f/2012/048/4/a/black_widow_gtk_by_craazyt-d4px76r.zip
+
+pkgname = gtk-theme-black-widow
+
