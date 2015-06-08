@@ -1,0 +1,15 @@
+pkgbase = emacs-elscreen-wl
+	pkgdesc = Frame configuration management for GNU Emacs modelled after GNU Screen
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = http://www.morishima.net/~naoto/software/elscreen/index.php.en
+	arch = any
+	license = GPL
+	makedepends = emacs-apel
+	depends = emacs-elscreen
+	depends = wanderlust
+	source = ftp://ftp.morishima.net/pub/morishima.net/naoto/ElScreen/elscreen-wl-0.8.0.tar.gz
+	md5sums = 620c9cfdd6ae9bc76ffef807eb00b81c
+
+pkgname = emacs-elscreen-wl
+
