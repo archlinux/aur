@@ -1,0 +1,19 @@
+pkgbase = gexif
+	pkgdesc = A GTK+ based GUI interface to libexif-gtk
+	pkgver = 0.5
+	pkgrel = 3
+	url = http://libexif.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = libexif-gtk
+	depends = libexif-gtk
+	source = http://downloads.sourceforge.net/project/libexif/gexif/0.5/gexif-0.5.tar.gz
+	source = gtk2-fix.patch
+	source = gexif.desktop
+	md5sums = ad136a03e3e1a8d6d98211d94014df0c
+	md5sums = 164f4d3d564c22b4e7ab401940236ca9
+	md5sums = 6ce94402bf1799d3982fb879ae6bd3a9
+
+pkgname = gexif
+

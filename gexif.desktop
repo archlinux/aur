@@ -1,0 +1,10 @@
+[Desktop Entry]
+Exec=gexif
+Terminal=false
+Type=Application
+Categories=Graphics
+StartupNotify=true
+Encoding=UTF-8
+Name=gexif
+Comment=GTK exif data viewer
+
