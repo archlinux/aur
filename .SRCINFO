@@ -1,0 +1,18 @@
+pkgbase = camlp5-transitional
+	pkgdesc = A preprocessor-pretty-printer of OCaml. (transitional)
+	pkgver = 6.12
+	pkgrel = 1
+	url = http://pauillac.inria.fr/~ddr/camlp5/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = ocaml
+	conflicts = camlp5
+	options = staticlibs
+	source = http://pauillac.inria.fr/~ddr/camlp5/distrib/src/camlp5-6.12.tgz
+	sha1sums = d78d89dbd33725d7589181c38cc67180502da2f8
+	sha256sums = b716c8b248289205bc76823000bc0b0988517cfcfd9c2eb1a3c43cc2cd7d5c02
+	sha512sums = 33cf0738b0f8f1daad0f40158654c32a7a4b1559671c6f95193a9c71bb0fdb7f8328a3d012c5fdba83fe940882588a6e12c242a7585dd193974d4f7dedbdbc12
+
+pkgname = camlp5-transitional
+
