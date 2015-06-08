@@ -1,0 +1,16 @@
+pkgbase = somagic-easycap
+	pkgdesc = Linux Somagic EasyCAP DC60 and EasyCAP002 capture software
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://code.google.com/p/easycap-somagic-linux
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	depends = libusbx
+	depends = libgcrypt
+	optdepends = somagic-easycap-tools: to extract the firmware
+	source = http://easycap-somagic-linux.googlecode.com/files/somagic-easycap_1.1.tar.gz
+	md5sums = 7e8942256b09f2c741658d567d62c202
+
+pkgname = somagic-easycap
+
