@@ -1,6 +1,6 @@
 pkgbase = tsar-git
 	pkgdesc = Taobao System Activity Reporter
-	pkgver = 0.136.2683d6f
+	pkgver = 0.154.dfc6ac8
 	pkgrel = 1
 	url = http://tsar.taobao.org/
 	arch = i686

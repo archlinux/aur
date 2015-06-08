@@ -3,7 +3,7 @@
 
 pkgname=tsar-git
 _gitname=tsar
-pkgver=0.136.2683d6f
+pkgver=0.154.dfc6ac8
 pkgrel=1
 pkgdesc="Taobao System Activity Reporter"
 arch=('i686' 'x86_64')
