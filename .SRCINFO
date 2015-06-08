@@ -1,0 +1,16 @@
+pkgbase = python2-clyther
+	pkgdesc = A python language extension intended to make writing OpenCL code easy
+	pkgver = 0.4.0_beta
+	pkgrel = 2
+	url = http://srossross.github.com/Clyther/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = python2-distribute
+	depends = python2-numpy
+	depends = python2
+	source = https://github.com/srossross/Clyther/archive/0.4.0-beta.tar.gz
+	md5sums = 79ffc1dcd8c30e89691bdb9912507f2f
+
+pkgname = python2-clyther
+
