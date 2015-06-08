@@ -1,0 +1,6 @@
+post_install() {
+  echo "To use rdictcc you need a copy of a translation database of dict.cc"
+  echo "You can download them in UTF-8 from http://www1.dict.cc/translation_file_request.php"
+  echo "Import a database by calling"
+  echo "  rdictcc --import dict-file.txt"
+}
