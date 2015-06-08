@@ -1,0 +1,15 @@
+pkgbase = lala-git
+	pkgdesc = irc bot
+	pkgver = 0.2_129_g891b782
+	pkgrel = 1
+	url = https://github.com/mineo/lala
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python2
+	depends = twisted
+	source = git+https://github.com/mineo/lala.git
+	md5sums = SKIP
+
+pkgname = lala-git
+
