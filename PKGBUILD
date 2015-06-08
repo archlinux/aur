@@ -1,4 +1,4 @@
-# Maintainer: Patrik Plihal <patrik.plihal@gmail.com>
+# Maintainer: Patrik Plihal <patrik.plihal at gmail dot com>
 
 pkgname=nightcode-git
 
