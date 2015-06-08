@@ -1,0 +1,19 @@
+pkgbase = pypy-cython
+	pkgdesc = C-Extensions for PyPy
+	pkgver = 0.22
+	pkgrel = 1
+	url = http://www.cython.org
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = pypy3
+	makedepends = pypy
+	source = http://cython.org/release/Cython-0.22.tar.gz
+	md5sums = 1ae25add4ef7b63ee9b4af697300d6b6
+
+pkgname = pypy3-cython
+	depends = pypy3
+
+pkgname = pypy-cython
+	depends = pypy
+
