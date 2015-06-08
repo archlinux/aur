@@ -1,0 +1,15 @@
+pkgbase = paromtv
+	pkgdesc = Client for free online TV - Parom.TV.
+	pkgver = 20150126
+	pkgrel = 1
+	url = http://www.parom.tv/
+	arch = x86_64
+	arch = x86_64
+	license = custom
+	depends = vlc
+	depends = qt4
+	source = http://ru.parom.tv/download/linux/paromplayer-x86-64.deb
+	sha256sums = cbb5fbffa13697b67c38a89c54ce9d0ad0b5ff7c698a333711cf147c8555ea86
+
+pkgname = paromtv
+
