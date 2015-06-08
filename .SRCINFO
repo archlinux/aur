@@ -1,0 +1,31 @@
+pkgbase = kid3-kf5-git
+	pkgdesc = An MP3, Ogg/Vorbis and FLAC tag editor. Compatible with KF5 frameworks (GIT Version)
+	pkgver = 3.2.1.r1551.2f005a5
+	pkgrel = 1
+	url = http://kid3.sourceforge.net/
+	install = kid3-kf5-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = kdoctools
+	makedepends = python
+	depends = qt5-multimedia
+	depends = kio
+	depends = id3lib
+	depends = taglib
+	depends = chromaprint
+	depends = libmp4v2
+	depends = hicolor-icon-theme
+	provides = kid3
+	provides = kid3-qt
+	provides = kid3-kf5
+	conflicts = kid3
+	conflicts = kid3d-qt
+	conflicts = kid3-kf5
+	source = kid3::git://git.code.sf.net/p/kid3/code
+	sha1sums = SKIP
+
+pkgname = kid3-kf5-git
+
