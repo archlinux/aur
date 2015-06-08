@@ -1,0 +1,53 @@
+post_install() {
+	echo '--------------------------------------------------------------------------'
+	echo '                           INSTRUCTIONS FOR USE'
+	echo 
+	echo 'Simply map the following scripts to keyboard shortcuts in your DE or WM.'
+	echo 'Xfce4 allows for this under Settings > Keyboard > Application Shortcuts.'
+	echo
+	echo '/usr/bin/pulseaudio-ctl mute ==>  Toggle status of mute'
+	echo '/usr/bin/pulseaudio-ctl mute-input ==>  Toggle status of mute for mic'
+	echo '/usr/bin/pulseaudio-ctl up   ==>  Increase vol by 5 %'
+	echo '/usr/bin/pulseaudio-ctl down ==>  Decrease vol by 5 %'
+	echo '--------------------------------------------------------------------------'
+}
+
+post_remove() {
+	echo '-----------------------------------------------------------------------'
+	echo 'Be sure you remove any keyboard shortcuts or bindings you created.'
+	echo '-----------------------------------------------------------------------'
+}
+
+post_upgrade() {
+	## arg 1:  the new package version
+	## arg 2:  the old package version
+	oldpkgver=${2%-*}
+	#newpkgver=${1%-*}
+	
+	if [[ $oldpkgver < 1.51 ]]; then
+		echo '--> Please check ~/.config/pulseaudio-ctl/config against the'
+		echo '--> provided /usr/share/pulseaudio-ctl/config.skel to ensure'
+		echo '--> it is current as the script does not do this automatically.'
+	else
+		/bin/true
+	fi
+	
+	if [[ $oldpkgver < 1.46 ]]; then
+		echo '--> Please check ~/.config/pulseaudio-ctl/config against the'
+		echo '--> provided /usr/share/pulseaudio-ctl/config.skel to ensure'
+		echo '--> it is current as the script does not do this automatically.'
+	else
+		/bin/true
+	fi
+	
+	if [[ $oldpkgver < 1.20 ]]; then
+		echo '--> Support for the older three script solution has been removed.'
+		echo '--> You MUST remaps your shortcut keys.'
+		echo '-->'
+		echo '--> /usr/bin/mute_toggle  ==> /usr/bin/pulseaudio-ctl mute'
+		echo '--> /usr/bin/vol_up       ==> /usr/bin/pulseaudio-ctl up'
+		echo '--> /usr/bin/mute_toggle  ==> /usr/bin/pulseaudio-ctl down'
+	else
+		/bin/true
+	fi
+}
