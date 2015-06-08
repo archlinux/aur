@@ -1,0 +1,9 @@
+[Unit]
+Description=ESE Key Daemon
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/esekeyd /etc/esekeyd.conf
+
+[Install]
+WantedBy=multi-user.target

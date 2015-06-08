@@ -1,0 +1,18 @@
+pkgbase = esekeyd
+	pkgdesc = ESE Key Daemon is a multimedia keyboard daemon for Linux.
+	pkgver = 1.2.7
+	pkgrel = 1
+	url = http://freecode.com/projects/esekeyd
+	install = esekeyd.install
+	arch = any
+	license = GPL
+	depends = glibc
+	source = http://www.burghardt.pl/files/esekeyd-1.2.7.tar.gz
+	source = esekeyd.install
+	source = esekeyd.service
+	sha256sums = 58bdac994be805d9c11b21065427c8f53684d38a1b44bb02b175fc4ee594cc56
+	sha256sums = 6ca6d9e9cbb8c32c3ec686dda35728c1901c166a78e4d5e0a74a812fa7de119e
+	sha256sums = 6e3ab29acc42dea73da9184c1d553975ddadf92957d8e448762630ac4b16282f
+
+pkgname = esekeyd
+
