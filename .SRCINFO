@@ -1,0 +1,19 @@
+pkgbase = eclipse-ivyde-ivy
+	pkgdesc = Ivy feature and bundle for IvyDE
+	pkgver = 2.3.0
+	pkgrel = 4
+	url = https://ant.apache.org/ivy/ivyde/
+	arch = any
+	license = apache
+	depends = eclipse
+	source = http://mirrors.ukfast.co.uk/sites/ftp.apache.org/ant/ivyde/updatesite/ivy-2.3.0.final_20130110142753/features/org.apache.ivy.eclipse.ant.feature_2.3.0.final_20130110142753.jar
+	source = http://mirrors.ukfast.co.uk/sites/ftp.apache.org/ant/ivyde/updatesite/ivy-2.3.0.final_20130110142753/features/org.apache.ivy.feature_2.3.0.final_20130110142753.jar
+	source = http://mirrors.ukfast.co.uk/sites/ftp.apache.org/ant/ivyde/updatesite/ivy-2.3.0.final_20130110142753/plugins/org.apache.ivy.eclipse.ant_2.3.0.final_20130110142753.jar
+	source = http://mirrors.ukfast.co.uk/sites/ftp.apache.org/ant/ivyde/updatesite/ivy-2.3.0.final_20130110142753/plugins/org.apache.ivy_2.3.0.final_20130110142753.jar
+	sha1sums = c72daf4d5faa1be75ab3b8b425d64c4e03805592
+	sha1sums = 2ac2c778b1aec6588771d89169534a5bcc352de7
+	sha1sums = 6cdc3ad5cf9e25f2103df228662a129ebb5bc683
+	sha1sums = c5ebf1c253ad4959a29f4acfe696ee48cdd9f473
+
+pkgname = eclipse-ivyde-ivy
+
