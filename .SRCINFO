@@ -1,0 +1,17 @@
+pkgbase = nitroshare
+	pkgdesc = Network File Transfer Application
+	pkgver = 0.3.0
+	pkgrel = 2
+	url = http://nitroshare.net
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = qt5-svg
+	depends = qt5-base
+	source = https://launchpad.net/nitroshare/0.3/0.3.0/+download/nitroshare-0.3.0.tar.gz
+	source = nitroshare.install
+	sha256sums = b5e53c37c802120d01e829c639be2ff88893bfa5b1558b8841da962dc2588236
+	sha256sums = c17bbd0717b92814eedbc273de2a43ac63286fdea7667ee9534e006bdbc0f1dc
+
+pkgname = nitroshare
+

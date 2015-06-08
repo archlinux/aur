@@ -1,0 +1,4 @@
+post_install() {
+ xdg-icon-resource forceupdate --theme hicolor
+ update-desktop-database -q
+}
