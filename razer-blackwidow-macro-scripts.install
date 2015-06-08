@@ -1,0 +1,10 @@
+post_install() {
+	echo "UDev will configure the keys"
+	echo 'Bind a key to execute macroPrompt.sh, then bind a key to execute macroRun.sh $macroNumber'
+}
+
+post_upgrade(){
+	echo "UDev will configure the keys"
+	echo 'Bind a key to execute macroPrompt.sh, then bind a key to execute macroRun.sh $macroNumber'
+
+}

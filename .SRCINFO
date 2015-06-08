@@ -1,0 +1,23 @@
+pkgbase = razer-blackwidow-macro-scripts
+	pkgdesc = Scripts to create and execute macros for the macro keys of the razer-blackwidow ultimate 2013 keyboard
+	pkgver = 2
+	pkgrel = 1
+	url = http://www.google.com
+	install = razer-blackwidow-macro-scripts.install
+	arch = any
+	license = Public Domain
+	depends = xmacro
+	depends = python2-pyusb
+	provides = blackwidow-enable-macro-keys
+	conflicts = blackwidow-enable-macro-keys
+	source = macroPrompt.sh
+	source = macroRun.sh
+	source = 99-blackwidow.rules
+	source = blackwidow_enable.py
+	md5sums = 22cb7243cdefe7229b5960ae92caf671
+	md5sums = 8a56b47c6d20999e886761d6ddac6379
+	md5sums = ee48c52536d7ff63992beac14ab2532c
+	md5sums = d7c158214ee3a849e00fc25a034ed93a
+
+pkgname = razer-blackwidow-macro-scripts
+
