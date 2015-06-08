@@ -1,0 +1,14 @@
+pkgbase = python2-postmarkup
+	pkgdesc = Python module that generates html from BBCode.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://code.google.com/p/postmarkup/
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2
+	source = http://postmarkup.googlecode.com/files/postmarkup-1.2.0.tar.gz
+	md5sums = 8481ee11ec9f9c59666c3edd0bbe7e33
+
+pkgname = python2-postmarkup
+
