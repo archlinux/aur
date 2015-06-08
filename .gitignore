@@ -1,0 +1,6 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!COPYING
+!synnefo-git.install
