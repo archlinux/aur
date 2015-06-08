@@ -1,0 +1,29 @@
+post_install() {
+  if [ -z "`getent group amanda`" ]; then
+	groupadd -g 112 amanda
+  fi
+  if [ -z "`getent passwd amanda`" ]; then
+	useradd -u 112 -g amanda -G storage,disk -m -d /var/amanda -s /bin/bash -c "Amanda Backup Daemon"  amanda
+  fi
+  cat << EOT
+amanda: Visit the Amanda wiki to configure your backup sets:
+amanda:   http://wiki.zmanda.com/index.php/Getting_Started_With_Amanda
+amanda: Examples are in /etc/amanda/examples/
+
+amanda: Restart xinetd to start the daemon listening for connections.
+EOT
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+pre_remove() {
+  userdel amanda &> /dev/null
+  groupdel amanda &> /dev/null
+}
+
+op=$1
+shift
+
+$op $*

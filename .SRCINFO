@@ -1,0 +1,24 @@
+pkgbase = amanda
+	pkgdesc = Advanced Maryland Automatic Network Disk Archiver
+	pkgver = 3.3.5
+	pkgrel = 1
+	url = http://www.amanda.org
+	install = amanda.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = perl>=5.6.0
+	depends = glib2>=2.2.0
+	depends = gawk
+	depends = gnuplot
+	depends = tar>=1.12
+	depends = xinetd
+	optdepends = dump: for creating backups in dump format
+	optdepends = samba: for backing up Windows hosts
+	source = http://downloads.sourceforge.net/amanda/amanda-3.3.5.tar.gz
+	source = xinetd.amanda
+	md5sums = fd545874dff334c424337ca9d7683ff6
+	md5sums = 910c9823073148c576b14d4a71bc6458
+
+pkgname = amanda
+
