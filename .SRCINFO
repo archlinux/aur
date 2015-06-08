@@ -1,0 +1,61 @@
+pkgbase = linux-xps13-alt
+	pkgver = 4.0.5
+	pkgrel = 1
+	url = http://www.kernel.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.5.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.5.sign
+	source = config
+	source = config.x86_64
+	source = linux.preset
+	source = change-default-console-loglevel.patch
+	source = hda-realtek-dell-headset-mode-for-alc288.patch
+	source = hda-realtek-dell-headset-mode-for-alc286-288.patch
+	source = input_mt_get_slot_by_key.patch
+	sha256sums = 0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991
+	sha256sums = SKIP
+	sha256sums = 60b691210a9e412710e29eac6468d64b6c4d1efc53a6e22878dd51044001adf0
+	sha256sums = SKIP
+	sha256sums = bd84b917fdd0b167e6cb3c3f0e59a773bc43a22d5fbee197ab2d4ba078093630
+	sha256sums = 1897de88b48bbafb4912a140b772e70ebaad6ec1348e25972be200743224efca
+	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
+	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
+	sha256sums = 27449bcba953556f720052f0be06b64b862f79f01fb8d45beed4ff30a455ba7b
+	sha256sums = 2f407826a0326005e7c681d8cc0239201d3df6aade17812ec7dbcab874db629a
+	sha256sums = cd90e3e8c082991b494c364bd2c943afee8b2f46cce71bbdd71e3777d70a9d01
+
+pkgname = linux-xps13-alt
+	pkgdesc = The Linux-xps13-alt kernel and modules
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = kernel26-xps13-alt=4.0.5
+	conflicts = kernel26-xps13-alt
+	replaces = kernel26-xps13-alt
+	backup = etc/mkinitcpio.d/linux-xps13-alt.preset
+
+pkgname = linux-xps13-alt-headers
+	pkgdesc = Header files and scripts for building modules for Linux-xps13-alt kernel
+	provides = kernel26-xps13-alt-headers=4.0.5
+	conflicts = kernel26-xps13-alt-headers
+	replaces = kernel26-xps13-alt-headers
+
+pkgname = linux-xps13-alt-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-xps13-alt kernel
+	provides = kernel26-xps13-alt-docs=4.0.5
+	conflicts = kernel26-xps13-alt-docs
+	replaces = kernel26-xps13-alt-docs
+
