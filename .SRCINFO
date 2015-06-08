@@ -1,0 +1,22 @@
+pkgbase = vendace-git
+	pkgdesc = Simple screenshot crop & upload
+	pkgver = 0.1.2.r2.g019022c
+	pkgrel = 1
+	url = http://vendace.org
+	install = vendace.install
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = qt5-base
+	makedepends = cmake
+	makedepends = git
+	depends = qt5-base
+	depends = libxkbcommon-x11
+	depends = hicolor-icon-theme
+	provides = vendace
+	conflicts = vendace
+	source = git+https://github.com/veeti/vendace.git
+	sha256sums = SKIP
+
+pkgname = vendace-git
+
