@@ -1,0 +1,16 @@
+pkgbase = xmountains
+	pkgdesc = Fractal Generator for the xwindow system, intergrates with xscreensaver
+	pkgver = 2.9
+	pkgrel = 3
+	url = http://www.epcc.ed.ac.uk/~spb/xmountains/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imake
+	makedepends = xbitmaps
+	depends = libx11
+	source = http://ftp.de.debian.org/debian/pool/main/x/xmountains/xmountains_2.9.orig.tar.gz
+	md5sums = d5e697708bf59cf7d4892666b5b85c35
+
+pkgname = xmountains
+
