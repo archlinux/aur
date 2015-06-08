@@ -1,0 +1,12 @@
+diff -aur sixfireusb-0.6.1/chip.c sixfireusb-0.6.1/chip.c
+--- sixfireusb-0.6.1/chip.c	2013-12-10 04:46:22.000000000 +0100
++++ sixfireusb-0.6.1/chip.c	2014-10-04 23:04:38.663734490 +0200
+@@ -143,7 +143,7 @@
+ 		snd_printk(KERN_ERR PREFIX "can't set first interface.\n");
+ 		return -EIO;
+ 	}
+-	ret = snd_card_create(index[regidx], id[regidx], THIS_MODULE,
++	ret = snd_card_new(&intf->dev, index[regidx], id[regidx], THIS_MODULE,
+ 			sizeof(struct sfire_chip), &card);
+ 	if (ret < 0) {
+ 		snd_printk(KERN_ERR PREFIX "cannot create alsa card.\n");

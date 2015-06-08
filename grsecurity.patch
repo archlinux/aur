@@ -1,0 +1,157 @@
+diff -aur sixfireusb-0.6.1/firmware.c sixfireusb-0.6.1/firmware.c
+--- sixfireusb-0.6.1/firmware.c	2014-08-15 18:33:06.000000000 +0200
++++ sixfireusb-0.6.1/firmware.c	2014-12-11 00:40:40.234928691 +0100
+@@ -207,7 +207,7 @@
+ 		unsigned int postaddr, u8 *postdata, unsigned int postlen)
+ {
+ 	int ret;
+-	u8 data;
++	u8 *data;
+ 	struct usb_device *device = interface_to_usbdev(intf);
+ 	const struct firmware *fw = NULL;
+ 	struct ihex_record *rec = kmalloc(sizeof(struct ihex_record),
+@@ -216,8 +216,15 @@
+ 	if (!rec)
+ 		return -ENOMEM;
+
++	data = kmalloc(1, GFP_KERNEL);
++	if (!data) {
++		kfree(rec);
++		return -ENOMEM;
++	}
++
+ 	ret = request_firmware(&fw, fwname, &device->dev);
+ 	if (ret < 0) {
++		kfree(data);
+ 		kfree(rec);
+ 		snd_printk(KERN_ERR PREFIX "error requesting ezusb "
+ 				"firmware %s.\n", fwname);
+@@ -225,6 +232,7 @@
+ 	}
+ 	ret = usb6fire_fw_ihex_init(fw, rec);
+ 	if (ret < 0) {
++		kfree(data);
+ 		kfree(rec);
+ 		release_firmware(fw);
+ 		snd_printk(KERN_ERR PREFIX "error validating ezusb "
+@@ -232,9 +240,10 @@
+ 		return ret;
+ 	}
+ 	/* upload firmware image */
+-	data = 0x01; /* stop ezusb cpu */
+-	ret = usb6fire_fw_ezusb_write(device, 0xa0, 0xe600, &data, 1);
++	*data = 0x01; /* stop ezusb cpu */
++	ret = usb6fire_fw_ezusb_write(device, 0xa0, 0xe600, data, 1);
+ 	if (ret < 0) {
++		kfree(data);
+ 		kfree(rec);
+ 		release_firmware(fw);
+ 		snd_printk(KERN_ERR PREFIX "unable to upload ezusb "
+@@ -246,6 +255,7 @@
+ 		ret = usb6fire_fw_ezusb_write(device, 0xa0, rec->address,
+ 				rec->data, rec->len);
+ 		if (ret < 0) {
++			kfree(data);
+ 			kfree(rec);
+ 			release_firmware(fw);
+ 			snd_printk(KERN_ERR PREFIX "unable to upload ezusb "
+@@ -262,12 +272,14 @@
+ 		if (ret < 0) {
+ 			snd_printk(KERN_ERR PREFIX "unable to upload ezusb "
+ 					"firmware %s: post urb.\n", fwname);
++			kfree(data);
+ 			return ret;
+ 		}
+ 	}
+
+-	data = 0x00; /* resume ezusb cpu */
+-	ret = usb6fire_fw_ezusb_write(device, 0xa0, 0xe600, &data, 1);
++	*data = 0x00; /* resume ezusb cpu */
++	ret = usb6fire_fw_ezusb_write(device, 0xa0, 0xe600, data, 1);
++	kfree(data);
+ 	if (ret < 0) {
+ 		snd_printk(KERN_ERR PREFIX "unable to upload ezusb "
+ 				"firmware %s: end message.\n", fwname);
+@@ -361,12 +373,13 @@
+ 	struct usb_device *device = interface_to_usbdev(intf);
+ 	/* buffer: 8 receiving bytes from device and
+ 	 * sizeof(EP_W_MAX_PACKET_SIZE) bytes for non-const copy */
+-	u8 buffer[12];
++	u8 *buffer = kmalloc(12, GFP_KERNEL);
+
+ 	ret = usb6fire_fw_ezusb_read(device, 1, 0, buffer, 8);
+ 	if (ret < 0) {
+ 		snd_printk(KERN_ERR PREFIX "unable to receive device "
+ 				"firmware state.\n");
++		kfree(buffer);
+ 		return ret;
+ 	}
+
+@@ -376,44 +389,60 @@
+ 		for (i = 0; i < 8; i++)
+ 			snd_printk("%02x ", buffer[i]);
+ 		snd_printk("\n");
++		kfree(buffer);
+ 		return -EIO;
+ 	}
+ 	/* do we need fpga loader ezusb firmware? */
+ 	if (buffer[3] == 0x01) {
+ 		ret = usb6fire_fw_ezusb_upload(intf,
+ 				"6fire/dmx6firel2.ihx", 0, NULL, 0);
+-		if (ret < 0)
++		if (ret < 0) {
++			kfree(buffer);
+ 			return ret;
++		}
++		kfree(buffer);
+ 		return FW_NOT_READY;
+ 	}
+ 	/* do we need fpga firmware and application ezusb firmware? */
+ 	else if (buffer[3] == 0x02) {
+ 		ret = usb6fire_fw_check(buffer + 4);
+-		if (ret < 0)
++		if (ret < 0) {
++			kfree(buffer);
+ 			return ret;
++		}
+ 		ret = usb6fire_fw_fpga_upload(intf, "6fire/dmx6firecf.bin");
+-		if (ret < 0)
++		if (ret < 0) {
++			kfree(buffer);
+ 			return ret;
++		}
+ 		memcpy(buffer, ep_w_max_packet_size,
+ 				sizeof(ep_w_max_packet_size));
+ 		ret = usb6fire_fw_ezusb_upload(intf, "6fire/dmx6fireap.ihx",
+ 				0x0003,	buffer, sizeof(ep_w_max_packet_size));
+-		if (ret < 0)
++		if (ret < 0) {
++			kfree(buffer);
+ 			return ret;
++		}
++		kfree(buffer);
+ 		return FW_NOT_READY;
+ 	}
+ 	/* all fw loaded? */
+-	else if (buffer[3] == 0x03)
+-		return usb6fire_fw_check(buffer + 4);
++	else if (buffer[3] == 0x03) {
++		ret = usb6fire_fw_check(buffer + 4);;
++		kfree(buffer);
++		return ret;
+ 	/* unknown data? */
+-	else {
++    } else {
+ 		snd_printk(KERN_ERR PREFIX "unknown device firmware state "
+ 				"received from device: ");
+ 		for (i = 0; i < 8; i++)
+ 			snd_printk("%02x ", buffer[i]);
+ 		snd_printk("\n");
++		kfree(buffer);
+ 		return -EIO;
+ 	}
++
++	kfree(buffer);
+ 	return 0;
+ }
+
