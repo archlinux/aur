@@ -1,0 +1,17 @@
+pkgbase = perl-set-light
+	pkgdesc = (memory efficient) unordered set of strings
+	pkgver = 0.04
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Set-Light
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-extutils-makemaker>=6.6302
+	depends = perl-array-refelem
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TE/TELS/set/Set-Light-0.04.tar.gz
+	md5sums = b131e80c84bb7f8941a53834929c5f82
+	sha512sums = 266a2de871320417bb38911f687b1653adbd94ede508c7e9f9396b36b74d6bfc3bfb464b9754d895d7f4d91771ce04910e03ffecb7a31508b8e98f3487ede8cd
+
+pkgname = perl-set-light
+
