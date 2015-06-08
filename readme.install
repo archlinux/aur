@@ -1,0 +1,7 @@
+post_install() {
+cat << 'EOM'
+==> The xbmc/kodi webserver must be enabled and running on port 8080.
+==> Optionally copy /usr/share/texturecache/texturecache.cfg to ~/.config
+==> and uncomment options therein for additional flexibility.
+EOM
+}
