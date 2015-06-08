@@ -1,0 +1,24 @@
+pkgbase = psp-binutils
+	pkgdesc = A set of programs to assemble and manipulate binary and object files (psp)
+	pkgver = 2.22
+	pkgrel = 1
+	url = http://www.gnu.org/software/binutils/
+	arch = i686
+	arch = x86_64
+	groups = psp
+	license = GPL
+	makedepends = gcc
+	depends = zlib
+	depends = flex
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = http://ftp.gnu.org/pub/gnu/binutils/binutils-2.22.tar.bz2
+	source = binutils-2.22-PSP.patch
+	source = binutils-2.22-texinfofix.patch
+	md5sums = ee0f10756c84979622b992a4a61ea3f5
+	md5sums = a30ab9c15c985c771a42b19f3356d42b
+	md5sums = 771f36e63bc53732990f02ef42a475c9
+
+pkgname = psp-binutils
+

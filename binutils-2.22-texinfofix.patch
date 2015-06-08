@@ -1,0 +1,24 @@
+diff -burN orig.binutils-2.22/bfd/doc/bfd.texinfo binutils-2.22/bfd/doc/bfd.texinfo
+--- orig.binutils-2.22/bfd/doc/bfd.texinfo	2010-10-28 13:40:25.000000000 +0200
++++ binutils-2.22/bfd/doc/bfd.texinfo	2013-08-29 22:15:26.795913686 +0200
+@@ -321,9 +321,9 @@
+ @unnumbered BFD Index
+ @printindex cp
+ 
++@c I think something like @colophon should be in texinfo.  In the
++@c meantime:
+ @tex
+-% I think something like @colophon should be in texinfo.  In the
+-% meantime:
+ \long\def\colophon{\hbox to0pt{}\vfill
+ \centerline{The body of this manual is set in}
+ \centerline{\fontname\tenrm,}
+@@ -333,7 +333,7 @@
+ \centerline{{\sl\fontname\tensl\/}}
+ \centerline{are used for emphasis.}\vfill}
+ \page\colophon
+-% Blame: doc@cygnus.com, 28mar91.
+ @end tex
++@c Blame: doc@cygnus.com, 28mar91.
+ 
+ @bye
