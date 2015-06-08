@@ -1,0 +1,19 @@
+pkgbase = fwlogwatch
+	pkgdesc = A packet filter/firewall/IDS log analyzer
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://fwlogwatch.inside-security.de/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = zlib>=1.0.9
+	backup = etc/conf.d/fwlogwatch
+	source = http://fwlogwatch.inside-security.de/sw/fwlogwatch-1.4.tar.gz
+	source = fwlogwatch
+	source = fwlogwatch.conf
+	md5sums = b76bad368ea311677dabb0618ec6c8cf
+	md5sums = e10d41244780c74280d27794ca6a6525
+	md5sums = 35dc2f301904b2b03ef688e2e2edae53
+
+pkgname = fwlogwatch
+
