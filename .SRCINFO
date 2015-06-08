@@ -1,0 +1,26 @@
+pkgbase = python-testtools
+	pkgdesc = Extensions to the Python standard library unit testing framework
+	pkgver = 1.8.0
+	pkgrel = 3
+	url = https://github.com/testing-cabal/testtools
+	arch = any
+	license = MIT
+	makedepends = python-pbr
+	makedepends = python2-pbr
+	source = https://pypi.python.org/packages/source/t/testtools/testtools-1.8.0.tar.gz
+	sha256sums = 8afd6400fb4e75adb0b29bd09695ecb2024cd7befab4677a58c147701afadd97
+
+pkgname = python-testtools
+	depends = python-pbr>=0.11
+	depends = python-extras
+	depends = python-mimeparse
+	depends = python-unittest2>=1.0.0
+	depends = python-traceback2
+
+pkgname = python2-testtools
+	depends = python2-pbr>=0.11
+	depends = python2-extras
+	depends = python2-mimeparse
+	depends = python2-unittest2>=1.0.0
+	depends = python2-traceback2
+
