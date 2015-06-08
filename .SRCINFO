@@ -1,0 +1,27 @@
+pkgbase = rust-nightly
+	pkgdesc = A safe, concurrent, practical language
+	pkgver = 1.2.0_2015.06.09
+	pkgrel = 1
+	url = http://www.rust-lang.org/
+	install = rust.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = libffi
+	makedepends = perl
+	makedepends = python2
+	makedepends = curl
+	makedepends = clang
+	depends = shared-mime-info
+	provides = rust
+	conflicts = rust
+	options = !makeflags
+	options = staticlibs
+	options = !strip
+	options = !emptydirs
+	source = http://static.rust-lang.org/dist/rustc-nightly-src.tar.gz
+	sha256sums = SKIP
+
+pkgname = rust-nightly
+
