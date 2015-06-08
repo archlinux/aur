@@ -1,0 +1,10 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: OOGL
+Description: Object-oriented C++ wrapper for OpenGL
+Version: @OOGL_VERSION@
+URL: https://github.com/Overv/OOGL
+Libs: ${libdir}/OOGL.a -lX11 -lXrandr -lGL

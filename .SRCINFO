@@ -1,0 +1,16 @@
+pkgbase = oogl-git
+	pkgdesc = Object-oriented C++ wrapper for OpenGL
+	pkgver = r140.150aebf
+	pkgrel = 1
+	url = https://github.com/Overv/OOGL
+	arch = any
+	license = MIT
+	makedepends = make
+	options = staticlibs
+	source = oogl-git::git+https://github.com/Overv/OOGL
+	source = OOGL.pc
+	sha256sums = SKIP
+	sha256sums = d4cfaee3cf9d2af0edd1b12baced60d8b765a0d1e81e8f045e3fb6366bc8ed8a
+
+pkgname = oogl-git
+
