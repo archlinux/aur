@@ -1,0 +1,14 @@
+pkgbase = amule-emc
+	pkgdesc = Multi-platform emulecollection parser written in C++
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = http://code.google.com/p/amule-emc/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gcc-libs
+	source = http://amule-emc.googlecode.com/files/amule-emc-0.5.2.tar.gz
+	sha1sums = b50d125b0b24c9932e621c23c51c3da615051ef1
+
+pkgname = amule-emc
+
