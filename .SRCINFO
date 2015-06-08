@@ -1,0 +1,18 @@
+pkgbase = mixmod
+	pkgdesc = Model-Based supervised and unsupervised classification on qualitative and quantitative data.
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = http://www.mixmod.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = gcc
+	depends = gcc-libs
+	source = http://www.mixmod.org/IMG/tgz/mixmod_3-1-0_src.tgz
+	source = mixmod3.patch
+	md5sums = SKIP
+	md5sums = 480c9e761c74f0218fc439ba924227f1
+
+pkgname = mixmod
+
