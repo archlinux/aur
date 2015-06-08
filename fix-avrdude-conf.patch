@@ -1,0 +1,10 @@
+--- ino-0.3.6/ino/commands/upload.py	2013-09-23 19:27:44.000000000 +0200
++++ ino-0.3.6-fix-avrdude/ino/commands/upload.py	2014-04-18 15:18:54.395558631 +0200
+@@ -42,6 +42,7 @@ class Upload(Command):
+ 
+             conf_places = self.e.arduino_dist_places(['hardware', 'tools'])
+             conf_places.append('/etc/avrdude') # fallback to system-wide conf on Fedora
++            conf_places.append('/etc') # fallback to system-wide conf on Arch
+             self.e.find_file('avrdude.conf', places=conf_places)
+         else:
+             self.e.find_arduino_tool('avrdude', ['hardware', 'tools', 'avr', 'bin'])
