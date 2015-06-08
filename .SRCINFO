@@ -1,0 +1,15 @@
+pkgbase = python-redland
+	pkgdesc = Python bindings for Redland librdf.
+	pkgver = 1.0.17.1
+	pkgrel = 1
+	url = http://librdf.org/bindings/
+	arch = any
+	license = LGPL
+	makedepends = swig
+	depends = python3
+	depends = redland
+	source = python-redland-1.0.17.1.tar.gz::http://download.librdf.org/source/redland-bindings-1.0.17.1.tar.gz
+	md5sums = b13c3d0e1bf291b071aae73603e70e65
+
+pkgname = python-redland
+
