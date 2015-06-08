@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Icon=/usr/share/icons/hicolor/128x128/apps/papersplease.png
+Exec=/usr/bin/papersplease
+Terminal=false
+StartupNotify=false
+
+Name=Papers Please
+Comment=Assume the role of an immigration inspector for the communist state of Arstotzka
+
+Categories=Game;
