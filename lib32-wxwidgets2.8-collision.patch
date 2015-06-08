@@ -1,0 +1,25 @@
+diff -rupN wxPython-src-2.8.12.1.orig/Makefile.in wxPython-src-2.8.12.1/Makefile.in
+--- wxPython-src-2.8.12.1.orig/Makefile.in	2014-01-06 09:52:42.577935546 +0100
++++ wxPython-src-2.8.12.1/Makefile.in	2014-01-06 10:02:53.671582953 +0100
+@@ -12455,7 +12456,7 @@ install-wxconfig:
+ 	$(INSTALL_DIR) $(DESTDIR)$(bindir)
+ 	$(INSTALL_DIR) $(DESTDIR)$(libdir)/wx/config
+ 	$(INSTALL_PROGRAM) lib/wx/config/$(TOOLCHAIN_FULLNAME) $(DESTDIR)$(libdir)/wx/config
+-	(cd $(DESTDIR)$(bindir) && rm -f wx-config && $(LN_S) $(libdir)/wx/config/$(TOOLCHAIN_FULLNAME) wx-config)
++	(cd $(DESTDIR)$(bindir) && rm -f wx-config-$(WX_RELEASE) && $(LN_S) $(libdir)/wx/config/$(TOOLCHAIN_FULLNAME) wx-config32-$(WX_RELEASE))
+ 
+ locale_install: 
+ 	$(INSTALL_DIR) $(DESTDIR)$(datadir)/locale
+diff -rupN wxPython-src-2.8.12.1.orig/utils/wxrc/Makefile.in wxPython-src-2.8.12.1/utils/wxrc/Makefile.in
+--- wxPython-src-2.8.12.1.orig/utils/wxrc/Makefile.in	2014-01-06 09:52:42.437940198 +0100
++++ wxPython-src-2.8.12.1/utils/wxrc/Makefile.in	2014-01-06 10:04:54.567685196 +0100
+@@ -119,8 +119,7 @@ distclean: clean
+ @COND_USE_XRC_1@	$(INSTALL_PROGRAM) wxrc$(EXEEXT) $(DESTDIR)$(bindir)
+ @COND_USE_XRC_1@	rm -f $(DESTDIR)$(bindir)/wxrc$(EXEEXT) $(DESTDIR)$(bindir)/wxrc-$(WX_RELEASE)
+ @COND_USE_XRC_1@	$(INSTALL_PROGRAM) wxrc$(EXEEXT) $(DESTDIR)$(bindir)
+-@COND_USE_XRC_1@	mv -f $(DESTDIR)$(bindir)/wxrc$(EXEEXT) $(DESTDIR)$(bindir)/wxrc-$(WX_RELEASE)
+-@COND_USE_XRC_1@	(cd $(DESTDIR)$(bindir) && $(LN_S) wxrc-$(WX_RELEASE) wxrc$(EXEEXT))
++@COND_USE_XRC_1@	mv -f $(DESTDIR)$(bindir)/wxrc$(EXEEXT) $(DESTDIR)$(bindir)/wxrc32-$(WX_RELEASE)
+ 
+ @COND_USE_XRC_1@uninstall_wxrc: 
+ @COND_USE_XRC_1@	rm -f $(DESTDIR)$(bindir)/wxrc$(EXEEXT)

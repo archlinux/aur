@@ -1,0 +1,8 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!config32-2.8.conf
+!wx-config32-2.8.sh
+!lib32-make-abicheck-non-fatal.patch
+!lib32-wxwidgets2.8-collision.patch

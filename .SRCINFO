@@ -1,0 +1,55 @@
+pkgbase = lib32-wxwidgets2.8-light
+	pkgdesc = wxWidgets suite for Base and GTK2 toolkits (GNOME/GStreamer free!) (32 bits)
+	pkgver = 2.8.12.1
+	pkgrel = 4
+	url = http://wxwidgets.org
+	arch = x86_64
+	license = custom:wxWindows
+	makedepends = lib32-gcc-libs
+	makedepends = git
+	makedepends = lib32-glu
+	makedepends = lib32-gtk2
+	makedepends = lib32-libsm
+	makedepends = lib32-sdl
+	makedepends = lib32-expat
+	makedepends = lib32-zlib
+	source = wxwidgets::git+https://github.com/wxWidgets/wxPython.git#tag=wxPy-2.8.12.1
+	source = lib32-make-abicheck-non-fatal.patch
+	source = lib32-wxwidgets2.8-collision.patch
+	source = config32-2.8.conf
+	source = wx-config32-2.8.sh
+	sha1sums = SKIP
+	sha1sums = dfe38650c655395b90bf082b5734c4093508bfa3
+	sha1sums = 21860e53f83f72acd4c184643dc59c9da07f2582
+	sha1sums = eb89553e312f9b423121963bad1c1eeba36d2b8f
+	sha1sums = 218ec754f1f93affc8f51396304abf5d11b898f2
+
+pkgname = lib32-wxbase2.8-light
+	pkgdesc = wxWidgets 2.8 Base (GNOME/GStreamer free!) (32 bits)
+	depends = lib32-gcc-libs
+	depends = lib32-wxcommon2.8-light
+	depends = lib32-expat
+	depends = lib32-zlib
+	provides = lib32-wxbase2.8=2.8.12.1
+	conflicts = lib32-wxbase2.8
+	options = !emptydirs
+
+pkgname = lib32-wxgtk2.8-light
+	pkgdesc = wxWidgets 2.8 with GTK2 Toolkit (GNOME/GStreamer free!) (32 bits)
+	depends = lib32-wxbase2.8-light
+	depends = lib32-gtk2
+	depends = lib32-libsm
+	depends = lib32-sdl
+	provides = lib32-wxgtk2.8=2.8.12.1
+	conflicts = lib32-wxgtk2.8
+	options = !emptydirs
+
+pkgname = lib32-wxcommon2.8-light
+	pkgdesc = wxWidgets 2.8 common (GNOME/GStreamer free!) (32 bits)
+	arch = any
+	depends = wxcommon2.8-light
+	provides = lib32-wxcommon2.8=2.8.12.1
+	conflicts = lib32-wxcommon2.8
+	options = !emptydirs
+	backup = etc/wx/config32-2.8
+
