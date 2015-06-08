@@ -1,0 +1,30 @@
+pkgbase = nexus
+	pkgdesc = A Maven Repository Manager. Nexus 2
+	pkgver = 2.11.3
+	pkgrel = 1
+	url = http://nexus.sonatype.org
+	install = nexus.install
+	arch = armv6h
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = java-environment
+	optdepends = apache: a full featured webserver
+	optdepends = maven: a java project management and project comprehension tool
+	provides = java-nexus
+	conflicts = nexus2
+	options = !strip
+	options = !docs
+	backup = opt/nexus/bin/jsw/conf/wrapper.conf
+	source = http://www.sonatype.org/downloads/nexus-2.11.3-01-bundle.tar.gz
+	source = http://wrapper.tanukisoftware.com/download/3.5.26/wrapper-delta-pack-3.5.26.tar.gz
+	source = nexus
+	source = nexus.service
+	md5sums = faa9eb422ae52a9beafef87673da1965
+	md5sums = 8c1e180aba2b3991bcf107e899a96cbd
+	md5sums = fee6289e0ee48ee5705da54660f7595d
+	md5sums = ac7c0c60bb3c77ff67965ec160ef2517
+
+pkgname = nexus
+
