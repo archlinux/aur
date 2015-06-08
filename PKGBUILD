@@ -1,4 +1,4 @@
-# Maintainer: Andrey Mivrenik <gim at fastmail dot fm>
+# Maintainer: Andrejs Mivreņiks <gim at fastmail dot fm>
 pkgname=matio
 pkgver=1.5.2
 pkgrel=1
