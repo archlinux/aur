@@ -1,0 +1,30 @@
+pkgbase = i3pystatus-git
+	pkgdesc = i3status replacement written in python for the i3 window manager
+	pkgver = 3.1.r175.g7c82053
+	pkgrel = 1
+	url = https://github.com/enkore/i3pystatus.git
+	arch = i686
+	arch = x86_64
+	license = mit
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	optdepends = python-netifaces: network
+	optdepends = python-colour: network
+	optdepends = basiciw-git: wireless network
+	optdepends = python-dbus: now-playing, thunderbird
+	optdepends = python-gobject: thunderbird
+	optdepends = python-gobject2: thunderbird
+	optdepends = python-beautifulsoup4: parcel
+	optdepends = python-cssselect: parcel,
+	optdepends = python-lxml: parcel,
+	optdepends = python-pywapi: weather
+	optdepends = python-pyalsaaudio: ALSA
+	optdepends = python-psutil: memory
+	provides = i3pystatus
+	conflicts = i3pystatus
+	source = git+https://github.com/enkore/i3pystatus.git
+	md5sums = SKIP
+
+pkgname = i3pystatus-git
+
