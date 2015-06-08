@@ -1,0 +1,32 @@
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
+
+pkgname=l-smash-git
+pkgver=v2.3.0.146.geed0345
+pkgrel=1
+url="http://l-smash.github.io/l-smash/"
+pkgdesc="MP4 muxer and other tools. (GIT Version)"
+arch=('i686' 'x86_64')
+license=('custom:l-smash')
+depends=('glibc')
+makedepends=('git')
+provides=('lsmash')
+conflicts=('lsmash')
+source=('git+https://github.com/l-smash/l-smash.git')
+sha1sums=('SKIP')
+
+pkgver() {
+  cd l-smash
+  echo "$(git describe --long --tags | tr - .)"
+}
+
+build() {
+  cd l-smash
+  ./configure --prefix=/usr --enable-shared --disable-static
+  make
+}
+
+package() {
+  cd l-smash
+  make DESTDIR="${pkgdir}" install
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
