@@ -1,0 +1,17 @@
+pkgbase = modprobed-db
+	pkgdesc = Keeps track of EVERY kernel module ever used - useful for those of us who make localmodconfig :)
+	pkgver = 2.29
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/Modprobed-db
+	install = readme.install
+	arch = any
+	license = MIT
+	depends = kmod
+	optdepends = sudo
+	conflicts = modprobed_db
+	replaces = modprobed_db
+	source = http://repo-ck.com/source/modprobed-db/modprobed-db-2.29.tar.xz
+	sha256sums = 707afa063fd78c60a0585906294493e8658054dbcd933d175be78b2945cc1354
+
+pkgname = modprobed-db
+
