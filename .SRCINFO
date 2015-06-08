@@ -1,0 +1,14 @@
+pkgbase = pidgin-cmds
+	pkgdesc = Simple Shout plugin on pidgin
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://code.google.com/p/pidgin-cmds/
+	arch = i686
+	license = GPL
+	depends = pidgin
+	depends = glib2
+	source = http://pidgin-cmds.googlecode.com/files/pidgin-cmds-0.2.0.tar.bz2
+	md5sums = 6db24f4400b787c32364c8ac386f37b9
+
+pkgname = pidgin-cmds
+
