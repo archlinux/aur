@@ -1,7 +1,8 @@
-diff -aur xf86-input-evdev-2.9.2.orig/README xf86-input-evdev-2.9.2.patched/README
---- xf86-input-evdev-2.9.2.orig/README	2013-04-10 16:24:31.000000000 +1000
-+++ xf86-input-evdev-2.9.2.patched/README	2015-03-27 23:50:15.425749448 +1100
-@@ -1,20 +1,680 @@
+diff --git a/README b/README
+index 95873ba..3228757 100644
+--- a/README
++++ b/README
+@@ -1,20 +1,649 @@
 -xf86-input-evdev - Generic Linux input driver for the Xorg X server
 +Welcome to "At Home Modifier" hack of xf86-input-evdev. The original
 +README is moved to README.orig.
@@ -54,7 +55,8 @@ diff -aur xf86-input-evdev-2.9.2.orig/README xf86-input-evdev-2.9.2.patched/READ
 -        http://cgit.freedesktop.org/xorg/driver/xf86-input-evdev
 +Web site
 +========
-+http://gitorious.org/at-home-modifier/pages/Home
++https://gitlab.com/at-home-modifier/at-home-modifier-evdev/wikis/home
++(Until Mar 2015, it was hosted at gitorious.org.)
  
 -For more information on the git code manager, see:
 +Distro forum threads:
@@ -69,8 +71,7 @@ diff -aur xf86-input-evdev-2.9.2.orig/README xf86-input-evdev-2.9.2.patched/READ
 +
 +Download
 +--------
-+The tar.gz is here:
-+http://gitorious.org/at-home-modifier/download/blobs/raw/master/source/ahm-2.8.0.tar.gz
++The tar.gz is at: https://gitlab.com/at-home-modifier/download/raw/master/source/ahm-2.9.2.tar.gz
 +
 +You can also download the patch against the Xorg's original driver,
 +"xf86-input-evdev" from the website.
@@ -79,7 +80,7 @@ diff -aur xf86-input-evdev-2.9.2.orig/README xf86-input-evdev-2.9.2.patched/READ
 +---
 +Git access is available, too. For the first time, install git, and clone as
 +  $ cd some/dir
-+  $ git clone git://gitorious.org/at-home-modifier/at-home-modifier.git
++  $ git clone git@gitlab.com:at-home-modifier/at-home-modifier-evdev.git
 +
 +You can receive updates by
 +  $ cd some/dir/at-home-modifier
@@ -112,7 +113,7 @@ diff -aur xf86-input-evdev-2.9.2.orig/README xf86-input-evdev-2.9.2.patched/READ
 +Usage
 +=====
 +First, know the keycodes you need, which are numbers assigned to each
-+physical key. It's easiest to install and invoke "xev" commands. In my
++physical key. It's easiest to invoke "xmodmap -pk" or "xev" commands. In my
 +case it says space is 65, and left shift is 50. OK. (See below for
 +complicated cases.) Then write your xorg.conf or
 +xorg.conf.d/10-keyboard.conf:
@@ -203,29 +204,6 @@ diff -aur xf86-input-evdev-2.9.2.orig/README xf86-input-evdev-2.9.2.patched/READ
 +the press lasts more than 0.4 sec. The default is 0.6 sec. You can
 +disable timeout by setting it to 0.
 +
-+*** Fast type fix (delay) ***
-+
-+(Probably this option is not so satisfactory) Users of this hack often
-+have "tongue-twister of fingers": Suppose you want a space and a lower
-+case x. If the first press of space/shift is followed first by a press
-+of x and then a release of space/shift, you'll get an upper-case X
-+instead.
-+
-+To fix it, you can let "delay" be associated to space/shift, like:
-+
-+    Option "AhmDelay" "65 102" # Delayed keys. Separate by white space
-+
-+Then the press of x (or any) following space/shift is "delayed",
-+and completes after release of space/shift or x.
-+
-+There's a trade off. Whenever you want a real shift, you have to
-+release the space/shift later.
-+
-+This feature is not (yet) satisfactory for the author. Maybe it
-+should be treated as a modifier only if the key is pressed long
-+enough (say 100ms), in addition to / instead of the press-release
-+orders.
-+
 +*** Successive transmod tuning ***
 +
 +A subtle fix is enabled by default; suppose a transmod X has been
@@ -273,6 +251,29 @@ diff -aur xf86-input-evdev-2.9.2.orig/README xf86-input-evdev-2.9.2.patched/READ
 +
 +I don't know what's happening inside of gtk, but this solves.
 +
++*** Fast type fix (delay) ***
++
++(Probably this option is not so satisfactory) Users of this hack often
++have "tongue-twister of fingers": Suppose you want a space and a lower
++case x. If the first press of space/shift is followed first by a press
++of x and then a release of space/shift, you'll get an upper-case X
++instead.
++
++To fix it, you can let "delay" be associated to space/shift, like:
++
++    Option "AhmDelay" "65 102" # Delayed keys. Separate by white space
++
++Then the press of x (or any) following space/shift is "delayed",
++and completes after release of space/shift or x.
++
++There's a trade off. Whenever you want a real shift, you have to
++release the space/shift later.
++
++This feature is not (yet) satisfactory for the author. Maybe it
++should be treated as a modifier only if the key is pressed long
++enough (say 100ms), in addition to / instead of the press-release
++orders.
++
 +More on keycodes
 +----------------
 +It's good to know that you can also tell keycodes by looking at
@@ -311,22 +312,9 @@ diff -aur xf86-input-evdev-2.9.2.orig/README xf86-input-evdev-2.9.2.patched/READ
 +  A: Simple. Turn both of the original Space and Shift into Space/Shift keys,
 +     for example.
 +
-+Please!
-+-------
-+If you think this fork is good, please tell it to others, at blogs,
-+forums, etc. If it doesn't become popular, it remains my personal hack,
-+and it may soon become impossible for me to maintain!
-+
-+Or, you can upvote this answer in stackoverflow.com to draw more
-+attention:
-+http://stackoverflow.com/a/8935973
-+
-+Please give your feedback. The host site doesn't provide an access
-+counter, so I can't measure the popularity.
-+
 +Author
 +======
-+Teika kazura <teika ahm-is-great at lavabit ahm-is-great dot com>
++Teika kazura <teika ahm-is-great at gmx ahm-is-great dot com>
 +
 +Delete "ahm-is-great" in the address.
 +
@@ -409,27 +397,12 @@ diff -aur xf86-input-evdev-2.9.2.orig/README xf86-input-evdev-2.9.2.patched/READ
 +Probably the author, Teika kazura, won't develop this hack any more as
 +a fork of X evdev driver.
 +
-+Realistic solutions are to re-implement it using X Record extension
-+and XTest extension. There's already Space2Ctrl and Keydouble. See
-+below for more. (X Record records inputs, and XTest synthesizes
-+events. They're better than mine since they work in user space. The
-+codes are far smaller and much easier to read, and you don't have to
-+keep up with Xorg changes so much.)
-+
-+It's great if it's integrated into AutoKey[2]. It's a nice utility
-+similar to AutoHotKey for MS Win, and it has some automation power
-+using Python. It also uses X Record extension, and probably interfere
-+with Space2Ctrl and Keydouble. Unfortunately, the AutoKey developer is
-+not interested.[3] If you can, please help them.
-+
-+[2] http://code.google.com/p/autokey/
-+[3] http://code.google.com/p/autokey/issues/detail?id=200
-+
-+This hack can't be merged upstream.[1] One unlikely solution is to
-+implement this in "XKB2", which will, probably, never be written.
-+(Wayland is far likelier to be than XKB2.)
-+
-+[1] http://lists.x.org/archives/xorg/2010-December/052133.html
++Realistic solutions are to re-implement it in the user space. Then
++codes will be far smaller and much easier to read, and you'll seldom
++have to keep up with Xorg changes. Xcape (see below) does this, by
++using X Record extension and XTest extension. (X Record records
++inputs, and XTest synthesizes events. ) However, XTest and X-Record
++may not work in Wayland.
 +
 +Wish items
 +----------
@@ -465,9 +438,9 @@ diff -aur xf86-input-evdev-2.9.2.orig/README xf86-input-evdev-2.9.2.patched/READ
 +
 +Corner cases in press and release order
 +---------------------------------------
-+There're many corner cases, and I can't predict all. The option
-+"AhmFreezeTT" is easy not only to reason, but also to code, but
-+more complicated examples may not be so.
++There're many corner cases, and I don't know all. The option
++"AhmFreezeTT" is easy not only to reason, but also to code, but more
++complicated examples may not be so.
 +
 +More may be possible, by knowing which keys are modifiers. (This hack
 +doesn't use any information which are modifiers. What's done is a
@@ -527,25 +500,23 @@ diff -aur xf86-input-evdev-2.9.2.orig/README xf86-input-evdev-2.9.2.patched/READ
 +
 +Alternatives
 +============
-+There're some alternative candidates of at-home-modifier.
-+
-+* Xcape, Space2Ctrl & Keydouble
-+  https://github.com/alols/xcape (xcape)
-+  https://github.com/r0adrunner/Space2Ctrl (Space2Ctrl)
-+  https://github.com/baskerville/keydouble (Keydouble)
++* Xcape
++  https://github.com/alols/xcape
 +
 +  Xcape is independently written by Albin Olsson. Accepts
-+  configuration with key names in addition to keycodes. The keydouble
-+  author recommends xcape over keydouble.
-+
-+  Space2Ctrl by "r0adrunner" is minimal, only supports "Space to
-+  Ctrl", and not configurable. Written in C++.
-+
-+  Keydouble by "baskerville" is a rewrite of Space2Ctrl in C. Has a
-+  bit less options than mine.
++  configuration with key names in addition to keycodes.
 +
 +Obsolete alternatives
 +---------------------
++* Space2Ctrl and Keydouble
++  Space2Ctrl by "r0adrunner" is minimal, only supports "Space to
++  Ctrl", and not configurable. Written in C++.
++  Keydouble by "baskerville" is a rewrite of Space2Ctrl in C. Has a
++  bit less options than mine.
++
++    https://github.com/r0adrunner/Space2Ctrl (Space2Ctrl)
++    https://github.com/baskerville/keydouble (Keydouble)
++
 +* actkbd: It works by direct access to /dev/input, but not updated
 +  since 2007. I don't think it's flexible enough.
 +
@@ -564,6 +535,10 @@ diff -aur xf86-input-evdev-2.9.2.orig/README xf86-input-evdev-2.9.2.patched/READ
 +
 +News
 +----
++* 2.9.2 (apr 2015):
++  * Merged upstream 2.9.2. It also includes the fix of bug 84445, done in commit 8868f61:
++   https://bugs.freedesktop.org/show_bug.cgi?id=84445
++
 +* 2.8.0 (jun 2013):
 +  * Merged upstream 2.8.0.
 +    More precisely,
@@ -630,8 +605,6 @@ diff -aur xf86-input-evdev-2.9.2.orig/README xf86-input-evdev-2.9.2.patched/READ
 +* 2.5.1 (feb 2011): Minor documentation updates.
 +* 2.5.0 (feb 2011): Initial release. Forked from upstream 2.5.0 = xf86-input-evdev-2.5.0.
 +
-+Versions 2.X.y are based on the upstream 2.X.0, unless noted explicitly.
-+
 +Background
 +----------
 +What was proposed originally was called "SandS" - stands for "Space and
@@ -655,9 +628,6 @@ diff -aur xf86-input-evdev-2.9.2.orig/README xf86-input-evdev-2.9.2.patched/READ
 +
 +Source code
 +===========
-+
-+(Rather than developing this hack more, I recommend you to deal with
-+Keydouble or AutoKey.)
 +
 +Required knowledge
 +------------------
@@ -693,10 +663,50 @@ diff -aur xf86-input-evdev-2.9.2.orig/README xf86-input-evdev-2.9.2.patched/READ
 +License
 +=======
 +Distributed under MIT License; Same as Xorg.
-diff -aur xf86-input-evdev-2.9.2.orig/src/evdev.c xf86-input-evdev-2.9.2.patched/src/evdev.c
---- xf86-input-evdev-2.9.2.orig/src/evdev.c	2015-03-27 12:35:50.000000000 +1100
-+++ xf86-input-evdev-2.9.2.patched/src/evdev.c	2015-03-27 23:50:15.429082767 +1100
-@@ -135,6 +135,8 @@
+diff --git a/README.orig b/README.orig
+new file mode 100644
+index 0000000..95873ba
+--- /dev/null
++++ b/README.orig
+@@ -0,0 +1,20 @@
++xf86-input-evdev - Generic Linux input driver for the Xorg X server
++
++Please submit bugs & patches to the Xorg bugzilla:
++
++        https://bugs.freedesktop.org/enter_bug.cgi?product=xorg
++
++All questions regarding this software should be directed at the
++Xorg mailing list:
++
++        http://lists.freedesktop.org/mailman/listinfo/xorg
++
++The master development code repository can be found at:
++
++        git://anongit.freedesktop.org/git/xorg/driver/xf86-input-evdev
++
++        http://cgit.freedesktop.org/xorg/driver/xf86-input-evdev
++
++For more information on the git code manager, see:
++
++        http://wiki.x.org/wiki/GitPage
+diff --git a/src/emuWheel.c b/src/emuWheel.c
+index 04487cf..f1d1990 100644
+--- a/src/emuWheel.c
++++ b/src/emuWheel.c
+@@ -119,7 +119,7 @@ EvdevWheelEmuFilterMotion(InputInfoPtr pInfo, struct input_event *pEv)
+ 	    int oldValue;
+ 
+ 	    if (axis > -1 && valuator_mask_fetch(pEvdev->old_vals, axis, &oldValue)) {
+-		valuator_mask_set(pEvdev->vals, axis, value);
++		valuator_mask_set(pEvdev->abs_vals, axis, value);
+ 		value -= oldValue; /* make value into a differential measurement */
+ 	    } else
+                 value = 0; /* avoid a jump on the first touch */
+diff --git a/src/evdev.c b/src/evdev.c
+index 651b895..75a3471 100644
+--- a/src/evdev.c
++++ b/src/evdev.c
+@@ -135,6 +135,8 @@ static Atom prop_device;
  static Atom prop_virtual;
  static Atom prop_scroll_dist;
  
@@ -705,7 +715,7 @@ diff -aur xf86-input-evdev-2.9.2.orig/src/evdev.c xf86-input-evdev-2.9.2.patched
  static int EvdevSwitchMode(ClientPtr client, DeviceIntPtr device, int mode)
  {
      InputInfoPtr pInfo;
-@@ -276,23 +278,359 @@
+@@ -276,23 +278,359 @@ EvdevNextInQueue(InputInfoPtr pInfo)
      return &pEvdev->queue[pEvdev->num_queue - 1];
  }
  
@@ -747,6 +757,7 @@ diff -aur xf86-input-evdev-2.9.2.orig/src/evdev.c xf86-input-evdev-2.9.2.patched
 -        pQueue->type = EV_QUEUE_KEY;
 -        pQueue->detail.key = code;
 -        pQueue->val = value;
+-    }
 +/*
 + * Inside of AhmStep2, the keycode is X value. Restore the linux/input.h
 + * value which EvdevQueueKbdEvent accepts.
@@ -869,7 +880,7 @@ diff -aur xf86-input-evdev-2.9.2.orig/src/evdev.c xf86-input-evdev-2.9.2.patched
 +	  WrapEvdevQueueKbdEvent(pInfo, ev, 0, code);
 +	}
 +      }
-     }
++    }
 +  }else{
 +    /* Plain key */
 +    if(value){
@@ -1075,7 +1086,7 @@ diff -aur xf86-input-evdev-2.9.2.orig/src/evdev.c xf86-input-evdev-2.9.2.patched
  }
  
  void
-@@ -306,6 +644,7 @@
+@@ -306,6 +644,7 @@ EvdevQueueButtonEvent(InputInfoPtr pInfo, int button, int value)
          pQueue->detail.key = button;
          pQueue->val = value;
      }
@@ -1083,7 +1094,115 @@ diff -aur xf86-input-evdev-2.9.2.orig/src/evdev.c xf86-input-evdev-2.9.2.patched
  }
  
  void
-@@ -622,7 +961,7 @@
+@@ -440,33 +779,33 @@ EvdevProcessValuators(InputInfoPtr pInfo)
+         /* convert to relative motion for touchpads */
+         if (pEvdev->flags & EVDEV_RELATIVE_MODE) {
+             if (pEvdev->in_proximity) {
+-                if (valuator_mask_isset(pEvdev->vals, 0))
++                if (valuator_mask_isset(pEvdev->abs_vals, 0))
+                 {
+                     if (valuator_mask_isset(pEvdev->old_vals, 0))
+-                        delta[REL_X] = valuator_mask_get(pEvdev->vals, 0) -
++                        delta[REL_X] = valuator_mask_get(pEvdev->abs_vals, 0) -
+                             valuator_mask_get(pEvdev->old_vals, 0);
+                     valuator_mask_set(pEvdev->old_vals, 0,
+-                            valuator_mask_get(pEvdev->vals, 0));
++                            valuator_mask_get(pEvdev->abs_vals, 0));
+                 }
+-                if (valuator_mask_isset(pEvdev->vals, 1))
++                if (valuator_mask_isset(pEvdev->abs_vals, 1))
+                 {
+                     if (valuator_mask_isset(pEvdev->old_vals, 1))
+-                        delta[REL_Y] = valuator_mask_get(pEvdev->vals, 1) -
++                        delta[REL_Y] = valuator_mask_get(pEvdev->abs_vals, 1) -
+                             valuator_mask_get(pEvdev->old_vals, 1);
+                     valuator_mask_set(pEvdev->old_vals, 1,
+-                            valuator_mask_get(pEvdev->vals, 1));
++                            valuator_mask_get(pEvdev->abs_vals, 1));
+                 }
+             } else {
+                 valuator_mask_zero(pEvdev->old_vals);
+             }
+-            valuator_mask_zero(pEvdev->vals);
++            valuator_mask_zero(pEvdev->abs_vals);
+             pEvdev->abs_queued = 0;
+             pEvdev->rel_queued = 1;
+         } else {
+             int val;
+-            if (valuator_mask_fetch(pEvdev->vals, 0, &val))
++            if (valuator_mask_fetch(pEvdev->abs_vals, 0, &val))
+                 valuator_mask_set(pEvdev->old_vals, 0, val);
+-            if (valuator_mask_fetch(pEvdev->vals, 1, &val))
++            if (valuator_mask_fetch(pEvdev->abs_vals, 1, &val))
+                 valuator_mask_set(pEvdev->old_vals, 1, val);
+         }
+     }
+@@ -480,9 +819,9 @@ EvdevProcessValuators(InputInfoPtr pInfo)
+             pEvdev->delta[REL_X] = pEvdev->delta[REL_Y];
+             pEvdev->delta[REL_Y] = tmp;
+             if (pEvdev->delta[REL_X] == 0)
+-                valuator_mask_unset(pEvdev->vals, REL_X);
++                valuator_mask_unset(pEvdev->rel_vals, REL_X);
+             if (pEvdev->delta[REL_Y] == 0)
+-                valuator_mask_unset(pEvdev->vals, REL_Y);
++                valuator_mask_unset(pEvdev->rel_vals, REL_Y);
+         }
+         if (pEvdev->invert_x)
+             pEvdev->delta[REL_X] *= -1;
+@@ -498,7 +837,7 @@ EvdevProcessValuators(InputInfoPtr pInfo)
+         {
+             int map = pEvdev->rel_axis_map[i];
+             if (pEvdev->delta[i] && map != -1)
+-                valuator_mask_set(pEvdev->vals, map, pEvdev->delta[i]);
++                valuator_mask_set(pEvdev->rel_vals, map, pEvdev->delta[i]);
+         }
+     }
+     /*
+@@ -511,9 +850,9 @@ EvdevProcessValuators(InputInfoPtr pInfo)
+      * just works.
+      */
+     else if (pEvdev->abs_queued && pEvdev->in_proximity) {
+-        EvdevSwapAbsValuators(pEvdev, pEvdev->vals);
+-        EvdevApplyCalibration(pEvdev, pEvdev->vals);
+-        Evdev3BEmuProcessAbsMotion(pInfo, pEvdev->vals);
++        EvdevSwapAbsValuators(pEvdev, pEvdev->abs_vals);
++        EvdevApplyCalibration(pEvdev, pEvdev->abs_vals);
++        Evdev3BEmuProcessAbsMotion(pInfo, pEvdev->abs_vals);
+     }
+ }
+ 
+@@ -559,10 +898,10 @@ EvdevProcessProximityState(InputInfoPtr pInfo)
+     if (!pEvdev->prox_queued)
+     {
+         if (pEvdev->abs_queued && !pEvdev->in_proximity)
+-            for (i = 0; i < valuator_mask_size(pEvdev->vals); i++)
+-                if (valuator_mask_isset(pEvdev->vals, i))
++            for (i = 0; i < valuator_mask_size(pEvdev->abs_vals); i++)
++                if (valuator_mask_isset(pEvdev->abs_vals, i))
+                     valuator_mask_set(pEvdev->prox, i,
+-                                      valuator_mask_get(pEvdev->vals, i));
++                                      valuator_mask_get(pEvdev->abs_vals, i));
+         return 0;
+     }
+ 
+@@ -581,13 +920,13 @@ EvdevProcessProximityState(InputInfoPtr pInfo)
+         /* We're about to go into/out of proximity but have no abs events
+          * within the EV_SYN. Use the last coordinates we have. */
+         for (i = 0; i < valuator_mask_size(pEvdev->prox); i++)
+-            if (!valuator_mask_isset(pEvdev->vals, i) &&
++            if (!valuator_mask_isset(pEvdev->abs_vals, i) &&
+                 valuator_mask_isset(pEvdev->prox, i))
+-                valuator_mask_set(pEvdev->vals, i,
++                valuator_mask_set(pEvdev->abs_vals, i,
+                                   valuator_mask_get(pEvdev->prox, i));
+         valuator_mask_zero(pEvdev->prox);
+ 
+-        pEvdev->abs_queued = valuator_mask_size(pEvdev->vals);
++        pEvdev->abs_queued = valuator_mask_size(pEvdev->abs_vals);
+     }
+ 
+     pEvdev->in_proximity = prox_state;
+@@ -622,7 +961,7 @@ EvdevProcessButtonEvent(InputInfoPtr pInfo, struct input_event *ev)
      if (button)
          EvdevQueueButtonEvent(pInfo, button, value);
      else
@@ -1092,7 +1211,43 @@ diff -aur xf86-input-evdev-2.9.2.orig/src/evdev.c xf86-input-evdev-2.9.2.patched
  }
  
  /**
-@@ -936,13 +1275,24 @@
+@@ -670,7 +1009,7 @@ EvdevProcessRelativeMotionEvent(InputInfoPtr pInfo, struct input_event *ev)
+             pEvdev->rel_queued = 1;
+             pEvdev->delta[ev->code] += value;
+             map = pEvdev->rel_axis_map[ev->code];
+-            valuator_mask_set(pEvdev->vals, map, value);
++            valuator_mask_set(pEvdev->rel_vals, map, value);
+             break;
+     }
+ }
+@@ -821,7 +1160,7 @@ EvdevProcessAbsoluteMotionEvent(InputInfoPtr pInfo, struct input_event *ev)
+         pEvdev->abs_queued = 1;
+     } else if (!pEvdev->mt_mask) {
+         map = pEvdev->abs_axis_map[ev->code];
+-        valuator_mask_set(pEvdev->vals, map, value);
++        valuator_mask_set(pEvdev->abs_vals, map, value);
+         pEvdev->abs_queued = 1;
+     }
+ }
+@@ -881,7 +1220,7 @@ EvdevPostRelativeMotionEvents(InputInfoPtr pInfo)
+     EvdevPtr pEvdev = pInfo->private;
+ 
+     if (pEvdev->rel_queued) {
+-        xf86PostMotionEventM(pInfo->dev, Relative, pEvdev->vals);
++        xf86PostMotionEventM(pInfo->dev, Relative, pEvdev->rel_vals);
+     }
+ }
+ 
+@@ -903,7 +1242,7 @@ EvdevPostAbsoluteMotionEvents(InputInfoPtr pInfo)
+      * this scheme still just work.
+      */
+     if (pEvdev->abs_queued && pEvdev->in_proximity) {
+-        xf86PostMotionEventM(pInfo->dev, Absolute, pEvdev->vals);
++        xf86PostMotionEventM(pInfo->dev, Absolute, pEvdev->abs_vals);
+     }
+ }
+ 
+@@ -936,13 +1275,24 @@ static void EvdevPostQueuedEvents(InputInfoPtr pInfo)
  {
      int i;
      EvdevPtr pEvdev = pInfo->private;
@@ -1120,7 +1275,7 @@ diff -aur xf86-input-evdev-2.9.2.orig/src/evdev.c xf86-input-evdev-2.9.2.patched
          case EV_QUEUE_BTN:
              if (Evdev3BEmuFilterEvent(pInfo,
                                        pEvdev->queue[i].detail.key,
-@@ -968,6 +1318,10 @@
+@@ -968,6 +1318,10 @@ static void EvdevPostQueuedEvents(InputInfoPtr pInfo)
  #endif
          }
      }
@@ -1131,23 +1286,72 @@ diff -aur xf86-input-evdev-2.9.2.orig/src/evdev.c xf86-input-evdev-2.9.2.patched
  }
  
  /**
-@@ -1459,6 +1813,15 @@
-             }
+@@ -1001,8 +1355,10 @@ EvdevProcessSyncEvent(InputInfoPtr pInfo, struct input_event *ev)
+         /* don't reset the touchMask */
+     }
+ 
+-    if (pEvdev->vals)
+-        valuator_mask_zero(pEvdev->vals);
++    if (pEvdev->rel_vals)
++        valuator_mask_zero(pEvdev->rel_vals);
++    if (pEvdev->abs_vals)
++        valuator_mask_zero(pEvdev->abs_vals);
+     pEvdev->num_queue = 0;
+     pEvdev->abs_queued = 0;
+     pEvdev->rel_queued = 0;
+@@ -1042,7 +1398,8 @@ EvdevFreeMasks(EvdevPtr pEvdev)
+ 
+     free(pEvdev->slots);
+     pEvdev->slots = NULL;
+-    valuator_mask_free(&pEvdev->vals);
++    valuator_mask_free(&pEvdev->abs_vals);
++    valuator_mask_free(&pEvdev->rel_vals);
+     valuator_mask_free(&pEvdev->old_vals);
+     valuator_mask_free(&pEvdev->prox);
+ #ifdef MULTITOUCH
+@@ -1321,13 +1678,19 @@ EvdevAddAbsValuatorClass(DeviceIntPtr device, int num_scroll_axes)
+ 
+     pEvdev->num_vals = num_axes;
+     if (num_axes > 0) {
+-        pEvdev->vals = valuator_mask_new(num_axes);
++        pEvdev->abs_vals = valuator_mask_new(num_axes);
+         pEvdev->old_vals = valuator_mask_new(num_axes);
+-        if (!pEvdev->vals || !pEvdev->old_vals) {
++        pEvdev->rel_vals = valuator_mask_new(num_axes);
++        /* One needs rel_vals for an absolute device because
++         *   a) their might be some (relative) scroll axes
++         *   b) the device could be set in EVDEV_RELATIVE_MODE
++         */
++        if (!pEvdev->abs_vals || !pEvdev->rel_vals || !pEvdev->old_vals) {
+             xf86IDrvMsg(pInfo, X_ERROR, "failed to allocate valuator masks.\n");
+             goto out;
          }
      }
 +
-+    /* device only has mt-axes. the kernel should give us ABS_X etc for
-+       backwards compat but some devices don't have it. */
-+    if (num_axes == 0 && num_mt_axes > 0) {
-+        xf86IDrvMsg(pInfo, X_ERROR,
-+                    "found only multitouch-axes. That shouldn't happen.\n");
-+        goto out;
-+    }
-+
- #endif
+ #ifdef MULTITOUCH
+     if (num_mt_axes_total > 0) {
+         int nslots = num_slots(pEvdev);
+@@ -1693,8 +2056,8 @@ EvdevAddRelValuatorClass(DeviceIntPtr device, int num_scroll_axes)
  
-     for (axis = ABS_X; axis < ABS_MT_SLOT; axis++) {
-@@ -1984,6 +2347,7 @@
+     pEvdev->num_vals = num_axes;
+     if (num_axes > 0) {
+-        pEvdev->vals = valuator_mask_new(num_axes);
+-        if (!pEvdev->vals)
++        pEvdev->rel_vals = valuator_mask_new(num_axes);
++        if (!pEvdev->rel_vals)
+             goto out;
+     }
+     atoms = malloc(pEvdev->num_vals * sizeof(Atom));
+@@ -1745,7 +2108,7 @@ EvdevAddRelValuatorClass(DeviceIntPtr device, int num_scroll_axes)
+     return Success;
+ 
+ out:
+-    valuator_mask_free(&pEvdev->vals);
++    valuator_mask_free(&pEvdev->rel_vals);
+     return !Success;
+ }
+ 
+@@ -1984,6 +2347,7 @@ EvdevOn(DeviceIntPtr device)
      xf86FlushInput(pInfo->fd);
      xf86AddEnabledDevice(pInfo);
      EvdevMBEmuOn(pInfo);
@@ -1155,7 +1359,7 @@ diff -aur xf86-input-evdev-2.9.2.orig/src/evdev.c xf86-input-evdev-2.9.2.patched
      Evdev3BEmuOn(pInfo);
      pEvdev->flags |= EVDEV_INITIALIZED;
      device->public.on = TRUE;
-@@ -2010,11 +2374,11 @@
+@@ -2010,11 +2374,11 @@ EvdevProc(DeviceIntPtr device, int what)
          return EvdevOn(device);
  
      case DEVICE_OFF:
@@ -1172,16 +1376,7 @@ diff -aur xf86-input-evdev-2.9.2.orig/src/evdev.c xf86-input-evdev-2.9.2.patched
          if (pInfo->fd != -1)
          {
              EvdevGrabDevice(pInfo, 0, 1);
-@@ -2606,6 +2970,8 @@
- 
-     pEvdev->type_name = NULL;
- 
-+    pEvdev->type_name = NULL;
-+
-     return pEvdev;
- }
- 
-@@ -2667,6 +3033,118 @@
+@@ -2667,6 +3031,118 @@ EvdevPreInit(InputDriverPtr drv, InputInfoPtr pInfo, int flags)
          EvdevDragLockPreInit(pInfo);
      }
  
@@ -1300,10 +1495,10 @@ diff -aur xf86-input-evdev-2.9.2.orig/src/evdev.c xf86-input-evdev-2.9.2.patched
      return Success;
  
  error:
-Only in xf86-input-evdev-2.9.2.patched/src: evdev.c.orig
-diff -aur xf86-input-evdev-2.9.2.orig/src/evdev.h xf86-input-evdev-2.9.2.patched/src/evdev.h
---- xf86-input-evdev-2.9.2.orig/src/evdev.h	2015-03-27 12:35:50.000000000 +1100
-+++ xf86-input-evdev-2.9.2.patched/src/evdev.h	2015-03-27 23:50:15.429082767 +1100
+diff --git a/src/evdev.h b/src/evdev.h
+index 2a010e6..3bfb09a 100644
+--- a/src/evdev.h
++++ b/src/evdev.h
 @@ -37,6 +37,7 @@
  
  #include <linux/input.h>
@@ -1326,7 +1521,21 @@ diff -aur xf86-input-evdev-2.9.2.orig/src/evdev.h xf86-input-evdev-2.9.2.patched
  #ifndef XI_PROP_DEVICE_NODE
  #define XI_PROP_DEVICE_NODE "Device Node"
  #endif
-@@ -186,6 +194,33 @@
+@@ -161,9 +169,10 @@ typedef struct {
+     int num_mt_vals;        /* number of multitouch valuators */
+     int abs_axis_map[ABS_CNT]; /* Map evdev ABS_* to index */
+     int rel_axis_map[REL_CNT]; /* Map evdev REL_* to index */
+-    ValuatorMask *vals;     /* new values coming in */
+-    ValuatorMask *old_vals; /* old values for calculating relative motion */
+-    ValuatorMask *prox;     /* last values set while not in proximity */
++    ValuatorMask *abs_vals;     /* values for absolute axis */
++    ValuatorMask *rel_vals;     /* values for relative axis */
++    ValuatorMask *old_vals; /* old absolute values for calculating relative motion */
++    ValuatorMask *prox;     /* last absolute values set while not in proximity */
+     ValuatorMask *mt_mask;
+     ValuatorMask **last_mt_vals;
+     int cur_slot;
+@@ -186,6 +195,33 @@ typedef struct {
      int delta[REL_CNT];
      unsigned int abs_queued, rel_queued, prox_queued;
  
@@ -1360,7 +1569,7 @@ diff -aur xf86-input-evdev-2.9.2.orig/src/evdev.h xf86-input-evdev-2.9.2.patched
      /* Middle mouse button emulation */
      struct {
          BOOL                enabled;
-@@ -256,7 +291,11 @@
+@@ -256,7 +292,11 @@ typedef struct {
  } EvdevRec, *EvdevPtr;
  
  /* Event posting functions */
