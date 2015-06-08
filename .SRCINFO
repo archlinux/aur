@@ -51,43 +51,53 @@ pkgbase = intel-parallel-studio-xe
 
 pkgname = intel-compiler-base
 	pkgdesc = Intel C/C++ compiler
+	pkgver = 15.0.3
 	install = intel-composer.install
 
 pkgname = intel-openmp
 	pkgdesc = Intel OpenMP Library
+	pkgver = 15.0.3
 	install = intel-composer.install
 	depends = intel-compiler-base
 
 pkgname = intel-fortran-compiler
 	pkgdesc = Intel Fortran compiler
+	pkgver = 15.0.3
 	install = intel-composer.install
 	depends = intel-compiler-base
 
 pkgname = intel-ipp
 	pkgdesc = Intel Integrated Performance Primitives
+	pkgver = 8.2.2
 	install = intel-composer.install
 
 pkgname = intel-mkl
 	pkgdesc = Intel Math Kernel Library (Intel® MKL)
+	pkgver = 11.2.3
 	install = intel-mkl.install
 	backup = etc/intel-mkl-th.conf
 
 pkgname = intel-sourcechecker
 	pkgdesc = Intel Source Checker
+	pkgver = 15.0.3
 	depends = intel-compiler-base
 
 pkgname = intel-tbb_psxe
 	pkgdesc = Intel Threading Building Blocks (TBB)
+	pkgver = 4.3.5
 	install = intel-tbb.install
 	provides = intel-tbb
 
 pkgname = intel-vtune-amplifier-xe
 	pkgdesc = Performance profiler for serial and parallel performance analysis
+	pkgver = 3.0.403110
 	depends = pangox-compat
 
 pkgname = intel-inspector-xe
 	pkgdesc = Memory and thread debugger
+	pkgver = 1.2.379161
 
 pkgname = intel-advisor-xe
 	pkgdesc = Threading design and prototyping tool for software architects
+	pkgver = 1.10.380555
 
