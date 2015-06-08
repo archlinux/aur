@@ -15,7 +15,6 @@ _kernver=`uname -r`
 pkgname=catalyst
 pkgver=15.5
 pkgrel=1
-#_amdver=15.101.1001
 pkgdesc="AMD/ATI Catalyst drivers for linux. fglrx kernel module only. Radeons HD 2 3 4 xxx ARE NOT SUPPORTED"
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
