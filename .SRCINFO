@@ -1,0 +1,20 @@
+pkgbase = kimap-git
+	pkgdesc = Job-based API for interacting with IMAP servers
+	pkgver = r581.cfab821
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/pim/kimap
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	makedepends = python
+	makedepends = boost
+	depends = kmime-git
+	provides = kimap
+	conflicts = kimap
+	source = git://anongit.kde.org/kimap.git
+	md5sums = SKIP
+
+pkgname = kimap-git
+
