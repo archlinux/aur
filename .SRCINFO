@@ -1,0 +1,14 @@
+pkgbase = python2-pygeocoder
+	pkgdesc = Library that helps you make use of Google's Geocoding functionality.
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = http://code.xster.net/pygeocoder/wiki/Home
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2-requests
+	source = http://code.xster.net/pygeocoder/downloads/pygeocoder-1.2.5.tar.gz
+	md5sums = 20d42d0791a1d9287a26973a41eea173
+
+pkgname = python2-pygeocoder
+
