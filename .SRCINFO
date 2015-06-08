@@ -1,0 +1,18 @@
+pkgbase = xforms
+	pkgdesc = A graphical user interface toolkit for X Window Systems.
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = http://xforms-toolkit.org/
+	install = xforms.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = texlive-plainextra
+	depends = libxpm
+	depends = libjpeg
+	depends = libgl
+	source = http://download.savannah.gnu.org/releases/xforms/xforms-1.2.4.tar.gz
+	md5sums = d4414c9eb3b284aa2f603a49f376ed22
+
+pkgname = xforms
+
