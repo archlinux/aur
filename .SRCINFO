@@ -1,0 +1,23 @@
+pkgbase = ksystemlog-frameworks-git
+	pkgdesc = KDE SystemLog Application. KF5 Frameworks branch (GIT version)
+	pkgver = r225.c061909
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/kdeadmin/ksystemlog
+	install = ksystemlog-frameworks-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = kdoctools
+	makedepends = python
+	depends = kio
+	provides = kdeadmin-ksystemlog
+	provides = ksystemlog
+	conflicts = kdeadmin-ksystemlog
+	conflicts = ksystemlog
+	source = git://anongit.kde.org/ksystemlog.git#branch=frameworks
+	sha256sums = SKIP
+
+pkgname = ksystemlog-frameworks-git
+
