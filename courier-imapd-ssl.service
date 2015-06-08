@@ -1,0 +1,14 @@
+[Unit]
+Description=Courier IMAP (SSL) Daemon
+Requires=authdaemond.service
+After=authdaemond.service
+
+[Service]
+Type=forking
+EnvironmentFile=/etc/courier-imap/imapd
+ExecStart=/usr/lib/courier-imap/imapd-ssl.rc start
+ExecStop=/usr/lib/courier-imap/imapd-ssl.rc stop
+PIDFile=/var/run/courier/imapd-ssl.pid
+
+[Install]
+WantedBy=multi-user.target

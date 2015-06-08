@@ -1,0 +1,14 @@
+[Unit]
+Description=Courier IMAP Daemon
+Requires=authdaemond.service
+After=authdaemond.service
+
+[Service]
+Type=forking
+EnvironmentFile=/etc/courier-imap/imapd
+ExecStart=/usr/lib/courier-imap/imapd.rc start
+ExecStop=/usr/lib/courier-imap/imapd.rc stop
+PIDFile=/var/run/courier/imapd.pid
+
+[Install]
+WantedBy=multi-user.target
