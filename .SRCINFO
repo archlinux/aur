@@ -1,0 +1,17 @@
+pkgbase = pacmanlogviewer-qt5
+	pkgdesc = Inspect pacman log file.
+	pkgver = 1.3.1
+	pkgrel = 2
+	url = https://opendesktop.org/content/show.php?content=150484
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt5-base
+	provides = pacmanlogviewer
+	conflicts = pacmanlogviewer
+	replaces = pacmanlogviewer
+	source = http://qt-apps.org/CONTENT/content-files/150484-pacmanlogviewer-1.3.1.tar.gz
+	md5sums = da1bb1c4573b20dc4d2ff764a25c0479
+
+pkgname = pacmanlogviewer-qt5
+
