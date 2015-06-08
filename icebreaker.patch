@@ -1,0 +1,12 @@
+diff -aur icebreaker-1.2.1/Makefile icebreaker-1.2.1-n/Makefile
+--- icebreaker-1.2.1/Makefile	2001-07-29 18:32:36.000000000 -0700
++++ icebreaker-1.2.1-n/Makefile	2010-03-13 13:20:03.000000000 -0800
+@@ -112,7 +112,7 @@
+ 	install -g games -s -m 2755 icebreaker $(prefix)/bin
+ 	install -m 644 icebreaker.6 $(mandir)/man6
+ 	touch $(highscoredir)/icebreaker.scores
+-	chown games:games $(highscoredir)/icebreaker.scores
++	chown root:games $(highscoredir)/icebreaker.scores
+ 	chmod 664 $(highscoredir)/icebreaker.scores
+ 
+ 
