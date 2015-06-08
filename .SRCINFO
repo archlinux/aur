@@ -1,0 +1,29 @@
+pkgbase = selfoss-git
+	pkgdesc = The new multipurpose rss reader, live stream, mashup, aggregation web application
+	pkgver = 2.13.r6.gc35b896
+	pkgrel = 1
+	url = http://selfoss.aditu.de/
+	install = selfoss-git.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = php>=5.3
+	depends = php-gd
+	optdepends = apache: server, depedency if not using lighttpd or nginx
+	optdepends = lighttpd: server, depedency if not using apache or nginx
+	optdepends = nginx: server, depedency if not using lighttpd or apache
+	optdepends = mariadb: database, depedency if not using postgresql or sqlite
+	optdepends = postgresql: database, depedency if not using mariadb or sqlite
+	optdepends = sqlite: database, depedency if not using postgresql or mariadb
+	optdepends = php-sqlite: dependency if using sqlite
+	optdepends = wget: for automatic updating feeds with cron
+	optdepends = curl: for automatic updating feeds with cron
+	provides = selfoss
+	conflicts = selfoss
+	backup = etc/webapps/selfoss/config.ini
+	backup = usr/share/webapps/selfoss/config.ini
+	source = git://github.com/SSilence/selfoss.git
+	sha256sums = SKIP
+
+pkgname = selfoss-git
+

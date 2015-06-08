@@ -1,0 +1,32 @@
+post_install() {
+	echo ""
+	echo "==> Installed in : /usr/share/webapps/selfoss"
+	echo "==> If using Apache, change RewriteBase in .htaccess"
+	echo ""
+	echo "==> Config is at /etc/webapps/selfoss/config.ini"
+	echo ""
+}
+
+
+pre_upgrade() {
+	# save old untracked config (from pkgbuild 2.8) and make it tracked
+	if [[ -f /usr/share/webapps/selfoss/config.ini && ! -h /usr/share/webapps/selfoss/config.ini ]]; then
+		install -Dm644 /usr/share/webapps/selfoss/config.ini -t /etc/webapps/selfoss/
+	fi
+}
+
+post_upgrade() {
+	rm -f /usr/share/webapps/selfoss/public/{all*.css,all*.js}
+
+	echo ""
+	echo "==> For a clean update:"
+	echo "==> Change RewriteBase in .htaccess (in case of Apache)"
+	echo "==> Refresh your browser cache (CTRL+R in most cases)"
+	echo ""
+}
+
+pre_remove() {
+	# remove untracked files
+	find /usr/share/webapps/selfoss/data/ -type f -exec rm -f '{}' ';' 2> /dev/null
+	rm -f /usr/share/webapps/selfoss/public/{all*.css,all*.js}
+}
