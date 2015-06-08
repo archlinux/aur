@@ -1,0 +1,22 @@
+pkgbase = python-lifelines
+	pkgdesc = Survival analysis in Python
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = http://lifelines.readthedocs.org
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	options = !buildflags
+	source = https://github.com/CamDavidsonPilon/lifelines/archive/v0.7.0.tar.gz
+	md5sums = 274cace9ad9e0d08df97c54448e0f7e5
+
+pkgname = python-lifelines
+	depends = python-scipy
+	depends = python-pandas
+
+pkgname = python2-lifelines
+	depends = python2-scipy
+	depends = python2-pandas
+
