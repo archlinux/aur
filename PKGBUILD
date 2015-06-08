@@ -10,7 +10,7 @@ arch=(any)
 pkgdesc='Programa Oficial da Receita para envio do IRPF'
 url='http://www.receita.fazenda.gov.br'
 
-source=(http://www.receita.fazenda.gov.br/Publico/programas/receitanet/receitanet-1.07-1.noarch.rpm
+source=(http://www.receita.fazenda.gov.br/publico/programas/receitanet/receitanet-1.07-1.noarch.rpm
         Copyright
         $pkgname.install)
         
