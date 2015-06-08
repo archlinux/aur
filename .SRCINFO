@@ -1,0 +1,13 @@
+pkgbase = num-utils
+	pkgdesc = Set of programs for dealing with numbers from the command line.
+	pkgver = 0.5
+	pkgrel = 3
+	url = http://suso.suso.org/programs/num-utils/index.phtml
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://suso.suso.org/programs/num-utils/downloads/num-utils-0.5.tar.gz
+	md5sums = 58eed69761c2da97c3bfdfa422633427
+
+pkgname = num-utils
+
