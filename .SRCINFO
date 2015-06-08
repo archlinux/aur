@@ -1,0 +1,14 @@
+pkgbase = python2-quantities
+	pkgdesc = Support for physical quantities based on the popular numpy library
+	pkgver = 0.10.1
+	pkgrel = 2
+	url = http://packages.python.org/quantities
+	arch = any
+	license = BSD
+	depends = python2-numpy
+	depends = python2-nose
+	source = http://pypi.python.org/packages/source/q/quantities/quantities-0.10.1.tar.gz
+	sha256sums = 2d27caf31a5e0c37130ac0c14bfa8f9412a5ff1fbf3378a1d6085594776c4315
+
+pkgname = python2-quantities
+
