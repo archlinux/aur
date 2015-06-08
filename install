@@ -1,0 +1,6 @@
+post_install() {
+    cp -n /etc/webapps/z-push/config.example.php /etc/webapps/z-push/config.php
+    chown -R http:http /var/log/z-push
+    chown -R http:http /var/lib/z-push
+}
+
