@@ -1,0 +1,23 @@
+pkgbase = mingw-w64-openexr
+	pkgdesc = An high dynamic-range image file format library (mingw-w64)
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = http://www.openexr.com/
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	depends = mingw-w64-zlib
+	depends = mingw-w64-ilmbase
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = http://download.savannah.nongnu.org/releases/openexr/openexr-2.2.0.tar.gz
+	source = openexr-2.1.0_aligned-malloc.patch
+	source = openexr-2.1.0_cast.patch
+	md5sums = b64e931c82aa3790329c21418373db4e
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = mingw-w64-openexr
+
