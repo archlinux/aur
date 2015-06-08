@@ -1,0 +1,20 @@
+pkgbase = ki18n-git
+	pkgdesc = Ki18n
+	pkgver = r80.8848a56
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/ki18n
+	arch = i686
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	makedepends = python
+	depends = qt5-script
+	provides = ki18n
+	conflicts = ki18n
+	source = git://anongit.kde.org/ki18n.git
+	md5sums = SKIP
+
+pkgname = ki18n-git
+
