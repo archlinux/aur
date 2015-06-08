@@ -1,0 +1,31 @@
+From ca92ebbd3f11123719463325f20028b9a3520969 Mon Sep 17 00:00:00 2001
+From: Emmanuel Anne <emmanuel.anne@gmail.com>
+Date: Wed, 9 Apr 2014 23:07:41 +0200
+Subject: [PATCH 5/5] switch_title: switch to next title if no parameter
+ passed
+
+---
+ stream/stream_dvdnav.c |    7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/stream/stream_dvdnav.c b/stream/stream_dvdnav.c
+index 6bdc59d..1a94249 100644
+--- a/stream/stream_dvdnav.c
++++ b/stream/stream_dvdnav.c
+@@ -879,6 +879,13 @@ void mp_dvdnav_switch_title (stream_t *stream, int title) {
+   uint32_t titles;
+ 
+   dvdnav_get_number_of_titles (priv->dvdnav, &titles);
++  if (title <= 0)  {
++      /* No parameter -> switch to next title or return to title 1 if the end */
++      int tit, part;
++      dvdnav_current_title_info(priv->dvdnav, &tit, &part);
++      title = tit+1;
++  }
++  if (title > titles) title = 1;
+   if (title > 0 && title <= titles)
+     dvdnav_title_play (priv->dvdnav, title);
+ }
+-- 
+1.7.10.4
+
