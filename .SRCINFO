@@ -1,7 +1,7 @@
 pkgbase = linuxtrack
 	pkgdesc = Software for head motion tracking on linux.
 	pkgver = 0.99.12
-	pkgrel = 2
+	pkgrel = 3
 	url = http://code.google.com/p/linux-track/
 	install = linuxtrack.install
 	arch = i686
