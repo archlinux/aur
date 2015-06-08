@@ -1,0 +1,23 @@
+pkgbase = dddvb-dkms
+	pkgdesc = Official Digital Devices driver package as DKMS
+	pkgver = 0.9.18beta3
+	pkgrel = 2
+	url = http://download.digital-devices.de/download/linux/
+	install = dddvb-dkms.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = linux-headers
+	depends = dkms
+	provides = dddvb-dkms
+	conflicts = digitaldevices-dvb-drivers
+	conflicts = dvbsky-dvb-drivers
+	conflicts = technotrend-dvb-drivers
+	replaces = digitaldevices-dvb-drivers
+	replaces = dvbsky-dvb-drivers
+	replaces = technotrend-dvb-drivers
+	source = http://download.digital-devices.de/download/linux/dddvb-0.9.18beta3.tar.bz2
+	md5sums = 3f550b8b21710348d46b888d8f2078b3
+
+pkgname = dddvb-dkms
+

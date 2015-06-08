@@ -1,0 +1,15 @@
+post_install() {
+  dkms install -m "dddvb/${1%-*}"
+}
+
+pre_upgrade() {
+  dkms remove -m "dddvb/${2%-*}" --all
+}
+
+post_upgrade() {
+  dkms install -m "dddvb/${1%-*}"
+}
+
+pre_remove() {
+  dkms remove -m "dddvb/${1%-*}" --all
+}
