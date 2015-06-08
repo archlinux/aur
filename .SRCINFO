@@ -1,0 +1,14 @@
+pkgbase = eclipse-doc-cppref
+	pkgdesc = C/C++ reference documentation for eclipse help system
+	pkgver = 2006.08.06
+	pkgrel = 2
+	url = http://eclipsedocs.sourceforge.net/
+	arch = any
+	license = EPL
+	license = GPL
+	depends = eclipse
+	source = http://downloads.sourceforge.net/eclipsedocs/yu.ac.bg.etf.seba.doc.ccppref.zip
+	md5sums = c7e87d22c9765a57c169925c684a6b00
+
+pkgname = eclipse-doc-cppref
+
