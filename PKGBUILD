@@ -1,0 +1,35 @@
+# Maintainer: Jack L. Frost <fbt@fleshless.org>
+# vim: expandtab sts=2
+# Contributor: Corelli <corelli AT sent DOT com>
+# Contributor: BartÅ‚omiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: intelfx <intelfx100 [at] gmail [dot] com>
+# Contributor: Behem0th <grantipak@gmail.com> 
+
+pkgname=freshplayerplugin
+pkgver=0.2.4
+pkgrel=1
+pkgdesc='PPAPI-host NPAPI-plugin adapter.'
+arch=( 'i686' 'x86_64' )
+url='https://github.com/i-rinat/freshplayerplugin'
+license=( 'MIT' )
+depends=( 'pango' 'alsa-lib' 'freetype2' 'libconfig' 'libevent' 'gtk2' 'libgl' 'pepper-flash' )
+makedepends=( 'cmake' 'ragel' )
+conflicts=( 'freshplayerplugin-git' )
+
+source=( "$url/archive/v$pkgver.tar.gz" )
+
+build() {
+  cd "${pkgname}-${pkgver}"
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+  make
+}
+
+package() {
+  cd "${pkgname}-${pkgver}"
+  install -d "${pkgdir}/usr/lib/mozilla/plugins"
+  install -m644 libfreshwrapper-*.so "${pkgdir}/usr/lib/mozilla/plugins"
+  install -Dm644 data/freshwrapper.conf.example "${pkgdir}/usr/share/${pkgname}/freshwrapper.conf.example"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+sha1sums=('360fc6f76f325079c5054e633947d948ed8ef9fc')
