@@ -1,0 +1,152 @@
+diff -Naur fogger/README.md Fogger/README.md
+--- fogger/README.md	1969-12-31 19:00:00.000000000 -0500
++++ Fogger/README.md	2012-11-15 16:40:17.985218655 -0500
+@@ -0,0 +1,25 @@
++Fogger
++======
++
++Fogger turns your cloud apps into regular desktop apps
++
++Fogger acts as a bridge between web applications and the linux desktop. 
++It exposes an easy to use JS API to webapps which can be used to 
++interact with the host desktop environment. It can also be used to write 
++basic desktop apps for linux in pure web style.
++
++Author:
++-------
++Owais Lone
++
++Website:
++--------
++https://launchpad.net/fogger
++
++License:
++--------
++GNU GPL v3
++
++Archlinux package:
++------------------
++https://aur.archlinux.org/packages/fogger-bzr/
+diff -Naur fogger/bin/fogger Fogger/bin/fogger
+--- fogger/bin/fogger	2012-11-15 16:41:14.799221000 -0500
++++ Fogger/bin/fogger	2012-11-15 16:40:17.985218655 -0500
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ # -*- Mode: Python; coding: utf-8; indent-tabs-mode: nil; tab-width: 4 -*-
+ ### BEGIN LICENSE
+ # Copyright (C) 2012 Owais Lone <hello@owaislone.org>
+diff -Naur fogger/bin/fogger-lens Fogger/bin/fogger-lens
+--- fogger/bin/fogger-lens	2012-11-15 16:41:14.799221000 -0500
++++ Fogger/bin/fogger-lens	2012-11-15 16:40:17.985218655 -0500
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ # -*- Mode: Python; coding: utf-8; indent-tabs-mode: nil; tab-width: 4 -*-
+ ### BEGIN LICENSE
+ # Copyright (C) 2012 Owais Lone <hello@owaislone.org>
+diff -Naur fogger/data/templates/fogapp.desktop.tmpl Fogger/data/templates/fogapp.desktop.tmpl
+--- fogger/data/templates/fogapp.desktop.tmpl	2012-11-15 16:41:14.799221000 -0500
++++ Fogger/data/templates/fogapp.desktop.tmpl	2012-11-15 16:40:17.985218655 -0500
+@@ -2,8 +2,8 @@
+ Name=%(name)s
+ Comment=%(name)s
+ Categories=Network;WebBrowser;
+-Exec=/opt/extras.ubuntu.com/fogger/bin/fogger %(uuid)s
+-TryExec=/opt/extras.ubuntu.com/fogger/bin/fogger
++Exec=/usr/bin/fogger %(uuid)s
++TryExec=/usr/bin/fogger
+ Icon=%(icon)s
+ Terminal=false
+ Type=Application
+diff -Naur fogger/data/unity/extras-unity-lens-fogger.lens Fogger/data/unity/extras-unity-lens-fogger.lens
+--- fogger/data/unity/extras-unity-lens-fogger.lens	2012-11-15 16:41:14.799221000 -0500
++++ Fogger/data/unity/extras-unity-lens-fogger.lens	2012-11-15 16:40:17.985218655 -0500
+@@ -2,7 +2,7 @@
+ DBusName=net.launchpad.lens.fogger
+ DBusPath=/net/launchpad/lens/fogger
+ Name=Fogger
+-Icon=/opt/extras.ubuntu.com/fogger/share/fogger/media/lens.svg
++Icon=/usr/share/fogger/media/lens.svg
+ Description=Lens to search and launch fogapps
+ SearchHint=Search for a fog app
+ Shortcut=c
+diff -Naur fogger/data/unity/extras-unity-lens-fogger.service Fogger/data/unity/extras-unity-lens-fogger.service
+--- fogger/data/unity/extras-unity-lens-fogger.service	2012-11-15 16:41:14.799221000 -0500
++++ Fogger/data/unity/extras-unity-lens-fogger.service	2012-11-15 16:40:17.985218655 -0500
+@@ -1,3 +1,3 @@
+ [D-BUS Service]
+ Name=net.launchpad.lens.fogger
+-Exec=/opt/extras.ubuntu.com/fogger/bin/fogger-lens
++Exec=/usr/bin/fogger-lens
+diff -Naur fogger/fogger.desktop.in Fogger/fogger.desktop.in
+--- fogger/fogger.desktop.in	2012-11-15 16:41:14.799221000 -0500
++++ Fogger/fogger.desktop.in	2012-11-15 16:40:17.985218655 -0500
+@@ -3,7 +3,7 @@
+ _Comment=Create a new fog app
+ Categories=Network;WebBrowser;
+ Exec=fogger
+-Icon=/opt/extras.ubuntu.com/fogger/share/fogger/media/fogger.svg
++Icon=/usr/share/fogger/media/fogger.svg
+ Terminal=false
+ Type=Application
+ StartupWMClass=Fogger
+diff -Naur fogger/fogger_lib/Bridge.py Fogger/fogger_lib/Bridge.py
+--- fogger/fogger_lib/Bridge.py	2012-11-15 16:41:14.799221000 -0500
++++ Fogger/fogger_lib/Bridge.py	2012-11-15 16:40:17.985218655 -0500
+@@ -12,7 +12,8 @@
+ # You should have received a copy of the GNU General Public License along
+ # with this program.  If not, see <http://www.gnu.org/licenses/>.
+ ### END LICENSE
+-from gi.repository import Gtk, Unity, Notify, Dbusmenu, TelepathyGLib
++#from gi.repository import Gtk, Unity, Notify, Dbusmenu, TelepathyGLib
++from gi.repository import Gtk, Notify, TelepathyGLib
+ 
+ Notify.init('fogger')
+ 
+@@ -36,14 +37,20 @@
+         self.W = root
+         self.desktop_file = desktop_file
+         self.icon_name = icon_name
+-        self.launcher_entry = Unity.LauncherEntry.get_for_desktop_file(self.desktop_file)
+-        self.quicklist = Dbusmenu.Menuitem.new()
+-        self.launcher_entry.set_property("quicklist", self.quicklist)
++        #self.launcher_entry = Unity.LauncherEntry.get_for_desktop_file(self.desktop_file)
++        #self.quicklist = Dbusmenu.Menuitem.new()
++        #self.launcher_entry.set_property("quicklist", self.quicklist)
++        self.launcher_entry = None
++        self.quicklist = None
+         self.indicator = None
+-        self._rename_methods = {
+-            Dbusmenu.Menuitem: self._rename_dbus_menu_item,
+-            Gtk.MenuItem: self._rename_gtk_menu_item,
+-        }
++        #self._rename_methods = {
++        #    Dbusmenu.Menuitem: self._rename_dbus_menu_item,
++        #    Gtk.MenuItem: self._rename_gtk_menu_item,
++        #}
++        self.launcher_entry = None
++        self.quicklist = None
++        self.indicator = None
++        self._rename_methods = { }
+         self.telepathy_account_manager = TelepathyGLib.AccountManager.new(
+                                              TelepathyGLib.DBusDaemon.dup())
+         self.telepathy_account_manager.connect(
+diff -Naur fogger/tests/test_example.py Fogger/tests/test_example.py
+--- fogger/tests/test_example.py	2012-11-15 16:41:14.799221000 -0500
++++ Fogger/tests/test_example.py	2012-11-15 16:40:17.995218506 -0500
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ # -*- Mode: Python; coding: utf-8; indent-tabs-mode: nil; tab-width: 4 -*-
+ ### BEGIN LICENSE
+ # Copyright (C) 2012 Owais Lone <hello@owaislone.org>
+diff -Naur fogger/tests/test_lint.py Fogger/tests/test_lint.py
+--- fogger/tests/test_lint.py	2012-11-15 16:41:14.799221000 -0500
++++ Fogger/tests/test_lint.py	2012-11-15 16:40:17.995218506 -0500
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ # -*- Mode: Python; coding: utf-8; indent-tabs-mode: nil; tab-width: 4 -*-
+ ### BEGIN LICENSE
+ # Copyright (C) 2012 Owais Lone <hello@owaislone.org>
