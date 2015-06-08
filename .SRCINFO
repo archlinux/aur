@@ -1,0 +1,22 @@
+pkgbase = danbooru-client-git
+	pkgdesc = Application to access Danbooru-based image boards. (GIT Version)
+	pkgver = v0.3.0.21.gef46a37
+	pkgrel = 1
+	url = http://www.dennogumi.org/projects/danbooru-client
+	install = danbooru-client-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = python
+	depends = kdeclarative
+	depends = kfilemetadata
+	provides = danbooru-client
+	conflicts = danbooru-client
+	source = git+https://git.dennogumi.org/kde/danbooru-client.git
+	sha1sums = SKIP
+
+pkgname = danbooru-client-git
+
