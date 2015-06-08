@@ -1,0 +1,16 @@
+pkgbase = perl-text-aligner
+	pkgdesc = Align text in columns
+	pkgver = 0.07
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Text-Aligner
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AN/ANNO/Text-Aligner-0.07.tar.gz
+	md5sums = 73088eaeae1e6c627398db1e7cc76717
+	sha512sums = f3c161e88b12cd999b55529af8002702d324923fecf986b84bac610c5cfade6e1bf4d34285c00927ace232a9bbff11f2748913d0e6e87f5d27c2d381e64403ac
+
+pkgname = perl-text-aligner
+
