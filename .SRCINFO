@@ -1,0 +1,23 @@
+pkgbase = lilo
+	pkgdesc = A bootloader for Linux
+	pkgver = 24.1
+	pkgrel = 1
+	url = https://alioth.debian.org/projects/lilo/
+	install = lilo.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = bin86
+	makedepends = sharutils
+	depends = device-mapper
+	depends = coreutils
+	optdepends = perl: to use keytab-lilo
+	options = !makeflags
+	backup = etc/lilo.conf
+	source = http://lilo.alioth.debian.org/ftp/sources/lilo-24.1.tar.gz
+	source = lilo.conf
+	md5sums = 66573ba8629209da694131efbe20c5de
+	md5sums = ca2d8cd9b63f11444861939b42df29c1
+
+pkgname = lilo
+
