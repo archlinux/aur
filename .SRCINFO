@@ -1,0 +1,19 @@
+pkgbase = firefox-extension-kwallet
+	pkgdesc = An extension to allows Firefox to use KDE's Kwallet to store passwords
+	pkgver = 2.4
+	pkgrel = 1
+	url = https://addons.mozilla.org/firefox/addon/kde-wallet-password-integratio/
+	arch = i686
+	arch = x86_64
+	license = MPL 1.1
+	license = GPL 2.0
+	license = LGPL 2.1
+	depends = qt4
+	depends = kdelibs
+	depends = firefox
+	depends = kdeutils-kwalletmanager
+	source = https://addons.mozilla.org/firefox/downloads/latest/49357/platform:2/addon-49357-latest.xpi
+	md5sums = 2b486b4a1c781d8bf7cab0c2ae729e78
+
+pkgname = firefox-extension-kwallet
+
