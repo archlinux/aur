@@ -1,0 +1,20 @@
+pkgbase = kimageformats-git
+	pkgdesc = KImageFormats
+	pkgver = r67.6b72930
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/kimageformats
+	arch = i686
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	depends = qt5-base
+	depends = openexr
+	provides = kimageformats
+	conflicts = kimageformats
+	source = git://anongit.kde.org/kimageformats.git
+	md5sums = SKIP
+
+pkgname = kimageformats-git
+
