@@ -1,0 +1,23 @@
+pkgbase = residualvm
+	pkgdesc = A cross-platform 3D game interpreter which allows you to play LucasArts LUA-based 3D adventures.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = http://www.residualvm.org/
+	install = residualvm.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = sdl
+	depends = libmad
+	depends = libmpeg2
+	depends = libvorbis
+	depends = hicolor-icon-theme
+	depends = libjpeg-turbo
+	depends = alsa-lib
+	depends = gcc-libs
+	optdepends = fluidsynth: for MIDI SoundFont2 support
+	source = http://downloads.sourceforge.net/sourceforge/residualvm/residualvm-0.2.1-sources.tar.bz2
+	sha256sums = cd2748a665f80b8c527c6dd35f8435e718d2e10440dca10e7765574c7402d924
+
+pkgname = residualvm
+
