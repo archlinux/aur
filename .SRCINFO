@@ -1,0 +1,17 @@
+pkgbase = xmp
+	pkgdesc = The Extended Module Player is a portable command-line module player that supports over 90 module formats (Amiga, Atari, ..)
+	pkgver = 4.0.10
+	pkgrel = 1
+	url = http://xmp.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxmp
+	depends = libpulse
+	backup = etc/xmp/xmp.conf
+	backup = etc/xmp/modules.conf
+	source = http://downloads.sourceforge.net/sourceforge/xmp/xmp-4.0.10.tar.gz
+	md5sums = ffe79874f29aac2ac6da2f9f9bd72da0
+
+pkgname = xmp
+
