@@ -1,0 +1,18 @@
+pkgbase = attica-qt5-git
+	pkgdesc = A Qt5 library that implements the Open Collaboration Services API
+	pkgver = r488.0cd48c8
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kdesupport/attica
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	depends = qt5-base
+	provides = attica-qt5
+	conflicts = attica-qt5
+	source = git://anongit.kde.org/attica.git
+	md5sums = SKIP
+
+pkgname = attica-qt5-git
+
