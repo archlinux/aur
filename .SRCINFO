@@ -1,0 +1,21 @@
+pkgbase = kdoctools-git
+	pkgdesc = KDocTools
+	pkgver = r186.05ca8f4
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/kdoctools
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	makedepends = perl-uri
+	depends = karchive-git
+	depends = docbook-xsl
+	provides = kdoctools
+	conflicts = kdoctools
+	options = staticlibs
+	source = git://anongit.kde.org/kdoctools.git
+	md5sums = SKIP
+
+pkgname = kdoctools-git
+
