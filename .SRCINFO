@@ -1,0 +1,16 @@
+pkgbase = epson-inkjet-printer-201105w
+	pkgdesc = Epson printer driver (Stylus NX330, NX430, SX430W, SX435W, SX440W, SX445W, TX430W, TX435W)
+	pkgver = 1.0.0
+	pkgrel = 8
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom:Epson Licence Agreement
+	depends = cups
+	depends = ghostscript
+	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201105w-1.0.0-1lsb3.2.src.rpm
+	sha256sums = e76714bdda4e1ab875b5b0c64018d12384669ad797785fc5922d03f1c33f9555
+
+pkgname = epson-inkjet-printer-201105w
+
