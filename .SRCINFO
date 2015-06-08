@@ -1,0 +1,19 @@
+pkgbase = qt5ct
+	pkgdesc = Qt5 Configuration Utility (requires Qt platform theme to be set to qt5ct)
+	pkgver = 0.12
+	pkgrel = 1
+	url = http://opendesktop.org/content/show.php?content=168066
+	install = qt5ct.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = qt5-base
+	depends = qt5-svg
+	depends = qt5-tools
+	source = qt5ct-0.12.tar.bz2::http://downloads.sourceforge.net/project/qt5ct/qt5ct-0.12.tar.bz2
+	source = COPYING.BSD
+	sha256sums = b7f9e8840db096b031680b0e35956436c2e7b5eb261b080ec9a1adb582a90b4f
+	sha256sums = 97a70f7e23db575a05c0feafa8e775c3c3e6eef71e4d8bbae0074ac09f4d1086
+
+pkgname = qt5ct
+
