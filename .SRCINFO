@@ -1,0 +1,21 @@
+pkgbase = a4tool-git
+	pkgdesc = Tools for control your smart mouse. A4Tech G10-700F, and other "Oscar mouse's".
+	pkgver = 20150203
+	pkgrel = 1
+	url = https://github.com/Marisa-Chan/init-gmouse
+	install = a4tool.install
+	arch = x86_64
+	arch = i686
+	license = BSD
+	depends = libusbx>=1.0
+	depends = libnotify
+	options = !strip
+	options = !emptydirs
+	backup = etc/a4toold.conf
+	source = git://github.com/Marisa-Chan/init-gmouse.git
+	source = 40-a4tech-usb-devices.rules
+	sha512sums = SKIP
+	sha512sums = c499bcdd5533d1b238c67508f26c3c6a2a885ae0942755ea2270ffd546022e213bb0560353b37f0e85f63dedae5c53d3b1e4107e204ba820102f9da19833fd01
+
+pkgname = a4tool-git
+

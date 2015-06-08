@@ -1,0 +1,3 @@
+# A4 Tech Co., Ltd
+# 09da:054f
+SUBSYSTEM=="usb", ATTRS{idVendor}=="09da", ATTR{idProduct}=="054f", GROUP="users", RUN+="/usr/bin/a4tool init"

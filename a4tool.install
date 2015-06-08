@@ -1,0 +1,7 @@
+post_install() {
+    echo ">>> To enable daemon add /usr/share/a4tool/a4toold.sh to your user autorun"
+}
+
+post_upgrade() {
+    echo ">>> To enable daemon add /usr/share/a4tool/a4toold.sh to your user autorun"
+}
