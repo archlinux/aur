@@ -1,0 +1,11 @@
+[Unit]
+Description=ADCH++ - Advanced DirectConnect Hub for Lanparties
+After=network.target
+
+[Service]
+User=adchpp-lan
+ExecStart=/usr/bin/adchpp-lan
+ExecStop=/bin/kill -s SIGINT -q 5 $MAINPID
+
+[Install]
+WantedBy=multi-user.target

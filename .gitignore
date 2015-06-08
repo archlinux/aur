@@ -1,0 +1,9 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!adchpp-lan-bzr.install
+!adchpp-lan-bzr.service
+!adchpp-lan-bzr.sysuser
+!adchpp-lan-bzr.tmpfile
+!adchpp-lan.sh
