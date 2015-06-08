@@ -1,0 +1,16 @@
+pkgbase = epson-inkjet-printer-artisan-725-835-series
+	pkgdesc = Epson printer driver (Artisan 725, 835 / Stylus Photo PX720WD, TX720WD, PX820FWD, TX820FWD)
+	pkgver = 1.0.0
+	pkgrel = 8
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom:Epson Licence Agreement
+	depends = cups
+	depends = ghostscript
+	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-artisan-725-835-series-1.0.0-1lsb3.2.src.rpm
+	sha256sums = 0c9d975206bac0687bcec297f959a2c495845077c8e6cd0fc817fdfab4d1528a
+
+pkgname = epson-inkjet-printer-artisan-725-835-series
+
