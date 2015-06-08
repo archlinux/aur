@@ -1,0 +1,14 @@
+pkgbase = meniou
+	pkgdesc = A light customizable menu application (alpha version)
+	pkgver = 20130104
+	pkgrel = 1
+	url = https://github.com/valr/meniou
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = gtk3
+	options = !libtool
+
+pkgname = meniou
+
