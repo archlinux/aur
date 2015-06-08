@@ -1,0 +1,20 @@
+pkgbase = ttf-vdrsymbols
+	pkgdesc = TrueType font that includes the symbols used by some VDR plugins and patches
+	pkgver = 20100612
+	pkgrel = 1
+	url = http://andreas.vdr-developer.org/fonts/index.html
+	install = ttf-vdrsymbols.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	conflicts = vdrsymbols-ttf
+	replaces = vdrsymbols-ttf
+	source = http://andreas.vdr-developer.org/fonts/download/vdrsymbols-ttf-20100612.tgz
+	source = https://raw.githubusercontent.com/dejavu-fonts/dejavu-fonts/master/LICENSE
+	md5sums = dad98a1cdb2b7deb3301ecf46181d258
+	md5sums = a6f61a45e6175388cac48de6f6698fb5
+
+pkgname = ttf-vdrsymbols
+
