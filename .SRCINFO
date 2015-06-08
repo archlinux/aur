@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-hdf5
+	pkgdesc = General purpose library and file format for storing scientific data (mingw-w64)
+	pkgver = 1.8.14
+	pkgrel = 2
+	url = http://www.hdfgroup.org/HDF5/
+	arch = any
+	license = custom
+	makedepends = mingw-w64-cmake
+	makedepends = wine
+	depends = mingw-w64-crt
+	depends = mingw-w64-zlib
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = https://www.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8.14/src/hdf5-1.8.14.tar.bz2
+	sha1sums = 3c48bcb0d5fb21a3aa425ed035c08d8da3d5483a
+
+pkgname = mingw-w64-hdf5
+
