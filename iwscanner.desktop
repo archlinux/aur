@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=iwscanner
+Comment=Wireless scanner for linux
+Categories=GTK;Network;Monitor;
+Exec=iwscanner
+Icon=iwscanner
+Terminal=false
+Type=Application
