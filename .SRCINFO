@@ -1,0 +1,20 @@
+pkgbase = kitemviews-git
+	pkgdesc = KItemViews
+	pkgver = r54.3157bc9
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/kitemviews
+	arch = i686
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	makedepends = qt5-tools
+	depends = qt5-base
+	provides = kitemviews
+	conflicts = kitemviews
+	source = git://anongit.kde.org/kitemviews.git
+	md5sums = SKIP
+
+pkgname = kitemviews-git
+
