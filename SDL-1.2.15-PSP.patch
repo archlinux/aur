@@ -1,0 +1,2943 @@
+diff -burN SDL-1.2.15/build-scripts/config.sub SDL-1.2.15-PSP/build-scripts/config.sub
+--- SDL-1.2.15/build-scripts/config.sub	2012-01-19 07:30:05.000000000 +0100
++++ SDL-1.2.15-PSP/build-scripts/config.sub	2012-06-06 12:55:07.465588936 +0200
+@@ -942,6 +942,10 @@
+ 	ps2)
+ 		basic_machine=i386-ibm
+ 		;;
++    psp)
++        basic_machine=mipsallegrexel-psp
++        os=-elf
++        ;;
+ 	pw32)
+ 		basic_machine=i586-unknown
+ 		os=-pw32
+diff -burN SDL-1.2.15/configure.in SDL-1.2.15-PSP/configure.in
+--- SDL-1.2.15/configure.in	2012-01-19 07:30:05.000000000 +0100
++++ SDL-1.2.15-PSP/configure.in	2012-06-06 12:55:07.468588936 +0200
+@@ -1771,6 +1771,26 @@
+     AC_DEFINE(SDL_VIDEO_DISABLE_SCREENSAVER)
+ fi
+ 
++dnl Check for pspgl
++CheckPSPGL()
++{   
++    if test x$enable_video = xyes -a x$enable_video_opengl = xyes; then
++        AC_MSG_CHECKING(for OpenGL (pspgl) support)
++        video_opengl=no
++        AC_TRY_COMPILE([
++         #include <GL/gl.h>
++        ],[
++        ],[
++        video_opengl=yes
++        ])
++        AC_MSG_RESULT($video_opengl)
++        if test x$video_opengl = xyes; then
++            EXTRA_CFLAGS="$EXTRA_CFLAGS -DHAVE_OPENGL"
++            EXTRA_LDFLAGS="$EXTRA_LDFLAGS -lGL -lpspvfpu"
++        fi
++    fi
++}
++
+ dnl See if we can use the new unified event interface in Linux 2.4
+ CheckInputEvents()
+ {
+@@ -2304,6 +2324,39 @@
+     fi
+ }
+ 
++dnl Check for a valid PSPSDK installation
++CheckPSPSDK()
++{   
++    AC_CHECK_PROG(psp_config, psp-config, psp-config, no)
++    if test x$psp_config = xno; then
++        AC_MSG_ERROR(Couldn't locate psp-config.)
++    fi
++
++    AC_MSG_CHECKING(for PSPSDK)
++    pspsdk_path=`$psp_config --pspsdk-path`
++    if test ! -d $pspsdk_path -o -z $pspsdk_path; then
++        AC_MSG_RESULT(not found)
++        AC_MSG_ERROR(Couldn't locate PSPSDK.)
++    fi
++    AC_MSG_RESULT($pspsdk_path)
++    psp_prefix=`$psp_config --psp-prefix`
++
++    # Compile SDL with -G0 to disable the $gp register.
++    EXTRA_CFLAGS="$EXTRA_CFLAGS -G0 -I\"${pspsdk_path}/include\""
++    EXTRA_LDFLAGS="$EXTRA_LDFLAGS -L${pspsdk_path}/lib -L${psp_prefix} -lpspdebug -lpspgu -lpspctrl"
++    EXTRA_LDFLAGS="$EXTRA_LDFLAGS -lpspge -lpspdisplay -lpsphprm -lpspsdk -lpsprtc"
++    EXTRA_LDFLAGS="$EXTRA_LDFLAGS -lpspaudio -lpsputility -lpspnet_inet"
++
++    AC_ARG_ENABLE(pspirkeyb,
++          [  --enable-pspirkeyb      use external keyboard via libpspirkeyb [default=no]],
++                  , enable_pspirkeyb=no)
++    if test x$enable_pspirkeyb = xyes ; then
++    EXTRA_CFLAGS="$EXTRA_CFLAGS -DPSPIRKEYB"
++    EXTRA_LDFLAGS="$EXTRA_LDFLAGS -lpspirkeyb -lpsppower"
++    fi
++    EXTRA_LDFLAGS="$EXTRA_LDFLAGS -lc -lpspuser"
++}
++
+ dnl Check if we want to use RPATH
+ CheckRPATH()
+ {
+@@ -2831,6 +2884,50 @@
+         # The RISC OS platform requires special setup.
+         EXTRA_LDFLAGS="$EXTRA_LDFLAGS -ljpeg -ltiff -lpng -lz"
+         ;;
++    *-psp-*)
++        ARCH=psp
++        CheckPSPGL
++        CheckPSPSDK
++        # Set up files for the video library
++        if test x$enable_video = xyes; then
++            AC_DEFINE(SDL_VIDEO_DRIVER_PSP)
++            SOURCES="$SOURCES $srcdir/src/video/psp/*.c"
++            have_video=yes
++        fi
++        # Set up files for the audio library
++        if test x$enable_audio = xyes; then
++            AC_DEFINE(SDL_AUDIO_DRIVER_PSP)
++            SOURCES="$SOURCES $srcdir/src/audio/psp/*.c"
++            have_audio=yes
++        fi
++        # Set up files for the joystick library
++        if test x$enable_joystick = xyes; then
++            AC_DEFINE(SDL_JOYSTICK_PSP)
++            SOURCES="$SOURCES $srcdir/src/joystick/psp/*.c"
++            have_joystick=yes
++        fi
++        # Set up files for the thread library
++        if test x$enable_threads = xyes; then
++            AC_DEFINE(SDL_THREAD_PSP)
++            SOURCES="$SOURCES $srcdir/src/thread/psp/*.c"
++            SOURCES="$SOURCES $srcdir/src/thread/generic/SDL_sysmutex.c"
++            SOURCES="$SOURCES $srcdir/src/thread/generic/SDL_syscond.c"
++            have_threads=yes
++        fi
++        # Set up files for the timer library
++        if test x$enable_timers = xyes; then
++            AC_DEFINE(SDL_TIMER_PSP)
++            SOURCES="$SOURCES $srcdir/src/timer/psp/SDL_systimer.c"
++            have_timers=yes
++        fi
++        
++        EXTRA_CFLAGS="$EXTRA_CFLAGS -DENABLE_PSP -DDISABLE_STDIO"
++
++    # Use SDL_main wrapper to set up callbacks etc.
++        SDL_CFLAGS="$SDL_CFLAGS -Dmain=SDL_main"
++        SDL_LIBS="-lSDLmain $SDL_LIBS"
++        SDLMAIN_SOURCES="$srcdir/src/main/psp/*.c"
++        ;;
+     *)
+         AC_MSG_ERROR([
+ *** Unsupported host:  Please add to configure.in
+diff -burN SDL-1.2.15/include/SDL_config.h.in SDL-1.2.15-PSP/include/SDL_config.h.in
+--- SDL-1.2.15/include/SDL_config.h.in	2012-01-19 07:30:05.000000000 +0100
++++ SDL-1.2.15-PSP/include/SDL_config.h.in	2012-06-06 12:55:07.469588936 +0200
+@@ -181,6 +181,7 @@
+ #undef SDL_AUDIO_DRIVER_OSS
+ #undef SDL_AUDIO_DRIVER_OSS_SOUNDCARD_H
+ #undef SDL_AUDIO_DRIVER_PAUD
++#undef SDL_AUDIO_DRIVER_PSP
+ #undef SDL_AUDIO_DRIVER_QNXNTO
+ #undef SDL_AUDIO_DRIVER_SNDMGR
+ #undef SDL_AUDIO_DRIVER_SUNAUDIO
+@@ -214,6 +215,7 @@
+ #undef SDL_JOYSTICK_MACOS
+ #undef SDL_JOYSTICK_MINT
+ #undef SDL_JOYSTICK_OS2
++#undef SDL_JOYSTICK_PSP
+ #undef SDL_JOYSTICK_RISCOS
+ #undef SDL_JOYSTICK_WINMM
+ #undef SDL_JOYSTICK_USBHID
+@@ -233,6 +235,7 @@
+ #undef SDL_THREAD_BEOS
+ #undef SDL_THREAD_DC
+ #undef SDL_THREAD_OS2
++#undef SDL_THREAD_PSP
+ #undef SDL_THREAD_PTH
+ #undef SDL_THREAD_PTHREAD
+ #undef SDL_THREAD_PTHREAD_RECURSIVE_MUTEX
+@@ -247,6 +250,7 @@
+ #undef SDL_TIMER_MACOS
+ #undef SDL_TIMER_MINT
+ #undef SDL_TIMER_OS2
++#undef SDL_TIMER_PSP
+ #undef SDL_TIMER_RISCOS
+ #undef SDL_TIMER_UNIX
+ #undef SDL_TIMER_WIN32
+@@ -273,6 +277,7 @@
+ #undef SDL_VIDEO_DRIVER_PICOGUI
+ #undef SDL_VIDEO_DRIVER_PS2GS
+ #undef SDL_VIDEO_DRIVER_PS3
++#undef SDL_VIDEO_DRIVER_PSP
+ #undef SDL_VIDEO_DRIVER_QTOPIA
+ #undef SDL_VIDEO_DRIVER_QUARTZ
+ #undef SDL_VIDEO_DRIVER_RISCOS
+diff -burN SDL-1.2.15/README.PSP SDL-1.2.15-PSP/README.PSP
+--- SDL-1.2.15/README.PSP	1970-01-01 01:00:00.000000000 +0100
++++ SDL-1.2.15-PSP/README.PSP	2012-06-06 12:55:07.469588936 +0200
+@@ -0,0 +1,111 @@
++SDL port for the Sony PSP contributed by 
++   Marcus R. Brown <mrbrown@ocgnet.org>
++   Jim Paris <jim@jtan.com>
++   Matthew H <matthewh@webone.com.au>
++
++Building
++--------
++To build for the PSP, make sure psp-config is in the path and run:
++
++   ./autogen.sh
++   LDFLAGS="-L$(psp-config --pspsdk-path)/lib" LIBS="-lc -lpspuser" \
++     ./configure --host psp --prefix=$(psp-config --psp-prefix)
++   make
++   make install
++
++Status
++------
++   Video - yes
++           - For accelerated 2D video output using the GE hardware,
++  	     use SDL_SWSURFACE in SDL_SetVideoMode.
++           - For video output via direct framebuffer access, use
++	     SDL_HWSURFACE.
++           - OpenGL is supported with SDL_OPENGL.
++  Timers - yes
++ Threads - yes
++   Input - yes, see "Input" below
++   Audio - yes
++
++
++SDL_main
++--------
++When writing an SDL program, the typical use is to write your main
++function as "SDL_main", then link -lSDLmain which provides the real
++main().  In this implementation, -lSDLmain will:
++  - Define the required PSP_* macros
++  - Set up the "home" button callback.
++  - Initialize the debugging screen
++  - Call the user-supplied SDL_main
++  - When it returns, delay 2.5 seconds, then exit to VSH.
++
++Of course, you can leave off -lSDLmain, and write the real main()
++yourself if you need more control than this.
++
++By default, the PSP "sdl-config --cflags" will define main=SDL_main.
++
++
++Building applications
++---------------------
++Write your source file as you would a normal SDL program.  Use the standard
++Makefile as supplied with any PSPSDK sample program.  Above the final "include"
++line, add:
++
++PSPBIN = $(PSPSDK)/../bin
++CFLAGS += $(shell $(PSPBIN)/sdl-config --cflags)
++LIBS += $(shell $(PSPBIN)/sdl-config --libs)
++
++
++Building autoconf applications
++------------------------------
++The general way to build autoconf applications is to add the psp
++architecture to configure.in, then use --with-sdl-prefix to point to
++the proper sdl-config.  For example, to build the applications in the
++test/ subdirectory, use:
++
++   ./autogen.sh
++   LDFLAGS="-L$(psp-config --pspsdk-path)/lib -lc -lpspuser" \
++     ./configure --host psp --with-sdl-prefix=$(psp-config --psp-prefix)
++
++
++Libc
++----
++SDL is linked against newlib's libc, and your SDL programs should be
++too.  Linking against psplibc will appear to work but may behave
++strangely at runtime.
++
++
++Input
++-----
++Joystick:
++The PSP's controls provide a joystick with a two axes on the analog
++stick and 14 independent buttons.  The button mapping is fixed:
++
++ 0 Triangle
++ 1 Circle
++ 2 Cross
++ 3 Square
++ 4 Left trigger
++ 5 Right trigger
++ 6 Down
++ 7 Left
++ 8 Up
++ 9 Right
++10 Select
++11 Start
++12 Home
++13 Hold
++
++Mouse:
++There is no mouse support, although an application could be written to
++simulate it by receiving joystick events and using SDL_WarpMouse.
++
++Keyboard:
++The headphone remote control is treated as a keyboard that sends the
++following keypresses:
++
++F10 Play/Pause
++F11 Forward
++F12 Back
++F13 Volume Up
++F14 Volume Down
++F15 Hold
+diff -burN SDL-1.2.15/src/audio/psp/SDL_pspaudio.c SDL-1.2.15-PSP/src/audio/psp/SDL_pspaudio.c
+--- SDL-1.2.15/src/audio/psp/SDL_pspaudio.c	1970-01-01 01:00:00.000000000 +0100
++++ SDL-1.2.15-PSP/src/audio/psp/SDL_pspaudio.c	2012-06-06 12:55:07.469588936 +0200
+@@ -0,0 +1,212 @@
++/*
++    SDL - Simple DirectMedia Layer
++    Copyright (C) 1997-2004 Sam Lantinga
++
++    This library is free software; you can redistribute it and/or
++    modify it under the terms of the GNU Library General Public
++    License as published by the Free Software Foundation; either
++    version 2 of the License, or (at your option) any later version.
++
++    This library is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++    Library General Public License for more details.
++
++    You should have received a copy of the GNU Library General Public
++    License along with this library; if not, write to the Free
++    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++
++    Sam Lantinga
++    slouken@libsdl.org
++*/
++
++/* PSP port contributed by Marcus R. Brown <mrbrown@ocgnet.org>. */
++
++#ifdef SAVE_RCSID
++static char rcsid =
++ "@(#) $Id: SDL_diskaudio.c,v 1.5 2004/01/04 16:49:13 slouken Exp $";
++#endif
++
++#include <stdio.h>
++#include <string.h>
++#include <stdlib.h>
++#include <malloc.h>
++
++#include "SDL_audio.h"
++#include "SDL_error.h"
++#include "../SDL_audiomem.h"
++#include "../SDL_audio_c.h"
++#include "SDL_timer.h"
++#include "../SDL_audiodev_c.h"
++#include "SDL_pspaudio.h"
++
++#include <pspaudio.h>
++#include <pspthreadman.h>
++
++/* The tag name used by PSP audio */
++#define PSPAUD_DRIVER_NAME         "psp"
++
++/* Audio driver functions */
++static int PSPAUD_OpenAudio(_THIS, SDL_AudioSpec *spec);
++static void PSPAUD_ThreadInit(_THIS);
++static void PSPAUD_WaitAudio(_THIS);
++static void PSPAUD_PlayAudio(_THIS);
++static Uint8 *PSPAUD_GetAudioBuf(_THIS);
++static void PSPAUD_CloseAudio(_THIS);
++
++/* Audio driver bootstrap functions */
++static int PSPAUD_Available(void)
++{
++	return 1;
++}
++
++static void PSPAUD_DeleteDevice(SDL_AudioDevice *device)
++{
++	free(device->hidden);
++	free(device);
++}
++
++static SDL_AudioDevice *PSPAUD_CreateDevice(int devindex)
++{
++	SDL_AudioDevice *this;
++
++	/* Initialize all variables that we clean on shutdown */
++	this = (SDL_AudioDevice *)malloc(sizeof(SDL_AudioDevice));
++	if ( this ) {
++		memset(this, 0, (sizeof *this));
++		this->hidden = (struct SDL_PrivateAudioData *)
++				malloc((sizeof *this->hidden));
++	}
++	if ( (this == NULL) || (this->hidden == NULL) ) {
++		SDL_OutOfMemory();
++		if ( this ) {
++			free(this);
++		}
++		return(0);
++	}
++	memset(this->hidden, 0, (sizeof *this->hidden));
++
++	/* Set the function pointers */
++	this->OpenAudio = PSPAUD_OpenAudio;
++	this->ThreadInit = PSPAUD_ThreadInit;
++	this->WaitAudio = PSPAUD_WaitAudio;
++	this->PlayAudio = PSPAUD_PlayAudio;
++	this->GetAudioBuf = PSPAUD_GetAudioBuf;
++	this->CloseAudio = PSPAUD_CloseAudio;
++
++	this->free = PSPAUD_DeleteDevice;
++
++	return this;
++}
++
++AudioBootStrap PSPAUD_bootstrap = {
++	PSPAUD_DRIVER_NAME, "PSP audio driver",
++	PSPAUD_Available, PSPAUD_CreateDevice
++};
++
++/* This function waits until it is possible to write a full sound buffer */
++static void PSPAUD_WaitAudio(_THIS)
++{
++	/* Because we block when sending audio, there's no need for this function to do anything. */
++}
++
++static void PSPAUD_PlayAudio(_THIS)
++{
++	Uint8 *mixbuf = this->hidden->mixbufs[this->hidden->next_buffer];
++
++	if (this->spec.channels == 1) {
++		sceAudioOutputBlocking(this->hidden->channel, PSP_AUDIO_VOLUME_MAX, mixbuf);
++	} else {
++		sceAudioOutputPannedBlocking(this->hidden->channel, PSP_AUDIO_VOLUME_MAX, PSP_AUDIO_VOLUME_MAX, mixbuf);
++	}
++
++	this->hidden->next_buffer = (this->hidden->next_buffer + 1) % NUM_BUFFERS;
++}
++
++static Uint8 *PSPAUD_GetAudioBuf(_THIS)
++{
++	return this->hidden->mixbufs[this->hidden->next_buffer];
++}
++
++static void PSPAUD_CloseAudio(_THIS)
++{
++	if (this->hidden->channel >= 0) {
++		sceAudioChRelease(this->hidden->channel);
++		this->hidden->channel = -1;
++	}
++
++	if (this->hidden->rawbuf != NULL) {
++		free(this->hidden->rawbuf);
++		this->hidden->rawbuf = NULL;
++	}
++}
++
++static void PSPAUD_ThreadInit(_THIS)
++{
++	/* Increase the priority of this audio thread by 1 to put it
++	   ahead of other SDL threads. */
++	SceUID thid;
++	SceKernelThreadInfo status;
++	thid = sceKernelGetThreadId();
++	status.size = sizeof(SceKernelThreadInfo);
++	if (sceKernelReferThreadStatus(thid, &status) == 0) {
++		sceKernelChangeThreadPriority(thid, status.currentPriority - 1);
++	}
++}
++
++static int PSPAUD_OpenAudio(_THIS, SDL_AudioSpec *spec)
++{
++	int format, mixlen, i;
++
++	switch (spec->format & 0xff) {
++		case 8:
++		case 16:
++			spec->format = AUDIO_S16LSB;
++			break;
++		default:
++			SDL_SetError("Unsupported audio format");
++			return -1;
++	}
++
++	/* The sample count must be a multiple of 64. */
++	spec->samples = PSP_AUDIO_SAMPLE_ALIGN(spec->samples);
++	spec->freq = 44100;
++
++	/* Update the fragment size as size in bytes. */
++	SDL_CalculateAudioSpec(spec);
++
++	/* Allocate the mixing buffer.  Its size and starting address must
++	   be a multiple of 64 bytes.  Our sample count is already a multiple of
++	   64, so spec->size should be a multiple of 64 as well. */
++	mixlen = spec->size * NUM_BUFFERS;
++	this->hidden->rawbuf = (Uint8 *) memalign(64, mixlen);
++	if (this->hidden->rawbuf == NULL) {
++		SDL_SetError("Couldn't allocate mixing buffer");
++		return -1;
++	}
++
++	/* Setup the hardware channel. */
++	if (spec->channels == 1) {
++		format = PSP_AUDIO_FORMAT_MONO;
++	} else {
++		format = PSP_AUDIO_FORMAT_STEREO;
++	}
++	this->hidden->channel = sceAudioChReserve(PSP_AUDIO_NEXT_CHANNEL, spec->samples, format);
++	if (this->hidden->channel < 0) {
++		SDL_SetError("Couldn't reserve hardware channel");
++		free(this->hidden->rawbuf);
++		this->hidden->rawbuf = NULL;
++		return -1;
++	}
++
++	memset(this->hidden->rawbuf, 0, mixlen);
++	for (i = 0; i < NUM_BUFFERS; i++) {
++		this->hidden->mixbufs[i] = &this->hidden->rawbuf[i * spec->size];
++	}
++
++	this->hidden->next_buffer = 0;
++	return 0;
++}
++
++/* vim: ts=4 sw=4
++ */
+diff -burN SDL-1.2.15/src/audio/psp/SDL_pspaudio.h SDL-1.2.15-PSP/src/audio/psp/SDL_pspaudio.h
+--- SDL-1.2.15/src/audio/psp/SDL_pspaudio.h	1970-01-01 01:00:00.000000000 +0100
++++ SDL-1.2.15-PSP/src/audio/psp/SDL_pspaudio.h	2012-06-06 12:55:07.470588936 +0200
+@@ -0,0 +1,53 @@
++/*
++    SDL - Simple DirectMedia Layer
++    Copyright (C) 1997-2004 Sam Lantinga
++
++    This library is free software; you can redistribute it and/or
++    modify it under the terms of the GNU Library General Public
++    License as published by the Free Software Foundation; either
++    version 2 of the License, or (at your option) any later version.
++
++    This library is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++    Library General Public License for more details.
++
++    You should have received a copy of the GNU Library General Public
++    License along with this library; if not, write to the Free
++    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++
++    Sam Lantinga
++    slouken@libsdl.org
++*/
++
++/* PSP port contributed by Marcus R. Brown <mrbrown@ocgnet.org>. */
++
++#ifdef SAVE_RCSID
++static char rcsid =
++ "@(#) $Id: SDL_diskaudio.h,v 1.4 2004/01/04 16:49:13 slouken Exp $";
++#endif
++
++#ifndef _SDL_pspaudio_h
++#define _SDL_pspaudio_h
++
++#include "../SDL_sysaudio.h"
++
++/* Hidden "this" pointer for the video functions */
++#define _THIS	SDL_AudioDevice *this
++
++#define NUM_BUFFERS 2
++
++struct SDL_PrivateAudioData {
++	/* The hardware output channel. */
++	int		channel;
++	/* The raw allocated mixing buffer. */
++	Uint8	*rawbuf;
++	/* Individual mixing buffers. */
++	Uint8	*mixbufs[NUM_BUFFERS];
++	/* Index of the next available mixing buffer. */
++	int		next_buffer;
++};
++
++#endif /* _SDL_pspaudio_h */
++/* vim: ts=4 sw=4
++ */
+diff -burN SDL-1.2.15/src/audio/SDL_audio.c SDL-1.2.15-PSP/src/audio/SDL_audio.c
+--- SDL-1.2.15/src/audio/SDL_audio.c	2012-01-19 07:30:06.000000000 +0100
++++ SDL-1.2.15-PSP/src/audio/SDL_audio.c	2012-06-06 12:55:07.470588936 +0200
+@@ -113,6 +113,9 @@
+ #if SDL_AUDIO_DRIVER_EPOCAUDIO
+ 	&EPOCAudio_bootstrap,
+ #endif
++#ifdef SDL_AUDIO_DRIVER_PSP
++	&PSPAUD_bootstrap,
++#endif
+ 	NULL
+ };
+ SDL_AudioDevice *current_audio = NULL;
+diff -burN SDL-1.2.15/src/audio/SDL_sysaudio.h SDL-1.2.15-PSP/src/audio/SDL_sysaudio.h
+--- SDL-1.2.15/src/audio/SDL_sysaudio.h	2012-01-19 07:30:06.000000000 +0100
++++ SDL-1.2.15-PSP/src/audio/SDL_sysaudio.h	2012-06-06 12:55:07.471588936 +0200
+@@ -179,6 +179,9 @@
+ #if SDL_AUDIO_DRIVER_EPOCAUDIO
+ extern AudioBootStrap EPOCAudio_bootstrap; 
+ #endif
++#if SDL_AUDIO_DRIVER_PSP
++extern AudioBootStrap PSPAUD_bootstrap;
++#endif
+ 
+ /* This is the current audio device */
+ extern SDL_AudioDevice *current_audio;
+diff -burN SDL-1.2.15/src/joystick/psp/SDL_sysjoystick.c SDL-1.2.15-PSP/src/joystick/psp/SDL_sysjoystick.c
+--- SDL-1.2.15/src/joystick/psp/SDL_sysjoystick.c	1970-01-01 01:00:00.000000000 +0100
++++ SDL-1.2.15-PSP/src/joystick/psp/SDL_sysjoystick.c	2012-06-06 12:55:07.472588936 +0200
+@@ -0,0 +1,234 @@
++/*
++    SDL - Simple DirectMedia Layer
++    Copyright (C) 1997-2004 Sam Lantinga
++
++    This library is free software; you can redistribute it and/or
++    modify it under the terms of the GNU Library General Public
++    License as published by the Free Software Foundation; either
++    version 2 of the License, or (at your option) any later version.
++
++    This library is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++    Library General Public License for more details.
++
++    You should have received a copy of the GNU Library General Public
++    License along with this library; if not, write to the Free
++    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++
++    Sam Lantinga
++    slouken@devolution.com
++*/
++
++/* PSP port contributed by Marcus R. Brown <mrbrown@ocgnet.org>. */
++/* Joystick stuff by Matthew H <matthewh@webone.com.au>. */
++
++#ifdef SAVE_RCSID
++static char rcsid =
++ "@(#) $Id: SDL_sysjoystick.c,v 1.3 2005/02/12 18:01:30 slouken Exp $";
++#endif
++
++/* This is the system specific header for the SDL joystick API */
++#include <pspctrl.h>
++#include <pspkernel.h>
++
++#include <stdio.h>		/* For the definition of NULL */
++#include <stdlib.h>
++
++#include "SDL_error.h"
++#include "SDL_joystick.h"
++#include "../SDL_sysjoystick.h"
++#include "../SDL_joystick_c.h"
++#include "SDL_thread.h"
++#include "SDL_mutex.h"
++#include "SDL_timer.h"
++#include "SDL_events.h"
++
++/* Current pad state */
++static SceCtrlData pad = { .Lx = 0, .Ly = 0, .Buttons = 0 };
++static SDL_sem *pad_sem = NULL;
++static SDL_Thread *thread = NULL;
++static int running = 0;
++static const enum PspCtrlButtons button_map[] = {
++	PSP_CTRL_TRIANGLE, PSP_CTRL_CIRCLE, PSP_CTRL_CROSS, PSP_CTRL_SQUARE,
++	PSP_CTRL_LTRIGGER, PSP_CTRL_RTRIGGER,
++	PSP_CTRL_DOWN, PSP_CTRL_LEFT, PSP_CTRL_UP, PSP_CTRL_RIGHT,
++	PSP_CTRL_SELECT, PSP_CTRL_START, PSP_CTRL_HOME, PSP_CTRL_HOLD };
++static int analog_map[256];  /* Map analog inputs to -32768 -> 32767 */
++
++typedef struct
++{
++  int x;
++  int y;
++} point;
++
++// 4 points define the bezier-curve.  
++static point a = { 0, 0 };
++static point b = { 50, 0  };
++static point c = { 78, 32767 };
++static point d = { 128, 32767 };
++
++// simple linear interpolation between two points
++static __inline__ void lerp (point *dest, point *a, point *b, float t)
++{
++	dest->x = a->x + (b->x - a->x)*t;
++	dest->y = a->y + (b->y - a->y)*t;
++}
++
++// evaluate a point on a bezier-curve. t goes from 0 to 1.0
++static int calc_bezier_y(float t)
++{
++	point ab, bc, cd, abbc, bccd, dest;
++	lerp (&ab, &a, &b, t);           // point between a and b
++	lerp (&bc, &b, &c, t);           // point between b and c
++	lerp (&cd, &c, &d, t);           // point between c and d
++	lerp (&abbc, &ab, &bc, t);       // point between ab and bc
++	lerp (&bccd, &bc, &cd, t);       // point between bc and cd
++	lerp (&dest, &abbc, &bccd, t);   // point on the bezier-curve
++	return dest.y;
++}
++
++/*
++ * Collect pad data about once per frame
++ */
++int JoystickUpdate(void *data)
++{
++	while (running) {
++		SDL_SemWait(pad_sem);
++		sceCtrlPeekBufferPositive(&pad, 1); 
++		SDL_SemPost(pad_sem);
++		/* Delay 1/60th of a second */
++		sceKernelDelayThread(1000000 / 60);  
++	}
++	return 0;
++}
++
++
++
++/* Function to scan the system for joysticks.
++ * This function should set SDL_numjoysticks to the number of available
++ * joysticks.  Joystick 0 should be the system default joystick.
++ * It should return number of joysticks, or -1 on an unrecoverable fatal error.
++ */
++int SDL_SYS_JoystickInit(void)
++{
++	int i;
++
++	SDL_numjoysticks = 1;
++
++	/* Setup input */
++	sceCtrlSetSamplingCycle(0);
++	sceCtrlSetSamplingMode(PSP_CTRL_MODE_ANALOG);
++
++	/* Start thread to read data */
++	if((pad_sem =  SDL_CreateSemaphore(1)) == NULL) {
++		SDL_SetError("Can't create input semaphore\n");
++		return -1;
++	}
++	running = 1;
++	if((thread = SDL_CreateThread(JoystickUpdate, NULL)) == NULL) {
++		SDL_SetError("Can't create input thread\n");
++		return -1;
++	}
++
++	/* Create an accurate map from analog inputs (0 to 255) 
++	   to SDL joystick positions (-32768 to 32767) */
++	for (i = 0; i < 128; i++)
++	{
++		float t = (float)i/127.0f;
++		analog_map[i+128] = calc_bezier_y(t);
++		analog_map[127-i] = -1 * analog_map[i+128];
++	}
++
++	return 1;
++}
++
++/* Function to get the device-dependent name of a joystick */
++const char *SDL_SYS_JoystickName(int index)
++{
++	if (index == 0)
++		return "PSP controller";
++
++	SDL_SetError("No joystick available with that index");
++	return(NULL);
++}
++
++/* Function to open a joystick for use.
++   The joystick to open is specified by the index field of the joystick.
++   This should fill the nbuttons and naxes fields of the joystick structure.
++   It returns 0, or -1 if there is an error.
++ */
++int SDL_SYS_JoystickOpen(SDL_Joystick *joystick)
++{
++	joystick->nbuttons = 14;
++	joystick->naxes = 2;
++	joystick->nhats = 0;
++
++	return 0;
++}
++
++/* Function to update the state of a joystick - called as a device poll.
++ * This function shouldn't update the joystick structure directly,
++ * but instead should call SDL_PrivateJoystick*() to deliver events
++ * and update joystick device state.
++ */
++
++void SDL_SYS_JoystickUpdate(SDL_Joystick *joystick)
++{
++	int i;
++	enum PspCtrlButtons buttons;
++	enum PspCtrlButtons changed;
++	unsigned char x, y;
++	static enum PspCtrlButtons old_buttons = 0;
++	static unsigned char old_x = 0, old_y = 0;
++
++	SDL_SemWait(pad_sem);
++	buttons = pad.Buttons;
++	x = pad.Lx;
++	y = pad.Ly;
++	SDL_SemPost(pad_sem);
++
++	/* Axes */
++	if(old_x != x) {
++		SDL_PrivateJoystickAxis(joystick, 0, analog_map[x]);
++		old_x = x;
++	}
++	if(old_y != y) {
++		SDL_PrivateJoystickAxis(joystick, 1, analog_map[y]);
++		old_y = y;
++	}
++
++	/* Buttons */
++	changed = old_buttons ^ buttons;
++	old_buttons = buttons;
++	if(changed) {
++		for(i=0; i<sizeof(button_map)/sizeof(button_map[0]); i++) {
++			if(changed & button_map[i]) {
++				SDL_PrivateJoystickButton(
++					joystick, i, 
++					(buttons & button_map[i]) ? 
++					SDL_PRESSED : SDL_RELEASED);
++			}
++		}
++	}
++
++	sceKernelDelayThread(0);
++}
++
++/* Function to close a joystick after use */
++void SDL_SYS_JoystickClose(SDL_Joystick *joystick)
++{
++	/* Do nothing. */
++}
++
++/* Function to perform any system-specific joystick related cleanup */
++void SDL_SYS_JoystickQuit(void)
++{
++	/* Cleanup Threads and Semaphore. */
++	running = 0;
++	SDL_WaitThread(thread, NULL);
++	SDL_DestroySemaphore(pad_sem);
++}
++
++/* vim: ts=4 sw=4
++ */
+diff -burN SDL-1.2.15/src/main/psp/SDL_psp_main.c SDL-1.2.15-PSP/src/main/psp/SDL_psp_main.c
+--- SDL-1.2.15/src/main/psp/SDL_psp_main.c	1970-01-01 01:00:00.000000000 +0100
++++ SDL-1.2.15-PSP/src/main/psp/SDL_psp_main.c	2012-06-06 12:55:07.472588936 +0200
+@@ -0,0 +1,88 @@
++/*
++    SDL - Simple DirectMedia Layer
++    Copyright (C) 1997-2004 Sam Lantinga
++
++    This library is free software; you can redistribute it and/or
++    modify it under the terms of the GNU Library General Public
++    License as published by the Free Software Foundation; either
++    version 2 of the License, or (at your option) any later version.
++
++    This library is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++    Library General Public License for more details.
++
++    You should have received a copy of the GNU Library General Public
++    License along with this library; if not, write to the Free
++    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++
++    Sam Lantinga
++    slouken@libsdl.org
++*/
++
++/*  
++    PSP port contributed by:
++    Marcus R. Brown <mrbrown@ocgnet.org>
++    Jim Paris <jim@jtan.com>
++    Matthew H <matthewh@webone.com.au>
++*/
++
++#include "SDL_main.h"
++#include <pspkernel.h>
++#include <pspdebug.h>
++#include <pspsdk.h>
++#include <pspthreadman.h>
++#include <stdlib.h>
++#include <stdio.h>
++
++/* If application's main() is redefined as SDL_main, and libSDLmain is
++   linked, then this file will create the standard exit callback,
++   define the PSP_MODULE_INFO macro, and exit back to the browser when
++   the program is finished. 
++
++   You can still override other parameters in your own code if you
++   desire, such as PSP_HEAP_SIZE_KB, PSP_MAIN_THREAD_ATTR,
++   PSP_MAIN_THREAD_STACK_SIZE, etc.
++*/
++
++extern int SDL_main(int argc, char *argv[]);
++
++PSP_MODULE_INFO("SDL App", 0, 1, 1);
++
++int sdl_psp_exit_callback(int arg1, int arg2, void *common)
++{
++	exit(0);
++	return 0;
++}
++
++int sdl_psp_callback_thread(SceSize args, void *argp)
++{
++	int cbid;
++	cbid = sceKernelCreateCallback("Exit Callback", 
++				       sdl_psp_exit_callback, NULL);
++	sceKernelRegisterExitCallback(cbid);
++	sceKernelSleepThreadCB();
++	return 0;
++}
++
++int sdl_psp_setup_callbacks(void)
++{
++	int thid = 0;
++	thid = sceKernelCreateThread("update_thread", 
++				     sdl_psp_callback_thread, 0x11, 0xFA0, 0, 0);
++	if(thid >= 0)
++		sceKernelStartThread(thid, 0, 0);
++	return thid;
++}
++
++int main(int argc, char *argv[])
++{
++	pspDebugScreenInit();
++	sdl_psp_setup_callbacks();
++
++	/* Register sceKernelExitGame() to be called when we exit */
++	atexit(sceKernelExitGame);
++
++	(void)SDL_main(argc, argv);
++	return 0;
++}
+diff -burN SDL-1.2.15/src/stdlib/SDL_malloc.c SDL-1.2.15-PSP/src/stdlib/SDL_malloc.c
+--- SDL-1.2.15/src/stdlib/SDL_malloc.c	2012-01-19 07:30:06.000000000 +0100
++++ SDL-1.2.15-PSP/src/stdlib/SDL_malloc.c	2012-06-06 12:55:07.474588936 +0200
+@@ -504,6 +504,10 @@
+ #endif  /* HAVE_MORECORE */
+ #endif  /* DARWIN */
+ 
++#ifdef ENABLE_PSP
++#define HAVE_MMAP 0
++#endif
++
+ #ifndef LACKS_SYS_TYPES_H
+ #include <sys/types.h>  /* For size_t */
+ #endif  /* LACKS_SYS_TYPES_H */
+diff -burN SDL-1.2.15/src/thread/psp/SDL_syssem.c SDL-1.2.15-PSP/src/thread/psp/SDL_syssem.c
+--- SDL-1.2.15/src/thread/psp/SDL_syssem.c	1970-01-01 01:00:00.000000000 +0100
++++ SDL-1.2.15-PSP/src/thread/psp/SDL_syssem.c	2012-06-06 12:55:07.478588936 +0200
+@@ -0,0 +1,168 @@
++/*
++    SDL - Simple DirectMedia Layer
++    Copyright (C) 1997-2004 Sam Lantinga
++
++    This library is free software; you can redistribute it and/or
++    modify it under the terms of the GNU Library General Public
++    License as published by the Free Software Foundation; either
++    version 2 of the License, or (at your option) any later version.
++
++    This library is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++    Library General Public License for more details.
++
++    You should have received a copy of the GNU Library General Public
++    License along with this library; if not, write to the Free
++    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++
++    Sam Lantinga
++    slouken@libsdl.org
++*/
++
++/* PSP port contributed by Marcus R. Brown <mrbrown@ocgnet.org>. */
++
++#ifdef SAVE_RCSID
++static char rcsid =
++ "@(#) $Id: SDL_syssem.c,v 1.6 2004/01/04 16:49:19 slouken Exp $";
++#endif
++
++/* Semaphore functions for the PSP. */
++
++#include <stdio.h>
++#include <stdlib.h>
++
++#include "SDL_error.h"
++#include "SDL_thread.h"
++
++#include <pspkerneltypes.h>
++#include <pspthreadman.h>
++#include <pspkerror.h>
++
++struct SDL_semaphore {
++	SceUID	semid;
++};
++
++
++/* Create a semaphore */
++SDL_sem *SDL_CreateSemaphore(Uint32 initial_value)
++{
++	SDL_sem *sem;
++
++	sem = (SDL_sem *) malloc(sizeof(*sem));
++	if (sem != NULL) {
++		/* TODO: Figure out the limit on the maximum value. */
++		sem->semid = sceKernelCreateSema("SDL sema", 0, initial_value, 255, NULL);
++		if (sem->semid < 0) {
++			SDL_SetError("Couldn't create semaphore");
++			free(sem);
++			sem = NULL;
++		}
++	} else {
++		SDL_OutOfMemory();
++	}
++
++	return sem;
++}
++
++/* Free the semaphore */
++void SDL_DestroySemaphore(SDL_sem *sem)
++{
++	if (sem != NULL) {
++		if (sem->semid > 0) {
++			sceKernelDeleteSema(sem->semid);
++			sem->semid = 0;
++		}
++
++		free(sem);
++	}
++}
++
++/* TODO: This routine is a bit overloaded.
++ * If the timeout is 0 then just poll the semaphore; if it's SDL_MUTEX_MAXWAIT, pass
++ * NULL to sceKernelWaitSema() so that it waits indefinitely; and if the timeout
++ * is specified, convert it to microseconds. */
++int SDL_SemWaitTimeout(SDL_sem *sem, Uint32 timeout)
++{
++	Uint32 *pTimeout;
++       unsigned int res;
++
++	if (sem == NULL) {
++		SDL_SetError("Passed a NULL sem");
++		return 0;
++	}
++
++	if (timeout == 0) {
++		res = sceKernelPollSema(sem->semid, 1);
++		if (res < 0) {
++			return SDL_MUTEX_TIMEDOUT;
++		}
++		return 0;
++	}
++
++	if (timeout == SDL_MUTEX_MAXWAIT) {
++		pTimeout = NULL;
++	} else {
++		timeout *= 1000;  /* Convert to microseconds. */
++		pTimeout = &timeout;
++	}
++
++	res = sceKernelWaitSema(sem->semid, 1, pTimeout);
++       switch (res) {
++               case SCE_KERNEL_ERROR_OK:
++                       return 0;
++               case SCE_KERNEL_ERROR_WAIT_TIMEOUT:
++                       return SDL_MUTEX_TIMEDOUT;
++               default:
++                       SDL_SetError("WaitForSingleObject() failed");
++                       return -1;
++	}
++}
++
++int SDL_SemTryWait(SDL_sem *sem)
++{
++	return SDL_SemWaitTimeout(sem, 0);
++}
++
++int SDL_SemWait(SDL_sem *sem)
++{
++	return SDL_SemWaitTimeout(sem, SDL_MUTEX_MAXWAIT);
++}
++
++/* Returns the current count of the semaphore */
++Uint32 SDL_SemValue(SDL_sem *sem)
++{
++	SceKernelSemaInfo info;
++
++	if (sem == NULL) {
++		SDL_SetError("Passed a NULL sem");
++		return 0;
++	}
++
++	if (sceKernelReferSemaStatus(sem->semid, &info) >= 0) {
++		return info.currentCount;
++	}
++
++	return 0;
++}
++
++int SDL_SemPost(SDL_sem *sem)
++{
++	int res;
++
++	if (sem == NULL) {
++		SDL_SetError("Passed a NULL sem");
++		return -1;
++	}
++
++	res = sceKernelSignalSema(sem->semid, 1);
++	if (res < 0) {
++		SDL_SetError("sceKernelSignalSema() failed");
++		return -1;
++	}
++
++	return 0;
++}
++
++/* vim: ts=4 sw=4
++ */
+diff -burN SDL-1.2.15/src/thread/psp/SDL_systhread.c SDL-1.2.15-PSP/src/thread/psp/SDL_systhread.c
+--- SDL-1.2.15/src/thread/psp/SDL_systhread.c	1970-01-01 01:00:00.000000000 +0100
++++ SDL-1.2.15-PSP/src/thread/psp/SDL_systhread.c	2012-06-06 12:55:07.478588936 +0200
+@@ -0,0 +1,94 @@
++/*
++    SDL - Simple DirectMedia Layer
++    Copyright (C) 1997-2004 Sam Lantinga
++
++    This library is free software; you can redistribute it and/or
++    modify it under the terms of the GNU Library General Public
++    License as published by the Free Software Foundation; either
++    version 2 of the License, or (at your option) any later version.
++
++    This library is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++    Library General Public License for more details.
++
++    You should have received a copy of the GNU Library General Public
++    License along with this library; if not, write to the Free
++    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++
++    Sam Lantinga
++    slouken@libsdl.org
++*/
++
++/* PSP port contributed by Marcus R. Brown <mrbrown@ocgnet.org>. */
++
++#ifdef SAVE_RCSID
++static char rcsid =
++ "@(#) $Id: SDL_systhread.c,v 1.5 2004/01/04 16:49:19 slouken Exp $";
++#endif
++
++/* PSP thread management routines for SDL */
++
++#include <stdio.h>
++#include <stdlib.h>
++
++#include "SDL_error.h"
++#include "SDL_thread.h"
++#include "../SDL_systhread.h"
++#include "../SDL_thread_c.h"
++
++#include <pspkerneltypes.h>
++#include <pspthreadman.h>
++
++static int ThreadEntry(SceSize args, void *argp)
++{
++	SDL_RunThread(*(void **) argp);
++	return 0;
++}
++
++int SDL_SYS_CreateThread(SDL_Thread *thread, void *args)
++{
++	SceKernelThreadInfo status;
++	int priority = 32;
++
++	/* Set priority of new thread to the same as the current thread */
++	status.size = sizeof(SceKernelThreadInfo);
++	if (sceKernelReferThreadStatus(sceKernelGetThreadId(), &status) == 0) {
++		priority = status.currentPriority;
++	}
++
++	thread->handle = sceKernelCreateThread("SDL thread", ThreadEntry, 
++					       priority, 0x8000, 
++					       PSP_THREAD_ATTR_VFPU, NULL);
++	if (thread->handle < 0) {
++		SDL_SetError("sceKernelCreateThread() failed");
++		return -1;
++	}
++
++	sceKernelStartThread(thread->handle, 4, &args);
++	return 0;
++}
++
++void SDL_SYS_SetupThread(void)
++{
++	/* Do nothing. */
++}
++
++Uint32 SDL_ThreadID(void)
++{
++	return (Uint32) sceKernelGetThreadId();
++}
++
++void SDL_SYS_WaitThread(SDL_Thread *thread)
++{
++	sceKernelWaitThreadEnd(thread->handle, NULL);
++	sceKernelDeleteThread(thread->handle);
++}
++
++void SDL_SYS_KillThread(SDL_Thread *thread)
++{ 
++	sceKernelTerminateDeleteThread(thread->handle);
++}
++
++/* vim: ts=4 sw=4
++ */
+diff -burN SDL-1.2.15/src/thread/psp/SDL_systhread_c.h SDL-1.2.15-PSP/src/thread/psp/SDL_systhread_c.h
+--- SDL-1.2.15/src/thread/psp/SDL_systhread_c.h	1970-01-01 01:00:00.000000000 +0100
++++ SDL-1.2.15-PSP/src/thread/psp/SDL_systhread_c.h	2012-06-06 12:55:07.478588936 +0200
+@@ -0,0 +1,27 @@
++/*
++    SDL - Simple DirectMedia Layer
++    Copyright (C) 1997-2004 Sam Lantinga
++
++    This library is free software; you can redistribute it and/or
++    modify it under the terms of the GNU Library General Public
++    License as published by the Free Software Foundation; either
++    version 2 of the License, or (at your option) any later version.
++
++    This library is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++    Library General Public License for more details.
++
++    You should have received a copy of the GNU Library General Public
++    License along with this library; if not, write to the Free
++    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++
++    Sam Lantinga
++    slouken@libsdl.org
++*/
++
++/* PSP port contributed by Marcus R. Brown <mrbrown@ocgnet.org>. */
++
++#include <pspkerneltypes.h>
++
++typedef SceUID SYS_ThreadHandle;
+diff -burN SDL-1.2.15/src/thread/SDL_thread_c.h SDL-1.2.15-PSP/src/thread/SDL_thread_c.h
+--- SDL-1.2.15/src/thread/SDL_thread_c.h	2012-01-19 07:30:06.000000000 +0100
++++ SDL-1.2.15-PSP/src/thread/SDL_thread_c.h	2012-06-06 12:55:07.479588936 +0200
+@@ -43,6 +43,8 @@
+ #include "win32/SDL_systhread_c.h"
+ #elif SDL_THREAD_SYMBIAN
+ #include "symbian/SDL_systhread_c.h"
++#elif SDL_THREAD_PSP
++#include "psp/SDL_systhread_c.h"
+ #else
+ #error Need thread implementation for this platform
+ #include "generic/SDL_systhread_c.h"
+diff -burN SDL-1.2.15/src/timer/psp/SDL_systimer.c SDL-1.2.15-PSP/src/timer/psp/SDL_systimer.c
+--- SDL-1.2.15/src/timer/psp/SDL_systimer.c	1970-01-01 01:00:00.000000000 +0100
++++ SDL-1.2.15-PSP/src/timer/psp/SDL_systimer.c	2012-06-06 12:55:07.479588936 +0200
+@@ -0,0 +1,114 @@
++/*
++    SDL - Simple DirectMedia Layer
++    Copyright (C) 1997-2004 Sam Lantinga
++
++    This library is free software; you can redistribute it and/or
++    modify it under the terms of the GNU Library General Public
++    License as published by the Free Software Foundation; either
++    version 2 of the License, or (at your option) any later version.
++
++    This library is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++    Library General Public License for more details.
++
++    You should have received a copy of the GNU Library General Public
++    License along with this library; if not, write to the Free
++    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++
++    Sam Lantinga
++    slouken@libsdl.org
++*/
++
++/*  
++    PSP port contributed by:
++    Marcus R. Brown <mrbrown@ocgnet.org>
++    Jim Paris <jim@jtan.com>
++*/
++
++#ifdef SAVE_RCSID
++static char rcsid =
++ "@(#) $Id: SDL_systimer.c,v 1.2 2004/01/04 16:49:19 slouken Exp $";
++#endif
++
++#include "SDL_thread.h"
++#include "SDL_timer.h"
++#include "SDL_error.h"
++#include "../SDL_timer_c.h"
++#include <stdlib.h>
++#include <time.h>
++#include <sys/time.h>
++#include <pspthreadman.h>
++
++static struct timeval start;
++
++void SDL_StartTicks(void)
++{
++	gettimeofday(&start, NULL);
++}
++
++Uint32 SDL_GetTicks(void)
++{
++	struct timeval now;
++	Uint32 ticks;
++
++	gettimeofday(&now, NULL);
++	ticks=(now.tv_sec-start.tv_sec)*1000+(now.tv_usec-start.tv_usec)/1000;
++	return(ticks);
++}
++
++void SDL_Delay(Uint32 ms)
++{
++	const Uint32 max_delay = 0xffffffffUL / 1000;
++	if(ms > max_delay)
++		ms = max_delay;
++	sceKernelDelayThreadCB(ms * 1000);
++}
++
++/* Data to handle a single periodic alarm */
++static int timer_alive = 0;
++static SDL_Thread *timer = NULL;
++
++static int RunTimer(void *unused)
++{
++	while ( timer_alive ) {
++		if ( SDL_timer_running ) {
++			SDL_ThreadedTimerCheck();
++		}
++		SDL_Delay(10);
++	}
++	return(0);
++}
++
++/* This is only called if the event thread is not running */
++int SDL_SYS_TimerInit(void)
++{
++	timer_alive = 1;
++	timer = SDL_CreateThread(RunTimer, NULL);
++	if ( timer == NULL )
++		return(-1);
++	return(SDL_SetTimerThreaded(1));
++}
++
++void SDL_SYS_TimerQuit(void)
++{
++	timer_alive = 0;
++	if ( timer ) {
++		SDL_WaitThread(timer, NULL);
++		timer = NULL;
++	}
++}
++
++int SDL_SYS_StartTimer(void)
++{
++	SDL_SetError("Internal logic error: PSP uses threaded timer");
++	return(-1);
++}
++
++void SDL_SYS_StopTimer(void)
++{
++	return;
++}
++
++/* vim: ts=4 sw=4
++ */
+diff -burN SDL-1.2.15/src/video/psp/SDL_pspevents.c SDL-1.2.15-PSP/src/video/psp/SDL_pspevents.c
+--- SDL-1.2.15/src/video/psp/SDL_pspevents.c	1970-01-01 01:00:00.000000000 +0100
++++ SDL-1.2.15-PSP/src/video/psp/SDL_pspevents.c	2012-06-06 12:55:07.480588936 +0200
+@@ -0,0 +1,281 @@
++/*
++    SDL - Simple DirectMedia Layer
++    Copyright (C) 1997-2004 Sam Lantinga
++
++    This library is free software; you can redistribute it and/or
++    modify it under the terms of the GNU Library General Public
++    License as published by the Free Software Foundation; either
++    version 2 of the License, or (at your option) any later version.
++
++    This library is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++    Library General Public License for more details.
++
++    You should have received a copy of the GNU Library General Public
++    License along with this library; if not, write to the Free
++    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++
++    Sam Lantinga
++    slouken@libsdl.org
++*/
++
++/* PSP port contributed by Marcus R. Brown <mrbrown@ocgnet.org>. */
++
++#ifdef SAVE_RCSID
++static char rcsid =
++ "@(#) $Id: SDL_nullevents.c,v 1.4 2004/01/04 16:49:24 slouken Exp $";
++#endif
++
++/* Being a null driver, there's no event stream. We just define stubs for
++   most of the API. */
++
++#include "SDL.h"
++#include "../../events/SDL_sysevents.h"
++#include "../../events/SDL_events_c.h"
++#include "SDL_pspvideo.h"
++#include "SDL_pspevents_c.h"
++#include "SDL_thread.h"
++#include <psphprm.h>
++
++#ifdef PSPIRKEYB
++#include <pspirkeyb.h>
++#include <pspirkeyb_rawkeys.h>
++
++#define IRKBD_CONFIG_FILE     NULL    /* this will take ms0:/seplugins/pspirkeyb.ini */
++
++static int irkbd_ready = 0;
++static SDLKey keymap[256];
++#endif
++
++static enum PspHprmKeys hprm = 0;
++static SDL_sem *event_sem = NULL;
++static SDL_Thread *thread = NULL;
++static int running = 0;
++static struct {
++	enum PspHprmKeys id;
++	SDLKey sym;
++} keymap_psp[] = {
++	{ PSP_HPRM_PLAYPAUSE, SDLK_F10 },
++	{ PSP_HPRM_FORWARD,   SDLK_F11 },
++	{ PSP_HPRM_BACK,      SDLK_F12 },
++	{ PSP_HPRM_VOL_UP,    SDLK_F13 },
++	{ PSP_HPRM_VOL_DOWN,  SDLK_F14 },
++	{ PSP_HPRM_HOLD,      SDLK_F15 }
++};
++
++int EventUpdate(void *data)
++{
++	while (running) {
++                SDL_SemWait(event_sem);
++		sceHprmPeekCurrentKey(&hprm);
++                SDL_SemPost(event_sem);
++                /* Delay 1/60th of a second */
++                sceKernelDelayThread(1000000 / 60);  
++        }
++        return 0;
++}
++
++void PSP_PumpEvents(_THIS)
++{
++	int i;
++	enum PspHprmKeys keys;
++	enum PspHprmKeys changed;
++	static enum PspHprmKeys old_keys = 0;
++	SDL_keysym sym;
++
++	SDL_SemWait(event_sem);
++	keys = hprm;
++	SDL_SemPost(event_sem);
++
++	/* HPRM Keyboard */
++	changed = old_keys ^ keys;
++	old_keys = keys;
++	if(changed) {
++		for(i=0; i<sizeof(keymap_psp)/sizeof(keymap_psp[0]); i++) {
++			if(changed & keymap_psp[i].id) {
++				sym.scancode = keymap_psp[i].id;
++				sym.sym = keymap_psp[i].sym;
++				SDL_PrivateKeyboard((keys & keymap_psp[i].id) ? 
++						    SDL_PRESSED : SDL_RELEASED, 
++						    &sym);
++			}
++		}
++	}
++
++#ifdef PSPIRKEYB
++	if (irkbd_ready) {
++    	    unsigned char buffer[255];
++	    int i, length, count;
++	    SIrKeybScanCodeData *scanData;
++	    
++    	    if(pspIrKeybReadinput(buffer, &length) >= 0) {
++        	    if((length % sizeof(SIrKeybScanCodeData)) == 0){
++        		    count = length / sizeof(SIrKeybScanCodeData);
++        		    for( i=0; i < count; i++ ) {
++				unsigned char raw, pressed;
++            			scanData=(SIrKeybScanCodeData*) buffer+i;
++            			raw = scanData->raw;
++            			pressed = scanData->pressed;
++				sym.scancode = raw;
++				sym.sym = keymap[raw];
++				SDL_PrivateKeyboard(pressed?SDL_PRESSED:SDL_RELEASED, &sym);
++			    }
++		    }
++	    }
++	}
++#endif
++	sceKernelDelayThread(0);
++
++	return;
++}
++
++void PSP_InitOSKeymap(_THIS)
++{
++#ifdef PSPIRKEYB
++	int i;
++	for (i=0; i<SDL_TABLESIZE(keymap); ++i)
++	    keymap[i] = SDLK_UNKNOWN;
++	    
++	keymap[KEY_ESC] = SDLK_ESCAPE;
++
++	keymap[KEY_F1] = SDLK_F1;
++	keymap[KEY_F2] = SDLK_F2;
++	keymap[KEY_F3] = SDLK_F3;
++	keymap[KEY_F4] = SDLK_F4;
++	keymap[KEY_F5] = SDLK_F5;
++	keymap[KEY_F6] = SDLK_F6;
++	keymap[KEY_F7] = SDLK_F7;
++	keymap[KEY_F8] = SDLK_F8;
++	keymap[KEY_F9] = SDLK_F9;
++	keymap[KEY_F10] = SDLK_F10;
++	keymap[KEY_F11] = SDLK_F11;
++	keymap[KEY_F12] = SDLK_F12;
++	keymap[KEY_F13] = SDLK_PRINT;
++	keymap[KEY_F14] = SDLK_PAUSE;
++
++	keymap[KEY_GRAVE] = SDLK_BACKQUOTE;
++	keymap[KEY_1] = SDLK_1;
++	keymap[KEY_2] = SDLK_2;
++	keymap[KEY_3] = SDLK_3;
++	keymap[KEY_4] = SDLK_4;
++	keymap[KEY_5] = SDLK_5;
++	keymap[KEY_6] = SDLK_6;
++	keymap[KEY_7] = SDLK_7;
++	keymap[KEY_8] = SDLK_8;
++	keymap[KEY_9] = SDLK_9;
++	keymap[KEY_0] = SDLK_0;
++	keymap[KEY_MINUS] = SDLK_MINUS;
++	keymap[KEY_EQUAL] = SDLK_EQUALS;
++	keymap[KEY_BACKSPACE] = SDLK_BACKSPACE;
++
++	keymap[KEY_TAB] = SDLK_TAB;
++	keymap[KEY_Q] = SDLK_q;
++	keymap[KEY_W] = SDLK_w;
++	keymap[KEY_E] = SDLK_e;
++	keymap[KEY_R] = SDLK_r;
++	keymap[KEY_T] = SDLK_t;
++	keymap[KEY_Y] = SDLK_y;
++	keymap[KEY_U] = SDLK_u;
++	keymap[KEY_I] = SDLK_i;
++	keymap[KEY_O] = SDLK_o;
++	keymap[KEY_P] = SDLK_p;
++	keymap[KEY_LEFTBRACE] = SDLK_LEFTBRACKET;
++	keymap[KEY_RIGHTBRACE] = SDLK_RIGHTBRACKET;
++	keymap[KEY_ENTER] = SDLK_RETURN;
++	
++	keymap[KEY_CAPSLOCK] = SDLK_CAPSLOCK;
++	keymap[KEY_A] = SDLK_a;
++	keymap[KEY_S] = SDLK_s;
++	keymap[KEY_D] = SDLK_d;
++	keymap[KEY_F] = SDLK_f;
++	keymap[KEY_G] = SDLK_g;
++	keymap[KEY_H] = SDLK_h;
++	keymap[KEY_J] = SDLK_j;
++	keymap[KEY_K] = SDLK_k;
++	keymap[KEY_L] = SDLK_l;
++	keymap[KEY_SEMICOLON] = SDLK_SEMICOLON;
++	keymap[KEY_APOSTROPHE] = SDLK_QUOTE;
++	keymap[KEY_BACKSLASH] = SDLK_BACKSLASH;
++		
++	keymap[KEY_Z] = SDLK_z;
++	keymap[KEY_X] = SDLK_x;
++	keymap[KEY_C] = SDLK_c;
++	keymap[KEY_V] = SDLK_v;
++	keymap[KEY_B] = SDLK_b;
++	keymap[KEY_N] = SDLK_n;
++	keymap[KEY_M] = SDLK_m;	
++	keymap[KEY_COMMA] = SDLK_COMMA;
++	keymap[KEY_DOT] = SDLK_PERIOD;
++	keymap[KEY_SLASH] = SDLK_SLASH;
++	
++	keymap[KEY_SPACE] = SDLK_SPACE;
++	
++	keymap[KEY_UP] = SDLK_UP;
++	keymap[KEY_DOWN] = SDLK_DOWN;
++	keymap[KEY_LEFT] = SDLK_LEFT;
++	keymap[KEY_RIGHT] = SDLK_RIGHT;
++	
++	keymap[KEY_HOME] = SDLK_HOME;
++	keymap[KEY_END] = SDLK_END;
++	keymap[KEY_INSERT] = SDLK_INSERT;
++	keymap[KEY_DELETE] = SDLK_DELETE;
++
++	keymap[KEY_NUMLOCK] = SDLK_NUMLOCK;
++	keymap[KEY_LEFTMETA] = SDLK_LSUPER;
++	
++	keymap[KEY_KPSLASH] = SDLK_KP_DIVIDE;
++	keymap[KEY_KPASTERISK] = SDLK_KP_MULTIPLY;
++	keymap[KEY_KPMINUS] = SDLK_KP_MINUS;
++	keymap[KEY_KPPLUS] = SDLK_KP_PLUS;
++	keymap[KEY_KPDOT] = SDLK_KP_PERIOD;
++	keymap[KEY_KPEQUAL] = SDLK_KP_EQUALS;
++
++	keymap[KEY_LEFTCTRL] = SDLK_LCTRL;
++	keymap[KEY_RIGHTCTRL] = SDLK_RCTRL;
++	keymap[KEY_LEFTALT] = SDLK_LALT;
++	keymap[KEY_RIGHTALT] = SDLK_RALT;
++	keymap[KEY_LEFTSHIFT] = SDLK_LSHIFT;
++	keymap[KEY_RIGHTSHIFT] = SDLK_RSHIFT;
++#endif
++}
++
++void PSP_EventInit(_THIS)
++{
++#ifdef PSPIRKEYB
++	int outputmode = PSP_IRKBD_OUTPUT_MODE_SCANCODE;
++	int ret = pspIrKeybInit(IRKBD_CONFIG_FILE, 0);
++	if (ret == PSP_IRKBD_RESULT_OK) {
++    		pspIrKeybOutputMode(outputmode);
++		irkbd_ready = 1;
++	} else {
++		irkbd_ready = 0;
++	}
++#endif
++	/* Start thread to read data */
++	if((event_sem =  SDL_CreateSemaphore(1)) == NULL) {
++		SDL_SetError("Can't create input semaphore\n");
++		return;
++	}
++	running = 1;
++	if((thread = SDL_CreateThread(EventUpdate, NULL)) == NULL) {
++		SDL_SetError("Can't create input thread\n");
++		return;
++	}
++}
++
++void PSP_EventQuit(_THIS)
++{
++	running = 0;
++	SDL_WaitThread(thread, NULL);
++	SDL_DestroySemaphore(event_sem);
++#ifdef PSPIRKEYB
++	if (irkbd_ready) {
++    		pspIrKeybFinish();
++		irkbd_ready = 0;
++	}
++#endif
++}
++
++/* end of SDL_pspevents.c ... */
++
+diff -burN SDL-1.2.15/src/video/psp/SDL_pspevents_c.h SDL-1.2.15-PSP/src/video/psp/SDL_pspevents_c.h
+--- SDL-1.2.15/src/video/psp/SDL_pspevents_c.h	1970-01-01 01:00:00.000000000 +0100
++++ SDL-1.2.15-PSP/src/video/psp/SDL_pspevents_c.h	2012-06-06 12:55:07.480588936 +0200
+@@ -0,0 +1,39 @@
++/*
++    SDL - Simple DirectMedia Layer
++    Copyright (C) 1997-2004 Sam Lantinga
++
++    This library is free software; you can redistribute it and/or
++    modify it under the terms of the GNU Library General Public
++    License as published by the Free Software Foundation; either
++    version 2 of the License, or (at your option) any later version.
++
++    This library is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++    Library General Public License for more details.
++
++    You should have received a copy of the GNU Library General Public
++    License along with this library; if not, write to the Free
++    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++
++    Sam Lantinga
++    slouken@libsdl.org
++*/
++
++/* PSP port contributed by Marcus R. Brown <mrbrown@ocgnet.org>. */
++
++#ifdef SAVE_RCSID
++static char rcsid =
++ "@(#) $Id: SDL_nullevents_c.h,v 1.4 2004/01/04 16:49:24 slouken Exp $";
++#endif
++
++#include "SDL_pspvideo.h"
++
++/* Variables and functions exported by SDL_sysevents.c to other parts 
++   of the native video subsystem (SDL_sysvideo.c)
++*/
++extern void PSP_InitOSKeymap(_THIS);
++extern void PSP_PumpEvents(_THIS);
++
++/* end of SDL_pspevents_c.h ... */
++
+diff -burN SDL-1.2.15/src/video/psp/SDL_pspgl.c SDL-1.2.15-PSP/src/video/psp/SDL_pspgl.c
+--- SDL-1.2.15/src/video/psp/SDL_pspgl.c	1970-01-01 01:00:00.000000000 +0100
++++ SDL-1.2.15-PSP/src/video/psp/SDL_pspgl.c	2012-06-06 12:55:07.480588936 +0200
+@@ -0,0 +1,151 @@
++/*
++    SDL - Simple DirectMedia Layer
++    Copyright (C) 1997-2004 Sam Lantinga
++
++    This library is free software; you can redistribute it and/or
++    modify it under the terms of the GNU Library General Public
++    License as published by the Free Software Foundation; either
++    version 2 of the License, or (at your option) any later version.
++
++    This library is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++    Library General Public License for more details.
++
++    You should have received a copy of the GNU Library General Public
++    License along with this library; if not, write to the Free
++    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++
++    Sam Lantinga
++    slouken@libsdl.org
++*/
++
++#include <stdlib.h>
++#include <string.h>
++
++#include "SDL_error.h"
++#include "SDL_pspvideo.h"
++#include "SDL_pspgl_c.h"
++
++#ifdef HAVE_OPENGL
++
++/* pspgl doesn't provide this call, so stub it out since SDL requires it. */
++#define GLSTUB(func,params) void func params {}
++GLSTUB(glCopyTexImage1D, (GLenum target, GLint level, GLenum internalFormat,
++			GLint x, GLint y, GLsizei width, GLint border))
++
++static const struct {
++	const char *proc;
++	void *func;
++} glfuncs[] = {
++#define SDL_PROC(ret,func,params) {#func,&func},
++#include "../SDL_glfuncs.h"
++#undef SDL_PROC
++};
++#define GLFUNCS_COUNT (sizeof(glfuncs) / sizeof(glfuncs[0]))
++
++void * PSP_GL_GetProcAddress(_THIS, const char *proc)
++{
++	unsigned int i;
++
++	for (i = 0; i < GLFUNCS_COUNT; i++)
++	{
++		if (strcmp(proc, glfuncs[i].proc) == 0)
++			return glfuncs[i].func;
++	}
++
++	return NULL;
++}
++
++int PSP_GL_GetAttribute(_THIS, SDL_GLattr attrib, int *value)
++{
++	return 0;
++}
++
++int PSP_GL_MakeCurrent(_THIS)
++{
++	struct SDL_PrivateGLData *gl_data = this->gl_data;
++
++	if (!eglMakeCurrent(gl_data->display, gl_data->surface, gl_data->surface, gl_data->context))
++	{
++		SDL_SetError("Unable to make EGL context current");
++		return -1;
++	}
++
++	return 0;
++}
++
++void PSP_GL_SwapBuffers(_THIS)
++{
++	struct SDL_PrivateGLData *gl_data = this->gl_data;
++
++	eglSwapBuffers(gl_data->display, gl_data->surface);
++}
++
++#define EGLCHK(stmt)							\
++	do {										\
++		EGLint err;								\
++												\
++		stmt;									\
++		err = eglGetError();					\
++		if (err != EGL_SUCCESS) {				\
++			SDL_SetError("EGL error %d", err);	\
++			return 0;							\
++		}										\
++	} while (0)
++
++/* Return 1 if we were able to initialize PSPGL successfully. */
++int PSP_GL_Init(_THIS)
++{
++	EGLint attribs[32];
++	EGLDisplay display;
++	EGLContext context;
++	EGLSurface surface;
++	EGLConfig config;
++	EGLint num_configs;
++	int i;
++
++	/* EGL init taken from glutCreateWindow() in PSPGL's glut.c. */
++	EGLCHK(display = eglGetDisplay(0));
++	EGLCHK(eglInitialize(display, NULL, NULL));
++
++	/* Setup the config based on SDL's current values. */
++	i = 0;
++	attribs[i++] = EGL_RED_SIZE;
++	attribs[i++] = this->gl_config.red_size;
++	attribs[i++] = EGL_GREEN_SIZE;
++	attribs[i++] = this->gl_config.green_size;
++	attribs[i++] = EGL_BLUE_SIZE;
++	attribs[i++] = this->gl_config.blue_size;
++	attribs[i++] = EGL_DEPTH_SIZE;
++	attribs[i++] = this->gl_config.depth_size;
++
++	if (this->gl_config.alpha_size)
++	{
++		attribs[i++] = EGL_ALPHA_SIZE;
++		attribs[i++] = this->gl_config.alpha_size;
++	}
++	if (this->gl_config.stencil_size)
++	{
++		attribs[i++] = EGL_STENCIL_SIZE;
++		attribs[i++] = this->gl_config.stencil_size;
++	}
++
++	attribs[i++] = EGL_NONE;
++	EGLCHK(eglChooseConfig(display, attribs, &config, 1, &num_configs));
++
++	if (num_configs == 0)
++	{
++		SDL_SetError("No valid EGL configs for requested mode");
++		return 0;
++	}
++
++	EGLCHK(context = eglCreateContext(display, config, NULL, NULL));
++	EGLCHK(surface = eglCreateWindowSurface(display, config, 0, NULL));
++
++	this->gl_data->display = display;
++	this->gl_data->context = context;
++	this->gl_data->surface = surface;
++	return 1;
++}
++#endif /* HAVE_OPENGL */
+diff -burN SDL-1.2.15/src/video/psp/SDL_pspgl_c.h SDL-1.2.15-PSP/src/video/psp/SDL_pspgl_c.h
+--- SDL-1.2.15/src/video/psp/SDL_pspgl_c.h	1970-01-01 01:00:00.000000000 +0100
++++ SDL-1.2.15-PSP/src/video/psp/SDL_pspgl_c.h	2012-06-06 12:55:07.481588936 +0200
+@@ -0,0 +1,50 @@
++/*
++    SDL - Simple DirectMedia Layer
++    Copyright (C) 1997-2004 Sam Lantinga
++
++    This library is free software; you can redistribute it and/or
++    modify it under the terms of the GNU Library General Public
++    License as published by the Free Software Foundation; either
++    version 2 of the License, or (at your option) any later version.
++
++    This library is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++    Library General Public License for more details.
++
++    You should have received a copy of the GNU Library General Public
++    License along with this library; if not, write to the Free
++    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++
++    Sam Lantinga
++    slouken@libsdl.org
++*/
++
++#ifndef _SDL_pspgl_c_h
++#define _SDL_pspgl_c_h
++
++#ifdef HAVE_OPENGL
++#include <GL/gl.h>
++#include <GLES/egl.h>
++#endif
++
++#include "SDL_pspvideo.h"
++
++struct SDL_PrivateGLData {
++#ifdef HAVE_OPENGL
++	EGLDisplay display;
++	EGLContext context;
++	EGLSurface surface;
++#endif
++};
++
++#ifdef HAVE_OPENGL
++extern int PSP_GL_Init(_THIS);
++
++extern void * PSP_GL_GetProcAddress(_THIS, const char *proc);
++extern int PSP_GL_GetAttribute(_THIS, SDL_GLattr attrib, int *value);
++extern int PSP_GL_MakeCurrent(_THIS);
++extern void PSP_GL_SwapBuffers(_THIS);
++#endif
++
++#endif /* _SDL_pspgl_c_h */
+diff -burN SDL-1.2.15/src/video/psp/SDL_pspmouse.c SDL-1.2.15-PSP/src/video/psp/SDL_pspmouse.c
+--- SDL-1.2.15/src/video/psp/SDL_pspmouse.c	1970-01-01 01:00:00.000000000 +0100
++++ SDL-1.2.15-PSP/src/video/psp/SDL_pspmouse.c	2012-06-06 12:55:07.481588936 +0200
+@@ -0,0 +1,42 @@
++/*
++    SDL - Simple DirectMedia Layer
++    Copyright (C) 1997-2004 Sam Lantinga
++
++    This library is free software; you can redistribute it and/or
++    modify it under the terms of the GNU Library General Public
++    License as published by the Free Software Foundation; either
++    version 2 of the License, or (at your option) any later version.
++
++    This library is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++    Library General Public License for more details.
++
++    You should have received a copy of the GNU Library General Public
++    License along with this library; if not, write to the Free
++    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++
++    Sam Lantinga
++    slouken@libsdl.org
++*/
++
++/* PSP port contributed by Marcus R. Brown <mrbrown@ocgnet.org>. */
++
++#ifdef SAVE_RCSID
++static char rcsid =
++ "@(#) $Id: SDL_nullmouse.c,v 1.4 2004/01/04 16:49:24 slouken Exp $";
++#endif
++
++#include <stdio.h>
++
++#include "SDL_error.h"
++#include "SDL_mouse.h"
++#include "../../events/SDL_events_c.h"
++
++#include "SDL_pspmouse_c.h"
++
++
++/* The implementation dependent data for the window manager cursor */
++struct WMcursor {
++	int unused;
++};
+diff -burN SDL-1.2.15/src/video/psp/SDL_pspmouse_c.h SDL-1.2.15-PSP/src/video/psp/SDL_pspmouse_c.h
+--- SDL-1.2.15/src/video/psp/SDL_pspmouse_c.h	1970-01-01 01:00:00.000000000 +0100
++++ SDL-1.2.15-PSP/src/video/psp/SDL_pspmouse_c.h	2012-06-06 12:55:07.481588936 +0200
+@@ -0,0 +1,32 @@
++/*
++    SDL - Simple DirectMedia Layer
++    Copyright (C) 1997-2004 Sam Lantinga
++
++    This library is free software; you can redistribute it and/or
++    modify it under the terms of the GNU Library General Public
++    License as published by the Free Software Foundation; either
++    version 2 of the License, or (at your option) any later version.
++
++    This library is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++    Library General Public License for more details.
++
++    You should have received a copy of the GNU Library General Public
++    License along with this library; if not, write to the Free
++    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++
++    Sam Lantinga
++    slouken@libsdl.org
++*/
++
++/* PSP port contributed by Marcus R. Brown <mrbrown@ocgnet.org>. */
++
++#ifdef SAVE_RCSID
++static char rcsid =
++ "@(#) $Id: SDL_nullmouse_c.h,v 1.4 2004/01/04 16:49:24 slouken Exp $";
++#endif
++
++#include "SDL_pspvideo.h"
++
++/* Functions to be exported */
+diff -burN SDL-1.2.15/src/video/psp/SDL_pspvideo.c SDL-1.2.15-PSP/src/video/psp/SDL_pspvideo.c
+--- SDL-1.2.15/src/video/psp/SDL_pspvideo.c	1970-01-01 01:00:00.000000000 +0100
++++ SDL-1.2.15-PSP/src/video/psp/SDL_pspvideo.c	2012-06-06 12:55:07.482588936 +0200
+@@ -0,0 +1,790 @@
++/*
++    SDL - Simple DirectMedia Layer
++    Copyright (C) 1997-2004 Sam Lantinga
++
++    This library is free software; you can redistribute it and/or
++    modify it under the terms of the GNU Library General Public
++    License as published by the Free Software Foundation; either
++    version 2 of the License, or (at your option) any later version.
++
++    This library is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++    Library General Public License for more details.
++
++    You should have received a copy of the GNU Library General Public
++    License along with this library; if not, write to the Free
++    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++
++    Sam Lantinga
++    slouken@libsdl.org
++*/
++
++/*  
++    PSP port contributed by:
++    Marcus R. Brown <mrbrown@ocgnet.org>
++    Jim Paris <jim@jtan.com>
++    Matthew H <matthewh@webone.com.au>
++*/
++
++#ifdef SAVE_RCSID
++static char rcsid =
++ "@(#) $Id: SDL_nullvideo.c,v 1.7 2004/01/04 16:49:24 slouken Exp $";
++#endif
++
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include <malloc.h>
++
++#include "SDL.h"
++#include "SDL_error.h"
++#include "SDL_video.h"
++#include "SDL_mouse.h"
++#include "../SDL_sysvideo.h"
++#include "../SDL_pixels_c.h"
++#include "../../events/SDL_events_c.h"
++
++#include "SDL_pspvideo.h"
++#include "SDL_pspevents_c.h"
++#include "SDL_pspgl_c.h"
++#include "SDL_pspmouse_c.h"
++
++#define PSPVID_DRIVER_NAME "psp"
++
++#define PSP_SLICE_SIZE	(32)
++#define PSP_LINE_SIZE (512)
++#define SCREEN_WIDTH (480)
++#define SCREEN_HEIGHT (272)
++
++#define IS_SWSURFACE(flags) ((flags & SDL_HWSURFACE) == SDL_SWSURFACE) 
++#define IS_HWSURFACE(flags) ((flags & SDL_HWSURFACE) == SDL_HWSURFACE) 
++
++static unsigned int list[4096] __attribute__((aligned(16)));
++
++struct texVertex
++{
++	unsigned short u, v;
++	short x, y, z;
++};
++
++struct rectVertex
++{
++	short x, y, z;
++};
++
++/* Initialization/Query functions */
++static int PSP_VideoInit(_THIS, SDL_PixelFormat *vformat);
++static SDL_Rect **PSP_ListModes(_THIS, SDL_PixelFormat *format, Uint32 flags);
++static SDL_Surface *PSP_SetVideoMode(_THIS, SDL_Surface *current, int width, int height, int bpp, Uint32 flags);
++static int PSP_SetColors(_THIS, int firstcolor, int ncolors, SDL_Color *colors);
++static void PSP_VideoQuit(_THIS);
++void PSP_EventInit(_THIS);
++void PSP_EventQuit(_THIS);
++
++/* Hardware surface functions */
++static int PSP_AllocHWSurface(_THIS, SDL_Surface *surface);
++static int PSP_LockHWSurface(_THIS, SDL_Surface *surface);
++static void PSP_UnlockHWSurface(_THIS, SDL_Surface *surface);
++static void PSP_FreeHWSurface(_THIS, SDL_Surface *surface);
++static int PSP_FlipHWSurface(_THIS, SDL_Surface *surface);
++static void PSP_UpdateRects(_THIS, int numrects, SDL_Rect *rects);
++static void PSP_GuInit(_THIS, SDL_Surface *current, int bpp);
++static int PSP_CheckHWBlit(_THIS, SDL_Surface *src, SDL_Surface *dst);
++static int HWAccelBlit(SDL_Surface *src, SDL_Rect *srcrect,
++                       SDL_Surface *dst, SDL_Rect *dstrect);
++static int PSP_GuStretchBlit(SDL_Surface *src, SDL_Rect *srcrect, SDL_Rect *dstrect);
++static int PSP_FillHWRect(_THIS, SDL_Surface *dst, SDL_Rect *rect, Uint32 color);
++
++/* Software surface function */
++static void PSP_GuUpdateRects(_THIS, int numrects, SDL_Rect *rects);
++
++/* return a suitable psm value for a particular bpp */
++static inline int psm_value(int bpp) {
++	if (bpp == 15)
++		return GU_PSM_5551;
++	if (bpp == 16)
++		return GU_PSM_5650;
++	return GU_PSM_8888;
++}
++
++/* PSP driver bootstrap functions */
++
++static int PSP_Available(void)
++{
++	return 1;
++}
++
++static void PSP_DeleteDevice(SDL_VideoDevice *device)
++{
++	if (device) {
++		if (device->hidden) {
++			free(device->hidden);
++		}
++#ifdef HAVE_OPENGL
++		if (device->gl_data) {
++			free(device->gl_data);
++		}
++#endif
++		free(device);
++	}
++}
++
++static SDL_VideoDevice *PSP_CreateDevice(int devindex)
++{
++	SDL_VideoDevice *device;
++
++	/* Initialize all variables that we clean on shutdown */
++	device = (SDL_VideoDevice *)malloc(sizeof(SDL_VideoDevice));
++	if ( device ) {
++		memset(device, 0, (sizeof *device));
++		device->hidden = (struct SDL_PrivateVideoData *)
++				malloc((sizeof *device->hidden));
++#ifdef HAVE_OPENGL
++		device->gl_data = (struct SDL_PrivateGLData *)
++				malloc((sizeof *device->gl_data));
++#endif
++	}
++	if ( (device == NULL) || (device->hidden == NULL) 
++#ifdef HAVE_OPENGL
++			|| (device->gl_data == NULL)
++#endif
++			) {
++		SDL_OutOfMemory();
++		if ( device ) {
++			free(device);
++		}
++		return(0);
++	}
++	memset(device->hidden, 0, (sizeof *device->hidden));
++#ifdef HAVE_OPENGL
++	memset(device->gl_data, 0, (sizeof *device->gl_data));
++#endif
++
++	/* Set the function pointers */
++	device->VideoInit = PSP_VideoInit;
++	device->ListModes = PSP_ListModes;
++	device->SetVideoMode = PSP_SetVideoMode;
++	device->CreateYUVOverlay = NULL;
++	device->SetColors = PSP_SetColors;
++	device->UpdateRects = PSP_UpdateRects;
++	device->VideoQuit = PSP_VideoQuit;
++	device->AllocHWSurface = PSP_AllocHWSurface;
++	device->CheckHWBlit = PSP_CheckHWBlit;
++	device->FillHWRect = PSP_FillHWRect;
++	device->SetHWColorKey = NULL;
++	device->SetHWAlpha = NULL;
++	device->LockHWSurface = PSP_LockHWSurface;
++	device->UnlockHWSurface = PSP_UnlockHWSurface;
++	device->FlipHWSurface = PSP_FlipHWSurface;
++	device->FreeHWSurface = PSP_FreeHWSurface;
++#ifdef HAVE_OPENGL
++	device->GL_GetProcAddress = PSP_GL_GetProcAddress;
++	device->GL_GetAttribute = PSP_GL_GetAttribute;
++	device->GL_MakeCurrent = PSP_GL_MakeCurrent;
++	device->GL_SwapBuffers = PSP_GL_SwapBuffers;
++#endif
++	device->SetCaption = NULL;
++	device->SetIcon = NULL;
++	device->IconifyWindow = NULL;
++	device->GrabInput = NULL;
++	device->GetWMInfo = NULL;
++	device->InitOSKeymap = PSP_InitOSKeymap;
++	device->PumpEvents = PSP_PumpEvents;
++
++	device->free = PSP_DeleteDevice;
++
++	return device;
++}
++
++VideoBootStrap PSP_bootstrap = {
++	PSPVID_DRIVER_NAME, "PSP video driver",
++	PSP_Available, PSP_CreateDevice
++};
++
++const static SDL_Rect RECT_480x272 = { .x = 0, .y = 0, .w = 480, .h = 272 };
++const static SDL_Rect *modelist[] = {
++	&RECT_480x272,
++	NULL
++};
++
++int PSP_VideoInit(_THIS, SDL_PixelFormat *vformat)
++{
++	/* Default for pspsdk is 8888 ABGR */
++	vformat->BitsPerPixel = 32;
++	vformat->BytesPerPixel = 4;
++
++	this->info.wm_available = 0;
++	this->info.hw_available = 1;
++	this->info.blit_fill = 0; /* todo: fixme */
++	this->info.blit_hw = 1;
++	this->info.blit_hw_CC = 1;
++	this->info.blit_hw_A = 0; /* todo: implement me */
++
++	PSP_EventInit(this);
++	
++	return(0);
++}
++
++SDL_Rect **PSP_ListModes(_THIS, SDL_PixelFormat *format, Uint32 flags)
++{
++	/* x dimension should be a multiple of PSP_SLICE_SIZE */
++	if (IS_SWSURFACE(flags))
++		return (SDL_Rect **)-1;
++
++	switch(format->BitsPerPixel) {
++	case 8: /* proxied by a shadow surface */
++	case 15:
++	case 16:
++	case 32:
++		return (SDL_Rect **)modelist;
++	default:
++		return NULL;
++	}
++}
++
++static void PSP_GuInit(_THIS, SDL_Surface *current, int bpp) {
++	void *dispbuffer = (void*) 0;
++	void *drawbuffer = (void*) this->hidden->frame_offset;
++
++	sceGuInit();
++	sceGuStart(GU_DIRECT, list); 
++	sceGuDispBuffer(SCREEN_WIDTH, SCREEN_HEIGHT, dispbuffer, PSP_LINE_SIZE);
++	if (IS_SWSURFACE(current->flags) || (current->flags & SDL_HWPALETTE)) {
++		sceGuClutMode(GU_PSM_8888, 0, 255, 0);
++		sceGuDrawBuffer(GU_PSM_8888, drawbuffer, PSP_LINE_SIZE);
++	} else {
++		sceGuDrawBuffer(psm_value(bpp), drawbuffer, PSP_LINE_SIZE);
++	}
++	sceGuClear(GU_COLOR_BUFFER_BIT | GU_DEPTH_BUFFER_BIT);
++	sceGuOffset(2048 - (SCREEN_WIDTH / 2), 2048 - (SCREEN_HEIGHT / 2));
++	sceGuViewport(2048, 2048, SCREEN_WIDTH, SCREEN_HEIGHT);
++	sceGuScissor(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
++	sceGuEnable(GU_SCISSOR_TEST);
++	sceGuFrontFace(GU_CW);
++
++	sceGuFinish();
++	sceGuSync(0, 0);
++
++	sceDisplayWaitVblankStart();
++	sceGuDisplay(1);
++}
++
++/*
++vidmem handling from Holger Waechtler's pspgl
++*/
++struct vidmem_chunk {
++	void *ptr;
++	unsigned long len;
++};
++
++
++static struct vidmem_chunk *vidmem_map = NULL;
++static unsigned long vidmem_map_len = 0;
++
++static
++void *vidmem_map_insert_new (unsigned long idx, unsigned long adr, unsigned long size)
++{
++	void *tmp = realloc(vidmem_map, (vidmem_map_len + 1) * sizeof(vidmem_map[0]));
++
++	if (!tmp)
++		return NULL;
++
++	vidmem_map = tmp;
++	memmove(&vidmem_map[idx+1], &vidmem_map[idx], (vidmem_map_len-idx) * sizeof(vidmem_map[0]));
++	vidmem_map_len++;
++	vidmem_map[idx].ptr = (void*) adr;
++	vidmem_map[idx].len = size;
++
++	return vidmem_map[idx].ptr;
++}
++
++
++void* vidmem_alloc (unsigned long size)
++{
++	unsigned long start = (unsigned long) sceGeEdramGetAddr();
++	unsigned long adr = start;
++	unsigned long i;
++
++	/* round the size up to the nearest 16 bytes and all hwsurfaces are safe to 
++	   use as textures */
++	if (size % 16 != 0)
++		size += 16 - (size % 16); 
++
++	for (i=0; i<vidmem_map_len; i++) {
++		if (vidmem_map[i].ptr != NULL) {
++			unsigned long new_adr = (unsigned long) vidmem_map[i].ptr;
++			if (size <= new_adr - adr)
++				return vidmem_map_insert_new(i, adr, size);
++			adr = new_adr + vidmem_map[i].len;
++		}
++	}
++
++	if (adr + size > start + sceGeEdramGetSize())
++		return NULL;
++
++	return vidmem_map_insert_new(vidmem_map_len, adr, size);
++}
++
++
++void  vidmem_free (void * ptr)
++{
++	int i;
++
++	for (i=0; i<vidmem_map_len; i++) {
++		if (vidmem_map[i].ptr == ptr) {
++			void *tmp;
++			
++			vidmem_map_len--;
++			memmove(&vidmem_map[i], &vidmem_map[i+1], (vidmem_map_len-i) * sizeof(vidmem_map[0]));
++			tmp = realloc(vidmem_map, vidmem_map_len * sizeof(vidmem_map[0]));
++			if (tmp)
++				vidmem_map = tmp;
++		}
++	}
++}
++
++static inline int roundUpToPowerOfTwo (int x)
++{
++	return 1 << (32 - __builtin_allegrex_clz(x - 1));
++}
++
++SDL_Surface *PSP_SetVideoMode(_THIS, SDL_Surface *current,
++				int width, int height, int bpp, Uint32 flags)
++{
++	int disp_pitch = 512, draw_pitch = 512, pixel_format;
++	Uint32 Amask, Rmask, Gmask, Bmask;
++
++	if (IS_HWSURFACE(flags) &&
++		(width != SCREEN_WIDTH || height != SCREEN_HEIGHT)) 
++	{
++		SDL_SetError("Couldn't find requested mode");
++		return NULL;
++	}
++
++	switch(bpp) {
++	case 8: /* indexed, uses a shadow buffer for hwsurfaces */
++		disp_pitch *= 4;
++		Amask = 0;
++		Rmask = 0;
++		Gmask = 0;
++		Bmask = 0;
++		pixel_format = PSP_DISPLAY_PIXEL_FORMAT_8888; 
++		break;
++	case 15: /* 5-5-5-1 */
++		disp_pitch *= 2;
++		draw_pitch *= 2;
++		Amask = 0x00008000;
++		Rmask = 0x0000001f;
++		Gmask = 0x000003e0;
++		Bmask = 0x00007c00;
++		pixel_format = PSP_DISPLAY_PIXEL_FORMAT_5551;
++		break;
++	case 16: /* 5-6-5 */
++		disp_pitch *= 2;
++		draw_pitch *= 2;
++		Amask = 0;
++		Rmask = 0x0000001f;
++		Gmask = 0x000007e0;
++		Bmask = 0x0000f800;
++		pixel_format = PSP_DISPLAY_PIXEL_FORMAT_565;
++		break;
++	case 32: /* 8-8-8-8 */
++		disp_pitch *= 4;
++		draw_pitch *= 4;
++		Amask = 0xff000000;
++		Rmask = 0x000000ff;
++		Gmask = 0x0000ff00;
++		Bmask = 0x00ff0000;
++		pixel_format = PSP_DISPLAY_PIXEL_FORMAT_8888;
++		break;
++	default:
++		SDL_SetError("Couldn't find requested mode");
++		return(NULL);
++	}
++	
++	if ( ! SDL_ReallocFormat(current, bpp, Rmask, Gmask, Bmask, 0/*Amask*/) ) {
++		SDL_SetError("Couldn't allocate color format");
++		return(NULL);
++	}
++
++	current->flags = flags | SDL_FULLSCREEN;
++	current->w = width;
++	current->h = height;
++
++#ifdef HAVE_OPENGL
++	if (flags & SDL_OPENGL)
++	{
++		this->gl_config.driver_loaded = 1;
++		current->flags = SDL_FULLSCREEN | SDL_OPENGL;
++		/* HACK: What does this need to be? */
++		current->pixels = memalign(16, draw_pitch * height);
++
++		if (!PSP_GL_Init(this))
++		{
++			/* Don't set an error here as PSP_GL_Init() will set one. */
++			return NULL;
++		}
++		return current;
++	}
++#endif
++
++	this->hidden->psm = psm_value(bpp);
++	this->hidden->tpsm = this->hidden->psm; 
++	this->hidden->pixel_format = pixel_format;
++	this->hidden->frame = 0;
++	this->hidden->frame_offset = 0;
++
++	/* allocate display buffer */
++	this->hidden->vram_base = vidmem_alloc(disp_pitch * SCREEN_HEIGHT); 
++
++	sceDisplaySetMode(0, SCREEN_WIDTH, SCREEN_HEIGHT);
++	sceDisplaySetFrameBuf(this->hidden->vram_base, 512, pixel_format, 
++		PSP_DISPLAY_SETBUF_NEXTFRAME);
++
++	if (IS_HWSURFACE(flags)) {
++
++		current->pitch = draw_pitch;
++
++		if (flags & SDL_DOUBLEBUF) {
++			this->hidden->frame_offset = disp_pitch * height;
++
++			/* Set the draw buffer to the second frame. */
++			this->hidden->frame = 1;
++
++			/* allocate drawbuffer */
++			vidmem_alloc(disp_pitch * height); 
++		}
++
++		if (bpp == 8) {
++			/* create a shadow surface */
++			current->pixels = memalign(16, current->pitch * height); 
++
++			/* can't hwaccel 8bpp hwsurface */
++			this->info.blit_fill = 0;
++			this->info.blit_hw = 0;
++		} else {
++	    	current->pixels = (void *) ((Uint32) this->hidden->vram_base + 
++				this->hidden->frame_offset);
++			current->flags |= SDL_PREALLOC; /* so SDL doesn't free ->pixels */
++		}
++
++    } else if (IS_SWSURFACE(flags)) {
++		char *aspect_ratio;
++
++		aspect_ratio = getenv("SDL_ASPECT_RATIO");
++
++		if (aspect_ratio && !strcmp(aspect_ratio, "4:3")) {
++			this->hidden->hw_rect.w = 360;
++			this->hidden->hw_rect.h = 272;
++			this->hidden->hw_rect.x = 60;
++			this->hidden->hw_rect.y = 0;
++		} else {
++			this->hidden->hw_rect.w = 480;
++			this->hidden->hw_rect.h = 272;
++			this->hidden->hw_rect.x = 0;
++			this->hidden->hw_rect.y = 0;
++		}
++
++		this->hidden->sw_rect.x = 0;
++		this->hidden->sw_rect.y = 0;
++		this->hidden->sw_rect.w = width;
++		this->hidden->sw_rect.h = height;
++
++		current->pitch = (width > 512) ? width * (bpp/8) : 512 * (bpp/8);
++		current->pixels = memalign(16, current->pitch * height); 
++
++		this->UpdateRects = PSP_GuUpdateRects;
++    }
++
++	PSP_GuInit(this, current, bpp);
++
++	/* We're done */
++	return(current);
++}
++
++static int PSP_AllocHWSurface(_THIS, SDL_Surface *surface)
++{
++	int pitch;
++
++	pitch = roundUpToPowerOfTwo(surface->pitch);
++	surface->pixels = vidmem_alloc(pitch * surface->h);
++
++	if (!surface->pixels)
++		return -1;
++
++	surface->pitch = pitch;
++	surface->flags |= SDL_HWSURFACE;
++	surface->hwdata = (void*)1; /* Hack to make SDL realize it's a HWSURFACE when freeing */
++	return 0;
++}
++static void PSP_FreeHWSurface(_THIS, SDL_Surface *surface)
++{
++	vidmem_free(surface->pixels);
++	surface->pixels = NULL;
++	return;
++}
++
++/* We need to wait for vertical retrace on page flipped displays */
++static int PSP_LockHWSurface(_THIS, SDL_Surface *surface)
++{
++	return(0);
++}
++
++static void PSP_UnlockHWSurface(_THIS, SDL_Surface *surface)
++{
++	/* Flush video RAM */
++	sceKernelDcacheWritebackAll();
++
++	return;
++}
++
++/* Show the draw buffer as the display buffer, and setup the next draw buffer. */
++static int PSP_FlipHWSurface(_THIS, SDL_Surface *surface)
++{
++	void *new_pixels;
++
++	sceKernelDcacheWritebackAll();
++	if (surface->format->BitsPerPixel == 8) {
++		/* blit the shadow surface */
++		PSP_GuStretchBlit(surface, (SDL_Rect *)&RECT_480x272, (SDL_Rect *)&RECT_480x272);
++		sceGuSync(0, 0);
++	} else { 
++		this->hidden->frame ^= 1;
++		new_pixels = (void *) ((Uint32) this->hidden->vram_base +
++				(this->hidden->frame_offset * this->hidden->frame));
++		surface->pixels = new_pixels;
++	}
++	sceGuSwapBuffers();
++
++	return 0;
++}
++
++static void PSP_UpdateRects(_THIS, int numrects, SDL_Rect *rects)
++{
++}
++
++static int PSP_CheckHWBlit(_THIS, SDL_Surface *src, SDL_Surface *dst)
++{
++	src->flags |= SDL_HWACCEL;
++	src->map->hw_blit = HWAccelBlit;
++	return 1;
++}
++
++static int HWAccelBlit(SDL_Surface *src, SDL_Rect *srcrect,
++                       SDL_Surface *dst, SDL_Rect *dstrect)
++{
++	sceKernelDcacheWritebackAll();
++
++	/* when rendering to the screen from a 16 byte aligned address,
++	   use GuStretchBlit without stretching */
++	if ((dst == current_video->screen) && IS_HWSURFACE(src->flags)) {
++
++		PSP_GuStretchBlit(src, srcrect, dstrect); 
++
++	} else {
++
++		sceGuStart(GU_DIRECT,list);
++
++		sceGuCopyImage(current_video->hidden->psm,
++			srcrect->x, srcrect->y, srcrect->w, srcrect->h, 
++			src->pitch / src->format->BytesPerPixel, src->pixels,
++			dstrect->x, dstrect->y, dst->pitch / dst->format->BytesPerPixel, 
++			dst->pixels);
++
++		sceGuFinish();
++
++	}
++
++	sceGuSync(0, 0);
++
++	return 0;
++}
++
++/** 
++ * update screen from 16 byte aligned src surface
++ */
++static int PSP_GuStretchBlit(SDL_Surface *src, SDL_Rect *srcrect, SDL_Rect *dstrect)
++{
++	unsigned short old_slice = 0; /* set when we load 2nd tex */
++	unsigned int slice, num_slices, width, height, tbw, off_x, off_bytes;
++	struct texVertex *vertices;
++	void *pixels;
++
++	off_bytes = (int)(src->pixels + srcrect->x * src->format->BytesPerPixel) & 0xf;
++	off_x = off_bytes / src->format->BytesPerPixel;
++	width = roundUpToPowerOfTwo(srcrect->w + off_bytes);
++	height = roundUpToPowerOfTwo(srcrect->h);
++	tbw = src->pitch / src->format->BytesPerPixel;
++
++	/* Align the texture prior to srcrect->x */
++	pixels = src->pixels + (srcrect->x - off_x) * src->format->BytesPerPixel + 
++		src->pitch * srcrect->y;
++	num_slices = (srcrect->w + (PSP_SLICE_SIZE - 1)) / PSP_SLICE_SIZE;
++
++	/* GE doesn't appreciate textures wider than 512 */
++	if (width > 512)
++		width = 512; 
++
++	sceGuStart(GU_DIRECT,list);
++	sceGuEnable(GU_TEXTURE_2D);
++	sceGuTexMode(current_video->hidden->tpsm,0,0,0);
++	sceGuTexFunc(GU_TFX_REPLACE, GU_TCC_RGB);
++	sceGuTexFilter(GU_LINEAR, GU_LINEAR);
++	sceGuTexImage(0, width, height, tbw, pixels);
++	sceGuTexSync();
++
++	for (slice = 0; slice < num_slices; slice++) {
++
++		vertices = (struct texVertex*)sceGuGetMemory(2 * sizeof(struct texVertex));
++
++		if ((slice * PSP_SLICE_SIZE) < width) {
++			vertices[0].u = slice * PSP_SLICE_SIZE + off_x;
++		} else {
++			if (!old_slice) {
++				/* load another texture (src width > 512) */
++				pixels += width * src->format->BytesPerPixel;
++				sceGuTexImage(0, roundUpToPowerOfTwo(srcrect->w - width), 
++					height, tbw, pixels);
++				sceGuTexSync();
++				old_slice = slice;
++			}
++			vertices[0].u = (slice - old_slice) * PSP_SLICE_SIZE + off_x;
++		}
++		vertices[1].u = vertices[0].u + PSP_SLICE_SIZE;
++		if (vertices[1].u > (off_x + srcrect->w))
++			vertices[1].u = off_x + srcrect->w;
++
++		vertices[0].v = 0;
++		vertices[1].v = vertices[0].v + srcrect->h;
++
++		vertices[0].x = dstrect->x + slice * PSP_SLICE_SIZE * dstrect->w / srcrect->w;
++		vertices[1].x = vertices[0].x + PSP_SLICE_SIZE * dstrect->w / srcrect->w;
++		if (vertices[1].x > (dstrect->x + dstrect->w))
++			vertices[1].x = dstrect->x + dstrect->w;
++
++		vertices[0].y = dstrect->y;
++		vertices[1].y = vertices[0].y + dstrect->h;
++
++		vertices[0].z = 0;
++		vertices[1].z = 0;
++
++		sceGuDrawArray(GU_SPRITES,GU_TEXTURE_16BIT|GU_VERTEX_16BIT|GU_TRANSFORM_2D,
++			2,0,vertices);
++	}
++
++	sceGuFinish();
++
++	return 0;
++}
++
++static int PSP_FillHWRect(_THIS, SDL_Surface *dst, SDL_Rect *rect, Uint32 color)
++{
++	struct rectVertex *vertices;
++	void *gu_offset;
++
++	gu_offset = (void *)((int)current_video->screen->pixels & 0x00ffffff);
++
++	sceGuStart(GU_DIRECT,list);
++
++	vertices = sceGuGetMemory(2 * sizeof(struct rectVertex));
++
++	vertices[0].x = rect->x;
++	vertices[1].x = rect->x + rect->w;
++	vertices[0].y = rect->y;
++	vertices[1].y = rect->y + rect->h;
++
++	sceGuDrawBuffer(psm_value(dst->format->BitsPerPixel),
++		(void *)((int)dst->pixels & 0x00ffffff), 
++		dst->pitch / dst->format->BytesPerPixel);
++
++	sceGuColor(color);
++	sceGuDrawArray(GU_SPRITES,GU_VERTEX_16BIT|GU_TRANSFORM_2D,2,0,vertices);
++	
++	sceGuDrawBuffer(this->hidden->psm, gu_offset, PSP_LINE_SIZE);
++
++	sceGuFinish();
++	sceGuSync(0, 0);
++
++	return 0;
++}
++
++/**
++ * Update the screen from SDL_SWSURFACE (and scale).
++ */
++static void PSP_GuUpdateRects(_THIS, int numrects, SDL_Rect *rects)
++{
++	SDL_Surface *src = SDL_VideoSurface;
++
++	sceKernelDcacheWritebackAll();
++
++	/* if the screen dimensions are unusual, do a single update */
++	if ((src->w != 480) || (src->h != 272)) {
++
++		PSP_GuStretchBlit(src, &this->hidden->sw_rect, &this->hidden->hw_rect);
++
++	} else {
++		/* update the specified rects */
++		while(numrects--) {
++			PSP_GuStretchBlit(src, rects, rects);
++			rects++;
++		} 
++	}
++
++	sceGuSync(0, 0);
++}
++
++int PSP_SetColors(_THIS, int firstcolor, int ncolors, SDL_Color *colors)
++{
++	int i, j, ret = 1;
++	unsigned int *palette;
++
++	if (ncolors > 256) {
++		ncolors = 256;
++		ret = 0;
++	}
++
++	if (this->hidden->gu_palette == NULL) {
++		this->hidden->gu_palette = memalign(16, 4 * 256);
++		this->hidden->tpsm = GU_PSM_T8;
++	}
++
++	palette = this->hidden->gu_palette;
++
++	for (i=firstcolor, j=0; j < ncolors; i++, j++) {
++		palette[i] = (colors[j].b << 16) | (colors[j].g << 8) | (colors[j].r);
++	}
++
++	sceKernelDcacheWritebackAll();
++	sceGuStart(GU_DIRECT, list);
++	sceGuClutLoad(32, this->hidden->gu_palette);
++	sceGuFinish();
++	sceGuSync(0,0);
++
++	return ret;
++}
++
++/* Note:  If we are terminated, this could be called in the middle of
++   another SDL video routine -- notably UpdateRects.
++*/
++void PSP_VideoQuit(_THIS)
++{
++	if (this->hidden->gu_palette != NULL) {
++		free(this->hidden->gu_palette);
++		this->hidden->gu_palette = NULL;
++	}
++
++	sceGuTerm();
++
++	PSP_EventQuit(this);
++
++	vidmem_free(this->hidden->vram_base);
++
++	if (this->screen->flags & SDL_DOUBLEBUF)
++		vidmem_free(this->hidden->vram_base + this->hidden->frame_offset);
++
++	return;
++}
++
++/* vim: ts=4 sw=4
++ */
+diff -burN SDL-1.2.15/src/video/psp/SDL_pspvideo.h SDL-1.2.15-PSP/src/video/psp/SDL_pspvideo.h
+--- SDL-1.2.15/src/video/psp/SDL_pspvideo.h	1970-01-01 01:00:00.000000000 +0100
++++ SDL-1.2.15-PSP/src/video/psp/SDL_pspvideo.h	2012-06-06 12:55:07.482588936 +0200
+@@ -0,0 +1,73 @@
++/*
++    SDL - Simple DirectMedia Layer
++    Copyright (C) 1997-2004 Sam Lantinga
++
++    This library is free software; you can redistribute it and/or
++    modify it under the terms of the GNU Library General Public
++    License as published by the Free Software Foundation; either
++    version 2 of the License, or (at your option) any later version.
++
++    This library is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++    Library General Public License for more details.
++
++    You should have received a copy of the GNU Library General Public
++    License along with this library; if not, write to the Free
++    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++
++    Sam Lantinga
++    slouken@libsdl.org
++*/
++
++/*  
++    PSP port contributed by:
++    Marcus R. Brown <mrbrown@ocgnet.org>
++    Jim Paris <jim@jtan.com>
++*/
++
++#ifdef SAVE_RCSID
++static char rcsid =
++ "@(#) $Id: SDL_nullvideo.h,v 1.4 2004/01/04 16:49:24 slouken Exp $";
++#endif
++
++#ifndef _SDL_pspvideo_h
++#define _SDL_pspvideo_h
++
++#include "SDL_mouse.h"
++#include "../SDL_sysvideo.h"
++#include "SDL_mutex.h"
++
++#include <psptypes.h>
++#include <pspge.h>
++#include <pspkernel.h>
++#include <psputils.h>
++#include <pspdisplay.h>
++#include <pspgu.h>
++
++/* Hidden "this" pointer for the video functions */
++#define _THIS	SDL_VideoDevice *this
++
++
++/* Private display data */
++
++struct SDL_PrivateVideoData {
++	void *vram_base;
++	/* Current display's pixel format. */
++	int pixel_format;
++	/* The current draw frame for double-buffered displays. */
++	int frame;
++	/* Byte offset of the start of the second frame. */
++	unsigned int frame_offset;
++	/* Screen format */
++	int psm;
++	/* Texture format */
++	int tpsm;
++	/* Pointer to the CLUT. */
++	void *gu_palette;
++	/* Dimensions for stretched blit */
++	SDL_Rect hw_rect;
++	SDL_Rect sw_rect;
++};
++
++#endif /* _SDL_pspvideo_h */
+diff -burN SDL-1.2.15/src/video/SDL_sysvideo.h SDL-1.2.15-PSP/src/video/SDL_sysvideo.h
+--- SDL-1.2.15/src/video/SDL_sysvideo.h	2012-01-19 07:30:06.000000000 +0100
++++ SDL-1.2.15-PSP/src/video/SDL_sysvideo.h	2012-06-06 12:55:07.482588936 +0200
+@@ -413,6 +413,9 @@
+ #if SDL_VIDEO_DRIVER_DUMMY
+ extern VideoBootStrap DUMMY_bootstrap;
+ #endif
++#if SDL_VIDEO_DRIVER_PSP
++extern VideoBootStrap PSP_bootstrap;
++#endif
+ 
+ /* This is the current video device */
+ extern SDL_VideoDevice *current_video;
+diff -burN SDL-1.2.15/src/video/SDL_video.c SDL-1.2.15-PSP/src/video/SDL_video.c
+--- SDL-1.2.15/src/video/SDL_video.c	2012-01-19 07:30:06.000000000 +0100
++++ SDL-1.2.15-PSP/src/video/SDL_video.c	2012-06-06 12:55:07.484588936 +0200
+@@ -129,6 +129,9 @@
+ #if SDL_VIDEO_DRIVER_DUMMY
+ 	&DUMMY_bootstrap,
+ #endif
++#if SDL_VIDEO_DRIVER_PSP
++	&PSP_bootstrap,
++#endif
+ 	NULL
+ };
+ 
+diff -burN SDL-1.2.15/test/configure.in SDL-1.2.15-PSP/test/configure.in
+--- SDL-1.2.15/test/configure.in	2012-01-19 07:30:06.000000000 +0100
++++ SDL-1.2.15-PSP/test/configure.in	2012-06-06 12:55:07.485588936 +0200
+@@ -13,6 +13,28 @@
+ 
+ AC_C_CONST
+ 
++dnl Check for a valid PSPSDK installation
++CheckPSPSDK()
++{   
++    AC_CHECK_PROG(psp_config, psp-config, psp-config, no)
++    if test x$psp_config = xno; then
++        AC_MSG_ERROR(Couldn't locate psp-config.)
++    fi
++
++    AC_MSG_CHECKING(for PSPSDK)
++    pspsdk_path=`$psp_config --pspsdk-path`
++    psp_prefix=`$psp_config --psp-prefix`
++    if test ! -d $pspsdk_path -o -z $pspsdk_path; then
++        AC_MSG_RESULT(not found)
++        AC_MSG_ERROR(Couldn't locate PSPSDK.)
++    fi
++    AC_MSG_RESULT($pspsdk_path)
++
++    # Compile SDL with -G0 to disable the $gp register.
++    CFLAGS="$CFLAGS -G0 -I\"${pspsdk_path}/include\" -I\"${psp_prefix}/include\""
++    BUILD_PREFIX="psp-"
++}
++
+ dnl Figure out which math library to use
+ case "$host" in
+     *-*-cygwin* | *-*-mingw32*)
+@@ -50,6 +72,10 @@
+             SYS_GL_LIBS="-lOSMesa"
+         fi
+ 		;;
++    *-psp-*)
++        ARCH=psp
++        CheckPSPSDK
++        ;;
+     *)
+         EXE=""
+         MATHLIB="-lm"
+diff -burN SDL-1.2.15/test/testsprite.c SDL-1.2.15-PSP/test/testsprite.c
+--- SDL-1.2.15/test/testsprite.c	2012-01-19 07:30:06.000000000 +0100
++++ SDL-1.2.15-PSP/test/testsprite.c	2012-06-06 12:55:07.486588936 +0200
+@@ -12,6 +12,13 @@
+ #define NUM_SPRITES	100
+ #define MAX_SPEED 	1
+ 
++#ifdef PSP
++#include <pspdebug.h>
++
++#define fprintf(x, args...) pspDebugScreenPrintf(args)
++#define printf(args...) pspDebugScreenPrintf(args)
++#endif /* PSP */
++
+ SDL_Surface *sprite;
+ int numsprites;
+ SDL_Rect *sprite_rects;
