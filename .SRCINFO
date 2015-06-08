@@ -1,0 +1,17 @@
+pkgbase = mtkbabel
+	pkgdesc = Operation software for GPS devices based on the MediaTek MTK chipset
+	pkgver = 0.8.3.1
+	pkgrel = 1
+	url = http://mtkbabel.sourceforge.net
+	install = mtkbabel.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = perl
+	depends = perl-device-serialport
+	depends = perl-timedate
+	source = http://downloads.sourceforge.net/sourceforge/mtkbabel/mtkbabel-0.8.3.1.tar.gz
+	md5sums = eda7a0e00cae84cc307066e413e94e45
+
+pkgname = mtkbabel
+
