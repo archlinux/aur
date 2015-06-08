@@ -1,0 +1,20 @@
+pkgbase = vim-vimwiki-dev-git
+	pkgdesc = Personal Wiki for Vim; dev branch.
+	pkgver = v2.1.166.g9949465
+	pkgrel = 1
+	url = http://code.google.com/p/vimwiki/
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim
+	provides = vim-vimwiki
+	conflicts = vim-vimwiki
+	source = git+https://github.com/vimwiki/vimwiki.git#branch=dev
+	source = license.txt
+	md5sums = SKIP
+	md5sums = e19fa0689d06a724fc8ddfe824ef2680
+
+pkgname = vim-vimwiki-dev-git
+
