@@ -1,0 +1,16 @@
+pkgbase = gtk-theme-plasma-shock-bolt-fire
+	pkgdesc = Black theme based on Dark Cold
+	pkgver = 1.3
+	pkgrel = 3
+	url = http://xfce-look.org/content/show.php/Plasma+Bolt%2C+Fire%2C+Shock?content=158436
+	arch = any
+	license = GPL
+	depends = gtk-xfce-engine
+	depends = gtk-engines
+	conflicts = plasma-xfce-theme
+	replaces = plasma-xfce-theme
+	source = http://xfce-look.org/CONTENT/content-files/158436-plasma-tweaks-gtk3.11-next2.tar.gz
+	md5sums = 622c32e0364ae4463a4b3a306bc7c665
+
+pkgname = gtk-theme-plasma-shock-bolt-fire
+
