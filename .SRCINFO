@@ -1,0 +1,14 @@
+pkgbase = craftbukkit-plugin-worldedit
+	pkgdesc = easy-to-use in-game world editor for Minecraft, supporting both single player and multiplayer
+	pkgver = 6.1
+	pkgrel = 1
+	url = http://dev.bukkit.org/bukkit-plugins/worldedit
+	arch = any
+	license = GPLv3
+	makedepends = dos2unix
+	depends = craftbukkit>=1.8.1
+	source = http://dev.bukkit.org/media/files/880/435/worldedit-bukkit-6.1.jar
+	md5sums = 13749e1701499d379765bb218191035a
+
+pkgname = craftbukkit-plugin-worldedit
+
