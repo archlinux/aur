@@ -1,0 +1,12 @@
+pkgbase = xcursor-neutralplus
+	pkgdesc = Nice mod of the Neutral X11 cursor theme
+	pkgver = 1.2
+	pkgrel = 3
+	url = http://www.kde-look.org/content/show.php/show.php?content=48837
+	arch = any
+	license = PerlArtistic
+	source = http://www.kde-look.org/CONTENT/content-files/48837-Neutral_Plus_1.2.tar.bz2
+	sha1sums = abddb75314374a65b6066fdddae23699768fe771
+
+pkgname = xcursor-neutralplus
+
