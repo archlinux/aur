@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+#
+# Copyright 2012 by Overlook
+# description: Fingbox Sentinel
+#
+
+# Start the service
+start() {
+    echo -n "Starting fingbox-sentinel: "
+    export LD_LIBRARY_PATH="/usr/lib/fing"
+    export DYLD_LIBRARY_PATH=$LD_LIBRARY_PATH
+    ulimit -n 1024
+    ulimit -c 0
+    nohup /usr/lib/fing/fing.bin --sentinel >/dev/null 2>/dev/null &
+    echo $! > /run/fingbox-sentinel.pid
+    ### Create the lock file ###
+    touch /run/lock/subsys/fingbox-sentinel
+    #success $"fingbox-sentinel startup"
+    #echo
+}
+# Stop the service
+stop() {
+    echo -n "Stopping fingbox-sentinel: "
+    killall fingbox-sentinel
+    ### Now, delete the lock file ###
+    rm -f /run/lock/subsys/fingbox-sentinel
+}
+### main logic ###
+case "$1" in
+  start)
+        start
+        ;;
+  stop)
+        stop
+        ;;
+  restart|reload)
+        stop
+        start
+        ;;
+  *)
+        echo $"Usage: $0 {start|stop|restart|reload}"
+        exit 1
+esac
+exit 0
+

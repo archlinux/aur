@@ -1,0 +1,14 @@
+[Unit]
+Description=Fingbox Sentinel
+After=syslog.target network.target
+
+[Service]
+Type=forking
+PIDFile=/run/fingbox-sentinel.pid
+ExecStart=/usr/lib/systemd/scripts/fingbox-sentinel start
+ExecStop=/usr/lib/systemd/scripts/fingbox-sentinel stop
+ExecReload=/usr/lib/systemd/scripts/fingbox-sentinel restart
+
+[Install]
+WantedBy=multi-user.target
+

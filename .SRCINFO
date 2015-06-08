@@ -1,0 +1,15 @@
+pkgbase = overlook-fing
+	pkgdesc = The ultimate tool for network discovery and scanning
+	pkgver = 2.2
+	pkgrel = 3
+	url = http://www.overlooksoft.com/
+	arch = i686
+	arch = x86_64
+	license = custom:Overlook Freeware license
+	depends = boost-libs
+	depends = openssl
+	depends = zlib
+	options = !strip
+
+pkgname = overlook-fing
+
