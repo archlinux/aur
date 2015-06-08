@@ -1,1 +1,5 @@
-Minecraft.jar
+/pkg
+/src
+*.tar.xz
+*src.tar.gz
+/Minecraft.jar
