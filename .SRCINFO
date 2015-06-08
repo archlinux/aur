@@ -1,0 +1,19 @@
+pkgbase = icet
+	pkgdesc = High-performance sort-last parallel rendering library
+	pkgver = 2.1.1
+	pkgrel = 2
+	url = http://icet.sandia.gov/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = libgl
+	depends = openmpi
+	depends = freeglut
+	depends = glu
+	depends = libxmu
+	source = http://icet.sandia.gov/_assets/files/IceT-2-1-1.tar.gz
+	sha256sums = 6eaf0442bf6832ce6c8a50805cf9279894fbcd5886cf6ea214b09d24f111fa33
+
+pkgname = icet
+
