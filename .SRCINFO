@@ -1,0 +1,21 @@
+pkgbase = azpainter
+	pkgdesc = Painting software
+	pkgver = 1.0.5
+	pkgrel = 2
+	url = http://azsky2.html.xdomain.jp/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = fontconfig
+	depends = freetype2
+	depends = libjpeg-turbo
+	depends = libx11
+	depends = libxext
+	depends = libxft
+	depends = libxi
+	depends = zlib
+	source = http://osdn.jp/frs/redir.php?m=iij&f=/azpainter/62214/azpainter-1.0.5-src.tar.bz2
+	md5sums = 213c5f86fdf24fe29382ac125d2e281a
+
+pkgname = azpainter
+
