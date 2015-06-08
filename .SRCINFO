@@ -1,6 +1,6 @@
 pkgbase = caddy
 	pkgdesc = A configurable, general-purpose HTTP/2 web server for any platform
-	pkgver = 0.6.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://caddyserver.com
 	install = caddy.install
@@ -9,7 +9,7 @@ pkgbase = caddy
 	arch = armv6h
 	license = Apache
 	conflicts = caddy-git
-	source = https://github.com/mholt/caddy/releases/download/v0.6.0/caddy_linux_.zip
+	source = https://github.com/mholt/caddy/releases/download/v0.7.1/caddy_linux_.zip
 
 pkgname = caddy
 
