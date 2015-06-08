@@ -1,0 +1,17 @@
+pkgbase = smokegen-git
+	pkgdesc = A general purpose C++ parser with a plugin infrastructure
+	pkgver = 20150630
+	pkgrel = 1
+	url = http://kde.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = git
+	conflicts = kdebindings-smokegen
+
+pkgname = smokegen-git
+
