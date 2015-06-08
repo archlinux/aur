@@ -38,7 +38,7 @@ package () {
   install -Dm644 ${srcdir}/$pkgname-build/svg/scid.ico ${pkgdir}/usr/share/scid/scid.ico
   echo "
 [Desktop Entry]
-Version=4.5-git-$pkgver
+Version=4.6-git-$pkgver
 Name=${_pkgname}
 Comment=${pkgdesc}
 Exec=${_pkgname}
