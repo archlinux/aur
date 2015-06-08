@@ -1,0 +1,16 @@
+pkgbase = epson-inkjet-printer-201213w
+	pkgdesc = Epson printer driver (WP-M4011, WP-M4015, WP-M4095, WP-M4521, WP-M4525, WP-M4595)
+	pkgver = 1.0.0
+	pkgrel = 8
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom:Epson Licence Agreement
+	depends = cups
+	depends = ghostscript
+	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201213w-1.0.0-1lsb3.2.src.rpm
+	sha256sums = 45114c018b33c35259e6ac0fb762f92b05ca2d30ff76b34c069cd5a461f1f5df
+
+pkgname = epson-inkjet-printer-201213w
+
