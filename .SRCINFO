@@ -1,0 +1,14 @@
+pkgbase = xpoty-hg
+	pkgdesc = Xpoty is an attempt to demonstrate how to write XMPP gateways to other IM networks.
+	pkgver = 1
+	pkgrel = 1
+	url = https://bitbucket.org/dion/xpoty2xmpp
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = mercurial
+	depends = python2-distribute
+	depends = python2-pyxmpp
+
+pkgname = xpoty-hg
+
