@@ -1,15 +1,15 @@
 pkgbase = shorewall-lite
 	pkgdesc = An iptables-based firewall for Linux systems ('lite' version)
-	pkgver = 4.6.5
-	pkgrel = 2
+	pkgver = 4.6.10
+	pkgrel = 1
 	url = http://www.shorewall.net/
 	arch = any
 	license = GPL
 	depends = iptables
 	depends = iproute2
-	depends = shorewall-core
-	source = http://www.shorewall.net/pub/shorewall/4.6/shorewall-4.6.5/shorewall-lite-4.6.5.tar.bz2
-	md5sums = 1794cfb56ba1dd67b38498081160e291
+	depends = shorewall-core=4.6.10
+	source = http://www.shorewall.net/pub/shorewall/4.6/shorewall-4.6.10/shorewall-lite-4.6.10.tar.bz2
+	sha256sums = 543d8cda89e2d649b943633c7892aaa04336dbf76a570300bbb1406dc3af1fa1
 
 pkgname = shorewall-lite
 
