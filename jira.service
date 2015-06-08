@@ -1,0 +1,13 @@
+[Unit]
+Description=JIRA
+After=network.target
+
+[Service]
+Type=forking
+User=jira
+EnvironmentFile=-/etc/conf.d/jira
+ExecStart=/opt/atlassian-jira/bin/startup.sh
+ExecStop=/opt/atlassian-jira/bin/shutdown.sh
+
+[Install]
+WantedBy=multi-user.target
