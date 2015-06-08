@@ -1,0 +1,23 @@
+pkgbase = keepassx2
+	pkgdesc = Crossplatform port of Windows' application ''KeePass Password Safe''
+	pkgver = alpha6
+	pkgrel = 2
+	url = https://www.keepassx.org/dev/
+	install = keepassx2.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = GPL3
+	makedepends = intltool
+	makedepends = cmake
+	depends = shared-mime-info
+	depends = libxtst
+	depends = qt4
+	conflicts = keepassx
+	conflicts = keepassx2-git
+	options = !emptydirs
+	source = https://www.keepassx.org/dev/attachments/download/69/keepassx-2.0-alpha6.tar.gz
+	sha256sums = 592f9995b13c4f84724fb24a0078162246397eedccd467daaf0fd3608151f2b0
+
+pkgname = keepassx2
+
