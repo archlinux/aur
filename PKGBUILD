@@ -10,7 +10,7 @@ license=('GPL')
 backup=(etc/smsd.conf etc/logrotate.d/smsd)
 install=smsd.install
 depends=('bash')
-makedepends=('gcc' 'make' 'patch')
+makedepends=()
 source=(http://smstools3.kekekasvi.com/packages/$pkgname-$pkgver.tar.gz
 	makefile.patch
 	sendsms.patch
