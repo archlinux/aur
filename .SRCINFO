@@ -1,0 +1,16 @@
+pkgbase = unicodemoticon
+	pkgdesc = Tray icon with Unicode Emoticons using Python3 Qt5
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/juancarlospaco/unicodemoticon
+	arch = any
+	license = Apache
+	makedepends = python-distribute
+	depends = python
+	depends = python-pyqt5
+	optdepends = ttf-symbola: Font with emoji
+	source = https://pypi.python.org/packages/source/u/unicodemoticon/unicodemoticon-1.0.2.tar.gz
+	md5sums = 0069de8fa1300d5cc1e7aeee713f316f
+
+pkgname = unicodemoticon
+
