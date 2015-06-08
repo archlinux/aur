@@ -1,0 +1,16 @@
+pkgbase = perl-convert-bencode-xs
+	pkgdesc = Faster conversions to/from Bencode format
+	pkgver = 0.06
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Convert-Bencode_XS
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl<=5.17.9
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/I/IW/IWADE/Convert-Bencode_XS-0.06.tar.gz
+	sha256sums = 3b7aa07abefce56ea2416f8f7f20afcc95d7003e326f4173bc9874f125d75b6d
+
+pkgname = perl-convert-bencode-xs
+
