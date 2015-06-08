@@ -1,0 +1,23 @@
+pkgbase = nvidia-304xx-dkms
+	pkgdesc = NVIDIA kernel module sources (DKMS)
+	pkgver = 304.125
+	pkgrel = 3
+	url = http://www.nvidia.com/
+	install = nvidia-304xx-dkms.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = dkms
+	depends = nvidia-304xx-utils=304.125
+	optdepends = linux-headers: Build the module for Arch kernel
+	optdepends = linux-lts-headers: Build the module for LTS Arch kernel
+	provides = nvidia
+	provides = nvidia-dkms
+	conflicts = nvidia-304xx
+	conflicts = nvidia-dkms
+	source = http://us.download.nvidia.com/XFree86/Linux-/304.125/NVIDIA-Linux--304.125.run
+	source = nvidia-3.19.patch
+	source = nv-pat.patch
+
+pkgname = nvidia-304xx-dkms
+
