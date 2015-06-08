@@ -1,0 +1,17 @@
+pkgbase = lib32-libftd2xx
+	pkgdesc = Library that allows a direct access to a USB FTDI2XX chip based device
+	pkgver = 1.1.12
+	pkgrel = 2
+	url = http://www.ftdichip.com/
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	depends = libusb>=1.0.8
+	depends = libftd2xx
+	depends = lib32-libusb>=1.0.8
+	options = !strip
+	source = http://www.ftdichip.com/Drivers/D2XX/Linux/libftd2xx1.1.12.tar.gz
+	md5sums = 351635dc393fa24447c8dac95c321cbc
+
+pkgname = lib32-libftd2xx
+
