@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-freeglut
+	pkgdesc = Provides functionality for small OpenGL programs (mingw-w64)
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = http://freeglut.sourceforge.net/
+	arch = any
+	license = MIT
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://downloads.sourceforge.net/freeglut/freeglut-3.0.0.tar.gz
+	md5sums = 90c3ca4dd9d51cf32276bc5344ec9754
+	sha1sums = fca52242f9344627a30f11487ee42002e6b0dacd
+
+pkgname = mingw-w64-freeglut
+
