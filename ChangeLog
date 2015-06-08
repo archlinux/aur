@@ -1,0 +1,24 @@
+2015-06-08 Giancarlo Razzolini <grazzolini@gmail.com>
+
+	* 0.0.4:
+	- Decouple of the PKGBUILD and other AUR relevant files from the source code for upload in the new AUR system.
+
+2015-04-01 Giancarlo Razzolini <grazzolini@gmail.com>
+
+	* 0.0.3:
+	- The same check of the cmdline is also performed in the initramfs. This indicate a bootloader configuration bypassing.
+	- Added a warning confirmation to make sure the user was warned of a compromised bootloader or configuration bypassing.
+	- Changed the size of the mbr portion that is saved. Was incorrectly also hashing the partition table.
+	- Various changes to the messaging and warning system.
+
+2015-03-31 Giancarlo Razzolini <grazzolini@gmail.com>
+
+	* 0.0.2:
+	- Added a profile for checking the kernel cmdline for a bypassed boot partition.
+	- Changed from sha256 to sha512.
+
+2015-03-12 Giancarlo Razzolini <grazzolini@gmail.com>
+
+	* 0.0.1 :
+	- Initial release
+	- There is no systemd service yet to verify if your boot partition was bypassed.
