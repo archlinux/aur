@@ -1,0 +1,20 @@
+pkgbase = clerk-git
+	pkgdesc = clerk - mpd client for dmenu/rofi
+	pkgver = 453.d21167c
+	pkgrel = 1
+	url = https://github.com/carnager/clerk
+	install = clerk-git.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = mpc
+	depends = python-mpd2
+	depends = python-notify2
+	optdepends = rofi-git: backend for clerk
+	optdepends = dmenu2: alternative backend for clerk
+	optdepends = mpd-sima: similar artists mode
+	source = git+http://git.53280.de/clerk
+	md5sums = SKIP
+
+pkgname = clerk-git
+

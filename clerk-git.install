@@ -1,0 +1,8 @@
+#!/bin/bash
+post_install() {
+echo '
+to use clerk you need to copy /usr/share/doc/clerk/config.example to $HOME/.config/clerk/config
+and edit it to your needs.
+'
+}
+#post_install
