@@ -1,0 +1,11 @@
+pkgbase = kupfer-plugin-volumescc
+	pkgdesc = Modified version of default kupfer volumes plugin that allows usage of a custom unmount command
+	pkgver = 1
+	pkgrel = 1
+	url = https://gist.github.com/4351271
+	arch = any
+	license = GPL
+	depends = kupfer
+
+pkgname = kupfer-plugin-volumescc
+
