@@ -1,0 +1,14 @@
+pkgbase = repo-util
+	pkgdesc = A supplement to repo-add which simplifies updating local repositories
+	pkgver = 1.9.2
+	pkgrel = 1
+	url = https://github.com/cassava/repo-util
+	arch = x86_64
+	arch = i686
+	license = custom:MIT
+	depends = glibc
+	source = https://github.com/cassava/repo-util/archive/1.9.2.tar.gz
+	md5sums = 78f14c5efc93bb596a42fd41bff1aa5e
+
+pkgname = repo-util
+
