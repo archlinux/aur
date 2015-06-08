@@ -1,0 +1,12 @@
+*** CMakeLists.txt.old	2012-01-05 16:05:50.000000000 +0100
+--- CMakeLists.txt	2013-01-13 14:57:23.000000000 +0100
+***************
+*** 81,86 ****
+--- 81,87 ----
+  SET(includedir "\${prefix}/include")
+  SET(PACKAGE_NAME "Caelum")
+  SET(PACKAGE_VERSION "${LIB_VERSION}")
++ SET(LIBNAME "Caelum")
+  
+  # configuration of the config.h and PkgConfig
+  CONFIGURE_FILE(
