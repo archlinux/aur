@@ -1,0 +1,18 @@
+pkgbase = naludump
+	pkgdesc = Tool to delete NALU fill data from h.264 streams
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = http://www.udo-richter.de/vdr/naludump.html
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	makedepends = libjpeg-turbo
+	depends = gcc-libs
+	source = http://www.udo-richter.de/vdr/files/naludump-0.1.1.tgz
+	md5sums = f7c82cac8e165f882215d30b3dde2fe0
+
+pkgname = naludump
+
