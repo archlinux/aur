@@ -1,0 +1,14 @@
+pkgbase = contextfree2
+	pkgdesc = A program that generates images from written instructions called a grammar. Legacy v2.
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = http://www.contextfreeart.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = libpng
+	depends = gcc-libs
+	source = http://www.contextfreeart.org/download/ContextFreeSource2.2.2.tgz
+
+pkgname = contextfree2
+
