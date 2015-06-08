@@ -1,0 +1,14 @@
+pkgbase = tuxpaint-stamps-cvs
+	pkgdesc = Additional stamps for Tux Paint, cvs version
+	pkgver = 20101127
+	pkgrel = 2
+	url = http://www.newbreedsoftware.com/tuxpaint/
+	arch = any
+	license = GPL
+	makedepends = cvs
+	depends = tuxpaint
+	provides = tuxpaint-stamps
+	conflicts = tuxpaint-stamps
+
+pkgname = tuxpaint-stamps-cvs
+
