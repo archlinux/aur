@@ -1,0 +1,13 @@
+pkgbase = aspell-sl
+	pkgdesc = Slovene dictionary for aspell
+	pkgver = 0.50
+	pkgrel = 2
+	url = http://aspell.net/
+	arch = any
+	license = GPL
+	depends = aspell
+	source = ftp://ftp.gnu.org/gnu/aspell/dict/sl/aspell-sl-0.50-0.tar.bz2
+	sha1sums = 028e41e39495ea32bc2318b9f91a9027e905479a
+
+pkgname = aspell-sl
+
