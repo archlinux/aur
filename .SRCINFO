@@ -1,0 +1,15 @@
+pkgbase = amnesia-tdd
+	pkgdesc = A game about immersion, discovery and living through a nightmare.
+	pkgver = 1.2.1r3
+	pkgrel = 1
+	url = http://www.amnesiagame.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = xz
+	depends = libxft
+	source = amnesia_tdd-1.2.1-3.sh
+	md5sums = b3b04553dbf56570e7270d52a04d5ddd
+
+pkgname = amnesia-tdd
+
