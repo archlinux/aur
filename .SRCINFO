@@ -1,0 +1,25 @@
+pkgbase = libpcap++
+	pkgver = 0.0.2
+	pkgrel = 3
+	url = http://libpcappp.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = doxygen
+	source = http://downloads.sourceforge.net/libpcappp/libpcap++-0.0.2.tar.gz
+	source = fix.patch
+	sha256sums = 92240a42de09e847b315a5205f791252e9498e7fe1304d6e852e41655d6ae26a
+	sha256sums = 77a28d2fa39ba1deffefdf56dadb3a04962565884248a11576a2b34e9eed176d
+
+pkgname = libpcappp
+	pkgdesc = C++ wrapper for libpcap
+	depends = libpcap>=0.8
+
+pkgname = libpcappp-doc-html
+	pkgdesc = C++ wrapper for libpcap - html documantation
+	arch = any
+
+pkgname = libpcappp-doc-qt
+	pkgdesc = C++ wrapper for libpcap - documantation for qt help
+	arch = any
+

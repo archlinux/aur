@@ -1,0 +1,60 @@
+--- ./configure
++++ ./configure
+@@ -20454,33 +20454,6 @@
+ __pcap_minor="`expr $__pcap_version : '[^.]*\.\([^.]*\)'`"
+ __pcap_micro="`expr $__pcap_version : '[^.]*\.[^.]*\.\([^.]*\)' \| '0'`"
+ 
+-if test "0.8" != ""; then
+-	__pcap_major_required="`expr 0.8 : '\([^.]*\)'`"
+-	__pcap_minor_required="`expr 0.8 : '[^.]*\.\([^.]*\)' \| '0'`"
+-	__pcap_micro_required="`expr 0.8 : '[^.]*\.[^.]*\.\([^.]*\)' \| '0'`"
+-
+-	if test $__pcap_major_required -gt $__pcap_major; then
+-		{ { echo "$as_me:$LINENO: error: libpcap >= 0.8 is required
+-See \`config.log' for more details." >&5
+-echo "$as_me: error: libpcap >= 0.8 is required
+-See \`config.log' for more details." >&2;}
+-   { (exit 1); exit 1; }; }
+-	elif test $__pcap_minor_required -gt $__pcap_minor; then
+-		{ { echo "$as_me:$LINENO: error: libpcap >= 0.8 is required
+-See \`config.log' for more details." >&5
+-echo "$as_me: error: libpcap >= 0.8 is required
+-See \`config.log' for more details." >&2;}
+-   { (exit 1); exit 1; }; }
+-	elif test $__pcap_micro_required -gt $__pcap_micro; then
+-		{ { echo "$as_me:$LINENO: error: libpcap >= 0.8 is required
+-See \`config.log' for more details." >&5
+-echo "$as_me: error: libpcap >= 0.8 is required
+-See \`config.log' for more details." >&2;}
+-   { (exit 1); exit 1; }; }
+-	fi
+-fi
+-
+-
+ cat >>confdefs.h <<_ACEOF
+ #define PCAP_MAJOR_VERSION $__pcap_major
+ _ACEOF
+--- ./pcap++/Pcap.cc
++++ ./pcap++/Pcap.cc
+@@ -11,6 +11,7 @@
+ #include <pcap++/Dumper.h>
+ #include <pcap++/Exception.h>
+ #include <cassert>
++#include <cstdlib>
+ 
+ namespace pcappp {
+ 
+--- ./doc/doxygen.cfg.in
++++ ./doc/doxygen.cfg.in
+@@ -235,3 +235,10 @@
+ # Configuration::additions related to the search engine   
+ #---------------------------------------------------------------------------
+ SEARCHENGINE           = NO
++#---------------------------------------------------------------------------
++# configuration options for QtHelp output
++#---------------------------------------------------------------------------
++GENERATE_QHP = YES
++QHP_NAMESPACE = libpcappp
++QHP_VIRTUAL_FOLDER = doc
++QHG_LOCATION = qhelpgenerator
+\ No newline at end of file
