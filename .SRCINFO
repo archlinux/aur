@@ -1,0 +1,20 @@
+pkgbase = python-django-guardian
+	pkgdesc = Implementation of per object permissions for Django 1.2 or later
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = http://github.com/lukaszb/django-guardian
+	arch = any
+	license = BSD
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/d/django-guardian/django-guardian-1.2.5.tar.gz
+	md5sums = be7d9443c72ee32be576480f91ad5200
+
+pkgname = python-django-guardian
+	depends = python-django
+
+pkgname = python2-django-guardian
+	depends = python2-django
+
