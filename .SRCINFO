@@ -1,0 +1,15 @@
+pkgbase = somagic-easycap-tools
+	pkgdesc = Tool to extract the firmware for the Somagic EasyCAP DC60 and EasyCAP002 (original CD needed)
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://code.google.com/p/easycap-somagic-linux
+	install = somagic-easycap-tools.install
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	depends = libgcrypt
+	source = http://easycap-somagic-linux.googlecode.com/files/somagic-easycap-tools_1.1.tar.gz
+	md5sums = e75476b067560e7d55d95e0a0931d70d
+
+pkgname = somagic-easycap-tools
+

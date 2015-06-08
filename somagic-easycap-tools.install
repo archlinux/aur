@@ -1,0 +1,4 @@
+post_install() {
+  echo "You will need the installation CD to extract the firmware. \
+Then follow http://code.google.com/p/easycap-somagic-linux/wiki/GettingStarted#Extracting_firmware"
+}
