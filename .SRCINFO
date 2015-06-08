@@ -1,0 +1,14 @@
+pkgbase = watchman-sm
+	pkgdesc = A service manager for linux written in bash
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = https://github.com/fbt/watchman
+	arch = any
+	license = custom:ISC
+	optdepends = watchman-sm-services-git: example scripts that mostly work out of the box on arch
+	conflicts = watchman-sm
+	source = https://github.com/fbt/watchman/archive/1.9.1.zip
+	sha1sums = bfe8c6dc882622443c629250c22cf38a95a8d396
+
+pkgname = watchman-sm
+
