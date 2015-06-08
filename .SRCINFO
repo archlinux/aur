@@ -1,0 +1,20 @@
+pkgbase = python-hope
+	pkgdesc = A Python Just-In-Time compiler for astrophysical computations
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/cosmo-ethz/hope
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://github.com/cosmo-ethz/hope/archive/0.4.0.tar.gz
+	md5sums = d08bb1d5b6b41063cbc5d3d7101da9f0
+
+pkgname = python-hope
+	depends = python-numpy
+	depends = python-sympy
+
+pkgname = python2-hope
+	depends = python2-numpy
+	depends = python2-sympy
+
