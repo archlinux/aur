@@ -1,0 +1,20 @@
+pkgbase = mdp-git
+	pkgdesc = A command-line based markdown presentation tool.
+	pkgver = r225.34a97f5
+	pkgrel = 1
+	url = https://github.com/visit1985/mdp
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = make
+	makedepends = binutils
+	makedepends = git
+	makedepends = ncurses
+	depends = ncurses
+	conflicts = mdp
+	source = mdp::git+https://github.com/visit1985/mdp.git
+	md5sums = SKIP
+
+pkgname = mdp-git
+
