@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-gmp
+	pkgdesc = A free library for arbitrary precision arithmetic (mingw-w64)
+	pkgver = 6.0.0
+	pkgrel = 2
+	url = http://gmplib.org
+	arch = any
+	license = LGPL3
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = ftp://ftp.gmplib.org/pub/gmp-6.0.0/gmp-6.0.0.tar.xz
+	md5sums = 4dc314ac6d3059cc8d712aad4a6d162e
+
+pkgname = mingw-w64-gmp
+
