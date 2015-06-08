@@ -1,0 +1,18 @@
+pkgbase = bunsen-exit-ng-git
+	pkgdesc = Configurable selection menu based on dmenuv
+	pkgver = r21.d42a606
+	pkgrel = 2
+	url = https://github.com/2ion/bunsen-exit-ng
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash
+	depends = dmenuv
+	depends = coreutils
+	provides = bunsen-exit-ng
+	conflicts = bunsen-exit-ng
+	source = bunsen-exit-ng::git+https://github.com/2ion/bunsen-exit-ng.git#branch=dmenuv
+	md5sums = SKIP
+
+pkgname = bunsen-exit-ng-git
+
