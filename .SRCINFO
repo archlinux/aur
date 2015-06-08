@@ -1,0 +1,19 @@
+pkgbase = qhexedit-git
+	pkgdesc = A hex editor widget written in C++ for the Qt 5.x
+	pkgver = r4.ad32056
+	pkgrel = 1
+	url = https://github.com/arthurzam/qhexedit-git
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = doxygen
+	depends = qt5-base
+	source = qhexedit::git+git://github.com/arthurzam/qhexedit.git
+	sha1sums = SKIP
+
+pkgname = qhexedit-git
+	provides = qhexedit
+
+pkgname = qhexedit-git-designer
+	depends = qhexedit
+
