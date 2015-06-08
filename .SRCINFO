@@ -1,0 +1,13 @@
+pkgbase = bash-pipes
+	pkgdesc = Pipes screensaver for bash
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/BlackXT/pipes.sh
+	arch = any
+	license = GPL
+	depends = bash
+	source = https://github.com/BlackXT/pipes.sh/archive/v1.1.0.tar.gz
+	sha512sums = c6fb30c32405ef04ab09c9e77554c8bc2a1d799ad78461305f1f97aace8866f15034608afd59dece5637d593ae60a6e9d5f41ace54172fbe82488b629edf1a78
+
+pkgname = bash-pipes
+
