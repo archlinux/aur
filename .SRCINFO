@@ -1,0 +1,16 @@
+pkgbase = epson-inkjet-printer-201209j
+	pkgdesc = Epson printer driver (EP-805A, EP-905A, EP-905F)
+	pkgver = 1.0.1
+	pkgrel = 8
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom:Epson Licence Agreement
+	depends = cups
+	depends = ghostscript
+	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201209j-1.0.1-1lsb3.2.src.rpm
+	sha256sums = d9d742a096d84aad6adfc6e40762e1009e98694dbaafe183c82a2b960474a1cf
+
+pkgname = epson-inkjet-printer-201209j
+
