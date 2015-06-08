@@ -1,0 +1,5 @@
+pkg/
+src/
+lfs-me/
+*.tar.xz
+*.tar.gz
