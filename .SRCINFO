@@ -1,0 +1,14 @@
+pkgbase = cliweather-git
+	pkgdesc = Simple CLI for Google's weather API
+	pkgver = 1.0.r2.g55c51f8
+	pkgrel = 1
+	url = https://github.com/AaronFoltz/cliweather
+	arch = any
+	license = WTFPL
+	makedepends = git
+	depends = python2
+	source = cliweather-git::git://github.com/AaronFoltz/cliweather
+	md5sums = SKIP
+
+pkgname = cliweather-git
+
