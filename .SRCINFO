@@ -1,0 +1,15 @@
+pkgbase = iceweasel-i18n-br
+	pkgdesc = Breton language package for Iceweasel
+	pkgver = 38.0.1.deb5
+	pkgrel = 1
+	url = http://www.mozilla.com/
+	arch = any
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = iceweasel>=38.0.1
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-br_38.0.1-5_all.deb
+	sha256sums = a93b3f0d9cae0b4ccb5c37d4b8be35d30b23a47dd1f67b2bcdd976a58222ba98
+
+pkgname = iceweasel-i18n-br
+
