@@ -1,0 +1,12 @@
+post_install() {
+  echo
+  echo "WARNING: Popcorn Time streams movies from Torrents"
+  echo "Downloading copyrighted material may be illegal in your country!"
+  echo "Use at your own risk!"
+}
+
+post_upgrade() {
+  post_install
+}
+
+# vim:set ts=2 sw=2 et:
