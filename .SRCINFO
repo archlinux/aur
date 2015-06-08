@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-delogo-git
+	pkgdesc = Plugin for Vapoursynth: delogo (GIT version)
+	pkgver = v0.2.9.g9a5129b
+	pkgrel = 1
+	url = http://forum.doom9.org/showthread.php?t=171252
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = vapoursynth
+	provides = vapoursynth-plugin-delogo
+	conflicts = vapoursynth-plugin-delogo
+	source = delogo::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-DeLogo.git
+	sha1sums = SKIP
+
+pkgname = vapoursynth-plugin-delogo-git
+
