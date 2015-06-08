@@ -1,0 +1,21 @@
+pkgbase = haskell-dates
+	pkgdesc = Allows to parse many different formats of dates
+	pkgver = 0.2.2.0
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/dates
+	install = haskell-dates.install
+	arch = i686
+	arch = x86_64
+	license = BSD3
+	makedepends = ghc
+	depends = haskell-base-unicode-symbols
+	depends = haskell-parsec
+	depends = haskell-syb
+	depends = haskell-time
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/dates/0.2.2.0/dates-0.2.2.0.tar.gz
+	sha256sums = 0a10c9070d230b966942e08862d379ddcb11942c937008bbabbb5a10a303a921
+
+pkgname = haskell-dates
+
