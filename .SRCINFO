@@ -1,0 +1,14 @@
+pkgbase = python-apscheduler
+	pkgdesc = Advanced Python Scheduler is a light but powerful in-process task scheduler
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/APScheduler
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = http://pypi.python.org/packages/source/A/APScheduler/APScheduler-3.0.1.tar.gz
+	md5sums = 7c3687b3dcd645fe9df48e34eb7a7592
+
+pkgname = python-apscheduler
+
