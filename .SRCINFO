@@ -1,0 +1,24 @@
+pkgbase = cwallpaper
+	pkgdesc = Front-end for fbsetbg, esetroot, feh and other wallpaper changers
+	pkgver = 0.3.2
+	pkgrel = 2
+	url = http://cwallpaper.sourceforge.net/index.php
+	install = cwallpaper.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = automake
+	makedepends = autoconf
+	depends = gtk2
+	conflicts = cwallpaper-fltk
+	source = http://downloads.sourceforge.net/cwallpaper/cwallpaper-0.3.2.tar.gz
+	source = bsetrootconfig
+	source = feh_config
+	source = hsetconfig
+	md5sums = 85ca1399e8960097cbb6580dceb47163
+	md5sums = 707ddfe918170b2e9ac05c7be8d35cd2
+	md5sums = 24dd59429b9a39b99ba294b1525c47db
+	md5sums = 376a927d5f129efe19dd8a69c76dc583
+
+pkgname = cwallpaper
+

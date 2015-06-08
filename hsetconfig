@@ -1,0 +1,5 @@
+program: hsetroot
+scale: -full
+center: -center
+tile: -tile
+default: s

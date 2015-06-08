@@ -1,0 +1,5 @@
+program: feh
+scale: --bg-scale
+center:--bg-center
+tile: --bg-tile
+default: s
