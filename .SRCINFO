@@ -1,0 +1,20 @@
+pkgbase = st
+	pkgdesc = A simple virtual terminal emulator for X.
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://st.suckless.org
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = ncurses
+	depends = libxext
+	depends = libxft
+	source = http://dl.suckless.org/st/st-0.5.tar.gz
+	source = http://st.suckless.org/patches/st-0.5-no-bold-colors.diff
+	source = http://st.suckless.org/patches/st-solarized-light.diff
+	md5sums = 4f8ae2737120a8cba34b23c6020fe51e
+	md5sums = 18c28fc0ff19de6c2e4a58a711c91b15
+	md5sums = 5e27e1fb2831af457519a345ef477af3
+
+pkgname = st
+
