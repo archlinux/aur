@@ -1,0 +1,34 @@
+pkgbase = vdr-mp3
+	pkgver = 0.10.2
+	pkgrel = 15
+	url = http://www.muempf.de/
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	depends = gcc-libs
+	depends = libid3tag
+	depends = libmad
+	depends = libsndfile
+	depends = vdr-api=2.2.0
+	source = http://www.muempf.de/down/vdr-mp3-0.10.2.tar.gz
+	source = mp3-vdr2.1.2compat.diff
+	source = 50-mp3.conf
+	source = 50-mplayer.conf
+	md5sums = 66fd37827326776c223a0fdd0ad3811e
+	md5sums = 8615c6b0f3c5eba39e8e2ce37c5c10a4
+	md5sums = 16d931040572e628e01a6f6774c8ff27
+	md5sums = be1ce6311b271b29306a96ec664c40d4
+
+pkgname = vdr-mp3
+	pkgdesc = Allows playback of MP3 and other audio files.
+	backup = var/lib/vdr/plugins/mp3sources.conf
+	backup = etc/vdr/conf.avail/50-mp3.conf
+
+pkgname = vdr-mplayer
+	pkgdesc = Call MPlayer for playback of video
+	backup = var/lib/vdr/plugins/mp3sources.conf
+	backup = etc/vdr/conf.avail/50-mp3.conf
+

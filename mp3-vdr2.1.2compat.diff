@@ -1,0 +1,30 @@
+diff -ruN mp3-0.10.2/decoder.c mp3-0.10.2.edit/decoder.c
+--- mp3-0.10.2/decoder.c	2009-11-29 04:09:45.000000000 +0100
++++ mp3-0.10.2.edit/decoder.c	2013-10-20 18:54:04.001276261 +0200
+@@ -632,7 +632,11 @@
+ 
+ char *cInfoCache::CacheFile(void)
+ {
++#if APIVERSNUM > 20101
++  return AddPath(cachedir?cachedir:cVideoDirectory::Name(),CACHEFILENAME);
++#else
+   return AddPath(cachedir?cachedir:VideoDirectory,CACHEFILENAME);
++#endif
+ }
+ 
+ void cInfoCache::Save(bool force)
+diff -ruN mp3-0.10.2/player-mplayer.c mp3-0.10.2.edit/player-mplayer.c
+--- mp3-0.10.2/player-mplayer.c	2009-10-14 00:18:18.000000000 +0200
++++ mp3-0.10.2.edit/player-mplayer.c	2013-10-20 18:57:18.783130016 +0200
+@@ -185,7 +185,11 @@
+     if(MPlayerSetup.ResumeMode==1 || 
+        (access(s,W_OK) && (errno==EACCES || errno==EROFS))) {
+       global=true;
++#if APIVERSNUM > 20101
++      resfile=AddPath(globalResumeDir?globalResumeDir:cVideoDirectory::Name(),GLOBAL_RESUME_FILE);
++#else
+       resfile=AddPath(globalResumeDir?globalResumeDir:VideoDirectory,GLOBAL_RESUME_FILE);
++#endif
+       d(printf("resume: using global file\n"))
+       }
+     else {
