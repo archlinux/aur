@@ -1,0 +1,22 @@
+pkgbase = jmencode
+	pkgdesc = Java GUI for encoding video with mencoder
+	pkgver = 0.64
+	pkgrel = 5
+	url = http://jmencode.sourceforge.net
+	arch = any
+	license = GPL3
+	makedepends = unzip
+	depends = java-runtime
+	depends = mencoder
+	depends = mplayer
+	depends = mkvtoolnix
+	depends = gpac
+	source = http://downloads.sourceforge.net/jmencode/JMencode_v0.64.zip
+	source = jmencode.sh
+	source = jmencode.desktop
+	md5sums = e008964c80ace65627e62883652df5af
+	md5sums = 0250a3c8da1068eff9d750f300d9b32b
+	md5sums = de8d95759e1ea1d289c92c13ed3dd3cb
+
+pkgname = jmencode
+

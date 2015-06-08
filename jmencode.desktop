@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Version=1.0
+Name=JMencode
+GenericName=Audio/Video Encoder
+Comment=Java GUI for mencode
+Exec=jmencode
+Icon=jmencode.png
+Terminal=false
+Categories=AudioVideo;AudioVideoEditing;Java;
