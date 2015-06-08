@@ -1,0 +1,17 @@
+pkgbase = winegame
+	pkgdesc = An interface to install windows programs in Wine
+	pkgver = 0.2.0
+	pkgrel = 3
+	url = http://code.google.com/p/winegame/
+	install = winegame.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = winestuff
+	optdepends = libnotify: Desktop notifaction support
+	source = http://winegame.googlecode.com/files/winegame-0.2.0.tar.gz
+	md5sums = 631dd218707c6efb2901ef1206092538
+
+pkgname = winegame
+
