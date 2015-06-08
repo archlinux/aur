@@ -1,0 +1,22 @@
+pkgbase = xfce-theme-greybird
+	pkgdesc = A grey and blue Xfce theme, used by default in Xubuntu 12.04
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = http://shimmerproject.org/projects/greybird/
+	arch = any
+	groups = xfce-themes-shimmer-collection
+	license = CCPL:by-sa-3.0
+	license = GPL
+	depends = gtk-engine-murrine
+	optdepends = elementary-xfce-icons: matching icon set; use the dark icon theme
+	optdepends = gtk3: required for CSS/GTK3 theme
+	optdepends = lightdm-gtk-greeter: required for the LightDM GTK theme
+	optdepends = lightdm-unity-greeter: required for the LightDM Unity theme
+	optdepends = shimmer-wallpapers: contains the Greybird wallpaper, among others
+	optdepends = lib32-gtk-engine-murrine: required for multilib
+	conflicts = xfce-theme-greybird-git
+	source = xfce-theme-greybird-1.5.3.tar.gz::https://github.com/shimmerproject/Greybird/archive/v1.5.3.tar.gz
+	sha512sums = 1010019b1341cf1c0d48d15d0bc371bbe62e3b6d4aa5d8feb6998093487f465c7dbe42133753a6ca74a01e351ce7b15fcc14c4e194a97034e2e4c171885accae
+
+pkgname = xfce-theme-greybird
+
