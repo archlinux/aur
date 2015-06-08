@@ -1,0 +1,14 @@
+_castor()
+{
+	local cur cur_d castor_dirs
+	COMPREPLY=()
+ 
+ 	cur="${COMP_WORDS[COMP_CWORD]}"
+	cur_d="${cur%/*}"
+
+	castor_dirs=$(nsls "$cur_d" 2> /dev/null|while read f; do echo "$cur_d/$f"; done)
+
+	COMPREPLY=( $(compgen -f "$cur") $(compgen -W "/castor $castor_dirs" -- "$cur") )
+}
+
+complete -o filenames -o nospace -F _castor nsls rfcat rfchmod rfcomm rfcp rfdir rfmkdir rfrename rfrm rfstat

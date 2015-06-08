@@ -1,0 +1,86 @@
+diff -rupN castor-2.1.13_orig/config/globuscompile.py castor-2.1.13_new/config/globuscompile.py
+--- castor-2.1.13_orig/config/globuscompile.py	2012-07-26 19:29:02.000000000 +0200
++++ castor-2.1.13_new/config/globuscompile.py	2012-08-09 14:10:33.415709020 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #******************************************************************************
+ #                      config/globuscompile.py
+diff -rupN castor-2.1.13_orig/config/Imake.tmpl castor-2.1.13_new/config/Imake.tmpl
+--- castor-2.1.13_orig/config/Imake.tmpl	2012-05-23 09:32:57.000000000 +0200
++++ castor-2.1.13_new/config/Imake.tmpl	2012-08-09 14:11:32.578721841 +0200
+@@ -29,12 +29,12 @@ MINOR_CASTOR_VERSION := $(shell egrep -m
+ #endif
+ #endif
+ 
+-DEBUG = -O0 -g
++DEBUG = -O2
+ #define LOCAL_PATH $(CASTOR_ROOT)/__local_path__
+ #define PREFIX(VAR) __root_prefix__/**/_/**/VAR
+ 
+-CC += -fPIC -D_LARGEFILE64_SOURCE -Wall -Wextra -Werror
+-CXX += -fPIC -D_LARGEFILE64_SOURCE -Wall -Wextra -Werror
++CC += -fPIC -D_LARGEFILE64_SOURCE -Wall -O2
++CXX += -fPIC -D_LARGEFILE64_SOURCE -Wall -O2
+ CXXFLAGS += -I$(CASTOR_ROOT) -I$(CASTOR_ROOT)/h $(DEBUG)
+ CFLAGS += $(CXXFLAGS)
+ CPPFLAGS += -pthread -I$(CASTOR_ROOT) -I$(CASTOR_ROOT)/h
+@@ -43,23 +43,23 @@ LDFLAGS += -pthread
+ 
+ PERL_LIBDIR = /usr/lib/perl/CASTOR
+ 
+-PYTHON_LIBS := $(shell python $(CASTOR_ROOT)/config/pycompile.py --libs)
+-PYTHON_INC := $(shell python $(CASTOR_ROOT)/config/pycompile.py --inc)
+-PYTHON_LIBDIR := $(shell python -c "from distutils import sysconfig; print sysconfig.get_python_lib()")
+-
+-ORACLE_HOME := $(shell python $(CASTOR_ROOT)/config/oracompile.py --with-precomp --home)
+-ORACLE_BIN := $(shell python $(CASTOR_ROOT)/config/oracompile.py --with-precomp --bindir)
+-ORACLE_LIBDIR := $(shell python $(CASTOR_ROOT)/config/oracompile.py --with-precomp --libdir)
+-ORACLE_CPPFLAGS := $(shell python $(CASTOR_ROOT)/config/oracompile.py --with-precomp --cppflags)
+-ORACLE_PROCINC := $(shell python $(CASTOR_ROOT)/config/oracompile.py --with-precomp --procinc)
++PYTHON_LIBS := $(shell python2 $(CASTOR_ROOT)/config/pycompile.py --libs)
++PYTHON_INC := $(shell python2 $(CASTOR_ROOT)/config/pycompile.py --inc)
++PYTHON_LIBDIR := $(shell python2 -c "from distutils import sysconfig; print sysconfig.get_python_lib()")
++
++ORACLE_HOME := $(shell python2 $(CASTOR_ROOT)/config/oracompile.py --with-precomp --home)
++ORACLE_BIN := $(shell python2 $(CASTOR_ROOT)/config/oracompile.py --with-precomp --bindir)
++ORACLE_LIBDIR := $(shell python2 $(CASTOR_ROOT)/config/oracompile.py --with-precomp --libdir)
++ORACLE_CPPFLAGS := $(shell python2 $(CASTOR_ROOT)/config/oracompile.py --with-precomp --cppflags)
++ORACLE_PROCINC := $(shell python2 $(CASTOR_ROOT)/config/oracompile.py --with-precomp --procinc)
+ 
+-GLOBUS_CONFINC_PATH := $(shell python $(CASTOR_ROOT)/config/globuscompile.py --confinc)
+-GLOBUS_INC_PATH := $(shell python $(CASTOR_ROOT)/config/globuscompile.py --inc)
++GLOBUS_CONFINC_PATH := $(shell python2 $(CASTOR_ROOT)/config/globuscompile.py --confinc)
++GLOBUS_INC_PATH := $(shell python2 $(CASTOR_ROOT)/config/globuscompile.py --inc)
+ GLOBUS_INC := -I$(GLOBUS_CONFINC_PATH) -I$(GLOBUS_INC_PATH)
+-GLOBUS_LIB_PATH := $(shell python $(CASTOR_ROOT)/config/globuscompile.py --libdir)
+-GLOBUS_GSSLIB := $(shell python $(CASTOR_ROOT)/config/globuscompile.py --gsslib)
+-GLOBUS_FTPLIB := $(shell python $(CASTOR_ROOT)/config/globuscompile.py --ftplib)
+-GLOBUS_GSSLIB_THR := $(shell python $(CASTOR_ROOT)/config/globuscompile.py --gsslibthr)
++GLOBUS_LIB_PATH := $(shell python2 $(CASTOR_ROOT)/config/globuscompile.py --libdir)
++GLOBUS_GSSLIB := $(shell python2 $(CASTOR_ROOT)/config/globuscompile.py --gsslib)
++GLOBUS_FTPLIB := $(shell python2 $(CASTOR_ROOT)/config/globuscompile.py --ftplib)
++GLOBUS_GSSLIB_THR := $(shell python2 $(CASTOR_ROOT)/config/globuscompile.py --gsslibthr)
+ 
+ Krb5Config := $(shell if [ -r "/usr/kerberos/bin/krb5-config" ]; then echo /usr/kerberos/bin/krb5-config; else echo /usr/bin/krb5-config; fi)
+ 
+diff -rupN castor-2.1.13_orig/config/oracompile.py castor-2.1.13_new/config/oracompile.py
+--- castor-2.1.13_orig/config/oracompile.py	2012-07-26 19:29:02.000000000 +0200
++++ castor-2.1.13_new/config/oracompile.py	2012-08-09 14:10:33.545708315 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #******************************************************************************
+ #                      config/oracompile.py
+diff -rupN castor-2.1.13_orig/config/pycompile.py castor-2.1.13_new/config/pycompile.py
+--- castor-2.1.13_orig/config/pycompile.py	2011-09-29 12:45:30.000000000 +0200
++++ castor-2.1.13_new/config/pycompile.py	2012-08-09 14:10:33.625707882 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #******************************************************************************
+ #                      config/pycompile.py
+
