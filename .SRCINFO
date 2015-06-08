@@ -1,5 +1,5 @@
-pkgbase = python-efl
-	pkgdesc = Python bindings for the Enlightenment Foundation Libraries
+pkgbase = python2-efl
+	pkgdesc = Python2 bindings for the Enlightenment Foundation Libraries
 	pkgver = 1.14.0
 	pkgrel = 1
 	url = http://www.enlightenment.org
@@ -8,9 +8,9 @@ pkgbase = python-efl
 	license = LGPL3
 	license = GPL3
 	depends = elementary
-	depends = python-dbus
+	depends = python2-dbus
 	source = http://download.enlightenment.org/rel/bindings/python/python-efl-1.14.0.tar.xz
 	sha256sums = 76675298c5e24f93acb67ce604bcebecb42f77391f02ad852f0a7b71b786c8f9
 
-pkgname = python-efl
+pkgname = python2-efl
 
