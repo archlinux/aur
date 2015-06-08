@@ -1,0 +1,20 @@
+pkgbase = elk
+	pkgdesc = Scheme interpreter and extension language.
+	pkgver = 3.99.8
+	pkgrel = 1
+	url = http://sam.zoy.org/elk/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gcc
+	depends = openmotif
+	depends = libelf
+	depends = gdbm
+	depends = libxaw
+	source = http://sam.zoy.org/elk/elk-3.99.8.tar.bz2
+	source = COPYING
+	md5sums = 1e68d7370907d575efa706fd9ceb28fd
+	md5sums = 71807aa857f424ba48804e066c3623d3
+
+pkgname = elk
+
