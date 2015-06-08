@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+   <mime-type type="application/x-archpkg">
+      <comment>ArchLinux package</comment>
+      <comment xml:lang="cs">ArchLinux balíček</comment>
+      <comment xml:lang="de">ArchLinux Paket</comment>
+      <comment xml:lang="es">ArchLinux paquete</comment>
+      <comment xml:lang="fr">ArchLinux package</comment>
+      <comment xml:lang="it">ArchLinux pacchetto</comment>
+      <comment xml:lang="nl">ArchLinux pakket</comment>
+      <comment xml:lang="pl">Pakiet ArchLinuxa</comment>
+      <comment xml:lang="pt">Pacote ArchLinux</comment>
+      <comment xml:lang="ru">Пакет ArchLinux</comment>
+      <comment xml:lang="sl">Archlinux balíček</comment>
+      <!--
+      <sub-class-of type="application/x-xz-compressed-tar"/>
+      <sub-class-of type="application/x-compressed-tar"/>
+      -->
+      <glob pattern="*.pkg.tar.xz"/>
+      <glob pattern="*.pkg.tar.gz"/>
+      <glob pattern="*.pkg.tar"/>
+   </mime-type>
+</mime-info>

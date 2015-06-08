@@ -1,0 +1,34 @@
+pkgbase = mime-archpkg
+	pkgdesc = mime type for archlinux packages
+	pkgver = 0.3.4.3
+	pkgrel = 2
+	url = http://www.archlinux.org
+	install = mime-archpkg.install
+	arch = any
+	license = GPL
+	makedepends = librsvg
+	depends = shared-mime-info
+	depends = xdg-utils
+	source = mime-archpkg
+	source = archpkg-hicolor.svgz
+	source = archpkg-gnome.svgz
+	source = archpkg-Tango.svgz
+	source = archpkg-oxygen.svgz
+	source = archpkg-nuoveXT2.svgz
+	source = archpkg-Faenza.svgz
+	source = archpkg-Faience.svgz
+	source = archpkg-NITRUX.svgz
+	source = archpkg-Numix.svgz
+	md5sums = 1ff726f4e5e0dc7115aafb5f1b691455
+	md5sums = ca7ce5e44d24dfd584586ed730c2bd04
+	md5sums = f43f188fba6d3fb87ada25f3b213b0b9
+	md5sums = e4a31892492bedc9b5f16e6af7d4b33e
+	md5sums = 422e489fe7228f351b7b141b7f3c5f38
+	md5sums = e043e732c37b46cd298c848b2dc27680
+	md5sums = c8bf1a978c2389cca649029167b94e39
+	md5sums = ce4f6e2ab892776e4a921d88c29a9fc1
+	md5sums = ef7d2bf5094388a7f6400811e56c4ccb
+	md5sums = 1f3b9609f68415f1e7bcad3a144555e1
+
+pkgname = mime-archpkg
+
