@@ -1,0 +1,11 @@
+[Unit]
+Description=Mldonkey - Multiple Peer-To-Peer Network Client
+After=network.target
+
+[Service]
+User=%I
+Environment=MLDONKEY_DIR=/home/%I/.mldonkey
+ExecStart=/usr/bin/mlnet -log_to_syslog yes -log_file /dev/null
+
+[Install]
+WantedBy=multi-user.target

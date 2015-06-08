@@ -1,0 +1,9 @@
+/var/log/mldonkey/mldonkey.log {
+    monthly
+    notifempty
+    missingok
+    compress
+    postrotate
+    service mldonkey condrestart > /dev/null
+    endscript
+}

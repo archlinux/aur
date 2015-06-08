@@ -1,0 +1,10 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!mldonkey-daemon.install
+!mldonkey.logrotate
+!mldonkey.service
+!mldonkey.sysuser
+!mldonkey.tmpfiles
+!mldonkey@.service

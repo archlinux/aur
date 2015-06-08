@@ -1,0 +1,32 @@
+pkgbase = mldonkey-ed2kad-daemon-git
+	pkgdesc = A multi-network P2P client. Daemon function, only ED2K/KAD (GIT Version)
+	pkgver = 3.1.4.244.gcca5f2d
+	pkgrel = 1
+	url = http://mldonkey.sourceforge.net/
+	install = mldonkey-daemon.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = camlp4
+	makedepends = git
+	depends = bzip2
+	depends = miniupnpc
+	depends = libnatpmp
+	depends = file
+	provides = mldonkey
+	conflicts = mldonkey
+	source = git+http://repo.or.cz/r/mldonkey.git#branch=next
+	source = mldonkey.logrotate
+	source = mldonkey.service
+	source = mldonkey@.service
+	source = mldonkey.tmpfiles
+	source = mldonkey.sysuser
+	sha1sums = SKIP
+	sha1sums = 489d9cd16885e85036b51103f56ea1413f293a1d
+	sha1sums = b7f152e116eb98005df1e7aaf88378ac82b46372
+	sha1sums = 5384a01d909b45ea09112bbeca7b225efc90bed8
+	sha1sums = c6e4bb5dbca6e3e0a2942e6e2483b0d688f7ecdb
+	sha1sums = f7ca95475ae9c65260aa45d30ce7af4c6d2ef280
+
+pkgname = mldonkey-ed2kad-daemon-git
+
