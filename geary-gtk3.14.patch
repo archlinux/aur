@@ -1,0 +1,44 @@
+From f1fc86f2dbd1ca6b10296744b88267d18d7a25e7 Mon Sep 17 00:00:00 2001
+From: Matthias Clasen <mclasen@redhat.com>
+Date: Thu, 25 Sep 2014 16:46:59 -0700
+Subject: Fix toolbar icon size in GTK+ 3.14: Bug #732065
+
+By setting the icon pixel size, that forces GTK+ to load images
+installed in our locations rather than the theme's.
+
+diff --git a/THANKS b/THANKS
+index 007ab81..f35d8ad 100644
+--- a/THANKS
++++ b/THANKS
+@@ -5,6 +5,7 @@ Jürg Billeter <j@bitron.ch>
+ Yosef Or Boczko <yoseforb@gmail.com>
+ Martijn Braam <pizzamartijn@gmail.com>
+ Attila Bukor <r1pp3rj4ck@w4it.eu>
++Matthias Clasen <mclasen@redhat.com>
+ Andrea Corbellini <corbellini.andrea@gmail.com>
+ Sergey Shnatsel Davidoff <sergey@elementaryos.org>
+ Joanmarie Diggs <jdiggs@igalia.com>
+diff --git a/src/client/components/pill-toolbar.vala b/src/client/components/pill-toolbar.vala
+index 498236c..1c9a1a9 100644
+--- a/src/client/components/pill-toolbar.vala
++++ b/src/client/components/pill-toolbar.vala
+@@ -38,8 +38,14 @@ public interface PillBar : Gtk.Container {
+         b.related_action = action_group.get_action(action_name);
+         b.tooltip_text = b.related_action.tooltip;
+         b.related_action.notify["tooltip"].connect(() => { b.tooltip_text = b.related_action.tooltip; });
+-        b.image = new Gtk.Image.from_icon_name(icon_name != null ? icon_name :
++        
++        // set pixel size to force GTK+ to load our images from our installed directory, not the theme
++        // directory
++        Gtk.Image image = new Gtk.Image.from_icon_name(icon_name != null ? icon_name :
+             b.related_action.icon_name, Gtk.IconSize.MENU);
++        image.set_pixel_size(16);
++        b.image = image;
++        
+         // Unity buttons are a bit tight
+ #if ENABLE_UNITY
+         b.image.margin = b.image.margin + 4;
+-- 
+cgit v0.10.1
+
+
