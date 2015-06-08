@@ -1,0 +1,13 @@
+diff --git a/src/core/window.c b/src/core/window.c
+index ef85aab..e7cbe44 100644
+--- a/src/core/window.c
++++ b/src/core/window.c
+@@ -5200,6 +5200,8 @@ meta_window_recalc_features (MetaWindow *window)
+   window->has_shade_func = TRUE;
+   window->has_fullscreen_func = TRUE;
+ 
++  window->hide_titlebar_when_maximized = TRUE;
++
+   window->always_sticky = FALSE;
+ 
+   /* Semantic category overrides the MWM hints */
