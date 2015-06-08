@@ -1,0 +1,17 @@
+pkgbase = ucdavisthesis
+	pkgdesc = A University of California at Davis Thesis/Dissertation LaTeX Class
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://www.ctan.org/tex-archive/macros/latex/contrib/ucdavisthesis/
+	install = ucdavisthesis.install
+	arch = any
+	license = LPPL
+	makedepends = coreutils
+	depends = texlive-core
+	source = http://www.tex.ac.uk/tex-archive/macros/latex/contrib/ucdavisthesis/ucdavisthesis.dtx
+	source = http://www.tex.ac.uk/tex-archive/macros/latex/contrib/ucdavisthesis/ucdavisthesis.ins
+	md5sums = 2d377aeec1dda4c04e7a1b9a604a6346
+	md5sums = abf82464678bcc07b433dafd2e6036fb
+
+pkgname = ucdavisthesis
+
