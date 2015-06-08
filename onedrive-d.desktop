@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=OneDrive daemon
+GenericName=Network Storage
+Comment=OneDrive service by Microsoft
+Exec=onedrive-d
+Icon=onedrive-d
+Terminal=false
+Type=Application
+Categories=Network;
+StartupNotify=false

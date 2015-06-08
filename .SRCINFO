@@ -1,0 +1,27 @@
+pkgbase = onedrive-d-git
+	pkgdesc = Client daemon for Microsoft OneDrive service
+	pkgver = 20150407.g62a0733
+	pkgrel = 4
+	url = https://github.com/xybu92/onedrive-d
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = inotify-tools
+	depends = python-certifi
+	depends = python-click
+	depends = python-daemonocle
+	depends = python-gobject
+	depends = python-pip
+	depends = python-requests
+	depends = python-send2trash
+	depends = python-urllib3
+	depends = pywebkitgtk
+	provides = onedrive-d
+	source = git+https://github.com/xybu92/onedrive-d
+	source = onedrive-d.desktop
+	md5sums = SKIP
+	md5sums = 8077d9697c922e003b8addbf243b33a4
+
+pkgname = onedrive-d-git
+
