@@ -1,0 +1,24 @@
+pkgbase = perl-class-dbi-sweet
+	pkgdesc = Class::DBI::Sweet - Making sweet things sweeter
+	pkgver = 0.11
+	pkgrel = 2
+	url = http://search.cpan.org/dist/Class-DBI-Sweet
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl
+	depends = perl
+	depends = perl-class-dbi
+	depends = perl-data-page
+	depends = perl-sql-abstract
+	provides = class-dbi-sweet=0.11
+	provides = Class::DBI::Sweet=0.11
+	provides = perl-class-dbi-sweet=0.11
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PH/PHRED/Class-DBI-Sweet-0.11.tar.gz
+	md5sums = c593a4138242f7b7601b90356bdf3a13
+	sha512sums = 82965b4be422d178773cff8235eef1ecde90010bbafe53b7ae23bb706bc4f0162682b12c0c0fb4303842055a7ab76eb4447e8e7afe14769110488d8c93955481
+
+pkgname = perl-class-dbi-sweet
+
