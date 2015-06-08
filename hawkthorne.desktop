@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Hawkthorne Journey
+GenericName=hawkthorne
+Comment=2D platformer based on Community's Digital Estate Planning episode.
+Icon=/usr/share/pixmaps/hawkthorne.png
+Type=Application
+Categories=Games
+Exec=/usr/bin/hawkthorne
+Terminal=false
