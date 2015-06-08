@@ -1,0 +1,13 @@
+pkgbase = firefox-firetray
+	pkgdesc = System tray extension for Firefox
+	pkgver = 0.5.6
+	pkgrel = 1
+	url = http://addons.mozilla.org/firefox/addon/firetray
+	arch = any
+	license = GPL3
+	depends = firefox
+	source = firefox-firetray-0.5.6.xpi::https://addons.cdn.mozilla.net/user-media/addons/_attachments/4868/firetray-0.5.6-sm+tb+fx-linux.xpi
+	sha256sums = 9bac66a400d450c82ea34cb5342446e2e424e747a62133765bf4285074683b80
+
+pkgname = firefox-firetray
+
