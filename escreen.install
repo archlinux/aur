@@ -1,0 +1,28 @@
+post_install() {
+  cat << EOM
+To activate, add the following code into your ~/.emacs file:
+---
+(load "escreen")
+(escreen-install)
+---
+Also recommended customizations, taken from
+http://tapoueh.org/blog/2009/09/22-escreen-integration.html ,
+can be found in /usr/share/doc/emacs-escreen/dotemacs
+
+EOM
+}
+post_upgrade() {
+  post_install
+}
+
+## arg 1:  the old package version
+#pre_remove() {
+  # do something here
+#}
+
+## arg 1:  the old package version
+#post_remove() {
+  # do something here
+#}
+
+# vim:set ts=2 sw=2 et:
