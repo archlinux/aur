@@ -1,0 +1,15 @@
+pkgbase = perl-universal-moniker
+	pkgdesc = Add monikers to all classes.
+	pkgver = 0.08
+	pkgrel = 1
+	url = http://search.cpan.org/dist/UNIVERSAL-moniker/moniker.pm
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/K/KA/KASEI/UNIVERSAL-moniker-0.08.tar.gz
+	md5sums = e59b97ccf88f9fa68c3e5c18d7059d57
+
+pkgname = perl-universal-moniker
+
