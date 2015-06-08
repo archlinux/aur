@@ -1,0 +1,16 @@
+pkgbase = sxiv-rifle
+	pkgdesc = Browse through images in directory after opening a single file
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/Sxiv#Browse_through_images_in_directory_after_opening_a_single_file
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = sxiv
+	source = sxiv-rifle.sh
+	source = sxiv-rifle.desktop
+	md5sums = 47069e805adcb7654ec3612dde1ee126
+	md5sums = 22b56f46c4681b0cb6babdf43bb1d13f
+
+pkgname = sxiv-rifle
+

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=sxiv-rifle
+GenericName=Image Viewer
+Exec=sxiv-rifle %F
+MimeType=image/bmp;image/gif;image/jpeg;image/jpg;image/png;image/tiff;image/x-bmp;
+NoDisplay=false
+Icon=sxiv.png
