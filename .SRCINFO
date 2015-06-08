@@ -1,0 +1,24 @@
+pkgbase = roslyn-git
+	pkgdesc = Microsoft's C# compiler and compiler libraries
+	pkgver = 0.0.0.a999eac
+	pkgrel = 1
+	url = https://github.com/dotnet/roslyn
+	install = roslyn.install
+	arch = any
+	license = custom:MITX11
+	makedepends = git
+	depends = mono
+	depends = mono-pcl
+	provides = roslyn
+	conflicts = roslyn
+	source = git://github.com/mono/roslyn
+	source = csc
+	source = Microsoft.Net.ToolsetCompilers.prop
+	source = roslyn.install
+	md5sums = SKIP
+	md5sums = c83e208e99cf04dfe753dfe097f69f7d
+	md5sums = 143e8273dbc5a34f27a8d3925870fdba
+	md5sums = 9131a3bff4ba28c322d6f8f41c3941c9
+
+pkgname = roslyn-git
+

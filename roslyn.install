@@ -1,0 +1,7 @@
+pre_install() {
+  echo
+  echo "This package will NOT compile with mono 3.12, i.e. extra/mono"
+  echo "You must use aur/mono-git until mono 3.13 is released."
+}
+
+# vim:set ts=2 sw=2 et:
