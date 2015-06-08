@@ -1,0 +1,11 @@
+[Unit]
+Description=EIB Daemon
+After=network.target
+
+[Service]
+User=daemon
+EnvironmentFile=/etc/conf.d/eibd.conf
+ExecStart=/usr/bin/eibd $EIBD_OPTS
+
+[Install]
+WantedBy=multi-user.target

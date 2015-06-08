@@ -1,0 +1,8 @@
+[Unit]
+Conflicts=eibd.service
+
+[Socket]
+ListenDatagram=6720
+
+[Install]
+WantedBy=sockets.target

@@ -1,0 +1,25 @@
+diff -rupN bcusdk-0.0.5.orig/eibd/server/eibd.cpp bcusdk-0.0.5/eibd/server/eibd.cpp
+--- bcusdk-0.0.5.orig/eibd/server/eibd.cpp	2011-02-27 19:57:20.000000000 +0100
++++ bcusdk-0.0.5/eibd/server/eibd.cpp	2014-02-25 18:21:56.199884864 +0100
+@@ -358,7 +358,7 @@ main (int ac, char *ag[])
+       }
+ 
+   l2 = Create (ag[index], arg.backendflags, &t);
+-  if (!l2->init ())
++  if (!l2 || !l2->init ())
+     die ("initialisation of the backend failed");
+   l3 = new Layer3 (l2, &t);
+   if (arg.port)
+diff -rupN bcusdk-0.0.5.orig/eibd/usb/linux_usbfs.c bcusdk-0.0.5/eibd/usb/linux_usbfs.c
+--- bcusdk-0.0.5.orig/eibd/usb/linux_usbfs.c	2011-01-26 11:50:08.000000000 +0100
++++ bcusdk-0.0.5/eibd/usb/linux_usbfs.c	2014-02-25 18:23:21.549887409 +0100
+@@ -52,7 +52,8 @@ int pthread_mutex_trylock(pthread_mutex_
+ 	return 0;
+ }
+ 
+-int clock_gettime(clockid_t clk_id, struct timespec *tp)
++#define clock_gettime(A,B) xclock_gettime(A, B)
++int xclock_gettime(clockid_t clk_id, struct timespec *tp)
+ {
+ 	pth_int_time (tp);
+ 	return 0;
