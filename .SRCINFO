@@ -1,0 +1,20 @@
+pkgbase = abook-git
+	pkgdesc = Text-based addressbook program designed to use with mutt mail client
+	pkgver = 0.6.0pre2.r71.gb83bcbf
+	pkgrel = 1
+	url = http://abook.sourceforge.net/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	depends = readline
+	depends = ncurses
+	provides = abook
+	conflicts = abook
+	source = abook::git+git://git.code.sf.net/p/abook/git#branch=master
+	md5sums = SKIP
+
+pkgname = abook-git
+
