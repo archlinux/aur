@@ -1,0 +1,31 @@
+LO_DIR=/usr/lib/libreoffice/share/config/
+
+post_install() {
+
+cat << _EOF
+
+==> Installation notes:
+    ----------------------------------------
+    Open LibreOffice.
+    Change icon theme from Options-view menu.
+    Choose the theme "Faenza" to apply the Faenza Style
+_EOF
+}
+
+pre_upgrade() {
+	if [[ -f $LO_DIR/images_hicontrast.zip.orig ]]; then
+		rm $LO_DIR/images_hicontrast.zip
+		mv $LO_DIR/images_hicontrast.zip.orig $LO_DIR/images_hicontrast.zip
+	fi
+}
+
+#arg 1: 0.4.1-3
+#arg 2: 0.4.1-2
+post_upgrade() {
+	echo -e "\nlibreoffice-faenza-mod erases any more Hicontrast theme. This is instructions to do only once since 0.4.1-3:"
+	post_install
+}
+
+post_remove() {
+	pre_upgrade
+}
