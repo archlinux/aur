@@ -1,0 +1,17 @@
+post_install() {
+  echo "Updating module dependencies. Please wait ..."
+  depmod $(uname -r)
+  echo ""
+}
+
+post_upgrade() {
+  echo "Updating module dependencies. Please wait ..."
+  depmod $(uname -r)
+  echo ""
+}
+
+post_remove() {
+  echo "Updating module dependencies. Please wait ..."
+  depmod $(uname -r)
+  echo ""
+}

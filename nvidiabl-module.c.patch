@@ -1,0 +1,12 @@
+diff -aur nvidiabl-master.source/nvidiabl-module.c nvidiabl-master.patch/nvidiabl-module.c
+--- nvidiabl-master.source/nvidiabl-module.c	2014-04-08 07:16:19.000000000 +1000
++++ nvidiabl-master.patch/nvidiabl-module.c	2015-05-22 18:13:50.407373072 +1000
+@@ -214,7 +214,7 @@
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,39)
+ 	
+ 	for (iii = 0 ; iii < sizeof(backlight_type_ids) ; iii++) {
+-		if (strnicmp(bl_type, backlight_type_ids[iii].id, sizeof(bl_type)) == 0) {
++		if (strncasecmp(bl_type, backlight_type_ids[iii].id, sizeof(bl_type)) == 0) {
+ 			props.type = backlight_type_ids[iii].type;
+ 			printk(KERN_INFO "nvidiabl: backlight type is %s\n", backlight_type_ids[iii].id);
+ 		}
