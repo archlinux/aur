@@ -1,0 +1,24 @@
+pkgbase = linuxtrack
+	pkgdesc = Software for head motion tracking on linux.
+	pkgver = 0.99.12
+	pkgrel = 2
+	url = http://code.google.com/p/linux-track/
+	install = linuxtrack.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libusb
+	depends = v4l-utils
+	depends = zlib
+	depends = mxml
+	depends = qt4
+	depends = qtwebkit
+	depends = cwiid
+	depends = opencv
+	provides = linuxtrack
+	provides = trackir-udev
+	source = http://linuxtrack.eu/repositories/universal/linuxtrack-0.99.12.tar.bz2
+	md5sums = eec4eb4849d961edcaa9b12e74d108e1
+
+pkgname = linuxtrack
+

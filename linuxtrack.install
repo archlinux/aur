@@ -1,0 +1,23 @@
+post_install() {
+	getent group uinput >/dev/null 2>&1 ||  groupadd uinput &>/dev/null
+	modprobe uinput
+	udevadm control --reload-rules
+}
+
+pre_upgrade() {
+	rm -f /usr/lib/udev/rules.d/51-Mickey.rules
+	rm -f /usr/lib/udev/rules.d/51-TIR.rules
+}
+
+post_upgrade() {
+	udevadm control --reload-rules
+}
+
+post_remove() {
+	if getent group uinput >/dev/null 2>&1; then
+        	groupdel uinput
+	fi
+	udevadm control --reload-rules
+	rm -f /usr/lib/udev/rules.d/99-Mickey.rules
+	rm -f /usr/lib/udev/rules.d/99-TIR.rules
+}
