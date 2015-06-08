@@ -1,0 +1,6 @@
+--- zod_engine/zod_launcher_src/makefile	2011-03-22 12:13:12.000000000 +0100
++++ zod_engine/zod_launcher_src/makefile	2014-02-15 15:33:25.112195490 +0100
+@@ -1,2 +1,2 @@
+ default:
+-	g++ -g -o zod_launcher *.cpp `wx-config --cppflags` `wx-config --libs`
++	g++ -g -o zod_launcher *.cpp `wx-config-2.8 --cppflags` `wx-config-2.8 --libs`

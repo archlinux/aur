@@ -1,0 +1,25 @@
+pkgbase = commander-zod
+	pkgdesc = The Zod Engine - An Open Source Remake of the 1996 Game Z by Bitmap Brothers
+	pkgver = 0.2011_09_06
+	pkgrel = 2
+	url = http://zod.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl
+	depends = sdl_mixer
+	depends = sdl_ttf
+	depends = sdl_image
+	depends = libmariadbclient
+	depends = wxgtk2.8
+	source = http://sourceforge.net/projects/zod/files/linux_releases/zod_linux-2011-09-06.tar.gz
+	source = commander-zod.desktop
+	source = commander-zod
+	source = zod_launcher_wxgtk2.8.patch
+	md5sums = ab366b279e43add48d66e3d8224cfafa
+	md5sums = 51949abec46c79b9871fedc99d88f4bd
+	md5sums = 76d5a47d6985756fe311d2ce02a3355b
+	md5sums = e43e25604bf35e33f427ff3678f8c2ac
+
+pkgname = commander-zod
+
