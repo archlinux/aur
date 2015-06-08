@@ -1,0 +1,21 @@
+pkgbase = kde-cli-tools-git
+	pkgdesc = Tools based on KDE Frameworks 5 to better interact with the system
+	pkgver = r1443.bc5bc76
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/workspace/kde-cli-tools
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = kdoctools
+	depends = kdesu-git
+	depends = kdelibs4support-git
+	depends = kcmutils-git
+	provides = kde-cli-tools
+	conflicts = kde-cli-tools
+	source = git://anongit.kde.org/kde-cli-tools.git
+	md5sums = SKIP
+
+pkgname = kde-cli-tools-git
+
