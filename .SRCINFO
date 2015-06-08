@@ -1,13 +1,27 @@
 pkgbase = gcs
-	pkgdesc = An editor for building character sheets for the GURPS 4th Edition RPG system.
-	pkgver = 4.0.1
+	pkgdesc = WYSIWYG editor for building character sheets for GURPS 4th Edition
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = http://gurpscharactersheet.com
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = MPL
-	source = gcs-4.0.1-linux.zip::http://sourceforge.net/projects/gcs-java/files/gcs-4.0.1-linux.zip/download
-	md5sums = SKIP
+	makedepends = git
+	makedepends = apache-ant
+	makedepends = java-environment=8
+	makedepends = imagemagick
+	depends = java-runtime=8
+	source = git://code.trollworks.com/apple_stubs.git
+	source = git://code.trollworks.com/gcs.git#tag=gcs-4.1.0
+	source = git://code.trollworks.com/toolkit.git#tag=gcs-4.1.0
+	source = gcs.sh
+	source = gcs.desktop
+	source = set_app_path_from_env.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = a624fb16a1694c651b392cba91ff120b99ddf3dd1005b4174baca81770a8785c
+	sha256sums = 15f4bb0caaa0752cceba69c615e16848eba35f18b4d705caae0419a2aa0072f9
+	sha256sums = f0a4f484f006da3f70fc26af15647478f6e721de113557f2cb1a93522a5f6d59
 
 pkgname = gcs
 
