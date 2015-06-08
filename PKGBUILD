@@ -5,8 +5,8 @@
 
 # Maintainer: Peter Marheine <peter@taricorp.net>
 pkgname=mkg3a
-pkgver=0.3
-_changeset=08f34ada3fe1
+pkgver=0.3.1
+_changeset=e54c94261575
 pkgrel=1
 pkgdesc="A tool to create Casio FX-CG addon (.g3a) files."
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ license=('ZLIB')
 depends=('libpng')
 makedepends=('cmake')
 source=(https://bitbucket.org/tari/$pkgname/get/$pkgver.tar.gz)
-md5sums=('8a2a54bdd4205393c52be6affb890b79')
+md5sums=('b1c79d9ef4e3988b9f61f35a6612062a')
 
 build() {
   cd "$srcdir/tari-mkg3a-$_changeset"
