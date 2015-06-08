@@ -7,7 +7,7 @@ pkgbase = nunit2
 	license = custom
 	depends = mono
 	source = http://github.com/nunit/nunitv2/releases/download/2.6.4/NUnit-2.6.4.zip
-	md5sums = 57b094983ee6c84f0d2e3d7dc0678dca
+	sha256sums = 1bd925514f31e7729ccde40a38a512c2accd86895f93465f3dfe6d0b593d7170
 
 pkgname = nunit2
 
