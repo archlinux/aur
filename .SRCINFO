@@ -1,0 +1,16 @@
+pkgbase = k-zukitwo
+	pkgdesc = A Zukitwo theme for KDE4
+	pkgver = 1.0
+	pkgrel = 3
+	url = http://kde-look.org/content/show.php/?content=152500
+	arch = any
+	license = GPL
+	depends = qtcurve-qt4
+	depends = kdebase-workspace
+	source = K-Zukitwo.tar.gz::http://kde-look.org/CONTENT/content-files/152500-K-Zukitwo.tar.gz
+	source = Zukitwo.tar.gz::http://kde-look.org/CONTENT/content-files/157949-Zukitwo.tar.gz
+	sha256sums = 7e382aee6708170aaa21d37656ae4fcb425e46ea578f30d3545b590a6702dabc
+	sha256sums = 9633fdf0030032e5bfedb0e83d0c94d6022122c70559eaf73cc5419aec4ae1cc
+
+pkgname = k-zukitwo
+
