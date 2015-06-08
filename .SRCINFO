@@ -1,0 +1,21 @@
+pkgbase = corsix-th
+	pkgdesc = Reimplementation of the game engine of Theme Hospital
+	pkgver = 0.40
+	pkgrel = 1
+	url = https://github.com/CorsixTH/CorsixTH/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = MIT
+	makedepends = cmake
+	depends = lua51
+	depends = sdl_mixer
+	depends = ffmpeg
+	depends = timidity-freepats
+	source = https://github.com/CorsixTH/CorsixTH/archive/v0.40.tar.gz
+	source = bin
+	sha1sums = 2e88e319f8c73e83068c8db08f1598cc097b2b27
+	sha1sums = 7fd6ae8db366b7f9c4671708e8ea7beb48f1bea3
+
+pkgname = corsix-th
+
