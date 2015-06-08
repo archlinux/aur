@@ -1,0 +1,16 @@
+pkgbase = mkscaladocset-hg
+	pkgdesc = mkScalaDocset is a script and accompanying Scala code to build documentation sets for the Dash documentation browser from documentation that has been produced by ScalaDoc.
+	pkgver = 17.4db14a8f5bb0
+	pkgrel = 1
+	url = https://bitbucket.org/inkytonik/mkscaladocset
+	arch = any
+	license = Unkown
+	makedepends = mercurial
+	makedepends = make
+	depends = sh
+	depends = scala
+	source = mkscaladocset-hg::hg+https://bitbucket.org/inkytonik/mkscaladocset
+	md5sums = SKIP
+
+pkgname = mkscaladocset-hg
+
