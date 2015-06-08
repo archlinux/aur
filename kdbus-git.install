@@ -1,0 +1,17 @@
+post_install() {
+  dkms install -m kdbus/${1%-*}
+}
+
+pre_upgrade() {
+  dkms remove -m kdbus/${2%-*} --all
+}
+
+post_upgrade() {
+  dkms install -m kdbus/${1%-*}
+}
+
+pre_remove() {
+  dkms remove -m kdbus/${1%-*} --all
+}
+
+

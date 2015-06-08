@@ -1,0 +1,20 @@
+pkgbase = kdbus-git
+	pkgdesc = kdbus kernel module
+	pkgver = 2131.db51839
+	pkgrel = 2
+	url = https://code.google.com/p/d-bus/
+	install = kdbus-git.install
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	depends = dkms
+	provides = kdbus
+	conflicts = kdbus
+	options = !strip
+	source = git+https://code.google.com/p/d-bus/
+	source = dkms.conf
+	md5sums = SKIP
+	md5sums = a36446ca25771bfd800dc03aaddef968
+
+pkgname = kdbus-git
+
