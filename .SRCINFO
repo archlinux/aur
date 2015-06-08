@@ -1,0 +1,28 @@
+pkgbase = arm-frc-linux-gnueabi-gcc-stage2
+	pkgdesc = The GNU Compiler Collection. Stage 2 for toolchain building (arm-frc-linux-gnueabi)
+	pkgver = 4.9.1
+	pkgrel = 1
+	url = http://gcc.gnu.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	depends = arm-frc-linux-gnueabi-binutils
+	depends = arm-frc-linux-gnueabi-eglibc-headers
+	depends = libmpc
+	depends = elfutils
+	provides = arm-frc-linux-gnueabi-gcc-stage1
+	conflicts = arm-frc-linux-gnueabi-gcc-stage1
+	replaces = arm-frc-linux-gnueabi-gcc-stage1
+	options = !buildflags
+	options = !libtool
+	options = !emptydirs
+	options = zipman
+	options = docs
+	options = !strip
+	options = staticlibs
+	source = ftp://gcc.gnu.org/pub/gcc/releases/gcc-4.9.1/gcc-4.9.1.tar.bz2
+	md5sums = fddf71348546af523353bd43d34919c1
+
+pkgname = arm-frc-linux-gnueabi-gcc-stage2
+
