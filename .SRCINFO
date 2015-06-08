@@ -1,0 +1,19 @@
+pkgbase = vdr-epgsync
+	pkgdesc = Import the EPG of a remote VDR
+	pkgver = 1.0.1
+	pkgrel = 7
+	url = http://vdr.schmirler.de/
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	depends = gcc-libs
+	depends = vdr-api=2.2.0
+	backup = etc/vdr/conf.avail/50-epgsync.conf
+	source = http://vdr.schmirler.de/epgsync/vdr-epgsync-1.0.1.tgz
+	md5sums = 694024ecd7bb813d43620ded63fc3ab4
+
+pkgname = vdr-epgsync
+
