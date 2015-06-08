@@ -1,0 +1,25 @@
+pkgbase = pnp4nagios
+	pkgdesc = Nagios addon to create graphs from performance data
+	pkgver = 0.6.24
+	pkgrel = 1
+	url = http://pnp4nagios.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = perl
+	depends = rrdtool
+	depends = php
+	depends = php-gd
+	depends = libtool
+	backup = etc/httpd/conf/extra/pnp4nagios.conf
+	backup = etc/pnp4nagios/config.php
+	backup = etc/pnp4nagios/config_local.php
+	backup = etc/pnp4nagios/npcd.cfg
+	backup = etc/pnp4nagios/process_perfdata.cfg
+	source = http://downloads.sourceforge.net/pnp4nagios/pnp4nagios-0.6.24.tar.gz
+	source = npcd.service
+	md5sums = eeffd5d0a2dbaa1693cb10d52034239d
+	md5sums = 69f82fa4aeebc8c1164d67e4399c0932
+
+pkgname = pnp4nagios
+

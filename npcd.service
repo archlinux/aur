@@ -1,0 +1,11 @@
+[Unit]
+Description=PNP4Nagios NPCD service
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/var/run/npcd.pid
+ExecStart=/usr/bin/npcd -d -f /etc/pnp4nagios/npcd.cfg
+
+[Install]
+WantedBy=multi-user.target
