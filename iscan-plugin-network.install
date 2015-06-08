@@ -1,0 +1,5 @@
+post_install() {
+echo "Remember to set the 'net' conf option in /etc/sane.d/epkowa.conf
+(see an example in /etc/sane.d/epson2.conf)."
+}
+
