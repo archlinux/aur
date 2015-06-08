@@ -1,0 +1,14 @@
+pkgbase = grap
+	pkgdesc = A language for typesetting graphs.
+	pkgver = 1.45
+	pkgrel = 1
+	url = http://www.lunabase.org/~faber/Vault/software/grap/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gcc-libs
+	source = http://www.lunabase.org/~faber/Vault/software/grap/grap-1.45.tar.gz
+	md5sums = bfcebd45d734c56eebba7948b95c3f2d
+
+pkgname = grap
+
