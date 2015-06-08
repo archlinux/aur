@@ -1,0 +1,15 @@
+pkgbase = iceweasel-i18n-ro
+	pkgdesc = Romanian language package for Iceweasel
+	pkgver = 38.0.1.deb5
+	pkgrel = 1
+	url = http://www.mozilla.com/
+	arch = any
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = iceweasel>=38.0.1
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-ro_38.0.1-5_all.deb
+	sha256sums = d8126c971106012ddb8c0959c107b24306a4e416e157ade4593b692717df9bda
+
+pkgname = iceweasel-i18n-ro
+
