@@ -1,0 +1,27 @@
+--- textroom-0.8.2/application/src/textroom.cpp	2014-05-26 16:04:11.155079095 +0400
++++ textroom-svn/application/src/textroom.cpp	2014-05-26 16:50:26.250577206 +0400
+@@ -28,6 +28,7 @@
+ ****************************************************************************/
+ 
+ #include <QtGui> 
++#include <QTextCodec>
+ #include <SDL/SDL.h>
+ #ifdef Q_OS_MACX
+ # include <SDL_mixer/SDL_mixer.h>
+@@ -1163,6 +1164,7 @@
+ #endif
+ 
+ 	pMS= new Hunspell(affFileName.toLocal8Bit(), dicFileName.toLocal8Bit());
++	QTextCodec *pDC = QTextCodec::codecForName(pMS->get_dic_encoding());
+ 	QTextCharFormat highlightFormat;
+ 	highlightFormat.setUnderlineColor(Qt::red);
+ 	highlightFormat.setUnderlineStyle(QTextCharFormat::SpellCheckUnderline);
+@@ -1182,7 +1184,7 @@
+ 		QTextCursor highlightCursor(textEdit->document()->find(word, findCursor));
+ 		findCursor.setPosition(highlightCursor.position());
+ 		findCursor.movePosition(QTextCursor::EndOfWord);
+-		QByteArray ba = word.toUtf8();
++		QByteArray ba = pDC->fromUnicode(word);
+ 		char * wordChar = ba.data();
+ 		int correct = pMS->spell(wordChar);
+ 		if ( !correct && isHighlighted )

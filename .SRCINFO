@@ -1,0 +1,22 @@
+pkgbase = textroom
+	pkgdesc = Full Screen text editor heavily inspired by Q10 and JDarkRoom
+	pkgver = 0.8.2
+	pkgrel = 6
+	url = http://code.google.com/p/textroom/
+	install = textroom.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = mesa
+	depends = curl
+	depends = libxml++
+	depends = hunspell
+	depends = qt4
+	depends = sdl_mixer
+	source = http://textroom.googlecode.com/files/textroom-0.8.2.tar.gz
+	source = spell-check_patch
+	md5sums = e20bd19784644968bbffdb90d8ef0659
+	md5sums = 3cd7541b37a0589e95d59581dfea2bdd
+
+pkgname = textroom
+
