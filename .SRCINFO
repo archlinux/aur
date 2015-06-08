@@ -1,0 +1,14 @@
+pkgbase = pli-bin
+	pkgdesc = Iron Spring PL/I compiler - statically linked 386-binary
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = http://www.iron-spring.com/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	options = staticlibs
+	source = http://www.iron-spring.com/pli-0.9.4.tgz
+	md5sums = 93bf61ee20ced3f51a833340f1784ec0
+
+pkgname = pli-bin
+
