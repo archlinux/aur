@@ -1,0 +1,28 @@
+pkgbase = lib32-libindicator
+	pkgdesc = Libary with a set of symbols and convience functions that all indicators would like to use
+	pkgver = 12.10.1
+	pkgrel = 1
+	url = https://launchpad.net/libindicator
+	install = lib32-libindicator.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-multilib
+	makedepends = lib32-gtk2
+	makedepends = lib32-gtk3
+	options = !libtool
+	source = http://launchpad.net/libindicator/12.10/12.10.1/+download/libindicator-12.10.1.tar.gz
+	md5sums = 5fd4d6bab339fc9611078b64c44a85a8
+
+pkgname = lib32-libindicator-gtk2
+	pkgdesc = Libary with a set of symbols and convience functions that all indicators would like to use (GTK+ 2 library)
+	depends = lib32-gtk2
+	depends = libindicator-gtk2
+	provides = lib32-libindicator
+	conflicts = lib32-libindicator
+
+pkgname = lib32-libindicator-gtk3
+	pkgdesc = Libary with a set of symbols and convience functions that all indicators would like to use (GTK+ 3 library)
+	depends = lib32-gtk3
+	depends = libindicator-gtk3
+
