@@ -1,0 +1,25 @@
+{
+    "name": "bokxing-it/sabre-zarafa",
+    "require": {
+        "sabre/dav"      : "<=2.1.2",
+        "apache/log4php" : "~2.3.0"
+    },
+    "license": "agpl",
+    "authors": [
+        {
+            "name": "Alfred Klomp",
+            "email": "alfred@1afa.com",
+            "role": "Developer"
+        },
+        {
+            "name": "Guillaume Lapierre",
+            "role": "Developer"
+        }
+    ],
+    "autoload" : {
+        "psr-0" : {
+            "SabreZarafa" : "lib/"
+        }
+    },
+    "minimum-stability": "stable"
+}
