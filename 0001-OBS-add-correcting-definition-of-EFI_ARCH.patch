@@ -1,0 +1,26 @@
+From 706bec1a957f2fcce3781e326e6e0b2be41a9b86 Mon Sep 17 00:00:00 2001
+From: James Bottomley <JBottomley@Parallels.com>
+Date: Tue, 6 Jan 2015 08:00:28 -0800
+Subject: [PATCH] OBS add correcting definition of EFI_ARCH
+
+Signed-off-by: James Bottomley <JBottomley@Parallels.com>
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 4891151..2e80e09 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -64,7 +64,7 @@ PKG_CHECK_MODULES(uuid, uuid,
+     AC_MSG_ERROR([libuuid (from the uuid package) is required]))
+ 
+ dnl gnu-efi headers require extra include dirs
+-EFI_ARCH=$(uname -m)
++EFI_ARCH=$(uname -m | sed s/i.86/ia32/)
+ EFI_CPPFLAGS="-I/usr/include/efi -I/usr/include/efi/$EFI_ARCH \
+  -DEFI_FUNCTION_WRAPPER"
+ CPPFLAGS_save="$CPPFLAGS"
+-- 
+2.1.2
+

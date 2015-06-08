@@ -1,0 +1,23 @@
+pkgbase = sbsigntools
+	pkgdesc = Tools to add signatures to EFI binaries and Drivers
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://build.opensuse.org/package/show/home:jejb1:UEFI/sbsigntools
+	arch = x86_64
+	license = GPL3
+	makedepends = gnu-efi-libs
+	makedepends = help2man
+	depends = libutil-linux
+	depends = openssl
+	noextract = ccan-0.0.2.tar.gz
+	source = https://build.opensuse.org/source/home:jejb1:UEFI/sbsigntools/sbsigntools-0.7.tar.gz
+	source = https://build.opensuse.org/source/home:jejb1:UEFI/sbsigntools/ccan-0.0.2.tar.gz
+	source = 0001-OBS-add-correcting-definition-of-EFI_ARCH.patch
+	source = 0001-sbsigntools-fix-autogen.sh-for-build-service.patch
+	sha256sums = 415db6779062a3bd9752718637aa8760ed14d8822061eac9e5819987439b06c4
+	sha256sums = a3ac0d59dce1b7662ec75c1c79e0bf6518d79d012282e270099231006d12272e
+	sha256sums = 44a69e3708770f465ce5dc139aaa90c5208a2abae420cbcb00674a6ef7866a97
+	sha256sums = 9085ad181f67ac911918864783a9804af456d33c4631659e6acaaa27987786d7
+
+pkgname = sbsigntools
+
