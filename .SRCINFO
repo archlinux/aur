@@ -1,0 +1,23 @@
+pkgbase = grooveoff-qt5
+	pkgdesc = Offline Grooveshark.com music.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://gcala.blogspot.com/2013/04/presenting-grooveoff.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = qt5-svg
+	depends = phonon-qt5
+	depends = gstreamer0.10-ugly-plugins
+	depends = ca-certificates
+	depends = taglib
+	provides = grooveoff
+	conflicts = grooveoff
+	source = http://qt-apps.org/CONTENT/content-files/158258-grooveoff-0.2.0.tar.gz
+	md5sums = fa4d686306b31064e2e7e7dfaec33fa1
+
+pkgname = grooveoff-qt5
+
