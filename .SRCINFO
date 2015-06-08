@@ -1,0 +1,16 @@
+pkgbase = epson-inkjet-printer-201306j
+	pkgdesc = Epson printer driver (EP-906F, EP-806AB, EP-806AW, EP-806AR, EP-306)
+	pkgver = 1.0.1
+	pkgrel = 8
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom:Epson Licence Agreement
+	depends = cups
+	depends = ghostscript
+	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201306j-1.0.1-1lsb3.2.src.rpm
+	sha256sums = 2e8a651de0942cfe7d5f554906652af79b3a746cae69a1179db103111bcd7b7a
+
+pkgname = epson-inkjet-printer-201306j
+
