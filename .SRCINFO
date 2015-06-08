@@ -1,0 +1,20 @@
+pkgbase = openhevc-git
+	pkgdesc = A open HEVC decoder (GIT Version)
+	pkgver = r2031.20150602.cb97e66
+	pkgrel = 1
+	url = http://openhevc.github.io/openHEVC/
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	makedepends = cmake
+	makedepends = yasm
+	depends = sdl
+	depends = sdl2
+	provides = openhevc
+	conflicts = openhevc
+	source = openhevc::git+https://github.com/OpenHEVC/openHEVC.git#branch=hevc_rext
+	sha1sums = SKIP
+
+pkgname = openhevc-git
+
