@@ -3,7 +3,7 @@
 
 pkgname=diamond
 pkgver=4.0.41
-pkgrel=1
+pkgrel=2
 pkgdesc="Diamond is daemon that collects system metrics and publishes them to graphite and others"
 arch=(any)
 url="https://github.com/python-diamond/Diamond"
