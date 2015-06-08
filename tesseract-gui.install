@@ -1,0 +1,8 @@
+post_install() {
+    echo ":: You must also have one or more of the optional tesseract-data-* packages installed or the whole tesseract-data group"
+}
+
+post_upgrade() {
+    post_install $1
+}
+
