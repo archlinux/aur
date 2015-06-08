@@ -1,0 +1,16 @@
+pkgbase = kdeplasma-applets-miniplayer
+	pkgdesc = A plasmoid for playing multimedia.
+	pkgver = 2.5
+	pkgrel = 1
+	url = http://www.kde-look.org/content/show.php/Mini+Player?content=95501
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdelibs
+	source = http://www.kde-look.org/CONTENT/content-files/95501-miniplayer-2.5.tar.bz2
+	sha1sums = f4bdb3ae725214d248b6965ecb8f1cb2bbd2bd00
+
+pkgname = kdeplasma-applets-miniplayer
+
