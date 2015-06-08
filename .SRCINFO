@@ -1,0 +1,13 @@
+pkgbase = kdeplasma-applet-lockkeys-qml
+	pkgdesc = This plasmoid displays the current state of the 'Num Lock' and 'Caps Lock' (a.k.a. 'Shift Lock') keys.
+	pkgver = 0.5
+	pkgrel = 2
+	url = http://opendesktop.org/content/show.php?content=152082
+	arch = any
+	license = GPL
+	depends = kdebase-workspace
+	source = plasma-applet-lockkeys-qml-0.5.plasmoid::http://kde-apps.org/CONTENT/content-files/152082-plasma-applet-lockkeys-qml-0.5.plasmoid
+	sha256sums = e62193962109387ee60c4329bfd22fb35ba5948bc63b468267113ad5c4a03cae
+
+pkgname = kdeplasma-applet-lockkeys-qml
+
