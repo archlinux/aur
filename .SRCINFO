@@ -1,0 +1,13 @@
+pkgbase = reredirect-git
+	pkgdesc = Tool to dynamicly redirect outputs of a running process
+	pkgver = v0.1.r5.ga80845a
+	pkgrel = 1
+	url = https://github.com/jerome-pouiller/reredirect/
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = reredirect::git+git://github.com/jerome-pouiller/reredirect.git
+	sha1sums = SKIP
+
+pkgname = reredirect-git
+
