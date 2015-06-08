@@ -1,0 +1,15 @@
+post_install() {
+	getent group vlmcsd &>/dev/null || groupadd -r vlmcsd >/dev/null
+	getent passwd vlmcsd &>/dev/null || useradd -r -g vlmcsd -d /var/lib/vlmcsd -s /bin/false -c vlmcsd vlmcsd >/dev/null
+	chown -R vlmcsd:vlmcsd /var/lib/vlmcsd
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	getent passwd vlmcsd &>/dev/null && userdel vlmcsd >/dev/null
+	getent group vlmcsd &>/dev/null && groupdel vlmcsd >/dev/null
+	true
+}

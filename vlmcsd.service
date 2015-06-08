@@ -1,0 +1,15 @@
+[Unit]
+Description=KMS activation using vlmcsd
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/vlmcsd -f -p /var/lib/vlmcsd/vlmcsd.pid
+Restart=on-abort
+KillSignal=SIGQUIT
+PIDFile=/var/lib/vlmcsd/vlmcsd.pid
+User=vlmcsd
+Group=vlmcsd
+
+[Install]
+WantedBy=multi-user.target
