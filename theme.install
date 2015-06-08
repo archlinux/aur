@@ -1,0 +1,10 @@
+post_install()
+{
+	echo "Set greeter-session=light-webkit2-greeter in /etc/lightdm/lightdm.conf"
+	echo "Also set webkit-theme=userdock in /etc/lightdm/lightdm-webkit2-greeter.conf"
+	echo "See https://wiki.archlinux.org/index.php/LightDM#Testing on how to test greeters"
+
+	echo "Please note that this theme doesn't support choosing the session at login,"
+	echo "and must be changed in /etc/lightdm/lightdm.conf with user-session=SESSION"
+}
+
