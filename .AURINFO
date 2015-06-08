@@ -1,0 +1,26 @@
+pkgbase = cinnamon-control-center-git
+	pkgdesc = The Control Center for Cinnamon
+	pkgver = 337.9677670
+	pkgrel = 1
+	url = https://github.com/linuxmint/cinnamon-control-center
+	install = cinnamon-control-center-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = gnome-common
+	makedepends = docbook-xsl
+	makedepends = git
+	depends = cinnamon-settings-daemon-git
+	depends = cinnamon-translations-git
+	depends = cinnamon-menus-git
+	depends = libgnomekbd
+	depends = network-manager-applet
+	optdepends = gnome-color-manager: for color management tasks
+	provides = cinnamon-control-center
+	conflicts = cinnamon-control-center
+	source = cinnamon-control-center::git+https://github.com/linuxmint/cinnamon-control-center.git
+	options = !emptydirs
+
+pkgname = cinnamon-control-center-git
+
