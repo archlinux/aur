@@ -1,0 +1,21 @@
+pkgbase = perl-reddit-client
+	pkgdesc = A perl wrapper for Reddit
+	pkgver = 0.7
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Reddit-Client
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-mockmodule>=0
+	depends = perl-http-message>=0
+	depends = perl-io-capture>=0
+	depends = perl-json>=0
+	depends = perl-uri-encode>=0
+	depends = perl-libwww>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JE/JEFFOBER/Reddit-Client-0.7.tar.gz
+	md5sums = 1c954a3f1feb8da90e1015d458c2a5c7
+	sha512sums = 64a8f4a188ee932efe937d86cd309a76c6d5f647cc76695c0eb3088458f6de1d5a4c622aeb82d025162fb3a8b5056c9cc2aa2293da7114072d31b7823275d785
+
+pkgname = perl-reddit-client
+
