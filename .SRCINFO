@@ -1,0 +1,14 @@
+pkgbase = python-speechrecognition
+	pkgdesc = Google-powered speech recognition for Python
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/Uberi/speech_recognition
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = python
+	source = https://github.com/Uberi/speech_recognition/archive/1.1.1.tar.gz
+	md5sums = 9abba0588c884a2b350a718d9c713a04
+
+pkgname = python-speechrecognition
+
