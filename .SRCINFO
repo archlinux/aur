@@ -1,0 +1,21 @@
+pkgbase = gpgmepp-git
+	pkgdesc = C++ bindings/wrapper for gpgme
+	pkgver = r1054.47a866d
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/pim/gpgmepp
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = python
+	makedepends = boost
+	depends = gpgme
+	depends = qt5-base
+	provides = gpgmepp
+	conflicts = gpgmepp
+	source = git://anongit.kde.org/gpgmepp.git
+	md5sums = SKIP
+
+pkgname = gpgmepp-git
+
