@@ -1,0 +1,15 @@
+pkgbase = gotags-git
+	pkgdesc = ctags-compatible tag generator for Go.
+	pkgver = 20150322
+	pkgrel = 1
+	url = https://github.com/jstemmer/gotags
+	arch = any
+	license = Other
+	makedepends = git
+	makedepends = go
+	provides = gotags
+	source = gotags::git://github.com/jstemmer/gotags.git
+	md5sums = SKIP
+
+pkgname = gotags-git
+
