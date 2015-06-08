@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=eric4
+MimeType=application/x-eric4;
+Icon=eric4
+Terminal=false
+Name=Eric 4
+Comment=Python 2.x & Ruby IDE
+Categories=Qt;Python;Development;IDE;
+StartupNotify=true
