@@ -1,0 +1,16 @@
+pkgbase = jforex-dukascopy-europe-live
+	pkgdesc = jForex live trading client for Dukascopy Europe
+	pkgver = 3.0
+	pkgrel = 2
+	url = http://www.dukascopy.com/europe/english/forex/trading_login/live/
+	arch = any
+	license = unknown
+	depends = java-environment
+	depends = xdg-utils
+	source = https://eu-live.dukascopy.com/fo/platform/jForex
+	source = jforex.tar.gz
+	md5sums = SKIP
+	md5sums = 13f96662a0d09b9f821aea72dbb52612
+
+pkgname = jforex-dukascopy-europe-live
+
