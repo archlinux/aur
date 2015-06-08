@@ -1,0 +1,14 @@
+pkgbase = python2-faulthandler
+	pkgdesc = Display the Python traceback on a crash
+	pkgver = 2.4
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/faulthandler/
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://pypi.python.org/packages/source/f/faulthandler/faulthandler-2.4.tar.gz
+	md5sums = 110960933b0902334e8804eb4ea20750
+
+pkgname = python2-faulthandler
+
