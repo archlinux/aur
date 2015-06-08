@@ -1,0 +1,14 @@
+pkgbase = vdrnfofs
+	pkgdesc = virtual Fuse-based file system that maps recordings from the Linux Video Disc Recorder (VDR) to *.nfo and *.mpg files
+	pkgver = 0.8
+	pkgrel = 1
+	url = http://projects.vdr-developer.org/projects/vdrnfofs
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2-fuse
+	source = http://projects.vdr-developer.org/attachments/download/727/vdrnfofs-0.8.tar.gz
+	md5sums = 90204ab468c5dd1f9efedbb83b81905c
+
+pkgname = vdrnfofs
+
