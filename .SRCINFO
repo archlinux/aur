@@ -1,0 +1,18 @@
+pkgbase = gcpuploader
+	pkgdesc = A tool to upload FIT, GPX, and TCX files to the Garmin Connect web site.
+	pkgver = 2015.2.28
+	pkgrel = 3
+	url = http://sourceforge.net/p/gcpuploader/wiki/Home/
+	install = gcpuploader.install
+	arch = any
+	license = GPL
+	license = APACHE
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-requests
+	depends = python2-simplejson
+	source = http://downloads.sourceforge.net/gcpuploader/GcpUploader-2015.2.28.tar.gz
+	sha256sums = 2b7c8a851c7e30a5d2c54aeda4d853cd25c65fa47b70700259d318089af8257a
+
+pkgname = gcpuploader
+

@@ -1,0 +1,28 @@
+post_install() {
+echo "---------------------------------------------------------------------------------"
+echo "You may create a config file containing your Garmin Connect username and password"
+echo "to eliminate the need to type it in on the command line. Create a text file named"
+echo "\$HOME/.guploadrc with the following contents:"
+echo
+echo "[Credentials]"
+echo "username=myusername"
+echo "password=mypassword"
+echo
+echo "Replace myusername and mypassword with your Garmin Connect login credentials."
+echo
+echo "WARNING!! The username and password are stored in clear text, WHICH IS NOT SECURE."
+echo "If you have concerns about storing your garmin connect username and password in an"
+echo "unsecure file, do not use this option."
+echo
+echo "Usage:"
+echo
+echo "Upload file and set an activty name:"
+echo "  gupload.py -l myusername mypassword -a 'Run around the lake' myfile.tcx"
+echo
+echo "Upload multiple files:"
+echo "  gupload.py -l myusername mypassword myfile1.tcx myfile2.tcx myfile3.fit"
+echo
+echo "Upload a file using a config file for credentials, name file, verbose output:"
+echo "  gupload.py -v 1 -a 'Run in the woods' myfile.tcx"
+echo "---------------------------------------------------------------------------------"
+}
