@@ -1,0 +1,18 @@
+pkgbase = haskell-mmorph
+	pkgdesc = Monad morphisms
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/mmorph
+	install = haskell-mmorph.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = haskell-transformers>0.2.0.0
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/mmorph/1.0.4/mmorph-1.0.4.tar.gz
+	md5sums = e8ebd20afb7394def1a04553888f430e
+
+pkgname = haskell-mmorph
+
