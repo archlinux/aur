@@ -1,0 +1,14 @@
+pkgbase = ascii-invaders
+	pkgdesc = Clone of Space Invaders for text-terminals using the curses library
+	pkgver = 0.1b
+	pkgrel = 5
+	url = http://web.archive.org/web/20100417061809/http://www.ip9.org/munro/invaders
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = ncurses
+	source = http://web.archive.org/web/20100417061809/http://www.ip9.org/munro/invaders/invaders0.1b.tgz
+	md5sums = fbb3f99a1b198bf4222d26a55665482e
+
+pkgname = ascii-invaders
+
