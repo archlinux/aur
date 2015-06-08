@@ -1,6 +1,6 @@
-diff -aur xf86-input-evdev-2.9.0.orig/README "xf86-input-evdev-2.9.0.fixed manually/README"
---- xf86-input-evdev-2.9.0.orig/README	2013-04-10 16:24:31.000000000 +1000
-+++ "xf86-input-evdev-2.9.0.fixed manually/README"	2014-06-08 14:47:16.720207597 +1000
+diff -aur xf86-input-evdev-2.9.1.orig/README xf86-input-evdev-2.9.1.patched/README
+--- xf86-input-evdev-2.9.1.orig/README	2013-04-10 16:24:31.000000000 +1000
++++ xf86-input-evdev-2.9.1.patched/README	2014-11-30 20:30:51.034799150 +1100
 @@ -1,20 +1,680 @@
 -xf86-input-evdev - Generic Linux input driver for the Xorg X server
 +Welcome to "At Home Modifier" hack of xf86-input-evdev. The original
@@ -693,11 +693,10 @@ diff -aur xf86-input-evdev-2.9.0.orig/README "xf86-input-evdev-2.9.0.fixed manua
 +License
 +=======
 +Distributed under MIT License; Same as Xorg.
-Only in xf86-input-evdev-2.9.0.fixed manually/: README.orig
-diff -aur xf86-input-evdev-2.9.0.orig/src/evdev.c "xf86-input-evdev-2.9.0.fixed manually/src/evdev.c"
---- xf86-input-evdev-2.9.0.orig/src/evdev.c	2014-05-20 15:41:26.000000000 +1000
-+++ "xf86-input-evdev-2.9.0.fixed manually/src/evdev.c"	2014-06-08 15:03:08.040591069 +1000
-@@ -141,6 +141,8 @@
+diff -aur xf86-input-evdev-2.9.1.orig/src/evdev.c xf86-input-evdev-2.9.1.patched/src/evdev.c
+--- xf86-input-evdev-2.9.1.orig/src/evdev.c	2014-11-26 10:33:56.000000000 +1100
++++ xf86-input-evdev-2.9.1.patched/src/evdev.c	2014-11-30 20:30:51.038132470 +1100
+@@ -135,6 +135,8 @@
  static Atom prop_virtual;
  static Atom prop_scroll_dist;
  
@@ -706,7 +705,7 @@ diff -aur xf86-input-evdev-2.9.0.orig/src/evdev.c "xf86-input-evdev-2.9.0.fixed 
  static int EvdevSwitchMode(ClientPtr client, DeviceIntPtr device, int mode)
  {
      InputInfoPtr pInfo;
-@@ -282,23 +284,359 @@
+@@ -276,23 +278,359 @@
      return &pEvdev->queue[pEvdev->num_queue - 1];
  }
  
@@ -1076,7 +1075,7 @@ diff -aur xf86-input-evdev-2.9.0.orig/src/evdev.c "xf86-input-evdev-2.9.0.fixed 
  }
  
  void
-@@ -312,6 +650,7 @@
+@@ -306,6 +644,7 @@
          pQueue->detail.key = button;
          pQueue->val = value;
      }
@@ -1084,7 +1083,7 @@ diff -aur xf86-input-evdev-2.9.0.orig/src/evdev.c "xf86-input-evdev-2.9.0.fixed 
  }
  
  void
-@@ -628,7 +967,7 @@
+@@ -622,7 +961,7 @@
      if (button)
          EvdevQueueButtonEvent(pInfo, button, value);
      else
@@ -1093,7 +1092,7 @@ diff -aur xf86-input-evdev-2.9.0.orig/src/evdev.c "xf86-input-evdev-2.9.0.fixed 
  }
  
  /**
-@@ -930,13 +1269,24 @@
+@@ -928,13 +1267,24 @@
  {
      int i;
      EvdevPtr pEvdev = pInfo->private;
@@ -1121,7 +1120,7 @@ diff -aur xf86-input-evdev-2.9.0.orig/src/evdev.c "xf86-input-evdev-2.9.0.fixed 
          case EV_QUEUE_BTN:
              if (Evdev3BEmuFilterEvent(pInfo,
                                        pEvdev->queue[i].detail.key,
-@@ -963,6 +1313,10 @@
+@@ -960,6 +1310,10 @@
  #endif
          }
      }
@@ -1132,7 +1131,7 @@ diff -aur xf86-input-evdev-2.9.0.orig/src/evdev.c "xf86-input-evdev-2.9.0.fixed 
  }
  
  /**
-@@ -1428,6 +1782,15 @@
+@@ -1425,6 +1779,15 @@
              }
          }
      }
@@ -1148,7 +1147,7 @@ diff -aur xf86-input-evdev-2.9.0.orig/src/evdev.c "xf86-input-evdev-2.9.0.fixed 
  #endif
  
      for (axis = ABS_X; axis < ABS_MT_SLOT; axis++) {
-@@ -1935,6 +2298,7 @@
+@@ -1950,6 +2313,7 @@
      xf86FlushInput(pInfo->fd);
      xf86AddEnabledDevice(pInfo);
      EvdevMBEmuOn(pInfo);
@@ -1156,7 +1155,7 @@ diff -aur xf86-input-evdev-2.9.0.orig/src/evdev.c "xf86-input-evdev-2.9.0.fixed 
      Evdev3BEmuOn(pInfo);
      pEvdev->flags |= EVDEV_INITIALIZED;
      device->public.on = TRUE;
-@@ -1961,11 +2325,11 @@
+@@ -1976,11 +2340,11 @@
          return EvdevOn(device);
  
      case DEVICE_OFF:
@@ -1173,7 +1172,7 @@ diff -aur xf86-input-evdev-2.9.0.orig/src/evdev.c "xf86-input-evdev-2.9.0.fixed 
          if (pInfo->fd != -1)
          {
              EvdevGrabDevice(pInfo, 0, 1);
-@@ -2560,6 +2924,8 @@
+@@ -2572,6 +2936,8 @@
  
      pEvdev->type_name = NULL;
  
@@ -1182,7 +1181,7 @@ diff -aur xf86-input-evdev-2.9.0.orig/src/evdev.c "xf86-input-evdev-2.9.0.fixed 
      return pEvdev;
  }
  
-@@ -2621,6 +2987,118 @@
+@@ -2633,6 +2999,118 @@
          EvdevDragLockPreInit(pInfo);
      }
  
@@ -1301,9 +1300,10 @@ diff -aur xf86-input-evdev-2.9.0.orig/src/evdev.c "xf86-input-evdev-2.9.0.fixed 
      return Success;
  
  error:
-diff -aur xf86-input-evdev-2.9.0.orig/src/evdev.h "xf86-input-evdev-2.9.0.fixed manually/src/evdev.h"
---- xf86-input-evdev-2.9.0.orig/src/evdev.h	2014-05-20 15:41:26.000000000 +1000
-+++ "xf86-input-evdev-2.9.0.fixed manually/src/evdev.h"	2014-06-08 15:05:42.566913609 +1000
+Only in xf86-input-evdev-2.9.1.patched/src: evdev.c.orig
+diff -aur xf86-input-evdev-2.9.1.orig/src/evdev.h xf86-input-evdev-2.9.1.patched/src/evdev.h
+--- xf86-input-evdev-2.9.1.orig/src/evdev.h	2014-11-26 10:33:56.000000000 +1100
++++ xf86-input-evdev-2.9.1.patched/src/evdev.h	2014-11-30 20:30:51.041465789 +1100
 @@ -37,6 +37,7 @@
  
  #include <linux/input.h>
@@ -1326,7 +1326,7 @@ diff -aur xf86-input-evdev-2.9.0.orig/src/evdev.h "xf86-input-evdev-2.9.0.fixed 
  #ifndef XI_PROP_DEVICE_NODE
  #define XI_PROP_DEVICE_NODE "Device Node"
  #endif
-@@ -183,6 +191,33 @@
+@@ -186,6 +194,33 @@
      int delta[REL_CNT];
      unsigned int abs_queued, rel_queued, prox_queued;
  
@@ -1360,7 +1360,7 @@ diff -aur xf86-input-evdev-2.9.0.orig/src/evdev.h "xf86-input-evdev-2.9.0.fixed 
      /* Middle mouse button emulation */
      struct {
          BOOL                enabled;
-@@ -253,7 +288,11 @@
+@@ -256,7 +291,11 @@
  } EvdevRec, *EvdevPtr;
  
  /* Event posting functions */
@@ -1373,3 +1373,4 @@ diff -aur xf86-input-evdev-2.9.0.orig/src/evdev.h "xf86-input-evdev-2.9.0.fixed 
  void EvdevQueueButtonEvent(InputInfoPtr pInfo, int button, int value);
  void EvdevQueueProximityEvent(InputInfoPtr pInfo, int value);
  #ifdef MULTITOUCH
+Only in xf86-input-evdev-2.9.1.patched/src: evdev.h.orig
