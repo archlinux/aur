@@ -29,7 +29,6 @@ source=('http://ftp.mplayer2.org/pub/release/mplayer2-2.0.tar.xz'
         'giflib-5.1.patch'
         'libquvi-0.9.patch'
         'include-samba-4.0.patch')
-noextract=('mplayer2-2.0.tar.xz')
 sha1sums=('0df8d4e5484128b7b28029273b7704ab5d5419bc'
           'SKIP'
           'SKIP'
@@ -42,9 +41,8 @@ sha1sums=('0df8d4e5484128b7b28029273b7704ab5d5419bc'
           '85d54b02f6f59fa9bd785d403c852031dcb517af'
           '06919a6dc0ae8db9e8ab50b55bb83a26445de51d'
           '8c2fc1526a413cd821b46fd48ea08364abbf5c4c')
-
 install=mplayer2-build-git.install
-_gitname="mplayer2-build"
+noextract=('mplayer2-2.0.tar.xz')
 
 pkgver() {
   cd "${srcdir}/mplayer2"
