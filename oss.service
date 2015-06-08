@@ -1,0 +1,12 @@
+[Unit]
+Description=Open Sound System v4
+Before=sound.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/soundon
+ExecStop=/usr/bin/soundoff
+
+[Install]
+WantedBy=multi-user.target

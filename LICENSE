@@ -1,0 +1,40 @@
+4Front Commercial License
+(Obtained from http://www.opensound.com/license.html on 23 June 2013.)
+---
+Terms and Conditions of the OSS License
+
+    Your OSS license allows you to run OSS indefinitely on a single machine. You may transfer your OSS license from one machine to another but may not use the license concurrently on multiple machines.
+
+    You are entitled to FREE upgrades for OSS for only the operating system you purchased OSS for. If your operating system kernel changes and if there is a version of OSS for that kernel version, you can obtain a FREE upgrade. Free upgrades are provided for two(2) years for the date of purchase.
+
+    You are entitled to receive FREE technical support for a period of 1 year from the date of purchase.
+
+    Your OSS license file has no user restrictions or restrictions on the number of soundcards you can run with the drivers
+
+    You may purchase an OSS License key on behalf of a third party or resell the product license under the same terms and conditions you purchsed the license.
+
+    If you change your operating system, then you will have to purchase a new OSS license file (if you wish to run OSS) for that operating system. There are NO FREE TRANSFER OF LICENSES BETWEEN OPERATING SYSTEMS.
+
+    If you violate the terms and conditions set forth, eg, sharing your licenses with a third party or illegally trading OSS licenses, your license will be terminated without any refund.
+
+    4Front recommends that you test OSS thoroughly before purchasing. ALL SALES ARE FINAL.
+---
+Description of low level drivers
+
+Pro Audio soundcard option (PRO)
+This feature is required if you have a LynxStudio One/TWO/AES16 or any of the Envy24 base devices like Maudio Delta series or the RME Digi32 or Digi96 professional soundcards.
+---
+Help with Ordering OSS
+
+Q1: How does the OSS ordering work?
+A1: When you place an order for OSS, a license key is sent to you via email. There is no CD or Floppy disk for this product as everything is handled electronically. The email will contain all the instructions to set up the permanant license key. Note: you must first install the DEMO OSS distribution.
+Q2: If I've already downloaded the Demo version of OSS, will I get or need any more software for my permanant license?
+A2: If you've already installed the Demo version of OSS, then you've got all the drivers you need. The only difference in purchasing the OSS license is that the OSS license will lift the 4 month "UNREGISTERED MODE" restrictions. The software you have is the full live software.
+Q3: If I need to purchase the OSS license via a purchase order or money order or cheque, what do I need to do?
+A3: You still need to fill out the order form completely and select the appropriate method of payment. Your license key will only be emailed to you upon receipt of your PO or cheque. See the Order page for contact info.
+Q4: If I lose my license key, what do I do?
+A4: In general we will only send your license key free of charge if you lose your license email/key within 30 days of your purchase. After that, there is a $5.00 fee for lost licenses. We do strongly recommend that you backup the license to floppy for safe-keeping.
+Q5: What happened to lowlevel driver options that were available in the past?
+A5: With OSS v3.99.2a we did away with lowlevel driver options. The price has increased a bit but the end result is that if you have any number of different devices, one license key will be used to control all the devices. The optional license is need you have a professional audio device.
+
+The new approach makes it simple for customers to just install OSS and get a license key without having to know what sound card they have. Customers with existing licenses should see no problems with the new drivers and the new licensing menachisms. Customers with existing OSS licenses should have no problems adding additiona devices and getting them configured - no additional payment is necessary. 

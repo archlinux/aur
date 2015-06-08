@@ -1,0 +1,29 @@
+diff -durN /oss/build/osscore.c /oss/build/osscore.c
+--- /oss/build/osscore.c	2014-09-04 00:15:31.000000000 +0200
++++ /oss/build/osscore.c	2015-04-25 23:16:19.502116503 +0200
+@@ -1950,8 +1950,13 @@
+     }
+   else
+     {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,0,0)
+       flags[1] = read_cr4 ();
+       write_cr4 (flags[1] | 0x600);	/* Set OSFXSR & OSXMMEXCEPT */
++#else
++      flags[1] = __read_cr4 ();
++      __write_cr4 (flags[1] | 0x600);	/* Set OSFXSR & OSXMMEXCEPT */
++#endif
+       FX_SAVE (envbuf);
+       asm ("fninit");
+       asm ("fwait");
+@@ -1971,7 +1976,11 @@
+   else
+     {
+       FX_RESTORE (envbuf);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,0,0)
+       write_cr4 (flags[1]);	/* Restore cr4 */
++#else
++      __write_cr4 (flags[1]);	/* Restore cr4 */
++#endif
+     }
+   write_cr0 (flags[0]);		/* Restore cr0 */
+ }

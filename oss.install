@@ -1,0 +1,30 @@
+post_install() {
+	echo "Running OSS install script..."
+	sh /usr/lib/oss/build/install.sh &>/dev/null
+	echo
+	echo " Note that OSS can't currently work together with kernel"
+	echo " ALSA modules, so they were moved out by the OSS install"
+	echo " scripts. If you want the ALSA kernel modules back, you can"
+	echo " just remove this package using pacman."
+}
+
+post_upgrade() {
+	echo "Running OSS update script..."
+	sh /usr/lib/oss/build/install.sh &>/dev/null
+
+	if [[ $(vercmp $2 4.2_2006) == "-1" ]]; then
+		echo "libflashsupport.so has been split into a seperate package."
+		echo "If you want flash to use oss, please install libflashsupport-oss"
+	fi
+}
+
+pre_remove() {
+	# Restore any replaced ALSA drivers.
+	sh /usr/lib/oss/scripts/restore_drv.sh
+}
+
+post_remove() {
+	echo " Open Sound System was now removed, and the ALSA kernel"
+	echo " modules were restored."
+}
+
