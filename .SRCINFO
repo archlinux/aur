@@ -1,0 +1,20 @@
+pkgbase = quamachi
+	pkgdesc = A Hamachi GUI for Linux
+	pkgver = 0.7.0
+	pkgrel = 2
+	url = http://Quamachi.Xavion.name
+	install = Quamachi.install
+	arch = any
+	license = LGPL3
+	depends = pyqt
+	depends = logmein-hamachi>=2
+	optdepends = mtr: A ping GUI
+	optdepends = putty: An SSH GUI
+	optdepends = gksu: A SU(do) GUI
+	optdepends = terminal: A shell GUI
+	optdepends = vinagre: A VNC client GUI
+	source = http://prdownloads.sourceforge.net/quamachi/Quamachi-0.7.0.tar.bz2
+	sha1sums = 74aec7977f2fdccb60235bb37f6cdf0797c39886
+
+pkgname = quamachi
+

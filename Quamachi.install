@@ -1,0 +1,51 @@
+# Quamachi: Installer: Arch
+# Contributor: Xavion <Xavion (dot) 0 (at) Gmail (dot) com>
+
+post_install() {
+	# Change file permissions
+	chmod 777 /usr/share/Quamachi/Source/
+	
+	# Add symlink to sys-bin dir
+	ln -s /usr/bin/Quamachi.sh /usr/sbin/
+
+	# Remove old files
+	user_remove
+
+	#/bin/true
+}
+
+post_upgrade() {
+	post_install
+	#/bin/true
+}
+
+pre_remove() {
+	/bin/true
+}
+
+user_remove() {
+	# User
+	if [ ${USER} ]; then
+		export USER=${LOGNAME}
+	fi
+
+	# Home
+	if [ ${SUDO_USER} ]; then
+		export HOME=/home/${SUDO_USER}
+	else
+		export HOME=/home/${USER}
+	fi
+}
+
+post_remove() {
+	rm -rf /usr/share/Quamachi/
+
+	user_remove
+
+	#/bin/true
+}
+
+op=$1
+shift
+
+$op "$@"
