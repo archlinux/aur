@@ -1,0 +1,23 @@
+pkgbase = ksnapshot-frameworks-git
+	pkgdesc = Screen Capture Program
+	pkgver = r684.5900675
+	pkgrel = 1
+	url = http://kde.org/applications/graphics/ksnapshot/
+	install = ksnapshot-frameworks-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = kdoctools
+	makedepends = python
+	depends = libkipi-frameworks-git
+	depends = kparts
+	provides = ksnapshot
+	conflicts = kdegraphics-ksnapshot
+	conflicts = ksnapshot
+	source = git://anongit.kde.org/ksnapshot.git#branch=frameworks
+	sha256sums = SKIP
+
+pkgname = ksnapshot-frameworks-git
+
