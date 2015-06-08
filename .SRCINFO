@@ -1,0 +1,17 @@
+pkgbase = git-etc
+	pkgdesc = Simple daemon for monitoring changes in files
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = http://arcan1s.github.io/projects/git-etc
+	arch = any
+	license = GPL3
+	makedepends = python2
+	depends = git
+	optdepends = python2-pyqt4: for GUI
+	optdepends = xterm: for GUI
+	backup = etc/git-etc.conf
+	source = https://github.com/arcan1s/git-etc/releases/download/V.2.4.0/git-etc-2.4.0-src.tar.xz
+	md5sums = 12488742b563c9a67840554361948dc4
+
+pkgname = git-etc
+
