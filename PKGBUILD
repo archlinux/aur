@@ -8,7 +8,7 @@ pkgdesc='Web-based notebook interface for Sage'
 arch=('any')
 url='http://www.sagemath.org'
 license=('GPL3')
-depends=('sage-mathematics-git' 'python2-twisted' 'python2-flask-oldsessions' 'python2-flask-openid' 'python2-flask-autoindex' 
+depends=('sagemath-git' 'python2-twisted' 'python2-flask-oldsessions' 'python2-flask-openid' 'python2-flask-autoindex' 
 'python2-flask-babel' 'python2-flask-silk' 'python2-webassets')
 optdepends=('python2-pyopenssl: to use the notebook in secure mode')
 makedepends=('gendesk')
