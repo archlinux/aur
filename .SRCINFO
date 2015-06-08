@@ -1,0 +1,20 @@
+pkgbase = numix-circle-icon-theme-git
+	pkgdesc = Circle icon theme from the Numix project
+	pkgver = 0.r1677.fe74d83
+	pkgrel = 1
+	url = http://numixproject.org/
+	install = numix-circle-icon-theme.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = numix-icon-theme-git
+	provides = numix-circle-icon-theme
+	provides = numix-circle-light-icon-theme
+	conflicts = numix-circle-icon-theme
+	conflicts = numix-circle-light-icon-theme
+	options = !strip
+	source = numix-circle-icon-theme::git+https://github.com/numixproject/numix-icon-theme-circle.git
+	sha256sums = SKIP
+
+pkgname = numix-circle-icon-theme-git
+
