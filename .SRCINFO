@@ -1,0 +1,15 @@
+pkgbase = codemod-git
+	pkgdesc = codemod is a tool that assists you with large-scale codebase refactors that can be partially automated but still require human oversight and occassional intervention.
+	pkgver = r5.298d47a
+	pkgrel = 1
+	epoch = 2
+	url = https://github.com/facebook/codemod
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = python2
+	source = codemod-git::git+https://github.com/whhone/codemod.git
+	md5sums = SKIP
+
+pkgname = codemod-git
+
