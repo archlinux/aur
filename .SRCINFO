@@ -1,0 +1,13 @@
+pkgbase = gtk2-theme-dust
+	pkgdesc = A clean, modern remix on the defining aesthetic elements of Ubuntu
+	pkgver = 0.5.1
+	pkgrel = 2
+	url = https://wiki.ubuntu.com/Artwork/Incoming/DustTheme
+	arch = any
+	license = GPL3
+	depends = gtk-engine-murrine
+	source = gtk2-theme-dust-0.5.1.tar.gz::https://code.launchpad.net/dusttheme/0.5/0.5.1/+download/Dust-0.5.tar.gz
+	sha256sums = a7a03d8cd06a35edb9fa0b57c9c6f309d267f801018b57f86ff4710d535da7e1
+
+pkgname = gtk2-theme-dust
+
