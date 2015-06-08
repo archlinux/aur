@@ -1,0 +1,18 @@
+pkgbase = haskell-polyparse
+	pkgdesc = A variety of alternative parser combinator libraries.
+	pkgver = 1.11
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/polyparse
+	install = haskell-polyparse.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = ghc
+	depends = haskell-bytestring
+	depends = haskell-text
+	options = strip
+	source = http://hackage.haskell.org/packages/archive/polyparse/1.11/polyparse-1.11.tar.gz
+	md5sums = 56df08f5256bd777c01a428a003696bc
+
+pkgname = haskell-polyparse
+
