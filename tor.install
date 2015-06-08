@@ -1,0 +1,17 @@
+post_install() {
+  groupadd -g 43 tor &>/dev/null
+  useradd -u 43 -g tor -d /var/lib/tor -s /bin/false tor &> /dev/null
+  chown tor:tor var/lib/tor &> /dev/null
+  chmod 700 var/lib/tor &> /dev/null
+}
+
+post_upgrade() {
+  getent group tor &>/dev/null || groupadd -g 43 tor &>/dev/null
+  getent passwd tor &>/dev/null || useradd -u 43 -g tor -d /var/lib/tor -s /bin/false tor &> /dev/null
+  chown tor:tor var/lib/tor &> /dev/null
+}
+
+pre_remove() {
+  getent passwd tor &>/dev/null && userdel tor &> /dev/null
+  getent group tor &>/dev/null && groupdel tor &> /dev/null
+}

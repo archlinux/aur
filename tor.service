@@ -1,0 +1,13 @@
+[Unit]
+Description=Anonymizing Overlay Network
+After=network.target
+
+[Service]
+User=tor
+Type=simple
+ExecStart=/usr/bin/tor -f /etc/tor/torrc
+KillSignal=SIGINT
+LimitNOFILE=8192
+
+[Install]
+WantedBy=multi-user.target
