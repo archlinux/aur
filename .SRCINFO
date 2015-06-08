@@ -1,0 +1,28 @@
+pkgbase = perl-moosex-emulate-class-accessor-fast
+	pkgdesc = 'Emulate Class::Accessor::Fast behavior using Moose attributes'
+	pkgver = 0.00903
+	pkgrel = 2
+	url = http://search.cpan.org/dist/MooseX-Emulate-Class-Accessor-Fast
+	arch = i686
+	arch = x86_64
+	license = perl
+	makedepends = perl-test-exception
+	makedepends = perl
+	depends = perl-namespace-clean
+	depends = perl-moose
+	provides = moosex-emulate-class-accessor-fast=0.00903
+	provides = MooseX::Emulate::Class::Accessor::Fast::Meta::Accessor=undef
+	provides = perl-moosex-emulate-class-accessor-fast-meta-accessor=undef
+	provides = MooseX::Emulate::Class::Accessor::Fast::Meta::Role::Attribute=undef
+	provides = perl-moosex-emulate-class-accessor-fast-meta-role-attribute=undef
+	provides = MooseX::Emulate::Class::Accessor::Fast=0.00903
+	provides = perl-moosex-emulate-class-accessor-fast=0.00903
+	provides = MooseX::Adopt::Class::Accessor::Fast=0.00903
+	provides = perl-moosex-adopt-class-accessor-fast=0.00903
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/F/FL/FLORA/MooseX-Emulate-Class-Accessor-Fast-0.00903.tar.gz
+	md5sums = edb0d626207e7db61154b5cc65112638
+	sha512sums = 5205589b905449855e34c3772a9d18140352fc964a400fda53c0fee63da19116655d992c1bf1bae1bdfea4c2464fc579bb443d878291644152e1b851827897eb
+
+pkgname = perl-moosex-emulate-class-accessor-fast
+
