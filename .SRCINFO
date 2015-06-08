@@ -1,0 +1,15 @@
+pkgbase = eclipse-asm
+	pkgdesc = A assembler plugin for Eclipse
+	pkgver = 1.0.1
+	pkgrel = 3
+	url = http://asmplugin.sourceforge.net/
+	arch = any
+	license = GPL
+	makedepends = unzip
+	depends = eclipse
+	noextract = asm_plugin_1.0.1.zip
+	source = http://downloads.sourceforge.net/project/asmplugin/ASM%20Plugin/ASM%20Plugin%20Version%201.0.1/asm_plugin_1.0.1.zip
+	sha256sums = 99d5650a90ec4889d45e944659e8874c24087f9c037501fca6929a02e7888e84
+
+pkgname = eclipse-asm
+
