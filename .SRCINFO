@@ -1,0 +1,29 @@
+pkgbase = spigot
+	pkgdesc = High performance Minecraft server implementation
+	pkgver = 1.8.7
+	pkgrel = 1
+	url = http://www.spigotmc.org/
+	install = spigot.install
+	arch = any
+	license = LGPL
+	makedepends = java-environment
+	makedepends = git
+	depends = java-runtime-headless
+	depends = tmux
+	depends = sudo
+	depends = fontconfig
+	provides = bukkit
+	provides = craftbukkit=1.8.7
+	conflicts = bukkit
+	conflicts = craftbukkit
+	conflicts = spigot-patcher
+	noextract = BuildTools.jar
+	source = https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
+	source = spigot.service
+	source = spigot.sh
+	md5sums = SKIP
+	md5sums = 55eb03d443e1aa1a013aa01798e056d4
+	md5sums = 8933d1710304dfdf99632f53551672ef
+
+pkgname = spigot
+

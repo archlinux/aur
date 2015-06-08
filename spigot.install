@@ -1,0 +1,18 @@
+post_install() {
+  getent group craftbukkit >/dev/null 2>&1 || groupadd craftbukkit
+  getent passwd craftbukkit >/dev/null 2>&1 || useradd -g craftbukkit -d /srv/craftbukkit -s /bin/bash craftbukkit
+  chown -R craftbukkit:craftbukkit /srv/craftbukkit/
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  if getent passwd craftbukkit >/dev/null 2>&1; then
+    userdel craftbukkit
+  fi
+  if getent group craftbukkit >/dev/null 2>&1; then
+    groupdel craftbukkit
+  fi
+}

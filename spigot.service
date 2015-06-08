@@ -1,0 +1,11 @@
+[Unit]
+Description=Spigot
+After=local-fs.target network.target
+
+[Service]
+ExecStart=/srv/craftbukkit/spigot.sh start
+ExecStop=/srv/craftbukkit/spigot.sh stop
+Type=forking
+
+[Install]
+WantedBy=multi-user.target
