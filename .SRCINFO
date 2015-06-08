@@ -1,0 +1,15 @@
+pkgbase = fskit-git
+	pkgdesc = Filesystem utility library and SDK
+	pkgver = r197.e626604
+	pkgrel = 1
+	url = https://github.com/jcnelson/fskit.git
+	arch = x86_64
+	arch = i686
+	license = ISC
+	depends = fuse
+	provides = fskit
+	source = fskit-git::git+https://github.com/jcnelson/fskit.git
+	sha1sums = SKIP
+
+pkgname = fskit-git
+
