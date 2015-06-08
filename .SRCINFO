@@ -1,0 +1,13 @@
+pkgbase = gtk2-theme-dust-extras
+	pkgdesc = Sand/Burnt/Bordered variations of Dust
+	pkgver = 0.5.1
+	pkgrel = 2
+	url = https://wiki.ubuntu.com/Artwork/Incoming/DustTheme
+	arch = any
+	license = GPL3
+	depends = gtk-engine-murrine
+	source = gtk2-theme-dust-extras-0.5.1.tar.gz::https://code.launchpad.net/dusttheme/0.5/0.5.1/+download/Dust-extras-0.5.tar.gz
+	sha256sums = c917773e2d0fb2b5e06d778fedd782e4975ee26de98ad33f7c07d89f216e8118
+
+pkgname = gtk2-theme-dust-extras
+
