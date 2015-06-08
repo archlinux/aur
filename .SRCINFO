@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-temporalsoften2-git
+	pkgdesc = Plugin for Vapoursynth: temporalsoften2 (GIT version)
+	pkgver = v0.1.1.0.g7c72c4d
+	pkgrel = 2
+	url = http://forum.doom9.org/showthread.php?t=166769
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	depends = vapoursynth
+	provides = vapoursynth-plugin-temporalsoften2
+	conflicts = vapoursynth-plugin-temporalsoften2
+	source = temporalsoften2::git+https://github.com/alucryd/vapoursynth-temporalsoften2.git
+	md5sums = SKIP
+
+pkgname = vapoursynth-plugin-temporalsoften2-git
+
