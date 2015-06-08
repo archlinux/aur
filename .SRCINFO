@@ -1,0 +1,28 @@
+pkgbase = openturns
+	pkgdesc = Uncertainty treatment library in C++/Python
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://www.openturns.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = python
+	makedepends = python-sphinx
+	makedepends = r
+	makedepends = cmake
+	makedepends = gcc-fortran
+	makedepends = swig
+	makedepends = boost
+	depends = libxml2
+	depends = muparser
+	depends = intel-tbb
+	depends = hmat-oss
+	depends = python
+	optdepends = r: plotting, linear model, truncated normal distribution estimation and statistical tests
+	optdepends = python-matplotlib: nicer plotting
+	backup = etc/openturns/openturns.conf
+	source = http://downloads.sourceforge.net/sourceforge/openturns/openturns/openturns-1.5.tar.bz2
+	md5sums = 2622a0c0884014bf59cb6f34c48e7ff7
+
+pkgname = openturns
+
