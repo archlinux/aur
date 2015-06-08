@@ -1,0 +1,19 @@
+pkgbase = python-gol
+	pkgdesc = A python implementation of Conway's Game of Life using the curses module with a small evolutionary twist.
+	pkgver = 0.78.r0.g8ad3a64
+	pkgrel = 3
+	url = https://github.com/iiSeymour/game-of-life
+	install = python-gol.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = python
+	conflicts = python2-gol
+	replaces = python2-gol
+	options = !emptydirs
+	source = python-gol::git+https://github.com/iiSeymour/game-of-life.git
+	md5sums = SKIP
+
+pkgname = python-gol
+

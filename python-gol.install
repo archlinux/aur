@@ -1,0 +1,4 @@
+## arg 1:  the new package version
+post_install() {
+	echo "Run gol to launch the game of life."
+}
