@@ -1,0 +1,18 @@
+pkgbase = awf-git
+	pkgdesc = A theme preview application for gtk2 and gtk3
+	pkgver = v1.3.0.r0.g191e428
+	pkgrel = 1
+	url = https://github.com/valr/awf
+	install = awf.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = gtk2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	source = awf-git::git+https://github.com/valr/awf.git
+	md5sums = SKIP
+
+pkgname = awf-git
+
