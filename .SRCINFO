@@ -1,0 +1,26 @@
+pkgbase = lilo-git
+	pkgdesc = Current git tree of a bootloader for Linux
+	pkgver = 164.f85a56e
+	pkgrel = 1
+	url = https://alioth.debian.org/projects/lilo/
+	install = lilo.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = bin86
+	makedepends = sharutils
+	makedepends = git
+	depends = device-mapper
+	depends = coreutils
+	optdepends = perl: to use keytab-lilo
+	provides = lilo
+	replaces = lilo
+	options = !makeflags
+	backup = etc/lilo.conf
+	source = git+https://alioth.debian.org/anonscm/git/lilo/lilo.git
+	source = lilo.conf
+	md5sums = SKIP
+	md5sums = ca2d8cd9b63f11444861939b42df29c1
+
+pkgname = lilo-git
+

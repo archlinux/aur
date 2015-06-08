@@ -1,0 +1,5 @@
+post_upgrade() {
+  echo
+  echo "If you use the LILO bootloader, you should run 'lilo' after upgrading."
+  echo
+}
