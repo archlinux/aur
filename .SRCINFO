@@ -1,0 +1,17 @@
+pkgbase = wcgbrowser-git
+	pkgdesc = A web browser for kiosk systems.
+	pkgver = r117.ab48482
+	pkgrel = 3
+	url = http://www.alandmoore.com/wcgbrowser/wcgbrowser.html
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python-yaml
+	depends = python-pyqt5
+	depends = qt5-webkit
+	backup = etc/wcgbrowser.yaml
+	source = git+https://github.com/alandmoore/wcgbrowser.git
+	md5sums = SKIP
+
+pkgname = wcgbrowser-git
+
