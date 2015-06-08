@@ -1,0 +1,13 @@
+pkgbase = nodejs-http-proxy
+	pkgdesc = HTTP proxying for the masses
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://github.com/nodejitsu/node-http-proxy
+	arch = any
+	depends = nodejs
+	noextract = http-proxy-1.9.0.tgz
+	source = http://registry.npmjs.org/http-proxy/-/http-proxy-1.9.0.tgz
+	sha1sums = adbb99b55027e15e802ef32737d2de3b88ef52a6
+
+pkgname = nodejs-http-proxy
+
