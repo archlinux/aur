@@ -1,0 +1,12 @@
+pkgbase = ovmf-bin
+	pkgdesc = Prebuild UEFI firmware for qemu etc.
+	pkgver = 15214
+	pkgrel = 2
+	url = http://tianocore.github.io/ovmf/
+	arch = x86_64
+	license = BSD
+	source = http://downloads.sourceforge.net/edk2/OVMF/OVMF-X64-r15214.zip
+	md5sums = e83e00f9348f6b004bab7f4489653147
+
+pkgname = ovmf-bin
+
