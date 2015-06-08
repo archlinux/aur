@@ -1,0 +1,14 @@
+pkgbase = nodejs-bower
+	pkgdesc = The browser package manager
+	pkgver = 1.4.1
+	pkgrel = 3
+	url = https://github.com/twitter/bower
+	arch = any
+	license = MIT
+	depends = npm
+	noextract = bower-1.4.1.tgz
+	source = http://registry.npmjs.org/bower/-/bower-1.4.1.tgz
+	md5sums = df81b015316062da0ac7ab64a4677fb2
+
+pkgname = nodejs-bower
+
