@@ -1,0 +1,23 @@
+pkgbase = rlvm
+	pkgdesc = RealLive clone for Linux and OSX
+	pkgver = 0.14
+	pkgrel = 2
+	url = http://www.elliotglaysher.org/rlvm/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = scons
+	makedepends = boost
+	depends = boost-libs>=1.46
+	depends = glew
+	depends = libmad
+	depends = sdl_mixer
+	depends = sdl_image
+	depends = sdl_ttf
+	source = https://github.com/eglaysher/rlvm/archive/release-0.14.tar.gz
+	source = luabind.patch
+	md5sums = 03a7df65cf22bba83547d412fd07e941
+	md5sums = ed77bb39c013519544f16a4db7c17f3a
+
+pkgname = rlvm
+
