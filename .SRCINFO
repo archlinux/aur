@@ -1,0 +1,17 @@
+pkgbase = nbwmon-git
+	pkgdesc = ncurses bandwidth monitor
+	pkgver = r155.f159b35
+	pkgrel = 1
+	url = https://github.com/causes-/nbwmon
+	arch = i686
+	arch = x86_64
+	license = custom:MIT/X
+	makedepends = git
+	depends = ncurses
+	provides = nbwmon
+	conflicts = nbwmon
+	source = nbwmon::git+https://github.com/causes-/nbwmon.git
+	sha256sums = SKIP
+
+pkgname = nbwmon-git
+
