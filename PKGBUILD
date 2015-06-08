@@ -1,13 +1,13 @@
 pkgname=inadyn-mt
 pkgver=2.24.46
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple dynamic DNS client based on inadyn"
 arch=('i686' 'x86_64')
 url="http://inadyn-mt.sourceforge.net/"
 license=('GPL3')
 depends=('glibc' 'libao')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname.v.0$pkgver.tar.gz)
-md5sums=('e868ab86df2eb20a1d98c11e8564e52c')
+md5sums=('f601daacb43f8313e3cf65285755b074')
 
 build() {
   cd "$pkgname.v.0$pkgver"

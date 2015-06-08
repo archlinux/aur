@@ -1,7 +1,7 @@
 pkgbase = inadyn-mt
 	pkgdesc = A simple dynamic DNS client based on inadyn
 	pkgver = 2.24.46
-	pkgrel = 1
+	pkgrel = 2
 	url = http://inadyn-mt.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = inadyn-mt
 	depends = glibc
 	depends = libao
 	source = http://downloads.sourceforge.net/inadyn-mt/inadyn-mt.v.02.24.46.tar.gz
-	md5sums = e868ab86df2eb20a1d98c11e8564e52c
+	md5sums = f601daacb43f8313e3cf65285755b074
 
 pkgname = inadyn-mt
 
