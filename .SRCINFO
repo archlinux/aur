@@ -1,0 +1,17 @@
+pkgbase = pencil-material-icons-git
+	pkgdesc = All 700+ of Google's Material Design Icons as a Pencil stencil collection.
+	pkgver = 1.1.0.r0.g47d2800
+	pkgrel = 2
+	url = https://github.com/nathanielw/Material-Icons-for-Pencil/
+	arch = any
+	makedepends = pacman>=4.1.2
+	makedepends = git
+	makedepends = python
+	makedepends = python-lxml
+	makedepends = python-cairosvg
+	depends = pencil
+	source = git+https://github.com/nathanielw/Material-Icons-for-Pencil.git
+	md5sums = SKIP
+
+pkgname = pencil-material-icons-git
+
