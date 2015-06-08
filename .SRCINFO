@@ -1,0 +1,20 @@
+pkgbase = apkanalyser
+	pkgdesc = Powerful tool to analyse your APKs
+	pkgver = 5.2
+	pkgrel = 2
+	url = http://developer.sonymobile.com/wp/2012/04/13/powerful-tool-to-analyse-your-apks-now-released-open-source/
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = maven
+	makedepends = git
+	depends = java-runtime
+	provides = apkanalyser
+	conflicts = apkanalyser-git
+	source = apkanalyser.sh
+	source = apkanalyser.desktop
+	md5sums = 8c179b61dd1c8d5417242df5d72835b3
+	md5sums = 986540ff04cfdf84ce0b30732174eabe
+
+pkgname = apkanalyser
+

@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=ApkAnalyser
+GenericName=ApkAnalyser
+Exec=/usr/bin/apkanalyser
+Terminal=false
+Type=Application
+Categories=Development;Java
+StartupNotify=false
+
