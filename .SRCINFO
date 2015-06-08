@@ -1,0 +1,15 @@
+pkgbase = systemd-dummy
+	pkgdesc = A dummy package to provide systemd
+	pkgver = 1
+	pkgrel = 3
+	epoch = 1
+	url = http://www.freedesktop.org/wiki/Software/systemd
+	arch = any
+	license = GPL2
+	license = LGPL2.1
+	license = MIT
+	depends = libsystemd
+	provides = systemd=218
+
+pkgname = systemd-dummy
+
