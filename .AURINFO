@@ -1,0 +1,22 @@
+pkgbase = rekonq-frameworks-git
+	pkgdesc = A WebKit based web browser for KDE
+	pkgver = r3726.c60e5b0
+	pkgrel = 1
+	url = http://rekonq.kde.org/
+	install = rekonq-frameworks-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = python
+	depends = kcmutils
+	depends = kdewebkit
+	depends = kinit
+	provides = rekonq
+	conflicts = rekonq
+	source = git://anongit.kde.org/rekonq.git#branch=frameworks
+	sha256sums = SKIP
+
+pkgname = rekonq-frameworks-git
+
