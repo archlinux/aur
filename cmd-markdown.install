@@ -1,0 +1,9 @@
+
+post_install() {
+    echo 'Updating desktop database'
+    update-desktop-database
+}
+
+post_remove() {
+    post_install
+}

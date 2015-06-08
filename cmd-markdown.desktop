@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Categories=Office;Applications;TextEditor;
+Name=Cmd Markdown
+Comment=An enhanced Markdown editor
+Encoding=UTF-8
+Exec=cmd-markdown
