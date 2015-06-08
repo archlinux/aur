@@ -1,0 +1,13 @@
+diff --git a/src/kimchi/proxy.py b/src/kimchi/proxy.py
+index 9238147..22b5d62 100644
+--- a/src/kimchi/proxy.py
++++ b/src/kimchi/proxy.py
+@@ -47,7 +47,7 @@ def _create_proxy_config(options):
+     # User that will run the worker process of the proxy. Fedora,
+     # RHEL and Suse creates an user called 'nginx' when installing
+     # the proxy. Ubuntu creates an user 'www-data' for it.
+-    user_proxy = 'nginx'
++    user_proxy = 'http'
+     try:
+         pwd.getpwnam(user_proxy)
+     except KeyError:

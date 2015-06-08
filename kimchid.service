@@ -1,0 +1,14 @@
+[Unit]
+Description=Kimchi KVM Manager
+After=libvirtd.service
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=30
+ExecStart=/usr/bin/kimchid   --access-log=/var/log/kimchid-access.log 
+StandardOutput=journal+console
+
+[Install]
+WantedBy=multi-user.target
+

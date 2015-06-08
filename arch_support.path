@@ -1,0 +1,12 @@
+diff -rupN a/src/kimchi/model/host.py b/src/kimchi/model/host.py
+--- a/src/kimchi/model/host.py	2015-04-29 01:08:57.522443771 +0200
++++ b/src/kimchi/model/host.py	2015-04-29 01:10:31.341863872 +0200
+@@ -91,7 +91,7 @@ class HostModel(object):
+         res['memory'] = psutil.TOTAL_PHYMEM
+ 
+         # Include IBM PowerKVM name to supported distro names
+-        _sup_distros = platform._supported_dists + ('ibm_powerkvm',)
++        _sup_distros = platform._supported_dists + ('ibm_powerkvm','arch',)
+         # 'fedora' '17' 'Beefy Miracle'
+         distro, version, codename = platform.linux_distribution(
+             supported_dists=_sup_distros)
