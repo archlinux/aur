@@ -1,4 +1,4 @@
-# Maintainer: Patrik Plihal <patrik.plihal@gmail.com>
+# Maintainer: Patrik Plihal <patrik.plihal at gmail dot com>
 
 pkgname=ckan
 pkgver=1.6.21
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('curl' 'mono')
 
 source=("https://github.com/KSP-CKAN/CKAN/releases/download/v${pkgver}/ckan.exe")
-md5sums=('36ca7cb245646ca3866e7bf0c120a520')
+sha256sums=('e1f46d68f011089da6464dbced1c4ae2e1043a46212670ce8b73639209bd0cd8')
 
 package() {
   mkdir -p "$pkgdir/usr/bin/"
