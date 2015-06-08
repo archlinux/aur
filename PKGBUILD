@@ -2,9 +2,9 @@
 
 pkgname=imgur
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Upload image to imgur.com image sharing service."
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://imgur.com/apps"
 license=('GPL')
 depends=('curl' 'bash')
