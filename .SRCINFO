@@ -1,0 +1,15 @@
+pkgbase = eclipse-mdt-ocl
+	pkgdesc = Eclipse Model Development Tools (Object Constraint Language subproject)
+	pkgver = 5.0.1
+	pkgrel = 1
+	url = http://www.eclipse.org/modeling/mdt/?project=ocl
+	arch = i686
+	arch = x86_64
+	license = EPL
+	makedepends = unzip
+	depends = eclipse-mdt-uml2
+	source = http://www.eclipse.org/downloads/download.php?r=1&file=/modeling/mdt/ocl/downloads/drops/5.0.1/R201406230143/mdt-ocl-runtime-5.0.1.zip
+	md5sums = 12c5670ba2fcbfff971b5a4d2605fd09
+
+pkgname = eclipse-mdt-ocl
+
