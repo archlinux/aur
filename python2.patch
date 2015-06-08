@@ -1,0 +1,21 @@
+diff -aur expyriment-0.7.0.orig/CHANGES.md expyriment-0.7.0/CHANGES.md
+--- expyriment-0.7.0.orig/CHANGES.md	2014-04-10 11:47:10.975914182 +0100
++++ expyriment-0.7.0/CHANGES.md	2014-04-10 11:47:52.995588231 +0100
+@@ -209,7 +209,7 @@
+   - extra plugins can be now also included in the folder 
+     $HOME/.expyriment/<module_name>/  (or ~expyriment)
+ - command line interface: 
+-  - see "python -m expyriment.cli -h" for help
++  - see "python2 -m expyriment.cli -h" for help
+ - better on- and offline documentation:
+   - new function: expyriment.show_documentation()
+   - new Api Reference Tool (API browse and search GUI)
+diff -aur expyriment-0.7.0.orig/setup.py expyriment-0.7.0/setup.py
+--- expyriment-0.7.0.orig/setup.py	2014-04-10 11:47:10.979247489 +0100
++++ expyriment-0.7.0/setup.py	2014-04-10 11:47:35.982386869 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ """
+ Setup file for Expyriment
+ """
