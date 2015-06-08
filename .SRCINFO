@@ -1,0 +1,19 @@
+pkgbase = trash-py
+	pkgdesc = A cli trash in python 3
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.art-software.fr
+	arch = any
+	license = GPL
+	depends = coreutils
+	depends = gettext
+	depends = python>=3.4
+	source = Trash.py
+	source = en.po
+	source = fr.po
+	md5sums = 4ad5337338eeff9f0e0429c151faaad6
+	md5sums = ded9fa8a6f295d34b11e852c1cd48062
+	md5sums = b1b74c67e04ea5ca142075e8256f562f
+
+pkgname = trash-py
+

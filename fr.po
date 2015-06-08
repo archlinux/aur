@@ -1,0 +1,76 @@
+# Trash locale files.
+# Copyright (C) 2015, Art SoftWare
+# This file is distributed under the GNU GPLv2 or above.
+# Adrien Sohier <support@art-software.fr>, 2015.
+msgid ""
+msgstr ""
+"Project-Id-Version: 2.0\n"
+"Report-Msgid-Bugs-To: <support@art-software.fr>\n"
+"POT-Creation-Date: 2015-06-06 18:18+0200\n"
+"PO-Revision-Date: 2015-06-06 18:22+0200\n"
+"Last-Translator:  <support@art-software.fr>\n"
+"Language-Team: French\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: Trash.py:41
+#, python-brace-format
+msgid "Trashed [{itemId}] {path}"
+msgstr "Déplacé [{itemId}] {path} dans la corbeille"
+
+#: Trash.py:48
+#, python-format
+msgid "Total size : %s\n"
+msgstr "Taille totale : %s\n"
+
+#: Trash.py:68 Trash.py:83
+#, python-brace-format
+msgid "ERR: Item #{itemId} was not found in the trash."
+msgstr "ERR: L'élément #{itemId} n'a pas été trouvé dans la Corbeille."
+
+#: Trash.py:76
+#, python-brace-format
+msgid "Dropped [{itemId}] {itemPath}"
+msgstr "[{itemId}] {itemPath} a été abandonné"
+
+#: Trash.py:92
+#, python-brace-format
+msgid "Restored [{itemId}] {itemPath}"
+msgstr "[{itemId}] {itemPath} a été restauré"
+
+#: Trash.py:97
+#, python-format
+msgid "Ordering items… %s"
+msgstr "Arrangement des éléments… %s"
+
+#: Trash.py:102
+#, python-brace-format
+msgid "\rMoved {old} to {new}[0K"
+msgstr "\rDéplacement de {old} vers {new}[0K"
+
+#: Trash.py:105
+#, python-brace-format
+msgid "\r[1;31mERR:[0m Item #{itemId} does not exist under {path}, deleting its metadata[0K"
+msgstr "\r[1;31mERR:[0m L'élément #{itemId} n'existe pas dans {path}, suppression de ses métadonnées[0K"
+
+#: Trash.py:112
+#, python-brace-format
+msgid "[1;33mWARNING:[0m {items} item(s) were not found in {place} and cleaned."
+msgstr "[1;33mATTENTION:[0m {items} élément(s) n'ont pas été trouvés dans {place} et nettoyé(s)."
+
+#: Trash.py:116
+msgid "\n"
+"- put:\t\tPut items to trash\n"
+"- list:\t\tList trashed items with their id\n"
+"- drop:\t\tDrop items from the trash\n"
+"- restore:\tRestore items from the trash to their original path\n"
+"- gc:\t\tReorder items"
+msgstr "\n"
+"- put:\t\tMettre les éléments dans la Corbeille\n"
+"- list:\t\tListe les éléments mis en Corbeille avec leur numéro identifiant\n"
+"- drop:\t\tAbandonne des éléments de la Corbeille\n"
+"- restore:\tRestaure des éléments de la Corbeille dans leur emplacement originel\n"
+"- gc:\t\tRéorganise les éléments de la Corbeille"
