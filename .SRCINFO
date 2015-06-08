@@ -1,0 +1,24 @@
+pkgbase = tartan-git
+	pkgdesc = Clang analysis plugin for GLib and GNOME
+	pkgver = 0.2.0.r122.gf1502e7
+	pkgrel = 1
+	url = https://people.collabora.com/~pwith/gnome-clang/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	makedepends = intltool
+	makedepends = git
+	depends = llvm
+	depends = clang
+	depends = glib2
+	depends = gobject-introspection
+	provides = tartan
+	conflicts = tartan
+	source = git+https://github.com/pwithnall/tartan.git
+	sha256sums = SKIP
+
+pkgname = tartan-git
+
