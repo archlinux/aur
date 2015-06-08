@@ -1,0 +1,17 @@
+pkgbase = eclipse-avr
+	pkgdesc = AVR Plugin for Eclipse
+	pkgver = 2.4.2
+	pkgrel = 1
+	url = http://avr-eclipse.sourceforge.net/wiki/index.php/The_AVR_Eclipse_Plugin
+	arch = any
+	license = EPL
+	depends = eclipse
+	depends = eclipse-cdt
+	depends = avr-gcc
+	depends = avr-libc
+	depends = avrdude
+	source = http://downloads.sourceforge.net/project/avr-eclipse/avr-eclipse%20stable%20release/2.4.2/de.innot.avreclipse.p2repository-2.4.2.zip
+	sha1sums = b30145e87629bfbeefd7e47d6ed7397b4204d749
+
+pkgname = eclipse-avr
+
