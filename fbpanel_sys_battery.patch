@@ -1,0 +1,145 @@
+Index: os_linux.c
+===================================================================
+--- os_linux.c	(revision 513)
++++ os_linux.c	(working copy)
+@@ -1,9 +1,11 @@
+ 
+ #include <string.h>
+ #include <ctype.h>
++#include <stdlib.h>
+ 
+ #define LEN 100
+ #define PROC_ACPI "/proc/acpi/battery/"
++#define SYS_PS "/sys/class/power_supply/"
+ 
+ 
+ static gboolean
+@@ -119,14 +121,126 @@
+     RET(ret);
+ }
+ 
++
+ static gboolean
+-battery_update_os_sys(battery_priv *c)
++read_sys(battery_priv *c, GString *path)
+ {
+-    ENTER;
++  int len, charge_full, charge_now;
++  gchar *buf;
++  gboolean ret, exist, charging;
++
++  ENTER;
++  len = path->len;
++
++  g_string_append(path, "/present");
++  ret = g_file_get_contents(path->str, &buf, 0, NULL);
++  DBG("reading %s %s\n", path->str, ret ? "ok" : "fail");
++  g_string_truncate(path, len);
++  if (!ret)
+     RET(FALSE);
++  exist = (*buf == '1');
++  g_free(buf);
++
++  if (!exist)
++    RET(FALSE);
++
++  g_string_append(path, "/status");
++  ret = g_file_get_contents(path->str, &buf, 0, NULL);
++  DBG("reading %s %s\n", path->str, ret ? "ok" : "fail");
++  g_string_truncate(path, len);
++  if (!ret)
++    RET(FALSE);
++  charging = strcmp(buf,"Discharging\n");
++  if (charging < 0) charging = 1;
++  g_free(buf);
++
++  g_string_append(path, "/energy_full");
++  ret = g_file_test(path->str, G_FILE_TEST_EXISTS);
++  if (!ret) { // check for old charge_full file
++    g_string_truncate(path, len);
++    g_string_append(path, "/charge_full");
++    ret = g_file_test(path->str, G_FILE_TEST_EXISTS);
++    if (!ret) {
++      g_string_truncate(path, len);
++      RET(FALSE);
++    }
++  }
++  ret = g_file_get_contents(path->str, &buf, 0, NULL);
++  DBG("reading %s %s\n", path->str, ret ? "ok" : "fail");
++  g_string_truncate(path, len);
++  if (!ret)
++    RET(FALSE);
++  charge_full = atoi(buf);
++  g_free(buf);
++
++  g_string_append(path, "/energy_now");
++  ret = g_file_test(path->str, G_FILE_TEST_EXISTS);
++  if (!ret) { // check for old charge_now file
++    g_string_truncate(path, len);
++    g_string_append(path, "/charge_now");
++    ret = g_file_test(path->str, G_FILE_TEST_EXISTS);
++    if (!ret) {
++      g_string_truncate(path, len);
++      RET(FALSE);
++    }
++  }
++
++  ret = g_file_get_contents(path->str, &buf, 0, NULL);
++  DBG("reading %s %s\n", path->str, ret ? "ok" : "fail");
++  g_string_truncate(path, len);
++  if (!ret)
++    RET(FALSE);
++  charge_now = atoi(buf);
++  g_free(buf);
++
++  DBG("battery=%s\nfull charge=%d\ncharge now=%d\n"
++      "charging=%d\n",
++      path->str, charge_full, charge_now, charging);
++
++  if (!(charge_full >= charge_now && charge_full > 0 && charge_now >= 0))
++    RET(FALSE);
++
++  c->exist = TRUE;
++  c->charging = charging;
++  c->level = (int) ((gfloat) charge_now * 100 / (gfloat) charge_full);
++  RET(TRUE);
+ }
+ 
+ static gboolean
++battery_update_os_sys(battery_priv *c)
++{
++  GString *path;
++  int len;
++  GDir *dir;
++  gboolean ret = FALSE;
++  const gchar *file;
++
++  ENTER;
++
++  c->exist = FALSE;  
++  path = g_string_sized_new(200);
++  g_string_append(path, SYS_PS);
++  len = path->len;
++  if (!(dir = g_dir_open(path->str, 0, NULL))) 
++    DBG("can't open dir %s\n", path->str);
++  else {
++    while (!ret && (file = g_dir_read_name(dir))) {
++      if (!strcmp(file,"AC")) 
++	continue; // skip the AC dir
++      g_string_append(path, file);
++      DBG("testing %s\n", path->str);
++      ret = g_file_test(path->str, G_FILE_TEST_IS_DIR);
++      if (ret)
++	ret = read_sys(c, path);
++      g_string_truncate(path, len);
++    }
++    g_dir_close(dir);
++  }
++  g_string_free(path, TRUE);
++  RET(ret);
++}
++
++static gboolean
+ battery_update_os(battery_priv *c)
+ {
+     ENTER;

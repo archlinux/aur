@@ -1,0 +1,19 @@
+pkgbase = fbpanel-svn
+	pkgdesc = NetWM compliant desktop panel
+	pkgver = 515
+	pkgrel = 5
+	url = http://fbpanel.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	depends = gtk2
+	provides = fbpanel
+	conflicts = fbpanel
+	source = fbpanel-svn::svn+https://fbpanel.svn.sourceforge.net/svnroot/fbpanel/trunk#revision=515
+	source = https://sourceforge.net/p/fbpanel/patches/_discuss/thread/b77d09e7/4927/attachment/fbpanel_sys_battery.patch
+	md5sums = SKIP
+	md5sums = d0e40eeb3b32e941e2e656bda1da2428
+
+pkgname = fbpanel-svn
+
