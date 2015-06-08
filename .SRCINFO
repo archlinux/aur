@@ -1,0 +1,20 @@
+pkgbase = vdr-remoteosd
+	pkgdesc = Display the menu of a remote VDR as submenu item of your local VDR menu
+	pkgver = 1.0.0
+	pkgrel = 13
+	url = http://vdr.schmirler.de/
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	depends = gcc-libs
+	depends = vdr-api=2.2.0
+	depends = vdr-svdrpservice
+	backup = etc/vdr/conf.avail/50-remoteosd.conf
+	source = http://vdr.schmirler.de/remoteosd/vdr-remoteosd-1.0.0.tgz
+	md5sums = 5ec2756944cdb36808d1332e7e6a87c8
+
+pkgname = vdr-remoteosd
+
