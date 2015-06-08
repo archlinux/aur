@@ -1,0 +1,28 @@
+pkgbase = xiphos-svn
+	pkgdesc = A Bible study tool -- svn version
+	pkgver = 4903
+	pkgrel = 1
+	url = http://xiphos.org
+	install = xiphos-svn.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gnome-common
+	makedepends = gnome-doc-utils
+	makedepends = intltool
+	makedepends = subversion
+	depends = webkitgtk
+	depends = libgsf
+	depends = gconf
+	depends = sword
+	depends = gtkhtml4
+	depends = biblesync
+	provides = gnomesword
+	provides = xiphos
+	conflicts = gnomesword
+	conflicts = xiphos
+	source = xiphos::svn://svn.code.sf.net/p/gnomesword/code/trunk
+	md5sums = SKIP
+
+pkgname = xiphos-svn
+
