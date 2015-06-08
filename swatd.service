@@ -1,0 +1,11 @@
+[Unit]
+Description=SWATd
+
+[Service]
+Type=forking
+PIDFile=/var/run/swatd.pid
+ExecStart=/usr/bin/swatd -p /var/run/swatd.pid
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

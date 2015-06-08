@@ -1,0 +1,15 @@
+pkgbase = swatd-git
+	pkgdesc = A daemon for running scripts when a sensor is triggered
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/defuse/swatd
+	arch = any
+	license = GPL3
+	makedepends = git
+	source = git+https://github.com/defuse/swatd.git
+	source = swatd.service
+	md5sums = SKIP
+	md5sums = 2af1ce0b079d0641764233e81abd2ac9
+
+pkgname = swatd-git
+
