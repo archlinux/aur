@@ -1,0 +1,15 @@
+pkgbase = iceweasel-i18n-sv-se
+	pkgdesc = Swedish language package for Iceweasel
+	pkgver = 38.0.1.deb5
+	pkgrel = 1
+	url = http://www.mozilla.com/
+	arch = any
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = iceweasel>=38.0.1
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-sv-se_38.0.1-5_all.deb
+	sha256sums = 90eb5bf549d138b0a425e9b111709c6df28660685041a56da70173105f87064c
+
+pkgname = iceweasel-i18n-sv-se
+
