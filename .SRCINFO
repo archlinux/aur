@@ -1,0 +1,16 @@
+pkgbase = b43-firmware-classic
+	pkgdesc = Firmware for Broadcom B43 wireless networking chips - trusted release
+	pkgver = 5.100.138
+	pkgrel = 1
+	url = https://wireless.wiki.kernel.org/en/users/Drivers/b43
+	arch = any
+	license = GPL
+	makedepends = b43-fwcutter>=015
+	depends = linux>=3.2
+	conflicts = b43-firmware
+	options = !emptydirs
+	source = http://www.lwfinger.com/b43-firmware/broadcom-wl-5.100.138.tar.bz2
+	sha1sums = 21691a8c99c66f58d18f863ee43593d1633b454c
+
+pkgname = b43-firmware-classic
+
