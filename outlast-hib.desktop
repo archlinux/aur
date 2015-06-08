@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Outlast
+GenericName=Outlast
+Comment=Hell is an experiment you can't survive in Outlast.
+Exec=outlast
+Icon=outlast
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Game;AudioVideo;

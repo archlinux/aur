@@ -1,0 +1,17 @@
+pkgbase = outlast-hib
+	pkgdesc = Hell is an experiment you can't survive in Outlast.
+	pkgver = 1.01
+	pkgrel = 2
+	url = http://www.redbarrelsgames.com/
+	arch = i686
+	arch = x86_64
+	license = custom: commercial
+	depends = libvorbis
+	depends = sdl2
+	source = hib://Outlast-1.01.sh
+	source = outlast-hib.desktop
+	sha256sums = 76d2f1253f0e29a02712bb05c87ddca2b14af98b65ba42220c180e00ec7e7ff3
+	sha256sums = 15884e4cf9229071fc8e1813f76f1c869c727332af2abda6410d80a829e96d3f
+
+pkgname = outlast-hib
+
