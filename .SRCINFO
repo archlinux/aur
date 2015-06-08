@@ -1,0 +1,26 @@
+pkgbase = amnesia-tdd-hib
+	pkgdesc = Amnesia: The Dark Descent is a first person survival horror game. (Humble Bundle version)
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = http://www.amnesiagame.com/
+	arch = i686
+	arch = x86_64
+	license = custom: commercial
+	makedepends = unzip
+	depends = sdl2
+	depends = glu
+	depends = openal
+	depends = libtheora
+	depends = libvorbis
+	depends = libxft
+	conflicts = amnesia-tdd
+	noextract = amnesia_tdd_1.3.1.sh
+	source = hib://amnesia_tdd_1.3.1.sh
+	source = amnesia-tdd-hib-justine.sh
+	source = amnesia-tdd-hib.desktop
+	sha256sums = 00b4486d64e0ed4c64dd3f1e718adf08a063fede4b5bb215fbda5e6c034d013a
+	sha256sums = 3cf52e2a5eab7154e182a7c3a6d3172f647df1e5c1d06cc9115c8dc95f0478da
+	sha256sums = bf7c6c5d1c214ca47e8cbb38dc175ca1e258ef1a44a2dd480d4a60ec0c98d7e0
+
+pkgname = amnesia-tdd-hib
+

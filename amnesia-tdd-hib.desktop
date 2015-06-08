@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Amnesia: The Dark Descent
+Comment=Play Amnesia: The Dark Descent
+Exec=amnesia-tdd-hib-launcher
+Icon=amnesia-tdd-hib
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;AudioVideo;
+Encoding=UTF-8
