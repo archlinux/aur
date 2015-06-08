@@ -1,0 +1,36 @@
+diff -Naur a/src/lib/common.py b/src/lib/common.py
+--- a/src/lib/common.py  2013-11-29 11:11:49.984403976 -0600
++++ b/src/lib/common.py   2013-11-29 11:12:05.587848645 -0600
+@@ -16,9 +16,9 @@
+ # You should have received a copy of the GNU General Public License
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+-import os.path, dbus.service
++import os, dbus.service
+ 
+-CONFIG_DIR = os.path.expanduser("~/.config/autokey")
++CONFIG_DIR = os.environ.get('XDG_CONFIG_HOME', os.path.expanduser('~/.config')) + "/autokey"
+ LOCK_FILE = CONFIG_DIR + "/autokey.pid"
+ LOG_FILE = CONFIG_DIR + "/autokey.log"
+ MAX_LOG_SIZE = 5 * 1024 * 1024 # 5 megabytes
+diff -Naur a/src/lib/configmanager.py b/src/lib/configmanager.py
+--- a/src/lib/configmanager.py   2013-11-29 11:14:09.502066124 -0600
++++ b/src/lib/configmanager.py    2013-11-29 11:18:11.717820312 -0600
+@@ -15,7 +15,7 @@
+ # You should have received a copy of the GNU General Public License
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+-import os, os.path, shutil, logging, pickle, glob, threading, subprocess
++import os, shutil, logging, pickle, glob, threading, subprocess
+ import iomediator, interface, common, monitor
+ 
+ try:
+@@ -26,7 +26,7 @@
+ 
+ _logger = logging.getLogger("config-manager")
+ 
+-CONFIG_DIR = os.path.expanduser("~/.config/autokey")
++CONFIG_DIR = os.environ.get('XDG_CONFIG_HOME', os.path.expanduser('~/.config')) + "/autokey"
+ CONFIG_FILE = os.path.join(CONFIG_DIR, "autokey.json")
+ CONFIG_DEFAULT_FOLDER = os.path.join(CONFIG_DIR, "data")
+ CONFIG_FILE_BACKUP = CONFIG_FILE + '~'

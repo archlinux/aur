@@ -1,0 +1,25 @@
+pkgbase = autokey-data-xdg
+	pkgdesc = A text expansion/replacement and hotkey utility for Linux and X11, with XDG basedir patch.
+	pkgver = 0.90.4
+	pkgrel = 2
+	url = http://code.google.com/p/autokey/
+	install = autokey-data-xdg.install
+	arch = any
+	license = GPL3
+	depends = hicolor-icon-theme
+	depends = python2-dbus
+	depends = python2-pyinotify
+	depends = python2-xlib
+	depends = wmctrl
+	depends = zenity
+	optdepends = pyatspi: at-spi support
+	provides = autokey-data=0.90.4
+	conflicts = autokey
+	conflicts = autokey-data
+	source = https://autokey.googlecode.com/files/autokey-0.90.4.tar.gz
+	source = autokey.xdg.patch
+	sha256sums = 7352c94ca984f1ba049f0b0d832abe47005cf65567904e5404c73e90358117e4
+	sha256sums = 8ceecd4202b01b46c2eb368f1c38e33e958941b265f6a23b701961f731fbc0c7
+
+pkgname = autokey-data-xdg
+
