@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=The Cat lady
+GenericName=The Cat lady
+Comment=Play The Cat lady
+Exec=ags /opt/gog-the-cat-lady/Cat\ Lady.exe
+Icon=gog-the-cat-lady
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Game;AudioVideo;
