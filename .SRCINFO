@@ -1,0 +1,17 @@
+pkgbase = haskell-monadlib
+	pkgdesc = A collection of monad transformers.
+	pkgver = 3.7.3
+	pkgrel = 1
+	url = http://wiki.github.com/yav/monadlib
+	install = haskell-monadlib.install
+	arch = i686
+	arch = x86_64
+	license = BSD3
+	depends = ghc
+	depends = sh
+	options = strip
+	source = http://hackage.haskell.org/packages/archive/monadLib/3.7.3/monadLib-3.7.3.tar.gz
+	sha256sums = 1834a77560d9df7ab0bc43ce24c77ffc660fc84573730ea94cb6e4ab8dcca99e
+
+pkgname = haskell-monadlib
+
