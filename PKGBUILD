@@ -1,12 +1,12 @@
 # Maintainer: Reventlov <contact+aur@volcanis.me>
 pkgname=searx-git
-pkgver=v0.7.0.r76.g9981725
+pkgver=v0.7.0.r212.gf2cbefe
 pkgrel=1
 pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
 url="https://searx.0x2a.tk/"
 license=('AGPL')
-depends=('python2-flask' 'python2-flask-babel' 'python2-requests' 'python2-lxml' 'python2-yaml' 'python2-dateutil' 'python2-pygments')
+depends=('python2-flask' 'python2-flask-babel' 'python2-requests' 'python2-lxml' 'python2-yaml' 'python2-dateutil' 'python2-pygments' 'python2-certifi' 'python2-pyasn1-modules' 'python2-ndg-httpsclient')
 makedepends=('git')
 backup=('usr/lib/python2.7/site-packages/searx/settings.yml')
 install=searx.install
