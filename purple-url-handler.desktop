@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Purple URL handler
+Comment=Handle URL Scheme xmpp:// and irc://
+Icon=pidgin
+NoDisplay=true
+Categories=Network;Utility;
+Exec=purple-url-handler %u
+Terminal=false
+MimeType=x-scheme-handler/xmpp;x-scheme-handler/irc;
+X-Desktop-File-Install-Version=0.21

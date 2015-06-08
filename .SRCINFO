@@ -1,0 +1,15 @@
+pkgbase = purple-url-handler
+	pkgdesc = Open xmpp:// and irc:// URLs in Pidgin
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = http://github.com/MrZYX/PKGBUILDs/tree/master/purple-url-handler
+	install = purple-url-handler.install
+	arch = any
+	license = MIT
+	depends = desktop-file-utils
+	depends = libpurple
+	source = purple-url-handler.desktop
+	sha256sums = 72b5262adf53bde1dad09923498de59ac8a4e35e1a6fbcf789ab4df15b0ef1b2
+
+pkgname = purple-url-handler
+
