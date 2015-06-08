@@ -1,0 +1,20 @@
+pkgbase = psp-sdk-base
+	pkgdesc = An open-source SDK for PSP homebrew development (bootstrap) (psp)
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.gnu.org/software/binutils/
+	arch = any
+	groups = psp
+	license = GPL
+	makedepends = psp-gcc-base
+	makedepends = git
+	depends = zlib
+	conflicts = psp-sdk
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = git+https://github.com/pspdev/pspsdk.git
+	md5sums = SKIP
+
+pkgname = psp-sdk-base
+
