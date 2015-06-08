@@ -1,0 +1,17 @@
+pkgbase = pymultimonaprs
+	pkgdesc = RF2APRS-IG Gateway
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://asdil12.github.io/pymultimonaprs/
+	arch = any
+	license = GPL
+	depends = python2
+	depends = multimon-ng-git
+	depends = rtl-sdr
+	depends = python2-setuptools
+	backup = etc/pymultimonaprs.json
+	source = pymultimonaprs-1.1.0.tar.gz::https://codeload.github.com/asdil12/pymultimonaprs/tar.gz/1.1.0
+	sha1sums = 134e49453335d32454930b70adf24db248c08687
+
+pkgname = pymultimonaprs
+
