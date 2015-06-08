@@ -2,7 +2,7 @@
 
 pkgname=libfreenect2-git
 pkgver=20150608
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source drivers for the Kinect for Windows v2 device"
 arch=('i686' 'x86_64')
 url="http://openkinect.org"
@@ -26,5 +26,7 @@ build() {
 
 package() {
 	cd "${srcdir}/libfreenect2/examples/protonect";
-	make DESTDIR="${pkgdir}" install
+	make DESTDIR="${pkgdir}" install;
+	mkdir ${pkgdir}/usr/bin;
+	install bin/Protonect ${pkgdir}/usr/bin/Protonect;
 };
