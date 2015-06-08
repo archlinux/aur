@@ -1,0 +1,25 @@
+pkgbase = kolourpaint-frameworks-git
+	pkgdesc = Paint Program. KF5 Frameworks branch (GIT version)
+	pkgver = r1960.fc5706e
+	pkgrel = 1
+	url = http://kde.org/applications/graphics/kolourpaint/
+	install = kolourpaint-frameworks-git.install
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	makedepends = git
+	depends = kdelibs4support
+	depends = qimageblitz-qt5-svn
+	depends = libkexiv2-frameworks-git
+	depends = hicolor-icon-theme
+	provides = kolourpaint
+	conflicts = kdegraphics-kolourpaint
+	conflicts = kolourpaint
+	source = git://anongit.kde.org/kolourpaint#branch=frameworks
+	sha1sums = SKIP
+
+pkgname = kolourpaint-frameworks-git
+
