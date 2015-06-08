@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Regen
+Comment=Sega Genesis/Mega Drive Emulator
+Exec=/usr/bin/regen
+Icon=/usr/share/pixmaps/regen_icon.png
+Terminal=false
+Type=Application
+Categories=Game;Emulator
+StartupNotify=false

@@ -1,0 +1,28 @@
+pkgbase = regen
+	pkgdesc = An accuracy focused emulator for Sega Genesis/Mega Drive
+	pkgver = 0.95
+	pkgrel = 7
+	url = http://aamirm.hacking-cult.org/index_files/regen.htm
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = upx
+	depends = gtk2
+	depends = sdl
+	depends = libpng12
+	depends = alsa-lib
+	depends = libxv
+	depends = libgl
+	depends = libffi5
+	options = !strip
+	source = http://aamirm.hacking-cult.org/regen/regen-gtk-0.95.tar.bz2
+	source = regen.desktop
+	source = regen_icon.png
+	source = LICENSE
+	md5sums = ec38384f3beaceaf72797c239aa4834e
+	md5sums = bf8495d681e12d3d8520c8338ad6c1f6
+	md5sums = d88da0445234b85cc7521cc0313e57b3
+	md5sums = 12438e857789f43c6645e53ab0e395a1
+
+pkgname = regen
+
