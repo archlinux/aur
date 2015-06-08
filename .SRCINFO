@@ -1,0 +1,15 @@
+pkgbase = wps-office-extension-german-dictionary
+	pkgdesc = German dictionary for WPS Office
+	pkgver = 20131121
+	pkgrel = 2
+	url = http://wps-community.org/download/dicts
+	arch = any
+	groups = wps-office-extensions
+	license = custom
+	makedepends = unzip
+	depends = wps-office
+	source = http://wps-community.org/download/dicts/de_DE.zip
+	sha1sums = ab32d59ce9c44451760d5a7846102089df0c8082
+
+pkgname = wps-office-extension-german-dictionary
+
