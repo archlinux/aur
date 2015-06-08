@@ -1,0 +1,13 @@
+pkgbase = lib_users
+	pkgdesc = Checks /proc for libraries being mapped but marked as deleted
+	pkgver = 0.7
+	pkgrel = 1
+	url = http://schwarzvogel.de/software-misc.shtml
+	arch = any
+	license = GPL2
+	depends = python
+	source = http://schwarzvogel.de/pkgs/lib_users-0.7.tar.gz
+	md5sums = 785548431e3a6ee59d1c6fa37367ea4f
+
+pkgname = lib_users
+
