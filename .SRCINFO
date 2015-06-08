@@ -1,0 +1,21 @@
+pkgbase = vdr-rssreader
+	pkgdesc = Provides a simple OSD menu based user interface for reading user-defined RSS streams
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = http://www.saunalahti.fi/rahrenbe/vdr/rssreader/
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	depends = curl
+	depends = expat
+	depends = vdr-api=2.2.0
+	backup = var/lib/vdr/plugins/rssreader/rssreader.conf
+	backup = etc/vdr/conf.avail/50-rssreader.conf
+	source = http://www.saunalahti.fi/~rahrenbe/vdr/rssreader/files/vdr-rssreader-2.2.1.tgz
+	md5sums = f77f5031ab32e25de18b6babec5eea2f
+
+pkgname = vdr-rssreader
+
