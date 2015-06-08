@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-addgrain-git
+	pkgdesc = Plugin for Vapoursynth: addgrain (GIT version)
+	pkgver = r4.4.gcd00e83
+	pkgrel = 1
+	url = http://forum.doom9.org/showthread.php?t=171073
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = vapoursynth
+	provides = vapoursynth-plugin-addgrain
+	conflicts = vapoursynth-plugin-addgrain
+	source = addgrain::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-AddGrain.git
+	sha1sums = SKIP
+
+pkgname = vapoursynth-plugin-addgrain-git
+
