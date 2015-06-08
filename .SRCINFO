@@ -1,0 +1,17 @@
+pkgbase = lib32-libdvdread
+	pkgdesc = Provides a simple foundation for reading DVD video disks (32 bit)
+	pkgver = 5.0.1
+	pkgrel = 1
+	url = http://dvdnav.mplayerhq.hu
+	arch = x86_64
+	license = GPL
+	makedepends = lib32-libdvdcss
+	makedepends = git
+	depends = lib32-glibc
+	depends = libdvdread
+	options = !libtool
+	source = git://git.videolan.org/libdvdread.git#tag=5.0.1
+	md5sums = SKIP
+
+pkgname = lib32-libdvdread
+
