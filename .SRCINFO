@@ -1,0 +1,15 @@
+pkgbase = splumber
+	pkgdesc = first-person 3d game, not much different to Doom and Quake. Reach the extraction pumps before the water level increases swamping everything.
+	pkgver = 1.1.0_rc23
+	pkgrel = 2
+	url = http://www.triptico.com/splumber/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = esound
+	depends = libxext
+	source = http://triptico.com/download/splumber-1.1.0-rc3.tar.gz
+	md5sums = fd5d4b026055c9075b932b96e1033d71
+
+pkgname = splumber
+
