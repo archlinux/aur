@@ -1,0 +1,18 @@
+pkgbase = kplayer
+	pkgdesc = Multimedia player for KDE4 using mplayer as a backend
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = http://kplayer.sourceforge.net
+	install = kplayer.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdebase-runtime
+	depends = mplayer
+	source = http://download.kde.org/stable/kplayer/0.7.2/src/kplayer-0.7.2.tar.xz
+	md5sums = c1e22416f09a4f723dd976c68e76fe9d
+
+pkgname = kplayer
+
