@@ -1,0 +1,15 @@
+pkgbase = eclipse-viplugin
+	pkgdesc = ViPlugin for Eclipse
+	pkgver = 2.13.1
+	pkgrel = 1
+	url = http://www.viplugin.com/
+	arch = i686
+	arch = x86_64
+	license = Commercial
+	depends = eclipse
+	noextract = viPlugin_2.13.1.zip
+	source = http://www.viplugin.com//files/viPlugin_2.13.1.zip
+	md5sums = f4124af1317c76ab5056549c5d3a42c2
+
+pkgname = eclipse-viplugin
+
