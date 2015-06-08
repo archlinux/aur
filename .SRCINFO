@@ -1,0 +1,20 @@
+pkgbase = med
+	pkgdesc = MED stands for Modelisation et Echanges de Donnees, i.e. Data Modelization and Exchanges - MED is code-aster exchange module linked to hdf5
+	pkgver = 3.0.8
+	pkgrel = 2
+	url = http://www.code-aster.org/outils/med/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = gcc-fortran
+	makedepends = coreutils
+	depends = hdf5
+	optdepends = tk
+	optdepends = python2
+	conflicts = med_fichier
+	replaces = med_fichier
+	source = http://files.salome-platform.org/Salome/other/med-3.0.8.tar.gz
+	md5sums = 8adb41767474d262abca1ce031d08f47
+
+pkgname = med
+
