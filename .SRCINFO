@@ -1,0 +1,25 @@
+pkgbase = mingw-w64-tinyxml
+	pkgdesc = Simple, small, C++ XML parser that can be easily integrated into other programs (mingw-w64)
+	pkgver = 2.6.2
+	pkgrel = 2
+	url = http://www.grinninglizard.com/tinyxml
+	arch = any
+	license = zlib
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://downloads.sourceforge.net/tinyxml/tinyxml_2_6_2.tar.gz
+	source = entity.patch
+	source = tinyxml-2.5.3-stl.patch
+	source = tinyxml.pc
+	source = CMakeLists.txt
+	sha256sums = 15bdfdcec58a7da30adc87ac2b078e4417dbe5392f3afb719f9ba6d062645593
+	sha256sums = ef493209b0a51160171fd834a7ecdddd02679463b85fb89a2ea254213e47f99b
+	sha256sums = 3baf2c4dbc2c8f54a151dac8860113d2f549174f83ed85d552b094dfaebb52af
+	sha256sums = 3a658c2d84d461cd64f48aa489baf78bcf06ad193d18455f3e9048a52a1f3b9d
+	sha256sums = SKIP
+
+pkgname = mingw-w64-tinyxml
+
