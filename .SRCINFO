@@ -1,0 +1,16 @@
+pkgbase = danmaku2ass-native
+	pkgdesc = Convert comments from bilibili to ASS format ( cpp version )
+	pkgver = b2def5f
+	pkgrel = 2
+	url = http://blog.eqoe.cn/posts/danmaku2ass_native.html
+	arch = i686
+	arch = x86_64
+	license = WTFPL
+	makedepends = git
+	makedepends = cmake
+	source = danmaku2ass-native::git://github.com/typcn/danmaku2ass_native.git
+	md5sums = SKIP
+	depends_x86_64 = gcc-libs-multilib
+
+pkgname = danmaku2ass-native
+
