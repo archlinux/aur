@@ -1,0 +1,26 @@
+pkgbase = broadcom-wl-uksm-ck
+	pkgdesc = Broadcom 802.11abgn hybrid Linux networking device driver for linux-uksm-ck.
+	pkgver = 6.30.223.248
+	pkgrel = 11
+	url = http://www.broadcom.com/support/802.11/linux_sta.php
+	install = broadcom-wl-uksm-ck.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = linux-uksm-ck-headers>=4.0
+	makedepends = linux-uksm-ck-headers<4.1
+	depends = linux-uksm-ck>=4.0
+	depends = linux-uksm-ck<4.1
+	source = http://www.broadcom.com/docs/linux_sta/hybrid-v35-nodebug-pcoem-6_30_223_248.tar.gz
+	source = modprobe.d
+	source = license.patch
+	source = linux-recent.patch
+	source = gcc.patch
+	sha256sums = 3d994cc6c05198f4b6f07a213ac1e9e45a45159899e6c4a7feca5e6c395c3022
+	sha256sums = b4aca51ac5ed20cb79057437be7baf3650563b7a9d5efc515f0b9b34fbb9dc32
+	sha256sums = 2f70be509aac743bec2cc3a19377be311a60a1c0e4a70ddd63ea89fae5df08ac
+	sha256sums = f651681496316ac60b5f2d37c93a36b3a4a1ee29ab6aada6eebaef7f7c1f1d02
+	sha256sums = b07ce80f2e079cce08c8ec006dda091f6f73f158c8a62df5bac2fbabb6989849
+
+pkgname = broadcom-wl-uksm-ck
+
