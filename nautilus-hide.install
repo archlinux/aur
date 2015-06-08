@@ -1,0 +1,3 @@
+post_install() {
+	echo 'Nautilus, if running, must be restarted for this extension to work (execute "nautilus -q").'
+}
