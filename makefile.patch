@@ -1,0 +1,37 @@
+diff -Naur src0/bible-kjv/Makefile src1/bible-kjv/Makefile
+--- src0/bible-kjv/Makefile	2011-06-25 13:20:00.000000000 +0100
++++ src1/bible-kjv/Makefile	2015-05-31 20:09:48.435577487 +0100
+@@ -88,7 +88,8 @@
+ 
+ # I use environment variables for these...
+ #CFLAGS	      = -g
+-CFLAGS	      = -Wall -Wformat -Werror -Wshadow -W -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wcast-align -Wcast-qual -Wbad-function-cast -Wpointer-arith -g2 -ggdb -DDESTLIB=\"$(DESTLIB)\"
++# Use default CFLAGS
++CPPFLAGS      += -DDESTLIB=\"$(DESTLIB)\"
+ LDFLAGS       = 
+ LDADD         = -lreadline
+ 
+@@ -442,23 +443,17 @@
+ 		@if [ $(DESTBIN) != . ]; then \
+ 		((cd $(DESTBIN);rm -f $(PROGRAM)); \
+ 		cp $(PROGRAM) $(DESTBIN)); \
+-		chown bin $(DESTBIN)/$(PROGRAM); \
+-		chgrp bin $(DESTBIN)/$(PROGRAM); \
+ 		chmod 755 $(DESTBIN)/$(PROGRAM); fi
+ 		@echo Installing $(DATA) and $(DATA).conc in $(DESTLIB)
+ 		@if [ ! -r $(DESTLIB) ]; then $(MKDIR) $(DESTLIB); fi
+ 		@if [ $(DESTLIB) != . ]; then \
+ 		cp $(DATA) $(DATA).conc $(DESTLIB); \
+-		chown bin $(DESTLIB)/$(DATA) $(DESTLIB)/$(DATA).conc; \
+-		chgrp bin $(DESTLIB)/$(DATA) $(DESTLIB)/$(DATA).conc; \
+ 		chmod 644 $(DESTLIB)/$(DATA) $(DESTLIB)/$(DATA).conc; fi
+ 		@if [ ! -r $(DESTMAN) ]; then $(MKDIR) $(DESTMAN); fi
+ 		@echo Installing $(MAN) in $(DESTMAN1)
+ 		@if [ ! -r $(DESTMAN1) ]; then $(MKDIR) $(DESTMAN1); fi
+ 		@if [ $(DESTMAN1) != . ]; then \
+ 		cp $(MAN) $(DESTMAN1)/$(MAN); \
+-		chown bin $(DESTMAN1)/$(MAN); \
+-		chgrp bin $(DESTMAN1)/$(MAN); \
+ 		chmod 644 $(DESTMAN1)/$(MAN); fi
+ 
+ uninstall:;	@echo Un-installing $(PROGRAM), $(DATA) and $(MAN)
