@@ -1,0 +1,13 @@
+pkgbase = emacs-dbus-introspection
+	pkgdesc = A framework that makes accessing remote D-Bus objects from Emacs Lisp easier
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://bazaar.launchpad.net/~scymtym/+junk/dbus-proxy/
+	arch = any
+	license = GPL
+	depends = emacs
+	source = http://bazaar.launchpad.net/~scymtym/+junk/dbus-proxy/download/scymtym%40gmx.net-20100824014654-ifbwtut1heda3tu7/dbusintrospection.el-20090825015526-rsd6s9n5ebqeuqwm-1/dbus-introspection.el
+	md5sums = cac49e72688a9780efdba750b6dd2122
+
+pkgname = emacs-dbus-introspection
+
