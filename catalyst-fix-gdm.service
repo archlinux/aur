@@ -1,0 +1,11 @@
+[Unit]
+Description=Helper file generator for GDM workaround on Catalyst.
+
+[Service]
+SysVStartPriority=90
+Type=oneshot
+RemainAfterExit=no
+ExecStart=/usr/bin/bash -c '/usr/bin/Xorg.bin -version > /dev/shm/ocfg 2>&1'
+
+[Install]
+WantedBy=multi-user.target

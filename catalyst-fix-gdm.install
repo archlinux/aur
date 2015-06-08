@@ -1,0 +1,47 @@
+post_install() {
+    if [[ `strings -td usr/lib/xorg/modules/drivers/fglrx_drv.so | grep -c '/proc/%i/fd/0'` != 0 ]]; then
+
+      echo " Lets patch some files..."
+      proc_fd_0_offset=`strings -td usr/lib/xorg/modules/drivers/fglrx_drv.so | grep '/proc/%i/fd/0' | sed 's/^ *//' | cut -d' ' -f1`
+      echo -ne '/dev/shm/ocfg' | dd conv=notrunc of=usr/lib/xorg/modules/drivers/fglrx_drv.so bs=1 count=13 seek=$proc_fd_0_offset
+
+      #next section exists because of -pxp packages in which fglrx-libglx.so is stored in different place (updates)
+      if [ -e usr/lib/xorg/modules/extensions/fglrx/fglrx-libglx.so ]; then
+	proc_fd_0_offset2=`strings -td usr/lib/xorg/modules/extensions/fglrx/fglrx-libglx.so | grep '/proc/%i/fd/0' | sed 's/^ *//' | cut -d' ' -f1`
+	echo -ne '/dev/shm/ocfg' | dd conv=notrunc of=usr/lib/xorg/modules/extensions/fglrx/fglrx-libglx.so bs=1 count=13 seek=$proc_fd_0_offset2
+      elif [ -e usr/lib/xorg/modules/updates/extensions/fglrx/fglrx-libglx.so ]; then
+	proc_fd_0_offset2=`strings -td usr/lib/xorg/modules/updates/extensions/fglrx/fglrx-libglx.so | grep '/proc/%i/fd/0' | sed 's/^ *//' | cut -d' ' -f1`
+	echo -ne '/dev/shm/ocfg' | dd conv=notrunc of=usr/lib/xorg/modules/updates/extensions/fglrx/fglrx-libglx.so bs=1 count=13 seek=$proc_fd_0_offset2
+      fi
+
+    fi
+
+    echo " Enabling catalyst-fix-gdm systemd service..."
+    systemctl enable catalyst-fix-gdm
+    systemctl start catalyst-fix-gdm
+    echo ""
+    echo "Don't forget to reinstall this package after every catalyst-{utils(-pxp),total(-pxp),test(-pxp)} update!"
+    echo "Otherwise GDM will segfault again."
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    if [[ `strings -td usr/lib/xorg/modules/drivers/fglrx_drv.so | grep -c '/dev/shm/ocfg'` != 0 ]]; then
+
+      echo " Unpatching files..."
+      proc_fd_0_offset=`strings -td usr/lib/xorg/modules/drivers/fglrx_drv.so | grep '/dev/shm/ocfg' | sed 's/^ *//' | cut -d' ' -f1`
+      echo -ne '/proc/%i/fd/0' | dd conv=notrunc of=usr/lib/xorg/modules/drivers/fglrx_drv.so bs=1 count=13 seek=$proc_fd_0_offset
+
+      if [ -e usr/lib/xorg/modules/extensions/fglrx/fglrx-libglx.so ]; then
+	proc_fd_0_offset2=`strings -td usr/lib/xorg/modules/extensions/fglrx/fglrx-libglx.so | grep '/dev/shm/ocfg' | sed 's/^ *//' | cut -d' ' -f1`
+	echo -ne '/proc/%i/fd/0' | dd conv=notrunc of=usr/lib/xorg/modules/extensions/fglrx/fglrx-libglx.so bs=1 count=13 seek=$proc_fd_0_offset2
+      elif [ -e usr/lib/xorg/modules/updates/extensions/fglrx/fglrx-libglx.so ]; then
+	proc_fd_0_offset2=`strings -td usr/lib/xorg/modules/updates/extensions/fglrx/fglrx-libglx.so | grep '/dev/shm/ocfg' | sed 's/^ *//' | cut -d' ' -f1`
+	echo -ne '/proc/%i/fd/0' | dd conv=notrunc of=usr/lib/xorg/modules/updates/extensions/fglrx/fglrx-libglx.so bs=1 count=13 seek=$proc_fd_0_offset2
+      fi
+
+    fi
+}

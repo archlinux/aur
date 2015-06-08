@@ -1,0 +1,17 @@
+pkgbase = catalyst-fix-gdm
+	pkgdesc = Workaround for GDM on AMD Catalyst. Based on a work of Oliver Chang - tl;dr version
+	pkgver = 14.12
+	pkgrel = 2
+	url = https://oliverchang.github.io/2014/12/22/fixing-linux-amd-catalyst-linux-drivers-gdm/
+	install = catalyst-fix-gdm.install
+	arch = i686
+	arch = x86_64
+	depends = catalyst-utils
+	depends = binutils
+	depends = sed
+	depends = grep
+	source = catalyst-fix-gdm.service
+	md5sums = 8d15ce1bf0e537e0afe289b566bbff78
+
+pkgname = catalyst-fix-gdm
+
