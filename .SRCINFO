@@ -1,0 +1,17 @@
+pkgbase = archipel-client-nightly
+	pkgdesc = A solution to manage and supervise virtual machines. (GUI)
+	pkgver = 20150609
+	pkgrel = 1
+	url = http://archipelproject.org/
+	arch = any
+	license = AGPL
+	makedepends = wget
+	provides = archipel-client
+	conflicts = archipel-client
+	options = !strip
+	options = !emptydirs
+	source = http://nightlies.archipelproject.org/latest-archipel-client.tar.gz
+	sha512sums = SKIP
+
+pkgname = archipel-client-nightly
+
