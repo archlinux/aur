@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-suitesparse
+	pkgdesc = A collection of sparse matrix libraries (mingw-w64)
+	pkgver = 4.4.3
+	pkgrel = 1
+	url = http://www.cise.ufl.edu/research/sparse/SuiteSparse/
+	arch = any
+	license = GPL
+	makedepends = mingw-w64-gcc
+	depends = mingw-w64-lapack
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = http://faculty.cse.tamu.edu/davis/SuiteSparse/SuiteSparse-4.4.3.tar.gz
+	sha1sums = 3a583ca4c09c6e9d7c574d313ad93e514478bb29
+
+pkgname = mingw-w64-suitesparse
+
