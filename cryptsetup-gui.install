@@ -1,0 +1,11 @@
+post_install() {
+  echo "To enable decryption on logon, take the following four steps:"
+  echo " 1. Add the noauto option to your entry in /etc/crypttab"
+  echo " 2. Add the noauto flag to your entry in /etc/fstab"
+  echo " 3. cp /etc/skel/.xinitrc-cryptsetup-gui /home/<you>/.xinitrc when /home is unmounted"
+  echo " 4. Alter /home/<you>/.xinitrc and put in the *name* of your crypted partition"
+  echo ""
+  echo "Enjoy!"
+}
+
+# vim:set ts=2 sw=2 et:

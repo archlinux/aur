@@ -1,0 +1,17 @@
+pkgbase = cryptsetup-gui
+	pkgdesc = Simple GUI for unlocking LUKS encrypted devices
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/jonhoo/cryptsetup-gui
+	install = cryptsetup-gui.install
+	arch = any
+	license = MIT
+	makedepends = gcc
+	makedepends = glib2
+	depends = glib2
+	depends = cryptsetup
+	source = https://github.com/jonhoo/cryptsetup-gui/archive/v0.6.1.tar.gz
+	md5sums = 38044a3b67f488b8f8b9adfea36b50ba
+
+pkgname = cryptsetup-gui
+
