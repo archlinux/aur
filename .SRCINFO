@@ -1,0 +1,15 @@
+pkgbase = beat
+	pkgdesc = Delta patcher for the higan emulator
+	pkgver = 03
+	pkgrel = 1
+	url = http://byuu.org/programming/beat/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gendesk
+	depends = gtk2
+	source = http://byuu.net/files/beat_v03.tar.xz
+	sha256sums = 0f4a33cbbe54af28077433ca9f855e5d80ae942d5d976a0d654a8e1a528a1a1a
+
+pkgname = beat
+
