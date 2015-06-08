@@ -1,0 +1,13 @@
+pkgbase = lunifybg-wpd-git
+	pkgdesc = Modified version of lunifybg to accommodate wallpaperd.
+	pkgver = 20130108
+	pkgrel = 1
+	url = https://gist.github.com/4438979
+	arch = any
+	license = public domain
+	makedepends = git
+	depends = imagemagick
+	depends = wallpaperd
+
+pkgname = lunifybg-wpd-git
+
