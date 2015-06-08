@@ -1,0 +1,25 @@
+pkgbase = profile-sync-daemon-git
+	pkgdesc = Syncs browser profiles to tmpfs. Unstable git version!
+	pkgver = 5.68.r3.gd8188fc.unstable
+	pkgrel = 1
+	url = https://github.com/graysky2/profile-sync-daemon
+	install = psd.install
+	arch = any
+	license = MIT
+	depends = procps-ng
+	depends = rsync
+	provides = profile-sync-daemon
+	conflicts = firefox-sync
+	conflicts = goanysync
+	conflicts = go-anysync-git
+	conflicts = iceweasel-sync
+	conflicts = tmpfs-store
+	conflicts = tmpfs-sync
+	conflicts = user-profile-sync-daemon
+	conflicts = profile-sync-daemon
+	backup = etc/psd.conf
+	source = git://github.com/graysky2/profile-sync-daemon#branch=unstable
+	sha256sums = SKIP
+
+pkgname = profile-sync-daemon-git
+
