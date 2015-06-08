@@ -1,0 +1,9 @@
+post_install() {
+  echo "Creating symlink for /usr/lib/ocaml/mascot"
+  sudo ln -s /usr/lib/ocaml/mascot/mascot.native /usr/bin/mascot
+}
+
+post_remove() {
+  echo "Removing symlink for /usr/lib/ocaml/mascot"
+  sudo unlink /usr/bin/mascot
+}

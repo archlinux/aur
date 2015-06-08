@@ -1,0 +1,17 @@
+pkgbase = ocaml-mascot
+	pkgdesc = Style checker for OCaml sources
+	pkgver = 1.0
+	pkgrel = 3
+	url = http://mascot.x9c.fr
+	install = ocaml-mascot.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = ocaml-findlib
+	depends = ocaml>=3.12.1
+	options = !strip !makeflags
+	source = http://mascot.x9c.fr/distrib/mascot-1.0.tar.gz
+	md5sums = 94a0abe41b9acbc4efa661dc9d7be122
+
+pkgname = ocaml-mascot
+
