@@ -1,0 +1,18 @@
+pkgbase = findbugs
+	pkgdesc = Bugs Finder for Java Programs
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = http://findbugs.sourceforge.net
+	arch = any
+	license = LGPL
+	makedepends = apache-ant
+	makedepends = java-environment
+	depends = java-environment
+	depends = bash
+	source = http://prdownloads.sourceforge.net/findbugs/findbugs-3.0.1-source.zip
+	source = findbugs.profile
+	md5sums = f50f22210b2d880bab570954a47e26ba
+	md5sums = f5d707cad9a69f209211430ec691e86b
+
+pkgname = findbugs
+
