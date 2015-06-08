@@ -1,0 +1,9 @@
+post_install() {
+	echo ""
+  echo " This hook will print a welcome message before the encryption password is required."
+  echo ""
+  echo "Put \"filename\" parameters to /etc/welcomemessage.conf, e.g. filename=/etc/issue"
+  echo ""
+	echo "Don't forget to add the welcomemessage hook in your /etc/mkinitcpio.conf and run mkinitcpio -p linux..."
+	echo ""
+}

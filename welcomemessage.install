@@ -1,0 +1,11 @@
+build ()
+{
+    cat $(cat /etc/welcomemessage.conf | sed -n '/filename=/p' | sed 's/filename=//') > "$BUILDROOT/welcomemessage"
+    add_runscript
+}
+help ()
+{
+cat<<HELPEOF
+  This hook will print a welcome message before the encryption password is required
+HELPEOF
+}

@@ -1,0 +1,19 @@
+pkgbase = mkinitcpio-welcomemessage
+	pkgdesc = mkinitcpio hook to show some message on boot
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/mkinitcpio-welcomemessage/
+	install = usage.install
+	arch = any
+	license = unknown
+	depends = mkinitcpio
+	backup = etc/welcomemessage.conf
+	source = welcomemessage.hook
+	source = welcomemessage.install
+	source = welcomemessage.conf
+	md5sums = 178136ddc22bf41020bb8d002054aea0
+	md5sums = 79d4b4f282151004d6df31ac064e48f8
+	md5sums = 7a08874d14bf2b7945ef638945550b83
+
+pkgname = mkinitcpio-welcomemessage
+
