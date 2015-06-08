@@ -1,0 +1,14 @@
+pkgbase = eclipse-axdt
+	pkgdesc = Eclipse Plugin for ActionScript development
+	pkgver = 0.0.7.1
+	pkgrel = 1
+	url = http://axdt.org/
+	arch = i686
+	arch = x86_64
+	license = EPL
+	depends = eclipse-imp
+	source = components.url
+	md5sums = a24d1dc66aaddb18e32cbbb84fe7d2b6
+
+pkgname = eclipse-axdt
+
