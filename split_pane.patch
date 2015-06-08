@@ -1,0 +1,327 @@
+diff -rupN Thunar-1.6.7/thunar/thunar-standard-view.c Thunar-1.6.7-splitview/thunar/thunar-standard-view.c
+--- Thunar-1.6.7/thunar/thunar-standard-view.c	2015-04-18 16:25:18.000000000 +0200
++++ Thunar-1.6.7-splitview/thunar/thunar-standard-view.c	2015-04-24 02:08:46.234849486 +0200
+@@ -4262,8 +4262,8 @@ thunar_standard_view_queue_popup (Thunar
+                                                                standard_view, thunar_standard_view_drag_timer_destroy);
+ 
+       /* register the motion notify and the button release events on the real view */
+-      g_signal_connect (G_OBJECT (view), "button-release-event", G_CALLBACK (thunar_standard_view_button_release_event), standard_view);
+-      g_signal_connect (G_OBJECT (view), "motion-notify-event", G_CALLBACK (thunar_standard_view_motion_notify_event), standard_view);
++      g_signal_connect_after (G_OBJECT (view), "button-release-event", G_CALLBACK (thunar_standard_view_button_release_event), standard_view);
++      g_signal_connect_after (G_OBJECT (view), "motion-notify-event", G_CALLBACK (thunar_standard_view_motion_notify_event), standard_view);
+     }
+ }
+ 
+diff -rupN Thunar-1.6.7/thunar/thunar-window.c Thunar-1.6.7-splitview/thunar/thunar-window.c
+--- Thunar-1.6.7/thunar/thunar-window.c	2015-04-18 16:25:18.000000000 +0200
++++ Thunar-1.6.7-splitview/thunar/thunar-window.c	2015-04-24 02:28:18.421547235 +0200
+@@ -81,6 +81,7 @@ enum
+ enum
+ {
+   BACK,
++  PANE_WINDOW,
+   RELOAD,
+   TOGGLE_SIDEPANE,
+   TOGGLE_MENUBAR,
+@@ -104,6 +105,7 @@ static void     thunar_window_set_proper
+                                                            const GValue           *value,
+                                                            GParamSpec             *pspec);
+ static gboolean thunar_window_back                        (ThunarWindow           *window);
++static gboolean thunar_window_pane_window                 (ThunarWindow           *window);
+ static gboolean thunar_window_reload                      (ThunarWindow           *window,
+                                                            gboolean                reload_info);
+ static gboolean thunar_window_toggle_sidepane             (ThunarWindow           *window);
+@@ -249,6 +251,9 @@ static gboolean thunar_window_save_geome
+ static void     thunar_window_save_geometry_timer_destroy (gpointer                user_data);
+ static void     thunar_window_set_zoom_level              (ThunarWindow           *window,
+                                                            ThunarZoomLevel         zoom_level);
++static gboolean thunar_window_notebook_select             (GtkWidget              *notebook,
++							   GdkEvent               *event,
++							   ThunarWindow           *window);
+ 
+ 
+ 
+@@ -258,6 +263,7 @@ struct _ThunarWindowClass
+ 
+   /* internal action signals */
+   gboolean (*back)            (ThunarWindow *window);
++  gboolean (*pane_window)     (ThunarWindow *window);
+   gboolean (*reload)          (ThunarWindow *window,
+                                gboolean      reload_info);
+   gboolean (*toggle_sidepane) (ThunarWindow *window);
+@@ -311,9 +317,12 @@ struct _ThunarWindow
+   GtkWidget              *menubar;
+   GtkWidget              *spinner;
+   GtkWidget              *paned;
++  GtkWidget              *panes;
+   GtkWidget              *sidepane;
+   GtkWidget              *view_box;
+   GtkWidget              *notebook;
++  GtkWidget              *notebook1;
++  GtkWidget              *notebook2;
+   GtkWidget              *view;
+   GtkWidget              *statusbar;
+ 
+@@ -420,6 +429,7 @@ thunar_window_class_init (ThunarWindowCl
+   gtkwidget_class->configure_event = thunar_window_configure_event;
+ 
+   klass->back = thunar_window_back;
++  klass->pane_window = thunar_window_pane_window;
+   klass->reload = thunar_window_reload;
+   klass->toggle_sidepane = thunar_window_toggle_sidepane;
+   klass->toggle_menubar = thunar_window_toggle_menubar;
+@@ -503,6 +513,23 @@ thunar_window_class_init (ThunarWindowCl
+                   G_TYPE_BOOLEAN, 0);
+ 
+   /**
++   * ThunarWindow::pane-window:
++   * @window : a #ThunarWindow instance.
++   *
++   * Emitted whenever the user requests to pane the window
++   * of the currently displayed folder. This is an internal
++   * signal used to bind the action to keys.
++   **/
++  window_signals[PANE_WINDOW] =
++    g_signal_new (I_("pane-window"),
++                  G_TYPE_FROM_CLASS (klass),
++                  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
++                  G_STRUCT_OFFSET (ThunarWindowClass, pane_window),
++                  g_signal_accumulator_true_handled, NULL,
++                  _thunar_marshal_BOOLEAN__VOID,
++                  G_TYPE_BOOLEAN, 0);
++
++  /**
+    * ThunarWindow::reload:
+    * @window : a #ThunarWindow instance.
+    *
+@@ -623,6 +650,7 @@ thunar_window_class_init (ThunarWindowCl
+   /* setup the key bindings for the windows */
+   binding_set = gtk_binding_set_by_class (klass);
+   gtk_binding_entry_add_signal (binding_set, GDK_BackSpace, 0, "back", 0);
++  gtk_binding_entry_add_signal (binding_set, GDK_F3, 0, "pane-window", 0);
+   gtk_binding_entry_add_signal (binding_set, GDK_F5, 0, "reload", 1, G_TYPE_BOOLEAN, TRUE);
+   gtk_binding_entry_add_signal (binding_set, GDK_F9, 0, "toggle-sidepane", 0);
+   gtk_binding_entry_add_signal (binding_set, GDK_F10, 0, "toggle-menubar", 0);
+@@ -861,31 +889,44 @@ thunar_window_init (ThunarWindow *window
+   g_signal_connect_swapped (window->paned, "button-release-event", G_CALLBACK (thunar_window_save_paned), window);
+ 
+   window->view_box = gtk_table_new (3, 1, FALSE);
+-  gtk_paned_pack2 (GTK_PANED (window->paned), window->view_box, TRUE, FALSE);
++  gtk_paned_add2 (GTK_PANED (window->paned), window->view_box);
+   gtk_widget_show (window->view_box);
+ 
++  /* Create panes when the notebook will be */
++  window->panes = gtk_hpaned_new ();
++  gtk_widget_add_events (window->panes, GDK_ENTER_NOTIFY_MASK | GDK_LEAVE_NOTIFY_MASK | GDK_BUTTON_PRESS_MASK);
++  gtk_table_attach (GTK_TABLE (window->view_box), window->panes, 0, 1, 1, 2, GTK_EXPAND | GTK_FILL, GTK_EXPAND | GTK_FILL, 0, 0);
++  gtk_widget_show (window->panes);
++
+   /* tabs */
+-  window->notebook = gtk_notebook_new ();
+-  gtk_table_attach (GTK_TABLE (window->view_box), window->notebook, 0, 1, 1, 2, GTK_EXPAND | GTK_FILL, GTK_EXPAND | GTK_FILL, 0, 0);
+-  g_signal_connect (G_OBJECT (window->notebook), "switch-page", G_CALLBACK (thunar_window_notebook_switch_page), window);
+-  g_signal_connect (G_OBJECT (window->notebook), "page-added", G_CALLBACK (thunar_window_notebook_page_added), window);
+-  g_signal_connect (G_OBJECT (window->notebook), "page-removed", G_CALLBACK (thunar_window_notebook_page_removed), window);
+-  g_signal_connect_after (G_OBJECT (window->notebook), "button-press-event", G_CALLBACK (thunar_window_notebook_button_press_event), window);
+-  g_signal_connect (G_OBJECT (window->notebook), "popup-menu", G_CALLBACK (thunar_window_notebook_popup_menu), window);
+-  g_signal_connect (G_OBJECT (window->notebook), "create-window", G_CALLBACK (thunar_window_notebook_create_window), window);
+-  gtk_notebook_set_show_border (GTK_NOTEBOOK (window->notebook), FALSE);
+-  gtk_notebook_set_homogeneous_tabs (GTK_NOTEBOOK (window->notebook), TRUE);
+-  gtk_notebook_set_scrollable (GTK_NOTEBOOK (window->notebook), TRUE);
+-  gtk_container_set_border_width (GTK_CONTAINER (window->notebook), 0);
+-  gtk_notebook_set_group_name (GTK_NOTEBOOK (window->notebook), "thunar-tabs");
+-  gtk_widget_show (window->notebook);
++  // notebook1
++  window->notebook1 = gtk_notebook_new ();
++  gtk_paned_pack1 (GTK_PANED (window->panes), window->notebook1, TRUE, FALSE);
++  g_signal_connect (G_OBJECT (window->notebook1), "switch-page", G_CALLBACK (thunar_window_notebook_switch_page), window);
++  g_signal_connect (G_OBJECT (window->notebook1), "page-added", G_CALLBACK (thunar_window_notebook_page_added), window);
++  g_signal_connect (G_OBJECT (window->notebook1), "page-removed", G_CALLBACK (thunar_window_notebook_page_removed), window);
++  g_signal_connect_after (G_OBJECT (window->notebook1), "button-press-event", G_CALLBACK (thunar_window_notebook_button_press_event), window);
++  g_signal_connect (G_OBJECT (window->notebook1), "popup-menu", G_CALLBACK (thunar_window_notebook_popup_menu), window);
++  g_signal_connect (G_OBJECT (window->notebook1), "create-window", G_CALLBACK (thunar_window_notebook_create_window), window);
++  gtk_notebook_set_show_border (GTK_NOTEBOOK (window->notebook1), FALSE);
++  gtk_notebook_set_homogeneous_tabs (GTK_NOTEBOOK (window->notebook1), TRUE);
++  gtk_notebook_set_scrollable (GTK_NOTEBOOK (window->notebook1), TRUE);
++  gtk_container_set_border_width (GTK_CONTAINER (window->notebook1), 0);
++  gtk_notebook_set_group_name (GTK_NOTEBOOK (window->notebook1), "thunar-tabs");
++  gtk_widget_show (window->notebook1);
+ 
+   /* drop the notebook borders */
+   style = gtk_rc_style_new ();
+   style->xthickness = style->ythickness = 0;
+-  gtk_widget_modify_style (window->notebook, style);
++  gtk_widget_modify_style (window->notebook1, style);
+   g_object_unref (G_OBJECT (style));
+ 
++  // notebook2
++  window->notebook2 = NULL;
++
++  /* The notebook selected and actived */
++  window->notebook = window->notebook1;
++
+   /* determine the selected location selector */
+   if (exo_str_is_equal (last_location_bar, g_type_name (THUNAR_TYPE_LOCATION_BUTTONS)))
+     type = THUNAR_TYPE_LOCATION_BUTTONS;
+@@ -1392,6 +1433,130 @@ thunar_window_binding_create (ThunarWind
+ 
+ 
+ 
++static gboolean
++thunar_window_pane_window (ThunarWindow *window)
++{
++  ThunarFile *directory;
++  GtkRcStyle *style;
++
++  _thunar_return_val_if_fail (THUNAR_IS_WINDOW (window), FALSE);
++  _thunar_return_val_if_fail (window->view_type != G_TYPE_NONE, FALSE);
++
++  /* if two panes are showed then remove not selected one */
++  if (window->notebook1 != NULL && window->notebook2 != NULL)
++    {
++      /* notebook1 is the selected notebook so it destroys notebook2 */
++      if (window->notebook == window->notebook1)
++	{
++	  gtk_widget_destroy (window->notebook2);
++	  window->notebook2 = NULL;
++	}
++      /* notebook2 is the selected notebook so it destroys notebook1 */
++      else
++	{
++	  gtk_widget_destroy (window->notebook1);
++	  window->notebook1 = NULL;
++	}
++    }
++  /* notebook1 is null so it crates it */
++  else if (window->notebook1 == NULL)
++    {
++      /* create the notebook1 */
++      window->notebook1 = gtk_notebook_new ();
++      gtk_paned_pack1 (GTK_PANED (window->panes), window->notebook1, TRUE, FALSE);
++      g_signal_connect (G_OBJECT (window->notebook1), "switch-page", G_CALLBACK (thunar_window_notebook_switch_page), window);
++      g_signal_connect (G_OBJECT (window->notebook1), "page-added", G_CALLBACK (thunar_window_notebook_page_added), window);
++      g_signal_connect (G_OBJECT (window->notebook1), "page-removed", G_CALLBACK (thunar_window_notebook_page_removed), window);
++      g_signal_connect_after (G_OBJECT (window->notebook1), "button-press-event", G_CALLBACK (thunar_window_notebook_button_press_event), window);
++      g_signal_connect (G_OBJECT (window->notebook1), "popup-menu", G_CALLBACK (thunar_window_notebook_popup_menu), window);
++      g_signal_connect (G_OBJECT (window->notebook1), "create-window", G_CALLBACK (thunar_window_notebook_create_window), window);
++      gtk_notebook_set_show_border (GTK_NOTEBOOK (window->notebook1), FALSE);
++      gtk_notebook_set_homogeneous_tabs (GTK_NOTEBOOK (window->notebook1), TRUE);
++      gtk_notebook_set_scrollable (GTK_NOTEBOOK (window->notebook1), TRUE);
++      gtk_container_set_border_width (GTK_CONTAINER (window->notebook1), 0);
++      gtk_notebook_set_group_name (GTK_NOTEBOOK (window->notebook1), "thunar-tabs");
++      gtk_widget_show (window->notebook1);
++
++      /* drop the notebook borders */
++      style = gtk_rc_style_new ();
++      style->xthickness = style->ythickness = 0;
++      gtk_widget_modify_style (window->notebook1, style);
++      g_object_unref (G_OBJECT (style));
++
++      /* set notebook2 to selected notebook */
++      window->notebook = window->notebook1;
++      directory = thunar_window_get_current_directory (window);
++      thunar_window_notebook_insert (window, directory);
++    }
++  /* Otherwise notebook2 is null so it creates it */
++  else
++    {
++      /* create the notebook2 */
++      window->notebook2 = gtk_notebook_new ();
++      gtk_paned_pack2 (GTK_PANED (window->panes), window->notebook2, TRUE, FALSE);
++      g_signal_connect (G_OBJECT (window->notebook2), "switch-page", G_CALLBACK (thunar_window_notebook_switch_page), window);
++      g_signal_connect (G_OBJECT (window->notebook2), "page-added", G_CALLBACK (thunar_window_notebook_page_added), window);
++      g_signal_connect (G_OBJECT (window->notebook2), "page-removed", G_CALLBACK (thunar_window_notebook_page_removed), window);
++      g_signal_connect_after (G_OBJECT (window->notebook2), "button-press-event", G_CALLBACK (thunar_window_notebook_button_press_event), window);
++      g_signal_connect (G_OBJECT (window->notebook2), "popup-menu", G_CALLBACK (thunar_window_notebook_popup_menu), window);
++      g_signal_connect (G_OBJECT (window->notebook2), "create-window", G_CALLBACK (thunar_window_notebook_create_window), window);
++      gtk_notebook_set_show_border (GTK_NOTEBOOK (window->notebook2), FALSE);
++      gtk_notebook_set_homogeneous_tabs (GTK_NOTEBOOK (window->notebook2), TRUE);
++      gtk_notebook_set_scrollable (GTK_NOTEBOOK (window->notebook2), TRUE);
++      gtk_container_set_border_width (GTK_CONTAINER (window->notebook2), 0);
++      gtk_notebook_set_group_name (GTK_NOTEBOOK (window->notebook2), "thunar-tabs");
++      gtk_widget_show (window->notebook2);
++
++      /* drop the notebook borders */
++      style = gtk_rc_style_new ();
++      style->xthickness = style->ythickness = 0;
++      gtk_widget_modify_style (window->notebook2, style);
++      g_object_unref (G_OBJECT (style));
++
++      /* set notebook2 to selected notebook */
++      window->notebook = window->notebook2;
++      directory = thunar_window_get_current_directory (window);
++      thunar_window_notebook_insert (window, directory);
++    }
++
++  return TRUE;
++}
++
++
++
++static gboolean
++thunar_window_notebook_select (GtkWidget     *view, 
++			       GdkEvent      *event, 
++			       ThunarWindow  *window)
++{
++  GtkWidget  *selected_notebook;
++  gint        current_page_n;
++  GtkWidget  *current_page;
++
++  /* if there is not two panes (notebook2 == NULL) nothing to do */
++  if (window->notebook2 == NULL)
++    return FALSE;
++
++  /* notebook selected */
++  selected_notebook = gtk_widget_get_ancestor (view, GTK_TYPE_NOTEBOOK);
++
++  /* if the notebook selected is the same than the current notebook selected nothing to do */
++  if (selected_notebook == window->notebook)
++    return FALSE;
++
++  /* select and activate selected notebook */
++  window->notebook = selected_notebook;
++  current_page_n = gtk_notebook_get_current_page (GTK_NOTEBOOK (window->notebook));
++  current_page = gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->notebook), current_page_n);
++  thunar_component_set_ui_manager (THUNAR_COMPONENT (window->view), NULL);
++  window->view = NULL;
++  thunar_window_notebook_switch_page (window->notebook, current_page, current_page_n, window);
++
++  return FALSE;
++}
++
++
++
+ static void
+ thunar_window_notebook_switch_page (GtkWidget    *notebook,
+                                     GtkWidget    *page,
+@@ -1405,7 +1570,8 @@ thunar_window_notebook_switch_page (GtkW
+   _thunar_return_if_fail (THUNAR_IS_WINDOW (window));
+   _thunar_return_if_fail (GTK_IS_NOTEBOOK (notebook));
+   _thunar_return_if_fail (THUNAR_IS_VIEW (page));
+-  _thunar_return_if_fail (window->notebook == notebook);
++  _thunar_return_if_fail (window->notebook1 == notebook ||
++			  window->notebook2 == notebook);
+ 
+   /* leave if nothing changed */
+   if (window->view == page)
+@@ -1553,7 +1719,7 @@ thunar_window_notebook_page_removed (Gtk
+   thunar_component_set_ui_manager (THUNAR_COMPONENT (page), NULL);
+ 
+   n_pages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (notebook));
+-  if (n_pages == 0)
++  if (n_pages == 0 && window->notebook2 == NULL)
+     {
+       /* destroy the window */
+       gtk_widget_destroy (GTK_WIDGET (window));
+@@ -1784,6 +1950,11 @@ thunar_window_notebook_insert (ThunarWin
+   gtk_notebook_set_tab_reorderable (GTK_NOTEBOOK (window->notebook), view, TRUE);
+   gtk_notebook_set_tab_detachable (GTK_NOTEBOOK (window->notebook), view, TRUE);
+ 
++  /* connect signal view */
++  gtk_widget_add_events (GTK_WIDGET (view), GDK_BUTTON_PRESS_MASK);
++  g_signal_connect (G_OBJECT (GTK_BIN (view)->child), "button-press-event", G_CALLBACK (thunar_window_notebook_select), window);
++  g_signal_connect (G_OBJECT (GTK_BIN (view)->child), "button-release-event", G_CALLBACK (thunar_window_notebook_select), window);
++
+   /* take focus on the view */
+   gtk_widget_grab_focus (view);
+ }

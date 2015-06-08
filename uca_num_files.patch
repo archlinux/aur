@@ -1,0 +1,411 @@
+diff -ru Thunar-1.6.3.orig/plugins/thunar-uca/thunar-uca-editor.c Thunar-1.6.3/plugins/thunar-uca/thunar-uca-editor.c
+--- Thunar-1.6.3.orig/plugins/thunar-uca/thunar-uca-editor.c	2013-05-21 19:50:07.000000000 -0700
++++ Thunar-1.6.3/plugins/thunar-uca/thunar-uca-editor.c	2013-05-21 19:50:20.000000000 -0700
+@@ -63,6 +63,8 @@
+   GtkWidget   *sn_button;
+   GtkWidget   *parameter_entry;
+   GtkWidget   *patterns_entry;
++  GtkWidget   *upper_button;
++  GtkWidget   *lower_button;
+   GtkWidget   *directories_button;
+   GtkWidget   *audio_files_button;
+   GtkWidget   *image_files_button;
+@@ -102,6 +104,8 @@
+   GtkWidget      *table;
+   GtkWidget      *hbox;
+   GtkWidget      *vbox;
++  GtkWidget	 *spin;
++  GtkAdjustment  *adj;
+ 
+   /* configure the dialog properties */
+   gtk_dialog_add_button (GTK_DIALOG (uca_editor), GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL);
+@@ -381,6 +385,25 @@
+   gtk_label_set_mnemonic_widget (GTK_LABEL (label), uca_editor->patterns_entry);
+   gtk_widget_show (uca_editor->patterns_entry);
+ 
++  /* widgets for setting the upper and lower bounds */
++  label = gtk_label_new ("Minimum number of files:");
++  gtk_widget_show (label);
++  gtk_table_attach (GTK_TABLE (table), label, 0, 1, 1, 2, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
++  adj = (GtkAdjustment *) gtk_adjustment_new (-1.0, -1.0, 9999.0, 1.0, 1.0, 0.0);
++  spin = gtk_spin_button_new (adj, 1.0, 0);
++  gtk_widget_show (spin);
++  gtk_table_attach (GTK_TABLE (table), spin, 1, 2, 1, 2, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
++  uca_editor->lower_button = spin;
++  
++  label = gtk_label_new ("Maximum number of files:");
++  gtk_widget_show (label);
++  gtk_table_attach (GTK_TABLE (table), label, 0, 1, 2, 3, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
++  adj = (GtkAdjustment *) gtk_adjustment_new (-1.0, -1.0, 9999.0, 1.0, 1.0, 0.0);
++  spin = gtk_spin_button_new (adj, 1.0, 0);
++  gtk_widget_show (spin);
++  gtk_table_attach (GTK_TABLE (table), spin, 1, 2, 2, 3, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
++  uca_editor->upper_button = spin;
++
+   /* set Atk label relation for the entry */
+   object = gtk_widget_get_accessible (uca_editor->patterns_entry);
+   relations = atk_object_ref_relation_set (gtk_widget_get_accessible (label));
+@@ -389,15 +412,15 @@
+   g_object_unref (G_OBJECT (relation));
+ 
+   align = g_object_new (GTK_TYPE_ALIGNMENT, "height-request", 0, NULL);
+-  gtk_table_attach (GTK_TABLE (table), align, 0, 2, 1, 2, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
++  gtk_table_attach (GTK_TABLE (table), align, 0, 2, 3, 4, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+   gtk_widget_show (align);
+ 
+   label = g_object_new (GTK_TYPE_LABEL, "label", _("Appears if selection contains:"), "xalign", 0.0f, NULL);
+-  gtk_table_attach (GTK_TABLE (table), label, 0, 2, 2, 3, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
++  gtk_table_attach (GTK_TABLE (table), label, 0, 2, 4, 5, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+   gtk_widget_show (label);
+ 
+   align = g_object_new (GTK_TYPE_ALIGNMENT, "left-padding", 18, NULL);
+-  gtk_table_attach (GTK_TABLE (table), align, 0, 2, 3, 4, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
++  gtk_table_attach (GTK_TABLE (table), align, 0, 2, 5, 6, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+   gtk_widget_show (align);
+ 
+   itable = gtk_table_new (3, 2, TRUE);
+@@ -431,11 +454,11 @@
+   gtk_widget_show (uca_editor->other_files_button);
+ 
+   align = g_object_new (GTK_TYPE_ALIGNMENT, "height-request", 12, NULL);
+-  gtk_table_attach (GTK_TABLE (table), align, 0, 2, 4, 5, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
++  gtk_table_attach (GTK_TABLE (table), align, 0, 2, 6, 7, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+   gtk_widget_show (align);
+ 
+   hbox = gtk_hbox_new (FALSE, 6);
+-  gtk_table_attach (GTK_TABLE (table), hbox, 0, 2, 5, 6, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
++  gtk_table_attach (GTK_TABLE (table), hbox, 0, 2, 7, 8, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+   gtk_widget_show (hbox);
+ 
+   image = gtk_image_new_from_stock (GTK_STOCK_DIALOG_INFO, GTK_ICON_SIZE_DND);
+@@ -746,6 +769,8 @@
+ {
+   ThunarUcaTypes types;
+   gchar         *description;
++  gchar		*upper;
++  gchar		*lower;
+   gchar         *patterns;
+   gchar         *command;
+   gchar         *icon_name;
+@@ -759,6 +784,8 @@
+   /* determine the current values from the model */
+   gtk_tree_model_get (GTK_TREE_MODEL (uca_model), iter,
+                       THUNAR_UCA_MODEL_COLUMN_DESCRIPTION, &description,
++		      THUNAR_UCA_MODEL_COLUMN_UPPER, &upper,
++		      THUNAR_UCA_MODEL_COLUMN_LOWER, &lower,
+                       THUNAR_UCA_MODEL_COLUMN_PATTERNS, &patterns,
+                       THUNAR_UCA_MODEL_COLUMN_COMMAND, &command,
+                       THUNAR_UCA_MODEL_COLUMN_TYPES, &types,
+@@ -778,10 +805,14 @@
+   gtk_entry_set_text (GTK_ENTRY (uca_editor->patterns_entry), (patterns != NULL) ? patterns : "");
+   gtk_entry_set_text (GTK_ENTRY (uca_editor->command_entry), (command != NULL) ? command : "");
+   gtk_entry_set_text (GTK_ENTRY (uca_editor->name_entry), (name != NULL) ? name : "");
++  gtk_spin_button_set_value (GTK_SPIN_BUTTON (uca_editor->upper_button), (upper != NULL) ? g_strtod (upper, NULL) : -1.0);
++  gtk_spin_button_set_value (GTK_SPIN_BUTTON (uca_editor->lower_button), (lower != NULL) ? g_strtod (lower, NULL) : -1.0);
+   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (uca_editor->sn_button), startup_notify);
+ 
+   /* cleanup */
+   g_free (description);
++  g_free (upper);
++  g_free (lower);
+   g_free (patterns);
+   g_free (command);
+   g_free (icon_name);
+@@ -804,10 +835,16 @@
+                         ThunarUcaModel  *uca_model,
+                         GtkTreeIter     *iter)
+ {
++  gchar    *upper_string;
++  gchar    *lower_string;
++
+   g_return_if_fail (THUNAR_UCA_IS_EDITOR (uca_editor));
+   g_return_if_fail (THUNAR_UCA_IS_MODEL (uca_model));
+   g_return_if_fail (iter != NULL);
+ 
++  upper_string = g_strdup_printf ("%d", gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (uca_editor->upper_button)));
++  lower_string = g_strdup_printf ("%d", gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (uca_editor->lower_button)));
++
+   thunar_uca_model_update (uca_model, iter,
+                            gtk_entry_get_text (GTK_ENTRY (uca_editor->name_entry)),
+                            NULL, /* don't touch the unique id */
+@@ -816,6 +853,8 @@
+                            gtk_entry_get_text (GTK_ENTRY (uca_editor->command_entry)),
+                            gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (uca_editor->sn_button)),
+                            gtk_entry_get_text (GTK_ENTRY (uca_editor->patterns_entry)),
++			   upper_string,
++			   lower_string,
+                            thunar_uca_editor_get_types (uca_editor));
+ }
+ 
+diff -ru Thunar-1.6.3.orig/plugins/thunar-uca/thunar-uca-model.c Thunar-1.6.3/plugins/thunar-uca/thunar-uca-model.c
+--- Thunar-1.6.3.orig/plugins/thunar-uca/thunar-uca-model.c	2013-05-21 19:50:07.000000000 -0700
++++ Thunar-1.6.3/plugins/thunar-uca/thunar-uca-model.c	2013-05-21 19:53:41.000000000 -0700
+@@ -79,6 +79,8 @@
+   PARSER_COMMAND,
+   PARSER_STARTUP_NOTIFY,
+   PARSER_PATTERNS,
++  PARSER_UPPER,
++  PARSER_LOWER,
+   PARSER_DESCRIPTION,
+   PARSER_DIRECTORIES,
+   PARSER_AUDIO_FILES,
+@@ -169,6 +171,8 @@
+   gchar         *command;
+   guint          startup_notify : 1;
+   gchar        **patterns;
++  gchar		*upper;
++  gchar		*lower;
+   ThunarUcaTypes types;
+ 
+   /* derived attributes */
+@@ -190,6 +194,8 @@
+   GString        *command;
+   GString        *patterns;
+   GString        *description;
++  GString	 *upper;
++  GString	 *lower;
+   gboolean        startup_notify;
+   gboolean        description_use;
+   guint           description_match;
+@@ -343,7 +349,13 @@
+ 
+     case THUNAR_UCA_MODEL_COLUMN_PATTERNS:
+       return G_TYPE_STRING;
+-
++  
++    case THUNAR_UCA_MODEL_COLUMN_UPPER:
++      return G_TYPE_STRING;
++    
++    case THUNAR_UCA_MODEL_COLUMN_LOWER:
++      return G_TYPE_STRING;
++    
+     case THUNAR_UCA_MODEL_COLUMN_TYPES:
+       return G_TYPE_UINT;
+ 
+@@ -452,7 +464,15 @@
+       str = g_strjoinv (";", item->patterns);
+       g_value_take_string (value, str);
+       break;
+-
++    
++    case THUNAR_UCA_MODEL_COLUMN_UPPER:
++      g_value_set_static_string (value, item->upper);
++      break;
++    
++    case THUNAR_UCA_MODEL_COLUMN_LOWER:
++      g_value_set_static_string (value, item->lower);
++      break;
++    
+     case THUNAR_UCA_MODEL_COLUMN_TYPES:
+       g_value_set_uint (value, item->types);
+       break;
+@@ -585,6 +605,8 @@
+   parser.icon_name = g_string_new (NULL);
+   parser.command = g_string_new (NULL);
+   parser.patterns = g_string_new (NULL);
++  parser.upper = g_string_new (NULL);
++  parser.lower = g_string_new (NULL);
+   parser.description = g_string_new (NULL);
+   parser.startup_notify = FALSE;
+   parser.unique_id_generated = FALSE;
+@@ -598,6 +620,8 @@
+   /* cleanup */
+   g_markup_parse_context_free (context);
+   g_string_free (parser.description, TRUE);
++  g_string_free (parser.upper, TRUE);
++  g_string_free (parser.lower, TRUE);
+   g_string_free (parser.patterns, TRUE);
+   g_string_free (parser.command, TRUE);
+   g_string_free (parser.icon_name, TRUE);
+@@ -622,6 +646,8 @@
+ {
+   /* release the previous values... */
+   g_strfreev (item->patterns);
++  g_free (item->upper);
++  g_free (item->lower);
+   g_free (item->description);
+   g_free (item->command);
+   g_free (item->name);
+@@ -679,6 +705,8 @@
+           g_string_truncate (parser->unique_id, 0);
+           g_string_truncate (parser->command, 0);
+           g_string_truncate (parser->patterns, 0);
++	  g_string_truncate (parser->upper, 0);
++	  g_string_truncate (parser->lower, 0);
+           g_string_truncate (parser->description, 0);
+           xfce_stack_push (parser->stack, PARSER_ACTION);
+         }
+@@ -736,6 +764,16 @@
+           g_string_truncate (parser->patterns, 0);
+           xfce_stack_push (parser->stack, PARSER_PATTERNS);
+         }
++      else if (strcmp (element_name, "upper") == 0)
++        {
++          g_string_truncate (parser->upper, 0);
++          xfce_stack_push (parser->stack, PARSER_UPPER);
++        }
++      else if (strcmp (element_name, "lower") == 0)
++        {
++          g_string_truncate (parser->lower, 0);
++          xfce_stack_push (parser->stack, PARSER_LOWER);
++        }
+       else if (strcmp (element_name, "description") == 0)
+         {
+           for (n = 0; attribute_names[n] != NULL; ++n)
+@@ -850,6 +888,8 @@
+                                    parser->command->str,
+                                    parser->startup_notify,
+                                    parser->patterns->str,
++				   parser->upper->str,
++				   parser->lower->str,
+                                    parser->types);
+ 
+           /* check if a new id should've been generated */
+@@ -884,7 +924,17 @@
+       if (strcmp (element_name, "patterns") != 0)
+         goto unknown_element;
+       break;
+-
++    
++    case PARSER_UPPER:
++      if (strcmp (element_name, "upper") != 0)
++        goto unknown_element;
++      break;
++    
++    case PARSER_LOWER:
++      if (strcmp (element_name, "lower") != 0)
++        goto unknown_element;
++      break;
++    
+     case PARSER_DESCRIPTION:
+       if (strcmp (element_name, "description") != 0)
+         goto unknown_element;
+@@ -970,7 +1020,15 @@
+     case PARSER_PATTERNS:
+       g_string_append_len (parser->patterns, text, text_len);
+       break;
+-
++    
++    case PARSER_UPPER:
++      g_string_append_len (parser->upper, text, text_len);
++      break;
++   
++    case PARSER_LOWER:
++      g_string_append_len (parser->lower, text, text_len);
++      break;
++    
+     case PARSER_DESCRIPTION:
+       if (parser->description_use)
+         g_string_append_len (parser->description, text, text_len);
+@@ -1099,6 +1157,7 @@
+   GList              *lp;
+   gint                n_files;
+   gint                i, m, n;
++  gint		      upper, lower;
+ 
+   g_return_val_if_fail (THUNAR_UCA_IS_MODEL (uca_model), NULL);
+   g_return_val_if_fail (file_infos != NULL, NULL);
+@@ -1140,7 +1199,16 @@
+     {
+       /* check if we can just ignore this item */
+       item = (ThunarUcaModelItem *) lp->data;
+-      if (!item->multiple_selection && n_files > 1)
++      upper = g_strtod(item->upper, NULL);
++      lower = g_strtod(item->lower, NULL);
++      
++      if (upper == -1)
++        upper = n_files;
++      
++      if (lower == -1)
++        lower = n_files;
++      
++      if (((!item->multiple_selection) && (n_files > 1)) || (n_files > upper) || (n_files < lower))
+         continue;
+ 
+       /* match the specified files */
+@@ -1316,6 +1384,8 @@
+                          const gchar    *command,
+                          gboolean        startup_notify,
+                          const gchar    *patterns,
++			 const gchar	*upper,
++			 const gchar	*lower,
+                          ThunarUcaTypes  types)
+ {
+   ThunarUcaModelItem *item;
+@@ -1336,6 +1406,10 @@
+     item->icon_name = g_strdup (icon);
+   if (G_LIKELY (command != NULL && *command != '\0'))
+     item->command = g_strdup (command);
++  if (G_LIKELY (upper != NULL && *upper != '\0'))
++    item->upper = g_strdup (upper);
++  if (G_LIKELY (lower != NULL && *lower != '\0'))
++    item->lower = g_strdup (lower);
+   if (G_LIKELY (description != NULL && *description != '\0'))
+     item->description = g_strdup (description);
+   item->types = types;
+@@ -1436,12 +1510,16 @@
+                                          "\t<unique-id>%s</unique-id>\n"
+                                          "\t<command>%s</command>\n"
+                                          "\t<description>%s</description>\n"
++					 "\t<upper>%s</upper>\n"
++					 "\t<lower>%s</lower>\n"
+                                          "\t<patterns>%s</patterns>\n",
+                                          (item->icon_name != NULL) ? item->icon_name : "",
+                                          (item->name != NULL) ? item->name : "",
+                                          (item->unique_id != NULL) ? item->unique_id : "",
+                                          (item->command != NULL) ? item->command : "",
+                                          (item->description != NULL) ? item->description : "",
++					 (item->upper != NULL) ? item->upper : "",
++					 (item->lower != NULL) ? item->lower : "",
+                                          patterns);
+       fprintf (fp, "%s", escaped);
+       g_free (patterns);
+diff -ru Thunar-1.6.3.orig/plugins/thunar-uca/thunar-uca-model.h Thunar-1.6.3/plugins/thunar-uca/thunar-uca-model.h
+--- Thunar-1.6.3.orig/plugins/thunar-uca/thunar-uca-model.h	2013-05-21 19:50:07.000000000 -0700
++++ Thunar-1.6.3/plugins/thunar-uca/thunar-uca-model.h	2013-05-21 19:50:20.000000000 -0700
+@@ -44,6 +44,8 @@
+   THUNAR_UCA_MODEL_COLUMN_UNIQUE_ID,
+   THUNAR_UCA_MODEL_COLUMN_COMMAND,
+   THUNAR_UCA_MODEL_COLUMN_STARTUP_NOTIFY,
++  THUNAR_UCA_MODEL_COLUMN_UPPER,
++  THUNAR_UCA_MODEL_COLUMN_LOWER,
+   THUNAR_UCA_MODEL_COLUMN_PATTERNS,
+   THUNAR_UCA_MODEL_COLUMN_TYPES,
+   THUNAR_UCA_MODEL_COLUMN_STOCK_LABEL,
+@@ -96,6 +98,8 @@
+                                                  const gchar            *command,
+                                                  gboolean                startup_notify,
+                                                  const gchar            *patterns,
++						 const gchar		*upper,
++						 const gchar		*lower,
+                                                  ThunarUcaTypes          types);
+ 
+ gboolean        thunar_uca_model_save           (ThunarUcaModel         *uca_model,
+diff -ru Thunar-1.6.3.orig/plugins/thunar-uca/uca.xml.in Thunar-1.6.3/plugins/thunar-uca/uca.xml.in
+--- Thunar-1.6.3.orig/plugins/thunar-uca/uca.xml.in	2013-05-21 19:50:07.000000000 -0700
++++ Thunar-1.6.3/plugins/thunar-uca/uca.xml.in	2013-05-21 19:50:20.000000000 -0700
+@@ -40,6 +40,8 @@
+   <action>
+     <icon>utilities-terminal</icon>
+     <patterns>*</patterns>
++    <lower>-1</lower>
++    <upper>-1</upper>
+     <_name>Open Terminal Here</_name>
+     <command>exo-open --working-directory %f --launch TerminalEmulator</command>
+     <_description>Example for a custom action</_description>
+@@ -47,4 +49,15 @@
+     <directories/>
+   </action>
+ 
++  <action>
++    <icon>preferences-desktop-wallpaper</icon>
++    <patterns>*</patterns>
++    <lower>0</lower>
++    <upper>1</upper>
++    <_name>Set as wallpaper</_name>
++    <command>xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path --create -t string -s \"%f\"</command>
++    <_description>Implementing the entire wallpaper plugin with just a bit of XML</_description>    
++    <image-files/>
++  </action>
++
+ </actions>
