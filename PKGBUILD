@@ -3,7 +3,7 @@
 pkgname=tvheadend
 
 pkgver=4.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="TV streaming server for Linux"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://tvheadend.org/projects/tvheadend"
@@ -23,7 +23,7 @@ sha512sums=('2ef90f7a183905df40f6cd6852d26cce79ec420fa7eca299730f6f923e007e5930c
 
 prepare() {
     cd ${srcdir}/${pkgname}-${pkgver}
-    ./configure --prefix=/usr --mandir=/usr/share/man/man1 --python=python2 --r$
+    ./configure --prefix=/usr --mandir=/usr/share/man/man1 --python=python2
 }
 
 build() {
