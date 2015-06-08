@@ -1,0 +1,16 @@
+pkgbase = yuicompressor-git
+	pkgdesc = The Yahoo! JavaScript and CSS Compressor
+	pkgver = 2.4.8.r15.f71090d
+	pkgrel = 1
+	url = http://yui.github.io/yuicompressor/
+	arch = any
+	license = BSD
+	makedepends = apache-ant
+	depends = java-runtime
+	provides = yuicompressor
+	conflicts = yuicompressor
+	source = git+https://github.com/yui/yuicompressor.git
+	sha256sums = SKIP
+
+pkgname = yuicompressor-git
+
