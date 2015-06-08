@@ -1,0 +1,22 @@
+pkgbase = libmediawiki-git
+	pkgdesc = A KDE C++ interface for MediaWiki based web service as wikipedia.org
+	pkgver = r76.c899dba
+	pkgrel = 1
+	url = http://www.kde.org
+	arch = i686
+	arch = x86_64
+	groups = digikam-git
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = git
+	makedepends = automoc4
+	makedepends = cmake
+	depends = kdelibs
+	provides = libmediawiki
+	conflicts = libmediawiki
+	source = git://anongit.kde.org/libmediawiki
+	md5sums = SKIP
+
+pkgname = libmediawiki-git
+
