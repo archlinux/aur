@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-fftw
+	pkgdesc = A library for computing the discrete Fourier transform (DFT) (mingw-w64)
+	pkgver = 3.3.4
+	pkgrel = 2
+	url = http://www.fftw.org
+	arch = any
+	license = GPL
+	checkdepends = wine
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = http://www.fftw.org/fftw-3.3.4.tar.gz
+	md5sums = 2edab8c06b24feeb3b82bbb3ebf3e7b3
+
+pkgname = mingw-w64-fftw
+
