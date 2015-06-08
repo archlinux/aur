@@ -1,0 +1,13 @@
+pkgbase = yakuake-l10n-frameworks
+	pkgdesc = Language packs for yakuake-frameworks
+	pkgver = 2.9.9.87
+	pkgrel = 2
+	url = https://www.kde.org/applications/system/yakuake
+	arch = any
+	license = GPL
+	depends = yakuake-frameworks-git
+	source = yl10nf.tar.xz::https://copy.com/T7RYKoI977qTjmCh/yl10nf.tar.xz?download=1
+	sha256sums = aaf509c9fa6a208785ae39a6b5ec3a71a26c8ed242e297854e5c47d1e6668216
+
+pkgname = yakuake-l10n-frameworks
+
