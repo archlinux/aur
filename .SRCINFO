@@ -1,0 +1,19 @@
+pkgbase = perl-authority-shared
+	pkgdesc = a multi-AUTHORITY method for your classes
+	pkgver = 0.006
+	pkgrel = 1
+	url = http://search.cpan.org/dist/authority-shared
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-exception
+	depends = perl>=5.006
+	depends = perl-object-authority
+	depends = perl-object-role
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/authority-shared-0.006.tar.gz
+	md5sums = a2f58964898d7d4e73869b3b11cbc33e
+	sha512sums = 485b7da2c8e1424aed041f830df20bcb768c49ee6cbe8c5dc626afa6741287dd1bbafcec4c69e346bbf6f9bc4a76e3218a10913887ecc7e23192c45c0c0ca679
+
+pkgname = perl-authority-shared
+
