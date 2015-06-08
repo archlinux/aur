@@ -1,0 +1,18 @@
+pkgbase = perl-utf8-all
+	pkgdesc = turn on Unicode - all of it
+	pkgver = 0.015
+	pkgrel = 1
+	url = http://search.cpan.org/dist/utf8-all
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-fatal>=0
+	checkdepends = perl-test-warn>=0
+	depends = perl-import-into>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DO/DOHERTY/utf8-all-0.015.tar.gz
+	md5sums = 656b68076393901f4a6b1901cc17b96b
+	sha512sums = 828b847ea50627cfcc8a9310f0a4c27bd5b2e0a59623142fe541e3b0910f5ce4829a46bc467d62c45822c220091fc37b9f4e615bc3baa416640cf381dd7fb0bd
+
+pkgname = perl-utf8-all
+
