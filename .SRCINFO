@@ -1,0 +1,13 @@
+pkgbase = nodejs-harp
+	pkgdesc = Production ready web server with built in pre-processing
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = http://harpjs.com
+	arch = any
+	depends = nodejs
+	noextract = harp-0.9.4.tgz
+	source = http://registry.npmjs.org/harp/-/harp-0.9.4.tgz
+	sha1sums = 7cc193fc316492450801b4f678f8be8f7f648936
+
+pkgname = nodejs-harp
+
