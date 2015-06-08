@@ -1,0 +1,30 @@
+pkgbase = virtaal
+	pkgdesc = A tool to create program translations.
+	pkgver = 0.7.1
+	pkgrel = 5
+	url = http://translate.sourceforge.net/wiki/virtaal/index
+	install = virtaal.install
+	arch = any
+	license = GPL
+	depends = python2>2.5
+	depends = gtk2>2.18
+	depends = pygtk>2.12
+	depends = python2-lxml>2.3.2
+	depends = desktop-file-utils
+	depends = translate-toolkit>1.9.0-2
+	depends = python2-simplejson
+	depends = python2-pycurl
+	depends = python2-pysqlite
+	depends = hicolor-icon-theme
+	optdepends = python2-gtkspell: to enable spell checking
+	optdepends = python2-pyenchant: to enable spell checking
+	optdepends = iso-codes: to display translated language names
+	optdepends = libtranslate: to enable machine translation
+	optdepends = psyco2-svn: to speedup the application
+	optdepends = python2-levenshtein: to speed up Levenshtein distance measures
+	optdepends = psycopg2: for TinyTM plugin
+	source = http://downloads.sourceforge.net/translate/virtaal-0.7.1.tar.bz2
+	md5sums = e931c5b477da4bb44e00c24c2247a1ad
+
+pkgname = virtaal
+
