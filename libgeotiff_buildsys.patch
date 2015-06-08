@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
+<head>
+<title>mingw-libgeotiff.git - mingw-libgeotiff</title>
+<meta name='generator' content='cgit v0.10.2'/>
+<meta name='robots' content='index, nofollow'/>
+<link rel='stylesheet' type='text/css' href='/cgit-data/cgit.css'/>
+<link rel='shortcut icon' href='/favicon.ico'/>
+<link rel='alternate' title='Atom feed' href='http://pkgs.fedoraproject.org/cgit/mingw-libgeotiff.git/atom/libgeotiff_buildsys.patch?h=master' type='application/atom+xml'/>
+</head>
+<body>
+<div id='cgit'><table id='header'>
+<tr>
+<td class='logo' rowspan='2'><a href='/cgit/'><img src='/cgit-data/cgit.png' alt='cgit logo'/></a></td>
+<td class='main'><a href='/cgit/'>index</a> : <a title='mingw-libgeotiff.git' href='/cgit/mingw-libgeotiff.git/'>mingw-libgeotiff.git</a></td><td class='form'><form method='get' action=''>
+<select name='h' onchange='this.form.submit();'>
+<option value='f17'>f17</option>
+<option value='f18'>f18</option>
+<option value='f19'>f19</option>
+<option value='f20'>f20</option>
+<option value='f21'>f21</option>
+<option value='f22'>f22</option>
+<option value='master' selected='selected'>master</option>
+</select> <input type='submit' name='' value='switch'/></form></td></tr>
+<tr><td class='sub'>mingw-libgeotiff</td><td class='sub right'>Jon Ciesla</td></tr></table>
+<table class='tabs'><tr><td>
+<a href='/cgit/mingw-libgeotiff.git/'>summary</a><a href='/cgit/mingw-libgeotiff.git/refs/'>refs</a><a href='/cgit/mingw-libgeotiff.git/log/libgeotiff_buildsys.patch'>log</a><a class='active' href='/cgit/mingw-libgeotiff.git/tree/libgeotiff_buildsys.patch'>tree</a><a href='/cgit/mingw-libgeotiff.git/commit/libgeotiff_buildsys.patch'>commit</a><a href='/cgit/mingw-libgeotiff.git/diff/libgeotiff_buildsys.patch'>diff</a><a href='/cgit/mingw-libgeotiff.git/stats/libgeotiff_buildsys.patch'>stats</a></td><td class='form'><form class='right' method='get' action='/cgit/mingw-libgeotiff.git/log/libgeotiff_buildsys.patch'>
+<select name='qt'>
+<option value='grep'>log msg</option>
+<option value='author'>author</option>
+<option value='committer'>committer</option>
+<option value='range'>range</option>
+</select>
+<input class='txt' type='text' size='10' name='q' value=''/>
+<input type='submit' value='search'/>
+</form>
+</td></tr></table>
+<div class='path'>path: <a href='/cgit/mingw-libgeotiff.git/tree/'>root</a>/<a href='/cgit/mingw-libgeotiff.git/tree/libgeotiff_buildsys.patch'>libgeotiff_buildsys.patch</a></div><div class='content'>blob: 28abf9a886d1568c59a014c5922fbf975a9cd835 (<a href='/cgit/mingw-libgeotiff.git/plain/libgeotiff_buildsys.patch'>plain</a>)
+<table summary='blob content' class='blob'>
+<tr><td class='linenumbers'><pre><a id='n1' href='#n1'>1</a>
+<a id='n2' href='#n2'>2</a>
+<a id='n3' href='#n3'>3</a>
+<a id='n4' href='#n4'>4</a>
+<a id='n5' href='#n5'>5</a>
+<a id='n6' href='#n6'>6</a>
+<a id='n7' href='#n7'>7</a>
+<a id='n8' href='#n8'>8</a>
+<a id='n9' href='#n9'>9</a>
+<a id='n10' href='#n10'>10</a>
+<a id='n11' href='#n11'>11</a>
+<a id='n12' href='#n12'>12</a>
+<a id='n13' href='#n13'>13</a>
+<a id='n14' href='#n14'>14</a>
+<a id='n15' href='#n15'>15</a>
+<a id='n16' href='#n16'>16</a>
+<a id='n17' href='#n17'>17</a>
+<a id='n18' href='#n18'>18</a>
+<a id='n19' href='#n19'>19</a>
+<a id='n20' href='#n20'>20</a>
+<a id='n21' href='#n21'>21</a>
+<a id='n22' href='#n22'>22</a>
+<a id='n23' href='#n23'>23</a>
+<a id='n24' href='#n24'>24</a>
+<a id='n25' href='#n25'>25</a>
+<a id='n26' href='#n26'>26</a>
+<a id='n27' href='#n27'>27</a>
+<a id='n28' href='#n28'>28</a>
+<a id='n29' href='#n29'>29</a>
+<a id='n30' href='#n30'>30</a>
+<a id='n31' href='#n31'>31</a>
+<a id='n32' href='#n32'>32</a>
+<a id='n33' href='#n33'>33</a>
+<a id='n34' href='#n34'>34</a>
+<a id='n35' href='#n35'>35</a>
+<a id='n36' href='#n36'>36</a>
+<a id='n37' href='#n37'>37</a>
+<a id='n38' href='#n38'>38</a>
+<a id='n39' href='#n39'>39</a>
+<a id='n40' href='#n40'>40</a>
+<a id='n41' href='#n41'>41</a>
+<a id='n42' href='#n42'>42</a>
+<a id='n43' href='#n43'>43</a>
+<a id='n44' href='#n44'>44</a>
+<a id='n45' href='#n45'>45</a>
+<a id='n46' href='#n46'>46</a>
+<a id='n47' href='#n47'>47</a>
+<a id='n48' href='#n48'>48</a>
+<a id='n49' href='#n49'>49</a>
+<a id='n50' href='#n50'>50</a>
+<a id='n51' href='#n51'>51</a>
+<a id='n52' href='#n52'>52</a>
+<a id='n53' href='#n53'>53</a>
+<a id='n54' href='#n54'>54</a>
+<a id='n55' href='#n55'>55</a>
+<a id='n56' href='#n56'>56</a>
+<a id='n57' href='#n57'>57</a>
+<a id='n58' href='#n58'>58</a>
+<a id='n59' href='#n59'>59</a>
+<a id='n60' href='#n60'>60</a>
+<a id='n61' href='#n61'>61</a>
+<a id='n62' href='#n62'>62</a>
+</pre></td>
+<td class='lines'><pre><code>diff -rupN libgeotiff-1.4.0/bin/Makefile.am libgeotiff-1.4.0-new/bin/Makefile.am
+--- libgeotiff-1.4.0/bin/Makefile.am	2011-10-05 23:34:23.000000000 +0200
++++ libgeotiff-1.4.0-new/bin/Makefile.am	2013-08-08 23:45:38.376229660 +0200
+@@ -10,9 +10,9 @@ if TIFF_IS_CONFIG
+ TIFF_CFLAGS = @TIFF_INC@ -DHAVE_TIFF=1
+ endif
+ 
+-AM_CFLAGS = -I../ -I../libxtiff $(TIFF_CFLAGS) 
++AM_CFLAGS = -I$(top_srcdir) -I$(top_srcdir)/libxtiff $(TIFF_CFLAGS)
+ 
+-LDADD = ../libgeotiff.la
++LDADD = $(top_builddir)/libgeotiff.la
+ 
+ EXTRA_DIST =    getopt.c
+ 
+diff -rupN libgeotiff-1.4.0/configure.ac libgeotiff-1.4.0-new/configure.ac
+--- libgeotiff-1.4.0/configure.ac	2011-10-05 23:34:23.000000000 +0200
++++ libgeotiff-1.4.0-new/configure.ac	2013-08-08 21:43:15.500186740 +0200
+@@ -280,8 +280,8 @@ elif test "$PROJ_LIB" != "" -a "$PROJ_IN
+   PROJ_INC=-I$PROJ_INC
+ 
+   AC_SUBST(PROJ_INC,$PROJ_INC)
+-  AC_DEFINE(HAVE_PROJECTS_H)
+-  AC_DEFINE(HAVE_LIBPROJ)
++  AC_DEFINE([HAVE_PROJECTS_H],[1],[have projects.h])
++  AC_DEFINE(HAVE_LIBPROJ,[1],[have libproj])
+   AC_SUBST([HAVE_LIBPROJ])
+   PROJ_CONFIG="yes"
+ 
+diff -rupN libgeotiff-1.4.0/libxtiff/Makefile.am libgeotiff-1.4.0-new/libxtiff/Makefile.am
+--- libgeotiff-1.4.0/libxtiff/Makefile.am	2011-10-05 23:34:23.000000000 +0200
++++ libgeotiff-1.4.0-new/libxtiff/Makefile.am	2013-08-08 21:57:03.808680050 +0200
+@@ -4,7 +4,7 @@ if TIFF_IS_CONFIG
+ TIFF_CFLAGS = @TIFF_INC@ -DHAVE_TIFF=1
+ endif
+ 
+-AM_CFLAGS = -I../ $(TIFF_CFLAGS) 
++AM_CFLAGS = -I$(top_srcdir) $(TIFF_CFLAGS)
+ 
+ libxtiff_la_SOURCES = xtiff.c
+ 
+diff -rupN libgeotiff-1.4.0/Makefile.am libgeotiff-1.4.0-new/Makefile.am
+--- libgeotiff-1.4.0/Makefile.am	2012-02-24 21:05:38.000000000 +0100
++++ libgeotiff-1.4.0-new/Makefile.am	2013-08-08 23:24:30.878799727 +0200
+@@ -18,7 +18,7 @@ if TIFF_IS_CONFIG
+ TIFF_CFLAGS = @TIFF_INC@ -DHAVE_TIFF=1
+ endif
+ 
+-AM_CFLAGS = -I./libxtiff $(PROJ_CFLAGS) $(TIFF_CFLAGS) \
++AM_CFLAGS = -I$(top_srcdir)/libxtiff $(PROJ_CFLAGS) $(TIFF_CFLAGS) \
+ 			-DCSV_DATA_DIR=\"$(datadir)/epsg_csv\"
+ 
+ csvdir = $(datadir)/epsg_csv
+@@ -108,7 +108,7 @@ if CSV_IS_CONFIG
+                              csv/unit_of_measure.c 
+ endif
+ 
+-libgeotiff_la_LDFLAGS = -version-info 3:1:1
++libgeotiff_la_LDFLAGS = -version-info 3:1:1 -no-undefined
+ 
+ libgeotiff_la_LIBADD = libxtiff/libxtiff.la
+ 
+</code></pre></td></tr></table>
+</div> <!-- class=content -->
+<div class='footer'>generated  by cgit v0.10.2 at 2015-02-27 19:04:32 (GMT)</div>
+</div> <!-- id=cgit -->
+</body>
+</html>
