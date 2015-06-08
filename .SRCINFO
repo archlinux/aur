@@ -1,0 +1,15 @@
+pkgbase = php-semver-checker
+	pkgdesc = Compares two source sets and determines the appropriate semantic versioning to apply.
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/tomzx/php-semver-checker
+	arch = any
+	license = MIT
+	makedepends = php-box
+	makedepends = php-composer
+	depends = php>=5.4.0
+	source = https://github.com/tomzx/php-semver-checker/archive/v0.6.2.tar.gz
+	sha512sums = c9b44353de4b8c63997e7dc5631edbc15ed5f4e4e43bf1af7456d81b316fd36701f2a746ad72385a105ab81a49531147b60791068edfa8e1221c21c756fe20cd
+
+pkgname = php-semver-checker
+
