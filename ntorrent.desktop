@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=0.5.30
+Name=NTorrent
+Comment=GUI for RTorrent
+Exec=ntorrent
+Icon=ntorrent
+Terminal=false
+Categories=Application;Network;
+Name[de_DE]=ntorrent.desktop
