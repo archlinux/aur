@@ -1,0 +1,16 @@
+pkgbase = biblesync-git
+	pkgdesc = multicast shared co-navigation library for Bible programs
+	pkgver = 20150102.c275968
+	pkgrel = 1
+	url = https://github.com/karlkleinpaste/biblesync
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = gcc-libs
+	depends = libutil-linux
+	source = git+https://github.com/karlkleinpaste/biblesync.git
+	md5sums = SKIP
+
+pkgname = biblesync-git
+
