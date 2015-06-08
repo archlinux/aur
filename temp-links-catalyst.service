@@ -1,0 +1,13 @@
+[Unit]
+Description=temp files linker for catalyst
+
+[Service]
+SysVStartPriority=90
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/temp_links_catalyst start
+ExecStop=/usr/bin/temp_links_catalyst stop
+KillMode=none
+
+[Install]
+WantedBy=multi-user.target
