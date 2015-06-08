@@ -1,0 +1,15 @@
+pkgbase = xteddy
+	pkgdesc = Your virtual comfort when things get rough
+	pkgver = 2.2
+	pkgrel = 3
+	url = http://webstaff.itn.liu.se/~stegu/xteddy/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL
+	depends = imlib2
+	source = http://webstaff.itn.liu.se/~stegu/xteddy/xteddy-2.2.tar.gz
+	sha1sums = 4fcf2efc6e0f2e02ce32597d2ccfbfb2bf057199
+
+pkgname = xteddy
+
