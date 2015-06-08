@@ -1,0 +1,22 @@
+pkgbase = libdv-gtk2
+	pkgdesc = The Quasar DV codec but with a gtk2 frontend
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = http://libdv.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = pkgconfig
+	makedepends = gtk2
+	makedepends = libxv
+	depends = popt
+	optdepends = gtk2: for using playdv
+	optdepends = libxv: for using playdv
+	options = !libtool
+	source = gtk2.patch
+	source = http://downloads.sourceforge.net/libdv/libdv-1.0.0.tar.gz
+	md5sums = 4c7d6675dba9445643336147f427cb99
+	md5sums = f895162161cfa4bb4a94c070a7caa6c7
+
+pkgname = libdv-gtk2
+

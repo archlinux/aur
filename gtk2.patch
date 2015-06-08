@@ -1,0 +1,23 @@
+diff -ru libdv-1.0.0.orig/configure.ac libdv-1.0.0/configure.ac
+--- libdv-1.0.0.orig/configure.ac	2010-05-08 16:09:47.000000000 -0400
++++ libdv-1.0.0/configure.ac	2010-05-08 16:17:11.000000000 -0400
+@@ -162,7 +162,7 @@
+ dnl Checks for libraries.
+ have_gtk="false"
+ if $use_gtk; then
+-	REQUIRES='glib >= 1.2.4 gtk+ >= 1.2.4'
++	REQUIRES='glib-2.0 >= 2.6.6 gtk+-2.0 >= 2.6.10 x11 xext'
+ 	PKG_CHECK_MODULES(GTK,$REQUIRES,have_gtk="true",have_gtk="false")
+ 	AC_DEFINE(HAVE_GTK)
+ fi
+diff -ru libdv-1.0.0.orig/playdv/display.h libdv-1.0.0/playdv/display.h
+--- libdv-1.0.0.orig/playdv/display.h	2010-05-08 16:09:47.000000000 -0400
++++ libdv-1.0.0/playdv/display.h	2010-05-08 16:17:31.000000000 -0400
+@@ -32,7 +32,6 @@
+ #endif
+ 
+ #include "libdv/dv_types.h"
+-#include <gtk/gtk.h>
+ 
+ #if HAVE_LIBXV
+ #include <X11/Xlib.h>
