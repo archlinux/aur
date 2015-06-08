@@ -1,0 +1,15 @@
+pkgbase = halibut
+	pkgdesc = free document preparation system
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://www.chiark.greenend.org.uk/~sgtatham/halibut/
+	install = halibut.install
+	arch = i686
+	arch = x86_64
+	license = custom:MIT
+	depends = glibc
+	source = http://www.chiark.greenend.org.uk/~sgtatham/halibut/halibut-1.1.tar.gz
+	md5sums = bd2821b7a124b4b9aa356e12f09c4cb2
+
+pkgname = halibut
+
