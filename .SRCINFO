@@ -1,0 +1,15 @@
+pkgbase = luasql-odbc
+	pkgdesc = ODBC module for Lua
+	pkgver = 2.3.0
+	pkgrel = 0
+	url = http://www.keplerproject.org/luasql/
+	arch = i686
+	arch = x86_64
+	license = MIT/X11
+	depends = lua
+	depends = unixodbc
+	source = https://github.com/keplerproject/luasql/archive/v2.3.0.zip
+	md5sums = dae8388c549b5fccbd16ecc2d49b8f3d
+
+pkgname = luasql-odbc
+
