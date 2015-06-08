@@ -1,0 +1,15 @@
+pkgbase = cutemupen
+	pkgdesc = A Qt front-end for Mupen64Plus
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = http://sourceforge.net/projects/cutemupen
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = mupen64plus>=1.99
+	depends = qt4
+	source = http://downloads.sourceforge.net/project/cutemupen/0.1.1/cutemupen-src-0.1.1.tar.bz2
+	sha1sums = 5d8d1e529063089849f3af401225c354fc229ddd
+
+pkgname = cutemupen
+
