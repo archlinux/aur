@@ -1,0 +1,21 @@
+pkgbase = archiso-git
+	pkgdesc = Arch Linux livecd/liveusb generation scripts
+	pkgver = 21.3.gdc845b3
+	pkgrel = 1
+	url = http://archlinux.org
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = libisoburn
+	depends = squashfs-tools
+	depends = dosfstools
+	depends = lynx
+	depends = arch-install-scripts
+	optdepends = qemu: quickly test isos
+	provides = archiso
+	conflicts = archiso
+	source = git://projects.archlinux.org/archiso.git
+	md5sums = SKIP
+
+pkgname = archiso-git
+
