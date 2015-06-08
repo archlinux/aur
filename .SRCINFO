@@ -1,0 +1,17 @@
+pkgbase = libbinio
+	pkgdesc = Binary I/O C++ class library
+	pkgver = 1.4
+	pkgrel = 3
+	url = http://libbinio.sourceforge.net
+	install = libbinio.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gcc-libs
+	source = http://downloads.sourceforge.net/libbinio/libbinio-1.4.tar.bz2
+	source = eof.diff
+	md5sums = 517ded8c7ce9b3de0f84b1db74a2ebda
+	md5sums = 457b5d73e4934adfecf5b75b5f16a227
+
+pkgname = libbinio
+

@@ -1,0 +1,11 @@
+post_install() {
+	test -x usr/bin/install-info && install-info usr/share/info/libbinio.info.gz usr/share/info/dir 2>/dev/null
+}
+
+post_upgrade() {
+	test -x usr/bin/install-info && install-info usr/share/info/libbinio.info.gz usr/share/info/dir 2>/dev/null
+}
+
+pre_remove() {
+	test -x usr/bin/install-info && install-info --delete usr/share/info/libbinio.info.gz usr/share/info/dir 2>/dev/null
+}
