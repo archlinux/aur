@@ -1,0 +1,18 @@
+pkgbase = gog-democracy-3
+	pkgdesc = Have you ever wanted to be President? Or Prime Minister? Now you can.
+	pkgver = 1.0.0.2
+	pkgrel = 1
+	url = http://www.gog.com/game/democracy_3
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = custom
+	depends = freetype2
+	depends = unionfs-fuse
+	source = local://gog_democracy_3_1.0.0.2.tar.gz
+	source = gog-democracy-3
+	sha256sums = 004b6b6c8973e33d9f0c7cb8b43cf59c732e98aa47fb862e6964fac2a5a5acae
+	sha256sums = 3d8af8a5ed6be5f62e4aaaf04587cada07085cb5f49cb95bad1e9573e1c22cc9
+
+pkgname = gog-democracy-3
+
