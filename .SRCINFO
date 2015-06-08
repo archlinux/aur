@@ -1,0 +1,24 @@
+pkgbase = haskell-configurator
+	pkgdesc = A configuration management library for programs and daemons.
+	pkgver = 0.3.0.0
+	pkgrel = 2
+	url = http://hackage.haskell.org/package/configurator
+	install = haskell-configurator.install
+	arch = i686
+	arch = x86_64
+	license = BSD3
+	makedepends = ghc
+	depends = haskell-attoparsec
+	depends = haskell-bytestring
+	depends = haskell-directory
+	depends = haskell-hashable
+	depends = haskell-text
+	depends = haskell-unix-compat
+	depends = haskell-unordered-containers
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/configurator/0.3.0.0/configurator-0.3.0.0.tar.gz
+	md5sums = aac63c54d79daed3f5d854ee9d34a6ef
+
+pkgname = haskell-configurator
+
