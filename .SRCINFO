@@ -1,0 +1,16 @@
+pkgbase = epson-inkjet-printer-201303w
+	pkgdesc = Epson printer driver (XP-310, XP-410)
+	pkgver = 1.0.0
+	pkgrel = 8
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom:Epson Licence Agreement
+	depends = cups
+	depends = ghostscript
+	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201303w-1.0.0-1lsb3.2.src.rpm
+	sha256sums = b7e77ffd333c9b1512d1254267f122d29d72b1c26a01def9d868084de65e9d2a
+
+pkgname = epson-inkjet-printer-201303w
+
