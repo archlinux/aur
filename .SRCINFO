@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-agrum
+	pkgdesc = C++ Bayesian networks library (mingw-w64)
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://forge.lip6.fr/projects/aGrUM/wiki
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
+	options = !buildflags
+	options = staticlibs
+	options = !strip
+	source = agrum-0.9.1::git+git://forge.lip6.fr/aGrUM#tag=0.9.1
+	md5sums = SKIP
+
+pkgname = mingw-w64-agrum
+
