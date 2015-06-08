@@ -1,0 +1,24 @@
+[Unit]
+Description=Web based code review and project management for Git based projects
+After=network.target
+
+[Service]
+Type=simple
+User=gerrit
+EnvironmentFile=/etc/default/gerritcodereview
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=gerrit
+ExecStart=@/usr/bin/java gerrit -DGerritCodeReview=1 $JAVA_OPTIONS -jar $GERRIT_WAR daemon -d $GERRIT_SITE --console-log
+#MemoryLimit=768M
+OOMScoreAdjust=-1000
+LimitCPU=infinity
+LimitFSIZE=infinity
+LimitDATA=infinity
+LimitCORE=0
+LimitAS=infinity
+LimitLOCKS=infinity
+
+[Install]
+WantedBy=multi-user.target
+
