@@ -1,0 +1,14 @@
+pkgbase = f-irc
+	pkgdesc = user-friendly IRC client for the console/terminal
+	pkgver = 1.36
+	pkgrel = 1
+	url = http://www.vanheusden.com/f-irc/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	source = http://www.vanheusden.com/f-irc/fi-1.36.tgz
+	sha256sums = 092635b2f0d88625754da8235916e8f3ac3687853e7eac92d598fd06590833b9
+
+pkgname = f-irc
+
