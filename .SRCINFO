@@ -1,0 +1,21 @@
+pkgbase = kcompletion-git
+	pkgdesc = KCompletion
+	pkgver = r100.3bff831
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/kcompletion
+	arch = i686
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	makedepends = qt5-tools
+	depends = kwidgetsaddons-git
+	depends = kconfig-git
+	provides = kcompletion
+	conflicts = kcompletion
+	source = git://anongit.kde.org/kcompletion.git
+	md5sums = SKIP
+
+pkgname = kcompletion-git
+
