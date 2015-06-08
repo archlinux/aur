@@ -1,0 +1,19 @@
+pkgbase = psp-libpspvram
+	pkgdesc = Dynamic VRAM allocation manager (psp)
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/pspdev/psp-ports
+	arch = any
+	groups = psp
+	license = GPL
+	makedepends = psp-gcc
+	makedepends = git
+	depends = psp-sdk
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = git+https://github.com/pspdev/psp-ports.git
+	md5sums = SKIP
+
+pkgname = psp-libpspvram
+
