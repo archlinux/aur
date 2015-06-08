@@ -9,7 +9,7 @@ pkgbase = receitanet
 	depends = java-runtime>=6
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
-	source = http://www.receita.fazenda.gov.br/Publico/programas/receitanet/receitanet-1.07-1.noarch.rpm
+	source = http://www.receita.fazenda.gov.br/publico/programas/receitanet/receitanet-1.07-1.noarch.rpm
 	source = Copyright
 	source = receitanet.install
 	md5sums = 8c1d9e034f5a8bf87261aca9899256f2
