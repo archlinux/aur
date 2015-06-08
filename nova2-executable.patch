@@ -1,0 +1,13 @@
+diff --git a/supernova/executable.py b/supernova/executable.py
+index d585d81..35712e1 100644
+--- a/supernova/executable.py
++++ b/supernova/executable.py
+@@ -64,7 +64,7 @@ def run_supernova():
+     config.run_config()
+ 
+     parser = argparse.ArgumentParser()
+-    parser.add_argument('-x', '--executable', default='nova',
++    parser.add_argument('-x', '--executable', default='nova2',
+                         help='command to run instead of nova')
+     parser.add_argument('--version', action=_ShowVersion,
+                         help='display supernova version')
