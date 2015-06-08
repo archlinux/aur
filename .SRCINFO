@@ -1,0 +1,14 @@
+pkgbase = python2-ioctl-opt-git
+	pkgdesc = ioctl opt arguments for Python 2
+	pkgver = 4
+	pkgrel = 1
+	url = https://github.com/vpelletier/python-ioctl-opt
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = python-setuptools
+	source = python2-ioctl-opt-git::git+https://github.com/vpelletier/python-ioctl-opt
+	sha256sums = SKIP
+
+pkgname = python2-ioctl-opt-git
+
