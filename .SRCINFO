@@ -1,0 +1,20 @@
+pkgbase = kwallet-git
+	pkgdesc = KWallet Framework
+	pkgver = r623.d14b2da
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/kwallet
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	makedepends = python
+	depends = knotifications-git
+	depends = gpgmepp-git
+	provides = kwallet
+	conflicts = kwallet
+	source = git://anongit.kde.org/kwallet.git
+	md5sums = SKIP
+
+pkgname = kwallet-git
+
