@@ -1,0 +1,36 @@
+pkgbase = qcma-git
+	pkgdesc = Content Manager Assistant for the PS Vita. (GIT version)
+	pkgver = v0.3.9.5.g7ed5bac
+	pkgrel = 1
+	url = https://github.com/codestation/qcma
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = qt5-tools
+	makedepends = qt5-base
+	makedepends = vitamtpmod
+	makedepends = ffmpeg
+	makedepends = libnotify
+	makedepends = knotifications
+	source = git+https://github.com/codestation/qcma.git
+	sha1sums = SKIP
+
+pkgname = qcma-git
+	pkgdesc = Content Manager Assistant for the PS Vita. (GIT Version)
+	install = qcma-git.install
+	depends = ffmpeg
+	depends = qt5-base
+	depends = libnotify
+	depends = vitamtpmod
+	depends = hicolor-icon-theme
+	provides = qcma
+	conflicts = qcma
+
+pkgname = qcma-kdenotifier-git
+	pkgdesc = Content Manager Assistant for the PS Vita. (KDE notifier) (GIT Version)
+	depends = qcma-git
+	depends = knotifications
+	provides = qcma-kdenotifier
+	conflicts = qcma-kdenotifier
+
