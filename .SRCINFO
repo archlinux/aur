@@ -1,0 +1,15 @@
+pkgbase = jhdf5
+	pkgdesc = An easy-to-use high-level API for HDF5 written in Java.
+	pkgver = 14.12.0
+	pkgrel = 1
+	url = https://wiki-bsse.ethz.ch/display/JHDF5
+	arch = i686
+	arch = x86_64
+	license = Apache
+	depends = java-runtime
+	depends = hdf5
+	source = https://wiki-bsse.ethz.ch/download/attachments/26609237/sis-jhdf5-14.12.0-r33145.zip
+	sha256sums = 3ae0502d8025817386528a6ff686e557bd5217b6b17502981325bc6fa0d69632
+
+pkgname = jhdf5
+
