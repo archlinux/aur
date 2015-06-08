@@ -1,0 +1,15 @@
+pkgbase = iceweasel-i18n-lv
+	pkgdesc = Latvian language package for Iceweasel
+	pkgver = 38.0.1.deb5
+	pkgrel = 1
+	url = http://www.mozilla.com/
+	arch = any
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = iceweasel>=38.0.1
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-lv_38.0.1-5_all.deb
+	sha256sums = 445a9ecb81f2652fdd799d4016e9da7784b7ec3f8afba62066f17b1317fbe551
+
+pkgname = iceweasel-i18n-lv
+
