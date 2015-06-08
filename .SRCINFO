@@ -1,0 +1,18 @@
+pkgbase = metamorphose2
+	pkgdesc = Batch Rename Utility
+	pkgver = 0.8.3
+	pkgrel = 2
+	url = http://file-folder-ren.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2
+	depends = wxpython2.8
+	depends = exif-py
+	optdepends = python2-imaging: Required for previewing images
+	optdepends = python2-mutagen: ID3 Tag renaming
+	source = metamorphose2_0.8.3.tar.gz::https://github.com/metamorphose/metamorphose2/archive/v2.0.8.3.tar.gz
+	md5sums = 37d3efbc0905643cc430524944d7afcd
+
+pkgname = metamorphose2
+
