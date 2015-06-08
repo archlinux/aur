@@ -1,0 +1,16 @@
+pkgbase = svg-cleaner-bzr
+	pkgdesc = svg cleaner
+	pkgver = 43
+	pkgrel = 1
+	url = https://code.launchpad.net/~svg-cleaner-team/svg-cleaner/svgcleaner
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = bzr
+	depends = perl
+	depends = qt4
+	source = bzr+http://bazaar.launchpad.net/~svg-cleaner-team/svg-cleaner/svgcleaner/
+	md5sums = SKIP
+
+pkgname = svg-cleaner-bzr
+
