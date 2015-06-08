@@ -1,0 +1,39 @@
+# Maintainer: Amiad Bareli <amiad@hatul.info>
+pkgname=python2-stormssh-git
+pkgver=20130829
+pkgrel=1
+pkgdesc="storm is a command line tool to manage your hosts at sshconfig"
+arch=('any')
+url="https://github.com/emre/storm"
+license=('GPL')
+makedepends=('git')
+depends=('python2-six' 'python2-paramiko' 'python2-termcolor' 'python2-flask')
+
+_gitroot=git://github.com/emre/storm.git
+_gitname=storm
+
+build() {
+  cd "$srcdir"
+  msg "Connecting to GIT server...."
+
+  if [[ -d "$_gitname" ]]; then
+    cd "$_gitname" && git pull origin
+    msg "The local files are updated."
+  else
+    git clone "$_gitroot" "$_gitname"
+  fi
+
+  msg "GIT checkout done or server timeout"
+  msg "Starting build..."
+
+  rm -rf "$srcdir/$_gitname-build"
+  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
+}
+
+package() {
+  cd "$srcdir/$_gitname-build"
+  python2 setup.py install --root="$pkgdir/"
+}
+
+# vim:set ts=2 sw=2 et:
+

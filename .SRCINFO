@@ -1,0 +1,15 @@
+pkgbase = python2-stormssh-git
+	pkgdesc = storm is a command line tool to manage your hosts at sshconfig
+	pkgver = 20130829
+	pkgrel = 1
+	url = https://github.com/emre/storm
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python2-six
+	depends = python2-paramiko
+	depends = python2-termcolor
+	depends = python2-flask
+
+pkgname = python2-stormssh-git
+
