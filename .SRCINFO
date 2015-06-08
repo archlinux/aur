@@ -1,0 +1,23 @@
+pkgbase = perl-markapl
+	pkgdesc = Markup as Perl
+	pkgver = 0.14
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Markapl
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-html-lint
+	depends = perl>=5.008
+	depends = perl-b-hooks-endofscope>=0.05
+	depends = perl-devel-declare
+	depends = perl-exporter-lite
+	depends = perl-html-parser
+	depends = perl-string-bufferstack>=1.15
+	depends = perl-sub-install
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GU/GUGOD/Markapl-0.14.tar.gz
+	md5sums = f6e6696e115aacd96b60a5bcf59a23a4
+	sha512sums = 6980539142cc76906dea76227204d5aa974a6dafa99e9fa83e4548b18be9568f41421bcba659459f39da66ab1388ff98645a2b39e51cb4c64f5d3dd7463136c4
+
+pkgname = perl-markapl
+
