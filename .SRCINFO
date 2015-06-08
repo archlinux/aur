@@ -1,0 +1,31 @@
+pkgbase = medit-full
+	pkgdesc = Medit with the python bindings restored
+	pkgver = 1.2.0
+	pkgrel = 2
+	url = http://mooedit.sourceforge.net
+	install = medit.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkg-config
+	makedepends = perl-xml-parser
+	makedepends = intltool
+	makedepends = gcc-objc
+	depends = pygtk
+	depends = libxml2
+	depends = pcre
+	depends = libsm
+	depends = python2
+	depends = gtk2
+	depends = gcc-libs
+	optdepends = ctags
+	optdepends = vte: terminal emulator
+	provides = medit
+	conflicts = medit
+	replaces = medit
+	options = !emptydirs
+	source = http://downloads.sourceforge.net/mooedit/medit-1.2.0.tar.bz2
+	md5sums = 8388a8e275d0e1fa6cd19f7bb081279a
+
+pkgname = medit-full
+
