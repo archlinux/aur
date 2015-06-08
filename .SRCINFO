@@ -1,0 +1,41 @@
+pkgbase = backintime-bzr
+	pkgver = r1081
+	pkgrel = 1
+	url = http://backintime.le-web.org
+	arch = any
+	license = GPL
+	makedepends = bzr
+	source = backintime::bzr+https://code.launchpad.net/~bit-team/backintime/trunk
+	md5sums = SKIP
+
+pkgname = backintime-bzr
+	pkgdesc = Simple backup/snapshot system inspired by Flyback and TimeVault. QT4 GUI version.
+	depends = backintime-cli-bzr=r1081
+	depends = libnotify
+	depends = polkit
+	depends = python-dbus
+	depends = python-pyqt4
+	depends = xorg-xdpyinfo
+	optdepends = meld: diff tool
+	optdepends = kompare: diff tool
+	optdepends = python-secretstorage: store passwords
+	provides = backintime
+	conflicts = backintime
+	conflicts = backintime-gnome
+	conflicts = backintime-gtk
+	conflicts = backintime-kde4
+	conflicts = backintime-qt4
+
+pkgname = backintime-cli-bzr
+	pkgdesc = Simple backup/snapshot system inspired by Flyback and TimeVault. CLI version.
+	depends = rsync
+	depends = cron
+	depends = openssh
+	depends = python-dbus
+	depends = python-keyring
+	optdepends = encfs: encrypted filesystems
+	optdepends = pm-utils: power management status check
+	optdepends = sshfs: remote filesystems
+	provides = backintime-cli
+	conflicts = backintime-cli
+
