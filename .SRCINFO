@@ -1,0 +1,34 @@
+pkgbase = mono-git
+	pkgdesc = Free implementation of the .NET platform including runtime and compiler
+	pkgver = 3.12.0.r8.gde2f33f
+	pkgrel = 2
+	url = http://www.mono-project.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL2.1
+	license = MPL
+	license = custom:MITX11
+	makedepends = git
+	depends = zlib
+	depends = libgdiplus>=3.8
+	depends = sh
+	depends = python
+	provides = monodoc
+	provides = mono=3.12.0
+	conflicts = monodoc
+	conflicts = mono
+	options = !makeflags
+	source = git://github.com/mono/mono.git
+	source = mono.binfmt.d
+	source = sgen_fix.patch
+	source = build_fix.patch
+	source = Microsoft.Portable.Common.targets
+	md5sums = SKIP
+	md5sums = b9ef8a65fea497acf176cca16c1e2402
+	md5sums = 8a700b94bff7a913f920e95890d2fb4c
+	md5sums = 30a5af1a4ff50b98f9e73cc2ae554115
+	md5sums = acbffadb0ac233c494b40dd5e79209a5
+
+pkgname = mono-git
+
