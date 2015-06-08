@@ -1,0 +1,67 @@
+From 2c8f8fe78100f94598ad3e54eae9a84533028fff Mon Sep 17 00:00:00 2001
+From: Raimar <no@email.de>
+Date: Sun, 8 Jun 2014 14:36:49 +0200
+Subject: [PATCH] Changed default button for terminate to Yes
+
+---
+ src/callbacks.c | 4 ++--
+ src/utils.c     | 4 +++-
+ src/utils.h     | 2 +-
+ 3 files changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/src/callbacks.c b/src/callbacks.c
+index ce27ca7..72c3044 100644
+--- a/src/callbacks.c
++++ b/src/callbacks.c
+@@ -55,11 +55,11 @@ void handle_task_menu(GtkWidget *widget, gchar *signal)
+         switch(signal[0])
+         {
+             case 'K':
+-                if(confirm(_("Really kill the task?")))
++                if(confirm(_("Really kill the task?"), FALSE))
+                     task_action = SIGNAL_KILL;
+                 break;
+             case 'T':
+-                if(confirm(_("Really terminate the task?")))
++                if(confirm(_("Really terminate the task?"), TRUE))
+                     task_action = SIGNAL_TERM;
+                 break;
+             case 'S':
+diff --git a/src/utils.c b/src/utils.c
+index c6912b1..9a66b47 100644
+--- a/src/utils.c
++++ b/src/utils.c
+@@ -45,7 +45,7 @@ void show_error( const char* format, ... )
+     gtk_widget_destroy( dlg );
+ }
+ 
+-gboolean confirm( const char* question )
++gboolean confirm( const char* question, gboolean isYesDefault )
+ {
+     GtkWidget* dlg;
+     int ret;
+@@ -54,6 +54,8 @@ gboolean confirm( const char* question )
+                                               GTK_BUTTONS_YES_NO,
+                                               "%s", question );
+     gtk_window_set_title( (GtkWindow*)dlg, _("Confirm") );
++    if(isYesDefault)
++        gtk_dialog_set_default_response((GtkDialog*) dlg, GTK_RESPONSE_YES);
+     ret = gtk_dialog_run( (GtkDialog*)dlg );
+     gtk_widget_destroy( dlg );
+ 
+diff --git a/src/utils.h b/src/utils.h
+index 771bce7..43874fe 100644
+--- a/src/utils.h
++++ b/src/utils.h
+@@ -28,7 +28,7 @@
+ G_BEGIN_DECLS
+ 
+ void show_error( const char* format, ... );
+-gboolean confirm( const char* question );
++gboolean confirm( const char* question, gboolean isYesDefault );
+ char* size_to_string( char* buf, guint64 size );
+ guint64 string_to_size(char *s);
+ 
+-- 
+2.0.0
+

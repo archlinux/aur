@@ -1,0 +1,161 @@
+From c8a03903c6a8519fcd6f84be73fccd1674e8289b Mon Sep 17 00:00:00 2001
+From: Raimar <no@email.de>
+Date: Sun, 8 Jun 2014 13:21:17 +0200
+Subject: [PATCH] Added key binding Del to terminate and Shift+Del to kill task
+
+---
+ src/callbacks.c |  7 +++++--
+ src/callbacks.h |  1 +
+ src/interface.c | 23 +++++++++++++++++++----
+ src/interface.h |  2 +-
+ src/main.c      |  2 ++
+ 5 files changed, 28 insertions(+), 7 deletions(-)
+
+diff --git a/src/callbacks.c b/src/callbacks.c
+index ce27ca7..8716520 100644
+--- a/src/callbacks.c
++++ b/src/callbacks.c
+@@ -39,13 +39,16 @@ gboolean on_treeview1_button_press_event(GtkButton *button, GdkEventButton *even
+     if(event->button == 3)
+     {
+         GdkEventButton *mouseevent = (GdkEventButton *)event;
+-        if(taskpopup == NULL)
+-            taskpopup = create_taskpopup ();
+         gtk_menu_popup(GTK_MENU(taskpopup), NULL, NULL, NULL, NULL, mouseevent->button, mouseevent->time);
+     }
+     return FALSE;
+ }
+ 
++gboolean on_treeview_popup_menu(GtkWidget* treeview, gpointer user_data) {
++    gtk_menu_popup(GTK_MENU(taskpopup), NULL, NULL, NULL, NULL, 0, gdk_event_get_time(NULL));
++    return TRUE;
++}
++
+ void handle_task_menu(GtkWidget *widget, gchar *signal)
+ {
+     if(signal != NULL)
+diff --git a/src/callbacks.h b/src/callbacks.h
+index 323b569..192c1cf 100644
+--- a/src/callbacks.h
++++ b/src/callbacks.h
+@@ -36,6 +36,7 @@
+ void on_button1_button_press_event(GtkButton *button, GdkEventButton *event);
+ void on_button3_toggled_event(GtkButton *button, GdkEventButton *event);
+ gboolean on_treeview1_button_press_event(GtkButton *button, GdkEventButton *event);
++gboolean on_treeview_popup_menu(GtkWidget* treeview, gpointer user_data);
+ void handle_task_menu(GtkWidget *widget, gchar *signal);
+ void handle_prio_menu(GtkWidget *widget, gchar *prio);
+ void on_show_tasks_toggled (GtkMenuItem *menuitem, gint uid);
+diff --git a/src/interface.c b/src/interface.c
+index 1f98351..c6c09ad 100644
+--- a/src/interface.c
++++ b/src/interface.c
+@@ -38,6 +38,9 @@ extern guint refresh_interval;
+ extern guint rID;
+ GtkWidget *refresh_spin;
+ 
++// internal forward declarations
++void create_taskpopup(GtkAccelGroup* accel_group);
++
+ GtkWidget* create_main_window (void)
+ {
+     GtkWidget *window;
+@@ -106,6 +109,8 @@ GtkWidget* create_main_window (void)
+ 
+ 	gtk_widget_show_all( menubar );
+ 
++    create_taskpopup(accel_group);
++
+ 	/* window content */
+     vbox1 = gtk_vbox_new (FALSE, 10);
+     gtk_widget_show (vbox1);
+@@ -151,6 +156,8 @@ GtkWidget* create_main_window (void)
+     create_list_store();
+ 
+     selection = gtk_tree_view_get_selection(GTK_TREE_VIEW(treeview));
++    // exactly one row is always selected
++    gtk_tree_selection_set_mode(selection, GTK_SELECTION_BROWSE);
+ 
+     gtk_tree_view_set_model(GTK_TREE_VIEW(treeview), GTK_TREE_MODEL(list_store));
+ 
+@@ -171,6 +178,7 @@ GtkWidget* create_main_window (void)
+ 
+     g_signal_connect ((gpointer) window, "destroy", G_CALLBACK (on_quit), NULL);
+     g_signal_connect_swapped ((gpointer) treeview, "button-press-event", G_CALLBACK(on_treeview1_button_press_event), NULL);
++    g_signal_connect(treeview, "popup-menu", (GCallback) on_treeview_popup_menu, NULL);
+     g_signal_connect ((gpointer) button1, "clicked",  G_CALLBACK (on_quit),  NULL);
+     g_signal_connect ((gpointer) button3, "toggled",  G_CALLBACK (on_button3_toggled_event),  NULL);
+ 
+@@ -246,9 +254,14 @@ void create_list_store(void)
+     change_list_store_view();
+ }
+ 
+-GtkWidget* create_taskpopup (void)
++void select_first_row_of_list_store(void) {
++    GtkTreeIter iter;
++    gtk_tree_model_get_iter_first(GTK_TREE_MODEL(list_store), &iter);
++    gtk_tree_selection_select_iter(selection, &iter);
++}
++
++void create_taskpopup(GtkAccelGroup* accel_group)
+ {
+-    GtkWidget *taskpopup;
+     GtkWidget *menu_item;
+ 
+     taskpopup = gtk_menu_new ();
+@@ -264,11 +277,15 @@ GtkWidget* create_taskpopup (void)
+     g_signal_connect ((gpointer) menu_item, "activate", G_CALLBACK (handle_task_menu), "CONT");
+ 
+     menu_item = gtk_menu_item_new_with_mnemonic (_("Term"));
++    gtk_widget_add_accelerator(menu_item, "activate", accel_group,
++        GDK_KEY_Delete, (GdkModifierType)0, GTK_ACCEL_VISIBLE);
+     gtk_widget_show (menu_item);
+     gtk_container_add (GTK_CONTAINER (taskpopup), menu_item);
+     g_signal_connect ((gpointer) menu_item, "activate", G_CALLBACK (handle_task_menu), "TERM");
+ 
+     menu_item = gtk_menu_item_new_with_mnemonic (_("Kill"));
++    gtk_widget_add_accelerator(menu_item, "activate", accel_group,
++        GDK_KEY_Delete, (GdkModifierType) GDK_SHIFT_MASK, GTK_ACCEL_VISIBLE);
+     gtk_widget_show (menu_item);
+     gtk_container_add (GTK_CONTAINER (taskpopup), menu_item);
+     g_signal_connect ((gpointer) menu_item, "activate", G_CALLBACK (handle_task_menu), "KILL");
+@@ -277,8 +294,6 @@ GtkWidget* create_taskpopup (void)
+     gtk_menu_item_set_submenu((gpointer) menu_item, create_prio_submenu());
+     gtk_widget_show (menu_item);
+     gtk_container_add (GTK_CONTAINER (taskpopup), menu_item);
+-
+-    return taskpopup;
+ }
+ 
+ GtkWidget *create_prio_submenu(void)
+diff --git a/src/interface.h b/src/interface.h
+index ba67bf1..b997af0 100644
+--- a/src/interface.h
++++ b/src/interface.h
+@@ -65,9 +65,9 @@ GtkTreeViewColumn *column;
+ 
+ void change_list_store_view(void);
+ void create_list_store(void);
++void select_first_row_of_list_store(void);
+ 
+ GtkWidget* create_main_window (void);
+-GtkWidget* create_taskpopup (void);
+ GtkWidget* create_mainmenu (void);
+ GtkWidget *create_prio_submenu(void);
+ 
+diff --git a/src/main.c b/src/main.c
+index 0421387..d96dfa9 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -88,6 +88,8 @@ int main (int argc, char *argv[])
+     if(!refresh_task_list())
+         return 0;
+ 
++    select_first_row_of_list_store();
++
+     rID = g_timeout_add_seconds(refresh_interval, (gpointer) refresh_task_list, NULL);
+ 
+     gtk_main ();
+-- 
+2.0.0
+
