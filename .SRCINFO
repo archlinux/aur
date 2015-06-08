@@ -1,0 +1,16 @@
+pkgbase = jwmappmenugen-git
+	pkgdesc = A simple menu generator for the Joe's Window Manager based on fbmenugen.
+	pkgver = 0.1
+	pkgrel = 2
+	url = https://github.com/BlackCodec/jwmappmenugen/tree/master
+	arch = any
+	license = GPL
+	depends = perl>=5.14.0
+	depends = jwm
+	depends = perl-data-dump
+	depends = perl-linux-desktopfiles>=0.08
+	source = https://github.com/BlackCodec/jwmappmenugen/archive/master.zip
+	md5sums = 0fca326d9daba9c8ed4a43aedd9bb490
+
+pkgname = jwmappmenugen-git
+
