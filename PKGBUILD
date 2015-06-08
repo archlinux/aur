@@ -4,7 +4,7 @@ _plug=continuityfixer
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=v6.0.gf1bc9a9
 pkgrel=1
-pkgdesc="Plugin for Vapoursynth: ${_plug}"
+pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
 url="http://forum.doom9.org/showthread.php?t=171785"
 license=('GPL')
