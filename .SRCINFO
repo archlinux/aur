@@ -1,0 +1,13 @@
+pkgbase = fcitx-skin-new-dark
+	pkgdesc = Dark fcitx theme.
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://kde-look.org/content/show.php/new+dark?content=159658
+	arch = any
+	license = GPL
+	depends = fcitx>=4.2.6
+	source = new-dark.fskin::http://kde-look.org/CONTENT/content-files/159658-new-dark.fskin
+	md5sums = ee0b92e266184381358d2b857299fe1f
+
+pkgname = fcitx-skin-new-dark
+
