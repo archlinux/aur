@@ -1,0 +1,29 @@
+pkgbase = kokua-secondlife
+	pkgdesc = An Open Source third party viewer for Second Life® (secondlife), only.
+	pkgver = 3.7.27.35441
+	pkgrel = 1
+	url = http://www.kokuaviewer.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = apr-util
+	depends = gtk2
+	depends = libgl
+	depends = libidn
+	depends = libjpeg-turbo
+	depends = mesa
+	depends = nss
+	depends = sdl
+	depends = glu
+	depends = pangox-compat
+	optdepends = libpulse: for PulseAudio support
+	optdepends = alsa-lib: for ALSA support
+	optdepends = nvidia-utils: for NVIDIA support
+	optdepends = flashplugin: for inworld Flash support
+	optdepends = gstreamer0.10: for video support, may need good, bad and ugly plugins
+	optdepends = lib32-freealut: for OpenAL support
+	conflicts = kokua-bin
+	replaces = kokua-bin
+
+pkgname = kokua-secondlife
+

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Kokua-SecondLife
+GenericName=A third-party viewer for Second Life (C) (only)
+Comment=A third party viewer for Second Life (C) (only)
+Exec=/usr/bin/kokua-secondlife
+Icon=/usr/share/pixmaps/kokua-secondlife.png
+Terminal=false
+Categories=Game
