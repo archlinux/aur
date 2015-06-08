@@ -1,0 +1,17 @@
+pkgbase = perl-object-role
+	pkgdesc = base class for non-Moose roles
+	pkgver = 0.001
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Object-Role
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.006
+	depends = perl-sub-name
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/Object-Role-0.001.tar.gz
+	md5sums = 987718eb0ad4c72fa0ba176aa733457c
+	sha512sums = 18eb417581584d1cf61e6860c3bce1fa1fc35b839e6458aba2559cfbd5b3d7144a6f0d2442bb15b9933948853b4839be5406505b011211c34477f053e2efb4b5
+
+pkgname = perl-object-role
+
