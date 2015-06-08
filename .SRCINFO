@@ -1,0 +1,17 @@
+pkgbase = gnomish-beige-theme
+	pkgdesc = This is a clean beige theme for GTK3, based on Adwaita (provided by gnome-themes-standard), plus a matching GNOME-Shell theme.
+	pkgver = 20140509
+	pkgrel = 1
+	url = http://tsujan.deviantart.com/art/GnomishBeige-300113500
+	arch = any
+	license = CCPL
+	makedepends = p7zip
+	depends = gtk-engine-murrine
+	depends = gnome-themes-standard
+	optdepends = gnome-tweak-tool: A tool to customize advanced GNOME 3 options
+	optdepends = gnome-shell-extension-user-theme: User Theme extension for GNOME Shell
+	source = gnomish-beige-theme-20140509.7z::http://fc09.deviantart.net/fs71/f/2014/129/3/1/gnomishbeige_by_tsujan-d4yoh24.7z
+	sha256sums = 2550915ae5539f53cbf689709c59cbbbb2490b9eb97e13ace56f2afd4021ae33
+
+pkgname = gnomish-beige-theme
+
