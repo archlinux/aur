@@ -1,0 +1,5 @@
+post_upgrade(){
+    echo -e "\e[0;32m--------------------------- PXP --------------------------------\e[0m"
+    echo -e "\e[0;32m@pxp_user:\e[0m I switched GL/glx links to catalyst again (32-bit)..."
+    echo -e "\e[0;32m----------------------------------------------------------------\e[0m"
+}
