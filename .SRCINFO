@@ -1,0 +1,14 @@
+pkgbase = loksh
+	pkgdesc = A Linux port of OpenBSD's ksh targeting musl
+	pkgver = 5.7
+	pkgrel = 1
+	url = https://github.com/dimkr/loksh
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libbsd
+	source = https://github.com/dimkr/loksh/archive/5.7.tar.gz
+	sha1sums = 78b355004365b3e9084323a6b6d03cc3b4892f3e
+
+pkgname = loksh
+
