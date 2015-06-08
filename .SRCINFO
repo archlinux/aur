@@ -1,0 +1,19 @@
+pkgbase = i7z-git
+	pkgdesc = A better i7 (and now i3, i5) reporting tool for Linux. Git version.
+	pkgver = 5023138
+	pkgrel = 2
+	url = https://github.com/ajaiantilal/i7z
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = qt4
+	makedepends = git
+	depends = ncurses
+	optdepends = qt4: for i7z-gui
+	provides = i7z
+	conflicts = i7z
+	source = git://github.com/ajaiantilal/i7z.git
+	md5sums = SKIP
+
+pkgname = i7z-git
+
