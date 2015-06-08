@@ -1,0 +1,18 @@
+pkgbase = python2-kdedistutils-git
+	pkgdesc = Distutils extensions for KDE applications
+	pkgver = f25b4a0
+	pkgrel = 2
+	url = https://github.com/lunaryorn/kdedistutils
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = python2
+	provides = python2-kdedistutils
+	conflicts = python2-kdedistutils
+	source = python2-kdedistutils::git+https://github.com/lunaryorn/kdedistutils
+	source = setup.py
+	sha1sums = SKIP
+	sha1sums = 6a6e25164d04afc91e4e4af55b53896db998b1dc
+
+pkgname = python2-kdedistutils-git
+
