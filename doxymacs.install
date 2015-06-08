@@ -1,0 +1,26 @@
+post_install() {
+
+echo "==> - Put (require 'doxymacs) in your .emacs"
+echo "==>"
+echo "==> - Invoke doxymacs-mode with M-x doxymacs-mode."
+echo "==>   To have doxymacs-mode invoked automatically when in C/C++ mode, put"
+echo "==>"
+echo "==> (add-hook 'c-mode-common-hook 'doxymacs-mode)"
+echo "==>"
+echo "==> in your .emacs."
+echo "==>"
+echo "==> - If you want Doxygen keywords fontified use M-x doxymacs-font-lock."
+echo "==>   To do it automatically, add the following to your .emacs:"
+echo "==>"
+echo "==>   (defun my-doxymacs-font-lock-hook ()"
+echo "==>     (if (or (eq major-mode 'c-mode) (eq major-mode 'c++-mode))"
+echo "==>         (doxymacs-font-lock)))"
+echo "==>   (add-hook 'font-lock-mode-hook 'my-doxymacs-font-lock-hook)"
+echo "==>"
+echo "==> This will add the Doxygen keywords to c-mode and c++-mode only."
+
+}
+
+post_upgrade() {
+post_install $1
+}
