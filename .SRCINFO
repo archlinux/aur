@@ -1,0 +1,25 @@
+pkgbase = ario-svn
+	pkgdesc = A lightweight GTK+ client for MPD and XMMS2 inspired by Rhythmbox.
+	pkgver = 779
+	pkgrel = 1
+	url = http://ario-player.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = libnotify
+	makedepends = perl-xml-parser
+	makedepends = pkgconfig
+	makedepends = subversion
+	makedepends = automake-1.9
+	depends = avahi
+	depends = curl
+	depends = libglade
+	depends = libsoup>=2.4
+	depends = taglib
+	provides = ario
+	conflicts = ario
+	options = !libtool
+
+pkgname = ario-svn
+
