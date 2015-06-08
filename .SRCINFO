@@ -1,0 +1,14 @@
+pkgbase = amigadepacker
+	pkgdesc = Tool for depacking some compressed Amiga formats
+	pkgver = 0.04
+	pkgrel = 1
+	url = http://zakalwe.fi/~shd/foss/amigadepacker
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://zakalwe.fi/~shd/foss/amigadepacker/amigadepacker-0.04.tar.bz2
+	md5sums = 06cbd36d5faf006c810a1bd978968bb5
+
+pkgname = amigadepacker
+
