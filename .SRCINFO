@@ -1,0 +1,15 @@
+pkgbase = iceweasel-i18n-mai
+	pkgdesc = Maithili language pack for Iceweasel
+	pkgver = 38.0.1.deb5
+	pkgrel = 1
+	url = http://www.mozilla.com/
+	arch = any
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = iceweasel>=38.0.1
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-mai_38.0.1-5_all.deb
+	sha256sums = 54ce94e08da2da1381746d94257f0f62142c9c3308e792d0728c24578d768a2a
+
+pkgname = iceweasel-i18n-mai
+
