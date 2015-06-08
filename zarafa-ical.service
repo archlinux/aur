@@ -1,0 +1,14 @@
+[Unit]
+Description=zarafa-ical - Start the Zarafa ICal/CalDAV gateway
+Documentation=man:zarafa-ical(1) man:zarafa-ical.cfg(5) man:zarafa-server(1)
+Wants=zarafa-server.service
+After=zarafa-server.service
+
+[Service]
+Type=forking
+GuessMainPID=no
+Environment=LC_ALL=C LANG=C
+ExecStart=/usr/bin/zarafa-ical -c /etc/zarafa/ical.cfg
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,13 @@
+[Unit]
+Description=zarafa-spooler - Start the Zarafa spooler
+Wants=zarafa-server.service
+After=zarafa-server.service
+
+[Service]
+Type=forking
+GuessMainPID=no
+Environment=LC_ALL=C LANG=C
+ExecStart=/usr/bin/zarafa-spooler -c /etc/zarafa/spooler.cfg
+
+[Install]
+WantedBy=multi-user.target

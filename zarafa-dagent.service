@@ -1,0 +1,13 @@
+[Unit]
+Description=zarafa-dagent - Deliver mails to Zarafa
+Wants=zarafa-server.service
+After=zarafa-server.service
+
+[Service]
+Type=forking
+GuessMainPID=no
+Environment=LC_ALL=C LANG=C
+ExecStart=/usr/bin/zarafa-dagent -d -c /etc/zarafa/dagent.cfg
+
+[Install]
+WantedBy=multi-user.target

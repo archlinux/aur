@@ -1,0 +1,117 @@
+Patch by Robert Scheck <robert@fedoraproject.org> for Zarafa >= 7.1.12 which removes a wrongly introduced dependency to the
+proprietary zarafa-licensed. From Zarafa 7.1.11 to 7.1.12 there were some changes to the ValidateArchiverLicense() method;
+due to these changes rebuilding fails with "ArchiverSession.cpp:53:23: fatal error: ECLicense.h: No such file or directory"
+now. The patch just reverts the changes that were introduced from 7.1.11 to 7.1.12 to get the code building again.
+
+--- zarafa-7.1.12/ECtools/zarafa-archiver/ArchiverSession.cpp				2015-04-07 13:10:12.000000000 +0200
++++ zarafa-7.1.12/ECtools/zarafa-archiver/ArchiverSession.cpp.licensed-archiver		2015-04-07 15:55:07.000000000 +0200
+@@ -50,8 +50,6 @@
+ #include "mapiext.h"
+ #include "userutil.h"
+ #include "ECMsgStore.h"
+-#include "ECLicense.h"
+-#include "ECMAPILicense.h"
+ 
+ typedef mapi_memory_ptr<ECSERVERLIST> ECServerListPtr;
+ 
+@@ -879,38 +877,7 @@
+ typedef mapi_object_ptr<ECMsgStore, IID_ECMsgStore>	ECMsgStorePtr;
+ 
+ HRESULT ArchiverSession::ValidateArchiverLicense(bool attachnewuser /* = false*/) const {
+-	IMsgStore *lpMsgStore = NULL;
+-	IMsgStore *lpProxedMsgStore = NULL;
+-	UnknownPtr ptrUnknown;
+-	ECMsgStorePtr ptrOnlineStore;
+-
+-	HRESULT hr = HrOpenDefaultStore(GetMAPISession(), MDB_WRITE | MDB_NO_DIALOG | MDB_NO_MAIL | MDB_TEMPORARY, &lpMsgStore);
+-	if (hr != hrSuccess)
+-		goto exit;
+-
+-	hr = GetProxyStoreObject(lpMsgStore, &lpProxedMsgStore);
+-	if (hr != hrSuccess)
+-		goto exit;
+-
+-	hr = lpProxedMsgStore->QueryInterface(IID_ECMsgStoreOnline, &ptrUnknown);
+-	if (hr != hrSuccess)
+-		goto exit;
+-
+-	hr = ptrUnknown->QueryInterface(IID_ECMsgStore, &ptrOnlineStore);
+-	if (hr != hrSuccess) {
+-		m_lpLogger->Log(EC_LOGLEVEL_FATAL, "Unable to validate archived user count. Please check the archiver and licensed log for errors.");
+-		hr = MAPI_E_NO_SUPPORT;
+-		goto exit;
+-	}
+-
+-	hr = HrCheckLicense(&ptrOnlineStore->m_xMsgStore, SERVICE_TYPE_ARCHIVE, ZARAFA_ARCHIVE_DEFAULT);
+-	if (hr != hrSuccess)
+-	{
+-		m_lpLogger->Log(EC_LOGLEVEL_FATAL, "No archiver license found.");
+-		hr = MAPI_E_NO_SUPPORT;
+-	}
+-	else
+-	{
++		HRESULT hr;
+ 		unsigned int ulArchivedUsers = 0;
+ 		unsigned int ulMaxUsers = 0;
+ 
+@@ -931,7 +898,6 @@
+ 		} else if (ulArchivedUsers + 5 >= ulMaxUsers) { //@todo which warning limit?
+ 			m_lpLogger->Log(EC_LOGLEVEL_FATAL, "You almost reached the archived user limit. Archived users %d of %d", ulArchivedUsers, ulMaxUsers);
+ 		}
+-	}
+ 
+ exit:
+ 	return hr;
+--- zarafa-7.1.12/ECtools/zarafa-archiver/Makefile.am					2015-04-07 12:00:49.000000000 +0200
++++ zarafa-7.1.12/ECtools/zarafa-archiver/Makefile.am.licensed-archiver			2015-04-07 15:59:42.000000000 +0200
+@@ -9,7 +9,6 @@
+ 	-I${top_srcdir}/provider/client \
+ 	-I${top_srcdir}/provider/include \
+ 	-I${top_srcdir}/provider/soap \
+-	-I${top_srcdir}/liblicense \
+ 	-I${top_builddir}/provider/soap \
+ 	$(GSOAP_CFLAGS) \
+ 	-I${top_srcdir}/common \
+@@ -17,9 +16,7 @@
+ 
+ libarchiver_la_LIBADD = ${top_builddir}/mapi4linux/src/libmapi.la \
+ 	${top_builddir}/common/libcommon_mapi.la \
+-	${top_builddir}/common/libcommon_util.la \
+-	${top_builddir}/liblicense/liblicense.la \
+-	${top_builddir}/liblicense/liblicense_mapi.la
++	${top_builddir}/common/libcommon_util.la
+ 
+ libarchiver_la_SOURCES = \
+ 	ArchiverSession.cpp ArchiverSession.h ArchiverSessionPtr.h \
+--- zarafa-7.1.12/ECtools/zarafa-archiver/Makefile.in					2015-04-07 12:03:40.000000000 +0200
++++ zarafa-7.1.12/ECtools/zarafa-archiver/Makefile.in.licensed-archiver			2015-04-07 16:00:15.000000000 +0200
+@@ -112,9 +112,7 @@
+ libarchiver_la_DEPENDENCIES =  \
+ 	${top_builddir}/mapi4linux/src/libmapi.la \
+ 	${top_builddir}/common/libcommon_mapi.la \
+-	${top_builddir}/common/libcommon_util.la \
+-	${top_builddir}/liblicense/liblicense.la \
+-	${top_builddir}/liblicense/liblicense_mapi.la
++	${top_builddir}/common/libcommon_util.la
+ am_libarchiver_la_OBJECTS = ArchiverSession.lo archiver-common.lo \
+ 	ArchiveManageImpl.lo ArchiveStateCollector.lo \
+ 	ArchiveStateUpdater.lo ArchiveHelper.lo StoreHelper.lo \
+@@ -395,7 +393,6 @@
+ 	-I${top_srcdir}/provider/client \
+ 	-I${top_srcdir}/provider/include \
+ 	-I${top_srcdir}/provider/soap \
+-	-I${top_srcdir}/liblicense \
+ 	-I${top_builddir}/provider/soap \
+ 	$(GSOAP_CFLAGS) \
+ 	-I${top_srcdir}/common \
+@@ -403,9 +400,7 @@
+ 
+ libarchiver_la_LIBADD = ${top_builddir}/mapi4linux/src/libmapi.la \
+ 	${top_builddir}/common/libcommon_mapi.la \
+-	${top_builddir}/common/libcommon_util.la \
+-	${top_builddir}/liblicense/liblicense.la \
+-	${top_builddir}/liblicense/liblicense_mapi.la
++	${top_builddir}/common/libcommon_util.la
+ 
+ libarchiver_la_SOURCES = \
+ 	ArchiverSession.cpp ArchiverSession.h ArchiverSessionPtr.h \
