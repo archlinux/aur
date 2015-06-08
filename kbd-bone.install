@@ -1,0 +1,13 @@
+post_install() {
+  echo "In order to use bone in virtual console temporarily, type 'loadkeys bone'."
+  
+  echo "In order to set bone as default layout in virtual console, type
+  'localectl set-keymap --no-convert bone'or edit '/etc/vconsole.conf'
+  directly."
+
+  echo "For more information, please consult the wiki: 'https://wiki.archlinux.org/index.php/Keyboard_configuration_in_console'"
+}
+
+post_upgrade() {
+  post_install $1
+}

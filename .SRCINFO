@@ -1,0 +1,14 @@
+pkgbase = kbd-bone
+	pkgdesc = bone terminal keyboard layout
+	pkgver = 1
+	pkgrel = 2
+	url = https://wiki.neo-layout.org/wiki/Bone
+	install = kbd-bone.install
+	arch = any
+	license = CC-BY-SA
+	depends = kbd
+	source = http://home.arcor.de/hellwoofa/bone.map
+	md5sums = 4bce50a9b30dd4e1296aee1784bd7c0c
+
+pkgname = kbd-bone
+
