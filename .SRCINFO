@@ -1,0 +1,14 @@
+pkgbase = python-django-haystack
+	pkgdesc = Modular search for Django.
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = http://haystacksearch.org/
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-django
+	source = https://github.com/toastdriven/django-haystack/archive/v2.1.0.tar.gz
+	md5sums = 122b82d1fcb9eea90c2c77fb0929e042
+
+pkgname = python-django-haystack
+
