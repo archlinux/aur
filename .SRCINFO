@@ -1,0 +1,16 @@
+pkgbase = lescienze500
+	pkgdesc = Un software per consultare, cercare e catalogare gli articoli dei 500 numeri di Le Scienze
+	pkgver = 1.3.6
+	pkgrel = 4
+	url = http://lescienze500.wordpress.com/
+	install = lescienze500.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt4
+	depends = sqlite
+	source = https://github.com/downloads/simon-r/LeScienze500/lescienze500-1.3.6.tar.gz
+	md5sums = 1596cd3a09fd82b34751bf686f91b948
+
+pkgname = lescienze500
+
