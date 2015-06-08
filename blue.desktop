@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Value=1.0
+Type=Application
+Name=Blue
+Comment=A music composition environment for Csound.
+Icon=blue.png
+Exec=blue
+Categories=AudioVideo;
