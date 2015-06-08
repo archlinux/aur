@@ -1,0 +1,17 @@
+pkgbase = smileol
+	pkgdesc = Smiles Eolianos para clientes Jabber
+	pkgver = 1.35
+	pkgrel = 2
+	url = http://elotrolado.net
+	arch = any
+	license = GPL
+	optdepends = psi: A client for Jabber IM
+	optdepends = psi-plus: A client for Jabber IM
+	optdepends = gajim: A client for Jabber IM
+	optdepends = pidgin: A client for Jabber IM
+	noextract = smileol.jisp
+	source = http://dl.dropbox.com/u/41095274/SmilEOL/smileol.jisp
+	md5sums = e4b4cc663721f49c31c04b5ecfedfd76
+
+pkgname = smileol
+
