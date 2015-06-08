@@ -1,0 +1,24 @@
+pkgbase = gupnp-tools
+	pkgdesc = GUPnP Tools are free replacements of Intel UPnP tools that use GUPnP
+	pkgver = 0.8.10
+	pkgrel = 1
+	url = http://www.gupnp.org/
+	arch = i686
+	arch = x86_64
+	groups = gupnp
+	license = GPL
+	makedepends = gtk-doc
+	makedepends = pkgconfig
+	depends = gupnp-av>=0.5.1
+	depends = gtk3
+	depends = gnome-icon-theme>=2.20
+	depends = desktop-file-utils
+	depends = gssdp>=0.7
+	depends = gupnp>=0.13
+	depends = intltool
+	options = !libtool
+	source = https://download.gnome.org/sources/gupnp-tools/0.8/gupnp-tools-0.8.10.tar.xz
+	md5sums = ad8423d036e98bc6f877528d6b846f6a
+
+pkgname = gupnp-tools
+
