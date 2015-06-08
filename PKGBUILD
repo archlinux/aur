@@ -6,8 +6,8 @@
 
 pkgname=bind-rl
 _pkgname=bind
-_pkgver=9.10.1-P1
-pkgver=9.10.1.P1
+_pkgver=9.10.2
+pkgver=9.10.2
 pkgrel=1
 pkgdesc='The ISC BIND nameserver with Response Rate Limiting(RRL) enabled.'
 url='http://www.isc.org/software/bind/'
@@ -23,6 +23,8 @@ backup=('etc/named.conf'
         'var/named/localhost.ip6.zone'
         'var/named/empty.zone')
 install=$_pkgname.install
+validpgpkeys=('2B48A38AE1CF9886435F89EE45AC7857189CDBC5'
+              'ADBE9446286C794905F1E0756FA6EBC9911A4C02') #ISC, Inc
 source=("http://ftp.isc.org/isc/bind9/${_pkgver}/bind-${_pkgver}.tar.gz"{,.asc}
         'tmpfiles.conf'
         'sysusers.conf'
@@ -32,7 +34,7 @@ source=("http://ftp.isc.org/isc/bind9/${_pkgver}/bind-${_pkgver}.tar.gz"{,.asc}
         'localhost.ip6.zone'
         '127.0.0.zone'
         'empty.zone')
-sha1sums=('24a81ba458a762c27be47461301fcf336cfb1d43'
+sha1sums=('4ddb2670976c06af7e86352616383958d82c51ce'
           'SKIP'
           'c5a2bcd9b0f009ae71f3a03fbdbe012196962a11'
           '6bebf4ff8ca4482a83f4d3dbf176d9bffd89eefa'
