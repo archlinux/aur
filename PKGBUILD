@@ -1,8 +1,8 @@
 # Maintainer: Denis Kasak <reversed(moc.liamg@kasak.sined)>
 
 pkgname=python-pysocks-git
-project_name=pysocks
-pkgver=20130319
+_projectname=pysocks
+pkgver=20150605
 pkgrel=1
 pkgdesc='Routes sockets of any TCP service through a SOCKS4, SOCKS5 or HTTP proxy (Anorov fork of socksipy)'
 arch=('any')
@@ -13,21 +13,21 @@ provides=('socksipy')
 conflicts=('socksipy')
 makedepends=('git')
 source=('setup.py'
-        "$project_name::git+git://github.com/Anorov/PySocks.git")
+        "$_projectname::git+git://github.com/Anorov/PySocks.git")
 md5sums=('46900e68be3f54a3bba2199faba326df'
          'SKIP')
 
 pkgver() {
-  cd "$srcdir/$project_name"
+  cd "$srcdir/$_projectname"
   git log -1 --format="%cd" --date=short | sed 's|-||g'
 }
 
 build() {
-  cp "$srcdir/setup.py" "$srcdir/$project_name/"
+  cp "$srcdir/setup.py" "$srcdir/$_projectname/"
 }
 
 package() {
-  cd "$srcdir/$project_name"
+  cd "$srcdir/$_projectname"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
