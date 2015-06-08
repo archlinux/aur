@@ -1,0 +1,23 @@
+2015-06-08 Giancarlo Razzolini <grazzolini@gmail.com>
+
+	* 0.0.4 :
+	- Decouple of the PKGBUILD and other AUR relevant files from the source code for upload in the new AUR system.
+
+2015-01-14 Giancarlo Razzolini <grazzolini@gmail.com>
+
+	* 0.0.3 :
+	- Now it can be used with modems too. Just need to add your modem module to the initramfs.
+	- The ppp_device parameter was changed to be optional, since it can accept not just PPPoE connections.
+
+2015-01-13 Giancarlo Razzolini <grazzolini@gmail.com>
+
+	* 0.0.2 :
+	- The kernel parameters names changed. A new one was added, for setting up the device pre-connection.
+	- There were missing modules that would prevent pppd from running. They were added to the installation.
+	- Changes in the help and install texts.
+
+2015-01-12 Giancarlo Razzolini <grazzolini@gmail.com>
+
+	* 0.0.1 :
+	- Initial release
+	- Support for running a pppd daemon that dials out to a ppp(oe) provider, based on a kernel command line parameter
