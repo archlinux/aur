@@ -1,0 +1,16 @@
+pkgbase = libdivecomputer-git
+	pkgdesc = Library for communication with dive computers
+	pkgver = 20150602.e6f51ea
+	pkgrel = 1
+	url = http://www.libdivecomputer.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	provides = libdivecomputer
+	conflicts = libdivecomputer
+	source = libdivecomputer::git://git.code.sf.net/p/libdivecomputer/code
+	sha1sums = SKIP
+
+pkgname = libdivecomputer-git
+
