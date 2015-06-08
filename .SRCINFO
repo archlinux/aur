@@ -1,0 +1,18 @@
+pkgbase = websockify-git
+	pkgdesc = WebSocket to TCP proxy/bridge.
+	pkgver = 667.23045cb
+	pkgrel = 1
+	url = http://github.com/kanaka/websockify
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	depends = python2
+	depends = python2-numpy
+	depends = python2-setuptools
+	provides = websockify
+	conflicts = websockify
+	source = websockify::git+http://github.com/kanaka/websockify
+	md5sums = SKIP
+
+pkgname = websockify-git
+
