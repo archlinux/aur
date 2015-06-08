@@ -1,0 +1,16 @@
+pkgbase = emacs-psgml
+	pkgdesc = An Emacs major mode for editing SGML documents (alpha version)
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = http://emacs.1067599.n5.nabble.com/psgml-fixed-to-work-with-Emacs-24-td282593.html
+	install = psgml.install
+	arch = any
+	license = GPL
+	makedepends = sed
+	depends = emacs
+	conflicts = psgml-stable
+	source = http://www.fsavigny.de/gpled-software/psgml-1.4.0.tar.gz
+	md5sums = 15708585d27746db97c110276da3cef0
+
+pkgname = emacs-psgml
+

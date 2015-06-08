@@ -1,0 +1,24 @@
+# arg 1:  the new package version
+post_install() {
+  echo
+  echo "Put the following lines in your .emacs:"
+  echo "  (autoload 'sgml-mode "psgml" "Major mode to edit SGML files." t)"
+  echo "  (autoload 'xml-mode "psgml" "Major mode to edit XML files." t)"
+  echo
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  /bin/true
+}
+
+# arg 1:  the old package version
+pre_remove() {
+  /bin/true
+}
+
+op=$1
+shift
+
+$op $*
