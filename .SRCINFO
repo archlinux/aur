@@ -1,0 +1,19 @@
+pkgbase = vdr-recsearch
+	pkgdesc = Search your recordings and find the one you are looking for
+	pkgver = 0.3.5
+	pkgrel = 6
+	url = https://github.com/flensrocker/vdr-plugin-recsearch
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	depends = gcc-libs
+	depends = vdr-api=2.2.0
+	backup = etc/vdr/conf.avail/50-recsearch.conf
+	source = https://github.com/flensrocker/vdr-plugin-recsearch/archive/v0.3.5.tar.gz
+	md5sums = afd1e3d95ac0e4e1e416b8a86ae32f9a
+
+pkgname = vdr-recsearch
+
