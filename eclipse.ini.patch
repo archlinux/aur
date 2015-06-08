@@ -1,0 +1,12 @@
+--- eclipse.ini.orig	2010-02-12 18:47:34.000000000 +0100
++++ eclipse.ini	2011-02-16 12:50:06.846666767 +0100
+@@ -5,7 +5,7 @@
+ -showsplash
+ org.eclipse.platform
+ --launcher.XXMaxPermSize
+-256m
++512m
+ -vmargs
+ -Xms40m
+--Xmx256m
++-Xmx768m

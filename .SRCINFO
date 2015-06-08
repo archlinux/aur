@@ -1,0 +1,26 @@
+pkgbase = eclipse-galileo
+	pkgdesc = An IDE for Java and other languages - Galileo
+	pkgver = 3.5.2
+	pkgrel = 2
+	url = http://www.eclipse.org/
+	install = eclipse-galileo.install
+	arch = i686
+	arch = x86_64
+	license = EPL
+	depends = desktop-file-utils
+	depends = java-environment
+	depends = python2
+	depends = xulrunner
+	provides = eclipse
+	conflicts = eclipse
+	source = http://www.eclipse.org/downloads/download.php?file=/eclipse/downloads/drops/R-3.5.2-201002111343/eclipse-SDK-3.5.2-linux-gtk.tar.gz
+	source = eclipse.desktop
+	source = eclipse.ini.patch
+	source = eclipse.sh
+	md5sums = bde55a2354dc224cf5f26e5320e72dac
+	md5sums = feb32dc323efc161cf044a36eeb5ec4d
+	md5sums = 74165d9a60ecc841d021567270b14fd5
+	md5sums = 7ea99a30fbaf06ec29261541b8eb1e23
+
+pkgname = eclipse-galileo
+
