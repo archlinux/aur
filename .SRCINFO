@@ -1,0 +1,23 @@
+pkgbase = manaplus-git
+	pkgdesc = ManaPlus GIT version.
+	pkgver = 7301.e6a0f5d
+	pkgrel = 1
+	url = http://manaplus.evolonline.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = libxml2
+	depends = physfs
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = sdl_net
+	depends = sdl_ttf
+	depends = sdl_gfx
+	depends = mesa
+	depends = curl
+	conflicts = manaplus
+	source = manaplus::git+https://gitlab.com/manaplus/manaplus.git
+	sha256sums = SKIP
+
+pkgname = manaplus-git
+
