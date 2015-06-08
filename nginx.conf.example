@@ -1,0 +1,13 @@
+server {
+        server_name     dolibarr.localdomain;
+
+        root    /usr/share/webapps/dolibarr/htdocs;
+        index   index.php;
+
+        location ~ \.php$ {
+                try_files      $uri =404;
+                fastcgi_pass   unix:/run/php-fpm/php-fpm.sock;
+                fastcgi_index  index.php;
+                include        fastcgi.conf;
+        }
+}

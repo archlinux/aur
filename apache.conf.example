@@ -1,0 +1,7 @@
+Alias /dolibarr "/usr/share/webapps/dolibarr"
+<Directory "/usr/share/webapps/dolibarr">
+  DirectoryIndex index.html index.php
+  AllowOverride All
+  Options FollowSymlinks
+  Require all granted
+</Directory>
