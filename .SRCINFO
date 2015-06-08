@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-retinex-git
+	pkgdesc = Plugin for Vapoursynth: retinex (GIT version)
+	pkgver = r3.1.gbd7710b
+	pkgrel = 1
+	url = http://forum.doom9.org/showthread.php?t=171307
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = vapoursynth
+	provides = vapoursynth-plugin-retinex
+	conflicts = vapoursynth-plugin-retinex
+	source = retinex::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-Retinex.git
+	sha1sums = SKIP
+
+pkgname = vapoursynth-plugin-retinex-git
+
