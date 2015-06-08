@@ -1,0 +1,476 @@
+Author: Alastair McKinstry <mckinstry@debian.org>
+Description: Build fixes for debian.
+Last-Updated: 2011-09-13
+Forwarded: no
+
+Index: libgctp-2.0/source/gctp.ver
+===================================================================
+--- /dev/null
++++ libgctp-2.0/source/gctp.ver
+@@ -0,0 +1,176 @@
++GCTP_1.0 {
++        global: 
++		pakcz;
++		pakr2dm;
++		paksz;
++		phi1z;
++		phi2z;
++		phi3z;
++		phi4z;
++		origin;
++		offsetp;
++		qsfnz;
++		sphdz;
++		msfnz;
++		mlfn;
++		Isin_for_free;
++		Isin_for_init;
++		Isin_fwd;
++		Isin_inv;
++		Isin_inv_free;
++		Isin_inv_init;
++		asinz;
++		adjust_lon;
++		calc_utm_zone;
++		tsfnz;
++		tsincos;
++		untfz;
++		true_scale;
++		cenlat;
++		cenlon;
++		cenlonmeri	;
++		e0fn;
++		e1fn;
++		e2fn;
++		e3fn;
++		e4fn;
++		alberfor;
++		alberforint;
++		alberinv;
++		alberinvint;
++		alconfor;
++		alconforint;
++		alconinv;
++		alconinvint;
++		azimfor;
++		azimforint;
++		aziminv;
++		aziminvint;
++		bceafor;
++		bceaforint;
++		bceainv;
++		bceainvint;
++		ceafor;
++		ceaforint;
++		ceainv;
++		ceainvint;
++		eqconfor;
++		eqconforint;
++		eqconinv;
++		eqconinvint;
++		equifor;
++		equiforint;
++		equiinv;
++		equiinvint;
++		for_init;
++		gctp;
++		gctp_;
++		gnomfor;
++		gnomforint;
++		gnominv;
++		gnominvint;
++		goodfor;
++		goodforint;
++		goodinv;
++		goodinvint;
++		gvnspfor;
++		gvnspforint;
++		gvnspinv;
++		gvnspinvint;
++		hamfor;
++		hamforint;
++		haminv;
++		haminvint;
++		imolwfor;
++		imolwforint;
++		imolwinv;
++		imolwinvint;
++		inv_init;
++		isinusfor;
++		isinusforinit;
++		isinusinv;
++		isinusinvinit;
++		lamazfor;
++		lamazforint;
++		lamazinv;
++		lamazinvint;
++		lamccfor;
++		lamccforint;
++		lamccinv;
++		lamccinvint;
++		merfor;
++		merforint;
++		merinv;
++		merinvint;
++		millfor;
++		millforint;
++		millinv;
++		millinvint;
++		molwfor;
++		molwforint;
++		molwinv;
++		molwinvint;
++		obleqfor;
++		obleqforint;
++		obleqinv;
++		obleqinvint;
++		omerfor;
++		omerforint;
++		omerinv;
++		omerinvint;
++		orthfor;
++		orthforint;
++		orthinv;
++		orthinvint;
++		polyfor;
++		polyforint;
++		polyinv;
++		polyinvint;
++		psfor;
++		psforint;
++		psinv;
++		psinvint;
++		robfor;
++		robforint;
++		robinv;
++		robinvint;
++		sinfor;
++		sinforint;
++		sininv;
++		sininvint;
++		somfor;
++		somforint;
++		sominv;
++		sominvint;
++		stanparl;
++			sterfor;
++		sterforint;
++		sterinv;
++		sterinvint;
++		stparl1;
++		stplnfor;
++		stplnforint;
++		stplninv;
++		stplninvint;
++		tmfor;
++		tmforint;
++		tminv;
++		tminvint;
++		utmfor;
++		utmforint;
++		utminv;
++		utminvint;
++		vandgfor;
++		vandgforint;
++		vandginv;
++		vandginvint;
++		wivfor;
++		wivforint;
++		wivinv;
++		wivinvint;
++		wviifor;
++		wviiforint;
++		wviiinv;
++		wviiinvint;
++        local: *;
++};
+\ No newline at end of file
+Index: libgctp-2.0/source/Makefile
+===================================================================
+--- libgctp-2.0.orig/source/Makefile
++++ libgctp-2.0/source/Makefile
+@@ -1,47 +1,53 @@
+-
+ INCDIR  = 
+-ARCHIVE = geolib.a
+-LIBDIR  = 
++ARCHIVE = libgctp.a
++SHARED_LIB = libgctp.so.0d
+ SRCDIR  = .
+ INCS    = cproj.h proj.h 
+-CC	= cc
++CC	= gcc
++CFLAGS  = -O3 -Wall
++DESTDIR = 
++PREFIX  = /usr
++VERSION = 2.0
++
++LIBDIR = $(DESTDIR)$(PREFIX)/lib/$(DEB_HOST_MULTIARCH)
++LIBDIR_QUOTED = $(subst /,\/, $(LIBDIR))
+ 
+ OBJECTS=		\
+-		$(ARCHIVE)(alberfor.o) $(ARCHIVE)(alberinv.o) \
+-		$(ARCHIVE)(alconfor.o) $(ARCHIVE)(alconinv.o) \
+-		$(ARCHIVE)(azimfor.o) $(ARCHIVE)(aziminv.o) \
+-		$(ARCHIVE)(eqconfor.o) $(ARCHIVE)(eqconinv.o) \
+-		$(ARCHIVE)(equifor.o) $(ARCHIVE)(equiinv.o) \
+-		$(ARCHIVE)(gnomfor.o) $(ARCHIVE)(gnominv.o) \
+-		$(ARCHIVE)(goodfor.o) $(ARCHIVE)(goodinv.o) \
+-		$(ARCHIVE)(gvnspfor.o) $(ARCHIVE)(gvnspinv.o) \
+-		$(ARCHIVE)(hamfor.o) $(ARCHIVE)(haminv.o) \
+-		$(ARCHIVE)(imolwfor.o) $(ARCHIVE)(imolwinv.o) \
+-		$(ARCHIVE)(lamazfor.o) $(ARCHIVE)(lamazinv.o) \
+-		$(ARCHIVE)(lamccfor.o) $(ARCHIVE)(lamccinv.o) \
+-		$(ARCHIVE)(merfor.o) $(ARCHIVE)(merinv.o) \
+-		$(ARCHIVE)(millfor.o) $(ARCHIVE)(millinv.o) \
+-		$(ARCHIVE)(molwfor.o) $(ARCHIVE)(molwinv.o) \
+-		$(ARCHIVE)(obleqfor.o) $(ARCHIVE)(obleqinv.o) \
+-		$(ARCHIVE)(omerfor.o) $(ARCHIVE)(omerinv.o) \
+-		$(ARCHIVE)(orthfor.o) $(ARCHIVE)(orthinv.o) \
+-		$(ARCHIVE)(polyfor.o) $(ARCHIVE)(polyinv.o) \
+-		$(ARCHIVE)(psfor.o) $(ARCHIVE)(psinv.o) \
+-		$(ARCHIVE)(robfor.o) $(ARCHIVE)(robinv.o) \
+-		$(ARCHIVE)(sinfor.o) $(ARCHIVE)(sininv.o) \
+-		$(ARCHIVE)(somfor.o) $(ARCHIVE)(sominv.o) \
+-		$(ARCHIVE)(sterfor.o) $(ARCHIVE)(sterinv.o) \
+-		$(ARCHIVE)(stplnfor.o) $(ARCHIVE)(stplninv.o) \
+-		$(ARCHIVE)(tmfor.o) $(ARCHIVE)(tminv.o) \
+-		$(ARCHIVE)(utmfor.o) $(ARCHIVE)(utminv.o) \
+-		$(ARCHIVE)(vandgfor.o) $(ARCHIVE)(vandginv.o) \
+-		$(ARCHIVE)(wivfor.o) $(ARCHIVE)(wivinv.o) \
+-		$(ARCHIVE)(wviifor.o) $(ARCHIVE)(wviiinv.o) \
+-		$(ARCHIVE)(for_init.o) $(ARCHIVE)(inv_init.o) \
+-		$(ARCHIVE)(cproj.o) $(ARCHIVE)(report.o) \
+-		$(ARCHIVE)(paksz.o) $(ARCHIVE)(sphdz.o) \
+-		$(ARCHIVE)(untfz.o) $(ARCHIVE)(gctp.o) \
+-		$(ARCHIVE)(br_gctp.o)
++		alberfor.o alberinv.o \
++		alconfor.o alconinv.o \
++		azimfor.o aziminv.o \
++		eqconfor.o eqconinv.o \
++		equifor.o equiinv.o \
++		gnomfor.o gnominv.o \
++		goodfor.o goodinv.o \
++		gvnspfor.o gvnspinv.o \
++		hamfor.o haminv.o \
++		imolwfor.o imolwinv.o \
++		lamazfor.o lamazinv.o \
++		lamccfor.o lamccinv.o \
++		merfor.o merinv.o \
++		millfor.o millinv.o \
++		molwfor.o molwinv.o \
++		obleqfor.o obleqinv.o \
++		omerfor.o omerinv.o \
++		orthfor.o orthinv.o \
++		polyfor.o polyinv.o \
++		psfor.o psinv.o \
++		robfor.o robinv.o \
++		sinfor.o sininv.o \
++		somfor.o sominv.o \
++		sterfor.o sterinv.o \
++		stplnfor.o stplninv.o \
++		tmfor.o tminv.o \
++		utmfor.o utminv.o \
++		vandgfor.o vandginv.o \
++		wivfor.o wivinv.o \
++		wviifor.o wviiinv.o \
++		for_init.o inv_init.o \
++		cproj.o report.o \
++		paksz.o sphdz.o \
++		untfz.o gctp.o \
++		br_gctp.o
+ 
+ SOURCES = gctp.c alberfor.c alberinv.c alconfor.c alconinv.c azimfor.c \
+ 	  aziminv.c eqconfor.c eqconinv.c equifor.c equiinv.c gnomfor.c \
+@@ -58,73 +64,101 @@ SOURCES = gctp.c alberfor.c alberinv.c a
+ 
+ $(ARCHIVE):	$(OBJECTS)
+ 
++SHARED_OBJS = $(subst .o,.shared.o, $(OBJECTS))
++
++%.shared.o: %.c
++	$(CC) $(CFLAGS) -fPIC -c $< -o  $@
++
++all:    $(ARCHIVE) $(SHARED_LIB) gctp.pc
+ 
+-$(ARCHIVE)(gctp.o):	 	$(INCS)
+-$(ARCHIVE)(alberfor.o):	 	$(INCS)
+-$(ARCHIVE)(alberinv.o):	 	$(INCS)
+-$(ARCHIVE)(alconfor.o):	 	$(INCS)
+-$(ARCHIVE)(alconinv.o):	 	$(INCS)
+-$(ARCHIVE)(azimfor.o):	 	$(INCS)
+-$(ARCHIVE)(aziminv.o):	 	$(INCS)
+-$(ARCHIVE)(eqconfor.o):	 	$(INCS)
+-$(ARCHIVE)(eqconinv.o):	 	$(INCS)
+-$(ARCHIVE)(equifor.o):	 	$(INCS)
+-$(ARCHIVE)(equiinv.o):	 	$(INCS)
+-$(ARCHIVE)(for_init.o):	 	$(INCS)
+-$(ARCHIVE)(gnomfor.o):	 	$(INCS)
+-$(ARCHIVE)(gnominv.o):	 	$(INCS)
+-$(ARCHIVE)(goodfor.o):	 	$(INCS)
+-$(ARCHIVE)(goodinv.o):	 	$(INCS)
+-$(ARCHIVE)(gvnspfor.o):	 	$(INCS)
+-$(ARCHIVE)(gvnspinv.o):	 	$(INCS)
+-$(ARCHIVE)(hamfor.o):	 	$(INCS)
+-$(ARCHIVE)(haminv.o):	 	$(INCS)
+-$(ARCHIVE)(imolwfor.o):	 	$(INCS)
+-$(ARCHIVE)(imolwinv.o):	 	$(INCS)
+-$(ARCHIVE)(inv_init.o):	 	$(INCS)
+-$(ARCHIVE)(lamazfor.o):	 	$(INCS)
+-$(ARCHIVE)(lamazinv.o):	 	$(INCS)
+-$(ARCHIVE)(lamccfor.o):	 	$(INCS)
+-$(ARCHIVE)(lamccinv.o):	 	$(INCS)
+-$(ARCHIVE)(merfor.o):	 	$(INCS)
+-$(ARCHIVE)(merinv.o):	 	$(INCS)
+-$(ARCHIVE)(millfor.o):	 	$(INCS)
+-$(ARCHIVE)(millinv.o):	 	$(INCS)
+-$(ARCHIVE)(molwfor.o):	 	$(INCS)
+-$(ARCHIVE)(molwinv.o):	 	$(INCS)
+-$(ARCHIVE)(obleqfor.o):	 	$(INCS)
+-$(ARCHIVE)(obleqinv.o):	 	$(INCS)
+-$(ARCHIVE)(omerfor.o):	 	$(INCS)
+-$(ARCHIVE)(omerinv.o):	 	$(INCS)
+-$(ARCHIVE)(orthfor.o):	 	$(INCS)
+-$(ARCHIVE)(orthinv.o):	 	$(INCS)
+-$(ARCHIVE)(paksz.o):	 	$(INCS)
+-$(ARCHIVE)(polyinv.o):	 	$(INCS)
+-$(ARCHIVE)(polyfor.o):	 	$(INCS)
+-$(ARCHIVE)(psinv.o):	 	$(INCS)
+-$(ARCHIVE)(psfor.o):	 	$(INCS)
+-$(ARCHIVE)(robinv.o):	 	$(INCS)
+-$(ARCHIVE)(robfor.o):	 	$(INCS)
+-$(ARCHIVE)(sininv.o):	 	$(INCS)
+-$(ARCHIVE)(sinfor.o):	 	$(INCS)
+-$(ARCHIVE)(sominv.o):	 	$(INCS)
+-$(ARCHIVE)(somfor.o):	 	$(INCS)
+-$(ARCHIVE)(sphdz.o):	 	$(INCS)
+-$(ARCHIVE)(sterinv.o):	 	$(INCS)
+-$(ARCHIVE)(sterfor.o):	 	$(INCS)
+-$(ARCHIVE)(stplninv.o):	 	$(INCS)
+-$(ARCHIVE)(stplnfor.o):	 	$(INCS)
+-$(ARCHIVE)(tminv.o):	 	$(INCS)
+-$(ARCHIVE)(tmfor.o):	 	$(INCS)
+-$(ARCHIVE)(utminv.o):	 	$(INCS)
+-$(ARCHIVE)(utmfor.o):	 	$(INCS)
+-$(ARCHIVE)(untfz.o):	 	$(INCS)
+-$(ARCHIVE)(vandginv.o):	 	$(INCS)
+-$(ARCHIVE)(vandgfor.o):	 	$(INCS)
+-$(ARCHIVE)(wivinv.o):	 	$(INCS)
+-$(ARCHIVE)(wivfor.o):	 	$(INCS)
+-$(ARCHIVE)(wviiinv.o):	 	$(INCS)
+-$(ARCHIVE)(wviifor.o):	 	$(INCS)
+-$(ARCHIVE)(cproj.o):	 	$(INCS)
+-$(ARCHIVE)(report.o):	 	$(INCS)
+-$(ARCHIVE)(br_gctp.o):	 	$(INCS)
++install: $(ARCHIVE) $(SHARED_LIB) gctp.pc
++	mkdir -p $(LIBDIR)
++	cp $(SHARED_LIB) $(LIBDIR)
++	mkdir -p $(DESTDIR)$(PREFIX)/include
++	cp *.h $(DESTDIR)$(PREFIX)/include
++	mkdir -p $(LIBDIR)/pkgconfig
++	cp gctp.pc $(LIBDIR)/pkgconfig
++
++clean:
++	rm -f *.o $(ARCHIVE) $(SHARED_LIB) *~
++
++$(ARCHIVE):     $(OBJECTS)
++	$(AR) rcs  $(ARCHIVE) $(OBJECTS)
++
++shared $(SHARED_LIB):  $(SHARED_OBJS)
++	$(CC) -shared -o $(SHARED_LIB) $(SHARED_OBJS) -Wl,--version-script,gctp.ver -Wl,-soname,libgctp.so.0d -lm
++
++
++gctp.pc:  gctp.pc.in
++	sed -e 's/@libdir@/$(LIBDIR_QUOTED)/' < gctp.pc.in | \
++                sed -e 's/@VERSION@/$(VERSION)/' > gctp.pc
++
++gctp.o:	 	$(INCS)
++alberfor.o:	 	$(INCS)
++alberinv.o:	 	$(INCS)
++alconfor.o:	 	$(INCS)
++alconinv.o:	 	$(INCS)
++azimfor.o:	 	$(INCS)
++aziminv.o:	 	$(INCS)
++eqconfor.o:	 	$(INCS)
++eqconinv.o:	 	$(INCS)
++equifor.o:	 	$(INCS)
++equiinv.o:	 	$(INCS)
++for_init.o:	 	$(INCS)
++gnomfor.o:	 	$(INCS)
++gnominv.o:	 	$(INCS)
++goodfor.o:	 	$(INCS)
++goodinv.o:	 	$(INCS)
++gvnspfor.o:	 	$(INCS)
++gvnspinv.o:	 	$(INCS)
++hamfor.o:	 	$(INCS)
++haminv.o:	 	$(INCS)
++imolwfor.o:	 	$(INCS)
++imolwinv.o:	 	$(INCS)
++inv_init.o:	 	$(INCS)
++lamazfor.o:	 	$(INCS)
++lamazinv.o:	 	$(INCS)
++lamccfor.o:	 	$(INCS)
++lamccinv.o:	 	$(INCS)
++merfor.o:	 	$(INCS)
++merinv.o:	 	$(INCS)
++millfor.o:	 	$(INCS)
++millinv.o:	 	$(INCS)
++molwfor.o:	 	$(INCS)
++molwinv.o:	 	$(INCS)
++obleqfor.o:	 	$(INCS)
++obleqinv.o:	 	$(INCS)
++omerfor.o:	 	$(INCS)
++omerinv.o:	 	$(INCS)
++orthfor.o:	 	$(INCS)
++orthinv.o:	 	$(INCS)
++paksz.o:	 	$(INCS)
++polyinv.o:	 	$(INCS)
++polyfor.o:	 	$(INCS)
++psinv.o:	 	$(INCS)
++psfor.o:	 	$(INCS)
++robinv.o:	 	$(INCS)
++robfor.o:	 	$(INCS)
++sininv.o:	 	$(INCS)
++sinfor.o:	 	$(INCS)
++sominv.o:	 	$(INCS)
++somfor.o:	 	$(INCS)
++sphdz.o:	 	$(INCS)
++sterinv.o:	 	$(INCS)
++sterfor.o:	 	$(INCS)
++stplninv.o:	 	$(INCS)
++stplnfor.o:	 	$(INCS)
++tminv.o:	 	$(INCS)
++tmfor.o:	 	$(INCS)
++utminv.o:	 	$(INCS)
++utmfor.o:	 	$(INCS)
++untfz.o:	 	$(INCS)
++vandginv.o:	 	$(INCS)
++vandgfor.o:	 	$(INCS)
++wivinv.o:	 	$(INCS)
++wivfor.o:	 	$(INCS)
++wviiinv.o:	 	$(INCS)
++wviifor.o:	 	$(INCS)
++cproj.o:	 	$(INCS)
++report.o:	 	$(INCS)
++br_gctp.o:	 	$(INCS)
+Author: Alastair McKinstry <mckinstry@debian.org>
+Description: pkg-config file for GCTP
+Last-Updated: 2011-09-14
+Forwarded: no
+
+Index: libgctp/source/gctp.pc.in
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ libgctp/source/gctp.pc.in	2009-08-06 14:28:56.000000000 +0100
+@@ -0,0 +1,11 @@
++prefix=/usr
++exec_prefix=${prefix}
++libdir=@LIBDIR@
++includedir=${exec_prefix}/include/gctp
++
++Name: gctp
++Description: General Cartographic Transformations Package
++Version: @VERSION@
++Libs: -L${libdir} -lgctp
++Libs.private: -lgctp -lm
++Cflags: -I${includedir}

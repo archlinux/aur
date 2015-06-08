@@ -1,0 +1,19 @@
+pkgbase = libgctp
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://gcmd.nasa.gov/records/USGS-GCTP.html
+	arch = i686
+	arch = x86_64
+	license = unknown
+	source = http://ftp.us.debian.org/debian/pool/main/libg/libgctp/libgctp_2.0.orig.tar.gz
+	source = fix.patch
+	sha256sums = 219953b1594a814c3b30a0e9f7dde8634f0143d0597a5ffba6cf267d2a03a474
+	sha256sums = f6ce645248cf09392f8b9c54e68a93696877bcce43ead6dbeeacd3be9b35df90
+
+pkgname = libgctp
+	pkgdesc = General Cartographic Transformation Package
+
+pkgname = libgctp-doc
+	pkgdesc = General Cartographic Transformation Package - documentation
+	arch = any
+
