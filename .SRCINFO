@@ -1,0 +1,17 @@
+pkgbase = ngp-git
+	pkgdesc = Ncurses grep tool
+	pkgver = 1.2.r12.g025ab10
+	pkgrel = 1
+	url = https://github.com/jonathanklee/ngp
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = ncurses
+	provides = ngp
+	conflicts = ngp
+	source = ngp-git::git://github.com/jonathanklee/ngp.git
+	md5sums = SKIP
+
+pkgname = ngp-git
+
