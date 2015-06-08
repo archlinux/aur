@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Gaurodan
+Exec=/opt/gaurodan/runner
+Icon=/opt/gaurodan/assets/icon.png
+Terminal=false
+StartupNotify=false
+Categories=Game;
