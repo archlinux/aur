@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Value=1.0
+Type=Application
+Name=Vessel
+GenericName=Vessel
+Comment=A physics-based, steampunk puzzle-platform game
+Icon=vessel.png
+Exec=vessel
+Categories=Game;
+Path=/opt/vessel
+

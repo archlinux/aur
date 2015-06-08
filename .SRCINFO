@@ -1,0 +1,24 @@
+pkgbase = vessel
+	pkgdesc = A physics-based, steampunk puzzle-platform game
+	pkgver = 20130222
+	pkgrel = 1
+	url = http://www.strangeloopgames.com/
+	arch = i686
+	arch = x86_64
+	groups = humble-indie-bundle6
+	groups = games
+	license = custom
+	makedepends = unzip
+	makedepends = imagemagick
+	depends = sdl
+	depends = openal
+	depends = bash
+	depends = gcc-libs
+	optdepends = libtxc_dxtn: texture decoding support for open source graphics drivers
+	source = hib://vessel-02222013-bin
+	source = vessel.desktop
+	sha256sums = be96e670a51fc27176b31ed88a1a1a4447d113595eceeac9727bb03743465c73
+	sha256sums = 941c7534f8a557f5cdbbec0f19a4e13c76d393006bdb6e1dafd5529b5c9b6697
+
+pkgname = vessel
+
