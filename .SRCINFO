@@ -1,0 +1,14 @@
+pkgbase = hodlr
+	pkgdesc = A fast, accurate direct solver and determinant computation for dense linear systems
+	pkgver = r131.c69cf44
+	pkgrel = 1
+	url = https://github.com/sivaramambikasaran/HODLR
+	arch = any
+	license = MPL2
+	makedepends = cmake
+	depends = eigen
+	source = HODLR::git+https://github.com/sivaramambikasaran/HODLR.git
+	md5sums = SKIP
+
+pkgname = hodlr
+
