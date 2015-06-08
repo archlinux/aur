@@ -1,0 +1,13 @@
+pkgbase = aspell-nn
+	pkgdesc = Norwegian Nynorsk dictionary for aspell
+	pkgver = 0.50.1
+	pkgrel = 2
+	url = http://aspell.net/
+	arch = any
+	license = GPL
+	depends = aspell
+	source = ftp://ftp.gnu.org/gnu/aspell/dict/nn/aspell-nn-0.50.1-1.tar.bz2
+	md5sums = 3711eb9df68f25262af10119579239bc
+
+pkgname = aspell-nn
+
