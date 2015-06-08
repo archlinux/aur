@@ -1,0 +1,8 @@
+# vim:set ts=2 sw=2 et filetype=sh:
+
+post_remove() {
+    if [ -d /var/lib/xfstests-git ]; then
+        echo "You may want to crean up your test result in /var/lib/xfstests-git"
+    fi
+}
+

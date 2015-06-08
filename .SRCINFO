@@ -1,0 +1,20 @@
+pkgbase = xfstests-git
+	pkgdesc = File system QA suite
+	pkgver = linux.v3.8.r640.gfacff60
+	pkgrel = 1
+	url = http://oss.sgi.com/projects/xfs
+	install = xfstests-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = xfsprogs
+	depends = openssl
+	depends = libaio
+	source = xfstests-git::git://oss.sgi.com/xfs/cmds/xfstests.git
+	source = no-ltinstall.diff
+	md5sums = SKIP
+	md5sums = 4ec54611e65df0caa825e5fe8dc949c7
+
+pkgname = xfstests-git
+

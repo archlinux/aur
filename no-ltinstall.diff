@@ -1,0 +1,45 @@
+--- a/include/builddefs.in
++++ b/include/builddefs.in
+@@ -35,7 +35,7 @@ PKG_DISTRIBUTION= @pkg_distribution@
+ PKG_SBIN_DIR    = @sbindir@
+ # A bit of a hack; by rights only state should probably go here
+ # But for now ...
+-PKG_LIB_DIR     = /var/lib/@pkg_name@
++PKG_LIB_DIR     = @localstatedir@/lib/@pkg_name@
+ 
+ CC              = @cc@
+ AWK             = @awk@
+--- a/install-sh.orig	2013-06-25 11:31:07.798872991 +0200
++++ b/install-sh	2013-06-25 11:31:15.908018374 +0200
+@@ -1,4 +1,4 @@
+-#! /bin/bash
++#! /bin/bash -x
+ #
+ # Copyright (c) 2000-2001 Silicon Graphics, Inc.  All Rights Reserved.
+ #
+--- a/ltp/Makefile.orig	2013-06-25 13:59:27.645793142 +0200
++++ b/ltp/Makefile	2013-06-25 13:59:53.815274649 +0200
+@@ -44,7 +44,7 @@
+ 
+ install: default
+ 	$(INSTALL) -m 755 -d $(PKG_LIB_DIR)/ltp
+-	$(LTINSTALL) -m 755 $(TARGETS) $(PKG_LIB_DIR)/ltp
++	$(INSTALL) -m 755 $(TARGETS) $(PKG_LIB_DIR)/ltp
+ 	$(INSTALL) -m 755 $(SCRIPTS) $(PKG_LIB_DIR)/ltp
+ 
+ -include .dep
+--- a/src/Makefile.orig	2013-06-25 14:00:28.234907919 +0200
++++ b/src/Makefile	2013-06-25 14:00:33.380002578 +0200
+@@ -74,9 +74,9 @@
+ 
+ install: default $(addsuffix -install,$(SUBDIRS))
+ 	$(INSTALL) -m 755 -d $(PKG_LIB_DIR)/src
+-	$(LTINSTALL) -m 755 $(TARGETS) $(PKG_LIB_DIR)/src
+-	$(LTINSTALL) -m 755 fill2attr fill2fs fill2fs_check scaleread.sh $(PKG_LIB_DIR)/src
+-	$(LTINSTALL) -m 644 dumpfile $(PKG_LIB_DIR)/src
++	$(INSTALL) -m 755 $(TARGETS) $(PKG_LIB_DIR)/src
++	$(INSTALL) -m 755 fill2attr fill2fs fill2fs_check scaleread.sh $(PKG_LIB_DIR)/src
++	$(INSTALL) -m 644 dumpfile $(PKG_LIB_DIR)/src
+ 
+ %-install:
+ 	$(MAKE) -C $* install
