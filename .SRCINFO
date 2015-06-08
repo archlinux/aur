@@ -1,0 +1,20 @@
+pkgbase = gmpc-libnotify-git
+	pkgdesc = A plugin for gmpc that displays notifications using libnotify
+	pkgver = 20121007
+	pkgrel = 1
+	url = http://sarine.nl/gmpc
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = intltool
+	makedepends = gob2
+	makedepends = pkgconfig
+	depends = gmpc-git
+	provides = gmpc-libnotify
+	conflicts = gmpc-libnotify
+	conflicts = gmpc-libnotify-svn
+	options = !libtool
+
+pkgname = gmpc-libnotify-git
+
