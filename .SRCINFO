@@ -1,0 +1,16 @@
+pkgbase = epson-inkjet-printer-201211j
+	pkgdesc = Epson printer driver (PX-105, PX-505F, PX-535F)
+	pkgver = 1.0.1
+	pkgrel = 8
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom:Epson Licence Agreement
+	depends = cups
+	depends = ghostscript
+	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201211j-1.0.1-1lsb3.2.src.rpm
+	sha256sums = a150ebd4d519b5157faa09953de680345e4ad8fcdf3e3a24477edda46a5ea0af
+
+pkgname = epson-inkjet-printer-201211j
+
