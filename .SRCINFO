@@ -1,0 +1,22 @@
+pkgbase = kile-frameworks-git
+	pkgdesc = A user friendly TeX/LaTeX frontend for KDE
+	pkgver = r2794.95ba610
+	pkgrel = 1
+	url = http://kile.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = kdoctools
+	makedepends = python
+	depends = kinit
+	depends = ktexteditor
+	depends = okular-frameworks-git
+	provides = kile
+	conflicts = kile
+	source = git://anongit.kde.org/kile.git#branch=frameworks
+	sha256sums = SKIP
+
+pkgname = kile-frameworks-git
+
