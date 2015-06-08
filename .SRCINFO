@@ -1,0 +1,15 @@
+pkgbase = ksplash-theme-manjaro-redefined
+	pkgdesc = Manjaro Redefined KSplash based on QML by Nowardev.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://kde-look.org/content/show.php?content=166291
+	arch = any
+	groups = kde
+	groups = kdeartwork
+	license = GPL
+	depends = kdebase-workspace
+	source = http://freefr.dl.sourceforge.net/project/manjaroredefined/Manjaro-Redefined-Splash-1.0.1.tar.gz
+	md5sums = SKIP
+
+pkgname = ksplash-theme-manjaro-redefined
+
