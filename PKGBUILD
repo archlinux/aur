@@ -1,71 +1,45 @@
-# Maintainer: Gerardo Marset <gammer1994@gmail.com>
+# Maintainer:  postblue <postblue+aurpostblue.info>
+# Contributor: ainola <opp310@alh.rqh> (ROT13)
+# Contributor: Gerardo Marset <gammer1994@gmail.com>
 
 pkgname=amnesia-tdd
-pkgver=1.2.1r3
-pkgrel=1
-pkgdesc="A game about immersion, discovery and living through a nightmare."
+pkgver=1.2.1
+pkgrel=2
+pkgdesc="Amnesia: The Dark Descent is a first person survival horror game. (Humble Bundle version)"
 arch=('i686' 'x86_64')
 url="http://www.amnesiagame.com/"
 license=('custom')
-makedepends=('xz')
 depends=('libxft')
-_sh=amnesia_tdd-${pkgver/r/-}.sh
-source=($_sh)
-if [ "$pkgver" == "1.2.1r3" ] ; then
-    md5sums=('b3b04553dbf56570e7270d52a04d5ddd')
-elif [ "$pkgver" == "1.2" ] ; then
-    md5sums=('5151ae5b89f6c8a8ddc10dfb19d8feb3')
-fi
-
-_installdir="/usr/share/games/$pkgname"
+conflicts=('amnesia-tdd-hib')
+source=("amnesia_tdd-${pkgver}-3.sh")
+sha256sums=("5ced96a2ce619a44647f6cbd8190000ec48df41c621f1b6ccbeba537e1fc89e5")
 [ "$CARCH" == "x86_64" ] && _suffix=_64
+# Prevent compressing final package
+PKGEXT='.pkg.tar'
 
-PKGEXT=.pkg.tar
+package() {
+    # Use autoextractor
+    sh amnesia_tdd-${pkgver}-3.sh --target "${srcdir}/tmp" --unattended --accept-license --destdir "${srcdir}"
 
-build() {
-    msg "Extracting installer..."
-    sh $_sh --tar -xvf
+    # Delete unneeded uninstall file
+    rm "${srcdir}/Amnesia/uninstall.sh"
 
-    msg "Extracting subarchive..."
-    tar --lzma -xvf subarch
+    # Substitute the building directory with the installation one (/opt/Amnesia)
+    sed -i "s|${srcdir}/|/opt/|" Amnesia/*.desktop
 
-    msg "Extracting common files..."
-    mkdir -p $pkgdir/$_installdir
-    cd $pkgdir/$_installdir
-    lzcat $srcdir/instarchive_all | tar -xvf -
+    # Install Binaries and Launchers
+    mkdir -p "${pkgdir}/opt/Amnesia"
+    mv "${srcdir}/Amnesia" "${pkgdir}/opt/"
+    mkdir -p "${pkgdir}/usr/bin"
+    ln -s "/opt/Amnesia/Amnesia.bin${_suffix/_/}" "${pkgdir}/usr/bin/${pkgname}"
+    ln -s "/opt/Amnesia/Launcher.bin${_suffix/_/}" "${pkgdir}/usr/bin/${pkgname}-launcher"
 
-    msg "Extracting arch-specific files..."
-    tar --lzma -xvf $srcdir/instarchive_all_x86$_suffix
+    # Install License Files
+    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+    ln -s "/opt/Amnesia/EULA_*.pdf" "${pkgdir}/usr/share/licenses/${pkgname}/"
 
-    msg "Moving stuff around..."
-    mv Amnesia/* .
-    rmdir Amnesia
-    mv libs${_suffix/_/}/all/* libs${_suffix/_/}
-    rmdir libs${_suffix/_/}/all
-
-    msg "Copying license..."
-    mkdir -p $pkgdir/usr/share/licenses/$pkgname
-    cp $srcdir/config/license $pkgdir/usr/share/licenses/$pkgname/LICENSE
-
-    msg "Creating launchers..."
-    mkdir -p $pkgdir/usr/bin
-    ln -s $_installdir/Amnesia.bin${_suffix/_/} $pkgdir/usr/bin/$pkgname
-    ln -s $_installdir/Launcher.bin${_suffix/_/} $pkgdir/usr/bin/$pkgname-launcher
-    f=$pkgdir/usr/bin/$pkgname-justine
-    echo "#!/bin/bash" > $f
-    echo "" >> $f
-    echo "$pkgname $_installdir/config/ptest_main_init.cfg \$@" >> $f
-    chmod +x $f
-
-    mkdir -p $pkgdir/usr/share/{pixmaps,applications}
-    cp Amnesia.png $pkgdir/usr/share/pixmaps/$pkgname.png
-    f=$pkgdir/usr/share/applications/$pkgname.desktop 
-    echo "[Desktop Entry]" > $f
-    echo "Name=Amnesia: The Dark Descent" >> $f
-    echo "Comment=$pkgdesc" >> $f
-    echo "Exec=$pkgname-launcher" >> $f
-    echo "Icon=$pkgname.png" >> $f
-    echo "Type=Application" >> $f
-    echo "Categories=Game;" >> $f
-    echo "Encoding=UTF-8" >> $f
+    # Install Desktop Files
+    mkdir -p "${pkgdir}"/usr/share/{pixmaps,applications}
+    ln -s "/opt/Amnesia/Amnesia.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    ln -s "/opt/Amnesia/AmnesiaTheDarkDescent.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }

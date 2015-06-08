@@ -1,15 +1,15 @@
 pkgbase = amnesia-tdd
-	pkgdesc = A game about immersion, discovery and living through a nightmare.
-	pkgver = 1.2.1r3
-	pkgrel = 1
+	pkgdesc = Amnesia: The Dark Descent is a first person survival horror game. (Humble Bundle version)
+	pkgver = 1.2.1
+	pkgrel = 2
 	url = http://www.amnesiagame.com/
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = xz
 	depends = libxft
+	conflicts = amnesia-tdd-hib
 	source = amnesia_tdd-1.2.1-3.sh
-	md5sums = b3b04553dbf56570e7270d52a04d5ddd
+	sha256sums = 5ced96a2ce619a44647f6cbd8190000ec48df41c621f1b6ccbeba537e1fc89e5
 
 pkgname = amnesia-tdd
 
