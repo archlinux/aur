@@ -1,0 +1,19 @@
+--- spams-python-pristine/setup.py	2013-12-20 08:06:24.000000000 -0300
++++ spams-python-new/setup.py	2014-02-15 20:42:27.648829077 -0300
+@@ -74,15 +74,5 @@
+        author_email = 'nomail',
+        url = 'http://',
+        ext_modules = [spams_wrap,],
+-       py_modules = ['spams', 'spams_wrap', 'myscipy_rand'],
+-#       scripts = ['test_spams.py'],
+-       data_files = [
+-        ('test',['test_spams.py', 'test_decomp.py', 'test_dictLearn.py', 'test_linalg.py', 'test_prox.py', 'test_utils.py']),
+-        ('doc',['doc_spams.pdf', 'python-interface.pdf']), 
+-        ('doc/sphinx/_sources',mkhtml('_sources')),
+-        ('doc/sphinx/_static',mkhtml('_static')),
+-        ('doc/sphinx',mkhtml()),
+-        ('doc/html',mkhtml(base = 'html')),
+-        ('extdata',['boat.png', 'lena.png'])
+-        ],
++       py_modules = ['spams', 'spams_wrap', 'myscipy_rand']
+ )

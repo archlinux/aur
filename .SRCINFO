@@ -1,0 +1,16 @@
+pkgbase = python2-spams
+	pkgdesc = Optimization toolbox for solving various sparse estimation problems
+	pkgver = 2.5
+	pkgrel = 1
+	url = http://spams-devel.gforge.inria.fr/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2-scipy
+	source = http://spams-devel.gforge.inria.fr/hitcounter2.php?file=33816/spams-python-v2.5-svn2014-07-04.tar.gz
+	source = python2-spams.patch
+	md5sums = bad3e1d319c6986bdda5afe1695713bd
+	md5sums = 3b208b139fbe40034578987d849f405f
+
+pkgname = python2-spams
+
