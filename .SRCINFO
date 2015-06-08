@@ -1,0 +1,18 @@
+pkgbase = haskell-cpu
+	pkgdesc = Lowlevel cpu routines to get basic properties of the cpu platform, like endianness and architecture.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/cpu
+	install = haskell-cpu.install
+	arch = i686
+	arch = x86_64
+	license = BSD3
+	makedepends = ghc
+	depends = haskell-base
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/cpu/0.1.2/cpu-0.1.2.tar.gz
+	sha256sums = 5627feb4974a3ff8499c42cc958927e88761a2e004c4000d34e9cd6a15ad2974
+
+pkgname = haskell-cpu
+
