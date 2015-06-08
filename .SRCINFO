@@ -1,0 +1,44 @@
+pkgbase = dfatmo
+	pkgver = 0.4.0
+	pkgrel = 12
+	epoch = 1
+	url = https://github.com/durchflieger/dfatmo
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	makedepends = libusbx
+	makedepends = python2
+	makedepends = vdr-api=2.2.0
+	makedepends = zip
+	source = https://github.com/durchflieger/dfatmo/archive/v0.4.0.tar.gz
+	source = 45-df10ch.rules
+	source = 50-dfatmo.conf
+	md5sums = c10affe8304d494fee575d95ff791dca
+	md5sums = c5e0bf17e88febc7e86c7e435f5eea5f
+	md5sums = f8f2376c860c78f522e40b1afd02d38c
+
+pkgname = dfatmo
+	pkgdesc = Analyzes the video picture and generates output data for so called 'Atmolight' controllers
+	depends = libusbx
+	depends = python2
+	conflicts = dfatmo-driver
+	replaces = dfatmo-driver
+
+pkgname = vdr-dfatmo
+	pkgdesc = VDR plugin to drive a colored back lighting for TVs
+	depends = gcc-libs
+	depends = dfatmo
+	depends = vdr-api=2.2.0
+	backup = etc/vdr/conf.avail/50-.conf
+
+pkgname = kodi-addon-dfatmo
+	pkgdesc = VDR plugin to drive a colored back lighting for TVs
+	arch = any
+	depends = dfatmo
+	depends = kodi
+	conflicts = xbmc-addon-dfatmo
+	replaces = xbmc-addon-dfatmo
+
