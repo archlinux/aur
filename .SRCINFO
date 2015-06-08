@@ -1,0 +1,19 @@
+pkgbase = haskell-homeomorphic
+	pkgdesc = Homeomorphic Embedding Test
+	pkgver = 0.1
+	pkgrel = 4
+	url = http://hackage.haskell.org/package/homeomorphic
+	install = haskell-homeomorphic.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = haskell-quickcheck=2.1.1.1
+	depends = haskell-containers=0.3.0.0
+	depends = haskell-mtl
+	options = strip
+	source = http://hackage.haskell.org/packages/archive/homeomorphic/0.1/homeomorphic-0.1.tar.gz
+	md5sums = d35c26b05dba10f80bd869a07a40daf0
+
+pkgname = haskell-homeomorphic
+
