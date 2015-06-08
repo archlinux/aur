@@ -1,0 +1,28 @@
+pkgbase = sdlmame-wout-toolkits
+	pkgdesc = A port of the popular Multiple Arcade Machine Emulator using SDL with OpenGL support. Without Qt toolkit
+	pkgver = 0.162
+	pkgrel = 2
+	url = http://mamedev.org/
+	install = sdlmame-wout-toolkits.install
+	arch = i686
+	arch = x86_64
+	license = custom:MAME License
+	makedepends = nasm
+	makedepends = mesa
+	makedepends = glu
+	makedepends = wget
+	makedepends = python2
+	depends = sdl2_ttf
+	depends = alsa-lib
+	conflicts = sdlmame
+	conflicts = sdlmamefamily-tools
+	noextract = extras.tar.gz
+	source = https://github.com/mamedev/mame/archive/mame0162.tar.gz
+	source = sdlmame.sh
+	source = extras.tar.gz
+	sha1sums = 1d44bddea9cd4bb1d683f0ea1788a02e2f18e185
+	sha1sums = 1ed8016f41edecfca746fadcfb40eab78845a3d6
+	sha1sums = 75732974431844670aa3904d8f9ce3f5c5504827
+
+pkgname = sdlmame-wout-toolkits
+
