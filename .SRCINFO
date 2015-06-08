@@ -1,0 +1,15 @@
+pkgbase = geoip-asndata
+	pkgdesc = ASN database for geoip IP location lookups
+	pkgver = 20140703
+	pkgrel = 2
+	url = http://www.maxmind.com/
+	arch = any
+	license = CCPL
+	depends = geoip
+	source = http://download.maxmind.com/download/geoip/database/asnum/GeoIPASNum.dat.gz
+	source = http://download.maxmind.com/download/geoip/database/asnum/GeoIPASNumv6.dat.gz
+	sha1sums = SKIP
+	sha1sums = SKIP
+
+pkgname = geoip-asndata
+
