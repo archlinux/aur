@@ -1,0 +1,16 @@
+pkgbase = ktsuss
+	pkgdesc = Graphical version of su written in C and GTK+
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/nomius/ktsuss
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = gtk2
+	provides = ktsuss
+	conflicts = ktsuss-git
+	source = https://github.com/nomius/ktsuss/releases/download/2.1/ktsuss-2.1.tar.gz
+	md5sums = 47f3fa8a3a25862949ece6f5ba098577
+
+pkgname = ktsuss
+
