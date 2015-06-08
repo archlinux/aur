@@ -1,0 +1,23 @@
+pkgbase = arm-frc-linux-gnueabi-gdb
+	pkgdesc = The GNU Debugger (arm-frc-linux-gnueabi)
+	pkgver = 7.8
+	pkgrel = 1
+	url = http://www.gnu.org/software/gdb/
+	arch = i686
+	arch = x86_64
+	groups = frc-2015
+	license = GPL3
+	makedepends = texinfo
+	depends = xz
+	depends = ncurses
+	depends = expat
+	depends = python2
+	depends = guile
+	optdepends = openocd: for debugging JTAG targets
+	optdepends = stlink: for debugging over STLINK
+	options = !emptydirs
+	source = ftp://ftp.gnu.org/gnu/gdb/gdb-7.8.tar.xz
+	sha256sums = 49c4abe174f79f54e1f9e75210ffb590d9b497d5b5200b5398c0e073a4ecb875
+
+pkgname = arm-frc-linux-gnueabi-gdb
+
