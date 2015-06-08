@@ -1,0 +1,19 @@
+pkgbase = vdr-cinebars
+	pkgdesc = Overlays cinema-bars over the live picture
+	pkgver = 0.1.0
+	pkgrel = 13
+	url = http://www.egal-vdr.de/plugins/
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	depends = gcc-libs
+	depends = vdr-api=2.2.0
+	backup = etc/vdr/conf.avail/50-cinebars.conf
+	source = http://egal-vdr.de/plugins/vdr-cinebars-0.1.0.tgz
+	md5sums = 8e56e46cfdce941f0951c7573dd15a0a
+
+pkgname = vdr-cinebars
+
