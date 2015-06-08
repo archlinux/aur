@@ -1,0 +1,17 @@
+pkgbase = emacs-ess
+	pkgdesc = Emacs Speaks Statistics: A Universal Interface for Statistical Analysis
+	pkgver = 15.03.1
+	pkgrel = 1
+	url = http://ess.r-project.org/
+	install = ess.install
+	arch = any
+	license = GPL
+	depends = emacs
+	depends = r
+	provides = ess
+	replaces = ess
+	source = http://ess.r-project.org/downloads/ess/ess-15.03-1.tgz
+	md5sums = 36ddd32daa346a36660cce176e36e617
+
+pkgname = emacs-ess
+
