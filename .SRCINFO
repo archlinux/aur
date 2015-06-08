@@ -1,0 +1,25 @@
+pkgbase = tuxpaint-cvs
+	pkgdesc = Tux Paint is a free drawing program designed for young children.
+	pkgver = 20101127
+	pkgrel = 2
+	url = http://www.newbreedsoftware.com/tuxpaint/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cvs
+	makedepends = gperf
+	depends = sdl_ttf
+	depends = sdl_mixer
+	depends = sdl_image
+	depends = sdl_pango
+	depends = libpaper
+	depends = librsvg
+	depends = python2
+	depends = fribidi
+	depends = fontforge
+	provides = tuxpaint
+	conflicts = tuxpaint
+	options = !makeflags
+
+pkgname = tuxpaint-cvs
+
