@@ -1,0 +1,18 @@
+pkgbase = behafucha
+	pkgdesc = Convert English/Hebrew text to Hebrew/English text
+	pkgver = 0.7
+	pkgrel = 6
+	url = https://github.com/ilsh1964/behafucha/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = bc
+	depends = zenity
+	depends = pygtk
+	depends = xsel
+	depends = xvkbd
+	source = https://github.com/ilsh1964/behafucha/archive/v0.7.tar.gz
+	sha256sums = 75d3598b0dc64ec17ddd8c6216e0c33c3922cef2f07259a0c95db026556ae20f
+
+pkgname = behafucha
+
