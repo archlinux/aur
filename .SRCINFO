@@ -1,0 +1,19 @@
+pkgbase = psp-libmikmod
+	pkgdesc = A portable sound library (psp)
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = http://mikmod.shlomifish.org/
+	arch = any
+	license = GPL, LGPL
+	makedepends = psp-gcc
+	depends = psp-sdk
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = http://sourceforge.net/projects/mikmod/files/libmikmod-3.2.0.tar.gz
+	source = libmikmod-3.2.0-PSP.patch
+	md5sums = 96e9820d72a41fe27ff304071739696c
+	md5sums = ea462ae2c54448718648986150287476
+
+pkgname = psp-libmikmod
+
