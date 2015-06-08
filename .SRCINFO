@@ -1,0 +1,16 @@
+pkgbase = hunspell-sr
+	pkgdesc = Serbian Cyrillic and Latin hunspell dictionaries
+	pkgver = 20140313
+	pkgrel = 1
+	url = https://github.com/grakic/hunspell-sr
+	arch = any
+	license = GPL
+	license = LGPL
+	license = MPL
+	license = CC BY-SA 3.0 Unported
+	optdepends = hunspell: the spell checking libraries and apps
+	source = hunspell-sr-20140313.tar.gz::https://github.com/grakic/hunspell-sr/archive/e1ff02b45c8e133a617a1c98cae146299bc0d4de.tar.gz
+	sha1sums = aa2f25f4f1dfcbc9d50d32fe63d07062eaa7054c
+
+pkgname = hunspell-sr
+
