@@ -1,0 +1,5 @@
+pgintcl is installed as a Tcl package.
+
+To use it in a Tcl script, first issue the Tcl command
+
+package require pgintcl
