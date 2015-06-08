@@ -1,0 +1,15 @@
+post_install() {
+	gtk-update-icon-cache -qtf /usr/share/icons/Mint-X
+	for color in Aqua Blue Brown Dark Grey Orange Pink Purple Red Sand Teal Yellow; do
+		gtk-update-icon-cache -qtf /usr/share/icons/Mint-X-${color}
+	done
+	gdk-pixbuf-query-loaders --update-cache
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	post_install
+}
