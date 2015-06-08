@@ -2,7 +2,7 @@
 
 _pkgname=hostmaster
 pkgname=aegir-$_pkgname
-pkgver=7.x_3.0_beta1
+pkgver=7.x_3.0_beta2
 pkgrel=1
 pkgdesc="mass Drupal hosting system - frontend"
 arch=('any')
@@ -46,10 +46,10 @@ build() {
 }
 
 package() {
-    install -dm755 "$pkgdir/var/lib/aegir"
-    cp -r $_pkgname "$pkgdir/var/lib/aegir"
+    install -dm755 "$pkgdir/usr/share/webapps"
+    cp -r $_pkgname "$pkgdir/usr/share/webapps"
 
-    install -Dm644 <( ) "$pkgdir/var/lib/aegir/$_pkgname/sites/all/drush/drushrc.php"
-    install -Dm644 <( ) "$pkgdir/var/lib/aegir/$_pkgname/sites/sites.php"
-    chown -R http:http "$pkgdir/var/lib/aegir"
+    install -Dm644 <( ) "$pkgdir/usr/share/webapps/$_pkgname/sites/all/drush/drushrc.php"
+    install -Dm644 <( ) "$pkgdir/usr/share/webapps/$_pkgname/sites/sites.php"
+    chown -R 696:http "$pkgdir/usr/share/webapps"
 }
