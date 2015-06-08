@@ -1,0 +1,8 @@
+[Unit]
+Description=Data processing client for theSkyNet
+After=network.target
+
+[Service]
+User=nereus
+ExecStart=/opt/nereus/bin/nereus_service.sh console
+ExecStop=/opt/nereus/bin/nereus_service.sh stop

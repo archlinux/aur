@@ -1,0 +1,22 @@
+post_install() {
+  getent passwd nereus &>/dev/null || {
+    echo -n ">>> Creating nereus user... "
+    useradd --system --user-group --home /opt/nereus nereus
+    echo "done"
+  }
+  chown -R nereus:nereus /opt/nereus
+
+  echo 'You can start nereus.service to contribute.'
+}
+
+post_upgrade() {
+  chown -R nereus:nereus /opt/nereus
+}
+
+pre_remove() {
+  getent passwd nereus &>/dev/null && {
+    echo -n ">>> Removing nereus user... "
+    userdel nereus
+    echo "done"
+  }
+}
