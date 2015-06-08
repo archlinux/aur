@@ -1,0 +1,28 @@
+pkgbase = haskell-hlint
+	pkgdesc = Source code suggestions
+	pkgver = 1.9.16
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/hlint
+	install = haskell-hlint.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ghc
+	depends = haskell-cmdargs>=0.10
+	depends = haskell-containers
+	depends = haskell-cpphs>=1.18.1
+	depends = haskell-directory
+	depends = haskell-filepath
+	depends = haskell-haskell-src-exts>=1.14
+	depends = haskell-ansi-terminal>=0.6.2
+	depends = haskell-hscolour>=1.17
+	depends = haskell-process
+	depends = haskell-transformers
+	depends = haskell-uniplate>=1.5
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/hlint/1.9.16/hlint-1.9.16.tar.gz
+	md5sums = 6bd6ab2121353334265ebea8a9aaa444
+
+pkgname = haskell-hlint
+
