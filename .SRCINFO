@@ -1,0 +1,18 @@
+pkgbase = dmenuv-git
+	pkgdesc = suckless dmenu with gravity patchset
+	pkgver = 4.5.r16
+	pkgrel = 2
+	url = https://github.com/2ion/dmenu-v
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libxinerama
+	depends = bash
+	provides = dmenuv
+	conflicts = dmenuv
+	source = dmenuv::git+https://github.com/2ion/dmenu-v.git#branch=master
+	md5sums = SKIP
+
+pkgname = dmenuv-git
+
