@@ -1,0 +1,22 @@
+pkgbase = avadon-hb
+	pkgdesc = Avadon: The Black Fortress (Humble Bundle copy required)
+	pkgver = 1331768904
+	pkgrel = 1
+	url = http://www.spidweb.com/avadon/
+	arch = i686
+	arch = x86_64
+	groups = humblebundleandroid2
+	license = custom:commercial
+	makedepends = unzip
+	depends = sdl
+	depends = openal
+	options = !strip
+	source = avadon-linux-1331768904-bin::file://avadon-linux-1331768904-bin
+	source = avadon.desktop
+	md5sums = dba7e32cdd8b70f26c4b51f63f858302
+	md5sums = 917689e613917d3e99d93729fab0b7ad
+	sha1sums = c12d6967c7fbc355cc6499c86df86355ea5eec0b
+	sha1sums = 9154a1f90784a9b45e766206fd45b889aca93982
+
+pkgname = avadon-hb
+

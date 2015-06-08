@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Avadon
+Exec=/usr/bin/avadon
+Icon=/opt/avadon/Avadon.png
+Type=Application
+Categories=Game;
