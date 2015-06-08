@@ -1,0 +1,22 @@
+pkgbase = libghemical-mpqc
+	pkgdesc = Library containing computational chemistry facility of ghemical. Version with enabled mpqc and mopac7
+	pkgver = 3.0.0
+	pkgrel = 2
+	url = http://bioinformatics.org/ghemical/libghemical/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool>=0.40.0
+	makedepends = openbabel
+	depends = gcc-libs
+	depends = mopac7
+	depends = mpqc-shared
+	provides = libghemical
+	conflicts = libghemical
+	options = libtool
+	options = staticlibs
+	source = http://bioinformatics.org/ghemical/download/release20111012/libghemical-3.0.0.tar.gz
+	md5sums = 1d5c9c19bb119470d2bb41a7e681eafd
+
+pkgname = libghemical-mpqc
+
