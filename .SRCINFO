@@ -1,0 +1,24 @@
+pkgbase = light-locker-git
+	pkgdesc = A simple session locker
+	pkgver = 1.4.0.r5.f45fdd4
+	pkgrel = 1
+	url = https://github.com/the-cavalry/light-locker
+	install = light-locker.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = gnome-common
+	makedepends = intltool
+	depends = dbus-glib
+	depends = gtk3
+	depends = libxss
+	depends = libxxf86misc
+	depends = lightdm
+	provides = light-locker
+	conflicts = light-locker
+	source = git+https://github.com/the-cavalry/light-locker.git
+	sha256sums = SKIP
+
+pkgname = light-locker-git
+
