@@ -1,0 +1,15 @@
+pkgbase = specl
+	pkgdesc = testing tool for Lua, providing a Behaviour Driven Development framework in the vein of RSpec
+	pkgver = 12
+	pkgrel = 1
+	url = http://gvvaughan.github.io/specl/
+	arch = any
+	license = GPL
+	depends = bash
+	depends = lua
+	depends = lua-yaml-git
+	source = https://github.com/gvvaughan/specl/archive/release-v12.tar.gz
+	md5sums = 80c9b9c32d36477bb0df892937b83990
+
+pkgname = specl
+
