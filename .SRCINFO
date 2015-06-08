@@ -1,0 +1,23 @@
+pkgbase = solid-git
+	pkgdesc = Solid
+	pkgver = r196.25657e3
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/solid
+	arch = i686
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	makedepends = qt5-tools
+	depends = qt5-declarative
+	depends = media-player-info
+	depends = udisks2
+	depends = upower
+	provides = solid
+	conflicts = solid
+	source = git://anongit.kde.org/solid.git
+	md5sums = SKIP
+
+pkgname = solid-git
+
