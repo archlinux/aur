@@ -1,0 +1,19 @@
+pkgbase = keytouch-editor
+	pkgdesc = An utility to create keyboard files for keytouch
+	pkgver = 3.2.0_beta
+	pkgrel = 2
+	url = http://keytouch.sourceforge.net/
+	install = keytouch-editor.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	source = http://prdownloads.sourceforge.net/keytouch/keytouch-editor-3.2.0-beta.tar.gz
+	source = sockets.diff
+	md5sums = 4f0578107d92f203785c48f7c9fa0b15
+	md5sums = 2211fcc8d42436436600a37e7d0a514c
+	sha1sums = 8d5fe9c905e6747a55ac41631172d6d57125e0ae
+	sha1sums = 160cb740e4022daf09d576078865e0c482dd17ed
+
+pkgname = keytouch-editor
+

@@ -1,0 +1,56 @@
+diff -Naur keytouch-editor-3.2.0-beta.orig/src/ud_socket.c keytouch-editor-3.2.0-beta.new/src/ud_socket.c
+--- keytouch-editor-3.2.0-beta.orig/src/ud_socket.c	2007-06-24 19:50:50.000000000 +0200
++++ keytouch-editor-3.2.0-beta.new/src/ud_socket.c	2013-12-10 20:58:25.237750917 +0100
+@@ -17,8 +17,7 @@
+ /*#include "acpid.h"*/
+ #include "ud_socket.h"
+ 
+-int
+-ud_create_socket(const char *name)
++int ud_create_socket(const char *name)
+ {
+ 	int fd;
+ 	int r;
+@@ -52,8 +51,7 @@
+ 	return fd;
+ }
+ 
+-int
+-ud_accept(int listenfd, struct ucred *cred)
++int ud_accept(int listenfd, struct ucred *cred)
+ {
+ 	while (1) {
+ 		int newsock = 0;
+@@ -78,8 +76,7 @@
+ 	}
+ }
+ 
+-int
+-ud_connect(const char *name)
++int ud_connect(const char *name)
+ {
+ 	int fd;
+ 	int r;
+@@ -102,4 +99,3 @@
+ 
+ 	return fd;
+ }
+-
+diff -Naur keytouch-editor-3.2.0-beta.orig/src/ud_socket.h keytouch-editor-3.2.0-beta.new/src/ud_socket.h
+--- keytouch-editor-3.2.0-beta.orig/src/ud_socket.h	2003-11-17 22:24:58.000000000 +0100
++++ keytouch-editor-3.2.0-beta.new/src/ud_socket.h	2013-12-10 21:14:25.282277748 +0100
+@@ -7,9 +7,13 @@
+ 
+ #include <sys/socket.h>
+ #include <sys/un.h>
++struct ucred {
++  int pid;
++  int uid;
++  int gid;
++};
+ 
+ int ud_create_socket(const char *name);
+-int ud_accept(int sock, struct ucred *cred);
+ int ud_connect(const char *name);
+ 
+ #endif
