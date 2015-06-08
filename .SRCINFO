@@ -1,0 +1,18 @@
+pkgbase = psp-libtremor
+	pkgdesc = Integer-only, fully Ogg Vorbis compliant software decoder library (psp)
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://www.xiph.org/vorbis/
+	arch = any
+	groups = psp
+	license = BSD
+	makedepends = psp-gcc
+	depends = psp-sdk
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = git+https://github.com/pspdev/psp-ports.git
+	md5sums = SKIP
+
+pkgname = psp-libtremor
+
