@@ -1,0 +1,57 @@
+pkgbase = linux-uksm
+	pkgver = 4.0.5
+	pkgrel = 1
+	url = http://kerneldedup.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	options = !strip
+	source = http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.sign
+	source = http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.5.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.5.sign
+	source = uksm-0.1.2.4-beta-for-linux-v4.0.patch
+	source = https://pf.natalenko.name/mirrors/bfq/4.0.0-v7r7//0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r7-4.0.patch
+	source = https://pf.natalenko.name/mirrors/bfq/4.0.0-v7r7//0002-block-introduce-the-BFQ-v7r7-I-O-sched-for-4.0.patch
+	source = https://pf.natalenko.name/mirrors/bfq/4.0.0-v7r7//0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r7-for-4.0.0.patch
+	source = http://repo-ck.com/source/gcc_patch/enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch.gz
+	source = linux-uksm.preset
+	source = change-default-console-loglevel.patch
+	source = config
+	source = config.x86_64
+	sha512sums = ce13d2c1c17908fd9a4aa42bb6348a0cb13dd22e560bd54c61b8bfdf62726d6095f130c59177a2fe4793b7dc399481bf10d3556d1d571616000f180304e5a995
+	sha512sums = SKIP
+	sha512sums = 377371371752eb706053282ee296f82b3af0c3cf84c346091b1e347c8d00fcf6787c5b51c76955af3f61e9c20c30035b110368ee3ba2587871f0dbc92826de32
+	sha512sums = SKIP
+	sha512sums = ce46c47a1685f5014f4ada55b9ee6292255a383f83c04ac84ae922d16fef0687ebf09e7a6b211f23c6d1156312ef812c950805979893792f3e19b6c643d2fb81
+	sha512sums = f81297a1547ab96b8394123fc7aa2c7b21f1a44ad3a535f5e715bf593fba9c79bb16fc091498936e8b4e4bdf041f75c340002b9763f0b35f1207912d703ba566
+	sha512sums = dafeaaea16168d445bdc1dcd1a97958b55f8dc79c61021e02c3fbf1ae7d4eae5aed2f565d6f2bf56c652803508d62f6f40765b3b831277d817bbe0a40aa5202d
+	sha512sums = c4f5a82ca4c87d21768351e17fcefb61d238394baf4475934d3c384e9990d86af14631234a8dffc363d95abc34438edfe06f8a7e9c36a320062bf3270a2466e8
+	sha512sums = 76bf6a9f22b023ab8f780884f595dac1801d150ecd94f88da229c5c9ea98d2c3ef8add01ff7e18e4cbbfa5e6e9c022c4042ee62c779a8485203c1b0e082b8ccc
+	sha512sums = 274c592f48eba59dc1423ecd926859eb87fbb6ad3431415ed79bcfbaeae59a71d09669edfc4d217ec9ff39da42af21c8a55ceb4d6463c288d3c5f470b19184e8
+	sha512sums = d9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8
+	sha512sums = c48370c02c26f05ef09f89b539f07f49a712524c07465601cdfcf4b12bbfaee2f86c350fa24badf661d62fe6cf2dcf1d4d51093642ac29664eb3204ad4c0048d
+	sha512sums = a3683a42b0480140be2c85645fefb5db097ee7e7d76c2e45a28d3090a0680a80fca416f0df67dd32f8d88c7f1fcb114bd93364f720f6b281fd2458df99151a6a
+
+pkgname = linux-uksm
+	pkgdesc = Linux Kernel and modules with the UKSM patchset featuring the v1.2.4 and BFQ scheduler.
+	install = linux-uksm.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = nvidia-uksm: nVidia drivers for linux-uksm
+	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
+	backup = etc/mkinitcpio.d/linux-uksm.preset
+
+pkgname = linux-uksm-headers
+	pkgdesc = Header files and scripts to build modules for linux-uksm.
+	depends = linux-uksm
+
+pkgname = linux-uksm-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the linux-uksm kernel
+	depends = linux-uksm
+
