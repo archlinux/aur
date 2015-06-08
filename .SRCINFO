@@ -1,0 +1,18 @@
+pkgbase = 2048.c-git
+	pkgdesc = Console version of the game "2048" for GNU/Linux
+	pkgver = 20150412.c9bba68
+	pkgrel = 1
+	url = https://github.com/mevdschee/2048.c
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	license = custom:MIT
+	makedepends = git
+	provides = 2048.c
+	conflicts = 2048.c
+	source = 2048.c::git+https://github.com/mevdschee/2048.c.git
+	sha1sums = SKIP
+
+pkgname = 2048.c-git
+
