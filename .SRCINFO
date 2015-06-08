@@ -1,0 +1,20 @@
+pkgbase = python-django-bootstrap3
+	pkgdesc = Bootstrap 3 integration with Django
+	pkgver = 5.4.0
+	pkgrel = 1
+	url = http://github.com/dyve/django-bootstrap3
+	arch = any
+	license = Apache
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/d/django-bootstrap3/django-bootstrap3-5.4.0.tar.gz
+	md5sums = 3ba4c627a9db504606a723f911c5dd8b
+
+pkgname = python-django-bootstrap3
+	depends = python-django
+
+pkgname = python2-django-bootstrap3
+	depends = python2-django
+
