@@ -1,0 +1,15 @@
+pkgbase = pidgin-emoticons-penguins
+	pkgdesc = Pidgin port of Kadu penguins smileys
+	pkgver = 1.8
+	pkgrel = 1
+	url = http://www.kde-look.org/content/show.php/Kadu+Penguins?content=66357
+	arch = any
+	license = GPL
+	depends = pidgin
+	source = penguins-1.8.tar.gz::http://kde-look.org/CONTENT/content-files/66357-Kadu%20Penguins-1.8.tar.gz
+	source = theme
+	md5sums = e39dde3d74336ed6dd0e9076b90cca2c
+	md5sums = fb5fec40acb9287bf442bb8ef3d54a1a
+
+pkgname = pidgin-emoticons-penguins
+
