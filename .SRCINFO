@@ -1,0 +1,17 @@
+pkgbase = pwman
+	pkgdesc = A text-based application for securely storing and managing passwords
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = http://pwman.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = glib2
+	depends = libxml2
+	depends = ncurses
+	depends = gnupg
+	source = http://downloads.sourceforge.net/pwman/pwman-0.4.4.tar.gz
+	md5sums = 29ddc5028391e224995151b4f959c51a
+
+pkgname = pwman
+
