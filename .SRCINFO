@@ -1,0 +1,28 @@
+pkgbase = dolphin-git
+	pkgdesc = File Manager
+	pkgver = r4888.8b12612
+	pkgrel = 1
+	url = http://kde.org/applications/system/dolphin/
+	install = dolphin-git.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = kdoctools
+	makedepends = python
+	depends = baloo-widgets-git
+	depends = knewstuff
+	depends = kio-extras
+	depends = ktexteditor
+	depends = kactivities-frameworks
+	provides = dolphin
+	conflicts = dolphin
+	conflicts = kdebase-dolphin
+	conflicts = dolphin-frameworks-git
+	replaces = dolphin-frameworks-git
+	source = git://anongit.kde.org/dolphin.git
+	md5sums = SKIP
+
+pkgname = dolphin-git
+
