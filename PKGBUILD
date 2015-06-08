@@ -1,0 +1,38 @@
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: max_meyer 
+# Contributor: popsch
+# Based on original tikzit-aur-package made by pippin
+
+pkgname=tikzit-git
+pkgver=1.0.41.g716720e
+pkgrel=1
+pkgdesc="Creation and modification of TeX diagrams written using the pgf/TikZ macro library"
+arch=('i686' 'x86_64')
+url="http://sourceforge.net/projects/tikzit/"
+license=('GPL')
+depends=('gtk2>=2.18.0' 'poppler-glib' 'hicolor-icon-theme' 'gnustep-base' 'desktop-file-utils')
+makedepends=('git' 'gcc-objc')
+provides=('tikzit')
+conflicts=('tikzit')
+install=tikzit.install
+source=('tikzit::git+http://git.code.sf.net/p/tikzit/code')
+md5sums=('SKIP')
+_gitname="tikzit"
+options=('!makeflags')
+
+pkgver() {
+  cd "$srcdir"/$_gitname
+  git describe --tags | tr -d 'v'|sed s#-#.#g
+}
+ 
+build() {
+  cd "$srcdir"/$_gitname/$_gitname
+  ./autogen.sh
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+  make
+}
+
+package() {
+  cd "$srcdir"/$_gitname/$_gitname
+  make DESTDIR="$pkgdir" install
+}
