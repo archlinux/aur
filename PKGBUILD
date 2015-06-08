@@ -1,7 +1,8 @@
 # Maintainer: Bidossessi Sodonon
 
 pkgname=odoo
-pkgver=8.0_20150608
+pkgver=8.0
+_pkgsubver=20150608
 pkgrel=1
 pkgdesc="Web-based Open Source Business Apps"
 url=http://odoo.com/
@@ -63,7 +64,7 @@ optdepends=(
 )
 
 source=(
-  "http://nightly.odoo.com/8.0/nightly/src/${pkgname}_${pkgver//_/.}.tar.gz"
+  "http://nightly.odoo.com/8.0/nightly/src/${pkgname}_${pkgver}.${_pkgsubver}.tar.gz"
   odoo.confd
   odoo.service
   odoo.conf
@@ -73,7 +74,7 @@ install=odoo.install
 
 package()
 {
-  cd ${srcdir}/${pkgname}-${pkgver//_/-}
+  cd ${srcdir}/${pkgname}-${pkgver}-${_pkgsubver}
   # Force package data inclusion
   sed -i -e s/#include_package_data/include_package_data/ setup.py
   python2 setup.py install --root="${pkgdir}"

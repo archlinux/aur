@@ -1,6 +1,6 @@
 pkgbase = odoo
 	pkgdesc = Web-based Open Source Business Apps
-	pkgver = 8.0_20150608
+	pkgver = 8.0
 	pkgrel = 1
 	url = http://odoo.com/
 	install = odoo.install
