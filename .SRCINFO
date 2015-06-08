@@ -1,0 +1,15 @@
+pkgbase = python-deap-git
+	pkgdesc = Distributed Evolutionary Algorithms in Python (GIT-version)
+	pkgver = 1.0.1.r1801.dd7bf38
+	pkgrel = 1
+	url = https://github.com/DEAP/deap
+	arch = any
+	license = LGPL
+	makedepends = git
+	depends = python
+	conflicts = python-deap
+	source = python-deap-git::git+https://github.com/DEAP/deap.git
+	md5sums = SKIP
+
+pkgname = python-deap-git
+
