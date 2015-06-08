@@ -1,0 +1,14 @@
+pkgbase = conky-dea
+	pkgdesc = A conky-lua theme for 4 core CPU's
+	pkgver = 1.2
+	pkgrel = 2
+	url = http://deasproject.altervista.org/blog/il-mio-tema-conky-approda-aur/
+	arch = any
+	license = GPL
+	depends = conky-lua
+	depends = lm_sensors
+	source = conky-dea-1.2.tar.gz::http://sourceforge.net/projects/conky-lua/files/conky-dea-1.2.tar.gz/download
+	md5sums = 3e3d54eddbdb2e89f11bf28d1e236b62
+
+pkgname = conky-dea
+
