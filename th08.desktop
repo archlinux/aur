@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=0.11
+Type=Application
+Name=Touhou: Imperishable Night
+Comment=8th game of the Touhou Project
+Exec=/usr/bin/th08
+Encoding=UTF-8
+Icon=/usr/share/pixmaps/th08.png
+Categories=Game;
+Terminal=false
+StartupNotify=false
