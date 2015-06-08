@@ -1,0 +1,8 @@
+post_remove() {
+  echo -e "\n >>> All files created after installation are in the /opt/opensimulator."
+  echo -e " >>> If you want, you may delete them manually."
+}
+
+post_install() {
+  echo -e "\n >>> The example OpenSim configuration is set up on initial install, modified to use a quick start standalone architecture."
+}

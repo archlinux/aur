@@ -1,0 +1,15 @@
+[Unit]
+Description=Opensimulator-Robust
+After=local-fs.target network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/opensimulator-robust
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=always
+User=%I
+
+[Install]
+WantedBy=multi-user.target
+
