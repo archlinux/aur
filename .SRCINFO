@@ -1,0 +1,15 @@
+pkgbase = eclipse-jubula
+	pkgdesc = A Functional Testing Feature for Eclipse
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = http://eclipse.org/jubula/
+	arch = any
+	license = EPL
+	depends = eclipse>=4.3.0,
+	depends = eclipse-mylyn
+	options = !strip
+	source = https://hudson.eclipse.org/hudson/job/jubula-luna/lastSuccessfulBuild/artifact/jubula/org.eclipse.jubula.site/target/org.eclipse.jubula.site-2.3.0-SNAPSHOT.zip
+	sha256sums = b60d416e4727f73ee5cb06ef19b5647d09957faf0b12ebfe73459a3c20eac61a
+
+pkgname = eclipse-jubula
+
