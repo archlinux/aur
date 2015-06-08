@@ -1,0 +1,21 @@
+pkgbase = schismtracker-hg
+	pkgdesc = A reimplementation of the Impulse Tracker music editor.
+	pkgver = 2915
+	pkgrel = 1
+	url = http://schismtracker.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = mercurial
+	depends = sdl
+	depends = gcc-libs
+	depends = libxv
+	provides = schismtracker
+	provides = schismtracker-cvs
+	conflicts = schismtracker
+	conflicts = schismtracker-cvs
+	source = hg+http://schismtracker.org/hg/
+	md5sums = SKIP
+
+pkgname = schismtracker-hg
+
