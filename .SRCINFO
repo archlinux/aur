@@ -1,0 +1,14 @@
+pkgbase = ksplash-reality
+	pkgdesc = Animated splash screen inspiration openSUSE. Welcome.
+	pkgver = 13.2
+	pkgrel = 1
+	url = http://kde-look.org/content/show.php?content=169312
+	arch = any
+	license = GPL
+	license = CCPL:by-sa
+	depends = kdebase-workspace
+	source = ksplash-reality-13.2.tar.gz::http://opendesktop.org/CONTENT/content-files/169312-Reality_1.tar.gz
+	sha256sums = 3800a0a612fc8747bc0abba2a43995cf629ba45104a8c6efcfa9248a22e077a8
+
+pkgname = ksplash-reality
+
