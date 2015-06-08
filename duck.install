@@ -1,0 +1,25 @@
+# Colored makepkg-like functions
+msg_blue() {
+  printf "${blue}==>${bold} $1${all_off}\n"
+}
+
+_update() {
+  msg_blue "Updating desktop MIME database..."
+  update-desktop-database -q
+}
+
+post_install() {
+  ln -sf /opt/duck/duck /usr/local/bin/duck
+  desktop-file-install /opt/duck/duck.desktop
+  _update
+}
+
+post_upgrade() {
+  _update
+}
+
+post_remove() {
+  rm -f /usr/local/bin/duck
+  rm -f /usr/share/applications/duck.desktop
+  _update
+}
