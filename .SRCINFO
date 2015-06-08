@@ -1,0 +1,20 @@
+pkgbase = vdr-eepg
+	pkgdesc = Extended EPG (EEPG) plugin for VDR
+	pkgver = 0.0.5_187_gd7dc614
+	pkgrel = 2
+	url = http://projects.vdr-developer.org/projects/plg-eepg
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	makedepends = git
+	depends = gcc-libs
+	depends = vdr-api=2.2.0
+	backup = etc/vdr/conf.avail/50-eepg.conf
+	source = git://projects.vdr-developer.org/vdr-plugin-eepg.git#commit=d7dc6141c91b48c410e9cc5734ca9a2adecc278e
+	md5sums = SKIP
+
+pkgname = vdr-eepg
+
