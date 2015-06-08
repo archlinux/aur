@@ -1,0 +1,19 @@
+pkgbase = jsword
+	pkgdesc = Frontend for the jsword-engine, a sword-like bible study software written in Java.
+	pkgver = 1.6
+	pkgrel = 3
+	url = http://crosswire.org/jsword
+	arch = any
+	license = GPL
+	depends = java-commons-logging
+	depends = java-jdom1
+	provides = bibledesktop
+	conflicts = bibledesktop
+	replaces = bibledesktop
+	source = http://crosswire.org/ftpmirror/pub/jsword/release/jsword-1.6-bin.tar.gz
+	source = jsword
+	md5sums = 5e9bfa0a7d96324bee600df486932518
+	md5sums = 26a0d1b139d4a35dabfc3a93aab9887d
+
+pkgname = jsword
+
