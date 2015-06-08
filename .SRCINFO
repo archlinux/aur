@@ -1,0 +1,12 @@
+pkgbase = xcursor-jaguarx
+	pkgdesc = animated OSX-style mouse cursors
+	pkgver = 1.1
+	pkgrel = 2
+	url = http://gnome-look.org/content/show.php/jaguarx?content=14775
+	arch = any
+	license = PerlArtistic
+	source = http://gnome-look.org/CONTENT/content-files/14775-jaguarx.tar.bz2
+	md5sums = bda85cac7a92327086249f3fbc8be08d
+
+pkgname = xcursor-jaguarx
+
