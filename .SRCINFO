@@ -1,0 +1,15 @@
+pkgbase = eclipse-dltk-ruby
+	pkgdesc = Support for Ruby in Eclipse (Stable Stream)
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = http://www.eclipse.org/dltk/
+	arch = i686
+	arch = x86_64
+	license = EPL
+	depends = eclipse-dltk-core
+	optdepends = ruby
+	source = http://www.eclipse.org/downloads/download.php?r=1&file=/technology/dltk/downloads/drops/R5.0/R-5.0-201306060709/dltk-ruby-I-201306060709.zip
+	md5sums = d5017113a49a0cd2b7504f23b1d27458
+
+pkgname = eclipse-dltk-ruby
+
