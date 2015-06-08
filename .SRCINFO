@@ -1,0 +1,15 @@
+pkgbase = pixelize
+	pkgdesc = Build a large picture from hundreds of smaller ones
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = http://lashwhip.com/pixelize.html
+	install = pixelize.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = gtk2
+	source = http://lashwhip.com/pixelize/pixelize-1.0.0.tar.gz
+	md5sums = b3832915803da637bd619b66974b0031
+
+pkgname = pixelize
+

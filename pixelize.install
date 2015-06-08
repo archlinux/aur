@@ -1,0 +1,8 @@
+post_install() {
+    echo ":: For instructions, check the 'Help' menu in pixelize"
+}
+
+post_upgrade() {
+    post_install $1
+}
+
