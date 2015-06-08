@@ -1,0 +1,22 @@
+pkgbase = linuxdcpp-bzr
+	pkgdesc = latest bzr trunk
+	pkgver = 401
+	pkgrel = 1
+	url = https://launchpad.net/linuxdcpp
+	install = linuxdcpp-bzr.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = bzr
+	makedepends = scons
+	makedepends = pkgconfig
+	makedepends = boost
+	depends = bzip2
+	depends = gcc-libs
+	depends = libglade
+	depends = hicolor-icon-theme
+	conflicts = linuxdcpp
+	conflicts = linuxdcpp-cvs
+
+pkgname = linuxdcpp-bzr
+
