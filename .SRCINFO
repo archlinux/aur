@@ -1,0 +1,15 @@
+pkgbase = vim-jquery
+	pkgdesc = Syntax file for jQuery
+	pkgver = 0.5.2
+	pkgrel = 2
+	url = http://www.vim.org/scripts/script.php?script_id=2416
+	install = vim-jquery.install
+	arch = any
+	groups = vim-plugins
+	license = unknown
+	depends = vim
+	source = jquery.vim::http://www.vim.org/scripts/download_script.php?src_id=15752
+	md5sums = 61056989ccd7cd0aa207a24681c52fa5
+
+pkgname = vim-jquery
+

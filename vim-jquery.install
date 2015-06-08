@@ -1,0 +1,4 @@
+post_install() {
+	echo 'Add the following line to your vimrc:'
+	echo 'au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery'
+}
