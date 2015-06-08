@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-vaguedenoiser-git
+	pkgdesc = Plugin for Vapoursynth: vaguedenoiser (GIT version)
+	pkgver = r1.4.gce7f18d
+	pkgrel = 1
+	url = http://forum.doom9.org/showthread.php?t=171723
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = vapoursynth
+	provides = vapoursynth-plugin-vaguedenoiser
+	conflicts = vapoursynth-plugin-vaguedenoiser
+	source = vaguedenoiser::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-VagueDenoiser.git
+	sha1sums = SKIP
+
+pkgname = vapoursynth-plugin-vaguedenoiser-git
+
