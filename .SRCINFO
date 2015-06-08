@@ -1,0 +1,22 @@
+pkgbase = shiny-server-git
+	pkgdesc = Open-source version of the shiny web development framework server
+	pkgver = 20150608
+	pkgrel = 1
+	url = http://www.rstudio.com/shiny/server/install-opensource
+	install = accounts.install
+	arch = i686
+	arch = x86_64
+	license = AGPL
+	makedepends = git
+	makedepends = python2
+	makedepends = cmake
+	makedepends = r
+	depends = r
+	backup = shiny-server.conf
+	source = shiny-server::git+https://github.com/rstudio/shiny-server.git
+	source = shiny-server.service
+	md5sums = SKIP
+	md5sums = 78811ea3ebc75bf875e13e202e4587ae
+
+pkgname = shiny-server-git
+

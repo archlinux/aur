@@ -1,0 +1,10 @@
+[Unit]
+Description=Shiny Server
+After=syslog.target network.target
+
+[Service]
+User=shiny
+ExecStart=/usr/bin/shiny-server
+
+[Install]
+WantedBy=multi-user.target
