@@ -1,0 +1,18 @@
+pkgbase = dmenu-frecency-git
+	pkgdesc = dmenu-based desktop application launcher that uses a combination of frequency and recency
+	pkgver = r46.d98be08
+	pkgrel = 1
+	url = https://github.com/kspi/dmenu-frecency
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = dmenu
+	depends = python-docopt
+	depends = python-xdg
+	provides = dmenu-frecency
+	conflicts = dmenu-frecency
+	source = git://github.com/kspi/dmenu-frecency.git
+	md5sums = SKIP
+
+pkgname = dmenu-frecency-git
+
