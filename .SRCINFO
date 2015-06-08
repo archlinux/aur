@@ -1,0 +1,21 @@
+pkgbase = dolphin-plugins-frameworks-git
+	pkgdesc = Plugins for Dolphin. KF5 Frameworks branch. (GIT Version)
+	pkgver = r333.998049c
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/kdesdk/dolphin-plugins
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	makedepends = git
+	depends = dolphin-git
+	provides = dolphin-plugins
+	conflicts = dolphin-plugins
+	source = git://anongit.kde.org/dolphin-plugins#branch=frameworks
+	sha1sums = SKIP
+
+pkgname = dolphin-plugins-frameworks-git
+
