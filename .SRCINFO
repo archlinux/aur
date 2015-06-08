@@ -1,0 +1,24 @@
+pkgbase = lib32-libappindicator-gtk2
+	pkgdesc = Allow applications to export a menu into the Unity Menu bar
+	pkgver = 12.10.0
+	pkgrel = 4
+	url = https://launchpad.net/libappindicator
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = dbus-glib
+	makedepends = gobject-introspection
+	makedepends = perl-xml-libxml
+	makedepends = pygtk
+	makedepends = vala
+	depends = lib32-libdbusmenu-gtk2
+	depends = lib32-libindicator-gtk2
+	provides = lib32-libappindicator
+	options = !emptydirs
+	source = http://launchpad.net/libappindicator/12.10/12.10.0/+download/libappindicator-12.10.0.tar.gz
+	source = python-gtfo.patch
+	sha256sums = d5907c1f98084acf28fd19593cb70672caa0ca1cf82d747ba6f4830d4cc3b49f
+	sha256sums = a10e2bc67fdfed814a8b4d56a0bae7db4a642327a2d08305ca15e806b5f6df83
+
+pkgname = lib32-libappindicator-gtk2
+
