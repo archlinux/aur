@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-eedi2-git
+	pkgdesc = Plugin for Vapoursynth: eedi2 (GIT version)
+	pkgver = r6.0.g6e71879
+	pkgrel = 1
+	url = http://forum.doom9.org/showthread.php?t=171136
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = vapoursynth
+	provides = vapoursynth-plugin-eedi2
+	conflicts = vapoursynth-plugin-eedi2
+	source = eedi2::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-EEDI2.git
+	sha1sums = SKIP
+
+pkgname = vapoursynth-plugin-eedi2-git
+
