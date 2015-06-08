@@ -1,0 +1,16 @@
+pkgbase = pairing_tool
+	pkgdesc = Tool to pair Logitech devices to unifying receiver
+	pkgver = 20110922
+	pkgrel = 1
+	url = http://goo.gl/eG4q9
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = pairing_tool.c
+	source = README
+	md5sums = ca0db9898ac03facd732ba12b3ec9751
+	md5sums = ab0f29754cce4d627babad9ddbc4b0e4
+
+pkgname = pairing_tool
+

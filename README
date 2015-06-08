@@ -1,0 +1,14 @@
+1. Find the hidraw device corresponding to the unifying receiver:
+
+# grep "Logitech USB Receiver" /sys/class/hidraw/hidraw*/device/uevent
+/sys/class/hidraw/hidraw0/device/uevent:HID_NAME=Logitech USB Receiver
+/sys/class/hidraw/hidraw1/device/uevent:HID_NAME=Logitech USB Receiver
+/sys/class/hidraw/hidraw2/device/uevent:HID_NAME=Logitech USB Receiver
+
+2. turn your device on
+
+3. Start unifying with the following command
+# sudo pairing_tool /dev/hidraw2
+
+4. quickly turn your device off and on
+
