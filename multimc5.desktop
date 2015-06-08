@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=MultiMC5
+GenericName=MultiMC5
+Comment=MultiMC5
+Type=Application
+Exec=multimc5
+Icon=multimc5
+Categories=Application;Game
