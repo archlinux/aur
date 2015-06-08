@@ -1,4 +1,4 @@
-# Contributor: TryA <tryagainprod@gmail.com>
+# Maintainer: TryA <tryagainprod@gmail.com>
 # Contributor: Eric Belanger <belanger@astro.umontreal.ca>
 
 pkgname=csmash
