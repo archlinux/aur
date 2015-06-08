@@ -1,0 +1,17 @@
+pkgbase = libvoikko
+	pkgdesc = A library of free Finnish language tools using Malaga
+	pkgver = 3.7.1
+	pkgrel = 2
+	url = http://voikko.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = python2
+	depends = hfstospell>=0.2.2
+	depends = suomi-malaga-voikko
+	options = !libtool
+	source = http://www.puimula.org/voikko-sources/libvoikko/libvoikko-3.7.1.tar.gz
+	md5sums = 857a09866dacddd9b6370e719c3e81b8
+
+pkgname = libvoikko
+
