@@ -1,0 +1,14 @@
+pkgbase = nodejs-markdown
+	pkgdesc = A sensible Markdown parser for javascript
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = http://github.com/evilstreak/markdown-js
+	arch = any
+	license = MIT
+	depends = nodejs
+	noextract = markdown-0.5.0.tgz
+	source = http://registry.npmjs.org/markdown/-/markdown-0.5.0.tgz
+	sha1sums = 28205b565a8ae7592de207463d6637dc182722b2
+
+pkgname = nodejs-markdown
+
