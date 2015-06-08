@@ -1,0 +1,14 @@
+pkgbase = nodejs-git-stats-importer
+	pkgdesc = Imports your commits from a repository into git-stats history.
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/IonicaBizau/git-stats
+	arch = any
+	license = MIT
+	depends = nodejs
+	noextract = git-stats-importer-1.5.0.tgz
+	source = http://registry.npmjs.org/git-stats-importer/-/git-stats-importer-1.5.0.tgz
+	sha256sums = 1989fdd2162094fe0d95a6ac11016d4acc274be673757b0c8a3bc45f3d0a16b1
+
+pkgname = nodejs-git-stats-importer
+
