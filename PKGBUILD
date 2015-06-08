@@ -4,15 +4,15 @@
 pkgbase=python2-utils
 _pkgname=utils
 pkgname=(python2-utils)
-pkgver=0.7
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Collected functions which should be in the standard library"
 url="http://pypi.python.org/pypi/utils"
 arch=('any')
 license=('BSD')
 makedepends=('python2-setuptools' python-setuptools)
-source=("http://pypi.python.org/packages/source/u/utils/utils-${pkgver}.tar.gz")
-sha256sums=('6bf9dae704fbffb4fed2b9c4d12ee7547af6b773273ca5142ec68912099ca8c9')
+source=("https://pypi.python.org/packages/source/u/utils/utils-${pkgver}.tar.gz")
+sha256sums=('272ebb342ff792ea61daf352ce7bef14e9402bf5d2f1766c47f99b2a4c779cca')
 
 prepare() {
     cp -a $srcdir/$_pkgname-$pkgver $srcdir/$_pkgname-$pkgver-2
