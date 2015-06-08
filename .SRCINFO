@@ -1,0 +1,23 @@
+pkgbase = minirc-git
+	pkgdesc = Minimalistic init script
+	pkgver = 120.2915396
+	pkgrel = 1
+	url = https://github.com/hut/minirc
+	install = minirc.install
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = busybox
+	depends = sh
+	optdepends = eudev: udev implementation
+	optdepends = mdev: udev implementation
+	optdepends = systemd: udev implementation
+	conflicts = systemd-sysvcompat
+	conflicts = sysvinit
+	backup = etc/inittab
+	backup = etc/minirc.conf
+	source = git://github.com/hut/minirc.git
+	md5sums = SKIP
+
+pkgname = minirc-git
+

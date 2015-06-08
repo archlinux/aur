@@ -1,0 +1,11 @@
+post_install() {
+  if [[ -z $( grep -i 'needs_root_rights = yes' /etc/X11/Xwrapper.config 2> /dev/null ) ]]; then
+    echo '==> In order to use X, add the following to /etc/X11/Xwrapper.config
+    allowed_users = anybody
+    needs_root_rights = yes'
+  fi
+}
+
+post_upgrade() {
+  post_install
+}
