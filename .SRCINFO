@@ -1,0 +1,17 @@
+pkgbase = perl-moosex-arrayref
+	pkgdesc = blessed arrayrefs with Moose
+	pkgver = 0.004
+	pkgrel = 1
+	url = http://search.cpan.org/dist/MooseX-ArrayRef
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.008
+	depends = perl-moose>=2.00
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/MooseX-ArrayRef-0.004.tar.gz
+	md5sums = 94ac5d40acb1fc6992c70616bfead7b5
+	sha512sums = 1a9458f2461fef9eca374797b8166efcc49b5a2d3e84143f8d6870021fcebf969a49266ea0f411137c50a14631b2dbe5331c1e06e960f1d4ed9f45e73ddca4c8
+
+pkgname = perl-moosex-arrayref
+
