@@ -1,0 +1,21 @@
+pkgbase = haskell-chp
+	pkgdesc = An implementation of concurrency ideas from Communicating Sequential Processes
+	pkgver = 2.2.0
+	pkgrel = 3
+	url = http://hackage.haskell.org/package/chp
+	install = haskell-chp.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = haskell-containers=0.3.0.0
+	depends = haskell-deepseq=1.1.0.0
+	depends = haskell-extensible-exceptions=0.1.1.1
+	depends = haskell-pretty=1.0.1.1
+	depends = haskell-stm=2.1.2.1
+	options = strip
+	source = http://hackage.haskell.org/packages/archive/chp/2.2.0/chp-2.2.0.tar.gz
+	md5sums = 42de2a6c847169c693e0ba2282c91432
+
+pkgname = haskell-chp
+
