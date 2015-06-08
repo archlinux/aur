@@ -1,0 +1,21 @@
+pkgbase = qtconfiguration-git
+	pkgdesc = Settings API with change notifications for Qt
+	pkgver = 20140413.804739d
+	pkgrel = 1
+	url = https://github.com/hawaii-desktop/qtconfiguration
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = LGPL
+	license = custom
+	makedepends = gcc
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = dconf
+	source = qtconfiguration::git://github.com/hawaii-desktop/qtconfiguration.git#branch=master
+	md5sums = SKIP
+
+pkgname = qtconfiguration-git
+
