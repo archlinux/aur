@@ -1,0 +1,19 @@
+pkgbase = loopauditioneer
+	pkgdesc = Software for loop and cue handling in .wav files
+	pkgver = 0.8.1.1
+	pkgrel = 1
+	url = http://loopauditioneer.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = wxgtk2.8
+	depends = alsa-lib
+	provides = loopauditioneer
+	conflicts = loopauditioneer
+	source = loopauditioneer.sh
+	source = loopauditioneer.desktop
+	md5sums = 1ea7cc51c813bfe8e37a7ebb15184948
+	md5sums = 0e2286c155701065663461be6c1056ba
+
+pkgname = loopauditioneer
+

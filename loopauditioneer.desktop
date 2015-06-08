@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=LoopAuditioneer
+Comment=Software for loop and cue handling in .wav files
+Exec=loopauditioneer
+Icon=loopauditioneer
+Categories=AudioVideo;Audio
