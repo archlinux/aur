@@ -1,0 +1,22 @@
+pkgbase = kcontacts-git
+	pkgdesc = Address book API for KDE
+	pkgver = r2500.ccce04a
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/pim/kcontacts
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	makedepends = python
+	depends = kcoreaddons
+	depends = kconfig
+	depends = ki18n
+	depends = kcodecs
+	provides = kcontacts
+	conflicts = kcontacts
+	source = git://anongit.kde.org/kcontacts.git
+	md5sums = SKIP
+
+pkgname = kcontacts-git
+
