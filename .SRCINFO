@@ -1,0 +1,20 @@
+pkgbase = heavybullets-hib
+	pkgdesc = A randomized FPS dungeon crawler where players make their way through a colorful maze, while protecting themselves from aggressive creatures and malfunctioning security devices. (Humble Bundle Version)
+	pkgver = 1.05
+	pkgrel = 1
+	url = http://heavybullets.com
+	changelog = hello.txt
+	arch = i686
+	arch = x86_64
+	license = custom:commercial
+	depends = glu
+	depends = gcc-libs-multilib
+	source = hib://HEAVYBULLETS_105_LNX.tar.gz
+	source = heavybullets.desktop
+	sha256sums = b4b8732bbc87773a8db84cbed3a0d942a5462c14984b317af5dcc154a5272c05
+	sha256sums = e10ed2722ab1cbe7921c2cc39ca6eb66c5e9d45e0717f26d6171d74137c6f1c7
+	depends_i686 = gtk2
+	depends_x86_64 = lib32-gtk2
+
+pkgname = heavybullets-hib
+

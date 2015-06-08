@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Heavy Bullets
+GenericName=Heavy Bullets
+Icon=/opt/heavybullets-hib/HEAVY_BULLETS_Data/Resources/UnityPlayer.png
+Exec="/opt/heavybullets-hib/HEAVY_BULLETS"
+Categories=Game;
+Path=/opt/heavybullets-hib
+

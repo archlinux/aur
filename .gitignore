@@ -1,0 +1,5 @@
+pkg/
+src/
+*x86_64.pkg.tar
+*.src.tar.gz
+HEAVYBULLETS_*_LNX.tar.gz

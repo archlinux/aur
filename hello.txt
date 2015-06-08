@@ -1,0 +1,222 @@
+﻿
+
+
+H      E      A      V      Y
+B   U    L    L    E    T   S
+
+
+V1.05 October 11 2014
+http://www.heavybullets.com
+
+by TERRI VELLMANN, DOSEONE, DEVOLVER DIGITAL
+
+
+- CHANGES:
+V1.05
+- Fixed ORE CHUNK max text
+- Tweaked enemy collisions
+- Tweaked audio systems & performance
+- Tweaked WASP movement patterns
+- Added RELOAD tooltip
+- Fixed ITEM name bug (in Portuguese)
+- Fixed TURRET BOSS non aggressive bug
+- PAUSE now triggered when game loses focus
+
+V1.04
+- Fixed WASP bug
+
+V1.03
+- Fixed INVERTED MOUSE w RAW INPUT bug
+- Fixed CURSED GEM bug
+
+V1.02
+- Added FPS CAP settings
+- Added MOUSE SMOOTHING toggle
+- Fixed bug where ROCKETS couldn't be shot into BOSS ROOMS
+- Fixed invulnerability bug
+- Optimization tweaks
+- Fixed SAVEGAME bug with CARRY ITEM LVL
+
+V1.01
+- Tweaked VSYNC OFF FPS settings
+- Fixed getting HURT while game is PAUSED
+- Tweaked TURRET shot speed
+- Fixed gaps in LEVEL GENERATION
+- Optimization Tweaks
+- Update Unity engine to 4.5.4
+- Finer MOUSE SENSITIVITY and FOV settings
+- Fixed HOMING BOMB, ROCKET and MEGABOMB + BACKPACK SWAP exploit
+- Fixed dropping ITEMS + BACKPACK SWAP or PICKUP NEW ITEM bug
+
+V1.00
+- Added STEAM ACHIEVEMENTS & LEADERBOARDS
+- Tweaked ENEMY AI & LEVEL GENERATION
+
+V0.27
+- Fixed GOLD SKULL bug where ENEMIES wouldn't die
+- Fixed flipped DEAD END signs
+
+V0.26
+- Fixed bug where ITEM would get stuck
+
+V0.25
+- Added PORTUGUESE BR language support
+- Fixed bug when taking damage after using END LEVEL HATCH
+- Fixed bug where BLACK POTION was overriding POISON IMMUNITY
+- Tweaked SETTINGS text alignment
+- Removed blur from IMAGE EFFECTS
+- Performance tweaks
+
+V0.24
+- Fixed SCOPE/BACKPACK FOV bug
+- Performance tweaks
+- INTRO TEXT tweaks
+
+V0.23
+- Added new PROPS, COLORS and LIGHT changes throughout the game.
+- Added 4 ITEMS that spawn behind SECRET DOORS
+- Replaced BLOODSUCKER enemy with LEECH TURRET
+- Replaced INTRO and END GAME texts
+- Tweaked enemy AI
+- Added GLOBAL SOUND VOLUME options
+- Moved INVERT Y AXIS and LOOK SENSITIVY to CONTROLS
+- Tweaked GAMEPAD support
+- Tweaked SOUNDS
+- Can now find COINS instead of ORES when breaking ROCKS with the PICKAXE
+
+V0.22
+- Added SAVE & QUIT option to LEVEL TRANSITION screen / RESUME to TITLE SCREEN
+- Added LOG to PAUSE SCREEN
+- Tweaked SOUNDS
+- Added DISRUPTOR item
+- Fixed SPIKED HELMET storage bug
+
+V0.21
+- Fixed INVERTED Y AXIS bug
+
+V0.20
+- Added new MUSIC
+- Added GAMEPAD support
+- Changed YOU DIED screen
+- Open DOORS spawn lasers after PLAYER clears enough distance
+- Tweaked WASPS AI
+- BOMBS don't explode until thrown
+- Tweaked BOMB throwing
+- Fixed PICKAXE rock break bug
+- Raised starting MAGNETS to LVL1
+- Tweaked LEVEL GENERATION
+- EFFECTS blur tweaked, now calculated from screen height instead of width
+- AA settings expanded with AA type options
+- BLESSED GEM now has change to break after activated
+- Standard FOV set to 90
+- Max FOV set to 120
+
+V0.19
+- Fixed ITEM PRICE bug
+
+V0.18
+- Added and tweaked many SOUNDs
+- $10 added to global prices every 2 levels
+- Individual MEDBAYs can now only HEAL 3 times
+- HEALTH UP prices tweaked
+- DISCOUNT + price not affected by discount
+- Fixed multiple DIAMONDS bug
+- Activating a HATCH will cancel FOCUS
+- Tweaked FLYING TURRET collision
+- GOLD & BLACK POTION CARRY MAX reduced
+- LEVEL GENERATION expanded
+- Using a RITUAL BLADE will yield less MONEY
+- Fixed BOSS DOOR barrier bug
+- Fixed WIN MUSIC playing if music is off bug
+- Fixed KILLED BY stat on QUIT GAME
+- Fixed DIAMOND CARRY MAX text
+- VSYNC now can be set in the QUALITY settings
+- MAX MUSIC VOLUME setting added
+- ENEMY AI tweaks
+
+V0.17
+- EGGS now no longer spawn enemies, but explode on proximity
+- LEVEL 8 BOSS tweaked
+- Many SOUND tweaks and changes
+- FOV settings added
+- Raised MOUSELOOK sensitivity
+- Fixed bug where COIN MAGNETS would turn into GOLD SKULLS when stored
+- RITUAL BLADE turns into KNIFE when stored
+- ENEMY AI aggro tweaked
+- POISON SERUM now only affects player once
+- Change RELOADER description text
+- Killed by stat added to GAME OVER screen
+- Added 30% DISCOUNT level
+- STATS and SETTINGS can be reset individually
+
+V0.16
+- TELEPORT is reset when entering BOSS ROOM
+- Fixed THROW GLOVE infinite sell bug
+- Fixed PAUSE MENU bugs on some aspect ratios
+- Fixed LIFE hidden on some aspect ratios
+- Fixed MOUSE SENSITIVITY set from TITLE SCREEN
+- Fixed LOW HEART LOOP volume shifts
+
+V0.15
+- Fixed BANK WITHDRAW bug
+
+V0.14
+- DOSESONE contributes with MUSIC and SFX!
+- DEVOLVER DIGITAL logo splash screen added
+- TELEPORTER and PROXIMITY SENSOR now spawn as chest items
+- 6 BULLETS removed from chest item spawns
+- UI redesigned, information split into different screens
+- Fixed SLOW TURRET bug where it would freeze
+- Added AUTO ROCKET TURRET spawns
+- Added 1 new SECRET ITEM
+- PICKAXE attack now hits enemies as well as rocks
+- Fixed ROCKET/TALL GRASS bug
+- Added IMAGE EFFECTS (and options to turn them off)
+- Added LOW HEALTH MUSIC and IMAGE EFFECTS
+- TELEPORTER's PORTAL can be cancelled by holding down ITEM KEY
+- SCREEN FLASH when LEECH STONE HEALS.
+- Fixed ITEM EFFECT description bug when using BACKPACK
+- LAST WILL cancels LIFE INSURANCE (possible exploit fix)
+- Darkened GRASS
+
+V0.12
+- Fixed SLOW TURRET bug where you kept moving slowly after killing it
+- Enemies AI line of sight bug tweaked
+- UI blinks when you pick something up
+- Added instructions when you equip a BACKPACK
+- Added CLICK SOUND when reloading with a full chamber
+- Added 1 new item that spawns in SECRET WALLS
+- Fixed bug where a passive item's TOOLTIP would be wrong when you started a new level
+- BANK now has SELL ITEM and ITEM STORAGE (persistent) options
+- Added VALUABLE ITEMS (SMALL ORE, ORE CHUNK, DIAMOND, HEAVY ORE)
+- TURRETS play sound when activated
+- Added new SPAWN BLOCKS with various props (trees, boulders)
+- Added HIGH GRASS VEGETATION (blocks line of sight)
+- INTRO TEXT added on NEW GAME, END TEXT added on GAME WON, PROGRESS BAR added on level progression
+- Tweaked POTION model
+- Tweaked BULLET and COIN jumps
+
+V0.11
+- QUIT GAME added to MAIN MENU
+- ITEM DESCRIPTION added to PAUSE SCREEN
+- LOWER DIFFICULTY: Raised enemy reaction delay, lowered movement speed
+- SKULL ICON added over BOSS AREA's doors
+- LOGO removed from VENDING MACHINES
+- POISON damage is slower
+- Item description SPACE TO ACTIVATE changed to USE ITEM
+- TURRET PROJECTILE collision and speed tweaked
+- Fixed flipped VM bug.
+- Added 3 items that spawn in SECRET WALLS
+- New game now starts with 5 bullets loaded, 1 in the inventory
+
+
+
+Feedback is welcome!
+DEVLOG: http://www.heavybullets.com/devlog
+TWITTER: @terrivellmann
+EMAIL: terrivellmann@gmail.com
+
+Thanks
+
+- Terri Vellmann
+
