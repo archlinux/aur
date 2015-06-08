@@ -1,0 +1,12 @@
+pkgbase = xplane-sdk-devel
+	pkgdesc = X-Plane SDK
+	pkgver = 2.1.3
+	pkgrel = 3
+	url = http://www.xsquawkbox.net/xpsdk/mediawiki/Main_Page
+	arch = any
+	license = unknown
+	source = http://www.xsquawkbox.net/xpsdk/XPSDK213.zip
+	md5sums = 0c052de90a83e9f7f0f3aae532fe3640
+
+pkgname = xplane-sdk-devel
+
