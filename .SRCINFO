@@ -1,0 +1,25 @@
+pkgbase = kservice-git
+	pkgdesc = KService
+	pkgver = r199.e4dcb34
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/kservice
+	arch = i686
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	makedepends = kdoctools
+	makedepends = python
+	depends = ki18n-git
+	depends = kconfig-git
+	depends = kcrash-git
+	depends = kdbusaddons-git
+	depends = karchive-git
+	provides = kservice
+	conflicts = kservice
+	source = git://anongit.kde.org/kservice.git
+	md5sums = SKIP
+
+pkgname = kservice-git
+
