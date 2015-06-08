@@ -1,0 +1,35 @@
+# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+
+_plug=fft3dfilter
+pkgname=avxsynth-plugin-${_plug}-git
+pkgver=20120611.5c2028d
+pkgrel=1
+pkgdesc="Plugin for Avxsynth. ${_plug} (GIT Version)"
+arch=('i686' 'x86_64')
+url="https://github.com/fundies/fft3dfilter-linux"
+license=('GPL')
+depends=('avxsynth' 'fftw')
+makedepends=('git')
+provides=("avxsynth-plugin-${_plug}")
+conflicts=("avxsynth-plugin-${_plug}")
+
+source=("${_plug}::git://github.com/fundies/fft3dfilter-linux.git")
+md5sums=('SKIP')
+_gitname="${_plug}"
+
+pkgver() {
+  cd "${_gitname}"
+  echo "$(git log -1 --format="%cd" --date=short | tr -d '-').$(git log -1 --format="%h")"
+}
+
+build() {
+  cd "${_gitname}"
+  make
+}
+
+package(){
+  cd "${_gitname}"
+  install -Dm775 fft3dfilter.so "${pkgdir}/usr/lib/avxsynth/fft3dfilter.so"
+  install -Dm664 README "${pkgdir}/usr/share/doc/avxsynth/plugins/${_plug}/README"
+}
+
