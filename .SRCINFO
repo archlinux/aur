@@ -1,0 +1,20 @@
+pkgbase = librabbitmq-c
+	pkgdesc = A RabbitMQ(amqp) library written in C-language
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/alanxz/rabbitmq-c
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = MIT
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = xmlto
+	depends = popt
+	depends = openssl
+	options = !libtool
+	source = librabbitmq-c-0.6.0.zip::https://github.com/alanxz/rabbitmq-c/archive/v0.6.0.zip
+	md5sums = 6df52ff7bf56b1012732f510f8961ca1
+
+pkgname = librabbitmq-c
+
