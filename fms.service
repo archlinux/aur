@@ -1,0 +1,12 @@
+[Unit]
+Description=Freenet Message System
+After=network.target
+
+[Service]
+Type=forking
+User=fms
+ExecStart=/opt/fms/fms --daemon
+WorkingDirectory=/opt/fms
+
+[Install]
+WantedBy=multi-user.target

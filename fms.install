@@ -1,0 +1,18 @@
+## arg 1:  the new package version
+post_install() {
+  echo "==> An user "fms" is created which own the /opt/fms directory"
+  groupadd -g 114 fms
+  useradd -u 114 -g fms -d /opt/fms/ -s /bin/false fms &>/dev/null
+  echo "==> To start your node:"
+  echo "==>   systemctl start fms.service"
+  echo "==> Go to http://127.0.0.1:8080/ to configure your node" 
+  echo "==> Read /opt/fms/readme.txt for further info"
+}
+
+## arg 1:  the old package version
+pre_remove() {
+  userdel fms &>/dev/null
+  groupdel fms &>/dev/null 
+}
+
+# vim:set ts=2 sw=2 et:
