@@ -1,0 +1,22 @@
+pkgbase = st-git
+	pkgdesc = Simple virtual terminal emulator for X
+	pkgver = 20150603.71fa10f
+	pkgrel = 1
+	url = http://git.suckless.org/st/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = MIT
+	makedepends = ncurses
+	makedepends = libxext
+	makedepends = git
+	depends = libxft
+	provides = st
+	conflicts = st
+	source = git://git.suckless.org/st
+	source = scrollback.patch
+	sha1sums = SKIP
+	sha1sums = 2e10ac47eb020d50c7f861f3923bb4152255a027
+
+pkgname = st-git
+
