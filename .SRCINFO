@@ -1,0 +1,14 @@
+pkgbase = ip2location-c
+	pkgdesc = C library enables the user to find info of any IP address or hostname
+	pkgver = 7.0.0
+	pkgrel = 1
+	url = http://www.ip2location.com/developers/c-7
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = LGPL3
+	source = http://www.ip2location.com/downloads/ip2location-c-7.0.0.tar.gz
+	sha256sums = 25c3680b74da711e1315d218bb1c3641a6a1a75bf95bb83d448c88f449a8a473
+
+pkgname = ip2location-c
+
