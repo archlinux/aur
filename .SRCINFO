@@ -1,0 +1,16 @@
+pkgbase = oki-400-ps
+	pkgdesc = CUPS drivers for OKI B4000, B400 and MB400 PS printers
+	pkgver = 1.4
+	pkgrel = 2
+	url = http://www.okidata.com/mkt/html/nf/Drivers.html
+	install = oki.install
+	arch = any
+	license = GPL
+	depends = cups
+	depends = ghostscript
+	depends = coreutils
+	source = ftp://ftp2.okidata.com/pub/drivers/linux/SFP/monochrome/desktop/OK400PS.tar
+	md5sums = 1a89c1c247745cfaef03cfe1abb45a85
+
+pkgname = oki-400-ps
+

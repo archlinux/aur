@@ -1,0 +1,15 @@
+post_install() {
+    echo -e "
+        If you experience any problems with printing
+        (like extra pages with PostScript code), try
+        blacklisting the module 'usblp'.
+
+        # echo \"blacklist usblp\" > /etc/modprobe.d/usblp.conf
+    "
+}
+
+post_upgrade() {
+    if [ "$(vercmp $2 1.4-2)" -lt 0 ]; then 
+        post_install "$1"
+    fi
+}
