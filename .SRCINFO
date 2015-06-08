@@ -1,0 +1,25 @@
+pkgbase = lightdm-gtk-greeter-bzr
+	pkgdesc = GTK+ greeter for LightDM
+	pkgver = r323
+	pkgrel = 1
+	url = https://launchpad.net/lightdm-gtk-greeter
+	install = lightdm-gtk-greeter.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = LGPL3
+	makedepends = bzr
+	makedepends = gnome-common
+	makedepends = gnome-doc-utils
+	makedepends = gobject-introspection
+	makedepends = intltool
+	depends = gtk3
+	depends = lightdm
+	provides = lightdm-gtk-greeter
+	conflicts = lightdm-gtk-greeter
+	backup = etc/lightdm/lightdm-gtk-greeter.conf
+	source = bzr+lp:lightdm-gtk-greeter
+	sha256sums = SKIP
+
+pkgname = lightdm-gtk-greeter-bzr
+
