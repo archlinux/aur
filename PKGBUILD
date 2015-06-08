@@ -12,22 +12,16 @@ url='http://www.overlooksoft.com/'
 license=('custom:Overlook Freeware license')
 depends=('boost-libs' 'openssl' 'zlib')
 options=(!strip)
-case $CARCH in
-  i686)
-    source=("${pkgname}-${pkgver}.tgz::http://www.overlooksoft.com/packages/linux32/${pkgname}-${pkgver}.tgz"
+source_i686=("${pkgname}-${pkgver}.tgz::http://www.overlooksoft.com/packages/linux32/${pkgname}-${pkgver}.tgz"
     "fingbox-sentinel.service"
     "fingbox-sentinel.script"
     )
-    md5sums=('fa523c841daa6963fda51a32b5972bcd' '013488a7afe3048524df6b7527faae69' '95dbef149b9d3a9ea3bac0bd0c77b343')
-    ;;
-  x86_64)
-    source=("${pkgname}-${pkgver}.tgz::http://www.overlooksoft.com/packages/linux64/${pkgname}-${pkgver}.tgz"
+md5sums_i686=('fa523c841daa6963fda51a32b5972bcd' '013488a7afe3048524df6b7527faae69' '95dbef149b9d3a9ea3bac0bd0c77b343')
+source_x86_64=("${pkgname}-${pkgver}.tgz::http://www.overlooksoft.com/packages/linux64/${pkgname}-${pkgver}.tgz"
     "fingbox-sentinel.service"
     "fingbox-sentinel.script"
     )
-    md5sums=('3e599f665442631657ebc8bef74d98e1' '013488a7afe3048524df6b7527faae69' '95dbef149b9d3a9ea3bac0bd0c77b343')
-   ;;
-esac
+md5sums_x86_64=('3e599f665442631657ebc8bef74d98e1' '013488a7afe3048524df6b7527faae69' '95dbef149b9d3a9ea3bac0bd0c77b343')
 
 package() {
   cd "$srcdir"
