@@ -1,0 +1,13 @@
+pkgbase = stardict-oald
+	pkgdesc = Oxford Advanced Learner's Dictionary for Stardict
+	pkgver = 2.4.2
+	pkgrel = 7
+	url = http://stardict.sourceforge.net
+	arch = any
+	license = freeware
+	depends = stardict
+	source = http://distcache.freebsd.org/ports-distfiles/stardict/stardict-oald-2.4.2.tar.bz2
+	md5sums = 5f4adc8b3cd13b8574716171d1b42f82
+
+pkgname = stardict-oald
+
