@@ -1,0 +1,23 @@
+pkgbase = kcoreaddons-git
+	pkgdesc = KCoreAddons
+	pkgver = r229.d5802ea
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/kcoreaddons
+	install = kcoreaddons.install
+	arch = i686
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = shared-mime-info
+	depends = gamin
+	provides = kcoreaddons
+	conflicts = kcoreaddons
+	source = git://anongit.kde.org/kcoreaddons.git
+	md5sums = SKIP
+
+pkgname = kcoreaddons-git
+
