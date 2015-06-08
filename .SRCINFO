@@ -1,0 +1,19 @@
+pkgbase = haskell-irc
+	pkgdesc = A small library for parsing IRC messages.
+	pkgver = 0.5.1.0
+	pkgrel = 2
+	url = http://hackage.haskell.org/package/irc
+	install = haskell-irc.install
+	arch = i686
+	arch = x86_64
+	license = BSD3
+	depends = ghc
+	depends = sh
+	depends = haskell-parsec>=2.1
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/irc/0.5.1.0/irc-0.5.1.0.tar.gz
+	sha256sums = f221cd6b6c506ef7cfca87d8f0a54648f4e476bdde884d31300f77da25c36ff6
+
+pkgname = haskell-irc
+
