@@ -1,0 +1,12 @@
+pkgbase = kate-syntax-mustache-git
+	pkgdesc = Mustache syntax highlighting for the KDE Katepart.
+	pkgver = 20130127
+	pkgrel = 1
+	url = https://github.com/20after4/Mustache-Highlighting
+	arch = any
+	license = GPL
+	license = BSD
+	makedepends = git
+
+pkgname = kate-syntax-mustache-git
+
