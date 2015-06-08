@@ -1,0 +1,19 @@
+pre_install() {
+  getent group naemon &> /dev/null || groupadd -r naemon -g 44
+  getent passwd naemon &> /dev/null || useradd -r -u 44 -g naemon \
+    -d /var/lib/naemon -s /sbin/nologin -c "Naemon" naemon
+}
+
+pre_upgrade() {
+  pre_install
+}
+
+pre_remove() {
+  if [[ -f /run/naemon/naemon.pid ]]; then
+    systemctl stop naemon
+  fi
+}
+
+post_remove() {
+  userdel naemon
+}

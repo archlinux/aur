@@ -1,0 +1,18 @@
+[Unit]
+Description=Naemon Monitoring Daemon
+Documentation=http://naemon.org/documentation
+After=network.target
+
+[Service]
+Type=simple
+PIDFile=/run/naemon.pid
+ExecStartPre=/usr/bin/naemon -vp /etc/naemon/naemon.cfg
+ExecStart=/usr/bin/naemon /etc/naemon/naemon.cfg
+ExecReload=/bin/kill -HUP $MAINPID
+User=naemon
+Group=naemon
+StandardOutput=journal
+StandardError=inherit
+
+[Install]
+WantedBy=multi-user.target
