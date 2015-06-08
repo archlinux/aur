@@ -1,0 +1,17 @@
+pkgbase = scid-git
+	pkgdesc = A Free Chess Database Application - git-Checkout
+	pkgver = 4.5.2.r99.g317dfab
+	pkgrel = 2
+	url = http://scid.sourceforge.net
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = tk
+	depends = python
+	optdepends = snack: for sound support
+	options = !emptydirs
+	source = scid-git::git://git.code.sf.net/p/scid/code
+	md5sums = SKIP
+
+pkgname = scid-git
+
