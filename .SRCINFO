@@ -1,0 +1,20 @@
+pkgbase = pkgconf
+	pkgdesc = Light pkg-config replacement
+	pkgver = 0.9.11
+	pkgrel = 2
+	url = https://github.com/pkgconf/pkgconf
+	arch = i686
+	arch = x86_64
+	license = custom:ISC
+	depends = glibc
+	provides = pkg-config
+	provides = pkgconfig
+	conflicts = pkg-config
+	conflicts = pkgconfig
+	replaces = pkg-config
+	replaces = pkgconfig
+	source = https://github.com/pkgconf/pkgconf/archive/pkgconf-0.9.11.tar.gz
+	sha256sums = 6649762eee0d222e1d231e6b4ab2e4596a23788f3341b040eea404d4c85731c1
+
+pkgname = pkgconf
+
