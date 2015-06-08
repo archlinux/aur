@@ -1,0 +1,16 @@
+pkgbase = epson-inkjet-printer-px-402a
+	pkgdesc = Epson printer driver (PX-402A)
+	pkgver = 1.0.1
+	pkgrel = 8
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom:Epson Licence Agreement
+	depends = cups
+	depends = ghostscript
+	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-px-402a-1.0.1-1lsb3.2.src.rpm
+	sha256sums = cd5813c4fdf7361328458889938681019323844dcf2610843c318d2dbf1fb27d
+
+pkgname = epson-inkjet-printer-px-402a
+
