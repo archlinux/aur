@@ -1,0 +1,17 @@
+pkgbase = brother-hl3150cdw
+	pkgdesc = LPR and CUPS driver for the Brother HL3150CDW
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-hl3150cdw.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother commercial license
+	depends = cups
+	source = http://www.brother.com/pub/bsc/linux/dlf/hl3150cdwlpr-1.1.2-1.i386.rpm
+	source = http://www.brother.com/pub/bsc/linux/dlf/hl3150cdwcupswrapper-1.1.2-1.i386.rpm
+	source = cupswrapper-license.txt
+	source = lpr-license.txt
+
+pkgname = brother-hl3150cdw
+
