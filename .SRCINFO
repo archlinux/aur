@@ -1,0 +1,14 @@
+pkgbase = nodejs-node-buspirate
+	pkgdesc = Node.js bindings for Bus Pirate
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/rmhsilva/node-buspirate
+	arch = any
+	license = BSD
+	depends = nodejs
+	noextract = node-buspirate-0.0.1.tgz
+	source = http://registry.npmjs.org/node-buspirate/-/node-buspirate-0.0.1.tgz
+	sha1sums = 6377cfb093f1a1609ee2de3fd727417dee50367c
+
+pkgname = nodejs-node-buspirate
+
