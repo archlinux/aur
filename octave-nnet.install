@@ -1,0 +1,17 @@
+pkg=nnet
+## arg 1:  the new package version
+post_install() {
+  echo "pkg prefix /usr/share/octave/packages /usr/lib/octave/packages; pkg install -global /usr/share/octave/$pkg.tar.gz" | octave --silent
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  post_remove
+  post_install
+}
+
+## arg 1:  the old package version
+post_remove() {
+  echo "pkg prefix /usr/share/octave/packages /usr/lib/octave/packages; pkg uninstall $pkg" | octave --silent
+}

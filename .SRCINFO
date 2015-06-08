@@ -1,0 +1,17 @@
+pkgbase = octave-nnet
+	pkgdesc = The Octave-forge Nnet package for working with Neural Networks.
+	pkgver = 0.1.13
+	pkgrel = 3
+	url = http://octave.sourceforge.net/nnet/index.html
+	install = octave-nnet.install
+	arch = i686
+	arch = x86_64
+	groups = octave-forge
+	license = GPL
+	depends = octave
+	noextract = nnet-0.1.13.tar.gz
+	source = http://downloads.sourceforge.net/octave/nnet-0.1.13.tar.gz
+	md5sums = 836ca48df2236eb0cb7e1e27780a1659
+
+pkgname = octave-nnet
+
