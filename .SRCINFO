@@ -1,0 +1,15 @@
+pkgbase = python-plumbum
+	pkgdesc = Shell combinators library.
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/plumbum
+	arch = any
+	license = GPL
+	depends = python
+	depends = python-six
+	options = !emptydirs
+	source = http://pypi.python.org/packages/source/p/plumbum/plumbum-1.4.2.tar.gz
+	md5sums = 38b526af9012a5282ae91dfe372cefd3
+
+pkgname = python-plumbum
+
