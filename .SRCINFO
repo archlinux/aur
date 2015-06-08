@@ -1,0 +1,17 @@
+pkgbase = virtualsmartcard-git
+	pkgdesc = Virtual Smart Card emulates a smart card and makes it accessible through PC/SC
+	pkgver = 0
+	pkgrel = 1
+	url = http://sourceforge.net/projects/vsmartcard/
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = help2man
+	depends = pcsclite
+	provides = virtualsmartcard
+	conflicts = virtualsmartcard
+	source = virtualsmartcard::git+http://git.code.sf.net/p/vsmartcard/git
+	sha1sums = SKIP
+
+pkgname = virtualsmartcard-git
+
