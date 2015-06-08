@@ -1,0 +1,19 @@
+pkgbase = kdsoap-qt4
+	pkgdesc = Qt-based client-side and server-side SOAP component
+	pkgver = 1.4.0
+	pkgrel = 3
+	url = https://github.com/KDAB/KDSoap
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	license = LGPL
+	license = custom
+	makedepends = python2
+	makedepends = git
+	depends = qt4
+	conflicts = kdsoap
+	source = git+https://github.com/KDAB/KDSoap.git
+	md5sums = SKIP
+
+pkgname = kdsoap-qt4
+
