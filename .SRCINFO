@@ -1,0 +1,21 @@
+pkgbase = ent
+	pkgdesc = Pseudorandom number sequence test
+	pkgver = 1.1
+	pkgrel = 3
+	url = http://packages.debian.org/sid/ent
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = asciidoc
+	makedepends = docbook2x
+	makedepends = perl-xml-libxml
+	depends = glibc
+	source = http://ftp.de.debian.org/debian/pool/main/e/ent/ent_1.1debian.orig.tar.gz
+	source = http://ftp.de.debian.org/debian/pool/main/e/ent/ent_1.1debian-4.debian.tar.xz
+	source = LICENSE
+	sha256sums = 8ac6606208ed8ed094479f6e12fe28a65bab0fd5c8eb054b74c65c86f98427a0
+	sha256sums = ebb2a26231424465b5480e7bb0db24407f2ad6031db471dab07b9e8b145b0ad3
+	sha256sums = 4ebee40438cb4df5dadbe3028002fdc17f07daee751cb79d53d7f55fbc37ce36
+
+pkgname = ent
+
