@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Zoiper
+GenericName=SIP/IAX2 softphone
+Comment=SIP/IAX2 softphone
+Type=Application
+Icon=zoiper-classic
+Exec=zoiper-classic
+StartupNotify=true
+Terminal=false
+Categories=Network;Telephony;
