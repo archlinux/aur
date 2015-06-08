@@ -1,0 +1,15 @@
+pkgbase = eclipse-mdt-uml2
+	pkgdesc = Eclipse Model Development Tools (UML2 subproject)
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = http://www.eclipse.org/modeling/mdt/?project=uml2#uml2
+	arch = i686
+	arch = x86_64
+	license = EPL
+	makedepends = unzip
+	depends = eclipse-emf
+	source = http://www.eclipse.org/downloads/download.php?r=1&file=/modeling/mdt/uml2/downloads/drops/5.0.0/R201406020749/mdt-uml2-runtime-5.0.0.zip
+	md5sums = 50654337ea132d7e82134e8e80e71eb0
+
+pkgname = eclipse-mdt-uml2
+
