@@ -1,0 +1,11 @@
+[Unit]
+Description=pyLoad Core
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/pyLoadCore
+User=pyload
+Group=pyload
+
+[Install]
+WantedBy=multi-user.target
