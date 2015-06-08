@@ -1,0 +1,12 @@
+pkgbase = xcursor-openzone
+	pkgdesc = OpenZone X11 cursor theme
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = http://opendesktop.org/content/show.php/OpenZone?content=111343
+	arch = any
+	license = custom:xcursor-openzone
+	source = http://opendesktop.org/CONTENT/content-files/111343-OpenZone-1.2.4.tar.xz
+	sha1sums = 3cdc4841689f022436d6e83dd5587313e65efc17
+
+pkgname = xcursor-openzone
+
