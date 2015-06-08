@@ -1,0 +1,28 @@
+pkgbase = perl-catalyst-plugin-authentication
+	pkgdesc = Infrastructure plugin for the Catalyst
+	pkgver = 0.10023
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Catalyst-Plugin-Authentication
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-extutils-makemaker>=6.59
+	makedepends = perl-moose
+	makedepends = perl-test-exception
+	depends = perl>=5.8.1
+	depends = perl-catalyst-plugin-session>=0.10
+	depends = perl-catalyst-runtime
+	depends = perl-class-inspector
+	depends = perl-mro-compat
+	depends = perl-moose
+	depends = perl-moosex-emulate-class-accessor-fast
+	depends = perl-string-rewriteprefix
+	depends = perl-try-tiny
+	depends = perl-namespace-autoclean
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/Catalyst-Plugin-Authentication-0.10023.tar.gz
+	md5sums = 6df0836bab344ef499d68ee5f50f2369
+	sha512sums = b0882ea35409226e1592b5f5473bdf8fdf44a1ee228837d1eaba082a94f129315533271c9077f8895af19a695c279e3f5aa649c6100b2fa17a0a0b04884c279f
+
+pkgname = perl-catalyst-plugin-authentication
+
