@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-coin-or-cgl
+	pkgdesc = COIN-OR Cut Generation Library (mingw-w64)
+	pkgver = 0.59.4
+	pkgrel = 1
+	url = https://projects.coin-or.org/Cgl
+	arch = any
+	groups = coin-or
+	license = EPL
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-coin-or-clp
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = http://www.coin-or.org/download/source/Cgl/Cgl-0.59.4.tgz
+	sha1sums = ee8d228882b9de800bd5ff952e7736e988c2dc21
+
+pkgname = mingw-w64-coin-or-cgl
+
