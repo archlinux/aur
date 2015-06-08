@@ -1,0 +1,14 @@
+pkgbase = vboxguest-hook
+	pkgdesc = mkinitcpio hook to compile the virtualbox guest modules
+	pkgver = 1.0
+	pkgrel = 2
+	url = https://github.com/alucryd/mkinitcpio-hooks
+	install = vboxguest-hook.install
+	arch = any
+	license = GPL3
+	depends = virtualbox-guest-dkms
+	source = https://raw.github.com/alucryd/mkinitcpio-hooks/master/vboxguest
+	sha256sums = 9b471fb0e6ad0d05a26dfd5cbc1706cb131edd45384c1e175e569711d0c5bb61
+
+pkgname = vboxguest-hook
+
