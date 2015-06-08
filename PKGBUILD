@@ -3,17 +3,16 @@
 pkgbase=python-nikola
 _pyname=nikola
 pkgname=('python-nikola' 'python2-nikola' 'python-nikola-doc')
-pkgver=7.4.1
-pkgrel=2
+pkgver=7.5.0
+pkgrel=1
 pkgdesc='A modular, fast, simple, static website generator.'
 arch=('any')
 url='https://getnikola.com/'
 license=('MIT')
 options=(!emptydirs)
 makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools')
-# .tar.gz -> .tgz to work around botched release
-source=("https://pypi.python.org/packages/source/N/Nikola/${_pyname}-${pkgver}.tgz")
-md5sums=('262700559382e1e1c4cf9eb2a952b201')
+source=("https://pypi.python.org/packages/source/N/Nikola/${_pyname}-${pkgver}.tar.gz")
+md5sums=('ed298fb4950baaf1b96c477e497edaa9')
 
 build() {
   cd "${srcdir}/${_pyname}-${pkgver}"
