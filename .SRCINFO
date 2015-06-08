@@ -1,0 +1,20 @@
+pkgbase = texinfo-legacy
+	pkgdesc = GNU documentation suite - legacy version
+	pkgver = 4.13a
+	pkgrel = 3
+	url = http://www.gnu.org/software/texinfo/
+	install = texinfo.install
+	arch = i686
+	arch = x86_64
+	groups = base
+	license = GPL3
+	depends = ncurses
+	depends = findutils
+	depends = gzip
+	source = ftp://ftp.gnu.org/pub/gnu/texinfo/texinfo-4.13a.tar.gz
+	source = texinfo-4.13a-data_types.patch
+	md5sums = 71ba711519209b5fb583fed2b3d86fcb
+	md5sums = d8574782ff7def1e2dc5c291dbeaec18
+
+pkgname = texinfo-legacy
+
