@@ -1,0 +1,15 @@
+pkgbase = python-ucnum
+	pkgdesc = Unicode helper and search utility
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://github.com/flying-sheep/ucnum
+	arch = any
+	license = GPLv3
+	depends = python
+	depends = python-unicodeblocks
+	optdepends = python-unicodedata2: Updated unicodedata
+	source = https://pypi.python.org/packages/source/u/ucnum/ucnum-1.1.tar.gz
+	md5sums = d67f0e2e203e39df140f70cb2046193d
+
+pkgname = python-ucnum
+
