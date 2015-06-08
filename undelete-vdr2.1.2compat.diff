@@ -1,0 +1,78 @@
+diff -ruN undelete-0.0.7/menuundelete.c undelete-0.0.7.edit/menuundelete.c
+--- undelete-0.0.7/menuundelete.c	2012-09-29 00:12:22.000000000 +0200
++++ undelete-0.0.7.edit/menuundelete.c	2013-10-19 14:53:42.319679339 +0200
+@@ -109,7 +109,11 @@
+   if (isdir || Parent)
+   {
+     temp = strdup(filename);
++#if APIVERSNUM > 20101
++    char *last = temp + strlen(cVideoDirectory::Name()) + 1;
++#else
+     char *last = temp + strlen(VideoDirectory) + 1;
++#endif
+     for (int i = level; *last && i >= Parent ? -1 : 0; i--)
+     {
+       last = strchr(last, '/');
+@@ -635,7 +639,11 @@
+                             {
+                               if (verbose.u)
+                                 isyslog("%s: purge deleted recording (%s)", plugin_name, recording->FileName());
++#if APIVERSNUM > 20101
++                              if (!cVideoDirectory::RemoveVideoFile(recording->FileName()))
++#else
+                               if (!RemoveVideoFile(recording->FileName()))
++#endif
+                               {
+                                 esyslog("%s: Error while remove deleted recording (%s)", plugin_name, recording->FileName());
+                                 processerror = true;
+@@ -669,7 +677,11 @@
+                                   processerror = true;
+                                 } else
+                                 {
++#if APIVERSNUM > 20101
++                                  if (!cVideoDirectory::RenameVideoFile(recording->FileName(), NewName))
++#else
+                                   if (!RenameVideoFile(recording->FileName(), NewName))
++#endif
+                                   {
+                                     esyslog("%s: Error while rename deleted recording (%s) to (%s)", plugin_name, recording->FileName(), NewName);
+                                     processerror = true;
+diff -ruN undelete-0.0.7/undelete.c undelete-0.0.7.edit/undelete.c
+--- undelete-0.0.7/undelete.c	2012-10-05 00:26:01.000000000 +0200
++++ undelete-0.0.7.edit/undelete.c	2013-10-19 14:52:08.418606971 +0200
+@@ -840,7 +840,11 @@
+           {
+             if (verbose.u)
+               isyslog("%s: purge deleted recording (%s)", plugin_name, recording->FileName());
++#if APIVERSNUM > 20101
++            if (!cVideoDirectory::RemoveVideoFile(recording->FileName()))
++#else
+             if (!RemoveVideoFile(recording->FileName()))
++#endif
+             {
+               esyslog("%s: Error while removing deleted recording (%s)", plugin_name, recording->FileName());
+               return cString::sprintf("error while purging the deleted recording \"%s\"  [%s]", Option, recording->Title());
+@@ -952,7 +956,11 @@
+                 return cString::sprintf("recording with the same name exists \"%s\" [%s]", Option, recording->Title());
+               } else
+               {
++#if APIVERSNUM > 20101
++                if (!cVideoDirectory::RenameVideoFile(recording->FileName(), (const char *)NewName))
++#else
+                 if (!RenameVideoFile(recording->FileName(), (const char *)NewName))
++#endif
+                 {
+                   esyslog("%s: Error while renaming deleted recording (%s) to (%s)", plugin_name, recording->FileName(), (const char *)NewName);
+                   return cString::sprintf("error while renaming deleted recording \"%s\" [%s]", Option, recording->Title());
+@@ -1069,7 +1077,11 @@
+ void cRemoveThread::Action(void)
+ {
+   d1syslogi("cRemoveThread::Action", "RemoveEmptyVideoDirectories thread started (pid=%d)", getpid());
++#if APIVERSNUM > 20101
++  cVideoDirectory::RemoveEmptyVideoDirectories();
++#else
+   RemoveEmptyVideoDirectories();
++#endif
+   d1syslogi("cRemoveThread::Action", "RemoveEmptyVideoDirectories thread ended (pid=%d)", getpid());
+ }
+ 

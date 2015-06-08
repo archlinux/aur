@@ -1,0 +1,25 @@
+pkgbase = vdr-undelete
+	pkgdesc = allows to undelete accidentally deleted VDR recordings
+	pkgver = 0.0.7
+	pkgrel = 20
+	url = http://projects.vdr-developer.org/projects/plg-undelete
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	depends = gcc-libs
+	depends = vdr-api=2.2.0
+	backup = etc/vdr/conf.avail/50-undelete.conf
+	source = http://projects.vdr-developer.org/attachments/download/1060/vdr-undelete-0.0.7.tgz
+	source = undelete-newmakefile-vdr-1.7.36.tgz::http://www.vdr-portal.de/index.php?page=Attachment&attachmentID=32684
+	source = undelete-vdr2.1.2compat.diff
+	source = 50-undelete.conf
+	md5sums = 667493335e0b1629e72de86a4cc7e558
+	md5sums = e3b79c3d5474e84bc5e7c624553f87a0
+	md5sums = 78999207fa6a1d3714d493d09cc096c2
+	md5sums = d37975ef3acb4bcf41c74e56606ad0c1
+
+pkgname = vdr-undelete
+
