@@ -1,0 +1,10 @@
+[Unit]
+Description=a small http proxy to simplify routing images through an SSL host
+
+[Service]
+User=nobody
+EnvironmentFile=/etc/camo
+ExecStart=/usr/bin/node /usr/lib/camo/server.js
+
+[Install]
+WantedBy=multi-user.target

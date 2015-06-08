@@ -1,0 +1,26 @@
+From 6cf180abdf1ad4a91596dc7fae315bad7d8663be Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jonne=20Ha=C3=9F?= <me@jhass.eu>
+Date: Sun, 9 Nov 2014 20:50:35 +0100
+Subject: [PATCH] append mime types
+
+---
+ mime-types.json | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/mime-types.json b/mime-types.json
+index ee2097f..a05946f 100644
+--- a/mime-types.json
++++ b/mime-types.json
+@@ -40,5 +40,8 @@
+   "image/x-rgb",
+   "image/x-xbitmap",
+   "image/x-xpixmap",
+-  "image/x-xwindowdump"
++  "image/x-xwindowdump",
++  "application/octet-stream",
++  "binary/octet-stream",
++  ""
+ ]
+-- 
+2.1.3
+

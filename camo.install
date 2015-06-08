@@ -1,0 +1,4 @@
+post_install() {
+  sed -i -e "s/CAMO_KEY=/CAMO_KEY=$(openssl rand -hex 64)/" /etc/camo
+}
+
