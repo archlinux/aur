@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Darwinia-demo
+GenericName=Darwinia-Demo
+Comment=Darwinia-Demo
+Exec=/usr/bin/darwinia-demo
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=KDE;GNOME;Application;Game;
