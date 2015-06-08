@@ -1,0 +1,26 @@
+pkgbase = perl-rdf-query
+	pkgdesc = A complete SPARQL 1.1 Query and Update implementation for use with RDF::Trine.
+	pkgver = 2.909
+	pkgrel = 1
+	url = http://search.cpan.org/dist/RDF-Query
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-exception
+	makedepends = perl-test-json
+	makedepends = perl-yaml
+	depends = perl-data-uuid
+	depends = perl-datetime-format-w3cdtf
+	depends = perl-error
+	depends = perl-json>=2
+	depends = perl-parse-recdescent
+	depends = perl-rdf-trine>=0.138
+	depends = perl-set-scalar
+	depends = perl-uri>=1.52
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GW/GWILLIAMS/RDF-Query-2.909.tar.gz
+	md5sums = 6f07ee7db42f42d399abf49e48edeed9
+	sha512sums = 3f843cc9f700f46858f9f1bba8600fe9607eb1536cb2125ca73c9da325821857e5a6c4183398542ad871228c297c3eb7b9b8fd5a51e5ce8142cd1410529499d0
+
+pkgname = perl-rdf-query
+
