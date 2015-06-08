@@ -1,0 +1,13 @@
+pkgbase = bash-completion-django
+	pkgdesc = Bash completion for django
+	pkgver = 20130925
+	pkgrel = 1
+	url = https://docs.djangoproject.com/en/dev/ref/django-admin/?from=olddocs#bash-completion
+	arch = any
+	license = GPL
+	depends = bash-completion
+	source = https://github.com/django/django/raw/master/extras/django_bash_completion
+	md5sums = 2723e26eb4d796a1fe35b20d33798fbf
+
+pkgname = bash-completion-django
+
