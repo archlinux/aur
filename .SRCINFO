@@ -1,0 +1,19 @@
+pkgbase = tora
+	pkgdesc = Toolkit for databases with support for MySQL and PostgreSQL
+	pkgver = 2.1.3
+	pkgrel = 4
+	url = http://tora.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = qscintilla
+	options = !libtool
+	options = !emptydirs
+	source = http://downloads.sourceforge.net/tora/tora-2.1.3.tar.gz
+	source = include_unistd.patch
+	md5sums = ea4a75a9daeaf58492413e3f7fe40293
+	md5sums = b621c5aa5ef7106571001a95bc11b07d
+
+pkgname = tora
+
