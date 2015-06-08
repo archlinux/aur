@@ -1,0 +1,15 @@
+pkgbase = tramp
+	pkgdesc = emacs extension that provides transparent remote file editing
+	pkgver = 2.2.11
+	pkgrel = 1
+	url = http://www.gnu.org/software/tramp/
+	install = tramp.install
+	arch = any
+	license = GPL
+	makedepends = emacs
+	makedepends = texinfo
+	source = ftp://ftp.gnu.org/gnu/tramp/tramp-2.2.11.tar.gz
+	md5sums = 1b18e19857a2677affde1c42359f4c53
+
+pkgname = tramp
+

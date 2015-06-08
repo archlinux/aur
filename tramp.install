@@ -1,0 +1,26 @@
+infodir=usr/share/info
+
+pre_install() {
+  [[ -x info-dir/tramp.gz ]] || mv $infodir/tramp.gz $infodir/tramp.orig.gz
+}
+
+post_install() {
+  [[ -x usr/bin/install-info ]] || return 0
+  mv $infodir/tramp-new.gz $infodir/tramp.gz
+  install-info "$infodir/tramp.gz" "$infodir/dir" 2> /dev/null
+}
+
+post_upgrade() {
+  [[ -x usr/bin/install-info ]] || return 0
+  install-info "$infodir/tramp.gz" "$infodir/dir" 2> /dev/null
+}
+
+pre_remove() {
+  [[ -x usr/bin/install-info ]] || return 0
+  install-info --delete "$infodir/tramp.gz" "$infodir/dir" 2> /dev/null
+  mv $infodir/tramp.orig.gz $infodir/tramp.gz
+}
+
+post_remove() {
+  install-info "$infodir/tramp.gz" "$infodir/dir" 2> /dev/null
+}
