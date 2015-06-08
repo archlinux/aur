@@ -1,0 +1,20 @@
+pkgbase = dvb-usb-af9035
+	pkgdesc = TerraTec Cinergy T Stick USB DVB-T kernel module
+	pkgver = 1
+	pkgrel = 4
+	url = http://linuxtv.org/wiki/index.php/TerraTec_Cinergy_T_Stick
+	install = dvb-usb-af9035.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = linux-headers>=3.2
+	makedepends = linux-headers<3.3
+	depends = linux>=3.2
+	depends = linux<3.3
+	source = http://mennucc1.debian.net/terratec_af9035-a_m.tar.gz
+	source = dvb-usb-af9035-linux32.patch
+	md5sums = 472caeed389c4dc57f3f545dc9e47967
+	md5sums = f48b1838a9cd57878f1196f8eed0a76b
+
+pkgname = dvb-usb-af9035
+

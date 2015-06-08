@@ -1,0 +1,69 @@
+--- terratec_af9035-a_m/af9035.c	2009-09-26 20:56:12.000000000 +0200
++++ terratec_af9035-a_m-patched/af9035.c	2012-01-30 21:16:24.000000000 +0100
+@@ -550,13 +550,13 @@
+ 	for (i = 0; i < af9035_properties_count; i++) {
+ 		/* USB1.1 set smaller buffersize and disable 2nd adapter */
+ 		if (udev->speed == USB_SPEED_FULL) {
+-			af9035_properties[i].adapter[0].stream.u.bulk.buffersize
++			af9035_properties[i].adapter[0].fe[0].stream.u.bulk.buffersize
+ 				= TS_USB11_MAX_PACKET_SIZE;
+ 			/* disable 2nd adapter because we don't have
+ 			   PID-filters */
+ 			af9035_config.dual_mode = 0;
+ 		} else {
+-			af9035_properties[i].adapter[0].stream.u.bulk.buffersize
++			af9035_properties[i].adapter[0].fe[0].stream.u.bulk.buffersize
+ 				= TS_USB20_MAX_PACKET_SIZE;
+ 		}
+ 	}
+@@ -711,10 +711,10 @@
+ 	}
+ 
+ 	/* attach demodulator */
+-	adap->fe = dvb_attach(af9033_attach, &af9035_af9033_config[adap->id],
++	adap->fe_adap[0].fe = dvb_attach(af9033_attach, &af9035_af9033_config[adap->id],
+ 		&adap->dev->i2c_adap);
+ 
+-	return adap->fe == NULL ? -ENODEV : 0;
++	return adap->fe_adap[0].fe == NULL ? -ENODEV : 0;
+ 
+ error:
+ 	return ret;
+@@ -757,7 +757,7 @@
+ 		ret = af9035_write_reg_bits(adap->dev, LINK, p_reg_top_gpiot2_o,
+ 			 reg_top_gpiot2_o_pos, reg_top_gpiot2_o_len, 1);
+ 
+-		ret = dvb_attach(tua9001_attach, adap->fe, &adap->dev->i2c_adap,
++		ret = dvb_attach(tua9001_attach, adap->fe_adap[0].fe, &adap->dev->i2c_adap,
+ 			&af9035_tua9001_config) == NULL ? -ENODEV : 0;
+ 		break;
+ 	default:
+@@ -795,6 +795,8 @@
+ 
+ 		.adapter = {
+ 			{
++			.num_frontends = 1,
++			.fe = {{
+ 				.frontend_attach =
+ 					af9035_af9033_frontend_attach,
+ 				.tuner_attach = af9035_tuner_attach,
+@@ -803,8 +805,11 @@
+ 					.count = 6,
+ 					.endpoint = 0x84,
+ 				},
++			}},
+ 			},
+ 			{
++			.num_frontends = 1,
++			.fe = {{
+ 				.frontend_attach =
+ 					af9035_af9033_frontend_attach,
+ 				.tuner_attach = af9035_tuner_attach,
+@@ -819,6 +824,7 @@
+ 						}
+ 					}
+ 				},
++			}},
+ 			}
+ 		},
+ 
