@@ -1,0 +1,14 @@
+pkgbase = perl-text-table
+	pkgdesc = Organize Data in Tables
+	pkgver = 1.130
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Text-Table
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-text-aligner>=0.05
+	source = http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/Text-Table-1.130.tar.gz
+	options = !emptydirs
+
+pkgname = perl-text-table
+
