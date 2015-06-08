@@ -1,0 +1,27 @@
+pkgbase = archipel-central-agent-git
+	pkgdesc = A solution to manage and supervise virtual machines. (Central Agent)
+	pkgver = beta6.r389.gc7f7fa6
+	pkgrel = 1
+	url = http://archipelproject.org/
+	install = install
+	arch = any
+	license = AGPL
+	makedepends = python2-setuptools>=3.4
+	makedepends = git
+	depends = archipel-agent
+	optdepends = ejabberd: An XMPP Server used by archipel for communication with VMs
+	provides = archipel-central-agent
+	conflicts = archipel-central-agent
+	options = !strip
+	options = !emptydirs
+	backup = etc/archipel/archipel-central-agent.conf
+	backup = etc/archipel/central-agent-modules.d/centraldb.conf
+	backup = etc/archipel/central-agent-modules.d/platformrequest.conf
+	backup = etc/archipel/central-agent-modules.d/xmppserver.conf
+	source = git://github.com/ArchipelProject/Archipel.git
+	source = git://github.com/ArchipelProject/xmpppy.git
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = archipel-central-agent-git
+

@@ -1,0 +1,41 @@
+pre_upgrade()
+{
+  systemctl stop archipel-central-agent && (
+    touch '/tmp/archipel-was-started'
+    echo 'Archipel Central Agent has been stopped.'
+  )
+}
+
+post_install()
+{
+  `sed -i "s/PARAM_XMPP_SERVER/localhost/" /etc/archipel/archipel-central-agent.conf`
+  `sed -i "s/PARAM_PREFIX//" /etc/archipel/archipel-central-agent.conf`
+
+  cat <<- EOF
+    You need to configure Archipel Central Agent: /etc/archipel/archipel-central-agent.conf
+    https://github.com/ArchipelProject/Archipel/wiki/Installation%3A-Agent
+    
+    ==> Start Archipel using systemd:
+    # systemctl start archipel-central-agent
+    ==> Auto-start Archipel on boot:
+    # systemctl enable archipel-central-agent
+EOF
+}
+
+post_upgrade()
+{
+  systemctl --system daemon-reload
+  if [ -f '/tmp/archipel-was-started' ]; then
+    rm '/tmp/archipel-was-started'
+    systemctl start archipel-central-agent
+    echo 'Archipel Central Agent has been started.'
+  fi
+}
+
+post_remove()
+{
+  cat <<- EOF
+    ==> You may safely delete Archipel Central Agent config and files:
+    # rm /etc/archipel/archipel-central-agen.conf /etc/archipel/central-agent-modules.d -rf
+EOF
+}
