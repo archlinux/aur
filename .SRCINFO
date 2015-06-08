@@ -1,0 +1,22 @@
+pkgbase = xcl-git
+	pkgdesc = An native-code implementation of Common Lisp
+	pkgver = 0.0.0.291.672.g1410ba8
+	pkgrel = 5
+	url = http://armedbear.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = gcc-libs
+	provides = common-lisp
+	provides = xcl
+	conflicts = xcl
+	options = !makeflags
+	backup = etc/xclrc
+	source = git://github.com/gnooth/xcl.git
+	source = etcxclrc
+	md5sums = SKIP
+	md5sums = 6f426ad20c0086460067915091cefae8
+
+pkgname = xcl-git
+

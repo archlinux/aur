@@ -1,0 +1,19 @@
+; -*- Mode: Lisp -*-
+(cl:in-package "CL-USER")
+(setq sys:*mumble* t)
+(setq *load-path*
+      (mapcar (lambda (dirname)
+                (merge-pathnames dirname *xcl-home*))
+              (list "lisp/"
+                    "compiler/"
+                    "clos/"
+                    #+x86
+                    "compiler/x86/"
+                    #+x86-64
+                    "compiler/x86-64/")))
+(require "ASDF")
+#-windows
+(when (probe-directory #p"/usr/share/xcl/")
+  (pushnew #p"/usr/share/xcl/" asdf::*central-registry* :test 'equal))
+#+asdf2
+(asdf:disable-output-translations)
