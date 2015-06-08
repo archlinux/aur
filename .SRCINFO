@@ -1,0 +1,17 @@
+pkgbase = watchman-sm-services-git
+	pkgdesc = Service scripts for watchman
+	pkgver = r126.578fdab
+	pkgrel = 1
+	url = https://github.com/fbt/watchman-services
+	arch = any
+	license = BSD
+	provides = watchman-sm-services
+	conflicts = watchman-sm-services
+	source = watchman-sm-services-git::git+https://git.fleshless.org/watchman-services
+	md5sums = SKIP
+
+pkgname = watchman-sm-services-git
+	backup = 
+	backup = etc/watchman/init.d/*
+	backup = etc/watchman/conf.d/*
+
