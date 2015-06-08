@@ -1,6 +1,6 @@
 # Maintainer: Miguel de Val-Borro <miguel at archlinux dot net>
 pkgname=('python-sphinx-bootstrap-theme' 'python2-sphinx-bootstrap-theme')
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="Sphinx documentation theme that integrates the Bootstrap framework"
 arch=('any')
@@ -8,7 +8,7 @@ url="http://ryan-roemer.github.io/sphinx-bootstrap-theme/"
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://pypi.python.org/packages/source/s/sphinx-bootstrap-theme/sphinx-bootstrap-theme-${pkgver}.tar.gz")
-md5sums=('06ca1cb93aa7372e02815d43419b269c')
+md5sums=('7f5d5a8b105686add792c38bdf46ee98')
 
 build() {
   cp -r ${srcdir}/sphinx-bootstrap-theme-${pkgver} ${srcdir}/sphinx-bootstrap-theme-${pkgver}-py2
