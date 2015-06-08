@@ -1,0 +1,23 @@
+pkgbase = eclipse-testng
+	pkgdesc = A testing framework inspired from JUnit and NUnit
+	pkgver = 6.8.5
+	pkgrel = 1
+	url = http://testng.org/
+	arch = any
+	license = APACHE
+	depends = eclipse>=3.4
+	noextract = artifacts.jar
+	noextract = content.jar
+	noextract = features.jar
+	noextract = plugins.jar
+	source = artifacts.jar::http://beust.com/eclipse-old/eclipse-6.8.5.20130517_2211/artifacts.jar
+	source = content.jar::http://beust.com/eclipse-old/eclipse-6.8.5.20130517_2211/content.jar
+	source = features.jar::http://beust.com/eclipse-old/eclipse-6.8.5.20130517_2211/features/org.testng.eclipse_6.8.5.20130517_2211.jar
+	source = plugins.jar::http://beust.com/eclipse-old/eclipse-6.8.5.20130517_2211/plugins/org.testng.eclipse_6.8.5.20130517_2211.jar
+	sha1sums = ca71c805778833145ec9350a4e18ac2b39ac4494
+	sha1sums = 17c2f8110805bc7dc4d741643590c332d5b45c75
+	sha1sums = 84474455723c830f221e473cd478865a23c1dc17
+	sha1sums = 6d7fddc2a0c78250841acecbdfe373feecaae52d
+
+pkgname = eclipse-testng
+
