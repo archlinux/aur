@@ -1,0 +1,21 @@
+pkgbase = apper
+	pkgdesc = KDE tools for PackageKit
+	pkgver = 0.9.2
+	pkgrel = 1
+	epoch = 1
+	url = http://kde-apps.org/content/show.php/Apper?content=84745
+	install = apper.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = kdebase-workspace
+	depends = packagekit-qt4
+	depends = kdebase-runtime
+	optdepends = kdebase-workspace: updates daemon
+	source = http://download.kde.org/stable/apper/0.9.2/src/apper-0.9.2.tar.xz
+	sha256sums = 5bc52b3db723603e12ab98205d54c7c9364905b54939499271db33d82bdd227f
+
+pkgname = apper
+
