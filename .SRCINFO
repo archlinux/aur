@@ -1,0 +1,20 @@
+pkgbase = haskell-pem
+	pkgdesc = Privacy Enhanced Mail (PEM) format reader and writer.
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/pem
+	install = haskell-pem.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = haskell-base64-bytestring
+	depends = haskell-cereal
+	depends = haskell-mtl>=2.0.1.0
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/pem/0.2.2/pem-0.2.2.tar.gz
+	md5sums = 66489241d291cc8e402263c9f8ede91f
+
+pkgname = haskell-pem
+
