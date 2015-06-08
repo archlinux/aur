@@ -1,0 +1,19 @@
+pkgbase = fgrun
+	pkgdesc = Frontend for FlightGear.
+	pkgver = 3.4.0
+	pkgrel = 3
+	url = http://sourceforge.net/projects/flightgear/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	makedepends = simgear
+	depends = fltk
+	depends = openscenegraph
+	source = fgrun::git+http://git.code.sf.net/p/flightgear/fgrun#branch=release/3.4.0
+	sha256sums = SKIP
+
+pkgname = fgrun
+
