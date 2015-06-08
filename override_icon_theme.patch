@@ -1,0 +1,65 @@
+--- main.cpp	2011-08-16 03:37:09.000000000 -0700
++++ main2.cpp	2012-01-23 23:25:43.408546751 -0800
+@@ -28,7 +28,7 @@
+ #include <QDBusMessage>
+ 
+ //alex: use qtbg, qtfg, border width (1 instead of 3) and other positions (bottom and top right) by default
+-char configcontent[1024]="\
++char configcontent[1100]="\
+ #Widget style\n\
+ GeneralStyle = margin: 0px; background: qtbg; border: 1px solid qtfg; color: qtfg; border-radius: 15px; font-size: 14px;\n\
+ \n\
+@@ -44,7 +44,8 @@
+ #Opacity floating point value: 0-1\n\
+ Opacity = 0.8\n\
+ MaxIconSize = 80\n\
+-\n\
++#You should only set this if Qt isn't detecting the right icon theme to use\n\
++OverrideIconTheme = \n\
+ #Widgets position: \n\
+ # 0 (or BL) - bottomLeft\n\
+ # 1 (or BR) - bottomRight\n\
+
+--- notifyarea.cpp	2011-08-16 03:37:09.000000000 -0700
++++ notifyarea2.cpp	2012-01-23 23:09:44.603741043 -0800
+@@ -62,6 +62,18 @@
+ 	{
+ 	widgetStyle = "margin: 0px; background: black; border: 3px solid white; color: lime; border-radius: 15px;";
+ 	}
++iconOverride = this->readConfigString("OverrideIconTheme");
++if(iconOverride == NULL){
++	systemIcon = QIcon::themeName();
++}
++if(iconOverride!="")
++{
++	QIcon::setThemeName(iconOverride);
++}
++else
++{
++	QIcon::setThemeName(systemIcon);
++}
+ //alex:
+ if (widgetStyle.contains("qtfg") || widgetStyle.contains("qtbg"))
+ {
+
+--- notifyarea.h	2011-08-16 03:37:09.000000000 -0700
++++ notifyarea2.h	2012-01-23 23:06:20.588179625 -0800
+@@ -67,6 +67,8 @@
+ float maxOpacity;
+ int maxIconSize;
+ QString widgetStyle;
++QString iconOverride;
++QString systemIcon;
+ QString UrgencyTag[4];
+ QMyDBusAbstractAdaptor *adaptor;
+
+--- qtnotifydaemon.pro	2011-08-09 09:22:07.000000000 -0700
++++ qtnotifydaemon2.pro	2012-01-23 22:52:52.259225385 -0800
+@@ -8,6 +8,7 @@
+ DEPENDPATH += .
+ INCLUDEPATH += .
+ QT += dbus
++LIBS += -lX11
+ RESOURCES += images.qrc
+ 
+ # Input

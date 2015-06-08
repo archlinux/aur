@@ -1,0 +1,22 @@
+diff -aur src.cpy/main.cpp src.cpy2/main.cpp
+--- src.cpy/main.cpp	2012-06-05 12:32:37.554374898 -0700
++++ src.cpy2/main.cpp	2012-06-05 12:18:07.000000000 -0700
+@@ -26,6 +26,7 @@
+ #include "notifywidget.h"
+ #include "notifyarea.h"
+ #include <QDBusMessage>
++#include <unistd.h>
+ 
+ //alex: use qtbg, qtfg, border width (1 instead of 3) and other positions (bottom and top right) by default
+ char configcontent[1100]="\
+diff -aur src.cpy/notifyarea.cpp src.cpy2/notifyarea.cpp
+--- src.cpy/notifyarea.cpp	2012-06-05 12:32:33.677708039 -0700
++++ src.cpy2/notifyarea.cpp	2012-06-05 12:18:33.000000000 -0700
+@@ -25,6 +25,7 @@
+ #include "notifyarea.h"
+ #include "notifywidget.h"
+ #include "dbus.h"
++#include <unistd.h>
+ 
+ #include <X11/Xlib.h> //alex
+ 

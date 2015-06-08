@@ -1,0 +1,25 @@
+pkgbase = qtnotifydaemon
+	pkgdesc = Configurable and flexible Qt notification daemon
+	pkgver = 1.0.14
+	pkgrel = 4
+	url = http://sourceforge.net/projects/qtnotifydaemon
+	install = qtnotifydaemon.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qt4
+	provides = notification-daemon
+	provides = xfce4-notifyd
+	provides = notify-osd
+	conflicts = notification-daemon
+	conflicts = xfce4-notifyd
+	conflicts = notify-osd
+	source = http://downloads.sourceforge.net/project/qtnotifydaemon/qtnotifydaemon_1.0.14.orig.tar.gz
+	source = override_icon_theme.patch
+	source = gcc4.7fix.patch
+	md5sums = af57385fb4acb48ce1ad40aaac369a4e
+	md5sums = cf6d30e755839eb05b5d63c6754a8524
+	md5sums = 70c283997217001b12ee7721d17491fc
+
+pkgname = qtnotifydaemon
+
