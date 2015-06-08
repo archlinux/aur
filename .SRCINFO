@@ -1,0 +1,15 @@
+pkgbase = mkrom
+	pkgdesc = Writes files into ROM images for TI calculators
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/KnightOS/mkrom
+	arch = i386
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = asciidoc
+	source = https://github.com/KnightOS/mkrom/archive/1.0.1.tar.gz
+	sha1sums = fa37edabf09592d745bd396f904a019c5336cfe9
+
+pkgname = mkrom
+
