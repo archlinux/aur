@@ -1,0 +1,10 @@
+[Unit]
+Description=Github clone
+After=network.target
+
+[Service]
+Environment=GITBUCKET_HOME=/var/lib/gitbucket
+ExecStart=/usr/bin/java -jar /usr/share/java/gitbucket.war
+
+[Install]
+WantedBy=multi-user.target
