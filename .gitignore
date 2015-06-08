@@ -1,0 +1,5 @@
+pkg/
+src/
+oggextract.c
+*.tar.xz
+*.tar.gz
