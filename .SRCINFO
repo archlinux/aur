@@ -1,0 +1,14 @@
+pkgbase = python2-txdbus-git
+	pkgdesc = Native Python implementation of DBus for Twisted
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/cocagne/txdbus
+	arch = any
+	license = MIT
+	depends = python2
+	depends = twisted
+	source = txdbus::git+https://github.com/cocagne/txdbus
+	md5sums = SKIP
+
+pkgname = python2-txdbus-git
+
