@@ -1,0 +1,33 @@
+pkgbase = openscada
+	pkgdesc = OpenSCADA is a open supervisory control and data acquisition system
+	pkgver = 0.8.13
+	pkgrel = 1
+	url = http://oscada.org/
+	arch = i686
+	arch = x86_64
+	groups = devel
+	license = GPL
+	depends = gettext
+	depends = zlib
+	depends = pcre
+	depends = gd
+	depends = libmysqlclient
+	depends = sqlite
+	depends = postgresql-libs
+	depends = libfbclient
+	depends = openssl
+	depends = bison
+	depends = net-snmp
+	depends = lm_sensors
+	depends = glibc
+	depends = portaudio
+	depends = qt4
+	depends = fftw
+	depends = phonon
+	conflicts = oscada
+	conflicts = openscada-svn
+	source = ftp://ftp.oscada.org/OpenSCADA/0.8.0/openscada-0.8.13-1.src.rpm
+	md5sums = 3d8ca359c7e6372761ae88e9a5b15279
+
+pkgname = openscada
+
