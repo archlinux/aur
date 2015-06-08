@@ -1,0 +1,37 @@
+pkgbase = kdevelop-git
+	pkgdesc = A C/C++ development environment for KDE. (GIT Version)
+	pkgver = 4.90.90.r20707.07781db
+	pkgrel = 1
+	url = http://www.kdevelop.org/
+	install = kdevelop-git.install
+	arch = i686
+	arch = x86_64
+	groups = kde
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = okteta
+	makedepends = krunner
+	makedepends = plasma-framework
+	depends = qt5-tools
+	depends = kdevplatform-git
+	depends = krunner
+	depends = hicolor-icon-theme
+	optdepends = krunner: For enabling the KDevelop runner
+	optdepends = plasma-framework: Plasma libraries for enabling the plasma addons
+	optdepends = okteta: hex editor integration
+	optdepends = konsole: embedded terminal
+	optdepends = subversion: SVN support
+	optdepends = git: Git support
+	optdepends = cvs: Concurrent Versions System support
+	optdepends = gdb: GNU Debugger support
+	optdepends = qt4-doc: qt4 documentation integration
+	optdepends = qt5-doc: qt5 documentation integration
+	optdepends = cmake: build system
+	provides = kdevelop
+	conflicts = kdevelop
+	source = git+git://anongit.kde.org/kdevelop
+	sha1sums = SKIP
+
+pkgname = kdevelop-git
+
