@@ -1,0 +1,25 @@
+pkgbase = eyesight
+	pkgdesc = EyeSight: An image viewing program
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/hawaii-desktop
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	groups = hawaii
+	license = GPL2
+	makedepends = cmake
+	depends = qt5-base
+	depends = qt5-tools
+	optdepends = qt5-svg: for svg support
+	optdepends = qt5-imageformats: for mng, tga, tiff, bmp image support
+	conflicts = hawaii-eyesight
+	conflicts = eyesight
+	replaces = hawaii-eyesight
+	options = debug
+	source = https://github.com/hawaii-desktop/eyesight/archive/v0.1.2.tar.gz
+	md5sums = 037efe34e9c4c3596a452523f42c388a
+
+pkgname = eyesight
+
