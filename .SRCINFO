@@ -1,0 +1,22 @@
+pkgbase = dmenu-pango
+	pkgdesc = Dynamic X menu - with pango support
+	pkgver = 4.5
+	pkgrel = 3
+	url = http://tools.suckless.org/dmenu/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = sh
+	depends = libxinerama
+	depends = libxft
+	depends = pango
+	provides = dmenu
+	conflicts = dmenu
+	conflicts = dmenu-xft
+	source = http://dl.suckless.org/tools/dmenu-4.5.tar.gz
+	source = dmenu-4.5-pango.patch
+	md5sums = 9c46169ed703732ec52ed946c27d84b4
+	md5sums = a11076145db77597cf6c2e184c97c0d4
+
+pkgname = dmenu-pango
+

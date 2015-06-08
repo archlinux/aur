@@ -1,0 +1,435 @@
+diff -uN old/config.mk dmenu-4.5/config.mk
+--- old/config.mk	2012-01-08 14:18:43.000000000 +0200
++++ dmenu-4.5/config.mk	2012-07-15 23:34:12.053247967 +0300
+@@ -12,9 +12,13 @@
+ XINERAMALIBS  = -lXinerama
+ XINERAMAFLAGS = -DXINERAMA
+
++# Xft, comment if you don't want it
++XFTINC = `pkg-config --cflags xft pango pangoxft`
++XFTLIBS  = -lXrender -lfreetype -lz `pkg-config --libs xft pango pangoxft`
++
+ # includes and libs
+-INCS = -I${X11INC}
+-LIBS = -L${X11LIB} -lX11 ${XINERAMALIBS}
++INCS = -I${X11INC} ${XFTINC}
++LIBS = -L${X11LIB} -lX11 ${XINERAMALIBS} ${XFTLIBS}
+
+ # flags
+ CPPFLAGS = -D_BSD_SOURCE -D_POSIX_C_SOURCE=2 -DVERSION=\"${VERSION}\" ${XINERAMAFLAGS}
+diff -uN old/dmenu.1 dmenu-4.5/dmenu.1
+--- old/dmenu.1	2012-01-08 14:18:43.000000000 +0200
++++ dmenu-4.5/dmenu.1	2012-07-15 22:33:51.769631419 +0300
+@@ -53,7 +53,7 @@
+ defines the prompt to be displayed to the left of the input field.
+ .TP
+ .BI \-fn " font"
+-defines the font or font set used.
++defines the font or font set used. eg. "fixed" or "Monospace-12:normal" (an xft font)
+ .TP
+ .BI \-nb " color"
+ defines the normal background color.
+diff -uN old/dmenu.c dmenu-4.5/dmenu.c
+--- old/dmenu.c	2012-01-08 14:18:43.000000000 +0200
++++ dmenu-4.5/dmenu.c	2012-07-15 23:34:53.062952659 +0300
+@@ -15,8 +15,13 @@
+
+ #define INTERSECT(x,y,w,h,r)  (MAX(0, MIN((x)+(w),(r).x_org+(r).width)  - MAX((x),(r).x_org)) \
+                              * MAX(0, MIN((y)+(h),(r).y_org+(r).height) - MAX((y),(r).y_org)))
++#ifndef MIN
+ #define MIN(a,b)              ((a) < (b) ? (a) : (b))
++#endif
++#ifndef MAX
+ #define MAX(a,b)              ((a) > (b) ? (a) : (b))
++#endif
++#define DEFFONT "Monospace 12"
+
+ typedef struct Item Item;
+ struct Item {
+@@ -26,6 +31,7 @@
+
+ static void appenditem(Item *item, Item **list, Item **last);
+ static void calcoffsets(void);
++static void cleanup(void);
+ static char *cistrstr(const char *s, const char *sub);
+ static void drawmenu(void);
+ static void grabkeyboard(void);
+@@ -50,10 +56,12 @@
+ static const char *selbgcolor  = "#005577";
+ static const char *selfgcolor  = "#eeeeee";
+ static unsigned int lines = 0;
+-static unsigned long normcol[ColLast];
+-static unsigned long selcol[ColLast];
++static ColorSet *normcol;
++static ColorSet *selcol;
+ static Atom clip, utf8;
+ static Bool topbar = True;
++static Bool running = True;
++static int ret = 0;
+ static DC *dc;
+ static Item *items = NULL;
+ static Item *matches, *matchend;
+@@ -104,7 +112,9 @@
+ 			usage();
+
+ 	dc = initdc();
+-	initfont(dc, font);
++	initfont(dc, font ? font : DEFFONT);
++	normcol = initcolor(dc, normfgcolor, normbgcolor);
++	selcol = initcolor(dc, selfgcolor, selbgcolor);
+
+ 	if(fast) {
+ 		grabkeyboard();
+@@ -117,7 +127,8 @@
+ 	setup();
+ 	run();
+
+-	return 1; /* unreachable */
++	cleanup();
++	return ret;
+ }
+
+ void
+@@ -160,6 +171,15 @@
+ }
+
+ void
++cleanup(void) {
++    freecol(dc, normcol);
++    freecol(dc, selcol);
++    XDestroyWindow(dc->dpy, win);
++    XUngrabKeyboard(dc->dpy, CurrentTime);
++    //freedc(dc);
++}
++
++void
+ drawmenu(void) {
+ 	int curpos;
+ 	Item *item;
+@@ -167,7 +187,7 @@
+ 	dc->x = 0;
+ 	dc->y = 0;
+ 	dc->h = bh;
+-	drawrect(dc, 0, 0, mw, mh, True, BG(dc, normcol));
++	drawrect(dc, 0, 0, mw, mh, True, normcol->BG);
+
+ 	if(prompt) {
+ 		dc->w = promptw;
+@@ -178,7 +198,7 @@
+ 	dc->w = (lines > 0 || !matches) ? mw - dc->x : inputw;
+ 	drawtext(dc, text, normcol);
+ 	if((curpos = textnw(dc, text, cursor) + dc->h/2 - 2) < dc->w)
+-		drawrect(dc, curpos, 2, 1, dc->h - 4, True, FG(dc, normcol));
++		drawrect(dc, curpos, 2, 1, dc->h - 4, True, normcol->FG);
+
+ 	if(lines > 0) {
+ 		/* draw vertical list */
+@@ -321,7 +341,8 @@
+ 		sel = matchend;
+ 		break;
+ 	case XK_Escape:
+-		exit(EXIT_FAILURE);
++        ret = EXIT_FAILURE;
++        running = False;
+ 	case XK_Home:
+ 		if(sel == matches) {
+ 			cursor = 0;
+@@ -359,7 +380,8 @@
+ 	case XK_Return:
+ 	case XK_KP_Enter:
+ 		puts((sel && !(ev->state & ShiftMask)) ? sel->text : text);
+-		exit(EXIT_SUCCESS);
++		ret = EXIT_SUCCESS;
++		running = False;
+ 	case XK_Right:
+ 		if(text[cursor] != '\0') {
+ 			cursor = nextrune(+1);
+@@ -490,7 +512,7 @@
+ run(void) {
+ 	XEvent ev;
+
+-	while(!XNextEvent(dc->dpy, &ev)) {
++	while(running && !XNextEvent(dc->dpy, &ev)) {
+ 		if(XFilterEvent(&ev, win))
+ 			continue;
+ 		switch(ev.type) {
+@@ -524,11 +546,6 @@
+ 	XineramaScreenInfo *info;
+ #endif
+
+-	normcol[ColBG] = getcolor(dc, normbgcolor);
+-	normcol[ColFG] = getcolor(dc, normfgcolor);
+-	selcol[ColBG]  = getcolor(dc, selbgcolor);
+-	selcol[ColFG]  = getcolor(dc, selfgcolor);
+-
+ 	clip = XInternAtom(dc->dpy, "CLIPBOARD",   False);
+ 	utf8 = XInternAtom(dc->dpy, "UTF8_STRING", False);
+
+@@ -582,7 +599,7 @@
+
+ 	/* create menu window */
+ 	swa.override_redirect = True;
+-	swa.background_pixel = normcol[ColBG];
++	swa.background_pixel = normcol->BG;
+ 	swa.event_mask = ExposureMask | KeyPressMask | VisibilityChangeMask;
+ 	win = XCreateWindow(dc->dpy, root, x, y, mw, mh, 0,
+ 	                    DefaultDepth(dc->dpy, screen), CopyFromParent,
+diff -uN old/draw.c dmenu-4.5/draw.c
+--- old/draw.c	2012-01-08 14:18:43.000000000 +0200
++++ dmenu-4.5/draw.c	2012-07-15 23:33:33.086862006 +0300
+@@ -7,11 +7,12 @@
+ #include <X11/Xlib.h>
+ #include "draw.h"
+
++#ifndef MAX
+ #define MAX(a, b)  ((a) > (b) ? (a) : (b))
++#endif
++#ifndef MIN
+ #define MIN(a, b)  ((a) < (b) ? (a) : (b))
+-#define DEFAULTFN  "fixed"
+-
+-static Bool loadfont(DC *dc, const char *fontstr);
++#endif
+
+ void
+ drawrect(DC *dc, int x, int y, unsigned int w, unsigned int h, Bool fill, unsigned long color) {
+@@ -23,7 +24,7 @@
+ }
+
+ void
+-drawtext(DC *dc, const char *text, unsigned long col[ColLast]) {
++drawtext(DC *dc, const char *text, ColorSet *col) {
+ 	char buf[BUFSIZ];
+ 	size_t mn, n = strlen(text);
+
+@@ -35,22 +36,21 @@
+ 	if(mn < n)
+ 		for(n = MAX(mn-3, 0); n < mn; buf[n++] = '.');
+
+-	drawrect(dc, 0, 0, dc->w, dc->h, True, BG(dc, col));
++	drawrect(dc, 0, 0, dc->w, dc->h, True, col->BG);
+ 	drawtextn(dc, buf, mn, col);
+ }
+
+ void
+-drawtextn(DC *dc, const char *text, size_t n, unsigned long col[ColLast]) {
+-	int x = dc->x + dc->font.height/2;
+-	int y = dc->y + dc->font.ascent+1;
+-
+-	XSetForeground(dc->dpy, dc->gc, FG(dc, col));
+-	if(dc->font.set)
+-		XmbDrawString(dc->dpy, dc->canvas, dc->font.set, dc->gc, x, y, text, n);
+-	else {
+-		XSetFont(dc->dpy, dc->gc, dc->font.xfont->fid);
+-		XDrawString(dc->dpy, dc->canvas, dc->gc, x, y, text, n);
+-	}
++drawtextn(DC *dc, const char *text, size_t n, ColorSet *col) {
++        int x = dc->x + dc->font.height/2;
++	int y = dc->y+1;
++
++	XSetForeground(dc->dpy, dc->gc, col->FG);
++        if (!dc->xftdraw)
++                eprintf("error, xft drawable does not exist");
++        pango_layout_set_text(dc->plo, text, n);
++        pango_xft_render_layout(dc->xftdraw, &col->FG_xft, dc->plo,
++                        x * PANGO_SCALE, y * PANGO_SCALE);
+ }
+
+ void
+@@ -69,16 +69,25 @@
+ }
+
+ void
++freecol(DC *dc, ColorSet *col) {
++    if(col) {
++        if(&col->FG_xft)
++            XftColorFree(dc->dpy, DefaultVisual(dc->dpy, DefaultScreen(dc->dpy)),
++                DefaultColormap(dc->dpy, DefaultScreen(dc->dpy)), &col->FG_xft);
++        free(col);
++    }
++}
++
++void
+ freedc(DC *dc) {
+-	if(dc->font.set)
+-		XFreeFontSet(dc->dpy, dc->font.set);
+-	if(dc->font.xfont)
+-		XFreeFont(dc->dpy, dc->font.xfont);
+-	if(dc->canvas)
++    if(dc->canvas)
+ 		XFreePixmap(dc->dpy, dc->canvas);
+-	XFreeGC(dc->dpy, dc->gc);
+-	XCloseDisplay(dc->dpy);
+-	free(dc);
++	if(dc->gc)
++        XFreeGC(dc->dpy, dc->gc);
++	if(dc->dpy)
++        XCloseDisplay(dc->dpy);
++	if(dc)
++        free(dc);
+ }
+
+ unsigned long
+@@ -91,6 +100,19 @@
+ 	return color.pixel;
+ }
+
++ColorSet *
++initcolor(DC *dc, const char * foreground, const char * background) {
++	ColorSet * col = (ColorSet *)malloc(sizeof(ColorSet));
++	if(!col)
++		eprintf("error, cannot allocate memory for color set");
++        col->BG = getcolor(dc, background);
++        col->FG = getcolor(dc, foreground);
++	if (!XftColorAllocName(dc->dpy, DefaultVisual(dc->dpy, DefaultScreen(dc->dpy)),
++                DefaultColormap(dc->dpy, DefaultScreen(dc->dpy)), foreground, &col->FG_xft))
++                eprintf("error, cannot allocate xft font color '%s'\n", foreground);
++	return col;
++}
++
+ DC *
+ initdc(void) {
+ 	DC *dc;
+@@ -109,39 +131,22 @@
+
+ void
+ initfont(DC *dc, const char *fontstr) {
+-	if(!loadfont(dc, fontstr ? fontstr : DEFAULTFN)) {
+-		if(fontstr != NULL)
+-			fprintf(stderr, "cannot load font '%s'\n", fontstr);
+-		if(fontstr == NULL || !loadfont(dc, DEFAULTFN))
+-			eprintf("cannot load font '%s'\n", DEFAULTFN);
+-	}
+-	dc->font.height = dc->font.ascent + dc->font.descent;
+-}
++        PangoFontMetrics *metrics;
+
+-Bool
+-loadfont(DC *dc, const char *fontstr) {
+-	char *def, **missing, **names;
+-	int i, n;
+-	XFontStruct **xfonts;
+-
+-	if(!*fontstr)
+-		return False;
+-	if((dc->font.set = XCreateFontSet(dc->dpy, fontstr, &missing, &n, &def))) {
+-		n = XFontsOfFontSet(dc->font.set, &xfonts, &names);
+-		for(i = 0; i < n; i++) {
+-			dc->font.ascent  = MAX(dc->font.ascent,  xfonts[i]->ascent);
+-			dc->font.descent = MAX(dc->font.descent, xfonts[i]->descent);
+-			dc->font.width   = MAX(dc->font.width,   xfonts[i]->max_bounds.width);
+-		}
+-	}
+-	else if((dc->font.xfont = XLoadQueryFont(dc->dpy, fontstr))) {
+-		dc->font.ascent  = dc->font.xfont->ascent;
+-		dc->font.descent = dc->font.xfont->descent;
+-		dc->font.width   = dc->font.xfont->max_bounds.width;
+-	}
+-	if(missing)
+-		XFreeStringList(missing);
+-	return dc->font.set || dc->font.xfont;
++        dc->pgc = pango_xft_get_context(dc->dpy, 0);
++        dc->pfd = pango_font_description_from_string(fontstr);
++        if (pango_font_description_get_size(dc->pfd) == 0)
++           pango_font_description_set_size(dc->pfd, 12 * PANGO_SCALE);
++
++        metrics = pango_context_get_metrics(dc->pgc, dc->pfd, pango_language_from_string(""));
++	dc->font.ascent = pango_font_metrics_get_ascent(metrics) / PANGO_SCALE;
++        dc->font.descent = pango_font_metrics_get_descent(metrics) / PANGO_SCALE;
++
++        pango_font_metrics_unref(metrics);
++
++        dc->plo = pango_layout_new(dc->pgc);
++        pango_layout_set_font_description(dc->plo, dc->pfd);
++        dc->font.height = dc->font.ascent + dc->font.descent;
+ }
+
+ void
+@@ -151,24 +154,27 @@
+
+ void
+ resizedc(DC *dc, unsigned int w, unsigned int h) {
++	int screen = DefaultScreen(dc->dpy);
+ 	if(dc->canvas)
+ 		XFreePixmap(dc->dpy, dc->canvas);
+
+ 	dc->w = w;
+ 	dc->h = h;
+ 	dc->canvas = XCreatePixmap(dc->dpy, DefaultRootWindow(dc->dpy), w, h,
+-	                           DefaultDepth(dc->dpy, DefaultScreen(dc->dpy)));
++	                           DefaultDepth(dc->dpy, screen));
++	if (!(dc->xftdraw)) {
++		dc->xftdraw = XftDrawCreate(dc->dpy, dc->canvas, DefaultVisual(dc->dpy,screen), DefaultColormap(dc->dpy,screen));
++		if(!(dc->xftdraw))
++			eprintf("error, cannot create xft drawable\n");
++	}
+ }
+
+ int
+ textnw(DC *dc, const char *text, size_t len) {
+-	if(dc->font.set) {
+-		XRectangle r;
+-
+-		XmbTextExtents(dc->font.set, text, len, NULL, &r);
+-		return r.width;
+-	}
+-	return XTextWidth(dc->font.xfont, text, len);
++        PangoRectangle r;
++        pango_layout_set_text(dc->plo, text, len);
++        pango_layout_get_extents(dc->plo, &r, 0);
++        return r.width / PANGO_SCALE;
+ }
+
+ int
+diff -uN old/draw.h dmenu-4.5/draw.h
+--- old/draw.h	2012-01-08 14:18:43.000000000 +0200
++++ dmenu-4.5/draw.h	2012-07-15 23:31:56.100894384 +0300
+@@ -1,9 +1,8 @@
+ /* See LICENSE file for copyright and license details. */
+
+-#define FG(dc, col)  ((col)[(dc)->invert ? ColBG : ColFG])
+-#define BG(dc, col)  ((col)[(dc)->invert ? ColFG : ColBG])
+-
+-enum { ColBG, ColFG, ColBorder, ColLast };
++#include <pango/pango.h>
++#include <pango/pangoxft.h>
++#include <pango/pango-font.h>
+
+ typedef struct {
+ 	int x, y, w, h;
+@@ -11,22 +10,31 @@
+ 	Display *dpy;
+ 	GC gc;
+ 	Pixmap canvas;
++	XftDraw *xftdraw;
++        PangoContext *pgc;
++        PangoLayout *plo;
++        PangoFontDescription *pfd;
+ 	struct {
+ 		int ascent;
+ 		int descent;
+ 		int height;
+ 		int width;
+-		XFontSet set;
+-		XFontStruct *xfont;
+ 	} font;
+ } DC;  /* draw context */
+
++typedef struct {
++        unsigned long FG, BG;
++	XftColor FG_xft;
++} ColorSet;
++
+ void drawrect(DC *dc, int x, int y, unsigned int w, unsigned int h, Bool fill, unsigned long color);
+-void drawtext(DC *dc, const char *text, unsigned long col[ColLast]);
+-void drawtextn(DC *dc, const char *text, size_t n, unsigned long col[ColLast]);
++void drawtext(DC *dc, const char *text, ColorSet *col);
++void drawtextn(DC *dc, const char *text, size_t n, ColorSet *col);
++void freecol(DC *dc, ColorSet *col);
+ void eprintf(const char *fmt, ...);
+ void freedc(DC *dc);
+ unsigned long getcolor(DC *dc, const char *colstr);
++ColorSet *initcolor(DC *dc, const char *foreground, const char *background);
+ DC *initdc(void);
+ void initfont(DC *dc, const char *fontstr);
+ void mapdc(DC *dc, Window win, unsigned int w, unsigned int h);
