@@ -13,6 +13,11 @@ makedepends=('pkgconfig' 'bzr' 'xfce4-dev-tools' 'gcc' 'intltool')
 _bzrmod=xfce4-nameday-plugin
 _bzrtrunk=lp:${_bzrmod}
 
+pkgver() {
+    cd "${_bzrmod}"
+	printf "r%s" "$(bzr revno)"
+}
+
 build() {
   cd "$srcdir"
   msg "Getting source ..."
