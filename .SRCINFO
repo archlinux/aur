@@ -1,0 +1,15 @@
+pkgbase = wps-office-extension-ukrainian-dictionary
+	pkgdesc = Ukrainian dictionary for WPS Office
+	pkgver = 20131121
+	pkgrel = 2
+	url = http://wps-community.org/download/dicts
+	arch = any
+	groups = wps-office-extensions
+	license = custom
+	makedepends = unzip
+	depends = wps-office
+	source = http://wps-community.org/download/dicts/uk_UA.zip
+	sha1sums = f816233f69c420a37cf9651a2e618734ecffa2f5
+
+pkgname = wps-office-extension-ukrainian-dictionary
+
