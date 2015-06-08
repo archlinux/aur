@@ -1,0 +1,15 @@
+pkgbase = wps-office-extension-french-dictionary
+	pkgdesc = French dictionary for WPS Office
+	pkgver = 20131121
+	pkgrel = 2
+	url = http://wps-community.org/download/dicts
+	arch = any
+	groups = wps-office-extensions
+	license = custom
+	makedepends = unzip
+	depends = wps-office
+	source = http://wps-community.org/download/dicts/fr_FR.zip
+	sha1sums = 2ad526cd456d474e44eac3941f85b2329120ce20
+
+pkgname = wps-office-extension-french-dictionary
+
