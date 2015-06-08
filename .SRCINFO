@@ -1,0 +1,21 @@
+pkgbase = fs-uae
+	pkgdesc = Focuses on emulating Amiga games using the accurate emulation code from WinUAE
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = http://fs-uae.net/
+	install = fs-uae.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = xorg-xinput
+	depends = sdl
+	depends = openal
+	depends = mesa
+	depends = freetype2
+	depends = gtk-update-icon-cache
+	depends = glu
+	source = http://fs-uae.net//stable/2.4.1/fs-uae-2.4.1.tar.gz
+	md5sums = 31ac42182043d9d41240d84bd172eab2
+
+pkgname = fs-uae
+
