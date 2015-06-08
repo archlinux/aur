@@ -1,0 +1,14 @@
+pkgbase = plymouth-theme-numix-bzr
+	pkgdesc = Numix theme for Plymouth
+	pkgver = r1
+	pkgrel = 1
+	url = https://launchpad.net/numix-plymouth
+	arch = any
+	license = GPL3
+	makedepends = bzr
+	depends = plymouth
+	source = plymouth-theme-numix::bzr+lp:numix-plymouth
+	sha256sums = SKIP
+
+pkgname = plymouth-theme-numix-bzr
+
