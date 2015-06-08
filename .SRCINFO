@@ -1,0 +1,17 @@
+pkgbase = kilauncher-git
+	pkgdesc = A full-screen tabbed program launcher for kiosk systems.
+	pkgver = r55.0d424f5
+	pkgrel = 2
+	url = http://www.alandmoore.com/kilauncher/kilauncher.html
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python-yaml
+	depends = python-pyqt5
+	depends = python-xdg
+	backup = etc/kilauncher/kilauncher.yaml
+	source = git+https://github.com/alandmoore/kilauncher.git
+	md5sums = SKIP
+
+pkgname = kilauncher-git
+
