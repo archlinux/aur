@@ -1,0 +1,25 @@
+pkgbase = soundconverter-git
+	pkgdesc = A simple sound converter application for GNOME from git repo
+	pkgver = 2.1.5.1.g8c0b59e
+	pkgrel = 1
+	url = http://soundconverter.org/
+	install = soundconverter.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = perl-xml-libxml
+	makedepends = intltool
+	depends = python2-gconf
+	depends = python2-libgnome
+	depends = pygtk
+	depends = gstreamer0.10-python
+	depends = gstreamer0.10-ugly-plugins
+	depends = desktop-file-utils
+	depends = gstreamer0.10-good-plugins
+	provides = soundconverter
+	conflicts = soundconverter
+	source = git+https://github.com/kassoulet/soundconverter.git
+	md5sums = SKIP
+
+pkgname = soundconverter-git
+
