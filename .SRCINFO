@@ -1,0 +1,30 @@
+pkgbase = asymptote-svn
+	pkgdesc = A vector graphics language (like metapost)
+	pkgver = r5722
+	pkgrel = 1
+	url = http://asymptote.sourceforge.net/
+	install = texlive.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = svn
+	makedepends = ghostscript
+	makedepends = imagemagick
+	makedepends = texlive-plainextra
+	depends = texlive-core
+	depends = gc
+	depends = freeglut
+	depends = glu
+	depends = gsl
+	depends = fftw
+	depends = mesa
+	optdepends = python2: for the xasy GUI
+	optdepends = python-imaging: for the xasy GUI
+	optdepends = tix: for the xasy GUI
+	provides = asymptote=2.33svn
+	conflicts = asymptote
+	source = asymptote::svn+http://svn.code.sf.net/p/asymptote/code/trunk
+	md5sums = SKIP
+
+pkgname = asymptote-svn
+
