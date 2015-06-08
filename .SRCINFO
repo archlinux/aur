@@ -1,0 +1,23 @@
+pkgbase = magicpoint
+	pkgdesc = X11 based presentation tool
+	pkgver = 1.13a
+	pkgrel = 3
+	url = http://member.wide.ad.jp/wg/mgp/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imake
+	depends = libpng
+	depends = libmng
+	depends = giflib
+	depends = libxmu
+	depends = imlib
+	depends = m17n-lib
+	depends = libxft
+	depends = fontconfig
+	optdepends = netpbm: postscript figure antialiasing
+	source = ftp://sh.wide.ad.jp/WIDE/free-ware/mgp/magicpoint-1.13a.tar.gz
+	md5sums = ebc403982956e918ab327c54a90b44e0
+
+pkgname = magicpoint
+
