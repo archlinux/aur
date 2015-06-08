@@ -1,0 +1,19 @@
+pkgbase = threadweaver-git
+	pkgdesc = ThreadWeaver
+	pkgver = r222.c2a2eea
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/threadweaver
+	arch = i686
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	depends = qt5-base
+	provides = threadweaver
+	conflicts = threadweaver
+	source = git://anongit.kde.org/threadweaver.git
+	md5sums = SKIP
+
+pkgname = threadweaver-git
+
