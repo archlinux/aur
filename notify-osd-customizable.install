@@ -1,0 +1,19 @@
+post_install() {
+  glib-compile-schemas usr/share/glib-2.0/schemas
+  echo ">> If you want to use Notify OSD in a GNOME Fallback session, remove 'notifications' from 'RequiredProviders' property in file '/usr/share/gnome-session/sessions/gnome-fallback.session'."
+  echo ">>"
+  echo ">> An example of configuration file for this daemon can be found under /etc/skel"
+  echo ">> Copy it into your home directory and feel free to customize its parameters"
+  echo ">>"
+  echo ">> Display notifications in different corners of the screen. gsettings set com.canonical.notify-osd gravity [number]"
+  echo ">> 1 - top-right corner ; 2 - middle-right ; 3 - bottom-right corner; 4 - bottom-left corner ; 5 - middle-left ; 6 - top-left corner"
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  glib-compile-schemas usr/share/glib-2.0/schemas
+}
+
