@@ -1,0 +1,14 @@
+pkgbase = ttf-roboto-fontconfig
+	pkgdesc = A version of Google’s Roboto font that has fontconfig-compatible metadata
+	pkgver = 2.000980
+	pkgrel = 1
+	url = https://github.com/andreasf/Roboto
+	arch = any
+	license = Apache
+	provides = ttf-roboto
+	conflicts = ttf-roboto
+	source = https://github.com/andreasf/Roboto/archive/199ca7fcf1f0606106f8a93d13e42245729f9fcb.tar.gz
+	md5sums = 2ffb016cdf382640f4790573b378c69e
+
+pkgname = ttf-roboto-fontconfig
+
