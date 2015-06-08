@@ -1,0 +1,23 @@
+pkgbase = libxkbcommon-git
+	pkgdesc = A library to handle keyboard descriptions.
+	pkgver = 0.5.0.r12.g8e1fed6
+	pkgrel = 1
+	url = http://xkbcommon.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = xorg-util-macros
+	makedepends = libxcb
+	makedepends = doxygen
+	depends = glibc
+	depends = xkeyboard-config
+	provides = libxkbcommon
+	provides = libxkbcommon-x11
+	replaces = libxkbcommon
+	replaces = libxkbcommon-x11
+	source = git://github.com/xkbcommon/libxkbcommon.git
+	sha1sums = SKIP
+
+pkgname = libxkbcommon-git
+
