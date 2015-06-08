@@ -1,0 +1,17 @@
+pkgbase = volnoti
+	pkgdesc = Lightweight volume notification
+	pkgver = 0.1
+	pkgrel = 6
+	url = https://www.github.com/davidbrazdil/volnoti
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = dbus-glib
+	depends = gdk-pixbuf2
+	depends = gtk2
+	depends = librsvg
+	source = http://github.com/downloads/davidbrazdil/volnoti/volnoti-0.1.tar.gz
+	md5sums = f1e7a3730528b8808228415990d398f9
+
+pkgname = volnoti
+
