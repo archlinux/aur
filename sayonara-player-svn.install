@@ -1,0 +1,8 @@
+post_upgrade() {
+  (( $(vercmp $2 1092) < 0 )) && cat <<MSG
+>>> The package now uses a workaround that adds 1042 to the revision number
+    as due to source-transfer the revision counter got reset.
+    So while the svn-revision is ~50, the actual version is much higher.
+MSG
+  true
+}

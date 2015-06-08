@@ -1,0 +1,24 @@
+pkgbase = sayonara-player-svn
+	pkgdesc = Sayonara is a small, clear and fast audio player for Linux written in C++, supported by the Qt framework. It uses Gstreamer as audio backend.
+	pkgver = r1092
+	pkgrel = 2
+	url = https://sayonara-player.com/
+	install = sayonara-player-svn.install
+	arch = any
+	license = GPL3
+	makedepends = subversion
+	makedepends = cmake
+	depends = qt4
+	depends = curl
+	depends = taglib
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = libnotify
+	optdepends = lame: mp3 converter, broadcasting
+	optdepends = gst-plugins-ugly: mp3 converter, broadcasting
+	conflicts = sayonara-player
+	source = sayonara-player-svn::svn+http://sayonara-player.com/svn/sayonara/trunk
+	md5sums = SKIP
+
+pkgname = sayonara-player-svn
+
