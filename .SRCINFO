@@ -1,0 +1,22 @@
+pkgbase = haskell-cryptohash
+	pkgdesc = collection of crypto hashes, fast, pure and practical
+	pkgver = 0.11.6
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/cryptohash
+	install = haskell-cryptohash.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = haskell-cereal>=0.2
+	depends = haskell-crypto-api>=0.5
+	depends = haskell-tagged>=0.1
+	depends = haskell-byteable
+	depends = haskell-bytestring
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/cryptohash/0.11.6/cryptohash-0.11.6.tar.gz
+	md5sums = 4d9bcd1301feac3c130bd8f94df97dba
+
+pkgname = haskell-cryptohash
+
