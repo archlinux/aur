@@ -1,0 +1,16 @@
+pkgbase = epson-inkjet-printer-201106j
+	pkgdesc = Epson printer driver (PX-204, PX-504A)
+	pkgver = 1.0.0
+	pkgrel = 8
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom:Epson Licence Agreement
+	depends = cups
+	depends = ghostscript
+	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201106j-1.0.0-1lsb3.2.src.rpm
+	sha256sums = f3ca88098adf860c16ff0344ff15a4ad45bef50e20d7b2cd5ae76db20ef5e7b0
+
+pkgname = epson-inkjet-printer-201106j
+
