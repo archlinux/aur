@@ -1,0 +1,19 @@
+pkgbase = knewstuff-git
+	pkgdesc = KNewStuff
+	pkgver = r72.2923dda
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/knewstuff
+	arch = i686
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	depends = kio-git
+	provides = knewstuff
+	conflicts = knewstuff
+	source = git://anongit.kde.org/knewstuff.git
+	md5sums = SKIP
+
+pkgname = knewstuff-git
+
