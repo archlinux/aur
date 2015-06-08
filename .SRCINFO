@@ -1,0 +1,22 @@
+pkgbase = the-great-work
+	pkgdesc = The Great Work is a Nifflas game about an apprentice that is expected to return home with some gold.
+	pkgver = 1.0.1
+	pkgrel = 2
+	url = http://nifflas.ni2.se/?page=The+Great+Work
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libvorbis
+	depends = openal
+	depends = python2
+	depends = libxrandr
+	depends = glu
+	source = the-great-work.desktop
+	sha256sums = 33f84e2f5c7f16b6051a70cd4057db6d5f95c667a5c1fa714bc0e3ae653ee2af
+	source_i686 = the-great-work32.tar.gz::http://downloads.ni2.se/free/The%20Great%20Work%20101%2032bit.tar.gz
+	sha256sums_i686 = 2c0dcaa45378e757535c86e1fcb191041fe7f1fcdc5c4910bf0949feb5d775ca
+	source_x86_64 = the-great-work64.tar.gz::http://downloads.ni2.se/free/The%20Great%20Work%20101%2064bit.tar.gz
+	sha256sums_x86_64 = 69d64d563432557ea9dcea285e47e2507ad404f67e8b181c7708d253fe98aa3a
+
+pkgname = the-great-work
+

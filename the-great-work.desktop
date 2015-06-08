@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=The Great Work
+Comment=Play The Great Work
+Exec=the-great-work
+Icon=the-great-work
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;AudioVideo;
+Encoding=UTF-8
