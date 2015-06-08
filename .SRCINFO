@@ -1,0 +1,24 @@
+pkgbase = hawaii-terminal-git
+	pkgdesc = The Hawaii Terminal Emulator
+	pkgver = 20140309.f5dfc3c
+	pkgrel = 1
+	url = https://github.com/hawaii-desktop
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-declarative
+	depends = qt5-quickcontrols
+	depends = yat-git
+	provides = hawaii-terminal
+	conflicts = hawaii-terminal
+	replaces = hawaii-terminal
+	options = debug
+	source = terminal::git://github.com/hawaii-desktop/hawaii-terminal.git#branch=master
+	md5sums = SKIP
+
+pkgname = hawaii-terminal-git
+
