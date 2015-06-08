@@ -1,0 +1,19 @@
+pkgbase = khotkeys-git
+	pkgdesc = KHotKeys
+	pkgver = r1669.649c690
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/kde-workspace
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = kdoctools
+	depends = plasma-workspace-git
+	provides = khotkeys
+	conflicts = khotkeys
+	conflicts = kdebase-workspace
+	source = git://anongit.kde.org/khotkeys.git
+
+pkgname = khotkeys-git
+
