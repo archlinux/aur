@@ -1,0 +1,13 @@
+pkgbase = ethloop
+	pkgdesc = A very simple and versatile packet generator and measurer which to test qdisc classes.
+	pkgver = 0.01
+	pkgrel = 2
+	url = http://luxik.cdi.cz/~devik/qos/ethloop/
+	arch = i686
+	arch = x86_64
+	license = unknow
+	source = http://luxik.cdi.cz/~devik/qos/ethloop/ethloop10.tgz
+	md5sums = df0caf522fab6f7324f19cfd2a1b3ea8
+
+pkgname = ethloop
+
