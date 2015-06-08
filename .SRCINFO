@@ -1,0 +1,14 @@
+pkgbase = scat
+	pkgdesc = Syntax highlight on the terminal
+	pkgver = 0.1
+	pkgrel = 3
+	url = https://github.com/asdil12/scat
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = pygmentize
+	source = git://github.com/asdil12/scat.git
+	md5sums = SKIP
+
+pkgname = scat
+
