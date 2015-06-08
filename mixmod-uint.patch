@@ -1,0 +1,12 @@
+diff -ur mixmodLib_3_1_0.orig/SRC/mixmod/Kernel/IO/CompositeSample.cpp mixmodLib_3_1_0/SRC/mixmod/Kernel/IO/CompositeSample.cpp
+--- mixmodLib_3_1_0.orig/SRC/mixmod/Kernel/IO/CompositeSample.cpp	2014-02-13 13:55:53.725555373 +0000
++++ mixmodLib_3_1_0/SRC/mixmod/Kernel/IO/CompositeSample.cpp	2014-02-13 13:56:21.545984459 +0000
+@@ -37,7 +37,7 @@
+ }
+ 
+ CompositeSample::~CompositeSample() {
+-	for (uint i = 0; i < _sampleComponent.size(); ++i) {
++	for (unsigned int i = 0; i < _sampleComponent.size(); ++i) {
+ 		if (_sampleComponent[i]) {
+ 			delete _sampleComponent[i];
+ 			_sampleComponent[i] = NULL;

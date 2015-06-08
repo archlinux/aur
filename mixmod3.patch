@@ -1,0 +1,193 @@
+diff -uNr mixmodLib_3_0_0.org/CMakeLists.txt mixmodLib_3_0_0/CMakeLists.txt
+--- mixmodLib_3_0_0.org/CMakeLists.txt	2013-10-14 15:14:29.938745227 +0200
++++ mixmodLib_3_0_0/CMakeLists.txt	2013-10-14 15:47:27.994217080 +0200
+@@ -1,8 +1,12 @@
+ # Configuration
+ #--------------
+ cmake_minimum_required(VERSION 2.8.5)
+-PROJECT(mixmod)
+ 
++if ( NOT DEFINED CMAKE_BUILD_TYPE )
++  set( CMAKE_BUILD_TYPE Release CACHE STRING "Build type" )
++endif ()
++
++PROJECT(mixmod)
+ 
+ # Switch: cmake .. -DCMAKE_INSTALL_PREFIX="/usr/local/" ou "C:\Windows\ProgramFiles\mixmod\" ou ...
+ # NOTE: should be copied in every individual source package
+@@ -16,15 +20,16 @@
+ 
+ # Release/Debug
+ #--------------
+-if (NOT DEFINED CMAKE_BUILD_TYPE)
+-	set(CMAKE_BUILD_TYPE "Release")
+-endif ()
+ message(STATUS ${CMAKE_BUILD_TYPE})
+ 
+ # Compiler settings
+ #-------------------
+-set(CMAKE_CXX_FLAGS_RELEASE "-O2")
+-set(CMAKE_CXX_FLAGS_DEBUG "-g3")
++if (NOT DEFINED CMAKE_CXX_FLAGS_RELEASE)
++  set(CMAKE_CXX_FLAGS_RELEASE "-O2")
++endif ()
++if (NOT DEFINED CMAKE_CXX_FLAGS_DEBUG)
++  set(CMAKE_CXX_FLAGS_DEBUG "-g3")
++endif()
+ #add the right flags for C++11 features [TODO: check if OK with MinGW/Windows]
+ execute_process(COMMAND ${CMAKE_C_COMPILER} -dumpversion
+                 OUTPUT_VARIABLE GCC_VERSION)
+@@ -57,3 +62,24 @@
+ #-----
+ include(${CMAKE_SOURCE_DIR}/CPackLists.txt)
+ include(CPack)
++
++# config file
++set (MIXMOD_USE_FILE ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}/cmake/mixmod/UseMixmod.cmake )
++
++set (MIXMOD_INCLUDE_DIR ${CMAKE_INSTALL_PREFIX}/include )
++set (MIXMOD_INCLUDE_DIRS ${MIXMOD_INCLUDE_DIR} )
++set (MIXMOD_ROOT_DIR ${CMAKE_INSTALL_PREFIX} )
++
++set (MIXMOD_VERSION_STRING ${CPACK_PACKAGE_VERSION} )
++set (MIXMOD_VERSION_MAJOR ${CPACK_PACKAGE_VERSION_MAJOR})
++set (MIXMOD_VERSION_MINOR ${CPACK_PACKAGE_VERSION_MINOR})
++set (MIXMOD_VERSION_PATCH ${CPACK_PACKAGE_VERSION_PATCH})
++
++set(MIXMOD_LIBRARY_DIRS ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX})
++set (MIXMOD_LIBRARY mixmod)
++set (MIXMOD_NEWMAT_LIBRARY mixmod_newmat)
++set (MIXMOD_LIBRARIES ${MIXMOD_NEWMAT_LIBRARY};${MIXMOD_LIBRARY})
++configure_file(MixmodConfig.cmake.in ${CMAKE_CURRENT_BINARY_DIR}/MixmodConfig.cmake @ONLY )
++install(FILES UseMixmod.cmake  ${CMAKE_CURRENT_BINARY_DIR}/MixmodConfig.cmake 
++        DESTINATION lib${LIB_SUFFIX}/cmake/mixmod )
++
+diff -uNr mixmodLib_3_0_0.org/CPackLists.txt mixmodLib_3_0_0/CPackLists.txt
+--- mixmodLib_3_0_0.org/CPackLists.txt	2013-10-14 15:14:29.938745227 +0200
++++ mixmodLib_3_0_0/CPackLists.txt	2013-10-14 15:38:58.973141463 +0200
+@@ -17,7 +17,10 @@
+ set(CPACK_PACKAGE_NAME "mixmod")
+ set(CPACK_PACKAGE_FILE_NAME 
+  	"mixmod_${CPACK_PACKAGE_VERSION_MAJOR}-${CPACK_PACKAGE_VERSION_MINOR}-${CPACK_PACKAGE_VERSION_PATCH}_${CMAKE_SYSTEM_PROCESSOR}") 
+-
++set(CPACK_SOURCE_PACKAGE_FILE_NAME ${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}.${CPACK_PACKAGE_VERSION_PATCH} )
++set(CPACK_SOURCE_GENERATOR "TGZ")
++set(CPACK_SOURCE_IGNORE_FILES "/BUILD;/LIB;/build;.*~;${CPACK_SOURCE_IGNORE_FILES}" )
++ 
+ set(CPACK_COMPONENT_LIB_DISPLAY_NAME "Mixmod libraries")
+ set(CPACK_COMPONENT_LIB_DESCRIPTION "Mixmod shared library")
+ set(CPACK_COMPONENT_LIB_GROUP "lib")
+diff -uNr mixmodLib_3_0_0.org/MixmodConfig.cmake.in mixmodLib_3_0_0/MixmodConfig.cmake.in
+--- mixmodLib_3_0_0.org/MixmodConfig.cmake.in	1970-01-01 01:00:00.000000000 +0100
++++ mixmodLib_3_0_0/MixmodConfig.cmake.in	2013-10-14 15:20:15.567241351 +0200
+@@ -0,0 +1,54 @@
++#                                               -*- cmake -*-
++#
++#  MixmodConfig.cmake(.in)
++#
++#  Copyright (C) MIXMOD Team - 2001-2012
++#
++#  This file is part of MIXMOD
++#
++#  MIXMOD is free software: you can redistribute it and/or modify
++#  it under the terms of the GNU General Public License as published by
++#  the Free Software Foundation, either version 3 of the License, or
++#  (at your option) any later version.
++#
++#   MIXMOD is distributed in the hope that it will be useful,
++#   but WITHOUT ANY WARRANTY; without even the implied warranty of
++#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++#   GNU General Public License for more details.
++#
++#   You should have received a copy of the GNU General Public License
++#   along with MIXMOD.  If not, see <http://www.gnu.org/licenses/>.
++#
++#   All informations available on : http://www.mixmod.org                         
++
++# Use the following variables to compile and link against Mixmod:
++#  MIXMOD_FOUND              - True if Mixmod was found on your system
++#  MIXMOD_USE_FILE           - The file making Mixmod usable
++#  MIXMOD_DEFINITIONS        - Definitions needed to build with Mixmod
++#  MIXMOD_INCLUDE_DIR        - Directory where mixmod.h can be found
++#  MIXMOD_INCLUDE_DIRS       - List of directories of Mixmod and it's dependencies
++#  MIXMOD_LIBRARY            - Mixmod library location
++#  MIXMOD_LIBRARIES          - List of libraries to link against Mixmod library
++#  MIXMOD_LIBRARY_DIRS       - List of directories containing Mixmod' libraries
++#  MIXMOD_ROOT_DIR           - The base directory of Mixmod
++#  MIXMOD_VERSION_STRING     - A human-readable string containing the version
++#  MIXMOD_VERSION_MAJOR      - The major version of Mixmod
++#  MIXMOD_VERSION_MINOR      - The minor version of Mixmod
++#  MIXMOD_VERSION_PATCH      - The patch version of Mixmod
++
++set ( MIXMOD_FOUND 1 )
++set ( MIXMOD_USE_FILE     "@MIXMOD_USE_FILE@" )
++
++set ( MIXMOD_DEFINITIONS  "@MIXMOD_DEFINITIONS@" )
++set ( MIXMOD_INCLUDE_DIR  "@MIXMOD_INCLUDE_DIR@" )
++set ( MIXMOD_INCLUDE_DIRS "@MIXMOD_INCLUDE_DIRS@" )
++set ( MIXMOD_LIBRARY      "@MIXMOD_LIBRARY@" )
++set ( MIXMOD_NEWMAT_LIBRARY "@MIXMOD_NEWMAT_LIBRARY@" )
++set ( MIXMOD_LIBRARIES    "@MIXMOD_LIBRARIES@" )
++set ( MIXMOD_LIBRARY_DIRS "@MIXMOD_LIBRARY_DIRS@" )
++set ( MIXMOD_ROOT_DIR     "@MIXMOD_ROOT_DIR@" )
++
++set ( MIXMOD_VERSION_STRING "@MIXMOD_VERSION_STRING@" )
++set ( MIXMOD_VERSION_MAJOR  "@MIXMOD_VERSION_MAJOR@" )
++set ( MIXMOD_VERSION_MINOR  "@MIXMOD_VERSION_MINOR@" )
++set ( MIXMOD_VERSION_PATCH  "@MIXMOD_VERSION_PATCH@" )
+diff -uNr mixmodLib_3_0_0.org/SRC/CMakeLists.txt mixmodLib_3_0_0/SRC/CMakeLists.txt
+--- mixmodLib_3_0_0.org/SRC/CMakeLists.txt	2013-10-14 15:14:29.938745227 +0200
++++ mixmodLib_3_0_0/SRC/CMakeLists.txt	2013-10-14 15:23:12.611492393 +0200
+@@ -14,7 +14,9 @@
+ 	VERSION "1.0.0")
+ 
+ install(TARGETS mixmod_newmat
+-	LIBRARY DESTINATION lib
++	RUNTIME DESTINATION bin
++	LIBRARY DESTINATION lib${LIB_SUFFIX}
++	ARCHIVE DESTINATION lib${LIB_SUFFIX}
+ 	COMPONENT lib)
+ 
+ install(FILES ${newmat_h}
+@@ -33,7 +35,9 @@
+ 	VERSION "3.0.0")
+ 
+ INSTALL(TARGETS mixmod 
+-	LIBRARY DESTINATION lib
++	RUNTIME DESTINATION bin
++	LIBRARY DESTINATION lib${LIB_SUFFIX}
++	ARCHIVE DESTINATION lib${LIB_SUFFIX}
+ 	COMPONENT lib)
+ 
+ #to allow #include <mixmod.h>
+diff -uNr mixmodLib_3_0_0.org/UseMixmod.cmake mixmodLib_3_0_0/UseMixmod.cmake
+--- mixmodLib_3_0_0.org/UseMixmod.cmake	1970-01-01 01:00:00.000000000 +0100
++++ mixmodLib_3_0_0/UseMixmod.cmake	2013-10-14 15:37:28.452944375 +0200
+@@ -0,0 +1,27 @@
++#                                               -*- cmake -*-
++#
++#  UseMixmod.cmake
++#
++#  Copyright (C) MIXMOD Team - 2001-2012
++#
++#  This file is part of MIXMOD
++#
++#  MIXMOD is free software: you can redistribute it and/or modify
++#  it under the terms of the GNU General Public License as published by
++#  the Free Software Foundation, either version 3 of the License, or
++#  (at your option) any later version.
++#
++#   MIXMOD is distributed in the hope that it will be useful,
++#   but WITHOUT ANY WARRANTY; without even the implied warranty of
++#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++#   GNU General Public License for more details.
++#
++#   You should have received a copy of the GNU General Public License
++#   along with MIXMOD.  If not, see <http://www.gnu.org/licenses/>.
++#
++#   All informations available on : http://www.mixmod.org                         
++
++
++add_definitions     ( ${MIXMOD_DEFINITIONS} )
++include_directories ( ${MIXMOD_INCLUDE_DIRS} )
++link_directories    ( ${MIXMOD_LIBRARY_DIRS} )

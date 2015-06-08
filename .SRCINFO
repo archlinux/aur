@@ -1,0 +1,21 @@
+pkgbase = mingw-w64-mixmod
+	pkgdesc = Model-Based supervised and unsupervised classification on qualitative and quantitative data. (mingw-w64)
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = http://www.mixmod.org
+	arch = any
+	license = GPL
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = http://www.mixmod.org/IMG/tgz/mixmod_3-1-0_src.tgz
+	source = mixmod3.patch
+	source = mixmod-uint.patch
+	md5sums = SKIP
+	md5sums = 480c9e761c74f0218fc439ba924227f1
+	md5sums = SKIP
+
+pkgname = mingw-w64-mixmod
+
