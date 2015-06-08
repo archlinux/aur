@@ -1,0 +1,15 @@
+pkgbase = neroaacenc
+	pkgdesc = Nero AAC reference quality MPEG-4 and 3GPP audio codec
+	pkgver = 1.5.4
+	pkgrel = 3
+	url = http://www.nero.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = http://ftp6.nero.com/tools/NeroAACCodec-1.5.1.zip
+	sha1sums = f9553692031987c6ee446262efd312c95f4699a6
+	depends_i686 = gcc-libs
+	depends_x86_64 = lib32-gcc-libs
+
+pkgname = neroaacenc
+
