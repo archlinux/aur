@@ -1,0 +1,17 @@
+pkgbase = perl-carp-assert-more
+	pkgdesc = convenience wrappers around Carp::Assert
+	pkgver = 1.14
+	pkgrel = 2
+	url = http://search.cpan.org/dist/Carp-Assert-More
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-exception
+	depends = perl-carp-assert
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/Carp-Assert-More-1.14.tar.gz
+	md5sums = 78d85249929273259e0a519925b80cd9
+	sha512sums = 0411908afd5cc45cedce83fb10e67f78f7513fa788421d9c4e0f0f0064bf6fdd7154c2414a449456ff4c600f31eba138fb4d3f94e68743af4b71f7368c30b398
+
+pkgname = perl-carp-assert-more
+
