@@ -1,0 +1,16 @@
+pkgbase = mebitag
+	pkgdesc = Apply your own tagging scheme to any media collection of your choice
+	pkgver = 0.4
+	pkgrel = 2
+	url = http://mebitag.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = pkgconfig
+	depends = gtk2
+	depends = libxml2
+	source = http://downloads.sourceforge.net/sourceforge/mebitag/mebitag-0.4.tar.gz
+	md5sums = bea91bbb209e051162e4c24c77bf2bd5
+
+pkgname = mebitag
+
