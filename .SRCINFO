@@ -1,0 +1,17 @@
+pkgbase = beav
+	pkgdesc = Binary Editor And Viewer (with some modifications by the Debian team: release 18)
+	pkgver = 1.40
+	pkgrel = 1
+	url = http://packages.debian.org/stable/beav
+	arch = any
+	license = GPL
+	depends = ncurses
+	source = http://ftp.de.debian.org/debian/pool/main/b/beav/beav_1.40.orig.tar.gz
+	source = http://ftp.de.debian.org/debian/pool/main/b/beav/beav_1.40-18.diff.gz
+	source = beav_on_archlinux.patch
+	md5sums = 9c30dce1697f468682eb2aae464de175
+	md5sums = 63a2f7a63334abc020cd37e86d349ec1
+	md5sums = 9402f42b2e54fa75dd398f213a7bb43a
+
+pkgname = beav
+

@@ -1,0 +1,61 @@
+--- basic.c.orig	1994-11-30 18:43:34.000000000 +0100
++++ basic.c	2013-09-14 22:18:42.135823269 +0200
+@@ -9,7 +9,6 @@
+ 
+ #include    "def.h"
+ 
+-bool move_ptr ();
+ bool forwchar ();
+ bool wind_on_dot ();
+ bool backline ();
+--- def.h.orig	2013-09-14 22:29:34.915800135 +0200
++++ def.h	2013-09-14 22:25:59.249141143 +0200
+@@ -16,6 +16,7 @@
+ 
+ #ifdef UNIX
+ #include        <sys/types.h>
++#include        <string.h>
+ #endif /* UNIX */
+ 
+ #define BACKUP  1		/* Make backup file.            */
+--- file.c.orig	2013-09-14 21:33:00.819253652 +0200
++++ file.c	2013-09-14 22:19:30.882488234 +0200
+@@ -10,7 +10,6 @@
+ char load_file ();
+ char readin ();
+ void makename ();
+-bool writeout ();
+ bool parse_f_name ();
+ A32 ffseek ();
+ A32 file_len ();
+--- random.c.orig	2013-09-14 22:19:50.125820880 +0200
++++ random.c	2013-09-14 22:26:45.745806177 +0200
+@@ -73,7 +73,6 @@
+ extern bool dont_repeat;
+ extern BUFFER sav_buf;
+ 
+-char dec_chr_ok ();
+ ulong get_long ();
+ void wind_on_dot_all ();
+ 
+--- symbol.c.orig	2013-09-14 21:33:00.822586986 +0200
++++ symbol.c	2013-09-14 22:21:05.975818198 +0200
+@@ -8,7 +8,6 @@
+ #include		<string.h>
+ #include		"def.h"
+ 
+-void keyadd ();
+ void keydup ();
+ 
+ 
+--- Makefile.orig	2013-09-14 22:57:36.809073985 +0200
++++ Makefile	2013-09-14 22:58:08.075739547 +0200
+@@ -1,6 +1,6 @@
+ # This is the makefile for BSD UNIX
+-#CFLAGS=     -g -DUNIX
+-CFLAGS=     -g -DUNIX -Wall
++CFLAGS=     -g -DUNIX -O
++#CFLAGS=     -g -DUNIX -Wall
+ CC=gcc
+ 
+ OFILES=		basic.o ebcdic.o fileio.o region.o text.o wangpc.o \
