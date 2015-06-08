@@ -1,0 +1,15 @@
+pkgbase = iceweasel-i18n-tr
+	pkgdesc = Turkish language pack for Iceweasel
+	pkgver = 38.0.1.deb5
+	pkgrel = 1
+	url = http://www.mozilla.com/
+	arch = any
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = iceweasel>=38.0.1
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-tr_38.0.1-5_all.deb
+	sha256sums = ee5fa4e9a99afeae6d11be3cd854298377add84d01286a5e244cd74189bcecbc
+
+pkgname = iceweasel-i18n-tr
+
