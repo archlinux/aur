@@ -1,0 +1,15 @@
+pkgbase = 4ti2
+	pkgdesc = A software package for algebraic, geometric and combinatorial problems on linear spaces
+	pkgver = 1.6.5
+	pkgrel = 1
+	url = http://www.4ti2.de/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glpk
+	depends = gmp
+	source = http://www.4ti2.de/version_1.6.5/4ti2-1.6.5.tar.gz
+	md5sums = 289d50cf7932488adc24c9c308bbafcf
+
+pkgname = 4ti2
+
