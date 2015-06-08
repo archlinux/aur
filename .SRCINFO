@@ -1,0 +1,33 @@
+pkgbase = libmatthew-java
+	pkgdesc = Libraries for Java: unix sockets, CGI, hexdump
+	pkgver = 0.8
+	pkgrel = 5
+	url = http://www.matthew.ath.cx/projects/java
+	changelog = libmatthew-java.ChangeLog.markdown
+	arch = i686
+	arch = x86_64
+	license = Expat
+	makedepends = java-environment
+	makedepends = apache-ant
+	makedepends = gcc
+	depends = java-runtime
+	depends = glibc
+	replaces = matthew-java
+	source = http://www.java2s.com/Code/JarDownload/libmatthew/libmatthew-0.8-x86_64-sources.jar.zip
+	source = build.xml
+	source = ant.patch
+	source = Makefile
+	source = setClasspath.sh
+	md5sums = 946a87b891bac3021d6cbf6f61321ed3
+	md5sums = 9a463b93dc05caec6d80cfb1ae76798e
+	md5sums = 14bfe88a88143b598ee5c9bd9f0fb087
+	md5sums = 73bc9ff2922322215a4f0dd9b24e9c81
+	md5sums = f00a4d642f2e7f1c7c41f591f461d157
+	sha256sums = fe8c47c0b0db4598f1782bd926fdad48027af05da3a1e7b2f3376ba9d091d387
+	sha256sums = 815d92a888b6d78bdead61146af0aa79007dca6015e693a230f91aca366885a9
+	sha256sums = 119ce6358011568d6afb7bda5079feb4b221fca80e4414f56f60c69091720d52
+	sha256sums = e735d7d37876e0a2ad125f46bcec6073772ce6cf42124f90f1181f4be8c96b27
+	sha256sums = 60196fbe850d098ccc80073eea893405249171a8328060940a1fd81d7d1c621c
+
+pkgname = libmatthew-java
+

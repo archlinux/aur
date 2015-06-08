@@ -1,0 +1,12 @@
+diff -ur a/libmatthew-java-0.8/cx/ath/matthew/debug/Debug.jpp b/libmatthew-java-0.8/cx/ath/matthew/debug/Debug.jpp
+--- a/libmatthew-java-0.8/cx/ath/matthew/debug/Debug.jpp	2011-06-28 11:26:14.000000000 +0300
++++ b/libmatthew-java-0.8/cx/ath/matthew/debug/Debug.jpp	2011-07-16 09:01:31.000000000 +0300
+@@ -93,7 +93,7 @@
+    /** Verbose debug messages */
+    public static final int VERBOSE = 6;
+    /** Set this to false to disable compilation of Debug statements */
+-   public static final boolean debug = DEBUGSETTING;
++   public static final boolean debug = @DEBUGSETTING@;
+    /** The current output stream (defaults to System.err) */
+    public static PrintStream debugout = System.err;   
+    private static Properties prop = null;

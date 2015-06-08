@@ -1,0 +1,121 @@
+
+<project name="libmatthew-java" default="jar" basedir=".">
+	
+	<description>Libraries for Java: unix sockets, CGI, hexdump</description>
+	
+	<property file="local.properties"/>
+	
+	<property name="ant.project.version" value="0.4"/>
+	<property name="libmatthew.unix.version" value="0.5"/>
+	<property name="libmatthew.cgi.version" value="0.6"/>
+	<property name="libmatthew.debug.version" value="1.1"/>
+	<property name="libmatthew.io.version" value="0.1"/>
+	<property name="libmatthew.hexdump.version" value="0.2"/>
+	<property name="src" location="src"/>
+	<property name="src.main.java" location="${src}/main/java"/>
+	<property name="build" location="build"/>
+	<property name="build.output" location="${build}"/>
+	<property name="dist" location="dist"/>
+
+	<property name="jardir" value="/usr/share/java/${ant.project.name}"/>
+	
+	<target name="init">
+		<tstamp prefix="touch.time"/>
+		<condition property="java.5.available">
+			<or>
+				<contains string="${java.version}" substring="1.5"/>
+				<contains string="${java.version}" substring="1.6"/>
+				<contains string="${java.version}" substring="1.7"/>
+			</or>
+		</condition>
+		<fail message="This package requires Java 5, 6 or 7." unless="java.5.available"/>
+		<condition property="ant.1.7.available">
+			<or>
+				<contains string="${ant.version}" substring="1.7"/>
+				<contains string="${ant.version}" substring="1.8"/>
+                <contains string="${ant.version}" substring="1.9"/>
+			</or>
+		</condition>
+		<fail message="This package requires Ant 1.7 or 1.8 or 1.9 ." unless="ant.1.7.available"/>
+		<mkdir dir="${build.output}"/>
+	</target>
+			
+	<target name="clean" description="Clean the output directories">
+		<delete dir="${build}"/>
+		<delete dir="${dist}"/>
+	</target>
+			
+	<target name="compile" depends="init" description="Compile the code">
+		<javac srcdir="${src.main.java}" destdir="${build.output}" encoding="UTF-8" excludes="cx/ath/matthew/debug/Debug.java" optimize="true" target="1.5" source="1.5">
+		<!--<compilerarg value="-Xlint:unchecked"/>--></javac>
+	</target>
+			
+	<target name="unix.jar" depends="compile" description="Create the JAR">
+		<mkdir dir="${dist}"/>
+		<jar jarfile="${dist}/unix-${libmatthew.unix.version}.jar" includes="cx/ath/matthew/unix/**" basedir="${build.output}"/>
+	</target>
+			
+	<target name="cgi.jar" depends="compile" description="Create the JAR">
+		<mkdir dir="${dist}"/>
+		<jar jarfile="${dist}/cgi-${libmatthew.cgi.version}.jar" includes="cx/ath/matthew/cgi/**" basedir="${build.output}"/>
+	</target>
+			
+	<target name="debug-enable.jar" depends="init" description="Create the JAR">
+		<mkdir dir="${dist}"/>
+		<delete dir="${build.output}/cx/ath/matthew/debug"/>
+		<filter token="DEBUGSETTING" value="true"/>
+		<copy file="${src.main.java}/cx/ath/matthew/debug/Debug.jpp" tofile="${src.main.java}/cx/ath/matthew/debug/Debug.java" filtering="on" overwrite="true"/>
+		<javac srcdir="${src.main.java}" destdir="${build.output}" encoding="UTF-8" includes="cx/ath/matthew/debug/Debug.java" optimize="true" target="1.5" source="1.5"/>
+		<jar jarfile="${dist}/debug-enable-${libmatthew.debug.version}.jar" includes="cx/ath/matthew/debug/**" basedir="${build.output}">
+			<manifest>
+				<attribute name="Class-Path" value="${jardir}/hexdump.jar"/>
+			</manifest>
+		</jar>
+	</target>
+			
+	<target name="debug-disable.jar" depends="init" description="Create the JAR">
+		<mkdir dir="${dist}"/>
+		<delete dir="${build.output}/cx/ath/matthew/debug"/>
+		<filter token="DEBUGSETTING" value="false"/>
+		<copy file="${src.main.java}/cx/ath/matthew/debug/Debug.jpp" tofile="${src.main.java}/cx/ath/matthew/debug/Debug.java" filtering="on" overwrite="true"/>
+		<javac srcdir="${src.main.java}" destdir="${build.output}" encoding="UTF-8" includes="cx/ath/matthew/debug/Debug.java" optimize="true" target="1.5" source="1.5"/>
+		<jar jarfile="${dist}/debug-disable-${libmatthew.debug.version}.jar" includes="cx/ath/matthew/debug/**" basedir="${build.output}">
+			<manifest>
+				<attribute name="Class-Path" value="${jardir}/hexdump.jar"/>
+			</manifest>
+		</jar>
+	</target>
+			
+	<target name="io.jar" depends="compile" description="Create the JAR">
+		<mkdir dir="${dist}"/>
+		<jar jarfile="${dist}/io-${libmatthew.io.version}.jar" includes="cx/ath/matthew/io/**" basedir="${build.output}"/>
+	</target>
+			
+	<target name="hexdump.jar" depends="compile" description="Create the JAR">
+		<mkdir dir="${dist}"/>
+		<jar jarfile="${dist}/hexdump-${libmatthew.hexdump.version}.jar" includes="cx/ath/matthew/utils/Hexdump.class" basedir="${build.output}"/>
+	</target>
+			
+	<target name="jars" depends="unix.jar,cgi.jar,debug-enable.jar,debug-disable.jar,io.jar,hexdump.jar"></target>
+			
+	<target name="unix.h">
+		<javah classpath="${build.output}" outputFile="${basedir}/unix-java.h">
+			<class name="cx.ath.matthew.unix.UnixServerSocket"/>
+			<class name="cx.ath.matthew.unix.UnixSocket"/>
+			<class name="cx.ath.matthew.unix.USInputStream"/>
+			<class name="cx.ath.matthew.unix.USOutputStream"/>
+		</javah>
+	</target>
+			
+	<target name="cgi.h">
+		<javah classpath="${build.output}" outputFile="${basedir}/cgi-java.h" class="cx.ath.matthew.cgi.CGI"/>
+	</target>
+			
+	<target name="source" depends="init" description="Pack project">
+		<mkdir dir="${dist}"/>
+		<tar destfile="${dist}/${ant.project.name}-src-${touch.time.DSTAMP}${touch.time.TSTAMP}.tar" basedir="${basedir}" includes="src/** *.c build.xml changelog COPYING INSTAL README Makefile"/>
+		<gzip destfile="${dist}/${ant.project.name}-src-${touch.time.DSTAMP}${touch.time.TSTAMP}.tar.gz" src="${dist}/${ant.project.name}-src-${touch.time.DSTAMP}${touch.time.TSTAMP}.tar"/>
+		<delete file="${dist}/${ant.project.name}-src-${touch.time.DSTAMP}${touch.time.TSTAMP}.tar"/>
+	</target>
+		
+</project>
