@@ -1,0 +1,15 @@
+pkgbase = nginx_ensite-git
+	pkgdesc = enable/disable an nginx site/virtual host
+	pkgver = 0.24.3121106
+	pkgrel = 1
+	url = http://github.perusio.org/nginx_ensite/
+	install = nginx_ensite.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = nginx
+	source = nginx_ensite-git::git://github.com/perusio/nginx_ensite.git
+	sha256sums = SKIP
+
+pkgname = nginx_ensite-git
+

@@ -1,0 +1,5 @@
+post_install() {
+  	cat <<- EOF
+                    Ensure to to have include /etc/nginx/sites-enabled/*; in your nginx.conf's http block.
+	EOF
+}
