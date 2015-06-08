@@ -1,0 +1,20 @@
+pkgbase = biboumi
+	pkgdesc = XMPP gateway to IRC
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://biboumi.louiz.org/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = ZLIB
+	makedepends = cmake
+	depends = expat
+	depends = libidn
+	depends = c-ares
+	depends = botan
+	backup = etc/biboumi/biboumi.cfg
+	source = http://git.louiz.org/biboumi/snapshot/biboumi-2.0.tar.xz
+	md5sums = 5aa6f0497abc1a707203314330fbff86
+
+pkgname = biboumi
+
