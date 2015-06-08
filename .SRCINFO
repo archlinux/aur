@@ -1,0 +1,17 @@
+pkgbase = acxi
+	pkgdesc = An expanded, cleaned up, and feature enhanced fork of flac2ogg.pl to convert flac to ogg or mp3.
+	pkgver = 2.9.0
+	pkgrel = 1
+	url = http://techpatterns.com/forums/about1491.html
+	install = readme.install
+	arch = any
+	license = GPL
+	depends = perl
+	depends = vorbis-tools
+	depends = flac
+	depends = lame
+	source = http://smxi.org/opt/acxi
+	sha256sums = f5dd977e010731466c53676b2facf421c233f91b61bf5556135ce09d892f0742
+
+pkgname = acxi
+

@@ -1,0 +1,6 @@
+post_install() {
+	echo 'For usage:  acxi --help'
+	echo
+	echo 'Example transcoding all flac files to ogg files recursively:'
+	echo 'acxi -q 5 -i flac -o ogg -s /path/to/source -d /path/to/destination'
+}
