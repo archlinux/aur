@@ -1,0 +1,19 @@
+pkgbase = haskell-tensor
+	pkgdesc = A completely type-safe library for linear algebra
+	pkgver = 0.3.0.1
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/tensor
+	install = haskell-tensor.install
+	arch = i686
+	arch = x86_64
+	license = GPL-3
+	depends = ghc
+	depends = haskell-vector
+	depends = haskell-random
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/tensor/0.3.0.1/tensor-0.3.0.1.tar.gz
+	md5sums = 22dd3509577e0c42f6ac0dd79f55ead6
+
+pkgname = haskell-tensor
+
