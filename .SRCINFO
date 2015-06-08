@@ -1,0 +1,23 @@
+pkgbase = xfce4-mpc-plugin-update
+	pkgdesc = Updates the toggle button icon depending on what MPD is doing
+	pkgver = 0.4.5
+	pkgrel = 1
+	url = http://goodies.xfce.org/projects/panel-plugins/xfce4-mpc-plugin
+	arch = i686
+	arch = x86_64
+	groups = xfce4-goodies
+	license = GPL2
+	makedepends = pkgconfig
+	makedepends = intltool
+	depends = xfce4-panel
+	depends = libmpd>=0.16.1
+	provides = xfce4-mpc-plugin
+	replaces = xfce4-mpc-plugin
+	options = !libtool
+	source = http://archive.xfce.org/src/panel-plugins/xfce4-mpc-plugin/0.4/xfce4-mpc-plugin-0.4.5.tar.bz2
+	source = update.diff
+	md5sums = 718e64748e46908a44cd0b96eacbda28
+	md5sums = 8019c8201fb32d7659bbb3ea66fdca80
+
+pkgname = xfce4-mpc-plugin-update
+
