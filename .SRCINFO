@@ -1,0 +1,18 @@
+pkgbase = gmpc-libnotify
+	pkgdesc = Shows song change notification using your systems notification daemon.
+	pkgver = 11.8.16
+	pkgrel = 1
+	url = http://gmpc.wikia.com/wiki/GMPC_PLUGIN_LIBNOTIFY
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libmpd>=11.8.16
+	depends = libxml2
+	depends = gmpc>=11.8.16
+	depends = libnotify
+	depends = intltool
+	source = http://download.sarine.nl/Programs/gmpc/11.8.16/gmpc-libnotify-11.8.16.tar.gz
+	md5sums = f538e267ce3a0856e5029068108d4b0e
+
+pkgname = gmpc-libnotify
+
