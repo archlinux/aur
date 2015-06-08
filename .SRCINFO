@@ -1,0 +1,20 @@
+pkgbase = btg
+	pkgdesc = Linux bittorrent client implemented in C++ and using the rasterbar libtorrent library.
+	pkgver = 2.0.0.rc3
+	pkgrel = 2
+	url = http://sourceforge.net/projects/btg/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libtorrent-rasterbar
+	depends = gnutls
+	depends = dialog
+	depends = gtkmm>=2.6.0
+	depends = curl
+	options = !libtool
+	options = !emptydirs
+	source = http://downloads.sourceforge.net/project/btg/unstable/btg-2.0.0-rc3.tar.gz
+	md5sums = 17c6c37c2992f2a5fd3fc205f3fa834a
+
+pkgname = btg
+
