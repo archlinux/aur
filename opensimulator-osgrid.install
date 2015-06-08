@@ -1,0 +1,4 @@
+post_remove() {
+  echo -e ">>> All files created after installation are in the /opt/opensimulator-osgrid."
+  echo -e ">>> If you want, you may delete them manually."
+}
