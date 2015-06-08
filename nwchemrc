@@ -1,0 +1,10 @@
+nwchem_basis_library /usr/share/nwchem/libraries/
+nwchem_nwpw_library /usr/share/nwchem/libraryps/
+ffield amber
+amber_1 /usr/share/nwchem/data/amber_s/
+amber_2 /usr/share/nwchem/data/amber_q/
+amber_3 /usr/share/nwchem/data/amber_x/
+amber_4 /usr/share/nwchem/data/amber_u/
+spce   /usr/share/nwchem/data/solvents/spce.rst
+charmm_s /usr/share/nwchem/data/charmm_s/
+charmm_x /usr/share/nwchem/data/charmm_x/

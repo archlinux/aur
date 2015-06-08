@@ -1,0 +1,7 @@
+post_install() {
+echo ">> Be sure to copy/link /etc/skel/.nwchemrc to users home directory to allow use"
+}
+
+post_upgrade() {
+    post_install $1
+}
