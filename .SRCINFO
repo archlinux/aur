@@ -1,0 +1,17 @@
+pkgbase = php-twig-git
+	pkgdesc = PHP Twig extension.
+	pkgver = 20120813
+	pkgrel = 1
+	url = http://github.com/fabpot/Twig
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = php
+	depends = php
+	provides = php-twig
+	conflicts = php-twig
+	replaces = php-twig
+	backup = etc/php/conf.d/twig.ini
+
+pkgname = php-twig-git
+
