@@ -1,0 +1,14 @@
+pkgbase = awka
+	pkgdesc = Converts awk-code to C-code
+	pkgver = 0.7.5
+	pkgrel = 6
+	url = http://awka.sourceforge.net/download.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gawk
+	source = http://awka.sourceforge.net/awka-0.7.5.tar.gz
+	md5sums = 6e6dd4a60b25dc0a7a06c6de063d6590
+
+pkgname = awka
+
