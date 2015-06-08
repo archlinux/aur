@@ -1,0 +1,23 @@
+pkgbase = haskell-wai
+	pkgdesc = Web Application Interface.
+	pkgver = 3.0.2.2
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/wai
+	install = haskell-wai.install
+	arch = i686
+	arch = x86_64
+	license = custom:MIT
+	depends = ghc
+	depends = haskell-blaze-builder>=0.2.1.4
+	depends = haskell-bytestring>=0.9.1.4
+	depends = haskell-http-types>=0.7
+	depends = haskell-network>=2.2.1.5
+	depends = haskell-text>=0.7
+	depends = haskell-vault>=0.1
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/wai/3.0.2.2/wai-3.0.2.2.tar.gz
+	md5sums = dfc4f59651555cc29324184039b81af4
+
+pkgname = haskell-wai
+
