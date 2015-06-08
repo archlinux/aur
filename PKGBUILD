@@ -58,7 +58,7 @@ pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _kernelname=-uksm
 _srcname=linux-4.0
 pkgver=4.0.5
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://kerneldedup.org/"
 license=('GPL2')
@@ -66,8 +66,8 @@ options=('!strip')
 makedepends=('kmod' 'inetutils' 'bc')
 _uksmvernel="0.1.2.4-beta"
 _uksmname="v4.0"
-_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.0.0-v7r7"
-_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.0.0-v7r7/"
+_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.0.0-v7r8"
+#_bfqpath="https://pf.natalenko.name/mirrors/bfq/4.0.0-v7r8/"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
 
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
@@ -76,9 +76,9 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         #"http://kerneldedup.org/download/uksm/${_uksmvernel}/uksm-${_uksmvernel}-for-${_uksmname}.patch" # website often went down
         "uksm-${_uksmvernel}-for-linux-${_uksmname}.patch"
-        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r7-4.0.patch"
-        "${_bfqpath}/0002-block-introduce-the-BFQ-v7r7-I-O-sched-for-4.0.patch"
-        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r7-for-4.0.0.patch"
+        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r8-4.0.patch"
+        "${_bfqpath}/0002-block-introduce-the-BFQ-v7r8-I-O-sched-for-4.0.patch"
+        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-4.0.0.patch"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         'linux-uksm.preset'
         'change-default-console-loglevel.patch'
@@ -448,9 +448,9 @@ sha512sums=('ce13d2c1c17908fd9a4aa42bb6348a0cb13dd22e560bd54c61b8bfdf62726d6095f
             '377371371752eb706053282ee296f82b3af0c3cf84c346091b1e347c8d00fcf6787c5b51c76955af3f61e9c20c30035b110368ee3ba2587871f0dbc92826de32'
             'SKIP'
             'ce46c47a1685f5014f4ada55b9ee6292255a383f83c04ac84ae922d16fef0687ebf09e7a6b211f23c6d1156312ef812c950805979893792f3e19b6c643d2fb81'
-            'f81297a1547ab96b8394123fc7aa2c7b21f1a44ad3a535f5e715bf593fba9c79bb16fc091498936e8b4e4bdf041f75c340002b9763f0b35f1207912d703ba566'
-            'dafeaaea16168d445bdc1dcd1a97958b55f8dc79c61021e02c3fbf1ae7d4eae5aed2f565d6f2bf56c652803508d62f6f40765b3b831277d817bbe0a40aa5202d'
-            'c4f5a82ca4c87d21768351e17fcefb61d238394baf4475934d3c384e9990d86af14631234a8dffc363d95abc34438edfe06f8a7e9c36a320062bf3270a2466e8'
+            '1a08e834c4e90a7f9da77460bda1ed0efa9b331811521520402b0d094de3a1155d6e7ddbcbfcbefeef92b5468c56960750f6568cd73114a2a87a9d8a39a63fe8'
+            '46cb51684ca5fd9ba9460c8a62be22e99169de1b5e87ac47f9782f52123993de61fe9563ffec062a9b7c2024d08b1d5f57e09a09dbd7841faa3d149f346f5464'
+            '879ab2364ae09993f8dcd17f3c44584967cf26d26f8376611a9eb7824cf78cadf4cdae58d18f3b493d0ec48395888f1ca1395563e52501dc79f559369c931371'
             '76bf6a9f22b023ab8f780884f595dac1801d150ecd94f88da229c5c9ea98d2c3ef8add01ff7e18e4cbbfa5e6e9c022c4042ee62c779a8485203c1b0e082b8ccc'
             '274c592f48eba59dc1423ecd926859eb87fbb6ad3431415ed79bcfbaeae59a71d09669edfc4d217ec9ff39da42af21c8a55ceb4d6463c288d3c5f470b19184e8'
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
