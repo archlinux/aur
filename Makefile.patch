@@ -1,0 +1,6 @@
+26c26
+< LATEX = $(LATEXENV) latex
+---
+> LATEX = $(LATEXENV) pdflatex
+89a90
+> 	$(LATEX) $<

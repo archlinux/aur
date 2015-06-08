@@ -1,0 +1,21 @@
+pkgbase = glosstex
+	pkgdesc = Prepare glossaries in LaTeX.
+	pkgver = 0.4
+	pkgrel = 5
+	url = http://www.dante.de/CTAN/help/Catalogue/entries/glosstex.html
+	install = glosstex.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	makedepends = unzip
+	depends = texlive-core
+	source = http://mirror.ctan.org/support/glosstex.zip
+	source = docu.patch
+	source = Makefile.patch
+	md5sums = d5f90382e94fee60fcc431e827d40008
+	md5sums = 1fba401a02aa3f3ad2cebea10cd20176
+	md5sums = 300f01b751d7f3dcae7eeb8ea1ca6459
+
+pkgname = glosstex
+
