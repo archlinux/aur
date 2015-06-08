@@ -1,0 +1,21 @@
+pkgbase = r8168-uksm-ck
+	pkgdesc = A kernel module for Realtek 8168 network cards
+	pkgver = 8.040.00
+	pkgrel = 1
+	url = http://www.realtek.com.tw
+	install = r8168.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = linux-uksm-ck-headers>=4.0
+	makedepends = linux-uksm-ck-headers<4.1
+	depends = glibc
+	depends = linux-uksm-ck>=4.0
+	depends = linux-uksm-ck<4.1
+	source = r8168-8.040.00.tar.bz2::http://12244.wpc.azureedge.net/8012244/drivers/rtdrivers/cn/nic/0002-r8168-8.040.00.tar.bz2
+	sha256sums = da0444fcd7aabb7762310cdf2047fd0aeb7a9ed97a3d6b80d62a0fc71e0730bf
+
+pkgname = r8168-uksm-ck
+	depends = linux-uksm-ck>=4.0
+	depends = linux-uksm-ck<4.1
+
