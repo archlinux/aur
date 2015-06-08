@@ -1,0 +1,26 @@
+pkgbase = xiphos
+	pkgdesc = Bible study tool for GTK+
+	pkgver = 4.0.2
+	pkgrel = 1
+	url = http://xiphos.org/
+	install = xiphos.install
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = gnome-doc-utils
+	makedepends = intltool
+	makedepends = python2
+	depends = webkitgtk2
+	depends = libgsf
+	depends = libglade
+	depends = gtkhtml3
+	depends = sword
+	depends = biblesync
+	provides = gnomesword
+	conflicts = gnomesword
+	replaces = gnomesword
+	source = http://downloads.sourceforge.net/gnomesword/xiphos-4.0.2-20150415.tar.gz
+	md5sums = d5151d06bc701c82f9a1fa7f81214fe1
+
+pkgname = xiphos
+
