@@ -1,0 +1,16 @@
+pkgbase = python2-gmpydl
+	pkgdesc = Unofficial Google Music downloader (command line)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/stevenewbs/gmpydl
+	arch = any
+	license = MIT
+	makedepends = python2-distutils-extra
+	depends = python2-gmusicapi
+	source = https://github.com/stevenewbs/gmpydl/archive/V1.0.tar.gz
+	source = setup.py
+	md5sums = d6b337d556a39cda3017fac3f3601cb8
+	md5sums = 139fe6a9637fe0e2cb9bbdf215d59f5c
+
+pkgname = python2-gmpydl
+
