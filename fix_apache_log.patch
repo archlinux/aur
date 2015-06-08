@@ -1,0 +1,24 @@
+diff -Npur a/include/define.h b/include/define.h
+--- a/include/define.h	2014-05-08 15:24:57.000000000 +0800
++++ b/include/define.h	2014-05-08 15:25:19.000000000 +0800
+@@ -71,7 +71,7 @@
+ #define LOADAVG "/proc/loadavg"
+ #define NET_DEV "/proc/net/dev"
+ #define NET_SNMP "/proc/net/snmp"
+-#define APACHERT "/tmp/apachert.mmap"
++#define APACHERT "/var/log/httpd/apachert.mmap"
+ #define TCP "/proc/net/tcp"
+ #define NETSTAT "/proc/net/netstat"
+ 
+diff -Npur a/include/public.h b/include/public.h
+--- a/include/public.h	2014-05-08 15:24:52.000000000 +0800
++++ b/include/public.h	2014-05-08 15:23:36.000000000 +0800
+@@ -35,7 +35,7 @@
+ #define MEMINFO "/proc/meminfo"
+ #define LOADAVG "/proc/loadavg"
+ #define INTERRUPT "/proc/interrupts"
+-#define APACHERT "/tmp/apachert.mmap"
++#define APACHERT "/var/log/httpd/apachert.mmap"
+ #define VMSTAT "/proc/vmstat"
+ #define DISKSTATS "/proc/diskstats"
+ #define NET_SNMP "/proc/net/snmp"

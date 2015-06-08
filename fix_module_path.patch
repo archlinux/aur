@@ -1,0 +1,11 @@
+--- a/src/framework.c	2014-05-05 13:34:08.000000000 +0800
++++ b/src/framework.c	2014-05-05 13:33:52.000000000 +0800
+@@ -55,7 +55,7 @@
+     int    (*mod_register) (struct module *);
+ 
+     /* get the full path of modules */
+-    sprintf(buff, "/usr/local/tsar/modules");
++    sprintf(buff, "/usr/lib/tsar/modules");
+ 
+     for (i = 0; i < statis.total_mod_num; i++) {
+         mod = &mods[i];
