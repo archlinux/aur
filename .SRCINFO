@@ -1,0 +1,18 @@
+pkgbase = pyneedle
+	pkgdesc = Convenient tool created to allow you to quickly search for files in your computer, using one of the supported search engines (i.e. tracker and recoll)
+	pkgver = r77.ebd0d29c1b8f
+	pkgrel = 1
+	url = https://bitbucket.org/aperezmendez/pyneedle
+	arch = any
+	license = MIT
+	makedepends = mercurial
+	depends = gtk3
+	depends = python2-setuptools
+	optdepends = recoll
+	optdepends = tracker
+	options = !emptydirs
+	source = hg+https://bitbucket.org/aperezmendez/pyneedle
+	md5sums = SKIP
+
+pkgname = pyneedle
+
