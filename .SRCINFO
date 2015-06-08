@@ -1,0 +1,13 @@
+pkgbase = dislines
+	pkgdesc = Distributes the lines of a tagged text into several files
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://www.danielclemente.com/dislines/
+	arch = any
+	license = GPL
+	depends = perl
+	source = http://www.danielclemente.com/dislines/dislines.pl
+	md5sums = bea155c8ef7b4a9c4b63c63acb809681
+
+pkgname = dislines
+
