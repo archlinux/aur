@@ -1,0 +1,25 @@
+pkgbase = caelum
+	pkgdesc = Library for OGRE targeted to help create nice-looking atmospheric effects.
+	pkgver = 0.6.1
+	pkgrel = 3
+	url = http://www.ogre3d.org/tikiwiki/Caelum
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	depends = ogre
+	depends = cegui
+	depends = doxygen
+	depends = boost
+	provides = caelum
+	source = http://caelum.googlecode.com/files/caelum-0.6.1.zip
+	source = caelumplugin.patch
+	source = libname.patch
+	source = caelum-ogre-1.9.patch
+	sha512sums = e1f5a8d3992c7e45a5e70febdb962935c0fb31e8d84c4a6576f3aa757d15678ddca2f24fb9888a6806cbcfb4171a9c10e97714d7e7154a5fb98d5ac4078ddb98
+	sha512sums = cc446e97eceef568e23ef15cbd32b183b5bb54e859ba558b1703c8c668fbc92f3bb904ffe95fa604d77937e653c96c2b80234d77dec5977fdc3656442a09f266
+	sha512sums = c8e368ee203273e8cbfc7b8aa4b65e37e2a58275292bf061ccc15428f54f7da68e7de5d183626e008dd3a92fdd401ccb231d1c5ab98434878871b1ec453a2ba0
+	sha512sums = SKIP
+
+pkgname = caelum
+
