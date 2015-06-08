@@ -1,0 +1,12 @@
+pkgbase = vlc-tunein-radio
+	pkgdesc = TuneIn Radio LUA Script for VLC 2.x
+	pkgver = 20150125
+	pkgrel = 1
+	url = https://github.com/diegofn/TuneIn-Radio-VLC
+	arch = any
+	license = custom
+	depends = vlc
+	depends = git
+
+pkgname = vlc-tunein-radio
+
