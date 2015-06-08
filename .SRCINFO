@@ -1,0 +1,33 @@
+pkgbase = emacs-xwidget-git
+	pkgdesc = The famous editor from xwidget_mvp branch
+	pkgver = 25.0.50.r121676
+	pkgrel = 1
+	url = http://www.gnu.org/software/emacs/
+	install = emacs.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = texinfo
+	makedepends = glproto
+	depends = alsa-lib
+	depends = gpm
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = giflib
+	depends = m17n-lib
+	depends = imagemagick
+	depends = librsvg
+	depends = gconf
+	depends = webkitgtk3
+	depends = gobject-introspection-runtime
+	provides = emacs
+	conflicts = emacs
+	options = docs
+	options = !emptydirs
+	options = !makeflags
+	source = git://git.savannah.gnu.org/emacs.git#branch=xwidget_mvp
+	md5sums = SKIP
+
+pkgname = emacs-xwidget-git
+
