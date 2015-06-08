@@ -1,0 +1,22 @@
+pkgbase = kdesignerplugin-git
+	pkgdesc = KDesignerPlugin
+	pkgver = r78.5b1f761
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/kdesignerplugin
+	arch = i686
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	makedepends = qt5-tools
+	makedepends = kdoctools-git
+	depends = kplotting-git
+	depends = kdewebkit-git
+	provides = kdesignerplugin
+	conflicts = kdesignerplugin
+	source = git://anongit.kde.org/kdesignerplugin.git
+	md5sums = SKIP
+
+pkgname = kdesignerplugin-git
+
