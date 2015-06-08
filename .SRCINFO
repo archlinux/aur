@@ -1,0 +1,20 @@
+pkgbase = krunner-git
+	pkgdesc = Framework for providing different actions given a string query
+	pkgver = r92.2d6d560
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/krunner
+	arch = i686
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	depends = threadweaver-git
+	depends = plasma-framework-git
+	provides = krunner
+	conflicts = krunner
+	source = git://anongit.kde.org/krunner.git
+	md5sums = SKIP
+
+pkgname = krunner-git
+
