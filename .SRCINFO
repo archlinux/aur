@@ -1,0 +1,15 @@
+pkgbase = xfce4-generic-slider-git
+	pkgdesc = Xfce panel plugin for adjusting the value passed to a command
+	pkgver = 23.a9c5cc6
+	pkgrel = 1
+	url = http://goodies.xfce.org/projects/panel-plugins/xfce4-generic-slider
+	arch = i686
+	arch = x86_64
+	groups = xfce4-goodies
+	license = GPL
+	depends = xfce4-panel
+	source = git://git.xfce.org/panel-plugins/xfce4-generic-slider
+	md5sums = SKIP
+
+pkgname = xfce4-generic-slider-git
+
