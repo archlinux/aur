@@ -1,0 +1,65 @@
+pkgbase = lib32-gstreamer0.10-good
+	pkgver = 0.10.31
+	pkgrel = 4
+	url = http://gstreamer.freedesktop.org/
+	arch = x86_64
+	license = LGPL
+	makedepends = intltool
+	makedepends = pkgconfig
+	makedepends = libavc1394
+	makedepends = libiec61883
+	makedepends = aalib
+	makedepends = lib32-libshout
+	makedepends = lib32-libdv
+	makedepends = lib32-flac
+	makedepends = lib32-gconf
+	makedepends = lib32-wavpack
+	makedepends = lib32-taglib
+	makedepends = lib32-libsoup
+	makedepends = lib32-v4l-utils
+	makedepends = lib32-libcaca
+	makedepends = lib32-bzip2
+	makedepends = lib32-gdk-pixbuf2
+	makedepends = lib32-libpulse
+	makedepends = lib32-jack
+	makedepends = git
+	makedepends = lib32-cairo
+	depends = gstreamer0.10-good
+	depends = gstreamer0.10-good-plugins
+	depends = lib32-gstreamer0.10-base
+	options = !emptydirs
+	source = git://anongit.freedesktop.org/gstreamer-sdk/gst-plugins-good#commit=e28fd8886f05bb51c147f871f3a1db2fc2b735a9
+	source = test-rtp-payloading.patch
+	md5sums = SKIP
+	md5sums = 6781763eb752d57f3d111a41905d25bd
+
+pkgname = lib32-gstreamer0.10-good
+	pkgdesc = GStreamer Multimedia Framework Good plugin libraries (lib32)
+	depends = lib32-gstreamer0.10-base>=0.10.34
+	depends = lib32-bzip2
+
+pkgname = lib32-gstreamer0.10-good-plugins
+	pkgdesc = GStreamer Multimedia Framework Good Plugins (gst-plugins-good, lib32)
+	install = lib32-gstreamer0.10-good-plugins.install
+	depends = gstreamer0.10-good
+	depends = libavc1394
+	depends = libiec61883
+	depends = aalib
+	depends = lib32-libshout
+	depends = lib32-libdv
+	depends = lib32-flac
+	depends = lib32-gconf
+	depends = lib32-wavpack
+	depends = lib32-taglib
+	depends = lib32-libsoup
+	depends = lib32-v4l-utils
+	depends = lib32-libcaca
+	depends = lib32-libpng
+	depends = lib32-libjpeg-turbo
+	depends = lib32-jack
+	depends = lib32-libpulse
+	depends = lib32-cairo
+	depends = lib32-gdk-pixbuf2
+	conflicts = lib32-gstreamer0.10-good-plugins
+	replaces = lib32-gstreamer0.10-good-plugins
+
