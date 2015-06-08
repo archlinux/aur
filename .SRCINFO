@@ -1,0 +1,18 @@
+pkgbase = qtconfiguration
+	pkgdesc = Settings API with change notifications for Qt
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/mauios/qtconfiguration
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = LGPL
+	license = custom
+	makedepends = cmake
+	depends = qt5-base
+	depends = dconf
+	source = http://sourceforge.net/projects/mauios/files/hawaii/qtconfiguration/qtconfiguration-0.2.1.tar.gz
+	md5sums = b95d0d796b89cea2db45305c9eac04f0
+
+pkgname = qtconfiguration
+
