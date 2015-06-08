@@ -1,0 +1,78 @@
+# Maintainer: Stefano Avallone <stavallo@gmail.com>
+
+pkgname=kf5-git-meta
+pkgver=20150530
+pkgrel=1
+pkgdesc='Meta package for KDE Frameworks 5'
+arch=(any)
+url='http://www.kde.org/'
+license=(LGPL)
+depends=(kapidox-git
+         karchive-git
+         kcoreaddons-git
+         kauth-git
+         kcodecs-git
+         kconfig-git
+         kdoctools-git
+         kguiaddons-git
+         kjs-git
+         ki18n-git
+         kwidgetsaddons-git
+         kconfigwidgets-git
+         kitemviews-git
+         kiconthemes-git
+         kglobalaccel-git
+         kcompletion-git
+         kwindowsystem-git
+         kcrash-git
+         kdbusaddons-git
+         kservice-git
+         sonnet-git
+         ktextwidgets-git
+         attica-git
+         kxmlgui-git
+         kbookmarks-git
+         kcmutils-git
+         solid-git
+         kjobwidgets-git
+         knotifications-git
+         kio-git
+         kdeclarative-git
+         kinit-git
+         kded-git
+         kplotting-git
+         kpty-git
+         kdesu-git
+         kwallet-git
+         kparts-git
+         kdewebkit-git
+         kdesignerplugin-git
+         kdnssd-git
+         kemoticons-git
+         kidletime-git
+         kimageformats-git
+         kitemmodels-git
+         kjsembed-git
+         kmediaplayer-git
+         kross-git
+         kunitconversion-git
+         threadweaver-git
+         kdelibs4support-git
+         khtml-git
+         knewstuff-git
+         knotifyconfig-git
+         frameworkintegration-git
+         kactivities-git
+         plasma-framework-git
+         krunner-git
+         ktexteditor-git
+	 kpackage-git
+         kxmlrpcclient-git
+	 networkmanager-qt-git
+	 modemmanager-qt-git 
+         kpeople-git
+	 bluez-qt-git)
+
+package(){
+  /bin/true
+}
