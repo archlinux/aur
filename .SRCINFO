@@ -1,0 +1,15 @@
+pkgbase = dog
+	pkgdesc = A better cat, supporting HTTP and hex dumping
+	pkgver = 1.7
+	pkgrel = 3
+	url = http://packages.debian.org/sid/dog
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://archive.debian.org/debian/pool/main/d/dog/dog_1.7.orig.tar.gz
+	source = http://archive.debian.org/debian/pool/main/d/dog/dog_1.7-10.diff.gz
+	md5sums = c93a8aa17c5e75ea1d32cd897b0f838e
+	md5sums = 18d77b7d0046dc8c14d5d08c9f067c79
+
+pkgname = dog
+
