@@ -1,0 +1,35 @@
+[ -f etc/chromium/pepperflash ] && _default='etc/chromium/pepperflash'
+
+instructions() {
+
+cat << EOF
+
+	Disable all other flash plugins:
+	  1. Type chrome://plugins/ in the adress bar and press Enter
+	  2. Click on Details button on the top right
+	  3. Click on Disable near all the Flash plugins except the first one
+
+EOF
+
+}
+
+post_upgrade()
+{
+        if [ -f "$_default" ]; then
+		rm "$_default"
+        else
+                : # do nothing
+        fi
+}
+
+post_install() {
+  instructions
+}
+
+post_remove() {
+	if [ -f "$_pepperflash" ]; then
+                rm "$_default"                
+	else
+		: # do nothing
+	fi
+}
