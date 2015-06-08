@@ -1,0 +1,16 @@
+pkgbase = python2-oauth-svn
+	pkgdesc = An open protocol to allow API authentication in a simple and standard method from desktop and web applications.
+	pkgver = 1134
+	pkgrel = 1
+	url = http://code.google.com/p/oauth/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python2
+	makedepends = subversion
+	depends = python2-distribute
+	provides = python2-oauth
+	conflicts = python-oauth
+
+pkgname = python2-oauth-svn
+
