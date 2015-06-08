@@ -1,0 +1,5 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!yakuake-frameworks-git.install
