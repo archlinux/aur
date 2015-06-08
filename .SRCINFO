@@ -1,0 +1,18 @@
+pkgbase = plymouth-theme-gnome-logo
+	pkgdesc = GNOME Plymouth Theme
+	pkgver = 15.04.5
+	pkgrel = 1
+	url = http://packages.ubuntu.com/vivid/plymouth-theme-ubuntu-gnome-logo
+	install = plymouth-theme-gnome-logo.install
+	arch = any
+	license = GPL
+	depends = plymouth
+	source = http://archive.ubuntu.com/ubuntu/pool/universe/u/ubuntu-gnome-default-settings/ubuntu-gnome-default-settings_15.04.5.tar.xz
+	source = plymouth-theme-gnome-logo.install
+	source = rename.patch
+	sha256sums = d0a57ec1596d9d6551a7dd4e73795c077509261d70bb9f7480b3a1f704dc1b23
+	sha256sums = 04534a13528b220f19870216163f14512061df393cfe798689ba1ad834f259b7
+	sha256sums = 35d3a8e0809b06051b4b6db6c26bb50fbc5fe495e1437cc922f58065da6e6855
+
+pkgname = plymouth-theme-gnome-logo
+

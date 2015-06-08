@@ -1,0 +1,67 @@
+diff -ruN ubuntu-gnome-default-settings-15.04.5/lib/plymouth/themes/gnome-logo/gnome-logo.plymouth ubuntu-gnome-default-settings-15.04.5-renamed/lib/plymouth/themes/gnome-logo/gnome-logo.plymouth
+--- ubuntu-gnome-default-settings-15.04.5/lib/plymouth/themes/gnome-logo/gnome-logo.plymouth	2015-03-10 22:41:50.000000000 +0100
++++ ubuntu-gnome-default-settings-15.04.5-renamed/lib/plymouth/themes/gnome-logo/gnome-logo.plymouth	2015-05-10 14:01:56.437787068 +0200
+@@ -1,8 +1,8 @@
+ [Plymouth Theme]
+-Name=Ubuntu GNOME Logo
++Name=GNOME Logo
+ Description=A theme that features a blue blinds animated background.
+ ModuleName=script
+ 
+ [script]
+-ImageDir=/lib/plymouth/themes/ubuntu-gnome-logo
+-ScriptFile=/lib/plymouth/themes/ubuntu-gnome-logo/ubuntu-gnome-logo.script
++ImageDir=/usr/share/plymouth/themes/gnome-logo
++ScriptFile=/usr/share/plymouth/themes/gnome-logo/gnome-logo.script
+diff -ruN ubuntu-gnome-default-settings-15.04.5/lib/plymouth/themes/gnome-logo/gnome-logo.script ubuntu-gnome-default-settings-15.04.5-renamed/lib/plymouth/themes/gnome-logo/gnome-logo.script
+--- ubuntu-gnome-default-settings-15.04.5/lib/plymouth/themes/gnome-logo/gnome-logo.script	2015-03-10 22:41:50.000000000 +0100
++++ ubuntu-gnome-default-settings-15.04.5-renamed/lib/plymouth/themes/gnome-logo/gnome-logo.script	2015-05-10 17:22:14.561864143 +0200
+@@ -1,4 +1,4 @@
+-#  ubuntu-gnome-logo.script - boot splash plugin
++#  gnome-logo.script - boot splash plugin
+ # 
+ #  Copyright (C) 2013 Canonical Ltd.
+ # 
+@@ -19,6 +19,7 @@
+ # 
+ #  Written by: Alberto Milone <alberto.milone@canonical.com>
+ #  Adapted to Ubuntu GNOME by: Alfredo Hernández <aldomann.designs@gmail.com>
++#  Adapted to Arch Linux by: Juraj Fiala <doctorjellyface@riseup.net>
+ #
+ #  Based on the example provided with the "script plugin" written by:
+ #              Charlie Brej   <cbrej@cs.man.ac.uk>
+@@ -188,13 +189,13 @@
+ #-----------------------------------------------------------------------------
+ bits_per_pixel = Window.GetBitsPerPixel ();
+ if (bits_per_pixel == 4) {
+-    logo_filename = "ubuntu_gnome_logo16.png";
++    logo_filename = "gnome_logo16.png";
+     progress_dot_off_filename = "progress_dot_off16.png";
+     progress_dot_on_filename = "progress_dot_on16.png";
+     password_field_filename = "password_field16.png";
+     question_field_filename = "password_field16.png";
+ } else {
+-    logo_filename = "ubuntu_gnome_logo.png";
++    logo_filename = "gnome_logo.png";
+     progress_dot_off_filename = "progress_dot_off.png";
+     progress_dot_on_filename = "progress_dot_on.png";
+     password_field_filename = "password_field.png";
+diff -ruN ubuntu-gnome-default-settings-15.04.5/lib/plymouth/themes/gnome-text/gnome-text.plymouth.in ubuntu-gnome-default-settings-15.04.5-renamed/lib/plymouth/themes/gnome-text/gnome-text.plymouth.in
+--- ubuntu-gnome-default-settings-15.04.5/lib/plymouth/themes/gnome-text/gnome-text.plymouth.in	2015-03-10 22:41:50.000000000 +0100
++++ ubuntu-gnome-default-settings-15.04.5-renamed/lib/plymouth/themes/gnome-text/gnome-text.plymouth.in	2015-05-10 14:06:05.438551465 +0200
+@@ -1,10 +1,10 @@
+ [Plymouth Theme]
+-Name=Ubuntu GNOME Text
+-Description=Text mode theme based on ubuntu-gnome-logo theme
+-ModuleName=ubuntu-text
++Name=GNOME Text
++Description=Text mode theme based on gnome-logo theme
++ModuleName=gnome-text
+ 
+-[ubuntu-text]
+-title=Ubuntu GNOME
++[gnome-text]
++title=GNOME
+ black=0x2d3335
+ white=0xffffff
+ brown=0x0087ed
