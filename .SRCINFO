@@ -1,0 +1,23 @@
+pkgbase = plank-bzr
+	pkgdesc = Elegant, simple, clean dock
+	pkgver = r1018
+	pkgrel = 1
+	url = https://launchpad.net/plank
+	install = plank.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = bzr
+	makedepends = gnome-common
+	makedepends = intltool
+	makedepends = vala
+	depends = bamf
+	depends = libdbusmenu-gtk3
+	depends = libgee
+	provides = plank
+	conflicts = plank
+	source = bzr+lp:plank
+	sha256sums = SKIP
+
+pkgname = plank-bzr
+
