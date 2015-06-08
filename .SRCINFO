@@ -1,0 +1,19 @@
+pkgbase = qtspeech-git
+	pkgdesc = A Qt5 Speech Module. (GIT Version)
+	pkgver = 5.5.0.r72.fdfd49f
+	pkgrel = 1
+	url = http://qt-project.org/wiki/QtSpeech
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = LGPL
+	license = FDL
+	depends = qt5-base
+	depends = speech-dispatcher-git
+	provides = qtspeech
+	conflicts = qtspeech
+	source = git+https://codereview.qt-project.org/qt/qtspeech
+	sha1sums = SKIP
+
+pkgname = qtspeech-git
+
