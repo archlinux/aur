@@ -1,0 +1,16 @@
+pkgbase = 7-light-years
+	pkgdesc = 7 Light-Years is a game of flying down an endless corridor of neon wire-meshes and geometrical shapes.
+	pkgver = 1
+	pkgrel = 2
+	url = http://nifflas.ni2.se/?page=Miscellaneous
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glu
+	source = 7-light-years.zip::http://nifflas.ni2.se/content/Misc/7%20Light-years%20Linux.zip
+	source = 7-light-years.desktop
+	sha256sums = 2ff18a59d5741e17ce5fad001137e7a75babda0be5138539da0c87b3a8f3ebf9
+	sha256sums = 898af2f7eec0f537e609d67cf2c197b87ac7f43438f7d3d881adfadbee105225
+
+pkgname = 7-light-years
+

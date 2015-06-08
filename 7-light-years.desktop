@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=7 Light-Years
+Comment=Play 7 Light-Years
+Exec=7-light-years
+Icon=7-light-years
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;AudioVideo;
+Encoding=UTF-8
