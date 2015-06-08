@@ -1,0 +1,15 @@
+pkgbase = quotepas
+	pkgdesc = LaTeX style rhat can be used to insert passages from a database.
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://theoval.cmp.uea.ac.uk/~nlct/latex/packages
+	install = quotepas.install
+	arch = any
+	license = LPPL
+	depends = texlive-core
+	depends = perl
+	source = http://theoval.cmp.uea.ac.uk/~nlct/latex/packages/quotepas/quotepas.tar.gz
+	md5sums = 0c31eb7a8f1a2fcac2aa48ebd5cac034
+
+pkgname = quotepas
+
