@@ -1,0 +1,19 @@
+pkgbase = hop
+	pkgdesc = Software Development Kit for the Web
+	pkgver = 2.5.1
+	pkgrel = 1
+	url = http://hop.inria.fr
+	install = hop.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	depends = bigloo-devel
+	options = !makeflags
+	source = ftp://ftp-sop.inria.fr/indes/fp/Hop/hop-2.5.1.tar.gz
+	source = hop
+	md5sums = ab7abc46bb2bb5a4897ad074f1e40606
+	md5sums = c01ff06ad4faca90e6da4a2ee9b8e533
+
+pkgname = hop
+
