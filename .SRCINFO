@@ -1,0 +1,19 @@
+pkgbase = mamepgui
+	pkgdesc = Frontend for SDLMAME/SDLMESS based on MAME Plus!
+	pkgver = 1.6.0
+	pkgrel = 2
+	url = http://sourceforge.net/projects/mameplus
+	arch = i686
+	arch = x86_64
+	license = custom:WTFPL
+	depends = qt4
+	depends = quazip
+	optdepends = sdlmame: port of MAME using SDL
+	optdepends = sdlmess: port of MESS using SDL
+	source = http://et6.free.fr/temp/mamepgui-1.6.0.tar.gz
+	source = COPYING
+	md5sums = df681ca55de544a726ea3019e069ed98
+	md5sums = 389a9e29629d1f05e115f8f05c283df5
+
+pkgname = mamepgui
+
