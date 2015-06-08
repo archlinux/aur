@@ -1,0 +1,15 @@
+pkgbase = pip
+	pkgdesc = Wraps programs to use them as filters.
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://membled.com/work/apps/pip/
+	arch = any
+	license = GPL
+	depends = perl>=5.10.0
+	conflicts = python-pip
+	options = !emptydirs
+	source = http://membled.com/work/apps/pip/pip-1.2.tar.bz2
+	md5sums = 25b9a9dc0d659bfabf6a528bb27ec8e6
+
+pkgname = pip
+
