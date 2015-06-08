@@ -1,0 +1,19 @@
+pkgbase = asoundpp-git
+	pkgdesc = ALSA C++ wrapper library
+	pkgver = r71.d91e378
+	pkgrel = 1
+	url = https://github.com/sorokin/asoundpp
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = cmake
+	depends = alsa-lib
+	depends = speex
+	depends = boost
+	source = asoundpp::git+git://github.com/sorokin/asoundpp.git
+	source = cmake.patch
+	md5sums = SKIP
+	md5sums = c974a82dc98fe4c3a47fe74f82685c9a
+
+pkgname = asoundpp-git
+

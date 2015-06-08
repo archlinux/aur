@@ -1,0 +1,43 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 904aeea..821962e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,3 @@
+ cmake_minimum_required (VERSION 2.6)
+ 
+ add_subdirectory(lib)
+-add_subdirectory(tools)
+diff --git a/lib/soundio/CMakeLists.txt b/lib/soundio/CMakeLists.txt
+index aeca0fa..29f6027 100644
+--- a/lib/soundio/CMakeLists.txt
++++ b/lib/soundio/CMakeLists.txt
+@@ -2,21 +2,11 @@ cmake_minimum_required (VERSION 2.6)
+ 
+ project(SOUNDIO)
+ 
+-add_library(soundio
+-   asoundpp.cpp
+-   asoundpp.hpp
+-   alsa_format_conversion.cpp
+-   alsa_format_conversion.hpp
+-   asoundpp.hpp
+-   format.hpp
+-   format.cpp
+-   input_device.cpp
+-   input_device.hpp
+-   output_device.hpp
+-   output_device.cpp
+-   speex_decoder.hpp
+-   speex_decoder.cpp
+-   speex_encoder.hpp
+-   speex_encoder.cpp
+-   speex_profile.hpp
+-)
++file(GLOB SOUNDIO_HEADERS *.hpp)
++file(GLOB SOUNDIO_SOURCES *.cpp)
++
++add_library(soundio SHARED ${SOUNDIO_SOURCES} ${SOUNDIO_HEADERS})
++target_link_libraries(soundio asound speex)
++
++install(TARGETS soundio LIBRARY DESTINATION lib)
++install(FILES ${SOUNDIO_HEADERS} DESTINATION include/asoundpp)
