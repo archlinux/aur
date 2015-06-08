@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-tnlmeans-git
+	pkgdesc = Plugin for Vapoursynth: tnlmeans (GIT version)
+	pkgver = r39.22a40af
+	pkgrel = 1
+	url = https://github.com/VFR-maniac/VapourSynth-TNLMeans
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = vapoursynth
+	provides = vapoursynth-plugin-tnlmeans
+	conflicts = vapoursynth-plugin-tnlmeans
+	source = tnlmeans::git+https://github.com/VFR-maniac/VapourSynth-TNLMeans.git
+	sha1sums = SKIP
+
+pkgname = vapoursynth-plugin-tnlmeans-git
+
