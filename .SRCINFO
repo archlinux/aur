@@ -1,0 +1,15 @@
+pkgbase = ttf-everson-mono
+	pkgdesc = A simple, elegant, monowidth font.
+	pkgver = 7.0.1b
+	pkgrel = 1
+	url = http://www.evertype.com/emono/
+	install = ttf-everson-mono.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.evertype.com/emono/evermono-beta.zip
+	sha256sums = c97cada09b7829a50a12edb98e1ad7cdbc2261f7aeb5e50621d22380d44a7624
+
+pkgname = ttf-everson-mono
+
