@@ -1,0 +1,21 @@
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+yellow="${bold}$(tput setaf 3)"
+blue="${bold}$(tput setaf 4)"
+green="${bold}$(tput setaf 2)"
+
+_instructions() {
+  printf "${yellow}==>${all_off} ${bold}ATENTION:${all_off}
+${green}==>${all_off} ${bold}To disable all other flash plugins:${all_off}
+  ${blue}->${all_off} Type '${bold}chrome://plugins/${all_off}' in the adress bar and press Enter
+  ${blue}->${all_off} Click on '${bold}Details${all_off}' button on the top right.
+  ${blue}->${all_off} Click on '${bold}Disable${all_off}' near all the Flash plugins except the first one.\n"
+}
+
+post_install() {
+  _instructions
+}
+
+post_upgrade() {
+  post_install $2
+}
