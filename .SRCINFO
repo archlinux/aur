@@ -1,0 +1,14 @@
+pkgbase = vim-zencoding
+	pkgdesc = vim plugins for HTML and CSS hi-speed coding
+	pkgver = 0.80
+	pkgrel = 1
+	url = http://github.com/mattn/zencoding-vim
+	arch = any
+	groups = vim-plugins
+	license = custom
+	depends = vim
+	source = zencoding-vim-0.80.zip::http://www.vim.org/scripts/download_script.php?src_id=18992
+	md5sums = 42d70260b7fb640f036900239a0261ab
+
+pkgname = vim-zencoding
+
