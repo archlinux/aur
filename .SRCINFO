@@ -1,0 +1,16 @@
+pkgbase = ruby-capistrano-rsync-with-remote-cache
+	pkgdesc = A deployment strategy for Capistrano 2.0 which combines rsync with a remote cache, allowing fast deployments from SCM servers behind firewalls.
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = http://www.viget.com/extend/
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = rubygems
+	depends = ruby-capistrano
+	noextract = capistrano_rsync_with_remote_cache-2.4.0.gem
+	source = http://rubygems.org/downloads/capistrano_rsync_with_remote_cache-2.4.0.gem
+	md5sums = 6b65eead662a7e825a7dc6f6bbfd389c
+
+pkgname = ruby-capistrano-rsync-with-remote-cache
+
