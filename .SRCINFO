@@ -1,0 +1,17 @@
+pkgbase = kde-thumbnailer-mmap
+	pkgdesc = KDE thumbnailer plugin for Mind Mapping File created by MindManager.
+	pkgver = 1.0
+	pkgrel = 3
+	url = http://kde-apps.org/content/show.php/KDE+Mind+Mapping+File+Thumbnailer?content=148746
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = automoc4
+	makedepends = cmake
+	depends = freemind
+	depends = kdelibs
+	source = kde-thumbnailer-mmap-1.0.tar.bz2::http://kde-apps.org/CONTENT/content-files/148746-kde-thumbnailer-mmap-1.0.tar.bz2
+	sha256sums = 7f2f807d381c1511c676bf900dcfbed630e9c484ee2655cb33f9c4f04e88ee0c
+
+pkgname = kde-thumbnailer-mmap
+
