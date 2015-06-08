@@ -1,0 +1,18 @@
+pkgbase = kdeplasma-applets-steamcompanion
+	pkgdesc = A plasmoid to track Steam's specials and deals.
+	pkgver = 0.5.4
+	pkgrel = 1
+	url = http://kde-apps.org/content/show.php/Steam+Companion?content=141713
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = automoc4
+	makedepends = cmake
+	depends = kdebase-workspace
+	provides = steamcompanion
+	replaces = steamcompanion
+	source = http://opendesktop.org/CONTENT/content-files/141713-steamcompanion.tar.gz
+	md5sums = 8356e0a5f9fbe4a7bdf5e8340687b309
+
+pkgname = kdeplasma-applets-steamcompanion
+
