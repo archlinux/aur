@@ -1,0 +1,35 @@
+pkgbase = unifont
+	pkgdesc = A free bitmap font with wide Unicode support (split package with accompanying utilities, TrueType, PCF and BDF versions)
+	pkgver = 7.0.06
+	pkgrel = 1
+	url = http://unifoundry.com/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = perl
+	makedepends = xorg-bdftopcf
+	makedepends = fontforge
+	makedepends = bdf2psf
+	source = http://unifoundry.com/pub/unifont-7.0.06/unifont-7.0.06.tar.gz
+	source = http://unifoundry.com/pub/unifont-7.0.06/unifont-7.0.06.tar.gz.sig
+	source = fontconfig-noaa.conf
+	source = fontconfig-upper.conf
+	source = ttf.install
+	sha512sums = c53f47d11673c8856a7efd410819c845bc25273f4ddc1a535d59253342b319d53b8336ef97b5ec01cbbf3d2596ab7138c4a03d1302bfda70a3f7e1796f412447
+	sha512sums = SKIP
+	sha512sums = d5f31a8f218f3f2b70ee74dddd0c1c1ad21fe38659fc3880fe8749e3e694a2cc7fea69361ec28aa8d5602fb57e7416f0669a2bb165703232e6f02922838e5437
+	sha512sums = 4eb2703bea9af264a8beac2f7605666f7a96a7a36a06dcd4357ad77c99378d99a266aeb54b79bd14a7718a3ceddd8a44b2d4d44e442c02ff4e6cb6f4035cd6a8
+	sha512sums = ebd43afce78a08d4e868e84bd60f89c896e984c31edca7da29ceddc867565f3b7d1d373515ccd288037e6ce18e650677702649a2bc2d2d26f5ab5a5f976a1f6e
+
+pkgname = psf-unifont
+	pkgdesc = A free bitmap font with wide Unicode support (PSF version, for APL)
+	arch = any
+
+pkgname = unifont-utils
+	pkgdesc = A free bitmap font with wide Unicode support - utilities
+	arch = i686
+	arch = x86_64
+	depends = perl
+	optdepends = 
+	optdepends = perl-wx: for the unifont-viewer utility
+
