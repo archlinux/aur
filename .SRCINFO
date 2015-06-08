@@ -1,0 +1,17 @@
+pkgbase = rowhammer-test-git
+	pkgdesc = A programm to detect a machine's vulnerability to the 'rowhammer' attack
+	pkgver = 0.1.r27.gb60f2ce
+	pkgrel = 1
+	url = https://github.com/google/rowhammer-test
+	arch = i686
+	arch = x86_64
+	license = apache
+	makedepends = git
+	depends = gcc-libs
+	provides = rowhammer-test=0.1.r27.gb60f2ce
+	conflicts = rowhammer-test
+	source = git+git://github.com/google/rowhammer-test.git
+	sha256sums = SKIP
+
+pkgname = rowhammer-test-git
+
