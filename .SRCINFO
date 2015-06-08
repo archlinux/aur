@@ -1,0 +1,18 @@
+pkgbase = elastic-mapreduce
+	pkgdesc = a pure Ruby client for the Amazon Elastic MapReduce Web Service.
+	pkgver = 20140722
+	pkgrel = 1
+	url = https://github.com/tc/elastic-mapreduce-ruby
+	install = install
+	arch = any
+	license = APACHE
+	makedepends = unzip
+	depends = ruby1.8
+	noextract = elastic-mapreduce-ruby.zip
+	source = http://elasticmapreduce.s3.amazonaws.com/elastic-mapreduce-ruby.zip
+	source = elastic-mapreduce
+	sha256sums = df1d718383a1f0c4680dcc1d1b553bfe25d0892e09ed85f8e0dbb1a3ce66aa1e
+	sha256sums = fdafdd3394bda33837898414c9880a35850c8070a51e4297d82832908002035a
+
+pkgname = elastic-mapreduce
+
