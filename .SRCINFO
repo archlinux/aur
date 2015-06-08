@@ -1,0 +1,27 @@
+pkgbase = baobab-git
+	pkgdesc = A graphical directory tree analyzer
+	pkgver = 3.16.1.2.ga28ca81
+	pkgrel = 1
+	url = http://gnome.org
+	install = baobab.install
+	arch = i686
+	arch = x86_64
+	groups = gnome-extra
+	license = GPL2
+	makedepends = intltool
+	makedepends = itstool
+	makedepends = vala>=0.25.1
+	makedepends = gobject-introspection
+	depends = glib2
+	depends = dconf
+	depends = gtk3>=3.13.2
+	depends = gsettings-desktop-schemas
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	provides = baobab=3.16.1
+	conflicts = baobab
+	source = git://git.gnome.org/baobab
+	sha256sums = SKIP
+
+pkgname = baobab-git
+
