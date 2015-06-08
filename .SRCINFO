@@ -1,0 +1,31 @@
+pkgbase = scidavis
+	pkgdesc = Application for Scientific Data Analysis and Visualization, fork of QtiPlot
+	pkgver = 1.D8
+	pkgrel = 3
+	url = http://scidavis.sourceforge.net/
+	install = scidavis.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = boost
+	makedepends = cmake
+	depends = gsl
+	depends = glu
+	depends = mesa
+	depends = muparser
+	depends = python2-pyqt4
+	depends = shared-mime-info
+	depends = qt-assistant-compat
+	depends = qwt5
+	depends = qwtplot3d
+	source = http://prdownloads.sourceforge.net/sourceforge/scidavis/scidavis.1.D8.tar.gz
+	source = scidavis-python.patch
+	source = scidavis-qtassistant.patch
+	source = scidavis-qwt5.patch
+	md5sums = c421b6a38f5183780bdf6c5960d92df5
+	md5sums = 0fefd6afe2fbc69b5faadd1112e79d7f
+	md5sums = b35c4fcbc22ca981a1679ae571ab3bed
+	md5sums = 749297643799f48527178bdb43ad94e7
+
+pkgname = scidavis
+

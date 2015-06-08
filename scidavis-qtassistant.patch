@@ -1,0 +1,12 @@
+diff -ruN scidavis.1.D8.orig/scidavis/src/ApplicationWindow.cpp scidavis.1.D8/scidavis/src/ApplicationWindow.cpp
+--- scidavis.1.D8.orig/scidavis/src/ApplicationWindow.cpp	2014-07-22 12:01:44.000000000 +0400
++++ scidavis.1.D8/scidavis/src/ApplicationWindow.cpp	2014-07-23 09:18:28.882046613 +0400
+@@ -143,7 +143,7 @@
+ #include <QList>
+ #include <QUrl>
+ #ifndef NOASSISTANT
+-#include <QtAssistant/QAssistantClient>
++#include <QtAssistant/qassistantclient.h>
+ #endif
+ #include <QStatusBar>
+ #include <QToolButton>
