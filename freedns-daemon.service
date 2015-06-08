@@ -1,0 +1,10 @@
+[Unit]
+Description=Updating freedns record
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/freedns-daemon.sh
+
+[Install]
+WantedBy=multi-user.target

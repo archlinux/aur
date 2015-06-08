@@ -1,0 +1,16 @@
+## arg 1:  the new package version
+post_install() {
+	found_urls=false
+	while read line; do
+
+		#do not execute comments
+		if [[ "$line" != \#* ]];then
+			found_urls=true
+		fi
+		
+	done </etc/freedns-daemon/urls
+	
+	if ! $found_urls; then
+		echo 'Remeber to edit etc/freedns-daemon/urls setting yours DirectURLs!'
+	fi
+}
