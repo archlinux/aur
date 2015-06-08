@@ -1,0 +1,139 @@
+--- svl-1.5/makefiles/config-linux_RH.mf        2002-11-04 23:36:12.000000000 -0500
++++ svl-1.5.mine/makefiles/config-linux_RH.mf   2007-04-20 01:39:43.000000000 -0400
+@@ -13,7 +13,6 @@ CPP         =   gcc -x c -E
+ LIBTOOL     =   libtool
+ 
+ LD_FLAGS    =
+-CFLAGS      =   -O2
+ DBG_CFLAGS  =   -g
+ 
+ DEST        =   $(REACTOR)
+
+--- svl-1.5/src/Mat.cpp	2002-11-03 20:04:00.000000000 -0500
++++ svl-1.5.mine/src/Mat.cpp	2007-04-20 00:46:52.982574408 -0400
+@@ -620,7 +620,7 @@ Mat inv(const Mat &m, Real *determinant,
+         }
+ 
+         pivot = A.Elt(i, i);
+-        Assert(abs(pivot) > pAssertEps, "(inv) Matrix not invertible");
++        Assert(::abs(pivot) > pAssertEps, "(inv) Matrix not invertible");
+         det *= pivot;
+ 
+         for (k = i + 1; k < n; k++)     // Only do elements to the right of the pivot
+
+--- svl-1.5/src/Mat3.cpp	2002-11-03 20:04:00.000000000 -0500
++++ svl-1.5.mine/src/Mat3.cpp	2007-04-20 00:07:11.078852900 -0400
+@@ -177,6 +177,24 @@ Mat3 Mat3::operator / (Real s) const
+     return(result);
+ }
+ 
++Mat3& Mat3::elem_prod(const Mat3 &m)
++{
++    row[0].elem_prod( m.row[0] );
++    row[1].elem_prod( m.row[1] );
++    row[2].elem_prod( m.row[2] );
++
++    return(SELF);
++}
++
++Mat3& Mat3::elem_quot(const Mat3 &m)
++{
++    row[0].elem_quot( m.row[0] );
++    row[1].elem_quot( m.row[1] );
++    row[2].elem_quot( m.row[2] );
++
++    return(SELF);
++}
++
+ Mat3 trans(const Mat3 &m)
+ {
+ #define M(x,y) m[x][y]
+
+--- svl-1.5/src/Vec3.cpp	2002-11-03 20:04:00.000000000 -0500
++++ svl-1.5.mine/src/Vec3.cpp	2007-04-20 00:07:11.059854901 -0400
+@@ -11,6 +11,7 @@
+ 
+ 
+ #include "svl/Vec3.h"
++#include "svl/Mat3.h"
+ #include <cctype>
+ #include <iomanip>
+ 
+@@ -63,3 +64,17 @@ istream &operator >> (istream &s, Vec3 &
+     return(s);
+ }
+ 
++Mat3 Vec3::trans_prod(const Vec3 &a) const
++{
++#define R(x,y) result[x][y]
++
++    Mat3 result;
++
++    R(0,0) = elt[0]*a[0]; R(0,1) = elt[0]*a[1]; R(0,2) = elt[0]*a[2];
++    R(1,0) = elt[1]*a[0]; R(1,1) = elt[1]*a[1]; R(1,2) = elt[1]*a[2];
++    R(2,0) = elt[2]*a[0]; R(2,1) = elt[2]*a[1]; R(2,2) = elt[2]*a[2];
++
++    return(result);
++
++#undef R
++}
+
+--- svl-1.5/include/svl/Mat3.h  2007-04-20 01:07:33.098838970 -0400
++++ svl-1.5.mine/include/svl/Mat3.h     2007-04-20 01:10:28.787330059 -0400
+@@ -68,6 +68,9 @@ public:
+     Mat3        operator * (Real s) const;          // M * s
+     Mat3        operator / (Real s) const;          // M / s
+ 
++    Mat3&       elem_prod(const Mat3 &m);     // elementwise product
++    Mat3&       elem_quot(const Mat3 &m);     // elementwise quotient
++
+     // Initialisers
+ 
+     Void        MakeZero();                 // Zero matrix
+
+--- svl-1.5/include/svl/Vec3.h	2002-11-03 19:23:00.000000000 -0500
++++ svl-1.5.mine/include/svl/Vec3.h	2007-04-20 00:36:36.162533388 -0400
+@@ -13,6 +13,7 @@
+ 
+ #include "svl/Vec2.h"
+ 
++class Mat3;
+ 
+ // --- Vec3 Class -------------------------------------------------------------
+ 
+@@ -66,6 +67,10 @@ public:
+     Vec3        operator / (const Vec3 &a) const;   // v / a (vx / ax, ...)
+     Vec3        operator / (Real s) const;          // v / s
+ 
++    Vec3&       elem_prod(const Vec3 &a);     // elementwise product
++    Vec3&       elem_quot(const Vec3 &a);     // elementwise quotient
++    Mat3        trans_prod(const Vec3 &a) const; // row * column vector
++    
+     // Initialisers
+ 
+     Vec3        &MakeZero();                        // Zero vector
+@@ -281,6 +286,24 @@ inline Vec3 Vec3::operator / (Real s) co
+     return(result);
+ }
+ 
++inline Vec3& Vec3::elem_prod(const Vec3 &a)
++{
++    elt[0] *= a[0];
++    elt[1] *= a[1];
++    elt[2] *= a[2];
++
++    return(SELF);
++}
++
++inline Vec3& Vec3::elem_quot(const Vec3 &a)
++{
++    elt[0] /= a[0];
++    elt[1] /= a[1];
++    elt[2] /= a[2];
++
++    return(SELF);
++}
++
+ inline Vec3 operator * (Real s, const Vec3 &v)
+ {
+     return(v * s);

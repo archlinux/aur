@@ -1,0 +1,15 @@
+pkgbase = svl
+	pkgdesc = Small Vector Library
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://www.cs.cmu.edu/afs/cs/user/ajw/www/software/index.html
+	arch = i686
+	arch = x86_64
+	depends = glibc
+	source = http://www.cs.cmu.edu/~ajw/public/dist/svl-1.5.tar.gz
+	source = additions.patch
+	md5sums = 53f231278d6e102e3698693e981ce039
+	md5sums = 8192d595db34400c2898fc1e25a1f19e
+
+pkgname = svl
+
