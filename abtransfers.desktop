@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=AB-Transfers
+Exec=abtransfers 
+Type=Application
+GenericName=Online-Banking-Programm
+Terminal=false
+Icon=/usr/share/abtransfers/icon/icon.png
+X-KDE-StartupNotify=false
+Categories=Application;Office;

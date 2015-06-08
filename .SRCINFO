@@ -1,0 +1,25 @@
+pkgbase = abtransfers
+	pkgdesc = A program to perform HBCI-Transfers with aqbanking
+	pkgver = 0.0.5.0
+	pkgrel = 2
+	url = http://schmufu.dyndns.org/dokuwiki/ab_transfer:start
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt4
+	depends = aqbanking
+	source = http://schmufu.dyndns.org/abtransfers/source/abtransfers-0.0.5.0.tar.bz2
+	source = abtransfers.desktop
+	source = abtransfers.pro
+	md5sums = bc38d7ee81f1d0456872c384f2890cd8
+	md5sums = 5ef91bc33a3d58984a61e7143fe6f925
+	md5sums = bc9a5bcd3a3883b7bb299ccc17bc77c6
+	sha1sums = 90163670a917d8e2476151450f42863c0e56ed8d
+	sha1sums = d092c551475591fdb7d7801d1f09d193c1f85b31
+	sha1sums = 679aae779f1dbe932c62cdb7e2dd4bbde612ade3
+	sha512sums = b7c2ec6e6f41cf44bfea4e3a8e005a65f0632889a177f7ad51b75fce668606b3cca009ed8c55e9b55f7181617eded993626e5f580a2fc49928eedc5b974711e4
+	sha512sums = e873695b03c5d9a722a948c982dbd6a94bdd65099707e44f8bed231a85b342f7b5f900e44c42a9bd2cb1aebec23964917788722589e9a6ed6ba0a467b093d5a3
+	sha512sums = f8f22ecb620e35eb00b9c667779652fba5a48b3b8ed9d0eb03f74949f25aa3ece72c08e8b6de72224b97afecd55c250a9ef8731bc36c5202344743d1a7e7903b
+
+pkgname = abtransfers
+
