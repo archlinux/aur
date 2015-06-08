@@ -1,0 +1,14 @@
+pkgbase = mailnot-git
+	pkgdesc = A Gmail notifier for GNOME 3
+	pkgver = 20131026
+	pkgrel = 1
+	url = http://github.com/fmoralesc/utils
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python2-gobject
+	depends = python2-dateutil
+	provides = mailnot
+
+pkgname = mailnot-git
+
