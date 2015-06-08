@@ -1,0 +1,11 @@
+--- src/sensors/qsensor.h.orig	2011-05-10 10:06:12.000000000 +0200
++++ src/sensors/qsensor.h	2012-04-17 17:53:56.929435501 +0200
+@@ -172,7 +172,7 @@
+     virtual bool filter(QSensorReading *reading) = 0;
+ protected:
+     QSensorFilter();
+-    ~QSensorFilter();
++    virtual ~QSensorFilter();
+     virtual void setSensor(QSensor *sensor);
+     QSensor *m_sensor;
+ };

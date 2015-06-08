@@ -1,0 +1,32 @@
+pkgbase = qtmobility
+	pkgdesc = A cross-platform application and UI framework
+	pkgver = 1.2.0
+	pkgrel = 9
+	url = https://qt.gitorious.org/qt-mobility
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	license = GPL3
+	makedepends = mesa
+	makedepends = gstreamer0.10-base
+	makedepends = gstreamer0.10-bad
+	makedepends = networkmanager
+	makedepends = bluez-libs
+	depends = qt4
+	depends = udev
+	optdepends = networkmanager: for Bearer Management API
+	optdepends = gstreamer0.10-base: for Multimedia mediaservice plugins
+	optdepends = gstreamer0.10-bad: for Multimedia mediaservice plugins
+	source = http://pkgs.fedoraproject.org/repo/pkgs/qt-mobility/qt-mobility-opensource-src-1.2.0.tar.gz/ea5db5a8d3dd4709c2926dceda646bd8/qt-mobility-opensource-src-1.2.0.tar.gz
+	source = qt48.patch
+	source = qsensor_fix.patch
+	source = pa-header_fix.patch
+	source = qbluetooth.patch
+	sha256sums = ee3c88975e04139ac9589f76d4be646d44fcbc4c8c1cf2db621abc154cf0ba44
+	sha256sums = 55d866ac79bf91aa4d6d4eb637bc8d2d544c1e5ed3106629a2aa9101c59d8385
+	sha256sums = b5c73dc037dd25dbcb18b410910a642d7f2745c8b97375a9a510f095b8cac071
+	sha256sums = 9ef6af5bb2840b2927797bfe3cc1ef719f78a65a64dd79e03f0163d891fda26c
+	sha256sums = aa326ad71bf691e4c731dd30ed00fa9e9ba22ede1690c5738b609aa7fb2e2e40
+
+pkgname = qtmobility
+

@@ -1,0 +1,16 @@
+diff -Naur src/connectivity/bluetooth/qbluetoothlocaldevice_p.h.orig src/connectivity/bluetooth/qbluetoothlocaldevice_p.h
+--- src/connectivity/bluetooth/qbluetoothlocaldevice_p.h.orig	2015-04-02 14:48:28.849490965 -0400
++++ src/connectivity/bluetooth/qbluetoothlocaldevice_p.h	2015-04-02 14:49:03.556446406 -0400
+@@ -53,9 +53,9 @@
+ 
+ #ifndef QT_NO_DBUS
+ #include <QObject>
+-#include <QDBusContext>
+-#include <QDBusObjectPath>
+-#include <QDBusMessage>
++#include <qt4/QtDBus/QDBusContext>
++#include <qt4/QtDBus/QDBusObjectPath>
++#include <qt4/QtDBus/QDBusMessage>
+ 
+ class OrgBluezAdapterInterface;
+ class OrgBluezAgentAdaptor;

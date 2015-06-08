@@ -1,0 +1,27 @@
+diff --git a/src/bearer/qnetworkconfigmanager.cpp b/src/bearer/qnetworkconfigmanager.cpp
+index 28e3c84..26549a5 100644
+--- a/src/bearer/qnetworkconfigmanager.cpp
++++ b/src/bearer/qnetworkconfigmanager.cpp
+@@ -76,7 +76,8 @@ QTM_BEGIN_NAMESPACE
+     }
+ #else
+ #define Q_GLOBAL_STATIC_QAPP_DESTRUCTION(TYPE, NAME)                    \
+-    Q_GLOBAL_STATIC_INIT(TYPE, NAME);                                   \
++    static QGlobalStatic<TYPE > this_##NAME                             \
++                = { Q_BASIC_ATOMIC_INITIALIZER(0), false };             \
+     static void NAME##_cleanup()                                        \
+     {                                                                   \
+         delete this_##NAME.pointer;                                     \
+diff --git a/src/serviceframework/ipc/qmetaobjectbuilder_p.h b/src/serviceframework/ipc/qmetaobjectbuilder_p.h
+index 5f25e0f..3121764 100644
+--- a/src/serviceframework/ipc/qmetaobjectbuilder_p.h
++++ b/src/serviceframework/ipc/qmetaobjectbuilder_p.h
+@@ -172,7 +172,7 @@ public:
+     int indexOfEnumerator(const QByteArray& name);
+     int indexOfClassInfo(const QByteArray& name);
+ 
+-    typedef int (*StaticMetacallFunction)(QMetaObject::Call, int, void **);
++    typedef void (*StaticMetacallFunction)(QObject*, QMetaObject::Call, int, void **);
+ 
+     QMetaObjectBuilder::StaticMetacallFunction staticMetacallFunction() const;
+     void setStaticMetacallFunction(QMetaObjectBuilder::StaticMetacallFunction value);

@@ -1,0 +1,33 @@
+--- plugins/multimedia/pulseaudio/qaudioinput_pulse.cpp.orig	2011-05-10 10:06:09.000000000 +0200
++++ plugins/multimedia/pulseaudio/qaudioinput_pulse.cpp	2012-05-04 19:35:08.017708621 +0200
+@@ -47,6 +47,8 @@
+ #include "qpulseaudioengine.h"
+ #include "qpulsehelpers.h"
+ 
++#include <unistd.h>
++
+ QT_BEGIN_NAMESPACE
+ 
+ const int PeriodTimeMs = 50;
+--- plugins/multimedia/pulseaudio/qaudiooutput_pulse.cpp.orig	2011-05-10 10:06:09.000000000 +0200
++++ plugins/multimedia/pulseaudio/qaudiooutput_pulse.cpp	2012-05-04 19:35:54.350041085 +0200
+@@ -47,6 +47,8 @@
+ #include "qpulseaudioengine.h"
+ #include "qpulsehelpers.h"
+ 
++#include <unistd.h>
++
+ QT_BEGIN_NAMESPACE
+ 
+ const int PeriodTimeMs = 20;
+--- plugins/multimedia/pulseaudio/qpulseaudioengine.cpp.orig	2012-05-04 19:36:32.079311816 +0200
++++ plugins/multimedia/pulseaudio/qpulseaudioengine.cpp	2012-05-04 19:36:20.011225220 +0200
+@@ -47,6 +47,8 @@
+ #include "qaudiooutput_pulse.h"
+ #include "qpulsehelpers.h"
+ 
++#include <unistd.h>
++
+ QT_BEGIN_NAMESPACE
+ 
+ static void serverInfoCallback(pa_context *context, const pa_server_info *info, void *userdata)
