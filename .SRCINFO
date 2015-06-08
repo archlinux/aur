@@ -1,0 +1,16 @@
+pkgbase = lib32-freeimage
+	pkgdesc = Library project for developers who would like to support popular graphics image formats
+	pkgver = 3.17.0
+	pkgrel = 1
+	url = http://freeimage.sourceforge.net
+	arch = x86_64
+	license = GPL
+	license = custom:FIPL
+	makedepends = gcc-multilib
+	depends = freeimage
+	depends = lib32-gcc-libs
+	source = http://downloads.sourceforge.net/project/freeimage/Source%20Distribution/3.17.0/FreeImage3170.zip
+	sha1sums = 6752c83798c2f81dee71a2e8bb11657068672669
+
+pkgname = lib32-freeimage
+
