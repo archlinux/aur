@@ -1,0 +1,25 @@
+pkgbase = med-fichier
+	pkgdesc = MED-fichier library
+	pkgver = 3.0.6
+	pkgrel = 1
+	url = https://packages.debian.org/en/source/sid/med-fichier
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = gcc-fortran
+	makedepends = hdf5
+	makedepends = tk
+	source = http://ftp.de.debian.org/debian/pool/main/m/med-fichier/med-fichier_3.0.6.orig.tar.gz
+	sha256sums = e1e259fcb756c15417b8fab37ad690e7db9997e1a533125729305f396d8fe97a
+
+pkgname = med-fichier
+	depends = hdf5
+	depends = tk
+
+pkgname = med-fichier-doc
+	arch = any
+
+pkgname = med-fichier-dev
+	arch = any
+	depends = med-fichier
+
