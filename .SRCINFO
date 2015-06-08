@@ -1,0 +1,20 @@
+pkgbase = hlextract
+	pkgdesc = Extract Tool and Lib for open Half-Life and other games package formats
+	pkgver = 2.4.5
+	pkgrel = 3
+	url = http://nemesis.thewavelength.net/index.php?c=108
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = git
+	provides = hlextract
+	provides = hllib
+	noextract = hllib24.5.zip
+	source = http://nemesis.thewavelength.net/files/files/hllib24.5.zip
+	source = hllib-2.4.5v2.patch
+	sha1sums = 2b2b9900e7cc412c6d36224d469c9a6b0477011f
+	sha1sums = SKIP
+
+pkgname = hlextract
+
