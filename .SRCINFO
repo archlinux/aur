@@ -1,0 +1,25 @@
+pkgbase = ocp
+	pkgdesc = Open Cubic Player
+	pkgver = 0.1.21
+	pkgrel = 4
+	url = http://stian.cubic.org/project-ocp.php
+	install = ocp.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = texinfo
+	makedepends = desktop-file-utils
+	depends = libsidplay
+	depends = libxxf86vm
+	depends = libvorbis
+	depends = libxpm
+	depends = alsa-lib
+	depends = libmad
+	depends = flac
+	depends = sdl
+	depends = adplug
+	source = http://sourceforge.net/projects/opencubicplayer/files/ocp-0.1.21/ocp-0.1.21.tar.bz2
+	md5sums = 558a6eacfadfd9c60c97a6e9c7f83f47
+
+pkgname = ocp
+
