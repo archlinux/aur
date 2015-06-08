@@ -1,0 +1,25 @@
+pkgbase = lxappearance-git
+	pkgdesc = standard screen manager of LXDE
+	pkgver = 0.5.5.22.g6dc8b82
+	pkgrel = 1
+	url = http://pcmanfm.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = intltool
+	makedepends = pkgconfig
+	makedepends = autoconf
+	makedepends = perl
+	makedepends = gtk-doc
+	depends = gtk2
+	depends = gtk3
+	depends = glib2
+	depends = menu-cache
+	provides = lxappearance
+	conflicts = lxappearance
+	source = git://pcmanfm.git.sourceforge.net/gitroot/lxde/lxappearance
+	md5sums = SKIP
+
+pkgname = lxappearance-git
+
