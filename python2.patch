@@ -1,0 +1,171 @@
+diff -aur opensesame-2.9.1.orig/dev-scripts/architecture.py opensesame-2.9.1/dev-scripts/architecture.py
+--- opensesame-2.9.1.orig/dev-scripts/architecture.py	2014-11-18 09:59:01.040205947 +0000
++++ opensesame-2.9.1/dev-scripts/architecture.py	2014-11-18 10:01:47.026057991 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ #-*- coding:utf-8 -*-
+ 
+ """
+@@ -18,7 +18,7 @@
+ along with OpenSesame.  If not, see <http://www.gnu.org/licenses/>.
+ """
+ 
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ #-*- coding:utf-8 -*-
+ 
+ """
+diff -aur opensesame-2.9.1.orig/dev-scripts/check_ts.py opensesame-2.9.1/dev-scripts/check_ts.py
+--- opensesame-2.9.1.orig/dev-scripts/check_ts.py	2014-11-18 09:59:01.040205947 +0000
++++ opensesame-2.9.1/dev-scripts/check_ts.py	2014-11-18 10:01:47.029391307 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ #-*- coding:utf-8 -*-
+ 
+ """
+diff -aur opensesame-2.9.1.orig/dev-scripts/docstruct.py opensesame-2.9.1/dev-scripts/docstruct.py
+--- opensesame-2.9.1.orig/dev-scripts/docstruct.py	2014-11-18 09:59:01.040205947 +0000
++++ opensesame-2.9.1/dev-scripts/docstruct.py	2014-11-18 10:01:47.039391256 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ #-*- coding:utf-8 -*-
+ 
+ """
+diff -aur opensesame-2.9.1.orig/dev-scripts/extract_translatables.py opensesame-2.9.1/dev-scripts/extract_translatables.py
+--- opensesame-2.9.1.orig/dev-scripts/extract_translatables.py	2014-11-18 09:59:01.040205947 +0000
++++ opensesame-2.9.1/dev-scripts/extract_translatables.py	2014-11-18 10:01:47.039391256 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ #-*- coding:utf-8 -*-
+ 
+ """
+diff -aur opensesame-2.9.1.orig/dev-scripts/item-help.py opensesame-2.9.1/dev-scripts/item-help.py
+--- opensesame-2.9.1.orig/dev-scripts/item-help.py	2014-11-18 09:59:01.040205947 +0000
++++ opensesame-2.9.1/dev-scripts/item-help.py	2014-11-18 10:01:47.042724572 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ #-*- coding:utf-8 -*-
+ 
+ """
+diff -aur opensesame-2.9.1.orig/dev-scripts/update-hidden.py opensesame-2.9.1/dev-scripts/update-hidden.py
+--- opensesame-2.9.1.orig/dev-scripts/update-hidden.py	2014-11-18 09:59:01.040205947 +0000
++++ opensesame-2.9.1/dev-scripts/update-hidden.py	2014-11-18 10:01:47.042724572 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ #-*- coding:utf-8 -*-
+ 
+ """
+diff -aur opensesame-2.9.1.orig/opensesame opensesame-2.9.1/opensesame
+--- opensesame-2.9.1.orig/opensesame	2014-11-18 09:59:01.126871838 +0000
++++ opensesame-2.9.1/opensesame	2014-11-18 10:01:47.649388124 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ #-*- coding:utf-8 -*-
+ 
+ """
+diff -aur opensesame-2.9.1.orig/opensesameandroid.py opensesame-2.9.1/opensesameandroid.py
+--- opensesame-2.9.1.orig/opensesameandroid.py	2014-11-18 09:59:01.126871838 +0000
++++ opensesame-2.9.1/opensesameandroid.py	2014-11-18 10:01:47.662721389 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ #-*- coding:utf-8 -*-
+ 
+ """
+diff -aur opensesame-2.9.1.orig/opensesamerun opensesame-2.9.1/opensesamerun
+--- opensesame-2.9.1.orig/opensesamerun	2014-11-18 09:59:01.126871838 +0000
++++ opensesame-2.9.1/opensesamerun	2014-11-18 10:01:47.662721389 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ #-*- coding:utf-8 -*-
+ 
+ """
+diff -aur opensesame-2.9.1.orig/opensesame_unittest/backends.py opensesame-2.9.1/opensesame_unittest/backends.py
+--- opensesame-2.9.1.orig/opensesame_unittest/backends.py	2014-11-18 09:59:01.126871838 +0000
++++ opensesame-2.9.1/opensesame_unittest/backends.py	2014-11-18 10:01:47.656054757 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ #-*- coding:utf-8 -*-
+ 
+ """
+diff -aur opensesame-2.9.1.orig/opensesame_unittest/parsing.py opensesame-2.9.1/opensesame_unittest/parsing.py
+--- opensesame-2.9.1.orig/opensesame_unittest/parsing.py	2014-11-18 09:59:01.126871838 +0000
++++ opensesame-2.9.1/opensesame_unittest/parsing.py	2014-11-18 10:01:47.656054757 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ #-*- coding:utf-8 -*-
+ 
+ """
+diff -aur opensesame-2.9.1.orig/opensesame_unittest/syntax.py opensesame-2.9.1/opensesame_unittest/syntax.py
+--- opensesame-2.9.1.orig/opensesame_unittest/syntax.py	2014-11-18 09:59:01.126871838 +0000
++++ opensesame-2.9.1/opensesame_unittest/syntax.py	2014-11-18 10:01:47.659388072 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ #-*- coding:utf-8 -*-
+ 
+ """
+diff -aur opensesame-2.9.1.orig/plugins/pp_io/parallelppdev.py opensesame-2.9.1/plugins/pp_io/parallelppdev.py
+--- opensesame-2.9.1.orig/plugins/pp_io/parallelppdev.py	2014-11-18 09:59:01.133538444 +0000
++++ opensesame-2.9.1/plugins/pp_io/parallelppdev.py	2014-11-18 10:01:47.816053934 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # parallel port access using the ppdev driver
+ 
+ import sys
+diff -aur opensesame-2.9.1.orig/setup-android.py opensesame-2.9.1/setup-android.py
+--- opensesame-2.9.1.orig/setup-android.py	2014-11-18 09:59:01.730199767 +0000
++++ opensesame-2.9.1/setup-android.py	2014-11-18 10:01:48.739382522 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ #-*- coding:utf-8 -*-
+ 
+ """
+diff -aur opensesame-2.9.1.orig/setup-mac.py opensesame-2.9.1/setup-mac.py
+--- opensesame-2.9.1.orig/setup-mac.py	2014-11-18 09:59:01.730199767 +0000
++++ opensesame-2.9.1/setup-mac.py	2014-11-18 10:01:48.742715838 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ #-*- coding:utf-8 -*-
+ 
+ """
+diff -aur opensesame-2.9.1.orig/setup.py opensesame-2.9.1/setup.py
+--- opensesame-2.9.1.orig/setup.py	2014-11-18 09:59:01.730199767 +0000
++++ opensesame-2.9.1/setup.py	2014-11-18 10:01:48.746049155 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ #-*- coding:utf-8 -*-
+ 
+ """
+diff -aur opensesame-2.9.1.orig/setup_shared.py opensesame-2.9.1/setup_shared.py
+--- opensesame-2.9.1.orig/setup_shared.py	2014-11-18 09:59:01.733533071 +0000
++++ opensesame-2.9.1/setup_shared.py	2014-11-18 10:01:48.749382470 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ #-*- coding:utf-8 -*-
+ 
+ """
+diff -aur opensesame-2.9.1.orig/setup-win32.py opensesame-2.9.1/setup-win32.py
+--- opensesame-2.9.1.orig/setup-win32.py	2014-11-18 09:59:01.730199767 +0000
++++ opensesame-2.9.1/setup-win32.py	2014-11-18 10:01:48.742715838 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ #-*- coding:utf-8 -*-
+ 
+ """
