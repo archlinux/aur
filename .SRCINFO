@@ -1,0 +1,19 @@
+pkgbase = libkscreen-git
+	pkgdesc = KDE screen management software
+	pkgver = r565.f57dc93
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/workspace/libkscreen
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = qt5-x11extras
+	depends = libxrandr
+	provides = libkscreen
+	conflicts = libkscreen
+	source = git://anongit.kde.org/libkscreen.git
+	md5sums = SKIP
+
+pkgname = libkscreen-git
+
