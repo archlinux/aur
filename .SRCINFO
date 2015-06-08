@@ -1,0 +1,16 @@
+pkgbase = emacs-newlisp
+	pkgdesc = Emacs mode for Newlisp.
+	pkgver = 0.25
+	pkgrel = 6
+	url = http://artfulcode.net/projects
+	install = emacs-newlisp.install
+	arch = any
+	license = GPL
+	makedepends = unzip
+	depends = emacs
+	noextract = newlisp-mode.zip
+	source = emacs-newlisp-0.25.zip::http://www.artfulcode.net/wp-content/uploads/2008/12/newlisp-mode.zip
+	md5sums = f752b6440cc4c8d6c1cea338ec923403
+
+pkgname = emacs-newlisp
+
