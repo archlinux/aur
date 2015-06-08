@@ -1,0 +1,17 @@
+pkgbase = msgpack-c-0.5
+	pkgdesc = An efficient object serialization library. Legacy version.
+	pkgver = 0.5.9
+	pkgrel = 3
+	url = http://msgpack.org/
+	license = Apache
+	checkdepends = gtest
+	depends = gcc-libs
+	provides = msgpack-c=0.5.9
+	conflicts = msgpack-c
+	source = https://github.com/msgpack/msgpack-c/releases/download/cpp-0.5.9/msgpack-0.5.9.tar.gz
+	source = fix_test_failure.patch
+	sha512sums = 9488bf8d4aefb44ce7554cfc1e6a5fee50b774ca173a7cb8a344f421da64d51d5c60d58fd7aaf93490a33447ad2150098c164ef6a11b6b042c3b1b4a38d06435
+	sha512sums = e55533fa0012278f885e2b1f6f8314d5006e413d84f6cb6fe8479564dc70589a7921c97771e569e5d6ca711458c0dbdae2ac73036602ea7d264a8d3f10ccf064
+
+pkgname = msgpack-c-0.5
+
