@@ -1,0 +1,15 @@
+pkgbase = gfortran-docs
+	pkgdesc = Set of HTML documentation for then GNU Fortran compiler
+	pkgver = 5.1.0
+	pkgrel = 1
+	url = https://gcc.gnu.org/onlinedocs/
+	arch = any
+	license = GPL
+	depends = libgomp-docs
+	options = docs
+	options = !strip
+	source = http://gcc.gnu.org/onlinedocs/gcc-5.1.0/gfortran-html.tar.gz
+	sha256sums = 2b5ff84d27524e74bb104d4e1c67300b4dc37a6be0fc1bc9458fa32aa401e44e
+
+pkgname = gfortran-docs
+
