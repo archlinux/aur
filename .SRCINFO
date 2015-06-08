@@ -1,0 +1,13 @@
+pkgbase = infinity-background
+	pkgdesc = Fedora 8 Infinity background for Gnome. Changes color based upon the time of day
+	pkgver = 0.0.5
+	pkgrel = 9
+	url = http://fedoraproject.org/wiki/Artwork/F8Themes/Infinity
+	arch = any
+	license = GPL
+	makedepends = rpmextract
+	source = http://arm.koji.fedoraproject.org//packages/fedorainfinity-backgrounds/0.0.5/9.fc20/noarch/fedorainfinity-backgrounds-0.0.5-9.fc20.noarch.rpm
+	sha256sums = 2650e9b44c07dbed6325352946ba295b6045a6c4cab9589d6606797b5f21421b
+
+pkgname = infinity-background
+
