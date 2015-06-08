@@ -1,0 +1,14 @@
+pkgbase = plastex
+	pkgdesc = Python-based LaTeX document processing framework.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://tiarno.github.io/plastex/
+	arch = any
+	license = custom
+	depends = python2
+	depends = texlive-core
+	source = plastex-1.0.0.tar.gz::https://github.com/tiarno/plastex/archive/1.0.0.tar.gz
+	md5sums = d8bb2af18e4a7e8852e7c1d8e70154ad
+
+pkgname = plastex
+
