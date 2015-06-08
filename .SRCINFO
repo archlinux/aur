@@ -1,0 +1,15 @@
+pkgbase = leela-git
+	pkgdesc = CLI frontend to poppler-glib of PDF tools
+	pkgver = 12.fe7a35a
+	pkgrel = 1
+	url = http://github.com/TrilbyWhite/Leela
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = poppler-glib
+	depends = ghostscript
+	source = git://github.com/TrilbyWhite/Leela.git
+	md5sums = SKIP
+
+pkgname = leela-git
+
