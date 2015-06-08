@@ -1,0 +1,14 @@
+pkgbase = shorewall6-lite
+	pkgdesc = An iptables-based firewall for Linux systems (with IPv6 support) ('lite' version)
+	pkgver = 4.6.5
+	pkgrel = 1
+	url = http://www.shorewall.net/
+	arch = any
+	license = GPL
+	depends = iptables
+	depends = iproute2
+	source = http://www.shorewall.net/pub/shorewall/4.6/shorewall-4.6.5/shorewall6-lite-4.6.5.tar.bz2
+	md5sums = 50c3b9839209a6dbb97d45b16f83e1ce
+
+pkgname = shorewall6-lite
+
