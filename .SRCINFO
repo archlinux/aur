@@ -1,0 +1,16 @@
+pkgbase = botan-1.10
+	pkgdesc = Crypto library written in C++
+	pkgver = 1.10.9
+	pkgrel = 1
+	url = http://botan.randombit.net/
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = python2
+	depends = gcc-libs
+	depends = sh
+	source = http://botan.randombit.net/releases/Botan-1.10.9.tgz
+	sha256sums = 487d27d3a081ae403cf87c0fc78c2a64183f001b48f9feb87e8de1e16fba8df2
+
+pkgname = botan-1.10
+
