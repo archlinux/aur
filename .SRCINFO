@@ -1,0 +1,15 @@
+pkgbase = perl-mro-compat
+	pkgdesc = mro::* interface compatibility for Perls < 5.9.5
+	pkgver = 0.12
+	pkgrel = 2
+	url = http://search.cpan.org/dist/MRO-Compat
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/MRO-Compat-0.12.tar.gz
+	md5sums = 06d21a3baf3d578ff3d3e10621656530
+
+pkgname = perl-mro-compat
+
