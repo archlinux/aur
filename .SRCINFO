@@ -1,0 +1,23 @@
+pkgbase = perl-datetime-format-natural
+	pkgdesc = Create machine readable date/time with natural parsing logic
+	pkgver = 1.02
+	pkgrel = 1
+	url = http://search.cpan.org/dist/DateTime-Format-Natural
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-mocktime
+	depends = perl-boolean
+	depends = perl-clone
+	depends = perl-datetime
+	depends = perl-datetime-timezone
+	depends = perl-list-moreutils
+	depends = perl-module-util
+	depends = perl-params-validate
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SC/SCHUBIGER/DateTime-Format-Natural-1.02.tar.gz
+	md5sums = 258203626de566250ef245b2b680cacc
+	sha512sums = e291fb862499e3b823bb5ac216413ee8d316bf86d731c94d7204146f14ecb21d474d78bf90d584858e95b52b7f49fa0603da30cb59016ef65678f89f78353130
+
+pkgname = perl-datetime-format-natural
+
