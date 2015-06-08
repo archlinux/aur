@@ -1,0 +1,9 @@
+post_install() {
+cat << 'EOM'
+  ==> PLEASE NOTE:
+  ==>
+  ==> Oscam needs to be configured before first use.
+  ==> The configuration files have to be placed under /etc/oscam.
+  ==> Check out /usr/share/doc/oscam/example for examples.
+EOM
+}
