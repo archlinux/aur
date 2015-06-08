@@ -1,0 +1,16 @@
+pkgbase = kde-thumbnailer-plasmoid
+	pkgdesc = Preview image generator plugin for plasma plasmoid package.
+	pkgver = 1.1
+	pkgrel = 2
+	url = http://kde-apps.org/content/show.php/KDE+Plasmoid+Thumbnailer?content=146527
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = automoc4
+	makedepends = cmake
+	depends = kdelibs
+	source = kde-thumbnailer-plasmoid-1.1.tar.bz2::http://kde-apps.org/CONTENT/content-files/146527-kde-thumbnailer-plasmoid-1.1.tar.bz2
+	sha256sums = 1c49ed288c22811abb30ac6a616c8473b7e9f6dae70d9cb519f58bde95a9fbaf
+
+pkgname = kde-thumbnailer-plasmoid
+
