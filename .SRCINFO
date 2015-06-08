@@ -1,0 +1,22 @@
+pkgbase = mpv-bash-completion-git
+	pkgdesc = Bash completion for the mpv video player
+	pkgver = 0.9.0.r78.c1fcca5
+	pkgrel = 1
+	url = https://github.com/2ion/mpv-bash-completion
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = mpv
+	makedepends = bash
+	makedepends = coreutils
+	makedepends = pacman
+	makedepends = grep
+	depends = mpv
+	depends = bash-completion
+	provides = mpv-bash-completion
+	conflicts = mpv-bash-completion
+	source = git+https://github.com/2ion/mpv-bash-completion.git#branch=master
+	md5sums = SKIP
+
+pkgname = mpv-bash-completion-git
+
