@@ -1,0 +1,18 @@
+pkgbase = mopidy-somafm
+	pkgdesc = Mopidy extension for playing music from SomaFM
+	pkgver = 0.7.1
+	pkgrel = 2
+	url = http://www.mopidy.com
+	arch = any
+	license = APACHE
+	makedepends = python2
+	depends = mopidy>=0.18
+	depends = python2-pykka>=1.1
+	depends = python2-setuptools
+	depends = python2-requests>=2.0
+	provides = mopidy-somafm
+	source = https://github.com/AlexandrePTJ/mopidy-somafm/archive/0.7.1.tar.gz
+	md5sums = e9c9b2eab0282ca93f81abd5f7c5bbae
+
+pkgname = mopidy-somafm
+
