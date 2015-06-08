@@ -1,0 +1,15 @@
+pkgbase = vcp
+	pkgdesc = Visual cp: a cp program with some scrollbars
+	pkgver = 2.2
+	pkgrel = 5
+	url = http://www.freebsdsoftware.org/sysutils/vcp.html
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	depends = ncurses
+	backup = etc/vcp.conf
+	source = http://members.iinet.net.au/~lynx/vcp/vcp-2.2.tar.gz
+	md5sums = 90a47777e6fcf364e2e1fd12e8b67d69
+
+pkgname = vcp
+
