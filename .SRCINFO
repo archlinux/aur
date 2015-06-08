@@ -1,0 +1,19 @@
+pkgbase = vdr-femon
+	pkgdesc = DVB Frontend Status Monitor plugin
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = http://www.saunalahti.fi/rahrenbe/vdr/femon/
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	depends = gcc-libs
+	depends = vdr-api=2.2.0
+	backup = etc/vdr/conf.avail/50-femon.conf
+	source = http://www.saunalahti.fi/~rahrenbe/vdr/femon/files/vdr-femon-2.2.1.tgz
+	md5sums = 9a9d2a553dc72b96a6c8a810ba3c7456
+
+pkgname = vdr-femon
+
