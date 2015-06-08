@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-coin-or-dylp
+	pkgdesc = COIN-OR Linear programming solver using of the dynamic simplex algorithm (mingw-w64)
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://projects.coin-or.org/DyLP
+	arch = any
+	groups = coin-or
+	license = EPL
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-coin-or-osi
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = http://www.coin-or.org/download/source/DyLP/DyLP-1.10.0.zip
+	sha1sums = 7c27fb7735a64c92e68fba3e697ded07b91f95bb
+
+pkgname = mingw-w64-coin-or-dylp
+
