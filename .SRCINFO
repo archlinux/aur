@@ -1,0 +1,15 @@
+pkgbase = kdm-theme-manjaro-redefined
+	pkgdesc = Manjaro Redefined KDM based on Mordern Arch KDM. Used manjaro redefined wallpaper, Ksplash for full experince of awesomeness.
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://kde-look.org/content/show.php?content=166290
+	arch = any
+	groups = kde
+	groups = kdeartwork
+	license = GPL
+	depends = kdebase-workspace
+	source = http://master.dl.sourceforge.net/project/manjaroredefined/Manjaro-Redefined-kdm-1.1.tar.gz
+	md5sums = SKIP
+
+pkgname = kdm-theme-manjaro-redefined
+
