@@ -1,0 +1,19 @@
+pkgbase = ocrgui
+	pkgdesc = GUI for OCR programs (Tesseract, GOCR)
+	pkgver = 0.2.2
+	pkgrel = 4
+	url = http://sourceforge.net/projects/ocrgui/
+	install = ocrgui.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = gtk2
+	depends = hunspell
+	depends = imagemagick
+	optdepends = gocr: OCR program
+	optdepends = tesseract: OCR program
+	source = http://downloads.sourceforge.net/project/ocrgui/ocrgui-0.2.2.tar.gz
+	md5sums = 1d363a4ea88f6ab8080d9f7e29989c0d
+
+pkgname = ocrgui
+
