@@ -1,0 +1,31 @@
+--- etc/opensc.conf.in	2013-05-17 15:04:18.725019258 +0200
++++ etc/opensc.conf.in-new	2013-05-17 15:06:20.000000000 +0200
+@@ -127,6 +127,14 @@
+ 		# module = @libdir@/card_customcos.so;
+ 	# }
+ 
++	# Special configuration data for dnie card driver
++	card_driver dnie {
++		# Enable/Disable user consent on signing (default: enable)
++		user_consent_enabled = true;
++		# Path to pinentry application ( ignored for Windows build )
++		user_consent_app = /usr/bin/pinentry;
++	}
++	#
+ 	# Force using specific card driver
+ 	#
+ 	# If this option is present, OpenSC will use the supplied
+@@ -450,10 +458,11 @@
+ 		# the normal pkcs15 processing.
+ 		# Some cards (like esteid and pteid) work in emu-only mode,
+ 		# and do not depend on this option.
++		# DNIe requires it
+ 		#
+ 		# Default: no
+-		# try_emulation_first = yes;
+-
++		try_emulation_first = yes;
++
+ 		# Enable builtin emulators.
+ 		# Default: yes
+ 		# enable_builtin_emulation = no;

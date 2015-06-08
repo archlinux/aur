@@ -1,0 +1,25 @@
+pkgbase = opensc-opendnie-git
+	pkgdesc = Access smart cards that support cryptographic operations. with OpenDNIe driver (Spanish ID card). (GIT version)
+	pkgver = 0.13.0.119.gf77a629
+	pkgrel = 1
+	url = https://github.com/OpenSC/OpenSC/wiki
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = docbook-xsl
+	makedepends = nasm
+	depends = pinentry
+	depends = ccid
+	depends = openssl
+	provides = opensc
+	provides = opensc-opendnie
+	conflicts = opensc
+	backup = etc/opensc.conf
+	source = opensc-opendnie::git+https://github.com/OpenDNIe/OpenSC.git#branch=opendnie
+	source = opensc.conf.in-dnie.diff
+	sha1sums = SKIP
+	sha1sums = 55ea882b19cf20ec43095b61d94851ddabac56d3
+
+pkgname = opensc-opendnie-git
+
