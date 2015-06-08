@@ -1,0 +1,17 @@
+pkgbase = ttf-komatuna
+	pkgdesc = Modified Konatu and M+ fonts for Japanese
+	pkgver = 20101113
+	pkgrel = 4
+	url = http://www.geocities.jp/ep3797/modified_fonts_01.html
+	install = ttf.install
+	arch = any
+	license = custom
+	license = CCPL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://downloads.sourceforge.net/mdk-ut/komatuna-fonts-20101113.tar.lzma
+	md5sums = 2044e5e036b1e6dab2f8426c6e2894e6
+	sha256sums = 969de6b8bb3b9893356d19c09d646f0f5364247ab98b9a437e049ca2ac8241a3
+
+pkgname = ttf-komatuna
+
