@@ -1,0 +1,15 @@
+pkgbase = ocaml-kaputt
+	pkgdesc = Unit testing tool for OCaml
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://kaputt.x9c.fr
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = ocaml-findlib
+	depends = ocaml
+	source = http://kaputt.x9c.fr/distrib/kaputt-1.2.tar.gz
+	md5sums = b55c1a7d72d9c04c7ad076c6230b5dfd
+
+pkgname = ocaml-kaputt
+
