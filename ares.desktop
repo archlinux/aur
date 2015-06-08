@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=2.1.7
+Type=Application
+Name=Ares
+Comment=A free open source file sharing program (via wine)
+Exec=/usr/bin/ares
+Encoding=UTF-8
+Icon=/usr/share/pixmaps/ares.xpm
+Categories=Network;
+Terminal=false
+StartupNotify=false
