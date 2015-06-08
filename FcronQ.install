@@ -1,0 +1,49 @@
+# FcronQ: Installer: Arch
+# Contributor: Xavion <Xavion (dot) 0 (at) Gmail (dot) com>
+
+post_install() {
+	# Change file permissions
+	chmod 777 /usr/share/FcronQ/Source/
+	chmod 644 /etc/fcron/fcron.conf
+
+	# Remove old files
+	user_remove
+
+	#/bin/true
+}
+
+post_upgrade() {
+	post_install
+	#/bin/true
+}
+
+pre_remove() {
+	/bin/true
+}
+
+user_remove() {
+	# User
+	if [ ${USER} ]; then
+		export USER=${LOGNAME}
+	fi
+
+	# Home
+	if [ ${SUDO_USER} ]; then
+		export HOME=/home/${SUDO_USER}
+	else
+		export HOME=/home/${USER}
+	fi
+}
+
+post_remove() {
+	rm -rf /usr/share/FcronQ/
+
+	user_remove
+
+	#/bin/true
+}
+
+op=$1
+shift
+
+$op "$@"

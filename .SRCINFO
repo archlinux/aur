@@ -1,0 +1,17 @@
+pkgbase = fcronq
+	pkgdesc = An Fcron GUI
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = http://FcronQ.Xavion.name
+	install = FcronQ.install
+	arch = any
+	license = GPL3
+	depends = pyqt
+	depends = fcron
+	optdepends = gksu: A SU(do) GUI
+	optdepends = terminal: A shell GUI
+	source = http://prdownloads.sourceforge.net/fcronq/FcronQ-0.4.2.tar.bz2
+	sha1sums = 6157b70d484a95944c560f14638c07b88e01a2c3
+
+pkgname = fcronq
+
