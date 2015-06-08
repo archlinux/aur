@@ -1,0 +1,13 @@
+pkgbase = vapoursynth-plugin-averagehist
+	pkgdesc = Plugin for Vapoursynth: averagehist
+	pkgver = r0
+	pkgrel = 1
+	url = http://forum.doom9.org/showthread.php?t=168521
+	arch = any
+	license = GPL
+	depends = vapoursynth
+	source = averagehist.py
+	sha1sums = 7180cdb099965cd9cf300afad41e23fff4da82f6
+
+pkgname = vapoursynth-plugin-averagehist
+
