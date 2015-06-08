@@ -1,0 +1,18 @@
+pkgbase = bibtex2html
+	pkgdesc = Collection of tools for producing HTML documents from bibtex-bibliographies
+	pkgver = 1.98
+	pkgrel = 1
+	url = http://www.lri.fr/~filliatr/bibtex2html/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = ocaml
+	makedepends = hevea
+	makedepends = texlive-latexextra
+	makedepends = texlive-bibtexextra
+	depends = perl
+	source = http://www.lri.fr/~filliatr/ftp/bibtex2html/bibtex2html-1.98.tar.gz
+	md5sums = 33a96d32d6ca870163855573253aa720
+
+pkgname = bibtex2html
+
