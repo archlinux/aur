@@ -1,0 +1,19 @@
+pkgbase = hstr-bin
+	pkgdesc = A command line utility that brings improved BASH command completion from the history. It aims to make completion easier and more efficient than Ctrl-r.
+	pkgver = 1.17
+	pkgrel = 1
+	url = https://github.com/dvorka/hstr
+	arch = x86_64
+	license = Apache
+	depends = libtinfo
+	depends = readline
+	provides = hh
+	conflicts = hstr-git
+	conflicts = hh
+	source = https://github.com/dvorka/hstr/releases/download/1.17/hh-1.17-bin-64b.tgz
+	source = https://raw.githubusercontent.com/dvorka/hstr/1.17/man/hh.1
+	md5sums = 378794935db6ef9188bac2d00abb3380
+	md5sums = SKIP
+
+pkgname = hstr-bin
+
