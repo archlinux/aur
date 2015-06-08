@@ -1,0 +1,33 @@
+pkgbase = etqw-demo
+	pkgdesc = Enemy Territory: Quake Wars demo
+	pkgver = 2
+	pkgrel = 3
+	url = http://zerowing.idsoftware.com/linux/etqw/ETQWFrontPage/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	source = etqw-demo.launcher
+	source = etqw-demo-ded.launcher
+	source = etqw-demo.desktop
+	source = ftp://ftp.idsoftware.com/idstuff/etqw/ETQW-demo2-client-full.r1.x86.run
+	md5sums = 1b1826f6a4ee23228fec629412c29367
+	md5sums = 849d3ac67cdcdf8ee7caca721736fb41
+	md5sums = 477b276b244215451886d2864bbe6406
+	md5sums = 11f5a882127a917b6c8b648ffa22da74
+	depends_i686 = libgl
+	depends_i686 = sdl
+	depends_i686 = gcc-libs
+	depends_i686 = zlib
+	depends_i686 = libjpeg
+	depends_x86_64 = lib32-alsa-lib
+	depends_x86_64 = lib32-libgl
+	depends_x86_64 = lib32-sdl
+	depends_x86_64 = lib32-gcc-libs
+	depends_x86_64 = lib32-zlib
+	depends_x86_64 = lib32-libjpeg
+	optdepends_x86_64 = lib32-nvidia-utils: Accelerated 3D with the NVIDIA binary blob video driver
+	optdepends_x86_64 = lib32-catalyst-utils: Accelerated 3D with the AMD/ATI binary blob video driver
+
+pkgname = etqw-demo
+
