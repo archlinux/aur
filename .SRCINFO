@@ -1,0 +1,17 @@
+pkgbase = texi2latex
+	pkgdesc = convert texinfo sources to LaTeX
+	pkgver = 0.9.4
+	pkgrel = 2
+	url = http://savannah.nongnu.org/projects/texi2latex
+	install = texi2latex.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gcc-libs
+	depends = sh
+	depends = java-saxon
+	source = http://mirrors.zerg.biz/nongnu/texi2latex/texi2latex-0.9.4.tar.bz2
+	md5sums = 73285a6f0bb988a6673b445a71bf94fd
+
+pkgname = texi2latex
+
