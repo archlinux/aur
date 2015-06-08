@@ -1,0 +1,13 @@
+pkgbase = diffn
+	pkgdesc = Efficient comparison of multiple large files
+	pkgver = 0
+	pkgrel = 1
+	url = http://volkerschatz.com/unix/uware/diffn.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	source = http://volkerschatz.com/unix/scripts/diffn.tgz
+	md5sums = 386b3e7d849f80006f1fabcf43c0ab09
+
+pkgname = diffn
+
