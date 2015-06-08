@@ -1,0 +1,8 @@
+[Unit]
+Description=Appset Helper Daemon
+
+[Service]
+ExecStart=/usr/bin/appset-helper
+
+[Install]
+WantedBy=multi-user.target

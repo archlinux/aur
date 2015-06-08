@@ -1,0 +1,20 @@
+pkgbase = appset-qt
+	pkgdesc = An advanced and feature rich Package Manager Frontend
+	pkgver = 0.7.2
+	pkgrel = 6
+	url = http://appset.sourceforge.net/
+	install = appset-qt.install
+	changelog = appset-qt.changelog
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = qt4>=4.7
+	depends = qtwebkit
+	optdepends = packer: for AUR support
+	source = http://sourceforge.net/projects/appset/files/appset-qt/0.7/0.7.2/appset-qt-0.7.2-sources.tar.gz
+	source = appset-helper.service
+	md5sums = 8658b6452e1f941af8501a6a772b6cd9
+	md5sums = 7791c134cc275b387c1290f771e43a3d
+
+pkgname = appset-qt
+

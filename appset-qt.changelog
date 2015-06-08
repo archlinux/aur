@@ -1,0 +1,153 @@
+0.7.1 :
+  -"Memory leak in trayicon when no sync folder present" bug fixed
+  -"Locale format" bug fixed
+  -Changed deprecated (in Qt 4.8) function calls for QQueue
+  -Updated zh_TW and hu_HU translations
+
+0.7.0 :
+  -A button to stop package downloading once started (feature req. #3413922)
+  -Owned files tree view tab for installed packages (with desktop theme file icons, not in enhanced view, feature req. #3413878)
+  -New packages search filter: repository
+  -Per repository statistics
+  -An alternative (not for AUR/CCR) way to execute requested operations on an external X Terminal emulator where:
+	*the X Terminal Emulator is configurable via options panel
+	*in the "check and apply" page you can select (via radio button) to use the internal (like before and default) or external tool
+	*AUR/CCR now working only with external tools (also fixes bug #3420465 and #3413000)
+  -New option for tray icon visibility (Always or only when there are available updates)
+  -New option to enable/disable rss feed reader (feature req. #3353471)  
+  -New option to enable/disable packages homepage loading (feature req. #3353471)
+  -New option to select the first page ("Start" or "All" packages)
+  -Tabbed options panel
+  -Hungarian translation
+
+0.6.4 :
+  -AUR/CCR show installed action fixed (bug #3399666)
+  -Main GUI memory optimizations
+
+0.6.3 :
+  -Tray icon change after db upgrade (bug #3394196)
+  -Minor memory optimizations
+
+0.6.2 :
+  -Upgrade not asking for packages replace bug fixed
+  -Tray icon increasing amount of memory over time bug fixed
+  -Extra info checkbox not working bug fixed
+
+0.6.1 :
+  -Black feed reader widget with dark themes bug fixed (bug #3376645)
+  -Software categories in packages view as left panel (feature req. #3321918)
+  -Packages homepage and details in separated tabs
+  -Other minor UI changes
+  -Basque translation
+  -Russian translation
+
+0.6.0 :
+  -The option to manually answer to backend's questions (only in english). There are 3 choices in option panel:
+    *Automatic (the old behaviour)
+    *Semi-Automatic (few user interactions required - By now only questions like: "Replace ... with ... ?" and "... and ... are in conflict. Remove ...?") DEFAULT
+    *Ask everything (All backend questions require user interaction)
+  -Repository editor tool (show, modify, add, remove and change priority for repositories)
+  -"Report a bug" and "Request a feature" buttons in main GUI
+  -The option to disable packages preload on startup to minimize memory and CPU usage on boot
+  -Upgrade backend tool integration with new auth structure bug fixed
+  -Chinese (China) translation
+  -Portuguese (Portugal) translation
+  -Portuguese (Brazilian) translation
+  -pacman-color + packer + appset conflict fixed
+  -"Start Fullscreen" bug fixed
+  -"Extra Info" option persistency bug fixed
+
+
+0.5.1 :
+  -Some minor bugs fixed for both tray and main GUI
+  -Romanian translation
+  -Serbian translation
+
+0.5.0 :
+  -Completely new authorization structure:
+    *Now starts immediately (without asking for password) as unprivileged user (every user can browse apps)
+    *Requests superuser authorization for privileged operations (only when needed)
+    *Drops superuser privileges immediately when it is not more useful (more secure)
+    *Let's the main GUI to be preloaded by the tray (faster startup)
+    *Closing/Minimizing the main GUI (also when running privileged operations) is managed by the tray
+    *Tray click leads to show/hide the main GUI
+    *Closing the tray also closes AppSet instances (when running privileged operations ask for a confirmation)
+    *Tray "check for updates NOW!" action is now calling the authorization backend (and really works better than before)
+  -Options are now stored "per user" (every possible sudoer has its own options)
+  -New option "Auto select system files for upgrade" (checked by default) for "non expert users" (disabled if in expert mode)
+  -Search bar delay now default to 1200 ms
+  -Removed AppSetTray-Qt desktop file (now there is only AppSet-Qt in DE's menus)
+  -Better integration with helper daemon
+  -News reader now retries (every 5 seconds) to download feeds when fails (without hiding the panel)
+  -Asks DE's Session Manager to cancel shutdown if the main GUI is still opened (to avoid errors caused by user distraction)
+  -New About dialog
+  -Chinese-Taiwan translation
+
+0.4.4 :  
+  -Simplified actions for standard view (e.g. install/remove actions with one click, withouth showing a redundant context menu)
+  -Tray click when already running leading to a new appset start bug fixed
+  -AUR/CCR "list installed" action with no results crash bug fixed
+
+0.4.3 :
+  -Generalization of packages size output interpretation for pacman 3.5.2
+  -Polish translation
+
+0.4.2 :
+  -Installed packages repository information
+  -lower niceness (10 -> 15) for appset-helper daemon
+  -Infinite loop on upgrade deps check bug fixed
+  -Pacman's "Replace %package% with ..." question now get "yes" answer on upgrades (no more using --noconfirm option on upgrade/install)
+
+0.4.1 :
+  -New packets view for main repos using QML:
+    *more apps listed with the same win size
+    *bigger embedded browser for detailed view
+    *Touchscreen friendly
+    *animated
+  -option to switch between Standard (old) and Enhanced (new) views
+  -Resize bug fixed for External repo (AUR) view
+  -AppSet version in about dialog
+  -Localization bug fixed for about dialog (automatic switch between English and Italian)
+  -ExtraInfo option now is saved 
+  -Main backend (pacman) upgrade check and backend post upgrade command (pacman-db-upgrade)
+  -Bug fixed for dependencies check
+  -Flickering in progress window bug fixed
+  -Default search bar delay to 900ms
+
+0.4.0 :
+  -Basic support to AUR using packer as backend:
+    *Browse packages with an embedded browser for their homepages (searching with a search bar)
+    *Install AUR packages (one at a time)
+    *Remove AUR packages (one at a time from the AUR specialized GUI - more than one with the normal GUI)
+    *Upgrade AUR packages (all in the same time)
+    *Automatic activation based on the presence of packer (the backend)
+    *A button to show all external installed packages
+  -Clean cache command now requires a confirmation from the user
+
+0.3.4 :
+  -Repository information added to avoid incorect behaviours (with the management of multiple sources for the same application)  
+  -Option to view repository in packages table
+  -Option to disable countdown for auto confirmation of changes  
+  -SearchBar now got the focus after a previous search
+  -Web Preview now is navigable
+  -Tray now shows "repo/package last_version" entries ordered by repo
+
+0.3.3 :
+  -New outcome evaluation logic  
+  -Local precompiled packages installer (from main GUI, shell cmd argument or Desktop's "Open With..." menu)
+  -Loading icon
+  -Spanish translation
+
+0.3.2 :
+  -Packages statistics (enabled via options)
+  -Backend's output (enabled via options)
+  -Interval between db updates selectable by options
+  -Changes in main GUI
+  -External Browser Command now accepts arguments
+  -Bug fixed for updates operations outcome
+
+0.3.0-1 : Localization support
+
+0.2.X : Embedded browser and feed-reader, helper daemon and tray icon
+
+0.1.X : Basic functions to handle packages
