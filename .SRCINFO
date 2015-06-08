@@ -1,0 +1,24 @@
+pkgbase = wart-git
+	pkgdesc = A small, readable lisp with thorough unit tests and extensible functions/macros.
+	pkgver = 4121.ce64882
+	pkgrel = 1
+	url = https://github.com/akkartik/wart
+	arch = i686
+	arch = x86_64
+	license = Artistic2.0
+	makedepends = git
+	depends = gcc-libs
+	depends = bash
+	optdepends = which: for using rlwrap
+	optdepends = rlwrap: for better REPL editing
+	optdepends = zsh: for using zsh
+	provides = wart
+	conflicts = wart
+	options = !strip
+	source = git://github.com/akkartik/wart.git
+	source = wart.sh
+	md5sums = SKIP
+	md5sums = 4be136701bd4c80ff98b907e70d9131b
+
+pkgname = wart-git
+
