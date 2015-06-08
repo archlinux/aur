@@ -1,0 +1,19 @@
+pkgbase = linpack
+	pkgver = 11.2.2.010
+	pkgrel = 1
+	url = http://software.intel.com/en-us/articles/intel-math-kernel-library-linpack-download
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = http://registrationcenter.intel.com/irc_nas/5232/l_lpk_p_11.2.2.010.tgz
+	source = linpack.conf
+	source = runme.template
+	sha256sums = 88fcc540425a7be8bd9e78af66474492f8c0f11d9ad4ad8a82879dc5757ffdf2
+	sha256sums = d7e31c8c7e2648c8fa3c4838d98dfc39b8fadf0f74bdaa4ca52cd38277ec8254
+	sha256sums = 8c880adeee3de6c0e6005e210cea0e01b471219c590e25e824298a25ab0eef31
+
+pkgname = linpack
+	pkgdesc = Benchmark based on linear algebra excellent app for stress testing.
+	install = readme.install
+	backup = etc/linpack.conf
+
