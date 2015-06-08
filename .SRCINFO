@@ -1,0 +1,33 @@
+pkgbase = qimageblitz-svn
+	pkgdesc = An interm image effect library (SVN version)
+	pkgver = 1427967
+	pkgrel = 1
+	url = http://www.kde-org
+	arch = x86_64
+	license = GPL-2
+	license = LGPL-2
+	makedepends = qt4
+	makedepends = qt5-base
+	makedepends = cmake
+	makedepends = subversion
+	provides = qimageblitz
+	conflicts = qimageblitz
+	source = svn://anonsvn.kde.org/home/kde/trunk/kdesupport/qimageblitz
+	sha1sums = SKIP
+
+pkgname = qimageblitz-qt4-svn
+	pkgdesc = An interm image effect library. Qt4 version. (SVN version)
+	depends = qt4
+	provides = qimageblitz
+	provides = qimageblitz-qt4
+	conflicts = qimageblitz
+	conflicts = qimageblitz-qt5
+
+pkgname = qimageblitz-qt5-svn
+	pkgdesc = An interm image effect library. Qt5 version. (SVN version)
+	depends = qt5-base
+	provides = qimageblitz
+	provides = qimageblitz-qt5
+	conflicts = qimageblitz
+	conflicts = qimageblitz-qt4
+
