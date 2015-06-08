@@ -1,0 +1,15 @@
+pkgbase = dired
+	pkgdesc = The very first filebrowser
+	pkgver = 305
+	pkgrel = 8
+	url = http://www.sfr-fresh.com/linux/misc/old/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	options = !makeflags
+	source = dired.zip::https://codeload.github.com/stefanhusmann/dired/zip/master
+	md5sums = 3b6e6b36cf57f0aaf97e6ed0e75eefa9
+
+pkgname = dired
+
