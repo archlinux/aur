@@ -1,0 +1,24 @@
+pkgbase = lightdm-gtk-greeter-devel
+	pkgdesc = GTK+ greeter for LightDM
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://launchpad.net/lightdm-gtk-greeter
+	install = lightdm-gtk-greeter.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = LGPL3
+	makedepends = gnome-common
+	makedepends = gnome-doc-utils
+	makedepends = gobject-introspection
+	makedepends = intltool
+	depends = gtk3
+	depends = lightdm
+	provides = lightdm-gtk-greeter
+	conflicts = lightdm-gtk-greeter
+	backup = etc/lightdm/lightdm-gtk-greeter.conf
+	source = https://launchpad.net/lightdm-gtk-greeter/2.0/2.0.0/+download/lightdm-gtk-greeter-2.0.0.tar.gz
+	sha256sums = 4c0a0121d1ec82c85c8aed4ad80ebd48ddc56d9bace31da72423bfd330c26484
+
+pkgname = lightdm-gtk-greeter-devel
+
