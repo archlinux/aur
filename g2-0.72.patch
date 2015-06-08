@@ -1,0 +1,12 @@
+diff -rup g2-0.72.orig/Makefile.in g2-0.72/Makefile.in
+--- g2-0.72.orig/Makefile.in	2006-10-17 20:38:16.000000000 +0200
++++ g2-0.72/Makefile.in	2013-09-06 15:26:45.199106036 +0200
+@@ -95,7 +95,7 @@ libg2.a: $(OBJ)
+ 	test ! -n "$(RANLIB)" || $(RANLIB) $@
+ 
+ libg2.@LD_SHARED_EXT@: $(OBJ)
+-	@LD_SHARED@ @LD_SHARED_FLAGS@ -o $@ $(OBJ) @LD_SHARED_OPT@
++	@LD_SHARED@ @LD_SHARED_FLAGS@ -o $@ $(OBJ) @LD_SHARED_OPT@ @LIBS@
+ 
+ libg2.so: libg2.@LD_SHARED_EXT@
+ 	ln -f -s libg2.@LD_SHARED_EXT@ $@
