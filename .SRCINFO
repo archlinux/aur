@@ -1,0 +1,18 @@
+pkgbase = xindy.sty
+	pkgdesc = A small LaTeX package to use the xindy insdexing system
+	pkgver = 1.1beta
+	pkgrel = 2
+	url = http://xindy.sourceforge.net/html-mail-archive/msg00025.html
+	install = xindy.install
+	arch = any
+	license = custom
+	depends = texlive-core
+	source = xindy.ins
+	source = xindy.dtx
+	source = license
+	md5sums = f64d5cb43c1a1012ff11987a30f7ff16
+	md5sums = 9d91d1fbe616f562b3da2e500daeef8a
+	md5sums = 3af4ea17568fc731da6ffeecf646c236
+
+pkgname = xindy.sty
+

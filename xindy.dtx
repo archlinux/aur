@@ -1,0 +1,486 @@
+\def\filedate{1997/03/20}
+\def\docdate{1997/03/20}
+\def\fileversion{v1.1beta}
+%
+% \iffalse meta-comment
+%
+% Package 'xindy' to use with LaTeX2e
+% Copyright 1997 by Andreas 'Vignard' Schlechte, all right reserved.
+%
+%  This package is distributed in the hope that it will be useful,
+%  but WITHOUT ANY WARRANTY; without even the implied warranty of
+%  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+%
+% IMPORTANT NOTICE:
+% 
+% For error reports in case of UNCHANGED versions please email to 
+% Andreas.Schlechte@tu-clausthal.de
+% 
+% Please do not request updates from me directly.  Distribution is
+% done through ftp-Server at TU Clausthal and ftp.dante.de.
+% 
+% You are not allowed to change this file.
+% 
+% You are allowed to distribute this file under the condition that
+% it is distributed UNCHANGED. You are NOT ALLOWED to take money for
+% the distribution or use of either this file or a changed version,
+% except for a nominal charge for copying etc.
+% \fi
+%
+% \CheckSum{368}
+%% \CharacterTable
+%%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%%   Digits        \0\1\2\3\4\5\6\7\8\9
+%%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%%   Dollar        \$     Percent       \%     Ampersand     \&
+%%   Acute accent  \'     Left paren    \(     Right paren   \)
+%%   Asterisk      \*     Plus          \+     Comma         \,
+%%   Minus         \-     Point         \.     Solidus       \/
+%%   Colon         \:     Semicolon     \;     Less than     \<
+%%   Equals        \=     Greater than  \>     Question mark \?
+%%   Commercial at \@     Left bracket  \[     Backslash     \\
+%%   Right bracket \]     Circumflex    \^     Underscore    \_
+%%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%%   Right brace   \}     Tilde         \~}
+%
+% \RecordChanges
+% \changes{v1.1beta}{97/03/20}{First documented version}
+%
+% \MakeShortVerb{\|}
+%
+% \title{Interface to the \textsf{xindy} indexing program\thanks{This file
+%  has version number \fileversion{}, last revised \filedate}}
+% \author{Andreas `Vignard' Schlechte\\Am Klepperberg 2\\
+%         D-38678 Clausthal-Zellerfeld\\Federal Republic of Germany}
+% \date{\docdate}
+% \maketitle          
+%
+% \begin{abstract}
+%  Are you still using \emph{MakeIndex}? Go with the future and switch now!
+%
+%  The \textsf{xindy}-distribution contains a small programm called |tex2xindy|, which converts
+%  a standard LaTeX into a rawindex, readable by \textsf{xindy}. Using this program, old
+%  documents can be indexed using \textsf{xindy}, but you can't really use all features
+%  in documents. Thus, I began writing a small package which provides an interface between
+%  \LaTeX\ and xindy. This interface covers all xindy-tags and doesn't need 
+%  |tex2xindy| anymore. 
+% \end{abstract}
+%
+% \tableofcontents
+% 
+% \section{The user interface}
+% \subsection{How to include \texttt{xindy.sty}}
+%
+%  The package is included by the command
+%  \begin{quote}
+%   |\usepackage{xindy}|
+%  \end{quote}
+%  in the preambel of your \LaTeX-document.
+%
+% \subsection{Locationstyles}
+%
+% \DescribeMacro\locationstyle
+%  |xindy.sty| supports the use of different location-references, as you may define
+%  them within \textsf{xindy}. A reference type is called \emph{locationstyle} in |xindy.sty|.
+%  A locationstyle is selected by the following command:
+%  \begin{quote}
+%   |\locationstyle{|\meta{locationstyle}|}|
+%  \end{quote}
+%  The package provides the following \meta{locationstyles}:
+%  \begin{quote}
+%   \begin{description}
+%    \item[\texttt{page}] The location-reference is given by the pagenumber, as usual in
+%     \LaTeX (e.g. 47, 11).
+%    \item[\texttt{chapter}] This one is only defined, if you use a documentclass, which
+%     provides chapters. The location-reference is composed of the chapternumber and
+%     the pagenumber: \meta{chapter}-\meta{page} (e.g 47-11, A-5).
+%    \item[\texttt{section}] This one is only defined, if a documentclass providing
+%     sections is used. The location-reference is composed of the sectionnumber and
+%     pagenumber: \meta{section}-\meta{page} (e.g. 1-5, 2-6). In fact, the
+%     reference uses the commands |\thesection| and |\thepage|. Thus, if you are
+%     using e.g. |book.cls|, the reference will look like 
+%     \meta{chapter}.\meta{section}-\meta{page} (e.g. 1.1-47, A.5-6).
+%   \end{description}
+%  \end{quote}
+%  
+% \DescribeMacro\newlocationstyle
+% \DescribeMacro\renewlocationstyle
+%  You may define new locationsstyles using the commands
+%  \begin{quote}
+%   |\newlocationstyle{|\meta{locationstyle}|}{|\meta{what}|}|\\
+%   |\renewlocationstyle{|\meta{locationstyle}|}{|\meta{what}|}|
+%  \end{quote}
+%  If the \meta{locationstyle} is already defined, |\newlocationstyle|
+%  leads to an error. Thus, you must use |\renewlocationstyle| for
+%  redefining existing styles. \meta{what} is the tokenlist to be used
+%  as location-reference. For examples take a look at the definition of
+%  the styles in the code-section.
+%
+% \subsection{Indexing}
+%
+% \DescribeMacro\indexindy
+%  To index a key, you must use the command
+%  \begin{quote}
+%   |\indexindy[|\meta{xindy-keys}|][|\meta{xref}|]{|\meta{key}|}|
+%  \end{quote}
+%  The Syntax isn't quite that simple, as you will see in the following.
+%
+%  The main argument \meta{key} is a list of strings in a special
+%  syntax. As you surely know, a index-entry consists of different
+%  Layers. Additionally, per Layer a printkey---different from the sortkey---may be
+%  specified. First of all, the \meta{key} is a semicoleon-separated list
+%  of strings. This defines the sort keys:
+%  \begin{quote}
+%   |\indexindy{First;Second;Third}|
+%  \end{quote}
+%  Now suppose, you want |Second| to appear in small caps. This can be done
+%  either by defining a merge-rule in the xindy-style and the typing |\textsc{Second}|
+%  instead of |Second| or by specifiying the printkey inside the indexing command:
+%  \begin{quote}
+%   |\indexindy{First;Second,\textsc{Second};Third}|
+%  \end{quote}
+%  Now you've learned anything about the complete syntax for the \meta{key}:
+%  \begin{quote}
+%   |{Layer 0,printkey;Layer 1,printkey;Layer 2,printkey;....}|
+%  \end{quote}
+%  Note, that it's not the main philosophy of xindy, to specify the printkey.
+%  In many cases, it is much handier to define a merge-rule inside the xindy-style.
+%  If, in any case, you wish a semikolen or a comma to be part of a print key,
+%  you have to surround it by brackets: |{,}| and |{;}|.
+%
+%  The optional Argument \meta{xindy-keys} is a comma-separated list
+%  of xindy-keys and their assignment. Currently the following keys
+%  are recognized:
+%  \begin{quote}
+%   \begin{description}
+%    \item[open-range] The indexentry will be the beginning of a range.
+%    \item[close-range] The indexentry will be the end of a range.
+%    \item[attr=\meta{attribute}] The given \meta{attribute} will be
+%     attached to the indexentry.
+%   \end{description}
+%  \end{quote}
+%  If, in any case, you wish to use a comma as an argument, you must
+%  enclose it by brackets |{,}|.
+% 
+%  At least, we've to discuss the optional argument \meta{xref}.
+%  This one can be used to define a crossreference inside the index.
+%  Which \emph{MakeIndex} you write \verb+\index{foo|see{bar}}+. Using
+%  \textsf{xindy}, crossreferences become more flexible. \meta{xref}
+%  is a comma-separated list of sortkey, the entry should point to.
+%  The input
+%  \begin{quote}
+%   |\indexindy[attr=see][bar]{foo}|
+%  \end{quote}
+%  leads (using standard xindy-styles) to the same result, generated
+%  by \emph{MakeIndex}. But, different to \emph{MakeIndex}, you are
+%  now able to point to other Layers:
+%  \begin{quote}
+%   |\indexindy{First;Second,\textsc{Second};Third}|\\
+%   |\indexindy[][First,Second,Third]{foo}|
+%  \end{quote}
+%  Note, that I didn't use either the attribute |see| nor any other 
+%  \meta{xindy-key} in the latter example. Thus, there has to be an
+%  extra pair of brackets |[]|. 
+%
+%  \subsection*{Example}
+%
+% The Input
+%  \begin{verbatim}
+%   \documentclass{book}
+%   \makeindex
+%   \usepackage{xindy}
+%   \begin{document}
+%    \chapter{foo}
+%     \indexindy[attr=idef]{Euler}
+%     \indexindy[open-range,attr=idef]{Euler,\textsc{Euler}}
+%     \indexindy[attr=see][Layer 0,Layer 1,Layer 2]{Persons;Math-related}
+%     \indexindy{Lycos}
+%    \chapter{bar}
+%     \indexindy[close-range,attr=idef]{Euler,\textsc{Euler}}
+%     \locationstyle{chapter}
+%     \indexindy{Layer 0;Layer 1,\textsc{Layer 1};Layer 2}
+%     \indexindy{Index a comma{,} too}
+%   \end{document}\end{verbatim}
+% leads to the index
+%   \begin{theindex}
+%     \item Entry, \textbf{1}
+%     \item \textsc{Euler}, \textbf{1}ff.
+%     \indexspace
+%     \item Index a comma{,} too, 2-3
+%     \indexspace
+%     \item Layer~0,\hfill~
+%       \subitem \textsc{Layer~1},\hfill~
+%         \subsubitem Layer~2, 2-3
+%     \item Lycos, 2
+%     \indexspace
+%     \item Persons
+%       \subitem Math-related, \see{Layer 0, Layer 1, Layer 2}
+%   \end{theindex}
+%
+% \section{Known bugs, problems and exceptions}
+%
+% Currently, there are no known bugs, but there are some
+% exceptions using |xindy.sty|:
+% \begin{itemize}
+%  \item Because \textsf{xindy} uses indexes in a raw-format and |xindy.sty|
+%   redefines |\index| for internal use, you should not use |\index| inside
+%   your document.
+%  \item Because |\indexindy| uses the comma and semikoleon in special manner,
+%   you have to write |{,}| and |{;}| if you wish them to appear in a key. Thus,
+%   you should specify a merge-rule in your xindy-style, which discards the brackets:
+%   \begin{quote}
+%    |(merge-rule "{,}" "," :again)|\\
+%    |(merge-rule "{;}" ";" :again)|
+%   \end{quote}
+%  \item Because |xindy| needs the backslash and the doulequote escaped, |\indexindy|
+%   does this for the user. But if you define a shortcut, calling |\indexindy|, this
+%   function doesn't work any more. Thus you must escape these chars by yourself:
+%   \begin{quote}
+%    |\newcommand{\foo}[1]{\indexindy[attr=definition]{#1}}|\\
+%    |\foo{Backslash (\\) and Doublequote (\")}|
+%   \end{quote}
+%  \end{itemize}
+%
+% \section{Code documentation}\label{sec:code}
+% 
+% \subsection{The documentation driver file}
+%
+% The next bit of code contains the documentation driver file for
+% \TeX{}, i.e., the file that will produce the documentation you are
+% currently reading. It will be extracted from this file by the
+% \texttt{docstrip} program. Since it is the first code in the file
+% one can alternatively process this file directly with \LaTeXe{} to
+% obtain the documentation.
+%
+% \begin{macrocode}
+%<*driver>
+\documentclass[draft]{ltxdoc}
+\usepackage{xindy}
+\def\see#1{\emph{see} #1}
+\parindent0pt\hfuzz2pt
+\setlength{\textwidth}{360pt}
+\begin{document}
+ \DocInput{xindy.dtx}
+\end{document}
+%</driver>
+%    \end{macrocode}
+%
+%
+% \subsection{Documentation of the Macros}
+%
+%    \begin{macrocode}
+%<*package>
+%%
+\RequirePackage{keyval}
+%%
+%%
+%% Allow definition of locationstyles
+%%
+%%
+\def\newlocationstyle#1#2{%
+    \@ifundefined{xindy@style@#1}%
+    {\expandafter\gdef\csname xindy@style@#1\endcsname{#2}}
+    {\typeout{xindy: locationstyle #1 already defined}}}
+%%
+%%
+%% existing styles may be redefined
+%%
+%%
+\def\renewlocationstyle#1#2{%
+    \expandafter\let\csname xindy@style@#1\endcsname=\undefined%
+    \newlocationstyle{#1}{#2}}
+%%
+%%
+%% set up the locationstyles page, chapter and section
+%%
+%%
+\newlocationstyle{page}{\thepage}
+\ifx\@undefined\chapter\else
+    \newlocationstyle{chapter}{\thechapter-\thepage}
+\fi
+\ifx\@undefined\section\else
+    \newlocationstyle{section}{\thesection-\thepage}
+\fi
+%%
+%%
+%% select style
+%%
+%%
+\def\locationstyle#1{%
+    \@ifundefined{xindy@style@#1}
+       {\typeout{xindy: locationstyle #1 not defined}}
+       {\def\xindy@style{\csname xindy@style@#1\endcsname}}}
+%%
+%%
+%% default is normal pagenumbering, as in LaTeX
+%%
+%%
+\locationstyle{page}
+%%
+%%
+%% The optional keys for the index (as mentioned by Bernd Raichle)
+%%
+%%
+\begingroup
+  % make all punctuation chars inactive (if they can be active)
+  \catcode`\:=12 \catcode`\"=12
+  \toks0={\endgroup
+%%
+\define@key{xindy}{attr}{%
+   \def\xindy@attr{#1}%
+   \ifx\@empty\xindy@attr%
+   \else%
+      \def\xindy@attr{:attr "#1"}%
+   \fi}
+\define@key{xindy}{open-range}[:open-range]{\def\xindy@range{:open-range}}
+\define@key{xindy}{close-range}[:close-range]{\def\xindy@range{:close-range}}
+%%
+}\the\toks0\relax
+\def\xindy@attr{}
+\def\xindy@range{}
+\def\xindy@xref{}
+%%
+%%
+%% The Backslash should be doubled, the 
+%% doublequote should be quoted          (as mentioned by Bernd Raichle)
+%%
+%%
+\begingroup
+  \catcode`\"=\active
+  \catcode`\~=13 \lccode`\~=`\\
+  \lowercase{%
+    \def\x#1{\endgroup
+      \def\xindy@activatebsp{%
+        \catcode`\\=\active \def~{#1}
+        \catcode`\"=\active \def"{\"}}}}
+  \catcode`\|=0 \catcode`|\=12
+|x{\\}
+%%
+%%
+%% Various Makros
+%%
+%%
+\def\delspace#1 \xindy@relax{#1}
+\def\xindy@space{\space\space\space\space\space\space}
+\edef\xindy@space{\xindy@space\xindy@space}
+%%
+%%
+%% The indexing command (as mentioned by Bernd Raichle)
+%%
+%%
+\def\indexindy{%
+  \@bsphack        %% to handle `space factor' etc.
+  \begingroup
+    \toks@{}%
+    \@sanitize
+    \xindy@activatebsp
+    \indexindy@
+}
+\begingroup
+  % make all punctuation chars inactive (if they can be active)
+  \catcode`\:=12 \catcode`\"=12
+  \toks0={\endgroup
+%%
+%% this one parses the optional arguments, no quoting is active right now
+%%
+\newcommand{\indexindy@}[1][]{% setup keys
+ \setkeys{xindy}{#1}%
+ \indexindy@@}
+%%
+%% parse the key, quoting is enabled
+%%
+\newcommand{\indexindy@@}[2][]{%
+ % setup key
+ \xindy@checksyntax{#2}%
+ \toks@=\expandafter{\expandafter\delspace\the\toks@\xindy@relax}% delete tailing space
+ \expandafter\def\expandafter\xindy@tmp\expandafter{\the\toks@}%
+ % setup xref
+ \toks@={}%
+ \def\xindy@@tmp{#1}%
+ \ifx\@empty\xindy@@tmp\def\xindy@ref{}
+ \else
+  \xindy@@checksyntax
+ \toks@=\expandafter{\expandafter\delspace\the\toks@\xindy@relax}% delete tailing space
+  \expandafter\def\expandafter\xindy@xref\expandafter{\the\toks@}%
+ \fi
+  \index{(indexentry :tkey (\xindy@tmp)}%
+  \ifx\@empty\xindy@attr\else
+    \index{\xindy@space\xindy@attr}
+  \fi
+  \ifx\@empty\xindy@range\else
+    \index{\xindy@space\xindy@range}%
+  \fi
+  \ifx\@empty\xindy@xref%
+    \index{\xindy@space:locref "\xindy@style")}%
+  \else%
+    \index{\xindy@space:xref \xindy@xref)}%
+  \fi%
+ \endgroup
+ \@esphack
+}
+%%
+%%
+%% convert input into :tkey form
+%%
+%%
+\def\xindy@checksyntax#1{%
+    \def\xindy@tmp{#1}%
+    \xindy@for\xindy@@tmp:=\xindy@tmp\do{\xindy@@checksyntax}}
+\def\xindy@@checksyntax{%
+    \addto@hook\toks@{(}%
+    \@for\xindy@@@tmp:=\xindy@@tmp\do{%
+         \expandafter\addto@hook\expandafter\toks@\expandafter{\expandafter"\xindy@@@tmp" }}%
+    \toks@=\expandafter{\expandafter\delspace\the\toks@\xindy@relax}% delete tailing space
+    \addto@hook\toks@{) }}
+}\the\toks0\relax
+%%
+%%
+%% We need a special for-command to enable nested loops.
+%%
+%%
+\def\xindy@fornoop#1\@@#2#3{}
+\long\def\xindy@for#1:=#2\do#3{%
+  \expandafter\def\expandafter\xindy@fortmp\expandafter{#2}%
+  \ifx\xindy@fortmp\@empty \else
+    \expandafter\xindy@forloop#2;\@nil;\@nil\@@#1{#3}\fi}
+\long\def\xindy@forloop#1;#2;#3\@@#4#5{\def#4{#1}\ifx #4\@nnil \else
+       #5\def#4{#2}\ifx #4\@nnil \else#5\xindy@iforloop #3\@@#4{#5}\fi\fi}
+\long\def\xindy@iforloop#1;#2\@@#3#4{\def#3{#1}\ifx #3\@nnil
+       \expandafter\xindy@fornoop \else
+      #4\relax\expandafter\xindy@iforloop\fi#2\@@#3{#4}}
+\def\xindy@tfor#1:={\xindy@tf@r#1 }
+\long\def\xindy@tf@r#1#2\do#3{\def\xindy@fortmp{#2}\ifx\xindy@fortmp\space\else
+    \xindy@tforloop#2\@nil\@nil\@@#1{#3}\fi}
+\long\def\xindy@tforloop#1#2\@@#3#4{\def#3{#1}\ifx #3\@nnil
+       \expandafter\xindy@fornoop \else
+      #4\relax\expandafter\xindy@tforloop\fi#2\@@#3{#4}}
+\long\def\@breakxindy@tfor#1\@@#2#3{\fi\fi}
+%%
+%%
+%% Now redifene \@wrindex from the kernel
+%%
+%%
+\def\@wrindex#1{%
+   \protected@write\@indexfile{}%
+      {#1}%
+ \endgroup
+ \@esphack}
+%</package>
+%    \end{macrocode}
+%
+% \section{Acknowledgements}
+%
+% |xindy.sty| is based on a personal idea, but there were two persons, who
+% helped me in many special tasks. First, I want to thank \textsc{Roger Kehr},
+% who gave me hints on xindy-dependent part. Additionally, I thank \textsc{Bernd Raichle}.
+% He gave many hints on changing categories correctly, to achieve compability to
+% other styles like |german.sty|.
+%
+% \section{History}
+%
+% \GlossaryPrologue{}
+% \PrintChanges
+%
+% \Finale
+\endinput
