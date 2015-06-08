@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-bullet
+	pkgdesc = A 3D Collision Detection and Rigid Body Dynamics Library for games and animation (mingw-w64)
+	pkgver = 2.83.4
+	pkgrel = 1
+	url = http://www.bulletphysics.com/Bullet/
+	arch = any
+	license = custom:zlib
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = https://github.com/bulletphysics/bullet3/archive/2.83.4.tar.gz
+	md5sums = 58b4e151bf580fe6746e8413cb2a4cbe
+
+pkgname = mingw-w64-bullet
+
