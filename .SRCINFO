@@ -1,0 +1,13 @@
+pkgbase = python-pyinter
+	pkgdesc = An interval interval arithmetics package
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/intiocean/pyinter
+	arch = any
+	license = MIT
+	depends = python
+	source = https://github.com/intiocean/pyinter/archive/v0.1.6.tar.gz
+	md5sums = f1336ebf94899a359ccf824e85a858b1
+
+pkgname = python-pyinter
+
