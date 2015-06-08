@@ -1,0 +1,12 @@
+pkgbase = makechapterlist
+	pkgdesc = Trivial script used to make a chapter list file that MP4Box can use when writing m4b audiobooks.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/graysky2/makechapterlist
+	arch = any
+	license = GPL
+	source = http://repo-ck.com/source/makechapterlist/makechapterlist-1.0.1.tar.xz
+	sha256sums = 0540cd18f4f4dcec180697b041a400b7387c0550740948c8c7770d6a7c9f3486
+
+pkgname = makechapterlist
+
