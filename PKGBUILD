@@ -1,0 +1,1 @@
+/home/patrick/workspace/bash/pacman-history/src/PKGBUILD
