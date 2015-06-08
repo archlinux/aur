@@ -1,0 +1,17 @@
+pkgbase = emacs-git-modes-git
+	pkgdesc = Some git modes needed by emacs-magit-git
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/magit/git-modes
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	depends = git
+	provides = emacs-git-modes
+	conflicts = emacs-git-modes
+	source = git+https://github.com/magit/git-modes.git
+	md5sums = SKIP
+
+pkgname = emacs-git-modes-git
+
