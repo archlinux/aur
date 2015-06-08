@@ -1,0 +1,3 @@
+#!/usr/bin/sh
+cd /usr/share/irpf
+java -jar /usr/share/irpf/irpf.jar
