@@ -1,0 +1,13 @@
+pkgbase = betty
+	pkgdesc = Friendly English-like interface for your command line
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/pickhardt/betty
+	arch = any
+	license = Apache
+	depends = ruby
+	source = https://github.com/pickhardt/betty/archive/v0.1.7.tar.gz
+	sha256sums = ed71e88a659725e0c475888df044c9de3ab1474ff483f0a3bb432949035e62d3
+
+pkgname = betty
+
