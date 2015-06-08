@@ -1,0 +1,19 @@
+pkgbase = reclass
+	pkgdesc = hierarchical inventory backend for configuration management systems (salt, ansible, puppet)
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = http://reclass.pantsfullofunix.net/
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	depends = python2
+	provides = reclass
+	conflicts = reclass-git
+	backup = etc/reclass/reclass-config.yml
+	source = http://debian.c3sl.ufpr.br/debian/pool/main/r/reclass/reclass_1.4.1.orig.tar.gz
+	source = reclass-config.yml
+	md5sums = bb8d46cd739ca76befb12ebc70e79b14
+	md5sums = ad011bd9cf89152b9eaaeebc0862732f
+
+pkgname = reclass
+
