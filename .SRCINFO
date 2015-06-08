@@ -1,0 +1,21 @@
+pkgbase = desktopnova
+	pkgdesc = Changes your desktop wallpaper automatically after a preset period of time
+	pkgver = 0.8.1
+	pkgrel = 4
+	url = https://launchpad.net/desktopnova
+	install = desktopnova.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = intltool
+	depends = gconf
+	depends = gtk2
+	depends = gtk-update-icon-cache
+	depends = libxml2
+	depends = xfconf
+	source = https://launchpad.net/desktopnova/0.8/0.8.1/+download/desktopnova-0.8.1.tar.gz
+	md5sums = f1ce5cc731ddcb999ac09ff8461228b9
+
+pkgname = desktopnova
+
