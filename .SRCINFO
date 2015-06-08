@@ -1,0 +1,15 @@
+pkgbase = plustache-git
+	pkgdesc = Basic port of mustache templating to C++
+	pkgver = 124.0d6cba4
+	pkgrel = 1
+	url = https://github.com/mrtazz/plustache
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = boost
+	source = git+https://github.com/mrtazz/plustache/
+	md5sums = SKIP
+
+pkgname = plustache-git
+
