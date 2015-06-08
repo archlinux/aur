@@ -1,0 +1,28 @@
+pkgbase = magicseteditor
+	pkgdesc = A program to help create Magic: the Gathering cards and sets. Comes with no game support.
+	pkgver = 2.0.0
+	pkgrel = 11
+	url = http://magicseteditor.sourceforge.net
+	install = magicseteditor.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = boost
+	makedepends = unzip
+	makedepends = pkg-config
+	makedepends = svn
+	depends = hunspell
+	depends = libjpeg
+	depends = wxgtk2.8
+	depends = boost-libs
+	provides = magicseteditor=2.0.0
+	conflicts = magicseteditor-bin
+	conflicts = magicseteditor-svn
+	conflicts = mse2
+	conflicts = magicseteditor-xyz-mod
+	options = !strip
+	source = mse-2.0.0::svn+https://magicseteditor.svn.sourceforge.net/svnroot/magicseteditor/tags/releases/mse-2.0.0#
+	md5sums = SKIP
+
+pkgname = magicseteditor
+
