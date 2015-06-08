@@ -1,0 +1,18 @@
+post_install() {
+  pacman -Q python2-pyqt4 > /dev/null 2>&1
+  _pyqt4=$?
+
+  pacman -Q python2-pyqwt > /dev/null 2>&1
+  _pyqwt=$?
+
+  if [ "$_pyqt4" != "0" ] || [ "$_pyqwt" != "0" ]; then
+    echo ""
+    echo "You've installed gr-air-modes-git without GUI support."
+    echo "If you want to install the GUI you will need to install"
+    echo "python2-pyqt4 and python2-pyqwt and reinstall this package."
+    echo ""
+    echo "To install those packages as dependencies you can do the following:"
+    echo "pacman -S --asdep python2-pyqt4 python2-pyqwt"
+    echo ""
+  fi
+}
