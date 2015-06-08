@@ -1,0 +1,16 @@
+pkgbase = perl-math-basearith
+	pkgdesc = Perl extension for mixed-base number representation (like APL encode/decode)
+	pkgver = 1.00
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Math-BaseArith
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PU/PUCKERING/Math-BaseArith-1.00.tar.gz
+	md5sums = 4fb5ba50af1e8d83e0d442d4b950703c
+	sha512sums = 9be769fe8dbc3399764fad5d680a7aea51080e5927914034f62fdfd3852559f185e9a5d025c1c950f8c8b45c248be3973b4a4824b7272c087a1b24a465340252
+
+pkgname = perl-math-basearith
+
