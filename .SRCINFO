@@ -1,0 +1,23 @@
+pkgbase = vpnc-gui
+	pkgdesc = gtk graphical user interface for vpnc
+	pkgver = 0.11
+	pkgrel = 2
+	url = http://ticc.mines.edu/csm/wiki/index.php/Vpnc-gui
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = vpnc
+	depends = gtk2
+	source = http://ticc.mines.edu/csm/wiki/images/5/58/Vpnc-gui.tgz
+	source = vpnc-gui.desktop
+	source = vpnc-gui.svg
+	source = logo.png
+	source = logo16.png
+	md5sums = c347204294e6f0ae68a298e6ae2c83cf
+	md5sums = 662617050ac44d95f4bd4bc65b5ec915
+	md5sums = 1bc33db1772016fd7e8be8c4983027e7
+	md5sums = 788d1a75c2b1e6582cd198d8f89b50e7
+	md5sums = 41512423e9876436a4851c33df9de7d7
+
+pkgname = vpnc-gui
+

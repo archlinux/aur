@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Exec=vpnc-gui
+Icon=/usr/share/vpnc-gui/icons/vpnc-gui.svg
+Type=Application
+Categories=Application;Network
+Name=Vpnc-gui
+GenericName=VPN Manager
