@@ -1,0 +1,16 @@
+pkgbase = haskell-wl-pprint
+	pkgdesc = The Wadler/Leijen Pretty Printer
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/wl-pprint
+	install = haskell-wl-pprint.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	options = strip
+	source = http://hackage.haskell.org/packages/archive/wl-pprint/1.1/wl-pprint-1.1.tar.gz
+	md5sums = 5cb236328bc95d9fb1ac306732bd6900
+
+pkgname = haskell-wl-pprint
+
