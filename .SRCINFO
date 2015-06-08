@@ -1,0 +1,17 @@
+pkgbase = kde-thumbnailer-blender
+	pkgdesc = KDE plugin to show thumbnails of Blender files
+	pkgver = 0.3
+	pkgrel = 2
+	url = http://kde-look.org/content/show.php/?content=146380
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdelibs
+	depends = zlib
+	source = kde-thumbnailer-blender-0.3.tar.gz::http://kde-look.org/CONTENT/content-files/146380-kde-thumbnailer-blender_0.3kayosiii.tar.gz
+	sha256sums = b2162c1ea09103b87b7f6ee69725e8de972a4781fd442c34fd4b3346de878319
+
+pkgname = kde-thumbnailer-blender
+
