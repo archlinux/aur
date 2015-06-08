@@ -1,0 +1,20 @@
+pkgbase = puzzlemoppet-git
+	pkgdesc = A challenging 3D puzzle game where you must guide the Moppet through the vast and eternal void of space by solving the various and beautiful puzzles thrown at you
+	pkgver = r59.5583142
+	pkgrel = 1
+	url = https://bitbucket.org/Knitter/puzzlemoppet/overview
+	arch = i686
+	arch = x86_64
+	license = WTFPL
+	makedepends = make
+	makedepends = cmake
+	makedepends = git
+	depends = irrlicht
+	depends = ode
+	depends = openal
+	conflicts = puzzle-moppet-bin
+	source = puzzlemoppet-git::git+https://bitbucket.org/Knitter/puzzlemoppet.git
+	md5sums = SKIP
+
+pkgname = puzzlemoppet-git
+
