@@ -1,0 +1,10 @@
+post_install() {
+    cat <<EOF
+==> Put this in your \$HOME/.emacs file to enable elscreen mode:
+==>   (load "elscreen" "ElScreen" t)
+EOF
+}
+
+post_upgrade() {
+  post_install $1
+}

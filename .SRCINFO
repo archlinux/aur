@@ -1,0 +1,15 @@
+pkgbase = emacs-elscreen
+	pkgdesc = Frame configuration management for GNU Emacs modelled after GNU Screen
+	pkgver = 1.4.6
+	pkgrel = 3
+	url = http://www.morishima.net/~naoto/software/elscreen/index.php.en
+	install = emacs-elscreen.install
+	arch = any
+	license = GPL
+	makedepends = emacs-apel
+	depends = emacs
+	source = ftp://ftp.morishima.net/pub/morishima.net/naoto/ElScreen/elscreen-1.4.6.tar.gz
+	md5sums = 67d6b8913957ccacefef09c549a939fd
+
+pkgname = emacs-elscreen
+
