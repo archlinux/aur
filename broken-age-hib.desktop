@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Broken Age
+GenericName=Broken Age
+Comment=Play Broken Age
+Exec=broken-age-hib
+Icon=broken-age-hib
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Game;AudioVideo;
