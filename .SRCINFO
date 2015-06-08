@@ -1,0 +1,20 @@
+pkgbase = mingw-w64-f2c
+	pkgdesc = Fortran to C code translator (mingw-w64)
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.netlib.org/f2c/index.html
+	arch = any
+	license = custom
+	makedepends = mingw-w64-gcc
+	depends = mingw-w64-crt
+	noextract = libf2c.zip
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = http://www.netlib.org/f2c/libf2c.zip
+	source = libf2c-1.patch
+	sha256sums = 5dff29c58b428fa00cd36b1220e2d71b9882a658fdec1aa094fb7e6e482d6765
+	sha256sums = 87094ca646b67339bcb8faef5d400249e4abf744086398788d15c17f306eda36
+
+pkgname = mingw-w64-f2c
+
