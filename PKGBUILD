@@ -9,7 +9,7 @@ _ngx_acc_rev=2.0.3
 
 pkgname=nginx-accesskey
 _pkgname=nginx
-pkgver=1.6.2
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, with ngx_http_accesskey_module.'
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ source=($url/download/nginx-$pkgver.tar.gz
         http://wiki.nginx.org/images/5/51/Nginx-accesskey-$_ngx_acc_rev.tar.gz
         service
         logrotate)
-sha256sums=('b5608c2959d3e7ad09b20fc8f9e5bd4bc87b3bc8ba5936a513c04ed8f1391a18'
+sha256sums=('23cca1239990c818d8f6da118320c4979aadf5386deda691b1b7c2c96b9df3d5'
             'd9e94321e78a02de16c57f3e048fd31059fd8116ed03d6de7180f435c52502b1'
             '4ecbc33ce4bf2965996f51b0c7edb677904ba5cff9a32e93e1487a428d3a751b'
             '8700222687c1848f7669faaa23708adc92d6634de156b8935b5b9a9b062ce6e9')
