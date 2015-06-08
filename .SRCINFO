@@ -1,0 +1,22 @@
+pkgbase = indicator-weather-bzr
+	pkgdesc = Comprehensive weather notification system, implemented using the indicator applet API (Canonical Ayatana Project)
+	pkgver = r358
+	pkgrel = 3
+	url = https://launchpad.net/weather-indicator
+	install = indicator-weather-bzr.install
+	arch = any
+	license = GPL3
+	makedepends = bzr
+	makedepends = python2-distutils-extra
+	depends = libappindicator-gtk3
+	depends = libgweather
+	depends = python2-pywapi
+	depends = python2-pytz
+	optdepends = python2-unidecode: for ASCII transliterations of Unicode text
+	provides = indicator-weather
+	conflicts = indicator-weather
+	source = indicator-weather-bzr::bzr+http://bazaar.launchpad.net/~weather-indicator-team/weather-indicator/rainy
+	md5sums = SKIP
+
+pkgname = indicator-weather-bzr
+
