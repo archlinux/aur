@@ -1,0 +1,16 @@
+pkgbase = 7-nanocycles
+	pkgdesc = 7 Nanocycles is a game of flying down an endless corridor of neon wire-meshes and geometrical shapes.
+	pkgver = 1
+	pkgrel = 2
+	url = http://nifflas.ni2.se/?page=Miscellaneous
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glu
+	source = 7-nanocycles.zip::http://nifflas.ni2.se/content/Misc/7%20Nanocycles%20Linux.zip
+	source = 7-nanocycles.desktop
+	sha256sums = 2f159763c891ed68b572fe322f222121559769d37d3edf8c8a4e3034ecdbda93
+	sha256sums = bb2162b3a78bc95285ae81f67570a2210c84e186fbe8eff8431ad539ebb4a843
+
+pkgname = 7-nanocycles
+

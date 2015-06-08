@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=7 Nanocycles
+Comment=Play 7 Nanocycles
+Exec=7-nanocycles
+Icon=7-nanocycles
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;AudioVideo;
+Encoding=UTF-8
