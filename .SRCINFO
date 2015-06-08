@@ -1,0 +1,13 @@
+pkgbase = eclipse-phpeclipse
+	pkgdesc = PHP - Support for the Eclipse IDE Framework
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = http://www.phpeclipse.com/
+	arch = any
+	license = CPL
+	depends = eclipse
+	source = http://downloads.sourceforge.net/phpeclipse/PHPEclipse-1.2.3.200910091456PRD-bin.zip
+	md5sums = 979626fc167a77f019c729be91e3af60
+
+pkgname = eclipse-phpeclipse
+
