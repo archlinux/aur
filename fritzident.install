@@ -1,0 +1,4 @@
+post_install() {
+  # do something here
+  echo Please make sure to append a line for fritzident and port 14013/tcp to /etc/services.
+}
