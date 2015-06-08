@@ -1,0 +1,29 @@
+pkgbase = haskell-bio
+	pkgdesc = A bioinformatics library
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/bio
+	install = haskell-bio.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = ghc
+	depends = haskell-quickcheck>=2.0
+	depends = haskell-array
+	depends = haskell-binary>=0.4
+	depends = haskell-bytestring>=0.9.1
+	depends = haskell-containers
+	depends = haskell-directory
+	depends = haskell-mtl
+	depends = haskell-old-time
+	depends = haskell-parallel
+	depends = haskell-parsec
+	depends = haskell-process
+	depends = haskell-random
+	depends = haskell-tagsoup>=0.8
+	options = strip
+	source = http://hackage.haskell.org/packages/archive/bio/0.5.3/bio-0.5.3.tar.gz
+	md5sums = b5002c48bcee7741264ed6e46ac7a5ca
+
+pkgname = haskell-bio
+
