@@ -1,0 +1,34 @@
+pkgbase = rbutil-git
+	pkgver = 1.4.0.r540.0f61e38
+	pkgrel = 1
+	url = http://www.rockbox.org/twiki/bin/view/Main/RockboxUtility
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gendesk
+	makedepends = git
+	makedepends = libusb
+	makedepends = qt5-base
+	makedepends = qt5-tools
+	makedepends = speex
+	source = rbutil::git://git.rockbox.org/rockbox
+	sha256sums = SKIP
+
+pkgname = rbutil-git
+	pkgdesc = Rockbox Utility
+	depends = libusb
+	depends = qt5-base
+	depends = speex
+	optdepends = espeak: TTS engine
+	optdepends = festival: TTS engine
+	optdepends = flite: TTS engine
+	optdepends = rbspeex-git: Generate voice/talk files from external sources
+	provides = rbutil
+	conflicts = rbutil
+
+pkgname = rbspeex-git
+	pkgdesc = Rockbox Speex Codec
+	depends = speex
+	provides = rbspeex
+	conflicts = rbspeex
+
