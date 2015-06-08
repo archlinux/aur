@@ -5,7 +5,7 @@
 _pkgname=elementary
 pkgbase=$_pkgname-git
 pkgname=("$_pkgname-git" "elementary_test-git")
-pkgver=1.12.99.10708.6c8e152
+pkgver=1.14.99.11415.gc99c116
 pkgrel=1
 pkgdesc="Enlightenment GUI toolkit - Development version"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ pkgver() {
   local efl_version=$(grep -m1 EFL_VERSION configure.ac | awk -F [][] '{print $2 "." $4 "." $6}')
   efl_version=$(awk -F , -v efl_version=${efl_version%.} '/^AC_INIT/ {gsub(/efl_version/, efl_version); gsub(/[\[\] -]/, ""); print $2}' configure.ac)
 
-  printf "$efl_version.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  printf "%s.%s.g%s" "$efl_version" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
