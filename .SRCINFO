@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-fann
+	pkgdesc = Fast artificial neural network library (mingw-w64)
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = http://leenissen.dk/fann/
+	arch = any
+	license = LGPL2.1
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
+	options = !buildflags
+	options = staticlibs
+	options = !strip
+	source = http://downloads.sourceforge.net/fann/2.2.0/FANN-2.2.0-Source.zip
+	source = fann-mingw.patch
+	md5sums = 292d914684c9eab1d84eb1f59b0fbf69
+	md5sums = 130a56a7674a47db5c3aa6f81efb44fb
+
+pkgname = mingw-w64-fann
+
