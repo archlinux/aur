@@ -1,0 +1,16 @@
+pkgbase = descartes-breeze
+	pkgdesc = A smooth semi-full-flat theme based on KDE-Next with many improvements
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://kde-look.org/content/show.php/Descartes+Breeze?content=165578
+	arch = any
+	license = GPL
+	depends = kdebase-workspace
+	optdepends = ttf-comme
+	conflicts = descarted-breeze
+	replaces = descarted-breeze
+	source = descartes-breeze-1.2.tar.gz::http://kde-look.org/CONTENT/content-files/165578-Descartes_Breeze_v1.2.tar.gz
+	md5sums = 904ac663c210638e2aacbe9cefa1bd11
+
+pkgname = descartes-breeze
+
