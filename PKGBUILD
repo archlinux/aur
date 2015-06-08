@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/passwordsafe/"
 license=('Artistic2.0')
 #to build without yubikey support, remove ykpers and uncomment NO_YUBI in build()
-depends=('libxtst' 'wxgtk' 'xerces-c' 'ykpers')
+depends=('libxtst' 'wxgtk' 'webkitgtk2' 'ykpers' 'xerces-c')
 makedepends=('git' 'zip' 'libxt')
 optdepends=('xvkbd: virtual-keyboard support')
 conflicts=('passwordsafe-debian' 'passwordsafe' 'pwsafe')
@@ -18,7 +18,6 @@ install=passwordsafe-git.install
 
 pkgver() {
 	cd "$pkgname"
-	#git show -s --format="%ci" HEAD | sed -e 's/-//g' -e 's/ .*//'
 	git describe | sed 's/-/.r/; s/-/./'
 }
 
@@ -56,3 +55,4 @@ package() {
 				"$pkgdir"/usr/share/locale/"$lang"/LC_MESSAGES/pwsafe.mo
 	done
 }
+
