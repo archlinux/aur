@@ -1,0 +1,17 @@
+pkgbase = malaga
+	pkgdesc = A software for the development and application of grammars that are used for the analysis of words and sentences of natural languages.
+	pkgver = 7.12
+	pkgrel = 5
+	url = http://home.arcor.de/bjoern-beutel/malaga/
+	install = malaga.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = texinfo
+	depends = gtk2
+	options = !libtool
+	source = http://home.arcor.de/bjoern-beutel/malaga/malaga-7.12.tgz
+	md5sums = 873b292d923e2d1c0643769aa58c1882
+
+pkgname = malaga
+
