@@ -1,14 +1,14 @@
 pkgbase = nodejs-mocha
 	pkgdesc = simple, flexible, fun test framework
-	pkgver = 2.0.1
+	pkgver = 2.2.5
 	pkgrel = 1
 	url = http://github.com/visionmedia/mocha
 	arch = any
 	depends = nodejs
-	noextract = mocha-2.0.1.tgz
+	noextract = mocha-2.2.5.tgz
 	options = !strip
-	source = http://registry.npmjs.org/mocha/-/mocha-2.0.1.tgz
-	sha1sums = 5a16e88b856d0c4145d8c6888c27ebd4fab13e90
+	source = http://registry.npmjs.org/mocha/-/mocha-2.2.5.tgz
+	sha1sums = d3b72a4fe49ec9439353f1ac893dbc430d993140
 
 pkgname = nodejs-mocha
 
