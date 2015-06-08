@@ -1,0 +1,25 @@
+# Colored makepkg-like functions
+msg_blue() {
+  printf "${blue}==>${bold} $1${all_off}\n"
+}
+
+_update() {
+  msg_blue "Updating desktop MIME database..."
+  update-desktop-database -q
+}
+
+post_install() {
+  ln -sf /opt/MessengerForDesktop/Messenger /usr/local/bin/messengerfordesktop
+  desktop-file-install /opt/MessengerForDesktop/messengerfordesktop.desktop
+  _update
+}
+
+post_upgrade() {
+  _update
+}
+
+post_remove() {
+  rm -f /usr/local/bin/messengerfordesktop
+  rm -f /usr/share/applications/messengerfordesktop.desktop
+  _update
+}

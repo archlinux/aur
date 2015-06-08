@@ -1,0 +1,27 @@
+pkgbase = messengerfordesktop
+	pkgdesc = Beautiful desktop client for Facebook Messenger. Chat without being distracted by your feed or notifications.
+	pkgver = v1.4.0
+	pkgrel = 1
+	url = http://messengerfordesktop.com/
+	install = messengerfordesktop.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = cairo
+	depends = libxtst
+	depends = alsa-lib
+	depends = gtk2
+	depends = gconf
+	depends = libnotify
+	depends = fontconfig
+	depends = nss
+	options = !strip
+	source_i686 = https://github.com/Aluxian/Facebook-Messenger-Desktop/releases/download/v1.4.0/Messenger_linux32.deb
+	depends_i686 = gcc-libs
+	md5sums_i686 = 244705b48fd3c986023b4c8638cf988c
+	source_x86_64 = https://github.com/Aluxian/Facebook-Messenger-Desktop/releases/download/v1.4.0/Messenger_linux64.deb
+	depends_x86_64 = gcc-libs-multilib
+	md5sums_x86_64 = 4763e1ddde478e89331ebea68dcb0e8a
+
+pkgname = messengerfordesktop
+
