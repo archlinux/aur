@@ -1,0 +1,25 @@
+pkgbase = haskell-semigroups
+	pkgdesc = Anything that associates
+	pkgver = 0.16.2.2
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/semigroups
+	install = haskell-semigroups.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = haskell-bytestring>=0.9
+	depends = haskell-deepseq
+	depends = haskell-ghc-prim
+	depends = haskell-containers>=0.3
+	depends = haskell-hashable>=1.1
+	depends = haskell-nats>0.1
+	depends = haskell-text>=0.10
+	depends = haskell-unordered-containers>=0.2
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/semigroups/0.16.2.2/semigroups-0.16.2.2.tar.gz
+	md5sums = 728f760bca161acdccbe23dfb4fb43db
+
+pkgname = haskell-semigroups
+
