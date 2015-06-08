@@ -1,0 +1,94 @@
+signa(){
+    #get rid of Testing use only watermark
+    echo "3249c5b75bccae3ce4f3a65e88154133:037beb866bf8830dd7c3956cb0746c02077cfc8e628f837db0ba8666b127700b07:027af2d53eae960ad291c066b0267157567ea68462f9985f86c3916abe767101027ef2d43daf9659d2c19e38b02676575079a7d663fa980a86c29469bf257151027e" > etc/ati/signature
+}
+
+whisperer(){
+    echo "----------------------------------------------------------------"
+    echo "Add nomodeset to your kernel line in /boot/grub/menu.lst , ie.:"
+    echo "kernel /boot/vmlinuz-linux root=/dev/sda1 ro nomodeset"
+    echo "----------------------------------------------------------------"
+    echo "You can use the tool 'aticonfig' to generate an xorg.conf file."
+    echo "--------------------- ^^^^^^^^^ --------------------------------"
+    echo "fglrx was added into /etc/modules-load.d/catalyst.conf"
+    echo "----------------------------------------------------------------"
+    echo "	atieventsd (needs acpid pkg) on systemd:"
+    echo "systemctl enable atieventsd"
+    echo "systemctl start atieventsd"
+    echo "----------------------------------------------------------------"
+    echo "For more info and troubleshooting visit:"
+    echo "http://wiki.archlinux.org/index.php/ATI_Catalyst"
+    echo -e '\E[37;44m'"\033[1m----------------------------------------------------------------\033[0m"
+    echo "To enable 'automatic re-compilation while system shutdown/reboot' "
+    echo "feature run these commands as root:"
+    echo "systemctl enable catalyst-hook"
+    echo "systemctl start catalyst-hook"
+    echo ""
+    echo "More info here:"
+    echo "https://bbs.archlinux.org/viewtopic.php?pid=1255575#p1255575"
+    echo -e '\E[37;44m'"\033[1m----------------------------------------------------------------\033[0m"
+}
+
+bug_whisper(){
+    echo -e '\E[37;44m'"\033[1m---------------- I/O BUG ---------------------------------------\033[0m"
+    echo "There's a bug in fglrx found by lano1106 which generates"
+    echo "great amount of unneeded I/O operations"
+    echo ""
+    echo "To activate workaround enable systemd service:"
+    echo "systemctl enable temp-links-catalyst"
+    echo "systemctl start temp-links-catalyst"
+    echo ""
+    echo "More infos:"
+    echo "https://bbs.archlinux.org/viewtopic.php?pid=1279977#p1279977"
+    echo "https://bbs.archlinux.org/viewtopic.php?pid=1280193#p1280193"
+    echo -e '\E[37;44m'"\033[1m----------------------------------------------------------------\033[0m"
+}
+
+
+
+pre_upgrade(){
+    if [[ -e usr/lib/fglrx/switchlibGL ]] && [[ `usr/lib/fglrx/switchlibGL query | grep -c "intel"` == "1" ]]; then 
+      touch tmp/switch_GL_intel
+    fi
+    if [[ -e usr/lib/fglrx/switchlibglx ]] && [[ `usr/lib/fglrx/switchlibglx query | grep -c "intel"` == "1" ]]; then 
+      touch tmp/switch_glx_intel
+    fi
+}
+
+post_install(){
+    usr/bin/catalyst_build_module ra
+    usr/bin/catalyst_build_module all
+    whisperer
+}
+
+post_upgrade(){
+    usr/bin/catalyst_build_module ra
+    usr/bin/catalyst_build_module all
+    whisperer
+
+    ## switch to intel if it was intel before upgrade    
+    if [ -e tmp/switch_GL_intel ]; then
+	usr/lib/fglrx/switchlibGL intel
+	rm tmp/switch_GL_intel
+    fi
+    if [ -e tmp/switch_glx_intel ]; then
+	usr/lib/fglrx/switchlibglx intel
+	rm tmp/switch_glx_intel
+    fi
+}
+
+pre_remove(){
+    usr/bin/catalyst_build_module ra
+}
+
+post_remove(){
+    # remove hook fglrx
+    sed '/^HOOKS/s/ *fglrx//' -i etc/mkinitcpio.conf
+
+    # remove log
+    rm -f var/log/catalyst-install.log
+
+    echo "----------------------------------------------------------------"
+    echo " Don't forget to recover your original xorg.conf file."
+    echo "----------------------------------------------------------------"
+}

@@ -1,0 +1,14 @@
+# vim: set ft=sh:
+
+build ()
+{
+    /usr/bin/catalyst_build_module "$KERNELVERSION"
+    /usr/bin/catalyst_build_module remove
+}
+
+help ()
+{
+cat<<HELPEOF
+  This hook rebuilds fglrx module. It does nothing to the initrd image.
+HELPEOF
+}
