@@ -1,0 +1,13 @@
+pkgbase = kdeicons-nouvekdegray
+	pkgdesc = This is a version of the KDE4 port of the 'Reflektions' icons
+	pkgver = 20140129
+	pkgrel = 1
+	url = http://kde-look.org/content/show.php?content=157454
+	arch = any
+	license = GPL
+	makedepends = p7zip
+	source = http://fc07.deviantart.net/fs71/f/2014/029/f/6/nouvekdegray_by_tsujan-d5y0sw4.7z
+	md5sums = d34cfcaf3cfaf4a3f75cc0d1d746ad00
+
+pkgname = kdeicons-nouvekdegray
+
