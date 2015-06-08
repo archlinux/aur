@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Sigil
+Comment=WYSIWYG ebook editor
+TryExec=sigil
+Exec=sigil %F
+Icon=sigil
+Terminal=false
+StartupNotify=false
+Categories=Application;Office;
+MimeType=application/epub+zip;
