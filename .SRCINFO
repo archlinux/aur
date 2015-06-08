@@ -1,0 +1,21 @@
+pkgbase = cinnamon-bluetooth-git
+	pkgdesc = The Cinnamon Bluetooth Module
+	pkgver = 7.5eed305
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/linuxmint/cinnamon-bluetooth
+	install = cinnamon-bluetooth.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gnome-common
+	makedepends = git
+	depends = gtk3
+	depends = cinnamon-control-center
+	depends = gnome-bluetooth
+	options = !emptydirs
+	source = cinnamon-bluetooth::git+https://github.com/linuxmint/cinnamon-bluetooth.git
+	sha256sums = SKIP
+
+pkgname = cinnamon-bluetooth-git
+
