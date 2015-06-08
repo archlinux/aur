@@ -46,17 +46,12 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_TESTING=OFF \
-    -DQT5BUILD=ON \
     -DWITH_KF5=OFF \
     -DBUILD_MARBLE_EXAMPLES=ON \
     -DBUILD_MARBLE_TOOLS=ON \
     -DBUILD_MARBLE_TESTS=OFF \
     -DBUILD_TESTING=OFF \
-    -DMOBILE=OFF \
-    -DQEXTSERIALPORT_INCLUDE_DIR="/usr/include/qt/QtExtSerialPort" \
-    -DQEXTSERIALPORT_LIBRARIES="/usr/lib64/libQt5ExtSerialPort.so" \
-    -DPHONON_INCLUDE_DIR=/usr/include/phonon4qt5 \
-    -DPHONON_LIBRARY=/usr/lib64/libphonon4qt5.so
+    -DMOBILE=OFF
   make
 }
 
