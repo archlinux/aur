@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-maskdetail-git
+	pkgdesc = Plugin for Vapoursynth: maskdetail (GIT version)
+	pkgver = r8.2af7b11
+	pkgrel = 1
+	url = http://forum.doom9.org/showthread.php?t=171546
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	depends = vapoursynth
+	provides = vapoursynth-plugin-maskdetail
+	conflicts = vapoursynth-plugin-maskdetail
+	source = maskdetail::git+https://github.com/MonoS/VS-MaskDetail.git
+	sha1sums = SKIP
+
+pkgname = vapoursynth-plugin-maskdetail-git
+
