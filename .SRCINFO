@@ -1,0 +1,21 @@
+pkgbase = mspgcc-gdb-bin
+	pkgdesc = GNU C debugger (for MSP430)
+	pkgver = 20111205
+	pkgrel = 1
+	url = https://launchpad.net/ubuntu/+source/gdb-msp430
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = mspgcc-binutils-bin
+	provides = mspgcc-gdb
+	conflicts = mspgcc-gdb
+	options = libtool
+	options = staticlibs
+	options = !strip
+	source_i686 = https://launchpad.net/ubuntu/+archive/primary/+files/gdb-msp430_7.2a%7Emspgcc-20111205-3ubuntu1_i386.deb
+	md5sums_i686 = cdbb15edabd9f58da99ac38715c59951
+	source_x86_64 = https://launchpad.net/ubuntu/+archive/primary/+files/gdb-msp430_7.2a%7Emspgcc-20111205-3ubuntu1_amd64.deb
+	md5sums_x86_64 = eccee842162c4a56127d2c1477528132
+
+pkgname = mspgcc-gdb-bin
+
