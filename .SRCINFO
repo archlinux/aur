@@ -1,0 +1,16 @@
+pkgbase = disunity
+	pkgdesc = An experimental toolset for Unity asset and asset bundle files.
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/ata4/disunity
+	arch = any
+	license = public domain
+	makedepends = dos2unix
+	depends = java-runtime
+	source = https://github.com/ata4/disunity/releases/download/v0.3.4/disunity_v0.3.4.zip
+	source = launch.sh
+	sha256sums = 5fa7440698cd71616a3521c24ac7eba61003e63806c1fa8cff6d032b1896d5db
+	sha256sums = 5230b932855b541990e0886527b1fd161644671f9fbb6a1e06c471ca027f9f44
+
+pkgname = disunity
+
