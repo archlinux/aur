@@ -1,0 +1,13 @@
+pkgbase = grafana-plugins-git
+	pkgdesc = Extensions, custom & experimental panels
+	pkgver = 20150518
+	pkgrel = 1
+	url = http://grafana.org
+	arch = any
+	license = APACHE
+	depends = grafana
+	source = git://github.com/grafana/grafana-plugins
+	sha256sums = SKIP
+
+pkgname = grafana-plugins-git
+
