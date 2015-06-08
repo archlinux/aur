@@ -1,0 +1,24 @@
+pkgbase = kwooty-frameworks-git
+	pkgdesc = A friendly nzb usenet binary downloader for KDE. KF5 frameworks branch (GIT Version)
+	pkgver = 1.1.0.r1223.586cab9
+	pkgrel = 1
+	url = http://kwooty.sourceforge.net/
+	install = kwooty-frameworks-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	depends = kdelibs4support
+	depends = kcmutils
+	depends = hicolor-icon-theme
+	optdepends = unrar: automatic RAR-archive extraction
+	optdepends = p7zip: automatic zip and 7z archive extraction
+	optdepends = par2cmdline: automatic file repairing
+	source = git://anongit.kde.org/kwooty#branch=frameworks
+	sha1sums = SKIP
+
+pkgname = kwooty-frameworks-git
+
