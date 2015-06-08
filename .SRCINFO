@@ -1,0 +1,22 @@
+pkgbase = vdr-cecremote
+	pkgdesc = Receive and send commands via CEC
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://uli-eckhardt.de/vdr
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	depends = libcec
+	depends = pugixml
+	depends = vdr-api=2.2.0
+	backup = etc/vdr/conf.avail/50-cecremote.conf
+	source = http://www.uli-eckhardt.de/vdr/download/vdr-cecremote-1.2.0.tgz
+	source = 50-cecremote.conf
+	md5sums = 915aa3cdb1714d95356f1ea542f21fee
+	md5sums = b07791e9ca361d41d58f2017fdcec70b
+
+pkgname = vdr-cecremote
+
