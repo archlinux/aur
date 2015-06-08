@@ -1,0 +1,14 @@
+pkgbase = nodejs-clocker
+	pkgdesc = .
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://github.com/substack/clocker
+	arch = any
+	license = MIT
+	depends = nodejs
+	noextract = clocker-1.9.0.tgz
+	source = http://registry.npmjs.org/clocker/-/clocker-1.9.0.tgz
+	sha1sums = 3150535aa82b50defadb63bae9af8c68aa38705a
+
+pkgname = nodejs-clocker
+
