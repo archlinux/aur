@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-drop-down-terminal-git
+	pkgdesc = Drop Down Terminal extension for the Gnome Shell
+	pkgver = 17.r0.g18ffa31
+	pkgrel = 1
+	url = https://github.com/zzrough/gs-extensions-drop-down-terminal
+	install = gnome-shell-extension-drop-down-terminal-git.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gnome-shell
+	conflicts = gnome-shell-extension-drop-down-terminal
+	source = git://github.com/zzrough/gs-extensions-drop-down-terminal
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-drop-down-terminal-git
+
