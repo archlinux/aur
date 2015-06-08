@@ -1,0 +1,16 @@
+pkgbase = epson-inkjet-printer-201305w
+	pkgdesc = Epson printer driver (XP-950)
+	pkgver = 1.0.0
+	pkgrel = 8
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom:Epson Licence Agreement
+	depends = cups
+	depends = ghostscript
+	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201305w-1.0.0-1lsb3.2.src.rpm
+	sha256sums = de2b59b41e07f0401fceefaf401396ca7d6baec1a73814c6870a06adb4b2d24a
+
+pkgname = epson-inkjet-printer-201305w
+
