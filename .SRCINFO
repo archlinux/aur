@@ -1,0 +1,21 @@
+pkgbase = reclass-git
+	pkgdesc = hierarchical inventory backend for configuration management systems (salt, ansible, puppet)
+	pkgver = 1.1.6.g65ba257
+	pkgrel = 1
+	url = http://reclass.pantsfullofunix.net/
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	makedepends = git
+	depends = python2
+	provides = reclass
+	conflicts = reclass
+	options = zipman
+	backup = etc/reclass/reclass-config.yml
+	source = git://github.com/madduck/reclass.git
+	source = reclass-config.yml
+	md5sums = SKIP
+	md5sums = ad011bd9cf89152b9eaaeebc0862732f
+
+pkgname = reclass-git
+
