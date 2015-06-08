@@ -1,0 +1,21 @@
+pkgbase = java-batik1.7
+	pkgdesc = SVG library for Java.
+	pkgver = 1.7
+	pkgrel = 1
+	url = http://xmlgraphics.apache.org/batik/
+	arch = any
+	license = APACHE
+	makedepends = java-environment
+	makedepends = apache-ant
+	makedepends = unzip
+	depends = java-runtime
+	depends = java-commons-io
+	depends = java-commons-logging
+	depends = java-xmlgraphics-commons
+	provides = java-batik=1.7
+	conflicts = java-batik
+	source = https://www.apache.org/dist/xmlgraphics/batik/source/batik-src-1.7.zip
+	md5sums = c117ca2241907f62a2b3031167ebf917
+
+pkgname = java-batik1.7
+
