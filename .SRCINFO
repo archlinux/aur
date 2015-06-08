@@ -1,0 +1,13 @@
+pkgbase = eclipse-fullscreen
+	pkgdesc = Customizable plugin to make Eclipse go fullscreen and save space
+	pkgver = 1.0.8
+	pkgrel = 2
+	url = https://github.com/ugosan/Eclipse-Fullscreen
+	arch = any
+	license = EPL/1.0
+	depends = eclipse
+	source = https://github.com/ugosan/Eclipse-Fullscreen/raw/master/build/plugins/org.ugosan.eclipse.fullscreen_1.0.8.jar
+	md5sums = a5db3d5a6aa2f2b0e02b742335e0254b
+
+pkgname = eclipse-fullscreen
+
