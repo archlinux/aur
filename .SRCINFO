@@ -1,0 +1,14 @@
+pkgbase = makepkg-asroot
+	pkgdesc = Patch makepkg to allow --asroot
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/archlinuxfr/yaourt/issues/67
+	install = makepkg-asroot.install
+	arch = any
+	license = GPL
+	depends = pacman
+	source = makepkg-asroot.patch
+	md5sums = SKIP
+
+pkgname = makepkg-asroot
+

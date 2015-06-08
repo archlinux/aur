@@ -1,0 +1,11 @@
+post_install() {
+  cd /usr/bin
+  patch -p0 -i /usr/share/makepkg-asroot/makepkg-asroot.patch 
+}
+
+pre_remove() {
+  cd /usr/bin
+  patch -R -p0 -i /usr/share/makepkg-asroot/makepkg-asroot.patch
+}
+
+
