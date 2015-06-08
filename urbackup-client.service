@@ -1,0 +1,12 @@
+[Unit]
+Description=UrBackup Client 
+After=syslog.target network.target
+
+[Service]   
+Type=forking
+NotifyAccess=all
+PIDFile=/run/urbackup_client.pid
+ExecStart=/usr/sbin/start_urbackup_client --logfile urbackup_client.log --loglevel error
+
+[Install]
+WantedBy=multi-user.target
