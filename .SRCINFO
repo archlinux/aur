@@ -1,0 +1,15 @@
+pkgbase = emacs-gnuplot-mode-git
+	pkgdesc = Emacs-mode for writing gnuplot scripts
+	pkgver = 0.7.0.29.g21f9046
+	pkgrel = 2
+	url = https://github.com/bruceravel/gnuplot-mode
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = emacs
+	makedepends = texlive-bin
+	source = git+https://github.com/bruceravel/gnuplot-mode.git
+	md5sums = SKIP
+
+pkgname = emacs-gnuplot-mode-git
+
