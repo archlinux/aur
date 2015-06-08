@@ -4,7 +4,7 @@
 
 pkgname=linuxtrack
 pkgver=0.99.12
-pkgrel=2
+pkgrel=3
 pkgdesc="Software for head motion tracking on linux."
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/linux-track/"
@@ -46,6 +46,11 @@ package() {
 	#Uinput udev
 	cd "$srcdir/${pkgname}-${pkgver}/src"
 	install -D -m644 99-Mickey.rules $pkgdir/usr/lib/udev/rules.d/99-Mickey.rules
+
+	#Flightgear
+	cd "$srcdir/linuxtrack-${pkgver}/doc/fgfs"
+	mkdir -p "$pkgdir/usr/share/flightgear/data"
+	cp -r {Input,Nasal,Protocol} "$pkgdir/usr/share/flightgear/data/"
 
 	
 }
