@@ -1,0 +1,18 @@
+pkgbase = kdecoration-git
+	pkgdesc = Plugin based library to create window decorations
+	pkgver = r100.31bb399
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/kde-workspace
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = qt5-base
+	provides = kdecoration
+	conflicts = kdecoration
+	source = git://anongit.kde.org/kdecoration.git
+	md5sums = SKIP
+
+pkgname = kdecoration-git
+
