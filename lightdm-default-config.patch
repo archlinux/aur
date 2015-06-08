@@ -1,0 +1,40 @@
+diff -rupN lightdm-1.11.9.orig/data/lightdm.conf lightdm-1.11.9/data/lightdm.conf
+--- lightdm-1.11.9.orig/data/lightdm.conf	2014-09-14 12:55:09.591944064 +0200
++++ lightdm-1.11.9/data/lightdm.conf	2014-09-14 12:58:13.396791044 +0200
+@@ -20,13 +20,13 @@
+ #start-default-seat=true
+ #greeter-user=lightdm
+ #minimum-display-number=0
+-#minimum-vt=7
++minimum-vt=1
+ #lock-memory=true
+ #user-authority-in-system-dir=false
+ #guest-account-script=guest-account
+ #logind-check-graphical=false
+ #log-directory=/var/log/lightdm
+-#run-directory=/var/run/lightdm
++run-directory=/run/lightdm
+ #cache-directory=/var/cache/lightdm
+ #sessions-directory=/usr/share/lightdm/sessions:/usr/share/xsessions
+ #remote-sessions-directory=/usr/share/lightdm/remote-sessions
+@@ -101,7 +101,7 @@
+ #allow-user-switching=true
+ #allow-guest=true
+ #guest-session=
+-#session-wrapper=lightdm-session
++session-wrapper=/etc/lightdm/Xsession
+ #greeter-wrapper=
+ #guest-wrapper=
+ #display-setup-script=
+diff -rupN lightdm-1.11.9.orig/data/users.conf lightdm-1.11.9/data/users.conf
+--- lightdm-1.11.9.orig/data/users.conf	2014-09-14 12:55:09.591944064 +0200
++++ lightdm-1.11.9/data/users.conf	2014-09-14 12:59:21.426117548 +0200
+@@ -9,6 +9,6 @@
+ # hidden-shells = Shells that indicate a user cannot login
+ #
+ [UserList]
+-minimum-uid=500
++minimum-uid=1000
+ hidden-users=nobody nobody4 noaccess
+-hidden-shells=/bin/false /usr/sbin/nologin
++hidden-shells=/bin/false /usr/bin/nologin
