@@ -1,0 +1,15 @@
+pkgbase = java-cobertura
+	pkgdesc = Cobertura is a free Java tool that calculates the percentage of code accessed by tests
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = http://cobertura.github.io/cobertura/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = Apache
+	depends = java-runtime
+	source = http://downloads.sourceforge.net/project/cobertura/cobertura/2.1.1/cobertura-2.1.1-bin.tar.gz
+	sha256sums = 77876a9a07b5c93387d745d1cfe51f010119ad9c45a2374d38ddcab59aa058fe
+
+pkgname = java-cobertura
+
