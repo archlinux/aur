@@ -1,0 +1,15 @@
+pkgbase = vicare-scheme
+	pkgdesc = R6RS scheme implementation
+	pkgver = 0.3d7
+	pkgrel = 1
+	url = http://marcomaggi.github.io/vicare.html
+	install = vicare-scheme.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = gmp
+	source = http://sourceforge.net/projects/vicare-scheme/files/0.3/vicare-scheme-0.3d7.tar.xz
+	md5sums = 59e9103da8a87e1185a2681443f58c71
+
+pkgname = vicare-scheme
+
