@@ -1,6 +1,4 @@
-# Maintainer: kfgz <kfgz at interia dot pl>
-# Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
-# Contributor: Link Dupont <link at subpop do net>
+# Maintainer: Pouar <thepouar@gmail.com>
 
 pkgname=svgalib
 pkgver=1.9.25
