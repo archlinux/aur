@@ -1,0 +1,93 @@
+diff -ru xfce4-clipman-plugin-1.2.3.orig/panel-plugin/main-panel-plugin.c xfce4-clipman-plugin-1.2.3/panel-plugin/main-panel-plugin.c
+--- xfce4-clipman-plugin-1.2.3.orig/panel-plugin/main-panel-plugin.c	2012-04-30 20:12:45.000000000 -0700
++++ xfce4-clipman-plugin-1.2.3/panel-plugin/main-panel-plugin.c	2012-04-30 20:16:47.000000000 -0700
+@@ -24,6 +24,9 @@
+ #include <locale.h>
+ #endif
+ 
++#include <X11/Xlib.h> 
++#include <X11/Xatom.h>
++
+ #include <glib/gstdio.h>
+ #include <gtk/gtk.h>
+ #include <libxfce4ui/libxfce4ui.h>
+@@ -39,6 +42,7 @@
+ static void             panel_plugin_register           (XfcePanelPlugin *panel_plugin);
+ XFCE_PANEL_PLUGIN_REGISTER (panel_plugin_register);
+ 
++static gboolean		cb_remember_item		(MyPlugin *plugin);
+ static gboolean         plugin_set_size                 (MyPlugin *plugin,
+                                                          gint size);
+ static gboolean         cb_button_pressed               (GtkButton *button,
+@@ -107,7 +111,10 @@
+                             G_CALLBACK (plugin_set_size), plugin);
+   g_signal_connect (plugin->menu, "deactivate",
+                     G_CALLBACK (cb_menu_deactivate), plugin);
+-
++  
++  plugin->remembering = FALSE;
++  g_timeout_add(250, (GtkFunction)cb_remember_item, plugin);
++  
+   gtk_widget_show_all (GTK_WIDGET (panel_plugin));
+ }
+ 
+@@ -123,6 +130,37 @@
+   return TRUE;
+ }
+ 
++static gboolean
++cb_remember_item (MyPlugin *plugin)
++{
++  Display *display = GDK_DISPLAY ();
++  Atom XA_CLIPBOARD = XInternAtom(display, "CLIPBOARD", 0);
++  Window owner;
++  
++  ClipmanHistoryItem *item;
++  GtkClipboard *clipboard;
++  gchar *text;
++  
++  if (plugin->remembering) {
++    return TRUE;
++  } else {
++    plugin->remembering = TRUE;
++    item = clipman_history_get_item_to_restore(plugin->history);
++    if (item != NULL) {
++      if (item->type == CLIPMAN_HISTORY_TYPE_TEXT) {
++        text = item->content.text;
++        clipboard = gtk_clipboard_get(GDK_SELECTION_CLIPBOARD);
++	owner = XGetSelectionOwner(display, XA_CLIPBOARD);
++	if (!owner) {
++	  gtk_clipboard_set_text(clipboard, text, -1);
++	}
++      }
++    }
++    plugin->remembering = FALSE;
++  }
++  return TRUE;
++}
++
+ static gboolean
+ cb_button_pressed (GtkButton *button,
+                    GdkEventButton *event,
+diff -ru xfce4-clipman-plugin-1.2.3.orig/panel-plugin/plugin.h xfce4-clipman-plugin-1.2.3/panel-plugin/plugin.h
+--- xfce4-clipman-plugin-1.2.3.orig/panel-plugin/plugin.h	2012-04-30 20:12:45.000000000 -0700
++++ xfce4-clipman-plugin-1.2.3/panel-plugin/plugin.h	2012-04-30 20:17:00.000000000 -0700
+@@ -58,6 +58,7 @@
+   GtkMenuPositionFunc   menu_position_func;
+   GtkWidget            *popup_menu;
+   gulong                popup_menu_id;
++  gboolean		remembering;
+ };
+ 
+ /*
+diff -ru xfce4-clipman-plugin-1.2.3.orig/x11-clipboard-manager/gsd-clipboard-manager.c xfce4-clipman-plugin-1.2.3/x11-clipboard-manager/gsd-clipboard-manager.c
+--- xfce4-clipman-plugin-1.2.3.orig/x11-clipboard-manager/gsd-clipboard-manager.c	2012-04-30 20:12:45.000000000 -0700
++++ xfce4-clipman-plugin-1.2.3/x11-clipboard-manager/gsd-clipboard-manager.c	2012-04-30 20:13:35.000000000 -0700
+@@ -292,7 +292,6 @@
+         timestamp = GDK_CURRENT_TIME;
+ 
+         XSelectInput (display, window, PropertyChangeMask);
+-        XSetSelectionOwner (display, XA_CLIPBOARD_MANAGER, window, timestamp);
+ 
+         g_signal_connect_swapped (manager->priv->default_clipboard, "owner-change",
+                                   G_CALLBACK (default_clipboard_owner_change), manager);
