@@ -1,0 +1,21 @@
+pkgbase = sddm-kcm-git
+	pkgdesc = SDDM configuration module for KDE
+	pkgver = r130.5fab0a1
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kdereview/sddm-kcm/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	makedepends = qt5-tools
+	depends = sddm
+	depends = kio
+	depends = libxcursor
+	provides = sddm-kcm
+	conflicts = sddm-kcm
+	source = git://anongit.kde.org/sddm-kcm.git
+	md5sums = SKIP
+
+pkgname = sddm-kcm-git
+
