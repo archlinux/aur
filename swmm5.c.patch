@@ -1,0 +1,30 @@
+--- swmm5.c	2015-01-29 12:39:23.520992169 +0100
++++ swmm5.c.new	2015-01-29 12:40:40.603080274 +0100
+@@ -21,9 +21,9 @@
+ //  Leave only one of the following 3 lines un-commented,
+ //  depending on the choice of compilation target
+ //**********************************************************
+-//#define CLE     /* Compile as a command line executable */
++#define CLE     /* Compile as a command line executable */
+ //#define SOL     /* Compile as a shared object library */
+-#define DLL     /* Compile as a Windows DLL */
++//#define DLL     /* Compile as a Windows DLL */
+ 
+ // --- define WINDOWS
+ #undef WINDOWS
+@@ -40,7 +40,7 @@
+ #include <excpt.h>
+ #endif
+ 
+-#include <direct.h>
++//#include <direct.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+@@ -845,4 +845,4 @@
+ #endif
+ 
+ //=============================================================================
+-    
+\ No newline at end of file
++    
