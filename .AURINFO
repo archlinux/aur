@@ -1,0 +1,15 @@
+pkgbase = perl-import-into
+	pkgdesc = Import packages into other packages
+	pkgver = 1.002004
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Import-Into
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-module-runtime>=0
+	depends = perl>=5.006
+	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Import-Into-1.002004.tar.gz
+	options = !emptydirs
+
+pkgname = perl-import-into
+
