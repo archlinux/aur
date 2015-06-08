@@ -1,9 +1,9 @@
-pkgbase = gogs-git
+pkgbase = gitea-git
 	pkgdesc = Git with a cup of tea, forked from Gogs. Is a Self Hosted Git Service in the Go Programming Language. This is the current git version from branch master.
 	pkgver = 20150317
 	pkgrel = 1
 	epoch = 1
-	url = http://gogs.io/
+	url = http://gitea.io
 	install = gogs.install
 	arch = i686
 	arch = x86_64
@@ -28,10 +28,10 @@ pkgbase = gogs-git
 	backup = srv/gogs/conf/app.ini
 	source = gogs.service
 	source = app.ini.patch
-	source = gogs::git+https://github.com/gogits/gogs.git
+	source = gitea::git+https://github.com/gogits/gitea.git
 	sha512sums = 2b4303f850e3b13b2fc3c9f0bc5820dae431d228002b35f01be0d4bfbcf05de8dcec2a559a85e318b609e4a4d492d44306eadf5f6508fd72333b198661bb0bb7
 	sha512sums = 9c3d8425cf0e5291e9a7870b9b0ceec4d3d0de3818e0bd93b6a9e9c954cf16e8f2ae230242d6cc0d71147ad10c4224322b1f4f2f8eb3ca5e96c219e9fc35d29b
 	sha512sums = SKIP
 
-pkgname = gogs-git
+pkgname = gitea-git
 
