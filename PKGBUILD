@@ -1,0 +1,33 @@
+# Contributor: Philipp Schwarz <fidschi_aur@temporaryforwarding.com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Dany Martineau <dany.luc.martineau at gmail.com>
+# Contributor: moostik <mooostik_at_gmail.com>
+
+pkgname=car
+pkgver=12.0
+pkgrel=1
+url="http://zirkel.sourceforge.net"
+pkgdesc="Circle and Ruler is a dynamic geometry program"
+arch=('any')
+license=('GPL')
+depends=('java-runtime' 'xdg-utils')
+source=("http://$pkgname.rene-grothmann.de/download/$pkgname.zip"
+        "${pkgname}.desktop"
+	"${pkgname}.sh")
+md5sums=('476d8776cc259fc37b0c9d7abb529832'
+         '9bf9a70cf538378bde46f3da2c252a4c'
+         '2539542867d5f23e823b7a7704f17443')
+
+package() {
+        cd "${srcdir}/car"
+	install -Dm644 "${srcdir}/car/doc_en/zirkel.jar" \
+	  "${pkgdir}/usr/share/java/car/zirkel.jar"
+	install -d "${pkgdir}/usr/share/pixmaps"
+	install -Dm644 "${srcdir}/car/doc_en/images/ZuL-Logo.png" \
+	  "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+	install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}-draw"
+	install -Dm644 "${srcdir}/${pkgname}.desktop" \
+	  "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	install -d "$pkgdir"/usr/share/doc/${pkgname}/
+	cp -r "${srcdir}"/car/doc_en/* "$pkgdir"/usr/share/doc/${pkgname}/
+} 
