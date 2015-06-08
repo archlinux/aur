@@ -1,0 +1,20 @@
+pkgbase = altyo-git
+	pkgdesc = Vala / GTK+ 3 drop-down terminal emulator
+	pkgver = 0.4_rc12.1.r16.g777b7ad
+	pkgrel = 1
+	url = https://github.com/linvinus/AltYo
+	install = altyo-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = vala
+	depends = gtk-update-icon-cache
+	depends = vte3
+	provides = altyo
+	conflicts = altyo
+	source = altyo-git::git://github.com/linvinus/AltYo.git
+	md5sums = SKIP
+
+pkgname = altyo-git
+
