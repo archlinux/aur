@@ -1,0 +1,19 @@
+pkgbase = kjs-git
+	pkgdesc = KJS
+	pkgver = r69.8d3db9e
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/kjs
+	arch = i686
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	depends = qt5-base
+	provides = kjs
+	conflicts = kjs
+	source = git://anongit.kde.org/kjs.git
+	md5sums = SKIP
+
+pkgname = kjs-git
+
