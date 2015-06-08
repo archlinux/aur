@@ -1,0 +1,34 @@
+diff -ru a/swig/java/CMakeLists.txt b/swig/java/CMakeLists.txt
+--- a/swig/java/CMakeLists.txt	2013-11-06 08:20:44.000000000 +0100
++++ b/swig/java/CMakeLists.txt	2015-01-15 10:40:04.601530743 +0100
+@@ -106,4 +106,5 @@
+  
+ ELSE (JAVA_INCLUDE_PATH)
+   MESSAGE ( STATUS "SWIG: Java binding not generated because JNI was not found.")
++  SET ( ZORBA_JAVA_JAR "ZORBA_JAVA_JAR-NOTFOUND" PARENT_SCOPE )
+ ENDIF (JAVA_INCLUDE_PATH)
+diff -ru a/swig/xqj/CMakeLists.txt b/swig/xqj/CMakeLists.txt
+--- a/swig/xqj/CMakeLists.txt	2013-11-06 08:20:44.000000000 +0100
++++ b/swig/xqj/CMakeLists.txt	2015-01-15 10:52:42.053438007 +0100
+@@ -12,6 +12,9 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
++STRING ( COMPARE NOTEQUAL ${ZORBA_JAVA_JAR} "ZORBA_JAVA_JAR-NOTFOUND" ZORBA_JAR_GENERATED )
++
++IF ( ZORBA_JAR_GENERATED )
+   INCLUDE (CMakeJavaInformation )
+   MESSAGE(STATUS "SWIG: Generating XQJ API")
+ 
+@@ -126,6 +129,10 @@
+     INSTALL(FILES ${XQJAPI_JAR_FILE} DESTINATION share/xqj COMPONENT "XQJ_SWIG")
+   ENDIF(NOT WIN32)
+   
+-ELSEIF (Java_JAVAC_EXECUTABLE)
++ELSE (Java_JAVAC_EXECUTABLE)
+   MESSAGE ( STATUS "SWIG Java: Not generating XQJ API because JNI headers not found.")
+ ENDIF (Java_JAVAC_EXECUTABLE)
++
++ELSE (ZORBA_JAR_GENERATED)
++  MESSAGE( STATUS "SWIG Java: Not generating XQJ API because Zorba Java bindings not generated." )
++ENDIF (ZORBA_JAR_GENERATED)

@@ -1,0 +1,38 @@
+pkgbase = zorba
+	pkgdesc = NoSQL(XQuery/JSONiq) Query Processor written in C++.
+	pkgver = 3.0
+	pkgrel = 2
+	url = http://www.zorba.io/
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = cmake>=2.8.0
+	makedepends = flex>=2.5.33
+	makedepends = bison>=2.6
+	makedepends = gcc>=4.7
+	makedepends = swig>=1.3.40
+	makedepends = python2
+	makedepends = java-environment
+	makedepends = ruby
+	depends = libxml2>=2.7.0
+	depends = libxslt>=1.1.24
+	depends = icu>=3.6
+	depends = boost>=1.47
+	depends = xerces-c>=3.0.0
+	optdepends = curl>=7.21.0: REST and HTTP support
+	optdepends = python2: python 2 bindings
+	optdepends = java-runtime: java bindings
+	optdepends = ruby: ruby bindings
+	source = http://launchpad.net/zorba/trunk/3.0/+download/zorba-3.0.tar.gz
+	source = item_handle.patch
+	source = bindings_dirs.patch
+	source = swig_xqj.patch
+	source = parser_bison_3_0_compatibility.patch
+	md5sums = 652e67103597e36126586ed1432e23bd
+	md5sums = 1ec5d529746472147af9c325b0f49a62
+	md5sums = 465cb60352b3a564da363b3e1cc80dcf
+	md5sums = 93227da5598469f57eb1ff44e225c8d6
+	md5sums = a578bf5966ab6dca4bdecfda5dff13c7
+
+pkgname = zorba
+
