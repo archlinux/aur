@@ -1,0 +1,11 @@
+post_install() {
+	cat <<EOF
+**** NOTICE ****
+*
+* To use the libmaxminddb package, you need a GeoIP2 database file. See
+* <https://wiki.archlinux.org/index.php/User:fstirlitz/geolite2_update_script>
+* for a script that will download MaxMind's free GeoLite2 database and keep it
+* up-to-date.
+*
+EOF
+}
