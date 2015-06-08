@@ -1,0 +1,18 @@
+pkgbase = arch-runit-services
+	pkgdesc = Arch native runit package
+	pkgver = 20150530_1544
+	pkgrel = 1
+	url = https://bitbucket/replabrobin/arch-unit-services
+	arch = any
+	license = Creative Commons
+	makedepends = mercurial
+	provides = arch-runit-services
+	conflicts = runit-scripts
+	conflicts = runit-services
+	conflicts = runit-services-git
+	conflicts = void-runit
+	source = arch-runit-services::hg+https://bitbucket.org/replabrobin/arch-runit-services
+	sha256sums = SKIP
+
+pkgname = arch-runit-services
+
