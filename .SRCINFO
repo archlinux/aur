@@ -1,0 +1,28 @@
+pkgbase = mingw-w64-vtk
+	pkgdesc = A software system for 3D computer graphics, image processing, and visualization (mingw-w64)
+	pkgver = 6.2.0
+	pkgrel = 1
+	url = http://www.vtk.org/
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
+	depends = mingw-w64-qt4
+	depends = mingw-w64-expat
+	depends = mingw-w64-libtiff
+	depends = mingw-w64-libjpeg-turbo
+	depends = mingw-w64-freetype
+	depends = mingw-w64-libpng
+	depends = mingw-w64-libxml2
+	depends = mingw-w64-hdf5
+	depends = mingw-w64-libodbc++
+	depends = mingw-w64-libtheora
+	depends = mingw-w64-freeglut
+	options = !buildflags
+	options = staticlibs
+	options = !strip
+	source = http://www.vtk.org/files/release/6.2/VTK-6.2.0.tar.gz
+	md5sums = 4790f8b3acdbc376997fbdc9d203f0b7
+
+pkgname = mingw-w64-vtk
+
