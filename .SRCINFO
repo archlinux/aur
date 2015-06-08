@@ -1,0 +1,23 @@
+pkgbase = mingw-w64-bzip2
+	pkgdesc = A high-quality data compression program (mingw-w64)
+	pkgver = 1.0.6
+	pkgrel = 8
+	url = http://sources.redhat.com/bzip2
+	arch = any
+	license = custom
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz
+	source = bzip2-1.0.5-autoconfiscated.patch
+	source = bzip2-use-cdecl-calling-convention.patch
+	source = mingw32-bzip2-1.0.5-slash.patch
+	sha1sums = 3f89f861209ce81a6bab1fd1998c0ef311712002
+	sha1sums = 4d512b19b802d328037bf957c18866471c092e84
+	sha1sums = f73d45bb02741cf0cfa995ac46547b34aedf5343
+	sha1sums = 809c3a95f6f6c26463d804b345d62eed8420c6a6
+
+pkgname = mingw-w64-bzip2
+
