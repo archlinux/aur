@@ -1,0 +1,19 @@
+pkgbase = kde-workspace-git
+	pkgdesc = Metapackage to install a full KDE Plasma desktop
+	pkgver = 20140502
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/kde-workspace
+	arch = any
+	license = LGPL
+	depends = kinfocenter-git
+	depends = kwrited-git
+	depends = plasma-desktop-git
+	depends = plasma-nm-git
+	depends = kde-gtk-config-frameworks-git
+	depends = kwalletmanager-git
+	depends = bluedevil-frameworks-git
+	provides = kde-workspace
+	conflicts = kde-workspace
+
+pkgname = kde-workspace-git
+
