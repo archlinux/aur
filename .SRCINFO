@@ -1,0 +1,19 @@
+pkgbase = perl-html-extractmain
+	pkgdesc = Extract the main content of a web page
+	pkgver = 0.63
+	pkgrel = 1
+	url = http://search.cpan.org/dist/HTML-ExtractMain
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-file-slurp>=9999.12
+	depends = perl-html-format
+	depends = perl-html-tree
+	depends = perl-object-destroyer>=2
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AN/ANIRVAN/HTML-ExtractMain-0.63.tar.gz
+	md5sums = c800b7fa16d09ce08e0386662d6e0f8c
+	sha512sums = 9977fada452f8fde0bb6ae802902e8c171185d1eaf75519dbfc6c6a553376ace7513e3979170c18d96b368ff9a40953ea91f4de4a6fa9bc27f33efda7ff9122e
+
+pkgname = perl-html-extractmain
+
