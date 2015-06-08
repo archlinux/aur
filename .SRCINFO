@@ -1,0 +1,16 @@
+pkgbase = kcm-qt-graphicssystem
+	pkgdesc = This KCM allows you to easily configure the standard Qt graphics system.
+	pkgver = 1.3
+	pkgrel = 2
+	url = http://kde-apps.org/content/show.php?content=129817
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdelibs
+	source = http://kde-apps.org/CONTENT/content-files/129817-kcm-qt-graphicssystem-1.3.tar.xz
+	md5sums = 5271aec766a9fdb3102c3710cd09347f
+
+pkgname = kcm-qt-graphicssystem
+
