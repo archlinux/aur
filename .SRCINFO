@@ -1,0 +1,31 @@
+pkgbase = ttf-textfonts
+	pkgdesc = Fonts based on early works by Alexander Wilson, Claude Garamond, Victor Scholderer, Firmin Didot et al.
+	pkgver = 5.01
+	pkgrel = 1
+	url = http://users.teilar.gr/~g1951d/
+	install = ttf-textfonts.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	conflicts = ttf-alexander
+	conflicts = ttf-alfios
+	conflicts = ttf-anaktoria
+	conflicts = ttf-aroania
+	conflicts = ttf-atavyros
+	conflicts = ttf-avdira
+	conflicts = ttf-asea
+	replaces = ttf-alexander
+	replaces = ttf-alfios
+	replaces = ttf-anaktoria
+	replaces = ttf-aroania
+	replaces = ttf-atavyros
+	replaces = ttf-avdira
+	replaces = ttf-asea
+	source = http://users.teilar.gr/~g1951d/TextFonts.zip
+	source = LICENSE
+	md5sums = f2ad88faa093be03ec5cff9625455536
+	md5sums = bc1709dc3b1f6a7545ab366923e01a1c
+
+pkgname = ttf-textfonts
+
