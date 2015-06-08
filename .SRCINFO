@@ -1,0 +1,15 @@
+pkgbase = eclipse-changelog
+	pkgdesc = Eclipse CVS ChangeLog Plugin
+	pkgver = 0.24
+	pkgrel = 1
+	url = http://www.eclipse.org/mylyn/
+	arch = i686
+	arch = x86_64
+	license = EPL
+	depends = eclipse
+	optdepends = bugzilla: ticketing support
+	source = svn+http://svn.codespot.com/a/eclipselabs.org/changelog/trunk/
+	md5sums = SKIP
+
+pkgname = eclipse-changelog
+
