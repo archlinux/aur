@@ -1,0 +1,22 @@
+pkgbase = haskell-json
+	pkgdesc = Support for serialising Haskell to and from JSON
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/json
+	install = haskell-json.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = haskell-array
+	depends = haskell-base>=4
+	depends = haskell-bytestring
+	depends = haskell-containers
+	depends = haskell-text
+	depends = haskell-mtl
+	options = staticlibs
+	source = http://hackage.haskell.org/package/json-0.9.1/json-0.9.1.tar.gz
+	sha256sums = 96b57e4d167e45dc80aeff872a922ae9cdb953a1ded29ebbb51019b68f0085a2
+
+pkgname = haskell-json
+
