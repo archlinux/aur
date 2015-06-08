@@ -1,0 +1,8 @@
+[Unit]
+Description=SickRage Daemon
+
+[Service]
+ExecStart=/usr/bin/env python2 /opt/sickrage/SickBeard.py --quiet --config %h/.sickrage/config.ini --datadir %h/.sickrage
+
+[Install]
+WantedBy=default.target
