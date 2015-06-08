@@ -1,0 +1,25 @@
+pkgbase = plasma-nm-git
+	pkgdesc = Plasma applet written in QML for managing network connections
+	pkgver = r1678.4d72cb7
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/workspace/plasma-nm
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = kdoctools
+	makedepends = qt5-tools
+	makedepends = openconnect
+	depends = networkmanager-qt-git
+	depends = modemmanager-qt-git
+	depends = plasma-workspace-git
+	optdepends = mobile-broadband-provider-info: Database of mobile broadband service providers
+	optdepends = openconnect: Cisco AnyConnect VPN
+	provides = plasma-nm
+	conflicts = plasma-nm
+	source = git://anongit.kde.org/plasma-nm.git
+	sha256sums = SKIP
+
+pkgname = plasma-nm-git
+
