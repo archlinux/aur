@@ -1,0 +1,30 @@
+pkgbase = gaupol-git
+	pkgdesc = An editor for text-based subtitles (devel tree)
+	pkgver = 20140621.1947
+	pkgrel = 1
+	url = http://home.gna.org/gaupol
+	install = gaupol.install
+	arch = any
+	license = GPL
+	makedepends = intltool
+	makedepends = git
+	depends = python-gobject
+	depends = gtk3
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = iso-codes
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	optdepends = python-pyenchant: spell-checking
+	optdepends = gtkspell3: inline spell-checking
+	optdepends = python-chardet: character encoding auto-detection
+	optdepends = mplayer: subtitle preview
+	optdepends = vlc: subtitle preview
+	optdepends = gst-plugins-bad: extra media codecs
+	optdepends = gst-plugins-ugly: extra media codecs
+	optdepends = gst-libav: extra media codecs
+	source = git://github.com/otsaloma/gaupol.git
+	sha1sums = SKIP
+
+pkgname = gaupol-git
+
