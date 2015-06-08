@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-libmpc
+	pkgdesc = Library for the arithmetic of complex numbers with arbitrarily high precision (mingw-w64)
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = http://www.multiprecision.org
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-mpfr
+	options = !libtool
+	options = !strip
+	options = !buildflags
+	source = http://www.multiprecision.org/mpc/download/mpc-1.0.3.tar.gz
+	source = http://www.multiprecision.org/mpc/download/mpc-1.0.3.tar.gz.sig
+	md5sums = d6a1d5f8ddea3abd2cc3e98f58352d26
+	md5sums = SKIP
+
+pkgname = mingw-w64-libmpc
+
