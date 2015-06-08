@@ -1,0 +1,13 @@
+pkgbase = apbp
+	pkgdesc = Simple backup script.
+	pkgver = 1.2
+	pkgrel = 2
+	url = https://sourceforge.net/users/giselher
+	arch = any
+	license = GPL
+	depends = python
+	source = apbp.py
+	md5sums = 3429fb06cc175c0e831f5a004fdf4b0d
+
+pkgname = apbp
+
