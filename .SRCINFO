@@ -1,0 +1,18 @@
+pkgbase = haskell-cipher-aes
+	pkgdesc = Fast AES cipher implementation with advanced mode of operations
+	pkgver = 0.2.10
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/cipher-aes
+	install = haskell-cipher-aes.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = haskell-crypto-cipher-types
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/cipher-aes/0.2.10/cipher-aes-0.2.10.tar.gz
+	md5sums = 39c4abe6b4b0bf464f447a207db970e3
+
+pkgname = haskell-cipher-aes
+
