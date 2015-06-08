@@ -1,0 +1,29 @@
+pkgbase = psx
+	pkgdesc = A PlayStation emulator, not plugin based
+	pkgver = 1.13
+	pkgrel = 9
+	url = http://psxemulator.gazaxian.com/
+	install = psx.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = gtkglext
+	depends = alsa-lib
+	depends = libglade
+	depends = xcb-util
+	depends = libpng14
+	depends = pangox-compat
+	options = !strip
+	source = http://trya.alwaysdata.net/linux/pSX_linux_1_13.tar.bz2
+	source = http://trya.alwaysdata.net/linux/icons/psx.png
+	source = psx.sh
+	source = psx.desktop
+	source = psx.ini
+	md5sums = 0812408db22184ceb8cb29ae7601298f
+	md5sums = 6471243708d085addec13e947d71d853
+	md5sums = 263960da5c0ee779700f235512de4200
+	md5sums = 3b93679970229887294aee79fef1924e
+	md5sums = 5ad67ab8608edde9545571a9e8bc19e9
+
+pkgname = psx
+

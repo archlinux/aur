@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Exec=pSX
+
+Name=pSX
+GenericName=PSX Emulator
+GenericName[fr]=Emulateur PSX
+Comment=A PlayStation emulator
+Icon=psx
+
+Categories=Game;Emulator;

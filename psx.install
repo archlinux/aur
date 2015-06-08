@@ -1,0 +1,14 @@
+post_install() {
+	echo ""
+	echo "NOTE:"
+	echo "-----"
+	echo "To be able to use pSX you will need to obtain a dump of the"
+	echo "PlayStation BIOS. It can be stored in ~/.pSX/bios (user-wide),"
+	echo "/usr/share/pSX/bios (system-wide) or whatever directory you"
+	echo "set in psx.ini."
+	echo ""
+}
+
+post_upgrade() {
+	post_install
+}
