@@ -1,0 +1,21 @@
+post_install() {
+	       texconfig-sys rehash
+echo "The Optima type face is recommended for prerequisite charts. Authentic"
+echo "Linotype Optima fonts (or the Bitstream Zapf Humanist 601 clones) may be"
+echo "purchased commercially; support files are available here:"
+echo "  fonts/psfonts/w-a-schmidt/pop.zip"
+echo "  fonts/psfonts/w-a-schmidt/bop.zip"
+echo "The URW Classico fonts available at"
+echo "  fonts/urw/classico"
+echo "are acceptable "free" alternatives."
+               update-desktop-database -q
+}
+
+post_remove() {
+	      texconfig-sys rehash
+	      update-desktop-database -q
+}
+post_upgrade() {
+	      texconfig-sys rehash
+	      update-desktop-database -q
+}
