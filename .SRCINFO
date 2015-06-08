@@ -1,0 +1,22 @@
+pkgbase = libksysguard-git
+	pkgdesc = Libksysguard
+	pkgver = r1507.e52a86f
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/kde-workspace
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = kdoctools
+	depends = libxres
+	depends = plasma-framework-git
+	depends = qt5-webkit
+	provides = libksysguard
+	conflicts = libksysguard
+	conflicts = kdebase-workspace
+	source = git://anongit.kde.org/libksysguard.git
+	md5sums = SKIP
+
+pkgname = libksysguard-git
+
