@@ -1,0 +1,57 @@
+diff -Naur dvc-orig/dvc/texinfo/dvc-intro.texinfo dvc-new/dvc/texinfo/dvc-intro.texinfo
+--- dvc-orig/dvc/texinfo/dvc-intro.texinfo	2013-04-09 20:35:38.000000000 +0200
++++ dvc-new/dvc/texinfo/dvc-intro.texinfo	2013-04-09 21:10:02.000000000 +0200
+@@ -1,4 +1,13 @@
+ \input texinfo
++@ifinfo
++@dircategory Emacs
++@direntry
++* DVC-Intro: (dvc-intro).   Introduction to the Emacs interface to Distributed Version
++                            Control Systems.
++@end direntry
++
++Copyright (c) 2004-2005, 2007, 2008 The DVC Development Team
++@end ifinfo
+ 
+ @c Author : Stephen Leake <stephen_leake@stephe-leake.org>
+ @c Web    : http://www.stephe-leake.org/
+@@ -391,7 +400,7 @@
+ to allow commit, update preview, or merge with
+ conflict resolution.
+ 
+-@itemx update ``to''
++@item update ``to''
+ Update the specified workspace to the current head revision (must be
+ merged). This bypasses the @dfn{xmtn-multi-status} buffer, and
+ therefore does not provide for update preview. It does allow for
+@@ -461,10 +470,10 @@
+ appropriate). This is often convenient when you know the workspace has
+ no local changes.
+ 
+-@itemx brief
++@item brief
+ Show the first line of the changelog for each revision received.
+ 
+-@itemx full
++@item full
+ Show the complete changelog for each revision received.
+ 
+ @item clean
+@@ -902,7 +911,7 @@
+ @itemx left: drop
+ Resolve one side of a duplicate name conflict by dropping it.
+ 
+-@itemx drop
++@item drop
+ Resolve an orphaned node conflict by dropping it.
+ 
+ @item right: rename
+@@ -920,7 +929,7 @@
+ 
+ The other side must be dropped or renamed.
+ 
+-@itemx left file
++@item left file
+ Resolve a content conflict by specifying a file. The file defaults to
+ the current workspace file.
+ 

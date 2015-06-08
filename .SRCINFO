@@ -1,0 +1,19 @@
+pkgbase = emacs-dvc-bzr
+	pkgdesc = Common Emacs front-end for a number of distributed version control systems (currently arch, bazaar, git, mercurial, monotone)
+	pkgver = 591
+	pkgrel = 4
+	url = http://download.gna.org/dvc/
+	install = dvc.install
+	arch = any
+	license = GPL
+	makedepends = bzr
+	makedepends = texinfo
+	depends = emacs
+	provides = emacs-dvc
+	source = bzr+http://bzr.xsteve.at/dvc/
+	source = texinfo5.patch
+	md5sums = SKIP
+	md5sums = ef3ee57d78d07b271d40b2098c564344
+
+pkgname = emacs-dvc-bzr
+
