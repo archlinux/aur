@@ -1,0 +1,24 @@
+pkgbase = mikidown-git
+	pkgdesc = A note taking application featuring markdown syntax
+	pkgver = 0.3.7.r0.g3c65f50
+	pkgrel = 1
+	url = https://shadowkyogre.github.com/mikidown
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = pyqt
+	depends = python-markdown
+	depends = python-whoosh
+	optdepends = python-pygments: for code block syntax highlighting
+	optdepends = python-pyenchant: for spellchecking
+	optdepends = aspell-en: pyenchant need backend support from aspell
+	optdepends = python-asciimathml: for asciimath support
+	optdepends = python-html2text: for converting to markdown (instead of HTML pasting)
+	optdepends = slickpicker: for better color picking in mikidown for the highlighting color scheme
+	provides = mikidown
+	conflicts = mikidown
+	source = git://github.com/ShadowKyogre/mikidown.git
+	md5sums = SKIP
+
+pkgname = mikidown-git
+
