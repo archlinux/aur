@@ -1,0 +1,232 @@
+From f39b69c0495b9bdf83a5aeb05e7794c1b6b6ca86 Mon Sep 17 00:00:00 2001
+From: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+Date: Thu, 10 Apr 2014 22:19:02 -0400
+Subject: [PATCH] Support setting/reading LightDM autologin setings
+
+Author: Michael Terry <michael.terry@canonical.com>
+Bug: https://bugs.freedesktop.org/show_bug.cgi?id=40020
+Bug-Ubuntu: https://launchpad.net/bugs/798962
+Reviewed-by: Alessio Treglia <alessio@debian.org>
+Last-Update: 2012-04-30
+---
+ src/daemon.c | 159 +++++++++++++++++++++++++++++++++++++++++++++++++++++------
+ 1 file changed, 145 insertions(+), 14 deletions(-)
+
+diff --git a/src/daemon.c b/src/daemon.c
+index e55ea9e..9051b9d 100644
+--- a/src/daemon.c
++++ b/src/daemon.c
+@@ -49,6 +49,7 @@
+ #define PATH_SHADOW "/etc/shadow"
+ #define PATH_GROUP "/etc/group"
+ #define PATH_GDM_CUSTOM "/etc/gdm/custom.conf"
++#define PATH_LIGHTDM_CONFIG "/etc/lightdm/lightdm.conf"
+ 
+ enum {
+         PROP_0,
+@@ -67,6 +68,7 @@ struct DaemonPrivate {
+         GFileMonitor *shadow_monitor;
+         GFileMonitor *group_monitor;
+         GFileMonitor *gdm_monitor;
++        GFileMonitor *lightdm_monitor;
+         GFileMonitor *wtmp_monitor;
+ 
+         guint reload_id;
+@@ -534,9 +536,19 @@ daemon_init (Daemon *daemon)
+                                                     wtmp_helper_get_path_for_monitor (),
+                                                     on_users_monitor_changed);
+ 
+-        daemon->priv->gdm_monitor = setup_monitor (daemon,
+-                                                   PATH_GDM_CUSTOM,
+-                                                   on_gdm_monitor_changed);
++        if (g_file_test ("/etc/gdm", G_FILE_TEST_EXISTS))
++        {
++                daemon->priv->gdm_monitor = setup_monitor (daemon,
++                                                           PATH_GDM_CUSTOM,
++                                                           on_gdm_monitor_changed);
++        }
++        
++        if (g_file_test ("/etc/lightdm", G_FILE_TEST_EXISTS))
++        {
++                daemon->priv->lightdm_monitor = setup_monitor (daemon,
++                                                           PATH_LIGHTDM_CONFIG,
++                                                           on_gdm_monitor_changed);
++        }
+ 
+         queue_reload_users (daemon);
+         queue_reload_autologin (daemon);
+@@ -1273,10 +1285,10 @@ daemon_local_check_auth (Daemon                *daemon,
+ }
+ 
+ gboolean
+-load_autologin (Daemon      *daemon,
+-                gchar      **name,
+-                gboolean    *enabled,
+-                GError     **error)
++load_autologin_gdm (Daemon      *daemon,
++                    gchar      **name,
++                    gboolean    *enabled,
++                    GError     **error)
+ {
+         GKeyFile *keyfile;
+         GError *local_error;
+@@ -1319,23 +1331,90 @@ load_autologin (Daemon      *daemon,
+         return TRUE;
+ }
+ 
+-static gboolean
+-save_autologin (Daemon      *daemon,
+-                const gchar *name,
+-                gboolean     enabled,
++gboolean
++load_autologin_lightdm (Daemon      *daemon,
++                        gchar      **name,
++                        gboolean    *enabled,
++                        GError     **error)
++{
++        GKeyFile *keyfile;
++
++        keyfile = g_key_file_new ();
++        if (!g_key_file_load_from_file (keyfile,
++                                        PATH_LIGHTDM_CONFIG,
++                                        G_KEY_FILE_KEEP_COMMENTS,
++                                        error)) {
++                g_key_file_free (keyfile);
++                return FALSE;
++        }
++
++        *name = g_key_file_get_string (keyfile, "SeatDefaults", "autologin-user", error);
++        *enabled = (*error == NULL && (*name) && (*name)[0] != 0);
++
++        g_key_file_free (keyfile);
++
++        return (*error == NULL);
++}
++
++gboolean
++load_autologin (Daemon      *daemon,
++                gchar      **name,
++                gboolean    *enabled,
+                 GError     **error)
+ {
++        GDBusConnection *connection;
++        GVariant *reply;
++
++        /* First, determine whether we should load GDM or LightDM values by
++           checking if GDM is running. */
++        connection = g_bus_get_sync (G_BUS_TYPE_SYSTEM, NULL, NULL);
++        reply = g_dbus_connection_call_sync (connection, 
++                                             "org.freedesktop.DBus", 
++                                              "/", 
++                                              "org.freedesktop.DBus",
++                                              "GetNameOwner", 
++                                              g_variant_new ("(s)", "org.gnome.DisplayManager"),
++                                              G_VARIANT_TYPE ("(s)"), 
++                                              G_DBUS_CALL_FLAGS_NO_AUTO_START,
++                                              -1, 
++                                              NULL, 
++                                              NULL);
++        g_object_unref (connection);
++
++        if (reply != NULL) {
++                g_variant_unref (reply);
++                return load_autologin_gdm (daemon, name, enabled, error);
++        } else {
++                return load_autologin_lightdm (daemon, name, enabled, error);
++        }
++}
++
++static gboolean
++save_autologin_gdm (Daemon      *daemon,
++                    const gchar *name,
++                    gboolean     enabled,
++                    GError     **error)
++{
+         GKeyFile *keyfile;
+         gchar *data;
+         gboolean result;
++        GError *local_error = NULL;
++
++        if (!g_file_test ("/etc/gdm", G_FILE_TEST_EXISTS))
++                return TRUE; /* not an error, just not installed */
+ 
+         keyfile = g_key_file_new ();
+         if (!g_key_file_load_from_file (keyfile,
+                                         PATH_GDM_CUSTOM,
+                                         G_KEY_FILE_KEEP_COMMENTS,
+-                                        error)) {
+-                g_key_file_free (keyfile);
+-                return FALSE;
++                                        &local_error)) {
++                /* It's OK for custom.conf to not exist, we will make it */
++                if (!g_error_matches (local_error, G_FILE_ERROR, G_FILE_ERROR_NOENT)) {
++                        g_propagate_error (error, local_error);
++                        g_key_file_free (keyfile);
++                        return FALSE;
++                }
++                g_error_free (local_error);
+         }
+ 
+         g_key_file_set_string (keyfile, "daemon", "AutomaticLoginEnable", enabled ? "True" : "False");
+@@ -1350,6 +1429,58 @@ save_autologin (Daemon      *daemon,
+         return result;
+ }
+ 
++static gboolean
++save_autologin_lightdm (Daemon      *daemon,
++                        const gchar *name,
++                        gboolean     enabled,
++                        GError     **error)
++{
++        GKeyFile *keyfile;
++        gchar *data;
++        gboolean result;
++        GError *local_error = NULL;
++
++        if (!g_file_test ("/etc/lightdm", G_FILE_TEST_EXISTS))
++                return TRUE; /* not an error, just not installed */
++
++        keyfile = g_key_file_new ();
++        if (!g_key_file_load_from_file (keyfile,
++                                        PATH_LIGHTDM_CONFIG,
++                                        G_KEY_FILE_KEEP_COMMENTS,
++                                        &local_error)) {
++                /* It's OK for custom.conf to not exist, we will make it */
++                if (!g_error_matches (local_error, G_FILE_ERROR, G_FILE_ERROR_NOENT)) {
++                        g_propagate_error (error, local_error);
++                        g_key_file_free (keyfile);
++                        return FALSE;
++                }
++                g_error_free (local_error);
++        }
++
++        g_key_file_set_string (keyfile, "SeatDefaults", "autologin-user", enabled ? name : "");
++
++        data = g_key_file_to_data (keyfile, NULL, NULL);
++        result = g_file_set_contents (PATH_LIGHTDM_CONFIG, data, -1, error);
++
++        g_key_file_free (keyfile);
++        g_free (data);
++
++        return result;
++}
++
++static gboolean
++save_autologin (Daemon      *daemon,
++                const gchar *name,
++                gboolean     enabled,
++                GError     **error)
++{
++        if (!save_autologin_gdm (daemon, name, enabled, error))
++                return FALSE;
++        if (!save_autologin_lightdm (daemon, name, enabled, error))
++                return FALSE;
++        return TRUE;
++}
++
+ gboolean
+ daemon_local_set_automatic_login (Daemon    *daemon,
+                                   User      *user,
+-- 
+1.9.2
+
