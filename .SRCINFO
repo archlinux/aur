@@ -1,0 +1,21 @@
+pkgbase = haskell-anydbm
+	pkgdesc = Interface for DBM-like database systems
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/anydbm
+	install = haskell-anydbm.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ghc
+	depends = haskell-missingh>=1.0.0
+	depends = haskell-containers=0.3.0.0
+	depends = haskell-haskell98=1.0.1.1
+	depends = haskell-mtl
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/anydbm/1.0.7/anydbm-1.0.7.tar.gz
+	md5sums = 69c2758e79ea4f15cac1c438981f4013
+
+pkgname = haskell-anydbm
+
