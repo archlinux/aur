@@ -1,0 +1,15 @@
+pkgbase = emacs-elscreen-howm
+	pkgdesc = Frame configuration management for GNU Emacs modelled after GNU Screen
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = http://www.morishima.net/~naoto/software/elscreen/index.php.en
+	arch = any
+	license = GPL
+	makedepends = emacs-apel
+	depends = emacs-elscreen
+	depends = emacs-goby
+	source = ftp://ftp.morishima.net/pub/morishima.net/naoto/ElScreen/elscreen-howm-0.1.3.tar.gz
+	md5sums = 77d130b23729b8185f7314e10f3e31d4
+
+pkgname = emacs-elscreen-howm
+
