@@ -1,0 +1,13 @@
+pkgbase = diagram-git
+	pkgdesc = Text mode diagrams using UTF-8 characters and fancy colors
+	pkgver = 0.2.23.r10.gc6895c1
+	pkgrel = 1
+	url = https://github.com/tehmaze/diagram
+	arch = any
+	license = MIT
+	depends = python
+	source = git+https://github.com/tehmaze/diagram.git
+	md5sums = SKIP
+
+pkgname = diagram-git
+
