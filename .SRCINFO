@@ -1,0 +1,25 @@
+pkgbase = kscreengenie-frameworks-git
+	pkgdesc = Screen Capture Program
+	pkgver = r44.91d1539
+	pkgrel = 1
+	url = https://projects.kde.org/projects/playground/graphics/kscreengenie/repository
+	install = kscreengenie-frameworks-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = kdoctools
+	makedepends = python
+	depends = libkipi-frameworks-git
+	depends = kparts
+	provides = kscreengenie
+	provides = ksnapshot
+	conflicts = kdegraphics-ksnapshot
+	conflicts = ksnapshot
+	conflicts = kscreengenie
+	source = git://anongit.kde.org/kscreengenie.git
+	sha256sums = SKIP
+
+pkgname = kscreengenie-frameworks-git
+
