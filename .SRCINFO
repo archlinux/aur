@@ -1,0 +1,21 @@
+pkgbase = whippet
+	pkgdesc = Opens files and URLs with applications associated by name or mimetype; an xdg-open replacement for control freaks. Applications and associations may be customized using an SQLite database.
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = http://mcfadzean.org.uk/appstogo/linux.html#whippet
+	arch = any
+	license = custom:MPL2
+	depends = bash
+	depends = dmenu
+	depends = sqlite
+	depends = libnotify
+	depends = file
+	optdepends = perl-file-mimeinfo: to better determine mimetypes
+	optdepends = sqlitebrowser: to manage database
+	optdepends = sudo: to run applications as root
+	optdepends = gxmessage: to view .desktop files
+	source = http://mcfadzean.org.uk/appstogo/dl/whippet/whippet-2.0.2.tar.gz
+	md5sums = dc837db7270c891b31dfc07c2ca3a7e3
+
+pkgname = whippet
+
