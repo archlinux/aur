@@ -1,0 +1,29 @@
+pkgbase = warmux
+	pkgdesc = Clone of turn-based artillery games like Scorched Earth or Worms (formerly known as Wormux)
+	pkgver = 11.04.1
+	pkgrel = 8
+	url = http://gna.org/projects/warmux/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxml++
+	depends = sdl_image
+	depends = sdl_gfx
+	depends = sdl_ttf
+	depends = sdl_mixer
+	depends = sdl_net
+	depends = curl
+	depends = gcc-libs
+	depends = libxml2
+	conflicts = warmux-data
+	replaces = wormux
+	replaces = warmux-data
+	source = http://download.gna.org/warmux/warmux-11.04.1.tar.bz2
+	source = include-zlib.patch
+	source = gcc-fix.patch
+	sha256sums = 789c4f353e4c5ce0a2aba2e82861d3fd0e5218bc76d8da1a332f2c7b1b27e4ee
+	sha256sums = 665c4a64e54478491284f6cb6251bd58f96ba81671a7c439cffe175b86462852
+	sha256sums = 3f271dc6249ababe919733268c34464fc3050fc7c2b0329e9017f1b32c7760f5
+
+pkgname = warmux
+
