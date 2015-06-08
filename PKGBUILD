@@ -1,0 +1,41 @@
+# Maintainer: Michael Goehler <somebody dot here at gmx dot de>
+
+pkgname=docker-registry-git
+_pkgname=docker-registry
+pkgver=v2.0.0.205.ge03780c
+pkgrel=1
+pkgdesc="An implementation of the Docker Registry HTTP API V2 for use with docker 1.6+."
+arch=('any')
+url="https://github.com/docker/distribution"
+license=('Apache')
+makedepends=('git' 'go')
+backup=("etc/${_pkgname}/config.yml")
+source=('distribution::git+https://github.com/docker/distribution.git'
+        'docker-registry.service')
+md5sums=('SKIP'
+         'd5bb239f4ab982cb5e7de7afc279c68e')
+
+pkgver() {
+    cd "${srcdir}/distribution"
+    git describe --match 'v[0-9]*' --dirty='.m' --always | sed 's/-/./g'
+}
+
+build() {
+    export DISTRIBUTION_DIR="${srcdir}/distribution"
+    export GOPATH="${DISTRIBUTION_DIR}/Godeps/_workspace"
+    cd "${DISTRIBUTION_DIR}"
+
+    # GOPATH fix
+    ln -s "${DISTRIBUTION_DIR}" "${DISTRIBUTION_DIR}/Godeps/_workspace/src/github.com/docker/distribution"
+
+    make clean binaries
+}
+
+package() {
+    export DISTRIBUTION_DIR="${srcdir}/distribution"
+    install -v -D -m644 "${srcdir}/${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
+    install -v -D -m755 "${DISTRIBUTION_DIR}/bin/registry" "${pkgdir}/usr/lib/${_pkgname}/registry"
+    install -v -D -m644 "${DISTRIBUTION_DIR}/cmd/registry/config.yml" "${pkgdir}/etc/${_pkgname}/config.yml"
+}
+
+# vim:set ts=4 sw=4 et:
