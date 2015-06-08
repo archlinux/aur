@@ -1,0 +1,17 @@
+pkgbase = perl-math-prime-xs
+	pkgdesc = Detect and calculate prime numbers with deterministic tests
+	pkgver = 0.26
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Math-Prime-XS
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-boolean
+	depends = perl-params-validate
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/K/KR/KRYDE/Math-Prime-XS-0.26.tar.gz
+	md5sums = 5bd7727093742cc85cd6c762422c98c8
+	sha512sums = 4054114b320e15c349c6620fcd8b2ae6a94b590f2be2a6301577dae09aef3058f901cafd669ea9846c0b7adaaad46e18552cdf147c8412b297d96d5f3bbd6fa4
+
+pkgname = perl-math-prime-xs
+
