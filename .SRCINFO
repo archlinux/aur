@@ -1,0 +1,15 @@
+pkgbase = blockling
+	pkgdesc = A puzzle game involving moving and stacking blocks with 8-bit graphics and sounds.
+	pkgver = r220
+	pkgrel = 2
+	url = http://sourceforge.net/projects/blockling/
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	depends = sdl
+	depends = sdl_mixer
+	source = http://downloads.sourceforge.net/project/blockling/blockling-src-r220.tar.gz
+	md5sums = d02118886db7ee036c598f4a6d4565af
+
+pkgname = blockling
+
