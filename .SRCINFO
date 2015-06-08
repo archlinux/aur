@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-coin-or-blis
+	pkgdesc = BLIS (BiCePS Linear Integer Solver) (mingw-w64)
+	pkgver = 0.93.11
+	pkgrel = 1
+	url = https://projects.coin-or.org/CHiPPS
+	arch = any
+	groups = coin-or
+	license = EPL
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-coin-or-bcps
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = http://www.coin-or.org/download/pkgsource/CHiPPS/Blis-0.93.11.tgz
+	sha1sums = 2ba385b5d3706d55f36e7a12f7e22a0fbbd6210d
+
+pkgname = mingw-w64-coin-or-blis
+
