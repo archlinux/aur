@@ -1,0 +1,15 @@
+pkgbase = mktiupgrade
+	pkgdesc = Builds and signs OS upgrades for Texas Instruments calculators
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/KnightOS/mktiupgrade
+	arch = i386
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = asciidoc
+	source = https://github.com/KnightOS/mktiupgrade/archive/1.1.4.tar.gz
+	sha1sums = d0aa9aafdd863a14ace0e1779ac3f5a6fc096ccd
+
+pkgname = mktiupgrade
+
