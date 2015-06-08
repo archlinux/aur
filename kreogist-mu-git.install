@@ -1,0 +1,16 @@
+update_cache() {
+	update-desktop-database -q
+	update-mime-database /usr/share/mime
+}
+
+post_install() {
+	update_cache
+}
+
+post_upgrade() {
+	update_cache
+}
+
+post_remove() {
+	update_cache
+}

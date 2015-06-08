@@ -1,0 +1,11 @@
+--- a/debian/mu.desktop	2015-05-02 17:32:42.713598000 -0500
++++ b/debian/mu.desktop	2015-05-02 18:44:05.799671073 -0500
+@@ -1,6 +1,7 @@
+ [Desktop Entry]
++Version=1.0
+ Type=Application
+-Name=μ
++Name=μ Music Manager
+ GenericName=Music Manager
+ Exec=mu
+ Icon=mu
