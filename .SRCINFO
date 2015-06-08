@@ -1,0 +1,26 @@
+pkgbase = hawaii-system-preferences
+	pkgdesc = Hawaii system preferences
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/hawaii-desktop
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	groups = hawaii
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = xkeyboard-config
+	depends = hawaii-shell
+	provides = hawaii-system-preferences
+	conflicts = hawaii-system-preferences-git
+	replaces = hawaii-system-preferences
+	options = debug
+	source = https://github.com/hawaii-desktop/hawaii-system-preferences/archive/v0.4.0.tar.gz
+	md5sums = d88e031e7ed9be20e7559820a7649a4b
+
+pkgname = hawaii-system-preferences
+
