@@ -1,0 +1,15 @@
+pkgbase = smartdeblur-git
+	pkgdesc = A smart deblur program made by Y. Vladimir
+	pkgver = 20130304
+	pkgrel = 1
+	url = http://yuzhikov.com/articles/BlurredImagesRestoration1.htm
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	depends = qt4
+	depends = fftw
+	provides = smartdeblur
+
+pkgname = smartdeblur-git
+
