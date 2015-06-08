@@ -1,0 +1,48 @@
+pre_upgrade()
+{
+  systemctl stop archipel-agent && (
+    touch '/tmp/archipel-was-started'
+    echo 'Archipel agent has been stopped.'
+  )
+}
+
+post_install()
+{
+  uuid=$(cat /proc/sys/kernel/random/uuid)
+  hostname=$(cat /etc/hostname)
+  password=$(date +%s | sha256sum | base64 | head -c 8)
+
+  `sed -i "s/PARAM_UUID/$uuid/" /etc/archipel/archipel.conf`
+  `sed -i "s/PARAM_HYPERVISOR_NAME/$hostname/" /etc/archipel/archipel.conf`
+  `sed -i "s/PARAM_HYPERVISOR_PASSWORD/$password/" /etc/archipel/archipel.conf`
+  `sed -i "s/PARAM_XMPP_SERVER/localhost/" /etc/archipel/archipel.conf`
+  `sed -i "s/PARAM_PREFIX//" /etc/archipel/archipel.conf`
+
+  cat <<- EOF
+    You need to configure Archipel agent: /etc/archipel/archipel.conf
+    https://github.com/ArchipelProject/Archipel/wiki/Installation%3A-Agent
+    
+    ==> Start Archipel using systemd:
+    # systemctl start archipel-agent
+    ==> Auto-start Archipel on boot:
+    # systemctl enable archipel-agent
+EOF
+}
+
+post_upgrade()
+{
+  systemctl --system daemon-reload
+  if [ -f '/tmp/archipel-was-started' ]; then
+    rm '/tmp/archipel-was-started'
+    systemctl start archipel-agent
+    echo 'Archipel agent has been started.'
+  fi
+}
+
+post_remove()
+{
+  cat <<- EOF
+    ==> You may safely delete Archipel Agent config and files:
+    # rm -rf /etc/archipel /var/lib/archipel
+EOF
+}
