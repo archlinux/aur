@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Encoding=UTF-8
+Name=SoundRTS
+GenericName=A real-time strategy audio game
+Comment=A real-time strategy audio game
+Path=/opt/soundrts
+Exec=python2 soundrts.py
+Terminal=false
+StartupNotify=true
+Categories=Application;Game;ArcadeGame
