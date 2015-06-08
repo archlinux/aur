@@ -1,0 +1,14 @@
+pkgbase = helixnotes
+	pkgdesc = Lightweight note-taker written in Python with PyGTK
+	pkgver = 0.2
+	pkgrel = 3
+	url = http://code.google.com/p/helixnotes/
+	arch = any
+	license = GPL3
+	depends = pygtk
+	depends = python2
+	source = http://www.gtk-apps.org/CONTENT/content-files/112271-helix.tar.gz
+	md5sums = af5d561ca964d86c27b433d81213a885
+
+pkgname = helixnotes
+
