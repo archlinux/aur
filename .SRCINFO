@@ -1,0 +1,19 @@
+pkgbase = haskell-geoip
+	pkgdesc = Pure bindings for the MaxMind IP database.
+	pkgver = 0.3
+	pkgrel = 4
+	url = http://hackage.haskell.org/package/GeoIp
+	install = haskell-geoip.install
+	arch = i686
+	arch = x86_64
+	license = custom:OtherLicense
+	depends = ghc
+	depends = haskell-bytestring=0.9.1.7
+	depends = haskell-bytestring-mmap
+	depends = haskell-syb=0.1.0.2
+	options = strip
+	source = http://hackage.haskell.org/packages/archive/GeoIp/0.3/GeoIp-0.3.tar.gz
+	md5sums = 5c3fbb7608216487717770c44a25c7ed
+
+pkgname = haskell-geoip
+
