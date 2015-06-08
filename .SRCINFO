@@ -1,0 +1,16 @@
+pkgbase = romextract
+	pkgdesc = various Linux tools for extracting ROMs from Wii Virtual Console WADs
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Plombo/romextract
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	optdepends = python2: for nes_rom_extract
+	conflicts = romextract-git
+	source = https://github.com/gnubeest/romextract/archive/v0.1.tar.gz
+	md5sums = 7bdae7b0e1d720c0af118e0f7c69c4b7
+
+pkgname = romextract
+
