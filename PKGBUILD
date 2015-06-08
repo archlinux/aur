@@ -6,7 +6,7 @@ _name=at-home-modifier
 pkgname=xf86-input-evdev-ahm
 _pkgname_orig=xf86-input-evdev
 pkgver=2.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="X.org evdev input driver + at home modifier patch"
 arch=(i686 x86_64)
 url="https://gitorious.org/at-home-modifier"
@@ -14,7 +14,7 @@ _url_orig="http://xorg.freedesktop.org/"
 license=('custom')
 depends=('glibc' 'systemd' 'mtdev' 'libevdev')
 makedepends=('xorg-server-devel' 'resourceproto' 'scrnsaverproto')
-conflicts=('xorg-server<1.15.0' 'X-ABI-XINPUT_VERSION<20' 'X-ABI-XINPUT_VERSION>=21' 'xf86-input-evdev')
+conflicts=('xorg-server<1.16.0' 'X-ABI-XINPUT_VERSION<21' 'X-ABI-XINPUT_VERSION>=22' 'xf86-input-evdev')
 provides=('xf86-input-evdev=2.9.0')
 options=('!makeflags')
 groups=('xorg-drivers' 'xorg')
