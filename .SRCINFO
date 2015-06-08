@@ -1,0 +1,13 @@
+pkgbase = eclipse-ingres
+	pkgdesc = Ingres plugin for Eclipse.
+	pkgver = 1.0.1
+	pkgrel = 2
+	url = http://esd.ingres.com/product/Community_Projects/Eclipse_DTP_Bundle/Linux_32-Bit/Eclipse_DTP_Bundle
+	arch = i686
+	license = GPL2
+	depends = eclipse
+	source = http://downloads.ingres.com/EclipseDTPplugin/ingres_dtp_feature_1.0.1.zip
+	md5sums = 8dac4116c8e8d7ed924aa33938ce845d
+
+pkgname = eclipse-ingres
+
