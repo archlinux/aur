@@ -1,0 +1,14 @@
+pkgbase = thesis
+	pkgdesc = Two LaTeX classes for bigger, thesis-like documents
+	pkgver = 1.0
+	pkgrel = 3
+	url = http://dante.ctan.org/CTAN/help/Catalogue/entries/thesis.html#Visit
+	install = thesis.install
+	arch = any
+	license = LPPL
+	depends = texlive-core
+	source = http://dante.ctan.org/CTAN/macros/latex/contrib/thesis.zip
+	md5sums = 8c6e19dfbbd919c84abf939f12d8a8b9
+
+pkgname = thesis
+
