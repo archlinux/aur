@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-fmtconv-git
+	pkgdesc = Plugin for Vapoursynth: fmtconv (GIT version)
+	pkgver = r15.0.g7c6cd1e
+	pkgrel = 1
+	url = http://forum.doom9.org/showthread.php?t=166504
+	arch = i686
+	arch = x86_64
+	license = custom:WTFPL
+	makedepends = git
+	depends = vapoursynth
+	provides = vapoursynth-plugin-fmtconv
+	conflicts = vapoursynth-plugin-fmtconv
+	source = git+https://github.com/EleonoreMizo/fmtconv.git
+	sha1sums = SKIP
+
+pkgname = vapoursynth-plugin-fmtconv-git
+
