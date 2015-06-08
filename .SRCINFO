@@ -1,0 +1,15 @@
+pkgbase = awextract
+	pkgdesc = Extract .wav files from .aw files in Nintendo Wii game disks
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://nothing.i/made/this/script/:)
+	arch = any
+	license = GPL
+	depends = szstools
+	depends = baad
+	depends = wsyster
+	source = awextract
+	sha512sums = 0a5fabc7d7fe149379251e111d92dcd26e3e5f45e6750b08949657c13c9c912412b74c1cc615d6c5487de9266e740ea84eb1b106394f05e65468d2032418e2d5
+
+pkgname = awextract
+
