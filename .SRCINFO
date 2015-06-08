@@ -1,0 +1,21 @@
+pkgbase = haskell-case-insensitive
+	pkgdesc = Case insensitive string comparison
+	pkgver = 1.2.0.3
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/case-insensitive
+	install = haskell-case-insensitive.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = haskell-bytestring>=0.9
+	depends = haskell-deepseq>=1.1
+	depends = haskell-hashable>=1.0
+	depends = haskell-text>=0.3
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/case-insensitive/1.2.0.3/case-insensitive-1.2.0.3.tar.gz
+	md5sums = 0d06bfcf77f0fba85424b87a61775a78
+
+pkgname = haskell-case-insensitive
+
