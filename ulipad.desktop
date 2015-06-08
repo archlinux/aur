@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=UliPad
+Comment=A wxPython powered, programmer oriented and flexible editor
+Exec=ulipad
+Icon=ulipad.png
+Terminal=false
+Categories=Development;

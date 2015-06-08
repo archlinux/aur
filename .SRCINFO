@@ -1,0 +1,21 @@
+pkgbase = ulipad-git
+	pkgdesc = A wxPython powered, programmer oriented and flexible editor
+	pkgver = r10.c8627cb
+	pkgrel = 1
+	url = https://github.com/limodou/ulipad
+	arch = any
+	license = GPL
+	depends = wxpython
+	optdepends = psyco: speed support
+	optdepends = python2-pyenchant: spell-checking support
+	source = ulipad-git::git://github.com/limodou/ulipad.git
+	source = ulipad.desktop
+	source = ulipad.png
+	source = ulipad.sh
+	md5sums = SKIP
+	md5sums = 8179bab501c1eea2a799f497292b4549
+	md5sums = 088feea9980edd118c7297e6d45613af
+	md5sums = 23cdc38822e51dc6ffaa86dff94d967d
+
+pkgname = ulipad-git
+
