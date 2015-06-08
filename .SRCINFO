@@ -1,0 +1,16 @@
+pkgbase = figtree
+	pkgdesc = Phylogenetic tree viewer
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = http://tree.bio.ed.ac.uk
+	arch = any
+	license = GPL2
+	makedepends = unzip
+	depends = java-environment
+	source = figtree-1.4.2.zip::http://tree.bio.ed.ac.uk/download.php?id=90&num=2
+	source = figtree
+	md5sums = d3b858120612041a3f1f44ce610875b0
+	md5sums = 917be0a986ce83ff16f80833c60bf73a
+
+pkgname = figtree
+

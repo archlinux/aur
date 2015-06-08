@@ -1,0 +1,4 @@
+#!/bin/sh
+
+java -Xms64m -Xmx512m -jar /usr/share/figtree/lib/figtree.jar $*
+
