@@ -1,0 +1,20 @@
+pkgbase = rpcs3-git
+	pkgdesc = A Sony PlayStation 3 emulator
+	pkgver = 0.0.0.5.r1801.e6df1dd
+	pkgrel = 1
+	url = https://github.com/DHrpcs3/rpcs3
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	makedepends = llvm
+	depends = glew
+	depends = openal
+	depends = wxgtk
+	provides = rpcs3
+	conflicts = rpcs3
+	source = git+https://github.com/DHrpcs3/rpcs3.git
+	sha256sums = SKIP
+
+pkgname = rpcs3-git
+
