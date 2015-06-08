@@ -1,0 +1,21 @@
+pkgbase = hawaii-icon-themes
+	pkgdesc = Hawaii icon themes
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/hawaii-desktop
+	arch = any
+	groups = hawaii
+	license = GPL2
+	license = CC-BY-SA
+	license = LGPL2.1
+	makedepends = cmake
+	depends = captiva-icons-git
+	depends = faba-icon-theme-git
+	depends = gnome-icon-theme
+	depends = hicolor-icon-theme
+	conflicts = hawaii-icon-themes-git
+	source = https://github.com/hawaii-desktop/hawaii-icon-themes/archive/v0.4.0.tar.gz
+	md5sums = 4e368b3dbccac5741bc89c173e827464
+
+pkgname = hawaii-icon-themes
+
