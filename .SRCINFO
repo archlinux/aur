@@ -1,0 +1,17 @@
+pkgbase = perl-lwp-protocol-connect
+	pkgdesc = HTTPS via HTTP proxy support for LWP
+	pkgver = 6.09
+	pkgrel = 1
+	url = http://search.cpan.org/~benning/LWP-Protocol-connect-6.09/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-libwww
+	depends = perl-lwp-protocol-https
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BE/BENNING/LWP-Protocol-connect-6.09.tar.gz
+	md5sums = 05a768b428e7283b38635713327a47a3
+
+pkgname = perl-lwp-protocol-connect
+
