@@ -1,0 +1,19 @@
+pkgbase = ruby-spotify-to-mp3
+	pkgdesc = Ruby gem which enables downloading of MP3s from Spotify
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/frosas/spotify-to-mp3
+	arch = any
+	license = GPL
+	makedepends = rubygems
+	depends = ruby
+	depends = ruby-colorize
+	depends = ruby-grooveshark
+	depends = ruby-json_pure
+	depends = ruby-rest-client
+	noextract = spotify-to-mp3-0.6.1.gem
+	source = http://gems.rubyforge.org/gems/spotify-to-mp3-0.6.1.gem
+	sha512sums = f631e8eff4ed28176619d6e59cda7c50b9aeb944047ecb8c6729f3e5656d24348d92c519a8c125abfe0566061e3024bdb5aa9acf57da3aa44164b415bec99a85
+
+pkgname = ruby-spotify-to-mp3
+
