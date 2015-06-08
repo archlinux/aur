@@ -1,0 +1,5 @@
+post_install() {
+	echo '--> Take a look at config file to set your preferred variables:'
+	echo '--> /etc/default/ncursesFM.conf'
+}
+
