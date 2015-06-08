@@ -1,0 +1,15 @@
+pkgbase = colobot-gold-music
+	pkgdesc = Music pack for Colobot GOLD real-time strategy game.
+	pkgver = 0.1.4_alpha
+	pkgrel = 1
+	url = http://colobot.info
+	arch = any
+	license = GPL3
+	makedepends = cmake
+	makedepends = vorbis-tools
+	source = https://github.com/colobot/colobot-music/archive/colobot-gold-0.1.4-alpha.zip
+	md5sums = b4b4c1c272ca74acb044aaf8473f113b
+	sha1sums = 8b3c037440767db1f239994ca82c57890b81c83b
+
+pkgname = colobot-gold-music
+
