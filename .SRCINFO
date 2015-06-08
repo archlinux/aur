@@ -1,0 +1,25 @@
+pkgbase = haskell-resourcet
+	pkgdesc = Split off from the haskell-conduit package
+	pkgver = 1.1.4.1
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/resourcet
+	install = haskell-resourcet.install
+	arch = i686
+	arch = x86_64
+	license = BSD3
+	makedepends = ghc
+	depends = haskell-containers
+	depends = haskell-lifted-base
+	depends = haskell-monad-control
+	depends = haskell-mtl
+	depends = haskell-exceptions
+	depends = haskell-transformers
+	depends = haskell-transformers-compat
+	depends = haskell-transformers-base
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/resourcet/1.1.4.1/resourcet-1.1.4.1.tar.gz
+	sha256sums = e29afb420e2f5b8d82d1a4c7a722628e1d8d2f96bc3282b20b0a3d21b25c89e3
+
+pkgname = haskell-resourcet
+
