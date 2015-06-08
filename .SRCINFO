@@ -1,0 +1,27 @@
+pkgbase = uhub-git
+	pkgdesc = A hub for the ADC network. (GIT Version)
+	pkgver = 0.5.0.23.gdc80644
+	pkgrel = 1
+	url = http://www.uhub.org/
+	install = uhub.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = git
+	depends = libsystemd
+	depends = python2
+	backup = etc/uhub/motd.txt
+	backup = etc/uhub/plugins.conf
+	backup = etc/uhub/rules.txt
+	backup = etc/uhub/uhub.conf
+	backup = etc/uhub/users.conf
+	source = git+https://github.com/janvidar/uhub.git
+	source = uhub.service
+	source = uhub.tmpfiles
+	sha1sums = SKIP
+	sha1sums = a72699fb05ba6ad48a3ff0d18d8ef2904c29c6a5
+	sha1sums = fa06f77fe35eee8dea6c8d2be81486a2ecc35a5b
+
+pkgname = uhub-git
+

@@ -1,0 +1,16 @@
+[Unit]
+Description=uHub ADC hub Server
+Documentation=man:uhub(1)
+After=network.target
+
+[Service]
+Type=simple
+User=uhub
+ExecStart=/usr/bin/uhub -p /run/uhub/uhub.pid
+ExecReload=/usr/bin/uhub -C ; \
+           /bin/kill -HUP $MAINPID
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+
