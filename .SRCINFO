@@ -1,0 +1,23 @@
+pkgbase = st-pizz
+	pkgdesc = Simple virtual terminal emulator for X from Github.
+	pkgver = 20150127.629f8cd
+	pkgrel = 2
+	epoch = 1
+	url = https://github.com/pizzooid/st
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = MIT
+	makedepends = ncurses
+	makedepends = libxext
+	makedepends = git
+	depends = libxft
+	depends = ttf-droid
+	provides = st
+	conflicts = st
+	source = git://github.com/pizzooid/st
+	md5sums = SKIP
+	sha1sums = SKIP
+
+pkgname = st-pizz
+
