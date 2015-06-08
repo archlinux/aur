@@ -1,0 +1,16 @@
+pkgbase = coin-or-bcp
+	pkgdesc = COIN-OR parallel branch-cut-price algorithms for mixed-integer linear programs
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://projects.coin-or.org/Bcp
+	arch = i686
+	arch = x86_64
+	groups = coin-or
+	license = EPL
+	depends = coin-or-cgl
+	depends = coin-or-clp
+	source = http://www.coin-or.org/download/source/Bcp/Bcp-1.4.0.tgz
+	sha1sums = addf63bda07f85ea6a6b16ff32088afd08a3b56e
+
+pkgname = coin-or-bcp
+
