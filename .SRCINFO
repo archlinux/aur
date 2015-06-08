@@ -1,0 +1,18 @@
+pkgbase = urbackup-server
+	pkgdesc = Client Server backup system
+	pkgver = 1.4.8
+	pkgrel = 1
+	url = http://www.urbackup.org/
+	install = urbackup.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-libs
+	makedepends = gcc
+	makedepends = make
+	depends = crypto++
+	source = http://downloads.sourceforge.net/project/urbackup/Server/1.4.8/urbackup-server-1.4.8.tar.gz
+	md5sums = b195f0d06a6750d9cace3874070e2373
+
+pkgname = urbackup-server
+
