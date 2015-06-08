@@ -1,0 +1,16 @@
+pkgbase = sortpuz
+	pkgdesc = Unscramble a square matrix of numbered tiles to put them in order.
+	pkgver = 1.3
+	pkgrel = 2
+	url = http://www.kornelix.com/sortpuz
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = gtk3
+	conflicts = fixme
+	replaces = fixme
+	source = http://www.kornelix.com/uploads/1/3/0/3/13035936/sortpuz-1.3.tar.gz
+	md5sums = 80040bc2c89eda2fff7612de2fe637cb
+
+pkgname = sortpuz
+
