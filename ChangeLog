@@ -1,0 +1,44 @@
+2015-06-08 Giancarlo Razzolini <grazzolini@gmail.com>
+
+	* 0.16-1 :
+	- Decouple of the PKGBUILD and other AUR relevant files from the source code for upload in the new AUR system.
+
+2015-06-03 Giancarlo Razzolini <grazzolini@gmail.com>
+
+	* 0.15-1 :
+	- Added openssh as an optional dependecy.
+	- Added some more options to the dropbear daemon, disallowing password authentication and any kind of forwarding.
+	- Now the hook only add ssh keys which are not empty.
+	- The dropbear keys are only created in case of no ssh keys present and if they don't already exist.
+
+2015-01-05 Giancarlo Razzolini <grazzolini@gmail.com>
+
+	* 0.14-1 :
+	- Author and contributors changes.
+	- Changed the PKGBUILD to include sha256 hashes instead of md5
+	- The build() function was renamed to the mandatory package() function
+	- Created a cleanuphook on the dropbear hook that kills the daemon, flush the device and umount /dev/pts
+	- Changed the poll_device to resolve_device, so the local keyboard unlock would work
+	- Cleaned up the unnecessary steps that were covered on the dropbear cleanuphook
+
+2014-02-04 Karol Babioch <karol@babioch.de>
+
+	* 0.13-1 :
+	- Add support for newly added ECC within dropbear
+
+2013-01-01 Chad Versace <chad@chad-versace.us>
+
+	* 0.12-1 :
+        - Fix cryptsetup_shell to handle cryptoption 'allow-discards'
+
+2012-12-22 Karol Babioch <karol@babioch.de>
+
+	* 0.11-1 :
+        - Changed some (help) texts
+        - Further cleanup
+
+2012-12-16 Karol Babioch <karol@babioch.de>
+
+	* 0.10-1 :
+        - Adapted for mkinitcpio-0.12
+        - Basic cleanup
