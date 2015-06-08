@@ -1,0 +1,17 @@
+pkgbase = lib32-gtk-engines
+	pkgdesc = Theme engines for GTK+ 2 (32 bit)
+	pkgver = 2.21.0
+	pkgrel = 3
+	url = http://live.gnome.org/GnomeArt
+	arch = x86_64
+	license = LGPL
+	makedepends = intltool
+	makedepends = gcc-multilib
+	depends = lib32-gtk2
+	depends = gtk-engines
+	options = !libtool
+	source = https://sources.archlinux.org/other/gtk-engines/gtk-engines-2.21.0.tar.gz
+	md5sums = d82ae66d6eb045d83c30b78b13818d41
+
+pkgname = lib32-gtk-engines
+
