@@ -1,0 +1,22 @@
+pkgbase = amide
+	pkgdesc = Medical Imaging Data Examiner
+	pkgver = 1.0.5
+	pkgrel = 3
+	url = http://amide.sourceforge.net/packages.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gnome-doc-utils
+	depends = dcmtk>=3.6.0
+	depends = xmedcon
+	depends = libgnomecanvas
+	depends = ffmpeg
+	depends = gsl
+	depends = gnome-vfs
+	optdepends = volpack: for volume rendering
+	options = !makeflags
+	source = http://downloads.sourceforge.net/project/amide/amide/1.0.5/amide-1.0.5.tgz
+	md5sums = 8a9b89e3d3ec1bb3e390f202f4861a7c
+
+pkgname = amide
+
