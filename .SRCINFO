@@ -1,0 +1,24 @@
+pkgbase = xfce4-netspeed-plugin-default-route
+	pkgdesc = Netspeed plugin for xfce4 panel. Like gnome netspeed applet. Uses default route as first choice for automatic selection
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = http://code.google.com/p/xfce4-netspeed-plugin/
+	install = xfce4-netspeed-plugin.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	depends = xfce4-panel
+	depends = libxfcegui4
+	depends = libgtop
+	conflicts = xfce4-netspeed-plugin
+	replaces = xfce4-netspeed-plugin
+	source = http://xfce4-netspeed-plugin.googlecode.com/files/xfce4-netspeed-plugin-0.3.1.tar.gz
+	source = xfce4-netspeed-plugin.install
+	source = default-route.patch
+	md5sums = b88cacc3ecd53798d76855e35a7a4d79
+	md5sums = b2ebab59089be208323356fef393640a
+	md5sums = 7c9fb6fc30af1613019c5ee1c7ab177d
+
+pkgname = xfce4-netspeed-plugin-default-route
+

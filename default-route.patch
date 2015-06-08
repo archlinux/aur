@@ -1,0 +1,90 @@
+--- /tmp/xfce4-netspeed-plugin/src/xfce4-netspeed-plugin/panel-plugin/device_info.c
++++ /tmp/xfce4-netspeed-plugin-default-route/src/xfce4-netspeed-plugin/panel-plugin/device_info.c
+@@ -35,6 +35,65 @@
+     device_info_fill(device_info);    
+     
+     return device_info;
++}
++
++gboolean
++is_dummy_device(const char* device)
++{
++	glibtop_netload netload;
++	glibtop_get_netload(&netload, device);
++
++	if (netload.if_flags & (1 << GLIBTOP_IF_FLAGS_LOOPBACK))
++		return TRUE;
++
++	/* Skip interfaces without any IPv4/IPv6 address (or
++	   those with only a LINK ipv6 addr) However we need to
++	   be able to exclude these while still keeping the
++	   value so when they get online (with NetworkManager
++	   for example) we don't get a suddent peak.  Once we're
++	   able to get this, ignoring down interfaces will be
++	   possible too.  */
++	if (!(netload.flags & (1 << GLIBTOP_NETLOAD_ADDRESS6)
++	      && netload.scope6 != GLIBTOP_IF_IN6_SCOPE_LINK)
++	    && !(netload.flags & (1 << GLIBTOP_NETLOAD_ADDRESS)))
++		return TRUE;
++
++	return FALSE;
++}
++
++const gchar*
++get_default_route(void)
++{
++	FILE *fp;
++	static char device[50];
++	
++	fp = fopen("/proc/net/route", "r");
++	
++	if (fp == NULL) return NULL;
++	
++	while (!feof(fp)) {
++		char buffer[1024]; 
++		unsigned int ip, gw, flags, ref, use, metric, mask, mtu, window, irtt;
++		int retval;
++		char *rv;
++		
++		rv = fgets(buffer, 1024, fp);
++		if (!rv) {
++			break;
++		}
++		
++		retval = sscanf(buffer, "%49s %x %x %x %u %u %u %x %u %u %u",
++				device, &ip, &gw, &flags, &ref, &use, &metric, &mask, &mtu, &window, &irtt);
++		
++		if (retval != 11) continue;
++			
++		if (gw == 0 && !is_dummy_device(device)) {
++			fclose(fp);
++			return device;
++		}			
++	}
++	fclose(fp);	
++	return NULL;
+ }
+ 
+ void device_info_free(DeviceInfo *device_info) {
+--- /tmp/xfce4-netspeed-plugin/src/xfce4-netspeed-plugin/panel-plugin/xfce4_netspeed_plugin.c
++++ /tmp/xfce4-netspeed-plugin-default-route/src/xfce4-netspeed-plugin/panel-plugin/xfce4_netspeed_plugin.c
+@@ -211,11 +211,16 @@
+ 
+         GList *device, *devices = device_info_list_get();
+         DeviceInfo *device_info, *running_device_info = NULL;
+-        for (device = devices; device != NULL; device = g_list_next(device)) {
++        gchar* default_route = get_default_route();
++        for (device = devices; device != NULL; device = g_list_next(device)) {                
+             device_info = device_info_new(device->data);
+             device_info_fill(device_info);
+-
+-            if (device_info->running && device_info->type != DEVICE_TYPE_LOOPBACK) {
++            if (default_route != NULL && strcmp(device_info->name, default_route)==0){
++                running_device_info = device_info;
++                break;                
++            }
++            
++            if (default_route == NULL && device_info->running && device_info->type != DEVICE_TYPE_LOOPBACK) {
+                 running_device_info = device_info;
+                 break;
+             }
