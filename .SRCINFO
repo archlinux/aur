@@ -1,0 +1,14 @@
+pkgbase = eclipse-ivyde
+	pkgdesc = Eclipse plugin which integrates Apache Ivy's dependency management
+	pkgver = 2.2.0.final
+	pkgrel = 1
+	url = https://ant.apache.org/ivy/ivyde/
+	arch = any
+	license = apache
+	depends = eclipse
+	depends = eclipse-ivyde-ivy
+	source = http://mirrors.ukfast.co.uk/sites/ftp.apache.org/ant/ivyde/2.2.0.final/apache-ivyde-2.2.0.final-201311091524-RELEASE.tar.gz
+	md5sums = 7bed9c2bcf920e7e29735f62a78495c3
+
+pkgname = eclipse-ivyde
+
