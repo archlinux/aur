@@ -1,0 +1,21 @@
+--- NetworkManager-1.0.0.orig/src/devices/wifi/nm-device-wifi.c	2015-02-09 09:44:12.098688713 +0100
++++ NetworkManager-1.0.0/src/devices/wifi/nm-device-wifi.c	2015-02-09 09:44:45.430954930 +0100
+@@ -1362,15 +1362,13 @@
+ 	case NM_DEVICE_STATE_IP_CHECK:
+ 	case NM_DEVICE_STATE_SECONDARIES:
+ 	case NM_DEVICE_STATE_DEACTIVATING:
+-		/* Don't scan when unusable or activating */
++	case NM_DEVICE_STATE_ACTIVATED:
++		/* Don't scan when unusable, or activating, or activated */
+ 		return FALSE;
+ 	case NM_DEVICE_STATE_DISCONNECTED:
+ 	case NM_DEVICE_STATE_FAILED:
+ 		/* Can always scan when disconnected */
+ 		return TRUE;
+-	case NM_DEVICE_STATE_ACTIVATED:
+-		/* Need to do further checks when activated */
+-		break;
+ 	}
+ 
+ 	/* Don't scan if the supplicant is busy */
+
