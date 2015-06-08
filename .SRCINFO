@@ -1,0 +1,22 @@
+pkgbase = ircservices
+	pkgdesc = Services for IRC (NickServ, ChanServ, MemoServ)
+	pkgver = 5.1.24
+	pkgrel = 3
+	url = http://www.ircservices.za.net/
+	install = ircservices.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = patch
+	depends = glibc
+	options = !makeflags
+	options = emptydirs
+	source = http://achurch.org/services/tarballs/ircservices-5.1.24.tar.gz
+	source = path-patch.patch
+	source = ircservices
+	md5sums = d4f531537aeed230026cf5560f221ecb
+	md5sums = 7e4bbf6fb398323afc8e85656ec82c13
+	md5sums = d5d6409ab04b3a715f9adc29a4fb8a2d
+
+pkgname = ircservices
+

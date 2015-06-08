@@ -1,0 +1,15 @@
+post_install() {
+    groupadd irc
+    useradd -G irc ircd
+    chown -R ircd.irc /var/log/ircd
+    chown -R ircd.irc /var/lib/ircd
+}
+
+post_upgrade() {
+    chown -R ircd.irc /var/log/ircd
+    chown -R ircd.irc /var/lib/ircd
+}
+
+post_remove() {
+    echo "-- Don't forget to remove ircd user and irc group if you do not use it"
+}
