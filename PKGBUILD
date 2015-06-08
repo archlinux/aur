@@ -3,7 +3,7 @@
 _python=python
 _pkgname=python-efl
 pkgname=$_python-efl-git
-pkgver=1.14.0beta1.a914.9a19db3
+pkgver=1.14.99a936.g37930f3
 pkgrel=1
 pkgdesc="${_python^} bindings for the Enlightenment Foundation Libraries - Development Version"
 arch=('i686' 'x86_64')
