@@ -9,6 +9,7 @@ pkgbase = netvirt-agent-git
 	makedepends = git
 	makedepends = scons
 	makedepends = cmake
+	makedepends = libcap
 	source = netvirt-agent-git::git+https://github.com/netvirt/netvirt.git
 	md5sums = SKIP
 

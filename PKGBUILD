@@ -9,7 +9,7 @@ url=("http://netvirt.org" "https://github.com/netvirt/netvirt")
 license='GPLv3'
 depends=()
 optdepends=()
-makedepends=('git' 'scons' 'cmake') # 'libqt4-dev' 'libssl-dev')
+makedepends=('git' 'scons' 'cmake' 'libcap') # 'libqt4-dev' 'libssl-dev')
 source="${pkgname}::git+https://github.com/netvirt/netvirt.git"
 md5sums=('SKIP')
 
@@ -56,5 +56,18 @@ build() {
 package() {
   cd ${srcdir}/${pkgname}/build
   make install
+
+  #TODO: this could/should become a post_install item
+  echo "#!/bin/sh
+  sudo chmod 666 /dev/net/tun
+  sudo setcap cap_net_bind_service,cap_net_admin=ep /usr/bin/netvirt-agent
+  " > ${pkgdir}/usr/bin/netvirt-allow_user
+
+  # restartd on ubuntu allow to easily create a daemon with any command,
+  # but unfortunatelly, it does not look to be available under arch linux
+  #echo "#!/bin/sh
+  #sudo pacman -S restartd
+  #echo 'netvirt-agent \"netvirt-agent\" \"sleep 20 && su - \$USER -c netvirt-agent &\" \"\"' | sudo tee -a /etc/restartd.conf
+  #" > ${pkgdir}/usr/bin/netvirt-daemonize
 }
 
