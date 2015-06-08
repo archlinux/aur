@@ -1,0 +1,14 @@
+pkgbase = kdeicons-kfaenza
+	pkgdesc = Faenza Icon Theme for KDE
+	pkgver = 0.8.11
+	pkgrel = 1
+	url = http://kde-look.org/content/show.php?action=content&content=160955
+	arch = any
+	license = GPL3
+	provides = kfaenza-icon-theme
+	conflicts = kfaenza-icon-theme
+	source = kdeicons-kfaenza-0.8.11.tar.gz::https://copy.com/X9JtbVJw9o1d/KFaenza.tar.gz?download=1
+	md5sums = fde139b08ba6116c3cfa011bc5c09fdb
+
+pkgname = kdeicons-kfaenza
+
