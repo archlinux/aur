@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-ilmbase
+	pkgdesc = Base libraries from ILM for OpenEXR (mingw-w64)
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = http://www.openexr.com
+	arch = any
+	license = custom
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = http://download.savannah.nongnu.org/releases/openexr/ilmbase-2.2.0.tar.gz
+	md5sums = b540db502c5fa42078249f43d18a4652
+
+pkgname = mingw-w64-ilmbase
+
