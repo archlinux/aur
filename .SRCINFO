@@ -1,0 +1,18 @@
+pkgbase = bandit-git
+	pkgdesc = Bandit is a security linter for Python source code, utilizing the ast module from the Python standard library.
+	pkgver = 0.10.1.8.g18285c1
+	pkgrel = 1
+	url = https://wiki.openstack.org/wiki/Security/Projects/Bandit
+	arch = any
+	license = APL
+	makedepends = python2-setuptools
+	makedepends = python2-pip
+	makedepends = git
+	depends = python2
+	depends = python2-yaml
+	options = !emptydirs
+	source = git://git.openstack.org/stackforge/bandit
+	md5sums = SKIP
+
+pkgname = bandit-git
+
