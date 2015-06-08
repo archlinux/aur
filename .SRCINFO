@@ -1,0 +1,22 @@
+pkgbase = bareftp
+	pkgdesc = bareFTP a file transfer client supporting the FTP, FTPS and SFTP protocols
+	pkgver = 0.3.11
+	pkgrel = 1
+	url = http://www.bareftp.org/
+	install = bareftp.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool>=0.35
+	makedepends = pkgconfig>=0.9
+	depends = gnome-sharp>=2
+	depends = gnome-icon-theme
+	depends = gnome-keyring-sharp
+	depends = mono>=2
+	source = http://www.bareftp.org/release/bareftp-0.3.11.tar.gz
+	source = fix.patch
+	sha256sums = cafc6cd6f71ee6e6151cadc517349646977d90b372850e194ad505d89aa6682f
+	sha256sums = 2d4a99fe5ff363a7dc97d1abb85fb8f124ee4935801855eef656b0c089c2a5c3
+
+pkgname = bareftp
+

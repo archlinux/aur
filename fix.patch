@@ -1,0 +1,13 @@
+diff -ru bareftp-0.3.11-old/src/bareFTP.Protocol.Ftp/ftp/ListParser.cs bareftp-0.3.11-new/src/bareFTP.Protocol.Ftp/ftp/ListParser.cs
+--- bareftp-0.3.11-old/src/bareFTP.Protocol.Ftp/ftp/ListParser.cs	2013-12-15 22:28:13.000000000 +0200
++++ bareftp-0.3.11-new/src/bareFTP.Protocol.Ftp/ftp/ListParser.cs	2014-11-08 09:32:47.336869813 +0200
+@@ -22,7 +22,8 @@
+ 
+ using System;
+ using System.Collections.Generic;
+-using System.Text;z
++using System.Text;
++using System.Globalization;
+ namespace bareFTP.Protocol.Ftp
+ {
+ 	public class ListParser
