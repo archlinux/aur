@@ -1,0 +1,20 @@
+pkgbase = xcl
+	pkgdesc = An native-code implementation of Common Lisp
+	pkgver = 0.0.0.291
+	pkgrel = 3
+	url = http://armedbear.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = gcc-libs
+	provides = common-lisp
+	options = !makeflags
+	backup = etc/xclrc
+	source = http://armedbear.org/xcl-0.0.0.291.tar.gz
+	source = etcxclrc
+	md5sums = c74e675d220e78d815e9818b969ddf00
+	md5sums = 6f426ad20c0086460067915091cefae8
+
+pkgname = xcl
+
