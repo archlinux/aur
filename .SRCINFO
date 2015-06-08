@@ -1,0 +1,17 @@
+pkgbase = plymouth-theme-manjaro-redefined-bsplash
+	pkgdesc = Manjaro Redefined Plymouth theme.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://kde-look.org/content/show.php?content=166301
+	install = manjaro-redefined-bsplash.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = plymouth
+	source = http://kent.dl.sourceforge.net/project/manjaroredefined/Manjaro-Redefined-Bsplash.tar.gz
+	source = manjaro-redefined-bsplash.install
+	md5sums = SKIP
+	md5sums = 05ba612f303fb1282a46785ea72ebf1e
+
+pkgname = plymouth-theme-manjaro-redefined-bsplash
+
