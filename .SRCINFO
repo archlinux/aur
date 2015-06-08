@@ -1,0 +1,19 @@
+pkgbase = dolphinviewer
+	pkgdesc = An Open Source third party viewers for Second Life® (secondlife) -- BETA.
+	pkgver = 3.6.99.32369
+	pkgrel = 1
+	url = http://dolphinviewer.eregion.de
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	source = dolphinviewer.desktop
+	source = dolphinviewer.launcher
+	source = http://dolphinsource.eregion.de/dolphinviewer3-beta/downloads/Dolphin_Viewer_3_BETA_3_6_99_32369_i686.tar.bz2
+	source = donotregister.patch
+	md5sums = 30dd0d8e86032a38bca52fcf3d466cbe
+	md5sums = 0879128702933080ad018898a003c699
+	md5sums = 20569d73b57b637154a8183a90d1da45
+	md5sums = 1b4db712c2db43c0ae4f69b6b5410c43
+
+pkgname = dolphinviewer
+
