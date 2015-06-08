@@ -1,0 +1,13 @@
+[Unit]
+Description=simple and lightweight fan control program
+Wants=lm_sensors.service
+After=lm_sensors.service
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/thinkfan
+PIDFile=/var/run/thinkfan.pid
+ExecReload=/usr/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

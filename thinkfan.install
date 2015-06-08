@@ -1,0 +1,40 @@
+# This is an install file for thinkfan package.
+
+_update() {
+    echo "Please configure thinkfan in: /etc/thinkfan.conf"
+    echo "Have a look at the examples in: /usr/share/doc/thinkfan/examples for details."
+}
+
+## arg 1:  the new package version
+pre_install() {
+  :
+}
+
+# arg 1:  the new package version
+post_install() {
+  _update
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+pre_upgrade() {
+  :
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  _update
+}
+
+# arg 1:  the old package version
+pre_remove() {
+  :
+}
+
+# arg 1:  the old package version
+post_remove() {
+  :
+}
+
+# vim:set ts=2 sw=2 noet:
