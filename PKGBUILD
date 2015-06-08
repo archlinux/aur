@@ -1,7 +1,7 @@
 # Maintainer: Alexander 'chron' Kempen <chronischzuspaet at gmail dot com>
 pkgname=httpdiff-git
 _pkgname=httpdiff
-pkgver=31.7887644
+pkgver=git
 pkgrel=1
 pkgdesc='Perform the same request against two HTTP servers and diff the results'
 arch=('i686' 'x86_64')
