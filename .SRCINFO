@@ -1,0 +1,20 @@
+pkgbase = texiteasy
+	pkgdesc = Simple and Powerful Latex Editor
+	pkgver = 0.20.0.1
+	pkgrel = 1
+	url = http://texiteasy.com/
+	arch = any
+	license = GPL3
+	makedepends = make
+	makedepends = gcc
+	depends = qt4
+	depends = poppler-qt4
+	depends = zlib
+	depends = texlive-core
+	optdepends = texlive-lang: Support for additional charsets
+	optdepends = texlive-most: Additional texlive libraries
+	source = texiteasy::git+https://github.com/Bramas/texiteasy
+	md5sums = SKIP
+
+pkgname = texiteasy
+
