@@ -1,0 +1,17 @@
+pkgbase = seq24-bzr
+	pkgdesc = A pattern-based midi sequencer with strong live performance functions
+	pkgver = 136
+	pkgrel = 1
+	url = http://launchpad.net/seq24
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = bzr
+	depends = gtkmm>=2.4.0
+	provides = seq24
+	conflicts = seq24
+	source = bzr+http://bazaar.launchpad.net/%7Eseq24team/seq24/trunk
+	md5sums = SKIP
+
+pkgname = seq24-bzr
+
