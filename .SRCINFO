@@ -1,0 +1,16 @@
+pkgbase = ttf-lightfoot
+	pkgdesc = Lightfoot font by Paul Lloyd
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.fontstock.net/type-designers/paul-lloyd.html
+	arch = any
+	license = freeware
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = Lightfoot.zip::http://www.fontstock.net/download/download.ashx?d=317207
+	source = Lightfoot-Narrow-Extra-condensed-Regular.zip::http://www.fontstock.net/download/download.ashx?d=317211
+	md5sums = 156dc4742da480f262dbc631429baa9f
+	md5sums = 028d66e0970500f1bdc6e52b446ab0ec
+
+pkgname = ttf-lightfoot
+
