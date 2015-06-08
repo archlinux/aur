@@ -1,0 +1,29 @@
+pkgbase = redeclipse
+	pkgdesc = free, casual arena shooter
+	pkgver = 1.5.1
+	pkgrel = 2
+	url = http://redeclipse.net
+	install = redeclipse.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	license = CC0
+	license = CCPL:by
+	license = CCPL:by-sa
+	license = ZLIB
+	license = MIT
+	makedepends = ed
+	depends = sdl_image
+	depends = libgl
+	depends = sdl_mixer
+	depends = hicolor-icon-theme
+	depends = glu
+	source = base-1.5.1.tar.gz::https://github.com/red-eclipse/base/archive/v1.5.1.tar.gz
+	source = data-1.5.1.tar.gz::https://github.com/red-eclipse/data/archive/v1.5.1.tar.gz
+	source = 0e67905e42fae53e7d1f377fe8cd7e6a88f3cbb9.patch
+	sha256sums = 2982c4337f4b344c6d77def6b2baec3a2b99b70a88752137475845f95c4d5193
+	sha256sums = eba632f57b4fa76d6701950907231b354398883613da36c17dbc062c1758dd37
+	sha256sums = 390e51b2a4fe73da94a044ed46f03ca7257335e5bef021eb1b1bf73bb4236cc1
+
+pkgname = redeclipse
+
