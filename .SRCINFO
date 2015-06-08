@@ -1,0 +1,18 @@
+pkgbase = freenukum
+	pkgdesc = A free port of the classic 2D Jump & Run game "Duke Nukum"
+	pkgver = 0.2.10
+	pkgrel = 4
+	url = https://launchpad.net/freenukum/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pkgconfig>=0.9
+	depends = sdl_ttf
+	depends = curl
+	depends = libzip
+	optdepends = dosbox (extract shareware data)
+	source = http://launchpad.net/freenukum/trunk/0.2/+download/freenukum-0.2.10.tar.gz
+	md5sums = 21c6d87944518ba88060988bbf78113e
+
+pkgname = freenukum
+
