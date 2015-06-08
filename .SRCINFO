@@ -1,0 +1,17 @@
+pkgbase = gentoo-mirrorselect
+	pkgdesc = Script for selecting Gentoo mirrors.
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/app-portage/mirrorselect/mirrorselect-9999.ebuild
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = python
+	depends = netselect
+	depends = dialog
+	depends = ssl-fetch>=0.2
+	source = git+git://anongit.gentoo.org/proj/mirrorselect.git#tag=2.2.2
+	md5sums = SKIP
+
+pkgname = gentoo-mirrorselect
+
