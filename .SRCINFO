@@ -1,0 +1,26 @@
+pkgbase = kconfigwidgets-git
+	pkgdesc = Widgets for KConfig
+	pkgver = r119.e6e1945
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/kconfigwidgets
+	arch = i686
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	makedepends = kdoctools-git
+	makedepends = python
+	depends = kauth-git
+	depends = kcodecs-git
+	depends = kconfig-git
+	depends = kguiaddons-git
+	depends = ki18n-git
+	depends = kwidgetsaddons-git
+	provides = kconfigwidgets
+	conflicts = kconfigwidgets
+	source = git://anongit.kde.org/kconfigwidgets.git
+	md5sums = SKIP
+
+pkgname = kconfigwidgets-git
+
