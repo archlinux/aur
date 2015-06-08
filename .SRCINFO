@@ -1,0 +1,19 @@
+pkgbase = perl-moosex-types-path-class
+	pkgdesc = A Path::Class type library for Moose
+	pkgver = 0.06
+	pkgrel = 2
+	url = http://search.cpan.org/dist/MooseX-Types-Path-Class
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-extutils-makemaker>=6.30
+	depends = perl-moose>=0.39
+	depends = perl-moosex-types>=0.04
+	depends = perl-path-class>=0.16
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TH/THEPLER/MooseX-Types-Path-Class-0.06.tar.gz
+	md5sums = 8b98dcc6ef5d056781162c9e14a8e94d
+	sha512sums = 93cd8760f9f87c18b7ffce54ef60cf208c923e2d8da341c4a0d5c79e34e526d6f0dae407971c9e320d98c5b157ba32145adf22880799cdb670860b39cacd8441
+
+pkgname = perl-moosex-types-path-class
+
