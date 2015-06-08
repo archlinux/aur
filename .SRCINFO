@@ -1,0 +1,16 @@
+pkgbase = gcovr
+	pkgdesc = The gcovr script applies the Unix gcov command and generate a simple report that summarizes the coverage.
+	pkgver = 3.2
+	pkgrel = 1
+	url = http://gcovr.com
+	arch = any
+	license = custom
+	makedepends = python2
+	makedepends = python2-distribute
+	depends = python2
+	depends = python2-distribute
+	source = https://github.com/gcovr/gcovr/archive/3.2.tar.gz
+	sha256sums = 5a969caf61452705a39f6642f4707d23644bdd2e5ef913014bf95c4bd0263db6
+
+pkgname = gcovr
+
