@@ -1,0 +1,17 @@
+pkgbase = haskell-colock
+	pkgdesc = thread-friendly file locks that don't block the entire program
+	pkgver = 0.2.2
+	pkgrel = 4
+	url = http://hackage.haskell.org/package/colock
+	install = haskell-colock.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = ghc
+	depends = haskell-unix=2.4.0.2
+	options = strip
+	source = http://hackage.haskell.org/packages/archive/colock/0.2.2/colock-0.2.2.tar.gz
+	md5sums = 8dafadcb135c8b3c61eff2033109afee
+
+pkgname = haskell-colock
+
