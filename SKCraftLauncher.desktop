@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=SKCraft Launcher
+GenericName=skcraftlauncher
+Comment=An open-source Minecraft launcher for downloading, installing, and updating modpacks.
+Exec=skcraft
+Icon=/usr/share/pixmaps/SKCraftLauncher.png
+Terminal=false
+Type=Application
+Categories=Game;

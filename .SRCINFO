@@ -1,0 +1,22 @@
+pkgbase = skcraft-launcher
+	pkgdesc = SKCraft Launcher - An open-source Minecraft launcher for downloading, installing, and updating modpacks.
+	pkgver = latest
+	pkgrel = 1
+	url = http://skcraft.com
+	arch = any
+	license = LGPL3
+	depends = java-runtime
+	depends = xorg-server-utils
+	depends = openal
+	noextract = SKCraftLauncher.jar
+	source = skcraft
+	source = SKCraftLauncher.desktop
+	source = icon.png
+	source = http://update.skcraft.com/quark/bootstrap/SKCraftLauncher.jar
+	md5sums = 48becf69586e867503f9414d4503d276
+	md5sums = d46eeeae116c5e9d714f2687a0ae4d9d
+	md5sums = 1dc93765fe1957e1b0c5fdd4f2db065a
+	md5sums = b1848840913fca77e7a480037f57ae4c
+
+pkgname = skcraft-launcher
+
