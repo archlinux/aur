@@ -1,0 +1,21 @@
+pkgbase = haskell-cookie
+	pkgdesc = HTTP cookie parsing and rendering
+	pkgver = 0.4.1.4
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/cookie
+	install = haskell-cookie.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = haskell-blaze-builder>=0.2.1
+	depends = haskell-data-default
+	depends = haskell-deepseq
+	depends = haskell-text>=0.11.0.5
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/cookie/0.4.1.4/cookie-0.4.1.4.tar.gz
+	md5sums = 488c3a187fb1e3c4d60557c45d97cbf2
+
+pkgname = haskell-cookie
+
