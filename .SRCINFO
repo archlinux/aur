@@ -1,0 +1,17 @@
+pkgbase = pdfmasher
+	pkgdesc = PDF to eBook Conversion Tool
+	pkgver = 0.7.4
+	pkgrel = 2
+	url = http://www.hardcoded.net/pdfmasher/
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python
+	depends = python-pyqt4
+	depends = python-cssutils
+	depends = python-lxml
+	depends = python-markdown
+	depends = python-cssselect
+
+pkgname = pdfmasher
+
