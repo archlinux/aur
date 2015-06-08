@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1
+Name=Juniper's Knot
+Comment=A short kinetic novel crafted in a month by Dischan, Juniper's Knot is a story told from dual perspectives: that of a demon and a boy.
+Icon=junipersknot
+Exec=/usr/bin/junipersknot
+Terminal=false
+Categories=Application;Game;

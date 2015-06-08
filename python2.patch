@@ -1,0 +1,9 @@
+diff -daur Juniper's Knot-linux-x86.orig/Juniper's Knot.py Juniper's Knot-linux-x86/Juniper's Knot.py
+--- Juniper's Knot-linux-x86.orig/Juniper's Knot.py	2012-11-04 23:49:20.813299813 +1100
++++ Juniper's Knot-linux-x86/Juniper's Knot.py	2012-11-04 23:49:44.653170548 +1100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ #@PydevCodeAnalysisIgnore
+ # Copyright 2004-2012 Tom Rothamel <pytom@bishoujo.us>
+ #
