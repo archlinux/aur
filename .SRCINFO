@@ -1,0 +1,21 @@
+pkgbase = myagent-im-git
+	pkgdesc = Mail.Ru Agent
+	pkgver = 20130319
+	pkgrel = 1
+	url = http://code.google.com/p/myagent-im/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc
+	makedepends = flex
+	makedepends = pkg-config
+	makedepends = sed
+	makedepends = git
+	depends = zlib
+	depends = xapian-core
+	depends = aspell
+	depends = libxss
+	depends = qtmobility
+
+pkgname = myagent-im-git
+
