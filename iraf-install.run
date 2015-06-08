@@ -1,0 +1,4 @@
+#/bin/bash
+su -c "/iraf/iraf/unix/hlib/install"
+su -c "cd /usr/local/src/x11iraf/ ; /usr/local/src/x11iraf/install"
+su -c "cd /usr/local/bin ; tar -xzf ds9.linux.tar.gz" && su -c "cd /usr/local/bin ; rm -f ds9.linux.tar.gz"

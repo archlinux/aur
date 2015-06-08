@@ -1,0 +1,35 @@
+pkgbase = iraf
+	pkgdesc = Image Reduction and Analysis Facility
+	pkgver = 2.15
+	pkgrel = 2
+	url = http://iraf.noao.edu/
+	install = iraf.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = tcsh
+	depends = libxmu
+	depends = tcl
+	noextract = as.pcix.gen.gz
+	noextract = nb.lnux.x86.gz
+	noextract = ib.lnux.x86.gz
+	noextract = x11iraf-v2.0BETA-bin.linux.tar.gz
+	source = http://iraf.noao.edu/iraf/ftp/iraf/v215/PCIX/as.pcix.gen.gz
+	source = http://iraf.noao.edu/iraf/ftp/iraf/v215/PCIX/nb.lnux.x86.gz
+	source = http://iraf.noao.edu/iraf/ftp/iraf/v215/PCIX/ib.lnux.x86.gz
+	source = http://iraf.noao.edu/iraf/ftp/iraf/x11iraf/x11iraf-v2.0BETA-bin.linux.tar.gz
+	source = iraf.desktop
+	source = iraf.png
+	source = iraf.run
+	source = iraf-install.run
+	md5sums = d08b3223595fc5250276bed6369df271
+	md5sums = 903c04fe63f3563f87dee09090290b0c
+	md5sums = 8e15cd74492c5f1edca373123dd92272
+	md5sums = 059c26f38f2656d1acf9d3972cf761b0
+	md5sums = ca522aa61b7685bb5247b606df16f31f
+	md5sums = 556669a44c89e38c09aa6b75052fcee5
+	md5sums = 37ca80752e73ed263243b0fce098d299
+	md5sums = ae9c71e0591c7636a7351eacf9bb10ef
+
+pkgname = iraf
+

@@ -1,0 +1,38 @@
+post_install () {
+
+/usr/sbin/useradd -c "IRAF system login" -d /iraf/iraf/local -m -s /bin/csh -u 501 iraf >& /dev/null
+
+chown -R iraf /iraf/
+chgrp -R iraf /iraf/
+
+cd /iraf/iraf/unix/hlib/
+su iraf -c "source irafuser.csh"
+
+echo ' IMPORTANT'
+echo 'Run "iraf-install" as root and answer "Default" (Press Enter) to all.'
+echo 'Make iraf folder in your home with "mkdir ~/iraf" and run "mkiraf"'
+echo 'in this directory'
+
+}
+
+post_upgrade() {
+
+chown -R iraf /iraf/
+chgrp -R iraf /iraf/
+
+cd /iraf/iraf/unix/hlib/
+su iraf -c "source irafuser.csh"
+
+echo "Run "iraf-install" as root and answer "Default" (Press Enter) to all, to finish the re-instalation"
+
+}
+
+post_remove() {
+
+/usr/sbin/userdel -f iraf
+rm -fR /iraf
+cd /usr/local/bin/
+rm -f cl ds9 mkiraf mkmlist mkpkg generic xgterm rmbin rmfiles rpp rtar sgidispatch wtar xc xpp ximtool* vximtool xyacc
+cd /usr/local/lib
+rm -f imtoolrc libcdl.a
+}

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Iraf
+GenericName=Iraf
+Comment=Image Reduction and Analysis Facility
+Exec=iraf
+Icon=iraf
+Terminal=false
+Type=Application
+Categories=Application;Sciences;Other;

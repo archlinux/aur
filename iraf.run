@@ -1,0 +1,4 @@
+#/bin/bash
+cd ~/iraf
+/usr/local/bin/ds9 & 
+/usr/local/bin/xgterm -sbr -e "cd ~/iraf ; /usr/local/bin/cl" &
