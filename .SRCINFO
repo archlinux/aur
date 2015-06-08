@@ -1,0 +1,17 @@
+pkgbase = emacs-chess-git
+	pkgdesc = Chess client written entirely in Emacs Lisp
+	pkgver = 832.27f7bd7
+	pkgrel = 1
+	url = http://www.newartisans.com/2008/05/emacs-chess-now-hosted-at-github.html
+	install = emacs-chess.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = emacs
+	optdepends = crafty: as chess engine
+	optdepends = gnuchess: as chess engine
+	source = git://github.com/jwiegley/emacs-chess.git
+	md5sums = SKIP
+
+pkgname = emacs-chess-git
+
