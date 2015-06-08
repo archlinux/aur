@@ -1,0 +1,21 @@
+pkgbase = kmenuedit-git
+	pkgdesc = KDE menu editor
+	pkgver = r754.389b7dc
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/kde-workspace
+	install = kmenuedit-git.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = kdoctools
+	depends = khotkeys-git
+	provides = kmenuedit
+	conflicts = kmenuedit
+	conflicts = kdebase-workspace
+	source = git://anongit.kde.org/kmenuedit.git
+	md5sums = SKIP
+
+pkgname = kmenuedit-git
+
