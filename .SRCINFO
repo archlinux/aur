@@ -1,0 +1,15 @@
+pkgbase = dextools
+	pkgdesc = Miscellaenous DEX (Dalvik Executable) tools. Including dexrehash which displays/recomputes checksum.
+	pkgver = 20130513
+	pkgrel = 1
+	url = https://github.com/cryptax/dextools
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = perl-digest-adler32
+	options = !strip
+	source = LICENSE
+	md5sums = cc283015f95abdc7db365416df806c20
+
+pkgname = dextools
+
