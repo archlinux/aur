@@ -1,0 +1,163 @@
+diff -ruN vdradmin-am-3.6.10.orig/install.sh vdradmin-am-3.6.10/install.sh
+--- vdradmin-am-3.6.10.orig/install.sh	2014-08-08 11:27:00.235758870 +0200
++++ vdradmin-am-3.6.10/install.sh	2014-08-08 11:34:45.989846477 +0200
+@@ -8,15 +8,15 @@
+ 
+ PATH=$PATH:/sbin:/bin:/usr/sbin:/usr/bin
+ DESTDIR=${DESTDIR}
+-LIBDIR=${LIBDIR:-$DESTDIR/usr/share/vdradmin}
+-ETCDIR=${ETCDIR:-$DESTDIR/etc/vdradmin}
+-DOCDIR=${DOCDIR:-$DESTDIR/usr/share/doc/vdradmin}
+-BINDIR=${BINDIR:-$DESTDIR/usr/bin}
+-LOCDIR=${LOCDIR:-$DESTDIR/usr/share/locale}
+-MANDIR=${MANDIR:-$DESTDIR/usr/share/man}
+-LOGDIR=${LOGDIR:-$DESTDIR/var/log/vdradmin}
+-CACHEDIR=${CACHEDIR:-$DESTDIR/var/cache/vdradmin}
+-PIDFILE=${PIDFILE:-$DESTDIR/var/run/vdradmin/vdradmind.pid}
++LIBDIR=${LIBDIR:-/usr/share/vdradmin}
++ETCDIR=${ETCDIR:-/etc/vdradmin}
++DOCDIR=${DOCDIR:-/usr/share/doc/vdradmin}
++BINDIR=${BINDIR:-/usr/bin}
++LOCDIR=${LOCDIR:-/usr/share/locale}
++MANDIR=${MANDIR:-/usr/share/man}
++LOGDIR=${LOGDIR:-/var/log/vdradmin}
++CACHEDIR=${CACHEDIR:-/var/cache/vdradmin}
++PIDFILE=${PIDFILE:-/var/run/vdradmin/vdradmind.pid}
+ VIDEODIR=${VIDEODIR:-/video}
+ EPGIMAGES=${EPGIMAGES:-$VIDEODIR/epgimages}
+ VDRCONF=${VDRCONF:-$VIDEODIR}
+@@ -146,27 +146,27 @@
+ 
+ 	perlModules
+ 
+-	makeDir $LIBDIR 1 && cp -r template lib $LIBDIR || exit 1
+-	makeDir $BINDIR || exit 1
+-	makeDir $DOCDIR && cp -r contrib COPYING CREDITS HISTORY INSTALL LGPL.txt README* REQUIREMENTS FAQ $DOCDIR || exit 1
+-	makeDir $MANDIR/man8 && cp vdradmind.pl.1 $MANDIR/man8/vdradmind.8 || exit 1
++	makeDir $DESTDIR/$LIBDIR 1 && cp -r template lib $DESTDIR/$LIBDIR || exit 1
++	makeDir $DESTDIR/$BINDIR || exit 1
++	makeDir $DESTDIR/$DOCDIR && cp -r contrib COPYING CREDITS HISTORY INSTALL LGPL.txt README* REQUIREMENTS FAQ $DESTDIR/$DOCDIR || exit 1
++	makeDir $DESTDIR/$MANDIR/man8 && cp vdradmind.pl.1 $DESTDIR/$MANDIR/man8/vdradmind.8 || exit 1
+ 
+ 	(
+ 		cd locale
+ 		for lang in *
+ 		do
+-			makeDir $LOCDIR/$lang/LC_MESSAGES/ && install -m 644 $lang/LC_MESSAGES/vdradmin.mo $LOCDIR/$lang/LC_MESSAGES/vdradmin.mo || exit 1
++			makeDir $DESTDIR/$LOCDIR/$lang/LC_MESSAGES/ && install -m 644 $lang/LC_MESSAGES/vdradmin.mo $DESTDIR/$LOCDIR/$lang/LC_MESSAGES/vdradmin.mo || exit 1
+ 		done
+ 	)
+ 
+ 	local RESTART=
+-	if [ -d $BINDIR ]; then
++	if [ -d $DESTDIR/$BINDIR ]; then
+ 		killRunningVDRAdmin
+ 		if [ $? -ne 0 ] ; then
+ 			RESTART=1
+ 			echo "Killed running VDRAdmin-AM..."
+ 		fi
+-		sed <vdradmind.pl >$BINDIR/vdradmind \
++		sed <vdradmind.pl >$DESTDIR/$BINDIR/vdradmind \
+ 		    -e "s/^\(my \$SEARCH_FILES_IN_SYSTEM *=\) 0;/\1 1;/" \
+ 		    -e "s:/usr/share/vdradmin/lib:${LIBDIR}/lib:" \
+ 		    -e "s:/usr/share/vdradmin/template:${LIBDIR}/template:" \
+@@ -179,31 +179,31 @@
+ 		    -e "s:\(\$CONFIG{EPGIMAGES} *= \)\"\$CONFIG{VIDEODIR}/epgimages\";:\1\"${EPGIMAGES}\";:" \
+ 				-e "s:\(\$CONFIG{VDRCONFDIR} *= \)\"\$CONFIG{VIDEODIR}\";:\1\"${VDRCONF}\";:"
+ 
+-		chmod a+x  $BINDIR/vdradmind
++		chmod a+x  $DESTDIR/$BINDIR/vdradmind
+ 
+ 		if [ "$CONFIG" ]; then
+ 			echo "Configuring VDRAdmin-AM..."
+-			$BINDIR/vdradmind -c
++			$DESTDIR/$BINDIR/vdradmind -c
+ 		fi
+ 
+ 		if [ "$RESTART" ]; then
+ 			echo "Restarting VDRAdmin-AM..."
+-			$BINDIR/vdradmind
++			$DESTDIR/$BINDIR/vdradmind
+ 		fi
+ 
+ 		echo ""
+-		if [ -e $BINDIR/vdradmind.pl ]; then
+-			echo "Removing ancient $BINDIR/vdradmind.pl"
+-			rm -f $BINDIR/vdradmind.pl
++		if [ -e $DESTDIR/$BINDIR/vdradmind.pl ]; then
++			echo "Removing ancient $DESTDIR/$BINDIR/vdradmind.pl"
++			rm -f $DESTDIR/$BINDIR/vdradmind.pl
+ 		fi
+ 		for man in man1/vdradmind.pl.1 man1/vdradmind.1; do
+-			if [ -e $MANDIR/$man ]; then
+-				echo "Removing ancient $MANDIR/$man"
+-				rm -f $MANDIR/$man
++			if [ -e $DESTDIR/$MANDIR/$man ]; then
++				echo "Removing ancient $DESTDIR/$MANDIR/$man"
++				rm -f $DESTDIR/$MANDIR/$man
+ 			fi
+ 		done
+ 	else
+-		echo "$BINDIR exists but is no directory!"
++		echo "$DESTDIR/$BINDIR exists but is no directory!"
+ 		echo "Aborting..."
+ 		exit 1
+ 	fi
+@@ -213,7 +213,7 @@
+ 	echo "VDRAdmin-AM has been installed!"
+ 	echo ""
+ 	if [ -z "$RESTART" ]; then
+-		echo "Run \"$BINDIR/vdradmind\" to start VDRAdmin-AM."
++		echo "Run \"$DESTDIR/$BINDIR/vdradmind\" to start VDRAdmin-AM."
+ 		echo ""
+ 	fi
+ 	echo "NOTE:"
+@@ -239,33 +239,33 @@
+ 	echo ""
+ 
+ 	killRunningVDRAdmin
+-	if [ -d $DOCDIR ]; then
+-		rm -rf $DOCDIR
++	if [ -d $DESTDIR/$DOCDIR ]; then
++		rm -rf $DESTDIR/$DOCDIR
+ 	fi
+-	if [ -d $LIBDIR ]; then
+-		rm -rf $LIBDIR
++	if [ -d $DESTDIR/$LIBDIR ]; then
++		rm -rf $DESTDIR/$LIBDIR
+ 	fi
+-	if [ -d $CACHEDIR ]; then
+-		rm -rf $CACHEDIR
++	if [ -d $DESTDIR/$CACHEDIR ]; then
++		rm -rf $DESTDIR/$CACHEDIR
+ 	fi
+ 	for man in man1/vdradmind.pl.1 man1/vdradmind.1 man8/vdradmind.8; do
+-		if [ -e $MANDIR/$man ]; then
+-			rm -f $MANDIR/$man
++		if [ -e $DESTDIR/$MANDIR/$man ]; then
++			rm -f $DESTDIR/$MANDIR/$man
+ 		fi
+ 	done
+-	if [ -e $BINDIR/vdradmind.pl ]; then
+-		rm -f $BINDIR/vdradmind.pl
++	if [ -e $DESTDIR/$BINDIR/vdradmind.pl ]; then
++		rm -f $DESTDIR/$BINDIR/vdradmind.pl
+ 	fi
+-	if [ -e $BINDIR/vdradmind ]; then
+-		rm -f $BINDIR/vdradmind
++	if [ -e $DESTDIR/$BINDIR/vdradmind ]; then
++		rm -f $DESTDIR/$BINDIR/vdradmind
+ 	fi
+-	rm -f $LOCDIR/*/LC_MESSAGES/vdradmin.mo
++	rm -f $DESTDIR/$LOCDIR/*/LC_MESSAGES/vdradmin.mo
+ 
+ 	echo ""
+ 	echo "VDRAdmin-AM has been uninstalled!"
+ 	echo ""
+-	if [ -d $ETCDIR ]; then
+-		echo "Your configuration files located in $ETCDIR have NOT been deleted!"
++	if [ -d $DESTDIR/$ETCDIR ]; then
++		echo "Your configuration files located in $DESTDIR/$ETCDIR have NOT been deleted!"
+ 		echo "If you want to get rid of them, please delete them manually!"
+ 		echo ""
+ 	fi

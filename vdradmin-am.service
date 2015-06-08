@@ -1,0 +1,10 @@
+[Unit]
+Description=VDRAdmin-AM
+After=vdr.service
+
+[Service]
+User=vdr
+ExecStart=/usr/bin/vdradmind -n
+
+[Install]
+WantedBy=multi-user.target
