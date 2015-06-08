@@ -1,0 +1,16 @@
+pkgbase = ttf-inconsolata-dz
+	pkgdesc = Monospace font for pretty code listings and for the terminal (modified to have straight single and double quotes)
+	pkgver = 20091202
+	pkgrel = 3
+	url = http://nodnod.net/2009/feb/12/adding-straight-single-and-double-quotes-inconsola/
+	install = ttf-inconsolata-dz.install
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	provides = ttf-font
+	source = http://media.nodnod.net/Inconsolata-dz.otf.zip
+	source = OFL.txt
+
+pkgname = ttf-inconsolata-dz
+
