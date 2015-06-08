@@ -1,0 +1,31 @@
+pkgbase = voxelands
+	pkgdesc = A fork of Minetest, an Infiniminer/Minecraft inspired game
+	pkgver = 1505.01
+	pkgrel = 1
+	url = http://voxelands.com
+	install = voxelands.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = gettext
+	depends = libxxf86vm
+	depends = irrlicht
+	depends = sqlite
+	depends = libvorbis
+	depends = openal
+	depends = glu
+	depends = libsm
+	depends = hicolor-icon-theme
+	depends = freetype2
+	provides = minetest-classic
+	provides = voxelands
+	conflicts = minetest-classic
+	conflicts = minetest-classic-next-git
+	conflicts = voxelands-next-git
+	replaces = minetest-classic
+	source = http://voxelands.com/downloads/voxelands-1505.01-src.tar.bz2
+	sha256sums = 2e95ae3b7a68c618017e0f65cb1a4f8bb64a4df1880e1c5a33e5631fc0d8b840
+
+pkgname = voxelands
+
