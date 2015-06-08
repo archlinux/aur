@@ -1,0 +1,26 @@
+pkgbase = selfoss
+	pkgdesc = The new multipurpose rss reader, live stream, mashup, aggregation web application
+	pkgver = 2.13
+	pkgrel = 1
+	url = http://selfoss.aditu.de/
+	install = selfoss.install
+	arch = any
+	license = GPL3
+	depends = php>=5.3
+	depends = php-gd
+	optdepends = apache: server, depedency if not using lighttpd or nginx
+	optdepends = lighttpd: server, depedency if not using apache or nginx
+	optdepends = nginx: server, depedency if not using lighttpd or apache
+	optdepends = mariadb: database, depedency if not using postgresql or sqlite
+	optdepends = postgresql: database, depedency if not using mariadb or sqlite
+	optdepends = sqlite: database, depedency if not using postgresql or mariadb
+	optdepends = php-sqlite: dependency if using sqlite
+	optdepends = wget: for automatic updating feeds with cron
+	optdepends = curl: for automatic updating feeds with cron
+	backup = etc/webapps/selfoss/config.ini
+	backup = usr/share/webapps/selfoss/config.ini
+	source = https://github.com/SSilence/selfoss/releases/download/2.13/selfoss-2.13.zip
+	sha256sums = 407d7899bbac684e0c78385ad02af027af441198683ceedc23edc58c0dd19b8a
+
+pkgname = selfoss
+
