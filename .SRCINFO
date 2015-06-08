@@ -1,0 +1,16 @@
+pkgbase = digitalocean-indicator
+	pkgdesc = Manage Digital Ocean droplets from your desktop
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/andrewsomething/digitalocean-indicator
+	install = digitalocean-indicator.install
+	arch = any
+	license = GPL
+	depends = python2-distutils-extra
+	depends = libappindicator-gtk3
+	depends = python2-digitalocean
+	source = https://github.com/andrewsomething/digitalocean-indicator/archive/0.2.1.tar.gz
+	sha256sums = f37f75dbc21ccf7eddb7ac51898717cf6fc45e8257546a38ab2f6bb4c64b4496
+
+pkgname = digitalocean-indicator
+
