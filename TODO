@@ -1,0 +1,6 @@
+1: Implement show Tags for tracks (DONE)
+2: Notifications with libnotify (DONE)
+3: Hold playlist after reboot
+4: Save track number & position in playlist after restart
+5: .pls and .m3u parsing
+

@@ -1,0 +1,15 @@
+pkgbase = guark
+	pkgdesc = Tray audio player. Written on C with GTK and powered by GStreamer
+	pkgver = 0.0.2
+	pkgrel = 2
+	url = https://github.com/DimaSmirnov/guark
+	arch = any
+	license = GPL
+	depends = gstreamer0.10,
+	depends = gstreamer0.10-plugins,
+	depends = libnotify
+	source = git://github.com/DimaSmirnov/guark.git
+	md5sums = SKIP
+
+pkgname = guark
+
