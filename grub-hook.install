@@ -1,0 +1,3 @@
+post_install() {
+  echo "Please add 'grub' to the HOOKs array in /etc/mkinitcpio.conf (last position)."
+}
