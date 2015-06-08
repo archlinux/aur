@@ -1,0 +1,15 @@
+pkgbase = mod_auth_gssapi
+	pkgdesc = Kerberos authentication module for the Apache HTTP Server
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/modauthgssapi/mod_auth_gssapi
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = apache>=2.4
+	depends = krb5>=1.11
+	source = git://github.com/modauthgssapi/mod_auth_gssapi#tag=v1.2.0
+	sha256sums = SKIP
+
+pkgname = mod_auth_gssapi
+
