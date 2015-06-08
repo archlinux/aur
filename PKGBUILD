@@ -1,10 +1,11 @@
-# Maintainer : Martin Wimpress <code@flexion.org>
+# Maintainer : Sebastian Lau <lauseb644@gmail.com>
+# Contributor: Martin Wimpress <code@flexion.org>
 # Contributor: Liganic <liganic-aur@gmx.org>
 # Contributor: Bernd Amend <berndamend@web.de>
 # Contributor: Holodoc <archlinux@bananapro.de>
 
 pkgname=giteye
-pkgver=1.8.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="A desktop for Git. It works with TeamForge, CloudForge, GitHub and other Git services."
 arch=('i686' 'x86_64')
@@ -13,28 +14,38 @@ license=('custom')
 depends=('git' 'java-environment' 'python2')
 makedepends=('unzip')
 options=('!strip')
-source=("https://downloads-guests.open.collab.net/files/documents/61/9413/GitEye-${pkgver}-linux.x86.zip"
+source=("https://downloads-guests.open.collab.net/files/documents/61/10458/GitEye-${pkgver}-linux.x86.zip"
         "LICENSE"
         "${pkgname}.desktop")
-sha256sums=('260a2acfc486166834f1b0321f35607459fdc52f8f0a814c20fc277574054493'
-            '76817988d60474b3e59b09bd2f6c35018d305e639b51751747d4af15ffec631b'
-            '0cc7bb016275f8aad6864882194d6d88b6dfe6ccb2e8dba978960b7bed6f9e1d')
+md5sums=('4ff6ee5c75cc05cd374b32563bd75de1'
+	 '4df23a2c4f45c567feae7665694cd11a'
+	 '3144b18d4ddf6ac166afe374872ce4b4')
 
 if [ "$CARCH" == "x86_64" ]; then
-    source[0]="https://downloads-guests.open.collab.net/files/documents/61/9414/GitEye-${pkgver}-linux.x86_64.zip"
-    sha256sums[0]='72ad76b1e0a597a1b476c0fc6d9febf000a3480beb1d492646ca3d00b5945ee8'
+    source[0]="https://downloads-guests.open.collab.net/files/documents/61/10459/GitEye-${pkgver}-linux.x86_64.zip"
+    md5sums[0]='a8fb375b0ae86be9df9dd644e2e0d49f'
 fi
 
 noextract=(${source[@]##*/}) # extract nothing
 
 package() {
     cd "${srcdir}"
+
+    msg2 "Extracting GitEye from archive..."
     install -Ddm755 "${pkgdir}/opt/${pkgname}/"
     install -Ddm755 "${pkgdir}/usr/bin/"
-    unzip ${noextract} -d "${pkgdir}/opt/${pkgname}/"
+    unzip -q ${noextract} -d "${pkgdir}/opt/${pkgname}/"
+
+    msg2 "Linking executable..."
     ln -s "/opt/${pkgname}/GitEye" "${pkgdir}/usr/bin/"
+
+    msg2 "Installing LICENSE..."
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    msg2 "Installing desktop file..."
     install -Dm644 ${pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm644 "${pkgdir}/opt/${pkgname}/icon.xpm" "${pkgdir}/usr/share/pixmaps/${pkgname}.xpm"
-    sed -i 's/python/python2/' "${pkgdir}/opt/giteye/plugins/org.apache.ant_1.8.4.v201303080030/bin/runant.py"
+
+    msg2 "Making apache ant use python2 instead of python..."
+    sed -i 's/python/python2/' "${pkgdir}/opt/giteye/plugins/org.apache.ant_1.9.2.v201404171502/bin/runant.py"
 }
