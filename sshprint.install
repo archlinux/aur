@@ -1,0 +1,7 @@
+# Maintainer: Hans-Nikolai Viessmann <hv15@hw.ac.uk>
+post_install() {
+  echo ">>> Remember to create your config files for \`sshprint'"
+  echo ">>> They are meant to be located in \$HOME/.config/sshprint/"
+  echo ">>> Examples can be found under /usr/share/doc/sshprint/ or"
+  echo ">>> online at https://github.com/hv15/sshprint."
+}
