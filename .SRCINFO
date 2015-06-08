@@ -1,0 +1,13 @@
+pkgbase = gog-freedom-planet
+	pkgdesc = Freedom Planet is a combat-based platform adventure that pits a spunky dragon girl and her friends against an alien attack force.
+	pkgver = 1.0.0.3
+	pkgrel = 1
+	url = http://freedomplanet.galaxytrail.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = gog://gog_freedom_planet_1.0.0.3.tar.gz
+	sha256sums = 6e1aa64edc14abd2594afe1acd160d6e0f3e3e910304ce254b33fe71634b963e
+
+pkgname = gog-freedom-planet
+
