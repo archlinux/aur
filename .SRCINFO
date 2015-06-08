@@ -1,0 +1,13 @@
+pkgbase = nodejs-connect-docco
+	pkgdesc = docco middleware for connect. Mix it with socket.io and watch to get fancy automatic updates.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = http://github.com/mklabs/connect-docco
+	arch = any
+	depends = nodejs
+	noextract = connect-docco-0.0.2.tgz
+	source = http://registry.npmjs.org/connect-docco/-/connect-docco-0.0.2.tgz
+	sha1sums = e75fe3432d2bdf142141f4eebe46b3d65dc9434d
+
+pkgname = nodejs-connect-docco
+
