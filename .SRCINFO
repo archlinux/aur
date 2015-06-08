@@ -1,0 +1,29 @@
+pkgbase = partitionmanager-git
+	pkgdesc = A KDE utility that allows you to manage disks, partitions, and file systems
+	pkgver = 1.2.1.r922.b651d8d
+	pkgrel = 1
+	url = http://kde.org/applications/system/kdepartitionmanager/
+	install = partitionmanager-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	makedepends = python
+	depends = kmpcore-git
+	depends = hicolor-icon-theme
+	optdepends = e2fsprogs: ext2/3/4 support
+	optdepends = xfsprogs: XFS support
+	optdepends = jfsutils: JFS support
+	optdepends = reiserfsprogs: Reiser support
+	optdepends = ntfsprogs: NTFS support
+	optdepends = dosfstools: FAT32 support
+	provides = partitionmanager
+	conflicts = partitionmanager
+	source = git://anongit.kde.org/partitionmanager#branch=kpmcore
+	sha1sums = SKIP
+
+pkgname = partitionmanager-git
+
