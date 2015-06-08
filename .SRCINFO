@@ -1,0 +1,23 @@
+pkgbase = haskell-aeson
+	pkgdesc = A JSON parsing and encoding library optimized for ease of use and high performance.
+	pkgver = 0.8.0.2
+	pkgrel = 2
+	url = https://github.com/bos/aeson
+	install = haskell-aeson.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = ghc
+	depends = haskell-attoparsec
+	depends = haskell-unordered-containers
+	depends = haskell-mtl
+	depends = haskell-syb
+	depends = haskell-vector
+	depends = haskell-dlist
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/aeson/0.8.0.2/aeson-0.8.0.2.tar.gz
+	md5sums = 33f09a236e47dfa87f5fb292f48d189a
+
+pkgname = haskell-aeson
+
