@@ -1,0 +1,22 @@
+pkgbase = libkcddb-frameworks-git
+	pkgdesc = KDE CDDB library. KF5 Frameworks branch (GIT version)
+	pkgver = v4.13.80.19.g1b6ba68
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/kdemultimedia/libkcddb
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	makedepends = git
+	depends = kio
+	depends = libmusicbrainz5
+	provides = libkcddb
+	conflicts = libkcddb
+	source = git://anongit.kde.org/libkcddb#branch=kf5
+	sha1sums = SKIP
+
+pkgname = libkcddb-frameworks-git
+
