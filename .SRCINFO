@@ -1,0 +1,22 @@
+pkgbase = mingw-w64-sdl2_image
+	pkgdesc = SDL2 image libraries (mingw-w64)
+	pkgver = 2.0.0
+	pkgrel = 9
+	url = http://www.libsdl.org
+	arch = any
+	license = MIT
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	depends = mingw-w64-sdl2
+	depends = mingw-w64-libtiff
+	depends = mingw-w64-libjpeg-turbo
+	depends = mingw-w64-libwebp
+	depends = mingw-w64-libpng
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = http://www.libsdl.org/projects/SDL_image/release/SDL2_image-2.0.0.tar.gz
+	md5sums = fb399c8386fb3248f1b33cfe81bdf92b
+
+pkgname = mingw-w64-sdl2_image
+
