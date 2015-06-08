@@ -1,0 +1,13 @@
+pkgbase = abduco
+	pkgdesc = Tool for session {at,de}tach support which allows a process to run independently from its controlling terminal
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://www.brain-dump.org/projects/abduco/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://www.brain-dump.org/projects/abduco/abduco-0.3.tar.gz
+	sha512sums = 0bbd3a52e256738d39edf8e73e43d72fd4bcf2d240f45b8287486910777310320e239e7d1abb523a37c573dc557a0e33bf5849aa34f50f261f50c27a80db7338
+
+pkgname = abduco
+
