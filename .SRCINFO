@@ -1,0 +1,13 @@
+pkgbase = downgrader
+	pkgdesc = Powerful packages downgrader for Archlinux. Works with libalpm, ARM and pacman logs
+	pkgver = 1.8.0
+	pkgrel = 2
+	url = https://github.com/DimaSmirnov/Archlinux-downgrader
+	arch = i686
+	arch = x86_64
+	license = GPL
+	optdepends = sudo: for installation via sudo
+	source = downgrader-1.8.0::http://www.igus.lv/downgrader/downgrader.tar.xz
+
+pkgname = downgrader
+
