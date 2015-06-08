@@ -1,0 +1,14 @@
+pkgbase = alsacap
+	pkgdesc = ALSA device capability lister
+	pkgver = 0
+	pkgrel = 1
+	url = http://www.volkerschatz.com/noise/alsa.html#alsacap
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = alsa-lib
+	source = http://www.volkerschatz.com/noise/alsacap.tgz
+	md5sums = 19642bdffd4666caa53344271aa585e9
+
+pkgname = alsacap
+
