@@ -1,0 +1,13 @@
+pkgbase = kwin-scripts-tiling
+	pkgdesc = Tiling script for kwin
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = http://kde-look.org/content/show.php?content=161151
+	arch = any
+	license = GPL
+	depends = kdebase-workspace
+	source = http://kde-look.org/CONTENT/content-files/161151-tiling.kwinscript
+	md5sums = 7f7a7865ee6e0235ca1aa83110aff112
+
+pkgname = kwin-scripts-tiling
+
