@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=140
+Comment=140 is a challenging minimalistic platformer with abstract colorful graphics.
+Exec=140-hib
+Icon=140-hib
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;AudioVideo;
+Encoding=UTF-8
