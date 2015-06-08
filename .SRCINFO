@@ -1,0 +1,17 @@
+pkgbase = makeblog
+	pkgdesc = A simple offline Blog.
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/encbladexp/makeblog
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python-pytz
+	depends = python-jinja
+	depends = python-pygments
+	options = !emptydirs
+	source = makeblog::git://github.com/encbladexp/makeblog#tag=0.0.5
+	md5sums = SKIP
+
+pkgname = makeblog
+
