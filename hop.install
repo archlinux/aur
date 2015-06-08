@@ -1,0 +1,25 @@
+# arg 1:  the new package version
+post_install() {
+  echo "==> hop: Edit the config under /etc/hop/hoprc.hop before using HOP"
+  groupadd -g 8080 hop &>/dev/null
+  mkdir -p /var/lib/hop &>/dev/null
+  useradd -u 8080 -g hop -d /var/lib/hop -s /bin/true hop &>/dev/null
+  gpasswd -a hop audio &>/dev/null
+  chown hop:hop -R /var/lib/hop
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  post_install $1
+}
+
+# arg 1:  the old package version
+pre_remove() {
+  userdel hop &>/dev/null
+}
+
+op=$1
+shift
+
+$op $*

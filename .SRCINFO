@@ -1,0 +1,21 @@
+pkgbase = hop-devel
+	pkgdesc = A Software Development Kit for the Web
+	pkgver = 3.0.0_pre15
+	pkgrel = 1
+	url = http://hop.inria.fr
+	install = hop.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = nodejs
+	depends = bigloo-devel>=7
+	depends = sqlite
+	provides = hop
+	conflicts = hop
+	options = !makeflags
+	source = ftp://ftp-sop.inria.fr/indes/fp/Hop/hop-3.0.0-pre15.tar.gz
+	md5sums = 80fa499bc52f2a410eed21ff58c662e3
+
+pkgname = hop-devel
+
