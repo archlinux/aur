@@ -1,0 +1,15 @@
+pkgbase = mpris2controller-git
+	pkgdesc = A small daemon that intelligently controls MPRIS2 compatible players
+	pkgver = 0.6.r5.gf06e949
+	pkgrel = 1
+	url = https://github.com/icasdri/mpris2controller
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python-dbus
+	depends = python-gobject
+	source = git+https://github.com/icasdri/mpris2controller.git
+	sha256sums = SKIP
+
+pkgname = mpris2controller-git
+
