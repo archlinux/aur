@@ -1,10 +1,13 @@
 diff --git i/jni/mdxmini/Makefile w/jni/mdxmini/Makefile
-index 9b63041..4cf194d 100644
+index 9b63041..53bc547 100644
 --- i/jni/mdxmini/Makefile
 +++ w/jni/mdxmini/Makefile
-@@ -75,8 +75,7 @@ $(LIB): $(MKLIB)
+@@ -73,10 +73,9 @@ $(TARGET) : $(OBJS) $(LIB)
+ $(LIB): $(MKLIB)
+ 
  $(MKLIB):
- 	make -f Makefile.lib
+-	make -f Makefile.lib
++	$(MAKE) -f Makefile.lib
  
 -$(OBJDIR)/nlg.o: src/nlg.c
 -	$(CC) -o $@ $< -c $(CFLAGS)

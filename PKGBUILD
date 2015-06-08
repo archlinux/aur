@@ -14,7 +14,7 @@ conflicts=(mdxplay)
 source=("$pkgname"::'git+https://github.com/BouKiCHi/mdxplayer.git'
         makefiles.patch)
 sha256sums=('SKIP'
-            '9e402a4a7075065d7f3701acd62883507c7b957793ec3b5cdf5c1190e1a125f4')
+            '2c67ce4f2828b11c785eae52c874a06ad535ad8e762d4b70230959ed9217840b')
 
 pkgver() {
   cd "$srcdir/$pkgname"
