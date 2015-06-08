@@ -1,0 +1,19 @@
+pkgbase = vapoursynth-plugin-vsimagereader-git
+	pkgdesc = Plugin for Vapoursynth: vsimagereader (GIT version)
+	pkgver = 20131127.fd15124
+	pkgrel = 1
+	url = http://forum.doom9.org/showthread.php?t=166088
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	depends = vapoursynth
+	depends = libpng
+	depends = libjpeg-turbo
+	provides = vapoursynth-plugin-vsimagereader
+	conflicts = vapoursynth-plugin-vsimagereader
+	source = git+https://github.com/myrsloik/vsimagereader.git
+	md5sums = SKIP
+
+pkgname = vapoursynth-plugin-vsimagereader-git
+
