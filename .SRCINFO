@@ -1,0 +1,19 @@
+pkgbase = eclipse-emf-runtime
+	pkgdesc = EMF and XSD runtime only for the Eclipse platform
+	pkgver = 2.8.0
+	pkgrel = 1
+	url = http://www.eclipse.org/modeling/emf/
+	changelog = eclipse-emf-runtime.changelog
+	arch = any
+	license = EPL
+	makedepends = unzip
+	depends = eclipse
+	provides = eclipse-emf
+	conflicts = eclipse-emf
+	source = http://www.eclipse.org/downloads/download.php?r=1&file=/modeling/emf/emf/downloads/drops/2.8.0/R201206080554/emf-runtime-2.8.0.zip
+	source = http://www.eclipse.org/downloads/download.php?r=1&file=/modeling/emf/emf/downloads/drops/2.8.0/R201206080554/xsd-runtime-2.8.0.zip
+	md5sums = 60c46c38650755f6b2f171e73f495df0
+	md5sums = e99916d6a1b74c916487f65e3c3afcc8
+
+pkgname = eclipse-emf-runtime
+
