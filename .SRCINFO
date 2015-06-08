@@ -1,0 +1,35 @@
+pkgbase = gcc43
+	pkgdesc = The GNU Compiler Collection
+	pkgver = 4.3.6
+	pkgrel = 8
+	url = http://gcc.gnu.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = setconf
+	depends = binutils
+	depends = mpfr
+	depends = cloog
+	depends = zlib
+	depends = elfutils
+	options = !libtool
+	options = !buildflags
+	options = staticlibs
+	source = ftp://gcc.gnu.org/pub/gcc/releases/gcc-4.3.6/gcc-core-4.3.6.tar.bz2
+	source = ftp://gcc.gnu.org/pub/gcc/releases/gcc-4.3.6/gcc-g++-4.3.6.tar.bz2
+	source = ftp://gcc.gnu.org/pub/gcc/releases/gcc-4.3.6/gcc-fortran-4.3.6.tar.bz2
+	source = ftp://gcc.gnu.org/pub/gcc/releases/gcc-4.3.6/gcc-objc-4.3.6.tar.bz2
+	source = ftp://gcc.gnu.org/pub/gcc/releases/gcc-4.3.6/gcc-java-4.3.6.tar.bz2
+	source = gcc_pure64.patch
+	source = siginfo_t_fix.patch
+	md5sums = 43df9ad8b4bb314a46bac12f5aefaec2
+	md5sums = ee7dc01b6e1a6a92a6e8d66adb8d2ab9
+	md5sums = c6eeee73007015c52043716fbe8ffdc7
+	md5sums = 3fdb8158eabb765d1711f894bf71f7f5
+	md5sums = b5c12ad38048c354686747d640f5d621
+	md5sums = 4030ee1c08dd1e843c0225b772360e76
+	md5sums = edce21b2ce295478d14d5dd988eb3287
+
+pkgname = gcc43
+
