@@ -1,0 +1,21 @@
+pkgbase = perl-stun-client
+	pkgdesc = Session Traversal Utilities for NAT (STUN) client. (RFC 5389)
+	pkgver = 0.04
+	pkgrel = 1
+	url = http://search.cpan.org/dist/STUN-Client
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-exception
+	makedepends = perl-test-useallmodules
+	depends = perl-data-validate-ip
+	depends = perl-moose
+	depends = perl-string-random
+	depends = perl-stun-rfc
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TB/TBR/STUN-Client-0.04.tar.gz
+	md5sums = 87e1f0c75e5e7bb17db1cb6500c4d1ef
+	sha512sums = 7ed5652ae4566abfb94f2d17da1ea33e8e3bda3e0f23be1d8803b427892460fce41cc8345d68a5d26da32c7a9d6fc88f3e6f3dfa486a64ea2e711e5d50ec3633
+
+pkgname = perl-stun-client
+
