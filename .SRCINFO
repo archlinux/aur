@@ -1,0 +1,18 @@
+pkgbase = openbox-theme-simplix
+	pkgdesc = A very bright, simple but daily usable theme for Openbox.
+	pkgver = r3.888f015
+	pkgrel = 2
+	url = http://sixsixfive.deviantart.com/art/simpliX-346404452
+	arch = any
+	license = CCPL:cc-by-sa-4.0
+	makedepends = git
+	depends = openbox
+	optdepends = slim-theme-simplix: SLiM theme
+	optdepends = kdm-theme-simplix: KDM theme
+	provides = openbox-theme-simplix=r3.888f015
+	source = git+https://github.com/sixsixfive/simpliX.git
+	sha384sums = SKIP
+	sha512sums = SKIP
+
+pkgname = openbox-theme-simplix
+
