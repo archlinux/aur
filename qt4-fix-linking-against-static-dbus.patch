@@ -1,0 +1,26 @@
+--- a/src/dbus/qdbus_symbols_p.h.orig	2014-08-02 12:32:15.112000000 +0200
++++ b/src/dbus/qdbus_symbols_p.h	2014-08-02 12:33:33.286000000 +0200
+@@ -55,6 +55,11 @@
+ #define QDBUS_SYMBOLS_P_H
+ 
+ #include <QtCore/qglobal.h>
++
++#ifdef QT_STATIC
++#define DBUS_STATIC_BUILD
++#endif
++
+ #include <dbus/dbus.h>
+ 
+ #ifndef QT_NO_DBUS
+
+--- a/src/dbus/dbus.pro.orig  2014-08-15 17:16:01.449377079 +0200
++++ b/src/dbus/dbus.pro   2014-08-15 17:16:27.092456707 +0200
+@@ -27,7 +27,7 @@
+ }
+ win32 { 
+     wince*:LIBS_PRIVATE += -lws2
+-    else:LIBS_PRIVATE += -lws2_32 \
++    else:LIBS_PRIVATE += -ldbus-1 -lws2_32 -liphlpapi \
+         -ladvapi32 \
+         -lnetapi32 \
+         -luser32

@@ -1,0 +1,75 @@
+diff --git a/src/activeqt/control/qaxserverbase.cpp b/src/activeqt/control/qaxserverbase.cpp
+index f5c495a..123e40f 100644
+--- a/src/activeqt/control/qaxserverbase.cpp
++++ b/src/activeqt/control/qaxserverbase.cpp
+@@ -111,8 +111,6 @@
+ };
+ 
+ 
+-bool qt_sendSpontaneousEvent(QObject*, QEvent*);
+-
+ /*
+     \class QAxServerBase
+     \brief The QAxServerBase class is an ActiveX control hosting a QWidget.
+@@ -1768,9 +1766,7 @@
+     // make sure we get a resize event even if not embedded as a control
+     if (!m_hWnd && !qt.widget->isVisible() && newSize != oldSize) {
+         QResizeEvent resizeEvent(newSize, oldSize);
+-#ifndef QT_DLL // import from static library
+         extern bool qt_sendSpontaneousEvent(QObject*,QEvent*);
+-#endif
+         qt_sendSpontaneousEvent(qt.widget, &resizeEvent);
+     }
+     m_currentExtent = qt.widget->size();
+@@ -4037,13 +4033,6 @@
+ }
+ 
+ 
+-#ifdef QT_DLL // avoid conflict with symbol in static lib
+-bool qt_sendSpontaneousEvent(QObject *o, QEvent *e)
+-{
+-    return QCoreApplication::sendSpontaneousEvent(o, e);
+-}
+-#endif
+-
+ /*
+     Tries to set the size of the control.
+ */
+diff --git a/tools/activeqt/testcon/testcon.pro b/tools/activeqt/testcon/testcon.pro
+index 89f8067..696be2e 100644
+--- a/tools/activeqt/testcon/testcon.pro
++++ b/tools/activeqt/testcon/testcon.pro
+@@ -7,6 +7,9 @@ CONFIG	+= qaxserver qaxserver_no_postlink qaxcontainer
+ INCLUDEPATH += $$QT_SOURCE_TREE/tools/activeqt/container/debug \
+     $$QT_SOURCE_TREE/tools/activeqt/container/release \
+     $$QT_BUILD_TREE/src/activeqt/container \
++    $$QT_BUILD_TREE/src/activeqt/container/.uic/release-shared \
++    $$QT_BUILD_TREE/src/activeqt/container/.uic/release-static \
++    $$QT_BUILD_TREE/src/activeqt/container/.uic/debug-shared \
+ 
+ SOURCES	 = main.cpp docuwindow.cpp mainwindow.cpp invokemethod.cpp changeproperties.cpp ambientproperties.cpp controlinfo.cpp
+ HEADERS	 = docuwindow.h mainwindow.h invokemethod.h changeproperties.h ambientproperties.h controlinfo.h
+diff --git a/tools/designer/src/plugins/activeqt/activeqt.pro b/tools/designer/src/plugins/activeqt/activeqt.pro
+index f58df8a..5d9bdd4 100644
+--- a/tools/designer/src/plugins/activeqt/activeqt.pro
++++ b/tools/designer/src/plugins/activeqt/activeqt.pro
+@@ -10,6 +10,8 @@ build_all:!build_pass {
+ 
+ INCLUDEPATH += $$QT_SOURCE_TREE/src/activeqt/shared/ \
+                $$QT_BUILD_TREE/src/activeqt/container \
++	       $$QT_BUILD_TREE/src/activeqt/container/.uic/release-shared \
++	       $$QT_BUILD_TREE/src/activeqt/container/.uic/debug-shared \
+                ../../lib/uilib
+ 
+ # Input
+--- qt-everywhere-opensource-src-4.8.3/src/gui/kernel/qapplication.cpp.orig	2012-10-26 21:31:47.415811691 +0200
++++ qt-everywhere-opensource-src-4.8.3/src/gui/kernel/qapplication.cpp	2012-10-26 21:32:19.534024502 +0200
+@@ -5550,7 +5550,7 @@
+     return platform;
+ }
+ 
+-bool qt_sendSpontaneousEvent(QObject *receiver, QEvent *event)
++Q_GUI_EXPORT bool qt_sendSpontaneousEvent(QObject *receiver, QEvent *event)
+ {
+     return QCoreApplication::sendSpontaneousEvent(receiver, event);
+ }

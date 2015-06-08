@@ -1,0 +1,11 @@
+--- configure.orig	2013-05-31 20:15:02.561717527 +0200
++++ configure	2013-05-31 20:16:23.689083855 +0200
+@@ -5313,7 +5313,7 @@
+ fi
+ 
+ # check IPC support
+-if [ "$XPLATFORM_SYMBIAN_SBSV2" = "no" ]; then
++if [ "$XPLATFORM_SYMBIAN_SBSV2" = "no" -a "$XPLATFORM_MINGW" = "no" ]; then
+     # Raptor does not support configure tests.
+     if ! compileTest unix/ipc_sysv "ipc_sysv" ; then
+         # SYSV IPC is not supported - check POSIX IPC

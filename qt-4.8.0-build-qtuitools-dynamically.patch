@@ -1,0 +1,32 @@
+diff --git a/tools/designer/src/uitools/uitools.pro b/tools/designer/src/uitools/uitools.pro
+index be46afc..b013942 100644
+--- a/tools/designer/src/uitools/uitools.pro
++++ b/tools/designer/src/uitools/uitools.pro
+@@ -1,7 +1,7 @@
+ TEMPLATE = lib
+ TARGET = QtUiTools
+ QT += xml
+-CONFIG += qt staticlib
++CONFIG += qt
+ DESTDIR = ../../../../lib
+ DLLDESTDIR = ../../../../bin
+ 
+@@ -10,7 +10,6 @@ symbian {
+     load(armcc_warnings)
+ }
+ 
+-win32|mac:!macx-xcode:CONFIG += debug_and_release build_all
+ 
+ DEFINES += QFORMINTERNAL_NAMESPACE QT_DESIGNER_STATIC QT_FORMBUILDER_NO_SCRIPT
+ isEmpty(QT_MAJOR_VERSION) {
+--- qt-everywhere-opensource-src-4.8.3/mkspecs/features/uitools.prf.orig	2012-10-28 16:59:16.937372767 +0100
++++ qt-everywhere-opensource-src-4.8.3/mkspecs/features/uitools.prf	2012-10-28 16:59:32.712484407 +0100
+@@ -11,4 +11,8 @@
+ }
+ LIBS += $$QTUITOOLS_LINKAGE
+ 
++CONFIG(static) {
++    LIBS += -lQtGui$${QT_LIBINFIX} $${QMAKE_LIBS_GUI} -lQtCore$${QT_LIBINFIX} $${QMAKE_LIBS_CORE}
++}
++
+ INCLUDEPATH = $$QMAKE_INCDIR_QT/QtUiTools $$INCLUDEPATH
