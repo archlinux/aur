@@ -1,0 +1,11 @@
+diff -up raptor-1.4.21/src/raptor_internal.h.curl raptor-1.4.21/src/raptor_internal.h
+--- raptor-1.4.21/src/raptor_internal.h.curl	2010-01-29 17:54:42.000000000 -0600
++++ raptor-1.4.21/src/raptor_internal.h	2011-07-31 11:02:44.182465296 -0500
+@@ -852,7 +852,6 @@ int raptor_utf8_is_nfc(const unsigned ch
+ 
+ #ifdef RAPTOR_WWW_LIBCURL
+ #include <curl/curl.h>
+-#include <curl/types.h>
+ #include <curl/easy.h>
+ #endif
+ 
