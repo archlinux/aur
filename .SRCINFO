@@ -1,0 +1,20 @@
+pkgbase = kpar2
+	pkgdesc = PAR2 verification and repair program for KDE4
+	pkgver = 0.4.5
+	pkgrel = 6
+	url = http://code.google.com/p/kpar2kde4/
+	install = kpar2.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdebase-runtime
+	depends = libpar2
+	source = http://kpar2kde4.googlecode.com/files/kpar2-0.4.5.tar.gz
+	source = kpar2.desktop.diff
+	sha1sums = e4dfbb55459452a17b0263bf3742acdb0e39d613
+	sha1sums = 0f3584e7fdc661f38ac36c6eeb4f249be4712c4a
+
+pkgname = kpar2
+

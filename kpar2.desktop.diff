@@ -1,0 +1,21 @@
+--- src/kpar2.desktop	2013-03-02 15:31:53.000000000 +0100
++++ src/kpar2.desktop.god	2013-10-18 19:57:36.000000000 +0200
+@@ -1,13 +1,12 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+ Name=KPar2
+-GenericName=A PAR2 verification and repair application
+-Exec=kpar2 %i %m -caption "%c"
++GenericName=KPar2
++Exec=kpar2 %i --miniicon -caption "%c"
+ Icon=kpar2
+ Type=Application
+ DocPath=kpar2/index.html
+ Comment=A PAR2 verification and repair application
+-MimeType=application/x-par2
+-Categories=Qt;KDE;Application;Utility;X-KDE-Utilities-File
++MimeType=application/x-par2;
++Categories=Qt;KDE;Utility;X-KDE-Utilities-File;
+ Terminal=false
+-MultipleArgs=false
++X-MultipleArgs=false
