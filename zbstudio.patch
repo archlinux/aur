@@ -1,0 +1,10 @@
+diff --git a/zbstudio/zbstudio.in b/zbstudio/zbstudio.in
+index 7d22f1f..225e655 100644
+--- a/zbstudio/zbstudio.in
++++ b/zbstudio/zbstudio.in
+@@ -1,4 +1,4 @@
+ #!/bin/bash
+ 
+ if [[ "$(uname -m)" == "x86_64" ]]; then ARCH="x64"; else ARCH="x86"; fi
+-(cd "@IDE_DATADIR@"; bin/linux/$ARCH/lua src/main.lua zbstudio "$@") &
++(cd "@IDE_DATADIR@"; @LUA_EXECUTABLE@ src/main.lua zbstudio "$@") &

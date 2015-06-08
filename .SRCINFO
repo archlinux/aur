@@ -1,0 +1,25 @@
+pkgbase = zerobrane-studio
+	pkgdesc = A lightweight Lua-based IDE for Lua
+	pkgver = 1.10
+	pkgrel = 3
+	url = http://studio.zerobrane.com/
+	install = zerobrane-studio.install
+	arch = any
+	license = MIT
+	makedepends = cmake
+	depends = wxlua-svn
+	depends = lua52-bitop
+	depends = lua52-socket
+	depends = hicolor-icon-theme
+	optdepends = love: to debug love programs
+	provides = zerobrane-studio
+	conflicts = zerobrane-studio-git
+	source = https://github.com/pkulchenko/ZeroBraneStudio/tarball/1.10
+	source = zbstudio.patch
+	source = user.lua
+	md5sums = 28d8e4c0aa53a0dff9cfa68b3c150a6e
+	md5sums = 3bb356b8549b60352e8ab36b9a6d9a92
+	md5sums = 73636b0c87d0412e316e7ad58151e70d
+
+pkgname = zerobrane-studio
+
