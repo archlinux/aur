@@ -1,0 +1,16 @@
+pkgbase = locky-git
+	pkgdesc = Locks all X sessions upon suspend or hibernate with xscreensaver or a custom command.
+	pkgver = 20140825
+	pkgrel = 1
+	url = https://github.com/ShadowKyogre/Locky
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = xorg-xdpyinfo
+	optdepends = systemd: for systemd sleep locking
+	optdepends = pm-utils: for systemd-less sleep locking
+	source = git://github.com/ShadowKyogre/Locky.git
+	backup = etc/lockyrc
+
+pkgname = locky-git
+
