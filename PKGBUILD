@@ -11,7 +11,9 @@ source=(http://www2.epa.gov/sites/production/files/2015-05/swmm51009_engine_0.zi
 makezip="makefiles.zip"
 srczip="source$(echo $pkgver | tr \. \_)"
 
-md5sums=(18947dcf3f21153d387b432609781266 257f5c7c8e01007382aceb718b3dbb7c f2267133313a1cf705f187c74753ff9e)
+md5sums=('18947dcf3f21153d387b432609781266'
+         '257f5c7c8e01007382aceb718b3dbb7c'
+         'f2267133313a1cf705f187c74753ff9e')
 
 build() {
   unzip -o $srczip
