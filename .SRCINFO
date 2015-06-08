@@ -1,0 +1,24 @@
+pkgbase = vagrant-git
+	pkgdesc = Build and distribute virtualized development environments
+	pkgver = 1.7.0.5.g2385305
+	pkgrel = 1
+	url = http://vagrantup.com
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = ruby
+	depends = curl
+	depends = lzo
+	depends = libidn
+	depends = rtmpdump
+	conflicts = vagrant
+	options = !emptydirs
+	source = git://github.com/mitchellh/vagrant.git
+	source = git://github.com/mitchellh/vagrant-installers.git
+	source = http://pkgbuild.com/~jsteel/arch/vagrant/substrate_archlinux_.zip
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = vagrant-git
+
