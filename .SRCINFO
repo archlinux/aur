@@ -1,0 +1,17 @@
+pkgbase = haskell-base-unicode-symbols
+	pkgdesc = Unicode alternatives for common functions and operators
+	pkgver = 0.2.2.4
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/base-unicode-symbols
+	install = haskell-base-unicode-symbols.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/base-unicode-symbols/0.2.2.4/base-unicode-symbols-0.2.2.4.tar.gz
+	md5sums = 7faf43a94a0082ee2fe7971fabd9be21
+
+pkgname = haskell-base-unicode-symbols
+
