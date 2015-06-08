@@ -1,0 +1,17 @@
+pkgbase = easy_spice
+	pkgdesc = Electronic circuit simulator (SPICE frontend, using gschem for schematics and ngspice as simulator)
+	pkgver = 0.6.8
+	pkgrel = 4
+	url = http://easy-spice.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = geda-gaf
+	depends = gtk2
+	depends = ngspice
+	depends = xterm
+	source = http://downloads.sourceforge.net/sourceforge/easy-spice/easy_spice-0.6.8.tar.gz
+	md5sums = 6ffaab8c2dcdfc30ecdca52f3c8bcded
+
+pkgname = easy_spice
+
