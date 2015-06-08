@@ -1,0 +1,23 @@
+pkgbase = brother-mfc-7860dw
+	pkgdesc = CUPS driver for Brother MFC-7860DW printer
+	pkgver = 2.1.0
+	pkgrel = 2
+	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
+	install = brother-mfc-7860dw.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = rpmextract
+	depends = cups
+	depends = ghostscript
+	depends = gsfonts
+	depends = foomatic-filters
+	source = http://www.brother.com/pub/bsc/linux/dlf/mfc7860dwlpr-2.1.0-1.i386.rpm
+	source = http://www.brother.com/pub/bsc/linux/dlf/cupswrapperMFC7860DW-2.0.4-2.i386.rpm
+	source = brother-mfc-7860dw.patch
+	md5sums = d321ad6ca699a19a6aa608d67ae41198
+	md5sums = 9cf9fb55b6972d1b897205295029c17d
+	md5sums = 1a96507310b73086b69f5f120a30e274
+
+pkgname = brother-mfc-7860dw
+

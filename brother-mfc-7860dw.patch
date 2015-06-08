@@ -1,0 +1,144 @@
+diff -Naur old/usr/local/Brother/Printer/MFC7860DW/cupswrapper/cupswrapperMFC7860DW-2.0.4 new/usr/local/Brother/Printer/MFC7860DW/cupswrapper/cupswrapperMFC7860DW-2.0.4
+--- old/usr/local/Brother/Printer/MFC7860DW/cupswrapper/cupswrapperMFC7860DW-2.0.4	2010-06-11 10:55:18.000000000 +0300
++++ new/usr/local/Brother/Printer/MFC7860DW/cupswrapper/cupswrapperMFC7860DW-2.0.4	2013-01-28 13:15:21.000000000 +0200
+@@ -18,6 +18,7 @@
+ # Place, Suite 330, Boston, MA  02111-1307  USA
+ #
+ 
++if /bin/false; then
+ if [ "$1" = '-e' ]; then
+   lpadmin -x MFC7860DW
+   rm -f /usr/share/cups/model/MFC7860DW.ppd
+@@ -65,7 +66,8 @@
+    ppd_file_name=/usr/share/ppd/MFC7860DW.ppd
+ fi
+ 
+-cat <<ENDOFPPDFILE >$ppd_file_name
++fi
++cat <<ENDOFPPDFILE > ppd_file
+ *PPD-Adobe: "4.3"
+ *%================================================
+ *%	Copyright Brother Industries,Ltd 2006-2008
+@@ -347,10 +349,11 @@
+ 
+ ENDOFPPDFILE
+ 
+-chmod 755  $ppd_file_name
++if /bin/false; then
++chmod 755  ppd_file
+ if [ -e '/usr/share/ppd' ];then
+   if [ -e '/usr/share/cups/model' ];then
+-    cp  $ppd_file_name  /usr/share/ppd
++    cp  ppd_file /usr/share/ppd
+   fi
+ fi
+ 
+@@ -363,8 +366,8 @@
+   fi
+ fi
+ 
+-
+-cat <<!ENDOFWFILTER! >$brotherlpdwrapper
++fi
++cat <<!ENDOFWFILTER! > wrapper
+ #! /bin/sh
+ #
+ # Brother Print filter  >>  $brotherlpdwrapper
+@@ -493,25 +496,25 @@
+ fi
+ 
+ 
+-if [ -e "/usr/local/Brother/Printer/\$PRINTER/lpd/filter\$PRINTER" ]; then
++if [ -e "/usr/share/brother/printer/\$PRINTER/lpd/filter\$PRINTER" ]; then
+        :
+ else
+-    echo "ERROR: /usr/local/Brother/Printer/\$PRINTER/lpd/filter\$PRINTER does not exist"   >>\$LOGFILE
++    echo "ERROR: /usr/share/brother/printer/\$PRINTER/lpd/filter\$PRINTER does not exist"   >>\$LOGFILE
+     errorcode=30
+     exit $errorcode
+ fi
+ 
+-if [ -e "/usr/local/Brother/Printer/MFC7860DW/cupswrapper/brcupsconfig4" ]; then
++if [ -e "/usr/share/brother/printer/MFC7860DW/cupswrapper/brcupsconfig4" ]; then
+   if [ \$DEBUG = 0 ]; then
+-     /usr/local/Brother/Printer/MFC7860DW/cupswrapper/brcupsconfig4  \$PRINTER  \$PPD 0 "\$options" >> /dev/null
++     /usr/share/brother/printer/MFC7860DW/cupswrapper/brcupsconfig4  \$PRINTER  \$PPD 0 "\$options" >> /dev/null
+   else
+-     /usr/local/Brother/Printer/MFC7860DW/cupswrapper/brcupsconfig4  \$PRINTER  \$PPD \$LOGCLEVEL "\$options" >>\$LOGFILE
++     /usr/share/brother/printer/MFC7860DW/cupswrapper/brcupsconfig4  \$PRINTER  \$PPD \$LOGCLEVEL "\$options" >>\$LOGFILE
+   fi
+ fi
+ 
+ 
+ if [ \$DEBUG -le 2 ]; then
+-    cat    \$INPUT_TEMP_PS | /usr/local/Brother/Printer/\$PRINTER/lpd/filter\$PRINTER
++    cat    \$INPUT_TEMP_PS | /usr/share/brother/printer/\$PRINTER/lpd/filter\$PRINTER
+ fi
+ 
+ if [ \$DEBUG -ge 2 ];  then
+@@ -527,7 +530,7 @@
+ 
+ !ENDOFWFILTER!
+ 
+-
++if /bin/false; then
+ chmod 755 $brotherlpdwrapper
+ if [ -e /usr/lib/cups/filter ]; then
+  if [ -e /usr/lib64/cups/filter ]; then
+@@ -535,8 +538,8 @@
+  fi
+ fi
+ 
+-chmod a+w /usr/local/Brother/Printer/MFC7860DW/inf/brMFC7860DWrc
+-chmod a+w /usr/local/Brother/Printer/MFC7860DW/inf
++chmod a+w /usr/share/brother/printer/MFC7860DW/inf/brMFC7860DWrc
++chmod a+w /usr/share/brother/printer/MFC7860DW/inf
+ if [ -e /etc/init.d/lpd ]; then
+    /etc/init.d/lpd stop
+ fi
+@@ -563,3 +566,5 @@
+ fi
+ lpadmin -p MFC7860DW -E -v $port -P $ppd_file_name
+   exit 0 
++fi
++
+diff -Naur old/usr/local/Brother/Printer/MFC7860DW/inf/brMFC7860DWfunc new/usr/local/Brother/Printer/MFC7860DW/inf/brMFC7860DWfunc
+--- old/usr/local/Brother/Printer/MFC7860DW/inf/brMFC7860DWfunc	2010-05-24 06:10:10.000000000 +0300
++++ new/usr/local/Brother/Printer/MFC7860DW/inf/brMFC7860DWfunc	2013-01-28 12:59:40.000000000 +0200
+@@ -24,4 +24,5 @@
+ Sleep={PrinterDefault,"1-99"}
+ Toner Save Mode={ON,OFF}
+ 
+-
++[psconvert2]
++pstops=/usr/lib/cups/filter/pstops
+diff -Naur old/usr/local/Brother/Printer/MFC7860DW/lpd/filterMFC7860DW new/usr/local/Brother/Printer/MFC7860DW/lpd/filterMFC7860DW
+--- old/usr/local/Brother/Printer/MFC7860DW/lpd/filterMFC7860DW	2010-05-24 06:10:10.000000000 +0300
++++ new/usr/local/Brother/Printer/MFC7860DW/lpd/filterMFC7860DW	2013-01-28 13:01:20.000000000 +0200
+@@ -22,7 +22,7 @@
+ PRINTER_TMP=$(echo $PRINTER | sed -e 's/ //g' -e 's/-//g')
+ PCL=1
+ 
+-BR_PRT_PATH=/usr/local/Brother/Printer/$PRINTER_TMP
++BR_PRT_PATH=/usr/share/brother/printer/$PRINTER_TMP
+ RCFILE=`eval echo $BR_PRT_PATH/inf/brPRINTERrc | eval sed 's/PRINTER/"$PRINTER_TMP"/'`
+ PAPER_INF=$BR_PRT_PATH/inf/paperinf
+ PSCONV=$BR_PRT_PATH/lpd/psconvert2
+@@ -116,13 +116,11 @@
+ else
+ 	cp $INPUT_TEMP1 $INPUT_TEMP
+ fi
+-	
+-#PSTOPSFILTER=`which pstops`
+ 
+-if [ -e '/usr/bin/pstops' ];then
+-	PSTOPSFILTER='/usr/bin/pstops'
+-else
+-	PSTOPSFILTER=''
++PSTOPSFILTER='/usr/lib/cups/filter/pstops'
++ 
++if ! [ -e "$PSTOPSFILTER" ];then
++ 	PSTOPSFILTER=''
+ fi
+ 
+ 
