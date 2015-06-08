@@ -1,0 +1,21 @@
+pkgbase = brother-dcp585cw
+	pkgdesc = LPR and CUPS driver for the Brother DCP585CW
+	pkgver = 1.1.2
+	pkgrel = 2
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-dcp585cw.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother commercial license
+	depends = cups
+	source = http://www.brother.com/pub/bsc/linux/dlf/dcp585cwlpr-1.1.2-2.i386.rpm
+	source = http://www.brother.com/pub/bsc/linux/dlf/dcp585cwcupswrapper-1.1.2-2.i386.rpm
+	source = cupswrapper-license.txt
+	source = lpr-license.txt
+	md5sums = 037e6bde660ef856c46cd657f6f7fe5d
+	md5sums = 209ca83d1ce554958174265a0bb67fdb
+	md5sums = 97ad0cffd216059e9d1d3121899d8646
+	md5sums = 5e87a3dc0f3e3438c088eda0f3565f0d
+
+pkgname = brother-dcp585cw
+
