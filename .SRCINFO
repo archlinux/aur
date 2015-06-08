@@ -1,0 +1,17 @@
+pkgbase = haskell-base64-bytestring
+	pkgdesc = Fast base64 encoding and deconding for ByteStrings
+	pkgver = 1.0.0.1
+	pkgrel = 3
+	url = https://github.com/bos/base64-bytestring
+	install = haskell-base64-bytestring.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	makedepends = ghc
+	depends = haskell-bytestring
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/base64-bytestring/1.0.0.1/base64-bytestring-1.0.0.1.tar.gz
+	sha256sums = ab25abf4b00a2f52b270bc3ed43f1d59f16c8eec9d7dffb14df1e9265b233b50
+
+pkgname = haskell-base64-bytestring
+
