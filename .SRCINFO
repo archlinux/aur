@@ -1,0 +1,17 @@
+pkgbase = cutemarked
+	pkgdesc = Qt Markdown Editor
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/cloose/CuteMarkEd
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = qt5-tools
+	depends = qt5-webkit
+	depends = hunspell
+	depends = discount>=2.1.7
+	source = https://github.com/cloose/CuteMarkEd/archive/v0.11.0.tar.gz
+	sha256sums = c6396d3807417ffe63fcbe3e84a8c1dc7d38bd7f5dada0c75de4f374318831a5
+
+pkgname = cutemarked
+
