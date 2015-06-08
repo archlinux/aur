@@ -1,0 +1,18 @@
+pkgbase = session-desktop-files
+	pkgdesc = .desktop launch files for common session operations (log out, shutdown, reboot)
+	pkgver = 0.6
+	pkgrel = 2
+	url = https://wiki.archlinux.org/index.php/Desktop_Entries
+	arch = any
+	license = MIT
+	makedepends = desktop-file-utils
+	depends = wmctrl
+	source = shutdown.desktop
+	source = reboot.desktop
+	source = logout.desktop
+	md5sums = 0b96617dd2ba9ceab94c3252c69c9941
+	md5sums = 0a16e48fd4b2e01407b31cfe5deb425c
+	md5sums = cf8084d9540155104aeca020f47947c7
+
+pkgname = session-desktop-files
+
