@@ -1,0 +1,24 @@
+pkgbase = mingw-w64-boost
+	pkgdesc = Free peer-reviewed portable C++ source libraries (mingw-w64)
+	pkgver = 1.58.0
+	pkgrel = 2
+	url = http://www.boost.org/
+	arch = any
+	license = custom
+	makedepends = mingw-w64-gcc
+	makedepends = bzip2
+	makedepends = zlib
+	makedepends = python2
+	depends = mingw-w64-crt
+	depends = mingw-w64-zlib
+	depends = mingw-w64-bzip2
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://downloads.sourceforge.net/sourceforge/boost/boost_1_58_0.tar.bz2
+	source = boost-mingw.patch
+	md5sums = b8839650e61e9c1c0a89f371dd475546
+	md5sums = 01f5f0d6b915d3b04dbabfd6db40f1e9
+
+pkgname = mingw-w64-boost
+
