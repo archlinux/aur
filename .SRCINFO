@@ -1,0 +1,14 @@
+pkgbase = java-testng
+	pkgdesc = A testing framework inspired from JUnit and NUnit
+	pkgver = 6.9.4
+	pkgrel = 3
+	url = http://testng.org/doc/index.html
+	arch = any
+	license = APACHE
+	makedepends = maven
+	depends = java-runtime-common
+	source = https://github.com/cbeust/testng/archive/testng-6.9.4.zip
+	md5sums = 0f9f67d68e9786fd2d6c6c871ffe6241
+
+pkgname = java-testng
+
