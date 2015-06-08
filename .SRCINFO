@@ -1,0 +1,15 @@
+pkgbase = snake_pygame
+	pkgdesc = A remake of classic Snake game written in Python
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = http://deasproject.altervista.org
+	arch = any
+	license = GPL2
+	depends = python2-pygame
+	depends = python2-numpy
+	depends = python2-xdg
+	source = snake_0.7.1.7z::http://sourceforge.net/projects/snakepygame/files/snake_0.7.1.7z/download
+	md5sums = 608cb6f9e925adbdbbae49d20ed660bd
+
+pkgname = snake_pygame
+
