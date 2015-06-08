@@ -1,0 +1,13 @@
+pkgbase = python2-akismet
+	pkgdesc = A Python interface to the Akismet anti comment-spam API.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://www.voidspace.org.uk/python/modules.shtml#akismet
+	arch = any
+	license = BSD
+	depends = python2
+	source = https://pypi.python.org/packages/source/a/akismet/akismet-0.2.0.tar.gz
+	md5sums = bd4b471d88aadad00a6fd70dea97e718
+
+pkgname = python2-akismet
+
