@@ -1,0 +1,22 @@
+General Structure Analysis System
+
+Allen C. Larson & Robert B. Von Dreele
+LANSCE, MS-H805
+Los Alamos National Laboratory
+Los Alamos, NM 87545
+
+Copyright, 1985-2004, The Regents of the University of California.
+
+This software was produced under a U.S. Government contract (W-7405-ENG-36)
+by the Los Alamos National Laboratory, which is operated by the University of
+California for the U.S. Department of Energy.  The U.S. Government is licensed to
+use, reproduce, and distribute this software.  Permission is granted to the public to
+copy and use this software without charge, provided that this notice and any
+statement of authorship are reproduced on all copies.  Neither the Government nor
+the University makes any warranty, express or implied, or assumes any liability or
+responsibility for the use of this software.
+
+To cite GSAS please use the following (or equivalent):
+
+A.C. Larson and R.B. Von Dreele, General Structure Analysis System (GSAS), Los
+Alamos National Laboratory Report LAUR 86-748 (2004).

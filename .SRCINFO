@@ -1,0 +1,29 @@
+pkgbase = gsas-expgui-svn
+	pkgdesc = General Structure Analysis System - refinement for powder diffraction patterns
+	pkgver = 1232
+	pkgrel = 1
+	url = http://www.ccp14.ac.uk/solution/gsas/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = hd2u
+	makedepends = subversion
+	depends = python2
+	depends = tcl
+	depends = tk
+	depends = blt
+	source = gsas::svn+https://subversion.xor.aps.anl.gov/EXPGUI/gsas/all
+	source = EXPGUI.desktop
+	source = GSAS.desktop
+	source = license.txt
+	source = EXPGUI.png
+	source = GSAS.png
+	md5sums = SKIP
+	md5sums = 16bd3a714ad7c6de2db98abe6d8de8d5
+	md5sums = d7a44b644d9d4de663c8ca00c9aa2e55
+	md5sums = 4c8e94cd085eae5c6557331514483b78
+	md5sums = 2e886fc46a261283e82ed8a4080e2329
+	md5sums = c5701db4ffb4caa5336020583d313ef2
+
+pkgname = gsas-expgui-svn
+
