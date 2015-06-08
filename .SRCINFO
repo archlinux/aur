@@ -1,0 +1,15 @@
+pkgbase = coin-or-bcps
+	pkgdesc = Part of the COIN High Performance Parallel Search Framework
+	pkgver = 0.94.0
+	pkgrel = 1
+	url = https://projects.coin-or.org/CHiPPS
+	arch = i686
+	arch = x86_64
+	groups = coin-or
+	license = EPL
+	depends = coin-or-alps
+	source = http://www.coin-or.org/download/pkgsource/CHiPPS/Bcps-0.94.0.tgz
+	sha1sums = 987834b7fa53eb2e8badf5429dabf71cec7225a6
+
+pkgname = coin-or-bcps
+
