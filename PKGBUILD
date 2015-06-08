@@ -14,6 +14,11 @@ md5sums=() #generate with 'makepkg -g'
 _gitroot=git://github.com/tsdh/rdictcc.git
 _gitname=rdictcc
 
+pkgver() {
+  cd "$pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'     
+}
+
 build() {
   cd "$srcdir"
   msg "Connecting to GIT server...."
