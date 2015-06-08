@@ -1,0 +1,13 @@
+pkgbase = psp-pkg-config
+	pkgdesc = Support pkg-config script (psp)
+	pkgver = 1
+	pkgrel = 1
+	url = http://pkg-config.freedesktop.org/
+	arch = any
+	license = zlib
+	depends = pkg-config
+	source = psp-pkg-config
+	md5sums = SKIP
+
+pkgname = psp-pkg-config
+
