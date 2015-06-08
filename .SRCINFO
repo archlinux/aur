@@ -1,0 +1,20 @@
+pkgbase = volumeicon-git
+	pkgdesc = Volume control for your system tray
+	pkgver = 0.r46.9e3755f
+	pkgrel = 2
+	url = http://softwarebakery.com/maato/volumeicon.html
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	depends = gtk3
+	depends = alsa-lib
+	depends = libnotify
+	depends = intltool
+	conflicts = volumeicon
+	replaces = volumeicon
+	source = volumeicon-git::git+https://github.com/Maato/volumeicon.git
+	md5sums = SKIP
+
+pkgname = volumeicon-git
+
