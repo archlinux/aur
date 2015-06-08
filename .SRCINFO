@@ -1,0 +1,17 @@
+pkgbase = popular-packages
+	pkgdesc = Lists popular packages not installed
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = http://i.imgur.com/AeWSX.jpg
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = wget
+	depends = package-query
+	optdepends = pacman-cage: Better performance
+	options = !emptydirs
+	source = http://dl.dropbox.com/u/106000/Software/Shell/popular-packages
+	sha1sums = 989ef1aedd753e59e08e3e25fa5408cc2232ef41
+
+pkgname = popular-packages
+
