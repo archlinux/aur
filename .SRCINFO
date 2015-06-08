@@ -1,0 +1,18 @@
+pkgbase = qeven
+	pkgdesc = Qt Easy Video Encoder (QEVEN) encodes media files to several video formats (VCD,DVD,SVCD,DIVX,XVID,FLV). Uses MEncoder and MPlayer.
+	pkgver = 0.3.2
+	pkgrel = 5
+	url = http://qeven.wordpress.com/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = mencoder
+	depends = mplayer
+	depends = qt4
+	source = http://downloads.sourceforge.net/qeven/qeven_0.3.2.tar.bz2
+	source = qeven.desktop
+	sha256sums = 8c80b97e17f8eda60c0d5af71837dd6c9d9869dceace590b189a0030a8fc3366
+	sha256sums = d6d670253e0f0b18738485edcf7f27faca7f65fb6300dc9475e8d8f2f1fe3e0f
+
+pkgname = qeven
+

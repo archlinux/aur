@@ -1,0 +1,13 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=QEVEN
+Name[es]=QEVEN
+GenericName=Video Encoder
+GenericName[es]=Codificador de vídeo
+Comment=Video Encoder
+Comment[es]=Codificador de vídeo
+Exec=/usr/bin/qeven
+Icon=/usr/share/pixmaps/qeven.png
+Terminal=false
+Type=Application
+Categories=Qt;AudioVideo;Video;
