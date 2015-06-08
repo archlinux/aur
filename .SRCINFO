@@ -1,0 +1,23 @@
+pkgbase = gregorio
+	pkgdesc = Command-line tool to typeset Gregorian chant
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = http://gregorio-project.github.io
+	install = gregorio.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = texlive-core
+	depends = texlive-fontsextra
+	depends = texlive-bin
+	depends = texlive-formatsextra
+	depends = texlive-latexextra
+	provides = gregorio
+	conflicts = gregorio-svn
+	conflicts = gregorio-git
+	conflicts = gregoriotex
+	source = https://github.com/gregorio-project/gregorio/releases/download/v3.0.2/gregorio-3.0.2.tar.gz
+	sha256sums = da7e35e642f5bc40e55bf6e795513a225e6b7e80086a021e516c2daf69fc2e74
+
+pkgname = gregorio
+
