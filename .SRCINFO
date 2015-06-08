@@ -1,0 +1,20 @@
+pkgbase = onioncat-svn
+	pkgdesc = An IP-Transparent Tor Hidden Service Connector
+	pkgver = 561
+	pkgrel = 3
+	url = http://www.cypherpunk.at/onioncat/
+	install = onioncat.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = subversion
+	depends = tor
+	provides = onioncat
+	conflicts = onioncat
+	source = onioncat.install
+	source = onioncat::svn+https://www.cypherpunk.at/svn/onioncat/trunk
+	md5sums = 7ccaf9425ef6adeb962f27a9fafa6256
+	md5sums = SKIP
+
+pkgname = onioncat-svn
+
