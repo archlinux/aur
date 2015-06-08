@@ -1,0 +1,30 @@
+pkgbase = vino38
+	pkgdesc = a VNC server for the GNOME desktop (legacy version)
+	pkgver = 3.8.0
+	pkgrel = 2
+	url = http://www.gnome.org
+	install = vino.install
+	arch = i686
+	arch = x86_64
+	groups = gnome
+	license = GPL
+	makedepends = intltool
+	makedepends = networkmanager
+	makedepends = gnome-common
+	depends = libnotify
+	depends = libxtst
+	depends = libsm
+	depends = libsoup
+	depends = telepathy-glib
+	depends = gtk3
+	depends = libsecret
+	depends = avahi
+	depends = desktop-file-utils
+	provides = vino=3.8.0
+	conflicts = vino
+	options = !emptydirs
+	source = http://ftp.gnome.org/pub/gnome/sources/vino/3.8/vino-3.8.0.tar.xz
+	sha256sums = be665ff7a76076902a84cab69e7c3a6a7ddf2c634cc648aa35189895eefaac28
+
+pkgname = vino38
+
