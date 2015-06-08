@@ -1,0 +1,19 @@
+pkgbase = haskell-transformers-base
+	pkgdesc = Lift computations from the bottom of a transformer stack
+	pkgver = 0.4.3
+	pkgrel = 2
+	url = http://hackage.haskell.org/package/transformers-base
+	install = haskell-transformers-base.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = haskell-stm>=2.3
+	depends = haskell-transformers
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/transformers-base/0.4.3/transformers-base-0.4.3.tar.gz
+	md5sums = e29cca16fd4719c6855026257cd0b686
+
+pkgname = haskell-transformers-base
+
