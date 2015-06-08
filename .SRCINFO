@@ -1,0 +1,17 @@
+pkgbase = perl-module-scandeps
+	pkgdesc = Scan file prerequisites
+	pkgver = 1.18
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Module-ScanDeps
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-extutils-makemaker>=6.57
+	makedepends = perl-test-requires
+	depends = perl>=5.008
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RS/RSCHUPP/Module-ScanDeps-1.18.tar.gz
+	sha512sums = 1c30927454a7e181738eef54767a1845421217e0f6837f8157ec35c604821339238f296a6644e7241f215e66f7ada8ee832a494d9b9f74f8dc3ba219cd616d16
+
+pkgname = perl-module-scandeps
+
