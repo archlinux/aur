@@ -1,0 +1,21 @@
+pkgbase = mingw-w64-coin-or-clp
+	pkgdesc = COIN-OR linear programming solver (mingw-w64)
+	pkgver = 1.16.6
+	pkgrel = 1
+	url = https://projects.coin-or.org/Clp
+	arch = any
+	groups = coin-or
+	license = EPL
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-coin-or-osi
+	depends = mingw-w64-zlib
+	depends = mingw-w64-bzip2
+	depends = mingw-w64-lapack
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = http://www.coin-or.org/download/source/Clp/Clp-1.16.6.tgz
+	sha1sums = 70c1388e010cea721079fe44532a2df5cba1f9f8
+
+pkgname = mingw-w64-coin-or-clp
+
