@@ -1,0 +1,19 @@
+pkgbase = simple-mtpfs-git
+	pkgdesc = Simple MTP fuse filesystem driver
+	pkgver = r1
+	pkgrel = 1
+	url = https://github.com/phatina/simple-mtpfs
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = libmtp
+	depends = fuse
+	depends = gcc-libs
+	provides = simple-mtpfs
+	conflicts = simple-mtpfs
+	source = simple-mtpfs::git+https://github.com/phatina/simple-mtpfs.git
+	sha512sums = SKIP
+
+pkgname = simple-mtpfs-git
+
