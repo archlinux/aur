@@ -1,0 +1,18 @@
+pkgbase = bbswitch-lts318-ck
+	pkgdesc = Kernel module allowing to switch dedicated graphics card on Optimus laptops for linux-lts318-ck
+	pkgver = 0.8
+	pkgrel = 1
+	url = http://github.com/Bumblebee-Project/bbswitch
+	install = bbswitch-lts318-ck.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = linux-lts318-ck-headers>=3.18.0
+	makedepends = linux-lts318-ck-headers<3.19
+	depends = linux-lts318-ck>=3.18.0
+	depends = linux-lts318-ck<3.19.0
+	source = https://github.com/Bumblebee-Project/bbswitch/archive/v0.8.tar.gz
+	md5sums = 5b116b31ace3604ddf9d1fc1f4bc5807
+
+pkgname = bbswitch-lts318-ck
+
