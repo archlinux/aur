@@ -1,0 +1,18 @@
+pkgbase = python-linecache2
+	pkgdesc = Backports of the linecache module
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/testing-cabal/linecache2
+	arch = any
+	license = Python
+	makedepends = python-pbr
+	makedepends = python2-pbr
+	source = https://pypi.python.org/packages/source/l/linecache2/linecache2-1.0.0.tar.gz
+	sha256sums = 4b26ff4e7110db76eeb6f5a7b64a82623839d595c2038eeda662f2a2db78e97c
+
+pkgname = python-linecache2
+	depends = python
+
+pkgname = python2-linecache2
+	depends = python2
+
