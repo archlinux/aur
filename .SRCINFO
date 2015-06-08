@@ -1,0 +1,21 @@
+pkgbase = xmail
+	pkgdesc = An java based SMTP/POP3 server
+	pkgver = 1.27
+	pkgrel = 1
+	url = http://www.xmailserver.org/
+	changelog = Changelog
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = openssl
+	source = http://www.xmailserver.org/xmail-1.27.tar.gz
+	source = xmail
+	source = xmail.sh
+	source = xmail.conf
+	md5sums = 73c9d95012709d7b11511dfb6dd6ab3d
+	md5sums = e4c301f8674881cd2e00d0dfe5aacd1f
+	md5sums = 1a668de800a761bb5feda3e247a140d9
+	md5sums = 94818a1c5850695af8cb7288e13532d9
+
+pkgname = xmail
+

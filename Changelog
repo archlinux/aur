@@ -1,0 +1,18 @@
+2011-04-04 Techlive Zheng <techlive at gmail dot com>
+
+Version: 1.27-1
+
+    * Update to xmail version 1.27.
+
+2011-04-03 Techlive Zheng <techlive at gmail dot com>
+
+Version: 1.26-2
+
+    * Update xmail rc script. 
+
+2011-03-23 Techlive Zheng <techlive at gmail dot com>
+
+Version: 1.26-1
+
+    * Add ChangeLog.
+    * Update PKGBUILD.
