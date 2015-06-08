@@ -1,0 +1,18 @@
+pkgbase = libvlc-qt-git
+	pkgdesc = A free library used to connect Qt and libvlc libraries
+	pkgver = 346.893f101
+	pkgrel = 1
+	url = http://projects.tano.si/en/library
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake>=2.8
+	depends = vlc
+	depends = qt5-declarative
+	provides = libvlc-qt
+	conflicts = libvlc-qt
+	source = git+https://github.com/vlc-qt/vlc-qt
+	md5sums = SKIP
+
+pkgname = libvlc-qt-git
+
