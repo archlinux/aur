@@ -1,0 +1,14 @@
+pkgbase = emacs-else-git
+	pkgdesc = Emacs Language Sensitive Editor -- minor mode to use language specific abbreviations
+	pkgver = 2014_02_14
+	pkgrel = 2
+	url = http://home.comcast.net/~dharter46
+	install = else.install
+	arch = any
+	license = GPL
+	makedepends = texlive-plainextra
+	depends = emacs
+	md5sums = SKIP
+
+pkgname = emacs-else-git
+
