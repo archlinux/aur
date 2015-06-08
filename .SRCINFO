@@ -1,0 +1,18 @@
+pkgbase = ttf-dejavu-sans-mono-powerline-git
+	pkgdesc = DejaVu Sans Mono for Powerline
+	pkgver = r71.39c99c0
+	pkgrel = 1
+	url = https://github.com/powerline/fonts
+	install = ttf-dejavu-sans-mono-powerline-git.install
+	arch = any
+	license = custom:DejaVu Fonts License, Version 1.0
+	makedepends = git
+	depends = fontconfig
+	depends = xorg-font-utils
+	conflicts = powerline-fonts
+	conflicts = powerline-fonts-git
+	source = git://github.com/powerline/fonts.git
+	md5sums = SKIP
+
+pkgname = ttf-dejavu-sans-mono-powerline-git
+
