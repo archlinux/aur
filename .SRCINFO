@@ -1,0 +1,26 @@
+pkgbase = vdr-tvscraper
+	pkgdesc = Runs in the background and collects metadata for all available EPG events
+	pkgver = 0.2.0
+	pkgrel = 8
+	url = http://www.vdr-portal.de/board1-news/board2-vdr-news/119880-announce-tvscrapper-0-0-1/
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	depends = curl
+	depends = jansson
+	depends = libxml2
+	depends = sqlite
+	depends = vdr-api=2.2.0
+	replaces = vdr-tvscrapper
+	backup = etc/vdr/conf.avail/50-tvscraper.conf
+	backup = var/lib/vdr/plugins/tvscraper/override.conf
+	source = http://projects.vdr-developer.org/attachments/download/1742/vdr-tvscraper-0.2.0.tgz
+	source = 50-tvscraper.conf
+	md5sums = b379098b70fdd3a472c77708eab4d82e
+	md5sums = 33dc17067410095e383835b2ee714a68
+
+pkgname = vdr-tvscraper
+
