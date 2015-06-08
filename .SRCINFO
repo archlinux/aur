@@ -1,0 +1,15 @@
+pkgbase = wps-office-extension-turkish-dictionary
+	pkgdesc = Turkish dictionary for WPS Office
+	pkgver = 20131224
+	pkgrel = 2
+	url = http://wps-community.org/download/dicts
+	arch = any
+	groups = wps-office-extensions
+	license = custom
+	makedepends = unzip
+	depends = wps-office
+	source = http://wps-community.org/download/dicts/tr_TR.zip
+	sha1sums = 467908aefffc4dea537d2a97aac6e105502c1abe
+
+pkgname = wps-office-extension-turkish-dictionary
+
