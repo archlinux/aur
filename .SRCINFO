@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-it-git
+	pkgdesc = Plugin for Vapoursynth: it (GIT version)
+	pkgver = v1.2.1.gf9cc8d1
+	pkgrel = 1
+	url = http://forum.doom9.org/showthread.php?t=171246
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = vapoursynth
+	provides = vapoursynth-plugin-it
+	conflicts = vapoursynth-plugin-it
+	source = it::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-IT.git
+	sha1sums = SKIP
+
+pkgname = vapoursynth-plugin-it-git
+
