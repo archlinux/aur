@@ -1,0 +1,15 @@
+pkgbase = perl-template-plugin-javascript
+	pkgdesc = Encodes text to be safe in JavaScript
+	pkgver = 0.02
+	pkgrel = 1
+	url = http://search.cpan.org/~miyagawa/Template-Plugin-JavaScript
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Template-Plugin-JavaScript-0.02.tar.gz
+	md5sums = 1e640dc8829a6026bf674b166855b189
+
+pkgname = perl-template-plugin-javascript
+
