@@ -1,0 +1,19 @@
+pkgbase = plasma-volume-control-git
+	pkgdesc = Volume applet for Plasma
+	pkgver = r186.61e7b37
+	pkgrel = 1
+	url = http://quickgit.kde.org/?p=scratch%2Fsitter%2Fplasma-volume-control.git
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = pulseaudio
+	depends = plasma-workspace
+	provides = plasma-volume-control
+	conflicts = plasma-volume-control
+	source = git://anongit.kde.org/scratch/sitter/plasma-volume-control.git
+	md5sums = SKIP
+
+pkgname = plasma-volume-control-git
+
