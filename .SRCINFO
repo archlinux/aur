@@ -1,0 +1,20 @@
+pkgbase = bluez-qt-git
+	pkgdesc = Qt wrapper for Bluez 5 DBus API
+	pkgver = r296.840aecb
+	pkgrel = 1
+	url = https://projects.kde.org/projects/playground/libs/libbluedevil
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = qt5-declarative
+	depends = bluez
+	provides = bluez-qt
+	conflicts = libbluedevil-frameworks
+	conflicts = bluez-qt
+	source = git://anongit.kde.org/bluez-qt.git
+	sha256sums = SKIP
+
+pkgname = bluez-qt-git
+
