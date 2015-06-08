@@ -11,7 +11,7 @@
 # intel-ipp:                    Intel Integrated Performance Primitives
 # intel-mkl:                    Intel Math Kernel Library (Intel® MKL)
 # intel-sourcechecker:          Intel Source Checker
-# intel-tbb:                    Intel Threading Building Blocks (TBB)
+# intel-tbb_psxe:               Intel Threading Building Blocks (TBB)
 ###########################################################################
 
 # Parallel Studio XE
@@ -33,8 +33,7 @@
 # http://registrationcenter-download.intel.com/akdlm/irc_nas/4992/parallel_studio_xe_2015_update1.tgz
 
 pkgbase="intel-parallel-studio-xe"
-#pkgname=('intel-compiler-base' 'intel-openmp' 'intel-fortran-compiler' 'intel-ipp' 'intel-mkl' 'intel-sourcechecker' 'intel-tbb' 'intel-vtune-amplifier-xe' 'intel-inspector-xe' 'intel-advisor-xe' )
-pkgname=('intel-compiler-base' 'intel-openmp' 'intel-fortran-compiler' 'intel-ipp' 'intel-mkl' 'intel-sourcechecker' 'intel-vtune-amplifier-xe' 'intel-inspector-xe' 'intel-advisor-xe' )
+pkgname=('intel-compiler-base' 'intel-openmp' 'intel-fortran-compiler' 'intel-ipp' 'intel-mkl' 'intel-sourcechecker' 'intel-tbb_psxe' 'intel-vtune-amplifier-xe' 'intel-inspector-xe' 'intel-advisor-xe' )
 #true && pkgname=('intel-compiler-base'  'intel-gdb'  )
 
 PKGEXT='.pkg.tar.gz'
@@ -71,7 +70,7 @@ _icc_ver='15.0.3' # intel-ccompxe-${_v_b}-${_icc_ver}.noarch.rpm
 _openmp_ver='15.0.3' # intel-openmp-${_v_b}-${_openmp_ver}.${arch}.rpm
 _ipp_ver='8.2.2' # intel-ipp-ac-${_v_b}-${_ipp_ver}.${arch}.rpm
 _mkl_ver='11.2.3' # intel-mkl-cluster-${_v_b}-${_mkl_ver}.${arch}.rpm
-#_tbb_ver='4.3.5' # intel-tbb-${_v_b_}-${_tbb_ver}.noarch.rpm
+_tbb_ver='4.3.5' # intel-tbb-${_v_b_}-${_tbb_ver}.noarch.rpm
 _sourcechecker_ver='15.0.3' # intel-sourcechecker-common-${_v_b}-${_sourcechecker_ver}.noarch.rpm
 _vtune_ver='15.3.403110' # intel-vtune-amplifier-xe-${year}-*-${_vtune_ver}.${arch}.rpm
 _inspector_ver='15.1.379161' # intel-inspector-xe-${year}-*-${_inspector_ver}.${arch}.rpm
@@ -118,11 +117,11 @@ source=(
 	'intel-mkl.conf' 
 	#'intel-gdb.conf'
 	'intel-ipp.conf'
-    #'intel-tbb.conf'
+    'intel-tbb.conf'
 	'intel-mkl.sh'
         'intel-mkl.install'
         'intel-mkl-th.conf'
-	#'intel-tbb.install'
+	'intel-tbb.install'
 	'EULA.txt'
 	)
 
@@ -139,11 +138,11 @@ sha256sums=(
 	'99cc9683cc75934cc21bb5a09f6ad83365ee48712719bfd914de9444695eed13'  # intel-openmp.conf
 	'a856326362e9b80c19dc237cbf66bf3d96a69bd7ad1baff99ec9849f8208348c'  # intel-mkl.conf
 	'da6f41c2e002c9a793c75a18c8d1c85ef7ef5bf83a7a0a158ff144481491aac8'  # intel-ipp.conf
-	#'aee2ae7f87f12f4af38d52423b40d547fd5bbe77e18694b9847e9f2a96d33c6e'  # intel-tbb.conf
+	'aee2ae7f87f12f4af38d52423b40d547fd5bbe77e18694b9847e9f2a96d33c6e'  # intel-tbb.conf
 	'5e68c529c65cac54218026c869e54b2ddb268179725fc1e6b56d920470dad999'  # intel-mkl.sh
 	'11398c0ae2e2011902b1d6356d916d41bb8b54d39d090c6c83630f4b0e84e93a'  # intel-mkl.install
     'e515cb28bf40cdb0db818db6a2688a0028575153a1b9d5acfb0bc5f13fe45722'  # intel-mkl-th.conf
-	#'8c6a1f7b1b12d498e68b3085d8b2fcd050505209b7c0f2b870ba5f65ee135a90'  # intel-tbb.install
+	'8c6a1f7b1b12d498e68b3085d8b2fcd050505209b7c0f2b870ba5f65ee135a90'  # intel-tbb.install
 	'228ac25e147adb9b872e1a562e522d2fd48809ccae89b765112009896a6d55a5'  # EULA.txt
 	)
 
@@ -200,7 +199,7 @@ build() {
 	echo -e " \e[1mintel-ipp:\e[0m                    Intel Integrated Performance Primitives"
 	echo -e " \e[1mintel-mkl:\e[0m                    Intel Math Kernel Library (Intel® MKL)"
 	echo -e " \e[1mintel-sourcechecker:\e[0m          Intel Source Checker"
-	#echo -e " \e[1mintel-tbb:\e[0m                    Intel Threading Building Blocks (TBB)"
+	echo -e " \e[1mintel-tbb:\e[0m                    Intel Threading Building Blocks (TBB)"
 	echo -e "-----------------------------------------------------------------------------"
 	echo -e "" 
 	echo -e "-----------------------------------------------------------------------------"
@@ -716,61 +715,62 @@ package_intel-sourcechecker() {
 	mv ${xe_build_dir}/opt ${pkgdir}
 }
 
-#package_intel-tbb() {
-#
-#	set_build_vars
-#
-#	pkgdesc="Intel Threading Building Blocks (TBB)"
-#	pkgver=${_year}.${_tbb_ver}.${_v_b}
-#	#depends=('intel-compiler-base')
-#	install=intel-tbb.install
-#
-#	echo -e " # intel-tbb: Start Building "
-#
-#	mkdir -p ${xe_build_dir}/opt
-#	mkdir -p ${xe_build_dir}/etc/ld.so.conf.d
-#
-#	if [ "$CARCH" = "i686" ]; then
-#	  sed 's/<arch>/ia32/' < ${srcdir}/intel-tbb.conf > ${xe_build_dir}/etc/ld.so.conf.d/intel-tbb.conf
-#	  sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/g' ${xe_build_dir}/etc/ld.so.conf.d/intel-tbb.conf
-#	else
-#	  sed 's/<arch>/intel64/' < ${srcdir}/intel-tbb.conf > ${xe_build_dir}/etc/ld.so.conf.d/intel-tbb.conf
-#	  sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/g' ${xe_build_dir}/etc/ld.so.conf.d/intel-tbb.conf
-#	fi
-#
-#	cd ${xe_build_dir}
-#	
-#	echo -e " # intel-tbb: Extracting RPMS "
-#	extract_rpms 'intel-tbb-*.rpm'  $xe_build_dir
-#
-#
-#	echo -e " # intel-tbb: Editing variables "
-#	cd ${xe_build_dir}/opt/intel/${_composer_xe_dir}/tbb/bin
-#	rm tbbvars.csh
-#
-#	sed -i 's/SUBSTITUTE_INSTALL_DIR_HERE/\/opt\/intel\/composerxe\/tbb/g' tbbvars.sh
-#
-#	chmod a+x tbbvars.sh
-#
-#	cd ${xe_build_dir}/opt/intel/${_composer_xe_dir}/tbb/bin
-#	#rm tbbvars.csh
-#	sed -i 's/SUBSTITUTE_INSTALL_DIR_HERE/\/opt\/intel\/composerxe\/tbb/g' tbbvars.sh
-#	chmod a+x tbbvars.sh
-#
-#	echo -e " # intel-tbb: Remove unneeded libs and bin "
-#	rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/tbb/bin/${_not_arch}	
-#	rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/tbb/lib/${_not_arch}
-#	
-#	if $_remove_docs ; then
-#	  echo -e " # intel-tbb: remove documentation "
-#	  rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/Documentation
-#	  rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/tbb/examples
-#	fi
-#
-#	echo -e " # intel-tbb: Move package "
-#	mv ${xe_build_dir}/opt ${pkgdir}
-#	mv ${xe_build_dir}/etc ${pkgdir}
-#}
+package_intel-tbb_psxe() {
+
+	set_build_vars
+
+	pkgdesc="Intel Threading Building Blocks (TBB)"
+	pkgver=${_year}.${_tbb_ver}.${_v_b}
+    provides=("intel-tbb")
+	#depends=('intel-compiler-base')
+	install=intel-tbb.install
+
+	echo -e " # intel-tbb: Start Building "
+
+	mkdir -p ${xe_build_dir}/opt
+	mkdir -p ${xe_build_dir}/etc/ld.so.conf.d
+
+	if [ "$CARCH" = "i686" ]; then
+	  sed 's/<arch>/ia32/' < ${srcdir}/intel-tbb.conf > ${xe_build_dir}/etc/ld.so.conf.d/intel-tbb.conf
+	  sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/g' ${xe_build_dir}/etc/ld.so.conf.d/intel-tbb.conf
+	else
+	  sed 's/<arch>/intel64/' < ${srcdir}/intel-tbb.conf > ${xe_build_dir}/etc/ld.so.conf.d/intel-tbb.conf
+	  sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/g' ${xe_build_dir}/etc/ld.so.conf.d/intel-tbb.conf
+	fi
+
+	cd ${xe_build_dir}
+	
+	echo -e " # intel-tbb: Extracting RPMS "
+	extract_rpms 'intel-tbb-*.rpm'  $xe_build_dir
+
+
+	echo -e " # intel-tbb: Editing variables "
+	cd ${xe_build_dir}/opt/intel/${_composer_xe_dir}/tbb/bin
+	rm tbbvars.csh
+
+	sed -i 's/SUBSTITUTE_INSTALL_DIR_HERE/\/opt\/intel\/composerxe\/tbb/g' tbbvars.sh
+
+	chmod a+x tbbvars.sh
+
+	cd ${xe_build_dir}/opt/intel/${_composer_xe_dir}/tbb/bin
+	#rm tbbvars.csh
+	sed -i 's/SUBSTITUTE_INSTALL_DIR_HERE/\/opt\/intel\/composerxe\/tbb/g' tbbvars.sh
+	chmod a+x tbbvars.sh
+
+	echo -e " # intel-tbb: Remove unneeded libs and bin "
+	rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/tbb/bin/${_not_arch}	
+	rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/tbb/lib/${_not_arch}
+	
+	if $_remove_docs ; then
+	  echo -e " # intel-tbb: remove documentation "
+	  rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/Documentation
+	  rm -rf ${xe_build_dir}/opt/intel/${_composer_xe_dir}/tbb/examples
+	fi
+
+	echo -e " # intel-tbb: Move package "
+	mv ${xe_build_dir}/opt ${pkgdir}
+	mv ${xe_build_dir}/etc ${pkgdir}
+}
 
 package_intel-vtune-amplifier-xe() {
 	pkgdesc="Performance profiler for serial and parallel performance analysis"
