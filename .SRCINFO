@@ -1,0 +1,22 @@
+pkgbase = polkit-kde-agent-git
+	pkgdesc = Daemon providing a polkit authentication UI for KDE
+	pkgver = r266.e60cb00
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/workspace/polkit-kde-agent-1
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = kdoctools
+	makedepends = python
+	depends = knotifications
+	provides = polkit-kde-agent
+	conflicts = polkit-kde-agent
+	conflicts = polkit-kde-git
+	replaces = polkit-kde-git
+	source = git://anongit.kde.org/polkit-kde-agent-1.git
+	md5sums = SKIP
+
+pkgname = polkit-kde-agent-git
+
