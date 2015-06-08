@@ -1,0 +1,14 @@
+pkgbase = goconvey
+	pkgdesc = Go testing in the browser that integrates with go test
+	pkgver = 1.5.0.r392.g68c2220
+	pkgrel = 1
+	url = http://goconvey.co/
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	options = !strip
+	options = !emptydirs
+
+pkgname = goconvey
+
