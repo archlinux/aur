@@ -5,13 +5,13 @@ pkgname=(python-pylibmc python2-pylibmc)
 pkgver=1.4.1
 pkgrel=2
 
-pkgdesc="Quick and small memcached client for Python"
+pkgdesc='Quick and small memcached client for Python'
 url='http://pypi.python.org/pypi/pylibmc'
 arch=('i686' 'x86_64')
 license=('GPL')
 
 depends=('libmemcached')
-makedepends=('gcc' 'zlib')
+makedepends=('python' 'python2' 'gcc' 'zlib')
 
 source=("https://pypi.python.org/packages/source/p/pylibmc/pylibmc-$pkgver.tar.gz")
 
