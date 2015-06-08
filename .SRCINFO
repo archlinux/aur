@@ -1,0 +1,16 @@
+pkgbase = epson-inkjet-printer-201109w
+	pkgdesc = Epson printer driver (Stylus Office BX305FW Plus / WorkForce 435)
+	pkgver = 1.0.0
+	pkgrel = 8
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom:Epson Licence Agreement
+	depends = cups
+	depends = ghostscript
+	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201109w-1.0.0-1lsb3.2.src.rpm
+	sha256sums = b6bf1d1ef376702787640c8ee5126d28398f47be8b5f2938dde7e37d90d44d27
+
+pkgname = epson-inkjet-printer-201109w
+
