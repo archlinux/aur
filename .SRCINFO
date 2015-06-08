@@ -1,0 +1,15 @@
+pkgbase = ax25-apps
+	pkgdesc = Programs for the hamradio protocol AX.25 that would be used by normal users
+	pkgver = 0.0.8_rc4
+	pkgrel = 2
+	url = http://www.linux-ax25.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = make
+	depends = libax25
+	source = http://www.linux-ax25.org/pub/ax25-apps/ax25-apps-0.0.8-rc4.tar.xz
+	sha1sums = afa43d8bcfd3218de27d1a2c894a74c911a99fd3
+
+pkgname = ax25-apps
+
