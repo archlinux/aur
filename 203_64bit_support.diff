@@ -1,0 +1,163 @@
+--- tmview-01.03.orig/svga/defssvga.h
++++ tmview-01.03/svga/defssvga.h
+@@ -176,8 +178,6 @@
+ */
+ 
+ /* be careful with storge types !!! */
+-#define BMLONG32       /* for architectures where "long int" has 32bits, e.g. i386  */
+-/* #define BMLONG64  *//* for architectures where "long int" has 64bits, e.g. alpha */
+ /* #define GREYINBMU *//* waste memory. may be a bit faster    */
+ 
+ /* if DOSFILES is defined, a dosfilesystem is expected, */ 
+--- tmview-01.03.orig/src/tmview.c
++++ tmview-01.03/src/tmview.c
+@@ -2335,14 +2362,6 @@
+   pfprot("This is some kind of a DVIewer, %s\n",MYVERSION);
+   pfprot("(C)opyright 1995 Thomas Moor\n\n");
+ 
+-  /* check some arcitecture dependant stuff ... better be configured */ 
+-  if(BYTES_PER_BMUNIT !=sizeof(BMUNIT)){
+-    pfprot("This message addresses the administrator rather than the user:\n");
+-    pfprot("the compiletime option BMLONG64/BMLONG32 seems not to meet your\n");
+-    pfprot("machines architecture. Please check the non-i386 section in the\n");
+-    pfprot("README and re-compile. Sorry.\n\n");
+-    exit(1);
+-  }
+   if(sizeof(void*)<sizeof(long)){ /* this is for the lru-buffer in subs.c*/
+     pfprot("This message addresses the administrator rather than the user:\n");
+     pfprot("sizeof \"void*\" is assumed to be at least the size of \"long int\".");
+--- tmview-01.03.orig/src/bookmks.c
++++ tmview-01.03/src/bookmks.c
+@@ -194,24 +194,15 @@
+ }
+ 
+ void rolldownfilemk(void) {
+-  int i, maxloop;
+-  char *bustr=NULL;
++  int i;
+   filemark *bbu;
+ #ifdef DEBUGBMK
+   pfprot("(rolldownfile... )");
+ #endif
+   if(nfilemks<=0) return;
+-  maxloop=nfilemks; /* put a -1 here if deleting stuff ? */
+-  while(maxloop>0) {
+-    maxloop--;
+-    bbu=filemks[0];
+-    for(i=0;i<nfilemks-1;i++) filemks[i]=filemks[i+1];
+-    filemks[i]=bbu;
+-    if(dvistandard(&bustr,filemks[0]->lastpos.dvifilename)) 
+-      break; /* loop nominal ends here */
+-    /* freefilemknumber(0); ... no, we dont delete these things! */   
+-  };
+-  freemem(&bustr);
++  bbu=filemks[0];
++  for(i=0;i<nfilemks-1;i++) filemks[i]=filemks[i+1];
++  filemks[i]=bbu;
+   curfmk=filemks[0];
+   curbmks=&(curfmk->bookmks);
+ }
+--- tmview-01.03.orig/src/readpk.c
++++ tmview-01.03/src/readpk.c
+@@ -16,7 +16,7 @@
+ 
+ 
+ void pkopen(char* fname) {
+-  if((pkfile = fopen(fname, "rb"))==0) {
++  if((pkfile = fopen(fname, "rb"))==NULL) {
+     pfprot("\n fatal error: pk-file disapeard. \n");
+     exit(1);
+   }
+--- tmview-01.03.orig/src/defsgen.h
++++ tmview-01.03/src/defsgen.h
+@@ -189,18 +189,18 @@
+ */
+ 
+ 
+-#ifdef	BMLONG64
++#if __WORDSIZE == 64
+ #define	BMUNIT			unsigned long
+ #define	BITS_PER_BMUNIT		64
+ #define BITS_LOG2               6
+ #define	BYTES_PER_BMUNIT	8
+-#endif
+-#ifdef	BMLONG32
++#else
+ #define	BMUNIT			unsigned long
+ #define	BITS_PER_BMUNIT		32
+ #define BITS_LOG2               5
+ #define	BYTES_PER_BMUNIT	4
+ #endif
++
+ #ifdef BMCHAR
+ #define BMUNIT                  unsigned char
+ #define	BITS_PER_BMUNIT		8
+--- tmview-01.03.orig/README
++++ tmview-01.03/README
+@@ -14,7 +14,6 @@
+    - EXTRA NOTES kpathsea
+    - EXTRA NOTES mouse
+    - EXTRA NOTES X-Window System   
+-   - EXTRA NOTES non-i386 architectures e.g. Alpha.
+ 5. Get the newest version, send me your comments
+ 
+ 
+@@ -361,17 +360,6 @@
+ colors, asking for fonts and so, set DEBUGX in writelx.c . This helps
+ if no tmview window shows up at all.
+ 
+-EXTRA NOTES non-i386 architectures: Of course I realize that there are several
+-non-i386 architectures. The clean way of dealing with machine dependand stuff
+-is to make use of <sys/types.h> and such. Unfortunately I didn't. In a future
+-version I shall carefully review the code from this perspective. In the 
+-meanwhile there is on crucial compiletime option to set up how many bits
+-actually make a "long int". On i386 these are 32. Thus, enable "#define BMLONG32"
+-in the platformm dependant "defs*.h", e.g. "./tmview/lX/defslx.h". On Alpha
+-systems a "long int" is made up from 64 bits. Here, "#define BMLONG64" needs
+-to be enabled. tmview will issue a runtime warning message if it figures out 
+-that ends don't meet here.
+-
+ 
+ *****************************************************************************
+ *****************************************************************************
+--- tmview-01.03.orig/fb/writefb.c
++++ tmview-01.03/fb/writefb.c
+@@ -7,6 +7,7 @@
+ 
+ #include <termios.h>
+ #include <errno.h>
++#include <stdint.h>
+ 
+ #include <sys/types.h>
+ #include <sys/ioctl.h>
+@@ -518,7 +589,7 @@
+ }
+ 
+ uchar getonechar(void){
+-  int res;
++  char res;
+   if(1==read(STDIN_FILENO, &res, 1)) 
+     return(res);
+   return(0);
+--- tmview-01.03.orig/fb/defsfb.h
++++ tmview-01.03/fb/defsfb.h
+@@ -144,8 +147,6 @@
+ */
+ 
+ /* be careful with storge types !!! */
+-#define BMLONG32       /* for architectures where "long int" has 32bits, e.g. i386  */
+-/* #define BMLONG64  *//* for architectures where "long int" has 64bits, e.g. alpha */
+ /* #define GREYINBMU *//* waste memory. may be a bit faster    */
+ 
+ /* if DOSFILES is defined, a dosfilesystem is expected, */ 
+--- tmview-01.03.orig/lX/defslx.h
++++ tmview-01.03/lX/defslx.h
+@@ -142,8 +143,6 @@
+ 
+ 
+ /* be careful with storge types !!! */
+-#define BMLONG32     /* when "long int" has 32bits, e.g. i386 architecture */
+-/*#define BMLONG64 *//* when "long int" has 64bits, e.g. alpha architecture*/
+ /*#define GREYINBMU*//* waste memory. may be a bit faster    */
+ #define COLORS_PER_GREY 16 /* 2^BITS_PER_GREY, no MECK-like things in lX  */
+ 

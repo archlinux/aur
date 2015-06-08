@@ -1,0 +1,17 @@
+--- tmview/fb/writefb.c.orig	2010-07-14 17:59:56.000000000 +0200
++++ tmview/fb/writefb.c	2010-07-14 18:00:19.000000000 +0200
+@@ -3,12 +3,12 @@
+ /* This program may be used without any warranty. It may be modified and */
+ /* distributed without any restrictions.                                 */
+ 
+-#include "../src/defs.h"
+-
+ #include <termios.h>
+ #include <errno.h>
+ #include <stdint.h>
+ 
++#include "../src/defs.h"
++
+ #include <sys/types.h>
+ #include <sys/ioctl.h>
+ #include <sys/mman.h>

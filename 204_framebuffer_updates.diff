@@ -1,0 +1,329 @@
+--- tmview-01.03.orig/fb/writefb.c
++++ tmview-01.03/fb/writefb.c
+@@ -18,16 +19,19 @@
+ 
+ /* framebuffer globals  */  
+ static uchar *thefb=NULL;
++static struct fb_var_screeninfo thefbvarinfo;
+ static long thefblen;
++static int thefbdepth;
+ static int thefbxdim;
+ static int thefbydim;
+-static int thefbbyteswidth;
++static int thefbstride;
+ static int thefbfd=-1;
+ static struct fb_cmap origpalette={0,0,NULL,NULL,NULL,NULL};
+ static unsigned short origreds[256];
+ static unsigned short origgreens[256];
+ static unsigned short origblues[256];
+ static unsigned short origtrans[256];
++static unsigned int newpalette[256];
+ 
+ /* terminal related stuff */
+ static struct termios origtermattr;
+@@ -84,7 +88,7 @@
+     close(zwfd);
+   } 
+   if(thefbfd!=-1) {
+-    if(origpalette.len!=0) {
++    if(thefbdepth==1 && origpalette.len!=0) {
+       pfprot("c");
+       ioctl(thefbfd,FBIOPUTCMAP, &origpalette);
+       origpalette.len=0;
+@@ -177,6 +181,7 @@
+ static volatile int pendingswitch=0;
+ 
+ void setpalette(void); /* foreward */
++void updateline(uchar *, uchar *, int);
+ 
+ static void vtrelease(int n){  /* switch away */
+ #ifdef DEBUGFB
+@@ -190,19 +195,51 @@
+ }
+ 
+ static void vtaquire(int n) {  /* come back */
++  int h;
++  uchar *src, *dst; 
+ #ifdef DEBUGFB
+   pfprot("(vtaquire)");
+ #endif
+   ioctl(thevtfd, VT_RELDISP, VT_ACKACQ);
+   if(offscreen!=NULL && thefb!=NULL) {
+-     memcpy(thefb,offscreen,thefblen);
+-     setpalette();
++    for(
++      h=vgaydim,
++      src=offscreen,
++      dst=thefb;
++      h>0;
++      h--,
++      src+=vgaxdim,
++      dst+=thefbstride)
++        updateline(dst,src,vgaxdim);
++    setpalette();
+   }
+   pendingswitch=0;    /* discard a pending request ... */
+   donotupdate=0;      /* drawwings welcome again */
+ }
+ 
+ 
++void updateline(uchar *dst, uchar *src, int len) {
++  switch(thefbdepth) {
++    case 1:
++      memcpy(dst,src,len);
++    break;
++    case 2: {
++      int i;
++      uint16_t*target=(uint16_t*)dst;
++      for(i=len;i--;)
++        *target++=newpalette[*src++];
++    }
++    break;
++    case 4: {
++      int i;
++      uint32_t*target=(uint32_t*)dst;
++      for(i=len;i--;)
++        *target++=newpalette[*src++];
++    }
++    break;
++  }
++}
++
+ void myupdate(int x1, int y1, int x2, int y2) {
+    int h,w;
+    uchar *src, *dst; 
+@@ -221,13 +258,13 @@
+    for(
+      w=x2-x1+1,
+      h=y2-y1+1,
+-     src=offscreen+thefbbyteswidth*y1+x1,   
+-     dst=thefb+thefbbyteswidth*y1+x1;
++     src=offscreen+vgaxdim*y1+x1,   
++     dst=thefb+thefbstride*y1+thefbdepth*x1;
+      h>0;
+      h--,
+-     src+=thefbbyteswidth,
+-     dst+=thefbbyteswidth)
+-       memcpy(dst,src,w);
++     src+=vgaxdim,
++     dst+=thefbstride)
++       updateline(dst,src,w);
+ 
+    updateinprogress=0;     /* all drawings done so far */
+    if(pendingswitch){      /* aha: console switch requested while we were busy */
+@@ -250,8 +287,18 @@
+   fbc.green=&g;
+   fbc.blue=&b;
+   fbc.transp=NULL;
+-  if(0!=ioctl(thefbfd,FBIOPUTCMAP, &fbc))
+-    vgaerror("\nerror: writefb: setpalette\n");
++  switch(thefbdepth) {
++    case 1:
++      if(0!=ioctl(thefbfd,FBIOPUTCMAP, &fbc)) {
++        /*vgaerror("\nerror: writefb: setpalette\n")*/;
++      }
++    break;
++    default:
++      newpalette[num] = (((int)r>>(16-thefbvarinfo.red.length))<<thefbvarinfo.red.offset)
++                      | (((int)g>>(16-thefbvarinfo.green.length))<<thefbvarinfo.green.offset)
++                      | (((int)b>>(16-thefbvarinfo.blue.length))<<thefbvarinfo.blue.offset);
++    break;
++  }
+ }
+ 
+ void setpalette(void) {
+@@ -279,7 +326,6 @@
+ 
+ void vgaopen(void) {  
+   struct fb_fix_screeninfo fixinfo;
+-  struct fb_var_screeninfo varinfo;
+   char vtdevice[50];
+   char* str;
+   int  ttyfd, vtno;
+@@ -304,27 +350,34 @@
+   /* Why?                                                 */
+   pfprot("f");
+   str=getenv("FRAMEBUFFER");
+-  if(str==NULL) str=THEFBDEV;/* is this a security problem? */
++  if(str!=NULL) {
++    thefbfd=open(str,O_RDWR);  /* want write-only here */
++  } else {
++    str=THEFBDEV; /* is this a security problem? */
++    thefbfd=open(str,O_RDWR);
++    if(thefbfd==-1) {
++      str=THEOTHERFBDEV;
++      thefbfd=open(str,O_RDWR);
++    }
++  }
+   pfprot("(%s)",str);
+-  thefbfd=open(str,O_RDWR);  /* want write-only here */
+-  if(thefbfd==-1) 
++  if(thefbfd==-1)
+     vgaerror("cannot open framebuffer device");
+   if(0!=ioctl(thefbfd,FBIOGET_FSCREENINFO, &fixinfo))
+     vgaerror("cannot get fixed info: its not a framebuffer?");
+   pfprot("(%s)",fixinfo.id);
+-  if(0!=ioctl(thefbfd,FBIOGET_VSCREENINFO, &varinfo))
++  if(0!=ioctl(thefbfd,FBIOGET_VSCREENINFO, &thefbvarinfo))
+     vgaerror("cannot get var info");
+-  if(varinfo.xres!= varinfo.xres_virtual || varinfo.yres!= varinfo.yres_virtual)
+-    vgaerror("virtual res doesn't equal physical res");
+-  if(fixinfo.type!=FB_TYPE_PACKED_PIXELS || fixinfo.visual!= FB_VISUAL_PSEUDOCOLOR
+-     || varinfo.bits_per_pixel != 8)
+-    vgaerror("pseudocolor, packed-pixels, 8bpp required\n     ... try fbset utility?");
+-  thefbxdim=varinfo.xres;
+-  thefbydim=varinfo.yres;
++  if(fixinfo.type!=FB_TYPE_PACKED_PIXELS)
++    vgaerror("packed-pixels required\n     ... try fbset utility?");
++  thefbdepth=(thefbvarinfo.bits_per_pixel+7) / 8;
++  if(thefbdepth==3)
++    thefbdepth=4;
++  thefbxdim=thefbvarinfo.xres;
++  thefbydim=thefbvarinfo.yres;
+   pfprot("(%dx%d)",thefbxdim,thefbydim);
+-  thefbbyteswidth=varinfo.xres;
+-  thefblen=((((long)thefbbyteswidth * (long)varinfo.yres * varinfo.bits_per_pixel+7)/8) 
+-             + 0x0fffL) & ~0x0fffL;
++  thefbstride=thefbvarinfo.xres_virtual * thefbdepth;
++  thefblen=(((long)thefbstride * (long)thefbydim) + 0x0fffL) & ~0x0fffL;
+   if(thefblen>fixinfo.smem_len)
+     pfprot("warning: writefb: mapping more than there is?\n");
+   pfprot("m");
+@@ -333,9 +386,9 @@
+     thefb=NULL;
+      vgaerror("memory mapping of framebuffer failed");
+   }
+-  seteuid(getuid());  /* give back root permissions */
++  setegid(getgid());  /* give back video group permissions */
+ #ifdef DEBUGFB
+-  pfprot("(set euid %d uid %d)",geteuid(),getuid());
++  pfprot("(set egid %d gid %d)",getegid(),getgid());
+ #endif
+ 
+   /* .. some basic tests, copied from below: under certain */
+@@ -358,13 +411,13 @@
+   origpalette.green=origgreens;
+   origpalette.blue=origblues;
+   origpalette.transp=origtrans;
+-  if(0!=ioctl(thefbfd,FBIOGETCMAP, &origpalette)){
++  if(thefbdepth==1 && 0!=ioctl(thefbfd,FBIOGETCMAP, &origpalette)){
+     origpalette.len=0;
+-    vgaerror("\nerror: writefb: readpalette\n");
++    /*vgaerror("\nerror: writefb: readpalette\n");*/
+   }
+ 
+   /* accocaletmviews offscreenbuffer */
+-  allocmem(&offscreen,thefblen);
++  allocmem(&offscreen,((long)thefbxdim * (long)thefbydim + 0x0fffL) & ~0x0fffL);
+ 
+   /* open mouse deveice */
+ #ifdef HASMOUSE
+@@ -390,6 +443,13 @@
+   vtno=ttystat.v_active;
+   sprintf(vtdevice,"/dev/tty%d",vtno);
+   thevtfd=open(vtdevice, O_RDWR | O_NDELAY); 
++  if(thevtfd<0)  {
++    /* try the devfs name */
++    sprintf(vtdevice,"/dev/vc/%d",vtno);
++    thevtfd=open(vtdevice, O_RDWR | O_NDELAY); 
++    if(thevtfd<0)
++      vgaerror("cannot open vt");
++  }
+   if(thevtfd<0) 
+     vgaerror("cannot open vt");
+   if(ioctl(thevtfd, VT_GETMODE, &vtmode)!=0)
+@@ -403,6 +463,17 @@
+     vgaerror("cannot install vtswitch handles");
+   ioctl(thevtfd, KDSETMODE, KD_GRAPHICS); 
+ 
++  /* now that we switched to graphics mode, pan the display */
++  thefbvarinfo.xoffset=0;
++  thefbvarinfo.yoffset=0;
++  ioctl(thefbfd,FBIOPUT_VSCREENINFO, &thefbvarinfo);
++  /* don't check the return value; some buggy framebuffer */
++  /* drivers will return an error while correctly panning */
++  /* the display, we have no real choice.                 */
++  thefbvarinfo.xoffset=0;
++  thefbvarinfo.yoffset=0;
++  ioctl(thefbfd,FBIOPAN_DISPLAY, &thefbvarinfo);
++
+   /* set the terminal to noblocking/noecho */
+   pfprot("a");
+   if(!isatty(STDIN_FILENO))
+@@ -425,7 +496,7 @@
+   vgaydim=truevgaydim=thefbydim;
+   ptorigin=offscreen;
+   #define PTDELTAH (1)
+-  #define PTDELTAV (thefbbyteswidth)
++  #define PTDELTAV (vgaxdim)
+   ofscx1=0; ofscy1=0; ofscx2=vgaxdim-1; ofscy2=vgaydim-1; 
+   setpalette();
+   preparefont();
+@@ -452,17 +523,17 @@
+       dst=offscreen;
+       i>0;
+       i--,
+-      src+=thefbbyteswidth,
+-      dst+=thefbbyteswidth)
++      src+=vgaxdim,
++      dst+=vgaxdim)
+         memmove(dst,src,vgaxdim-dx);
+-  else
++  else /* dx>=0 */
+     for(i=vgaydim,
+       src=offscreen,
+       dst=offscreen+dx;
+       i>0;
+       i--,
+-      src+=thefbbyteswidth,
+-      dst+=thefbbyteswidth)
++      src+=vgaxdim,
++      dst+=vgaxdim)
+         memmove(dst,src,vgaxdim-dx);
+ }   
+ 
+@@ -473,22 +544,22 @@
+   if(dy<0) 
+     for(
+       i=vgaydim+dy,
+-      src=offscreen+thefbbyteswidth*(-dy),   
++      src=offscreen+vgaxdim*(-dy),   
+       dst=offscreen;
+       i>0;
+       i--,
+-      src+=thefbbyteswidth,
+-      dst+=thefbbyteswidth)
++      src+=vgaxdim,
++      dst+=vgaxdim)
+         memcpy(dst,src,vgaxdim);
+-  else /* dy>0 */
++  else /* dy>=0 */
+     for(
+       i=vgaydim-dy,
+-      src=offscreen+thefbbyteswidth*(vgaydim-dy-1),   
+-      dst=offscreen+thefbbyteswidth*(vgaydim-1);
++      src=offscreen+vgaxdim*(vgaydim-dy-1),   
++      dst=offscreen+vgaxdim*(vgaydim-1);
+       i>0;
+       i--,
+-      src-=thefbbyteswidth,
+-      dst-=thefbbyteswidth)
++      src-=vgaxdim,
++      dst-=vgaxdim)
+         memcpy(dst,src,vgaxdim);
+ }   
+ 
+--- tmview-01.03.orig/fb/defsfb.h
++++ tmview-01.03/fb/defsfb.h
+@@ -31,8 +32,10 @@
+ #include <stdlib.h>
+ 
+ 
+-/* the framebuffer devive to use */
++/* the framebuffer device to use */
+ #define THEFBDEV "/dev/fb0"
++/* for devfs */
++#define THEOTHERFBDEV "/dev/fb/0"
+ 
+ 
+ /*

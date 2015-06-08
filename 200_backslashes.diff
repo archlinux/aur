@@ -1,0 +1,1326 @@
+--- tmview-01.03.orig/svga/writevga.c
++++ tmview-01.03/svga/writevga.c
+@@ -64,10 +64,10 @@
+   if(!MECK) gl_freecontext(&physicalscreen); /* does not hurt if not allocated ? */
+ #ifndef VGAHASWAITIO
+ #ifdef LETSTRYGS
+-  pfprot("\n\
+-warning: display: use polling when rendering eps-figures due to 
+-  a compiletime-option. If your svgalib is above version 1.2.10,
+-  recompiling with \"VGAHASWAITIO\" defined may speed up rendering.\n\n"); 
++  pfprot("\n"
++  "warning: display: use polling when rendering eps-figures due to\n"
++  "a compiletime-option. If your svgalib is above version 1.2.10,\n"
++  "recompiling with \"VGAHASWAITIO\" defined may speed up rendering.\n\n"); 
+ #endif
+ #endif
+ }
+@@ -203,9 +203,9 @@
+   if (n==0 || !vga_hasmode(n)) { 
+     n=vga_getdefaultmode();
+     if((n!=5 && n!=10 && n!=11 && n!=12) || !vga_hasmode(n)) { 
+-      pfprot("\n\
+-warning: display: mode not supported on this machine. Now try -d640x480.
+-  Check your svgalib configuration.\n");
++      pfprot("\n"
++  "warning: display: mode not supported on this machine. Now try -d640x480.\n"
++  "Check your svgalib configuration.\n");
+       n=10; 
+     }
+   }
+@@ -213,14 +213,14 @@
+     MECK=0;
+   } else {
+     MECK=1;
+-    pfprot("\n\
+-warning: display: mode -d640x480 not supported at 256 colors. Now try at 
+-  16 colors. This will reduce display quality and speed. Check your
+-  svgalib configuration.\n\n");
++    pfprot("\n"
++  "warning: display: mode -d640x480 not supported at 256 colors. Now try at\n"
++  "16 colors. This will reduce display quality and speed. Check your\n"
++  "svgalib configuration.\n\n");
+     n=4; 
+     if(!vga_hasmode(n)) {
+-      pfprot("\n\
+-warning: display: mode -d640x480 not even supported at 16 colors.\n"); 
++      pfprot("\n"
++  "warning: display: mode -d640x480 not even supported at 16 colors.\n"); 
+       vgaerror("Sorry.");
+     }
+   }
+--- tmview-01.03.orig/src/help.h
++++ tmview-01.03/src/help.h
+@@ -1,598 +1,598 @@
+ #define HELPWIDTH 60 
+-#define HELPSTR "\
+-LIST OF COMMANDS WITH TYPICAL ARGUMENTS ************ V 01.03
+-
+-     <i>/<m>          goto previous/next page 
+-(NUM)<g>              goto page NUM w.r.t. TeX-counters
+-     <u>/<n>/<h>/<j>  scroll the visible area
+-     <f>/<c>          make scrolling finer/coarser
+-     <z>              center visible area
+-     <+>/<->          zoom in/out
+-(NUM)<v>              set zoom-factor to NUM
+-
+-     <b>              set a bookmark
+-     <w>              move to a bookmark
+-     <^>              move back
+-
+-     <o>              display options 
+-     <x>              toggle statusline-information
+-     <t>              set unit of measurement
+-
+-     <l>              show/hide screenmark and pagemark
+-     <y>              set pagemark at screenmark position
+-     <a>              show/hide marked rectangle
+-     <p>              show/hide printable area
+-     <e>              set page-offset and -size
+-
+-     <k>              show/hide half-hyper-tex-mark
+-     <TAB>            move to next href
+-     <RET>            follow current href
+-
+-     <s>              search for text
+-  <*><r>              re-read DVIfile, fonts, eps-figures
+-     <d>              load/kill DVIfile
+-     <q>              quit tmview
+-
+-
+-GENERAL USAGE *******************************************
+-
+-When everything is setup right, visiting a DVIfile with
+-tmview just means to navigate the visible area along that
+-file, using the cursor-keys.  Some of the following
+-commands obviously require an argument, f.e. <g>.
+-Arguments are to be entered BEFORE executing a command.
+-When executed by hitting the corresponding uppercase key,
+-you will be asked for the argument.  While the
+-user-interface of tmview is meant to save keystrokes, it
+-is not too intuitive. You may either read the following
+-instructions, or just do <caps-lock>.
+-
+-The cursor-keys <page-up> and <page-down> are taken as <i>
+-resp. <m>. The keys <pos1> and <end> select the first
+-resp. the last page. The cursor-keys <left> <right> <up>
+-and <down> do <h> <j> <u> resp. <n>. All in all this
+-means, that the cursor-keys do what they are meant to.
+-
+-When a mouse is connected, it moves any visible mark. When
+-the right or left mousebutton is no good for anything
+-else, moving the mouse while holding that button acts on
+-the visible area instead. (That sounds bad, but works out
+-fine) When the screenmark is shown (see <l>), the left
+-mouse-button sets the pagemark (see <y>) and the right
+-button marks a rectangle (see <a>). When the
+-half-hyper-mark is shown, the left mouse-button follows
+-the current href, if any.
+-
+-*********************************************************
+-NON-INTUITIVE USER-INTERFACE ****************************
+-*********************************************************
+-
+-To explain the way tmview expects to receive commands, a
+-short nomenclature used in the sequel is given:
+- 
+-Any text within `<' and `>' represents a single keystroke,
+-while `(' and `)' mark the beginning resp. the end of a
+-string to enter.  So <h> is about to hit the key named `h'
+-and (25.4) could stand for <2><5> <.><4>.  The carriage-
+-return-key is referred by <ret>, the backspace-key or 
+-delete-key by <del> and the escape-key by <esc>. Almost 
+-whenever a string is expected by tmview, you may use <del>
+-to remove the last character you typed. So even
+-<2><5><6><del><.><4> results in (25.4). Note that a string
+-does not need to be terminated by <ret>.  To simplify a
+-reference to a string, in this text any uppercase letters
+-within `(' and `)' are not meant as a string, but as the
+-name of some string. So we may read something like
+-`(PP)<h> scrolls PP percent to the left' as `typing in any
+-number just before <h> results in scrolling left according
+-to that number'.
+-
+-
+-COMMANDS AND ARGUMENTS***********************************
+-
+-A command is executed by typing its name, which consists
+-of a single character. Some of the above listed commands
+-take numerical arguments.  Arguments are always
+-optional. They may be entered before executing the
+-command. Multiple arguments are separated by <,> or
+-<;>. If no argument is passed, a default is used. If an
+-argument is passed, it serves as the default for following
+-commands. Commands doing similar things share the same
+-default arguments.
+-
+-Example: 
+-Typing (10)<h> results in scrolling 10% to the left and
+-sets the default for any scrolling commands to 10%. Thus
+-typing <j> afterwards results in scrolling 10% to the
+-right.
+-
+-
+-MAGIC ARGUMENT*******************************************
+-
+-As a special argument some commands accept the magic
+-argument <*>. It is used either to vary the command in
+-some way or to get the arguments from another place. <#>
+-is equivalent to <*> and saves you from holding down the
+-shift-key on some keyboards.
+-
+-<z> for example centers the visible area. It excepts as
+-argument the point which will be taken as origin. Since
+-this will become the default for a future <z>, you may
+-measure out the origin only once. Even quicker it is to
+-position the visible area by scrolling and then to do a
+-<*><z>.  This results in taking the current position as
+-centered and so as default for a coming <z>.
+-
+-As another example look at the command <m>, which moves
+-pages forward, according to a given argument resp. a
+-default. By moving on the next page there are two modi
+-available: 1. keep the visible area; 2. do center like
+-<z><z>.  <*><m> toggles between these two modi. So in this
+-case <*> acts as a kind of flag argument.
+-
+-
+-
+-SELECTING THE PAGE****************************************
+-
+-<i>/<m> Select a page relative to the current page. 
+-
+-     <i> moves towards the beginning of the DVIfile, while
+-     <m> moves towards the end. A single argument (N) may
+-     specify the amount of movement in pages. However, (N)
+-     will NOT become the default value. The argument is (*), 
+-     the page-moving-mode is toggled. See above.  
+-
+-     Example: 
+-     (1)<i> selects the previous page <m> selects the next
+-     page
+-
+-<g> Select a page with respect to TeX counters.  
+-
+-     A list of ten arguments (COUNT0; COUNT1; ... COUNT9)
+-     specifies the page to be selected. <*> may be used as
+-     wildcard. If there are more than one but less than ten
+-     arguments given, the others will be taken as <*>.
+-
+-     Example: 
+-     (26)<g> selects the first page after the current page
+-     with a value of 26 in \\count0.
+-
+-
+-
+-MOVING AROUND ON CURRENT PAGE ******************************
+-
+-<u>/<n>/<h>/<j> Scrolling the visible area
+-
+-       A single argument (PP) may be used to specify the
+-       amount of scrolling in percent of the
+-       screen-width. <u>/<n> resp. <up>/down> both accept
+-       the argument (*) to toggle between: 1. stay on the
+-       current page; 2. scroll over pages. When scrolling
+-       over pages, you may view the whole document while
+-       using only the single key <n>.
+-
+-       Example:
+-       (20)<h> scrolls 1/5 to the left.  
+-
+-<f>/<c> Make scrolling finer/coarser
+-
+-       These commands change the default argument for the
+-       above scrolling- commands. So <f> and <c> don't move
+-       the visible area at all, but they change the way the
+-       scrolling-commands act.
+-
+-<z> Center the visible area
+-
+-       Without any argument <z> centers horizontally only,
+-       while <z><z> centers in both directions.
+-       When two arguments (X,Y) are given, they describe
+-       the point on the page, which will become the middle
+-       of the visible area. When the argument (*) is given,
+-       the current position is taken as centered.  When the
+-       screenmark is shown (see below <l>), and the
+-       argument (*) is given, the position of the
+-       screenmark becomes the center. This does move the
+-       visible area, but it does not move the screenmark.
+-
+-
+-ZOOMING ****************************************************
+-
+-<v> Set the zoom-factor
+- 
+-       This command requires one argument (F) which must be
+-       between 0.05 and 2.  F will become the zoom-factor
+-       and the visible-area will be redrawn. Use (*)<v> to 
+-       adjust the zoom-factor such that the page horizontaly 
+-       fits the visible-area.
+-
+-       If the zoom-factor is 1, the pixels found in pk-files 
+-       are just copied one by one to the screen. Since the
+-       resolution of our days screens seems to be less than
+-       that of our days printers, and since you may still
+-       want to use the same pk-files for printing and
+-       viewing, F=1 usually results in a magnification. So
+-       when you're just reading some text in some DVIfile
+-       you will set F to something like 0.3, depending on
+-       the involved resolutions. When the screenmark is
+-       visible (see <l>) the position of the screenmark is
+-       taken as the origin of zooming, i.e. it is fixed. 
+-       When the screenmark is not visible, the middle of the 
+-       screen is fixed. The current zoom-factor is displayed 
+-       in the optional statusline, see <x>.
+-
+-       There are two zooming modi. The integer modus 
+-       requieres 1/f to be an integer. This modus is quite 
+-       fast, so good values are F=0.5, 0.333, 0.25, 0.2, 
+-       0.167 etc. The good thing about the slow modus is, 
+-       that it allows you to choose the zoom-factor 
+-       arbitrary (between 0.05 and 2). So poor students with 
+-       small screens might find some optimum to make the 
+-       text fit and still be readable. The bad thing about 
+-       the slow modus is that it is slow.  But since once 
+-       zoomed glyphs are kept in memory, this slowness only 
+-       hurts the first few pages after changing the
+-       zoom-factor. Modus selection is  done by the display 
+-       options <o>. 
+-
+-<+>/<-> Zoom in/out
+-
+-       Increase/decrease the zoom-factor. When in the fast
+-       modus, step through the fast values only (see
+-       above). When an argument (PP) is given, it is taken
+-       as the amount of increasing/decreasing in percent of
+-       the current zoom-factor. This is likely to result in
+-       the slow modus.
+-
+-
+-BOOKMARKS **************************************************
+-
+-A bookmark remembers what is seen on the screen. That is
+-the DVIfile, the page within that file, the position of the
+-visable area and the zoom-factor. There are three kind of
+-bookmarks ...
+-
+-file-bookmarks:
+-Each file visited has a file-bookmark, containing the above
+-information about what was seen on the screen when visited
+-the last time, plus some information on the file, that is
+-the paper-offset and -position, the location of the
+-printable-area.  file-bookmarks are generated automaticly.
+-This results in easy re-visiting a DVIfile: you'll find it
+-as left. A file-bookmark is removed by killing the DVIfile
+-with <d><k>, see <d> below.
+-
+-back-bookmarks:
+-When searching a text-string, following a href or moving to
+-a bookmark, the position within the DVIfile might be
+-changed to somewhere far far away. To simplify recovering
+-fromsuch excursions, a back-bookmark will be generated
+-automaticly.  To prevent getting fed up with thousands of
+-back-bookmarks, the total number of theese is limited. See
+-<^> below.
+-
+-manual-bookmarks:
+-After all you may install your own bookmarks, marking often
+-visited places, say in some manuals. manual-bookmarks are
+-named by a number.  This number has to be unique whithin
+-the DVIfile they belong to.  To define a manual-bookmark
+-use <b>. Since manual-bookmarks belong to the DVIfile they
+-are defined on, they get lost, when that DVIfile is killed
+-by <d><k>.
+-
+-All kind of bookmarks are kept in a ring-buffer. There is a
+-so called current bookmark of each type. Visiting the
+-bookmarks along the ring-buffer is done by <w> for file-
+-and manual-bookmarks, while <^> acts on back-bookmarks.
+-
+-<b> Define/undefine manual-bookmark.  
+-
+-       When the current position is not already defined as
+-       a manual-bookmark, <b> defines one. When an single
+-       numeric argument (NUM) is given, NUM will be the
+-       name of the newly defined bookmark. With no
+-       argument, a name will be generated automaticly. See
+-       <w> below, for how to visit manual-bookmarks.  When
+-       the current position is already defined as a
+-       manual-bookmark, <b> undefines that manual-bookmark.
+-
+-<w> Move to bookmark.
+-
+-       When a single numeric argument (NUM) is given, <w>
+-       moves to the manual-bookmark named NUM, if
+-       any. Since manual bookmarks are bound to DVIfiles,
+-       the current DVIfile will never change in that
+-       case. If no argument is given, <w> goes moves the
+-       postion either thrue the ring-buffer of
+-       file-bookmarks or thrue the one of
+-       manual-bookmarks. To toggle between theese two modi,
+-       use the magic argument <*>.
+-
+-<^> Move back
+-   
+-       Move to the latest back-bookmark, if any. When a
+-       single numeric argument (TOTAL) is given, keep the
+-       TOTAL latest back-bookmarks and discard all the
+-       others.
+-
+-
+-CHOOSING WHAT'S ON THE DISPLAY *****************************
+-
+-<o> Display options
+-
+-       This command collects a number of general options 
+-       on how the things get on the screen. Use the cursor
+-       keys (or <u>/<n>/<h>/<h>) to navigate.
+-
+-       > Greyscales. When the zoom-factor is less than 1, 
+-       the glyphs may be displayed using grey-levels, making 
+-       them more smooth. This takes some memory, so you are 
+-       allowed to switch it off. On high-res displays there 
+-       is no need for greyscaling anyway.
+-
+-       > Eps-rendering. There is limited support for 
+-       rendering eps-files by running ghostscript. However, 
+-       this sometimes is quite slow and memory intensive, so 
+-       you may turn it off. If rendering is enabled the 
+-       results are buffered. Hence, if the eps-files are 
+-       updated by some graphics program, you need to do a 
+-       <*><r> to force rerendering. To disable certain 
+-       eps-files individually, abort the rendering process 
+-       by <esc>.
+-
+-       > Double-page. There is also limited support for 
+-       viewing two pages beside each other. Again their
+-       is some memory required to keep it all buffered.
+-       You may disable double paged viewing entirely. You
+-       may let tmview deceide on basis of the zoom-factor.
+-       Or you may permanently enable this feature.
+-
+-       > Zooming. There is a fast zooming mode allowing
+-       only zomming by 1/f where f is required to be an
+-       integer. And there is an arbitrary mode to be
+-       selected.
+-
+-<x> Toggle statusline-information
+-
+-       While the standard statusline shows you the
+-       page-number of the current page and the arguments
+-       you are about to enter, you may select optional
+-       information for measuring out distances and so. See
+-       below.
+-
+-<t> Set unit of measurement
+-
+-       Whenever you specify arguments which are to describe
+-       a point on the page, this is done w.r.t. a unit of
+-       measurement, i.e. cm, mm, a.s.o.. This unit is also
+-       used, when the position of a mark is displayed in
+-       the statusline.
+-
+-
+-MEASURING **************************************************
+-
+-To allow you to measure distances on the page, there are
+-two marks, the screenmark, which is fixed on the physical
+-screen you're looking at, and the pagemark, which is fixed
+-on the DVIfiles page. When you move the visible-area, the
+-screenmark acts as drawn with edding on your monitor. The
+-pagemark acts as drawn on the page. The optional statusline
+-tells the position of the pagemark relative to the corner
+-of the sheet of paper you're viewing. It also tells the
+-position of the screenmark relative to the pagemark. To
+-measure distances you first may switch this marks on, using
+-<l>. When the marks are shown, the scrolling commands don't
+-act on the visible area anymore, but move the screenmark. 
+-For that case only moving the screenmark at the boarder of
+-the screen results in scrolling. To move the pagemark just
+-move the screenmark at the desired position and use <y> to
+-make the pagemark follow.
+- 
+-<l> Show/hide screenmark and pagemark
+-
+-       This commands takes the two arguments
+-       (PM_X;PM_Y). The pagemark is put at position PM_X
+-       PM_Y w.r.t. the upper left corner of the page. The
+-       Screenmark may be moved with the scrolling-commands.
+-
+-<y> Set pagemark at the position of the screenmark
+-       
+-Beside of these marks there are three rectangles for
+-measurement. First there is the boarder of the paper setup
+-by the command-line options -h,-v and -p.  Then there is
+-the printable area, setup with the -k command-line option.
+-Third the so called marked rectangle used.
+-
+-<a> Show/hide marked rectangle
+-
+-       The four arguments (LEFT,TOP,WIDTH,HIGHT) specify
+-       the position on page an the size of the marked
+-       rectangle. When pagemark and screenmark are shown,
+-       their positions are used as default. When they are
+-       hidden, the last position of the marked rectangle is
+-       used as default.
+-
+-<p> Show/hide printable area 
+-       
+-       The four arguments (LEFT,RIGHT,TOP,BOTTOM) specify
+-       the margins of the printable area, w.r.t. the
+-       boarder of the page. When pagemark and screenmark
+-       are shown, the argument (*) sets the printable area
+-       to the rectangle described by screenmark and
+-       pagemark.  When they are hidden, (*) takes the
+-       command-line-options resp. defaults -k of the
+-       printable area.
+-
+-<e> Set paper-offset and -size  
+-
+-       The four arguments (HOFF;VOFF;WIDTH;HEIGHT) specify
+-       the boarder of the page. Have the top-left corner of
+-       a sheet of paper in mind. Then (HOFF,VOFF) is the
+-       offset of the DVIfile's origin to the left boarder
+-       of the paper.  Standard values are
+-       HOFF=VOFF=2.54cm. WIDTH and HEIGHT are the width and
+-       the height of the sheet of paper. The sheet of paper
+-       is represented only by a frame on the screen. It
+-       does not affect the drawing of the DVIfile.
+-
+-       When pagemark and screenmark are shown, the argument
+-       (*) sets the boarder of the page to the rectangle
+-       described by screenmark and pagemark.  When they are
+-       hidden, (*) takes the command-line-options
+-       resp. defaults -h,-v and -p.
+-
+-
+-HALF-HYPER *************************************************
+-
+-tmview does some of the fancy hyper-tex things. I talk
+-about HALF-hyper-tex, because tmview follows only links
+-which point to somewhere within the currently visited
+-dvi-file. So there is no connection to the net or so. But
+-you might find it usefull (when editing a major project) to
+-view an equation number this-and-that by clicking on
+-this-and-that whereever the text refers to that equation.
+-For information about hyper-tex, related macropackages and
+-fully compatible viewer scan the net ...
+-
+-<k> Show/hide half-hyper-mark
+-<TAB> Goto next href
+-<RET> Follow current href, if any 
+-
+-
+-MISC *******************************************************
+-
+-<s> Search for text
+-
+-      You will be asked for the text-string to be searched.
+-      You may enter a regular expression describing that
+-      string, that includes especially just to enter the
+-      string as it is.
+-
+-      tmview will take the entire DVIfile as one huge
+-      text-string and then search for the next substring,
+-      fitting the regular expression you've enterd. Thereby
+-      \"next\" is ment with respect to the current page.
+-
+-      So far this sounds quite easy, but there are some ugly
+-      details, based on the fact, that a DVIfile contains
+-      information on how to draw a bitmap representing your
+-      text. It does not contain information about from what
+-      characters in which order your text is made up. Even
+-      the PKfiles used to draw your text consist only of
+-      lots of glyphs but no character-codes, like ASCII or
+-      so. Building a huge text-string from a DVIfile is some
+-      kind of guessing.
+-
+-      Fisrt: What kind of huge-string is build from the DVIfile?
+-
+-      This string will consists of the letters <A> ... <Z>,
+-      <a> ... <z>, the accent <\"> and the digits <0>
+-      ... <9>. It does NOT contain anything else, like
+-      <space>, <ret> or <->:
+-      Whenbeingprinteditwouldlooklikethisnotreadableatall.  
+-      Taking the DVIfile as huge string allows you to find
+-      all locations of a sub-string, say
+-      \"commandlineoptions\", even those that are seperarted
+-      by linebreaks (and hyphens) or pagebreaks. In turn,
+-      there is no chance to find all those locations, where
+-      \"commandlineoptions\" is seperated by a hypenation.  To
+-      keep tmview from being confused by headings, there is
+-      another rule for building up the huge text-string: any
+-      glyph outside the printable area (see <p>) is
+-      ignored. So you may setup the printable area to ignore
+-      headings when searching.
+-
+-      Second: How is the huge-string build up?
+-
+-      To translate the list of glyphs found in the DVIfile
+-      to a text-string, the tfm-files are asked for the
+-      encoding-scheme. This does work with dc-fonts and
+-      cm-fonts, since the following encoding-scheme names
+-      are accepted: \"ASCII\", \"TeX text\", \"TeX math italic\",
+-      \"TeX math symbols\", \"TeX typewriter text\", \"Extended
+-      TeX Font Encoding - Latin\", \"Adobe StandardEncoding\".
+-      The alphanumerics <A>...<Z>, <a>...<z>, <0> ... <9>
+-      are copied one by one to the huge text-string. Glyphs
+-      that \"look like\" a simple alphanumeric will be taken
+-      as that one it looks like.  So the Tex input '\\c o',
+-      producing an 'o'-with-an-cedilla-accent, will be
+-      represented as a simple (o) in the text-string. This
+-      rule also works for all kind of ligatures. The TeX
+-      input 'ffl\\AE' will be represented by (fflAE).  Any
+-      accent ON TOP of a glyph will be translated to a (\"),
+-      preceding whatever the glyph without that accent would
+-      be translated to.  The TeX input '\\\"a' producing the
+-      german umlaut 'a'-with-two-dots-on-top, will be found
+-      as (\"a) in the generated text-string.  The TeX input
+-      '\\aa' producing the scandinavian
+-      'a'-with-circle-on-top will be found as (\"a) too. Any
+-      other glyphs are ignored.
+-
+-      Third: In what does the above result?
+-
+-      Visiting english documents, say manuals to some
+-      computer related stuff like elisp.dvi, searching for
+-      keywords works fine. Searching in documents in which
+-      extensive use of accents and funny characters is made
+-      works too, but requires some luck or/and experiance in
+-      how TeX acts on such things.
+-
+-
+-      Example: 
+-
+-      Take the file story.tex from the TeXbook, chapter 6, 
+-      page 24.  It contains the line
+-              galaxy called \\\"O\\\"o\\c c,
+-      The text-string build from the corresponding story.dvi
+-      will therfore contain
+-              galaxycalled\"O\"oc
+-      You may search for ...    getting as result ...
+-      galaxy                    found
+-      galaxycalled              found
+-      galaxy called             not found
+-      d\"                        found
+-      galaxy.*\"O\"oc             found
+-      Ooc                       not found
+-      
+-  
+-<r> Re-read current DVIfile and re-draw screen.
+-
+-      Note: <r> will not  re-initialize the fontdatabase,
+-      nor the buffer for rendered eps-figures. To force
+-      everything beeing re-read, use (*)<r>.
+-
+-
+-<d> Load/kill DVIfile
+-
+-      After typing <d> you may select between <l> to load a 
+-      DVIfile and <k> to kill a DVIfile. 
+-      
+-      Loading a DVIFile: 
+-
+-      tmview will look for a file-bookmark belonging to that
+-      file. If there is one, it becomes the current
+-      file-bookmark. The DVIfile will be shown as left, and
+-      any defined manual-bookmarks are accessable by
+-      <w>. When loading a DVIfile for the first time, a new
+-      file-bookmark will be generated.  This will be setup
+-      with default values from the command-line options and
+-      won't contain any manual-bookmarks.
+-
+-      Killing a DVIfile:
+-      To kill a DVIfile means to kill its file-bookmark and
+-      any related manual-bookmark. Killing a DVIfile won't
+-      hurt the file itself.  You don't have to kill a
+-      DVIfile just to load another one.
+-
+-<q> Quit tmview 
+-    
+-      When quitting, a startup-file will be written. When
+-      running tmview next time, you will find almost
+-      everything as you left it.
+-
+-
+-**********************************************************
+-End of help***********************************************
+-\n\n\n"
++#define HELPSTR "\n" \
++"LIST OF COMMANDS WITH TYPICAL ARGUMENTS ************ V 01.03\n" \
++"\n" \
++"     <i>/<m>          goto previous/next page \n" \
++"(NUM)<g>              goto page NUM w.r.t. TeX-counters\n" \
++"     <u>/<n>/<h>/<j>  scroll the visible area\n" \
++"     <f>/<c>          make scrolling finer/coarser\n" \
++"     <z>              center visible area\n" \
++"     <+>/<->          zoom in/out\n" \
++"(NUM)<v>              set zoom-factor to NUM\n" \
++"\n" \
++"     <b>              set a bookmark\n" \
++"     <w>              move to a bookmark\n" \
++"     <^>              move back\n" \
++"\n" \
++"     <o>              display options \n" \
++"     <x>              toggle statusline-information\n" \
++"     <t>              set unit of measurement\n" \
++"\n" \
++"     <l>              show/hide screenmark and pagemark\n" \
++"     <y>              set pagemark at screenmark position\n" \
++"     <a>              show/hide marked rectangle\n" \
++"     <p>              show/hide printable area\n" \
++"     <e>              set page-offset and -size\n" \
++"\n" \
++"     <k>              show/hide half-hyper-tex-mark\n" \
++"     <TAB>            move to next href\n" \
++"     <RET>            follow current href\n" \
++"\n" \
++"     <s>              search for text\n" \
++"  <*><r>              re-read DVIfile, fonts, eps-figures\n" \
++"     <d>              load/kill DVIfile\n" \
++"     <q>              quit tmview\n" \
++"\n" \
++"\n" \
++"GENERAL USAGE *******************************************\n" \
++"\n" \
++"When everything is setup right, visiting a DVIfile with\n" \
++"tmview just means to navigate the visible area along that\n" \
++"file, using the cursor-keys.  Some of the following\n" \
++"commands obviously require an argument, f.e. <g>.\n" \
++"Arguments are to be entered BEFORE executing a command.\n" \
++"When executed by hitting the corresponding uppercase key,\n" \
++"you will be asked for the argument.  While the\n" \
++"user-interface of tmview is meant to save keystrokes, it\n" \
++"is not too intuitive. You may either read the following\n" \
++"instructions, or just do <caps-lock>.\n" \
++"\n" \
++"The cursor-keys <page-up> and <page-down> are taken as <i>\n" \
++"resp. <m>. The keys <pos1> and <end> select the first\n" \
++"resp. the last page. The cursor-keys <left> <right> <up>\n" \
++"and <down> do <h> <j> <u> resp. <n>. All in all this\n" \
++"means, that the cursor-keys do what they are meant to.\n" \
++"\n" \
++"When a mouse is connected, it moves any visible mark. When\n" \
++"the right or left mousebutton is no good for anything\n" \
++"else, moving the mouse while holding that button acts on\n" \
++"the visible area instead. (That sounds bad, but works out\n" \
++"fine) When the screenmark is shown (see <l>), the left\n" \
++"mouse-button sets the pagemark (see <y>) and the right\n" \
++"button marks a rectangle (see <a>). When the\n" \
++"half-hyper-mark is shown, the left mouse-button follows\n" \
++"the current href, if any.\n" \
++"\n" \
++"*********************************************************\n" \
++"NON-INTUITIVE USER-INTERFACE ****************************\n" \
++"*********************************************************\n" \
++"\n" \
++"To explain the way tmview expects to receive commands, a\n" \
++"short nomenclature used in the sequel is given:\n" \
++" \n" \
++"Any text within `<' and `>' represents a single keystroke,\n" \
++"while `(' and `)' mark the beginning resp. the end of a\n" \
++"string to enter.  So <h> is about to hit the key named `h'\n" \
++"and (25.4) could stand for <2><5> <.><4>.  The carriage-\n" \
++"return-key is referred by <ret>, the backspace-key or \n" \
++"delete-key by <del> and the escape-key by <esc>. Almost \n" \
++"whenever a string is expected by tmview, you may use <del>\n" \
++"to remove the last character you typed. So even\n" \
++"<2><5><6><del><.><4> results in (25.4). Note that a string\n" \
++"does not need to be terminated by <ret>.  To simplify a\n" \
++"reference to a string, in this text any uppercase letters\n" \
++"within `(' and `)' are not meant as a string, but as the\n" \
++"name of some string. So we may read something like\n" \
++"`(PP)<h> scrolls PP percent to the left' as `typing in any\n" \
++"number just before <h> results in scrolling left according\n" \
++"to that number'.\n" \
++"\n" \
++"\n" \
++"COMMANDS AND ARGUMENTS***********************************\n" \
++"\n" \
++"A command is executed by typing its name, which consists\n" \
++"of a single character. Some of the above listed commands\n" \
++"take numerical arguments.  Arguments are always\n" \
++"optional. They may be entered before executing the\n" \
++"command. Multiple arguments are separated by <,> or\n" \
++"<;>. If no argument is passed, a default is used. If an\n" \
++"argument is passed, it serves as the default for following\n" \
++"commands. Commands doing similar things share the same\n" \
++"default arguments.\n" \
++"\n" \
++"Example: \n" \
++"Typing (10)<h> results in scrolling 10% to the left and\n" \
++"sets the default for any scrolling commands to 10%. Thus\n" \
++"typing <j> afterwards results in scrolling 10% to the\n" \
++"right.\n" \
++"\n" \
++"\n" \
++"MAGIC ARGUMENT*******************************************\n" \
++"\n" \
++"As a special argument some commands accept the magic\n" \
++"argument <*>. It is used either to vary the command in\n" \
++"some way or to get the arguments from another place. <#>\n" \
++"is equivalent to <*> and saves you from holding down the\n" \
++"shift-key on some keyboards.\n" \
++"\n" \
++"<z> for example centers the visible area. It excepts as\n" \
++"argument the point which will be taken as origin. Since\n" \
++"this will become the default for a future <z>, you may\n" \
++"measure out the origin only once. Even quicker it is to\n" \
++"position the visible area by scrolling and then to do a\n" \
++"<*><z>.  This results in taking the current position as\n" \
++"centered and so as default for a coming <z>.\n" \
++"\n" \
++"As another example look at the command <m>, which moves\n" \
++"pages forward, according to a given argument resp. a\n" \
++"default. By moving on the next page there are two modi\n" \
++"available: 1. keep the visible area; 2. do center like\n" \
++"<z><z>.  <*><m> toggles between these two modi. So in this\n" \
++"case <*> acts as a kind of flag argument.\n" \
++"\n" \
++"\n" \
++"\n" \
++"SELECTING THE PAGE****************************************\n" \
++"\n" \
++"<i>/<m> Select a page relative to the current page. \n" \
++"\n" \
++"     <i> moves towards the beginning of the DVIfile, while\n" \
++"     <m> moves towards the end. A single argument (N) may\n" \
++"     specify the amount of movement in pages. However, (N)\n" \
++"     will NOT become the default value. The argument is (*), \n" \
++"     the page-moving-mode is toggled. See above.  \n" \
++"\n" \
++"     Example: \n" \
++"     (1)<i> selects the previous page <m> selects the next\n" \
++"     page\n" \
++"\n" \
++"<g> Select a page with respect to TeX counters.  \n" \
++"\n" \
++"     A list of ten arguments (COUNT0; COUNT1; ... COUNT9)\n" \
++"     specifies the page to be selected. <*> may be used as\n" \
++"     wildcard. If there are more than one but less than ten\n" \
++"     arguments given, the others will be taken as <*>.\n" \
++"\n" \
++"     Example: \n" \
++"     (26)<g> selects the first page after the current page\n" \
++"     with a value of 26 in \\count0.\n" \
++"\n" \
++"\n" \
++"\n" \
++"MOVING AROUND ON CURRENT PAGE ******************************\n" \
++"\n" \
++"<u>/<n>/<h>/<j> Scrolling the visible area\n" \
++"\n" \
++"       A single argument (PP) may be used to specify the\n" \
++"       amount of scrolling in percent of the\n" \
++"       screen-width. <u>/<n> resp. <up>/down> both accept\n" \
++"       the argument (*) to toggle between: 1. stay on the\n" \
++"       current page; 2. scroll over pages. When scrolling\n" \
++"       over pages, you may view the whole document while\n" \
++"       using only the single key <n>.\n" \
++"\n" \
++"       Example:\n" \
++"       (20)<h> scrolls 1/5 to the left.  \n" \
++"\n" \
++"<f>/<c> Make scrolling finer/coarser\n" \
++"\n" \
++"       These commands change the default argument for the\n" \
++"       above scrolling- commands. So <f> and <c> don't move\n" \
++"       the visible area at all, but they change the way the\n" \
++"       scrolling-commands act.\n" \
++"\n" \
++"<z> Center the visible area\n" \
++"\n" \
++"       Without any argument <z> centers horizontally only,\n" \
++"       while <z><z> centers in both directions.\n" \
++"       When two arguments (X,Y) are given, they describe\n" \
++"       the point on the page, which will become the middle\n" \
++"       of the visible area. When the argument (*) is given,\n" \
++"       the current position is taken as centered.  When the\n" \
++"       screenmark is shown (see below <l>), and the\n" \
++"       argument (*) is given, the position of the\n" \
++"       screenmark becomes the center. This does move the\n" \
++"       visible area, but it does not move the screenmark.\n" \
++"\n" \
++"\n" \
++"ZOOMING ****************************************************\n" \
++"\n" \
++"<v> Set the zoom-factor\n" \
++" \n" \
++"       This command requires one argument (F) which must be\n" \
++"       between 0.05 and 2.  F will become the zoom-factor\n" \
++"       and the visible-area will be redrawn. Use (*)<v> to \n" \
++"       adjust the zoom-factor such that the page horizontaly \n" \
++"       fits the visible-area.\n" \
++"\n" \
++"       If the zoom-factor is 1, the pixels found in pk-files \n" \
++"       are just copied one by one to the screen. Since the\n" \
++"       resolution of our days screens seems to be less than\n" \
++"       that of our days printers, and since you may still\n" \
++"       want to use the same pk-files for printing and\n" \
++"       viewing, F=1 usually results in a magnification. So\n" \
++"       when you're just reading some text in some DVIfile\n" \
++"       you will set F to something like 0.3, depending on\n" \
++"       the involved resolutions. When the screenmark is\n" \
++"       visible (see <l>) the position of the screenmark is\n" \
++"       taken as the origin of zooming, i.e. it is fixed. \n" \
++"       When the screenmark is not visible, the middle of the \n" \
++"       screen is fixed. The current zoom-factor is displayed \n" \
++"       in the optional statusline, see <x>.\n" \
++"\n" \
++"       There are two zooming modi. The integer modus \n" \
++"       requieres 1/f to be an integer. This modus is quite \n" \
++"       fast, so good values are F=0.5, 0.333, 0.25, 0.2, \n" \
++"       0.167 etc. The good thing about the slow modus is, \n" \
++"       that it allows you to choose the zoom-factor \n" \
++"       arbitrary (between 0.05 and 2). So poor students with \n" \
++"       small screens might find some optimum to make the \n" \
++"       text fit and still be readable. The bad thing about \n" \
++"       the slow modus is that it is slow.  But since once \n" \
++"       zoomed glyphs are kept in memory, this slowness only \n" \
++"       hurts the first few pages after changing the\n" \
++"       zoom-factor. Modus selection is  done by the display \n" \
++"       options <o>. \n" \
++"\n" \
++"<+>/<-> Zoom in/out\n" \
++"\n" \
++"       Increase/decrease the zoom-factor. When in the fast\n" \
++"       modus, step through the fast values only (see\n" \
++"       above). When an argument (PP) is given, it is taken\n" \
++"       as the amount of increasing/decreasing in percent of\n" \
++"       the current zoom-factor. This is likely to result in\n" \
++"       the slow modus.\n" \
++"\n" \
++"\n" \
++"BOOKMARKS **************************************************\n" \
++"\n" \
++"A bookmark remembers what is seen on the screen. That is\n" \
++"the DVIfile, the page within that file, the position of the\n" \
++"visable area and the zoom-factor. There are three kind of\n" \
++"bookmarks ...\n" \
++"\n" \
++"file-bookmarks:\n" \
++"Each file visited has a file-bookmark, containing the above\n" \
++"information about what was seen on the screen when visited\n" \
++"the last time, plus some information on the file, that is\n" \
++"the paper-offset and -position, the location of the\n" \
++"printable-area.  file-bookmarks are generated automaticly.\n" \
++"This results in easy re-visiting a DVIfile: you'll find it\n" \
++"as left. A file-bookmark is removed by killing the DVIfile\n" \
++"with <d><k>, see <d> below.\n" \
++"\n" \
++"back-bookmarks:\n" \
++"When searching a text-string, following a href or moving to\n" \
++"a bookmark, the position within the DVIfile might be\n" \
++"changed to somewhere far far away. To simplify recovering\n" \
++"fromsuch excursions, a back-bookmark will be generated\n" \
++"automaticly.  To prevent getting fed up with thousands of\n" \
++"back-bookmarks, the total number of theese is limited. See\n" \
++"<^> below.\n" \
++"\n" \
++"manual-bookmarks:\n" \
++"After all you may install your own bookmarks, marking often\n" \
++"visited places, say in some manuals. manual-bookmarks are\n" \
++"named by a number.  This number has to be unique whithin\n" \
++"the DVIfile they belong to.  To define a manual-bookmark\n" \
++"use <b>. Since manual-bookmarks belong to the DVIfile they\n" \
++"are defined on, they get lost, when that DVIfile is killed\n" \
++"by <d><k>.\n" \
++"\n" \
++"All kind of bookmarks are kept in a ring-buffer. There is a\n" \
++"so called current bookmark of each type. Visiting the\n" \
++"bookmarks along the ring-buffer is done by <w> for file-\n" \
++"and manual-bookmarks, while <^> acts on back-bookmarks.\n" \
++"\n" \
++"<b> Define/undefine manual-bookmark.  \n" \
++"\n" \
++"       When the current position is not already defined as\n" \
++"       a manual-bookmark, <b> defines one. When an single\n" \
++"       numeric argument (NUM) is given, NUM will be the\n" \
++"       name of the newly defined bookmark. With no\n" \
++"       argument, a name will be generated automaticly. See\n" \
++"       <w> below, for how to visit manual-bookmarks.  When\n" \
++"       the current position is already defined as a\n" \
++"       manual-bookmark, <b> undefines that manual-bookmark.\n" \
++"\n" \
++"<w> Move to bookmark.\n" \
++"\n" \
++"       When a single numeric argument (NUM) is given, <w>\n" \
++"       moves to the manual-bookmark named NUM, if\n" \
++"       any. Since manual bookmarks are bound to DVIfiles,\n" \
++"       the current DVIfile will never change in that\n" \
++"       case. If no argument is given, <w> goes moves the\n" \
++"       postion either thrue the ring-buffer of\n" \
++"       file-bookmarks or thrue the one of\n" \
++"       manual-bookmarks. To toggle between theese two modi,\n" \
++"       use the magic argument <*>.\n" \
++"\n" \
++"<^> Move back\n" \
++"   \n" \
++"       Move to the latest back-bookmark, if any. When a\n" \
++"       single numeric argument (TOTAL) is given, keep the\n" \
++"       TOTAL latest back-bookmarks and discard all the\n" \
++"       others.\n" \
++"\n" \
++"\n" \
++"CHOOSING WHAT'S ON THE DISPLAY *****************************\n" \
++"\n" \
++"<o> Display options\n" \
++"\n" \
++"       This command collects a number of general options \n" \
++"       on how the things get on the screen. Use the cursor\n" \
++"       keys (or <u>/<n>/<h>/<h>) to navigate.\n" \
++"\n" \
++"       > Greyscales. When the zoom-factor is less than 1, \n" \
++"       the glyphs may be displayed using grey-levels, making \n" \
++"       them more smooth. This takes some memory, so you are \n" \
++"       allowed to switch it off. On high-res displays there \n" \
++"       is no need for greyscaling anyway.\n" \
++"\n" \
++"       > Eps-rendering. There is limited support for \n" \
++"       rendering eps-files by running ghostscript. However, \n" \
++"       this sometimes is quite slow and memory intensive, so \n" \
++"       you may turn it off. If rendering is enabled the \n" \
++"       results are buffered. Hence, if the eps-files are \n" \
++"       updated by some graphics program, you need to do a \n" \
++"       <*><r> to force rerendering. To disable certain \n" \
++"       eps-files individually, abort the rendering process \n" \
++"       by <esc>.\n" \
++"\n" \
++"       > Double-page. There is also limited support for \n" \
++"       viewing two pages beside each other. Again their\n" \
++"       is some memory required to keep it all buffered.\n" \
++"       You may disable double paged viewing entirely. You\n" \
++"       may let tmview deceide on basis of the zoom-factor.\n" \
++"       Or you may permanently enable this feature.\n" \
++"\n" \
++"       > Zooming. There is a fast zooming mode allowing\n" \
++"       only zomming by 1/f where f is required to be an\n" \
++"       integer. And there is an arbitrary mode to be\n" \
++"       selected.\n" \
++"\n" \
++"<x> Toggle statusline-information\n" \
++"\n" \
++"       While the standard statusline shows you the\n" \
++"       page-number of the current page and the arguments\n" \
++"       you are about to enter, you may select optional\n" \
++"       information for measuring out distances and so. See\n" \
++"       below.\n" \
++"\n" \
++"<t> Set unit of measurement\n" \
++"\n" \
++"       Whenever you specify arguments which are to describe\n" \
++"       a point on the page, this is done w.r.t. a unit of\n" \
++"       measurement, i.e. cm, mm, a.s.o.. This unit is also\n" \
++"       used, when the position of a mark is displayed in\n" \
++"       the statusline.\n" \
++"\n" \
++"\n" \
++"MEASURING **************************************************\n" \
++"\n" \
++"To allow you to measure distances on the page, there are\n" \
++"two marks, the screenmark, which is fixed on the physical\n" \
++"screen you're looking at, and the pagemark, which is fixed\n" \
++"on the DVIfiles page. When you move the visible-area, the\n" \
++"screenmark acts as drawn with edding on your monitor. The\n" \
++"pagemark acts as drawn on the page. The optional statusline\n" \
++"tells the position of the pagemark relative to the corner\n" \
++"of the sheet of paper you're viewing. It also tells the\n" \
++"position of the screenmark relative to the pagemark. To\n" \
++"measure distances you first may switch this marks on, using\n" \
++"<l>. When the marks are shown, the scrolling commands don't\n" \
++"act on the visible area anymore, but move the screenmark. \n" \
++"For that case only moving the screenmark at the boarder of\n" \
++"the screen results in scrolling. To move the pagemark just\n" \
++"move the screenmark at the desired position and use <y> to\n" \
++"make the pagemark follow.\n" \
++" \n" \
++"<l> Show/hide screenmark and pagemark\n" \
++"\n" \
++"       This commands takes the two arguments\n" \
++"       (PM_X;PM_Y). The pagemark is put at position PM_X\n" \
++"       PM_Y w.r.t. the upper left corner of the page. The\n" \
++"       Screenmark may be moved with the scrolling-commands.\n" \
++"\n" \
++"<y> Set pagemark at the position of the screenmark\n" \
++"       \n" \
++"Beside of these marks there are three rectangles for\n" \
++"measurement. First there is the boarder of the paper setup\n" \
++"by the command-line options -h,-v and -p.  Then there is\n" \
++"the printable area, setup with the -k command-line option.\n" \
++"Third the so called marked rectangle used.\n" \
++"\n" \
++"<a> Show/hide marked rectangle\n" \
++"\n" \
++"       The four arguments (LEFT,TOP,WIDTH,HIGHT) specify\n" \
++"       the position on page an the size of the marked\n" \
++"       rectangle. When pagemark and screenmark are shown,\n" \
++"       their positions are used as default. When they are\n" \
++"       hidden, the last position of the marked rectangle is\n" \
++"       used as default.\n" \
++"\n" \
++"<p> Show/hide printable area \n" \
++"       \n" \
++"       The four arguments (LEFT,RIGHT,TOP,BOTTOM) specify\n" \
++"       the margins of the printable area, w.r.t. the\n" \
++"       boarder of the page. When pagemark and screenmark\n" \
++"       are shown, the argument (*) sets the printable area\n" \
++"       to the rectangle described by screenmark and\n" \
++"       pagemark.  When they are hidden, (*) takes the\n" \
++"       command-line-options resp. defaults -k of the\n" \
++"       printable area.\n" \
++"\n" \
++"<e> Set paper-offset and -size  \n" \
++"\n" \
++"       The four arguments (HOFF;VOFF;WIDTH;HEIGHT) specify\n" \
++"       the boarder of the page. Have the top-left corner of\n" \
++"       a sheet of paper in mind. Then (HOFF,VOFF) is the\n" \
++"       offset of the DVIfile's origin to the left boarder\n" \
++"       of the paper.  Standard values are\n" \
++"       HOFF=VOFF=2.54cm. WIDTH and HEIGHT are the width and\n" \
++"       the height of the sheet of paper. The sheet of paper\n" \
++"       is represented only by a frame on the screen. It\n" \
++"       does not affect the drawing of the DVIfile.\n" \
++"\n" \
++"       When pagemark and screenmark are shown, the argument\n" \
++"       (*) sets the boarder of the page to the rectangle\n" \
++"       described by screenmark and pagemark.  When they are\n" \
++"       hidden, (*) takes the command-line-options\n" \
++"       resp. defaults -h,-v and -p.\n" \
++"\n" \
++"\n" \
++"HALF-HYPER *************************************************\n" \
++"\n" \
++"tmview does some of the fancy hyper-tex things. I talk\n" \
++"about HALF-hyper-tex, because tmview follows only links\n" \
++"which point to somewhere within the currently visited\n" \
++"dvi-file. So there is no connection to the net or so. But\n" \
++"you might find it usefull (when editing a major project) to\n" \
++"view an equation number this-and-that by clicking on\n" \
++"this-and-that whereever the text refers to that equation.\n" \
++"For information about hyper-tex, related macropackages and\n" \
++"fully compatible viewer scan the net ...\n" \
++"\n" \
++"<k> Show/hide half-hyper-mark\n" \
++"<TAB> Goto next href\n" \
++"<RET> Follow current href, if any \n" \
++"\n" \
++"\n" \
++"MISC *******************************************************\n" \
++"\n" \
++"<s> Search for text\n" \
++"\n" \
++"      You will be asked for the text-string to be searched.\n" \
++"      You may enter a regular expression describing that\n" \
++"      string, that includes especially just to enter the\n" \
++"      string as it is.\n" \
++"\n" \
++"      tmview will take the entire DVIfile as one huge\n" \
++"      text-string and then search for the next substring,\n" \
++"      fitting the regular expression you've enterd. Thereby\n" \
++"      \"next\" is ment with respect to the current page.\n" \
++"\n" \
++"      So far this sounds quite easy, but there are some ugly\n" \
++"      details, based on the fact, that a DVIfile contains\n" \
++"      information on how to draw a bitmap representing your\n" \
++"      text. It does not contain information about from what\n" \
++"      characters in which order your text is made up. Even\n" \
++"      the PKfiles used to draw your text consist only of\n" \
++"      lots of glyphs but no character-codes, like ASCII or\n" \
++"      so. Building a huge text-string from a DVIfile is some\n" \
++"      kind of guessing.\n" \
++"\n" \
++"      Fisrt: What kind of huge-string is build from the DVIfile?\n" \
++"\n" \
++"      This string will consists of the letters <A> ... <Z>,\n" \
++"      <a> ... <z>, the accent <\"> and the digits <0>\n" \
++"      ... <9>. It does NOT contain anything else, like\n" \
++"      <space>, <ret> or <->:\n" \
++"      Whenbeingprinteditwouldlooklikethisnotreadableatall.  \n" \
++"      Taking the DVIfile as huge string allows you to find\n" \
++"      all locations of a sub-string, say\n" \
++"      \"commandlineoptions\", even those that are seperarted\n" \
++"      by linebreaks (and hyphens) or pagebreaks. In turn,\n" \
++"      there is no chance to find all those locations, where\n" \
++"      \"commandlineoptions\" is seperated by a hypenation.  To\n" \
++"      keep tmview from being confused by headings, there is\n" \
++"      another rule for building up the huge text-string: any\n" \
++"      glyph outside the printable area (see <p>) is\n" \
++"      ignored. So you may setup the printable area to ignore\n" \
++"      headings when searching.\n" \
++"\n" \
++"      Second: How is the huge-string build up?\n" \
++"\n" \
++"      To translate the list of glyphs found in the DVIfile\n" \
++"      to a text-string, the tfm-files are asked for the\n" \
++"      encoding-scheme. This does work with dc-fonts and\n" \
++"      cm-fonts, since the following encoding-scheme names\n" \
++"      are accepted: \"ASCII\", \"TeX text\", \"TeX math italic\",\n" \
++"      \"TeX math symbols\", \"TeX typewriter text\", \"Extended\n" \
++"      TeX Font Encoding - Latin\", \"Adobe StandardEncoding\".\n" \
++"      The alphanumerics <A>...<Z>, <a>...<z>, <0> ... <9>\n" \
++"      are copied one by one to the huge text-string. Glyphs\n" \
++"      that \"look like\" a simple alphanumeric will be taken\n" \
++"      as that one it looks like.  So the Tex input '\\c o',\n" \
++"      producing an 'o'-with-an-cedilla-accent, will be\n" \
++"      represented as a simple (o) in the text-string. This\n" \
++"      rule also works for all kind of ligatures. The TeX\n" \
++"      input 'ffl\\AE' will be represented by (fflAE).  Any\n" \
++"      accent ON TOP of a glyph will be translated to a (\"),\n" \
++"      preceding whatever the glyph without that accent would\n" \
++"      be translated to.  The TeX input '\\\"a' producing the\n" \
++"      german umlaut 'a'-with-two-dots-on-top, will be found\n" \
++"      as (\"a) in the generated text-string.  The TeX input\n" \
++"      '\\aa' producing the scandinavian\n" \
++"      'a'-with-circle-on-top will be found as (\"a) too. Any\n" \
++"      other glyphs are ignored.\n" \
++"\n" \
++"      Third: In what does the above result?\n" \
++"\n" \
++"      Visiting english documents, say manuals to some\n" \
++"      computer related stuff like elisp.dvi, searching for\n" \
++"      keywords works fine. Searching in documents in which\n" \
++"      extensive use of accents and funny characters is made\n" \
++"      works too, but requires some luck or/and experiance in\n" \
++"      how TeX acts on such things.\n" \
++"\n" \
++"\n" \
++"      Example: \n" \
++"\n" \
++"      Take the file story.tex from the TeXbook, chapter 6, \n" \
++"      page 24.  It contains the line\n" \
++"              galaxy called \\\"O\\\"o\\c c,\n" \
++"      The text-string build from the corresponding story.dvi\n" \
++"      will therfore contain\n" \
++"              galaxycalled\"O\"oc\n" \
++"      You may search for ...    getting as result ...\n" \
++"      galaxy                    found\n" \
++"      galaxycalled              found\n" \
++"      galaxy called             not found\n" \
++"      d\"                        found\n" \
++"      galaxy.*\"O\"oc             found\n" \
++"      Ooc                       not found\n" \
++"      \n" \
++"  \n" \
++"<r> Re-read current DVIfile and re-draw screen.\n" \
++"\n" \
++"      Note: <r> will not  re-initialize the fontdatabase,\n" \
++"      nor the buffer for rendered eps-figures. To force\n" \
++"      everything beeing re-read, use (*)<r>.\n" \
++"\n" \
++"\n" \
++"<d> Load/kill DVIfile\n" \
++"\n" \
++"      After typing <d> you may select between <l> to load a \n" \
++"      DVIfile and <k> to kill a DVIfile. \n" \
++"      \n" \
++"      Loading a DVIFile: \n" \
++"\n" \
++"      tmview will look for a file-bookmark belonging to that\n" \
++"      file. If there is one, it becomes the current\n" \
++"      file-bookmark. The DVIfile will be shown as left, and\n" \
++"      any defined manual-bookmarks are accessable by\n" \
++"      <w>. When loading a DVIfile for the first time, a new\n" \
++"      file-bookmark will be generated.  This will be setup\n" \
++"      with default values from the command-line options and\n" \
++"      won't contain any manual-bookmarks.\n" \
++"\n" \
++"      Killing a DVIfile:\n" \
++"      To kill a DVIfile means to kill its file-bookmark and\n" \
++"      any related manual-bookmark. Killing a DVIfile won't\n" \
++"      hurt the file itself.  You don't have to kill a\n" \
++"      DVIfile just to load another one.\n" \
++"\n" \
++"<q> Quit tmview \n" \
++"    \n" \
++"      When quitting, a startup-file will be written. When\n" \
++"      running tmview next time, you will find almost\n" \
++"      everything as you left it.\n" \
++"\n" \
++"\n" \
++"**********************************************************\n" \
++"End of help***********************************************\n" \
++"\n\n\n"
+ 
+ char helpstr[]=HELPSTR;
+ 
+--- tmview-01.03.orig/src/readpk.c
++++ tmview-01.03/src/readpk.c
+@@ -752,10 +752,10 @@
+   theChar->bmp2.h = CEIL(theChar->bmp.h / fshrink) +2;
+     
+   if(firstrows<=0 || firstcols<=0)   
+-     pfprot("IMPORTANT DEBUGINFORMATION 
+-break with fro %d fco %d
+-fshr %f hof %d vof %d hof2 %d vof2 %d\n",firstrows,firstcols,
+-       fshrink,theChar->hof,theChar->vof,theChar->hof2,theChar->vof2);
++     pfprot("IMPORTANT DEBUG INFORMATION\n"
++            "break with fro %d fco %d\n"
++            "fshr %f hof %d vof %d hof2 %d vof2 %d\n",firstrows,firstcols,
++            fshrink,theChar->hof,theChar->vof,theChar->hof2,theChar->vof2);
+   
+        
+   theChar->bmp2.type=GREYSCALE;
+@@ -877,8 +877,8 @@
+     exit(1);
+   }
+   
+-/*pfprot("DEBUG 
+-fshr %f hof %d vof %d hof2 %d vof2 %d\n",
++/*pfprot("DEBUG\n"
++       "fshr %f hof %d vof %d hof2 %d vof2 %d\n",
+        fshrink, theChar->hof,theChar->vof,theChar->hof2,theChar->vof2); 
+ pfprot("srcw %d srch %d destw %d desth %d \n", 
+     theChar->bmp.w,theChar->bmp.h,theChar->bmp2.w,theChar->bmp2.h); */
+@@ -902,8 +902,8 @@
+     topweight=1-(CEIL(fi)-fi);
+     botweight=1-((fi-frows)-FLOOR(fi-frows));
+ 
+-    /* pfprot("\nrow info at fi %f
+-fr %f tw %f bw %f oy %d oh %d iy %d ih %d\n",
++    /* pfprot("\nrow info at fi %f\n"
++       "fr %f tw %f bw %f oy %d oh %d iy %d ih %d\n",
+        fi,frows,topweight,botweight,oy,oh,iy,ih); */
+ 
+     m= BITS_PER_BMUNIT -GREYSCALE;
+@@ -919,8 +919,8 @@
+       ix=MIN(CEIL(fj)+theChar->hof,theChar->bmp.w);
+       iw=MAX(0,MIN(FLOOR(fj+fcols)-CEIL(fj),theChar->bmp.w-ix));
+   
+-      /*pfprot("   col info at fj %f
+-        fc %f ox %d ow %d ix %d iw %d\n",fj,fcols,ox,ow,ix,iw);*/ 
++      /*pfprot("   col info at fj %f\n"
++        "fc %f ox %d ow %d ix %d iw %d\n",fj,fcols,ox,ow,ix,iw);*/ 
+     
+       leftweight=1-(fj-FLOOR(fj));
+       rightweight=1-(CEIL(fj+fcols)-fj-fcols);
+@@ -1039,10 +1039,10 @@
+   theChar->bmp2.h = CEIL(theChar->bmp.h / fshrink) +2;
+     
+   if(firstrows<=0 || firstcols<=0)   
+-     pfprot("IMPORTANT DEBUGINFORMATION 
+-break with fro %d fco %d
+-fshr %f hof %d vof %d hof2 %d vof2 %d\n",firstrows,firstcols,
+-       fshrink, theChar->hof,theChar->vof,theChar->hof2,theChar->vof2);
++     pfprot("IMPORTANT DEBUG INFORMATION\n"
++            "break with fro %d fco %d\n"
++            "fshr %f hof %d vof %d hof2 %d vof2 %d\n",firstrows,firstcols,
++            fshrink, theChar->hof,theChar->vof,theChar->hof2,theChar->vof2);
+   
+     
+   theChar->bmp2.w = CEIL(theChar->bmp.w / fshrink) +2; 
+--- tmview-01.03.orig/lX/writelx.c
++++ tmview-01.03/lX/writelx.c
+@@ -129,9 +129,9 @@
+   if(ibytes_per_pixel == 3) ibytes_per_pixel =4;
+   
+   if(ibytes_per_pixel != IBYTES_PER_PIXEL) {
+-    pfprot("\n
+-warning: display: found %d-bit depth while optimized for %d-bit.
+-  Recompile for better performance.\n", offimage->depth, IBYTES_PER_PIXEL*8);
++    pfprot("\n"
++  "warning: display: found %d-bit depth while optimized for %d-bit.\n"
++  "Recompile for better performance.\n", offimage->depth, IBYTES_PER_PIXEL*8);
+     setvar();
+   } else {
+     pfverb("writelx: using built in  %d-bit pixmap functions on a %d-bit display\n",

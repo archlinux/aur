@@ -1,0 +1,14 @@
+--- tmview-01.03.orig/doc/tmview.1
++++ tmview-01.03/doc/tmview.1
+@@ -132,9 +132,9 @@
+ 640x480 at 256 colors, then to 640x480 at 16 colors.
+ The framebuffer version \fBdvifb\fP ignores this option. Use the
+ program \fBfbset\fP to set up the framebuffer device before starting tmview.
+-Using the X Window System (\fBdvisvga\fP) \verb+-d+ will suggest the size of 
++Using the X Window System (\fBdvisvga\fP) \\verb+-d+ will suggest the size of 
+ the tmview window. However, you may alternatively use the resource 
+-\verb+DviLX.geometry+ or the standard geometry option \verb*-geometry widthxheigth+x+y*.
++\\verb+DviLX.geometry+ or the standard geometry option \\verb*-geometry widthxheigth+x+y*.
+ Defaults: (dvisvga) "640x480"
+ .TP
+ \fB-m\fP (\fBmagnification\fP)

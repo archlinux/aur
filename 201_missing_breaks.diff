@@ -1,0 +1,267 @@
+--- tmview-01.03.orig/svga/writevga.c
++++ tmview-01.03/svga/writevga.c
+@@ -447,7 +447,7 @@
+         } 
+       break;
+       case 0: case 27: com= KEYESC; break; /* allow wild escape abuse */
+-      default:
++      default: break;
+       }
+     break;
+   }  
+--- tmview-01.03.orig/src/tmview.c
++++ tmview-01.03/src/tmview.c
+@@ -115,6 +115,7 @@
+      }
+     return(1);
+   default:
++    break;
+   }
+   pfprot("(numberargadd: parsing error)");
+   return(1);    
+@@ -194,6 +195,7 @@
+       numberargread();
+       return(0);
+     default:
++      break;
+     }
+   } while(1);
+ }
+@@ -613,6 +615,7 @@
+         break;
+       default:
+         o=KEYNOP;
++        break;
+       }
+     } while(o==KEYNOP);
+   } while(o!=KEYESC && o!=KEYRET);
+@@ -955,6 +958,7 @@
+       comfile(COMDO);
+     break;
+   default:
++    break;
+   }
+ }
+ 
+@@ -1114,6 +1118,7 @@
+     else drawstatusline();
+     break;
+   default:
++    break;
+   }
+ }
+ 
+@@ -1187,6 +1192,7 @@
+     else drawstatusline();
+     break;
+   default:
++    break;
+   }
+ }
+ 
+@@ -1245,6 +1251,7 @@
+         break;
+       default:
+         o=KEYNOP;
++        break;
+       }
+     } while(o==KEYNOP);
+     if(newunit < 0) newunit=NUMBEROFUNITS-1;
+@@ -1308,6 +1315,7 @@
+     drawstatusline();
+     break;
+   default:
++    break;
+   }
+ }
+ 
+@@ -1331,6 +1339,7 @@
+      drawstatusline(); 
+     break;
+   default:
++    break;
+   }
+ }
+ 
+@@ -1532,6 +1541,7 @@
+     drawstatusline();
+     break;
+   default:
++    break;
+   }
+ }
+ 
+@@ -1555,6 +1565,7 @@
+     drawstatusline();
+     break;
+   default:
++    break;
+   }
+ }
+ 
+@@ -1588,6 +1599,7 @@
+     drawstatusline();
+     break;
+   default:
++    break;
+   }
+ }
+ 
+@@ -1621,6 +1633,7 @@
+     drawstatusline();
+     break;
+   default:
++    break;
+   }
+ }
+ 
+@@ -1667,6 +1680,7 @@
+       if(d>0) comdomovedown(d,0); else comdomoveup(-d,0);
+       break;
+     default:
++      break;
+     }
+     centhis++;
+     if(centhis==2) centhis=1;
+@@ -1682,6 +1696,7 @@
+     drawstatusline();
+     break;
+   default:
++    break;
+   }
+ }
+ 
+@@ -1701,6 +1716,7 @@
+     drawstatusline();
+     break;
+   default:
++    break;
+   }
+ }
+ 
+@@ -1759,6 +1775,7 @@
+     else drawstatusline();
+     break;
+   default:
++    break;
+   }
+ }
+ 
+@@ -1802,6 +1819,7 @@
+     else drawstatusline();
+     break;
+   default:
++    break;
+   }
+ }
+ 
+@@ -1860,6 +1878,7 @@
+     drawstatusline();
+     break;
+   default:
++    break;
+   }
+ }
+ 
+@@ -1931,6 +1950,7 @@
+     drawstatusline();
+     break;
+   default:
++    break;
+   }
+ }
+ 
+@@ -1997,6 +2017,7 @@
+     drawstatusline();
+     break;
+   default:
++    break;
+   }
+ }
+ 
+@@ -2045,6 +2066,7 @@
+     drawstatusline();
+     break;
+   default:
++    break;
+   }
+ }
+ 
+@@ -2068,6 +2090,7 @@
+     drawstatusline();
+     break;
+   default:
++    break;
+   }
+ }
+ 
+@@ -2096,6 +2119,7 @@
+     drawstatusline();
+     break;
+   default:
++    break;
+   }
+ }
+ 
+@@ -2193,6 +2217,7 @@
+     drawstatusline();
+     break;
+   default:
++    break;
+   }
+ }
+ 
+@@ -2248,6 +2273,7 @@
+     comdisp(COMDO);
+     break;
+   default:
++    break;
+   }
+ }
+ 
+@@ -2318,6 +2344,7 @@
+     comsearch(COMDO);
+     break;
+   default:
++    break;
+   }
+ }
+ 
+@@ -2698,6 +2716,7 @@
+       if(comode==COMDEF && o!= KEYNOP)
+         ignorethis("THE PREVIOUS PRESSED KEY PERFORMS ALMOST NO OPERATION");
+       o=KEYNOP;
++      break;
+     }                    /* end switch o */
+ #ifdef HASMOUSE          /* now mouse actions ... */
+     if(!dvierrorflag){   /* if not in error */
+--- tmview-01.03.orig/src/readdvi.c
++++ tmview-01.03/src/readdvi.c
+@@ -983,7 +983,7 @@
+     case 250:  case 251:  case 252:
+     case 253:  case 254:  case 255:  
+       pfprot("(skipping unknown opc > 249 within macro)");break;
+-    default:
++    default: break;
+     } /* end switch o */
+   }
+ 
+@@ -1091,7 +1091,7 @@
+     case 250:  case 251:  case 252:
+     case 253:  case 254:  case 255:  
+       pfprot("skipping unknown opc > 249 ");break;
+-    default:
++    default: break;
+     } /* end switch o */
+     o = dvibyte();
+   } 
+--- tmview-01.03.orig/fb/writefb.c
++++ tmview-01.03/fb/writefb.c
+@@ -565,6 +636,7 @@
+       break;
+       case 0: case 27: com= KEYESC; break; /* allow wild escape abuse */
+       default:
++      break;
+       }
+     break;
+   }  

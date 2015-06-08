@@ -1,0 +1,47 @@
+--- tmview-01.03.orig/lX/writelx.c
++++ tmview-01.03/lX/writelx.c
+@@ -908,7 +908,7 @@
+     }
+     srow+=sbmu_wide;
+     sbmu=srow;
+-    ((char*)ydest)+=ibytes_per_line;
++    ydest=((char*)ydest)+ibytes_per_line;
+   }
+   if(directscreen) {
+     XPutImage(dpy,dviwin,imagecopygc,offimage,tx,ty,tx,ty,w,h);
+@@ -996,7 +996,7 @@
+     }
+     srow+=sbmu_wide;
+     sbmu=srow;
+-    ((char*)ydest)+=ibytes_per_line;
++    ydest=((char*)ydest)+ibytes_per_line;
+   }
+   if(directscreen) {
+     XPutImage(dpy,dviwin,imagecopygc,offimage,tx,ty,tx,ty,w,h); 
+@@ -1034,7 +1034,7 @@
+        ISET_PIXEL(xdest,cpix);
+        xdest++;
+     }
+-    ((char*)ydest)+=ibytes_per_line;
++    ydest=((char*)ydest)+ibytes_per_line;
+   }
+   if(directscreen) {
+     XSetForeground(dpy,winfillgc,cpix);
+@@ -1084,7 +1084,7 @@
+ #endif
+       xdest++;
+     }
+-    ((char*)ydest)+=ibytes_per_line;
++    ydest=((char*)ydest)+ibytes_per_line;
+   }
+   if(directscreen) {
+     XPutImage(dpy,dviwin,imagecopygc,offimage,tx,ty,tx,ty,w,h); 
+@@ -1126,7 +1126,7 @@
+       }
+       xdest++;
+     }
+-    ((char*)ydest)+=ibytes_per_line;
++    ydest=((char*)ydest)+ibytes_per_line;
+   }
+   if(directscreen) {
+     XPutImage(dpy,dviwin,imagecopygc,offimage,tx,ty,tx,ty,w,h); 

@@ -1,0 +1,78 @@
+--- tmview-01.03.orig/MakeLX
++++ tmview-01.03/MakeLX
+@@ -7,9 +7,9 @@
+ OBJ=./src/lX.
+ 
+ #1. when kpathsea is to be used	 
+-#LIBS= -L /usr/X11R6/lib -L /usr/X11/lib -lkpathsea -lX11 -lm 
++LIBS= -L /usr/X11R6/lib -L /usr/X11/lib -lkpathsea -lX11 -lm 
+ #2. when kpathsea is not used
+-LIBS= -L /usr/X11R6/lib -L /usr/X11/lib  -lX11 -lm        
++#LIBS= -L /usr/X11R6/lib -L /usr/X11/lib  -lX11 -lm        
+ 
+ LL=gcc
+ CC=gcc -c -O2 -g -Wall -I$(SRC) -I$(SSRC) 
+--- tmview-01.03.orig/svga/defssvga.h
++++ tmview-01.03/svga/defssvga.h
+@@ -116,10 +117,11 @@
+ /* Thus, running once in a while "./missfont.log" manualy seems  more */
+ /* "comfortable" to me. For svgalib>=1.3.0 and  kernel=>2.0 there     */
+ /* might be a solution on this topic.  See below LETSTRYBG.           */
+-/* #define KPATHSEA */
++#define KPATHSEA
+ #ifdef KPATHSEA
+ #define KPATHMODE NULL    /* put f.e. "cx" here, to consist on cx fonts */
+-#define KPATHMAKE 0       /* put 1 here, to make kpathsea run MakeTeXPK,*/
++/* haha, the Debian maintainer ain't afraid of running kpathsea! */
++#define KPATHMAKE 1       /* put 1 here, to make kpathsea run MakeTeXPK,*/
+ #define KPATHDEFF "cmr10" /* fallback font                              */
+ #define KPATHSEANEWSTYLE    /* new=fine for teTeX from debian(see above)*/ 
+ /*#define KPATHSEAOLDSTYLE*//* old=fine for NTeX from Slakware          */
+--- tmview-01.03.orig/MakeSVGA
++++ tmview-01.03/MakeSVGA
+@@ -8,8 +8,8 @@
+ OBJ=./src/svga.
+ 
+ 
+-LIBS= -lvgagl -lvga -lm	 
+-#LIBS= -lkpathsea -lvgagl -lvga -lm       # when kpathsea is to be used	 
++#LIBS= -lvgagl -lvga -lm	 
++LIBS= -lkpathsea -lvgagl -lvga -lm       # when kpathsea is to be used	 
+ 
+ 
+ LL=gcc   -L /usr/lib
+--- tmview-01.03.orig/MakeFb
++++ tmview-01.03/MakeFb
+@@ -5,8 +5,8 @@
+ SSRC=./fb/
+ OBJ=./src/fb.
+ 
+-LIBS= -lm	 
+-#LIBS= -lkpathsea -lm       # when kpathsea is to be used	 
++#LIBS= -lm	 
++LIBS= -lkpathsea -lm       # when kpathsea is to be used	 
+ 
+ LL=gcc   -L /usr/lib
+ CC=gcc -c -O2 -g -Wall -I$(SRC) -I$(SSRC)
+--- tmview-01.03.orig/fb/defsfb.h
++++ tmview-01.03/fb/defsfb.h
+@@ -80,7 +83,7 @@
+ /* its KPATHSEANEWSTYLE.                                              */ 
+ /*                                                                    */ 
+ /* Running MakeTeXPK by kpathsea within dvifb may be disabled below.  */
+-/* #define KPATHSEA */
++#define KPATHSEA
+ #ifdef KPATHSEA
+ #define KPATHMODE NULL    /* put f.e. "cx" here, to consist on cx fonts */
+ #define KPATHMAKE 1       /* put 0 here, to disable MakeTeXPK           */
+--- tmview-01.03.orig/lX/defslx.h
++++ tmview-01.03/lX/defslx.h
+@@ -82,7 +83,7 @@
+ /* However, if kpse_init_prog is defined  to have 4 arguments ("P4H"),*/
+ /* its KPATHSEANEWSTYLE.                                              */ 
+ /*                                                                    */ 
+-/* #define KPATHSEA */
++#define KPATHSEA
+ #ifdef KPATHSEA
+ #define KPATHMODE NULL    /* put f.e. "cx" here, to consist on cx fonts */
+ #define KPATHMAKE 1       /* put 0 here, to disable running MakeTeXPK   */

@@ -1,0 +1,45 @@
+--- tmview/fb/defsfb.h.orig	2010-07-14 18:43:19.000000000 +0200
++++ tmview/fb/defsfb.h	2010-07-14 18:45:47.000000000 +0200
+@@ -48,9 +48,9 @@
+ 
+ 
+ /* set defaults for the options -t, -f, -g and -n */
+-#define TFMDIR  "./:/usr/lib/texmf/fonts//:/usr/local/teTeX/texmf/fonts//"
+-#define PKDIR   "./:/usr/lib/texmf/fonts//:/usr/local/teTeX/texmf/fonts//"
+-#define VFDIR   "./:/usr/lib/texmf/fonts//:/usr/local/teTeX/texmf/fonts//"
++#define TFMDIR  "./:/usr/share/texmf/fonts//:/usr/local/teTeX/texmf/fonts//"
++#define PKDIR   "./:/usr/share/texmf/fonts//:/usr/local/teTeX/texmf/fonts//"
++#define VFDIR   "./:/usr/share/texmf/fonts//:/usr/local/teTeX/texmf/fonts//"
+ #define PKNAME  "@N.@Mpk"
+ 
+ 
+--- tmview/lX/defslx.h.orig	2010-07-14 18:44:46.000000000 +0200
++++ tmview/lX/defslx.h	2010-07-14 18:46:13.000000000 +0200
+@@ -49,9 +49,9 @@
+ 
+ 
+ /* set defaults for the options -t, -f -g, and -n */
+-#define TFMDIR  "./:/usr/lib/texmf/fonts//:/usr/local/teTeX/texmf/fonts//"
+-#define PKDIR   "./:/usr/lib/texmf/fonts//:/usr/local/teTeX/texmf/fonts//"
+-#define VFDIR   "./:/usr/lib/texmf/fonts//:/usr/local/teTeX/texmf/fonts//"
++#define TFMDIR  "./:/usr/share/texmf/fonts//:/usr/local/teTeX/texmf/fonts//"
++#define PKDIR   "./:/usr/share/texmf/fonts//:/usr/local/teTeX/texmf/fonts//"
++#define VFDIR   "./:/usr/share/texmf/fonts//:/usr/local/teTeX/texmf/fonts//"
+ #define PKNAME  "@N.@Mpk"
+ 
+ /* set defaults for the option -s (startupfile)*/
+--- tmview/svga/defssvga.h.orig	2010-07-14 18:45:09.000000000 +0200
++++ tmview/svga/defssvga.h	2010-07-14 18:46:50.000000000 +0200
+@@ -72,9 +72,9 @@
+ 
+ 
+ /* set defaults for the options -t, -f, -g and -n */
+-#define TFMDIR  "./:/usr/lib/texmf/fonts//:/usr/local/teTeX/texmf/fonts//"
+-#define PKDIR   "./:/usr/lib/texmf/fonts//:/usr/local/teTeX/texmf/fonts//"
+-#define VFDIR   "./:/usr/lib/texmf/fonts//:/usr/local/teTeX/texmf/fonts//"
++#define TFMDIR  "./:/usr/share/texmf/fonts//:/usr/local/teTeX/texmf/fonts//"
++#define PKDIR   "./:/usr/share/texmf/fonts//:/usr/local/teTeX/texmf/fonts//"
++#define VFDIR   "./:/usr/share/texmf/fonts//:/usr/local/teTeX/texmf/fonts//"
+ #define PKNAME  "@N.@Mpk"
+ 
+ 

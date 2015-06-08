@@ -1,0 +1,52 @@
+--- tmview-01.03.orig/svga/defssvga.h
++++ tmview-01.03/svga/defssvga.h
+@@ -14,6 +14,7 @@
+ */
+ 
+ #define _GNU_SOURCE  
++#define HAVE_PROTOTYPES
+ 
+ #include <sys/types.h>
+ #include <sys/time.h>
+--- tmview-01.03.orig/src/tmview.c
++++ tmview-01.03/src/tmview.c
+@@ -70,7 +70,7 @@
+          numberargmode=NAFRAC;
+        if(ch=='*' || ch=='#')
+          numberargmode=NAONLYE;
+-       if(ch >=0 && ch <= '9') 
++       if(ch >='0' && ch <= '9') 
+          numberargmode=NAINTE;
+        if(ch=='+' || ch=='-')
+          numberargmode=NAINT;
+--- tmview-01.03.orig/fb/defsfb.h
++++ tmview-01.03/fb/defsfb.h
+@@ -14,6 +14,7 @@
+ */
+ 
+ #define _GNU_SOURCE  
++#define HAVE_PROTOTYPES
+ 
+ #include <sys/types.h>
+ #include <sys/time.h>
+--- tmview-01.03.orig/lX/writelx.c
++++ tmview-01.03/lX/writelx.c
+@@ -1381,7 +1381,7 @@
+     pfprot("(configure notify for %ld flag %d: geometry: %dx%d+%d+%d)\n",
+          conev->window,conev->send_event,geow,geoh,geox+geodx,geoy+geody);
+ #endif	 
+-    pfprot("(oldsize %d %d)",vgaxdim,truevgaydim);
++    /* pfprot("(oldsize %d %d)",vgaxdim,truevgaydim); */
+     newxdim = MAX(VGAXDIMMIN,conev->width);  
+     newydim = MAX(VGAYDIMMIN,conev->height);
+     if(newxdim==vgaxdim && newydim==truevgaydim) break;
+--- tmview-01.03.orig/lX/defslx.h
++++ tmview-01.03/lX/defslx.h
+@@ -14,6 +14,7 @@
+ */
+ 
+ #define _GNU_SOURCE  
++#define HAVE_PROTOTYPES
+ 
+ #include <sys/types.h>
+ #include <sys/time.h>
