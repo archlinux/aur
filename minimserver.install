@@ -1,0 +1,61 @@
+post_install() {
+
+mkdir -p /home/$USER/.minimserver/data
+touch /home/$USER/.minimserver/data/minimserver.config
+echo ".autoUpdate = false" >> /home/$USER/.minimserver/data/minimserver.config
+chown -R $USER:users /home/$USER/.minimserver
+
+  echo "
+========================================================================
+
+To start minimserver:
+/opt/minimserver/bin/startd
+
+To stop minimserver
+/opt/minimserver/bin/stopall
+
+(you can use also the desktop file at /opt/minimserver/icons/MinimServer.desktop)
+
+To start minimserver, you could also start the service unit file:
+  # systemctl start minimserver@<user>
+
+To enable minimserver at boot:
+  # systemctl enable minimserver@<user>
+  
+To complete the configuration once the service has been started, point
+your web browser to:
+  http://localhost:9790
+
+Full documentation is available at:
+  http://www.minimserver.com/
+
+*** IMPORTANT ***
+
+Before starting minimserver for the first time please check if the directory /home/$USER/.minimserver/data exists.
+If not, in a user terminal type the following commands:
+
+mkdir -p /home/$USER/.minimserver/data
+touch /home/$USER/.minimserver/data/minimserver.config
+echo ".autoUpdate = false" >> /home/$USER/.minimserver/data/minimserver.config
+
+========================================================================
+"
+}
+
+post_upgrade() {
+  echo "
+========================================================================
+
+Before starting minimserver for the first time please check if the directory /home/$USER/.minimserver/data exists.
+If not, in a user terminal type the following commands:
+
+mkdir -p /home/$USER/.minimserver/data
+touch /home/$USER/.minimserver/data/minimserver.config
+echo ".autoUpdate = false" >> /home/$USER/.minimserver/data/minimserver.config
+
+Full documentation is available at:
+  http://www.minimserver.com/
+
+========================================================================
+"
+}
