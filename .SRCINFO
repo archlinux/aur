@@ -1,0 +1,14 @@
+pkgbase = eclipse-doc-j2se
+	pkgdesc = java documentation for eclipse help system
+	pkgver = 6.0
+	pkgrel = 2
+	url = http://eclipsedocs.sourceforge.net/
+	arch = any
+	license = EPL
+	license = GPL
+	depends = eclipse
+	source = http://downloads.sourceforge.net/eclipsedocs/yu.ac.bg.etf.seba.doc.jdk60.zip
+	md5sums = 2150570e62010fba4219ae99a92b0cb0
+
+pkgname = eclipse-doc-j2se
+
