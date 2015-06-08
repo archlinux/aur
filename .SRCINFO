@@ -1,0 +1,13 @@
+pkgbase = nodejs-jake
+	pkgdesc = JavaScript build tool, similar to Make or Rake
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = http://github.com/mde/jake
+	arch = any
+	depends = nodejs
+	noextract = jake-0.7.3.tgz
+	source = http://registry.npmjs.org/jake/-/jake-0.7.3.tgz
+	sha1sums = e5321b99bce65798a5408d7586fb803581cf70f4
+
+pkgname = nodejs-jake
+
