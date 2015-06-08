@@ -1,0 +1,16 @@
+pkgbase = python-lockfile
+	pkgdesc = Platform-independent file locking module
+	pkgver = 0.10.2
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/lockfile
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/l/lockfile/lockfile-0.10.2.tar.gz
+	md5sums = 1aa6175a6d57f082cd12e7ac6102ab15
+	sha256sums = 9e42252f17d1dd89ee31745e0c4fbe58862c25147eb0ef5295c9cd9bcb4ea2c1
+
+pkgname = python-lockfile
+
