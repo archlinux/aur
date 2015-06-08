@@ -1,0 +1,18 @@
+pkgbase = vim-eclipse
+	pkgdesc = while typing a C function, a prototype is shown (man3 based)
+	pkgver = 1.0.2
+	pkgrel = 3
+	url = http://www.vim.org/scripts/script.php?script_id=1802
+	install = vimdoc.install
+	arch = i686
+	arch = x86_64
+	groups = vim-plugins
+	license = custom
+	depends = vim
+	source = eclipse.vim::http://www.vim.org/scripts/download_script.php?src_id=6890
+	source = license.txt
+	md5sums = e132f1c1487c7bfc2b239ce9d3669b8f
+	md5sums = efbd5986e691ce8c876fb86e8f5961ea
+
+pkgname = vim-eclipse
+
