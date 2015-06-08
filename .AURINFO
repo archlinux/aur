@@ -1,0 +1,15 @@
+pkgbase = postgresql-autodoc
+	pkgdesc = Translate PostgreSQL tables to HTML, Dot, Dia and DocBook XML files.
+	pkgver = 1.41
+	pkgrel = 4
+	url = https://web.archive.org/web/20130712095001/http://www.rbt.ca/autodoc/index.html
+	arch = any
+	license = 3-clause BSD
+	depends = perl
+	depends = perl-dbd-pg
+	depends = perl-term-readkey
+	depends = perl-html-template
+	source = https://web.archive.org/web/20130712095001/http://www.rbt.ca/autodoc/binaries//postgresql_autodoc-1.41.tar.gz
+
+pkgname = postgresql-autodoc
+
