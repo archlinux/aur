@@ -5,3 +5,4 @@
 *.src.tar.gz
 !.git*
 !.mailmap
+!.SRCINFO
