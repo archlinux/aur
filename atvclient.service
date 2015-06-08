@@ -1,0 +1,11 @@
+[Unit]
+Description=Background application implementing the functionality of the AppleTV OS HID driver
+Wants=lirc.service
+
+[Service]
+Type=simple
+PIDFile=/run/atvclient.pid
+ExecStart=/usr/bin/atvclient
+
+[Install]
+WantedBy=multi-user.target

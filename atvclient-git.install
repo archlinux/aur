@@ -1,0 +1,10 @@
+post_install() {
+  echo "> As of version 20100907 there is a daemon script provided."
+  echo ""
+  echo "> If you need universal remote support (e.g. Logitech Harmony), add"
+  echo "> the -m option to the daemon configuration file in /etc/conf.d."
+}
+
+post_upgrade() {
+  post_install $1
+}

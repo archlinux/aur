@@ -1,0 +1,18 @@
+2015-06-08
+* Rebuild package for aur4.
+
+2010-12-09
+* Rebuild because of the libusb upgrade: replaced libusb dependency with
+  libusb-compat
+* Fixed error in daemon script
+
+2010-09-07
+* Removed Zeldi's patch (got incorporated into git tree)
+* Refactored PKGBUILD to use build() and package() functions
+* Added daemon script and corresponding configuration file
+* Added install message
+* Added changelog
+
+2010-03-28
+* Applied Zeldi's 63 button patch, finally allowing universal remote support
+* See http://forum.xbmc.org/showpost.php?p=542303&postcount=64
