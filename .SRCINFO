@@ -1,0 +1,15 @@
+pkgbase = emacs-elscreen-w3m
+	pkgdesc = Frame configuration management for GNU Emacs modelled after GNU Screen
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = http://www.morishima.net/~naoto/software/elscreen/index.php.en
+	arch = any
+	license = GPL
+	makedepends = emacs-apel
+	depends = emacs-elscreen
+	depends = emacs-w3m
+	source = ftp://ftp.morishima.net/pub/morishima.net/naoto/ElScreen/elscreen-w3m-0.2.2.tar.gz
+	md5sums = 2aa6fede182f6a9d29494f5e1f434308
+
+pkgname = emacs-elscreen-w3m
+
