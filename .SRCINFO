@@ -1,0 +1,16 @@
+pkgbase = coin-or-alps
+	pkgdesc = COIN-OR High-Performance Parallel Search Framework
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://projects.coin-or.org/Alps
+	arch = i686
+	arch = x86_64
+	groups = coin-or
+	license = EPL
+	depends = coin-or-cgl
+	depends = coin-or-clp
+	source = http://www.coin-or.org/download/pkgsource/CHiPPS/Alps-1.5.1.tgz
+	sha1sums = 99653744e3855b7d8b8a76b2f7814344bbb56b85
+
+pkgname = coin-or-alps
+
