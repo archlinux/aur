@@ -1,0 +1,21 @@
+pkgbase = irssi-git
+	pkgdesc = Modular text mode IRC client with Perl scripting
+	pkgver = 0.8.16.225.g1933c92
+	pkgrel = 1
+	url = http://irssi.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = elinks
+	depends = glib2
+	depends = openssl
+	optdepends = perl-libwww: For the scriptassist script
+	provides = irssi
+	conflicts = irssi
+	backup = etc/irssi.conf
+	source = irssi-git::git+https://github.com/irssi/irssi.git
+	sha256sums = SKIP
+
+pkgname = irssi-git
+
