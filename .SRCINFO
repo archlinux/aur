@@ -1,0 +1,22 @@
+pkgbase = xvidenc
+	pkgdesc = Advanced shell script for encoding DVDs or video files to the XviD format using the encoding utility MEncoder from MPlayer.
+	pkgver = 8.6.0
+	pkgrel = 1
+	url = http://xvidenc.sourceforge.net/
+	arch = any
+	license = GPL2
+	depends = mencoder
+	depends = mplayer
+	depends = xvidcore>=1.1.0
+	depends = lsdvd
+	depends = lame
+	depends = bc
+	depends = bash
+	optdepends = mkvmerge: for Matroska support
+	optdepends = gpac: for mp4 support
+	optdepends = ogmtools: for DVD chapter export to file
+	source = http://downloads.sourceforge.net/sourceforge/xvidenc/xvidenc-8.6.0.tar.gz
+	md5sums = 876f50e365795152fc60912fafb1ed6b
+
+pkgname = xvidenc
+
