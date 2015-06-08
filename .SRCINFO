@@ -1,0 +1,26 @@
+pkgbase = vdr-autostart
+	pkgdesc = Automatic start of other plug-ins on change or insertion of removable devices
+	pkgver = 0.9.6
+	pkgrel = 7
+	url = http://www.uli-eckhardt.de/vdr/autostart.en.shtml
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	depends = libcdio
+	depends = libdbus
+	depends = libdvdread
+	depends = vdr-api=2.2.0
+	backup = etc/vdr/conf.avail/50-autostart.conf
+	backup = var/lib/vdr/plugins/autostart/autostart.conf
+	source = http://www.uli-eckhardt.de/vdr/download/vdr-autostart-0.9.6.tgz
+	source = autostart-improve_libcdio.diff::http://hg.uli-eckhardt.de/autostart/raw-rev/51e4428d565d
+	source = 50-autostart.conf
+	md5sums = 7d833142939d21a3edae907f9fa0b55b
+	md5sums = 826139f5212b9ee465f2233ad084e137
+	md5sums = bfac43507495484a347bf5ab6c158651
+
+pkgname = vdr-autostart
+

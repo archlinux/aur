@@ -1,0 +1,43 @@
+# This PKGBUILD is part of the VDR4Arch project [https://github.com/vdr4arch]
+
+# Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
+pkgname=vdr-autostart
+pkgver=0.9.6
+_vdrapi=2.2.0
+pkgrel=7
+pkgdesc="Automatic start of other plug-ins on change or insertion of removable devices"
+url="http://www.uli-eckhardt.de/vdr/autostart.en.shtml"
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+license=('GPL2')
+depends=('libcdio' 'libdbus' 'libdvdread' "vdr-api=${_vdrapi}")
+_plugname=$(echo $pkgname | sed 's/vdr-//g')
+backup=("var/lib/vdr/plugins/$_plugname/cd.mpg")
+source=("http://www.uli-eckhardt.de/vdr/download/${pkgname}-${pkgver}.tgz"
+        "autostart-improve_libcdio.diff::http://hg.uli-eckhardt.de/autostart/raw-rev/51e4428d565d"
+        "50-$_plugname.conf")
+backup=("etc/vdr/conf.avail/50-$_plugname.conf"
+        "var/lib/vdr/plugins/$_plugname/$_plugname.conf")
+md5sums=('7d833142939d21a3edae907f9fa0b55b'
+         '826139f5212b9ee465f2233ad084e137'
+         'bfac43507495484a347bf5ab6c158651')
+
+prepare() {
+  cd "${srcdir}/${_plugname}-${pkgver}"
+  patch -p1 -i "$srcdir/autostart-improve_libcdio.diff"
+  sed -i 's/$(DESTDIR)//g' Makefile.inc
+}
+
+build() {
+  cd "${srcdir}/${_plugname}-${pkgver}"
+  make
+}
+
+package() {
+  cd "${srcdir}/${_plugname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
+
+  install -Dm644 contrib/$_plugname.conf "$pkgdir/var/lib/vdr/plugins/$_plugname/$_plugname.conf"
+  install -Dm644 "$srcdir/50-$_plugname.conf" "$pkgdir/etc/vdr/conf.avail/50-$_plugname.conf"
+
+  chown -R 666:666 "$pkgdir/var/lib/vdr"
+}
