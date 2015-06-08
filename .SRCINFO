@@ -1,0 +1,15 @@
+pkgbase = python2-whoosh
+	pkgdesc = Fast, pure-Python full text indexing, search, and spell checking library
+	pkgver = 2.7.0
+	pkgrel = 1
+	url = http://bitbucket.org/mchaput/whoosh/wiki/Home
+	arch = any
+	license = BSD
+	makedepends = python2-distribute
+	makedepends = python2-nose
+	depends = python2
+	source = http://pypi.python.org/packages/source/W/Whoosh/Whoosh-2.7.0.tar.gz
+	md5sums = 9a0fc2df9335e1d2e81dd84a2c4c416f
+
+pkgname = python2-whoosh
+
