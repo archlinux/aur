@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Ynglet
+Comment=Play Ynglet
+Exec=ynglet
+Icon=ynglet
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;AudioVideo;
+Encoding=UTF-8

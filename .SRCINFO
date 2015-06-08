@@ -1,0 +1,16 @@
+pkgbase = ynglet
+	pkgdesc = Ynglet is a game about swimming inside cubes that are floating around in the air.
+	pkgver = 1
+	pkgrel = 2
+	url = http://nifflas.ni2.se/?page=Miscellaneous
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glu
+	source = ynglet.zip::http://nifflas.ni2.se/content/Misc/Ynglet%20Linux.zip
+	source = ynglet.desktop
+	sha256sums = 95d057275bc6f001b63c9a4cdcc0d43d32f8483a2114d202cdcb801759fb7174
+	sha256sums = 550bc6fda12814d6faef658f4df339d3208c2a6be440400471e10e2fb679e684
+
+pkgname = ynglet
+
