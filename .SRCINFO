@@ -1,0 +1,19 @@
+pkgbase = baloo-widgets-git
+	pkgdesc = A framework for searching and managing metadata
+	pkgver = r410.331c859
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/kdelibs/baloo
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = kdoctools
+	depends = baloo
+	provides = baloo-widgets
+	conflicts = baloo-widgets
+	source = git://anongit.kde.org/baloo-widgets
+	md5sums = SKIP
+
+pkgname = baloo-widgets-git
+
