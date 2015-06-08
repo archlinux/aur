@@ -1,0 +1,21 @@
+pkgbase = mkcl-git
+	pkgdesc = ManKai Common Lisp -- git-version
+	pkgver = 1.1.9.71.g7ac4fb0
+	pkgrel = 1
+	url = http://common-lisp.net/project/mkcl/
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	license = custom
+	makedepends = git
+	depends = gawk
+	provides = common-lisp
+	provides = cl-asdf
+	conflicts = mkcl
+	options = staticlibs
+	options = !makeflags
+	source = git://common-lisp.net/projects/mkcl/mkcl.git
+	md5sums = SKIP
+
+pkgname = mkcl-git
+
