@@ -1,9 +1,9 @@
 # Maintainer: Matti Niemenmaa <matti.niemenmaa+aur ät iki dȯt fi>
 
-pkgname=mdxplay-git
+pkgname=mdxmini-git
 pkgver=r19.eda5bca
 pkgrel=1
-pkgdesc='Command line music player for Sharp X68000 MDX files'
+pkgdesc='Library and command line player for Sharp X68000 MDX music files'
 arch=(i686 x86_64)
 url='https://github.com/BouKiCHi/mdxplayer/tree/master/jni/mdxmini'
 license=(GPL2)
@@ -12,9 +12,9 @@ makedepends=(git)
 provides=(mdxplay)
 conflicts=(mdxplay)
 source=("$pkgname"::'git+https://github.com/BouKiCHi/mdxplayer.git'
-        makefile.patch)
+        makefiles.patch)
 sha256sums=('SKIP'
-            '65459a3a37cf3fd493da9b79e0848d9fcc6a5d39db383f80a52f510011b56e77')
+            '9e402a4a7075065d7f3701acd62883507c7b957793ec3b5cdf5c1190e1a125f4')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -26,7 +26,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$pkgname"
-  patch -p1 -i "$srcdir"/makefile.patch
+  patch -p1 -i "$srcdir"/makefiles.patch
 }
 
 build() {
@@ -35,5 +35,10 @@ build() {
 }
 
 package() {
-  install -Dm755 "$srcdir/$pkgname/jni/mdxmini/mdxplay" "$pkgdir/usr/bin/mdxplay"
+  cd "$srcdir/$pkgname/jni/mdxmini"
+  install -dm755 "$pkgdir/usr/"{bin,include/mdxmini,lib}
+  install -m755 mdxplay "$pkgdir/usr/bin"
+  install -m755 obj/libmdxmini.so "$pkgdir/usr/lib"
+  install -m644 obj/libmdxmini.a "$pkgdir/usr/lib"
+  install -m644 src/{mdxmini,mdx,pcm8}.h "$pkgdir/usr/include/mdxmini"
 }

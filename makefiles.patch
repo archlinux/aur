@@ -1,0 +1,57 @@
+diff --git i/jni/mdxmini/Makefile w/jni/mdxmini/Makefile
+index 9b63041..4cf194d 100644
+--- i/jni/mdxmini/Makefile
++++ w/jni/mdxmini/Makefile
+@@ -75,8 +75,7 @@ $(LIB): $(MKLIB)
+ $(MKLIB):
+ 	make -f Makefile.lib
+ 
+-$(OBJDIR)/nlg.o: src/nlg.c
+-	$(CC) -o $@ $< -c $(CFLAGS)
++$(OBJDIR)/nlg.o: src/nlg.c $(MKLIB)
+ 
+ $(OBJDIR)/sdlplay.o: sdlplay.c
+ 	$(CC) -o $@ $< -c $(CFLAGS)
+diff --git i/jni/mdxmini/mak/general.mak w/jni/mdxmini/mak/general.mak
+index e56323b..fff9e7c 100644
+--- i/jni/mdxmini/mak/general.mak
++++ w/jni/mdxmini/mak/general.mak
+@@ -19,8 +19,7 @@ endif
+ 
+ # iconv
+ ifneq ($(OS),Windows_NT)
+-CFLAGS += -DUSE_ICONV
+-LIBS += -liconv
++LIBS += -lm
+ endif
+ 
+ #
+diff --git i/jni/mdxmini/mak/lib.mak w/jni/mdxmini/mak/lib.mak
+index 38af592..bee1432 100644
+--- i/jni/mdxmini/mak/lib.mak
++++ w/jni/mdxmini/mak/lib.mak
+@@ -3,13 +3,13 @@ LIB = $(OBJDIR)/libmdxmini.a
+ OBJFILES =  mdxmini.o mdx2151.o mdxmml_ym2151.o 
+ OBJFILES += pdxfile.o mdxfile.o pcm8.o ym2151.o nlg.o
+ 
+-CFLAGS += -DUSE_NLG -I.
++CFLAGS += -DUSE_NLG -I. -fPIC
+ 
+ SRCDIR = src
+ 
+ OBJS = $(addprefix $(OBJDIR)/,$(OBJFILES))
+ 
+-all : $(OBJDIR) $(LIB)
++all : $(OBJDIR) $(LIB) $(OBJDIR)/libmdxmini.so
+ 
+ $(OBJDIR) :
+ 	mkdir $(OBJDIR)
+@@ -17,5 +17,8 @@ $(OBJDIR) :
+ $(LIB) : $(OBJS)
+ 	$(AR) rcs $@ $(OBJS)
+ 
++$(OBJDIR)/libmdxmini.so : $(OBJS)
++	$(CC) $(CFLAGS) -shared -o $@ $^ $(LIBS)
++
+ $(OBJDIR)/%.o : $(SRCDIR)/%.c
+ 	$(CC) $(CFLAGS) -o $@ $< -c
