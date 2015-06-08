@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-ann
+	pkgdesc = Approximate nearest neighbor library. (mingw-w64)
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = http://www.cs.umd.edu/~mount/ANN/
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-gcc
+	depends = mingw-w64-crt
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = http://www.cs.umd.edu/~mount/ANN/Files/1.1.2/ann_1.1.2.tar.gz
+	source = parallel.patch
+	md5sums = 7ffaacc7ea79ca39d4958a6378071365
+	md5sums = b332924dd27ee8a7fc479f28761a4381
+
+pkgname = mingw-w64-ann
+
