@@ -1,0 +1,16 @@
+pkgbase = liboglappth
+	pkgdesc = Library containing computational chemistry facility of ghemical
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = http://bioinformatics.org/ghemical/libghemical/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = mesa
+	depends = gcc-libs
+	options = !libtool
+	source = http://bioinformatics.org/ghemical/download/release20111012/liboglappth-1.0.0.tar.gz
+	sha256sums = b461a31065d6912d190f78ad0041218009f44a5acdb5757545bd4a8bd6b509aa
+
+pkgname = liboglappth
+
