@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=2.3.34
+Name=IGV
+Comment=Integrative Genomics Viewer
+Exec=igv
+Icon=igv
+Terminal=false
+Categories=Science
