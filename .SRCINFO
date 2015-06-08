@@ -1,0 +1,22 @@
+pkgbase = haskell-etherbunny
+	pkgdesc = A network analysis toolkit for Haskell
+	pkgver = 0.3
+	pkgrel = 4
+	url = http://hackage.haskell.org/package/Etherbunny
+	install = haskell-etherbunny.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ghc
+	depends = haskell-binary
+	depends = haskell-bytestring=0.9.1.7
+	depends = haskell-haskell98=1.0.1.1
+	depends = haskell-network=2.2.1.7
+	depends = haskell-pcap
+	depends = libpcap
+	options = strip
+	source = http://hackage.haskell.org/packages/archive/Etherbunny/0.3/Etherbunny-0.3.tar.gz
+	md5sums = 75a302e782b22be631b48215fa638726
+
+pkgname = haskell-etherbunny
+
