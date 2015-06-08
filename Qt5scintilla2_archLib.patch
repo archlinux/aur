@@ -1,0 +1,4 @@
+68c68
+< LIBS         += -lqscintilla2
+---
+> LIBS         += -lqt5scintilla2 

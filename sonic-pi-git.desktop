@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Sonic pi
+Comment=A music-centric programming environment, originally built for the raspberry pi.
+Exec=/usr/bin/sonic-pi-git
+Icon=sonic-pi-git
+Terminal=false
+StartupNotify=false
+Categories=Application;Development;
