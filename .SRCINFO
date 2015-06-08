@@ -1,0 +1,15 @@
+pkgbase = interrobang-git
+	pkgdesc = A tiny launcher menu packing a big bang (syntax)
+	pkgver = 0.41.467978d
+	pkgrel = 1
+	url = http://github.com/TrilbyWhite/interrobang.git
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = libx11
+	optdepends = bash-completion: to use the default tab completion
+	source = interrobang::git://github.com/TrilbyWhite/interrobang.git
+	sha256sums = SKIP
+
+pkgname = interrobang-git
+
