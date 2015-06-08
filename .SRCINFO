@@ -1,0 +1,13 @@
+pkgbase = eclipse-jvmmonitor
+	pkgdesc = Java profiler integrated with Eclipse
+	pkgver = 3.8.1_beta
+	pkgrel = 1
+	url = http://www.jvmmonitor.org/
+	arch = any
+	license = EPL
+	depends = eclipse
+	source = http://jvmmonitor.eclipselabs.org.codespot.com/files/org.jvmmonitor_3.8.1_beta.zip
+	md5sums = d7533f1e2b509d172070e56145ce5b94
+
+pkgname = eclipse-jvmmonitor
+
