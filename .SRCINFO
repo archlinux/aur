@@ -1,0 +1,30 @@
+pkgbase = crystal
+	pkgdesc = The Crystal Programming Language
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = http://crystal-lang.org
+	arch = i686
+	arch = x86_64
+	license = Apache
+	checkdepends = libyaml
+	checkdepends = libxml2
+	depends = libunwind
+	depends = gc
+	depends = llvm
+	depends = libatomic_ops
+	depends = pcre
+	depends = libpcl
+	depends = libevent
+	optdepends = libyaml: For YAML support
+	optdepends = gmp: For BigInt support
+	optdepends = libxml2: For XML support
+	conflicts = crystal-git
+	source = https://github.com/manastech/crystal/archive/0.7.3.tar.gz
+	sha256sums = 42ca40930310846020758638061af2728c2c1745745f223c35d65a057e806f60
+	source_i686 = http://cloud.aeshna.de/u/mrzyx/crystal32/crystal32-0.7.3.tar.gz
+	sha256sums_i686 = 567dca0ed596ac7801362613251a00580c17a8abdc8a98cd5b0553cd30119ece
+	source_x86_64 = https://github.com/manastech/crystal/releases/download/0.7.3/crystal-0.7.3-1-linux-x86_64.tar.gz
+	sha256sums_x86_64 = f5621d8140398b02c159c5f2dbd88f31541891d9d3a4317374a2dc8f20d7c147
+
+pkgname = crystal
+
