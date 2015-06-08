@@ -1,0 +1,16 @@
+pkgbase = jforex-dukascopy-europe-demo
+	pkgdesc = jForex demo trading client for Dukascopy Europe
+	pkgver = 3.0
+	pkgrel = 2
+	url = http://www.dukascopy.com/europe/english/forex/trading_login/marketplace_demo_login/
+	arch = any
+	license = unknown
+	depends = java-environment
+	depends = xdg-utils
+	source = https://eu-demo.dukascopy.com/fo/platform/jForex
+	source = jforex.tar.gz
+	md5sums = SKIP
+	md5sums = 656364640a6aaca3a34ab3e572efe626
+
+pkgname = jforex-dukascopy-europe-demo
+
