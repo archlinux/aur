@@ -1,0 +1,25 @@
+pkgbase = thunar-volman-git
+	pkgdesc = automatic management for removeable devices in thunar
+	pkgver = 434.c6164e9
+	pkgrel = 1
+	url = http://goodies.xfce.org/projects/thunar-plugins/thunar-volman
+	install = thunar-volman-git.install
+	arch = i686
+	arch = x86_64
+	groups = xfce4-goodies-git
+	license = GPL2
+	makedepends = git
+	makedepends = intltool
+	makedepends = pkgconfig
+	makedepends = xfce4-dev-tools
+	depends = thunar
+	depends = libxfce4ui
+	depends = hicolor-icon-theme
+	provides = thunar-volman
+	conflicts = thunar-volman
+	options = !libtool
+	source = git://git.xfce.org/xfce/thunar-volman
+	md5sums = SKIP
+
+pkgname = thunar-volman-git
+
