@@ -1,0 +1,17 @@
+pkgbase = searchtobibtex
+	pkgdesc = Tools to manage bibtex and pdfs via crossref searches
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/atisharma/searchtobibtex
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = bibtool
+	depends = bibclean
+	depends = curl
+	source = git://github.com/atisharma/searchtobibtex.git
+	md5sums = SKIP
+
+pkgname = searchtobibtex
+
