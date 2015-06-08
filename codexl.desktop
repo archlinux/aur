@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=AMD CodeXL
+GenericName=AMD CodeXL
+Comment=OpenCL and OpenGL Debugger and Profiler
+Icon=codexl
+Exec=CodeXL
+Categories=Development;Debugger;Profiling;Analyze
