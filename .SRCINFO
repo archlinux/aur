@@ -1,0 +1,13 @@
+pkgbase = fortune-mod-confucius
+	pkgdesc = Fortune cookies: Confucius sayings.)
+	pkgver = 20100915
+	pkgrel = 2
+	url = http://stormdragon.tk/fortunes/confucius
+	arch = any
+	license = WTFPL
+	depends = fortune-mod
+	source = http://stormdragon.tk/fortunes/confucius
+	md5sums = 421f0fe0efb4fd8dd9afa0cc60e00c22
+
+pkgname = fortune-mod-confucius
+
