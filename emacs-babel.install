@@ -1,0 +1,29 @@
+post_install() {
+  cat << _EOF
+  ==> add the following lines to your ~/.emacs.el initialization file:
+
+ (autoload 'babel "babel"
+ "Use a web translation service to translate the message MSG." t)
+ (autoload 'babel-region "babel"
+ "Use a web translation service to translate the current region." t)
+ (autoload 'babel-as-string "babel"
+ "Use a web translation service to translate MSG, returning a string." t)
+ (autoload 'babel-buffer "babel"
+ "Use a web translation service to translate the current buffer." t)
+_EOF
+}
+
+post_remove() {
+  cat << _EOF
+  ==> You probably should remove the following autoloads from your
+  ==> ~/.emacs.el initialization file:
+ (autoload 'babel "babel"
+ "Use a web translation service to translate the message MSG." t)
+ (autoload 'babel-region "babel"
+ "Use a web translation service to translate the current region." t)
+ (autoload 'babel-as-string "babel"
+ "Use a web translation service to translate MSG, returning a string." t)
+ (autoload 'babel-buffer "babel"
+ "Use a web translation service to translate the current buffer." t)
+_EOF
+}

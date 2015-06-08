@@ -1,0 +1,17 @@
+pkgbase = emacs-babel-git
+	pkgdesc = Emacs interface to web translation services such as Babelfish
+	pkgver = v1.1.20.gc539c06
+	pkgrel = 1
+	url = https://github.com/juergenhoetzel/babel
+	install = emacs-babel.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = emacs
+	provides = emacs-babel
+	conflicts = emacs-babel
+	source = git://github.com/juergenhoetzel/babel.git
+	md5sums = SKIP
+
+pkgname = emacs-babel-git
+
