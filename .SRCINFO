@@ -1,0 +1,20 @@
+pkgbase = kidletime-git
+	pkgdesc = KIdleTime
+	pkgver = r43.852f6c7
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/kidletime
+	arch = i686
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	depends = qt5-x11extras
+	depends = libxss
+	provides = kidletime
+	conflicts = kidletime
+	source = git://anongit.kde.org/kidletime.git
+	md5sums = SKIP
+
+pkgname = kidletime-git
+
