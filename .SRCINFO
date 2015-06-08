@@ -1,0 +1,24 @@
+pkgbase = kmix-git
+	pkgdesc = KDE volume control program
+	pkgver = r1972.9814a23
+	pkgrel = 1
+	url = http://kde.org/applications/multimedia/kmix/
+	install = kmix-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = kdoctools
+	makedepends = python
+	depends = kdelibs4support
+	depends = kcmutils
+	depends = libcanberra
+	provides = kmix
+	conflicts = kdemultimedia-kmix
+	conflicts = kmix
+	source = git://anongit.kde.org/kmix.git
+	sha256sums = SKIP
+
+pkgname = kmix-git
+
