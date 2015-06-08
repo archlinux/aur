@@ -1,0 +1,14 @@
+pkgbase = chronoslnx-git
+	pkgdesc = A simple planetary hours program
+	pkgver = 0.9.7
+	pkgrel = 1
+	url = http://shadowkyogre.github.com/ChronosLNX/
+	arch = any
+	license = GPL
+	depends = pyqt
+	depends = python-dateutil
+	depends = pyswisseph3
+	source = chronoslnx-git::git://github.com/ShadowKyogre/ChronosLNX.git
+
+pkgname = chronoslnx-git
+
