@@ -1,0 +1,25 @@
+pkgbase = abiword-3.x-gtk2
+	pkgdesc = Fully-featured word processor, GTk2, No plugins, Lite version
+	pkgver = 3.0.1
+	pkgrel = 2
+	url = http://www.abisource.com
+	install = abiword-3.x-gtk2.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	makedepends = boost
+	depends = fribidi
+	depends = wv
+	depends = librsvg
+	depends = enchant
+	depends = desktop-file-utils
+	depends = gtk2
+	depends = libxslt
+	conflicts = abiword
+	conflicts = abiword-plugins
+	source = abiword-3.0.1.tar.gz::http://abisource.com/downloads/abiword/3.0.1/source/abiword-3.0.1.tar.gz
+	sha256sums = e094f6fbf0afc5c5538b4894888e7c346f8ee8f49c9d24821dd696d0734865c6
+
+pkgname = abiword-3.x-gtk2
+
