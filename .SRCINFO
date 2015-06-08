@@ -1,0 +1,14 @@
+pkgbase = nodejs-npm2aur
+	pkgdesc = Sync AUR with NPM packages
+	pkgver = 0.1.3
+	pkgrel = 2
+	url = http://github.com/Filirom1/npm2aur
+	arch = any
+	license = MIT
+	depends = nodejs
+	noextract = npm2aur-0.1.3.tgz
+	source = http://registry.npmjs.org/npm2aur/-/npm2aur-0.1.3.tgz
+	sha1sums = e2e3deb3d34593045d59acd71552d110a66ad303
+
+pkgname = nodejs-npm2aur
+
