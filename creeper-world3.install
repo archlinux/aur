@@ -1,0 +1,5 @@
+post_install(){
+    echo "You will need a serial key in order to play this game."
+    echo "A key can be purchased at:"
+    echo "http://knucklecracker.com/creeperworld3/cw3.php"
+}
