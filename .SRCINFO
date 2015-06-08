@@ -1,0 +1,21 @@
+pkgbase = fdesktoprecorder-hg
+	pkgdesc = A program that can video record a single window or your entire desktop using ffmpeg. (Mercurial version)
+	pkgver = 1
+	pkgrel = 1
+	url = http://opendesktop.org/content/show.php?content=147844
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = mercurial
+	depends = kdelibs
+	depends = ffmpeg
+	depends = xorg-xwininfo
+	provides = fdesktoprecorder
+	conflicts = fdesktoprecorder
+	source = fdesktoprecorder::hg+https://bitbucket.org/Lacky/fdesktoprecorder#branch=development
+	md5sums = SKIP
+
+pkgname = fdesktoprecorder-hg
+
