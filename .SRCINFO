@@ -1,0 +1,14 @@
+pkgbase = teamviewer8
+	pkgdesc = All-In-One Software for Remote Support and Online Meetings
+	pkgver = 8.0.20931
+	pkgrel = 1
+	url = http://www.teamviewer.com
+	install = teamviewer8.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = bash
+	conflicts = teamviewer
+
+pkgname = teamviewer8
+
