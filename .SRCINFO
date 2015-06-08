@@ -1,0 +1,23 @@
+pkgbase = fldigi
+	pkgdesc = Digital Modem Program for Amateur Radio
+	pkgver = 3.22.10
+	pkgrel = 1
+	url = http://w1hkj.com/Fldigi.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = cty
+	depends = fltk
+	depends = libsamplerate
+	depends = libusb-compat
+	optdepends = hamlib: rig control through hamlib
+	optdepends = libsndfile: sound file support
+	optdepends = portaudio: PortAudio support
+	optdepends = pulseaudio: pulseaudio support
+	optdepends = xmlrpc-c: XML-RPC control
+	source = http://w1hkj.com/downloads/fldigi/fldigi-3.22.10.tar.gz
+	md5sums = 7904800cdfec36e373cd3b8210f58d64
+	sha512sums = 7c055c8014192f9b9c0bf24961d1600e7babc4e7f8761a59c4c4c3d6130ae654e70f995bebde68a9e27fb24d5af59630299cefa29911a4dcbaf1023fd8fbe302
+
+pkgname = fldigi
+
