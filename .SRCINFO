@@ -1,0 +1,17 @@
+pkgbase = libbdplus-git
+	pkgdesc = Open implementation of BD+ protocol. (GIT version)
+	pkgver = 0.1.2.6.gb7aaa91
+	pkgrel = 1
+	url = http://www.videolan.org/developers/libbdplus.html
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = libaacs
+	provides = libbdplus
+	conflicts = libbdplus
+	source = git://git.videolan.org/libbdplus.git
+	sha1sums = SKIP
+
+pkgname = libbdplus-git
+
