@@ -1,0 +1,13 @@
+[Unit]
+Description=Yandex-Disk service
+After=local-fs.target network.target
+ 
+[Service]
+Type=simple
+ExecStart=/bin/sh -c "/usr/bin/yandex-disk --no-daemon `cat %h/.config/yandex-disk/config.cfg | grep '=' | xargs -l1 -I0 echo -n '--0 '`"
+ExecReload=/usr/bin/killall -qw yandex-disk
+RestartSec=60
+Restart=always
+ 
+[Install]
+WantedBy=default.target
