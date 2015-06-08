@@ -1,0 +1,17 @@
+pkgbase = declarative-plasmoids
+	pkgdesc = A set of plasmoids (QML) for Plasma Active
+	pkgver = 4.10.5
+	pkgrel = 1
+	url = http://plasma-active.org/
+	install = declarative-plasmoids.install
+	arch = any
+	groups = plasma-active
+	license = LGPL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdelibs
+	source = http://download.kde.org/stable/active/4.0/src/declarative-plasmoids-4.10.5.tar.xz
+	sha256sums = b5cbb735b5537c210258ad6f68883c848b7c95bcb4b90eb479284697847cfb8d
+
+pkgname = declarative-plasmoids
+
