@@ -1,0 +1,17 @@
+pkgbase = joystickwake-git
+	pkgdesc = Joystick-aware screen waker. This program attempts to prevent screen blankers from activating while joysticks and other game controllers are in use.
+	pkgver = e55e11f
+	pkgrel = 1
+	url = https://github.com/foresto/joystickwake
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-docutils
+	makedepends = gzip
+	depends = python-pyudev
+	depends = python3-xlib
+	source = joystickwake::git+https://github.com/foresto/joystickwake
+	sha256sums = SKIP
+
+pkgname = joystickwake-git
+
