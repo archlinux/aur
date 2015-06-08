@@ -1,0 +1,63 @@
+pkgname=('telldus-core-git')
+srcname='telldus'
+pkgver='r1'
+pkgrel='1'
+pkgdesc='Driver and tools for controlling a Telldus Technologies TellStick'
+arch=('i686' 'x86_64')
+url='https://github.com/telldus/telldus'
+license=('LGPL2')
+
+depends=('libftdi-compat' 'confuse')
+makedepends=('gcc' 'cmake' 'make' 'git' 'doxygen')
+provides=('telldus-core')
+conflicts=('telldus-core')
+
+source=(
+    "${srcname}::git+https://github.com/telldus/telldus.git"
+    'telldusd.service'
+    'pthread.patch'
+    'uucp.patch'
+    'bin.patch'
+)
+sha512sums=(
+    'SKIP'
+    '6f1df90a7d073acc2825d480552dc25fc0ccbafc58295542278a1a69a42030c2df7221bb3915a96c7a37924b1c276b78fe9d821b371cbe84c6eb09f6e987ebde'
+    'eb54e6cd62fbb3088827d92bb138b8fc88c2d76b6ec660bc6c88c5fda2b0d2493a2bb3509d24e5a6a871d42d335dff49c07721be955cbdbcda28e51df04bbb74'
+    '0888e11a2a1080d0b5bad515534dc127f201ad25db427e45d4bbb981254608bbbdbc490c76b7aeaf65eea7e2699cbb62cab8ebf6f4e4048a9dc668a68d7b6ab5'
+    '27178656d147481eb76c820bf49da0339714f7d27c413777e2ecfc0296de5ccfe9425d7e4bc5ea2dfbe530d6fe47a22e111618808cf296b3bfa21569af7512ec'
+)
+
+backup=('etc/tellstick.conf')
+
+pkgver() {
+    cd "${srcdir}/${srcname}"
+
+    printf 'r%s.%s\n' \
+        "$( git rev-list HEAD | wc --lines )" \
+        "$( git describe --always | sed 's/-/./g' )"
+}
+
+prepare() {
+    cd "${srcdir}/${srcname}"
+
+    git apply "${srcdir}/pthread.patch"
+    git apply "${srcdir}/uucp.patch"
+    git apply "${srcdir}/bin.patch"
+}
+
+build() {
+    cd "${srcdir}/${srcname}/telldus-core"
+
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DFORCE_COMPILE_FROM_TRUNK=TRUE .
+    make
+}
+
+package() {
+    cd "${srcdir}/${srcname}/telldus-core"
+
+    make DESTDIR="${pkgdir}" install
+
+    install -D --mode=644 \
+        "${srcdir}/telldusd.service" \
+        "${pkgdir}/usr/lib/systemd/system/telldusd.service"
+}

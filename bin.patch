@@ -1,0 +1,41 @@
+diff --git a/telldus-core/service/CMakeLists.txt b/telldus-core/service/CMakeLists.txt
+index 595d551..541477e 100644
+--- a/telldus-core/service/CMakeLists.txt
++++ b/telldus-core/service/CMakeLists.txt
+@@ -254,7 +254,7 @@ IF (UNIX)
+ ENDIF (UNIX)
+ 
+ IF (UNIX AND NOT APPLE)
+-	INSTALL(TARGETS ${telldus-service_TARGET} RUNTIME DESTINATION sbin)
++	INSTALL(TARGETS ${telldus-service_TARGET} RUNTIME DESTINATION bin)
+ 	INSTALL(FILES tellstick.conf
+ 		DESTINATION ${SYSCONF_INSTALL_DIR}
+ 	)
+diff --git a/telldus-core/tdadmin/CMakeLists.txt b/telldus-core/tdadmin/CMakeLists.txt
+index 7c72b26..58793c6 100644
+--- a/telldus-core/tdadmin/CMakeLists.txt
++++ b/telldus-core/tdadmin/CMakeLists.txt
+@@ -56,7 +56,7 @@ IF (UNIX)
+ 	ENDIF (GENERATE_MAN)
+ ENDIF (UNIX)
+ 
+-INSTALL(TARGETS tdadmin RUNTIME DESTINATION sbin)
++INSTALL(TARGETS tdadmin RUNTIME DESTINATION bin)
+ 
+ IF (UNIX AND NOT APPLE)
+ 	SET(UDEV_RULES_DIR	"/etc/udev/rules.d" CACHE PATH "The directory where udev store its rules" )
+diff --git a/telldus-core/tdadmin/udev.sh b/telldus-core/tdadmin/udev.sh
+index 3b935d7..074c7dc 100755
+--- a/telldus-core/tdadmin/udev.sh
++++ b/telldus-core/tdadmin/udev.sh
+@@ -2,8 +2,8 @@
+ 
+ if [ "${ID_VENDOR_ID}" = "1781" ]; then
+ 	if [ "${ACTION}" = "add" ]; then
+-		@CMAKE_INSTALL_PREFIX@/sbin/tdadmin controller connect --pid=${ID_MODEL_ID} --vid=${ID_VENDOR_ID} --serial=${ID_SERIAL_SHORT}
++		@CMAKE_INSTALL_PREFIX@/bin/tdadmin controller connect --pid=${ID_MODEL_ID} --vid=${ID_VENDOR_ID} --serial=${ID_SERIAL_SHORT}
+ 	elif [ "${ACTION}" = "remove" ]; then
+-		@CMAKE_INSTALL_PREFIX@/sbin/tdadmin controller disconnect --pid=${ID_MODEL_ID} --vid=${ID_VENDOR_ID} --serial=${ID_SERIAL_SHORT}
++		@CMAKE_INSTALL_PREFIX@/bin/tdadmin controller disconnect --pid=${ID_MODEL_ID} --vid=${ID_VENDOR_ID} --serial=${ID_SERIAL_SHORT}
+ 	fi
+ fi

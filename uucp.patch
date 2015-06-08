@@ -1,0 +1,33 @@
+diff --git a/telldus-core/service/SettingsConfuse.cpp b/telldus-core/service/SettingsConfuse.cpp
+index 0503041..285c92a 100644
+--- a/telldus-core/service/SettingsConfuse.cpp
++++ b/telldus-core/service/SettingsConfuse.cpp
+@@ -396,7 +396,7 @@ bool readConfig(cfg_t **cfg) {
+ 
+ 	cfg_opt_t opts[] = {
+ 		CFG_STR(const_cast<char *>("user"), const_cast<char *>("nobody"), CFGF_NONE),
+-		CFG_STR(const_cast<char *>("group"), const_cast<char *>("plugdev"), CFGF_NONE),
++		CFG_STR(const_cast<char *>("group"), const_cast<char *>("uucp"), CFGF_NONE),
+ 		CFG_STR(const_cast<char *>("deviceNode"), const_cast<char *>("/dev/tellstick"), CFGF_NONE),
+ 		CFG_STR(const_cast<char *>("ignoreControllerConfirmation"), const_cast<char *>("false"), CFGF_NONE),
+ 		CFG_SEC(const_cast<char *>("device"), device_opts, CFGF_MULTI),
+diff --git a/telldus-core/service/tellstick.conf b/telldus-core/service/tellstick.conf
+index fed9c66..eba48cc 100644
+--- a/telldus-core/service/tellstick.conf
++++ b/telldus-core/service/tellstick.conf
+@@ -1,5 +1,5 @@
+ user = "nobody"
+-group = "plugdev"
++group = "uucp"
+ ignoreControllerConfirmation = "false"
+ device {
+   id = 1
+diff --git a/telldus-core/tdadmin/05-tellstick.rules b/telldus-core/tdadmin/05-tellstick.rules
+index b450b35..685ad97 100644
+--- a/telldus-core/tdadmin/05-tellstick.rules
++++ b/telldus-core/tdadmin/05-tellstick.rules
+@@ -1,3 +1,3 @@
+-ATTRS{idVendor}=="1781", SUBSYSTEM=="usb", ACTION=="add", MODE="664", GROUP="plugdev", ENV{ID_VENDOR_ID}="$attr{idVendor}", ENV{ID_MODEL_ID}="$attr{idProduct}", ENV{ID_SERIAL_SHORT}="$attr{serial}", RUN+="@CMAKE_INSTALL_PREFIX@/share/telldus-core/helpers/udev.sh"
++ATTRS{idVendor}=="1781", SUBSYSTEM=="usb", ACTION=="add", MODE="664", GROUP="uucp", ENV{ID_VENDOR_ID}="$attr{idVendor}", ENV{ID_MODEL_ID}="$attr{idProduct}", ENV{ID_SERIAL_SHORT}="$attr{serial}", RUN+="@CMAKE_INSTALL_PREFIX@/share/telldus-core/helpers/udev.sh"
+ ENV{ID_VENDOR_ID}=="1781", SUBSYSTEM=="usb", ACTION=="remove", ENV{ID_VENDOR_ID}="$attr{idVendor}", ENV{ID_MODEL_ID}="$attr{idProduct}", ENV{ID_SERIAL_SHORT}="$attr{serial}", RUN+="@CMAKE_INSTALL_PREFIX@/share/telldus-core/helpers/udev.sh"
+ 

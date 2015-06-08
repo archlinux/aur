@@ -1,0 +1,14 @@
+diff --git a/telldus-core/client/CMakeLists.txt b/telldus-core/client/CMakeLists.txt
+index 3336d29..f6a98bc 100644
+--- a/telldus-core/client/CMakeLists.txt
++++ b/telldus-core/client/CMakeLists.txt
+@@ -4,6 +4,9 @@ ENDIF(COMMAND cmake_policy)
+ 
+ FIND_PACKAGE( SignTool REQUIRED )
+ 
++SET(CMAKE_C_FLAGS "-pthread")
++SET(CMAKE_CXX_FLAGS "-pthread")
++
+ ######## Non configurable options  ########
+ SET( telldus-core_SRCS
+ 	CallbackDispatcher.cpp
