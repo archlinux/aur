@@ -1,0 +1,20 @@
+pkgbase = krusader-frameworks-git
+	pkgdesc = Advanced twin panel file manager for KDE. KF5 Frameworks branch. (GIT version)
+	pkgver = v2.4.0.beta3.186.g9ac6304
+	pkgrel = 1
+	url = http://www.krusader.org/
+	install = krusader-frameworks-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	depends = kdelibs4support
+	depends = hicolor-icon-theme
+	provides = krusader
+	conflicts = krusader
+	source = git://anongit.kde.org/krusader#branch=plasma
+	sha1sums = SKIP
+
+pkgname = krusader-frameworks-git
+
