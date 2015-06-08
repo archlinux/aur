@@ -1,0 +1,16 @@
+pkgbase = otf-rebecca
+	pkgdesc = A script font with great vibes.
+	pkgver = 1.001
+	pkgrel = 1
+	url = http://openfontlibrary.org/font/rebecca
+	install = rebecca.install
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = http://openfontlibrary.org/assets/downloads/rebecca/d32a4d9e4887fccf9ce200538290cd10/rebecca.zip
+	md5sums = d32a4d9e4887fccf9ce200538290cd10
+
+pkgname = otf-rebecca
+
