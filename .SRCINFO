@@ -1,0 +1,25 @@
+pkgbase = giteye
+	pkgdesc = A desktop for Git. It works with TeamForge, CloudForge, GitHub and other Git services.
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = http://www.collab.net/giteyeapp
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	depends = git
+	depends = java-environment
+	depends = python2
+	noextract = GitEye-1.8.0-linux.x86.zip
+	noextract = LICENSE
+	noextract = giteye.desktop
+	options = !strip
+	source = https://downloads-guests.open.collab.net/files/documents/61/9413/GitEye-1.8.0-linux.x86.zip
+	source = LICENSE
+	source = giteye.desktop
+	sha256sums = 260a2acfc486166834f1b0321f35607459fdc52f8f0a814c20fc277574054493
+	sha256sums = 76817988d60474b3e59b09bd2f6c35018d305e639b51751747d4af15ffec631b
+	sha256sums = 0cc7bb016275f8aad6864882194d6d88b6dfe6ccb2e8dba978960b7bed6f9e1d
+
+pkgname = giteye
+

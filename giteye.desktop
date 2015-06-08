@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=GitEye
+Comment=Graphical Git/Hg client
+Comment[de]=Ein grafischer Git/Hg Client
+Exec=/opt/giteye/GitEye
+Icon=giteye.xpm
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Categories=Development;
