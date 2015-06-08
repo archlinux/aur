@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-msmoosh-git
+	pkgdesc = Plugin for Vapoursynth: msmoosh (GIT version)
+	pkgver = v1.0.0.ged7687e
+	pkgrel = 1
+	url = http://forum.doom9.org/showthread.php?t=171159
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = vapoursynth
+	provides = vapoursynth-plugin-msmoosh
+	conflicts = vapoursynth-plugin-msmoosh
+	source = msmoosh::git+https://github.com/dubhater/vapoursynth-msmoosh.git
+	md5sums = SKIP
+
+pkgname = vapoursynth-plugin-msmoosh-git
+
