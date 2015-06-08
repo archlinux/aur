@@ -1,0 +1,14 @@
+pkgbase = pthsem
+	pkgdesc = Extend version of pth with support for semaphores added.
+	pkgver = 2.0.8
+	pkgrel = 4
+	url = http://www.auto.tuwien.ac.at/~mkoegler/index.php/pth
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = GPL
+	source = http://www.auto.tuwien.ac.at/~mkoegler/pth/pthsem_2.0.8.tar.gz
+	md5sums = 9144b26dcc27e67498d63dd5456f934c
+
+pkgname = pthsem
+
