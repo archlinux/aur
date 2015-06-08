@@ -1,0 +1,15 @@
+pkgbase = hawaii-rpi-meta-git
+	pkgdesc = Hawaii desktop environment meta package (for Raspberry Pi)
+	pkgver = 20150409
+	pkgrel = 1
+	url = https://github.com/hawaii-desktop
+	arch = i686
+	arch = x86_64
+	license = GPL,
+	license = LGPL
+	depends = hawaii-shell-rpi-git
+	depends = hawaii-system-preferences-git
+	depends = hawaii-widget-styles-git
+
+pkgname = hawaii-rpi-meta-git
+
