@@ -1,0 +1,14 @@
+pkgbase = python-cli
+	pkgdesc = A framework for making simple, correct command line applications in Python. Also known as pyCLI.
+	pkgver = 2.0.3
+	pkgrel = 2
+	url = https://github.com/whilp/cli
+	arch = any
+	license = custom:ISC
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/whilp/cli/archive/v2.0.3.tar.gz
+	sha256sums = c6d1ed487322d964e8ebae1dc8edf1d50f434c28
+
+pkgname = python-cli
+
