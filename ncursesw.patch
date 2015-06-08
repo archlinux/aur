@@ -1,0 +1,15 @@
+--- cmd-ui.c	2015-05-11 04:06:16.000000000 -0500
++++ cmd-ui.cnew	2015-06-07 08:48:44.706794635 -0500
+@@ -16,12 +16,7 @@
+ #include "cmd.h"
+ #include "duc.h"
+ 
+-#ifdef HAVE_LIBNCURSES
+ #include <ncurses.h>
+-#endif
+-#ifdef HAVE_LIBNCURSESW
+-#include <ncursesw/ncurses.h>
+-#endif
+ 
+ 
+ static char type_char[] = {
