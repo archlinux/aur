@@ -1,0 +1,16 @@
+pkgbase = kate-latex-plugin
+	pkgdesc = Kate LaTeX typesetting plugin
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://www.kde-apps.org/content/show.php/Kate+LaTeX+typesetting+plugin?content=84772
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = automoc4
+	depends = kdesdk-kate
+	depends = libxtst
+	source = http://kde-apps.org/CONTENT/content-files/84772-katelatexplugin-0.5.tar.bz2
+	md5sums = d6e30aa41da5279300f5d638ff595a77
+
+pkgname = kate-latex-plugin
+
