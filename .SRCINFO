@@ -1,0 +1,18 @@
+pkgbase = libsds-git
+	pkgdesc = Simple Dynamic Strings library for C
+	pkgver = 34.d86a9b8
+	pkgrel = 1
+	url = https://github.com/antirez/sds/
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	provides = sds
+	conflicts = sds
+	source = git+https://github.com/antirez/sds/
+	md5sums = SKIP
+
+pkgname = libsds-git
+
