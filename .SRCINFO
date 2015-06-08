@@ -1,0 +1,16 @@
+pkgbase = z80e
+	pkgdesc = An emulation library and client programs for z80 calculators
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/KnightOS/z80e
+	arch = i386
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = asciidoc
+	depends = sdl
+	source = https://github.com/KnightOS/z80e/archive/0.2.0.tar.gz
+	sha1sums = 0cecdac2445f329d5d629d395bdee5351239f2ce
+
+pkgname = z80e
+
