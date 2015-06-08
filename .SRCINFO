@@ -1,0 +1,25 @@
+pkgbase = vdr-lcdproc
+	pkgdesc = Output to LCD modules that are supported by LCDproc
+	pkgver = 0.0.10_jw9_9_g0c54897
+	pkgrel = 3
+	url = http://projects.vdr-developer.org/projects/plg-lcdproc
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	makedepends = git
+	depends = gcc-libs
+	depends = vdr-api=2.2.0
+	optdepends = lcdproc: to use local displays
+	backup = etc/vdr/conf.avail/50-lcdproc.conf
+	source = git://projects.vdr-developer.org/vdr-plugin-lcdproc.git#commit=0c548975b2d66d860180c79d58235a8923641a0c
+	source = 50-lcdproc.conf
+	source = 92-lcdproc.rules
+	md5sums = SKIP
+	md5sums = 0221e0b8878d56e3a057ac37a9c853cf
+	md5sums = 67d1e0de8e90e0d4e9e977ddfd952442
+
+pkgname = vdr-lcdproc
+
