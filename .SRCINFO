@@ -1,0 +1,15 @@
+pkgbase = python-lookfor
+	pkgdesc = Search magic extension for IPython interpreter
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/jschueller/lookfor
+	arch = any
+	license = BSD
+	makedepends = setuptools
+	makedepends = git
+	depends = ipython
+	source = python-lookfor-0.0.1::git+https://github.com/jschueller/lookfor.git
+	md5sums = SKIP
+
+pkgname = python-lookfor
+
