@@ -1,0 +1,23 @@
+pkgbase = perl-test-www-mechanize
+	pkgdesc = Testing-specific WWW::Mechanize subclass
+	pkgver = 1.44
+	pkgrel = 2
+	url = http://search.cpan.org/dist/Test-WWW-Mechanize
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.008
+	depends = perl-carp-assert-more
+	depends = perl-html-tree
+	depends = perl-http-server-simple>=0.42
+	depends = perl-libwww
+	depends = perl-test-longstring>=0.15
+	depends = perl-uri
+	depends = perl-www-mechanize>=1.68
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/Test-WWW-Mechanize-1.44.tar.gz
+	md5sums = fd3e4fe5b6adc66470752dd261d62542
+	sha512sums = ab6f8c210a42ef14cd83bc4644a338f76d2e0c908855fe4fbf03b2dc3376476e418b5e71a080cf889b0c6a8f20185def1b54568e1cb2ba130fe484516614393d
+
+pkgname = perl-test-www-mechanize
+
