@@ -1,0 +1,6 @@
+pkg/
+src/
+Nagios-Plugin-*.tar.gz
+perl-nagios-plugin-*.src.tar.gz
+perl-nagios-plugin-*.pkg.tar.gz
+*.swp

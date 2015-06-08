@@ -1,16 +1,18 @@
 pkgbase = perl-nagios-plugin
 	pkgdesc = A family of perl modules to streamline writing Nagios plugins
 	pkgver = 0.36
-	pkgrel = 1
-	url = http://search.cpan.org/dist/Nagios-Plugin
+	pkgrel = 2
+	url = https://metacpan.org/release/Nagios-Plugin
 	arch = any
-	license = unknown
+	license = GPL
+	license = PerlArtistic
 	depends = perl>=5.10.0
 	depends = perl-params-validate
 	depends = perl-class-accessor
 	depends = perl-config-tiny
 	depends = perl-math-calc-units
 	options = !emptydirs
+	options = purge
 	source = http://search.cpan.org/CPAN/authors/id/T/TO/TONVOON/Nagios-Plugin-0.36.tar.gz
 	md5sums = b897f6d5d66a655dde7caec579efcf2e
 
