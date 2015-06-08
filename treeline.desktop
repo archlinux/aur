@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Categories=Application;Office;Database;
+Name=TreeLine
+Comment=TreeLine outliner and database manager
+Icon=/usr/share/icons/treeline/tree/treelogo.png
+Terminal=false
+Exec=treeline %f
+MimeType=application/x-treeline;
