@@ -1,0 +1,22 @@
+pkgbase = ksshaskpass-git
+	pkgdesc = ssh-add helper that uses kwallet and kpassworddialog
+	pkgver = r30.d44b1e0
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/workspace/ksshaskpass
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = python
+	makedepends = kdoctools
+	depends = kwallet
+	provides = ksshaskpass
+	conflicts = ksshaskpass
+	source = git://anongit.kde.org/ksshaskpass.git
+	source = ksshaskpass.sh
+	md5sums = SKIP
+	md5sums = aef2815fb704c98737f23eead3b4e894
+
+pkgname = ksshaskpass-git
+
