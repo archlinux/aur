@@ -1,4 +1,5 @@
 # Original author: Thomas Sowell <tom@fancydriving.org>
+# Maintained by Joseph Riches
 
 pkgname=libgestures
 pkgdesc="Chromium OS gestures library"
