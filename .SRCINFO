@@ -1,0 +1,17 @@
+pkgbase = pivaders-git
+	pkgdesc = Space Invaders game
+	pkgver = 0.2.r1.g5bffd90
+	pkgrel = 1
+	url = https://github.com/russb78/pivaders
+	arch = any
+	license = GPL2
+	depends = python
+	depends = python2-pygame
+	conflicts = pivaders
+	source = pivaders::git+git://github.com/russb78/pivaders.git
+	source = pivaders.sh
+	sha1sums = SKIP
+	sha1sums = 60183ae638d48bc5493eb318e54fb61a6454cfa3
+
+pkgname = pivaders-git
+
