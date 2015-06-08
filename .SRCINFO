@@ -1,0 +1,14 @@
+pkgbase = emu8051
+	pkgdesc = Emulator and simulator for 8051 microcontrollers
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = http://www.hugovil.com/fr/emu8051/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = gtk2
+	source = http://www.hugovil.com/repository/emu8051/emu8051-2.0.1.tar.gz
+	sha256sums = 9546066c662ba4e99a20477ec18d20f48a78bbd326868c286d21427b4b3d6a28
+
+pkgname = emu8051
+
