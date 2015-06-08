@@ -1,0 +1,18 @@
+pkgbase = perl-cgi-application
+	pkgdesc = CGI::Application - Framework for building reusable web-apps
+	pkgver = 4.50
+	pkgrel = 1
+	url = http://search.cpan.org/~$_author/$_perlmod-$pkgver/
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.10.0
+	depends = perl-html-template
+	depends = perl-class-isa
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MA/MARKSTOS/CGI-Application-4.50.tar.gz
+	md5sums = 356595b6f12373f57243a7e605b9cd43
+
+pkgname = perl-cgi-application
+
