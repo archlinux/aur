@@ -1,0 +1,34 @@
+--- interrpt.c.orig	2004-06-16 21:03:39.000000000 +0200
++++ interrpt.c	2014-09-12 11:11:21.197959171 +0200
+@@ -369,6 +369,7 @@
+ 				}
+ 				break;
+ 			case SDLK_1:
++			case SDLK_AMPERSAND:
+ 				if (e.type == SDL_KEYUP)
+ 					ai[0] = !ai[0];
+ 
+@@ -378,6 +379,7 @@
+ 				addkey((KEY_PL1_JUMP & 0x7f) | 0x8000);
+ 				break;
+ 			case SDLK_2:
++			case SDLK_WORLD_73:
+ 				if (e.type == SDL_KEYUP)
+ 					ai[1] = !ai[1];
+ 
+@@ -387,6 +389,7 @@
+ 				addkey((KEY_PL2_JUMP & 0x7f) | 0x8000);
+ 				break;
+ 			case SDLK_3:
++			case SDLK_QUOTEDBL:
+ 				if (e.type == SDL_KEYUP)
+ 					ai[2] = !ai[2];
+ 
+@@ -396,6 +399,7 @@
+ 				addkey((KEY_PL3_JUMP & 0x7f) | 0x8000);
+ 				break;
+ 			case SDLK_4:
++			case SDLK_QUOTE:
+ 				if (e.type == SDL_KEYUP)
+ 					ai[3] = !ai[3];
+ 
