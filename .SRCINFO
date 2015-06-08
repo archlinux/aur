@@ -1,0 +1,19 @@
+pkgbase = scantool
+	pkgdesc = OBD-II vehicle diagnostic scanner
+	pkgver = 1.21
+	pkgrel = 1
+	url = http://www.scantool.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = allegro4
+	noextract = scantool_net121src.zip
+	source = http://downloads.sourceforge.net/dzcomm/dzcomm/0.9.9i/dz099i.zip
+	source = https://www.scantool.net/scantool/downloads/82/scantool_net121src.zip
+	source = http://http.debian.net/debian/pool/main/s/scantool/scantool_1.21+dfsg-5.debian.tar.xz
+	md5sums = 2540dd366cf08de2ff1a97880315e921
+	md5sums = c87b53a2d3bbc4ee1f29245be9412457
+	md5sums = 8ff409e7e83aebc8af66249e2eb30577
+
+pkgname = scantool
+
