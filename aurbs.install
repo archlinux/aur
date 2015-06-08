@@ -1,0 +1,19 @@
+post_install() {
+	post_upgrade $1
+	echo ">>> Find a sample lighttp config at:"
+	echo ">>> /usr/share/doc/aurbs/lighttpd.conf.sample"
+}
+
+post_upgrade() {
+	if ! getent passwd aurbs >/dev/null; then
+		useradd --system -c 'aurbs daemon user' -g daemon -d /var/cache/aurbs -s /bin/bash aurbs
+	fi
+	chown -R aurbs: /var/cache/aurbs/ccache/*
+	chown -R aurbs: /var/cache/aurbs/build/*/*
+}
+
+post_remove() {
+	if getent passwd aurbs >/dev/null; then
+		userdel aurbs
+	fi
+}
