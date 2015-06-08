@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-dlfcn
+	pkgdesc = A wrapper for dlfcn to the Win32 API (mingw-w64)
+	pkgver = 1.0.0
+	pkgrel = 3
+	url = https://github.com/dlfcn-win32/dlfcn-win32
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-gcc
+	depends = mingw-w64-crt
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = https://github.com/dlfcn-win32/dlfcn-win32/archive/v1.0.0.tar.gz
+	md5sums = fc9882d8e33d06626ddb22b44c6fd4dd
+
+pkgname = mingw-w64-dlfcn
+
