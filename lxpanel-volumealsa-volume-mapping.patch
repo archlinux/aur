@@ -1,0 +1,253 @@
+From bfc18aa2c83365a42a67e79681e9055b401f7ebd Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Raimar=20B=C3=BChmann?= <raimar _at_ buehmann _dot de>
+Date: Sat, 15 Nov 2014 22:48:01 +0100
+Subject: [PATCH] lxpanel volumealsa volume mapping
+
+---
+ plugins/volumealsa/volumealsa.c | 141 +++++++++++++++++++++++++++++++++-------
+ 1 file changed, 118 insertions(+), 23 deletions(-)
+
+diff --git a/plugins/volumealsa/volumealsa.c b/plugins/volumealsa/volumealsa.c
+index 2056334..a27e024 100644
+--- a/plugins/volumealsa/volumealsa.c
++++ b/plugins/volumealsa/volumealsa.c
+@@ -16,6 +16,9 @@
+  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+  */
+ 
++#define _ISOC99_SOURCE /* lrint() */
++#define _GNU_SOURCE /* exp10() */
++
+ #include <gtk/gtk.h>
+ #include <stdlib.h>
+ #include <fcntl.h>
+@@ -24,6 +27,7 @@
+ #include <glib/gi18n.h>
+ #include <gdk-pixbuf/gdk-pixbuf.h>
+ #include <alsa/asoundlib.h>
++#include <math.h>
+ #include <poll.h>
+ #include <libfm/fm-gtk.h>
+ #include "plugin.h"
+@@ -34,6 +38,13 @@
+ #define ICONS_VOLUME_LOW    "volume-low"
+ #define ICONS_MUTE          "mute"
+ 
++#ifdef __UCLIBC__
++/* 10^x = 10^(log e^x) = (e^x)^log10 = e^(x * log 10) */
++#define exp10(x) (exp((x) * log(10)))
++#endif /* __UCLIBC__ */
++
++#define MAX_LINEAR_DB_SCALE	24
++
+ typedef struct {
+ 
+     /* Graphics. */
+@@ -69,6 +80,10 @@ typedef struct {
+ static gboolean asound_restart(gpointer vol_gpointer);
+ static gboolean asound_initialize(VolumeALSAPlugin * vol);
+ static void asound_deinitialize(VolumeALSAPlugin * vol);
++static long lrint_dir(double x, int dir);
++static inline gboolean use_linear_dB_scale(long dBmin, long dBmax);
++static double get_normalized_volume(snd_mixer_elem_t *elem, snd_mixer_selem_channel_id_t channel);
++static int set_normalized_volume(snd_mixer_elem_t *elem, snd_mixer_selem_channel_id_t channel, double volume, int dir);
+ static void volumealsa_update_display(VolumeALSAPlugin * vol);
+ static void volumealsa_destructor(gpointer user_data);
+ 
+@@ -195,9 +210,6 @@ static gboolean asound_initialize(VolumeALSAPlugin * vol)
+                 if ( ! asound_find_element(vol, "LineOut"))
+                     return FALSE;
+ 
+-    /* Set the playback volume range as we wish it. */
+-    snd_mixer_selem_set_playback_volume_range(vol->master_element, 0, 100);
+-
+     /* Listen to events from ALSA. */
+     int n_fds = snd_mixer_poll_descriptors_count(vol->mixer);
+     struct pollfd * fds = g_new0(struct pollfd, n_fds);
+@@ -260,39 +272,123 @@ static gboolean asound_is_muted(VolumeALSAPlugin * vol)
+     return (value == 0);
+ }
+ 
++static long lrint_dir(double x, int dir)
++{
++	if (dir > 0)
++		return lrint(ceil(x));
++	else if (dir < 0)
++		return lrint(floor(x));
++	else
++		return lrint(x);
++}
++
++static inline gboolean use_linear_dB_scale(long dBmin, long dBmax)
++{
++	return dBmax - dBmin <= MAX_LINEAR_DB_SCALE * 100;
++}
++
++static double get_normalized_volume(snd_mixer_elem_t *elem,
++				    snd_mixer_selem_channel_id_t channel)
++{
++	long min, max, value;
++	double normalized, min_norm;
++	int err;
++
++	err = snd_mixer_selem_get_playback_dB_range(elem, &min, &max);
++	if (err < 0 || min >= max) {
++		err = snd_mixer_selem_get_playback_volume_range(elem, &min, &max);
++		if (err < 0 || min == max)
++			return 0;
++
++		err = snd_mixer_selem_get_playback_volume(elem, channel, &value);
++		if (err < 0)
++			return 0;
++
++		return (value - min) / (double)(max - min);
++	}
++
++	err = snd_mixer_selem_get_playback_dB(elem, channel, &value);
++	if (err < 0)
++		return 0;
++
++	if (use_linear_dB_scale(min, max))
++		return (value - min) / (double)(max - min);
++
++	normalized = exp10((value - max) / 6000.0);
++	if (min != SND_CTL_TLV_DB_GAIN_MUTE) {
++		min_norm = exp10((min - max) / 6000.0);
++		normalized = (normalized - min_norm) / (1 - min_norm);
++	}
++
++	return normalized;
++}
++
+ /* Get the volume from the sound system.
+  * This implementation returns the average of the Front Left and Front Right channels. */
+ static int asound_get_volume(VolumeALSAPlugin * vol)
+ {
+-    long aleft = 0;
+-    long aright = 0;
++    double aleft = 0;
++    double aright = 0;
++
+     if (vol->master_element != NULL)
+     {
+-        snd_mixer_selem_get_playback_volume(vol->master_element, SND_MIXER_SCHN_FRONT_LEFT, &aleft);
+-        snd_mixer_selem_get_playback_volume(vol->master_element, SND_MIXER_SCHN_FRONT_RIGHT, &aright);
++        aleft = get_normalized_volume(vol->master_element, SND_MIXER_SCHN_FRONT_LEFT);
++        aright = get_normalized_volume(vol->master_element, SND_MIXER_SCHN_FRONT_RIGHT);
+     }
+-    return (aleft + aright) >> 1;
++
++    return (int)round((aleft + aright) * 50);
++}
++
++static int set_normalized_volume(snd_mixer_elem_t *elem,
++				 snd_mixer_selem_channel_id_t channel,
++				 double volume,
++				 int dir)
++{
++	long min, max, value;
++	double min_norm;
++	int err;
++
++	err = snd_mixer_selem_get_playback_dB_range(elem, &min, &max);
++	if (err < 0 || min >= max) {
++		err = snd_mixer_selem_get_playback_volume_range(elem, &min, &max);
++		if (err < 0)
++			return err;
++
++		value = lrint_dir(volume * (max - min), dir) + min;
++		return snd_mixer_selem_set_playback_volume(elem, channel, value);
++	}
++
++	if (use_linear_dB_scale(min, max)) {
++		value = lrint_dir(volume * (max - min), dir) + min;
++		return snd_mixer_selem_set_playback_dB(elem, channel, value, dir);
++	}
++
++	if (min != SND_CTL_TLV_DB_GAIN_MUTE) {
++		min_norm = exp10((min - max) / 6000.0);
++		volume = volume * (1 - min_norm) + min_norm;
++	}
++	value = lrint_dir(6000.0 * log10(volume), dir) + max;
++	return snd_mixer_selem_set_playback_dB(elem, channel, value, dir);
+ }
+ 
+ /* Set the volume to the sound system.
+  * This implementation sets the Front Left and Front Right channels to the specified value. */
+ static void asound_set_volume(VolumeALSAPlugin * vol, int volume)
+ {
++    int dir = volume - asound_get_volume(vol);
++    double vol_perc = (double)volume / 100;
++
+     if (vol->master_element != NULL)
+     {
+-        snd_mixer_selem_set_playback_volume(vol->master_element, SND_MIXER_SCHN_FRONT_LEFT, volume);
+-        snd_mixer_selem_set_playback_volume(vol->master_element, SND_MIXER_SCHN_FRONT_RIGHT, volume);
++        set_normalized_volume(vol->master_element, SND_MIXER_SCHN_FRONT_LEFT, vol_perc, dir);
++        set_normalized_volume(vol->master_element, SND_MIXER_SCHN_FRONT_RIGHT, vol_perc, dir);
+     }
+ }
+ 
+ /*** Graphics ***/
+ 
+-static void volumealsa_update_current_icon(VolumeALSAPlugin * vol)
++static void volumealsa_update_current_icon(VolumeALSAPlugin * vol, gboolean mute, int level)
+ {
+-    /* Mute status. */
+-    gboolean mute = asound_is_muted(vol);
+-    int level = asound_get_volume(vol);
+-
+     /* Change icon according to mute / volume */
+     const char* icon_panel="audio-volume-muted-panel";
+     const char* icon_fallback=ICONS_MUTE;
+@@ -301,12 +397,12 @@ static void volumealsa_update_current_icon(VolumeALSAPlugin * vol)
+          icon_panel = "audio-volume-muted-panel";
+          icon_fallback=ICONS_MUTE;
+     }
+-    else if (level >= 75)
++    else if (level > 66)
+     {
+          icon_panel = "audio-volume-high-panel";
+          icon_fallback=ICONS_VOLUME_HIGH;
+     }
+-    else if (level >= 50)
++    else if (level > 33)
+     {
+          icon_panel = "audio-volume-medium-panel";
+          icon_fallback=ICONS_VOLUME_MEDIUM;
+@@ -328,7 +424,7 @@ static void volumealsa_update_display(VolumeALSAPlugin * vol)
+     gboolean mute = asound_is_muted(vol);
+     int level = asound_get_volume(vol);
+ 
+-    volumealsa_update_current_icon(vol);
++    volumealsa_update_current_icon(vol, mute, level);
+ 
+     /* Change icon, fallback to default icon if theme doesn't exsit */
+     lxpanel_image_change_icon(vol->tray_icon, vol->icon_panel, vol->icon_fallback);
+@@ -342,7 +438,7 @@ static void volumealsa_update_display(VolumeALSAPlugin * vol)
+     if (vol->volume_scale != NULL)
+     {
+         g_signal_handler_block(vol->volume_scale, vol->volume_scale_handler);
+-        gtk_range_set_value(GTK_RANGE(vol->volume_scale), asound_get_volume(vol));
++        gtk_range_set_value(GTK_RANGE(vol->volume_scale), level);
+         g_signal_handler_unblock(vol->volume_scale, vol->volume_scale_handler);
+     }
+ 
+@@ -399,11 +495,10 @@ static void volumealsa_popup_map(GtkWidget * widget, VolumeALSAPlugin * vol)
+ /* Handler for "value_changed" signal on popup window vertical scale. */
+ static void volumealsa_popup_scale_changed(GtkRange * range, VolumeALSAPlugin * vol)
+ {
+-    /* Reflect the value of the control to the sound system. */
+-    asound_set_volume(vol, gtk_range_get_value(range));
++    int level = gtk_range_get_value(range);
+ 
+-    /* Redraw the controls. */
+-    volumealsa_update_display(vol);
++    /* Reflect the value of the control to the sound system. This implicitly calls asound_mixer_event(). */
++    asound_set_volume(vol, level);
+ }
+ 
+ /* Handler for "scroll-event" signal on popup window vertical scale. */
+-- 
+2.1.3
+

@@ -1,0 +1,115 @@
+From adf7edf19a60a3e82ea81c19e8c637a232037624 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Raimar=20B=C3=BChmann?= <raimar _at_ buehmann _dot de>
+Date: Mon, 8 Sep 2014 21:19:33 +0200
+Subject: [PATCH] added cpuinfo_cur_freq for reading CPU frequency
+
+---
+ plugins/cpufreq/cpufreq.c | 48 ++++++++++++++++++++++++++++++++++++++---------
+ 1 file changed, 39 insertions(+), 9 deletions(-)
+
+diff --git a/plugins/cpufreq/cpufreq.c b/plugins/cpufreq/cpufreq.c
+index 8a3b94a..0de5e80 100644
+--- a/plugins/cpufreq/cpufreq.c
++++ b/plugins/cpufreq/cpufreq.c
+@@ -40,16 +40,18 @@
+ #define SCALING_SETFREQ     "scaling_setspeed"
+ #define SCALING_MAX         "scaling_max_freq"
+ #define SCALING_MIN         "scaling_min_freq"
++#define CPUINFO_CUR_FREQ    "cpuinfo_cur_freq"
+ 
+ 
+ typedef struct {
+     GtkWidget *main;
+     config_setting_t *settings;
+     GtkWidget *namew;
+-    GList *governors;
++//    GList *governors;
+     GList *cpus;
+     int has_cpufreq;
+     char* cur_governor;
++    char* cpu_freq_file;
+     int   cur_freq;
+     unsigned int timer;
+     //gboolean remember;
+@@ -84,18 +86,42 @@ get_cur_governor(cpufreq *cf){
+ }
+ 
+ static void
++get_cpu_freq_file(cpufreq* cf) {
++    FILE* fp;
++    char buf[256], sstmp[256];
++
++    snprintf(sstmp, sizeof(sstmp), "%s/%s", (char*)cf->cpus->data, SCALING_CUR_FREQ);
++    if ((fp = fopen( sstmp, "r")) != NULL) {
++        cf->cpu_freq_file = SCALING_CUR_FREQ;
++    } else {
++        snprintf(sstmp, sizeof(sstmp), "%s/%s", (char*)cf->cpus->data, CPUINFO_CUR_FREQ);
++        if ((fp = fopen( sstmp, "r")) != NULL) {
++            cf->cpu_freq_file = CPUINFO_CUR_FREQ;
++        }
++    }
++}
++
++static void
+ get_cur_freq(cpufreq *cf){
+     FILE *fp;
+     char buf[ 100 ], sstmp [ 256 ];
++    GList* lp;
+ 
+-    snprintf(sstmp, sizeof(sstmp), "%s/%s", (char*)cf->cpus->data, SCALING_CUR_FREQ);
+-    if ((fp = fopen( sstmp, "r")) != NULL) {
+-        if (fgets(buf, 100, fp))
++    cf->cur_freq = 0;
++    for (lp = cf->cpus; lp; lp = lp->next)
++    {
++        snprintf(sstmp, sizeof(sstmp), "%s/%s", (char*)lp->data, cf->cpu_freq_file);
++        if ((fp = fopen( sstmp, "r")) != NULL)
+         {
+-            buf[strlen(buf)-1] = '\0';
+-            cf->cur_freq = atoi(buf);
++            if (fgets(buf, 100, fp))
++            {
++                int new_freq = atoi(buf);
++                if (new_freq > cf->cur_freq) {
++                    cf->cur_freq = new_freq;
++                }
++            }
++            fclose(fp);
+         }
+-        fclose(fp);
+     }
+ }
+ 
+@@ -344,8 +370,10 @@ static GtkWidget *cpufreq_constructor(LXPanel *panel, config_setting_t *settings
+     ENTER;
+     cf = g_new0(cpufreq, 1);
+     g_return_val_if_fail(cf != NULL, NULL);
+-    cf->governors = NULL;
++//    cf->governors = NULL;
+     cf->cpus = NULL;
++    cf->cur_governor = NULL;
++    cf->cpu_freq_file = NULL;
+     cf->settings = settings;
+ 
+     cf->main = gtk_event_box_new();
+@@ -359,6 +387,7 @@ static GtkWidget *cpufreq_constructor(LXPanel *panel, config_setting_t *settings
+     cf->has_cpufreq = 0;
+ 
+     get_cpus(cf);
++    get_cpu_freq_file(cf);
+ 
+     //if (config_setting_lookup_int(settings, "Remember", &tmp_int)) cf->remember = tmp_int != 0;
+     //if (config_setting_lookup_int(settings, "Governor", &tmp_str)) cf->cur_governor = g_strdup(tmp_str);
+@@ -395,7 +424,8 @@ cpufreq_destructor(gpointer user_data)
+ {
+     cpufreq *cf = (cpufreq *)user_data;
+     g_list_free ( cf->cpus );
+-    g_list_free ( cf->governors );
++//    g_list_free ( cf->governors );
++    g_free(cf->cur_governor);
+     g_source_remove(cf->timer);
+     g_free(cf);
+ }
+-- 
+2.1.0
+

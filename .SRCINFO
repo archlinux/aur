@@ -1,0 +1,27 @@
+pkgbase = lxpanel-git
+	pkgdesc = Lightweight X11 desktop panel for LXDE
+	pkgver = 0.8.1.r2278.20150506
+	pkgrel = 1
+	url = http://lxde.org/
+	arch = i686
+	arch = x86_64
+	groups = lxde-git
+	license = GPL2
+	makedepends = intltool
+	makedepends = docbook-xml
+	makedepends = docbook-xsl
+	makedepends = wireless_tools
+	makedepends = git
+	depends = alsa-lib
+	depends = lxmenu-data
+	depends = libwnck
+	depends = libfm
+	depends = libkeybinder2
+	optdepends = wireless_tools: netstat plugin
+	provides = lxpanel
+	conflicts = lxpanel
+	source = lxpanel-git::git+http://git.lxde.org/git/lxde/lxpanel.git
+	sha256sums = SKIP
+
+pkgname = lxpanel-git
+
