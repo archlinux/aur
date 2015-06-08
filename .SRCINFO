@@ -1,0 +1,22 @@
+pkgbase = kdesudo-frameworks-hg
+	pkgdesc = A SUdo frontend for KDE. KF5 Frameworks branch (HG version)
+	pkgver = 70
+	pkgrel = 1
+	url = https://launchpad.net/kdesudo
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = mercurial
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	makedepends = python
+	depends = kdelibs4support
+	depends = sudo
+	provides = kdesudo
+	conflicts = kdesudo
+	source = kdesudo::bzr+lp:~kubuntu-kdesudo/kdesudo/frameworks
+	sha1sums = SKIP
+
+pkgname = kdesudo-frameworks-hg
+
