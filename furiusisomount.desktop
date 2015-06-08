@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Furius ISO Mount
+Comment=Manage ISO/IMG/BIN/MDF/NRG image files
+TryExec=/usr/bin/furiusisomount
+Exec=furiusisomount
+Terminal=false
+Icon=/usr/share/furiusisomount/pix/furiusisomount.png
+Categories=Utility;
