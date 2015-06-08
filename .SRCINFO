@@ -1,0 +1,21 @@
+pkgbase = nlopt
+	pkgdesc = nonlinear optimization library
+	pkgver = 2.4.2
+	pkgrel = 1
+	url = http://ab-initio.mit.edu/wiki/index.php/NLopt
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = python-numpy
+	makedepends = octave
+	makedepends = guile
+	makedepends = swig
+	depends = gcc-libs
+	optdepends = octave: to use with octave,
+	optdepends = python: to use with python,
+	optdepends = guile: to use with guile
+	source = http://ab-initio.mit.edu/nlopt/nlopt-2.4.2.tar.gz
+	md5sums = d0b8f139a4acf29b76dbae69ade8ac54
+
+pkgname = nlopt
+
