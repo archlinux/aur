@@ -1,0 +1,16 @@
+pkgbase = perl-dbix-contextualfetch
+	pkgdesc = Add contextual fetches to DBI
+	pkgver = 1.03
+	pkgrel = 1
+	url = http://search.cpan.org/~tmtm/DBIx-ContextualFetch-1.03/lib/DBIx/ContextualFetch.pm
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	depends = perl-dbi
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TM/TMTM/DBIx-ContextualFetch-1.03.tar.gz
+	md5sums = 20a78432ae26b266216b7b30ff7941c3
+
+pkgname = perl-dbix-contextualfetch
+
