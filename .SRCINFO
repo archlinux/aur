@@ -1,7 +1,7 @@
 pkgbase = ruby-mailcatcher
 	pkgdesc = Catches mail and serves it through a dream.
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mailcatcher.me
 	arch = any
 	license = MIT
