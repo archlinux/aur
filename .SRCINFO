@@ -1,0 +1,13 @@
+pkgbase = plasma-theme-diamond
+	pkgdesc = Transparent theme for KDE 4.x
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = http://kde-look.org/content/show.php/Diamond?content=153930
+	arch = any
+	license = GPL
+	depends = kdebase-workspace
+	source = http://kde-look.org/CONTENT/content-files/153930-Diamond.zip
+	md5sums = e2f326c03b77c6ce1e8c8db0ad79ce7b
+
+pkgname = plasma-theme-diamond
+
