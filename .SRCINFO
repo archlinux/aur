@@ -1,0 +1,15 @@
+pkgbase = nbwmon
+	pkgdesc = ncurses bandwidth monitor
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/causes-/nbwmon
+	arch = i686
+	arch = x86_64
+	license = custom:MIT/X
+	depends = ncurses
+	conflicts = nbwmon-git
+	source = https://github.com/causes-/nbwmon/archive/0.5.2.tar.gz
+	sha256sums = 3244e8504168db04cf3b2b89769b83bb4663be803d4a5dd044b092f3a96c507f
+
+pkgname = nbwmon
+
