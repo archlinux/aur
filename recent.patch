@@ -1,0 +1,175 @@
+diff -Naur old/src/Makefile.am new/src/Makefile.am
+--- old/src/Makefile.am	2006-11-09 04:17:25.000000000 +1100
++++ new/src/Makefile.am	2012-10-25 12:36:30.872852391 +1100
+@@ -11,4 +11,4 @@
+ noinst_HEADERS = inode.h inodescanner.h options.h inodevector.h fileinode.h \
+ 	dirinode.h device.h inodefactory.h recoverer.h unicode_to_utf8.h \
+ 	unallocatedinode.h symlinkinode.h specialinode.h
+-jfsrec_LDADD = -lboost_regex -lboost_program_options -lboost_filesystem
++jfsrec_LDADD = -lboost_regex -lboost_program_options -lboost_filesystem -lboost_system
+diff -Naur old/src/Makefile.in new/src/Makefile.in
+--- old/src/Makefile.in	2007-03-17 06:25:11.000000000 +1100
++++ new/src/Makefile.in	2012-10-25 12:36:30.872852391 +1100
+@@ -191,7 +191,7 @@
+ 	dirinode.h device.h inodefactory.h recoverer.h unicode_to_utf8.h \
+ 	unallocatedinode.h symlinkinode.h specialinode.h
+ 
+-jfsrec_LDADD = -lboost_regex -lboost_program_options -lboost_filesystem
++jfsrec_LDADD = -lboost_regex -lboost_program_options -lboost_filesystem -lboost_system
+ all: all-am
+ 
+ .SUFFIXES:
+diff -Naur old/src/device.cpp new/src/device.cpp
+--- old/src/device.cpp	2007-03-17 06:31:04.000000000 +1100
++++ new/src/device.cpp	2012-10-25 12:36:30.872852391 +1100
+@@ -20,6 +20,7 @@
+ //Parts of the code in this file was originally taken from JFS's xpeek (debugfs_jfs)
+ 
+ #include "device.h"
++#include <stdio.h>
+ #ifdef __linux__
+  #include <linux/fs.h>
+  #include <sys/ioctl.h>
+@@ -55,15 +56,15 @@
+ 
+ 
+ 	blocksize_=blocksize;
+-	file_ = fopen64(name.native_file_string().c_str(), "r");
++	file_ = fopen64(name.string().c_str(), "r");
+ 	if (file_ == NULL) {
+-		cerr << "Error: Cannot open device: '"<<name.native_file_string()<<"'"<<endl;
++		cerr << "Error: Cannot open device: '"<<name.string()<<"'"<<endl;
+ 		exit(1);
+ 	}
+ 	struct stat64 stat_data;
+    int r;
+ 	if ((r=fstat64(fileno(file_), &stat_data))!=0){
+-		cerr<< "Error: cannot stat device: '"<<name.native_file_string()<<"'"<<" "<<r<<endl;		
++		cerr<< "Error: cannot stat device: '"<<name.string()<<"'"<<" "<<r<<endl;		
+ 		exit(1);
+ 	}
+ 	
+@@ -82,7 +83,7 @@
+ 	}
+ 	fssize_ = get_size_bytes();
+ 
+-	cout << "Opened device: "<<name.native_file_string()<<endl;
++	cout << "Opened device: "<<name.string()<<endl;
+ // 	cout << "  Size in blocks: "<<(fssize_>>log2blocksize)<<endl;
+ 	cout << bytes_suffixed(fssize_);
+ 	
+diff -Naur old/src/fileinode.cpp new/src/fileinode.cpp
+--- old/src/fileinode.cpp	2006-11-15 22:28:38.000000000 +1100
++++ new/src/fileinode.cpp	2012-10-25 12:36:30.872852391 +1100
+@@ -38,11 +38,11 @@
+ 	//TODO: Check below. Not really sure that the date-check works.
+ 	if ( (exists(p)) && ((file_size(p)==get_dinode()->di_size) || (last_write_time(p) > get_dinode()->di_otime.tv_sec))){
+ 		++skipped;
+-		cout <<endl<<endl<<"Skipping "<<di_number_<<": "<<p.native_file_string()<<endl;
++		cout <<endl<<endl<<"Skipping "<<di_number_<<": "<<p.string()<<endl;
+ 		
+ 	}else{
+ 		++saved;
+-		cout <<endl<<endl<<"Saving   "<<di_number_<<": "<<p.native_file_string()<<endl;
++		cout <<endl<<endl<<"Saving   "<<di_number_<<": "<<p.string()<<endl;
+ 
+ 		save_file();
+ 
+@@ -176,7 +176,7 @@
+ 
+ void FileInode :: save_file() throw(filesystem_error,invalid_read_exception){
+ 	
+-	string fn = get_full_path().native_file_string(); 
++	string fn = get_full_path().string(); 
+ 	FILE* file;	
+ 	try{
+ 
+diff -Naur old/src/inode.cpp new/src/inode.cpp
+--- old/src/inode.cpp	2006-11-08 07:54:43.000000000 +1100
++++ new/src/inode.cpp	2012-10-25 12:36:30.876185804 +1100
+@@ -67,9 +67,9 @@
+ path Inode :: get_full_path(){
+ 	try {
+ 		if ((parent_ == NULL) || (parent_==this))
+-			return (options.get_output_dir()/path(name_,native));
++			return (options.get_output_dir()/path(name_));
+ 		else
+-			return (parent_->get_full_path()/path(name_,native));
++			return (parent_->get_full_path()/path(name_));
+ 	}catch (filesystem_error e){
+ 		cerr<<e.what()<<endl;
+ 		stringstream ss;
+diff -Naur old/src/inodescanner.cpp new/src/inodescanner.cpp
+--- old/src/inodescanner.cpp	2006-11-08 07:54:43.000000000 +1100
++++ new/src/inodescanner.cpp	2012-10-25 12:36:30.876185804 +1100
+@@ -35,11 +35,11 @@
+ uint64_t InodeScanner :: restore(){
+ 	create_directories(options.get_progress_dir());
+ 	path pfn = options.get_progress_dir()/"inoscan.txt";
+-	progress_file_.open(pfn.native_file_string().c_str(),ios::in);
++	progress_file_.open(pfn.string().c_str(),ios::in);
+ 	if (progress_file_ == NULL){
+ 		cout<<"No progress file found, starting from byte 0"<<endl;
+ 		progress_file_.close();
+-		progress_file_.open(pfn.native_file_string().c_str(),ios::out);
++		progress_file_.open(pfn.string().c_str(),ios::out);
+ 		return 0;
+ 	}
+ 	cout << "Found progress file..."<<flush;
+@@ -51,7 +51,7 @@
+ 		inovec_.add_inode(i);
+ 	}
+ 	progress_file_.close();
+-	progress_file_.open(pfn.native_file_string().c_str(),ios::out|ios::app);
++	progress_file_.open(pfn.string().c_str(),ios::out|ios::app);
+ 	cout << " restarting at "<<((bo+inode_size_)>>20)<<"Mb"<<endl;
+ 	return bo+inode_size_;
+ }
+diff -Naur old/src/recoverer.cpp new/src/recoverer.cpp
+--- old/src/recoverer.cpp	2006-11-15 22:28:38.000000000 +1100
++++ new/src/recoverer.cpp	2012-10-25 12:36:30.876185804 +1100
+@@ -52,14 +52,14 @@
+ 		progress_display pd(inovec_.size());
+ 		for (uint32_t i=0;i<inovec_.size();++i){
+ 			++pd;	
+-			if (regex_search(inovec_[i].get_full_path().native_file_string(),options.get_exclude())) {
++			if (regex_search(inovec_[i].get_full_path().string(),options.get_exclude())) {
+ // 				cout << "Matched exclude regex!!!"<<endl;
+ 			}else{
+-				if ((options.get_first_speced() && regex_search(inovec_[i].get_full_path().native_file_string(),options.get_first()))){
++				if ((options.get_first_speced() && regex_search(inovec_[i].get_full_path().string(),options.get_first()))){
+ 					first.push_back(&inovec_[i]);
+ 					continue;
+ 				}
+-				if (options.get_last_speced() && (regex_search(inovec_[i].get_full_path().native_file_string(),options.get_last()))){
++				if (options.get_last_speced() && (regex_search(inovec_[i].get_full_path().string(),options.get_last()))){
+ 					last.push_back(&inovec_[i]);
+ 					continue;
+ 				}
+@@ -71,12 +71,12 @@
+ 		progress_display pd(inovec_.size());
+ 		for (uint32_t i=0;i<inovec_.size();++i){
+ 			++pd;
+-// 			cout <<"matching:"<< inovec_[i].get_full_path().native_file_string()<<endl;
+-			if ((options.get_first_speced() && regex_search(inovec_[i].get_full_path().native_file_string(),options.get_first()))){
++// 			cout <<"matching:"<< inovec_[i].get_full_path().string()<<endl;
++			if ((options.get_first_speced() && regex_search(inovec_[i].get_full_path().string(),options.get_first()))){
+ 				first.push_back(&inovec_[i]);
+ 				continue;
+ 			}
+-			if (options.get_last_speced() && (regex_search(inovec_[i].get_full_path().native_file_string(),options.get_last()))){
++			if (options.get_last_speced() && (regex_search(inovec_[i].get_full_path().string(),options.get_last()))){
+ 				last.push_back(&inovec_[i]);
+ 				continue;
+ 			}
+diff -Naur old/src/unicode_to_utf8.cpp new/src/unicode_to_utf8.cpp
+--- old/src/unicode_to_utf8.cpp	2006-11-15 22:28:38.000000000 +1100
++++ new/src/unicode_to_utf8.cpp	2012-10-25 12:36:30.876185804 +1100
+@@ -8,6 +8,7 @@
+  */
+ #include <config.h>
+ #include "unicode_to_utf8.h"
++#include <string.h>
+ #define JFS_PATH_MAX 4096
+ 
+ /*

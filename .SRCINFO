@@ -1,0 +1,21 @@
+pkgbase = jfsrec-svn
+	pkgdesc = Read only extraction of files and directories from a damaged jfs filesystem
+	pkgver = 20070316.7
+	pkgrel = 1
+	url = http://jfsrec.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL
+	makedepends = subversion
+	depends = boost
+	optdepends = dd_rhelp
+	provides = jfsrec
+	conflicts = jfsrec
+	source = jfsrec::svn://svn.code.sf.net/p/jfsrec/code
+	source = recent.patch
+	sha1sums = SKIP
+	sha1sums = 4abae30d417f34f3afc89799c5e6126644f1fb52
+
+pkgname = jfsrec-svn
+
