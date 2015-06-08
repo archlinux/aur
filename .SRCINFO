@@ -1,0 +1,15 @@
+pkgbase = pidgin-save-conversations
+	pkgdesc = Crossplatform plugin for Pidgin messenger that saves your opened conversations at shutdown and restores its at startup
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://pidgin.im/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = pidgin
+	depends = perl
+	source = http://sourceforge.net/projects/save-convs/files/save-convs/0.2/pidgin-save-conversations-0.2.zip
+	sha256sums = ebb7caf30dad9e507e95396b67f316b94518dafb0408ae654c9528872bf2ca7f
+
+pkgname = pidgin-save-conversations
+
