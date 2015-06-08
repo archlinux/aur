@@ -1,0 +1,17 @@
+pkgbase = amdoverdrivectrl
+	pkgdesc = Tool for controling the frequency and fan settings of AMD/ATI video cards.
+	pkgver = 1.2.7
+	pkgrel = 3
+	url = http://sourceforge.net/projects/amdovdrvctrl
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = amd-adl-sdk
+	depends = catalyst-utils
+	depends = wxgtk2.8>=2.8.10
+	options = !strip
+	source = http://sourceforge.net/projects/amdovdrvctrl/files/C%2B%2B%20sources/AMDOverdriveCtrl.1.2.7.tar.bz2
+	md5sums = 556cbe675267badb54c5a0dba10ff9f1
+
+pkgname = amdoverdrivectrl
+
