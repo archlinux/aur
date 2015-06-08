@@ -7,7 +7,7 @@ _pkgbase=quassel
 pkgbase=${_pkgbase}-light
 pkgname=('quassel-client-light' 'quassel-core-light' 'quassel-monolithic-light')
 pkgver=0.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Next-generation distributed IRC client (minimal dependencies)"
 arch=('i686' 'x86_64')
 url="http://quassel-irc.org/"
@@ -15,10 +15,12 @@ license=('GPL')
 makedepends=('cmake')
 source=(http://quassel-irc.org/pub/${_pkgbase}-$pkgver.tar.bz2
         ${_pkgbase}.service
-        ${_pkgbase}.conf)
+        ${_pkgbase}.conf
+        fix_ssl_check.patch)
 sha256sums=('6bd6f79ecb88fb857bea7e89c767a3bd0f413ff01bae9298dd2e563478947897'
             '828aaf27696ffe2aa4b80755a09bdf264f644d9539366981697a73bb23340d7b'
-            'f3031ea8217e01ba42cea14606169e3e27affa5918968ffd5a03c21ae92fe2b8')
+            'f3031ea8217e01ba42cea14606169e3e27affa5918968ffd5a03c21ae92fe2b8'
+            'c62f50511322c6cd27b10b4c3d92d0c04262454467b95f1a84064f784c47ba7b')
 
 prepare() {
   cd ${_pkgbase}-$pkgver
