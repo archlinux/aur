@@ -1,0 +1,22 @@
+pkgbase = oxd4l
+	pkgdesc = Open-Xchange based on the Owncloud client
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/mortzu/OXd4L
+	install = oxd4l.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = python-sphinx
+	depends = qtkeychain-qt4
+	depends = qtwebkit
+	depends = neon
+	optdepends = python2-nautilus: integration with Nautilus
+	conflicts = owncloud-client
+	backup = etc/OXd4L/sync-exclude.lst
+	source = git+https://github.com/mortzu/OXd4L.git
+	md5sums = SKIP
+
+pkgname = oxd4l
+
