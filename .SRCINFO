@@ -1,0 +1,24 @@
+pkgbase = vdr-vompserver
+	pkgdesc = Server side of VOMP
+	pkgver = 0.4.1
+	pkgrel = 12
+	url = http://www.loggytronic.com/vomp.php
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	depends = gcc-libs
+	depends = vdr-api=2.2.0
+	backup = etc/vdr/conf.avail/50-vompserver.conf
+	backup = var/lib/vdr/plugins/vompserver/vomp.conf
+	source = http://www.loggytronic.com/dl/vdr-vompserver-0.4.1.tgz
+	source = vompserver-large_recordings_fix.diff
+	source = 50-vompserver.conf
+	md5sums = 98861d63a54911c96a0305391c74ad2b
+	md5sums = 158aa8984d267571cb39cba2ceccaeb4
+	md5sums = 155bb12f84f5f76ddd1dacd5327a607f
+
+pkgname = vdr-vompserver
+
