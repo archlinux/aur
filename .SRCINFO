@@ -1,0 +1,15 @@
+pkgbase = libserial
+	pkgdesc = A C++ library to access serial ports like standard C++ iostream objects
+	pkgver = 0.6.0rc1
+	pkgrel = 2
+	url = http://libserial.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python2-sip
+	depends = gcc-libs
+	source = http://downloads.sourceforge.net/libserial/libserial-0.6.0rc1.tar.gz
+	sha256sums = 60d8aebf5f262c12baf94ce61d61198fc9b79da2432c735c200decd08ead1fb4
+
+pkgname = libserial
+
