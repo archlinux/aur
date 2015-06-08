@@ -1,0 +1,17 @@
+pkgbase = ttf-totem
+	pkgdesc = Totem is a free font. Feel free to use it for personal and commercial.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.behance.net/gallery/16490287/TOTEM-Free-Typeface
+	install = ttf-totem.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-mkfontscale
+	depends = xorg-mkfontdir
+	source = https://www.dropbox.com/s/e02a0xkoqzjb2h8/TOTEM.zip
+	md5sums = 2873718a9127ca5a5d8c83c37d15a7e0
+
+pkgname = ttf-totem
+
