@@ -1,0 +1,17 @@
+pkgbase = mpdviz
+	pkgdesc = Standalone console MPD visualizer
+	pkgver = 0.4.7
+	pkgrel = 1
+	url = https://github.com/lucy/mpdviz
+	arch = x86_64
+	arch = i686
+	arch = ARM
+	license = custom:MIT
+	makedepends = go
+	depends = fftw
+	options = !strip
+	source = mpdviz::git+https://github.com/lucy/mpdviz.git#tag=0.4.7
+	sha256sums = SKIP
+
+pkgname = mpdviz
+
