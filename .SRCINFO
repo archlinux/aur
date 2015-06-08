@@ -1,0 +1,18 @@
+pkgbase = bookmanager
+	pkgdesc = A simple EBook manager app supporting basic collection management and tabbed document viewing
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://projects.kde.org/projects/playground/graphics/bookmanager
+	install = bookmanager.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdebase-runtime
+	depends = poppler-qt
+	source = http://kde-apps.org/CONTENT/content-files/137437-bookmanager-0.4.tar.gz
+	md5sums = d498b3f3e37b1105a326c40f7d9146bd
+
+pkgname = bookmanager
+
