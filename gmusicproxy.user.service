@@ -1,0 +1,8 @@
+[Unit]
+Description=Let's stream Google Play Music using any media-player
+
+[Service]
+ExecStart=/usr/bin/GMusicProxy -x -l .gmusicproxy.log
+
+[Install]
+WantedBy=default.target
