@@ -1,0 +1,38 @@
+post_install () {
+    echo " ==> Executing depmod -a"
+	depmod -a
+
+    echo " ==> Reloading udev rules."
+    udevadm control --reload-rules
+
+    echo -e "\nPost installation instructions:"
+    echo -e "  KERNEL MODULE: You need to load awusb. You should rebuild this package after a kernel upgrade."
+    echo -e "  IMPORTANT: You need to chown /opt/cubieboard-livesuit to yourself if you want to use this software. You can copy it to your home if you are sharing your computer."
+
+    echo -e "\nNote: If you try to flash a USB 2.0 Device (such as Cubietruck) from a recent Archlinux on an USB 3.0 Port, \n      chances are your device is not flashed as it is recognized by both xhci_hcd and ehci_hcd kernel modules.\n      Try deactivating xhci_hcd (it needs to be blacklisted if it is in the kernel, not needed in default Arch kernel),\n      or, easier if available, deactivate USB 3.0 in your BIOS."
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+    echo " ==> Executing depmod -a"
+	depmod -a
+
+    echo " ==> Reloading udev rules."
+    udevadm control --reload-rules
+
+	echo -e "\nPost upgrade instructions:"
+    echo -e "  KERNEL MODULE: You need to load awusb. You should rebuild this package after a kernel upgrade."
+    echo -e "  IMPORTANT: You need to chown /opt/cubieboard-livesuit to yourself if you want to use this software. You can copy it to your home if you are sharing your computer."
+    
+    echo -e "\nNote: If you try to flash a USB 2.0 Device (such as Cubietruck) from a recent Archlinux on an USB 3.0 Port, \n      chances are your device is not flashed as it is recognized by both xhci_hcd and ehci_hcd kernel modules.\n      Try deactivating xhci_hcd (it needs to be blacklisted if it is in the kernel, not needed in default Arch kernel),\n      or, easier if available, deactivate USB 3.0 in your BIOS."
+}
+
+post_remove() {
+	depmod -a
+}
+
+#op=$1
+#shift
+
+#$op $*

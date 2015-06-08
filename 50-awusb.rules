@@ -1,0 +1,1 @@
+KERNEL=="aw_efex[0-9]*", MODE="0666"
