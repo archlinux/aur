@@ -1,0 +1,27 @@
+pkgbase = kalu-kde
+	pkgdesc = Upgrade notifier w/ AUR support, watched (AUR) packages, news; supports autohide in KDE's panel
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = http://jjacky.com/kalu
+	install = kalu.install
+	arch = i686
+	arch = x86_64
+	license = GPL3+
+	makedepends = perl
+	makedepends = groff
+	depends = dbus
+	depends = polkit
+	depends = gtk3
+	depends = pacman>=4.2
+	depends = pacman<4.3
+	depends = curl
+	depends = libnotify
+	depends = notification-daemon
+	depends = statusnotifier
+	provides = kalu
+	conflicts = kalu
+	source = http://jjacky.com/kalu/kalu-3.0.0.tar.gz
+	sha1sums = 26ef0abb23d4590c3b851d6f61f4063e84e181f3
+
+pkgname = kalu-kde
+
