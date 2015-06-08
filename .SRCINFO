@@ -1,0 +1,22 @@
+pkgbase = vdr-remotetimers
+	pkgdesc = Add/Edit/Remove timers on both, the local (client) VDR and a remote (server) VDR
+	pkgver = 1.0.1
+	pkgrel = 9
+	url = http://vdr.schmirler.de/
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	depends = gcc-libs
+	depends = vdr-api=2.2.0
+	depends = vdr-svdrpservice
+	backup = etc/vdr/conf.avail/50-remotetimers.conf
+	source = http://vdr.schmirler.de/remotetimers/vdr-remotetimers-1.0.1.tgz
+	source = remotetimers-vdr2.1.2compat.diff
+	md5sums = aece17988ec1d62d3985390eabbcfdc9
+	md5sums = 6eb43dfefc9da87bc691abf193e2ef12
+
+pkgname = vdr-remotetimers
+
