@@ -1,0 +1,16 @@
+pkgbase = cppformat
+	pkgdesc = Small, safe and fast formatting library for C++
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://cppformat.github.io
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = gcc-libs
+	conflicts = cppformat-git
+	source = https://github.com/cppformat/cppformat/archive/1.1.0.tar.gz
+	sha256sums = d859f7e520629351294e194f0d1fb889b1edda9a44c139b126562107c1783142
+
+pkgname = cppformat
+
