@@ -1,0 +1,44 @@
+post_install() {
+ echo '-----------------------------------------------------------------------'
+ echo '1) Invoke by issuing a `checkip` and following setup instructions.'
+ echo
+ echo '2) Be sure to add an entry to your users crontab to have the script run'
+ echo '   at some regular interval.'
+ echo 
+ echo '   Edit your users crontab by typing: crontab -e'
+ echo '   Examples'
+ echo '   Once per hour:      0 * * * *   /usr/bin/checkip c &>/dev/null'
+ echo '   Every four hours:   0 */4 * * * /usr/bin/checkip c &>/dev/null' 
+ echo '-----------------------------------------------------------------------'
+}
+
+post_remove() {
+ echo '-----------------------------------------------------------------------'
+ echo '          Be sure you remove the entry in your users crontab.'
+ echo '-----------------------------------------------------------------------'
+}
+
+post_upgrade() {
+  ## arg 1:  the new package version
+  ## arg 2:  the old package version
+  oldpkgver=${2%-*}
+  #newpkgver=${1%-*}
+
+  if [[ $oldpkgver < 3.00 ]]; then
+		echo '--> Support for mailx (s-nail/heirloom) is now included in checkip.'
+    echo '--> You MUST update your $HOME/.config/checkip/checkip.conf now!'
+    echo '--> See /usr/share/checkip/checkip.conf.skel for an example'
+		echo '--> or use a diff util like vimdiff to merge your existing config.'
+  else
+    /bin/true
+  fi
+  
+	if [[ $oldpkgver < 3.04 ]]; then
+		echo '--> Support for a configured MTA is now included in checkip.'
+    echo '--> You MUST update your $HOME/.config/checkip/checkip.conf now!'
+    echo '--> See /usr/share/checkip/checkip.conf.skel for an example'
+		echo '--> or use a diff util like vimdiff to merge your existing config.'
+  else
+    /bin/true
+  fi
+}

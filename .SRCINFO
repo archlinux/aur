@@ -1,0 +1,19 @@
+pkgbase = checkip
+	pkgdesc = Simple script that checks to see if your external IP address changed and if so sends an email with the new IP address.
+	pkgver = 3.08
+	pkgrel = 1
+	url = https://github.com/graysky2/checkip
+	install = readme.install
+	arch = any
+	license = MIT
+	depends = curl
+	depends = dnsutils
+	depends = inetutils
+	optdepends = mailsend: simple program to send mail via SMTP protocol
+	optdepends = s-nail: mail processing system with a command syntax reminiscent of ed
+	optdepends = heirloom-mailx: commandline utility for sending and receiving email
+	source = http://repo-ck.com/source/checkip/checkip-3.08.tar.xz
+	sha256sums = c358fccc6391567bdbe134e5e37fcaba5012bdf056b149a36127db72c31f67e4
+
+pkgname = checkip
+
