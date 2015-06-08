@@ -1,0 +1,14 @@
+Version 0.2 - 23 July 2013
+
+* ltunify: display HID++ version and supported HID++ 2.0 features for `info`
+  option.
+* ltunify: print HID++ version of receiver.
+* ltunify: support c52f Nano receiver.
+* udev: use uaccess to allow seated users to login without joining a group.
+* Add various installation targets and variables to Makefile.
+* Updated registers.txt and monitoring tools with battery and keyboard
+  information.
+
+Version 0.1 - 25 April 2013
+
+* Initial release.

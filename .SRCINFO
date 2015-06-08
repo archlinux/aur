@@ -1,0 +1,17 @@
+pkgbase = ltunify-git
+	pkgdesc = A command-line tool to pair Logitech Unifying devices
+	pkgver = 0.2.22.gc3a263f
+	pkgrel = 1
+	url = http://lekensteyn.nl
+	changelog = NEWS
+	arch = i686
+	arch = x86_64
+	arch = ARM
+	license = GPL
+	makedepends = git
+	depends = glibc
+	source = git+https://git.lekensteyn.nl/ltunify.git
+	md5sums = SKIP
+
+pkgname = ltunify-git
+
