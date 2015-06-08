@@ -1,0 +1,22 @@
+pkgbase = eclipse-dltk-core
+	pkgdesc = Support for dynamic languages in Eclipse
+	pkgver = 5.0
+	pkgrel = 3
+	url = http://www.eclipse.org/dltk/
+	arch = i686
+	arch = x86_64
+	license = EPL
+	depends = eclipse-emf
+	optdepends = eclipse-dltk-core-index
+	optdepends = eclipse-dltk-javascript
+	optdepends = eclipse-dltk-mylyn
+	optdepends = eclipse-dltk-python
+	optdepends = eclipse-dltk-rse
+	optdepends = eclipse-dltk-ruby
+	optdepends = eclipse-dltk-tcl
+	replaces = eclipse-dltk-core-index
+	source = http://www.eclipse.org/downloads/download.php?r=1&file=/technology/dltk/downloads/drops/R5.0/R-5.0-201306060709/dltk-core-I-201306060709.zip
+	md5sums = fa828874f889e86fdbb050e1b164017b
+
+pkgname = eclipse-dltk-core
+
