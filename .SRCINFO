@@ -1,0 +1,28 @@
+pkgbase = uhub
+	pkgdesc = A hub for the ADC network.
+	pkgver = 0.5.0
+	pkgrel = 4
+	url = http://www.uhub.org/
+	install = uhub.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = python2
+	depends = libsystemd
+	backup = etc/uhub/motd.txt
+	backup = etc/uhub/plugins.conf
+	backup = etc/uhub/rules.txt
+	backup = etc/uhub/uhub.conf
+	backup = etc/uhub/users.conf
+	source = http://www.extatic.org/downloads/uhub/uhub-0.5.0-src.tar.bz2
+	source = uhub.service
+	source = uhub.tmpfiles
+	source = uhub.sysuser
+	sha1sums = f9ef93efd605b13aa3d8d93ae2cb3229b463d2bf
+	sha1sums = a72699fb05ba6ad48a3ff0d18d8ef2904c29c6a5
+	sha1sums = fa06f77fe35eee8dea6c8d2be81486a2ecc35a5b
+	sha1sums = e964b2e946a5662f61f806d0181c8b83834ac688
+
+pkgname = uhub
+
