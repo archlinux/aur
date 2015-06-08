@@ -1,0 +1,16 @@
+pkgbase = vim-conque-gdb
+	pkgdesc = GDB command line interface and terminal emulator in (G)Vim.
+	pkgver = 0.12
+	pkgrel = 1
+	url = http://www.vim.org/scripts/script.php?script_id=4582
+	arch = any
+	license = MIT
+	depends = vim
+	conflicts = vim-conque
+	source = https://github.com/vim-scripts/Conque-GDB/archive/0.12.tar.gz
+	source = LICENSE
+	md5sums = a88d31ea4a07606813a97f0aad51aabd
+	md5sums = c2b2de5a0549e68e5048a8329218d12c
+
+pkgname = vim-conque-gdb
+
