@@ -1,0 +1,17 @@
+pkgbase = taskjuggler3-git
+	pkgdesc = Project Management Software
+	pkgver = 3.5.0.r27.e7f5e1e
+	pkgrel = 1
+	url = http://www.taskjuggler.org
+	arch = any
+	license = GPL
+	depends = ruby-mail
+	depends = ruby-term-ansicolor
+	optdepends = ruby-rspec: Test suite
+	provides = taskjuggler3
+	conflicts = taskjuggler3
+	source = taskjuggler3::git+https://github.com/taskjuggler/TaskJuggler.git
+	sha256sums = SKIP
+
+pkgname = taskjuggler3-git
+
