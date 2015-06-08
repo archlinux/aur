@@ -1,0 +1,22 @@
+pkgbase = gnome-network-monitor-svn
+	pkgdesc = A Network Monitor for GNOME
+	pkgver = 0.9.1.r125
+	pkgrel = 1
+	epoch = 1
+	url = http://gnetworkmonitor.sourceforge.net/
+	install = gnome-network-monitor-svn.install
+	arch = any
+	license = GPL
+	makedepends = intltool
+	makedepends = gettext
+	makedepends = python2
+	makedepends = desktop-file-utils
+	depends = pygtk
+	depends = python2-pysqlite
+	depends = usermode>=1.36
+	options = !emptydirs
+	source = gnome-network-monitor::svn+https://svn.code.sf.net/p/gnetworkmonitor/code/trunk
+	md5sums = SKIP
+
+pkgname = gnome-network-monitor-svn
+
