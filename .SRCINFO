@@ -1,0 +1,20 @@
+pkgbase = gambit-c-git
+	pkgdesc = Scheme R5RS interpreter and compiler (via C) - git version
+	pkgver = 4.7.6.r25.g6b353f5
+	pkgrel = 1
+	url = http://gambitscheme.org
+	install = gambit-c-git.install
+	arch = i686
+	arch = x86_64
+	license = Apache
+	license = LGPL2.1
+	makedepends = git
+	provides = gambit-c
+	conflicts = gambit-c
+	options = !makeflags
+	options = staticlibs
+	source = git+https://github.com/feeley/gambit.git
+	md5sums = SKIP
+
+pkgname = gambit-c-git
+
