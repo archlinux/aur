@@ -1,0 +1,23 @@
+pkgbase = cinnamon-desktop-git
+	pkgdesc = Library with common API for various Cinnamon modules
+	pkgver = 103.f4ee205
+	pkgrel = 1
+	url = https://github.com/linuxmint/cinnamon-desktop
+	install = cinnamon-desktop-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = intltool
+	makedepends = gobject-introspection
+	makedepends = gnome-common
+	makedepends = git
+	depends = gtk3
+	depends = libxkbfile
+	provides = cinnamon-desktop
+	conflicts = cinnamon-desktop
+	source = git+https://github.com/linuxmint/cinnamon-desktop.git
+	options = !emptydirs
+
+pkgname = cinnamon-desktop-git
+
