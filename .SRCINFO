@@ -1,0 +1,15 @@
+pkgbase = lib32-assimp
+	pkgdesc = Portable Open Source library to import various well-known 3D model formats in an uniform manner
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = http://assimp.sourceforge.net/index.html
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = lib32-gcc-libs
+	depends = lib32-zlib
+	source = https://github.com/assimp/assimp/archive/v3.1.1.tar.gz
+	md5sums = ab9977edf95e9b2910d7cca286926e85
+
+pkgname = lib32-assimp
+
