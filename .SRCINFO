@@ -1,0 +1,13 @@
+pkgbase = java-commons-codec
+	pkgdesc = Implementations of common encoders and decoders such as Base64, Hex, Phonetic and URLs
+	pkgver = 1.10
+	pkgrel = 1
+	url = http://commons.apache.org/codec/
+	arch = any
+	license = Apache
+	depends = java-environment
+	source = http://mirror.ibcp.fr/pub/apache//commons/codec/binaries/commons-codec-1.10-bin.tar.gz
+	md5sums = 9b413ef3eae50bdf3da89644fd3cdbe5
+
+pkgname = java-commons-codec
+
