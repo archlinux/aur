@@ -1,0 +1,24 @@
+pkgbase = geany-gtk3-git
+	pkgdesc = Fast and lightweight IDE (git version)
+	pkgver = 1.24.1.287.gd2ce3d6
+	pkgrel = 1
+	url = https://github.com/b4n/geany/tree/wip/gtk3-support
+	install = geany-gtk3-git.install
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = git
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = intltool
+	makedepends = libtool
+	makedepends = lua
+	depends = desktop-file-utils
+	depends = gtk3
+	provides = geany
+	conflicts = geany
+	source = git://github.com/geany/geany.git
+	md5sums = SKIP
+
+pkgname = geany-gtk3-git
+
