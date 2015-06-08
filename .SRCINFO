@@ -1,0 +1,14 @@
+pkgbase = emacs-elscreen-speedbar
+	pkgdesc = Frame configuration management for GNU Emacs modelled after GNU Screen
+	pkgver = 0.0.0
+	pkgrel = 2
+	url = http://www.morishima.net/~naoto/software/elscreen/index.php.en
+	arch = any
+	license = GPL
+	makedepends = emacs-apel
+	depends = emacs-elscreen
+	source = ftp://ftp.morishima.net/pub/morishima.net/naoto/ElScreen/elscreen-speedbar-0.0.0.tar.gz
+	md5sums = b5f30d2c23da303c3a2c65ec6cbaac90
+
+pkgname = emacs-elscreen-speedbar
+
