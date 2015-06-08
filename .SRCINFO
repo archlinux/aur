@@ -1,0 +1,15 @@
+pkgbase = kdeplasma-applets-usu-notifications
+	pkgdesc = lternative KDE notifications, based on QML and org.kde.notofications, but with more features
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = http://kde-apps.org/content/show.php/?content=158063
+	install = kdeplasma-applets-usu-notifications.install
+	arch = any
+	license = GPL
+	makedepends = unzip
+	depends = kdebase-workspace
+	source = http://kde-look.org/CONTENT/content-files/158063-usu-notifications.plasmoid
+	md5sums = 70b3cb22f8f93613ce9952c31fd40592
+
+pkgname = kdeplasma-applets-usu-notifications
+
