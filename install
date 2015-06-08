@@ -1,0 +1,32 @@
+## arg 1:  the new package version
+pre_install() {
+    echo "Installing pfm $1"
+}
+
+## arg 1:  the new package version
+post_install() {
+    echo "Installed pfm $1"
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+pre_upgrade() {
+    echo "Upgrading pfm $2 to $1"
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+    echo "Upgraded $pkgname $2 to $1"
+}
+
+## arg 1:  the old package version
+pre_remove() {
+    echo "Removing pfm $1"
+}
+
+## arg 1:  the old package version
+post_remove() {
+    echo "Removed pfm $1"
+}
+

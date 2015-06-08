@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=pfm
+Type=Application
+Exec=/usr/bin/tclsh /usr/share/pfm/pfm.tcl
+Icon=/usr/share/pfm/pfm-icon.png
+Terminal=false
+GenericName=Postgres Forms
+Comment=Graphical user interface for PostgreSQL database
+Categories=Office;Database;
+
