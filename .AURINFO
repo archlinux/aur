@@ -1,0 +1,14 @@
+pkgbase = perl-data-tabular
+	pkgdesc = Handy Table Manipulation and rendering Object
+	pkgver = 0.29
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Data-Tabular
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.6.0
+	source = http://search.mcpan.org/CPAN/authors/id/G/GA/GAM/Data-Tabular-0.29.tar.gz
+	options = !emptydirs
+
+pkgname = perl-data-tabular
+
