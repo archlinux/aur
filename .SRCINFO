@@ -1,0 +1,23 @@
+pkgbase = cuberok
+	pkgdesc = Yet another music player based on Qt4.
+	pkgver = 0.1.0
+	pkgrel = 2
+	url = http://code.google.com/p/cuberok/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	makedepends = pkgconfig
+	makedepends = sed
+	depends = qt4
+	depends = gstreamer0.10-good-plugins
+	depends = phonon
+	optdepends = gstreamer0.10-bad-plugins: GStreamer support for aac
+	optdepends = gstreamer0.10-ugly-plugins: GStreamer support for mp3
+	optdepends = gstreamer0.10-ffmpeg: GStreamer support for wma, mp3, etc...
+	conflicts = cuberok-svn
+	source = http://cuberok.googlecode.com/files/cuberok-0.1.0.tar.gz
+	md5sums = edd7594997d54989a6c3a3671e6bd4c4
+
+pkgname = cuberok
+
