@@ -1,0 +1,125 @@
+--- vmware-vsphere-cli-distrib/bin/vmware-uninstall-vSphere-CLI.pl	2012-07-13 04:42:55.000000000 +0400
++++ vmware-vsphere-cli-distrib1/vmware-install.pl	2013-04-25 15:10:01.398219700 +0400
+@@ -766,7 +766,7 @@
+ # Constants
+ my $cInstallerFileName = 'vmware-install.pl';
+ my $cModuleUpdaterFileName = 'install.pl';
+-my $cRegistryDir = '/etc/vmware';
++my $cRegistryDir = '../../pkg/vmware-vcli/etc/vmware';
+ my $cInstallerMainDB = $cRegistryDir . '/locations';
+ my $cInstallerObject = $cRegistryDir . '/installer.sh';
+ my $cConfFlag = $cRegistryDir . '/not_configured';
+@@ -1662,7 +1662,7 @@
+ sub initialize_globals {
+   my $dirname = shift;
+ 
+-  $gRegistryDir = '/etc/vmware-vcli';
++  $gRegistryDir = '../../pkg/vmware-vcli/etc/vmware-vcli';
+   @gOldUninstallers = qw( /etc/vmware-vicli/installer.sh /etc/vmware-rcli/installer.sh);
+   $gUninstallerFileName = 'vmware-uninstall-vSphere-CLI.pl';
+ 
+@@ -1865,7 +1865,7 @@
+   
+   foreach $file (internal_ls($src_dir)) {
+     my $src = $src_dir . '/' . $file;
+-    my $src_loc = '/usr/bin/' . $file;
++    my $src_loc = '../../pkg/vmware-vcli/usr/bin/' . $file;
+     my $dst_loc = $dst_dir . '/' . $file;
+     if (-l $dst_loc) {
+       install_symlink(readlink($dst_loc), $src_loc);
+@@ -2181,25 +2181,25 @@
+ sub install_content_vicli_perl {
+    my %patch;
+    my $shipped_ssl_version = '0.9.8';
+-   my $installed_ssl_version = '0';
++   my $installed_ssl_version = '1.0.0';
+    my $minimum_ssl_version = '0.9.7';
+-   my $ssleay_installed = 0;
++   my $ssleay_installed = 1;
+    my $link_ssleay = 0;
+    my $linker_installed = `which ld`;
+    my $minimum_libxml_version = '2.6.26';
+    my $installed_libxml_version = '0';
+ 
+-   my $OpenSSL_installed = 0;
+-   my $LibXML2_installed = 0;
+-   my $OpenSSL_dev_installed = 0;
++   my $OpenSSL_installed = 1;
++   my $LibXML2_installed = 1;
++   my $OpenSSL_dev_installed = 1;
+    my $libxml_perl_installed = 1;
+ 
+-   my $e2fsprogs_installed = 0;
++   my $e2fsprogs_installed = 1;
+    my $e2fsprogs_version = '0';
+-   my $minimum_e2fsprogs_version = '1.38';
++   my $minimum_e2fsprogs_version = '1.42';
+    my $e2fsprogs_devel_installed = 0;
+    my $internet_available = 0;
+-   my $install_rhel55_local = 0;
++   my $install_rhel55_local = 1;
+ 
+    my $vicliName = vmware_product_name();
+    if ($] < 5.008) {
+@@ -2608,16 +2608,16 @@
+ 
+       undef %patch;
+       if ($] >= 5.010 && ( -e "./lib/5.10/$module->{'path'}/lib" ) )  {
+-         install_dir("./lib/5.10/$module->{'path'}/lib", "$lib_dir", \%patch, 0x1);
++         install_dir("./lib/5.10/$module->{'path'}/lib", "../../pkg/vmware-vcli$lib_dir", \%patch, 0x1);
+       } elsif (-e "./lib/$module->{'path'}/lib") {
+-         install_dir("./lib/$module->{'path'}/lib", "$lib_dir", \%patch, 0x1);
++         install_dir("./lib/$module->{'path'}/lib", "../../pkg/vmware-vcli$lib_dir", \%patch, 0x1);
+       }
+ 
+       undef %patch;
+       if ($] >= 5.010 && ( -e "./lib/5.10/$module->{'path'}/share" ) )  {
+-         install_dir("./lib/5.10/$module->{'path'}/share", "$share_dir", \%patch, 0x1);
++         install_dir("./lib/5.10/$module->{'path'}/share", "../../pkg/vmware-vcli$share_dir", \%patch, 0x1);
+       } elsif (-e "./lib/$module->{'path'}/share") {
+-         install_dir("./lib/$module->{'path'}/share", "$share_dir", \%patch, 0x1);
++         install_dir("./lib/$module->{'path'}/share", "../../pkg/vmware-vcli$share_dir", \%patch, 0x1);
+       }
+ 
+       if ($] < 5.010) {
+@@ -2736,21 +2736,21 @@
+   db_add_answer('LIBDIR', $libdir);
+ 
+   # Install a symlink for ESXCLI, which is in the library
+-  install_symlink("$libdir/bin/esxcli/esxcli", "$bindir/esxcli");
++  install_symlink("/lib/vmware-vcli/bin/esxcli/esxcli", "$bindir/esxcli");
+ 
+   # Install a symlink for VCLI
+-  if ( "$rootdir/bin" ne "/usr/bin") {
+-     install_bin_symlink('./bin', "$rootdir/bin");
+-     install_symlink("$libdir/bin/esxcli/esxcli", "/usr/bin/esxcli");
++  if ( "$rootdir/bin" ne "../../pkg/vmware-vcli/usr/bin") {
++     install_bin_symlink('./bin', "/bin");
++     install_symlink("/lib/vmware-vcli/bin/esxcli/esxcli", "../../pkg/vmware-vcli/usr/bin/esxcli");
+   }
+ 
+   # Install a symlink to make /lib point to the correct library
+   # based on the architecture of our system
+   if (is64BitUserLand()) {
+-     install_symlink("$libdir/lib64", "$libdir/lib");
++     install_symlink("/lib/vmware-vcli/lib64", "$libdir/lib");
+   }
+   else {
+-     install_symlink("$libdir/lib32", "$libdir/lib");
++     install_symlink("/lib/vmware-vcli/lib32", "$libdir/lib");
+   }
+ 
+   # Make sure that, in particular, libvmacore.so's exec text permission needs
+@@ -3742,9 +3742,9 @@
+      error($chk_msg);
+    }
+ 
+-   if (!is_root()) {
+-     error('Please re-run this program as the super user.' . "\n\n");
+-   }
++   #if (!is_root()) {
++   #  error('Please re-run this program as the super user.' . "\n\n");
++   #}
+ 
+    # Force the path to reduce the risk of using "modified" external helpers
+    # If the user has a special system setup, he will will prompted for the

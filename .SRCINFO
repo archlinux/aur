@@ -1,0 +1,26 @@
+pkgbase = vmware-vcli
+	pkgdesc = The vCLI utilities make it possible to manage VMWare ESX servers (with the possibility of using vCenter). For make package, place VMware-vSphere-CLI-5.5.0-1549297.{your_arch}.tar.gz to PKGBUILD directory.
+	pkgver = 5.5.0.2043780
+	pkgrel = 1
+	url = https://my.vmware.com/web/vmware/details?productId=351&downloadGroup=VCLI55U1
+	arch = i686
+	arch = x86_64
+	license = custom:vmware
+	depends = e2fsprogs
+	depends = openssl
+	depends = libxml2
+	depends = perl
+	depends = perl-xml-sax
+	depends = perl-crypt-ssleay
+	depends = perl-archive-zip
+	depends = perl-html-parser
+	depends = perl-data-dump
+	depends = perl-soap-lite
+	depends = perl-uri
+	depends = perl-lwp-protocol-https
+	depends = perl-class-methodmaker
+	depends = perl-net-ssleay
+	depends = perl-xml-libxml
+
+pkgname = vmware-vcli
+
