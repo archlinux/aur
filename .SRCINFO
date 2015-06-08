@@ -1,0 +1,17 @@
+pkgbase = ttf-dasroy
+	pkgdesc = A titling font by Fabio Corubolo
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.fontineed.com/font/DasRoy_Small_Caps
+	install = ttf-dasroy.install
+	arch = any
+	license = freeware
+	makedepends = unzip
+	depends = fontconfig
+	depends = xorg-font-utils
+	noextract = DasRoy_Small_Caps.zip
+	source = http://www.fontineed.com/downloads/DasRoy_Small_Caps.zip
+	md5sums = 4c2f2807db71a554471d627d8f963a3b
+
+pkgname = ttf-dasroy
+
