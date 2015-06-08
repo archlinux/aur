@@ -1,0 +1,16 @@
+pkgbase = colorsvn
+	pkgdesc = Subversion output colorizer
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = http://colorsvn.tigris.org
+	arch = any
+	license = GPL2
+	depends = subversion
+	depends = perl
+	backup = etc/colorsvnrc
+	backup = etc/profile.d/colorsvn-env.sh
+	source = http://colorsvn.tigris.org/files/documents/4414/49311/colorsvn-0.3.3.tar.gz
+	md5sums = 1fd09db47f44227499c19f9ba3054b97
+
+pkgname = colorsvn
+
