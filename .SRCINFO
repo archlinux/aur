@@ -1,0 +1,13 @@
+pkgbase = fcitx-skin-new-default
+	pkgdesc = Fcitx theme.
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://kde-look.org/content/show.php/new+default?content=159657
+	arch = any
+	license = GPL
+	depends = fcitx>=4.2.6
+	source = new-default.fskin::http://kde-look.org/CONTENT/content-files/159657-new-default.fskin
+	md5sums = 32d2691a9b92ca39bd84911d76634faf
+
+pkgname = fcitx-skin-new-default
+
