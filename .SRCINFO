@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-coin-or-vol
+	pkgdesc = COIN-OR Volume Algorithm (mingw-w64)
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://projects.coin-or.org/Vol
+	arch = any
+	groups = coin-or
+	license = EPL
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-coin-or-osi
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = http://www.coin-or.org/download/source/Vol/Vol-1.5.0.tgz
+	sha1sums = e53dd21eb28fb5a60ed39492d054cceafeb39ddf
+
+pkgname = mingw-w64-coin-or-vol
+
