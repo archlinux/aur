@@ -1,0 +1,17 @@
+pkgbase = ebview-git
+	pkgdesc = A GTK-based EPWING dictionary viewer
+	pkgver = 20130218
+	pkgrel = 1
+	url = http://epview.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = gtk2
+	depends = eb-library
+	depends = pangox-compat
+	provides = ebview
+	conflicts = ebview
+
+pkgname = ebview-git
+
