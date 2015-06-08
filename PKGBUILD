@@ -1,7 +1,7 @@
 # Maintainer: Lesto <bifrost AT hotmail DOT it>
 pkgname=freedns-daemon
-pkgver=1
-pkgrel=4
+pkgver=2
+pkgrel=1
 pkgdesc="Lighweight, barebone and almost dependency free daemon for freedns.afraid.org"
 arch=('any')
 url="http://www.github.com/lestofante/freedns"
