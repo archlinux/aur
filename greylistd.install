@@ -1,0 +1,25 @@
+# arg 1:  the new package version
+post_install() {
+  # UID selected is 113, i really do not know what it must be!
+  groupadd -g 113 greylist &>/dev/null
+  useradd -u 113 -g greylist -d /var/run/greylistd -s /bin/false greylist &>/dev/null
+  if [ ! -e /var/lib/greylistd ]; then
+    mkdir /var/lib/greylistd &>/dev/null
+  fi
+  chown greylist:greylist /var/lib/greylistd &>/dev/null
+  chmod 755 /var/lib/greylistd &>/dev/null
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  post_install $1
+  systemctl --system daemon-reload >/dev/null 2>&1
+}
+
+# arg 1:  the old package version
+pre_remove() {
+  userdel greylist &>/dev/null
+  groupdel greylist &>/dev/null
+  rm -rf /var/run/greylistd &>/dev/null
+}

@@ -1,0 +1,10 @@
+[Unit]
+Description=Greylist Daemon
+
+[Service]
+User=greylist
+ExecStart=/usr/bin/greylistd
+ExecReload=/usr/bin/greylist reload
+
+[Install]
+WantedBy=multi-user.target
