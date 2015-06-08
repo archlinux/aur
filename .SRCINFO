@@ -1,0 +1,30 @@
+pkgbase = st-transparency-git
+	pkgdesc = A simple virtual terminal emulator for X with patches for transparency and separate border width.
+	pkgver = 20150603
+	pkgrel = 1
+	url = http://st.suckless.org
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = ncurses
+	makedepends = git
+	depends = libxext
+	depends = libxft
+	optdepends = utmp-git: update utmp files
+	provides = st
+	conflicts = st
+	source = git://git.suckless.org/st
+	source = enable_transparency_options.diff
+	source = config.diff
+	source = config.diff.lcars
+	source = config.diff.light
+	source = config.diff.monovedek
+	md5sums = SKIP
+	md5sums = 602b41ed34e4d5e553ed8daefca50236
+	md5sums = SKIP
+	md5sums = fe855c9850398d476848c78123cd88c7
+	md5sums = 0a98972fe4377df541d92677d44bd307
+	md5sums = 79161db11c5f952b7f758ce44841ad23
+
+pkgname = st-transparency-git
+

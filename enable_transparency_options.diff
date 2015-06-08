@@ -1,0 +1,152 @@
+From 89fa10523de6da70abeccdf2d53c6210e4e83fa6 Mon Sep 17 00:00:00 2001
+From: actionless <actionless.loveless@gmail.com>
+Date: Tue, 16 Sep 2014 17:26:00 +0200
+Subject: [PATCH 2/2] feat(transparency): updated patch
+
+---
+ config.mk |  2 +-
+ st.c      | 60 ++++++++++++++++++++++++++++++++++++++++++++++++++++--------
+ 2 files changed, 53 insertions(+), 9 deletions(-)
+
+diff --git a/config.mk b/config.mk
+index 298484e..9410c91 100644
+--- a/config.mk
++++ b/config.mk
+@@ -14,7 +14,7 @@ X11LIB = /usr/X11R6/lib
+ INCS = -I. -I/usr/include -I${X11INC} \
+        `pkg-config --cflags fontconfig` \
+        `pkg-config --cflags freetype2`
+-LIBS = -L/usr/lib -lc -L${X11LIB} -lm -lrt -lX11 -lutil -lXext -lXft \
++LIBS = -L/usr/lib -lc -L${X11LIB} -lm -lrt -lX11 -lutil -lXext -lXft -lXrender \
+        `pkg-config --libs fontconfig`  \
+        `pkg-config --libs freetype2`
+ 
+diff --git a/st.c b/st.c
+index dd3301b..9c9bea4 100644
+--- a/st.c
++++ b/st.c
+@@ -61,6 +61,7 @@ char *argv0;
+ #define XK_ANY_MOD    UINT_MAX
+ #define XK_NO_MOD     0
+ #define XK_SWITCH_MOD (1<<13)
++#define OPAQUE 0Xff
+ 
+ #define REDRAW_TIMEOUT (80*1000) /* 80 ms */
+ 
+@@ -84,6 +85,7 @@ char *argv0;
+ #define TRUERED(x)       (((x) & 0xff0000) >> 8)
+ #define TRUEGREEN(x)     (((x) & 0xff00))
+ #define TRUEBLUE(x)      (((x) & 0xff) << 8)
++#define USE_ARGB (alpha != OPAQUE && opt_embed == NULL)
+ 
+ 
+ enum glyph_attribute {
+@@ -257,6 +259,7 @@ typedef struct {
+ 	int w, h; /* window width and height */
+ 	int ch; /* char height */
+ 	int cw; /* char width  */
++	int depth; /* bit depth */
+ 	char state; /* focus, redraw, visible */
+ } XWindow;
+ 
+@@ -2765,8 +2768,7 @@ xresize(int col, int row) {
+ 	xw.th = MAX(1, row * xw.ch);
+ 
+ 	XFreePixmap(xw.dpy, xw.buf);
+-	xw.buf = XCreatePixmap(xw.dpy, xw.win, xw.w, xw.h,
+-			DefaultDepth(xw.dpy, xw.scr));
++	xw.buf = XCreatePixmap(xw.dpy, xw.win, xw.w, xw.h, xw.depth);
+ 	XftDrawChange(xw.draw, xw.buf);
+ 	xclear(0, 0, xw.w, xw.h);
+ }
+@@ -2797,6 +2799,13 @@ xloadcols(void) {
+ 		}
+ 	}
+ 
++	/* set alpha value of bg color */
++	if (USE_ARGB) {
++		dc.col[defaultbg].color.alpha = (0xffff * alpha) / OPAQUE; //0xcccc;
++		dc.col[defaultbg].pixel &= 0x00111111;
++		dc.col[defaultbg].pixel |= alpha << 24; // 0xcc000000;
++	}
++
+	for(i = 0; i < LEN(dc.col); i++)
+		if(!xloadcolor(i, NULL, &dc.col[i])) {
+			if(colorname[i])
+@@ -3072,7 +3081,38 @@ xinit(void) {
+ 	if(!(xw.dpy = XOpenDisplay(NULL)))
+ 		die("Can't open display\n");
+ 	xw.scr = XDefaultScreen(xw.dpy);
+-	xw.vis = XDefaultVisual(xw.dpy, xw.scr);
++	xw.depth = (USE_ARGB)? 32: XDefaultDepth(xw.dpy, xw.scr);
++	if (! USE_ARGB)
++		xw.vis = XDefaultVisual(xw.dpy, xw.scr);
++	else {
++		XVisualInfo *vis;
++		XRenderPictFormat *fmt;
++		int nvi;
++		int i;
++
++		XVisualInfo tpl = {
++			.screen = xw.scr,
++			.depth = 32,
++			.class = TrueColor
++		};
++
++		vis = XGetVisualInfo(xw.dpy, VisualScreenMask | VisualDepthMask | VisualClassMask, &tpl, &nvi);
++		xw.vis = NULL;
++		for(i = 0; i < nvi; i ++) {
++			fmt = XRenderFindVisualFormat(xw.dpy, vis[i].visual);
++			if (fmt->type == PictTypeDirect && fmt->direct.alphaMask) {
++				xw.vis = vis[i].visual;
++				break;
++			}
++		}
++		
++		XFree(vis);
++
++		if (! xw.vis) {
++			fprintf(stderr, "Couldn't find ARGB visual.\n");
++			exit(1);
++		}
++	}
+ 
+ 	/* font */
+ 	if(!FcInit())
+@@ -3082,7 +3122,10 @@ xinit(void) {
+ 	xloadfonts(usedfont, 0);
+ 
+ 	/* colors */
+-	xw.cmap = XDefaultColormap(xw.dpy, xw.scr);
++	if (! USE_ARGB)
++		xw.cmap = XDefaultColormap(xw.dpy, xw.scr);
++	else
++		xw.cmap = XCreateColormap(xw.dpy, XRootWindow(xw.dpy, xw.scr), xw.vis, None);
+ 	xloadcols();
+ 
+ 	/* adjust fixed window geometry */
+@@ -3105,16 +3148,17 @@ xinit(void) {
+ 	parent = opt_embed ? strtol(opt_embed, NULL, 0) : \
+ 			XRootWindow(xw.dpy, xw.scr);
+ 	xw.win = XCreateWindow(xw.dpy, parent, xw.l, xw.t,
+-			xw.w, xw.h, 0, XDefaultDepth(xw.dpy, xw.scr), InputOutput,
++			xw.w, xw.h, 0, xw.depth, InputOutput,
+ 			xw.vis, CWBackPixel | CWBorderPixel | CWBitGravity
+ 			| CWEventMask | CWColormap, &xw.attrs);
+ 
+ 	memset(&gcvalues, 0, sizeof(gcvalues));
+ 	gcvalues.graphics_exposures = False;
+-	dc.gc = XCreateGC(xw.dpy, parent, GCGraphicsExposures,
++	xw.buf = XCreatePixmap(xw.dpy, xw.win, xw.w, xw.h, xw.depth);
++	dc.gc = XCreateGC(xw.dpy,
++			(USE_ARGB)? xw.buf: parent,
++			GCGraphicsExposures,
+ 			&gcvalues);
+-	xw.buf = XCreatePixmap(xw.dpy, xw.win, xw.w, xw.h,
+-			DefaultDepth(xw.dpy, xw.scr));
+ 	XSetForeground(xw.dpy, dc.gc, dc.col[defaultbg].pixel);
+ 	XFillRectangle(xw.dpy, xw.buf, dc.gc, 0, 0, xw.w, xw.h);
+ 
+-- 
+2.3.5
+
