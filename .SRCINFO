@@ -1,0 +1,23 @@
+pkgbase = vimprobable2-git
+	pkgdesc = Lightweight, keyboard-driven, WebKit based browser with Vim keybinds.
+	pkgver = 2014.12.26.ga514968
+	pkgrel = 2
+	url = http://www.yllr.net/vimprobable/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libwebkit>=1.1.11
+	depends = gtk2
+	depends = libsoup
+	provides = vimprobable2
+	conflicts = vimprobable2
+	source = vimprobable::git+http://git.code.sf.net/p/vimprobable/code
+	source = config.h
+	source = keymap.h
+	md5sums = SKIP
+	md5sums = e2845958a1ec3f4d77ae4bec87ef2e4d
+	md5sums = 85e971541294c8e354b095b804fe8ac6
+
+pkgname = vimprobable2-git
+
