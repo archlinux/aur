@@ -1,0 +1,14 @@
+pkgbase = jasperstarter
+	pkgdesc = Running JasperReports from command line
+	pkgver = 3.0.0
+	pkgrel = 2
+	url = http://jasperstarter.sourceforge.net
+	arch = any
+	license = apache
+	depends = java-runtime
+	source = http://downloads.sourceforge.net/project/jasperstarter/JasperStarter-3.0/jasperstarter-3.0.0-bin.tar.bz2
+	sha1sums = 6db56f1bb1e0e04861ec200c18e354efcf8e8386
+	sha256sums = 38490b0a8a1c09be53d264289eaa2892a8c13583102cbcfd6d2cdb4ca7bcf5c3
+
+pkgname = jasperstarter
+
