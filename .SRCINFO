@@ -1,0 +1,17 @@
+pkgbase = istodo
+	pkgdesc = Crossplatform Qt5 based organizer for students
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = http://istodo.ru/
+	install = istodo.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = qt5-base
+	source = http://dev.istodo.ru/istodo-desktop/get/v1.3.0.tar.gz
+	md5sums = 61dc7ec57c9429942eb1e1bbfbb31b0f
+
+pkgname = istodo
+
