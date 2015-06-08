@@ -1,0 +1,47 @@
+pkgbase = qmc2-svn
+	pkgdesc = Qt 4 based UNIX MAME frontend supporting SDLMAME (SVN version) (SPLIT PKGBUILD)
+	pkgver = 0.53.6683
+	pkgrel = 1
+	url = http://qmc2.arcadehits.net/wordpress/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	makedepends = rsync
+	makedepends = mesa
+	makedepends = qtwebkit
+	makedepends = phonon-qt4
+	makedepends = sdl
+	makedepends = java-environment
+	source = qmc2::svn://svn.code.sf.net/p/qmc2/code/trunk
+	sha1sums = SKIP
+
+pkgname = qmc2-common-svn
+	pkgdesc = Qt 4 based UNIX MAME frontend. Core files, included qCHDman GUI. (SVN version)
+	arch = i686
+	arch = x86_64
+	depends = qt4
+	depends = java-environment
+	optdepends = qmc2-sdlmame-svn: Frontend for SDLMAME
+	optdepends = qmc2-arcade-svn: Arcade frontend for SDLMAME
+	provides = qmc2-common-svn=0.53.6683
+	conflicts = qmc2
+
+pkgname = qmc2-sdlmame-svn
+	pkgdesc = Qt 4 based UNIX MAME frontend for SDLMAME. (SVN version)
+	arch = i686
+	arch = x86_64
+	depends = qmc2-common-svn=0.53.6683
+	depends = qtwebkit
+	depends = phonon-qt4
+	optdepends = sdlmame: A port of the popular Multiple Arcade Machine Emulator using SDL with OpenGL support
+
+pkgname = qmc2-arcade-svn
+	pkgdesc = Qt 4 based UNIX MAME Arcade frontend for SDLMAME/SDLMESS/SDLUME. (SVN version)
+	arch = i686
+	arch = x86_64
+	depends = qmc2-common-svn=0.53.6683
+	depends = sdl
+	depends = qt4
+	optdepends = sdlmame: A port of the popular Multiple Arcade Machine Emulator using SDL with OpenGL support
+
