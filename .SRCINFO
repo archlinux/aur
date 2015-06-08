@@ -1,0 +1,21 @@
+pkgbase = wqy-microhei-kr-patched
+	pkgdesc = A Sans-Serif style high quality CJK outline font.Fix incorrect advanceWidths in hmtx for composite glyphs, which had caused Korean Hangul glyphs to stack on top of each other.
+	pkgver = 0.2.0_beta
+	pkgrel = 2
+	url = https://packages.debian.org/jessie/all/fonts-wqy-microhei
+	install = wqy-microhei.install
+	arch = any
+	license = GPL3
+	license = APACHE
+	license = custom:"font embedding exception"
+	depends = fontconfig
+	depends = xorg-font-utils
+	provides = wqy-microhei
+	conflicts = wqy-microhei
+	source = 44-wqy-microhei.conf
+	source = http://ftp.cn.debian.org/debian/pool/main/f/fonts-wqy-microhei/fonts-wqy-microhei_0.2.0-beta-2_all.deb
+	md5sums = 2614129902fda4e45aa7f0f7b635cc4f
+	md5sums = 922fc2e9b9efeaf50ad464cb1d7e57d0
+
+pkgname = wqy-microhei-kr-patched
+
