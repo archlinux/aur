@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-theme-elementary-mod
+	pkgdesc = Elementary Mod GNOME Shell theme.
+	pkgver = 20150524
+	pkgrel = 1
+	url = http://opendesktop.org/content/show.php?content=147378
+	arch = any
+	license = GPL3
+	depends = gnome-shell
+	optdepends = gnome-tweak-tool: A tool to customize advanced GNOME 3 options.
+	source = gnome-shell-theme-elementary-mod-20150524.tar.lzma::https://copy.com/QiAV4lBnxTWsoqBC/gnome-shell-theme-elementary-mod-20150524.tar.lzma?download=1
+	sha256sums = ecc426c5562f5713f035547355841601bccf317445a6d05dd3546d5c5f2016e5
+
+pkgname = gnome-shell-theme-elementary-mod
+
