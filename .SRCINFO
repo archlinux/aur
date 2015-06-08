@@ -1,0 +1,15 @@
+pkgbase = eclipse-dltk-rse
+	pkgdesc = Mylyn support for remote systems in Eclipse
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = http://www.eclipse.org/dltk/
+	arch = i686
+	arch = x86_64
+	license = EPL
+	depends = eclipse-dltk-core
+	depends = eclipse-rse
+	source = http://www.eclipse.org/downloads/download.php?r=1&file=/technology/dltk/downloads/drops/R5.0/R-5.0-201306060709/dltk-rse-I-201306060709.zip
+	md5sums = 057504f9a2023e1fb83cd9412027ef6e
+
+pkgname = eclipse-dltk-rse
+
