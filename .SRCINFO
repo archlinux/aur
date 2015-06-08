@@ -1,0 +1,20 @@
+pkgbase = qgo2-git
+	pkgdesc = Go client and full featured SGF editor; svn-snapshot of the next major version
+	pkgver = 2.1.0.2015.06.07.397c01d
+	pkgrel = 1
+	url = https://github.com/pzorin/qgo
+	install = qgo2.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = desktop-file-utils
+	depends = qt5-multimedia
+	conflicts = qgo
+	conflicts = qgo2-cvs
+	conflicts = qgo2-svn
+	source = qgo2-git::git+https://github.com/pzorin/qgo.git
+	md5sums = SKIP
+
+pkgname = qgo2-git
+
