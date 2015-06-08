@@ -1,0 +1,22 @@
+pkgbase = pari-git
+	pkgdesc = Computer algebra system designed for fast computations in number theory
+	pkgver = 20150608.ae00353
+	pkgrel = 1
+	url = http://pari.math.u-bordeaux.fr/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = perl
+	makedepends = texlive-core
+	makedepends = git
+	depends = gmp
+	depends = readline
+	depends = libx11
+	optdepends = perl: gphelp, tex2mail
+	provides = pari
+	conflicts = pari
+	source = git+http://pari.math.u-bordeaux.fr/git/pari.git
+	sha1sums = SKIP
+
+pkgname = pari-git
+
