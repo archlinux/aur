@@ -1,0 +1,15 @@
+pkgbase = fgsl
+	pkgdesc = A Fortran interface to the GNU Scientific Library
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://www.lrz.de/services/software/mathematik/gsl/fortran/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gsl
+	depends = gcc-fortran
+	source = http://www.lrz.de/services/software/mathematik/gsl/fortran/fgsl-1.0.0.tar.gz
+	sha256sums = 2841f6deb2ce05e153fc1d89fe5e46aba74c60a2595c857cef9ca771a0cf6290
+
+pkgname = fgsl
+
