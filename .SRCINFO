@@ -1,0 +1,16 @@
+pkgbase = python-pyfprint-git
+	pkgdesc = Python bindings for the libfprint fingerprinting library
+	pkgver = r12.e682eb1
+	pkgrel = 1
+	url = https://github.com/luksan/pyfprint
+	arch = i686
+	arch = x86_64
+	license = GPL-2
+	makedepends = swig
+	depends = python
+	depends = libfprint
+	source = git+https://github.com/xantares/pyfprint.git
+	md5sums = SKIP
+
+pkgname = python-pyfprint-git
+
