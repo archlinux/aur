@@ -1,0 +1,21 @@
+pkgbase = qmlvlc-git
+	pkgdesc = libvlc wrapper for Qt Quick 2/Qml
+	pkgver = 147.f87a2ca
+	pkgrel = 1
+	url = https://github.com/RSATom/QmlVlc
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = vlc
+	depends = qt5-declarative
+	provides = qmlvlc
+	conflicts = qmlvlc
+	source = git+https://github.com/RSATom/QmlVlc
+	source = enable-qmake.diff::https://patch-diff.githubusercontent.com/raw/RSATom/QmlVlc/pull/39.diff
+	source = git+https://github.com/RSATom/ya-libvlc-wrapper
+	sha256sums = SKIP
+	sha256sums = 0d8afaa149e3a69b0fa68318d778cdc9cb4800423575c88ecf120fd8173afa0a
+	sha256sums = SKIP
+
+pkgname = qmlvlc-git
+
