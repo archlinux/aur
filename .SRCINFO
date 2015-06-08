@@ -1,0 +1,16 @@
+pkgbase = perl-dirdb-storable
+	pkgdesc = DirDB extended to pass complex things to Storable
+	pkgver = 0.07
+	pkgrel = 1
+	url = http://search.cpan.org/dist/DirDB-Storable
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DA/DAVIDNICO/DirDB/DirDB-Storable-0.07.tar.gz
+	md5sums = b037e2bec449d8abf1a4c424ddd14aa5
+	sha512sums = dd5c1c6e937d8f1e2b388e216a3beeb74c130340e424cba5ed792fc2753bf3363b039558b2906aec64200923605c7453816442b104c1a986a35c3d003c969519
+
+pkgname = perl-dirdb-storable
+
