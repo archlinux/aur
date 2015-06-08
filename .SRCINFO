@@ -1,0 +1,42 @@
+pkgbase = linux-pax
+	pkgver = 4.0.4
+	pkgrel = 2
+	url = http://grsecurity.net/~paxguy1/
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	options = !strip
+	source = http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.xz
+	source = http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.4.xz
+	source = http://grsecurity.net/~paxguy1/pax-linux-4.0.4-test13.patch
+	source = config.x86_64
+	source = linux-pax.install
+	source = linux-pax.preset
+	sha256sums = 0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991
+	sha256sums = c268985a82483fe75f0f397217208e262f85a356d1d9f34b9e22255e549d7ce9
+	sha256sums = 8c3d811ec50618a33ac15fadb0c80493399ec412b5cb09fe70f3b32f0b2e75a6
+	sha256sums = 5d95766f5c35a49bc4a605a98ee04e63b9d1580d513fe45f5e5d351a17f19c13
+	sha256sums = c048941d45cdaa9b93916b88952e1b745a48a477f45aceb6ae5433161ff719c3
+	sha256sums = 92aadb166d50ca040c7789a4a32cf242f687f357aab2521fd8b807d5479c6c2a
+
+pkgname = linux-pax
+	pkgdesc = The Linux Kernel and modules with PaX patches
+	install = linux-pax.install
+	groups = base
+	depends = linux-pax-flags
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = kernel26-pax
+	conflicts = kernel26-pax
+	replaces = kernel26-pax
+	backup = etc/mkinitcpio.d/linux-pax.preset
+
+pkgname = linux-pax-headers
+	pkgdesc = Header files and scripts for building modules for linux kernel with PaX patches
+	provides = kernel26-pax-headers=4.0.4
+	conflicts = kernel26-pax-headers
+	replaces = kernel26-pax-headers
+
