@@ -1,0 +1,24 @@
+pkgbase = kjsembed-git
+	pkgdesc = KJSEmbed
+	pkgver = r54.5c33414
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/kjsembed
+	arch = i686
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	makedepends = qt5-tools
+	makedepends = kdoctools
+	depends = ki18n-git
+	depends = qt5-svg
+	depends = kjs-git
+	depends = karchive-git
+	provides = kjsembed
+	conflicts = kjsembed
+	source = git://anongit.kde.org/kjsembed.git
+	md5sums = SKIP
+
+pkgname = kjsembed-git
+
