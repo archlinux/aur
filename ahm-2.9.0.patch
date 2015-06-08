@@ -1,0 +1,1375 @@
+diff -aur xf86-input-evdev-2.9.0.orig/README "xf86-input-evdev-2.9.0.fixed manually/README"
+--- xf86-input-evdev-2.9.0.orig/README	2013-04-10 16:24:31.000000000 +1000
++++ "xf86-input-evdev-2.9.0.fixed manually/README"	2014-06-08 14:47:16.720207597 +1000
+@@ -1,20 +1,680 @@
+-xf86-input-evdev - Generic Linux input driver for the Xorg X server
++Welcome to "At Home Modifier" hack of xf86-input-evdev. The original
++README is moved to README.orig.
+ 
+-Please submit bugs & patches to the Xorg bugzilla:
++Search for the word "News" for the news.
+ 
+-        https://bugs.freedesktop.org/enter_bug.cgi?product=xorg
++Contents
++========
++* What it is
++* Web site
++* Get it
++* Usage
++ * FAQ
++* Author
++* Bugs
++* Future direction
++* Random bits
++* History (News are here)
++* Source code
++* Copyright
+ 
+-All questions regarding this software should be directed at the
+-Xorg mailing list:
++What it is
++==========
++It enables for example "Shift/Space dual role key." When you press the
++space key alone, it's a space; but when you press it with another key,
++it's a shift. And/or Alt/Esc, AltGr/BS...
+ 
+-        http://lists.freedesktop.org/mailman/listinfo/xorg
++It is a fork of evdev driver = xf86-input-evdev. It's ** only for
++Linux ** - X in other platforms don't use evdev driver. You can use
++"keydouble" referred below if you're not a Linux user. For MS Win
++users, there's AutoHotKey.
+ 
+-The master development code repository can be found at:
++With this hack, your hands can stay at the home position almost
++always, and feel more "at home", thus "At Home Modifier".
+ 
+-        git://anongit.freedesktop.org/git/xorg/driver/xf86-input-evdev
++More precisely, you specify pairs of two keycodes, the "original", and
++the "translated". The last event gets recorded in this patch. After
++the press of one of "original" keys, the driver instead reports a
++translated key press event. When an original key is released, it sends
++a release of the translated key. And it sends a press and release of
++the original key if necessary, judging from the last event.
+ 
+-        http://cgit.freedesktop.org/xorg/driver/xf86-input-evdev
++Web site
++========
++http://gitorious.org/at-home-modifier/pages/Home
+ 
+-For more information on the git code manager, see:
++Distro forum threads:
++* Gentoo: https://forums.gentoo.org/viewtopic-t-865313.html
++* Arch: https://bbs.archlinux.org/viewtopic.php?pid=938140
++* Ubuntu: http://ubuntuforums.org/showthread.php?p=10907505
++* Debian: http://forums.debian.net/viewtopic.php?f=20&t=65950
+ 
+-        http://wiki.x.org/wiki/GitPage
++Get it
++======
++
++Download
++--------
++The tar.gz is here:
++http://gitorious.org/at-home-modifier/download/blobs/raw/master/source/ahm-2.8.0.tar.gz
++
++You can also download the patch against the Xorg's original driver,
++"xf86-input-evdev" from the website.
++
++git
++---
++Git access is available, too. For the first time, install git, and clone as
++  $ cd some/dir
++  $ git clone git://gitorious.org/at-home-modifier/at-home-modifier.git
++
++You can receive updates by
++  $ cd some/dir/at-home-modifier
++  $ git pull
++
++Version tags
++------------
++  $ git tag -l "ahm*"
++lists all releases, like ahm-2.5.1.
++
++You can see the difference to the original code by:
++  $ git diff xf86-input-evdev-2.5.0..ahm-2.5.0
++
++Install
++-------
++* Gentoo Linux users can use ebuild files. Visit the Gentoo Forum thread.
++* Arch Linux AUR entries are there. Visit the Arch Forum thread.
++* Debian and its derivatives: Visit the Debian Forum thread.
++
++Forum threads are listed above.
++
++Other Linux users can install it by replacing xf86-input-evdev.
++Compilation can be done just the same way as the original. I'd
++appreciate it a lot if you could send me your distro support.
++
++** Server upgrading note **
++When you upgrade your xorg-server-x.y.z, be sure to rebuild this
++driver, too. (Change in z doesn't affect, but x or y does.)
++
++Usage
++=====
++First, know the keycodes you need, which are numbers assigned to each
++physical key. It's easiest to install and invoke "xev" commands. In my
++case it says space is 65, and left shift is 50. OK. (See below for
++complicated cases.) Then write your xorg.conf or
++xorg.conf.d/10-keyboard.conf:
++
++  # For the details see "man xorg.conf" or your distro doc.
++  Section "InputClass"
++    Identifier "my keyboard"
++    Driver "evdev"
++    Option "XKBOptions" "terminate:ctrl_alt_bksp" # and so on
++
++    # If you save this file under xorg.conf.d/ :
++    Option "AutoServerLayout" "on"
++
++    MatchIsKeyboard "on"
++    # If you have multiple keyboards, you want something like one of them:
++    #  MatchProduct "AT Translated Set 2 keyboard"
++    #  MatchUSBID "0566:3029"
++    # Name is found in Xorg log, following the message "Adding input device"
++    # or by
++    # $ cat /proc/bus/input/devices
++
++    ### at-home-modifier options begin here.
++    # The basic option.
++    Option "TransMod" "65:50 102:241" # Defines key/modifier pairs.
++
++    ## Fine tuning options. Explained in a later section.
++    # For the first time, omit them.
++
++    # Option "AhmTimeout" "400" # In millisecond.
++    # Option "AhmDelay" "65 102" # Delayed keys. Seperate by spaces.
++    # Option "AhmFreezeTT" "true"
++    # Option "AhmResetTime" "10" # In sec.
++    # Option "AhmPaddingInterval" "10" # In millisecond.
++  EndSection
++
++If you want to specify multiple pairs for TransMod, separate them with
++whitespaces, like this:
++
++  Option "TransMod" "65:240 102:241 100:241"
++
++Don't forget to restart X!
++
++Notice that the modifier keys should come to the second of pairs.
++
++Options recognized by at-home-modifier (in fact, by any X drivers)
++are printed to X log, typically /var/log/Xorg.0.log, like this:
++
++  [    50.579] (**) Option "AhmTimeout" "400"
++
++Fine tuning options
++-------------------
++For the first time, skip this section. Come back after you actually
++try.
++
++*** Other keys ***
++
++Assume you want the Left-Alt to be Alt/Esc. Then assign Esc to that
++key, using xmodmap. If you don't have any other Alt keys, then allocate
++Alt to keycode 240 or so, which must be unused on usual keyboards.
++
++For more complicated changes, you can tamper with files in
++/usr/share/X11/xkb/symbols/. See also the section "More on keycodes"
++below.
++
++The bottom row of my keyboard is Esc-BS-Spc-Ret-Tab, from left to
++right, with the overlay Alt-Shift-Ctrl-Shift-Alt. (Japanese keyboards
++have many keys you can press with thumbs. Now you can switch Firefox tabs
++with thumbs.=)
++
++You can use any keys for transmods. "d" & "k" (and so on) may be good.
++When you want to capitalize the left-hand keys, press "k", and "d"
++for right-hands. This may sound too complex, but you'll be soon
++accustomed.
++
++*** Cancellation by long press (timeout) ***
++
++Suppose you were about to input shift + A and pressed space/shift, but
++you changed your mind. If you release the space/shift key, you'll
++receive one space, but it's not what you want!
++
++Actually, a workaround is provided by time-out; a long enough press
++cancels that kind of press. If you have the following line in evdev
++driver configuration,
++
++  Option "AhmTimeout" "400" # In millisecond.
++
++then a single press and release of space/shift key produces nothing if
++the press lasts more than 0.4 sec. The default is 0.6 sec. You can
++disable timeout by setting it to 0.
++
++*** Fast type fix (delay) ***
++
++(Probably this option is not so satisfactory) Users of this hack often
++have "tongue-twister of fingers": Suppose you want a space and a lower
++case x. If the first press of space/shift is followed first by a press
++of x and then a release of space/shift, you'll get an upper-case X
++instead.
++
++To fix it, you can let "delay" be associated to space/shift, like:
++
++    Option "AhmDelay" "65 102" # Delayed keys. Separate by white space
++
++Then the press of x (or any) following space/shift is "delayed",
++and completes after release of space/shift or x.
++
++There's a trade off. Whenever you want a real shift, you have to
++release the space/shift later.
++
++This feature is not (yet) satisfactory for the author. Maybe it
++should be treated as a modifier only if the key is pressed long
++enough (say 100ms), in addition to / instead of the press-release
++orders.
++
++*** Successive transmod tuning ***
++
++A subtle fix is enabled by default; suppose a transmod X has been
++pressed. If "transmod Y press, X release" follows, then the press of Y
++is treated as the original key. It's probably what you want.
++
++You can disable it by setting the boolean option "AhmFreezeTT" to false.
++("TT" is meant for "transmod-transmod".)
++
++See also "Corner cases in press and release order" below.
++
++*** Reset ***
++
++Sometimes translated modifiers get frozen (See "Switching VT" section
++below), so a workaround is provided; just leave the keyboard long
++enough time (default 10 secs) untouched.
++
++You can change this time with the following option:
++    Option "AhmResetTime" "10" # In sec.
++To disable this feature, set it to 0.
++
++Reset is implemented by sending release events to all translated
++modifiers, and clearing internal variables. The time measurement is
++not exact, and the maximal error is 1 sec. (Implementation note: It's
++because the sub-second field of timeval struct is ignored.) The exact
++time things get reset is the first time you touch the keyboard.
++
++*** Gtk widget double-press workaround (padding interval) ***
++
++Suppose you focus a gtk window with a button widget. When you press
++the shift/space, the button should be pressed. But with this hack,
++you may have to press the key twice; the first press merely focuses
++the button, and the second key press becomes the real push.
++
++As a workaround, "padding interval" can be set:
++    Option "AhmPaddingInterval" "10" # In millisecond.
++The default value is 10 ms, and I think it's good, but if it doesn't
++work, set it bigger.
++
++How it works: remember that a release of shift/space key, without touching
++other keys, sends a release of shift, a press of space, and its
++release. Padding interval is inserted between the shift release and
++the space press. Bigger the value, likelier to work, but the latency
++gets bigger, too.
++
++I don't know what's happening inside of gtk, but this solves.
++
++More on keycodes
++----------------
++It's good to know that you can also tell keycodes by looking at
++/usr/share/X11/xkb/keycodes/evdev in order to customize the keyboard
++layout with XKB. For example that file says:
++
++    <SPCE> = 65;  // space
++    ...
++    <LFSH> = 50;  // left shift
++
++Ok, but what's this?
++    <AE02> = 11;
++
++Hm, if you use for example Italian layout, see
++/usr/share/X11/xkb/symbols/it. It has lines:
++
++  xkb_symbols "basic" {
++   ...
++   key <AE02>  { [         2,   quotedbl,  twosuperior, dead_doubleacute ] };
++   ...
++  }
++
++  xkb_symbols "nodeadkeys" {
++    // Modifies the basic italian layout to eliminate all dead keys
++    ...
++    key <AE02>  { [         2,   quotedbl,  twosuperior,  doubleacute ] };
++    ...
++  }
++
++Aha, so that key is basically "2".
++
++FAQ
++---
++* Q: I need to input Shift+Space. How can I do it if my space is
++     Space/Shift key?
++  A: Simple. Turn both of the original Space and Shift into Space/Shift keys,
++     for example.
++
++Please!
++-------
++If you think this fork is good, please tell it to others, at blogs,
++forums, etc. If it doesn't become popular, it remains my personal hack,
++and it may soon become impossible for me to maintain!
++
++Or, you can upvote this answer in stackoverflow.com to draw more
++attention:
++http://stackoverflow.com/a/8935973
++
++Please give your feedback. The host site doesn't provide an access
++counter, so I can't measure the popularity.
++
++Author
++======
++Teika kazura <teika ahm-is-great at lavabit ahm-is-great dot com>
++
++Delete "ahm-is-great" in the address.
++
++It's good *not* to trust authors you find on the Web. You may be
++reassured to know that I was a developer of Sawfish window manager:
++  http://sawfish.wikia.com/wiki/User:Teika_kazura
++
++Bugs
++====
++
++Fixed bugs
++----------
++* In 2.6.3
++  ** Gtk widget double press issue.
++  To push a gtk button, sometimes you had to press space/shift key
++  twice, but this is fixed. If it doesn't work out-of-box, set
++  "AhmPaddingInterval" option.
++  (This "bug" is not the author's fault, but what's bad for users
++  are bugs.=)
++
++  ** Reset and Delayed key
++  "Delay" and "Reset" are features introduced in 2.6.2. If a delayed
++  key is pressed after a long enough period is passed (i.e. a reset is
++  done), the press was ignored. It's fixed now.
++
++* In 2.6.2
++  ** Key release interference bug
++  Suppose you press x, space/shift, release x, release
++  space/shift. Probably you wanted "x ". But formerly, only "x" is
++  sent. (More precisely, "x" + shift are sent. Don't confuse it with
++  "AhmDelay".)
++
++  ** Frozen key bug
++  Probably ahm-2.6.0 has introduced a new bug which makes some keys
++  irresponsive.  The bug existed in theory, but the author has never
++  experienced it actually.
++
++  ** Memory leak
++  Previous version had slight memory leaks (almost unnoticeable).
++
++  ** (obsolete) keycode limit
++  __This feature is deleted in 2.6.3__
++  X's keycode limit is 255, but linux input driver's keycode limit is
++  0x2ff. Now it accepts input codes > 255.
++
++* In 2.6.0
++  ** Double shift bug
++  Suppose both key a and b are translated to shift. Press a, b, and
++  release b. Then it should be 'B', but it used to emit lower b. It's
++  because the release of shift was sent before b key press.
++
++Known bugs
++----------
++* Switching VT: If your Ctrl is a transmod key, when you switch from X
++  to a virtual console with Ctrl + Alt + F1, and switch back to X with
++  Alt + F1, Ctrl get frozen. This is mitigated with "reset" feature.
++
++  It happens because Ctrl is pressed at the first switching, but the
++  release is only sent to the VT, not to X, in particular to this driver.
++
++Not a bug
++---------
++Many keyboards fail to send some combinations of key presses. For
++example, mine doesn't report Left-alt + space(Ctrl intended) +
++cursor-down nor alt + space + delete (whereas alt + space + up is
++dispatched!!)  All normal symbol keys pressed with alt + space work.
++
++Keyboards with "n-key rollover" are the solution, and completely ok
++for this hack, but they may be expensive. (USB connection can't report
++7 or more simultaneous presses, but it doesn't matter for us.)
++
++*** Limitations ***
++This driver is unaware of others, for example of synaptic driver.
++Suppose you press space/shift and the left click of notebook touchpad.
++It'll work as shift + click, but a space key event follows. (Timeout
++can give a workaround.)
++
++Future direction
++================
++Probably the author, Teika kazura, won't develop this hack any more as
++a fork of X evdev driver.
++
++Realistic solutions are to re-implement it using X Record extension
++and XTest extension. There's already Space2Ctrl and Keydouble. See
++below for more. (X Record records inputs, and XTest synthesizes
++events. They're better than mine since they work in user space. The
++codes are far smaller and much easier to read, and you don't have to
++keep up with Xorg changes so much.)
++
++It's great if it's integrated into AutoKey[2]. It's a nice utility
++similar to AutoHotKey for MS Win, and it has some automation power
++using Python. It also uses X Record extension, and probably interfere
++with Space2Ctrl and Keydouble. Unfortunately, the AutoKey developer is
++not interested.[3] If you can, please help them.
++
++[2] http://code.google.com/p/autokey/
++[3] http://code.google.com/p/autokey/issues/detail?id=200
++
++This hack can't be merged upstream.[1] One unlikely solution is to
++implement this in "XKB2", which will, probably, never be written.
++(Wayland is far likelier to be than XKB2.)
++
++[1] http://lists.x.org/archives/xorg/2010-December/052133.html
++
++Wish items
++----------
++Autorepeat support. For example, you press space/shift twice in a row,
++and/or hold it long enough, then it's turned to the press of space,
++rather than shift.
++
++Delay improvement. See the "Delay" section
++
++Two-way arguments: currently an original-translated pair is written
++as "65:50". It's better to allow "65:50m" or "50m:65", "m" meaning
++"modifier".
++
++"Dynamic configuration", or config changes on-the-fly may be good, for
++example enabling some keys only when you're using an input method.  I
++don't know anything about socket or inter-process communication, so
++please tell me how to do it. (Space2Ctrl and Keydouble don't need
++this. Simply kill the process and run another.)
++
++See also this page for some ideas:
++http://www.ruska.it/michal/fork.html
++
++Bug reporting
++-------------
++When you report a bug, don't forget to disable autorepeat by
++  $ xset -r [<keycode>]
++
++It's better to make AhmResetTime big, and if you enable AhmDelay,
++set it big, too.
++
++I compile with -Wall -Wextra, and my code does not bring in any extra
++warning.
++
++Corner cases in press and release order
++---------------------------------------
++There're many corner cases, and I can't predict all. The option
++"AhmFreezeTT" is easy not only to reason, but also to code, but
++more complicated examples may not be so.
++
++More may be possible, by knowing which keys are modifiers. (This hack
++doesn't use any information which are modifiers. What's done is a
++simple translation.) You can get the required information by Xlib or
++XKB, but it'll be an inverted implementation, fetching the high-level
++part from the raw world.
++
++Or programmable configuration (together with timestamp support),
++something like an automaton, may help.  But don't ask me it. I don't
++know how to design such logic nor to write a parser.
++
++Random bits
++===========
++
++Will this patch speed up typing?
++--------------------------------
++In my case, it didn't. But I (or my hands) feel far better and I can't
++do without this fork any more. It's much less tiring, so it may be
++more efficient if you use keyboard for long time in a day.
++
++In fact, this hack introduces some nicety. Options like delay and
++timeout are intended for the cure, but they bring in others.
++
++Warning: Health issue
++---------------------
++This hack is likely to reduce the use of your pinkies, and the risk of
++their injury like RSI. However, overuse of keyboards can damage *any*
++digits and other parts of your hand, although pinkies are most
++vulnerable.
++
++Good keyboards
++--------------
++If you can buy a Japanese keyboard, I recommend one. The Japanese
++keyboard is a "cheap Kinesis"; the space key is short, and there're
++keys around the space key which can be easily pressed with thumbs.
++(Have you ever heard of Kinesis Contoured Keyboard?) See for example
++http://en.wikipedia.org/wiki/Keyboard_layout
++
++But it's only the layout. I can't assure the overall quality. Of course
++it's better to try before you buy...
++
++"Realforce" keyboard made by Topre is unique with capacitive key
++switches whose touch is really soft. "HHK Professional" (HHK = Happy
++Hacking Keyboard) also uses Topre's switch.
++
++Kinesis contoured, Realforce and HHK Professional come with n-key
++rollover.  (See also "not a bug" section above for "key rollover".)
++
++FYI: mine is OWL-KB86STD made by Owltech. It's cheap, and has cheap
++touch, but I like the layout. You can buy it from Amazon Japan.
++(I don't like Amazon hegemony, but they provide English interface.
++Many Japanese keyboards are sold at amazon.com, too.)
++
++OWL-KB109BM(B)IIB has "Cherry mx brown switches", so may be good.
++See http://forums.gentoo.org/viewtopic.php?p=7019478#7019478 for more
++discussion.
++
++Alternatives
++============
++There're some alternative candidates of at-home-modifier.
++
++* Xcape, Space2Ctrl & Keydouble
++  https://github.com/alols/xcape (xcape)
++  https://github.com/r0adrunner/Space2Ctrl (Space2Ctrl)
++  https://github.com/baskerville/keydouble (Keydouble)
++
++  Xcape is independently written by Albin Olsson. Accepts
++  configuration with key names in addition to keycodes. The keydouble
++  author recommends xcape over keydouble.
++
++  Space2Ctrl by "r0adrunner" is minimal, only supports "Space to
++  Ctrl", and not configurable. Written in C++.
++
++  Keydouble by "baskerville" is a rewrite of Space2Ctrl in C. Has a
++  bit less options than mine.
++
++Obsolete alternatives
++---------------------
++* actkbd: It works by direct access to /dev/input, but not updated
++  since 2007. I don't think it's flexible enough.
++
++    http://users.softlab.ntua.gr/~thkala/projects/actkbd/
++
++* 窓使いの憂鬱 (Mado-tsukai no yū-utsu; meaning "Spleen of Windows
++  Users") for Linux & Darwin: It's a port of a Windows key tuner
++  software "窓使いの憂鬱", comparable to AutoHotkey. Japanese
++  documentation only. The author is not reachable. Not maintained
++  actively. It uses uinput. The last update was in Nov 2011.
++
++    http://www42.tok2.com/home/negidakude/
++
++History
++=======
++
++News
++----
++* 2.8.0 (jun 2013):
++  * Merged upstream 2.8.0.
++    More precisely,
++    * There're two fix-up commits after 2.8.0 in the upstream. They're
++      merged too.
++    * In ahm-2.7.1, configure option "--without-mtdev" was added. But
++      now it's deleted, and mtdev dependency is mandatory.
++
++* 2.7.3 (nov 2012):
++  * Merged upstream 2.7.3. Ahm-2.7.2 was never released.
++
++* 2.7.1 (jun 2012):
++  * Merged upstream 2.7.0. No any change in ahm per se, except doc.
++    * An upstream bugfix of horizontal scroll, X.Org Bug 46205, is
++      included. (The fix is published after the 2.7.0 release.)
++    * Added an option to configure script "--without-mtdev". The
++      upstream code always checks mtdev, and enable it when found.
++      If you don't pass the above option, it falls back to the
++      original behavior.
++
++      This change, commit 371543edf0b, probably has to be reverted
++      before merging upstream 2.8.0. The upstream suggests mtdev
++      dependence will be forced in future versions.
++  * Read also "Future direction" section in this README.
++  * The hack version is 2.7.1, not 2.7.0, without much reason.
++
++* 2.6.4 (dec 2011):
++  * Other device awareness
++    When you press space/shift and a mouse button, the result used to be
++    shift + click, ok, but also followed by an extra, unwanted
++    space, as if the click hadn't happened. It's because each device
++    ignored others. Now it's fixed, as long as the mouse is also
++    handled by evdev driver. (Notebook touchpads are dealt by
++    synaptics driver, so it's not fixed, and won't be fixed. Use
++    AhmTimeout option as a workaround.)
++
++    Thanks to the ArchLinux forum user "grimp3ur" for the idea.
++* 2.6.3 (nov 2011):
++  * Bugs fixed
++    Gtk button double press bug. Reset and delayed key bug.
++  * Big keycode support is deleted.
++    In 2.6.2, big keycode support was introduced, but it's
++    deleted. loadkeys (1) command suffices.
++* 2.6.2 (oct 2011):
++  * New features
++    Long press cancellation (Option "AhmTimeout"), fast type fix
++    (Option "AhmDelay"), successive transmod tuning (Option
++    "AhmFreezeTT"), reset (Option "AhmResetTime") are implemented.
++
++    Thanks to the ArchLinux forum user "bloom" for the idea of
++    long press cancellation.
++  * Bugs fixed
++    Release interference bug, keycode limit bug, and 2 other minor
++    bugs are fixed.
++  * Documentation
++    New sections: "Not a bug", "Corner cases", "Alternatives", "Source
++    code".
++    New bug item: "Switching VT".
++    New wish items: "Dynamic configuration", "autorepeat support"
++  * Feature deleted in later release.
++    "Big keycode support" is introduced in 2.6.2, but deleted in 2.6.3.
++* 2.6.1 was never released.
++* 2.6.0 (apr 2011): Merged upstream 2.6.0. "Double shift bug" is fixed.
++* 2.5.1 (feb 2011): Minor documentation updates.
++* 2.5.0 (feb 2011): Initial release. Forked from upstream 2.5.0 = xf86-input-evdev-2.5.0.
++
++Versions 2.X.y are based on the upstream 2.X.0, unless noted explicitly.
++
++Background
++----------
++What was proposed originally was called "SandS" - stands for "Space and
++Shift" - which dates back to year 2001, by K. Kimura.[1] There's
++implementations in Mac and Win, and has a modest popularity in Japan
++still in year 2011. (K. Kimura has also contributed a lot to Japanese
++input methods.)
++
++In 2008 T. Matsuyama implemented it for X keyboard driver.[2] Then
++came a port to evdev driver by "jeneshicc".[3] But they lack
++generality; you can only use physical shift, alt, and space keys. My
++code is based on the last patch. I appreciate their work.
++
++[1] (Japanese) http://hp.vector.co.jp/authors/VA002116/
++[2] (Japanese)
++http://dev.ariel-networks.com/Members/matsuyama/keyboard-customize
++[3] (Japanese):
++http://d.hatena.ne.jp/jeneshicc/20100306/1267843799
++
++Space2Ctrl was (probably) written independently in 2011.
++
++Source code
++===========
++
++(Rather than developing this hack more, I recommend you to deal with
++Keydouble or AutoKey.)
++
++Required knowledge
++------------------
++Required is only C knowledge, none of X. I've added some comments, so
++it must be easy to understand.
++
++src/evdev.h
++-----------
++Search for "ahm variables".
++
++In src/evdev.c, gcc __attribute__ is used. To support other compilers,
++it's defined null when __GNUC__ is not defined.
++
++src/evdev.c
++-----------
++* Parsing options
++  Ahm options are parsed in function NewEvdevPreInit. Search for
++  "parse ahm options".
++
++* Earlier event handling
++  In the Xorg original code, keyboard events are handled by
++  EvdevQueueKbdEvent. Ahm wraps it with AhmStep1 and AhmStep2, and
++  WrapEvdevQueueKbdEvent.
++
++* Later event handling
++  In the original code, events get really sent in
++  EvdevPostQueuedEvents. To implement AhmPaddingInterval, this
++  function is changed a bit, by queuing key events in ahm's own queue,
++  and asynchronous timer is set. Timer related functions I've added
++  are: AhmWakeupHandler, AhmBlockHandler, AhmRegisterTimers and
++  AhmFinalise.
++
++License
++=======
++Distributed under MIT License; Same as Xorg.
+Only in xf86-input-evdev-2.9.0.fixed manually/: README.orig
+diff -aur xf86-input-evdev-2.9.0.orig/src/evdev.c "xf86-input-evdev-2.9.0.fixed manually/src/evdev.c"
+--- xf86-input-evdev-2.9.0.orig/src/evdev.c	2014-05-20 15:41:26.000000000 +1000
++++ "xf86-input-evdev-2.9.0.fixed manually/src/evdev.c"	2014-06-08 15:03:08.040591069 +1000
+@@ -141,6 +141,8 @@
+ static Atom prop_virtual;
+ static Atom prop_scroll_dist;
+ 
++static InputInfoPtr ahmLastEventDevice;
++
+ static int EvdevSwitchMode(ClientPtr client, DeviceIntPtr device, int mode)
+ {
+     InputInfoPtr pInfo;
+@@ -282,23 +284,359 @@
+     return &pEvdev->queue[pEvdev->num_queue - 1];
+ }
+ 
+-void
++/*
++ * Returns 0 on failure, 1 on success.
++ * In the original, upstream code, it's a void function.
++ */
++int
+ EvdevQueueKbdEvent(InputInfoPtr pInfo, struct input_event *ev, int value)
+ {
+     int code = ev->code + MIN_KEYCODE;
+     EventQueuePtr pQueue;
+ 
+-    /* Filter all repeated events from device.
+-       We'll do softrepeat in the server, but only since 1.6 */
+-    if (value == 2)
+-        return;
++  /* Filter all repeated events from device.
++     We'll do softrepeat in the server, but only since 1.6 */
++	  if (value == 2){
++	    return 1;
++	  }
++
++  if ((pQueue = EvdevNextInQueue(pInfo)))
++  {
++    pQueue->type = EV_QUEUE_KEY;
++    pQueue->detail.key = code;
++    pQueue->val = value;
++    return 1;
++  }
++  else{
++    return 0;
++  }
++}
+ 
+-    if ((pQueue = EvdevNextInQueue(pInfo)))
+-    {
+-        pQueue->type = EV_QUEUE_KEY;
+-        pQueue->detail.key = code;
+-        pQueue->val = value;
++/*
++ * Inside of AhmStep2, the keycode is X value. Restore the linux/input.h
++ * value which EvdevQueueKbdEvent accepts.
++ */
++static int
++WrapEvdevQueueKbdEvent(InputInfoPtr pInfo, struct input_event *ev, int value, int code){
++  ev->code = code - MIN_KEYCODE;
++  return EvdevQueueKbdEvent(pInfo, ev, value);
++}
++
++/* If the transmod "orig" key is pressed long enough and thus
++   timed out, it returns 1. Otherwise 0 */
++static int ahmTimedOutP(long int lastSec, long int lastUsec, struct input_event *ev, int timeOut){
++
++  /* timeOut is not set */
++  if(timeOut == 0){
++    return 0;
++  }
++
++  if( (ev->time.tv_sec - lastSec) * 1000
++      + (ev->time.tv_usec - lastUsec) / 1000
++      > timeOut){
++    return 1;
++  }else{
++    return 0;
++  }
++}
++
++/*
++ * Handles transmod and timeout
++ * code is X code, i.e. ev->code + MIN_KEYCODE
++ */
++static void
++AhmStep2(InputInfoPtr pInfo, struct input_event *ev, int value, int code)
++{
++  EvdevPtr pEvdev = pInfo->private;
++
++  int lastPressCode;
++
++  unsigned int * transModTable = pEvdev->transModTable;
++  int * transModCount = pEvdev->transModCount;
++
++  lastPressCode = pEvdev->lastPressCode;
++
++  if(value == 1){
++    pEvdev->lastPressCode = code;
++  }
++
++  if((value == 0)
++     && transModTable[lastPressCode]
++     && (lastPressCode != code)
++     && transModTable[code]
++     && (pEvdev->lastValue == 1)
++     && pEvdev->ahmFreezeTT){
++    /* Implements AhmFreezeTT */
++    transModCount[transModTable[lastPressCode]]--;
++    if(transModCount[transModTable[lastPressCode]] <= 0){
++      WrapEvdevQueueKbdEvent(pInfo, ev, 0, transModTable[lastPressCode]);
++    }
++    if(transModCount[transModTable[lastPressCode]] < 0){
++      /*
++       * Usually this doesn't happen, but not never, either.
++       * Thus in fact this line is necessary.
++       */
++      transModCount[transModTable[lastPressCode]] = 0;
++    }
++    WrapEvdevQueueKbdEvent(pInfo, ev, 1, lastPressCode);
++    pEvdev->transModFreeze[lastPressCode] = 1;
++
++    /* Treat the latest keycode as usual in the following. */
++  }
++
++  if(transModTable[code]){
++    if(pEvdev->transModFreeze[code] == 1){
++      /*
++       * When a freeze happens is explained above.
++       * If it's frozen, send the original key code.
++       */
++      WrapEvdevQueueKbdEvent(pInfo, ev, value, code);
++      pEvdev->transModFreeze[code] = 0;
++    }else{
++      /* Transmod, not frozen */
++
++      if(value == 1){
++	/* press */
++
++	/*
++	 * Role of transModCount: suppose both key a and b are translated
++	 * to left shift. Press a, b, and release b. Then it should be 'B'.
++	 * But without transModCount, first the shift would be released,
++	 * so lower b be emitted.
++	 */
++	transModCount[transModTable[code]]++;
++	WrapEvdevQueueKbdEvent(pInfo, ev, 1, transModTable[code]);
++      }else{
++	/* release */
++	transModCount[transModTable[code]]--;
++	if(transModCount[transModTable[code]] <= 0){
++	  WrapEvdevQueueKbdEvent(pInfo, ev, 0, transModTable[code]);
++	}
++	if(transModCount[transModTable[code]] < 0){
++	  /*
++	   * Usually this doesn't happen, but not never, either.
++	   * Thus in fact this line is necessary.
++	   */
++	  transModCount[transModTable[code]] = 0;
++	}
++
++	if((lastPressCode == code)
++	   && (ahmLastEventDevice == pInfo)
++	   && (ahmTimedOutP(pEvdev->lastEventTime.tv_sec,
++			    pEvdev->lastEventTime.tv_usec,
++			    ev, pEvdev->ahmTimeout) == 0)
++	   ){
++	  /*
++	   * Simple press and release of a transMod key, so
++	   * send the original code.
++	   */
++	  WrapEvdevQueueKbdEvent(pInfo, ev, 1, code);
++	  WrapEvdevQueueKbdEvent(pInfo, ev, 0, code);
++	}
++      }
+     }
++  }else{
++    /* Plain key */
++    if(value){
++      transModCount[code]++;
++      WrapEvdevQueueKbdEvent(pInfo, ev, 1, code);
++    }else{
++      transModCount[code]--;
++      if(transModCount[code] <= 0){
++	WrapEvdevQueueKbdEvent(pInfo, ev, 0, code);
++      }
++      if(transModCount[code] < 0){
++	/*
++	 * Usually this doesn't happen, but not never, either.
++	 * Thus in fact this line is necessary.
++	 */
++	transModCount[code] = 0;
++      }
++
++    }
++  }
++  pEvdev->lastValue = value;
++  ahmLastEventDevice = pInfo;
++}
++
++/* Handles reset and ahmDelay before AhmStep2 */
++static void
++AhmStep1(InputInfoPtr pInfo, struct input_event *ev, int value){
++  /*
++   * Meaning of ev->code is described in linux/input.h, "Keys and buttons"
++   * section.
++   * code + MIN_KEYCODE is the value used by X, listed in
++   * /usr/share/X11/xkb/keycodes/evdev.
++   *
++   * Meaning of value: 0: release, 1: press, 2: autorepeat.
++   * Notice that autorepeat is _sent by kernel input driver_. Don't
++   * confuse it with X server autorepeat which is set by xset command.
++   */
++  int code = ev->code + MIN_KEYCODE;
++  EvdevPtr pEvdev = pInfo->private;
++
++  int* ahmDelayedCode = pEvdev->ahmDelayedCode;
++
++  /*
++   * Autorepeat has to be filtered for ahm, too.
++   * See also the comment in EvdevQueueKbdEvent.
++   * Early return will also be implemented in upstream 2.7.0.
++   */
++  if(value == 2){
++    return;
++  }
++
++  /* Reset part */
++  if (pEvdev->ahmResetTime &&
++      (ev->time.tv_sec - pEvdev->lastEventTime.tv_sec >
++       pEvdev->ahmResetTime)){
++    /*
++     * (more than) ahmResetTime (sec) has elapsed since the last press event.
++     * Release all translated modifiers, and reset transModCount and
++     * freeze table.
++     */
++    int c;
++    for(c = MIN_KEYCODE; c < 256; c++){
++
++      if(pEvdev->transModTable[c]){
++	/*
++	 * I think release of transModTable[c] suffices,
++	 * and release of c is not necessary.
++	 */
++	WrapEvdevQueueKbdEvent(pInfo, ev, 0, pEvdev->transModTable[c]);
++      }
++      pEvdev->transModCount[c] = 0;
++      pEvdev->transModFreeze[c] = 0;
++    }
++    pEvdev->ahmDelayedKeys = 0;
++  }
++
++  /* Delay part. */
++
++  /* How many keys are already delayed? */
++  switch(pEvdev->ahmDelayedKeys){
++  case 0:
++    if(pEvdev->ahmDelayTable[code] && value){
++      ahmDelayedCode[0] = code;
++      pEvdev->ahmDelayedKeys = 1;
++    }else{
++      AhmStep2(pInfo, ev, value, code);
++    }
++    break;
++  case 1:
++    if(value == 0){
++      /* Release. Replay it. */
++      AhmStep2(pInfo, ev, 1, ahmDelayedCode[0]);
++
++      AhmStep2(pInfo, ev, 0, code);
++      pEvdev->ahmDelayedKeys = 0;
++    }else{
++      /* Another key is pressed. Queue this second event, too.*/
++      ahmDelayedCode[1] = code;
++      pEvdev->ahmDelayedKeys = 2;
++    }
++    break;
++  case 2:
++    pEvdev->ahmDelayedKeys = 0;
++    if( (value == 0) && (code == ahmDelayedCode[0]) ){
++      /* Gist of ahmDelay. */
++      AhmStep2(pInfo, ev, 1, code);
++      AhmStep2(pInfo, ev, 0, code);
++      AhmStep2(pInfo, ev, 1, ahmDelayedCode[1]);
++    }else{
++      /* Nothing special. Replay all, and bye. */
++      AhmStep2(pInfo, ev, 1, ahmDelayedCode[0]);
++      AhmStep2(pInfo, ev, 1, ahmDelayedCode[1]);
++      AhmStep2(pInfo, ev, value, code);
++    }
++    break;
++  }
++  pEvdev->lastEventTime.tv_sec  = ev->time.tv_sec;
++  pEvdev->lastEventTime.tv_usec = ev->time.tv_usec;
++}
++
++/*
++ * (ahm) I don't know the exact spec of RegisterBlockAndWakeupHandlers.
++ * I merely guessed it from emuMB.c which is also a part of
++ * xf86-input-evdev.
++ */
++
++/*
++ * Really send queued key events, implementing AhmPaddingInterval.
++ *
++ * This function is called using timer. If padding is necessary,
++ * postpone these events.
++ *
++ * Simple sleeping doesn't work; it simply blocks.
++ */
++static void AhmWakeupHandler(pointer data, __attribute__ ((unused)) int ii,
++		      pointer __attribute__ ((unused)) LastSelectMask){
++  InputInfoPtr pInfo = (InputInfoPtr) data;
++  EvdevPtr  pEvdev = (EvdevPtr) pInfo->private;
++  int ms;
++
++  if(pEvdev->ahmQueueTop != pEvdev->ahmQueueBottom){
++    ms = pEvdev->ahmTimerExpires - GetTimeInMillis();
++    if(ms <= 0){
++      int i, lim;
++      unsigned int lastKey = 0;
++
++      lim = (pEvdev->ahmQueueTop < pEvdev->ahmQueueBottom) ?
++        pEvdev->ahmQueueBottom : pEvdev->ahmQueueBottom + AHM_QUEUE_SIZE;
++
++      for (i = pEvdev->ahmQueueTop; i < lim; i++){
++	if((pEvdev->transModTable[pEvdev->ahmQueueKeys[i % AHM_QUEUE_SIZE]]
++	    == lastKey) && lastKey){
++          pEvdev->ahmTimerExpires = GetTimeInMillis() +
++	    pEvdev->ahmPaddingInterval;
++	  break;
++	}else
++	  xf86PostKeyboardEvent(pInfo->dev,
++				pEvdev->ahmQueueKeys[i % AHM_QUEUE_SIZE],
++				pEvdev->ahmQueueValues[i % AHM_QUEUE_SIZE]);
++	lastKey = pEvdev->ahmQueueKeys[i % AHM_QUEUE_SIZE];
++      }
++      pEvdev->ahmQueueTop = i % AHM_QUEUE_SIZE;
++    }
++  }
++}
++
++
++static void AhmBlockHandler(pointer data,
++		     struct timeval **waitTime,
++		     __attribute__ ((unused)) pointer LastSelectMask)
++{
++  InputInfoPtr    pInfo = (InputInfoPtr) data;
++  EvdevPtr        pEvdev= (EvdevPtr) pInfo->private;
++  int             ms;
++
++  if(pEvdev->ahmQueueBottom != pEvdev->ahmQueueTop){
++    ms = pEvdev->ahmTimerExpires - GetTimeInMillis();
++    if(ms <= 0){
++      ms = 0;
++    }
++    AdjustWaitForDelay(waitTime, ms);
++  }
++}
++
++static void AhmRegisterTimers(InputInfoPtr pInfo){
++  EvdevPtr        pEvdev= (EvdevPtr) pInfo->private;
++  if(!pEvdev->flags & EVDEV_KEYBOARD_EVENTS){
++    return;
++  }
++  RegisterBlockAndWakeupHandlers(AhmBlockHandler,
++				 AhmWakeupHandler,
++				 (pointer)pInfo);
++}
++
++static void AhmFinalise(InputInfoPtr pInfo){
++  EvdevPtr        pEvdev= (EvdevPtr) pInfo->private;
++  if(!pEvdev->flags & EVDEV_KEYBOARD_EVENTS){
++    return;
++  }
++  RemoveBlockAndWakeupHandlers(AhmBlockHandler,
++			       AhmWakeupHandler,
++			       (pointer)pInfo);
+ }
+ 
+ void
+@@ -312,6 +650,7 @@
+         pQueue->detail.key = button;
+         pQueue->val = value;
+     }
++    ahmLastEventDevice = pInfo;
+ }
+ 
+ void
+@@ -628,7 +967,7 @@
+     if (button)
+         EvdevQueueButtonEvent(pInfo, button, value);
+     else
+-        EvdevQueueKbdEvent(pInfo, ev, value);
++        AhmStep1(pInfo, ev, value);
+ }
+ 
+ /**
+@@ -930,13 +1269,24 @@
+ {
+     int i;
+     EvdevPtr pEvdev = pInfo->private;
++    int ind = pEvdev->ahmQueueBottom;
+ 
+     for (i = 0; i < pEvdev->num_queue; i++) {
+         switch (pEvdev->queue[i].type) {
+         case EV_QUEUE_KEY:
+-            xf86PostKeyboardEvent(pInfo->dev, pEvdev->queue[i].detail.key,
+-                                  pEvdev->queue[i].val);
+-            break;
++	  /*
++	   * ahm:
++	   * In the original code, these key events are
++	   * dispatched with xf86PostKeyboardEvent here.
++	   * In ahm, they're queued, and sent asynchronously using timer.
++	   * Actual flushing is done in AhmWakeupHandler.
++	   */
++	  pEvdev->ahmQueueKeys[ind] = pEvdev->queue[i].detail.key;
++	  pEvdev->ahmQueueValues[ind] = pEvdev->queue[i].val;
++	  ind++;
++	  ind %= AHM_QUEUE_SIZE;
++	  break;
++
+         case EV_QUEUE_BTN:
+             if (Evdev3BEmuFilterEvent(pInfo,
+                                       pEvdev->queue[i].detail.key,
+@@ -963,6 +1313,10 @@
+ #endif
+         }
+     }
++    if(pEvdev->flags & EVDEV_KEYBOARD_EVENTS){
++      pEvdev->ahmTimerExpires = GetTimeInMillis();
++      pEvdev->ahmQueueBottom = ind;
++    }
+ }
+ 
+ /**
+@@ -1428,6 +1782,15 @@
+             }
+         }
+     }
++
++    /* device only has mt-axes. the kernel should give us ABS_X etc for
++       backwards compat but some devices don't have it. */
++    if (num_axes == 0 && num_mt_axes > 0) {
++        xf86IDrvMsg(pInfo, X_ERROR,
++                    "found only multitouch-axes. That shouldn't happen.\n");
++        goto out;
++    }
++
+ #endif
+ 
+     for (axis = ABS_X; axis < ABS_MT_SLOT; axis++) {
+@@ -1935,6 +2298,7 @@
+     xf86FlushInput(pInfo->fd);
+     xf86AddEnabledDevice(pInfo);
+     EvdevMBEmuOn(pInfo);
++    AhmRegisterTimers(pInfo);
+     Evdev3BEmuOn(pInfo);
+     pEvdev->flags |= EVDEV_INITIALIZED;
+     device->public.on = TRUE;
+@@ -1961,11 +2325,11 @@
+         return EvdevOn(device);
+ 
+     case DEVICE_OFF:
+-        if (pEvdev->flags & EVDEV_INITIALIZED)
+-        {
+-            EvdevMBEmuFinalize(pInfo);
+-            Evdev3BEmuFinalize(pInfo);
+-        }
++      if (pEvdev->flags & EVDEV_INITIALIZED){
++	EvdevMBEmuFinalize(pInfo);
++	Evdev3BEmuFinalize(pInfo);
++	AhmFinalise(pInfo);
++      }
+         if (pInfo->fd != -1)
+         {
+             EvdevGrabDevice(pInfo, 0, 1);
+@@ -2560,6 +2924,8 @@
+ 
+     pEvdev->type_name = NULL;
+ 
++    pEvdev->type_name = NULL;
++
+     return pEvdev;
+ }
+ 
+@@ -2621,6 +2987,118 @@
+         EvdevDragLockPreInit(pInfo);
+     }
+ 
++    if (pEvdev->flags & EVDEV_KEYBOARD_EVENTS)
++      {
++	/* parse ahm options */
++	char *str, *toFree;
++	char *next = NULL;
++	char *end = NULL;
++	int fromCode = 0, toCode = 0;
++
++	pEvdev->ahmQueueTop = 0;
++	pEvdev->ahmQueueBottom = 0;
++
++	pEvdev->lastPressCode = 0;
++	pEvdev->lastValue = 0;
++
++	for(fromCode = 0; fromCode < 256; fromCode++){
++	  pEvdev->transModCount[fromCode] = 0;
++	  pEvdev->transModTable[fromCode] = 0;
++	  pEvdev->transModFreeze[fromCode] = 0;
++	  pEvdev->ahmDelayTable[fromCode] = 0;
++	}
++
++	/* set timeout for ahm */
++	pEvdev->ahmTimeout = xf86SetIntOption(pInfo->options, "AhmTimeout", 600);
++	pEvdev->lastEventTime.tv_sec = 0;
++	pEvdev->lastEventTime.tv_usec = 0;
++
++	pEvdev->ahmDelayedKeys = 0;
++
++	pEvdev->ahmPaddingInterval = xf86SetIntOption(pInfo->options, "AhmPaddingInterval", 10);
++	/* Negative padding doesn't harm. */
++	pEvdev->ahmFreezeTT = xf86SetBoolOption(pInfo->options, "AhmFreezeTT", 1);
++
++	pEvdev->ahmResetTime = xf86SetIntOption(pInfo->options, "AhmResetTime", 10);
++
++	/* parse "transMod" option */
++	str = xf86CheckStrOption(pInfo->options, "TransMod",NULL);
++	if(str){
++	  xf86Msg(X_CONFIG, "Option \"TransMod\" \"%s\"\n", str);
++	  toFree = str;
++	  next = str;
++	  while(next != NULL){
++	    fromCode = strtol(next, &end, 10);
++	    if (next == end){
++	      break;
++	    }
++	    if (*end != ':'){
++	      xf86IDrvMsg(pInfo, X_ERROR, "TransMod : "
++		      "Dest keycode is lacking; colon expected: %s\n",
++		      str);
++	      break;
++	    }
++	    end++;
++	    next = end;
++	    toCode = strtol(next, &end, 10);
++	    if(next == end){
++	      xf86IDrvMsg(pInfo, X_ERROR, "TransMod : "
++		      "Dest keycode is lacking: %s\n",
++			  str);
++	    }
++	    next = end;
++	    /* xxx do range check, and store */
++	    xf86IDrvMsg(pInfo, X_CONFIG, "TransMod: %i -> %i\n",
++			fromCode, toCode);
++	    if((fromCode < MIN_KEYCODE) || (fromCode > 255)){
++	      xf86IDrvMsg(pInfo, X_ERROR, "TransMod : "
++			  "Keycode out of range: %i\n",
++			  fromCode);
++	      continue;
++	    }
++	    /* dest keycode has to be <= 255, due to X limit. */
++	    if((toCode < MIN_KEYCODE) || (toCode > 255)){
++	      xf86IDrvMsg(pInfo, X_ERROR, "TransMod : "
++			  "Keycode out of range: %i\n",
++			  toCode);
++	      continue;
++	    }
++	    pEvdev->transModTable[fromCode] = toCode;
++	  }
++	  free(toFree);
++	}
++
++	/* parse option "AhmDelay" */
++	str = xf86CheckStrOption(pInfo->options, "AhmDelay", NULL);
++	if(str){
++	  xf86Msg(X_CONFIG, "Option \"AhmDelay\" \"%s\"\n", str);
++	  toFree = str;
++	  next = str;
++	  while(next != NULL){
++	    fromCode = strtol(next, &end, 10);
++	    if (next == end){
++	      break;
++	    }
++	    next = end;
++
++	    /* do range check, and store */
++	    if((fromCode < MIN_KEYCODE) || (fromCode > 255)){
++	      xf86IDrvMsg(pInfo, X_ERROR, "AhmDelay : "
++			  "Keycode out of range: %i\n",
++			  fromCode);
++	      continue;
++	    }
++	    if(pEvdev->transModTable[fromCode] == 0){
++	      xf86IDrvMsg(pInfo, X_WARNING, "warning: Delay key %i is not a transmod.\n", fromCode);
++	    }
++	    pEvdev->ahmDelayTable[fromCode] = 1;
++	  }
++	  free(toFree);
++	}
++
++	/* end of parsing ahm options */
++      }
++
+     return Success;
+ 
+ error:
+diff -aur xf86-input-evdev-2.9.0.orig/src/evdev.h "xf86-input-evdev-2.9.0.fixed manually/src/evdev.h"
+--- xf86-input-evdev-2.9.0.orig/src/evdev.h	2014-05-20 15:41:26.000000000 +1000
++++ "xf86-input-evdev-2.9.0.fixed manually/src/evdev.h"	2014-06-08 15:05:42.566913609 +1000
+@@ -37,6 +37,7 @@
+ 
+ #include <linux/input.h>
+ #include <linux/types.h>
++#include <sys/time.h>
+ 
+ #include <xorg-server.h>
+ #include <xf86Xinput.h>
+@@ -94,6 +95,13 @@
+ #define MAX_VALUATORS 36
+ #endif
+ 
++#define AHM_QUEUE_SIZE 256
++
++/* If we're not using GNU C, nuke __attribute__ */
++#ifndef __GNUC__
++#  define  __attribute__(x)  /*NOTHING*/
++#endif
++
+ #ifndef XI_PROP_DEVICE_NODE
+ #define XI_PROP_DEVICE_NODE "Device Node"
+ #endif
+@@ -183,6 +191,33 @@
+     int delta[REL_CNT];
+     unsigned int abs_queued, rel_queued, prox_queued;
+ 
++  /* ahm variables */
++  int                 lastPressCode;
++  int                 lastValue;
++  unsigned int        transModTable[256]; /* [orig keycode] means translated keycode */
++  int                 transModCount[256]; /* records how many times fold the translated key is pressed */
++  unsigned int        transModFreeze[256]; /* 1 means temporarily transmod is frozen. */
++
++  int                 ahmTimeout;
++  struct timeval      lastEventTime;
++
++  int                 ahmDelayTable[256];
++  int                 ahmDelayedCode[2];
++  int                 ahmDelayedKeys;
++  int                 ahmResetTime;
++
++  int                 ahmFreezeTT;
++
++  /* queuing variables */
++  int                 ahmPaddingInterval;
++  Time                ahmTimerExpires;
++  int                 ahmQueueKeys[AHM_QUEUE_SIZE];
++  int                 ahmQueueValues[AHM_QUEUE_SIZE];
++  int                 ahmQueueTop; /* Dispatch from here */
++  int                 ahmQueueBottom; /* Queue from here */
++
++  /* end of ahm variables */
++
+     /* Middle mouse button emulation */
+     struct {
+         BOOL                enabled;
+@@ -253,7 +288,11 @@
+ } EvdevRec, *EvdevPtr;
+ 
+ /* Event posting functions */
+-void EvdevQueueKbdEvent(InputInfoPtr pInfo, struct input_event *ev, int value);
++/*
++ * ahm changed the type. originally:
++ * void EvdevQueueKbdEvent(InputInfoPtr pInfo, struct input_event *ev, int value);
++ */
++int EvdevQueueKbdEvent(InputInfoPtr pInfo, struct input_event *ev, int value);
+ void EvdevQueueButtonEvent(InputInfoPtr pInfo, int button, int value);
+ void EvdevQueueProximityEvent(InputInfoPtr pInfo, int value);
+ #ifdef MULTITOUCH
