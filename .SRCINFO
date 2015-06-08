@@ -1,0 +1,28 @@
+pkgbase = qca-qt5-git
+	pkgdesc = Qt Cryptographic Architecture. Qt5 Build (GIT Version)
+	pkgver = v2.1.0.23.g7207e62
+	pkgrel = 1
+	url = http://delta.affinix.com/qca/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = git
+	makedepends = botan-1.10
+	makedepends = pkcs11-helper
+	makedepends = libsasl
+	makedepends = libgcrypt
+	depends = qt5-base
+	optdepends = botan-1.10: Botan plugin
+	optdepends = pkcs11-helper: PKCS11 plugin
+	optdepends = nss: nss plugin
+	optdepends = libsasl: SASL plugin
+	optdepends = libgcrypt: gcrypt plugin
+	provides = qca-qt5
+	conflicts = qca-qt5
+	source = git://anongit.kde.org/qca.git
+	md5sums = SKIP
+
+pkgname = qca-qt5-git
+
