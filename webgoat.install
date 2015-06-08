@@ -1,0 +1,8 @@
+post_install() {
+     echo ""
+     echo "[+] run 'webgoat' command to start the application"
+     echo ">>> then browse to 'http://127.0.0.1:8080/webgoat/'"
+     echo ""
+     echo ">>> WARNING: While running this program your machine may be extremely vulnerable to attack!"
+     echo ""
+}
