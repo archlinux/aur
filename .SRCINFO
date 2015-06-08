@@ -1,0 +1,20 @@
+pkgbase = tepsonic-git
+	pkgdesc = A simple, lightweight audio player written in C++ and Qt that supports collections
+	pkgver = 0.8c2f60b
+	pkgrel = 1
+	url = http://danvratil.github.io/TepSonic/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = phonon-qt5
+	depends = taglib
+	depends = libqxt
+	source = tepsonic::git+https://github.com/danvratil/TepSonic
+	md5sums = SKIP
+
+pkgname = tepsonic-git
+
