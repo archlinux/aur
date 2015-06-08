@@ -3,9 +3,9 @@
 # Contributor: p2k <Patrick.Schneider@uni-ulm.de>
 
 pkgname=zend-debugger
-pkgdesc="Zend Debugger extention for PHP"
+pkgdesc="Zend Debugger extension for PHP"
 pkgver=8.0.0
-pkgrel=1
+pkgrel=2
 _pkgrel=2014_12_10
 _pkgpar1=
 _pkgpar2=
