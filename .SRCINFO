@@ -1,0 +1,16 @@
+pkgbase = osgworks-svn
+	pkgdesc = osgWorks is a set of applications and software tools that add capability for OpenSceneGraph software developers
+	pkgver = 554
+	pkgrel = 1
+	url = http://code.google.com/p/osgworks/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = subversion
+	makedepends = cmake
+	depends = openscenegraph
+	source = osgworks::svn+http://osgworks.googlecode.com/svn/trunk/
+	md5sums = SKIP
+
+pkgname = osgworks-svn
+
