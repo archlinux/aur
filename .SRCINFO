@@ -1,0 +1,29 @@
+pkgbase = python-bokeh
+	pkgdesc = Interactive Web Plotting for Python
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = http://bokeh.pydata.org/
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/b/bokeh/bokeh-0.9.0.tar.gz
+	md5sums = 94d55a287f6ba17db8df42c1e9f1a863
+
+pkgname = python-bokeh
+	depends = python-numpy
+	depends = python-flask
+	depends = redis
+	depends = python-redis
+	depends = python-requests
+	depends = python-pandas
+
+pkgname = python2-bokeh
+	depends = python2-numpy
+	depends = python2-flask
+	depends = redis
+	depends = python2-redis
+	depends = python2-requests
+	depends = python2-gevent-websocket
+	depends = python2-pandas
+
