@@ -1,0 +1,32 @@
+pkgbase = python-sqlalchemy-0.7.9
+	pkgver = 0.7.9
+	pkgrel = 4
+	url = http://www.sqlalchemy.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python2-pytest
+	checkdepends = python-mock
+	checkdepends = python2-mock
+	makedepends = python
+	makedepends = python2
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/S/SQLAlchemy/SQLAlchemy-0.7.9.tar.gz
+	md5sums = a0b58defc5ad0c7e1baeb932f62d08dd
+
+pkgname = python-sqlalchemy-0.7.9
+	pkgdesc = Python SQL toolkit and Object Relational Mapper
+	depends = python
+	optdepends = python-psycopg2: connect to PostgreSQL database
+	provides = python-sqlalchemy
+	conflicts = python-sqlalchemy
+
+pkgname = python2-sqlalchemy-0.7.9
+	pkgdesc = Python 2 SQL toolkit and Object Relational Mapper
+	depends = python2
+	optdepends = python2-psycopg2: connect to PostgreSQL database
+	provides = python2-sqlalchemy
+	conflicts = python2-sqlalchemy
+
