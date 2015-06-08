@@ -1,0 +1,19 @@
+pkgbase = autocutsel-git
+	pkgdesc = Synchronizes the two copy/paste buffers mainly used by X applications
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = http://www.nongnu.org/autocutsel/
+	install = autocutsel.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxaw
+	provides = autocutsel
+	conflicts = autocutsel
+	source = autocutsel-git::git+https://github.com/sigmike/autocutsel.git
+	source = autocutsel.install
+	md5sums = SKIP
+	md5sums = d5616ff1b64c78473c02a4d8c88675bd
+
+pkgname = autocutsel-git
+
