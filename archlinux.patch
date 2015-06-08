@@ -1,0 +1,12 @@
+diff -Naur guile-dbd-postgresql-2.1.4/src/guile-dbd-postgresql.c guile-dbd-postgresql-2.1.4-new/src/guile-dbd-postgresql.c
+--- guile-dbd-postgresql-2.1.4/src/guile-dbd-postgresql.c	2008-12-13 23:44:28.000000000 +0100
++++ guile-dbd-postgresql-2.1.4-new/src/guile-dbd-postgresql.c	2013-10-05 20:18:38.770299378 +0200
+@@ -24,7 +24,7 @@
+ 
+ #include <guile-dbi/guile-dbi.h>
+ #include <libguile.h>
+-#include <postgresql/libpq-fe.h>
++#include <libpq-fe.h>
+ #include <string.h>
+ #include <errno.h>
+ #include <stdio.h>
