@@ -2,7 +2,7 @@
 pkgname=netsniff-ng
 pkgver=0.5.9
 _pkgver=${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='A high performance Linux network sniffer for packet inspection (without curvetun tool).'
 arch=('i686' 'x86_64')
 url='http://netsniff-ng.org/'
@@ -16,10 +16,10 @@ source=(http://pub.netsniff-ng.org/netsniff-ng/netsniff-ng-${_pkgver}.tar.gz)
 build() {
   cd "${srcdir}"/${pkgname}-${_pkgver}
   ./configure
-  make DISTRO=1
+  make DISTRO=1 allbutmausezahn
 }
 
 package() {
   cd "${srcdir}"/${pkgname}-${_pkgver}
-  make PREFIX="${pkgdir}" install_allbutmausezahn
+  make PREFIX="/usr" DESTDIR="${pkgdir}" SBINDIR="/usr/bin" install_allbutmausezahn
 }
