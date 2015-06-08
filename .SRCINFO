@@ -1,0 +1,16 @@
+pkgbase = alopex-git
+	pkgdesc = A Tabbed, Tiling Window Manager with Fur
+	pkgver = 4.420.bbd6ee2
+	pkgrel = 1
+	url = http://trilbywhite.github.io/alopex/
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	depends = libxinerama
+	depends = cairo
+	source = alopex::git://github.com/TrilbyWhite/alopex.git
+	sha256sums = SKIP
+
+pkgname = alopex-git
+
