@@ -1,0 +1,14 @@
+pkgbase = libbuspirate
+	pkgdesc = The libbuspirate is a C library to talk with the bus pirate hardware
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = http://sourceforge.net/projects/libbuspirate/
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = GPLv3
+	source = http://downloads.sourceforge.net/project/libbuspirate/0.4.0/libbuspirate-0.4.0.tar.gz
+	sha1sums = fbbfdddec5ef46870463d654bb2a68f80de9c376
+
+pkgname = libbuspirate
+
