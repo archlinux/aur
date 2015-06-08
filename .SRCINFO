@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-extension-cpu-freq-git
+	pkgdesc = View the actual frequency and change CPU frequency governor from gnome shell.
+	pkgver = 26.7f11a60
+	pkgrel = 1
+	url = https://github.com/nodefourtytwo/gnome-shell-extension-cpu-freq
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = gnome-shell
+	source = git://github.com/nodefourtytwo/gnome-shell-extension-cpu-freq.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-cpu-freq-git
+
