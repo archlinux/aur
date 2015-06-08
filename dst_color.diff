@@ -1,0 +1,33 @@
+diff -ru rendercheck-1.4.orig/t_blend.c rendercheck-1.4/t_blend.c
+--- rendercheck-1.4.orig/t_blend.c	2012-04-16 23:20:19.000000000 -0700
++++ rendercheck-1.4/t_blend.c	2012-04-16 23:21:49.000000000 -0700
+@@ -65,10 +65,10 @@
+ 		    srcformat,
+ 		    dst_color->color.r, dst_color->color.g,
+ 		    dst_color->color.b, dst_color->color.a);
+-		printf("src: %s, dst: %s\n", src_color->name, dst->name);
++		printf("src: %s, dst: %s\n", src_color->name, dst_color->name);
+ 		return FALSE;
+ 	} else if (is_verbose) {
+-		printf("src: %s, dst: %s\n", src_color->name, dst->name);
++		printf("src: %s, dst: %s\n", src_color->name, dst_color->name);
+ 	}
+ 	return TRUE;
+ }
+diff -ru rendercheck-1.4.orig/t_composite.c rendercheck-1.4/t_composite.c
+--- rendercheck-1.4.orig/t_composite.c	2012-04-16 23:20:19.000000000 -0700
++++ rendercheck-1.4/t_composite.c	2012-04-16 23:21:25.000000000 -0700
+@@ -94,11 +94,11 @@
+ 			    dst_color->color.r, dst_color->color.g,
+ 			    dst_color->color.b, dst_color->color.a);
+ 		printf("src: %s, mask: %s, dst: %s\n", src_color->name,
+-		    mask_color->name, dst->name);
++		    mask_color->name, dst_color->name);
+ 		success = FALSE;
+ 	} else if (is_verbose) {
+ 		printf("src: %s, mask: %s, dst: %s\n", src_color->name,
+-		    mask_color->name, dst->name);
++		    mask_color->name, dst_color->name);
+ 	}
+ 	return success;
+ }
