@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-theme-ambrosia
+	pkgdesc = Dark blue GNOME Shell theme for GNOME 3.14.
+	pkgver = 3.14_2.3
+	pkgrel = 1
+	url = http://opendesktop.org/content/show.php?content=166772
+	arch = any
+	license = GPL3
+	depends = gnome-shell
+	optdepends = gnome-tweak-tool: A tool to customize advanced GNOME 3 options.
+	source = gnome-shell-theme-ambrosia-3.14_2.3.tar.gz::http://opendesktop.org/CONTENT/content-files/166772-Ambrosia.tar.gz
+	sha256sums = 88b2e2b716a4e7d46e385081e4465a45ac909da4f25d6f1adabe3cf22793fcf0
+
+pkgname = gnome-shell-theme-ambrosia
+
