@@ -1,0 +1,23 @@
+pkgbase = smplayer-qt5-svn
+	pkgdesc = A complete front-end for media players
+	pkgver = 6556
+	pkgrel = 1
+	url = http://smplayer.sourceforge.net/
+	install = smplayer.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	depends = qt5-tools
+	depends = qt5-base
+	depends = qt5-script
+	optdepends = smtube-svn: For watching YouTube videos
+	optdepends = mpv: Media player
+	optdepends = mplayer: Media player
+	provides = smplayer
+	conflicts = smplayer
+	source = smplayer::svn+https://subversion.assembla.com/svn/smplayer/smplayer/trunk/
+	md5sums = SKIP
+
+pkgname = smplayer-qt5-svn
+
