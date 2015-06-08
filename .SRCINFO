@@ -1,0 +1,16 @@
+pkgbase = emacs-symbols-mode-git
+	pkgdesc = GNU Emacs major mode for listing symbols from object files
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://gitorious.org/symbols-mode-el
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-symbols-mode-git%-git
+	conflicts = emacs-symbols-mode-git%-git
+	source = git://gitorious.org/symbols-mode-el/symbols-mode-el.git
+	md5sums = SKIP
+
+pkgname = emacs-symbols-mode-git
+
