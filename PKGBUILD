@@ -1,6 +1,6 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 pkgname=apulse-git
-pkgver=0.1.5_2_gaa73e4e
+pkgver=0.1.5_14_g147c55c
 pkgrel=1
 pkgdesc="Pulseaudio emulation for ALSA"
 arch=('i686' 'x86_64')
