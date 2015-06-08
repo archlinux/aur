@@ -6,7 +6,6 @@ arch=('i686' 'x86_64')
 url='http://www.kde.org'
 license=('GPL' 'LGPL' 'FDL')
 depends=('kdelibs')
-#depends=('ki18n' 'kconfig' 'kparts')
 makedepends=('git' 'automoc4' 'cmake')
 conflicts=('libkipi')
 provides=('libkipi')
