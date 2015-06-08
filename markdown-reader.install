@@ -1,0 +1,25 @@
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+msg_blue() {
+	printf "${blue}==>${bold} $1${all_off}\n"
+}
+
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+post_install() {
+	msg_blue "Updating desktop MIME database..."
+    update-desktop-database -q
+}
+
+post_upgrade() {
+	post_install $1
+}
+
+post_remove() {
+	post_install $1
+}

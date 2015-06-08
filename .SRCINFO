@@ -1,0 +1,21 @@
+pkgbase = markdown-reader
+	pkgdesc = A document reader for markdown and html files
+	pkgver = 1.1.0
+	pkgrel = 4
+	url = https://github.com/BadWolfie
+	install = markdown-reader.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = vala
+	makedepends = git
+	makedepends = intltool
+	depends = gtk3
+	depends = webkit2gtk
+	depends = python-markdown
+	options = !emptydirs
+	source = markdown-reader-1.1.0::git+https://github.com/BadWolfie/markdown-reader.git
+	md5sums = SKIP
+
+pkgname = markdown-reader
+
