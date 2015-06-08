@@ -1,0 +1,16 @@
+pkgbase = monitor-git
+	pkgdesc = Capture and share terminal commands with Monitor.
+	pkgver = 20140708
+	pkgrel = 2
+	url = https://github.com/dtannen/monitor
+	arch = any
+	license = Creative Commons
+	makedepends = git
+	makedepends = make
+	depends = curl
+	provides = monitor
+	source = monitor-git::git://github.com/dtannen/monitor.git
+	md5sums = SKIP
+
+pkgname = monitor-git
+
