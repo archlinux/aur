@@ -1,0 +1,22 @@
+pkgbase = perl-rdf-query-client
+	pkgdesc = get data from W3C SPARQL Protocol 1.0 servers
+	pkgver = 0.111
+	pkgrel = 1
+	url = http://search.cpan.org/dist/RDF-Query-Client
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.010
+	depends = perl-http-message
+	depends = perl-libwww
+	depends = perl-namespace-clean>=0.20
+	depends = perl-rdf-trine>=0.133
+	depends = perl-role-commons
+	depends = perl-uri
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/RDF-Query-Client-0.111.tar.gz
+	md5sums = cad016ecb1c1630e421c02b601a126b3
+	sha512sums = 72cef3ff7eb2f33e7a057986d30929460cd9f9c6a0f5cf19b9323e195679e980c9425117c11040c55c4a99f5ee49baaaa7120a5f70b0fdd34851ef62a1e833da
+
+pkgname = perl-rdf-query-client
+
