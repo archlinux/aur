@@ -1,0 +1,19 @@
+pkgbase = ortle-git
+	pkgdesc = a simple compositing manager for X
+	pkgver = 21.006d8b9
+	pkgrel = 1
+	url = https://github.com/aoba1217/ortle
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = libgl
+	depends = mesa
+	depends = libxcomposite
+	provides = ortle
+	conflicts = ortle
+	source = ortle::git+https://github.com/aoba1217/ortle.git
+	md5sums = SKIP
+
+pkgname = ortle-git
+
