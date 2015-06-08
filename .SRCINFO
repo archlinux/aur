@@ -1,0 +1,25 @@
+pkgbase = ghemical-mpqc
+	pkgdesc = Computational chemistry package. Version with enabled mpqc
+	pkgver = 3.0.0
+	pkgrel = 3
+	url = http://bioinformatics.org/ghemical/ghemical/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = pkgconfig
+	makedepends = intltool>=0.40.0
+	makedepends = gettext
+	depends = gtkglext
+	depends = libghemical-mpqc
+	depends = libglade
+	depends = liboglappth>=1.0
+	depends = openbabel
+	provides = ghemical
+	conflicts = ghemical
+	source = http://bioinformatics.org/ghemical/download/release20111012/ghemical-3.0.0.tar.gz
+	source = ghemical.desktop
+	md5sums = becf98626f0eba73f7f042bc92aa60ac
+	md5sums = 7e8789d42d1318a427a30f3bf64cb5a6
+
+pkgname = ghemical-mpqc
+
