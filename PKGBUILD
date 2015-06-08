@@ -4,7 +4,7 @@
 
 pkgname=('vdev-git' 'vdev-libudev-compat-git')
 pkgver=r479.33c6877
-pkgrel=1
+pkgrel=2
 pkgdesc='A virtual device manager for *nix'
 url='https://github.com/jcnelson/vdev.git'
 arch=( 'x86_64' 'i686' )
