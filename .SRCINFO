@@ -1,0 +1,19 @@
+pkgbase = hugo-git
+	pkgdesc = Fast and Flexible Static Site Generator in Go
+	pkgver = 0.14-DEV
+	pkgrel = 1
+	url = http://hugo.spf13.com/
+	arch = x86_64
+	arch = i686
+	arch = arm
+	license = custom:SimPL
+	makedepends = go
+	makedepends = git
+	provides = hugo
+	conflicts = hugo
+	options = !strip
+	source = git+https://github.com/spf13/hugo.git
+	sha512sums = SKIP
+
+pkgname = hugo-git
+
