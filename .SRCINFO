@@ -1,0 +1,15 @@
+pkgbase = php-inotify
+	pkgdesc = The inotify extension allows to use inotify functions in a PHP script.
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = http://pecl.php.net/package/inotify
+	arch = i686
+	arch = x86_64
+	license = PHP
+	depends = php
+	backup = etc/php/conf.d/inotify.ini
+	source = http://pecl.php.net/get/inotify-0.1.6.tgz
+	sha256sums = 979f80a25d4eb0de282617ffc0df46f07346a8383f310b9b943e48992e5b494e
+
+pkgname = php-inotify
+
