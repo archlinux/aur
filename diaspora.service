@@ -1,0 +1,15 @@
+[Unit]
+Wants=redis.service
+Wants=%db%.service
+
+[Service]
+User=diaspora
+WorkingDirectory=/usr/share/webapps/diaspora
+Environment=RAILS_ENV=production
+ExecStart=/usr/share/webapps/diaspora/script/server
+Restart=always
+StandardInput=null
+KillMode=control-group
+
+[Install]
+WantedBy=multi-user.target
