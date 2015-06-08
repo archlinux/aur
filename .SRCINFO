@@ -1,0 +1,14 @@
+pkgbase = decrypt-git
+	pkgdesc = Pipe programs through decrypt to make your boss think you are l33t
+	pkgver = r28.4f11040
+	pkgrel = 2
+	url = https://github.com/jtwaleson/decrypt
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	source = decrypt-git::git://github.com/jtwaleson/decrypt
+	sha256sums = SKIP
+
+pkgname = decrypt-git
+
