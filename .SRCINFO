@@ -1,0 +1,19 @@
+pkgbase = lha
+	pkgdesc = A compression and archive utility for LH-7 format archives
+	pkgver = 1.17
+	pkgrel = 6
+	url = http://www.infor.kanazawa-it.ac.jp/~ishii/lhaunix/
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = ftp://ftp.uhulinux.hu/mirror/http%3A/www.infor.kanazawa-it.ac.jp/~ishii/lhaunix/linux/lha117.tar.gz
+	source = LICENSE
+	source = lha.man.en
+	sha1sums = da97195db297d2d1f8f288b1b99eea426edb8170
+	sha1sums = e62662e4b8ab2b11bf60d9803312f9743ad731e2
+	sha1sums = 1c100e5178d324103fb6382edd3e96789a86a86a
+	depends_i686 = glibc
+	depends_x86_64 = lib32-glibc
+
+pkgname = lha
+
