@@ -1,0 +1,13 @@
+diff -rupN bgrabitmap8.5.1/bgrapath.pas bgrabitmap8.5.1_p/bgrapath.pas
+--- bgrabitmap8.5.1/bgrapath.pas	2015-04-29 19:20:24.000000000 +0200
++++ bgrabitmap8.5.1_p/bgrapath.pas	2015-05-05 22:25:53.854300675 +0200
+@@ -2532,7 +2532,9 @@ begin
+     transformedArc.radius := arcDef.radius*FScale;
+     transformedArc.xAngleRadCW := arcDef.xAngleRadCW+FAngleRadCW;
+     PArcElement(AllocateElement(peArc))^ := transformedArc;
++    {$PUSH}{$OPTIMIZATION OFF}
+     SetLastCoord(ArcEndPoint(arcDef));
++    {$POP}
+   end;
+ end;
+ 

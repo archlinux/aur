@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Lazpaint
+Comment=Image editor, like PaintBrush or Paint.Net, written in Lazarus (Free Pascal).
+Exec=lazpaint
+Icon=lazpaint
+Terminal=false
+Categories=Graphics;RasterGraphics;2DGraphics;
+MimeType=image/bmp;image/gif;image/x-ico;image/jpeg;image/png;
+
