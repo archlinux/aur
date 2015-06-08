@@ -1,0 +1,31 @@
+diff -ur gnutls-3.3.6.orig/lib/gnutls_priority.c gnutls-3.3.6/lib/gnutls_priority.c
+--- gnutls-3.3.6.orig/lib/gnutls_priority.c	2014-07-22 23:43:41.000000000 +0200
++++ gnutls-3.3.6/lib/gnutls_priority.c	2014-07-23 10:13:30.456310043 +0200
+@@ -1110,6 +1110,7 @@
+ 	int algo;
+ 	rmadd_func *fn;
+ 	bulk_rmadd_func *bulk_fn;
++	unsigned dset = 0;
+ 
+ 	if (err_pos)
+ 		*err_pos = priorities;
+@@ -1129,10 +1130,16 @@
+ 
+ 	(*priority_cache)->max_empty_records = DEFAULT_MAX_EMPTY_RECORDS;
+ 
+-	if (priorities == NULL)
+-		priorities = "NORMAL";
++	if (priorities == NULL) {
++		priorities = "@SYSTEM";
++		dset = 1;
++	}
+ 
+ 	darg = resolve_priorities(priorities);
++	if (darg == NULL && dset == 1) {
++		priorities = "NORMAL";
++		darg = resolve_priorities(priorities);
++	}
+ 	if (darg == NULL) {
+ 		gnutls_assert();
+ 		goto error;
+Only in gnutls-3.3.6/lib: gnutls_priority.c.orig

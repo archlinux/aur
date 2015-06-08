@@ -1,0 +1,33 @@
+pkgbase = mingw-w64-gnutls
+	pkgdesc = A library which provides a secure layer over a reliable transport layer (mingw-w64)
+	pkgver = 3.3.12
+	pkgrel = 1
+	url = http://www.gnu.org/software/gnutls
+	arch = any
+	license = GPL3, LGPL2.1
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	depends = mingw-w64-libtasn1
+	depends = mingw-w64-readline
+	depends = mingw-w64-zlib
+	depends = mingw-w64-nettle
+	depends = mingw-w64-p11-kit
+	optdepends = mingw-w64-openssl: libgnutls-openssl
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = ftp://ftp.gnutls.org/gcrypt/gnutls/v3.3/gnutls-3.3.12.tar.xz
+	source = ftp://ftp.gnutls.org/gcrypt/gnutls/v3.3/gnutls-3.3.12.tar.xz.sig
+	source = gnutls-3.2.7-rpath.patch
+	source = gnutls-3.1.11-nosrp.patch
+	source = gnutls-3.3.6-default-policy.patch
+	source = gnutls-fix-external-libtasn1-detection.patch
+	md5sums = a37b20b4352a5f542367ded904729c90
+	md5sums = SKIP
+	md5sums = 291612225516234ede7e60f8b367dd8b
+	md5sums = c3a2abfe08f47d9b07f770689b0c1b39
+	md5sums = e0dba6bfe81b965a352f965b1398bcad
+	md5sums = f90a0f01eb0f2a6b7afcc25a836eb67e
+
+pkgname = mingw-w64-gnutls
+
