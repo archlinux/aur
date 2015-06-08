@@ -1,0 +1,18 @@
+pkgbase = scron
+	pkgdesc = Suckless cron daemon
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://git.2f30.org/scron/
+	arch = i686
+	arch = x86_64
+	license = MIT/X
+	makedepends = git
+	provides = cron
+	conflicts = cron
+	options = strip
+	backup = etc/crontab
+	source = http://git.2f30.org/scron/snapshot/scron-0.4.tar.gz
+	md5sums = 4b3c48d40246e462d193579f1b49c773
+
+pkgname = scron
+
