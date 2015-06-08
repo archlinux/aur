@@ -1,0 +1,16 @@
+pkgbase = aa3d
+	pkgdesc = ASCII art stereogram generator
+	pkgver = 1.0
+	pkgrel = 4
+	url = http://aa-project.sourceforge.net/aa3d
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	source = http://downloads.sourceforge.net/aa-project/aa3d-1.0.tar.gz
+	source = aa3d.string.header.patch
+	sha512sums = a5a98664f43b03cd8275432ba625729d88dc4c7da3668185e16c0068c0e29e90ac6fc3c3368c4f75e19b0372191bae68adb40066bc04fb5e1a85e7e3ae6c6802
+	sha512sums = 79e1afb80a6fb61c27d63e999fca4d1a6ecab24d4f3ff3b52c74ccf790823af5b9b1e456035823c0ab2f7d0c4c376c5d436a1d8849a2e81f47aaa96776d55235
+
+pkgname = aa3d
+
