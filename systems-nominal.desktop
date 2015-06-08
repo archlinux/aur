@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=Game;
+Exec=/usr/bin/systems-nominal
+Icon=systems-nominal
+Terminal=false
+Type=Application
+Name=Systems Nominal
+Comment=An experimental game by Nerd^3
