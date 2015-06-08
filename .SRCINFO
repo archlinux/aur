@@ -1,0 +1,17 @@
+pkgbase = vobsub2srt-git
+	pkgdesc = Convert IDX/SUB subtitles into SRT text subtitles
+	pkgver = v1.0pre6.62.g9283345
+	pkgrel = 1
+	url = https://github.com/ruediger/VobSub2SRT/blob/master/README.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	depends = tesseract
+	optdepends = tesseract-data: Tesseract OCR data
+	source = vobsub2srt::git://github.com/ruediger/VobSub2SRT.git
+	md5sums = SKIP
+
+pkgname = vobsub2srt-git
+
