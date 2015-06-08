@@ -1,0 +1,15 @@
+pkgbase = eclipse-dltk-core-index
+	pkgdesc = Support for H2 index in Eclipse (Stable Stream)
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = http://www.eclipse.org/dltk/
+	arch = i686
+	arch = x86_64
+	license = EPL
+	depends = eclipse-dltk-core
+	depends = eclipse-h2-database>=1.1.117
+	source = http://www.eclipse.org/downloads/download.php?r=1&file=/technology/dltk/downloads/drops/R3.0/S-3.0.1-201108261011/dltk-core-index-S-3.0.1-201108261011.zip
+	md5sums = 6ea878829f369277fdbe2ddd597642df
+
+pkgname = eclipse-dltk-core-index
+
