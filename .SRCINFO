@@ -1,0 +1,21 @@
+pkgbase = libkvkontakte-frameworks-git
+	pkgdesc = Library implementing VKontakte.ru API. KF5 Frameworks (GIT version)
+	pkgver = 4.70.0.r421.20384dd
+	pkgrel = 1
+	url = https://projects.kde.org/projects/extragear/libs/libkvkontakte
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	makedepends = git
+	makedepends = cmake
+	makedepends = python
+	depends = kdelibs4support
+	provides = libkvkontakte
+	conflicts = libkvkontakte
+	source = git://anongit.kde.org/libkvkontakte#branch=frameworks
+	sha1sums = SKIP
+
+pkgname = libkvkontakte-frameworks-git
+
