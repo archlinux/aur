@@ -1,0 +1,15 @@
+pkgbase = mplayer-autocmd-git
+	pkgdesc = Per-file options and keybindings for mpv
+	pkgver = 3.7.g4d9267f
+	pkgrel = 1
+	url = https://github.com/mineo/mplayer-autocmd
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = python
+	depends = mplayer
+	source = git+https://github.com/mineo/mplayer-autocmd.git
+	md5sums = SKIP
+
+pkgname = mplayer-autocmd-git
+
