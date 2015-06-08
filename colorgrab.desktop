@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=ColorGrab
+GenericName=Color Picker
+Exec=colorgrab
+Icon=colorgrab
+Terminal=false
+StartupNotify=true
+Categories=Graphics;GTK;
