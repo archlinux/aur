@@ -1,0 +1,18 @@
+pkgbase = haskell-statevar
+	pkgdesc = State variables
+	pkgver = 1.1.0.0
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/StateVar
+	install = haskell-statevar.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = haskell-stm
+	depends = haskell-transformers
+	options = strip
+	source = http://hackage.haskell.org/packages/archive/StateVar/1.1.0.0/StateVar-1.1.0.0.tar.gz
+	md5sums = 63c34edf29f359d114da1e2111d95277
+
+pkgname = haskell-statevar
+
