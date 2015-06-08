@@ -1,0 +1,16 @@
+pkgbase = epson-inkjet-printer-px-673f
+	pkgdesc = Epson printer driver (PX-673F)
+	pkgver = 1.0.0
+	pkgrel = 8
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom:Epson Licence Agreement
+	depends = cups
+	depends = ghostscript
+	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-px-673f-1.0.0-1lsb3.2.src.rpm
+	sha256sums = 16c85a7a59bd02e5ce451bff6556b18e13c2b83a2d697f8d2389655260f311ba
+
+pkgname = epson-inkjet-printer-px-673f
+
