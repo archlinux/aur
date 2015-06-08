@@ -1,0 +1,17 @@
+pkgbase = perl-lexical-underscore
+	pkgdesc = access your caller's lexical underscore
+	pkgver = 0.003
+	pkgrel = 1
+	url = https://metacpan.org/release/lexical-underscore
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-padwalker>=0
+	depends = perl>=5.8.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/lexical-underscore-0.003.tar.gz
+	md5sums = a92e40f57ff373d6620d81d0c9b4fb84
+	sha512sums = 0753c73290a0fd304b7db483b515737ad5416eaf68892959575347a034b00fc2c9b6503765b8ef2e2e80da73d3c905c4457f0c0094303160c69745d2052014b4
+
+pkgname = perl-lexical-underscore
+
