@@ -1,8 +1,8 @@
 # Maintainer: q9 <qqqqqqqqq9 at web dot de>
 pkgname=scid-git
 _pkgname=scid
-pkgver=4.5.2.r99.g317dfab
-pkgrel=2
+pkgver=4.6.1
+pkgrel=1
 pkgdesc="A Free Chess Database Application - git-Checkout "
 arch=('x86_64' 'i686')
 url="http://scid.sourceforge.net"
