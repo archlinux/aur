@@ -1,0 +1,18 @@
+pkgbase = logmein-hamachi
+	pkgdesc = A zero-configuration VPN service
+	pkgver = 2.1.0.139
+	pkgrel = 1
+	url = https://secure.logmein.com/AU/labs/#HamachiforLinux
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	license = custom
+	conflicts = hamachi
+	replaces = hamachi
+	options = !strip
+	source = https://secure.logmein.com/labs/logmein-hamachi-2.1.0.139-.tgz
+	source = systemd
+
+pkgname = logmein-hamachi
+
