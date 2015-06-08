@@ -1,0 +1,18 @@
+pkgbase = haskell-bitly
+	pkgdesc = A library to access bit.ly URL shortener.
+	pkgver = 0.1.0
+	pkgrel = 4
+	url = http://hackage.haskell.org/package/Bitly
+	install = haskell-bitly.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = haskell-http
+	depends = haskell-json2>=0.8
+	options = strip
+	source = http://hackage.haskell.org/packages/archive/Bitly/0.1.0/Bitly-0.1.0.tar.gz
+	sha256sums = 31aba41c4abbbc003b685e3110b518e1202486551d935ceec6805d63cd7bb5de
+
+pkgname = haskell-bitly
+
