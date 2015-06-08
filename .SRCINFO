@@ -1,0 +1,18 @@
+pkgbase = kcm-servicemenus
+	pkgdesc = KDE 4 System Settings module to manage service menus
+	pkgver = 0.4
+	pkgrel = 3
+	url = http://www.kde-look.org/content/show.php/Service+Menu+Manager?content=94996
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdelibs
+	depends = qt4
+	depends = kdebase-workspace
+	source = http://linux.wuertz.org/dists/sid/main/source/kcm-servicemenus_0.4.tar.gz
+	md5sums = d7fe4aa352c856c8f272c5b4c7330419
+
+pkgname = kcm-servicemenus
+
