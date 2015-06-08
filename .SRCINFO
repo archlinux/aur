@@ -1,0 +1,16 @@
+pkgbase = epson-inkjet-printer-201214j
+	pkgdesc = Epson printer driver (PX-K150)
+	pkgver = 1.0.0
+	pkgrel = 8
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom:Epson Licence Agreement
+	depends = cups
+	depends = ghostscript
+	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201214j-1.0.0-1lsb3.2.src.rpm
+	sha256sums = 0f09604bfec2c058812f4a81995bb3389d84e6fa50cb006b4d87cde7eedb25f6
+
+pkgname = epson-inkjet-printer-201214j
+
