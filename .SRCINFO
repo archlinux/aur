@@ -1,0 +1,19 @@
+pkgbase = xfce4-nameday-plugin-bzr
+	pkgdesc = Xfce Applet ,that's show namedays
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://launchpad.net/xfce4-nameday-plugin
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = pkgconfig
+	makedepends = bzr
+	makedepends = xfce4-dev-tools
+	makedepends = gcc
+	makedepends = intltool
+	depends = xfce4-panel
+	depends = libunique
+	provides = xfce4-nameday-plugin
+
+pkgname = xfce4-nameday-plugin-bzr
+
