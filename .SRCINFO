@@ -1,0 +1,13 @@
+pkgbase = mednafen-server
+	pkgdesc = Server for Mednafen network game.
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = http://mednafen.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://downloads.sourceforge.net/mednafen/mednafen-server-0.5.1.tar.gz
+	md5sums = 2a2106b795ec3dd99ed773bf830815ca
+
+pkgname = mednafen-server
+
