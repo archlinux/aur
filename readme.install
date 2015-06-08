@@ -1,0 +1,39 @@
+post_install() {
+	echo '----------------------------------------------------------------------'
+	echo 'Consider having your rrd databases for monitorix reside in RAM.'
+	echo 'https://aur.archlinux.org/packages/anything-sync-daemon'
+	echo '----------------------------------------------------------------------'
+}
+
+post_remove() {
+	echo '----------------------------------------------------------------------'
+	echo 'To remove all traces of monitorix from your system, you must manually'
+	echo 'remove the following dir trees (doing so will delete your databases):'
+	echo
+	echo 'rm -rf /var/lib/monitorix /srv/http/monitorix /var/log/monitorix'
+	echo
+	echo 'If you are using anything-sync-daemon, remember to remove the potential'
+	echo 'entry in /etc/asd.conf if you created one for the monitorix db files'
+	echo '----------------------------------------------------------------------'
+}
+
+post_upgrade() {
+	## arg 1:  the new package version
+	## arg 2:  the old package version
+	oldpkgver=${2%-*}
+
+	if [[ $oldpkgver < 3.5 ]]; then
+		echo '------------------------------------------------------------------------'
+		echo ' WARNING:'
+		echo
+		echo 'Version 3.50 moves /etc/monitorix.conf -> /etc/monitorix/monitorix.conf'
+		echo
+		echo 'Pacman should save your old config file to /etc/monitorix.conf.pacsave'
+		echo 'You MUST compare it to /etc/monitorix/monitorix.conf with a util like vimdiff'
+		echo
+		echo 'Do NOT change two key vars in this file:'
+		echo ' base_dir'
+		echo ' base_cgi'
+		echo '------------------------------------------------------------------------'
+	fi
+}
