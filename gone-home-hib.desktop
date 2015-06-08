@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Gone Home
+Comment=Play Gone Home
+Exec=gone-home-hib
+Icon=gone-home-hib
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;AudioVideo;
+Encoding=UTF-8

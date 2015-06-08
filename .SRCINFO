@@ -1,0 +1,21 @@
+pkgbase = gone-home-hib
+	pkgdesc = Gone home is an interactive exploration simulator by Fullbright.
+	pkgver = 1.1
+	pkgrel = 2
+	url = http://www.gonehomegame.com/
+	install = gone-home-hib.install
+	arch = i686
+	arch = x86_64
+	license = custom: commercial
+	depends = glu
+	depends = libxext
+	depends = libxcursor
+	source = hib://GoneHome_v1.1.tar.gz
+	source = gone-home-hib.desktop
+	source = gone-home-hib.install
+	sha256sums = ecd01fcde184f7d1937579e7d5d4a791007887b88f9baa10039747166bb2d097
+	sha256sums = dea74a9436b2b37a63265c0606195293cb751855e2de473e678ab85600c92053
+	sha256sums = ea11e510a7c52e485cf1e87eb985691029b62fc694830a0c57f14b4173ac8edd
+
+pkgname = gone-home-hib
+

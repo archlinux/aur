@@ -1,0 +1,6 @@
+post_install(){
+    echo ""
+    echo ">> Fullscreen mode may present odd mouse issues."
+    echo ">> If any do occur try running the game in windowed mode."
+    echo ""
+}
