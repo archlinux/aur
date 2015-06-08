@@ -1,0 +1,17 @@
+pkgbase = wallpaperd
+	pkgdesc = A small application that takes care of setting the background image, created due to a friend requesting to have different wallpapers on the different workspaces in pekwm
+	pkgver = 0.2.1
+	pkgrel = 2
+	url = https://projects.pekdon.net/projects/wallpaperd
+	install = wallpaperd.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = bash
+	depends = xorg-server
+	depends = imlib2
+	source = https://projects.pekdon.net/projects/wallpaperd/files/wallpaperd-0.2.1.tar.gz
+	sha1sums = f502598dd54723918a4a89c0c947cf2a5eb35f58
+
+pkgname = wallpaperd
+

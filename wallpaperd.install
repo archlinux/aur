@@ -1,0 +1,6 @@
+post_install() {
+  echo ""
+  echo "  Copy the default settings file to your home directory and configure it:"
+  echo "  cp /etc/wallpaperd.cfg ~/.wallpaperd.cfg"
+  echo ""
+}
