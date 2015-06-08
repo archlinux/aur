@@ -1,0 +1,15 @@
+pkgbase = emacs-elscreen-goby
+	pkgdesc = Frame configuration management for GNU Emacs modelled after GNU Screen
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = http://www.morishima.net/~naoto/software/elscreen/index.php.en
+	arch = any
+	license = GPL
+	makedepends = emacs-apel
+	depends = emacs-elscreen
+	depends = emacs-goby
+	source = ftp://ftp.morishima.net/pub/morishima.net/naoto/ElScreen/elscreen-goby-0.0.0.tar.gz
+	md5sums = dbbfd48fdfea911204203b96475b26c5
+
+pkgname = emacs-elscreen-goby
+
