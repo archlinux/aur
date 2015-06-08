@@ -1,0 +1,25 @@
+
+post_install() {
+  if [ ! `grep openerp /etc/group` ]; then
+    groupadd openerp &>/dev/null;
+  fi
+  id openerp &>/dev/null || useradd -g openerp -d /  openerp
+  echo "-- Make sure PostgreSQL is correctly installed (see wiki), start it,"
+  echo "-- create user with database creation rights for OpenERP in PostgreSQL"
+  echo "-- e.g: # su - postgres -c \"createuser -dRSP <myopenerpuser>\""
+  echo "-- then edit '/etc/openerp/openerp-server.conf' accordingly."
+  echo "-- Starting OpenERP will automatically start PostgreSQL as well."
+}
+
+post_upgrade() {
+  post_install
+  systemctl --system daemon-reload
+}
+
+post_remove() {
+  userdel openerp &> /dev/null
+  groupdel openerp &> /dev/null
+  systemctl --system daemon-reload
+}
+
+# vim:set ts=2 sw=2 et:

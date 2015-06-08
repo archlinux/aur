@@ -1,0 +1,20 @@
+[Unit]
+Description=Advanced OpenSource ERP and CRM server
+Requires=postgresql.service
+After=postgresql.service
+
+
+[Service]
+Type=simple
+PermissionsStartOnly=true
+EnvironmentFile=-/etc/conf.d/openerp
+User=openerp
+Group=openerp
+SyslogIdentifier=OpenERP
+PIDFile=/run/openerp/openerp.pid
+ExecStartPre=/usr/bin/install -d -m755 -o openerp -g openerp /run/openerp
+ExecStart=/usr/bin/openerp-server -c $OPENERP_CONF --pidfile=/run/openerp/openerp.pid $OPENERP_ARGS
+ExecStop=/bin/kill $MAINPID
+
+[Install]
+WantedBy=multi-user.target

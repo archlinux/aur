@@ -1,0 +1,3 @@
+# Settings for the OpenERP service
+OPENERP_CONF=/etc/openerp/openerp-server.conf
+OPENERP_ARGS="--syslog"
