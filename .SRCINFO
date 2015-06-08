@@ -1,0 +1,17 @@
+pkgbase = ax25-tools
+	pkgdesc = The network tools to configure hamradio interfaces and some of the hamradio specific network daemons
+	pkgver = 0.0.10_rc4
+	pkgrel = 3
+	url = http://www.linux-ax25.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = make
+	depends = libax25
+	source = http://www.linux-ax25.org/pub/ax25-tools/ax25-tools-0.0.10-rc4.tar.xz
+	source = ax25.patch
+	sha1sums = c0c16ae86e8f41abb65e4467b619ba06ea310aa0
+	sha1sums = f3dfdfce9a795baef7f93d62d92441e81b96a83e
+
+pkgname = ax25-tools
+
