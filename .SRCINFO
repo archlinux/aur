@@ -1,0 +1,15 @@
+pkgbase = pinentry-tty
+	pkgdesc = Passphrase entry on the command line for GnuPG and others
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = http://gnupg.org/related_software/pinentry/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libcap>=2.16
+	provides = pinentry
+	source = ftp://ftp.gnupg.org/gcrypt/pinentry/pinentry-0.9.1.tar.bz2
+	md5sums = d224d031130aedb44b05164cb04ed88b
+
+pkgname = pinentry-tty
+
