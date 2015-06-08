@@ -1,0 +1,24 @@
+pkgbase = libkfbapi-git
+	pkgdesc = A library for accessing Facebook services.
+	pkgver = r208.ecb9975
+	pkgrel = 1
+	url = http://www.kde.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = automoc4
+	makedepends = boost
+	depends = ki18n
+	depends = kio
+	depends = kcoreaddons
+	depends = libaccounts-qt5
+	depends = signon-qt5
+	depends = kaccounts-integration-git
+	conflicts = libkfbapi
+	source = libkfbapi::git+git://anongit.kde.org/libkfbapi#branch=frameworks
+	md5sums = SKIP
+
+pkgname = libkfbapi-git
+
