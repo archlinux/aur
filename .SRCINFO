@@ -1,0 +1,15 @@
+pkgbase = magnet2torrent-git
+	pkgdesc = A command line tool that converts magnet links in to .torrent files.
+	pkgver = 0.r27.c02e075
+	pkgrel = 1
+	url = https://github.com/danfolkes/Magnet2Torrent
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-libtorrent-rasterbar
+	source = magnet2torrent-git::git://github.com/danfolkes/Magnet2Torrent.git
+	md5sums = SKIP
+
+pkgname = magnet2torrent-git
+
