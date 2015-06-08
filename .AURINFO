@@ -1,0 +1,27 @@
+pkgbase = cinnamon-session-git
+	pkgdesc = The Cinnamon Session Handler
+	pkgver = 126.8c1b918
+	pkgrel = 1
+	url = http://cinnamon.linuxmint.com/
+	install = cinnamon-session-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = intltool
+	makedepends = mesa
+	makedepends = json-glib
+	makedepends = xtrans
+	makedepends = gnome-common
+	makedepends = git
+	depends = cinnamon-desktop-git
+	depends = upower
+	depends = libcanberra
+	depends = libsm
+	provides = cinnamon-session
+	conflicts = cinnamon-session
+	source = cinnamon-session::git+https://github.com/linuxmint/cinnamon-session.git
+	options = !emptydirs
+
+pkgname = cinnamon-session-git
+
