@@ -1,0 +1,16 @@
+pkgbase = python-daemonocle
+	pkgdesc = Python library for creating Unix daemons
+	pkgver = 0.8
+	pkgrel = 2
+	url = https://github.com/jnrbsn/daemonocle
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	optdepends = python-click=2.5
+	optdepends = python-psutil=2.1.1
+	source = https://pypi.python.org/packages/source/d/daemonocle/daemonocle-0.8.tar.gz
+	sha256sums = b5fd390a3cf617c9113be02097892d2a0e967d99cc4ec9926671e20e8c03520c
+
+pkgname = python-daemonocle
+
