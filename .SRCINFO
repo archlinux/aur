@@ -1,0 +1,19 @@
+pkgbase = oxygen-cursors-extra
+	pkgdesc = KDE's Oxygen mouse cursor theme - the extra flavours
+	pkgver = 4.11.14
+	pkgrel = 1
+	url = http://www.kde.org
+	arch = any
+	license = GPL3
+	makedepends = pkgconfig
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = inkscape
+	makedepends = libltdl
+	makedepends = xorg-xcursorgen
+	options = !emptydirs
+	source = http://download.kde.org/stable/4.14.3/src/kde-workspace-4.11.14.tar.xz
+	sha1sums = ec79a5d638a93b1abbb99b22a7bea52d9a2c26eb
+
+pkgname = oxygen-cursors-extra
+
