@@ -1,0 +1,18 @@
+pkgbase = reicast
+	pkgdesc = A Sega Dreamcast emulator
+	pkgver = r7_rc1
+	pkgrel = 1
+	url = http://reicast.com/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	source = reicast-r7-rc1.tar.gz::https://github.com/reicast/reicast-emulator/archive/r7-rc1.tar.gz
+	sha256sums = f2ff9695ab04cedfee3446af5c6ab98b7e2d08f55726dde757fdfbbe88df8355
+	depends_i686 = alsa-lib
+	depends_i686 = libgl
+	depends_x86_64 = lib32-alsa-lib
+	depends_x86_64 = lib32-libgl
+	depends_x86_64 = lib32-alsa-lib
+
+pkgname = reicast
+
