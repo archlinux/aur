@@ -1,0 +1,11 @@
+--- libwnck-2.28.0/libwnck/pager.c.orig	2009-12-28 22:57:40.000000000 -0500
++++ libwnck-2.28.0/libwnck/pager.c	2009-12-28 22:57:42.000000000 -0500
+@@ -722,7 +722,7 @@
+   for (tmp = windows; tmp != NULL; tmp = tmp->next)
+     {
+       WnckWindow *win = WNCK_WINDOW (tmp->data);
+-      if (wnck_pager_window_get_workspace (win, TRUE) == workspace_num)
++      if ((wnck_pager_window_get_workspace (win, TRUE) == workspace_num) || ((wnck_pager_window_get_workspace (win, TRUE) >= 0) && (wnck_window_is_pinned(win))))
+ 	result = g_list_prepend (result, win);
+     }
+ 

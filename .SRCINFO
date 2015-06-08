@@ -1,0 +1,28 @@
+pkgbase = libwnck-sticky
+	pkgdesc = WNCK that shows sticky windows properly in the pager
+	pkgver = 2.31.0
+	pkgrel = 1
+	url = http://www.gnome.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = pkg-config
+	makedepends = libxt>=1.0.6
+	makedepends = intltool
+	makedepends = gobject-introspection
+	makedepends = python2
+	depends = gtk2>=2.19.7
+	depends = startup-notification>=0.10
+	depends = libxres
+	provides = libwnck=2.31.0
+	replaces = libwnck
+	options = !libtool
+	source = http://ftp.gnome.org/pub/gnome/sources/libwnck/2.31/libwnck-2.31.0.tar.xz
+	source = WindowActionMenu-unset-window-and-stop-async-events-on-dispose.patch
+	source = sticky.patch
+	md5sums = f03e1139296e2a3a92e3b65a3080cd32
+	md5sums = ac358ae8106a71fd267e0bbb6b12b05b
+	md5sums = 50af9a71f68dd5ade109a30ecbe06c3f
+
+pkgname = libwnck-sticky
+
