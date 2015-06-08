@@ -1,0 +1,16 @@
+pkgbase = pegdown
+	pkgdesc = A pure Java library for clean and lightweight Markdown processing
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = http://github.com/sirthias/pegdown
+	arch = any
+	license = APACHE
+	depends = java-environment
+	depends = parboiled>=1.1.5
+	source = http://repo1.maven.org/maven2/org/pegdown/pegdown/1.4.2/pegdown-1.4.2.jar
+	source = setClasspath.sh
+	sha1sums = d96db502ed832df867ff5d918f05b51ba3879ea7
+	sha1sums = be7935118c5b99183738d54cfc1777fd62797368
+
+pkgname = pegdown
+
