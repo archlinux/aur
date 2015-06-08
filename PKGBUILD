@@ -7,9 +7,8 @@ patchver=01
 pkgrel=1
 pkgdesc="A Maven Repository Manager. Nexus 2"
 url="http://nexus.sonatype.org"
-arch=('armv6h'
-      'armv7h'
-      'i686'
+arch=('armv7h'
+      'i686' 
       'x86_64')
 license=('GPL3')
 depends=('java-environment')
@@ -18,25 +17,27 @@ optdepends=('apache: a full featured webserver'
 
 install=nexus.install
 backup=(opt/nexus/bin/jsw/conf/wrapper.conf)
-conflicts=( 'nexus2')
-provides=('java-nexus')
+conflicts=('nexus2')
+provides=('java-nexus' 
+	  'nexus')
 options=(!strip !docs)
 
 source=("http://www.sonatype.org/downloads/nexus-${pkgver}-${patchver}-bundle.tar.gz"
-	'http://wrapper.tanukisoftware.com/download/3.5.26/wrapper-delta-pack-3.5.26.tar.gz'
+        'http://wrapper.tanukisoftware.com/download/3.5.26/wrapper-delta-pack-3.5.26.tar.gz'
         'nexus'
-        'nexus.service')
+        'nexus.service')	
 
 md5sums=('faa9eb422ae52a9beafef87673da1965'
          '8c1e180aba2b3991bcf107e899a96cbd'
          'fee6289e0ee48ee5705da54660f7595d'
          'ac7c0c60bb3c77ff67965ec160ef2517')
 
-package() {
+build() {
   cd ${srcdir}
 
   # Create directories
   install -d $pkgdir/opt/nexus
+ 
 
   # move documentation to the right location
   mkdir -p $pkgdir/usr/share/doc/nexus
