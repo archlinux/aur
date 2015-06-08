@@ -16,7 +16,6 @@ sha256sums=('c917773e2d0fb2b5e06d778fedd782e4975ee26de98ad33f7c07d89f216e8118')
 
 package() {
   install -dm755 "$pkgdir/usr/share/themes"
-  install -Dm644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
   cp -rf "$srcdir/Dust "{Sand,Burnt,Bordered} "$pkgdir/usr/share/themes"
   find ${pkgdir}/usr -type f -exec chmod 644 {} \;
   find ${pkgdir}/usr -type d -exec chmod 755 {} \;
