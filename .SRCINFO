@@ -1,0 +1,25 @@
+pkgbase = ttf-migu
+	pkgdesc = Good looking Japanese TrueType font by mixing M+ and IPA.
+	pkgver = 20130617
+	pkgrel = 1
+	url = http://mix-mplus-ipa.sourceforge.jp/migu/
+	install = ttf.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://jaist.dl.sourceforge.jp/mix-mplus-ipa/59022/migu-1c-20130617.zip
+	source = http://jaist.dl.sourceforge.jp/mix-mplus-ipa/59022/migu-1m-20130617.zip
+	source = http://jaist.dl.sourceforge.jp/mix-mplus-ipa/59022/migu-1p-20130617.zip
+	source = http://jaist.dl.sourceforge.jp/mix-mplus-ipa/59022/migu-2m-20130617.zip
+	md5sums = a3d6bf302e04e2be30300cc7d28960c5
+	md5sums = 890d76746013ecf1a0c56276c1836a5f
+	md5sums = 3b3e18cdb1ebd8105be82244e04a7087
+	md5sums = 281e9d4021aa462fa29cd8859d544373
+	sha256sums = 3defd9a68e4f3c406b0ccf3dbb978006fa03ccdd7ef6e822fa8115c7baf22a4e
+	sha256sums = c52025471b560e5aba73ec2327a160d6e514def05964056dbb1a8409e5870b45
+	sha256sums = 2c59928b41508a8f4871edc61cdb2259ee8bb078e915c11cda3ca3a54a3a5a19
+	sha256sums = 25092541e927bbebc094f9c1d7cfaec3e8e2c7a997c360c507a3433ed11e8278
+
+pkgname = ttf-migu
+
