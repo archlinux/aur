@@ -1,0 +1,10 @@
+[Unit]
+Description=Tryton Server Daemon
+
+[Service]
+Type=simple
+User=tryton
+ExecStart=/usr/bin/trytond
+
+[Install]
+WantedBy=multi-user.target

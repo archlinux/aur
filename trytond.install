@@ -1,0 +1,20 @@
+post_install() {
+  echo
+  echo "Adding tryton group... "
+  groupadd  tryton
+  echo
+  echo "Adding tryton user... "
+  useradd -c "Tryton Server Daemon" -g tryton -s /bin/false tryton
+
+  echo "Note:"
+  echo "==> Please don't forget to configure your PostgreSQL database for the program."
+}
+
+post_remove() {
+  echo "Removing tryton system user... "
+  userdel tryton && echo "trytond [done]"
+}
+
+op=$1
+shift
+[ "$(type -t "$op")" = "function" ] && $op "$@"
