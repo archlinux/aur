@@ -1,0 +1,25 @@
+pkgbase = talking-clock-git
+	pkgdesc = Highly configurable clock written in bash with soundpack and voice options.
+	pkgver = 15
+	pkgrel = 1
+	url = http://github.com/stormdragon2976/talking-clock
+	arch = any
+	license = WTFPL
+	makedepends = git
+	depends = bash
+	optdepends = espeak: TTS support
+	optdepends = festival: TTS support
+	optdepends = speech-dispatcher: TTS support
+	optdepends = svox-pico-git: TTS support
+	optdepends = pulseaudio: Chime sound support
+	optdepends = sox: Chime sound support
+	optdepends = vorbis-tools: Chime sound support
+	optdepends = torsocks: Get temperature information anonymously using torify
+	optdepends = yad: for talking-clock-gui to work
+	provides = talking-clock
+	conflicts = talking-clock
+	source = talking-clock::git+git://github.com/stormdragon2976/talking-clock.git
+	md5sums = SKIP
+
+pkgname = talking-clock-git
+
