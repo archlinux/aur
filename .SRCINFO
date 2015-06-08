@@ -1,0 +1,22 @@
+pkgbase = haskell-hsopenssl
+	pkgdesc = (Incomplete) OpenSSL binding for Haskell
+	pkgver = 0.11.1.1
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/HsOpenSSL
+	install = haskell-hsopenssl.install
+	arch = i686
+	arch = x86_64
+	license = custom:PublicDomain
+	depends = ghc
+	depends = haskell-bytestring
+	depends = haskell-network
+	depends = haskell-old-locale
+	depends = haskell-time
+	depends = openssl
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/HsOpenSSL/0.11.1.1/HsOpenSSL-0.11.1.1.tar.gz
+	md5sums = ae6079a4325bff42baa582a4921204ca
+
+pkgname = haskell-hsopenssl
+
