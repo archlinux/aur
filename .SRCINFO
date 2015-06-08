@@ -1,0 +1,15 @@
+pkgbase = nanopond
+	pkgdesc = A teeny tiny artificial life virtual machine
+	pkgver = 1.9
+	pkgrel = 1
+	url = http://adam.ierymenko.name/nanopond.shtml
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl
+	source = http://adam.ierymenko.name/files/nanopond-1.9.c
+	md5sums = ff67c936ed47de3ea4a8a6653e54aad7
+	sha512sums = c4bed6fdaa90f830434a732b0c9f9f980154c20a26af55e54d50ddf9403dc020427b9cda8d52f6c864e691a67367d1051132762f6f7211d9c9bd7925bfacdf57
+
+pkgname = nanopond
+
