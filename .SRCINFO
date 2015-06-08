@@ -1,0 +1,16 @@
+pkgbase = epson-inkjet-printer-201108w
+	pkgdesc = Epson printer driver (ME Office 535 / Stylus NX230, SX230, SX235W, TX230W, TX235, TX235W)
+	pkgver = 1.0.0
+	pkgrel = 8
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom:Epson Licence Agreement
+	depends = cups
+	depends = ghostscript
+	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201108w-1.0.0-1lsb3.2.src.rpm
+	sha256sums = cf8b39e9f38445bddd5c07f8842e9daef6e7c10ea8007770b5c47267a6dd8fb1
+
+pkgname = epson-inkjet-printer-201108w
+
