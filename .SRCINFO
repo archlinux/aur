@@ -1,0 +1,19 @@
+pkgbase = dieharder
+	pkgdesc = A Random Number Test Suite
+	pkgver = 3.31.1
+	pkgrel = 4
+	url = http://www.phy.duke.edu/~rgb/General/dieharder.php
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gsl
+	provides = dieharder
+	source = http://www.phy.duke.edu/~rgb/General/dieharder/dieharder-3.31.1.tgz
+	source = autogen.patch
+	source = stdint.patch
+	sha256sums = 6cff0ff8394c553549ac7433359ccfc955fb26794260314620dfa5e4cd4b727f
+	sha256sums = 0df2d1957accfebba3e4083f7e1184aac10091c93f79a3174c79ebdae613831d
+	sha256sums = 1ea17f15580fa9ac8831d20a3e4f5c412b8330bf2183f704371e167206497714
+
+pkgname = dieharder
+
