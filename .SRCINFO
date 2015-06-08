@@ -1,0 +1,30 @@
+pkgbase = mudlet-dev
+	pkgdesc = Development prerelease of Mudlet
+	pkgver = 3.0delta
+	pkgrel = 1
+	url = http://www.mudlet.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = boost
+	makedepends = qt5-tools
+	depends = yajl
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = hunspell
+	depends = libzip
+	depends = glu
+	depends = lua51
+	depends = lua51-filesystem
+	depends = luazip5.1
+	depends = lua51-sql-sqlite
+	depends = lrexlib-pcre5.1
+	provides = mudlet
+	conflicts = mudlet
+	conflicts = mudlet-git
+	conflicts = mudlet-deb
+	source = http://www.mudlet.org/download/Mudlet_3.0.0-delta.tar.bz2
+	md5sums = b0fc709e6cb4332168e9b5f77747668a
+
+pkgname = mudlet-dev
+
