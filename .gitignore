@@ -2,5 +2,5 @@ pkg/
 src/
 nrpe-*.tar.gz
 nagios-nrpe-plugin-*.src.tar.gz
-nagios-nrpe-plugin-*.pkg.tar.*
+nagios-nrpe-plugin-*.pkg.tar*
 *.swp

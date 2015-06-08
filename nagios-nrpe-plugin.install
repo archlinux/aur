@@ -1,0 +1,11 @@
+post_install() {
+    echo "check_nrpe has been moved to /usr/lib/monitoring-plugins to"
+    echo "be consistent with the change from nagios-plugins to"
+    echo "monitoring-plugins. You may need to tell nagios where the"
+    echo "plugins are located, or symlink /usr/share/nagios/libexec to"
+    echo "/usr/lib/monitoring-plugins."
+}
+
+post_upgrade() {
+    post_install $1
+}

@@ -1,14 +1,14 @@
 pkgbase = nagios-nrpe-plugin
 	pkgdesc = The Nagios NRPE server side plugin.
-	pkgver = 2.14
-	pkgrel = 1
+	pkgver = 2.15
+	pkgrel = 3
 	url = http://www.nagios.org
-	arch = i686
-	arch = x86_64
+	install = nagios-nrpe-plugin.install
+	arch = any
 	license = GPL
 	depends = nagios
-	source = http://downloads.sourceforge.net/nagios/nrpe-2.14.tar.gz
-	md5sums = 105857720e21674083a6d6be99e102c7
+	source = http://downloads.sourceforge.net/nagios/nrpe-2.15.tar.gz
+	md5sums = 3921ddc598312983f604541784b35a50
 
 pkgname = nagios-nrpe-plugin
 

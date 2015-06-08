@@ -9,4 +9,4 @@ To updated version:
 - Run `makepkg -g` and copy MD5 sum to PKGBUILD
 - Run `makepkg`
 - Run `makepkg --source` and upload the nagios-nrpe-plugin-*.src.tar.gz file.
-- Commit to git and tag 
+- Commit to git and tag v2.14-1
