@@ -1,0 +1,19 @@
+pkgbase = tkgate
+	pkgdesc = A digital circuit simulator with a tcl/tk-based graphical editor
+	pkgver = 1.8.7
+	pkgrel = 4
+	url = http://www.tkgate.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = imake
+	depends = tcl
+	depends = tk
+	conflicts = tkgate-beta
+	source = http://www.tkgate.org/downloads/tkgate-1.8.7.tgz
+	source = tkgate.diff.gz
+	md5sums = 628b5ca66283fc1473c9ef7300ae73c8
+	md5sums = 0eaafa98ff751c657b3adf73ea4f5bf6
+
+pkgname = tkgate
+
