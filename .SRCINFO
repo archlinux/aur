@@ -1,0 +1,51 @@
+pkgbase = wxwidgets-light
+	pkgdesc = wxWidgets suite for Base and GTK2 toolkits (GNOME/GStreamer free!)
+	pkgver = 3.0.2
+	pkgrel = 5
+	url = http://wxwidgets.org
+	arch = i686
+	arch = x86_64
+	license = custom:wxWindows
+	makedepends = git
+	makedepends = glu
+	makedepends = bash
+	makedepends = gtk2
+	makedepends = libsm
+	makedepends = libgl
+	source = wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v3.0.2
+	source = config.conf
+	source = wx-config.sh
+	source = make-abicheck-non-fatal.patch
+	sha1sums = SKIP
+	sha1sums = 55436b5c57eae798f716e3e486c6834d6274cec5
+	sha1sums = 47df8d82e6c9671212428ea769ff4a3e3f725917
+	sha1sums = dfe38650c655395b90bf082b5734c4093508bfa3
+
+pkgname = wxbase-light
+	pkgdesc = wxWidgets Base (GNOME/GStreamer free!)
+	depends = wxcommon-light
+	depends = expat
+	depends = zlib
+	provides = wxbase=3.0.2
+	conflicts = wxbase
+	options = !emptydirs
+
+pkgname = wxgtk-light
+	pkgdesc = wxWidgets GTK2 Toolkit (GNOME/GStreamer free!)
+	depends = wxbase-light
+	depends = gtk2
+	depends = libsm
+	depends = sdl
+	provides = wxgtk=3.0.2
+	conflicts = wxgtk
+	options = !emptydirs
+
+pkgname = wxcommon-light
+	pkgdesc = wxWidgets common (GNOME/GStreamer free!)
+	arch = any
+	depends = bash
+	provides = wxcommon=3.0.2
+	conflicts = wxcommon
+	options = !emptydirs
+	backup = etc/wx/config
+

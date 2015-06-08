@@ -1,0 +1,7 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!config.conf
+!wx-config.sh
+!make-abicheck-non-fatal.patch
