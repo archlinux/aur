@@ -5,7 +5,7 @@
 pkgname=shinken
 pkgver=2.2
 pkgrel=2
-pkgdesc='An open source Nagios like tool, redesigned and rewritten from scratch. Its main goal is to meet today’s system monitoring requirements while still following compatibility to Nagios'
+pkgdesc="An open source Nagios like tool, redesigned and rewritten from scratch. Its main goal is to meet today's system monitoring requirements while still following compatibility to Nagios"
 arch=('any')
 url='http://www.shinken-monitoring.org/'
 license=('GPL3')
