@@ -1,0 +1,8 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+
+Name: MySql.Data.Entity
+Description: MySql.Data.Entity - MySQL Entity Framework connector for CLI
+Version: #VERSION#
+Libs: -r:${libdir}/mono/gac/MySql.Data.Entity/#DEB_CLI_ABI_VERSION#/MySql.Data.Entity.dll

@@ -1,0 +1,8 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+
+Name: MySql.Web
+Description: MySql.Web - MySQL ASP.NET connector for CLI
+Version: #VERSION#
+Libs: -r:${libdir}/mono/gac/MySql.Web/#DEB_CLI_ABI_VERSION#/MySql.Web.dll

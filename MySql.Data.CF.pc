@@ -1,0 +1,8 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+
+Name: MySql.Data.CF
+Description: MySql.Data.CF - MySQL connector for Compact Framework CLI
+Version: #VERSION#
+Libs: -r:${libdir}/mono/gac/MySql.Data.CF/#DEB_CLI_ABI_VERSION#/MySql.Data.CF.dll
