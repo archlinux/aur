@@ -1,0 +1,18 @@
+pkgbase = rep-gtk-git
+	pkgdesc = Binding of the GTK and GDK libraries for the librep Lisp environment - git version
+	pkgver = 0.90.8.2.1.g74ac350
+	pkgrel = 1
+	url = http://rep-gtk.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = librep
+	depends = gtk2
+	provides = rep-gtk=0.90.8.1
+	conflicts = rep-gtk
+	options = libtool
+	source = git://github.com/SawfishWM/rep-gtk.git
+	md5sums = SKIP
+
+pkgname = rep-gtk-git
+
