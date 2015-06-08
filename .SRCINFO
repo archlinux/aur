@@ -1,12 +1,12 @@
 pkgbase = gmrender-resurrect-git
 	pkgdesc = Application to stream music from a UPnP server using gstreamer.
-	pkgver = 275.61f5a8f
-	pkgrel = 2
+	pkgver = 277.aa3d02c
+	pkgrel = 1
 	url = https://github.com/hzeller/gmrender-resurrect
 	install = gmrender-resurrect.install
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL
 	makedepends = git
 	depends = libupnp
 	depends = gst-plugins-good
