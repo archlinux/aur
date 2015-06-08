@@ -1,0 +1,18 @@
+pkgbase = psp-pthreads-emb
+	pkgdesc = POSIX Threads for embedded systems (psp)
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://pthreads-emb.sourceforge.net/
+	arch = any
+	license = LGPL
+	makedepends = psp-gcc
+	depends = psp-sdk
+	depends = psp-pspirkeyb
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = git+https://github.com/jschmidlapp/pthreads-emb.git
+	md5sums = SKIP
+
+pkgname = psp-pthreads-emb
+
