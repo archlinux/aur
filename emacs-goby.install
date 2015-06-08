@@ -1,0 +1,16 @@
+post_install() {
+  echo "Please add the following line to your .emacs:"
+  echo "(autoload 'goby \"goby\" nil t)"
+  echo "You will also need to specify some fonts, e.g."
+  echo "(setq goby-helvetica \"arial\")"
+  echo "(setq goby-times     \"times new roman\")"
+  echo "(setq goby-courier   \"courier new\")"
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  echo "Please remove the goby-related stuff from your .emacs"
+}
