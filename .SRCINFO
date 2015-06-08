@@ -1,0 +1,16 @@
+pkgbase = epson-inkjet-printer-ep-803a-903f-series
+	pkgdesc = Epson printer driver (EP-803A, EP-803AW, EP-903A, EP-903F, EP-774A)
+	pkgver = 1.0.1
+	pkgrel = 8
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom:Epson Licence Agreement
+	depends = cups
+	depends = ghostscript
+	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-ep-803a-903f-series-1.0.1-1lsb3.2.src.rpm
+	sha256sums = b40549bf071c461a6373b8bfac72046470e93f85fffb3881e99fe161e39fd202
+
+pkgname = epson-inkjet-printer-ep-803a-903f-series
+
