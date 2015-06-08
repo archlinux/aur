@@ -1,0 +1,23 @@
+pkgbase = osgocean-svn
+	pkgdesc = An ocean rendering nodekit for OpenSceneGraph
+	pkgver = 0.r258
+	pkgrel = 1
+	url = https://code.google.com/p/osgocean/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = subversion
+	makedepends = cmake
+	makedepends = unrar
+	depends = openscenegraph
+	depends = fftw
+	provides = osgocean
+	conflicts = osgocean
+	noextract = osgOcean-Resources-1.0.1.rar
+	source = osgocean::svn+http://osgocean.googlecode.com/svn/tags/osgOcean-1.0.1/
+	source = https://osgocean.googlecode.com/files/osgOcean-Resources-1.0.1.rar
+	sha1sums = SKIP
+	sha1sums = 70f70cf673561ce6b71a220ccb2ff57d6ae6761b
+
+pkgname = osgocean-svn
+
