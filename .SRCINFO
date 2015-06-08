@@ -1,0 +1,21 @@
+pkgbase = lrexlib
+	pkgdesc = regular expression libraries for lua
+	pkgver = 2.7.2
+	pkgrel = 1
+	url = http://rrthomas.github.com/lrexlib/
+	arch = i686
+	arch = x86_64
+	license = custom:lua
+	makedepends = git2cl-git
+	makedepends = luarocks
+	depends = lua
+	depends = oniguruma
+	depends = tre
+	depends = pcre
+	conflicts = lrexlib-pcre5.1
+	conflicts = lrexlib-pcre
+	source = LICENSE
+	md5sums = 57bcf624164eaa14fd37807983ea219b
+
+pkgname = lrexlib
+
