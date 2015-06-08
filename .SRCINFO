@@ -1,0 +1,24 @@
+pkgbase = kfilemetadata-git
+	pkgdesc = A library for extracting file metadata
+	pkgver = r239.b95e10c
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/kdelibs/kfilemetadata
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = ki18n-git
+	depends = karchive-git
+	depends = exiv2
+	depends = poppler-qt5
+	depends = taglib
+	depends = ffmpeg
+	depends = ebook-tools
+	provides = kfilemetadata
+	conflicts = kfilemetadata
+	source = git://anongit.kde.org/kfilemetadata.git
+	md5sums = SKIP
+
+pkgname = kfilemetadata-git
+
