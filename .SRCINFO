@@ -1,0 +1,12 @@
+pkgbase = aic94xx-firmware
+	pkgdesc = Adaptec SAS 44300, 48300, 58300 Sequencer Firmware for AIC94xx driver
+	pkgver = 30
+	pkgrel = 8
+	url = http://pkgs.org/centos-7/centos-x86_64/aic94xx-firmware-30-6.el7.noarch.rpm.html
+	arch = any
+	license = custom
+	source = aic94xx-firmware-30.rpm::ftp://ftp.pbone.net/mirror/ftp.centos.org/7.1.1503/os/x86_64/Packages/aic94xx-firmware-30-6.el7.noarch.rpm
+	sha256sums = 1db12b5979cf561cb030c9d695969e5c4d76e55c0e1f8dd4795b86eddb3d3669
+
+pkgname = aic94xx-firmware
+
