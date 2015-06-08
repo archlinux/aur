@@ -9,7 +9,7 @@ arch=(i686 x86_64)
 url="https://github.com/hugegreenbug/xf86-input-cmt"
 license=('custom:chromiumos')
 _gitname='xf86-input-cmt'
-depends=('xf86-input-evdev' 'libgestures-xorg' 'libevdev' 'libevdevc')
+depends=('xf86-input-evdev' 'libgestures' 'libevdev' 'libevdevc')
 provides=("xf86-input-cmt=$pkgver")
 conflicts=('xf86-input-synaptics')
 makedepends=('autoconf' 'automake' 'dmidecode' 'git' 'xorg-util-macros' 'xorg-server-devel')
