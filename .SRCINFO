@@ -1,0 +1,23 @@
+pkgbase = nvclock
+	pkgdesc = A small utility which allows users to overclock NVIDIA based video cards.
+	pkgver = 0.8b4
+	pkgrel = 3
+	url = http://www.linuxhardware.org/nvclock/
+	install = nvclock.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	optdepends = gksu: to start nvclock via the desktop menu entry
+	options = !makeflags
+	source = http://www.linuxhardware.org/nvclock/nvclock0.8b4.tar.gz
+	source = nvclock-0.8b4-buildfix.patch
+	source = nvclock-0.8b4-linkfix.patch
+	source = nvclock.desktop-use-gksu.patch
+	md5sums = 23f1b3ebf40f35d76d5fdac50f66ab11
+	md5sums = 1da24b50dd6a8c4704fa550a3e1a8b53
+	md5sums = b812646787ea44e693fd2288612f25ad
+	md5sums = 98fc1995721d0b0e8ff6d448869eee6d
+
+pkgname = nvclock
+

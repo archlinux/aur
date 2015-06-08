@@ -1,0 +1,11 @@
+--- nvclock.desktop.orig	2011-01-16 15:15:55.764977836 +0100
++++ nvclock.desktop	2011-01-16 15:16:07.827408839 +0100
+@@ -2,7 +2,7 @@
+ Encoding=UTF-8
+ Name=NVCLOCK
+ Comment=Overclock and Monitor NVIDIA cards
+-Exec=nvclock_gtk
++Exec=gksu nvclock_gtk
+ Icon=nvclock.png
+ Terminal=false
+ Type=Application
