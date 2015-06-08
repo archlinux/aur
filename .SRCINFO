@@ -1,0 +1,16 @@
+pkgbase = epson-inkjet-printer-201308w
+	pkgdesc = Epson printer driver (XP-610, XP-710, XP-810)
+	pkgver = 1.0.0
+	pkgrel = 8
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom:Epson Licence Agreement
+	depends = cups
+	depends = ghostscript
+	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201308w-1.0.0-1lsb3.2.src.rpm
+	sha256sums = 97c633994aa96c865c532b669047d17960b16dd0a8196059f810990fce80c27a
+
+pkgname = epson-inkjet-printer-201308w
+
