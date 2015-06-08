@@ -1,0 +1,19 @@
+pkgbase = cauchy-hg
+	pkgdesc = Matlab/Octave to MathML compiler
+	pkgver = 446.814aa99d9341
+	pkgrel = 1
+	url = https://bitbucket.org/cyrille/cauchy
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = mercurial
+	depends = eigen
+	depends = gcc-libs
+	provides = cauchy
+	conflicts = cauchy
+	source = hg+https://bitbucket.org/cyrille/cauchy
+	md5sums = SKIP
+
+pkgname = cauchy-hg
+
