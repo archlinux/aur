@@ -1,0 +1,24 @@
+_update(){
+  update-desktop-database -q
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+}
+
+post_install() {
+  _update
+  echo
+  echo "NOTE: You have to link libnotify.so.4 to libnotify.so.1"
+  echo "#cd /lib"
+  echo "#ln -s libnotify.so.4 libnotify.so.1"
+  echo
+
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  _update
+}
+

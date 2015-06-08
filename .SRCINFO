@@ -1,0 +1,17 @@
+pkgbase = codea-geeteedee
+	pkgdesc = GeeTeeDee is a fancy, lightweight and easy to use task management software for GTD
+	pkgver = 0.2.608
+	pkgrel = 1
+	url = http://codea.ru/gtd/
+	install = geeteedee.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libnotify
+	depends = libpng12
+	options = !emptydirs
+	source = http://codea.ru/static/codea-geeteedee_0.2.608_i386.deb
+	md5sums = 990106f7c7ccd61fe9bf201989405faf
+
+pkgname = codea-geeteedee
+
