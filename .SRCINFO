@@ -1,0 +1,20 @@
+pkgbase = fontmatrix-git
+	pkgdesc = Font manager for Linux
+	pkgver = 1176.25e002c
+	pkgrel = 1
+	url = http://oep-h.com/fontmatrix/
+	install = fontmatrix.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = mesa
+	depends = qtwebkit
+	provides = fontmatrix
+	conflicts = fontmatrix
+	source = git+https://github.com/fontmatrix/fontmatrix.git
+	sha256sums = SKIP
+
+pkgname = fontmatrix-git
+
