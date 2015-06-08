@@ -1,0 +1,14 @@
+pkgbase = perl-set-scalar
+	pkgdesc = basic set operations
+	pkgver = 1.29
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Set-Scalar
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=0
+	source = http://search.cpan.org/CPAN/authors/id/D/DA/DAVIDO/Set-Scalar-1.29.tar.gz
+	options = !emptydirs
+
+pkgname = perl-set-scalar
+
