@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-box2d
+	pkgdesc = 2D rigid body simulation library for games (mingw-w64)
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = http://www.box2d.org/
+	arch = any
+	license = zlib
+	makedepends = mingw-w64-cmake
+	makedepends = subversion
+	depends = mingw-w64-crt
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = box2d-2.3.1::svn+http://box2d.googlecode.com/svn/tags/v2.3.1
+	md5sums = SKIP
+
+pkgname = mingw-w64-box2d
+
