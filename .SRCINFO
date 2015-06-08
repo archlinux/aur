@@ -1,0 +1,17 @@
+pkgbase = python-praw-git
+	pkgdesc = A python package that allows for simple access to reddit's API
+	pkgver = 3.0a1.r1021.g23a2bb0
+	pkgrel = 1
+	url = https://github.com/praw-dev/praw
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-six
+	depends = python-requests
+	depends = python-update_checker-git
+	source = python-praw-git::git+https://github.com/praw-dev/praw.git
+	sha256sums = SKIP
+
+pkgname = python-praw-git
+
