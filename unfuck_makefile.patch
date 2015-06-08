@@ -1,0 +1,34 @@
+--- a/gwnum/makefile	2014-05-29 22:35:10.000000000 -0400
++++ b/gwnum/makefile	2014-10-09 05:37:38.505853864 -0400
+@@ -2,10 +2,10 @@
+ #
+ 
+ CC = gcc
+-CFLAGS = -I.. -O2 -march=i486 -malign-double
++CFLAGS = -I.. -O2 -march=x86-64 -mtune=generic -malign-double
+ 
+ CPP = g++
+-CPPFLAGS = -I.. -I../qd -O2 -march=i486 -malign-double
++CPPFLAGS = -I.. -I../qd -O2 -march=x86-64 -mtune=generic -malign-double
+ 
+ OBJS = cpuid.o gwnum.o gwtables.o gwthread.o gwutil.o gwdbldbl.o giants.o ecmstag1.o
+ 
+--- a/linux64/makefile	2014-05-29 22:35:16.000000000 -0400
++++ b/linux64/makefile	2014-10-09 05:42:54.648403900 -0400
+@@ -13,13 +13,13 @@
+ #	LIBS = ../gwnum/gwnum.a ../gwnum/gwnum.ld -lm -lpthread -Wl,-Bstatic $(shell pkg-config --static --libs libcurl) -lstdc++ -Wl,-Bdynamic -ldl
+ 
+ CC = gcc
+-CFLAGS = -I.. -I../gwnum -I/usr/local/include -DX86_64 -O2 
++CFLAGS = -I.. -I../gwnum -march=x86-64 -mtune=generic -O2 -DX86_64 -malign-double -Wno-unused-result
+ 
+ CPP = g++
+-CPPFLAGS = -I.. -I../gwnum -DX86_64 -O2
++CPPFLAGS = -I.. -I../gwnum -march=x86-64 -mtune=generic -O2 -DX86_64 -malign-double -Wno-unused-result
+ 
+ LFLAGS = -Wl,-M -Wl,-L/usr/local/lib
+-LIBS = ../gwnum/gwnum.a ../gwnum/gwnum.ld -lm -lpthread -Wl,-Bstatic -lcurl -Wl,-Bdynamic -lrt -lstdc++ -ldl
++LIBS = ../gwnum/gwnum.a ../gwnum/gwnum.ld -lm -lpthread $(shell pkg-config --libs libcurl) -lstdc++
+ 
+ FACTOROBJ = factor64.o
+ LINUXOBJS = prime.o menu.o
