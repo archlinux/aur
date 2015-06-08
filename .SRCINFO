@@ -1,0 +1,25 @@
+pkgbase = gtk2-smooth-engine
+	pkgdesc = Smooth themes for gtk2 without the need for gtk1
+	pkgver = 0.6.0.1
+	pkgrel = 5
+	url = http://sourceforge.net/projects/smooth-engine
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = gtk-engines
+	conflicts = gtk-smooth-engine
+	replaces = gtk-smooth-engine
+	options = !libtool
+	source = http://downloads.sourceforge.net/smooth-engine/gtk-smooth-engine-0.6.0.1.tar.gz
+	source = http://downloads.sourceforge.net/smooth-engine/smooth-themes-0.5.8.tar.gz
+	source = deprecated_macros.diff
+	source = free_border.diff
+	source = careless.diff
+	md5sums = a2231118c8187649d1e634fdfe6f36de
+	md5sums = a46c592261c4d371498d644eece6493e
+	md5sums = f2fcb7c088735ff0f07915987097755b
+	md5sums = d018dc9be612514fc921bb12fd7d7070
+	md5sums = ddebde49a8db05578b3c561bfa8b34f9
+
+pkgname = gtk2-smooth-engine
+
