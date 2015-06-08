@@ -1,0 +1,13 @@
+pkgbase = freebsd-manpages
+	pkgdesc = Manual pages for GNU/kFreeBSD systems
+	pkgver = 10.1
+	pkgrel = 1
+	url = http://packages.debian.org/sid/freebsd-manpages
+	arch = any
+	license = BSD
+	makedepends = deb2targz
+	source = http://mirrors.kernel.org/debian/pool/main/f/freebsd-manpages/freebsd-manpages_10.1~RC1-1_all.deb
+	md5sums = 8da58a53256f853d03b3bdefc81b8976
+
+pkgname = freebsd-manpages
+
