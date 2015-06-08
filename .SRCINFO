@@ -1,0 +1,65 @@
+pkgbase = linux-uksm-ck
+	pkgver = 4.0.5
+	pkgrel = 1
+	url = http://kerneldedup.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	options = !strip
+	source = http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.sign
+	source = http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.5.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.5.sign
+	source = uksm-0.1.2.4-beta-for-linux-v4.0.patch
+	source = http://ck.kolivas.org/patches/4.0/4.0/4.0-ck1/patch-4.0-ck1.bz2
+	source = http://ck.kolivas.org/patches/bfs/4.0/4.0/pending/bfs462-rtmn-fix.patch
+	source = http://ck.kolivas.org/patches/bfs/4.0/4.0/pending/bfs462-update_inittask.patch
+	source = bfs462-nosubmit.patch
+	source = https://pf.natalenko.name/mirrors/bfq/4.0.0-v7r7//0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r7-4.0.patch
+	source = https://pf.natalenko.name/mirrors/bfq/4.0.0-v7r7//0002-block-introduce-the-BFQ-v7r7-I-O-sched-for-4.0.patch
+	source = https://pf.natalenko.name/mirrors/bfq/4.0.0-v7r7//0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r7-for-4.0.0.patch
+	source = http://repo-ck.com/source/gcc_patch/enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch.gz
+	source = linux-uksm-ck.preset
+	source = change-default-console-loglevel.patch
+	source = config
+	source = config.x86_64
+	sha512sums = ce13d2c1c17908fd9a4aa42bb6348a0cb13dd22e560bd54c61b8bfdf62726d6095f130c59177a2fe4793b7dc399481bf10d3556d1d571616000f180304e5a995
+	sha512sums = SKIP
+	sha512sums = 377371371752eb706053282ee296f82b3af0c3cf84c346091b1e347c8d00fcf6787c5b51c76955af3f61e9c20c30035b110368ee3ba2587871f0dbc92826de32
+	sha512sums = SKIP
+	sha512sums = ce46c47a1685f5014f4ada55b9ee6292255a383f83c04ac84ae922d16fef0687ebf09e7a6b211f23c6d1156312ef812c950805979893792f3e19b6c643d2fb81
+	sha512sums = 97f392e0bed2e6622aed7eb344f0ed499bb58ee118e62e28b67080df6ef02c7b874596e70d7db970a2f58f9f94faa3406c8a29eb5f6871ddc8d290ecd6aaf0b5
+	sha512sums = 47e4134fa35a1596b390bdc7eadc59b75b88594e84b54a71a0fd7886bbef083c174ca5627bd2a899966eddd35b676df735b0304e737218040ab8edf72f333ef2
+	sha512sums = 623c4fc879b6bb17f1640caa268bf19cf65fbfa6c5910bbb5fdd44f1013913e5728d80fa037f33288a08ac56a23ee326951a15822a871dee2fb3d775ced9357e
+	sha512sums = 2948557d71436a1498747858c749b0e75b8c71a97b0af7f44ccb5b683d2dd52b100b033254d63de7502d46fc402a057b07dff73417bf31e3d9f67c8744f3610c
+	sha512sums = f81297a1547ab96b8394123fc7aa2c7b21f1a44ad3a535f5e715bf593fba9c79bb16fc091498936e8b4e4bdf041f75c340002b9763f0b35f1207912d703ba566
+	sha512sums = dafeaaea16168d445bdc1dcd1a97958b55f8dc79c61021e02c3fbf1ae7d4eae5aed2f565d6f2bf56c652803508d62f6f40765b3b831277d817bbe0a40aa5202d
+	sha512sums = c4f5a82ca4c87d21768351e17fcefb61d238394baf4475934d3c384e9990d86af14631234a8dffc363d95abc34438edfe06f8a7e9c36a320062bf3270a2466e8
+	sha512sums = 76bf6a9f22b023ab8f780884f595dac1801d150ecd94f88da229c5c9ea98d2c3ef8add01ff7e18e4cbbfa5e6e9c022c4042ee62c779a8485203c1b0e082b8ccc
+	sha512sums = af8f425ac196a3282903539171b76b0c0063630c54dc64b843f80b77651c41225b871b7ecd3679919338eb790b9032b6a4c78f7be1995eccad5d14ef4b59f8f5
+	sha512sums = d9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8
+	sha512sums = 970d05bb0c49bdeca68551d9a24c2fcc50186859ae2932293d7103b63ea9e73b71dc02457ebd7211b772fa943e93086d3ecfa5576f9e6c4d8f27e787b5f6a3ef
+	sha512sums = be36094607718a14ce1a6ed2892db0edc581b252b503ef1d8e9b145102f9db51b08ad6171cddaec2894c62de73e04e25a916f39760e00e9a7c3d6a9b1d3ff66f
+
+pkgname = linux-uksm-ck
+	pkgdesc = Linux Kernel and modules with the UKSM patchset featuring the v1.2.4. and the ck1 patchset featuring the Brain Fuck Scheduler v0.462
+	install = linux-uksm-ck.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = nvidia-uksm-ck: nVidia drivers for linux-uksm-ck
+	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
+	backup = etc/mkinitcpio.d/linux-uksm-ck.preset
+
+pkgname = linux-uksm-ck-headers
+	pkgdesc = Header files and scripts to build modules for linux-uksm-ck.
+	depends = linux-uksm-ck
+
+pkgname = linux-uksm-ck-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the linux-uksm-ck kernel
+	depends = linux-uksm-ck
+
