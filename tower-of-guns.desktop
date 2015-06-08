@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Value=1.0
+Type=Application
+Name=Tower of Guns
+GenericName=Tower of Guns
+Comment=Tower of Guns
+Icon=/opt/tower-of-guns/TowerOfGunsIcon.png
+Exec="/usr/bin/tower-of-guns"
+Categories=Game;
+Path=/opt/tower-of-guns
+

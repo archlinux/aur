@@ -1,0 +1,25 @@
+pkgbase = tower-of-guns
+	pkgdesc = Tower of Guns is a fast-paced, first-person shooter for the twitch gamer, featuring a few randomized elements to keep each playthrough fresh.
+	pkgver = 1414520623
+	pkgrel = 1
+	url = http://www.towerofguns.com/
+	install = tower-of-guns.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = openal
+	depends = libvorbis
+	depends = gcc-libs
+	depends = libgl
+	depends = libxext
+	noextract = TowerOfGuns_Linux_1414520623.sh
+	options = !strip
+	source = tower-of-guns.desktop
+	source = tower-of-guns.sh
+	source = hib://TowerOfGuns_Linux_1414520623.sh
+	md5sums = c5848b7ef54506f7538d26e5335609c4
+	md5sums = 09390a3d0f46508537e8d5d0ab8f8297
+	md5sums = 44878e651e2e06461262ce5cac5e8d12
+
+pkgname = tower-of-guns
+
