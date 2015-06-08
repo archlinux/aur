@@ -1,0 +1,14 @@
+post_install() {
+    cat <<EOF
+==> Include this in your .emacs:
+     (load-file "/usr/share/emacs/site-lisp/rudel/rudel-loaddefs.el")
+EOF
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+op=$1
+shift
+$op $*

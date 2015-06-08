@@ -1,0 +1,18 @@
+pkgbase = emacs-rudel-bzr
+	pkgdesc = A collaborative editing environment for GNU Emacs
+	pkgver = 0.3r632
+	pkgrel = 1
+	url = http://www.emacswiki.org/emacs/Rudel
+	install = emacs-rudel-bzr.install
+	arch = any
+	license = GPL
+	makedepends = bzr
+	depends = emacs
+	provides = emacs-rudel
+	conflicts = emacs-rudel-git
+	conflicts = emacs-rudel-svn
+	source = emacs-rudel::bzr://rudel.bzr.sourceforge.net/bzrroot/rudel/trunk/
+	md5sums = SKIP
+
+pkgname = emacs-rudel-bzr
+
