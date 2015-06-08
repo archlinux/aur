@@ -1,0 +1,23 @@
+pkgbase = python-autobahn
+	pkgdesc = WebSocket and WAMP for Twisted and Asyncio
+	pkgver = 0.10.4
+	pkgrel = 2
+	url = http://autobahn.ws/python/
+	arch = any
+	license = Apache
+	makedepends = python-distribute
+	depends = python>=3.4
+	depends = python-six
+	depends = python-txaio
+	optdepends = python-zope-interface: Autobahn/Twisted backend
+	optdepends = python-twisted: Autobahn/Twisted backend
+	optdepends = python-wsaccel: WebSocket acceleration
+	optdepends = python-ujson: JSON acceleration
+	optdepends = python-snappy: WebSocket compression
+	optdepends = python-lz4: WebSocket compression
+	optdepends = python-msgpack: WAMPv2 binary serialization support
+	source = https://pypi.python.org/packages/source/a/autobahn/autobahn-0.10.4.tar.gz
+	md5sums = 4ae22413ee9ba8f6692e80e171b68777
+
+pkgname = python-autobahn
+
