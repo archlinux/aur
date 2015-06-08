@@ -1,0 +1,18 @@
+pkgbase = qmediainfo-git
+	pkgdesc = Simple MediaInfo parser based on Qt
+	pkgver = r10.589c615
+	pkgrel = 1
+	url = https://github.com/RazrFalcon/QMediaInfo
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = qt4
+	depends = mediainfo
+	provides = qmediainfo
+	conflicts = qmediainfo
+	source = qmediainfo-git::git://github.com/RazrFalcon/QMediaInfo.git
+	md5sums = SKIP
+
+pkgname = qmediainfo-git
+
