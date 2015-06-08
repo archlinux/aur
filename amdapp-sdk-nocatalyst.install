@@ -1,0 +1,14 @@
+post_install() {
+ echo "Before using read the license placed here:"
+ echo "/usr/share/licenses/amdapp-sdk/APPSDK-EULA-linux.txt"
+ echo ""
+ echo "  Libs are here: /opt/AMDAPP/SDK/lib/"
+ echo "  ICD is here: /etc/OpenCL/vendors/amd.icd"
+ echo ""
+}
+
+post_upgrade() {
+ echo "Running ldconfig... "
+ ldconfig || return 1
+ echo "OK"
+}

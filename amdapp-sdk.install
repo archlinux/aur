@@ -1,0 +1,26 @@
+whisper() {
+ echo "Before using read the license placed here:"
+ echo "/usr/share/licenses/amdapp-sdk/APPSDK-EULA-linux.txt"
+ echo ""
+ echo "amdapp-sdk package was split into 5 packages:"
+ echo "amdapp-sdk :: main package"
+ echo "amdapp-sdk-aparapi :: AparapiUtil and aparapi samples"
+ echo "amdapp-sdk-opencv  :: OpenCVUtils and opencv samples"
+ echo "amdapp-sdk-docs    :: documentation"
+ echo "amdapp-sdk-nocatalyst  :: libs and icd for non-catalyst users"
+ echo ""
+}
+
+post_install() {
+ echo ""
+ echo "    Samples can be found in /opt/AMDAPP/SDK/samples"
+ echo ""
+ whisper
+}
+
+post_upgrade() {
+ post_install $1
+ echo "Running ldconfig... "
+ ldconfig || return 1
+ echo "OK"
+}

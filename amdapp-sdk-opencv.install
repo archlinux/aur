@@ -1,0 +1,8 @@
+post_install()
+{
+ echo "Before using read the license placed here:"
+ echo "/usr/share/licenses/amdapp-sdk/APPSDK-EULA-linux.txt"
+ echo ""
+ echo "  OpenCVUtil and samples can be found in /opt/AMDAPP/SDK/samples/opencv"
+ echo ""
+}
