@@ -1,0 +1,15 @@
+pkgbase = yabat
+	pkgdesc = A simple battery monitor for your systray.
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/XenGi/yabat
+	arch = any
+	license = MIT
+	depends = python-docopt
+	depends = python-pyqt5
+	provides = yabat
+	source = https://github.com/XenGi/yabat/archive/v0.4.1.tar.gz
+	sha256sums = 9067fecfc3c91c93a5f6205351689889d97b64ce85a2f6175acf4072e1c4b1ce
+
+pkgname = yabat
+
