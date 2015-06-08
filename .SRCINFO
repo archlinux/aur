@@ -1,0 +1,19 @@
+pkgbase = playtime-git
+	pkgdesc = Pretty-print media file duration indices
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/2ion/playtime
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = mediainfo
+	depends = bash
+	depends = util-linux
+	depends = file
+	provides = playtime
+	conflicts = playtime
+	source = playtime::git+https://github.com/2ion/playtime.git#branch=master
+	md5sums = SKIP
+
+pkgname = playtime-git
+
