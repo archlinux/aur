@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Icon=yed
+Exec=yed %f
+StartupNotify=true
+StartupWMClass=B-A-A-B
+Name=yEd Graph Editor
+Categories=Application;Graphics;VectorGraphics;Java;
