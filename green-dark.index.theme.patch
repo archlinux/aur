@@ -1,0 +1,13 @@
+--- a/index.theme	2015-02-07 09:00:28.000000000 -0600
++++ b/index.theme	2015-02-07 12:07:52.075493164 -0600
+@@ -1,7 +1,7 @@
+ [Icon Theme]
+-Name=Ultra-Flat-Icons-Mint-Green
+-Comment=An icon theme for Linux desktops, the set is inspired by the latest flat design trend.
+-Inherits=
++Name=Ultra Flat Icons Mint Green Dark
++Comment=A dark icon theme for Linux desktops, the set is inspired by the latest flat design trend.
++Inherits=UltraFlatIconsGreen
+ 
+ Example=x-directory-normal
+ 

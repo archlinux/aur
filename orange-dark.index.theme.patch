@@ -1,0 +1,12 @@
+--- a/index.theme	2015-01-18 14:25:10.415889080 -0600
++++ b/index.theme	2015-01-18 14:28:28.146570382 -0600
+@@ -1,7 +1,7 @@
+ [Icon Theme]
+-Name=Ultra-Flat-Icons
++Name=Ultra Flat Icons Orange Dark
+ Comment=An icon theme for Linux desktops, the set is inspired by the latest flat design trend.
+-Inherits=
++Inherits=UltraFlatIconsOrange
+ 
+ Example=x-directory-normal
+ 
