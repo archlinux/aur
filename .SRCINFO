@@ -1,0 +1,28 @@
+pkgbase = mingw-w64-libtheora
+	pkgdesc = An open video codec developed by the Xiph.org (mingw-w64)
+	pkgver = 1.1.1
+	pkgrel = 7
+	url = http://xiph.org
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	depends = mingw-w64-libvorbis
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://downloads.xiph.org/releases/theora/libtheora-1.1.1.tar.bz2
+	source = libtheora-1.1.1-fix-pp_sharp_mod-calc.patch
+	source = libtheora-1.1.1-libpng16.patch
+	source = libtheora-1.1.1-libm.patch
+	source = libtheora-1.1.1-libadd.patch
+	source = mingw-libtheora-1.1.1-rint.patch
+	md5sums = 292ab65cedd5021d6b7ddd117e07cd8e
+	md5sums = 0ed7f7af622c2d675a9809980d8aad71
+	md5sums = 08edd81c7a1be2c4edfd2cd3c112a8c6
+	md5sums = f5f96fedc1a7a23e0530298b045c7101
+	md5sums = 4357cded33bc3397b4123790e4967d24
+	md5sums = 54c626ca201f51ebd9d97595f57a25b4
+
+pkgname = mingw-w64-libtheora
+

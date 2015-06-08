@@ -1,0 +1,38 @@
+diff --git a/examples/encoder_example.c b/examples/encoder_example.c
+index 4b73b64..e0e08d3 100644
+--- a/examples/encoder_example.c
++++ b/examples/encoder_example.c
+@@ -51,14 +51,6 @@
+ /*supply missing headers and functions to Win32. going to hell, I know*/
+ #include <fcntl.h>
+ #include <io.h>
+-
+-static double rint(double x)
+-{
+-  if (x < 0.0)
+-    return (double)(int)(x - 0.5);
+-  else
+-    return (double)(int)(x + 0.5);
+-}
+ #endif
+ 
+ const char *optstring = "b:e:o:a:A:v:V:s:S:f:F:ck:d:z:\1\2\3\4";
+diff --git a/win32/experimental/transcoder/transcoder_example.c b/win32/experimental/transcoder/transcoder_example.c
+index 28c2b52..3923b44 100644
+--- a/win32/experimental/transcoder/transcoder_example.c
++++ b/win32/experimental/transcoder/transcoder_example.c
+@@ -37,14 +37,6 @@
+ /*supply missing headers and functions to Win32. going to hell, I know*/
+ #include <io.h>
+ #include <fcntl.h>
+-
+-static double rint(double x)
+-{
+-  if (x < 0.0)
+-    return (double)(int)(x - 0.5);
+-  else
+-    return (double)(int)(x + 0.5);
+-}
+ #endif
+ 
+ /*Copied from vorbis/sharedbook.c*/

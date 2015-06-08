@@ -1,0 +1,14 @@
+Library dependencies (needed for -no-undefined in MinGW and parallel build).
+
+diff --git a/lib/Makefile.am b/lib/Makefile.am
+index 21b87ff..04d1e1b 100644
+--- a/lib/Makefile.am
++++ b/lib/Makefile.am
+@@ -153,6 +153,7 @@ libtheoraenc_la_SOURCES = \
+ libtheoraenc_la_LDFLAGS = \
+   -version-info @THENC_LIB_CURRENT@:@THENC_LIB_REVISION@:@THENC_LIB_AGE@ \
+   @THEORAENC_LDFLAGS@ $(OGG_LIBS)
++libtheoraenc_la_LIBADD = libtheoradec.la
+ 
+ libtheora_la_SOURCES = \
+ 	$(decoder_sources) \
