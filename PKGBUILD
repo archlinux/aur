@@ -1,7 +1,7 @@
 # Maintainer: Can Celasun <dcelasun[at]gmail[dot]com>
 pkgname=netsniff-ng-git
 _gitname=netsniff-ng
-pkgver=v0.5.8.rc4.16.g61fa17c
+pkgver=v0.5.9.7.gb02dc7e
 pkgrel=1
 pkgdesc='A high performance Linux network sniffer for packet inspection (git version, without curvetun tool).'
 arch=('i686' 'x86_64')
@@ -16,17 +16,17 @@ source=('git://github.com/borkmann/netsniff-ng.git')
 md5sums=('SKIP')
 
 pkgver() {
-cd $_gitname
-git describe --always | sed 's|-|.|g'
+  cd $_gitname
+  git describe --always | sed 's|-|.|g'
 }
 
 build() {
-  cd "$srcdir/${_gitname}"
+  cd "${srcdir}"/${_gitname}
   ./configure
-  make DISTRO=1
+  make DISTRO=1 allbutmausezahn
 }
 
 package() {
-  cd "$srcdir/${_gitname}"
-  make PREFIX="$pkgdir" install_allbutmausezahn
+  cd "${srcdir}"/${_gitname}
+  make PREFIX="/usr" DESTDIR="${pkgdir}" SBINDIR="/usr/bin" install_allbutmausezahn
 }
