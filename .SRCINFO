@@ -1,0 +1,15 @@
+pkgbase = txtreader
+	pkgdesc = This is a text reader,it's mainly used for reading text originally novels.
+	pkgver = 0.6.6
+	pkgrel = 1
+	url = http://code.google.com/p/txtreader4linux/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	depends = qt4
+	source = http://kde-apps.org/CONTENT/content-files/76994-txtreader-0.6.6.zip
+	sha1sums = 2f8ecc51d66c40daf01bac84131f68ed26c4e49e
+
+pkgname = txtreader
+
