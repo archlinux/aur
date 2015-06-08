@@ -1,0 +1,18 @@
+pkgbase = emacs-mew-git
+	pkgdesc = Messaging in the Emacs World
+	pkgver = 6.6.15.g8ee4f8b
+	pkgrel = 1
+	url = http://www.mew.org/
+	install = emacs-mew-git.install
+	arch = x86_64
+	arch = i686
+	license = custom
+	depends = emacs
+	optdepends = ruby
+	provides = emacs-mew
+	conflicts = emacs-mew
+	source = mew-git::git://github.com/kazu-yamamoto/Mew.git
+	md5sums = SKIP
+
+pkgname = emacs-mew-git
+
