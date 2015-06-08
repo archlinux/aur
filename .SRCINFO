@@ -1,0 +1,21 @@
+pkgbase = irrlamb
+	pkgdesc = 3D game involving physics & frustrating gameplay
+	pkgver = 0.1.1
+	pkgrel = 2
+	url = http://code.google.com/p/irrlamb/
+	changelog = Changelog
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = bullet
+	depends = gcc-libs
+	depends = irrlicht
+	depends = lua51
+	depends = openal
+	depends = sh
+	source = http://irrlamb.googlecode.com/files/irrlamb-0.1.1-src.tar.gz
+	sha256sums = 2fbb30ee6cd0c65fc84acf6d260da468f0a1663af6f019ec4baf8177980ab96b
+
+pkgname = irrlamb
+
