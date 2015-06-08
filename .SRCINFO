@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-openblas
+	pkgdesc = An optimized BLAS library based on GotoBLAS2 1.13 BSD (mingw-w64)
+	pkgver = 0.2.14
+	pkgrel = 1
+	url = http://www.openblas.net/
+	arch = any
+	license = custom
+	makedepends = mingw-w64-gcc
+	depends = mingw-w64-crt
+	provides = mingw-w64-blas
+	conflicts = mingw-w64-blas
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = http://github.com/xianyi/OpenBLAS/archive/v0.2.14.tar.gz
+	md5sums = 53cda7f420e1ba0ea55de536b24c9701
+
+pkgname = mingw-w64-openblas
+
