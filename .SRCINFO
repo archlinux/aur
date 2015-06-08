@@ -1,0 +1,29 @@
+pkgbase = perl-html-microformats
+	pkgdesc = parse microformats in HTML
+	pkgver = 0.105
+	pkgrel = 1
+	url = http://search.cpan.org/dist/HTML-Microformats
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.010
+	depends = perl-datetime
+	depends = perl-datetime-format-builder
+	depends = perl-datetime-format-natural
+	depends = perl-datetime-format-strptime
+	depends = perl-datetime-set
+	depends = perl-html-html5-parser>=0.200
+	depends = perl-html-html5-sanity>=0.100
+	depends = perl-http-date
+	depends = perl-json>=2.00
+	depends = perl-rdf-trine>=0.130
+	depends = perl-role-commons
+	depends = perl-uri>=1.30
+	depends = perl-xml-libxml>=1.60
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/HTML-Microformats-0.105.tar.gz
+	md5sums = 1349c0326c3dbd6b23e25b115337af89
+	sha512sums = 4563785ace9088fc87272e14953a953e06c3207d0dc96db0f64448905502f42183f1bded529de39600b01705700187f218df9ade19868d73b8221da1a02e1b5c
+
+pkgname = perl-html-microformats
+
