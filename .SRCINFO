@@ -1,0 +1,13 @@
+pkgbase = ksplash-eternity
+	pkgdesc = New version of Eternity plasma splash screen by World-fly.
+	pkgver = 2.0
+	pkgrel = 2
+	url = http://kde-look.org/content/show.php?content=168546
+	arch = any
+	license = GPL
+	depends = kdebase-workspace
+	source = ksplash-eternity-2.0.tar.gz::http://kde-look.org/CONTENT/content-files/168546-Eternity%20v2.tar.gz
+	sha256sums = 3bbb16b1cd4f0889aa58ac884e7628cde2f97967bdb2af3bbe30db4d3db9b4a9
+
+pkgname = ksplash-eternity
+
