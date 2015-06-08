@@ -1,0 +1,16 @@
+pkgbase = texlive-moderncv
+	pkgdesc = A modern curriculum vitae class.
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = http://www.launchpad.net/moderncv/
+	install = texlive-moderncv.install
+	arch = any
+	license = GPL
+	depends = texlive-core
+	depends = texlive-latexextra
+	depends = texlive-fontsextra
+	source = moderncv.zip::http://mirror.ctan.org/macros/latex/contrib/moderncv.zip
+	md5sums = cb7c15c6a88f7a056aca44bfc5d8329e
+
+pkgname = texlive-moderncv
+
