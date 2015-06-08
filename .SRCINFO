@@ -1,0 +1,55 @@
+pkgbase = eclipse-m2e-extras
+	pkgdesc = The Maven Integration for Eclipse extra components provide support for additional tools.
+	pkgver = 0.15.0
+	pkgrel = 2
+	url = https://github.com/sonatype/m2eclipse-extras
+	arch = i686
+	arch = x86_64
+	license = EPL
+	depends = eclipse>=3.6
+	depends = eclipse-m2e>=1.0
+	noextract = artifacts.jar
+	noextract = content.jar
+	noextract = org.sonatype.m2e.antlr.feature_0.15.0.201202141716.jar
+	noextract = org.sonatype.m2e.buildhelper.feature_0.15.0.201202141716.jar
+	noextract = org.sonatype.m2e.mavenarchiver.feature_0.15.0.201202141716.jar
+	noextract = org.sonatype.m2e.modello.feature_0.15.0.201202141716.jar
+	noextract = org.sonatype.m2e.plexus.annotations.feature_0.15.0.201202141716.jar
+	noextract = org.sonatype.m2e.sisuindex.feature_0.15.0.201202141716.jar
+	noextract = org.sonatype.m2e.antlr_0.15.0.201202141716.jar
+	noextract = org.sonatype.m2e.buildhelper_0.15.0.201202141716.jar
+	noextract = org.sonatype.m2e.mavenarchiver_0.15.0.201202141716.jar
+	noextract = org.sonatype.m2e.modello_0.15.0.201202141716.jar
+	noextract = org.sonatype.m2e.plexus.annotations_0.15.0.201202141716.jar
+	noextract = org.sonatype.m2e.sisuindex_0.15.0.201202141716.jar
+	source = http://repository.sonatype.org/content/repositories/forge-sites/m2e-extras/0.15.0/N/0.15.0.201202141716/artifacts.jar
+	source = http://repository.sonatype.org/content/repositories/forge-sites/m2e-extras/0.15.0/N/0.15.0.201202141716/content.jar
+	source = http://repository.sonatype.org/content/repositories/forge-sites/m2e-extras/0.15.0/N/0.15.0.201202141716/features/org.sonatype.m2e.antlr.feature_0.15.0.201202141716.jar
+	source = http://repository.sonatype.org/content/repositories/forge-sites/m2e-extras/0.15.0/N/0.15.0.201202141716/features/org.sonatype.m2e.buildhelper.feature_0.15.0.201202141716.jar
+	source = http://repository.sonatype.org/content/repositories/forge-sites/m2e-extras/0.15.0/N/0.15.0.201202141716/features/org.sonatype.m2e.mavenarchiver.feature_0.15.0.201202141716.jar
+	source = http://repository.sonatype.org/content/repositories/forge-sites/m2e-extras/0.15.0/N/0.15.0.201202141716/features/org.sonatype.m2e.modello.feature_0.15.0.201202141716.jar
+	source = http://repository.sonatype.org/content/repositories/forge-sites/m2e-extras/0.15.0/N/0.15.0.201202141716/features/org.sonatype.m2e.plexus.annotations.feature_0.15.0.201202141716.jar
+	source = http://repository.sonatype.org/content/repositories/forge-sites/m2e-extras/0.15.0/N/0.15.0.201202141716/features/org.sonatype.m2e.sisuindex.feature_0.15.0.201202141716.jar
+	source = http://repository.sonatype.org/content/repositories/forge-sites/m2e-extras/0.15.0/N/0.15.0.201202141716/plugins/org.sonatype.m2e.antlr_0.15.0.201202141716.jar
+	source = http://repository.sonatype.org/content/repositories/forge-sites/m2e-extras/0.15.0/N/0.15.0.201202141716/plugins/org.sonatype.m2e.buildhelper_0.15.0.201202141716.jar
+	source = http://repository.sonatype.org/content/repositories/forge-sites/m2e-extras/0.15.0/N/0.15.0.201202141716/plugins/org.sonatype.m2e.mavenarchiver_0.15.0.201202141716.jar
+	source = http://repository.sonatype.org/content/repositories/forge-sites/m2e-extras/0.15.0/N/0.15.0.201202141716/plugins/org.sonatype.m2e.modello_0.15.0.201202141716.jar
+	source = http://repository.sonatype.org/content/repositories/forge-sites/m2e-extras/0.15.0/N/0.15.0.201202141716/plugins/org.sonatype.m2e.plexus.annotations_0.15.0.201202141716.jar
+	source = http://repository.sonatype.org/content/repositories/forge-sites/m2e-extras/0.15.0/N/0.15.0.201202141716/plugins/org.sonatype.m2e.sisuindex_0.15.0.201202141716.jar
+	md5sums = 943d549f8a7855d2cd700be69c79afb9
+	md5sums = c4f763075b66c7ce4b8c860728a3d5f4
+	md5sums = d99b97750f1bda752875c487e2264073
+	md5sums = 4ec31e93e6165a7c2bb37fdf16154b74
+	md5sums = 7954246779cc58a982332e94ebf5505d
+	md5sums = cb84be8a893c9ec49d25d8f962ab657c
+	md5sums = b9addb772b1d024ed7e7bfe897450c6a
+	md5sums = 8c66cbd2843a5872b9b4e33bf92c0583
+	md5sums = d111f6b692302227bf98f9f87c780cee
+	md5sums = 185170d9509d38a9730040c7ea02be24
+	md5sums = 1ef8aff9e108af3ff2ca6b2753b1eebc
+	md5sums = a4161e79897bac28c5309ea1062342a0
+	md5sums = 561d0342740b63ea7059a1d4db8e74e3
+	md5sums = 259c4b2e24333c3448bb8a2ddd857a6b
+
+pkgname = eclipse-m2e-extras
+
