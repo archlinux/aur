@@ -1,0 +1,18 @@
+pkgbase = haskell-binary-search
+	pkgdesc = Binary and exponential searches
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/binary-search
+	install = haskell-binary-search.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = haskell-containers
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/binary-search/0.1/binary-search-0.1.tar.gz
+	md5sums = 0a64d2ac4f7f6495b69da4e10dc862d3
+
+pkgname = haskell-binary-search
+
