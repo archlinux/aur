@@ -1,0 +1,20 @@
+pkgbase = kdesu-git
+	pkgdesc = KDE Su
+	pkgver = r190.ae84292
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/kdesu
+	arch = i686
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	depends = kservice-git
+	depends = kpty-git
+	provides = kdesu
+	conflicts = kdesu
+	source = git://anongit.kde.org/kdesu.git
+	md5sums = SKIP
+
+pkgname = kdesu-git
+
