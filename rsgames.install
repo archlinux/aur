@@ -1,0 +1,12 @@
+post_install() {
+_alert
+}
+
+_alert() {
+cat << EOF
+The rsgames client has a bug that doesn't let it clos propperly.
+Instead of selecting quit from the menu, press alt+f4
+When the window manager says it is not responding, force it to close.
+EOF
+}
+

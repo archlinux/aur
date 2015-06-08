@@ -1,0 +1,27 @@
+pkgbase = rsgames
+	pkgdesc = A collection of board, card, and dice games in audio format played online
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://www.rsgames.org/
+	install = rsgames.install
+	arch = any
+	license = Custom
+	makedepends = unzip
+	depends = python2-speechd
+	depends = wxpython
+	depends = wxgtk2.8
+	depends = python2-crypto
+	depends = python2-configobj
+	depends = python2-faulthandler
+	optdepends = espeak: TTS support
+	provides = rsgames
+	conflicts = rsgames
+	source = rsgames.desktop
+	source = rsgames.sh
+	source = http://www.rsgames.org/downloads/rsgclient/rsg-client-linux-2.0.py27.zip
+	md5sums = 109b93bd034fecd5389b68d9bc177547
+	md5sums = 4df8c8964b8ba2f00f6c97aece344e94
+	md5sums = 0d47d8bdcb9f2da1e5b709a63311b776
+
+pkgname = rsgames
+

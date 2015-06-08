@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Encoding=UTF-8
+Name=RSGames
+GenericName=A collection of board, card, and dice games in audio format played online
+Comment=A collection of board, card, and dice games in audio format played online
+Path=/opt/rsgames/rsg-client-build/src
+Exec=python2 rsg.pyc
+Terminal=false
+StartupNotify=true
+Categories=Application;Game;ArcadeGame
