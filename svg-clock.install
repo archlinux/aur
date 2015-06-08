@@ -1,0 +1,8 @@
+post_install() {
+  echo "Add the following lines to your Emacs startup file, e.g. ~/.emacs."
+  echo "(autoload 'svg-clock \"svg-clock\" \"Start/stop svg-clock\" t) "
+}
+
+post_upgrade() {
+  post_install
+}

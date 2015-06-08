@@ -1,0 +1,13 @@
+pkgbase = emacs-svg-clock
+	pkgdesc = Analog clock which uses Scalable Vector Graphics for rendering
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://old.nabble.com/attachment/32520777/0/svg-clock.el
+	install = svg-clock.install
+	arch = any
+	license = GPL
+	source = http://old.nabble.com/attachment/32520777/0/svg-clock.el
+	md5sums = 5027fea60b90ecc233d1386554c7232b
+
+pkgname = emacs-svg-clock
+
