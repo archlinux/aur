@@ -1,0 +1,21 @@
+pkgbase = vdr-favorites
+	pkgdesc = Implements a favorite channels menu
+	pkgver = 0.0.2
+	pkgrel = 12
+	url = http://www.vdr-portal.de/board1-news/board2-vdr-news/p1039565-announce-vdr-favorites-0-0-2/
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	depends = gcc-libs
+	depends = vdr-api=2.2.0
+	backup = etc/vdr/conf.avail/50-favorites.conf
+	source = vdr-favorites-0.0.2.tgz::http://www.vdr-portal.de/index.php?page=Attachment&attachmentID=29502
+	source = favorites-makefile-1.7.36.tar.gz::http://www.vdr-portal.de/index.php?page=Attachment&attachmentID=32856
+	md5sums = b5e87d11102ff1d8923a64cd53694171
+	md5sums = e3262d62bee7d4e99c16d3359e77261f
+
+pkgname = vdr-favorites
+
