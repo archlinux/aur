@@ -1,0 +1,15 @@
+pkgbase = dup
+	pkgdesc = du with progress bar in pacman style
+	pkgver = 20141004
+	pkgrel = 1
+	url = https://github.com/ritze/dup
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash
+	depends = pbar
+	source = dup::git+https://github.com/ritze/dup.git#branch=master
+	md5sums = SKIP
+
+pkgname = dup
+
