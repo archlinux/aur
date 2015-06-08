@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=DrJava
+Comment=Lightweight development environment for writing Java programs
+Exec=drjava
+Icon=drjava
+Terminal=false
+Categories=Development;Education;Java;
