@@ -1,0 +1,10 @@
+--- locater.cpp	2010-03-21 20:01:19.000000000 +0100
++++ locater.cpp.0	2012-04-10 08:15:12.196534601 +0200
+@@ -28,6 +28,7 @@
+  *   (at your option) any later version.                                   *
+  ***************************************************************************/
+ 
++#include <unistd.h>
+ #include "locater.h"
+ #include <KDebug>
+ #include <KStandardDirs>

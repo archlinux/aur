@@ -1,0 +1,19 @@
+pkgbase = kio-locate
+	pkgdesc = A KDE I/O Slave for the locate command
+	pkgver = 0.5.3
+	pkgrel = 2
+	url = http://kde-apps.org/content/show.php?content=120965
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = docbook-xsl
+	depends = kdebase-runtime
+	source = http://kde-apps.org/CONTENT/content-files/120965-kio-locate-0.5.3.tar.gz
+	source = kio_locate_gcc47.patch
+	md5sums = 198b43f6c873863bd02113db0ffe29bb
+	md5sums = 270660f80c69d3a6b0a39dbdbaf672eb
+
+pkgname = kio-locate
+
