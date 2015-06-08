@@ -1,0 +1,20 @@
+pkgbase = paulstretch-jack
+	pkgdesc = a program for stretching the audio suitable only for extreme sound stretching of the audio and for applying special effects by spectral smoothing the sounds.
+	pkgver = 2.2
+	pkgrel = 2
+	url = http://hypermammut.sourceforge.net/paulstretch/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = fltk
+	depends = fftw
+	depends = jack
+	depends = audiofile
+	depends = libmad
+	depends = mxml
+	depends = portaudio
+	source = http://sourceforge.net/projects/hypermammut/files/paulstretch/2.2/paulstretch-2.2.tar.bz2
+	md5sums = da39e1ff45dde9634fb54d7818037215
+
+pkgname = paulstretch-jack
+
