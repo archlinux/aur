@@ -1,0 +1,18 @@
+pkgbase = kanyremote
+	pkgdesc = KDE-frontend for anyremote.
+	pkgver = 6.3.5
+	pkgrel = 1
+	url = http://anyremote.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = automake>=1.10
+	makedepends = autoconf>=2.62
+	depends = python2-pybluez
+	depends = anyremote>=6.3
+	depends = kdebindings-python2
+	source = http://downloads.sourceforge.net/sourceforge/anyremote/kanyremote-6.3.5.tar.gz
+	md5sums = 564c2bd86a94f75d03ba386f65567ffa
+
+pkgname = kanyremote
+
