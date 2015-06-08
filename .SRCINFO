@@ -1,0 +1,22 @@
+pkgbase = kactivities-git
+	pkgdesc = Core components for the KDE's Activities
+	pkgver = r819.d5d8770
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/kactivities
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	makedepends = boost
+	depends = kdeclarative-git
+	depends = kcmutils-git
+	depends = kpackage-git
+	provides = kactivities
+	provides = kactivities-frameworks
+	conflicts = kactivities
+	source = git://anongit.kde.org/kactivities.git
+	md5sums = SKIP
+
+pkgname = kactivities-git
+
