@@ -1,0 +1,18 @@
+pkgbase = haskell-happstack
+	pkgdesc = The haskell application server stack + code generation
+	pkgver = 7.0.2
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/happstack
+	install = haskell-happstack.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = haskell-happstack-server>=7.0
+	depends = haskell-happstack-server<7.2
+	options = strip
+	source = http://hackage.haskell.org/packages/archive/happstack/7.0.2/happstack-7.0.2.tar.gz
+	md5sums = 64eada517b76a9e0d74795e254ef2851
+
+pkgname = haskell-happstack
+
