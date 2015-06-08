@@ -4,7 +4,7 @@
 pkgname=eibd
 pkgbase=bcusdk
 pkgver=0.0.5
-pkgrel=7
+pkgrel=8
 pkgdesc="Daemon as interface to the EIB / KNX bus"
 arch=('i686' 'x86_64' 'arm' 'armv7h')
 url="http://www.auto.tuwien.ac.at/~mkoegler/index.php/bcusdk"

@@ -6,6 +6,7 @@ After=network.target
 User=daemon
 EnvironmentFile=/etc/conf.d/eibd.conf
 ExecStart=/usr/bin/eibd $EIBD_OPTS
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
