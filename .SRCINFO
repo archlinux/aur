@@ -1,0 +1,26 @@
+pkgbase = emms-git
+	pkgdesc = Emacs MultiMedia System -- git version
+	pkgver = 20150519
+	pkgrel = 1
+	url = http://www.gnu.org/software/emms/
+	install = emms.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = texinfo
+	depends = emacs
+	depends = taglib
+	optdepends = vorbis-tools: ogg support
+	optdepends = mpg123: mp3 support
+	optdepends = mp3info: mp3 tag support
+	optdepends = mpd: mpd support
+	optdepends = mplayer: mplayer support
+	optdepends = xine: xine support
+	provides = emms
+	conflicts = emms
+	source = git://git.sv.gnu.org/emms.git
+	md5sums = SKIP
+
+pkgname = emms-git
+
