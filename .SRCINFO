@@ -1,0 +1,20 @@
+pkgbase = chkboot
+	pkgdesc = Create hashes of all files under /boot and warns the user if they are modified
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/grazzolini/chkboot
+	install = chkboot.install
+	arch = any
+	license = GPL
+	depends = bash
+	provides = chkboot-git
+	conflicts = chkboot-git
+	replaces = chkboot-git
+	backup = etc/default/chkboot.conf
+	source = chkboot.install
+	source = https://github.com/grazzolini/chkboot/archive/v1.1.tar.gz
+	sha512sums = 686bbf16b8bcf5755f7f5efde865fbfeecbe9a579490dccef8577b4d97ffd99bb78f9e4d0e87b107d4cc05da54f1000de4ef15dbb571993cf5a8d3d115d7f5b3
+	sha512sums = 3102032a98fe7b4bc5e9da5b4bb9e07818850ce553393b78b3e2b39a65d28dd65c2dd5194e8c563d804317b61d32b05775e883581593b7246e9be3c79e07b52f
+
+pkgname = chkboot
+
