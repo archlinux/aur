@@ -1,0 +1,16 @@
+pkgbase = otf-alegreya
+	pkgdesc = Alegreya fonts
+	pkgver = 1.003
+	pkgrel = 3
+	url = http://www.fontsquirrel.com/fonts/alegreya
+	install = otf-alegreya.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	conflicts = otf-google-fonts-hg
+	source = http://www.fontsquirrel.com/fonts/download/alegreya
+	md5sums = SKIP
+
+pkgname = otf-alegreya
+
