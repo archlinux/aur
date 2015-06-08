@@ -1,0 +1,17 @@
+pkgbase = ocrdesktop
+	pkgdesc = OCR the current window or desktop and make it browsable for the user
+	pkgver = 0.9.28
+	pkgrel = 1
+	url = http://www.crivatec.de
+	install = ocrdesktop.install
+	arch = any
+	license = GPL
+	depends = libwnck3
+	depends = orca
+	depends = python-pillow
+	depends = python-tesserwrap
+	source = http://crivatec.de/page/uploads/Downloads/Accessible%20Games/ocrdesktop-0.9.28.tar.xz
+	md5sums = b699a43edcb4f5db00fd22f104bc2659
+
+pkgname = ocrdesktop
+
