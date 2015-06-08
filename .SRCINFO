@@ -1,0 +1,16 @@
+pkgbase = lib32-popt
+	pkgdesc = Commandline option parser (32 bit)
+	pkgver = 1.16
+	pkgrel = 6
+	url = http://rpm5.org
+	arch = x86_64
+	license = custom
+	makedepends = gcc-multilib
+	depends = lib32-glibc
+	depends = popt
+	options = !libtool
+	source = http://rpm5.org/files/popt/popt-1.16.tar.gz
+	sha256sums = e728ed296fe9f069a0e005003c3d6b2dde3d9cad453422a10d6558616d304cc8
+
+pkgname = lib32-popt
+
