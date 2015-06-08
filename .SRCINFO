@@ -1,0 +1,19 @@
+pkgbase = qtaccountsservice-git
+	pkgdesc = Qt-style API for AccountsService
+	pkgver = 20140721.19fa06f
+	pkgrel = 1
+	url = https://github.com/hawaii-desktop/qtaccountsservice
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-base
+	depends = qt5-declarative
+	conflicts = qt-accountsservice-addon-git
+	replaces = qt-accountsservice-addon-git
+	source = qtaccountsservice::git://github.com/hawaii-desktop/qtaccountsservice.git#branch=master
+	md5sums = SKIP
+
+pkgname = qtaccountsservice-git
+
