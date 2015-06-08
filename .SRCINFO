@@ -1,0 +1,20 @@
+pkgbase = kemoticons-git
+	pkgdesc = KEmoticons
+	pkgver = r62.54fe167
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/kemoticons
+	arch = i686
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	depends = karchive-git
+	depends = kservice-git
+	provides = kemoticons
+	conflicts = kemoticons
+	source = git://anongit.kde.org/kemoticons.git
+	md5sums = SKIP
+
+pkgname = kemoticons-git
+
