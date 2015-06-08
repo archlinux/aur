@@ -1,0 +1,10 @@
+[Unit]
+Description=Mosix Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/mosd
+
+[Install]
+WantedBy=multi-user.target
