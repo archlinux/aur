@@ -1,0 +1,19 @@
+pkgbase = x262-git
+	pkgdesc = x264 with MPEG-2 video support (GIT version)
+	pkgver = 0.142.2633.bb887aa
+	pkgrel = 1
+	url = http://git.videolan.org/?p=x262.git
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = yasm
+	depends = glibc
+	depends = ffms2
+	provides = x262
+	conflicts = x262
+	source = git://git.videolan.org/x262.git
+	sha1sums = SKIP
+
+pkgname = x262-git
+
