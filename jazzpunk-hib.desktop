@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Jazzpunk
+Comment=Play Jazzpunk
+Exec=jazzpunk-hib
+Icon=jazzpunk-hib
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;AudioVideo;
+Encoding=UTF-8

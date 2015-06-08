@@ -1,0 +1,20 @@
+pkgbase = jazzpunk-hib
+	pkgdesc = Jazzpunk is an adventure comedy game and poorly made word processor (Humble Bundle Version).
+	pkgver = July6_2014
+	pkgrel = 2
+	url = http://jazzpunk.net/
+	arch = i686
+	arch = x86_64
+	license = custom: commercial
+	depends = glu
+	depends = libxext
+	depends = libxcursor
+	source = hib://Jazzpunk-July6-2014-Linux.zip
+	source = jazzpunk-hib.png
+	source = jazzpunk-hib.desktop
+	sha256sums = 9e6f29d87295292cf60a0173b09ccc5a5c429ec084fe2f0c7ab7732851fdf3b7
+	sha256sums = c2ddb1cff681814ab56aa88cf5b64664c277fd3a9b452573c3401a08c019ffe1
+	sha256sums = 8f42bfbb22dfaded91a47416edae581d4b7ff3d17b77262243248ad2dd6220fc
+
+pkgname = jazzpunk-hib
+
