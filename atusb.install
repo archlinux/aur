@@ -1,0 +1,21 @@
+post_install() {
+	echo ">>> DKMS: Module add, build, and install"
+	dkms install -m atusb -v ${1%%-*}
+}
+
+pre_upgrade() {
+	local curver=${2%%-*}
+	# $2 is unset due to a bug. See, https://bugs.archlinux.org/task/32278
+	# Query current version using pacman as fallback
+	[ -n "$curver" ] || curver=$(LANG=C pacman -Qi dkms-atusb | awk '/^Version/{print $3}')
+	pre_remove $curver
+}
+
+pre_remove() {
+	echo ">>> DKMS: Module uninstall"
+	dkms remove -m atusb -v ${1%%-*} --all
+}
+
+post_upgrade() {
+	post_install ${1%%-*}
+}

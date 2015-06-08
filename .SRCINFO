@@ -1,0 +1,24 @@
+pkgbase = dkms-atusb
+	pkgdesc = DKMS-controlled kernel driver for ATUSB
+	pkgver = 20130404
+	pkgrel = 1
+	url = http://en.qi-hardware.com/wiki/Ben_WPAN
+	install = atusb.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = linux-headers
+	depends = dkms
+	source = Makefile
+	source = dkms.conf
+	source = atusb.c
+	source = atusb.h
+	source = at86rf230.h
+	md5sums = 639ae4639a54696c7e7794af6ebba6a8
+	md5sums = f0f770f91074f5dccc155f9d259eae6e
+	md5sums = c4dbf3cc9f5c23ef490271ca42df782b
+	md5sums = c35d8fb55812511197ca8191a3f8f36e
+	md5sums = 6a45527417e98b852109dc8264e7beb3
+
+pkgname = dkms-atusb
+
