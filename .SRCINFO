@@ -1,0 +1,20 @@
+pkgbase = yaourt
+	pkgdesc = A pacman wrapper with extended features and AUR support
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://github.com/archlinuxfr/yaourt
+	arch = any
+	license = GPL
+	depends = diffutils
+	depends = pacman>=4.1
+	depends = package-query>=1.4
+	depends = gettext
+	optdepends = aurvote: vote for favorite packages from AUR
+	optdepends = customizepkg: automatically modify PKGBUILD during install/upgrade
+	optdepends = rsync: retrieve PKGBUILD from official repositories
+	backup = etc/yaourtrc
+	source = http://mir.archlinux.fr/~tuxce/releases/yaourt/yaourt-1.5.tar.gz
+	md5sums = 4e1ee5533a567868facf035851e531f6
+
+pkgname = yaourt
+
