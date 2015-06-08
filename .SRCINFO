@@ -1,0 +1,16 @@
+pkgbase = sly-git
+	pkgdesc = Common Lisp IDE for Emacs. Fork of slime.
+	pkgver = beta.26.g5810558
+	pkgrel = 1
+	url = https://github.com/capitaomorte/sly
+	arch = any
+	license = custom
+	makedepends = git
+	depends = emacs
+	provides = sly
+	conflicts = sly
+	source = git+https://github.com/capitaomorte/sly.git
+	md5sums = SKIP
+
+pkgname = sly-git
+
