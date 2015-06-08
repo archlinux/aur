@@ -1,0 +1,21 @@
+pkgbase = gradel
+	pkgdesc = A gradebook program for teachers
+	pkgver = 0.12.2
+	pkgrel = 1
+	url = http://gradel.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gambas2-devel
+	depends = gambas2-runtime
+	depends = gambas2-gb-qt
+	depends = gambas2-gb-qt-ext
+	depends = gambas2-gb-form
+	depends = gambas2-gb-net
+	depends = gambas2-gb-net-curl
+	options = !emptydirs
+	source = http://downloads.sourceforge.net/gradel/gradel-0.12.2-src.tar.gz
+	sha1sums = ad3ae11636137961052ace908e85049b6c578072
+
+pkgname = gradel
+
