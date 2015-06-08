@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-glpk
+	pkgdesc = GNU Linear Programming Kit : solve LP, MIP and other problems. (mingw-w64)
+	pkgver = 4.55
+	pkgrel = 1
+	url = http://www.gnu.org/software/glpk/glpk.html
+	arch = any
+	license = GPL
+	makedepends = mingw-w64-gcc
+	depends = mingw-w64-crt
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = http://ftp.gnu.org/gnu/glpk/glpk-4.55.tar.gz
+	sha1sums = 893058aada022a8dfc63c675ebcd7e7e86a3a363
+
+pkgname = mingw-w64-glpk
+
