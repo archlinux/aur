@@ -1,0 +1,11 @@
+--- s_inter.c.orig	2013-01-04 10:00:30.497646261 +0100
++++ s_inter.c	2013-01-04 09:30:21.000000000 +0100
+@@ -1075,7 +1075,7 @@
+ #else /* __APPLE__ */
+             sprintf(cmdbuf,
+   "TCL_LIBRARY=\"%s/lib/tcl/library\" TK_LIBRARY=\"%s/lib/tk/library\" \
+-  wish8.5 \"%s/" PDGUIDIR "/pd-gui.tcl\" %d\n",
++  wish8.6 \"%s/" PDGUIDIR "/pd-gui.tcl\" %d\n",
+                  libdir, libdir, libdir, portno);
+ #endif /* __APPLE__ */
+             sys_guicmd = cmdbuf;
