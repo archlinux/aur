@@ -1,0 +1,24 @@
+pkgbase = lua-anidb-git
+	pkgdesc = Client library and command line client for the AniDB.net HTTP API
+	pkgver = r79.b54c373
+	pkgrel = 2
+	url = https://github.com/2ion/lua-anidb
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = lua
+	depends = lua-posix-git
+	depends = lua-penlight
+	depends = lua-socket
+	depends = lua-zlib
+	depends = lua-ansicolors
+	optdepends = lua-expat: Recommended, faster XML parser; utilized automatically by lua-penlight
+	provides = lua-anidb
+	conflicts = lua-anidb
+	source = git+https://github.com/2ion/lua-anidb.git#branch=master
+	source = anic-global-package-path.patch
+	md5sums = SKIP
+	md5sums = 585a8e697d0b41ea0de20bbfa6535ca8
+
+pkgname = lua-anidb-git
+

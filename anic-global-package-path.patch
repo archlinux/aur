@@ -1,0 +1,10 @@
+--- anic	2015-05-19 13:35:02.980374385 +0200
++++ anic-patch	2015-05-19 13:35:20.566412959 +0200
+@@ -1,6 +1,6 @@
+ #!/usr/bin/env lua
+ 
+-local anidb = require 'api.http'
++local anidb = require 'anidb.api.http'
+ local posix = require 'posix'
+ 
+ local search_min_word_count = -1
