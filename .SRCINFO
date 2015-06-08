@@ -1,0 +1,24 @@
+pkgbase = lollypop
+	pkgdesc = Music player for GNOME
+	pkgver = 0.9.20
+	pkgrel = 1
+	url = https://github.com/gnumdk/lollypop
+	install = lollypop.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = itstool
+	makedepends = python
+	depends = python-dbus
+	depends = gtk3
+	depends = python-gobject
+	depends = python-cairo
+	depends = gobject-introspection
+	depends = totem-plparser
+	depends = desktop-file-utils
+	source = https://github.com/gnumdk/lollypop/releases/download/0.9.20/lollypop-0.9.20.tar.xz
+	sha256sums = bc12a4be7aa01783d30b1297bfe85ca271a7478338be97946c71187b440b6499
+
+pkgname = lollypop
+
