@@ -1,0 +1,17 @@
+pkgbase = angelscript-2.22.1
+	pkgdesc = An extremely flexible cross-platform scripting library. - Specific version for Rigs of Rods
+	pkgver = 2.22.1
+	pkgrel = 3
+	url = http://angelcode.com/angelscript/
+	arch = i686
+	arch = x86_64
+	license = custom:ZLIB
+	depends = gcc-libs
+	conflicts = angelscript
+	source = http://angelcode.com/angelscript/sdk/files/angelscript_2.22.1.zip
+	source = LICENSE
+	sha512sums = 92a2b990044b128c1f34a2033b7e46108d771408f5c7208c4327b2784cd0aa3f3a11f58d97b1419fdca233217305a94835e59e52c05c959d57bff524d372b824
+	sha512sums = b9e7197d47b55b28f9fea4dafb51d221af46a6d794a783c3875778e9b2f748396bbdaa93d3c1ca0ef2391fa797e85cfd7e27ac5178ec4578c1e7999c0e58b366
+
+pkgname = angelscript-2.22.1
+
