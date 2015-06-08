@@ -1,0 +1,14 @@
+pkgbase = sierrachartfeed-git
+	pkgdesc = Sierrachart feed bridge for bitcoincharts.com
+	pkgver = 20130201
+	pkgrel = 1
+	url = https://github.com/slush0/sierrachartfeed
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = python2
+	source = setup.py
+	source = git+git://github.com/slush0/sierrachartfeed.git
+
+pkgname = sierrachartfeed-git
+
