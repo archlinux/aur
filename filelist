@@ -1,0 +1,36 @@
+ 	boolean.h 	boolean class definition
+  	controlw.h 	control word definition file
+  	include.h 	details of include files and options
+  	myexcept.h 	general exception handler definitions
+  	newmat.h 	main matrix class definition file
+  	newmatap.h 	applications definition file
+  	newmatio.h 	input/output definition file
+  	newmatnl.h 	non-linear optimisation definition file
+  	newmatrc.h 	row/column functions definition files
+  	newmatrm.h 	rectangular matrix access definition files
+  	precisio.h 	numerical precision constants
+  	solution.h 	one dimensional solve definition file
+ 	bandmat.cpp 	band matrix routines
+  	cholesky.cpp 	Cholesky decomposition
+  	evalue.cpp 	eigenvalues and eigenvector calculation
+  	fft.cpp 	fast Fourier, trig. transforms
+  	hholder.cpp 	QR routines
+  	jacobi.cpp 	eigenvalues by the Jacobi method
+  	myexcept.cpp 	general error and exception handler
+  	newfft.cpp 	new fast Fourier transform
+  	newmat1.cpp 	type manipulation routines
+  	newmat2.cpp 	row and column manipulation functions
+  	newmat3.cpp 	row and column access functions
+  	newmat4.cpp 	constructors, resize, utilities
+  	newmat5.cpp 	transpose, evaluate, matrix functions
+  	newmat6.cpp 	operators, element access
+  	newmat7.cpp 	invert, solve, binary operations
+  	newmat8.cpp 	LU decomposition, scalar functions
+  	newmat9.cpp 	output routines
+  	newmatex.cpp 	matrix exception handler
+  	newmatnl.cpp 	non-linear optimisation
+  	newmatrm.cpp 	rectangular matrix access functions
+  	sort.cpp 	sorting functions
+  	solution.cpp 	one dimensional solve
+  	submat.cpp 	submatrix functions
+  	svd.cpp 	singular value decomposition
