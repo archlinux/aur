@@ -1,0 +1,15 @@
+pkgbase = fluent-plugin-dstat
+	pkgdesc = Dstat Input plugin for Fluent event collector
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = http://github.com/shun0102/fluent-plugin-dstat
+	arch = any
+	license = Apache
+	depends = dstat
+	depends = fluentd
+	options = !emptydirs
+	source = http://rubygems.org/downloads/fluent-plugin-dstat-0.2.5.gem
+	md5sums = 04af8891c038210099be4505ac2f5180
+
+pkgname = fluent-plugin-dstat
+
