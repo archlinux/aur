@@ -3,7 +3,7 @@
 # Contributor: travisjeffery <tj@travisjeffery.com>
 
 _npmname=mocha
-_npmver=2.0.1
+_npmver=2.2.5
 pkgname=nodejs-mocha # All lowercase
 pkgver=$_npmver
 pkgrel=1
@@ -16,7 +16,7 @@ optdepends=()
 options=( '!strip' )
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=('5a16e88b856d0c4145d8c6888c27ebd4fab13e90')
+sha1sums=('d3b72a4fe49ec9439353f1ac893dbc430d993140')
 
 package() {
   cd "$srcdir"
