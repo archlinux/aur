@@ -1,7 +1,7 @@
 pkgbase = receitanet
 	pkgdesc = Programa Oficial da Receita para envio do IRPF
 	pkgver = 1.07
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.receita.fazenda.gov.br
 	install = receitanet.install
 	arch = any

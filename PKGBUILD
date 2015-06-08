@@ -3,7 +3,7 @@
 
 pkgname=receitanet
 pkgver=1.07
-pkgrel=1
+pkgrel=2
 license='custom'
 
 arch=(any)
