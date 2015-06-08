@@ -7,13 +7,16 @@ pkgbase = mdxmini-git
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	depends = sdl
-	provides = mdxplay
-	conflicts = mdxplay
 	source = mdxmini-git::git+https://github.com/BouKiCHi/mdxplayer.git
 	source = makefiles.patch
 	sha256sums = SKIP
 	sha256sums = 2c67ce4f2828b11c785eae52c874a06ad535ad8e762d4b70230959ed9217840b
 
 pkgname = mdxmini-git
+	depends = glibc
+
+pkgname = mdxplay-git
+	depends = sdl
+	provides = mdxplay
+	conflicts = mdxplay
 
