@@ -1,0 +1,6 @@
+/linuxsampler-svn/
+/pkg/
+/src/
+*~
+*.gz
+*.xz
