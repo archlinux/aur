@@ -1,0 +1,37 @@
+pkgbase = guacamole-server
+	pkgdesc = Guacamole proxy daemon
+	pkgver = 0.9.6
+	pkgrel = 1
+	url = http://guacamole.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = libpulse
+	makedepends = libvorbis
+	makedepends = openssl
+	makedepends = libssh
+	makedepends = libvncserver
+	makedepends = pango
+	makedepends = libtelnet
+	makedepends = freerdp-guacamole
+	makedepends = uuid
+	depends = pango
+	depends = openssl
+	depends = libvorbis
+	optdepends = libssh: for ssh protocol support
+	optdepends = libvncserver: for vnc protocol support
+	optdepends = freerdp-guacamole: for rdp protocol support
+	optdepends = libpulse: for pulseaudio support
+	optdepends = libtelnet: for telnet protocol support
+	replaces = guacd
+	replaces = libguac
+	replaces = libguac-client-ssh
+	replaces = libguac-client-vnc
+	replaces = libguac-client-rdp
+	source = http://downloads.sourceforge.net/project/guacamole/current/source/guacamole-server-0.9.6.tar.gz
+	source = guacd.service
+	md5sums = aca4d7d76e99e00fcafe2c604dac802f
+	md5sums = dfaa29349d2e73af6dac75d6cafbd762
+
+pkgname = guacamole-server
+
