@@ -1,0 +1,27 @@
+pkgbase = vdr-loadepg
+	pkgdesc = Displays Canal+ group (Mediahighway) and Sky EPG Data
+	pkgver = 0.2.6
+	pkgrel = 13
+	url = http://lukkinosat.altervista.org/
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	depends = gcc-libs
+	depends = vdr-api=2.2.0
+	backup = var/lib/vdr/plugins/loadepg/loadepg.conf
+	backup = var/lib/vdr/plugins/loadepg/loadepg.equiv
+	backup = var/lib/vdr/plugins/loadepg/sky_it.dict
+	backup = var/lib/vdr/plugins/loadepg/sky_it.themes
+	backup = var/lib/vdr/plugins/loadepg/sky_uk.dict
+	backup = var/lib/vdr/plugins/loadepg/sky_uk.themes
+	backup = etc/vdr/conf.avail/50-loadepg.conf
+	source = http://lukkinosat.altervista.org/vdr-loadepg-0.2.6.tgz
+	source = 50-loadepg.conf
+	md5sums = 601c345941cd6d181ff6f5546fd02aee
+	md5sums = 957b12f37a9136153e934c318b2772ab
+
+pkgname = vdr-loadepg
+
