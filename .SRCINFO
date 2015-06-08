@@ -1,0 +1,14 @@
+pkgbase = eclipse-jpox
+	pkgdesc = Java Persistent Objects (JPOX) eclipse plugin
+	pkgver = 1.1.1
+	pkgrel = 2
+	url = http://www.jpox.org/
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	depends = eclipse
+	source = http://dl.sourceforge.net/sourceforge/jpox/org.jpox.ide.eclipse_1.1.1.zip
+	md5sums = 1dedbf2482f1e1fc1a8f21482ba2bf45
+
+pkgname = eclipse-jpox
+
