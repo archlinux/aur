@@ -1,0 +1,21 @@
+pkgbase = knockd-git
+	pkgdesc = A simple port-knocking daemon and client.
+	pkgver = r35.e566d49
+	pkgrel = 1
+	url = http://www.zeroflux.org/projects/knock
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libpcap>=1.0.0
+	conflicts = knockd
+	backup = etc/knockd.conf
+	source = knock::git+https://github.com/jvinet/knock.git
+	source = knockd.logrotate
+	source = knockd.service
+	md5sums = SKIP
+	md5sums = 56a4113ec89ba2e96f79ab23c914d52a
+	md5sums = da806fb9fbdf638df4e0011070ff9ef1
+
+pkgname = knockd-git
+
