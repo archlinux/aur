@@ -1,0 +1,20 @@
+pkgbase = haskell-dsp
+	pkgdesc = Haskell Digital Signal Processing
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/dsp
+	install = haskell-dsp.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ghc
+	depends = haskell-array=0.3.0.1
+	depends = haskell-mtl
+	depends = haskell-random=1.0.0.2
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/dsp/0.2.2/dsp-0.2.2.tar.gz
+	md5sums = 60060ebbbb0f4e8c8487a465d93cf172
+
+pkgname = haskell-dsp
+
