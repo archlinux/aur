@@ -1,0 +1,17 @@
+pkgbase = ttf-monaco-ide-font-git
+	pkgdesc = Monaco IDE fonts for X11
+	pkgver = r32.6e16811
+	pkgrel = 1
+	url = https://github.com/cstrap/monaco-font.git
+	install = ttf-monaco-ide-font-git.install
+	arch = any
+	license = CPL
+	makedepends = git
+	depends = fontconfig
+	depends = xorg-font-utils
+	conflicts = monaco_linux
+	conflicts = monaco-linux-font,
+	conflicts = ttf-monaco
+
+pkgname = ttf-monaco-ide-font-git
+
