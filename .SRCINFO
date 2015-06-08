@@ -1,0 +1,16 @@
+pkgbase = firefox-tags2title
+	pkgdesc = Display bookmark tags as part of the tab title
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/2ion/ff-tags-to-title
+	arch = any
+	license = GPL3
+	makedepends = unzip
+	depends = firefox-beta-bin
+	provides = firefox-tags2title
+	conflicts = firefox-tags2title
+	source = https://github.com/2ion/ff-tags-to-title/releases/download/0.2.0/jid1-nS8WKJB7XgQ0pA.jetpack-0.2.0.xpi
+	sha256sums = 1df7511eef900e408a5acd29cb489ede667fd28324844f563632d8b783ff2e6a
+
+pkgname = firefox-tags2title
+
