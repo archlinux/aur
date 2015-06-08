@@ -1,0 +1,34 @@
+pkgbase = gnome-terminal-dark-variant
+	pkgdesc = The GNOME Terminal Emulator - Patched to bring back 'Use dark theme variant' option in preferences
+	pkgver = 3.16.2
+	pkgrel = 1
+	url = http://www.gnome.org
+	install = gnome-terminal-dark-variant.install
+	arch = i686
+	arch = x86_64
+	groups = gnome
+	license = GPL
+	makedepends = gnome-doc-utils
+	makedepends = intltool
+	makedepends = itstool
+	makedepends = docbook-xsl
+	makedepends = desktop-file-utils
+	makedepends = libnautilus-extension
+	makedepends = appdata-tools
+	makedepends = gnome-shell
+	makedepends = gconf
+	makedepends = vala
+	makedepends = yelp-tools
+	depends = vte3
+	depends = gsettings-desktop-schemas
+	depends = dconf
+	optdepends = gconf: settings migration when upgrading from older version
+	conflicts = gnome-terminal
+	options = !emptydirs
+	source = http://ftp.gnome.org/pub/gnome/sources/gnome-terminal/3.16/gnome-terminal-3.16.2.tar.xz
+	source = gnome-terminal-restore-dark.patch
+	sha256sums = 9df7bab7bfd15ca9a3c60612e425baaf5c8b32ba181619f740b7129a0768f4e0
+	sha256sums = 5ef48574b93ec5530ce2747012fc0838a5e1ffa265803069a8da79b1be5e1eff
+
+pkgname = gnome-terminal-dark-variant
+
