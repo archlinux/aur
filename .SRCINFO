@@ -1,0 +1,27 @@
+pkgbase = perl-catalyst-plugin-unicode-encoding
+	pkgdesc = Catalyst::Plugin::Unicode::Encoding - Unicode aware Catalyst
+	pkgver = 1.9
+	pkgrel = 2
+	url = http://search.cpan.org/dist/Catalyst-Plugin-Unicode-Encoding
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl
+	depends = perl
+	depends = perl-catalyst-runtime>=5.80
+	depends = perl-io-stringy
+	depends = perl-libwww>=5.828
+	depends = perl-uri>=1.36
+	depends = perl-mro-compat
+	depends = perl-class-data-inheritable
+	provides = catalyst-plugin-unicode-encoding=1.9
+	provides = Catalyst::Plugin::Unicode::Encoding=1.9
+	provides = perl-catalyst-plugin-unicode-encoding=1.9
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/Catalyst-Plugin-Unicode-Encoding-1.9.tar.gz
+	md5sums = cb246b577b5032bb475e1770e98cbefa
+	sha512sums = 80b4aa3ab96dd05b9bea0007cba37c22614a5768d63418be07769634ca67d3ae2ecd1602668f1eb39b91405aaba0e8f35594a6cc071a859602ecede46318779d
+
+pkgname = perl-catalyst-plugin-unicode-encoding
+
