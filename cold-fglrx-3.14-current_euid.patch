@@ -1,0 +1,14 @@
+--- 14.1/common/lib/modules/fglrx/build_mod/firegl_public.c	2014-02-23 19:26:52.215995002 +0100
++++ 14.1/common/lib/modules/fglrx/build_mod/firegl_public.c	2014-02-23 19:27:59.320999596 +0100
+@@ -1761,7 +1761,11 @@
+ #else 
+ 
+ #ifdef current_euid
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,14,0)
++    return __kuid_val(current_euid());
++#else
+     return current_euid();
++#endif
+ #else
+     return current->euid;
+ #endif

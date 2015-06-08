@@ -1,0 +1,103 @@
+signa(){
+    #get rid of Testing use only watermark
+    echo "3249c5b75bccae3ce4f3a65e88154133:037beb866bf8830dd7c3956cb0746c02077cfc8e628f837db0ba8666b127700b07:027af2d53eae960ad291c066b0267157567ea68462f9985f86c3916abe767101027ef2d43daf9659d2c19e38b02676575079a7d663fa980a86c29469bf257151027e" > etc/ati/signature
+}
+
+whisperer(){
+    echo "----------------------------------------------------------------"
+    echo "You can use the tool 'aticonfig' to generate an xorg.conf file."
+    echo "--------------------- ^^^^^^^^^ --------------------------------"
+    echo "fglrx was added into /etc/modules-load.d/catalyst.conf"
+    echo "----------------------------------------------------------------"
+    echo "	atieventsd (needs acpid pkg) on systemd:"
+    echo "systemctl enable atieventsd"
+    echo "systemctl start atieventsd"
+    echo "----------------------------------------------------------------"
+    echo "For more info and troubleshooting visit:"
+    echo "http://wiki.archlinux.org/index.php/ATI_Catalyst"
+    echo "----------------------------------------------------------------"
+    echo -e '\E[37;44m'"\033[1m----------------------------------------------------------------\033[0m"
+    echo -e '\E[37;44m'"\033[1m				ATTENTION!\033[0m"
+    echo -e '\E[37;44m'"\033[1m----------------------------------------------------------------\033[0m"
+    echo "To enable 'automatic re-compilation while system shutdown/reboot' "
+    echo "testing feature run these commands as root:"
+    echo "systemctl enable catalyst-hook"
+    echo "systemctl start catalyst-hook"
+    echo ""
+    echo "More info here:"
+    echo "https://bbs.archlinux.org/viewtopic.php?pid=1255575#p1255575"
+    echo -e '\E[37;44m'"\033[1m----------------------------------------------------------------\033[0m"
+}
+
+bug_whisper(){
+    echo -e '\E[37;44m'"\033[1m---------------- I/O BUG ---------------------------------------\033[0m"
+    echo "There's a bug in fglrx found by lano1106 which generates"
+    echo "great amount of unneeded I/O operations"
+    echo ""
+    echo "To activate workaround enable systemd service:"
+    echo "systemctl enable temp-links-catalyst"
+    echo "systemctl start temp-links-catalyst"
+    echo ""
+    echo "More infos:"
+    echo "https://bbs.archlinux.org/viewtopic.php?pid=1279977#p1279977"
+    echo "https://bbs.archlinux.org/viewtopic.php?pid=1280193#p1280193"
+    echo -e '\E[37;44m'"\033[1m----------------------------------------------------------------\033[0m"
+}
+
+#pXp = powerXpress, set catalyst libs as default
+pXp_set_to_amd(){
+    usr/lib/fglrx/switchlibGL amd
+    usr/lib/fglrx/switchlibglx amd
+}
+
+captain_hook(){
+    # add hook fglrx to mkiniticpio
+    hooks=$(grep ^HOOKS etc/mkinitcpio.conf | grep fglrx)
+    if [ "$hooks" = "" ]; then
+        sed 's/^HOOKS="\([^"]*\)"/HOOKS="\1 fglrx"/' -i etc/mkinitcpio.conf
+    fi
+}
+
+post_install(){
+    captain_hook
+    usr/bin/catalyst_build_module ra
+    usr/bin/catalyst_build_module all
+    pXp_set_to_amd
+    whisperer
+    bug_whisper
+#    signa
+}
+
+post_upgrade(){
+    usr/bin/catalyst_build_module ra
+    usr/bin/catalyst_build_module all
+    whisperer
+    bug_whisper
+#    signa
+}
+
+pre_remove(){
+    usr/bin/catalyst_build_module remove_all
+}
+
+post_remove(){
+    #remove /usr/lib/catalystpxp/libGL.so* symlinks and dir
+    rm usr/lib/catalystpxp/libGL.so* &>/dev/null
+    rmdir -p "usr/lib/catalystpxp/" --ignore-fail-on-non-empty &>/dev/null
+    #remove usr/lib/xorg/modules/updates/extensions/libglx.so symlink and dir
+    rm usr/lib/xorg/modules/updates/extensions/libglx.so &>/dev/null
+    rmdir -p "usr/lib/xorg/modules/updates/extensions" --ignore-fail-on-non-empty &>/dev/null
+    rmdir -p "usr/lib/xorg/modules/updates" --ignore-fail-on-non-empty &>/dev/null
+    rm /etc/modules-load.d/catalyst.conf &>/dev/null
+    rmdir -p "usr/lib32/catalystpxp/" --ignore-fail-on-non-empty &>/dev/null
+
+    # remove hook fglrx
+    sed '/^HOOKS/s/ *fglrx//' -i etc/mkinitcpio.conf
+
+    # remove log
+    rm -f var/log/catalyst-install.log
+
+    echo "----------------------------------------------------------------"
+    echo " Don't forget to recover your original xorg.conf file."
+    echo "----------------------------------------------------------------"
+}
