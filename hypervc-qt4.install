@@ -1,0 +1,11 @@
+# Contributor: DonVla <donvla@users.sourceforge.net>
+# hypervc-qt4 install file
+
+post_install() {
+  printf "\n"
+  printf "==> Copy /usr/share/hypervc-qt4/hyperconf to $HOME/.hyperconf\n"
+  printf "==> if you want to use preconfigured profiles.\n"
+  printf "\n"
+}
+
+# vim:set ts=2 sw=2 et:

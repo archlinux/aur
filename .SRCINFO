@@ -1,0 +1,19 @@
+pkgbase = hypervc-qt4
+	pkgdesc = Qt frontend for various command line tools such as ffmpeg or mencoder
+	pkgver = 0.4.1
+	pkgrel = 3
+	url = http://www.kde-apps.org/content/show.php/Hyper+Video+Converter?content=67781
+	install = hypervc-qt4.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt4
+	optdepends = ffmpeg
+	optdepends = ffmpeg2theora
+	optdepends = mplayer
+	conflicts = hypervideoconverter
+	source = http://downloads.sourceforge.net/sourceforge/hypervideoconve/hypervc-0.4.1-qt4-generic.tar.bz2
+	md5sums = 7a1048363d3a0462fd7c35e86834df69
+
+pkgname = hypervc-qt4
+
