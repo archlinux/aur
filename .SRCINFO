@@ -1,0 +1,21 @@
+pkgbase = newlisp-devel
+	pkgdesc = A LISP like, general purpose scripting language. Ongoing development version.
+	pkgver = 10.6.3
+	pkgrel = 47
+	url = http://www.newlisp.org
+	install = newlisp.install
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	depends = readline
+	depends = libffi
+	optdepends = java-environment: for gui server
+	provides = newlisp
+	conflicts = newlisp
+	options = docs
+	options = !makeflags
+	source = http://www.newlisp.org/downloads/development/inprogress/newlisp-10.6.3.tgz
+	md5sums = 22cd5d9f776ba6eca5fc620c7f96b733
+
+pkgname = newlisp-devel
+
