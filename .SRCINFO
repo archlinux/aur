@@ -1,0 +1,14 @@
+pkgbase = aoeui
+	pkgdesc = Lightweight and unobtrusive visual text editor optimized for Dvorak keyboard users.
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://sites.google.com/site/aoeuiandasdfg/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	source = http://aoeui.googlecode.com/files/aoeui-1.6.tgz
+	md5sums = 8eee06ba3cbacd4984730c2d5f17a593
+
+pkgname = aoeui
+
