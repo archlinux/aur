@@ -1,0 +1,16 @@
+pkgbase = python2-nbxmpp-hg
+	pkgdesc = Jabber/XMPP library used by Gajim
+	pkgver = 152.398e3c8055a3
+	pkgrel = 1
+	url = http://hg.gajim.org/python-nbxmpp
+	arch = any
+	license = GPL3
+	makedepends = mercurial
+	depends = python2
+	provides = python2-nbxmpp=0.5
+	conflicts = python2-nbxmpp
+	source = hg+http://hg.gajim.org/python-nbxmpp
+	sha384sums = SKIP
+
+pkgname = python2-nbxmpp-hg
+
