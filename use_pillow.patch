@@ -1,0 +1,84 @@
+diff -Nuar albumart-1.6.6.orig/lib/albumart/albumart_dialog.py albumart-1.6.6/lib/albumart/albumart_dialog.py
+--- albumart-1.6.6.orig/lib/albumart/albumart_dialog.py	2014-02-13 16:24:45.652259748 +0000
++++ albumart-1.6.6/lib/albumart/albumart_dialog.py	2014-02-13 23:34:37.442664371 +0000
+@@ -20,7 +20,7 @@
+ import time
+ import urllib
+ import tempfile
+-import Image
++from PIL import Image
+ import ConfigParser
+ import cPickle as pickle
+ import codecs
+diff -Nuar albumart-1.6.6.orig/lib/albumart/albumart_source_amazon.py albumart-1.6.6/lib/albumart/albumart_source_amazon.py
+--- albumart-1.6.6.orig/lib/albumart/albumart_source_amazon.py	2014-02-13 16:24:45.648926413 +0000
++++ albumart-1.6.6/lib/albumart/albumart_source_amazon.py	2014-02-13 23:34:37.439331037 +0000
+@@ -6,7 +6,7 @@
+ import amazon
+ import albumart
+ import tempfile
+-import Image
++from PIL import Image
+ 
+ defaultConfig = {
+   "enabled":        1,
+diff -Nuar albumart-1.6.6.orig/lib/albumart/albumart_target_freedesktop.py albumart-1.6.6/lib/albumart/albumart_target_freedesktop.py
+--- albumart-1.6.6.orig/lib/albumart/albumart_target_freedesktop.py	2014-02-13 16:24:45.652259748 +0000
++++ albumart-1.6.6/lib/albumart/albumart_target_freedesktop.py	2014-02-13 23:34:37.442664371 +0000
+@@ -3,7 +3,7 @@
+ """Save image in Freedesktop.org's desktop file standard (for KDE, GNOME, etc.)"""
+ 
+ import albumart
+-import Image
++from PIL import Image
+ import ConfigParser
+ import os
+ 
+diff -Nuar albumart-1.6.6.orig/lib/albumart/albumart_target_generic.py albumart-1.6.6/lib/albumart/albumart_target_generic.py
+--- albumart-1.6.6.orig/lib/albumart/albumart_target_generic.py	2014-02-13 16:24:45.648926413 +0000
++++ albumart-1.6.6/lib/albumart/albumart_target_generic.py	2014-02-13 23:34:37.439331037 +0000
+@@ -3,7 +3,7 @@
+ """Save the image to an arbitrary file."""
+ 
+ import albumart
+-import Image
++from PIL import Image
+ import os
+ 
+ scales = {
+diff -Nuar albumart-1.6.6.orig/lib/albumart/albumart_target_id3v2.py albumart-1.6.6/lib/albumart/albumart_target_id3v2.py
+--- albumart-1.6.6.orig/lib/albumart/albumart_target_id3v2.py	2014-02-13 16:24:45.648926413 +0000
++++ albumart-1.6.6/lib/albumart/albumart_target_id3v2.py	2014-02-13 23:34:37.439331037 +0000
+@@ -7,7 +7,7 @@
+ import os
+ import id3   # PyID3, see http://icepick.info/projects/pyid3/
+ import tempfile
+-import Image
++from PIL import Image
+ 
+ # all defined APIC picture types
+ pictureTypes = id3.ID3v2Frames.AttachedPicture.picturetypes
+diff -Nuar albumart-1.6.6.orig/lib/albumart/albumart_target_windows.py albumart-1.6.6/lib/albumart/albumart_target_windows.py
+--- albumart-1.6.6.orig/lib/albumart/albumart_target_windows.py	2014-02-13 16:24:45.648926413 +0000
++++ albumart-1.6.6/lib/albumart/albumart_target_windows.py	2014-02-13 23:34:37.439331037 +0000
+@@ -3,7 +3,7 @@
+ """Set image for Windows Media Player, Windows Explorer, etc."""
+ 
+ import albumart
+-import Image
++from PIL import Image
+ import os
+ 
+ scales = {
+diff -Nuar albumart-1.6.6.orig/lib/albumart/process.py albumart-1.6.6/lib/albumart/process.py
+--- albumart-1.6.6.orig/lib/albumart/process.py	2014-02-13 16:24:45.652259748 +0000
++++ albumart-1.6.6/lib/albumart/process.py	2014-02-13 23:34:37.442664371 +0000
+@@ -1,7 +1,7 @@
+ from qt import *
+ from event import *
+ import albumart
+-import Image
++from PIL import Image
+ import version
+ import traceback
+ import sys

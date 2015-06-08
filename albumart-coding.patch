@@ -1,0 +1,8 @@
+--- pkg/usr/lib/albumart/albumart_images.py.orig	2008-02-17 21:46:21.000000000 +0100
++++ pkg/usr/lib/albumart/albumart_images.py	2008-04-14 23:46:22.000000000 +0200
+@@ -1,4 +1,4 @@
+-# -*- coding: iso-8859-1 -*-
++# -*- coding: utf-8 -*-
+ # Image collection for project 'albumart'.
+ #
+ # Generated from reading image files: 
