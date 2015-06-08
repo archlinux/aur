@@ -2,7 +2,7 @@
 # Contributor: Pablo Olmos de Aguilera Corradini <pablo <at] glatelier (dot} org>
 # Maintainer: Olivier Mehani <shtrom-aur@ssji.net>
 pkgname=gtg-git
-pkgver=r5138.ebe2dc5
+pkgver=r5151.647091c
 pkgrel=1
 pkgdesc="Personal GTD like organizer for the GNOME desktop environment. Git version."
 url="http://gtgnome.net/"
