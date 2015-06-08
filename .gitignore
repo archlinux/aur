@@ -1,0 +1,7 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!tsmuxer-ng.install
+!tsMuxerGUI.desktop
+!tsMuxerGUI.png

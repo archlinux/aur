@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=tsMuxerGUI
+Comment=Transport Stream muxer. New Generation (3D capable) GUI
+Exec=tsMuxerGUI
+Icon=tsMuxerGUI
+Terminal=false
+StartupNotify=false
+Categories=Qt;AudioVideo;Audio;AudioVideoEditing;
