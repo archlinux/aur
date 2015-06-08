@@ -1,0 +1,7 @@
+pkg/
+src/
+DateTime-Format-DateManip-*.tar.gz
+DateTime-Format-DateManip-*
+perl-datetime-format-datemanip-*.pkg.tar.xz
+perl-datetime-format-datemanip-*.src.tar.gz
+*.swp
