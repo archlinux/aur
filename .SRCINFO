@@ -1,0 +1,13 @@
+pkgbase = rndsig
+	pkgdesc = The ultimate email signature randomiser.
+	pkgver = 1
+	pkgrel = 2
+	url = http://stormdragon.tk/scripts/rndsig
+	arch = any
+	license = WTFPL
+	depends = bash
+	source = rndsig
+	md5sums = e226976e35940bc7933f9803cbc00810
+
+pkgname = rndsig
+
