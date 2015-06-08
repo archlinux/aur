@@ -1,0 +1,17 @@
+pkgbase = i2p-messenger
+	pkgdesc = Qt-based messenger for I2P network
+	pkgver = 0.2.24
+	pkgrel = 1
+	url = http://echelon.i2p.rocks/qti2pmessenger/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = qt4
+	depends = nas
+	conflicts = i2p-messenger
+	source = http://echelon.i2p.rocks/qti2pmessenger/I2P-Messenger_0.2.24_Beta_src.zip
+	sha256sums = 12b3d2381c0cccfaf1cdc2a0ac38887c2187b9b870596a4e1d1af9554aa44e55
+
+pkgname = i2p-messenger
+
