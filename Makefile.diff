@@ -1,0 +1,76 @@
+--- Makefile.orig	2009-02-22 15:40:44.177758394 +0100
++++ Makefile	2009-02-22 15:44:34.346137033 +0100
+@@ -4,8 +4,7 @@
+ 
+ CC=g++
+ RM=rm
+-CFLAGS= -O3
+-COPTS=  $(CFLAGS) -funsigned-char \
++COPTS=  $(CXXFLAGS) -funsigned-char \
+ 	-DRESOURCEPATH=\"$(INSTALLRESOURCEPATH)\" \
+ 	-DSCOREPATH=\"$(INSTALLHISCORES)\"
+ LIBS= -lm -lSDL -lSDL_mixer -lGL -lGLU
+@@ -19,9 +18,9 @@
+ 
+ # For a non-root install, try something like this:
+ #
+-#INSTALLBIN=/home/blotwell/bin/asylum
+-#INSTALLRESOURCEPATH=/home/blotwell/lib/asylum
+-#INSTALLHISCORES=/home/blotwell/.asylum-hiscores
++INSTALLBIN=/usr/bin
++INSTALLRESOURCEPATH=/usr/share/asylum
++INSTALLHISCORES=/usr/share/asylum/hiscores
+ #
+ #INSTALLGROUP=foo
+ #CHGRP=echo
+@@ -45,34 +44,32 @@
+ 	LIBS=-lm -lmingw32 -lSDL_mixer -lSDLmain -lSDL -mwindows
+ endif
+ ifeq ($(HOST),generic)
+-	INSTALLBIN=/usr/games/asylum
+-	INSTALLRESOURCEPATH=/usr/share/games/asylum
+-	INSTALLHISCORES=/var/games/asylum
++	#INSTALLBIN=/usr/games/asylum
++	INSTALLRESOURCEPATH=/usr/share/asylum
++	INSTALLHISCORES=/usr/share/asylum/hiscores
+ endif
+ 
+ default: build
+ 
+ ifneq ($(HOST),mingw)
+ $(INSTALLBIN): asylum$(EXE) Makefile
+-	cp asylum$(EXE) $(INSTALLBIN)
+-	$(CHGRP) $(INSTALLGROUP) $(INSTALLBIN)
+-	$(CHMOD) g+s $(INSTALLBIN)
+-	$(CHMOD) a+x $(INSTALLBIN)
++	mkdir -p $(DESTDIR)$(INSTALLBIN)
++	cp asylum$(EXE) $(DESTDIR)$(INSTALLBIN)
++	$(CHMOD) a+x $(DESTDIR)$(INSTALLBIN)/asylum$(EXE)
+ 
+ install-resources: $(RESOURCES) Makefile
+-	mkdir -p $(INSTALLRESOURCEPATH)
+-	cp -r $(RESOURCES) $(INSTALLRESOURCEPATH)/
+-	$(CHGRP) -R $(INSTALLGROUP) $(INSTALLRESOURCEPATH)/
+-	$(CHMOD) -R a+rX $(INSTALLRESOURCEPATH)/
++	mkdir -p $(DESTDIR)$(INSTALLRESOURCEPATH)
++	cp -r $(RESOURCES) $(DESTDIR)$(INSTALLRESOURCEPATH)/
++	$(CHMOD) -R a+rX $(DESTDIR)$(INSTALLRESOURCEPATH)/
+ 
+ install-hiscores: Makefile
+-	mkdir -p $(INSTALLHISCORES)
+-	touch $(INSTALLHISCORES)/EgoHighScores
+-	touch $(INSTALLHISCORES)/PsycheHighScores
+-	touch $(INSTALLHISCORES)/IdHighScores
+-	touch $(INSTALLHISCORES)/ExtendedHighScores
+-	$(CHGRP) -R $(INSTALLGROUP) $(INSTALLHISCORES)/*
+-	$(CHMOD) -R 660 $(INSTALLHISCORES)/*
++	mkdir -p $(DESTDIR)$(INSTALLHISCORES)
++	touch $(DESTDIR)$(INSTALLHISCORES)/EgoHighScores
++	touch $(DESTDIR)$(INSTALLHISCORES)/PsycheHighScores
++	touch $(DESTDIR)$(INSTALLHISCORES)/IdHighScores
++	touch $(DESTDIR)$(INSTALLHISCORES)/ExtendedHighScores
++	$(CHGRP) -R $(INSTALLGROUP) $(DESTDIR)$(INSTALLHISCORES)/*
++	$(CHMOD) -R 664 $(DESTDIR)$(INSTALLHISCORES)/*
+ 
+ install-binary: $(INSTALLBIN)
+ 

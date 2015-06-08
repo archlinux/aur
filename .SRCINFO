@@ -1,0 +1,23 @@
+pkgbase = asylum
+	pkgdesc = A platform shooter set in the surreal world of an unstable mind
+	pkgver = 0.3.2
+	pkgrel = 3
+	url = http://sdl-asylum.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = Public Domain
+	depends = sdl
+	depends = sdl_mixer
+	depends = mesa
+	source = http://downloads.sourceforge.net/sdl-asylum/asylum-0.3.2.tar.gz
+	source = Makefile.diff
+	source = LICENSE
+	source = asylum.desktop
+	md5sums = e662061a48726a16884a6f5d3ce69170
+	md5sums = 3de3e16b424e8ec93ce6637ae6667075
+	md5sums = 88b0414ed9959301d11e28924475a4db
+	md5sums = 9fee7121c0c0da6ea2ffb6fd6540e49e
+
+pkgname = asylum
+
