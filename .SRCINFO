@@ -1,0 +1,23 @@
+pkgbase = gnome-shell-pomodoro
+	pkgdesc = A time management utility for GNOME based on the pomodoro technique
+	pkgver = 0.10.3
+	pkgrel = 4
+	url = https://github.com/codito/gnome-shell-pomodoro/
+	install = gschemas.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = intltool
+	makedepends = vala
+	makedepends = gnome-common
+	depends = gnome-desktop
+	depends = libcanberra
+	depends = upower
+	depends = gstreamer
+	depends = gobject-introspection
+	conflicts = gnome-shell-pomodoro-git
+	source = https://github.com/codito/gnome-pomodoro/archive/0.10.3.tar.gz
+	sha256sums = e8ad7170a03e92dba251de2687d5c0a15db5b0ff1d8f64f5b2b2d6016bb8d2ab
+
+pkgname = gnome-shell-pomodoro
+
