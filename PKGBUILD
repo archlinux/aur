@@ -1,13 +1,13 @@
 # Maintainer: beest <gnubeest@gmail.com>
 pkgname=autotrash-git
 pkgver=r59.1e3c902
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool to automatically purge old trashed files."
 arch=('i686' 'x86_64')
 url="http://www.logfish.net/pr/autotrash/"
 license=('GPL3')
 depends=('python') 
-makedepends=('git docbook2x')
+makedepends=('git' 'docbook2x')
 conflicts=('autotrash')
 source=("$pkgname::git://github.com/bneijt/autotrash.git")
 md5sums=('SKIP')
