@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-fieldhint-git
+	pkgdesc = Plugin for Vapoursynth: fieldhint (GIT version)
+	pkgver = v1.0.0.g249e606
+	pkgrel = 1
+	url = https://github.com/dubhater/vapoursynth-fieldhint
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = vapoursynth
+	provides = vapoursynth-plugin-fieldhint
+	conflicts = vapoursynth-plugin-fieldhint
+	source = fieldhint::git+https://github.com/dubhater/vapoursynth-fieldhint.git
+	md5sums = SKIP
+
+pkgname = vapoursynth-plugin-fieldhint-git
+
