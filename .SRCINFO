@@ -1,0 +1,15 @@
+pkgbase = skroll-git
+	pkgdesc = Scrolls text
+	pkgver = 0.2.r15.g500beaf
+	pkgrel = 1
+	url = http://git.z3bra.org/cgit.cgi/skroll
+	arch = i686
+	arch = x86_64
+	license = WTFPL
+	makedepends = git
+	provides = skroll
+	source = git://z3bra.org/skroll
+	md5sums = SKIP
+
+pkgname = skroll-git
+
