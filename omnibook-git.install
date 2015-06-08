@@ -1,0 +1,19 @@
+post_install()
+{
+  depmod -ae -v $(uname -r) > /dev/null 2>&1
+  modprobe omnibook &>/dev/null
+}
+
+post_upgrade()
+{
+  depmod -ae -v $(uname -r) > /dev/null 2>&1
+  rmmod omnibook &>/dev/null
+  modprobe omnibook &>/dev/null
+}
+
+post_remove()
+{
+  rmmod omnibook &>/dev/null
+  depmod -ae -v $(uname -r) > /dev/null 2>&1
+}
+

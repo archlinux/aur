@@ -1,0 +1,19 @@
+pkgbase = omnibook-git
+	pkgdesc = Kernel module for HP OmniBook,Pavilion,Toshiba and Compal ACL00 laptops
+	pkgver = 20150227
+	pkgrel = 1
+	url = http://omnibook.sourceforge.net
+	install = omnibook-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = linux-headers
+	depends = linux
+	provides = omnibook
+	conflicts = omnibook
+	source = omnibook-git::git://devoid-pointer.net/omnibook.git
+	md5sums = SKIP
+
+pkgname = omnibook-git
+
