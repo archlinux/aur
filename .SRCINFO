@@ -1,0 +1,14 @@
+pkgbase = nvidia-hook
+	pkgdesc = mkinitcpio hook to compile the NVIDIA modules
+	pkgver = 2.2
+	pkgrel = 3
+	url = https://github.com/alucryd/mkinitcpio-hooks
+	install = nvidia-hook.install
+	arch = any
+	license = GPL3
+	depends = nvidia-dkms
+	source = https://raw.github.com/alucryd/mkinitcpio-hooks/master/nvidia
+	sha256sums = d3cdc998faac6a8f835efb48b925758e5bb25cfa15e8f2f21430b46b9f880e26
+
+pkgname = nvidia-hook
+
