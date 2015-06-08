@@ -1,0 +1,87 @@
+diff -aur yaze-ag-2.30.3-pristine/Makefile_linux yaze-ag-2.30.3-patched/Makefile_linux
+--- yaze-ag-2.30.3-pristine/Makefile_linux	2015-01-06 19:13:11.951033955 -0700
++++ yaze-ag-2.30.3-patched/Makefile_linux	2015-01-06 19:13:20.224274093 -0700
+@@ -4,12 +4,13 @@
+ CC            =	gcc
+ 
+ #where you want the binaries and manual page
+-BINDIR	      = /usr/local/bin
+-MANDIR	      = /usr/local/man/man1
+-LIBDIR	      = /usr/local/lib/yaze
+-DSKDIR        = $(LIBDIR)/disks
+-DOCDIR        = $(LIBDIR)/doc
+-DOCHTMLDIR    = $(LIBDIR)/doc_html
++PREFIX		 := /usr/local
++BINDIR	      = $(PREFIX)/bin/
++MANDIR	      = $(PREFIX)/man/man1/
++LIBDIR	      = $(PREFIX)/lib/yaze/
++DSKDIR        = $(LIBDIR)/disks/
++DOCDIR        = $(LIBDIR)/doc/
++DOCHTMLDIR    = $(LIBDIR)/doc_html/
+ 
+ #OPTIMIZE	= -g -m486
+ #OPTIMIZE	= -g -save-temps -m486
+@@ -44,7 +45,7 @@
+ #OPTIMIZE	= -O3 -march=pentiumpro
+ #OPTIMIZE	= -O3 -march=pentium2
+ #OPTIMIZE	= -O3 -march=pentium3
+-OPTIMIZE	= -O3 -march=pentium4
++OPTIMIZE	= -O3
+ #OPTIMIZE	= -O3 -march=nocona	# 64 Bit Intel
+ #OPTIMIZE	= -O3 -march=k6
+ #OPTIMIZE	= -O3 -march=k6-2
+@@ -180,6 +181,7 @@
+ 		rm -rf $(LIBDIR)
+ 		mkdir -p $(LIBDIR)
+ 		mkdir -p $(MANDIR)
++		mkdir -p $(BINDIR)
+ 		$(INSTALL) -s -c -m 755 yaze_bin $(BINDIR)
+ 		$(INSTALL) -s -c -m 755 cdm $(BINDIR)
+ 		$(INSTALL) -c -m 755 yaze $(BINDIR)
+diff -aur yaze-ag-2.30.3-pristine/yaze.1 yaze-ag-2.30.3-patched/yaze.1
+--- yaze-ag-2.30.3-pristine/yaze.1	2015-01-06 19:13:11.951033955 -0700
++++ yaze-ag-2.30.3-patched/yaze.1	2015-01-06 19:13:20.224274093 -0700
+@@ -91,7 +91,7 @@
+ address given by the \fB-l\fR option, if one is present, or else at
+ the basepage (see \fB-p\fR).  If a bootfile is not specified with the
+ \fB-b\fR option, yaze-ag looks for the file yaze-cpm3.boot in the current
+-directory first, then in /usr/local/lib/yaze to boot CP/M 3.1.
++directory first, then in /usr/lib/yaze to boot CP/M 3.1.
+ If yaze-ag is compiled without the flag -DBOOTSYS yaze-ag looks for the
+ file yaze.boot (instead of yaze-cpm3.boot) to boot the CP/M 2.2 replacement
+ SuperDos.
+diff -aur yaze-ag-2.30.3-pristine/yaze.c yaze-ag-2.30.3-patched/yaze.c
+--- yaze-ag-2.30.3-pristine/yaze.c	2015-01-06 19:13:11.951033955 -0700
++++ yaze-ag-2.30.3-patched/yaze.c	2015-01-06 19:13:57.160524934 -0700
+@@ -43,13 +43,13 @@
+ /* See definitions for memory in mem_mmu.[c,h] (agl) */
+ 
+ #ifndef LIBDIR
+-#define LIBDIR "/usr/local/lib/yaze"
++#define LIBDIR "/usr/lib/yaze"
+ #endif
+ 
+ #ifdef BOOTSYS
+-static char *bootfile = "yaze-cpm3.boot";
++static char *bootfile = "/usr/lib/yaze/yaze-cpm3.boot";
+ #else
+-static char *bootfile = "yaze.boot";
++static char *bootfile = "/usr/lib/yaze/yaze.boot";
+ #endif
+ static char *startup = ".yazerc";
+ static char *progname;
+diff -aur yaze-ag-2.30.3-pristine/yaze.sh yaze-ag-2.30.3-patched/yaze.sh
+--- yaze-ag-2.30.3-pristine/yaze.sh	2015-01-06 19:13:11.954367250 -0700
++++ yaze-ag-2.30.3-patched/yaze.sh	2015-01-06 19:13:20.224274093 -0700
+@@ -1,8 +1,8 @@
+ #!/bin/sh
+ 
+-S_CPMDSKS=/usr/local/lib/yaze/disks
+-S_DOCFILES=/usr/local/lib/yaze/doc
+-S_DOCFILES_html=/usr/local/lib/yaze/doc_html
++S_CPMDSKS=/usr/lib/yaze/disks
++S_DOCFILES=/usr/lib/yaze/doc
++S_DOCFILES_html=/usr/lib/yaze/doc_html
+ 
+ if [ ! -f .yazerc ]
+ then
