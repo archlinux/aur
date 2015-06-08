@@ -1,0 +1,24 @@
+pkgbase = bugseverywhere-git
+	pkgdesc = A distributed bugtracker
+	pkgver = 1.5.r1671.4980830
+	pkgrel = 3
+	epoch = 2
+	url = http://bugseverywhere.org/
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = ed
+	makedepends = python2-docutils
+	depends = python2
+	depends = python2-jinja
+	optdepends = python2-cherrypy: HTTPS support
+	optdepends = python2-yaml: upgrading of BE directories < v1.5
+	provides = bugseverywhere
+	conflicts = bugseverywhere
+	conflicts = bugseverywhere-bzr
+	options = !emptydirs
+	source = be::git://gitorious.org/be/be.git
+	md5sums = SKIP
+
+pkgname = bugseverywhere-git
+
