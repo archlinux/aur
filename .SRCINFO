@@ -1,0 +1,16 @@
+pkgbase = ttf-meguri
+	pkgdesc = Modified IPA and M+ fonts for Japanese
+	pkgver = 20101113a
+	pkgrel = 4
+	url = http://www.geocities.jp/ep3797/modified_fonts_01.html
+	install = ttf.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://downloads.sourceforge.net/mdk-ut/meguri-fonts-20101113a.tar.lzma
+	md5sums = fc3352bbea9712ad685ccfc43333e8ad
+	sha256sums = 77599ce97a2ead6e7aa714d05855c790ed4664e88fc79cf6eab9c579eb2e1c09
+
+pkgname = ttf-meguri
+
