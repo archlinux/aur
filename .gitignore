@@ -1,3 +1,6 @@
 *.gz
+*.xz
+*.part
+*.aria2
 src/
 pkg/
