@@ -1,0 +1,16 @@
+pkgbase = ttf-vlgothic
+	pkgdesc = Japanese TrueType fonts from Vine Linux
+	pkgver = 20141206
+	pkgrel = 1
+	url = http://vlgothic.dicey.org/
+	install = ttf.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://jaist.dl.sourceforge.jp/vlgothic/62375/VLGothic-20141206.tar.xz
+	md5sums = bb7fadb2dff09a4fb6a11dc9dfdc0c36
+	sha256sums = 982040db2f9cb73d7c6ab7d9d163f2ed46d1180f330c9ba2fae303649bf8102d
+
+pkgname = ttf-vlgothic
+
