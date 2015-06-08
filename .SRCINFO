@@ -1,0 +1,26 @@
+pkgbase = eclipse-reporting
+	pkgdesc = An IDE for Java and other languages - JEE + BIRT package
+	pkgver = 3.6
+	pkgrel = 2
+	url = http://eclipse.org
+	install = eclipse.install
+	arch = any
+	license = EPL/1.1
+	makedepends = zip
+	depends = java-environment>=6
+	depends = gtk2>=2.16.1
+	depends = unzip
+	depends = xulrunner>=1.9.0.10
+	provides = eclipse=3.5
+	provides = eclipse-wtp-wst=3.1.1
+	provides = eclipse-wtp=3.1.1
+	provides = eclipse-dtp=1.7.2
+	provides = eclipse-emf=2.5.0
+	conflicts = eclipse
+	source = ftp://ftp.osuosl.org/pub/eclipse/technology/epp/downloads/release/helios/R/eclipse-reporting-helios-R-linux-gtk.tar.gz
+	source = http://svgicons.o7a.net/unofficial/eclipse.svg
+	source = eclipse.sh
+	source = eclipse.desktop
+
+pkgname = eclipse-reporting
+
