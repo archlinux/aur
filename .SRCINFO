@@ -1,0 +1,15 @@
+pkgbase = ruby-reedb
+	pkgdesc = Secure ruby database/ storage container for sensitive local user data
+	pkgver = 0.10.rc1
+	pkgrel = 1
+	url = https://github.com/tr-lonelyrobot/reedb
+	arch = any
+	license = LGPL
+	makedepends = rubygems
+	depends = ruby
+	noextract = reedb-0.10.rc1.gem
+	source = http://gems.rubyforge.org/gems/reedb-0.10.rc1.gem
+	sha256sums = f9d36539e3cc564b988973a9c6cc1500aa67c3c690c3681e34b83a9c320cbedf
+
+pkgname = ruby-reedb
+
