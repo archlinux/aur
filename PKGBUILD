@@ -8,7 +8,7 @@ _debrepo=http://ftp.debian.org/debian/pool/main/i
 
 pkgname=iceweasel-i18n-ach
 pkgver=$_debver.deb$_debrel
-pkgrel=1
+pkgrel=2
 pkgdesc="Acholi language pack for Iceweasel"
 arch=('any')
 url="http://www.mozilla.com/"
@@ -22,3 +22,4 @@ package() {
   msg2 "Cleaning unwanted files..."
   rm -rv "${pkgdir}"/usr/share/
 }
+md5sums=('37106f9ddc704bcc7414e111b30b062a')
