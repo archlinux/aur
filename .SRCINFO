@@ -1,0 +1,24 @@
+pkgbase = csmash
+	pkgdesc = A 3D table tennis game
+	pkgver = 0.6.6
+	pkgrel = 3
+	url = http://cannonsmash.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxmu
+	depends = gtk2
+	depends = mesa
+	depends = sdl_image
+	depends = sdl_mixer
+	source = http://prdownloads.sourceforge.net/cannonsmash/csmash-0.6.6.tar.gz
+	source = http://kambing.ui.ac.id/gentoo-portage/games-simulation/cannonsmash/files/cannonsmash-0.6.6-gcc41.patch
+	source = http://kambing.ui.ac.id/gentoo-portage/games-simulation/cannonsmash/files/cannonsmash-0.6.6-sizeof-cast.patch
+	source = http://kambing.ui.ac.id/gentoo-portage/games-simulation/cannonsmash/files/cannonsmash-0.6.6-x-inc.patch
+	md5sums = bcf2eddd0f04d58e5dac6d767f41d9af
+	md5sums = 2ffbd16a7577ab027afa03466bff1ad6
+	md5sums = 112758236b8f2e754e515d821380787e
+	md5sums = 76dd644fdfc4521c420f0f63d3365f29
+
+pkgname = csmash
+
