@@ -1,0 +1,5 @@
+pkg
+*.pkg.tar.xz
+*.tar.gz
+src
+tidy-html5
