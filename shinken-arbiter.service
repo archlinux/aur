@@ -1,0 +1,10 @@
+[Unit]
+Description=Shinken Arbiter
+After=syslog.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/shinken-arbiter -dc /etc/shinken/shinken.cfg
+
+[Install]
+WantedBy=multi-user.target

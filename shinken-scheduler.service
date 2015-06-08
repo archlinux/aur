@@ -1,0 +1,10 @@
+[Unit]
+Description=Shinken Scheduler 
+After=syslog.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/shinken-scheduler -dc /etc/shinken/daemons/schedulerd.ini
+
+[Install]
+WantedBy=multi-user.target

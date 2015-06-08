@@ -1,0 +1,10 @@
+/var/log/shinken/archives/*.log { 
+    compress
+    daily
+    missingok
+    rotate 52
+    compress
+    notifempty
+    create 640 shinken shinken
+    sharedscripts
+}

@@ -1,0 +1,10 @@
+[Unit]
+Description=Shinken Receiver
+After=syslog.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/shinken-receiver -dc /etc/shinken/daemons/receiverd.ini
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,19 @@
+post_install() {
+	useradd -r -U -d /var/lib/shinken shinken
+	systemd-tmpfiles --create shinken.conf
+	chown -R shinken:shinken /var/log/shinken
+
+	systemctl daemon-reload
+}
+
+pre_remove() {
+	for i in arbiter poller reactionner scheduler broker receiver; do
+		systemctl stop shinken-$i.service;
+		systemctl disable shinken-$i.service;
+	done
+}
+
+post_remove() {
+	userdel shinken
+	systemctl daemon-reload
+}
