@@ -1,0 +1,19 @@
+pkgbase = log4cplus-git
+	pkgdesc = Simple to use C++ logging API providing thread-safe, flexible, and arbitrarily granular control over log management and configuration
+	pkgver = r1
+	pkgrel = 1
+	url = https://github.com/log4cplus/log4cplus
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	license = Apache
+	makedepends = git
+	makedepends = gcc-libs
+	depends = gcc-libs
+	provides = log4cplus
+	conflicts = log4cplus
+	source = log4cplus::git+https://github.com/log4cplus/log4cplus.git
+	sha512sums = SKIP
+
+pkgname = log4cplus-git
+
