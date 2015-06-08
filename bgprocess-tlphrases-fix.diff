@@ -1,0 +1,28 @@
+diff --git a/bgprocess.c b/bgprocess.c
+index 69206bb..126c09e 100644
+--- a/bgprocess.c
++++ b/bgprocess.c
+@@ -152,7 +152,9 @@ bool cPluginBgprocess::ProcessArgs(int argc, char *argv[])
+ bool cPluginBgprocess::Initialize(void)
+ {
+   // Initialize any background activities the plugin shall perform.
+-  RegisterI18n(tlPhrases);
++#if VDRVERSNUM < 10507
++RegisterI18n(tlPhrases);
++#endif
+   return true;
+ }
+ 
+diff --git a/i18n.h b/i18n.h
+index ee84e4c..c625a5e 100644
+--- a/i18n.h
++++ b/i18n.h
+@@ -13,6 +13,8 @@
+ #include <vdr/i18n.h>
+ #include <vdr/config.h>         // for VDRVERSNUM define only
+ 
++#if VDRVERSNUM < 10507
+ extern const tI18nPhrase tlPhrases[];
++#endif
+ 
+ #endif //_I18N__H

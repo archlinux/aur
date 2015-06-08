@@ -1,0 +1,23 @@
+pkgbase = vdr-bgprocess
+	pkgdesc = Displays information about background processes
+	pkgver = 0.1.0
+	pkgrel = 20
+	url = http://projects.vdr-developer.org/projects/plg-undelete
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	depends = gcc-libs
+	depends = vdr-api=2.2.0
+	backup = etc/vdr/conf.avail/50-bgprocess.conf
+	source = http://ftp.uni-kl.de/pub/linux/gentoo/distfiles/vdr-bgprocess-0.1.0.tgz
+	source = bgprocess-tlphrases-fix.diff
+	source = bgprocess-osditem-fix.diff
+	md5sums = 46bc8626cf843110eedef74d2dc27c3d
+	md5sums = d2f7efb1ab40727298d4d17e1b07e37c
+	md5sums = 1556e199ab90264a1f45838abbef0243
+
+pkgname = vdr-bgprocess
+

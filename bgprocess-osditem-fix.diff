@@ -1,0 +1,13 @@
+diff --git a/bgprocess.c b/bgprocess.c
+index 69206bb..eff2a10 100644
+--- a/bgprocess.c
++++ b/bgprocess.c
+@@ -330,7 +330,7 @@ void BgProcessMenu::ShowBgProcesses()
+  Clear();
+  if (iter == bgProcessList.end() && CompletedList.size()==0)
+    {
+-    Add(new cOsdItem(" "),osUnknown,false);
++    Add(new cOsdItem(" ",osUnknown,false));
+     Add(new cOsdItem(tr(" No background process running"),osUnknown,false));
+    }
+  for (; iter != bgProcessList.end(); iter++)
