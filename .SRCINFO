@@ -1,0 +1,24 @@
+pkgbase = i3ipc-glib-git
+	pkgdesc = A C interface library to i3wm
+	pkgver = r1
+	pkgrel = 1
+	url = https://github.com/acrisci/i3ipc-glib
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = libxcb
+	makedepends = xcb-proto
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	depends = glib2
+	depends = json-glib
+	optdepends = i3ipc-lua: Lua language bindings
+	optdepends = i3ipc-python: Python language bindings
+	optdepends = i3ipc-gjs: JavaScript language bindings
+	provides = i3ipc-glib
+	conflicts = i3ipc-glib
+	source = i3ipc-glib::git+https://github.com/acrisci/i3ipc-glib.git
+	sha512sums = SKIP
+
+pkgname = i3ipc-glib-git
+
