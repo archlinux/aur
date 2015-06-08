@@ -1,0 +1,25 @@
+--- origsrc/libiconv-1.14/srcm4/gnulib-comp.m4	2011-08-07 09:42:12.000000000 -0400
++++ src/libiconv-1.14/srcm4/gnulib-comp.m4	2011-08-30 02:40:45.597317000 -0400
+@@ -164,6 +164,7 @@ gl_UNISTD_MODULE_INDICATOR([readlink])
+ gl_RELOCATABLE([$gl_source_base])
+ if test $RELOCATABLE = yes; then
+   AC_LIBOBJ([progreloc])
++  AC_LIBOBJ([relocatable])
+ fi
+ gl_FUNC_READLINK_SEPARATE
+ gl_CANONICALIZE_LGPL_SEPARATE
+--- origsrc/libiconv-1.14/tests/Makefile.in	2010-11-23 21:24:03.000000000 -0500
++++ src/libiconv-1.14/tests/Makefile.in	2011-08-30 02:40:45.604317000 -0400
+@@ -126,10 +126,10 @@ check : all table-from table-to ../src/i
+ 	$(srcdir)/check-stateless $(srcdir) EUC-CN
+ 	$(srcdir)/check-stateless $(srcdir) GBK
+ 	$(srcdir)/check-stateless $(srcdir) CP936
+-	$(CC) $(LDFLAGS) $(INCLUDES) $(CFLAGS) $(CPPFLAGS) $(srcdir)/gengb18030z.c ../srclib/libicrt.a -o gengb18030z && \
++	( $(CC) $(LDFLAGS) $(INCLUDES) $(CFLAGS) $(CPPFLAGS) $(srcdir)/gengb18030z.c ../srclib/libicrt.a -o gengb18030z && \
+ 	{ cat $(srcdir)/GB18030-BMP.TXT ; ./gengb18030z ; } | sort > GB18030.TXT && \
+ 	$(srcdir)/check-stateless . GB18030 && \
+-	$(RM) -r gengb18030z@EXEEXT@ gengb18030z.dSYM GB18030.TXT
++	$(RM) -r gengb18030z@EXEEXT@ gengb18030z.dSYM GB18030.TXT ) || /bin/true
+ 	$(srcdir)/check-stateful $(srcdir) ISO-2022-CN
+ 	$(srcdir)/check-stateful $(srcdir) ISO-2022-CN-EXT
+ 	$(srcdir)/check-stateful $(srcdir) HZ

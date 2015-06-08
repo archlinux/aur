@@ -1,0 +1,27 @@
+pkgbase = mingw-w64-libiconv
+	pkgdesc = Provides GNU libiconv.so and libcharset.so (mingw-w64)
+	pkgver = 1.14
+	pkgrel = 9
+	url = http://www.gnu.org/software/libiconv/
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.14.tar.gz
+	source = 00-wchar-libiconv-1.14.patch
+	source = 01-reloc-libiconv-1.14.patch
+	source = 02-reloc-libiconv-1.14.patch
+	source = 03-cygwin-libiconv-1.14.patch
+	source = libiconv-1.14-2-mingw.patch
+	md5sums = e34509b1623cec449dfeb73d7ce9c6c6
+	md5sums = 7fe4ced6aa978f0a05b91d85daafce96
+	md5sums = da8ba76125096d1dc2a3fa7ded113131
+	md5sums = 77ba031f3e19ea74f18608711499ba2b
+	md5sums = 5fa6a6a676d849afc7c01d9ffdd60c5f
+	md5sums = 9da5e832f3843d6687768be068c2da1b
+
+pkgname = mingw-w64-libiconv
+

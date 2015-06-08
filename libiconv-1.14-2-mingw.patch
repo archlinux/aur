@@ -1,0 +1,114 @@
+--- origsrc/libiconv-1.14/Makefile.devel	2011-10-21 15:11:43 -0400
++++ src/libiconv-1.14/Makefile.devel	2011-10-21 15:12:16 -0400
+@@ -105,6 +105,7 @@ include/iconv.h.build.in : include/iconv
+ lib/aliases.h lib/canonical.h lib/canonical_local.h : lib/encodings.def lib/encodings_local.def lib/genaliases.c
+ 	$(CC) $(CFLAGS) lib/genaliases.c -o genaliases
+ 	./genaliases > lib/aliases.gperf 3> canonical.sh 4> canonical_local.sh
++	dos2unix lib/aliases.gperf
+ 	$(RM) genaliases
+ 	$(GPERF) -m 10 lib/aliases.gperf > tmp.h
+ 	$(CP) tmp.h lib/aliases.h
+@@ -115,6 +116,7 @@ lib/aliases.h lib/canonical.h lib/canoni
+ lib/aliases_sysaix.h lib/canonical_sysaix.h lib/canonical_local_sysaix.h : lib/encodings.def lib/encodings_local.def lib/genaliases.c
+ 	$(CC) $(CFLAGS) -DUSE_AIX_ALIASES lib/genaliases.c -o genaliases
+ 	./genaliases > lib/aliases_sysaix.gperf 3> canonical.sh 4> canonical_local.sh
++	dos2unix lib/aliases_sysaix.gperf
+ 	$(RM) genaliases
+ 	$(GPERF) -m 10 lib/aliases_sysaix.gperf > tmp.h
+ 	$(CP) tmp.h lib/aliases_sysaix.h
+@@ -125,6 +127,7 @@ lib/aliases_sysaix.h lib/canonical_sysai
+ lib/aliases_syshpux.h lib/canonical_syshpux.h lib/canonical_local_syshpux.h : lib/encodings.def lib/encodings_local.def lib/genaliases.c
+ 	$(CC) $(CFLAGS) -DUSE_HPUX_ALIASES lib/genaliases.c -o genaliases
+ 	./genaliases > lib/aliases_syshpux.gperf 3> canonical.sh 4> canonical_local.sh
++	dos2unix lib/aliases_syshpux.gperf
+ 	$(RM) genaliases
+ 	$(GPERF) -m 10 lib/aliases_syshpux.gperf > tmp.h
+ 	$(CP) tmp.h lib/aliases_syshpux.h
+@@ -135,6 +138,7 @@ lib/aliases_syshpux.h lib/canonical_sysh
+ lib/aliases_sysosf1.h lib/canonical_sysosf1.h lib/canonical_local_sysosf1.h : lib/encodings.def lib/encodings_local.def lib/genaliases.c
+ 	$(CC) $(CFLAGS) -DUSE_OSF1_ALIASES lib/genaliases.c -o genaliases
+ 	./genaliases > lib/aliases_sysosf1.gperf 3> canonical.sh 4> canonical_local.sh
++	dos2unix lib/aliases_sysosf1.gperf
+ 	$(RM) genaliases
+ 	$(GPERF) -m 10 lib/aliases_sysosf1.gperf > tmp.h
+ 	$(CP) tmp.h lib/aliases_sysosf1.h
+@@ -145,6 +149,7 @@ lib/aliases_sysosf1.h lib/canonical_syso
+ lib/aliases_syssolaris.h lib/canonical_syssolaris.h lib/canonical_local_syssolaris.h : lib/encodings.def lib/encodings_local.def lib/genaliases.c
+ 	$(CC) $(CFLAGS) -DUSE_SOLARIS_ALIASES lib/genaliases.c -o genaliases
+ 	./genaliases > lib/aliases_syssolaris.gperf 3> canonical.sh 4> canonical_local.sh
++	dos2unix lib/aliases_syssolaris.gperf
+ 	$(RM) genaliases
+ 	$(GPERF) -m 10 lib/aliases_syssolaris.gperf > tmp.h
+ 	$(CP) tmp.h lib/aliases_syssolaris.h
+@@ -155,43 +160,51 @@ lib/aliases_syssolaris.h lib/canonical_s
+ lib/aliases_aix.h lib/canonical_aix.h : lib/encodings_aix.def lib/genaliases2.c
+ 	$(CC) $(CFLAGS) -DUSE_AIX lib/genaliases2.c -o genaliases
+ 	./genaliases aix > lib/aliases_aix.h 3> lib/canonical_aix.h
++	dos2unix lib/aliases_aix.h lib/canonical_aix.h
+ 	$(RM) genaliases
+ 
+ lib/aliases_aix_sysaix.h lib/canonical_aix_sysaix.h : lib/encodings_aix.def lib/genaliases2.c
+ 	$(CC) $(CFLAGS) -DUSE_AIX -DUSE_AIX_ALIASES lib/genaliases2.c -o genaliases
+ 	./genaliases aix > lib/aliases_aix_sysaix.h 3> lib/canonical_aix_sysaix.h
++	dos2unix lib/aliases_aix_sysaix.h lib/canonical_aix_sysaix.h
+ 	$(RM) genaliases
+ 
+ lib/aliases_osf1.h lib/canonical_osf1.h : lib/encodings_osf1.def lib/genaliases2.c
+ 	$(CC) $(CFLAGS) -DUSE_OSF1 lib/genaliases2.c -o genaliases
+ 	./genaliases osf1 > lib/aliases_osf1.h 3> lib/canonical_osf1.h
++	dos2unix lib/aliases_osf1.h lib/canonical_osf1.h
+ 	$(RM) genaliases
+ 
+ lib/aliases_osf1_sysosf1.h lib/canonical_osf1_sysosf1.h : lib/encodings_osf1.def lib/genaliases2.c
+ 	$(CC) $(CFLAGS) -DUSE_OSF1 -DUSE_OSF1_ALIASES lib/genaliases2.c -o genaliases
+ 	./genaliases osf1 > lib/aliases_osf1_sysosf1.h 3> lib/canonical_osf1_sysosf1.h
++	dos2unix lib/aliases_osf1_sysosf1.h lib/canonical_osf1_sysosf1.h
+ 	$(RM) genaliases
+ 
+ lib/aliases_dos.h lib/canonical_dos.h : lib/encodings_dos.def lib/genaliases2.c
+ 	$(CC) $(CFLAGS) -DUSE_DOS lib/genaliases2.c -o genaliases
+ 	./genaliases dos > lib/aliases_dos.h 3> lib/canonical_dos.h
++	dos2unix lib/aliases_dos.h lib/canonical_dos.h
+ 	$(RM) genaliases
+ 
+ lib/aliases_extra.h lib/canonical_extra.h : lib/encodings_extra.def lib/genaliases2.c
+ 	$(CC) $(CFLAGS) -DUSE_EXTRA lib/genaliases2.c -o genaliases
+ 	./genaliases extra > lib/aliases_extra.h 3> lib/canonical_extra.h
++	dos2unix lib/aliases_extra.h lib/canonical_extra.h
+ 	$(RM) genaliases
+ 
+ 
+ lib/flags.h : lib/encodings.def lib/encodings_aix.def lib/encodings_osf1.def lib/encodings_dos.def lib/encodings_extra.def lib/converters.h lib/genflags.c
+ 	$(CC) $(CFLAGS) lib/genflags.c -o genflags
+ 	./genflags > lib/flags.h
++	dos2unix lib/flags.h
+ 	$(RM) genflags
+ 
+ 
+ lib/translit.h : lib/translit.def lib/gentranslit.c
+ 	$(CC) $(CFLAGS) -Wl,--stack,16777216 lib/gentranslit.c -o gentranslit
+ 	./gentranslit < lib/translit.def > lib/translit.h
++	dos2unix lib/translit.h
+ 	$(RM) gentranslit
+ 
+ 
+--- origsrc/libiconv-1.14/autogen.sh	2010-09-23 19:28:15 -0400
++++ src/libiconv-1.14/autogen.sh	2011-10-21 15:12:16 -0400
+@@ -65,11 +65,12 @@ if test $skip_gnulib = false; then
+ fi
+ 
+ rm -f configure config.h.in include/iconv.h.build.in
+-rm -f lib/aliases.h lib/aliases_sysaix.h lib/aliases_syshpux.h lib/aliases_sysosf1.h lib/aliases_syssolaris.h
+-rm -f lib/aliases_aix.h lib/aliases_aix_sysaix.h
+-rm -f lib/aliases_osf1.h lib/aliases_osf1_sysosf1.h
+-rm -f lib/aliases_dos.h
+-rm -f lib/aliases_extra.h
++### We have no gperf, so don't remake these headers
++#rm -f lib/aliases.h lib/aliases_sysaix.h lib/aliases_syshpux.h lib/aliases_sysosf1.h lib/aliases_syssolaris.h
++#rm -f lib/aliases_aix.h lib/aliases_aix_sysaix.h
++#rm -f lib/aliases_osf1.h lib/aliases_osf1_sysosf1.h
++#rm -f lib/aliases_dos.h
++#rm -f lib/aliases_extra.h
+ rm -f lib/flags.h
+ rm -f lib/translit.h
+ rm -f man/iconv.1.html man/iconv.3.html man/iconv_close.3.html man/iconv_open.3.html
