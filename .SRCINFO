@@ -1,0 +1,17 @@
+pkgbase = secrate-git
+	pkgdesc = A command-line password management tool using GPG encryption.
+	pkgver = dc9301d
+	pkgrel = 1
+	url = https://gitorious.org/secrate/secrate
+	arch = any
+	license = AGPL
+	makedepends = git
+	depends = python
+	depends = xclip
+	depends = python-gnupg
+	provides = secrate
+	source = secrate::git://gitorious.org/secrate/secrate.git
+	md5sums = SKIP
+
+pkgname = secrate-git
+
