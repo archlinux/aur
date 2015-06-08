@@ -1,0 +1,16 @@
+pkgbase = perl-datetime-format-human-duration
+	pkgdesc = Get a locale specific string describing the span of a given duration
+	pkgver = 0.61
+	pkgrel = 1
+	url = http://search.cpan.org/dist/DateTime-Format-Human-Duration
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MS/MSTRAT/DateTime-Format-Human-Duration-0.61.tar.gz
+	md5sums = 8d633456e864859b55dda0445ce48041
+	sha512sums = ce7e8cdfc5eca42b3e1fb6d1888f5afa12fbc5cd8f75c767a872cd66deb4b638d910cbf058439889ea7b090176a0c2b4e8407b278d3194767aeb97c2638494e6
+
+pkgname = perl-datetime-format-human-duration
+
