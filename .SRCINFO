@@ -1,0 +1,20 @@
+pkgbase = ntfs-3g-fuse
+	pkgdesc = Stable read and write NTFS driver and ntfsprogs. This package will allow normal users to mount NTFS Volumes.
+	pkgver = 2015.3.14
+	pkgrel = 1
+	url = http://www.tuxera.com/community/open-source-ntfs-3g/
+	install = ntfs-3g-fuse.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	provides = ntfsprogs
+	provides = ntfs-3g
+	conflicts = ntfs-3g
+	conflicts = ntfsprogs
+	options = !libtool
+	source = http://tuxera.com/opensource/ntfs-3g_ntfsprogs-2015.3.14.tgz
+	sha256sums = 97f996015d8316d4a272bd2629978e5e97072dd3cc148ce39802f8037c6538f2
+
+pkgname = ntfs-3g-fuse
+
