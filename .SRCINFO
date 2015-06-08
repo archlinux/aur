@@ -1,0 +1,14 @@
+pkgbase = csound-doc
+	pkgdesc = The Canonical Csound Reference Manual
+	pkgver = 6.05
+	pkgrel = 1
+	url = http://csound.github.io
+	arch = any
+	license = LGPL
+	license = GPL
+	depends = csound
+	source = http://downloads.sourceforge.net/csound/Csound6.05_manual_html.zip
+	sha256sums = 4d9a71a4dc2cee28b7a5d879c3e8d39d98711f813f7b797b9bb6a7c3635235bd
+
+pkgname = csound-doc
+
