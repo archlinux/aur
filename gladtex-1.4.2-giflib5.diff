@@ -1,0 +1,34 @@
+--- eqn2img.c.orig	2014-02-20 20:54:58.000000000 +0100
++++ eqn2img.c	2014-07-02 19:50:53.669940264 +0200
+@@ -634,19 +634,19 @@
+   };
+ 
+   if(img_name) {
+-    fp = EGifOpenFileName(img_name, 0);
++    fp = EGifOpenFileName(img_name, 0, NULL);
+     if(!fp)
+       return -1;
+   }
+   else
+-    fp = EGifOpenFileHandle(STDOUT_FILENO);
++    fp = EGifOpenFileHandle(STDOUT_FILENO, NULL);
+ 
+   for(i=0; i<256; i++) {
+     pal[i].Red = (i*background.red + (255-i)*foreground.red)/255;
+     pal[i].Green = (i*background.green + (255-i)*foreground.green)/255;
+     pal[i].Blue = (i*background.blue + (255-i)*foreground.blue)/255;
+   }
+-  color_map = MakeMapObject(256, pal);
++  color_map = GifMakeMapObject(256, pal);
+ 
+   /* EGifSetGifVersion("89a"); this causes segfault (but is really required for transparency, I think) */
+   EGifPutScreenDesc(fp, width, height, 256, 255, color_map);
+@@ -660,7 +660,7 @@
+       return -1;
+   }
+ 
+-  EGifCloseFile(fp);
++  EGifCloseFile(fp, NULL);
+ 
+   return 0;
+ }  
