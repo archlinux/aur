@@ -1,0 +1,16 @@
+pkgbase = carla-bridges-win
+	pkgdesc = Carla windows bridges
+	pkgver = 2.0beta4
+	pkgrel = 1
+	url = http://kxstudio.sf.net/carla
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = wine
+	depends = carla-git
+	provides = carla-bridges-win
+	conflicts = carla-bridges-win32
+	conflicts = carla-bridges-win64
+
+pkgname = carla-bridges-win
+
