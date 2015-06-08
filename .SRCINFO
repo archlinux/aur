@@ -1,0 +1,13 @@
+pkgbase = gtk-theme-the-days-of-grays
+	pkgdesc = A dark and usable gtk theme. The days of Grays
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://liliumcruentus.deviantart.com/art/The-Days-of-Grays-158652803
+	arch = x86
+	arch = x86_64
+	license = CCPL:cc-by-nc-sa
+	source = http://docs.volcanis.me/_The_Days_of_Grays__by_liliumcruentus.zip
+	md5sums = 33025c58d2683cb1c175ef40ef4d5a51
+
+pkgname = gtk-theme-the-days-of-grays
+
