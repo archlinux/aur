@@ -1,0 +1,13 @@
+pkgbase = nodejs-marked
+	pkgdesc = A markdown parser built for speed
+	pkgver = 0.2.9
+	pkgrel = 2
+	url = https://github.com/chjj/marked
+	arch = any
+	depends = nodejs
+	noextract = marked-0.2.9.tgz
+	source = http://registry.npmjs.org/marked/-/marked-0.2.9.tgz
+	sha1sums = 7acede9852f847ad4b347201b2c4c18c9d38e5c9
+
+pkgname = nodejs-marked
+
