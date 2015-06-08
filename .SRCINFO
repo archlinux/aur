@@ -1,0 +1,29 @@
+pkgbase = gtox-git
+	pkgdesc = a GTK-based tox-client
+	pkgver = r619.5fb0ea6
+	pkgrel = 1
+	url = https://github.com/KoKuToru/gTox.git
+	install = gTox.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = check
+	makedepends = git
+	makedepends = cmake
+	makedepends = librsvg
+	depends = gtkmm3
+	depends = libnotifymm
+	depends = libconfig
+	depends = sqlite
+	depends = gettext
+	depends = libcanberra
+	depends = desktop-file-utils
+	depends = gtk-update-icon-cache
+	depends = gstreamermm
+	depends = tox-git
+	conflicts = gtox
+	source = gtox::git+https://github.com/KoKuToru/gTox.git
+	md5sums = SKIP
+
+pkgname = gtox-git
+
