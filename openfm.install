@@ -1,0 +1,26 @@
+post_install() {
+  APP_DIR="/usr/share/applications/"
+  FILE_NAME=openfm.desktop
+cat > "${FILE_NAME}" << EOF
+[Desktop Entry]
+Name=OpenFM
+Exec="/opt/OpenFM/openfm"
+Icon=/opt/OpenFM/icons/openfm.png
+Terminal=false
+Type=Application
+Categories=AudioVideo;Audio;Music;
+EOF
+
+cat > "openfm" << EOF
+#!/bin/sh
+cd /opt/OpenFM
+./openfm
+EOF
+chmod a+x /opt/OpenFM/*
+
+
+mkdir -p "${APP_DIR}"
+mv "${FILE_NAME}" "${APP_DIR}"
+mv openfm /usr/bin
+chmod a+x /usr/bin/openfm
+}
