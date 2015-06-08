@@ -1,0 +1,11 @@
+diff -up mozilla-release/security/certverifier/OCSPCache.h.old mozilla-release/security/certverifier/OCSPCache.h
+--- mozilla-release/security/certverifier/OCSPCache.h.old	2014-10-14 12:33:46.519970732 +0200
++++ mozilla-release/security/certverifier/OCSPCache.h	2014-10-14 12:34:44.418000625 +0200
+@@ -25,6 +25,7 @@
+ #ifndef mozilla_psm_OCSPCache_h
+ #define mozilla_psm_OCSPCache_h
+ 
++#include "prtypes.h"
+ #include "hasht.h"
+ #include "mozilla/Mutex.h"
+ #include "mozilla/Vector.h"

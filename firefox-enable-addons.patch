@@ -1,0 +1,27 @@
+diff -up mozilla-release/browser/app/profile/firefox.js.addons mozilla-release/browser/app/profile/firefox.js
+--- mozilla-release/browser/app/profile/firefox.js.addons	2014-08-26 05:37:44.000000000 +0200
++++ mozilla-release/browser/app/profile/firefox.js	2014-08-26 15:20:52.114149955 +0200
+@@ -65,7 +65,8 @@ pref("extensions.hotfix.certs.1.sha1Fing
+ 
+ // Disable add-ons that are not installed by the user in all scopes by default.
+ // See the SCOPE constants in AddonManager.jsm for values to use here.
+-pref("extensions.autoDisableScopes", 15);
++pref("extensions.autoDisableScopes", 0);
++pref("extensions.showMismatchUI", false);
+ 
+ // Dictionary download preference
+ pref("browser.dictionaries.download.url", "https://addons.mozilla.org/%LOCALE%/firefox/dictionaries/");
+diff -up mozilla-release/toolkit/mozapps/extensions/internal/XPIProvider.jsm.addons mozilla-release/toolkit/mozapps/extensions/internal/XPIProvider.jsm
+--- mozilla-release/toolkit/mozapps/extensions/internal/XPIProvider.jsm.addons	2014-08-26 15:20:52.115149958 +0200
++++ mozilla-release/toolkit/mozapps/extensions/internal/XPIProvider.jsm	2014-08-26 15:29:16.229670636 +0200
+@@ -1888,8 +1888,8 @@ this.XPIProvider = {
+       // Changes to installed extensions may have changed which theme is selected
+       this.applyThemeChange();
+ 
+-      if (aAppChanged === undefined) {
+-        // For new profiles we will never need to show the add-on selection UI
++      if (true) {
++        // For all profiles we will never need to show the add-on selection UI
+         Services.prefs.setBoolPref(PREF_SHOWN_SELECTION_UI, true);
+       }
+       else if (aAppChanged && !this.allAppGlobal &&
