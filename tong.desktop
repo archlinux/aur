@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Tong
+Comment=Tetris meets Pong, with more twists than a contortionist club's secret handshake
+Exec=/usr/bin/tong
+Icon=/usr/share/pixmaps/tong.png
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Game;ArcadeGame;
