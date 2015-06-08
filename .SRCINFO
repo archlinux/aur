@@ -1,0 +1,22 @@
+pkgbase = hades
+	pkgdesc = Hamburg Design System, a framework for interactive simulation.
+	pkgver = 0.98f
+	pkgrel = 3
+	url = http://tams-www.informatik.uni-hamburg.de/applets/hades/
+	arch = any
+	license = custom
+	makedepends = unzip
+	makedepends = imagemagick
+	depends = java-runtime
+	noextract = hades.jar
+	source = http://tams-www.informatik.uni-hamburg.de/applets/hades/archive/hades.jar
+	source = hades
+	source = hades.desktop
+	source = LICENSE
+	md5sums = 4f104e2043409d44971eb653a27f9fee
+	md5sums = 1b047459e66bbf7034529ea692494651
+	md5sums = 8c3e9b529717672fa83c563e2150eabe
+	md5sums = 03060d8220e2b702d585cb82de751e1d
+
+pkgname = hades
+

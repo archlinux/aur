@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Hades
+Comment=Hamburg Design System, a framework for interactive simulation.
+Exec=hades
+Icon=hades
+Terminal=false
+Categories=Education;Development;Electronics;Science;ComputerScience;

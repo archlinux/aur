@@ -1,0 +1,107 @@
+Hades Applet and Hades Website License Agreement
+
+You must accept the following before running the Hades applet and using
+this website contents.
+
+Please read this agreement carefully. Your use of the Hades applet and
+the documentation on this website indicates your acceptance of this
+license agreement. If you are not willing to be bound by all the terms,
+please leave the Hades website and destroy all your copies of the Hades
+aplet and website content (including copies in your web-browser cache).
+
+Definitions
+
+"Software" means the binary code of the Hades simulation framework
+including other machine readable files (including, but not limited to,
+Java class files, source files, header files, data files, images), any
+updates or error corrections provided by Copyright Holders, and any
+user manuals, programming guides, and other documentation provided to
+you under this agreement. At the moment, the Hades applet software is
+packaged as a set of JAR-format archive files (e.g. "hades-applet.jar",
+"hades-models-rtlib.jar", etc.).
+
+"Site content" means the static content and functionality of the Hades
+wesite, including text, graphics, images, logos and icons, and the
+selection and arrangement thereof. At the moment, the Hades website is
+hosted at the following URL:
+http://tams-www.informatik.uni-hamburg.de/applets/hades/webdemos/
+
+"Copyright Holders" means Norman Hendrich, Dept. of Computer Science,
+University of Hamburg, and the respective authors of Hades packages as
+noted on the About Hades page.
+
+License to use
+
+Subject to the terms and conditions of this Agreement, Copyright holders
+hereby grant you a non-exclusive, non-transferable limited license to
+access, display, and print one copy of the content and functionality
+displayed on the Site (the "Site Content") on any single computer solely
+for personal educational use, provided that you do not modify the Site
+Content in any way and that you retain all copyright and other
+proprietary notices displayed on the Site Content.
+
+You may not otherwise reproduce, modify, distribute, transmit, post, or
+disclose Software and Site Content without the Copyright Holder's prior
+written consent.
+
+This license expressly prohibits the use of Software and Site Content in
+connection with any commercial enterprise, including but not limited to
+the publication and re-distribution on web-sites other than the Hades
+homepage (for the current location, see above). To obtain a license for
+educational and commercial use, please contact the Copyright Holders.
+
+Restrictions
+
+Software and Site Content is confidential and copyrighted. Title to
+Software and Site Content and all associated intellectual property
+rights is retained by Copyright holders. Unless enforcement is
+prohibited by applicable law, you may not modify, decompile, or reverse
+engineer Software. No right, title or interest in or to any trademark,
+service mark, logo or trade name of the University of Hamburg or its
+licensors is granted under this Agreement.
+
+Disclaimers
+
+SOFTWARE AND SITE CONTENT IS PROVIDED "AS IS," AND COPYRIGHT HOLDERS
+MAKE NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT
+NOT LIMITED TO, WARRANTIES OF MERCHANTABILITY OR FITNESS FOR ANY
+PARTICULAR PURPOSE OR THAT THE USE OF THE SOFTWARE OR SITE CONTENT WILL
+NOT INFRINGE ANY THIRD PARTY PATENTS, COPYRIGHTS, TRADEMARKS OR OTHER
+RIGHTS.
+
+COPYRIGHT HOLDERS WILL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL
+OR CONSEQUENTIAL DAMAGES ARISING OUT OF ANY USE OF THE SOFTWARE OR SITE
+CONTENT.
+
+In no event will Copyright Holders liability to you, whether in
+contract, tort (including negligence), or otherwise, exceed the amount
+paid by you for Site Content and Software under this Agreement.
+
+Third-Party Web Sites
+
+The Site Content may include hyperlinks to external third-party websites
+to enrich the content and provide easy access to additional
+documentation. The Copyright Holders and the University of Hamburg (as
+the current Hades website hoster) have no responsibility for these
+third-party Web sites, which are goverened by the Terms of Use and
+privacy policies, if any, of the applicable third-party content
+provides.
+
+Termination
+
+This Agreement is effective until terminated. You may terminate this
+Agreement at any time by destroying all copies of Software and Site
+Content. This Agreement will terminate immediately without notice from
+Copyright Holders if you fail to comply with any provision of this
+Agreement. Upon Termination, you must destroy all copies of Software
+and Site Content.
+
+Educational and Commercial Use
+
+Please contact us for the licensing terms concerning commercial use or
+(institutional and non-personal) academic use of the Hades framework and
+Hades applets.
+
+All Hades software and Hades website documentation
+© 1997-2005 by Norman Hendrich, Dept. Computer Science, Univ. of Hamburg
+(except where noted). All rights reserved.
