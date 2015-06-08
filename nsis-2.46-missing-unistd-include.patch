@@ -1,0 +1,11 @@
+--- nsis-2.46-src.old/Source/util.h	2009-03-28 09:47:26.000000000 +0000
++++ nsis-2.46-src/Source/util.h	2012-01-16 12:22:14.967416817 +0000
+@@ -17,6 +17,8 @@
+ #ifndef _UTIL_H_
+ #define _UTIL_H_
+ 
++#include <unistd.h>
++
+ #include <string> // for std::string
+ 
+ #include "boost/scoped_ptr.hpp" // for boost::scoped_ptr

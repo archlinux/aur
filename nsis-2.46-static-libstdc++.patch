@@ -1,0 +1,11 @@
+diff -u a/SCons/Config/gnu b/SCons/Config/gnu
+--- a/SCons/Config/gnu
++++ b/SCons/Config/gnu
+@@ -118,6 +118,7 @@
+ plugin_env.Append(LINKFLAGS = ['$ALIGN_FLAG'])      # 512 bytes align
+ plugin_env.Append(LINKFLAGS = ['$MAP_FLAG'])        # generate map file
+ plugin_env.Append(LINKFLAGS = ['-static-libgcc'])   # remove libgcc*.dll dependency
++plugin_env.Append(LINKFLAGS = ['-static-libstdc++'])
+ 
+ ### cross-platform util environment
+ 

@@ -1,0 +1,53 @@
+diff -ur nsis-2.46-src.orig/Contrib/InstallOptions/InstallerOptions.cpp nsis-2.46-src/Contrib/InstallOptions/InstallerOptions.cpp
+--- nsis-2.46-src.orig/Contrib/InstallOptions/InstallerOptions.cpp	2015-04-27 12:13:50.407400959 +0000
++++ nsis-2.46-src/Contrib/InstallOptions/InstallerOptions.cpp	2015-04-27 12:14:09.627400134 +0000
+@@ -16,6 +16,12 @@
+ 
+ #include <nsis/pluginapi.h> // nsis plugin
+ 
++#ifdef __MINGW64_VERSION_MAJOR
++#ifndef min
++#define min(a,b) (((a) < (b)) ? (a) : (b))
++#endif
++#endif
++
+ // Use for functions only called from one place to possibly reduce some code
+ // size.  Allows the source code to remain readable by leaving the function
+ // intact.
+diff -ur nsis-2.46-src.orig/Contrib/Makensisw/makensisw.h nsis-2.46-src/Contrib/Makensisw/makensisw.h
+--- nsis-2.46-src.orig/Contrib/Makensisw/makensisw.h	2015-04-27 12:13:50.414067625 +0000
++++ nsis-2.46-src/Contrib/Makensisw/makensisw.h	2015-04-27 12:14:09.627400134 +0000
+@@ -22,7 +22,11 @@
+ #ifndef MAKENSIS_H
+ #define MAKENSIS_H
+ 
++#include <stdio.h>   /* Needed to get __MINGW64_VERSION_MAJOR set */
++#ifndef __MINGW64_VERSION_MAJOR
+ #define _WIN32_IE 0x0400
++#endif
++
+ #include <windows.h>
+ #include <commctrl.h>
+ #include "utils.h"
+diff -ur nsis-2.46-src.orig/SCons/Tools/crossmingw.py nsis-2.46-src/SCons/Tools/crossmingw.py
+--- nsis-2.46-src.orig/SCons/Tools/crossmingw.py	2015-04-27 12:13:50.434067625 +0000
++++ nsis-2.46-src/SCons/Tools/crossmingw.py	2015-04-27 12:14:09.624066801 +0000
+@@ -58,6 +58,7 @@
+     i486-pc-mingw32-
+     i586-pc-mingw32-
+     i686-pc-mingw32-
++    i686-w64-mingw32-
+ """)
+ 
+ def find(env):
+diff -ur nsis-2.46-src.orig/Source/exehead/Ui.c nsis-2.46-src/Source/exehead/Ui.c
+--- nsis-2.46-src.orig/Source/exehead/Ui.c	2015-04-27 12:13:50.437400958 +0000
++++ nsis-2.46-src/Source/exehead/Ui.c	2015-04-27 12:16:25.057394348 +0000
+@@ -14,6 +14,7 @@
+  * warranty.
+  */
+ 
++#include <windows.h>
+ #include <windowsx.h>
+ #include <shlobj.h>
+ #include <shellapi.h>

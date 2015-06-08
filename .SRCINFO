@@ -1,0 +1,27 @@
+pkgbase = nsis
+	pkgdesc = A professional open source system to create Windows installers
+	pkgver = 2.46
+	pkgrel = 7
+	url = http://nsis.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = custom:zlib
+	makedepends = scons
+	makedepends = mingw-w64-gcc
+	depends = gcc-libs
+	options = !strip
+	source = http://downloads.sourceforge.net/project/nsis/NSIS%202/2.46/nsis-2.46-src.tar.bz2
+	source = nsis-2.43-64bit-fixes.patch
+	source = nsis-2.45-static-libgcc.patch
+	source = nsis-2.46-missing-unistd-include.patch
+	source = nsis-2.46-static-libstdc++.patch
+	source = nsis-add-mingw-w64-support.patch
+	md5sums = 61c2e81739436b06d7cf7bcce1d533ac
+	md5sums = 9eead3b78da54e3afda8f6a5b663aea9
+	md5sums = 28f1002dd3c6a57cd3e1f8bb09c81fc5
+	md5sums = c4f912f0ca7fa455948f9f6a73314d93
+	md5sums = 3d41bf574cd3bed0c4f14afca9bc4819
+	md5sums = d72c910fa1e9b8372fadf1ba905139ab
+
+pkgname = nsis
+
