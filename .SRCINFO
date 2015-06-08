@@ -1,0 +1,14 @@
+pkgbase = postgresql-musicbrainz-collate
+	pkgdesc = MusicBrainz' collate extension to PostgreSQL
+	pkgver = v1.0.0.r7.g583f801
+	pkgrel = 1
+	url = http://musicbrainz.org/doc/MusicBrainz_Server
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = postgresql
+	source = git+https://github.com/metabrainz/postgresql-musicbrainz-collate
+	md5sums = SKIP
+
+pkgname = postgresql-musicbrainz-collate
+
