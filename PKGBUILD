@@ -1,0 +1,30 @@
+# This PKGBUILD is part of the VDR4Arch project [https://github.com/vdr4arch]
+
+# Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
+pkgname=vdr-fritzbox
+pkgver=1.5.3
+_vdrapi=2.2.0
+pkgrel=14
+pkgdesc="Connects to the Fritz!Box to inform you about incoming and outgoing calls"
+url="http://www.joachim-wilke.de/vdr-fritz.htm"
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+license=('GPL2')
+depends=('boost-libs>=1.57.0' 'commoncpp2' 'libgcrypt' "vdr-api=${_vdrapi}")
+makedepends=('boost')
+_plugname=$(echo $pkgname | sed 's/vdr-//g')
+source=("https://github.com/jowi24/vdr-fritz/releases/download/$pkgver/$pkgname-$pkgver.tgz"
+        "50-$_plugname.conf")
+backup=("etc/vdr/conf.avail/50-$_plugname.conf")
+md5sums=('14a81f5c5fd0f871e9294964c1bf21fc'
+         'a46d5cab7444a60d0ca9657d0785a8a0')
+
+build() {
+  cd "${srcdir}/${_plugname}-${pkgver}"
+  make
+}
+package() {
+  cd "${srcdir}/${_plugname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
+
+  install -Dm644 "$srcdir/50-$_plugname.conf" "$pkgdir/etc/vdr/conf.avail/50-$_plugname.conf"
+}
