@@ -1,0 +1,18 @@
+pkgbase = micropython-git
+	pkgdesc = Python 3 for microcontrollers, unix version.
+	pkgver = 20150608
+	pkgrel = 1
+	url = http://micropython.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = readline
+	depends = libffi
+	provides = micropython
+	conflicts = micropython
+	source = micropython::git://github.com/micropython/micropython.git
+	md5sums = SKIP
+
+pkgname = micropython-git
+
