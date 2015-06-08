@@ -1,0 +1,14 @@
+pkgbase = tcolors-git
+	pkgdesc = Get & Set terminal ANSI colors
+	pkgver = r0.0.1
+	pkgrel = 1
+	url = https://github.com/mkoskar/tcolors
+	arch = any
+	license = BSD 2-Clause
+	makedepends = git
+	depends = python
+	source = git+https://github.com/mkoskar/tcolors.git
+	md5sums = SKIP
+
+pkgname = tcolors-git
+
