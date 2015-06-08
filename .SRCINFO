@@ -1,0 +1,13 @@
+pkgbase = eclipse-imp
+	pkgdesc = The IDE Meta-Tooling Platform for Eclipse
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://www.eclipse.org/imp/
+	arch = any
+	license = GPL3
+	depends = eclipse>=3.5
+	source = http://download.eclipse.org/technology/imp/org.eclipse.imp.update_0.1.v201004212015.zip
+	md5sums = c1dd0ca43f38654cedf1cf5114052265
+
+pkgname = eclipse-imp
+
