@@ -1,0 +1,25 @@
+pkgbase = haskell-gio
+	pkgdesc = Binding to the GIO.
+	pkgver = 0.13.0.4
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/gio
+	install = haskell-gio.install
+	arch = i686
+	arch = x86_64
+	license = LGPL-2.1
+	depends = ghc
+	depends = haskell-array
+	depends = haskell-bytestring
+	depends = haskell-containers
+	depends = haskell-glib<0.13
+	depends = haskell-glib>=0.12
+	depends = haskell-mtl
+	depends = glib2
+	depends = gtk2hs-buildtools
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/gio/0.13.0.4/gio-0.13.0.4.tar.gz
+	md5sums = c252802fc52c055691e303ca30e4563f
+
+pkgname = haskell-gio
+
