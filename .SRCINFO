@@ -1,0 +1,20 @@
+pkgbase = kodi-standalone-service
+	pkgdesc = Systemd service and user to autostart kodi at boot
+	pkgver = 1.8
+	pkgrel = 2
+	url = https://wiki.archlinux.org/index.php/Kodi#Kodi-standalone-service
+	install = readme.install
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = systemd
+	depends = xorg-server
+	depends = xorg-xinit
+	depends = kodi
+	depends = polkit
+	replaces = xbmc-standalone-service
+	source = https://github.com/graysky2/kodi-standalone-service/archive/v1.8.tar.gz
+	sha256sums = a165a66e976bb1a6ac622618887c2f9699acd84d8790af517b85a66bf5e0474c
+
+pkgname = kodi-standalone-service
+
