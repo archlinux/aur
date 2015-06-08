@@ -1,0 +1,14 @@
+pkgbase = nodejs-node-markdown
+	pkgdesc = Parse Markdown syntax with node.js
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = http://github.com/andris9/node-markdown
+	arch = any
+	license = BSD
+	depends = nodejs
+	noextract = node-markdown-0.1.1.tgz
+	source = http://registry.npmjs.org/node-markdown/-/node-markdown-0.1.1.tgz
+	sha1sums = e365baba38d4ac56d8563dd69ca6d7215b08fb94
+
+pkgname = nodejs-node-markdown
+
