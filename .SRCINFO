@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-scxvid-git
+	pkgdesc = Plugin for Vapoursynth: scxvid (GIT version)
+	pkgver = v1.0.ge9deca0
+	pkgrel = 1
+	url = https://github.com/dubhater/vapoursynth-scxvid
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = vapoursynth
+	provides = vapoursynth-plugin-scxvid
+	conflicts = vapoursynth-plugin-scxvid
+	source = scxvid::git+https://github.com/dubhater/vapoursynth-scxvid.git
+	md5sums = SKIP
+
+pkgname = vapoursynth-plugin-scxvid-git
+
