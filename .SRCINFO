@@ -1,0 +1,13 @@
+pkgbase = truecrypt-mount
+	pkgdesc = Truecrypt mount helper for fstab
+	pkgver = 1
+	pkgrel = 3
+	url = https://wiki.archlinux.org/index.php/TrueCrypt#Mount_volumes_via_fstab
+	arch = any
+	license = Public Domain
+	provides = mount.truecrypt
+	source = truecrypt-mount.sh
+	sha1sums = 42f1233d5794cbc92cbbc6465aabb079cf73b260
+
+pkgname = truecrypt-mount
+
