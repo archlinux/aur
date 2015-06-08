@@ -1,0 +1,20 @@
+pkgbase = vapoursynth-plugin-damb-git
+	pkgdesc = Plugin for Vapoursynth: damb (GIT version)
+	pkgver = v3.0.g77a20a5
+	pkgrel = 1
+	url = http://forum.doom9.org/showthread.php?t=171555
+	arch = i686
+	arch = x86_64
+	license = custom:WTFPL
+	license = LGPL
+	makedepends = git
+	depends = vapoursynth
+	provides = vapoursynth-plugin-damb
+	conflicts = vapoursynth-plugin-damb
+	source = damb::git+https://github.com/dubhater/vapoursynth-damb.git
+	source = http://www.wtfpl.net/txt/copying/copying
+	sha1sums = SKIP
+	sha1sums = SKIP
+
+pkgname = vapoursynth-plugin-damb-git
+
