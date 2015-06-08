@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-gf2x
+	pkgdesc = A library for multiplying polynomials over the binary field (mingw-w64)
+	pkgver = 1.1
+	pkgrel = 2
+	url = http://gforge.inria.fr/projects/gf2x/
+	arch = any
+	license = GPL
+	license = LGPL
+	makedepends = mingw-w64-configure
+	makedepends = wine
+	depends = glibc
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = http://gforge.inria.fr/frs/download.php/30873/gf2x-1.1.tar.gz
+	sha256sums = 0d3f01604680102a00ca34e079903cc4d5a3208afda223748979b724d358849f
+
+pkgname = mingw-w64-gf2x
+
