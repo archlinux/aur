@@ -1,0 +1,22 @@
+pkgbase = python-falcon
+	pkgdesc = An unladen web framework for building APIs and app backends.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/falconry/falcon
+	arch = any
+	license = Apache
+	makedepends = cython
+	makedepends = python-setuptools
+	makedepends = cython2
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/f/falcon/falcon-0.3.0.tar.gz
+	sha256sums = f27602b5a2ff8ee40b3179b3f5bdb9af09efbcd9af9bb7f01ad6a28ad0fc3b82
+
+pkgname = python-falcon
+	depends = python-six>=1.4.0
+	depends = python-mimeparse
+
+pkgname = python2-falcon
+	depends = python2-six>=1.4.0
+	depends = python2-mimeparse
+
