@@ -1,0 +1,16 @@
+pkgbase = ttf-umeplus
+	pkgdesc = Modified Ume and M+ fonts for Japanese
+	pkgver = 20150115
+	pkgrel = 1
+	url = http://www.geocities.jp/ep3797/modified_fonts_01.html
+	install = ttf.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://downloads.sourceforge.net/mdk-ut/umeplus-fonts-20150115.tar.lzma
+	md5sums = bac6afe82549015be4b8c91d8401c9db
+	sha256sums = 032952bfe8fe5dceea354005bcac0a8c27116d222a4878fe9701f67cf4571e54
+
+pkgname = ttf-umeplus
+
