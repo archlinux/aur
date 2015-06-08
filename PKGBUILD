@@ -9,7 +9,7 @@ _gitname=nginx_tcp_proxy_module
 
 pkgname=nginx-tcp
 _pkgname=nginx
-pkgver=1.6.2
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, with nginx_tcp_proxy_module.'
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ install=nginx.install
 source=($url/download/nginx-$pkgver.tar.gz
         service
         logrotate)
-sha256sums=('b5608c2959d3e7ad09b20fc8f9e5bd4bc87b3bc8ba5936a513c04ed8f1391a18'
+sha256sums=('23cca1239990c818d8f6da118320c4979aadf5386deda691b1b7c2c96b9df3d5'
             '4ecbc33ce4bf2965996f51b0c7edb677904ba5cff9a32e93e1487a428d3a751b'
             '8700222687c1848f7669faaa23708adc92d6634de156b8935b5b9a9b062ce6e9')
 
