@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=BDSup2Sub++
+GenericName=Subtitle Conversion Tool
+Comment=Subtitle conversion tool for image based stream formats with scaling capabilities and some other nice features.
+Type=Application
+Categories=AudioVideo;
+Terminal=false
+Exec=bdsup2subpp
+Icon=bdsup2subpp
