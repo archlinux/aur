@@ -1,0 +1,13 @@
+pkgbase = php-virtphp
+	pkgdesc = virtPHP is a tool to create isolated PHP environments.
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = http://virtphp.org/
+	arch = any
+	license = MIT
+	depends = php
+	source = https://github.com/virtphp/virtphp/releases/download/v0.5.2-alpha/virtphp.phar
+	sha512sums = 0fae39ab8e17705aa6209fcf88182dbf60b29259b2e49a9d81cf0c50d0deb8410735e07fff698b5f5d3b940b55d6290650404da4f68a15cc4e40412f36f26d72
+
+pkgname = php-virtphp
+
