@@ -1,0 +1,16 @@
+pkgbase = monodevelop-emmetplugin
+	pkgdesc = This is an attempt to create emmet plugin for Monodevelop.
+	pkgver = 20140115
+	pkgrel = 1
+	url = https://github.com/SHTrassEr/MonoDevelop.EmmetPlugin
+	arch = i686
+	arch = x86_64
+	license = Other
+	depends = nodejs
+	depends = monodevelop
+	depends = mono-addins
+	source = git://github.com/SHTrassEr/MonoDevelop.EmmetPlugin.git
+	md5sums = SKIP
+
+pkgname = monodevelop-emmetplugin
+
