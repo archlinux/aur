@@ -1,0 +1,21 @@
+pkgbase = obfsproxy-git
+	pkgdesc = Tor project obfuscated proxy
+	pkgver = 20120210
+	pkgrel = 5
+	url = https://www.torproject.org/projects/obfsproxy-instructions.html.en
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = python2-crypto
+	depends = python2-pyptlib
+	depends = python2-twisted
+	depends = python2-yaml
+	depends = python2-setuptools
+	optdepends = tor: you need tor to use this package
+	conflicts = pyobfsproxy
+	conflicts = obfsproxy
+	source = git+https://git.torproject.org/pluggable-transports/obfsproxy.git
+	md5sums = SKIP
+
+pkgname = obfsproxy-git
+
