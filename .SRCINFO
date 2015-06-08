@@ -1,0 +1,17 @@
+pkgbase = mupen64plus-extraplugins
+	pkgdesc = Additional plugins for Mupen64Plus
+	pkgver = 2.0
+	pkgrel = 2
+	url = http://code.google.com/p/mupen64plus
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glew
+	depends = mesa
+	depends = mupen64plus>=2.0
+	options = !strip
+	source = http://mupen64plus.googlecode.com/files/mupen64plus-extraplugins-src-2.0.0.tar.gz
+	md5sums = 7716f17a3988e95ffcec27f0c05810c0
+
+pkgname = mupen64plus-extraplugins
+
