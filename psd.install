@@ -1,0 +1,77 @@
+DAEMON_FILE="/run/psd"
+
+post_install() {
+	echo '--> Define which users will make use of the sync in /etc/psd.conf'
+	echo '--> Read the manpage before use or see the wiki page'
+	echo '--> https://wiki.archlinux.org/index.php/Profile-sync-daemon'
+	echo
+	echo '--> ALWAYS backup your profile data before using utils like psd!'
+}
+
+post_upgrade() {
+	## arg 1:  the new package version
+	## arg 2:  the old package version
+	oldpkgver=${2%-*}
+	#newpkgver=${1%-*}
+
+	if [[ $oldpkgver < 5.29 ]]; then
+		echo '--> Support for cron has been deprecated in favor of a systemd timer.'
+		echo '--> This package now provides both psd.service and psd-resync.service'
+		echo
+		echo '--> systemctl enable psd psd-resync'
+		echo '--> systemctl start psd psd-resync'
+		echo
+		echo '--> See the wiki or man page for more info.'
+	else
+		/bin/true
+	fi	
+}
+
+pre_upgrade() {
+	## arg 1:  the new package version
+	## arg 2:  the old package version
+	oldpkgver=${2%-*}
+	#newpkgver=${1%-*}
+
+	if [[ $oldpkgver < 5.03 ]]; then
+		# check to see if user is running psd and needs to fix it
+		if [ -e $DAEMON_FILE ]; then
+			echo '------------------------------------------------------------------------'
+			echo ' SPECIAL UPGRADE INSTRUCTIONS YOU MUST FOLLOW:'
+			echo
+			echo 'In order to safely upgrade, psd will be stopped for you now...'
+			echo
+			if ! systemd-notify --booted; then # not using systemd  
+				/etc/rc.d/psd stop
+			else
+				/usr/bin/systemctl stop psd.service
+			fi
+			echo
+			echo '...the daemon should be stopped and profile(s) synced back to disk.'
+			echo
+			echo '1) If any browsers are running, exit them now.'
+			echo '2) Make sure to merge changes in /etc/psd.conf.pacnew'
+			# check to see if user needs to modify BROWSERS array
+			if [[ -n $(grep ^BROWSERS /etc/psd.conf | grep mozilla) ]]; then
+				echo '   Using "mozilla" in the BROWSERS array now depreciated!'
+				echo '   You _MUST_ manually change it to "firefox"'
+			fi	
+			echo '   BEFORE you start up psd again.'
+			echo '------------------------------------------------------------------------'
+		else
+			/bin/true
+		fi	
+	fi
+}
+
+pre_remove() {
+	if [ -e $DAEMON_FILE ]; then
+		if ! systemd-notify --booted; then # not using systemd	
+			echo '--> Automatically stopping psd to rotate profiles back out of tmpfs.'
+			/etc/rc.d/psd stop
+		else
+			echo '--> Automatically stopping psd to rotate profiles back out of tmpfs.'
+			/usr/bin/systemctl stop psd.service
+		fi
+	fi
+}

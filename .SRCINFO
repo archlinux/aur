@@ -1,0 +1,23 @@
+pkgbase = profile-sync-daemon
+	pkgdesc = Syncs browser profiles to tmpfs reducing SSD/HDD calls and speeding-up browsers.
+	pkgver = 5.73
+	pkgrel = 1
+	url = https://github.com/graysky2/profile-sync-daemon
+	install = psd.install
+	arch = any
+	license = MIT
+	depends = procps-ng
+	depends = rsync
+	conflicts = firefox-sync
+	conflicts = goanysync
+	conflicts = go-anysync-git
+	conflicts = iceweasel-sync
+	conflicts = tmpfs-store
+	conflicts = tmpfs-sync
+	conflicts = user-profile-sync-daemon
+	backup = etc/psd.conf
+	source = http://repo-ck.com/source/profile-sync-daemon/profile-sync-daemon-5.73.tar.xz
+	sha256sums = 229b30d4e5dead6ad47c9110b4716101a28e323061b97cfbe5037fd56fdda440
+
+pkgname = profile-sync-daemon
+
