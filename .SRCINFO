@@ -1,0 +1,23 @@
+pkgbase = emacs-ess-git
+	pkgdesc = Emacs Speaks Statistics: A Universal Interface for Statistical Analysis - git-version
+	pkgver = 15.03.1.64.g3a48dee
+	pkgrel = 1
+	url = http://ess.r-project.org
+	install = ess.install
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = texlive-plainextra
+	depends = emacs
+	depends = r
+	provides = ess
+	provides = emacs-ess
+	conflicts = emacs-ess
+	conflicts = emacs-ess-svn
+	options = docs
+	options = !makeflags
+	source = emacs-ess::git://github.com/emacs-ess/ESS.git
+	md5sums = SKIP
+
+pkgname = emacs-ess-git
+

@@ -1,0 +1,17 @@
+post_install() {
+  echo "Please put the lines"
+  echo "(setq load-path (cons \"/usr/share/emacs/site-lisp/ess\" load-path))"
+  echo "(load \"/usr/share/emacs/site-lisp/ess/ess-site\")"
+  echo "to your ~/.emacs" 
+  install-info /usr/share/info/ess.info.gz /usr/share/info/dir	
+}
+post_update() {
+  post_install
+}
+pre_remove() {
+  echo "Please remove the line containing"
+  echo "(setq load-path (cons \"/usr/share/emacs/site-lisp/ess\" load-path))"
+  echo "(load \"/usr/share/emacs/site-lisp/ess/ess-site\")"
+  echo "from your ~/.emacs"
+  install-info --delete /usr/share/info/ess.info.gz /usr/share/info/dir
+}
