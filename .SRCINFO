@@ -1,0 +1,14 @@
+pkgbase = eclipse-ptp
+	pkgdesc = Parallel developer tools for Eclipse
+	pkgver = 8.1.1
+	pkgrel = 1
+	url = http://www.eclipse.org/ptp/
+	arch = i686
+	arch = x86_64
+	license = EPL
+	depends = eclipse
+	source = http://www.eclipse.org/downloads/download.php?r=1&mirror_id=1&file=/tools/ptp/updates/8.1.1/ptp-master-8.1.1.201502031415.zip
+	md5sums = cec1500a192df7cf1ebbd04a5752afaf
+
+pkgname = eclipse-ptp
+
