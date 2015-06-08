@@ -1,0 +1,19 @@
+pkgbase = xonstat-git
+	pkgdesc = Query script for stats.xonotic.org
+	pkgver = r11.7ffddb2
+	pkgrel = 1
+	url = https://github.com/2ion/xonstat
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = bash
+	depends = bash
+	depends = jq
+	depends = coreutils
+	provides = xonstat
+	conflicts = xonstat
+	source = git+https://github.com/2ion/xonstat.git#branch=master
+	md5sums = SKIP
+
+pkgname = xonstat-git
+
