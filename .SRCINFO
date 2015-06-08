@@ -1,0 +1,13 @@
+pkgbase = bmagic
+	pkgdesc = C++ template library for efficient platform independent bitsets
+	pkgver = 3.7.0
+	pkgrel = 3
+	url = https://packages.debian.org/en/sid/libdevel/bmagic
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://ftp.debian.org/debian/pool/main/b/bmagic/bmagic_3.7.0-3_all.deb
+	sha256sums = 3b6d7854ac914e51811ee47b6acc307c5591f64a484cfd79ff9c83ccd0e2a9e7
+
+pkgname = bmagic
+
