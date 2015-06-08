@@ -1,0 +1,22 @@
+#!/bin/bash
+
+post_install() {
+    cat<<INSTALLEOF
+    You will need to manually configure and add the hook.
+    Look in /etc/checkboot-efi.conf for more information.
+    Don't forget to create the checksums and update the
+    initramfs. The name of the hook is "checkboot-efi". Add
+    it before the encrypt hook.
+INSTALLEOF
+}
+
+post_remove() {
+    cat<<REMOVEEOF
+    Remove the "checkboot-efi" from the "HOOKS" section in "/etc/mkinitcpio.conf"
+    and rebuild the initramfs.
+REMOVEEOF
+}
+
+post_upgrade() {
+    post_install
+}

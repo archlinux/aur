@@ -1,0 +1,19 @@
+#!/bin/bash
+
+build() {
+    source /etc/checkboot-efi.conf
+    add_module "vfat"
+    add_file "${CHECKSUM_FILE}"
+    add_file "/etc/checkboot-efi.conf"
+    add_runscript
+}
+
+help() {
+    cat <<HELPEOF
+A hook that will verify the integrity of any efi files in your efi partition.
+This is only useful if both your boot and root partition is encrypted and lacks 
+any purpose on non-efi systems.
+
+The hook must be added before the encrypt hook.
+HELPEOF
+}

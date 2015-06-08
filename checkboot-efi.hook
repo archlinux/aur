@@ -1,0 +1,32 @@
+#!/usr/bin/ash
+# generate /etc/efi.sums with: find /boot/efi/EFI/ -type f -iname '*.efi' -exec sha256sum {} \; > /etc/efi.sums
+# dont forget to rebuild the initramfs after updating the checksums
+
+run_hook() {
+if [ -e /etc/checkboot-efi.conf ]; then
+ source /etc/checkboot-efi.conf
+else
+ echo "CHECKBOOT: Unable to load configuration file, giving up.."
+ exit 1
+fi
+modprobe -a -q vfat > /dev/null 2>&1
+mkdir -p ${MOUNT_PATH}
+mount ${PARTITION} ${MOUNT_PATH}
+if [ -e ${CHECKSUM_FILE} ] && [ -e ${MOUNT_PATH}/EFI ]; then 
+ cat ${CHECKSUM_FILE} | while read sum file
+ do
+	prev_sum=$(${CHECKSUM_TOOL} $file | awk '{print $1}')
+	if [ "$sum" != "$prev_sum" ]
+	then
+		echo -e "\e[01;33mCHECKBOOT:\e[00m \e[01;41mFailed to verify ${file}!\e[00m"
+		echo -e "\n\e[01;41mOne ore more files failed verification!\nDO NOT ENTER YOUR PASSWORD!            \e[00m"
+		exit 1
+	else
+		echo -e "\e[01;33mCHECKBOOT:\e[00m \e[00;32mSuccessfully verified ${file}\e[00m"
+	fi
+ done
+ umount ${MOUNT_PATH}
+else
+ echo -e "\e[00;31mBOOTCHECK:\e[00m \e[01;41m Unable to verify EFI boot integrity. Files unavailable.\e[00m"
+fi
+}
