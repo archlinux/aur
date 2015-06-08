@@ -1,0 +1,13 @@
+pkgbase = wolf3d-shareware
+	pkgdesc = Classic first person shooter, shareware episode data
+	pkgver = 1.4
+	pkgrel = 3
+	url = http://ftp.3drealms.com/wolf3d/index.html
+	arch = any
+	license = custom
+	makedepends = dynamite-git
+	source = ftp://ftp.3drealms.com/share/1wolf14.zip
+	md5sums = a29432cd4a5184d552d8e5da8f80a531
+
+pkgname = wolf3d-shareware
+
