@@ -1,17 +1,17 @@
 # Maintainer: Leonidas Spyropoulos <artafinde at gmail dot com>
 
 pkgname=caatinga
-pkgver=1.0.2
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A command line backup program written in Python"
 arch=('any')
 url="https://github.com/headmastersquall/caatinga"
 license=('GPL3')
-depends=('python2-distribute')
+depends=('python2-setuptools')
 conflicts=('caatinga-git')
 provides=('caatinga')
-source=(https://github.com/headmastersquall/caatinga/archive/caatinga-1.0.2.tar.gz)
-md5sums=('0917d8d20b3f534d3823557ad5b52808')
+source=(https://github.com/headmastersquall/caatinga/archive/caatinga-${pkgver}.tar.gz)
+md5sums=('eaf63bcad473dfd38b0a2fecfc89fb1c')
 
 package() {
     cd ${srcdir}/${pkgname}-${pkgname}-${pkgver}
