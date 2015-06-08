@@ -1,0 +1,19 @@
+post_install() {
+echo "==> You must enable a multilib repository,"
+echo "synchronize pacman database and then"
+echo "run at least once \"debtap-p64 -u\""
+echo "with root privileges (preferably recently),"
+echo "before running this script"
+echo
+echo "==> Syntax: debtap-p64 [option] package_filename"
+echo
+echo "==> Run \"debtap-p64 -h\" for help"
+}
+
+post_upgrade() {
+post_install
+}
+
+post_remove() {
+echo "==> /var/cache/debtap has not been removed"
+}
