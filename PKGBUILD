@@ -1,6 +1,6 @@
 pkgname=inadyn-mt
-pkgver=2.24.38
-pkgrel=4
+pkgver=2.24.46
+pkgrel=1
 pkgdesc="A simple dynamic DNS client based on inadyn"
 arch=('i686' 'x86_64')
 url="http://inadyn-mt.sourceforge.net/"
