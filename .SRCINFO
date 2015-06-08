@@ -1,0 +1,16 @@
+pkgbase = perl-gtk2-ex-simple-list
+	pkgdesc = A simple interface to Gtk2's complex MVC list widget
+	pkgver = 0.50
+	pkgrel = 2
+	url = http://search.cpan.org/dist/Gtk2-Ex-Simple-List
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = gtk2-perl
+	depends = glib-perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RM/RMCFARLA/Gtk2-Perl-Ex/Gtk2-Ex-Simple-List-0.50.tar.gz
+	md5sums = f66c71bbb794b699f0c3e8ca7cebc35b
+
+pkgname = perl-gtk2-ex-simple-list
+
