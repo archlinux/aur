@@ -1,0 +1,35 @@
+pkgbase = amaya-git
+	pkgdesc = W3C's WYSIWYG HTML Editor
+	pkgver = 53.707efb5
+	pkgrel = 3
+	url = http://www.w3.org/Amaya/
+	arch = i686
+	arch = x86_64
+	license = W3C
+	makedepends = git
+	makedepends = perl
+	makedepends = mesa
+	makedepends = clang
+	depends = gtk2
+	depends = libsm
+	depends = raptor1
+	depends = glu
+	depends = libxxf86vm
+	provides = amaya
+	conflicts = amaya
+	options = !makeflags
+	source = git+https://github.com/stefanhusmann/Amaya.git
+	source = http://www.w3.org/Amaya/Distribution/Dutch.tgz
+	source = http://www.w3.org/Amaya/Distribution/German.tgz
+	source = http://www.w3.org/Amaya/Distribution/Italian.tgz
+	source = http://www.w3.org/Amaya/Distribution/Spanish.tgz
+	source = http://www.w3.org/Amaya/Distribution/Swedish.tgz
+	md5sums = SKIP
+	md5sums = 3edb9cce5ce160d7270b23808c1d5981
+	md5sums = 400eeeae974a64d23de4fcdd609c30bc
+	md5sums = 05e2d25ee8af11faaaa25a33da89d504
+	md5sums = b504a75cd0f789a3046bf2041067b18b
+	md5sums = 6536ab2e31e3f58618ba79d9fddc7f76
+
+pkgname = amaya-git
+
