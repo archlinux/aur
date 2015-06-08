@@ -1,0 +1,15 @@
+pkgbase = drupal6
+	pkgdesc = A PHP-based content management platform
+	pkgver = 6.33
+	pkgrel = 1
+	url = http://www.drupal.org/
+	install = drupal6.install
+	arch = any
+	license = GPL
+	depends = php
+	options = !strip
+	source = http://www.drupal.org/files/projects/drupal-6.33.tar.gz
+	sha256sums = 952f9bd6b22058fe8f9c90c0ac96bd695a673306331269a79c7e19e38fd047eb
+
+pkgname = drupal6
+

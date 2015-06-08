@@ -1,0 +1,15 @@
+post_install() {
+  echo "Remember that you need to install either mysql or postgresql for this package"
+  echo "to work. Also make sure to read either INSTALL.mysql.txt (for MySQL) or"
+  echo "INSTALL.pgsql.txt (for PostgreSQL) in /usr/share/webapps/drupal6/."
+  if [[ ! `grep "^extension=mysql.so" /etc/php/php.ini` ]]
+	then echo "If you use mysql you should enable its module by adding the line:"
+	echo "   extension=mysql.so"
+	echo "to your /etc/php/php.ini, otherwise drupal won't work."
+  fi
+  chown -R http:http var/lib/drupal6
+}
+
+post_upgrade() {
+  chown -R http:http var/lib/drupal6
+}
