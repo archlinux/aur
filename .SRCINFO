@@ -1,0 +1,16 @@
+pkgbase = epson-inkjet-printer-201304w
+	pkgdesc = Epson printer driver (XP-211, XP-214, XP-216)
+	pkgver = 1.0.0
+	pkgrel = 8
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom:Epson Licence Agreement
+	depends = cups
+	depends = ghostscript
+	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201304w-1.0.0-1lsb3.2.src.rpm
+	sha256sums = db02b874dce700716e3dde6d049fc4bc037a5ebf94d8d0de8881d164f9e9f137
+
+pkgname = epson-inkjet-printer-201304w
+
