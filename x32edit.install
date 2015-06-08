@@ -1,0 +1,12 @@
+post_upgrade() {
+	post_install $1
+}
+
+post_install() {
+	echo ">>> You have to read and accept the End user license agreement under"
+	echo ">>> /usr/share/licenses/x32edit/license.pdf before using X32-Edit"
+}
+
+op=$1
+shift
+$op $*
