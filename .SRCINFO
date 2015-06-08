@@ -1,0 +1,16 @@
+pkgbase = epson-inkjet-printer-px-k100
+	pkgdesc = Epson printer driver (PX-K100)
+	pkgver = 1.0.0
+	pkgrel = 8
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom:Epson Licence Agreement
+	depends = cups
+	depends = ghostscript
+	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-px-k100-1.0.0-1lsb3.2.src.rpm
+	sha256sums = a41630d9493d4883fd888a38b58dd401c0abaf0f568d43e9a5807f114cb143e5
+
+pkgname = epson-inkjet-printer-px-k100
+
