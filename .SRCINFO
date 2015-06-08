@@ -1,0 +1,14 @@
+pkgbase = pyswisseph3
+	pkgdesc = Python extension to the Swiss Ephemeris. (Python 3 version)
+	pkgver = 1.77.00
+	pkgrel = 1
+	url = http://pyswisseph.chaosorigin.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python
+	source = http://pypi.python.org/packages/source/p/pyswisseph/pyswisseph-1.77.00-0.tar.bz2
+	md5sums = 3ce9b9a013430d2d28f6c2f5a4f8a67f
+
+pkgname = pyswisseph3
+
