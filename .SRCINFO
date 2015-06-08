@@ -1,0 +1,21 @@
+pkgbase = mingw-w64-python26-bin
+	pkgdesc = A high-level scripting language (native MSVC version) (mingw-w64)
+	pkgver = 2.6.6
+	pkgrel = 1
+	url = http://www.python.org/
+	arch = any
+	license = PSF
+	makedepends = wine
+	makedepends = mingw-w64-tools
+	makedepends = mingw-w64-binutils
+	depends = mingw-w64-crt
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = http://www.python.org/ftp/python/2.6.6/python-2.6.6.msi
+	source = http://www.python.org/ftp/python/2.6.6/python-2.6.6.amd64.msi
+	md5sums = 80b1ef074a3b86f34a2e6b454a05c8eb
+	md5sums = 6f91625fe7744771da04dd1cabef0adc
+
+pkgname = mingw-w64-python26-bin
+
