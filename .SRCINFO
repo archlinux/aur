@@ -1,0 +1,15 @@
+pkgbase = horst
+	pkgdesc = A small, lightweight IEEE802.11 wireless LAN analyzer with a text interface
+	pkgver = 4.2
+	pkgrel = 0
+	url = http://br1.einfach.org/tech/horst
+	arch = any
+	license = GPL
+	makedepends = ncurses
+	depends = ncurses
+	depends = iw
+	source = http://br1.einfach.org/horst_dl/horst-4.2.tar.gz
+	sha256sums = eab46330998a4c6d5abc9bfdad739b62b57c65049ac6f160e58ee3edd3260057
+
+pkgname = horst
+
