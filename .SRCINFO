@@ -1,0 +1,20 @@
+pkgbase = photobroom
+	pkgdesc = Photos managing tool
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Kicer86/photobroom
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = libkexiv2
+	makedepends = boost
+	makedepends = openlibrary
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = exiv2
+	source = https://codeload.github.com/Kicer86/photobroom/tar.gz/v1.0.0
+	md5sums = 19d10c6f2474ff4f93de3524920ccf50
+
+pkgname = photobroom
+
