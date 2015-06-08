@@ -1,0 +1,8 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!chromium-dev.desktop
+!chromium-dev.install
+!chromium-dev.xml
+!chromium-system-jinja-r8.patch
