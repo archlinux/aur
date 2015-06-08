@@ -3,7 +3,7 @@
 pkgbase = pacman-history
 	pkgdesc = get pacman history for one file
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/papajoker/pacman-history
 	arch = any
 	license = GPL
