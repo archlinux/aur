@@ -1,0 +1,19 @@
+pkgbase = mkinitcpio-openswap
+	pkgdesc = mkinitcpio hook to open swap at boot time
+	pkgver = 0.0.0
+	pkgrel = 2
+	url = https://aur.archlinux.org/packages/mkinitcpio-openswap/
+	install = usage.install
+	arch = any
+	license = unknown
+	depends = mkinitcpio
+	backup = etc/openswap.conf
+	source = openswap.hook
+	source = openswap.install
+	source = openswap.conf
+	md5sums = a5b52e3c3b5dc592f41567b21ec2e9cf
+	md5sums = ae743e0fd95cc1c07705cf7c472416b1
+	md5sums = 8a72bf00f155512490884eb4911cc4f4
+
+pkgname = mkinitcpio-openswap
+
