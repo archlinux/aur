@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-mman-win32-svn
+	pkgdesc = A light implementation of the mmap functions for MinGW (mingw-w64)
+	pkgver = r4
+	pkgrel = 5
+	url = https://code.google.com/p/mman-win32/
+	arch = any
+	license = MIT
+	makedepends = mingw-w64-gcc
+	makedepends = subversion
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = mingw-w64-mman-win32-svn::svn+http://mman-win32.googlecode.com/svn/trunk/
+	md5sums = SKIP
+
+pkgname = mingw-w64-mman-win32-svn
+
