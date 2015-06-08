@@ -1,0 +1,22 @@
+pkgbase = haskell-http-types
+	pkgdesc = Generic HTTP types for Haskell (for both client and server code).
+	pkgver = 0.8.5
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/http-types
+	install = haskell-http-types.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = haskell-array>0.2
+	depends = haskell-blaze-builder>=0.2.1.4
+	depends = haskell-bytestring>=0.9.1.5
+	depends = haskell-case-insensitive>0.2
+	depends = haskell-text>=0.11.0.2
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/http-types/0.8.5/http-types-0.8.5.tar.gz
+	md5sums = 378b68fe5d599a387be577e84da7597a
+
+pkgname = haskell-http-types
+
