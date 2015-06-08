@@ -1,0 +1,11 @@
+[Unit]
+Description=COW HTTP proxy service for %i
+After=network.target
+ 
+[Service]
+User=%i
+ExecStart=/usr/bin/cow
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
