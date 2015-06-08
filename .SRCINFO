@@ -1,0 +1,22 @@
+pkgbase = kdebugsettings-git
+	pkgdesc = An application to enable/disable qCDebug
+	pkgver = r90.568760c
+	pkgrel = 1
+	url = https://projects.kde.org/projects/playground/utils/kdebugsettings
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = ki18n
+	depends = kcompletion
+	depends = kdbusaddons
+	depends = kitemviews
+	depends = kcoreaddons
+	provides = kdebugsettings
+	conflicts = kdebugsettings
+	source = git://anongit.kde.org/kdebugsettings.git
+	sha256sums = SKIP
+
+pkgname = kdebugsettings-git
+
