@@ -1,0 +1,150 @@
+[34md4bf1cc[m ([32mFri Feb 13 18:57:47 2015 +0100[m) - David Sterba
+   [34m└[m Merge branch 'foreign/goffredo-mkfs' into integration
+
+[34m555f9a9[m ([32mFri Feb 13 18:57:40 2015 +0100[m) - David Sterba
+   [34m└[m Merge branch 'foreign/mwilck/restore-update' into integration
+
+[34m97cd7d2[m ([32mFri Feb 13 18:54:02 2015 +0100[m) - David Sterba
+   [34m└[m Merge branch 'v3.19.x' into integration
+
+[34m05648f1[m ([32mFri Feb 13 14:49:31 2015 +0100[m) - David Sterba
+   [34m└[m btrfs-progs: version.sh: simplify printing the version
+
+[34mfef4f9e[m ([32mFri Feb 13 14:39:43 2015 +0100[m) - David Sterba
+   [34m└[m btrfs-progs: autoconf: define package url manually if not set
+
+[34mc02b4ad[m ([32mThu Feb 12 13:41:00 2015 +0100[m) - David Sterba
+   [34m└[m btrfs-progs: fix typo in OPEN_CTREE flag
+
+[34m0d3ad94[m ([32mWed Dec 10 21:51:48 2014 +0100[m) - Martin Wilck
+   [34m└[m btrfs-progs: documentation for btrfs-raw and btrfs-search-metadata
+
+[34m3d976c7[m ([32mWed Dec 10 21:51:47 2014 +0100[m) - Martin Wilck
+   [34m└[m btrfs-progs: ctree.c: make bin_search non-static
+
+[34m707d550[m ([32mWed Dec 10 21:51:46 2014 +0100[m) - Martin Wilck
+   [34m└[m btrfs-progs: NEW: brtfs-search-metadata
+
+[34m12ee5f4[m ([32mWed Dec 10 21:51:45 2014 +0100[m) - Martin Wilck
+   [34m└[m btrfs-progs: NEW: btrfs-raw
+
+[34mb2915e7[m ([32mWed Dec 10 21:51:44 2014 +0100[m) - Martin Wilck
+   [34m└[m btrfs restore: report mismatch in file size
+
+[34m8cd2345[m ([32mWed Dec 10 21:51:43 2014 +0100[m) - Martin Wilck
+   [34m└[m btrfs restore: improve user-asking logic for files with many extents
+
+[34md4244c4[m ([32mWed Dec 10 21:51:42 2014 +0100[m) - Martin Wilck
+   [34m└[m btrfs restore: check progress of file restoration
+
+[34mac356c2[m ([32mWed Dec 10 21:51:41 2014 +0100[m) - Martin Wilck
+   [34m└[m btrfs restore: print progress marks for big files
+
+[34mf6cd525[m ([32mWed Dec 10 21:51:40 2014 +0100[m) - Martin Wilck
+   [34m└[m btrfs restore: hide "offset is X" messages
+
+[34m7ab792c[m ([32mWed Dec 10 21:51:39 2014 +0100[m) - Martin Wilck
+   [34m└[m btrfs restore: more graceful error handling in copy_file
+
+[34md55c085[m ([32mWed Dec 10 21:51:38 2014 +0100[m) - Martin Wilck
+   [34m└[m btrfs restore: track number of bytes restored
+
+[34mf740a6b[m ([32mWed Dec 10 21:51:37 2014 +0100[m) - Martin Wilck
+   [34m└[m btrfs restore: better output readability
+
+[34m1633e9c[m ([32mWed Dec 10 21:51:36 2014 +0100[m) - Martin Wilck
+   [34m└[m btrfs restore: set uid/gid/mode/times
+
+[34m1fe88a5[m ([32mWed Dec 10 21:51:35 2014 +0100[m) - Martin Wilck
+   [34m└[m btrfs-progs: ctree.h: fix btrfs_inode_[amc]time
+
+[34m8cf528d[m ([32mWed Dec 10 21:51:34 2014 +0100[m) - Martin Wilck
+   [34m└[m btrfs-progs: btrfs-debug-tree: handle corruption more gracefully
+
+[34m0036922[m ([32mWed Dec 10 21:51:33 2014 +0100[m) - Martin Wilck
+   [34m└[m btrfs-progs: btrfs-debug-tree: fix usage message
+
+[34m7f3ffbf[m ([32mWed Dec 10 21:51:32 2014 +0100[m) - Martin Wilck
+   [34m└[m btrfs-progs: btrfs-debug-tree: add option -B (backup root)
+
+[34m5c7dd41[m ([32mWed Dec 10 21:51:31 2014 +0100[m) - Martin Wilck
+   [34m└[m btrfs-progs: btrfs-debug-tree: add option -f for "block only"
+
+[34md09504e[m ([32mWed Feb 11 09:57:17 2015 +0800[m) - Qu Wenruo
+   [34m└[m btrfs-progs: Fix 2 extent buffer leak in btrfs-debug-tree
+
+[34ma123134[m ([32mWed Feb 11 08:46:24 2015 +0800[m) - Qu Wenruo
+   [34m└[m btrfs-progs: Move -rdynamic linker only option to LDFLAGS
+
+[34me404d4f[m ([32mWed Feb 11 18:35:12 2015 +0100[m) - David Sterba
+   [34m└[m Merge branch 'qu/find-root-v3-part1' into v3.19.x
+
+[34md91d682[m ([32mFri Jan 16 19:32:54 2015 +0800[m) - Qu Wenruo
+   [34m└[m btrfs-progs: find-root, add option to search through all the metadata extents
+
+[34me08b2a5[m ([32mFri Jan 16 16:40:50 2015 +0800[m) - Qu Wenruo
+   [34m└[m btrfs-progs: Cleanup unneeded btrfs-find-root codes
+
+[34ma34d4ea[m ([32mFri Jan 16 16:22:09 2015 +0800[m) - Qu Wenruo
+   [34m└[m btrfs-progs: Switch btrfs-find-root to use the find-root infrastructure
+
+[34m8e3eb7a[m ([32mFri Jan 16 15:32:35 2015 +0800[m) - Qu Wenruo
+   [34m└[m btrfs-progs: Add better search generation judgment for btrfs-find-root
+
+[34m70701d1[m ([32mFri Jan 16 14:30:02 2015 +0800[m) - Qu Wenruo
+   [34m└[m btrfs-progs: Switch btrfs-find-root to use the new open_ctree flags
+
+[34m68351e4[m ([32mFri Jan 16 13:58:45 2015 +0800[m) - Qu Wenruo
+   [34m└[m btrfs-progs: Add new find-root.[ch] infrastructure
+
+[34mabf010e[m ([32mFri Jan 16 11:22:28 2015 +0800[m) - Qu Wenruo
+   [34m└[m btrfs-progs: Add new btrfs_open_ctree_flags CHUNK_ONLY
+
+[34m0c05f62[m ([32mFri Jan 16 11:04:09 2015 +0800[m) - Qu Wenruo
+   [34m└[m btrfs-progs: Add support to suppress tree block csum error output
+
+[34m56e6923[m ([32mThu Jan 29 16:32:39 2015 +0800[m) - Qu Wenruo
+   [34m└[m btrfs-progs: Cleanup check_tree_block() function
+
+[34m478a4f2[m ([32mTue Feb 10 15:17:10 2015 +0100[m) - David Sterba
+   [34m└[m Merge remote-tracking branch 'remotes/josef/for-kdave' into v3.19.x
+
+[34m4915964[m ([32mThu Feb 5 15:41:32 2015 -0500[m) - Josef Bacik
+   [34m└[m Btrfs-progs: fix bad extent flag
+
+[34m34a5ec1[m ([32mTue Feb 3 09:48:57 2015 -0500[m) - Josef Bacik
+   [34m└[m Btrfs-progs: skip opening all devices with restore
+
+[34mc6b388e[m ([32mTue Feb 3 09:48:29 2015 -0500[m) - Josef Bacik
+   [34m└[m Btrfs-progs: make debug-tree spit out full_backref flag
+
+[34m0b8aa19[m ([32mWed Jan 28 12:38:03 2015 -0800[m) - Josef Bacik
+   [34m└[m Btrfs-progs: make restore update dev items
+
+[34mce0517b[m ([32mTue Jan 27 14:23:21 2015 -0800[m) - Josef Bacik
+   [34m└[m Btrfs-progs: unpin excluded extents as we fix things
+
+[34m08a4597[m ([32mMon Feb 9 10:02:25 2015 -0500[m) - Josef Bacik
+   [34m└[m Btrfs-progs: remove global transaction from fsck
+
+[34mbce7dbb[m ([32mSun Jan 25 17:41:19 2015 -0800[m) - Josef Bacik
+   [34m└[m Btrfs-progs: only build space info's for the main flags
+
+[34m797a937[m ([32mFri Feb 6 13:03:12 2015 -0500[m) - Josef Bacik
+   [34m└[m Btrfs-progs: Introduce metadump_v2
+
+[34mc7e3b63[m ([32mFri Feb 6 14:40:45 2015 -0500[m) - Josef Bacik
+   [34m└[m Btrfs-progs: multi-thread btrfs-image restore
+
+[34m32bb725[m ([32mSun Jan 25 17:39:24 2015 -0800[m) - Josef Bacik
+   [34m└[m btrfs-progs: fix btrfs-image overlapping chunks
+
+[34m20feed2[m ([32mFri Jan 23 11:39:28 2015 -0500[m) - Josef Bacik
+   [34m└[m Btrfs-progs: don't check csums for data reloc root
+
+[34m65ac3b2[m ([32mThu Jan 15 17:11:41 2015 -0500[m) - Josef Bacik
+   [34m└[m Btrfs-progs: don't try to repair reloc roots
+
+[34m1b7126f[m ([32mWed Jan 14 14:40:21 2015 -0500[m) - Josef Bacik
+   [34m└[m Btrfs-progs: read super properly in btrfs-image
+

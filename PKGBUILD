@@ -2,7 +2,7 @@
 
 pkgname=btrfs-progs-unstable-integration
 _gitname=${pkgname%-integration}
-pkgver=20141218
+pkgver=20150323
 pkgrel=1
 pkgdesc="Btrfs filesystem utilities - David Sterba's unstable 'integration' branch"
 arch=("i686" "x86_64")
@@ -21,9 +21,15 @@ md5sums=('SKIP'
          'b09688a915a0ec8f40e2f5aacbabc9ad'
          '7241ba3a4286d08da0d50b7176941112')
 
+prepare() {
+  cd "$_gitname"
+  ./autogen.sh
+}
+
 build() {
   cd "$_gitname"
-  make CFLAGS="$CFLAGS" all btrfs-select-super
+  ./configure --prefix=/usr CFLAGS="$CFLAGS"
+  make
 }
 
 package() {
@@ -32,16 +38,20 @@ package() {
   install -Dm644 initcpio-install-btrfs "$pkgdir/usr/lib/initcpio/install/btrfs"
 
   cd "$_gitname"
-  make prefix="$pkgdir/usr" bindir="$pkgdir/usr/bin" install
-  install -m755 btrfs-select-super "$pkgdir/usr/bin/btrfs-select-super"
+  make DESTDIR="$pkgdir" install
+  
   install -Dm644 INSTALL "$pkgdir/usr/share/doc/btrfs/README"
 }
 
 check() {
   cd "$_gitname"
-  # test #13 currently incomplete
-  # http://thread.gmane.org/gmane.comp.file-systems.btrfs/41568
-  rm tests/fsck-tests/013-leaf-corruption-no-extent-data.tar.xz
+
+  # This is currently needed to prevent test #12 using the installed btrfs-image...
+  export PATH="$(pwd):$PATH"
+
+  # ...however, test #12 uses sudo, remove/comment the next line to enable it
+  rm -rf tests/fsck-tests/012-leaf-corruption
+
   make test
 }
 
