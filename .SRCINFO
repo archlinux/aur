@@ -1,0 +1,22 @@
+pkgbase = breeze-git
+	pkgdesc = Artwork, styles and assets for the Breeze visual style for the Plasma Desktop
+	pkgver = r853.af09860
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/workspace/breeze
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = frameworkintegration
+	depends = kdecoration-git
+	depends = kcmutils
+	optdepends = breeze-kde4-git: Breeze widget style for KDE4 applications
+	optdepends = oxygen-icons: fallback icon theme
+	provides = breeze
+	conflicts = breeze
+	source = git://anongit.kde.org/breeze.git
+	md5sums = SKIP
+
+pkgname = breeze-git
+
