@@ -1,0 +1,17 @@
+pkgbase = shadow-warrior-hib
+	pkgdesc = Shadow Warrior is a bold reimagining of the 3D Realms cult classic shooter.
+	pkgver = 1428602700
+	pkgrel = 1
+	url = http://www.redbarrelsgames.com/
+	arch = i686
+	arch = x86_64
+	license = custom: commercial
+	source = hib://ShadowWarriorSetup_1428602700.sh
+	source = shadow-warrior-hib.desktop
+	sha256sums = fe6e5fb338af959879273e132774c35913735f5be0332dbfc17aad62aae955f4
+	sha256sums = 87b88d9dc3e287e34f1101ad9640c366906588640d7b601cc6507181c0cbda23
+	depends_i686 = sdl2
+	depends_x86_64 = lib32-sdl2
+
+pkgname = shadow-warrior-hib
+

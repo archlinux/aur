@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Shadow Warrior
+GenericName=Shadow Warrior
+Comment=A bold reimagining of the 3D Realms cult classic shooter.
+Exec=shadow-warrior
+Icon=shadow-warrior
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Game;AudioVideo;
