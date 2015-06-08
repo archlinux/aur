@@ -1,0 +1,29 @@
+pkgbase = maxima-git
+	pkgdesc = a sophisticated computer algebra system - git-version
+	pkgver = 5.36.1.112.gdcd222b
+	pkgrel = 1
+	url = http://maxima.sourceforge.net
+	install = maxima.install
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = cl-ppcre
+	makedepends = perl
+	makedepends = python
+	makedepends = texinfo
+	depends = sbcl
+	depends = sh
+	optdepends = gnuplot: plotting capabilities
+	optdepends = rlwrap: readline support via /usr/bin/rmaxima
+	optdepends = tk: graphical xmaxima interface
+	provides = maxima
+	conflicts = maxima
+	options = !makeflags
+	options = !zipman
+	source = maxima::git://git.code.sf.net/p/maxima/code
+	source = maxima.desktop
+	md5sums = SKIP
+	md5sums = 24aa81126fbb8b726854e5a80d4c2415
+
+pkgname = maxima-git
+
