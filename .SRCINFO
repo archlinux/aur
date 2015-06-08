@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-templinearapproximate-git
+	pkgdesc = Plugin for Vapoursynth: templinearapproximate (GIT version)
+	pkgver = r3.3.g540e788
+	pkgrel = 1
+	url = http://forum.doom9.org/showthread.php?t=169782
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = vapoursynth
+	provides = vapoursynth-plugin-templinearapproximate
+	conflicts = vapoursynth-plugin-templinearapproximate
+	source = templinearapproximate::git+https://bitbucket.org/mystery_keeper/templinearapproximate-vapoursynth.git
+	md5sums = SKIP
+
+pkgname = vapoursynth-plugin-templinearapproximate-git
+
