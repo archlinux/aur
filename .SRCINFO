@@ -1,0 +1,20 @@
+pkgbase = python2-gitpython
+	pkgdesc = A python library used to interact with Git repositories
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://gitorious.org/git-python
+	arch = any
+	license = BSD
+	makedepends = python2
+	makedepends = python2-distribute
+	depends = python2
+	depends = git
+	depends = python2-gitdb>=0.6.4
+	conflicts = gitpython-git
+	conflicts = gitpython
+	replaces = gitpython
+	source = http://pypi.python.org/packages/source/G/GitPython/GitPython-1.0.1.tar.gz
+	md5sums = 4659644b42c41e5e5170c0cd83ed6422
+
+pkgname = python2-gitpython
+
