@@ -1,0 +1,13 @@
+pkgbase = kdeartwork-aurorae-freeze
+	pkgdesc = Window decoration for Aurorae, based on Breeze and Dynamo.
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://kde-look.org/content/show.php/Freeze?content=168737
+	arch = any
+	license = GPL
+	depends = kdebase-workspace
+	source = kdeartwork-aurorae-freeze-1.2.tar.gz::http://kde-look.org/CONTENT/content-files/168737-Freeze-1.2.tar.gz
+	sha256sums = 7f70bdf61440d19a1f62317bb13b73cc375742a94c8a628afae3a1ba893b2790
+
+pkgname = kdeartwork-aurorae-freeze
+
