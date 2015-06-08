@@ -1,0 +1,21 @@
+pkgbase = kmime-git
+	pkgdesc = Library for handling mail messages and newsgroup articles
+	pkgver = r942.92c04a9
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/pim/kmime
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = python
+	makedepends = boost
+	depends = ki18n-git
+	depends = kcodecs-git
+	provides = kmime
+	conflicts = kmime
+	source = git://anongit.kde.org/kmime.git
+	md5sums = SKIP
+
+pkgname = kmime-git
+
