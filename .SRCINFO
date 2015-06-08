@@ -1,0 +1,14 @@
+pkgbase = clib
+	pkgdesc = C package manager-ish
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/clibs/clib
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = curl
+	source = clib-1.4.2.tar.gz::https://github.com/clibs/clib/archive/1.4.2.tar.gz
+	sha256sums = c1f3d98a10955a4ce6c2c100b1ffd341d5e99dcf6e642793d3bfa4ff4a431e13
+
+pkgname = clib
+
