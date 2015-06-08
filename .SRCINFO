@@ -1,0 +1,15 @@
+pkgbase = coin-or-dylp
+	pkgdesc = COIN-OR Linear programming solver using of the dynamic simplex algorithm
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://projects.coin-or.org/DyLP
+	arch = i686
+	arch = x86_64
+	groups = coin-or
+	license = EPL
+	depends = coin-or-osi
+	source = http://www.coin-or.org/download/source/DyLP/DyLP-1.10.0.zip
+	sha1sums = 7c27fb7735a64c92e68fba3e697ded07b91f95bb
+
+pkgname = coin-or-dylp
+
