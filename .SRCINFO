@@ -1,0 +1,18 @@
+pkgbase = dukto
+	pkgdesc = A simple, fast and multi-platform file transfer tool for LAN users.
+	pkgver = R6
+	pkgrel = 1
+	url = http://www.msec.it/dukto
+	arch = any
+	license = GPL v2
+	makedepends = subversion
+	depends = qt5-quick1
+	depends = qt5-script
+	depends = qt5-xmlpatterns
+	source = dukto-qt5.4.patch
+	source = dukto::svn+http://svn.code.sf.net/p/dukto/code/trunk
+	sha256sums = 02cdc944a5d9cbb7b3dd71a09f3789670de38525ee5aa238121fbabb3a81495e
+	sha256sums = SKIP
+
+pkgname = dukto
+

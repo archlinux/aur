@@ -1,0 +1,441 @@
+Index: buddylistitemmodel.cpp
+===================================================================
+--- buddylistitemmodel.cpp	(revision 111)
++++ buddylistitemmodel.cpp	(working copy)
+@@ -37,7 +37,7 @@
+     roleNames[Avatar] = "avatar";
+     roleNames[OsLogo] = "oslogo";
+     roleNames[ShowBack] = "showback";
+-    setRoleNames(roleNames);
++    setItemRoleNames(roleNames);
+ }
+ 
+ void BuddyListItemModel::addMeElement()
+Index: duktoprotocol.cpp
+===================================================================
+--- duktoprotocol.cpp	(revision 111)
++++ duktoprotocol.cpp	(working copy)
+@@ -18,7 +18,7 @@
+ 
+ #include "duktoprotocol.h"
+ 
+-#if defined(Q_WS_WIN)
++#if defined(Q_OS_WIN)
+     #include <windows.h>
+ #endif
+ 
+@@ -563,7 +563,7 @@
+ void DuktoProtocol::sendMetaData()
+ {
+     // Impostazione buffer di invio
+-#if defined(Q_WS_WIN)
++#if defined(Q_OS_WIN)
+     int v = 49152;
+     ::setsockopt(mCurrentSocket->socketDescriptor(), SOL_SOCKET, SO_SNDBUF, (char*)&v, sizeof(v));
+ #endif
+@@ -765,7 +765,7 @@
+ 
+     // Verifico se si tratta di un invio testo
+     if (fullname == "___DUKTO___TEXT___") {
+-        header.append(fullname.toAscii() + '\0');
++        header.append(fullname + '\0');
+         qint64 size = mTextToSend.toUtf8().length();
+         header.append((char*) &size, sizeof(size));
+         return header;
+Index: duktowindow.cpp
+===================================================================
+--- duktowindow.cpp	(revision 111)
++++ duktowindow.cpp	(working copy)
+@@ -25,6 +25,7 @@
+ #include <QDragMoveEvent>
+ #include <QDragLeaveEvent>
+ #include <QDropEvent>
++#include <QMimeData>
+ 
+ DuktoWindow::DuktoWindow(QWidget *parent) :
+     QmlApplicationViewer(parent), mGuiBehind(NULL)
+@@ -43,7 +44,7 @@
+     mWin7.init(this->winId());
+ }
+ 
+-#ifdef Q_WS_WIN
++#ifdef Q_OS_WIN
+ bool DuktoWindow::winEvent(MSG * message, long * result)
+ {
+     return mWin7.winEvent(message, result);
+Index: duktowindow.h
+===================================================================
+--- duktowindow.h	(revision 111)
++++ duktowindow.h	(working copy)
+@@ -34,7 +34,7 @@
+     inline EcWin7* win7() { return &mWin7; }
+ 
+ protected:
+-#ifdef Q_WS_WIN
++#ifdef Q_OS_WIN
+     bool winEvent(MSG * message, long * result);
+ #endif
+     void dragEnterEvent(QDragEnterEvent *event);
+Index: ecwin7.cpp
+===================================================================
+--- ecwin7.cpp	(revision 111)
++++ ecwin7.cpp	(working copy)
+@@ -20,7 +20,7 @@
+ #include "ecwin7.h"
+ 
+ // Windows only GUID definitions
+-#if defined(Q_WS_WIN)
++#if defined(Q_OS_WIN)
+ DEFINE_GUID(CLSID_TaskbarList,0x56fdf344,0xfd6d,0x11d0,0x95,0x8a,0x0,0x60,0x97,0xc9,0xa0,0x90);
+ DEFINE_GUID(IID_ITaskbarList3,0xea1afb91,0x9e28,0x4b86,0x90,0xE9,0x9e,0x9f,0x8a,0x5e,0xef,0xaf);
+ #endif
+@@ -28,7 +28,7 @@
+ // Constructor: variabiles initialization
+ EcWin7::EcWin7()
+ {
+-#ifdef Q_WS_WIN
++#ifdef Q_OS_WIN
+     mTaskbar = NULL;
+     mOverlayIcon = NULL;
+ #endif
+@@ -38,7 +38,7 @@
+ void EcWin7::init(WId wid)
+ {
+     mWindowId = wid;
+-#ifdef Q_WS_WIN
++#ifdef Q_OS_WIN
+     mTaskbarMessageId = RegisterWindowMessage(L"TaskbarButtonCreated");
+ #endif
+ }
+@@ -45,7 +45,7 @@
+ 
+ // Windows event handler callback function
+ // (handles taskbar communication initial message)
+-#ifdef Q_WS_WIN
++#ifdef Q_OS_WIN
+ bool EcWin7::winEvent(MSG * message, long * result)
+ {
+     if (message->message == mTaskbarMessageId)
+@@ -65,7 +65,7 @@
+ // Set progress bar current value
+ void EcWin7::setProgressValue(int value, int max)
+ {
+-#ifdef Q_WS_WIN
++#ifdef Q_OS_WIN
+     if (!mTaskbar) return;
+     mTaskbar->SetProgressValue(mWindowId, value, max);
+ #endif
+@@ -74,7 +74,7 @@
+ // Set progress bar current state (active, error, pause, ecc...)
+ void EcWin7::setProgressState(ToolBarProgressState state)
+ {
+-#ifdef Q_WS_WIN
++#ifdef Q_OS_WIN
+     if (!mTaskbar) return;
+     mTaskbar->SetProgressState(mWindowId, (TBPFLAG)state);
+ #endif
+@@ -84,7 +84,7 @@
+ // (call with iconName == "" and description == "" to remove any previous overlay icon)
+ void EcWin7::setOverlayIcon(QString iconName, QString description)
+ {
+-#ifdef Q_WS_WIN
++#ifdef Q_OS_WIN
+     if (!mTaskbar) return;
+     HICON oldIcon = NULL;
+     if (mOverlayIcon != NULL) oldIcon = mOverlayIcon;
+Index: ecwin7.h
+===================================================================
+--- ecwin7.h	(revision 111)
++++ ecwin7.h	(working copy)
+@@ -24,7 +24,7 @@
+ #include <QWidget>
+ 
+ // Windows only data definitions
+-#ifdef Q_WS_WIN
++#ifdef Q_OS_WIN
+ 
+ #include <windows.h>
+ #include <initguid.h>
+@@ -115,7 +115,7 @@
+ 	// Initialization methods
+     EcWin7();
+     void init(WId wid);
+-#ifdef Q_WS_WIN
++#ifdef Q_OS_WIN
+     bool winEvent(MSG * message, long * result);
+ #endif
+ 	// Overlay icon handling
+@@ -134,7 +134,7 @@
+ 
+ private:
+     WId mWindowId;
+-#ifdef Q_WS_WIN
++#ifdef Q_OS_WIN
+     UINT mTaskbarMessageId;
+     ITaskbarList3 *mTaskbar;
+     HICON mOverlayIcon;
+Index: ipaddressitemmodel.cpp
+===================================================================
+--- ipaddressitemmodel.cpp	(revision 111)
++++ ipaddressitemmodel.cpp	(working copy)
+@@ -26,7 +26,7 @@
+ {
+     QHash<int, QByteArray> roleNames;
+     roleNames[Ip] = "ip";
+-    setRoleNames(roleNames);
++    setItemRoleNames(roleNames);
+ 
+     refreshIpList();
+ }
+Index: main.cpp
+===================================================================
+--- main.cpp	(revision 111)
++++ main.cpp	(working copy)
+@@ -16,7 +16,7 @@
+  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+  */
+ 
+-#include <QtGui/QApplication>
++#include <QApplication>
+ #include "qmlapplicationviewer.h"
+ 
+ #include "guibehind.h"
+@@ -36,9 +36,7 @@
+ 
+ int main(int argc, char *argv[])
+ {
+-#if defined(Q_WS_X11)
+-    QApplication::setGraphicsSystem("raster");
+-#elif defined (Q_WS_WIN)
++#if defined (Q_OS_WIN)
+     qputenv("QML_ENABLE_TEXT_IMAGE_CACHE", "true");
+ #endif
+ 
+Index: platform.cpp
+===================================================================
+--- platform.cpp	(revision 111)
++++ platform.cpp	(working copy)
+@@ -24,12 +24,12 @@
+ #include <QDir>
+ #include <QMessageBox>
+ 
+-#if defined(Q_WS_MAC)
++#if defined(Q_OS_MAC)
+ #include <QTemporaryFile>
+ #include <CoreServices/CoreServices.h>
+ #endif
+ 
+-#if defined(Q_WS_WIN)
++#if defined(Q_OS_WIN)
+ #include <windows.h>
+ #include <lmaccess.h>
+ 
+@@ -67,7 +67,7 @@
+     static QString username = "";
+     if (username != "") return username;
+ 
+-#if defined (Q_WS_WIN)
++#if defined (Q_OS_WIN)
+ /*    QString un(getenv("USERNAME"));
+     if (un != ""){
+         USER_INFO_23 *user_info;
+@@ -139,12 +139,14 @@
+ // Returns the platform name
+ QString Platform::getPlatformName()
+ {
+-#if defined(Q_WS_WIN)
++#if defined(Q_OS_WIN)
+     return "Windows";
+-#elif defined(Q_WS_MAC)
++#elif defined(Q_OS_MAC)
+     return "Macintosh";
++#elif defined(Q_OS_LINUX)
++    return "Linux";
+ #elif defined(Q_WS_X11)
+-    return "Linux";
++    return "X11";
+ #elif defined(Q_WS_S60)
+     return "Symbian";
+ #else
+@@ -155,7 +157,7 @@
+ // Returns the platform avatar path
+ QString Platform::getAvatarPath()
+ {
+-#if defined(Q_WS_WIN)
++#if defined(Q_OS_WIN)
+     QString username = getSystemUsername().replace("\\", "+");
+     QString path = QString(getenv("LOCALAPPDATA")) + "\\Temp\\" + username + ".bmp";
+     if (!QFile::exists(path))
+@@ -167,9 +169,9 @@
+     if (!QFile::exists(path))
+         path = QString(getenv("ALLUSERSPROFILE")) + "\\" + QDir(getenv("APPDATA")).dirName() + "\\Microsoft\\User Account Pictures\\Guest.bmp";
+     return path;
+-#elif defined(Q_WS_MAC)
++#elif defined(Q_OS_MAC)
+     return getMacTempAvatarPath();
+-#elif defined(Q_WS_X11)
++#elif defined(Q_OS_LINUX)
+     return getLinuxAvatarPath();
+ #elif defined(Q_WS_S60)
+     return "";
+@@ -181,13 +183,16 @@
+ // Returns the platform default output path
+ QString Platform::getDefaultPath()
+ {
++
+     // For Windows it's the Desktop folder
+-#if defined(Q_WS_WIN)
++#if defined(Q_OS_WIN)
+     return QString(getenv("USERPROFILE")) + "\\Desktop";
+-#elif defined(Q_WS_MAC)
++#elif defined(Q_OS_MAC)
+     return QString(getenv("HOME")) + "/Desktop";
+ #elif defined(Q_WS_X11)
+     return QString(getenv("HOME"));
++#elif defined(Q_OS_LINUX) // Added just in case.
++    return QString(getenv("HOME"));
+ #elif defined(Q_WS_S60)
+     return "E:\\Dukto";
+ #elif defined(Q_WS_SIMULATOR)
+@@ -198,7 +203,7 @@
+ 
+ }
+ 
+-#if defined(Q_WS_X11)
++#if defined(Q_OS_LINUX)
+ // Special function for Linux
+ QString Platform::getLinuxAvatarPath()
+ {
+@@ -234,7 +239,7 @@
+ }
+ #endif
+ 
+-#if defined(Q_WS_MAC)
++#if defined(Q_OS_MAC)
+ static QTemporaryFile macAvatar;
+ 
+ // Special function for OSX
+@@ -264,7 +269,7 @@
+ }
+ #endif
+ 
+-#if defined(Q_WS_WIN)
++#if defined(Q_OS_WIN)
+ 
+ #include <objbase.h>
+ 
+Index: platform.h
+===================================================================
+--- platform.h	(revision 111)
++++ platform.h	(working copy)
+@@ -34,11 +34,11 @@
+ 
+ // private:
+     Platform() {}
+-#if defined(Q_WS_X11)
++#if defined(Q_OS_LINUX)
+     static QString getLinuxAvatarPath();
+-#elif defined(Q_WS_MAC)
++#elif defined(Q_OS_MAC)
+     static QString getMacTempAvatarPath();
+-#elif defined(Q_WS_WIN)
++#elif defined(Q_OS_WIN)
+     static QString getWinTempAvatarPath();
+ #endif
+ };
+Index: qtsingleapplication/qtsingleapplication.cpp
+===================================================================
+--- qtsingleapplication/qtsingleapplication.cpp	(revision 111)
++++ qtsingleapplication/qtsingleapplication.cpp	(working copy)
+@@ -47,7 +47,7 @@
+ 
+ #include "qtsingleapplication.h"
+ #include "qtlocalpeer.h"
+-#include <QtGui/QWidget>
++#include <QWidget>
+ 
+ 
+ /*!
+@@ -177,16 +177,16 @@
+ }
+ 
+ 
+-/*!
+-    Creates a QtSingleApplication object. The application identifier
+-    will be QCoreApplication::applicationFilePath(). \a argc, \a
+-    argv, and \a type are passed on to the QAppliation constructor.
+-*/
+-QtSingleApplication::QtSingleApplication(int &argc, char **argv, Type type)
+-    : QApplication(argc, argv, type)
+-{
+-    sysInit();
+-}
++///*!
++//    Creates a QtSingleApplication object. The application identifier
++//    will be QCoreApplication::applicationFilePath(). \a argc, \a
++//    argv, and \a type are passed on to the QAppliation constructor.
++//*/
++//QtSingleApplication::QtSingleApplication(int &argc, char **argv, Type type)
++//    : QApplication(argc, argv, type)
++//{
++//    sysInit();
++//}
+ 
+ 
+ #if defined(Q_WS_X11)
+Index: qtsingleapplication/qtsingleapplication.h
+===================================================================
+--- qtsingleapplication/qtsingleapplication.h	(revision 111)
++++ qtsingleapplication/qtsingleapplication.h	(working copy)
+@@ -45,11 +45,11 @@
+ ****************************************************************************/
+ 
+ 
+-#include <QtGui/QApplication>
++#include <QApplication>
+ 
+ class QtLocalPeer;
+ 
+-#if defined(Q_WS_WIN)
++#if defined(Q_OS_WIN)
+ #  if !defined(QT_QTSINGLEAPPLICATION_EXPORT) && !defined(QT_QTSINGLEAPPLICATION_IMPORT)
+ #    define QT_QTSINGLEAPPLICATION_EXPORT
+ #  elif defined(QT_QTSINGLEAPPLICATION_IMPORT)
+@@ -73,7 +73,7 @@
+ public:
+     QtSingleApplication(int &argc, char **argv, bool GUIenabled = true);
+     QtSingleApplication(const QString &id, int &argc, char **argv);
+-    QtSingleApplication(int &argc, char **argv, Type type);
++//    QtSingleApplication(int &argc, char **argv, Type type);
+ #if defined(Q_WS_X11)
+     QtSingleApplication(Display* dpy, Qt::HANDLE visual = 0, Qt::HANDLE colormap = 0);
+     QtSingleApplication(Display *dpy, int &argc, char **argv, Qt::HANDLE visual = 0, Qt::HANDLE cmap= 0);
+Index: recentlistitemmodel.cpp
+===================================================================
+--- recentlistitemmodel.cpp	(revision 111)
++++ recentlistitemmodel.cpp	(working copy)
+@@ -31,7 +31,7 @@
+     roleNames[DateTime] = "dateTime";
+     roleNames[Sender] = "sender";
+     roleNames[Size] = "size";
+-    setRoleNames(roleNames);
++    setItemRoleNames(roleNames);
+ }
+ 
+ void RecentListItemModel::addRecent(QString name, QString value, QString type, QString sender, qint64 size)
+Index: updateschecker.cpp
+===================================================================
+--- updateschecker.cpp	(revision 111)
++++ updateschecker.cpp	(working copy)
+@@ -42,9 +42,9 @@
+     // Get platform data
+     QString osver = "";
+     QString os = Platform::getPlatformName().toLower();
+-#if defined(Q_WS_WIN)
++#if defined(Q_OS_WIN)
+     osver = QString::number(QSysInfo::WindowsVersion);
+-#elif defined(Q_WS_MAC)
++#elif defined(Q_OS_MAC)
+     osver = QString::number(QSysInfo::MacintoshVersion);
+ #elif defined(Q_WS_S60)
+     osver = QString::number(QSysInfo::symbianVersion());
