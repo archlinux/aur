@@ -1,0 +1,19 @@
+pkgbase = gri
+	pkgdesc = A script-based language for scientific graphics programming
+	pkgver = 2.12.23
+	pkgrel = 6
+	url = http://gri.sourceforge.net/
+	install = gri.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = ghostscript
+	makedepends = imagemagick
+	makedepends = texlive-core
+	depends = perl-perl4-corelibs
+	options = !makeflags
+	source = http://downloads.sourceforge.net/gri/gri-2.12.23.tar.gz
+	md5sums = eabd37f80ac51f7aef83a89234fb6522
+
+pkgname = gri
+
