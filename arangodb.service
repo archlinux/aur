@@ -16,6 +16,7 @@ Description=ArangoDB
 After=syslog.target network.target
 
 [Service]
+PrivateTmp=yes
 Type=forking
 User=arangodb
 Group=arangodb

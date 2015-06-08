@@ -24,7 +24,7 @@ options=()
 install=arangodb.install
 source=("https://www.arangodb.com/repositories/Source/$pkgname-$pkgver.tar.bz2" "arangodb.service")
 sha256sums=('717e51cfbb9a2455241c48e1329391e600a89b7ae7f8ab52cd0de7e0109ff0d0'
-            '351e765ceebccf6ea6d02ff140441b4cc068727c2ab8ed9f133f6825f321ae56')
+            'ccde74e481761e2879845a0c9fbef601f4cdd73465d425549d3ad6714e99443d')
 
 build() {
   msg2 "Symlinking 'python' to python2."
