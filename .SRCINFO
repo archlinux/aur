@@ -1,0 +1,22 @@
+pkgbase = libkipi-git
+	pkgdesc = An interface to use kipi-plugins from a KDE application
+	pkgver = r972.262bbed
+	pkgrel = 1
+	url = http://www.kde.org
+	arch = i686
+	arch = x86_64
+	groups = digikam-git
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = git
+	makedepends = automoc4
+	makedepends = cmake
+	depends = kdelibs
+	provides = libkipi
+	conflicts = libkipi
+	source = libkipi::git+git://anongit.kde.org/libkipi
+	md5sums = SKIP
+
+pkgname = libkipi-git
+
