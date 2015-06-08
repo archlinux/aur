@@ -1,0 +1,22 @@
+pkgbase = account-plugins
+	pkgdesc = Account configuration plugins for credentials preferences
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://launchpad.net/online-accounts-account-plugins
+	install = account-plugins.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gobject-introspection
+	makedepends = vala
+	makedepends = intltool
+	depends = credentials-preferences
+	depends = signon-keyring-extension
+	depends = signon-plugin-oauth2
+	optdepends = python-gobject: for account-console tool
+	options = !libtool
+	source = https://launchpad.net/online-accounts-account-plugins/12.10/0.9/+download/account-plugins-0.9.tar.gz
+	md5sums = 58deed9e3305877bb4db426a51451ec0
+
+pkgname = account-plugins
+
