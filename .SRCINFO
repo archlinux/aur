@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-tc2cfr-git
+	pkgdesc = Plugin for Vapoursynth: tc2cfr (GIT version)
+	pkgver = v0.0.1.3.gf5f52f3
+	pkgrel = 1
+	url = https://github.com/dubhater/vapoursynth-tc2cfr
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = vapoursynth
+	provides = vapoursynth-plugin-tc2cfr
+	conflicts = vapoursynth-plugin-tc2cfr
+	source = git+https://github.com/gnaggnoyil/tc2cfr.git
+	md5sums = SKIP
+
+pkgname = vapoursynth-plugin-tc2cfr-git
+
