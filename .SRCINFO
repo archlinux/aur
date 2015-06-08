@@ -1,0 +1,15 @@
+pkgbase = iceweasel-i18n-bg
+	pkgdesc = Bulgarian language package for Iceweasel
+	pkgver = 38.0.1.deb5
+	pkgrel = 1
+	url = http://www.mozilla.com/
+	arch = any
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = iceweasel>=38.0.1
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-bg_38.0.1-5_all.deb
+	sha256sums = c7d854b72cf49d667c9d27078c58e4965246ffe495c0c6c1e22445e5fb40e2bd
+
+pkgname = iceweasel-i18n-bg
+
