@@ -1,0 +1,13 @@
+# -*- mode: sh; -*-
+
+post_install() {
+    /usr/bin/kbuildsycoca4 --global --noincremental &> /dev/null
+}
+
+post_remove() {
+    /usr/bin/kbuildsycoca4 --global --noincremental &> /dev/null
+}
+
+post_upgrade() {
+    /usr/bin/kbuildsycoca4 --global --noincremental &> /dev/null
+}

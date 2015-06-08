@@ -1,0 +1,21 @@
+pkgbase = kdeplasma-applets-calendarevent
+	pkgdesc = A plasmoid displaying the days of the calendar in one column.
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = http://kde-look.org/content/show.php/CalendarEvent?content=148928
+	install = kdeplasma-applets-calendarevent.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = boost
+	depends = kdebase-workspace
+	conflicts = kdeplasma-addons-applets-calendarevent
+	replaces = kdeplasma-addons-applets-calendarevent
+	source = kdeplasma-applets-calendarevent-0.4.1.tar.gz::http://kde-look.org/CONTENT/content-files/148928-calendarevent-0.4.1.tar.gz
+	sha256sums = 1d847dcc875f475d1d74ffc08b8a0ddb952999b8ce2eed0398149044d89adabe
+
+pkgname = kdeplasma-applets-calendarevent
+
