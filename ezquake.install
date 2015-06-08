@@ -1,0 +1,21 @@
+
+post_install() {
+    echo ">>> You need the retail pak0.pak and pak1.pak in order to play."
+    echo ">>>   Copy or symlink them to /opt/quake/id1/"
+    echo ">>>"
+    echo ">>> For high resolution textures and skins, install the"
+    echo ">>>   'quake-qrp-textures' package from the AUR."
+}
+
+post_upgrade() {
+    post_install $1
+}
+
+pre_remove() {
+    /bin/true
+}
+
+op=$1
+shift
+
+$op $*
