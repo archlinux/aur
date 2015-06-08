@@ -1,0 +1,16 @@
+pkgbase = apache-ant-antro
+	pkgdesc = A line-level profiler for Ant build scripts
+	pkgver = 0.52
+	pkgrel = 1
+	url = http://sourceforge.net/projects/antro/
+	arch = any
+	license = GPL2
+	depends = apache-ant
+	depends = bash
+	source = http://downloads.sourceforge.net/project/antro/antro/antro%200.52/antro-0.52.zip
+	source = antro
+	sha1sums = 393e8db3114f8f45f8f0144ee06d4f1ced181bfb
+	sha1sums = ea8849b9228d583ab64c3c4985f575f68de11695
+
+pkgname = apache-ant-antro
+
