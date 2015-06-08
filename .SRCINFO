@@ -1,0 +1,16 @@
+pkgbase = google-docs-fs
+	pkgdesc = allow you to connect to Google Docs and treat it as a file system
+	pkgver = 1.0rc1
+	pkgrel = 2
+	url = http://code.google.com/p/google-docs-fs/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = python
+	depends = python2-fuse
+	depends = python2-gdata
+	source = http://google-docs-fs.googlecode.com/files/google-docs-fs-1.0rc1.tar.gz
+	md5sums = 042b7c6e4f55cedfb2c8e64e4244675f
+
+pkgname = google-docs-fs
+
