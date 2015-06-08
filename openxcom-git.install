@@ -1,0 +1,19 @@
+post_install() {
+  echo "  OpenXcom requires the original X-COM resources."
+  echo "  You need the following subfolders from the original game:"
+  echo "      GEODATA, GEOGRAPH, MAPS, ROUTES, SOUND, TERRAIN, UFOGRAPH, UFOINTRO, UNITS"
+  echo "  Copy those subfolders to one of the following locations:"
+  echo "      - /usr/share/openxcom/UFO"
+  echo "      - <user home folder>/.local/share/openxcom/UFO"
+
+  post_upgrade
+}
+
+post_upgrade() {
+  update-desktop-database -q
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+}
+
+post_remove() {
+  post_upgrade
+}
