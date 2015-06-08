@@ -1,0 +1,15 @@
+pkgbase = ruby-inifile
+	pkgdesc = Ruby package for reading and writing INI files.
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = http://rubygems.org/gems/inifile
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = rubygems
+	noextract = inifile-2.0.2.gem
+	source = http://rubygems.org/downloads/inifile-2.0.2.gem
+	md5sums = 85343673d62af520d08ef9a01bfb7726
+
+pkgname = ruby-inifile
+
