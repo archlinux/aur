@@ -1,0 +1,18 @@
+pkgbase = preziplayer-git
+	pkgdesc = prezi Presentation Player for Linux
+	pkgver = 0.33.aa07c36
+	pkgrel = 1
+	url = https://github.com/TomFreudenberg/preziplayer
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = zenity
+	depends = zip
+	depends = unzip
+	depends = weborf
+	depends = bash
+	source = preziplayer-git::git://github.com/TomFreudenberg/preziplayer.git
+	sha256sums = SKIP
+
+pkgname = preziplayer-git
+
