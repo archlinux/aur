@@ -1,0 +1,27 @@
+post_install() {
+	echo '--------------------------------------------------------------------------'
+	echo ' USAGE:'
+	echo
+	echo '1. Define the path to your pics in $HOME/.config/backdrop-randomizer.conf'
+	echo '   (currently only .jpg files are supported).'
+	echo
+	echo '2. Run it once to make symlink $HOME/.config/backdrop-randomizer.jpg'
+	echo
+	echo '3. Right-click the desktop and select Desktop Settings>Background'
+	echo
+	echo '4. Setup the image to "Single image" and select the symlink from step 2.'
+	echo
+	echo '5. Call the script manually or via cron at the desired interval.'
+	echo '   (Below example shows once every 20 min):'
+	echo
+	echo '           */20 * * * *  /usr/bin/backdrop-randomizer'
+	echo
+	echo ' HOW IT WORKS:'
+	echo 'Each time you or cron calls the script, it will randomly select a picture'
+	echo 'from your list to display. It will then remove the selection from the list'
+	echo 'so as not to repeat the same pic twice per cycle. When backdrop-randomizer'
+	echo 'sees you have only one pic left in your list, it regenerates the list anew'
+	echo 'and continues to cycle. The net effect is an endless rotation of your pics'
+	echo 'without a repeat.'
+	echo '--------------------------------------------------------------------------'
+}
