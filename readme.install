@@ -1,0 +1,9 @@
+post_install() {
+	echo '------------------------------------------------------------------------------------'
+	echo 'Run the script at startup or at login, for example, simply symlink the included'
+	echo 'kodi-prevent-xscreensaver.desktop to your autostart dir:'
+	echo
+	echo ' ln -s /usr/share/applications/kodi-prevent-xscreensaver.desktop ~/.config/autostart'
+	echo '------------------------------------------------------------------------------------'
+}
+

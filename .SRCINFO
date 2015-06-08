@@ -1,0 +1,16 @@
+pkgbase = kodi-prevent-xscreensaver
+	pkgdesc = Keep xscreensaver from coming on when kodi is active.
+	pkgver = 1.15
+	pkgrel = 1
+	url = https://github.com/graysky2/kodi-prevent-xscreensaver
+	install = readme.install
+	arch = any
+	license = MIT
+	depends = xscreensaver
+	depends = kodi
+	replaces = xbmc-prevent-xscreensaver
+	source = http://repo-ck.com/source/kodi-prevent-xscreensaver/kodi-prevent-xscreensaver-1.15.tar.xz
+	sha256sums = 182bf89adfcfcdfbdcbf5f4f06509c24c2c024699a28cd84a341fcbe743f4621
+
+pkgname = kodi-prevent-xscreensaver
+
