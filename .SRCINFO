@@ -1,0 +1,13 @@
+pkgbase = libreoffice-extension-ooo2gd
+	pkgdesc = Export & Import to Google Docs for LibreOffice
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = http://extensions.libreoffice.org/extension-center/openoffice.org2googledocs-export-import-to-google-docs-zoho-webdav
+	arch = any
+	license = GPL2
+	depends = libreoffice
+	source = http://extensions.libreoffice.org/extension-center/openoffice.org2googledocs-export-import-to-google-docs-zoho-webdav/releases/3.0.0/ooo2gd_3.0.0.oxt
+	md5sums = 31d7e111b1135f14717f21255d933f6e
+
+pkgname = libreoffice-extension-ooo2gd
+
