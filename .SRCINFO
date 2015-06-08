@@ -1,0 +1,14 @@
+pkgbase = itop-git
+	pkgdesc = Interrupts 'top-like' utility for Linux
+	pkgver = 0.1.9.g6dbb3c4
+	pkgrel = 2
+	url = https://github.com/kargig/itop
+	arch = any
+	license = custom
+	makedepends = git
+	depends = perl
+	source = git+https://github.com/kargig/itop.git
+	sha256sums = SKIP
+
+pkgname = itop-git
+
