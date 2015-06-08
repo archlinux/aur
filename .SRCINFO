@@ -1,0 +1,21 @@
+pkgbase = fotoxx
+	pkgdesc = A program for improving image files made with a digital camera
+	pkgver = 15.06
+	pkgrel = 1
+	url = http://www.kornelix.com/fotoxx
+	install = fotoxx.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = xdg-utils
+	depends = dcraw
+	depends = gtk3
+	depends = gimp-ufraw
+	depends = perl-image-exiftool>=0.8.6
+	optdepends = mashup: for composing pages to print from within fotoxx
+	optdepends = brasero: for burning
+	source = http://www.kornelix.com/uploads/1/3/0/3/13035936/fotoxx-15.06.tar.gz
+	md5sums = 00f953443872fdc26a518aa6505b43f8
+
+pkgname = fotoxx
+
