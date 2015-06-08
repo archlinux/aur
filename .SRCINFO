@@ -1,0 +1,15 @@
+pkgbase = iceweasel-i18n-pl
+	pkgdesc = Polish language package for Iceweasel
+	pkgver = 38.0.1.deb5
+	pkgrel = 1
+	url = http://www.mozilla.com/
+	arch = any
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = iceweasel>=38.0.1
+	source = http://ftp.debian.org/debian/pool/main/i/iceweasel/iceweasel-l10n-pl_38.0.1-5_all.deb
+	sha256sums = f8b8fc65af84da0395d684d7f5dc91cfcdbc3ef1c305bea74bd6b92f1716477f
+
+pkgname = iceweasel-i18n-pl
+
