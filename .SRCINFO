@@ -1,0 +1,14 @@
+pkgbase = rtorrent-fast-resume
+	pkgdesc = Creats new torrent files from complete downloads to prevent rtorrent from hashing
+	pkgver = 1.00
+	pkgrel = 2
+	url = https://github.com/rakshasa/rtorrent/blob/master/doc/rtorrent_fast_resume.pl
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = perl-convert-bencode-xs
+	source = https://raw.githubusercontent.com/rakshasa/rtorrent/master/doc/rtorrent_fast_resume.pl
+	sha256sums = 138525eb2a0e5761c90ac7e56ec723f028d8220c6696978d7c12f1656d25edb7
+
+pkgname = rtorrent-fast-resume
+
