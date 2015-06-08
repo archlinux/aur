@@ -1,0 +1,14 @@
+pkgbase = aftp-server-git
+	pkgdesc = Very fast file transfering server
+	pkgver = v2.0.r0.gd35a8d1
+	pkgrel = 1
+	url = https://github.com/arthurzam/aftp-server
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = openssl
+	source = aftp-server::git+git://github.com/arthurzam/aftp-server.git
+	sha1sums = SKIP
+
+pkgname = aftp-server-git
+
