@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=jVLT
+GenericName=Vocabulary Trainer
+Comment=Flash card based learning tool
+Exec=jvlt
+Icon=jvlt
+Terminal=false
+Categories=Education;Languages;Java;

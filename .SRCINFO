@@ -1,0 +1,19 @@
+pkgbase = jvlt
+	pkgdesc = A vocabulary learning tool with quizzes using flash cards similar to the Leitner system
+	pkgver = 1.3.3
+	pkgrel = 1
+	url = http://jvlt.sourceforge.net
+	arch = any
+	license = GPL
+	depends = java-environment
+	source = http://downloads.sourceforge.net/project/jvlt/jvlt/1.3.3/jvlt-1.3.3.jar
+	source = http://jvlt.sourceforge.net/jvlt.png
+	source = jvlt.sh
+	source = jvlt.desktop
+	md5sums = e880ff05b7c6b089ef01580f1aab6892
+	md5sums = 7f038c40100906d1058714dd76381165
+	md5sums = f04116276afcc092916e0cd749e036e7
+	md5sums = c656f737f05b858461c89368279eb1a8
+
+pkgname = jvlt
+
