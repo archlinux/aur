@@ -1,0 +1,22 @@
+pkgbase = modemmanager-qt-git
+	pkgdesc = Qt-only wrapper for ModemManager DBus API
+	pkgver = r265.5e1184d
+	pkgrel = 1
+	url = https://projects.kde.org/projects/extragear/libs/libnm-qt
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	depends = modemmanager
+	depends = qt5-base
+	provides = modemmanager-qt
+	conflicts = libmm-qt5
+	conflicts = libmm-qt-git
+	conflicts = modemmanager-qt
+	replaces = libmm-qt-git
+	source = git://anongit.kde.org/modemmanager-qt.git
+	sha256sums = SKIP
+
+pkgname = modemmanager-qt-git
+
