@@ -1,0 +1,21 @@
+printinfo() {
+cat <<EOF
+ 
+ Please note that the following extensions should be enabled in php.ini:
+  - iconv
+  - phar
+  - xsl
+
+ Also make sure that /usr/share/webapps or /usr/share/webapps/phpdocumentor2
+ is included in the open_basedir path.
+  
+EOF
+}
+
+post_install() {
+        printinfo
+}
+
+post_upgrade() {
+	printinfo
+}

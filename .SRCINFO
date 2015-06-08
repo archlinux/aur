@@ -1,0 +1,18 @@
+pkgbase = phpdocumentor2
+	pkgdesc = Documentation Generator for PHP
+	pkgver = 2.8.2
+	pkgrel = 1
+	url = http://www.phpdoc.org/
+	install = phpdocumentor2.install
+	arch = any
+	license = custom
+	depends = graphviz
+	depends = php-xsl
+	conflicts = phpdocumentor
+	source = http://pear.phpdoc.org/get/phpDocumentor-2.8.2.tgz
+	source = phpdocumentor2.install
+	sha256sums = 77446ce240393a798fdf092c28c8f0bad2004c7588e338aa3acd320eac0dc20a
+	sha256sums = b6066d62de3b131ac4d71a13eea8c6419f62282c7e229dc55b06acf0c8b5b60a
+
+pkgname = phpdocumentor2
+
