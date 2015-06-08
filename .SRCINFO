@@ -1,0 +1,18 @@
+pkgbase = sisc
+	pkgdesc = Second Interpreter of Scheme Code
+	pkgver = 1.16.6
+	pkgrel = 4
+	url = http://sisc.sourceforge.net/
+	install = sisc.install
+	arch = any
+	license = MPL
+	license = GPL2
+	depends = java-runtime
+	depends = rlwrap
+	source = sisc.sh
+	source = http://downloads.sourceforge.net/sourceforge/sisc/sisc-1.16.6.tar.gz
+	md5sums = 9eae341d76de1bf5cc463dfa23242cfb
+	md5sums = 15f2aa0c08b782d7882aa884846b902e
+
+pkgname = sisc
+
