@@ -1,0 +1,24 @@
+2011-01-13 Gergely Imreh <imrehg@gmail.com>
+
+	* 0.8.4-1 :
+	upstream minor bugfix release.
+	The code has been cleaned up to allow safe compilation with -O2
+	optimisation, which yields a modest speed improvement.
+
+2010-11-05 Gergely Imreh <imrehg@gmail.com>
+
+	* 0.8.3-1 :
+	new upstream release.
+	removed docs from package
+
+2010-08-28 Gergely Imreh <imrehg@gmail.com>
+
+	* 0.8.2-1:
+	new upstream release
+	disabling kpathsea and termcap library calls, as they seem to be
+	broken on Arch.
+
+2010-03-02 Gergely Imreh <imrehg@gmail.com>
+
+	* 0.7.1-1:
+ 	new upstream release
