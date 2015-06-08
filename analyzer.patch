@@ -1,0 +1,12 @@
+*** a/analyzer/main.c    2010-02-15 20:13:47.000000000 +0100
+--- b/analyzer/main.c    2010-02-15 17:31:55.000000000 +0100
+***************
+*** 262,267 ****
+--- 262,268 ----
+    GOptionContext *ctx;
+    GError *err = NULL;
+  
++   g_thread_init(NULL);
+    ctx = g_option_context_new ("[INFILE] - Run moodbar analyzer");
+    g_option_context_add_group (ctx, gst_init_get_option_group ());
+    g_option_context_add_main_entries (ctx, entries, NULL);
