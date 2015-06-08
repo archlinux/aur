@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Ivideon Client
+Name[ru_RU]=Ivideon клиент
+Comment=Watch your Ivideon Server cameras through Internet or LAN
+Comment[ru_RU]=Просматривайте Ваши Ivideon камеры через Интернет или ЛВС
+Exec=ivideon-client
+Icon=ivideon-client
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Network;

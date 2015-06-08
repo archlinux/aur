@@ -1,0 +1,13 @@
+post_install() {
+
+if [ ! -L /usr/bin/ivideon-client ]; then
+ln -s /opt/ivideon/ivideon-client/ivideon-client /usr/bin/ivideon-client
+else
+rm /usr/bin/ivideon-client
+fi
+gtk-update-icon-cache -fq /usr/share/icons/hicolor
+}
+
+post_remove() {
+  post_install
+}
