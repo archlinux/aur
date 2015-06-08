@@ -1,4 +1,4 @@
-# Maintainer: William J. Bowman <wjb@williamjbowman.com>
+# Maintainer: William J. Bowman <aur@williamjbowman.com>
 
 pkgname=autosubst
 pkgver=1.0
