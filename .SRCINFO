@@ -1,0 +1,25 @@
+pkgbase = kglobalaccel-git
+	pkgdesc = KGlobalAccel
+	pkgver = r69.504446f
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/kglobalaccel
+	arch = i686
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	makedepends = qt5-tools
+	depends = qt5-x11extras
+	depends = kconfig-git
+	depends = kcrash-git
+	depends = kdbusaddons-git
+	depends = ki18n-git
+	depends = kwindowsystem-git
+	provides = kglobalaccel
+	conflicts = kglobalaccel
+	source = git://anongit.kde.org/kglobalaccel.git
+	md5sums = SKIP
+
+pkgname = kglobalaccel-git
+
