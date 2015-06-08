@@ -1,0 +1,31 @@
+post_install() {
+  echo ">>> Check /opt/firebird/SYSDBA.password for default login credentials!"
+  echo ">>> You should change this password at the earliest opportunity!"
+
+  # Add firebird user/group
+  getent group firebird &> /dev/null || groupadd -g 184 -r firebird
+  getent passwd firebird &> /dev/null || useradd -u 184 -r -M -d /opt/firebird -s /bin/false -c "Firebird Database Owner" -g firebird firebird
+
+  chown firebird.firebird opt/firebird/{fb_guard,firebird.log,security2.fdb,examples/empbuild/*.fdb}
+
+  if [ -x /usr/bin/systemd-tmpfiles ]; then
+    systemd-tmpfiles --create firebird.conf
+  fi
+}
+
+post_upgrade() {
+  post_install $1
+
+  if [[ $2 == 2.5.1* ]]; then
+    echo
+    echo ">>> ATTENTION: You are upgrading from Firebird 2.5.1, you are strongly advised to migrate database using gbak backup/restore!"
+  fi
+}
+
+post_remove() {
+  # Remove firebird user/group
+  getent passwd firebird &> /dev/null && userdel firebird &> /dev/null
+  getent group firebird &> /dev/null && groupdel firebird &> /dev/null || true
+}
+
+# vim:set ts=2 sw=2 et:
