@@ -1,0 +1,16 @@
+pkgbase = perl-parallel-forker
+	pkgdesc = Parallel job forking and management, with expression based control
+	pkgver = 1.232
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Parallel-Forker
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-proc-processtable>=0.4
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/W/WS/WSNYDER/Parallel-Forker-1.232.tar.gz
+	md5sums = 0fb9de8e199b1bdb58f57b5b3c400dcb
+	sha512sums = 0e5728ea195b204f75179b5838bcdd42e46316a5940fb8d6f3f82ed0ec3fdff6b857c52f238c7f2eb7b83d0b08d1cb3aa08abbff8d9fd575a390d8fea4732a63
+
+pkgname = perl-parallel-forker
+
