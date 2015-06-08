@@ -1,0 +1,21 @@
+pkgbase = xfce4-hdaps
+	pkgdesc = A plugin to indicate the status of the IBM Hard Drive Active Protection System, or HDAPS.
+	pkgver = 0.0.9
+	pkgrel = 2
+	url = http://michael.orlitzky.com/code/xfce4-hdaps.php
+	install = xfce4-hdaps.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	makedepends = intltool
+	depends = tp_smapi
+	depends = linux
+	depends = xfce4-panel
+	source = http://michael.orlitzky.com/code/releases/xfce4-hdaps-0.0.9.tar.bz2
+	source = xfce4-hdaps.install
+	md5sums = c5d15ad153d6be2751256787b7237dae
+	md5sums = a5f113c7a0f7a94ec39d5a3b83640724
+
+pkgname = xfce4-hdaps
+
