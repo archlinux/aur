@@ -1,0 +1,21 @@
+pkgbase = openttd-bin
+	pkgdesc = OpenTTD is an open source simulation game based upon the popular Microprose game "Transport Tycoon Deluxe". This package lets you have installed more versions simultaneously (simply change pkgver).
+	pkgver = 1.5.1
+	pkgrel = 0
+	url = http://www.openttd.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = coreutils
+	depends = libpng
+	depends = sdl
+	depends = fontconfig
+	depends = icu
+	optdepends = openttd-opengfx: free graphics
+	optdepends = openttd-opensfx: free soundset
+	optdepends = openttd-openmsx: free musicset
+	source = http://binaries.openttd.org/releases/1.5.1/openttd-1.5.1-linux-generic-i686.tar.xz
+	md5sums = SKIP
+
+pkgname = openttd-bin-1.5.1
+
