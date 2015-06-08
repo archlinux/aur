@@ -1,0 +1,9 @@
+[Unit]
+Description=HQplayer embedded
+After=network.target sound.target
+
+[Service]
+ExecStart=/bin/bash /usr/bin/start_hqplayerd.sh
+
+[Install]
+WantedBy=default.target
