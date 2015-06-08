@@ -1,0 +1,20 @@
+pkgbase = psp-bzip2
+	pkgdesc = A high-quality data compression program (psp)
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = http://sources.redhat.com/bzip2
+	arch = any
+	groups = psp
+	license = custom
+	makedepends = psp-gcc
+	depends = psp-sdk
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz
+	source = https://raw.githubusercontent.com/pspdev/psplibraries/master/patches/bzip2-1.0.6-PSP.patch
+	md5sums = 00b516f4704d4a7cb50a1d97e6e8e15b
+	md5sums = SKIP
+
+pkgname = psp-bzip2
+
