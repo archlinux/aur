@@ -1,0 +1,24 @@
+pkgbase = tmux-true_colors
+	pkgdesc = A terminal multiplexer - true colors patch
+	pkgver = 1.9_a
+	pkgrel = 2
+	url = http://tmux.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = ncurses
+	depends = libevent
+	depends = libutempter
+	provides = tmux
+	conflicts = tmux
+	source = http://downloads.sourceforge.net/tmux/tmux-1.9a.tar.gz
+	source = LICENSE
+	source = crash-fix.patch
+	source = https://gist.githubusercontent.com/choppsv1/dd00858d4f7f356ce2cf/raw/b66c1726b7d38b9a43d0e199f5b874e5f9d08526/tmux-24.diff
+	md5sums = b07601711f96f1d260b390513b509a2d
+	md5sums = 71601bc37fa44e4395580b321963018e
+	md5sums = d2e0ccb68edaccaf5ffd0e0c21d1776b
+	md5sums = ea781186f33c24ebf87e6a0d05c4f725
+
+pkgname = tmux-true_colors
+
