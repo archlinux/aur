@@ -1,0 +1,18 @@
+pkgbase = vim-cabal
+	pkgdesc = Syntax coloration for Cabal
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://www.vim.org/scripts/script.php?script_id=2625
+	install = vimdoc.install
+	arch = i686
+	arch = x86_64
+	groups = vim-plugins
+	license = custom
+	depends = vim
+	source = cabal.vim::http://www.vim.org/scripts/download_script.php?src_id=16755
+	source = license.txt
+	md5sums = 6e93a324d4d57e0e56aac949f93d0c0c
+	md5sums = efbd5986e691ce8c876fb86e8f5961ea
+
+pkgname = vim-cabal
+
