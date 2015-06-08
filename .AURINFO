@@ -1,0 +1,14 @@
+pkgbase = php-melody
+	pkgdesc = One-file composer scripts.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://melody.sensiolabs.org/
+	arch = any
+	license = MIT
+	makedepends = php-box
+	makedepends = php-composer
+	depends = php>=5.3.2
+	source = php-melody::git+https://github.com/sensiolabs/melody.git
+
+pkgname = php-melody
+
