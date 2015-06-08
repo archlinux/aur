@@ -1,0 +1,19 @@
+pkgbase = python2-ws4py
+	pkgdesc = WebSocket library for Python
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/Lawouach/WebSocket-for-Python
+	arch = any
+	license = BSD
+	makedepends = python2
+	depends = python2
+	optdepends = python2-cherrypy: CherryPy server
+	optdepends = python2-gevent: gevent server
+	optdepends = python2-tornado: Tornado client
+	provides = python2-ws4py
+	conflicts = python2-ws4py-git
+	source = https://pypi.python.org/packages/source/w/ws4py/ws4py-0.3.4.tar.gz
+	md5sums = 6b47e33cbd13f5c134b04f2a44a480ad
+
+pkgname = python2-ws4py
+
