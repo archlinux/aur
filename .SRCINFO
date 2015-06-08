@@ -1,0 +1,16 @@
+pkgbase = eclipse-emf-transaction
+	pkgdesc = Eclipse Modeling Framework (Model Transaction subproject)
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = http://www.eclipse.org/modeling/emf/?project=transaction#transaction
+	arch = i686
+	arch = x86_64
+	license = EPL
+	makedepends = unzip
+	depends = eclipse-emf-query
+	depends = eclipse-emf-validation
+	source = http://www.eclipse.org/downloads/download.php?r=1&file=/modeling/emf/transaction/downloads/drops/1.8.0/R201405281451/emf-transaction-runtime-1.8.0.zip
+	md5sums = cf9b7c37487f08ae1e578f7f91b85780
+
+pkgname = eclipse-emf-transaction
+
