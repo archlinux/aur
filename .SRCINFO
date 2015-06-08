@@ -1,0 +1,19 @@
+pkgbase = smdev
+	pkgdesc = Suckless mdev
+	pkgver = 0.2.3
+	pkgrel = 6
+	url = http://git.2f30.org/smdev/
+	install = smdev.install
+	arch = i686
+	arch = x86_64
+	license = MIT/X
+	options = strip
+	source = http://git.suckless.org/smdev/snapshot/smdev-0.2.3.zip
+	source = smdev.install
+	source = config.h
+	sha1sums = cefbfde0af6237ac27bb999f02b725a340d22c1d
+	sha1sums = dff00e0f4fd06148b56eee1ab769b0fd976ed4eb
+	sha1sums = d48c01140bf0c414fa81399963d47488670da7f0
+
+pkgname = smdev
+

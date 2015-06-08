@@ -1,0 +1,5 @@
+post_install() {
+	id cdrom &>/dev/null || {
+		groupadd cdrom
+	}
+}
