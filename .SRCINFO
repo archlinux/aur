@@ -1,0 +1,19 @@
+pkgbase = perl-catalyst-model-dbi
+	pkgdesc = Catalyst::Model::DBI - DBI Model Class
+	pkgver = 0.32
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Catalyst-Model-DBI
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-use-ok
+	depends = perl-catalyst-runtime
+	depends = perl-mro-compat
+	depends = perl-dbix-connector
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AL/ALEXP/Catalyst-Model-DBI-0.32.tar.gz
+	md5sums = 23597fb16c3cc58830be4abc13b6f5ed
+	sha512sums = d2e107327f0b4c5aaa87904c9b24504952c62250ad356c3ba9892b21c996b8be6cb1a6f31e7b4aa3b360a0c6c957aac845268048672c57b6a8700b79bdc14c08
+
+pkgname = perl-catalyst-model-dbi
+
