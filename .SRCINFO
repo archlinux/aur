@@ -1,0 +1,17 @@
+pkgbase = ffmulticonverter
+	pkgdesc = Convert audio, video, image and document files between all popular formats
+	pkgver = 1.7.0
+	pkgrel = 3
+	url = https://sites.google.com/site/ffmulticonverter/
+	arch = any
+	license = GPL3
+	depends = python-pyqt4
+	optdepends = ffmpeg: for video conversions
+	optdepends = imagemagick: for image conversions
+	optdepends = unoconv: for document conversions
+	conflicts = ffmulticonverter-git
+	source = https://sourceforge.net/projects/ffmulticonv/files/ffmulticonverter-1.7.0.tar.gz
+	sha256sums = d466c59a7c5c71bae5660924a4d89523bdceeab5f3b38d9d4f8d9f62c16f8c69
+
+pkgname = ffmulticonverter
+
