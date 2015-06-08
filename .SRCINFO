@@ -1,0 +1,17 @@
+pkgbase = emacs-newlisp-mode-git
+	pkgdesc = newLISP editing mode for Emacs
+	pkgver = 48.c1c38ac
+	pkgrel = 1
+	url = https://github.com/kosh04/newlisp-mode
+	install = emacs-newlisp-mode.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-newlisp
+	conflicts = emacs-newlisp
+	source = git://github.com/kosh04/newlisp-mode.git
+	md5sums = SKIP
+
+pkgname = emacs-newlisp-mode-git
+

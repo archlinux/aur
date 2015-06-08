@@ -1,0 +1,17 @@
+post_install() {
+  echo "
+=> Autoloading:
+  ------------
+  In your .emacs or .init.el
+  (add-to-list 'auto-mode-alist '(\"\\\\.lsp\\\\'\" . newlisp-mode))
+  (add-to-list 'interpreter-mode-alist '("newlisp" . newlisp-mode))
+=> Newlisp is started with the Emacs command M-x newlisp-mode."
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  post_install
+}
