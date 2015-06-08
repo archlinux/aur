@@ -1,0 +1,13 @@
+pkgbase = z80asm
+	pkgdesc = A Z80 assembler written in c
+	pkgver = 1.8
+	pkgrel = 2
+	url = http://www.nongnu.org/z80asm/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	source = http://download.savannah.gnu.org/releases/z80asm/z80asm-1.8.tar.gz
+	md5sums = 4beb798d6fe2f89e62de36b4b4f87fad
+
+pkgname = z80asm
+
