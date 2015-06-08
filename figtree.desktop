@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.4.2
+Name=FigTree
+GenericName=Phylogenetic tree viewer
+Comment=Graphical viewer of phylogenetic trees
+Exec=figtree
+Icon=figtree
+Terminal=false
+Categories=Education;Science;

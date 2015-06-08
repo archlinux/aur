@@ -1,0 +1,8 @@
+--- figtree.orig	2014-07-10 00:50:25.000000000 +1000
++++ figtree	2015-02-02 11:49:48.386025165 +1100
+@@ -1,4 +1,4 @@
+ #!/bin/sh
+ 
+-java -Xms64m -Xmx512m -jar lib/figtree.jar $*
++java -Xms64m -Xmx512m -jar /usr/share/figtree/lib/figtree.jar $*
+ 
