@@ -1,0 +1,15 @@
+pkgbase = python-asciimathml-git
+	pkgdesc = ASCIIMathML to MathML translator (Python 3 port)
+	pkgver = 70.50fd95c
+	pkgrel = 1
+	url = https://github.com/mtahmed/python-asciimathml
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = python
+	optdepends = python-markdown
+	provides = python-asciimathml
+	source = python-asciimathml-git::git://github.com/mtahmed/python-asciimathml
+
+pkgname = python-asciimathml-git
+
