@@ -1,0 +1,11 @@
+pkgbase = qbiobeat-git
+	pkgdesc = A small biorhythm application based on PyQt4
+	pkgver = 20130107
+	pkgrel = 1
+	url = https://github.com/ShadowKyogre/QBioBeat
+	arch = any
+	license = GPL
+	depends = pyqt
+
+pkgname = qbiobeat-git
+
