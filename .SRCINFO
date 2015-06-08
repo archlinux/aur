@@ -1,0 +1,14 @@
+pkgbase = pgf-umlsd
+	pkgdesc = Some LaTeX macros for UML Sequence Diagrams
+	pkgver = 0.7
+	pkgrel = 2
+	url = https://code.google.com/p/pgf-umlsd/
+	install = pgf-umlsd.install
+	arch = any
+	license = GPL3
+	depends = texlive-core
+	source = https://pgf-umlsd.googlecode.com/files/pgf-umlsd-0.7.zip
+	md5sums = 9857cef889b662879c2f78516adc0144
+
+pkgname = pgf-umlsd
+
