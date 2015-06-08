@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-coin-or-lemon
+	pkgdesc = A C++ template library providing many common graph algorithms (mingw-w64)
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = http://lemon.cs.elte.hu/trac/lemon
+	arch = any
+	groups = coin-or
+	license = BSD
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-coin-or-cbc
+	depends = mingw-w64-coin-or-clp
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = http://lemon.cs.elte.hu/pub/sources/lemon-1.3.1.tar.gz
+	sha1sums = b23d64c21b4b9088ad51e85316964a4a4138f82a
+
+pkgname = mingw-w64-coin-or-lemon
+
