@@ -1,0 +1,13 @@
+--- 13.4/common/lib/modules/fglrx/build_mod/firegl_public.c	2013-04-16 23:29:55.000000000 +0200
++++ 13.4/common/lib/modules/fglrx/build_mod/firegl_public.c	2013-05-19 12:05:33.842076474 +0200
+@@ -34,6 +34,10 @@
+ #include <linux/autoconf.h>
+ #endif
+
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,10,0)
++#include <linux/seq_file.h>
++#endif
++
+ #if !defined(CONFIG_X86)
+ #if !defined(CONFIG_X86_PC)
+ #if !defined(CONFIG_X86_XEN)
