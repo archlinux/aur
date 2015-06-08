@@ -1,0 +1,13 @@
+pkgbase = fcitx-skin-opensuse-branding
+	pkgdesc = Fcitx theme.
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://kde-look.org/content/show.php/openSUSE+branding?content=153628
+	arch = any
+	license = Creative Commons
+	depends = fcitx>=4.2.6
+	source = opensuse-branding.fskin::http://kde-look.org/CONTENT/content-files/153628-openSUSE-default.fskin
+	md5sums = 57a906e8fc9192fd2c5ddea7cddd6acb
+
+pkgname = fcitx-skin-opensuse-branding
+
