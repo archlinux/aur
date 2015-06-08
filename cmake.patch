@@ -1,0 +1,17 @@
+--- Makefile.orig	2014-07-28 17:11:57.465199930 -0400
++++ Makefile	2014-07-28 17:12:25.235578262 -0400
+@@ -15,12 +15,12 @@
+ configure: pre-build
+ 	@if test -f ${BUILDDIR}/Makefile; \
+ 	then echo Already configured; \
+-	else cd ${BUILDDIR} && cmake -i ${TOPDIR}; \
++	else cd ${BUILDDIR} && ccmake ${TOPDIR}; \
+ 	fi
+ .PHONY : configure
+ 
+ reconfigure: pre-build
+-	@cd ${BUILDDIR} && cmake -i ${TOPDIR}
++	@cd ${BUILDDIR} && ccmake ${TOPDIR}
+ .PHONY : reconfigure
+ 
+ debug: pre-build

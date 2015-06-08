@@ -1,0 +1,24 @@
+pkgbase = freeocl-git
+	pkgdesc = Implementation of OpenCL 1.2 specifications targeting CPUs
+	pkgver = r326.7b503f3
+	pkgrel = 1
+	url = https://code.google.com/p/freeocl/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = libatomic_ops
+	depends = gcc
+	provides = libcl
+	provides = opencl-headers
+	conflicts = libcl
+	conflicts = opencl-headers
+	source = freeocl::git+https://github.com/sctincman/freeocl.git
+	source = cmake.patch
+	source = install-headers.patch
+	md5sums = SKIP
+	md5sums = 89de8dd7e7086f058e49925feddc83f8
+	md5sums = 2a74e9b5c87dc6e91b6c4a765a50af2d
+
+pkgname = freeocl-git
+

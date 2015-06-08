@@ -1,0 +1,11 @@
+--- CMakeLists.txt.orig	2015-01-17 09:57:01.105060871 -0500
++++ CMakeLists.txt	2015-01-17 09:57:10.941836937 -0500
+@@ -91,7 +91,7 @@
+ endif(NOT (CMAKE_SYSTEM_NAME STREQUAL "Windows"))
+ 
+ # OpenCL headers shouldn't be needed in the runtime package
+-# install(DIRECTORY include/CL/ DESTINATION include/CL/ FILES_MATCHING PATTERN "*.h")
++install(DIRECTORY include/CL/ DESTINATION include/CL/ FILES_MATCHING PATTERN "*.h")
+ install(DIRECTORY include/FreeOCL/ DESTINATION include/FreeOCL/ FILES_MATCHING PATTERN "*.h")
+ 
+ set(CPACK_PACKAGE_NAME "FreeOCL")
