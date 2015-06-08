@@ -1,0 +1,18 @@
+pkgbase = emacs-pkgbuild-mode-git
+	pkgdesc = A major mode for creating packages with emacs
+	pkgver = 0.13.1
+	pkgrel = 1
+	url = https://github.com/stefanhusmann/pkgbuild-mode
+	install = emacs-pkgbuild-mode.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = emacs
+	depends = pkgbuild-introspection
+	provides = emacs-pkgbuild-mode
+	conflicts = emacs-pkgbuild-mode
+	source = git+https://github.com/stefanhusmann/pkgbuild-mode.git
+	md5sums = SKIP
+
+pkgname = emacs-pkgbuild-mode-git
+
