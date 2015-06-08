@@ -1,0 +1,13 @@
+pkgbase = svorak
+	pkgdesc = svorak, one swedish dvorak
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://aoeu.info/
+	arch = any
+	groups = keyboardlayouts
+	license = ISC
+	source = http://www.aoeu.info/layouts/files/svorak.map.gz
+	md5sums = 310d74295f2c3fb9f8ef4dfaa940bdc4
+
+pkgname = svorak
+
