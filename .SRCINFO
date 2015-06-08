@@ -1,0 +1,20 @@
+pkgbase = kpeople-git
+	pkgdesc = A library that provides access to all contacts and the people who hold them
+	pkgver = r991.77a5fab
+	pkgrel = 1
+	url = http://community.kde.org/KTp/libkpeople
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	makedepends = python
+	depends = kwidgetsaddons-git
+	depends = kitemviews-git
+	provides = kpeople
+	conflicts = kpeople
+	source = git://anongit.kde.org/kpeople.git
+	sha256sums = SKIP
+
+pkgname = kpeople-git
+
