@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Abe
+GenericName=Platform Game
+Comment=Retro Platform Game
+Icon=/usr/share/abe/images/abe.bmp
+Exec=abe
+Categories=Game;

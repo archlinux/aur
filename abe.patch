@@ -1,0 +1,24 @@
+diff -ur abe-1.1.orig/src/Directories.h abe-1.1/src/Directories.h
+--- abe-1.1.orig/src/Directories.h	2012-08-25 16:43:45.194974618 +0100
++++ abe-1.1/src/Directories.h	2012-08-25 16:48:07.489030577 +0100
+@@ -27,7 +27,7 @@
+ 
+ // BASE_DIR has not " arround it.
+ #ifndef BASE_DIR
+-#define BASE_DIR .
++#define BASE_DIR /usr/share/abe
+ #endif
+ 
+ #define IMAGES_DIR "images"
+diff -ur abe-1.1.orig/src/Menu.c abe-1.1/src/Menu.c
+--- abe-1.1.orig/src/Menu.c	2012-08-25 16:43:45.198307908 +0100
++++ abe-1.1/src/Menu.c	2012-08-25 16:45:00.319469631 +0100
+@@ -116,7 +116,7 @@
+   if(n == SOUND_ENABLED || n == MUSIC_ENABLED)
+     return sound_loaded;
+   else
+-    return 0;
++    return 1;
+ }
+ 
+ void
