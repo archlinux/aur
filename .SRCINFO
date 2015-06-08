@@ -1,0 +1,18 @@
+pkgbase = duplicati-latest
+	pkgdesc = Free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers. Duplicati is open source software, written in mono and available for Windows, Linux, and Mac OS X.
+	pkgver = 2.0.0.85
+	pkgrel = 1
+	url = http://www.duplicati.com/
+	install = duplicati.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = mono
+	depends = gtk-sharp-2
+	source = http://updates.duplicati.com/preview/latest.zip
+	source = duplicati_user.service
+	sha1sums = e0464421610311bcc69510ba1ece2986593ef2ff
+	sha1sums = cf23e9cdc0f72d1b52288579f169c4476aa26a0f
+
+pkgname = duplicati-latest
+

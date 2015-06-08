@@ -1,0 +1,23 @@
+post_install() {
+
+	post_upgrade
+
+}
+
+post_upgrade() {
+
+cat << EOF
+
+	UI can be accessed via following URL: http://localhost:8200
+	
+	* Running duplicati user instance (using current user account)
+
+	  Execute:
+
+	    to reload user systemd modules:          systemctl --user daemon-reload
+	    to start duplicati manually:             systemctl --user start duplicati_latest
+	    to autostart duplicati on user login:    systemctl --user enable duplicati_latest
+
+EOF
+
+}
