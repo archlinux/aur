@@ -2,8 +2,8 @@
 # Contributor: Kristian Klausen <klausenbusk@hotmail.com>
 # Maintainer: Thomas Fanninger <thomas@fanninger.at>
 
-pkgname=gogs-git
-_pkgname=gogs
+pkgname=gitea-git
+_pkgname=gitea
 pkgver=20150317
 pkgrel=1
 epoch=1
