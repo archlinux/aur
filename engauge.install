@@ -1,0 +1,6 @@
+post_install() {
+   echo "To read the manual from within engauge, "
+   echo "run engauge the following way:"
+   echo "engauge -manual /usr/share/engauge/doc/usermanual/"
+   echo "Or set the variable ENGAUGE_USERMANUL accordingly."
+}

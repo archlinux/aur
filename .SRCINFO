@@ -1,0 +1,18 @@
+pkgbase = engauge
+	pkgdesc = A Digitizer for curves and scanned plots
+	pkgver = 5.2
+	pkgrel = 1
+	url = http://digitizer.sourceforge.net/
+	install = engauge.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt4
+	depends = fftw
+	source = http://downloads.sourceforge.net/project/digitizer/Engauge%20Digitizer/digitizer-5.2/engauge_5.2.tgz
+	source = engauge.desktop
+	md5sums = 2fbd9c81fa9e910f871560767bbb52bc
+	md5sums = 53def24f20c3d0178d3cf1b8c574fe15
+
+pkgname = engauge
+

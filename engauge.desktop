@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Engauge
+Comment=A Digitizer for curves and scanned plots.
+Exec=engauge -manual /usr/share/doc/engauge/usermanual
+Icon=engauge
+Terminal=0
+Type=Application
+Categories=Science;Math;
