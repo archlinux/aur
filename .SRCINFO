@@ -1,0 +1,15 @@
+pkgbase = giws
+	pkgdesc = A wrapper generator to generate C++ mapping Java classes
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = http://forge.scilab.org/index.php/p/giws/
+	arch = i686
+	arch = x86_64
+	license = custom:CeCILL
+	depends = python2
+	depends = python2-lxml
+	source = http://forge.scilab.org/index.php/p/giws/downloads/get/giws-2.0.2.tar.gz
+	md5sums = e750972da23a13968ad87210acfb2635
+
+pkgname = giws
+
