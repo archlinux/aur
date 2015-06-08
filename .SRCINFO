@@ -1,0 +1,59 @@
+pkgbase = virtualbox-ck-modules
+	pkgver = 4.3.28
+	pkgrel = 1
+	url = http://virtualbox.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = linux-ck-headers
+	makedepends = virtualbox-host-dkms>=4.3.28
+	makedepends = virtualbox-guest-dkms>=4.3.28
+	makedepends = dkms
+
+pkgname = virtualbox-ck-host-modules
+	pkgdesc = Host kernel modules for VirtualBox running under Linux-ck.
+	install = host.install
+	depends = linux-ck>=4.0
+	depends = linux-ck<4.1
+	provides = virtualbox-host-modules
+	conflicts = virtualbox-ck-host-modules-atom
+	conflicts = virtualbox-ck-host-modules-barcelona
+	conflicts = virtualbox-ck-host-modules-bulldozer
+	conflicts = virtualbox-ck-host-modules-corex
+	conflicts = virtualbox-ck-host-modules-core2
+	conflicts = virtualbox-ck-host-modules-haswell
+	conflicts = virtualbox-ck-host-modules-broadwell
+	conflicts = virtualbox-ck-host-modules-ivybridge
+	conflicts = virtualbox-ck-host-modules-kx
+	conflicts = virtualbox-ck-host-modules-k10
+	conflicts = virtualbox-ck-host-modules-nehalem
+	conflicts = virtualbox-ck-host-modules-p4
+	conflicts = virtualbox-ck-host-modules-piledriver
+	conflicts = virtualbox-ck-host-modules-pentm
+	conflicts = virtualbox-ck-host-modules-sandybridge
+	conflicts = virtualbox-ck-host-modules-silvermont
+
+pkgname = virtualbox-ck-guest-modules
+	pkgdesc = Guest kernel modules for VirtualBox running under Linux-ck.
+	install = guest.install
+	license = GPL
+	depends = linux-ck>=4.0
+	depends = linux-ck<4.1
+	provides = virtualbox-guest-modules
+	conflicts = virtualbox-ck-guest-modules-atom
+	conflicts = virtualbox-ck-guest-modules-barcelona
+	conflicts = virtualbox-ck-guest-modules-bulldozer
+	conflicts = virtualbox-ck-guest-modules-corex
+	conflicts = virtualbox-ck-guest-modules-core2
+	conflicts = virtualbox-ck-guest-modules-haswell
+	conflicts = virtualbox-ck-guest-modules-broadwell
+	conflicts = virtualbox-ck-guest-modules-ivybridge
+	conflicts = virtualbox-ck-guest-modules-kx
+	conflicts = virtualbox-ck-guest-modules-k10
+	conflicts = virtualbox-ck-guest-modules-nehalem
+	conflicts = virtualbox-ck-guest-modules-p4
+	conflicts = virtualbox-ck-guest-modules-piledriver
+	conflicts = virtualbox-ck-guest-modules-pentm
+	conflicts = virtualbox-ck-guest-modules-sandybridge
+	conflicts = virtualbox-ck-guest-modules-silvermont
+
