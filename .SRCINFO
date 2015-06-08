@@ -1,0 +1,15 @@
+pkgbase = python-aiowsgi
+	pkgdesc = A minimalist wsgi server using asyncio
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://aiowsgi.readthedocs.org/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = unzip
+	depends = python-waitress
+	source = https://pypi.python.org/packages/source/a/aiowsgi/aiowsgi-0.3.zip
+	md5sums = b36b928aec86a9af151edaf1b0645c90
+
+pkgname = python-aiowsgi
+
