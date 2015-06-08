@@ -1,0 +1,20 @@
+pkgbase = psp-zziplib
+	pkgdesc = A lightweight library that offers the ability to easily extract data from files archived in a single zip file (psp)
+	pkgver = 0.13.38
+	pkgrel = 1
+	url = http://zziplib.sourceforge.net
+	arch = any
+	groups = psp
+	license = LGPL,
+	license = MPL
+	makedepends = psp-gcc
+	depends = psp-sdk
+	depends = psp-zlib
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = git+https://github.com/pspdev/psp-ports.git
+	md5sums = SKIP
+
+pkgname = psp-zziplib
+
