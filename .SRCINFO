@@ -1,0 +1,22 @@
+pkgbase = perl-rdf-vcard
+	pkgdesc = convert between RDF and vCard
+	pkgver = 0.010
+	pkgrel = 1
+	url = http://search.cpan.org/dist/RDF-vCard
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.008
+	depends = perl-namespace-clean
+	depends = perl-rdf-trine>=0.135
+	depends = perl-rdf-trinex-functions
+	depends = perl-text-vfile-asdata>=0.07
+	depends = perl-uri
+	depends = perl-xml-libxml>=1.70
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/RDF-vCard-0.010.tar.gz
+	md5sums = 909ebc142784dbd51ab77d2ec84e09a9
+	sha512sums = a6529fca3096a141e8b40977e0224a014046f7a46f947b52a2411f03cbe6a570f9c3618c9043bc397600e8533f471fb9b1a7ba849d361fe4460645a3319fc284
+
+pkgname = perl-rdf-vcard
+
