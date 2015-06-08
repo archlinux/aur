@@ -1,5 +1,5 @@
+# Maintainer: Patrik Plihal <patrik.plihal at gmail dot com>
 # Contributor: Jan Stępień <jstepien@users.sourceforge.net>
-# Contributor: Patrik Plihal <patrik.plihal@gmail.com>
 
 pkgname=nunit2
 pkgver=2.6.4
@@ -10,7 +10,7 @@ license=('custom')
 url="http://www.nunit.com"
 depends=('mono')
 source=("http://github.com/nunit/nunitv2/releases/download/$pkgver/NUnit-$pkgver.zip")
-md5sums=('57b094983ee6c84f0d2e3d7dc0678dca')
+sha256sums=('1bd925514f31e7729ccde40a38a512c2accd86895f93465f3dfe6d0b593d7170')
 
 package() {
   srcdir=$srcdir"/NUnit-$pkgver"
