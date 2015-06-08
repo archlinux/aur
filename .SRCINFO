@@ -1,0 +1,18 @@
+pkgbase = vapoursynth-plugin-bm3d-git
+	pkgdesc = Plugin for Vapoursynth: bm3d (GIT version)
+	pkgver = r3.4.g8636c68
+	pkgrel = 1
+	url = http://forum.doom9.org/showthread.php?t=172172
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = vapoursynth
+	depends = fftw
+	provides = vapoursynth-plugin-bm3d
+	conflicts = vapoursynth-plugin-bm3d
+	source = bm3d::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-BM3D.git
+	sha1sums = SKIP
+
+pkgname = vapoursynth-plugin-bm3d-git
+
