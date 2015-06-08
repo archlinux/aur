@@ -1,0 +1,21 @@
+pkgbase = kpty-git
+	pkgdesc = KPty
+	pkgver = r46.b4630c1
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/kpty
+	arch = i686
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	depends = kcoreaddons-git
+	depends = ki18n-git
+	depends = libutempter
+	provides = kpty
+	conflicts = kpty
+	source = git://anongit.kde.org/kpty.git
+	md5sums = SKIP
+
+pkgname = kpty-git
+
