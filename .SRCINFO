@@ -1,0 +1,30 @@
+pkgbase = amule-daemon
+	pkgdesc = An eMule-like client for the eD2k and Kademlia p2p networks. (Only Daemon, CLI tools and Webserver)
+	pkgver = 10871
+	pkgrel = 1
+	url = http://www.amule.org
+	install = amule-daemon.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = boost
+	depends = wxbase2.8
+	depends = crypto++
+	depends = libupnp
+	depends = libpng
+	optdepends = kamule: AmuleGUI for KDE
+	conflicts = amule
+	options = !ccache
+	source = http://amule.sourceforge.net/tarballs/aMule-SVN-r10871.tar.bz2
+	source = amuled.service
+	source = amuled@.service
+	source = amuleweb.service
+	source = amule.sysuser
+	sha1sums = 97dc76ec98ba4cac2f2d9cb083b865fc152acd0c
+	sha1sums = 3a2b451c3a35ab1745dd88726fe1454bc1227542
+	sha1sums = 4c4638e39f01c782e0e32d950fd29b4a6f4a398a
+	sha1sums = 128049ba8dce9dedc16357b7027736d99d583761
+	sha1sums = 266dd97212b5e269f6c9b0665880cd76e68d83ea
+
+pkgname = amule-daemon
+

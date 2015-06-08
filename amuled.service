@@ -1,0 +1,10 @@
+[Unit]
+Description=aMule Daemon
+After=network.target
+
+[Service]
+User=amule
+ExecStart=/usr/bin/amuled
+
+[Install]
+WantedBy=multi-user.target

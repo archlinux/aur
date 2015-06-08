@@ -1,0 +1,10 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!amule-daemon.install
+!amule.sysuser
+!amuled.service
+!amuled@.service
+!amuleweb.service
+
