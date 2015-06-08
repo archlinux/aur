@@ -1,0 +1,466 @@
+diff -cr alpine-2.00.orig/alpine/send.c alpine-2.00.new/alpine/send.c
+*** alpine-2.00.orig/alpine/send.c	2008-06-30 23:03:35.000000000 +0100
+--- alpine-2.00.new/alpine/send.c	2009-05-01 13:40:37.000000000 +0100
+***************
+*** 4039,4044 ****
+--- 4039,4061 ----
+      pbf = save_previous_pbuf;
+      g_rolenick = NULL;
+  
++     /* Topal: Unmangle the body types. */
++     if ((*body)->type == TYPEMULTIPART 
++ 	&& (*body)->topal_hack == 1) {
++       /* This was a single part message which Topal mangled. */
++       dprint((9, "Topal: unmangling single part message\n"));
++       (*body)->type = TYPETEXT;
++     }
++     if ((*body)->type == TYPEMULTIPART
++ 	&& (*body)->topal_hack != 1
++ 	&& (*body)->nested.part->body.type == TYPEMULTIPART
++ 	&& (*body)->nested.part->body.topal_hack == 1) {
++       /* Topal mangled a multipart message.  So the first nested part
++ 	 is really TYPETEXT. */
++       dprint((9, "Topal: unmangling first part of multipart message\n"));
++       (*body)->nested.part->body.type = TYPETEXT;
++     }
++ 
+      dprint((4, "=== send returning ===\n"));
+  }
+  
+***************
+*** 5365,5386 ****
+  
+  				rfc822_parse_content_header(nb,
+  				    (char *) ucase((unsigned char *) buf+8),s);
+  				if(nb->type == TYPETEXT
+  				   && nb->subtype
+  				   && (!b->subtype 
+  				       || strucmp(b->subtype, nb->subtype))){
+! 				    if(b->subtype)
+! 				      fs_give((void **) &b->subtype);
+! 
+  				    b->subtype  = nb->subtype;
+  				    nb->subtype = NULL;
+! 				      
+  				    mail_free_body_parameter(&b->parameter);
+  				    b->parameter = nb->parameter;
+  				    nb->parameter = NULL;
+  				    mail_free_body_parameter(&nb->parameter);
+  				}
+! 
+  				mail_free_body(&nb);
+  			    }
+  
+--- 5382,5431 ----
+  
+  				rfc822_parse_content_header(nb,
+  				    (char *) ucase((unsigned char *) buf+8),s);
++ 				/* Topal: We're working on the first
++ 				   text segment of the message.  If
++ 				   the filter returns something that
++ 				   isn't TYPETEXT, then we need to
++ 				   pretend (later on) that this is in
++ 				   fact a TYPETEXT, because Topal has
++ 				   already encoded it....
++ 
++ 				   Original code path first, then an
++ 				   alternate path.
++ 				*/
+  				if(nb->type == TYPETEXT
+  				   && nb->subtype
+  				   && (!b->subtype 
+  				       || strucmp(b->subtype, nb->subtype))){
+! 				  if(b->subtype)
+! 				    fs_give((void **) &b->subtype);
+! 				  
+! 				  b->subtype  = nb->subtype;
+! 				  nb->subtype = NULL;
+! 				  
+! 				  mail_free_body_parameter(&b->parameter);
+! 				  b->parameter = nb->parameter;
+! 				  nb->parameter = NULL;
+! 				  mail_free_body_parameter(&nb->parameter);
+! 				} 
+! 				else if(F_ON(F_ENABLE_TOPAL_HACK, ps_global)){
+! 				  /* Perhaps the type isn't TYPETEXT,
+! 				     and the hack is requested.  So,
+! 				     let's mess with the types. */
+! 				  if(nb->type != TYPETEXT){
+! 				    b->type     = nb->type;
+  				    b->subtype  = nb->subtype;
+  				    nb->subtype = NULL;
+! 				    
+! 				    dprint((9, "Topal: mangling body!\n"));
+  				    mail_free_body_parameter(&b->parameter);
+  				    b->parameter = nb->parameter;
+  				    nb->parameter = NULL;
+  				    mail_free_body_parameter(&nb->parameter);
++ 				    b->topal_hack = 1;
++ 				  }
+  				}
+! 				/* Topal: end */
+  				mail_free_body(&nb);
+  			    }
+  
+diff -cr alpine-2.00.orig/imap/src/c-client/mail.h alpine-2.00.new/imap/src/c-client/mail.h
+*** alpine-2.00.orig/imap/src/c-client/mail.h	2008-08-08 18:34:22.000000000 +0100
+--- alpine-2.00.new/imap/src/c-client/mail.h	2009-05-01 13:40:37.000000000 +0100
+***************
+*** 775,780 ****
+--- 775,781 ----
+      unsigned long bytes;	/* size of text in octets */
+    } size;
+    char *md5;			/* MD5 checksum */
++   unsigned short topal_hack;    /* set to 1 if topal has wrecked the sending */
+    void *sparep;			/* spare pointer reserved for main program */
+  };
+  
+diff -cr alpine-2.00.orig/pith/conf.c alpine-2.00.new/pith/conf.c
+*** alpine-2.00.orig/pith/conf.c	2008-08-23 01:07:05.000000000 +0100
+--- alpine-2.00.new/pith/conf.c	2009-05-01 13:40:37.000000000 +0100
+***************
+*** 2794,2799 ****
+--- 2794,2801 ----
+  	 F_SEND_WO_CONFIRM, h_config_send_wo_confirm, PREF_SEND, 0},
+  	{"strip-whitespace-before-send", "Strip Whitespace Before Sending",
+  	 F_STRIP_WS_BEFORE_SEND, h_config_strip_ws_before_send, PREF_SEND, 0},
++  	{"enable-topal-hack", "Enable Topal hack for OpenPGP/MIME messages",
++  	 F_ENABLE_TOPAL_HACK, h_config_enable_topal_hack, PREF_HIDDEN, 0},
+  	{"warn-if-blank-fcc", "Warn if Blank Fcc",
+  	 F_WARN_ABOUT_NO_FCC, h_config_warn_if_fcc_blank, PREF_SEND, 0},
+  	{"warn-if-blank-subject", "Warn if Blank Subject",
+diff -cr alpine-2.00.orig/pith/conftype.h alpine-2.00.new/pith/conftype.h
+*** alpine-2.00.orig/pith/conftype.h	2008-08-20 01:27:11.000000000 +0100
+--- alpine-2.00.new/pith/conftype.h	2009-05-01 13:40:37.000000000 +0100
+***************
+*** 503,508 ****
+--- 503,509 ----
+  	F_MARK_FCC_SEEN,
+  	F_MULNEWSRC_HOSTNAMES_AS_TYPED,
+  	F_STRIP_WS_BEFORE_SEND,
++ 	F_ENABLE_TOPAL_HACK,
+  	F_QUELL_FLOWED_TEXT,
+  	F_COMPOSE_ALWAYS_DOWNGRADE,
+  	F_SORT_DEFAULT_FCC_ALPHA,
+diff -cr alpine-2.00.orig/pith/pine.hlp alpine-2.00.new/pith/pine.hlp
+*** alpine-2.00.orig/pith/pine.hlp	2008-08-23 01:07:05.000000000 +0100
+--- alpine-2.00.new/pith/pine.hlp	2009-05-01 13:40:37.000000000 +0100
+***************
+*** 3205,3211 ****
+  <li><a href="h_config_always_spell_check">FEATURE: <!--#echo var="FEAT_spell-check-before-sending"--></a>
+  <li><a href="h_config_winpos_in_config">FEATURE: <!--#echo var="FEAT_store-window-position-in-config"--></a>
+  <li><a href="h_config_strip_sigdashes">FEATURE: <!--#echo var="FEAT_strip-from-sigdashes-on-reply"--></a>
+! <li><a href="h_config_strip_ws_before_send">FEATURE: <!--#echo var="FEAT_strip-whitespace-before-send"--></a>
+  <li><a href="h_config_quells_asterisks">FEATURE: <!--#echo var="FEAT_suppress-asterisks-in-password-prompt"--></a>
+  <li><a href="h_config_quell_attach_ext_warn">FEATURE: <!--#echo var="FEAT_quell-attachment-extension-warn"--></a>
+  <li><a href="h_config_quell_attach_extra_prompt">FEATURE: <!--#echo var="FEAT_quell-attachment-extra-prompt"--></a>
+--- 3205,3212 ----
+  <li><a href="h_config_always_spell_check">FEATURE: <!--#echo var="FEAT_spell-check-before-sending"--></a>
+  <li><a href="h_config_winpos_in_config">FEATURE: <!--#echo var="FEAT_store-window-position-in-config"--></a>
+  <li><a href="h_config_strip_sigdashes">FEATURE: <!--#echo var="FEAT_strip-from-sigdashes-on-reply"--></a>
+! <li><a href="h_config_strip_ws_before_send">FEATURE: <!--#echo var="FEAT_strip-whitespace-before-send"--></a> 
+! <li><a href="h_config_enable_topal_hack">FEATURE: <!--#echo var="FEAT_enable-topal-hack"--></a>
+  <li><a href="h_config_quells_asterisks">FEATURE: <!--#echo var="FEAT_suppress-asterisks-in-password-prompt"--></a>
+  <li><a href="h_config_quell_attach_ext_warn">FEATURE: <!--#echo var="FEAT_quell-attachment-extension-warn"--></a>
+  <li><a href="h_config_quell_attach_extra_prompt">FEATURE: <!--#echo var="FEAT_quell-attachment-extra-prompt"--></a>
+***************
+*** 28297,28302 ****
+--- 28298,28318 ----
+  &lt;End of help on this topic&gt;
+  </BODY>
+  </HTML>
++ ====== h_config_enable_topal_hack =====
++ <HTML>
++ <HEAD>
++ <TITLE>FEATURE: <!--#echo var="FEAT_enable-topal-hack"--></TITLE>
++ </HEAD>
++ <BODY>
++ <H1>FEATURE: <!--#echo var="FEAT_enable-topal-hack"--></H1>
++ <P>
++ This feature allows Topal (and other sending-filters) to change the
++ MIME type of the email.  This is potentially dangerous because it
++ pretends that multipart emails are plain emails.
++ <P>
++ &lt;End of help on this topic&gt;
++ </BODY>
++ </HTML>
+  ====== h_config_del_from_dot =====
+  <HTML>
+  <HEAD>
+diff -cr alpine-2.00.orig/pith/send.c alpine-2.00.new/pith/send.c
+*** alpine-2.00.orig/pith/send.c	2008-08-06 19:25:58.000000000 +0100
+--- alpine-2.00.new/pith/send.c	2009-05-01 13:40:37.000000000 +0100
+***************
+*** 107,113 ****
+  int        l_flush_net(int);
+  int        l_putc(int);
+  int	   pine_write_header_line(char *, char *, STORE_S *);
+! int	   pine_write_params(PARAMETER *, STORE_S *);
+  char      *tidy_smtp_mess(char *, char *, char *, size_t);
+  int	   lmc_body_header_line(char *, int);
+  int	   lmc_body_header_finish(void);
+--- 107,113 ----
+  int        l_flush_net(int);
+  int        l_putc(int);
+  int	   pine_write_header_line(char *, char *, STORE_S *);
+! int	   pine_write_params(PARAMETER *, STORE_S *, BODY *);
+  char      *tidy_smtp_mess(char *, char *, char *, size_t);
+  int	   lmc_body_header_line(char *, int);
+  int	   lmc_body_header_finish(void);
+***************
+*** 1783,1789 ****
+--- 1783,1791 ----
+      /* set up counts and such to keep track sent percentage */
+      send_bytes_sent = 0;
+      gf_filter_init();				/* zero piped byte count, 'n */
++     dprint((1, "Topal: HERE 1!\n"));
+      send_bytes_to_send = send_body_size(body);	/* count body bytes	     */
++     dprint((1, "Topal: HERE 2!\n"));
+      ps_global->c_client_error[0] = error_buf[0] = '\0';
+      we_cancel = busy_cue(_("Sending mail"),
+  			 send_bytes_to_send ? sent_percent : NULL, 0);
+***************
+*** 1800,1805 ****
+--- 1802,1810 ----
+  
+  #endif
+  
++     dprint((1, "Topal: HERE 3!\n"));
++ 
++ 
+      /*
+       * If the user's asked for it, and we find that the first text
+       * part (attachments all get b64'd) is non-7bit, ask for 8BITMIME.
+***************
+*** 1807,1812 ****
+--- 1812,1818 ----
+      if(F_ON(F_ENABLE_8BIT, ps_global) && (bp = first_text_8bit(body)))
+         smtp_opts |= SOP_8BITMIME;
+  
++     dprint((1, "Topal: HERE 3.1!\n"));
+  #ifdef	DEBUG
+  #ifndef DEBUGJOURNAL
+      if(debug > 5 || (flags & CM_VERBOSE))
+***************
+*** 1870,1886 ****
+--- 1876,1896 ----
+  	  }
+      }
+  
++     dprint((1, "Topal: HERE 4!\n"));
++ 
+      /*
+       * Install our rfc822 output routine 
+       */
+      sending_hooks.rfc822_out = mail_parameters(NULL, GET_RFC822OUTPUT, NULL);
+      (void)mail_parameters(NULL, SET_RFC822OUTPUT, (void *)post_rfc822_output);
++     dprint((1, "Topal: HERE 5!\n"));
+  
+      /*
+       * Allow for verbose posting
+       */
+      (void) mail_parameters(NULL, SET_SMTPVERBOSE,
+  			   (void *) pine_smtp_verbose_out);
++     dprint((1, "Topal: HERE 6!\n"));
+  
+      /*
+       * We do this because we want mm_log to put the error message into
+***************
+*** 1924,1929 ****
+--- 1934,1940 ----
+  
+      ps_global->noshow_error = 0;
+  
++     dprint((1, "Topal: HERE 7!\n"));
+      TIME_STAMP("smtp open", 1);
+      if(sending_stream){
+  	unsigned short save_encoding, added_encoding;
+***************
+*** 2504,2512 ****
+  BODY *
+  first_text_8bit(struct mail_bodystruct *body)
+  {
+!     if(body->type == TYPEMULTIPART)	/* advance to first contained part */
+        body = &body->nested.part->body;
+  
+      return((body->type == TYPETEXT && body->encoding != ENC7BIT)
+  	     ? body : NULL);
+  }
+--- 2515,2526 ----
+  BODY *
+  first_text_8bit(struct mail_bodystruct *body)
+  {
+!   /* Be careful of Topal changes... */
+!     if(body->type == TYPEMULTIPART
+!        && body->topal_hack != 1)	/* advance to first contained part */
+        body = &body->nested.part->body;
+  
++     /* Topal: this bit might not be correct, now. */
+      return((body->type == TYPETEXT && body->encoding != ENC7BIT)
+  	     ? body : NULL);
+  }
+***************
+*** 2879,2884 ****
+--- 2893,2899 ----
+      char *freethis;
+  
+      case TYPEMULTIPART:		/* multi-part */
++       if (body->topal_hack != 1) { /* But only if Topal hasn't touched it! */
+        if(!(freethis=parameter_val(body->parameter, "BOUNDARY"))){
+  	  char tmp[MAILTMPLEN];	/* make cookie not in BASE64 or QUOTEPRINT*/
+  
+***************
+*** 2894,2899 ****
+--- 2909,2915 ----
+        part = body->nested.part;	/* encode body parts */
+        do pine_encode_body (&part->body);
+        while ((part = part->next) != NULL);	/* until done */
++       }
+        break;
+  
+      case TYPETEXT :
+***************
+*** 4252,4258 ****
+  
+      dprint((4, "-- pine_rfc822_output_body: %d\n",
+  	       body ? body->type : 0));
+!     if(body->type == TYPEMULTIPART) {   /* multipart gets special handling */
+  	part = body->nested.part;	/* first body part */
+  					/* find cookie */
+  	for (param = body->parameter; param && !cookie; param = param->next)
+--- 4268,4276 ----
+  
+      dprint((4, "-- pine_rfc822_output_body: %d\n",
+  	       body ? body->type : 0));
+!     if(body->type == TYPEMULTIPART
+!        && body->topal_hack != 1) {   /* multipart gets special handling, 
+! 					unless Topal messed with it */
+  	part = body->nested.part;	/* first body part */
+  					/* find cookie */
+  	for (param = body->parameter; param && !cookie; param = param->next)
+***************
+*** 4342,4351 ****
+  	 * BEFORE applying any encoding (rfc1341: appendix G)...
+  	 * NOTE: almost all filters expect CRLF newlines 
+  	 */
+! 	if(body->type == TYPETEXT
+! 	   && body->encoding != ENCBASE64
+  	   && !so_attr((STORE_S *) body->contents.text.data, "rawbody", NULL)){
+! 	    gf_link_filter(gf_local_nvtnl, NULL);
+  	}
+  
+  	switch (body->encoding) {	/* all else needs filtering */
+--- 4360,4373 ----
+  	 * BEFORE applying any encoding (rfc1341: appendix G)...
+  	 * NOTE: almost all filters expect CRLF newlines 
+  	 */
+! 	if(((body->type == TYPETEXT
+! 	     && body->encoding != ENCBASE64)
+! 	    /* Or if Topal mucked with it... */
+! 	    | (body->type == TYPEMULTIPART && body->topal_hack == 1))
+  	   && !so_attr((STORE_S *) body->contents.text.data, "rawbody", NULL)){
+! 	  if(body->topal_hack == 1) 
+! 	    dprint((9, "Topal: Canonical conversion, although Topal has mangled...\n"));
+! 	  gf_link_filter(gf_local_nvtnl, NULL);
+  	}
+  
+  	switch (body->encoding) {	/* all else needs filtering */
+***************
+*** 4447,4453 ****
+  	  return(pwbh_finish(0, so));
+  	    
+  	if(body->parameter){
+! 	    if(!pine_write_params(body->parameter, so))
+  	      return(pwbh_finish(0, so));
+  	}
+  	else if(!so_puts(so, "; CHARSET=US-ASCII"))
+--- 4469,4475 ----
+  	  return(pwbh_finish(0, so));
+  	    
+  	if(body->parameter){
+! 	    if(!pine_write_params(body->parameter, so, body))
+  	      return(pwbh_finish(0, so));
+  	}
+  	else if(!so_puts(so, "; CHARSET=US-ASCII"))
+***************
+*** 4526,4532 ****
+  		 && so_puts(so, body->disposition.type)))
+  	      return(pwbh_finish(0, so));
+  
+! 	    if(!pine_write_params(body->disposition.parameter, so))
+  	      return(pwbh_finish(0, so));	      
+  
+  	    if(!so_puts(so, "\015\012"))
+--- 4548,4554 ----
+  		 && so_puts(so, body->disposition.type)))
+  	      return(pwbh_finish(0, so));
+  
+! 	    if(!pine_write_params(body->disposition.parameter, so, body))
+  	      return(pwbh_finish(0, so));	      
+  
+  	    if(!so_puts(so, "\015\012"))
+***************
+*** 4588,4594 ****
+   * pine_write_param - convert, encode and write MIME header-field parameters
+   */
+  int
+! pine_write_params(PARAMETER *param, STORE_S *so)
+  {	      
+      for(; param; param = param->next){
+  	int   rv;
+--- 4610,4616 ----
+   * pine_write_param - convert, encode and write MIME header-field parameters
+   */
+  int
+! pine_write_params(PARAMETER *param, STORE_S *so, BODY *body)
+  {	      
+      for(; param; param = param->next){
+  	int   rv;
+***************
+*** 4597,4605 ****
+  
+  	cs = posting_characterset(param->value, NULL, HdrText);
+  	cv = utf8_to_charset(param->value, cs, 0);
+! 	rv = (so_puts(so, "; ")
+! 	      && rfc2231_output(so, param->attribute, cv, (char *) tspecials, cs));
+! 
+  	if(cv && cv != param->value)
+  	  fs_give((void **) &cv);
+  
+--- 4619,4635 ----
+  
+  	cs = posting_characterset(param->value, NULL, HdrText);
+  	cv = utf8_to_charset(param->value, cs, 0);
+! 	if (body->topal_hack == 1
+! 	    && !struncmp(param->attribute, "protocol", 9)) {
+! 	  /* Did Topal introduce more parameters? */
+! 	  dprint((9, "Topal: parameter encoding of protocol, with Topal hack\n"));
+! 	  rv = (so_puts(so, "; \015\012\011")
+! 		&& rfc2231_output(so, param->attribute, cv, (char *) tspecials, cs));
+! 	}
+! 	else
+! 	  rv = (so_puts(so, "; ")
+! 		&& rfc2231_output(so, param->attribute, cv, (char *) tspecials, cs));
+! 	
+  	if(cv && cv != param->value)
+  	  fs_give((void **) &cv);
+  
+***************
+*** 4706,4712 ****
+      long  l = 0L;
+      PART *part;
+  
+!     if(body->type == TYPEMULTIPART) {   /* multipart gets special handling */
+  	part = body->nested.part;	/* first body part */
+  	do				/* for each part */
+  	  l += send_body_size(&part->body);
+--- 4736,4744 ----
+      long  l = 0L;
+      PART *part;
+  
+!     if(body->type == TYPEMULTIPART 
+!        && body->topal_hack != 1) {   /* multipart gets special handling 
+! 					but again, be careful of Topal */
+  	part = body->nested.part;	/* first body part */
+  	do				/* for each part */
+  	  l += send_body_size(&part->body);

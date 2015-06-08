@@ -1,0 +1,45 @@
+diff -cr alpine-2.00.orig/imap/src/c-client/mail.c alpine-2.00.new/imap/src/c-client/mail.c
+*** alpine-2.00.orig/imap/src/c-client/mail.c	2008-06-04 19:39:54.000000000 +0100
+--- alpine-2.00.new/imap/src/c-client/mail.c	2009-04-30 22:34:13.000000000 +0100
+***************
+*** 2712,2717 ****
+--- 2712,2719 ----
+    BODY *b = NIL;
+    PART *pt;
+    unsigned long i;
++   /* Topal hack 2 */
++   mail_fetchstructure (stream,msgno,&b);
+  				/* make sure have a body */
+    if (section && *section && mail_fetchstructure (stream,msgno,&b) && b)
+      while (*section) {		/* find desired section */
+diff -cr alpine-2.00.orig/pith/mailcap.c alpine-2.00.new/pith/mailcap.c
+*** alpine-2.00.orig/pith/mailcap.c	2008-03-18 17:24:31.000000000 +0000
+--- alpine-2.00.new/pith/mailcap.c	2009-04-30 22:35:47.000000000 +0100
+***************
+*** 582,589 ****
+  	 *       typically two scans through the check_extension
+  	 *       mechanism, the mailcap entry now takes precedence.
+  	 */
+! 	if((fname = get_filename_parameter(NULL, 0, body, &e2b.from.ext)) != NULL
+! 	   && e2b.from.ext && e2b.from.ext[0]){
+  	    if(strlen(e2b.from.ext) < sizeof(tmp_ext) - 2){
+  		strncpy(ext = tmp_ext, e2b.from.ext - 1, sizeof(tmp_ext)); /* remember it */
+  		tmp_ext[sizeof(tmp_ext)-1] = '\0';
+--- 582,598 ----
+  	 *       typically two scans through the check_extension
+  	 *       mechanism, the mailcap entry now takes precedence.
+  	 */
+! 	/* Topal hack 2 */
+! 	fname = get_filename_parameter(NULL, 0, body, &e2b.from.ext);
+! 	if (fname == NULL) {
+! 	  if (body->type == TYPEMULTIPART &&
+! 	      ((body->subtype && !strucmp(body->subtype, "signed"))
+! 	       ||(body->subtype && !strucmp(body->subtype, "encrypted"))))
+! 	    fname = cpystr("openpgp.msg");
+! 	}
+! 	
+! 	if(fname != NULL
+!          && e2b.from.ext && e2b.from.ext[0]){
+  	    if(strlen(e2b.from.ext) < sizeof(tmp_ext) - 2){
+  		strncpy(ext = tmp_ext, e2b.from.ext - 1, sizeof(tmp_ext)); /* remember it */
+  		tmp_ext[sizeof(tmp_ext)-1] = '\0';
