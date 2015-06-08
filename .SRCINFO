@@ -1,0 +1,16 @@
+pkgbase = fulgur-git
+	pkgdesc = A complete, graphical and on the fly power manager
+	pkgver = 20150608
+	pkgrel = 1
+	url = https://github.com/davetec/fulgur
+	install = fulgur.install
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-gobject
+	depends = librsvg
+	source = git://github.com/davetec/fulgur.git
+	md5sums = SKIP
+
+pkgname = fulgur-git
+
