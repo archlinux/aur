@@ -1,0 +1,15 @@
+pkgbase = cups-bjnp
+	pkgdesc = CUPS back-end for the canon printers using the proprietary USB over IP BJNP protocol
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://sourceforge.net/projects/cups-bjnp/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cups
+	depends = libcups
+	source = http://downloads.sourceforge.net/sourceforge/cups-bjnp/cups-bjnp-2.0.tar.gz
+	sha256sums = 2acb716680d66f1378cf8dcd45fedf7f72ccc9b66fa80214d6dcb042b5e3c9ab
+
+pkgname = cups-bjnp
+
