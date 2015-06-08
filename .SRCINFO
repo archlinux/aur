@@ -1,0 +1,13 @@
+pkgbase = emacs-dbus-proxy
+	pkgdesc = A framework that makes accessing remote D-Bus objects from Emacs Lisp easier
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://bazaar.launchpad.net/~scymtym/+junk/dbus-proxy/files
+	arch = any
+	license = GPL
+	depends = emacs-dbus-introspection
+	source = http://bazaar.launchpad.net/~scymtym/+junk/dbus-proxy/download/scymtym%40gmx.net-20101004012131-n7iv2ag33hlqc42p/dbusproxy.el-20090825015526-rsd6s9n5ebqeuqwm-2/dbus-proxy.el
+	md5sums = 9e67e25d79800c2e713b3fe233ce1ac2
+
+pkgname = emacs-dbus-proxy
+
