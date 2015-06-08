@@ -1,0 +1,26 @@
+pkgbase = gwenview-git
+	pkgdesc = A fast and easy to use image viewer for KDE
+	pkgver = r5432.be0da0e
+	pkgrel = 1
+	url = http://kde.org/applications/graphics/gwenview/
+	install = gwenview-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = kdoctools
+	makedepends = python
+	depends = kactivities-frameworks
+	depends = kdelibs4support
+	depends = exiv2
+	depends = libkdcraw-frameworks-git
+	depends = libkipi-frameworks-git
+	provides = gwenview
+	conflicts = kdegraphics-gwenview
+	conflicts = gwenview
+	source = git://anongit.kde.org/gwenview.git
+	sha256sums = SKIP
+
+pkgname = gwenview-git
+
