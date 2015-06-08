@@ -1,0 +1,24 @@
+pkgbase = perl-catalyst-plugin-i18n-dbi
+	pkgdesc = Catalyst::Plugin::I18N::DBI - DBI based I18N for Catalyst
+	pkgver = 0.2.5
+	pkgrel = 2
+	url = http://search.cpan.org/dist/Catalyst-Plugin-I18N-DBI/
+	arch = i686
+	arch = x86_64
+	license = perl
+	makedepends = perl
+	depends = perl>=5.10.1
+	depends = perl-moose
+	depends = perl-locale-maketext-lexicon>=0.2.0
+	depends = perl-locale-maketext-lexicon-dbi
+	depends = perl-catalyst-runtime
+	provides = catalyst-plugin-i18n-dbi=0.2.5
+	provides = Catalyst::Plugin::I18N::DBI=0.2.5
+	provides = perl-catalyst-plugin-i18n-dbi=0.2.5
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MD/MDIETRICH/Catalyst-Plugin-I18N-DBI-v0.2.5.tar.gz
+	md5sums = f60e588ecf969e9c77f30aa331e9ab63
+	sha512sums = d4f6315fe195548b4a204094bb26f03fd812998f1710b7adc971bf724ed05506bf3b53d44152be186d6789759f8ac4cfb77febbff73b09fffb401984f3bf4f1b
+
+pkgname = perl-catalyst-plugin-i18n-dbi
+
