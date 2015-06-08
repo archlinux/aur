@@ -1,0 +1,4 @@
+post_install() {
+	echo "Notice: If you have the full version of the game, you can copy the files into the ~/.th07" 
+}
+

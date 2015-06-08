@@ -1,0 +1,26 @@
+pkgbase = th07
+	pkgdesc = Perfect cherry blossom trial version. Seventh game of the Touhou Project series. (via wine)
+	pkgver = 0.11
+	pkgrel = 3
+	url = http://www16.big.or.jp/~zun/html/th07.html
+	install = th07.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = lha
+	optdepends = timidity++: to get MIDI background music
+	noextract = youmu_tr011.lzh
+	options = !strip
+	source = th07.sh
+	source = th07.desktop
+	source = license
+	source = th07.xpm
+	source = http://www16.big.or.jp/~zun/data/soft/youmu_tr011.lzh
+	md5sums = b5fb7535a1ad78b53fd0bc6cdd5bd018
+	md5sums = 35d37eb00a1f7e6fc265f47e639ddfbc
+	md5sums = 5de1cb787942308b7620f93a176367d9
+	md5sums = ecdec576d60c662738e2495947543b95
+	md5sums = 05360e859c1a3ca173b9d57d96a45b9b
+
+pkgname = th07
+

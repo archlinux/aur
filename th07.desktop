@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=0.11
+Type=Application
+Name=Touhou: Perfect Cherry Blossom
+Comment=7th game of the Touhou Project
+Exec=/usr/bin/th07
+Encoding=UTF-8
+Icon=/usr/share/pixmaps/th07.xpm
+Categories=Game;
+Terminal=false
+StartupNotify=false
