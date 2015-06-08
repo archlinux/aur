@@ -1,0 +1,17 @@
+pkgbase = kde-thumbnailer-wmf
+	pkgdesc = WMF thumbnailer plugin for KDE 4.x.
+	pkgver = 2.1
+	pkgrel = 2
+	url = http://kde-apps.org/content/show.php/KDE+WMF+Thumbnailer?content=141852
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = automoc4
+	makedepends = cmake
+	depends = libwmf
+	depends = kdelibs
+	source = kde-thumbnailer-wmf-2.1.tar.bz2::http://kde-apps.org/CONTENT/content-files/141852-kde-thumbnailer-wmf-2.1.tar.bz2
+	sha256sums = 4e31a8f09af66f75f43bdfb7927f229f24d214e67e5bfc210fab4dd0b75f6011
+
+pkgname = kde-thumbnailer-wmf
+
