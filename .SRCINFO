@@ -1,0 +1,19 @@
+pkgbase = mopidy-spotify
+	pkgdesc = Mopidy extension for playing music from Spotify
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = http://www.mopidy.com
+	arch = any
+	license = APACHE
+	makedepends = python2
+	depends = mopidy>=1.0
+	depends = python2-pykka>=1.1
+	depends = pyspotify>=1.9
+	depends = pyspotify<2
+	depends = python2-setuptools
+	provides = mopidy-spotify
+	source = https://github.com/mopidy/mopidy-spotify/archive/v1.4.0.tar.gz
+	md5sums = 11aea06f45de81b544d25b1137a685ed
+
+pkgname = mopidy-spotify
+
