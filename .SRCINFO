@@ -1,0 +1,20 @@
+pkgbase = smokeqt-git
+	pkgdesc = Language independent library for Qt bindings
+	pkgver = 20150630
+	pkgrel = 1
+	url = http://kde.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = git
+	depends = qimageblitz
+	depends = qscintilla
+	depends = smokegen-git
+	conflicts = kdebindings-smokeqt
+
+pkgname = smokeqt-git
+
