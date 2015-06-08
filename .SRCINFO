@@ -1,0 +1,21 @@
+pkgbase = vdr-radio
+	pkgdesc = Display an background image while the vdr is switched to radio channels
+	pkgver = 1.0.0
+	pkgrel = 16
+	url = http://www.egal-vdr.de/plugins/
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	depends = gcc-libs
+	depends = vdr-api=2.2.0
+	backup = etc/vdr/conf.avail/50-radio.conf
+	source = http://egal-vdr.de/plugins/vdr-radio-1.0.0.tgz
+	source = 50-radio.conf
+	md5sums = c654f7ddeb37aa8088b504d7e2be88ce
+	md5sums = bbb81b2f18c2ee2d54b501e778c00b01
+
+pkgname = vdr-radio
+
