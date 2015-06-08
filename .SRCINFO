@@ -1,0 +1,14 @@
+pkgbase = oh-my-zsh-syntax-highlighting-git
+	pkgdesc = ZSH syntax highlighting packaged for use with Oh My ZSH
+	pkgver = 0.1.3.3.ge5d8a50
+	pkgrel = 1
+	url = https://github.com/zsh-users/zsh-syntax-highlighting
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = zsh
+	source = git://github.com/zsh-users/zsh-syntax-highlighting.git
+	sha256sums = SKIP
+
+pkgname = oh-my-zsh-syntax-highlighting-git
+
