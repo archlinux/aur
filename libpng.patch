@@ -1,0 +1,20 @@
+diff -Naur hp2xx-3.4.4.orig/sources/png.c hp2xx-3.4.4.new/sources/png.c
+--- hp2xx-3.4.4.orig/sources/png.c	2014-06-26 17:30:18.661919903 +0200
++++ hp2xx-3.4.4.new/sources/png.c	2014-06-26 17:32:10.554634712 +0200
+@@ -5,6 +5,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include "to_png.h"
++#include <zlib.h>
+ #include <png.h>
+ 
+ #define PDNCOL 256
+@@ -36,7 +37,7 @@
+ 	}
+ 
+ 	/* set up error handlimg for libpng */
+-	if (setjmp(png_ptr->jmpbuf)) {
++	if (setjmp(png_jmpbuf(png_ptr))) {
+ 		png_destroy_write_struct(&png_ptr, &info_ptr);
+ 		return;
+ 	}

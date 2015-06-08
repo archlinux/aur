@@ -1,0 +1,20 @@
+pkgbase = hp2xx
+	pkgdesc = Convert vector-oriented graphics data from HP-GL plotter language into a variety of popular graphics formats.
+	pkgver = 3.4.4
+	pkgrel = 3
+	url = http://www.gnu.org/software/hp2xx/
+	install = hp2xx.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libpng
+	depends = libtiff
+	depends = libjpeg
+	depends = libx11
+	source = http://ftpmirror.gnu.org/hp2xx/hp2xx-3.4.4.tar.gz
+	source = libpng.patch
+	md5sums = 18808580d24b7caf2c4c7045c093329f
+	md5sums = 22d577c7f10ada9370e06cf095af9ae9
+
+pkgname = hp2xx
+
