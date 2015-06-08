@@ -1,0 +1,14 @@
+pkgbase = eclipse-jadclipse
+	pkgdesc = JadClipse is a plug-in that seamlessly integrates Jad (the fast Java decompiler) with Eclipse.
+	pkgver = 3.3.0
+	pkgrel = 3
+	url = http://jadclipse.sourceforge.net/
+	arch = any
+	license = CPL
+	depends = eclipse
+	depends = jad
+	source = http://prdownloads.sourceforge.net/jadclipse/net.sf.jadclipse_3.3.0.jar
+	md5sums = 7228a814ad218aa16808ece80407d364
+
+pkgname = eclipse-jadclipse
+
