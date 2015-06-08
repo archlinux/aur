@@ -1,0 +1,15 @@
+pkgbase = bsvc_etsiinf-upm
+	pkgdesc = Motorola MC68000 simulator precompiled by the Department of Architecture and Technology Information Systems (DATSI) of the School of Computer Engineers (ETSIInf) at the Technical University of Madrid (UPM).
+	pkgver = 2.1+
+	pkgrel = 2
+	url = http://www.datsi.fi.upm.es/docencia/Arquitectura_09/Proyecto_E_S/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = tk
+	depends = xterm
+	source = http://www.datsi.fi.upm.es/docencia/Arquitectura_09/Proyecto_E_S/bsvc-2.1+_Estatica.tar.gz
+	sha256sums = 0e6f20b2eaa6cc64ae84cae480f4dc5db7dd797a704e7ce2f99e6c75798523a2
+
+pkgname = bsvc_etsiinf-upm
+
