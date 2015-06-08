@@ -1,0 +1,16 @@
+pkgbase = epson-inkjet-printer-stylus-photo-t50-series
+	pkgdesc = Epson printer driver (Artisan 50 / Stylus Photo P50, T50, T59, T60)
+	pkgver = 1.0.1
+	pkgrel = 8
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom:Epson Licence Agreement
+	depends = cups
+	depends = ghostscript
+	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-stylus-photo-t50-series-1.0.1-1lsb3.2.src.rpm
+	sha256sums = 4b6915b8b788bd390664370d13f81b282387bb420bc05d31db5a88d93f7cf1bd
+
+pkgname = epson-inkjet-printer-stylus-photo-t50-series
+
