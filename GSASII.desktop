@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Terminal=true
+Exec=/opt/gsas2/gsas2
+Name=GSAS II
+Icon=/opt/gsas2/gsas2.png
+Categories=Science;

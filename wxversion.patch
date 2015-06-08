@@ -1,0 +1,13 @@
+*** GSASII.py	2014-04-23 14:50:53.990248150 +0000
+--- GSASII-new.py	2014-04-23 14:50:36.393581085 +0000
+***************
+*** 27,32 ****
+--- 27,34 ----
+  import inspect
+  import numpy as np
+  import scipy as sp
++ import wxversion
++ wxversion.select('2.8')
+  import wx
+  import matplotlib as mpl
+  try:
