@@ -1,0 +1,16 @@
+pkgbase = epson-inkjet-printer-201208w
+	pkgdesc = Epson printer driver (XP-600, XP-700, XP-800)
+	pkgver = 1.0.0
+	pkgrel = 8
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom:Epson Licence Agreement
+	depends = cups
+	depends = ghostscript
+	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201208w-1.0.0-1lsb3.2.src.rpm
+	sha256sums = 7dc4b4415fe145306ca5e3fa1c3ed789291ae499ac5d699d1983e0d5bd445ee4
+
+pkgname = epson-inkjet-printer-201208w
+
