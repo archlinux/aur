@@ -1,0 +1,8 @@
+post_install() {
+    echo " Desktop endtry seems to work fine on KDE:"
+    echo " /usr/share/applications/amdtfset.desktop "
+}
+
+post_upgrade() {
+    post_install
+}

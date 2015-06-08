@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=amdtfset
+GenericName=AMD Tear Free Set
+Comment=set and query the tear free desktop option
+Icon=amdtfset
+Exec=test $(amdtfset | grep -c dis) == 1 && amdtfset on || amdtfset off ; amdtfset; echo "Terminal will close in 2 seconds..."; sleep 2
+Terminal=true
+Categories=Settings

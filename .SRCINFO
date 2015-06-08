@@ -1,0 +1,23 @@
+pkgbase = amdtfset-git
+	pkgdesc = Small command-line utility to set and query the tear free desktop option present in the AMD Catalyst. Uses AMD ADL
+	pkgver = v1.0
+	pkgrel = 1
+	url = https://github.com/sebth/amdtfset
+	install = amdtfset-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = sed
+	depends = catalyst-utils
+	provides = amdtfset
+	conflicts = amdtfset
+	source = amdtfset::git+https://github.com/sebth/amdtfset.git
+	source = amdtfset.png
+	source = amdtfset.desktop
+	md5sums = SKIP
+	md5sums = ef868543996c642350b7487d1b6b90e0
+	md5sums = 25173396024bd34fa98161b864c8a2a1
+
+pkgname = amdtfset-git
+
