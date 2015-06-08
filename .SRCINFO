@@ -1,0 +1,26 @@
+pkgbase = btrfs-progs-git
+	pkgdesc = Btrfs filesystem utilities
+	pkgver = 4.0.1_r70_g6044757
+	pkgrel = 1
+	url = http://btrfs.wiki.kernel.org/index.php/Main_Page
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = asciidoc
+	makedepends = xmlto
+	depends = glibc
+	depends = e2fsprogs
+	depends = lzo2
+	depends = zlib
+	provides = btrfs-progs
+	conflicts = btrfs-progs
+	source = btrfs-progs-unstable::git+http://repo.or.cz/r/btrfs-progs-unstable/devel.git#branch=devel
+	source = initcpio-hook-btrfs::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/initcpio-hook-btrfs?h=packages/btrfs-progs
+	source = initcpio-install-btrfs::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/initcpio-install-btrfs?h=packages/btrfs-progs
+	md5sums = SKIP
+	md5sums = b09688a915a0ec8f40e2f5aacbabc9ad
+	md5sums = 7241ba3a4286d08da0d50b7176941112
+
+pkgname = btrfs-progs-git
+
