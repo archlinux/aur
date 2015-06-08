@@ -1,0 +1,46 @@
+pkgbase = q4wine-git
+	pkgdesc = A Qt GUI for Wine. (GIT Version)
+	pkgver = v1.1.r2.21.ge53bf78
+	pkgrel = 1
+	url = http://sourceforge.net/projects/q4wine/
+	install = q4wine-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	makedepends = qt4
+	makedepends = qt5-tools
+	makedepends = icoutils
+	makedepends = qt-solutions
+	source = git://github.com/brezerk/q4wine.git
+	sha1sums = SKIP
+
+pkgname = q4wine-qt4-git
+	pkgdesc = A Qt GUI for Wine. Qt4 build (GIT Version)
+	install = q4wine-git.install
+	depends = qt4
+	depends = wine
+	depends = icoutils
+	optdepends = winetricks: Tweak wine
+	optdepends = fuseiso: Mount ISO files
+	provides = q4wine
+	provides = q4wine-qt4
+	conflicts = q4wine
+	conflicts = q4wine-qt5
+
+pkgname = q4wine-qt5-git
+	pkgdesc = A Qt GUI for Wine. Qt5 build (GIT Version)
+	install = q4wine-git.install
+	depends = qt5-base
+	depends = wine
+	depends = icoutils
+	depends = hicolor-icon-theme
+	depends = qt-solutions
+	optdepends = winetricks: Tweak wine
+	optdepends = fuseiso: Mount ISO files
+	provides = q4wine
+	provides = q4wine-qt5
+	conflicts = q4wine
+	conflicts = q4wine-qt4
+
