@@ -1,0 +1,15 @@
+pkgbase = mailcrypt
+	pkgdesc = Emacs interface to PGP and GnuPG
+	pkgver = 3.5.9
+	pkgrel = 5
+	url = http://mailcrypt.sourceforge.net/
+	install = mailcrypt.install
+	arch = any
+	license = GPL
+	makedepends = texlive-plainextra
+	depends = emacs
+	source = http://downloads.sourceforge.net/sourceforge/mailcrypt/mailcrypt-3.5.9.tar.gz
+	md5sums = 18c0dea5dde0fc73168f4815df0d9db0
+
+pkgname = mailcrypt
+
