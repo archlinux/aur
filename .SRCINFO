@@ -1,0 +1,14 @@
+pkgbase = emacs-xlicense
+	pkgdesc = eXtra License mode for Emacs
+	pkgver = 2014_07_08
+	pkgrel = 1
+	url = http://www.emacswiki.org/emacs/ExtraLicense
+	install = emacs-xlicense.install
+	arch = any
+	license = GPL3
+	depends = licenses
+	source = git+https://github.com/stefanhusmann/arch-xlicense
+	md5sums = SKIP
+
+pkgname = emacs-xlicense
+
