@@ -1,0 +1,19 @@
+pkgbase = haskell-opengl
+	pkgdesc = A binding for the OpenGL graphics system
+	pkgver = 2.11.1.0
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/OpenGL
+	install = haskell-opengl.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = haskell-gluraw>=1.3.0.0
+	depends = haskell-openglraw>=2.1
+	depends = haskell-text
+	options = strip
+	source = http://hackage.haskell.org/packages/archive/OpenGL/2.11.1.0/OpenGL-2.11.1.0.tar.gz
+	md5sums = 2ec2bd4abed1d6e2cbf3d3521b865f6a
+
+pkgname = haskell-opengl
+
