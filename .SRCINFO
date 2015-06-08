@@ -1,0 +1,22 @@
+pkgbase = folder-color-nautilus-bzr
+	pkgdesc = Folder color switcher for nautilus with gnome icon- numix, vibrancy or humanity skin.
+	pkgver = 0.0.78
+	pkgrel = 1
+	url = http://foldercolor.tuxfamily.org/
+	install = folder-color-nautilus-bzr.install
+	arch = any
+	license = GPL3
+	makedepends = bzr
+	makedepends = python-distutils-extra
+	makedepends = python-setuptools
+	depends = python-nautilus
+	depends = nautilus
+	depends = gtk2
+	optdepends = numix-icon-theme-git: to use with numix theme
+	optdepends = humanitycolors-icon-theme: to use with humanity theme
+	optdepends = vibrancy-colors: to use with vibrancy theme
+	source = folder-color-nautilus-bzr::bzr+http://bazaar.launchpad.net/~costales/folder-color/trunk
+	sha256sums = SKIP
+
+pkgname = folder-color-nautilus-bzr
+
