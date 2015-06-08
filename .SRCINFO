@@ -1,0 +1,17 @@
+pkgbase = python-graph
+	pkgdesc = python-graph is a library for working graphs in Python
+	pkgver = 1.8.2
+	pkgrel = 3
+	url = https://github.com/pmatiello/python-graph
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-distribute
+	depends = python-pydot
+	source = https://pypi.python.org/packages/source/p/python-graph-core/python-graph-core-1.8.2.tar.gz
+	source = https://pypi.python.org/packages/source/p/python-graph-dot/python-graph-dot-1.8.2.tar.gz
+	md5sums = 16f177496beb6e6bc507b12b8346ff96
+	md5sums = 0ecd251a9fd210a9135e1d1957689709
+
+pkgname = python-graph
+
