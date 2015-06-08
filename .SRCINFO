@@ -1,0 +1,17 @@
+pkgbase = mopidy-alsamixer
+	pkgdesc = Mopidy extension for ALSA volume control
+	pkgver = 1.0.3
+	pkgrel = 2
+	url = http://www.mopidy.com
+	arch = any
+	license = APACHE
+	makedepends = python2
+	depends = mopidy>=0.19
+	depends = python2-pykka>=1.1
+	depends = python2-setuptools
+	depends = python2-pyalsaaudio
+	source = https://github.com/mopidy/mopidy-alsamixer/archive/v1.0.3.tar.gz
+	md5sums = 1c8626f85615d2d3644e854dac8cce73
+
+pkgname = mopidy-alsamixer
+
