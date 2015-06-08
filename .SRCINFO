@@ -1,0 +1,16 @@
+pkgbase = epson-inkjet-printer-ep-702a
+	pkgdesc = Epson printer driver (EP-702A)
+	pkgver = 1.0.0
+	pkgrel = 8
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom:Epson Licence Agreement
+	depends = cups
+	depends = ghostscript
+	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-ep-702a-1.0.0-1lsb3.2.src.rpm
+	sha256sums = e37b144842a2fb5643d8ac9bc4bee66b6d24601a8793773022b990c921346670
+
+pkgname = epson-inkjet-printer-ep-702a
+
