@@ -1,0 +1,25 @@
+pkgbase = vdr-xvdr
+	pkgdesc = VDR plugin to handle XBMC clients
+	pkgver = 0.9.9_64_gb300fc3
+	pkgrel = 2
+	url = https://github.com/pipelka/vdr-plugin-xvdr
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	makedepends = git
+	depends = gcc-libs
+	depends = vdr-api=2.2.0
+	optdepends = vdr-wirbelscan: Support channel searches with XBMC
+	backup = var/lib/vdr/plugins/xvdr/allowed_hosts.conf
+	backup = var/lib/vdr/plugins/xvdr/xvdr.conf
+	backup = etc/vdr/conf.avail/50-xvdr.conf
+	source = git+https://github.com/pipelka/vdr-plugin-xvdr.git#commit=b300fc3572f31ec3ed73929bc0b4044f2b144161
+	source = 50-xvdr.conf
+	md5sums = SKIP
+	md5sums = 5927a0c16043a43af28d0a07b88a8dc4
+
+pkgname = vdr-xvdr
+
