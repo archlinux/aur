@@ -1,0 +1,15 @@
+pkgbase = epstool
+	pkgdesc = Utility to create or extract preview images in EPS files, fix bounding boxes and convert to bitmaps
+	pkgver = 3.08
+	pkgrel = 4
+	url = http://pages.cs.wisc.edu/~ghost/gsview/epstool.htm
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://ftp.de.debian.org/debian/pool/main/e/epstool/epstool_3.08+repack.orig.tar.gz
+	source = gcc43.patch
+	md5sums = 465a57a598dbef411f4ecbfbd7d4c8d7
+	md5sums = 7fdf8e6ecd866c8804a7ca4359a16459
+
+pkgname = epstool
+
