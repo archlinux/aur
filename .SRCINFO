@@ -1,0 +1,15 @@
+pkgbase = ev3
+	pkgdesc = C++ library to compute symbolic derivatives
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/xantares/ev3
+	arch = i686
+	arch = x86_64
+	license = CPL
+	makedepends = cmake
+	depends = gcc-libs
+	source = git+https://github.com/xantares/ev3.git
+	md5sums = SKIP
+
+pkgname = ev3
+
