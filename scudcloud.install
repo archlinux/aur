@@ -1,0 +1,22 @@
+post_install() {
+  which xdg-icon-resource 1>/dev/null 2>/dev/null && xdg-icon-resource forceupdate || true
+}
+
+post_upgrade() {
+  OLD_VERSION=$2
+
+  if [[ "$OLD_VERSION" < "1.0.27" ]]; then
+    echo
+    echo "  ########################################"
+    echo "  #                                      #"
+    echo "  #               NOTICE                 #"
+    echo "  #                                      #"
+    echo "  # ScudCloud configuration has moved!   #"
+    echo "  #                                      #"
+    echo "  # Please move the ~/.scudcloud file to #"
+    echo "  # ~/.config/scudcloud/scudcloud.cfg    #"
+    echo "  #                                      #"
+    echo "  ########################################"
+    echo
+  fi
+}
