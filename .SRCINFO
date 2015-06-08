@@ -1,0 +1,15 @@
+pkgbase = weeplugins-git
+	pkgdesc = WeeChat plugins: NickServ handling, trigger commands on messages, command to send text/command to specific buffer
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/jjk-jacky/weeplugins
+	arch = i686
+	arch = x86_64
+	license = GPL3+
+	makedepends = git
+	depends = weechat
+	source = git+https://github.com/jjk-jacky/weeplugins.git
+	md5sums = SKIP
+
+pkgname = weeplugins-git
+
