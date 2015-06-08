@@ -1,0 +1,15 @@
+pkgbase = coin-or-vol
+	pkgdesc = COIN-OR Volume Algorithm
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://projects.coin-or.org/Vol
+	arch = i686
+	arch = x86_64
+	groups = coin-or
+	license = EPL
+	depends = coin-or-osi
+	source = http://www.coin-or.org/download/source/Vol/Vol-1.5.0.tgz
+	sha1sums = e53dd21eb28fb5a60ed39492d054cceafeb39ddf
+
+pkgname = coin-or-vol
+
