@@ -1,0 +1,14 @@
+pkgbase = kdeartwork-wallpapers-archlinux-caledonia
+	pkgdesc = Arch Linux Caledonia Wallpaper
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://malisremac.deviantart.com/art/Arch-Linux-Caledonia-311824516
+	arch = any
+	license = CCPL
+	depends = kdebase-workspace
+	optdepends = caledonia-bundle: A bundle with all Caledonia customizations
+	source = archlinux-caledonia.zip::https://copy.com/FD9JKQwErBknZQkY%2FArch+Linux+Caledonia.zip?download=1
+	sha256sums = ff749678ee022a8bcdb9f2ad10153f492d23e9eb06137f037120ede5d2ceb0a3
+
+pkgname = kdeartwork-wallpapers-archlinux-caledonia
+
