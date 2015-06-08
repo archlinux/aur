@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Touhou Koumakyou - Embodiment of Scarlet Devil; PyTouhou version
+Comment=Sixth game of the Touhou Project series
+Exec=/usr/bin/th06-demo-pytouhou
+Icon=th06-demo
+Categories=Game;
+Terminal=false
+StartupNotify=false

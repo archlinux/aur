@@ -1,0 +1,33 @@
+pkgbase = th06-demo
+	pkgver = 0.13
+	pkgrel = 3
+	url = http://www16.big.or.jp/~zun/html/th06.html
+	arch = any
+	license = custom
+	makedepends = convmv
+	makedepends = icoutils
+	source = http://www16.big.or.jp/~zun/data/soft/kouma_tr013.lzh
+	source = th06-demo-wine.desktop
+	source = th06-demo-wine.sh
+	source = th06-demo-pytouhou.desktop
+	source = th06-demo-pytouhou.sh
+	sha1sums = dfeb4dd358c6613ec4d8b701d41672ca75b6a0c9
+	sha1sums = 333378812ca70ba6c075abef71e6743e8cd331ca
+	sha1sums = 96bdc21f1e4f14bfeb19ff7025e83e658ec50f33
+	sha1sums = 93d2273e95886b29dfd94af22a485b0b50706ba8
+	sha1sums = 4591e137f7948508140c5014d11eacad41b63b0d
+
+pkgname = th06-demo-data
+	pkgdesc = Embodiment of Scarlet Devil trial version. Sixth game of the Touhou Project series; data files.
+
+pkgname = th06-demo-wine
+	pkgdesc = Embodiment of Scarlet Devil trial version. Sixth game of the Touhou Project series; Wine version.
+	depends = th06-demo-data
+	depends = wine
+	optdepends = timidity++: for MIDI musics
+
+pkgname = th06-demo-pytouhou
+	pkgdesc = Embodiment of Scarlet Devil trial version. Sixth game of the Touhou Project series; PyTouhou version.
+	depends = th06-demo-data
+	depends = pytouhou-hg
+
