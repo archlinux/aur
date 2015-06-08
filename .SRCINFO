@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-yadifmod-git
+	pkgdesc = Plugin for Vapoursynth: yadifmod (GIT Version)
+	pkgver = r7.3.gff545ec
+	pkgrel = 1
+	url = http://forum.doom9.org/showthread.php?t=171028
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = vapoursynth
+	provides = vapoursynth--plugin-yadifmod
+	conflicts = vapoursynth-plugin-yadifmod
+	source = yadifmod::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-Yadifmod.git
+	sha1sums = SKIP
+
+pkgname = vapoursynth-plugin-yadifmod-git
+
