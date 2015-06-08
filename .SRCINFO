@@ -1,0 +1,13 @@
+pkgbase = bash-complete-more-git
+	pkgdesc = More bash completion scripts
+	pkgver = r2.b9d1fa4
+	pkgrel = 1
+	url = https://github.com/arthurzam/bash-complete-more
+	arch = any
+	license = GPL2
+	depends = bash-completion
+	source = bash-complete-more::git+git://github.com/arthurzam/bash-complete-more.git
+	sha1sums = SKIP
+
+pkgname = bash-complete-more-git
+
