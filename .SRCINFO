@@ -1,0 +1,17 @@
+pkgbase = lib32-gsm
+	pkgdesc = Shared libraries for GSM 06.10 lossy speech compression
+	pkgver = 1.0.14
+	pkgrel = 1
+	url = http://www.quut.com/gsm/
+	arch = x86_64
+	license = custom
+	makedepends = gcc-multilib
+	depends = glibc
+	depends = gsm
+	source = http://www.quut.com/gsm/gsm-1.0.14.tar.gz
+	source = gsm.patch
+	sha256sums = 5814a16a30b3c026871b3739812dc4a2a84299331182c987da1c212c93e9352c
+	sha256sums = f2883e05bfe7faa6298c61bd68fbf99fed6b5e1024267547667ca859d33b74a1
+
+pkgname = lib32-gsm
+
