@@ -1,0 +1,15 @@
+pkgbase = popstation
+	pkgdesc = Play PSX Games in Sony PSP, One Disc Games
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = http://dark-alex.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = zlib
+	options = !buildflags
+	source = http://leandroufcgprojects.googlecode.com/files/popstation-1.0.0.tar.gz
+	sha1sums = 0c16b9d7846fa1b62fdafc756478b34d524baf33
+
+pkgname = popstation
+
