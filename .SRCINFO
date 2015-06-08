@@ -1,0 +1,17 @@
+pkgbase = lib32-rest
+	pkgdesc = A helper library for RESTful services (lib32)
+	pkgver = 0.7.93
+	pkgrel = 1
+	url = http://www.gtk.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = gobject-introspection
+	depends = rest
+	depends = lib32-glib2
+	depends = lib32-libxml2
+	depends = lib32-libsoup
+	source = http://download.gnome.org/sources/rest/0.7/rest-0.7.93.tar.xz
+	md5sums = 1c276e7808edf8e2e49ed854f741cd40
+
+pkgname = lib32-rest
+
