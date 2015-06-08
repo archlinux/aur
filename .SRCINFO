@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-hmat-oss
+	pkgdesc = A hierarchical matrix C/C++ library (mingw-w64)
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://github.com/jeromerobert/hmat-oss
+	arch = any
+	license = GPL
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-cblas
+	depends = mingw-w64-lapack
+	options = !buildflags
+	options = staticlibs
+	options = !strip
+	source = https://github.com/jeromerobert/hmat-oss/archive/1.0.7.tar.gz
+	md5sums = 9317e4cc96686798127a51779dc02021
+
+pkgname = mingw-w64-hmat-oss
+
