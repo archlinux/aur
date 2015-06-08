@@ -1,0 +1,34 @@
+pkgbase = split2flac-git
+	pkgdesc = Split flac/ape/wv/wav + cue sheet into separate tracks. Git version.
+	pkgver = 130.2bbf955
+	pkgrel = 1
+	url = https://github.com/ftrvxmtrx/split2flac
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = cuetools
+	depends = shntool
+	depends = flac
+	optdepends = aacgain: to adjust gain in m4a
+	optdepends = enca: to automatically detect charset if not UTF8
+	optdepends = faac: to split into m4a
+	optdepends = flac: for flac replay gain support
+	optdepends = flake: faster FLAC encoding
+	optdepends = mac: to split APE format
+	optdepends = id3lib: to set tags in mp3 (unicode not supported)
+	optdepends = imagemagick: to convert/resize album cover images
+	optdepends = lame: to split into mp3
+	optdepends = mutagen: to split into mp3
+	optdepends = libmp4v2: to split into m4a
+	optdepends = mp3gain: mp3 volume normalization
+	optdepends = mutagen: to set tags in mp3 (with unicode support)
+	optdepends = ttaenc: to convert to TrueAudio
+	optdepends = vorbis-tools: to split into ogg vorbis
+	optdepends = vorbisgain: ogg vorbis volume normalization
+	optdepends = wavpack: to split WV
+	conflicts = split2flac
+	source = git://github.com/ftrvxmtrx/split2flac.git
+	sha256sums = SKIP
+
+pkgname = split2flac-git
+
