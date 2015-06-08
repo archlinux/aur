@@ -1,0 +1,13 @@
+pkgbase = wallpapers-malcer-bundle
+	pkgdesc = Wallpapers designed by Malcer (DE independent)
+	pkgver = 20150411
+	pkgrel = 1
+	url = http://malcer.deviantart.com/gallery/42384526/Wallpapers
+	arch = any
+	license = CCPL:by-nc-sa
+	conflicts = caledonia-bundle
+	source = wallpapers-malcer-bundle.tar.xz::https://copy.com/waPpXYdhhoNZUWdi/wallpapers-malcer-bundle.tar.xz?download=1
+	sha256sums = 9be745f6d4b8bbe72fbffb7bd80309e1d75c620a03c00e92578219f6f28b407a
+
+pkgname = wallpapers-malcer-bundle
+
