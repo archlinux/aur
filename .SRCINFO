@@ -1,0 +1,15 @@
+pkgbase = aften
+	pkgdesc = Audio encoder which generates compressed audio streams based on ATSC A/52 specification.
+	pkgver = 0.0.8
+	pkgrel = 2
+	url = http://aften.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = glibc
+	source = http://downloads.sourceforge.net/aften/aften-0.0.8.tar.bz2
+	sha1sums = 1ff73cdcade0624495ad807492cecf14862fb61c
+
+pkgname = aften
+
