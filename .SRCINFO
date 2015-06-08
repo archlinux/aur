@@ -1,0 +1,33 @@
+pkgbase = wxpython-light
+	pkgdesc = A wxWidgets GUI toolkit for Python (GNOME/GStreamer free!)
+	pkgver = 3.0.2.0
+	pkgrel = 1
+	url = http://www.wxpython.org
+	arch = i686
+	arch = x86_64
+	license = custom:wxWindows
+	makedepends = git
+	makedepends = svn
+	makedepends = mesa
+	depends = wxgtk-light
+	depends = python2-opengl
+	depends = python2-cairo
+	provides = wxpython
+	conflicts = wxpython
+	source = git+https://github.com/wxWidgets/wxPython.git#tag=wxPy-3.0.2.0
+	source = svn+http://svn.wxwidgets.org/svn/wx/wxPython/3rdParty/AGW/agw
+	source = svn+http://svn.wxwidgets.org/svn/wx/wxPython/3rdParty/FloatCanvas/floatcanvas
+	source = svn+http://svn.wxwidgets.org/svn/wx/wxPython/3rdParty/PDFViewer/pdfviewer
+	source = svn+http://svn.wxwidgets.org/svn/wx/wxPython/3rdParty/PubSub/pubsub
+	source = svn+http://svn.wxwidgets.org/svn/wx/wxPython/3rdParty/XRCed
+	source = svn+http://svn.wxwidgets.org/svn/wx/wxPython/3rdParty/Editra
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+
+pkgname = wxpython-light
+
