@@ -1,0 +1,18 @@
+pkgbase = psp-cmake
+	pkgdesc = CMake wrapper for PSP (psp)
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/pspdev/psplibraries/
+	arch = any
+	groups = psp
+	license = GPL
+	makedepends = git
+	depends = cmake
+	depends = psp-sdk
+	source = git+https://github.com/pspdev/psplibraries.git
+	source = psplibraries-cmake.patch
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = psp-cmake
+
