@@ -1,6 +1,7 @@
-# Contributor: Mark Grimes <mark_aur@peculier.com>
+# Maintainer: Mark Grimes <mgrimes at peculier dot com>
 # Contributor: Tom Vincent <http://tlvince.com/contact/>
 # Contributor: macxcool
+# https://github.com/mvgrimes/aur-stopmotion
 
 pkgname=stopmotion
 _realname=linuxstopmotion
