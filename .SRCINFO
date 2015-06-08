@@ -1,0 +1,31 @@
+pkgbase = kwin-git
+	pkgdesc = KDE Window Manager
+	pkgver = r12920.60783b8
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/kde-workspace
+	install = kwin-git.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = kdoctools
+	makedepends = qt5-tools
+	depends = hicolor-icon-theme
+	depends = qt5-multimedia
+	depends = plasma-framework-git
+	depends = kcmutils-git
+	depends = knewstuff-git
+	depends = kinit-git
+	depends = kdecoration-git
+	depends = xcb-util-cursor
+	depends = kwayland-git
+	depends = libinput
+	provides = kwin
+	conflicts = kwin
+	conflicts = kdebase-workspace
+	source = git://anongit.kde.org/kwin.git
+	md5sums = SKIP
+
+pkgname = kwin-git
+
