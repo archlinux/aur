@@ -1,0 +1,16 @@
+pkgbase = metasm-hg
+	pkgdesc = An assembly manipulation suite written in Ruby
+	pkgver = 2985.70a8a57c6f18
+	pkgrel = 1
+	url = http://metasm.cr0.org/
+	install = metasm.install
+	arch = any
+	license = LGPL
+	depends = ruby
+	optdepends = ruby-gtk2: gui support
+	provides = metasm
+	source = metasm::hg+https://code.google.com/p/metasm/
+	md5sums = SKIP
+
+pkgname = metasm-hg
+

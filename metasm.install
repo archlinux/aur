@@ -1,0 +1,17 @@
+## arg 1:  the new package version
+post_install() {
+  echo "==> Update your RUBYLIB env variable to use metasm."
+  echo "==> e.g: export 'RUBYLIB=$RUBYLIB:/opt/metasm'"
+  echo "==> Test the installation: 'ruby -r metasm -e 'p Metasm::VERSION'"
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  echo "==> Update your RUBYLIB env variable to use metasm."
+  echo "==> e.g: export 'RUBYLIB=$RUBYLIB:/opt/metasm'"
+  echo "==> Test the installation: 'ruby -r metasm -e 'p Metasm::VERSION'"
+}
+
+
+# vim:set ts=2 sw=2 et:
