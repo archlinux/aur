@@ -1,0 +1,18 @@
+pkgbase = numix-bevel-icon-theme-git
+	pkgdesc = Bevel icon theme from the Numix project
+	pkgver = 0.r10.5f1b191
+	pkgrel = 1
+	url = http://numixproject.org/
+	install = numix-bevel-icon-theme.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = numix-icon-theme-git
+	provides = numix-bevel-icon-theme
+	conflicts = numix-bevel-icon-theme
+	options = !strip
+	source = numix-bevel-icon-theme::git+https://github.com/numixproject/numix-icon-theme-bevel.git
+	sha256sums = SKIP
+
+pkgname = numix-bevel-icon-theme-git
+
