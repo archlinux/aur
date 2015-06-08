@@ -1,0 +1,26 @@
+pkgbase = haskell-jinglib-git
+	pkgdesc = jing.fm wrapper in Haskell
+	pkgver = 20130824
+	pkgrel = 1
+	url = https://github.com/rnons/jinkell
+	install = haskell-jinglib.install
+	arch = i686
+	arch = x86_64
+	license = Unkown
+	makedepends = git
+	depends = ghc
+	depends = haskell-http
+	depends = haskell-aeson>=0.6
+	depends = haskell-bytestring>=0.9.1.10
+	depends = haskell-containers>=0.4.0.0
+	depends = haskell-mtl
+	depends = haskell-network>=2.3.0.2
+	depends = haskell-text>=0.11.0.5
+	provides = haskell-jinglib=2013.3
+	options = strip
+	options = staticlibs
+	source = jinglib::git://github.com/rnons/jinkell.git
+	md5sums = SKIP
+
+pkgname = haskell-jinglib-git
+
