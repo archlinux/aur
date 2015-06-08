@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=QShnToolSplit
+Name[es]=QShnToolSplit
+GenericName=Grachical frontend for shntool
+GenericName[es]=Interfaz gráfica para shntool
+Comment=rachical frontend for shntool
+Comment[es]=Interfaz gráfica para shntool
+Exec=/usr/bin/qshntoolsplit
+Icon=edit-cut
+Terminal=false
+Type=Application
+Categories=Qt;Audio;Utility;
