@@ -1,0 +1,22 @@
+pkgbase = mpqc-shared
+	pkgdesc = The Massively Parallel Quantum Chemistry Program. Version with shared libraries
+	pkgver = 2.3.1
+	pkgrel = 2
+	url = http://www.mpqc.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = gcc-fortran
+	depends = gcc-libs
+	depends = lapack
+	depends = perl
+	depends = tk
+	provides = mpqc
+	conflicts = mpqc
+	options = libtool
+	options = staticlibs
+	source = http://sourceforge.net/projects/mpqc/files/mpqc/2.3.1/mpqc-2.3.1.tar.bz2
+	md5sums = 2f9b4f7487387730d78066a53764f848
+
+pkgname = mpqc-shared
+
