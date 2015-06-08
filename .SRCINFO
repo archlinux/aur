@@ -1,0 +1,24 @@
+pkgbase = eclipse-propedit
+	pkgdesc = Properties Editor for Eclipse
+	pkgver = 6.0.0
+	pkgrel = 1
+	url = http://propedit.sourceforge.jp
+	arch = i686
+	arch = x86_64
+	license = EPL
+	depends = eclipse>=3.7
+	noextract = features_jp.gr.java_conf.ussiy.app.propedit_6.0.0.jar
+	noextract = features_jp.gr.java_conf.ussiy.app.propedit.nl_6.0.0.jar
+	noextract = plugins_jp.gr.java_conf.ussiy.app.propedit_6.0.0.jar
+	noextract = plugins_jp.gr.java_conf.ussiy.app.propedit.nl_6.0.0.jar
+	source = features_jp.gr.java_conf.ussiy.app.propedit_6.0.0.jar::http://propedit.sourceforge.jp/eclipse/updates/features/jp.gr.java_conf.ussiy.app.propedit_6.0.0.jar
+	source = features_jp.gr.java_conf.ussiy.app.propedit.nl_6.0.0.jar::http://propedit.sourceforge.jp/eclipse/updates/features/jp.gr.java_conf.ussiy.app.propedit.nl_6.0.0.jar
+	source = plugins_jp.gr.java_conf.ussiy.app.propedit_6.0.0.jar::http://propedit.sourceforge.jp/eclipse/updates/plugins/jp.gr.java_conf.ussiy.app.propedit_6.0.0.jar
+	source = plugins_jp.gr.java_conf.ussiy.app.propedit.nl_6.0.0.jar::http://propedit.sourceforge.jp/eclipse/updates/plugins/jp.gr.java_conf.ussiy.app.propedit.nl_6.0.0.jar
+	md5sums = 42ab1059008c39aca9cc49a494bb6aba
+	md5sums = d020f5473227927a8679a58e988e571f
+	md5sums = 87a9f90140d3e450c8af1df1593e4a8e
+	md5sums = 0700dc64a1b21bcaf31dcda46023f169
+
+pkgname = eclipse-propedit
+
