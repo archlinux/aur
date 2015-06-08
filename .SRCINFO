@@ -1,0 +1,16 @@
+pkgbase = epson-inkjet-printer-201301w
+	pkgdesc = Epson printer driver (XP-312, XP-313, XP-315, XP-412, XP-413, XP-415)
+	pkgver = 1.0.0
+	pkgrel = 8
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom:Epson Licence Agreement
+	depends = cups
+	depends = ghostscript
+	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201301w-1.0.0-1lsb3.2.src.rpm
+	sha256sums = be388843b14241b5a6f0f318b2a7f52d66435f64b2219a23245f409a598610d9
+
+pkgname = epson-inkjet-printer-201301w
+
