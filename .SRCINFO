@@ -1,0 +1,19 @@
+pkgbase = finddupes-git
+	pkgdesc = finds duplicate files in a given set of directories
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/jesrui/finddupes
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	license = custom:MIT
+	checkdepends = valgrind
+	makedepends = git
+	provides = finddupes
+	conflicts = finddupes
+	source = finddupes::git+https://github.com/jesrui/finddupes
+	sha1sums = SKIP
+
+pkgname = finddupes-git
+
