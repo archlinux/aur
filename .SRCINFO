@@ -1,0 +1,21 @@
+pkgbase = kblog-git
+	pkgdesc = A blogging library for KDE
+	pkgver = r510.d77653b
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/pim/kblog
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	makedepends = python
+	depends = kxmlrpcclient-git
+	depends = kde-syndication-git
+	depends = kcalcore-git
+	provides = kblog
+	conflicts = kblog
+	source = git://anongit.kde.org/kblog.git
+	md5sums = SKIP
+
+pkgname = kblog-git
+
