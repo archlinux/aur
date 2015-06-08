@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-qhull
+	pkgdesc = A general dimension code for computing convex hulls and related structures (mingw-w64)
+	pkgver = 2012.1
+	pkgrel = 1
+	url = http://www.qhull.org/
+	arch = any
+	license = custom
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = http://www.qhull.org/download/qhull-2012.1-src.tgz
+	md5sums = d0f978c0d8dfb2e919caefa56ea2953c
+
+pkgname = mingw-w64-qhull
+
