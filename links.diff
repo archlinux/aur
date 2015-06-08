@@ -1,0 +1,26 @@
+--- ../../not_maintained_by_me/w3watch/src/w3watch-1.0.3/w3watch	2012-09-15 10:51:19.000000000 +0200
++++ /usr/local/bin/w3watch	2014-07-08 14:34:53.943896760 +0200
+@@ -6,7 +6,7 @@
+ LOCKFILE="${ROOTDIR}/lock"
+ CONFIGFILE="${ROOTDIR}/config"
+ CONFIGSAMPLE='/usr/share/doc/w3watch/config.sample'
+-LYNX='/usr/bin/lynx --connect_timeout 10 --read_timeout 10 -stderr'
++LYNX='/usr/bin/links -receive-timeout 10 -unrestartable-receive-timeout 10'
+ 
+ if [ ! -d "${ROOTDIR}" ]; then
+ 	install -D "${CONFIGSAMPLE}" "${CONFIGFILE}"
+@@ -64,11 +64,12 @@
+ 			url="$(echo "${url}" | cut -c 1 --complement -)"
+ 			dump=$($LYNX -source "$url")
+ 		else
+-			dump=$($LYNX -dump -nonumbers "$url")
++			dump=$($LYNX -dump "$url")
+ 		fi
+ 
+ 		if [ $? -ne 0 ]; then
+-			continue
++		    echo $url
++		    continue
+ 		fi
+ 
+ 		if [ "${filter}" != "" ]; then
