@@ -1,0 +1,28 @@
+pkgbase = vdr-upnp
+	pkgdesc = extends the VDR with the possibility to act as an UPnP/DLNA Media Server (DMS)
+	pkgver = 1.0.0_14_g11a035a
+	pkgrel = 15
+	url = http://projects.vdr-developer.org/projects/plg-softhddevice
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	makedepends = boost
+	makedepends = git
+	depends = libupnp
+	depends = tntdb
+	depends = tntnet
+	depends = vdr-api=2.2.0
+	backup = etc/vdr/conf.avail/50-upnp.conf
+	backup = var/lib/vdr/plugins/upnp/channelTitle.conf
+	source = git://projects.vdr-developer.org/vdr-plugin-upnp.git#commit=11a035aa4ec2b55faaef1eaa48b7726a28422048
+	source = upnp-vdr2.1.2compat.diff
+	source = 50-upnp.conf
+	md5sums = SKIP
+	md5sums = 9aa486e95f113ac1791d5faffde27f5e
+	md5sums = 145e9e822d1d734c4dcb294db4bb88d4
+
+pkgname = vdr-upnp
+

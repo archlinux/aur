@@ -1,0 +1,68 @@
+diff --git a/plugins/profiler/vdrDVBProfiler/dvbProfiler.cpp b/plugins/profiler/vdrDVBProfiler/dvbProfiler.cpp
+index 4b835cc..cbd541b 100644
+--- a/plugins/profiler/vdrDVBProfiler/dvbProfiler.cpp
++++ b/plugins/profiler/vdrDVBProfiler/dvbProfiler.cpp
+@@ -171,7 +171,11 @@ private:
+ 
+ #if VDRVERSNUM > 10704
+   bool GetRecordingMetadata(const string& u, cMetadata& metadata){
++#if APIVERSNUM > 20101
++    string videoDir = string(cVideoDirectory::Name()), uri = u.substr(6), recStr = videoDir + "/" + uri;
++#else
+     string videoDir = string(VideoDirectory), uri = u.substr(6), recStr = videoDir + "/" + uri;
++#endif
+     cRecording* recording = Recordings.GetByName(recStr.c_str());
+ 
+     if(!recording) return false;
+diff --git a/plugins/provider/recProvider/recProvider.cpp b/plugins/provider/recProvider/recProvider.cpp
+index 3a77435..b63fccd 100644
+--- a/plugins/provider/recProvider/recProvider.cpp
++++ b/plugins/provider/recProvider/recProvider.cpp
+@@ -27,7 +27,11 @@ private:
+ 
+   bool GetFileStat(const string& uri, struct stat& fileStat){
+     stringstream filename;
++#if APIVERSNUM > 20101
++    filename << cVideoDirectory::Name() << "/" << uri.substr(6);
++#else
+     filename << VideoDirectory << "/" << uri.substr(6);
++#endif
+     struct stat s;
+     if(stat(filename.str().c_str(), &s) == 0){
+       fileStat = s;
+@@ -109,7 +113,11 @@ public:
+     if(!HasRootContainer(u)) return StringList();
+ 
+     StringList list;
++#if APIVERSNUM > 20101
++    string videoDir(cVideoDirectory::Name()), fs, uri = u.substr(6);
++#else
+     string videoDir(VideoDirectory), fs, uri = u.substr(6);
++#endif
+     int pos = 0, vl = videoDir.length(), ul = uri.length(), vul = vl + ul + 1;
+ 
+     if(!initialScan){
+@@ -142,7 +150,11 @@ public:
+     if(GetRootContainer().compare(uri) == 0) return true;
+ 
+     stringstream filename;
++#if APIVERSNUM > 20101
++    filename << cVideoDirectory::Name() << "/" << uri.substr(6);
++#else
+     filename << VideoDirectory << "/" << uri.substr(6);
++#endif
+ 
+     if(!Recordings.GetByName(filename.str().c_str())){
+       return true;
+@@ -203,7 +215,11 @@ public:
+   virtual bool Open(const string& uri){
+     if(!HasRootContainer(uri)) return false;
+ 
++#if APIVERSNUM > 20101
++    filename = string(cVideoDirectory::Name()) + "/" + uri.substr(6);
++#else
+     filename = string(VideoDirectory) + "/" + uri.substr(6);
++#endif
+     currentFileNumber = 1;
+     return ScanFiles();
+   }
