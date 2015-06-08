@@ -1,0 +1,17 @@
+pkgbase = hunspell-fr-cpr90
+	pkgdesc = French (Classic + 1990 Reform) hunspell dictionaries
+	pkgver = 5.3
+	pkgrel = 1
+	url = http://www.dicollecte.org/
+	arch = any
+	license = custom:MPLv2
+	optdepends = hunspell: the spell checking libraries and apps
+	provides = hunspell-fr
+	conflicts = hunspell-fr
+	source = http://www.dicollecte.org/download/fr/hunspell-french-dictionaries-v5.3.zip
+	source = LICENSE
+	md5sums = 697fc4c3d61a029694fbe13a84ed37cd
+	md5sums = 815ca599c9df247a0c7f619bab123dad
+
+pkgname = hunspell-fr-cpr90
+
