@@ -1,0 +1,15 @@
+pkgbase = osgworks
+	pkgdesc = A set of applications and software tools that add capability for OpenSceneGraph software developers
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = http://code.google.com/p/osgworks/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	depends = openscenegraph
+	source = osgworks-3.0.0.zip::https://docs.google.com/uc?id=0B2kjcsFgFhsONkpvZklsM0F4ODQ&export=download
+	sha1sums = ba1ba34246578380e8005e67584d90d269f2899a
+
+pkgname = osgworks
+
