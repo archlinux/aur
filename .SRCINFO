@@ -1,0 +1,16 @@
+pkgbase = ttf-enochian
+	pkgdesc = A font for the language of both demons and angels.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.fontsaddict.com/font/enochian-plain.html
+	install = ttf-enochian.install
+	arch = any
+	license = freeware
+	makedepends = unzip
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.fontsaddict.com/download/enochian-plain.ttf
+	md5sums = bec37d31ac381a1ecda9975711503237
+
+pkgname = ttf-enochian
+
