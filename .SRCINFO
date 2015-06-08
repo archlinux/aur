@@ -1,0 +1,23 @@
+pkgbase = 3dfsb
+	pkgdesc = 3D file browser
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/tomvanbraeckel/3dfsb/
+	install = 3dfsb.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = imagemagick
+	depends = freeglut
+	depends = file
+	depends = sdl_image
+	depends = glu
+	depends = gstreamer
+	depends = xdotool-git
+	source = https://github.com/tomvanbraeckel/3dfsb/archive/v1.2.tar.gz
+	source = 3dfsb.desktop
+	sha256sums = e04497251a4ffb4c003ed0c22316501cf2e95c201d233ddbb9c79c2f9d696c2e
+	sha256sums = c53f4ba2ed02513c3ec60f9182fb25c71f03d19e60498f563d960bd93bc6eb84
+
+pkgname = 3dfsb
+

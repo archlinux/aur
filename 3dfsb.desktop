@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=3dfsb
+Comment=A 3D file browser
+Icon=system-file-manager
+Exec=/usr/bin/3dfsb
+Terminal=false
+Type=Application
+Categories=System;FileTools;FileManager;
+GenericName=File Manager
