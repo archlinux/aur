@@ -1,0 +1,27 @@
+pkgbase = openvpn-polarssl-git
+	pkgdesc = An easy-to-use, robust, and highly configurable VPN (Virtual Private Network)
+	pkgver = 2.3.beta1.r266.g7da9d40
+	pkgrel = 2
+	url = http://openvpn.net/index.php/open-source.html
+	install = openvpn-polarssl.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = systemd
+	makedepends = git
+	depends = polarssl
+	depends = lzo
+	depends = iproute2
+	provides = openvpn
+	provides = openvpn-dev
+	provides = openvpn-git
+	provides = openvpn-polarssl
+	conflicts = openvpn
+	conflicts = openvpn-polarssl
+	conflicts = openvpn-git
+	conflicts = openvpn-dev
+	source = git://github.com/openvpn/openvpn
+	sha256sums = SKIP
+
+pkgname = openvpn-polarssl-git
+
