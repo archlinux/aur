@@ -1,0 +1,16 @@
+pkgbase = xburst-tools
+	pkgdesc = A collection of boot and flash tools for XBurst devices.
+	pkgver = 201206
+	pkgrel = 1
+	url = http://projects.qi-hardware.com/index.php/p/xburst-tools/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = confuse
+	depends = libusb
+	depends = cross-mipsel-linux-gnu-gcc
+	source = http://projects.qi-hardware.com/media/upload/xburst-tools/files/xburst-tools_201206.tar.bz2
+	md5sums = b36369779a18d25fdd597ce5c86da1df
+
+pkgname = xburst-tools
+
