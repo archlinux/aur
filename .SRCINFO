@@ -1,0 +1,35 @@
+pkgbase = tatham-utils
+	pkgdesc = Simon Tatham's utilities for symlinks, pipes, X selection and more
+	pkgver = 0
+	pkgrel = 1
+	url = http://www.chiark.greenend.org.uk/~sgtatham/utils/
+	arch = i686
+	arch = x86_64
+	license = custom:MIT
+	depends = perl
+	depends = libx11
+	depends = libxau
+	depends = libxdmcp
+	source = http://www.chiark.greenend.org.uk/~sgtatham/utils/after.tar.gz
+	source = http://www.chiark.greenend.org.uk/~sgtatham/utils/base64.tar.gz
+	source = http://www.chiark.greenend.org.uk/~sgtatham/utils/buildrun.tar.gz
+	source = http://www.chiark.greenend.org.uk/~sgtatham/utils/cvt-utf8.tar.gz
+	source = http://www.chiark.greenend.org.uk/~sgtatham/utils/lns.tar.gz
+	source = http://www.chiark.greenend.org.uk/~sgtatham/utils/multi.tar.gz
+	source = http://www.chiark.greenend.org.uk/~sgtatham/utils/nntpid.tar.gz
+	source = http://www.chiark.greenend.org.uk/~sgtatham/utils/reservoir.tar.gz
+	source = http://www.chiark.greenend.org.uk/~sgtatham/utils/xcopy.tar.gz
+	source = LICENCE
+	md5sums = 3202f0a45597eaef5cc0641d1b0fb88d
+	md5sums = 599bc34656b2d3c21c8b1e6df63faf96
+	md5sums = 740a428df60da6e170e1e506a7160806
+	md5sums = fc40ae4866ed5abd265caf33eaf52ad6
+	md5sums = 1a44e74907f832587dcc0c23938d770a
+	md5sums = d3f090d3567e1af11337b41046673b2b
+	md5sums = 2d4c5954083c5a5b9db4249487a93b3d
+	md5sums = 6aab74f8037d03ac09dbba20142b49d5
+	md5sums = 95e4d45b0a49eb06c38f0d1c72a3f86a
+	md5sums = a74527fc4312ab9ace4ed1c1290a11e4
+
+pkgname = tatham-utils
+
