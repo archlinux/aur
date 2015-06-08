@@ -1,0 +1,17 @@
+pkgbase = noip
+	pkgdesc = Dynamic DNS Client Updater for no-ip.com services
+	pkgver = 2.1.9
+	pkgrel = 6
+	url = http://www.no-ip.com/downloads.php?page=linux
+	install = noip.install
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = armv6h
+	license = GPL
+	depends = glibc
+	source = http://www.no-ip.com/client/linux/noip-duc-linux.tar.gz
+	source = noip.service
+
+pkgname = noip
+
