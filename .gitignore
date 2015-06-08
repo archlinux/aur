@@ -1,0 +1,6 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!CMakeLists.txt.patch
+!fix_find_config.patch

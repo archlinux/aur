@@ -1,0 +1,27 @@
+pkgbase = phonon-mplayer-git
+	pkgdesc = Mplayer backend for phonon, the multimedia API of KDE. (Qt4 only) GIT version)
+	pkgver = 20120714.7217499
+	pkgrel = 1
+	url = https://projects.kde.org/projects/unmaintained/phonon-mplayer
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = git
+	makedepends = phonon-qt4
+	depends = mplayer
+	provides = phonon-backend
+	provides = phonon-qt4-backend
+	provides = phonon-qt4-mplayer
+	conflicts = phonon-qt4-mplayer
+	replaces = phonon-mplayer
+	source = git://anongit.kde.org/phonon-mplayer.git
+	source = fix_find_config.patch
+	source = CMakeLists.txt.patch
+	sha1sums = SKIP
+	sha1sums = ab6c195ebda7a89383edd127bf159c557859993e
+	sha1sums = 139e1d7c8e8f64374ebd47ec7306f1701c0653d9
+
+pkgname = phonon-mplayer-git
+

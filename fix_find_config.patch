@@ -1,0 +1,23 @@
+diff -aur phonon-mplayer/mplayer/libmplayer/MPlayerConfig.cpp phonon-mplayer2/mplayer/libmplayer/MPlayerConfig.cpp
+--- phonon-mplayer/mplayer/libmplayer/MPlayerConfig.cpp	2011-11-24 18:06:31.105227140 -0800
++++ phonon-mplayer2/mplayer/libmplayer/MPlayerConfig.cpp	2011-11-24 18:17:02.000000000 -0800
+@@ -73,7 +73,7 @@
+ 	//Under Windows, config file should be inside a subdirectory named mplayer/mplayer
+ 	QString defaultMPlayerConfigPath = "mplayer/mplayer/config";
+ #else
+-	QString defaultMPlayerConfigPath = "~/.mplayer/config";
++	QString defaultMPlayerConfigPath = QDir::homePath()+"/.mplayer/config";
+ #endif
+
+ 	return _settings.value("mplayer_config_path", defaultMPlayerConfigPath).toString();
+diff -aur phonon-mplayer/mplayer/libmplayer/MPlayerConfig.h phonon-mplayer2/mplayer/libmplayer/MPlayerConfig.h
+--- phonon-mplayer/mplayer/libmplayer/MPlayerConfig.h	2011-11-24 18:06:31.105227140 -0800
++++ phonon-mplayer2/mplayer/libmplayer/MPlayerConfig.h	2011-11-24 18:18:05.000000000 -0800
+@@ -21,6 +21,7 @@
+
+ #include <QtCore/QString>
+ #include <QtCore/QSettings>
++#include <QtCore/QDir>
+
+ namespace Phonon
+ {
