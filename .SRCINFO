@@ -1,0 +1,14 @@
+pkgbase = teximpatient
+	pkgdesc = TeX for the Impatient is a ~350 page book on TeX, plain TeX, and Eplain, written by Paul Abrahams, Kathryn Hargreaves, and Karl Berry.
+	pkgver = 2.3
+	pkgrel = 2
+	url = http://savannah.gnu.org/projects/teximpatient/
+	arch = any
+	license = FDL1.3
+	makedepends = texlive-core
+	makedepends = icon
+	source = http://mirror.netcologne.de/gnu/teximpatient/teximpatient-2.3.tar.gz
+	md5sums = f4f6cdc433ba16bccd8bc0c5fe5d4869
+
+pkgname = teximpatient
+
