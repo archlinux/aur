@@ -1,0 +1,13 @@
+diff --git a/skinenigmang.c b/skinenigmang.c
+index 0eabe3a..f8feffe 100644
+--- a/skinenigmang.c
++++ b/skinenigmang.c
+@@ -121,7 +121,7 @@ bool cPluginSkinEnigma::Start(void)
+ 
+   if (!fLogodirSet) {
+     // set logo directory
+-    EnigmaConfig.SetLogoDir(cPlugin::ConfigDirectory(PLUGIN_NAME_I18N));
++    EnigmaConfig.SetLogoDir(cPlugin::ResourceDirectory(PLUGIN_NAME_I18N));
+     fLogodirSet = true;
+   }
+   if (!fImagesDirSet) {

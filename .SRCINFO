@@ -1,0 +1,27 @@
+pkgbase = vdr-skinenigmang
+	pkgdesc = skin based on the Enigma text2skin addon
+	pkgver = 0.1.2_16_g0147c0e
+	pkgrel = 7
+	epoch = 1
+	url = http://andreas.vdr-developer.org/enigmang/index.html
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	makedepends = git
+	depends = gcc-libs
+	depends = vdr-api=2.2.0
+	backup = etc/vdr/conf.avail/50-skinenigmang.conf
+	source = git://projects.vdr-developer.org/vdr-plugin-skinenigmang.git#commit=0147c0ee6222bd10714ef36f42dcee94495bdb92
+	source = skinenigmang-newmakefile-vdr1.7.36-2.tgz::http://www.vdr-portal.de/index.php?page=Attachment&attachmentID=32701
+	source = skinenigmang-search_for_logos_in_resourcedir.diff
+	source = 50-skinenigmang.conf
+	md5sums = SKIP
+	md5sums = 16eec14395fdc008462754e099bf802f
+	md5sums = 6bfd86e7a92d969edd208401b65b20fe
+	md5sums = 8b2c4d67273e3b52e38496e52b35e345
+
+pkgname = vdr-skinenigmang
+
