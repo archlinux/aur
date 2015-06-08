@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=PostSqlForms
+Type=Application
+Exec=/usr/bin/tclsh /usr/share/postsqlforms/main.tcl
+Icon=/usr/share/postsqlforms/icons/psf-icon.png
+Terminal=false
+GenericName=PostSqlForms
+Comment=Graphical user interface for PostgreSQL and SQLite databases
+Categories=Office;Database;
