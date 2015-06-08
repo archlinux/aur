@@ -1,0 +1,15 @@
+pkgbase = barewm-git
+	pkgdesc = Bare WM - A minimal fullscreen window manager for Linux
+	pkgver = 20130311.db69fe5
+	pkgrel = 1
+	url = https://github.com/lechatleon/barewm
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = xorg-server
+	source = git+https://github.com/lechatleon/barewm
+	md5sums = SKIP
+
+pkgname = barewm-git
+
