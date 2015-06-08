@@ -1,0 +1,17 @@
+pkgbase = mini18n-git
+	pkgdesc = A a small and non-intrusive translation library designed for small memory and non-GNU systems. (GIT version)
+	pkgver = 0.2.1.r2406.e538b8c
+	pkgrel = 1
+	url = http://wiki.yabause.org/index.php5?title=Mini18n
+	arch = x86_64
+	arch = i386
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	provides = mini18n
+	source = git+https://github.com/Guillaumito/yabause.git
+	sha1sums = SKIP
+
+pkgname = mini18n-git
+
