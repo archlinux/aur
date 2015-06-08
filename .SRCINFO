@@ -1,0 +1,23 @@
+pkgbase = 3ncode-git
+	pkgdesc = Graphical video and audio converter for ffmpeg
+	pkgver = r35.30e0440
+	pkgrel = 1
+	url = https://github.com/llelectronics/3ncode
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = ffmpeg
+	depends = kdebase-runtime
+	depends = python2-pyqt4
+	optdepends = mkvtoolnix-cli: mkv files
+	provides = 3ncode
+	conflicts = 3ncode
+	source = git://github.com/llelectronics/3ncode.git
+	source = 3ncode.sh
+	source = 3ncode.desktop
+	md5sums = SKIP
+	md5sums = a7879368369e806012f0785542370f47
+	md5sums = bdf9a12bcd4780479e867e6a5d1f1d34
+
+pkgname = 3ncode-git
+
