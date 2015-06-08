@@ -1,0 +1,19 @@
+post_upgrade() {
+	depmod
+	mkinitcpio -P linux
+}
+
+post_install() {
+	rmmod sdhci_pci
+	rmmod sdhci_acpi
+	rmmod sdhci
+	modprobe rtsx_usb
+	post_upgrade
+}
+
+post_remove() {
+	rmmod rtsx_usb_ms
+	rmmod rtsx_usb_sdmmc
+	rmmod rtsx_usb
+	post_upgrade
+}
