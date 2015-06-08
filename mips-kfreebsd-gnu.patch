@@ -1,0 +1,426 @@
+diff -Nur a/gcc/config/mips/kfreebsd-gnu64.h b/gcc/config/mips/kfreebsd-gnu64.h
+--- a/gcc/config/mips/kfreebsd-gnu64.h	1969-12-31 21:00:00.000000000 -0300
++++ b/gcc/config/mips/kfreebsd-gnu64.h	2014-03-16 13:20:51.041846449 -0300
+@@ -0,0 +1,27 @@
++/* Definitions for MIPS running Linux-based GNU systems with ELF format
++   using n32/64 abi.
++   Copyright (C) 2002-2013 Free Software Foundation, Inc.
++
++This file is part of GCC.
++
++GCC is free software; you can redistribute it and/or modify
++it under the terms of the GNU General Public License as published by
++the Free Software Foundation; either version 3, or (at your option)
++any later version.
++
++GCC is distributed in the hope that it will be useful,
++but WITHOUT ANY WARRANTY; without even the implied warranty of
++MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++GNU General Public License for more details.
++
++You should have received a copy of the GNU General Public License
++along with GCC; see the file COPYING3.  If not see
++<http://www.gnu.org/licenses/>.  */
++
++#define GNU_USER_LINK_EMULATION32 "elf32%{EB:b}%{EL:l}tsmip_fbsd"
++#define GNU_USER_LINK_EMULATION64 "elf64%{EB:b}%{EL:l}tsmip_fbsd"
++#define GNU_USER_LINK_EMULATIONN32 "elf32%{EB:b}%{EL:l}tsmipn32_fbsd"
++
++#define GLIBC_DYNAMIC_LINKER32 "/lib/ld.so.1"
++#define GLIBC_DYNAMIC_LINKER64 "/lib64/ld.so.1"
++#define GNU_USER_DYNAMIC_LINKERN32 "/lib32/ld.so.1"
+diff -Nur a/gcc/config/mips/kfreebsd-gnu.h b/gcc/config/mips/kfreebsd-gnu.h
+--- a/gcc/config/mips/kfreebsd-gnu.h	1969-12-31 21:00:00.000000000 -0300
++++ b/gcc/config/mips/kfreebsd-gnu.h	2013-01-10 18:38:27.000000000 -0200
+@@ -0,0 +1,20 @@
++/* Definitions for MIPS running Linux-based GNU systems with ELF format.
++   Copyright (C) 1998-2013 Free Software Foundation, Inc.
++
++This file is part of GCC.
++
++GCC is free software; you can redistribute it and/or modify
++it under the terms of the GNU General Public License as published by
++the Free Software Foundation; either version 3, or (at your option)
++any later version.
++
++GCC is distributed in the hope that it will be useful,
++but WITHOUT ANY WARRANTY; without even the implied warranty of
++MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++GNU General Public License for more details.
++
++You should have received a copy of the GNU General Public License
++along with GCC; see the file COPYING3.  If not see
++<http://www.gnu.org/licenses/>.  */
++
++#define GLIBC_DYNAMIC_LINKER "/lib/ld.so.1"
+diff -Nur a/gcc/config/mips/mti-kfreebsd.h b/gcc/config/mips/mti-kfreebsd.h
+--- a/gcc/config/mips/mti-kfreebsd.h	1969-12-31 21:00:00.000000000 -0300
++++ b/gcc/config/mips/mti-kfreebsd.h	2014-03-16 06:26:20.059268372 -0300
+@@ -0,0 +1,43 @@
++/* Target macros for mips*-mti-linux* targets.
++   Copyright (C) 2012-2013 Free Software Foundation, Inc.
++
++This file is part of GCC.
++
++GCC is free software; you can redistribute it and/or modify
++it under the terms of the GNU General Public License as published by
++the Free Software Foundation; either version 3, or (at your option)
++any later version.
++
++GCC is distributed in the hope that it will be useful,
++but WITHOUT ANY WARRANTY; without even the implied warranty of
++MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++GNU General Public License for more details.
++
++You should have received a copy of the GNU General Public License
++along with GCC; see the file COPYING3.  If not see
++<http://www.gnu.org/licenses/>.  */
++
++/* This target is a multilib target, specify the sysroot paths.  */
++#undef SYSROOT_SUFFIX_SPEC
++#define SYSROOT_SUFFIX_SPEC \
++    "%{mips32:/mips32}%{mips64:/mips64}%{mips64r2:/mips64r2}%{mabi=64:/64}%{mel|EL:/el}%{msoft-float:/sof}"
++
++#undef DRIVER_SELF_SPECS
++#define DRIVER_SELF_SPECS						\
++  /* Make sure a -mips option is present.  This helps us to pick	\
++     the right multilib, and also makes the later specs easier		\
++     to write.  */							\
++  MIPS_ISA_LEVEL_SPEC,							\
++									\
++  /* Infer the default float setting from -march.  */			\
++  MIPS_ARCH_FLOAT_SPEC,							\
++									\
++  /* Infer the -msynci setting from -march if not explicitly set.  */	\
++  MIPS_ISA_SYNCI_SPEC,							\
++									\
++  /* If no ABI option is specified, infer one from the ISA level	\
++     or -mgp setting.  */						\
++  "%{!mabi=*: %{" MIPS_32BIT_OPTION_SPEC ": -mabi=32;: -mabi=n32}}",	\
++									\
++  /* Base SPECs.  */							\
++  BASE_DRIVER_SELF_SPECS
+diff -Nur a/gcc/config/mips/t-kfreebsd64 b/gcc/config/mips/t-kfreebsd64
+--- a/gcc/config/mips/t-kfreebsd64	1969-12-31 21:00:00.000000000 -0300
++++ b/gcc/config/mips/t-kfreebsd64	2014-03-16 04:56:34.851827638 -0300
+@@ -0,0 +1,26 @@
++# Copyright (C) 2003-2013 Free Software Foundation, Inc.
++#
++# This file is part of GCC.
++#
++# GCC is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3, or (at your option)
++# any later version.
++#
++# GCC is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with GCC; see the file COPYING3.  If not see
++# <http://www.gnu.org/licenses/>.
++
++MULTILIB_OPTIONS = mabi=n32/mabi=32/mabi=64
++MULTILIB_DIRNAMES = n32 32 64
++MIPS_EL = $(if $(filter %el, $(firstword $(subst -, ,$(target)))),el)
++MIPS_SOFT = $(if $(strip $(filter MASK_SOFT_FLOAT_ABI, $(target_cpu_default)) $(filter soft, $(with_float))),soft)
++MULTILIB_OSDIRNAMES = \
++	../lib32$(call if_multiarch,:mips64$(MIPS_EL)-kfreebsd-gnuabin32$(MIPS_SOFT)) \
++	../lib$(call if_multiarch,:mips$(MIPS_EL)-kfreebsd-gnu$(MIPS_SOFT)) \
++	../lib64$(call if_multiarch,:mips64$(MIPS_EL)-kfreebsd-gnuabi64$(MIPS_SOFT))
+diff -Nur a/gcc/config/mips/t-mti-kfreebsd b/gcc/config/mips/t-mti-kfreebsd
+--- a/gcc/config/mips/t-mti-kfreebsd	1969-12-31 21:00:00.000000000 -0300
++++ b/gcc/config/mips/t-mti-kfreebsd	2013-01-10 18:38:27.000000000 -0200
+@@ -0,0 +1,33 @@
++# Copyright (C) 2012-2013 Free Software Foundation, Inc.
++#
++# This file is part of GCC.
++#
++# GCC is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3, or (at your option)
++# any later version.
++#
++# GCC is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with GCC; see the file COPYING3.  If not see
++# <http://www.gnu.org/licenses/>.
++
++# The default build is mips32r2, hard-float big-endian.  Add mips32,
++# soft-float, and little-endian variations.
++
++MULTILIB_OPTIONS = mips32/mips64/mips64r2 mabi=64 EL msoft-float
++MULTILIB_DIRNAMES = mips32 mips64 mips64r2 64 el sof
++MULTILIB_MATCHES = EL=mel EB=meb
++
++# The 64 bit ABI is not supported on the mips32 architecture.
++MULTILIB_EXCEPTIONS += *mips32*/*mabi=64*
++
++# The 64 bit ABI is not supported on the mips32r2 architecture.
++# Because mips32r2 is the default we can't use that flag to trigger
++# the exception so we check for mabi=64 with no specific mips flag
++# instead.
++MULTILIB_EXCEPTIONS += mabi=64*
+diff -Nur a/gcc/config.gcc b/gcc/config.gcc
+--- a/gcc/config.gcc	2013-12-07 01:29:47.000000000 -0200
++++ b/gcc/config.gcc	2014-03-16 13:02:41.653469226 -0300
+@@ -1795,36 +1795,79 @@
+ 	tm_file="elfos.h ${tm_file} mips/elf.h netbsd.h netbsd-elf.h mips/netbsd.h"
+ 	extra_options="${extra_options} netbsd.opt netbsd-elf.opt"
+ 	;;
+-mips*-mti-linux*)
+-	tm_file="dbxelf.h elfos.h gnu-user.h linux.h glibc-stdint.h ${tm_file} mips/gnu-user.h mips/gnu-user64.h mips/linux64.h mips/linux-common.h mips/mti-linux.h"
+-	tmake_file="${tmake_file} mips/t-mti-linux"
++mips*-mti-linux* | mips*-mti-kfreebsd*-gnu)
++	tm_file="dbxelf.h elfos.h gnu-user.h glibc-stdint.h ${tm_file} mips/gnu-user.h mips/gnu-user64.h"
+ 	tm_defines="${tm_defines} MIPS_ISA_DEFAULT=33 MIPS_ABI_DEFAULT=ABI_32"
++	case ${target} in
++		mips*-mti-linux*)
++			tm_file="${tm_file} linux.h mips/linux64.h mips/linux-common.h mips/mti-linux.h
++			tmake_file="${tmake_file} mips/t-mti-linux"
++			;;
++		mips*-mti-kfreebsd*-gnu)
++			tm_file="${tm_file} kfreebsd-gnu.h mips/kfreebsd-gnu64.h mips/mti-kfreebsd-gnu.h
++			tmake_file="${tmake_file} mips/t-mti-kfreebsd"
++			;;
++	esac
+ 	gnu_ld=yes
+ 	gas=yes
+ 	test x$with_llsc != x || with_llsc=yes
+ 	;;
+-mips64*-*-linux* | mipsisa64*-*-linux*)
+-	tm_file="dbxelf.h elfos.h gnu-user.h linux.h glibc-stdint.h ${tm_file} mips/gnu-user.h mips/gnu-user64.h mips/linux64.h mips/linux-common.h"
+-	tmake_file="${tmake_file} mips/t-linux64"
++mips64*-*-linux* | mipsisa64*-*-linux* | mips64*-*-kfreebsd*-gnu | mipsisa64*-*-kfreebsd*-gnu)
++	tm_file="dbxelf.h elfos.h gnu-user.h glibc-stdint.h ${tm_file} mips/gnu-user.h mips/gnu-user64.h"
+ 	tm_defines="${tm_defines} MIPS_ABI_DEFAULT=ABI_N32"
+ 	case ${target} in
+ 		mips64el-st-linux-gnu)
+-			tm_file="${tm_file} mips/st.h"
+-			tmake_file="${tmake_file} mips/t-st"
++			tm_file="${tm_file} mips/st.h linux.h mips/linux64.h mips/linux-common.h"
++			tmake_file="${tmake_file} mips/t-st mips/t-linux64"
+ 			;;
+ 		mips64octeon*-*-linux*)
++			tm_file="${tm_file} linux.h mips/linux64.h mips/linux-common.h"
++			tmake_file="${tmake_file} mips/t-linux64"
+ 			tm_defines="${tm_defines} MIPS_CPU_STRING_DEFAULT=\\\"octeon\\\""
+ 			target_cpu_default=MASK_SOFT_FLOAT_ABI
+ 			;;
++		mips64*-*-linux*)
++			tm_file="${tm_file} linux.h mips/linux64.h mips/linux-common.h"
++			tmake_file="${tmake_file} mips/t-linux64"
++			;;
+ 		mipsisa64r2*-*-linux*)
++			tm_file="${tm_file} linux.h mips/linux64.h mips/linux-common.h"
++			tmake_file="${tmake_file} mips/t-linux64"
++			tm_defines="${tm_defines} MIPS_ISA_DEFAULT=65"
++			;;
++		mipsisa64*-*-linux*)
++			tm_file="${tm_file} linux.h mips/linux64.h mips/linux-common.h"
++			tmake_file="${tmake_file} mips/t-linux64"
++			;;
++		mips64el-st-kfreebsd-gnu)
++			tm_file="${tm_file} mips/st.h kfreebsd-gnu.h mips/kfreebsd-gnu64.h"
++			tmake_file="${tmake_file} mips/t-st mips/t-kfreebsd64"
++			;;
++		mips64octeon*-*-kfreebsd*-gnu)
++			tm_file="${tm_file} kfreebsd-gnu.h mips/kfreebsd-gnu64.h"
++			tmake_file="${tmake_file} mips/t-kfreebsd64"
++			tm_defines="${tm_defines} MIPS_CPU_STRING_DEFAULT=\\\"octeon\\\""
++			target_cpu_default=MASK_SOFT_FLOAT_ABI
++			;;
++		mips64*-*-kfreebsd*-gnu)
++			tm_file="${tm_file} kfreebsd-gnu.h mips/kfreebsd-gnu64.h"
++			tmake_file="${tmake_file} mips/t-kfreebsd64"
++			;;
++		mipsisa64r2*-*-kfreebsd*-gnu)
++			tm_file="${tm_file} kfreebsd-gnu.h mips/kfreebsd-gnu64.h"
++			tmake_file="${tmake_file} mips/t-kfreebsd64"
+ 			tm_defines="${tm_defines} MIPS_ISA_DEFAULT=65"
+ 			;;
++		mipsisa64*-*-kfreebsd*-gnu)
++			tm_file="${tm_file} kfreebsd-gnu.h mips/kfreebsd-gnu64.h"
++			tmake_file="${tmake_file} mips/t-kfreebsd64"
++			;;
+ 	esac
+ 	gnu_ld=yes
+ 	gas=yes
+ 	test x$with_llsc != x || with_llsc=yes
+ 	;;
+-mips*-*-linux*)				# Linux MIPS, either endian.
++mips*-*-linux*)				# MIPS, either endian.
+         tm_file="dbxelf.h elfos.h gnu-user.h linux.h glibc-stdint.h ${tm_file} mips/gnu-user.h mips/linux.h"
+ 	if test x$enable_targets = xall; then
+ 		tm_file="${tm_file} mips/gnu-user64.h mips/linux64.h"
+@@ -1840,6 +1883,22 @@
+         esac
+ 	test x$with_llsc != x || with_llsc=yes
+ 	;;
++mips*-*-kfreebsd*-gnu)			# MIPS, either endian.
++	tm_file="dbxelf.h elfos.h gnu-user.h kfreebsd-gnu.h glibc-stdint.h ${tm_file} mips/gnu-user.h mips/kfreebsd-gnu.h"
++	if test x$enable_targets = xall; then
++		tm_file="${tm_file} mips/gnu-user64.h mips/kfreebsd-gnu64.h"
++		tmake_file="${tmake_file} mips/t-kfreebsd64"
++	fi
++	tm_file="${tm_file} kfreebsd-gnu.h"
++	case ${target} in
++	mipsisa32r2*)
++		tm_defines="${tm_defines} MIPS_ISA_DEFAULT=33"
++		;;
++	mipsisa32*)
++		tm_defines="${tm_defines} MIPS_ISA_DEFAULT=32"
++	esac
++	test x$with_llsc != x || with_llsc=yes
++	;;
+ mips*-mti-elf*)
+ 	tm_file="elfos.h newlib-stdint.h ${tm_file} mips/elf.h mips/sde.h mips/mti-elf.h"
+ 	tmake_file="mips/t-mti-elf"
+diff -Nur a/libgcc/config/mips/kfreebsd-gnu-unwind.h b/libgcc/config/mips/kfreebsd-gnu-unwind.h
+--- a/libgcc/config/mips/kfreebsd-gnu-unwind.h	1969-12-31 21:00:00.000000000 -0300
++++ b/libgcc/config/mips/kfreebsd-gnu-unwind.h	2013-02-25 11:53:16.000000000 -0200
+@@ -0,0 +1,120 @@
++/* DWARF2 EH unwinding support for MIPS Linux.
++   Copyright (C) 2004-2013 Free Software Foundation, Inc.
++
++This file is part of GCC.
++
++GCC is free software; you can redistribute it and/or modify
++it under the terms of the GNU General Public License as published by
++the Free Software Foundation; either version 3, or (at your option)
++any later version.
++
++GCC is distributed in the hope that it will be useful,
++but WITHOUT ANY WARRANTY; without even the implied warranty of
++MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++GNU General Public License for more details.
++
++Under Section 7 of GPL version 3, you are granted additional
++permissions described in the GCC Runtime Library Exception, version
++3.1, as published by the Free Software Foundation.
++
++You should have received a copy of the GNU General Public License and
++a copy of the GCC Runtime Library Exception along with this program;
++see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
++<http://www.gnu.org/licenses/>.  */
++
++#ifndef inhibit_libc
++/* Do code reading to identify a signal frame, and set the frame
++   state data appropriately.  See unwind-dw2.c for the structs.  */
++
++#include <signal.h>
++#include <asm/unistd.h>
++
++/* The third parameter to the signal handler points to something with
++ * this structure defined in asm/ucontext.h, but the name clashes with
++ * struct ucontext from sys/ucontext.h so this private copy is used.  */
++typedef struct _sig_ucontext {
++    unsigned long         uc_flags;
++    struct _sig_ucontext  *uc_link;
++    stack_t               uc_stack;
++    struct sigcontext uc_mcontext;
++    sigset_t      uc_sigmask;
++} _sig_ucontext_t;
++
++#define MD_FALLBACK_FRAME_STATE_FOR mips_fallback_frame_state
++
++static _Unwind_Reason_Code
++mips_fallback_frame_state (struct _Unwind_Context *context,
++			   _Unwind_FrameState *fs)
++{
++  u_int32_t *pc = (u_int32_t *) context->ra;
++  struct sigcontext *sc;
++  _Unwind_Ptr new_cfa, reg_offset;
++  int i;
++
++  /* 24021061 li v0, 0x1061 (rt_sigreturn)*/
++  /* 0000000c syscall    */
++  /*    or */
++  /* 24021017 li v0, 0x1017 (sigreturn) */
++  /* 0000000c syscall  */
++  if (pc[1] != 0x0000000c)
++    return _URC_END_OF_STACK;
++#if _MIPS_SIM == _ABIO32
++  if (pc[0] == (0x24020000 | __NR_sigreturn))
++    {
++      struct sigframe {
++	u_int32_t ass[4];  /* Argument save space for o32.  */
++	u_int32_t trampoline[2];
++	struct sigcontext sigctx;
++      } *rt_ = context->cfa;
++      sc = &rt_->sigctx;
++    }
++  else
++#endif
++  if (pc[0] == (0x24020000 | __NR_rt_sigreturn))
++    {
++      struct rt_sigframe {
++	u_int32_t ass[4];  /* Argument save space for o32.  */
++	u_int32_t trampoline[2];
++	siginfo_t info;
++	_sig_ucontext_t uc;
++      } *rt_ = context->cfa;
++      sc = &rt_->uc.uc_mcontext;
++    }
++  else
++    return _URC_END_OF_STACK;
++
++  new_cfa = (_Unwind_Ptr) sc;
++  fs->regs.cfa_how = CFA_REG_OFFSET;
++  fs->regs.cfa_reg = STACK_POINTER_REGNUM;
++  fs->regs.cfa_offset = new_cfa - (_Unwind_Ptr) context->cfa;
++
++  /* On o32 Linux, the register save slots in the sigcontext are
++     eight bytes.  We need the lower half of each register slot,
++     so slide our view of the structure back four bytes.  */
++#if _MIPS_SIM == _ABIO32 && defined __MIPSEB__
++  reg_offset = 4;
++#else
++  reg_offset = 0;
++#endif
++
++  for (i = 0; i < 32; i++) {
++    fs->regs.reg[i].how = REG_SAVED_OFFSET;
++    fs->regs.reg[i].loc.offset
++      = (_Unwind_Ptr)&(sc->sc_regs[i]) + reg_offset - new_cfa;
++  }
++  /* "PC & -2" points to the faulting instruction, but the unwind code
++     searches for "(ADDR & -2) - 1".  (See MASK_RETURN_ADDR for the source
++     of the -2 mask.)  Adding 2 here ensures that "(ADDR & -2) - 1" is the
++     address of the second byte of the faulting instruction.
++
++     Note that setting fs->signal_frame would not work.  As the comment
++     above MASK_RETURN_ADDR explains, MIPS unwinders must earch for an
++     odd-valued address.  */
++  fs->regs.reg[DWARF_ALT_FRAME_RETURN_COLUMN].how = REG_SAVED_VAL_OFFSET;
++  fs->regs.reg[DWARF_ALT_FRAME_RETURN_COLUMN].loc.offset
++    = (_Unwind_Ptr)(sc->sc_pc) + 2 - new_cfa;
++  fs->retaddr_column = DWARF_ALT_FRAME_RETURN_COLUMN;
++
++  return _URC_NO_REASON;
++}
++#endif
+diff -Nur a/libgcc/config.host b/libgcc/config.host
+--- a/libgcc/config.host	2014-01-21 17:50:02.000000000 -0200
++++ b/libgcc/config.host	2014-03-16 05:04:15.960188275 -0300
+@@ -732,6 +732,14 @@
+ 		tmake_file="${tmake_file} mips/t-tpbit"
+ 	fi
+ 	;;
++mips*-*-kfreebsd*-gnu)			# MIPS, either endian.
++	extra_parts="$extra_parts crtfastmath.o"
++	tmake_file="${tmake_file} t-crtfm mips/t-mips16"
++	md_unwind_header=mips/kfreebsd-gnu-unwind.h
++	if test "${ac_cv_sizeof_long_double}" = 16; then
++		tmake_file="${tmake_file} mips/t-tpbit"
++	fi
++	;;
+ mips*-sde-elf*)
+ 	tmake_file="$tmake_file mips/t-crtstuff mips/t-mips16"
+ 	case "${with_newlib}" in
