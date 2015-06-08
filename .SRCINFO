@@ -1,0 +1,36 @@
+pkgbase = jogl2.2.4
+	pkgdesc = OpenGL bindings for Java
+	pkgver = 2.2.4
+	pkgrel = 1
+	url = http://jogamp.org/
+	arch = x86_64
+	arch = i686
+	license = BSD
+	depends = java-runtime
+	depends = libgl
+	depends = libxcursor
+	depends = libxxf86vm
+	depends = libxrandr
+	provides = jogl=2.2.4
+	conflicts = jogl
+	noextract = jogl-all.jar
+	noextract = gluegen-rt.jar
+	source = jogl.license.txt
+	source = gluegen.license.txt
+	source = http://jogamp.org/deployment/v2.2.4/jar/orig/jogl-all.jar
+	source = http://jogamp.org/deployment/v2.2.4/jar/orig/gluegen-rt.jar
+	md5sums = e77015f08f0c8c3b39b9b7d379d57183
+	md5sums = 88456d8059e998bff8868c2b4d0347ce
+	md5sums = 16b1f2b2deac092d28e1dc4968913b68
+	md5sums = fa393b581035892ed2e1c89e3303ad11
+	source_x86_64 = http://jogamp.org/deployment/v2.2.4/jar/orig/jogl-all-natives-linux-amd64.jar
+	source_x86_64 = http://jogamp.org/deployment/v2.2.4/jar/orig/gluegen-rt-natives-linux-amd64.jar
+	md5sums_x86_64 = 5ef1419e2253df87ecdb25f400afa33e
+	md5sums_x86_64 = a5bf47cf864d946cfcc47a3f4c8cab1e
+	source_i686 = http://jogamp.org/deployment/v2.2.4/jar/orig/jogl-all-natives-linux-i586.jar
+	source_i686 = http://jogamp.org/deployment/v2.2.4/jar/orig/gluegen-rt-natives-linux-i586.jar
+	md5sums_i686 = b2c8fe318bdfb990a191e81a61bd1624
+	md5sums_i686 = 27e694cd97fa54e8e4623b5e47eb7e17
+
+pkgname = jogl2.2.4
+
