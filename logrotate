@@ -1,0 +1,10 @@
+/var/log/tengine/*log {
+	missingok
+        create 640 http log
+        su http log
+	sharedscripts
+	compress
+	postrotate
+		test -r /var/tengine.pid && kill -USR1 `cat /var/run/tengine.pid`
+	endscript
+}
