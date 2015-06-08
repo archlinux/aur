@@ -1,0 +1,19 @@
+pkgbase = kdeplasma-applets-cpufrequtility
+	pkgdesc = CPU Frequence Utility plasmoid
+	pkgver = 1.6
+	pkgrel = 2
+	url = http://kde-apps.org/content/show.php/plasmaCpuFreqUtility?content=144809
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdebase-workspace
+	depends = kdebindings-python2
+	conflicts = kdeplasma-addons-applets-cpufrequtility
+	replaces = kdeplasma-addons-applets-cpufrequtility
+	source = http://kde-apps.org/CONTENT/content-files/144809-kde-plasma-cpufrequtility-1.6.tar.bz2
+	sha256sums = 9c2c57e2ec4e7b0a906f84c92e43415144bf97e3991e26c7a19bb7e582213e99
+
+pkgname = kdeplasma-applets-cpufrequtility
+
