@@ -1,0 +1,14 @@
+pkgbase = xine-plugin
+	pkgdesc = A xine-based multimedia player plugin for Mozilla browsers and other plugin-compatible browsers.
+	pkgver = 1.0.2
+	pkgrel = 2
+	url = http://www.xine-project.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = xine-lib
+	source = http://downloads.sourceforge.net/xine/xine-plugin-1.0.2.tar.bz2
+	sha1sums = 57a9f6368a72c3f08623cff11876a1d0e8f611c0
+
+pkgname = xine-plugin
+
