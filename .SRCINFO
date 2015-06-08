@@ -1,0 +1,19 @@
+pkgbase = eclipse-propedit-hyperlink
+	pkgdesc = Properties Editor Hyperlink for Eclipse
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = http://propedit.sourceforge.jp
+	arch = i686
+	arch = x86_64
+	license = EPL
+	depends = eclipse>=3.7
+	depends = eclipse-propedit>=6.0.0
+	noextract = features_jp.gr.java_conf.ussiy.app.propedit.hyperlink_2.0.0.jar
+	noextract = plugins_jp.gr.java_conf.ussiy.app.propedit.hyperlink_2.0.0.jar
+	source = features_jp.gr.java_conf.ussiy.app.propedit.hyperlink_2.0.0.jar::http://propedit.sourceforge.jp/eclipse/updates/features/jp.gr.java_conf.ussiy.app.propedit.hyperlink_2.0.0.jar
+	source = plugins_jp.gr.java_conf.ussiy.app.propedit.hyperlink_2.0.0.jar::http://propedit.sourceforge.jp/eclipse/updates/plugins/jp.gr.java_conf.ussiy.app.propedit.hyperlink_2.0.0.jar
+	md5sums = 2275d94bf1cec05588050f7529e53680
+	md5sums = e60798a5a9cebce305ab3eb8ca55f413
+
+pkgname = eclipse-propedit-hyperlink
+
