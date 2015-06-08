@@ -1,0 +1,17 @@
+pkgbase = atticmatic-hg
+	pkgdesc = A simple Python wrapper script for the Attic backup software that initiates a backup and prunes any old backups according to a retention policy.
+	pkgver = 0.0.6.r2_462b138ca659
+	pkgrel = 1
+	url = http://torsion.org/atticmatic/
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = mercurial
+	depends = attic
+	provides = atticmatic
+	conflicts = atticmatic
+	source = atticmatic-hg::hg+https://torsion.org/hg/atticmatic
+	sha512sums = SKIP
+
+pkgname = atticmatic-hg
+
