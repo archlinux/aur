@@ -1,0 +1,16 @@
+pkgbase = python2-privilege
+	pkgdesc = Securely drop privileges from root to another user
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/privilege/1.0
+	arch = any
+	license = BSD
+	makedepends = python2
+	depends = python2
+	source = http://www.subspacefield.org/security/privilege/code/privilege/privilege-1.1.tar.gz
+	source = LICENSE
+	md5sums = 6e9db77fcd7ad3c73196b8ce55c3067d
+	md5sums = 314649d8ba9dd7045dfb6683f298d0a8
+
+pkgname = python2-privilege
+
