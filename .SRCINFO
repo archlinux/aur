@@ -1,0 +1,21 @@
+pkgbase = fluentd
+	pkgdesc = A tool to collect events and logs
+	pkgver = 0.10.60
+	pkgrel = 1
+	url = http://fluentd.org/
+	arch = any
+	license = Apache
+	depends = ruby
+	depends = ruby-cool.io
+	depends = ruby-json
+	depends = ruby-http_parser.rb-0.5
+	depends = ruby-msgpack
+	depends = ruby-sigdump
+	depends = ruby-tzinfo-data
+	depends = ruby-yajl-ruby
+	options = !emptydirs
+	source = https://rubygems.org/downloads/fluentd-0.10.60.gem
+	md5sums = 1d07f879d7db30cad26afa015850350e
+
+pkgname = fluentd
+
