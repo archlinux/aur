@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-fontconfig
+	pkgdesc = A library for configuring and customizing font access (mingw-w64)
+	pkgver = 2.11.1
+	pkgrel = 2
+	url = http://www.fontconfig.org/release
+	arch = any
+	license = custom
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-expat
+	depends = mingw-w64-freetype
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = http://www.fontconfig.org/release/fontconfig-2.11.1.tar.bz2
+	sha256sums = dc62447533bca844463a3c3fd4083b57c90f18a70506e7a9f4936b5a1e516a99
+
+pkgname = mingw-w64-fontconfig
+
