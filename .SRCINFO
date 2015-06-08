@@ -1,0 +1,21 @@
+pkgbase = perl-courriel
+	pkgdesc = Courriel - High level email parsing and manipulation
+	pkgver = 0.35
+	pkgrel = 1
+	url = http://search.cpan.org/~drolsky/Courriel-0.35/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	depends = perl-moose
+	depends = perl-moosex-params-validate
+	depends = perl-moosex-role-parameterized
+	depends = perl-moosex-strictconstructor
+	depends = perl-moosex-types
+	depends = perl-moosex-types-common
+	options = !emptydirs
+	source = http://cpan.perl.org/modules/by-authors/id/D/DR/DROLSKY/Courriel-0.35.tar.gz
+	md5sums = 3aead41f2c49fa9063386bcc0fe81702
+
+pkgname = perl-courriel
+
