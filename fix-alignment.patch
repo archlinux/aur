@@ -1,0 +1,37 @@
+--- x11/gtk2/gtk_wrapper.c	2014-06-07 02:05:23.000000000 +0000
++++ x11/gtk2/gtk_wrapper.c	2014-11-04 16:43:15.844542526 +0000
+@@ -124,14 +124,29 @@
+ static gint orig_x, orig_y;
+ 
+ static inline Bool
+-XF86VidModeGetModeInfo(Display *d, int s, XF86VidModeModeInfo *info)
++XF86VidModeGetModeInfo(Display *dpy, int scr, XF86VidModeModeInfo *info)
+ {
+-	XF86VidModeModeLine *line;
++	// Slightly adapted from SDL_x11modes.c
++	Bool retval;
++	XF86VidModeModeLine l;
+ 
+-	memset(info, 0, sizeof(*info));
+-	line = (void *)((char *)info + sizeof(info->dotclock));
++	memset(&l, 0, sizeof(l));
++	retval = XF86VidModeGetModeLine(dpy, scr, &info->dotclock, &l);
+ 
+-	return XF86VidModeGetModeLine(d, s, (int *)&info->dotclock, line);
++	info->hdisplay = l.hdisplay;
++	info->hsyncstart = l.hsyncstart;
++	info->hsyncend = l.hsyncend;
++	info->htotal = l.htotal;
++	info->hskew = l.hskew;
++	info->vdisplay = l.vdisplay;
++	info->vsyncstart = l.vsyncstart;
++	info->vsyncend = l.vsyncend;
++	info->vtotal = l.vtotal;
++	info->flags = l.flags;
++	info->privsize = l.privsize;
++	info->private = l.private;
++
++	return retval;
+ }
+ 
+ static int
