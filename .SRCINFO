@@ -1,0 +1,20 @@
+pkgbase = haskell-hssyck
+	pkgdesc = Fast, lightweight YAML loader and dumper
+	pkgver = 0.52
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/HsSyck
+	install = haskell-hssyck.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = haskell-syb
+	depends = haskell-hashtables
+	depends = haskell-utf8-string
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/HsSyck/0.52/HsSyck-0.52.tar.gz
+	sha256sums = 6c73bcbf8dee55e8a76a8dc9835201a2f995fe1c5c67f255f3f55f60ea9aacc1
+
+pkgname = haskell-hssyck
+
