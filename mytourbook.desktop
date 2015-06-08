@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=MyTourbook
+Comment=GPS tracks analyzer and visualizer
+Exec=mytourbook
+Icon=mytourbook.xpm
+Categories=Utility;DataVisualization;
