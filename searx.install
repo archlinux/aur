@@ -1,0 +1,11 @@
+post_install(){
+	echo "Settings in /usr/lib/python2.7/site-packages/searx/settings.yml"	
+	getent group searx &>/dev/null || groupadd -r -g 1336 searx >/dev/null
+	getent passwd searx &>/dev/null || useradd -r -u 1336 -g searx -s /bin/false searx >/dev/null
+}
+
+post_remove() {
+	getent passwd searx &>/dev/null && userdel searx >/dev/null
+	getent group searx &>/dev/null && groupdel searx >/dev/null
+	true
+}

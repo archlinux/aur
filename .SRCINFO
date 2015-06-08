@@ -1,0 +1,26 @@
+pkgbase = searx-git
+	pkgdesc = A privacy-respecting, hackable metasearch engine
+	pkgver = v0.7.0.r76.g9981725
+	pkgrel = 1
+	url = https://searx.0x2a.tk/
+	install = searx.install
+	arch = any
+	license = AGPL
+	makedepends = git
+	depends = python2-flask
+	depends = python2-flask-babel
+	depends = python2-requests
+	depends = python2-lxml
+	depends = python2-yaml
+	depends = python2-dateutil
+	depends = python2-pygments
+	backup = usr/lib/python2.7/site-packages/searx/settings.yml
+	source = searx-git::git+https://github.com/asciimoo/searx.git
+	source = searx.install
+	source = searx.service
+	md5sums = SKIP
+	md5sums = 2d63214f114f131a0ca2d93aa5dafee2
+	md5sums = 591625748fdd1b1ad1fe11c8ae8931b5
+
+pkgname = searx-git
+

@@ -1,0 +1,12 @@
+[Unit]
+Description=Searx server, the meta search engine.
+After=network.target
+
+[Service]
+Type=normal
+User=searx
+ExecStart=/usr/bin/searx-run
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
