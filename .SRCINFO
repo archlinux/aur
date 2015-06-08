@@ -1,0 +1,20 @@
+pkgbase = gdrive-git
+	pkgdesc = Google Drive CLI Client
+	pkgver = 1.8.0.r1.g385b8b9
+	pkgrel = 1
+	url = https://github.com/prasmussen/gdrive
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = go
+	makedepends = mercurial
+	provides = gdrive
+	conflicts = gdrive
+	options = !strip
+	options = !emptydirs
+	source = gdrive-git::git://github.com/prasmussen/gdrive.git
+	md5sums = SKIP
+
+pkgname = gdrive-git
+
