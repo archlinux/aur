@@ -1,0 +1,19 @@
+pkgbase = haskell-blaze-builder
+	pkgdesc = Efficient buffered output.
+	pkgver = 0.4.0.1
+	pkgrel = 1
+	url = https://github.com/lpsmith/blaze-builder
+	install = haskell-blaze-builder.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	makedepends = ghc
+	depends = haskell-bytestring
+	depends = haskell-text
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/blaze-builder/0.4.0.1/blaze-builder-0.4.0.1.tar.gz
+	md5sums = 97fd54eb400f8f7170ec57f8b1e3e6af
+
+pkgname = haskell-blaze-builder
+
