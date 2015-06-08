@@ -1,0 +1,23 @@
+pkgbase = irssi-naughty-bugs
+	pkgdesc = irssi with some unaccepted patches
+	pkgver = 0.8.16
+	pkgrel = 1
+	url = http://irssi.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glib2
+	depends = openssl
+	optdepends = perl-libwww: for the scriptassist script
+	provides = irssi
+	conflicts = irssi
+	backup = etc/irssi.conf
+	source = http://irssi.org/files/irssi-0.8.16.tar.bz2
+	source = utf8-keybind.patch
+	source = hostname-expandos.patch
+	md5sums = 4346119c4c000d0198cda17666ff1f06
+	md5sums = 125e57521a4db14215de5fc64ed5d683
+	md5sums = 3538336c7317f3f52b076543ff2c798d
+
+pkgname = irssi-naughty-bugs
+

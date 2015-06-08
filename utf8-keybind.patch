@@ -1,0 +1,22 @@
+Index: src/fe-common/core/keyboard.c
+===================================================================
+--- src/fe-common/core/keyboard.c	(revision 5205)
++++ src/fe-common/core/keyboard.c	(working copy)
+@@ -569,8 +569,15 @@
+ 	}
+ 
+         first_key = keyboard->key_state == NULL;
+-	combo = keyboard->key_state == NULL ? g_strdup(key) :
+-                g_strconcat(keyboard->key_state, "-", key, NULL);
++	if (keyboard->key_state == NULL) {
++		combo = g_strdup(key);
++	} else if (key[1] != '\0' && key[1] != '[') {
++		char wchar[256];
++		g_snprintf(wchar, sizeof(wchar), "%c-%c", key[0], key[1]);
++		combo = g_strconcat(keyboard->key_state, "-", wchar, NULL);
++	} else {
++		combo = g_strconcat(keyboard->key_state, "-", key, NULL);
++	}
+ 	g_free_and_null(keyboard->key_state);
+ 
+ 	rec = g_tree_search(key_states,
