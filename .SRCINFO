@@ -1,0 +1,18 @@
+pkgbase = hstr-git
+	pkgdesc = A command line utility that brings improved BASH command completion from the history. It aims to make completion easier and more efficient than Ctrl-r.
+	pkgver = 1.17.r11.g042501d
+	pkgrel = 1
+	url = https://github.com/dvorka/hstr
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = readline
+	makedepends = ncurses
+	depends = readline
+	conflicts = hh
+	source = git://github.com/dvorka/hstr.git#branch=master
+	md5sums = SKIP
+
+pkgname = hstr-git
+
