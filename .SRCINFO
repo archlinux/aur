@@ -1,0 +1,17 @@
+pkgbase = kdeplasma-applets-oblikuestrategies
+	pkgdesc = Plasmoid that displays a random draw from Brian Eno and Peter Schmidt's Oblique Strategies
+	pkgver = 1.5
+	pkgrel = 2
+	url = http://arcan1s.github.io/projects/oblikuestrategies
+	install = kdeplasma-applets-oblikuestrategies.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdebase-workspace
+	source = https://github.com/arcan1s/oblikuestrategies/releases/download/V.1.5/oblikue-strategies-1.5.tar.xz
+	md5sums = e813b03a17d96cddc41acdf457e37bbb
+
+pkgname = kdeplasma-applets-oblikuestrategies
+
