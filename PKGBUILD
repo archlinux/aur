@@ -15,7 +15,7 @@ source=(http://www.auto.tuwien.ac.at/~mkoegler/eib/bcusdk_${pkgver}.tar.gz
 md5sums=('5f81bc4e6bb53564573d573e795a9a5f'
          'b9e50d68138fb74a4d0f6370a720d8fe'
          '82e079c823fa226146ba49b47c76bab7'
-         '6535a482ea51ff5f8d9abf3d560fca1a'
+         '761bbad0f7d8cde42c4d2cd12bae3eb9'
          '815323eebff8bc442c1e653a34e6b0b4'
          '1004b9412428a50f754f26288f07f0f9')
 

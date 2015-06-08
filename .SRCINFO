@@ -1,7 +1,7 @@
 pkgbase = bcusdk
 	pkgdesc = Daemon as interface to the EIB / KNX bus
 	pkgver = 0.0.5
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.auto.tuwien.ac.at/~mkoegler/index.php/bcusdk
 	arch = i686
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = bcusdk
 	md5sums = 5f81bc4e6bb53564573d573e795a9a5f
 	md5sums = b9e50d68138fb74a4d0f6370a720d8fe
 	md5sums = 82e079c823fa226146ba49b47c76bab7
-	md5sums = 6535a482ea51ff5f8d9abf3d560fca1a
+	md5sums = 761bbad0f7d8cde42c4d2cd12bae3eb9
 	md5sums = 815323eebff8bc442c1e653a34e6b0b4
 	md5sums = 1004b9412428a50f754f26288f07f0f9
 
