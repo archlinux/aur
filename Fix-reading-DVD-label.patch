@@ -1,0 +1,27 @@
+From 1cdbd6909097cf36f3357a92de482ec9980ae7ed Mon Sep 17 00:00:00 2001
+From: John Stebbins <stebbins@jetheaddev.com>
+Date: Tue, 13 Jan 2015 11:07:03 -0700
+Subject: [PATCH] Fix reading DVD label
+
+This was inadvertently removed with REMAP
+---
+ src/vm/vm.c |    3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/vm/vm.c b/src/vm/vm.c
+index 7e4d594..1e87376 100644
+--- a/src/vm/vm.c
++++ b/src/vm/vm.c
+@@ -402,6 +402,9 @@ int vm_reset(vm_t *vm, const char *dvdroot) {
+       /* return 0; Not really used for now.. */
+     }
+     /* ifoRead_TXTDT_MGI(vmgi); Not implemented yet */
++    if(dvd_read_name(vm->dvd_name, vm->dvd_serial, dvdroot) != 1) {
++      fprintf(MSG_OUT, "libdvdnav: vm: dvd_read_name failed\n");
++    }
+   }
+   if (vm->vmgi) {
+     int i, mask;
+-- 
+1.7.10.4
+

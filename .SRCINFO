@@ -1,0 +1,17 @@
+pkgbase = lib32-libdvdnav
+	pkgdesc = The library for xine-dvdnav plugin (32 bit)
+	pkgver = 5.0.2
+	pkgrel = 1
+	url = http://dvdnav.mplayerhq.hu/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = lib32-libdvdread
+	depends = libdvdnav
+	source = git://git.videolan.org/libdvdnav.git#tag=5.0.2
+	source = Fix-reading-DVD-label.patch
+	md5sums = SKIP
+	md5sums = a92e0638a7cbe5f0e11458a05cf5fb8a
+
+pkgname = lib32-libdvdnav
+
