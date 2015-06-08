@@ -1,0 +1,16 @@
+pkgbase = lightson-git
+	pkgdesc = Bash script that prevents the screensaver and display power # management (DPMS) to be activated when you are watching Flash Videos fullscreen.
+	pkgver = r22.143e3f9
+	pkgrel = 1
+	url = https://github.com/drhoet/lightsOn
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = xorg-xvinfo
+	depends = xorg-xprop
+	source = lightson-git::git://github.com/drhoet/lightsOn.git
+	md5sums = SKIP
+
+pkgname = lightson-git
+
