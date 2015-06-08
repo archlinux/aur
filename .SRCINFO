@@ -1,0 +1,32 @@
+pkgbase = audiolinux
+	pkgdesc = AudioLinux audiophile linux configuration files, scripts and shortcuts
+	pkgver = 1.5
+	pkgrel = 6
+	url = http://www.audio-linux.com
+	install = audiolinux.install
+	arch = x86_64
+	license = custom
+	optdepends = linux-rt: The Linux-rt kernel and modules
+	optdepends = nvidia-last-rt: NVIDIA last drivers for linux-rt
+	optdepends = nvidia-340xx-rt: NVIDIA 340xx drivers for linux-rt
+	optdepends = rtirq: Realtime IRQ thread system tuning
+	optdepends = rtapp: Realtime application thread priority tuning
+	optdepends = rt-tests: A collection of latency testing tools for the linux(-rt) kernel
+	optdepends = tuna: Application tuning GUI & command line utility
+	optdepends = jack2-no-dbus-git: Classic jack2 without dbus enabled. For starting as daemon with systemd
+	optdepends = minimserver: UPnP Audio Server
+	optdepends = mpd: Flexible, powerful, server-side application for playing music
+	optdepends = mpd-dsd: Flexible, powerful, server-side application for playing music, with DSD seek support
+	optdepends = hqplayer: The high-end upsampling multichannel software HD-audio player
+	optdepends = hqplayer-embedded: Signalyst HQPlayer Embedded HQPlayer - the high-end upsampling multichannel software HD-audio player
+	optdepends = hqplayer-network-audio-daemon: The high-end upsampling multichannel software HD-audio player
+	optdepends = jriver-media-center: The Most Comprehensive Media Software
+	optdepends = dff2dsf: Signalyst DFF to DSF command line conversion utility
+	optdepends = deadbeef: A GTK+ audio player for GNU/Linux
+	optdepends = squeezelite-git: Lightweight headless squeezebox emulator
+	optdepends = logitechmediaserver-git: Streaming audio server
+	source = http://www.tophifi.it/ftp/packages/audiolinux.tar.gz
+	sha256sums = 89421e6ae73257969bc18f30dad438eb4246dee9d853bd97c1cacd2b779770a4
+
+pkgname = audiolinux
+
