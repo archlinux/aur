@@ -1,0 +1,13 @@
+pkgbase = yakuake-skin-breeze
+	pkgdesc = A Breeze skin for Yakuake
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://opendesktop.org/content/show.php?content=167519
+	arch = any
+	license = GPL
+	depends = yakuake
+	source = breeze.tar.xz::https://copy.com/PyyxvzP1XCLLsG8Q/breeze.tar.xz?download=1
+	sha256sums = f05e284b904b6604fa041bbde958a60671b6d8639c137d8edcaeda29a57fe001
+
+pkgname = yakuake-skin-breeze
+
