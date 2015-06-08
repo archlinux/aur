@@ -1,0 +1,26 @@
+pkgbase = kinfocenter-git
+	pkgdesc = KInfocenter
+	pkgver = r901.b0291b0
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/kde-workspace
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = kdoctools
+	makedepends = plasma-framework-git
+	depends = kdelibs4support-git
+	depends = kcmutils-git
+	depends = kwayland-git
+	depends = pciutils
+	depends = glu
+	depends = libraw1394
+	provides = kinfocenter
+	conflicts = kinfocenter
+	conflicts = kdebase-workspace
+	source = git://anongit.kde.org/kinfocenter.git
+	md5sums = SKIP
+
+pkgname = kinfocenter-git
+
