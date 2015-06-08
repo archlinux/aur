@@ -1,0 +1,17 @@
+pkgbase = xcm-git
+	pkgdesc = libXcm based tools. (GIT version)
+	pkgver = 0.5.3.5.gac82a70
+	pkgrel = 1
+	url = http://www.oyranos.org/libxcm
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = oyranos-git
+	provides = xcm
+	conflicts = xcm
+	source = git+https://github.com/oyranos-cms/xcm.git
+	md5sums = SKIP
+
+pkgname = xcm-git
+
