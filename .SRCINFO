@@ -1,0 +1,16 @@
+pkgbase = flvlc
+	pkgdesc = FLTK media player by libvlc
+	pkgver = 2.4.2
+	pkgrel = 0
+	url = https://bitbucket.org/daltomi/flvlc
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = fltk
+	depends = vlc
+	options = !buildflags
+
+pkgname = flvlc
+
