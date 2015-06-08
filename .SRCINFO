@@ -1,0 +1,16 @@
+pkgbase = epson-inkjet-printer-201101w
+	pkgdesc = Epson printer driver (Stylus NX130, TX130, TX133, TX135, SX130 / ME 340)
+	pkgver = 1.0.0
+	pkgrel = 8
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom:Epson Licence Agreement
+	depends = cups
+	depends = ghostscript
+	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201101w-1.0.0-1lsb3.2.src.rpm
+	sha256sums = 1843795e0a32e3e92de73807afa89961440b74c02bd8a97f16b795fe7ec72820
+
+pkgname = epson-inkjet-printer-201101w
+
