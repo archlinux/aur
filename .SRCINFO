@@ -1,0 +1,16 @@
+pkgbase = mod_ruby
+	pkgdesc = Embeds the Ruby interpreter into Apache
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = http://www.modruby.net/
+	install = mod_ruby.install
+	arch = i686
+	arch = x86_64
+	license = Apache
+	depends = apache>=1.3.3
+	depends = ruby>=1.6.4
+	source = http://www.modruby.net/archive/mod_ruby-1.3.0.tar.gz
+	md5sums = 5aae358c3c9f1bfa2554da9242289ab7
+
+pkgname = mod_ruby
+

@@ -1,0 +1,22 @@
+post_install() {
+/bin/cat << ENDOFMESSAGE
+==>
+==>
+==>  To install mod_ruby, add the following line in 
+==>  /etc/httpd/conf/httpd.conf file :
+==>
+==>  LoadModule ruby_module modules/mod_ruby.so
+==>
+==>  and restart/reload Apache.
+==>
+==>
+ENDOFMESSAGE
+}
+
+post_upgrade() {
+post_install
+}
+
+op=$1
+shift
+$op $*
