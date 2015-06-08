@@ -1,0 +1,14 @@
+pkgbase = perl-data-hexdumper
+	pkgdesc = Perl/CPAN Data::Hexdumper
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Data-Hexdumper/
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DC/DCANTRELL/Data-Hexdumper-1.4.tar.gz
+	md5sums = ba7e32db158d9b0b2dd5e02c5b07bda1
+
+pkgname = perl-data-hexdumper
+
