@@ -1,0 +1,17 @@
+pkgbase = kde-thumbnailer-epub
+	pkgdesc = Thumbnailer to show ePub cover previews in KDE file managers (Dolphin and Konqueror)
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://kde-apps.org/content/show.php/KDE+ePub+Thumbnailer?content=151210
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = automoc4
+	makedepends = cmake
+	depends = ebook-tools
+	depends = kdelibs
+	source = kde-thumbnailer-epub-1.0.tar.gz::http://kde-apps.org/CONTENT/content-files/151210-kde-thumbnailer-epub-1.0.tar.gz
+	sha256sums = abe892ebc670e04ffbccf8ebf493fb77c69d9684fb096e9fa4e55fd4b9ed5702
+
+pkgname = kde-thumbnailer-epub
+
