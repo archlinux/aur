@@ -1,0 +1,23 @@
+pkgbase = python2-pythran-git
+	pkgdesc = A claimless python to c++ converter
+	pkgver = r1243.e0b91f2
+	pkgrel = 1
+	url = http://pythonhosted.org/pythran/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	depends = python2-networkx
+	depends = python2-ply
+	depends = python2-numpy
+	depends = gperftools
+	depends = gmp
+	depends = boost
+	provides = python2-pythran
+	conflicts = python2-pythran
+	source = git+https://github.com/serge-sans-paille/pythran.git
+	md5sums = SKIP
+
+pkgname = python2-pythran-git
+
