@@ -17,15 +17,15 @@ source=("http://www.chiark.greenend.org.uk/~sgtatham/utils/after.tar.gz"
         "http://www.chiark.greenend.org.uk/~sgtatham/utils/reservoir.tar.gz"
         "http://www.chiark.greenend.org.uk/~sgtatham/utils/xcopy.tar.gz"
         "LICENCE")
-md5sums=('3202f0a45597eaef5cc0641d1b0fb88d'
-         '599bc34656b2d3c21c8b1e6df63faf96'
-         '740a428df60da6e170e1e506a7160806'
-         'fc40ae4866ed5abd265caf33eaf52ad6'
-         '1a44e74907f832587dcc0c23938d770a'
-         'd3f090d3567e1af11337b41046673b2b'
-         '2d4c5954083c5a5b9db4249487a93b3d'
-         '6aab74f8037d03ac09dbba20142b49d5'
-         '95e4d45b0a49eb06c38f0d1c72a3f86a'
+md5sums=('99db513ec6de2be5a8e3bfd38af4e9d2'
+         '09b838779d1e8dff7c7c38f368e8173a'
+         'f66e409cf386c1c70eeb3df8d6a59a5c'
+         '979ca80f7411f734688b64177924b267'
+         '74672f2b0f2f405b54991c72b3fd8e82'
+         '2274a117c37565440a6a0dbe417735d3'
+         'f70574b70abe9b1b80989a9202f51aa4'
+         '5d0f9266bc8480c6a478ff59d98caff0'
+         '66eb7335a53d345c81f78c0066847b1b'
          'a74527fc4312ab9ace4ed1c1290a11e4')
 
 build() {
