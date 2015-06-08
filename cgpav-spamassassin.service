@@ -1,0 +1,14 @@
+[Unit]
+Description=Spamassassin daemon for Communigate Pro
+After=syslog.target network.target
+
+[Service]
+Type=forking
+PIDFile=/var/run/spamd.pid
+ExecStart=/usr/bin/vendor_perl/spamd -d --pidfile /var/run/spamd.pid --socketpath /var/run/spamd.ctl -c -c -x --virtual-config-dir=/var/lib/spamassassin -u spamd -g spamd
+StandardOutput=syslog
+StandardError=syslog
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

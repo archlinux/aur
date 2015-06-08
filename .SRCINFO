@@ -1,0 +1,24 @@
+pkgbase = communigatepro-av
+	pkgdesc = Spamassassin, ClamAV and DMARC scripts for Communigate Pro Communications platform
+	pkgver = 1.5
+	pkgrel = 3
+	url = http://www.stalker.com/
+	install = install
+	arch = x86_64
+	license = GPL
+	depends = spamassassin
+	depends = clamav
+	depends = communigatepro
+	depends = perl-email-address
+	depends = perl-archive-zip
+	backup = var/lib/CommuniGate/Settings/cgpav.conf
+	backup = var/lib/Communigate/Helpers/DMARC.pl
+	source = http://program.farit.ru/antivir/cgpav-1.5.tar.gz
+	source = cgpav-spamassassin.service
+	source = DMARC.pl
+	sha512sums = dfeeb28c3238d11b45d48ae3684db1867b9b4ba2fdcc752d0172a4767d6329fd146a267f0ae25d574ff161f44f6d6b562e9651b7346a78ad8b6d9929d6e0791b
+	sha512sums = c2dc2c03d77df762cf791f597685588b7d3d221a179ccaebbc4608b0230296603c9c851143f48bda928db74e0c5d193b1eb5732a5eef66dbb9b9e497fd265d2e
+	sha512sums = a233b7f575a7f76a0f0f61172f9c1e294d5f698e8f3726fdecd9d3b12f068d1e967b897dcafd08986f79a62bfaad7d7ba15d0323692806920223ebc148139577
+
+pkgname = communigatepro-av
+

@@ -1,0 +1,25 @@
+post_install()
+{
+  chown mail:mail "$pkgdir"/var/lib/CommuniGate/Helpers/cgpav
+  chmod 2550 "$pkgdir"/var/CommuniGate/Helpers/cgpav
+  chown mail:mail "$pkgdir"/var/lib/CommuniGate/Settings/cgpav.conf
+  chmod 2660 "$pkgdir"/var/CommuniGate/Settings/cgpav.conf
+
+  cat <<- EOF
+
+    ==> Before starting Spamassassin and ClamAV please run the following commands
+    # sa-update
+    # freshclam
+    ==> Start Spamassassin and ClamAV using systemd
+    # systemctl start cgpav-spamassassin
+    # systemctl start clamd
+    # systemctl start freshclamd
+    ==> Auto-start Spamassassin and ClamAV using systemd
+    # systemctl enable cpgav-spamassassin
+    # systemctl enable clamd
+    # systemctl enable freshclamd
+    Setup:
+    ==> For setting up the helper in Communigate Pro please visit http://program.farit.ru/doc/cgpav.html
+EOF
+}
+
