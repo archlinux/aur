@@ -1,0 +1,17 @@
+pkgbase = mtp-declare
+	pkgdesc = Declare MTP device for automount in one click
+	pkgver = 20140531
+	pkgrel = 1
+	url = https://github.com/NicolasBernaerts/mtp-automount/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = go-mtpfs-git
+	depends = mtpfs
+	depends = zenity
+	depends = sudo
+	source = https://github.com/NicolasBernaerts/mtp-automount/raw/master/mtp-declare
+	md5sums = 3568b3c9154036798ff41dece8d4736a
+
+pkgname = mtp-declare
+
