@@ -1,0 +1,18 @@
+pkgbase = kdesudo
+	pkgdesc = A SUdo frontend for KDE
+	pkgver = 3.4.2.4
+	pkgrel = 1
+	url = https://launchpad.net/kdesudo
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdebase-runtime
+	depends = sudo
+	options = !emptydirs
+	source = http://launchpad.net/kdesudo/3.x/3.4.2.4/+download/kdesudo-3.4.2.4.tar.gz
+	sha1sums = 4821552c6ce32e9ce92bc054a1963a1e96bf5185
+
+pkgname = kdesudo
+
