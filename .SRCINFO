@@ -1,0 +1,19 @@
+pkgbase = libkgeomap-frameworks-git
+	pkgdesc = A wrapper around world map components for browsing and arranging photos on a map. KF5 Frameworks branch. (GIT version)
+	pkgver = 5.0.0.r623.6b80322
+	pkgrel = 1
+	url = http://www.kde.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = git
+	makedepends = automoc4
+	makedepends = cmake
+	depends = marble-git
+	source = git://anongit.kde.org/libkgeomap#branch=frameworks
+	sha1sums = SKIP
+
+pkgname = libkgeomap-frameworks-git
+
