@@ -1,0 +1,55 @@
+pkgbase = wxwidgets2.8-light
+	pkgdesc = wxWidgets suite for Base and GTK2 toolkits (GNOME/GStreamer free!)
+	pkgver = 2.8.12.1
+	pkgrel = 8
+	url = http://wxwidgets.org
+	arch = i686
+	arch = x86_64
+	license = custom:wxWindows
+	makedepends = git
+	makedepends = bash
+	makedepends = glu
+	makedepends = gtk2
+	makedepends = libsm
+	makedepends = sdl
+	makedepends = expat
+	makedepends = zlib
+	source = wxwidgets::git+https://github.com/wxWidgets/wxPython.git#tag=wxPy-2.8.12.1
+	source = wxwidgets-2.8-collision.patch
+	source = config-2.8.conf
+	source = wx-config-2.8.sh
+	source = make-abicheck-non-fatal.patch
+	sha1sums = SKIP
+	sha1sums = 75d2292a0058570aa6071b4bee6eef69e47f1208
+	sha1sums = 1539fb4299a05d32dc739b478986cf3b3017d1b9
+	sha1sums = 4156d992b8fbbdc8e596a7c4e548e90295d3cf95
+	sha1sums = dfe38650c655395b90bf082b5734c4093508bfa3
+
+pkgname = wxbase2.8-light
+	pkgdesc = wxWidgets 2.8 Base (GNOME/GStreamer free!)
+	depends = wxcommon2.8-light
+	depends = expat
+	depends = zlib
+	provides = wxbase2.8=2.8.12.1
+	conflicts = wxbase2.8
+	options = !emptydirs
+
+pkgname = wxgtk2.8-light
+	pkgdesc = wxWidgets 2.8 with GTK2 Toolkit (GNOME/GStreamer free!)
+	depends = wxbase2.8-light
+	depends = gtk2
+	depends = libsm
+	depends = sdl
+	provides = wxgtk2.8=2.8.12.1
+	conflicts = wxgtk2.8
+	options = !emptydirs
+
+pkgname = wxcommon2.8-light
+	pkgdesc = wxWidgets 2.8 common (GNOME/GStreamer free!)
+	arch = any
+	depends = bash
+	provides = wxcommon2.8=2.8.12.1
+	conflicts = wxcommon2.8
+	options = !emptydirs
+	backup = etc/wx/config-2.8
+
