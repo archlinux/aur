@@ -1,0 +1,13 @@
+pkgbase = ip2location-python2
+	pkgdesc = Python2 library enables the user to find info of any IP address or hostname
+	pkgver = 7.0.0
+	pkgrel = 1
+	url = http://www.ip2location.com/developers/python
+	arch = any
+	license = GPL3
+	depends = python2
+	source = http://www.ip2location.com/downloads/ip2location-python-7.0.0.tar.gz
+	sha256sums = 5111176a160ff5acd9fbd824038a2503a1b784a57eb48e712facc7716a8a4b5e
+
+pkgname = ip2location-python2
+
