@@ -1,0 +1,16 @@
+pkgbase = haskell-digest
+	pkgdesc = Various cryptographic hashes for bytestrings; CRC32 and Adler32 for now.
+	pkgver = 0.0.1.2
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/digest
+	install = haskell-digest.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = zlib
+	source = http://hackage.haskell.org/packages/archive/digest/0.0.1.2/digest-0.0.1.2.tar.gz
+	sha256sums = 641717eb16392abf8965986a9e8dc21eebf1d97775bbb6923c7b7f8fee17fe11
+
+pkgname = haskell-digest
+
