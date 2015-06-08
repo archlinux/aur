@@ -2,9 +2,9 @@
 pkgname=swmm
 pkgver=5.1.009
 pkgrel=1
-pkgdesc='Storm Water Management Model Engine'
-url=('http://www2.epa.gov/water-research/storm-water-management-model-swmm')
-arch=('any')
+pkgdesc="Storm Water Management Model Engine"
+url="http://www2.epa.gov/water-research/storm-water-management-model-swmm"
+arch=('x86_64' 'i686')
 license=('custom:OpenSource')
 makedepends=('unzip')
 source=("http://www2.epa.gov/sites/production/files/2015-05/swmm51009_engine_0.zip"
