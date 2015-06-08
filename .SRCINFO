@@ -1,0 +1,14 @@
+pkgbase = mailru-cloud
+	pkgdesc = Client of Cloud@Mail.Ru (Mail.Ru free online storage).
+	pkgver = 15.04.0021
+	pkgrel = 1
+	url = http://cloud.mail.ru/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = qt5-base
+	source = https://linuxdesktopcloud.cdnmail.ru/deb/mail.ru-cloud_15.04.0021_amd64.deb
+	sha256sums = 08aeadcf8b01ca119730f58cf2423600c2be1a252076c14363108c120969a639
+
+pkgname = mailru-cloud
+
