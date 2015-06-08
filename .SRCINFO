@@ -1,0 +1,20 @@
+pkgbase = perl-role-commons
+	pkgdesc = roles that can be commonly used, for the mutual benefit of all
+	pkgver = 0.101
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Role-Commons
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.008
+	depends = perl-class-load
+	depends = perl-moo
+	depends = perl-object-id
+	depends = perl-scalar-does>=0.006
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/Role-Commons-0.101.tar.gz
+	md5sums = 90aa9c651dc5a2cecd9ccf8a65618912
+	sha512sums = 4193fbad535a2a4abb388363b0d02a97501c7075537cdb2e992c55c4db30d9510db95c759a2684713643eaac2fd6447d990fc0a1953d26e1c578499810b4968b
+
+pkgname = perl-role-commons
+
