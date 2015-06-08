@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-sdl2_gfx
+	pkgdesc = SDL Graphic Primitives (Version 2) (mingw-w64)
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = http://www.ferzkopp.net/joomla/software-mainmenu-14/4-ferzkopps-linux-software/19-sdlgfx
+	arch = any
+	license = zlib
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-sdl2
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = http://www.ferzkopp.net/Software/SDL2_gfx/SDL2_gfx-1.0.0.tar.gz
+	md5sums = f008cc117cb901aec6bf5c2f0b11f7ea
+
+pkgname = mingw-w64-sdl2_gfx
+
