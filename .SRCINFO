@@ -1,0 +1,16 @@
+pkgbase = epson-inkjet-printer-201113j
+	pkgdesc = Epson printer driver (PX-B700, PX-750F)
+	pkgver = 1.0.3
+	pkgrel = 8
+	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom:Epson Licence Agreement
+	depends = cups
+	depends = ghostscript
+	source = http://download.ebz.epson.net/dsc/op/stable/SRPMS/epson-inkjet-printer-201113j-1.0.3-1lsb3.2.src.rpm
+	sha256sums = a3fb4c5e6a2224a33f54289eb9875d4c64705660bfb3642fe3d9340ad4c68ea2
+
+pkgname = epson-inkjet-printer-201113j
+
