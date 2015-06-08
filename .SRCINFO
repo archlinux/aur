@@ -1,0 +1,14 @@
+pkgbase = l-smash
+	pkgdesc = A simple tool for MP4
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/l-smash/l-smash
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glibc
+	source = l-smash-2.3.0.tar.gz::https://github.com/l-smash/l-smash/archive/v2.3.0.tar.gz
+	sha256sums = 1c1a487191b723a486bd3e8abd5e28e0d34f7ac1964d98fac0a9a2db962e3838
+
+pkgname = l-smash
+
