@@ -1,0 +1,7 @@
+[Unit]
+Description=remctl command execution service
+Documentation=man:remctld(8)
+
+[Service]
+ExecStart=/usr/bin/remctld
+StandardInput=socket
