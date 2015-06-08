@@ -1,0 +1,92 @@
+Common subdirectories: sendip-2.5/contrib and sendip-2.5-a/contrib
+diff -up sendip-2.5/ipv4.c sendip-2.5-a/ipv4.c
+--- sendip-2.5/ipv4.c	2003-04-21 21:23:22.000000000 +0800
++++ sendip-2.5-a/ipv4.c	2009-02-11 09:16:13.000000000 +0800
+@@ -204,7 +204,7 @@ bool do_opt(char *opt, char *arg, sendip
+ 		if(!strcmp(opt+2, "num")) {
+ 			/* Other options (auto legnth) */
+ 			u_int8_t cp, cls, num, len;
+-			u_int8_t *data = malloc(strlen(arg)+2);
++			char *data = malloc(strlen(arg)+2);
+ 			if(!data) {
+ 				fprintf(stderr,"Out of memory!\n");
+ 				return FALSE;
+@@ -214,7 +214,7 @@ bool do_opt(char *opt, char *arg, sendip
+ 			cp=(*data&0x80)>>7;
+ 			cls=(*data&0x60)>>5;
+ 			num=(*data&0x1F);
+-			addoption(cp,cls,num,len+1,data+1,pack);
++			addoption(cp,cls,num,len+1,(u_int8_t*)(data+1),pack);
+ 			free(data);
+ 		} else if(!strcmp(opt+2, "eol")) {
+ 			/* End of list */
+@@ -226,7 +226,7 @@ bool do_opt(char *opt, char *arg, sendip
+ 			/* Record route
+ 			 * Format is the same as for loose source route
+ 			 */
+-			char *data = strdup(arg);
++		        char *data = strdup(arg);
+ 			u_int8_t len;
+ 			if(!data) {
+ 				fprintf(stderr,"Out of memory!\n");
+@@ -237,7 +237,7 @@ bool do_opt(char *opt, char *arg, sendip
+ 				free(data);
+ 				return FALSE;
+ 			} else {
+-				addoption(0,0,7,len+2,data,pack);
++			        addoption(0,0,7,len+2,(u_int8_t*)data,pack);
+ 				free(data);
+ 			}
+ 		} else if(!strcmp(opt+2, "ts")) {
+@@ -352,7 +352,7 @@ bool do_opt(char *opt, char *arg, sendip
+ 				data_in = next;
+ 			}
+ 
+-			addoption(0,2,4,data_out-data+2,data,pack);
++			addoption(0,2,4,data_out-data+2,(u_int8_t*)data,pack);
+ 			free(data);
+ 			/* End of timestamp parsing */
+ 
+@@ -377,7 +377,7 @@ bool do_opt(char *opt, char *arg, sendip
+ 				free(data);
+ 				return FALSE;
+ 			} else {
+-				addoption(1,0,3,len+2,data,pack);
++			        addoption(1,0,3,len+2,(u_int8_t*)data,pack);
+ 				free(data);
+ 			}
+ 		} else if(!strcmp(opt+2, "sid")) {
+@@ -399,7 +399,7 @@ bool do_opt(char *opt, char *arg, sendip
+ 				free(data);
+ 				return FALSE;
+ 			} else {
+-				addoption(1,0,9,len+2,data,pack);
++			        addoption(1,0,9,len+2,(u_int8_t*)data,pack);
+ 				free(data);
+ 			}
+ 		} else {
+Only in sendip-2.5-a: sendip.1
+Only in sendip-2.5-a: sendip.spec
+diff -up sendip-2.5/tcp.c sendip-2.5-a/tcp.c
+--- sendip-2.5/tcp.c	2003-06-11 04:15:43.000000000 +0800
++++ sendip-2.5-a/tcp.c	2009-02-11 09:18:06.000000000 +0800
+@@ -204,8 +204,8 @@ bool do_opt(char *opt, char *arg, sendip
+ 				fprintf(stderr,"Out of memory!\n");
+ 				return FALSE;
+ 			}
+-			sprintf(data,"0x%s",arg);
+-			len = compact_string(data);
++			sprintf((char*)data,"0x%s",arg);
++			len = compact_string((char*)data);
+ 			if(len==1)
+ 				addoption(*data,1,NULL,pack);
+ 			else
+@@ -230,7 +230,7 @@ bool do_opt(char *opt, char *arg, sendip
+ 			addoption(4,2,NULL,pack);
+ 		} else if (!strcmp(opt+2, "sack")) {
+ 		   /* Selective Acknowledge rfc1323 */
+-			unsigned char *next;
++			char *next;
+ 			u_int32_t le, re;
+ 			u_int8_t *comb, *c;
+ 			int count=0;
