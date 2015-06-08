@@ -1,0 +1,18 @@
+pkgbase = haskell-vault
+	pkgdesc = A vault is a persistent store for values of arbitrary types.
+	pkgver = 0.3.0.4
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/vault
+	install = haskell-vault.install
+	arch = i686
+	arch = x86_64
+	license = BSD3
+	makedepends = ghc
+	depends = haskell-containers
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/vault/0.3.0.4/vault-0.3.0.4.tar.gz
+	sha256sums = 561ef32877935067e458333a44a37f15b4063559c4cb4ddc412ccf705ec6062a
+
+pkgname = haskell-vault
+
