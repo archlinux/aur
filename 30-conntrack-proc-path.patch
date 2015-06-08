@@ -1,0 +1,11 @@
+--- firestarter-1.0.3/src/statusview.c.ORIG	2012-05-29 16:58:05.204114870 +1000
++++ firestarter-1.0.3/src/statusview.c	2012-05-29 16:59:01.914116450 +1000
+@@ -32,7 +32,7 @@
+  
+ #define DEV_FILE "/proc/net/dev"
+ #define TCP_FILE "/proc/net/tcp"
+-#define CONNTRACK_FILE "/proc/net/ip_conntrack"
++#define CONNTRACK_FILE "/proc/net/nf_conntrack" /* http://www.kernelhardware.org/firestarter-on-centos-6/ */
+ #define CONNTRACK_TTL 10 /* Number of refresh cycles a non-established connection is kept in the GUI */
+ #define REFRESH_RATE 1 /* Time in seconds between updates */
+ #define HISTORY_LENGTH 5 /* Number of samples to use when averaging the traffic rate */

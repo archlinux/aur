@@ -1,0 +1,11 @@
+[Unit]
+Description=Application of firewall rules created by FireStarter GUI
+Wants=network.target
+Before=network.target
+ 
+[Service]
+Type=oneshot
+ExecStart=/etc/firestarter/firestarter.sh start
+  
+[Install]
+WantedBy=multi-user.target

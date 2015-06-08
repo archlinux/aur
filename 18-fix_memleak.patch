@@ -1,0 +1,56 @@
+diff -Naur firestarter-1.0.3.orig/src/preferences.c firestarter-1.0.3/src/preferences.c
+--- firestarter-1.0.3.orig/src/preferences.c	2005-01-29 12:32:08.000000000 +0000
++++ firestarter-1.0.3/src/preferences.c	2008-01-22 18:15:14.000000000 +0000
+@@ -273,7 +273,7 @@
+ 			    1, _("Advanced Options"),
+ 			    -1);
+ 	gtk_tree_iter_free (top_section);
+-	gtk_tree_iter_free (iter);
++	g_free (iter);
+ 
+ 	return GTK_TREE_MODEL (store);
+ }
+diff -Naur firestarter-1.0.3.orig/src/statusview.c firestarter-1.0.3/src/statusview.c
+--- firestarter-1.0.3.orig/src/statusview.c	2005-01-29 12:32:08.000000000 +0000
++++ firestarter-1.0.3/src/statusview.c	2008-01-22 18:15:32.000000000 +0000
+@@ -773,7 +773,7 @@
+ {
+ 	Connection_entry *entry = (Connection_entry *)data;
+ 	
+-	gtk_tree_iter_free (entry->ref);
++	g_free (entry->ref);
+ 	g_free (data);
+ }
+
+diff -Naur firestarter-1 (copy).0.3/src/policyview.c firestarter-1.0.3/src/policyview.c
+--- firestarter-1.0.3.orig/src/policyview.c	2005-01-29 12:32:08.000000000 +0000
++++ firestarter-1.0.3/src/policyview.c	2008-04-09 23:35:32.000000000 +0100
+@@ -146,7 +146,7 @@
+ 
+ 	g_strfreev (tokens);
+ 	if (view != NULL)
+-		gtk_tree_iter_free (iter);
++		g_free (iter);
+ 	return TRUE;
+ }
+ 
+@@ -218,7 +218,9 @@
+ 		gtk_entry_set_text (GTK_ENTRY (element), "");
+ 	}
+ 
+-	g_object_steal_data (G_OBJECT (dialog), "editing");
++	GtkTreeIter *iter = g_object_steal_data (G_OBJECT (dialog), "editing");
++	if (iter)
++		g_free(iter);
+ }
+ 
+ static gboolean
+@@ -428,7 +430,7 @@
+ 				gtk_list_store_remove (GTK_LIST_STORE (model), iter); /* Remove from the view */
+ 				remove_line_from_file (rule_file, (int)position);
+ 
+-				gtk_tree_iter_free (iter);
++				g_free (iter);
+ 			}
+ 
+ 			append_to_file (rule_file, data, TRUE);

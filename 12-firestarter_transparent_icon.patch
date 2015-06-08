@@ -1,0 +1,92 @@
+diff -Naur firestarter-1.0.3.orig/src/eggtrayicon.c firestarter-1.0.3/src/eggtrayicon.c
+--- firestarter-1.0.3.orig/src/eggtrayicon.c	2005-01-29 07:32:08.000000000 -0500
++++ firestarter-1.0.3/src/eggtrayicon.c	2006-05-15 19:49:09.000000000 -0400
+@@ -59,6 +59,9 @@
+ 					GValue     *value,
+ 					GParamSpec *pspec);
+ 
++static void egg_tray_icon_add (GtkContainer *container,
++			       GtkWidget *widget);
++
+ static void egg_tray_icon_realize   (GtkWidget *widget);
+ static void egg_tray_icon_unrealize (GtkWidget *widget);
+ 
+@@ -104,14 +107,18 @@
+ {
+   GObjectClass *gobject_class = (GObjectClass *)klass;
+   GtkWidgetClass *widget_class = (GtkWidgetClass *)klass;
++  GtkContainerClass *container_class = (GtkContainerClass *)klass;
+ 
+   parent_class = g_type_class_peek_parent (klass);
+ 
++  
+   gobject_class->get_property = egg_tray_icon_get_property;
+ 
+   widget_class->realize   = egg_tray_icon_realize;
+   widget_class->unrealize = egg_tray_icon_unrealize;
+ 
++  container_class->add = egg_tray_icon_add;
++
+   g_object_class_install_property (gobject_class,
+ 				   PROP_ORIENTATION,
+ 				   g_param_spec_enum ("orientation",
+@@ -122,6 +129,35 @@
+ 						      G_PARAM_READABLE));
+ }
+ 
++static gboolean
++transparent_expose_event (GtkWidget *widget, GdkEventExpose *event, gpointer user_data)
++{
++  gdk_window_clear_area (widget->window, event->area.x, event->area.y,
++		  event->area.width, event->area.height);
++  return FALSE;
++}
++
++static void
++make_transparent_again (GtkWidget *widget, GtkStyle *previous_style,
++			gpointer user_data)
++{
++  gdk_window_set_back_pixmap (widget->window, NULL, TRUE);
++}
++
++static void
++make_transparent (GtkWidget *widget, gpointer user_data)
++{
++  if (GTK_WIDGET_NO_WINDOW (widget) || GTK_WIDGET_APP_PAINTABLE (widget))
++    return;
++
++  gtk_widget_set_app_paintable (widget, TRUE);
++  gtk_widget_set_double_buffered (widget, FALSE);
++  gdk_window_set_back_pixmap (widget->window, NULL, TRUE);
++  g_signal_connect (widget, "expose_event",
++		    G_CALLBACK (transparent_expose_event), NULL);
++  g_signal_connect_after (widget, "style_set",
++		         G_CALLBACK (make_transparent_again), NULL);
++}
+ static void
+ egg_tray_icon_get_property (GObject    *object,
+ 			    guint       prop_id,
+@@ -343,6 +379,8 @@
+   if (GTK_WIDGET_CLASS (parent_class)->realize)
+     GTK_WIDGET_CLASS (parent_class)->realize (widget);
+ 
++  make_transparent (widget, NULL);
++
+   screen = gtk_widget_get_screen (widget);
+   display = gdk_screen_get_display (screen);
+   xdisplay = gdk_x11_display_get_xdisplay (display);
+@@ -373,6 +411,14 @@
+ 			 egg_tray_icon_manager_filter, icon);
+ }
+ 
++static void
++egg_tray_icon_add (GtkContainer *container,  GtkWidget *widget)
++{
++  g_signal_connect (widget, "realize",
++		  G_CALLBACK (make_transparent), NULL);
++  GTK_CONTAINER_CLASS (parent_class)->add (container, widget);
++}
++
+ EggTrayIcon *
+ egg_tray_icon_new_for_screen (GdkScreen *screen, const char *name)
+ {

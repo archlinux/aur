@@ -1,0 +1,17 @@
+--- firestarter-1.0.3-orig/src/menus.c	2005-01-29 20:32:08.000000000 +0800
++++ firestarter-1.0.3/src/menus.c	2008-03-11 22:25:13.000000000 +0800
+@@ -64,12 +64,12 @@
+ 
+ 	{ "RemoveRule", GTK_STOCK_REMOVE, N_("_Remove Rule"), NULL, N_("Remove the selected rule"), policyview_remove_rule },
+ 	{ "AddRule", GTK_STOCK_ADD, N_("_Add Rule"), NULL, N_("Add a rule to the selected policy group"), policyview_add_rule },
+-	{ "EditRule", FIRESTARTER_STOCK_EDIT, N_("_Edit Rule"), NULL, N_("Edit the selected rule"), policyview_edit_rule },
++	{ "EditRule", GTK_STOCK_EDIT, N_("_Edit Rule"), NULL, N_("Edit the selected rule"), policyview_edit_rule },
+ 	{ "ApplyPolicy", GTK_STOCK_APPLY, N_("A_pply Policy"), NULL, N_("Apply the changes made the policy"), policyview_apply },
+ 
+ 	{ "OpenManual", GTK_STOCK_HELP, N_("Online Users' _Manual"), NULL, N_("Open the online users' manual in a browser"), open_manual },
+ 	{ "OpenHomepage", GTK_STOCK_HOME, N_("Firestarter _Homepage"), NULL, N_("Open the Firestarter homepage in a browser"), open_homepage },
+-	{ "ShowAbout", GNOME_STOCK_ABOUT, N_("_About"), NULL, N_("About Firestarter"), G_CALLBACK (show_about) },
++	{ "ShowAbout", GTK_STOCK_ABOUT, N_("_About"), NULL, N_("About Firestarter"), G_CALLBACK (show_about) },
+ 
+ 	{ "AllowInboundFrom", NULL, N_("Allow Connections From Source"), NULL, N_("Allow all connections from this source"), hitview_allow_host },
+ 	{ "AllowInboundService", NULL, N_("Allow Inbound Service for Everyone"), NULL, N_("Allow inbound service for everyone"), hitview_allow_service },
