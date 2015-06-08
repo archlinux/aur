@@ -1,0 +1,18 @@
+pkgbase = haskell-failure
+	pkgdesc = A simple type class for success/failure computations.
+	pkgver = 0.2.0.3
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/failure
+	install = haskell-failure.install
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = ghc
+	depends = haskell-transformers>=0.2.2.0
+	options = strip
+	options = staticlibs
+	source = http://hackage.haskell.org/packages/archive/failure/0.2.0.3/failure-0.2.0.3.tar.gz
+	md5sums = 92506f1297a0f0f0a2850cdf404a1211
+
+pkgname = haskell-failure
+
