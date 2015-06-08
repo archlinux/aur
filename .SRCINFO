@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-dither-git
+	pkgdesc = Plugin for Vapoursynth: dither (GIT version)
+	pkgver = 20150223.0f209b6
+	pkgrel = 1
+	url = http://forum.doom9.org/showthread.php?t=171525
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = vapoursynth
+	depends = vapoursynth-plugin-fmtconv
+	provides = vapoursynth-plugin-dither
+	conflicts = vapoursynth-plugin-dither
+	source = dither::git+https://github.com/IFeelBloated/VaporSynth-Functions.git
+	md5sums = SKIP
+
+pkgname = vapoursynth-plugin-dither-git
+
