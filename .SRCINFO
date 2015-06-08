@@ -1,0 +1,13 @@
+pkgbase = pdfscissors
+	pkgdesc = A tool to crop pdf files.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = http://www.pdfscissors.com
+	arch = any
+	license = AGPL
+	depends = java-runtime
+	source = http://sites.google.com/site/pdfscissors/pdfscissors.jar
+	md5sums = 2e8ddd4daa466e02b88bd260167da873
+
+pkgname = pdfscissors
+
