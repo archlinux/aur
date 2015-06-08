@@ -1,0 +1,21 @@
+pkgbase = kwindowsystem-git
+	pkgdesc = KWindowSystem
+	pkgver = r136.487f03a
+	pkgrel = 1
+	url = https://projects.kde.org/projects/frameworks/kwindowsystem
+	arch = i686
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	makedepends = git
+	makedepends = qt5-tools
+	depends = qt5-x11extras
+	depends = libxfixes
+	provides = kwindowsystem
+	conflicts = kwindowsystem
+	source = git://anongit.kde.org/kwindowsystem.git
+	md5sums = SKIP
+
+pkgname = kwindowsystem-git
+
