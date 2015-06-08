@@ -1,0 +1,22 @@
+pkgbase = ocprop
+	pkgdesc = Upload logs and caches to opencaching.de
+	pkgver = 2.21
+	pkgrel = 1
+	url = http://geolog.sourceforge.net/ocprop.html
+	arch = any
+	license = GPL
+	depends = geolog
+	depends = perl
+	depends = perl-http-cookies
+	depends = perl-file-which
+	depends = perl-file-homedir
+	depends = perl-archive-zip
+	depends = perl-term-readkey
+	depends = perl-lwp-protocol-https
+	depends = perl-gd
+	depends = perl-io-string
+	source = https://sourceforge.net/project/downloading.php?groupname=geolog&filename=ocprop-2.21.tgz
+	md5sums = 1d815f4787963a4be2bc107e576e5823
+
+pkgname = ocprop
+
