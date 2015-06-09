@@ -1,0 +1,51 @@
+post_install() {
+  _mkuser
+  chown -R bitrated:bitrated /etc/bitrated /usr/share/bitrated
+  printf "%b\n" "$bitrated"
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  _rmuser
+  rm -rf /usr/share/bitrated
+}
+
+_mkuser() {
+  getent passwd bitrated &>/dev/null || {
+    echo -n "Creating bitrated user... "
+    grep -E "^bitrated:" /etc/group >/dev/null || groupadd bitrated
+    useradd -m -d /etc/bitrated -g bitrated -s /usr/bin/nologin bitrated
+    echo "done"
+  }
+}
+
+_rmuser() {
+  echo -n "Removing bitrated user... "
+  userdel -rf bitrated 2>/dev/null
+  echo "done"
+}
+
+read -d '' bitrated <<'EOF'
+########################################################################
+########################################################################
+##                                                                    ##
+##  Bitrated                                                          ##
+##  ________                                                          ##
+##                                                                    ##
+##  Start bitrated:                                                   ##
+##                                                                    ##
+##      # systemctl start bitrated                                    ##
+##                                                                    ##
+##  Then point your browser at:                                       ##
+##                                                                    ##
+##      127.0.0.1:8070                                                ##
+##                                                                    ##
+##  NOTE: /usr/share/bitrated/pages/terms.jade should be removed      ##
+##  from any public websites running this code.                       ##
+##                                                                    ##
+########################################################################
+########################################################################
+EOF

@@ -1,0 +1,17 @@
+[Unit]
+Description=Bitrated
+Requires=mongodb.service
+After=mongodb.service
+
+[Service]
+Type=simple
+User=bitrated
+Group=bitrated
+WorkingDirectory=/usr/share/bitrated
+ExecStart=/usr/bin/npm start
+ExecStop=/usr/bin/kill -HUP $MAINPID
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
