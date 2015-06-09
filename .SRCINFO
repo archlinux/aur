@@ -1,0 +1,16 @@
+pkgbase = ttf-impallari-quattrocento-sans
+	pkgdesc = Classic, Elegant & Sober typeface, from Pablo Impallari
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://www.impallari.com/quattrocentosans/
+	install = updatefont.install
+	arch = any
+	groups = impallari-fonts
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.impallari.com/media/uploads/prosources/update-19-source.zip
+	md5sums = f27e2fd6b5537dd74869cfc834963bc9
+
+pkgname = ttf-impallari-quattrocento-sans
+
