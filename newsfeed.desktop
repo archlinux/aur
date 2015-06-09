@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Terminal=false
+Exec=newsfeed
+Name=NewsFeed
+GenericName=Atom/RSS reader
+Icon=newsfeed
+Categories=Network;
