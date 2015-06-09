@@ -1,0 +1,17 @@
+pkgbase = enlive-git
+	pkgdesc = A selector-based (a la CSS) templating library for Clojure
+	pkgver = 20121111
+	pkgrel = 1
+	url = http://github.com/cgrant/enlive
+	arch = i686
+	arch = x86_64
+	license = EPL
+	makedepends = apache-ant
+	makedepends = git
+	depends = java-environment
+	depends = clojure
+	depends = leiningen
+	provides = enlive
+
+pkgname = enlive-git
+
