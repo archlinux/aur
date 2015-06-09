@@ -1,0 +1,14 @@
+pkgbase = yaft-git
+	pkgdesc = yet another framebuffer terminal - git
+	pkgver = 20140619
+	pkgrel = 1
+	url = https://github.com/uobikiemukot/yaft
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = ncurses
+	optdepends = fbv: needed to set wallpaper
+	source = git+https://github.com/uobikiemukot/yaft.git
+
+pkgname = yaft-git
+
