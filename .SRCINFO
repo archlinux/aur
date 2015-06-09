@@ -1,0 +1,13 @@
+pkgbase = libsmack
+	pkgdesc = Userspace library and helper tools for the Smack LSM
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/smack-team/smack
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	source = https://github.com/smack-team/smack/archive/v1.0.5.tar.gz
+	sha256sums = 0e8c603588dd4445ddc2ef1077e40fb5270a23a3c74dc885240fa562a781a868
+
+pkgname = libsmack
+
