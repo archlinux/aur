@@ -1,0 +1,17 @@
+pkgbase = tzclock
+	pkgdesc = Cairo clock to display the time around the world
+	pkgver = 3.0.6
+	pkgrel = 1
+	url = http://tzclock.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libgnomeui
+	depends = cairo
+	depends = gtk3
+	conflicts = tzclock-gtk2
+	source = http://tzclock.org/releases/source/tzclock-3.0.6.tar.bz2
+	md5sums = 1a1a9096ef8137217c0edda728a2b64b
+
+pkgname = tzclock
+
