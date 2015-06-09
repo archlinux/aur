@@ -11,7 +11,7 @@ depends=('zsh>=4.3.17')
 makedepends=('git' 'coreutils' 'sed')
 source=('git://github.com/sorin-ionescu/prezto.git' 'install')
 install='install'
-md5sums=('SKIP' '32c84ec04a6fa7bde49da86aec822906')
+md5sums=('SKIP' '95664ce383e88798a4047305dfd44220')
 _gitname='prezto'
 
 backup=('etc/zsh/zlogin' 'etc/zsh/zlogout' 'etc/zsh/zpreztorc' 'etc/zsh/zshenv' 'etc/zsh/zshrc')
