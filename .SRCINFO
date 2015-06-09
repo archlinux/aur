@@ -1,0 +1,40 @@
+pkgbase = gcc44-multilib
+	pkgdesc = The GNU Compiler Collection, version 4.4.7 - multilib version
+	pkgver = 4.4.7
+	pkgrel = 3
+	url = http://gcc.gnu.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = custom
+	makedepends = binutils>=2.21
+	makedepends = libmpc
+	makedepends = cloog
+	makedepends = elfutils
+	makedepends = dejagnu
+	makedepends = glibc>=2.11.1-2
+	makedepends = lib32-glibc>=2.12.1
+	provides = gcc44
+	conflicts = gcc44
+	options = !libtool
+	options = !buildflags
+	options = !emptydirs
+	options = staticlibs
+	source = http://ftpmirror.gnu.org/gcc/gcc-4.4.7/gcc-core-4.4.7.tar.bz2
+	source = http://ftpmirror.gnu.org/gcc/gcc-4.4.7/gcc-g++-4.4.7.tar.bz2
+	source = ftp://gcc.gnu.org/pub/gcc/libstdc++/doxygen/libstdc++-api-4.5.2.man.tar.bz2
+	source = gcc_pure64.patch
+	source = gcc-hash-style-both.patch
+	source = siginfo_t_fix.patch
+	source = texinfo_5_fix.patch
+	md5sums = 3bda0831d654964ee152c46fa8d29e46
+	md5sums = 5494ba2227ccbd7c90f318723b0e7fe5
+	md5sums = 2776eab5ebb7f9cc62dd2199a3a24382
+	md5sums = 22cec272f9cc2801d3cd348feaca888b
+	md5sums = 6fd395bacbd7b6e47c7b74854b478363
+	md5sums = edce21b2ce295478d14d5dd988eb3287
+	md5sums = b912353cccf62a1ee3ea0ed18fadf71a
+
+pkgname = gcc44-multilib
+
