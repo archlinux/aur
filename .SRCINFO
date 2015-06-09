@@ -1,0 +1,17 @@
+pkgbase = seat-inspect-git
+	pkgdesc = Displays information about seats for users of logind
+	pkgver = 1.0.r44.553faad
+	pkgrel = 1
+	url = https://github.com/spanezz/seat-inspect
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-dbus
+	provides = seat-inspect
+	conflicts = seat-inspect
+	source = seat-inspect-git::git+https://github.com/spanezz/seat-inspect
+	sha256sums = SKIP
+
+pkgname = seat-inspect-git
+
