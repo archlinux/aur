@@ -1,0 +1,16 @@
+ASN.1 object dumping code, copyright Peter Gutmann
+<pgut001@cs.auckland.ac.nz>, based on ASN.1 dump program by David Kemp
+<dpkemp@missi.ncsc.mil>, with contributions from various people including
+Matthew Hamrick <hamrick@rsa.com>, Bruno Couillard
+<bcouillard@chrysalis-its.com>, Hallvard Furuseth
+<h.b.furuseth@usit.uio.no>, Geoff Thorpe <geoff@raas.co.nz>, David Boyce
+<d.boyce@isode.com>, John Hughes <john.hughes@entegrity.com>, Life is hard,
+and then you die <ronald@trustpoint.com>, Hans-Olof Hermansson
+<hans-olof.hermansson@postnet.se>, Tor Rustad <Tor.Rustad@bbs.no>,
+Kjetil Barvik <kjetil.barvik@bbs.no>, James Sweeny <jsweeny@us.ibm.com>,
+and several other people whose names I've misplaced.
+
+[...]
+
+You can use this code in whatever way you want, as long as you don't
+try to claim you wrote it.
