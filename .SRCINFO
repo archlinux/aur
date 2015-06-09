@@ -1,0 +1,22 @@
+pkgbase = pharo
+	pkgdesc = a fork of Squeak, an implementation of the object-oriented, dynamically typed, reflective programming language Smalltalk
+	pkgver = 4.0
+	pkgrel = 2
+	url = http://www.pharo-project.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = alsa-lib
+	depends = libvorbis
+	depends = pango
+	depends = mesa
+	depends = nas
+	depends = dbus-core
+	depends = libxml2
+	source = http://files.pharo.org/platform/Pharo4.0-linux.zip
+	source = pharo.desktop
+	md5sums = b8cc96d9963b66f1d1486f47794db87a
+	md5sums = 1447999d37a6d87ddddc2f99d9781bbc
+
+pkgname = pharo
+
