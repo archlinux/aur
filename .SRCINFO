@@ -1,0 +1,13 @@
+pkgbase = ffmpeg-static-bin
+	pkgdesc = Universal multimedia toolkit static build (binary)
+	pkgver = 2.5.3
+	pkgrel = 1
+	url = http://johnvansickle.com/ffmpeg/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://johnvansickle.com/ffmpeg/releases/ffmpeg-release-32bit-static.tar.xz
+	md5sums = 6b44fc4e7780aec619e06fab338d6483
+
+pkgname = ffmpeg-static-bin
+
