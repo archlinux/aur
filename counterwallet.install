@@ -1,0 +1,41 @@
+post_install() {
+  _mkuser
+  chown -R counterwallet:counterwallet /etc/counterwallet /srv/http/counterwallet
+  printf "%b\n" "$counterwallet"
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  _rmuser
+  rm -rf /etc/counterwallet /srv/http/counterwallet
+}
+
+_mkuser() {
+  getent passwd counterwallet &>/dev/null || {
+    echo -n "Creating counterwallet user... "
+    grep -E "^counterwallet:" /etc/group >/dev/null || groupadd counterwallet
+    useradd -m -d /etc/counterwallet -g counterwallet -s /usr/bin/nologin counterwallet
+    echo "done"
+  }
+}
+
+_rmuser() {
+  echo -n "Removing counterwallet user... "
+  userdel -rf counterwallet 2>/dev/null
+  echo "done"
+}
+
+read -d '' counterwallet <<'EOF'
+Counterwallet
+=============
+
+Create a counterwallet.conf / counterwallet.testnet.conf file in the
+counterblock config directory:
+
+  $ cat > ~/.config/counterblock/counterwallet.conf <<'EOF'
+  [Default]
+  support-email=<your support email>
+EOF

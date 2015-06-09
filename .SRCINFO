@@ -1,0 +1,20 @@
+pkgbase = counterwallet
+	pkgdesc = Counterparty web wallet
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = https://counterwallet.io
+	install = counterwallet.install
+	arch = any
+	groups = counterparty
+	license = CDDL
+	makedepends = nodejs-bower
+	makedepends = nodejs-grunt-cli
+	makedepends = npm
+	optdepends = counterblockd: extended API services
+	optdepends = openresty: web app server
+	options = !strip
+	source = counterwallet-1.6.3.tar.gz::https://codeload.github.com/CounterpartyXCP/counterwallet/tar.gz/1.6.3
+	sha256sums = fdc7cafdab0d258a3f66aaea0b9b04d5d9afae4e1545e5fcebca9bbed4b35f96
+
+pkgname = counterwallet
+
