@@ -1,0 +1,24 @@
+pkgbase = python2-ceilometerclient-kilo
+	pkgdesc = Python client library for Ceilometer
+	pkgver = 1.0.14
+	pkgrel = 1
+	url = https://launchpad.net/python-ceilometerclient
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/p/python-ceilometerclient/python-ceilometerclient-1.0.14.tar.gz
+	sha256sums = 59ef7d588846d30f2efceaead6704da72953c069db784ea94eda489ea5a0197f
+
+pkgname = python2-ceilometerclient-kilo
+	depends = python2-pbr>=0.6
+	depends = python2-argparse
+	depends = python2-iso8601>=0.1.9
+	depends = python2-oslo-i18n-kilo
+	depends = python2-oslo-serialization-kilo
+	depends = python2-oslo-utils-kilo
+	depends = python2-prettytable>=0.7
+	depends = python2-keystoneclient-kilo
+	depends = python2-requests>=2.2.0
+	depends = python2-six>=1.7.0
+	depends = python2-stevedore-kilo
+
