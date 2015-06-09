@@ -1,0 +1,28 @@
+pkgbase = cue2tracks
+	pkgdesc = Bash script for slipt audio CD image files with cue sheet
+	pkgver = 0.2.16
+	pkgrel = 1
+	url = https://code.google.com/p/cue2tracks/
+	arch = any
+	license = GPL2
+	depends = bash
+	depends = cuetools
+	depends = shntool
+	depends = file
+	depends = glibc
+	depends = flac
+	optdepends = vorbis-tools: For OGG support
+	optdepends = flake: Alternative FLAC encoder
+	optdepends = mac: For APE support
+	optdepends = wavpack: For WavPack support
+	optdepends = shorten: For shorten support
+	optdepends = ttaenc: For True Audio Codec support
+	optdepends = lame: For MP3 support
+	optdepends = id3v2: For MP3 tagging support
+	optdepends = faac: For AAC in M4A support
+	optdepends = faad: For AAC in M4A support
+	source = https://cue2tracks.googlecode.com/files/cue2tracks-0.2.16.tar.gz
+	md5sums = f449aa804e8c3f9dd90a03f89f408fcc
+
+pkgname = cue2tracks
+
