@@ -1,0 +1,10 @@
+[Unit]
+Description=Automatically fade screen when idle
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/brightd -vx
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

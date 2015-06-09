@@ -1,0 +1,55 @@
+--- a/brightd.c	2008-10-19 23:10:21.000000000 +0200
++++ b/brightd.c	2011-11-09 22:01:24.394594536 +0100
+@@ -172,7 +172,7 @@
+ 		}
+ 
+ 		/* We had to disable signal handler and alarm because of this: */
+-		usleep(200);
++		usleep(10000);
+ 	}
+ 	signal(SIGALRM, signalHandlerAlarm);
+ 	alarm(saved);
+@@ -184,15 +184,14 @@
+ int isOnAC() /*{{{*/
+ {
+ 	char line[255];
+-	FILE *ac = fopen("/proc/acpi/ac_adapter/AC/state", "r");
++	FILE *ac = fopen("/sys/class/power_supply/AC/online", "r");
+ 	if(!ac) {
+ 		/* Ignore this */
+ 		return 0;
+ 	}
+ 	fgets(line, 255, ac);
+ 	fclose(ac);
+-
+-	return strstr(line, "on-line") != NULL;
++	return atoi(line);
+ } /*}}}*/
+ 
+ /*
+@@ -280,6 +279,7 @@
+  * Load default brightness class into b_class
+  */
+ void loadDefaultClass() /*{{{*/
++
+ {
+ 	struct dirent *dirEntry;
+ 	DIR *backlightDir = opendir("/sys/class/backlight");
+@@ -289,7 +289,7 @@
+ 			if(!dirEntry) {
+ 				break;
+ 			}
+-			if(dirEntry->d_name[0] == '.') {
++			if(dirEntry->d_name[0] == '.' || !strcmp(dirEntry->d_name,"intel_backlight")) {
+ 				continue;
+ 			}
+ 			strcpy(b_class, dirEntry->d_name);
+@@ -325,7 +325,7 @@
+ 
+ 	if(isDark == 0) {
+ 		/* Check if fading is okay */
+-		if(isOnAC() && force < 2) {
++		if(isOnAC() == 1 && force < 2) {
+ 			info("Would fade, but on AC");
+ 			alarm(waitSeconds);
+ 			return;

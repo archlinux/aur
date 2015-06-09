@@ -1,0 +1,9 @@
+post_install() {
+  cat <<EOF
+
+To change startup paramters, copy /usr/lib/systemd/system/brightd.service to
+/etc/systemd/system/ and modify ExecStart.
+
+See brightd(1) for available parameters.
+EOF
+}
