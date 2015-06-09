@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-libunistring
+	pkgdesc = Library for manipulating Unicode strings and C strings. (mingw-w64)
+	pkgver = 0.9.5
+	pkgrel = 1
+	url = http://www.gnu.org/software/libunistring/
+	arch = any
+	license = GPL
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	depends = mingw-w64-libiconv
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = http://ftp.gnu.org/gnu/libunistring/libunistring-0.9.5.tar.gz
+	md5sums = 1a705bcdcb83799d544137617b377cfd
+
+pkgname = mingw-w64-libunistring
+
