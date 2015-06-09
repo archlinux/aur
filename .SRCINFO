@@ -1,0 +1,24 @@
+pkgbase = x2goclient-git
+	pkgdesc = x2go qt4 client
+	pkgver = 4.0.4.0.r25.g1c60cad
+	pkgrel = 1
+	url = http://www.x2go.org/
+	install = x2goclient-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt4
+	depends = libldap
+	depends = libcups
+	depends = nxproxy
+	depends = libssh
+	depends = libxpm
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	provides = x2goclient
+	conflicts = x2goclient
+	source = git://code.x2go.org/x2goclient.git
+	sha256sums = SKIP
+
+pkgname = x2goclient-git
+
