@@ -1,0 +1,33 @@
+diff -rupN indicator-datetime-12.10.2.orig/src/datetime-service.c indicator-datetime-12.10.2/src/datetime-service.c
+--- indicator-datetime-12.10.2.orig/src/datetime-service.c	2015-04-20 11:17:37.942864188 +0200
++++ indicator-datetime-12.10.2/src/datetime-service.c	2015-04-20 11:22:23.840666923 +0200
+@@ -61,11 +61,7 @@ with this program.  If not, see <http://
+ 
+ #define SKEW_DIFF_THRESHOLD_SEC (SKEW_CHECK_INTERVAL_SEC + 5)
+ 
+-#ifdef HAVE_CCPANEL
+- #define SETTINGS_APP_INVOCATION "gnome-control-center indicator-datetime"
+-#else
+- #define SETTINGS_APP_INVOCATION "gnome-control-center datetime"
+-#endif
++#define SETTINGS_APP_INVOCATION "switchboard datetime"
+ 
+ static void geo_create_client (GeoclueMaster * master, GeoclueMasterClient * client, gchar * path, GError * error, gpointer user_data);
+ static gboolean update_appointment_menu_items (gpointer user_data);
+@@ -977,13 +973,13 @@ check_for_timeadmin (gpointer user_data)
+ {
+ 	g_return_val_if_fail (settings != NULL, FALSE);
+ 
+-	gchar * timeadmin = g_find_program_in_path("gnome-control-center");
++	gchar * timeadmin = g_find_program_in_path("switchboard");
+ 	if (timeadmin != NULL) {
+-		g_debug("Found the gnome-control-center application: %s", timeadmin);
++		g_debug("Found the switchboard application: %s", timeadmin);
+ 		dbusmenu_menuitem_property_set_bool(settings, DBUSMENU_MENUITEM_PROP_ENABLED, TRUE);
+ 		g_free(timeadmin);
+ 	} else {
+-		g_debug("Unable to find gnome-control-center app.");
++		g_debug("Unable to find switchboard app.");
+ 		dbusmenu_menuitem_property_set_bool(settings, DBUSMENU_MENUITEM_PROP_ENABLED, FALSE);
+ 	}
+ 

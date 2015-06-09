@@ -1,0 +1,243 @@
+diff -Naur indicator-datetime-12.10.2.orig/configure.ac indicator-datetime-12.10.2/configure.ac
+--- indicator-datetime-12.10.2.orig/configure.ac	2012-10-04 15:08:16.000000000 +0200
++++ indicator-datetime-12.10.2/configure.ac	2013-03-07 10:50:11.165703256 +0100
+@@ -111,6 +111,18 @@
+ AM_CONDITIONAL(BUILD_CCPANEL, test x${have_ccpanel} = xyes)
+ 
+ ###########################
++# systemd support
++###########################
++AC_ARG_ENABLE([systemd],
++	AC_HELP_STRING([--enable-systemd], [enable systemd support]),,
++	[enable_systemd=no])
++AM_CONDITIONAL([BUILD_SYSTEMD], [test "x$enable_systemd" != "xno"])
++
++if test "x$enable_systemd" != "xno"; then
++   AC_DEFINE(HAVE_SYSTEMD, 1, [Define to 1 to enable systemd support])
++fi
++
++###########################
+ # Grab the GSettings Macros
+ ###########################
+ 
+@@ -232,5 +244,6 @@
+ 	Indicator Dir: $INDICATORDIR
+ 	CC Panel:      $have_ccpanel
+ 	CC Panel Dir:  $CCPANELDIR
++	systemd:       $enable_systemd
+ 	gcov:          $use_gcov
+ ])
+diff -Naur indicator-datetime-12.10.2.orig/src/datetime-service.c indicator-datetime-12.10.2/src/datetime-service.c
+--- indicator-datetime-12.10.2.orig/src/datetime-service.c	2012-10-04 15:08:04.000000000 +0200
++++ indicator-datetime-12.10.2/src/datetime-service.c	2013-03-07 10:49:30.044734720 +0100
+@@ -50,6 +50,9 @@
+ #include "dbus-shared.h"
+ #include "settings-shared.h"
+ #include "utils.h"
++#ifdef HAVE_SYSTEMD
++#include "timedated.h"
++#endif
+ 
+ /* how often to check for clock skew */
+ #define SKEW_CHECK_INTERVAL_SEC 10
+@@ -1085,6 +1088,23 @@
+ static void
+ build_timezone (DatetimeInterface * dbus)
+ {
++#ifdef HAVE_SYSTEMD
++	GCancellable * cancellable = g_cancellable_new ();
++	GError * error = NULL;
++	Timedate1 * dtm = timedate1_proxy_new_for_bus_sync (G_BUS_TYPE_SYSTEM,
++							G_DBUS_PROXY_FLAGS_NONE,
++							"org.freedesktop.timedate1",
++							"/org/freedesktop/timedate1",
++							cancellable,
++							&error);
++	if (dtm != NULL) {
++		g_signal_connect_swapped (dtm, "notify::timezone",
++					G_CALLBACK (timezone_changed), dbus);
++	} else {
++		g_warning ("could not get proxy for DateTimeMechanism: %s", error->message);
++		g_error_free (error);
++	}
++#else
+ 	GFile * timezonefile = g_file_new_for_path(TIMEZONE_FILE);
+ 	GFileMonitor * monitor = g_file_monitor_file(timezonefile, G_FILE_MONITOR_NONE, NULL, NULL);
+ 	if (monitor != NULL) {
+@@ -1093,6 +1113,10 @@
+ 	} else {
+ 		g_warning("Unable to monitor timezone file: '" TIMEZONE_FILE "'");
+ 	}
++	g_object_unref(timezonefile);
++
++#endif  /* HAVE_SYSTEMD */
++
+ 	return;
+ }
+ 
+diff -Naur indicator-datetime-12.10.2.orig/src/Makefile.am indicator-datetime-12.10.2/src/Makefile.am
+--- indicator-datetime-12.10.2.orig/src/Makefile.am	2012-02-17 22:15:25 +0000
++++ indicator-datetime-12.10.2/src/Makefile.am	2013-03-07 16:23:45 +0000
+@@ -4,6 +4,26 @@
+ ccpanel_LTLIBRARIES = libindicator-datetime.la
+ endif
+ 
++if BUILD_SYSTEMD
++# This requires running d-bus session and accessible timedate1 daemon
++# FIXME: need to find a way how to filter out unnecessary d-bus stuff (introspectable, properties)
++#timedated1-interface.xml:
++#	gdbus introspect					\
++#		--xml						\
++#		--system					\
++#		--dest org.freedesktop.timedate1		\
++#		--object-path /org/freedesktop/timedate1	\
++#		 > timedated1-interface.xml
++
++dbus_built_sources = timedated.c timedated.h
++timedated.c: timedated.h
++timedated.h: Makefile.am timedated1-interface.xml
++	$(AM_V_GEN) gdbus-codegen						\
++		--interface-prefix org.freedesktop.		\
++		--generate-c-code timedated			\
++		$(srcdir)/timedated1-interface.xml
++endif
++
+ libexec_PROGRAMS = indicator-datetime-service
+ 
+ indicator_datetime_service_SOURCES = \
+@@ -91,3 +111,13 @@
+ 
+ EXTRA_DIST = \
+ 	datetime-service.xml
++
++if BUILD_SYSTEMD
++indicator_datetime_service_SOURCES += $(dbus_built_sources)
++libdatetime_la_SOURCES += $(dbus_built_sources)
++if BUILD_CCPANEL
++libindicator_datetime_la_SOURCES += $(dbus_built_sources)
++endif
++CLEANFILES += $(dbus_built_sources) 
++EXTRA_DIST += timedated1-interface.xml
++endif
+diff -Naur indicator-datetime-12.10.2.orig/src/timedated1-interface.xml indicator-datetime-12.10.2/src/timedated1-interface.xml
+--- indicator-datetime-12.10.2.orig/src/timedated1-interface.xml	1970-01-01 01:00:00.000000000 +0100
++++ indicator-datetime-12.10.2/src/timedated1-interface.xml	2013-03-07 10:49:30.044734720 +0100
+@@ -0,0 +1,59 @@
++<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
++"http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
++<node>
++ <interface name="org.freedesktop.timedate1">
++  <property name="Timezone" type="s" access="read"/>
++  <property name="LocalRTC" type="b" access="read"/>
++  <property name="NTP" type="b" access="read"/>
++  <method name="SetTime">
++   <arg name="usec_utc" type="x" direction="in"/>
++   <arg name="relative" type="b" direction="in"/>
++   <arg name="user_interaction" type="b" direction="in"/>
++  </method>
++  <method name="SetTimezone">
++   <arg name="timezone" type="s" direction="in"/>
++   <arg name="user_interaction" type="b" direction="in"/>
++  </method>
++  <method name="SetLocalRTC">
++   <arg name="local_rtc" type="b" direction="in"/>
++   <arg name="fix_system" type="b" direction="in"/>
++   <arg name="user_interaction" type="b" direction="in"/>
++  </method>
++  <method name="SetNTP">
++   <arg name="use_ntp" type="b" direction="in"/>
++   <arg name="user_interaction" type="b" direction="in"/>
++  </method>
++ </interface>
++ <interface name="org.freedesktop.DBus.Properties">
++  <method name="Get">
++   <arg name="interface" direction="in" type="s"/>
++   <arg name="property" direction="in" type="s"/>
++   <arg name="value" direction="out" type="v"/>
++  </method>
++  <method name="GetAll">
++   <arg name="interface" direction="in" type="s"/>
++   <arg name="properties" direction="out" type="a{sv}"/>
++  </method>
++  <method name="Set">
++   <arg name="interface" direction="in" type="s"/>
++   <arg name="property" direction="in" type="s"/>
++   <arg name="value" direction="in" type="v"/>
++  </method>
++  <signal name="PropertiesChanged">
++   <arg type="s" name="interface"/>
++   <arg type="a{sv}" name="changed_properties"/>
++   <arg type="as" name="invalidated_properties"/>
++  </signal>
++ </interface>
++ <interface name="org.freedesktop.DBus.Introspectable">
++  <method name="Introspect">
++   <arg name="data" type="s" direction="out"/>
++  </method>
++ </interface>
++<interface name="org.freedesktop.DBus.Peer">
++ <method name="Ping"/>
++ <method name="GetMachineId">
++  <arg type="s" name="machine_uuid" direction="out"/>
++ </method>
++</interface>
++</node>
+diff -Naur indicator-datetime-12.10.2.orig/src/utils.c indicator-datetime-12.10.2/src/utils.c
+--- indicator-datetime-12.10.2.orig/src/utils.c	2012-10-04 15:08:04.000000000 +0200
++++ indicator-datetime-12.10.2/src/utils.c	2013-03-07 10:49:30.048068132 +0100
+@@ -31,6 +31,9 @@
+ #include <string.h>
+ #include "utils.h"
+ #include "settings-shared.h"
++#ifdef HAVE_SYSTEMD
++#include "timedated.h"
++#endif
+ 
+ /* Check the system locale setting to see if the format is 24-hour
+    time or 12-hour time */
+@@ -121,6 +124,37 @@
+ read_timezone ()
+ {
+ 	GError * error = NULL;
++
++#ifdef HAVE_SYSTEMD
++  const gchar * timezone;
++	GCancellable * cancellable = g_cancellable_new ();
++	Timedate1 * dtm = timedate1_proxy_new_for_bus_sync (G_BUS_TYPE_SYSTEM,
++							G_DBUS_PROXY_FLAGS_NONE,
++							"org.freedesktop.timedate1",
++							"/org/freedesktop/timedate1",
++							cancellable,
++							&error);
++	if (dtm) {
++		timezone = timedate1_get_timezone(dtm);
++	} else {
++		g_warning ("could not get proxy for DateTimeMechanism: %s", error->message);
++		g_error_free (error);
++		return NULL;
++	}
++
++  gchar * rv = g_strdup(timezone);
++
++	if (cancellable) {
++		g_cancellable_cancel (cancellable);
++		g_object_unref (cancellable);
++		cancellable = NULL;
++	}
++
++	if (dtm) {
++		g_object_unref (dtm);
++		dtm = NULL;
++	}
++#else
+ 	gchar * tempzone = NULL;
+ 	if (!g_file_get_contents(TIMEZONE_FILE, &tempzone, NULL, &error)) {
+ 		g_warning("Unable to read timezone file '" TIMEZONE_FILE "': %s", error->message);
+@@ -137,6 +171,7 @@
+ 	   for everyone else. */
+ 	gchar * rv = g_strdup(g_strstrip(tempzone));
+ 	g_free(tempzone);
++#endif  /* HAVE_SYSTEMD */
+ 
+   return rv;
+ }

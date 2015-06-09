@@ -1,0 +1,29 @@
+pkgbase = indicator-datetime
+	pkgdesc = A very, very simple clock
+	pkgver = 12.10.2
+	pkgrel = 5
+	url = https://launchpad.net/indicator-datetime
+	install = indicator-datetime.install
+	arch = i686
+	arch = x86_64
+	groups = pantheon
+	groups = pantheon-unstable
+	license = GPL
+	makedepends = intltool
+	makedepends = python2
+	depends = evolution-data-server
+	depends = geoclue
+	depends = ido
+	depends = libdbusmenu-gtk3
+	depends = libindicator-gtk3
+	optdepends = switchboard-plug-datetime-bzr: Date & Time settings
+	options = !emptydirs
+	source = https://launchpad.net/indicator-datetime/12.10/12.10.2/+download/indicator-datetime-12.10.2.tar.gz
+	source = datetime-switchboard.patch
+	source = datetime-systemd.patch
+	sha256sums = b32f272d218e4d0fad53c90433913e4a84e1c60031cb95c4d92d0b59f50e19d4
+	sha256sums = 3a63d5e469b72f39d4e46630e92e365d8ffdb14bb454d7c0aadc687ac41277d3
+	sha256sums = d7b507e2e3bbc41dcb775c422d95042bb12cfe8418431ab965843554627fbda0
+
+pkgname = indicator-datetime
+
