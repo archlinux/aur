@@ -1,0 +1,27 @@
+pkgbase = magichexagon-git
+	pkgdesc = Super Hexagon, ponified
+	pkgver = 89.3f4972a
+	pkgrel = 1
+	url = https://github.com/meh2481/magichexagon
+	arch = x86_64
+	arch = i686
+	license = custom:zlib
+	makedepends = git
+	makedepends = cmake
+	depends = sdl2
+	depends = freeimage
+	depends = box2d
+	depends = tinyxml
+	depends = openal
+	depends = libvorbis
+	depends = glu
+	depends = fmodex
+	source = magichexagon-git::git+https://github.com/meh2481/magichexagon.git
+	source = git+https://github.com/fgenesis/ttvfs.git
+	source = magichexagon-git.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 67f1b6e2ebaf1b6ff5de7991fde388b4efcea97e0c04b1cbd425e9079ead280b
+
+pkgname = magichexagon-git
+

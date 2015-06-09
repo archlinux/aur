@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=magic hexagon
+Comment=super hexagon, ponified
+Exec=magichexagon-git
+Terminal=false
+Categories=Games;
+Icon=
+StartupNotify=false
