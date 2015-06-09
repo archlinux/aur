@@ -1,0 +1,31 @@
+pkgbase = kolab
+	pkgdesc = Kolab Groupware solution meta-package
+	pkgver = 3.4
+	pkgrel = 3
+	url = http://kolab.org
+	arch = any
+	license = AGPL3
+	depends = chwala>=0.3.0
+	depends = kolab-freebusy>=1.0.7
+	depends = irony>=0.3.0
+	depends = kolab-syncroton>=2.3.1
+	depends = kolab-webadmin>=3.2.6
+	depends = pykolab>=0.7.10
+	depends = cyrus-imapd-ldap>=2.5
+	depends = roundcubemail-plugin-contextmenu>=2.1
+	depends = roundcubemail-plugins-kolab>=3.2.7
+	depends = roundcubemail-skin-chameleon>=0.3.5
+	depends = postfix
+	depends = 389-ds-base
+	depends = mariadb
+	depends = amavisd-new
+	depends = perl-ldap
+	depends = clamav
+	depends = spamassassin
+	depends = apache
+	depends = php-apache
+	source = arch-setup-kolab
+	sha256sums = 0ac0264bfd3afcb1a6ba2619b1bb40d8f54addf9fc49520e003827e23f66565d
+
+pkgname = kolab
+

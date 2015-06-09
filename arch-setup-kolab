@@ -1,0 +1,215 @@
+#!/usr/bin/bash
+
+# Check for valid FQDN
+FQDN=$(hostname -f)
+echo '* Detected FQDN is: ' $FQDN
+
+FQDN_PARTS=$(echo $FQDN | awk -F'.' '{print NF}');
+if [[ $FQDN_PARTS < 3 && $@ != **--no-fqdn** ]]
+then
+    echo "ERROR: Ensure that hostname has at least 3 dot-separated parts"
+    echo "  More information at:"
+    echo "  http://docs.kolab.org/installation-guide/preparing-the-system.html#the-system-hostname-and-fqdn"
+    echo "  Add --no-fqdn to skip this error (configuration of Kolab may fail)"
+
+    exit
+fi
+echo
+
+# Depending on installation order, temporary files may be missing
+echo '* Installing temporary files'
+systemd-tmpfiles --create
+echo
+
+# ClamAV and SpamAssassin need an initial database
+echo '* Updating virus/spam definitions'
+freshclam
+sa-update
+echo
+
+# Create initial Cyrus databases
+echo '* Initializing Cyrus-IMAP databases'
+if [[ ! -e '/var/lib/imap' ]]
+then
+    mkdir '/var/lib/imap'
+fi
+if [[ ! -e '/var/lib/imap/sieve' ]]
+then
+    mkdir '/var/lib/imap/sieve'
+fi
+echo -e 'configdirectory: /var/lib/imap\npartition-default: /var/spool/imap' | mkimap -
+chown -R 'cyrus:mail' '/var/lib/imap'
+echo
+
+# Initialize postfix alias DB
+echo '* Regenerating postalias database'
+postalias '/etc/postfix/aliases'
+echo
+
+# Allow ClamAV to write to amavis directory
+CLAMD_LINE='AllowSupplementaryGroups yes'
+CLAMD_FILE='/etc/clamav/clamd.conf'
+grep -q "$CLAMD_LINE" "$CLAMD_FILE"
+if [[ $? == 1 ]]
+then
+    echo '* Configuring ClamAV for amavis'
+    echo "$CLAMD_LINE" >> "$CLAMD_FILE"
+    usermod clamav -a -G amavis
+else
+    echo '* ClamAV for amavis already configured'
+fi
+echo
+
+APACHE_CONF='/etc/httpd/conf/httpd.conf'
+# Enable PHP module
+LOAD_PHP='LoadModule php5_module modules/libphp5.so'
+grep -q "$LOAD_PHP" "$APACHE_CONF"
+if [[ $? == 1 ]]
+then
+    echo '* Configuring Apache: enabling PHP'
+    echo "$LOAD_PHP" >> "$APACHE_CONF"
+    echo 'Include conf/extra/php5_module.conf' >> "$APACHE_CONF"
+    EVENT='LoadModule mpm_event_module modules/mod_mpm_event.so'
+    PREFORK='LoadModule mpm_prefork_module modules/mod_mpm_prefork.so'
+    sed -i "s|$EVENT|$PREFORK|g" "$APACHE_CONF"
+else
+    echo '* Configuring Apache: PHP already enabled'
+fi
+echo
+
+echo '* Configuring Apache: enabling mod_rewrite'
+REWRITE='LoadModule rewrite_module modules/mod_rewrite.so'
+sed -i "s|^#$REWRITE|$REWRITE|g" $APACHE_CONF
+echo
+
+# Configure all Kolab applications
+APACHE_KOLAB_CONF='/etc/httpd/conf/extra/kolab.conf'
+if [[ -e "$APACHE_KOLAB_CONF" ]]
+then
+    echo '* Configuring Apache: Kolab applications already installed'
+else
+    echo '* Configuring Apache: Installing Kolab applications'
+    KOLAB_APPS=('chwala' 'kolab-freebusy' 'kolab-syncroton' 'kolab-webadmin' 'irony')
+    for app in ${KOLAB_APPS[@]}
+    do
+        cp "/usr/share/doc/$app/$app.conf" '/etc/httpd/conf/extra/'
+        echo "Include conf/extra/$app.conf" >> "$APACHE_KOLAB_CONF"
+    done
+    echo "Include conf/extra/kolab.conf" >> "$APACHE_CONF"
+fi
+echo
+
+# Enable iRony configuration (dav.inc.php)
+IRONY_DAV_CONF='/etc/webapps/roundcubemail/config/dav.inc.php'
+if [[ -e "IRONY_DAV_CONF" ]]
+then
+    echo '* Configuring Apache: iRony already configured'
+else
+    echo '* Configuring Apache: copying iRony configuration'
+    cp "$IRONY_DAV_CONF.sample" "$IRONY_DAV_CONF"
+fi
+echo
+
+# Enable tasklist configuration
+TASKLIST_CONF='/etc/webapps/roundcubemail/config/tasklist.inc.php'
+if [[ -e "$TASKLIST_CONF" ]]
+then
+    echo '* Configuring Apache: tasklist already configured'
+else
+    echo '* Configuring Apache: copying tasklist configuration'
+    cp '/usr/share/webapps/roundcubemail/plugins/tasklist/config.inc.php.dist' "$TASKLIST_CONF"
+fi
+echo
+
+# Configure RoundCube (detection assumes Wiki instructions)
+LOAD_ROUNDCUBE='Include conf/extra/roundcube.conf'
+grep -q "$LOAD_ROUNDCUBE" "$APACHE_CONF"
+if [[ $? == 1 ]]
+then
+    echo '* Configuring Apache: enabling RoundCube'
+    echo "$LOAD_ROUNDCUBE" >> "$APACHE_CONF"
+    cp '/etc/webapps/roundcubemail/apache.conf' '/etc/httpd/conf/extra/roundcube.conf'
+    
+    # Add rewrite rule for secure urls to .htaccess
+    sed -i '/# security rules/i# secure urls\nRewriteRule ^/?[a-f0-9]{16}/(.*) /roundcube/$1 [PT,L]\n' \
+        '/etc/webapps/roundcubemail/.htaccess'
+    
+    # Remove open_basedir directive (configured globally, breaks kolabformat extension)
+    sed -i 's/\(php_admin_value open_basedir .*\)/#\1/g' '/etc/httpd/conf/extra/roundcube.conf'
+else
+    echo '* Configuring Apache: RoundCube already enabled'
+fi
+echo
+
+# Enable required PHP extensions
+echo '* Configuring PHP: enabling extensions'
+EXTENSIONS=('exif' 'iconv' 'intl' 'ldap' 'mcrypt' 'openssl' 'pdo_mysql')
+for ext in ${EXTENSIONS[@]}
+do
+    sed -i "s/;extension=$ext.so/extension=$ext.so/g" '/etc/php/php.ini'
+done
+echo
+
+# Additional configuration (kolab-specific) goes into kolab.ini
+PHP_KOLAB_INI='/etc/php/conf.d/kolab.ini'
+if [[ -e "$PHP_KOLAB_INI" ]]
+then
+    echo '* Configuring PHP: kolab.ini already exists'
+else
+    echo '* Configuring PHP: Installing kolab.ini'
+    cat > "$PHP_KOLAB_INI" <<'EOF'
+[PHP]
+extension=kolabformat.so
+
+; Include kolabformat and smarty
+include_path = "${include_path}:/usr/share/php"
+open_basedir = ${open_basedir}:/usr/share/php
+
+; Allow mozldap binaries
+open_basedir = ${open_basedir}:/usr/lib64/mozldap:/usr/lib/mozldap
+
+; Allow kolab configuration
+open_basedir = ${open_basedir}:/etc/kolab/kolab.conf
+
+; Allow webapps
+open_basedir = ${open_basedir}:/etc/webapps:/usr/share/webapps
+
+; Allow webapps logging
+open_basedir = ${open_basedir}:/var/log/chwala:/var/log/kolab-freebusy:/var/log/irony:/var/log/kolab-syncroton:/var/log/kolab-webadmin:/var/log/roundcubemail
+
+; Allow webapps cache
+open_basedir = ${open_basedir}:/var/cache/chwala:/var/cache/kolab-syncroton:/var/cache/kolab-webadmin
+
+; Allow webapps tmp
+open_basedir = ${open_basedir}:/run/chwala:/run/irony
+EOF
+fi
+echo
+
+# Configure postfix SASL
+if [[ ! -e '/etc/sasl2' ]]
+then
+    mkdir '/etc/sasl2'
+fi
+
+echo '* Configuring postfix for SASL auth'
+echo -e 'pwcheck_method: saslauthd\nmech_list: plain login' > '/etc/sasl2/smtpd.conf'
+echo
+
+# Generate dummy certificates for Cyrus-IMAP
+PEM_FILE='/etc/ssl/private/localhost.pem'
+if [[ -e "$PEM_FILE" ]]
+then
+    echo '* Dummy certificate already exists'
+else
+    echo '* Creating dummy certificate'
+    openssl req -x509 -newkey rsa:1024 -nodes -keyout "$PEM_FILE" -out "$PEM_FILE" -subj "/CN=localhost"
+    
+    # Trust new certificate
+    cp "$PEM_FILE" '/etc/ca-certificates/trust-source/anchors/'
+    update-ca-trust
+fi
+echo
+
+echo '* Arch-specific configuration finished'
+echo '* Run setup-kolab for general configuration'
