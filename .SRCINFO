@@ -1,0 +1,22 @@
+pkgbase = arnold
+	pkgdesc = An Amstrad CPC emulator using SDL with a GTK+ interface
+	pkgver = 2009.05.31
+	pkgrel = 3
+	url = http://www.yasara.org/cpc/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl
+	depends = libgl
+	depends = gtk2
+	depends = alsa-lib
+	depends = pulseaudio
+	source = http://www.yasara.org/cpc/arnold_tng.zip
+	source = arnold.desktop
+	source = arnold.png
+	md5sums = b9fcee41371a3d16b1ce2e268778a2c6
+	md5sums = d9ef043bfb472c30b58f858c4fbd80ef
+	md5sums = 7914c93646818037948eebba293520bc
+
+pkgname = arnold
+

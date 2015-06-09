@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Arnold
+GenericName=Amstrad CPC emulator
+Exec=arnold
+Icon=/usr/share/pixmaps/arnold.png
+Type=Application
+Categories=System;Emulator;
+Encoding=UTF-8
+
+
