@@ -1,0 +1,18 @@
+[Unit]
+Description=aria2c Service
+Requires=network.target
+After=dhcpcd.service
+
+[Service]
+Type=forking
+User=aria2c
+Group=aria2c
+WorkingDirectory=/var/share/aria2c
+EnvironmentFile=/etc/conf.d/aria2c-env.conf
+ExecStart=/usr/bin/aria2c -D --conf-path=${ARIA2C_CONF} --save-session-interval=180 --save-session=${ARIA2C_SESSION}
+ExecReload=/usr/bin/kill -HUP $MAINPID
+RestartSec=1min
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

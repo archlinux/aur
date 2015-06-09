@@ -1,0 +1,26 @@
+post_install() {
+	echo -n "Adding aria2c user and group ..."
+	# --no-create-home
+	useradd aria2c -d /var/share/aria2c/ -U -s /bin/nologin && echo " done."
+	passwd -l aria2c &>/dev/null
+
+	install -d /var/share/aria2c/
+	touch /var/share/aria2c/aria2c.log
+	touch /var/share/aria2c/aria2c.session
+
+	chmod 600 /etc/conf.d/aria2c.conf
+	chown aria2c:aria2c /etc/conf.d/aria2c.conf
+	chown aria2c:aria2c /etc/conf.d/aria2c-env.conf
+	chown -R aria2c:aria2c /var/share/aria2c/
+
+	echo "Now the aria2cd is installed, you may want to ..."
+	echo "  1. check the config file for aria2cd at /etc/conf.d/aria2c.conf"
+	echo "  2. get the downloaded files at /var/share/aria2c/"
+}
+
+post_remove() {
+	echo -n -e "\nRemoving aria2c user/group..."
+	userdel aria2c && echo " done."
+	echo "Now the aria2cd was removed from your system,"
+	echo "you may need to check the directory /var/share/aria2c/ by manual."
+}

@@ -1,0 +1,18 @@
+pkgbase = aria2c-daemon
+	pkgdesc = Daemonize aria2c
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/yhfudev/aria2c-daemon-arch.git
+	install = aria2c-daemon.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = aria2
+	conflicts = aria2-daemon-svn
+	replaces = aria2-daemon-svn
+	source = aria2c-env.conf
+	source = aria2c.conf
+	source = aria2cd.service
+
+pkgname = aria2c-daemon
+
