@@ -1,0 +1,37 @@
+post_install() {
+  useradd -U arangodb --home /var/lib/arangodb  &> /dev/null
+  chown arangodb:arangodb /var/lib/arangodb &> /dev/null
+  chown arangodb:arangodb /var/lib/arangodb-apps &> /dev/null
+  chown arangodb:arangodb /var/log/arangodb &> /dev/null
+  /usr/bin/install -g arangodb -o arangodb -d /var/run/arangodb
+
+  echo ">> If you have database from previous version of ArangoDB"
+  echo "   make sure to run the server first with --upgrade option, e.g:"
+  echo
+  echo "     sudo /usr/bin/arangod -c /etc/arangodb/arangod.conf --pid-file /var/run/arangodb/arangod.pid --supervisor --uid arangodb --gid arangodb --upgrade"
+  echo
+  echo "   before doing any normal activities with current version."
+  echo "   Read the installation manual for more information"
+  echo
+  echo ">> Enable and start the service:"
+  echo
+  echo "     sudo systemctl enable arangodb.service"
+  echo "     sudo systemctl start arangodb.service"
+}
+
+post_upgrade() {
+  post_install $1
+
+  echo
+  echo ">> You might need to reload the systemd service definition:"
+  echo
+  echo "     sudo systemctl daemon-reload"
+  echo
+  echo ">> Restart the service:"
+  echo
+  echo "     sudo systemctl restart arangodb.service"
+}
+
+pre_remove() {
+  userdel arangodb &> /dev/null
+}

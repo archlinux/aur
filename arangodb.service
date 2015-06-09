@@ -1,0 +1,27 @@
+# This file is part of package arangodb-latest.
+#
+# Description:
+#
+#  Used to start ArangoDB
+#
+#  A distributed open-source database with a flexible data model
+#  for documents, graphs, and key-values. Build high
+#  performance applications using a convenient sql-like query
+#  language or JavaScript/Ruby extensions.
+#
+#  https://www.arangodb.com/
+#
+
+[Unit]
+Description=ArangoDB
+After=syslog.target network.target
+
+[Service]
+Type=simple
+User=arangodb
+Group=arangodb
+PIDFile=/var/run/arangodb/arangod.pid
+ExecStart=/usr/bin/arangod -c /etc/arangodb/arangod.conf --pid-file /var/run/arangodb/arangod.pid
+
+[Install]
+WantedBy=multi-user.target
