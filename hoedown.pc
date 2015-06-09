@@ -1,0 +1,9 @@
+prefix=/usr
+libdir=${prefix}/lib
+includedir=${prefix}/include/hoedown
+
+Name: Hoedown
+Description: the Markdown parser based on the original code of the Upskirt library by Natacha Porté.
+Version: 1.0.2
+Cflags: -I${includedir}
+Libs: -L${libdir} -lhoedown

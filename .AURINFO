@@ -1,0 +1,14 @@
+pkgbase = hoedown-git
+	pkgdesc = Hoedown is a revived forkof Sundown, the Markdown parser based on the original code of the Upskirt library by Natacha Porté.
+	pkgver = 527
+	pkgrel = 1
+	url = https://github.com/hoedown/hoedown
+	arch = any
+	license = ISC
+	makedepends = git
+	conflicts = sundown-git
+	source = hoedown.pc
+	source = git+https://github.com/hoedown/hoedown.git
+
+pkgname = hoedown-git
+
