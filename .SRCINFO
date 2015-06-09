@@ -1,0 +1,16 @@
+pkgbase = btrbk
+	pkgdesc = btrbk is a backup tool for btrfs subvolumes, taking advantage of btrfs specific capabilities to create atomic snapshots and transfer them incrementally to your backup locations.
+	pkgver = 0.19.2
+	pkgrel = 1
+	url = http://digint.ch/btrbk
+	arch = any
+	license = GPL3
+	depends = perl
+	depends = perl-date-calc
+	depends = btrfs-progs
+	optdepends = openssh: remote backup support
+	source = http://digint.ch/download/btrbk/releases/btrbk-0.19.2.tar.bz2
+	sha256sums = 23d9e1445297ed96bc7c82c838a51a7f9aae0200b49e5f128e80d07ed9c30c77
+
+pkgname = btrbk
+
