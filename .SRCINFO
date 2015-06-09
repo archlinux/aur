@@ -1,0 +1,16 @@
+pkgbase = gb-git
+	pkgdesc = The project based build tool for Go
+	pkgver = 242c807
+	pkgrel = 1
+	url = https://github.com/constabulary/gb
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	options = !strip
+	source = gb::git+https://github.com/constabulary/gb
+	sha256sums = SKIP
+
+pkgname = gb-git
+
