@@ -1,0 +1,13 @@
+pkgbase = python-xlib
+	pkgdesc = Python 3 port of Xlib
+	pkgver = 0.15rc1
+	pkgrel = 1
+	url = https://github.com/LiuLang/python3-xlib
+	arch = any
+	license = GPL2
+	depends = python
+	source = git+https://github.com/LiuLang/python3-xlib.git
+	md5sums = SKIP
+
+pkgname = python-xlib
+
