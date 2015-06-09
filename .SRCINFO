@@ -1,0 +1,32 @@
+pkgbase = opa-git
+	pkgdesc = A new generation of open source web development framework for JavaScript
+	pkgver = 4308.r80.g63f1cda
+	pkgrel = 1
+	url = https://github.com/MLstate/opalang/
+	arch = i686
+	arch = x86_64
+	groups = devel
+	license = AGPL3
+	license = MIT
+	makedepends = git
+	makedepends = ocaml
+	makedepends = ocaml-ulex
+	makedepends = ocaml-zip
+	makedepends = ocaml-ocamlgraph
+	makedepends = ocaml-cryptokit
+	makedepends = ocaml-ssl
+	makedepends = java-runtime
+	makedepends = perl
+	depends = java-environment
+	depends = openssl
+	depends = nodejs
+	depends = mongodb
+	optdepends = couchdb
+	provides = opa
+	conflicts = opa
+	options = !strip
+	source = opalang::git+https://github.com/MLstate/opalang.git
+	md5sums = SKIP
+
+pkgname = opa-git
+
