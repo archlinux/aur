@@ -1,0 +1,13 @@
+pkgbase = 115wangpan
+	pkgdesc = The 115 Wangpan client
+	pkgver = 4.0.1
+	pkgrel = 1
+	url = http://pc.115.com/linux.html
+	arch = x86_64
+	arch = i686
+	license = unknown
+	source = http://pc.115.com/download/linux/115yun_linux_v4.0.1.deb
+	sha1sums = 66c74d7fd69bd86de52da66a41883156ba0c3e40
+
+pkgname = 115wangpan
+
