@@ -1,0 +1,15 @@
+pkgbase = ros-indigo-libccd
+	pkgdesc = ROS - libccd is library for collision detection between two convex shapes.
+	pkgver = 1.5.0
+	pkgrel = 2
+	url = http://libccd.danfis.cz/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	source = libccd::git+https://github.com/ros-gbp/libccd-release.git#tag=release/indigo/libccd/1.5.0-1
+	md5sums = SKIP
+
+pkgname = ros-indigo-libccd
+
