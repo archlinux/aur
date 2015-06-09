@@ -1,0 +1,180 @@
+From 1f38d0a7f38e03fdd247a65428dd77c2e3667357 Mon Sep 17 00:00:00 2001
+From: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+Date: Mon, 7 Jul 2014 21:56:13 -0400
+Subject: [PATCH] Use Python 2
+
+---
+ data/applications/skype-wrapper-launcher.desktop | 2 +-
+ s-wrapper-settings                               | 2 +-
+ skype-wrapper                                    | 2 +-
+ src/helpers.py                                   | 2 +-
+ src/indicator-applet-skype.py                    | 2 +-
+ src/launcher.py                                  | 8 ++++----
+ src/postinst.py                                  | 2 +-
+ src/settings.py                                  | 2 +-
+ src/skype-wrapper.py                             | 6 +++---
+ src/uisettings.py                                | 2 +-
+ src/uninstallsni.py                              | 2 +-
+ src/unitylauncher.py                             | 2 +-
+ 12 files changed, 17 insertions(+), 17 deletions(-)
+
+diff --git a/data/applications/skype-wrapper-launcher.desktop b/data/applications/skype-wrapper-launcher.desktop
+index 7bd97f2..ea131cb 100644
+--- a/data/applications/skype-wrapper-launcher.desktop
++++ b/data/applications/skype-wrapper-launcher.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Name=Skype Wrapper
+ Comment=Wrapper for Skype Internet Telephony
+-Exec=python /usr/share/skype-wrapper/launcher.py
++Exec=python2 /usr/share/skype-wrapper/launcher.py
+ Icon=/usr/share/skype-wrapper/icons/skype-wrapper-24.png
+ NoDisplay=false
+ Terminal=false
+diff --git a/s-wrapper-settings b/s-wrapper-settings
+index 3bdb805..fefb11b 100755
+--- a/s-wrapper-settings
++++ b/s-wrapper-settings
+@@ -24,4 +24,4 @@
+ # <http://www.gnu.org/licenses/>
+ #
+ 
+-python /usr/share/skype-wrapper/uisettings.py
++python2 /usr/share/skype-wrapper/uisettings.py
+diff --git a/skype-wrapper b/skype-wrapper
+index 062c381..0a27712 100755
+--- a/skype-wrapper
++++ b/skype-wrapper
+@@ -24,4 +24,4 @@
+ # <http://www.gnu.org/licenses/>
+ #
+ 
+-python /usr/share/skype-wrapper/skype-wrapper.py
+\ No newline at end of file
++python2 /usr/share/skype-wrapper/skype-wrapper.py
+diff --git a/src/helpers.py b/src/helpers.py
+index 88237dd..b61f487 100755
+--- a/src/helpers.py
++++ b/src/helpers.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8; tab-width: 4; mode: python -*-
+ # emacs: -*- mode: python; py-indent-offset: 4; indent-tabs-mode: t -*-
+ # vi: set ft=python sts=4 ts=4 sw=4 noet 
+diff --git a/src/indicator-applet-skype.py b/src/indicator-applet-skype.py
+index 0a49e89..72e0cc0 100755
+--- a/src/indicator-applet-skype.py
++++ b/src/indicator-applet-skype.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8; tab-width: 4; mode: python -*-
+ # emacs: -*- mode: python; py-indent-offset: 4; indent-tabs-mode: t -*-
+ # vi: set ft=python sts=4 ts=4 sw=4 noet 
+diff --git a/src/launcher.py b/src/launcher.py
+index 293e722..dd3e818 100644
+--- a/src/launcher.py
++++ b/src/launcher.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8; tab-width: 4; mode: python -*-
+ # emacs: -*- mode: python; py-indent-offset: 4; indent-tabs-mode: t -*-
+ # vi: set ft=python sts=4 ts=4 sw=4 noet 
+@@ -45,18 +45,18 @@ wrapperPath = os.path.dirname(abspath)
+ bus = dbus.SessionBus()
+ os.chdir(wrapperPath) 	
+ 
+-quantalfix = subprocess.call(['python','unityquantal.py'])
++quantalfix = subprocess.call(['python2','unityquantal.py'])
+ 
+ if settings.autostart_skype() == True:
+ 	"""Start skype-wrapper automatically and then exit"""
+ 	print "starting wrapper"
+-	ret = subprocess.call(['python','skype-wrapper.py'])
++	ret = subprocess.call(['python2','skype-wrapper.py'])
+ 
+ while True: 
+     if bus.name_has_owner('com.Skype.API') and not bus.name_has_owner('org.skypewrapper.skypewrapper'):
+ 		print "starting wrapper" 
+ 		os.chdir(wrapperPath) 		
+-		ret = subprocess.call(['python','skype-wrapper.py'])
++		ret = subprocess.call(['python2','skype-wrapper.py'])
+ 		 
+ 	
+     time.sleep(4)
+diff --git a/src/postinst.py b/src/postinst.py
+index 843b7d9..1035a3e 100755
+--- a/src/postinst.py
++++ b/src/postinst.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8; tab-width: 4; mode: python -*-
+ # emacs: -*- mode: python; py-indent-offset: 4; indent-tabs-mode: t -*-
+ # vi: set ft=python sts=4 ts=4 sw=4 noet 
+diff --git a/src/settings.py b/src/settings.py
+index 2fb5bea..096acd5 100644
+--- a/src/settings.py
++++ b/src/settings.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8; tab-width: 4; mode: python -*-
+ # emacs: -*- mode: python; py-indent-offset: 4; indent-tabs-mode: t -*-
+ # vi: set ft=python sts=4 ts=4 sw=4 noet 
+diff --git a/src/skype-wrapper.py b/src/skype-wrapper.py
+index ab9857a..4416e8d 100755
+--- a/src/skype-wrapper.py
++++ b/src/skype-wrapper.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8; tab-width: 4; mode: python -*-
+ # emacs: -*- mode: python; py-indent-offset: 4; indent-tabs-mode: t -*-
+ # vi: set ft=python sts=4 ts=4 sw=4 noet 
+@@ -71,8 +71,8 @@ def start_skype():
+     skype_was_running = not helpers.isSkypeRunning()
+     
+     start = time.time()
+-    ret = subprocess.call(['python','indicator-applet-skype.py'])
+-#    cmd = ('python indicator-applet-skype.py')
++    ret = subprocess.call(['python2','indicator-applet-skype.py'])
++#    cmd = ('python2 indicator-applet-skype.py')
+ #    indicator = Popen(cmd,shell=True,stdin=None,stdout=None,stderr=None,close_fds=True)
+     if ret == 2:
+         start_skype()
+diff --git a/src/uisettings.py b/src/uisettings.py
+index d414ca3..a5e4259 100644
+--- a/src/uisettings.py
++++ b/src/uisettings.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8; tab-width: 4; mode: python -*-
+ # emacs: -*- mode: python; py-indent-offset: 4; indent-tabs-mode: t -*-
+ # vi: set ft=python sts=4 ts=4 sw=4 noet
+diff --git a/src/uninstallsni.py b/src/uninstallsni.py
+index f6e6d09..cbc5e99 100644
+--- a/src/uninstallsni.py
++++ b/src/uninstallsni.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8; tab-width: 4; mode: python -*-
+ # emacs: -*- mode: python; py-indent-offset: 4; indent-tabs-mode: t -*-
+ # vi: set ft=python sts=4 ts=4 sw=4 noet
+diff --git a/src/unitylauncher.py b/src/unitylauncher.py
+index 9312d4c..b6d736e 100755
+--- a/src/unitylauncher.py
++++ b/src/unitylauncher.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # -*- coding: utf-8; tab-width: 4; mode: python -*-
+ # emacs: -*- mode: python; py-indent-offset: 4; indent-tabs-mode: t -*-
+ # vi: set ft=python sts=4 ts=4 sw=4 noet 
+-- 
+2.0.1
+
