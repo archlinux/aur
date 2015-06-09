@@ -1,0 +1,18 @@
+pkgbase = vim-erlang_detectvariables
+	pkgdesc = detect Erlang variables
+	pkgver = 1.1
+	pkgrel = 2
+	url = http://www.vim.org/scripts/script.php?script_id=2644
+	install = vimdoc.install
+	arch = i686
+	arch = x86_64
+	groups = vim-plugins
+	license = custom
+	depends = vim
+	source = vim-erlang_detectvariables.zip::http://www.vim.org/scripts/download_script.php?src_id=10665
+	source = license.txt
+	md5sums = ccdaa4860b1176de991bc61fb29da05b
+	md5sums = efbd5986e691ce8c876fb86e8f5961ea
+
+pkgname = vim-erlang_detectvariables
+
