@@ -1,0 +1,30 @@
+pkgbase = lxqt-panel-git
+	pkgdesc = The LXQt desktop panel
+	pkgver = 0.9.0.155.gbc4d32b
+	pkgrel = 1
+	url = http://lxqt.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = kwindowsystem
+	depends = kguiaddons
+	depends = solid
+	depends = lxqt-globalkeys
+	depends = menu-cache
+	depends = libxcomposite
+	depends = lxmenu-data
+	optdepends = alsa-lib: Recompile for Alsa support in volume control plugin
+	optdepends = libpulse: Recompile for PulseAudio support in volume control plugin
+	optdepends = lm_sensors: Recompile for Sensors (battery) plugin
+	optdepends = libstatgrab: Recompile for network and CPU monitor plugin
+	optdepends = libsysstat: Recompile for network and CPU monitor plugin
+	provides = lxqt-panel
+	conflicts = lxqt-panel
+	source = git+https://github.com/lxde/lxqt-panel.git
+	sha256sums = SKIP
+
+pkgname = lxqt-panel-git
+
