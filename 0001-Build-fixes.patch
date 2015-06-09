@@ -1,0 +1,25 @@
+From 58b8ada9009abd7b16962ca5631a7aa62d5ce5d9 Mon Sep 17 00:00:00 2001
+From: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+Date: Thu, 1 Jan 2015 00:33:56 -0500
+Subject: [PATCH] Build fixes
+
+---
+ examples/glog_logger.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/examples/glog_logger.cpp b/examples/glog_logger.cpp
+index 24f2ec4..58616bc 100644
+--- a/examples/glog_logger.cpp
++++ b/examples/glog_logger.cpp
+@@ -49,7 +49,7 @@ struct google_gflag_guard_t
+ {
+     ~google_gflag_guard_t()
+     {
+-        std::call_once(shutdown_flag_gflags, google::ShutDownCommandLineFlags);
++        std::call_once(shutdown_flag_gflags, gflags::ShutDownCommandLineFlags);
+     }
+ } google_gflag_guard;
+ }
+-- 
+2.2.1
+
