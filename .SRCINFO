@@ -1,0 +1,16 @@
+pkgbase = ruby-redcarpet
+	pkgdesc = Markdown that smells nice
+	pkgver = 3.2.2
+	pkgrel = 1
+	url = http://github.com/vmg/redcarpet
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = ruby
+	noextract = redcarpet-3.2.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/redcarpet-3.2.2.gem
+	sha1sums = d59911b72d946126a87f04b01d0bc73b1baa128f
+
+pkgname = ruby-redcarpet
+
