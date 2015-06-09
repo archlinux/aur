@@ -1,0 +1,44 @@
+pkgbase = libindicate
+	pkgdesc = Library for raising indicators via DBus
+	pkgver = 12.10.1
+	pkgrel = 4
+	url = https://launchpad.net/libindicate
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = gnome-doc-utils
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	makedepends = gtk-sharp-2
+	makedepends = gtk3
+	makedepends = perl-xml-libxml
+	makedepends = pygtk
+	makedepends = vala
+	depends = dbus-glib
+	depends = gtk2
+	depends = libdbusmenu-glib
+	depends = python2-gobject2
+	options = !emptydirs
+	source = http://launchpad.net/libindicate/12.10/12.10.1/+download/libindicate-12.10.1.tar.gz
+	source = libindicate-mono.patch
+	sha256sums = 41e0c059e96172975c716aa70dc60f669e21d359c65935c61ac374a9aa075581
+	sha256sums = acf06964f453cca3627c9e4d73d1fcdd3713497316566910ab7522f8297ddcd6
+
+pkgname = libindicate-gtk2
+	provides = libindicate
+	conflicts = libindicate
+
+pkgname = libindicate-gtk3
+	depends = dbus-glib
+	depends = gtk2
+	depends = libdbusmenu-glib
+	depends = python2-gobject2
+	depends = gtk3
+	provides = libindicate
+	conflicts = libindicate
+
+pkgname = libindicate-sharp
+	arch = any
+	depends = libindicate
+	depends = mono
+

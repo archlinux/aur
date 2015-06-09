@@ -1,0 +1,119 @@
+From 7338bd1df90767bf594e351e27ef0e9783222454 Mon Sep 17 00:00:00 2001
+From: Alucryd <alucryd@gmail.com>
+Date: Mon, 4 Mar 2013 11:50:01 +0100
+Subject: [PATCH 4/4] mono
+
+---
+ libindicate-12.10.1/bindings/mono/indicate-gtk/Makefile.in   | 12 ++++++------
+ .../bindings/mono/indicate-gtk/indicate-gtk-sharp-0.1.pc.in  |  2 +-
+ libindicate-12.10.1/bindings/mono/indicate/Makefile.in       | 12 ++++++------
+ .../bindings/mono/indicate/indicate-sharp-0.1.pc.in          |  2 +-
+ 4 files changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/libindicate-12.10.1/bindings/mono/indicate-gtk/Makefile.in b/libindicate-12.10.1/bindings/mono/indicate-gtk/Makefile.in
+index 5beca03..22d2f69 100644
+--- a/libindicate-12.10.1/bindings/mono/indicate-gtk/Makefile.in
++++ b/libindicate-12.10.1/bindings/mono/indicate-gtk/Makefile.in
+@@ -356,7 +356,7 @@ RAW_API = $(ASSEMBLY_NAME)-api.raw
+ METADATA = $(ASSEMBLY_NAME)-api.metadata
+ ASSEMBLY = $(ASSEMBLY_NAME)-sharp.dll
+ TARGET = $(ASSEMBLY) $(ASSEMBLY).config
+-assemblydir = $(libdir)/$(ASSEMBLY_NAME)-sharp-0.1
++assemblydir = $(libdir)/mono/$(ASSEMBLY_NAME)-sharp
+ assembly_DATA = $(TARGET)
+ CLEANFILES = $(ASSEMBLY)			\
+ 		$(ASSEMBLY).mdb			\
+@@ -378,7 +378,7 @@ EXTRA_DIST = \
+ 	$(ASSEMBLY_NAME).snk			\
+ 	$(customs)				
+ 
+-GACUTIL_FLAGS = "-package $(ASSEMBLY_NAME) -root $(DESTDIR)$(prefix)/lib"
++GACUTIL_FLAGS = "-package $(ASSEMBLY_NAME)-sharp -root $(DESTDIR)$(prefix)/lib"
+ references = $(GTK_SHARP_LIBS) -r\:$(abs_builddir)/../indicate/indicate-sharp.dll
+ api_includes = $(GTK_SHARP_CFLAGS) -I:$(builddir)/../indicate/indicate-api.xml
+ build_customs = $(addprefix $(srcdir)/, $(customs))
+@@ -827,12 +827,12 @@ $(ASSEMBLY): generated-stamp
+ 	$(CSC) $(CSFLAGS) -keyfile:$(srcdir)/$(ASSEMBLY_NAME).snk -nowarn:0169,0612,0618 -unsafe -out:$(ASSEMBLY) -target:library $(references) $(builddir)/$(GENERATED_SOURCES) AssemblyInfo.cs
+ 
+ install-data-local:
+-	echo "$(GACUTIL) -i $(ASSEMBLY)  -package $(ASSEMBLY_NAME) -root $(DESTDIR)$(prefix)/lib";  \
+-            $(GACUTIL) -i $(ASSEMBLY)  -package $(ASSEMBLY_NAME) -root $(DESTDIR)$(prefix)/lib || exit 1;
++	echo "$(GACUTIL) -i $(ASSEMBLY)  -package $(ASSEMBLY_NAME)-sharp -root $(DESTDIR)$(prefix)/lib";  \
++            $(GACUTIL) -i $(ASSEMBLY)  -package $(ASSEMBLY_NAME)-sharp -root $(DESTDIR)$(prefix)/lib || exit 1;
+ 
+ uninstall-local:
+-	echo "$(GACUTIL) -u $(ASSEMBLY_NAME)-sharp -package $(ASSEMBLY_NAME) -root $(DESTDIR)$(prefix)/lib"; \
+-            $(GACUTIL) -u $(ASSEMBLY_NAME)-sharp -package $(ASSEMBLY_NAME) -root $(DESTDIR)$(prefix)/lib || exit 1;
++	echo "$(GACUTIL) -u $(ASSEMBLY_NAME)-sharp -package $(ASSEMBLY_NAME)-sharp -root $(DESTDIR)$(prefix)/lib"; \
++            $(GACUTIL) -u $(ASSEMBLY_NAME)-sharp -package $(ASSEMBLY_NAME)-sharp -root $(DESTDIR)$(prefix)/lib || exit 1;
+ 
+ all: $(API)
+ 
+diff --git a/libindicate-12.10.1/bindings/mono/indicate-gtk/indicate-gtk-sharp-0.1.pc.in b/libindicate-12.10.1/bindings/mono/indicate-gtk/indicate-gtk-sharp-0.1.pc.in
+index d1c6b92..edbb40f 100644
+--- a/libindicate-12.10.1/bindings/mono/indicate-gtk/indicate-gtk-sharp-0.1.pc.in
++++ b/libindicate-12.10.1/bindings/mono/indicate-gtk/indicate-gtk-sharp-0.1.pc.in
+@@ -1,7 +1,7 @@
+ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+ libdir=@libdir@
+-assemblies_dir=${libdir}/indicate-gtk-sharp-0.1
++assemblies_dir=${libdir}/mono/indicate-gtk-sharp
+ 
+ Name: indicate-gtk-sharp
+ Description: indicate-gtk for .NET
+diff --git a/libindicate-12.10.1/bindings/mono/indicate/Makefile.in b/libindicate-12.10.1/bindings/mono/indicate/Makefile.in
+index 20b3761..5d6669f 100644
+--- a/libindicate-12.10.1/bindings/mono/indicate/Makefile.in
++++ b/libindicate-12.10.1/bindings/mono/indicate/Makefile.in
+@@ -355,7 +355,7 @@ RAW_API = $(ASSEMBLY_NAME)-api.raw
+ METADATA = $(ASSEMBLY_NAME)-api.metadata
+ ASSEMBLY = $(ASSEMBLY_NAME)-sharp.dll
+ TARGET = $(ASSEMBLY) $(ASSEMBLY).config
+-assemblydir = $(libdir)/$(ASSEMBLY_NAME)-sharp-0.1
++assemblydir = $(libdir)/mono/$(ASSEMBLY_NAME)-sharp
+ assembly_DATA = $(TARGET)
+ CLEANFILES = $(ASSEMBLY)			\
+ 		$(ASSEMBLY).mdb			\
+@@ -377,7 +377,7 @@ EXTRA_DIST = \
+ 	$(ASSEMBLY_NAME).snk			\
+ 	$(customs)				
+ 
+-GACUTIL_FLAGS = "-package $(ASSEMBLY_NAME) -root $(DESTDIR)$(prefix)/lib"
++GACUTIL_FLAGS = "-package $(ASSEMBLY_NAME)-sharp -root $(DESTDIR)$(prefix)/lib"
+ references = $(GTK_SHARP_LIBS)
+ api_includes = $(GTK_SHARP_CFLAGS)
+ build_customs = $(addprefix $(srcdir)/, $(customs))
+@@ -826,12 +826,12 @@ $(ASSEMBLY): generated-stamp
+ 	$(CSC) $(CSFLAGS) -keyfile:$(srcdir)/$(ASSEMBLY_NAME).snk -nowarn:0169,0612,0618 -unsafe -out:$(ASSEMBLY) -target:library $(references) $(builddir)/$(GENERATED_SOURCES) AssemblyInfo.cs
+ 
+ install-data-local:
+-	echo "$(GACUTIL) -i $(ASSEMBLY)  -package $(ASSEMBLY_NAME) -root $(DESTDIR)$(prefix)/lib";  \
+-            $(GACUTIL) -i $(ASSEMBLY)  -package $(ASSEMBLY_NAME) -root $(DESTDIR)$(prefix)/lib || exit 1;
++	echo "$(GACUTIL) -i $(ASSEMBLY)  -package $(ASSEMBLY_NAME)-sharp -root $(DESTDIR)$(prefix)/lib";  \
++            $(GACUTIL) -i $(ASSEMBLY)  -package $(ASSEMBLY_NAME)-sharp -root $(DESTDIR)$(prefix)/lib || exit 1;
+ 
+ uninstall-local:
+-	echo "$(GACUTIL) -u $(ASSEMBLY_NAME)-sharp -package $(ASSEMBLY_NAME) -root $(DESTDIR)$(prefix)/lib"; \
+-            $(GACUTIL) -u $(ASSEMBLY_NAME)-sharp -package $(ASSEMBLY_NAME) -root $(DESTDIR)$(prefix)/lib || exit 1;
++	echo "$(GACUTIL) -u $(ASSEMBLY_NAME)-sharp -package $(ASSEMBLY_NAME)-sharp -root $(DESTDIR)$(prefix)/lib"; \
++            $(GACUTIL) -u $(ASSEMBLY_NAME)-sharp -package $(ASSEMBLY_NAME)-sharp -root $(DESTDIR)$(prefix)/lib || exit 1;
+ 
+ all: $(API)
+ 
+diff --git a/libindicate-12.10.1/bindings/mono/indicate/indicate-sharp-0.1.pc.in b/libindicate-12.10.1/bindings/mono/indicate/indicate-sharp-0.1.pc.in
+index f4474f8..15e8960 100644
+--- a/libindicate-12.10.1/bindings/mono/indicate/indicate-sharp-0.1.pc.in
++++ b/libindicate-12.10.1/bindings/mono/indicate/indicate-sharp-0.1.pc.in
+@@ -1,7 +1,7 @@
+ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+ libdir=@libdir@
+-assemblies_dir=${libdir}/indicate-sharp-0.1
++assemblies_dir=${libdir}/mono/indicate-sharp
+ 
+ Name: indicate-sharp
+ Description: indicate for .NET
+-- 
+1.8.1.5
+
