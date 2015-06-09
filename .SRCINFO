@@ -1,0 +1,22 @@
+pkgbase = utext
+	pkgdesc = An application to work with markdown files.
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = http://www.atareao.es/tag/utext/
+	install = utext.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = python
+	depends = shared-mime-info
+	depends = python-beautifulsoup4
+	depends = python-jinja
+	depends = python-markdown
+	depends = python-requests
+	depends = wkhtmltopdf
+	provides = utext
+	source = https://launchpad.net/~atareao/+archive/ubuntu/utext/+files/utext_0.3.4-0extras15.04.0.tar.xz
+	sha256sums = 720df6fd480591bcb64f5bcf71b8c96cfbe0f34bb867d5be908fde8a109ed629
+
+pkgname = utext
+
