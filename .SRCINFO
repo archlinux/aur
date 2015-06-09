@@ -1,0 +1,15 @@
+pkgbase = xonsh
+	pkgdesc = A Python-ish, BASHwards-compatible shell
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = http://xonsh.org
+	install = xonsh.install
+	arch = any
+	license = FreeBSD
+	depends = python
+	depends = python-ply
+	source = https://github.com/scopatz/xonsh/archive/0.1.6.zip
+	md5sums = 883093007aa31183f66ec26692aceb1a
+
+pkgname = xonsh
+
