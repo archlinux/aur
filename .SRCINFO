@@ -1,0 +1,13 @@
+pkgbase = keepassx-mono-icons-light
+	pkgdesc = KeePassX monochrome tray icons for light panels in Faenza style
+	pkgver = 0.1
+	pkgrel = 2
+	url = https://github.com/FredericChopin/aur/tree/master/keepassx-mono-icons-light
+	arch = any
+	license = GPL
+	depends = keepassx
+	source = keepassx-mono-icons-light.tar.xz
+	md5sums = 672611b62416de99fd80856151a5f1fd
+
+pkgname = keepassx-mono-icons-light
+
