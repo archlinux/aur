@@ -24,7 +24,7 @@ options=('!strip')
 install=$pkgname.install
 source=("http://dl.google.com/dl/android/studio/ide-zips/$_pkgver/android-studio-ide-$_build-linux.zip"
         "$_pkgname.desktop")
-sha1sums=('f029dc2a49c85e37931fd9b78595cf82487a9892'
+sha1sums=('e25ea13562922e015fc0b2d37d80473eeb62d7ba'
             'baed66cebe2b372700f436b93022a52cbff313be')
 
 if [ $CARCH = "x86_64" ]; then
