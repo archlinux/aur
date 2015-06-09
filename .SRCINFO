@@ -1,0 +1,19 @@
+pkgbase = tracebox-git
+	pkgdesc = A Middlebox Detection Tool
+	pkgver = 260.079fcaf
+	pkgrel = 2
+	url = http://www.tracebox.org/
+	arch = i686
+	arch = x86_64
+	license = none
+	depends = gcc-libs
+	depends = lua
+	depends = libpcap
+	depends = json-c
+	depends = curl
+	depends = libnetfilter_queue
+	source = git://github.com/tracebox/tracebox
+	md5sums = SKIP
+
+pkgname = tracebox-git
+
