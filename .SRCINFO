@@ -1,0 +1,18 @@
+pkgbase = audiothumbs-frameworks-git
+	pkgdesc = Plugin for KDE file managers (Dolphin and Konqueror) to preview cover arts embedded in audio (MP3, FLAC, OGG, M4A) files tags as thumbnails.
+	pkgver = r3.7e1b206
+	pkgrel = 1
+	url = https://github.com/eplightning/audiothumbs-frameworks
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = flac
+	depends = taglib
+	depends = kio
+	source = git://github.com/eplightning/audiothumbs-frameworks.git
+	md5sums = SKIP
+
+pkgname = audiothumbs-frameworks-git
+
