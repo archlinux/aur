@@ -1,0 +1,20 @@
+diff -Nuar Ambiance/gtk-3.0/gtk-main.css Ambiance/gtk-3.0/gtk-main.css
+--- Ambiance/gtk-3.0/gtk-main.css	2012-09-28 13:17:11.000000000 -0300
++++ Ambiance/gtk-3.0/gtk-main.css	2013-06-03 10:42:25.376319514 -0300
+@@ -3,7 +3,7 @@
+ @define-color fg_color #4c4c4c;
+ @define-color base_color #ffffff;
+ @define-color text_color #3C3C3C;
+-@define-color selected_bg_color #f07746;
++@define-color selected_bg_color #7788b1;
+ @define-color selected_fg_color #ffffff;
+ @define-color tooltip_bg_color #000000;
+ @define-color tooltip_fg_color #ffffff;
+diff -Nuar Ambiance/gtk-3.0/settings.ini Ambiance/gtk-3.0/settings.ini
+--- Ambiance/gtk-3.0/settings.ini	2012-09-28 13:17:11.000000000 -0300
++++ Ambiance/gtk-3.0/settings.ini	2013-06-03 10:41:03.175750601 -0300
+@@ -1,3 +1,3 @@
+ [Settings]
+-gtk-color-scheme = "base_color:#ffffff\nbg_color:#f2f1f0\ntooltip_bg_color:#000000\nselected_bg_color:#f07746\ntext_color:#3C3C3C\nfg_color:#4c4c4c\ntooltip_fg_color:#ffffff\nselected_fg_color:#ffffff\nlink_color:#DD4814\nbg_color_dark:#3c3b37\nfg_color_dark:#dfdbd2"
++gtk-color-scheme = "base_color:#ffffff\nbg_color:#f2f1f0\ntooltip_bg_color:#000000\nselected_bg_color:#7788b1\ntext_color:#3C3C3C\nfg_color:#4c4c4c\ntooltip_fg_color:#ffffff\nselected_fg_color:#ffffff\nlink_color:#DD4814\nbg_color_dark:#3c3b37\nfg_color_dark:#dfdbd2"
+ gtk-auto-mnemonics = 1

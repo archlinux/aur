@@ -1,0 +1,29 @@
+pkgbase = ubuntu-themes-wildblueyonder
+	pkgdesc = Ambiance and Radiance themes, with a slight colour variation.
+	pkgver = 14.04+14.10.20140929
+	pkgrel = 1
+	url = https://launchpad.net/ubuntu-themes
+	install = ubuntu-themes-wildblueyonder.install
+	arch = any
+	license = CCPL
+	makedepends = python2
+	makedepends = imagemagick
+	makedepends = icon-naming-utils
+	depends = humanity-icon-theme
+	depends = gnome-icon-theme
+	depends = hicolor-icon-theme
+	depends = gtk-engine-unico
+	depends = gtk-engine-murrine
+	provides = ubuntu-themes
+	provides = ubuntu-mono
+	conflicts = ubuntu-themes
+	conflicts = ubuntu-mono
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/ubuntu-themes_14.04+14.10.20140929.orig.tar.gz
+	source = gtk2.patch
+	source = gtk3.patch
+	md5sums = 268d1c4a3ef375400f1cb990c4b635e0
+	md5sums = 82ca564f78217c88358fedc5003bf149
+	md5sums = b3808ebed9a637971a934646349cde69
+
+pkgname = ubuntu-themes-wildblueyonder
+
