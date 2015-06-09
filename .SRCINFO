@@ -1,0 +1,17 @@
+pkgbase = secp256k1
+	pkgdesc = Optimized C library for secp256k1 ECDSA
+	pkgver = 20140202
+	pkgrel = 2
+	url = https://github.com/sipa/secp256k1
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = yasm
+	depends = gmp
+	depends = openssl
+	source = http://gavwood.com/secp256k1.tar.bz2
+	sha256sums = 8d22c571e2934be51816883eb8351995849d8e04603d63a76fe95b8b40ebecb4
+
+pkgname = secp256k1
+
