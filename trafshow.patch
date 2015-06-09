@@ -1,0 +1,41 @@
+diff -aur trafshow-5.2.3/Makefile.in trafshow-5.2.3.patched/Makefile.in
+--- trafshow-5.2.3/Makefile.in	2004-06-15 08:29:14.000000000 +0000
++++ trafshow-5.2.3.patched/Makefile.in	2009-11-05 12:46:47.274533717 +0000
+@@ -73,9 +73,9 @@
+ 	@echo 'char compiled[] = "$(CC) $(CFLAGS) $(LIBS)";' >> $@
+ 
+ install:
+-	./install-sh -c -s -m 555 -o bin -g bin $(PROG) $(BINDEST)/$(PROG)
+-	./install-sh -c -m 444 -o bin -g bin $(PROG).1 $(MANDEST)/man1/$(PROG).1
+-	[ -f /etc/$(PROG) ] || ./install-sh -c -m 444 .trafshow /etc/$(PROG)
++	./install-sh -c -s -m 555 -o bin -g bin $(PROG) $(DESTDIR)$(BINDEST)/$(PROG)
++	./install-sh -c -m 444 -o bin -g bin $(PROG).1 $(DESTDIR)$(MANDEST)/man1/$(PROG).1
++	[ -f /etc/$(PROG) ] || ./install-sh -c -m 444 .trafshow $(DESTDIR)/etc/$(PROG)
+ 
+ clean:
+ 	rm -f $(CLEANFILES)
+diff -aur trafshow-5.2.3/config.sub trafshow-5.2.3.patched/config.sub
+--- trafshow-5.2.3/config.sub	2004-01-28 08:00:38.000000000 +0000
++++ trafshow-5.2.3.patched/config.sub	2009-11-05 12:34:51.358774674 +0000
+@@ -164,6 +164,9 @@
+ 	i[3456]86)
+ 	  basic_machine=$basic_machine-pc
+ 	  ;;
++	x86_64*)
++	  basic_machine=amd64
++	  ;;
+ 	# Object if more than one company name word.
+ 	*-*-*)
+ 		echo Invalid configuration \`$1\': machine \`$basic_machine\' not recognized 1>&2
+diff -aur trafshow-5.2.3/session.c trafshow-5.2.3.patched/session.c
+--- trafshow-5.2.3/session.c	2006-01-08 05:58:08.000000000 +0000
++++ trafshow-5.2.3.patched/session.c	2009-11-05 12:34:51.361276949 +0000
+@@ -40,7 +40,7 @@
+ #define	ASYNC_MODE	FNDELAY
+ #elif	O_ASYNC
+ #define	ASYNC_MODE	O_ASYNC
+-#elif
++/*#elif*/
+ #error the fcntl argument to turn ON/OFF non-blocking I/O is unknown
+ #endif
+ 
