@@ -1,14 +1,13 @@
-# Maintainer: Vincent Lequertier <vincent.lequertier@laposte.net>
+# Maintainer: DeaDDooMER <deaddoomer@deadsoftware.ru>
 pkgname=i3bar-icons
 pkgver=4.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A version of i3bar which can display xbm icons"
 url="https://github.com/ashinkarov/i3-extras/blob/master/i3bar-xbm-icons.patch"
 arch=('i686' 'x86_64')
-license=('GPL')
-depends=('libxcursor' 'xcb-util-keysyms' 'xcb-util-wm' 'xcb-util-image' 'libev' 'yajl' 
-'startup-notification' 'pango' "i3-wm>=$pkgver")
-makedepends=('git' 'docbook-xsl' 'pkgconfig')
+license=('BSD')
+depends=('libxcursor' 'xcb-util-keysyms' 'xcb-util-image' 'libev' 'yajl' 'pango' "i3-wm>=$pkgver")
+makedepends=('pkgconfig')
 conflicts=()
 replaces=()
 backup=()
