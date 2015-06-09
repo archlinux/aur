@@ -1,0 +1,14 @@
+diff -r 45450e5b01df java-sdk/ldapjdk/netscape/ldap/LDAPSchemaElement.java
+--- ./mozilla/directory/java-sdk/ldapjdk/netscape/ldap/LDAPSchemaElement.java	Fri Feb 18 09:02:26 2011 -0700
++++ ./mozilla/directory/java-sdk/ldapjdk/netscape/ldap/LDAPSchemaElement.java	Thu Mar 10 13:51:04 2011 -0800
+@@ -544,6 +544,10 @@
+         for( int i = 0; i < names.length; i++ ) {
+             String[] vals = getQualifier( names[i] );
+             if ( (vals != null) && (vals.length > 0) ) {
++                // need a space between elements
++                if (i > 0) {
++                    s += ' ';
++                }
+                 s += names[i] + ' ' + vals[0];
+             }
+         }

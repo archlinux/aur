@@ -1,0 +1,14 @@
+diff -up ./mozilla/directory/java-sdk/build.xml.sav ./mozilla/directory/java-sdk/build.xml
+--- ./mozilla/directory/java-sdk/build.xml.sav	2009-03-20 16:41:48.000000000 -0400
++++ ./mozilla/directory/java-sdk/build.xml	2009-03-20 16:42:09.000000000 -0400
+@@ -66,8 +66,8 @@
+ 
+     <!-- the following is to setup the correct info for sun jsse which
+         is jdk dependent -->
+-    <property name="ssllibs14" value="${basedir}/ldapjdk/lib/jss32_stub.jar"/>
+-    <property name="ssllibs13" value="${basedir}/ldapjdk/lib/jaas.jar:${basedir}/ldapjdk/lib/jnet.jar:${basedir}/ldapjdk/lib/jsse.jar:${basedir}/ldapjdk/lib/jss32_stub.jar"/>
++    <property name="ssllibs14" value="${basedir}/ldapjdk/lib/jss4.jar"/>
++    <property name="ssllibs13" value="${basedir}/ldapjdk/lib/jaas.jar:${basedir}/ldapjdk/lib/jnet.jar:${basedir}/ldapjdk/lib/jsse.jar:${basedir}/ldapjdk/lib/jss4.jar"/>
+ 
+     <!-- we do not use the users existing classpath and instead build our own
+          comment the following line out if this is not desired -->
