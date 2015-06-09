@@ -1,0 +1,24 @@
+--- freefem++-3.19-1.orig/Makefile.in	2012-05-10 01:09:35.000000000 +0600
++++ freefem++-3.19-1/Makefile.in	2012-05-27 23:40:24.015994565 +0600
+@@ -329,7 +329,7 @@
+ SUBDIRS = download src  examples++-tutorial examples++	\
+ 	examples++-eigen examples++-load examples++-mpi	\
+ 	examples++-bug examples++-chapt3 examples++-other \
+-	examples++-3d DOC 
++	examples++-3d
+ 
+ EXTRA_DIST = regtests.sh config-wrapper.h  \
+ FreeFem++.mcp HISTORY HISTORY_BEFORE_2005  BUGS TODO regtests.m4 \
+@@ -859,12 +859,6 @@
+ 		hg log >HISTORY ;\
+ 		fi
+ 
+-documentation:
+-	cd DOC && $(MAKE) $(AM_MAKEFLAGS) documentation
+-
+-DOC/freefem++doc.pdf:
+-	cd $(@D) && $(MAKE) $(AM_MAKEFLAGS) $(@F)
+-
+ clean-local::
+ 	-find . \( -name '*~' -or  -name ListOfUnAllocPtr.bin \) |xargs rm 
+ 	-rm examples*/*.eps 
