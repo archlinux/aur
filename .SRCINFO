@@ -1,0 +1,16 @@
+pkgbase = flite
+	pkgdesc = A lighweight speech synthesis engine (text to speech)
+	pkgver = 2.0.0
+	pkgrel = 2
+	url = http://cmuflite.org
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = alsa-lib
+	options = strip
+	options = !buildflags
+	source = http://festvox.org/flite/packed/flite-2.0/flite-2.0.0-release.tar.bz2
+	md5sums = 645db96ffc296cbb6d37f231cc1cc6b2
+
+pkgname = flite
+
