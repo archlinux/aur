@@ -1,0 +1,18 @@
+pkgbase = otf-latin-modern
+	pkgdesc = Improved version of Computer Modern fonts as used in LaTeX
+	pkgver = 2.004
+	pkgrel = 2
+	url = http://www.gust.org.pl/projects/e-foundry/latin-modern
+	install = otf-latin-modern.install
+	arch = any
+	license = custom:GFL
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = http://www.gust.org.pl/projects/e-foundry/latin-modern/download/lm2.004otf.zip
+	source = GUST-FONT-LICENSE.txt::http://www.gust.org.pl/projects/e-foundry/licenses/GUST-FONT-LICENSE.txt/at_download/file
+	sha256sums = 5b0236051d3728be6616f1b274e3b910473875b5a3ef9382f0ef00384ddb161b
+	sha256sums = a746108477b2fa685845e7596b7ad8342bc358704b2b7da355f2df0a0cb8ad85
+
+pkgname = otf-latin-modern
+
