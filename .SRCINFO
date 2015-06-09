@@ -1,0 +1,16 @@
+pkgbase = sintel-game
+	pkgdesc = A game to the OpenMovie Sintel created by the Blender Foundation
+	pkgver = alpha_2
+	pkgrel = 1
+	url = http://www.sintelgame.org
+	arch = i686
+	arch = x86_64
+	license = CC-BY
+	depends = blender
+	source = http://download.sintelgame.org/sintel_the_game_alpha_2_nofilm.zip
+	source = sintel-game
+	sha256sums = fff2719aa976d09d0f67f32939ea8a516f4cc4754fbc215ffab60473761ed8c5
+	sha256sums = d69416c0e07be49e42647dec878364a7751a839822e5dfe4ac63552d746da2f9
+
+pkgname = sintel-game
+
