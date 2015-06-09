@@ -1,0 +1,13 @@
+pkgbase = libvcard
+	pkgdesc = A C++ library for vCard specification
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://code.google.com/p/libvcard/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	source = https://libvcard.googlecode.com/files/libvcard-1.0.2.zip
+	md5sums = 91f7fa5f3c01f62c56133883c98b33b4
+
+pkgname = libvcard
+
