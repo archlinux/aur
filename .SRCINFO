@@ -1,0 +1,15 @@
+pkgbase = vim-nerdcommenter
+	pkgdesc = A plugin that allows for easy commenting of code for many filetypes
+	pkgver = 2.3.0
+	pkgrel = 3
+	url = http://www.vim.org/scripts/script.php?script_id=1218
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = custom
+	depends = vim
+	source = vim-nerdcommenter.zip::http://www.vim.org/scripts/download_script.php?src_id=14455
+	sha256sums = c2a153a8538e340576208882b034e6c2de5c689d3bef1a67f7234917d0ded4dd
+
+pkgname = vim-nerdcommenter
+
