@@ -1,0 +1,16 @@
+pkgbase = libreoffice-extension-writer2epub
+	pkgdesc = Extension for creating ePub files from Libreoffice
+	pkgver = 1.1.28
+	pkgrel = 3
+	url = http://writer2epub.it/en/
+	arch = any
+	groups = libreoffice-extensions
+	license = LGPL
+	makedepends = unzip
+	depends = libreoffice
+	depends = java-runtime
+	source = http://writer2epub.it/wp-content/files/writer2epub.oxt
+	md5sums = 52bab6e7ab8029eae5d681a39dadc0e5
+
+pkgname = libreoffice-extension-writer2epub
+
