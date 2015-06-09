@@ -1,0 +1,18 @@
+pkgbase = ttf-impallari-raleway-family
+	pkgdesc = Matt McInerney's Raleway family, from Pablo Impallari
+	pkgver = 3.0
+	pkgrel = 1
+	url = http://www.impallari.com/
+	install = updatefont.install
+	arch = any
+	groups = impallari-fonts
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	provides = ttf-raleway
+	conflicts = ttf-raleway
+	source = http://www.impallari.com/media/uploads/prosources/update-100-source.zip
+	md5sums = fd753c68236f5c712a89bb798a90c4a1
+
+pkgname = ttf-impallari-raleway-family
+
