@@ -1,0 +1,32 @@
+pkgbase = opensmtpd-snapshot
+	pkgdesc = A FREE implementation of the server-side SMTP protocol. Latest snapshot.
+	pkgver = 201505121836p1
+	pkgrel = 1
+	url = http://www.opensmtpd.org/portable.html
+	install = opensmtpd-snapshot.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = libevent
+	depends = pam
+	depends = libasr-snapshot
+	provides = opensmtpd
+	conflicts = sendmail
+	conflicts = postfix
+	conflicts = opensmtpd
+	replaces = opensmtpd-portable
+	options = emptydirs
+	options = !strip
+	backup = etc/mail/smtpd.conf
+	backup = etc/mail/aliases
+	source = http://www.opensmtpd.org/archives/opensmtpd-201505121836p1.tar.gz
+	source = smtpd.service
+	source = smtpd.socket
+	source = smtpd.conf.patch
+	sha256sums = 42ccd5cd13377cc84e7040bf0e92a2277ef311c5c27d5dc731abed085a4e6507
+	sha256sums = 655ca04a3b95e7424d625e60304387c5d73eb35997a7878089cae94e1dae5b27
+	sha256sums = 32d46de5562d01de445d04c93bcc9f94bf103539b676e449c32e3603a3866cf8
+	sha256sums = da42f59718713c70c24d001604cd123fbde1da4314abbe445347207d0d14f5e4
+
+pkgname = opensmtpd-snapshot
+
