@@ -1,0 +1,22 @@
+pkgbase = footnote-bzr
+	pkgdesc = Take note in elementary style
+	pkgver = r339
+	pkgrel = 1
+	url = https://launchpad.net/footnote
+	install = footnote.install
+	arch = i686
+	arch = x86_64
+	groups = pantheon-unstable
+	license = GPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = vala
+	depends = granite-bzr
+	depends = sqlheavy
+	provides = footnote
+	conflicts = footnote
+	source = bzr+lp:footnote
+	sha256sums = SKIP
+
+pkgname = footnote-bzr
+
