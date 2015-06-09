@@ -1,0 +1,22 @@
+pkgbase = sfptpd
+	pkgdesc = Solarflare Enhanced PTP daemon.
+	pkgver = 2.2.4.70
+	pkgrel = 1
+	url = http://www.solarflare.com/
+	arch = x86_64
+	license = custom
+	depends = openonload
+	options = !libtool
+	options = !strip
+	options = !makeflags
+	options = !buildflags
+	options = staticlibs
+	source = http://127.0.0.1/SF-108910-LS-11_Solarflare_Enhanced_PTP_Daemon_sfptpd_-_64_bit_binary_tarball.tgz
+	source = http://127.0.0.1/SF-108910-LS-11_Solarflare_Enhanced_PTP_Daemon_sfptpd_-_64_bit_binary_tarball.rl.txt
+	source = sfptpd.service
+	sha512sums = 69b71afff6dab4dab9f7de8fc02431cea95853a68b237876f6d63deb4bcf023d238648bff8162b4d9af57847b1be8f3bcf6bf49cbdaf8b9537a568d2568c6ad9
+	sha512sums = b61a0ecc9af7ed6c880c436154b872c480623accd8a006c6dd29e3dd53e260a4ec947e6b4adc17b9bff23d409433498a63ec05a5f1396781e15e100338ebdb11
+	sha512sums = b3dcb610b5298ea68de03f4cde1ad52063176754da756b4b328955be0035a760aef59b72d0f5f92313f524a76d48551378ffcd93e8fd63fbd4b254f417ea7561
+
+pkgname = sfptpd
+
