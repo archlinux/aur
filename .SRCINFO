@@ -1,0 +1,25 @@
+pkgbase = h2o
+	pkgdesc = Optimized HTTP server with support for HTTP/1.x and HTTP/2
+	pkgver = 1.2.0
+	pkgrel = 2
+	url = https://github.com/h2o/h2o
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = make
+	depends = libuv
+	depends = libyaml
+	depends = openssl
+	depends = wslay
+	provides = h2o
+	provides = libh2o
+	conflicts = libh2o
+	backup = etc/h2o.conf
+	source = h2o-1.2.0.tar.gz::https://codeload.github.com/h2o/h2o/tar.gz/v1.2.0
+	source = h2o.service
+	sha256sums = 09aacd84ea0a53eaffdc8e0c2a2cf1108bea5db81d5859a136221fd67f07833f
+	sha256sums = dadc4d08e8149ac0f9f2156251a639380795d1fed2068958b487da88161d4bb7
+
+pkgname = h2o
+

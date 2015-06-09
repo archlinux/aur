@@ -1,0 +1,14 @@
+[Unit]
+Description=h2o, a very fast HTTP server written in C
+After=network.target
+
+[Service]
+Type=simple
+SyslogLevel=notice
+
+ExecStart=/usr/bin/h2o --mode master --conf /etc/h2o.conf
+ExecReload=/usr/bin/kill -HUP $MAINPID
+KillMode=process
+
+[Install]
+WantedBy=multiuser.target
