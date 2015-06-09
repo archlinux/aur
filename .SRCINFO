@@ -1,0 +1,27 @@
+pkgbase = sxiv-bskv-manga-git
+	pkgdesc = Simple (or small or suckless) X Image Viewer with manga view mode (-m) (baskerville xft fork)
+	pkgver = v1.3.1.13.g5dc7993.g5dc7993
+	pkgrel = 1
+	url = https://github.com/muennich/sxiv
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = imlib2
+	depends = giflib
+	depends = libxft
+	depends = libexif
+	optdepends = imagemagick: for the example commands in config.def.h
+	optdepends = libjpeg-turbo: for the example commands in config.def.h
+	optdepends = gimp: for the example commands in config.def.h
+	provides = sxiv
+	conflicts = sxiv
+	source = git+https://github.com/muennich/sxiv.git
+	source = manga.patch
+	source = xft.patch
+	md5sums = SKIP
+	md5sums = 0d03671bf9237bec4f7a3092f1d39675
+	md5sums = 35595aaa1f9344f4e1f26ec723c2e33f
+
+pkgname = sxiv-bskv-manga-git
+
