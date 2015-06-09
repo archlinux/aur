@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=TeXmacs
+GenericName=GNU TeXmacs Editor
+GenericName[es]=Editor GNU TeXmacs
+Comment=A structured wysiwyg scientific text editor and graphical frontend to various CASes
+Comment[es]=GNU TeXmacs es un editor de texto cientifico libre e interface de programas CAS
+Exec=texmacs
+Icon=texmacs.png
+Terminal=false
+Type=Application
+Categories=Science;Math;

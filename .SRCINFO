@@ -1,0 +1,33 @@
+pkgbase = texmacs-qt
+	pkgdesc = WYSIWYG Qt4 editor and graphical frontend to various CASes
+	pkgver = 1.0.7.21
+	pkgrel = 1
+	url = http://texmacs.org/
+	install = texmacs-qt.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qt4
+	depends = texlive-core
+	depends = guile1.8
+	depends = cairo
+	depends = freetype2
+	depends = imlib2
+	depends = perl
+	depends = python2
+	depends = libxext
+	depends = desktop-file-utils
+	depends = shared-mime-info
+	depends = gtk-update-icon-cache
+	optdepends = gawk: conversion of some files
+	optdepends = transfig: convert images using fig2ps
+	conflicts = texmacs
+	source = http://www.texmacs.org/Download/ftp/tmftp/source/TeXmacs-1.0.7.21-src.tar.gz
+	source = http://www.texmacs.org/Images/tm_gnu1b.png
+	source = texmacs.desktop
+	md5sums = a56e2f14761e9003471fd26d91058ef0
+	md5sums = 48c15c09000cc38728d847c3a8ffabc0
+	md5sums = a1856736b4defd6f3a46cf608b108ef1
+
+pkgname = texmacs-qt
+
