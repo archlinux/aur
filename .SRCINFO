@@ -1,0 +1,15 @@
+pkgbase = ttf-invader-zim
+	pkgdesc = The official Invader Zim font direct from Nickelodeon
+	pkgver = 20010314
+	pkgrel = 1
+	url = http://www.dafont.com/invader-zim.font
+	install = ttf-invader-zim.install
+	arch = any
+	license = unknown
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = invader_zim.zip::http://dl.dafont.com/dl/?f=invader_zim
+	md5sums = d074818e69b2db88a4e604742699a0d2
+
+pkgname = ttf-invader-zim
+
