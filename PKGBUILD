@@ -8,6 +8,8 @@ arch=(i686 x86_64)
 url="http://physics.princeton.edu/pulsar/k1jt/wsjtx.html"
 license=("GPL-3")
 depends=(qt5-base qt5-multimedia qt5-serialport libusb libusb-compat kvasd-bin)
+provides=(wsjtx)
+conflicts=(wsjtx)
 makedepends=()
 
 if [ "$CARCH" == "x86_64" ]; then
