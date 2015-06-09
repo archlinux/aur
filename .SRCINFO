@@ -1,0 +1,19 @@
+pkgbase = switchboard-plug-about
+	pkgdesc = About plug for Switchboard
+	pkgver = 0.1.2
+	pkgrel = 2
+	url = https://launchpad.net/switchboard-plug-about
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = vala
+	depends = libpantheon
+	depends = switchboard
+	source = https://launchpad.net/switchboard-plug-about/trunk/0.1.2/+download/switchboard-plug-about-0.1.2.tgz
+	source = about-archlinux.patch
+	sha256sums = 1ced8c11b285ac6210121f7edd115958f07a49ef4de365793f2517aade408a04
+	sha256sums = 2c68f1307b939a19a1cccebf75af387c32dfe68cf95f97ed6174fc29c56a2462
+
+pkgname = switchboard-plug-about
+

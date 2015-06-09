@@ -1,0 +1,142 @@
+--- a/src/about-plug.vala	2013-09-11 16:12:55.546339000 +0200
++++ b/src/about-plug.vala	2013-09-11 16:11:14.152057283 +0200
+@@ -21,20 +21,11 @@ public class AboutPlug : Pantheon.Switch
+     private string os;
+     private string website_url;
+     private string bugtracker_url;
+-    private string codename;
+-    private string version;
+-    private string arch;
++    private string kernel;
+     private string processor;
+     private string memory;
+     private string graphics;
+     private string hdd;
+-    private string ubuntu_base;
+-    private Gtk.Label based_off;
+-    
+-    
+-    private string is_ubuntu;
+-    private string ubuntu_version;
+-    private string ubuntu_codename;
+ 
+     public AboutPlug () {
+         setup_info ();
+@@ -73,45 +64,16 @@ public class AboutPlug : Pantheon.Switch
+             string line;
+             // Read lines until end of file (null) is reached
+             while ((line = dis.read_line (null)) != null) {
+-                if ("DISTRIB_ID=" in line) {
+-                    os = line.replace ("DISTRIB_ID=", "");
++                if ("DISTRIB_DESCRIPTION=" in line) {
++                    os = line.replace ("DISTRIB_DESCRIPTION=", "");
+                     if ("\"" in os) {
+                         os = os.replace ("\"", "");
+                     }
+-                } else if ("DISTRIB_RELEASE=" in line) {
+-                    version = line.replace ("DISTRIB_RELEASE=", "");
+-                } else if ("DISTRIB_CODENAME=" in line) {
+-                    codename = line.replace ("DISTRIB_CODENAME=", "");
+-                    codename = capitalize (codename);
+                 }
+             }
+         } catch (Error e) {
+-            warning("Couldn't read lsb-release file, assuming elementary OS 0.2");
+-            os = "elementary OS";
+-            version = "0.2";
+-            codename = "Luna";
+-        }
+-        
+-        file = File.new_for_path("/etc/upstream-release/lsb-release");
+-        try {
+-            var dis = new DataInputStream (file.read ());
+-            string line;
+-            // Read lines until end of file (null) is reached
+-            while ((line = dis.read_line (null)) != null) {
+-                if ("DISTRIB_ID=" in line) {
+-                    is_ubuntu = line.replace ("DISTRIB_ID=", "");
+-                } else if ("DISTRIB_RELEASE=" in line) {
+-                    ubuntu_version = line.replace ("DISTRIB_RELEASE=", "");
+-                } else if ("DISTRIB_CODENAME=" in line) {
+-                    ubuntu_codename = line.replace ("DISTRIB_CODENAME=", "");
+-                    ubuntu_codename = capitalize (ubuntu_codename);
+-                }
+-            }
+-        } catch (Error e) {
+-            warning("Couldn't read upstream lsb-release file, assuming none");
+-            is_ubuntu = null;
+-            ubuntu_version = null;
+-            ubuntu_codename = null;
++            warning("Couldn't read lsb-release file, assuming Arch Linux");
++            os = "Arch Linux";
+         }
+ 
+         //Bugtracker and website
+@@ -129,21 +91,17 @@ public class AboutPlug : Pantheon.Switch
+             }
+         } catch (Error e) {
+             warning(e.message);
+-            warning("Couldn't find bugtracker/website, using elementary OS defaults");
++            warning("Couldn't find bugtracker/website, using Arch Linux defaults");
+             if (website_url == "")
+-                website_url = "http://elementaryos.org";
++                website_url = "https://www.archlinux.org";
+             if (bugtracker_url == "")
+-                bugtracker_url = "https://bugs.launchpad.net/elementary/+filebug";
++                bugtracker_url = "https://bugs.archlinux.org";
+         }
+ 
+-        // Architecture
+-        Process.spawn_command_line_sync ("uname -m", out arch);
+-        if (arch == "x86_64\n") {
+-            arch = "64-bit";
+-        } else if ("arm" in arch) {
+-            arch = "ARM";
+-        } else {
+-            arch = "32-bit";
++        // Kernel
++        Process.spawn_command_line_sync ("uname -srm", out kernel);
++        if ("\n" in kernel) {
++            kernel = kernel.replace ("\n", "");
+         }
+ 
+         // Processor
+@@ -156,6 +114,8 @@ public class AboutPlug : Pantheon.Switch
+         }
+         if ("\n" in processor) {
+             processor = processor.split ("\n")[0];
++        } while ("  " in processor) {
++            processor = processor.replace ("  ", " ");
+         } if ("(R)" in processor) {
+             processor = processor.replace ("(R)", "®");
+         } if ("(TM)" in processor) {
+@@ -233,24 +193,17 @@ public class AboutPlug : Pantheon.Switch
+         Granite.Widgets.Utils.apply_text_style_to_label (Granite.TextStyle.TITLE, title);
+         title.set_alignment (0, 0);
+ 
+-        var version = new Gtk.Label (_("Version") + ": " + version + " \"" + codename + "\" ( " + arch + " )");
+-        version.set_alignment (0, 0);
+-        version.set_selectable (true);
+-        
+-        if (is_ubuntu != null) {
+-            based_off = new Gtk.Label (_("Built on") + ": " + is_ubuntu + " " + ubuntu_version + " ( \"" + ubuntu_codename + "\" )");
+-            based_off.set_alignment (0, 0);
+-            based_off.set_selectable (true);
+-        }
++        var kernel = new Gtk.Label (kernel);
++        kernel.set_alignment (0, 0);
++        kernel.set_selectable (true);
+ 
+         var website_label = new Gtk.Label (null);
+-        website_label.set_markup ("<a href=\"http://elementaryos.org/\">http://elementaryos.org</a>");
++        website_label.set_markup ("<a href=\"https://www.archlinux.org/\">https://www.archlinux.org</a>");
+         website_label.set_alignment (0, 0);
+ 
+         var details = new Gtk.Box (Gtk.Orientation.VERTICAL, 5);
+         details.pack_start (title, false, false, 0);
+-        details.pack_start (version, false, false, 0);
+-        details.pack_start (based_off, false, false, 0);
++        details.pack_start (kernel, false, false, 0);
+         details.pack_start (website_label, false, false, 0);
+ 
+         var elementary_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 10);
