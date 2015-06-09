@@ -1,0 +1,23 @@
+pkgbase = mingw-w64-libdbus
+	pkgdesc = DBus library (mingw-w64)
+	pkgver = 1.8.18
+	pkgrel = 1
+	url = http://www.freedesktop.org/wiki/Software/dbus
+	arch = any
+	license = custom
+	license = GPL
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-expat
+	provides = mingw-w64-dbus
+	conflicts = mingw-w64-dbus
+	replaces = mingw-w64-dbus
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://dbus.freedesktop.org/releases/dbus/dbus-1.8.18.tar.gz
+	source = http://dbus.freedesktop.org/releases/dbus/dbus-1.8.18.tar.gz.asc
+	md5sums = 83e607e9ccb1c921d5b6bbea2376a36c
+	md5sums = SKIP
+
+pkgname = mingw-w64-libdbus
+
