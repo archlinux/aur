@@ -1,0 +1,20 @@
+pkgbase = freecol-git
+	pkgdesc = A turn-based strategy game based on Colonization, git version build against java8
+	pkgver = 0.11840.2430d51
+	pkgrel = 1
+	url = http://www.freecol.org/
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = apache-ant
+	makedepends = junit
+	makedepends = texlive-core
+	depends = java-environment=8
+	depends = bash
+	source = freecol-git::git://git.code.sf.net/p/freecol/git#branch=master
+	source = freecol-git.sh
+	sha512sums = SKIP
+	sha512sums = 7edefad3c1f4ccc3f0cebe6b52f8a6c981f4910b937d5dfe731e0a7348982e26a65d38b0257996131120953f860a9f679cafb9bce5a2fbfe3c57d93ae5bba4e5
+
+pkgname = freecol-git
+
