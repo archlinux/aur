@@ -1,0 +1,35 @@
+pkgbase = hyperspy-git
+	pkgdesc = Hyperspectral data analysis
+	pkgver = v0.8.72.gb053fd4
+	pkgrel = 1
+	url = http://hyperspy.org
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-numpy
+	depends = python2-matplotlib
+	depends = python2-traits
+	depends = python2-traitsui
+	depends = python2-h5py
+	depends = python2-scikit-learn
+	depends = python2-nose
+	depends = python2-statsmodels
+	depends = ipython2
+	depends = python2-jinja
+	depends = python2-pyzmq
+	depends = python2-pyqt4
+	depends = python2-tornado
+	depends = python2-sip
+	depends = python2-pygments
+	depends = python2-jsonschema
+	optdepends = python2-pillow: tiff export
+	optdepends = python2-seaborn: prettier plotting
+	provides = hyperspy
+	conflicts = hyperspy
+	source = git://github.com/hyperspy/hyperspy.git
+	md5sums = SKIP
+
+pkgname = hyperspy-git
+
