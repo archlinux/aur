@@ -1,0 +1,197 @@
+From 813085c72e9906a53bec5954bcce7305a7c320d1 Mon Sep 17 00:00:00 2001
+From: Stanislav Ochotnicky <sochotnicky@redhat.com>
+Date: Mon, 21 Feb 2011 17:58:39 +0100
+Subject: [PATCH 3/3] Use system jars
+
+---
+ build/build.xml     |   56 +++++++++++----------------------------------------
+ build/testcases.xml |    6 -----
+ 2 files changed, 12 insertions(+), 50 deletions(-)
+
+diff --git a/build/build.xml b/build/build.xml
+index c667553..479ef2d 100644
+--- a/build/build.xml
++++ b/build/build.xml
+@@ -140,28 +140,6 @@
+   <!-- =================================================================== -->
+   <!-- sets up the build environment (classpath and libs)                  -->
+   <!-- =================================================================== -->
+-  <target name="build-prepare">
+-    <ant antfile="${velocity.build.dir}/download.xml" target="build-download" />
+-
+-    <!-- Build classpath -->
+-    <path id="velocity.build.classpath">
+-      <fileset dir="${build.lib}">
+-        <include name="**/*.jar"/>
+-      </fileset>
+-    </path>
+-
+-    <!-- Test classpath, contains dependencies needed only for Testing -->
+-    <path id="velocity.test.classpath">
+-      <fileset dir="${build.test.lib}">
+-        <include name="**/*.jar"/>
+-      </fileset>
+-    </path>
+-
+-    <path id="velocity.run.classpath">
+-      <path refid="velocity.build.classpath"/>
+-      <pathelement location="${build.dir}/${final.name}.jar"/>
+-    </path>
+-  </target>
+ 
+   <!-- =================================================================== -->
+   <!-- checks for the existence/non-existence of various java features     -->
+@@ -174,12 +152,11 @@
+   <target name="prepare-jdbc" depends="check-jdbc,check-jdbc-true,check-jdbc-false"/>
+   <target name="prepare-jdk14" depends="check-jdk14,check-jdk14-true,check-jdk14-false"/>
+ 
+-  <target name="check-jdbc" depends="build-prepare">
++  <target name="check-jdbc">
+     <!--  note: check to see if required class is available.  -->
+     <!-- might be j2ee.jar, jdbc2_0-stdext.jar, or simply JDK 1.4+ -->
+     <available classname="javax.sql.DataSource"
+                property="jdbc.present">
+-      <classpath refid="velocity.build.classpath"/>
+     </available>
+   </target>
+ 
+@@ -210,10 +187,9 @@
+     </echo>
+   </target>
+ 
+-  <target name="check-jdk14" depends="build-prepare">
++  <target name="check-jdk14">
+      <available classname="java.util.logging.Logger"
+                property="jdk14.present">
+-      <classpath refid="velocity.build.classpath"/>
+     </available>
+   </target>
+ 
+@@ -248,7 +224,7 @@
+   <!-- =================================================================== -->
+   <target name="compile" depends="compile-src,compile-test"/>
+ 
+-  <target name="compile-src" depends="prepare,build-prepare,check-jdbc,check-jdk14"
++  <target name="compile-src" depends="prepare,check-jdbc,check-jdk14"
+           description="Compiles the Velocity source">
+     <javac srcdir="${build.src}"
+       destdir="${build.dest}"
+@@ -257,8 +233,7 @@
+       target="${javac.target}"
+       source="${javac.source}"
+       deprecation="${deprecation}"
+-      optimize="${optimize}"
+-      classpathref="velocity.build.classpath"/>
++      optimize="${optimize}"/>
+ 
+     <copy todir="${build.dest}" filtering="yes">
+       <fileset dir="${src.java.dir}">
+@@ -268,7 +243,7 @@
+ 
+   </target>
+ 
+-  <target name="compile-test" depends="prepare,build-prepare,compile-src"
++  <target name="compile-test" depends="prepare,compile-src"
+           description="Compiles the Velocity test classes">
+     <javac srcdir="${build.test.src}"
+       destdir="${build.test.dest}"
+@@ -279,8 +254,6 @@
+ 
+       <!-- Don't use the run classpath, build using the exploded class tree -->
+       <classpath>
+-        <path refid="velocity.build.classpath"/>
+-        <path refid="velocity.test.classpath" />
+         <pathelement location="${build.dest}"/>
+       </classpath>
+     </javac>
+@@ -561,7 +534,7 @@
+   <!-- =================================================================== -->
+   <!-- Compiles the example code                                           -->
+   <!-- =================================================================== -->
+-  <target name="examples" depends="build-prepare,jar"
++  <target name="examples"
+           description="Compiles the Velocity Example code">
+ 
+     <echo>
+@@ -585,8 +558,7 @@
+       encoding="UTF-8"
+       debug="${debug}"
+       deprecation="${deprecation}"
+-      optimize="${optimize}"
+-      classpathref="velocity.run.classpath"/>
++      optimize="${optimize}"/>
+   </target>
+ 
+   <target name="examples-clean" depends="examples-clean-anakia">
+@@ -604,7 +576,7 @@
+   <!-- =================================================================== -->
+   <!-- Creates the API documentation                                       -->
+   <!-- =================================================================== -->
+-  <target name="javadocs" depends="prepare,build-prepare"
++  <target name="javadocs" depends="prepare"
+           description="Creates the Javadoc API documentation">
+ 
+     <mkdir dir="${build.javadoc}"/>
+@@ -620,8 +592,7 @@
+              doctitle="${name} ${version} API"
+              encoding="UTF-8"
+              docencoding="UTF-8"
+-             bottom="Copyright &#169; 2000-${build.year} &lt;a href=&quot;http://www.apache.org/&quot;&gt;Apache Software Foundation&lt;/a&gt;. All Rights Reserved."
+-             classpathref="velocity.build.classpath">
++             bottom="Copyright &#169; 2000-${build.year} &lt;a href=&quot;http://www.apache.org/&quot;&gt;Apache Software Foundation&lt;/a&gt;. All Rights Reserved.">
+ 
+       <link href="${javadocs.ref.jsdk}"/>
+       <link href="http://www.jdom.org/docs/apidocs"/>
+@@ -1024,12 +995,11 @@
+   <!-- Make HTML version of Velocity documentation                         -->
+   <!-- =================================================================== -->
+ 
+-  <target name="docs" depends="build-prepare,jar"
++  <target name="docs" depends="jar"
+           description="Generates the Velocity HTML documentation">
+ 
+     <taskdef name="anakia"
+-             classname="org.apache.velocity.anakia.AnakiaTask"
+-             classpathref="velocity.run.classpath"/>
++             classname="org.apache.velocity.anakia.AnakiaTask"/>
+ 
+     <echo>
+   #######################################################
+@@ -1231,7 +1201,7 @@
+   <!-- =================================================================== -->
+   <!-- JUnit Tests for Velocity                                            -->
+   <!-- =================================================================== -->
+-  <target name="test-main" depends="build-prepare,compile-test"
++  <target name="test-main" depends="compile-test"
+           description="Run the Velocity testcases">
+ 
+     <!-- Require ant 1.7+ for Junit compatibility -->
+@@ -1264,8 +1234,6 @@
+ 
+       <!-- Don't use the run classpath, test using the exploded class tree -->
+       <classpath>
+-        <path refid="velocity.build.classpath" />
+-        <path refid="velocity.test.classpath" />
+         <pathelement path="${build.dest}"/>
+         <pathelement path="${build.test.dest}"/>
+       </classpath>
+diff --git a/build/testcases.xml b/build/testcases.xml
+index 06bb36e..f3749bc 100644
+--- a/build/testcases.xml
++++ b/build/testcases.xml
+@@ -36,12 +36,6 @@
+ 
+   <!-- Build classpath -->
+   <path id="velocity.test.classpath">
+-    <fileset dir="${build.lib}">
+-      <include name="**/*.jar"/>
+-    </fileset>
+-    <fileset dir="${build.test.lib}">
+-      <include name="**/*.jar"/>
+-    </fileset>
+     <pathelement location="${build.dest}"/>
+     <pathelement location="${build.test.dest}"/>
+   </path>
+-- 
+1.7.4
+

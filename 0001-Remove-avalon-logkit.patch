@@ -1,0 +1,45 @@
+From 1d2f89cb3e954b943751fa8dd587fdb404eb9338 Mon Sep 17 00:00:00 2001
+From: Stanislav Ochotnicky <sochotnicky@redhat.com>
+Date: Mon, 21 Feb 2011 15:53:34 +0100
+Subject: [PATCH 1/3] Remove avalon-logkit
+
+we don't have it packaged so change defaults and remove it from pom.xml
+---
+ pom.xml                                            |    6 ------
+ .../velocity/runtime/defaults/velocity.properties  |    4 ++--
+ .../apache/velocity/runtime/log/LogManager.java    |    2 +-
+ 3 files changed, 3 insertions(+), 9 deletions(-)
+
+diff --git a/src/java/org/apache/velocity/runtime/defaults/velocity.properties b/src/java/org/apache/velocity/runtime/defaults/velocity.properties
+index 750a59a..7fac119 100644
+--- a/src/java/org/apache/velocity/runtime/defaults/velocity.properties
++++ b/src/java/org/apache/velocity/runtime/defaults/velocity.properties
+@@ -20,10 +20,10 @@
+ # ----------------------------------------------------------------------------
+ 
+ # ----------------------------------------------------------------------------
+-#  default LogChute to use: default: AvalonLogChute, Log4JLogChute, CommonsLogLogChute, ServletLogChute, JdkLogChute
++#  default LogChute to use: default: Log4JLogChute, CommonsLogLogChute, ServletLogChute, JdkLogChute
+ # ----------------------------------------------------------------------------
+ 
+-runtime.log.logsystem.class = org.apache.velocity.runtime.log.AvalonLogChute,org.apache.velocity.runtime.log.Log4JLogChute,org.apache.velocity.runtime.log.CommonsLogLogChute,org.apache.velocity.runtime.log.ServletLogChute,org.apache.velocity.runtime.log.JdkLogChute
++runtime.log.logsystem.class = org.apache.velocity.runtime.log.Log4JLogChute,org.apache.velocity.runtime.log.CommonsLogLogChute,org.apache.velocity.runtime.log.ServletLogChute,org.apache.velocity.runtime.log.JdkLogChute
+ 
+ # ---------------------------------------------------------------------------
+ # This is the location of the Velocity Runtime log.
+diff --git a/src/java/org/apache/velocity/runtime/log/LogManager.java b/src/java/org/apache/velocity/runtime/log/LogManager.java
+index 19d1016..97dceef 100644
+--- a/src/java/org/apache/velocity/runtime/log/LogManager.java
++++ b/src/java/org/apache/velocity/runtime/log/LogManager.java
+@@ -119,7 +119,7 @@ public class LogManager
+          * classes, and we use the first one we find.
+          *
+          * Note that the default value of this property contains the
+-         * AvalonLogChute, the Log4JLogChute, CommonsLogLogChute,
++         * Log4JLogChute, CommonsLogLogChute,
+          * ServletLogChute, and the JdkLogChute for
+          * convenience - so we use whichever we works first.
+          */
+-- 
+1.7.4
+
