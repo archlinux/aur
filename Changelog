@@ -1,0 +1,11 @@
+2013-04-27  Mariusz Libera  <mariusz.libera@gmail.com>
+
+	0.4.1-2:
+	* new maintainer
+	* updated PKGBUILD
+	* added 'x86_64' arch
+	* added Changelog
+	* added glibc dependency
+	* added README file
+	* fixed man directory
+
