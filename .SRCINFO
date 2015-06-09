@@ -1,0 +1,17 @@
+pkgbase = non-mixer-git
+	pkgdesc = mixer from the NON family
+	pkgver = r1798.18a299c
+	pkgrel = 1
+	url = http://non.tuxfamily.org/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	depends = ntk-git
+	depends = jack
+	depends = liblo
+	source = non-mixer-git::git+git://git.tuxfamily.org/gitroot/non/non.git
+	md5sums = SKIP
+
+pkgname = non-mixer-git
+
