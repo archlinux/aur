@@ -1,0 +1,27 @@
+pkgbase = scidb-svn
+	pkgdesc = Scidb is a Chess Information Data Base SVN-Checkout
+	pkgver = 1.0.beta.r1070
+	pkgrel = 1
+	epoch = 2
+	url = http://scidb.sourceforge.net/
+	install = scidb-svn.install
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	depends = tk
+	depends = zziplib
+	depends = shared-mime-info
+	depends = minizip
+	depends = libxcursor
+	depends = libsm
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	conflicts = scidb
+	options = !buildflags
+	options = !makeflags
+	options = !debug
+	source = scidb-svn::svn://svn.code.sf.net/p/scidb/code/trunk
+	md5sums = SKIP
+
+pkgname = scidb-svn
+
