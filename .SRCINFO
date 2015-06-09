@@ -1,0 +1,12 @@
+pkgbase = echo-icon-theme
+	pkgdesc = The Echo icon theme from the Fedora project.
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://fedorahosted.org/echo-icon-theme/
+	arch = any
+	license = CCPL
+	source = https://fedorahosted.org/releases///echo-icon-theme/echo-icon-theme-0.3.3.tar.bz2
+	sha256sums = faae588a26d4096421616aa9e0f1e23b5fdaa31e237f6235c56d4b050cb1a2e9
+
+pkgname = echo-icon-theme
+
