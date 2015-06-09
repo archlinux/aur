@@ -1,0 +1,15 @@
+pkgbase = intltool-debian
+	pkgdesc = The internationalization tool collection with RFC822 support
+	pkgver = 0.35.0
+	pkgrel = 4
+	url = http://www.debian.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gettext
+	depends = perl
+	source = ftp://ftp.debian.org/debian/pool/main/i/intltool-debian/intltool-debian_0.35.0+20060710.1_all.deb
+	md5sums = 505291f7124f988e5adb6c4fa0303bae
+
+pkgname = intltool-debian
+
