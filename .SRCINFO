@@ -1,0 +1,18 @@
+pkgbase = ruby-sprockets-rails
+	pkgdesc = Sprockets Rails integration
+	pkgver = 2.2.4
+	pkgrel = 1
+	url = https://github.com/rails/sprockets-rails
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-sprockets
+	depends = ruby-actionpack
+	depends = ruby-activesupport
+	noextract = sprockets-rails-2.2.4.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/sprockets-rails-2.2.4.gem
+	sha1sums = d3e1f38574808e8bb1125e49c19d43a97fb92ab6
+
+pkgname = ruby-sprockets-rails
+
