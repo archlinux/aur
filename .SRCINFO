@@ -1,0 +1,17 @@
+pkgbase = pipe-logger-git
+	pkgdesc = Log rotation of stdout & stderr
+	pkgver = 20140509
+	pkgrel = 1
+	url = https://github.com/junegunn/pipe-logger
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = ruby
+	provides = pipe-logger
+	conflicts = pipe-logger
+	source = pipe-logger::git+https://github.com/junegunn/pipe-logger
+	sha256sums = SKIP
+
+pkgname = pipe-logger-git
+
