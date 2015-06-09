@@ -1,0 +1,14 @@
+pkgbase = emacs-twittering-mode
+	pkgdesc = An emacs major mode for Twitter
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = http://twmode.sourceforge.net/index.html
+	arch = any
+	license = GPL
+	depends = emacs
+	depends = curl
+	source = http://cznic.dl.sourceforge.net/project/twmode/twittering-mode-3.0.0/twittering-mode-3.0.0.tar.gz
+	md5sums = ab47a6a49f4279be948147a58e95927e
+
+pkgname = emacs-twittering-mode
+
