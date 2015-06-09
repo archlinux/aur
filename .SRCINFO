@@ -1,0 +1,20 @@
+pkgbase = cobra-svn
+	pkgdesc = Clean and expressive language for .NET and Mono
+	pkgver = 3091
+	pkgrel = 1
+	epoch = 2
+	url = http://cobra-language.com/
+	install = cobra.install
+	arch = i686
+	arch = x86_64
+	license = custom:MIT
+	depends = mono
+	provides = cobra
+	conflicts = cobra
+	source = cobra::svn+http://cobra-language.com/svn/cobra/trunk
+	source = install.patch
+	sha512sums = SKIP
+	sha512sums = 44a62b5c1a4ec7f506a258d6922f2cc9c8bed6eacdccf17f5aa5d74403c7d6587e96e07b5ffd542d4e6f0a7e811fb2ed52f1c75c7619b8d825518b09c1cd24ca
+
+pkgname = cobra-svn
+

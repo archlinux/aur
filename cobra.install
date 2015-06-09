@@ -1,0 +1,22 @@
+COBRA_DIR=/opt/cobra/Cobra-svn-3091
+COBRA_BDIR=${COBRA_DIR}/bin
+
+post_install() {
+	gacutil -i ${COBRA_BDIR}/Cobra.Core.dll -f
+	gacutil -i ${COBRA_BDIR}/Cobra.Compiler.dll -f
+}
+
+pre_upgrade() {
+	gacutil -u Cobra.Core
+	gacutil -u Cobra.Compiler
+}
+
+post_upgrade() {
+	gacutil -i ${COBRA_BDIR}/Cobra.Core.dll -f
+	gacutil -i ${COBRA_BDIR}/Cobra.Compiler.dll -f
+}
+
+pre_remove() {
+	gacutil -u Cobra.Core
+	gacutil -u Cobra.Compiler
+}

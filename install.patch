@@ -1,0 +1,45 @@
+Index: Source/InstallFromWorkspace.cobra
+===================================================================
+diff --git a/Source/InstallFromWorkspace.cobra b/Source/InstallFromWorkspace.cobra
+--- a/Source/InstallFromWorkspace.cobra	(revision 3047)
++++ b/Source/InstallFromWorkspace.cobra	(working copy)
+@@ -106,7 +106,7 @@
+ 			'name': 'Cobra.Core',
+ 			'flags': '-build-standard-library',
+ 			'files': 'Cobra.Core/AssemblyAttrs.cobra',
+-			'requiresGacVerification': true,
++			'requiresGacVerification': false,
+ 		},
+ 		{
+ 			'name': 'Cobra.Compiler',
+@@ -113,7 +113,7 @@
+ 			'flags': '-c -t:lib -embed-version -ert:yes -namespace:Cobra.Compiler -files:files-to-compile.text',
+ #			'files': 'Cobra.Core/Compiler.Attributes.cobra',  # to-do
+ 			'files': 'cobra.cobra',
+-			'requiresGacVerification': true,
++			'requiresGacVerification': false,
+ 		},
+ 	]
+ 
+@@ -158,9 +158,9 @@
+ 		.verifyNewlyBuiltCobra
+ 		.copyFilesToInstallDirectory
+ 		.verifyNewlyInstalledCobra
+-		.cleanUpWorkspace
+-		.installInPath
+-		.changeDirectoryInstruction
++		# .cleanUpWorkspace
++		# .installInPath
++		# .changeDirectoryInstruction
+ 		print 'Visit http://cobra-language.com/ for discussion, wiki, samples, irc and more.'
+ 		print
+ 		print 'Success!'
+@@ -619,7 +619,7 @@
+ 
+ 	def installLibrary(name as String, flags as String, files as String, requiresGacVerification)
+ 		.buildLibrary(name, flags, files as String)
+-		.installLibraryToGAC(name)
++		# .installLibraryToGAC(name)
+ 		.verifyGacInstallation(name, requiresGacVerification)
+ 
+ 	def buildLibrary(name as String, flags as String, files as String)
