@@ -1,0 +1,18 @@
+pkgbase = nodejs-ungit
+	pkgdesc = Git made easy
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://github.com/FredrikNoren/ungit
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	provides = nodejs-ungit
+	provides = ungit
+	conflicts = ungit
+	options = !emptydirs
+	options = !strip
+
+pkgname = nodejs-ungit
+
