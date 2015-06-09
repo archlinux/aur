@@ -1,0 +1,16 @@
+pkgbase = mp-5
+	pkgdesc = Text editor for programmers (KDE front-end)
+	pkgver = 5.2.8
+	pkgrel = 1
+	url = http://www.triptico.com/software/mp.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = kdelibs
+	source = http://triptico.com/download/mp/mp-5.2.8.tar.gz
+	source = MinimumProfit.desktop
+	md5sums = 2c06f9ebb8bd7b777df504763416de33
+	md5sums = 7eae413ded2d6f69fba8347240b8b875
+
+pkgname = mp-5
+
