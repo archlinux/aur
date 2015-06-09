@@ -1,13 +1,13 @@
-# Maintainer: Moritz Kaspar Rudert <me@mortzu.de>
+# Maintainer: Moritz Kaspar Rudert <moritz.rudert@fintura.de>
 # Contributors:
 #  Kuba Serafinowski <zizzfizzix(at)gmail(dot)com>
 #  Antonio Rojas <arojas@archlinux.org>
 pkgname=oxd4l
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-Xchange drive client based on the Owncloud client'
 arch=(i686 x86_64)
-url='https://github.com/mortzu/OXd4L'
+url='https://github.com/fintura/OXd4L'
 license=(GPL2)
 depends=(qtkeychain-qt4 qtwebkit neon)
 makedepends=(cmake python-sphinx)
@@ -15,7 +15,7 @@ optdepends=('python2-nautilus: integration with Nautilus')
 conflicts=('owncloud-client')
 install=$pkgname.install
 backup=('etc/OXd4L/sync-exclude.lst')
-source=('git+https://github.com/mortzu/OXd4L.git')
+source=('git+https://github.com/fintura/OXd4L.git')
 md5sums=('SKIP')
 
 prepare() {
