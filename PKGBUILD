@@ -26,7 +26,7 @@ md5sums=('9a6f93c2f3bd48ef09a9170e7f0512f4'
          '1fdaacf18fb2965fb6f64a769037056b'
          '130ce3ac8bd1993a32be20c051ffc779'
          '5ecf6ba3ef1eff460ee659ef7b6e78db'
-         '6d744c098bdf2085fe144ffd2794fe6d')
+         '30396e603a6996e8f20a6be32430b6f6')
 options=(!strip)
 
 package() {
