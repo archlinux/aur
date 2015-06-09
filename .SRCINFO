@@ -1,0 +1,15 @@
+pkgbase = ruby-base32
+	pkgdesc = Ruby extension for base32 encoding and decoding
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/stesla/base32
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = base32-0.3.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/base32-0.3.2.gem
+	sha256sums = 532e9b19c5dd1fce281df67fc93a803ebd5d26426a93f6dda6612769bc46fe2c
+
+pkgname = ruby-base32
+
