@@ -7,7 +7,7 @@ _gitbranch="master"
 _pkgname="shim-efi"
 pkgname="${_pkgname}-git"
 
-pkgver=0.8.1.g361716d
+pkgver=0.8.11.g929b5b7
 pkgrel=1
 pkgdesc="Simple bootloader for x86_64 UEFI Secure Boot - GIT Version"
 url="https://github.com/rhinstaller/shim"
