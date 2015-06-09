@@ -1,0 +1,33 @@
+pkgbase = vcmi
+	pkgdesc = Heroes of Might and Magic 3 game engine
+	pkgver = 0.98
+	pkgrel = 1
+	url = http://forum.vcmi.eu/portal.php
+	install = vcmi.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = boost
+	makedepends = cmake
+	depends = boost-libs
+	depends = ffmpeg
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = sdl2_ttf
+	depends = qt5-base
+	depends = libxkbcommon-x11
+	depends = desktop-file-utils
+	depends = gtk-update-icon-cache
+	depends = hicolor-icon-theme
+	depends = minizip
+	optdepends = innoextract: required by vcmibuilder
+	optdepends = unshield: required by vcmibuilder
+	optdepends = unzip: required by vcmibuilder
+	options = !makeflags
+	options = strip
+	options = debug
+	source = vcmi-0.98.tar.gz::https://github.com/vcmi/vcmi/archive/0.98.tar.gz
+	md5sums = 6a69e52a3380358220eba67332b097c6
+
+pkgname = vcmi
+
