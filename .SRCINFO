@@ -1,0 +1,16 @@
+pkgbase = fatx
+	pkgdesc = XBox filesystem support for linux
+	pkgver = 1.9
+	pkgrel = 2
+	url = http://sourceforge.net/projects/fatx/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = fuse
+	depends = boost
+	depends = boost-libs
+	provides = fatx
+	source = http://downloads.sourceforge.net/project/fatx/fatx_1.9.orig.tar.gz
+
+pkgname = fatx
+
