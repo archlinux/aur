@@ -1,0 +1,14 @@
+pkgbase = tiobench
+	pkgdesc = Portable, fully-threaded I/O benchmark program
+	pkgver = 0.3.3
+	pkgrel = 2
+	url = http://sourceforge.net/projects/tiobench/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = perl
+	source = http://downloads.sourceforge.net/project/tiobench/tiobench/0.3.3/tiobench-0.3.3.tar.gz
+	md5sums = bf485bf820e693c79e6bd2a38702a128
+
+pkgname = tiobench
+
