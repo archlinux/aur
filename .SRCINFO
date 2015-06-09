@@ -1,0 +1,16 @@
+pkgbase = qsolocards
+	pkgdesc = A free collection of solitaire card games written using Qt
+	pkgver = 0.99.1
+	pkgrel = 4
+	url = http://sourceforge.net/projects/qsolocards/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qt4
+	source = http://downloads.sourceforge.net/project/qsolocards/qsolocards/0.99.1/QSoloCards-0.99.1-src.tar.gz
+	source = qsolocards.desktop
+	md5sums = 3a6a1d2f488b68986b822b3fd6961140
+	md5sums = 5ac16b0777aff74df0720c4c491f96e6
+
+pkgname = qsolocards
+

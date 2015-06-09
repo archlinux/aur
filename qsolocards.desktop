@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=QSoloCards
+Comment=A free collection of solitaire card games written using Qt
+Exec=qsolocards
+Icon=/usr/share/qsolocards/sol128x128.png
+Terminal=false
+StartupNotify=false
+Categories=Game;CardGame;
