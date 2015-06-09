@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Charles
+GenericName=Web Debugging Proxy 
+Exec=charles %u
+Icon=charles
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Development;

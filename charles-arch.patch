@@ -1,0 +1,19 @@
+--- charles/bin/charles.orig	2011-11-14 19:54:27.000000000 +0100
++++ charles/bin/charles	2011-11-30 11:57:46.635362807 +0100
+@@ -6,15 +6,7 @@
+ 
+ # Find Charles lib directory
+ if [ -z "$CHARLES_LIB"]; then
+-	CHARLES_LIB=`dirname $0`/../lib
+-	if [ ! -f "$CHARLES_LIB/charles.jar" ]; then
+-		CHARLES_LIB="/usr/lib/charles-proxy"
+-	fi
+-fi
+-
+-if [ ! -f "$CHARLES_LIB/charles.jar" ]; then
+-	echo >&2 "Charles lib directory not found. Looking in $CHARLES_LIB."
+-	exit 1
++	CHARLES_LIB="/usr/share/java/charles"
+ fi
+ 
+ # Find Java binary
