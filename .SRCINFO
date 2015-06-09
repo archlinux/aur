@@ -1,0 +1,20 @@
+pkgbase = ratox-git
+	pkgdesc = FIFO based tox client
+	pkgver = 0.2.1.r0.g1a84f07
+	pkgrel = 1
+	url = http://ratox.2f30.org
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = glibc
+	depends = tox-git
+	provides = ratox
+	conflicts = ratox
+	source = ratox::git+http://git.2f30.org/ratox/
+	source = config.h
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = ratox-git
+
