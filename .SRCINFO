@@ -1,15 +1,26 @@
 pkgbase = ttf-impallari-lobstertwo
 	pkgdesc = Other lovely bold condensed script, from Pablo Impallari
 	pkgver = 1.006
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.impallari.com/lobstertwo/
 	install = updatefont.install
 	arch = any
 	groups = impallari-fonts
 	license = custom:OFL
-	makedepends = wget
 	depends = fontconfig
 	depends = xorg-font-utils
+	source = https://googlefontdirectory.googlecode.com/hg/ofl/lobstertwo/LobsterTwo-Bold.ttf
+	source = https://googlefontdirectory.googlecode.com/hg/ofl/lobstertwo/LobsterTwo-BoldItalic.ttf
+	source = https://googlefontdirectory.googlecode.com/hg/ofl/lobstertwo/LobsterTwo-Italic.ttf
+	source = https://googlefontdirectory.googlecode.com/hg/ofl/lobstertwo/LobsterTwo-Regular.ttf
+	source = https://googlefontdirectory.googlecode.com/hg/ofl/lobstertwo/FONTLOG.txt
+	source = https://googlefontdirectory.googlecode.com/hg/ofl/lobstertwo/OFL.txt
+	md5sums = 5bc7d54b8f2cd0f13f3e58d6494d5093
+	md5sums = 92f89b4b61c0c72a3f8bfdbc6eb55a5e
+	md5sums = e02c8a94e3ae798fd8b689f8419f4c7b
+	md5sums = 3ba9370ba9b4e0d63cb765389d3c0e0b
+	md5sums = 72c6cb64d60499ef3b5716cd2925705d
+	md5sums = f93bee03c3e8cacbef251056a31093c9
 
 pkgname = ttf-impallari-lobstertwo
 
