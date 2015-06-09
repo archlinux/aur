@@ -1,0 +1,17 @@
+pkgbase = android-sdk-build-tools-21.1.2
+	pkgdesc = Build-Tools for Google Android SDK (aapt, aidl, dexdump, dx, llvm-rs-cc)
+	pkgver = r21.1.2
+	pkgrel = 2
+	url = http://developer.android.com/sdk/index.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gcc-libs
+	depends = zlib
+	provides = android-sdk-build-tools=r21.1.2
+	options = !strip
+	source = https://dl-ssl.google.com/android/repository/build-tools_r21.1.2-linux.zip
+	sha1sums = 5e35259843bf2926113a38368b08458735479658
+
+pkgname = android-sdk-build-tools-21.1.2
+
