@@ -1,0 +1,23 @@
+pkgbase = switchboard-plug-locale-bzr
+	pkgdesc = Locale plug for Switchboard
+	pkgver = r105
+	pkgrel = 1
+	url = https://launchpad.net/switchboard-plug-locale
+	install = switchboard-plug-locale.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = vala
+	depends = accountsservice
+	depends = gnome-desktop
+	depends = ibus
+	depends = switchboard-bzr
+	provides = switchboard-plug-locale
+	conflicts = switchboard-plug-locale
+	source = bzr+lp:switchboard-plug-locale
+	sha256sums = SKIP
+
+pkgname = switchboard-plug-locale-bzr
+
