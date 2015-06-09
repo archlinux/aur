@@ -1,0 +1,24 @@
+pkgbase = mydumper
+	pkgdesc = A high performance MySQL backup tool.
+	pkgver = 0.6.2
+	pkgrel = 3
+	url = https://launchpad.net/mydumper
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = python2-sphinx
+	depends = glib2
+	depends = pcre
+	depends = libmysqlclient
+	source = http://launchpad.net/mydumper/0.6/0.6.2/+download/mydumper-0.6.2.tar.gz
+	source = http://ftp.gwdg.de/pub/misc/mysql/Downloads/MySQL-5.6/mysql-5.6.24.tar.gz
+	source = mysql-cmake.patch
+	source = mysql-compat.patch
+	sha256sums = fa28563e8967752828954c5d81e26ef50aad9083d50a977bf5733833b23e3330
+	sha256sums = 37e27305b67d76883c5902dce59c89d596beee9dca7dbadd4a2e117f8101dfeb
+	sha256sums = e6b7d938cc5882cad564103f6e367c1babaccb624587c96e9e6c349e58e7ede4
+	sha256sums = 9b35858057d82948579f43d8b95605a88d80580412bf5ed1daf992c092ca4edf
+
+pkgname = mydumper
+

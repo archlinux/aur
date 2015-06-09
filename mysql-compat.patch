@@ -1,0 +1,14 @@
+diff --git a/binlog.c b/binlog.c
+index 0872375..58aca94 100644
+--- a/binlog.c
++++ b/binlog.c
+@@ -21,6 +21,9 @@
+ #include <glib.h>
+ #include <glib/gstdio.h>
+ #include <my_global.h>
++#ifdef _global_h
++#define MY_GLOBAL_INCLUDED
++#endif
+ #include <mysql.h>
+ #include <my_sys.h>
+ #include <mysqld_error.h>
