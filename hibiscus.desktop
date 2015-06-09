@@ -1,0 +1,9 @@
+[Desktop Entry]
+Exec=jameica
+Type=Application
+Terminal=false
+Icon=/opt/jameica/plugins/hibiscus/icons/hibiscus-icon-64x64.png
+Categories=Java;Office;Finance;
+
+Name=Hibiscus
+GenericName=HBCI Banking

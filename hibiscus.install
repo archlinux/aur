@@ -1,0 +1,11 @@
+# arg 1:  the new package version
+post_install() {
+  echo "==> -------------------------------" 
+  echo "==> To use hibiscus start 'jameica'."
+  echo "==> -------------------------------"
+}
+
+
+op=$1
+shift
+$op $*
