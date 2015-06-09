@@ -1,0 +1,19 @@
+pkgbase = rssdrop
+	pkgdesc = A Perl script to deliver rss feeds to Maildirs.
+	pkgver = 22.b9a43ee
+	pkgrel = 1
+	url = https://github.com/petronny/rssdrop
+	install = rssdrop.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = perl-xml-simple
+	depends = perl-date-manip
+	depends = perl-lwp-protocol-https
+	source = git+https://github.com/petronny/rssdrop
+	source = rssdrop.install
+	sha256sums = SKIP
+	sha256sums = 4a733fc69835eac68f5cc381a96158311e0fcb1b1fc8aa8ec35bd2b7aa584a09
+
+pkgname = rssdrop
+
