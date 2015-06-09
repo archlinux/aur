@@ -1,0 +1,14 @@
+pkgbase = xfsudo
+	pkgdesc = To run graphical applications as superuser using sudo.
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = http://github.com/aadityabagga/xfsudo
+	arch = any
+	license = GPL
+	depends = sudo
+	depends = zenity
+	source = http://github.com/aadityabagga/xfsudo/archive/0.7.1.tar.gz
+	sha1sums = 0f4ed6df1826cda279acd62a6146244b2795224e
+
+pkgname = xfsudo
+
