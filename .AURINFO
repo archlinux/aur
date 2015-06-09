@@ -1,0 +1,14 @@
+pkgbase = udis86
+	pkgdesc = A minimalistic disassembler library
+	pkgver = 1.7.2
+	pkgrel = 1
+	url = http://udis86.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = python2
+	source = https://downloads.sourceforge.net/udis86/udis86-1.7.2.tar.gz
+	options = staticlibs
+
+pkgname = udis86
+
