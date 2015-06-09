@@ -1,0 +1,14 @@
+pkgbase = frame3dd
+	pkgdesc = Free open-source software for static and dynamic structural analysis of 2D and 3D frames and trusses.
+	pkgver = 0.20140514plus
+	pkgrel = 1
+	url = http://frame3dd.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	optdepends = gnuplot: plot results
+	source = http://sourceforge.net/projects/frame3dd/files/frame3dd/0.20140514+/Frame3DD_20140514+_src.zip
+	md5sums = 7991be807e04673381d5fa76424d74ab
+
+pkgname = frame3dd
+
