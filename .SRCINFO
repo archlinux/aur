@@ -1,0 +1,14 @@
+pkgbase = interceptty
+	pkgdesc = A serial port sniffer, network serial server/client and serial port emulator.
+	pkgver = 0.6
+	pkgrel = 2
+	url = http://www.suspectclass.com/sgifford/interceptty/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = perl
+	source = http://www.suspectclass.com/sgifford/interceptty/files/interceptty-0.6.tar.gz
+	md5sums = 915244f09601e3c71209e444f2d3194f
+
+pkgname = interceptty
+
