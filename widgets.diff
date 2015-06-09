@@ -1,0 +1,4 @@
+23c23
+< #include <glib/gmessages.h>
+---
+> #include <glib.h>

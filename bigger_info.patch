@@ -1,0 +1,13 @@
+## bigger_info.patch [diff]
+diff -Naur gelemental-1.2.0/src/buttons.cc gelemental-1.2.0-mod/src/buttons.cc
+--- gelemental-1.2.0/src/buttons.cc	2007-09-25 06:49:33.000000000 +0200
++++ gelemental-1.2.0-mod/src/buttons.cc	2011-09-04 21:05:13.000000000 +0200
+@@ -237,7 +237,7 @@
+ {
+ 	property_can_focus ().set_value (false);
+ 	set_focus_on_click (false);
+-	set_size_request (50, 50);
++	set_size_request (65, 65);
+ 
+ 	const ColorValue& color = el.get_property (P_COLOR);
+ 	set_color (color);

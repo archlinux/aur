@@ -1,0 +1,31 @@
+pkgbase = gelemental
+	pkgdesc = gElemental is a periodic table viewer that provides detailed information on the chemical elements
+	pkgver = 1.2.0
+	pkgrel = 7
+	url = http://www.kdau.com/projects/gelemental/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = bzip2
+	makedepends = gettext
+	makedepends = libtool
+	makedepends = pkgconfig
+	makedepends = intltool
+	depends = glibmm>=2.6
+	depends = gtkmm>=2.6
+	depends = perl-xml-parser
+	source = https://api.opensuse.org/public/source/Education/gelemental/gelemental-1.2.0.tar.bz2
+	source = https://api.opensuse.org/public/source/Education/gelemental/gelemental-1.2.0-gcc43.patch
+	source = bigger_info.patch
+	source = extras.diff
+	source = main.diff
+	source = widgets.diff
+	md5sums = efe3dc7b408c0c8c0b72fdd0733b2fb6
+	md5sums = c91f3e04a4eb50301f09703d17c3c156
+	md5sums = 79d72afb573e0592270973860f79d210
+	md5sums = 9dd342fccb5573f920fdeca444c597d5
+	md5sums = b2dc7e41ddc1087edaade3eaf4bc0319
+	md5sums = 81bbc3bca3d918c394092d25cb32b9d3
+
+pkgname = gelemental
+
