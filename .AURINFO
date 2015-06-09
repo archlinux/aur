@@ -1,0 +1,16 @@
+pkgbase = txt2html
+	pkgdesc = Convert plain text files to HTML
+	pkgver = 2.5201
+	pkgrel = 2
+	url = http://txt2html.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	depends = perl-getopt-argvfile
+	source = http://www.cpan.org/authors/id/R/RU/RUBYKAT/txt2html-2.5201.tar.gz
+	options = !emptydirs
+
+pkgname = txt2html
+
