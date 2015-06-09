@@ -1,0 +1,19 @@
+pkgbase = nautilus-pdf-tools
+	pkgdesc = An extension for Nautilus to manipulate pdf files.
+	pkgver = 0.7.1
+	pkgrel = 2
+	url = http://www.atareao.es/tag/nautilus-document-converter/
+	install = nautilus-pdf-tools.install
+	arch = any
+	license = GPL3
+	makedepends = python2-distutils-extra
+	depends = python2-beautifulsoup4
+	depends = python2-exiv2
+	depends = python2-nautilus
+	depends = python2-polib
+	provides = nautilus-pdf-tools
+	source = https://launchpad.net/~atareao/+archive/ubuntu/nautilus-extensions/+files/nautilus-pdf-tools_0.7.1-0extras14.04.0.tar.gz
+	sha256sums = 8ae65655a24dbbaf1169d649323dc3c27cc2162245248b010952e48194a4da15
+
+pkgname = nautilus-pdf-tools
+
