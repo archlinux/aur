@@ -1,0 +1,22 @@
+pkgbase = indefero-git
+	pkgdesc = Bug tracking, code review and free software forge
+	pkgver = 20091115
+	pkgrel = 3
+	url = http://www.indefero.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = pluf
+	options = !purge
+	source = _htaccess
+	source = git.crontab
+	source = path.php
+	source = papp.php
+	md5sums = a9f992911798a18b94ac0d8eb4d990f8
+	md5sums = 8385e1a7ede6321c29643e54483f82aa
+	md5sums = 7a9212b9509f4ad7678ade42c3280283
+	md5sums = 4daff5fd70c18e761a4a3a7040405f37
+
+pkgname = indefero-git
+

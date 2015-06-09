@@ -1,0 +1,2 @@
+## every minute
+* * * * * php /srv/http/indefero/scripts/gitcron.php >>/tmp/cron.log 2>&1
