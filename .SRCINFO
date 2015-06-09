@@ -1,0 +1,20 @@
+pkgbase = gog-broken-sword-2-remastered
+	pkgdesc = Plunge into a shadowy conspiracy world where the schemes of a mad drug kingpin and the prophesied return of an ancient Mayan god clash in what could be the end for all mankind.
+	pkgver = 1.0.0.1
+	pkgrel = 1
+	url = http://www.gog.com/game/broken_sword_2__the_smoking_mirror
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = custom
+	depends = libgl
+	depends = libx11
+	depends = libxext
+	depends = desktop-file-utils
+	source = local://gog_broken_sword_2_remastered_1.0.0.1.tar.gz
+	source = gog-broken-sword-2-remastered
+	sha256sums = f620fc2fcad88243c6febc5a9a82150b6d2a7639d6e490f6bd9af94f3aca4abb
+	sha256sums = 7fa73db2702bb6375a8342efe80446b76ccfd75c0b21c4c60728f118ecf97466
+
+pkgname = gog-broken-sword-2-remastered
+

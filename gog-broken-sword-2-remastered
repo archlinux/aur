@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+gogdir="/opt/gog/gog-broken-sword-2-remastered"
+
+"$gogdir"/start.sh
