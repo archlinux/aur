@@ -1,0 +1,20 @@
+pkgbase = wingpanel-indicator-sound-bzr
+	pkgdesc = Sound indicator for Wingpanel
+	pkgver = r8
+	pkgrel = 1
+	url = https://launchpad.net/wingpanel-indicator-sound
+	arch = i686
+	arch = x86_64
+	groups = pantheon-unstable
+	license = GPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = vala
+	depends = wingpanel-rewrite-x11-bzr
+	provides = wingpanel-indicator-sound
+	conflicts = wingpanel-indicator-sound
+	source = bzr+lp:wingpanel-indicator-sound
+	sha256sums = SKIP
+
+pkgname = wingpanel-indicator-sound-bzr
+
