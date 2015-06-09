@@ -1,0 +1,19 @@
+pkgbase = onscripter
+	pkgdesc = A game engine compatible to NScripter, to create and perform visual novel games
+	pkgver = 20150208
+	pkgrel = 1
+	url = http://onscripter.sourceforge.jp/onscripter.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = bzip2
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = sdl_ttf
+	source = http://onscripter.sourceforge.jp/onscripter-20150208.tar.gz
+	source = Makefile
+	md5sums = 5b4278c1826c2f9b91052e3238b31c8b
+	md5sums = 325952c28bf369c5c21c330fabaa86c7
+
+pkgname = onscripter
+
