@@ -1,0 +1,13 @@
+pkgbase = multiple
+	pkgdesc = Program to detect (and optionally delete) files with same contents.
+	pkgver = 0.5.2
+	pkgrel = 2
+	url = http://www.first.in-berlin.de/software/tools/multiple/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	source = http://www.first.in-berlin.de/software/tools/multiple/multiple-0.5.2.tgz
+	md5sums = 7bc8de45be1f91278e67103dfe3f2899
+
+pkgname = multiple
+
