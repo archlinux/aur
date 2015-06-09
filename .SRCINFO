@@ -1,0 +1,15 @@
+pkgbase = metronome-mod_auth_pam
+	pkgdesc = PAM authentication for Metronome
+	pkgver = r4.1f84d9a
+	pkgrel = 1
+	url = https://code.google.com/p/prosody-modules/wiki/mod_auth_pam
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	depends = lua51-pam
+	depends = metronome-hg
+	source = metronome-mod_auth_pam::git+git://github.com/piernov/prosody-mod_auth_pam.git
+	sha1sums = SKIP
+
+pkgname = metronome-mod_auth_pam
+
