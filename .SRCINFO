@@ -1,0 +1,37 @@
+pkgbase = noise-bzr
+	pkgdesc = The Pantheon Music Player
+	pkgver = r1798
+	pkgrel = 1
+	url = https://launchpad.net/noise
+	install = noise.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = vala
+	depends = desktop-file-utils
+	depends = granite-bzr
+	depends = gst-plugins-base-libs
+	depends = libgpod
+	depends = libindicate-gtk3
+	depends = libnotify
+	depends = libpeas
+	depends = sqlheavy
+	depends = taglib
+	optdepends = gst-plugins-base: "Base" plugin libraries
+	optdepends = gst-plugins-good: "Good" plugin libraries
+	optdepends = gst-plugins-bad: "Bad" plugin libraries
+	optdepends = gst-plugins-ugly: "Ugly" plugin libraries
+	optdepends = gst-libav: Libav plugin
+	provides = noise
+	conflicts = noise
+	source = bzr+lp:noise
+	source = noise-mesa-conflict.patch
+	source = noise-plugin-path.patch
+	sha256sums = SKIP
+	sha256sums = 4097f73439bad8bac46eda80af4a557a31fc14ac5ae10edfc0a2c601071df62a
+	sha256sums = e83aa10261109d7459945a6731ca18910707426ca7576557bf138614491d0073
+
+pkgname = noise-bzr
+
