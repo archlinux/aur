@@ -11,8 +11,10 @@ pkgbase = bcache-tools
 	makedepends = git
 	depends = util-linux
 	source = https://github.com/g2p/bcache-tools/archive/v1.0.8.zip
+	source = crc64.patch
 	source = initcpio-arch.patch
 	md5sums = b5371b89410f6be90bbf2cfc1c45d96d
+	md5sums = 265f3d6ad0bd1596eac8a2c3512f2d87
 	md5sums = 208d7024340b8db3cf21325df40b6267
 
 pkgname = bcache-tools

@@ -13,13 +13,16 @@ depends=('util-linux')
 makedepends=('git')
 install="${pkgname}.install"
 source=("https://github.com/g2p/${pkgname}/archive/v${pkgver}.zip"
-'initcpio-arch.patch')
+        'crc64.patch'
+        'initcpio-arch.patch')
 md5sums=('b5371b89410f6be90bbf2cfc1c45d96d'
+         '265f3d6ad0bd1596eac8a2c3512f2d87'
          '208d7024340b8db3cf21325df40b6267')
 
 prepare() {
 	 cd "${srcdir}/${pkgname}-${pkgver}"
 	 patch -Np1 -i "${srcdir}/initcpio-arch.patch"
+	 patch -Np1 -i "${srcdir}/crc64.patch"
  }
 
  build() {
