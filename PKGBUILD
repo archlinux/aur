@@ -7,14 +7,15 @@ pkgname=sparklines-git
 pkgver=v1.0.1.6.g9832447
 pkgrel=1
 pkgdesc="Spark: Sparklines for your shell"
-arch=('any')
+arch=("any")
 url="http://zachholman.com/spark/"
-license=('MIT')
-makedepends=('git')
-provides=('sparklines')
-conflicts=('sparklines')
+license=("MIT")
+makedepends=("git")
+provides=("sparklines")
+conflicts=("sparklines")
 source=("git://github.com/holman/$_pkgname.git")
-sha256sums=('SKIP')
+sha256sums=("SKIP")
+
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
