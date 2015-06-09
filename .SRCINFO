@@ -1,0 +1,23 @@
+pkgbase = gog-baldurs-gate-enhanced-edition
+	pkgdesc = Chaos threatens to overwhelm the Sword Coast. GOG Version. Linux native.
+	pkgver = 1.0.0.1
+	pkgrel = 1
+	url = http://www.gog.com/game/baldurs_gate_enhanced_edition
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = local://gog_baldurs_gate_enhanced_edition_1.0.0.1.tar.gz
+	source = gog-baldurs-gate-enhanced-edition
+	sha256sums = 8f28cded9f33543827daaa1703f05ffbcc5fe44f4f2f7e161c656fa5672ee411
+	sha256sums = e0fd7ba999325b6c085257ffce97f2f6af4df4d99d0a587f437f8aa37a9b1889
+	depends_i686 = glibc
+	depends_i686 = alsa-lib
+	depends_i686 = libgl
+	optdepends_i686 = libpulse: pulseaudio support
+	depends_x86_64 = lib32-glibc
+	depends_x86_64 = lib32-alsa-lib
+	depends_x86_64 = lib32-libgl
+	optdepends_x86_64 = lib32-libpulse: pulseaudio support
+
+pkgname = gog-baldurs-gate-enhanced-edition
+
