@@ -1,0 +1,19 @@
+pkgbase = pyspv-git
+	pkgdesc = Programmable Bitcoin SPV node in Python
+	pkgver = 20140325
+	pkgrel = 1
+	url = https://github.com/sarchar/pyspv
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = openssl
+	depends = python
+	depends = python-bitarray
+	provides = pyspv
+	conflicts = pyspv
+	source = git+https://github.com/sarchar/pyspv
+	sha256sums = SKIP
+
+pkgname = pyspv-git
+
