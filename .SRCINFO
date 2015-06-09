@@ -19,7 +19,9 @@ pkgbase = audio-recorder
 	conflicts = audio-recorder-bzr
 	conflicts = audio-recorder-from-deb
 	source = https://launchpad.net/~osmoma/+archive/ubuntu/audio-recorder/+files/audio-recorder_1.6-3%7Evivid.tar.gz
+	source = fix_gtk3.16_build.patch
 	md5sums = bf01da5442b03ac39d950a238b556f93
+	md5sums = 84edc83c85c82903070401274b22803c
 
 pkgname = audio-recorder
 

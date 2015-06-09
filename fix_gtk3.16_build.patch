@@ -1,0 +1,1020 @@
+diff -rupN audio-recorder/po/POTFILES.in audio-recorder_fix-build/po/POTFILES.in
+--- audio-recorder/po/POTFILES.in	2014-09-28 12:15:05.000000000 -0500
++++ audio-recorder_fix-build/po/POTFILES.in	2015-05-11 12:52:41.033394276 -0500
+@@ -24,8 +24,8 @@ src/gst-pipeline.c
+ src/gst-pipeline.h
+ src/gst-recorder.c
+ src/gst-recorder.h
+-src/gtklevelbar.c
+-src/gtklevelbar.h
++src/levelbar.c
++src/levelbar.h
+ src/help.c
+ src/help.h
+ src/log.c
+diff -rupN audio-recorder/src/gtklevelbar.c audio-recorder_fix-build/src/gtklevelbar.c
+--- audio-recorder/src/gtklevelbar.c	2015-02-06 09:04:35.000000000 -0500
++++ audio-recorder_fix-build/src/gtklevelbar.c	1969-12-31 19:00:00.000000000 -0500
+@@ -1,357 +0,0 @@
+-/*
+- * Copyright (c) Linux community.
+- *
+- * This library is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU Library General Public
+- * License as published by the Free Software Foundation; either
+- * version 3 of the License (GPL3), or any later version.
+- *
+- * This library is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+- * See the GNU Library General Public License 3 for more details.
+- *
+- * You should have received a copy of the GNU Library General Public
+- * License 3 along with this program; if not, see /usr/share/common-licenses/GPL file
+- * or write to Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+- * Boston, MA 02111-1307, USA.
+-*/
+-#include "gtklevelbar.h"
+-#include <math.h> // round()
+-
+-// A simple level bar widget.
+-// By Osmo Antero.
+-//
+-// Sample call:
+-// GtkWidget *lb = gtk_level_bar_new();
+-// gtk_widget_show(lb);
+-//
+-// Set value [0.0, 1.0].
+-// gtk_level_bar_set_fraction(GTK_LEVEL_BAR(lb), 0.8);
+-//
+-// Show %-value [0 - 100%] or plain value [0 - 1.0] on the level bar. See BAR_VALUE enum.
+-// gtk_level_bar_set_value_type(GTK_LEVEL_BAR(lb), VALUE_PRECENT);
+-//
+-
+-struct _GtkLevelBarPrivate {
+-    gdouble fraction;
+-    guint bar_height;
+-    enum BAR_VALUE bar_value;
+-    enum BAR_SHAPE bar_shape;
+-};
+-
+-static void gtk_level_bar_get_preferred_width(GtkWidget *widget, gint *minimum, gint *natural);
+-static void gtk_level_bar_get_preferred_height (GtkWidget *widget,gint *minimum, gint *natural);
+-
+-static void gtk_level_bar_real_update(GtkLevelBar *progress);
+-static gboolean gtk_level_bar_draw(GtkWidget *widget, cairo_t *cr);
+-
+-static void gtk_level_bar_finalize(GObject *object);
+-
+-G_DEFINE_TYPE(GtkLevelBar, gtk_level_bar, GTK_TYPE_WIDGET);
+-
+-static void gtk_level_bar_class_init (GtkLevelBarClass *class) {
+-    GObjectClass *gobject_class;
+-    GtkWidgetClass *widget_class;
+-
+-    gobject_class = G_OBJECT_CLASS (class);
+-    widget_class = (GtkWidgetClass *)class;
+-
+-    gobject_class->set_property = NULL;
+-    gobject_class->get_property = NULL;
+-    gobject_class->finalize = gtk_level_bar_finalize;
+-
+-    widget_class->draw = gtk_level_bar_draw;
+-    widget_class->get_preferred_width = gtk_level_bar_get_preferred_width;
+-    widget_class->get_preferred_height = gtk_level_bar_get_preferred_height;
+-
+-    g_type_class_add_private (class, sizeof (GtkLevelBarPrivate));
+-}
+-
+-static void gtk_level_bar_init(GtkLevelBar *pbar) {
+-    GtkLevelBarPrivate *priv;
+-
+-    pbar->priv = G_TYPE_INSTANCE_GET_PRIVATE(pbar, GTK_TYPE_LEVEL_BAR, GtkLevelBarPrivate);
+-    priv = pbar->priv;
+-
+-    priv->fraction = 0.0;
+-    priv->bar_height = 8;
+-    priv->bar_value = VALUE_NONE;
+-    priv->bar_shape = SHAPE_CIRCLE; // pulsing line with circle at end.
+-
+-    gtk_widget_set_has_window(GTK_WIDGET (pbar), FALSE);
+-}
+-
+-GtkWidget *gtk_level_bar_new(void) {
+-    GtkWidget *pbar;
+-    pbar = g_object_new(GTK_TYPE_LEVEL_BAR, NULL);
+-    return pbar;
+-}
+-
+-static void gtk_level_bar_real_update (GtkLevelBar *pbar) {
+-    GtkWidget *widget;
+-
+-    g_return_if_fail (GTK_IS_LEVEL_BAR (pbar));
+-
+-    GtkLevelBarPrivate __attribute__ ((unused)) *priv = pbar->priv;
+-
+-    widget = GTK_WIDGET(pbar);
+-
+-    gtk_widget_queue_draw(widget);
+-}
+-
+-static void gtk_level_bar_finalize (GObject *object) {
+-    G_OBJECT_CLASS(gtk_level_bar_parent_class)->finalize (object);
+-}
+-
+-static void gtk_level_bar_get_preferred_width (GtkWidget *widget,gint *minimum, gint *natural) {
+-    *minimum = 50;
+-    *natural = 160;
+-}
+-
+-static void gtk_level_bar_get_preferred_height (GtkWidget *widget, gint      *minimum, gint      *natural) {
+-    *minimum = 6;
+-    *natural = 8;
+-}
+-
+-static gboolean gtk_level_bar_draw(GtkWidget *widget, cairo_t *cr) {
+-    // Draw level bar and optional text
+-    GtkLevelBar *pbar = GTK_LEVEL_BAR (widget);
+-    GtkLevelBarPrivate *priv = pbar->priv;
+-    GtkStyleContext *context;
+-    int width, height;
+-
+-    context = gtk_widget_get_style_context(widget);
+-
+-    width = gtk_widget_get_allocated_width(widget);
+-    height = gtk_widget_get_allocated_height(widget);
+-
+-    // Bar thickness
+-    gdouble bar_height = MIN(height , priv->bar_height);
+-
+-    // Vertical pos
+-    gdouble y = (height - bar_height)/2;
+-
+-    // Pulse width
+-    gdouble w = priv->fraction/(1.00/width);
+-
+-    // Debug:
+-    // LOG_DEBUG("width=%d height=%d bar_height=%2.1f y=%2.1f w=%2.1f  fraction=%2.1f\n", width, height, bar_height, y, w, priv->fraction);
+-
+-    gtk_style_context_save(context);
+-    gtk_render_background(context, cr, 0, 0, width, height);
+-    gtk_render_frame(context, cr, 0, 0, width, height);
+-
+-    // Render level bar with current theme and color.
+-
+-    // Progressbar style
+-    gtk_style_context_add_class(context, GTK_STYLE_CLASS_PROGRESSBAR);
+-
+-    if (priv->fraction > 0.001) {
+-
+-        switch (priv->bar_shape) {
+-
+-        case SHAPE_LINE:
+-            // Render a single line
+-            if (priv->bar_value == VALUE_NONE) {
+-                // No value (text) shown. Draw a line on the middle.
+-                gtk_render_line(context, cr, 0, y + (bar_height / 2), w, y + (bar_height / 2));
+-
+-            } else {
+-                // Draw a line under text.
+-                gtk_render_line(context, cr, 0, y + (bar_height ), w, y + (bar_height ));
+-            }
+-
+-            break;
+-
+-        case SHAPE_LINE2:
+-            // Render two horizontal lines + close the end.
+-            gtk_render_line(context, cr, 0, y-1 , w, y-1);
+-            gtk_render_line(context, cr, 0, y + (bar_height ), w, y + (bar_height ));
+-            gtk_render_line(context, cr, w, y - 1, w, y + (bar_height ));
+-            break;
+-
+-        case SHAPE_CIRCLE:
+-            // Draw a line on the middle + circle at the end.
+-            gtk_render_line(context, cr, 0, y + (bar_height / 2), w, y + (bar_height / 2));
+-            gtk_render_option(context, cr, w, y, bar_height+1, bar_height+1);
+-            break;
+-
+-        default:
+-            // case SHAPE_LEVELBAR:
+-
+-            // EDIT: gtk_render_activity() does not work in GTK 3.14+
+-            // gtk_style_context_set_state(context, GTK_STATE_FLAG_ACTIVE);
+-            // gtk_render_activity(context, cr, 0, y, w, bar_height);
+-
+-            // Render a filled frame (this is a typical levelbar).
+-            gtk_render_frame(context, cr, 0, y, w, bar_height);
+-            break;
+-
+-        }
+-    }
+-
+-    gtk_style_context_restore(context);
+-
+-    cairo_select_font_face(cr, "Sans", CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_NORMAL);
+-    cairo_set_font_size(cr, priv->bar_height);
+-
+-    GdkRGBA color;
+-    gtk_style_context_get_border_color(context, GTK_STATE_NORMAL, &color);
+-    gdk_cairo_set_source_rgba(cr, &color);
+-    color.alpha = 0.9;
+-
+-    // Calculate total width of scale
+-    cairo_text_extents_t extents;
+-    cairo_text_extents(cr, "0.0", &extents);
+-    gint total_w = 9 * (extents.x_advance + extents.width);
+-
+-    // Debug:
+-    // g_print("Bar width=%d  total_w=%d  bearing=%3.1f advance=%3.1f char.width=%3.1f\n", width, total_w,
+-    //          extents.x_bearing, extents.x_advance, extents.width);
+-
+-    // Draw values
+-    gboolean draw_all = (total_w - extents.width) < width;
+-
+-    // Show normalized value [0 - 1.0]?
+-    if (priv->bar_value == VALUE_0_1) {
+-        // Value: 0.1  0.2  0.3  0.4...0.9
+-
+-        gint i = 0;
+-        for (i=0; i < 10; i++) {
+-            gchar *s = NULL;
+-
+-            // Draw all or draw only each second value?
+-            if (draw_all || (i % 2 == 0))
+-                s = g_strdup_printf("%2.1f", (gdouble)i/10.0);
+-
+-            if (!s) continue;
+-
+-            cairo_text_extents_t extents;
+-            cairo_text_extents(cr, s, &extents);
+-
+-            gdouble xx = (width/10) * i;
+-            gdouble yy = (height/2)-(extents.height/2 + extents.y_bearing) + 0.2;
+-
+-            cairo_move_to(cr, xx, yy);
+-            cairo_show_text(cr, s);
+-
+-            g_free(s);
+-        }
+-
+-        // Show percentage value?
+-    } else if (priv->bar_value == VALUE_PERCENT) {
+-        // Value: 10% . 20% . 30% . 40% . 50% ... 90%
+-        gint i = 0;
+-        for (i=0; i < 10; i++) {
+-            gchar *s = NULL;
+-            if (i % 2 == 0)
+-                s = g_strdup_printf("%2.0f%%", (gdouble)i*10.0);
+-            else
+-                s = g_strdup_printf("%3s", ".");
+-
+-            cairo_text_extents_t extents;
+-            cairo_text_extents(cr, s, &extents);
+-
+-            gdouble xx = (width/10) * i;
+-            gdouble yy = (height/2)-(extents.height/2 + extents.y_bearing);
+-
+-            cairo_move_to(cr, xx, yy);
+-            cairo_show_text(cr, s);
+-
+-            g_free(s);
+-        }
+-    }
+-
+-#if 0
+-    // Commented out by moma 30.sep.2012.
+-
+-    // Set text
+-    if (priv->text) {
+-        cairo_select_font_face(cr, "Sans", CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_NORMAL);
+-
+-        cairo_set_font_size(cr, 0.5*height);
+-        cairo_text_extents_t extents;
+-        cairo_text_extents(cr, priv->text, &extents);
+-
+-        // Ref: http://cairographics.org/manual/cairo-cairo-scaled-font-t.html#cairo-text-extents-t
+-        gdouble xx = width-(extents.width + extents.x_bearing)-2;
+-        gdouble yy = height/2-(extents.height/2 + extents.y_bearing);
+-
+-        GdkRGBA color;
+-        gtk_style_context_get_border_color(context, GTK_STATE_NORMAL, &color);
+-        gdk_cairo_set_source_rgba(cr, &color);
+-        color.alpha = 0.9;
+-
+-        cairo_move_to(cr, xx, yy);
+-        cairo_show_text(cr, priv->text);
+-    }
+-#endif
+-
+-    return FALSE;
+-}
+-
+-void gtk_level_bar_set_fraction(GtkLevelBar *pbar, gdouble fraction) {
+-    // Set fraction [0.0, 1.0]
+-    GtkLevelBarPrivate* priv;
+-    g_return_if_fail (GTK_IS_LEVEL_BAR (pbar));
+-    priv = pbar->priv;
+-
+-    priv->fraction = CLAMP(fraction, 0.0, 1.0);
+-    gtk_level_bar_real_update (pbar);
+-}
+-
+-gdouble gtk_level_bar_get_fraction(GtkLevelBar *pbar) {
+-    // Get fraction
+-    g_return_val_if_fail(GTK_IS_LEVEL_BAR (pbar), 0);
+-    return pbar->priv->fraction;
+-}
+-
+-void gtk_level_bar_set_bar_height(GtkLevelBar *pbar, guint height) {
+-    // Set bar height (thickness). Normally 8 pixels.
+-    g_return_if_fail(GTK_IS_LEVEL_BAR (pbar));
+-    GtkLevelBarPrivate* priv = pbar->priv;
+-    priv->bar_height = height;
+-    // Redraw
+-    gtk_level_bar_real_update(pbar);
+-}
+-
+-guint gtk_level_bar_get_bar_height(GtkLevelBar *pbar) {
+-    // Get bar thickness
+-    g_return_val_if_fail(GTK_IS_LEVEL_BAR(pbar), 0);
+-    return pbar->priv->bar_height;
+-}
+-
+-void gtk_level_bar_set_value_type(GtkLevelBar *pbar, enum BAR_VALUE bar_value) {
+-    // Set BAR_VALUE
+-    g_return_if_fail(GTK_IS_LEVEL_BAR(pbar));
+-    GtkLevelBarPrivate* priv = pbar->priv;
+-    priv->bar_value = bar_value;
+-    // Redraw
+-    gtk_level_bar_real_update(pbar);
+-}
+-
+-enum BAR_VALUE gtk_level_bar_get_scale(GtkLevelBar *pbar) {
+-    // Get BAR_VALUE
+-    g_return_val_if_fail(GTK_IS_LEVEL_BAR(pbar), VALUE_NONE);
+-    GtkLevelBarPrivate* priv = pbar->priv;
+-    return priv->bar_value;
+-}
+-
+-void gtk_level_bar_set_shape(GtkLevelBar *pbar, enum BAR_SHAPE bar_shape) {
+-    // Set BAR_SHAPE
+-    g_return_if_fail(GTK_IS_LEVEL_BAR(pbar));
+-    GtkLevelBarPrivate* priv = pbar->priv;
+-    priv->bar_shape = bar_shape;
+-    // Redraw
+-    gtk_level_bar_real_update(pbar);
+-}
+-
+-enum BAR_SHAPE gtk_level_bar_get_shape(GtkLevelBar *pbar) {
+-    // Get BAR_SHAPE
+-    g_return_val_if_fail(GTK_IS_LEVEL_BAR(pbar), SHAPE_LEVELBAR);
+-    GtkLevelBarPrivate* priv = pbar->priv;
+-    return priv->bar_shape;
+-}
+-
+-
+diff -rupN audio-recorder/src/gtklevelbar.h audio-recorder_fix-build/src/gtklevelbar.h
+--- audio-recorder/src/gtklevelbar.h	2015-02-06 09:04:35.000000000 -0500
++++ audio-recorder_fix-build/src/gtklevelbar.h	1969-12-31 19:00:00.000000000 -0500
+@@ -1,60 +0,0 @@
+-#ifndef __GTK_LEVEL_BAR_H__
+-#define __GTK_LEVEL_BAR_H__
+-
+-// A simple level bar widget.
+-
+-#include <gtk/gtk.h>
+-
+-typedef enum BAR_VALUE {VALUE_NONE, VALUE_0_1/*0 - 1.0*/, VALUE_PERCENT/*0 - 100%*/} BAR_VALUE;
+-typedef enum BAR_SHAPE {SHAPE_LEVELBAR, SHAPE_LINE, SHAPE_LINE2, SHAPE_CIRCLE} BAR_SHAPE;
+-
+-G_BEGIN_DECLS
+-
+-#define GTK_TYPE_LEVEL_BAR            (gtk_level_bar_get_type ())
+-#define GTK_LEVEL_BAR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_LEVEL_BAR, GtkLevelBar))
+-#define GTK_LEVEL_BAR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_LEVEL_BAR, GtkLevelBarClass))
+-#define GTK_IS_LEVEL_BAR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_LEVEL_BAR))
+-#define GTK_IS_LEVEL_BAR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_LEVEL_BAR))
+-#define GTK_LEVEL_BAR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_LEVEL_BAR, GtkLevelBarClass))
+-
+-typedef struct _GtkLevelBar              GtkLevelBar;
+-typedef struct _GtkLevelBarPrivate       GtkLevelBarPrivate;
+-typedef struct _GtkLevelBarClass         GtkLevelBarClass;
+-
+-struct _GtkLevelBar {
+-    GtkWidget parent;
+-
+-    /*< private >*/
+-    GtkLevelBarPrivate *priv;
+-};
+-
+-struct _GtkLevelBarClass {
+-    GtkWidgetClass parent_class;
+-
+-    /* Padding for future expansion */
+-    void (*_gtk_reserved1) (void);
+-    void (*_gtk_reserved2) (void);
+-    void (*_gtk_reserved3) (void);
+-    void (*_gtk_reserved4) (void);
+-};
+-
+-GType gtk_level_bar_get_type(void) G_GNUC_CONST;
+-GtkWidget* gtk_level_bar_new(void);
+-
+-void gtk_level_bar_set_bar_height(GtkLevelBar *pbar, guint height);
+-void gtk_level_bar_set_fraction(GtkLevelBar *pbar, gdouble fraction);
+-
+-guint gtk_level_bar_get_bar_height(GtkLevelBar *pbar);
+-gdouble gtk_level_bar_get_fraction(GtkLevelBar *pbar);
+-
+-void gtk_level_bar_set_value_type(GtkLevelBar *pbar, enum BAR_VALUE bar_value);
+-enum BAR_VALUE gtk_level_bar_get_value_type(GtkLevelBar *pbar);
+-
+-void gtk_level_bar_set_shape(GtkLevelBar *pbar, enum BAR_SHAPE bar_shape);
+-enum BAR_SHAPE gtk_level_bar_get_shape(GtkLevelBar *pbar);
+-
+-G_END_DECLS
+-
+-#endif
+-
+-
+diff -rupN audio-recorder/src/levelbar.c audio-recorder_fix-build/src/levelbar.c
+--- audio-recorder/src/levelbar.c	1969-12-31 19:00:00.000000000 -0500
++++ audio-recorder_fix-build/src/levelbar.c	2015-02-06 09:04:35.000000000 -0500
+@@ -0,0 +1,357 @@
++/*
++ * Copyright (c) Linux community.
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Library General Public
++ * License as published by the Free Software Foundation; either
++ * version 3 of the License (GPL3), or any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
++ * See the GNU Library General Public License 3 for more details.
++ *
++ * You should have received a copy of the GNU Library General Public
++ * License 3 along with this program; if not, see /usr/share/common-licenses/GPL file
++ * or write to Free Software Foundation, Inc., 59 Temple Place - Suite 330,
++ * Boston, MA 02111-1307, USA.
++*/
++#include "levelbar.h"
++#include <math.h> // round()
++
++// A simple level bar widget.
++// By Osmo Antero.
++//
++// Sample call:
++// GtkWidget *lb = level_bar_new();
++// gtk_widget_show(lb);
++//
++// Set value [0.0, 1.0].
++// level_bar_set_fraction(LEVEL_BAR(lb), 0.8);
++//
++// Show %-value [0 - 100%] or plain value [0 - 1.0] on the level bar. See BAR_VALUE enum.
++// level_bar_set_value_type(LEVEL_BAR(lb), VALUE_PRECENT);
++//
++
++struct _LevelBarPrivate {
++    gdouble fraction;
++    guint bar_height;
++    enum BAR_VALUE bar_value;
++    enum BAR_SHAPE bar_shape;
++};
++
++static void level_bar_get_preferred_width(GtkWidget *widget, gint *minimum, gint *natural);
++static void level_bar_get_preferred_height (GtkWidget *widget,gint *minimum, gint *natural);
++
++static void level_bar_real_update(LevelBar *progress);
++static gboolean level_bar_draw(GtkWidget *widget, cairo_t *cr);
++
++static void level_bar_finalize(GObject *object);
++
++G_DEFINE_TYPE(LevelBar, level_bar, GTK_TYPE_WIDGET);
++
++static void level_bar_class_init(LevelBarClass *class) {
++    GObjectClass *gobject_class;
++    GtkWidgetClass *widget_class;
++
++    gobject_class = G_OBJECT_CLASS (class);
++    widget_class = (GtkWidgetClass *)class;
++
++    gobject_class->set_property = NULL;
++    gobject_class->get_property = NULL;
++    gobject_class->finalize = level_bar_finalize;
++
++    widget_class->draw = level_bar_draw;
++    widget_class->get_preferred_width = level_bar_get_preferred_width;
++    widget_class->get_preferred_height = level_bar_get_preferred_height;
++
++    g_type_class_add_private(class, sizeof (LevelBarPrivate));
++}
++
++static void level_bar_init(LevelBar *pbar) {
++    LevelBarPrivate *priv;
++
++    pbar->priv = G_TYPE_INSTANCE_GET_PRIVATE(pbar, TYPE_LEVEL_BAR, LevelBarPrivate);
++    priv = pbar->priv;
++
++    priv->fraction = 0.0;
++    priv->bar_height = 8;
++    priv->bar_value = VALUE_NONE;
++    priv->bar_shape = SHAPE_CIRCLE; // pulsing line with circle at end.
++
++    gtk_widget_set_has_window(GTK_WIDGET (pbar), FALSE);
++}
++
++GtkWidget *level_bar_new(void) {
++    GtkWidget *pbar;
++    pbar = g_object_new(TYPE_LEVEL_BAR, NULL);
++    return pbar;
++}
++
++static void level_bar_real_update (LevelBar *pbar) {
++    GtkWidget *widget;
++
++    g_return_if_fail (IS_LEVEL_BAR (pbar));
++
++    LevelBarPrivate __attribute__ ((unused)) *priv = pbar->priv;
++
++    widget = GTK_WIDGET(pbar);
++
++    gtk_widget_queue_draw(widget);
++}
++
++static void level_bar_finalize (GObject *object) {
++    G_OBJECT_CLASS(level_bar_parent_class)->finalize (object);
++}
++
++static void level_bar_get_preferred_width (GtkWidget *widget,gint *minimum, gint *natural) {
++    *minimum = 50;
++    *natural = 160;
++}
++
++static void level_bar_get_preferred_height (GtkWidget *widget, gint      *minimum, gint      *natural) {
++    *minimum = 6;
++    *natural = 8;
++}
++
++static gboolean level_bar_draw(GtkWidget *widget, cairo_t *cr) {
++    // Draw level bar and optional text
++    LevelBar *pbar = LEVEL_BAR (widget);
++    LevelBarPrivate *priv = pbar->priv;
++    GtkStyleContext *context;
++    int width, height;
++
++    context = gtk_widget_get_style_context(widget);
++
++    width = gtk_widget_get_allocated_width(widget);
++    height = gtk_widget_get_allocated_height(widget);
++
++    // Bar thickness
++    gdouble bar_height = MIN(height , priv->bar_height);
++
++    // Vertical pos
++    gdouble y = (height - bar_height)/2;
++
++    // Pulse width
++    gdouble w = priv->fraction/(1.00/width);
++
++    // Debug:
++    // LOG_DEBUG("width=%d height=%d bar_height=%2.1f y=%2.1f w=%2.1f  fraction=%2.1f\n", width, height, bar_height, y, w, priv->fraction);
++
++    gtk_style_context_save(context);
++    gtk_render_background(context, cr, 0, 0, width, height);
++    gtk_render_frame(context, cr, 0, 0, width, height);
++
++    // Render level bar with current theme and color.
++
++    // Progressbar style
++    gtk_style_context_add_class(context, GTK_STYLE_CLASS_PROGRESSBAR);
++
++    if (priv->fraction > 0.001) {
++
++        switch (priv->bar_shape) {
++
++        case SHAPE_LINE:
++            // Render a single line
++            if (priv->bar_value == VALUE_NONE) {
++                // No value (text) shown. Draw a line on the middle.
++                gtk_render_line(context, cr, 0, y + (bar_height / 2), w, y + (bar_height / 2));
++
++            } else {
++                // Draw a line under text.
++                gtk_render_line(context, cr, 0, y + (bar_height ), w, y + (bar_height ));
++            }
++
++            break;
++
++        case SHAPE_LINE2:
++            // Render two horizontal lines + close the end.
++            gtk_render_line(context, cr, 0, y-1 , w, y-1);
++            gtk_render_line(context, cr, 0, y + (bar_height ), w, y + (bar_height ));
++            gtk_render_line(context, cr, w, y - 1, w, y + (bar_height ));
++            break;
++
++        case SHAPE_CIRCLE:
++            // Draw a line on the middle + circle at the end.
++            gtk_render_line(context, cr, 0, y + (bar_height / 2), w, y + (bar_height / 2));
++            gtk_render_option(context, cr, w, y, bar_height+1, bar_height+1);
++            break;
++
++        default:
++            // case SHAPE_LEVELBAR:
++
++            // EDIT: gtk_render_activity() does not work in GTK 3.14+
++            // gtk_style_context_set_state(context, GTK_STATE_FLAG_ACTIVE);
++            // gtk_render_activity(context, cr, 0, y, w, bar_height);
++
++            // Render a filled frame (this is a typical levelbar).
++            gtk_render_frame(context, cr, 0, y, w, bar_height);
++            break;
++
++        }
++    }
++
++    gtk_style_context_restore(context);
++
++    cairo_select_font_face(cr, "Sans", CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_NORMAL);
++    cairo_set_font_size(cr, priv->bar_height);
++
++    GdkRGBA color;
++    gtk_style_context_get_border_color(context, GTK_STATE_NORMAL, &color);
++    gdk_cairo_set_source_rgba(cr, &color);
++    color.alpha = 0.9;
++
++    // Calculate total width of scale
++    cairo_text_extents_t extents;
++    cairo_text_extents(cr, "0.0", &extents);
++    gint total_w = 9 * (extents.x_advance + extents.width);
++
++    // Debug:
++    // g_print("Bar width=%d  total_w=%d  bearing=%3.1f advance=%3.1f char.width=%3.1f\n", width, total_w,
++    //          extents.x_bearing, extents.x_advance, extents.width);
++
++    // Draw values
++    gboolean draw_all = (total_w - extents.width) < width;
++
++    // Show normalized value [0 - 1.0]?
++    if (priv->bar_value == VALUE_0_1) {
++        // Value: 0.1  0.2  0.3  0.4...0.9
++
++        gint i = 0;
++        for (i=0; i < 10; i++) {
++            gchar *s = NULL;
++
++            // Draw all or draw only each second value?
++            if (draw_all || (i % 2 == 0))
++                s = g_strdup_printf("%2.1f", (gdouble)i/10.0);
++
++            if (!s) continue;
++
++            cairo_text_extents_t extents;
++            cairo_text_extents(cr, s, &extents);
++
++            gdouble xx = (width/10) * i;
++            gdouble yy = (height/2)-(extents.height/2 + extents.y_bearing) + 0.2;
++
++            cairo_move_to(cr, xx, yy);
++            cairo_show_text(cr, s);
++
++            g_free(s);
++        }
++
++        // Show percentage value?
++    } else if (priv->bar_value == VALUE_PERCENT) {
++        // Value: 10% . 20% . 30% . 40% . 50% ... 90%
++        gint i = 0;
++        for (i=0; i < 10; i++) {
++            gchar *s = NULL;
++            if (i % 2 == 0)
++                s = g_strdup_printf("%2.0f%%", (gdouble)i*10.0);
++            else
++                s = g_strdup_printf("%3s", ".");
++
++            cairo_text_extents_t extents;
++            cairo_text_extents(cr, s, &extents);
++
++            gdouble xx = (width/10) * i;
++            gdouble yy = (height/2)-(extents.height/2 + extents.y_bearing);
++
++            cairo_move_to(cr, xx, yy);
++            cairo_show_text(cr, s);
++
++            g_free(s);
++        }
++    }
++
++#if 0
++    // Commented out by moma 30.sep.2012.
++
++    // Set text
++    if (priv->text) {
++        cairo_select_font_face(cr, "Sans", CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_NORMAL);
++
++        cairo_set_font_size(cr, 0.5*height);
++        cairo_text_extents_t extents;
++        cairo_text_extents(cr, priv->text, &extents);
++
++        // Ref: http://cairographics.org/manual/cairo-cairo-scaled-font-t.html#cairo-text-extents-t
++        gdouble xx = width-(extents.width + extents.x_bearing)-2;
++        gdouble yy = height/2-(extents.height/2 + extents.y_bearing);
++
++        GdkRGBA color;
++        gtk_style_context_get_border_color(context, GTK_STATE_NORMAL, &color);
++        gdk_cairo_set_source_rgba(cr, &color);
++        color.alpha = 0.9;
++
++        cairo_move_to(cr, xx, yy);
++        cairo_show_text(cr, priv->text);
++    }
++#endif
++
++    return FALSE;
++}
++
++void level_bar_set_fraction(LevelBar *pbar, gdouble fraction) {
++    // Set fraction [0.0, 1.0]
++    LevelBarPrivate* priv;
++    g_return_if_fail (IS_LEVEL_BAR (pbar));
++    priv = pbar->priv;
++
++    priv->fraction = CLAMP(fraction, 0.0, 1.0);
++    level_bar_real_update (pbar);
++}
++
++gdouble level_bar_get_fraction(LevelBar *pbar) {
++    // Get fraction
++    g_return_val_if_fail(IS_LEVEL_BAR (pbar), 0);
++    return pbar->priv->fraction;
++}
++
++void level_bar_set_bar_height(LevelBar *pbar, guint height) {
++    // Set bar height (thickness). Normally 8 pixels.
++    g_return_if_fail(IS_LEVEL_BAR (pbar));
++    LevelBarPrivate* priv = pbar->priv;
++    priv->bar_height = height;
++    // Redraw
++    level_bar_real_update(pbar);
++}
++
++guint level_bar_get_bar_height(LevelBar *pbar) {
++    // Get bar thickness
++    g_return_val_if_fail(IS_LEVEL_BAR(pbar), 0);
++    return pbar->priv->bar_height;
++}
++
++void level_bar_set_value_type(LevelBar *pbar, enum BAR_VALUE bar_value) {
++    // Set BAR_VALUE
++    g_return_if_fail(IS_LEVEL_BAR(pbar));
++    LevelBarPrivate* priv = pbar->priv;
++    priv->bar_value = bar_value;
++    // Redraw
++    level_bar_real_update(pbar);
++}
++
++enum BAR_VALUE level_bar_get_scale(LevelBar *pbar) {
++    // Get BAR_VALUE
++    g_return_val_if_fail(IS_LEVEL_BAR(pbar), VALUE_NONE);
++    LevelBarPrivate* priv = pbar->priv;
++    return priv->bar_value;
++}
++
++void level_bar_set_shape(LevelBar *pbar, enum BAR_SHAPE bar_shape) {
++    // Set BAR_SHAPE
++    g_return_if_fail(IS_LEVEL_BAR(pbar));
++    LevelBarPrivate* priv = pbar->priv;
++    priv->bar_shape = bar_shape;
++    // Redraw
++    level_bar_real_update(pbar);
++}
++
++enum BAR_SHAPE level_bar_get_shape(LevelBar *pbar) {
++    // Get BAR_SHAPE
++    g_return_val_if_fail(IS_LEVEL_BAR(pbar), SHAPE_LEVELBAR);
++    LevelBarPrivate* priv = pbar->priv;
++    return priv->bar_shape;
++}
++
++
+
+diff -rupN audio-recorder/src/levelbar.h audio-recorder_fix-build/src/levelbar.h
+--- audio-recorder/src/levelbar.h	1969-12-31 19:00:00.000000000 -0500
++++ audio-recorder_fix-build/src/levelbar.h	2015-02-06 09:04:35.000000000 -0500
+@@ -0,0 +1,60 @@
++#ifndef __LEVEL_BAR_H__
++#define __LEVEL_BAR_H__
++
++// A simple level bar widget.
++
++#include <gtk/gtk.h>
++
++typedef enum BAR_VALUE {VALUE_NONE, VALUE_0_1/*0 - 1.0*/, VALUE_PERCENT/*0 - 100%*/} BAR_VALUE;
++typedef enum BAR_SHAPE {SHAPE_LEVELBAR, SHAPE_LINE, SHAPE_LINE2, SHAPE_CIRCLE} BAR_SHAPE;
++
++G_BEGIN_DECLS
++
++#define TYPE_LEVEL_BAR            (level_bar_get_type ())
++#define LEVEL_BAR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), TYPE_LEVEL_BAR, LevelBar))
++#define LEVEL_BAR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), TYPE_LEVEL_BAR, LevelBarClass))
++#define IS_LEVEL_BAR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), TYPE_LEVEL_BAR))
++#define IS_LEVEL_BAR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), TYPE_LEVEL_BAR))
++#define LEVEL_BAR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), TYPE_LEVEL_BAR, LevelBarClass))
++
++typedef struct _LevelBar              LevelBar;
++typedef struct _LevelBarPrivate       LevelBarPrivate;
++typedef struct _LevelBarClass         LevelBarClass;
++
++struct _LevelBar {
++    GtkWidget parent;
++
++    /*< private >*/
++    LevelBarPrivate *priv;
++};
++
++struct _LevelBarClass {
++    GtkWidgetClass parent_class;
++
++    /* Padding for future expansion */
++    void (*_gtk_reserved1) (void);
++    void (*_gtk_reserved2) (void);
++    void (*_gtk_reserved3) (void);
++    void (*_gtk_reserved4) (void);
++};
++
++GType level_bar_get_type(void) G_GNUC_CONST;
++GtkWidget* level_bar_new(void);
++
++void level_bar_set_bar_height(LevelBar *pbar, guint height);
++void level_bar_set_fraction(LevelBar *pbar, gdouble fraction);
++
++guint level_bar_get_bar_height(LevelBar *pbar);
++gdouble level_bar_get_fraction(LevelBar *pbar);
++
++void level_bar_set_value_type(LevelBar *pbar, enum BAR_VALUE bar_value);
++enum BAR_VALUE level_bar_get_value_type(LevelBar *pbar);
++
++void level_bar_set_shape(LevelBar *pbar, enum BAR_SHAPE bar_shape);
++enum BAR_SHAPE level_bar_get_shape(LevelBar *pbar);
++
++G_END_DECLS
++
++#endif
++
++
+diff -rupN audio-recorder/src/main.c audio-recorder_fix-build/src/main.c
+--- audio-recorder/src/main.c	2015-02-11 08:44:06.000000000 -0500
++++ audio-recorder_fix-build/src/main.c	2015-05-11 12:59:26.655639149 -0500
+@@ -25,7 +25,7 @@
+ 
+ #include <gst/pbutils/pbutils.h>
+ 
+-#include "gtklevelbar.h" // Level bar widget
++#include "levelbar.h" // Level bar widget
+ #include "support.h"
+ #include "audio-sources.h"
+ #include "rec-window.h"
+@@ -274,13 +274,13 @@ void win_set_filename(gchar *filename) {
+ }
+ 
+ void win_update_level_bar(gdouble norm_rms, gdouble norm_peak) {
+-    // Set pulse on gtklevelbar
++    // Set pulse on levelbar
+ 
+-    if (!GTK_IS_LEVEL_BAR(g_win.level_bar)) return;
++    if (!IS_LEVEL_BAR(g_win.level_bar)) return;
+ 
+     // Show either RMS or peak-value on the levelbar.
+     // Notice: This value has no GUI-setting. User must change it in the dconf-editor.
+-    gtk_level_bar_set_fraction(GTK_LEVEL_BAR(g_win.level_bar),
++    level_bar_set_fraction(LEVEL_BAR(g_win.level_bar),
+                                (g_win.pulse_type == PULSE_RMS ? norm_rms : norm_peak));
+ }
+ 
+@@ -810,7 +810,7 @@ void win_show_settings_dialog() {
+ 
+ void win_level_bar_clicked(GtkWidget *widget, GdkEvent *event, gpointer data) {
+     // User clicked on the level bar.
+-    // Set BAR_VALUE or BAR_SHAPE. See gtklevelbar.h.value
++    // Set BAR_VALUE or BAR_SHAPE. See levelbar.h.value
+     GdkEventButton *ev = (GdkEventButton*)event;
+ 
+     if (ev->button == 1) {
+@@ -827,7 +827,7 @@ void win_level_bar_clicked(GtkWidget *wi
+         }
+ 
+         // Update GUI
+-        gtk_level_bar_set_value_type(GTK_LEVEL_BAR(g_win.level_bar), bar_value);
++        level_bar_set_value_type(LEVEL_BAR(g_win.level_bar), bar_value);
+ 
+         // Save in DConf
+         conf_save_int_value("level-bar-value", bar_value);
+@@ -846,7 +846,7 @@ void win_level_bar_clicked(GtkWidget *wi
+         }
+ 
+         // Update GUI
+-        gtk_level_bar_set_shape(GTK_LEVEL_BAR(g_win.level_bar), bar_shape);
++        level_bar_set_shape(LEVEL_BAR(g_win.level_bar), bar_shape);
+ 
+         // Save in DConf
+         conf_save_int_value("level-bar-shape", bar_shape);
+@@ -992,24 +992,24 @@ void win_create_window() {
+     gtk_widget_set_events(event_box, GDK_BUTTON_PRESS_MASK);
+     g_signal_connect(event_box, "button_press_event", G_CALLBACK(win_level_bar_clicked), NULL);
+ 
+-    // Create GtkLevelBar widget and put it in the GtkEventBox
+-    g_win.level_bar = gtk_level_bar_new();
++    // Create LevelBar widget and put it in the GtkEventBox
++    g_win.level_bar = level_bar_new();
+     gtk_widget_show(g_win.level_bar);
+     gtk_container_add(GTK_CONTAINER(event_box), g_win.level_bar);
+-    gtk_level_bar_set_fraction(GTK_LEVEL_BAR(g_win.level_bar), 0.0);
++    level_bar_set_fraction(GTK_LEVEL_BAR(g_win.level_bar), 0.0);
+ 
+     // How to draw the level bar?
+     // Get from DConf
+     gint bar_shape = SHAPE_CIRCLE;
+     conf_get_int_value("level-bar-shape", &bar_shape);
+-    gtk_level_bar_set_shape(GTK_LEVEL_BAR(g_win.level_bar), bar_shape);
++    level_bar_set_shape(LEVEL_BAR(g_win.level_bar), bar_shape);
+     // Notice: User can change this by RIGHT-clicking on the level-bar
+ 
+     // Type of value on the level bar?
+     // Get from DConf
+     gint bar_value = VALUE_NONE;
+     conf_get_int_value("level-bar-value", &bar_value);
+-    gtk_level_bar_set_value_type(GTK_LEVEL_BAR(g_win.level_bar), bar_value);
++    level_bar_set_value_type(LEVEL_BAR(g_win.level_bar), bar_value);
+     // Notice: User can change this by LEFT-clicking on the level-bar
+ 
+     // Should we show RMS or peak-value on the levelbar?
+diff -rupN audio-recorder/src/Makefile.am audio-recorder_fix-build/src/Makefile.am
+--- audio-recorder/src/Makefile.am	2014-10-03 12:53:54.000000000 -0500
++++ audio-recorder_fix-build/src/Makefile.am	2015-05-11 12:53:12.494347412 -0500
+@@ -43,7 +43,7 @@ audio_recorder_SOURCES = rec-window.h co
+     utility.c utility.h \
+     settings.c settings-pipe.c settings.h \
+     about.c about.h \
+-    gtklevelbar.c gtklevelbar.h \
++    levelbar.c levelbar.h \
+     main.c
+ 
+ 
+diff -rupN audio-recorder/src/Makefile.in audio-recorder_fix-build/src/Makefile.in
+--- audio-recorder/src/Makefile.in	2015-02-11 11:55:09.000000000 -0500
++++ audio-recorder_fix-build/src/Makefile.in	2015-05-11 12:54:09.029392887 -0500
+@@ -98,7 +98,7 @@ am_audio_recorder_OBJECTS = systray-icon
+ 	gst-devices.$(OBJEXT) rec-manager.$(OBJEXT) support.$(OBJEXT) \
+ 	timer.$(OBJEXT) timer-parser.$(OBJEXT) utility.$(OBJEXT) \
+ 	settings.$(OBJEXT) settings-pipe.$(OBJEXT) about.$(OBJEXT) \
+-	gtklevelbar.$(OBJEXT) main.$(OBJEXT)
++	levelbar.$(OBJEXT) main.$(OBJEXT)
+ audio_recorder_OBJECTS = $(am_audio_recorder_OBJECTS)
+ audio_recorder_LDADD = $(LDADD)
+ AM_V_P = $(am__v_P_@AM_V@)
+@@ -329,7 +329,7 @@ audio_recorder_SOURCES = rec-window.h co
+     utility.c utility.h \
+     settings.c settings-pipe.c settings.h \
+     about.c about.h \
+-    gtklevelbar.c gtklevelbar.h \
++    levelbar.c levelbar.h \
+     main.c
+ 
+ all: all-am
+@@ -431,7 +431,7 @@ distclean-compile:
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gst-pipeline.Po@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gst-recorder.Po@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gst-vad.Po@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gtklevelbar.Po@am__quote@
++@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/levelbar.Po@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/help.Po@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/log.Po@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/main.Po@am__quote@
+diff -rupN audio-recorder/src/rec-window.h audio-recorder_fix-build/src/rec-window.h
+--- audio-recorder/src/rec-window.h	2015-02-06 09:04:35.000000000 -0500
++++ audio-recorder_fix-build/src/rec-window.h	2015-05-11 13:00:50.431465183 -0500
+@@ -5,12 +5,12 @@
+ #include <gtk/gtk.h>
+ #include <gdk/gdk.h>
+ 
+-#include "gtklevelbar.h"
++#include "levelbar.h"
+ 
+ // Width of the settings window
+ #define PREF_WINDOW_WIDTH 300
+ 
+-// PULSE_TYPE: Type of pulse on the gtklevelbar.
++// PULSE_TYPE: Type of pulse on the levelbar.
+ // Notice: This cannot be changed from the GUI.
+ // Use Gsettings/dconf-editor and find "level-bar-pulse-type" in apps -> audio-recorder.
+ typedef enum PULSE_TYPE {PULSE_PEAK, PULSE_RMS} PULSE_TYPE;
+@@ -27,7 +27,7 @@ typedef struct {
+ 
+     GtkWidget *time_label;  // Labels to show recording time and filesize
+     GtkWidget *size_label;
+-    GtkWidget *level_bar; // Gtklevelbar widget
++    GtkWidget *level_bar; // levelbar widget
+ 
+     GtkWidget *filename; // Current filename
+     GtkWidget *add_to_file; // Add to current file?
