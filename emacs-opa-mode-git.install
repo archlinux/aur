@@ -1,0 +1,14 @@
+post_install() {
+  post_upgrade
+}
+
+post_upgrade() {
+  cat >&2 <<EOL
+To automatically use this mode on .opa files, add the following to your
+.emacs:
+  (autoload 'opa-classic-mode "/usr/share/emacs/site-lisp/opa/opa-mode.el" "Opa-Classic editing mode." t)
+  (add-to-list 'auto-mode-alist '("\\.opa$" . opa-classic-mode))
+EOL
+}
+
+# vim:set ts=2 sw=2 et:

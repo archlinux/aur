@@ -1,0 +1,13 @@
+pkgbase = emacs-opa-mode-git
+	pkgdesc = Major mode for editing Opa-Classic and Opa-Js programs
+	pkgver = 20121125
+	pkgrel = 1
+	url = https://github.com/MLstate/opalang/
+	install = emacs-opa-mode-git.install
+	arch = any
+	license = GPL
+	makedepends = emacs
+	depends = emacs
+
+pkgname = emacs-opa-mode-git
+
