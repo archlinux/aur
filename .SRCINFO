@@ -1,0 +1,24 @@
+pkgbase = sdl2-vapi-git
+	pkgdesc = SDL2 Bindings for vala language
+	pkgver = b8ce044
+	pkgrel = 3
+	url = https://github.com/desiderantes/sdl2_vapi
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = vala
+	depends = sdl2
+	optdepends = sdl2_gfx: SDL Graphic Primitives
+	optdepends = sdl2_image: A simple library to load images of various formats as SDL surfaces
+	optdepends = sdl2_mixer: A simple multi-channel audio mixer
+	optdepends = sdl2_net: A small sample cross-platform networking library
+	optdepends = sdl2_ttf: A library that allows you to use TrueType fonts in your SDL applications
+	provides = sdl2-vapi
+	source = git://github.com/desiderantes/sdl2_vapi.git
+	source = INSTALL-path.patch
+	md5sums = SKIP
+	md5sums = 359dad346b5091c64f7d1d155b6d3f9e
+
+pkgname = sdl2-vapi-git
+

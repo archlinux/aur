@@ -1,0 +1,8 @@
+--- INSTALL	2015-04-12 08:01:59.940901623 +0200
++++ INSTALL.new	2015-04-12 08:02:24.357436014 +0200
+@@ -1,4 +1,4 @@
+ #!/usr/bin/sh
+-export VAPI_PATH="/usr/share/vala/vapi/"
++export VAPI_PATH="$1"
+ mkdir "$VAPI_PATH" -p
+ cp ./*.vapi "$VAPI_PATH" -R --force
