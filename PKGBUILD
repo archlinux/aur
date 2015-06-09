@@ -1,7 +1,7 @@
 # Maintainer: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
-_USE_GNU_EFI="0"
+_USE_GNU_EFI="1"
 
 #######
 [[ "${CARCH}" == "x86_64" ]] && _TIANO_ARCH="X64"
@@ -15,7 +15,7 @@ __pkgname="refind"
 _pkgname="${__pkgname}-efi"
 pkgname="${_pkgname}-git"
 
-pkgver=0.8.7.4.375.0a030a2
+pkgver=0.8.7.4.2.61744fc.r15322
 pkgrel=1
 pkgdesc="Rod Smith's fork of rEFIt UEFI Boot Manager - GIT Version"
 url="http://www.rodsbooks.com/refind/index.html"
