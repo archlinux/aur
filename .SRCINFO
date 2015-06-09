@@ -1,0 +1,16 @@
+pkgbase = dxde
+	pkgdesc = Program pro vedeni danove evidence (for czech tax records)
+	pkgver = 1.00.0
+	pkgrel = 1
+	url = http://dxde.dxsolutions.org
+	install = dxde.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = wxgtk>=3.0.0
+	source = http://files.dxsolutions.org/dxde-1.00.0.tar.gz
+	md5sums = 77bfb3faecfe8b4aa66ae2d09d9a0088
+
+pkgname = dxde
+
