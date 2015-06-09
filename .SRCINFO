@@ -1,0 +1,25 @@
+pkgbase = librepo
+	pkgdesc = Repodata downloading library
+	pkgver = 1.7.15
+	pkgrel = 1
+	url = https://github.com/Tojaj/librepo
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	checkdepends = check
+	checkdepends = python-flask
+	checkdepends = python-nose
+	checkdepends = python-pygpgme
+	checkdepends = python-pyxattr
+	makedepends = cmake
+	makedepends = python
+	depends = curl
+	depends = expat
+	depends = glib2
+	depends = gpgme
+	optdepends = python: for python bindings
+	source = https://github.com/Tojaj/librepo/archive/librepo-1.7.15.tar.gz
+	md5sums = e4971ffccf2c78c2b390df43b01297c3
+
+pkgname = librepo
+
