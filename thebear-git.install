@@ -1,0 +1,7 @@
+post_install() {
+	ln -s /usr/share/webapps/thebear /srv/http/
+}
+
+post_remove() {
+	rm -f /srv/http/thebear
+}

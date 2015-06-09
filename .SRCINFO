@@ -1,0 +1,19 @@
+pkgbase = thebear-git
+	pkgdesc = a web front end to aria2.
+	pkgver = 20140225
+	pkgrel = 1
+	url = http://sourceforge.net/p/thebear/home/Home
+	install = thebear-git.install
+	arch = any
+	license = GPL
+	depends = git
+	provides = thebear
+	source = thebear-git.install
+	source = apache.example.conf
+	source = nginx.example.conf
+	md5sums = 362bb72f9885b09a69073435c7cb203e
+	md5sums = f5995bc1348f4cec255ab67dea91d4f2
+	md5sums = a36775c61151c9732d8f3c3c20d0033d
+
+pkgname = thebear-git
+
