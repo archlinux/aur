@@ -1,0 +1,27 @@
+pkgbase = griffith
+	pkgdesc = Movie collection manager application
+	pkgver = 0.13
+	pkgrel = 8
+	url = http://www.griffith.cc/
+	arch = any
+	license = GPL2
+	depends = pygtk>=2.14.1
+	depends = sqlite
+	depends = python2-pysqlite
+	depends = python2-reportlab>=2.3
+	depends = python2-pillow
+	depends = python2-sqlalchemy
+	optdepends = python2-psycopg2: postgreSQL support
+	optdepends = mysql-python: MySQL support
+	optdepends = python2-chardet: encoding detection of imported CSV files
+	optdepends = python2-gtkspell: spell checking support
+	optdepends = griffith-extra-artwork: additional icons
+	source = http://launchpad.net/griffith/trunk/0.13/+download/griffith-0.13.tar.gz
+	source = https://raw.githubusercontent.com/ValHue/AUR-PKGBUILDs/master/griffith/validators.py
+	source = http://www.strits.dk/files/PluginMovieIMDB.py
+	sha256sums = 60576d33aa855ab45d654288d7bf2ead8accecb72fd2acbc373656294ab8f242
+	sha256sums = f5e0b43c6ee56148b55cc650599c96b7774491867d38b47278bc121bf33fb9af
+	sha256sums = 3500b6f25fdbf8ebae40c38a5ba0c95a0ff27f74961b6d1cdc975b27adcc5cdf
+
+pkgname = griffith
+
