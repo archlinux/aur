@@ -1,0 +1,17 @@
+pkgbase = roundcubemail-plugins-kolab
+	pkgdesc = Kolab Plugins for the Roundcube Webmailer
+	pkgver = 3.2.7
+	pkgrel = 1
+	url = http://www.kolab.org
+	arch = any
+	license = AGPL3
+	depends = php-ldap
+	depends = roundcubemail
+	depends = php-kolabformat
+	optdepends = roundcubemail-skin-chameleon: Kolab skin for roundcube
+	optdepends = pykolab: configuration tool
+	source = http://mirror.kolabsys.com/pub/releases/roundcubemail-plugins-kolab-3.2.7.tar.gz
+	sha256sums = cb7001837e08164fad267338b1e3418dfcc034a98fdd3bfd84b605386942a36a
+
+pkgname = roundcubemail-plugins-kolab
+
