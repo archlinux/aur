@@ -1,0 +1,26 @@
+pkgbase = python2-preview-markup
+	pkgdesc = Live preview Markdown and reStructuredText files as HTML in a web browser
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/xolox/python-preview-markup
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-beautifulsoup4
+	depends = python2-coloredlogs
+	depends = python2-docutils
+	depends = python2-flask
+	depends = python2-humanfriendly
+	depends = python2-misaka
+	depends = python2-pygments
+	provides = preview-markup
+	provides = python2-preview-markup
+	conflicts = preview-markup
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/p/preview-markup/preview-markup-0.3.tar.gz
+	md5sums = a250a7d2bbf299d51d62d799e63e57e5
+	sha256sums = f5ce90f6407e8b6d0deeea5c8130df6508b3f69ef2157454c0ebf09b624a3c39
+
+pkgname = python2-preview-markup
+
