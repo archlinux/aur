@@ -1,0 +1,21 @@
+post_install() {
+  getent group kolab >/dev/null 2>&1 || groupadd kolab &>/dev/null
+  getent passwd kolab >/dev/null 2>&1 || useradd -g kolab -d /var/lib/kolab -s /bin/false kolab &>/dev/null
+  chmod -R a+r+w /var/log/kolab
+  
+  chown kolab:kolab /var/spool/pykolab/wallace
+  systemd-tmpfiles --create
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  if getent passwd kolab >/dev/null 2>&1; then
+	  userdel kolab
+  fi  
+  if getent group kolab >/dev/null 2>&1; then
+	  groupdel kolab
+  fi  
+}

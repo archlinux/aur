@@ -1,0 +1,251 @@
+diff --git a/pykolab/setup/setup_freebusy.py b/pykolab/setup/setup_freebusy.py
+index 947e1fb..55a3adc 100644
+--- a/pykolab/setup/setup_freebusy.py
++++ b/pykolab/setup/setup_freebusy.py
+@@ -47,12 +47,12 @@ def description():
+     return _("Setup Free/Busy.")
+ 
+ def execute(*args, **kw):
+-    if not os.path.isfile('/etc/kolab-freebusy/config.ini') and not os.path.isfile('/etc/kolab-freebusy/config.ini.sample'):
++    if not os.path.isfile('/etc/webapps/kolab-freebusy/config/config.ini') and not os.path.isfile('/etc/webapps/kolab-freebusy/config/config.ini.sample'):
+         log.error(_("Free/Busy is not installed on this system"))
+         return
+ 
+-    if not os.path.isfile('/etc/kolab-freebusy/config.ini'):
+-        os.rename('/etc/kolab-freebusy/config.ini.sample', '/etc/kolab-freebusy/config.ini')
++    if not os.path.isfile('/etc/webapps/kolab-freebusy/config/config.ini'):
++        os.rename('/etc/webapps/kolab-freebusy/config/config.ini.sample', '/etc/webapps/kolab-freebusy/config/config.ini')
+ 
+     imap_backend = conf.get('kolab', 'imap_backend')
+     admin_login = conf.get(imap_backend, 'admin_login')
+@@ -162,7 +162,7 @@ def execute(*args, **kw):
+         }
+ 
+     cfg_parser = RawConfigParser()
+-    cfg_parser.read('/etc/kolab-freebusy/config.ini')
++    cfg_parser.read('/etc/webapps/kolab-freebusy/config/config.ini')
+ 
+     for section in freebusy_settings.keys():
+         if len(freebusy_settings[section].keys()) < 1:
+@@ -175,7 +175,7 @@ def execute(*args, **kw):
+ 
+             cfg_parser.set(section, key, freebusy_settings[section][key])
+ 
+-    fp = open('/etc/kolab-freebusy/config.ini', "w+")
++    fp = open('/etc/webapps/kolab-freebusy/config/config.ini', "w+")
+     cfg_parser.write(fp)
+     fp.close()
+ 
+diff --git a/pykolab/setup/setup_imap.py b/pykolab/setup/setup_imap.py
+index 57b4023..d967e8a 100644
+--- a/pykolab/setup/setup_imap.py
++++ b/pykolab/setup/setup_imap.py
+@@ -81,12 +81,12 @@ def execute(*args, **kw):
+         fp.close()
+ 
+         t = Template(template_definition, searchList=[imapd_settings])
+-        fp = open('/etc/imapd.conf', 'w')
++        fp = open('/etc/cyrus/imapd.conf', 'w')
+         fp.write(t.__str__())
+         fp.close()
+ 
+     else:
+-        log.error(_("Could not write out Cyrus IMAP configuration file /etc/imapd.conf"))
++        log.error(_("Could not write out Cyrus IMAP configuration file /etc/cyrus/imapd.conf"))
+         return
+ 
+     cyrus_settings = {}
+@@ -106,12 +106,12 @@ def execute(*args, **kw):
+         fp.close()
+ 
+         t = Template(template_definition, searchList=[cyrus_settings])
+-        fp = open('/etc/cyrus.conf', 'w')
++        fp = open('/etc/cyrus/cyrus.conf', 'w')
+         fp.write(t.__str__())
+         fp.close()
+ 
+     else:
+-        log.error(_("Could not write out Cyrus IMAP configuration file /etc/cyrus.conf"))
++        log.error(_("Could not write out Cyrus IMAP configuration file /etc/cyrus/cyrus.conf"))
+         return
+ 
+     annotations = [
+@@ -128,7 +128,7 @@ def execute(*args, **kw):
+             "/vendor/x-toltec/test,mailbox,string,backend,value.shared value.priv,a",
+         ]
+ 
+-    fp = open('/etc/imapd.annotations.conf', 'w')
++    fp = open('/etc/cyrus/imapd.annotations.conf', 'w')
+     fp.write("\n".join(annotations))
+     fp.close()
+ 
+@@ -145,7 +145,7 @@ def execute(*args, **kw):
+     if os.path.isfile('/bin/systemctl'):
+         subprocess.call(['systemctl', 'stop', 'saslauthd.service'])
+         subprocess.call(['systemctl', 'restart', 'kolab-saslauthd.service'])
+-        subprocess.call(['systemctl', 'restart', 'cyrus-imapd.service'])
++        subprocess.call(['systemctl', 'restart', 'cyrus-master.service'])
+     elif os.path.isfile('/sbin/service'):
+         subprocess.call(['service', 'saslauthd', 'stop'])
+         subprocess.call(['service', 'kolab-saslauthd', 'restart'])
+@@ -160,7 +160,7 @@ def execute(*args, **kw):
+     if os.path.isfile('/bin/systemctl'):
+         subprocess.call(['systemctl', 'disable', 'saslauthd.service'])
+         subprocess.call(['systemctl', 'enable', 'kolab-saslauthd.service'])
+-        subprocess.call(['systemctl', 'enable', 'cyrus-imapd.service'])
++        subprocess.call(['systemctl', 'enable', 'cyrus-master.service'])
+     elif os.path.isfile('/sbin/chkconfig'):
+         subprocess.call(['chkconfig', 'saslauthd', 'off'])
+         subprocess.call(['chkconfig', 'kolab-saslauthd', 'on'])
+diff --git a/pykolab/setup/setup_ldap.py b/pykolab/setup/setup_ldap.py
+index c805d20..1786438 100644
+--- a/pykolab/setup/setup_ldap.py
++++ b/pykolab/setup/setup_ldap.py
+@@ -321,6 +321,8 @@ ServerAdminPwd = %(admin_pass)s
+         setup_ds_admin = "/usr/sbin/setup-ds.pl"
+     elif os.path.isfile("/usr/sbin/setup-ds"):
+         setup_ds_admin = "/usr/sbin/setup-ds"
++    elif os.path.isfile("/usr/bin/setup-ds.pl"):
++        setup_ds_admin = "/usr/bin/setup-ds.pl"
+     else:
+         log.error(_("No directory server setup tool available."))
+         sys.exit(1)
+@@ -406,7 +408,7 @@ ServerAdminPwd = %(admin_pass)s
+         schema_error = True
+ 
+     if os.path.isfile('/bin/systemctl'):
+-        subprocess.call(['/bin/systemctl', 'restart', 'dirsrv.target'])
++        subprocess.call(['/bin/systemctl', 'restart', '389-ds-base.target'])
+     elif os.path.isfile('/sbin/service'):
+         subprocess.call(['/sbin/service', 'dirsrv', 'restart'])
+     elif os.path.isfile('/usr/sbin/service'):
+@@ -417,7 +419,7 @@ ServerAdminPwd = %(admin_pass)s
+         log.error(_("Could not start the directory server service."))
+ 
+     if os.path.isfile('/bin/systemctl'):
+-        subprocess.call(['/bin/systemctl', 'enable', 'dirsrv.target'])
++        subprocess.call(['/bin/systemctl', 'enable', '389-ds-base.target'])
+     elif os.path.isfile('/sbin/chkconfig'):
+         subprocess.call(['/sbin/chkconfig', 'dirsrv', 'on'])
+     elif os.path.isfile('/usr/sbin/update-rc.d'):
+diff --git a/pykolab/setup/setup_mta.py b/pykolab/setup/setup_mta.py
+index 56109fe..b8f6485 100644
+--- a/pykolab/setup/setup_mta.py
++++ b/pykolab/setup/setup_mta.py
+@@ -274,9 +274,9 @@ result_format = "shared+%%s"
+     if os.path.isfile('/etc/pki/tls/certs/make-dummy-cert') and not os.path.isfile('/etc/pki/tls/private/localhost.pem'):
+         subprocess.call(['/etc/pki/tls/certs/make-dummy-cert', '/etc/pki/tls/private/localhost.pem'])
+ 
+-    if os.path.isfile('/etc/pki/tls/private/localhost.pem'):
+-        postfix_main_settings['smtpd_tls_cert_file'] = "/etc/pki/tls/private/localhost.pem"
+-        postfix_main_settings['smtpd_tls_key_file'] = "/etc/pki/tls/private/localhost.pem"
++    if os.path.isfile('/etc/ssl/private/localhost.pem'):
++        postfix_main_settings['smtpd_tls_cert_file'] = "/etc/ssl/private/localhost.pem"
++        postfix_main_settings['smtpd_tls_key_file'] = "/etc/ssl/private/localhost.pem"
+ 
+     if not os.path.isfile('/etc/postfix/main.cf'):
+         if os.path.isfile('/usr/share/postfix/main.cf.debian'):
+@@ -363,7 +363,7 @@ result_format = "shared+%%s"
+             'primary_domain': conf.get('kolab', 'primary_domain'),
+             'ldap_filter': "(|(mail=%m)(alias=%m))",
+             'ldap_base_dn': conf.get('ldap', 'base_dn'),
+-            'clamdsock': '/var/spool/amavisd/clamd.sock',
++            'clamdsock': '/var/spool/amavis/clamd.sock',
+         }
+ 
+     template_file = None
+@@ -438,7 +438,7 @@ result_format = "shared+%%s"
+     if os.path.isfile('/bin/systemctl'):
+         subprocess.call(['systemctl', 'restart', 'postfix.service'])
+         subprocess.call(['systemctl', 'restart', 'amavisd.service'])
+-        subprocess.call(['systemctl', 'restart', 'clamd@amavisd.service'])
++        subprocess.call(['systemctl', 'restart', 'clamd.service'])
+         subprocess.call(['systemctl', 'restart', 'wallace.service'])
+     elif os.path.isfile('/sbin/service'):
+         subprocess.call(['service', 'postfix', 'restart'])
+@@ -456,7 +456,7 @@ result_format = "shared+%%s"
+     if os.path.isfile('/bin/systemctl'):
+         subprocess.call(['systemctl', 'enable', 'postfix.service'])
+         subprocess.call(['systemctl', 'enable', 'amavisd.service'])
+-        subprocess.call(['systemctl', 'enable', 'clamd@amavisd.service'])
++        subprocess.call(['systemctl', 'enable', 'clamd.service'])
+         subprocess.call(['systemctl', 'enable', 'wallace.service'])
+     elif os.path.isfile('/sbin/chkconfig'):
+         subprocess.call(['chkconfig', 'postfix', 'on'])
+diff --git a/pykolab/setup/setup_mysql.py b/pykolab/setup/setup_mysql.py
+index 174cbc7..1e0d70f 100644
+--- a/pykolab/setup/setup_mysql.py
++++ b/pykolab/setup/setup_mysql.py
+@@ -170,7 +170,7 @@ password='%s'
+         p2.communicate()
+ 
+         conf.command_set('kolab_wap', 'sql_uri', 'mysql://kolab:%s@localhost/kolab' % (mysql_kolab_password))
+-        conf.command_set('kolab_smtp_access_policy', 'cache_uri', 'mysql://kolab:%s@localhost/kolab' % (mysql_kolab_password))
++        conf.command_set('kolab_smtp_access_policy', 'cache_uri', 'mysql+mysqlconnector://kolab:%s@localhost/kolab' % (mysql_kolab_password))
+     else:
+         log.warning(_("Could not find the MySQL Kolab schema file"))
+ 
+diff --git a/pykolab/setup/setup_php.py b/pykolab/setup/setup_php.py
+index 7eed80d..5c61953 100644
+--- a/pykolab/setup/setup_php.py
++++ b/pykolab/setup/setup_php.py
+@@ -83,7 +83,7 @@ def execute(*args, **kw):
+ 
+     else:
+         # Search and destroy
+-        php_ini = "/etc/php.ini"
++        php_ini = "/etc/php/php.ini"
+         if not os.path.isfile(php_ini):
+             php_ini = "/etc/php5/apache2/php.ini"
+ 
+@@ -92,6 +92,8 @@ def execute(*args, **kw):
+             return
+ 
+     myaugeas = Augeas()
++    myaugeas.set('/augeas/load/PHP/incl[last()]', php_ini)
++    myaugeas.load()
+ 
+     setting_base = '/files%s/' % (php_ini)
+ 
+diff --git a/pykolab/setup/setup_roundcube.py b/pykolab/setup/setup_roundcube.py
+index 6558989..fad35fa 100644
+--- a/pykolab/setup/setup_roundcube.py
++++ b/pykolab/setup/setup_roundcube.py
+@@ -88,9 +88,9 @@ def execute(*args, **kw):
+             'conf': conf
+         }
+ 
+-    if os.access('/usr/share/roundcubemail/skins/enterprise/', os.R_OK):
++    if os.access('/usr/share/webapps/roundcubemail/skins/enterprise/', os.R_OK):
+         rc_settings['skin'] = 'enterprise'
+-    elif os.access('/usr/share/roundcubemail/skins/chameleon/', os.R_OK):
++    elif os.access('/usr/share/webapps/roundcubemail/skins/chameleon/', os.R_OK):
+         rc_settings['skin'] = 'chameleon'
+     else:
+         rc_settings['skin'] = 'larry'
+@@ -139,13 +139,15 @@ def execute(*args, **kw):
+             fp = open('/etc/roundcubemail/%s' % (want_file), 'w')
+         elif os.path.isdir('/etc/roundcube'):
+             fp = open('/etc/roundcube/%s' % (want_file), 'w')
++        elif os.path.isdir('/etc/webapps/roundcubemail/config'):
++            fp = open('/etc/webapps/roundcubemail/config/%s' % (want_file), 'w')
+ 
+         if not fp == None:
+             fp.write(t.__str__())
+             fp.close()
+ 
+     schema_files = []
+-    for root, directories, filenames in os.walk('/usr/share/doc/'):
++    for root, directories, filenames in os.walk('/usr/share/webapps/'):
+         directories.sort()
+         for directory in directories:
+             if directory.startswith("roundcubemail"):
+@@ -164,6 +166,8 @@ def execute(*args, **kw):
+         rcpath = '/usr/share/roundcubemail/'
+     elif os.path.isdir('/usr/share/roundcube'):
+         rcpath = '/usr/share/roundcube/'
++    elif os.path.isdir('/usr/share/webapps/roundcubemail'):
++        rcpath = '/usr/share/webapps/roundcubemail/'
+     else:
+         log.error(_("Roundcube installation path not found."))
+         return

@@ -1,0 +1,101 @@
+diff --git a/share/templates/amavisd.conf.tpl b/share/templates/amavisd.conf.tpl
+index 1fa43fb..794292a 100644
+--- a/share/templates/amavisd.conf.tpl
++++ b/share/templates/amavisd.conf.tpl
+@@ -20,7 +20,7 @@ use strict;
+ 
+ \$mydomain = '$primary_domain';   # a convenient default for other settings
+ 
+-\$MYHOME = '/var/spool/amavisd';   # a convenient default for other settings, -H
++\$MYHOME = '/var/spool/amavis';   # a convenient default for other settings, -H
+ \$TEMPBASE = "\$MYHOME/tmp";   # working directory, needs to exist, -T
+ \$ENV{TMPDIR} = \$TEMPBASE;    # environment variable TMPDIR, used by SA, etc.
+ \$QUARANTINEDIR = undef;      # -Q
+@@ -32,8 +32,8 @@ use strict;
+ 
+ \$db_home   = "\$MYHOME/db";        # dir for bdb nanny/cache/snmp databases, -D
+ # \$helpers_home = "\$MYHOME/var";  # working directory for SpamAssassin, -S
+-\$lock_file = "/var/run/amavisd/amavisd.lock";  # -L
+-\$pid_file  = "/var/run/amavisd/amavisd.pid";   # -P
++\$lock_file = "/var/run/amavis/amavisd.lock";  # -L
++\$pid_file  = "/var/run/amavis/amavisd.pid";   # -P
+ #NOTE: create directories \$MYHOME/tmp, \$MYHOME/var, \$MYHOME/db manually
+ 
+ \$log_level = 9;              # verbosity 0..5, -d
+diff --git a/share/templates/imapd.conf.tpl b/share/templates/imapd.conf.tpl
+index 194135e..2d397a7 100644
+--- a/share/templates/imapd.conf.tpl
++++ b/share/templates/imapd.conf.tpl
+@@ -6,8 +6,8 @@ sendmail: /usr/sbin/sendmail
+ sasl_pwcheck_method: auxprop saslauthd
+ sasl_mech_list: PLAIN LOGIN
+ allowplaintext: no
+-tls_server_cert: /etc/pki/cyrus-imapd/cyrus-imapd.pem
+-tls_server_key: /etc/pki/cyrus-imapd/cyrus-imapd.pem
++tls_server_cert: /etc/ssl/private/localhost.pem
++tls_server_key: /etc/ssl/private/localhost.pem
+ # uncomment this if you're operating in a DSCP environment (RFC-4594)
+ # qosmarking: af13
+ auth_mech: pts
+@@ -30,7 +30,7 @@ ldap_timeout: 10
+ ldap_time_limit: 10
+ unixhierarchysep: 1
+ virtdomains: userid
+-annotation_definitions: /etc/imapd.annotations.conf
++annotation_definitions: /etc/cyrus/imapd.annotations.conf
+ sieve_extensions: fileinto reject envelope body vacation imapflags notify include regex subaddress relational copy date index
+ allowallsubscribe: 0
+ allowusermoves: 1
+diff --git a/share/templates/master.cf.tpl b/share/templates/master.cf.tpl
+index 114dca1..2a9aa61 100644
+--- a/share/templates/master.cf.tpl
++++ b/share/templates/master.cf.tpl
+@@ -105,17 +105,17 @@ smtp-wallace        unix        -       -       n       -       3       smtp
+     -o smtpd_authorized_xforward_hosts=127.0.0.0/8
+ 
+ recipient_policy    unix        -       n       n       -       -       spawn
+-    user=kolab-n argv=$kolab_sap_executable_path --verify-recipient
++    user=kolab argv=$kolab_sap_executable_path --verify-recipient
+ 
+ recipient_policy_incoming unix  -       n       n       -       -       spawn
+-    user=kolab-n argv=$kolab_sap_executable_path --verify-recipient --allow-unauthenticated
++    user=kolab argv=$kolab_sap_executable_path --verify-recipient --allow-unauthenticated
+ 
+ sender_policy       unix        -       n       n       -       -       spawn
+-    user=kolab-n argv=$kolab_sap_executable_path --verify-sender
++    user=kolab argv=$kolab_sap_executable_path --verify-sender
+ 
+ sender_policy_incoming unix     -       n       n       -       -       spawn
+-    user=kolab-n argv=$kolab_sap_executable_path --verify-sender --allow-unauthenticated
++    user=kolab argv=$kolab_sap_executable_path --verify-sender --allow-unauthenticated
+ 
+ submission_policy   unix        -       n       n       -       -       spawn
+-    user=kolab-n argv=$kolab_sap_executable_path --verify-sender --verify-recipient
++    user=kolab argv=$kolab_sap_executable_path --verify-sender --verify-recipient
+ 
+diff --git a/share/templates/roundcubemail/config.inc.php.tpl b/share/templates/roundcubemail/config.inc.php.tpl
+index 7206a09..b8505e0 100644
+--- a/share/templates/roundcubemail/config.inc.php.tpl
++++ b/share/templates/roundcubemail/config.inc.php.tpl
+@@ -7,8 +7,8 @@
+     \$config['des_key'] = "$des_key";
+     \$config['username_domain'] = '$primary_domain';
+     \$config['use_secure_urls'] = true;
+-    \$config['assets_path'] = '/roundcubemail/assets/';
+-    \$config['assets_dir'] = '/usr/share/roundcubemail/public_html/assets/';
++    \$config['assets_path'] = '.';
++    \$config['assets_dir'] = '/usr/share/webapps/roundcubemail/';
+ 
+     \$config['mail_domain'] = '';
+ 
+@@ -132,8 +132,8 @@
+     \$config['mime_magic'] = null;
+     \$config['im_identify_path'] = '/usr/bin/identify';
+     \$config['im_convert_path'] = '/usr/bin/convert';
+-    \$config['log_dir'] = 'logs/';
+-    \$config['temp_dir'] = '/var/lib/roundcubemail/';
++    \$config['log_dir'] = '/var/log/roundcubemail/';
++    \$config['temp_dir'] = '/var/cache/roundcubemail/';
+ 
+     // Some additional default folders (archive plugin)
+     \$config['archive_mbox'] = 'Archive';

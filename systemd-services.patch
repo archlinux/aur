@@ -1,0 +1,47 @@
+diff --git a/kolabd/kolabd.systemd b/kolabd/kolabd.systemd
+index 6d66334..b04a1bb 100644
+--- a/kolabd/kolabd.systemd
++++ b/kolabd/kolabd.systemd
+@@ -7,8 +7,8 @@ Type=forking
+ PIDFile=/run/kolabd/kolabd.pid
+ User=kolab
+ Group=kolab
+-EnvironmentFile=/etc/sysconfig/kolabd
+-ExecStart=/usr/sbin/kolabd $FLAGS --pid-file /run/kolabd/kolabd.pid
++EnvironmentFile=/etc/conf.d/kolabd.conf
++ExecStart=/usr/bin/kolabd $FLAGS --pid-file /run/kolabd/kolabd.pid
+ ExecReload=/bin/kill -HUP $MAINPID
+ ExecStop=/bin/kill -TERM $MAINPID
+ 
+diff --git a/saslauthd/kolab-saslauthd.systemd b/saslauthd/kolab-saslauthd.systemd
+index a39073c..7712b71 100644
+--- a/saslauthd/kolab-saslauthd.systemd
++++ b/saslauthd/kolab-saslauthd.systemd
+@@ -4,9 +4,9 @@ After=syslog.target network.target
+ 
+ [Service]
+ Type=forking
+-PIDFile=/var/run/kolab-saslauthd/kolab-saslauthd.pid
+-EnvironmentFile=/etc/sysconfig/kolab-saslauthd
+-ExecStart=/usr/sbin/kolab-saslauthd $FLAGS --socket /run/saslauthd/mux
++PIDFile=/run/kolab-saslauthd/kolab-saslauthd.pid
++EnvironmentFile=/etc/conf.d/kolab-saslauthd.conf
++ExecStart=/usr/bin/kolab-saslauthd $FLAGS --socket /run/saslauthd/mux
+ ExecReload=/bin/kill -HUP $MAINPID
+ ExecStop=/bin/kill -TERM $MAINPID
+ 
+diff --git a/wallace/wallace.systemd b/wallace/wallace.systemd
+index 38a6604..647822b 100644
+--- a/wallace/wallace.systemd
++++ b/wallace/wallace.systemd
+@@ -7,8 +7,8 @@
+ PIDFile=/run/wallaced/wallaced.pid
+ User=kolab
+ Group=kolab
+-EnvironmentFile=/etc/sysconfig/wallace
+-ExecStart=/usr/sbin/wallaced $FLAGS --pid-file /run/wallaced/wallaced.pid
++EnvironmentFile=/etc/conf.d/wallace.conf
++ExecStart=/usr/bin/wallaced $FLAGS --pid-file /run/wallaced/wallaced.pid
+ ExecReload=/bin/kill -HUP $MAINPID
+ ExecStop=/bin/kill -TERM $MAINPID
+
