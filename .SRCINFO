@@ -1,0 +1,15 @@
+pkgbase = emacs-arduino-mode-git
+	pkgdesc = Major mode for the Arduino language.
+	pkgver = 20150609
+	pkgrel = 1
+	url = https://github.com/bookest/arduino-mode
+	install = emacs-arduino-mode-git.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-arduino-mode
+	replaces = emacs-arduino-mode
+
+pkgname = emacs-arduino-mode-git
+
