@@ -1,0 +1,19 @@
+pkgbase = abootimg-git
+	pkgdesc = A tool to read/write/update android boot images
+	pkgver = 0.6.r6.g1ebeb39
+	pkgrel = 1
+	url = http://gitorious.org/ac100/abootimg
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	license = GPL
+	makedepends = git
+	depends = util-linux
+	depends = cpio
+	provides = abootimg
+	source = git+https://gitlab.com/ajs124/abootimg.git
+	sha256sums = SKIP
+
+pkgname = abootimg-git
+
