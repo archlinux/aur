@@ -1,0 +1,15 @@
+pkgbase = t-prot
+	pkgdesc = A filter which improves the readability of email messages and Usenet posts by hiding some of their annoying parts
+	pkgver = 3.4
+	pkgrel = 1
+	url = http://www.escape.de/users/tolot/mutt/
+	arch = any
+	license = BSD
+	depends = perl-locale-gettext
+	source = http://www.escape.de/users/tolot/mutt/t-prot/downloads/t-prot-3.4.tar.gz
+	source = LICENSE
+	sha512sums = 6c86c10e5b381b93cbaa9382f8bd2c94eeb9c8ecec092d83cfbda5f0eea5933fb85397b364ea58e08ef93e6a06198447f167f0850959ddf16b8a18d3fe8953f0
+	sha512sums = 851607bbae4c09f23b9eafe1002c924b2bb6bec6f09037b7ca73fa665664ca8678ee6f209dcbb215dcd24261c969735c2d2dfa606495d77ef34120c14baa98cc
+
+pkgname = t-prot
+
