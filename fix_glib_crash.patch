@@ -1,0 +1,16 @@
+diff -aur fusion-icon.new/fusion-icon fusion-icon/fusion-icon
+--- fusion-icon.new/fusion-icon	2013-04-27 14:48:43.927386967 +0300
++++ fusion-icon/fusion-icon	2013-04-27 14:50:33.611149809 +0300
+@@ -15,6 +15,12 @@
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+ import os, sys, time
++### quick and dirty fix of a SIGSEGV caused by glib 2.36.1 (FS#34892)
++try:
++	import gtk
++except ImportError:
++	pass
++###
+ 
+ try:
+ 	import FusionIcon
