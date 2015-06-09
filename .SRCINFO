@@ -1,0 +1,19 @@
+pkgbase = smartshine
+	pkgdesc = SmartShine Photo - automation for the photographers
+	pkgver = 0.36
+	pkgrel = 2
+	url = https://launchpad.net/smartshine
+	install = smartshine.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = aaphoto
+	depends = python2
+	depends = gtk2
+	depends = pyexiv2
+	depends = python2-imaging
+	source = https://launchpad.net/smartshine/trunk/0.36/+download/smartshine_0.36.orig.tar.gz
+	md5sums = 4abab2b3749777fdb5ab58d03ef26055
+
+pkgname = smartshine
+
