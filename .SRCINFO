@@ -1,0 +1,24 @@
+pkgbase = mupen64plus-z64
+	pkgdesc = Nintendo64 Emulator with z64 plugins; works better with low end machines
+	pkgver = 2.5
+	pkgrel = 1
+	url = https://github.com/mupen64plus
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = mesa
+	depends = sdl
+	depends = libpng
+	depends = freetype2
+	depends = zlib
+	provides = mupen64plus
+	conflicts = mupen64plus
+	source = https://github.com/mupen64plus/mupen64plus-core/releases/download/2.5/mupen64plus-bundle-src-2.5.tar.gz
+	source = https://github.com/mupen64plus/mupen64plus-rsp-z64/releases/download/2.0.0/mupen64plus-rsp-z64-src-2.0.0.tar.gz
+	source = https://github.com/mupen64plus/mupen64plus-video-z64/releases/download/2.0.0/mupen64plus-video-z64-src-2.0.0.tar.gz
+	sha256sums = 9c75b9d826f2d24666175f723a97369b3a6ee159b307f7cc876bbb4facdbba66
+	sha256sums = df69eb722fae9a4edd7b764e9c9a459f6a6d3482225d469871c393c695f86e9b
+	sha256sums = dec06a0afb8b403754faa26da36c6ada77f7918124516c6f449a9d90d3c4861f
+
+pkgname = mupen64plus-z64
+
