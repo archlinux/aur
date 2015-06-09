@@ -1,0 +1,10 @@
+[Unit]
+Description=Syncplay Server
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/syncplay-server
+
+[Install]
+WantedBy=multi-user.target
