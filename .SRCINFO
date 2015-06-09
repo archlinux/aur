@@ -1,0 +1,14 @@
+pkgbase = tracy
+	pkgdesc = A system call tracer and injector
+	pkgver = 0.07
+	pkgrel = 1
+	url = http://hetgrotebos.org/wiki/Tracy
+	arch = i686
+	arch = x86_64
+	license = BSD
+	optdepends = python
+	source = https://github.com/MerlijnWajer/tracy/archive/tracy-0.07.tar.gz
+	md5sums = bf2ca7c645ee45d314197b4f29b4ed33
+
+pkgname = tracy
+
