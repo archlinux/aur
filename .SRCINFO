@@ -1,0 +1,13 @@
+pkgbase = ansi2html
+	pkgdesc = Convert ANSI (terminal) colours and attributes to HTML
+	pkgver = 0.15
+	pkgrel = 9
+	url = http://www.pixelbeat.org/docs/terminal_colours/
+	arch = any
+	license = GPL
+	depends = sh
+	source = https://raw.github.com/pixelb/scripts/master/scripts/ansi2html.sh
+	md5sums = 30c323938552b6d9360713617f0a0aba
+
+pkgname = ansi2html
+
