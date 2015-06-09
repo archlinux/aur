@@ -1,0 +1,19 @@
+pkgbase = jmtpfs-git
+	pkgdesc = mtpfs with better support for Android
+	pkgver = v0.5
+	pkgrel = 1
+	url = https://github.com/JasonFerrara/jmtpfs
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = fuse
+	depends = file
+	depends = libmtp
+	provides = jmtpfs
+	conflicts = jmtpfs
+	source = git+https://github.com/JasonFerrara/jmtpfs
+	md5sums = SKIP
+
+pkgname = jmtpfs-git
+
