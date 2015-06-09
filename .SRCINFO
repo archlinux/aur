@@ -1,0 +1,15 @@
+pkgbase = jsonwatch
+	pkgdesc = Track changes in JSON data
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/dbohdan/jsonwatch
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-six
+	source = jsonwatch-0.2.1.tar.gz::https://codeload.github.com/dbohdan/jsonwatch/tar.gz/v0.2.1
+	sha256sums = d70ef30187999c582b2e3561a0d3222b3c84d11b6d7439c08b04f9f9590c2ca6
+
+pkgname = jsonwatch
+
