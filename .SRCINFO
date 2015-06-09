@@ -1,0 +1,17 @@
+pkgbase = python2-dirtools
+	pkgdesc = Exclude/ignore files in a directory (using .gitignore like syntax), compute hash, search projects for an entire directory tree and gzip compression
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/tsileo/dirtools
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-globster
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/d/dirtools/dirtools-0.2.0.tar.gz
+	md5sums = 819ebf8044e51bbd1967a9c4e8c94564
+	sha256sums = 59a9cd97e622aad22b142344ba36a62903ba0ba2e11b5f028fea34442eab14df
+
+pkgname = python2-dirtools
+
