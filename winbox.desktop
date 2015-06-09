@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Winbox
+Comment=GUI administration for Mikrotik RouterOS
+Exec=/usr/bin/winbox
+Icon=/usr/share/pixmaps/winbox.png
+Terminal=false
+Categories=Utility
