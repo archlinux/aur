@@ -1,0 +1,16 @@
+pkgbase = python3-pythondialog
+	pkgdesc = Python package for interfacing with dialog
+	pkgver = 3.2.1
+	pkgrel = 1
+	url = http://pythondialog.sf.net
+	arch = any
+	license = LGPL
+	makedepends = binutils
+	depends = python
+	depends = dialog
+	conflicts = pythondialog
+	source = http://downloads.sourceforge.net/project/pythondialog/pythondialog/3.2.1/python3-pythondialog-3.2.1.tar.bz2
+	md5sums = 44b1630e147ad389c06b2bf82bd21981
+
+pkgname = python3-pythondialog
+
