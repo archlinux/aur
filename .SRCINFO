@@ -1,0 +1,16 @@
+pkgbase = rpl
+	pkgdesc = UN*X text replacement utility
+	pkgver = 1.4.1
+	pkgrel = 13
+	url = http://www.laffeycomputer.com/rpl.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glibc
+	source = http://downloads.laffeycomputer.com/current_builds/rpl-1.4.1.tar.gz
+	source = LICENSE
+	md5sums = 2eb9c18d97040dc301bfaa8aa70e21a4
+	md5sums = dccf3adbdfc376cfb813b05ecb780b70
+
+pkgname = rpl
+
