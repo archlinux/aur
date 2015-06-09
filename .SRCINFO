@@ -1,0 +1,18 @@
+pkgbase = wordbiz
+	pkgdesc = Internet Scrabble Club client
+	pkgver = 1.8.7
+	pkgrel = 2
+	url = http://www.isc.ro
+	arch = x86_64
+	arch = i686
+	license = unknown
+	depends = java-runtime
+	source = http://www.isc.ro/linux/WordBiz18linux.zip
+	source = https://raw.githubusercontent.com/colinkeenan/archpkg-wordbiz/v1.8.7/wordbiz
+	source = https://raw.githubusercontent.com/colinkeenan/archpkg-wordbiz/v1.8.7/wordbiz.desktop
+	md5sums = dd3c078f758196606e21430ac248b8d5
+	md5sums = 21544a9059d8d55dbdb24511fac98644
+	md5sums = 5b868fccffb9d25671bdd4d0175e9ea9
+
+pkgname = wordbiz
+
