@@ -1,0 +1,14 @@
+pkgbase = emacs-ats-mode
+	pkgdesc = Major mode for ATS programming language.
+	pkgver = 20150609
+	pkgrel = 1
+	url = http://cs-people.bu.edu/md/ats-mode/
+	install = emacs-ats-mode.install
+	arch = any
+	license = GPL
+	depends = emacs
+	source = http://svn.code.sf.net/p/ats-lang/code/trunk/utils/emacs/ats-mode.el
+	md5sums = 683253dcae2a69f6a99bc1af1a01c240
+
+pkgname = emacs-ats-mode
+
