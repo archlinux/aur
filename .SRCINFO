@@ -1,0 +1,14 @@
+pkgbase = gtrayicon
+	pkgdesc = A generic tray icon
+	pkgver = 1.1
+	pkgrel = 3
+	url = http://gtrayicon.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = libglade
+	source = http://downloads.sourceforge.net/gtrayicon/gtrayicon-1.1.tar.gz
+	md5sums = 7d30a5b8558e8c600cf1ea4916c8adfc
+
+pkgname = gtrayicon
+
