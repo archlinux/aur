@@ -1,0 +1,14 @@
+pkgbase = cmospwd
+	pkgdesc = Decrypts password stored in CMOS used to access BIOS setup.
+	pkgver = 5.0
+	pkgrel = 1
+	url = http://www.cgsecurity.org/wiki/CmosPwd
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://www.cgsecurity.org/cmospwd-5.0.tar.bz2
+	md5sums = 24c8caf61ff244dc2aae0ebfde47dd45
+
+pkgname = cmospwd
+

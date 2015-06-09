@@ -1,0 +1,22 @@
+# Maintainer: Lukas Fleischer <archlinux at cryptocrack dot de>
+
+pkgname=cmospwd
+pkgver=5.0
+pkgrel=1
+pkgdesc='Decrypts password stored in CMOS used to access BIOS setup.'
+arch=('i686' 'x86_64')
+url='http://www.cgsecurity.org/wiki/CmosPwd'
+license=('GPL')
+depends=('glibc')
+source=("http://www.cgsecurity.org/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('24c8caf61ff244dc2aae0ebfde47dd45')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}/src"
+  make -B
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}/src"
+  install -Dm0755 cmospwd "${pkgdir}/usr/bin/cmospwd"
+}
