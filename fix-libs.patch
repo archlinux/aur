@@ -1,0 +1,26 @@
+diff --git a/build.ninja b/build.ninja
+index 3582131..da5e30a 100644
+--- a/build.ninja
++++ b/build.ninja
+@@ -1,7 +1,7 @@
+ cc = gcc
+ include .config
+ ocamlflags = -warn-error +a -w +a -g -safe-string
+-libs = -lmupdf $mujs -lpthread -Lmupdf/build/$buildtype
++libs = -lmupdf -lmujs -lpthread -Lmupdf/build/$buildtype
+ 
+ cflags = $cflags -Wall -Werror -Imupdf/include -g $
+        -std=c99 -pedantic-errors -Wunused-parameter -Wsign-compare -Wshadow
+diff --git a/configure.sh b/configure.sh
+index fa57c60..8ea2fad 100644
+--- a/configure.sh
++++ b/configure.sh
+@@ -45,7 +45,7 @@ expr >/dev/null "$0" : "/.*" && {
+ }
+ builddir=$(cd $builddir >/dev/null $builddir && pwd -P)
+ 
+-libs="$(pkg-config --libs $pkgs) -ljpeg -ljbig2dec -lopenjpeg"
++libs="$(pkg-config --libs $pkgs) -ljpeg -ljbig2dec -lopenjp2"
+ 
+ test $ocamlfind && {
+     lablgldir="$(ocamlfind query lablgl)" || exit 1
