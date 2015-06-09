@@ -1,0 +1,19 @@
+pkgbase = kryoflux
+	pkgdesc = USB Floppy Controller for Software Preservation
+	pkgver = 2.20
+	pkgrel = 1
+	url = http://www.kryoflux.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libusb
+	optdepends = jre7-openjdk: for the Kryoflux GUI
+	source = http://www.kryoflux.com/download/kryoflux_2.20_linux.tar.bz2
+	source = 80-kryoflux.rules
+	source = kryoflux.conf
+	md5sums = 7f3102ba32041688cf1e5255c0b6fca3
+	md5sums = 43ec7eb49fbdab703cafe146145fe0de
+	md5sums = ede10c48b2b1edc5c346e8814f07bcdb
+
+pkgname = kryoflux
+

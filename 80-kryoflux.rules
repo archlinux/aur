@@ -1,0 +1,2 @@
+# Make the device nodes owned by the floppy group
+ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="6124", GROUP="floppy", MODE="0660"
