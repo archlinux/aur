@@ -1,0 +1,21 @@
+pkgbase = sidplay2-libs
+	pkgdesc = The new generation of SID emulation
+	pkgver = 2.1.1
+	pkgrel = 7
+	url = http://sidplay2.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	makedepends = libtool
+	makedepends = autoconf
+	makedepends = automake
+	depends = gcc-libs
+	options = !emptydirs
+	source = http://downloads.sourceforge.net/sidplay2/sidplay-libs-2.1.1.tar.gz
+	source = sidplay2-libs.patch
+	sha1sums = 8af6350866edc30b0d331e075fa97292f6f645a5
+	sha1sums = e2d1fe7ddd53b3f614d8ab2740ab0af20dd72abb
+
+pkgname = sidplay2-libs
+
