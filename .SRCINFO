@@ -1,0 +1,22 @@
+pkgbase = stlviewer-git
+	pkgdesc = Simple command line tool to view STL files
+	pkgver = 20150602
+	pkgrel = 1
+	url = https://github.com/vishpat/stlviewer/wiki
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = gcc
+	makedepends = git
+	makedepends = glu
+	makedepends = python2
+	depends = freeglut
+	provides = stlviewer
+	conflicts = stlviewer
+	source = git+https://github.com/vishpat/stlviewer
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = f43ca3551171a46b73b45c0cb37f57408294feea87f7a840a5dc642edf6f68b2
+
+pkgname = stlviewer-git
+
