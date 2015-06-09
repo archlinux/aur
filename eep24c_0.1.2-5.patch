@@ -1,0 +1,46 @@
+--- eep24c-0.1.2.orig/mcdelay.h
++++ eep24c-0.1.2/mcdelay.h
+@@ -24,7 +24,7 @@
+ #ifndef _MICRODELAY_H
+ #define _MICRODELAY_H
+ 
+-void microdelay_init(int multiply_factor);
++void microdelay_init(unsigned int multiply_factor);
+ void microdelay(unsigned int microsec);
+ 
+ #endif
+--- eep24c-0.1.2.orig/mcdelay.c
++++ eep24c-0.1.2/mcdelay.c
+@@ -43,7 +43,7 @@
+ int old_port_value;
+ unsigned int m_f;
+ 
+-void microdelay_init(int multiply_factor) {
++void microdelay_init(unsigned int multiply_factor) {
+     /* permition to write in port 0x80
+      nothing is suposed to use this port
+     however, we will write the same value we read... */
+@@ -61,19 +61,15 @@
+ }
+ 
+ void microdelay(unsigned int microsec) {
+-  unsigned int i;
+-  i = m_f;
++  unsigned long int i;
++  i = m_f * microsec;
+   while (i)
+     {
+-      while (microsec)
+-	{
+ #ifdef __dos__
+-	  outportb(0x80, old_port_value);
++      outportb(0x80, old_port_value);
+ #else
+-	  outb(old_port_value,0x80);
++      outb(old_port_value,0x80);
+ #endif
+-	  microsec--;
+-	}
+       i--;
+     }
+ }
