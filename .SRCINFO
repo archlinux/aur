@@ -1,0 +1,19 @@
+pkgbase = silo
+	pkgdesc = A Mesh and Field I/O Library and Scientific Database
+	pkgver = 4.10.2
+	pkgrel = 2
+	url = https://wci.llnl.gov/simulation/computer-codes/silo
+	arch = i686
+	arch = x86_64
+	license = BSD
+	license = custom
+	makedepends = gcc-fortran
+	depends = qt4
+	depends = python2
+	depends = szip
+	depends = hdf5
+	source = https://wci.llnl.gov/content/assets/docs/simulation/computer-codes/silo/silo-4.10.2/silo-4.10.2.tar.gz
+	sha256sums = 3af87e5f0608a69849c00eb7c73b11f8422fa36903dd14610584506e7f68e638
+
+pkgname = silo
+
