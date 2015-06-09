@@ -1,0 +1,21 @@
+pkgbase = switchboard-plug-display-bzr
+	pkgdesc = Display plug for Switchboard
+	pkgver = r91
+	pkgrel = 1
+	url = https://launchpad.net/switchboard-plug-display
+	arch = i686
+	arch = x86_64
+	groups = pantheon-unstable
+	license = GPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = vala
+	depends = gnome-desktop
+	depends = switchboard-bzr
+	provides = switchboard-plug-display
+	conflicts = switchboard-plug-display
+	source = bzr+lp:switchboard-plug-display
+	sha256sums = SKIP
+
+pkgname = switchboard-plug-display-bzr
+
