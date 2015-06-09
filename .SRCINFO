@@ -1,0 +1,15 @@
+pkgbase = otf-junction
+	pkgdesc = A humanist sans-serif typeface
+	pkgver = 1
+	pkgrel = 2
+	url = http://theleagueofmoveabletype.com/junction/
+	install = otf.install
+	arch = any
+	license = OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://theleagueofmoveabletype.com/junction/download
+	md5sums = 0f3dc688bf23dc5cafc325d9e9ef8273
+
+pkgname = otf-junction
+
