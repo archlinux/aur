@@ -1,0 +1,17 @@
+pkgbase = stlarch_font
+	pkgdesc = Font with icons for status bars
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://sourceforge.net/projects/stlarchfont
+	install = stlarch_font.install
+	arch = any
+	license = GPL2
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-mkfontdir
+	depends = xorg-mkfontscale
+	source = http://sourceforge.net/projects/stlarchfont/files/stlarch_font-1.5.tar.gz
+	sha256sums = bce5386cdc5efc1e3b5af3e26768c09a303df9fc43ed039eb82ebe8c7da803c3
+
+pkgname = stlarch_font
+
