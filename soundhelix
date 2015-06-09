@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+cd /usr/lib/soundhelix
+bash run.sh "$@"

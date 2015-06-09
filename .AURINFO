@@ -1,0 +1,16 @@
+pkgbase = soundhelix
+	pkgdesc = Tool for creating algorithmic random MIDI music
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = http://www.soundhelix.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = java-runtime
+	source = http://downloads.sourceforge.net/project/soundhelix/SoundHelix-0.7.1-bin.zip
+	source = soundhelix
+	source = SoundHelix-logo-medium.png
+	source = soundhelix.desktop
+
+pkgname = soundhelix
+

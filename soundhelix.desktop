@@ -1,0 +1,19 @@
+[Desktop Entry]
+Comment=
+Encoding=UTF-8
+Exec=soundhelix
+GenericName=Algorithmic music generator
+Icon=SoundHelix-logo-medium.png
+MimeType=
+Name=SoundHelix
+Path=
+StartupNotify=true
+Terminal=true
+TerminalOptions=
+Type=Application
+Version=1.0
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
+Categories=Application;Music;Sound
