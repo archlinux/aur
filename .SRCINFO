@@ -1,0 +1,16 @@
+pkgbase = android-tv-x86-system-image-22
+	pkgdesc = Android TV x86 System Image, API-22
+	pkgver = 5.1_r01
+	pkgrel = 1
+	url = http://developer.android.com/tv/index.html
+	arch = any
+	license = custom
+	depends = android-platform-22
+	optdepends = qemu-kvm
+	optdepends = libvirt
+	options = !strip
+	source = http://dl.google.com/android/repository/sys-img/android-tv/sysimg_atv_x86-22_r01.zip
+	sha1sums = 51849acc07627b75c8941b15cbe659644aac4a55
+
+pkgname = android-tv-x86-system-image-22
+
