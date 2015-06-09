@@ -19,8 +19,8 @@ arch=("i686" "x86_64")
 install=arangodb.install
 source=( "https://www.arangodb.com/repositories/Source/ArangoDB-${pkgver}.tar.bz2"
          'arangodb.service')
-md5sums=('d5b02b1360d7f9b1257c89eed95f3881'
-         '3cdd43ed5552ab918b41627ec4906e52')
+sha256sums=('717e51cfbb9a2455241c48e1329391e600a89b7ae7f8ab52cd0de7e0109ff0d0'
+            '8b244e30c69dac28c12fa080b4ee7c4256977e8a8a6ffa342432ae48e35a9b12')
 
 build() {
   msg2 "Python2 link"
