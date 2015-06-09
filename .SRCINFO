@@ -1,0 +1,27 @@
+pkgbase = contractor-bzr
+	pkgdesc = A service for sharing data between apps
+	pkgver = r136
+	pkgrel = 1
+	url = https://launchpad.net/contractor
+	arch = i686
+	arch = x86_64
+	groups = pantheon-unstable
+	license = GPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = seahorse
+	makedepends = vala
+	depends = libgee
+	optdepends = brasero: Burn Disc context menu entries
+	optdepends = file-roller: Archive context menu entries
+	optdepends = gnome-bluetooth: Bluetooth context-menu entry
+	optdepends = inkscape: Inkscape context menu entry
+	provides = contractor
+	conflicts = contractor
+	source = bzr+lp:contractor
+	source = bzr+http://bazaar.launchpad.net/~elementary-os/contractor/elementary-contracts/
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = contractor-bzr
+
