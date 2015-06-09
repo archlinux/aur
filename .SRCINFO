@@ -1,0 +1,16 @@
+pkgbase = python-moc
+	pkgdesc = Python bindings for Music On Console
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://github.com/rscholer/python-moc
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = moc
+	conflicts = python-moc-git
+	source = python-moc-1.0.tar.gz::http://github.com/rscholer/python-moc/archive/v1.0.tar.gz
+	md5sums = 6f281bde33342920eebe772788b3aff1
+
+pkgname = python-moc
+
