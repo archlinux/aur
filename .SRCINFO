@@ -1,0 +1,17 @@
+pkgbase = seaside
+	pkgdesc = Web application framework written in Smalltalk
+	pkgver = 3.1
+	pkgrel = 1
+	url = http://seaside.st/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	source = http://www.seaside.st/distributions/Seaside-3.1-OneClick.zip
+	source = run.sh
+	source = seaside.desktop
+	md5sums = 3d7993215b0fe360079745b341008b2f
+	md5sums = f202757123b2e587d7f7efde8c2958b9
+	md5sums = e33ed6f2119d9cd088803cf8b8c3b997
+
+pkgname = seaside
+

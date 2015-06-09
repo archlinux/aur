@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Seaside
+GenericName=Seaside
+Comment=Web application framework written in Smalltalk
+Icon=seaside.png
+Exec=seaside
+Categories=Development;
