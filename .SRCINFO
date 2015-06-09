@@ -1,0 +1,16 @@
+pkgbase = geckocircuits
+	pkgdesc = Powerful Circuit Simulator developed by PES/ETH Zürich
+	pkgver = 1.72
+	pkgrel = 1
+	url = http://www.gecko-simulations.com/geckocircuits.html
+	arch = any
+	license = GPL3
+	makedepends = imagemagick
+	depends = java-environment>=6
+	provides = geckocircuits
+	options = !strip
+	source = http://www.gecko-simulations.com/downloads/GeckoCIRCUITS.zip
+	sha256sums = 49c0a70a5d659a5051e388ebc77a147750eb5ee85b12943ff0abcad8f5d13aea
+
+pkgname = geckocircuits
+
