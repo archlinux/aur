@@ -1,0 +1,26 @@
+pkgbase = dvd95-git
+	pkgdesc = A gnome application to convert DVD9 to DVD5
+	pkgver = r90.01dd592
+	pkgrel = 1
+	url = http://dvd95.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = make
+	depends = cairo
+	depends = cdrkit
+	depends = ffmpeg
+	depends = libgnomeui
+	depends = libdvdread
+	depends = mplayer
+	depends = mencoder
+	depends = intltool
+	depends = libmpeg2
+	optdepends = vlc: video playback and preview
+	provides = dvd95
+	conflicts = dvd95
+	source = dvd95-git::git+http://git.code.sf.net/p/dvd95/code
+
+pkgname = dvd95-git
+
