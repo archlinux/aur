@@ -1,0 +1,14 @@
+pkgbase = otf2bdf
+	pkgdesc = A command-line OpenType to BDF font converter
+	pkgver = 3.1
+	pkgrel = 1
+	url = http://sofia.nmsu.edu/~mleisher/Software/otf2bdf/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = freetype2
+	source = http://sofia.nmsu.edu/~mleisher/Software/otf2bdf/otf2bdf-3.1.tbz2
+	md5sums = 6af09173615f1dd5ae294bbf67ac52c8
+
+pkgname = otf2bdf
+
