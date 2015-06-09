@@ -1,0 +1,16 @@
+pkgbase = epsxe-plugin-gpu-soft
+	pkgdesc = Software GPU Plugin
+	pkgver = 1.18
+	pkgrel = 2
+	url = http://www.pbernert.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = epsxe
+	source = http://www.pbernert.com/gpupeopssoftx118.tar.gz
+	source = http://www.pbernert.com/petegpucfg_V2-9_V1-77_V1-18.tar.gz
+	md5sums = 0a92e9caad7858b616a88006be66492d
+	md5sums = 7519c476a1eb28572ba6b49e82b15c5d
+
+pkgname = epsxe-plugin-gpu-soft
+
