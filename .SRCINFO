@@ -1,0 +1,13 @@
+pkgbase = sambada
+	pkgdesc = Detect associations between gentic data and environment variables
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = http://lasig.epfl.ch/sambada
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	source = http://lasig.epfl.ch/files/content/sites/lasig/files/sambada/sambada-v0.5.1-src.tar.gz
+	md5sums = a6a35f1f4fdbf2db652cab945482939b
+
+pkgname = sambada
+
