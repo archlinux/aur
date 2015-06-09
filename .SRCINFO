@@ -1,0 +1,15 @@
+pkgbase = dms
+	pkgdesc = UPnP DLNA Digital Media Server
+	pkgver = r177.1a89a12c7cae
+	pkgrel = 2
+	url = https://bitbucket.org/anacrolix/dms/
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = go
+	makedepends = git
+	makedepends = mercurial
+	depends = glibc
+
+pkgname = dms
+
