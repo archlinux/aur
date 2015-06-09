@@ -1,0 +1,12 @@
+post_install() {
+    cat <<EOF
+==> Put this in your \$HOME/.emacs file:
+==>    (require 'android-mode)
+==>    (setq android-mode-sdk-dir "/opt/android-sdk/")
+==>    (setq android-mode-avd "foo")
+EOF
+}
+
+op=$1
+shift
+$op $*
