@@ -1,0 +1,28 @@
+post_install() {
+  groupadd zotonic
+  useradd -r -g zotonic -d /var/lib/zotonic zotonic
+  chown -R root:zotonic /etc/zotonic
+  chown -R zotonic:zotonic /var/lib/zotonic
+  chown -R zotonic:zotonic /var/log/zotonic
+  echo "###########################################"
+  echo "# - Edit /etc/zotonic/config to configure #"
+  echo "#   Zotonic.                              #"
+  echo "# - Setup sites in /var/lib/zotonic/priv. #"
+  echo "# - Apply necessary modifications to      #"
+  echo "#   Postgresql's configuration and any    #"
+  echo "#   other package you want to interact    #"
+  echo "#   with Zotonic.                         #"
+  echo "# - Visit to http://zotonic.com for more  #"
+  echo "#   details on these tasks.               #"
+  echo "###########################################"
+  echo "# Zotonic might take a lot of time on its #"
+  echo "# first run, as it will generate the      #"
+  echo "# Erlang byte-code from source.           #"
+  echo "###########################################"
+}
+
+post_remove() {
+  rm -rf /var/{lib,log}/zotonic
+  userdel zotonic
+  groupdel zotonic
+}

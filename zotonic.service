@@ -1,0 +1,14 @@
+[Unit]
+Description=Zotonic, a Web-CMS written in Erlang
+After=network.target postgresql.service
+Requires=network.target postgresql.service
+
+[Service]
+Type=forking
+User=zotonic
+TimeoutStartSec=600
+ExecStart=/var/lib/zotonic/zotonic/bin/zotonic start
+ExecStop=/var/lib/zotonic/zotonic/bin/zotonic stop
+
+[Install]
+WantedBy=multi-user.target
