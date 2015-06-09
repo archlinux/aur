@@ -1,0 +1,27 @@
+pkgbase = diodon-bzr
+	pkgdesc = GTK+ clipboard manager
+	pkgver = r469
+	pkgrel = 1
+	url = https://launchpad.net/diodon
+	install = diodon-bzr.install
+	arch = any
+	license = GPL2
+	makedepends = bzr
+	makedepends = vala
+	makedepends = xorg-server-xvfb
+	depends = gconf
+	depends = gtk-update-icon-cache
+	depends = libgee06
+	depends = libpeas
+	depends = libunique3
+	depends = libxtst
+	depends = libzeitgeist
+	depends = dconf
+	depends = libappindicator-gtk3
+	provides = diodon
+	conflicts = diodon
+	source = diodon-bzr::bzr+https://code.launchpad.net/diodon/trunk
+	md5sums = SKIP
+
+pkgname = diodon-bzr
+
