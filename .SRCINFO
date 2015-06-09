@@ -1,0 +1,56 @@
+pkgbase = mesa-r300-r600-radeonsi-git
+	pkgdesc = Mesa for R300, R600 & radeon SI chipsets - git version.
+	pkgver = 70393.71e9457
+	pkgrel = 1
+	url = http://mesa3d.sourceforge.net
+	arch = x86_64
+	license = custom
+	makedepends = pkgconfig
+	makedepends = python2
+	makedepends = talloc
+	makedepends = libxml2
+	makedepends = imake
+	makedepends = git
+	makedepends = xorg-server-devel
+	makedepends = llvm-svn
+	makedepends = libomxil-bellagio
+	makedepends = libclc
+	makedepends = clang-svn
+	makedepends = elfutils
+	makedepends = python2-mako
+	depends = libxxf86vm
+	depends = libxvmc
+	depends = libxdamage
+	depends = xorg-server
+	depends = libvdpau
+	depends = wayland
+	depends = elfutils
+	depends = llvm-libs-svn
+	depends = libtxc_dxtn
+	depends = libomxil-bellagio
+	depends = nettle
+	optdepends = opencl-headers: headers necessary for OpenCL development
+	optdepends = libcl: OpenCL support
+	optdepends = libclc: OpenCL support
+	optdepends = clang-svn: OpenCL support
+	optdepends = mesa-demos: glxinfo
+	optdepends = libsystemd: for XA acceleration API
+	provides = mesa=10.7.0-devel
+	provides = opencl-mesa=10.7.0-devel
+	provides = libva-mesa-driver=10.7.0-devel
+	provides = mesa-vdpau=10.7.0-devel
+	provides = mesa-libgl=10.7.0-devel
+	provides = mesa-dri=10.7.0-devel
+	provides = libgl=10.7.0-devel
+	conflicts = mesa
+	conflicts = opencl-mesa
+	conflicts = libva-mesa-driver
+	conflicts = mesa-vdpau
+	conflicts = mesa-libgl
+	source = mesa-r300-r600-radeonsi-git::git+http://anongit.freedesktop.org/git/mesa/mesa#branch=master
+	source = LICENSE
+	sha512sums = SKIP
+	sha512sums = 25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2
+
+pkgname = mesa-r300-r600-radeonsi-git
+
