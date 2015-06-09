@@ -1,0 +1,36 @@
+run_depmod() {
+  KERNEL=
+  depmod $KERNEL
+}
+
+post_install() {
+  run_depmod
+  /usr/bin/printf '----------------------------------------------------\n'
+  /usr/bin/printf '    Modules installed. You may need to restart\n'
+  /usr/bin/printf '  cmdagent.service for the antivirus to load them.\n'
+  /usr/bin/printf '    There is no need to modprobe/insmod manually\n'
+  /usr/bin/printf '\n'
+  /usr/bin/printf '  Be aware that you will need to update and rebuild\n'
+  /usr/bin/printf ' this package every time you update the linux\n'
+  /usr/bin/printf '                     package.\n'
+  /usr/bin/printf '----------------------------------------------------\n'
+}
+
+post_upgrade() {
+  run_depmod
+  /usr/bin/printf '----------------------------------------------------\n'
+  /usr/bin/printf '   Modules updated. Please reboot at your earliest\n'
+  /usr/bin/printf '   convenience to ensure the new modules have been\n'
+  /usr/bin/printf '                      loaded.\n'
+  /usr/bin/printf '----------------------------------------------------\n'
+}
+
+post_remove() {
+  run_depmod
+  /usr/bin/printf '----------------------------------------------------\n'
+  /usr/bin/printf '   Modules removed. Please reboot at your eariest\n'
+  /usr/bin/printf '    convenience to ensure the modules have been\n'
+  /usr/bin/printf '             removed from the kernel\n'
+  /usr/bin/printf '----------------------------------------------------\n'
+}
+
