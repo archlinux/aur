@@ -1,0 +1,22 @@
+pkgbase = mingw-w64-x265
+	pkgdesc = Open Source H265/HEVC video encoder (mingw-w64)
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://bitbucket.org/multicoreware/x265
+	arch = any
+	license = GPL
+	makedepends = mingw-w64-gcc
+	makedepends = yasm
+	makedepends = mingw-w64-cmake
+	makedepends = mingw-w64-pkg-config
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = x265-1.6.tar.bz2::https://bitbucket.org/multicoreware/x265/get/1.6.tar.bz2
+	source = mingw.patch
+	md5sums = d6fcde2d021899bc93f987cd6819a233
+	md5sums = d1f6263ad2f345673a8b0ece73f68338
+
+pkgname = mingw-w64-x265
+

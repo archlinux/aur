@@ -1,0 +1,48 @@
+diff -ru multicoreware-x265-d6257335c537/source/CMakeLists.txt patched/source/CMakeLists.txt
+--- multicoreware-x265-d6257335c537/source/CMakeLists.txt	2014-07-09 10:25:15.000000000 +0200
++++ patched/source/CMakeLists.txt	2014-07-11 02:30:52.574683624 +0200
+@@ -283,6 +283,7 @@
+         # shared library is not installed if a tag is not found
+         set_target_properties(x265-shared PROPERTIES VERSION ${X265_LATEST_TAG} SOVERSION ${X265_BUILD})
+         install(TARGETS x265-shared
++                RUNTIME DESTINATION ${BIN_INSTALL_DIR}
+                 LIBRARY DESTINATION ${LIB_INSTALL_DIR}
+                 ARCHIVE DESTINATION ${LIB_INSTALL_DIR})
+     endif()
+diff -ru multicoreware-x265-d6257335c537/source/common/CMakeLists.txt patched/source/common/CMakeLists.txt
+--- multicoreware-x265-d6257335c537/source/common/CMakeLists.txt	2014-07-09 10:25:15.000000000 +0200
++++ patched/source/common/CMakeLists.txt	2014-07-11 02:32:59.046579781 +0200
+@@ -117,10 +117,16 @@
+     source_group(Assembly FILES ${ASM_PRIMITIVES})
+ endif(ENABLE_ASSEMBLY)
+ 
+-check_symbol_exists(strtok_r "string.h" HAVE_STRTOK_R)
+-if(HAVE_STRTOK_R)
+-    set_source_files_properties(param.cpp PROPERTIES COMPILE_FLAGS -DHAVE_STRTOK_R=1)
+-endif()
++if(MINGW)
++    set_source_files_properties(param.cpp PROPERTIES COMPILE_FLAGS -DHAVE_STRTOK_R="1")
++else(MINGW)
++    #FIXME Mingw-w64 defines strtok_r in pthread.h (this needs to be fixed in Mingw-w64)
++    #check_symbol_exists(strtok_r "string.h" HAVE_STRTOK_R)
++    check_symbol_exists(strtok_r "pthread.h" HAVE_STRTOK_R)
++    if(HAVE_STRTOK_R)
++        set_source_files_properties(param.cpp PROPERTIES COMPILE_FLAGS -DHAVE_STRTOK_R=1)
++    endif()
++endif(MINGW)
+ 
+ if(GCC AND CC_HAS_NO_NARROWING)
+     set_source_files_properties(cpu.cpp PROPERTIES COMPILE_FLAGS -Wno-narrowing)
+diff -ru multicoreware-x265-d6257335c537/source/common/param.cpp patched/source/common/param.cpp
+--- multicoreware-x265-d6257335c537/source/common/param.cpp	2014-07-09 10:25:15.000000000 +0200
++++ patched/source/common/param.cpp	2014-07-11 02:36:54.809974684 +0200
+@@ -28,6 +28,9 @@
+ #include "x265.h"
+ #include "TLibCommon/TComSlice.h"
+ 
++//FIXME For strtok_r in Mingw-w64 (see CMakeLists.txt)
++#include <pthread.h>
++
+ #if _MSC_VER
+ #pragma warning(disable: 4996) // POSIX functions are just fine, thanks
+ #pragma warning(disable: 4706) // assignment within conditional
