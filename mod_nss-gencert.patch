@@ -1,0 +1,40 @@
+From 2d99bb694029f06d3bb7810922e755c57229b951 Mon Sep 17 00:00:00 2001
+From: Rob Crittenden <rcritten@redhat.com>
+Date: Tue, 2 Dec 2014 11:34:23 -0500
+Subject: [PATCH] Modify gencert to create a password-less database
+
+---
+ gencert.in | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
+
+diff --git a/gencert.in b/gencert.in
+index ffccaab..1808f42 100755
+--- a/gencert.in
++++ b/gencert.in
+@@ -85,12 +85,11 @@ fi
+ 
+ DBDIR=$1
+ 
+-echo "httptest" > $DEST/pw.txt
++echo -e "\n" > $DEST/pw.txt
+ 
+ echo ""
+ echo "#####################################################################"
+-echo "Generating new server certificate and key database. The password"
+-echo "is httptest"
++echo "Generating new server certificate and key database."
+ echo "#####################################################################"
+ $CERTUTIL -N -d $DBDIR -f $DEST/pw.txt
+ 
+@@ -207,8 +206,4 @@ echo "#####################################################################"
+ rm $DEST/pw.txt
+ rm $DEST/noise
+ 
+-echo ""
+-echo "The database password is httptest"
+-echo ""
+-
+ exit 0
+-- 
+1.9.3
+

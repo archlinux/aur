@@ -1,0 +1,9 @@
+post_install() {
+    if [ ! -e etc/httpd/alias/key3.db ]; then
+        gencert etc/httpd/alias &>etc/httpd/alias/install.log
+        echo "mod_nss certificate database generated."
+    fi
+
+    find etc/httpd/alias -user root -name '*.db' -exec chgrp apache {} \;
+    find etc/httpd/alias -user root -name '*.db' -exec chmod g+r {} \;
+}
