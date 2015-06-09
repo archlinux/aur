@@ -1,0 +1,22 @@
+pkgbase = mingw-w64-openfst
+	pkgdesc = Library for constructing, combining, optimizing, and searching weighted finite-state transducers (mingw-w64)
+	pkgver = 1.4.1
+	pkgrel = 5
+	url = http://www.openfst.org/
+	arch = any
+	license = APACHE
+	makedepends = mingw-w64-configure
+	makedepends = mingw-w64-gcc
+	depends = mingw-w64-crt
+	depends = mingw-w64-dlfcn
+	depends = mingw-w64-mman-win32-svn
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://openfst.cs.nyu.edu/twiki/pub/FST/FstDownload/openfst-1.4.1.tar.gz
+	source = getpagesize.patch
+	md5sums = ca8f1730b9b9b281e515611fa9ae23c0
+	md5sums = 0788f08b514026e7a9713cbbf9e4be20
+
+pkgname = mingw-w64-openfst
+

@@ -1,0 +1,28 @@
+diff -rupN old/src/lib/mapped-file.cc new/src/lib/mapped-file.cc
+--- old/src/lib/mapped-file.cc	2014-04-30 00:15:18.000000000 +0200
++++ new/src/lib/mapped-file.cc	2015-02-26 08:53:46.339405863 +0100
+@@ -20,6 +20,10 @@
+ #include <fcntl.h>
+ #include <unistd.h>
+ 
++#if (defined _WIN32 || defined _WIN64 || defined __WINDOWS__ || defined __MINGW32__)
++#include <windows.h>
++#endif
++
+ namespace fst {
+ 
+ // Alignment required for mapping structures (in bytes.)  Regions of memory
+@@ -76,7 +80,13 @@ MappedFile* MappedFile::Map(istream* s,
+     size_t pos = spos;
+     int fd = open(source.c_str(), O_RDONLY);
+     if (fd != -1) {
++#if (defined _WIN32 || defined _WIN64 || defined __WINDOWS__ || defined __MINGW32__)
++      SYSTEM_INFO system_info;
++      GetSystemInfo(&system_info);
++      int pagesize = system_info.dwPageSize;
++#else
+       int pagesize = sysconf(_SC_PAGESIZE);
++#endif
+       off_t offset = pos % pagesize;
+       off_t upsize = size + offset;
+       void *map = mmap(0, upsize, PROT_READ, MAP_SHARED, fd, pos - offset);
