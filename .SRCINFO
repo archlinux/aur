@@ -1,0 +1,29 @@
+pkgbase = audiere
+	pkgdesc = High-level audio API. It can play Ogg Vorbis, MP3, FLAC, uncompressed WAV, AIFF, MOD, S3M, XM, and IT files
+	pkgver = 1.9.4
+	pkgrel = 10
+	url = http://audiere.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = speex
+	depends = wxgtk
+	depends = libvorbis
+	depends = libcdaudio
+	optdepends = flac: for flac format
+	options = !libtool
+	source = http://downloads.sourceforge.net/sourceforge/audiere/audiere-1.9.4.tar.gz
+	source = gcc-4.4.patch
+	source = TagsDialog.h
+	source = DeviceFrame.cpp
+	source = MIDIDeviceDialog.h
+	source = speexfile.cpp.patch
+	md5sums = b95dfe6f1e69cfd12371747f22772766
+	md5sums = bd082fa9a258ef6598eefe88a71a4279
+	md5sums = 55c31ad9a68304f49f30ac8ca9fa3288
+	md5sums = 0fe69aeb84a6860ef7a36f75887f4f07
+	md5sums = a80de799a3b833f0331cf83f7f6a27ab
+	md5sums = 8dd3fd42cb0ff4961ec050fc859bcf63
+
+pkgname = audiere
+

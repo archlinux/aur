@@ -1,0 +1,34 @@
+diff -Naur audiere-1.9.4.orig//src/audiere.h audiere-1.9.4.new//src/audiere.h
+--- audiere-1.9.4.orig//src/audiere.h	2010-04-02 15:58:56.000000000 +0200
++++ audiere-1.9.4.new//src/audiere.h	2010-04-02 16:00:52.000000000 +0200
+@@ -28,6 +28,7 @@
+ 
+ #include <vector>
+ #include <string>
++#include <cstring>
+ 
+ #ifdef _MSC_VER
+ #pragma warning(disable : 4786)
+diff -Naur audiere-1.9.4.orig//src/debug.h audiere-1.9.4.new//src/debug.h
+--- audiere-1.9.4.orig//src/debug.h	2010-04-02 15:58:56.000000000 +0200
++++ audiere-1.9.4.new//src/debug.h	2010-04-02 16:01:39.000000000 +0200
+@@ -5,7 +5,7 @@
+ #include <assert.h>
+ #include <stdio.h>
+ #include <string>
+-
++#include <cstdlib>
+ 
+ namespace audiere {
+ 
+diff -Naur audiere-1.9.4.orig//src/utility.cpp audiere-1.9.4.new//src/utility.cpp
+--- audiere-1.9.4.orig//src/utility.cpp	2010-04-02 15:58:56.000000000 +0200
++++ audiere-1.9.4.new//src/utility.cpp	2010-04-02 16:00:52.000000000 +0200
+@@ -4,6 +4,7 @@
+ 
+ 
+ #include <ctype.h>
++#include <cstdio>
+ #include "utility.h"
+ #include "internal.h"
+ 

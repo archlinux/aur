@@ -1,0 +1,11 @@
+--- audiere-1.9.4/src/speexfile/speexfile.cpp	2006-02-14 05:57:01.000000000 +0100
++++ audiere-1.9.4/src/speexfile/speexfile.cpp.new	2007-10-04 14:51:32.000000000 +0200
+@@ -889,7 +889,7 @@
+     modeID = header->mode;
+     if ( forceMode != -1 )
+         modeID = forceMode;
+-    mode = speex_mode_list[modeID];
++    mode = const_cast<SpeexMode*>(speex_mode_list[modeID]);
+ 
+     if ( mode->bitstream_version < header->mode_bitstream_version ) {
+         strcpy ( speex_last_error, "The file was encoded with a newer version of Speex.\nYou need to upgrade in order to play it." );
