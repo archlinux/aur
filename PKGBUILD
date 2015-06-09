@@ -3,7 +3,7 @@
 pkgname=exploit-db
 pkgver=1.5
 pkgrel=1
-pkgdesc="The Exploit Database (EDB) â€“ an ultimate archive of exploits and vulnerable software - A collection of hacks"
+pkgdesc="The Exploit Database (EDB) an ultimate archive of exploits and vulnerable software - A collection of hacks"
 url="http://www.exploit-db.com"
 license="custom"
 arch=('any')

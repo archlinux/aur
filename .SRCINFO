@@ -1,5 +1,5 @@
 pkgbase = exploit-db
-	pkgdesc = The Exploit Database (EDB) â€“ an ultimate archive of exploits and vulnerable software - A collection of hacks
+	pkgdesc = The Exploit Database (EDB) an ultimate archive of exploits and vulnerable software - A collection of hacks
 	pkgver = 1.5
 	pkgrel = 1
 	url = http://www.exploit-db.com
