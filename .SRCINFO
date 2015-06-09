@@ -1,0 +1,20 @@
+pkgbase = nemerle
+	pkgdesc = A high-level statically-typed programming language for the .NET platform.
+	pkgver = 1.2.447.0
+	pkgrel = 1
+	url = http://www.nemerle.org
+	arch = i686
+	arch = x86_64
+	license = nemerle
+	depends = mono
+	source = http://nemerle.org/Download/Nightly%20master-NET40-VS2010/build-247/NemerleBinaries-net-4.0-v1.2.447.0.zip
+	source = https://raw.github.com/rsdn/nemerle/v1.2/License.rtf
+	source = ncc
+	source = nemish
+	md5sums = b0973cae932035ea41676f3e2a6632df
+	md5sums = f28530ac505daf378a44af822b25f7f5
+	md5sums = 0bc83af0aac196f43c8f0907b64625bb
+	md5sums = 87b26931a597f99bb0aca67a82cafc0a
+
+pkgname = nemerle
+
