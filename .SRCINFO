@@ -1,0 +1,22 @@
+pkgbase = lxqt-runner-git
+	pkgdesc = The LXQt application launcher
+	pkgver = 0.9.0.4.g8777c55
+	pkgrel = 1
+	url = http://lxqt.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = kwindowsystem
+	depends = lxqt-globalkeys-git
+	depends = menu-cache
+	depends = qt5-script
+	provides = lxqt-runner
+	conflicts = lxqt-runner
+	source = git+https://github.com/lxde/lxqt-runner.git
+	sha256sums = SKIP
+
+pkgname = lxqt-runner-git
+
