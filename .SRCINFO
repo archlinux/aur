@@ -1,0 +1,16 @@
+pkgbase = python2-waitress
+	pkgdesc = Pure-Python WSGI server
+	pkgver = 0.8.9
+	pkgrel = 1
+	url = https://github.com/Pylons/waitress
+	arch = any
+	license = ZPL
+	makedepends = python2-setuptools
+	depends = python2
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/w/waitress/waitress-0.8.9.tar.gz
+	md5sums = da3f2e62b3676be5dd630703a68e2a04
+	sha256sums = 826527dc9d334ed4ed76cdae672fdcbbccf614186657db71679ab58df869458a
+
+pkgname = python2-waitress
+
