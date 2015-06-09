@@ -1,0 +1,15 @@
+pkgbase = kapow
+	pkgdesc = Punch clock to track time spent on projects
+	pkgver = 1.4.4.2
+	pkgrel = 1
+	url = http://gottcode.org/kapow/
+	install = kapow.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qt5-base
+	source = http://gottcode.org/kapow/kapow-1.4.4.2-src.tar.bz2
+	sha256sums = 1719616a42eb28c96037533743895c1760069e6425b81a400d7c9f70168200cd
+
+pkgname = kapow
+
