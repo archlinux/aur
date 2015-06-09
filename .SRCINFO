@@ -1,0 +1,14 @@
+pkgbase = ruby-ruby-progressbar
+	pkgdesc = Flexible text progress bar library for Ruby
+	pkgver = 1.7.5
+	pkgrel = 1
+	url = https://github.com/jfelchner/ruby-progressbar
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = ruby-progressbar-1.7.5.gem
+	source = https://rubygems.org/downloads/ruby-progressbar-1.7.5.gem
+	sha256sums = 71c754e2e3f26b87f307e360dee8f2267800b88327a7def0098d7e6cb752d643
+
+pkgname = ruby-ruby-progressbar
+
