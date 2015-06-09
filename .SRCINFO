@@ -1,0 +1,19 @@
+pkgbase = mozldap
+	pkgdesc = Mozilla LDAP C SDK
+	pkgver = 6.0.7
+	pkgrel = 1
+	url = http://www.mozilla.org/directory/csdk.html
+	arch = i686
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = libsasl
+	depends = nspr
+	depends = nss
+	depends = svrcore
+	source = ftp://ftp.mozilla.org/pub/mozilla.org/directory/c-sdk/releases/v6.0.7/src/mozldap-6.0.7.tar.gz
+	sha512sums = bad8005941acaf98f53a60c6c8b697a680e8efe736817b063853ff1f07f052d3257ba7c28f502e37e0c2544fe00d24d31787ccbf892deb43c5481d49ed434b71
+
+pkgname = mozldap
+
