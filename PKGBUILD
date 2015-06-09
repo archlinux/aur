@@ -11,7 +11,7 @@ pkgver=2.4.0
 pkgrel=1
 pkgdesc="A different telegram client from Aseman team"
 arch=('i686' 'x86_64')
-url="http://aseman.co/en/"
+url="http://aseman.co/en/products/cutegram/"
 license=('GPL')
 depends=('qt5-base' 'qt5-declarative' 'qt5-multimedia' 'qt5-quick1'
 'qt5-graphicaleffects' 'qt5-quickcontrols' 'qt5-webengine' 'qt5-imageformats'
