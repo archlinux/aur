@@ -1,0 +1,16 @@
+pkgbase = l3afpad
+	pkgdesc = Simple plain text editor for GTK3.
+	pkgver = 0.8.18.1.10
+	pkgrel = 2
+	url = http://www.calno.com/l3afpad/
+	install = l3afpad.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = intltool
+	depends = gtk3
+	depends = desktop-file-utils
+	source = http://www.calno.com/l3afpad/l3afpad-0.8.18.1.10.tar.xz
+
+pkgname = l3afpad
+
