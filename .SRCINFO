@@ -1,0 +1,21 @@
+pkgbase = createrepo_c
+	pkgdesc = A C implementation of createrepo, a tool to create yum repositories
+	pkgver = 0.1.14
+	pkgrel = 2
+	url = https://fedorahosted.org/createrepo_c/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = sqlite
+	makedepends = zlib
+	depends = rpm-org
+	depends = libxml2
+	depends = curl
+	depends = glib2
+	source = https://fedorahosted.org/releases/c/r/createrepo_c/createrepo_c-0.1.14.tar.xz
+	sha256sums = a3f545d45575ba5a70f68b174354dd6e6df096e30f2cab24bbe98b36d0f6527f
+
+pkgname = createrepo_c
+
