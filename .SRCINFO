@@ -1,0 +1,22 @@
+pkgbase = x4daemon
+	pkgdesc = A daemon that makes it possible to use all special keys on your Sidewinder X4 keyboard.
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = http://www.geekparadise.de/x4daemon/
+	install = x4daemon.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = autoconf
+	depends = libusb>=1.0.8
+	depends = bash
+	depends = grep
+	depends = coreutils
+	depends = procps
+	source = http://geekparadise.de/x4daemon_download/x4daemon-0.4.4.tar.bz2
+	source = x4daemon.install
+	sha256sums = 016f7ebfea90383b0a8e5218b9ca829b1fd715cd34a633c3a043fb0fe6fdf834
+	sha256sums = 38205247e8097bce66d4a25c8dbdd7b82d7bef6894979cffb26a231685ec5623
+
+pkgname = x4daemon
+
