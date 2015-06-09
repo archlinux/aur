@@ -1,0 +1,15 @@
+pkgbase = squeak-image-4.5
+	pkgdesc = Image file for squeak VM
+	pkgver = 4.5
+	pkgrel = 1
+	url = http://www.squeak.org
+	arch = any
+	license = custom:MIT
+	license = custom:XEROX
+	license = APACHE
+	depends = squeak-vm
+	source = http://ftp.squeak.org/4.5alpha/Squeak4.5-13680.zip
+	sha512sums = 9de0a7a5ec5d3e13cace5be419c500f6c6074912acfedeec60732110438e8d712599d175f620d2fabac9827e3d54f3935a8c5c093c8b906e0374f4ec270d3456
+
+pkgname = squeak-image-4.5
+
