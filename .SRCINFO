@@ -1,0 +1,23 @@
+pkgbase = oregano
+	pkgdesc = Schematic capture and circuit simulator
+	pkgver = v0.83.2
+	pkgrel = 1
+	url = https://github.com/drahnr/oregano
+	install = oregano.install
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = waf
+	depends = goocanvas
+	depends = gtk3
+	depends = gtksourceview3
+	depends = libxml2
+	depends = intltool
+	provides = oregano
+	source = git://github.com/drahnr/oregano.git#tag=v0.83.2
+	source = oregano.install
+	sha512sums = SKIP
+	sha512sums = 1761a2bede604d071e81cc3436042e277871d0f6775fa0e6a70004195338e572f25a1b1cbe44dd252c4b1167bbd4061e51a24a00999fbb65c1c6e087144cc995
+
+pkgname = oregano
+
