@@ -1,0 +1,20 @@
+pkgbase = nautilus-nutstore
+	pkgdesc = Nutstore integration for Nautilus.
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://jianguoyun.com/
+	install = nautilus-nutstore.install
+	arch = x86_64
+	arch = i686
+	license = CCPL:by-nd
+	license = GPL2
+	depends = libnautilus-extension
+	optdepends = nutstore: Nutstore client (system-wide)
+	optdepends = gtk2: per-user Nutstore depend
+	optdepends = java-runtime: per-user Nutstore depend
+	optdepends = python2-notify: per-user Nutstore depend
+	source = https://jianguoyun.com/static/exe/installer/nutstore_linux_src_installer.tar.gz
+	md5sums = 5d2afc990450b7a8e1839a664e351944
+
+pkgname = nautilus-nutstore
+
