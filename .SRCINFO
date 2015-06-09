@@ -1,0 +1,14 @@
+pkgbase = python-pytest-localserver
+	pkgdesc = pytest plugin to test server connections locally.
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = http://bitbucket.org/basti/pytest-localserver/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = python-pytest
+	source = https://bitbucket.org/basti/pytest-localserver/downloads/pytest-localserver-0.3.3.tar.gz
+	md5sums = 44507e8db3456bffbe9d645135facb58
+
+pkgname = python-pytest-localserver
+
