@@ -1,0 +1,26 @@
+pkgbase = mod_diary-git
+	pkgdesc = A simple and lightweight blog system for Apache HTTPD Server
+	pkgver = r25.0dfee1c
+	pkgrel = 1
+	url = https://github.com/hamano/apache-mod-diary
+	install = mod_diary.install
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = git
+	depends = apache
+	depends = apr
+	depends = discount
+	depends = clearsilver
+	depends = neon
+	provides = mod_diary
+	provides = mod_diary-git
+	source = apache-mod-diary::git+https://github.com/hamano/apache-mod-diary.git
+	source = Makefile
+	source = modules.mk
+	md5sums = SKIP
+	md5sums = f5e06242128e16fda2c34983dfa5a752
+	md5sums = 9e3a805eca1b815839a5ae22649f2c69
+
+pkgname = mod_diary-git
+
