@@ -1,0 +1,27 @@
+pkgbase = ros-indigo-household-objects-database-msgs
+	pkgdesc = ROS - The household_objects_database_msgs package.
+	pkgver = 0.1.1
+	pkgrel = 3
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-shape-msgs
+	makedepends = ros-indigo-geometry-msgs
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-object-recognition-msgs
+	depends = ros-indigo-shape-msgs
+	depends = ros-indigo-geometry-msgs
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-message-runtime
+	depends = ros-indigo-message-generation
+	depends = ros-indigo-object-recognition-msgs
+	source = household_objects_database_msgs::git+https://github.com/ros-gbp/household_objects_database_msgs-release.git#tag=release/indigo/household_objects_database_msgs/0.1.1-2
+	md5sums = SKIP
+
+pkgname = ros-indigo-household-objects-database-msgs
+
