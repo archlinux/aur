@@ -1,0 +1,13 @@
+pkgbase = otf-chiq
+	pkgdesc = Chiq font by Andrew Paglinawan
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://andrewpaglinawan.com
+	install = install
+	arch = any
+	license = OFL:SIL Open Font License http://opensource.org/licenses/OFL-1.1
+	source = http://www.andrewpaglinawan.com/typeface/ChiqFamily.zip
+	sha256sums = 093ee450959a5eb661af86a69501769e56107aa3a13da2d09dce23da25c59b55
+
+pkgname = otf-chiq
+
