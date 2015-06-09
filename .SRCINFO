@@ -1,0 +1,69 @@
+pkgbase = eiskaltdcpp-git
+	pkgver = v2.2.10.35.gd9fe129
+	pkgrel = 1
+	url = http://code.google.com/p/eiskaltdc/
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	license = GPL3
+	conflicts = eiskaltdcpp
+	options = !emptydirs
+	source = git://github.com/eiskaltdcpp/eiskaltdcpp.git
+	sha1sums = SKIP
+
+pkgname = eiskaltdcpp-gtk-git
+	pkgdesc = EiskaltDC++: Gtk2-based DC and ADC client based on dcpp core
+	install = eiskaltdcpp.install
+	depends = gtk2
+	depends = libnotify
+	depends = desktop-file-utils
+	depends = eiskaltdcpp-core-git
+	depends = eiskaltdcpp-data-git
+	provides = eiskaltdcpp-gtk
+	conflicts = eiskaltdcpp-gtk
+	conflicts = eiskaltdcpp
+
+pkgname = eiskaltdcpp-qt-git
+	pkgdesc = EiskaltDC++: Qt4-based DC and ADC client based on dcpp core
+	install = eiskaltdcpp.install
+	depends = qt4
+	depends = eiskaltdcpp-core-git
+	depends = eiskaltdcpp-data-git
+	optdepends = aspell: spellchecking
+	optdepends = qtscriptgenerator: need for qtscript
+	provides = eiskaltdcpp-qt
+	conflicts = eiskaltdcpp-qt
+
+pkgname = eiskaltdcpp-daemon-git
+	pkgdesc = EiskaltDC++ Daemon
+	depends = eiskaltdcpp-core-git
+	depends = eiskaltdcpp-data-git
+	depends = gcc-libs
+	provides = eiskaltdcpp-daemon
+	conflicts = eiskaltdcpp-daemon
+
+pkgname = eiskaltdcpp-core-git
+	pkgdesc = EiskaltDC++ Core
+	depends = zlib
+	depends = bzip2
+	depends = openssl
+	depends = lua52
+	depends = libidn
+	depends = pcre
+	provides = eiskaltdcpp-core
+	conflicts = eiskaltdcpp-core
+
+pkgname = eiskaltdcpp-data-git
+	pkgdesc = EiskaltDC++ Data files
+	install = eiskaltdcpp.install
+	arch = any
+	depends = sh
+	depends = bash
+	depends = hicolor-icon-theme
+	optdepends = php: needed for some optional scripts
+	provides = eiskaltdcpp-data
+	conflicts = eiskaltdcpp-data
+
