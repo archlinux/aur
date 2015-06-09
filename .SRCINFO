@@ -1,0 +1,21 @@
+pkgbase = pcompress-git
+	pkgdesc = Pcompress is a utility to do compression/decompression and deduplication in parallel by splitting input data into chunks.
+	pkgver = 405
+	pkgrel = 1
+	url = http://moinakg.github.io/pcompress/
+	arch = x86_64
+	license = LGPL v3
+	makedepends = yasm
+	depends = glibc
+	depends = gcc-libs-multilib
+	depends = bzip2
+	depends = zlib
+	depends = openssl
+	options = !makeflags
+	source = git+https://github.com/moinakg/pcompress.git
+	source = http://wavpack.com/wavpack-4.70.0.tar.bz2
+	md5sums = SKIP
+	md5sums = 4c0186ef0dc8367ce5cd7cc0f398b714
+
+pkgname = pcompress-git
+
