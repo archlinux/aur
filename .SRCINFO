@@ -1,0 +1,18 @@
+pkgbase = stickynotes
+	pkgdesc = Place colourful sticky reminders all over your desktop
+	pkgver = 10.02.20
+	pkgrel = 8
+	url = https://github.com/xbot/stickynotes/
+	arch = any
+	license = GPL
+	depends = pygtk
+	depends = python2-wnck
+	source = stickynotes::git+https://github.com/xbot/stickynotes.git#commit=0e4e7bae8ab972817c9ab21d0f5cb86b2a357389
+	source = stickynotes.desktop
+	source = stickynotes.sh
+	md5sums = SKIP
+	md5sums = ccdad6a729fbda6bb116a25666703423
+	md5sums = 161b98bb2ee7e4f5b6c1fdbed75157aa
+
+pkgname = stickynotes
+

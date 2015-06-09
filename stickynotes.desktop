@@ -1,0 +1,11 @@
+
+[Desktop Entry]
+Encoding=UTF-8
+Name=Sticky Notes
+Comment=Colourful sticky reminders on your desktop.
+Exec=python2 /usr/share/stickynotes/stickynotes.py
+Terminal=false
+Type=Application
+Icon=/usr/share/stickynotes/icons/applet.png
+StartupNotify=true
+Categories=Application;Utility;
