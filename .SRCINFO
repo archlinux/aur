@@ -1,0 +1,39 @@
+pkgbase = lib32-sdl-nobackingstore
+	pkgdesc = sdl library that does not use backing store by default (prevent tearing due to a bug in Xserver)
+	pkgver = 1.2.15
+	pkgrel = 4
+	url = http://www.libsdl.org
+	install = message.install
+	arch = x86_64
+	license = LGPL
+	makedepends = lib32-alsa-lib
+	makedepends = lib32-mesa
+	makedepends = lib32-libpulse
+	makedepends = gcc-multilib
+	depends = lib32-libxext
+	depends = lib32-libxrender
+	depends = lib32-libx11
+	depends = sdl
+	optdepends = lib32-alsa-lib: ALSA audio driver
+	optdepends = lib32-libpulse: PulseAudio audio driver
+	provides = lib32-sdl=1.2.15
+	conflicts = lib32-sdl
+	replaces = lib32-sdl
+	options = !libtool
+	source = http://www.libsdl.org/release/SDL-1.2.15.tar.gz
+	source = sdl-1.2.14-fix-mouse-clicking.patch
+	source = sdl-1.2.14-disable-mmx.patch
+	source = fix_joystick_misc_axes.diff
+	source = backingstore_on_demand.diff
+	source = libsdl-1.2.15-resizing.patch
+	source = X11_KeyToUnicode.patch
+	md5sums = 9d96df8417572a2afb781a7c4c811a85
+	md5sums = 04d8c179f125e04bcd4c9d60e013c2d7
+	md5sums = e5c16b7611f62c7cb25f0534eff68852
+	md5sums = 687586a108b597a2a6b73070c1d37e51
+	md5sums = 5f81abefba5713c2ebfc21b2a1e6e044
+	md5sums = 3dd50347d8856160a9cbd7f80383a1f8
+	md5sums = edea272dff4698470877c016d818918d
+
+pkgname = lib32-sdl-nobackingstore
+

@@ -1,0 +1,24 @@
+post_install() {
+	echo
+	echo
+	echo 'https://bugs.freedesktop.org/show_bug.cgi?id=74158'
+	echo 
+	echo 'To enable backing store, please export SDL_VIDEO_X11_BACKINGSTORE=1'
+	echo 'To disable backing store, please unset SDL_VIDEO_X11_BACKINGSTORE'
+	echo 'if backing store is enabled, a message in the terminal will say it.'
+	echo
+	echo
+}
+
+post_upgrade() {
+	echo
+	echo
+	echo 'https://bugs.freedesktop.org/show_bug.cgi?id=74158'
+	echo 
+	echo 'To enable backing store, please export SDL_VIDEO_X11_BACKINGSTORE=1'
+	echo 'To disable backing store, please unset SDL_VIDEO_X11_BACKINGSTORE'
+	echo 'if backing store is enabled, a message in the terminal will say it.'
+	echo
+	echo
+}
+

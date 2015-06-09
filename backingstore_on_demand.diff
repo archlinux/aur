@@ -1,0 +1,16 @@
+--- a/src/video/x11/SDL_x11video.c	2014-02-03 09:19:06.152761230 +0100
++++ b/src/video/x11/SDL_x11video.c 	2014-02-03 09:14:40.062762569 +0100
+@@ -1088,11 +1088,10 @@
+ 		}
+ 	}
+ 
+-#if 0 /* This is an experiment - are the graphics faster now? - nope. */
+ 	if ( SDL_getenv("SDL_VIDEO_X11_BACKINGSTORE") )
+-#endif
+-	/* Cache the window in the server, when possible */
++	/* Cache the window in the server, on request */
+ 	{
++		printf("Backingstore is on.\n");
+ 		Screen *xscreen;
+ 		XSetWindowAttributes a;
+ 
