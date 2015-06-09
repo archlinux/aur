@@ -1,0 +1,24 @@
+post_upgrade() {
+  if [[ "$2" < "1.1_r330.94454ca4-1" ]]; then
+    cat <<EOF
+IMPORTANT: As of 1.1_r330, Gate One has been relocated from /opt/gateone to
+your system's site-packages directory.  The old location was left alone.  You may
+now start Gate One by simply running 'gateone' (it should be in your \$PATH).
+
+Important default file locations (and their respective cli args):
+
+    --settings_dir=/etc/gateone/conf.d
+    --certificate=/etc/gateone/ssl/certificate.pem
+    --keyfile=/etc/gateone/ssl/keyfile.pem
+    --user_dir=/var/lib/gateone/users
+    --log_file_prefix=/var/log/gateone/gateone.log
+    --pid_file=/var/run/gateone.pid
+    
+TIP: If you wish to preserve your old settings:
+sudo cp /opt/gateone/settings/*.conf /etc/gateone/conf.d/
+
+For more details, please see
+https://github.com/liftoff/GateOne/commit/94454ca48b47ef251e72d348e863833910569f14
+EOF
+  fi
+}

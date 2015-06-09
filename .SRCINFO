@@ -1,0 +1,28 @@
+pkgbase = gateone-git
+	pkgdesc = Web-based terminal emulator and SSH client
+	pkgver = 1.1_r485.ga34f7e0
+	pkgrel = 1
+	url = https://github.com/liftoff/GateOne
+	install = gateone-git.install
+	arch = any
+	license = AGPL3
+	makedepends = git
+	makedepends = systemd
+	depends = python2
+	depends = python2-tornado
+	depends = python2-futures
+	depends = python2-setuptools
+	depends = python2-html5lib
+	optdepends = python2-imaging: A python module for manipulating images
+	optdepends = python2-pillow: An alternative to python2-imaging
+	optdepends = python2-pam: Only necessary if you plan to use the PAM authentication module
+	optdepends = python2-kerberos: Only necessary if you plan to use the Kerberos authentication module
+	optdepends = python2-pyopenssl: Used to generate self-signed SSL keys and certificates
+	optdepends = dtach: Allows sessions to be resumed even if Gate One is restarted
+	optdepends = python2-mutagen: Display audio metadata when reading audio files
+	options = emptydirs
+	source = git+https://github.com/liftoff/GateOne.git
+	md5sums = SKIP
+
+pkgname = gateone-git
+
