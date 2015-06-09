@@ -1,0 +1,14 @@
+pkgbase = libgcrypt15
+	pkgdesc = General purpose cryptographic library based on the code from GnuPG
+	pkgver = 1.5.4
+	pkgrel = 4
+	url = http://www.gnupg.org
+	arch = any
+	license = LGPL
+	source = ftp://ftp.gnupg.org/gcrypt/libgcrypt/libgcrypt-1.5.4.tar.bz2
+	source = debian_security_patches.patch
+	sha1sums = bdf4b04a0d2aabc04ab3564fbe38fd094135aa7a
+	sha1sums = eb1b1c3a8afd6705573455b9259ac6ece961d1b3
+
+pkgname = libgcrypt15
+
