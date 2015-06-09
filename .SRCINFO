@@ -1,0 +1,15 @@
+pkgbase = emacs-riece
+	pkgdesc = an IRC client for Emacs
+	pkgver = 9.0.0
+	pkgrel = 1
+	url = http://www.nongnu.org/riece/index.html
+	install = emacs-riece.install
+	arch = any
+	license = GPL
+	depends = emacs
+	optdepends = ruby: for some add-ons
+	source = http://dl.sv.gnu.org/releases/riece/riece-9.0.0.tar.gz
+	sha256sums = 88928dc21df3f3b15158e64b77268882544e6afa1d93f3545435ce430837fd2d
+
+pkgname = emacs-riece
+
