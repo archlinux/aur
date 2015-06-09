@@ -1,0 +1,23 @@
+pkgbase = eidete-bzr
+	pkgdesc = Simple screencaster for the elementary project
+	pkgver = r195
+	pkgrel = 1
+	url = https://launchpad.net/eidete
+	install = eidete.install
+	arch = i686
+	arch = x86_64
+	groups = pantheon-unstable
+	license = GPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = vala
+	depends = granite-bzr
+	depends = gst-plugins-base-libs
+	depends = libwnck3
+	provides = eidete
+	conflicts = eidete
+	source = bzr+lp:eidete
+	sha256sums = SKIP
+
+pkgname = eidete-bzr
+
