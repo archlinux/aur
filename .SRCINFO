@@ -1,0 +1,26 @@
+pkgbase = clojure-git
+	pkgdesc = LISP dialect for the JVM (development version)
+	pkgver = latest
+	pkgrel = 1
+	url = http://clojure.org
+	install = clojure-git.install
+	arch = i686
+	arch = x86_64
+	license = CPL
+	makedepends = git
+	makedepends = apache-ant
+	makedepends = maven
+	depends = java-environment
+	depends = sh
+	optdepends = rlwrap: friendlier shell with readline support
+	provides = clojure
+	conflicts = clojure
+	source = git+https://github.com/clojure/clojure.git
+	source = clj
+	source = clojure.sh
+	sha256sums = SKIP
+	sha256sums = 0d0f9e7db77f4b5f507ee18e140c29138b7bff5c4ca9d0b963dfd657c6e3c157
+	sha256sums = b3fa6257dad10fb39851e87563269b80b2473623126595d9c279bbd90e97f052
+
+pkgname = clojure-git
+

@@ -1,0 +1,7 @@
+post_install() {
+  cat << MSG
+==> Remember to relogin or source /etc/profile.d/clojure.sh manually.
+MSG
+}
+
+# vim: ft=sh ts=2 sw=2 et
