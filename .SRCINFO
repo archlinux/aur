@@ -1,0 +1,21 @@
+pkgbase = subversive-takedown
+	pkgdesc = A top-down, tactical voxel shooter, inspired by games like SND Online, Voxatron/Ace of Spades and Wolfenstein: Enemy Territory
+	pkgver = 41
+	pkgrel = 1
+	url = http://mp2.dk/st/
+	arch = i686
+	arch = x86_64
+	license = custom:ClosedSource
+	depends = enet
+	depends = libvorbis
+	depends = openal
+	depends = python2
+	depends = zenity
+	backup = opt/subversive-takedown/config.txt
+	source_i686 = http://mp2.dk/st/builds/linux-i686/st-07612501882b2f1249fc2601074cb70da07fffe4-linux-i686.tar.gz
+	sha256sums_i686 = bc9f7b56676d0ae23bd7d63b135e42bb5ca1f8ab60c3b37754dec9d3c321c15f
+	source_x86_64 = http://mp2.dk/st/builds/linux-x86_64/st-07612501882b2f1249fc2601074cb70da07fffe4-linux-x86_64.tar.gz
+	sha256sums_x86_64 = bc9f7b56676d0ae23bd7d63b135e42bb5ca1f8ab60c3b37754dec9d3c321c15f
+
+pkgname = subversive-takedown
+
