@@ -1,0 +1,22 @@
+pkgbase = kamoso
+	pkgdesc = An application to take pictures and videos out of your webcam for KDE
+	pkgver = 2.0.2git20140902
+	pkgrel = 1
+	url = https://projects.kde.org/kamoso
+	install = kamoso.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = boost
+	depends = kdebase-runtime
+	depends = qt-gstreamer
+	depends = libkipi
+	optdepends = kipi-plugins: Facebook support
+	conflicts = kamoso-git
+	source = kamoso-2.0.2git20140902.tar.gz::http://quickgit.kde.org/?p=kamoso.git&a=snapshot&h=93188573e21a4c839f346a67431155c16f01828a&fmt=tgz
+	md5sums = 89c58bc78c2c5c77abd4fe1b52f4234c
+
+pkgname = kamoso
+
