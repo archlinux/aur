@@ -1,0 +1,11 @@
+[Unit]
+Description=UniFi Controller
+After=network.target
+
+[Service]
+User=unifi
+ExecStart=/usr/bin/java -jar /opt/unifi/lib/ace.jar start
+ExecStop=/usr/bin/java -jar /opt/unifi/lib/ace.jar stop
+
+[Install]
+WantedBy=multi-user.target

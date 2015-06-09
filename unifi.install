@@ -1,0 +1,16 @@
+# arg 1:  the new package version
+post_install() {
+  printf "==> To use the controller:\n"
+  printf "    sudo systemctl start unifi\n"
+  printf "    Open up https://localhost:8443\n"
+  getent group unifi >/dev/null || groupadd -g 113 unifi
+  getent passwd unifi >/dev/null || useradd -M -d /opt/unifi -u 113 -g 113 unifi
+  :
+}
+
+# arg 1:  the old package version
+post_remove() {
+  userdel -f unifi &>/dev/null
+  groupdel unifi &>/dev/null
+  :
+}

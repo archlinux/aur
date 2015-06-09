@@ -1,0 +1,19 @@
+pkgbase = unifi-controller-beta
+	pkgdesc = Controller for Ubiquiti UniFi accesspoints
+	pkgver = 4.6.5
+	pkgrel = 1
+	url = http://www.ubnt.com/
+	install = unifi.install
+	arch = any
+	license = custom
+	depends = mongodb
+	depends = java-runtime
+	conflicts = unifi-controller
+	backup = opt/unifi/data/system.properties
+	source = UniFi-4.6.5.zip::http://dl.ubnt.com/unifi/4.6.5-1d8795a/UniFi.unix.zip
+	source = unifi.service
+	md5sums = 97b2afa1cf276ff0243534773b84e0c9
+	md5sums = 04934ee4be43b6f80db610d140edf49f
+
+pkgname = unifi-controller-beta
+
