@@ -1,0 +1,11 @@
+## arg 1:  the new package version
+post_install() {
+    echo
+    echo '---------------------------------------------------------------------------'
+    echo ' IMPORTANT NOTES:'
+    echo
+    echo 'You need eventmachine to run the latest version of i3-ipc'
+    echo 'Install it via gem:'
+    echo '  $ gem install eventmachine'
+    echo "---------------------------------------------------------------------------"
+}

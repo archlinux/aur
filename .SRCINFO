@@ -1,0 +1,19 @@
+pkgbase = i3-ipc
+	pkgdesc = inter-process communication with i3, the improved tiling window manager.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://github.com/badboy/i3-ipc
+	install = i3-ipc.install
+	arch = any
+	license = custom
+	depends = i3-wm
+	depends = ruby
+	source = http://github.com/badboy/i3-ipc/raw/v0.2.0/i3-ipc
+	source = http://github.com/badboy/i3-ipc/raw/v0.2.0/man/i3-ipc.1
+	source = http://github.com/badboy/i3-ipc/raw/v0.2.0/LICENSE
+	md5sums = 7696d0e53ebfb3a261e20b1b39e4c71d
+	md5sums = 971bfaa7d5aff297eff60cd17c93a08d
+	md5sums = 2fde1ca125088725e39018124051d000
+
+pkgname = i3-ipc
+
