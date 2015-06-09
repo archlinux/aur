@@ -14,17 +14,15 @@ arch=('i686' 'x86_64')
 
 prepare () {
 
-    cd $srcdir/ 
-    
-    rename $(find . -name "version*" -print) changelog $(find . -name "version*" -print)
-
-    rename $(find . -name "readme*" -print) README $(find . -name "readm*" -print)
+    cd "$srcdir"
+    rename version_"${pkgver//./_}".txt changelog version_"${pkgver//./_}".txt
+    rename readme_"${pkgver//./_}".txt README readme_"${pkgver//./_}".txt
 
 }
 
 package () {
-    
-    cd $srcdir/
+
+    cd "$srcdir"
 
     install -d "$pkgdir/usr/share/doc/$pkgname"
 
@@ -33,17 +31,15 @@ package () {
 
     for places in /opt/epsxe/{plugins,cfg}
     do
-
 	install -d "$pkgdir/$places"
-
     done
 
     install -m 755 -t "$pkgdir/opt/epsxe/plugins" "libspuPeopsOSS.so.1.0.9"
     install -m 664 -t "$pkgdir/opt/epsxe/cfg" "cfgPeopsOSS" "spuPeopsOSS.cfg"
-    
+
   # permissions
-  chown root:games $pkgdir/opt/epsxe/cfg/{cfgPeopsOSS,spuPeopsOSS.cfg}
-  chown root:games $pkgdir/opt/epsxe/plugins/libspuPeopsOSS.so.1.0.9
-  chmod 755 $pkgdir/opt/epsxe/cfg/cfgPeopsOSS
-  chmod 755 $pkgdir/opt/epsxe/plugins/libspuPeopsOSS.so.1.0.9
+  chown root:games "$pkgdir"/opt/epsxe/cfg/{cfgPeopsOSS,spuPeopsOSS.cfg}
+  chown root:games "$pkgdir"/opt/epsxe/plugins/libspuPeopsOSS.so.1.0.9
+  chmod 755 "$pkgdir"/opt/epsxe/cfg/cfgPeopsOSS
+  chmod 755 "$pkgdir"/opt/epsxe/plugins/libspuPeopsOSS.so.1.0.9
 }
