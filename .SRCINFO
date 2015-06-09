@@ -1,0 +1,17 @@
+pkgbase = elmer
+	pkgdesc = Robust frontend to wget and/or curl for various pastebin services
+	pkgver = 1.0.2.r0.gfb6fc12
+	pkgrel = 1
+	url = http://github.com/sudokode/elmer
+	arch = any
+	license = custom:SPL
+	makedepends = git
+	depends = perl>=5.10
+	depends = perl-uri
+	optdepends = wget: pasting with wget
+	optdepends = xclip: reading from and printing to X buffer
+	source = elmer::git://github.com/sudokode/elmer-old.git
+	sha256sums = SKIP
+
+pkgname = elmer
+
