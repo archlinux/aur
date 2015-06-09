@@ -1,0 +1,21 @@
+pkgbase = frame
+	pkgdesc = Frame handles the buildup and synchronization of a set of simultaneous touches.
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://launchpad.net/frame
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = xorg-server-devel
+	makedepends = asciidoc
+	depends = libxi
+	depends = gcc-libs
+	provides = utouch-frame
+	conflicts = utouch-frame
+	replaces = utouch-frame
+	options = !libtool
+	source = http://launchpad.net/frame/trunk/v2.5.0/+download/frame-2.5.0.tar.gz
+	md5sums = 02baa941091c5d198cd1623b3ad36e68
+
+pkgname = frame
+
