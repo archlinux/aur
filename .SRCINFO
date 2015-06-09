@@ -1,0 +1,14 @@
+pkgbase = ruby-gemoji
+	pkgdesc = Image assets and character information for emoji
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/github/gemoji
+	arch = any
+	license = custom:MIT
+	depends = ruby
+	noextract = gemoji-2.1.0.gem
+	source = https://rubygems.org/downloads/gemoji-2.1.0.gem
+	sha256sums = dcacc532537b6244a9ea104a8e7e7ce883a8302843aeef861798b34cc3357958
+
+pkgname = ruby-gemoji
+
