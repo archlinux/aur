@@ -1,0 +1,13 @@
+pkgbase = fortune-mod-firefly
+	pkgdesc = Fortune cookies from Joss Whedon's Firefly series.
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = http://www.daughtersoftiresias.org/progs/firefly/
+	arch = any
+	license = unknown
+	depends = fortune-mod
+	source = firefly::http://pkgs.fedoraproject.org/gitweb/?p=fortune-firefly.git;a=blob_plain;f=firefly;hb=master
+	md5sums = 0c3203d2afddad9e00189e9e27446b82
+
+pkgname = fortune-mod-firefly
+
