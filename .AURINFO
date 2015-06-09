@@ -1,0 +1,15 @@
+pkgbase = ttf-mgopen
+	pkgdesc = TrueType fonts containing glyphs for the Latin and Greek alphabet
+	pkgver = 1.1
+	pkgrel = 10
+	url = http://www.zvr.gr/typo/mgopen/index
+	install = ttf.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://ftp.debian.org/debian/pool/main/t/ttf-mgopen/ttf-mgopen_1.1.orig.tar.gz
+	source = license.txt
+
+pkgname = ttf-mgopen
+
