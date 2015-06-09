@@ -1,0 +1,590 @@
+diff --git a/Makefile.in b/Makefile.in
+index 3b0e1cb..ebef2c4 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -176,7 +176,7 @@ DISTFILES = $(SOURCES) $(HEADERS) getopt.h .bootstrap run-tests \
+ 	cast128_sboxes.h desinfo.h desCode.h \
+ 	nettle-internal.h nettle-write.h prime-list.h \
+ 	gmp-glue.h ecc-internal.h \
+-	mini-gmp.h mini-gmp.c asm.m4 \
++	mini-gmp.h mini-gmp.c asm.m4 bignum-internal.h \
+ 	nettle.texinfo nettle.info nettle.html nettle.pdf sha-example.c
+ 
+ # Rules building static libraries
+diff --git a/bignum-internal.h b/bignum-internal.h
+new file mode 100644
+index 0000000..26a7cdb
+--- /dev/null
++++ b/bignum-internal.h
+@@ -0,0 +1,36 @@
++/* bignum-internal.h
++ *
++ */
++
++/* nettle, low-level cryptographics library
++ *
++ * Copyright (C) 2013 Red Hat
++ *  
++ * The nettle library is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU Lesser General Public License as published by
++ * the Free Software Foundation; either version 2.1 of the License, or (at your
++ * option) any later version.
++ * 
++ * The nettle library is distributed in the hope that it will be useful, but
++ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
++ * or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public
++ * License for more details.
++ * 
++ * You should have received a copy of the GNU Lesser General Public License
++ * along with the nettle library; see the file COPYING.LIB.  If not, write to
++ * the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
++ * MA 02111-1301, USA.
++ */
++
++#ifndef BIGNUM_INTERNAL_H
++# define BIGNUM_INTERNAL_H
++
++#include "gmp-glue.h"
++
++#define TMP_GMP_DECL(name, type) type *name; \
++	unsigned tmp_##name##_size
++#define TMP_GMP_ALLOC(name, size) \
++	(name = gmp_alloc(&tmp_##name##_size, sizeof (*name) * (size)))
++#define TMP_GMP_FREE(name) (gmp_free(name, tmp_##name##_size))
++
++#endif
+diff --git a/bignum-next-prime.c b/bignum-next-prime.c
+index 58a4df8..bc89399 100644
+--- a/bignum-next-prime.c
++++ b/bignum-next-prime.c
+@@ -31,6 +31,7 @@
+ #include <stdlib.h>
+ 
+ #include "bignum.h"
++#include "bignum-internal.h"
+ 
+ #include "nettle-internal.h"
+ 
+@@ -77,9 +78,8 @@ nettle_next_prime(mpz_t p, mpz_t n, unsigned count, unsigned prime_limit,
+ 		  void *progress_ctx, nettle_progress_func *progress)
+ {
+   mpz_t tmp;
+-  TMP_DECL(moduli, unsigned, NUMBER_OF_PRIMES);
+-  
+   unsigned difference;
++  TMP_GMP_DECL(moduli, unsigned);
+ 
+   if (prime_limit > NUMBER_OF_PRIMES)
+     prime_limit = NUMBER_OF_PRIMES;
+@@ -112,7 +112,8 @@ nettle_next_prime(mpz_t p, mpz_t n, unsigned count, unsigned prime_limit,
+      between the 5760 odd numbers in this interval that have no factor
+      in common with 15015.
+    */
+-  TMP_ALLOC(moduli, prime_limit);
++  TMP_GMP_ALLOC(moduli, prime_limit);
++
+   {
+     unsigned i;
+     for (i = 0; i < prime_limit; i++)
+@@ -159,4 +160,5 @@ nettle_next_prime(mpz_t p, mpz_t n, unsigned count, unsigned prime_limit,
+ #endif
+     }
+   mpz_clear(tmp);
++  TMP_GMP_FREE(moduli);
+ }
+diff --git a/bignum-random.c b/bignum-random.c
+index f305f04..07ae1ba 100644
+--- a/bignum-random.c
++++ b/bignum-random.c
+@@ -30,6 +30,7 @@
+ #include <stdlib.h>
+ 
+ #include "bignum.h"
++#include "bignum-internal.h"
+ #include "nettle-internal.h"
+ 
+ void
+@@ -38,15 +39,17 @@ nettle_mpz_random_size(mpz_t x,
+ 		       unsigned bits)
+ {
+   unsigned length = (bits + 7) / 8;
+-  TMP_DECL(data, uint8_t, NETTLE_MAX_BIGNUM_SIZE);
+-  TMP_ALLOC(data, length);
++  TMP_GMP_DECL(data, uint8_t);
+ 
+-  random(ctx, length, data);
++  TMP_GMP_ALLOC(data, length);
+ 
++  random(ctx, length, data);
+   nettle_mpz_set_str_256_u(x, length, data);
+ 
+   if (bits % 8)
+     mpz_fdiv_r_2exp(x, x, bits);
++  
++  TMP_GMP_FREE(data);
+ }
+ 
+ /* Returns a random number x, 0 <= x < n */
+diff --git a/gmp-glue.c b/gmp-glue.c
+index a2633a5..991e793 100644
+--- a/gmp-glue.c
++++ b/gmp-glue.c
+@@ -239,3 +239,24 @@ gmp_free_limbs (mp_limb_t *p, mp_size_t n)
+ 
+   free_func (p, (size_t) n * sizeof(mp_limb_t));
+ }
++
++void* gmp_alloc(unsigned* out_n, size_t n)
++{
++	void *(*alloc_func)(size_t);
++	assert (n > 0);
++
++	mp_get_memory_functions(&alloc_func, NULL, NULL);
++	
++	*out_n = n;
++	return alloc_func (n);
++}
++
++void gmp_free(void* p, size_t n)
++{
++  void (*free_func)(void *, size_t);
++  assert (n > 0);
++  assert (p != 0);
++  mp_get_memory_functions (NULL, NULL, &free_func);
++
++  free_func (p, (size_t) n);
++}
+diff --git a/gmp-glue.h b/gmp-glue.h
+index 269667f..ff936a1 100644
+--- a/gmp-glue.h
++++ b/gmp-glue.h
+@@ -65,6 +65,8 @@
+ #define mpn_set_base256 _nettle_mpn_set_base256
+ #define gmp_alloc_limbs _nettle_gmp_alloc_limbs
+ #define gmp_free_limbs _nettle_gmp_free_limbs
++#define gmp_free _nettle_gmp_free
++#define gmp_alloc _nettle_gmp_alloc
+ 
+ /* Use only in-place operations, so we can fall back to addmul_1/submul_1 */
+ #ifdef mpn_cnd_add_n
+@@ -155,5 +157,7 @@ gmp_alloc_limbs (mp_size_t n);
+ void
+ gmp_free_limbs (mp_limb_t *p, mp_size_t n);
+ 
++void* gmp_alloc(unsigned* out_n, size_t n);
++void gmp_free(void* p, size_t n);
+ 
+ #endif /* NETTLE_GMP_GLUE_H_INCLUDED */
+diff --git a/pkcs1-decrypt.c b/pkcs1-decrypt.c
+index 754fd51..89b4dcf 100644
+--- a/pkcs1-decrypt.c
++++ b/pkcs1-decrypt.c
+@@ -31,6 +31,7 @@
+ #include "pkcs1.h"
+ 
+ #include "bignum.h"
++#include "bignum-internal.h"
+ #include "nettle-internal.h"
+ 
+ int
+@@ -38,35 +39,50 @@ pkcs1_decrypt (unsigned key_size,
+ 	       const mpz_t m,
+ 	       unsigned *length, uint8_t *message)
+ {
+-  TMP_DECL(em, uint8_t, NETTLE_MAX_BIGNUM_SIZE);
++  TMP_GMP_DECL(em, uint8_t);
+   uint8_t *terminator;
+-  unsigned padding;
+-  unsigned message_length;
+-
+-  TMP_ALLOC(em, key_size);
++  size_t padding;
++  size_t message_length;
++  int ret;
++ 
++  TMP_GMP_ALLOC(em, key_size);
+   nettle_mpz_get_str_256(key_size, em, m);
+-
++ 
+   /* Check format */
+   if (em[0] || em[1] != 2)
+-    return 0;
+-
++    {
++     ret = 0;
++     goto cleanup;
++    }
++ 
+   terminator = memchr(em + 2, 0, key_size - 2);
+-
++ 
+   if (!terminator)
+-    return 0;
++    {
++     ret = 0;
++     goto cleanup;
++    }
+   
+   padding = terminator - (em + 2);
+   if (padding < 8)
+-    return 0;
+-
++    {
++     ret = 0;
++     goto cleanup;
++    }
++ 
+   message_length = key_size - 3 - padding;
+-
++ 
+   if (*length < message_length)
+-    return 0;
++    {
++     ret = 0;
++     goto cleanup;
++    }
+   
+   memcpy(message, terminator + 1, message_length);
+   *length = message_length;
+-
+-  return 1;
++ 
++  ret = 1;
++cleanup:
++  TMP_GMP_FREE(em);
++  return ret;
+ }
+-	       
+diff --git a/pkcs1-encrypt.c b/pkcs1-encrypt.c
+index cde19bc..5246455 100644
+--- a/pkcs1-encrypt.c
++++ b/pkcs1-encrypt.c
+@@ -34,6 +34,7 @@
+ #include "pkcs1.h"
+ 
+ #include "bignum.h"
++#include "bignum-internal.h"
+ #include "nettle-internal.h"
+ 
+ int
+@@ -43,7 +44,7 @@ pkcs1_encrypt (unsigned key_size,
+ 	       unsigned length, const uint8_t *message,
+ 	       mpz_t m)
+ {
+-  TMP_DECL(em, uint8_t, NETTLE_MAX_BIGNUM_SIZE);
++  TMP_GMP_DECL(em, uint8_t);
+   unsigned padding;
+   unsigned i;
+ 
+@@ -63,7 +64,7 @@ pkcs1_encrypt (unsigned key_size,
+   padding = key_size - length - 3;
+   assert(padding >= 8);
+   
+-  TMP_ALLOC(em, key_size - 1);
++  TMP_GMP_ALLOC(em, key_size - 1);
+   em[0] = 2;
+ 
+   random(random_ctx, padding, em + 1);
+@@ -77,5 +78,7 @@ pkcs1_encrypt (unsigned key_size,
+   memcpy(em + padding + 2, message, length);
+ 
+   nettle_mpz_set_str_256_u(m, key_size - 1, em);
++  
++  TMP_GMP_FREE(em);
+   return 1;
+ }
+diff --git a/pkcs1-rsa-digest.c b/pkcs1-rsa-digest.c
+index e4a6c52..3379b8f 100644
+--- a/pkcs1-rsa-digest.c
++++ b/pkcs1-rsa-digest.c
+@@ -29,21 +29,27 @@
+ #include "pkcs1.h"
+ 
+ #include "bignum.h"
++#include "bignum-internal.h"
+ #include "nettle-internal.h"
+ 
+ int
+ pkcs1_rsa_digest_encode(mpz_t m, unsigned key_size,
+ 			unsigned di_length, const uint8_t *digest_info)
+ {
+-  TMP_DECL(em, uint8_t, NETTLE_MAX_BIGNUM_SIZE);
+-  TMP_ALLOC(em, key_size);
++  TMP_GMP_DECL(em, uint8_t);
++
++  TMP_GMP_ALLOC(em, key_size);
+ 
+   if (_pkcs1_signature_prefix(key_size, em,
+ 			      di_length, digest_info, 0))
+     {
+       nettle_mpz_set_str_256_u(m, key_size, em);
++      TMP_GMP_FREE(em);
+       return 1;
+     }
+   else
+-    return 0;
++    {
++      TMP_GMP_FREE(em);
++      return 0;
++    }
+ }
+diff --git a/pkcs1-rsa-md5.c b/pkcs1-rsa-md5.c
+index 00514fc..e5edaf3 100644
+--- a/pkcs1-rsa-md5.c
++++ b/pkcs1-rsa-md5.c
+@@ -34,6 +34,7 @@
+ #include "rsa.h"
+ 
+ #include "bignum.h"
++#include "bignum-internal.h"
+ #include "pkcs1.h"
+ 
+ #include "nettle-internal.h"
+@@ -65,8 +66,9 @@ int
+ pkcs1_rsa_md5_encode(mpz_t m, unsigned key_size, struct md5_ctx *hash)
+ {
+   uint8_t *p;
+-  TMP_DECL(em, uint8_t, NETTLE_MAX_BIGNUM_SIZE);
+-  TMP_ALLOC(em, key_size);
++  TMP_GMP_DECL(em, uint8_t);
++
++  TMP_GMP_ALLOC(em, key_size);
+ 
+   p = _pkcs1_signature_prefix(key_size, em,
+ 			      sizeof(md5_prefix),
+@@ -76,18 +78,23 @@ pkcs1_rsa_md5_encode(mpz_t m, unsigned key_size, struct md5_ctx *hash)
+     {
+       md5_digest(hash, MD5_DIGEST_SIZE, p);
+       nettle_mpz_set_str_256_u(m, key_size, em);
++      TMP_GMP_FREE(em);
+       return 1;
+     }
+   else
+-    return 0;
++    {
++      TMP_GMP_FREE(em);
++      return 0;
++    }
+ }
+ 
+ int
+ pkcs1_rsa_md5_encode_digest(mpz_t m, unsigned key_size, const uint8_t *digest)
+ {
+   uint8_t *p;
+-  TMP_DECL(em, uint8_t, NETTLE_MAX_BIGNUM_SIZE);
+-  TMP_ALLOC(em, key_size);
++  TMP_GMP_DECL(em, uint8_t);
++
++  TMP_GMP_ALLOC(em, key_size);
+ 
+   p = _pkcs1_signature_prefix(key_size, em,
+ 			      sizeof(md5_prefix),
+@@ -97,8 +104,12 @@ pkcs1_rsa_md5_encode_digest(mpz_t m, unsigned key_size, const uint8_t *digest)
+     {
+       memcpy(p, digest, MD5_DIGEST_SIZE);
+       nettle_mpz_set_str_256_u(m, key_size, em);
++      TMP_GMP_FREE(em);
+       return 1;
+     }
+   else
+-    return 0;
++    {
++      TMP_GMP_FREE(em);
++      return 0;
++    }
+ }
+diff --git a/pkcs1-rsa-sha1.c b/pkcs1-rsa-sha1.c
+index 2951618..2a68121 100644
+--- a/pkcs1-rsa-sha1.c
++++ b/pkcs1-rsa-sha1.c
+@@ -34,6 +34,7 @@
+ #include "rsa.h"
+ 
+ #include "bignum.h"
++#include "bignum-internal.h"
+ #include "pkcs1.h"
+ 
+ #include "nettle-internal.h"
+@@ -65,8 +66,9 @@ int
+ pkcs1_rsa_sha1_encode(mpz_t m, unsigned key_size, struct sha1_ctx *hash)
+ {
+   uint8_t *p;
+-  TMP_DECL(em, uint8_t, NETTLE_MAX_BIGNUM_SIZE);
+-  TMP_ALLOC(em, key_size);
++  TMP_GMP_DECL(em, uint8_t);
++
++  TMP_GMP_ALLOC(em, key_size);
+ 
+   p = _pkcs1_signature_prefix(key_size, em,
+ 			      sizeof(sha1_prefix),
+@@ -76,18 +78,23 @@ pkcs1_rsa_sha1_encode(mpz_t m, unsigned key_size, struct sha1_ctx *hash)
+     {
+       sha1_digest(hash, SHA1_DIGEST_SIZE, p);
+       nettle_mpz_set_str_256_u(m, key_size, em);
++      TMP_GMP_FREE(em);
+       return 1;
+     }
+   else
+-    return 0;
++    {
++      TMP_GMP_FREE(em);
++      return 0;
++    }
+ }
+ 
+ int
+ pkcs1_rsa_sha1_encode_digest(mpz_t m, unsigned key_size, const uint8_t *digest)
+ {
+   uint8_t *p;
+-  TMP_DECL(em, uint8_t, NETTLE_MAX_BIGNUM_SIZE);
+-  TMP_ALLOC(em, key_size);
++  TMP_GMP_DECL(em, uint8_t);
++
++  TMP_GMP_ALLOC(em, key_size);
+ 
+   p = _pkcs1_signature_prefix(key_size, em,
+ 			      sizeof(sha1_prefix),
+@@ -97,8 +104,12 @@ pkcs1_rsa_sha1_encode_digest(mpz_t m, unsigned key_size, const uint8_t *digest)
+     {
+       memcpy(p, digest, SHA1_DIGEST_SIZE);
+       nettle_mpz_set_str_256_u(m, key_size, em);
++      TMP_GMP_FREE(em);
+       return 1;
+     }
+   else
+-    return 0;
++    {
++      TMP_GMP_FREE(em);
++      return 0;
++    }
+ }
+diff --git a/pkcs1-rsa-sha256.c b/pkcs1-rsa-sha256.c
+index cb07375..3aaabe1 100644
+--- a/pkcs1-rsa-sha256.c
++++ b/pkcs1-rsa-sha256.c
+@@ -34,6 +34,7 @@
+ #include "rsa.h"
+ 
+ #include "bignum.h"
++#include "bignum-internal.h"
+ #include "pkcs1.h"
+ 
+ #include "nettle-internal.h"
+@@ -63,8 +64,9 @@ int
+ pkcs1_rsa_sha256_encode(mpz_t m, unsigned key_size, struct sha256_ctx *hash)
+ {
+   uint8_t *p;
+-  TMP_DECL(em, uint8_t, NETTLE_MAX_BIGNUM_SIZE);
+-  TMP_ALLOC(em, key_size);
++  TMP_GMP_DECL(em, uint8_t);
++
++  TMP_GMP_ALLOC(em, key_size);
+ 
+   p = _pkcs1_signature_prefix(key_size, em,
+ 			      sizeof(sha256_prefix),
+@@ -74,18 +76,23 @@ pkcs1_rsa_sha256_encode(mpz_t m, unsigned key_size, struct sha256_ctx *hash)
+     {
+       sha256_digest(hash, SHA256_DIGEST_SIZE, p);
+       nettle_mpz_set_str_256_u(m, key_size, em);
++      TMP_GMP_FREE(em);
+       return 1;
+     }
+   else
+-    return 0;	
++    {
++      TMP_GMP_FREE(em);
++      return 0;
++    }
+ }
+ 
+ int
+ pkcs1_rsa_sha256_encode_digest(mpz_t m, unsigned key_size, const uint8_t *digest)
+ {
+   uint8_t *p;
+-  TMP_DECL(em, uint8_t, NETTLE_MAX_BIGNUM_SIZE);
+-  TMP_ALLOC(em, key_size);
++  TMP_GMP_DECL(em, uint8_t);
++
++  TMP_GMP_ALLOC(em, key_size);
+ 
+   p = _pkcs1_signature_prefix(key_size, em,
+ 			      sizeof(sha256_prefix),
+@@ -95,8 +102,12 @@ pkcs1_rsa_sha256_encode_digest(mpz_t m, unsigned key_size, const uint8_t *digest
+     {
+       memcpy(p, digest, SHA256_DIGEST_SIZE);
+       nettle_mpz_set_str_256_u(m, key_size, em);
++      TMP_GMP_FREE(em);
+       return 1;
+     }
+   else
+-    return 0;
++    {
++      TMP_GMP_FREE(em);
++      return 0;
++    }
+ }
+diff --git a/pkcs1-rsa-sha512.c b/pkcs1-rsa-sha512.c
+index 3afd790..bd3d277 100644
+--- a/pkcs1-rsa-sha512.c
++++ b/pkcs1-rsa-sha512.c
+@@ -34,6 +34,7 @@
+ #include "rsa.h"
+ 
+ #include "bignum.h"
++#include "bignum-internal.h"
+ #include "pkcs1.h"
+ 
+ #include "nettle-internal.h"
+@@ -63,8 +64,9 @@ int
+ pkcs1_rsa_sha512_encode(mpz_t m, unsigned key_size, struct sha512_ctx *hash)
+ {
+   uint8_t *p;
+-  TMP_DECL(em, uint8_t, NETTLE_MAX_BIGNUM_SIZE);
+-  TMP_ALLOC(em, key_size);
++  TMP_GMP_DECL(em, uint8_t);
++
++  TMP_GMP_ALLOC(em, key_size);
+ 
+   p = _pkcs1_signature_prefix(key_size, em,
+ 			      sizeof(sha512_prefix),
+@@ -74,18 +76,23 @@ pkcs1_rsa_sha512_encode(mpz_t m, unsigned key_size, struct sha512_ctx *hash)
+     {
+       sha512_digest(hash, SHA512_DIGEST_SIZE, p);
+       nettle_mpz_set_str_256_u(m, key_size, em);
++      TMP_GMP_FREE(em);
+       return 1;
+     }
+   else
+-    return 0;
++    {
++      TMP_GMP_FREE(em);
++      return 0;
++    }
+ }
+ 
+ int
+ pkcs1_rsa_sha512_encode_digest(mpz_t m, unsigned key_size, const uint8_t *digest)
+ {
+   uint8_t *p;
+-  TMP_DECL(em, uint8_t, NETTLE_MAX_BIGNUM_SIZE);
+-  TMP_ALLOC(em, key_size);
++  TMP_GMP_DECL(em, uint8_t);
++
++  TMP_GMP_ALLOC(em, key_size);
+ 
+   p = _pkcs1_signature_prefix(key_size, em,
+ 			      sizeof(sha512_prefix),
+@@ -95,8 +102,12 @@ pkcs1_rsa_sha512_encode_digest(mpz_t m, unsigned key_size, const uint8_t *digest
+     {
+       memcpy(p, digest, SHA512_DIGEST_SIZE);
+       nettle_mpz_set_str_256_u(m, key_size, em);
++      TMP_GMP_FREE(em);
+       return 1;
+     }
+   else
+-    return 0;
++    {
++      TMP_GMP_FREE(em);
++      return 0;
++    }
+ }

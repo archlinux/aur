@@ -1,0 +1,131 @@
+diff -ur nettle-2.7.1.orig/examples/ecc-benchmark.c nettle-2.7.1/examples/ecc-benchmark.c
+--- nettle-2.7.1.orig/examples/ecc-benchmark.c	2013-05-28 16:21:54.000000000 +0200
++++ nettle-2.7.1/examples/ecc-benchmark.c	2013-11-25 14:57:21.168064904 +0100
+@@ -262,8 +262,6 @@
+ }
+ 
+ const struct ecc_curve * const curves[] = {
+-  &nettle_secp_192r1,
+-  &nettle_secp_224r1,
+   &nettle_secp_256r1,
+   &nettle_secp_384r1,
+   &nettle_secp_521r1,
+Only in nettle-2.7.1/examples: ecc-benchmark.c~
+diff -ur nettle-2.7.1.orig/examples/hogweed-benchmark.c nettle-2.7.1/examples/hogweed-benchmark.c
+--- nettle-2.7.1.orig/examples/hogweed-benchmark.c	2013-05-28 16:21:54.000000000 +0200
++++ nettle-2.7.1/examples/hogweed-benchmark.c	2013-11-25 14:57:53.728295845 +0100
+@@ -376,23 +376,6 @@
+ 
+   switch (size)
+     {
+-    case 192:
+-      ecc = &nettle_secp_192r1;
+-      xs = "8e8e07360350fb6b7ad8370cfd32fa8c6bba785e6e200599";
+-      ys = "7f82ddb58a43d59ff8dc66053002b918b99bd01bd68d6736";
+-      zs = "f2e620e086d658b4b507996988480917640e4dc107808bdd";
+-      ctx->digest = hash_string (&nettle_sha1, 3, "abc");
+-      ctx->digest_size = 20;
+-      break;
+-    case 224:
+-      ecc = &nettle_secp_224r1;
+-      xs = "993bf363f4f2bc0f255f22563980449164e9c894d9efd088d7b77334";
+-      ys = "b75fff9849997d02d135140e4d0030944589586e22df1fc4b629082a";
+-      zs = "cdfd01838247f5de3cc70b688418046f10a2bfaca6de9ec836d48c27";
+-      ctx->digest = hash_string (&nettle_sha224, 3, "abc");
+-      ctx->digest_size = 28;
+-      break;
+-
+       /* From RFC 4754 */
+     case 256:
+       ecc = &nettle_secp_256r1;
+@@ -585,13 +568,10 @@
+ #if 0
+   { "dsa",2048, bench_dsa_init, bench_dsa_sign,   bench_dsa_verify, bench_dsa_clear },
+ #endif
+-  { "ecdsa",  192, bench_ecdsa_init, bench_ecdsa_sign, bench_ecdsa_verify, bench_ecdsa_clear },
+-  { "ecdsa",  224, bench_ecdsa_init, bench_ecdsa_sign, bench_ecdsa_verify, bench_ecdsa_clear },
+   { "ecdsa",  256, bench_ecdsa_init, bench_ecdsa_sign, bench_ecdsa_verify, bench_ecdsa_clear },
+   { "ecdsa",  384, bench_ecdsa_init, bench_ecdsa_sign, bench_ecdsa_verify, bench_ecdsa_clear },
+   { "ecdsa",  521, bench_ecdsa_init, bench_ecdsa_sign, bench_ecdsa_verify, bench_ecdsa_clear },
+ #if WITH_OPENSSL
+-  { "ecdsa (openssl)",  224, bench_openssl_init, bench_openssl_sign, bench_openssl_verify, bench_openssl_clear },
+   { "ecdsa (openssl)",  384, bench_openssl_init, bench_openssl_sign, bench_openssl_verify, bench_openssl_clear },
+   { "ecdsa (openssl)",  521, bench_openssl_init, bench_openssl_sign, bench_openssl_verify, bench_openssl_clear },
+ #endif
+Only in nettle-2.7.1/examples: hogweed-benchmark.c~
+diff -ur nettle-2.7.1.orig/testsuite/ecdsa-sign-test.c nettle-2.7.1/testsuite/ecdsa-sign-test.c
+--- nettle-2.7.1.orig/testsuite/ecdsa-sign-test.c	2013-05-28 16:21:54.000000000 +0200
++++ nettle-2.7.1/testsuite/ecdsa-sign-test.c	2013-11-25 14:54:01.104562760 +0100
+@@ -55,37 +55,6 @@
+ {
+   /* Test cases for the smaller groups, verified with a
+      proof-of-concept implementation done for Yubico AB. */
+-  test_ecdsa (&nettle_secp_192r1,
+-	      "DC51D3866A15BACDE33D96F992FCA99D"
+-	      "A7E6EF0934E70975", /* z */
+-
+-	      "9E56F509196784D963D1C0A401510EE7"
+-	      "ADA3DCC5DEE04B15", /* k */
+-
+-	      SHEX("BA7816BF8F01CFEA414140DE5DAE2223"
+-		   "B00361A396177A9C"), /* h */
+-
+-	      "8c478db6a5c131540cebc739f9c0a9a8"
+-	      "c720c2abdd14a891", /* r */
+-
+-	      "a91fb738f9f175d72f9c98527e881c36"
+-	      "8de68cb55ffe589"); /* s */
+-
+-  test_ecdsa (&nettle_secp_224r1,
+-	      "446df0a771ed58403ca9cb316e617f6b"
+-	      "158420465d00a69601e22858",  /* z */
+-
+-	      "4c13f1905ad7eb201178bc08e0c9267b"
+-	      "4751c15d5e1831ca214c33f4",  /* z */
+-
+-	      SHEX("1b28a611fe62ab3649350525d06703ba"
+-		   "4b979a1e543566fd5caa85c6"),  /* h */
+-
+-	      "2cc280778f3d067df6d3adbe3a6aad63"
+-	      "bc75f08f5c5f915411902a99",  /* r */ 
+-
+-	      "d0f069fd0f108eb07b7bbc54c8d6c88d"
+-	      "f2715c38a95c31a2b486995f"); /* s */
+ 
+   /* From RFC 4754 */
+   test_ecdsa (&nettle_secp_256r1,
+Only in nettle-2.7.1/testsuite: ecdsa-sign-test.c~
+diff -ur nettle-2.7.1.orig/testsuite/testutils.c nettle-2.7.1/testsuite/testutils.c
+--- nettle-2.7.1.orig/testsuite/testutils.c	2013-05-28 16:21:54.000000000 +0200
++++ nettle-2.7.1/testsuite/testutils.c	2013-11-25 15:01:37.623807622 +0100
+@@ -1125,8 +1125,6 @@
+ }
+ 
+ const struct ecc_curve * const ecc_curves[] = {
+-  &nettle_secp_192r1,
+-  &nettle_secp_224r1,
+   &nettle_secp_256r1,
+   &nettle_secp_384r1,
+   &nettle_secp_521r1,
+@@ -1178,20 +1176,6 @@
+ {
+   /* For each curve, the points 2 g, 3 g and 4 g */
+   static const struct ecc_ref_point ref[5][3] = {
+-    { { "dafebf5828783f2ad35534631588a3f629a70fb16982a888",
+-	"dd6bda0d993da0fa46b27bbc141b868f59331afa5c7e93ab" },
+-      { "76e32a2557599e6edcd283201fb2b9aadfd0d359cbb263da",
+-	"782c37e372ba4520aa62e0fed121d49ef3b543660cfd05fd" },
+-      { "35433907297cc378b0015703374729d7a4fe46647084e4ba",
+-	"a2649984f2135c301ea3acb0776cd4f125389b311db3be32" }
+-    },
+-    { { "706a46dc76dcb76798e60e6d89474788d16dc18032d268fd1a704fa6",
+-	"1c2b76a7bc25e7702a704fa986892849fca629487acf3709d2e4e8bb" },
+-      { "df1b1d66a551d0d31eff822558b9d2cc75c2180279fe0d08fd896d04",
+-	"a3f7f03cadd0be444c0aa56830130ddf77d317344e1af3591981a925" },
+-      { "ae99feebb5d26945b54892092a8aee02912930fa41cd114e40447301",
+-	"482580a0ec5bc47e88bc8c378632cd196cb3fa058a7114eb03054c9" },
+-    },
+     { { "7cf27b188d034f7e8a52380304b51ac3c08969e277f21b35a60b48fc47669978",
+ 	"7775510db8ed040293d9ac69f7430dbba7dade63ce982299e04b79d227873d1" },
+       { "5ecbe4d1a6330a44c8f7ef951d4bf165e6c6b721efada985fb41661bc6e7fd6c",
+Only in nettle-2.7.1/testsuite: testutils.c~

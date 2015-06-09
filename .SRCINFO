@@ -1,0 +1,23 @@
+pkgbase = mingw-w64-nettle
+	pkgdesc = A low-level cryptographic library (mingw-w64)
+	pkgver = 2.7.1
+	pkgrel = 5
+	url = http://www.lysator.liu.se/~nisse/nettle
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	depends = mingw-w64-gmp
+	depends = mingw-w64-openssl
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = http://www.lysator.liu.se/~nisse/archive/nettle-2.7.1.tar.gz
+	source = nettle-2.7.1-remove-ecc-testsuite.patch
+	source = nettle-2.7.1-tmpalloc.patch
+	md5sums = 003d5147911317931dd453520eb234a5
+	md5sums = f3b10a962dae1dbff215adc26a522625
+	md5sums = f40dd21708f3b885d948dd573012b39a
+
+pkgname = mingw-w64-nettle
+
