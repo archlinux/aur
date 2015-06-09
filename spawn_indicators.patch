@@ -1,0 +1,13 @@
+diff --git a/src/unity-greeter.vala b/src/unity-greeter.vala
+index 1f5b3d6..944751a 100644
+--- a/src/unity-greeter.vala
++++ b/src/unity-greeter.vala
+@@ -574,7 +574,7 @@ public class UnityGreeter
+             {
+                 string[] argv;
+ 
+-                Shell.parse_argv ("upstart --user --startup-event indicator-services-start", out argv);
++                Shell.parse_argv ("unity-greeter-indicators-start", out argv);
+                 Process.spawn_async (null,
+                                      argv,
+                                      null,
