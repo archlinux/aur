@@ -1,0 +1,14 @@
+pkgbase = perl-leocharre-dir
+	pkgdesc = my subs for general directory needs
+	pkgver = 1.08
+	pkgrel = 1
+	url = http://search.cpan.org/dist/LEOCHARRE-Dir
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=0
+	source = http://search.cpan.org/CPAN/authors/id/L/LE/LEOCHARRE/LEOCHARRE-Dir-1.08.tar.gz
+	options = !emptydirs
+
+pkgname = perl-leocharre-dir
+
