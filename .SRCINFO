@@ -1,0 +1,16 @@
+pkgbase = zarafa
+	pkgdesc = Grouping package for complete Zarafa Open Source Groupware Solution
+	pkgver = 7.2.0
+	pkgrel = 2
+	url = http://www.zarafa.com/
+	arch = any
+	license = AGPL3
+	depends = zarafa-server-arm
+	depends = zarafa-webaccess
+	depends = zarafa-webapp
+	depends = zarafa-webapp-plugins
+	depends = z-push
+	depends = sabre-zarafa
+
+pkgname = zarafa
+
