@@ -1,0 +1,14 @@
+pkgbase = fbsplash-theme-natural-arch
+	pkgdesc = An fbsplash theme with natural-arch logo
+	pkgver = 1.0.0
+	pkgrel = 3
+	url = http://OpenDesktop.org/content/show.php?content=118457
+	install = fbsplash-theme.install
+	arch = any
+	license = CCPL:cc-by-nc-sa
+	depends = fbsplash
+	source = http://OpenDesktop.org/CONTENT/content-files/118457-natural-arch.tar.gz
+	md5sums = f871f019fc90b63f940af4a23b0bf7d4
+
+pkgname = fbsplash-theme-natural-arch
+
