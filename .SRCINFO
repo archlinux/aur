@@ -1,0 +1,36 @@
+pkgbase = roger-router
+	pkgdesc = Roger Router
+	pkgver = 1.8.11
+	pkgrel = 2
+	url = http://en.tabos.org/roger-router/
+	install = roger-router.install
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0
+	makedepends = intltool
+	makedepends = libnotify
+	makedepends = libpulse
+	makedepends = libsecret
+	makedepends = evolution
+	depends = curl
+	depends = dbus
+	depends = glib2
+	depends = libsndfile
+	depends = spandsp
+	depends = speex
+	depends = libxml2
+	depends = gtk3
+	depends = isdn4k-utils
+	depends = libpeas
+	depends = libsoup
+	optdepends = evolution: Address book integration
+	optdepends = libpulse: Pulse Audio support
+	optdepends = libsecret: Store passwords in keyring
+	optdepends = libnotify: Desktop notifications
+	provides = roger
+	conflicts = roger
+	source = http://de.tabos.org/download/roger-router-1.8.11.tar.xz
+	sha1sums = 091634d2dd3c85fce56a5eb11cc5a210389834f3
+
+pkgname = roger-router
+
