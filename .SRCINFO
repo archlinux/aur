@@ -1,0 +1,21 @@
+pkgbase = whatpulse
+	pkgdesc = Measures your keyboard, mouse and application usage, network traffic and uptime.
+	pkgver = 2.6.1
+	pkgrel = 1
+	url = http://www.whatpulse.org
+	install = whatpulse.install
+	arch = i686
+	arch = x86_64
+	license = custom:whatpulse_tos
+	depends = qt4
+	optdepends = systray: any systray, like gnome-panel
+	optdepends = libpcap: for capturing network statistics
+	source = whatpulse.desktop
+	sha256sums = 9ad42960f0a8b538f1d98fea1ced9b2a97ef59aadca50d0382efdb71434572b7
+	source_i686 = http://www.whatpulse.org/files/whatpulse-linux-32bit-2.6.1.tar.gz
+	sha256sums_i686 = 4961fc8360ef924538c1b74f86dfe5ee3a13b474d9bb6421b4312aa465afa74a
+	source_x86_64 = http://www.whatpulse.org/files/whatpulse-linux-64bit-2.6.1.tar.gz
+	sha256sums_x86_64 = 7ac2fb2a79c789c6de9ad8aab72538c1be540de1b5c49fa0128425b793c0884c
+
+pkgname = whatpulse
+

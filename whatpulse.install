@@ -1,0 +1,34 @@
+post_install() {
+    # Create the 'input' group
+    if [ -n "`cat /etc/group | grep -e ^input:`" ] ; then
+        echo "Group 'input' already exists!"
+    else
+        groupadd input
+        echo "Created group 'input'."
+    fi
+    # Manage permissions for the binary
+    setcap cap_net_raw,cap_net_admin=eip /usr/bin/whatpulse
+
+    # Display some information about how to set-up permissions
+    cat <<__EOF__
+==> Now add your user to the 'input' group:
+==> # gpasswd -a USERNAME input
+==>
+==> Now reboot to fix the input permissions, or execute this:
+==> # find /dev/input/ -iname "event*" -exec chmod 644 {} \;
+==> 
+==> This temporarily grants everybody read permissions on
+==>   all input devices, something you should obviously avoid if
+==>   you fear somebody will eavesdrop those input devices.
+__EOF__
+}
+
+post_upgrade() {
+    # Manage permissions for the binary
+    setcap cap_net_raw,cap_net_admin=eip /usr/bin/whatpulse
+}
+
+pre_remove() {
+    # Warn the user about the 'input' group
+    echo "The \"input\" group still exists, remove it if you don't use it anymore."
+}

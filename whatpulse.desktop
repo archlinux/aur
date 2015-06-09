@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=WhatPulse
+Exec=whatpulse
+Icon=whatpulse
+StartupNotify=true
