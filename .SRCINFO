@@ -1,0 +1,28 @@
+pkgbase = ovito-git
+	pkgdesc = Scientific visualization and analysis software for atomistic simulation data
+	pkgver = 2.4.4.r43.g58fc2cf
+	pkgrel = 1
+	url = http://www.ovito.org/
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = qt5-base
+	makedepends = qt5-script
+	makedepends = qt5-svg
+	makedepends = qt5-imageformats
+	depends = python
+	depends = zlib
+	depends = tachyon
+	depends = qscintilla-qt5
+	depends = cgal
+	provides = ovito
+	conflicts = ovito
+	conflicts = ovito-netcdf-git
+	source = ovito::git+http://git.code.sf.net/p/ovito/git
+	md5sums = SKIP
+
+pkgname = ovito-git
+
