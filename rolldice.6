@@ -1,0 +1,114 @@
+.\" Man file for rolldice(6) - v1.10 - 25 Nov 2001
+.\" (c) Stevie Strickland, 1999-2001
+.\"
+.TH "ROLLDICE" "6" "25 novembre 2001" "Linux" ""
+.SH "NOM"
+rolldice \- Lancer des dés virtuels
+.SH "SYNOPSIS"
+.B rolldice [
+.I options
+.B ]
+.I "chaînes_de_dé"
+.I "chaînes_de_dé"
+.I ...
+.SH "DESCRIPTION"
+.B rolldice
+lance des dés virtuels. Les chaînes des dé passées en ligne de commande
+contiennent des informations sur les dés à lancer dans un format
+comparable au format utilisé dans les jeux de rôle.
+.SH "OPTIONS"
+.RS
+.IP \-h,\-\-help
+Afficher la syntaxe de diceroll
+.IP \-v,\-\-version
+Afficher la version de diceroll
+.IP \-r,\-\-random
+Utilise /dev/random pour la création des valeurs aléatoires
+.IP \-u,\-\-urandom
+Utilise /dev/urandom pour la création des valeurs aléatoires (par défaut)
+.IP \-s,\-\-separate
+Affiche le résultat de chaque dé séparément, ainsi que les opérations et les totaux
+.RE
+.SH "FORMAT DE CHAÎNES DE DÉS"
+La chaîne à passer en paramètre utilise le format suivant :
+.RS
+.IP {#x}{#}d[#|%]{*#}{+/\-#}{s#}
+.RE
+.P
+La chaîne de dés n'a pas à être dans l'ordre indiqué plus haut, mais cela
+me semble être le plus élégant. Rolldice va essayer d'analyser
+n'importe quelle chaîne différente contenant les mêmes sections, et éliminera
+tout ce qui n'en fait pas partie.
+.P Les différentes sections\\espace\ :
+.RS
+.IP {#}d[#|%]
+C'est la seule partie réellement indispensable de la chaîne, et, même sans cela,
+le choix par défaut sera 1d6. Le premier terme est le nombre de dés à lancer,
+et le second est le nombre de faces que le dé possède. Les valeurs retournées
+par chaque dé sont alors additionnées et données en résultat.
+Ainsi, 3d6 signifie «\ lance trois dés à six face, additionne\-les ensemble,
+et affiche le résultat\ ».
+Si le premier terme est omis, la valeur par défaut est de un seul dé.
+Si le second terme n'est pas un nombre, mais un pourcentage, le nombre
+de faces passe à 100 (pour un jet de pourcentage).
+.IP {#x}
+Ce terme indique combien il y a de lancers. Par exemple, si vous voulez lancer
+six fois de suite 3 dés à 6 faces, vous indiquerez 6x3d6.
+Cela retournera six nombres, correspondants aux six différents lancers.
+.IP {*#}
+Ce nombre indique combien de fois multiplier le résultat de chaque lancer.
+3d6*100 affichera un nombre compris entre 300 et 1800 puisque 3\-18 est la plage
+résultant de 3d6, qui est ensuite multipliée par 100.
+.IP {+/\-#}
+Ce nombre est le modificateur à ajouter ou soustraire, selon le signe,
+de chaque lancer. 1d4+1 affichera un nombre compris dans la plage 2\-5 (1\-4 pour
+le dé, plus 1).  Cette étape arrive *après* les éventuelles multiplications.
+.IP {s#}
+Ce nombre demande au programme de laisser de côté les # valeurs les plus basses.
+Cette étape arrive *avant* les éventuelles multiplications.
+.RE
+.P
+Toute combinaison des parties optionnelles peut être utilisée, mais seulement dans
+l'ordre indiqué plus haut. Comme exemple extrême, "3x4d6*5+1s2"  lancera 4 dés à 6 faces,
+laissera de côté les 2 jets les plus bas, multipliera le résultat
+par 5,
+ajoutera 1 à cela, et répétera le processus deux autres fois, pour un total
+de 3 résultats.
+
+.SH "DIAGNOSTICS"
+Les messages d'erreur suivants peuvent apparaître dans la sortie standard\\espace:
+
+Failure in getting dice attributes
+.RS
+Soit de la mémoire n'a pu être allouée en analysant la chaîne passée en argument
+de
+.B rolldice,
+soit une chaîne invalide a été entrée.
+.RE
+Failure in rolling dice
+.RS
+La mémoire n'a pu être allouée au moment de lancer le dé.
+.RE
+Unknown option
+.RS
+Option inconnue
+.RE
+.SH "BOGUES"
+Pas encore trouvés à ce jour...
+.B rolldice
+est une bidouille rapide pour fournir un lanceur de dés pour les jeux de rôles auquels je joue.
+Toute amélioration est la bienvenue, car je ne suis pas le plus grand codeur en C...
+.SH "AUTEUR"
+Stevie Strickland <sstrickl@cc.gatech.edu>
+.SH "VERSION"
+1.10 \- 25 Nov 2001
+.SH "TRADUCTION"
+Ce document est une traduction, réalisée par Eric Forgeot (http://esclinux.tk) le 05 juin 2005.
+
+L'équipe de traduction a fait le maximum pour réaliser une adaptation
+ française de qualité.
+
+La version anglaise la plus à jour de ce document est toujours consultable via la commande : export LANG=en && man rolldice
+
+N'hésitez pas à signaler à l'auteur ou au traducteur, selon le cas, toute
+erreur dans cette page de manuel.

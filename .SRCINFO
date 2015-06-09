@@ -1,0 +1,16 @@
+pkgbase = rolldice
+	pkgdesc = A virtual dice roller
+	pkgver = 1.10
+	pkgrel = 6
+	url = http://packages.debian.org/source/sid/rolldice
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	source = http://ftp.de.debian.org/debian/pool/main/r/rolldice/rolldice_1.10.orig.tar.gz
+	source = rolldice.6
+	md5sums = c65d37f81e80d0d5db6c49c08cf3b484
+	md5sums = a4e0c4c28528b495690af2771daeb7b8
+
+pkgname = rolldice
+
