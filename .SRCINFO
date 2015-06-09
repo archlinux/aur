@@ -1,0 +1,19 @@
+pkgbase = libcomps
+	pkgdesc = Comps XML file manipulation library
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/midnightercz/libcomps
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	checkdepends = check
+	makedepends = cmake
+	makedepends = python
+	depends = expat
+	depends = libxml2
+	optdepends = python: for python bindings
+	source = https://github.com/midnightercz/libcomps/archive/libcomps-0.1.6.tar.gz
+	md5sums = 50611b9564f15b6a06e0f40f7683a0f0
+
+pkgname = libcomps
+
