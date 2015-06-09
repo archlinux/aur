@@ -1,0 +1,14 @@
+pkgbase = rfdump
+	pkgdesc = Tool to detect RFID-Tags and show their meta information
+	pkgver = 1.6
+	pkgrel = 2
+	url = http://www.rfdump.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libglade
+	source = http://www.rfdump.org/dl/rfdump-1.6.tar.bz2
+	md5sums = e355566826ae313eb51aeb0d54ba1b68
+
+pkgname = rfdump
+
