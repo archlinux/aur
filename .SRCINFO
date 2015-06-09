@@ -1,0 +1,19 @@
+pkgbase = lib32-libvdpau-va-gl
+	pkgdesc = VDPAU driver with OpenGL/VAAPI backend
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/i-rinat/libvdpau-va-gl
+	arch = x86_64
+	license = LGPL3
+	makedepends = cmake
+	makedepends = gcc-multilib
+	depends = lib32-libvdpau
+	depends = lib32-libva
+	depends = lib32-libgl
+	depends = lib32-glu
+	depends = lib32-ffmpeg
+	source = https://github.com/i-rinat/libvdpau-va-gl/archive/v0.3.4.tar.gz
+	md5sums = 09ceb2f75eafccc9b002d35ede0de6a5
+
+pkgname = lib32-libvdpau-va-gl
+
