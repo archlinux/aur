@@ -1,0 +1,15 @@
+pkgbase = usbmount
+	pkgdesc = automatically mount and unmount USB mass storage devices
+	pkgver = 0.0.22
+	pkgrel = 1
+	url = https://launchpad.net/ubuntu/+source/usbmount/
+	install = usbmount.install
+	arch = any
+	license = BSD
+	depends = lockfile-progs
+	depends = udev
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/usbmount_0.0.22.tar.gz
+	md5sums = ac06283b079382984ba12babac3ad73d
+
+pkgname = usbmount
+

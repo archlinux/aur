@@ -1,0 +1,30 @@
+pre_install() {
+    # If the package is installed, try to create the default mountpoints.
+    # Failure to do so is not considered fatal.
+    mkdir /media 2> /dev/null || :
+    for i in 0 1 2 3 4 5 6 7; do
+        mkdir /media/usb$i 2> /dev/null || :
+    done
+    ln -s usb0 /media/usb 2> /dev/null || :
+}
+
+pre_remove() {
+    # Remove contents of /var/run/usbmount before the package is removed.
+    rm -f /var/run/usbmount/*
+}
+
+post_remove() {
+    # If the package is removed, purged or installation is aborted, try to
+    # remove the default mountpoints.
+    #
+    # Failure to do so is not considered fatal, because they may be in use by
+    # the system administrator or some other daemon on the system.
+    rm -f /media/usb 2> /dev/null || :
+    for i in 0 1 2 3 4 5 6 7; do
+        rmdir /media/usb$i 2> /dev/null || :
+    done
+
+    # During purge, also remove the /etc/udev/rules.d/z60_usbmount.rules symlink
+    # if it exists.
+    rm -f /etc/udev/rules.d/z60_usbmount.rules
+}
