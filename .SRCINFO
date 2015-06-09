@@ -1,0 +1,16 @@
+pkgbase = gmv
+	pkgdesc = GUI for 'mv': Adds 'Move or Rename' to 'open-with' context menu for most files.
+	pkgver = 1.0
+	pkgrel = 4
+	url = https://github.com/colinkeenan/gmv
+	install = gmv.install
+	arch = any
+	license = GPL
+	depends = yad
+	source = https://raw.githubusercontent.com/colinkeenan/gmv/v1.0/gmv
+	source = https://raw.githubusercontent.com/colinkeenan/gmv/v1.0/gmv.desktop
+	md5sums = 7e639e2ae25f0953299fd993fff8e13b
+	md5sums = a36aea533c86a72e2eec2b7247b31f0e
+
+pkgname = gmv
+
