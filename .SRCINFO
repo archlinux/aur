@@ -1,0 +1,14 @@
+pkgbase = nodejs-markdown-live
+	pkgdesc = Markdown preview with live update
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://github.com/mobily/markdown-live
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	provides = mdlive
+	provides = nodejs-markdown-live
+
+pkgname = nodejs-markdown-live
+
