@@ -1,0 +1,16 @@
+pkgbase = m4b-converter-git
+	pkgdesc = Convert m4b audio books to a group of mp3 files by chapter
+	pkgver = 0.5.r27.6060ccc
+	pkgrel = 1
+	url = https://github.com/valekhz/m4b-converter
+	arch = any
+	license = MPL
+	makedepends = git
+	depends = python2
+	depends = ffmpeg
+	depends = libmp4v2
+	source = m4b-converter-git::git+https://github.com/valekhz/m4b-converter.git
+	sha256sums = SKIP
+
+pkgname = m4b-converter-git
+
