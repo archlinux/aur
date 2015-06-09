@@ -1,0 +1,14 @@
+pkgbase = pipetoys
+	pkgdesc = Convert between pipes and chunked files
+	pkgver = 0.10
+	pkgrel = 1
+	url = https://github.com/AndyA/pipetoys
+	arch = i686
+	arch = x86_64
+	makedepends = autoconf
+	source = https://github.com/AndyA/pipetoys/archive/6e6defb619b812669e58716e3ebf88f0aa1fb5a4.zip
+	options = strip
+	options = docs
+
+pkgname = pipetoys
+
