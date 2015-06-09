@@ -1,0 +1,27 @@
+pkgbase = everpad
+	pkgdesc = Evernote client with Unity integration
+	pkgver = 2.15.8
+	pkgrel = 1
+	url = https://github.com/nvbn/everpad/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python2-distribute
+	makedepends = python2-webpy
+	depends = python2-beautifulsoup3
+	depends = python2-dbus
+	depends = python2-keyring
+	depends = python2-magic
+	depends = python2-oauth2
+	depends = python2-pyside
+	depends = python2-pysqlite
+	depends = python2-regex
+	depends = shiboken
+	depends = python2-sqlalchemy
+	depends = python2-unity-singlet
+	depends = sni-qt
+	source = https://launchpad.net/~nvbn-rm/+archive/ppa/+files/everpad_2.15.8.orig.tar.xz
+	sha512sums = 2c356ac0f5741fe762aad71715cb97d7d69e6e1ddacb1333cd69f8b8c2521404c6fa131b2f72f772a1ac26e26fb8bda83c0648221e7018eabf2670087159e145
+
+pkgname = everpad
+
