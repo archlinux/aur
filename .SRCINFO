@@ -1,0 +1,19 @@
+pkgbase = kdiff3-qt
+	pkgdesc = A file comparator/merge tool (lightweight qt version without KDE dependencies)
+	pkgver = 0.9.98
+	pkgrel = 2
+	url = http://kdiff3.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt5-base
+	provides = kdiff3=0.9.98
+	conflicts = kdiff3
+	options = !docs
+	options = !emptydirs
+	source = http://downloads.sourceforge.net/project/kdiff3/kdiff3/0.9.98/kdiff3-0.9.98.tar.gz
+	md5sums = b52f99f2cf2ea75ed5719315cbf77446
+	sha256sums = 802c1ababa02b403a5dca15955c01592997116a24909745016931537210fd668
+
+pkgname = kdiff3-qt
+
