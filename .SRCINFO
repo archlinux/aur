@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-asmjit
+	pkgdesc = Complete x86/x64 JIT and Remote Assembler for C++ (mingw-w64)
+	pkgver = r102.d7fc62d
+	pkgrel = 1
+	url = https://github.com/kobalicek/asmjit
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-cmake
+	makedepends = git
+	depends = mingw-w64-crt
+	options = !buildflags
+	options = staticlibs
+	options = !strip
+	source = git+https://github.com/kobalicek/asmjit.git
+	md5sums = SKIP
+
+pkgname = mingw-w64-asmjit
+
