@@ -1,0 +1,22 @@
+pkgbase = gog-baldurs-gate-2
+	pkgdesc = Your story begins anew in the exotic southern kingdom of Amn, amidst the opulence of the sinister capital city of Athkatla.
+	pkgver = 1.0.0.5
+	pkgrel = 1
+	url = http://www.gog.com/game/baldurs_gate_2_complete
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = custom
+	depends = freetype2
+	depends = wine
+	source = local://gog_baldurs_gate_2_1.0.0.5.tar.gz
+	source = gog-baldurs-gate-2
+	source = gog-bg2-config
+	source = gog-bg2-config.desktop
+	sha256sums = 222991318bcafbb52ffb603b5cb1a9f5792799598b69ebc8eca410fc61a73b2d
+	sha256sums = b2b55f1b4ef90e182950e3a4a6be68b4b37ba43abb8a33b68ed84a86a31680d2
+	sha256sums = af301428e61b72eacc636254c1b2fdc82cdf4e3bf7800e8846e3f9437e18538b
+	sha256sums = efad7d64aae57ceddbe378dcf04d535425a9ce6a438b43799f389121ec9a0b3f
+
+pkgname = gog-baldurs-gate-2
+

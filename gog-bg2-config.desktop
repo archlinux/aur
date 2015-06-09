@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Baldurs Gate 2 Configuration
+Comment=Baldurs Gate 2 (GOG.com)
+Exec=gog-bg2-config
+Icon=gog-baldurs-gate-2
+Terminal=false
+Type=Application
+Categories=Game;
