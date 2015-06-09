@@ -1,0 +1,17 @@
+post_install() {
+  cat << EOF
+Start with
+
+    systemctl start amigashell.service
+
+Run automatically at boot with
+
+    systemctl enable amigashell.service
+
+For the full experience, put
+
+    source /usr/share/amigashell/amigashell.env 
+
+in your ~/.bashrc file.
+EOF
+}

@@ -1,0 +1,18 @@
+pkgbase = amigashell
+	pkgdesc = A virtual console looking like a Commodore AmigaOS shell
+	pkgver = 2.3
+	pkgrel = 5
+	url = https://github.com/mdoege/AmigaShell
+	install = amigashell.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash
+	depends = kbd
+	optdepends = gpm: mouse-based copy-and-paste for the virtual console
+	optdepends = fbv: for extra cuteness when you type "reboot" (source amigashell.env first!)
+	source = git://github.com/mdoege/AmigaShell.git
+	md5sums = SKIP
+
+pkgname = amigashell
+
