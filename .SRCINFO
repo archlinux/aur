@@ -1,0 +1,15 @@
+pkgbase = emacs-idris-mode-git
+	pkgdesc = Major mode for editing Idris.
+	pkgver = 20150609
+	pkgrel = 1
+	url = https://github.com/idris-hackers/idris-mode
+	install = emacs-idris-mode-git.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = emacs-idris-mode
+	replaces = emacs-idris-mode
+
+pkgname = emacs-idris-mode-git
+
