@@ -1,0 +1,19 @@
+pkgbase = python-basiciw
+	pkgdesc = Retrieve information such as ESSID or signal quality from wireless cards (Python module)
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/enkore/basiciw/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = wireless_tools
+	provides = basiciw-git
+	conflicts = basiciw-git
+	replaces = basiciw-git
+	source = https://pypi.python.org/packages/source/b/basiciw/basiciw-0.2.2.tar.gz
+	md5sums = bf4197a549c57c19c33a9a67d7da2eb4
+
+pkgname = python-basiciw
+
