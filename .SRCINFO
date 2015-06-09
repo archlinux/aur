@@ -1,0 +1,16 @@
+pkgbase = ruby-html-pipeline
+	pkgdesc = GitHub HTML processing filters and utilities
+	pkgver = 1.11.0
+	pkgrel = 1
+	url = https://github.com/jch/html-pipeline
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-activesupport
+	depends = ruby-nokogiri
+	noextract = html-pipeline-1.11.0.gem
+	source = https://rubygems.org/downloads/html-pipeline-1.11.0.gem
+	sha256sums = 3461d1f709ef4812f11cc9789bdebb801813ba726e5544df3aad6c62336d93f9
+
+pkgname = ruby-html-pipeline
+
