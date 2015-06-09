@@ -1,0 +1,34 @@
+pkgbase = openssl-via-padlock
+	pkgdesc = The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (with VIA PadLock hardware encryption engine support)
+	pkgver = 1.0.1.l
+	pkgrel = 1
+	url = https://romanrm.net/openssl-padlock
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	depends = zlib
+	depends = perl
+	optdepends = ca-certificates
+	provides = openssl=1.0.1l
+	conflicts = openssl
+	options = !makeflags
+	backup = etc/ssl/openssl.cnf
+	source = https://www.openssl.org/source/openssl-1.0.1l.tar.gz
+	source = no-rpath.patch
+	source = ca-dir.patch
+	source = http://git.alpinelinux.org/cgit/aports/plain/main/openssl/0001-crypto-hmac-support-EVP_MD_CTX_FLAG_ONESHOT-and-set-.patch
+	source = http://git.alpinelinux.org/cgit/aports/plain/main/openssl/0002-engines-e_padlock-backport-cvs-head-changes.patch
+	source = http://openssl.6102.n7.nabble.com/attachment/44055/0/0003-engines-e_padlock-implement-sha1-sha224-sha256-accel.patch
+	source = http://git.alpinelinux.org/cgit/aports/plain/main/openssl/0004-crypto-engine-autoload-padlock-dynamic-engine.patch
+	source = http://git.alpinelinux.org/cgit/aports/plain/main/openssl/0005-s_client-ircv3-starttls.patch
+	md5sums = cdb22925fc9bc97ccbf1e007661f2aa6
+	md5sums = dc78d3d06baffc16217519242ce92478
+	md5sums = 3bf51be3a1bbd262be46dc619f92aa90
+	md5sums = ddb5fc155145d5b852425adaec32234d
+	md5sums = a7717dd564ef876d4923a80751714d63
+	md5sums = 5f5436580b4950f75f5c4d96b40714d7
+	md5sums = c32f42451a07267ee5dfb3781fa40c00
+	md5sums = c5b1042a3acaf3591f3f5620b7086e12
+
+pkgname = openssl-via-padlock
+
