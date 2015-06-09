@@ -1,0 +1,19 @@
+pkgbase = raceintospace
+	pkgdesc = The computer version of the Liftoff! board game by Fritz Bronner
+	pkgver = 1.1
+	pkgrel = 2
+	url = http://www.raceintospace.org/
+	install = raceintospace.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = sdl
+	depends = libvorbis
+	depends = libtheora
+	source = http://downloads.sourceforge.net/raceintospace/raceintospace-1.1.tar.gz
+	source = raceintospace.desktop
+	md5sums = 898fe3ba5c43f6e7b857f5df0093f7a6
+	md5sums = 11ae024ebc4cf38b5753e351f99aee0d
+
+pkgname = raceintospace
+

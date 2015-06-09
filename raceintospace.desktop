@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Race Into Space
+Comment=The computer version of the Liftoff! board game by Fritz Bronner
+Exec=raceintospace
+Icon=raceintospace.xpm
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;Game;
