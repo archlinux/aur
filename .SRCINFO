@@ -1,0 +1,23 @@
+pkgbase = granite-bzr
+	pkgdesc = An extension of GTK+ libraries
+	pkgver = r851
+	pkgrel = 1
+	url = https://launchpad.net/granite
+	install = granite.install
+	arch = i686
+	arch = x86_64
+	groups = pantheon-unstable
+	license = LGPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = gobject-introspection
+	makedepends = vala
+	depends = gtk3
+	depends = libgee
+	provides = granite
+	conflicts = granite
+	source = bzr+lp:granite
+	sha256sums = SKIP
+
+pkgname = granite-bzr
+
