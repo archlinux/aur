@@ -1,0 +1,14 @@
+pkgbase = python-ditail
+	pkgdesc = Tail for directories
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ASzc/ditail
+	arch = any
+	license = GPL
+	depends = python-pyinotify
+	options = !emptydirs
+	source = https://github.com/ASzc/ditail/archive/0.1.0.tar.gz
+	sha256sums = 994e2f5bfd895e2b160518069ebc3c372efdd51a174c73341b93d23f2a502390
+
+pkgname = python-ditail
+
