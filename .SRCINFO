@@ -1,7 +1,7 @@
 pkgbase = unified-remote-server
 	pkgdesc = Unified Remote Server
 	pkgver = 3.2.5.703
-	pkgrel = 1
+	pkgrel = 4
 	url = http://www.unifiedremote.com/
 	install = unified-remote-server.install
 	arch = x86_64
