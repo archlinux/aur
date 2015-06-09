@@ -1,0 +1,4 @@
+pkgname=('lib32-glib-networking')
+builddeps=('lib32-libproxy')
+
+# vim: ts=2 sw=2 et:
