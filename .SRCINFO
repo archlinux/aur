@@ -1,0 +1,15 @@
+pkgbase = vertex-themes
+	pkgdesc = Vertex Gtk2, Gtk3, Metacity, Xfwm, Cinnamon and GNOME Shell themes (GNOME 3.16 version)
+	pkgver = 20150425
+	pkgrel = 1
+	url = http://horst3180.deviantart.com/art/Vertex-Theme-470663601
+	arch = any
+	license = GPL3
+	depends = gtk-engine-murrine
+	provides = vertex-themes
+	conflicts = vertex-themes-git
+	source = vertex-themes-20150425.tar.gz::https://github.com/horst3180/Vertex-theme/archive/20150425.tar.gz
+	sha256sums = be5e78c83195aed3784f32eae3d588e1ca242158ad1165167ffd47f891745045
+
+pkgname = vertex-themes
+
