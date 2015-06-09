@@ -1,0 +1,14 @@
+pkgbase = epsxe-plugin-spu-alsa
+	pkgdesc = OSS/Alsa SPU plugin
+	pkgver = 1.9
+	pkgrel = 5
+	url = http://www.pbernert.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = epsxe
+	source = http://www.pbernert.com/spupeopsoss109.tar.gz
+	md5sums = b42b316576f9f81775f78d62b3567b16
+
+pkgname = epsxe-plugin-spu-alsa
+
