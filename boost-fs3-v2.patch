@@ -1,0 +1,159 @@
+diff -rupN e4rat-0.2.3-fresh/CMakeLists.txt e4rat-0.2.3-fixed/CMakeLists.txt
+--- e4rat-0.2.3-fresh/CMakeLists.txt	2012-05-03 08:43:12.000000000 +0200
++++ e4rat-0.2.3-fixed/CMakeLists.txt	2013-06-03 16:36:45.582255709 +0200
+@@ -14,9 +14,8 @@ IF(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_D
+     set(CMAKE_INSTALL_PREFIX "/" CACHE PATH "e4rat install prefix" FORCE)
+ ENDIF(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+ 
+-set(Boost_USE_STATIC_LIBS   ON)
++set(Boost_USE_STATIC_LIBS   OFF)
+ set(Boost_USE_MULTITHREADED OFF)
+-add_definitions(-DBOOST_FILESYSTEM_VERSION=2)
+ find_package(Boost 1.41 COMPONENTS system filesystem regex REQUIRED)
+ set(${PROJECT_NAME}_LIBRARIES   ${${PROJECT_NAME}_LIBRARIES}
+     ${Boost_LIBRARIES})
+@@ -27,56 +26,6 @@ add_subdirectory(   ${CMAKE_CURRENT_SOUR
+ 
+ 
+ # to generate debian package run: make package
+-FIND_PROGRAM(DPKG_CMD dpkg)
+-if(DPKG_CMD)
+-    EXECUTE_PROCESS(COMMAND "${DPKG_CMD}" --print-architecture
+-        OUTPUT_VARIABLE CPACK_DEBIAN_PACKAGE_ARCHITECTURE
+-        OUTPUT_STRIP_TRAILING_WHITESPACE
+-    )
+-else(DPKG_CMD)
+-    MESSAGE(STATUS "CPACK: Can not find dpkg in your path, default to i386.")
+-    SET(CPACK_DEBIAN_PACKAGE_ARCHITECTURE i386)
+-endif(DPKG_CMD)
+-
+-SET (CPACK_GENERATOR DEB)
+-SET(CPACK_PACKAGE_VERSION  ${E4RAT_VERSION})
+-SET(CPACK_PACKAGE_FILE_NAME 
+-    "${PROJECT_NAME}_${CPACK_PACKAGE_VERSION}_${CPACK_DEBIAN_PACKAGE_ARCHITECTURE}")
+-
+-IF(NOT CMAKE_BUILD_TYPE STREQUAL "release")
+-    SET(CPACK_PACKAGE_FILE_NAME 
+-    	${CPACK_PACKAGE_FILE_NAME}_debug)
+-endif(NOT CMAKE_BUILD_TYPE STREQUAL "release")
+-
+-SET (CPACK_INSTALL_PREFIX "/")
+-
+-if(NOT CPACK_INSTALL_PREFIX STREQUAL CMAKE_INSTALL_PREFIX)
+-SET(CPACK_PACKAGE_FILE_NAME 
+-    	${CPACK_PACKAGE_FILE_NAME}_invalid-prefix)
+-endif(NOT CPACK_INSTALL_PREFIX STREQUAL CMAKE_INSTALL_PREFIX)
+-
+-SET (CPACK_PACKAGE_DESCRIPTION_SUMMARY
+-        "Reduce disk access time on ext4 filesystems through relevant file defragmentation.")
+-SET (CPACK_PACKAGE_CONTACT              "Andreas Rid <conso@users.sf.net>")
+-SET (CPACK_RESOURCE_FILE_LICENSE        "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE")
+-SET (CPACK_DEBIAN_PACKAGE_SECTION       "extra")
+-SET (CPACK_DEBIAN_PACKAGE_MAINTAINER    "Andreas Rid")
+-set (CPACK_SET_DESTDIR                  "ON") # Necessary because of the absolute install paths
+-
+-# extra install and uninstall create subfolders
+-# I don't know why cpack deb does not create or remove directories.
+-set( CPACK_DEBIAN_PACKAGE_CONTROL_EXTRA
+-        "${CMAKE_CURRENT_SOURCE_DIR}/debian/preinst"
+-        "${CMAKE_CURRENT_SOURCE_DIR}/debian/postrm")
+-
+-SET (CPACK_DEBIAN_PACKAGE_DEPENDS
+-        "e2fslibs (>=1.41)")
+-
+-SET (CPACK_DEBIAN_PACKAGE_CONFLICTS
+-        "auditd, ureadahead")
+-
+-INCLUDE(CPack)
+-
+ add_custom_target(src
+         COMMAND test -e ${PROJECT_NAME}-${E4RAT_VERSION} || mkdir ${PROJECT_NAME}-${E4RAT_VERSION}
+         COMMAND rsync -p --relative `git ls-files` ${PROJECT_NAME}-${E4RAT_VERSION}
+diff -rupN e4rat-0.2.3-fresh/src/CMakeLists.txt e4rat-0.2.3-fixed/src/CMakeLists.txt
+--- e4rat-0.2.3-fresh/src/CMakeLists.txt	2012-05-03 08:43:12.000000000 +0200
++++ e4rat-0.2.3-fixed/src/CMakeLists.txt	2013-06-03 16:42:44.028413549 +0200
+@@ -180,7 +180,7 @@ if(NOT BUILD_CORE_LIBRARY_STATIC)
+ endif(NOT BUILD_CORE_LIBRARY_STATIC)
+ 
+ INSTALL(TARGETS ${${PROJECT_NAME}_TARGETS}
+-        RUNTIME DESTINATION "sbin"
++        RUNTIME DESTINATION "/usr/bin"
+         LIBRARY DESTINATION "lib"
+         ARCHIVE DESTINATION "lib"
+ )
+diff -rupN e4rat-0.2.3-fresh/src/common.cc e4rat-0.2.3-fixed/src/common.cc
+--- e4rat-0.2.3-fresh/src/common.cc	2012-05-03 08:43:12.000000000 +0200
++++ e4rat-0.2.3-fixed/src/common.cc	2013-06-03 16:36:45.582255709 +0200
+@@ -157,7 +157,7 @@ std::vector<std::string> matchPath( cons
+         p /= filesearch;
+     }
+     // Initialize regex filter - use * as default if nothing is given in filesearch
+-    std::string f( p.has_filename() ? p.filename() : "*");
++    std::string f( p.has_filename() ? p.filename().string() : "*");
+ 
+     fs::path dir(system_complete(p).parent_path());
+     if( is_directory(dir) )
+@@ -166,8 +166,8 @@ std::vector<std::string> matchPath( cons
+              it!=boost::filesystem::directory_iterator();
+              ++it )
+         {
+-            if( boost::regex_match( it->leaf(), path2regex(f) ) )
+-                fileset.push_back(it->string());
++            if( boost::regex_match( it->path().filename().string(), path2regex(f) ) )
++                fileset.push_back(it->path().filename().string());
+         }
+     return fileset;
+ }
+diff -rupN e4rat-0.2.3-fresh/src/config.cc e4rat-0.2.3-fixed/src/config.cc
+--- e4rat-0.2.3-fresh/src/config.cc	2012-05-03 08:43:12.000000000 +0200
++++ e4rat-0.2.3-fixed/src/config.cc	2013-06-03 16:36:45.582255709 +0200
+@@ -71,7 +71,7 @@ Config::Config()
+         return;
+     }
+     
+-    tool_name = fs::path(argv[0]).filename();
++    tool_name = fs::path(argv[0]).filename().string();
+     found = tool_name.find_last_of("-");
+     if(found)
+         defaultSection = tool_name.substr(found+1);
+diff -rupN e4rat-0.2.3-fresh/src/device.cc e4rat-0.2.3-fixed/src/device.cc
+--- e4rat-0.2.3-fresh/src/device.cc	2012-05-03 08:43:12.000000000 +0200
++++ e4rat-0.2.3-fixed/src/device.cc	2013-06-03 16:36:45.582255709 +0200
+@@ -196,13 +196,13 @@ int Device::getDevNameFromDevfs()
+         it != end_itr;
+         ++it )
+     {
+-        if(it->filename() == "root")
++        if(it->path().filename().string() == "root")
+             continue;
+-        if(lstat(it->string().c_str(), &st))
++        if(lstat(it->path().filename().c_str(), &st))
+             continue;
+         if(st.st_rdev == get()->devno)
+         {
+-            get()->deviceName = it->filename();
++            get()->deviceName = it->path().filename().string();
+             get()->devicePath = "/dev/" + get()->deviceName;
+             return 0;
+         }
+@@ -225,7 +225,7 @@ int Device::getDevNameFromMajorMinor()
+             // the minor number of virtual filesystems are allocated dynamically in function set_anon_super() in fs/super.c
+             // for convenience set deviceName and devicePath to a common name
+             get()->deviceName = "virtual file system";
+-            get()->devicePath = get()->mount_point.filename();
++            get()->devicePath = get()->mount_point.filename().string();
+             return 0;
+         case 2:
+             ss << "fd"; 
+diff -rupN e4rat-0.2.3-fresh/src/e4rat-collect.cc e4rat-0.2.3-fixed/src/e4rat-collect.cc
+--- e4rat-0.2.3-fresh/src/e4rat-collect.cc	2012-05-03 08:43:12.000000000 +0200
++++ e4rat-0.2.3-fixed/src/e4rat-collect.cc	2013-06-03 16:36:45.582255709 +0200
+@@ -396,7 +396,7 @@ int main(int argc, char* argv[])
+          * Parse application list given as arguments
+          */
+         for ( ; optind < argc; optind++)
+-            project.observeApp(fs::path(argv[optind]).filename());
++            project.observeApp(fs::path(argv[optind]).filename().string());
+ 
+         /*
+          * Parse application list on stdin

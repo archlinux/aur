@@ -1,0 +1,22 @@
+pkgbase = e4rat
+	pkgdesc = Toolset to accelerate the boot process and application startups for systems with ext4 root partitions.
+	pkgver = 0.2.3
+	pkgrel = 2
+	url = http://e4rat.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = audit
+	makedepends = boost
+	makedepends = cmake
+	depends = e2fsprogs
+	depends = boost-libs
+	options = !strip
+	backup = etc/e4rat.conf
+	source = http://downloads.sourceforge.net/project/e4rat/0.2.3/e4rat_0.2.3_src.tar.gz
+	source = boost-fs3-v2.patch
+	sha256sums = f6feda9618eff0f9442baf771b4776b634e5a2f39e678c10e4c7946b2c6a96a0
+	sha256sums = 9a9786d6167e4a47d1733735745b0eadeabf487886405df9e6771a28f3a20965
+
+pkgname = e4rat
+
