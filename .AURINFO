@@ -1,0 +1,13 @@
+pkgbase = libwebsocketpp-git
+	pkgdesc = C++/Boost Asio based websocket client/server library
+	pkgver = 0.3.0.r0.ge203dbe
+	pkgrel = 1
+	url = https://github.com/zaphoyd/websocketpp
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	source = git://github.com/zaphoyd/websocketpp.git
+
+pkgname = libwebsocketpp-git
+
