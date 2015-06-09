@@ -1,0 +1,16 @@
+pkgbase = fittotcx-git
+	pkgdesc = This program takes a FIT file and converts it into an TCX file and output the result to the standard output
+	pkgver = r13.22348b0
+	pkgrel = 1
+	url = https://github.com/Tigge/FIT-to-TCX
+	arch = i686
+	arch = x86_64
+	license = custom:fittotcx
+	depends = python2
+	depends = python2-lxml
+	depends = python2-fitparse-git
+	source = git+https://github.com/Tigge/FIT-to-TCX
+	md5sums = SKIP
+
+pkgname = fittotcx-git
+
