@@ -1,0 +1,23 @@
+pkgbase = ros-hydro-ecl-eigen
+	pkgdesc = ROS - This provides an Eigen implementation for ecls linear algebra.
+	pkgver = 0.60.8
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-hydro-ecl-license
+	makedepends = ros-hydro-catkin
+	makedepends = eigen
+	depends = ros-hydro-ecl-license
+	depends = eigen
+	source = ecl_eigen::git+https://github.com/yujinrobot-release/ecl_core-release.git#tag=release/hydro/ecl_eigen/0.60.8-0
+	md5sums = SKIP
+
+pkgname = ros-hydro-ecl-eigen
+
