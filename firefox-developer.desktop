@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Firefox Developer
+GenericName=Web Browser
+Icon=firefox-developer-icon
+Type=Application
+Categories=Application;Network;
+MimeType=text/html
+Encoding=UTF-8
+Exec=firefox-developer %u
+Terminal=false
+MultipleArgs=false
+StartupNotify=false
