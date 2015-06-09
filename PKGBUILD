@@ -1,10 +1,11 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
-pkgname=reposurgeon
+pkgbase=reposurgeon
+pkgname=({cy,}reposurgeon)
 pkgver=3.25
-pkgrel=1
+pkgrel=2
 pkgdesc="Performs surgery on version control repositories."
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://www.catb.org/esr/$pkgname/"
 license=('BSD')
 depends=('python2')
@@ -17,17 +18,26 @@ optdepends=('bzr'
             'mercurial'
             'src'
             'subversion')
-source=($url$pkgname-$pkgver.tar.gz)
+source=($url$pkgbase-$pkgver.tar.gz)
 sha256sums=('dce106162e300a8a3196299f4ff84e401dd9030fc970d63492cf58dec2d0f6fa')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make CYTHON=cython2 all cyreposurgeon
+  cd "$srcdir/$pkgbase-$pkgver"
+  make all
+
+  if [ "$pkgname" == "cyreposurgeon" ]; then
+      build_cyreposurgeon
+  fi
 }
 
-package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" prefix=/usr install install-cyreposurgeon
+build_cyreposurgeon() {
+  cd "$srcdir/$pkgbase-$pkgver"
+  make CYTHON=cython2 cyreposurgeon
+}
+
+package_reposurgeon() {
+  cd "$srcdir/$pkgbase-$pkgver"
+  make DESTDIR="$pkgdir" prefix=/usr install
 
   install -dm755 "$pkgdir/usr/share/emacs/site-lisp"
   install -Dm644 reposurgeon-mode.el "$pkgdir/usr/share/emacs/site-lisp"
@@ -35,4 +45,9 @@ package() {
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/reposurgeon/COPYING"
 }
 
-# vim:set ts=2 sw=2 et:
+package_cyreposurgeon() {
+  arch=('i686' 'x86_64')
+
+  cd "$srcdir/$pkgbase-$pkgver"
+  make DESTDIR="$pkgdir" prefix=/usr install-cyreposurgeon
+}
