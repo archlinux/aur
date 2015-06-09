@@ -1,0 +1,13 @@
+pkgbase = python-protobuf
+	pkgdesc = Python 3 bindings to Google Protocol Buffers
+	pkgver = 3.0.0a3
+	pkgrel = 1
+	url = https://github.com/google/protobuf
+	arch = any
+	license = BSD
+	depends = python
+	source = https://pypi.python.org/packages/source/p/protobuf/protobuf-3.0.0a3.tar.gz
+	sha256sums = b61622de5048415bfd3f2d812ad64606438ac9e25009ae84191405fe58e522c1
+
+pkgname = python-protobuf
+
