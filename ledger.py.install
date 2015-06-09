@@ -1,0 +1,27 @@
+post_install() {
+  printf "%b\n" "$ledger"
+  echo -n "Symlinking /usr/share/ledger.py/ledger.py to /usr/bin/ledger.py... "
+  ln -s /usr/share/ledger.py/ledger.py /usr/bin/ledger.py
+  echo "done"
+}
+
+post_upgrade() {
+  post_remove
+  post_install
+}
+
+post_remove() {
+  echo -n "Removing symlinks... "
+  rm -f /usr/bin/ledger.py
+  echo "done"
+}
+
+read -d '' ledger <<'EOF'
+########################################################################
+########################################################################
+##                                                                    ##
+##  For Ledger.py examples and readme, see: /usr/share/doc/ledger.py  ##
+##                                                                    ##
+########################################################################
+########################################################################
+EOF

@@ -1,0 +1,19 @@
+pkgbase = ledger.py-git
+	pkgdesc = Command-line, double-entry accounting system written in Python, inspired by Ledger
+	pkgver = 20140904
+	pkgrel = 1
+	url = https://github.com/mafm/ledger.py
+	install = ledger.py.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python2
+	depends = python2-dateutil
+	depends = python2-xlwt
+	provides = ledger.py
+	conflicts = ledger.py
+	source = git+https://github.com/mafm/ledger.py
+	sha256sums = SKIP
+
+pkgname = ledger.py-git
+
