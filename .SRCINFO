@@ -1,0 +1,18 @@
+pkgbase = libasr-snapshot
+	pkgdesc = A FREE asynchronous DNS resolver.
+	pkgver = 201505061057
+	pkgrel = 1
+	url = https://github.com/OpenSMTPD/libasr
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = libevent
+	depends = openssl
+	provides = libasr
+	conflicts = libasr
+	options = !strip
+	source = http://www.opensmtpd.org/archives/libasr-201505061057.tar.gz
+	sha256sums = 50ad9ed14ab0eb2abd27cfd45047f49b5470ec48717e2d024b017fa43c69f69d
+
+pkgname = libasr-snapshot
+
