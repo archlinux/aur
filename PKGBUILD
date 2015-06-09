@@ -8,8 +8,6 @@ url="http://forums.mydigitallife.info/threads/50234-Emulated-KMS-Servers-on-non-
 license='unknown'
 depends=('glibc')
 makedepends=('clang' 'p7zip')
-provides=('vlmcsd')
-conflicts=('vlmcsd')
 source=('vlmcsd.7z::http://rghost.net/download/6yHcSRfhr/23e19b2eab61a6d0ae4b6292aed65dd0a23ffa6a/vlmcsd-svn779-2015-05-11-Hotbird64-source-only.7z'
         'vlmcsd.service')
 install='vlmcsd.install'
