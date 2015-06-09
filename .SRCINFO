@@ -1,0 +1,24 @@
+pkgbase = switchboard-plug-pantheon-shell-bzr
+	pkgdesc = Pantheon Shell plug for Switchboard
+	pkgver = r336
+	pkgrel = 1
+	url = https://launchpad.net/switchboard-plug-pantheon-shell
+	arch = i686
+	arch = x86_64
+	groups = pantheon-unstable
+	license = GPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = vala
+	depends = gnome-desktop
+	depends = plank
+	depends = switchboard-bzr
+	provides = switchboard-plug-pantheon-shell
+	conflicts = switchboard-plug-pantheon-shell
+	source = bzr+lp:switchboard-plug-pantheon-shell
+	source = pantheon-shell-paths.patch
+	sha256sums = SKIP
+	sha256sums = 085777b30998596e521c83e0676687b6ca3e73f04d0f1a62c673f4a78b29c933
+
+pkgname = switchboard-plug-pantheon-shell-bzr
+
