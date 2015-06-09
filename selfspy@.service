@@ -1,0 +1,19 @@
+[Unit]
+Description=Log everything %I does on the computer
+
+# Not really needed. Just to make it start as late
+# as possible before graphical.target, since we are
+# actually waiting for X11 and don't want to spam
+# the journal
+After=multi-user.target
+
+[Service]
+Type=simple
+User=%I
+Environment=DISPLAY=:0
+ExecStart=/usr/bin/selfspy --config "/home/%I/.config/selfspy.conf"
+Restart=on-abort
+ExecStopPost=/usr/bin/rm -f "/home/%I/.selfspy/selfspy.pid.lock"
+
+[Install]
+WantedBy=graphical.target

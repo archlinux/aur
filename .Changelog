@@ -1,0 +1,32 @@
+2014-10-24 jakob <grandchild@gmx.net>
+
+	* 0.1.4.r169.g363aa5f-3 :
+	Update config file to include fixed parameters.
+
+2014-10-24 jakob <grandchild@gmx.net>
+
+	* 0.1.4.r169.g363aa5f-2 :
+	Add service and conf to src array.
+
+2014-10-23 jakob <grandchild@gmx.net>
+
+	* 0.1.4.r169.g363aa5f-1 :
+	Merge requirements patch into upstream.
+	Add pkgver() function and change versioning scheme.
+	Update pkgdesc.
+
+2014-10-06 jakob <grandchild@gmx.net>
+
+	* 20141005-3 :
+	Fix wrong setup files.
+
+2014-10-06 jakob <grandchild@gmx.net>
+
+	* 20141005-2 :
+	Add systemd service file.
+	Add example config file.
+
+2014-10-05 jakob <grandchild@gmx.net>
+	
+	* 20141005-2 :
+	Rewrite PKBUILD to fit new src tree structure.

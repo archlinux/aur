@@ -1,0 +1,19 @@
+post_upgrade() {
+	post_install
+}
+
+post_install() {
+cat << EOF
+	Before running selfspy or the systemd .service for the
+	first time, copy the example config file from
+	    /usr/share/selfspy/selfspy.conf.example
+	to your config dir
+		e.g. ~/.config/selfspy.conf
+	and ENTER A PASSPHRASE.
+	
+	You can then start selfspy via
+	    # systemctl start selfspy@user.service
+	or by hand with
+	    $ selfspy -c ~/.config/selfspy.conf
+EOF
+}
