@@ -1,0 +1,17 @@
+pkgbase = lib32-libproxy
+	pkgdesc = A library that provides automatic proxy configuration management
+	pkgver = 0.4.11
+	pkgrel = 1
+	url = http://libproxy.googlecode.com
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = gcc-multilib
+	makedepends = lib32-zlib
+	depends = lib32-gcc-libs
+	depends = libproxy
+	source = http://libproxy.googlecode.com/files/libproxy-0.4.11.tar.gz
+	md5sums = 3cd1ae2a4abecf44b3f24d6639d2cd84
+
+pkgname = lib32-libproxy
+
