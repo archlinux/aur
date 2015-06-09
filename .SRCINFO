@@ -1,0 +1,16 @@
+pkgbase = ntdsxtract
+	pkgdesc = A framework for offline forensic analysis of NTDS.DIT
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = http://www.ntdsxtract.com/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = python2
+	depends = python2-crypto
+	depends = libesedb
+	source = ntdsxtract-1.3.1.zip::http://www.ntdsxtract.com/downloads/ntdsxtract/ntdsxtract_v1_3_1_beta.zip
+	md5sums = 0057e137ced55a2e16b9c5d681f6f8ee
+
+pkgname = ntdsxtract
+
