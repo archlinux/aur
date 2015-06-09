@@ -1,0 +1,20 @@
+pkgbase = gnofract4d
+	pkgdesc = Create beautiful fractal images in PyGTK
+	pkgver = 3.14.1
+	pkgrel = 3
+	url = http://gnofract4d.sourceforge.net
+	install = gnofract4d.install
+	arch = any
+	license = BSD
+	makedepends = docbook-xsl
+	depends = desktop-file-utils
+	depends = libjpeg
+	depends = libpng
+	depends = pygtk
+	source = https://github.com/edyoung/gnofract4d/archive/V_3_14_1.tar.gz
+	source = gnofract4d-manual.html
+	md5sums = 0872b6acefa9123205e099c9e174a791
+	md5sums = 784e9aeb0abcf473d338481f37503ab0
+
+pkgname = gnofract4d
+
