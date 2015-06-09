@@ -1,0 +1,25 @@
+pkgbase = opentxs-notary-git
+	pkgdesc = Open Transactions notary
+	pkgver = 20141209
+	pkgrel = 1
+	url = https://github.com/Open-Transactions/opentxs-notary
+	arch = i686
+	arch = x86_64
+	license = AGPL
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = git
+	makedepends = libtool
+	makedepends = make
+	makedepends = pkg-config
+	depends = opentxs-git
+	depends = protobuf
+	provides = opentxs-notary
+	conflicts = opentxs-notary
+	source = git+https://github.com/Open-Transactions/opentxs-notary
+	sha256sums = SKIP
+
+pkgname = opentxs-notary-git
+
