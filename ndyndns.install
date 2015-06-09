@@ -1,0 +1,14 @@
+post_install() {
+    systemd-sysusers
+    chown ndyndns:ndyndns var/lib/ndyndns/var
+}
+
+post_upgrade() {
+    if [[ "$(vercmp $2 2.2)" -lt 0 ]]; then
+        chown root:root var/lib/ndyndns
+        chown ndyndns:ndyndns var/lib/ndyndns/var
+        chmod 755 var/lib/ndyndns
+        chmod 700 var/lib/ndyndns/var
+        mv var/lib/ndyndns/*-dns* var/lib/ndyndns/var/ || true
+    fi
+}

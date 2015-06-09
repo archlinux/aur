@@ -1,0 +1,9 @@
+[Unit]
+Description=Dynamic DNS updater
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/ndyndns -n -f /etc/ndyndns.conf
+
+[Install]
+WantedBy=network.target
