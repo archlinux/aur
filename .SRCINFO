@@ -1,0 +1,18 @@
+pkgbase = diet-kconfig
+	pkgdesc = A script to trim unused modules when compiling the kernel
+	pkgver = 1
+	pkgrel = 5
+	url = http://ftp.suse.com/pub/people/tiwai/misc/diet-kconfig
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = findutils
+	depends = grep
+	depends = sed
+	depends = awk
+	depends = coreutils
+	source = http://ftp.suse.com/pub/people/tiwai/misc/diet-kconfig
+	md5sums = 500addab85db4abd77e70f04cc352eab
+
+pkgname = diet-kconfig
+
