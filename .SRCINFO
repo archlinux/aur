@@ -1,0 +1,15 @@
+pkgbase = timeset
+	pkgdesc = A script for managing system date and time.
+	pkgver = 1.5
+	pkgrel = 4
+	url = https://github.com/aadityabagga/timeset
+	arch = any
+	license = GPL
+	depends = bash
+	depends = ntp
+	optdepends = ntp-openrc: openrc ntp service
+	source = https://github.com/aadityabagga/timeset/archive/1.5.tar.gz
+	sha1sums = af1abb8bcbd3a37554f305d5282da679ee3d3160
+
+pkgname = timeset
+
