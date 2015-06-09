@@ -1,0 +1,27 @@
+pkgbase = elementary-scan-bzr
+	pkgdesc = Simple Scanning Utility
+	pkgver = r607
+	pkgrel = 1
+	url = https://launchpad.net/elementary-scan
+	install = elementary-scan.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = bzr
+	makedepends = gnome-common
+	makedepends = intltool
+	makedepends = vala
+	depends = granite-bzr
+	depends = launchpad-integration-gtk3
+	depends = libgee06
+	depends = sane
+	depends = scour
+	provides = elementary-scan
+	provides = simple-scan
+	conflicts = elementary-scan
+	conflicts = simple-scan
+	source = bzr+lp:elementary-scan
+	sha256sums = SKIP
+
+pkgname = elementary-scan-bzr
+

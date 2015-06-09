@@ -1,0 +1,6 @@
+pkgname=('elementary-scan-bzr')
+builddeps=('granite-bzr' 'launchpad-integration-gtk3' 'scour')
+
+check_bzr $packagedir/$pkgname/${pkgname%-*}
+
+# vim: ts=2 sw=2 et:
