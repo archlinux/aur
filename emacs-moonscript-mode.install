@@ -1,0 +1,13 @@
+post_install() {
+    cat <<EOF
+==> Include something like this in your .emacs:
+(autoload 'moonscript-mode "moonscript-mode"
+   "Major mode for editing MoonScript source files" t)
+(add-to-list 'auto-mode-alist '("\\.moon\\'" . moonscript-mode))
+(require 'moonscriptrepl-mode)
+EOF
+}
+
+post_upgrade() {
+  post_install $1
+}

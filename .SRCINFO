@@ -1,0 +1,14 @@
+pkgbase = emacs-moonscript-mode
+	pkgdesc = Emacs major mode for the MoonScript programming language
+	pkgver = r6.5b45c30
+	pkgrel = 1
+	url = https://github.com/k2052/moonscript-mode
+	install = emacs-moonscript-mode.install
+	arch = any
+	license = MIT
+	depends = emacs
+	source = git+https://github.com/k2052/moonscript-mode.git
+	md5sums = SKIP
+
+pkgname = emacs-moonscript-mode
+
