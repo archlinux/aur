@@ -1,0 +1,15 @@
+pkgbase = python-colour
+	pkgdesc = Colour representations manipulation library (RGB, HSL, web, ...)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/vaab/colour
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = git+https://github.com/vaab/colour#tag=0.1.1
+	md5sums = SKIP
+
+pkgname = python-colour
+
