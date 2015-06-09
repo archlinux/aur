@@ -1,4 +1,4 @@
-pkgbase = stack
+pkgbase = haskell-stack
 	pkgdesc = The Haskell Tool Stack
 	pkgver = 0.0.0
 	pkgrel = 1
@@ -8,9 +8,9 @@ pkgbase = stack
 	license = BSD3
 	depends = libtinfo
 	optdepends = docker: Use Docker images to build your project in a temporary container
-	provides = stack
-	conflicts = stack-git
-	source = http://download.fpcomplete.com/archlinux/stack_0.0.0-.tar.gz
+	provides = haskell-stack
+	conflicts = haskell-stack-git
+	source = http://download.fpcomplete.com/archlinux/haskell-stack_0.0.0-.tar.gz
 
-pkgname = stack
+pkgname = haskell-stack
 
