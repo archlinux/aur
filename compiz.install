@@ -1,0 +1,35 @@
+post_install() {
+    echo "  -> Updating icon cache..."
+    gtk-update-icon-cache -q -f -t /usr/share/icons/hicolor
+    echo "  -> Updating XDG menu database..."
+    update-desktop-database -q
+
+    ls /usr/share/glib-2.0/schemas 2>/dev/null | grep -qm1 org.compiz
+    if [ $? -eq 0 ]; then
+        echo "  -> Recompiling the GSettings database... "
+        glib-compile-schemas /usr/share/glib-2.0/schemas
+    fi
+}
+
+pre_upgrade() {
+    if [ -f /usr/share/gconf/schemas/compiz.schemas ]; then
+	    echo "  -> Uninstalling GConf schemas... "
+   	    gconfpkg --uninstall compiz
+    fi
+}
+
+post_upgrade() {
+    post_install $1
+}
+
+post_remove() {
+    echo "  -> Updating icon cache..."
+    gtk-update-icon-cache -q -f -t /usr/share/icons/hicolor    
+    echo " -> Updating XDG menu database..."
+    update-desktop-database -q
+
+    if [ -d /usr/share/glib-2.0/schemas ]; then
+        echo "  -> Recompiling the GSettings database... "
+        glib-compile-schemas /usr/share/glib-2.0/schemas
+    fi
+}
