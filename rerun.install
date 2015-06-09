@@ -1,0 +1,23 @@
+post_install() {
+  printf "%b\n" "$rerunit"
+}
+
+read -d '' rerunit <<'EOF'
+rerun
+=====
+
+Rerun checks for an environment variable called $RERUN_MODULES that
+specifies a directory of rerun modules. If $RERUN_MODULES is not set,
+rerun checks the current working directory for a subdirectory called
+"modules".
+
+For single-user modules, add the following to your shell config:
+
+    $ export RERUN_MODULES=$HOME/rerun/modules
+
+For system modules:
+
+    $ export RERUN_MODULES=/usr/lib/rerun/modules
+
+Visit https://github.com/rerun-modules to find contributed rerun modules.
+EOF

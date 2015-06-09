@@ -1,0 +1,18 @@
+pkgbase = rerun
+	pkgdesc = Turn your favorite shell scripts into modular automation with standardized options handling, command line completion, documentation generation, and a built-in test framework
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://rerun.github.io/rerun/
+	install = rerun.install
+	arch = any
+	license = Apache
+	makedepends = autoconf
+	makedepends = make
+	depends = bash
+	depends = discount
+	depends = python2-pygments
+	source = rerun-1.1.1.tar.gz::https://codeload.github.com/rerun/rerun/tar.gz/v1.1.1
+	sha256sums = 6afef26be4430f47ae9bb574f16a79ac4b3bf0d49f26033733e4748c770e2cb9
+
+pkgname = rerun
+
