@@ -3,7 +3,7 @@
 # Contributor: William Giokas <1007380@gmail.com>
 
 pkgname=i3lock-git
-pkgver=2.6
+pkgver=2.6.r35.g105a86d
 pkgrel=1
 pkgdesc="An improved screenlocker based upon XCB and PAM"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ _gitname='i3lock'
 
 pkgver() {
   cd "$srcdir/$_gitname"
-  git describe --tags | sed 's/-/./g'
+  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
