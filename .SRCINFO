@@ -1,0 +1,23 @@
+pkgbase = counterwallet-git
+	pkgdesc = Counterparty web wallet
+	pkgver = 20150420
+	pkgrel = 1
+	url = https://github.com/CounterpartyXCP/counterwallet
+	install = counterwallet.install
+	arch = any
+	groups = counterparty
+	license = CDDL
+	makedepends = git
+	makedepends = nodejs-bower
+	makedepends = nodejs-grunt-cli
+	makedepends = npm
+	optdepends = counterblockd-git: extended API services
+	optdepends = openresty: web app server
+	provides = counterwallet
+	conflicts = counterwallet
+	options = !strip
+	source = git+https://github.com/CounterpartyXCP/counterwallet
+	sha256sums = SKIP
+
+pkgname = counterwallet-git
+
