@@ -3,13 +3,13 @@
 
 pkgname=nvchecker-git
 pkgver=v0.3.r47.g0093a40
-pkgrel=1
+pkgrel=2
 pkgdesc="a tool for checking if a new version of some software has been released."
 arch=('any')
 url="https://github.com/lilydjwg/nvchecker"
 license=('MIT')
-depends=('python' 'python-tornado')
-makedepends=('python-setuptools' 'git')
+depends=('git' 'mercurial' 'python' 'python-tornado')
+makedepends=('python-setuptools')
 optdepends=('python-pycurl: better HTTP client support')
 source=('git://github.com/lilydjwg/nvchecker.git')
 md5sums=('SKIP')
