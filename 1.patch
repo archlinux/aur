@@ -1,0 +1,12 @@
+diff -ur maximus-0.4.14-1/src/tomboykeybinder.h maximus-0.4.14/src/tomboykeybinder.h
+--- maximus-0.4.14-1/src/tomboykeybinder.h	2012-11-15 12:10:17.000000000 +0200
++++ maximus-0.4.14/src/tomboykeybinder.h	2012-11-15 12:10:33.000000000 +0200
+@@ -18,7 +18,7 @@
+ #ifndef __TOMBOY_KEY_BINDER_H__
+ #define __TOMBOY_KEY_BINDER_H__
+ 
+-#include <glib/gtypes.h>
++#include <glib.h>
+ 
+ G_BEGIN_DECLS
+ 

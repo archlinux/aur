@@ -1,0 +1,8 @@
+11082,11084c11082,11084
+< # if test "x$GCC" = "xyes"; then
+< #         GCC_FLAGS="-g -Wall -Werror"
+< # fi
+---
+> if test "x$GCC" = "xyes"; then
+>         GCC_FLAGS="-g -Wall -Werror"
+> fi
