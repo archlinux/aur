@@ -1,0 +1,22 @@
+pkgbase = tmux-truecolor
+	pkgdesc = A terminal multiplexer, with true color support
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://tmux.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = ncurses
+	depends = libevent
+	depends = libutempter
+	provides = tmux
+	conflicts = tmux
+	source = https://github.com/tmux/tmux/releases/download/2.0/tmux-2.0.tar.gz
+	source = LICENSE
+	source = tmux-24.diff
+	md5sums = 9fb6b443392c3978da5d599f1e814eaa
+	md5sums = 71601bc37fa44e4395580b321963018e
+	md5sums = 8283636f62fbefa1bd3ce41a8ea6e426
+
+pkgname = tmux-truecolor
+
