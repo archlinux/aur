@@ -1,0 +1,20 @@
+pkgbase = kcov-git
+	pkgdesc = Code coverage tester for compiled programs, Python scripts and shell scripts
+	pkgver = v27.r11.g5d81d7b
+	pkgrel = 1
+	url = http://simonkagstrom.github.com/kcov/index.html
+	arch = i686
+	arch = x86_64
+	groups = i3-vcs
+	license = GPL2
+	makedepends = cmake
+	makedepends = python2
+	depends = elfutils
+	depends = curl
+	provides = kcov
+	conflicts = kcov
+	source = git+http://github.com/SimonKagstrom/kcov
+	sha1sums = SKIP
+
+pkgname = kcov-git
+
