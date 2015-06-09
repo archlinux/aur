@@ -1,0 +1,15 @@
+# frogr.install
+
+post_install() {
+    update-desktop-database -q
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+}
+
+post_upgrade() {
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+}
+
+post_remove() {
+    update-desktop-database -q
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+}

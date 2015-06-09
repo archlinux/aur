@@ -1,0 +1,27 @@
+pkgbase = frogr
+	pkgdesc = A flickr remote organizer for GNOME
+	pkgver = 0.11
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Frogr
+	install = frogr.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gnome-common
+	makedepends = intltool
+	makedepends = yelp-tools
+	depends = gtk3
+	depends = libexif
+	depends = hicolor-icon-theme
+	depends = json-glib
+	depends = desktop-file-utils
+	depends = libsoup
+	depends = gstreamer
+	optdepends = gst-libav: To support common video formats like .3gp and .MP4
+	provides = frogr
+	conflicts = frogr-git
+	source = http://download.gnome.org/sources/frogr/0.11/frogr-0.11.tar.xz
+	sha256sums = 1a9d258ccaa3ebce31811af5263828808ccd8fc913e4d3fac5fe17e95e8235e9
+
+pkgname = frogr
+
