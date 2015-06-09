@@ -5,7 +5,7 @@ _pkgname="efivar"
 pkgname="${_pkgname}-git"
 
 pkgdesc="Tools and library to manipulate EFI variables - GIT master branch"
-pkgver=0.15.17.gc1d0945
+pkgver=0.20
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/rhinstaller/efivar"
