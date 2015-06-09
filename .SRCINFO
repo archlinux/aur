@@ -1,0 +1,17 @@
+pkgbase = pantheon-backgrounds-bzr
+	pkgdesc = Backgrounds for Pantheon
+	pkgver = r43
+	pkgrel = 1
+	url = https://code.launchpad.net/~elementary-design/elementaryos/elementary-wallpapers
+	arch = any
+	groups = pantheon-unstable
+	license = GPL3
+	makedepends = bzr
+	provides = pantheon-backgrounds
+	conflicts = pantheon-backgrounds
+	options = !emptydirs
+	source = pantheon-backgrounds::bzr+lp:~elementary-design/elementaryos/elementary-wallpapers
+	sha256sums = SKIP
+
+pkgname = pantheon-backgrounds-bzr
+
