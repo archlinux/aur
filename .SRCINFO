@@ -1,0 +1,15 @@
+pkgbase = clamassassin
+	pkgdesc = A simple virus filter wrapper for ClamAV.
+	pkgver = 1.2.4
+	pkgrel = 5
+	url = http://jameslick.com/clamassassin/
+	arch = any
+	license = BSD
+	depends = procmail
+	depends = clamav
+	depends = sh
+	source = http://jameslick.com/clamassassin/clamassassin-1.2.4.tar.gz
+	md5sums = ce063e807ae29ab6666db9e01d01cc4c
+
+pkgname = clamassassin
+
