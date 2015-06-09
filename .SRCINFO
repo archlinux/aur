@@ -1,0 +1,21 @@
+pkgbase = kdeplasma-applets-homerun
+	pkgdesc = An application launcher for KDE Plasma desktop
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = http://userbase.kde.org/Homerun
+	install = kdeplasma-applets-homerun.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = BSD
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdebase-workspace
+	depends = kdebase-lib
+	conflicts = kdeplasma-applets-homerun-git
+	source = http://download.kde.org/stable/homerun/src/homerun-1.2.5.tar.xz
+	md5sums = 86ebece69eae72c548adf40da02aa354
+
+pkgname = kdeplasma-applets-homerun
+
