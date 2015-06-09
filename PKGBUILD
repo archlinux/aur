@@ -4,12 +4,12 @@
 
 pkgname=pkgconf
 pkgver=0.9.11
-pkgrel=2
+pkgrel=3
 pkgdesc='Light pkg-config replacement'
 url='https://github.com/pkgconf/pkgconf'
 arch=('i686' 'x86_64')
 license=('custom:ISC')
-conflicts=('pkg-config' 'pkgconfig')
+conflicts=('pkg-config' 'pkgconfig' 'pkgconf-git')
 provides=('pkg-config' 'pkgconfig')
 replaces=('pkg-config' 'pkgconfig')
 depends=('glibc')
