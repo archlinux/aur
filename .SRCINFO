@@ -1,0 +1,18 @@
+pkgbase = ruby-activerecord
+	pkgdesc = Object-relational mapper framework (part of Rails).
+	pkgver = 4.2.1
+	pkgrel = 1
+	url = http://www.rubyonrails.org
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-activesupport
+	depends = ruby-activemodel
+	depends = ruby-arel
+	noextract = activerecord-4.2.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/activerecord-4.2.1.gem
+	sha1sums = 7a77690554f4368d483be1e9aa5fd2d5ea171343
+
+pkgname = ruby-activerecord
+
