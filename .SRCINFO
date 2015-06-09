@@ -1,0 +1,16 @@
+pkgbase = ttf-courier-prime
+	pkgdesc = Monospace Courier font alternative optimized for screenplays
+	pkgver = 1.203
+	pkgrel = 1
+	url = http://quoteunquoteapps.com/courierprime/
+	install = ttf-courier-prime.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = http://quoteunquoteapps.com/downloads/courier-prime.zip
+	sha256sums = d5d4faf1bee0d1f52bab1103cbfdfb354976331c86f999c110c22a098cb12d73
+
+pkgname = ttf-courier-prime
+
