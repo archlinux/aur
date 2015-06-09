@@ -1,0 +1,15 @@
+pkgbase = webpatente
+	pkgdesc = Practise to obtain Italian driving license
+	pkgver = 4.2.12
+	pkgrel = 1
+	url = http://www.rmastri.it/
+	install = webpatente.install
+	arch = i686
+	arch = x86_64
+	license = costum
+	depends = desktop-file-utils
+	source = webpatente-4.2.12-i386.deb::https://www.dropbox.com/s/hqtsv62nrovjg2r/webpatente-4.2.6-i386.deb
+	md5sums = 4e3a4a25d88a8ed945196bc2e88d1b16
+
+pkgname = webpatente
+
