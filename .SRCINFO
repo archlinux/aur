@@ -1,0 +1,15 @@
+pkgbase = libtecla
+	pkgdesc = Interactive command line editing facilities
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = http://www.astro.caltech.edu/~mcs/tecla/
+	arch = i686
+	arch = x86_64
+	license = custom:X11
+	depends = ncurses
+	options = !makeflags
+	source = http://www.astro.caltech.edu/~mcs/tecla/libtecla-1.6.3.tar.gz
+	md5sums = 90105ca19e405fb92825a90978e4ab18
+
+pkgname = libtecla
+
