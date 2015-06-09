@@ -1,0 +1,20 @@
+pkgbase = projectm-libvisual-alsa
+	pkgdesc = A music visualizer using alsa input and libvisual
+	pkgver = 2.1.0
+	pkgrel = 4
+	url = http://projectm.sourceforge.net
+	arch = i686
+	arch = x86_64
+	groups = projectm-pulse
+	license = GPL
+	makedepends = pkgconfig
+	makedepends = xproto
+	makedepends = cmake
+	depends = projectm
+	depends = projectm-libvisual
+	depends = sdl
+	source = http://sourceforge.net/projects/projectm/files/2.1.0/projectM-libvisual-alsa-2.1.0-Source.tar.gz
+	md5sums = 7d7e7fdbfc9667961fbbbbe9dd089fb7
+
+pkgname = projectm-libvisual-alsa
+
