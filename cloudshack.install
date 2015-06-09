@@ -1,0 +1,18 @@
+post_install() {
+    id cloudshack &>/dev/null || \
+        useradd -r -c "CloudShack daemon" -g daemon -d /var/lib/cloudshack -s /bin/false cloudshack
+    chown -R cloudshack.daemon /var/lib/cloudshack
+}
+
+pre_upgrade() {
+    id cloudshack &>/dev/null || \
+        useradd -r -c "CloudShack daemon" -g daemon -d /var/lib/cloudshack -s /bin/false cloudshack
+}
+
+post_upgrade() {
+    chown -R cloudshack.daemon /var/lib/cloudshack
+}
+
+post_remove() {
+    userdel cloudshack &>/dev/null
+}

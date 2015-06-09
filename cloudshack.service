@@ -1,0 +1,11 @@
+[Unit]
+Description=CloudShack Server
+
+[Service]
+ExecStart=/usr/bin/cloudshack
+User=cloudshack
+WorkingDirectory=/var/lib/cloudshack
+
+[Install]
+WantedBy=multi-user.target
+

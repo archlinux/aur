@@ -1,0 +1,17 @@
+pkgbase = cloudshack-git
+	pkgdesc = amateur radio logbook server with web interface
+	pkgver = 20141030
+	pkgrel = 1
+	url = https://github.com/7h0ma5/CloudShack
+	install = cloudshack.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = nodejs
+	provides = cloudshack
+	conflicts = cloudshack
+	source = cloudshack.service
+	sha256sums = f4ed165f83e34922ccf6c08f5e5a1bb0a7eb6a67d78a47e58a4a4c0b00effb42
+
+pkgname = cloudshack-git
+
