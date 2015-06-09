@@ -1,0 +1,15 @@
+pkgbase = open_choose
+	pkgdesc = 'catfish --wrapper=open_choose' for open-with dialog when open file in catfish
+	pkgver = 1.4
+	pkgrel = 2
+	url = https://github.com/colinkeenan/open_choose
+	install = open_choose.install
+	arch = any
+	license = GPL
+	depends = zenity
+	depends = perl-file-mimeinfo
+	source = https://raw.githubusercontent.com/colinkeenan/open_choose/v1.4/open_choose
+	md5sums = 9b40ab463a80019dfe58856f0190c784
+
+pkgname = open_choose
+
