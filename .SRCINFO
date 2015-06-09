@@ -1,0 +1,26 @@
+pkgbase = charybdis-git
+	pkgdesc = A highly scalable IRCv3-compliant IRCd (development version)
+	pkgver = latest
+	pkgrel = 1
+	url = http://atheme.org/project/charybdis
+	install = charybdis.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = bison
+	depends = flex
+	depends = openssl
+	depends = zlib
+	provides = charybdis
+	conflicts = charybdis
+	options = !strip
+	source = git+https://github.com/atheme/charybdis.git
+	source = charybdis.service
+	source = charybdis.tmpfiles
+	sha256sums = SKIP
+	sha256sums = 044f3567ed865365e76581942e1b28ba4f7193dd6c8022616ea0894295272062
+	sha256sums = 2fcc284f060cafa9a6df0b010de44833b248169ab11c6289f54227ab87068c29
+
+pkgname = charybdis-git
+

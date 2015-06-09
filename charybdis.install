@@ -1,0 +1,15 @@
+post_install() {
+  getent passwd charybdis >&/dev/null ||
+  useradd -d '/var/charybdis' -r charybdis
+
+  chown charybdis:charybdis {/etc,/var,/var/log}/charybdis
+
+  systemd-tmpfiles --create charybdis.conf
+}
+
+post_remove() {
+  getent passwd charybdis >&/dev/null &&
+  userdel charybdis
+}
+
+# vim: ft=sh ts=2 sw=2 et
