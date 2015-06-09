@@ -1,0 +1,16 @@
+pkgbase = pidgin-leftify-tabs
+	pkgdesc = Pidgin plugin to move conversation tabs to left whenever a message arrives
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/nablaa/pidgin-leftify-tabs-plugin
+	arch = x86_64
+	arch = i686
+	license = GPLv2
+	makedepends = make,
+	makedepends = git
+	depends = pidgin
+	depends = libpurple
+	conflicts = pidgin-leftify-tabs-git
+
+pkgname = pidgin-leftify-tabs
+
