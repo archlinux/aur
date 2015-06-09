@@ -1,0 +1,21 @@
+post_install()
+{
+    update-desktop-database -q
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+    cat <<EOF
+
+==> To make the option "Auto Start Nutstore" in Preferences work, type below command manually in a terminal after installation.
+$ install -D /opt/nutstore/gnome-config/autostart/nutstore-daemon.desktop ~/.nutstore/dist/gnome-config/autostart/nutstore-daemon.desktop
+
+EOF
+}
+
+post_upgrade()
+{
+    post_install
+}
+
+post_remove()
+{
+    post_install
+}
