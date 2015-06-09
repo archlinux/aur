@@ -1,0 +1,14 @@
+pkgbase = cinnamon-extension-desktop-scroller
+	pkgdesc = This extension enables you to quickly switch between workspaces
+	pkgver = 1.1
+	pkgrel = 2
+	url = http://cinnamon-spices.linuxmint.com/extensions/view/17
+	arch = any
+	groups = cinnamon-extension
+	license = GPL
+	depends = cinnamon
+	source = http://cinnamon-spices.linuxmint.com/uploads/extensions/G7HH-IZCS-GGW3.zip
+	md5sums = a5f8aa12381a071d3ae74981552225d0
+
+pkgname = cinnamon-extension-desktop-scroller
+
