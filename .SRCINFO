@@ -1,0 +1,29 @@
+pkgbase = insight-bitcore-git
+	pkgdesc = Bitcoin blockchain explorer with complete REST and websocket APIs
+	pkgver = 20141130
+	pkgrel = 1
+	url = https://github.com/bitpay/insight
+	install = insight.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = nodejs-bower
+	makedepends = nodejs-grunt-cli
+	makedepends = npm
+	makedepends = python2
+	depends = leveldb
+	depends = nodejs
+	optdepends = bitcoin-core: Bitcoin core headless P2P node
+	provides = insight-bitcore
+	conflicts = insight-bitcore
+	options = !strip
+	source = git+https://github.com/bitpay/insight
+	source = insight.conf
+	source = insight.service
+	sha256sums = SKIP
+	sha256sums = ba78afbd00a873a0447a78c2661d5ea64137648c92a9d7b4f8d88817453e9283
+	sha256sums = e39b630e18423dbb1868438814e7ac5e31e0b3908df97891b418083941adccb7
+
+pkgname = insight-bitcore-git
+
