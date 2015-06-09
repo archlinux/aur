@@ -1,0 +1,23 @@
+pkgbase = switchboard-plug-security-privacy-bzr
+	pkgdesc = Security & Privacy plug for Switchboard
+	pkgver = r172
+	pkgrel = 1
+	url = https://launchpad.net/switchboard-plug-security-privacy
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = vala
+	depends = elementary-dpms-helper-bzr
+	depends = light-locker
+	depends = switchboard-bzr
+	depends = ufw
+	depends = zeitgeist
+	provides = switchboard-plug-security-privacy
+	conflicts = switchboard-plug-security-privacy
+	source = bzr+lp:switchboard-plug-security-privacy
+	sha256sums = SKIP
+
+pkgname = switchboard-plug-security-privacy-bzr
+
