@@ -1,0 +1,201 @@
+(07.25.2014)
+PRE-ALPHA RELEASE
+*new main config file: /etc/hostsblock/hostsblock.conf
+*new command-line functions that overrides configuration file location and verbosity
+*new verbosity levels:
+    Level 0: Only fatal errors
+    Level 1: Level 0 + non-fatal errors
+    Level 2: Level 1 + updates to cache files
+    Level 3: Level 2 + narration of each major phase
+    Level 4: Level 3 + step-by-step details of all processes
+    Level 5: Level 4 + stdout/stderr from sub-processes like curl, zip, 7za, etc
+*functions common to hostsblock and hostsblock-urlcheck split off into library /usr/lib/hostsblock-common.sh
+*hostsblock-urlcheck now lists which blocklists affect a given url
+*logic to detect dns caching daemons (e.g. dnsmasq) and offer configuration instructions
+*post-download processing of blocklist files now handled in parallel for greater performance
+*general performance improvements in compiling large hosts.block files (use of more grep over sed)
+*general performance improvements for hostsblock-urlcheck (use of more grep over sed)
+
+Version 0.12.3 (03.06.2013)
+*hostblock-urlcheck: issue with colored prompt on white-backgrounded terminals fixed
+
+Version 0.12.2 (02.06.2013)
+*whitelist, blacklist not applying fixed
+
+Version 0.12.1 (31.05.2013)
+*quick fix of previous change.
+
+Version 0.12 (31.05.2013)
+*changed order of processing of black and while lists.
+
+Version 0.11.3 (31.05.2013)
+*changed installation path according to new Arch Linux practices.
+
+Version 0.11.2 (09.12.2012)
+*swapped out use of md5sums for ls mod times to improve performance
+
+Version 0.11.1 (13.09.2012)
+*accumulated fixes with feedback (thanks tlvince)
+*fixed hostsblock-urlcheck's misidentification of colons in urls
+
+Version 0.11 (18.08.2012)
+*fixed typo in hostsblock-urlcheck
+*added integrated logging
+*removed gzipping of target hostsfile backup, removed gzip as
+    dependency.
+*added extended timeout to downloading procedure, provided for
+    script exit in the event of failed download
+*tweaked the format of dates and times in log output
+
+Version 0.10.6 (13.08.2012)
+*spruced up default blocklists entries in rc.conf.
+*fixed small issue in hostsblock-urlcheck.
+
+Version 0.10.5 (12.08.2012)
+*updated rc.conf, removing redundant blocklists.
+*fixed a few issues with hostsblock-urllist. Should now
+    register more domains and filter out any garbage.
+
+Version 0.10.4 (11.08.2012)
+*removed optimization code. Caused significant performance
+    penalties
+*fixed old issue with hostsblock-url
+*replaced a few sed invocations with tr for slight
+    performance increase
+
+Version 0.10.3 (10.08.2012)
+*fixed white.list issue
+
+Version 0.10.2 (09.08.2012)
+*fixed issue with 0.0.0.0 address not working
+*cleaned up logging output
+
+Known issues:
+*when calculating number of entries at end, mistakes hosts.head
+    domains as redirect addresses
+
+Version 0.10.1 (09.08.2012)
+*fixed issues with optimization pass, integrated it into main
+    processing pass
+*fixed issue with 32-bit machines and touch
+
+Version 0.10 (08.08.2012)
+*implemented an optimization option, which shrinks target hostfile
+    size by putting all entries redirecting to the same address
+    on the same line.
+*instead of processing all files in the cache, hostsblock now only
+    processes those listed (and not commented out) in rc.conf
+*updated documentation in rc.conf
+*added another blocklist
+*simplified really long pgl.yoyo.com blocklisturl
+*took out superflous code
+
+Version 0.9.2 (06.08.2012)
+*added "FAIL" notifications
+*fixed issue with blacklist
+*fixed issue with 7z files
+*fixed documentation in rc.conf on mirrored, defunct blocklists
+
+Version 0.9.1 (05.08.2012)
+*removed color interface output options (better for logging).
+*made output cleaner for logging. Enter a >>/var/log/[your logfile]
+    after your crontab entry for it to enable logging.
+*improved behavior: only downloads new blocklists if they have been
+    changed on the server. Saves bandwidth.
+*rc.conf in-text documentation updated accordingly.
+*removed antequated warning from install file.
+
+Version 0.9 (04.08.2012)
+*cleaned up minor gliches when running under OS X
+*cleaned up non-color output
+*now exits if not run as root
+*new behavior: only writes to target hostsfile if changes detected
+*new option: allow/disallow dns redirections
+
+Version 0.8.4 (24.07.2012)
+*minor code tweeks to hostsblock-urlcheck
+*colorized and more compact prompts for hostsblock-urlcheck
+
+Version 0.8.3 (23.07.2012)
+*fixed hostsblock-urlcheck to check for both http and https domains.
+*simplified hostsblock-urlcheck usage. See "hostsblock-urlcheck --help"
+    for details.
+
+Version 0.8.2 (21.07.2012)
+*added "--compressed" option to curl commands to allow for compressed
+    blocklist downloads (thanks ontobelli)
+*removed the modyouri blocklist from defaults since it included
+    redirection and "junk" entries (noted in rc.conf comments)
+IT IS HIGHLY SUGGESTED THAT YOU REMOVE THE MODYOURI ENTRY FROM RC.CONF.
+
+Version 0.8.1 (15.06.2012)
+*changed hostsblock-urlcheck to also check given urls as to whether they are
+    blocked or not (via "page" option). This is in addition to the whole page
+    scan option ("scan"), which reads through the whole given page to see if
+    contained subdomains are blocked or not.
+*regular behavior of hostsblock-urlcheck now relegated to "scan" option. See
+    'hostsblock-urlcheck help' for details.
+
+Verson 0.8 (14.06.2012)
+*made postprocessing routine (such as dnsmasq restart) more flexible for those
+    who might want to use a different program. PLEASE CHECK RC.CONF.
+*minor fixes with variable quoting, console output, code formatting
+*added run-time dependency checks
+*updated documentation in rc.conf
+*added additional entry to whitelists
+*fixed error with whitelist not taking periods literally
+
+Version 0.7.2 (04.06.2012)
+*Fixed error in hostsblock-urlcheck that cased full-stop error
+
+Version 0.7.1 (03.06.2012)
+*Made changes from hostsblock-urlcheck apply more quickly without running
+    hostblock
+*Made hosts.head file optional, and adjusted default rc.conf accordingly.
+
+Version 0.7 (01.06.2012)
+*Added hostsblock-urlcheck, which checks a given url for contained subdomains
+    and allows the user to white or blacklist them selectively
+*Fixed minor typo
+
+TODO
+*revamp unzip command to function under other *nix implementations
+
+Version 0.6 (22.05.2012)
+*Fixed white space issues in white list entries
+*Fixed errors from stat_* functions when not running on ArchLinux
+*Configuration file moved to /etc/hostsblock directory as rc.conf
+*New configuration files hosts.head, black.list, and white.list
+*hosts.head: contains user-defined entries that go to the top of resultant
+    output file
+*removed original file recycling. If you want to carry over entries from
+    previous output file, include in hosts.head
+
+Version 0.5 (13.05.2012)
+*Added color via /etc/rc.d/functions (see "USECOLOR" in config file to disable)
+*Removed notifications from trivially short and redundant steps
+*Changed default blockhosts to non-zip version of the file
+*Removed pixelserv check. Use kwakd instead.
+
+Version 0.4 (09.05.2012)
+*Post-extraction scan now recursively searches extracted file tree for potential
+    entries 
+*Added 7z blocklist functionality
+*Moved unzip (with p7zip) to optdep
+*Added check for unzip and 7za to decompression routines
+*Added new entries from rlwpx.free.fr (requires p7zip)
+*Now gzips backup hosts file to save space (added gzip as dependency)
+
+Version 0.3 (06.05.2012)
+*improved performance by changing whitelist for-loop with an sed-file in the
+    main processing routine
+*added automatic backing up of original target hosts file
+*added install-time warning to backup /etc/hosts file
+*changed install spot to /usr/sbin instead of /usr/bin (requires root to run
+    anyway)
+*fixed typo in default variables (blacklists to blocklists)
+*added changelog
+*updated conf file with whitelist entries to unblock flickr.com and ompldr.org
+
+TODO
+*revamp unzip command to function under other *nix implementations
