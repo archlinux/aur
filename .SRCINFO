@@ -1,0 +1,23 @@
+pkgbase = liquidprompt-devel-git
+	pkgdesc = A useful adaptive prompt for Bash & Zsh: development branch
+	pkgver = v_1.9.r55.g352ab19
+	pkgrel = 1
+	url = https://github.com/nojhan/liquidprompt
+	arch = any
+	license = AGPLv3
+	makedepends = git
+	depends = ncurses
+	depends = grep
+	depends = gawk
+	depends = sed
+	depends = procps-ng
+	depends = coreutils
+	optdepends = acpi: Battery and temperature status
+	optdepends = lm_sensors: Temperature status
+	conflicts = liquidprompt-git
+	conflicts = liquidprompt
+	source = liquidprompt-devel-git::git+https://github.com/nojhan/liquidprompt.git#branch=develop
+	sha256sums = SKIP
+
+pkgname = liquidprompt-devel-git
+
