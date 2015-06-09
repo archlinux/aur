@@ -1,0 +1,15 @@
+pkgbase = nodejs-traceur
+	pkgdesc = ES6 to ES5 compiler
+	pkgver = 0.0.89
+	pkgrel = 1
+	url = https://github.com/google/traceur-compiler
+	arch = any
+	license = Apache
+	depends = nodejs
+	noextract = traceur-0.0.89.tgz
+	options = !emptydirs
+	source = http://registry.npmjs.org/traceur/-/traceur-0.0.89.tgz
+	sha1sums = eaddbdaf619d4911b705591a8172533a44134afa
+
+pkgname = nodejs-traceur
+
