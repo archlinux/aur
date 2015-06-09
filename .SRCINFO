@@ -1,0 +1,14 @@
+pkgbase = bats-git
+	pkgdesc = Bash Automated Testing System
+	pkgver = v0.4.0
+	pkgrel = 1
+	url = https://github.com/sstephenson/bats
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	source = git+https://github.com/sstephenson/bats.git
+	md5sums = SKIP
+
+pkgname = bats-git
+
