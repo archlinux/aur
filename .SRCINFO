@@ -1,0 +1,17 @@
+pkgbase = pastecat
+	pkgdesc = Minimalist self-hosted pastebin service
+	pkgver = 0.3.0
+	pkgrel = 2
+	url = https://github.com/mvdan/pastecat
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = go
+	makedepends = godep
+	options = !strip
+	source = pastecat::git+https://github.com/mvdan/pastecat#tag=v0.3.0
+	sha1sums = SKIP
+
+pkgname = pastecat
+
