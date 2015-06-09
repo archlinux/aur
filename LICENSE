@@ -1,0 +1,219 @@
+[FDclone3 license provisions] 
+
+
+ <0. Preface> 
+
+ This document is written for FDclone license. 
+
+ FDclone is free software, using the income 
+ The limit for a totally unaffected, including the request from the author's wishful thinking, this 
+ Here are details about the individual and adapted to the case. 
+
+
+ <1. Definition of Terms> 
+
+ Let us first define terms used in this document. This document 
+ , Unless otherwise noted, the following words are written here 
+ We use a particular sense. 
+
+ Source 
+ Set of source programs. Or, documents and other 
+ Containing a set of packages. 
+
+ Binary 
+ By running a set obtained by compiling the source program 
+ Nari. Or, documents and other packages containing 
+ Set of pages. 
+
+ Distributed 
+ In the broad sense, the replication of binary or source (question of whether a modification 
+ No) and tend to give to third parties. In the narrow sense, it 
+ That tend to give a few specific replication. 
+
+ Distribution 
+ Form of broad distribution. A replica of the source or binary, public 
+ Widely distributed across the board to give the spot. 
+
+ Distributed following a primary distribution 
+ Distributed by his creator (or distribution). 
+
+ Secondary distribution Secondary distribution 
+ You distribute the primary distribution or primary distribution other than the author (or 
+ The distribution). , Distributed as follows: three (or tertiary distribution), 
+ Quartic distribution (distribution or fourth) and counting. 
+
+ Redistribution distributed 
+ After the secondary distribution (or distribution) collectively. 
+
+ Modification 
+ To tweak some of the original source or binary. 
+
+ Secondary Use 
+組込N use the software to another part of the original source 
+ . 
+
+
+ <2. For distributed> 
+
+ The distribution is narrow, and whether the source binary modification 
+ Can be freely distributed. Non-profit and for profit, regardless of the purpose and free line 
+ What is it you. It is distributed for free as well and after three distributed. 
+
+ However, the author is not responsible for what has been distributed at all. Kai 
+ If you need the guarantee that it works correctly and does not change, re - 
+ Please ensure that the distribution itself. 
+
+
+ <3. Redistributed> 
+
+ For distribution, both re頒whether the modified binary source 
+ Cloth is possible. As with narrow distribution, free or構I business applications 
+ Not. 
+
+ However, part of the responsibility to take the author to be redistributed, 
+ Some form of distribution of a registration system設KEMASU distribution. Registered been distributed 
+ No redistribution of goods, as well as distributed, and the author has no responsibility or rambunctiousness 
+ Not. 
+ The distribution of the registered distribution, and equal responsibility of the primary distribution 
+負IMASU these authors. If you do not need it registered a distribution is made 
+ You can be. 
+
+ The following three distributed after the registration for the distribution and redistribution once 
+ Therefore, redistribution from the registration form and content of the package distribution 
+ Only if the modification is not entirely the responsibility of the authors and equal redistribution of 
+負IMASU. 
+ If you made any modifications to the package, distributed at the registration 
+ It is invalid, as the authors do not re-register the distribution of responsibility 
+ FITNESS. 
+
+ However, some of the secondary distribution of the registered secondary distribution distribution 
+ If granted a conditional license, after the following three conditions are distributed and 
+ Follow. 
+ The distribution laid registration, licensing侵SANAI range of primary distribution 
+ And at the, the second distribution can be set free after three terms of redistribution 
+ So, if you examine the redistribution of the secondary distribution, distribution to the second question 
+ Please match. 
+ Have been registered as distribution, distributed after the third author 
+ Itself will not interfere. 
+
+
+ <4. The responsibility for the author> 
+
+ The distribution of the re-registration and distribution of primary distribution, the authors are responsible 
+ Partly responsible. 
+ Specifically, according to inquiries and requests from users, if necessary 
+ To do a revision of the program. The malicious functionality not specified 
+ To ensure that it works correctly織込MAZU. 
+ If you do not work as designed and written documentation, other 
+ Subject to revision. 
+
+ For the redistribution of the distribution is not registered, and the author is responsible for 
+ Since video, depending on any requests or inquiries from the users 
+ Not. 
+ Contact these users to take a person who redistribution, 
+ The authors have a responsibility to address the request. 
+
+ However, for any damage caused when used, authors keep 
+証し兼ねますので、各利用者は自己責任にてご利用下さい。 
+
+
+ <5. The source distribution register> 
+
+ The distribution of the source, any change in the distribution package: 1 
+ If not, even without a registered author responsible for distribution will be part of the responsibility 
+ . 
+ If there are changes to the package, break in the program source 
+ No change, only to add or change a document or program 
+ You are covered as well as the absence of any change. 
+ In these cases, changing the package shape, ie, a compression method and package 
+ Change the page names, etc. are ignored. 
+
+ Part of the program source or binary to run the Makefile, etc. 
+ If any modification to the files directly involved, the registration line source distribution 
+ Responsible for part of the responsibility of the author redistributed by U. 
+ Follow the steps below distribute registration, please register their distribution. 
+
+
+ <6. Registration binary distribution> 
+
+ The binary distribution is not about redistribution of the distribution is a registered 
+ Off the author is not responsible. Without any change from a binary distribution: 
+ This is true even if. 
+ If you need the assurance of the author,拘RAZU or without modification, distribution, Noboru below 
+ Follow the recorded instructions, please do register distribution. 
+
+ A request from the authors, with the binary distribution, especially high-risk 
+ It is recommended that registered distribute their available means. 
+
+
+ <7. Modification Program> 
+
+ If used to modify a portion of the program the user was a professional 
+ And that if g is treated as a separate work, questioned where the amount of modification 
+ First, second assumed. 
+ The second modification is not considered and distributed in accordance with the above rules 
+ If, on the secondary use is free of copyright as a work of secondary 
+ Can be treated. 
+
+
+ <8. The publication of a book> 
+
+ Books on CD-ROM will be marketed through the media, etc. If you want to attach, re - 
+ Assumed distribution. 
+ If you need the assurance of the author, or BAINA Attached is the source of the 
+ Depending on whether the list, please do the registration and distribution. Other 
+ Are treated equally and no redistribution. 
+ However, for the attachment of the redistribution that is already registered distribution, change 
+ Distribution and needed to register it is not registered to distribute the distribution 
+ Please follow the conditions. 
+
+ Not attached, as if the only article about simply the liability and warranty 
+ Im so also must occur, there is no need to register. Addressed to the author 
+ No need to contact. 
+
+ A request from the author, contact and copy attached to the introduction 
+ I am happy and available. 
+ In particular, the coverage, we will look forward to seeing the manuscript in advance, 
+ Can not determine whether the content is inappropriate where the author 
+ . 
+ If you go to the post, please consider. 
+
+
+ <9. The registration distribution> 
+
+ If you want to register distribute, perform this procedure by following steps: 
+ System. 
+
+ 1. Establish a representative distribution. 
+ 2. Version.h distributor of NULL variables in place of the charge distribution 
+    E-mail to the address書換ERU. 
+    Example: 
+    char * distributor = "shirai@unixusers.net (Takashi SHIRAI)"; 
+ 3. To create an incremental change from the primary distribution source package. Add Attachment 
+    If the material is to be included in the differential with it. 
+ 4. To create a distribution package. 
+ 5. The distribution package before you check the MD5 checksum. Buy 
+    Nari if the distribution is also executable FDclone own style 
+    BERU. 
+    If you do not look the way, FDclone to "checkid" built a 
+    We have a good command to use it. The compiler FDclone 
+    The LE, and start the "h" key command Pro EXECUTE_SH 
+    In NPUTO "checkid <file name>" to run, MD5 Choi 
+    KKUSAMU appears. 
+ 6. Made to the author, incremental change and distribute packages with MD5 checksums 
+    Register or distribute the e-mail Send E-mail. If the binary distribution,頒
+    Cloth environment to work in binary (OS, Platform, etc.) and executed by-Na 
+    To add a list of MD5 checksums. 
+ 7. If you want to change the terms of redistribution, the language distributing registration 
+    In explaining such. 
+
+ In the face of a register, or see a clear binary distribution source distribution or register 
+ So please. By registering and Na distribution in the source text at the same registration 
+ You can register for the distribution list. 
+ Requirements for registration of a binary distribution, the same incremental change 
+ If the redistribution is done by enumerating the multiple operating environments, a 
+ Registration can be distributed simultaneously to all registered operating environment distribution. 
+
+ Note: If you are unfamiliar about the concrete work, before the registration 
+ Please contact to the author. 
+

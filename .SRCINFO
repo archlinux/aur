@@ -1,0 +1,23 @@
+pkgbase = fd
+	pkgdesc = Ncurses file and directory management tool
+	pkgver = 3.01b
+	pkgrel = 1
+	url = http://hp.vector.co.jp/authors/VA012337/soft/fd/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = sed
+	depends = ncurses
+	optdepends = unzip
+	optdepends = lha
+	optdepends = p7zip
+	optdepends = tar
+	options = !emptydirs
+	backup = etc/fd/fd2rc
+	source = http://hp.vector.co.jp/authors/VA012337/soft/fd/FD-3.01b.tar.gz
+	source = LICENSE
+	md5sums = 3c3668bef7924e689943a2cca5ff414d
+	md5sums = 9792276314f0b2a716ce3d5078bf2e13
+
+pkgname = fd
+
