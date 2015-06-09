@@ -1,0 +1,17 @@
+pkgbase = xsunpinyin
+	pkgdesc = The SunPinYin Engine for XIM. SunPinYin is a Statistical Language Model based pinyin IME by Sun.
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = http://sunpinyin.googlecode.com
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = scons
+	depends = gtk2
+	depends = sunpinyin
+	depends = xproto
+	source = http://sunpinyin.googlecode.com/files/xsunpinyin-2.0.3.tar.gz
+	md5sums = bfa3a3dc8c22193b3d1fb982316d462e
+
+pkgname = xsunpinyin
+
