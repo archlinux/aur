@@ -1,0 +1,15 @@
+pkgbase = rapidjson
+	pkgdesc = Rapidjson is an attempt to create the fastest JSON parser and generator.
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/miloyip/rapidjson.git
+	arch = any
+	license = GPL
+	makedepends = gcc
+	makedepends = cmake
+	conflicts = rapidjson-git
+	source = rapidjson-1.0.2.tar.gz::https://github.com/miloyip/rapidjson/archive/v1.0.2.tar.gz
+	sha1sums = SKIP
+
+pkgname = rapidjson
+
