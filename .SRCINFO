@@ -1,6 +1,6 @@
 pkgbase = batman-adv
 	pkgdesc = batman kernel module
-	pkgver = 2014.4.0
+	pkgver = 2015.0
 	pkgrel = 1
 	url = http://www.open-mesh.net/
 	install = batman-adv.install
@@ -9,9 +9,9 @@ pkgbase = batman-adv
 	license = GPL
 	makedepends = linux-headers
 	depends = linux
-	source = http://downloads.open-mesh.org/batman/releases/batman-adv-2014.4.0/batman-adv-2014.4.0.tar.gz
+	source = http://downloads.open-mesh.org/batman/releases/batman-adv-2015.0/batman-adv-2015.0.tar.gz
 	source = batman-adv.install
-	sha256sums = 757b9ddd346680f6fd87dc28fde6da0ddc0423a65fbc88fdbaa7b247fed2c1a8
+	sha256sums = 03dea8ca04aba2f7c86a8515a9de1aaf5b6df8b0f7fe7b548cc0bdb38b56952b
 	sha256sums = 347599c02426a905690002885c277f91b82da2b29d3372348e5f02d03c435c37
 
 pkgname = batman-adv

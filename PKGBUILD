@@ -2,7 +2,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=batman-adv
-pkgver=2014.4.0
+pkgver=2015.0
 pkgrel=1
 pkgdesc='batman kernel module'
 arch=('i686' 'x86_64')
@@ -25,5 +25,5 @@ package() {
   install -D -m644 README "${pkgdir}/usr/share/doc/batman-adv/README"
 }
 
-sha256sums=('757b9ddd346680f6fd87dc28fde6da0ddc0423a65fbc88fdbaa7b247fed2c1a8'
+sha256sums=('03dea8ca04aba2f7c86a8515a9de1aaf5b6df8b0f7fe7b548cc0bdb38b56952b'
             '347599c02426a905690002885c277f91b82da2b29d3372348e5f02d03c435c37')
