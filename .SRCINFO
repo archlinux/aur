@@ -1,0 +1,13 @@
+pkgbase = bplay
+	pkgdesc = Play/record audio files from the command-line (formats: sample, VOC and WAV)
+	pkgver = 0.991
+	pkgrel = 2
+	url = http://packages.debian.org/en/sid/bplay
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://ftp.debian.org/debian/pool/main/b/bplay/bplay_0.991.orig.tar.gz
+	md5sums = 7bb4c7bbd81b83f403b994f8faaad113
+
+pkgname = bplay
+
