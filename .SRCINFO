@@ -1,0 +1,27 @@
+pkgbase = cogl-git
+	pkgdesc = A hardware accelerated 3D graphics API
+	pkgver = 1.20.0.13.g5069f65
+	pkgrel = 1
+	url = http://www.clutter-project.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = mesa
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	depends = libdrm
+	depends = libxext
+	depends = libxdamage
+	depends = libxcomposite
+	depends = gdk-pixbuf2
+	depends = pango
+	depends = wayland
+	provides = cogl=1.20.1
+	conflicts = cogl
+	options = !libtool
+	options = !emptydirs
+	source = git://git.gnome.org/cogl#branch=cogl-1.20
+	sha256sums = SKIP
+
+pkgname = cogl-git
+
