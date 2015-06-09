@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-lcms2
+	pkgdesc = Small-footprint color management engine, version 2 (mingw-w64)
+	pkgver = 2.5
+	pkgrel = 1
+	url = http://www.littlecms.com
+	arch = any
+	license = MIT
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-pkg-config
+	depends = mingw-w64-crt
+	depends = mingw-w64-libtiff
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = http://downloads.sourceforge.net/sourceforge/lcms/lcms2-2.5.tar.gz
+	md5sums = 396d106600251441ff195fcaa277d10b
+
+pkgname = mingw-w64-lcms2
+
