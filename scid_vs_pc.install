@@ -1,0 +1,11 @@
+ 
+post_install() {
+   echo
+   echo "  ###############################################################################################################"
+   echo "  #          To enable speech go to Options/Sounds/Sound Files Folder/Browse -> /usr/share/scid/sounds          #"
+   echo "  ###############################################################################################################"
+   echo
+
+   # Update font cache
+   fc-cache -fv   
+}
