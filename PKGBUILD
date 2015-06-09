@@ -11,18 +11,13 @@ license=("APACHE")
 depends=("git" "python2")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+https://gerrit.googlesource.com/git-repo" "python2.patch")
-sha256sums=("SKIP" "389cf97d9de0993838615691a6c9036ce91d0c659378de6d3b8310cdb15d764c")
+source=("$_pkgname::git+https://gerrit.googlesource.com/git-repo")
+sha256sums=("SKIP")
 
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
 	echo $(git describe --always | sed "s/-/./g")
-}
-
-prepare() {
-	cd "$srcdir/$_pkgname"
-	git apply "$srcdir/python2.patch"
 }
 
 package() {

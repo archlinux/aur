@@ -10,9 +10,7 @@ pkgbase = repo-git
 	provides = repo
 	conflicts = repo
 	source = repo::git+https://gerrit.googlesource.com/git-repo
-	source = python2.patch
 	sha256sums = SKIP
-	sha256sums = 389cf97d9de0993838615691a6c9036ce91d0c659378de6d3b8310cdb15d764c
 
 pkgname = repo-git
 
