@@ -1,0 +1,19 @@
+post_install() {
+	echo "------------------------------------------------------------"
+	echo "> To add the systemrescuecd into your bootconfiguration,"
+	echo "> run:"
+	echo "> grub-mkconfig -o /boot/grub/grub.cfg"
+	echo "------------------------------------------------------------"
+  #grub-mkconfig -o /boot/grub/grub.cfg
+}
+
+post_remove() {
+	echo "------------------------------------------------------------"
+	echo "> To remove the systemrescuecd from your bootconfiguration,"
+	echo "> run:"
+	echo "> grub-mkconfig -o /boot/grub/grub.cfg"
+	echo "------------------------------------------------------------"
+  #grub-mkconfig -o /boot/grub/grub.cfg
+}
+
+# vim:set ts=2 sw=2 et:
