@@ -1,0 +1,17 @@
+pkgbase = qterminal
+	pkgdesc = Lightweight Qt-based terminal emulator
+	pkgver = 0.6.0
+	pkgrel = 2
+	url = https://github.com/qterminal/qtermwidget
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = qtermwidget
+	source = https://github.com/qterminal/qterminal/releases/download/0.6.0/qterminal-0.6.0.tar.xz
+	sha256sums = SKIP
+
+pkgname = qterminal
+
