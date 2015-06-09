@@ -1,4 +1,4 @@
-# Maintainer: oi_wtf <brainpower at gulli dot com>
+# Maintainer: oi_wtf <brainpower at mailbox dot org>
 
 pkgname=sfgui-git
 pkgver=0.2.3.r1.g5a17f40
