@@ -1,0 +1,11 @@
+--- OMakefile.orig	2010-10-27 09:42:37.000000000 +0900
++++ OMakefile	2013-12-14 02:40:56.694296965 +0900
+@@ -57,7 +57,7 @@
+ #
+ # OCaml options
+ #
+-OCAMLFLAGS[] += -w Ae$(if $(OCAML_ACCEPTS_Z_WARNING), z)
++OCAMLFLAGS[] += -w Aer-3-29-32..35-37..39-41-44$(if $(OCAML_ACCEPTS_Z_WARNING), z)
+ if $(THREADS_ENABLED)
+     OCAMLFLAGS += -thread
+     export

@@ -1,0 +1,20 @@
+pkgbase = omake
+	pkgdesc = A build system designed for scalability and portability
+	pkgver = 0.9.8.6_0.rc1
+	pkgrel = 4
+	url = http://omake.metaprl.org/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = make
+	makedepends = ocaml
+	makedepends = patch
+	depends = readline
+	depends = gamin
+	source = http://omake.metaprl.org/downloads/omake-0.9.8.6-0.rc1.tar.gz
+	source = disable-warnings.patch
+	md5sums = fe39a476ef4e33b7ba2ca77a6bcaded2
+	md5sums = 3f95d63d2ebf88539f36bb85a3685d23
+
+pkgname = omake
+
