@@ -1,0 +1,64 @@
+.if !\n(.g \{\
+.	if !\w|\*(lq| \{\
+.		ds lq ``
+.		if \w'\(lq' .ds lq "\(lq
+.	\}
+.	if !\w|\*(rq| \{\
+.		ds rq ''
+.		if \w'\(rq' .ds rq "\(rq
+.	\}
+.\}
+.ie t .ds Tx \s-1T\v'.4n'\h'-.1667'E\v'-.4n'\h'-.125'X\s0
+. el  .ds Tx TeX
+.de Id
+. ds Yr \\$4
+. substring Yr 0 3
+. ds Mn \\$4
+. substring Mn 5 6
+. ds Dy \\$4
+. substring Dy 8 9
+. \" ISO 8601 date, complete format, extended representation
+. ds Dt \\*(Yr-\\*(Mn-\\*(Dy
+..
+.TH commacd 1 \*(Dt "commacd (git)" "User Commands"
+.hy 0
+.
+.SH "NAME"
+.B commacd
+\- a faster way to move around Bash
+.
+.SH "USAGE"
+.TP
+,   => jump forward
+.TP
+,,  => jump backward
+.TP
+,,, => jump backward+forward
+.
+.SH "EXAMPLES"
+.TP 4
+jump directories using only part of its name:
+~$ , des => cd Desktop
+.
+.TP 4
+jump through multiple directories the same way:
+~$ , /u/l/ce => cd /usr/local/Cellar
+.
+.TP 4
+begin with a wildcard to match any part of the name:
+~/Documents$ , ~/*esk => cd ~/Desktop
+.
+.TP 4
+jump to the closest matching parent directory:
+~/Documents/test/folder$ ,, Doc => cd ~/Documents
+.
+.TP 4
+jump by substituting one directory name for another:
+\fI~/Docs/test/dir$\fR ,, test test2 => cd ~/Docs/test2/dir
+.
+.TP 4
+jump to the closest match contained by a parent directory:
+~/Docs/test/dir$ ,,, de => cd ~/Desktop
+.
+.SH "LICENSE"
+MIT License \fIhttp://opensource\.org/licenses/mit\-license.php\fR\.
