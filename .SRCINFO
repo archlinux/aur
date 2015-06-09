@@ -1,0 +1,18 @@
+pkgbase = ruby-actionmailer
+	pkgdesc = Email composition, delivery, and receiving framework (part of Rails).
+	pkgver = 4.2.1
+	pkgrel = 1
+	url = http://www.rubyonrails.org
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-actionpack
+	depends = ruby-actionview
+	depends = ruby-mail
+	noextract = actionmailer-4.2.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/actionmailer-4.2.1.gem
+	sha1sums = 8073d3b6e3012ee3a84b5ee5cc22d4d66c31a0b3
+
+pkgname = ruby-actionmailer
+
