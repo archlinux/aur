@@ -1,0 +1,28 @@
+pkgbase = osmocombb-git
+	pkgdesc = An Free Software / Open Source GSM Baseband software implementation.
+	pkgver = a
+	pkgrel = 3
+	url = http://bb.osmocom.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = shtool
+	makedepends = libtool
+	makedepends = autoconf
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	makedepends = pkg-config
+	makedepends = patch
+	depends = libosmocore
+	depends = python2
+	optdepends = gpsd
+	optdepends = cp210x-program
+	options = !strip
+	source = git+http://cgit.osmocom.org/cgit/osmocom-bb
+	source = 8a8796802bc497f00b6a27ca14e2be0c9f9ec176.patch
+	md5sums = SKIP
+	md5sums = 94bb3ff0cdff13d7a8163c7d2ee40a35
+
+pkgname = osmocombb-git
+
