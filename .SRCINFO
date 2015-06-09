@@ -1,0 +1,20 @@
+pkgbase = jsx-git
+	pkgdesc = A faster, safer, easier JavaScript
+	pkgver = 20130216
+	pkgrel = 2
+	url = http://jsx.github.com/
+	install = jsx-git.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = perl>=5.8.8
+	makedepends = nodejs>=0.8.0
+	depends = perl>=5.8.8
+	depends = nodejs>=0.8.0
+	optdepends = perl-json-xs
+	source = jsx.sh
+	md5sums = c799303999d6b8368c3d6bf4b1705fc9
+
+pkgname = jsx-git
+
