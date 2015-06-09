@@ -1,0 +1,44 @@
+--- aop-0.6/aop.c.orig	2004-04-06 15:13:28.000000000 +0200
++++ aop-0.6/aop.c	2013-06-12 23:02:27.816373914 +0200
+@@ -8,7 +8,7 @@
+ 
+ int main(int argc, char *argv[]) {
+ 	int px, py, opx, opy, ipx, ipy, x, y, c=0, p=0, op, dir;
+-	int last_lv = argc>=2 ? argc-1 : 11, level=1, lifes=5; FILE *f;
++	int last_lv = argc>=2 ? argc-1 : 11, level=1, lives=5; FILE *f;
+ 	char ch, field[25][81], tmp[96], *lastword = "Bye.";
+ 
+ 	if ( argc > 1 && *argv[1] == '-' ) {
+@@ -21,7 +21,7 @@
+ 	init_pair(1, COLOR_RED, COLOR_BLACK);
+ 
+ start:	memset(field, ' ', 25*81);
+-	snprintf(tmp, 96, "/usr/local/share/aop/aop-level-%02d.txt", level);
++	snprintf(tmp, 96, "/usr/share/aop/aop-level-%02d.txt", level);
+ 	f = fopen(argc>=2 ? argv[level] : tmp, "r");
+ 	if (!f) { endwin(); printf("Can't open level file.\n"); return 1; }
+ 	opx=ipx=px=3, opy=ipy=py=2; op=p; p += 700000 + level*373737;
+@@ -41,10 +41,10 @@
+ 		if (field[py][px] == '@') {
+ 			if(level++ != last_lv) goto start;
+ 			lastword="Well done!"; break;
+-		} else if (field[py][px] == '0') lifes++;
++		} else if (field[py][px] == '0') lives++;
+ 		else if (field[py][px] != ' ' && dir) {
+ 			field[opy][opx] = '0'; sleep(1); flushinp();
+-			if(--lifes == 0) { p=op; lastword="Sucker!"; break; }
++			if(--lives == 0) { p=op; lastword="Sucker!"; break; }
+ 			opx=px=ipx; opy=py=ipy; c=dir=0; continue;
+ 		}
+ 		field[opy][opx] = ' '; field[opy=py][opx=px] = 'O';
+@@ -53,8 +53,8 @@
+ 		 	mvaddch(y, x, field[y][x]); attroff(COLOR_PAIR(1));
+ 		}
+ 		attron(COLOR_PAIR(1));
+-		mvprintw(0, 0, "Lifes: %d, Points: %d ",
+-				lifes, p=p-(dir < 5 ? 1 : 2));
++		mvprintw(0, 0, "Lives: %d, Points: %d ",
++				lives, p=p-(dir < 5 ? 1 : 2));
+ 		refresh(); usleep(dir < 5 ? 50000 : 100000);
+ 	} while( (c=getch()) != 'q' );
+ 	endwin(); printf("%s (%d points)\n", lastword, p);
