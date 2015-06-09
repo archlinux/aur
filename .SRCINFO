@@ -1,0 +1,21 @@
+pkgbase = vim-latexsuite-git
+	pkgdesc = Provides a comprehensive set of tools to view, edit, and compile LaTeX documents within Vim. Also provides macros to speed up the creation of LaTeX documents.
+	pkgver = 0.r817.392577f
+	pkgrel = 1
+	epoch = 1
+	url = http://vim-latex.sourceforge.net
+	install = vim-latexsuite-git.install
+	arch = any
+	groups = vim-plugins
+	license = custom:vim
+	makedepends = git
+	depends = vim-runtime
+	optdepends = python2
+	optdepends = texlive-bin
+	provides = vim-latexsuite
+	conflicts = vim-latexsuite
+	source = vim-latexsuite::git+git://git.code.sf.net/p/vim-latex/vim-latex
+	md5sums = SKIP
+
+pkgname = vim-latexsuite-git
+
