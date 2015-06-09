@@ -1,0 +1,20 @@
+pkgbase = exfat-dkms-git
+	pkgdesc = Native (nofuse) kernel module for EXtendedFAT support - use with DKMS
+	pkgver = 145.a858df5
+	pkgrel = 1
+	url = https://github.com/dorimanx/exfat-nofuse
+	install = exfat-dkms-git.install
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	conflicts = exfat
+	conflicts = exfat-git
+	options = !strip
+	source = exfat-git::git+https://github.com/dorimanx/exfat-nofuse.git
+	source = dkms.conf
+	md5sums = SKIP
+	md5sums = bbe96b22dbf7103360fe9598394039fa
+
+pkgname = exfat-dkms-git
+

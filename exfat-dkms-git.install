@@ -1,0 +1,22 @@
+
+post_install() {
+    dkms install -m exfat -v ${1%-*}
+      cat << EOF
+==> To build and install your modules run: dkms install exfat/${1%-*}
+==> To do this automatically at startup run: systemctl enable dkms.service
+EOF
+}
+
+pre_remove() {
+    # Remove all modules using dkms
+    [ -n "${1%-*}" ] && dkms remove exfat/${1%-*} --all &>/dev/null || true
+}
+
+pre_upgrade() {
+    pre_remove "$2"
+}
+
+post_upgrade() {
+    post_install "$1"
+}
+
