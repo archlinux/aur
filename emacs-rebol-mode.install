@@ -1,0 +1,14 @@
+post_install() {
+  post_upgrade
+}
+
+post_upgrade() {
+  cat >&2 <<EOL
+To automatically use this mode on .r files, add the following to your
+.emacs:
+  (autoload 'rebol-mode "rebol" "REBOL editing mode." t)
+  (add-to-list 'auto-mode-alist '("\\.r$" . rebol-mode))
+EOL
+}
+
+# vim:set ts=2 sw=2 et:

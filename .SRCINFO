@@ -1,0 +1,14 @@
+pkgbase = emacs-rebol-mode
+	pkgdesc = A major mode for editing Rebol programs
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.rebol.com/tools/rebol.el
+	install = emacs-rebol-mode.install
+	arch = any
+	license = custom
+	makedepends = emacs
+	makedepends = wget
+	depends = emacs
+
+pkgname = emacs-rebol-mode
+
