@@ -1,0 +1,7 @@
+2014-10-22  Mariusz Libera  <mariusz.libera@gmail.com>
+
+    0.24-2:
+    * modernized PKGBUILD
+    * added x86_64 to arch array
+    * added ChangeLog
+
