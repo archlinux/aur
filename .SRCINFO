@@ -1,0 +1,14 @@
+pkgbase = cstat
+	pkgdesc = A tool to gather real-time statistics from Cube and Cube 2 game servers
+	pkgver = 0.9.9
+	pkgrel = 1
+	url = http://cstat.y7.ath.cx/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://downloads.sourceforge.net/project/cubestat/cstat-0.9.9-src.tar.gz
+	md5sums = b0aaea5be673f2a57046428e6e7f861b
+
+pkgname = cstat
+
