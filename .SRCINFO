@@ -1,0 +1,15 @@
+pkgbase = ghi-git
+	pkgdesc = GitHub Issues on the command line.
+	pkgver = 0.9.3.7.g5c628a1
+	pkgrel = 1
+	url = http://github.com/stephencelis/ghi
+	arch = any
+	license = MIT
+	depends = ruby
+	provides = ghi
+	conflicts = ghi
+	source = git://github.com/stephencelis/ghi.git
+	sha1sums = SKIP
+
+pkgname = ghi-git
+
