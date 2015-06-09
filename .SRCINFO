@@ -8,6 +8,7 @@ pkgbase = spice-xpi
 	makedepends = git
 	makedepends = python2
 	makedepends = xulrunner
+	makedepends = zip
 	depends = firefox
 	depends = spice
 	provides = browser-plugin-spice

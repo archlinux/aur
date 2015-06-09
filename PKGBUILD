@@ -10,7 +10,7 @@ license=('GPL')
 depends=('firefox' 'spice')
 provides=('browser-plugin-spice')
 conflicts=('browser-plugin-spice')
-makedepends=('git' 'python2' 'xulrunner')
+makedepends=('git' 'python2' 'xulrunner' 'zip')
 source=("git://anongit.freedesktop.org/spice/spice-xpi"
 	"git://anongit.freedesktop.org/spice/spice-protocol")
 sha256sums=('SKIP'
