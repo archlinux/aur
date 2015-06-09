@@ -1,0 +1,24 @@
+pkgbase = lib32-libmm-glib
+	pkgdesc = ModemManager library
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://www.freedesktop.org/wiki/Software/ModemManager/
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	makedepends = gcc-multilib
+	makedepends = gobject-introspection
+	makedepends = intltool
+	makedepends = lib32-libmbim
+	makedepends = lib32-libqmi
+	makedepends = lib32-polkit
+	makedepends = lib32-systemd
+	makedepends = python2
+	makedepends = vala
+	depends = lib32-glib2
+	depends = libmm-glib
+	source = http://www.freedesktop.org/software/ModemManager/ModemManager-1.2.0.tar.xz
+	sha256sums = 8bd9d8c3b506f34a9f927e95784026d1fe132c9d60fc426a892b690f7d6408bc
+
+pkgname = lib32-libmm-glib
+
