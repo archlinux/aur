@@ -1,0 +1,14 @@
+pkgbase = vim-mediawiki
+	pkgdesc = Vim support for MediaWiki markup used on Wikipedia
+	pkgver = 20110919
+	pkgrel = 2
+	url = http://www.vim.org/scripts/script.php?script_id=1787
+	arch = any
+	license = CCPL:by-sa
+	makedepends = ed
+	depends = vim
+	source = Wikipedia.tar.gz::http://www.vim.org/scripts/download_script.php?src_id=16886
+	sha256sums = 9079c52960e00f8cf095157ea5342a881f1d91fe891276bfb48cafa7b3689fb7
+
+pkgname = vim-mediawiki
+
