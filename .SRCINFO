@@ -1,0 +1,27 @@
+pkgbase = counterparty-gui-git
+	pkgdesc = An open marketplace, built on Bitcoin
+	pkgver = 20150310
+	pkgrel = 1
+	url = https://github.com/CounterpartyXCP/counterparty-gui
+	arch = any
+	groups = counterparty
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = counterparty-cli
+	depends = python
+	depends = python-appdirs
+	depends = python-pyqt5
+	depends = python-requests
+	optdepends = bitcoin-headless-addrindex: Bitcoin headless wallet with addrindex
+	optdepends = bitcoin-qt-addrindex: Bitcoin QT wallet with addrindex
+	optdepends = btcwallet: HD Bitcoin thin client written in Go
+	optdepends = electrum: HD Bitcoin thin client written in Python
+	provides = counterparty-gui
+	conflicts = counterparty-gui
+	options = !emptydirs
+	source = counterparty-gui::git+https://github.com/CounterpartyXCP/counterparty-gui
+	sha256sums = SKIP
+
+pkgname = counterparty-gui-git
+
