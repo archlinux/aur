@@ -1,0 +1,16 @@
+pkgbase = dell_5130cdn_drivers
+	pkgdesc = Linux cups printer driver for Dell 5130cdn Color Laser Printer
+	pkgver = 1.3
+	pkgrel = 1
+	url = http://ftp.dell.com/Browse_For_Drivers/Printers%20&%20Imaging%20Solutions/Printer/Dell%205130cdn%20Color%20Laser%20Printer/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = rpmextract
+	depends = cups
+	provides = dell_5130cdn_drivers
+	source = ftp://ftp.dell.com/printer/Dell-5130cdn-Color-Laser-1.3-1.noarch.rpm
+	md5sums = 7fb7122e67e40b99deb9665d88df62d1
+
+pkgname = dell_5130cdn_drivers
+
