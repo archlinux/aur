@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=soapui %u
+Icon=soapui
+Terminal=false
+Name=soapUI
+GenericName=Grafical interface for testing Web Services
+GenericName[fr]=interface graphique de test pour les web services
+GenericName[es]=Interfaz gráfico para probar Servicios Web
+Categories=Development;IDE;
