@@ -1,0 +1,14 @@
+pkgbase = xlennart-git
+	pkgdesc = An XBill Modification [battle against the SystenD virus].
+	pkgver = r69.095b6c5
+	pkgrel = 1
+	url = https://github.com/Xylemon/xlennart
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = libxpm
+	source = git+http://github.com/Xylemon/xlennart.git
+	sha256sums = SKIP
+
+pkgname = xlennart-git
+
