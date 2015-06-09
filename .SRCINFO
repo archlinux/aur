@@ -1,0 +1,19 @@
+pkgbase = pirs
+	pkgdesc = A program for simulating Illumina paired-end DNA reads from a genome
+	pkgver = 1.10
+	pkgrel = 1
+	url = http://bio-bwa.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gzip
+	depends = perl
+	depends = gnuplot
+	depends = coreutils
+	depends = samtools
+	depends = zlib
+	source = http://pirs.googlecode.com/files/pIRS_110.tgz
+	md5sums = cb5590a9156967cbdc16eb8f472a3354
+
+pkgname = pirs
+
