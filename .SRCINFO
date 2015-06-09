@@ -1,0 +1,16 @@
+pkgbase = perl-finance-yahoojpn-quote
+	pkgdesc = Fetch historical Japanese stock quotes on Yahoo! Japan Finance.
+	pkgver = 1.08
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Finance-YahooJPN-Quote
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.16.3
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/H/HA/HATA/Finance-YahooJPN-Quote-1.08.tar.gz
+	md5sums = 091e74b958c1fc01c5fcfeb9ee9c8db1
+	sha512sums = 98bfa72bb68bf9308341f9fe8d17603dde92679e4d124c5a5ebaf7fdba7f84e5d291e2d2f3d698c35c2eb193e7792c658e3385c825abc1262f0e53620523cb7f
+
+pkgname = perl-finance-yahoojpn-quote
+
