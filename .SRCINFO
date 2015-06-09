@@ -1,0 +1,19 @@
+pkgbase = ruby-asciiart
+	pkgdesc = A command line tool to turn images into ASCII art
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://github.com/nodanaonlyzuul/asciiart
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-rainbow
+	depends = ruby-rmagick
+	provides = asciiart
+	provides = ruby-asciiart
+	conflicts = asciiart
+	noextract = asciiart-0.0.9.gem
+	source = https://rubygems.org/downloads/asciiart-0.0.9.gem
+	sha256sums = 130b9d041e85977779fce72927d77b7452ed644c61138ae477aca000c5791e55
+
+pkgname = ruby-asciiart
+
