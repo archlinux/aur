@@ -1,0 +1,4 @@
+post_install() {
+  echo -e '\nburgaur needs sudo installed and properly configured.'
+  echo -e 'See https://wiki.archlinux.org/index.php/Sudo for details.\n'
+}
