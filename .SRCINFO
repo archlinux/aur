@@ -1,0 +1,15 @@
+pkgbase = otf-raleway
+	pkgdesc = A sans-serif typeface
+	pkgver = 1
+	pkgrel = 1
+	url = http://theleagueofmoveabletype.com/raleway/
+	install = otf.install
+	arch = any
+	license = OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://theleagueofmoveabletype.com/raleway/download
+	md5sums = ff280d51659a149751a3fe194d2944b4
+
+pkgname = otf-raleway
+
