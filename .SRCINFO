@@ -1,0 +1,32 @@
+pkgbase = counterparty-cli
+	pkgdesc = Counterparty Protocol Command‐Line Interface
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/CounterpartyXCP/counterparty-cli
+	arch = any
+	groups = counterparty
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-appdirs
+	depends = python-colorlog
+	depends = python-counterparty-lib
+	depends = python-dateutil
+	depends = python-prettytable
+	depends = python-requests
+	optdepends = bitcoin-core-addrindex: Bitcoin Core headless P2P node with addrindex
+	optdepends = bitcoin-headless-addrindex: Bitcoin headless wallet with addrindex
+	optdepends = bitcoin-qt-addrindex: Bitcoin-QT wallet with addrindex
+	optdepends = ethereum: compile Solidity contract code
+	optdepends = ethereum-serpent: compile Serpent contract code
+	provides = counterparty-cli
+	provides = counterparty-client
+	provides = counterparty-server
+	conflicts = counterparty-client
+	conflicts = counterparty-server
+	options = !emptydirs
+	source = counterparty-cli-1.1.1.tar.gz::https://codeload.github.com/CounterpartyXCP/counterparty-cli/tar.gz/v1.1.1
+	sha256sums = 2bf762c1fb9f89ef35c5d0fe73d45de6c7f704a5500432e5432af24c9971fe90
+
+pkgname = counterparty-cli
+
