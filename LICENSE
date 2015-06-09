@@ -1,0 +1,186 @@
+
+Hybrid Cloud Subscription Terms of Service
+
+Version Effective Date: April 16, 2014
+
+BY ACCESSING, INSTALLING OR USING ALL OR ANY PORTION OF THE AEROFS PRODUCT, YOU ARE ACCEPTING ALL OF THE TERMS AND CONDITIONS OF THIS AGREEMENT. IF YOU DO NOT AGREE TO THESE TERMS, YOU MAY NOT USE THE PRODUCT.
+
+THIS AGREEMENT REQUIRES THE PARTIES TO ARBITRATE THEIR DISPUTES AND LIMITS THE MANNER IN WHICH YOU CAN SEEK RELIEF FROM AEROFS. READ IT CAREFULLY.
+
+IF YOU ARE USING THE PRODUCT AS AN EMPLOYEE, CONTRACTOR, OR AGENT OF A CORPORATION, PARTNERSHIP OR SIMILAR ENTITY, THEN YOU MUST BE AUTHORIZED TO SIGN FOR AND BIND THE ENTITY IN ORDER TO ACCEPT THE TERMS OF THIS AGREEMENT.
+
+This AeroFS Hybrid Cloud Subscription Terms of Service ( “Agreement”) is entered into by and between Air Computing, Inc. ( “AeroFS”) and the entity or person placing an order for or accessing the Product (as defined below) ( “Customer”or “you”) and is effective as of the earlier of (a) Customer's initial access to the Product through any online provisioning, registration, or order process or (b) any other confirmation of Customer's purchase of a Subscription (as defined below)( “Effective Date”). This Agreement shall govern Customer's initial purchase on the Effective Date as well as any future purchases of AeroFS services made by Customer which reference this Agreement.
+
+Free Access:If you receive free access to the Product, you are deemed a “Customer” under this Agreement except you are subject to the restrictions and limitations of Section 1.7 (Unpaid Subscriptions) below.
+
+Email address:If you are signing up as an individual, use a personal email address. (For more information, see Section 1.8 (Use of Employer or Organizational Email Address) below).
+
+Modifications to this Agreement:From time to time, AeroFS may modify this Agreement. Unless otherwise specified by AeroFS, changes become effective for existing Subscriptions upon renewal of the then-current Subscription Term (as defined below). AeroFS will use reasonable efforts to notify Customer of the changes through communications through Customer's AeroFS account, email or other means. Customer may be required to click to accept or otherwise agree to the modified Agreement before using the Product in a renewal Subscription Term, and in any event continued use of the Product during the renewal Subscription Term will constitute Customer's acceptance of the version of the Agreement in effect at the time the renewal Subscription Term begins.
+
+Each party expressly agrees that this Agreement is legally binding upon it.
+1. The AeroFS Product.
+1.1 Product Components.
+
+AeroFS' hybrid cloud (the “Product”) is designed to allow file sharing and syncing across multiple computers and devices. The Product consists of: (i) AeroFS' hybrid cloud service (the “Service”) which provides services such as user registration, authentication and user account and data management, and is accessed by Customer online through user IDs and passwords supplied by AeroFS; and (ii) the AeroFS Client software (the “Client Software”), which is installed on end user computers or devices to enable file sharing and syncing. This Agreement permits Customer to purchase subscriptions to the Product (each, a “Subscription”) and sets forth the basic terms and conditions under which those Subscriptions and any related services will be delivered.
+1.2 Subscriptions Terms and Renewals.
+
+Unless otherwise designated at the time of Customer's purchase, the term of any Subscription shall be thirty (30) days commencing on the date Customer orders the Subscription (the “Subscription Term”). Unless terminated earlier in accordance with this Agreement, the Subscription Term will automatically renew upon expiration for additional successive thirty (30) day terms unless either party gives the other party prior written notice of cancellation at least ten (10) days prior to the expiration of the then-current term. Customer may provide this notice in writing or by canceling the Subscription Term through the account management interface within the Product.
+1.3 Access to the Product.
+
+Customer may access and use the Product solely for its own benefit and in accordance with the terms and conditions of this Agreement, the end user technical documentation provided with the Product ( “Documentation”) and any additional scope of use restrictions designated at the time of Customer's order ( “Scope of Use”). Use of and access to the Product is permitted only by the number of Registered Users (defined in Section 1.3.2 below) covered by the Subscription. If Customer is given passwords for its users to access the Service element of the Product, Customer shall require that all such users keep ID and password information strictly confidential and not share such information with any unauthorized person. User IDs are granted to individual, named persons and may not be shared. Customer shall be responsible for any and all actions taken using Customer's accounts and passwords, and shall immediately notify AeroFS if any user who has access to a user ID is no longer an employee of Customer or no longer authorized by Customer to use the Product. Use of the Client Software is subject to the additional terms in Section 1.4 below.
+1.3.1 Administrative Users.
+
+An “Administrative User”is a Registered User whom Customer has authorized to configure and administer the Service for the benefit of its Registered Users. There is no limit on the number of Registered Users whom Customer may designate as Administrative Users.
+1.3.2 Registered Users.
+
+A “Registered User”is an individual end user of the Product who is an employee or Contractor (defined in Section 1.5 below) of Customer and who is provisioned through the Service (at the direction of an Administrative User) with an account based on a unique e-mail address. No more than one individual may use or access the Product through a single Registered User account. Each employee or Contractor who uses the Product on Customer's behalf shall count as a Registered User for Scope of Use and billing purposes.
+1.4 Client Software.
+1.4.1 General.
+
+The Client Software may be installed on a Registered User's computer, mobile phone or other device for which such Client Software is available in order to enable file sharing and syncing to or from that device. Each Registered User may download and install the Client Software after being authenticated by AeroFS. Certain versions of the Client Software may be made available by AeroFS to Customer for direct distribution to Registered Users and other versions for certain devices may only be available for download through third-party app stores. The Client Software may be deployed to as many devices as necessary to support Customer's total number of permitted Registered Users.
+1.4.2 Grant of License.
+
+Subject to all of the terms and conditions of this Agreement, AeroFS grants to Customer during the applicable Subscription Term a non-transferable, non-sublicensable, non-exclusive license to use the object code form of the Client Software, but only to support the number of Registered Users covered by the Subscription and otherwise in accordance with (a) the Documentation, (b) this Agreement and (c) the Scope of Use.
+1.5 Use by Affiliates and Contractors.
+
+Subject to the terms and conditions of this Agreement, Customer's Affiliates and Contractors may use the rights and licenses with respect to the Product, provided that (a) such use is only for Customer's or such Affiliate's benefit, (b) Customer agrees to remain responsible for each such Affiliate's and Contractor's compliance with the terms and conditions of this Agreement and (c) upon request Customer will identify each such Affiliate and Contractor. Use of the Product by Affiliates, Contractors and Customer in the aggregate must be within the Scope of Use. “Affiliate”means any entity under the control of Customer where “control” means ownership of or the right to control greater than 50% of the voting securities of such entity. “Contractor”means any third party employed by Customer to perform services on behalf of Customer.
+1.6 Restrictions.
+
+As a condition on Customer's right to use the Product, Customer shall not (and shall not allow any third party to):
+
+    decompile, disassemble, or otherwise reverse engineer the Product or attempt to reconstruct or discover any source code, underlying ideas, algorithms, file formats or programming interfaces of the Product by any means whatsoever (except and only to the extent that applicable law prohibits or restricts reverse engineering restrictions, and then only with prior written notice to AeroFS);
+    distribute, sell, sublicense, rent, lease or use the Product (or any portion thereof) for time sharing, hosting, service provider or like purposes;
+    remove any product identification, proprietary, copyright or other notices contained in the Product;
+    modify any part of the Product, create a derivative work of any part of the Product, or incorporate the Product into or with another service or software, except to the extent expressly authorized in writing by AeroFS;
+    publicly disseminate performance information or analysis (including, without limitation, benchmarks) from any source relating to the Product;
+    attempt to interfere with the system integrity or security of the Product or to attempt to decipher any transmission to or from other users of the Product; or
+    use the Product in any manner that imposes, or may impose, what AeroFS determines in its sole discretion is an unreasonable and disproportionate load on its infrastructure.
+
+1.7 Unpaid Subscriptions.
+
+Customer may access and use the Product without charge for up to three (3) Registered Users in accordance with the terms and conditions of this Agreement (an “Unpaid Subscription”). AeroFS has the right to terminate any Unpaid Subscription at any time for any reason. NOTWITHSTANDING ANYTHING TO THE CONTRARY IN THIS AGREEMENT, AEROFS WILL HAVE NO WARRANTY, INDEMNITY, OR SUPPORT OBLIGATIONS WITH RESPECT TO UNPAID SUBSCRIPTIONS. If Customer wishes to use the Product with additional Registered Users, then Customer must pay applicable fees to upgrade to a paid Subscription and all of the terms and conditions in this Agreement will apply to such purchase and to the use of the Product.
+1.8 Use of Employer or Organizational Email Address.
+
+If Customer is an individual, Customer will be required to provide AeroFS with a primary email address to create an AeroFS account. For this purpose, Customer should utilize a personal email address. Customer acknowledges that if it uses a corporate email address that Customer may be requested to switch the email address associated with Customer's account to a personal email address if Customer's employer wishes to provision Customer with access as a Registered User under the employer's corporate AeroFS account. If Customer is unwilling to switch to a personal email address, then AeroFS may terminate such Customer's subscription and this Agreement upon five (5) days' written notice and Customer shall receive as its sole remedy a refund of any fees Customer has pre-paid for use of the Products for the terminated portion of the applicable Subscription Term.
+2. User Files
+2.1 Responsibility for User Files.
+
+Customer shall ensure that Customer's use of the Product and all files or related information that Customer seeks to synchronize or share using the Product (“User Files”) are at all times compliant with Customer's privacy policies and all applicable local, state, federal and international law, regulations and conventions, including, without limitation, those related to data privacy, international communications, and the exportation of technical or personal data. Customer is solely responsible for the accuracy, content and legality of all User Files. Customer represents and warrants to AeroFS that Customer has sufficient rights in the User Files to grant the rights granted to AeroFS in Section 2.2 below and that the User Files (i) do not infringe, misappropriate, or violate the rights (including, without limitation, the intellectual property, privacy or publicity rights) of third parties and (ii) otherwise comply with the terms of this Agreement.
+2.2 License to AeroFS.
+
+Customer hereby grants to AeroFS a non-exclusive, worldwide, royalty-free right to use, copy, cache, transmit, modify, create derivative works of and publicly display the User Files solely to the extent necessary to provide the Product to Customer. As between the parties, Customer shall retain all right, title and interest (including any and all intellectual property rights) in and to the User Files as provided to AeroFS.
+2.3 Storage of User Files.
+
+AeroFS does not provide an archiving service. AeroFS only transmits User Files between devices/computers and does not store any User Files. AeroFS expressly disclaims all obligations with respect to storage.
+2.4 File Sharing and Syncing with Third-Party Users.
+
+Customer may elect to use the Product to receive files, or to share or synchronize its own User Files, with one or more other customers of AeroFS (each, a “Third-Party User”). Customer acknowledges that it is Customer's sole responsibility to evaluate any risks relating to such sharing, receiving or syncing of content with any Third-Party User.
+2.5 Indemnification by Customer.
+
+Customer shall indemnify, defend and hold harmless AeroFS from and against any and all claims, costs, damages, losses, liabilities and expenses (including reasonable attorneys' fees and costs) arising out of or in connection with any claim arising from or relating to (a) any User Files, or breach or alleged breach by Customer of Section 2 (User Files), (b) any service or product offered by Customer in connection with or related to the Product, or (c) any sharing, receiving or syncing of files with a Third-Party User.
+2.6 Health Information.
+
+Customer will not submit to the Product any patient, medical or other protected health information regulated by HIPAA or any similar federal or state laws, rules or regulations (“Health Information”) and acknowledges that AeroFS is not a Business Associate and that the Product is not HIPAA compliant. “HIPAA” means the Health Insurance Portability Act, as amended and supplemented. Notwithstanding anything to the contrary herein, AeroFS shall have no liability under this Agreement for Health Information.
+2.7 Transmission of Data via Product.
+
+Customer acknowledges and agrees that the purpose of the Product is to allow Customer to share and synchronize User Files, and that by its nature, this will result in the transmission to and from AeroFS of technical, account, and other information (including in some cases User Files) from Customer. Further information on data transfer may be found in the online Product documentation.
+2.8 Global Transmission.
+
+Customer acknowledges and agrees that Customer has sole control over what User Files it shares and the persons with whom such User Files are shared, which may cause the transfer of User Files (including personally identifiable information included therein) to other countries or jurisdictions around the world.
+3. Ownership.
+
+Notwithstanding anything to the contrary contained herein, except for the limited license rights expressly provided herein, AeroFS and its suppliers have and will retain all rights, title and interest in and to the Product (including, without limitation, all patent, copyright, trademark, trade secret and other intellectual property rights) and all copies, modifications and derivative works thereof. Any and all suggestions, reports, ideas for improvement and other feedback of any type provided by Customer regarding the Product are the sole property of AeroFS and AeroFS may use such information in connection with any of its products or services without any obligation or restriction based on intellectual property rights or otherwise. Customer acknowledges that it is obtaining only a limited license right to the Product and that irrespective of any use of the words “purchase”, “sale” or like terms hereunder no ownership rights are being conveyed to Customer under this Agreement or otherwise.
+4. Fees and Payment.
+
+Customer shall pay all fees due for Subscriptions when due. Fee and payment terms are specified at the time of purchase and may also be referenced here: https://www.aerofs.com/terms#payment.
+5. Term of Agreement.
+5.1 Term and Termination.
+
+This Agreement is effective as of the Effective Date and expires on the day that all Subscription Terms have expired. Either party may terminate this Agreement (including all related Subscriptions) if the other party: (a) fails to cure any material breach of this Agreement within thirty (30) days after written notice of such breach; (b) ceases operation without a successor; or (c) seeks protection under any bankruptcy, receivership, trust deed, creditors arrangement, composition or comparable proceeding, or if any such proceeding is instituted against such party (and not dismissed within sixty (60) days thereafter). Except where an exclusive remedy may be specified in this Agreement, the exercise by either party of any remedy, including termination, will be without prejudice to any other remedies it may have under this Agreement, by law, or otherwise.
+5.2 Effect of Termination.
+
+Upon any expiration or termination of this Agreement, Customer shall cease any and all use of the Product, destroy all copies of the Client Software, and so certify to AeroFS in writing.
+5.3 Survival.
+
+Sections 1.6 (Restrictions), 2.1 (Responsibility for User Files), 2.3 (Storage of User Files), 2.5 (Indemnification by Customer), 3 (Ownership), 4 (Fees and Payment), 5 (Term of Agreement), 6.3 (Disclaimer), 8 (Limitation of Remedies and Damages), 9 (Confidential Information) and 11 (General) shall survive any termination or expiration of this Agreement.
+6. Limited Warranty and Disclaimer.
+6.1 Limited Warranty.
+
+AeroFS warrants to Customer that the Product will operate in substantial conformity with the Documentation during the Subscription Term. AeroFS' sole liability (and Customer's exclusive remedy) for any breach of this warranty shall be, in AeroFS' sole discretion, to use commercially reasonable efforts to correct the reported non-conformity or provide a work-around, or if AeroFS determines such remedies to be impracticable, either party may terminate the Subscription Term and Customer shall receive as its sole remedy a refund of any fees Customer has pre-paid for use of the Products for the terminated portion of the applicable Subscription Term.
+6.2 Exclusions.
+
+The above warranty shall not apply: (a) unless Customer makes a claim within thirty (30) days of the date on which the condition giving rise to the claim first appeared; (b) if the Product is used with hardware or software not specified in the Documentation; (c) if any modifications are made to the Product by Customer or any third party; (d) to defects in the Product due to accident, abuse or improper use by Customer; or (e) to Unpaid Subscriptions or other services or items provided on a no charge or evaluation basis.
+6.3 Disclaimer.
+
+THIS SECTION 6 CONTAINS A LIMITED WARRANTY AND EXCEPT AS EXPRESSLY SET FORTH IN THIS SECTION 6 THE PRODUCT AND ALL SERVICES ARE PROVIDED “AS IS”. NEITHER AEROFS NOR ITS SUPPLIERS MAKES ANY OTHER WARRANTIES, EXPRESS OR IMPLIED, STATUTORY OR OTHERWISE, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, TITLE, FITNESS FOR A PARTICULAR PURPOSE OR NONINFRINGEMENT. AEROFS DOES NOT WARRANT THAT CUSTOMER'S USE OF THE PRODUCT WILL BE UNINTERRUPTED OR ERROR-FREE. CUSTOMER ACKNOWLEDGES THAT ALL SECURITY SOLUTIONS HAVE INHERENT LIMITATIONS AND THAT AEROFS WILL NOT BE LIABLE FOR ANY FAILURE OF SECURITY OR ENCRYPTION MEASURES OR FOR ANY UNAUTHORIZED ACCESS TO ANY FILES OR DATA. FURTHERMORE, AEROFS SHALL NOT BE LIABLE FOR THE ACTIONS OF ANY THIRD-PARTY USER, INCLUDING WITHOUT LIMITATION ANY USE OR ACCESS OF CUSTOMER'S FILES OR DATA BY ANY THIRD-PARTY USER WITH WHOM CUSTOMER ELECTS TO SHARE SUCH FILES OR DATA. CUSTOMER MAY HAVE OTHER STATUTORY RIGHTS. HOWEVER, TO THE FULL EXTENT PERMITTED BY LAW, THE DURATION OF STATUTORILY REQUIRED WARRANTIES, IF ANY, SHALL BE LIMITED TO THE LIMITED WARRANTY PERIOD.
+7. Support.
+
+Online self-help support is available for the Product at: https://support.aerofs.com/
+8. Limitation of Remedies and Damages.
+
+8.1 AEROFS SHALL NOT BE LIABLE FOR ANY LOSS OF USE, LOST DATA, FAILURE OF SECURITY MECHANISMS, INTERRUPTION OF BUSINESS, OR ANY INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES OF ANY KIND (INCLUDING LOST PROFITS), REGARDLESS OF THE FORM OF ACTION, WHETHER IN CONTRACT, TORT (INCLUDING NEGLIGENCE), STRICT LIABILITY OR OTHERWISE, EVEN IF INFORMED OF THE POSSIBILITY OF SUCH DAMAGES IN ADVANCE.
+
+8.2 NOTWITHSTANDING ANY OTHER PROVISION OF THIS AGREEMENT, AEROFS' AND ITS SUPPLIERS' ENTIRE LIABILITY TO CUSTOMER SHALL NOT EXCEED THE GREATER OF (X) THE AMOUNT ACTUALLY PAID BY CUSTOMER TO AEROFS UNDER THIS AGREEMENT IN THE TWELVE (12) MONTH PERIOD PRECEDING THE CLAIM OR (Y) ONE HUNDRED U.S. DOLLARS ($100).
+
+8.3 The parties agree that the limitations specified in this Section 8 will survive and apply even if any limited remedy specified in this Agreement is found to have failed of its essential purpose.
+9. Confidential Information.
+
+Each party (“Receiving Party”) agrees that all code, inventions, know-how, business, technical and financial information it obtains from the disclosing party (“Disclosing Party”) constitute the confidential property of the Disclosing Party (“Confidential Information”), provided that it is identified as confidential at the time of disclosure or should be reasonably known by the Receiving Party to be Confidential Information due to the nature of the information disclosed and the circumstances surrounding the disclosure. Any software, documentation or technical information provided by AeroFS (or its agents), performance information relating to the Product, and the terms of this Agreement shall be deemed Confidential Information of AeroFS without any marking or further designation. Except as expressly authorized herein, the Receiving Party will hold in confidence and not use or disclose any Confidential Information. The Receiving Party's nondisclosure obligation shall not apply to information which the Receiving Party can document: (a) was rightfully in its possession or known to it prior to receipt of the Confidential Information; (b) is or has become public knowledge through no fault of the Receiving Party; (c) is rightfully obtained by the Receiving Party from a third party without breach of any confidentiality obligation; or (d) is independently developed by employees of the Receiving Party who had no access to such information. Receiving Party may also disclose Confidential Information if so required pursuant to a regulation, law or court order (but only to the minimum extent required to comply with such regulation or order and with advance notice to the Disclosing Party). The Receiving Party acknowledges that disclosure of Confidential Information would cause substantial harm for which damages alone would not be a sufficient remedy, and therefore that upon any such disclosure by the Receiving Party the Disclosing Party shall be entitled to appropriate equitable relief in addition to whatever other remedies it might have at law.
+10. Publicity.
+
+Customer agrees that AeroFS may publicly reference Customer as a customer of the Product.
+11 General.
+11.1 Assignment.
+
+This Agreement will bind and inure to the benefit of each party's permitted successors and assigns. Neither party shall assign this Agreement (or any part thereof) without the advance written consent of the other party, except that AeroFS may assign this Agreement in connection with a merger, reorganization, acquisition or other transfer of all or substantially all of such party's assets or voting securities. Any attempt to transfer or assign this Agreement except as expressly authorized under this Section 11.1 will be null and void.
+11.2 Severability.
+
+If any provision of this Agreement shall be adjudged by any court of competent jurisdiction to be unenforceable or invalid, that provision shall be limited to the minimum extent necessary so that this Agreement shall otherwise remain in effect.
+11.3 Governing Law; Jurisdiction and Venue.
+
+This Agreement shall be governed by the laws of the State of California and the United States without regard to conflicts of laws provisions thereof, and without regard to the United Nations Convention on the International Sale of Goods. The parties acknowledge that this Agreement evidences a transaction involving interstate commerce. Notwithstanding the preceding sentences with respect to the substantive law, any arbitration conducted pursuant to the terms of this Agreement shall be governed by the Federal Arbitration Act (9 U.S.C. §§ 1-16). Customer agrees to submit to the personal jurisdiction of the state and federal courts located in Santa Clara County, California for any actions for which a party seeks to retain the right to seek injunctive or other equitable relief in a court of competent jurisdiction as set forth in Section 11.4 below, including any provisional relief required to prevent irreparable harm. The parties agree that Santa Clara County, California is the proper forum for any appeals of an arbitration award or for trial court proceedings in the event that the arbitration provision below is found to be unenforceable.
+11.4 Arbitration.
+
+READ THIS SECTION CAREFULLY BECAUSE IT REQUIRES THE PARTIES TO ARBITRATE THEIR DISPUTES AND LIMITS THE MANNER IN WHICH CUSTOMER CAN SEEK RELIEF FROM AEROFS.In the unlikely event that AeroFS has not been able to resolve a dispute it has with Customer after sixty (60) days, the parties each agree to resolve any claim, dispute, or controversy (excluding any AeroFS claims for injunctive or other equitable relief) arising out of or in connection with or relating to this Agreement, or the breach or alleged breach thereof (collectively, “Claims”), by binding arbitration by the JAMS, Inc. ( “JAMS”) under the Optional Expedited Arbitration Procedures then in effect for JAMS, except as provided herein. Nothing in this Section 11.4 shall be deemed as preventing either party from seeking injunctive or other equitable relief from the courts as necessary to protect any of its proprietary interests.
+11.4.1 JAMS.
+
+Except as set forth in Section 11.4.2 below, the following applies: The arbitration will be conducted in Santa Clara County, California, unless Customer and AeroFS agree otherwise. Each party will be responsible for paying any JAMS filing, administrative and arbitrator fees in accordance with JAMS rules. The award rendered by the arbitrator shall include costs of arbitration, reasonable attorneys' fees and reasonable costs for expert and other witnesses, and any judgment on the award rendered by the arbitrator may be entered in any court of competent jurisdiction.
+11.4.2 Exception for Individuals.
+
+If Customer is an individual, then the following provision applies in lieu of Section 11.4.1: JAMS may be contacted at www.jamsadr.com and may require Customer to pay a fee for the initiation of its case unless Customer applies for and successfully obtain a fee waiver from JAMS. The arbitration will be conducted in Santa Clara County, California (or the nearest JAMS office), unless Customer requests an in-person hearing in Customer's hometown or Customer and AeroFS agree otherwise. The award rendered by the arbitrator may include Customer's costs of arbitration, reasonable attorneys' fees and reasonable costs for expert and other witnesses, and any judgment on the award rendered by the arbitrator may be entered in any court of competent jurisdiction. Customer may sue in a small claims court of competent jurisdiction without first engaging in arbitration, but this does not absolve Customer of the commitment to engage in the informal dispute resolution process.
+11.4.3 General.
+
+WITH RESPECT TO ALL PERSONS AND ENTITIES, REGARDLESS OF WHETHER THEY HAVE OBTAINED A SUBSCRIPTION FOR PERSONAL, COMMERCIAL, OR NON-COMMERCIAL PURPOSES, ALL CLAIMS MUST BE BROUGHT IN THE PARTIES' INDIVIDUAL CAPACITY, AND NOT AS A PLAINTIFF OR CLASS MEMBER IN ANY PURPORTED CLASS ACTION, COLLECTIVE ACTION, PRIVATE ATTORNEY GENERAL ACTION OR OTHER REPRESENTATIVE PROCEEDING. THIS WAIVER APPLIES TO CLASS ARBITRATION, AND, UNLESS AEROFS AGREES OTHERWISE, THE ARBITRATOR MAY NOT CONSOLIDATE MORE THAN ONE PERSON'S CLAIMS. CUSTOMER AGREES THAT, BY ENTERING INTO THIS AGREEMENT, CUSTOMER AND AEROFS ARE EACH WAIVING THE RIGHT TO A TRIAL BY JURY OR TO PARTICIPATE IN A CLASS ACTION, COLLECTIVE ACTION, PRIVATE ATTORNEY GENERAL ACTION, OR OTHER REPRESENTATIVE PROCEEDING OF ANY KIND.
+11.5 Attorneys' Fees and Costs.
+
+The prevailing party in any action to enforce this Agreement will be entitled to recover its attorneys' fees and costs in connection with such action.
+11.6 Notices and Reports.
+
+Any notice or report hereunder shall be in writing to the notice address set forth above and shall be deemed given: (a) upon receipt if by personal delivery; (b) upon receipt if sent by certified or registered U.S. mail (return receipt requested); or (c) one day after it is sent if by next day delivery by a major commercial delivery service.
+11.7 Amendments; Waivers.
+
+No supplement, modification, or amendment of this Agreement shall be binding, unless executed in writing by a duly authorized representative of each party to this Agreement. No waiver will be implied from conduct or failure to enforce or exercise rights under this Agreement, nor will any waiver be effective unless in a writing signed by a duly authorized representative on behalf of the party claimed to have waived. No provision of any purchase order or other business form employed by Customer will supersede the terms and conditions of this Agreement, and any such document relating to this Agreement shall be for administrative purposes only and shall have no legal effect.
+11.8 Entire Agreement.
+
+This Agreement is the complete and exclusive statement of the mutual understanding of the parties and supersedes and cancels all previous written and oral agreements and communications relating to the subject matter of this Agreement.
+11.9 Audit Rights.
+
+Upon AeroFS' written request, Customer shall certify in a signed writing that Customer's use of the Product is in full compliance with the terms of this Agreement (including any copy and user limitations).
+11.10 Independent Contractors.
+
+The parties to this Agreement are independent contractors. There is no relationship of partnership, joint venture, employment, franchise or agency created hereby between the parties. Neither party will have the power to bind the other or incur obligations on the other party's behalf without the other party's prior written consent.
+11.11 Force Majeure.
+
+Neither party shall be liable to the other for any delay or failure to perform any obligation under this Agreement (except for a failure to pay fees) if the delay or failure is due to events which are beyond the reasonable control of such party, including but not limited to any strike, blockade, war, act of terrorism, riot, natural disaster, failure or diminishment of power or of telecommunications or data networks or services, or refusal of approval or a license by a government agency.
+11.12 Government End-Users.
+
+The Client Software is commercial computer software. If the user or licensee of the Client Software is an agency, department, or other entity of the United States Government, the use, duplication, reproduction, release, modification, disclosure, or transfer of the Client Software, or any related documentation of any kind, including technical data and manuals, is restricted by a license agreement or by the terms of this Agreement in accordance with Federal Acquisition Regulation 12.212 for civilian purposes and Defense Federal Acquisition Regulation Supplement 227.7202 for military purposes. The Client Software was developed fully at private expense. All other use is prohibited.
+11.13 Export Compliance.
+
+Customer acknowledges that the Product is subject to export restrictions by the United States government and import restrictions by certain foreign governments. Customer shall not and shall not allow any third-party to remove or export from the United States or allow the export or re-export the Client Software or any other part of the Product or any direct product thereof: (a) into (or to a national or resident of) any embargoed or terrorist-supporting country; (b) to anyone on the U.S. Commerce Department's Table of Denial Orders or U.S. Treasury Department's list of Specially Designated Nationals; (c) to any country to which such export or re-export is restricted or prohibited, or as to which the United States government or any agency thereof requires an export license or other governmental approval at the time of export or re-export without first obtaining such license or approval; or (d) otherwise in violation of any export or import restrictions, laws or regulations of any United States or foreign agency or authority. Customer agrees to the foregoing and warrants that it is not, and it will not allow access to the Product by any party which is, located in, under the control of, or a national or resident of any such prohibited country or on any such prohibited party list. The Product is further restricted from being used for the design or development of nuclear, chemical, or biological weapons or missile technology, or for terrorist activity, without the prior permission of the United States government. Customer will not submit to the Product any information that is controlled under the US International Traffic in Arms Regulations.
+11.14 Third-Party Code.
+
+The Client Software may contain or be provided with components subject to the terms and conditions of “open source” software licenses (“Open Source Software”). Open Source Software may be identified in the Documentation, or AeroFS shall provide a list of the Open Source Software for a particular version of the Client Software to Customer upon Customer's written request. To the extent required by the license that accompanies the Open Source Software, the terms of such license will apply in lieu of the terms of this Agreement with respect to such Open Source Software, including, without limitation, any provisions governing access to source code, modification or reverse engineering.
+11.15 Aggregated Anonymous Data.
+
+Notwithstanding anything to the contrary herein, Customer agrees that AeroFS may obtain and aggregate technical and other data about Customer's use of the Products that is non-personally identifiable with respect to Customer (“Aggregated Anonymous Data”), and AeroFS may use the Aggregated Anonymous Data to improve, support and operate the Products and otherwise for any business purpose during and after the term of this Agreement. For clarity, this provision does not give AeroFS the right to identify Customer as the source of any Aggregated Anonymous Data.
