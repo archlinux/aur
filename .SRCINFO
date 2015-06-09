@@ -1,0 +1,19 @@
+pkgbase = ruby-md2man
+	pkgdesc = Converts markdown documents into UNIX manual pages
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = http://sunaku.github.io/md2man/
+	arch = any
+	license = ISC
+	depends = ruby
+	depends = ruby-binman
+	depends = ruby-redcarpet
+	provides = md2man
+	provides = ruby-md2man
+	conflicts = md2man
+	noextract = md2man-4.0.0.gem
+	source = https://rubygems.org/downloads/md2man-4.0.0.gem
+	sha256sums = c9ee3f4a244510022f33d7624d8f0e1be59c23dba656e732c91c715dd8134555
+
+pkgname = ruby-md2man
+
