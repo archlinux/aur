@@ -1,0 +1,15 @@
+pkgbase = ruby-sigar
+	pkgdesc = System Information Gatherer And Reporter
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = http://sigar.hyperic.com/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = ruby
+	noextract = sigar-0.7.3.gem
+	source = https://rubygems.org/downloads/sigar-0.7.3.gem
+	sha256sums = 250a3bd8170f51bf377aa666d44ae08a321c655a2c63c14dffa41fe478308d88
+
+pkgname = ruby-sigar
+
