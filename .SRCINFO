@@ -1,0 +1,18 @@
+pkgbase = launchpad-integration-gtk3
+	pkgdesc = A library to integrate launchpad urls into the menus
+	pkgver = 0.1.56.2
+	pkgrel = 3
+	url = https://launchpad.net/launchpad-integration
+	install = launchpad-integration.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = bzr
+	makedepends = gobject-introspection
+	depends = gtk3
+	depends = pygtk
+	source = launchpad-integration-0.1.56.2.tar.gz::http://bazaar.launchpad.net/~ubuntu-desktop/launchpad-integration/ubuntu/tarball/189
+	sha256sums = SKIP
+
+pkgname = launchpad-integration-gtk3
+
