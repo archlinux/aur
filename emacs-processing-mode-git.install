@@ -1,0 +1,11 @@
+post_install() {
+    cat <<EOF
+==> Put this in your \$HOME/.emacs file:
+==>    (autoload 'processing-mode "processing-mode" "Processing mode" t)
+==>    (add-to-list 'auto-mode-alist '("\\.pde$" . processing-mode))
+EOF
+}
+
+op=$1
+shift
+$op $*
