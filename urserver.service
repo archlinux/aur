@@ -1,0 +1,11 @@
+[Unit]
+Description=Unified Remote Server
+After=network.target
+
+[Service]
+RemainAfterExit=yes
+ExecStart=/bin/bash /opt/urserver/urserver-start
+ExecStop=/bin/bash /opt/urserver/urserver-stop
+
+[Install]
+WantedBy=network.target
