@@ -1,0 +1,16 @@
+pkgbase = ewe
+	pkgdesc = Elementary widgets extension, desktop widget library
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = http://git.enlightenment.org/devs/rimmed/ewe.git/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = efl
+	depends = elementary
+	source = git://git.enlightenment.org/devs/rimmed/ewe.git#tag=0.2.2
+	md5sums = SKIP
+
+pkgname = ewe
+
