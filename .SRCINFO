@@ -1,0 +1,18 @@
+pkgbase = pantheon-calculator
+	pkgdesc = The Pantheon Calculator
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://launchpad.net/pantheon-calculator
+	install = pantheon-calculator.install
+	arch = i686
+	arch = x86_64
+	groups = pantheon
+	license = GPL3
+	makedepends = cmake
+	makedepends = vala
+	depends = granite-bzr
+	source = https://launchpad.net/pantheon-calculator/freya/0.1/+download/pantheon-calculator-0.1.tgz
+	sha256sums = 41255cd0b04e3625cde11052c53feb5deae7241c0907dc25a4cf91351ae4b432
+
+pkgname = pantheon-calculator
+
