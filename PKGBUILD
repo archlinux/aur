@@ -17,6 +17,8 @@ install=${pkgname}.install
 md5sums=('f019a8fdf27391ca568f022b60d381c6'
          '8d5ed2f4f1f26a60d078a77f9fd5f2a3')
 
+# test
+
 build() {
 	cd "${srcdir}/gpx-viewer-${pkgver}"
 	sed -ie 's|desktopdir = $(DESTDIR)/|desktopdir =|' Makefile.in
