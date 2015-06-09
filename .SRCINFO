@@ -1,0 +1,15 @@
+pkgbase = python-netifaces
+	pkgdesc = Portable module to access network interface information in Python
+	pkgver = 0.10.4
+	pkgrel = 2
+	url = http://alastairs-place.net/netifaces/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.python.org/packages/source/n/netifaces/netifaces-0.10.4.tar.gz
+	md5sums = 36da76e2cfadd24cc7510c2c0012eb1e
+
+pkgname = python-netifaces
+
