@@ -1,0 +1,23 @@
+pkgbase = updf-bzr
+	pkgdesc = A tool to write and paint to an existing pdf file. uPdf can insert pages of another pdf, insert new pages, remove and extract pages, rotate pages, paste an image in the existing pdf, and much more.
+	pkgver = 17
+	pkgrel = 7
+	url = https://launchpad.net/updf/
+	install = updf-bzr.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = bzr
+	makedepends = python2-distutils-extra
+	depends = gtk3
+	depends = python2
+	depends = python2-cairo
+	depends = python2-numpy
+	depends = python2-polib
+	depends = poppler-glib
+	depends = libappindicator-gtk3
+	provides = updf
+	source = updf::bzr+http://bazaar.launchpad.net/~lorenzo-carbonell/updf/trunk-1/
+
+pkgname = updf-bzr
+
