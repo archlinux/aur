@@ -1,0 +1,21 @@
+Fix linking error:
+
+Undefined symbols:
+  "_X509_free", referenced from:
+      _smtp_open in ssmtp.o
+ld: symbol(s) not found
+
+
+Index: ssmtp-2.64/configure.in
+===================================================================
+--- ssmtp-2.64.orig/configure.in
++++ ssmtp-2.64/configure.in
+@@ -52,7 +52,7 @@ AC_ARG_ENABLE(ssl,
+ [  --enable-ssl           support for secure connection to mail server])
+ if test x$enableval = xyes ; then
+ 	AC_DEFINE(HAVE_SSL)
+-	LIBS="$LIBS -lssl"
++	LIBS="$LIBS -lssl -lcrypto"
+ fi
+ enableval=""
+ 

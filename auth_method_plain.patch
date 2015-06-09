@@ -1,0 +1,94 @@
+From 8b38060ec5e73a0dbccb9a8687fcb5dc2ae9d1cf Mon Sep 17 00:00:00 2001
+From: Simon Elsbrock <else@butters.home.iodev.org>
+Date: Sat, 8 Jun 2013 23:13:55 +0200
+Subject: [PATCH] implement auth method PLAIN
+
+---
+ README       |    1 +
+ ssmtp.8      |    2 +-
+ ssmtp.c      |   20 ++++++++++++++++++++
+ ssmtp.conf.5 |    4 +++-
+ 4 files changed, 25 insertions(+), 2 deletions(-)
+
+diff --git a/README b/README
+index d66b8a3..c26da1e 100644
+--- a/README
++++ b/README
+@@ -41,6 +41,7 @@ Authors:
+  Christoph Lameter, clameter@debian.org, clameter@waterf.org, clameter@i-m-f.org
+  Hugo Haas, hugo@debian.org, hugo@larve.net, hugo@via.ecp.fr
+  Matt Ryan, mryan@debian.org, matt.ryan@banana.org.uk
++ Simon Elsbrock, simon@iodev.org
+ 
+ TLS support from Tobias Rundstrom <tobi@tobi.nu>
+ IPv6 support from Jun-ya Kato <kato@goto.info.waseda.ac.jp>
+diff --git a/ssmtp.8 b/ssmtp.8
+index 26f9c47..6c3acbc 100644
+--- a/ssmtp.8
++++ b/ssmtp.8
+@@ -61,7 +61,7 @@ Specifies password for SMTP authentication.
+ 
+ .TP
+ \fB\-am\fP\fImechanism\fP
+-Specifies mechanism for SMTP authentication. (Only LOGIN and CRAM-MD5)
++Specifies mechanism for SMTP authentication. (PLAIN, LOGIN or CRAM-MD5)
+ 
+ .TP
+ .B \-ba
+diff --git a/ssmtp.c b/ssmtp.c
+index af4d1e5..c6835a2 100644
+--- a/ssmtp.c
++++ b/ssmtp.c
+@@ -1507,6 +1507,25 @@ int ssmtp(char *argv[])
+ 		}
+ 		else {
+ #endif
++	if (auth_method && strcasecmp(auth_method, "plain") == 0) {
++		outbytes += smtp_write(sock, "AUTH PLAIN");
++		(void)alarm((unsigned) MEDWAIT);
++
++		if (smtp_read(sock, buf) != 3) {
++			die("Server rejected AUTH PLAIN (%s)", buf);
++		}
++		/* we assume server asked us for Username */
++		memset(buf, 0, bufsize);
++		/* the format is "authorization-id\0authentication-id\0passwd\0"
++		   we assume authorization-id = authentication-id */
++		void *plainval = malloc(2 * strlen(auth_user) + strlen(auth_pass) + 2);
++		memcpy(plainval, auth_user, strlen(auth_user) + 1);
++		memcpy(plainval + strlen(auth_user) + 1, auth_user, strlen(auth_user) + 1);
++		memcpy(plainval + 2 * (strlen(auth_user) + 1), auth_pass, strlen(auth_pass));
++		to64frombits(buf, plainval, 2 * strlen(auth_user) + strlen(auth_pass) + 2);
++		free(plainval);
++	}
++	else {
+ 		memset(buf, 0, bufsize);
+ 		to64frombits(buf, auth_user, strlen(auth_user));
+ 		if (use_oldauth) {
+@@ -1531,6 +1550,7 @@ int ssmtp(char *argv[])
+ 		memset(buf, 0, bufsize);
+ 
+ 		to64frombits(buf, auth_pass, strlen(auth_pass));
++		}
+ #ifdef MD5AUTH
+ 		}
+ #endif
+diff --git a/ssmtp.conf.5 b/ssmtp.conf.5
+index 25f6ceb..54b11e0 100644
+--- a/ssmtp.conf.5
++++ b/ssmtp.conf.5
+@@ -64,8 +64,10 @@ The password to use for SMTP AUTH.
+ .Pp
+ .It Cm AuthMethod
+ The authorization method to use.
+-If unset, plain text is used.
++If unset, login is used.
+ May also be set to
++.Dq plain
++or
+ .Dq cram-md5 .
+ .Sh FILES
+ .Bl -tag -width Ds
+-- 
+1.7.10.4
+

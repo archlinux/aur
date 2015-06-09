@@ -1,0 +1,25 @@
+pkgbase = ssmtp-plain
+	pkgdesc = Patched ssmtp MTA with support for PLAIN authentication
+	pkgver = 2.64
+	pkgrel = 1
+	url = http://packages.debian.org/stable/mail/ssmtp
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = openssl
+	depends = inetutils
+	provides = smtp-forwarder
+	provides = ssmtp
+	conflicts = exim
+	conflicts = smtp-forwarder
+	conflicts = ssmtp
+	source = http://ftp.debian.org/debian/pool/main/s/ssmtp/ssmtp_2.64.orig.tar.bz2
+	source = opessl_crypto.patch
+	source = auth_method_plain.patch
+	options = !makeflags
+	options = !emptydirs
+	backup = etc/ssmtp/ssmtp.conf
+	backup = etc/ssmtp/revaliases
+
+pkgname = ssmtp-plain
+
