@@ -1,0 +1,19 @@
+pkgbase = antfs-cli-git
+	pkgdesc = A python library to download and upload files from ANT-FS compliant devices (Garmin products).
+	pkgver = r52.afdc5ff
+	pkgrel = 4
+	url = https://github.com/Tigge/antfs-cli
+	install = antfs-cli.install
+	arch = i686
+	arch = x86_64
+	license = custom:antfs-cli
+	makedepends = python2-setuptools
+	depends = python2-openant-git
+	optdepends = fittotcx-git: Automatically convert FIT files into TCX files by scripting.
+	optdepends = gcpuploader: Automatically upload FIT files to garmin-connect by scripting.
+	conflicts = garmin-forerunner-610-extractor-git
+	source = git+https://github.com/Tigge/antfs-cli.git
+	md5sums = SKIP
+
+pkgname = antfs-cli-git
+

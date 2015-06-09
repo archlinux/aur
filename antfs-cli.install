@@ -1,0 +1,10 @@
+post_install() {
+  echo -------------------------------
+  echo The first time you are running antfs-cli make sure your device is in pairing mode.
+  echo FIT files, authfiles and scripts are stored in \$XDG_CONFIG_HOME/antfs-cli
+  echo with \$HOME/.config/antfs-cli as alternative.
+  echo Scripting is possible by copying them to \$XDG_CONFIG_HOME/garmin-extractor/scripts. 
+  echo Examples are located in /usr/share/antfs-cli/scripts.
+  echo More information: /usr/share/antfs-cli/README and SCRIPTING
+  echo -------------------------------
+}
