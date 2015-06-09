@@ -13,22 +13,22 @@ source=('git+https://github.com/frohoff/ciphr.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $srcdir/$pkgname
+  cd "$srcdir/ciphr"
   echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
 build() {
-  cd $srcdir/$pkgname
+  cd "$srcdir/ciphr"
   bundle install --path=bundle
   bundle exec rake build
 }
 
 package() {
-  cd $srcdir/$pkgname
+  cd "$srcdir/ciphr"
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" pkg/$pkgname-$_gemver.gem
-  rm "$pkgdir/$_gemdir/cache/$pkgname-$_gemver.gem"
-  install -D -m644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" pkg/ciphr-$_gemver.gem
+  rm "$pkgdir/$_gemdir/cache/ciphr-$_gemver.gem"
+  install -D -m644 LICENSE.txt "$pkgdir/usr/share/licenses/ciphr/LICENSE.txt"
 }
 
 # vim:set ts=2 sw=2 et:
