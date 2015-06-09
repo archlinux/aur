@@ -1,0 +1,18 @@
+pkgbase = python-pyglet-hg
+	pkgdesc = A cross-platform windowing and multimedia library for Python 3.
+	pkgver = r3027.1f8a12c9891a
+	pkgrel = 1
+	url = http://pyglet.org
+	arch = any
+	license = BSD
+	makedepends = python-distribute
+	makedepends = mercurial
+	depends = python
+	optdepends = avbin: for compressed audio/video
+	provides = python-pyglet
+	conflicts = python-pyglet
+	source = pyglet::hg+https://bitbucket.org/pyglet/pyglet
+	md5sums = SKIP
+
+pkgname = python-pyglet-hg
+
