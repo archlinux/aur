@@ -1,0 +1,20 @@
+pkgbase = ojo-bzr
+	pkgdesc = A fast and good-looking image viewer
+	pkgver = r125
+	pkgrel = 1
+	url = http://launchpad.net/ojo
+	install = ojo-bzr.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = bzr
+	makedepends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = python2
+	depends = pyexiv2
+	provides = ojo
+	source = ojo::bzr+http://bazaar.launchpad.net/~peterlevi/ojo/master/
+	md5sums = SKIP
+
+pkgname = ojo-bzr
+
