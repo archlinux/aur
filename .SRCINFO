@@ -1,0 +1,24 @@
+pkgbase = opentxs-cli-git
+	pkgdesc = Open Transactions Command Line Interface
+	pkgver = 20140911
+	pkgrel = 1
+	url = https://github.com/Open-Transactions/opentxs-cli
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = git
+	makedepends = libtool
+	makedepends = make
+	makedepends = pkg-config
+	depends = opentxs-git
+	provides = opentxs-cli
+	conflicts = opentxs-cli
+	source = git+https://github.com/Open-Transactions/opentxs-cli
+	sha256sums = SKIP
+
+pkgname = opentxs-cli-git
+
