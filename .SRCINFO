@@ -1,0 +1,15 @@
+pkgbase = libafsplit
+	pkgdesc = Anti-forensic Information Splitter
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://clemens.endorphin.org/AFsplitter
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://clemens.endorphin.org/AFsplitter-0.1.tar.bz2
+	source = https://raw.githubusercontent.com/johnlane/libafsplit/master/Makefile
+	sha1sums = baf2857b3c87f369a36a67bb8603a6c417eba43e
+	sha1sums = dcfe9592539e8b28623766adbda1fffbffc0b96a
+
+pkgname = libafsplit
+
