@@ -1,0 +1,15 @@
+[Unit]
+Description=LightDM Display Manager
+Documentation=man:lightdm(1)
+After=systemd-user-sessions.service
+
+[Service]
+ExecStart=/usr/sbin/lightdm
+StandardOutput=syslog
+# Don't want a continuous loop if X fails to start
+#Restart=always
+IgnoreSIGPIPE=no
+BusName=org.freedesktop.DisplayManager
+
+[Install]
+Alias=display-manager.service
