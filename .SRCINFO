@@ -1,0 +1,17 @@
+pkgbase = lc3tools
+	pkgdesc = Unix LC-3 Simulator from McGraw-Hill Higher Education
+	pkgver = 12
+	pkgrel = 3
+	url = http://highered.mcgraw-hill.com/sites/0072467509/student_view0/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = unzip
+	depends = tk
+	provides = lc3sim=12
+	options = !libtool
+	source = http://highered.mheducation.com/sites/dl/free/0072467509/104652/lc3tools_v12.zip
+	md5sums = 40bfed95f05b50d5378912f7bbc03164
+
+pkgname = lc3tools
+
