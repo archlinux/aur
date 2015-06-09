@@ -1,6 +1,6 @@
 pkgbase = texturecache
 	pkgdesc = Utility to manage the XBMC/Kodi texture cache and more.
-	pkgver = 1.9.4
+	pkgver = 1.9.5
 	pkgrel = 1
 	url = https://github.com/MilhouseVH/texturecache.py
 	install = readme.install
@@ -10,8 +10,8 @@ pkgbase = texturecache
 	depends = kodi
 	conflicts = xbmc-texturecache
 	replaces = xbmc-texturecache
-	source = https://github.com/MilhouseVH/texturecache.py/archive/1.9.4.tar.gz
-	sha256sums = 13ec361d76de07996dfb5bdd16282eb36e6b2e8ae05e5e1fe928bd58b2e62f8d
+	source = https://github.com/MilhouseVH/texturecache.py/archive/1.9.5.tar.gz
+	sha256sums = 0e7b38a363e4f0d3f045fdc6cbc1c9c466b4bb75c51a00069f86207d9f393fef
 
 pkgname = texturecache
 
