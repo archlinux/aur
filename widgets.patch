@@ -1,0 +1,12 @@
+diff -Nur NetMauMau-Qt-Client-0.17.a/nmm-qt-client.pro NetMauMau-Qt-Client-0.17/nmm-qt-client.pro
+--- NetMauMau-Qt-Client-0.17.a/nmm-qt-client.pro	2015-03-17 18:45:51.000000000 +0100
++++ NetMauMau-Qt-Client-0.17/nmm-qt-client.pro	2015-03-29 19:54:42.078101179 +0200
+@@ -4,7 +4,7 @@
+ #
+ #-------------------------------------------------
+ 
+-QT       += gui core
++QT       += gui core widgets
+ TEMPLATE = subdirs app
+ SUBDIRS += src
+ CONFIG += ordered debug_and_release

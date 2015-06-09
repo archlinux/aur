@@ -1,0 +1,21 @@
+pkgbase = nmm-qt-client
+	pkgdesc = Qt client for NetMauMau
+	pkgver = 0.20
+	pkgrel = 1
+	url = http://sourceforge.net/projects/netmaumau/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = qt4
+	makedepends = netmaumau-dev
+	makedepends = espeak
+	depends = qt4
+	depends = espeak
+	depends = libnetmaumauclient3
+	source = nmm-qt-client-0.20.tar.gz::https://github.com/velnias75/NetMauMau-Qt-Client/archive/V0.20.tar.gz
+	source = widgets.patch
+	md5sums = e9f16b6f2ec4bae8184749f67976abe3
+	md5sums = 1fb5d46e35c0d51d2aa8a718b3c549fe
+
+pkgname = nmm-qt-client
+
