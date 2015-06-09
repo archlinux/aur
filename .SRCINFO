@@ -1,0 +1,18 @@
+pkgbase = dwgsim
+	pkgdesc = Software for simulating reads from whole genomes
+	pkgver = 0.1.10
+	pkgrel = 3
+	url = http://sourceforge.net/apps/mediawiki/dnaa/index.php?title=Main_Page
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = zlib
+	depends = perl
+	conflicts = dnaa
+	source = http://downloads.sourceforge.net/project/samtools/samtools/0.1.18/samtools-0.1.18.tar.bz2
+	source = http://downloads.sourceforge.net/project/dnaa/dwgsim/dwgsim-0.1.10.tar.gz
+	md5sums = 71dab132e21c0766f0de84c2371a9157
+	md5sums = 7453baf4b1058a214e91d703d331ee3e
+
+pkgname = dwgsim
+
