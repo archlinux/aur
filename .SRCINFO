@@ -1,0 +1,18 @@
+pkgbase = ctags_as3_haxe
+	pkgdesc = Generates an index file of language objects found in source files, with patch for as3 and haxe
+	pkgver = 5.8
+	pkgrel = 2
+	url = http://www.dafishinsea.com/blog/2010/01/21/getting-ctags-to-work-with-actionscript-and-haxe/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	provides = ctags
+	conflicts = ctags
+	source = http://downloads.sourceforge.net/sourceforge/ctags/ctags-5.8.tar.gz
+	source = http://www.dafishinsea.com/downloads/ctags_as3_haxe_patched_files.tar.gz
+	md5sums = c00f82ecdcc357434731913e5b48630d
+	md5sums = faa6108de15b2bae2feac521b5e5b7f7
+
+pkgname = ctags_as3_haxe
+
