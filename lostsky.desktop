@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Story of a Lost Sky
+GenericName=lostsky
+Comment=Strategy RPG set in the Touhou universe
+Icon=lostsky.png
+TryExec=lostsky
+Exec=lostsky
+Terminal=false
+Type=Application
+Categories=Application;Game;StrategyGame;RolePlaying
+StartupNotify=true

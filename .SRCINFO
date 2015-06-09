@@ -1,0 +1,20 @@
+pkgbase = lostsky-hg
+	pkgdesc = Strategy RPG set in the Touhou universe
+	pkgver = 1448
+	pkgrel = 1
+	url = http://lostsky.featheredmelody.com/
+	arch = any
+	license = BSD
+	makedepends = mercurial
+	depends = python2-pygame
+	depends = python2-xdg
+	options = !emptydirs
+	source = hg+https://bitbucket.org/featheredmelody/lost-sky-project
+	source = lostsky.desktop
+	source = lostsky.png
+	md5sums = SKIP
+	md5sums = 172768fc13a04740cab8a353d1a4a40a
+	md5sums = 0c7493aad44dfd09dacca835ea6e3b6a
+
+pkgname = lostsky-hg
+
