@@ -1,0 +1,18 @@
+pkgbase = spamassassin-spamc
+	pkgdesc = Standalone C Client to spamassassin.
+	pkgver = 3.4.1
+	pkgrel = 1
+	url = http://spamassassin.apache.org
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = perl-digest-sha1
+	makedepends = perl-html-parser
+	makedepends = perl-net-dns
+	makedepends = perl-netaddr-ip
+	depends = openssl
+	depends = zlib
+	source = http://www.us.apache.org/dist/spamassassin/source/Mail-SpamAssassin-3.4.1.tar.gz
+
+pkgname = spamassassin-spamc
+
