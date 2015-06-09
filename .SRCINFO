@@ -1,0 +1,16 @@
+pkgbase = lib32-libqmi
+	pkgdesc = QMI modem protocol helper library
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = http://www.freedesktop.org/wiki/Software/libqmi/
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc-multilib
+	makedepends = python
+	depends = lib32-glib2
+	depends = libqmi
+	source = http://www.freedesktop.org/software/libqmi/libqmi-1.12.0.tar.xz
+	sha256sums = 7bf0a5b70a6e8214932ec32c264e59d5290c6bd181fa1341c028a063181f64ff
+
+pkgname = lib32-libqmi
+
