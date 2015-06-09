@@ -1,0 +1,25 @@
+pkgbase = gptfdisk-git
+	pkgdesc = A text-mode partitioning tool that works on Globally Unique Identifier (GUID) Partition Table (GPT) disks - GIT Version
+	pkgver = 1.0.0.124.8017e08
+	pkgrel = 1
+	url = http://www.rodsbooks.com/gdisk/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = gcc-libs
+	depends = util-linux
+	depends = popt
+	depends = ncurses
+	provides = gptfdisk=1.0.0.124.8017e08
+	conflicts = gptfdisk
+	options = strip
+	options = !emptydirs
+	options = zipman
+	options = !libtool
+	options = docs
+	source = gptfdisk::git+http://git.code.sf.net/p/gptfdisk/code#branch=master
+	sha1sums = SKIP
+
+pkgname = gptfdisk-git
+
