@@ -1,0 +1,23 @@
+pkgbase = dnaa
+	pkgdesc = An analysis package for short reads from next-generation sequencing
+	pkgver = 0.1.2
+	pkgrel = 3
+	url = http://sourceforge.net/apps/mediawiki/dnaa/index.php?title=Main_Page
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = gawk
+	depends = zlib
+	depends = bzip2
+	depends = r
+	depends = perl
+	conflicts = dwgsim
+	source = http://downloads.sourceforge.net/project/bfast/bfast/0.7.0/bfast-0.7.0a.tar.gz
+	source = http://downloads.sourceforge.net/project/samtools/samtools/0.1.18/samtools-0.1.18.tar.bz2
+	source = http://downloads.sourceforge.net/project/dnaa/dnaa/0.1.2/dnaa-0.1.2.tar.gz
+	md5sums = 9b0574dce903ab83e39e371b0a3bbbc6
+	md5sums = 71dab132e21c0766f0de84c2371a9157
+	md5sums = a11eb449af9bf14906d00fdba5150ead
+
+pkgname = dnaa
+
