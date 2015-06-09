@@ -1,0 +1,19 @@
+pkgbase = python2-securestring
+	pkgdesc = Clears the contents of strings containing cryptographic material
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/dnet/pysecstr
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/S/SecureString/SecureString-0.1.tar.gz
+	source = https://pypi.python.org/packages/source/S/SecureString/SecureString-0.1.tar.gz.asc
+	md5sums = c84ac003a0e1dad96d80fa696ccb96fc
+	md5sums = 6f3ed918802f91508a0b708ebdfe4fc4
+	sha256sums = 46b5c3b2be2e7cbee81be8964596fad9150a581daabab20dbfe785e186607b3c
+	sha256sums = 823954eadef1387fbfcadee9346c821b569c128f09f18b78a19669ae10bfd167
+
+pkgname = python2-securestring
+
