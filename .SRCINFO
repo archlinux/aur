@@ -1,0 +1,13 @@
+pkgbase = hid_listen
+	pkgdesc = prints out debugging information from usb hid devices.
+	pkgver = 1.01
+	pkgrel = 1
+	url = http://www.pjrc.com/teensy/hid_listen.html
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	source = http://www.pjrc.com/teensy/hid_listen_1.01.zip
+	md5sums = fcc94f8248f5642f1fc9747e0f280569
+
+pkgname = hid_listen
+
