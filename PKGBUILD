@@ -3,10 +3,10 @@
 pkgbase=reposurgeon
 pkgname=({cy,}reposurgeon)
 pkgver=3.25
-pkgrel=2
+pkgrel=3
 pkgdesc="Performs surgery on version control repositories."
 arch=('any')
-url="http://www.catb.org/esr/$pkgname/"
+url="http://www.catb.org/esr/$pkgbase/"
 license=('BSD')
 depends=('python2')
 makedepends=('cython2' 'asciidoc' 'xmlto')
