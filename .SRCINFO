@@ -1,0 +1,21 @@
+pkgbase = osmc-installer-bin
+	pkgdesc = OSMC Installer allows you to install OSMC on a variety of devices.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = http://osmc.tv
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	depends = gcc
+	depends = qt4
+	depends = gcc-libs
+	depends = zlib
+	provides = osmc-installer
+	source_i686 = http://download.opensuse.org/repositories/home:/osmc/Debian_7.0/i386/osmc-installer_111_i386.deb
+	md5sums_i686 = 04227d4d124baff3d0f7563ac42789eb
+	source_x86_64 = http://download.opensuse.org/repositories/home:/osmc/Debian_7.0/amd64/osmc-installer_111_amd64.deb
+	md5sums_x86_64 = c99942d619a7b7e06624251a95b83c33
+
+pkgname = osmc-installer-bin
+
