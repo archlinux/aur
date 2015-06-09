@@ -1,0 +1,14 @@
+pkgbase = perl-net-sftp
+	pkgdesc = Secure File Transfer Protocol client
+	pkgver = 0.10
+	pkgrel = 3
+	url = http://search.cpan.org/~dbrobins/Net-SFTP/
+	arch = i686
+	arch = x86_64
+	license = Artistic License
+	depends = perl
+	source = http://search.cpan.org/CPAN/authors/id/D/DB/DBROBINS/Net-SFTP-0.10.tar.gz
+	sha256sums = 00cd1169cc50151926af96cad61f070c52d7236dd6bd996b7cc63952fb0a7de5
+
+pkgname = perl-net-sftp
+
