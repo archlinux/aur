@@ -1,0 +1,28 @@
+pkgbase = openwsman
+	pkgdesc = Opensource Implementation of WS-Management
+	pkgver = 2.6.0
+	pkgrel = 1
+	url = https://openwsman.github.io/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = swig
+	makedepends = perl
+	makedepends = python2
+	makedepends = ruby
+	makedepends = ruby-docs
+	depends = libxml2
+	depends = sblim-sfcc
+	optdepends = perl: for perl bindings
+	optdepends = python2: for python bindings
+	optdepends = ruby: for ruby bindings
+	backup = etc/openwsman/openwsman.conf
+	backup = etc/openwsman/openwsman_client.conf
+	backup = etc/openwsman/ssleay.cnf
+	backup = etc/pam.d/openwsman
+	source = openwsman-2.6.0.tar.gz::https://github.com/Openwsman/openwsman/archive/v2.6.0.tar.gz
+	md5sums = 824834a86040b98b03f3fc0f7f62e853
+
+pkgname = openwsman
+
