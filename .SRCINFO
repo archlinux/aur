@@ -1,0 +1,15 @@
+pkgbase = netboot
+	pkgdesc = a simple PXE-compatible DHCP and TFTP server
+	pkgver = 20100119
+	pkgrel = 1
+	url = http://brokestream.com/netboot.html
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = gcc
+	depends = glibc
+	source = http://brokestream.com/netboot.c
+	md5sums = e702d33f4fbae8836218b0753348fd02
+
+pkgname = netboot
+
