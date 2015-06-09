@@ -1,0 +1,9 @@
+[Unit]
+Description=LXDE Display Manager
+After=systemd-user-sessions.service
+
+[Service]
+ExecStart=/usr/sbin/lxdm
+
+[Install]
+Alias=display-manager.service

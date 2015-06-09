@@ -1,0 +1,26 @@
+--- data/lxdm.orig	2010-01-24 16:58:42.262866825 -0200
++++ data/lxdm	2010-01-19 11:56:34.308668692 -0200
+@@ -1,21 +1,13 @@
+ #!/bin/sh
+
+-[ -f /etc/sysconfig/i18n ] && . /etc/sysconfig/i18n
+-
+-if [ -z "$LANG" -a -e /etc/sysconfig/language ]; then
+-	. /etc/sysconfig/language
+-	if [ -n "$RC_LANG"]; then
+-		LANG=$RC_LANG
+-	fi
++if [ -r /etc/profile.d/locale.sh ]; then
++	. /etc/profile.d/locale.sh
+ fi
+
+ if [ -n "$LANG" ]; then
+ 	export LANG
+ fi
+
+-[ -f /etc/sysconfig/desktop ] && . /etc/sysconfig/desktop
+-[ -f /etc/sysconfig/windowmanager ] && . /etc/sysconfig/windowmanager
+-
+ if [ -n "$DEFAULT_WM" ]; then
+ 	PREFERRED=$DEFAULT_WM
+ fi

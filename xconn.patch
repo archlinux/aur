@@ -1,0 +1,35 @@
+diff -aur lxdm/src/xconn.c lxdm.modified/src/xconn.c
+--- lxdm/src/xconn.c	2012-12-23 19:27:04.512531088 -0800
++++ lxdm.modified/src/xconn.c	2012-12-23 19:28:31.659227448 -0800
+@@ -172,7 +172,7 @@
+ 	free(c);
+ }
+ 
+-#if 0
++//#if 0
+ static xcb_window_t xconn_get_root(xconn_t c)
+ {
+ 	const xcb_setup_t *setup;
+@@ -181,11 +181,11 @@
+ 	xcb_screen_t *screen = iter.data;
+ 	return screen->root;
+ }
+-#endif
++//#endif
+ 
+ void xconn_clean(xconn_t c)
+ {
+-#if 0
++//#if 0
+ 	xcb_query_tree_cookie_t wintree;
+ 	xcb_query_tree_reply_t *rep;
+ 	xcb_window_t *children;
+@@ -202,7 +202,7 @@
+ 		xcb_kill_client(c->c,children[i]);
+ 	free(rep);
+ 	xcb_flush(c->c);
+-#endif
++//#endif
+ }
+ 
+ #endif

@@ -1,0 +1,50 @@
+diff --git a/src/lxdm.c b/src/lxdm.c
+index 369aedf..cd1d486 100644
+--- a/src/lxdm.c
++++ b/src/lxdm.c
+@@ -935,16 +935,23 @@ void setup_pam_session(LXSession *s,struct passwd *pw,char *session_name)
+         g_warning( "pam open session error \"%s\"\n", pam_strerror(s->pamh, err));
+ }
+ 
+-void append_pam_environ(pam_handle_t *pamh,char **env)
++static char **append_pam_environ(pam_handle_t *pamh,char **env)
+ {
+-	int i,j,n;
++	int i,j,n,a;
+ 	char **penv;
+-	if(!pamh) return;
++	if(!pamh) return env;
+ 	penv=pam_getenvlist(pamh);
+-	if(!penv) return;
++	if(!penv) return env;
++	a=g_strv_length(penv);
++	if(a==0)
++	{
++		free(penv);
++		return env;
++	}
++	env=g_renew(char *,env,g_strv_length(env)+1+a+10);
+ 	for(i=0;penv[i]!=NULL;i++)
+ 	{
+-		//printf("PAM %s\n",penv[i]);
++		fprintf(stderr,"PAM %s\n",penv[i]);
+ 		n=strcspn(penv[i],"=")+1;
+ 		for(j=0;env[j]!=NULL;j++)
+ 		{
+@@ -960,6 +967,7 @@ void append_pam_environ(pam_handle_t *pamh,char **env)
+ 		free(penv[i]);
+ 	}
+ 	free(penv);
++	return env;
+ }
+ 
+ #endif
+@@ -1540,7 +1548,7 @@ void lxdm_do_login(struct passwd *pw, char *session, char *lang, char *option)
+ 	if(s->child==0)
+ 	{
+ #if HAVE_LIBPAM
+-		append_pam_environ(s->pamh,env);
++		env=append_pam_environ(s->pamh,env);
+ 		pam_end(s->pamh,0);
+ #endif
+ 		switch_user(pw, session_exec, env);

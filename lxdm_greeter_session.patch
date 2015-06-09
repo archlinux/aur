@@ -1,0 +1,13 @@
+diff --git a/src/greeter.c b/src/greeter.c
+index c0c150d..1f6b88e 100644
+--- a/src/greeter.c
++++ b/src/greeter.c
+@@ -114,7 +114,7 @@ static char *get_session_exec(void)
+ 	GtkTreeModel* model;
+ 	GtkTreeIter it;
+ 	gchar *res;
+-	if(!lang)
++	if(!sessions)
+ 		return g_strdup("");
+ 	
+ 	if(!gtk_combo_box_get_active_iter(GTK_COMBO_BOX(sessions), &it))

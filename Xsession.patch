@@ -1,0 +1,14 @@
+--- data/Xsession.orig	2010-01-31 20:48:08.695677408 -0200
++++ data/Xsession	2010-01-31 20:47:48.260223292 -0200
+@@ -2,6 +2,11 @@
+
+ # use bash for "exec -l", howto run login shell by /bin/sh ?
+
++[[ -f /etc/profile ]] && . /etc/profile
++[[ -f "$HOME/.profile" ]] && . "$HOME/.profile"
++[[ -f /etc/xprofile ]] && . /etc/xprofile
++[[ -f "$HOME/.xprofile" ]] && . "$HOME/.xprofile"
++
+ if [ $# -eq 1 -a -n "$1" ]; then
+ 	LXSESSION=$1
+ else

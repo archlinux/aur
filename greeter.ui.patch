@@ -1,0 +1,13 @@
+--- data/themes/Industrial/greeter.ui.orig	2012-05-09 23:54:03.743980613 -0300
++++ data/themes/Industrial/greeter.ui	2012-05-10 00:26:20.340687396 -0300
+@@ -201,7 +201,9 @@
+                   </packing>
+                 </child>
+                 <child>
+-                  <object class="GtkComboBoxEntry" id="keyboard"/>
++                  <object class="GtkComboBoxEntry" id="keyboard">
++                    <property name="text_column">0</property>
++                  </object>
+                   <packing>
+                     <property name="expand">False</property>
+                     <property name="position">3</property>
