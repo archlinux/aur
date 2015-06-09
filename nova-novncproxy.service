@@ -1,0 +1,9 @@
+[Unit]
+Description=Nova novncproxy server
+
+[Service]
+ExecStart=/usr/bin/nova-novncproxy --config-dir /etc/nova/
+User=nova
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,9 @@
+[Unit]
+Description=Nova Conductor server
+
+[Service]
+ExecStart=/usr/bin/nova-conductor --config-dir /etc/nova/
+User=nova
+
+[Install]
+WantedBy=multi-user.target
