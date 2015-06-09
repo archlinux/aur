@@ -1,0 +1,20 @@
+pkgbase = burgaur
+	pkgdesc = A delicious AUR helper. Made from cower.
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/m45t3r/burgaur
+	install = burgaur.install
+	arch = any
+	license = MIT
+	depends = cower
+	depends = pacman
+	depends = python
+	depends = python-termcolor
+	depends = sudo
+	optdepends = mc: review packages before installing
+	conflicts = burgaur-git
+	source = https://github.com/m45t3r/burgaur/archive/2.0.tar.gz
+	sha256sums = 051c29ce8f27772531bfccc696d99aaf832d3c5aaa804c06f85146d60d4f2e05
+
+pkgname = burgaur
+
