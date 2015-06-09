@@ -5,7 +5,7 @@
 _pkgname="efibootmgr"
 pkgname="${_pkgname}-git"
 
-pkgver=0.11.0.12.gea640b3
+pkgver=0.12
 pkgrel=1
 pkgdesc="Tool to modify UEFI Firmware Boot Manager Variables - GIT master branch"
 arch=('x86_64' 'i686')
