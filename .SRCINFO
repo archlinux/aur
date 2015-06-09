@@ -1,7 +1,7 @@
 pkgbase = cvc4
 	pkgdesc = CVC4: An automatic theorem prover
 	pkgver = 1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://cvc4.cs.nyu.edu/web/
 	arch = i686
 	arch = x86_64
