@@ -1,0 +1,16 @@
+pkgbase = planetary-annihilation-pte
+	pkgdesc = Planetary Annihilation Public Test Environment Launcher
+	pkgver = latest
+	pkgrel = 3
+	url = https://forums.uberent.com/threads/streams-pte-and-experimental-builds.58960/page-4#post-937028
+	arch = x86_64
+	license = MIT
+	depends = python-pycurl
+	conflicts = planetary-annihilation
+	source = git+ssh://git@github.com/pa-pyrus/papatcher.git
+	source = PA.sh
+	md5sums = SKIP
+	md5sums = a06eed75eb032d8a03b25d92b8abebd1
+
+pkgname = planetary-annihilation-pte
+
