@@ -1,0 +1,21 @@
+
+[Unit]
+Description=Mesos Cluster Manager
+After=network.target
+Wants=network.target
+
+[Service]
+EnvironmentFile=-/etc/sysconfig/mesos/mesos-master-env
+#Type=forking
+ExecStart=/usr/bin/mesos-master --log_dir=/var/log/mesos --port=5050
+ExecStop=/usr/bin/killall -s 9 mesos-master
+ExecReload=/usr/bin/kill -HUP $MAINPID
+User=mesos
+Group=mesos
+Restart=always
+RestartSec=20
+LimitNOFILE=16384
+#ControlGroup=cpu:/mesos
+
+[Install]
+WantedBy=multi-user.target
