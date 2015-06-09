@@ -1,0 +1,24 @@
+pkgbase = yacas
+	pkgdesc = Yet another computer algebra system
+	pkgver = 1.3.6
+	pkgrel = 1
+	url = http://yacas.sourceforge.net/yacas.html
+	install = yacas.install
+	arch = i686
+	arch = x86_64
+	groups = mathematics
+	license = GPL
+	makedepends = gcc
+	makedepends = perl
+	makedepends = imagemagick
+	depends = glibc
+	depends = gcc-libs
+	optdepends = gnuplot
+	optdepends = lynx
+	optdepends = texmacs
+	source = http://yacas.sourceforge.net/backups/yacas-1.3.6.tar.gz
+	source = yacas.desktop
+	source = yacas-docs.desktop
+
+pkgname = yacas
+

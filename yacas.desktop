@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Yacas
+Comment=Yacas is a small and highly flexible computer algebra language
+Comment[es]=Yacas es un lenguaje de computacion algebraico
+Exec=yacas
+Icon=yacas.png
+Terminal=true
+Type=Application
+Categories=ConsoleOnly;Science;Math;

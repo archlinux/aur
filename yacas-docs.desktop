@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Yacas documentation
+Name[es]=Documentos de Yacas
+Comment=Documentation for Yacas in html format
+Comment[es]=Documentos de Yacas en formato html
+Exec=xdg-open /usr/share/yacas/documentation/books.html
+Icon=yacas.png
+Terminal=false
+Type=Application
+Categories=Science;Math;
