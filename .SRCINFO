@@ -1,0 +1,17 @@
+pkgbase = ruby-sequel
+	pkgdesc = The Database Toolkit for Ruby
+	pkgver = 4.23.0
+	pkgrel = 1
+	url = http://sequel.jeremyevans.net
+	arch = any
+	license = MIT
+	depends = ruby
+	provides = sequel
+	provides = ruby-sequel
+	conflicts = sequel
+	noextract = sequel-4.23.0.gem
+	source = https://rubygems.org/downloads/sequel-4.23.0.gem
+	sha256sums = 539cd9fd34619c64bb42cfa4427f64c850b6ac2dbb3a52bc3ccdbf06df3b3566
+
+pkgname = ruby-sequel
+
