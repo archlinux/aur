@@ -1,0 +1,24 @@
+pkgbase = zsh-completions-git
+	pkgdesc = Additional completion definitions for Zsh
+	pkgver = 0.11.0.18.ge5112fa
+	pkgrel = 1
+	url = https://github.com/zsh-users/zsh-completions
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = zsh
+	provides = zsh-completions
+	provides = zsh-virtualbox
+	provides = zsh-packagekit
+	provides = zsh-yaourt
+	provides = zsh-bumblebee
+	conflicts = zsh-completions
+	conflicts = zsh-virtualbox
+	conflicts = zsh-packagekit
+	conflicts = zsh-yaourt
+	conflicts = zsh-bumblebee
+	source = git://github.com/zsh-users/zsh-completions.git
+	md5sums = SKIP
+
+pkgname = zsh-completions-git
+
