@@ -1,0 +1,15 @@
+pkgbase = libggimisc
+	pkgdesc = GGI assorted features
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = http://ibiblio.org/ggicore/packages/libggimisc.html
+	arch = i686
+	arch = x86_64
+	groups = ggi
+	license = MIT
+	depends = libggi
+	source = http://downloads.sourceforge.net/project/ggi/lowlevel/libggimisc-2.2.2/libggimisc-2.2.2.src.tar.gz
+	md5sums = 84bab3e636009c530d7bf0ef1e395b3a
+
+pkgname = libggimisc
+
