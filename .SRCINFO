@@ -1,0 +1,15 @@
+pkgbase = pidgin-remember-read-status
+	pkgdesc = Pidgin plugin to remember which chats are unread when connecting to a chat room
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/nablaa/pidgin-remember-read-status
+	arch = x86_64
+	arch = i686
+	license = GPLv2
+	makedepends = cmake
+	makedepends = git
+	depends = pidgin
+	depends = libpurple
+
+pkgname = pidgin-remember-read-status
+
