@@ -1,15 +1,16 @@
-# Maintainer: Christoph Grabo <asaaki@mannaz.cc>
+# Maintainer: Christoph Grabo <asaaki at mannaz dot cc>
+# Contributor: Christoph Grabo <asaaki at mannaz dot cc>
 
 pkgname=arangodb
-pkgver=2.5.3
-pkgrel=2
+pkgver=2.5.5
+pkgrel=1
 
 pkgdesc="A distributed open-source database with a flexible data model for documents, graphs, and key-values."
 license=("Apache")
 url="https://www.arangodb.com/"
 
 provides=("arangodb=$pkgver")
-conflicts=("arangodb-latest" "arangodb-git")
+conflicts=("arangodb-git")
 depends=("glibc" "gcc-libs" "openssl" "readline" "systemd" "icu")
 makedepends=("python2" "go>=1.4")
 
@@ -18,7 +19,7 @@ arch=("i686" "x86_64")
 install=arangodb.install
 source=( "https://www.arangodb.com/repositories/Source/ArangoDB-${pkgver}.tar.bz2"
          'arangodb.service')
-md5sums=('a938ad91d88d0cbc19eeb9f0b72a5b90'
+md5sums=('d5b02b1360d7f9b1257c89eed95f3881'
          '3cdd43ed5552ab918b41627ec4906e52')
 
 build() {
