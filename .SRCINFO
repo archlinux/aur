@@ -1,0 +1,13 @@
+pkgbase = python-unicards
+	pkgdesc = A Python module for converting strings into unicode playing cards
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://github.com/lmacken/unicards
+	arch = any
+	license = APACHE
+	depends = python
+	source = http://pypi.python.org/packages/source/u/unicards/unicards-0.6.tar.gz
+	sha256sums = b06f6effd7782f9541e5761afc4ee01ee7e163f9c6c04ad9b3712354f0a2cfdd
+
+pkgname = python-unicards
+
