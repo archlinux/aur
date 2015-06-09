@@ -1,0 +1,23 @@
+pkgbase = ruby-github-markdown-preview
+	pkgdesc = Local previews for Github Flavored Markdown files
+	pkgver = 3.1.4
+	pkgrel = 1
+	url = https://github.com/dmarcotte/github-markdown-preview
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-gemoji
+	depends = ruby-github-markdown
+	depends = ruby-html-pipeline
+	depends = ruby-json
+	depends = ruby-listen
+	depends = ruby-sanitize
+	provides = github-markdown-preview
+	provides = ruby-github-markdown-preview
+	conflicts = github-markdown-preview
+	noextract = github-markdown-preview-3.1.4.gem
+	source = https://rubygems.org/downloads/github-markdown-preview-3.1.4.gem
+	sha256sums = 31a43eb026876e7f151095ab42c2992cf5afb1526fdc312917478a36d040915d
+
+pkgname = ruby-github-markdown-preview
+
