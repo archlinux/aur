@@ -1,0 +1,20 @@
+pkgbase = mingw-w64-win-iconv
+	pkgdesc = Iconv implementation using Win32 API (mingw-w64)
+	pkgver = 0.0.6
+	pkgrel = 5
+	url = http://code.google.com/p/win-iconv
+	arch = any
+	license = Public Domain
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
+	provides = mingw-w64-libiconv
+	conflicts = mingw-w64-libiconv
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://win-iconv.googlecode.com/files/win-iconv-0.0.6.tar.bz2
+	md5sums = 1e97ed4d9e7379ff0ee22077256e8c58
+
+pkgname = mingw-w64-win-iconv
+
