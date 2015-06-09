@@ -1,7 +1,7 @@
 pkgbase = ngrok-git
 	pkgdesc = A tunneling, reverse proxy for developing and understanding networked, HTTP services (development version)
 	pkgver = latest
-	pkgrel = 16
+	pkgrel = 1
 	url = https://ngrok.com
 	arch = i686
 	arch = x86_64
