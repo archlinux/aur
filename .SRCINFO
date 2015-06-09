@@ -1,0 +1,22 @@
+pkgbase = cerbere-bzr
+	pkgdesc = The Pantheon Watchdog
+	pkgver = r48
+	pkgrel = 1
+	url = https://launchpad.net/cerbere
+	install = cerbere.install
+	arch = i686
+	arch = x86_64
+	groups = pantheon-unstable
+	license = GPL2
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = vala
+	depends = dconf
+	depends = libgee
+	provides = cerbere
+	conflicts = cerbere
+	source = bzr+lp:cerbere
+	sha256sums = SKIP
+
+pkgname = cerbere-bzr
+
