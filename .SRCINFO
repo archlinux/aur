@@ -1,0 +1,14 @@
+pkgbase = rfidtool
+	pkgdesc = A opensource tool to read / write rfid tags
+	pkgver = 0.01
+	pkgrel = 1
+	url = http://www.bindshell.net/tools/rfidtool.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://www.pkgbuild.com/~giovanni/rfidtool-v0.01.tar.bz2
+	md5sums = de95d6855e2f29ed38e986602c9299e7
+
+pkgname = rfidtool
+
