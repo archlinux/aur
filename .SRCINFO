@@ -1,0 +1,14 @@
+pkgbase = paris-traceroute
+	pkgdesc = Paris traceroute is a new version of the well-known network diagnosis and measurement tool
+	pkgver = 0.92
+	pkgrel = 2
+	url = http://www.paris-traceroute.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://www.paris-traceroute.net/downloads/paris-traceroute-0.92-dev.tar.gz
+	sha512sums = ecae447bb3f811f5668d2beb24fb0146e9267189e14c10b09fe930daad552e97dbcde7208be6020c83b3560b41395a866a87d4076e6ce6c5d574490a9e0d9128
+
+pkgname = paris-traceroute
+
