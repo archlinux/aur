@@ -1,0 +1,22 @@
+pkgbase = mutt-kz
+	pkgdesc = Mutt with notmuch support and another improvements.
+	pkgver = 1.5.23.1rc1
+	pkgrel = 1
+	url = https://github.com/karelzak/mutt-kz
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gnupg
+	makedepends = libxslt
+	depends = libidn
+	depends = krb5
+	depends = notmuch-runtime
+	provides = mutt
+	conflicts = mutt
+	options = !strip
+	source = https://github.com/karelzak/mutt-kz/archive/v1.5.23.1-rc1.tar.gz
+	md5sums = 34568489032ae91a2dc21327eb412ff7
+
+pkgname = mutt-kz
+
