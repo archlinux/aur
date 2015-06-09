@@ -1,0 +1,29 @@
+pkgbase = ros-indigo-usb-cam
+	pkgdesc = ROS - A ROS Driver for V4L USB Cameras.
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = http://wiki.ros.org/usb_cam
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-image-transport
+	makedepends = ros-indigo-camera-info-manager
+	makedepends = ros-indigo-sensor-msgs
+	makedepends = ffmpeg
+	depends = ros-indigo-image-transport
+	depends = ros-indigo-camera-info-manager
+	depends = ros-indigo-sensor-msgs
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-std-msgs
+	depends = v4l-utils
+	depends = ffmpeg
+	source = usb_cam::git+https://github.com/bosch-ros-pkg-release/usb_cam-release.git#tag=release/indigo/usb_cam/0.3.3-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-usb-cam
+
