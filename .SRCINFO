@@ -1,0 +1,40 @@
+pkgbase = haxe
+	pkgdesc = The Cross-Platform Toolkit
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = http://haxe.org/
+	install = haxe.install
+	arch = i686
+	arch = x86_64
+	groups = devel
+	license = GPL2
+	license = MIT
+	makedepends = git
+	makedepends = ocaml>=4.00.0
+	makedepends = zlib
+	makedepends = neko>=2.0.0
+	makedepends = camlp4
+	depends = neko>=2.0.0
+	optdepends = python
+	optdepends = php
+	optdepends = java-environment
+	optdepends = mono
+	provides = haxe
+	options = !strip
+	options = emptydirs
+	options = !makeflags
+	source = haxe-3.2.0::git+https://github.com/HaxeFoundation/haxe.git#tag=3.2.0
+	source = git+https://github.com/HaxeFoundation/haxelib.git
+	source = git+https://github.com/HaxeFoundation/ocamllibs.git
+	source = haxeserver
+	source = haxe.sh
+	source = haxe.csh
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = 888e2aa9e2583bc9888cc9889b24e3e7
+	md5sums = acf2d50add2ccc19cf4e84d14b4bb5f8
+	md5sums = b4263f4b8a2ed3308cdff93d01b70227
+
+pkgname = haxe
+
