@@ -1,0 +1,17 @@
+pkgbase = facron
+	pkgdesc = Advanced filesystem cron based on fanotify
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Keruspe/facron
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = autoconf
+	makedepends = gcc
+	makedepends = make
+	makedepends = pkg-config
+	source = facron-1.0.tar.gz::https://codeload.github.com/Keruspe/facron/tar.gz/v1.0
+	sha256sums = fedbeec7fc98fe3e21b20b028a9073788d74a508a66fd93b7a42ac7c87e03f16
+
+pkgname = facron
+
