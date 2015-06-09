@@ -1,0 +1,17 @@
+pkgbase = python2-python-tdbus
+	pkgdesc = Simple Python bindings for D-BUS
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://github.com/geertj/python-tdbus
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/p/python-tdbus/python-tdbus-0.9.tar.gz
+	md5sums = 5452a6afe95f9a4fc62d94130abd553f
+	sha256sums = 5bd23e7c67de5a410a3668076f0bdd3460d10e7d7253e496febb2345325fbf22
+
+pkgname = python2-python-tdbus
+
