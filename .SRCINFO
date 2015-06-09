@@ -1,0 +1,20 @@
+pkgbase = exploit-db
+	pkgdesc = The Exploit Database (EDB) â€“ an ultimate archive of exploits and vulnerable software - A collection of hacks
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://www.exploit-db.com
+	arch = any
+	license = custom
+	depends = bash
+	depends = wget
+	depends = grep
+	depends = sed
+	depends = tar
+	options = !strip
+	source = http://www.exploit-db.com/archive.tar.bz2
+	source = exploit-db.sh
+	md5sums = SKIP
+	md5sums = e4ef0ae3f8e4073648089b935a758a0b
+
+pkgname = exploit-db
+

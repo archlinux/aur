@@ -1,0 +1,29 @@
+# Archtrack maintainer: Evan Teitelman <teitelmanevan@gmail.com>
+# Contributor: Thanx <thanxm@gmail.com>
+pkgname=exploit-db
+pkgver=1.5
+pkgrel=1
+pkgdesc="The Exploit Database (EDB) â€“ an ultimate archive of exploits and vulnerable software - A collection of hacks"
+url="http://www.exploit-db.com"
+license="custom"
+arch=('any')
+depends=('bash' 'wget' 'grep' 'sed' 'tar')
+source=('http://www.exploit-db.com/archive.tar.bz2'
+        'exploit-db.sh')
+md5sums=('SKIP'
+         'e4ef0ae3f8e4073648089b935a758a0b')
+options=('!strip')
+
+package() {
+	# The script
+	install -Dm755 $srcdir/exploit-db.sh $pkgdir/usr/bin/exploit-db
+
+	# The database
+	chmod -R 644 "$srcdir/exploit-database-master"
+	chmod -R a+X "$srcdir/exploit-database-master"
+	install -dm 755 "$pkgdir/usr/share"
+	cp -dr --no-preserve=ownership "$srcdir/exploit-database-master" "$pkgdir/usr/share/exploit-db"
+}
+
+
+
