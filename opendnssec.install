@@ -1,0 +1,29 @@
+post_install() {
+    if [ -z "`grep '^opendnssec:' /etc/group`" ]; then
+        groupadd -g 227 opendnssec
+    fi
+    if [ -z "`grep '^opendnssec:' /etc/passwd`" ]; then
+        useradd -u 227 -d /var/lib/opendnssec -g opendnssec -s /bin/false opendnssec
+    fi
+    
+    systemd-tmpfiles --create opendnssec.conf
+
+    echo ">> You need an HSM implementation (try softhsm)"
+}
+
+
+post_upgrade() {
+    post_install $1
+    OLD=$(echo $2 | sed "s/\(.*\)\.\(.*\)\.\(.*\)/\1\.\2/g")
+    NEW=$(echo $1 | sed "s/\(.*\)\.\(.*\)\.\(.*\)/\1\.\2/g")
+    if [ $OLD != "1.4" -a $NEW == "1.4" ]; then
+        echo ">> NOTICE: UPGRADE TO 1.4"
+        echo "This update requires upgrading the database"
+        echo "Run /usr/share/opendnssec/migrate_adapters_1.sqlite3 on your kasp database"
+	echo "e.g: sqlite3 kasp.db < /usr/share/opendnssec/migrate_adapters_1.sqlite3"
+    fi
+}
+
+post_remove() {
+    userdel opendnssec
+}

@@ -1,0 +1,13 @@
+[Unit]
+Description=OpenDNSSEC Enforcer
+After=syslog.target network.target
+
+[Service]
+Type=forking
+PIDFile=/run/opendnssec/enforcerd.pid
+ExecStart=/usr/bin/ods-control enforcer start
+ExecStop=/usr/bin/ods-control enforcer stop
+
+[Install]
+WantedBy=multi-user.target
+

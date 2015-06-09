@@ -1,0 +1,13 @@
+[Unit]
+Description=OpenDNSSEC Signer
+After=syslog.target network.target
+
+[Service]
+Type=forking
+PIDFile=/run/opendnssec/signerd.pid
+ExecStart=/usr/bin/ods-control signer start
+ExecStop=/usr/bin/ods-control signer stop
+
+[Install]
+WantedBy=multi-user.target
+
