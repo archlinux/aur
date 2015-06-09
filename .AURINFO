@@ -1,0 +1,16 @@
+pkgbase = asmutils
+	pkgdesc = A 32-bit *NIX userland written in assembly
+	pkgver = 0.18
+	pkgrel = 3
+	url = http://asm.sourceforge.net/asmutils.html
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = nasm
+	source = http://asm.sourceforge.net/asmutils/asmutils-0.18.tar.gz
+	options = docs
+	options = staticlibs
+	options = !strip
+
+pkgname = asmutils
+
