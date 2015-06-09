@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Penguin-Command
+Comment=Missile Attack game
+Exec=penguin-command
+Icon=penguin-command
+Terminal=false
+Categories=Game;ArcadeGame;

@@ -1,0 +1,17 @@
+pkgbase = penguin-command
+	pkgdesc = A clone of the classic Missile Command game with improved graphics and sound
+	pkgver = 1.6.11
+	pkgrel = 2
+	url = http://www.linux-games.com/penguin-command/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl_image
+	depends = sdl_mixer
+	source = http://downloads.sourceforge.net/penguin-command/penguin-command-1.6.11.tar.gz
+	source = penguin-command.desktop
+	md5sums = 4dcf0073d62f28e47af18a922a1badc3
+	md5sums = f7602eba82c14ddbeb76f7da89c78044
+
+pkgname = penguin-command
+
