@@ -1,6 +1,6 @@
 pkgbase = prezto-git
-	pkgdesc = Instantly Awesome Zsh. A configuration framework for Zsh that comes with modules, enriching the command line interface environment with sane defaults, aliases, functions, auto completion, and prompt themes.
-	pkgver = r1426.6f9c166
+	pkgdesc = Prezto is the configuration framework for Zsh; it enriches the command line interface environment with sane defaults, aliases, functions, auto completion, and prompt themes.
+	pkgver = r1490.02c5f77
 	pkgrel = 1
 	url = https://github.com/sorin-ionescu/prezto/
 	install = install
@@ -9,7 +9,7 @@ pkgbase = prezto-git
 	makedepends = git
 	makedepends = coreutils
 	makedepends = sed
-	depends = zsh>=4.3.10
+	depends = zsh>=4.3.17
 	backup = etc/zsh/zlogin
 	backup = etc/zsh/zlogout
 	backup = etc/zsh/zpreztorc

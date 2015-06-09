@@ -10,6 +10,7 @@ post_install() {
 	echo "Global settings reside in the /etc/zsh/ directory."
 	echo "To personalize Zsh and Prezto, edit your local ~/.zshrc and ~/.zpreztorc files."
 	echo "A user can also have a custom, overriding Prezto installation in ~/.zprezto/"
+	echo "For more information on overrides and local files, see https://github.com/sorin-ionescu/prezto/tree/master/runcoms"
 	echo
 }
 
