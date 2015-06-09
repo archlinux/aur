@@ -1,0 +1,22 @@
+post_upgrade() {
+  if (( $(vercmp $2 2.21.15) < 0 )); then
+    post_install
+  fi
+}
+
+post_install() {
+  cat <<MSG
+>>> This driver uses SNA as the default acceleration method. You can
+    fall back to UXA if you run into trouble or test experimental
+    Glamor acceleration. To do so, save a file with the following 
+    content as /etc/X11/xorg.conf.d/20-intel.conf :
+      Section "Device"
+        Identifier  "Intel Graphics"
+        Driver      "intel"
+        Option      "AccelMethod"  "sna"
+        #Option      "AccelMethod"  "uxa"
+        #Option      "AccelMethod"  "glamor"
+      EndSection
+MSG
+}
+
