@@ -1,4 +1,4 @@
-# Maintainer: oi_wtf <brainpower at gulli dot com> 
+# Maintainer: oi_wtf <brainpower at mailbox dot org>
 _name=frosted
 pkgname=python-${_name}
 pkgver=1.4.1
