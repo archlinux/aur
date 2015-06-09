@@ -1,0 +1,14 @@
+pkgbase = python2-treq
+	pkgdesc = A requests-like API built on top of twisted.web's Agent
+	pkgver = 15.0.0
+	pkgrel = 1
+	url = http://github.com/dreid/treq
+	arch = any
+	license = MIT/X
+	makedepends = python2
+	depends = python2
+	source = https://pypi.python.org/packages/source/t/treq/treq-15.0.0.tar.gz
+	md5sums = 76e33f6cfd997a7387f201c2d048b3ad
+
+pkgname = python2-treq
+
