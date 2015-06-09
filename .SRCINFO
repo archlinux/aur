@@ -1,0 +1,14 @@
+pkgbase = marst
+	pkgdesc = Algol to C translator
+	pkgver = 2.7
+	pkgrel = 1
+	url = http://www.gnu.org/software/marst/marst.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	options = !libtool
+	source = http://ftp.gnu.org/pub/gnu/marst/marst-2.7.tar.gz
+	md5sums = d930f88be1f4ba8442241c219d677ee6
+
+pkgname = marst
+
