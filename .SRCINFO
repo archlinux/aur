@@ -1,12 +1,16 @@
 pkgbase = backports-patches-git
 	pkgdesc = frag+ack, chan_qos_frag, and chan-neg-1 patches for backports-patched.
-	pkgver = r9.e8ff5f4
-	pkgrel = 1
+	pkgver = 4.1_rc1
+	pkgrel = 2
 	url = https://backports.wiki.kernel.org/index.php/Main_Page
 	arch = any
 	license = GPL
-	source = backports-patches-git::git+https://github.com/hellnet/backports-patches.git
-	sha256sums = SKIP
+	source = 50-1-mac80211.compat08082009.wl_frag+ack_v1.patch
+	source = 60-1-compatdrivers_chan_qos_frag.patch
+	source = 70-1-fix-channel-negative-1.patch
+	sha256sums = aa31eb472ad45a5d731d81883172d16a61796e81d0bbac1f7eb5770d3f452869
+	sha256sums = ae81b9a3b68bd89caf2d21834f40089ba9b786e09d74e3f094acdbecdc38767b
+	sha256sums = 642742930215db30b7ac8ea2318b9428d8c7a1989b2c8452703f8fbf0b9e41ae
 
 pkgname = backports-patches-git
 

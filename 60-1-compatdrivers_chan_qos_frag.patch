@@ -1,0 +1,68 @@
+ *original patch by Mathy Vanhoef
+ *http://www.mathyvanhoef.com/2012/09/compat-wireless-injection-patch-for.html
+ *fixed in offset by Devil_D, t3kk3n
+diff -r 6b71629b673d drivers/net/wireless/rtl818x/rtl8187/dev.c
+--- a/drivers/net/wireless/rtl818x/rtl8187/dev.c	Tue May 28 16:57:23 2013 -0400
++++ b/drivers/net/wireless/rtl818x/rtl8187/dev.c	Tue May 28 17:16:15 2013 -0400
+@@ -252,8 +252,13 @@
+ 
+ 	flags |= ieee80211_get_tx_rate(dev, info)->hw_value << 24;
+ 	if (ieee80211_has_morefrags(tx_hdr->frame_control))
+-		flags |= RTL818X_TX_DESC_FLAG_MOREFRAG;
+-
++	{
++		// If info->control.vif is NULL it's most likely in monitor mode
++		if (likely(info->control.vif != NULL && info->control.vif->type != NL80211_IFTYPE_MONITOR)) {
++			flags |= RTL818X_TX_DESC_FLAG_MOREFRAG;
++		}
++	}
++					
+ 	/* HW will perform RTS-CTS when only RTS flags is set.
+ 	 * HW will perform CTS-to-self when both RTS and CTS flags are set.
+ 	 * RTS rate and RTS duration will be used also for CTS-to-self.
+
+diff -r 6b71629b673d net/mac80211/cfg.c
+--- a/net/mac80211/cfg.c	Tue May 28 16:57:23 2013 -0400
++++ b/net/mac80211/cfg.c	Tue May 28 17:16:15 2013 -0400
+@@ -839,7 +839,8 @@ ieee80211_vif_release_channel(sdata);
+ 			ret = ieee80211_vif_use_channel(sdata, chandef,
+ 					IEEE80211_CHANCTX_EXCLUSIVE);
+ 		}
+-	} else if (local->open_count == local->monitors) {
++	// Patch: Always allow channel change, even if a normal virtual interface is present
++	} else /*if (local->open_count == local->monitors)*/ {
+		local->_oper_chandef = *chandef;
+ 		ieee80211_hw_config(local, 0);
+ }
+
+diff -r 6b71629b673d net/mac80211/tx.c
+--- a/net/mac80211/tx.c	Tue May 28 16:57:23 2013 -0400
++++ b/net/mac80211/tx.c	Tue May 28 17:16:15 2013 -0400
+@@ -1534,7 +1534,10 @@
+		}
+	}
+
+-	ieee80211_set_qos_hdr(sdata, skb);
++	// Don't overwrite QoS header in monitor mode
++	if (likely(info->control.vif->type != NL80211_IFTYPE_MONITOR)) {
++		ieee80211_set_qos_hdr(sdata, skb);
++	}
+	ieee80211_tx(sdata, sta, skb, false);
+ }
+
+diff -r 6b71629b673d net/wireless/chan.c
+--- a/net/wireless/chan.c	Tue May 28 16:57:23 2013 -0400
++++ b/net/wireless/chan.c	Tue May 28 17:16:15 2013 -0400
+@@ -689,8 +689,10 @@ int cfg80211_set_monitor_channel(struct 
+ {
+ 	if (!rdev->ops->set_monitor_channel)
+ 		return -EOPNOTSUPP;
+-	if (!cfg80211_has_monitors_only(rdev))
+-		return -EBUSY;
++	// Always allow user to change channel, even if there is another normal
++	// virtual interface using the device.
++	//if (!cfg80211_has_monitors_only(rdev))
++	//	return -EBUSY;
+ 
+ 	return rdev_set_monitor_channel(rdev, chandef);
+ }

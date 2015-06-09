@@ -1,0 +1,14 @@
+--- a/net/mac80211/cfg.c
++++ b/net/mac80211/cfg.c
+@@ -3904,9 +3905,9 @@ static int ieee80211_cfg_get_channel
+ 	if (chanctx_conf) {
+ 		*chandef = chanctx_conf->def;
+ 		ret = 0;
+-	} else if (local->open_count > 0 &&
++	} else /*if (local->open_count > 0 &&
+ 		   local->open_count == local->monitors &&
+-		   sdata->vif.type == NL80211_IFTYPE_MONITOR) {
++		   sdata->vif.type == NL80211_IFTYPE_MONITOR)*/ {
+ 		if (local->use_chanctx)
+ 			*chandef = local->monitor_chandef;
+ 		else
