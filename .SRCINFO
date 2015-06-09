@@ -1,0 +1,15 @@
+pkgbase = nodejs-grasp
+	pkgdesc = JavaScript structural search, replace, and refactor
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = http://graspjs.com/
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	provides = grasp
+	provides = nodejs-grasp
+	conflicts = grasp
+
+pkgname = nodejs-grasp
+
