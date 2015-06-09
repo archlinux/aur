@@ -2,10 +2,8 @@
 
 pkgname=tint2-git
 _pkgname=tint2
-_buildpkgname=tint2.git
-pkgver=0.12.rc5
-_pkgver=0.12-rc5
-pkgrel=2
+pkgrel=1
+pkgver=v0.12.rc5.r14.g18b0ef2
 pkgdesc="Tint2 git official release"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/o9000/tint2"
@@ -14,18 +12,23 @@ depends=('libxcomposite' 'libxinerama' 'libxrandr' 'pango' 'imlib2' 'startup-not
 makedepends=('cmake' 'pkg-config')
 options=('!libtool')
 provides=('tint2')
-conflicts=('tint2' 'tint' 'tint2-svn')
-source="https://gitlab.com/o9000/$_pkgname/repository/archive.tar.gz?ref=v$_pkgver"
-md5sums=('03bf7f9a8b8e3cd57cb0b22f4cc52711')
+conflicts=('tint2' 'tint' 'tint2-svn' 'tint2-beta')
+source="git+https://gitlab.com/o9000/tint2.git"
+md5sums=('SKIP')
+
+pkgver() {
+  cd "srcdir/$_pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
- sed -i 's/\#\!\/usr\/bin\/env python/\#\!\/usr\/bin\/env python2/g' "$srcdir/$_buildpkgname/src/tint2conf/tintwizard.py"
- cd "$srcdir/$_buildpkgname"
+ sed -i 's/\#\!\/usr\/bin\/env python/\#\!\/usr\/bin\/env python2/g' "$srcdir/$_pkgname/src/tint2conf/tintwizard.py"
+ cd "$srcdir/$_pkgname"
  cmake . -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_TINT2CONF=1
  make
 }
 
 package() {
-  cd "$srcdir/$_buildpkgname"
+  cd "$srcdir/$_pkgname"
   make DESTDIR="$pkgdir" install
 }
