@@ -1,0 +1,18 @@
+pkgbase = flowgrind
+	pkgdesc = TCP Performance Measurement
+	pkgver = 0.7.5
+	pkgrel = 2
+	url = http://www.flowgrind.net
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	depends = libpcap
+	depends = gsl
+	depends = xmlrpc-c
+	source = https://github.com/flowgrind/flowgrind/releases/download/flowgrind-0.7.5/flowgrind-0.7.5.tar.bz2
+	source = https://github.com/flowgrind/flowgrind/releases/download/flowgrind-0.7.5/flowgrind-0.7.5.tar.bz2.asc
+	md5sums = 4288bcf10c4819e6830e915a40fac056
+	md5sums = SKIP
+
+pkgname = flowgrind
+

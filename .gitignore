@@ -1,0 +1,8 @@
+.*
+!.SRCINFO
+!.gitignore
+flowgrind*.tar.bz2
+flowgrind*.tar.bz2.asc
+flowgrind*.pkg.*
+pkg/
+src/
