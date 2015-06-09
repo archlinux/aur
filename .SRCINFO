@@ -1,0 +1,17 @@
+pkgbase = tchrome
+	pkgdesc = Close Chrome browser including background, or launch a version of Google Chrome/Chromium
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/colinkeenan/tchrome
+	install = tchrome.install
+	arch = any
+	license = GPL
+	source = https://raw.githubusercontent.com/colinkeenan/tchrome/v1.2/tchrome
+	source = https://raw.githubusercontent.com/colinkeenan/tchrome/v1.2/tchrome.conf
+	source = https://raw.githubusercontent.com/colinkeenan/tchrome/v1.2/tchrome.desktop
+	md5sums = 45abeb3edac87aaa0980b48f01172937
+	md5sums = 3bab05dbc5357bbe934942503a79c6a3
+	md5sums = 7a6ae702e159c102ed888007e0f25358
+
+pkgname = tchrome
+
