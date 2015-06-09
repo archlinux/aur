@@ -1,0 +1,14 @@
+pkgbase = cinnamon-applet-sysmenu
+	pkgdesc = System menu, like in Ubuntu
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://cinnamon-spices.linuxmint.com/applets/view/33
+	arch = any
+	groups = cinnamon-applets
+	license = GPL
+	depends = cinnamon
+	source = http://cinnamon-spices.linuxmint.com/uploads/applets/6ZYT-9J9L-OTUU.zip
+	md5sums = d20ff7a5197e33b2d7e0584f3cd3ba7e
+
+pkgname = cinnamon-applet-sysmenu
+
