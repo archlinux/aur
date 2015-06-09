@@ -1,0 +1,13 @@
+pkgbase = sane-gt68xx-ps1dfw
+	pkgdesc = Firmware for the Mustek BearPaw 1200 CU plus scanner and clones
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.meier-geinitz.de/sane/gt68xx-backend
+	arch = any
+	license = custom
+	depends = sane
+	source = http://www.meier-geinitz.de/sane/gt68xx-backend/firmware/PS1Dfw.usb
+	md5sums = eca04dc02952503ac75fda3a42f3257e
+
+pkgname = sane-gt68xx-ps1dfw
+
