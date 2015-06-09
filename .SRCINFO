@@ -1,0 +1,18 @@
+pkgbase = ocaml-batteries-git
+	pkgdesc = Batteries Included for OCaml
+	pkgver = 20150609
+	pkgrel = 1
+	url = http://github.com/ocaml-batteries-team/batteries-included
+	install = ocaml-batteries-git.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = ocaml
+	depends = ocaml-camomile
+	depends = ocaml-findlib
+	provides = ocaml-batteries
+	conflicts = ocaml-batteries
+
+pkgname = ocaml-batteries-git
+

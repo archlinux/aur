@@ -1,0 +1,5 @@
+post_install() {
+  echo
+  echo "   Copy /usr/share/doc/ocaml-batteries/ocamlinit to ~/.ocamlinit"
+  echo "   if you want to use batteries in your toplevel"
+}
