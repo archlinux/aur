@@ -1,0 +1,23 @@
+pkgbase = wingpanel
+	pkgdesc = The Pantheon Top Panel
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://launchpad.net/wingpanel
+	install = wingpanel.install
+	arch = i686
+	arch = x86_64
+	groups = pantheon
+	license = GPL3
+	makedepends = cmake
+	makedepends = vala
+	depends = granite
+	depends = libgee
+	depends = libindicator-gtk3
+	optdepends = indicator-datetime: Display date and time
+	optdepends = indicator-pantheon-session-bzr: Pantheon session indicator
+	optdepends = indicator-power: Battery idicator
+	source = https://launchpad.net/wingpanel/freya/0.3.0/+download/wingpanel-0.3.0.tgz
+	sha256sums = 41cd475427dc7fb0dfd889ac91a580590023888b54afe6979fd1593ada152c3a
+
+pkgname = wingpanel
+
