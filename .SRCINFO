@@ -1,0 +1,33 @@
+pkgbase = retext-git
+	pkgdesc = A simple editor for Markdown and ReStructuredText markup languages
+	pkgver = 20130920
+	pkgrel = 1
+	url = http://retext.sourceforge.net/
+	install = retext-git.install
+	arch = any
+	license = GPL3
+	makedepends = imagemagick
+	makedepends = git
+	makedepends = qt5-tools
+	depends = python-pyqt5
+	depends = python-markups
+	depends = shared-mime-info
+	depends = xdg-utils
+	depends = desktop-file-utils
+	depends = gconf
+	optdepends = python-markdown: for Markdown language support
+	optdepends = python-docutils: for reStructuredText language support
+	optdepends = python-pyenchant: for spell checking support
+	provides = retext
+	conflicts = retext
+	source = retext-git::git://git.code.sf.net/p/retext/git
+	source = retext.desktop
+	source = x-retext-markdown.xml
+	source = x-retext-rst.xml
+	md5sums = SKIP
+	md5sums = ac6cb2a020238fe03f0f52610c976cdd
+	md5sums = 48becfce7b920c7a2b875626386d1e74
+	md5sums = 8c32c71bc2b2f49e15595a1808780d42
+
+pkgname = retext-git
+
