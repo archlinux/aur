@@ -1,0 +1,19 @@
+[Unit]
+Description=OpenOnload initialisation
+After=network.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+PrivateTmp=true
+ExecStart=/sbin/modprobe onload
+ExecStart=/sbin/onload_tool mknod sfc_char
+ExecStart=/sbin/onload_tool mknod onload
+ExecStart=/sbin/onload_tool mknod onload onload_epoll
+ExecStart=/sbin/modprobe sfc_affinity
+ExecStart=/sbin/onload_tool mknod sfc_affinity
+# TODO: Configure sfc_affinity.
+#ExecStart=/usr/sbin/sfcaffinity_config auto
+
+[Install]
+WantedBy=multi-user.target

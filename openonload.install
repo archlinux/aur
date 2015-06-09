@@ -1,0 +1,23 @@
+## arg 1:  the new package version
+post_install() {
+  #/lib/onload/onload_install rpm_post
+  ldconfig -n /usr/lib /usr/lib64
+}
+
+post_upgrade() {
+  #/lib/onload/onload_install rpm_post
+  ldconfig -n /usr/lib /usr/lib64
+  for k in $(cd /lib/modules && /bin/ls); do
+    [ -d "/lib/modules/$k/kernel/" ] && depmod -a "$k"
+  done
+}
+
+## arg 1:  the old package version
+post_remove() {
+  ldconfig -n /usr/lib /usr/lib64
+
+  for k in $(cd /lib/modules && /bin/ls | grep '^[0-9]'); do
+    [ -d "/lib/modules/$k/kernel/" ] && depmod -a "$k"
+  done
+
+}

@@ -1,0 +1,12 @@
+diff -rupN old/src/include/ci/efhw/common.h new/src/include/ci/efhw/common.h
+--- old/src/include/ci/efhw/common.h	2013-10-11 10:28:47.000000000 -0400
++++ new/src/include/ci/efhw/common.h	2013-11-05 10:59:34.023661092 -0500
+@@ -62,7 +62,7 @@ enum efhw_arch {
+ };
+ 
+ typedef uint32_t efhw_buffer_addr_t;
+-#define EFHW_BUFFER_ADDR_FMT	"[ba:%"PRIx32"]"
++#define EFHW_BUFFER_ADDR_FMT	"[ba:%" PRIx32 "]"
+ 
+ /* Below event structure is in NIC bytes order. When using either field for
+  * something other then check against 0xffff one should convert the event

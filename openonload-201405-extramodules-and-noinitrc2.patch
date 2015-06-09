@@ -1,0 +1,12 @@
+diff -rupN openonload-201405/scripts/onload_install openonload-201405b/scripts/onload_install
+--- openonload-201405/scripts/onload_install	2014-07-24 12:06:05.619914425 -0400
++++ openonload-201405b/scripts/onload_install	2014-07-24 12:05:36.220069022 -0400
+@@ -488,7 +488,7 @@ check_whether_installed() {
+   local drv where
+   for drv in sfc.ko onload.ko sfc_aoe.ko; do
+     for where in extramodules; do
+-      check_file_installed "$i_prefix/lib/modules/$KVER/$where/$drv"
++      check_file_installed "$i_prefix$(readlink -f /lib/modules/$KVER/$where)/$drv"
+     done
+   done
+ }
