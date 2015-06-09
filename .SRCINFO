@@ -1,0 +1,13 @@
+pkgbase = blat
+	pkgdesc = The BLAST-like Alignment Tool: fast sequence search command line tool
+	pkgver = 35
+	pkgrel = 1
+	url = http://genome.ucsc.edu/FAQ/FAQblat.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = http://users.soe.ucsc.edu/~kent/src/blatSrc35.zip
+	md5sums = 16e546b8843b85e0b0f2fa603cd78724
+
+pkgname = blat
+
