@@ -3,15 +3,15 @@
 
 pkgname=lib32-libndp
 _pkgname=libndp
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="Library for Neighbor Discovery Protocol"
-arch=(x86_64)
+arch=(i686 x86_64)
 url="http://libndp.org/"
 license=(LGPL2.1)
 depends=(glibc)
 source=($url/files/$_pkgname-$pkgver.tar.gz)
-sha256sums=('58a013427debfc554f1ff6555bccfd3ba910d50effc8231cfcad79f0f19c3f9e')
+sha256sums=('3a0be247ec024bd72fe5b40ea9491519c4023c7faf078311196fab817b2fd55f')
 
 build() {
   cd $_pkgname-$pkgver
