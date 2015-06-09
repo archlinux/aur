@@ -1,0 +1,26 @@
+Index: kino-1.3.4/ffmpeg/libavdevice/v4l.c
+===================================================================
+--- kino-1.3.4.orig/ffmpeg/libavdevice/v4l.c	2011-04-11 15:12:41.915593967 +0200
++++ kino-1.3.4/ffmpeg/libavdevice/v4l.c	2011-04-11 15:13:05.825593979 +0200
+@@ -26,7 +26,7 @@
+ #include <sys/mman.h>
+ #include <sys/time.h>
+ #define _LINUX_TIME_H 1
+-#include <linux/videodev.h>
++#include <libv4l1-videodev.h>
+ #include <time.h>
+ 
+ typedef struct {
+Index: kino-1.3.4/src/v4l.h
+===================================================================
+--- kino-1.3.4.orig/src/v4l.h	2011-04-11 15:12:41.895593967 +0200
++++ kino-1.3.4/src/v4l.h	2011-04-11 15:12:57.555593975 +0200
+@@ -40,7 +40,7 @@
+ 
+ #define _DEVICE_H_
+ #define _LINUX_TIME_H
+-#include <linux/videodev.h>
++#include <libv4l1-videodev.h>
+ 
+ #include "displayer.h"
+ 
