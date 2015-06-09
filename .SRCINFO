@@ -1,0 +1,13 @@
+pkgbase = fpaste
+	pkgdesc = A cli frontend for the fpaste.org pastebin
+	pkgver = 0.3.7.3.3
+	pkgrel = 1
+	url = http://fpaste.org/
+	arch = any
+	license = GPL3
+	depends = python2
+	source = https://fedorahosted.org/released/fpaste/fpaste-0.3.7.3.3.tar.gz
+	sha256sums = 47728601aef3430e0e3baf7cdd2f821b6348a99ab5c39d118173028878617f4a
+
+pkgname = fpaste
+
