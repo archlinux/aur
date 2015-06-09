@@ -1,0 +1,15 @@
+pkgbase = lscd-git
+	pkgdesc = file browser written in bash with an interface similar to ranger's
+	pkgver = 0.r35.989cb7e
+	pkgrel = 1
+	url = https://github.com/hut/lscd
+	arch = any
+	license = GPL3
+	makedepends = git
+	provides = lscd
+	conflicts = lscd
+	source = lscd::git+https://github.com/hut/lscd.git
+	md5sums = SKIP
+
+pkgname = lscd-git
+
