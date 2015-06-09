@@ -1,0 +1,12 @@
+[Unit]
+Description=ActiveMQ Apollo Broker
+
+[Service]
+User=apollo
+Group=apollo
+Environment=BROKER=default
+ExecStart=/usr/bin/apollo-broker run $BROKER
+Restart=always
+
+[Install]
+WantedBy=multi-user.target 

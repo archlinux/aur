@@ -1,0 +1,23 @@
+post_install(){
+	groupadd apollo &>/dev/null
+	useradd -g apollo -d /var/lib/apollo -s /bin/false apollo &>/dev/null
+
+	chown -R apollo:apollo /var/lib/apollo
+	
+	echo "You should create a new broker with \"apollo-create BROKERNAME\","
+	echo "the systemd service file for apollo is configured to start a broker named \"default\""
+}
+
+post_upgrade(){
+	getent group apollo >/dev/null 2>&1 || groupadd apollo &>/dev/null
+	getent passwd apollo >/dev/null 2>&1 || useradd -g apollo -d /var/lib/apollo -s /bin/false apollo &>/dev/null
+}
+
+post_remove(){
+	if getent passwd apollo >/dev/null 2>&1; then
+		userdel apollo
+	fi
+	if getent group apollo >/dev/null 2>&1; then
+		groupdel apollo
+	fi
+}
