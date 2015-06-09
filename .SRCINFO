@@ -1,0 +1,33 @@
+pkgbase = dropbox
+	pkgdesc = A free service that lets you bring your photos, docs, and videos anywhere and share them easily.
+	pkgver = 3.4.6
+	pkgrel = 1
+	url = http://www.dropbox.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libsm
+	depends = libxslt
+	depends = libxmu
+	optdepends = ufw-extras: ufw rules for dropbox
+	optdepends = perl-file-mimeinfo: opening dropbox folder on some desktop environments
+	conflicts = dropbox-experimental
+	options = !strip
+	options = !upx
+	source = dropbox.png
+	source = dropbox.desktop
+	source = terms.txt
+	source = dropbox.service
+	source = dropbox@.service
+	sha256sums = e7d245f5d1a3d5322614b61400ae2913a8caef44bc86717ff7d8197a15dd7f01
+	sha256sums = 541f2fd2de0d601a08cde7853e404062f542af21e6e7106825b5e68177168e0f
+	sha256sums = c39d63bcfc0d40002a5df052298feb79f2e8dd3d93da27ef31eb672b8d2fc70e
+	sha256sums = 6c67a9c8c95c08fafafd2f1d828074b13e3347b05d2e4f4bf4e62746115d7477
+	sha256sums = 98581e65a91ae1f19ed42edcdaaa52e102298b5da0d71b50089393d364474d3d
+	source_i686 = https://dl.dropboxusercontent.com/u/17/dropbox-lnx.x86-3.4.6.tar.gz
+	sha256sums_i686 = 62a205332dfbd0b0a3e70d625fadaf08464cd64724452bbfe68c87f72741914e
+	source_x86_64 = https://dl.dropboxusercontent.com/u/17/dropbox-lnx.x86_64-3.4.6.tar.gz
+	sha256sums_x86_64 = 7e4ecdfeee9c1d13b75a6f0b96dd8a718df35263eb61860d529c228283d83033
+
+pkgname = dropbox
+
