@@ -1,0 +1,6 @@
+post_install () {
+   cat << _EOF
+  ==> make sure you use KernelModeSetting (KMS)
+  ==> see http://wiki.archlinux.org/index.php/Nouveau#KMS for more
+_EOF
+}
