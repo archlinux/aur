@@ -1,0 +1,18 @@
+pkgbase = python2-pysodium
+	pkgdesc = Python wrapper for libsodium
+	pkgver = 0.6.6
+	pkgrel = 1
+	url = https://github.com/stef/pysodium
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = libsodium
+	depends = python2
+	depends = python2-cffi
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/p/pysodium/pysodium-0.6.6.tar.gz
+	md5sums = efaecb87a9ecb2dc6ea40a22649cf629
+	sha256sums = c06fcd5f741962492e9778f4106131c88d703adbb6448cf60441230e298477c8
+
+pkgname = python2-pysodium
+
