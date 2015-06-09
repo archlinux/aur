@@ -1,0 +1,14 @@
+[Unit]
+Description=File Alteration Monitor
+Documentation=man:famd(8)
+Requires=rpcbind.service
+After=rpcbind.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/famd -T 0 -c /etc/fam/fam.conf
+#PIDFile=/var/run/fam.pid
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
