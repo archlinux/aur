@@ -1,0 +1,12 @@
+post_install() {
+  # we don't want use systemd-tmpfiles here because
+  # the package dependency would create a circular dep.
+  if [[ ! -d run/uuidd ]]; then
+    # refer to uid/gid by number to avoid dependency on filesystem
+    install -o 68 -g 68 -dm755 run/uuidd
+  fi
+}
+
+post_upgrade() {
+  post_install
+}
