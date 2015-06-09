@@ -1,0 +1,17 @@
+pkgbase = scrotpush
+	pkgdesc = Push screenshot to imgur and copy its url
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/hobarrera/scrotpush
+	arch = any
+	license = BSD
+	depends = python-requests
+	depends = python-xdg
+	depends = python-gobject
+	depends = libnotify
+	depends = xclip
+	source = https://github.com/hobarrera/scrotpush/archive/v1.3.zip
+	md5sums = eb19477146743f2d6bc9341822c9e5fa
+
+pkgname = scrotpush
+
