@@ -1,0 +1,16 @@
+pkgbase = aurvote-git
+	pkgdesc = Vote for your favorite AUR packages (development version)
+	pkgver = latest
+	pkgrel = 1
+	url = http://git.archlinux.fr/aurvote.git
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = curl
+	provides = aurvote
+	conflicts = aurvote
+	source = git+https://github.com/archlinuxfr/aurvote.git
+	sha256sums = SKIP
+
+pkgname = aurvote-git
+
