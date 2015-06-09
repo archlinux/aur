@@ -1,0 +1,13 @@
+pkgbase = squeak-sources-41
+	pkgdesc = Source code file required by Squeak to view function names, source code, etc. within the VM.
+	pkgver = 41
+	pkgrel = 1
+	url = http://www.squeak.org
+	arch = any
+	license = Apache
+	depends = squeak-vm
+	source = http://ftp.squeak.org/sources_files/SqueakV41.sources.gz
+	sha512sums = f2ec7320ddb73b2da8d8bbde190f44d502aec6b26f9a219960118d23410a3ee0f8dd708d65e36098b48ee56a58f41a270ed5ebaafe688b896b719d61e1161b24
+
+pkgname = squeak-sources-41
+
