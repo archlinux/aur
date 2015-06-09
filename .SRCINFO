@@ -1,0 +1,16 @@
+pkgbase = ruby-kramdown-man
+	pkgdesc = A Kramdown converter for converting Markdown files into man pages
+	pkgver = 0.1.5
+	pkgrel = 2
+	url = https://github.com/postmodern/kramdown-man
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	depends = ruby
+	depends = ruby-kramdown>=1.0
+	noextract = kramdown-man-0.1.5.gem
+	source = http://gems.rubyforge.org/gems/kramdown-man-0.1.5.gem
+	md5sums = d962e3d5ff8294b5b1d103efcd11df4f
+
+pkgname = ruby-kramdown-man
+
