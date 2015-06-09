@@ -1,0 +1,44 @@
+=== modified file 'configure.ac'
+--- configure.ac	2012-11-29 22:09:57 +0000
++++ configure.ac	2012-11-30 16:24:17 +0000
+@@ -30,7 +30,6 @@
+ GTK_REQUIRED_VERSION=3.0
+ INDICATOR_REQUIRED_VERSION=0.3.19
+ DBUSMENUGTK_REQUIRED_VERSION=0.5.90
+-POLKIT_REQUIRED_VERSION=0.92
+ DBUSTEST_REQUIRED_VERSION=0.0.5
+ DBUSMENUGLIB_REQUIRED_VERSION=0.1.1
+ 
+@@ -47,8 +46,7 @@
+                                   dbusmenu-glib-0.4 >= $DBUSMENUGLIB_REQUIRED_VERSION
+                                   dbusmenu-gtk3-0.4 >= $DBUSMENUGTK_REQUIRED_VERSION
+                                   gio-unix-2.0
+-                                  indicator3-0.4 >= $INDICATOR_REQUIRED_VERSION
+-                                  packagekit-glib2)
++                                  indicator3-0.4 >= $INDICATOR_REQUIRED_VERSION)
+ AC_SUBST(SESSIONERVICE_CFLAGS)
+ AC_SUBST(SESSIONERVICE_LIBS)
+ 
+@@ -60,14 +58,15 @@
+ ###########################
+ 
+ AC_ARG_ENABLE([gtklogouthelper],
+-            AS_HELP_STRING([--enable-gtklogouthelper], [enable GTK Logout Helper]),,
+-            enable_gtklogouthelper=auto)
++              [AS_HELP_STRING([--enable-gtklogouthelper], [enable GTK Logout Helper])],
++              [],
++              [enable_gtklogouthelper=auto])
+ 
+ if test x"$enable_gtklogouthelper" != x"no" ; then
+-   PKG_CHECK_MODULES(GTKLOGOUTHELPER, gtk+-3.0 >= $GTK_REQUIRED_VERSION
+-                                      polkit-gobject-1 >= $POLKIT_REQUIRED_VERSION,
+-	                              [have_gtklogouthelper=yes],
+-	                              [have_gtklogouthelper=no])
++   PKG_CHECK_MODULES([GTKLOGOUTHELPER],
++                     [gtk+-3.0 >= $GTK_REQUIRED_VERSION],
++                     [have_gtklogouthelper=yes],
++                     [have_gtklogouthelper=no])
+    if test x${have_gtklogouthelper} = xyes; then
+       AC_DEFINE(HAVE_GTKLOGOUTHELPER, 1, [Define to 1 to enable GTK Logout Helper])
+    fi
+

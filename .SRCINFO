@@ -1,0 +1,31 @@
+pkgbase = indicator-session
+	pkgdesc = Indicator showing session management, status and user switching
+	pkgver = 12.10.4
+	pkgrel = 5
+	url = https://launchpad.net/indicator-session
+	install = indicator-session.install
+	arch = i686
+	arch = x86_64
+	groups = pantheon
+	groups = pantheon-unstable
+	license = GPL
+	makedepends = intltool
+	depends = libdbusmenu-gtk3
+	depends = libindicator-gtk3
+	source = https://launchpad.net/indicator-session/12.10/12.10.4/+download/indicator-session-12.10.4.tar.gz
+	source = remove-unused-deps.patch
+	source = gdbus-port.patch
+	source = fix-build.patch
+	source = fix-fallback-icon.patch
+	source = support-reboot.patch
+	source = systemd-support.patch
+	sha256sums = 6b640f936273f709a2a67d1edfebbf342a6a899a53d9791747c899faa0fcd384
+	sha256sums = bbc3fed2c7d5311caaea56bd424f3ffea45afbaf53c9f0700b377f3858ffd9f7
+	sha256sums = d65b661a52e68abf745a169e1a8518d1450f439b5cd314f5fee3f883ba0f7747
+	sha256sums = 2dda11ce7c7a7877de1b163ee13439fdb0885d63b34cefde81af2e09be3b83e5
+	sha256sums = 55099631308aa044399fb959ac4b03f11b7e961415ee74487935a9360553896e
+	sha256sums = 6412b10212e97c6c828af8025ce36b609b58a77126c639d8b28a33c5b9490c79
+	sha256sums = 98da140123c78e648311e6d2350a5405916e1b59f97694b4fc71af1f7df716eb
+
+pkgname = indicator-session
+

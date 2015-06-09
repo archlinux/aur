@@ -1,0 +1,85 @@
+=== modified file 'src/gtk-logout-helper.c'
+--- src/gtk-logout-helper.c	2012-11-29 22:09:57 +0000
++++ src/gtk-logout-helper.c	2013-01-02 19:00:42 +0000
+@@ -31,6 +31,71 @@
+ #include "shared-names.h"
+ 
+ static GVariant *
++call_systemd (const gchar *method, GVariant *parameters, GError **error)
++{
++	GDBusConnection * bus = g_bus_get_sync(G_BUS_TYPE_SYSTEM, NULL, error);
++	if (!bus)
++	{
++		g_variant_unref (parameters);
++		return NULL;
++	}
++
++	GVariant *result = g_dbus_connection_call_sync(bus,
++	                                               "org.freedesktop.login1",
++	                                               "/org/freedesktop/login1",
++	                                               "org.freedesktop.login1.Manager",
++	                                               method,
++	                                               parameters,
++	                                               NULL,
++	                                               G_DBUS_CALL_FLAGS_NONE,
++	                                               -1,
++	                                               NULL,
++	                                               error);
++	g_object_unref (bus);
++
++	return result;
++}
++
++static void
++systemd_fallback (LogoutDialogType action)
++{
++	GError * error = NULL;
++	GVariant *result = NULL;
++
++	g_debug("Falling back to using systemd for action");
++
++	switch (action) {
++		case LOGOUT_DIALOG_TYPE_LOG_OUT:
++			g_warning("Unable to fallback to systemd for logout as it's a session issue.  We need some sort of session handler.");
++			break;
++		case LOGOUT_DIALOG_TYPE_SHUTDOWN:
++			g_debug("Telling systemd to 'PowerOff'");
++			result = call_systemd ("PowerOff", g_variant_new ("(b)", TRUE), &error);
++			break;
++		case LOGOUT_DIALOG_TYPE_RESTART:
++			g_debug("Telling systemd to 'Reboot'");
++			result = call_systemd ("Reboot", g_variant_new ("(b)", TRUE), &error);
++			break;
++		default:
++			g_warning("Unknown action");
++			break;
++	}
++
++	if (!result) {
++		if (error != NULL) {
++			g_warning ("systemd action failed: %s", error->message);
++		} else {
++			g_warning ("systemd action failed: unknown error");
++		}
++	}
++	else
++		g_variant_unref (result);
++	g_clear_error (&error);
++
++	return;
++}
++
++static GVariant *
+ call_console_kit (const gchar *method, GVariant *parameters, GError **error)
+ {
+ 	GDBusConnection * bus = g_bus_get_sync(G_BUS_TYPE_SYSTEM, NULL, error);
+@@ -88,7 +153,7 @@
+ 			g_warning ("ConsoleKit action failed: unknown error");
+ 		}
+ 
+-		consolekit_fallback(action);
++		systemd_fallback(action);
+ 	}
+ 	else
+ 		g_variant_unref (result);
+

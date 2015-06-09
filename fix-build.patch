@@ -1,0 +1,12 @@
+diff -Naur indicator-session-12.10.4.orig/configure.ac indicator-session-12.10.4/configure.ac
+--- indicator-session-12.10.4.orig/configure.ac	2012-10-03 18:39:45.000000000 +0200
++++ indicator-session-12.10.4/configure.ac	2013-03-10 16:36:09.975334792 +0100
+@@ -3,7 +3,7 @@
+ 
+ AC_PREREQ(2.53)
+ 
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ AM_INIT_AUTOMAKE(indicator-session, 12.10.4)
+ 
+ AM_MAINTAINER_MODE
