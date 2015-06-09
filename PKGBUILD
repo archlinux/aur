@@ -2,7 +2,7 @@
 # Contributor: Nathan Owe <ndowens.aur at gmail dot com>
 
 pkgname=batctl
-pkgver=2014.4.0
+pkgver=2015.0
 pkgrel=1
 pkgdesc='B.A.T.M.A.N. advanced control and management tool'
 arch=('i686' 'x86_64')
@@ -20,4 +20,4 @@ package() {
   make DESTDIR="${pkgdir}"  PREFIX=/usr SBINDIR=/usr/bin install
 }
 
-sha256sums=('77509ed70232ebc0b73e2fa9471ae13b12d6547d167dda0a82f7a7fad7252c36')
+sha256sums=('634d91189f96bda6d4ce6179dce90ad578566f29d3111b49d6e775d4f3591f04')
