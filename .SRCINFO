@@ -1,0 +1,22 @@
+pkgbase = gfms-git
+	pkgdesc = Github Flavored Markdown Server with web preview and PDF export
+	pkgver = 20140621
+	pkgrel = 1
+	url = https://github.com/pawel-wiejacha/gfms
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	depends = nodejs
+	optdepends = phantomjs: export to PDF by appending ?pdf to URL
+	provides = gfms
+	conflicts = gfms
+	options = !strip
+	source = git+https://github.com/pawel-wiejacha/gfms
+	source = gfms.sh
+	sha256sums = SKIP
+	sha256sums = 228aaa509ae37b75963a3b39639459b453312000be470b498792e9243378e7f2
+
+pkgname = gfms-git
+
