@@ -1,0 +1,15 @@
+pkgbase = ttf-special-elite
+	pkgdesc = A typewriter-like font.
+	pkgver = 2011.04.18
+	pkgrel = 1
+	url = http://www.fontsquirrel.com/fonts/special-elite
+	install = ttf-special-elite.install
+	arch = any
+	license = Apache
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = special-elite.zip::http://www.fontsquirrel.com/fonts/download/special-elite
+	md5sums = 9bab002ed60575194e0a3149d4484940
+
+pkgname = ttf-special-elite
+
