@@ -1,0 +1,19 @@
+pkgbase = stormlib-git
+	pkgdesc = A C/C++ API to read and write MPQ files
+	pkgver = v9.00a.49.gb845241
+	pkgrel = 1
+	url = http://www.zezula.net/en/mpq/stormlib.html
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = bzip2
+	depends = zlib
+	provides = stormlib
+	conflicts = stormlib
+	source = git+https://github.com/ladislav-zezula/stormlib.git
+	sha256sums = SKIP
+
+pkgname = stormlib-git
+
