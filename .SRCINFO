@@ -1,0 +1,16 @@
+pkgbase = plc
+	pkgdesc = Tool for Devolo dLAN-Adapter
+	pkgver = 0.1.8
+	pkgrel = 2
+	url = http://slist.lilotux.net/linux/plc/index_en.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = libpcap
+	source = http://slist.lilotux.net/linux/plc/plc-0.1.8.tgz
+	sha512sums = 0876d77bebd5dfba7748a67d4b652c6e39f3e7163a10de8ac12f8f17ceb28fb312e1f0df2be8a0812061b6d8069deac81faad3c56f4c8f5cfd1585097d72e8e7
+
+pkgname = plc
+

@@ -1,0 +1,10 @@
+--- src/plc-0.1.6/Makefile	2009-04-17 21:21:23.000000000 +0200
++++ Makefile-jf	2009-04-17 21:21:35.000000000 +0200
+@@ -10,7 +10,6 @@
+ 
+ CC            = gcc
+ CXX           = g++
+-DEFINES       = -DQT_NO_DEBUG_OUTPUT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_SHARED
+ CFLAGS        = -pipe -march=i686 -mtune=generic -O2 -pipe -D_REENTRANT -Wall -W $(DEFINES)
+ CXXFLAGS      = -pipe -march=i686 -mtune=generic -O2 -pipe -D_REENTRANT -Wall -W $(DEFINES)
+ INCPATH       = -I/usr/share/qt/mkspecs/linux-g++ -I. -I/usr/include/QtCore -I/usr/include/QtNetwork -I/usr/include/QtGui -I/usr/include -I. -I.
