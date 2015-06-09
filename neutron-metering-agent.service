@@ -1,0 +1,9 @@
+[Unit]
+Description=Neutron metering agent
+
+[Service]
+ExecStart=/usr/bin/neutron-metering-agent --config-file=/etc/neutron/neutron.conf --config-file=/etc/neutron/metering_agent.ini --log-file=/var/log/neutron/metering_agent.log
+User=neutron
+
+[Install]
+WantedBy=multi-user.target

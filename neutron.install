@@ -1,0 +1,21 @@
+post_install() {
+  getent group neutron &>/dev/null || groupadd neutron >/dev/null
+  getent passwd neutron &>/dev/null || useradd  -d /var/lib/neutron -g neutron -s /bin/false neutron >/dev/null
+
+  chmod 755 /etc/neutron
+  chown -R root:neutron /etc/neutron
+  chown root:root /etc/neutron/rootwrap.conf
+  chown -R root:root /etc/neutron/rootwrap.d
+  chown neutron:neutron /var/lib/neutron
+  chown neutron /var/log/neutron
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  getent passwd neutron &>/dev/null && userdel neutron >/dev/null
+  getent group neutron &>/dev/null && groupdel neutron >/dev/null
+  true
+}

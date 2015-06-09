@@ -1,0 +1,9 @@
+[Unit]
+Description=Neutron Linux bridge plugin agent
+
+[Service]
+ExecStart=/usr/bin/neutron-linuxbridge-agent --config-file=/etc/neutron/neutron.conf --config-file=/etc/neutron/plugins/linuxbridge/linuxbridge_conf.ini --log-file=/var/log/neutron/linuxbridge-agent.log
+User=neutron
+
+[Install]
+WantedBy=multi-user.target
