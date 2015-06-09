@@ -1,0 +1,18 @@
+pkgbase = uppity-git
+	pkgdesc = The pastebin client with an attitude
+	pkgver = 0.r12.5043001
+	pkgrel = 1
+	url = https://github.com/Kiwi/Uppity
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = lua51-socket
+	provides = uppity
+	conflicts = uppity
+	replaces = curlpaste
+	backup = etc/uppity.conf
+	source = uppity::git+https://github.com/Kiwi/Uppity.git
+	md5sums = SKIP
+
+pkgname = uppity-git
+
