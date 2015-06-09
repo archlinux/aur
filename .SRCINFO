@@ -1,0 +1,21 @@
+pkgbase = pantheon-calculator-bzr
+	pkgdesc = The Pantheon Calculator
+	pkgver = r132
+	pkgrel = 1
+	url = https://launchpad.net/pantheon-calculator
+	install = pantheon-calculator.install
+	arch = i686
+	arch = x86_64
+	groups = pantheon-unstable
+	license = GPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = vala
+	depends = granite-bzr
+	provides = pantheon-calculator
+	conflicts = pantheon-calculator
+	source = bzr+lp:pantheon-calculator
+	sha256sums = SKIP
+
+pkgname = pantheon-calculator-bzr
+
