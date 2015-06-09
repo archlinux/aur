@@ -6,8 +6,8 @@
 # Contributor: Amr Hassan <amr.hassan@gmail.com>
 
 pkgname=python-pylast
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc='A Python interface to the last.fm API'
 arch=('any')
 url='https://github.com/pylast/pylast'
@@ -15,7 +15,7 @@ license=('Apache')
 depends=('python' 'python-six')
 makedepends=('python-setuptools')
 source=("https://github.com/pylast/pylast/archive/${pkgver}.tar.gz")
-sha256sums=('0c8ec43d931624d65582e38d4e0c10f8a1215a4a1caa9d7841642d2d083d1610')
+sha256sums=('721526d94e579ce005cfaa96ad6ed39dde07e6379d011065969f74f9ba4da9ee')
 
 build() {
   cd ${pkgname#*-}-$pkgver
