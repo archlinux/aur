@@ -1,0 +1,27 @@
+pkgbase = libbitcoin-node-git
+	pkgdesc = Bitcoin Full Node
+	pkgver = 20150519
+	pkgrel = 1
+	url = https://github.com/libbitcoin/libbitcoin-node
+	arch = i686
+	arch = x86_64
+	groups = libbitcoin
+	license = AGPL3
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = gcc
+	makedepends = git
+	makedepends = libtool
+	makedepends = make
+	makedepends = pkg-config
+	depends = boost
+	depends = boost-libs
+	depends = libbitcoin-blockchain-git
+	depends = secp256k1-git
+	provides = libbitcoin-node
+	conflicts = libbitcoin-node
+	source = git+https://github.com/libbitcoin/libbitcoin-node
+	sha256sums = SKIP
+
+pkgname = libbitcoin-node-git
+
