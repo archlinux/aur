@@ -1,0 +1,15 @@
+pkgbase = hunspell-el
+	pkgdesc = Greek hunspell dictionary
+	pkgver = 0.9
+	pkgrel = 1
+	url = http://elspell.math.upatras.gr
+	arch = any
+	license = MPL
+	license = GPL
+	license = LGPL
+	optdepends = hunspell: the spell checking libraries and apps
+	source = http://elspell.math.upatras.gr/files/ooffice/el_GR-0.9.zip
+	md5sums = 5b1ff7b3bc8203488b7d6f21fa875743
+
+pkgname = hunspell-el
+
