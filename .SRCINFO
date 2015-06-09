@@ -1,0 +1,17 @@
+pkgbase = awesomebump
+	pkgdesc = A free program designed to generate normal, height, specular or ambient occlusion textures from a single image
+	pkgver = 3.14
+	pkgrel = 1
+	url = http://awesomebump.besaba.com/
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = imagemagick
+	depends = qt5-base
+	source = https://github.com/kmkolasinski/AwesomeBump/archive/Linuxv3.14.tar.gz
+	source = awesomebump.desktop
+	md5sums = 9ecada545e3217b66e515ba5e0ace2ce
+	md5sums = a798a1946042f5c06505043100a32e28
+
+pkgname = awesomebump
+
