@@ -1,0 +1,14 @@
+pkgbase = python2-django-localflavor
+	pkgdesc = Country-specific Django helpers
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/django/django-localflavor/
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2-django
+	source = https://github.com/django/django-localflavor/archive/1.1.tar.gz
+	sha256sums = 541e5b886504b5af39e4b2b7f116cea94daccbf3e779791456b009ec6eb36370
+
+pkgname = python2-django-localflavor
+
