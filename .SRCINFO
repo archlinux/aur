@@ -1,0 +1,25 @@
+pkgbase = mingw-w64-libgpg-error
+	pkgdesc = Support library for libgcrypt (mingw-w64)
+	pkgver = 1.19
+	pkgrel = 2
+	url = http://www.gnupg.org
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-gettext
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = ftp://ftp.gnupg.org/gcrypt/libgpg-error/libgpg-error-1.19.tar.bz2
+	source = ftp://ftp.gnupg.org/gcrypt/libgpg-error/libgpg-error-1.19.tar.bz2.sig
+	source = 02-fix-symbollist-on.mingw.patch
+	source = 05-w32-gen.all.patch
+	source = 07-windows-build.patch
+	sha1sums = 4997951ab058788de48b989013668eb3df1e6939
+	sha1sums = SKIP
+	sha1sums = a7bbc4637aba322cd43aa7c5a6d99faa8f801133
+	sha1sums = 07f1c34b3861bc2658d1cad4fafe895f654815df
+	sha1sums = 367b3b33da0ae3a8f959ae8535d6584a997ad6b8
+
+pkgname = mingw-w64-libgpg-error
+
