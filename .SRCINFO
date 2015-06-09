@@ -1,0 +1,18 @@
+pkgbase = gitter
+	pkgdesc = Where developers come to talk
+	pkgver = 2.3.2
+	pkgrel = 3
+	url = https://gitter.im
+	install = gitter.install
+	arch = x86_64
+	license = unknown
+	makedepends = tar
+	depends = libsystemd
+	depends = desktop-file-utils
+	noextract = gitter_2.3.2_amd64.deb
+	options = !strip
+	source = https://update.gitter.im/linux64/gitter_2.3.2_amd64.deb
+	md5sums = 6075db7556ac9b2054325349cf477444
+
+pkgname = gitter
+

@@ -1,0 +1,12 @@
+
+post_install() {
+    ln -sf "/usr/lib64/libudev.so.1" "/usr/lib64/libudev.so.0"
+    ln -sf "/opt/Gitter/linux64/Gitter" "/usr/local/bin/gitter"
+    desktop-file-install /opt/Gitter/linux64/gitter.desktop
+}
+
+post_remove() {
+    rm /usr/share/applications/gitter.desktop
+    rm /usr/lib64/libudev.so.0
+    rm /usr/local/bin/gitter
+}
