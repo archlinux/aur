@@ -1,0 +1,18 @@
+pkgbase = tmass-git
+	pkgdesc = A simple session manager for tmux.
+	pkgver = 33.9c633d7
+	pkgrel = 1
+	url = https://github.com/fzerorubigd/tmass
+	arch = i686
+	arch = x86_64
+	arch = armv5tel
+	arch = armv6l
+	arch = armv71
+	license = GPL3
+	makedepends = go
+	makedepends = git
+	source = git://github.com/fzerorubigd/tmass.git
+	sha1sums = SKIP
+
+pkgname = tmass-git
+
