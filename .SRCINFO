@@ -1,0 +1,25 @@
+pkgbase = vim-ocaml-merlin-git
+	pkgdesc = Context sensitive completion for OCaml in Vim and Emacs
+	pkgver = 20150520
+	pkgrel = 1
+	url = https://github.com/the-lambda-church/merlin
+	install = vimdoc.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = ocaml
+	depends = ocaml-biniou
+	depends = ocaml-findlib
+	depends = ocaml-yojson
+	depends = python2
+	depends = vim
+	provides = vim-ocaml-merlin
+	conflicts = ocaml-merlin-git
+	conflicts = vim-bufsync-git
+	conflicts = vim-ocaml-merlin
+	options = !strip
+	source = vim-ocaml-merlin::git+https://github.com/the-lambda-church/merlin
+	sha256sums = SKIP
+
+pkgname = vim-ocaml-merlin-git
+
