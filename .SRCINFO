@@ -1,0 +1,18 @@
+pkgbase = tar-backup-git
+	pkgdesc = Tar backup tool
+	pkgver = 20140128
+	pkgrel = 1
+	url = http://github.com/marazmista/tar-backup
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = tar
+	depends = openssl
+	depends = qt4
+	provides = tar-backup
+	replaces = tar-backup
+	source = git://github.com/marazmista/tar-backup.git
+	sha256sums = SKIP
+
+pkgname = tar-backup-git
+
