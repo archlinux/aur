@@ -1,0 +1,23 @@
+pkgbase = radeon-profile-git
+	pkgdesc = App for display info about radeon card
+	pkgver = 20150507
+	pkgrel = 1
+	url = http://github.com/marazmista/radeon-profile
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = qt4
+	optdepends = radeon-profile-daemon: system daemon for reading card info
+	optdepends = lm_sensors: to show gpu temperature
+	optdepends = sudo: start with root privilages without password
+	optdepends = mesa-demos: for glxinfo
+	optdepends = xorg-xdriinfo: display driver name
+	optdepends = xorg-xrandr: show card connected outputs
+	optdepends = xf86-video-ati: radeon open source driver
+	provides = radeon-profile
+	replaces = radeon-profile
+	source = git://github.com/marazmista/radeon-profile.git
+	sha256sums = SKIP
+
+pkgname = radeon-profile-git
+
