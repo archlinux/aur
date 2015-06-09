@@ -1,0 +1,30 @@
+# Maintainer:  Tristan Webb <tristan@fpcomplete.com>
+pkgname=stack
+pkgver='0.0.0'
+pkgrel=1
+pkgdesc="The Haskell Tool Stack"
+arch=('x86_64' 'i686')
+url="https://www.github.com/commercialhaskell/stack"
+license=('BSD3')
+depends=('libtinfo')
+makedepends=()
+optdepends=('docker: Use Docker images to build your project in a temporary container')
+provides=('stack')
+conflicts=('stack-git')
+if [ "${CARCH}" = 'x86_64' ]; then
+    _arch='x86_64'
+    sha1sums=('1b0876a3dfcb5305d87e5dd422ff4e9e33409d48')
+elif [ "${CARCH}" = 'i686' ]; then
+    _arch='i686'
+    sha1sums=('e3232832ddcca5780a14a0d78299e2b0ab51f272')
+fi
+source=("http://download.fpcomplete.com/archlinux/${pkgname}_${pkgver}-${_arch}.tar.gz")
+# install=
+
+package() {
+  cd "$srcdir"
+  STACK_BIN=usr/bin/stack
+  install -Dm755 $STACK_BIN "$pkgdir/usr/bin/stack" 
+}
+
+# vim:set ts=2 sw=2 et:
