@@ -1,0 +1,29 @@
+pkgbase = chromawallet-git
+	pkgdesc = Colored Bitcoin wallet
+	pkgver = 20140825
+	pkgrel = 1
+	url = http://chromawallet.com/
+	install = chromawallet.install
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-python-bitcoinlib
+	depends = python2-python-jsonrpc
+	depends = python2-pycoin
+	depends = python2-pyqt4
+	depends = python2-sip
+	depends = python2-webpy
+	depends = qt4
+	depends = sip
+	depends = sqlite
+	provides = chromanode
+	provides = chromawallet
+	conflicts = chromanode
+	conflicts = chromawallet
+	source = chromawallet::git+https://github.com/bitcoinx/ngcccbase
+	sha256sums = SKIP
+
+pkgname = chromawallet-git
+

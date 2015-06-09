@@ -1,0 +1,30 @@
+post_install() {
+  _rmsymlink
+  _mksymlink
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  _rmsymlink
+}
+
+_mksymlink() {
+  echo -n "Symlinking binaries... "
+  for i in cli gui server; do
+    ln -s /usr/share/chromawallet/ngccc-${i}.py /usr/bin/chromawallet-${i}
+  done
+  ln -s /usr/share/chromawallet/chromanode.py /usr/bin/chromanode
+  echo "done"
+}
+
+_rmsymlink() {
+  echo -n "Removing symlinks... "
+  for i in cli gui server; do
+    rm -f /usr/bin/chromawallet-${i}
+  done
+  rm -f /usr/bin/chromanode
+  echo "done"
+}
