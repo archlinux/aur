@@ -1,7 +1,7 @@
 pkgbase = otr-verwaltung++
 	pkgdesc = Manage your onlinetvrecorder.com files: cut, preview cuts, rate cutlists etc.
 	pkgver = 0.9.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://elbersb.de/otrverwaltung
 	arch = any
 	license = GPL3
@@ -19,6 +19,8 @@ pkgbase = otr-verwaltung++
 	depends = gstreamer0.10-python
 	depends = gstreamer0.10-ffmpeg
 	depends = mplayer
+	depends = aria2
+	depends = wget
 	optdepends = avidemux-qt
 	optdepends = otrdecoder
 	source = git://github.com/monarc99/otr-verwaltung.git
