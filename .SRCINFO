@@ -1,0 +1,15 @@
+pkgbase = pixelserv
+	pkgdesc = Pixelserv is a super minimal webserver, it's one and only purpose is serving a 1x1 pixel transparent gif file.
+	pkgver = 1.0
+	pkgrel = 4
+	url = http://proxytunnel.sourceforge.net/pixelserv.php
+	arch = any
+	license = BSD
+	depends = perl
+	source = http://proxytunnel.sourceforge.net/files/pixelserv.pl.txt
+	source = pixelserv.service
+	sha256sums = 8f6903712360f2a74fd24174bbb804e1f61e861f3af91950c4082c1adff73528
+	sha256sums = 1e889e2dede4f2620a800c6c5ba19c79642ce3d23206d7d722739f4c113e9808
+
+pkgname = pixelserv
+

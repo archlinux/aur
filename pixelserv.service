@@ -1,0 +1,9 @@
+[Unit]
+Description=Pixelserv is a super minimal webserver, it's one and only purpose is serving a 1x1 pixel transparent gif file
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/perl -Tw /usr/sbin/pixelserv.pl
+
+[Install]
+WantedBy=multi-user.target
