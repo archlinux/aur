@@ -1,0 +1,17 @@
+pkgbase = python-pysha3
+	pkgdesc = SHA-3 wrapper (keccak) for Python
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://bitbucket.org/tiran/pykeccak
+	arch = i686
+	arch = x86_64
+	license = PSFL
+	makedepends = python-setuptools
+	depends = python
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/p/pysha3/pysha3-0.3.tar.gz
+	md5sums = 150ef07e47b6ef79bdf7717036ceccc7
+	sha256sums = 191c5f1f77de11fb847c6c825b72f33c81ce67f72055038175fccbbeb891f04d
+
+pkgname = python-pysha3
+
