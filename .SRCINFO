@@ -1,0 +1,19 @@
+pkgbase = python2-humanfriendly
+	pkgdesc = Human friendly output for text interfaces using Python
+	pkgver = 1.27
+	pkgrel = 1
+	url = https://humanfriendly.readthedocs.org
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	provides = humanfriendly
+	provides = python2-humanfriendly
+	conflicts = humanfriendly
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/h/humanfriendly/humanfriendly-1.27.tar.gz
+	md5sums = cb63c7cb30a1e7fd903bbdc8091925ac
+	sha256sums = b80c391baf5c7d5f634391d62c9869c4d20dd6167c53ba2e3765f9ad2bc54638
+
+pkgname = python2-humanfriendly
+
