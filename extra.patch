@@ -1,0 +1,13 @@
+--- a/include/os/rt_linux.h	2014-06-17 01:48:08.559748607 +0300
++++ b/include/os/rt_linux.h	2014-06-17 01:49:43.045273571 +0300
+@@ -278,8 +278,8 @@
+ 
+ typedef struct _OS_FS_INFO_
+ {
+-	int				fsuid;
+-	int				fsgid;
++	kuid_t				fsuid;
++	kgid_t				fsgid;
+ 	mm_segment_t	fs;
+ } OS_FS_INFO;
+ 

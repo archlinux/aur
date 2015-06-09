@@ -1,0 +1,303 @@
+diff --git a/Makefile b/Makefile
+index 533ea7c..e1d79e9 100644
+--- a/Makefile
++++ b/Makefile
+@@ -332,7 +332,7 @@ THREADX:
+ 	$(MAKE) -C $(RT28xx_DIR)/os/Threadx -f $(RT28xx_DIR)/os/ThreadX/Makefile
+ 
+ LINUX:
+-ifneq (,$(findstring 2.4,$(LINUX_SRC)))
++ifneq (,$(findstring 2.4,$(LINUX_SRC)))		
+ 
+ ifeq ($(OSABL),YES)
+ 	cp -f os/linux/Makefile.4.util $(RT28xx_DIR)/os/linux/Makefile
+@@ -347,30 +347,6 @@ ifeq ($(OSABL),YES)
+ 	$(MAKE) -C $(RT28xx_DIR)/os/linux/
+ endif
+ 
+-ifeq ($(RT28xx_MODE),AP)
+-	cp -f $(RT28xx_DIR)/os/linux/rt$(MODULE)ap.o /tftpboot
+-ifeq ($(OSABL),YES)
+-	cp -f $(RT28xx_DIR)/os/linux/rtutil$(MODULE)ap.o /tftpboot
+-	cp -f $(RT28xx_DIR)/os/linux/rtnet$(MODULE)ap.o /tftpboot
+-endif
+-ifeq ($(PLATFORM),INF_AMAZON_SE)
+-	cp -f /tftpboot/rt2870ap.o /backup/ifx/build/root_filesystem/lib/modules/2.4.31-Amazon_SE-3.6.2.2-R0416_Ralink/kernel/drivers/net
+-endif
+-else	
+-ifeq ($(RT28xx_MODE),APSTA)
+-	cp -f $(RT28xx_DIR)/os/linux/rt$(MODULE)apsta.o /tftpboot
+-ifeq ($(OSABL),YES)
+-	cp -f $(RT28xx_DIR)/os/linux/rtutil$(MODULE)apsta.o /tftpboot
+-	cp -f $(RT28xx_DIR)/os/linux/rtnet$(MODULE)apsta.o /tftpboot
+-endif
+-else
+-	cp -f $(RT28xx_DIR)/os/linux/rt$(MODULE)sta.o /tftpboot
+-ifeq ($(OSABL),YES)
+-	cp -f $(RT28xx_DIR)/os/linux/rtutil$(MODULE)sta.o /tftpboot
+-	cp -f $(RT28xx_DIR)/os/linux/rtnet$(MODULE)sta.o /tftpboot
+-endif
+-endif	
+-endif	
+ else
+ 
+ ifeq ($(OSABL),YES)
+@@ -394,29 +370,7 @@ ifeq ($(OSABL),YES)
+ 	$(MAKE) -C $(LINUX_SRC) SUBDIRS=$(RT28xx_DIR)/os/linux modules
+ endif
+ 
+-ifeq ($(RT28xx_MODE),AP)
+-	cp -f $(RT28xx_DIR)/os/linux/rt$(MODULE)ap.ko /tftpboot
+-ifeq ($(OSABL),YES)
+-	cp -f $(RT28xx_DIR)/os/linux/rtutil$(MODULE)ap.ko /tftpboot
+-	cp -f $(RT28xx_DIR)/os/linux/rtnet$(MODULE)ap.ko /tftpboot
+-endif
+-	rm -f os/linux/rt$(MODULE)ap.ko.lzma
+-	/root/bin/lzma e os/linux/rt$(MODULE)ap.ko os/linux/rt$(MODULE)ap.ko.lzma
+-else	
+-ifeq ($(RT28xx_MODE),APSTA)
+-	cp -f $(RT28xx_DIR)/os/linux/rt$(MODULE)apsta.ko /tftpboot
+-ifeq ($(OSABL),YES)
+-	cp -f $(RT28xx_DIR)/os/linux/rtutil$(MODULE)apsta.ko /tftpboot
+-	cp -f $(RT28xx_DIR)/os/linux/rtnet$(MODULE)apsta.ko /tftpboot
+-endif
+-else
+-	cp -f $(RT28xx_DIR)/os/linux/rt$(MODULE)sta.ko /tftpboot
+-ifeq ($(OSABL),YES)
+-	cp -f $(RT28xx_DIR)/os/linux/rtutil$(MODULE)sta.ko /tftpboot
+-	cp -f $(RT28xx_DIR)/os/linux/rtnet$(MODULE)sta.ko /tftpboot
+-endif
+-endif
+-endif
++
+ endif
+ 
+ 
+@@ -467,14 +421,81 @@ endif
+ endif
+ 
+ install:
++
+ ifeq ($(TARGET), LINUX)
+ ifneq (,$(findstring 2.4,$(LINUX_SRC)))
+ 	$(MAKE) -C $(RT28xx_DIR)/os/linux -f Makefile.4 install
++
++
+ else
+ 	$(MAKE) -C $(RT28xx_DIR)/os/linux -f Makefile.6 install
++
+ endif
+ endif
+ 
++############# START IF PART TO MOVE TO INSTALL TARGET
++## START PART TO BE ADDED 
++ifneq (,$(findstring 2.4,$(LINUX_SRC)))		
++## END PART TO BE ADDED
++ifeq ($(RT28xx_MODE),AP)
++	cp -f $(RT28xx_DIR)/os/linux/rt$(MODULE)ap.o $(DESTDIR)/tftpboot
++ifeq ($(OSABL),YES)
++	cp -f $(RT28xx_DIR)/os/linux/rtutil$(MODULE)ap.o $(DESTDIR)/tftpboot
++	cp -f $(RT28xx_DIR)/os/linux/rtnet$(MODULE)ap.o $(DESTDIR)/tftpboot
++endif
++ifeq ($(PLATFORM),INF_AMAZON_SE)
++	cp -f /tftpboot/rt2870ap.o $(DESTDIR)/backup/ifx/build/root_filesystem/lib/modules/2.4.31-Amazon_SE-3.6.2.2-R0416_Ralink/kernel/drivers/net
++endif
++else	
++ifeq ($(RT28xx_MODE),APSTA)
++	cp -f $(RT28xx_DIR)/os/linux/rt$(MODULE)apsta.o $(DESTDIR)/tftpboot
++ifeq ($(OSABL),YES)
++	cp -f $(RT28xx_DIR)/os/linux/rtutil$(MODULE)apsta.o $(DESTDIR)/tftpboot
++	cp -f $(RT28xx_DIR)/os/linux/rtnet$(MODULE)apsta.o $(DESTDIR)/tftpboot
++endif
++else
++	cp -f $(RT28xx_DIR)/os/linux/rt$(MODULE)sta.o $(DESTDIR)/tftpboot
++ifeq ($(OSABL),YES)
++	cp -f $(RT28xx_DIR)/os/linux/rtutil$(MODULE)sta.o $(DESTDIR)/tftpboot
++	cp -f $(RT28xx_DIR)/os/linux/rtnet$(MODULE)sta.o $(DESTDIR)/tftpboot
++endif
++endif	
++endif	
++
++## START PART TO BE MOVED TO INSTALL
++else
++
++ifeq ($(RT28xx_MODE),AP)
++	cp -f $(RT28xx_DIR)/os/linux/rt$(MODULE)ap.ko $(DESTDIR)/tftpboot
++ifeq ($(OSABL),YES)
++	cp -f $(RT28xx_DIR)/os/linux/rtutil$(MODULE)ap.ko $(DESTDIR)/tftpboot
++	cp -f $(RT28xx_DIR)/os/linux/rtnet$(MODULE)ap.ko $(DESTDIR)/tftpboot
++endif
++	rm -f os/linux/rt$(MODULE)ap.ko.lzma
++	/root/bin/lzma e os/linux/rt$(MODULE)ap.ko os/linux/rt$(MODULE)ap.ko.lzma
++else	
++ifeq ($(RT28xx_MODE),APSTA)
++	cp -f $(RT28xx_DIR)/os/linux/rt$(MODULE)apsta.ko $(DESTDIR)/tftpboot
++ifeq ($(OSABL),YES)
++	cp -f $(RT28xx_DIR)/os/linux/rtutil$(MODULE)apsta.ko $(DESTDIR)/tftpboot
++	cp -f $(RT28xx_DIR)/os/linux/rtnet$(MODULE)apsta.ko $(DESTDIR)/tftpboot
++endif
++else
++	cp -f $(RT28xx_DIR)/os/linux/rt$(MODULE)sta.ko $(DESTDIR)/tftpboot
++ifeq ($(OSABL),YES)
++	cp -f $(RT28xx_DIR)/os/linux/rtutil$(MODULE)sta.ko $(DESTDIR)/tftpboot
++	cp -f $(RT28xx_DIR)/os/linux/rtnet$(MODULE)sta.ko $(DESTDIR)/tftpboot
++endif
++endif
++endif
++## END PART TO BE MOVED TO INSTALL
++
++## START PART TO BE ADDED
++endif
++## END PART TO BE ADDED
++############# END IF PART TO MOVE TO INSTALL TARGET
++
++
+ libwapi:
+ ifneq (,$(findstring 2.4,$(LINUX_SRC)))
+ 	cp -f os/linux/Makefile.libwapi.4 $(RT28xx_DIR)/os/linux/Makefile
+diff --git a/os/linux/Makefile.4 b/os/linux/Makefile.4
+index 2db303c..010ace7 100644
+--- a/os/linux/Makefile.4
++++ b/os/linux/Makefile.4
+@@ -278,14 +278,14 @@ install:
+ 	$(shell [ ! -f /etc/Wireless ] && mkdir /etc/Wireless)
+ 	mkdir $(DAT_PATH)
+ 	cp $(RT28xx_DIR)/$(DAT_FILE_NAME) $(DAT_PATH)/.
+-	install -d $(LINUX_SRC_MODULE)
+-	install -m 644 -c $(addsuffix .o,$(MOD_NAME)) $(LINUX_SRC_MODULE)
+-	/sbin/depmod -a ${shell uname -r}
++	install -d $(DESTDIR)$(LINUX_SRC_MODULE)
++	install -m 644 -c $(addsuffix .o,$(MOD_NAME)) $(DESTDIR)$(LINUX_SRC_MODULE)
++#	/sbin/depmod -a ${shell uname -r}
+ 
+ uninstall:
+-#	rm -rf $(DAT_PATH)
+-	rm -rf $(addprefix $(LINUX_SRC_MODULE),$(addsuffix .o,$(MOD_NAME)))
+-	/sbin/depmod -a ${shell uname -r}
++	rm -rf $(DESTDIR)$(DAT_PATH)
++	rm -rf $(addprefix $(DESTDIR)$(LINUX_SRC_MODULE),$(addsuffix .o,$(MOD_NAME)))
++#	/sbin/depmod -a ${shell uname -r}
+ 
+ # Declare the contents of the .PHONY variable as phony.  We keep that
+ # information in a variable so we can use it in if_changed and friends.
+diff --git a/os/linux/Makefile.4.netif b/os/linux/Makefile.4.netif
+index c8cc93c..820f707 100644
+--- a/os/linux/Makefile.4.netif
++++ b/os/linux/Makefile.4.netif
+@@ -92,13 +92,13 @@ endif
+ endif
+ 
+ install:
+-	install -d $(LINUX_SRC_MODULE)
+-	install -m 644 -c $(addsuffix .o,$(MOD_NAME)) $(LINUX_SRC_MODULE)
+-	/sbin/depmod -a ${shell uname -r}
++	install -d $(DESTDIR)$(LINUX_SRC_MODULE)
++	install -m 644 -c $(addsuffix .o,$(MOD_NAME)) $(DESTDIR)$(LINUX_SRC_MODULE)
++#	/sbin/depmod -a ${shell uname -r}
+ 
+ uninstall:
+-	rm -rf $(addprefix $(LINUX_SRC_MODULE),$(addsuffix .o,$(MOD_NAME)))
+-	/sbin/depmod -a ${shell uname -r}
++	rm -rf $(addprefix $(DESTDIR)$(LINUX_SRC_MODULE),$(addsuffix .o,$(MOD_NAME)))
++#	/sbin/depmod -a ${shell uname -r}
+ 
+ # Declare the contents of the .PHONY variable as phony.  We keep that
+ # # information in a variable so we can use it in if_changed and friends.
+diff --git a/os/linux/Makefile.4.util b/os/linux/Makefile.4.util
+index 69e401c..dd7b05a 100644
+--- a/os/linux/Makefile.4.util
++++ b/os/linux/Makefile.4.util
+@@ -63,13 +63,13 @@ endif
+ endif
+ 
+ install:
+-	install -d $(LINUX_SRC_MODULE)
+-	install -m 644 -c $(addsuffix .o,$(MOD_NAME)) $(LINUX_SRC_MODULE)
+-	/sbin/depmod -a ${shell uname -r}
++	install -d $(DESTDIR)$(LINUX_SRC_MODULE)
++	install -m 644 -c $(addsuffix .o,$(MOD_NAME)) $(DESTDIR)$(LINUX_SRC_MODULE)
++#	/sbin/depmod -a ${shell uname -r}
+ 
+ uninstall:
+-	rm -rf $(addprefix $(LINUX_SRC_MODULE),$(addsuffix .o,$(MOD_NAME)))
+-	/sbin/depmod -a ${shell uname -r}
++	rm -rf $(addprefix $(DESTDIR)$(LINUX_SRC_MODULE),$(addsuffix .o,$(MOD_NAME)))
++#	/sbin/depmod -a ${shell uname -r}
+ 
+ # Declare the contents of the .PHONY variable as phony.  We keep that
+ # # information in a variable so we can use it in if_changed and friends.
+diff --git a/os/linux/Makefile.6 b/os/linux/Makefile.6
+index 28c5530..1ae4e52 100644
+--- a/os/linux/Makefile.6
++++ b/os/linux/Makefile.6
+@@ -291,18 +291,18 @@ endif
+ endif
+ 
+ install:
+-	rm -rf $(DAT_PATH)
+-	$(shell [ ! -f /etc/Wireless ] && mkdir /etc/Wireless)
+-	mkdir $(DAT_PATH)
+-	cp $(RT28xx_DIR)/$(DAT_FILE_NAME) $(DAT_PATH)/.
+-	install -d $(LINUX_SRC_MODULE)
+-	install -m 644 -c $(addsuffix .ko,$(MOD_NAME)) $(LINUX_SRC_MODULE)
+-	/sbin/depmod -a ${shell uname -r}
++	rm -rf $(DESTDIR)$(DAT_PATH)
++	$(shell [ ! -f $(DESTDIR)etc/Wireless ] && mkdir -p $(DESTDIR)/etc/Wireless)
++	mkdir -p $(DESTDIR)$(DAT_PATH)
++	cp $(RT28xx_DIR)/$(DAT_FILE_NAME) $(DESTDIR)$(DAT_PATH)/.
++	install -d $(DESTDIR)$(LINUX_SRC_MODULE)
++	install -m 644 -c $(addsuffix .ko,$(MOD_NAME)) $(DESTDIR)$(LINUX_SRC_MODULE)
++#	/sbin/depmod -a ${shell uname -r}
+ 
+ uninstall:
+-#	rm -rf $(DAT_PATH)
+-	rm -rf $(addprefix $(LINUX_SRC_MODULE),$(addsuffix .ko,$(MOD_NAME)))
+-	/sbin/depmod -a ${shell uname -r}
++	rm -rf $(DESTDIR)$(DAT_PATH)
++	rm -rf $(addprefix $(DESTDIR)$(LINUX_SRC_MODULE),$(addsuffix .ko,$(MOD_NAME)))
++#	/sbin/depmod -a ${shell uname -r}
+ 
+ # Declare the contents of the .PHONY variable as phony.  We keep that
+ # information in a variable so we can use it in if_changed and friends.
+diff --git a/os/linux/Makefile.6.netif b/os/linux/Makefile.6.netif
+index 968165d..1875607 100644
+--- a/os/linux/Makefile.6.netif
++++ b/os/linux/Makefile.6.netif
+@@ -88,10 +88,10 @@ endif
+ endif
+ 
+ install:
+-	install -d $(LINUX_SRC_MODULE)
+-	install -m 644 -c $(addsuffix .ko,$(MOD_NAME)) $(LINUX_SRC_MODULE)
+-	/sbin/depmod -a ${shell uname -r}
++	install -d $(DESTDIR)$(LINUX_SRC_MODULE)
++	install -m 644 -c $(addsuffix .ko,$(MOD_NAME)) $(DESTDIR)$(LINUX_SRC_MODULE)
++#	/sbin/depmod -a ${shell uname -r}
+ 
+ uninstall:
+-	rm -rf $(addprefix $(LINUX_SRC_MODULE),$(addsuffix .ko,$(MOD_NAME)))
+-	/sbin/depmod -a ${shell uname -r}
++	rm -rf $(addprefix $(DESTDIR)$(LINUX_SRC_MODULE),$(addsuffix .ko,$(MOD_NAME)))
++#	/sbin/depmod -a ${shell uname -r}
+diff --git a/os/linux/Makefile.6.util b/os/linux/Makefile.6.util
+index 7510db6..2e4247e 100644
+--- a/os/linux/Makefile.6.util
++++ b/os/linux/Makefile.6.util
+@@ -48,10 +48,10 @@ endif
+ endif
+ 
+ install:
+-	install -d $(LINUX_SRC_MODULE)
+-	install -m 644 -c $(addsuffix .ko,$(MOD_NAME)) $(LINUX_SRC_MODULE)
++	install -d $(DESTDIR)$(LINUX_SRC_MODULE)
++	install -m 644 -c $(addsuffix .ko,$(MOD_NAME)) $(DESTDIR)$(LINUX_SRC_MODULE)
+ 	/sbin/depmod -a ${shell uname -r}
+ 
+ uninstall:
+-	rm -rf $(addprefix $(LINUX_SRC_MODULE),$(addsuffix .ko,$(MOD_NAME)))
++	rm -rf $(addprefix $(DESTDIR)$(LINUX_SRC_MODULE),$(addsuffix .ko,$(MOD_NAME)))
+ 	/sbin/depmod -a ${shell uname -r}
+\ No newline at end of file
+diff --git a/tools/bin2h b/tools/bin2h
+index 25d0555..34bc25b 100755
+Binary files a/tools/bin2h and b/tools/bin2h differ

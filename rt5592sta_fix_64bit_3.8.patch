@@ -1,0 +1,164 @@
+diff --git a/include/os/rt_linux.h b/include/os/rt_linux.h
+index 8fe2b16..042b465 100644
+--- a/include/os/rt_linux.h
++++ b/include/os/rt_linux.h
+@@ -6,7 +6,7 @@
+  * Taiwan, R.O.C.
+  *
+  * (c) Copyright 2002-2010, Ralink Technology, Inc.
+- *
++ * Portions © 2013 Jesse Crews <jcrews at gridlox dot net>
+  * This program is free software; you can redistribute it and/or modify  *
+  * it under the terms of the GNU General Public License as published by  *
+  * the Free Software Foundation; either version 2 of the License, or     *
+@@ -996,15 +996,15 @@ void linux_pci_unmap_single(void *handle, ra_dma_addr_t dma_addr, size_t size, i
+ 		(RTPKT_TO_OSPKT(_pkt)->len) = (_len)
+ 		
+ #define GET_OS_PKT_DATATAIL(_pkt) \
+-		(RTPKT_TO_OSPKT(_pkt)->tail)
++		((unsigned char*)skb_tail_pointer(RTPKT_TO_OSPKT(_pkt)))
+ #define SET_OS_PKT_DATATAIL(_pkt, _start, _len)	\
+-		((RTPKT_TO_OSPKT(_pkt))->tail) = (PUCHAR)((_start) + (_len))
++		(skb_set_tail_pointer((RTPKT_TO_OSPKT(_pkt)), (_len)))
+ 		
+ #define GET_OS_PKT_HEAD(_pkt) \
+ 		(RTPKT_TO_OSPKT(_pkt)->head)
+ 
+ #define GET_OS_PKT_END(_pkt) \
+-		(RTPKT_TO_OSPKT(_pkt)->end)
++		((unsigned char*)skb_end_pointer(RTPKT_TO_OSPKT(_pkt)))
+ 
+ #define GET_OS_PKT_NETDEV(_pkt) \
+ 		(RTPKT_TO_OSPKT(_pkt)->dev)
+diff --git a/os/linux/pci_main_dev.c b/os/linux/pci_main_dev.c
+index ebd3e57..6c17a67 100644
+--- a/os/linux/pci_main_dev.c
++++ b/os/linux/pci_main_dev.c
+@@ -6,7 +6,7 @@
+  * Taiwan, R.O.C.
+  *
+  * (c) Copyright 2002-2010, Ralink Technology, Inc.
+- *
++ * Portions © 2013, Jesse Crews <jcrews at gridlox dot net>
+  * This program is free software; you can redistribute it and/or modify  *
+  * it under the terms of the GNU General Public License as published by  *
+  * the Free Software Foundation; either version 2 of the License, or     *
+@@ -39,8 +39,14 @@
+ /*extern int rt28xx_close(IN struct net_device *net_dev); */
+ /*extern int rt28xx_open(struct net_device *net_dev); */
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,8,0)
++static VOID rt2860_remove_one(struct pci_dev *pci_dev);
++static INT rt2860_probe(struct pci_dev *pci_dev, const struct pci_device_id  *ent);
++#else
+ static VOID __devexit rt2860_remove_one(struct pci_dev *pci_dev);
+ static INT __devinit rt2860_probe(struct pci_dev *pci_dev, const struct pci_device_id  *ent);
++#endif
++
+ static void __exit rt2860_cleanup_module(void);
+ static int __init rt2860_init_module(void);
+ 
+@@ -59,7 +65,11 @@ static int rt2860_resume(struct pci_dev *pci_dev);
+ /* */
+ /* Ralink PCI device table, include all supported chipsets */
+ /* */
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,8,0)
++static struct pci_device_id rt2860_pci_tbl[] =
++#else
+ static struct pci_device_id rt2860_pci_tbl[] __devinitdata =
++#endif
+ {
+ #ifdef RT5592
+ 	{PCI_DEVICE(NIC_PCI_VENDOR_ID, NIC5592_PCIe_DEVICE_ID)},
+@@ -86,11 +96,13 @@ static struct pci_driver rt2860_driver =
+     name:       RTMP_DRV_NAME,
+     id_table:   rt2860_pci_tbl,
+     probe:      rt2860_probe,
+-#if LINUX_VERSION_CODE >= 0x20412
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3,8,0) /* 3.8 check */
++#if LINUX_VERSION_CODE >= 0x20412 
+     remove:     __devexit_p(rt2860_remove_one),
+ #else
+     remove:     __devexit(rt2860_remove_one),
+ #endif
++#endif /* 3.8 check */
+ 
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,5,0)
+ #ifdef CONFIG_PM
+@@ -291,7 +303,11 @@ module_exit(rt2860_cleanup_module);
+ /* */
+ /* PCI device probe & initialization function */
+ /* */
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,8,0)
++static INT  rt2860_probe(
++#else 
+ static INT __devinit   rt2860_probe(
++#endif
+     IN  struct pci_dev              *pci_dev, 
+     IN  const struct pci_device_id  *pci_id)
+ {
+@@ -461,8 +477,11 @@ err_out:
+ 	return -ENODEV; /* probe fail */
+ }
+ 
+-
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,8,0)
++static VOID rt2860_remove_one(
++#else
+ static VOID __devexit rt2860_remove_one(
++#endif
+     IN  struct pci_dev  *pci_dev)
+ {
+ 	PNET_DEV	net_dev = pci_get_drvdata(pci_dev);
+diff --git a/os/linux/rt_linux.c b/os/linux/rt_linux.c
+index e7c8084..9dfebff 100644
+--- a/os/linux/rt_linux.c
++++ b/os/linux/rt_linux.c
+@@ -6,7 +6,7 @@
+  * Taiwan, R.O.C.
+  *
+  * (c) Copyright 2002-2010, Ralink Technology, Inc.
+- *
++ * Portions © Jesse Crews <jcrews at gridlox dot net>
+  * This program is free software; you can redistribute it and/or modify  *
+  * it under the terms of the GNU General Public License as published by  *
+  * the Free Software Foundation; either version 2 of the License, or     *
+@@ -502,9 +502,9 @@ PNDIS_PACKET duplicate_pkt(
+ 		MEM_DBG_PKT_ALLOC_INC(skb);
+ 
+ 		skb_reserve(skb, 2);
+-		NdisMoveMemory(skb->tail, pHeader802_3, HdrLen);
++		NdisMoveMemory((unsigned char*)skb_tail_pointer(skb), pHeader802_3, HdrLen);
+ 		skb_put(skb, HdrLen);
+-		NdisMoveMemory(skb->tail, pData, DataSize);
++		NdisMoveMemory((unsigned char*)skb_tail_pointer(skb), pData, DataSize);
+ 		skb_put(skb, DataSize);
+ 		skb->dev = pNetDev;	/*get_netdev_from_bssid(pAd, FromWhichBSSID); */
+ 		pPacket = OSPKT_TO_RTPKT(skb);
+@@ -656,7 +656,7 @@ PNDIS_PACKET ClonePacket(
+ 		pClonedPkt->dev = pRxPkt->dev;
+ 		pClonedPkt->data = pData;
+ 		pClonedPkt->len = DataSize;
+-		pClonedPkt->tail = pClonedPkt->data + pClonedPkt->len;
++		skb_set_tail_pointer(pClonedPkt, DataSize);
+ 		ASSERT(DataSize < 1530);
+ 	}
+ 	return pClonedPkt;
+@@ -702,7 +702,7 @@ void wlan_802_11_to_802_3_packet(
+ 	pOSPkt->dev = pNetDev;
+ 	pOSPkt->data = pData;
+ 	pOSPkt->len = DataSize;
+-	pOSPkt->tail = pOSPkt->data + pOSPkt->len;
++	skb_set_tail_pointer(pOSPkt, DataSize);
+ 
+ 	/* */
+ 	/* copy 802.3 header */
+@@ -4933,7 +4933,7 @@ Note:
+ */
+ VOID RtmpOsPktTailAdjust(IN PNDIS_PACKET pNetPkt,
+ 			 IN UINT removedTagLen) {
+-	OS_PKT_TAIL_ADJUST(pNetPkt, removedTagLen);
++	skb_set_tail_pointer(pNetPkt, pNetPkt->len - removedTagLen)
+ }
+ 
+ /*
