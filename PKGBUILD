@@ -1,11 +1,9 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
-# Description from DavidPH's experimental PKGBUILD
-
 pkgname=eternity-engine-git
 _pkgname=${pkgname/-git/}
-pkgver=3.40.46.27.gd6a6623
-pkgrel=3
+pkgver=3.40.46.188.gb653b64
+pkgrel=1
 pkgdesc="An advanced Doom port with vanilla compatibility"
 url="http://eternity.youfailit.net/"
 arch=('i686' 'x86_64')
@@ -25,13 +23,13 @@ pkgver() {
 
 build() {
   # Cannot do in-tree build.
-  mkdir $startdir/src/ee-build
-  cd $startdir/src/ee-build
+  mkdir "$srcdir/ee-build"
+  cd "$srcdir/ee-build"
   cmake ../$_pkgname -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
 package() {
-  cd $startdir/src/ee-build
-  make PREFIX=/usr DESTDIR=$pkgdir install
+  cd "$srcdir/ee-build"
+  make PREFIX=/usr DESTDIR="$pkgdir" install
 }
