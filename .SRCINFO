@@ -1,0 +1,16 @@
+pkgbase = strace-unwind
+	pkgdesc = A useful diagnositic, instructional, and debugging tool, with libunwind support
+	pkgver = 4.10
+	pkgrel = 1
+	url = http://sourceforge.net/projects/strace/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = perl
+	depends = libunwind
+	conflicts = strace
+	source = http://downloads.sourceforge.net/strace/strace-4.10.tar.xz
+	md5sums = 107a5be455493861189e9b57a3a51912
+
+pkgname = strace-unwind
+
