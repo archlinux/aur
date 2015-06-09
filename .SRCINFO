@@ -1,0 +1,23 @@
+pkgbase = sddm-git
+	pkgdesc = The Simple Desktop Display Manager
+	pkgver = 0.10.0.56.gd6a9dea
+	pkgrel = 1
+	url = https://github.com/sddm/sddm
+	install = sddm.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt5-tools
+	makedepends = python-docutils
+	depends = qt5-declarative
+	depends = upower
+	provides = sddm
+	conflicts = sddm
+	backup = usr/share/sddm/scripts/Xsetup
+	source = git+https://github.com/sddm/sddm.git
+	sha256sums = SKIP
+
+pkgname = sddm-git
+
