@@ -1,0 +1,43 @@
+--- qtiplot-0.9.8.9/qtiplot/src/analysis/FFT.cpp	2013-09-01 11:36:10.742543036 -0300
+***************
+*** 39,49 ****
+  #include <gsl/gsl_fft_complex.h>
+  #include <gsl/gsl_fft_halfcomplex.h>
+  
+! FFT::FFT(ApplicationWindow *parent, Table *t, const QString& realColName, const QString& imagColName, int from, int to)
+  : Filter(parent, t)
+  {
+  	init();
+!     setDataFromTable(t, realColName, imagColName, from, to);
+  }
+  
+  FFT::FFT(ApplicationWindow *parent, QwtPlotCurve *c)
+--- 39,49 ----
+  #include <gsl/gsl_fft_complex.h>
+  #include <gsl/gsl_fft_halfcomplex.h>
+  
+! FFT::FFT(ApplicationWindow *parent, Table *t, const QString& realColName, const QString& imagColName, int from, int to, bool foo)
+  : Filter(parent, t)
+  {
+  	init();
+!     setDataFromTable(t, realColName, imagColName, from, to, foo);
+  }
+  
+  FFT::FFT(ApplicationWindow *parent, QwtPlotCurve *c)
+***************
+*** 353,359 ****
+  	ml->arrangeLayers(false, false);
+  }
+  
+! bool FFT::setDataFromTable(Table *t, const QString& realColName, const QString& imagColName, int from, int to)
+  {
+  	d_init_err = true;
+  
+--- 353,359 ----
+  	ml->arrangeLayers(false, false);
+  }
+  
+! bool FFT::setDataFromTable(Table *t, const QString& realColName, const QString& imagColName, int from, int to, bool foo)
+  {
+  	d_init_err = true;
+  

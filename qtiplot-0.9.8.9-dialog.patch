@@ -1,0 +1,18 @@
+--- qtiplot-0.9.8.9/qtiplot/src/analysis/dialogs/FFTDialog.cpp	2013-09-01 12:21:03.957954932 -0300
+***************
+*** 187,193 ****
+  			boxReal->setFocus();
+  			return;
+  		}
+!         fft = new FFT(app, d_table, boxReal->currentText(), boxImaginary->currentText());
+  	}
+      fft->setInverseFFT(backwardBtn->isChecked());
+      fft->setSampling(boxSampling->value());
+--- 187,193 ----
+  			boxReal->setFocus();
+  			return;
+  		}
+!         fft = new FFT(app, d_table, boxReal->currentText(), boxImaginary->currentText(), false);
+  	}
+      fft->setInverseFFT(backwardBtn->isChecked());
+      fft->setSampling(boxSampling->value());

@@ -1,0 +1,40 @@
+--- qtiplot-0.9.8.9/qtiplot/src/analysis/FFT.h	2013-09-01 11:53:45.200163882 -0300
+***************
+*** 36,42 ****
+  Q_OBJECT
+  
+  public:
+!     FFT(ApplicationWindow *parent, Table *t, const QString& realColName, const QString& imagColName = QString(), int from = 1, int to = -1);
+  	FFT(ApplicationWindow *parent, QwtPlotCurve *c);
+  	FFT(ApplicationWindow *parent, QwtPlotCurve *c, double start, double end);
+  	FFT(ApplicationWindow *parent, Graph *g, const QString& curveTitle);
+--- 36,42 ----
+  Q_OBJECT
+  
+  public:
+!     FFT(ApplicationWindow *parent, Table *t, const QString& realColName, const QString& imagColName = QString(), int from = 1, int to = -1, bool foo = false);
+  	FFT(ApplicationWindow *parent, QwtPlotCurve *c);
+  	FFT(ApplicationWindow *parent, QwtPlotCurve *c, double start, double end);
+  	FFT(ApplicationWindow *parent, Graph *g, const QString& curveTitle);
+***************
+*** 52,57 ****
+--- 52,59 ----
+  	Matrix *realOutputMatrix(){return d_re_out_matrix;}
+  	Matrix *imaginaryOutputMatrix(){return d_im_out_matrix;}
+  
++     bool setDataFromTable(Table *t, const QString& realColName, const QString& imagColName = QString(), int from = 0, int to = -1, bool foo = false);
++ 
+  private:
+      void init();
+      void output();
+***************
+*** 60,67 ****
+  	void fftTable();
+  	void fftMatrix();
+  
+-     bool setDataFromTable(Table *t, const QString& realColName, const QString& imagColName = QString(), int from = 0, int to = -1);
+- 
+      double d_sampling;
+      //! Flag telling if an inverse FFT must be performed.
+      bool d_inverse;
+--- 62,67 ----

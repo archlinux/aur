@@ -1,0 +1,212 @@
+--- qtiplot-0.9.8.9/qtiplot/src/core/ApplicationWindow.cpp	2011-11-01 13:21:13.000000000 +0100
+@@ -2,6 +2,7 @@
+ 	File                 : ApplicationWindow.cpp
+ 	Project              : QtiPlot
+ --------------------------------------------------------------------
++	Copyright � 2011 Stephan Zevenhuizen
+ 	Copyright            : (C) 2004 - 2011 by Ion Vasilief,
+ 						   (C) 2006 - June 2007 Tilman Hoener zu Siederdissen, Knut Franke
+ 	Email (use @ for *)  : ion_vasilief*yahoo.fr
+@@ -174,7 +175,7 @@
+ #include <QVarLengthArray>
+ #include <QList>
+ #include <QUrl>
+-#include <QAssistantClient>
++#include <qassistantclient.h>
+ #include <QFontComboBox>
+ #include <QSpinBox>
+ #include <QMdiArea>
+@@ -9830,7 +9831,7 @@
+ 	if (dialog){
+ 		QString text = "<h2>"+ versionString() + "</h2>";
+ 		text +=	"<h3>" + QString(copyright_string).replace("\n", "<br>") + "</h3>";
+-		text += "<h3>" + tr("Released") + ": " + QString(release_date) + "</h3>";
++		text += "<h3>" + QString("CMI - Universiteit Utrecht release") + "</h3>";
+ 
+ 		QMessageBox *mb = new QMessageBox();
+ 		mb->setAttribute(Qt::WA_DeleteOnClose);
+
+--- qtiplot-0.9.8.9/qtiplot/src/core/main.cpp	2011-02-18 08:16:46.000000000 +0100
+@@ -2,6 +2,7 @@
+     File                 : main.cpp
+     Project              : QtiPlot
+     --------------------------------------------------------------------
++	Copyright � 2011 Stephan Zevenhuizen
+ 	Copyright            : (C) 2004 - 2011 by Ion Vasilief
+     Email (use @ for *)  : ion_vasilief*yahoo.fr
+     Description          : QtiPlot main function
+@@ -130,7 +131,7 @@
+ 	Q_IMPORT_PLUGIN(qtiff);
+ #endif
+ 
+-#ifdef QTIPLOT_PRO
++#ifdef QTIPLOT_CLOSED_SOURCE
+ 	Q_IMPORT_PLUGIN(QtiPlotdBasePlugin);
+ 	Q_IMPORT_PLUGIN(QtiPlotCsvPlugin);
+ 	Q_IMPORT_PLUGIN(QtiPlotTexPlugin);
+@@ -140,6 +141,9 @@
+ 	Q_IMPORT_PLUGIN(QtiPlotOriginPlugin);
+ 	Q_IMPORT_PLUGIN(QtiPlotDatabasePlugin);
+ #endif
++ 
++	Q_IMPORT_PLUGIN(FreeSoftwareQtiPlotImportOPJ);
++
+ 
+ 	QtiPlotApplication app( argc, argv );
+ 	app.connect( &app, SIGNAL(lastWindowClosed()), &app, SLOT(quit()) );
+
+--- qtiplot-0.9.8.9/qtiplot/qtiplot.pro	2011-11-02 17:55:25.000000000 +0100
+@@ -1,4 +1,3 @@
+-TARGET   = qtiplot
+ QTI_ROOT = ..
+ !include( $$QTI_ROOT/build.conf ) {
+   message( "You need a build.conf file with local settings!" )
+@@ -14,12 +13,16 @@
+ INCLUDEPATH       += $$QWT_INCLUDEPATH
+ INCLUDEPATH       += $$QWT3D_INCLUDEPATH
+ INCLUDEPATH       += $$GSL_INCLUDEPATH
++INCLUDEPATH	  += /usr/include/QtAssistant/
++INCLUDEPATH	  += /usr/include/python2.7
++
+ 
+ # configurable libs
+ LIBS         += $$MUPARSER_LIBS
+ LIBS         += $$QWT_LIBS
+ LIBS         += $$QWT3D_LIBS
+ LIBS         += $$GSL_LIBS
++LIBS	     += -lz -lGLU
+ 
+ #############################################################################
+ ###################### BASIC PROJECT PROPERTIES #############################
+@@ -46,7 +49,7 @@
+ 	unix:INSTALLS        += man
+ 
+ 	unix: INSTALLBASE = /usr
+-	win32: INSTALLBASE = C:/QtiPlot
++	win32: INSTALLBASE = C:/qtiplot-0.9.8.9
+ 
+ 	unix: target.path = $$INSTALLBASE/bin
+ 	unix: translations.path = $$INSTALLBASE/share/qtiplot/translations
+@@ -74,7 +77,6 @@
+ MOC_DIR        = ../tmp/qtiplot
+ OBJECTS_DIR    = ../tmp/qtiplot
+ SIP_DIR        = ../tmp/qtiplot
+-DESTDIR        = ./
+ 
+ #############################################################################
+ ###################### PROJECT FILES SECTION ################################
+@@ -159,7 +161,7 @@
+   				    qtiUtil.py \
+   				    qti_wordlist.txt \
+ 
+-  	unix: pythonconfig.path = /usr/local/qtiplot
++  	unix: pythonconfig.path = /usr/share/qtiplot
+   	win32: pythonconfig.path = $$INSTALLBASE
+   	DEFINES += PYTHON_CONFIG_PATH="\\\"$$replace(pythonconfig.path," ","\ ")\\\"
+   }
+@@ -232,3 +234,13 @@
+ 	RC_FILE	= qtiplot.rc
+ 	include(../3rdparty/QtSolutions/qtbrowserplugin/src/qtbrowserplugin.pri)
+ }
++
++###############################################################
++###############################################################
++###############################################################
++
++TARGET		=	qtiplot
++DESTDIR		=	.
++LIBS		+=	../tmp/qtiplot/libFreeSoftwareQtiPlotImportOPJ.a
++
++include(src/plugins/OriginPlugin/OriginPlugin.pri)
+\ No newline at end of file
+
+--- qtiplot-0.9.8.9/qtiplot.pro	2010-09-20 19:08:10.000000000 +0200
+@@ -1,7 +1,9 @@
+ TEMPLATE = subdirs
++CONFIG   += ordered
+ 
+ SUBDIRS = fitPlugins \
+-	    manual \
+ 	    3rdparty/qwt \
+ 		3rdparty/qwtplot3d \
+-        qtiplot
++	 3rdparty/QTeXEngine \
++        qtiplot/importOPJ.pro \
++        qtiplot/qtiplot.pro
+
+--- qtiplot-0.9.8.9/3rdparty/qwt/qwtconfig.pri	2009-04-02 11:21:45.000000000 +0200
+@@ -15,9 +15,9 @@
+     INSTALLBASE    = C:/Qwt-5.2.0
+ }
+ 
+-target.path    = $$INSTALLBASE/lib
+-headers.path   = $$INSTALLBASE/include
+-doc.path       = $$INSTALLBASE/doc
++#target.path    = $$INSTALLBASE/lib
++#headers.path   = $$INSTALLBASE/include
++#doc.path       = $$INSTALLBASE/doc
+ 
+ ######################################################################
+ # qmake internal options
+
+--- qtiplot-0.9.8.9/3rdparty/qwtplot3d/qwtplot3d.pro	2011-08-24 16:54:38.000000000 +0200
+@@ -36,5 +36,5 @@
+ LIBS        += ../libpng/libpng.a
+ 
+ # install
+-target.path = lib
+-INSTALLS += target
++#target.path = lib
++#INSTALLS += target
+
+--- qtiplot-0.9.8.9/3rdparty/qwtplot3d/include/qwt3d_global.h   2011-08-24 17:25:09.000000000 +0700
+@@ -2,6 +2,7 @@
+ #define QWT3D_GLOBAL_H
+
+ #include <qglobal.h>
++#include <GL/glu.h>
+ #if QT_VERSION < 0x040000
+ #include <qmodules.h>
+ #endif
+
+--- qtiplot-0.9.8.9/3rdparty/qwtplot3d/3rdparty/gl2ps/gl2ps.c        2012-01-29 18:15:34.000000000 -0500
+@@ -47,6 +47,7 @@
+ #endif
+ 
+ #if defined(GL2PS_HAVE_LIBPNG)
++#include <zlib.h>
+ #include <png.h>
+ #endif
+
+
+--- qtiplot-0.9.8.9/3rdparty/qwtplot3d/include/qwt3d_io_gl2ps.h  2012-01-29 17:42:01.000000000 -0500
+@@ -2,12 +2,7 @@
+ #define qwt3d_io_gl2ps_h__2004_05_07_01_16_begin_guarded_code
+ 
+ #include <time.h>
+-
+-#if QT_VERSION < 0x040000
+-#include <qgl.h>
+-#else
+-#include <QtOpenGL/qgl.h>
+-#endif
++#include <QtOpenGL/QtOpenGL>
+ 
+ #include "qwt3d_types.h"
+ #include "qwt3d_io.h"
+ 
+--- qtiplot-0.9.8.9/3rdparty/qwtplot3d/include/qwt3d_openglhelper.h  2012-01-29 17:42:01.000000000 -0500
+@@ -2,11 +2,8 @@
+ #define __openglhelper_2003_06_06_15_49__
+ 
+ #include "qglobal.h"
+-#if QT_VERSION < 0x040000
+-#include <qgl.h>
+-#else
+-#include <QtOpenGL/qgl.h>
+-#endif
++#include <QtOpenGL/QtOpenGL>
++#include <GL/glu.h>
+ 
+ namespace Qwt3D
+ {

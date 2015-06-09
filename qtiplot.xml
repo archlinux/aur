@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-qtiplot-project">
+    <sub-class-of type="text/plain"/>
+    <comment>QtiPlot project file</comment>
+    <glob pattern="*.qti" />
+  </mime-type>
+  <mime-type type="application/x-qtiplot-project-compressed">
+    <comment>Compressed QtiPlot project file</comment>
+    <glob pattern="*.qti.gz" />
+  </mime-type>
+  <mime-type type="application/x-qtiplot-project-backup">
+    <sub-class-of type="text/plain"/>
+    <comment>QtiPlot project file backup</comment>
+    <glob pattern="*.qti~" />
+  </mime-type>
+</mime-info>
