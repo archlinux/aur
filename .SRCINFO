@@ -1,0 +1,16 @@
+pkgbase = python2-dictshield
+	pkgdesc = Python Library for typed dictionaries... sorta
+	pkgver = 0.4.4
+	pkgrel = 2
+	url = http://github.com/j2labs/dictshield
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2
+	source = http://pypi.python.org/packages/source/d/dictshield/dictshield-0.4.4.tar.gz
+	source = LICENSE.md
+	sha256sums = 1ca7e2b777d6a43d6fd8d8ac2acfb9f350cba71d104f49689da4e09ebf682248
+	sha256sums = 3b6a6793876fd90603d0b444d0fd0def7bc4ece10b1ad752448001757b9483e4
+
+pkgname = python2-dictshield
+
