@@ -1,0 +1,2 @@
+#! /bin/bash
+mono /usr/lib/oscript/oscript.exe "$@"

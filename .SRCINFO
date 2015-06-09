@@ -1,0 +1,20 @@
+pkgbase = onescript
+	pkgdesc = This project is an alternative implementation of the virtual machine, execute scripts in the language of the 1C:Enterprise
+	pkgver = 1.0.9
+	pkgrel = 1
+	url = https://bitbucket.org/EvilBeaver/1script
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = LGPL3
+	depends = mono
+	noextract = OneScript-1.0.9-bin.zip
+	source = https://bitbucket.org/EvilBeaver/1script/downloads/OneScript-1.0.9-bin.zip
+	source = https://bitbucket.org/EvilBeaver/1script/wiki/attachments/snake.os
+	source = oscript
+	md5sums = c4a3a16290c4ee594b1b6114cec3d3ba
+	md5sums = e88df2f8a75ee97859839b3f45fe7e0a
+	md5sums = d0c25bfc717401e9806a7612581f6995
+
+pkgname = onescript
+
