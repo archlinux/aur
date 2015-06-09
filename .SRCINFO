@@ -1,0 +1,20 @@
+pkgbase = steam-wrapper
+	pkgdesc = Steam wrapper for common operations
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/pyamsoft/steam-wrapper/archive/0.1.6.tar.gz
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = steam
+	depends = bash
+	depends = coreutils
+	depends = git
+	optdepends = steam-native: Native runtime library support
+	provides = steam-wrapper
+	conflicts = steam-wrapper
+	source = https://github.com/pyamsoft/steam-wrapper/archive/0.1.6.tar.gz
+	sha256sums = 046794a8844dcb603a45eebf1c31775b66f35d60c5f1c5ebf503635a58909273
+
+pkgname = steam-wrapper
+
