@@ -1,0 +1,16 @@
+pkgbase = gwrite
+	pkgdesc = simple GTK+ HTML5 rich text editor
+	pkgver = 0.5.1
+	pkgrel = 2
+	url = http://code.google.com/p/gwrite/
+	arch = any
+	license = LGPL
+	makedepends = python-distutils-extra
+	depends = python2
+	depends = python2-jswebkit
+	depends = pywebkitgtk
+	source = http://gwrite.googlecode.com/files/gwrite-0.5.1.tar.gz
+	md5sums = c0ab3a7a3f74026db68972a205395f1a
+
+pkgname = gwrite
+
