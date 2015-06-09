@@ -1,0 +1,17 @@
+pkgbase = ruby-mail-gpg
+	pkgdesc = GPG/MIME encryption plugin for the Ruby Mail Library
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/jkraemer/mail-gpg
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-mail
+	depends = ruby-gpgme
+	noextract = mail-gpg-0.2.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/mail-gpg-0.2.3.gem
+	sha1sums = 3d9120fa68f315b08c63451d8325e67c6237222d
+
+pkgname = ruby-mail-gpg
+
