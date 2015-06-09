@@ -1,0 +1,16 @@
+pkgbase = erlexec-git
+	pkgdesc = Execute and control OS processes from Erlang VM
+	pkgver = v1.0.r147.g6c31152
+	pkgrel = 1
+	url = http://saleyn.github.com/erlexec/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = libcap
+	depends = erlang-nox
+	source = git+https://github.com/saleyn/erlexec.git
+	md5sums = SKIP
+
+pkgname = erlexec-git
+
