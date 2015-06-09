@@ -1,0 +1,26 @@
+pkgbase = amos
+	pkgdesc = A modular, open source whole-genome assembler
+	pkgver = 3.1.0
+	pkgrel = 3
+	url = http://sourceforge.net/apps/mediawiki/amos/index.php?title=AMOS
+	arch = i686
+	arch = x86_64
+	license = Artistic
+	makedepends = boost
+	depends = python2
+	depends = perl
+	depends = perl-xml-parser
+	depends = perl-dbi
+	depends = perl-statistics-descriptive
+	depends = qt4
+	depends = xorg-server
+	optdepends = mummer: for AMOScmp, minimus2, amosvalidate
+	optdepends = blat: for minimus2-blat
+	options = !makeflags
+	source = http://downloads.sourceforge.net/project/amos/amos/3.1.0/amos-3.1.0.tar.gz
+	source = amos-3.1.0-gcc4.7.patch
+	md5sums = 51ebe835c93eef9acd39101738b2048c
+	md5sums = 1eafa4de5d5837b8761c8f49e40a20d4
+
+pkgname = amos
+
