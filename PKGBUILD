@@ -1,13 +1,13 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 pkgname=roger-router
-pkgver=1.8.11
-pkgrel=2
+pkgver=1.8.12
+pkgrel=1
 pkgdesc="Roger Router"
 arch=('i686' 'x86_64')
 url="http://en.tabos.org/roger-router/"
 license=('GPL-2.0')
 depends=(curl dbus glib2 libsndfile spandsp speex libxml2 gtk3 isdn4k-utils libpeas libsoup)
-makedepends=(intltool libnotify libpulse libsecret evolution)
+makedepends=(intltool libnotify libpulse libsecret gobject-introspection evolution)
 optdepends=(
 	'evolution: Address book integration'
 	'libpulse: Pulse Audio support'
@@ -17,7 +17,7 @@ provides=(roger)
 conflicts=(roger)
 install=roger-router.install
 source=(http://de.tabos.org/download/$pkgname-$pkgver.tar.xz)
-sha1sums=('091634d2dd3c85fce56a5eb11cc5a210389834f3')
+sha1sums=('7b2d29ef0a1d027f26447f9a6bae503a8f3dcb9a')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"

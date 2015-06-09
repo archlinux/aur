@@ -1,7 +1,7 @@
 pkgbase = roger-router
 	pkgdesc = Roger Router
-	pkgver = 1.8.11
-	pkgrel = 2
+	pkgver = 1.8.12
+	pkgrel = 1
 	url = http://en.tabos.org/roger-router/
 	install = roger-router.install
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = roger-router
 	makedepends = libnotify
 	makedepends = libpulse
 	makedepends = libsecret
+	makedepends = gobject-introspection
 	makedepends = evolution
 	depends = curl
 	depends = dbus
@@ -29,8 +30,8 @@ pkgbase = roger-router
 	optdepends = libnotify: Desktop notifications
 	provides = roger
 	conflicts = roger
-	source = http://de.tabos.org/download/roger-router-1.8.11.tar.xz
-	sha1sums = 091634d2dd3c85fce56a5eb11cc5a210389834f3
+	source = http://de.tabos.org/download/roger-router-1.8.12.tar.xz
+	sha1sums = 7b2d29ef0a1d027f26447f9a6bae503a8f3dcb9a
 
 pkgname = roger-router
 
