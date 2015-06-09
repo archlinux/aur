@@ -1,0 +1,23 @@
+--- src/audio/AudioBase.h	2001/11/16 19:34:29	1.4
++++ src/audio/AudioBase.h	2008/03/02 22:42:51	1.5
+@@ -16,6 +16,9 @@
+  ***************************************************************************/
+ /***************************************************************************
+  *  $Log: AudioBase.h,v $
++ *  Revision 1.5  2008/03/02 22:42:51  s_a_white
++ *  Fix depreciated const char * warnings in Linux
++ *
+  *  Revision 1.4  2001/11/16 19:34:29  s_a_white
+  *  Added extension to be used for file audio devices.
+  *
+--- src/args.cpp.orig	2009-05-31 20:55:18.100205456 +0200
++++ src/args.cpp	2004-05-06 01:49:20.000000000 +0200
+@@ -102,7 +102,7 @@
+     if (*str == '\0')
+         return false;
+ 
+-    sep = strstr (str, ":");
++    sep = strstr ((char*)str, ":");
+     if (!sep)
+     {   // User gave seconds
+         _time = atoi (str);

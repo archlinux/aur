@@ -1,0 +1,517 @@
+diff -Naur sidplay-2.0.9.ORIG/configure.ac sidplay-2.0.9/configure.ac
+--- sidplay-2.0.9.ORIG/configure.ac	2004-05-06 06:13:58.000000000 +1000
++++ sidplay-2.0.9/configure.ac	2011-03-18 14:33:10.000000000 +1100
+@@ -37,10 +37,17 @@
+ #undef HAVE_WAV_ONLY
+ ])
+ 
++AC_CHECK_HEADER(alsa/asoundlib.h, [OK_ASOUNDLIB_H=1])
++AC_CHECK_LIB(asound, main, [OK_LIBASOUND=1])
++
++# use ALSA is available
++audio="$host"
++test "$OK_ASOUNDLIB_H" -a "$OK_LIBASOUND" && audio="alsa"
++
+ dnl Audio Subsystem Test
+ AC_MSG_CHECKING([which audio subsystem is available])
+ audiodrv_libadd=""
+-case "$host" in
++case "$audio" in
+     *cygwin*) AC_DEFINE(HAVE_MMSYSTEM)
+         audiodrv_libadd="./audio/mmsystem/libmmsystem.a"
+         AC_MSG_RESULT(mmsystem)
+@@ -67,12 +74,12 @@
+     *netbsd*) AC_DEFINE(HAVE_OSS)
+         audiodrv_libadd="./audio/oss/liboss.a"
+         AC_MSG_RESULT(oss)
+-        AC_CHECK_LIB(ossaudio, main, [AUDIO_LDADD=-lossaudio AC_SUBST(AUDIO_LDFLAGS)]) 
++        AC_CHECK_LIB(ossaudio, main, [AUDIO_LDFLAGS=-lossaudio AC_SUBST(AUDIO_LDFLAGS)]) 
+         ;;
+-    *qnx*) AC_DEFINE(HAVE_ALSA)
++    *qnx*|alsa) AC_DEFINE(HAVE_ALSA)
+         audiodrv_libadd="./audio/alsa/libalsa.a"
+         AC_MSG_RESULT(alsa)
+-        AC_CHECK_LIB(asound, main, [AUDIO_LDADD=-lasound AC_SUBST(AUDIO_LDFLAGS)])
++        AC_CHECK_LIB(asound, main, [AUDIO_LDFLAGS=-lasound AC_SUBST(AUDIO_LDFLAGS)])
+         ;;
+     *sgi*) AC_DEFINE(HAVE_SGI)
+         AC_MSG_RESULT(sgi)
+diff -Naur sidplay-2.0.9.ORIG/src/Makefile.am sidplay-2.0.9/src/Makefile.am
+--- sidplay-2.0.9.ORIG/src/Makefile.am	2003-07-08 05:58:53.000000000 +1000
++++ sidplay-2.0.9/src/Makefile.am	2011-03-18 14:14:43.000000000 +1100
+@@ -10,7 +10,7 @@
+ player.cpp player.h
+ 
+ sidplay2_LDADD = ./audio/null/libnull.a ./audio/wav/libwav.a \
+-$(AUDIO_DRV) $(AUDIO_LDFLAGS) \
++$(AUDIO_DRV) $(AUDIO_LDFLAGS) $(AUDIO_LDADD) \
+ $(LIBSIDPLAY2_LDFLAGS) $(LIBSIDUTILS_LDFLAGS) \
+ $(BUILDERS_LDFLAGS)
+ 
+diff -Naur sidplay-2.0.9.ORIG/src/audio/alsa/audiodrv.cpp sidplay-2.0.9/src/audio/alsa/audiodrv.cpp
+--- sidplay-2.0.9.ORIG/src/audio/alsa/audiodrv.cpp	2002-03-05 06:07:48.000000000 +1100
++++ sidplay-2.0.9/src/audio/alsa/audiodrv.cpp	2011-03-18 14:14:43.000000000 +1100
+@@ -3,6 +3,9 @@
+ // --------------------------------------------------------------------------
+ /***************************************************************************
+  *  $Log: audiodrv.cpp,v $
++ *  Revision 1.8  2008/07/19 13:58:04  wnd
++ *  Almost complete rewrite to support new ALSA API.
++ *
+  *  Revision 1.7  2002/03/04 19:07:48  s_a_white
+  *  Fix C++ use of nothrow.
+  *
+@@ -29,171 +32,277 @@
+  ***************************************************************************/
+ 
+ #include "audiodrv.h"
+-#ifdef   HAVE_ALSA
++#ifdef HAVE_ALSA
+ 
+ #include <stdio.h>
+ #ifdef HAVE_EXCEPTIONS
+-#   include <new>
++#include <new>
+ #endif
+ 
++#include <alsa/asoundlib.h>
++#include <string.h>
++
++#define ALSA_DEFAULT "default"
++
+ Audio_ALSA::Audio_ALSA()
+ {
+-    // Reset everything.
+-    outOfOrder();
++	// Reset everything.
++	outOfOrder();
++}
++
++Audio_ALSA::~Audio_ALSA()
++{
++	close ();
+ }
+ 
+-Audio_ALSA::~Audio_ALSA ()
++void
++Audio_ALSA::outOfOrder()
+ {
+-    close ();
++	// Reset everything.
++	_swapEndian = false;
++	_bufShift = 0;
++	_errorString = "None";
++	_audioHandle = NULL;
+ }
+ 
+-void Audio_ALSA::outOfOrder ()
+-{
+-    // Reset everything.
+-    _errorString = "None";
+-    _audioHandle = NULL;
+-}
+-
+-void *Audio_ALSA::open (AudioConfig &cfg, const char *)
+-{
+-    AudioConfig tmpCfg;
+-    int mask, wantedFormat, format;
+-    int rtn;
+-    int card = -1, dev = 0;
+-   
+-    if (_audioHandle != NULL)
+-    {
+-        _errorString = "ERROR: Device already in use";
+-        return NULL;
+-    }
+-
+-    if ((rtn = snd_pcm_open_preferred (&_audioHandle, &card, &dev, SND_PCM_OPEN_PLAYBACK)))
+-    {
+-        _errorString = "ERROR: Could not open audio device.";
+-        goto open_error;
+-    }
+-    
+-    // Transfer input parameters to this object.
+-    // May later be replaced with driver defaults.
+-    tmpCfg = cfg;
+-
+-    snd_pcm_channel_params_t pp;
+-    snd_pcm_channel_setup_t setup;
+- 
+-    snd_pcm_channel_info_t pi;
+-   
+-    memset (&pi, 0, sizeof (pi));
+-    pi.channel = SND_PCM_CHANNEL_PLAYBACK;
+-    if ((rtn = snd_pcm_plugin_info (_audioHandle, &pi)))
+-    {
+-        _errorString = "ALSA: snd_pcm_plugin_info failed.";
+-        goto open_error;
+-    }
+-			
+-    memset(&pp, 0, sizeof (pp));
++bool
++Audio_ALSA::fmt(AudioConfig &cfg, snd_pcm_hw_params_t *hw)
++{
++	struct precinfo {
++		snd_pcm_format_t format;
++		int encoding;
++		int precision;
++		int swap;
++	};
++	struct precinfo info[] = {
++#if defined(WORDS_BIGENDIAN)
++		{ SND_PCM_FORMAT_S16_BE, AUDIO_SIGNED_PCM, 16, false },
++		{ SND_PCM_FORMAT_U16_BE, AUDIO_UNSIGNED_PCM, 16, false },
++		{ SND_PCM_FORMAT_S16_LE, AUDIO_SIGNED_PCM, 16, true },
++		{ SND_PCM_FORMAT_U16_LE, AUDIO_UNSIGNED_PCM, 16, true },
++#else
++		{ SND_PCM_FORMAT_S16_LE, AUDIO_SIGNED_PCM, 16, false },
++		{ SND_PCM_FORMAT_U16_LE, AUDIO_UNSIGNED_PCM, 16, false },
++		{ SND_PCM_FORMAT_S16_BE, AUDIO_SIGNED_PCM, 16, true },
++		{ SND_PCM_FORMAT_U16_BE, AUDIO_UNSIGNED_PCM, 16, true },
++#endif
++		{ SND_PCM_FORMAT_S8, AUDIO_SIGNED_PCM, 8, false },
++		{ SND_PCM_FORMAT_U8, AUDIO_UNSIGNED_PCM, 8, false }
++	};
++
++	switch (cfg.precision) {
++		case 8:
++			for (int i = 0; i < 2; i++) {
++				struct precinfo t;
++				memcpy(&t, &info[i], sizeof(t));
++				memcpy(&info[i + 4], &info[i], sizeof(t));
++				memcpy(&info[i], &t, sizeof(t));
++			}
++			break;
++		case 16:
++			break;
++		default:
++			fprintf(stderr, "Unsupported precision: %d bits\n",
++					cfg.precision);
++			return false;
++	}
++
++	int err;
++	for (int i = 0; i < 6; i++) {
++		err = snd_pcm_hw_params_set_format(_audioHandle, hw,
++				info[i].format);
++		if (err < 0) {
++			continue;
++		}
++
++		cfg.precision = info[i].precision;
++		cfg.encoding = info[i].encoding;
++		_swapEndian = info[i].swap;
++		_bufShift = info[i].precision == 8 ? 0 : 1;
++		return true;
++	}
+ 	
+-    pp.mode = SND_PCM_MODE_BLOCK;
+-    pp.channel = SND_PCM_CHANNEL_PLAYBACK;
+-    pp.start_mode = SND_PCM_START_FULL;
+-    pp.stop_mode = SND_PCM_STOP_STOP;
+-				     
+-    pp.buf.block.frag_size = pi.max_fragment_size;
+-
+-    pp.buf.block.frags_max = 1;
+-    pp.buf.block.frags_min = 1;
+-   
+-    pp.format.interleave = 1;
+-    pp.format.rate = tmpCfg.frequency;
+-    pp.format.voices = tmpCfg.channels;
+-   
+-    // Set sample precision and type of encoding.
+-    if ( tmpCfg.precision == 8 )
+-    {
+-        tmpCfg.encoding = AUDIO_UNSIGNED_PCM;
+-        pp.format.format = SND_PCM_SFMT_U8;
+-    }
+-    if ( tmpCfg.precision == 16 )
+-    {
+-        tmpCfg.encoding = AUDIO_SIGNED_PCM;
+-        pp.format.format = SND_PCM_SFMT_S16_LE;
+-    }
+-
+-    if ((rtn = snd_pcm_plugin_params (_audioHandle, &pp)) < 0)
+-    {
+-        _errorString = "ALSA: snd_pcm_plugin_params failed.";
+-        goto open_error;
+-    }
+-   
+-    if ((rtn = snd_pcm_plugin_prepare (_audioHandle, SND_PCM_CHANNEL_PLAYBACK)) < 0)
+-    {
+-        _errorString = "ALSA: snd_pcm_plugin_prepare failed.";
+-        goto open_error;
+-    }
+-   
+-    memset (&setup, 0, sizeof (setup));
+-    setup.channel = SND_PCM_CHANNEL_PLAYBACK;
+-    if ((rtn = snd_pcm_plugin_setup (_audioHandle, &setup)) < 0)
+-    {
+-        _errorString = "ALSA: snd_pcm_plugin_setup failed.";
+-        goto open_error;
+-    }
++	fprintf(stderr, "Cannot set sample format: %s\n", snd_strerror(err));
++	return false;
++}
++
++
++
++bool
++Audio_ALSA::init(AudioConfig &cfg, snd_pcm_hw_params_t *hw)
++{
++	int err;
++
++	err = snd_pcm_hw_params_any(_audioHandle, hw);
++	if (err < 0) {
++		fprintf(stderr, "Cannot initialize hardware "
++				"parameter structure: %s\n",
++				snd_strerror(err));
++		return false;
++	}
++
++	err = snd_pcm_hw_params_set_access(_audioHandle, hw,
++			SND_PCM_ACCESS_RW_INTERLEAVED);
++	if (err < 0) {
++		fprintf(stderr, "Cannot set access type: %s\n",
++				snd_strerror(err));
++		return false;
++	}
++
++	/* try to find supported format/precision */
++	if (! fmt(cfg, hw)) {
++		return false;
++	}
++
++	/* use closest frequency */
++	unsigned int realFreq = (unsigned int) cfg.frequency;
++	err = snd_pcm_hw_params_set_rate_near(_audioHandle, hw, &realFreq, 0);
++	if (err < 0) {
++		fprintf(stderr, "Cannot set sample rate: %s\n",
++				snd_strerror(err));
++		return false;
++	}
++	cfg.frequency = realFreq;
++
++	switch (cfg.channels) {
++		case 2:
++			_bufShift++;
++			break;
++		case 1:
++			break;
++		default:
++			fprintf(stderr, "Unsupported channel count: %d\n",
++					cfg.channels);
++			return false;
++	}
++	err = snd_pcm_hw_params_set_channels(_audioHandle, hw,
++			cfg.channels);
++	if (err < 0) {
++		fprintf(stderr, "Cannot set channel count: %s\n",
++				snd_strerror(err));
++		return false;
++	}
++
++	err = snd_pcm_hw_params(_audioHandle, hw);
++	if (err < 0) {
++		fprintf(stdout, "Cannot set parameters: %s\n",
++				snd_strerror(err));
++		return false;
++	}
+ 
+-    tmpCfg.bufSize = setup.buf.block.frag_size;
++	return true;
++}
++
++
++
++void *
++Audio_ALSA::open(AudioConfig &cfg, const char *name)
++{
++	AudioConfig tmpCfg = cfg;
++	snd_pcm_hw_params_t *hw;
++	int err;
++
++	if (_audioHandle != NULL) {
++		_errorString = "ERROR: Device already in use";
++		return NULL;
++	}
++
++	err = snd_pcm_open(&_audioHandle, ALSA_DEFAULT,
++			SND_PCM_STREAM_PLAYBACK, 0);
++	if (err < 0) {
++		_errorString = "ERROR: Could not open audio device.";
++		fprintf(stderr, "Cannot open audio device: %s\n",
++				snd_strerror(err));
++		return false;
++	}
++
++	err = snd_pcm_hw_params_malloc(&hw);
++	if (err < 0) {
++		_errorString = "ERROR: Cannot initialise ALSA";
++		fprintf(stderr, "Cannot allocate hardware "
++				"parameter structure: %s\n",
++				snd_strerror(err));
++		return false;
++	}
++
++	bool init_ok = init(tmpCfg, hw);
++	snd_pcm_hw_params_free(hw);
++	if (! init_ok) {
++		_errorString = "ERROR: Cannot initialise ALSA";
++		return false;
++	}
++
++	err = snd_pcm_prepare(_audioHandle);
++	if (err < 0) {
++		_errorString = "Cannot initialise ALSA";
++		fprintf(stderr, "cannot prepare audio interface for use: %s\n",
++				snd_strerror(err));
++		return false;
++	}
++
++	tmpCfg.bufSize = 4096;
+ #ifdef HAVE_EXCEPTIONS
+-    _sampleBuffer = new(std::nothrow) int_least8_t[tmpCfg.bufSize];
++	_sampleBuffer = new(std::nothrow) int_least8_t[tmpCfg.bufSize];
+ #else
+-    _sampleBuffer = new int_least8_t[tmpCfg.bufSize];
++	_sampleBuffer = new int_least8_t[tmpCfg.bufSize];
+ #endif
+ 
+-    if (!_sampleBuffer)
+-    {
+-        _errorString = "AUDIO: Unable to allocate memory for sample buffers.";
+-        goto open_error;
+-    }
+-
+-    // Setup internal Config
+-    _settings = tmpCfg;
+-    // Update the users settings
+-    getConfig (cfg);
+-    return _sampleBuffer;
+-
+-open_error:
+-    if (_audioHandle != NULL)
+-    {
+-        close ();
+-    }
+-
+-    perror ("ALSA");
+-return NULL;
++	if (!_sampleBuffer) {
++		_errorString = "Unable to allocate memory for sample buffers";
++		return NULL;
++	}
++
++	// Setup internal Config
++	_settings = tmpCfg;
++	// Update the users settings
++	getConfig (cfg);
++	return _sampleBuffer;
+ }
+ 
++
++
+ // Close an opened audio device, free any allocated buffers and
+ // reset any variables that reflect the current state.
+-void Audio_ALSA::close ()
++void
++Audio_ALSA::close()
+ {
+-    if (_audioHandle != NULL )
+-    {
+-        snd_pcm_close(_audioHandle);
+-        delete [] _sampleBuffer;
+-        outOfOrder ();
+-    }
++	if (_audioHandle != NULL) {
++		snd_pcm_close(_audioHandle);
++		delete [] _sampleBuffer;
++		outOfOrder ();
++	}
+ }
+ 
+-void *Audio_ALSA::reset ()
++
++
++void *
++Audio_ALSA::reset ()
+ {
+-    return (void *) _sampleBuffer;   
++	return (void *) _sampleBuffer;   
+ }
+ 
+-void *Audio_ALSA::write ()
+-{
+-    if (_audioHandle == NULL)
+-    {
+-        _errorString = "ERROR: Device not open.";
+-        return NULL;
+-    }
+ 
+-    snd_pcm_plugin_write (_audioHandle, _sampleBuffer, _settings.bufSize);
+-    return (void *) _sampleBuffer;
++
++void *
++Audio_ALSA::write()
++{
++	if (_audioHandle == NULL)
++	{
++		_errorString = "ERROR: Device not open.";
++		return NULL;
++	}
++
++	if (_swapEndian) {
++		for (int n = 0; n < _settings.bufSize; n += 2) {
++			char t = ((char *) _sampleBuffer)[n];
++			((char *) _sampleBuffer)[n] =
++				((char *) _sampleBuffer)[n + 1];
++			((char *) _sampleBuffer)[n + 1] = t;
++		}
++	}
++	snd_pcm_writei(_audioHandle, _sampleBuffer,
++			_settings.bufSize >> _bufShift);
++	return (void *) _sampleBuffer;
+ }
+ 
+ #endif // HAVE_ALSA
+diff -Naur sidplay-2.0.9.ORIG/src/audio/alsa/audiodrv.h sidplay-2.0.9/src/audio/alsa/audiodrv.h
+--- sidplay-2.0.9.ORIG/src/audio/alsa/audiodrv.h	2002-01-11 06:04:00.000000000 +1100
++++ sidplay-2.0.9/src/audio/alsa/audiodrv.h	2011-03-18 14:14:43.000000000 +1100
+@@ -3,6 +3,9 @@
+ // --------------------------------------------------------------------------
+ /***************************************************************************
+  *  $Log: audiodrv.h,v $
++ *  Revision 1.6  2008/07/19 13:58:04  wnd
++ *  Update to new ALSA API.
++ *
+  *  Revision 1.5  2002/01/10 19:04:00  s_a_white
+  *  Interface changes for audio drivers.
+  *
+@@ -36,7 +39,7 @@
+ #include <fcntl.h>
+ #include <unistd.h>
+ #include <sys/ioctl.h>
+-#include <sys/asoundlib.h>
++#include <alsa/asoundlib.h>
+ #include "../AudioBase.h"
+ 
+ 
+@@ -44,6 +47,8 @@
+ {	
+ private:  // ------------------------------------------------------- private
+     snd_pcm_t * _audioHandle;
++    bool _swapEndian;
++    int _bufShift;
+ 
+     void outOfOrder ();
+ 
+@@ -51,6 +56,8 @@
+     Audio_ALSA();
+     ~Audio_ALSA();
+ 
++    bool  fmt   (AudioConfig &cfg, snd_pcm_hw_params_t *hw);
++    bool  init  (AudioConfig &cfg, snd_pcm_hw_params_t *hw);
+     void *open  (AudioConfig &cfg, const char *name);
+     void  close ();
+     // Rev 1.2 (saw) - Changed, see AudioBase.h	

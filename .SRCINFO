@@ -1,0 +1,26 @@
+pkgbase = sidplay2-alsa
+	pkgdesc = A commandline player for SID music files - ALSA version
+	pkgver = 2.0.9
+	pkgrel = 2
+	url = http://sidplay2.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	makedepends = autoconf
+	makedepends = automake
+	depends = sidplay2-libs
+	depends = alsa-lib
+	provides = sidplay2
+	conflicts = sidplay2
+	source = http://downloads.sourceforge.net/sidplay2/sidplay-2.0.9.tar.gz
+	source = config.guess.diff.gz
+	source = sidplay2-gcc44.patch
+	source = sidplay2-2.0.9-alsa.patch
+	md5sums = 8b0449e501ba8e684f718dce9b77c5a5
+	md5sums = 3dbbf1e82c7712501cdbc814db31840e
+	md5sums = cd6e6e936793f25550bb579fa3f8c99d
+	md5sums = 5689bb71fa5393c9ba984268edb3e1a2
+
+pkgname = sidplay2-alsa
+
