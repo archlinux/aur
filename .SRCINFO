@@ -1,0 +1,18 @@
+pkgbase = evince-synctex
+	pkgdesc = Several scripts to ease the use of Evince with SyncTeX
+	pkgver = 1
+	pkgrel = 1
+	url = http://forum.ubuntuusers.de/topic/evince-synctex-vim-emacs-scite-lyx-kile-editor/
+	install = evince-synctex.install
+	arch = any
+	license = GPL
+	depends = dbus-glib
+	depends = python2-dbus
+	depends = python2-gobject2
+	source = http://dud.inf.tu-dresden.de/~ben/evince_synctex.tar.gz
+	source = evince-synctex.patch
+	sha256sums = 65b43f00e894d116bbccf62cac1d6bdd753c6bcb4d0d7f90efbf10c59dc95052
+	sha256sums = 2a8a5a55c68051f70a2ec8fe1e48b5c9a27f3def29ee4efb2f8e9773afda43cc
+
+pkgname = evince-synctex
+

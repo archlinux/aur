@@ -1,0 +1,75 @@
+diff --git a/evince b/evince
+index 5380585..f42c27f 100755
+--- a/evince
++++ b/evince
+@@ -1,5 +1,10 @@
+ #!/bin/sh
+-EDITORCMD="gvim --servername '`basename "$1" .pdf`' --remote-silent '+%l<Enter>' %f"
++#EDITORCMD="gvim --servername '`basename "$1" .pdf`' --remote-silent '+%l<Enter>' %f"
++if [ -z "$EDITORCMD" ]; then
++	echo 'Please set variable $EDITORCMD'
++	exit 1
++fi
++
+ # Highlight matched column
+ # EDITORCMD="gvim --servername '`basename "$1" .pdf`' --remote-silent '+%l<Enter>:match Search /\%%ll/' %f"
+ 
+@@ -8,7 +13,7 @@ PDFFILE="$1"
+ if [ -f "$PDFFILE" ];then
+ 	# danke an Feuerfieber
+ 	# http://forum.ubuntuusers.de/topic/evince-synctex-vim-emacs-scite-lyx-kile-editor/#post-2841828
+-	if [ -f "${PDFFILE%%.pdf}.synctex.gz" ];then
++	if [ -f "${PDFFILE%.pdf}.synctex.gz" ];then
+ 		evince_backward_search "$PDFFILE" "$EDITORCMD"&
+ 		BACKWARD_SEARCH_PID=$!
+ 		echo $BACKWARD_SEARCH_PID
+diff --git a/evince_backward_search b/evince_backward_search
+index 747de5b..0b6e818 100755
+--- a/evince_backward_search
++++ b/evince_backward_search
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ # -*- coding: utf-8 -*-
+ 
+ # Copyright (C) 2010 Jose Aliste <jose.aliste@gmail.com>
+@@ -18,7 +18,7 @@
+ # this program; if not, write to the Free Software Foundation, Inc., 51 Franklin
+ # Street, Fifth Floor, Boston, MA  02110-1301, USA
+ 
+-import dbus, subprocess, time, re
++import dbus, subprocess, time, re, urllib2
+ 
+ RUNNING, CLOSED = range(2)
+ 
+@@ -104,9 +104,9 @@ class EvinceWindowProxy:
+             if self._log:
+                 self._log.debug("GetWindowList returned empty list")
+ 
+-    def on_sync_source(self, input_file, source_link):
++    def on_sync_source(self, input_file, source_link, timestamp):
+         print input_file + ":" + str(source_link[0])
+-        cmd = re.sub("%f",input_file,self.editor)
++        cmd = re.sub("%f",'"'+urllib2.unquote(input_file.split("file://")[1])+'"',self.editor)
+         cmd = re.sub("%l",str(source_link[0]), cmd)
+         print cmd
+         subprocess.call(cmd, shell=True)
+@@ -142,7 +142,7 @@ E.g.:
+         print_usage()
+ 
+     dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
+-    a = EvinceWindowProxy('file://' + pdf_file, sys.argv[2] ,True)
++    a = EvinceWindowProxy('file://' + urllib2.quote(pdf_file,safe="%/:=&?~#+!$,;'@()*[]"), sys.argv[2] ,True)
+     
+ 
+     loop = gobject.MainLoop()
+diff --git a/evince_forward_search b/evince_forward_search
+index 420e16a..a0b690a 100755
+--- a/evince_forward_search
++++ b/evince_forward_search
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ # -*- coding: utf-8 -*-
+ 
+ # Copyright (C) 2010 Jose Aliste <jose.aliste@gmail.com>

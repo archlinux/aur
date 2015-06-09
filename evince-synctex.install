@@ -1,0 +1,3 @@
+post_install() {
+  echo 'Do not forget to set $EDITORCMD in ~/.bashrc (or similar)'
+}
