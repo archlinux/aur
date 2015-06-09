@@ -1,0 +1,14 @@
+pkgbase = python2-shutilwhich
+	pkgdesc = shutil.which for those not using Python 3.3 yet.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://github.com/mbr/shutilwhich
+	arch = any
+	license = PSF
+	makedepends = python2
+	depends = python2
+	source = https://pypi.python.org/packages/source/s/shutilwhich/shutilwhich-1.1.0.tar.gz
+	md5sums = 915947c5cdae7afd748ac715ee547adb
+
+pkgname = python2-shutilwhich
+
