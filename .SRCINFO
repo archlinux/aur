@@ -1,0 +1,22 @@
+pkgbase = vidalia
+	pkgdesc = Controller GUI for Tor
+	pkgver = 0.2.21
+	pkgrel = 4
+	url = https://www.torproject.org/vidalia
+	install = vidalia.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = geoip
+	depends = qt4
+	depends = tor
+	source = https://dist.torproject.org/vidalia/vidalia-0.2.21.tar.gz
+	source = https://dist.torproject.org/vidalia/vidalia-0.2.21.tar.gz.asc
+	source = vidalia.install
+	sha256sums = c4008e7e7781dddf4a8670a435da6496dc9309dbdbc6125ac6d2cc871bdc1be7
+	sha256sums = SKIP
+	sha256sums = c20e899df28939abd84fd3ec0e2e62058e85da0a42e123af732cdaabb7da177e
+
+pkgname = vidalia
+
