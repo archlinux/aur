@@ -1,0 +1,14 @@
+pkgbase = bmkdep
+	pkgdesc = NetBSD mkdep: construct Makefile dependency list
+	pkgver = 20140112
+	pkgrel = 1
+	url = https://code.google.com/p/bmkdep
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = bmake
+	source = https://bmkdep.googlecode.com/files/bmkdep-20140112.tar.gz
+	sha256sums = 393aafe3d42eee6f055741268904d4f6da82700394eb4b942f3015c8c36f674c
+
+pkgname = bmkdep
+
