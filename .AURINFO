@@ -1,0 +1,17 @@
+pkgbase = python2-rtmpy
+	pkgdesc = A Python module that provides RTMP support
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/hydralabs/rtmpy
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = setuptools
+	depends = python2
+	depends = python2-pyamf
+	depends = twisted
+	depends = zope-interface
+	source = http://pypi.python.org/packages/source/R/RTMPy/RTMPy-0.1.1.tar.gz
+
+pkgname = python2-rtmpy
+
