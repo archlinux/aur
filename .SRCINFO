@@ -1,0 +1,15 @@
+pkgbase = ttf-tempesta-seven
+	pkgdesc = Tempesta seven font pack.
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://p.yusukekamiyamane.com/
+	install = ttf-tempesta-seven.install
+	arch = any
+	license = Unknown
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = ttf-tempesta-seven.zip::http://p.yusukekamiyamane.com/fonts/downloads/tempesta-seven-fonts-1.2.zip
+	md5sums = cc4a722fae8fac219e3159db1745fc7c
+
+pkgname = ttf-tempesta-seven
+
