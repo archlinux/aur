@@ -1,0 +1,15 @@
+pkgbase = ruby-jekyll-gist
+	pkgdesc = Liquid tag for displaying GitHub Gists in Jekyll sites.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/jekyll/jekyll-gist
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = jekyll-gist-1.2.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/jekyll-gist-1.2.1.gem
+	sha1sums = 5a61716797d297acc5b132a808fb5ee65b1a548c
+
+pkgname = ruby-jekyll-gist
+
