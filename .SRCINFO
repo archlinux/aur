@@ -1,0 +1,17 @@
+pkgbase = orderoftwilight
+	pkgdesc = a game where you use your arrow keys to cast a number of different spells
+	pkgver = 1
+	pkgrel = 3
+	url = http://blog.stabyourself.net/post/33229884169/new-game-order-of-twilight
+	arch = any
+	license = CCPL:by-nc-sa
+	depends = love08
+	source = orderoftwilight.sh
+	source = orderoftwilight.desktop
+	source = orderoftwilight.zip::http://games.mylittlegamejam.com/game/download/source/39
+	sha256sums = c2a1a1661fb1885c29cd01dd5785cd146b037eb52bc334b7b74fd1b52b0ae55b
+	sha256sums = 525028059749e51613b8ac04340214dd60a0ca80df01c5eda37e9f6c182b1d1b
+	sha256sums = a0658152cf8ceaeda725e05bf73a19f615a788a395eaba3463bff6bc38ea3c12
+
+pkgname = orderoftwilight
+

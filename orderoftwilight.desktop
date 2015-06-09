@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Icon=gnome-mime-application-x-love-game
+Exec=orderoftwilight
+Terminal=false
+StartupNotify=false
+Name=Order of Twilight
+GenericName=Arcade Game
+Comment=a game where you use your arrow keys to cast a number of different spells
+Categories=Game;ArcadeGame;
