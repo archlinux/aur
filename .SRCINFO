@@ -1,0 +1,18 @@
+pkgbase = python2-cube-client
+	pkgdesc = A Python client for Cube: Time Series Data Collection & Analysis
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/tsileo/cube-client
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-requests
+	optdepends = cube-git: Time series data collection & analysis
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/c/cube-client/cube-client-0.2.0.tar.gz
+	md5sums = db789558ee0ee1a6d5eeed1dc5e58196
+	sha256sums = 55c397d335b9e20afa8cc0279f49e35d0e78780919e465c4d0e1dc30532ea10f
+
+pkgname = python2-cube-client
+
