@@ -1,0 +1,21 @@
+pkgbase = softhsm
+	pkgdesc = Software PKCS11 store
+	pkgver = 1.3.7
+	pkgrel = 3
+	url = http://www.opendnssec.org/softhsm/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = botan-1.10
+	depends = sqlite3>=3.3.9
+	options = !libtool
+	backup = etc/softhsm.conf
+	source = http://www.opendnssec.org/files/source/softhsm-1.3.7.tar.gz
+	md5sums = acfda39ee23c32f38ee51692d6c6a44b
+	sha1sums = e8bf4269472f9e63d1dfeda238b1d542d6c036f2
+	sha256sums = d12d6456a85561266d9da427565f3ee3746a35df6670d5e6be75de253c2810a4
+	sha384sums = a0c8541efe1443f4c98c83be4c86265f1e40c112c5bf4ae5b98a358d858b7a392c39938ad8f6a8f4d4a103742ddbc913
+	sha512sums = 287400b981b7b420a300593129696e4739afe085a8106047ef429bc741d205bed214386b422572327c3bda63f0fb1b7558bb4d30d184ca3ec2ba9900153f075d
+
+pkgname = softhsm
+
