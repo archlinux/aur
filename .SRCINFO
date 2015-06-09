@@ -1,0 +1,14 @@
+pkgbase = opensong
+	pkgdesc = Free software application for managing chords/lyrics and presenting lyrics. Great for worship leaders and musicians.
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = http://www.opensong.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = lib32-gtk2
+	source = http://downloads.sourceforge.net/project/opensong/OpenSong/V2.1.2/opensong_2.1.2-1_i386.deb
+	md5sums = 8928ee4656903bc38ee9cae6d0677fa1
+
+pkgname = opensong
+
