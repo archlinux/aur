@@ -1,0 +1,14 @@
+pkgbase = elixir-build
+	pkgdesc = Compile and install different versions of Elixir
+	pkgver = 20141001
+	pkgrel = 1
+	url = https://github.com/mururu/elixir-build
+	arch = any
+	license = MIT
+	depends = erlang
+	optdepends = git: install Elixir from git
+	source = elixir-build-20141001.tar.gz::https://codeload.github.com/mururu/elixir-build/tar.gz/v20141001
+	sha256sums = 825637780a580b7ebe8c5265a43d37ceff9f3876e771aa2f824079e504ad7347
+
+pkgname = elixir-build
+
