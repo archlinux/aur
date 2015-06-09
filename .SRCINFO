@@ -1,0 +1,15 @@
+pkgbase = gxkb
+	pkgdesc = X11 keyboard indicator and switcher
+	pkgver = 0.7.5
+	pkgrel = 1
+	url = http://sourceforge.net/projects/gxkb
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = libxklavier
+	depends = libwnck
+	source = http://downloads.sourceforge.net/gxkb/gxkb-0.7.5.tar.gz
+	md5sums = d8b56e1b99411a89e42511498aeae226
+
+pkgname = gxkb
+
