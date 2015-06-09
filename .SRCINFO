@@ -1,0 +1,16 @@
+pkgbase = hexchat-lua-git
+	pkgdesc = Lua plugin for scripts
+	pkgver = 32.eda6cba
+	pkgrel = 1
+	url = https://github.com/hexchat/hexchat-addons
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = lua51
+	depends = hexchat
+	source = git://github.com/hexchat/hexchat-addons.git
+	md5sums = SKIP
+
+pkgname = hexchat-lua-git
+
