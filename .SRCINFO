@@ -1,0 +1,20 @@
+pkgbase = python2-coinkit
+	pkgdesc = Keypair, address, brain wallet & deterministic wallet creation for Bitcoin, Litecoin, Dogecoin, Namecoin and others
+	pkgver = 0.7.8
+	pkgrel = 1
+	url = https://github.com/onenameio/coinkit
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-characters
+	depends = python2-ecdsa
+	depends = python2-pybitcointools
+	depends = python2-utilitybelt
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/c/coinkit/coinkit-0.7.8.tar.gz
+	md5sums = 739b7787ddd629b766bf04af86a196f9
+	sha256sums = 2588ec4516c649e4f8469dcd79ed1a6345dc0f71b4003ef88276f7c31fd1f587
+
+pkgname = python2-coinkit
+
