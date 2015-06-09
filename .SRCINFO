@@ -1,0 +1,14 @@
+pkgbase = nuvola-app-rdio-git
+	pkgdesc = Rdio integration for Nuvola Player.
+	pkgver = r8.52a785d
+	pkgrel = 1
+	url = https://github.com/tiliado/nuvola-app-rdio
+	arch = any
+	license = custom:BSD
+	makedepends = git
+	depends = nuvolaplayer-git
+	source = nuvola-app-rdio-git::git+https://github.com/tiliado/nuvola-app-rdio.git
+	sha256sums = SKIP
+
+pkgname = nuvola-app-rdio-git
+
