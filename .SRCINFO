@@ -1,0 +1,15 @@
+pkgbase = gottet
+	pkgdesc = A tetris clone using the Qt GUI toolkit
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = http://gottcode.org/gottet/
+	install = gottet.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qt5-base
+	source = http://gottcode.org/gottet/gottet-1.1.1-src.tar.bz2
+	sha256sums = c276dba1f7d145d74713fdc92fe2b22cf538ace0115026466109857f7b543163
+
+pkgname = gottet
+
