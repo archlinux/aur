@@ -1,0 +1,19 @@
+pkgbase = perl-mozldap
+	pkgdesc = LDAP Perl module that wraps the OpenLDAP C SDK
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = http://www.mozilla.org/directory/perldap.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = MPL
+	depends = mozldap
+	depends = openldap
+	source = ftp://ftp.mozilla.org/pub/mozilla.org/directory/perldap/releases/1.5.3/src/perl-mozldap-1.5.3.tar.gz
+	source = Makefile.PL.rpm
+	sha512sums = 41a6913222cde9be4dc85a6406b0a499954500a38e74e5367f150191f0ea186162b5cd66a2655240909a4d5cc9df820e349e37e73c8549f83d084d96f8f74375
+	sha512sums = 0cb51bc94cba8ca257607debc8eef2fc1457fe074ba45d7978767a8e22c913b28e87e4c186e05b716e5b14b7ca2990b87d57c858e5e9215f8e4252ff9520ab86
+
+pkgname = perl-mozldap
+
