@@ -1,4 +1,4 @@
-# Maintainer: proudzhu <proudzhu at gmail.com>
+# Maintainer: proudzhu <proudzhu.fdu at gmail.com>
 
 pkgname=libvips-git
 _pkgname=libvips
