@@ -1,0 +1,26 @@
+pkgbase = kanla
+	pkgdesc = small-scale alerting daemon
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://kanla.zekjur.net/
+	arch = any
+	license = bsd
+	makedepends = html-xml-utils
+	makedepends = asciidoc
+	depends = perl
+	depends = perl-anyevent
+	depends = perl-anyevent-xmpp
+	depends = perl-anyevent-http
+	depends = perl-config-general
+	depends = perl-file-sharedir
+	depends = perl-json-xs
+	options = !emptydirs
+	backup = etc/kanla/default.cfg
+	backup = etc/kanla/default.d/http-example.cfg
+	source = http://kanla.zekjur.net/downloads/kanla-1.5.tar.gz
+	source = kanla.service
+	md5sums = dbecd47dabd36149e59bf06b1b71cbd3
+	md5sums = 600d68ad8d099722fa6b905c14bdd90b
+
+pkgname = kanla
+

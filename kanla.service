@@ -1,0 +1,9 @@
+[Unit]
+Description=small-scale alerting daemon
+Documentation=man:kanla(1p) http://kanla.zekjur.net/docs/userguide.html
+
+[Service]
+ExecStart=/usr/bin/vendor_perl/kanla
+
+[Install]
+WantedBy=multi-user.target
