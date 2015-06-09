@@ -1,7 +1,7 @@
 # Maintainer: Justin Dray <justin@dray.be>
 # Maintainer: Daniel Egeberg <daniel.egeberg@gmail.com>
 pkgname="sonarr-develop"
-pkgver=2.0.0.2597
+pkgver=2.0.0.3229
 pkgrel=1
 pkgdesc="PVR for newsgroup users. Formerly known as NZBDrone, with added torrent support."
 arch=(any)
