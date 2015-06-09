@@ -1,4 +1,6 @@
 # Maintainer: Stephen Zhang <zsrkmyn at gmail dot com>
+# Co-maintainer: Jiachen Yang <farseerfc@gmail.com>
+
 pkgname=nvchecker-git
 pkgver=v0.3.r47.g0093a40
 pkgrel=1
