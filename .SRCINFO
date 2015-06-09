@@ -1,0 +1,27 @@
+pkgbase = ttcut
+	pkgdesc = MPEG-2 cutting tool for removing commercials from demuxed DVB recordings
+	pkgver = 0.19.6
+	pkgrel = 1
+	url = http://ttcut.tritime.de/index.2.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt4
+	depends = libmpeg2
+	depends = glu
+	optdepends = mjpegtools: create preview
+	optdepends = mplayer: play preview
+	optdepends = transcode: encoding mode
+	source = http://downloads.sourceforge.net/project/ttcut.berlios/ttcut-0.19.6.tar.gz
+	source = ttcut-0.19.6-deprecated.patch
+	source = ttcut-0.19.6-ntsc-fps.patch
+	source = ttcut-0.19.6-ffmpeg-vf-setdar.patch
+	source = ttcut-0.19.6-no_implicit_GLU.patch
+	md5sums = cb7774465b4e92fbdcde23de266a0929
+	md5sums = cbf959a2ac67f5a76b5a27043ddcbc49
+	md5sums = 13d967ec8d1a40d41ca20e4b743eac95
+	md5sums = 96869a5a33fe632336489a383ad7d629
+	md5sums = ed95d6cf9d078bfc0fdd793f2c67773f
+
+pkgname = ttcut
+
