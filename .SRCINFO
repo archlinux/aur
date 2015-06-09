@@ -1,0 +1,16 @@
+pkgbase = ttf-impallari-lobster-font
+	pkgdesc = A lovely bold condensed script (OTF), from Pablo Impallari
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://www.impallari.com/lobster/
+	install = updatefont.install
+	arch = any
+	groups = impallari-fonts
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.impallari.com/media/releases/lobster-font-1.4.zip
+	md5sums = ed3c3873340a17276a8ad556ecf3da5a
+
+pkgname = ttf-impallari-lobster-font
+
