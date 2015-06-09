@@ -1,0 +1,16 @@
+post_install() {
+    udevadm hwdb --update
+    echo "udev rules, udev hwdb, and ACPI hooks updated."
+    echo "You need to restart acpid and reload the udev rules/hwdb for these"
+    echo "changes to take effect. To reload the udev rules, you can reboot,"
+    echo "restart udev, or run as root:"
+    echo "    udevadm trigger --action=change"
+}
+
+post_upgrade() {
+    post_install $1
+}
+
+post_remove() {
+    post_install $1
+}

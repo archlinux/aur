@@ -1,0 +1,27 @@
+pkgbase = thinkpad-scripts
+	pkgdesc = Scripts for ThinkPad X220 & X230 Tablet rotation, docking, etc.
+	pkgver = 4.4.0
+	pkgrel = 1
+	url = http://martin-ueding.de/en/projects/think-rotate
+	install = thinkpad-scripts.install
+	arch = any
+	license = GPL
+	makedepends = python-sphinx
+	depends = acpid
+	depends = alsa-utils
+	depends = python
+	depends = python-setuptools
+	depends = systemd>=196
+	depends = xf86-input-wacom
+	depends = xorg-xinput
+	depends = xorg-xrandr
+	optdepends = glib2: for rotating subpixel anti-aliasing
+	optdepends = kvkbd: for virtual keyboard
+	optdepends = libpulse: for volume control when docking
+	optdepends = networkmanager: for managing connections when docking
+	optdepends = xorg-xbacklight: for backlight control when docking
+	conflicts = think-rotate
+	source = https://github.com/martin-ueding/thinkpad-scripts/archive/v4.4.0.tar.gz
+	sha256sums = 2a657dd32cbfd18d565e4a7b7626b879217cbadd6c6b292d44231c58f4815ef1
+
+pkgname = thinkpad-scripts
