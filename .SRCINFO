@@ -1,0 +1,17 @@
+pkgbase = otf-bergamo
+	pkgdesc = Open type serif font resembling Bembo
+	pkgver = 1
+	pkgrel = 3
+	url = http://www.fontsite.com/download-free-fonts/bergamo-std
+	install = otf-bergamo.install
+	arch = any
+	license = custom:FontSite Free Font License
+	makedepends = unzip
+	depends = fontconfig
+	depends = xorg-font-utils
+	noextract = BergamoStd.zip
+	source = http://www.fontsite.com/freefonts/BergamoStd.zip
+	md5sums = 2e0ded1cf1791dc8650510087aaff2de
+
+pkgname = otf-bergamo
+
