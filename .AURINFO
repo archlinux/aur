@@ -1,0 +1,22 @@
+pkgbase = vim-light
+	pkgdesc = Vi Improved, a highly configurable, improved version of the vi text editor (minimal install)
+	pkgver = 7.4.335
+	pkgrel = 1
+	url = http://www.vim.org
+	arch = i686
+	arch = x86_64
+	license = custom:vim
+	makedepends = python2
+	makedepends = desktop-file-utils
+	provides = vim
+	provides = vim-runtime
+	conflicts = gvim
+	conflicts = vi
+	conflicts = vim
+	conflicts = vim-runtime
+	source = ftp://ftp.vim.org/pub/vim/unix/vim-7.4.tar.bz2
+	options = strip
+	options = !docs
+
+pkgname = vim-light
+
