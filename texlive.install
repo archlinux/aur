@@ -1,0 +1,17 @@
+# $Id: texlive.install 149 2009-04-30 00:46:23Z shtrom $
+# Taken from texlive-publishers
+
+post_install() {
+	echo    ">>> texlive: updating the filename database..."
+	texconfig-sys rehash
+}
+
+post_upgrade() {
+	echo    ">>> texlive: updating the filename database..."
+	texconfig-sys rehash
+}
+
+post_remove() {
+	echo    ">>> texlive: updating the filename database..."
+	texconfig-sys rehash
+}

@@ -1,0 +1,14 @@
+pkgbase = latex-template-pss
+	pkgdesc = LaTeX template for the physica status solidi journal
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.wiley-vch.de/publish/en/journals/alphabeticIndex/2133/?jURL=http://www.wiley-vch.de:80/vch/journals/2133/2133_authors.html
+	install = texlive.install
+	arch = any
+	makedepends = unzip
+	depends = texlive-core
+	source = http://www.wiley-vch.de/vch/journals/2133/public/pss_template_latex.zip
+	md5sums = a1e5820088aa0417f12ce085fd07caa4
+
+pkgname = latex-template-pss
+
