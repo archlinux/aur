@@ -1,0 +1,16 @@
+pkgbase = ruby-rspec-puppet
+	pkgdesc = Spec tests for your Puppet manifests.
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = http://rspec-puppet.com/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = rubygems
+	depends = ruby
+	noextract = rspec-puppet-2.2.0.gem
+	source = https://rubygems.org/downloads/rspec-puppet-2.2.0.gem
+	sha256sums = 1e10cf0c9182470ce5f6db97e113767bc29d3426d6e964627eaea20b9d555d92
+
+pkgname = ruby-rspec-puppet
+
