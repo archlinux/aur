@@ -1,0 +1,15 @@
+pkgbase = ttf-impallari-lobstertwo
+	pkgdesc = Other lovely bold condensed script, from Pablo Impallari
+	pkgver = 1.006
+	pkgrel = 1
+	url = http://www.impallari.com/lobstertwo/
+	install = updatefont.install
+	arch = any
+	groups = impallari-fonts
+	license = custom:OFL
+	makedepends = wget
+	depends = fontconfig
+	depends = xorg-font-utils
+
+pkgname = ttf-impallari-lobstertwo
+
