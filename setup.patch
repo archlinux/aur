@@ -1,0 +1,11 @@
+--- setup.py.orig	2012-09-30 01:42:40.000000000 +0900
++++ setup.py	2014-03-13 23:54:23.783936770 +0900
+@@ -7,7 +7,7 @@
+     return os.popen(str).readlines()[0][:-1]
+ 
+ def cmd2(str):
+-    return cmd1(str).split()
++    return string.split(cmd1(str))
+ 
+ setup(name = "cabocha-python",
+ 	version = cmd1("cabocha-config --version"),
