@@ -1,0 +1,19 @@
+pkgbase = mjpg-streamer-svn
+	pkgdesc = Stream mjpeg frames from a webcam via http
+	pkgver = 182
+	pkgrel = 2
+	url = http://sourceforge.net/projects/mjpg-streamer
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	makedepends = gcc
+	depends = libjpeg-turbo
+	depends = imagemagick
+	provides = mjpg-streamer-svn
+	conflicts = mjpg-streamer
+	source = mjpg-streamer-svn::svn+http://svn.code.sf.net/p/mjpg-streamer/code/
+	md5sums = SKIP
+
+pkgname = mjpg-streamer-svn
+
