@@ -1,0 +1,19 @@
+pkgbase = ruby-sprockets
+	pkgdesc = Rack-based asset packaging system
+	pkgver = 2.12.3
+	pkgrel = 1
+	url = http://getsprockets.org/
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-hike-1
+	depends = ruby-multi_json
+	depends = ruby-rack
+	depends = ruby-tilt-1
+	noextract = sprockets-2.12.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/sprockets-2.12.3.gem
+	sha1sums = 80225438c1f7512f7960e79ba545f4d374c04b71
+
+pkgname = ruby-sprockets
+
