@@ -1,0 +1,33 @@
+pkgbase = legendofdungeon
+	pkgdesc = A 4 Player Co-op Rogue-Like-like Beat'em'up with Dynamic Lighting on AWESOME Pixel Art.
+	pkgver = Unicorn
+	pkgrel = 1
+	url = http://www.robotloveskitty.com/LoD/
+	arch = x86_64
+	license = custom
+	depends = lib32-libxdmcp
+	depends = lib32-libxau
+	depends = lib32-libxrender
+	depends = lib32-libdrm
+	depends = lib32-libxxf86vm
+	depends = lib32-libxshmfence
+	depends = lib32-libxcb
+	depends = lib32-libx11
+	depends = lib32-libxfixes
+	depends = lib32-libxdamage
+	depends = lib32-mesa
+	depends = lib32-expat
+	depends = lib32-glibc
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = lib32-libxcursor
+	depends = lib32-libxext
+	depends = lib32-libx11
+	depends = lib32-mesa-libgl
+	depends = lib32-glu
+	depends = lib32-gcc-libs
+	source = LegendofDungeon-Linux-Unicorn.zip::https://manual-download-required
+	md5sums = 87c9099e06a446b8159454b9a03a5912
+
+pkgname = legendofdungeon
+
