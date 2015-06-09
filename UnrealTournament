@@ -1,0 +1,3 @@
+#!/bin/sh
+
+/opt/ut4/Engine/Binaries/Linux/UE4-Linux-Test UnrealTournament

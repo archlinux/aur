@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Unreal Tournament 4
+Comment=Unreal Tournament 4 Pre Alpha
+Type=Application
+Categories=Game;
+Exec=/usr/bin/UnrealTournament
+Encoding=UTF-8
+Terminal=false
