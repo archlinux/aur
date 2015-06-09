@@ -1,0 +1,15 @@
+pkgbase = delorean
+	pkgdesc = The Metal Gtk Theme. For Gnome 3.16, Gnome-Shell, Xfce, Cinnamon, MATE, Firefox, & Chromium
+	pkgver = 3.16_12_05202015
+	pkgrel = 1
+	url = http://fav.me/d7vgccg
+	arch = any
+	license = GPLv3
+	depends = gtk-engines
+	depends = gnome-themes-standard>=3.16
+	depends = gtk-engine-murrine>=0.98.2
+	source = https://dl.dropboxusercontent.com/u/330352/delorean-3.16-12_05202015.zip
+	md5sums = 8997a57b4083be594af24702ac2745c8
+
+pkgname = delorean
+
