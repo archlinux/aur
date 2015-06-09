@@ -1,0 +1,16 @@
+pkgbase = ttf-impallari-dancing-script
+	pkgdesc = Lively casual script where the letters bounce and change size slightly, from Pablo Impallari
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://www.impallari.com/dancing/
+	install = updatefont.install
+	arch = any
+	groups = impallari-fonts
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.impallari.com/media/releases/dancing-script-v1.2.zip
+	md5sums = 2dff08125b75464d697b83c1d931b136
+
+pkgname = ttf-impallari-dancing-script
+
