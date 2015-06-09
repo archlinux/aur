@@ -1,0 +1,17 @@
+post_install() {
+  printf "$mist\n"
+}
+
+post_upgrade() {
+  post_install
+}
+
+read -d '' mist <<'EOF'
+To start Mist:
+
+    $ mist -asset_path="/usr/share/mist"
+
+Or create a shell alias:
+
+    alias mist='mist -asset_path="/usr/share/mist"'
+EOF

@@ -1,0 +1,29 @@
+pkgbase = mist
+	pkgdesc = Ether Browser for Ethereum
+	pkgver = 20150519
+	pkgrel = 1
+	url = https://github.com/ethereum/go-ethereum
+	install = mist.install
+	arch = i686
+	arch = x86_64
+	groups = ethereum
+	license = GPL
+	makedepends = gcc
+	makedepends = git
+	makedepends = go
+	makedepends = godep
+	makedepends = make
+	makedepends = mercurial
+	depends = gmp
+	depends = leveldb
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-quickcontrols
+	depends = qt5-webengine
+	depends = readline
+	optdepends = go-ethereum: Ethereum Go developer client (CLI)
+	options = !strip
+	options = !emptydirs
+
+pkgname = mist
+
