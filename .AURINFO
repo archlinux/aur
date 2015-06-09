@@ -1,0 +1,14 @@
+pkgbase = perl-leocharre-debug
+	pkgdesc = debug sub
+	pkgver = 1.03
+	pkgrel = 1
+	url = http://search.cpan.org/dist/LEOCHARRE-Debug
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=0
+	source = http://search.cpan.org/CPAN/authors/id/L/LE/LEOCHARRE/LEOCHARRE-Debug-1.03.tar.gz
+	options = !emptydirs
+
+pkgname = perl-leocharre-debug
+
