@@ -1,0 +1,15 @@
+pkgbase = ruby-jekyll-coffeescript
+	pkgdesc = A CoffeeScript converter for Jekyll.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/jekyll/jekyll-coffeescript
+	arch = any
+	license = MIT
+	depends = ruby-coffee-script
+	noextract = jekyll-coffeescript-1.0.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/jekyll-coffeescript-1.0.1.gem
+	sha1sums = 1f3184ed4bc6b2ba7e6fdd5d8acc5bb0fef6b12c
+
+pkgname = ruby-jekyll-coffeescript
+
