@@ -2,7 +2,7 @@
 # Contributor: Hugo Osvaldo Barrera <hugo@barrera.io>
 # Contributor: SpepS <dreamspepser at yahoo dot it>
 
-#pkgbase=python-pywapi
+pkgbase=python-pywapi
 pkgname=(python-pywapi python2-pywapi)
 _pkgname=pywapi
 pkgver=0.3.8
