@@ -1,0 +1,23 @@
+pkgbase = python2-crossbar
+	pkgdesc = Crossbar.io - The Unified Application Router
+	pkgver = 0.10.4
+	pkgrel = 3
+	url = http://crossbar.io/
+	arch = any
+	license = AGPL3
+	makedepends = python2
+	depends = python2
+	depends = python2-twisted
+	depends = python2-treq
+	depends = python2-shutilwhich
+	depends = python2-mistune
+	depends = python2-pytrie
+	depends = python2-netaddr
+	depends = python2-service-identity
+	depends = python2-autobahn>=0.10.3
+	depends = python2-txaio>=1.0.0
+	source = https://pypi.python.org/packages/source/c/crossbar/crossbar-0.10.4.tar.gz
+	md5sums = af7bf2b91fd1dd4c390804662cc25a0e
+
+pkgname = python2-crossbar
+
