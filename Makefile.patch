@@ -1,0 +1,19 @@
+--- Makefile.orig	2014-04-05 14:32:49.000000000 +0900
++++ Makefile	2014-04-22 16:52:17.661681984 +0900
+@@ -1,4 +1,4 @@
+-GPSSHOGI_HOME = ../../gpsshogi
++GPSSHOGI_HOME = /usr/share/gpsshogi
+ ifdef PROFILE
+ RELEASE = true
+ endif
+@@ -15,8 +15,8 @@
+ 
+ LOADLIBES += -lpthread
+ 
+-GPSFISH_HOME_FLAGS = -DGPSFISH_HOME=\"$(shell dirname `pwd`)\"
+-OSL_HOME_FLAGS = -DOSL_HOME=\"$(shell dirname `dirname \`pwd\``)/osl\"
++GPSFISH_HOME_FLAGS = -DGPSFISH_HOME=\"/usr/share/gpsshogi\"
++OSL_HOME_FLAGS = -DOSL_HOME=\"/usr/share/osl\"
+ CXXFLAGS += -msse -DGPSFISH -DPROMOTE_AS_CAPTURE $(GPSFISH_HOME_FLAGS) $(OSL_HOME_FLAGS)
+ 
+ SRCS = benchmark.cpp misc.cpp timeman.cpp evaluate.cpp move.cpp position.cpp tt.cpp main.cpp movegen.cpp search.cpp uci.cpp book.cpp movepick.cpp thread.cpp ucioption.cpp

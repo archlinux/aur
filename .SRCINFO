@@ -1,0 +1,19 @@
+pkgbase = gpsfish
+	pkgdesc = Shogi program ported from Stockfish combined with GPSShogi's evaluation function and other shogi stuffs
+	pkgver = r61
+	pkgrel = 3
+	url = http://gps.tanaka.ecc.u-tokyo.ac.jp/gpsshogi/index.php?GPSFish
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = boost
+	depends = libosl-svn
+	depends = gpsshogi-svn
+	depends = boost-libs
+	source = gpsfish.tar.gz::http://gps.tanaka.ecc.u-tokyo.ac.jp/cgi-bin/viewvc.cgi/branches/gpsfish_dev/?root=gpsfish&view=tar
+	source = Makefile.patch
+	md5sums = SKIP
+	md5sums = 2b3f68dd79c59cb22e52a7cf47538e04
+
+pkgname = gpsfish
+
