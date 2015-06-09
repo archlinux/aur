@@ -1,6 +1,6 @@
 # Maintainer: Nick Østergaard <oe.nick at gmail dot com>
 pkgname=gnuais
-pkgver=0.3.1
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Open source software for demodulating and decoding AIS messages"
 arch=('x86' 'x86_64')
@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('libpulse' 'curl' 'osm-gps-map' 'libmysqlclient')
 makedepends=('cmake')
 source=(https://github.com/rubund/gnuais/archive/$pkgver.zip)
-md5sums=('f9fc0222f974abaf9e142cfb77d4e9fb')
+md5sums=('b3ef68d11d79315864912699a0881d32')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
