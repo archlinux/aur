@@ -1,0 +1,18 @@
+pkgbase = nodejs-async
+	pkgdesc = Higher-order functions and common patterns for asynchronous code
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://github.com/caolan/async
+	arch = any
+	license = MIT
+	checkdepends = nodejs-nodeunit
+	makedepends = nodejs
+	makedepends = nodejs-uglify-js
+	provides = nodejs-async
+	source = https://github.com/caolan/async/archive/0.9.2.tar.gz
+	source = Makefile.patch
+	md5sums = 13c1cfbc4fc6b99b0d4e94cd1d453e16
+	md5sums = d514b5c61b237cbe1b225d15389eb110
+
+pkgname = nodejs-async
+
