@@ -1,0 +1,24 @@
+pkgbase = ruby-rails
+	pkgdesc = Full-stack web application framework.
+	pkgver = 4.2.1
+	pkgrel = 1
+	url = http://www.rubyonrails.org
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-activesupport
+	depends = ruby-actionpack
+	depends = ruby-actionview
+	depends = ruby-activemodel
+	depends = ruby-activerecord
+	depends = ruby-actionmailer
+	depends = ruby-railties
+	depends = ruby-bundler
+	depends = ruby-sprockets-rails
+	noextract = rails-4.2.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rails-4.2.1.gem
+	sha1sums = 124385963830912b6ceeba8ecaf576f40f3b8117
+
+pkgname = ruby-rails
+
