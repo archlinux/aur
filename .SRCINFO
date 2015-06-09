@@ -1,0 +1,32 @@
+pkgbase = mumble-jack
+	pkgdesc = Mumble with support for JACK
+	pkgver = 1.2.8
+	pkgrel = 3
+	url = http://mumble.info/
+	install = mumble.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = boost
+	makedepends = mesa
+	makedepends = avahi
+	depends = qt4
+	depends = speex
+	depends = lsb-release
+	depends = libxi
+	depends = avahi
+	depends = libsndfile
+	depends = protobuf
+	depends = libpulse
+	depends = jack
+	provides = mumble
+	conflicts = mumble
+	source = http://downloads.sourceforge.net/mumble/mumble-1.2.8.tar.gz
+	source = gcc49.patch::https://github.com/mumble-voip/mumble/commit/349436284b5f1baa61836c98ff0d518392140c5d.patch
+	source = http://sourceforge.net/p/mumble/patches/_discuss/thread/1bfdbda2/a90e/attachment/mumble-jack-support.patch
+	md5sums = 1a3ef91489ff674dfc010377d7721a28
+	md5sums = 9a1c254352dd4bb9fe4ba2f7471fb030
+	md5sums = 03d89f5f4265de696505211984b969a0
+
+pkgname = mumble-jack
+
