@@ -1,0 +1,19 @@
+pkgbase = lib32-libqxt
+	pkgdesc = provides a suite of cross-platform utility classes to add functionality not readily available in the Qt toolkit (32 bit)
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = http://www.libqxt.org
+	arch = x86_64
+	license = CPL
+	makedepends = lib32-qt gcc-multilib
+	depends = lib32-qt
+	depends = lib32-openssl
+	depends = lib32-db
+	depends = libqxt
+	source = http://bitbucket.org/libqxt/libqxt/get/v0.6.2.tar.bz2
+	source = 32bit.patch
+	md5sums = a859a1757dc0aaf010df1a0783e3e001
+	md5sums = 0dc5f9c80efbd875d754be0fcf765cdc
+
+pkgname = lib32-libqxt
+
