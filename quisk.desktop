@@ -1,0 +1,16 @@
+[Desktop Entry]
+Name=quisk
+Name[en_US]=quisk
+Comment=Software defined radio
+Comment[en_US]=Software defined radio
+Encoding=UTF-8
+Exec=python2 /opt/quisk/quisk.py
+Icon=
+MimeType=text
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+Categories=Application;HamRadio
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false
