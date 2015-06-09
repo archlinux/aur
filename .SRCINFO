@@ -1,0 +1,15 @@
+pkgbase = nodejs-riot
+	pkgdesc = A React-like, 2.5K user interface library
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://muut.com/riotjs
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	provides = riot
+	provides = nodejs-riot
+	conflicts = riot
+
+pkgname = nodejs-riot
+
