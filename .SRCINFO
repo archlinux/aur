@@ -1,0 +1,25 @@
+pkgbase = python-bitcoin
+	pkgdesc = Python Bitcoin Tools
+	pkgver = 1.1.29
+	pkgrel = 1
+	url = https://github.com/vbuterin/pybitcointools
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-six
+	provides = pybitcointools
+	provides = pybtctool
+	provides = python-bitcoin
+	provides = python-pybitcointools
+	conflicts = pybitcointools
+	conflicts = pybtctool
+	conflicts = python-pybitcointools
+	conflicts = python-python-bitcoinlib
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/b/bitcoin/bitcoin-1.1.29.tar.gz
+	md5sums = c82c9684642fb6166de3b77bdb0b4b9a
+	sha256sums = 18a38854025acb9b321cc3456aad54447e597cac4cdc52b4cd08dd5436a508a6
+
+pkgname = python-bitcoin
+
