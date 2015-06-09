@@ -1,0 +1,15 @@
+pkgbase = ruby-jekyll-watch
+	pkgdesc = Rebuild your Jekyll site when a file changes with the `--watch` switch.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/jekyll/jekyll-watch
+	arch = any
+	license = MIT
+	depends = ruby-listen
+	noextract = jekyll-watch-1.2.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/jekyll-watch-1.2.1.gem
+	sha1sums = d61f152af17fd32cb76ffd4192a6f46eaf71e06c
+
+pkgname = ruby-jekyll-watch
+
