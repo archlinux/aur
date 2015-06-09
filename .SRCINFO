@@ -1,0 +1,17 @@
+pkgbase = cla
+	pkgdesc = Close active window. If desktop is active, logout. For panel-launcher.
+	pkgver = 1.0
+	pkgrel = 3
+	url = https://github.com/colinkeenan/cla
+	install = cla.install
+	arch = any
+	license = GPL
+	depends = xdotool
+	depends = wmctrl
+	source = https://raw.githubusercontent.com/colinkeenan/cla/v1.0/cla
+	source = https://raw.githubusercontent.com/colinkeenan/cla/v1.0/cla.desktop
+	md5sums = 4aff89eb4505840fd11c83404cf33717
+	md5sums = c0c289e6dac69a28a82add518b0252ac
+
+pkgname = cla
+
