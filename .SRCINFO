@@ -1,0 +1,18 @@
+pkgbase = radeon-profile-daemon-git
+	pkgdesc = System daemon for radeon-profile
+	pkgver = 20150315
+	pkgrel = 1
+	url = http://github.com/marazmista/radeon-profile-daemon
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = qt4
+	depends = xf86-video-ati
+	depends = radeon-profile
+	provides = radeon-profile-daemon
+	replaces = radeon-profile-daemon
+	source = git://github.com/marazmista/radeon-profile-daemon.git
+	sha256sums = SKIP
+
+pkgname = radeon-profile-daemon-git
+
