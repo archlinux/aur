@@ -1,0 +1,22 @@
+pkgbase = wslay
+	pkgdesc = The WebSocket library in C
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/tatsuhiro-t/wslay
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = git
+	makedepends = libtool
+	makedepends = make
+	makedepends = pkg-config
+	makedepends = python-sphinx
+	optdepends = cunit: build and run tests
+	optdepends = nettle: build and run tests
+	source = wslay-1.0.0.tar.gz::https://codeload.github.com/tatsuhiro-t/wslay/tar.gz/release-1.0.0
+	sha256sums = 874c4a6aa15b596846ff3a3ef848b8a6e6f4ca579a1657df9b318a06ac6c79a6
+
+pkgname = wslay
+
