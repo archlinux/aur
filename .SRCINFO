@@ -1,0 +1,20 @@
+pkgbase = hgtui-hg
+	pkgdesc = Textual user interface frontend for DSCM mercurial
+	pkgver = 378
+	pkgrel = 2
+	url = http://code.google.com/p/hgtui/
+	arch = any
+	license = GPL
+	makedepends = mercurial
+	makedepends = gettext
+	depends = python2
+	depends = python2-lxml
+	depends = mercurial
+	depends = ncurses
+	provides = hgtui
+	conflicts = hgtui
+	source = hg+https://bitbucket.org/hgtui/hgtui
+	md5sums = SKIP
+
+pkgname = hgtui-hg
+
