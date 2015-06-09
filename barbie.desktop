@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Barbie Seahorse Adventures
+GenericName=barbie
+Comment=You're a seahorse - and you want to go to the moon!
+Icon=/usr/share/barbie/data/images/platform/1.png
+Exec=barbie
+Terminal=false
+Type=Application
+Categories=Application;Game
+StartupNotify=true

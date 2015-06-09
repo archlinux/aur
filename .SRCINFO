@@ -1,0 +1,15 @@
+pkgbase = barbie-seahorse-adventures
+	pkgdesc = You're a seahorse - and you want to go to the moon!
+	pkgver = 1.0
+	pkgrel = 4
+	url = http://www.imitationpickles.org/barbie/
+	arch = any
+	license = GPL
+	depends = python2-pygame
+	source = http://www.imitationpickles.org/barbie/files/barbie-1.0.tar.gz
+	source = barbie.desktop
+	md5sums = 74e90654b74c7fffd4606102bc9b8bb3
+	md5sums = ce36c23657789918204aff3c354efd0a
+
+pkgname = barbie-seahorse-adventures
+
