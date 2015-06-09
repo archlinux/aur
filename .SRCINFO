@@ -1,0 +1,18 @@
+pkgbase = analizo
+	pkgdesc = Analizo is a free, multi-language, extensible source code analysis and visualization toolkit.
+	pkgver = 1.18.1
+	pkgrel = 1
+	url = http://analizo.org
+	arch = any
+	groups = analizo
+	license = GPLv3
+	makedepends = git
+	depends = perl
+	depends = perl-cpanplus-dist-arch
+	depends = sloccount
+	depends = doxyparse
+	source = http://analizo.org/download/analizo_1.18.1.tar.xz
+	sha512sums = 2184796a58a0d8ffe52c8dcb551c620986194926437ea99ab18cad6a014346b766bec26f6848579051686ac1562c50ab19d5d164afe6c4ec78ebe958d0ee4a9c
+
+pkgname = analizo
+
