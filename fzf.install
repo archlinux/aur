@@ -1,0 +1,26 @@
+post_install() {
+  printf "%b\n" "$fzfin"
+}
+
+read -d '' fzfin <<'EOF'
+fzf
+===
+
+Optional fzf keybindings for bash have been placed here:
+
+    /etc/profile.d/fzf.bash
+
+To utilize, add the following to your bash config:
+
+    . /etc/profile.d/fzf.bash
+
+Or for zsh, add the following to your config:
+
+    . /etc/profile.d/fzf.zsh
+
+For fish, keybindings are in
+
+    /usr/share/fish/functions/fzf.fish
+
+Fish will source this by default.
+EOF

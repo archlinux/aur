@@ -1,0 +1,27 @@
+pkgbase = fzf
+	pkgdesc = Command-line fuzzy finder
+	pkgver = 0.9.13
+	pkgrel = 1
+	url = https://github.com/junegunn/fzf
+	install = fzf.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	makedepends = make
+	depends = ncurses
+	depends = tmux
+	optdepends = fish: fish keybindings
+	optdepends = fzf-extras: fzf keybindings from junegunn wiki and dotfiles
+	optdepends = vim-fzf: vim plugin
+	optdepends = zsh: zsh keybindings
+	source = fzf-0.9.13.tar.gz::https://codeload.github.com/junegunn/fzf/tar.gz/0.9.13
+	source = key-bindings.bash.patch
+	source = key-bindings.zsh.patch
+	sha256sums = 0a9972482f57dddf0d7c72e21d13d664ad9b8ee0535bdaab60bb0db3f0ca14c3
+	sha256sums = 72d90ed4eff98e83786e713d69452c086194d901cc69422df1b4a276172e0825
+	sha256sums = 2d181a7964eb179edcddd5063223f8ad831620ade185f8673f6347f255972fc2
+
+pkgname = fzf
+
