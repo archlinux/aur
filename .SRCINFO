@@ -9,7 +9,7 @@ pkgbase = think
 	depends = python-setuptools
 	options = !emptydirs
 	source = https://pypi.python.org/packages/source/t/think/think-0.1.2.tar.gz
-	md5sums = 9aa19f2add8f11e3d51a21075a8d2f38
+	md5sums = 718724c66abb7be7ec5382651a0be8a9
 
 pkgname = think
 
