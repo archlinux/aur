@@ -1,0 +1,18 @@
+pkgbase = nullfs
+	pkgdesc = FUSE nullfs drivers
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/xrgtn/nullfs
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = fuse
+	source = git+https://github.com/xrgtn/nullfs.git
+	md5sums = SKIP
+
+pkgname = nul1fs
+
+pkgname = nulnfs
+
+pkgname = nullfs
+
