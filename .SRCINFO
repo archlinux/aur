@@ -1,0 +1,15 @@
+pkgbase = ruby-mqtt
+	pkgdesc = Pure Ruby gem that implements the MQTT protocol
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/njh/ruby-mqtt
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	depends = ruby
+	noextract = mqtt-0.3.1.gem
+	source = http://rubygems.org/downloads/mqtt-0.3.1.gem
+	md5sums = a38d295ac0f4a9bcd1790b244425fa3f
+
+pkgname = ruby-mqtt
+
