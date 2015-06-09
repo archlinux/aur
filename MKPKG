@@ -1,0 +1,6 @@
+pkgname=('pantheon-files-plugin-dropbox-bzr')
+builddeps=('pantheon-files-bzr')
+
+check_bzr $packagedir/$pkgname/${pkgname%-*}
+
+# vim: ts=2 sw=2 et:
