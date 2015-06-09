@@ -10,7 +10,9 @@ mkdir -p "$kega_localdir/Plugins"
 # create links for every included plugin
 if [ $(ls -1A $kega_libdir/plugins | wc -l) -gt 0 ]; then
   for i in $kega_libdir/plugins/*; do
-    ln -sf "$i" "$kega_localdir/Plugins/$(basename "$i")"
+    if [ ! -e "$kega_localdir/Plugins/$(basename "$i")" ]; then
+      ln -sf "$i" "$kega_localdir/Plugins/"
+    fi
   done
 fi
 
@@ -20,4 +22,4 @@ if ! [ -f "$kega_localdir/Fusion.ini" ]; then
 fi
 
 # here we go!
-$kega_libdir/kega-fusion "$@"
+$kega_libdir/Fusion "$@"

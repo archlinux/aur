@@ -1,7 +1,7 @@
 post_install() {
 	echo ""
-	echo "Some notes:"
-	echo "-----------"
+	echo "Some notes about Kega Fusion:"
+	echo "-----------------------------"
 	echo "- Kega expects Fusion.ini to be in '~/.Kega Fusion' and"
 	echo "  the render plugins to be in '~/.Kega Fusion/Plugins'."
 	echo "  This behaviour cannot be changed, so don't forget it"
@@ -14,5 +14,13 @@ post_install() {
 }
 
 post_upgrade() {
-	post_install
+	echo ""
+	echo "Kega Fusion now uses system libmpg123 for MP3 playback."
+	echo "If you already have a Fusion.ini configuration file"
+	echo "in '~/.Kega Fusion', you should edit it so that the MP3"
+	echo "library path parameter reflects the change."
+	echo "It should now looks like this:"
+	echo ""
+	echo "libmpg123path=/usr/lib/kega-fusion/libmpg123.so.0"
+	echo ""
 }
