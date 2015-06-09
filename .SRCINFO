@@ -1,0 +1,16 @@
+pkgbase = git-imerge-git
+	pkgdesc = Incremental merge for git
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/mhagger/git-imerge
+	changelog = git-imerge-git.changelog
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = python2
+	depends = git
+	source = git://github.com/mhagger/git-imerge.git
+	sha256sums = SKIP
+
+pkgname = git-imerge-git
+
