@@ -1,4 +1,4 @@
-
+# Maintainer: Firas Zaidan <firas@zaidan.de>
 # Contributor: Sascha Bennek <s.bennek@gmx.de>
 pkgname=videogen
 pkgver=0.33
