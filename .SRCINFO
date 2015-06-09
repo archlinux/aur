@@ -1,0 +1,15 @@
+pkgbase = lib32-libgcrypt15
+	pkgdesc = General purpose cryptographic library based on the code from GnuPG
+	pkgver = 1.5.3
+	pkgrel = 2
+	url = http://www.gnupg.org
+	arch = x86_64
+	license = LGPL
+	makedepends = gcc-multilib
+	makedepends = libtool-multilib
+	depends = lib32-libgpg-error
+	source = ftp://ftp.gnupg.org/gcrypt/libgcrypt/libgcrypt-1.5.3.tar.bz2
+	sha256sums = bcf5334e7da352c45de6aec5d2084ce9a1d30029ff4a4a5da13f1848874759d1
+
+pkgname = lib32-libgcrypt15
+
