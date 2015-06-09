@@ -1,0 +1,21 @@
+pkgbase = libqtxdg-git
+	pkgdesc = Library providing freedesktop.org specs implementations for Qt.
+	pkgver = 1.2.0.13.gab0f65c
+	pkgrel = 1
+	url = http://lxqt.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = qt5-base
+	provides = libqtxdg
+	conflicts = libqtxdg-qt5-git
+	conflicts = libqtxdg
+	replaces = libqtxdg-qt5-git
+	source = git+https://github.com/lxde/libqtxdg.git
+	sha256sums = SKIP
+
+pkgname = libqtxdg-git
+
