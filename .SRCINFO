@@ -6,7 +6,6 @@ pkgbase = checkboot-efi
 	install = checkboot-efi.install
 	arch = any
 	license = GPL
-	depends = bash
 	provides = checkboot-efi
 	backup = etc/checkboot-efi.conf
 	source = checkboot-efi.install
