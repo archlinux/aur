@@ -1,0 +1,13 @@
+pkgbase = soapdenovo
+	pkgdesc = A novel short-read assembly method that can build a de novo draft assembly for the human-sized genomes.
+	pkgver = 1.05
+	pkgrel = 1
+	url = http://soap.genomics.org.cn/soapdenovo.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	source = http://soap.genomics.org.cn/down/SOAPdenovo-V1.05.src.tgz
+	md5sums = f6d16bce2b8233b6fd93c6009dcc40b3
+
+pkgname = soapdenovo
+
