@@ -1,0 +1,124 @@
+2015-01-25 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+	* 2.3.0-2:
+	list all dependencies, including those from the base group.
+
+2015-01-25 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+	* 2.3.0-1:
+	new upstream release:	
+    blocklists:
+      - Removed atma_atma, discontinued upstream
+      - Removed TBG blocklists, TBG's blocklists haven't been updated by
+        iblocklist.com since 2014-10-20. But AFAIK TBG still maintains them, so
+        search the web if you want to continue to use them.
+      - New default set by Bluetack, probably less paranoid then in the
+      past. Comments welcome:
+        ads-trackers-and-bad-pr0n
+        bad-peers
+        level-1
+        range-test
+        spyware
+    removed the (non-default) feature to directly DROP and ACCEPT packets
+      (as in MoBlock 0.8), instead of using the (default) MARKing feature.
+      Dropped the configuration variables ACCEPT and REJECT.
+      Reason:
+      ACCEPTing/DROPing packets directly was only needed for kernel/netfilter
+      not supporting MARKing. Probably it was also a bit more efficient than
+      MARKing.
+      But ACCEPTing packets directly breaks other iptables setups - this has
+      always been documented, but wasn't known to all users. So in order to
+      avoid misconfigurations I decided to drop this feature.
+      DROPing directly should not yield any drawbacks, but I decided to also
+      remove it in order to make the code simpler.
+    documentation updates
+    dropped backup code and checks for transitions (2010-08-11)
+        REJECT_FW -> REJECT_FWD
+        WHITE_TCP_FORWARD -> WHITE_TCP_FWD
+        WHITE_UDP_FORWARD -> WHITE_UDP_FWD
+        WHITE_IP_FORWARD -> WHITE_IP_FWD
+    dropped code for transition 2011-05-28: remove old master blocklists
+    improved the test for kernel REJECT support
+    pglcmd status: add test for iptables
+    pglcmd test_net: Create BLOCKLISTS_DIR if missing
+      Closes: https://sourceforge.net/p/peerguardian/bugs/328/
+    pglcmd: Set kernel queue maximum length with pglcmd variable
+      NFQUEUE_MAXLEN to trigger pgld -Q option
+    pglcmd build_blocklist: merge 2 grep commands
+    systemd/cron: added systemd service for blocklists update by Pierre Buard
+      (Gilrain). Closes: https://sourceforge.net/p/peerguardian/patches/3/
+      This only gets installed if pgl is compiled with --with-systemd.
+    Update nfq_set_verdict_mark calls to nfq_set_verdict2, requires
+      libnetfilter-queue >= 1.0. A version without this commit is maintained
+      in the git branch pgl_backport.
+    Change declaration of "payload" to match what NFQ expects
+    pgld: added option -Q to set kernel queue maximum length. See
+      http://sourceforge.net/p/peerguardian/discussion/446997/thread/0df72ba6/
+      Therefore increased kernel version requirement from >= 2.6.13 for NFQUEUE
+      support to >= 2.6.20 (If you don't use the new option older kernel still
+      work.)
+
+2014-06-07 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+	* 2.2.4-2:
+	blocklists update through systemd timer (reenable pgl.service to load)
+
+2014-01-27 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+	* 2.2.4-1:
+	new upstream release:
+	  Fixed bug when reading /etc/services file in OpenSUSE.
+	  Added addNames method and improved addProtocols method.
+	  init: removed hint how to reenable automatic start.
+	  documentation updates
+
+2013-11-02 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+	* 2.2.3-1:
+	new upstream release:
+	  use conntrack instead of state netfilter module
+	  check all traffic that is not related/established (instead of all new traffic)
+	  added systemd file
+	  fix: (re-)enable MARKing for incoming matched packets.
+	  added support for packed (zip, gz, 7z) local blocklists in pglcmd
+	  use sed instead of echo to add newline at end of blocklist
+	  cd / after downloading blocklists
+	  init: added firewalld and moved $syslog to Should-Start|Stop
+	  BUILD: added AUTOMAKE_OPTIONS = subdir-objects
+	  MAKE: do not recreate already existent dirs
+	  BUILD: do not expand path variables in configure.ac
+	  BUILD: small cleanup to systemd bits
+	  major refactoring of the pglgui code
+	  fixed issues with local blocklists
+	  Added port aliases (if any) when adding new whitelist items.
+	  Fixed bug when removing an added item.
+	  Fixed warning icon not disapearing from option after applying changes.
+	  Improved validation of ports/ips.
+	  Added call to cleanData to remove possible empty config variables.
+	  Added reload command to execute script instead of reloading pgl after.
+
+2013-06-13 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+	* 2.2.2-6:
+	bypassed the initial blocklists download problem (TimeoutStartSec=0),
+	iptables and shorewall added to firewalls list.
+
+2013-06-03 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+	* 2.2.2-5:
+	RemainAfterExit solves the startup timing out,
+	fixed pgld.log access when using "pglcmd test",
+	added tcptraceroute as an optional dependency.
+
+2013-06-01 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+	* 2.2.2-4:
+	improved service menu to start after some firewalls,
+	forks service instead of using dbus,
+	pgld.log accessible through journald,
+	move everything to /usr/bin.
+
+2012-05-16 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+	* 2.2.2-3:
+	deletes pgl spool on package removal,
+	added condition checks to service file,
+	updated dbus dependency (was dbus-core),
+	initscript script and post upgrade notice removed.
+
+2012-12-01 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+	* 2.2.2-2:
+	added changelog,
+	added PIDFile and Documentation to pgl.services,
+	deletes logs and blocklists on package removal.

@@ -1,0 +1,11 @@
+post_upgrade() {
+  if [ $(vercmp $2 2.2.4-2) -lt 0 ]; then
+    echo "# Please reenable pgl.service to activate timer."
+    echo "# Then reboot or start pgl-update.timer manually."
+  fi
+}
+
+post_remove() {
+  # Deletes logs, spool and consolidated blocklists
+  rm -rf /var/{log,lib,spool}/pgl/
+}
