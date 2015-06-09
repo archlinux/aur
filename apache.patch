@@ -1,0 +1,13 @@
+--- a/doc/iRony.conf
++++ b/doc/iRony.conf
+@@ -1,8 +1,8 @@
+ # A suggested default configuration file for iRony under httpd
+ 
+-Alias /iRony   /usr/share/iRony/public_html
++Alias /iRony   /usr/share/webapps/irony/public_html
+ 
+-<Directory "/usr/share/iRony/public_html/">
++<Directory "/usr/share/webapps/irony/public_html/">
+     AllowOverride All
+ 
+     <IfModule mod_authz_core.c>

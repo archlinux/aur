@@ -1,0 +1,35 @@
+--- a/composer.json
++++ b/composer.json
+@@ -4,30 +4,10 @@
+ 	"license": "AGPL-3.0",
+ 	"version": "0.3.0",
+ 	"repositories": [
+-		{
+-			"type": "pear",
+-			"url": "http://pear.php.net/"
+-		},
+-		{
+-			"type": "vcs",
+-			"url": "https://github.com/thomascube/sabre-vobject.git"
+-		},
+-		{
+-			"type": "vcs",
+-			"url": "git://git.kolab.org/git/pear/Net_LDAP3"
+-		}
++
+ 	],
+ 	"require": {
+ 		"php": ">=5.3.3",
+ 		"sabre/dav" : "1.8.9"
+-	},
+-	"require-dev": {
+-		"pear/mail_mime": ">=1.8.9",
+-		"pear/mail_mime-decode": ">=1.5.5",
+-		"pear/http_request2": ">=2.1.1",
+-		"pear-pear.php.net/net_idna2": ">=0.1.1",
+-		"pear-pear.php.net/net_ldap2": ">=2.0.12",
+-		"kolab/Net_LDAP3": "dev-master"
+-	},
+-	"minimum-stability": "dev"
++	}
+ }
