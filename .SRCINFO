@@ -1,0 +1,14 @@
+pkgbase = netpipe
+	pkgdesc = A protocol independent performance tool that visually represents the network performance.
+	pkgver = 3.7.2
+	pkgrel = 1
+	url = http://bitspjoule.org/netpipe/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://bitspjoule.org/netpipe/code/NetPIPE-3.7.2.tar.gz
+	sha256sums = 13dac884ff52951636f651c421f5ff4a853218a95aa28a4a852402ee385a2ab8
+
+pkgname = netpipe
+
