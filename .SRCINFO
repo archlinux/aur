@@ -1,0 +1,14 @@
+pkgbase = python-wsgi-intercept
+	pkgdesc = Installs a WSGI application in place of a real URI for testing.
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = http://code.google.com/p/wsgi-intercept/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = python
+	source = http://pypi.python.org/packages/source/w/wsgi_intercept/wsgi_intercept-0.8.1.tar.gz
+	md5sums = 791abe4c1c7200dc5e205163acc9d110
+
+pkgname = python-wsgi-intercept
+
