@@ -1,0 +1,16 @@
+pkgbase = zanata-python-client
+	pkgdesc = Client for managaging translations on Zanata
+	pkgver = 1.3.21
+	pkgrel = 2
+	url = http://zanata.org/
+	arch = any
+	license = LGPL2
+	depends = python2
+	depends = python2-setuptools
+	depends = python2-httplib2
+	depends = python2-polib
+	source = https://github.com/zanata/zanata-python-client/archive/v1.3.21.tar.gz
+	sha256sums = a2f36b6a48492ad4196f09dc2fc6e0773fbc30aef0e08c941b5632546a6f68fd
+
+pkgname = zanata-python-client
+
