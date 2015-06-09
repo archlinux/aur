@@ -1,0 +1,32 @@
+pkgbase = visit
+	pkgdesc = Interactive parallel visualization and graphical analysis tool.
+	pkgver = 2.9.1
+	pkgrel = 1
+	url = https://wci.llnl.gov/simulation/computer-codes/visit
+	arch = i686
+	arch = x86_64
+	license = BSD
+	license = custom
+	makedepends = cmake
+	makedepends = java-runtime
+	makedepends = gcc-fortran
+	depends = qtwebkit
+	depends = python2-numpy
+	depends = gperftools
+	depends = icet
+	depends = java-environment
+	depends = vtk
+	depends = silo
+	depends = libcgns-paraview
+	conflicts = visit-bin
+	conflicts = visit-build
+	options = !emptydirs
+	source = http://portal.nersc.gov/svn/visit/trunk/releases/2.9.1/visit2.9.1.tar.gz
+	source = visit.sh
+	source = visit_FindIceT.patch
+	sha256sums = b5269e5de4dc159d0030c0971d47784062d9118cc3b6747a30b0efc4d2404bc2
+	sha256sums = d07a11e67ad646579fbc341f30e1eb63ebd38a5fbdd4f3ea36e8f460419028da
+	sha256sums = 2e7b0be6ad5bc6c0f0568b91f79149f081c2a9bded58223e4347fcf513aa206a
+
+pkgname = visit
+
