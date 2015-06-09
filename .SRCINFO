@@ -1,0 +1,19 @@
+pkgbase = obconf-qt-git
+	pkgdesc = Openbox configuration tool. Qt port of ObConf
+	pkgver = 0.1.0.18.gfe11967
+	pkgrel = 1
+	url = http://lxqt.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = qt5-base
+	provides = obconf-qt
+	conflicts = obconf-qt
+	source = git+https://github.com/lxde/obconf-qt.git
+	sha256sums = SKIP
+
+pkgname = obconf-qt-git
+
