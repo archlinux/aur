@@ -4,7 +4,7 @@
 
 pkgname=gmusicbrowser
 pkgver=1.1.14
-pkgrel=2
+pkgrel=3
 pkgdesc="A customizable open-source jukebox for large collections"
 arch=('any')
 url="http://gmusicbrowser.org"
@@ -15,6 +15,7 @@ optdepends=('alsa-utils: enables the ALSA backend'
             'mpg321: mp3 support for the ALSA backend'
             'vorbis-tools: vorbis support for the ALSA backend'
             'mplayer: enables the mplayer backend'
+	    'gstreamer: enables the gstreamer backend'
             'perl-glib-object-introspection: enables the gstreamer backend'
             'gst-plugins-base: vorbis support for the gstreamer backend' 
             'gst-plugins-good: flac support for the gstreamer backend'

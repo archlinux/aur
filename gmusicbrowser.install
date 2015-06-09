@@ -2,7 +2,7 @@ post_install() {
   cat << _EOF
  
 ==> In order to play your music with gmusicbrowser, you need to install:
-- perl-glib-object-introspection + gstreamer plugins or
+- gstreamer, perl-glib-object-introspection + gstreamer plugins or
 - mpg321/vorbis-tools/flac123/alsa-utils or  
 - mplayer
 (look at optdepends for details)
