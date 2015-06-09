@@ -1,0 +1,24 @@
+pkgbase = ethereum-serpent
+	pkgdesc = Serpent compiler
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/ethereum/serpent
+	arch = i686
+	arch = x86_64
+	groups = ethereum
+	license = WTFPL
+	makedepends = gcc
+	makedepends = git
+	makedepends = make
+	depends = python2
+	provides = ethereum-serpent
+	provides = serpent
+	conflicts = ethereum
+	conflicts = ethereum-serpent
+	conflicts = serpent
+	options = !emptydirs
+	source = ethereum-serpent::git+https://github.com/ethereum/serpent#commit=5d3624f5569a2bb7bd633d973983c3e0d05e618c
+	sha256sums = SKIP
+
+pkgname = ethereum-serpent
+
