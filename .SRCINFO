@@ -1,0 +1,12 @@
+pkgbase = texinfo-fake
+	pkgdesc = A fake texinfo to keep some packages happy, and save disk space
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://www.gnu.org/software/texinfo/
+	arch = any
+	license = GPL3
+	provides = texinfo
+	conflicts = texinfo
+
+pkgname = texinfo-fake
+
