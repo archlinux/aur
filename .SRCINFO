@@ -1,0 +1,15 @@
+pkgbase = xplot
+	pkgdesc = Reads from a xpl file to generate plots
+	pkgver = 0.90.7.1
+	pkgrel = 3
+	url = http://www.xplot.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libx11
+	depends = perl
+	source = http://www.xplot.org/xplot/xplot-0.90.7.1.tar.gz
+	md5sums = 755e32f8ae429f1c546fdeee7c28c92e
+
+pkgname = xplot
+
