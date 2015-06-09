@@ -1,0 +1,24 @@
+pkgbase = maya-calendar-bzr
+	pkgdesc = The Pantheon Calendar
+	pkgver = r789
+	pkgrel = 1
+	url = https://launchpad.net/maya
+	install = maya-calendar.install
+	arch = i686
+	arch = x86_64
+	groups = pantheon-unstable
+	license = GPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = vala
+	depends = folks
+	depends = granite-bzr
+	depends = libchamplain
+	depends = libpeas
+	source = maya-calendar::bzr+lp:maya
+	source = maya-calendar-evolution3.16.patch
+	sha256sums = SKIP
+	sha256sums = d49987b6e2158a1403521354aeeacd23e65ada377f4047f9b9a7f0b5249c2df7
+
+pkgname = maya-calendar-bzr
+

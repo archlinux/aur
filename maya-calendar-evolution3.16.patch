@@ -1,0 +1,24 @@
+diff -rupN maya-calendar.orig/core/Model/CalendarModel.vala maya-calendar/core/Model/CalendarModel.vala
+--- maya-calendar.orig/core/Model/CalendarModel.vala	2015-04-13 11:56:29.056360153 +0200
++++ maya-calendar/core/Model/CalendarModel.vala	2015-04-13 11:57:47.017248595 +0200
+@@ -362,7 +362,7 @@ public class Maya.Model.CalendarModel :
+         try {
+             var cancellable = new GLib.Cancellable ();
+             connecting (source, cancellable);
+-            var client = new E.CalClient.connect_sync (source, E.CalClientSourceType.EVENTS, cancellable);
++            var client = new E.CalClient.connect_sync (source, E.CalClientSourceType.EVENTS, 30, cancellable);
+             source_client.insert (source.dup_uid (), client);
+         } catch (Error e) {
+             error_received (e.message);
+diff -rupN maya-calendar.orig/vapi/libecalendar-1.2.vapi maya-calendar/vapi/libecalendar-1.2.vapi
+--- maya-calendar.orig/vapi/libecalendar-1.2.vapi	2015-04-13 11:56:29.063026610 +0200
++++ maya-calendar/vapi/libecalendar-1.2.vapi	2015-04-13 11:59:35.527177228 +0200
+@@ -24,7 +24,7 @@ namespace E {
+ 		public CalClient (E.Source source, E.CalClientSourceType source_type) throws GLib.Error;
+ 		public virtual async void connect (E.Source source, E.CalClientSourceType source_type, GLib.Cancellable? cancellable) throws GLib.Error;
+ 		[CCode (has_construct_function = false, cname = "e_cal_client_connect_sync")]
+-		public CalClient.connect_sync (E.Source source, E.CalClientSourceType source_type, GLib.Cancellable? cancellable = null) throws GLib.Error;
++		public CalClient.connect_sync (E.Source source, E.CalClientSourceType source_type, int32 wait_for_connected_seconds, GLib.Cancellable? cancellable = null) throws GLib.Error;
+ 		public async bool add_timezone (iCal.TimeZone zone, GLib.Cancellable cancellable) throws GLib.Error;
+ 		public bool add_timezone_sync (iCal.TimeZone zone, GLib.Cancellable cancellable) throws GLib.Error;
+ 		public bool check_one_alarm_only ();
