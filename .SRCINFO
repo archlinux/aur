@@ -1,0 +1,15 @@
+pkgbase = ruby-haste
+	pkgdesc = Simple client for uploading text to a haste-server (hastebin)
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/seejohnrun/haste-client
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-faraday-0.8
+	depends = ruby-json
+	source = https://rubygems.org/downloads/haste-0.2.1.gem
+	sha256sums = d6c9d35d152d57532e5b9c32a58debad2c4bac8549f100efc1224e37ccd7b6f3
+
+pkgname = ruby-haste
+
