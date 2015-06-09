@@ -1,0 +1,22 @@
+post_install() {
+  cat <<EOF
+==> NOTE: If you already have FBFONT exported correctly, you can disregard this
+==> message.
+==>
+==> To get fim to work after you've installed it, place the following export in
+==> your ~/.profile file:
+==>
+==>   export FBFONT=/usr/share/kbd/consolefonts/ter-216n.psf.gz
+==>
+==> Once you've done that logout and log back in to get your ~/.profile file
+==> read and the FBFONT variable exported.
+==>
+==> NOTE: If you place this export in your ~/.zshrc or your ~/.bashrc file, you
+==> don't need to logout. Simply starting a new session of your shell-of-choice
+==> will do the trick.
+EOF
+}
+
+post_upgrade() {
+  post_install
+}

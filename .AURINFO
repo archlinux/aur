@@ -1,0 +1,21 @@
+pkgbase = fim
+	pkgdesc = Highly customizable and scriptable framebuffer image viewer based on fbi.
+	pkgver = 0.4
+	pkgrel = 9
+	url = https://www.autistici.org/dezperado/fim/
+	install = install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = giflib
+	depends = libjpeg-turbo
+	optdepends = djvulibre: djvu support
+	optdepends = libspectre: postscript support
+	optdepends = sdl: X support
+	optdepends = poppler: PDF support
+	conflicts = fim-svn
+	source = http://download.savannah.gnu.org/releases/fbi-improved/fim-0.4-rc1.tar.bz2
+	options = !makeflags
+
+pkgname = fim
+
