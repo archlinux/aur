@@ -1,0 +1,17 @@
+pkgbase = tkcvs
+	pkgdesc = Tcl/Tk-based graphical interface to the CVS and Subversion
+	pkgver = 8.2.3
+	pkgrel = 2
+	url = http://www.twobarleycorns.net/tkcvs.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = subversion
+	depends = cvs
+	depends = tk
+	depends = diffutils
+	source = http://www.twobarleycorns.net/tkcvs-8.2.3.tar.gz
+	sha256sums = 4bfb29dd9ffbbbc1e6e611e1c772af745d742d336e797bf056dbf70116b8e32a
+
+pkgname = tkcvs
+
