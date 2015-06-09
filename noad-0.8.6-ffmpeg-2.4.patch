@@ -1,0 +1,12 @@
+diff -u noad-0.8.6.orig/ffmpeg_decoder.cpp noad-0.8.6/ffmpeg_decoder.cpp
+--- noad-0.8.6.orig/ffmpeg_decoder.cpp	2014-10-24 10:07:11.219382439 +0200
++++ noad-0.8.6/ffmpeg_decoder.cpp	2014-10-24 10:08:23.836877173 +0200
+@@ -253,7 +253,7 @@
+ 	// close the file
+ 	if( pFormatCtx )
+ 	{
+-		av_close_input_file(pFormatCtx);
++		avformat_close_input(&pFormatCtx);
+ 		pFormatCtx = NULL;
+ 	}
+ 	// Close the codec
