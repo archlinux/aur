@@ -1,0 +1,14 @@
+pkgbase = nodejs-nan
+	pkgdesc = Native Abstractions for Node.js
+	pkgver = 1.8.4
+	pkgrel = 1
+	url = http://github.com/rvagg/nan
+	arch = any
+	license = MIT
+	depends = nodejs
+	noextract = nan-1.8.4.tgz
+	source = http://registry.npmjs.org/nan/-/nan-1.8.4.tgz
+	sha1sums = 3c76b5382eab33e44b758d2813ca9d92e9342f34
+
+pkgname = nodejs-nan
+
