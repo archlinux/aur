@@ -1,0 +1,15 @@
+pkgbase = erlang-gproc
+	pkgdesc = Extended process registry for Erlang
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/uwiger/gproc/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = rebar
+	depends = erlang-nox
+	source = https://github.com/uwiger/gproc/archive/0.4.tar.gz
+	md5sums = db34591d9eb2446c0e7f575dd6e3c47e
+
+pkgname = erlang-gproc
+
