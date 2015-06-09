@@ -1,0 +1,24 @@
+pkgbase = jfbterm-git
+	pkgdesc = multilingual terminal on Linux framebuffer
+	pkgver = 6392e59
+	pkgrel = 1
+	url = https://github.com/takeutch-kemeco/jfbterm-0.4.7.1
+	arch = i686
+	arch = x86_64
+	groups = i18n
+	license = GPL
+	makedepends = git
+	depends = pcf-unifont
+	optdepends = mplus-bitmap-fonts
+	optdepends = linux-fbcondecor
+	optdepends = v86d
+	provides = jfbterm
+	provides = jfbterm-git
+	backup = etc/jfbterm/jfbterm.conf
+	source = git+https://github.com/takeutch-kemeco/jfbterm-0.4.7.1.git#commit=6392e5934275b48e90880c4c019f6e159de50e51
+	source = jfbterm.conf
+	md5sums = SKIP
+	md5sums = 0a443f24a98f18f9c5cc7d102d5a8ef1
+
+pkgname = jfbterm-git
+
