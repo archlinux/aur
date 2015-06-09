@@ -1,0 +1,20 @@
+pkgbase = grailbrowser
+	pkgdesc = A late-1990s web browser in pure Python
+	pkgver = 20130618.d0a1049
+	pkgrel = 2
+	url = https://github.com/mdoege/grailbrowser
+	arch = any
+	license = CNRI
+	makedepends = git
+	depends = python2
+	depends = tk
+	depends = libjpeg
+	depends = netpbm
+	optdepends = python2-imaging: additional image loading support
+	optdepends = inetutils: telnet binary for telnet URLs
+	optdepends = xterm: for telnet URLs
+	source = git://github.com/mdoege/grailbrowser.git
+	sha1sums = SKIP
+
+pkgname = grailbrowser
+
