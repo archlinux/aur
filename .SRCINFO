@@ -1,0 +1,16 @@
+pkgbase = ald
+	pkgdesc = Assembly Language Debugger
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = http://ald.sourceforge.net
+	arch = i686
+	license = GPL
+	makedepends = gcc
+	makedepends = make
+	depends = gtk2
+	depends = readline
+	source = https://downloads.sourceforge.net/project/ald/ald/ald-0.1.7/ald-0.1.7.tar.gz
+	sha256sums = 673575054a203db13cb01090491c5be30f376ac6d6e4209c8995011ae5cd7c02
+
+pkgname = ald
+
