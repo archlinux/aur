@@ -1,0 +1,24 @@
+pkgbase = theyoke-git
+	pkgdesc = Ultra-simple, polite RSS aggregrator for the command line
+	pkgver = r23.aa04319
+	pkgrel = 1
+	url = http://github.com/mackers/theyoke/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = git
+	depends = perl-libwww
+	depends = perl-html-parser
+	depends = perl-uri
+	depends = perl-xml-feed
+	depends = perl-digest-md5
+	depends = perl-encode
+	depends = perl-term-size
+	depends = perl-html-format
+	provides = theyoke
+	conflicts = theyoke
+	source = theyoke-git::git://github.com/mackers/theyoke.git
+	md5sums = SKIP
+
+pkgname = theyoke-git
+
