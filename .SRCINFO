@@ -1,0 +1,21 @@
+pkgbase = perl-wordpress-xmlrpc
+	pkgdesc = api to wordpress xml rpc calls
+	pkgver = 1.23
+	pkgrel = 1
+	url = http://search.cpan.org/dist/WordPress-XMLRPC
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-leocharre-cli2>=0
+	depends = perl-leocharre-debug>=0
+	depends = perl-soap-lite>=0
+	depends = perl-smart-comments>=0
+	depends = perl-xmlrpc-lite>=0
+	depends = perl-yaml>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LE/LEOCHARRE/WordPress-XMLRPC-1.23.tar.gz
+	md5sums = cdbf3f7002b2fb44e69895b805b3c24c
+	sha512sums = f1fcd73ac4550680f5e9591c716eb2322facdf235b8515de8dd1846693d372a20f3fe495838a6b847a7d46c57d8db27601c94b04e59e76fcb0830772e4f9ed2a
+
+pkgname = perl-wordpress-xmlrpc
+
