@@ -1,0 +1,18 @@
+pkgbase = structure
+	pkgdesc = Program for using multi-locus genotype data to investigate population structure.
+	pkgver = 2.3.4
+	pkgrel = 3
+	url = http://pritch.bsd.uchicago.edu/structure.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = java-environment
+	source = http://pritchardlab.stanford.edu/structure_software/release_versions/v2.3.4/structure_kernel_source.tar.gz
+	source = http://pritchardlab.stanford.edu/structure_software/release_versions/v2.3.4/structure_frontend_source.tar.gz
+	source = http://pritchardlab.stanford.edu/structure_software/release_versions/v2.3.4/html/ran.c.patch
+	md5sums = 4e0591678cdbfe79347d272b5dceeda1
+	md5sums = f4b257767562ba732c7a02414fee1865
+	md5sums = a7c26d216eacb2a10f9ff0fb7e0c31a6
+
+pkgname = structure
+
