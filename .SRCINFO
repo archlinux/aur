@@ -1,0 +1,14 @@
+pkgbase = nodejs-sweet
+	pkgdesc = Hygienic Macros for JavaScript
+	pkgver = 0.7.4
+	pkgrel = 1
+	url = https://github.com/mozilla/sweet.js
+	arch = any
+	license = BSD
+	depends = nodejs
+	noextract = sweet.js-0.7.4.tgz
+	source = http://registry.npmjs.org/sweet.js/-/sweet.js-0.7.4.tgz
+	sha1sums = 6ad0a39a8d2f0280325e951d5df7cbd5399a3135
+
+pkgname = nodejs-sweet
+
