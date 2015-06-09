@@ -1,0 +1,19 @@
+pkgbase = python2-funky
+	pkgdesc = A package of some useful 'functionnal' constructs for Python
+	pkgver = 0.0.2
+	pkgrel = 2
+	url = https://github.com/FriendCode/funky/
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	depends = python2
+	provides = funky
+	provides = python2-funky
+	conflicts = funky
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/f/funky/funky-0.0.2.tar.gz
+	md5sums = 319ba036c2640e9f6bfad61192672e91
+	sha256sums = 23ac10d87e90bb7bd0ae839d3ab05f34f5720273e43044bffe8b9ce8af318ad6
+
+pkgname = python2-funky
+
