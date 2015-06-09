@@ -1,0 +1,20 @@
+post_install() {
+  chmod 755 /opt/smartsvn/bin/smartsvn.sh
+  ln -s /opt/smartsvn/bin/smartsvn.sh /usr/bin/smartsvn
+
+  echo "update desktop mime database..."
+  update-desktop-database
+  gtk-update-icon-cache -f /usr/share/icons/hicolor/
+}
+
+post_upgrade() {
+	gtk-update-icon-cache -f /usr/share/icons/hicolor/
+}
+
+post_remove() {
+  rm -rf /opt/smartsvn
+  unlink /usr/bin/smartsvn
+  update-desktop-database
+  gtk-update-icon-cache -f /usr/share/icons/hicolor/
+}
+

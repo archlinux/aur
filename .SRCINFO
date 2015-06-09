@@ -1,0 +1,20 @@
+pkgbase = smartsvn
+	pkgdesc = A Subversion(SVN) GUI client written in Java
+	pkgver = 8.6.6
+	pkgrel = 1
+	url = http://www.smartsvn.com/
+	install = smartsvn.install
+	arch = any
+	license = custom
+	depends = java-runtime
+	depends = desktop-file-utils
+	depends = sh
+	provides = smartsvn=8.6.6
+	backup = opt/smartsvn/bin/smartsvn.sh
+	source = smartsvn.desktop
+	source = http://www.smartsvn.com/downloads/smartsvn/smartsvn-linux-8_6_6.tar.gz
+	md5sums = e3dfb3bdaef28b727b491af85498f2c0
+	md5sums = 0b3dfa802949506db002d3278f0afd9b
+
+pkgname = smartsvn
+
