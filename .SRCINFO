@@ -1,12 +1,13 @@
 pkgbase = mac-os-lion-cursors
 	pkgdesc = MAC OS X Lion Cursor Theme by MB0SS
-	pkgver = 2
-	pkgrel = 1
+	pkgver = 2.0
+	pkgrel = 2
 	url = http://mbossg.deviantart.com/#/d4yqyle
-	arch = any
-	license = unknown
-	source = https://dl.dropbox.com/s/x3oat2kxz47hfqv/mac-os-lion-cursors.tar.gz
-	md5sums = cf5b06ca4307eee5e272267a2289c1ef
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	source = https://launchpadlibrarian.net/107244851/mac-os-lion-cursors-v2_2.0~quantal.tar.gz
+	sha256sums = 2bcc4319539e1f828a8663269cdc46ec867d276f9670a44e27ecabb9f18340a2
 
 pkgname = mac-os-lion-cursors
 
