@@ -1,0 +1,27 @@
+pkgbase = libbitcoin-blockchain-git
+	pkgdesc = Bitcoin Blockchain Implementation
+	pkgver = 20150519
+	pkgrel = 1
+	url = https://github.com/libbitcoin/libbitcoin-blockchain
+	arch = i686
+	arch = x86_64
+	groups = libbitcoin
+	license = AGPL3
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = gcc
+	makedepends = git
+	makedepends = libtool
+	makedepends = make
+	makedepends = pkg-config
+	depends = boost
+	depends = boost-libs
+	depends = libbitcoin-git
+	depends = secp256k1-git
+	provides = libbitcoin-blockchain
+	conflicts = libbitcoin-blockchain
+	source = git+https://github.com/libbitcoin/libbitcoin-blockchain
+	sha256sums = SKIP
+
+pkgname = libbitcoin-blockchain-git
+
