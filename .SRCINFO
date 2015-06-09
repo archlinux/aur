@@ -1,0 +1,37 @@
+pkgbase = python-counterparty-lib-git
+	pkgdesc = Counterparty Protocol Reference Implementation
+	pkgver = 20150513
+	pkgrel = 1
+	url = https://github.com/CounterpartyXCP/counterparty-lib
+	arch = any
+	groups = counterparty
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-appdirs
+	depends = python-apsw
+	depends = python-colorlog
+	depends = python-crypto
+	depends = python-dateutil
+	depends = python-flask
+	depends = python-flask-httpauth
+	depends = python-json-rpc
+	depends = python-pycoin
+	depends = python-pysha3
+	depends = python-python-bitcoinlib
+	depends = python-requests
+	depends = python-tendo
+	depends = python-tornado
+	depends = python-xmltodict
+	depends = sqlite
+	optdepends = ethereum: compile Solidity contract code
+	optdepends = ethereum-serpent: compile Serpent contract code
+	provides = python-counterparty-lib
+	conflicts = python-counterparty-lib
+	options = !emptydirs
+	source = python-counterparty-lib::git+https://github.com/CounterpartyXCP/counterparty-lib
+	sha256sums = SKIP
+
+pkgname = python-counterparty-lib-git
+
