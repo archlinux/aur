@@ -1,0 +1,16 @@
+pkgbase = php54-memcached
+	pkgdesc = PHP extension for interfacing with memcached via libmemcached library (php54)
+	pkgver = 2.2.0
+	pkgrel = 2
+	url = http://pecl.php.net/package/memcached
+	arch = i686
+	arch = x86_64
+	license = PHP
+	depends = php54
+	depends = libmemcached
+	backup = etc/php/conf.d/memcached.ini
+	source = http://pecl.php.net/get/memcached-2.2.0.tgz
+	sha256sums = 17b9600f6d4c807f23a3f5c45fcd8775ca2e61d6eda70370af2bef4c6e159f58
+
+pkgname = php54-memcached
+
