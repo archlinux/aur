@@ -1,0 +1,19 @@
+pkgbase = apache-websocket-git
+	pkgdesc = An Apache WebSocket module
+	pkgver = r21.cfaef07
+	pkgrel = 1
+	url = http://github.com/disconnect/apache-websocket.git
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = git
+	makedepends = scons
+	depends = apache
+	depends = apr
+	source = apache-websocket-git::git+https://github.com/disconnect/apache-websocket.git
+	source = SConstruct.patch
+	md5sums = SKIP
+	md5sums = 1f6b38c53af97911db6a6dbd01fc3750
+
+pkgname = apache-websocket-git
+

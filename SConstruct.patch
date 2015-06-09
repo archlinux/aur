@@ -1,0 +1,11 @@
+--- SConstruct.orig	2012-12-04 01:12:34.024010276 +0900
++++ SConstruct	2012-12-04 01:26:38.801414356 +0900
+@@ -37,7 +37,7 @@
+         modulesdir = "/usr/libexec/apache2"
+     else:
+         env.Append(CPPDEFINES = ["LINUX=2", "_FORTIFY_SOURCE=2", "_GNU_SOURCE", "_LARGEFILE64_SOURCE", "_REENTRANT"],
+-                   CPPPATH = ["/usr/include/apache2", "/usr/include/apr-1.0"])
++                   CPPPATH = ["/usr/include/httpd", "/usr/include/apr-1" ])
+         modulesdir = "/usr/lib/apache2/modules"
+ 
+ mod_websocket = env.SharedLibrary(source=["mod_websocket.c"],
