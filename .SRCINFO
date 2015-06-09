@@ -1,0 +1,30 @@
+pkgbase = pantheon-files-bzr
+	pkgdesc = The Pantheon File Manager
+	pkgver = r1807
+	pkgrel = 1
+	url = https://launchpad.net/pantheon-files
+	install = pantheon-files.install
+	arch = i686
+	arch = x86_64
+	groups = pantheon-unstable
+	license = GPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = gnome-common
+	makedepends = sqlite3
+	makedepends = vala
+	depends = desktop-file-utils
+	depends = gconf
+	depends = granite-bzr
+	depends = libnotify
+	depends = zeitgeist
+	optdepends = contractor-bzr: Various context menu entries
+	optdepends = pantheon-files-plugin-dropbox-bzr: Dropbox integration
+	optdepends = tumbler: Thumbnails generation
+	provides = pantheon-files
+	conflicts = pantheon-files
+	source = bzr+lp:pantheon-files
+	sha256sums = SKIP
+
+pkgname = pantheon-files-bzr
+
