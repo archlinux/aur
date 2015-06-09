@@ -1,0 +1,14 @@
+pkgbase = ruby-liquid-2
+	pkgdesc = A secure, non-evaling end user template engine with aesthetic markup.
+	pkgver = 2.6.2
+	pkgrel = 1
+	url = http://www.liquidmarkup.org
+	arch = any
+	depends = ruby
+	noextract = liquid-2.6.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/liquid-2.6.2.gem
+	sha1sums = 643dc4d2c5451e478e8aad7d29d75e026c11d4d9
+
+pkgname = ruby-liquid-2
+
