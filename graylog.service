@@ -1,0 +1,12 @@
+[Unit]
+Description=Graylog management server
+After=network.target mongodb.service
+Requires=mongodb.service
+
+[Service]
+User=nobody
+PIDFile=/run/graylog/server.pid
+ExecStart=/usr/bin/java -Djava.net.preferIPv6Addresses=true -jar /usr/lib/graylog/server.jar server -f /etc/graylog/server/server.conf -p /run/graylog/server.pid
+
+[Install]
+WantedBy=multi-user.target

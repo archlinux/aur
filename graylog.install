@@ -1,0 +1,16 @@
+post_install() {
+    usr/bin/systemd-tmpfiles --create graylog-server.conf
+
+	# this specific upgrade was don by replacing graylog2 with graylog; therefore we are uninstalled&reinstalled
+	cat <<EOF
+Major upgrade; graylog2 has been renamed to graylog and the following files where renamed:
+ * /etc/graylog2.conf to /etc/graylog/server/server.conf
+ * /etc/graylog2-server-node-id to /etc/graylog/server/node-id
+
+You can copy your 0.9x config but you should add
+ * message_journal_enabled = true
+ * message_journal_dir = /usr/lib/graylog/data/journal
+
+also; don't forget to update the node_id_file
+EOF
+}
