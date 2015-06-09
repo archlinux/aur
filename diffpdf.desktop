@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=DiffPDF
+Comment=DiffPDF is used to compare two PDF files
+Comment[es]=DiffPDF permite comparar dos archivos PDF
+Exec=diffpdf
+Icon=/usr/share/pixmaps/diffpdf.png
+Categories=Office;
+Encoding=UTF-8
+StartupNotify=true
