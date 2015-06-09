@@ -1,0 +1,18 @@
+pkgbase = clog-git
+	pkgdesc = A conventional changelog for the rest of us
+	pkgver = 111
+	pkgrel = 1
+	url = https://github.com/thoughtram/clog
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	provides = clog
+	conflicts = clog
+	source = git://github.com/thoughtram/clog.git
+	md5sums = SKIP
+
+pkgname = clog-git
+
