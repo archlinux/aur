@@ -1,0 +1,23 @@
+pkgbase = geeqie-git
+	pkgdesc = A lightweight image browser and viewer (fork of GQview)
+	pkgver = 20140526
+	pkgrel = 1
+	url = http://geeqie.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = intltool
+	depends = gtk3
+	depends = exiv2
+	depends = lcms2
+	optdepends = lirc: remote control support
+	optdepends = lua: uses it somehow if detected
+	optdepends = doxygen: waste some hdd space on documentation
+	provides = geeqie
+	conflicts = geeqie
+	conflicts = gqview-devel
+	source = git://gitorious.org/geeqie/geeqie.git
+
+pkgname = geeqie-git
+
