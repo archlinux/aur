@@ -1,7 +1,7 @@
 pkgbase = lib32-networkmanager
 	pkgdesc = Network Management daemon, 32bit libraries
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.0.2
+	pkgrel = 1
 	url = http://www.gnome.org/projects/NetworkManager/
 	arch = i686
 	arch = x86_64
@@ -29,10 +29,12 @@ pkgbase = lib32-networkmanager
 	makedepends = lib32-libteam
 	makedepends = vala
 	makedepends = networkmanager
-	source = http://ftp.gnome.org/pub/gnome/sources/NetworkManager/1.0/NetworkManager-1.0.0.tar.xz
+	source = http://ftp.gnome.org/pub/gnome/sources/NetworkManager/1.0/NetworkManager-1.0.2.tar.xz
 	source = disable_set_hostname.patch
-	sha256sums = 3a66afec670c975edd9832e620b725a5f16ed267a1b9e1b2d51ef27250d85947
+	source = 0001-dns-Fix-falling-back-in-the-resolv.conf-methods.patch
+	sha256sums = 359385707494bedbb48cfe0992ccfbcc4ac147dae1f7a47055c71e96439508ff
 	sha256sums = 25056837ea92e559f09563ed817e3e0cd9333be861b8914e45f62ceaae2e0460
+	sha256sums = 4c5cbd0871437c43c2081fe4a1e58d6464c9b960798fd57fd80a79135647e50a
 
 pkgname = lib32-networkmanager
 	depends = lib32-libnm-glib

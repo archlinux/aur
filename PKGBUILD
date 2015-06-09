@@ -9,24 +9,27 @@
 pkgbase=lib32-networkmanager
 pkgname=(lib32-networkmanager lib32-libnm-glib)
 _pkgname=NetworkManager
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="Network Management daemon, 32bit libraries"
-arch=('i686' 'x86_64')
-license=('GPL2' 'LGPL2.1')
+arch=(i686 x86_64)
+license=(GPL2 LGPL2.1)
 url="http://www.gnome.org/projects/NetworkManager/"
 makedepends=(intltool dhcpcd dhclient iptables gobject-introspection gtk-doc
              lib32-dbus-glib iproute2 lib32-libnl lib32-nss lib32-polkit wpa_supplicant dhcp-client
              lib32-libsoup lib32-systemd lib32-libndp lib32-libteam vala networkmanager)
 checkdepends=(libx11 python-gobject python-dbus)
 source=(http://ftp.gnome.org/pub/gnome/sources/$_pkgname/${pkgver:0:3}/$_pkgname-$pkgver.tar.xz
-        disable_set_hostname.patch)
-sha256sums=('3a66afec670c975edd9832e620b725a5f16ed267a1b9e1b2d51ef27250d85947'
-            '25056837ea92e559f09563ed817e3e0cd9333be861b8914e45f62ceaae2e0460')
+        disable_set_hostname.patch
+        0001-dns-Fix-falling-back-in-the-resolv.conf-methods.patch)
+sha256sums=('359385707494bedbb48cfe0992ccfbcc4ac147dae1f7a47055c71e96439508ff'
+            '25056837ea92e559f09563ed817e3e0cd9333be861b8914e45f62ceaae2e0460'
+            '4c5cbd0871437c43c2081fe4a1e58d6464c9b960798fd57fd80a79135647e50a')
 
 prepare() {
   cd NetworkManager-$pkgver
   patch -Np1 -i ../disable_set_hostname.patch
+  patch -Np1 -i ../0001-dns-Fix-falling-back-in-the-resolv.conf-methods.patch
   NOCONFIGURE=1 ./autogen.sh
 }
 
