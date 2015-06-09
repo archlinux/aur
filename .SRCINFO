@@ -1,0 +1,36 @@
+pkgbase = ros-indigo-warehouse-ros
+	pkgdesc = ROS - Persistent storage of ROS data using MongoDB.
+	pkgver = 0.8.8
+	pkgrel = 3
+	url = http://ros.org/wiki/warehouse_ros
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-geometry-msgs
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-rostest
+	makedepends = ros-indigo-rostime
+	makedepends = ros-indigo-rospy
+	makedepends = ros-indigo-catkin
+	makedepends = mongodb
+	makedepends = mongo-cxx-driver-legacy-0.0-26compat
+	makedepends = curl
+	makedepends = python2-pymongo
+	makedepends = openssl
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-rostime
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-geometry-msgs
+	depends = mongodb
+	depends = mongo-cxx-driver-legacy-0.0-26compat
+	depends = curl
+	depends = python2-pymongo
+	depends = openssl
+	source = warehouse_ros::git+https://github.com/ros-gbp/warehouse_ros-release.git#tag=release/indigo/warehouse_ros/0.8.8-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-warehouse-ros
+
