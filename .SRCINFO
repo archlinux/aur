@@ -1,0 +1,21 @@
+pkgbase = logstash-forwarder-git
+	pkgdesc = Logstash shipping tool using the lumberjack protocol
+	pkgver = v0.3.1.79.g0ae8ca7
+	pkgrel = 1
+	url = https://github.com/elasticsearch/logstash-forwarder
+	arch = x86_64
+	license = APACHE
+	makedepends = go
+	depends = glibc
+	backup = etc/logstash-forwarder.conf
+	source = git+https://github.com/elasticsearch/logstash-forwarder.git
+	source = logstash-forwarder.service
+	source = logstash-forwarder-journal.service
+	source = logstash-forwarder-journalctl
+	sha256sums = SKIP
+	sha256sums = c2346140c185d21a1216f834395340fb9c5024c604d40e19666502e7dafde836
+	sha256sums = e4b235576964209ca5f11df2185e7255010c2dc2baea0b72327bbe8f6bbe2c52
+	sha256sums = 024b7f7859eaba144950b3cc2d9a0a97694ec99babc30c421490ba25f9012139
+
+pkgname = logstash-forwarder-git
+

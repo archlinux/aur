@@ -1,0 +1,13 @@
+[Unit]
+Description=Logstash Forwarder
+After=syslog.target
+
+[Service]
+WorkingDirectory=/var/lib/logstash-forwarder
+Environment="JOURNAL_OPTIONS=-o cat"
+ExecStart=/usr/lib/systemd/scripts/logstash-forwarder-journalctl /etc/logstash-forwarder.conf $JOURNAL_OPTIONS
+Restart=on-failure
+StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target
