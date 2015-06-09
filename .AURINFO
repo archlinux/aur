@@ -1,0 +1,17 @@
+pkgbase = netkit-bsd-finger
+	pkgdesc = BSD-finger ported to Linux
+	pkgver = 0.17
+	pkgrel = 9
+	url = http://ftp.linux.org.uk/pub/linux/Networking/netkit
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = glibc
+	source = http://ftp.linux.org.uk/pub/linux/Networking/netkit/bsd-finger-0.17.tar.gz
+	source = LICENSE
+	source = fix-manpage-typo.patch
+	source = finger.socket
+	source = finger@.service
+
+pkgname = netkit-bsd-finger
+
