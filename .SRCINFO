@@ -1,0 +1,16 @@
+pkgbase = gort
+	pkgdesc = Command Line Toolkit for RobotOps.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = http://gort.io
+	arch = i686
+	arch = x86_64
+	license = Apache
+	depends = bluez4
+	source_i686 = https://s3.amazonaws.com/gort-io/0.3.0/gort_0.3.0_linux_386.tar.gz
+	md5sums_i686 = 51b78d2ceed50b60a0ecce72c00339b0
+	source_x86_64 = https://s3.amazonaws.com/gort-io/0.3.0/gort_0.3.0_linux_amd64.tar.gz
+	md5sums_x86_64 = 2b49d11c6ebe3f9c42b7fda709876848
+
+pkgname = gort
+
