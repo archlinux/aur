@@ -5,14 +5,14 @@ _module="${_name}"
 
 pkgname=("python-${_module}" "python2-${_module}")
 pkgver="1.3.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="OpenStack Client Configuation Library"
 arch=("any")
 url="https://github.com/openstack/${_name}"
 license=("Apache")
 makedepends=("python-pbr" "python2-pbr")
 source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('6f8bace5f8669a92a80b1611d53676ab24696bc7b68ed5dba3ba4243b5e7ef81')
+sha256sums=('247f2245e9a5e389c5049ef90da3fbd3cffe87b7c7b8294a789dc17d51b9fdb6')
 
 package_python-os-client-config() {
     depends=("python-yaml>=3.1.0"
