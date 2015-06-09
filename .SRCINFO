@@ -1,0 +1,21 @@
+pkgbase = libretro-2048-git
+	pkgdesc = libretro implementation of 2048
+	pkgver = 70
+	pkgrel = 1
+	url = https://github.com/libretro/libretro-2048
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = custom
+	license = GPL
+	license = LGPL
+	makedepends = git
+	source = libretro-2048::git://github.com/libretro/libretro-2048.git
+	source = https://raw.github.com/libretro/libretro-super/master/dist/info/2048_libretro.info
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = libretro-2048-git
+
