@@ -1,0 +1,52 @@
+
+cairo-infinality-ultimate
+=========================
+
+CHANGELOG
+---------
+
+2014-10-15
+~~~~~~~~~~
+
+### cairo-infinality-ultimate, rev. 1.14.0-1 (incl. multilib)
+
+* New upstream release.
+
+2014-09-26
+~~~~~~~~~~
+
+### cairo-infinality-ultimate, rev. 1.13.1-2 (incl. multilib)
+
+* Merging latest upstream commits as used in the stock Arch Linux cairo 1.13.1.
+* Removing obsolete Ubuntu patches.
+
+2014-09-09
+~~~~~~~~~~
+
+### cairo-infinality-ultimate, rev. 1.13.1-1 (incl. multilib)
+
+* Upstream code base upgraded to version 1.13.1 (Ubuntu source package).
+* Fixed Webkit browsers crashing on HTML5 video playback.
+
+2014-06-01
+~~~~~~~~~~
+
+### cairo-infinality-ultimate, rev. 1.12.16-6 (incl. multilib)
+
+* Package update.
+
+2014-05-03
+~~~~~~~~~~
+
+### cairo-infinality-ultimate, rev. 1.12.16-5
+
+* Package update.
+
+2013-10-11
+~~~~~~~~~~
+
+### cairo-infinality-ultimate, rev. 1.12.16-3
+
+* Packages rebuilt with the updated Ubuntu patchset.
+
+

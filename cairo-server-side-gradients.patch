@@ -1,0 +1,17 @@
+# Description: don't use server side gradients most drivers don't handle it
+Index: cairo-1.12.2/src/cairo-xlib-display.c
+===================================================================
+--- cairo-1.12.2.orig/src/cairo-xlib-display.c	2012-04-25 21:53:19.000000000 +1200
++++ cairo-1.12.2/src/cairo-xlib-display.c	2012-05-17 16:06:18.543220800 +1200
+@@ -266,11 +266,7 @@
+     /* Prior to Render 0.10, there is no protocol support for gradients and
+      * we call function stubs instead, which would silently consume the drawing.
+      */
+-#if RENDER_MAJOR == 0 && RENDER_MINOR < 10
+     display->buggy_gradients = TRUE;
+-#else
+-    display->buggy_gradients = FALSE;
+-#endif
+     display->buggy_pad_reflect = FALSE;
+     display->buggy_repeat = FALSE;
+ 
