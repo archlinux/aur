@@ -1,0 +1,24 @@
+--- a/fslint-2.44/fslint-gui
++++ b/fslint-2.44/fslint-gui
+@@ -22,12 +22,19 @@
+  which is available at www.gnu.org
+ """
+ 
++import types, os, sys, pipes, time, stat, tempfile, errno
++
+ import gettext
+ import locale
+-import gtk
+-import gtk.glade
+ 
+-import types, os, sys, pipes, time, stat, tempfile, errno
++try:
++    import gtk
++except RuntimeError:
++    etype, emsg, etb = sys.exc_info()
++    sys.stderr.write(str(emsg)+'\n')
++    sys.exit(1)
++
++import gtk.glade
+ 
+ time_commands=False #print sub commands timing on status line

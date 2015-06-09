@@ -1,0 +1,15 @@
+pkgbase = fslint
+	pkgdesc = A utility to find and clean various forms of lint on a filesystem
+	pkgver = 2.44
+	pkgrel = 2
+	url = http://www.pixelbeat.org/fslint/
+	arch = any
+	license = GPL
+	depends = pygtk
+	depends = python2
+	source = http://www.pixelbeat.org/fslint/fslint-2.44.tar.gz
+	source = fslint-2.44_fix-multiselect-regression_r291.patch
+	source = fslint-2.44_gtk-init-graceful_r292.patch
+
+pkgname = fslint
+

@@ -1,0 +1,31 @@
+--- a/fslint-2.44/fslint-gui
++++ b/fslint-2.44/fslint-gui
+@@ -782,8 +782,8 @@
+                 if row == clist.rows-1 and not get_selectable(row-1, row_data):
+                     clist.remove(row)
+                     row_data.pop(row)
+-                elif not (get_selectable(row-1, row_data) or
+-                      get_selectable(row+1, row_data)):
++                elif not ((row!=0 and get_selectable(row-1, row_data)) or
++                          (row!=clist.rows-1 and get_selectable(row+1, row_data))):
+                     clist.remove(row)
+                     row_data.pop(row)
+ 
+@@ -1599,7 +1599,7 @@
+             if row!=0 or not get_selectable(row, row_data):
+                 row += 1 #for all except first row in clist_sn
+             unselect_row = -1 # avoid rh bug 726252 (mtimes for group = -1?)
+-            while get_selectable(row, row_data) and row < clist.rows:
++            while row < clist.rows and get_selectable(row, row_data):
+                 mtime = clist.get_row_data(row)
+                 if comp(mtime,unselect_mtime):
+                     unselect_mtime = mtime
+@@ -1638,7 +1638,7 @@
+         def group_all_selected(clist, row):
+             if row!=0 or not get_selectable(row, row_data): #for first sn row
+                 row += 1
+-            while get_selectable(row, row_data) and row < clist.rows:
++            while row < clist.rows and get_selectable(row, row_data):
+                 if not row in selected:
+                     return False
+                 row += 1
