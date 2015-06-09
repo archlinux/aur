@@ -1,0 +1,16 @@
+pkgbase = ttf-opensans
+	pkgdesc = Open Sans is a humanist sans serif typeface designed by Steve Matteson, Type Director of Ascender Corp.
+	pkgver = 1.10
+	pkgrel = 1
+	url = http://en.wikipedia.org/wiki/Open_Sans
+	install = ttf-opensans.install
+	arch = any
+	license = Apache
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = http://pkgbuild.com/~alucryd/ttf-opensans-1.10.zip
+	sha256sums = f14979b4a358311e51da601a2debb7f21a639912fa06d88825056c41d792871e
+
+pkgname = ttf-opensans
+

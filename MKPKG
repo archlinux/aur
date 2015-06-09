@@ -1,0 +1,4 @@
+arch=('any')
+pkgname=('ttf-opensans')
+
+# vim: ts=2 sw=2 et:
