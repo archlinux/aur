@@ -1,0 +1,15 @@
+pkgbase = tpasm
+	pkgdesc = A cross assembler for 6805, 6809, 68HC11, 6502, Sunplus, 8051, Z80, PIC, AVR and c166
+	pkgver = 1.8
+	pkgrel = 2
+	url = http://www.sqrt.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gcc-libs
+	source = http://www.sqrt.com/downloads/tpasm.tgz
+	options = strip
+	options = !emptydirs
+
+pkgname = tpasm
+
