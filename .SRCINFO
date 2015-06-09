@@ -1,0 +1,15 @@
+pkgbase = python-click-repl-git
+	pkgdesc = Subcommand REPL for click apps.
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/untitaker/click-repl
+	arch = any
+	license = MIT
+	depends = python-click,
+	depends = python-prompt_toolkit
+	options = !emptydirs
+	source = git+https://github.com/untitaker/click-repl.git
+	md5sums = SKIP
+
+pkgname = python-click-repl-git
+
