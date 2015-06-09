@@ -1,0 +1,17 @@
+pkgbase = python2-rlp
+	pkgdesc = A package for encoding and decoding data in and from Recursive Length Prefix notation
+	pkgver = 0.3.8
+	pkgrel = 1
+	url = https://github.com/ethereum/pyrlp
+	arch = any
+	groups = ethereum
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/r/rlp/rlp-0.3.8.tar.gz
+	md5sums = 89f23e2197bc70c82f48b81916947df5
+	sha256sums = 347b1bfbe585fe56c9b9ca98d440fbaeaa005200d49cb4df06c62434306d2a77
+
+pkgname = python2-rlp
+
