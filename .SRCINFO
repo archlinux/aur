@@ -1,0 +1,33 @@
+pkgbase = android-studio
+	pkgdesc = A new Android development environment based on IntelliJ IDEA.
+	pkgver = 1.2.1.1
+	pkgrel = 1
+	url = http://developer.android.com/sdk/installing/studio.html
+	install = android-studio.install
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = unzip
+	depends = java-environment
+	depends = python
+	depends = ttf-font
+	depends = fontconfig
+	depends = libxrender
+	depends = mesa
+	optdepends = android-google-repository
+	optdepends = android-sdk
+	optdepends = android-sdk-platform-tools
+	optdepends = android-sdk-build-tools
+	optdepends = android-support
+	optdepends = android-support-repository
+	conflicts = android-studio-beta
+	conflicts = android-studio-dev
+	conflicts = android-studio-canary
+	options = !strip
+	source = https://dl.google.com/dl/android/studio/ide-zips/1.2.1.1/android-studio-ide-141.1903250-linux.zip
+	source = android-studio.desktop
+	sha512sums = a0baac0fd7406c16277f09662b798c2340725d0d11333aa1834c095e2041d74bb4e75096dfe146491dfbb330d3a17b5c00e70cc1a921fd230c18d7b3e0d6e9a3
+	sha512sums = fa3567f328af45d265c4fabf3e41b55d8e8cccfa9675e745f07dd6ae41950dd53a2ef41ef1caee86643f5c2ddf7a7681ee17155e208a7b6fdae6c0537dfc0c94
+
+pkgname = android-studio
+
