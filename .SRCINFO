@@ -1,0 +1,29 @@
+pkgbase = tint2-beta
+	pkgdesc = Tint2 beta stable release of git repo
+	pkgver = 0.12.rc5
+	pkgrel = 2
+	url = https://gitlab.com/o9000/tint2
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = pkg-config
+	depends = libxcomposite
+	depends = libxinerama
+	depends = libxrandr
+	depends = pango
+	depends = imlib2
+	depends = startup-notification
+	depends = librsvg
+	depends = gtk2
+	provides = tint2
+	conflicts = tint2
+	conflicts = tint
+	conflicts = tint2-svn
+	conflicts = tint2-git
+	options = !libtool
+	source = https://gitlab.com/o9000/tint2/repository/archive.tar.gz?ref=v0.12-rc5
+	md5sums = 03bf7f9a8b8e3cd57cb0b22f4cc52711
+
+pkgname = tint2-beta
+
