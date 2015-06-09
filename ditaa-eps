@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+java -jar /usr/share/java/ditaa-eps/DitaaEps.jar "$@"
