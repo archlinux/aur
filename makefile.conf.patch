@@ -1,0 +1,15 @@
+--- makefile.conf.orig	2014-04-18 22:32:34.000000000 +0900
++++ makefile.conf	2014-04-22 13:53:49.383956290 +0900
+@@ -13,9 +13,9 @@
+ endif
+ CXX_CPP_FLAGS = $(INCLUDES)
+ 
+-FILE_OSL_CORE = $(OSL_HOME)/core/osl/libosl_core.a
+-FILE_OSL_STD = $(OSL_HOME)/std/osl/libosl_std.a
+-FILE_OSL_FULL = $(OSL_HOME)/full/osl/libosl_full.a
++FILE_OSL_CORE = $(OSL_HOME)/core/osl/libosl_core.so.1.0
++FILE_OSL_STD = $(OSL_HOME)/std/osl/libosl_std.so.1.0
++FILE_OSL_FULL = $(OSL_HOME)/full/osl/libosl_full.so.1.0
+ FILE_OSL_ALL = $(FILE_OSL_FULL) $(FILE_OSL_STD) $(FILE_OSL_CORE)
+ 
+ PROFILE_USE = -fprofile-use -fprofile-correction

@@ -1,0 +1,27 @@
+--- Makefile.orig	2014-04-02 20:13:16.000000000 +0900
++++ Makefile	2014-04-22 18:44:33.632567612 +0900
+@@ -4,7 +4,7 @@
+ include $(OSL_HOME)/makefile.conf
+ 
+ OSL_HOME_FLAGS = -DOSL_HOME=\"$(shell dirname $(shell dirname `pwd`))\"
+-CXXFLAGS += $(OSL_HOME_FLAGS)
++CXXFLAGS += $(OSL_HOME_FLAGS) -fPIC -pipe
+ INCLUDES += -I.. -I../../std -I../../core
+ 
+ ANNOTATE_SRC = analysesResult.cc  analyzer.cc  anno-facade.cc
+@@ -56,7 +56,7 @@
+ OBJS = $(patsubst %.cc,%.o,$(SRCS))
+ DEPS = $(patsubst %.cc,.deps/%.cc.d,$(SRCS))
+ 
+-all: libosl_full.a
++all: libosl_full.so.1.0
+ 
+ light-clean:
+ 	-rm -rf .deps
+@@ -66,3 +66,6 @@
+ 
+ -include $(DEPS)
+ libosl_full.a : $(OBJS)
++
++libosl_full.so.1.0: $(OBJS)
++	$(CXX) -shared -Wl,-soname=libosl_full.so.1 $(OBJS) -o $@

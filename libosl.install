@@ -1,0 +1,21 @@
+post_install() {
+  ldconfig
+  update_makefile_conf_path
+  echo 
+  echo 'Please relogin for the changes to $OSL_HOME environment variable to take effect.'
+}
+
+post_upgrade() {
+  ldconfig
+  update_makefile_conf_path
+}
+
+update_makefile_conf_path() {
+  sed --in-place \
+   -e 's!\$(OSL_HOME)/core/osl\(.*\).1.0$!/usr/lib\1!' \
+   -e 's!\$(OSL_HOME)/std/osl\(.*\).1.0$!/usr/lib\1!' \
+   -e 's!\$(OSL_HOME)/full/osl\(.*\).1.0$!/usr/lib\1!' \
+   /usr/share/osl/makefile.conf
+}
+
+# vim:set ts=2 sw=2 et:

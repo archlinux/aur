@@ -1,0 +1,27 @@
+--- Makefile.orig	2014-04-02 20:13:16.000000000 +0900
++++ Makefile	2014-04-22 18:49:40.944155929 +0900
+@@ -4,7 +4,7 @@
+ include $(OSL_HOME)/makefile.conf
+ 
+ OSL_HOME_FLAGS = -DOSL_HOME=\"$(shell dirname $(shell dirname `pwd`))\"
+-CXXFLAGS += $(OSL_HOME_FLAGS)
++CXXFLAGS += $(OSL_HOME_FLAGS) -fPIC -pipe
+ 
+ EVAL_SRC = openMidEndingEval.cc \
+  king8.cc       minorPiece.cc         ptypeEval.cc      eval_pieceStand.cc  weights.cc \
+@@ -37,7 +37,7 @@
+ OBJS = $(patsubst %.cc,%.o,$(SRCS))
+ DEPS = $(patsubst %.cc,.deps/%.cc.d,$(SRCS))
+ 
+-all: libosl_core.a
++all: libosl_core.so.1.0
+ 
+ light-clean:
+ 	-rm -rf .deps
+@@ -47,3 +47,6 @@
+ 
+ -include $(DEPS)
+ libosl_core.a : $(OBJS)
++
++libosl_core.so.1.0: $(OBJS)
++	$(CXX) -shared -Wl,-soname=libosl_core.so.1 $(OBJS) -o $@

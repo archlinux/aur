@@ -1,0 +1,35 @@
+pkgbase = libosl-svn
+	pkgdesc = Library for Shogi (Japanese chess) playing programs
+	pkgver = r4545
+	pkgrel = 6
+	url = http://gps.tanaka.ecc.u-tokyo.ac.jp/gpsshogi/index.php?OpenShogiLib
+	install = libosl.install
+	arch = i686
+	arch = x86_64
+	groups = lib
+	license = custom
+	checkdepends = boost-libs
+	checkdepends = boost
+	depends = gcc-libs
+	noextract = osl-public-data.tar.gz
+	source = osl-r4545.tar.gz::http://gps.tanaka.ecc.u-tokyo.ac.jp/cgi-bin/viewvc.cgi/trunk/osl/?view=tar
+	source = gpsshogi-data.tar.gz::http://gps.tanaka.ecc.u-tokyo.ac.jp/cgi-bin/viewvc.cgi/trunk/gpsshogi/data/?root=gpsshogi&view=tar
+	source = osl-public-data.tar.gz::http://gps.tanaka.ecc.u-tokyo.ac.jp/cgi-bin/viewvc.cgi/data/?view=tar
+	source = makefile.local
+	source = core_Makefile.patch
+	source = std_Makefile.patch
+	source = full_Makefile.patch
+	source = libosl.profile
+	source = makefile.conf.patch
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = f75edb453159d5b5909bbf401a7b702d
+	md5sums = f54110982f81b762c48750bf31ea9df5
+	md5sums = 38cadc15fda95422bf6b5a39e2d09b4d
+	md5sums = f365bfc6e30280c5feb5246cd109fad3
+	md5sums = 42c4a9517f368adf9000a1560f2eb786
+	md5sums = 312fa2c075d172fe8d011c57fe9d88e0
+
+pkgname = libosl-svn
+
