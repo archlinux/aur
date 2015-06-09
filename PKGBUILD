@@ -2,7 +2,7 @@
 
 pkgname=vcmi
 pkgver=0.98
-pkgrel=1
+pkgrel=2
 pkgdesc="Heroes of Might and Magic 3 game engine"
 arch=('i686' 'x86_64')
 url="http://forum.vcmi.eu/portal.php"
@@ -15,13 +15,19 @@ optdepends=('innoextract: required by vcmibuilder'
             'unzip: required by vcmibuilder')
 options=('!makeflags' 'strip' 'debug')
 install="$pkgname.install"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/vcmi/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('6a69e52a3380358220eba67332b097c6')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/vcmi/$pkgname/archive/$pkgver.tar.gz"
+        '0001-Fix-building-with-Boost-1.58.patch')
+md5sums=('6a69e52a3380358220eba67332b097c6'
+         '1dbb6a91a35d141a2d266ad235a790e1')
 
 prepare() {
   # Remove the last build.
   [[ -d "$pkgname-$pkgver-build" ]] && rm -rf "$pkgname-$pkgver-build"
   mkdir "$pkgname-$pkgver-build"
+
+  cd "$pkgname-$pkgver"
+  # Backport fix building with Boost 1.58.
+  patch -Np1 -i '../0001-Fix-building-with-Boost-1.58.patch'
 }
 
 build() {

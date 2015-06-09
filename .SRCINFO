@@ -1,7 +1,7 @@
 pkgbase = vcmi
 	pkgdesc = Heroes of Might and Magic 3 game engine
 	pkgver = 0.98
-	pkgrel = 1
+	pkgrel = 2
 	url = http://forum.vcmi.eu/portal.php
 	install = vcmi.install
 	arch = i686
@@ -27,7 +27,9 @@ pkgbase = vcmi
 	options = strip
 	options = debug
 	source = vcmi-0.98.tar.gz::https://github.com/vcmi/vcmi/archive/0.98.tar.gz
+	source = 0001-Fix-building-with-Boost-1.58.patch
 	md5sums = 6a69e52a3380358220eba67332b097c6
+	md5sums = 1dbb6a91a35d141a2d266ad235a790e1
 
 pkgname = vcmi
 

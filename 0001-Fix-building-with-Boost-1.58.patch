@@ -1,0 +1,53 @@
+From aa00fdbd0e99b2beec382c7677a64d962b748dcb Mon Sep 17 00:00:00 2001
+From: Rohit Nirmal <rohitnirmal9@gmail.com>
+Date: Wed, 6 May 2015 19:16:51 -0500
+Subject: [PATCH] Fix building with Boost 1.58.
+
+---
+ CCallback.cpp             | 2 +-
+ lib/CArtHandler.cpp       | 2 +-
+ lib/CGameInfoCallback.cpp | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/CCallback.cpp b/CCallback.cpp
+index 8009bc7..da280db 100644
+--- a/CCallback.cpp
++++ b/CCallback.cpp
+@@ -80,7 +80,7 @@ void CCallback::recruitCreatures(const CGDwelling *obj, const CArmedInstance * d
+ 
+ bool CCallback::dismissCreature(const CArmedInstance *obj, SlotID stackPos)
+ {
+-	if(((player>=0)  &&  obj->tempOwner != player) || (obj->stacksCount()<2  && obj->needsLastStack()))
++	if((player && obj->tempOwner != player) || (obj->stacksCount()<2  && obj->needsLastStack()))
+ 		return false;
+ 
+ 	DisbandCreature pack(stackPos,obj->id);
+diff --git a/lib/CArtHandler.cpp b/lib/CArtHandler.cpp
+index 2d9dd01..0026a66 100644
+--- a/lib/CArtHandler.cpp
++++ b/lib/CArtHandler.cpp
+@@ -671,7 +671,7 @@ boost::optional<std::vector<CArtifact*>&> CArtHandler::listFromClass( CArtifact:
+ 	case CArtifact::ART_RELIC:
+ 		return relics;
+ 	default: //special artifacts should not be erased
+-		return nullptr;
++		return boost::optional<std::vector<CArtifact*>&>();
+ 	}
+ }
+ 
+diff --git a/lib/CGameInfoCallback.cpp b/lib/CGameInfoCallback.cpp
+index 051bb9c..2a59b96 100644
+--- a/lib/CGameInfoCallback.cpp
++++ b/lib/CGameInfoCallback.cpp
+@@ -403,7 +403,7 @@ std::vector <const CGObjectInstance * > CGameInfoCallback::getVisitableObjs(int3
+ 
+ 	for(const CGObjectInstance * obj : t->visitableObjects)
+ 	{
+-		if(player < nullptr || obj->ID != Obj::EVENT) //hide events from players
++		if(player || obj->ID != Obj::EVENT) //hide events from players
+ 			ret.push_back(obj);
+ 	}
+ 
+-- 
+2.4.2
+
