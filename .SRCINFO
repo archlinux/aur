@@ -1,0 +1,17 @@
+pkgbase = sozi
+	pkgdesc = An Inkscape extension that creates SVG-based presentations, using JavaScript
+	pkgver = 13.11
+	pkgrel = 1
+	url = http://sozi.baierouge.fr/
+	arch = any
+	license = GPL3
+	license = MIT
+	depends = python2
+	depends = inkscape
+	depends = pygtk
+	depends = python2-lxml
+	source = https://github.com/senshu/Sozi/releases/download/13.11/sozi-release-13.11-30213629.zip
+	sha256sums = 6a66298e9d3fd509f252344d884d51497ed2eb599f26846ba8156dd021d444d9
+
+pkgname = sozi
+
