@@ -1,0 +1,16 @@
+pkgbase = perl-schedule-cron
+	pkgdesc = cron-like scheduler for perl subroutines
+	pkgver = 1.01
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Schedule-Cron
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-time-modules
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RO/ROLAND/Schedule-Cron-1.01.tar.gz
+	md5sums = 25ad6850aed878853e850c8c24d16ba1
+	sha512sums = d0066e650603c2798cf2cf5add88e75afa0f5565f60a633fd3f935bb47aa5e03c8c2df4b201f162598d42c84f537bc6221d71e45bcd5009bbee05edc95f91da7
+
+pkgname = perl-schedule-cron
+
