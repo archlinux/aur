@@ -1,0 +1,19 @@
+pkgbase = xfdown
+	pkgdesc = A python script for QQDownload lixian. Forked from /xfdown.
+	pkgver = 72.24925b1
+	pkgrel = 1
+	url = https://github.com/kikyous/xfdown
+	install = xfdown.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python2
+	depends = aria2
+	depends = python2-urwid
+	source = git+https://github.com/kikyous/xfdown
+	source = xfdown.install
+	sha256sums = SKIP
+	sha256sums = c7d79d1b06714f9c73fc87984f56f41da6e0625976aaa25726869922460b03c2
+
+pkgname = xfdown
+
