@@ -1,0 +1,19 @@
+pkgbase = akonadi-googledata
+	pkgdesc = Akonadi GoogleData Plugin
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://pim.kde.org/akonadi/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = boost
+	depends = kdebase-runtime
+	depends = libgcal>=0.9.6
+	depends = kdepimlibs>=4.5.0
+	source = http://libgcal.googlecode.com/files/akonadi-googledata-1.2.0.tar.bz2
+	sha1sums = 4cf707cce882166aa00ece78a4e7152410ba54b8
+
+pkgname = akonadi-googledata
+
