@@ -1,0 +1,17 @@
+pkgbase = js-beautify
+	pkgdesc = Beautify, unpack or deobfuscate JavaScript and HTML, make JSON/JSONP readable
+	pkgver = 1.5.4
+	pkgrel = 1
+	url = https://github.com/beautify-web/js-beautify
+	arch = any
+	groups = archassault
+	groups = archassault-reversing
+	license = MIT
+	makedepends = npm
+	depends = rhino
+	depends = coffee-script
+	source = https://github.com/beautify-web/js-beautify/archive/v1.5.4.tar.gz
+	sha512sums = 9b747a85e0a313845f11d5567a85d7e87e8fcc9a8042c7840bffe293af26fd1ee6a9b96d9cb183ef640ebffff14104672976a4c852a3864f095d063e8ea16ea9
+
+pkgname = js-beautify
+
