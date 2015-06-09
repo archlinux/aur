@@ -1,0 +1,13 @@
+pkgbase = bsfilter
+	pkgdesc = Spam filter that supports Japanese
+	pkgver = 1.0.19
+	pkgrel = 1
+	url = http://sourceforge.jp/projects/bsfilter/
+	arch = any
+	license = GPL2
+	depends = ruby
+	source = http://jaist.dl.sourceforge.jp/bsfilter/59804/bsfilter-1.0.19.tgz
+	md5sums = 6a9c5b9e553560908af30f038f80cfbe
+
+pkgname = bsfilter
+
