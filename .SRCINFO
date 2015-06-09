@@ -1,0 +1,14 @@
+pkgbase = nodejs-cleaver
+	pkgdesc = Generate Markdown presentations and slideshows in record time
+	pkgver = 0.7.4
+	pkgrel = 1
+	url = https://github.com/jdan/cleaver
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	provides = cleaver
+	provides = nodejs-cleaver
+
+pkgname = nodejs-cleaver
+
