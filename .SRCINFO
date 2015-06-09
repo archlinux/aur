@@ -1,0 +1,14 @@
+pkgbase = python2-autobahntestsuite
+	pkgdesc = AutobahnTestSuite - WebSocket/WAMP protocol implementation test suite.
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = http://autobahn.ws/testsuite
+	arch = any
+	license = CUSTOM
+	makedepends = python2-distribute
+	depends = python2
+	source = https://pypi.python.org/packages/source/a/autobahntestsuite/autobahntestsuite-0.7.1.zip
+	md5sums = 2cbce3577a0bb2216ba3e966d9aa8c7b
+
+pkgname = python2-autobahntestsuite
+
