@@ -1,6 +1,6 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 pkgname=comodo-modules
-pkgver=20150307_4.0.3_1
+pkgver=20150307_4.0.5_1
 pkgrel=1
 pkgdesc="Modules for Comodo Antivirus for providing realtime protection"
 arch=('i686' 'x86_64')
