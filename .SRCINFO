@@ -1,0 +1,15 @@
+pkgbase = ffmpeg-static-bin-nightly
+	pkgdesc = Universal multimedia toolkit nightly static build (binary)
+	pkgver = 20150129.ga21acd5
+	pkgrel = 1
+	url = http://johnvansickle.com/ffmpeg/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = curl
+	noextract = ffmpeg-git-20150607--static.tar.xz
+	source = ffmpeg-git-20150607--static.tar.xz::http://johnvansickle.com/ffmpeg/builds/ffmpeg-git-32bit-static.tar.xz
+	md5sums = SKIP
+
+pkgname = ffmpeg-static-bin-nightly
+
