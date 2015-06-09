@@ -1,0 +1,59 @@
+OLD_SCHEMAS=(compiz-animationaddon.schemas compiz-bicubic.schemas
+             compiz-blur.schemas compiz-colorfilter.schemas
+             compiz-cubeaddon.schemas compiz-gears.schemas
+             compiz-group.schemas compiz-loginout.schemas
+             compiz-reflex.schemas compiz-thumbnail.schemas
+             compiz-wallpaper.schemas)
+SCHEMAS=(compiz-addhelper.schemas compiz-animation.schemas
+         compiz-annotate.schemas compiz-bench.schemas compiz-ccp.schemas
+         compiz-clone.schemas compiz-commands.schemas
+         compiz-compiztoolbox.schemas compiz-composite.schemas
+         compiz-copytex.schemas compiz-core.schemas compiz-crashhandler.schemas
+         compiz-cube.schemas compiz-dbus.schemas compiz-decor.schemas
+         compiz-expo.schemas compiz-extrawm.schemas compiz-ezoom.schemas
+         compiz-fadedesktop.schemas compiz-fade.schemas compiz-firepaint.schemas
+         compiz-gnomecompat.schemas compiz-grid.schemas compiz-imgjpeg.schemas
+         compiz-imgpng.schemas compiz-imgsvg.schemas compiz-inotify.schemas
+         compiz-kdecompat.schemas compiz-mag.schemas compiz-maximumize.schemas
+         compiz-mblur.schemas compiz-mousepoll.schemas compiz-move.schemas
+         compiz-neg.schemas compiz-notification.schemas compiz-obs.schemas
+         compiz-opacify.schemas compiz-opengl.schemas compiz-place.schemas
+         compiz-put.schemas compiz-regex.schemas compiz-resizeinfo.schemas
+         compiz-resize.schemas compiz-ring.schemas compiz-rotate.schemas
+         compiz-scaleaddon.schemas compiz-scalefilter.schemas
+         compiz-scale.schemas compiz-screenshot.schemas compiz-session.schemas
+         compiz-shelf.schemas compiz-shift.schemas compiz-showdesktop.schemas
+         compiz-showmouse.schemas compiz-showrepaint.schemas compiz-snap.schemas
+         compiz-splash.schemas compiz-staticswitcher.schemas
+         compiz-switcher.schemas compiz-td.schemas compiz-text.schemas
+         compiz-titleinfo.schemas compiz-trailfocus.schemas
+         compiz-vpswitch.schemas compiz-wall.schemas compiz-water.schemas
+         compiz-widget.schemas compiz-winrules.schemas compiz-wobbly.schemas
+         compiz-workarounds.schemas compiz-workspacenames.schemas gwd.schemas)
+
+post_install() {
+  glib-compile-schemas usr/share/glib-2.0/schemas/
+  gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+}
+
+pre_remove() {
+  if [ 0$(vercmp ${1} 0.9.8.2.bzr3377.0ubuntu1) -lt 0 ]; then
+    gconf-schemas --unregister ${SCHEMAS[@]} ${OLD_SCHEMAS[@]}
+    if [ -f /usr/share/gconf/schemas/compiz-kde.schemas ]; then
+      gconf-schemas --unregister compiz-kde.schemas
+    fi
+  fi
+  gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+}
+
+pre_upgrade() {
+  pre_remove
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  glib-compile-schemas usr/share/glib-2.0/schemas/
+}

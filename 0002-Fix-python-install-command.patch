@@ -1,0 +1,36 @@
+From d1a4e6094673431ffc84489c36af979b3a07db3e Mon Sep 17 00:00:00 2001
+From: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+Date: Mon, 27 Oct 2014 21:49:22 -0400
+Subject: [PATCH 2/5] Fix python install command
+
+---
+ compizconfig/cmake/exec_setup_py_with_destdir.cmake | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
+
+diff --git a/compizconfig/cmake/exec_setup_py_with_destdir.cmake b/compizconfig/cmake/exec_setup_py_with_destdir.cmake
+index 52d787c..e286b96 100644
+--- a/compizconfig/cmake/exec_setup_py_with_destdir.cmake
++++ b/compizconfig/cmake/exec_setup_py_with_destdir.cmake
+@@ -4,7 +4,6 @@ set (SETUP "" CACHE FORCE "Path to setup.py")
+ set (VERSION "" CACHE FORCE "Version")
+ 
+ set (EXTRAARGS "")
+-set (BUILD_DEB $ENV{COMPIZ_DEB_BUILD})
+ 
+ set (INSTALL_ROOT $ENV{DESTDIR})
+ 
+@@ -16,10 +15,5 @@ endif (INSTALL_ROOT)
+ 
+ cmake_policy (SET CMP0012 NEW)
+ 
+-if (BUILD_DEB)
+-    message ("Installing Debian Format")
+-    set (EXTRAARGS "--install-layout=deb")
+-endif (BUILD_DEB)
+-
+-execute_process (COMMAND python ${SETUP} install ${EXTRAARGS} --prefix=${PREFIX} --version=${VERSION} ${INSTALL_ROOT_ARGS}
++execute_process (COMMAND python2 ${SETUP} install ${EXTRAARGS} --prefix=${PREFIX} --version=${VERSION} ${INSTALL_ROOT_ARGS}
+ 	 		   WORKING_DIRECTORY ${WDIR})
+-- 
+2.1.2
+

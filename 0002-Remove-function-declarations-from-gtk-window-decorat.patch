@@ -1,0 +1,47 @@
+From b946d9f2d198fc97f9cfa885a1a9f5509a3cbe70 Mon Sep 17 00:00:00 2001
+From: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+Date: Fri, 1 May 2015 16:46:04 -0400
+Subject: [PATCH 2/2] Remove function declarations from gtk-window-decorator.h
+ to prevent conflicts between metacity 3.14 and 3.16 bridge
+
+---
+ gtk/window-decorator/gtk-window-decorator.h | 16 ----------------
+ 1 file changed, 16 deletions(-)
+
+diff --git a/gtk/window-decorator/gtk-window-decorator.h b/gtk/window-decorator/gtk-window-decorator.h
+index 35b3c12..33c42d1 100644
+--- a/gtk/window-decorator/gtk-window-decorator.h
++++ b/gtk/window-decorator/gtk-window-decorator.h
+@@ -719,18 +719,6 @@ meta_get_frame_type_for_decor_type (const gchar *frame_type);
+ void
+ meta_draw_window_decoration (decor_t *d);
+ 
+-void
+-meta_get_decoration_geometry (decor_t		*d,
+-			      MetaTheme	        *theme,
+-			      MetaFrameFlags    *flags,
+-			      MetaFrameGeometry *fgeom,
+-			      MetaButtonLayout  *button_layout,
+-			      MetaFrameType     frame_type,
+-			      GdkRectangle      *clip);
+-
+-void
+-meta_calc_button_size (decor_t *d);
+-
+ gboolean
+ meta_calc_decoration_size (decor_t *d,
+ 			   gint    w,
+@@ -749,10 +737,6 @@ meta_get_button_position (decor_t *d,
+ 			  gint    *w,
+ 			  gint    *h);
+ 
+-gboolean
+-meta_button_present (MetaButtonLayout   *button_layout,
+-		     MetaButtonFunction function);
+-
+ void
+ meta_get_event_window_position (decor_t *d,
+ 				gint    i,
+-- 
+2.3.7
+
