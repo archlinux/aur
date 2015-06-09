@@ -1,0 +1,16 @@
+pkgbase = starplot
+	pkgdesc = A 3-dimensional star chart viewer.
+	pkgver = 0.95.5
+	pkgrel = 3
+	url = http://starplot.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	optdepends = starplot-yale5: star catalog
+	optdepends = starplot-gliese3: star catalog
+	source = http://starplot.org/downloads/starplot-0.95.5.tar.gz
+	md5sums = ff51981f48240b234f24448510ed089c
+
+pkgname = starplot
+
