@@ -1,0 +1,17 @@
+pkgbase = dayfolder
+	pkgdesc = DayFolder is a friend of those who like a clean desktop
+	pkgver = 2.0.0
+	pkgrel = 3
+	url = http://burnsoftware.wordpress.com/dayfolder/
+	install = dayfolder.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = libappindicator3
+	depends = hicolor-icon-theme
+	depends = libgee06
+	provides = dayfolder
+	source = https://launchpad.net/~thejambi/+archive/thejambi/+files/dayfolder_2.0.0-2_i386.deb
+
+pkgname = dayfolder
+
