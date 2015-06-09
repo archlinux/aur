@@ -1,0 +1,23 @@
+pkgbase = alac-git
+	pkgdesc = an audio codec developed by Apple and supported on iPhone, iPad, most iPods, Mac and iTunes
+	pkgver = 0.r3.35e1d01
+	pkgrel = 1
+	url = https://alac.macosforge.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = gcc-libs
+	provides = alac
+	provides = alac-svn
+	provides = alacconvert
+	provides = libalac
+	conflicts = alac
+	conflicts = alac-svn
+	conflicts = alacconvert
+	conflicts = libalac
+	source = alac::git+git://git.macosforge.org/alac.git
+	md5sums = SKIP
+
+pkgname = alac-git
+
