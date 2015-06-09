@@ -1,0 +1,14 @@
+pkgbase = geomyidae
+	pkgdesc = Tiny, standalone Gopher daemon written in C
+	pkgver = 0.26.3
+	pkgrel = 1
+	url = http://www.r-36.net/src/geomyidae
+	arch = i686
+	arch = x86_64
+	license = MIT
+	backup = etc/conf.d/geomyidae
+	source = http://www.r-36.net/src/geomyidae/geomyidae-0.26.3.tar.gz
+	md5sums = 3d8bb8601f37ca953b00fc2445ab5abe
+
+pkgname = geomyidae
+
