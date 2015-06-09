@@ -1,0 +1,23 @@
+pkgbase = gpxviewer
+	pkgdesc = a simple program to visualize a gpx file
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = http://blog.sarine.nl/gpx-viewer/
+	install = gpxviewer.install
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL2
+	makedepends = intltool
+	makedepends = vala
+	depends = gdl
+	depends = libchamplain
+	depends = hicolor-icon-theme
+	conflicts = gpxviewer-bzr
+	source = https://launchpad.net/gpx-viewer/trunk/0.4.0/+download/gpx-viewer-0.4.0.tar.gz
+	source = gpxviewer.desktop
+	md5sums = f019a8fdf27391ca568f022b60d381c6
+	md5sums = 8d5ed2f4f1f26a60d078a77f9fd5f2a3
+
+pkgname = gpxviewer
+

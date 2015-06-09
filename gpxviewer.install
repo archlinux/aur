@@ -1,0 +1,13 @@
+post_install() {
+ gtk-update-icon-cache -q -f -t usr/share/icons/hicolor
+ [ -x `which update-mime-database` ] && update-mime-database /usr/share/mime
+ [ -x `which update-desktop-database` ] && update-desktop-database -q
+ /bin/true
+}
+
+post_remove() {
+ gtk-update-icon-cache -q -f -t usr/share/icons/hicolor
+ [ -x `which update-mime-database` ] && update-mime-database /usr/share/mime
+ [ -x `which update-desktop-database` ] && update-desktop-database -q
+ /bin/true
+}
