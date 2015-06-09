@@ -1,5 +1,5 @@
 pkgbase = eclipse-i18n-es
-	pkgdesc = (Espanol) Spanish language pack for eclipse IDE
+	pkgdesc = (Español) Spanish language pack for eclipse IDE
 	pkgver = 4.4.0.v20141223043836
 	pkgrel = 2
 	url = http://babel.eclipse.org/
