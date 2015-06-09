@@ -1,0 +1,15 @@
+pkgbase = chronicle
+	pkgdesc = A simple blog compiler writte in Perl
+	pkgver = 4.6
+	pkgrel = 1
+	url = http://www.steve.org.uk/Software/chronicle/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl-timedate
+	depends = perl-html-template
+	source = http://www.steve.org.uk/Software/chronicle//chronicle-4.6.tar.gz
+	md5sums = 0831867886591c0a747ec1b3139d7e17
+
+pkgname = chronicle
+
