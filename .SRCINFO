@@ -1,0 +1,14 @@
+pkgbase = libasecnsp11
+	pkgdesc = Software for Carta Nazionale dei Servizi
+	pkgver = 1
+	pkgrel = 3
+	url = http://www.regione.toscana.it/-/guida-all-uso-della-carta-numero-3
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = pcsclite
+	source = http://www.regione.toscana.it/documents/10180/595930/smart_card.zip
+	md5sums = 9075a7c4ae2645906e1068d0824c32ef
+
+pkgname = libasecnsp11
+
