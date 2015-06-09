@@ -1,0 +1,19 @@
+pkgbase = diorite-git
+	pkgdesc = Utility and widget library based on Glib and GTK3.
+	pkgver = 2015.05.06.c9a04c6
+	pkgrel = 1
+	url = https://tiliado.eu/diorite
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = python
+	depends = vala
+	depends = glib2
+	depends = gtk3
+	provides = diorite
+	source = diorite-git::git://github.com/tiliado/diorite
+	sha256sums = SKIP
+
+pkgname = diorite-git
+
