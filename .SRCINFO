@@ -1,0 +1,17 @@
+pkgbase = nvchecker-git
+	pkgdesc = a tool for checking if a new version of some software has been released.
+	pkgver = v0.3.r47.g0093a40
+	pkgrel = 1
+	url = https://github.com/lilydjwg/nvchecker
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = python-tornado
+	optdepends = python-pycurl: better HTTP client support
+	source = git://github.com/lilydjwg/nvchecker.git
+	md5sums = SKIP
+
+pkgname = nvchecker-git
+
