@@ -1,0 +1,14 @@
+pkgbase = python2-txaio
+	pkgdesc = Compatibility API between asyncio/Twisted/Trollius
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/tavendo/txaio
+	arch = any
+	license = UNKNOWN
+	makedepends = python2
+	depends = python2
+	source = https://pypi.python.org/packages/source/t/txaio/txaio-1.0.0.zip
+	md5sums = 762755ba1ded4b7caf07247ab33efc5f
+
+pkgname = python2-txaio
+
