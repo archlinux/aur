@@ -1,0 +1,19 @@
+pkgbase = python2-django-kilo
+	pkgdesc = A high-level Python Web framework that encourages rapid development and clean design
+	pkgver = 1.7.8
+	pkgrel = 1
+	url = http://www.djangoproject.com/
+	arch = any
+	license = BSD
+	makedepends = python2
+	makedepends = python2-setuptools
+	optdepends = mysql-python: for MySQL backend
+	optdepends = python2-psycopg2: for PostgreSQL backend
+	provides = python2-django
+	conflicts = django
+	replaces = django
+	source = https://www.djangoproject.com/m/releases/1.7/Django-1.7.8.tar.gz
+	md5sums = ceed714b0d69983da2b585ff4f82c4a8
+
+pkgname = python2-django-kilo
+
