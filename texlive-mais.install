@@ -1,0 +1,13 @@
+post_install() {
+  post_remove
+}
+
+post_upgrade() {
+  post_install
+}
+        
+post_remove() {
+  echo "Upgrading LaTeX package database..."
+  mktexlsr
+}
+            

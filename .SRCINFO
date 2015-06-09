@@ -1,0 +1,22 @@
+pkgbase = texlive-mais
+	pkgdesc = LaTeX classes for Modeling and Analysis of Information Systems journal (includes both russian and english versions)
+	pkgver = 20130923
+	pkgrel = 2
+	url = http://mais.uniyar.ac.ru/en/node/13
+	install = texlive-mais.install
+	arch = any
+	license = unknown
+	makedepends = unzip
+	depends = texlive-core
+	depends = texlive-langcyrillic
+	provides = texlive-mais
+	conflicts = texlive-mais
+	source = http://mais.uniyar.ac.ru/sites/default/files/journal/mais.zip
+	source = http://mais.uniyar.ac.ru/sites/default/files/journal/maiseng.zip
+	source = texlive-mais.install
+	md5sums = cb530f0f827d419d8e69d5d359cbcce4
+	md5sums = 79eb91cfb3c35d8c61276b90634e9a0a
+	md5sums = 63dcf3fda6d572bf123340a401b63de1
+
+pkgname = texlive-mais
+
