@@ -1,0 +1,18 @@
+pkgbase = kawa-svn
+	pkgdesc = Kawa is a JVM-based Scheme compiler
+	pkgver = 8512
+	pkgrel = 1
+	url = http://www.gnu.org/software/kawa/
+	arch = i686
+	arch = x86_64
+	license = X11/MIT
+	makedepends = subversion
+	makedepends = texinfo
+	depends = java-runtime
+	provides = kawa
+	conflicts = kawa
+	source = 
+	md5sums = 
+
+pkgname = kawa-svn
+
