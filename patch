@@ -1,0 +1,12 @@
+diff -rupN pantheon-terminal.orig/src/TerminalWidget.vala pantheon-terminal/src/TerminalWidget.vala
+--- pantheon-terminal.orig/src/TerminalWidget.vala	2015-05-28 10:54:13.233781432 +0200
++++ pantheon-terminal/src/TerminalWidget.vala	2015-05-28 10:55:38.866845487 +0200
+@@ -56,7 +56,7 @@ namespace PantheonTerminal {
+         public int default_size;
+         public double zoom_factor = 1.0;
+ 
+-        const string SEND_PROCESS_FINISHED_BASH = "dbus-send --type=method_call --session --dest=net.launchpad.pantheon-terminal /net/launchpad/pantheon_terminal org.pantheon.terminal.ProcessFinished string:$PANTHEON_TERMINAL_ID string:\"$(history 1 | cut -c 8-)\" >/dev/null 2>&1; ";
++        const string SEND_PROCESS_FINISHED_BASH = "dbus-send --type=method_call --session --dest=net.launchpad.pantheon-terminal /net/launchpad/pantheon_terminal org.pantheon.terminal.ProcessFinished string:$PANTHEON_TERMINAL_ID string:\"$(history 1 | cut -c 8-)\" >/dev/null 2>&1 ";
+ 
+         /* Following strings are used to build RegEx for matching URIs */
+         const string USERCHARS = "-[:alnum:]";
