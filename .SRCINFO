@@ -1,0 +1,20 @@
+pkgbase = moagg
+	pkgdesc = Mother of all gravity games
+	pkgver = 1.95b
+	pkgrel = 3
+	url = http://moagg.sourceforge.net/
+	arch = any
+	license = GPL2
+	depends = java-runtime
+	provides = moagg
+	source = http://sourceforge.net/projects/moagg/files/moagg2/1.95/moagg-1.95b-bin.zip
+	source = moagg.sh
+	source = moagg.desktop
+	source = moagg.png
+	sha1sums = cc8f95beed2933b6a9e794854741e6f84a5cb392
+	sha1sums = d72552538eb2272d84b3839818da83bdc8934499
+	sha1sums = 57bc28d7209161d36b70e242f14913898aeaf478
+	sha1sums = efb6da987f3a3ff7853f281ada37163e87a4f82c
+
+pkgname = moagg
+

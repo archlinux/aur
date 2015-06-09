@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Terminal=false
+Exec=moagg
+Name=Moagg
+Comment="Mother of all gravity games"
+Icon=moagg.png
+Categories=Game;
