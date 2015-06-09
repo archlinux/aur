@@ -1,0 +1,34 @@
+pkgbase = minetest-git-leveldb
+	pkgdesc = Infiniminer/Minecraft-inspired building game (with LuaJIT, LevelDB, and Redis support)
+	pkgver = 20150114.e19dab2
+	pkgrel = 1
+	url = http://www.minetest.net/
+	install = install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = bzip2
+	depends = libpng
+	depends = libjpeg
+	depends = mesa
+	depends = sqlite
+	depends = openal
+	depends = libvorbis
+	depends = irrlicht
+	depends = curl
+	depends = freetype2
+	depends = luajit
+	depends = leveldb
+	depends = gettext
+	depends = hiredis
+	provides = minetest
+	conflicts = minetest
+	source = git://github.com/minetest/minetest.git
+	source = git://github.com/minetest/minetest_game.git
+	sha1sums = SKIP
+	sha1sums = SKIP
+
+pkgname = minetest-git-leveldb
+
