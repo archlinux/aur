@@ -1,0 +1,19 @@
+pkgbase = python2-weberror
+	pkgdesc = Web Error handling and exception catching.
+	pkgver = 0.10.3
+	pkgrel = 2
+	url = http://pylonsproject.org
+	arch = any
+	license = MIT
+	makedepends = python2-distribute
+	depends = python2
+	depends = python2-webob
+	depends = python2-tempita
+	depends = python2-simplejson
+	depends = python2-paste>=1.7.1
+	depends = python2-pygments
+	source = http://pypi.python.org/packages/source/W/WebError/WebError-0.10.3.tar.gz
+	md5sums = 84b9990b0baae6fd440b1e60cdd06f9a
+
+pkgname = python2-weberror
+
