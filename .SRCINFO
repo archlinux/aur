@@ -1,0 +1,18 @@
+pkgbase = electrum-sync-server
+	pkgdesc = Server component for the Bitcoin wallet Electrum's label synchronization feature
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/maran/electrum-sync-server
+	arch = i686
+	arch = x86_64
+	license = Unknown
+	makedepends = git
+	makedepends = go
+	depends = sqlite
+	options = !strip
+	options = !emptydirs
+	source = electrum-sync-server-0.0.2.tar.gz::https://codeload.github.com/maran/electrum-sync-server/tar.gz/0.0.2
+	sha256sums = b94415a9e00d6a7b8d71d63d19b96ba7170e4011a87af1220b54a8ab4a493b64
+
+pkgname = electrum-sync-server
+
