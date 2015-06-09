@@ -1,0 +1,16 @@
+pkgbase = perl-string-prettify
+	pkgdesc = subs to cleanup a filename and or garble for human eyes
+	pkgver = 1.04
+	pkgrel = 1
+	url = http://search.cpan.org/dist/String-Prettify
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LE/LEOCHARRE/String-Prettify-1.04.tar.gz
+	md5sums = e0e71f7035368b9f5dfded2bf89ff279
+	sha512sums = 5b14916e6888ff00838a63a78dafc3e6cd339d0c5e7c8a420952e6c60c4f5a2db70e1c1c1be1cb8abd90c3137fe7004ac00f709113f9c5f6e1c3fa1d8d28276d
+
+pkgname = perl-string-prettify
+
