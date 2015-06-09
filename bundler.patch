@@ -1,0 +1,22 @@
+--- a/bin/compass	2014-03-19 14:28:01.666995210 +0100
++++ b/bin/compass	2014-03-19 14:27:04.653662867 +0100
+@@ -1,6 +1,10 @@
+ #!/usr/bin/env ruby
+ # The compass command line utility
+ 
++ENV["BUNDLE_GEMFILE"] = File.expand_path('../../Gemfile', File.realpath(__FILE__))
++require 'rubygems'
++require 'bundler/setup'
++
+ # This allows compass to run easily from a git checkout without install.
+ def fallback_load_path(path)
+   retried = false
+@@ -16,7 +20,7 @@
+   end
+ end
+ 
+-fallback_load_path(File.join(File.dirname(__FILE__), '..', 'lib')) do
++fallback_load_path(File.join(File.dirname(File.realpath(__FILE__)), '..', 'lib')) do
+   require 'compass'
+   require 'compass/exec'
+ end

@@ -1,0 +1,6 @@
+source "https://rubygems.org"
+gem 'chunky_png', "~> 1.2"
+gem 'compass-core', "~> 1.0.2"
+gem 'compass-import-once', "~> 1.0.5"
+gem 'rb-fsevent', ">= 0.9.3"
+gem 'rb-inotify', ">= 0.9"

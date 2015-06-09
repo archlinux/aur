@@ -1,0 +1,23 @@
+pkgbase = ruby-compass
+	pkgdesc = A Real Stylesheet Framework
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = http://compass-style.org
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = rubygems
+	depends = ruby
+	depends = ruby-bundler
+	noextract = compass-1.0.3.gem
+	source = http://gems.rubyforge.org/gems/compass-1.0.3.gem
+	source = Gemfile
+	source = Gemfile.lock
+	source = bundler.patch
+	sha256sums = 4c7884dc5349d59011fd6c5736a0404008d5609235037741feac9c8ff840d151
+	sha256sums = 2cd0895f4e54b14edd9eb599220900e6cf43a1f57754bfbd790b9a2ec2aab6b0
+	sha256sums = 65918ac12b7b0f97daea52bdb030cb3910b9a344f869173fb2cbbcdf9b9275e2
+	sha256sums = fbee7344a019d115caddf00667e9473a4e82f2999bdff9c04ccc4aa31b979d72
+
+pkgname = ruby-compass
+
