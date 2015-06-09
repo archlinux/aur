@@ -32,8 +32,8 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  find . -name "*.py*" -exec sed -i "s|env python|env python2|" '{}' \;
-  find . -name "*.py*" -exec sed -i "s|/usr/bin/python|/usr/bin/python2|" '{}' \;
+  find . -name "*.py" -exec sed -i "s|env python|env python2|" '{}' \;
+  find . -name "*.py" -exec sed -i "s|/usr/bin/python|/usr/bin/python2|" '{}' \;
 }
 
 package() {
