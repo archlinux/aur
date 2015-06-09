@@ -1,0 +1,22 @@
+pkgbase = god
+	pkgdesc = A process monitoring framework in Ruby
+	pkgver = 0.13.6
+	pkgrel = 1
+	url = http://godrb.com
+	install = god.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = ruby
+	provides = god
+	provides = ruby-god
+	conflicts = god
+	conflicts = ruby-god
+	noextract = god-0.13.6.gem
+	source = https://rubygems.org/downloads/god-0.13.6.gem
+	source = god.service
+	sha256sums = 691f862e96392d20788d8f50de5f08e7c6c79cac3d05a6a892623d36a7fff85c
+	sha256sums = 4b2ec4edbc94dd11b5178ec66846b94232157d1f9710de5f58fc2deb0a1e1596
+
+pkgname = god
+

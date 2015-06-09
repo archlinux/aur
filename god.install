@@ -1,0 +1,28 @@
+post_install() {
+  _mkuser
+  chown -R god:god /etc/god /var/log/god
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  _rmuser
+  rm -rf /etc/god /var/log/god
+}
+
+_mkuser() {
+  getent passwd god &>/dev/null || {
+    echo -n "Creating god user... "
+    grep -E "^god:" /etc/group >/dev/null || groupadd god
+    useradd -m -d /etc/god -g god -s /usr/bin/nologin god
+    echo "done"
+  }
+}
+
+_rmuser() {
+  echo -n "Removing god user... "
+  userdel -rf god 2>/dev/null
+  echo "done"
+}

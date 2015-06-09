@@ -1,0 +1,11 @@
+[Unit]
+Description=God
+
+[Service]
+Type=simple
+PIDFile=/run/god.pid
+ExecStart=/usr/bin/god -c /etc/god/god.conf -P /run/god.pid -l /var/log/god --log-level info -D
+ExecStop=/usr/bin/god terminate
+
+[Install]
+WantedBy=multi-user.target
