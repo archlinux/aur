@@ -1,0 +1,13 @@
+pkgbase = myexit
+	pkgdesc = Simple zenity exit dialog
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/BlackCodec/myexit/
+	arch = any
+	license = GPL3
+	depends = zenity
+	source = https://github.com/BlackCodec/myexit/archive/r01.zip
+	md5sums = c6b4715351ad64c6f2e27017fec809e4
+
+pkgname = myexit
+
