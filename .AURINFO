@@ -1,0 +1,14 @@
+pkgbase = railway-sans-font-git
+	pkgdesc = An open source version of Edward Johnston's Timeless Typeface for London Underground of 1916
+	pkgver = r36.a374f2a
+	pkgrel = 1
+	url = https://github.com/GregFleming/Railway-Sans
+	install = install
+	arch = any
+	license = OFL:SIL Open Font License http://opensource.org/licenses/OFL-1.1
+	provides = railway-sans-font
+	conflicts = railway-sans-font
+	source = git+https://github.com/GregFleming/Railway-Sans.git
+
+pkgname = railway-sans-font-git
+
