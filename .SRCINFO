@@ -1,0 +1,20 @@
+pkgbase = wxfbe
+	pkgdesc = FreeBASIC IDE based on wx-c
+	pkgver = 20140413
+	pkgrel = 1
+	url = http://www.freebasic-portal.de
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = libtinfo
+	depends = libpng12
+	depends = lib32-libtinfo
+	depends = lib32-libpng12
+	depends = alsa-plugins
+	depends = lib32-alsa-plugins
+	options = staticlibs
+	source = http://www.freebasic-portal.de/dlfiles/537/wxFBE.7z
+	sha256sums = SKIP
+
+pkgname = wxfbe
+
