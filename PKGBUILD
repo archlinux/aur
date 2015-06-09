@@ -17,8 +17,10 @@ provides=('bcache-tools')
 conflicts=('bcache-tools')
 install="${pkgname}.install"
 source=("git+https://github.com/g2p/${_gitname}.git"
+        'crc64.patch'
         'initcpio-arch.patch')
 md5sums=('SKIP'
+         '265f3d6ad0bd1596eac8a2c3512f2d87'
          '208d7024340b8db3cf21325df40b6267')
 
 # set _gitrev to a git revision (man gitrevisions) like a tag, a commit sha1
@@ -36,6 +38,7 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/${_gitname}"
 	patch -Np1 -i "${srcdir}/initcpio-arch.patch"
+	patch -Np1 -i "${srcdir}/crc64.patch"
 }
 
 build() {
