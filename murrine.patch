@@ -1,0 +1,42 @@
+diff --git a/gtkrc.orig b/gtkrc
+index 3877f39..22cf4fb 100644
+--- a/gtkrc.orig
++++ b/gtkrc
+@@ -87,9 +87,8 @@ style "murrine-default" {
+ 		contrast            = 0.8   # 0.8 for less contrast, more than 1.0 for more contrast on borders
+ 		glazestyle          = 0     # 0 = flat highlight, 1 = curved highlight, 2 = concave style, 3 = top curved highlight, 4 = beryl highlight
+ 		gradient_shades     = {1.09,1.01,1.01,0.9} # default: {1.1,1.0,1.0,1.1}
+-		gradients           = TRUE  # FALSE = disabled, TRUE = enabled
+-		highlight_ratio     = 1.0  # set highlight amount for buttons or widgets
+-		lightborder_ratio   = 1.3   # sets lightborder amount for buttons or widgets
++		highlight_shade     = 1.0  # set highlight amount for buttons or widgets
++		lightborder_shade   = 1.3   # sets lightborder amount for buttons or widgets
+ 		lightborderstyle    = 1     # 0 = lightborder on top side, 1 = lightborder on all sides
+ 		listviewheaderstyle = 2     # 0 = flat, 1 = glassy, 2 = raised
+ 		listviewstyle       = 1     # 0 = nothing, 1 = dotted
+@@ -246,11 +245,11 @@ style "murrine-panel" {
+ 	engine "murrine" {
+ 	roundness = 0
+ 	rgba = TRUE
+-	highlight_ratio = 1.2
++	highlight_shade = 1.2
+ 	reliefstyle	    = 2
+ 	contrast = 0.9
+ 	lightborderstyle    = 1
+-	lightborder_ratio   = 1.1
++	lightborder_shade   = 1.1
+ 	}
+ }
+ 
+@@ -327,10 +326,10 @@ style "murrine-scrollbar"
+ {
+ 
+ 	bg[NORMAL]        = shade (1.0, @bg_color)
++  bg[SELECTED]      = "#413D39"
+ 	
+ 	engine "murrine" {
+ 	#highlight_ratio = 1.3
+-	scrollbar_color = "#413D39"
+ 	#glazestyle = 0
+ 	roundness = 1
+ 	rgba = FALSE

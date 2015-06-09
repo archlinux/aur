@@ -1,0 +1,19 @@
+pkgbase = gtk-theme-espresso
+	pkgdesc = Espresso is a new theme based on Macchiato 0.3.
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://gnome-look.org/content/show.php/3spr3sso?content=162127
+	arch = any
+	license = CCPL:nc-sa
+	makedepends = unrar
+	depends = gtk-engine-murrine
+	options = !strip
+	source = http://gnome-look.org/CONTENT/content-files/162127-3spr3sso_by_huku9h1f-d6w2rfn.rar
+	source = http://gnome-look.org/CONTENT/content-files/113817-Espresso.tar.gz
+	source = murrine.patch
+	md5sums = bb13e84442d86cf8a71473a260933559
+	md5sums = ca4e251cb02f956ba5dbd8e08fa0a695
+	md5sums = 5890bb5ae72c868d0baf03dbe4aaa88a
+
+pkgname = gtk-theme-espresso
+
