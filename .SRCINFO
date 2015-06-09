@@ -1,0 +1,26 @@
+pkgbase = opsu-git
+	pkgdesc = An open source osu!-client written in Java.
+	pkgver = 0.9.0.r22.g92f4a51
+	pkgrel = 1
+	url = https://itdelatrisu.github.io/opsu/
+	changelog = .CHANGELOG
+	arch = any
+	license = GPL3
+	makedepends = java-environment
+	makedepends = java-web-start
+	makedepends = maven
+	makedepends = gendesk
+	makedepends = git
+	depends = java-runtime
+	depends = bash
+	provides = opsu-git
+	conflicts = opsu-git
+	source = opsu-git::git://github.com/itdelatrisu/opsu.git
+	source = pom.patch
+	source = opsu-git.sh
+	sha512sums = SKIP
+	sha512sums = 72c56c8f0c647fcdbf85a32e7c4bf1a37b7176015f08402dc20b707f11c5cbb78be1da81d4a697c9d842ac28a9a0bcf1f4c8252c2a18e2ee35435cd327da683b
+	sha512sums = 4c8b89b4f273a076620c98058623a0e8c0ab875f191cb65f126e9a0134e0b072ed27ac8a03928225db1b5b9e832935b4efca0db1d7a02b0c8b96ec87748398f3
+
+pkgname = opsu-git
+

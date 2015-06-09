@@ -1,0 +1,93 @@
+* commit 92f4a5176d09d82cfd481e4de0db9abbb2265185
+| Author: Jeffrey Han <itdelatrisu@gmail.com>
+| Date:   Tue Jun 9 03:10:44 2015 -0400
+| 
+|     Switch to a LRU cache for beatmap background images.
+|     Created a separate BeatmapImageCache class to handle cache operations.  The cache now uses File objects as keys, rather than Beatmap objects (which was buggy).
+|     
+|     Also renamed "OsuHitObjectResult" helper class to "HitObjectResult".
+|     
+|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
+|  
+* commit 74f7ac18b9d9f8d10db11b4fa0c7b061e5294d8b
+| Author: Jeffrey Han <itdelatrisu@gmail.com>
+| Date:   Mon Jun 8 18:13:49 2015 -0400
+| 
+|     Fixed an infinite loop on beatmaps starting at time 0. (blame: 18e57fd)
+|     There's probably a better fix, though...
+|     
+|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
+|  
+* commit e712d57a2c11e4ca5d9e6ac9607d3c9f7bb9bc0e
+| Author: Jeffrey Han <itdelatrisu@gmail.com>
+| Date:   Mon Jun 8 17:23:45 2015 -0400
+| 
+|     Cleaned up implementation of beatmap combo colors.
+|     Added getComboColors() method to Beatmap class, and the 'combo' field is now null if no combo is provided.
+|     
+|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
+|  
+* commit b1b1664e1118704f8d70643b6c5d57c63f09fbff
+| Author: Jeffrey Han <itdelatrisu@gmail.com>
+| Date:   Mon Jun 8 16:42:54 2015 -0400
+| 
+|     Follow-up to #91.
+|     Pass the border color into CurveRenderState instead of determining it there; store the color as a static field in Curve (since it shouldn't change per-beatmap).
+|     
+|     Also removed the leftover FrameBufferCache warning from #64.
+|     
+|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
+|    
+*   commit a7d05a4b2619fec025a3b4a0e67c7a9e4aa3f31a
+|\  Merge: 447a0f3 890a69c
+| | Author: Jeffrey Han <itdelatrisu@users.noreply.github.com>
+| | Date:   Mon Jun 8 16:22:03 2015 -0400
+| | 
+| |     Merge pull request #91 from Bigpet/bordercolor
+| |     
+| |     recolor the slider border from the skin or beatmap settings
+| |   
+| * commit 890a69c1a93b718a5fd622b04f9fe0b57bbcfab0
+|/  Author: Peter Tissen <dravorek@gmail.com>
+|   Date:   Mon Jun 8 22:07:24 2015 +0200
+|   
+|       recolor the slider border from the skin or beatmap settings
+|  
+* commit 447a0f371a45512cec8495e064bb5cfcb2a38cc6
+| Author: Jeffrey Han <itdelatrisu@gmail.com>
+| Date:   Mon Jun 8 15:57:17 2015 -0400
+| 
+|     Added missing "SliderBorder" field to BeatmapParser.
+|     Use beatmap.getSliderBorderColor() to get the slider border color for a beatmap.
+|     
+|     Also adds the field to the beatmap cache, and fixes a bug where format changes would cause an exception when preparing statements in the new format.
+|     
+|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
+|  
+* commit b6f208a47d017c5bdc9054711e67cee7e280a788
+| Author: Jeffrey Han <itdelatrisu@gmail.com>
+| Date:   Mon Jun 8 15:02:28 2015 -0400
+| 
+|     Follow-up to #64.
+|     - Removed NEW_SLIDER option, and use the skin "SliderStyle" instead.  Uses the new style by default, unless STYLE_PEPPYSLIDER is specified.
+|     - Check if OpenGL 3.0 is supported before trying to draw new style sliders.
+|     - Fixed compilation warnings; removed unneeded fields and imports.
+|     - Filled in some missing Javadocs.
+|     - Style changes.
+|     
+|     Signed-off-by: Jeffrey Han <itdelatrisu@gmail.com>
+|    
+*   commit 9c8a8f24c6982b7b1c18fe6c1243d6e40f2607a2
+|\  Merge: 90c8c9e 609739e
+| | Author: Jeffrey Han <itdelatrisu@users.noreply.github.com>
+| | Date:   Mon Jun 8 13:58:08 2015 -0400
+| | 
+| |     Merge pull request #64 from Bigpet/sliderrender
+| |     
+| |     Slider rendering to offscreen buffer
+| |   
+| * commit 609739e153bd12b17165f1394ad191b3a3c9e0de
+| | Author: Peter Tissen <dravorek@gmail.com>
+| | Date:   Mon Jun 8 19:11:07 2015 +0200
+| | 
+| |     ignore UIScale for reading raw image pixels

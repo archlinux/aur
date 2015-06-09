@@ -1,0 +1,12 @@
+92c92
+< 								<!--<argument>-Dparams=-DXDG=true</argument>-->
+---
+> 								<argument>-Dparams=-DXDG=true</argument>
+151a152,158
+> 		<dependency>
+>    			<groupId>javax.jnlp</groupId>
+>    			<artifactId>jnlp-api</artifactId>
+>    			<version>1.0.0</version>
+>    			<scope>system</scope>
+>    			<systemPath>/usr/bin/javaws</systemPath>
+>    		</dependency>
