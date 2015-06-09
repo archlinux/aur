@@ -1,4 +1,4 @@
-# Maintainer: fqqbar
+# Maintainer: Firas Zaidan <firas@zaidan.de>
 # Contributor: Matthew Longley <randomticktock@gmail.com>
 
 pkgname='squeak-sources-41'
