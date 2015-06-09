@@ -1,0 +1,12 @@
+pkgbase = kbdlight
+	pkgdesc = A very simple application that changes MacBooks' keyboard backlight level.
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/hobarrera/kbdlight/
+	arch = x86_64
+	license = BSD
+	source = https://github.com/hobarrera/kbdlight/archive/v1.3.zip
+	md5sums = a1f8fd0a6e0bc134b4823fa0f831d1b0
+
+pkgname = kbdlight
+
