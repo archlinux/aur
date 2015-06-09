@@ -1,0 +1,14 @@
+pkgbase = python2-args
+	pkgdesc = Command Arguments for Humans.
+	pkgver = 0.r37.36c727b
+	pkgrel = 2
+	url = https://pypi.python.org/pypi/args/
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2
+	source = python2-args::git+https://github.com/kennethreitz/args
+	md5sums = SKIP
+
+pkgname = python2-args
+
