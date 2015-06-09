@@ -1,0 +1,20 @@
+pkgbase = elementary-icon-theme-bzr
+	pkgdesc = elementary icon theme
+	pkgver = r1175
+	pkgrel = 1
+	url = https://launchpad.net/elementaryicons
+	install = elementary-icon-theme.install
+	arch = any
+	groups = pantheon-unstable
+	license = GPL3
+	makedepends = bzr
+	depends = gtk-update-icon-cache
+	depends = hicolor-icon-theme
+	provides = elementary-icon-theme
+	conflicts = elementary-icon-theme
+	options = !emptydirs
+	source = elementary-icon-theme::bzr+lp:elementaryicons
+	sha256sums = SKIP
+
+pkgname = elementary-icon-theme-bzr
+

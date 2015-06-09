@@ -1,0 +1,6 @@
+arch=('any')
+pkgname=('elementary-icon-theme-bzr')
+
+check_bzr $packagedir/$pkgname/${pkgname%-*}
+
+# vim: ts=2 sw=2 et:
