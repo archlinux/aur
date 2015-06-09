@@ -1,0 +1,27 @@
+pkgbase = ruby-jekyll
+	pkgdesc = A simple, blog aware, static site generator.
+	pkgver = 2.5.3
+	pkgrel = 2
+	url = http://github.com/mojombo/jekyll
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-liquid-2
+	depends = ruby-kramdown
+	depends = ruby-mercenary
+	depends = ruby-safe_yaml
+	depends = ruby-colorator
+	depends = ruby-pygments.rb
+	depends = ruby-redcarpet
+	depends = ruby-toml
+	depends = ruby-classifier-reborn
+	depends = ruby-jekyll-paginate
+	depends = ruby-jekyll-gist
+	depends = ruby-jekyll-coffeescript
+	noextract = jekyll-2.5.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/jekyll-2.5.3.gem
+	sha1sums = 1ebc5ca2af01b3741d5eba375320fe45c6c105d6
+
+pkgname = ruby-jekyll
+
