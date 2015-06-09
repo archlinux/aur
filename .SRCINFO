@@ -1,0 +1,16 @@
+pkgbase = ruby-toml
+	pkgdesc = Parse your TOML.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = http://github.com/jm/toml
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-parslet-1.5
+	noextract = toml-0.1.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/toml-0.1.2.gem
+	sha1sums = 79f9c4a6bb883f3c02f66e18d46f489a7bf04e29
+
+pkgname = ruby-toml
+
