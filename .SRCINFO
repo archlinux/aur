@@ -1,0 +1,92 @@
+pkgbase = linux-libre-knock
+	pkgver = 4.0.5_gnu
+	pkgrel = 1
+	url = https://gnunet.org/knock
+	arch = i686
+	arch = x86_64
+	arch = mips64el
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	options = !strip
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0-gnu/linux-libre-4.0-gnu.tar.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0-gnu/linux-libre-4.0-gnu.tar.xz.sign
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0.5-gnu/patch-4.0-gnu-4.0.5-gnu.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0.5-gnu/patch-4.0-gnu-4.0.5-gnu.xz.sign
+	source = http://gnunet.org/sites/default/files/tcp_stealth_3.18_1.diff
+	source = tcp_stealth_3.18_1.diff.sig::http://gnunet.org/sites/default/files/tcp_stealth_3.18.diff_1.sig
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm.sig
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm.sig
+	source = config.i686
+	source = config.x86_64
+	source = config.mips64el
+	source = linux.preset
+	source = change-default-console-loglevel.patch
+	source = https://repo.parabola.nu/other/linux-libre/patches/4.0.2-ae91f13af5-loongson-community.patch
+	source = https://repo.parabola.nu/other/linux-libre/patches/4.0.2-ae91f13af5-loongson-community.patch.sig
+	sha256sums = 0e2dd5be12c1f82ab3d03b89cbe3f1a20e14332ec42c102efb226a6283fdd38a
+	sha256sums = SKIP
+	sha256sums = 5ac82d1955fee5abccda157ef2399b34d4fd1c2310a33d19c09ca5953b308172
+	sha256sums = SKIP
+	sha256sums = 93a1610c203ea4c187ac5b50dce105fac86df914b1406e1d85df5857d36201c9
+	sha256sums = SKIP
+	sha256sums = bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494
+	sha256sums = SKIP
+	sha256sums = 13bd7a8d9ed6b6bc971e4cd162262c5a20448a83796af39ce394d827b0e5de74
+	sha256sums = SKIP
+	sha256sums = 6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a
+	sha256sums = SKIP
+	sha256sums = ba2fa02ea43d4fe9b78e7824d3d9752b5ba84d7ca539b871626c3583ad1cdfc2
+	sha256sums = e56bd8db7d7bd0ccf46518e364f51fe57e0d9cb848a3daab145f2b7380a7fe9b
+	sha256sums = cff141410c90ec34ce6e3f352f57d302db4304ea87564a1fbe888db97f28fbea
+	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
+	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
+	sha256sums = 13e141279af2bc17decfc041e015710daac9a6cd1c9b4e871a76cb8f916b9e22
+	sha256sums = SKIP
+
+pkgname = linux-libre-knock
+	pkgdesc = The Linux-libre-knock kernel and modules with support for stealth TCP sockets
+	install = linux.install
+	depends = coreutils
+	depends = linux-libre-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = systemd-knock: to use system and service manager with TCP Stealth support
+	optdepends = openssh-knock: to use SSH with TCP Stealth support
+	provides = linux-knock=4.0.5
+	conflicts = linux-knock
+	conflicts = kernel26-knock
+	conflicts = kernel26-libre-knock
+	replaces = linux-knock
+	replaces = kernel26-knock
+	replaces = kernel26-libre-knock
+	backup = etc/mkinitcpio.d/linux-libre-knock.preset
+
+pkgname = linux-libre-knock-headers
+	pkgdesc = Header files and scripts for building modules for Linux-libre-knock kernel
+	provides = linux-knock-headers=4.0.5
+	conflicts = linux-knock-headers
+	conflicts = kernel26-knock-headers
+	conflicts = kernel26-libre-knock-headers
+	replaces = linux-knock-headers
+	replaces = kernel26-knock-headers
+	replaces = kernel26-libre-knock-headers
+
+pkgname = linux-libre-knock-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre-knock kernel
+	provides = linux-knock-docs=4.0.5
+	conflicts = linux-knock-docs
+	conflicts = kernel26-knock-docs
+	conflicts = kernel26-libre-knock-docs
+	replaces = linux-knock-docs
+	replaces = kernel26-knock-docs
+	replaces = kernel26-libre-knock-docs
+
