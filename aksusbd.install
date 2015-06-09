@@ -1,0 +1,13 @@
+post_install() {
+  echo "Do not forget to enable and start the service as root:"
+  echo "systemctrl enable aksusbd"
+  echo "systemctrl start  aksusbd"
+}
+
+post_upgrade() {
+  echo
+}
+
+post_remove() {
+  echo
+}

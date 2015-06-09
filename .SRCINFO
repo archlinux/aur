@@ -1,0 +1,20 @@
+pkgbase = aksusbd
+	pkgdesc = AKSUSB daemon supporting Sentinel HASP, HASP HL, HASP4 and Hardlock keys.
+	pkgver = 7.32
+	pkgrel = 3
+	url = http://www.safenet-inc.com/
+	install = aksusbd.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = rpmextract
+	conflicts = ehaspd
+	source = ftp://ftp.cis-app.com/pub/hasp/Sentinel_HASP/Runtime_(Drivers)/7.32/Sentinel_LDK_RedHat_and_SuSE_RPM_Run-time_Installer.tar.gz
+	source = aksusbd.service
+	source = LICENSE
+	md5sums = 49a1bbf566741e87b5b61702c95c62e8
+	md5sums = 9ee94d29752a32e164af2a539f85ec3b
+	md5sums = 095760c5f93d6b59c337b3a411a479b2
+
+pkgname = aksusbd
+

@@ -1,0 +1,18 @@
+[Unit]
+Description=AKSUSB Daemon
+ConditionPathExists=/etc/init.d/aksusbd
+After=syslog.target
+
+[Service]
+Type=forking
+ExecStart=/etc/init.d/aksusbd start
+TimeoutSec=0
+StandardOutput=tty
+RemainAfterExit=yes
+
+ExecReload=/etc/init.d/aksusbd restart
+
+ExecStop=/etc/init.d/aksusbd stop
+
+[Install]
+WantedBy=multi-user.target

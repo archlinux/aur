@@ -1,0 +1,381 @@
+
+SAFENET SENTINEL HASP PRODUCT END USER LICENSE AGREEMENT
+
+IMPORTANT INFORMATION - PLEASE READ THIS AGREEMENT CAREFULLY BEFORE USING THE
+CONTENTS OF THE PACKAGE AND/OR BEFORE DOWNLOADING OR INSTALLING THE SOFTWARE
+PRODUCT. ALL ORDERS FOR AND USE OF THE SENTINEL HASP® PRODUCTS (including
+without limitation, the Developer's Kit, libraries, utilities, diskettes,
+CD_ROM, DVD, Sentinel HASP keys, the software component of SafeNet Sentinel
+HASP™ and the Sentinel HASP Software Protection and Licensing Guide)
+(hereinafter "Product") SUPPLIED BY SAFENET, INC., (or any of its affiliates -
+either of them referred to as "SAFENET") ARE AND SHALL BE, SUBJECT TO THE TERMS
+AND CONDITIONS SET FORTH IN THIS AGREEMENT.
+
+BY OPENING THE PACKAGE CONTAINING THE PRODUCTS AND/OR BY DOWNLOADING THE
+SOFTWARE (as defined hereunder) AND/OR BY INSTALLING THE SOFTWARE ON YOUR
+COMPUTER AND/OR BY USING THE PRODUCT, YOU ARE ACCEPTING THIS AGREEMENT AND
+AGREEING TO BE BOUND BY ITS TERMS AND CONDITIONS.
+
+IF YOU DO NOT AGREE TO THIS AGREEMENT OR ARE NOT WILLING TO BE BOUND BY IT, DO
+NOT OPEN THE PACKAGE AND/OR DOWNLOAD AND/OR INSTALL THE SOFTWARE AND PROMPTLY
+(at least within 7 days from the date you received this package) RETURN THE
+PRODUCTS TO SAFENET, ERASE THE SOFTWARE, AND ANY PART THEREOF, FROM YOUR
+COMPUTER AND DO NOT USE IT IN ANY MANNER WHATSOEVER.
+
+This Agreement has 3 sections:
+
+Section I applies if you are downloading or using the Product free of charge for
+evaluation purposes only.
+
+Section II applies if you have purchased or have been otherwise granted by
+SafeNet a license to use the Product.
+
+Section III applies to all grants of license.
+
+SECTION I - TERMS APPLICABLE TO GRANT OF EVALUATION LICENSE
+
+1.1     License Grant. SafeNet hereby grants to you, and you accept, a
+nonexclusive license to use the Product in machine-readable, object code form
+only, free of charge, for the purpose of evaluating whether to purchase an
+ongoing license to the Product and only as authorized in this License Agreement.
+The evaluation period is limited to the maximum amount of days specified in your
+applicable evaluation package. You may use the Product, during the evaluation
+period, in the manner described in Section III below under "Extent of Grant.".
+
+1.2     DISCLAIMER OF WARRANTY. The Product is provided on an "AS IS" basis,
+without warranty of any kind. IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+PURPOSE, SATISFACTION AND MERCHANTABILITY SHALL NOT APPLY. SOME JURISDICTIONS DO
+NOT ALLOW EXCLUSIONS OF AN IMPLIED WARRANTY, SO THIS DISCLAIMER MAY NOT APPLY TO
+YOU AND YOU MAY HAVE OTHER LEGAL RIGHTS THAT VARY BY JURISDICTION. The entire
+risk as to the quality and performance of the Product is borne by you. This
+disclaimer of warranty constitutes an essential part of the agreement.
+
+If you initially acquired a copy of the Product without purchasing a license and
+you wish to purchase a license, contact SafeNet or any SafeNet representative.
+
+SECTION II - APPLICABLE TERMS WHEN GRANTED A LICENSE
+
+2.1     License Grant. Subject to your payment of the license fees applicable to
+the type and amount of licenses purchased by you and set forth in your
+applicable purchase order, SafeNet hereby grants to you, and you accept, a
+personal, nonexclusive and fully revocable limited License to use the Software
+(as such term is defined in Section III hereunder, in the Intellectual Property
+subsection), in executable form only, as described in the Software accompanying
+user documentation and only according to the terms of this Agreement: (i) you
+may install the Software and use it on computers located in your place of
+business, as described in SafeNet's related documentation; (ii) you may merge
+and link the Software into your computer programs for the sole purpose described
+in the Sentinel HASP Software Protection and Licensing Guide; however, any
+portion of the Software merged into another computer program shall be deemed as
+derivative work and will continue to be subject to the terms of this Agreement;
+and (iii) you are permitted to make a reasonable number of copies of the
+Software solely for backup purposes. The Software shall not be used for any
+other purposes.
+
+2.2     Sub-Licensing. After merging the Software in your computer program(s)
+according to the License Grant section above, you may sub-license, pursuant to
+the terms of this Agreement, the merged Software and resell the hardware
+components of the Product, which you purchased from SafeNet, if applicable, to
+distributors and/or users. Preceding such a sale and sub-licensing, you shall
+make sure that your contracts with any of your distributors and/or end users
+(and their contracts with their customers) shall contain warranties,
+disclaimers, limitation of liability, and license terms which are no less
+protective of SafeNet's rights than such equivalent provisions contained herein.
+In addition, you shall make it abundantly clear to your distributors and/or end
+users, that SafeNet is not and shall not, under any circumstances, be
+responsible or liable in any way for the software and software licenses
+contained in your computer programs which you merge with the SafeNet Software
+and distribute to your distributors and/or end users, including, without
+limitation, with respect to extending license terms and providing maintenance
+for any software elements and/or computer programs which are not the SafeNet
+Software. SafeNet expressly disclaims any responsibility and liability with
+respect to any computer programs, software elements, and/or hardware elements
+which are not and do not form part of the SafeNet product.
+
+2.3     Limited Warranty. SafeNet warrants, for your benefit alone, that (i) the
+Software, when and as delivered to you, and for a period of three (3) months
+after the date of delivery to you, will perform in substantial compliance with
+the Sentinel HASP Software Protection and Licensing Guide, provided that it is
+used on the computer hardware and with the operating system for which it was
+designed; and (ii) that the Sentinel HASP key, for a period of twelve (12)
+months after the date of delivery to you, will be substantially free from
+significant defects in materials and workmanship. You may enable or disable
+certain features when applying the Sentinel HASP protection software by changing
+settings in the Sentinel HASP tools in accordance with the Sentinel HASP
+Software Protection and Licensing Guide; HOWEVER, IT IS IMPORTANT TO NOTE THAT
+WHEN ENABLING OR DISABLING SOME FEATURES YOU MIGHT REDUCE THE LEVEL OF
+PROTECTION PROVIDED BY THE SOFTWARE.
+
+2.4     Warranty Disclaimer. SAFENET DOES NOT WARRANT THAT ANY OF ITS PRODUCT(S)
+WILL MEET YOUR REQUIRMENTS OR THAT THEIR OPERATION WILL BE UNINTERRUPTED OR
+ERROR-FREE. TO THE EXTENT ALLOWED BY LAW, SAFENET EXPRESSLY DISCLAIMS ALL
+EXPRESS WARRANTIES NOT STATED HERE AND ALL IMPLIED WARRANTIES, INCLUDING, BUT
+NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+PARTICULAR PURPOSE. NO SAFENET'S DEALER, DISTRIBUTOR, RESELLER, AGENT OR
+EMPLOYEE IS AUTHORIZED TO MAKE ANY MODIFICATIONS, EXTENSIONS, OR ADDITIONS TO
+THIS WARRANTY. If any modifications are made to the Software or to any other
+part of the Product by you; if the media and the Sentinel HASP key is subjected
+to accident, abuse, or improper use; or if you violate any of the terms of this
+Agreement, then the warranty in Section 2.3 above, shall immediately be
+terminated. The warranty shall not apply if the Software is used on or in
+conjunction with hardware or program other than the unmodified version of
+hardware and program with which the Software was designed to be used as
+described in the Sentinel HASP Software Protection and Licensing Guide.
+
+2.5     Limitation of Remedies. In the event of a breach of the warranty set
+forth above, SafeNet's sole obligation, and your sole remedy shall be, at
+SafeNet's sole discretion: (i) to replace or repair the Product, or component
+thereof, that does not meet the foregoing limited warranty, free of charge; or
+(ii) to refund the price paid by you for the Product, or component thereof. Any
+replacement or repaired component will be warranted for the remainder of the
+original warranty period or 30 days, whichever is longer. Warranty claims must
+be made in writing during the warranty period and within seven (7) days of the
+observation of the defect accompanied by evidence satisfactory to SafeNet. All
+Products should be returned to the distributor from which they were purchased
+(if not purchased directly from SafeNet) and shall be shipped by the returning
+party with freight and insurance paid. The Product or component thereof must be
+returned with a copy of your receipt.
+
+SECTION III - TERMS APPLICABLE TO ALL GRANTS OF LICENSE
+
+3.1     Extent of Grant and Prohibited Uses. Except as specifically permitted in
+Sections 2.1 and 2.2 above, you agree not to (i) use the Product in any manner
+beyond the scope of license purchased by you in accordance with your applicable
+purchase order; (ii) use, modify, merge or sub-license the Software or any other
+of SafeNet's products except as expressly authorized in this Agreement and in
+the Sentinel HASP Software Protection and Licensing Guide; and (iii) sell,
+license (or sub-license), lease, assign, transfer, pledge, or share your rights
+under this License with/to anyone else; and (iv) modify, disassemble, decompile,
+reverse engineer, revise or enhance the Software or attempt to discover the
+Software's source code; and (v) place the Software onto a server so that it is
+accessible via a public network; and (vi) use any back-up or archival copies of
+the Software (or allow someone else to use such copies) for any purpose other
+than to replace an original copy if it is destroyed or becomes defective. If you
+are a member of the European Union, this agreement does not affect your rights
+under any legislation implementing the EC Council Directive on the Legal
+Protection of Computer Programs. If you seek any information within the meaning
+of that Directive you should initially approach SafeNet.
+
+3.2     Intellectual Property. THIS IS A LICENSE AGREEMENT AND NOT AN AGREEMENT
+FOR SALE. The software component of the SafeNet Sentinel HASP Product, including
+any revisions, corrections, modifications, enhancements, updates and/or upgrades
+thereto, (hereinafter in whole or any part thereof defined as: "Software"), and
+the related documentation, ARE NOT FOR SALE and are and shall remain in
+SafeNet's sole property. All intellectual property rights (including, without
+limitation, copyrights, patents, trade secrets, trademarks, etc.) evidenced by
+or embodied in and/or attached/connected/related to the Product, (including,
+without limitation, the Software code and the work product performed in
+accordance with Section II above) are and shall be owned solely by SafeNet. This
+License Agreement does not convey to you an interest in or to the Software but
+only a limited right of use revocable in accordance with the terms of this
+License Agreement. Nothing in this Agreement constitutes a waiver of SafeNet's
+intellectual property rights under any law.
+
+3.3     Audit. SafeNet shall have the right, at its own expense, upon reasonable
+prior notice, to periodically inspect and audit your records to ensure your
+compliance with the terms and conditions of this license agreement.
+
+3.4     Termination. Without prejudice to any other rights, SafeNet may
+terminate this license upon the breach by you of any term hereof. Upon such
+termination by SafeNet, you agree to destroy, or return to SafeNet, the Product
+and the Documentation and all copies and portions thereof.
+
+3.5     Limitation of Liability. SafeNet's cumulative liability to you or any
+other party for any loss or damages resulting from any claims, demands, or
+actions arising out of or relating to this Agreement and/or the sue of the
+Product shall not exceed the license fee paid to SafeNet for the use of the
+Product/s that gave rise to the action or claim, and if no such Product/s is/are
+so applicable then SafeNet's liability shall not exceed the amount of license
+fees paid by You to SafeNet hereunder during the twelve (12) months period
+preceding the event. UNDER NO CIRCUMSTANCES AND UNDER NO LEGAL THEORY, TORT,
+CONTRACT, OR OTHERWISE, SHALL SAFENET OR ITS SUPPLIERS OR RESELLERS OR AGENTS BE
+LIABLE TO YOU OR ANY OTHER PERSON FOR ANY INDIRECT, SPECIAL, INCIDENTAL, OR
+CONSEQUENTIAL DAMAGES OF ANY TYPE INCLUDING, WITHOUT LIMITATION, DAMAGES FOR
+LOSS OF GOODWILL, BUSINESS INTERRUPTION, COMPUTER FAILURE OR MALFUNCTION, LOSS
+OF BUSINESS PROFITS, LOSS OF BUSINESS INFORMATION, DAMAGES FOR PERSONAL INJURY
+OR ANY AND ALL OTHER COMMERCIAL DAMAGES OR LOSSES, EVEN IF SAFENET SHALL HAVE
+BEEN INFORMED OF THE POSSIBILITY OF SUCH DAMAGES, OR FOR ANY CLAIM BY ANY OTHER
+PARTY. SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OR LIMITATION OF INCIDENTAL
+OR CONSEQUENTIAL DAMAGES, SO THIS LIMITATION AND EXCLUSION MAY NOT APPLY TO YOU.
+
+3.6     No other Warranties. Except and to the extent specifically provided
+herein, SafeNet makes no warranty or representation, either express or implied,
+with respect to its Products as, including their quality, performance,
+merchantability or fitness for a particular purpose.
+
+3.7     Export Controls. YOU ACKNOWLEDGE THAT THE SOFTWARE IS SUBJECT TO
+REGULATION BY UNITED STATES, EUROPEAN UNION, AND/OR OTHER GOVERNMENT AGENCIES,
+WHICH PROHIBIT EXPORT OR DIVERSION OF THE SOFTWARE TO CERTAIN COUNTRIES AND
+CERTAIN PERSONS. YOU AGREE TO COMPLY WITH ALL EXPORT LAWS, REGULATIONS AND
+RESTRICTIONS OF THE UNITED STATES DEPARTMENT OF STATE, DEPARTMENT OF COMMERCE OR
+OTHER LEGAL AUTHORITY WITHIN THE UNITED STATES OR ANY FOREIGN ENTITY WHICH
+REGULATES THEIR SHIPMENT. YOU WILL NOT EXPORT IN ANY MANNER, EITHER DIRECTLY OR
+INDIRECTLY, ANY SOFTWARE OR ANY PRODUCT THAT INCORPORATES ANY SOFTWARE WITHOUT
+FIRST OBTAINING ALL NECESSARY APPROVAL FROM APPROPRIATE GOVERNMENT AGENCIES. YOU
+AGREE TO INDEMNIFY SAFENET AGAINST ALL CLAIMS, LOSSES, DAMAGES, LIABILITIES,
+COSTS AND EXPENSES, INCLUDING REASONABLE ATTORNEYS' FEES, TO THE EXTENT SUCH
+CLAIMS ARISE OUT OF ANY BREACH OF THIS SECTION 3.7.
+
+3.8     Governing Law & Jurisdiction. This License Agreement shall be construed,
+interpreted and governed by the laws of the State of Delaware without regard to
+conflicts of laws and provisions thereof. The exclusive forum for any disputes
+arising out of or relating to this License Agreement shall be an appropriate
+federal or state court sitting in Harford County, State of Maryland, USA. The
+application of the United Nations Convention of Contracts for the International
+Sale of Goods is expressly excluded. The failure of either party to enforce any
+rights granted hereunder or to take action against the other party in the event
+of any breach hereunder shall not be deemed a waiver by that party as to
+subsequent enforcement of rights or subsequent actions in the event of future
+breaches.
+
+3.9     Third Party Software. The Product contains the Open SSL Toolkit which
+includes the OpenSSL software, as set forth in Exhibit A and the Original SSLeay
+software, as set forth in Exhibit B. Such third party's software is provided "As
+Is" and use of such software shall be governed by the terms and conditions as
+set forth in Exhibit A and Exhibit B. If the Product contains any software
+provided by third parties other than the software noted in Exhibit A and Exhibit
+B, such third party's software are provided "As Is" and shall be subject to the
+terms of the provisions and condition set forth in the agreements
+contained/attached to such software. In the event such agreements are not
+available, such third party's software are provided "As Is" without any warranty
+of any kind and this Agreement shall apply to all such third party software
+providers and third party software as if they were SafeNet and the Product
+respectively.
+
+3.10   Miscellaneous. If the copy of the Product you received was accompanied by
+a printed or other form of "hard-copy" End User License Agreement whose terms
+vary from this Agreement, then the hard-copy End User License Agreement governs
+your use of the Product. This Agreement represents the complete agreement
+concerning this license and may be amended only by a writing executed by both
+parties. THE ACCEPTANCE OF ANY PURCHASE ORDER PLACED BY YOU, IS EXPRESSLY MADE
+CONDITIONAL ON YOUR ASSENT TO THE TERMS SET FORTH HEREIN, COMBINED WITH THE
+APPLICABLE LICENSE SCOPE AND TERMS, IF ANY, SET FORTH IN YOUR PURCHASE ORDER. If
+any provision of this Agreement is held to be unenforceable, such provision
+shall be reformed only to the extent necessary to make it enforceable. The
+failure of either party to enforce any rights granted hereunder or to take
+action against the other party in the event of any breach hereunder shall not be
+deemed a waiver by that party as to subsequent enforcement of rights or
+subsequent actions in the event of future breaches.
+
+© 2009 SafeNet, Inc., and/or Aladdin Knowledge Systems Ltd. All rights reserved.
+
+
+HASP®, Sentinel HASP®, HASP SRM®, Sentinel HASP Business Studio™, Sentinel HASP®
+HL Basic, Sentinel HASP® HL Pro, Sentinel HASP® HL Max, Sentinel HASP® HL Time,
+Sentinel HASP® HL Net, Sentinel HASP® HL NetTime, Sentinel HASP® HL Drive,
+Hardlock®, LicenseOnChip®, Cross-Locking™, and Method-level protection™ are
+registered and/or unregistered trademarks of SafeNet, Inc., or Aladdin Knowledge
+Systems, Ltd., in the United States and other countries. All other trademarks
+referenced herein, and in the Sentinel HASP® system, and its accompanying
+documentation, are registered and/or unregistered trademarks of their respective
+owners.
+
+Exhibit A Open SSL License
+
+A.  Notices
+
+Copyright (c) 1998-2005 The OpenSSL Project. All rights reserved.
+Redistributions of source code must retain the above copyright notice, this list
+of conditions and the following disclaimer.  Redistributions in binary form must
+reproduce the above copyright notice, this list of conditions and the following
+disclaimer in the documentation and/or other materials provided with the
+distribution.  All advertising materials mentioning features or use of this
+software must display the following acknowledgment: "This product includes
+software developed by the OpenSSL Project for use in the OpenSSL Toolkit.
+(http://www.openssl.org/)" The names "OpenSSL Toolkit" and "OpenSSL Project"
+must not be used to endorse or promote products derived from this software
+without prior written permission. For written permission, please contact
+openssl-core@openssl.org.  Products derived from this software may not be called
+"OpenSSL" nor may "OpenSSL" appear in their names without prior written
+permission of the OpenSSL Project.  Redistributions of any form whatsoever must
+retain the following acknowledgment: "This product includes software developed
+by the OpenSSL Project for use in the OpenSSL Toolkit (http://www.openssl.org/)"
+B.  DISCLAIMER OF WARRANTY
+
+THIS SOFTWARE IS PROVIDED BY THE OpenSSL PROJECT ''AS IS'' AND ANY EXPRESSED OR
+IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT
+SHALL THE OpenSSL PROJECT OR ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Exhibit B Original SSLeay License
+
+A.  Notices
+
+Copyright (C) 1995-1998 Eric Young (eay@cryptsoft.com). All rights reserved.
+This package is an SSL implementation written by Eric Young (eay@cryptsoft.com).
+The implementation was written so as to conform with Netscapes SSL.  This
+library is free for commercial and non-commercial use as long as the following
+conditions are adhered to. The following conditions apply to all code found in
+this distribution, be it the RC4, RSA, lhash, DES, etc., code; not just the SSL
+code. The SSL documentation included with this distribution is covered by the
+same copyright terms except that the holder is Tim Hudson (tjh@cryptsoft.com).
+Copyright remains Eric Young's, and as such any Copyright notices in the code
+are not to be removed.  If this package is used in a product, Eric Young should
+be given attribution as the author of the parts of the library used.  This can
+be in the form of a textual message at program startup or in documentation
+(online or textual) provided with the package.  Redistributions of source code
+must retain the above copyright notice, this list of conditions and the
+following disclaimer.  Redistributions in binary form must reproduce the above
+copyright notice, this list of conditions and the following disclaimer in the
+documentation and/or other materials provided with the distribution.  All
+advertising materials mentioning features or use of this software must display
+the following acknowledgment: "This product includes cryptographic software
+written by Eric Young (eay@cryptsoft.com)".  If you include any Windows specific
+code (or a derivative thereof) from the apps directory (application code) you
+must include an acknowledgement: "This product includes software written by Tim
+Hudson (tjh@cryptsoft.com)" B.  DISCLAIMER OF WARRANTY.
+
+THIS SOFTWARE IS PROVIDED BY ERIC YOUNG ''AS IS'' AND ANY EXPRESS OR IMPLIED
+WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT
+SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
+OF SUCH DAMAGE.
+
+Certifications
+
+CE Compliance
+
+The HASP product line complies with the CE EMC Directive and related standards*.
+HASP products are marked with the CE logo and a HASP CE conformity card is
+included in every shipment or upon demand.
+
+*EMC directive 89/336/EEC and related standards EN 55022,  EN 50082-1.
+
+FCC Compliance
+
+FCC authorities have determined that HASP is not a Class B Computing Device
+Peripheral and therefore does not require FCC regulation.
+
+UL Certification
+
+The HASP product line successfully completed UL 94 Tests for Flammability of
+Plastic Materials for Parts in Devices and Appliances. HASP products comply with
+UL 1950 Safety of Information Technology Equipment regulations.
+
+ISO 9001:2000 Certification
+
+The HASP product line is designed and manufactured by Aladdin Knowledge Systems,
+Inc., an ISO 9001:2000 certified company. Aladdin's quality assurance system is
+approved by the International Organization for Standardization (ISO), ensuring
+that Aladdin products and customer service standards consistently meet
+specifications in order to provide outstanding customer satisfaction.
+
+Certificate of Compliance
+
+Upon request, SafeNet Inc./Aladdin Knowledge Systems, Inc. will supply a
+Certificate of Compliance to any software developer who wishes to demonstrate
+that the HASP product line conforms to the specifications stated. Software
+developers can distribute this certificate to the end user along with their
+programs.
+
