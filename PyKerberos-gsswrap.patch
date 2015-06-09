@@ -1,0 +1,11 @@
+--- python-kerberos-1.1/src/kerberosgss.c-orig	2009-11-11 14:26:47.000000000 -0500
++++ python-kerberos-1.1/src/kerberosgss.c	2009-11-28 16:17:59.000000000 -0500
+@@ -355,7 +355,7 @@ int authenticate_gss_client_wrap(gss_cli
+ 		// server decides if principal can log in as user
+ 		strncpy(buf + 4, user, sizeof(buf) - 4);
+ 		input_token.value = buf;
+-		input_token.length = 4 + strlen(user) + 1;
++		input_token.length = 4 + strlen(user);
+ 	}
+ 
+ 	// Do GSSAPI wrap

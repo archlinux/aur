@@ -1,0 +1,126 @@
+diff -rupN python-kerberos-1.1.orig/src/kerberos.c python-kerberos-1.1/src/kerberos.c
+--- python-kerberos-1.1.orig/src/kerberos.c	2014-01-16 20:52:24.684000000 -0700
++++ python-kerberos-1.1/src/kerberos.c	2014-01-16 20:53:14.182000000 -0700
+@@ -250,6 +250,30 @@ static PyObject *authGSSClientWrap(PyObj
+ 	return Py_BuildValue("i", result);
+ }
+ 
++static PyObject *authGSSClientInquireCred(PyObject *self, PyObject *args)
++{
++	gss_client_state *state;
++	PyObject *pystate;
++	int result = 0;
++	if (!PyArg_ParseTuple(args, "O", &pystate))
++		return NULL;
++
++	if (!PyCObject_Check(pystate)) {
++		PyErr_SetString(PyExc_TypeError, "Expected a context object");
++		return NULL;
++	}
++
++	state = (gss_client_state *)PyCObject_AsVoidPtr(pystate);
++	if (state == NULL)
++		return NULL;
++
++	result = authenticate_gss_client_inquire_cred(state);
++	if (result == AUTH_GSS_ERROR)
++		return NULL;
++
++	return Py_BuildValue("i", result);
++}
++
+ static PyObject *authGSSServerInit(PyObject *self, PyObject *args)
+ {
+     const char *service;
+@@ -379,12 +403,16 @@ static PyMethodDef KerberosMethods[] = {
+      "Get the response from the last client-side GSSAPI step."},
+     {"authGSSClientUserName",  authGSSClientUserName, METH_VARARGS,
+      "Get the user name from the last client-side GSSAPI step."},
++    {"authGSSClientInquireCred",  authGSSClientInquireCred, METH_VARARGS,
++     "Get the current user name, if any, without a client-side GSSAPI step"},
+     {"authGSSServerInit",  authGSSServerInit, METH_VARARGS,
+      "Initialize server-side GSSAPI operations."},
+     {"authGSSClientWrap",  authGSSClientWrap, METH_VARARGS,
+      "Do a GSSAPI wrap."},
+     {"authGSSClientUnwrap",  authGSSClientUnwrap, METH_VARARGS,
+      "Do a GSSAPI unwrap."},
++    {"authGSSClientInquireCred", authGSSClientInquireCred, METH_VARARGS,
++     "Get the current user name, if any."},
+     {"authGSSServerClean",  authGSSServerClean, METH_VARARGS,
+      "Terminate server-side GSSAPI operations."},
+     {"authGSSServerStep",  authGSSServerStep, METH_VARARGS,
+diff -rupN python-kerberos-1.1.orig/src/kerberosgss.c python-kerberos-1.1/src/kerberosgss.c
+--- python-kerberos-1.1.orig/src/kerberosgss.c	2014-01-16 20:52:24.739000000 -0700
++++ python-kerberos-1.1/src/kerberosgss.c	2014-01-16 20:53:14.183000000 -0700
+@@ -388,6 +388,60 @@ end:
+ 	return ret;
+ }
+ 
++int authenticate_gss_client_inquire_cred(gss_client_state* state)
++{
++    OM_uint32 maj_stat;
++    OM_uint32 min_stat;
++    gss_cred_id_t client_creds = GSS_C_NO_CREDENTIAL;
++    gss_buffer_desc name_token = GSS_C_EMPTY_BUFFER;
++    gss_name_t name = GSS_C_NO_NAME;
++    int ret = AUTH_GSS_COMPLETE;
++
++    // Get credentials
++    maj_stat = gss_acquire_cred(&min_stat, GSS_C_NO_NAME, GSS_C_INDEFINITE,
++                               GSS_C_NO_OID_SET, GSS_C_INITIATE, &client_creds, NULL, NULL);
++
++    if (GSS_ERROR(maj_stat))
++    {
++       set_gss_error(maj_stat, min_stat);
++       ret = AUTH_GSS_ERROR;
++       goto end;
++    }
++
++    // Get the name
++    maj_stat = gss_inquire_cred(&min_stat, client_creds, &name, 
++                                NULL, NULL, NULL);
++
++    if (GSS_ERROR(maj_stat))
++    {
++       set_gss_error(maj_stat, min_stat);
++       ret = AUTH_GSS_ERROR;
++       goto end;
++    }
++
++    maj_stat = gss_display_name(&min_stat, name, &name_token, NULL);
++
++    if (GSS_ERROR(maj_stat))
++    {
++        set_gss_error(maj_stat, min_stat);
++        ret = AUTH_GSS_ERROR;
++        goto end;
++    }
++
++    state->username = strndup(name_token.value, name_token.length);
++    if (!state->username) {
++        set_gss_error(GSS_S_FAILURE, ENOMEM);
++        ret = AUTH_GSS_ERROR;
++    }
++
++end:
++    (void)gss_release_cred(&min_stat, &client_creds);
++    (void)gss_release_buffer(&min_stat, &name_token);
++    (void)gss_release_name(&min_stat, &name);
++
++    return ret;
++}
++
+ int authenticate_gss_server_init(const char *service, gss_server_state *state)
+ {
+     OM_uint32 maj_stat;
+diff -rupN python-kerberos-1.1.orig/src/kerberosgss.h python-kerberos-1.1/src/kerberosgss.h
+--- python-kerberos-1.1.orig/src/kerberosgss.h	2014-01-16 20:52:24.759000000 -0700
++++ python-kerberos-1.1/src/kerberosgss.h	2014-01-16 20:53:37.505000000 -0700
+@@ -55,6 +55,7 @@ int authenticate_gss_client_clean(gss_cl
+ int authenticate_gss_client_step(gss_client_state *state, const char *challenge);
+ int authenticate_gss_client_unwrap(gss_client_state* state, const char* challenge); 
+ int authenticate_gss_client_wrap(gss_client_state* state, const char* challenge, const char* user);
++int authenticate_gss_client_inquire_cred(gss_client_state* state);
+ 
+ int authenticate_gss_server_init(const char* service, gss_server_state* state);
+ int authenticate_gss_server_clean(gss_server_state *state);

@@ -1,0 +1,136 @@
+diff -uPr python-kerberos-1.1/pysrc/kerberos.py python-kerberos-1.1-gssflags/pysrc/kerberos.py
+--- python-kerberos-1.1/pysrc/kerberos.py	2008-09-17 07:17:15.000000000 -0400
++++ python-kerberos-1.1-gssflags/pysrc/kerberos.py	2008-12-15 09:21:42.000000000 -0500
+@@ -90,7 +90,18 @@
+ AUTH_GSS_CONTINUE=0 
+ AUTH_GSS_COMPLETE=1 
+      
+-def authGSSClientInit(service):
++#Some useful gss flags
++GSS_C_DELEG_FLAG=1
++GSS_C_MUTUAL_FLAG=2
++GSS_C_REPLAY_FLAG=4
++GSS_C_SEQUENCE_FLAG=8
++GSS_C_CONF_FLAG=16
++GSS_C_INTEG_FLAG=32
++GSS_C_ANON_FLAG=64
++GSS_C_PROT_READY_FLAG=128
++GSS_C_TRANS_FLAG=256
++
++def authGSSClientInit(service, gssflags=GSS_C_MUTUAL_FLAG|GSS_C_SEQUENCE_FLAG):
+     """
+     Initializes a context for GSSAPI client-side authentication with the given service principal.
+     authGSSClientClean must be called after this function returns an OK result to dispose of
+@@ -98,6 +109,9 @@
+ 
+     @param service: a string containing the service principal in the form 'type@fqdn'
+         (e.g. 'imap@mail.apple.com').
++    @param gssflags: optional integer used to set GSS flags.
++        (e.g.  GSS_C_DELEG_FLAG|GSS_C_MUTUAL_FLAG|GSS_C_SEQUENCE_FLAG will allow
++         to forward credentials to the remote host)
+     @return:        a tuple of (result, context) where result is the result code (see above) and
+         context is an opaque value that will need to be passed to subsequent functions.
+     """
+diff -uPr python-kerberos-1.1/src/kerberos.c python-kerberos-1.1-gssflags/src/kerberos.c
+--- python-kerberos-1.1/src/kerberos.c	2008-09-17 05:38:55.000000000 -0400
++++ python-kerberos-1.1-gssflags/src/kerberos.c	2008-12-15 09:26:39.000000000 -0500
+@@ -84,20 +84,22 @@
+         return NULL;
+ }
+ 
+-static PyObject* authGSSClientInit(PyObject* self, PyObject* args)
++static PyObject* authGSSClientInit(PyObject* self, PyObject* args, PyObject* keywds)
+ {
+     const char *service;
+     gss_client_state *state;
+     PyObject *pystate;
++    static char *kwlist[] = {"service", "gssflags", NULL};
++    long int gss_flags = GSS_C_MUTUAL_FLAG|GSS_C_SEQUENCE_FLAG;
+     int result = 0;
+     
+-    if (!PyArg_ParseTuple(args, "s", &service))
++    if (!PyArg_ParseTupleAndKeywords(args, keywds, "s|l", kwlist, &service, &gss_flags))
+         return NULL;
+     
+     state = (gss_client_state *) malloc(sizeof(gss_client_state));
+     pystate = PyCObject_FromVoidPtr(state, NULL);
+     
+-    result = authenticate_gss_client_init(service, state);
++    result = authenticate_gss_client_init(service, gss_flags, state);
+     if (result == AUTH_GSS_ERROR)
+         return NULL;
+     
+@@ -367,7 +369,7 @@
+      "Change the user password."},
+     {"getServerPrincipalDetails",  getServerPrincipalDetails, METH_VARARGS,
+      "Return the service principal for a given service and hostname."},
+-    {"authGSSClientInit",  authGSSClientInit, METH_VARARGS,
++    {"authGSSClientInit",  (PyCFunction)authGSSClientInit, METH_VARARGS|METH_KEYWORDS,
+      "Initialize client-side GSSAPI operations."},
+     {"authGSSClientClean",  authGSSClientClean, METH_VARARGS,
+      "Terminate client-side GSSAPI operations."},
+@@ -427,6 +429,15 @@
+     PyDict_SetItemString(d, "AUTH_GSS_COMPLETE", PyInt_FromLong(AUTH_GSS_COMPLETE)); 
+     PyDict_SetItemString(d, "AUTH_GSS_CONTINUE", PyInt_FromLong(AUTH_GSS_CONTINUE)); 
+ 
++    PyDict_SetItemString(d, "GSS_C_DELEG_FLAG", PyInt_FromLong(GSS_C_DELEG_FLAG)); 
++    PyDict_SetItemString(d, "GSS_C_MUTUAL_FLAG", PyInt_FromLong(GSS_C_MUTUAL_FLAG)); 
++    PyDict_SetItemString(d, "GSS_C_REPLAY_FLAG", PyInt_FromLong(GSS_C_REPLAY_FLAG)); 
++    PyDict_SetItemString(d, "GSS_C_SEQUENCE_FLAG", PyInt_FromLong(GSS_C_SEQUENCE_FLAG)); 
++    PyDict_SetItemString(d, "GSS_C_CONF_FLAG", PyInt_FromLong(GSS_C_CONF_FLAG)); 
++    PyDict_SetItemString(d, "GSS_C_INTEG_FLAG", PyInt_FromLong(GSS_C_INTEG_FLAG)); 
++    PyDict_SetItemString(d, "GSS_C_ANON_FLAG", PyInt_FromLong(GSS_C_ANON_FLAG)); 
++    PyDict_SetItemString(d, "GSS_C_PROT_READY_FLAG", PyInt_FromLong(GSS_C_PROT_READY_FLAG)); 
++    PyDict_SetItemString(d, "GSS_C_TRANS_FLAG", PyInt_FromLong(GSS_C_TRANS_FLAG)); 
+ error:
+     if (PyErr_Occurred())
+         PyErr_SetString(PyExc_ImportError, "kerberos: init failed");
+diff -uPr python-kerberos-1.1/src/kerberosgss.c python-kerberos-1.1-gssflags/src/kerberosgss.c
+--- python-kerberos-1.1/src/kerberosgss.c	2008-09-17 06:35:15.000000000 -0400
++++ python-kerberos-1.1-gssflags/src/kerberosgss.c	2008-12-15 09:21:42.000000000 -0500
+@@ -108,7 +108,7 @@
+     return result;
+ }
+ 
+-int authenticate_gss_client_init(const char* service, gss_client_state* state)
++int authenticate_gss_client_init(const char* service, long int gss_flags, gss_client_state* state)
+ {
+     OM_uint32 maj_stat;
+     OM_uint32 min_stat;
+@@ -119,6 +119,7 @@
+     state->context = GSS_C_NO_CONTEXT;
+     state->username = NULL;
+     state->response = NULL;
++    state->gss_flags = gss_flags;
+     
+     // Import server name first
+     name_token.length = strlen(service);
+@@ -190,7 +191,7 @@
+ 				    &state->context,
+ 				    state->server_name,
+ 				    GSS_C_NO_OID,
+-				    GSS_C_MUTUAL_FLAG | GSS_C_SEQUENCE_FLAG,
++				    (OM_uint32)state->gss_flags,
+ 				    0,
+ 				    GSS_C_NO_CHANNEL_BINDINGS,
+ 				    &input_token,
+diff -uPr python-kerberos-1.1/src/kerberosgss.h python-kerberos-1.1-gssflags/src/kerberosgss.h
+--- python-kerberos-1.1/src/kerberosgss.h	2008-05-23 12:40:38.000000000 -0400
++++ python-kerberos-1.1-gssflags/src/kerberosgss.h	2008-12-15 09:21:42.000000000 -0500
+@@ -33,6 +33,7 @@
+ typedef struct {
+     gss_ctx_id_t     context;
+     gss_name_t       server_name;
++    long int         gss_flags;
+     char*            username;
+     char*            response;
+ } gss_client_state;
+@@ -49,7 +50,7 @@
+ 
+ char* server_principal_details(const char* service, const char* hostname);
+ 
+-int authenticate_gss_client_init(const char* service, gss_client_state* state);
++int authenticate_gss_client_init(const char* service, long int gss_flags, gss_client_state* state);
+ int authenticate_gss_client_clean(gss_client_state *state);
+ int authenticate_gss_client_step(gss_client_state *state, const char *challenge);
+ int authenticate_gss_client_unwrap(gss_client_state* state, const char* challenge); 
