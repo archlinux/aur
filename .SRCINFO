@@ -1,0 +1,14 @@
+pkgbase = ido
+	pkgdesc = Widgets and other objects used for indicators
+	pkgver = 12.10.2
+	pkgrel = 4
+	url = https://launchpad.net/ido
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = gtk3
+	source = https://launchpad.net/ido/12.10/12.10.2/+download/ido-12.10.2.tar.gz
+	sha256sums = e2279c7c0eeeb2e038eaf87418df109327de28c758f45e72e19c7154a1f71f00
+
+pkgname = ido
+
