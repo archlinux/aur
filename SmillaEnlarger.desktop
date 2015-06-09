@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=SmillaEnlarger
+GenericName=ImageEnlarger
+Comment=Resize images using hi-tech alghoritms
+Exec=/usr/bin/SmillaEnlarger
+Icon=smilla
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Graphics;

@@ -1,0 +1,16 @@
+pkgbase = imageenlarger
+	pkgdesc = Small graphical tool (based on Qt) to resize, especially magnify bitmaps in high quality. (also called SmillaEnlarger)
+	pkgver = 0.9.0
+	pkgrel = 2
+	url = http://sourceforge.net/projects/imageenlarger/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt4
+	source = http://downloads.sourceforge.net/project/imageenlarger/imageenlarger/SmillaEnlarger%20Release%200.9.0/SmillaEnlarger_0.9.0_source.zip
+	source = SmillaEnlarger.desktop
+	md5sums = a2ce1db14eb2c8addd97986e65da0689
+	md5sums = 294dac02f8e7d679acac375cd6f9aa28
+
+pkgname = imageenlarger
+
