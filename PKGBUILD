@@ -7,7 +7,7 @@ url='https://pki.openca.org/projects/ocspd/'
 arch=('i686' 'x86_64')
 license=('Apache')
 depends=('bash' 'openssl')
-makedepends=('libpki')
+makedepends=('libpki' 'chrpath')
 source=("http://prdownloads.sourceforge.net/project/openca/$pkgname/releases/v$pkgver/sources/$pkgname-$pkgver.tar.gz")
 sha256sums=('10d56cecb862d94ed8742bdf52958cebe1b3f8d87625ba014b0ae2b7c4820de5')
 
