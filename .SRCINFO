@@ -1,0 +1,13 @@
+pkgbase = screenswitch
+	pkgdesc = Quickly toggle between different connected displays.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/hobarrera/screenswitch
+	arch = any
+	license = BSD
+	depends = python2-xrandr
+	source = https://github.com/hobarrera/screenswitch/archive/v1.0.zip
+	md5sums = 166077ddebe62b0bd34af3b8fb010214
+
+pkgname = screenswitch
+
