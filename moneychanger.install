@@ -1,0 +1,24 @@
+post_install() {
+  _rmsymlink
+  _mksymlink
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  _rmsymlink
+}
+
+_mksymlink() {
+  echo -n "Symlinking moneychanger-qt to /usr/bin/moneychanger-qt... "
+  ln -s /usr/share/moneychanger/moneychanger-qt/moneychanger-qt /usr/bin/moneychanger-qt
+  echo "done"
+}
+
+_rmsymlink() {
+  echo -n "Removing symlinks... "
+  rm -f /usr/bin/moneychanger-qt
+  echo "done"
+}

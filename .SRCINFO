@@ -1,0 +1,24 @@
+pkgbase = moneychanger-git
+	pkgdesc = A QT/C++ client for Open-Transactions
+	pkgver = 20140509
+	pkgrel = 1
+	url = https://github.com/Open-Transactions/Moneychanger
+	install = moneychanger.install
+	arch = i686
+	arch = x86_64
+	license = AGPL3
+	makedepends = gcc
+	makedepends = git
+	makedepends = libidn
+	makedepends = make
+	depends = open-transactions
+	depends = qt5-base
+	provides = moneychanger
+	provides = moneychanger-qt
+	conflicts = moneychanger
+	conflicts = moneychanger-qt
+	source = moneychanger::git+https://github.com/Open-Transactions/Moneychanger
+	sha256sums = SKIP
+
+pkgname = moneychanger-git
+
