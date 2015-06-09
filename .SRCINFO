@@ -1,7 +1,7 @@
 pkgbase = dateutils
 	pkgdesc = nifty utilities and library for fast date-time calculations and conversion (strptime, dadd, dconv, ddiff, dgrep, dround, dseq, dtest)
-	pkgver = 0.3.1
-	pkgrel = 2
+	pkgver = 0.3.2
+	pkgrel = 1
 	url = http://hroptatyr.github.com/dateutils/
 	install = dateutils.install
 	changelog = Changelog
@@ -9,8 +9,8 @@ pkgbase = dateutils
 	arch = x86_64
 	license = BSD
 	depends = glibc
-	source = https://bitbucket.org/hroptatyr/dateutils/downloads/dateutils-0.3.1.tar.xz
-	md5sums = 6e4a652bc297517b7be8e2cdb775a6f1
+	source = https://bitbucket.org/hroptatyr/dateutils/downloads/dateutils-0.3.2.tar.xz
+	md5sums = 206de43a9fea4b991fb53043d6fbf678
 
 pkgname = dateutils
 

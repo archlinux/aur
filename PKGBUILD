@@ -1,8 +1,8 @@
 # Maintainer: Alexej Magura <agm2819*gmail*>
 # Contributor: philomath <philomath868 AT gmail DOT com>
 pkgname=dateutils
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.3.2
+pkgrel=1
 pkgdesc="nifty utilities and library for fast date-time calculations and conversion (strptime, dadd, dconv, ddiff, dgrep, dround, dseq, dtest)"
 arch=('i686' 'x86_64')
 url="http://hroptatyr.github.com/dateutils/"
@@ -11,7 +11,7 @@ depends=('glibc')
 changelog=Changelog
 install=dateutils.install
 source=("https://bitbucket.org/hroptatyr/$pkgname/downloads/$pkgname-${pkgver}.tar.xz")
-md5sums=('6e4a652bc297517b7be8e2cdb775a6f1')
+md5sums=('206de43a9fea4b991fb53043d6fbf678')
 
 prepare () {
     cd "$srcdir/$pkgname-$pkgver"
@@ -26,7 +26,7 @@ build () {
 check () {
 
     cd "$srcdir/$pkgname-$pkgver"
-    make -k check || true
+    make -k check
 }
 
 package () {
