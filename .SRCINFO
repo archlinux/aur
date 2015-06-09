@@ -1,0 +1,26 @@
+pkgbase = latexila
+	pkgdesc = A LaTeX editor designed for the GNOME desktop
+	pkgver = 3.16.1
+	pkgrel = 1
+	url = http://projects.gnome.org/latexila/
+	install = latexila.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = intltool
+	makedepends = itstool
+	depends = gtk3
+	depends = gtksourceview3
+	depends = libgee
+	depends = gettext
+	depends = hicolor-icon-theme
+	depends = gtkspell3
+	depends = dconf
+	depends = gsettings-desktop-schemas
+	provides = latexila
+	conflicts = latexila-git
+	source = http://ftp.gnome.org/pub/GNOME/sources/latexila/3.16/latexila-3.16.1.tar.xz
+	sha256sums = ab2d769546e10c86670e86271024c023c0a87f1b72856955c1883416a9f333f0
+
+pkgname = latexila
+
