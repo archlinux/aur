@@ -8,7 +8,7 @@ _IA32_EFI_IN_ARCH_X64="1"
 _pkgname="syslinux"
 pkgname="${_pkgname}-git"
 
-pkgver=6.03.53.gf1e95ca
+pkgver=6.03
 pkgrel=1
 arch=('x86_64' 'i686')
 pkgdesc="Collection of boot loaders that boot from FAT, ext2/3/4 and btrfs filesystems, from CDs and via PXE - GIT master branch"
@@ -36,15 +36,15 @@ fi
 
 install="${_pkgname}.install"
 
-source=("syslinux::git+http://git.zytor.com/syslinux/syslinux.git#branch=master"
-        "gnu-efi::git+http://git.code.sf.net/p/gnu-efi/code#commit=3c62e78556aea01e9798380cd46794c6ca09d4bd"
+source=("syslinux::git+https://git.kernel.org/pub/scm/boot/syslinux/syslinux.git#branch=master"
+        "gnu-efi::git+https://github.com/vathpela/gnu-efi.git#branch=master"
         'syslinux.cfg'
         'syslinux-install_update')
 
 sha1sums=('SKIP'
           'SKIP'
           'b0f174bcc0386fdf699e03d0090e3ac841098010'
-          'cfba99d3ccac2680ce7819cb97a6695307f2ba9d')
+          'b9ca016e08dd1c45dd7f3c88df680b949e39aa77')
 
 pkgver() {
 	cd "${srcdir}/syslinux/"
@@ -68,6 +68,12 @@ prepare() {
 	sed 's|install -m 644 -c $(INSTALL_DIAG) $(INSTALLROOT)$(DIAGDIR)|# install -m 644 -c $(INSTALL_DIAG) $(INSTALLROOT)$(DIAGDIR)|g' -i "${srcdir}/${_pkgname}/Makefile" || true
 	sed 's|-include $(MAKEDIR)/devel.mk||g' -i "${srcdir}/${_pkgname}/mk/syslinux.mk" || true
 	
+	msg "Do not swallow efi compilation output to make debugging easier"
+	sed 's|> /dev/null 2>&1||' -i "${srcdir}/${_pkgname}/efi/check-gnu-efi.sh"
+	
+	msg "disable debug and development flags to reduce bootloader size"
+	truncate --size 0 "${srcdir}/${_pkgname}/mk/devel.mk"
+	
 	msg "Fix FHS manpage path"
 	sed 's|/usr/man|/usr/share/man|g' -i "${srcdir}/${_pkgname}/mk/syslinux.mk" || true
 	
@@ -77,12 +83,9 @@ prepare() {
 	git clean -x -d -f
 	echo
 	
-	msg "Revert gnu-efi Makefile 'make install' problamatic commit"
-	git revert --no-commit 06744d69273de4945cf0ffcaa4a6abf7cec707b6
-	echo
-
 	msg "Prepare gnu-efi source"
-	cp -r "${srcdir}/gnu-efi/gnu-efi-3.0" "${srcdir}/${_pkgname}/gnu-efi/gnu-efi-3.0"
+	rm -rf "${srcdir}/${_pkgname}/gnu-efi"
+	cp -r "${srcdir}/gnu-efi" "${srcdir}/${_pkgname}/gnu-efi"
 	
 	cd "${srcdir}/${_pkgname}/"
 	
@@ -115,7 +118,7 @@ _build_syslinux_efi64() {
 	cp -r "${srcdir}/${_pkgname}" "${srcdir}/${_pkgname}-efi64"
 	
 	mkdir -p "${srcdir}/${_pkgname}-efi64/OBJDIR/efi64/"
-	cd "${srcdir}/${_pkgname}-efi64/gnu-efi/gnu-efi-3.0/"
+	cd "${srcdir}/${_pkgname}-efi64/gnu-efi/"
 	
 	msg "Unset all compiler FLAGS for gnu-efi efi64 build"
 	unset CFLAGS
@@ -157,7 +160,7 @@ _build_syslinux_efi32() {
 	cp -r "${srcdir}/${_pkgname}" "${srcdir}/${_pkgname}-efi32"
 	
 	mkdir -p "${srcdir}/${_pkgname}-efi32/OBJDIR/efi32/"
-	cd "${srcdir}/${_pkgname}-efi32/gnu-efi/gnu-efi-3.0/"
+	cd "${srcdir}/${_pkgname}-efi32/gnu-efi/"
 	
 	msg "Unset all compiler FLAGS for gnu-efi efi32 build"
 	unset CFLAGS

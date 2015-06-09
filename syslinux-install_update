@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 #
 # Syslinux Installer / Updater Script (for BIOS only)
 # Copyright (C) 2011-2013  Matthew Gyurgyik <pyther@pyther.net>
@@ -151,7 +151,7 @@ getBoot() {
         exit 1
     fi
 
-    syslinux_fs=(ext2 ext3 ext4 btrfs vfat xfs)
+    syslinux_fs=(ext2 ext3 ext4 btrfs vfat)
 
     # Use DATA from findmnt see rc.sysint for more info
     if [[ -f /proc/self/mountinfo ]]; then
@@ -239,13 +239,18 @@ set_active() {
         esac
 
         if [[ "$ptb" = MBR ]]; then
-            if sfdisk "$disk" -A "$partnum" &>/dev/null; then
+            if sfdisk "$disk" --activate "$partnum" &>/dev/null; then
                 echo "Boot Flag Set - $part"
             else
                 echo "FAILED to Set the boot flag on $part"
                 exit 3
             fi
         elif [[ "$ptb" = GPT ]]; then
+            if [[ ! -e /usr/bin/sgdisk ]]; then
+                echo "FAILED to set attribute Legacy BIOS Bootable. sgdisk is not found - please install 'gptfdisk' package."
+                exit 3
+            fi
+
             if sgdisk "$disk" --attributes="$partnum":set:2 &>/dev/null; then
                 echo "Attribute Legacy Bios Bootable Set - $part"
             else
@@ -449,5 +454,3 @@ if [[ $SET_ACTIVE ]] || [[ $MBR ]]; then
 fi
 
 exit 0
-
-# vim: set et sw=4:
