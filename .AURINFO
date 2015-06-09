@@ -1,0 +1,15 @@
+pkgbase = rebol
+	pkgdesc = A cross-platform data exchange language and a multi-paradigm dynamic programming language
+	pkgver = 2.7.8
+	pkgrel = 3
+	url = http://www.rebol.com/
+	arch = i686
+	arch = x86_64
+	groups = devel
+	license = custom:REBOL End User License
+	makedepends = wget
+	provides = rebol
+	options = !strip
+
+pkgname = rebol
+
