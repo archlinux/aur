@@ -1,0 +1,11 @@
+[Unit]
+Description=Graylog web-interface 
+After=network.target
+
+[Service]
+User=nobody
+EnvironmentFile=/etc/conf.d/graylog-web-interface.conf
+ExecStart=/usr/bin/java -Dpidfile.path=/dev/null -Duser.dir=${PATH} -Dhttp.port=${HTTP_PORT} -Dhttp.address=${HTTP_ADDRESS} -cp "${PATH}/lib/graylog-web-interface.jar:${PATH}/lib/*" play.core.server.NettyServer
+
+[Install]
+WantedBy=multi-user.target
