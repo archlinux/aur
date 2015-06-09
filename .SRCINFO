@@ -1,0 +1,22 @@
+pkgbase = secp256k1-git
+	pkgdesc = Elliptic Curve Library for libbitcoin
+	pkgver = 20150422
+	pkgrel = 1
+	url = https://github.com/libbitcoin/secp256k1
+	arch = i686
+	arch = x86_64
+	groups = libbitcoin
+	license = MIT
+	makedepends = gcc
+	makedepends = git
+	makedepends = make
+	makedepends = pkg-config
+	makedepends = yasm
+	depends = openssl
+	provides = secp256k1
+	conflicts = secp256k1
+	source = git+https://github.com/libbitcoin/secp256k1
+	sha256sums = SKIP
+
+pkgname = secp256k1-git
+
