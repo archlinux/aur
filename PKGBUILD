@@ -7,10 +7,10 @@
 
 pkgname=android-studio-canary
 _pkgname=android-studio
-pkgver=1.3.0p2
-_pkgver=1.3.0.1
+pkgver=1.3.0p3
+_pkgver=1.3.0.2
 pkgrel=1
-_build=141.1972460
+_build=141.1989493
 pkgdesc="The Official Android IDE. Canary branch"
 arch=('i686' 'x86_64')
 url="http://developer.android.com/sdk/installing/studio.html"
