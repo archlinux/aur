@@ -1,0 +1,13 @@
+--- Makefile.in	2013-12-29 22:36:45.000000000 +0900
++++ Makefile.in.new	2014-01-09 07:23:19.089872757 +0900
+@@ -78,8 +78,8 @@
+ 	mkdir -p "$(DESTDIR)/$(sysconfdir)";
+ 	mkdir -p "$(DESTDIR)/$(docdir)"
+ 	mkdir -p "$(DESTDIR)/$(mandir)/man1"
+-	install -m 644 USAGE.ja $(DESTDIR)/$(docdir)
+-	install -m 644 USAGE $(DESTDIR)/$(docdir)
++	install -m 644 USAGE.ja.txt $(DESTDIR)/$(docdir)
++	install -m 644 USAGE.txt $(DESTDIR)/$(docdir)
+ 	install -m 644 README.ja $(DESTDIR)/$(docdir);
+ 	install -m 644 README $(DESTDIR)/$(docdir);
+ 	install -m 644 CHANGELOG $(DESTDIR)/$(docdir);
