@@ -1,0 +1,19 @@
+pkgbase = perl-leocharre-cli2
+	pkgdesc = Some quick help for writing cli scripts.
+	pkgver = 1.16
+	pkgrel = 1
+	url = http://search.cpan.org/dist/LEOCHARRE-CLI2
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-devel-symdump>=2.07
+	depends = perl-getopt-std-strict>=1.01
+	depends = perl-leocharre-dir>=1.06
+	depends = perl-smart-comments>=1
+	depends = perl-string-shellquote>=1.03
+	depends = perl-yaml>=0.66
+	source = http://search.cpan.org/CPAN/authors/id/L/LE/LEOCHARRE/LEOCHARRE-CLI2-1.16.tar.gz
+	options = !emptydirs
+
+pkgname = perl-leocharre-cli2
+
