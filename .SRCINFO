@@ -1,0 +1,16 @@
+pkgbase = optpp
+	pkgdesc = An Object-Oriented Nonlinear Optimization Library
+	pkgver = 2.4
+	pkgrel = 4
+	url = https://software.sandia.gov/opt++/
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = blas
+	makedepends = gcc-fortran
+	options = staticlibs
+	source = https://software.sandia.gov/opt++//downloads/optpp-2.4.tar.gz
+	sha1sums = 089fb515f2f2e8632d603f2d1306d39aa355e9f0
+
+pkgname = optpp
+
