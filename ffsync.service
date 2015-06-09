@@ -1,0 +1,14 @@
+[Unit]
+Description=gunicorn server running Mozilla's Firefox Sync Server
+After=syslog.target network.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=simple
+User=ffsync
+Group=http
+UMask=007
+Restart=on-abort
+ExecStart=/opt/mozilla-firefox-sync-server/bin/gunicorn --paste /opt/mozilla-firefox-sync-server/development.ini
+
+[Install]
+WantedBy=multi-user.target
