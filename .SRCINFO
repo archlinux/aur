@@ -1,0 +1,14 @@
+pkgbase = appc
+	pkgdesc = App container tools
+	pkgver = 0.5.1
+	pkgrel = 0
+	url = https://github.com/appc/spec
+	arch = x86_64
+	license = apache
+	makedepends = go
+	provides = appc
+	source = https://github.com/appc/spec/archive/v0.5.1.tar.gz
+	sha1sums = 6d3986ed407ae66fa98e3fe86ac6cb042154eaec
+
+pkgname = appc
+
