@@ -1,0 +1,11 @@
+diff -aur package.pristine/equalx.pro package.new/equalx.pro
+--- package.pristine/equalx.pro	2014-11-22 18:33:32.411447229 +0100
++++ package.new/equalx.pro	2014-11-22 18:34:07.151131916 +0100
+@@ -51,6 +51,7 @@
+     src \
+     ui
+ 
++target.path = /usr/bin
+ INSTALLS += target
+ DISTFILES += resources/templates/* \
+     resources/icons/menu/* \

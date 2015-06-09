@@ -1,0 +1,21 @@
+pkgbase = equalx
+	pkgdesc = makes you easily write equations in LaTeX and preview them in real-time.
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = http://equalx.sourceforge.net
+	install = equalx.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qt4
+	depends = exempi
+	depends = texlive-bin
+	depends = poppler
+	optdepends = ghostscript: to export pdf and ps
+	source = http://downloads.sourceforge.net/project/equalx/EqualX-0.7/equalx-0.7.1.tar.gz
+	source = qmake-install.patch
+	md5sums = f7164b254f25fb265388b46e3fb8e464
+	md5sums = 99f99f9257f25426f9b0e38a95ab8c7f
+
+pkgname = equalx
+

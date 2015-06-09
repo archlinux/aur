@@ -1,0 +1,11 @@
+post_install() {
+  [ -e $(which xdg-icon-resource) ] && xdg-icon-resource forceupdate --theme hicolor
+  update-desktop-database -q
+}
+post_upgrade() {
+  post_install
+  echo "If EqualX segfaults / crashes when starting you may have to delete ~/.config/equalx/settings.conf"
+}
+post_remove() {
+  post_install
+}
