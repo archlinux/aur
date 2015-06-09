@@ -1,0 +1,15 @@
+pkgbase = r8s
+	pkgdesc = Analysis of rates (r8s) of evolution
+	pkgver = 1.80
+	pkgrel = 2
+	url = http://loco.biosci.arizona.edu/r8s/
+	arch = i686
+	arch = x86_64
+	license = Public Domain
+	depends = gcc-libs
+	depends = gcc-fortran
+	source = http://loco.biosci.arizona.edu/r8s/r8s.dist.tgz
+	md5sums = ce39fde6778dfdf9f20442a573c685db
+
+pkgname = r8s
+
