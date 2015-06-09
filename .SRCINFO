@@ -1,0 +1,24 @@
+pkgbase = djmount
+	pkgdesc = A UPnP AV client that mounts media server contents as a filesystem.
+	pkgver = 0.71
+	pkgrel = 4
+	url = http://djmount.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = fuse
+	depends = libupnp
+	depends = talloc
+	source = http://downloads.sourceforge.net/sourceforge/djmount/djmount-0.71.tar.gz
+	source = http://ftp.de.debian.org/debian/pool/main/d/djmount/djmount_0.71-3.diff.gz
+	source = djmount.rcd
+	source = djmount.confd
+	source = libupnp-1.6.9-JonimusPrime.diff
+	md5sums = c922753e706c194bf82a8b6ca77e6a9a
+	md5sums = 00c5b6df865c8ffcd29b37de6f5503bf
+	md5sums = f473b5150df385447f2f58049bfb6199
+	md5sums = 21de4c947c17e8558f1007a20757f254
+	md5sums = c5c86bef5573dada1d1cd38b64b557c8
+
+pkgname = djmount
+
