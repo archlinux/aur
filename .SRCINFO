@@ -1,0 +1,20 @@
+pkgbase = python2-brubeck
+	pkgdesc = A coroutine oriented web framework featuring: Mongrel2, Gevent (or Eventlet), ZeroMQ and DictShield.
+	pkgver = 0.4.0
+	pkgrel = 3
+	url = http://brubeck.io/
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2-dictshield
+	depends = python2-ujson
+	depends = mongrel2
+	optdepends = python2-gevent
+	optdepends = python2-eventlet
+	source = http://pypi.python.org/packages/source/b/brubeck/brubeck-0.4.0.tar.gz
+	source = LICENSE
+	sha256sums = 0bc89536c60983841773f63ce158e30262585c4e1a67615cb1041c732c2e5957
+	sha256sums = 24ed653715a99ef7ece91d99c6399544cfa76cb0cce334428daf6ef63b658e12
+
+pkgname = python2-brubeck
+
