@@ -1,0 +1,19 @@
+pkgbase = python2-amodem
+	pkgdesc = Audio Modem Communication Library
+	pkgver = 1.10
+	pkgrel = 1
+	url = https://github.com/romanz/amodem
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-argcomplete
+	depends = python2-numpy
+	depends = python2-six
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/a/amodem/amodem-1.10.tar.gz
+	md5sums = c03ed52401b0501fc775466eed713a08
+	sha256sums = a3ba8fc29230d40e0077040561e47b2626a375ca2a42e31aed1401187ae2c421
+
+pkgname = python2-amodem
+
