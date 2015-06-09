@@ -1,0 +1,14 @@
+pkgbase = threadpool11-git
+	pkgdesc = A fast, lock-free, cross-platform C++11 thread pooling library that is aiming to be lightweight and simple.
+	pkgver = 2.0.6.r3.g31e6849
+	pkgrel = 1
+	url = https://github.com/tghosgor/threadpool11
+	arch = any
+	license = LGPL3
+	makedepends = boost
+	options = staticlibs
+	source = threadpool11-git::git+https://github.com/tghosgor/threadpool11.git
+	sha512sums = SKIP
+
+pkgname = threadpool11-git
+
