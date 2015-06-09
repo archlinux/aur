@@ -1,0 +1,34 @@
+pkgbase = caffeine-ng-git
+	pkgdesc = Status bar application able to temporarily inhibit the screensaver and sleep mode.
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/hobarrera/caffeine-ng
+	install = caffeine-ng-git.install
+	arch = any
+	license = GPL3
+	depends = python-gobject
+	depends = python-xdg
+	depends = python-dbus
+	depends = python-docopt
+	depends = python-ewmh
+	depends = gtk3
+	depends = libnotify
+	depends = python-setproctitle
+	optdepends = libindicator-gtk3: AppIndictor support.
+	provides = caffeine
+	provides = caffeine-bzr
+	provides = caffeine-oneclick
+	provides = caffeine-systray
+	conflicts = caffeine
+	conflicts = caffeine-bzr
+	conflicts = caffeine-oneclick
+	conflicts = caffeine-systray
+	replaces = caffeine-oneclick
+	replaces = caffeine-systray
+	options = !emptydirs
+	options = !libtool
+	source = git+https://git.barrera.io/hobarrera/caffeine-ng.git
+	sha256sums = SKIP
+
+pkgname = caffeine-ng-git
+
