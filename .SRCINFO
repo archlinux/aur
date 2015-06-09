@@ -1,0 +1,15 @@
+pkgbase = ggtags
+	pkgdesc = Emacs frontend to GNU Global source code tagging system
+	pkgver = 0.8.9
+	pkgrel = 1
+	url = https://github.com/leoliu/ggtags
+	install = ggtags.install
+	arch = any
+	license = GPL
+	depends = emacs
+	depends = ctags
+	source = https://github.com/leoliu/ggtags/archive/0.8.9.tar.gz
+	md5sums = 35a0587c5b354c80ca45dad85c751737
+
+pkgname = ggtags
+
