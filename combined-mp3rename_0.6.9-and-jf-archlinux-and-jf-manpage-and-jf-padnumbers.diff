@@ -1,0 +1,288 @@
+--- mp3rename-0.6/mp3rename.c
++++ mp3rename-0.6/mp3rename.c	2007-05-17 05:20:02.000000000 +0200
+@@ -20,12 +20,13 @@
+ void display_help();
+ void buildtag(char *buf, char *title, char *artist, char *album, char *year, char *comment, char *genre);
+ void set_filename(int argc,char *argv[]);
++void rtrim(char* astring);
+ 
+ int main(int argc, char *argv[]) 
+ {
+   FILE *fp;
+-  int verbose = 0, forced = 0, burn = 0, info = 0, all = 0;
+-  unsigned char sig[2];
++  int verbose = 0, forced = 0, burn = 0, info = 0, all = 0, padtrack = 0;
++  unsigned char sig[3];
+   char genre[1];
+   char input_char;
+   int i=0,plaatsen = 0;
+@@ -36,13 +37,14 @@
+   
+   if (argc < 2 ) /* If nothing is given */
+   {
+-    fprintf(stderr,"Mp3rename\n\nusage: [-vfhsbia] [file ...]\n\n");
++    fprintf(stderr,"Mp3rename\n\nusage: [-vfhsbia] [file ...]\n\nUse 'mp3rename -h' for a usage summary\n\n");
++
+     return 0;
+   }
+   
+   /* Lets checkout the options */
+ 
+-  while ((ch = getopt(argc, argv, "vfhsbia")) != -1)
++  while ((ch = getopt(argc, argv, "vfhsbiap")) != -1)
+     switch (ch) 
+     {
+       case 'v':                      /* Verbose mode */
+@@ -66,8 +68,11 @@
+       case 'a':                      /* Ask everything */
+ 	all = 1;
+ 	break;
++      case 'p':
++	padtrack = 1;
++	break;
+       default:                       /* If wrong option is given */
+-        fprintf(stderr,"Mp3rename\n\nusage: [-vfh] [file ...]\n\n");
++        fprintf(stderr,"Mp3rename\n\nusage: [-vfhsbia] [file ...]\n\nUse 'mp3rename -h' for a usage summary\n\n");
+         exit(1);
+     }
+   argv += optind;
+@@ -91,7 +96,7 @@
+   strcat(filenamelook,".mp3"); /* add .mp3 so that the filename will be complete */
+ 
+ do {
+- char title[31]="", artist[31]="", album[31]="", year[5]="", comment[31]="", fbuf[4], newfilename[160]="",nieuw[150]="",dir[150]="",dirsource[200],fullline[228]="", burnname[29]=""; 
++ char title[31]="", artist[31]="", album[31]="", year[5]="", comment[31]="", fbuf[4], newfilename[160]="",nieuw[150]="",dir[150]="",dirsource[200],fullline[228]="", burnname[29]="", track; 
+   plaatsen = 0;
+ 
+   if ( !( fp=fopen(*argv,"rb+") ) )    /* If the file doesn exist */
+@@ -104,6 +109,8 @@
+   /* Lets check if we have a real mp3 file */
+ 
+   fread(sig,sizeof(sig),1,fp);                         
++  /* ID3v2 */
++  if(sig[0]!='I' || sig[1]!='D' || sig[2]!='3'){
+   sig[0] &= 0xff;
+   sig[1] &= 0xf0;                                                         
+   if(!((sig[0] == 0xff) && (sig[1] == 0xf0)))
+@@ -112,7 +119,8 @@
+     fclose(fp);
+     ++argv;
+     continue;
+-  }                 
++  }
++  }
+ 
+   /* Lets go to the beginning of the tag */
+    if ( fseek(fp, -128, SEEK_END )) 
+@@ -131,7 +139,14 @@
+      fread(artist,1,30,fp); artist[30] = '\0';            
+      fread(album,1,30,fp); album[30] = '\0';
+      fread(year,1,4,fp); year[4] = '\0';
+-     fread(comment,1,30,fp); comment[30] = '\0';
++     fread(comment,1,30,fp);
++     if (comment[28] == '\0' && comment[29] != '\0') {
++	     /* ID3v1.1 - specify track number in the last byte of comment field*/
++	     track = comment[29];
++     }
++     else
++	{ track = 0; }
++     comment[30] = '\0';
+      fread(genre,1,1,fp);
+      fseek(fp, -128, SEEK_END); /* back to the beginning of the tag */
+    } 
+@@ -290,6 +305,17 @@
+     {
+       printf("Artist : %s\n",artist);
+       printf("Title : %s\n",title);
++      if(track!='\0') 
++        {
++          if(track < 10 && padtrack == 1)
++            {
++              printf("Track : 0%i\n",track);
++            }
++          else
++            {
++              printf("Track : %i\n",track);
++            }
++        }
+       printf("Album : %s\n",album);
+       printf("Year : %s\n\n",year);
+       ++argv;
+@@ -297,31 +323,10 @@
+     }
+ 
+    /* Remove trailing spaces */
+-  i=strlen(artist)-1;
+-  while (i && artist[i]==' ') 
+-  {
+-    artist[i]='\0';
+-    i--;
+-  }
+-
+-  i=strlen(title)-1;
+-  while (i && title[i]==' ') 
+-  {
+-    title[i]='\0';
+-    i--;
+-  }
+-  i=strlen(album)-1;
+-  while (i && album[i]==' ') 
+-  {
+-    album[i]='\0';
+-    i--;
+-  }
+-  i=strlen(year)-1;
+-  while (i && year[i]==' ') 
+-  {
+-    year[i]='\0';
+-    i--;
+-  }
++   rtrim((char*)&artist);
++   rtrim((char*)&title);
++   rtrim((char*)&album);
++   rtrim((char*)&year);
+ 
+   /* We go through the filenamelook until we find a &x combination
+      then we replace the &x with album/title/year/artis            */ 
+@@ -352,6 +357,18 @@
+                 strcpy(newfilename,tmp);
+                 i++;
+                 break;
++	     case 'k':
++		if(track < 10 && padtrack == 1)
++		{
++			sprintf(tmp,"%s0%d",newfilename,track);
++		}
++		else
++		{
++		sprintf(tmp,"%s%d",newfilename,track);
++		}
++		strcpy(newfilename,tmp);
++		i++;
++		break;
+              default:
+                 printf("Illegal char in config file please use the option '-s help' for more information\n");
+                 exit(1);
+@@ -383,9 +400,11 @@
+ 
+   /* Build the new tag from the new names */ 
+ 
+-  buildtag(fullline,title,artist,album,year,comment,genre); 
+-  fwrite(fullline,1,128,fp);
+-
++  if ((forced) || (all))
++    {
++      buildtag(fullline,title,artist,album,year,comment,genre); 
++      fwrite(fullline,1,128,fp);
++    }
+   fclose(fp);
+ 
+   /* Lets catch illegal characters */
+@@ -436,6 +455,17 @@
+ return 0;
+ }
+ 
++void rtrim(char* astring){
++  int i;
++
++  i=strlen(astring)-1;
++  while (i && astring[i]==' ')
++  {
++    astring[i]='\0';
++    i--;
++  }
++}
++
+ void buildtag(char *buf, char *title, char *artist, char *album, char *year, char *comment, char *genre) 
+ {
+ 
+@@ -448,7 +478,7 @@
+   strncat(buf,album,30);
+   pad(year,4); 
+   strncat(buf,year,4);
+-  pad(comment,30); 
++  pad(comment,30);
+   strncat(buf,comment,30);
+   strncat(buf,genre,1);
+ }
+@@ -476,6 +506,7 @@
+   printf("\t-h\t Display this help message.\n");
+   printf("\t-b\t Limit the file size to 32 chars.\n");
+   printf("\t-i\t Only show the id3tags.\n");
++  printf("\t-p\t Pad the track number with a leading zero when less than 10.\n");
+   printf("\t-a\t Ask everything for the id3tag.\n\n");
+   printf("\t-s\t Set the default filename look.\n");
+   printf("\t  \t for more help on this option: -s help\n\n");
+@@ -500,7 +531,7 @@
+      printf("Mp3rename 0.6\n\n");
+      printf(" Use this option to set the default look of the file\n");
+      printf(" The information is saved in ~/.mp3rename\n");
+-     printf(" You can use &t title, &b album, &y year and &a artist\n\n");
++     printf(" You can use &t title, &b album, &y year, &k track and &a artist\n\n");
+      printf(" Example : mp3rename -s '(&a)-&t-&b'\n");
+      printf(" for (artist)-title-album.mp3\n\n");
+      return;
+--- mp3rename-0.6.orig/Makefile	2000-05-06 12:36:10.000000000 +0200
++++ mp3rename-0.6/Makefile	2007-05-17 04:29:18.000000000 +0200
+@@ -2,6 +2,7 @@
+ SRCS =  mp3rename.c 
+ OBJS =  mp3rename.o 
+ RM = /bin/rm
++INSTALL = /bin/install
+ 
+ all: mp3rename
+ 
+@@ -12,6 +13,5 @@
+ 	$(RM) -f $(OBJS) $(PROG) *~ *core
+ 
+ install:
+-	$(INSTALL) -c mp3rename $(PREFIX)/bin/mp3rename
+-	$(INSTALL) -c mp3rename.1.gz $(PREFIX)/man/man1/
+-    
+\ Kein Zeilenumbruch am Dateiende.
++	$(INSTALL) -D mp3rename.1.gz $(PREFIX)/usr/share/man/man1/mp3rename.1.gz
++	$(INSTALL) -D mp3rename $(PREFIX)/usr/bin/mp3rename
+--- mp3rename-0.6.orig/mp3rename.1	1970-01-01 01:00:00.000000000 +0100
++++ mp3rename-0.6/mp3rename.1	2007-05-17 04:46:24.000000000 +0200
+@@ -0,0 +1,41 @@
++.\" DO NOT MODIFY THIS FILE!  It was generated by help2man 1.35.
++.TH MP3RENAME "1" "September 2005" "Debian GNU/Linux" "User Commands"
++.SH NAME
++Mp3rename \- Rename mp3 files based on id3tags
++.SH DESCRIPTION
++Mp3rename 0.6
++.SH OPTIONS
++.TP
++\fB\-f\fR
++Force non id3 rename.
++.TP
++\fB\-v\fR
++Verbose mode.
++.TP
++\fB\-h\fR
++Display this help message.
++.TP
++\fB\-b\fR
++Limit the file size to 32 chars.
++.TP
++\fB\-i\fR
++Only show the id3tags.
++.TP
++\fB\-p\fR
++Pad the track number with a leading zero when less than 10.
++.TP
++\fB\-a\fR
++Ask everything for the id3tag.
++.TP
++\fB\-s\fR
++Set the default filename look.
++for more help on this option: \fB\-s\fR help
++.PP
++Sander Janssen <janssen@rendo.dekooi.nl>
++.IP
++Use this option to set the default look of the file
++The information is saved in ~/.mp3rename
++You can use &t title, &b album, &y year, &k track and &a artist
++.IP
++Example : mp3rename \fB\-s\fR '(&a)\-&t\-&b'
++for (artist)\-title\-album.mp3

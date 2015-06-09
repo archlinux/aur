@@ -1,0 +1,84 @@
+--- ../src-org/mp3rename-0.6.orig/mp3rename.c	2007-05-25 23:11:44.000000000 +0200
++++ mp3rename.c	2007-05-25 23:51:42.000000000 +0200
+@@ -15,6 +15,7 @@
+ #include <ctype.h>
+ #include <string.h>
+ #include <signal.h>
++#include <getopt.h>
+ 
+ void pad(char *string, int length);
+ void display_help();
+@@ -37,14 +38,34 @@
+   
+   if (argc < 2 ) /* If nothing is given */
+   {
+-    fprintf(stderr,"Mp3rename\n\nusage: [-vfhsbia] [file ...]\n\nUse 'mp3rename -h' for a usage summary\n\n");
++    fprintf(stderr,"Mp3rename\n\nusage: [-vfhsbia] [file ...]\n\nUse 'mp3rename --help' for a usage summary\n\n");
+ 
+     return 0;
+   }
+   
+   /* Lets checkout the options */
+ 
+-  while ((ch = getopt(argc, argv, "vfhsbiap")) != -1)
++  while (1) {
++                   int this_option_optind = optind ? optind : 1;
++                   int option_index = 0;
++                   static struct option long_options[] = {
++                       {"ask", 0, 0, 'a'},
++                       {"padding", 0, 0, 'p'},
++                       {"burn", 0, 0, 'b'},
++                       {"source-look", 1, 0, 's'},
++                       {"help", 0, 0, 'h'},
++                       {"verbose",0, NULL, 'v'},
++                       {"create", 0, 0, 'c'},
++                       {"force", 0, 0, 'f'},
++                       {"info", 0, 0, 'i'},
++                       {0, 0, 0, 0}
++                     };
++
++    ch = getopt_long (argc, argv, "vfhsbiap",
++        long_options, &option_index);
++    if (ch == -1)
++      break;
++
+     switch (ch) 
+     {
+       case 'v':                      /* Verbose mode */
+@@ -72,9 +93,10 @@
+ 	padtrack = 1;
+ 	break;
+       default:                       /* If wrong option is given */
+-        fprintf(stderr,"Mp3rename\n\nusage: [-vfhsbia] [file ...]\n\nUse 'mp3rename -h' for a usage summary\n\n");
++        fprintf(stderr,"Mp3rename\n\nusage: [-vfhsbia] [file ...]\n\nUse 'mp3rename --help' for a usage summary\n\n");
+         exit(1);
+     }
++  }
+   argv += optind;
+ 
+   if ( info == 1 && ( forced == 1 || verbose == 1)) 
+@@ -501,15 +523,15 @@
+ {
+   printf("Mp3rename 0.6\n\n");
+   printf("Options:\n");
+-  printf("\t-f\t Force non id3 rename.\n");
+-  printf("\t-v\t Verbose mode.\n");
+-  printf("\t-h\t Display this help message.\n");
+-  printf("\t-b\t Limit the file size to 32 chars.\n");
+-  printf("\t-i\t Only show the id3tags.\n");
+-  printf("\t-p\t Pad the track number with a leading zero when less than 10.\n");
+-  printf("\t-a\t Ask everything for the id3tag.\n\n");
+-  printf("\t-s\t Set the default filename look.\n");
+-  printf("\t  \t for more help on this option: -s help\n\n");
++  printf("\t-f, --force\t Force non id3 rename.\n");
++  printf("\t-v, --verbose\t Verbose mode.\n");
++  printf("\t-h, --help\t Display this help message.\n");
++  printf("\t-b, --burn\t Limit the file size to 32 chars.\n");
++  printf("\t-i, --info\t Only show the id3tags.\n");
++  printf("\t-p, --pad\t Pad the track number with a leading zero when less than 10.\n");
++  printf("\t-a, --ask\t Ask everything for the id3tag.\n\n");
++  printf("\t-s, --source\t Set the default filename look.\n");
++  printf("\t \t \t for more help on this option take a look at -s help\n\n");
+   printf("Sander Janssen <janssen@rendo.dekooi.nl>\n\n");
+ 
+ }
