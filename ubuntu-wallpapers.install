@@ -1,0 +1,8 @@
+post_install() {
+  # Fixes Launchpad Bug #746028
+  touch /usr/share/backgrounds/warty-final-ubuntu.png
+}
+
+post_upgrade() {
+  post_install
+}
