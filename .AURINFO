@@ -1,0 +1,15 @@
+pkgbase = rdis-git
+	pkgdesc = A graphic binary analysis tool. Check rdis-lua for some scripts that improve its functionality.
+	pkgver = 20140126
+	pkgrel = 1
+	url = https://github.com/endeav0r/rdis
+	arch = x86_64
+	license = GPL3
+	depends = gtk3
+	depends = luajit
+	depends = jansson
+	depends = udis86
+	source = git+http://github.com/endeav0r/rdis.git
+
+pkgname = rdis-git
+
