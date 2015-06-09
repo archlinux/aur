@@ -1,0 +1,303 @@
+diff --git a/include/evdev-properties.h b/include/evdev-properties.h
+index 8ae5ba3..d96a9e8 100644
+--- a/include/evdev-properties.h
++++ b/include/evdev-properties.h
+@@ -87,6 +87,9 @@
+ */
+ #define EVDEV_PROP_FUNCTION_KEYS "Evdev Function Keys"
+ 
++/* CARD32 */
++#define EVDEV_PROP_DEBOUNCE_DELAY "Evdev Debounce Delay"
++
+ /* Smooth scroll */
+ /* INT32, 3 values (vertical, horizontal, dial) */
+ #define EVDEV_PROP_SCROLL_DISTANCE "Evdev Scrolling Distance"
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 5e0c3b3..1ab5dd6 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -39,6 +39,7 @@ AM_CPPFLAGS =-I$(top_srcdir)/include $(LIBEVDEV_CFLAGS)
+                                emuThird.c \
+                                emuWheel.c \
+                                draglock.c \
++                               debounce.c \
+                                apple.c \
+                                axis_labels.h
+ 
+diff --git a/src/debounce.c b/src/debounce.c
+new file mode 100644
+index 0000000..cda703d
+--- /dev/null
++++ b/src/debounce.c
+@@ -0,0 +1,198 @@
++/*
++ * Permission to use, copy, modify, distribute, and sell this software
++ * and its documentation for any purpose is hereby granted without
++ * fee, provided that the above copyright notice appear in all copies
++ * and that both that copyright notice and this permission notice
++ * appear in supporting documentation, and that the name of the authors
++ * not be used in advertising or publicity pertaining to distribution of the
++ * software without specific, written prior permission.  The authors make no
++ * representations about the suitability of this software for any
++ * purpose.  It is provided "as is" without express or implied
++ * warranty.
++ *
++ * THE AUTHORS DISCLAIM ALL WARRANTIES WITH REGARD TO THIS SOFTWARE,
++ * INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN
++ * NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY SPECIAL, INDIRECT OR
++ * CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS
++ * OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT,
++ * NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
++ * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
++ *
++ */
++
++#ifdef HAVE_CONFIG_H
++#include "config.h"
++#endif
++
++#include "evdev.h"
++
++#include <X11/Xatom.h>
++#include <xf86.h>
++#include <xf86Xinput.h>
++#include <exevents.h>
++
++#include <evdev-properties.h>
++
++/* how many milliseconds to wait for buttons to settle */
++static Atom prop_dbdelay;
++
++struct ButtonTime {
++    unsigned int button;
++    Time time;
++};
++
++static int
++EvdevDBCompareButtonTimes(const void *bt1, const void *bt2)
++{
++    return ((const struct ButtonTime *) bt1)->time -
++            ((const struct ButtonTime *) bt2)->time;
++}
++
++/**
++ * Timer callback for debouncing buttons.
++ */
++static CARD32
++EvdevDBTimer(OsTimerPtr timer, CARD32 time, pointer arg)
++{
++    InputInfoPtr pInfo = arg;
++    EvdevPtr pEvdev = pInfo->private;
++    struct debounce *db = &pEvdev->debounce;
++    struct ButtonTime release[EVDEV_MAXBUTTONS];
++    size_t nRelease = 0;
++    int sigstate = xf86BlockSIGIO();
++
++    if (db->bouncing) {
++        BOOL bouncing = FALSE;
++        Time next_expiry = ~0;
++        for (size_t button = 0; button < EVDEV_MAXBUTTONS; ++button) {
++            if (db->state[button].bouncing) {
++                Time expiry = db->state[button].expiry;
++                if (expiry <= time) {
++                    db->state[button].pressed = FALSE;
++                    db->state[button].bouncing = FALSE;
++                    release[nRelease].button = button;
++                    release[nRelease].time = expiry;
++                    ++nRelease;
++                }
++                else if (expiry < next_expiry) {
++                    bouncing = TRUE;
++                    next_expiry = expiry;
++                }
++            }
++        }
++        if (nRelease > 0) {
++            if (nRelease > 1) {
++                qsort(release, nRelease, sizeof *release,
++                      EvdevDBCompareButtonTimes);
++            }
++            for (size_t i = 0; i < nRelease; ++i) {
++                EvdevPostButtonEvent(pInfo, release[i].button, BUTTON_RELEASE);
++            }
++        }
++        if (bouncing) {
++            db->timer = TimerSet(db->timer, 0, next_expiry - GetTimeInMillis(),
++                                 EvdevDBTimer, pInfo);
++        }
++        else {
++            db->bouncing = FALSE;
++        }
++    }
++
++    xf86UnblockSIGIO(sigstate);
++    return 0;
++}
++
++/**
++ * Debounce button states.
++ *
++ * @return TRUE iff event was swallowed by debouncing.
++ */
++BOOL
++EvdevDBFilterEvent(InputInfoPtr pInfo, unsigned int button, BOOL pressed)
++{
++    EvdevPtr pEvdev = pInfo->private;
++    struct debounce *db = &pEvdev->debounce;
++
++    if (db->delay == 0) {
++        return FALSE;
++    }
++
++    if (pressed) {
++        if (db->state[button].pressed) {
++            db->state[button].bouncing = FALSE;
++            return TRUE;
++        }
++        db->state[button].pressed = TRUE;
++        return FALSE;
++    }
++
++    if (db->state[button].pressed) {
++        db->state[button].bouncing = TRUE;
++        db->state[button].expiry = GetTimeInMillis() + db->delay;
++        if (!db->bouncing) {
++            db->bouncing = TRUE;
++            db->timer = TimerSet(db->timer, 0, db->delay, EvdevDBTimer, pInfo);
++        }
++    }
++
++    return TRUE;
++}
++
++void
++EvdevDBPreInit(InputInfoPtr pInfo)
++{
++    EvdevPtr pEvdev = pInfo->private;
++    struct debounce *db = &pEvdev->debounce;
++
++    db->delay = xf86SetIntOption(pInfo->options, "DebounceDelay", 0);
++    db->timer = TimerSet(NULL, 0, 0, NULL, NULL);
++}
++
++void
++EvdevDBFinalize(InputInfoPtr pInfo)
++{
++    EvdevPtr pEvdev = pInfo->private;
++    struct debounce *db = &pEvdev->debounce;
++
++    TimerFree(db->timer), db->timer = NULL;
++}
++
++static int
++EvdevDBSetProperty(DeviceIntPtr dev, Atom atom, XIPropertyValuePtr val,
++                   BOOL checkonly)
++{
++    InputInfoPtr pInfo  = dev->public.devicePrivate;
++    EvdevPtr pEvdev = pInfo->private;
++    struct debounce *db = &pEvdev->debounce;
++
++    if (atom == prop_dbdelay) {
++        if (val->format != 32 || val->size != 1 || val->type != XA_INTEGER) {
++            return BadMatch;
++        }
++        if (!checkonly) {
++            db->delay = *((CARD32 *) val->data);
++        }
++    }
++
++    return Success;
++}
++
++void
++EvdevDBInitProperty(DeviceIntPtr dev)
++{
++    InputInfoPtr pInfo = dev->public.devicePrivate;
++    EvdevPtr pEvdev = pInfo->private;
++    struct debounce *db = &pEvdev->debounce;
++
++    if (dev->button) {
++        prop_dbdelay = MakeAtom(EVDEV_PROP_DEBOUNCE_DELAY,
++                                strlen(EVDEV_PROP_DEBOUNCE_DELAY), TRUE);
++        if (XIChangeDeviceProperty(dev, prop_dbdelay, XA_INTEGER, 32,
++                                   PropModeReplace, 1, &db->delay, FALSE)
++                != Success) {
++            return;
++        }
++        XISetDevicePropertyDeletable(dev, prop_dbdelay, FALSE);
++        XIRegisterPropertyHandler(dev, EvdevDBSetProperty, NULL, NULL);
++    }
++}
+diff --git a/src/evdev.c b/src/evdev.c
+index 30f809b..47255d0 100644
+--- a/src/evdev.c
++++ b/src/evdev.c
+@@ -619,6 +619,9 @@ EvdevProcessButtonEvent(InputInfoPtr pInfo, struct input_event *ev)
+     if (EvdevDragLockFilterEvent(pInfo, button, value))
+         return;
+ 
++    if (EvdevDBFilterEvent(pInfo, button, value))
++        return;
++
+     if (EvdevWheelEmuFilterButton(pInfo, button, value))
+         return;
+ 
+@@ -1908,6 +1911,7 @@ EvdevInit(DeviceIntPtr device)
+     Evdev3BEmuInitProperty(device);
+     EvdevWheelEmuInitProperty(device);
+     EvdevDragLockInitProperty(device);
++    EvdevDBInitProperty(device);
+     EvdevAppleInitProperty(device);
+ 
+     return Success;
+@@ -1965,6 +1969,7 @@ EvdevProc(DeviceIntPtr device, int what)
+         {
+             EvdevMBEmuFinalize(pInfo);
+             Evdev3BEmuFinalize(pInfo);
++            EvdevDBFinalize(pInfo);
+         }
+         if (pInfo->fd != -1)
+         {
+@@ -2619,6 +2624,7 @@ EvdevPreInit(InputDriverPtr drv, InputInfoPtr pInfo, int flags)
+         Evdev3BEmuPreInit(pInfo);
+         EvdevWheelEmuPreInit(pInfo);
+         EvdevDragLockPreInit(pInfo);
++        EvdevDBPreInit(pInfo);
+     }
+ 
+     return Success;
+diff --git a/src/evdev.h b/src/evdev.h
+index 520d017..a39e1ca 100644
+--- a/src/evdev.h
++++ b/src/evdev.h
+@@ -221,6 +221,17 @@ typedef struct {
+         Time                expires;     /* time of expiry */
+         Time                timeout;
+     } emulateWheel;
++    /* Button debouncing */
++    struct debounce {
++        Time                delay;
++        OsTimerPtr          timer;
++        BOOL                bouncing;
++        struct {
++            BOOL            pressed;
++            BOOL            bouncing;
++            Time            expiry;
++        } state[EVDEV_MAXBUTTONS];
++    } debounce;
+     struct {
+         int                 vert_delta;
+         int                 horiz_delta;
+@@ -295,6 +306,12 @@ BOOL EvdevWheelEmuFilterMotion(InputInfoPtr pInfo, struct input_event *pEv);
+ void EvdevDragLockPreInit(InputInfoPtr pInfo);
+ BOOL EvdevDragLockFilterEvent(InputInfoPtr pInfo, unsigned int button, int value);
+ 
++/* Button debouncing */
++BOOL EvdevDBFilterEvent(InputInfoPtr pInfo, unsigned int button, BOOL pressed);
++void EvdevDBPreInit(InputInfoPtr pInfo);
++void EvdevDBFinalize(InputInfoPtr pInfo);
++void EvdevDBInitProperty(DeviceIntPtr dev);
++
+ void EvdevMBEmuInitProperty(DeviceIntPtr);
+ void Evdev3BEmuInitProperty(DeviceIntPtr);
+ void EvdevWheelEmuInitProperty(DeviceIntPtr);

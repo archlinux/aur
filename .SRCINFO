@@ -1,0 +1,32 @@
+pkgbase = xf86-input-evdev-debounce
+	pkgdesc = X.org evdev input driver with DebounceDelay setting, it can save your mouse's broken left button from double clicking hell.
+	pkgver = 2.9.2
+	pkgrel = 1
+	url = http://lists.x.org/archives/xorg-devel/2012-August/033343.html
+	install = xf86-input-evdev-debounce.install
+	arch = i686
+	arch = x86_64
+	groups = xorg-drivers
+	groups = xorg
+	license = custom
+	makedepends = git
+	makedepends = xorg-server-devel
+	makedepends = resourceproto
+	makedepends = scrnsaverproto
+	depends = glibc
+	depends = systemd
+	depends = mtdev
+	depends = libevdev
+	provides = xf86-input-evdev
+	conflicts = xf86-input-evdev
+	options = !makeflags
+	backup = etc/X11/xorg.conf.d/11-evdev-mouse-debounce.conf
+	source = xf86-input-evdev-debounce::git://anongit.freedesktop.org/xorg/driver/xf86-input-evdev#tag=xf86-input-evdev-2.9.2
+	source = debounce.patch
+	source = 11-evdev-mouse-debounce.conf
+	sha256sums = SKIP
+	sha256sums = feb3ba6193bc3e2cc03c8c0b11feb7860a30e47c4389b7ad9f785342346d20ed
+	sha256sums = a8ec532a2640aa0f725e74aa2492d6aaf6015be377710848dd7a86176c33cfce
+
+pkgname = xf86-input-evdev-debounce
+
