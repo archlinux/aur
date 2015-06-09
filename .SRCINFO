@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-speex
+	pkgdesc = A free codec for free speech (mingw-w64)
+	pkgver = 1.2rc1
+	pkgrel = 7
+	url = http://www.speex.org
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-pkg-config
+	depends = mingw-w64-crt
+	depends = mingw-w64-libogg
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = http://downloads.us.xiph.org/releases/speex/speex-1.2rc1.tar.gz
+	md5sums = c4438b22c08e5811ff10e2b06ee9b9ae
+
+pkgname = mingw-w64-speex
+
