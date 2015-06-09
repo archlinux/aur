@@ -12,6 +12,8 @@ pkgbase = wsjtx-bin
 	depends = libusb
 	depends = libusb-compat
 	depends = kvasd-bin
+	provides = wsjtx
+	conflicts = wsjtx
 	source = http://physics.princeton.edu/pulsar/k1jt/wsjtx_1.5.0_i386.deb
 	md5sums = c3e3fe2351cebf1f81133de140d8ff6c
 
