@@ -13,7 +13,7 @@ optdepends=('docker: Use Docker images to build your project in a temporary cont
 provides=('haskell-stack')
 conflicts=('haskell-stack')
 # install=
-source=("${_pkgname}::git+git://localhost/stack.git")
+source=("${_pkgname}::git+https://github.com/commercialhaskell/stack.git")
 md5sums=('SKIP')
 
 prepare() {

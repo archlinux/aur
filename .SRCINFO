@@ -12,7 +12,7 @@ pkgbase = haskell-stack-git
 	optdepends = docker: Use Docker images to build your project in a temporary container
 	provides = haskell-stack
 	conflicts = haskell-stack
-	source = stack::git+git://localhost/stack.git
+	source = stack::git+git://github.com:commercialhaskell/stack.git
 	md5sums = SKIP
 
 pkgname = haskell-stack-git
