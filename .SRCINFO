@@ -1,0 +1,26 @@
+pkgbase = evince
+	pkgdesc = GNOME document viewer, built with minimal dependencies
+	pkgver = 3.16.1
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Evince
+	install = evince.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = itstool
+	makedepends = intltool
+	depends = desktop-file-utils
+	depends = gnome-icon-theme
+	depends = gsettings-desktop-schemas
+	depends = gtk3
+	depends = libsm
+	optdepends = p7zip: cbz and cb7 compressed comic books
+	optdepends = tar: cbt compressed comic books
+	optdepends = unrar: cbr compressed comic books
+	provides = evince
+	conflicts = evince
+	source = http://ftp.gnome.org/pub/GNOME/sources/evince/3.16/evince-3.16.1.tar.xz
+	sha256sums = 06ff75065b2a30cd588c402f6bd2ea88ee3166181805e0cc00bd54f71dbf6130
+
+pkgname = evince-light
+
