@@ -1,0 +1,16 @@
+pkgbase = ttf-impallari-formal-script-for-the-web
+	pkgdesc = A Formal Script for the web, from Pablo Impallari
+	pkgver = 1.001
+	pkgrel = 1
+	url = http://www.impallari.com/projects/overview/formal-script-for-the-web
+	install = updatefont.install
+	arch = any
+	groups = impallari-fonts
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.impallari.com/media/uploads/prosources/update-66-source.zip
+	md5sums = 8eefef575bc628275f0c8b73767cc67f
+
+pkgname = ttf-impallari-formal-script-for-the-web
+
