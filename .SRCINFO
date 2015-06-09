@@ -1,0 +1,14 @@
+pkgbase = pyzor
+	pkgdesc = Detect and block spam using identifying digests of messages.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://pyzor.sourceforge.net/
+	arch = any
+	license = GPL
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://pypi.python.org/packages/source/p/pyzor/pyzor-1.0.0.tar.gz
+	sha256sums = 10ea114bdee2eee5edd6afe8eeddaaf605620445977ae019a3e9b1cbb6bc3b27
+
+pkgname = pyzor
+
