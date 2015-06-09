@@ -1,0 +1,15 @@
+pkgbase = ruby-jekyll-sass
+	pkgdesc = Sass CSS converter for Jekyll
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = http://github.com/noct/jekyll-sass
+	arch = any
+	depends = ruby-sass
+	depends = ruby-colorator
+	noextract = jekyll-sass-1.2.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/jekyll-sass-1.2.2.gem
+	sha1sums = 977cd039936264def64202624fa61934984c7d00
+
+pkgname = ruby-jekyll-sass
+
