@@ -1,0 +1,12 @@
+pkgbase = concalc
+	pkgdesc = Concalc is a calculator for the Linux console
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = http://extcalc-linux.sourceforge.net/concalcdescr.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://downloads.sourceforge.net/extcalc-linux/concalc-0.9.3.tar.gz
+
+pkgname = concalc
+
