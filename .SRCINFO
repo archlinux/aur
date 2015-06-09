@@ -1,0 +1,14 @@
+pkgbase = faenza-fresh-icon-theme
+	pkgdesc = FaenzaFresh icon theme
+	pkgver = 0.2
+	pkgrel = 3
+	url = http://gnome-look.org/content/show.php/Faenza+Fresh?content=141003
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = faenza-cupertino-icon-theme
+	source = http://dl.dropbox.com/u/4109351/soft/faenza-fresh-icon-theme/Faenza-Fresh_v0.2.tar.bz2
+	md5sums = 65e3613a7db3808e0635c882519d2942
+
+pkgname = faenza-fresh-icon-theme
+
