@@ -1,0 +1,17 @@
+pkgbase = lossywav-git
+	pkgdesc = An attempt to port lossyWAV to POSIX.
+	pkgver = 1.4.0p.r0.g0c8343e
+	pkgrel = 1
+	url = https://github.com/MoSal/lossywav-for-posix
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = gcc-libs
+	provides = lossywav
+	conflicts = lossywav
+	source = lossywav::git+https://github.com/MoSal/lossywav-for-posix.git
+	md5sums = SKIP
+
+pkgname = lossywav-git
+
