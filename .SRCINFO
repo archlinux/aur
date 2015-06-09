@@ -1,0 +1,19 @@
+pkgbase = terra-bzr
+	pkgdesc = Python/GTK3 drop-down tiling terminal emulator
+	pkgver = r56
+	pkgrel = 2
+	url = https://launchpad.net/terra
+	arch = any
+	license = GPL3
+	makedepends = bzr
+	makedepends = python2-distutils-extra
+	depends = python2-dbus
+	depends = python2-gobject
+	depends = vte3
+	provides = terra
+	conflicts = terra
+	source = terra-bzr::bzr+https://code.launchpad.net/terra/trunk
+	md5sums = SKIP
+
+pkgname = terra-bzr
+
