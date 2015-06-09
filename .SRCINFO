@@ -1,0 +1,20 @@
+pkgbase = python2-chaussette
+	pkgdesc = WSGI Server for Circus
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/mozilla-services/chaussette
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-six
+	provides = chaussette
+	provides = python2-chaussette
+	conflicts = chaussette
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/c/chaussette/chaussette-1.3.0.tar.gz
+	md5sums = b25521e7a58853718d239976ec1c8433
+	sha256sums = 6777f2460e4efcd26551c6f265d9e612ba95c2a0b2e53104c7d4d20e7f3d5a1b
+
+pkgname = python2-chaussette
+
