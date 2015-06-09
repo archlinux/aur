@@ -1,0 +1,52 @@
+pkgbase = scilab
+	pkgdesc = A scientific software package for numerical computations.
+	pkgver = 5.5.2
+	pkgrel = 2
+	url = http://www.scilab.org
+	install = scilab.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	license = custom:CeCILL
+	makedepends = java-environment=7
+	makedepends = apache-ant
+	makedepends = ocaml
+	makedepends = gcc-fortran
+	depends = shared-mime-info
+	depends = desktop-file-utils
+	depends = gtk-update-icon-cache
+	depends = suitesparse>=4.4.1
+	depends = arpack
+	depends = fftw
+	depends = libmatio
+	depends = tk
+	depends = curl
+	depends = java-runtime=7
+	depends = beanshell2
+	depends = eclipse-ecj
+	depends = java-flexdock>=1.2.4
+	depends = fop-hyph
+	depends = java-freehep-vectorgraphics
+	depends = jeuclid-core
+	depends = jgraphx>=2.0.0.1
+	depends = javahelp2
+	depends = jing
+	depends = jlatexmath-fop>=1.0.3
+	depends = jrosetta>=1.0.4
+	depends = jgoodies-looks
+	depends = java-qdox
+	depends = scirenderer
+	depends = java-skinlf
+	depends = java-testng
+	depends = xalan-java
+	depends = docbook-xsl
+	depends = jogl2.2.4
+	depends = java-batik1.7
+	depends = java-xmlgraphics-commons=1.5
+	conflicts = scilab-git
+	conflicts = scilab-bin
+	source = http://www.scilab.org/download/5.5.2/scilab-5.5.2-src.tar.gz
+	sha256sums = a734519de96d35b8f081768a5584086e46db089ab11c021744897b22ec4d0f5e
+
+pkgname = scilab
+
