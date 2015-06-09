@@ -1,0 +1,36 @@
+pkgbase = vcmi-git
+	pkgdesc = Heroes of Might and Magic 3 game engine
+	pkgver = r4845.e529ac6
+	pkgrel = 1
+	url = http://forum.vcmi.eu/portal.php
+	install = vcmi-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = boost
+	makedepends = cmake
+	makedepends = git
+	depends = boost-libs
+	depends = ffmpeg
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = sdl2_ttf
+	depends = qt5-base
+	depends = libxkbcommon-x11
+	depends = desktop-file-utils
+	depends = gtk-update-icon-cache
+	depends = hicolor-icon-theme
+	depends = minizip
+	optdepends = innoextract: required by vcmibuilder
+	optdepends = unshield: required by vcmibuilder
+	optdepends = unzip: required by vcmibuilder
+	provides = vcmi
+	conflicts = vcmi
+	options = !makeflags
+	options = strip
+	options = debug
+	source = vcmi-git::git+https://github.com/vcmi/vcmi.git#branch=develop
+	md5sums = SKIP
+
+pkgname = vcmi-git
+
