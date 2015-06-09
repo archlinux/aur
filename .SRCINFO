@@ -1,0 +1,22 @@
+pkgbase = folly
+	pkgdesc = An open-source C++ library developed and used at Facebook
+	pkgver = 0.41.0
+	pkgrel = 1
+	url = https://github.com/facebook/folly
+	arch = x86_64
+	license = Apache
+	makedepends = python2
+	depends = snappy
+	depends = jemalloc
+	depends = double-conversion
+	depends = gflags
+	depends = google-glog
+	depends = libevent
+	depends = boost
+	source = https://github.com/facebook/folly/archive/v0.41.0.tar.gz
+	source = https://googletest.googlecode.com/files/gtest-1.7.0.zip
+	md5sums = d7ff7682850ea0846881fb1fb42136e9
+	md5sums = 2d6ec8ccdf5c46b05ba54a9fd1d130d7
+
+pkgname = folly
+
