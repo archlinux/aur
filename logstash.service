@@ -1,0 +1,13 @@
+[Unit]
+Description=Logstash Agent
+
+[Service]
+User=logstash
+Group=logstash
+Environment=LOGSTASH_CONF=/etc/logstash/conf.d
+WorkingDirectory=/opt/logstash
+ExecStart=/opt/logstash/bin/logstash agent -f $LOGSTASH_CONF
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

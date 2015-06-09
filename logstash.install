@@ -1,0 +1,13 @@
+post_install() {
+  groupadd logstash &>/dev/null
+  useradd -g logstash -d /opt/logstash -s /bin/false -r logstash &>/dev/null
+
+  chown -R logstash:logstash opt/logstash var/lib/logstash
+}
+
+post_upgrade() {
+  getent group logstash >/dev/null 2>&1 || groupadd logstash &>/dev/null
+  getent passwd logstash >/dev/null 2>&1 || useradd -g logstash -d /opt/logstash -s /bin/false -r logstash &>/dev/null
+
+  chown -R logstash:logstash opt/logstash
+}

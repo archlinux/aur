@@ -1,0 +1,12 @@
+[Unit]
+Description=Logstash Web Server
+
+[Service]
+User=logstash
+Group=logstash
+WorkingDirectory=/opt/logstash
+ExecStart=/opt/logstash/bin/logstash web
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
