@@ -1,0 +1,18 @@
+post_install() {
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+}
+
+post_upgrade() {
+  if (($(vercmp $2 1.4.0-1) < 0)); then
+    echo ':: Xfce Power Manager no longer provides a tray icon.'
+    echo '   Please add the new Power Manager Plugin to your panel.'
+  fi
+
+  post_install
+}
+
+post_remove() {
+  post_install
+}
+
+# vim:set ts=2 sw=2 et:
