@@ -1,6 +1,6 @@
 pkgbase = linux-vfio
-	pkgver = 4.0.4
-	pkgrel = 2
+	pkgver = 4.0.5
+	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = i686
 	arch = x86_64
@@ -13,12 +13,11 @@ pkgbase = linux-vfio
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.4.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.4.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.5.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.5.sign
 	source = config
 	source = config.x86_64
 	source = linux.preset
-	source = md-raid0-fix-restore-to-sector-variable-in-raid0_mak.patch
 	source = change-default-console-loglevel.patch
 	source = override_for_missing_acs_capabilities.patch
 	source = i915_317.patch
@@ -29,7 +28,6 @@ pkgbase = linux-vfio
 	sha256sums = e8d639582697f22333a96aa1614bcf5d9bcf2e6683a3d5296f9cfc64843606f1
 	sha256sums = 5dadd75693e512b77f87f5620e470405b943373613eaf4df561037e9296453be
 	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
-	sha256sums = bc83293e64653d60793708a0e277741f57c018f5ea3551a8aff3a220df917ceb
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
 	sha256sums = 975f79348119bfba8dd972a9fbfe6b38484c45bfd228f2f6d48a0c02426ba149
 	sha256sums = f86ce528b63f198b84c4d8d92d35329aa4000d462217dc2db03bac5eb693cf19
@@ -42,20 +40,20 @@ pkgname = linux-vfio
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = kernel26-vfio=4.0.4
+	provides = kernel26-vfio=4.0.5
 	conflicts = kernel26-vfio
 	replaces = kernel26-vfio
 	backup = etc/mkinitcpio.d/linux-vfio.preset
 
 pkgname = linux-vfio-headers
 	pkgdesc = Header files and scripts for building modules for Linux-vfio kernel
-	provides = kernel26-vfio-headers=4.0.4
+	provides = kernel26-vfio-headers=4.0.5
 	conflicts = kernel26-vfio-headers
 	replaces = kernel26-vfio-headers
 
 pkgname = linux-vfio-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-vfio kernel
-	provides = kernel26-vfio-docs=4.0.4
+	provides = kernel26-vfio-docs=4.0.5
 	conflicts = kernel26-vfio-docs
 	replaces = kernel26-vfio-docs
 
