@@ -1,0 +1,15 @@
+pkgbase = python2-sockjs-tornado-git
+	pkgdesc = SockJS-tornado is a Python server side counterpart of SockJS-client browser library running on top of Tornado framework.
+	pkgver = 1.0.0.r17.gb90116f
+	pkgrel = 1
+	url = https://github.com/mrjoes/sockjs-tornado
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python2
+	depends = python2-tornado
+	source = python2-sockjs-tornado-git::git+https://github.com/mrjoes/sockjs-tornado.git
+	md5sums = SKIP
+
+pkgname = python2-sockjs-tornado-git
+
