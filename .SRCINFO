@@ -1,0 +1,23 @@
+pkgbase = python2-gittle
+	pkgdesc = A high level pure python git implementation
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/FriendCode/gittle
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-crypto
+	depends = python2-dulwich
+	depends = python2-funky
+	depends = python2-paramiko
+	provides = gittle
+	provides = python2-gittle
+	conflicts = gittle
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/g/gittle/gittle-0.5.0.tar.gz
+	md5sums = 35c4d3f608c81b6f7cc91b8bfc1221ff
+	sha256sums = b1e53b324e053183413eb2f0f21697d234c83b9b1de12f1e245f5dd0f30ba1d8
+
+pkgname = python2-gittle
+
