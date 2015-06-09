@@ -1,0 +1,13 @@
+pkgbase = ironahk-git
+	pkgdesc = Cross platform .NET rewrite of the popular AutoHotkey scripting language for desktop automation
+	pkgver = 20120716
+	pkgrel = 1
+	url = http://www.ironahk.net/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = mono
+
+pkgname = ironahk-git
+
