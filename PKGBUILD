@@ -2,7 +2,7 @@
 #Maintainer: Kirill Gagarski <gagarin.gtn [at] gmail.com>
 pkgname=jmtpfs-git
 pkgver=v0.5
-pkgrel=1
+pkgrel=2
 license=('GPL')
 pkgdesc="mtpfs with better support for Android"
 arch=('i686' 'x86_64')

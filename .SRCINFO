@@ -1,7 +1,7 @@
 pkgbase = jmtpfs-git
 	pkgdesc = mtpfs with better support for Android
 	pkgver = v0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JasonFerrara/jmtpfs
 	arch = i686
 	arch = x86_64
