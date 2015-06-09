@@ -1,0 +1,22 @@
+pkgbase = otter-browser
+	pkgdesc = Browser aiming to recreate classic Opera (12.x) UI using Qt5.
+	pkgver = 0.9.06
+	pkgrel = 1
+	url = http://otter-browser.org
+	install = otter.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = qt5-multimedia
+	depends = qt5-webkit
+	depends = qt5-script
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	conflicts = otter-browser-git
+	source = otter-browser-0.9.06.tar.gz::https://github.com/OtterBrowser/otter-browser/archive/v0.9.06.tar.gz
+	md5sums = 8c13ed4c4080923903f3ffe240264e5b
+
+pkgname = otter-browser
+
