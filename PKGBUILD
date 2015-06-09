@@ -6,17 +6,14 @@
 [[ "${CARCH}" == "i686" ]] && _EFI_ARCH="ia32"
 
 __pkgname="gnu-efi"
-
-_src_rootdir="${__pkgname}-3.0"
-
 _pkgname="gnu-efi-libs"
 pkgname="${_pkgname}-git"
 
-_pkgver="3.0v"
-pkgver=3.0v.43.f16d93f
+_pkgver="3.0.2"
+pkgver=3.0.2.81.d4c242e
 pkgrel=1
 
-pkgdesc="Library for building UEFI Applications using GNU toolchain - Sourceforge GIT Version"
+pkgdesc="Library for building UEFI Applications using GNU toolchain - GIT Version"
 url="http://sourceforge.net/projects/gnu-efi/"
 license=('GPL')
 arch=('x86_64' 'i686')
@@ -26,11 +23,8 @@ options=('staticlibs' '!strip' '!makeflags')
 conflicts=('gnu-efi-libs')
 provides=("gnu-efi-libs=${pkgver}")
 
-source=("${__pkgname}::git+http://git.code.sf.net/p/gnu-efi/code#branch=master"
-        'gnu-efi-3.0v-revert-makefile-commit.patch')
-
-sha1sums=('SKIP'
-          'db411a1f2f545924dc59f8a0c2331acfcb10bb54')
+source=("gnu-efi::git+https://github.com/vathpela/gnu-efi.git#branch=fedora")
+sha1sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${__pkgname}/"
@@ -49,18 +43,15 @@ prepare() {
 	echo
 	
 	msg "Fix Makefiles"
-	# git revert --no-commit 06744d69273de4945cf0ffcaa4a6abf7cec707b6
-	patch -Np1 -i "${srcdir}/gnu-efi-3.0v-revert-makefile-commit.patch" || true
-	echo
-	
-	msg "Fix stdarg.h issue"
-	sed 's|#include "stdarg.h"|#include <stdarg.h>|g' -i "${srcdir}/${__pkgname}_build/${_src_rootdir}/inc/efistdarg.h" || true
+	sed 's|/gnuefi/crt0-efi|/x86_64/gnuefi/crt0-efi|g' -i "${srcdir}/${__pkgname}_build/apps/Makefile"
+	sed 's|L../lib|L../x86_64/lib|g' -i "${srcdir}/${__pkgname}_build/apps/Makefile"
+	sed 's|L../gnuefi|L../x86_64/gnuefi|g' -i "${srcdir}/${__pkgname}_build/apps/Makefile"
 	
 }
 
 build() {
 	
-	cd "${srcdir}/${__pkgname}_build/${_src_rootdir}/"
+	cd "${srcdir}/${__pkgname}_build/"
 	
 	msg "Unset all compiler FLAGS"
 	unset CFLAGS
@@ -81,7 +72,7 @@ build() {
 
 package() {
 	
-	cd "${srcdir}/${__pkgname}_build/${_src_rootdir}/"
+	cd "${srcdir}/${__pkgname}_build/"
 	
 	msg "Run make install"
 	make INSTALLROOT="${pkgdir}" PREFIX="/usr" LIBDIR="/usr/lib" install
@@ -89,6 +80,6 @@ package() {
 	
 	msg "Install gnu-efi apps"
 	install -d "${pkgdir}/usr/share/gnu-efi/apps/${_EFI_ARCH}/"
-	install -D -m0644 "${srcdir}/${__pkgname}_build/${_src_rootdir}/apps"/*.efi "${pkgdir}/usr/share/gnu-efi/apps/${_EFI_ARCH}/"
+	install -D -m0644 "${srcdir}/${__pkgname}_build/apps"/*.efi "${pkgdir}/usr/share/gnu-efi/apps/${_EFI_ARCH}/"
 	
 }
