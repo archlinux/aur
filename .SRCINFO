@@ -1,0 +1,32 @@
+pkgbase = pelican
+	pkgdesc = A tool to generate a static blog, with restructured text (or markdown) input files.
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = http://getpelican.com
+	arch = any
+	license = AGPL3
+	depends = python-jinja
+	depends = python-pygments
+	depends = python-feedgenerator
+	depends = python-pytz
+	depends = python-docutils
+	depends = python-blinker
+	depends = python-unidecode
+	depends = python-six
+	depends = python-dateutil
+	optdepends = python-markdown: for Markdown support
+	optdepends = asciidoc: for AsciiDoc support
+	optdepends = python-beautifulsoup4: for importing from wordpress/dotclear/posterous
+	optdepends = python-feedparser: for importing from feeds
+	optdepends = python-rst2pdf: for PDF generation
+	optdepends = openssh: for uploading through SSH
+	optdepends = rsync: for uploading through rsync+SSH
+	optdepends = lftp: for uploading through FTP
+	optdepends = s3cmd: for uploading through S3
+	optdepends = ghp-import: for uploading through gh-pages
+	optdepends = python-typogrify: for typographical enhancements
+	source = http://pypi.python.org/packages/source/p/pelican/pelican-3.5.0.tar.gz
+	md5sums = af9a3deafb4683a109a5c44e6d6138aa
+
+pkgname = pelican
+
