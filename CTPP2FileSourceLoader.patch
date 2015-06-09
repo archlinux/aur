@@ -1,0 +1,11 @@
+--- src/CTPP2FileSourceLoader.cpp.orig	2012-08-02 16:22:44.000000000 +0900
++++ src/CTPP2FileSourceLoader.cpp	2013-01-13 01:04:57.993727806 +0900
+@@ -38,7 +38,7 @@
+ #include <errno.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+-
++#include <unistd.h>
+ #ifdef WIN32
+     #include <direct.h> /* getcwd */
+     #include <windows.h>

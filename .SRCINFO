@@ -1,0 +1,21 @@
+pkgbase = ctpp2
+	pkgdesc = CTPP (or CT++) is the fastest template engine which completely written in C++
+	pkgver = 2.8.3
+	pkgrel = 2
+	url = http://ctpp.havoc.ru/en/
+	arch = i686
+	arch = x86_64
+	license = custom:BSD-like
+	makedepends = cmake
+	makedepends = make
+	optdepends = iconv: iconv support
+	optdepends = md5: md5 support
+	source = http://ctpp.havoc.ru/download/ctpp2-2.8.3.tar.gz
+	source = CTPP2FileSourceLoader.patch
+	md5sums = 1155b65e8ca8b844c631831e4a3e5644
+	md5sums = ed067af369dd96ce80647071081eeefd
+	sha256sums = a83ffd07817adb575295ef40fbf759892512e5a63059c520f9062d9ab8fb42fc
+	sha256sums = 93a23e1e5ae294c009a5457116a6b40d4af64c2b1ef6bdcdf2d80e272012cbc4
+
+pkgname = ctpp2
+
