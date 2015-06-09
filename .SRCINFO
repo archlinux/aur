@@ -1,0 +1,15 @@
+pkgbase = rdfind
+	pkgdesc = Redundant data find - a program that finds duplicate files.
+	pkgver = 1.3.4
+	pkgrel = 1
+	url = http://rdfind.pauldreik.se
+	changelog = Changelog
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = nettle
+	source = http://rdfind.pauldreik.se/rdfind-1.3.4.tar.gz
+	sha256sums = a5f0b3f72093d927b93898c993479b35682cccb47f7393fb72bd4803212fcc7d
+
+pkgname = rdfind
+
