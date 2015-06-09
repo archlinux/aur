@@ -1,0 +1,20 @@
+pkgbase = pyscape
+	pkgdesc = A Python soundscape tool
+	pkgver = 20150603.9be6e3c
+	pkgrel = 1
+	url = http://mdoege.github.com/PyScape/
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python2
+	depends = tk
+	depends = openal
+	depends = freealut
+	depends = python2-imaging
+	provides = pyopenal
+	conflicts = pyopenal
+	source = git://github.com/mdoege/PyScape.git
+	md5sums = SKIP
+
+pkgname = pyscape
+
