@@ -1,0 +1,26 @@
+pkgbase = devhelp-git
+	pkgdesc = API documentation browser for GNOME
+	pkgver = 3.16.1.29.g321170c
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Devhelp
+	install = devhelp.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = intltool
+	makedepends = python
+	makedepends = gnome-common
+	depends = webkit2gtk
+	depends = hicolor-icon-theme
+	depends = gtk3
+	depends = glib2
+	provides = devhelp=3.16.2
+	conflicts = devhelp
+	options = !libtool
+	options = !emptydirs
+	source = git://git.gnome.org/devhelp
+	sha256sums = SKIP
+
+pkgname = devhelp-git
+
