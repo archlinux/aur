@@ -1,0 +1,16 @@
+pkgbase = cssc
+	pkgdesc = A clone of the Unix SCCS tool suite.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = http://savannah.gnu.org/projects/cssc
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = gcc-libs
+	depends = sh
+	options = !emptydirs
+	source = http://ftp.gnu.org/gnu/cssc/CSSC-1.4.0.tar.gz
+	md5sums = e1a973092577012f0c25421e7005f0f1
+
+pkgname = cssc
+
