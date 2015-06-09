@@ -1,0 +1,17 @@
+[Unit]
+Description=Insight Bitcore
+Wants=bitcoin.service
+After=bitcoin.service
+
+[Service]
+User=insight
+Group=insight
+WorkingDirectory=/usr/share/insight
+EnvironmentFile=/etc/conf.d/insight
+ExecStartPre=/usr/bin/sed -i 's#"start.*#"start": "NODE_ENV=${NODE_ENV} NODE_TLS_REJECT_UNAUTHORIZED=0 BITCOIND_PROTO=${BITCOIND_PROTO} BITCOIND_HOST=${BITCOIND_HOST} BITCOIND_PORT=${BITCOIND_PORT} BITCOIND_P2P_PORT=${BITCOIND_P2P_PORT} BITCOIND_USER=${BITCOIND_USER} BITCOIND_PASS=${BITCOIND_PASS} BITCOIND_DATADIR=${BITCOIND_DATADIR} INSIGHT_NETWORK=${INSIGHT_NETWORK} INSIGHT_DB=${INSIGHT_DB} INSIGHT_PUBLIC_PATH=public node node_modules/.bin/insight-bitcore-api"#' package.json
+ExecStart=/usr/bin/npm start
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

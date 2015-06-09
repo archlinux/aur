@@ -1,0 +1,71 @@
+post_install() {
+  _mkuser
+  chown -R insight:insight /etc/insight /usr/share/insight
+  printf "%b\n" "$insight"
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  _rmuser
+  rm -rf /etc/insight /usr/share/insight
+}
+
+_mkuser() {
+  getent passwd insight &>/dev/null || {
+    echo -n "Creating insight user... "
+    grep -E "^insight:" /etc/group >/dev/null || groupadd insight
+    useradd -m -d /etc/insight -g insight -s /usr/bin/nologin insight
+    echo "done"
+  }
+}
+
+_rmuser() {
+  echo -n "Removing insight user... "
+  userdel -rf insight 2>/dev/null
+  echo "done"
+}
+
+read -d '' insight <<'EOF'
+#####################################################################
+#####################################################################
+##                                                                 ##
+##   Insight Bitcore                                               ##
+##   _______________                                               ##
+##                                                                 ##
+##   insight needs a trusted bitcoind node to run. insight will    ##
+##   connect to the node thru the RPC API, Peer-to-peer protocol   ##
+##   and will even read its raw .dat files for syncing.            ##
+##                                                                 ##
+##   Configure bitcoind to listen to RPC calls and set             ##
+##   txindex to true. The easiest way to do this is by copying     ##
+##   ./etc/bitcoind/bitcoin.conf to your bitcoin data directory    ##
+##   (usually "~/.bitcoin" on Linux, "%appdata%\Bitcoin\" on       ##
+##   Windows, or "~/Library/Application Support/Bitcoin" on Mac    ##
+##   OS X).                                                        ##
+##                                                                 ##
+##   bitcoind must be running and must have finished downloading   ##
+##   the blockchain before running insight.                        ##
+##                                                                 ##
+##   Run the main application:                                     ##
+##                                                                 ##
+##      # systemctl start insight                                  ##
+##                                                                 ##
+##   Then open a browser and go to:                                ##
+##                                                                 ##
+##      http://localhost:3000                                      ##
+##                                                                 ##
+##                                                                 ##
+#####################################################################
+#####################################################################
+*********************************************************************
+*
+* NOTE: Insight's LevelDB database requires 32+ GB of free space in
+*       /usr/share/insight
+*
+* Freenode: #bitcore
+*
+*********************************************************************
+EOF
