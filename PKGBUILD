@@ -1,41 +1,40 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Maintainer: oi_wtf <brainpower at gulli dot com>
+# Original-Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname=lib32-libteam
-pkgver=1.11
+_pkgname=libteam
+pkgver=1.14
 pkgrel=1
-pkgdesc='Library for controlling team network device'
-arch=('x86_64')
-url='http://libteam.org/'
-license=('LGPL2.1')
-depends=('lib32-jansson' 'lib32-libdaemon' 'lib32-libdbus' 'lib32-libnl'
-         'libteam')
-makedepends=('gcc-multilib' 'swig')
-source=("http://libteam.org/files/libteam-${pkgver}.tar.gz")
-sha256sums=('b89e81258f8a8f4abd718ec1c91f85cb66d4d29e4d50095a3d2a4ffd8ce4bf7a')
+pkgdesc="Library for controlling team network device"
+arch=(x86_64)
+url="http://libteam.org/"
+license=(LGPL2.1)
+depends=(lib32-libnl lib32-libdaemon lib32-jansson lib32-libdbus)
+source=($url/files/$_pkgname-$pkgver.tar.gz)
+sha256sums=('294cdabd85cddfeac304ecbd4f331ef3f9afbf03f8b8ef7bb3a9c5827ab22d97')
 
 build() {
-  cd libteam-${pkgver}
+  cd $_pkgname-$pkgver
 
   export CC='gcc -m32'
   export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-  ./configure \
-    --prefix='/usr' \
-    --libdir='/usr/lib32' \
-    --libexecdir='/usr/lib32' \
-    --localstatedir='/var' \
-    --sysconfdir='/etc' \
-    --disable-static
-    make
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+    --disable-static --libdir=/usr/lib32 --libexecdir=/usr/lib \
+    --disable-zmq # zmq causes include error
+  make
+}
+
+check() {
+  cd $_pkgname-$pkgver
+  make check
 }
 
 package() {
-  cd libteam-${pkgver}
+  cd $_pkgname-$pkgver
+  make DESTDIR="$pkgdir" install
 
-  make DESTDIR="${pkgdir}" install
-  rm -rf "${pkgdir}"/{etc,usr/{bin,include,share}}
+  # lib32 cleanup
+  rm -rf "$pkgdir"/usr/{bin,lib,include,share} "$pkgdir/etc"
 }
-
-# vim: ts=2 sw=2 et:

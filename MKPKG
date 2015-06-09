@@ -1,4 +1,0 @@
-pkgname=('lib32-libteam')
-builddeps=('lib32-jansson' 'lib32-libdaemon' 'lib32-libnl')
-
-# vim: ts=2 sw=2 et:
