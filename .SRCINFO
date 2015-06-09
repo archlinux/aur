@@ -1,0 +1,21 @@
+pkgbase = switchboard-plug-elementary-tweaks-bzr
+	pkgdesc = Elementary Tweaks plug for Switchboard
+	pkgver = r239
+	pkgrel = 1
+	url = https://launchpad.net/elementary-tweaks
+	arch = i686
+	arch = x86_64
+	groups = pantheon-unstable
+	license = GPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = vala
+	depends = gconf
+	depends = switchboard-bzr
+	provides = switchboard-plug-elementary-tweaks
+	conflicts = switchboard-plug-elementary-tweaks
+	source = switchboard-plug-elementary-tweaks::bzr+lp:elementary-tweaks
+	sha256sums = SKIP
+
+pkgname = switchboard-plug-elementary-tweaks-bzr
+
