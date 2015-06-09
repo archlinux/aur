@@ -1,0 +1,14 @@
+pkgbase = griffith-extra-artwork
+	pkgdesc = Extra artwork for Griffith, the movie collection manager application
+	pkgver = 0.9.4
+	pkgrel = 2
+	url = http://www.griffith.cc/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = griffith>=0.9
+	provides = griffith-extra-artwork
+	source = http://softlayer-ams.dl.sourceforge.net/project/griffith.berlios/griffith-extra-artwork-0.9.4.tar.gz
+
+pkgname = griffith-extra-artwork
+
