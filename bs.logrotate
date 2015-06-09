@@ -1,0 +1,10 @@
+/var/log/bs/*.log {
+    size 5M
+    missingok
+    rotate 7
+    compress
+    delaycompress
+    notifempty
+    create 644 bs bs
+    sharedscripts
+}
