@@ -1,0 +1,15 @@
+# nautilus-megasync.install
+
+
+post_install() {
+	update-desktop-database -q
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+}
+
+post_upgrade() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+}
+
+post_remove() {
+	post_install $1
+}
