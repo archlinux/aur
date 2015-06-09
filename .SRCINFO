@@ -1,0 +1,20 @@
+pkgbase = switchboard-plug-gcc-bzr
+	pkgdesc = GNOME Control Center plug for Switchboard
+	pkgver = r18
+	pkgrel = 1
+	url = https://code.launchpad.net/~elementary-apps/pantheon-plugs/dynamic-gcc-plug-isis
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = vala
+	depends = libgnome-control-center
+	depends = switchboard-bzr
+	provides = switchboard-plug-gcc-bzr
+	conflicts = switchboard-plug-gcc
+	source = switchboard-plug-gcc::bzr+lp:pantheon-plugs/dynamic-isis
+	sha256sums = SKIP
+
+pkgname = switchboard-plug-gcc-bzr
+
