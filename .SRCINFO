@@ -1,0 +1,24 @@
+pkgbase = pyethereum
+	pkgdesc = Ethereum Python client
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://github.com/ethereum/pyethereum
+	arch = any
+	groups = ethereum
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-bitcoin
+	depends = python2-pyethash
+	depends = python2-pysha3
+	depends = python2-repoze.lru
+	depends = python2-rlp
+	depends = python2-structlog
+	depends = python2-yaml
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/p/pyethereum/pyethereum-0.9.2.tar.gz
+	md5sums = 960aef4540f63ccca4667f0382ad2019
+	sha256sums = 0f086fcef6369f50b763f902440d2ec14645fe606ea1a5a290a50011bf579fa4
+
+pkgname = pyethereum
+
