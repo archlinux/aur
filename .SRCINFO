@@ -1,0 +1,23 @@
+pkgbase = lightdm-pantheon-greeter
+	pkgdesc = Pantheon greeter for LightDM
+	pkgver = 2.0.0
+	pkgrel = 2
+	url = https://launchpad.net/pantheon-greeter
+	install = lightdm-pantheon-greeter.install
+	arch = i686
+	arch = x86_64
+	groups = pantheon
+	license = GPL
+	makedepends = cmake
+	makedepends = vala
+	depends = clutter-gtk
+	depends = granite
+	depends = libindicator-gtk3
+	depends = lightdm
+	source = lightdm-pantheon-greeter-2.0.0.tgz::https://launchpad.net/pantheon-greeter/freya/2.0.0/+download/pantheon-greeter-2.0.0.tgz
+	source = lightdm-pantheon-greeter-paths.patch
+	sha256sums = 5c81b907f33883e2f40d57d03c3a15e190aae71144143a170dca6cdf87ce6d8f
+	sha256sums = 164d93b3dd75a5dfa2ecb4095bbf0f366e778544b4769b4a5c47be1cef952d1b
+
+pkgname = lightdm-pantheon-greeter
+
