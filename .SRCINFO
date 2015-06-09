@@ -1,0 +1,22 @@
+pkgbase = python2-ethereum-serpent-git
+	pkgdesc = Serpent compiler, installed as a Python module
+	pkgver = 20150218
+	pkgrel = 1
+	url = https://github.com/ethereum/serpent
+	arch = i686
+	arch = x86_64
+	groups = ethereum
+	license = WTFPL
+	makedepends = gcc
+	makedepends = git
+	makedepends = make
+	makedepends = python2-setuptools
+	depends = python2
+	provides = python2-ethereum-serpent
+	conflicts = python2-ethereum-serpent
+	options = !emptydirs
+	source = python2-ethereum-serpent::git+https://github.com/ethereum/serpent
+	sha256sums = SKIP
+
+pkgname = python2-ethereum-serpent-git
+
