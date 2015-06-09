@@ -1,0 +1,21 @@
+pkgbase = cura-engine
+	pkgdesc = A C++ console application for 3D printing GCode generation. It's called by Repetier Host and/or other applications.
+	pkgver = 15.04
+	pkgrel = 1
+	url = https://github.com/Ultimaker/CuraEngine.git
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = GPL
+	makedepends = gcc
+	makedepends = cmake
+	depends = protobuf3
+	depends = libarcus
+	conflicts = curaengine
+	conflicts = curaengine-git
+	conflicts = cura-engine-git
+	source = cura-engine-15.04.tar.gz::https://github.com/Ultimaker/CuraEngine/archive/15.04.tar.gz
+	sha1sums = 1a1d2c8f1b3311fbeb5b87fe32b8051508263abe
+
+pkgname = cura-engine
+
