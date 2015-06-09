@@ -3,7 +3,7 @@
 
 pkgname=simple-text
 pkgver=0.9.8
-pkgrel=5
+pkgrel=6
 pkgdesc="A not so simple text and code editor written in Vala (Still in development)"
 arch=('i686' 'x86_64')
 license=('GPL2')
