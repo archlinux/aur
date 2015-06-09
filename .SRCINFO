@@ -1,0 +1,12 @@
+pkgbase = leiningen2-git
+	pkgdesc = A build automation tool for the Clojure programming language.
+	pkgver = 20150609
+	pkgrel = 1
+	url = https://github.com/technomancy/leiningen
+	arch = any
+	license = EPL
+	depends = clojure
+	conflicts = leiningen
+
+pkgname = leiningen2-git
+
