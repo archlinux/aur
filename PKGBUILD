@@ -5,13 +5,13 @@
 
 pkgname=listen
 pkgver=0.6.5
-pkgrel=13
+pkgrel=14
 pkgdesc="Music player and management for GNOME"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/listen"
 license=('GPL2')
 depends=('python2-egg' 'python2-libgnome' 'mutagen' 'desktop-file-utils'
-         'gnome-icon-theme' 'gstreamer0.10-python' 'notification-daemon' 'pyxdg'
+         'gnome-icon-theme' 'gstreamer0.10-python' 'pyxdg'
          'pywebkitgtk' 'python2-pyinotify' 'gstreamer0.10-good-plugins' 'dbus-python')
 makedepends=('intltool' 'docbook2x' 'docbook-xml')
 optdepends=('python2-musicbrainz2: musicbrainz & cd support'
