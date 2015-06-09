@@ -1,0 +1,15 @@
+pkgbase = minecraft-ipv6
+	pkgdesc = A wrapper for the minecraft that does not disable IPv6
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://bugs.mojang.com/browse/MC-3776?focusedCommentId=163693&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-163693
+	arch = any
+	license = BSD
+	depends = minecraft
+	source = MinecraftIPv6.java
+	source = minecraft-ipv6.sh
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = minecraft-ipv6
+
