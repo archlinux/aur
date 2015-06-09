@@ -1,0 +1,10 @@
+post_upgrade() {
+    echo "Example of configuration file installed on"
+    echo "/usr/share/backup-conf/backup-conf.conf.example"
+    echo 'copy to $XDG_CONFIG_HOME/backup-conf.conf or'
+    echo "/etc/backup-conf.conf, and edit with you files/directories."
+}
+
+post_install() {
+    post_upgrade
+}

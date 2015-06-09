@@ -1,0 +1,21 @@
+pkgbase = backup-conf
+	pkgdesc = This script create a backup of your config files in a tree format on current folder
+	pkgver = 4.4.2
+	pkgrel = 1
+	url = https://github.com/LaraCraft93/backup-conf
+	install = backup-conf.install
+	arch = any
+	license = GPL
+	depends = util-linux
+	depends = gettext
+	depends = colordiff
+	depends = sudo
+	optdepends = git: for git management
+	backup = etc/backup-conf.conf
+	source = https://github.com/LaraCraft93/backup-conf/archive/v4.4.2.tar.gz
+	source = backup-conf.install
+	md5sums = a2ce85ae88f9a9bebad4e8936710a05d
+	md5sums = b452e0f879c2d25650330a37ed13f110
+
+pkgname = backup-conf
+
