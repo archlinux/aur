@@ -1,0 +1,13 @@
+pkgbase = blinkenlib
+	pkgdesc = C library to mess with LED projects and Blinken-houses
+	pkgver = 0.7.4
+	pkgrel = 1
+	url = http://wiki.blinkenarea.org/index.php/BlinkenLibEnglish
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = git+http://git.blinkenarea.org/projects/BlinkenLib#tag=v0.7.4
+	sha256sums = SKIP
+
+pkgname = blinkenlib
+
