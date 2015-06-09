@@ -1,0 +1,21 @@
+pkgbase = rescached-git
+	pkgdesc = Resolver/DNS cache daemon
+	pkgver = r104.d750114
+	pkgrel = 1
+	url = https://github.com/shuLhan/rescached
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = asciidoc
+	depends = glibc
+	provides = rescached
+	conflicts = rescached
+	backup = etc/rescached/rescached.cfg
+	source = rescached::git+https://github.com/shuLhan/rescached.git
+	source = libvos::git+https://github.com/shuLhan/libvos.git
+	sha1sums = SKIP
+	sha1sums = SKIP
+
+pkgname = rescached-git
+
