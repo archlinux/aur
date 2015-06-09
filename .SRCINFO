@@ -1,0 +1,22 @@
+pkgbase = python2-rollbar
+	pkgdesc = Logs exceptions and other data to Rollbar
+	pkgver = 0.9.11
+	pkgrel = 1
+	url = https://github.com/rollbar/pyrollbar
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-requests
+	provides = pyrollbar
+	provides = python2-rollbar
+	provides = rollbar
+	conflicts = pyrollbar
+	conflicts = rollbar
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/r/rollbar/rollbar-0.9.11.tar.gz
+	md5sums = cdea1cdb7e0543b5ffafaf36199c26a3
+	sha256sums = 68e00a8bbc3563c7f959e8e5355c12772aba375cb8574d24bf86abaf85e236c0
+
+pkgname = python2-rollbar
+
