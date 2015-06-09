@@ -1,0 +1,14 @@
+pkgbase = gplot
+	pkgdesc = Simple perl wrapper for gnuplot
+	pkgver = 1.11
+	pkgrel = 1
+	url = http://gplot.sourceforge.net
+	arch = any
+	license = GPLv2
+	depends = gnuplot>=4.4
+	depends = perl
+	source = gplot-1.11.tar.gz::http://sourceforge.net/projects/gplot/files/gplot/gplot-1.11.tar.gz/download
+	sha1sums = 01e6c85847cb1c088a402a8ba71b88db8fca305f
+
+pkgname = gplot
+

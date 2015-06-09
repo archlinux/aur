@@ -1,0 +1,7 @@
+.*
+!.SRCINFO
+!.gitignore
+gplot*.tar.gz
+gplot*.pkg.*
+pkg/
+src/
