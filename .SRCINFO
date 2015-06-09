@@ -1,0 +1,15 @@
+pkgbase = cryptopp
+	pkgdesc = free C++ class library of cryptographic schemes
+	pkgver = 5.6.2
+	pkgrel = 2
+	url = http://www.cryptopp.com/
+	arch = i686
+	arch = x86_64
+	license = Boost
+	makedepends = unzip
+	noextract = cryptopp562.zip
+	source = http://www.cryptopp.com/cryptopp562.zip
+	md5sums = 7ed022585698df48e65ce9218f6c6a67
+
+pkgname = cryptopp
+
