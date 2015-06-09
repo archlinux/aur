@@ -1,0 +1,40 @@
+2015-04-02  Magnus Therning <magnus@therning.org>
+
+	* Upgrade to 1.8.13
+
+2014-10-06  Magnus Therning <magnus@therning.org>
+
+	* Upgrade to 1.8.12
+
+2014-06-16  Magnus Therning <magnus@therning.org>
+
+	* Upgrade to 1.8.10
+
+2014-05-09  Magnus Therning <magnus@therning.org>
+
+	* Fix tiny typo that made the package unbuildable on i686 systems.
+
+2014-05-08  Magnus Therning <magnus@therning.org>
+
+	* Upgrade to 1.8.9
+
+2014-04-27  Magnus Therning <magnus@therning.org>
+
+	* Upgrade to 1.8.8.4
+
+2013-12-17  Magnus Therning <magnus@therning.org>
+
+	* Upgrade to version 1.8.7
+	* Remove dependency on appindicator by disabling it at build time.
+
+2013-11-14  Magnus Therning <magnus@therning.org>
+
+	* Upgrade to version 1.8.4
+
+2013-06-16  Magnus Therning <magnus@therning.org>
+
+	* Upgrade to version 1.8.1
+
+2013-06-10  Magnus Therning <magnus@therning.org>
+
+	* Upgrade to version 1.7.4.5.

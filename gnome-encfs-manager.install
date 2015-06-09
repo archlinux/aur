@@ -1,0 +1,15 @@
+pkgname=gencfsm
+
+post_install() {
+  glib-compile-schemas /usr/share/glib-2.0/schemas
+}
+
+pre_upgrade() {
+  if [ -f /usr/share/gconf/schemas/${pkgname}.schemas ]; then
+    gconfpkg --uninstall ${pkgname}
+  fi
+}
+
+post_upgrade() {
+  post_install $1
+}
