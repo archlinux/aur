@@ -1,0 +1,24 @@
+pkgbase = db2exc
+	pkgdesc = DB2 Express-C
+	pkgver = 10.5
+	pkgrel = 3
+	url = http://www.ibm.com/software/data/db2/express-c
+	install = db2exc.install
+	arch = x86_64
+	license = custom
+	depends = libaio
+	source = http://download/file/from/ibm/v10.5_linuxx64_expc.tar.gz
+	source = db2exc.conf
+	source = db2exc.csh
+	source = db2exc.service
+	source = db2exc.sh
+	source = license.html
+	md5sums = b307321bf1f51c20640addfb1afad05d
+	md5sums = 6bc57e81ed02f74eb2f5f3148b13fa03
+	md5sums = 7f984d8fde09cf16b234dd83e42cc5d3
+	md5sums = 3eedcb459005dbb718ba7b359339b26e
+	md5sums = fe35dc51c68a9cf6da46d56099459b3c
+	md5sums = 2c0aeb211fc087d15cd9fdac5b77e762
+
+pkgname = db2exc
+

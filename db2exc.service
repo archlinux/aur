@@ -1,0 +1,13 @@
+[Unit]
+Description=DB2 Database
+
+[Service]
+Type=forking
+ExecStart=/bin/sh -c 'source /home/db2inst1/sqllib/db2profile; /opt/db2/bin/db2 db2start > /dev/null 2>&1'
+ExecStop=/bin/sh -c 'source /home/db2inst1/sqllib/db2profile; su db2inst1 -c "/opt/db2/bin/db2 force application all"; /opt/db2/bin/db2 db2stop force > /dev/null 2>&1'
+TimeoutStopSec=10
+User=db2inst1
+Group=db2inst1
+
+[Install]
+WantedBy=multi-user.target

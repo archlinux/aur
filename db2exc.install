@@ -1,0 +1,52 @@
+post_install() {
+	useradd -m db2inst1
+	useradd -m db2fenc1
+	useradd -m db2das1
+
+	passwd db2inst1 <<- EOF
+		db2inst1
+		db2inst1
+		EOF
+
+	sed -i.arch '$ adb2inst1 51000/tcp' /etc/services
+
+	/opt/db2/install/db2chgpath -n /opt/db2
+	/opt/db2/instance/dascrt -u db2das1
+	/opt/db2/instance/db2icrt -a server -u db2fenc1 db2inst1
+
+	mkdir -p /var/db2/db2inst1 /var/log/db2
+	chown db2inst1:db2inst1 /var/db2/db2inst1 /var/log/db2
+
+	su db2inst1 -c 'cd; . sqllib/db2profile; db2 update database manager configuration using svcename db2inst1'
+	su db2inst1 -c 'cd; . sqllib/db2profile; db2 update database manager configuration using dftdbpath /var/db2/db2inst1'
+	su db2inst1 -c 'cd; . sqllib/db2profile; db2 update database manager configuration using diagpath /var/log/db2'
+	su db2inst1 -c 'cd; . sqllib/db2profile; db2set DB2COMM=tcpip'
+	su db2inst1 -c 'cd; . sqllib/db2profile; /opt/db2/das/bin/db2admin stop'
+}
+
+post_remove() {
+	su db2inst1 -c 'cd; . sqllib/db2profile; db2stop'
+
+	while true; do
+		PIDS=$(ps -ef | grep '^db2' | cut -f 2 -d ' ')
+		if [[ -z "$PIDS" ]]; then
+			break            
+		fi
+		echo killing processes: $PIDS
+		kill -9 $PIDS
+	done
+
+	userdel -r db2das1
+	userdel -r db2fenc1
+	userdel -r db2inst1
+
+	groupdel db2das1
+	groupdel db2fenc1
+	groupdel db2inst1
+
+	rm -rf /opt/db2
+	rm -rf /var/db2
+	rm -rf /var/log/db2
+
+	sed -i '/db2inst1 51000\/tcp/d' /etc/services
+}
