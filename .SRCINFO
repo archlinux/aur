@@ -1,0 +1,16 @@
+pkgbase = perl-leocharre-basename
+	pkgdesc = very basic filename string and path operations such as ext and paths
+	pkgver = 1.08
+	pkgrel = 1
+	url = http://search.cpan.org/dist/LEOCHARRE-Basename
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LE/LEOCHARRE/LEOCHARRE-Basename-1.08.tar.gz
+	md5sums = 326e383de8392b0509b51c4d25af60f0
+	sha512sums = ea06509c371cf1905bd67363557873a013450fc322fc7402f6bef9fd5b0f06f2fd2ae8f8ebd7164b13d0ecf7027278b9c036d5d5ec0f8a0c4707212f37d6b1fb
+
+pkgname = perl-leocharre-basename
+
