@@ -1,0 +1,776 @@
+diff -Nru oddjob-0.31.2.orig/config.h.in oddjob-0.31.2/config.h.in
+--- oddjob-0.31.2.orig/config.h.in	2012-11-12 13:36:56.512893317 -0500
++++ oddjob-0.31.2/config.h.in	2012-11-12 13:37:01.532894421 -0500
+@@ -51,9 +51,6 @@
+ /* Define to 1 if you have the `sasl2' library (-lsasl2). */
+ #undef HAVE_LIBSASL2
+ 
+-/* Define to 1 if you have the `selinux' library (-lselinux). */
+-#undef HAVE_LIBSELINUX
+-
+ /* Define to 1 if you have the `matchpathcon_init' function. */
+ #undef HAVE_MATCHPATHCON_INIT
+ 
+@@ -72,9 +69,6 @@
+ /* Define to 1 if you have the <security/pam_modules.h> header file. */
+ #undef HAVE_SECURITY_PAM_MODULES_H
+ 
+-/* Define to 1 if you have the <selinux/selinux.h> header file. */
+-#undef HAVE_SELINUX_SELINUX_H
+-
+ /* Define to 1 if you have the <stdint.h> header file. */
+ #undef HAVE_STDINT_H
+ 
+@@ -160,12 +154,6 @@
+ /* Define to a directory in which oddjobd can find some of its helpers. */
+ #undef PKGLIBEXECDIR
+ 
+-/* Define if you want SELinux ACL support in oddjobd. */
+-#undef SELINUX_ACLS
+-
+-/* Define to build SELinux label-aware helpers. */
+-#undef SELINUX_LABELS
+-
+ /* Define to 1 if you have the ANSI C header files. */
+ #undef STDC_HEADERS
+ 
+diff -Nru oddjob-0.31.2.orig/configure.ac oddjob-0.31.2/configure.ac
+--- oddjob-0.31.2.orig/configure.ac	2012-11-12 13:36:56.516226652 -0500
++++ oddjob-0.31.2/configure.ac	2012-11-12 13:37:01.532894421 -0500
+@@ -82,18 +82,6 @@
+ experimental=no)
+ AM_CONDITIONAL(ENABLE_EXPERIMENTAL,test x$experimental = xyes)
+ 
+-selinux_labels=default
+-AC_ARG_WITH(selinux-labels,
+-AS_HELP_STRING(--with-selinux-labels,[Apply SELinux labels to files created by helpers.]),
+-selinux_labels=$withval,
+-selinux_labels=default)
+-
+-selinux_acls=default
+-AC_ARG_WITH(selinux-acls,
+-AS_HELP_STRING(--with-selinux-acls,[Recognize SELinux process attributes in oddjobd ACLs.]),
+-selinux_acls=$withval,
+-selinux_acls=default)
+-
+ LIBSsave="$LIBS"
+ LIBS="$LIBS $DBUS_LIBS"
+ AC_CHECK_FUNCS(dbus_bus_release_name)
+@@ -102,96 +90,6 @@
+ fi
+ LIBS="$LIBSsave"
+ 
+-if test x$selinux_acls != xno ; then
+-	# Assume that if the "don't know what the client's context is" error
+-	# is defined, that the server supports being asked the question.
+-	CFLAGsave="$CFLAGS"
+-	CFLAGS="$CFLAGS $DBUS_CFLAGS"
+-	CPPFLAGsave="$CPPFLAGS"
+-	CPPFLAGS="$CPPFLAGS $DBUS_CFLAGS"
+-	AC_CHECK_DECL(DBUS_ERROR_SELINUX_SECURITY_CONTEXT_UNKNOWN,,,[
+-		      #include <dbus/dbus.h>
+-		      ])
+-	CFLAGS="$CFLAGsave"
+-	CPPFLAGS="$CPPFLAGsave"
+-	if test x$ac_cv_have_decl_DBUS_ERROR_SELINUX_SECURITY_CONTEXT_UNKNOWN != xyes ; then
+-		if test x$selinux_acls = xdefault ; then
+-			AC_MSG_WARN([D-Bus doesn't appear to provide GetConnectionSELinuxSecurityContext(), disabling SELinux ACL support.])
+-			selinux_acls=no
+-		else
+-			AC_MSG_ERROR([D-Bus doesn't appear to provide GetConnectionSELinuxSecurityContext(), stopping.])
+-		fi
+-	fi
+-fi
+-
+-define_selinux_labels=false
+-SELINUX_CFLAGS=
+-SELINUX_LIBS=
+-if test x$selinux_labels != xno ; then
+-	CFLAGsave="$CFLAGS"
+-	LIBsave="$LIBS"
+-	CFLAGS=
+-	LIBS=
+-	if test -d $withval ; then
+-		CFLAGS="-I$withval/include"
+-		LIBS="-L$withval/`basename $libdir`"
+-	fi
+-	AC_CHECK_HEADERS(selinux/selinux.h)
+-	if test x$ac_cv_header_selinux_selinux_h != xyes ; then
+-		if test x$selinux != default ; then
+-			AC_MSG_ERROR([Could not locate SELinux headers.])
+-		else
+-			AC_MSG_WARN([Could not locate SELinux headers.])
+-		fi
+-	fi
+-	AC_CHECK_FUNC(setfscreatecon,,AC_CHECK_LIB(selinux,setfscreatecon))
+-	if test x$ac_cv_func_setfscreatecon != xyes ; then
+-		if test x$ac_cv_lib_selinux_setfscreatecon != xyes ; then
+-			if test x$selinux_labels != default ; then
+-				AC_MSG_ERROR([Could not locate SELinux library.])
+-			else
+-				AC_MSG_WARN([Could not locate SELinux library.])
+-			fi
+-		fi
+-	fi
+-	AC_CHECK_FUNCS(matchpathcon_init)
+-	if test x$ac_cv_header_selinux_selinux_h = xyes ; then
+-		if test x$ac_cv_func_setfscreatecon = xyes ; then
+-			define_selinux_labels=true
+-		fi
+-		if test x$ac_cv_lib_selinux_setfscreatecon = xyes ; then
+-			define_selinux_labels=true
+-		fi
+-	fi
+-	if $define_selinux_labels ; then
+-		AC_DEFINE(SELINUX_LABELS,1,[Define to build SELinux label-aware helpers.])
+-	fi
+-	SELINUX_CFLAGS="$CFLAGS"
+-	SELINUX_LIBS="$LIBS"
+-	CFLAGS="$CFLAGsave"
+-	LIBS="$LIBsave"
+-fi
+-#
+-#  Even if we have libselinux, D-BUS itself might not be able to give us the
+-#  info we need for enforcing SELinux ACLS, so jump through a flaming hoop.
+-#
+-SELINUX_ACLS_XML_START="<!-- "
+-SELINUX_ACLS_XML_END=" -->"
+-SELINUX_ACLS_MAN_SPECIFIC=".\\ "
+-if $define_selinux_labels ; then
+-	if test x$selinux_acls != xno ; then
+-		AC_DEFINE(SELINUX_ACLS,1,[Define if you want SELinux ACL support in oddjobd.])
+-		SELINUX_ACLS_XML_START=
+-		SELINUX_ACLS_XML_END=
+-		SELINUX_ACLS_MAN_SPECIFIC=
+-	fi
+-fi
+-AC_SUBST(SELINUX_CFLAGS)
+-AC_SUBST(SELINUX_LIBS)
+-AC_SUBST(SELINUX_ACLS_XML_START)
+-AC_SUBST(SELINUX_ACLS_XML_END)
+-AC_SUBST(SELINUX_ACLS_MAN_SPECIFIC)
+-
+ python=default
+ AC_ARG_WITH(python,
+ AS_HELP_STRING(--with-python,[Build Python bindings for liboddjob.]),
+diff -Nru oddjob-0.31.2.orig/doc/oddjob.xml.in oddjob-0.31.2/doc/oddjob.xml.in
+--- oddjob-0.31.2.orig/doc/oddjob.xml.in	2012-11-12 13:36:56.522893321 -0500
++++ oddjob-0.31.2/doc/oddjob.xml.in	2012-11-12 13:37:01.536227756 -0500
+@@ -386,19 +386,6 @@
+ 	be greater than or equal to</para></listitem>
+ 	<listitem><para>&quot;max_uid&quot;, a UID which the user's UID must
+ 	be less than or equal to</para></listitem>
+-	@SELINUX_ACLS_XML_START@
+-	<listitem><para>&quot;selinux_enforcing&quot;, &quot;yes&quot; or
+-	&quot;no&quot;, corresponding to whether SELinux is enabled and in
+-	enforcing mode</para></listitem>
+-	<listitem><para>&quot;selinux_context&quot;, the SELinux context
+-	of the client process</para></listitem>
+-	<listitem><para>&quot;selinux_user&quot;, the SELinux user
+-	of the client process</para></listitem>
+-	<listitem><para>&quot;selinux_role&quot;, the SELinux role
+-	of the client process</para></listitem>
+-	<listitem><para>&quot;selinux_type&quot;, the SELinux type
+-	of the client process</para></listitem>
+-	@SELINUX_ACLS_XML_END@
+ 	</itemizedlist>
+ 	</para>
+ 	<para>
+diff -Nru oddjob-0.31.2.orig/oddjobconfig.dtd.in oddjob-0.31.2/oddjobconfig.dtd.in
+--- oddjob-0.31.2.orig/oddjobconfig.dtd.in	2012-11-12 13:36:56.512893317 -0500
++++ oddjob-0.31.2/oddjobconfig.dtd.in	2012-11-12 13:37:01.536227756 -0500
+@@ -22,21 +22,11 @@
+ <!ATTLIST allow user CDATA #IMPLIED>
+ <!ATTLIST allow min_uid CDATA #IMPLIED>
+ <!ATTLIST allow max_uid CDATA #IMPLIED>
+-@SELINUX_ACLS_XML_START@<!ATTLIST allow selinux_enforcing CDATA #IMPLIED>@SELINUX_ACLS_XML_END@
+-@SELINUX_ACLS_XML_START@<!ATTLIST allow selinux_context CDATA #IMPLIED>@SELINUX_ACLS_XML_END@
+-@SELINUX_ACLS_XML_START@<!ATTLIST allow selinux_user CDATA #IMPLIED>@SELINUX_ACLS_XML_END@
+-@SELINUX_ACLS_XML_START@<!ATTLIST allow selinux_role CDATA #IMPLIED>@SELINUX_ACLS_XML_END@
+-@SELINUX_ACLS_XML_START@<!ATTLIST allow selinux_type CDATA #IMPLIED>@SELINUX_ACLS_XML_END@
+ 
+ <!ELEMENT deny EMPTY>
+ <!ATTLIST deny user CDATA #IMPLIED>
+ <!ATTLIST deny min_uid CDATA #IMPLIED>
+ <!ATTLIST deny max_uid CDATA #IMPLIED>
+-@SELINUX_ACLS_XML_START@<!ATTLIST deny selinux_enforcing CDATA #IMPLIED>@SELINUX_ACLS_XML_END@
+-@SELINUX_ACLS_XML_START@<!ATTLIST deny selinux_context CDATA #IMPLIED>@SELINUX_ACLS_XML_END@
+-@SELINUX_ACLS_XML_START@<!ATTLIST deny selinux_user CDATA #IMPLIED>@SELINUX_ACLS_XML_END@
+-@SELINUX_ACLS_XML_START@<!ATTLIST deny selinux_role CDATA #IMPLIED>@SELINUX_ACLS_XML_END@
+-@SELINUX_ACLS_XML_START@<!ATTLIST deny selinux_type CDATA #IMPLIED>@SELINUX_ACLS_XML_END@
+ 
+ <!ELEMENT include (#PCDATA) >
+ <!ATTLIST include ignore_missing (yes|no) #REQUIRED >
+diff -Nru oddjob-0.31.2.orig/src/Makefile.am oddjob-0.31.2/src/Makefile.am
+--- oddjob-0.31.2.orig/src/Makefile.am	2012-11-12 13:36:56.512893317 -0500
++++ oddjob-0.31.2/src/Makefile.am	2012-11-12 13:37:01.536227756 -0500
+@@ -7,7 +7,7 @@
+ 	sigint.sh \
+ 	sleep30.sh
+ 
+-AM_CFLAGS = @DBUS_CFLAGS@ @XML_CFLAGS@ @SELINUX_CFLAGS@
++AM_CFLAGS = @DBUS_CFLAGS@ @XML_CFLAGS@
+ if PIE
+ AM_CFLAGS += -fPIC
+ endif
+@@ -95,7 +95,7 @@
+ 	handlers.h \
+ 	selinux.h \
+ 	mkhomedir.c
+-mkhomedir_LDADD = liboddcommon.la liboddselinux.la @SELINUX_LIBS@
++mkhomedir_LDADD = liboddcommon.la liboddselinux.la
+ mkhomedir_LDFLAGS =
+ if PIE
+ mkhomedir_LDFLAGS += -fPIC -pie
+@@ -134,7 +134,7 @@
+ 	handlers.h \
+ 	util.h \
+ 	oddjobd.c
+-oddjobd_LDADD = libodddbus.la liboddselinux.la liboddcommon.la @DBUS_LIBS@ @XML_LIBS@ @SELINUX_LIBS@
++oddjobd_LDADD = libodddbus.la liboddselinux.la liboddcommon.la @DBUS_LIBS@ @XML_LIBS@
+ oddjobd_LDFLAGS =
+ if PIE
+ oddjobd_LDFLAGS += -fPIC -pie
+diff -Nru oddjob-0.31.2.orig/src/oddjob_dbus.c oddjob-0.31.2/src/oddjob_dbus.c
+--- oddjob-0.31.2.orig/src/oddjob_dbus.c	2012-11-12 13:36:56.512893317 -0500
++++ oddjob-0.31.2/src/oddjob_dbus.c	2012-11-12 13:37:01.536227756 -0500
+@@ -254,98 +254,11 @@
+ 	return msg->selinux_context;
+ }
+ 
+-#ifdef SELINUX_ACLS
+-static char *
+-oddjob_dbus_get_selinux_context(DBusConnection *conn,
+-				const char *sender_bus_name)
+-{
+-	DBusMessage *query, *reply;
+-	char *ret;
+-	int length;
+-	DBusMessageIter iter, array;
+-	DBusError err;
+-
+-	query = dbus_message_new_method_call(DBUS_SERVICE_DBUS,
+-					     DBUS_PATH_DBUS,
+-					     DBUS_INTERFACE_DBUS,
+-					     "GetConnectionSELinuxSecurityContext");
+-#if DBUS_CHECK_VERSION(0,30,0)
+-	dbus_message_append_args(query,
+-				 DBUS_TYPE_STRING, &sender_bus_name,
+-				 DBUS_TYPE_INVALID);
+-#elif DBUS_CHECK_VERSION(0,20,0)
+-	dbus_message_append_args(query,
+-				 DBUS_TYPE_STRING, sender_bus_name,
+-				 DBUS_TYPE_INVALID);
+-#else
+-#error	"Don't know how to set message arguments with your version of D-Bus!"
+-#endif
+-
+-	memset(&err, 0, sizeof(err));
+-	reply = dbus_connection_send_with_reply_and_block(conn, query,
+-							  -1, &err);
+-	ret = NULL;
+-	if (dbus_error_is_set(&err)) {
+-#if DBUS_CHECK_VERSION(0,30,0)
+-		if ((strcmp(err.name, DBUS_ERROR_NAME_HAS_NO_OWNER) != 0) &&
+-		    (strcmp(err.name, DBUS_ERROR_NO_REPLY) != 0)) {
+-			fprintf(stderr, "Error %s: %s.\n",
+-				err.name, err.message);
+-		}
+-#elif DBUS_CHECK_VERSION(0,20,0)
+-		if ((strcmp(err.name, DBUS_ERROR_SERVICE_HAS_NO_OWNER) != 0) &&
+-		    (strcmp(err.name, DBUS_ERROR_NO_REPLY) != 0)) {
+-			fprintf(stderr, "Error %s: %s.\n",
+-				err.name, err.message);
+-		}
+-#else
+-#error	"Don't know what unknown-service/name errors look like with your version of D-Bus!"
+-#endif
+-	}
+-	if (reply != NULL) {
+-		if (dbus_message_iter_init(reply, &iter)) {
+-			switch (dbus_message_iter_get_arg_type(&iter)) {
+-			case DBUS_TYPE_ARRAY:
+-#if DBUS_CHECK_VERSION(0,33,0)
+-				/* We can't sanity check the length. */
+-				dbus_message_iter_recurse(&iter, &array);
+-				dbus_message_iter_get_fixed_array(&array, &ret,
+-								  &length);
+-				if (ret != NULL) {
+-					ret = oddjob_strndup(ret, length);
+-				}
+-#elif DBUS_CHECK_VERSION(0,20,0)
+-				/* We can't sanity check the length. */
+-				dbus_message_iter_get_byte_array(&iter,
+-								 (unsigned char **) &ret,
+-								 &length);
+-				if (ret != NULL) {
+-					ret = oddjob_strndup(ret, length);
+-				}
+-#else
+-#error "Don't know how to retrieve message arguments with your version of D-Bus!"
+-#endif
+-				break;
+-			case DBUS_TYPE_INVALID:
+-				break;
+-			default:
+-				break;
+-			}
+-		}
+-	}
+-	dbus_message_unref(query);
+-	if (reply != NULL) {
+-		dbus_message_unref(reply);
+-	}
+-	return ret;
+-}
+-#else
+ static char *
+ oddjob_dbus_get_selinux_context(DBusConnection *conn, const char *sender_bus_name)
+ {
+ 	return NULL;
+ }
+-#endif
+ 
+ static void
+ oddjob_dbus_message_set_selinux_context(struct oddjob_dbus_message *msg,
+diff -Nru oddjob-0.31.2.orig/src/oddjobd.c oddjob-0.31.2/src/oddjobd.c
+--- oddjob-0.31.2.orig/src/oddjobd.c	2012-11-12 13:36:56.512893317 -0500
++++ oddjob-0.31.2/src/oddjobd.c	2012-11-12 13:37:01.539561092 -0500
+@@ -48,11 +48,6 @@
+ #include <unistd.h>
+ #include <dbus/dbus.h>
+ #include <libxml/xmlreader.h>
+-#ifdef SELINUX_ACLS
+-#include <selinux/selinux.h>
+-#include <selinux/context.h>
+-#include <selinux/flask.h>
+-#endif
+ #include "buffer.h"
+ #include "common.h"
+ #include "handlers.h"
+@@ -108,20 +103,6 @@
+ 	unsigned long min_uid;
+ 	dbus_bool_t apply_max_uid;
+ 	unsigned long max_uid;
+-#ifdef SELINUX_ACLS
+-	dbus_bool_t apply_selinux_enforcing;
+-	dbus_bool_t selinux_enforcing;
+-	dbus_bool_t apply_selinux_context;
+-	char *selinux_context;
+-	dbus_bool_t apply_selinux_user;
+-	char *selinux_user;
+-	dbus_bool_t apply_selinux_role;
+-	char *selinux_role;
+-	dbus_bool_t apply_selinux_type;
+-	char *selinux_type;
+-	dbus_bool_t apply_selinux_range;
+-	char *selinux_range;
+-#endif
+ 	struct oddjob_acl *next;
+ };
+ 
+@@ -197,19 +178,12 @@
+ 	int reload;
+ 	int quit;
+ 	const char *configfile;
+-#ifdef SELINUX_ACLS
+-	dbus_bool_t selinux_enabled, selinux_enforcing;
+-#endif
+ } globals = {
+ 	.config = NULL,
+ 	.debug = 0,
+ 	.reload = 0,
+ 	.quit = 0,
+ 	.configfile = SYSCONFDIR "/" PACKAGE "d.conf",
+-#ifdef SELINUX_ACLS
+-	.selinux_enabled = FALSE,
+-	.selinux_enforcing = FALSE,
+-#endif
+ };
+ 
+ static void oddjobd_exec_method(struct oddjob_dbus_context *ctx,
+@@ -234,80 +208,12 @@
+ 			       const char *file, dbus_bool_t ignore_missing);
+ static void check_selinux_applicable(void);
+ 
+-#ifdef SELINUX_ACLS
+-/* Check if we have an SELinux match with the fields defined in this AC entry.
+- * Assumes that check_selinux_applicable() was called at least relatively
+- * recently, because one of those clauses matches whether or not we're in
+- * enforcing mode. */
+-static dbus_bool_t
+-check_one_ac_selinux(struct oddjob_acl *acl, const char *selinux_context)
+-{
+-	char *ctx;
+-	const char *user, *role, *type, *range;
+-	dbus_bool_t ret;
+-	context_t context;
+-
+-	/* If the ACL doesn't specify that we have to be in enforcing mode, and
+-	 * we're either in non-SELinux or permissive mode, then go ahead and
+-	 * return a success. */
+-	if (!acl->apply_selinux_enforcing &&
+-	    (!globals.selinux_enabled || !globals.selinux_enforcing)) {
+-		return TRUE;
+-	}
+-	/* Break the context up. */
+-	if (selinux_context != NULL) {
+-		context = context_new(selinux_context);
+-		ctx = context_str(context);
+-		user = context_user_get(context);
+-		role = context_role_get(context);
+-		type = context_type_get(context);
+-		range = context_range_get(context);
+-	} else {
+-		context = NULL;
+-		ctx = NULL;
+-		user = NULL;
+-		role = NULL;
+-		type = NULL;
+-		range = NULL;
+-	}
+-	/* Check all that apply. */
+-	ret = ((!acl->apply_selinux_enforcing) ||
+-	       (!acl->selinux_enforcing == !globals.selinux_enforcing)) &&
+-	      ((!acl->apply_selinux_context) ||
+-	       ((ctx != NULL) &&
+-		(fnmatch(acl->selinux_context, ctx,
+-			 ODDJOB_SECONTEXT_FNMATCH_FLAGS) == 0))) &&
+-	      ((!acl->apply_selinux_user) ||
+-	       ((user != NULL) &&
+-		(fnmatch(acl->selinux_user, user,
+-			 ODDJOB_SEUSER_FNMATCH_FLAGS) == 0))) &&
+-	      ((!acl->apply_selinux_role) ||
+-	       ((role != NULL) &&
+-		(fnmatch(acl->selinux_role, role,
+-			 ODDJOB_SEROLE_FNMATCH_FLAGS) == 0))) &&
+-	      ((!acl->apply_selinux_type) ||
+-	       ((type != NULL) &&
+-		(fnmatch(acl->selinux_type, type,
+-			 ODDJOB_SETYPE_FNMATCH_FLAGS) == 0))) &&
+-	      ((!acl->apply_selinux_range) ||
+-	       ((range != NULL) &&
+-		(fnmatch(acl->selinux_range, range,
+-			 ODDJOB_SERANGE_FNMATCH_FLAGS) == 0)));
+-	/* Free the decomposed context.  The other strings are "owned" by this
+-	 * structure. */
+-	if (context != NULL) {
+-		context_free(context);
+-	}
+-	return ret;
+-}
+-#else
+ /* Ignore SELinux rules, no matter what. */
+ static dbus_bool_t
+ check_one_ac_selinux(struct oddjob_acl *acl, const char *selinux_context)
+ {
+ 	return TRUE;
+ }
+-#endif
+ 
+ /* Check if a single AC entry matches the given user and UID. */
+ static dbus_bool_t
+@@ -348,33 +254,6 @@
+ 						fprintf(stderr, " max_uid=%lu ",
+ 							i->max_uid);
+ 					}
+-#ifdef SELINUX_ACLS
+-					if (i->apply_selinux_enforcing) {
+-						fprintf(stderr, " seenforcing=%s ",
+-							i->selinux_enforcing ?
+-							"yes" : "no");
+-					}
+-					if (i->apply_selinux_context) {
+-						fprintf(stderr, " secontext=%s ",
+-							i->selinux_context);
+-					}
+-					if (i->apply_selinux_user) {
+-						fprintf(stderr, " seuser=%s ",
+-							i->selinux_user);
+-					}
+-					if (i->apply_selinux_role) {
+-						fprintf(stderr, " serole=%s ",
+-							i->selinux_role);
+-					}
+-					if (i->apply_selinux_type) {
+-						fprintf(stderr, " setype=%s ",
+-							i->selinux_type);
+-					}
+-					if (i->apply_selinux_range) {
+-						fprintf(stderr, " serange=%s ",
+-							i->selinux_range);
+-					}
+-#endif
+ 					fprintf(stderr, ")\n");
+ 				}
+ 				return oddjob_acl_deny;
+@@ -399,33 +278,6 @@
+ 						fprintf(stderr, " max_uid=%lu ",
+ 							i->max_uid);
+ 					}
+-#ifdef SELINUX_ACLS
+-					if (i->apply_selinux_enforcing) {
+-						fprintf(stderr, " enforcing=%s ",
+-							i->selinux_enforcing ?
+-							"yes" : "no");
+-					}
+-					if (i->apply_selinux_context) {
+-						fprintf(stderr, " context=%s ",
+-							i->selinux_context);
+-					}
+-					if (i->apply_selinux_user) {
+-						fprintf(stderr, " user=%s ",
+-							i->selinux_user);
+-					}
+-					if (i->apply_selinux_role) {
+-						fprintf(stderr, " role=%s ",
+-							i->selinux_role);
+-					}
+-					if (i->apply_selinux_type) {
+-						fprintf(stderr, " type=%s ",
+-							i->selinux_type);
+-					}
+-					if (i->apply_selinux_range) {
+-						fprintf(stderr, " range=%s ",
+-							i->selinux_range);
+-					}
+-#endif
+ 					fprintf(stderr, ")\n");
+ 				}
+ 				return oddjob_acl_allow;
+@@ -525,14 +377,6 @@
+ static void
+ check_selinux_applicable(void)
+ {
+-#ifdef SELINUX_ACLS
+-	globals.selinux_enabled = (is_selinux_enabled() != 0);
+-	if (globals.selinux_enabled) {
+-		globals.selinux_enforcing = (security_getenforce() != 0);
+-	} else {
+-		globals.selinux_enforcing = FALSE;
+-	}
+-#endif
+ }
+ 
+ /* Convenience functions for reading attributes and contents of XML nodes. */
+@@ -626,72 +470,6 @@
+ 						ac->max_uid);
+ 				}
+ 			}
+-#ifdef SELINUX_ACLS
+-		} else
+-		if (load_config_xml_attr_name_is(attr, "selinux_enforcing")) {
+-			const char *enforcing;
+-			ac->apply_selinux_enforcing = TRUE;
+-			ac->selinux_enforcing = TRUE;
+-			enforcing = load_config_xml_attr_data(attr);
+-			if (enforcing != NULL) {
+-				if (strcmp(enforcing, "no") == 0) {
+-					ac->selinux_enforcing = FALSE;
+-				} else
+-				if (strcmp(enforcing, "yes") == 0) {
+-					ac->selinux_enforcing = TRUE;
+-				} else {
+-					fprintf(stderr,
+-						"Invalid selinux_enforcing "
+-						"\"%s\" (expected \"yes\" or "
+-						"\"no\")!\n", enforcing);
+-					return FALSE;
+-				}
+-			}
+-			if (globals.debug) {
+-				fprintf(stderr, "selinux_enforcing=\"%s\" ",
+-					ac->selinux_enforcing ? "yes" : "no");
+-			}
+-		} else
+-		if (load_config_xml_attr_name_is(attr, "selinux_context")) {
+-			ac->apply_selinux_context = TRUE;
+-			ac->selinux_context = oddjob_strdup(load_config_xml_attr_data(attr));
+-			if (globals.debug) {
+-				fprintf(stderr, "selinux_context=\"%s\" ",
+-					ac->selinux_context);
+-			}
+-		} else
+-		if (load_config_xml_attr_name_is(attr, "selinux_user")) {
+-			ac->apply_selinux_user = TRUE;
+-			ac->selinux_user = oddjob_strdup(load_config_xml_attr_data(attr));
+-			if (globals.debug) {
+-				fprintf(stderr, "selinux_user=\"%s\" ",
+-					ac->selinux_user);
+-			}
+-		} else
+-		if (load_config_xml_attr_name_is(attr, "selinux_role")) {
+-			ac->apply_selinux_role = TRUE;
+-			ac->selinux_role = oddjob_strdup(load_config_xml_attr_data(attr));
+-			if (globals.debug) {
+-				fprintf(stderr, "selinux_role=\"%s\" ",
+-					ac->selinux_role);
+-			}
+-		} else
+-		if (load_config_xml_attr_name_is(attr, "selinux_type")) {
+-			ac->apply_selinux_type = TRUE;
+-			ac->selinux_type = oddjob_strdup(load_config_xml_attr_data(attr));
+-			if (globals.debug) {
+-				fprintf(stderr, "selinux_type=\"%s\" ",
+-					ac->selinux_type);
+-			}
+-		} else
+-		if (load_config_xml_attr_name_is(attr, "selinux_range")) {
+-			ac->apply_selinux_range = TRUE;
+-			ac->selinux_range = oddjob_strdup(load_config_xml_attr_data(attr));
+-			if (globals.debug) {
+-				fprintf(stderr, "selinux_range=\"%s\" ",
+-					ac->selinux_range);
+-			}
+-#endif
+ 		} else {
+ 			if (globals.debug) {
+ 				fprintf(stderr, "unknown attribute \"%s\" in "
+@@ -1392,12 +1170,6 @@
+ 	while (acl != NULL) {
+ 		tofree = acl;
+ 		acl = acl->next;
+-#ifdef SELINUX_ACLS
+-		oddjob_free(tofree->selinux_context);
+-		oddjob_free(tofree->selinux_user);
+-		oddjob_free(tofree->selinux_role);
+-		oddjob_free(tofree->selinux_type);
+-#endif
+ 		oddjob_free(tofree->user);
+ 		oddjob_free(tofree);
+ 	}
+@@ -1943,50 +1715,6 @@
+ 		putenv(task->interface);
+ 		putenv(task->method);
+ 		putenv(task->calling_user);
+-#ifdef SELINUX_ACLS
+-		/* Set up the SELinux execution context. */
+-		if (globals.selinux_enabled) {
+-			const char *client_secontext;
+-			security_context_t helper_context, exec_context;
+-
+-			client_secontext = oddjob_dbus_message_get_selinux_context(msg);
+-			if (client_secontext == NULL) {
+-				/* Wha....? */
+-				exec_errno = 0xff;
+-				write(3, &exec_errno, 1);
+-				_exit(-1);
+-			}
+-			if (getfilecon(method->argv[0], &helper_context) == -1) {
+-				switch (errno) {
+-				/* Not there? */
+-				case ENOENT:
+-					exec_errno = errno;
+-					break;
+-				default:
+-					/* No label? */
+-					exec_errno = 0xfd;
+-					break;
+-				}
+-				write(3, &exec_errno, 1);
+-				_exit(-1);
+-			}
+-			if (security_compute_create((char *) client_secontext,
+-						    helper_context,
+-						    SECCLASS_PROCESS,
+-						    &exec_context) != 0) {
+-				/* Failed to compute exec context? */
+-				exec_errno = 0xfe;
+-				write(3, &exec_errno, 1);
+-				_exit(-1);
+-			}
+-			if (setexeccon(exec_context) == -1) {
+-				/* Failed to set exec context? */
+-				exec_errno = 0xfc;
+-				write(3, &exec_errno, 1);
+-				_exit(-1);
+-			}
+-		}
+-#endif
+ 		/* run the helper */
+ 		execv(method->argv[0], task->argv);
+ 		/* uh-oh. send errno to the caller and bail */
+diff -Nru oddjob-0.31.2.orig/src/oddjobd.conf.5.in oddjob-0.31.2/src/oddjobd.conf.5.in
+--- oddjob-0.31.2.orig/src/oddjobd.conf.5.in	2012-11-12 13:36:56.512893317 -0500
++++ oddjob-0.31.2/src/oddjobd.conf.5.in	2012-11-12 13:37:01.539561092 -0500
+@@ -34,9 +34,6 @@
+ and \fI<deny>\fR.  Each \fI<allow>\fR or \fI<deny>\fR rule specifies some
+ combination of a user name and/or a UID range which the invoking user must
+ match for the rule to apply.
+-@SELINUX_ACLS_MAN_SPECIFIC@A rule can also specify the caller's SELinux context,
+-@SELINUX_ACLS_MAN_SPECIFIC@user, role, or execution domain, and be applied or
+-@SELINUX_ACLS_MAN_SPECIFIC@not based on whether or not policy is being enforced.
+ All \fI<deny>\fR rules for the method are checked first, followed by all of its
+ \fI<allow>\fR rules.  If no matches are found, the \fI<deny>\fR rules for the
+ containing \fI<interface>\fR element are checked, followed by its \fI<allow>\fP
+diff -Nru oddjob-0.31.2.orig/src/selinux.c oddjob-0.31.2/src/selinux.c
+--- oddjob-0.31.2.orig/src/selinux.c	2012-11-12 13:36:56.512893317 -0500
++++ oddjob-0.31.2/src/selinux.c	2012-11-12 13:37:55.142905336 -0500
+@@ -42,16 +42,6 @@
+ #include "handlers.h"
+ #include "selinux.h"
+ 
+-#ifdef SELINUX_LABELS
+-
+-#include <selinux/selinux.h>
+-
+-#ifndef HAVE_MATCHPATHCON_INIT
+-static void
+-matchpathcon_init(const char *path) {
+-}
+-#endif
+-
+ static dbus_bool_t
+ oddjob_check_selinux_enabled(void)
+ {
+@@ -68,41 +58,6 @@
+ void
+ oddjob_set_selinux_file_creation_context(const char *path, mode_t mode)
+ {
+-	security_context_t context;
+-
+-	if (!oddjob_check_selinux_enabled()) {
+-		return;
+-	}
+-
+-	context = NULL;
+-	if (matchpathcon(path, mode, &context) == 0) {
+-		if (context != NULL) {
+-			if (strcmp(context, "<<none>>") == 0) {
+-				oddjob_unset_selinux_file_creation_context();
+-			} else {
+-				setfscreatecon(context);
+-			}
+-			freecon(context);
+-		} else {
+-			oddjob_unset_selinux_file_creation_context();
+-		}
+-	}
+-}
+-
+-void
+-oddjob_unset_selinux_file_creation_context(void)
+-{
+-	if (!oddjob_check_selinux_enabled()) {
+-		return;
+-	}
+-	setfscreatecon(NULL);
+-}
+-
+-#else
+-
+-void
+-oddjob_set_selinux_file_creation_context(const char *path, mode_t mode)
+-{
+ }
+ 
+ void
+@@ -110,8 +65,6 @@
+ {
+ }
+ 
+-#endif
+-
+ /* Create a directory with the given permissions, and create leading
+  * directories as well.  Any directories which are created will have contexts
+  * set as matchpathcon() dictates.  The directory itself will be owned by the
