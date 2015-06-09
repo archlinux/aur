@@ -1,0 +1,26 @@
+pkgbase = sky
+	pkgdesc = Lync & Skype for business on Linux
+	pkgver = 2.0.352
+	pkgrel = 1
+	url = http://tel.red
+	install = sky.install
+	arch = x86_64
+	license = custom: Copyright © 2015 TEL.RED LLC
+	makedepends = binutils
+	makedepends = chrpath
+	depends = openssl
+	depends = nss
+	depends = gstreamer0.10-base
+	depends = libpulse
+	depends = alsa-lib
+	depends = v4l-utils
+	depends = libxinerama
+	depends = libxss
+	depends = libxcb
+	optdepends = ibus: Intelligent Input Bus (IBus) support
+	options = !strip
+	source_x86_64 = http://tel.red/linux/sky_ubuntu64_v2.0.352.deb
+	sha256sums_x86_64 = 4a716713f3d836a59ba8e7411200a7b9d884812e73ced2ee8fe54b00a35a6867
+
+pkgname = sky
+
