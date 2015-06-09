@@ -1,0 +1,16 @@
+pkgbase = radeon-tray
+	pkgdesc = A system tray icon for controlling radeon cards' power states
+	pkgver = 1.1
+	pkgrel = 3
+	url = https://github.com/StuntsPT/Radeon-tray/
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-pyqt4
+	depends = python-pyzmq>=13.0
+	depends = python-setuptools
+	source = https://github.com/StuntsPT/Radeon-tray/archive/v1.1.tar.gz
+	md5sums = d1e3a06c6d96425fd59660525666cac6
+
+pkgname = radeon-tray
+
