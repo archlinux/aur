@@ -1,0 +1,14 @@
+pkgbase = ttf-animeace
+	pkgdesc = AnimeAce font ©Nate Piekos: the perfect font for editing and translation of comics and manga scans.
+	pkgver = 2.0
+	pkgrel = 4
+	url = http://www.blambot.com/font_animeace2.shtml
+	install = ttf-animeace.install
+	arch = any
+	license = http://www.blambot.com/license.shtml
+	depends = fontconfig
+	source = http://www.blambot.com/fonts/animeace2bb_tt.zip
+	md5sums = 3e2a52d8585fa93a66d2b7f922310f11
+
+pkgname = ttf-animeace
+
