@@ -1,0 +1,16 @@
+pkgbase = ttf-impallari-cancelleresca-bastarda
+	pkgdesc = Designed by Jan van Krimpen in 1934 (OTF), from Pablo Impallari
+	pkgver = beta28
+	pkgrel = 1
+	url = http://www.impallari.com/projects/overview/jan-van-krimpen-cancelleresca-bastarda-revival
+	install = updatefont.install
+	arch = any
+	groups = impallari-fonts
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.impallari.com/media/uploads/prosources/update-38-source.zip
+	md5sums = 7b3ef5b7a371165800847c0423b76fad
+
+pkgname = ttf-impallari-cancelleresca-bastarda
+
