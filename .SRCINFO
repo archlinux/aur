@@ -1,15 +1,13 @@
 pkgbase = python-glanceclient
 	pkgdesc = OpenStack Image API Client Library
-	pkgver = 0.17.1
-	pkgrel = 2
+	pkgver = 0.18.0
+	pkgrel = 1
 	url = https://github.com/openstack/python-glanceclient
 	arch = any
 	license = Apache
 	makedepends = python-pbr>=0.6
-	makedepends = python-pip
-	makedepends = python-setuptools
-	source = https://pypi.python.org/packages/source/p/python-glanceclient/python-glanceclient-0.17.1.tar.gz
-	sha256sums = 79e3426aa76d712a9fde4d4dcef4532d9099f8e4bdd2ef9802b428d0d99ffe7e
+	source = https://pypi.python.org/packages/source/p/python-glanceclient/python-glanceclient-0.18.0.tar.gz
+	sha256sums = 9784de057ffb8fadd98563452a9f30bfdca6d4531ce166ac2d101cd968a6194a
 
 pkgname = python-glanceclient
 	depends = python-babel>=1.3

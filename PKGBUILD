@@ -6,27 +6,20 @@ _cmd="${_module%client}"
 
 #pkgname=("python-${_module}" "python2-${_module}")
 pkgname="python-${_module}"
-pkgver="0.17.1"
-pkgrel="2"
+pkgver="0.18.0"
+pkgrel="1"
 pkgdesc="OpenStack Image API Client Library"
 arch=("any")
 url="https://github.com/openstack/${_name}"
 license=("Apache")
-#makedepends=("python-pbr>=0.6"
-#             "python-pip"
-#             "python-setuptools"
-#             "python2-pbr>=0.6"
-#             "python2-pip"
-#             "python2-setuptools")
-makedepends=("python-pbr>=0.6"
-             "python-pip"
-             "python-setuptools")
+#makedepends=("python-pbr>=0.6" "python2-pbr>=0.6")
+makedepends=("python-pbr>=0.6")
 source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('79e3426aa76d712a9fde4d4dcef4532d9099f8e4bdd2ef9802b428d0d99ffe7e')
+sha256sums=('9784de057ffb8fadd98563452a9f30bfdca6d4531ce166ac2d101cd968a6194a')
 
 prepare() {
     cd "${srcdir}/${_name}-${pkgver}"
-    sed -ri '/argparse|pbr/d' requirements.txt
+    sed -ri '/argparse/d' requirements.txt
 }
 
 #package_python-glanceclient() {
