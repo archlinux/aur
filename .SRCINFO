@@ -1,0 +1,17 @@
+pkgbase = catox-git
+	pkgdesc = A customizable, lightweight, minimalistic, text-based UI for single user chat that runs on top of ratox.
+	pkgver = 0.r18.953679e
+	pkgrel = 1
+	url = https://github.com/Paraknight/catox
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = nodejs
+	depends = ratox-git
+	provides = catox
+	conflicts = catox
+	source = catox::git+https://github.com/Paraknight/catox.git
+	md5sums = SKIP
+
+pkgname = catox-git
+
