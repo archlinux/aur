@@ -1,0 +1,15 @@
+pkgbase = dell-5100cn
+	pkgdesc = CUPS driver for the Dell Laser Printer 5100cn
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://www.dell.com/support/drivers/us/en/19/product/dell-5100cn
+	install = dell-5100cn.install
+	arch = i686
+	arch = x86_64
+	license = Adobe PPD
+	depends = cups
+	source = http://ftp.us.dell.com/printer/Dell-Laser-Printer-5100cn-1.2-1.noarch.rpm
+	md5sums = bb57ba62c6bfe69db5dfafe7d907c1a8
+
+pkgname = dell-5100cn
+
