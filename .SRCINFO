@@ -1,0 +1,17 @@
+pkgbase = android-sdk-build-tools-22
+	pkgdesc = Build-Tools for Google Android SDK (aapt, aidl, dexdump, dx, llvm-rs-cc)
+	pkgver = r22
+	pkgrel = 2
+	url = http://developer.android.com/sdk/index.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gcc-libs
+	depends = zlib
+	provides = android-sdk-build-tools=r22
+	options = !strip
+	source = https://dl-ssl.google.com/android/repository/build-tools_r22-linux.zip
+	sha1sums = a8a1619dd090e44fac957bce6842e62abf87965b
+
+pkgname = android-sdk-build-tools-22
+
