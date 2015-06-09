@@ -1,0 +1,18 @@
+pkgbase = remindor-common
+	pkgdesc = Common files for indicator-remindor and remindor-qt
+	pkgver = 14.06
+	pkgrel = 1
+	url = http://bhdouglass.tk/remindor/indicator/
+	arch = any
+	groups = unity-extra
+	license = GPL
+	makedepends = python2-distutils-extra
+	depends = python2-dateutil
+	depends = python2-dbus
+	depends = python2-feedparser
+	depends = python2-requests
+	source = http://ppa.launchpad.net/bhdouglass/indicator-remindor/ubuntu/pool/main/r/remindor-common/remindor-common_14.06-0ubuntu1~trusty.tar.gz
+	sha512sums = f42e30bd30198cbd7c4b08187c1fe81e43811602aba599f16105568acc4de7712f38c97f8c451a69f5283c27db828d7c60c9c0e8ea436ee9a0fbe68d1eb8fa0a
+
+pkgname = remindor-common
+
