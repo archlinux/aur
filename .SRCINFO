@@ -1,0 +1,20 @@
+pkgbase = wingpanel-indicator-datetime-bzr
+	pkgdesc = Date & Time indicator for Wingpanel
+	pkgver = r31
+	pkgrel = 1
+	url = https://launchpad.net/wingpanel-indicator-datetime
+	arch = i686
+	arch = x86_64
+	groups = pantheon-unstable
+	license = GPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = vala
+	depends = wingpanel-rewrite-x11-bzr
+	provides = wingpanel-indicator-datetime
+	conflicts = wingpanel-indicator-datetime
+	source = bzr+lp:wingpanel-indicator-datetime
+	sha256sums = SKIP
+
+pkgname = wingpanel-indicator-datetime-bzr
+
