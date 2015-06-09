@@ -1,0 +1,20 @@
+pkgbase = edyuk-svn
+	pkgdesc = Fully-featured Qt4 IDE
+	pkgver = r1053
+	pkgrel = 2
+	url = http://www.edyuk.org
+	install = edyuk-svn.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = subversion
+	depends = qt4
+	provides = edyuk
+	conflicts = edyuk
+	source = edyuk-svn::svn+http://edyuk.svn.sf.net/svnroot/edyuk/trunk
+	source = installpri.patch
+	md5sums = SKIP
+	md5sums = 66ce655bc8ad981f724150b06aea9ae4
+
+pkgname = edyuk-svn
+
