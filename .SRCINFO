@@ -1,0 +1,27 @@
+pkgbase = wingpanel-indicator-slingshot-bzr
+	pkgdesc = The Pantheon Application Launcher
+	pkgver = r531
+	pkgrel = 1
+	url = https://launchpad.net/slingshot
+	install = wingpanel-indicator-slingshot.install
+	arch = i686
+	arch = x86_64
+	groups = pantheon
+	license = GPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = vala
+	depends = gala-bzr
+	depends = gnome-menus
+	depends = granite-bzr
+	depends = wingpanel-rewrite-x11-bzr
+	depends = zeitgeist
+	provides = slingshot-launcher
+	provides = slingshot-launcher-bzr
+	conflicts = slingshot-launcher
+	conflicts = slingshot-launhcer-bzr
+	source = wingpanel-indicator-slingshot::bzr+lp:~wingpanel-devs/slingshot/wingpanel-indicator
+	sha256sums = SKIP
+
+pkgname = wingpanel-indicator-slingshot-bzr
+
