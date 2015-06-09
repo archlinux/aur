@@ -1,0 +1,37 @@
+pkgbase = lxqt-desktop-git
+	pkgdesc = The LXQt desktop
+	pkgver = 0.9.0
+	pkgrel = 2
+	url = http://lxqt.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = pcmanfm-qt-git
+	depends = lxqt-about-git
+	depends = lxqt-admin-git
+	depends = lxqt-common-git
+	depends = lxqt-config-git
+	depends = lxqt-globalkeys-git
+	depends = lxqt-notificationd-git
+	depends = lxqt-openssh-askpass
+	depends = lxqt-panel-git
+	depends = lxqt-policykit-git
+	depends = lxqt-powermanagement-git
+	depends = lxqt-qtplugin-git
+	depends = lxqt-runner-git
+	depends = lxqt-session-git
+	optdepends = lximage-qt-git: The LXQt image viewer
+	optdepends = openbox: Recommended window manager
+	optdepends = sddm: Recommended display manager
+	optdepends = qterminal: Pure Qt terminal
+	optdepends = juffed: Pure Qt text editor (Kate clone)
+	optdepends = screengrab: Screenshot capture
+	optdepends = qps: Task Monitoring
+	provides = lxqt-desktop
+	conflicts = lxqt-desktop
+	source = lxqt-desktop::git+https://github.com/lxde/lxqt.git
+	sha256sums = SKIP
+
+pkgname = lxqt-desktop-git
+
