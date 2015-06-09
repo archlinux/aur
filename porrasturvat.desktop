@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Porrasturvat
+Exec=porrasturvat
+Icon=
+Terminal=false
+Type=Application
+Categories=Game;
+StartupNotify=true

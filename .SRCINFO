@@ -1,0 +1,17 @@
+pkgbase = porrasturvat
+	pkgdesc = Fall from stairs game
+	pkgver = 1.0.3
+	pkgrel = 2
+	url = http://secretexit.com/freeware/stairdismount
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = http://secretexit.com/files/porrasturvat-1.0.3.tar.gz
+	source = run.sh
+	source = porrasturvat.desktop
+	md5sums = 69ad633314430ee9fe5a51193e8ebc0e
+	md5sums = e8234cc9c11268aaca5477f53d3422ef
+	md5sums = d501918e420aff577e5ae7134acdfc56
+
+pkgname = porrasturvat
+
