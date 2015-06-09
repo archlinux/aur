@@ -1,0 +1,15 @@
+post_install() {
+  if [ -x $(which gtk-update-icon-cache) ]; then
+    gtk-update-icon-cache -q -t -f usr/share/icons/LoginIcons/
+    gtk-update-icon-cache -q -t -f usr/share/icons/ubuntu-mono-dark/
+    gtk-update-icon-cache -q -t -f usr/share/icons/ubuntu-mono-light/
+  fi
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  post_install
+}
