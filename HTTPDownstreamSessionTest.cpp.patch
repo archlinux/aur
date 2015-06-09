@@ -1,0 +1,25 @@
+--- HTTPDownstreamSessionTest.cpp.orig	2015-05-21 07:22:05.000000000 +0900
++++ HTTPDownstreamSessionTest.cpp	2015-05-28 11:30:36.635333075 +0900
+@@ -1433,7 +1433,7 @@
+   clientCodec.getEgressSettings()->setSetting(SettingsId::INITIAL_WINDOW_SIZE,
+                                               500);
+   clientCodec.generateSettings(requests);
+-  clientCodec.generateHeader(requests, streamID, req, 0, false, nullptr);
++  clientCodec.generateHeader(requests, streamID, req, 0, false, bool(nullptr));
+   clientCodec.generateEOM(requests, streamID);
+   StrictMock<MockHTTPHandler> handler;
+ 
+@@ -1749,11 +1749,11 @@
+   auto streamID = HTTPCodec::StreamID(1);
+   clientCodec.generateConnectionPreface(requests);
+   req.setPriority(0);
+-  clientCodec.generateHeader(requests, streamID, req, 0, nullptr);
++  clientCodec.generateHeader(requests, streamID, req, 0, bool(nullptr));
+   clientCodec.generateEOM(requests, streamID);
+   streamID += 2;
+   req.setPriority(1);
+-  clientCodec.generateHeader(requests, streamID, req, 0, nullptr);
++  clientCodec.generateHeader(requests, streamID, req, 0, bool(nullptr));
+   clientCodec.generateEOM(requests, streamID);
+ 
+   EXPECT_CALL(mockController_, getRequestHandler(_, _))

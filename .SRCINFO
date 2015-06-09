@@ -1,0 +1,27 @@
+pkgbase = proxygen
+	pkgdesc = A collection of C++ HTTP libraries including an easy to use HTTP server
+	pkgver = 0.24.0
+	pkgrel = 1
+	url = https://github.com/facebook/proxygen
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = autoconf-archive
+	makedepends = wget
+	makedepends = ruby
+	makedepends = gperftools
+	depends = folly>=0.34.0
+	depends = fbthrift
+	depends = libcap
+	provides = proxygen
+	conflicts = proxygen-git
+	options = !makeflags
+	source = https://github.com/facebook/proxygen/archive/v0.24.0.tar.gz
+	source = EchoServer.cpp.patch
+	source = HTTPDownstreamSessionTest.cpp.patch
+	md5sums = 390b8481e398f54dffed91fde90365bf
+	md5sums = f587fd8970bd02648474dac6d9d62326
+	md5sums = 4b0332e707b17770e72b67da7d9f3e65
+
+pkgname = proxygen
+
