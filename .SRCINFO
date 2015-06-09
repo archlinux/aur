@@ -1,0 +1,16 @@
+pkgbase = openca-ocspd
+	pkgdesc = OpenCA OCSP Responder
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = https://pki.openca.org/projects/ocspd/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = libpki
+	depends = bash
+	depends = openssl
+	source = http://prdownloads.sourceforge.net/project/openca/openca-ocspd/releases/v3.1.1/sources/openca-ocspd-3.1.1.tar.gz
+	sha256sums = 10d56cecb862d94ed8742bdf52958cebe1b3f8d87625ba014b0ae2b7c4820de5
+
+pkgname = openca-ocspd
+
