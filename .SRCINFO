@@ -1,0 +1,14 @@
+pkgbase = nodejs-jspm
+	pkgdesc = Registry and format agnostic JavaScript package manager
+	pkgver = 0.15.7
+	pkgrel = 1
+	url = https://github.com/jspm/jspm
+	arch = any
+	license = Apache
+	makedepends = npm
+	depends = nodejs
+	provides = jspm
+	provides = nodejs-jspm
+
+pkgname = nodejs-jspm
+
