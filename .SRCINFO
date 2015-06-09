@@ -1,0 +1,18 @@
+pkgbase = speedcrunch-git
+	pkgdesc = Simple, high precision and powerful calculator.
+	pkgver = 20141119
+	pkgrel = 1
+	url = http://speedcrunch.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = qt5-base
+	depends = libxkbcommon-x11
+	provides = speedcrunch
+	conflicts = speedcrunch
+	source = speedcrunch::git+https://github.com/speedcrunch/SpeedCrunch.git
+	md5sums = SKIP
+
+pkgname = speedcrunch-git
+
