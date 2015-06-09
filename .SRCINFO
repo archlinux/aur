@@ -1,0 +1,17 @@
+pkgbase = myword
+	pkgdesc = A featureful word recite tool by tualatrix
+	pkgver = 0.9.5
+	pkgrel = 1
+	url = http://imtx.cn/
+	arch = any
+	license = GPL2
+	depends = python
+	depends = pygtk
+	depends = gnome-python
+	provides = myword
+	provides = myword-book
+	source = http://code-of-tualatrix.googlecode.com/files/myword_0.9.5-1.tar.gz
+	md5sums = 572a204bd2775752c7179534720b8016
+
+pkgname = myword
+
