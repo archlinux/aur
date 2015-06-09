@@ -1,0 +1,16 @@
+pkgbase = python-netifaces-git
+	pkgdesc = Portable module to access network interface information in Python 3
+	pkgver = 1.0.0.r6.098dfda
+	pkgrel = 1
+	url = https://github.com/kelleyk/py3k-netifaces
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python-distribute
+	depends = python
+	source = python-netifaces-git::git://github.com/kelleyk/py3k-netifaces.git
+	sha256sums = SKIP
+
+pkgname = python-netifaces-git
+
