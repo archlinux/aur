@@ -1,0 +1,84 @@
+diff -rc a/init_functions b/init_functions
+*** a/init_functions	2014-07-23 23:45:34.000000000 +0100
+--- b/init_functions	2015-04-29 14:50:18.676775467 +0100
+***************
+*** 239,258 ****
+              err "fatal error invoking fsck"
+          fi
+  
+-         # ensure that root is going to be mounted rw. Otherwise, systemd
+-         # might fsck the device again. Annoy the user so that they fix this.
+-         if [ "${rwopt:-ro}" != 'rw' ]; then
+-             echo "********************** WARNING **********************"
+-             echo "*                                                   *"
+-             echo "*  The root device is not configured to be mounted  *"
+-             echo "*  read-write! It may be fsck'd again later.        *"
+-             echo "*                                                   *"
+-             echo "*****************************************************"
+-         fi
+      fi
+  }
+  
+! # TODO: this really needs to follow the logic of systemd's encode_devnode_name
+  # function more closely.
+  tag_to_udev_path() {
+      awk -v "tag=$1" -v "value=$2" '
+--- 239,248 ----
+              err "fatal error invoking fsck"
+          fi
+  
+      fi
+  }
+  
+! # TODO: this really needs to follow the sd's encode_devnode_name
+  # function more closely.
+  tag_to_udev_path() {
+      awk -v "tag=$1" -v "value=$2" '
+diff -rc a/Makefile b/Makefile
+*** a/Makefile	2014-07-23 23:45:34.000000000 +0100
+--- b/Makefile	2015-04-29 14:50:18.676775467 +0100
+***************
+*** 17,24 ****
+  	/usr/share/man/man5 \
+  	/usr/share/man/man1 \
+  	/usr/share/mkinitcpio \
+- 	/usr/lib/systemd/system/shutdown.target.wants \
+- 	/usr/lib/tmpfiles.d
+  
+  all: doc
+  
+--- 17,22 ----
+***************
+*** 52,62 ****
+  
+  	cp -at $(DESTDIR)/usr/lib/initcpio hooks install
+  	install -m644 -t $(DESTDIR)/usr/share/mkinitcpio mkinitcpio.d/*
+- 	install -m644 systemd/mkinitcpio-generate-shutdown-ramfs.service \
+- 			$(DESTDIR)/usr/lib/systemd/system/mkinitcpio-generate-shutdown-ramfs.service
+- 	ln -s ../mkinitcpio-generate-shutdown-ramfs.service \
+- 			$(DESTDIR)/usr/lib/systemd/system/shutdown.target.wants/mkinitcpio-generate-shutdown-ramfs.service
+- 	install -m644 tmpfiles/mkinitcpio.conf $(DESTDIR)/usr/lib/tmpfiles.d/mkinitcpio.conf
+  
+  	install -m755 50-mkinitcpio.install $(DESTDIR)/usr/lib/kernel/install.d/50-mkinitcpio.install
+  
+--- 50,55 ----
+diff -rc a/PKGBUILD b/PKGBUILD
+*** a/PKGBUILD	2014-07-23 23:45:34.000000000 +0100
+--- b/PKGBUILD	2015-04-29 14:52:59.584129156 +0100
+***************
+*** 9,15 ****
+  conflicts=('mkinitcpio')
+  provides=("mkinitcpio=$pkgver")
+  depends=('mkinitcpio-busybox>=1.19.4-2' 'kmod' 'util-linux>=2.23' 'libarchive' 'coreutils'
+!          'awk' 'bash' 'findutils' 'grep' 'filesystem>=2011.10-1' 'systemd' 'gzip')
+  makedepends=('asciidoc' 'git' 'sed')
+  optdepends=('xz: Use lzma or xz compression for the initramfs image'
+              'bzip2: Use bzip2 compression for the initramfs image'
+--- 9,15 ----
+  conflicts=('mkinitcpio')
+  provides=("mkinitcpio=$pkgver")
+  depends=('mkinitcpio-busybox>=1.19.4-2' 'kmod' 'util-linux>=2.23' 'libarchive' 'coreutils'
+!          'awk' 'bash' 'findutils' 'grep' 'filesystem>=2011.10-1' 'gzip')
+  makedepends=('asciidoc' 'git' 'sed')
+  optdepends=('xz: Use lzma or xz compression for the initramfs image'
+              'bzip2: Use bzip2 compression for the initramfs image'
