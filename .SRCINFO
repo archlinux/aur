@@ -1,0 +1,19 @@
+pkgbase = lxqt-qtplugin-git
+	pkgdesc = LXQt platform integration for Qt
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = http://lxqt.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = liblxqt-git
+	provides = lxqt-qtplugin
+	conflicts = lxqt-qtplugin
+	source = git+https://github.com/lxde/lxqt-qtplugin.git
+	sha256sums = SKIP
+
+pkgname = lxqt-qtplugin-git
+
