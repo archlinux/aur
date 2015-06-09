@@ -1,0 +1,24 @@
+pkgbase = indicator-sound
+	pkgdesc = A unified sound menu
+	pkgver = 12.10.1
+	pkgrel = 5
+	url = https://launchpad.net/indicator-sound
+	install = indicator-sound.install
+	arch = i686
+	arch = x86_64
+	groups = pantheon
+	groups = pantheon-unstable
+	license = GPL
+	makedepends = intltool
+	makedepends = vala
+	depends = ido
+	depends = libdbusmenu-gtk3
+	depends = libgee
+	depends = libindicator-gtk3
+	depends = libpulse
+	depends = libnotify
+	source = https://launchpad.net/indicator-sound/12.10/12.10.1/+download/indicator-sound-12.10.1.tar.gz
+	sha256sums = d3ae4e8a9e2bac6f9098e617364aba1ddca15ee118d5aa89ae85d0a1f3371af6
+
+pkgname = indicator-sound
+
