@@ -1,0 +1,20 @@
+pkgbase = dontstarve
+	pkgdesc = An open world survival video game.
+	pkgver = july21
+	pkgrel = 1
+	url = http://www.dontstarvegame.com/
+	arch = i686
+	arch = x86_64
+	license = Custom
+	options = !strip
+	source = dontstarve_x64_july21.tar.gz::https://download-it-manually
+	source = http://curl.haxx.se/download/curl-7.23.0.tar.gz
+	source = dontstarve.sh
+	source = dontstarve.desktop
+	md5sums = 20907561ae855bb08d919c59d18b2a82
+	md5sums = 018a9acee77ed70017c6f6cec855635a
+	md5sums = f2949327f3778ffbefb68fb61c10aee7
+	md5sums = e1211feede8e6b0ce174cd56517f4689
+
+pkgname = dontstarve
+

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Don't Starve
+GenericName=Survival Game
+Comment=An open world survival video game
+Icon=dontstarve
+Exec=/usr/bin/dontstarve
+Path=/opt/dontstarve/
+Categories=Game;SurvivalGame;
