@@ -1,0 +1,15 @@
+pkgbase = php54-ioncube_loader
+	pkgdesc = Loader for PHP files encoded with ionCube PHP Encoder (php54)
+	pkgver = 4.7.1
+	pkgrel = 1
+	url = http://www.ioncube.com/
+	arch = i686
+	arch = x86_64
+	license = CUSTOM
+	depends = php54
+	backup = etc/php/conf.d/00-ioncube_loader.ini
+	source = ioncube_loader--4.7.1.tar.bz2::http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86.tar.bz2
+	sha256sums = d2c5c700b8c1ac846776ce217e64fb4d5735ffa6987960c77c0d9e9f7be5bc6d
+
+pkgname = php54-ioncube_loader
+
