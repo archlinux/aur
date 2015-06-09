@@ -1,0 +1,29 @@
+pkgbase = makemkv
+	pkgdesc = DVD and Blu-ray to MKV converter and network streamer
+	pkgver = 1.9.3
+	pkgrel = 2
+	url = http://www.makemkv.com
+	install = makemkv.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = MPL
+	license = custom
+	depends = qt5-base
+	depends = libxkbcommon-x11
+	depends = hicolor-icon-theme
+	depends = icu
+	depends = ffmpeg
+	source = http://www.makemkv.com/download/makemkv-bin-1.9.3.tar.gz
+	source = http://www.makemkv.com/download/makemkv-oss-1.9.3.tar.gz
+	source = makemkv.1
+	source = makemkvcon.1
+	source = mmdtsdec.1
+	md5sums = a865be4b09eab415667722bdf84aa083
+	md5sums = 8e93c75748ce1460ac96c86cb838f144
+	md5sums = 1f9b3a91427a2015434e501542443f4c
+	md5sums = 7f4b112c5178860cc2eb25059ae1af2a
+	md5sums = 9476154228bf1b1f983178ba8565ac44
+
+pkgname = makemkv
+
