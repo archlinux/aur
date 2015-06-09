@@ -1,0 +1,14 @@
+pkgbase = zpipe
+	pkgdesc = (De)compress from standard input to standard output using libzpaq
+	pkgver = 201
+	pkgrel = 1
+	url = http://mattmahoney.net/dc/zpaq.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = zpaq
+	source = http://mattmahoney.net/dc/zpipe.201.zip
+	sha256sums = e95dfe6f701dd463f969fe16c933ed97fca194bd7aacec37d6c35409766133a8
+
+pkgname = zpipe
+
