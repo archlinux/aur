@@ -1,0 +1,17 @@
+pkgbase = nottetris2
+	pkgdesc = Basically it's a little like tetris except with a twist.
+	pkgver = 2
+	pkgrel = 1
+	url = http://stabyourself.net/nottetris2/
+	arch = any
+	license = CCPL:by-nc-sa
+	depends = love07
+	source = nottetris2.sh
+	source = nottetris2.desktop
+	source = http://stabyourself.net/dl.php?file=nottetris2/nottetris2-linux.zip
+	sha1sums = c967b132cf0f5647bd4cf6f744edabacff7846e7
+	sha1sums = d745399c1d55c35e83b103126fcf291e46e0b160
+	sha1sums = 604801636a94147dccfdbe73489a68cbd68a88ac
+
+pkgname = nottetris2
+
