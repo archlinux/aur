@@ -1,0 +1,15 @@
+pkgbase = pegc
+	pkgdesc = An experimental toolkit for writing PEG parsers in C
+	pkgver = 705c7a70ba
+	pkgrel = 1
+	url = http://fossil.wanderinghorse.net/repos/pegc/index.cgi/index
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = fossil
+	options = staticlibs
+	source = shake-n-make.make.patch
+	md5sums = f41271f6677da68283500b5264c00218
+
+pkgname = pegc
+

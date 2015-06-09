@@ -1,0 +1,11 @@
+--- shake-n-make.make~	2015-01-20 10:22:58.133583938 +0900
++++ shake-n-make.make	2015-01-20 10:24:42.237010438 +0900
+@@ -1,7 +1,7 @@
+ #!/usr/bin/make -f
+ all:
+ SHELL=/bin/bash
+-MAKE_REQUIRED_VERSION := 380# MAKE_VERSION stripped of any dots
++MAKE_REQUIRED_VERSION := 38# MAKE_VERSION stripped of any dots
+ VERSION_CHECK := \
+ 	$(shell \
+ 	test $$(echo $(MAKE_VERSION) | sed -e 's/\.//g') -ge \
