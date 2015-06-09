@@ -1,0 +1,15 @@
+
+post_install() {
+  echo -n "Adding aria2c user/group..."
+  useradd aria2c -d /tmp -M -U -s /bin/nologin && echo " done."
+  passwd -l aria2c &>/dev/null
+  
+  chown aria2c:aria2c /etc/aria2c/aria2c.conf
+}
+
+post_remove() {
+  echo -n -e "\nRemoving aria2c user/group..."
+  userdel aria2c && echo " done."
+}
+
+

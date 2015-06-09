@@ -1,0 +1,13 @@
+pkgbase = aria2-daemon-svn
+	pkgdesc = Daemon scripts for aria2c.
+	pkgver = 4
+	pkgrel = 2
+	url = http://code.google.com/p/ude-aria2-daemon/
+	install = aria2-daemon-svn.install
+	arch = any
+	license = MIT
+	makedepends = subversion
+	depends = aria2
+
+pkgname = aria2-daemon-svn
+
