@@ -1,0 +1,32 @@
+pkgbase = electrum-server-git
+	pkgdesc = Server to support Electrum python-based Bitcoin client
+	pkgver = 20150223
+	pkgrel = 1
+	url = https://github.com/spesmilo/electrum-server
+	install = electrum-server.install
+	arch = i686
+	arch = x86_64
+	license = AGPL3
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = leveldb
+	depends = openssl
+	depends = python2
+	depends = python2-irc
+	depends = python2-jsonrpclib
+	depends = python2-plyvel
+	depends = python2-pyopenssl
+	depends = snappy
+	optdepends = bitcoin-core: Bitcoin core headless P2P node
+	optdepends = electrum: Bitcoin thin client
+	provides = electrum-server
+	conflicts = electrum-server
+	backup = etc/electrum-server.banner
+	backup = etc/electrum-server.conf
+	source = git+https://github.com/spesmilo/electrum-server
+	source = electrum-server.service
+	sha256sums = SKIP
+	sha256sums = d90503ea4b71c52dfcb68d7cfb6f7ea313380a7d8972e8510d7bbb7494d6f1b4
+
+pkgname = electrum-server-git
+

@@ -1,0 +1,20 @@
+[Unit]
+Description=Electrum server
+Wants=bitcoin.service
+After=bitcoin.service
+
+[Service]
+User=electrum-server
+Group=electrum-server
+LimitNOFILE=infinity
+WorkingDirectory=/usr/share/electrum-server
+ExecStart=/usr/bin/electrum-server
+ExecStop=/usr/bin/electrum-server stop
+ExecReload=/usr/bin/kill -HUP $MAINPID
+Restart=always
+RestartSec=60
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

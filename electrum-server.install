@@ -1,0 +1,83 @@
+post_install() {
+  _mkuser
+  chown -R electrum-server:electrum-server /etc/electrum-server        \
+                                           /etc/electrum-server.conf   \
+                                           /etc/electrum-server.banner \
+                                           /usr/share/electrum-server  \
+                                           /var/log/electrum-server
+  printf "%b\n" "$ecdsa"
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  _rmuser
+}
+
+_mkuser() {
+  getent passwd electrum-server &>/dev/null || {
+    echo -n "Creating electrum-server user... "
+    grep -E "^electrum-server:" /etc/group >/dev/null || groupadd electrum-server
+    useradd -m -d /etc/electrum-server -g electrum-server -s /usr/bin/nologin electrum-server
+    echo "done"
+  }
+}
+
+_rmuser() {
+  echo -n "Removing electrum-server user... "
+  userdel -rf electrum-server 2>/dev/null
+  echo "done"
+}
+
+read -d '' ecdsa <<'EOF'
+########################################################################
+########################################################################
+##                                                                    ##
+##  Electrum Server                                                   ##
+##  _______________                                                   ##
+##                                                                    ##
+##  Usage:                                                            ##
+##                                                                    ##
+##      systemctl start electrum-server                               ##
+##      electrum-server getinfo|peers|numpeers|sessions|numsessions   ##
+##                                                                    ##
+##                                                                    ##
+##                         ';,;:.                                     ##
+##                       'o'   .;d.                                   ##
+##                       K.      :l                                   ##
+##                       cl     .O,                                   ##
+##                        .c:cclc.                                    ##
+##              .;::;.     .;ko,.     ':::'     .',,,.                ##
+##            .OMMMMMWo  ,d,.  .oo  cXMMMMMX:  do.  .:d.              ##
+##           x MMMMMMMMxlX.      kdoMMMMMMMMMoxl      '0              ##
+##            oMMMMMMMN;'K,     .Oc;NMMMMMMMX,ld      ;k              ##
+##             :0WMMNk.  .cl;,;cl,  'kWMMMWx.  :o:,';cc               ##
+##                ..        .'.       .oWc.      .''.                 ##
+##                                  'oc;,;lo.                         ##
+##                                 ,O.     .0.                        ##
+##                                 :k      .0.                        ##
+##                                  cl,...:o,                         ##
+##                                    .,,,.                           ##
+##                                                                    ##
+##                                                                    ##
+##                                                                    ##
+##  Say hi to the dev crew, other server operators and fans on        ##
+##  irc.freenode.net #electrum and we'll try to congratulate you      ##
+##  on supporting the community by running an Electrum node.          ##
+##                                                                    ##
+##  If you're operating a public Electrum server please subscribe     ##
+##  to or regularly check the following thread:                       ##
+##                                                                    ##
+##  https://bitcointalk.org/index.php?topic=85475.0                   ##
+##                                                                    ##
+##  It'll contain announcements about important updates to Electrum   ##
+##  server required for a smooth user experience.                     ##
+##                                                                    ##
+##  Please see /usr/share/doc/electrum-server/HOWTO.md for detailed   ##
+##  information.                                                      ##
+##                                                                    ##
+########################################################################
+########################################################################
+EOF
