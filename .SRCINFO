@@ -1,0 +1,47 @@
+pkgbase = ros-indigo-moveit-ros-perception
+	pkgdesc = ROS - Components of MoveIt connecting to perception.
+	pkgver = 0.6.5
+	pkgrel = 1
+	url = http://moveit.ros.org
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-octomap
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-cv-bridge
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-image-transport
+	makedepends = ros-indigo-rosconsole
+	makedepends = ros-indigo-pcl-conversions
+	makedepends = ros-indigo-moveit-core
+	makedepends = ros-indigo-tf-conversions
+	makedepends = ros-indigo-cmake-modules
+	makedepends = ros-indigo-tf
+	makedepends = ros-indigo-urdf
+	makedepends = ros-indigo-message-filters
+	makedepends = ros-indigo-pluginlib
+	makedepends = glew
+	makedepends = mesa
+	makedepends = freeglut
+	depends = ros-indigo-octomap
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-cv-bridge
+	depends = ros-indigo-image-transport
+	depends = ros-indigo-rosconsole
+	depends = ros-indigo-pcl-conversions
+	depends = ros-indigo-moveit-core
+	depends = ros-indigo-tf-conversions
+	depends = ros-indigo-tf
+	depends = ros-indigo-urdf
+	depends = ros-indigo-message-filters
+	depends = ros-indigo-pluginlib
+	depends = glew
+	depends = mesa
+	depends = freeglut
+	source = moveit_ros_perception::git+https://github.com/ros-gbp/moveit_ros-release.git#tag=release/indigo/moveit_ros_perception/0.6.5-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-moveit-ros-perception
+
