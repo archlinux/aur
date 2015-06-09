@@ -1,0 +1,14 @@
+pkgbase = libminilector38u-bit4id
+	pkgdesc = Firmware for minilector bit4id smart card reader
+	pkgver = 1
+	pkgrel = 3
+	url = http://www.bit4id.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = lib32-glibc
+	source = http://www.pkgbuild.com/~giovanni/Linux.zip
+	md5sums = 913db070c3b677fc5c4ff08c874781c7
+
+pkgname = libminilector38u-bit4id
+
