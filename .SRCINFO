@@ -1,0 +1,15 @@
+pkgbase = ruby-yard
+	pkgdesc = Documentation tool for consistent and usable documentation in Ruby.
+	pkgver = 0.8.7.6
+	pkgrel = 1
+	url = http://yardoc.org
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	depends = ruby
+	noextract = yard-0.8.7.6.gem
+	source = http://gems.rubyforge.org/gems/yard-0.8.7.6.gem
+	sha256sums = 3da10884b94fa25b7476f619b1d2cfb61290e10673965c545975630cd88a46b6
+
+pkgname = ruby-yard
+
