@@ -1,0 +1,17 @@
+pkgbase = fstar-git
+	pkgdesc = An ML-like language with a type system for program verification
+	pkgver = 20150609
+	pkgrel = 1
+	url = http://research.microsoft.com/en-us/projects/fstar/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	depends = mono
+	depends = fsharp
+	depends = z3
+	provides = fstar
+	source = fstar
+	md5sums = 33d49bff387dfe21e4e6a645cc88b231
+
+pkgname = fstar-git
+
