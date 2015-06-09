@@ -1,0 +1,16 @@
+pkgbase = ttf-impallari-quattrocento
+	pkgdesc = Classic, Elegant, Sober and Strong typeface, from Pablo Impallari
+	pkgver = 2.000
+	pkgrel = 1
+	url = http://www.impallari.com/quattrocento/
+	install = updatefont.install
+	arch = any
+	groups = impallari-fonts
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.impallari.com/media/uploads/prosources/update-20-source.zip
+	md5sums = 1cfccff569ae135e2eadf50a7cb326a4
+
+pkgname = ttf-impallari-quattrocento
+
