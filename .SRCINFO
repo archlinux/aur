@@ -1,0 +1,20 @@
+pkgbase = gog-broken-sword-directors-cut
+	pkgdesc = Uncover the identity of a jester assassin. Unlock the legend of the Knights Templar. Unravel a plot as twisted as the catacombs you're about to prowl.
+	pkgver = 1.0.0.1
+	pkgrel = 1
+	url = http://www.gog.com/game/broken_sword_directors_cut
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = custom
+	depends = libgl
+	depends = libx11
+	depends = libxext
+	depends = desktop-file-utils
+	source = local://gog_broken_sword_directors_cut_1.0.0.1.tar.gz
+	source = gog-broken-sword-directors-cut
+	sha256sums = ab29e847f81a3e217c34aaa70d68261e7a38e5b67861e4cbf1eea68f85f1b2e1
+	sha256sums = e2fd1fe6a3592c98d9d276bdcf11cb758102ab5159a47548f1d01bc5575e9d18
+
+pkgname = gog-broken-sword-directors-cut
+
