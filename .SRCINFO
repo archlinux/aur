@@ -1,0 +1,22 @@
+pkgbase = mock
+	pkgdesc = A simple chroot build environment manager for building RPMs
+	pkgver = 1.2.10
+	pkgrel = 1
+	url = http://fedoraproject.org/wiki/Projects/Mock
+	install = mock.install
+	arch = any
+	license = GPL2
+	depends = python
+	optdepends = createrepo_c: for mockchain command
+	optdepends = dnf-plugins-core: to create RPMs for Fedora 23 and above
+	optdepends = lvm2: for lvm_root plugin
+	optdepends = pigz: for parallel compression of chroot cache
+	optdepends = yum-utils: to create RPMs for Fedora 22 and below (including EL5, EL6 and EL7)
+	options = !strip
+	options = libtool
+	options = staticlibs
+	source = https://git.fedorahosted.org/cgit/mock.git/snapshot/mock-1.2.10.tar.xz
+	sha256sums = 00726cb5ec38692d8631cb26fae85a8ad1d28b66fac2694eaec6779276b7334b
+
+pkgname = mock
+
