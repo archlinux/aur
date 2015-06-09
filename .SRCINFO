@@ -1,6 +1,6 @@
 pkgbase = python-moc-git
 	pkgdesc = Python bindings for Music On Console
-	pkgver = 1.0
+	pkgver = 1.0_2_g36df2e5
 	pkgrel = 1
 	url = http://github.com/rscholer/python-moc
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = python-moc-git
 	makedepends = python-setuptools
 	depends = python
 	depends = moc
+	provides = python-moc
 	conflicts = python-moc
 	source = git+file:///home/raphael/Documents/Code/Local/python-moc
 	sha256sums = SKIP
