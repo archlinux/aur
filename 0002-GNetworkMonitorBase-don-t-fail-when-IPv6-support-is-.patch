@@ -1,0 +1,34 @@
+From c36872f048824248ff8348eaf66134194becaedc Mon Sep 17 00:00:00 2001
+From: Erik van Pienbroek <epienbro@fedoraproject.org>
+Date: Thu, 17 Jul 2014 21:24:28 +0200
+Subject: [PATCH 2/2] GNetworkMonitorBase: don't fail when IPv6 support is
+ unavailable
+
+---
+ gio/gnetworkmonitorbase.c | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/gio/gnetworkmonitorbase.c b/gio/gnetworkmonitorbase.c
+index f0af804..32ffc74 100644
+--- a/gio/gnetworkmonitorbase.c
++++ b/gio/gnetworkmonitorbase.c
+@@ -100,8 +100,14 @@ g_network_monitor_base_constructed (GObject *object)
+       g_object_unref (mask);
+ 
+       mask = g_inet_address_mask_new_from_string ("::/0", NULL);
+-      g_network_monitor_base_add_network (monitor, mask);
+-      g_object_unref (mask);
++      if (mask)
++        {
++          /* On some environments (for example Windows without IPv6 support
++           * enabled) the string "::/0" can't be processed and causes
++           * g_inet_address_mask_new_from_string to return NULL */
++          g_network_monitor_base_add_network (monitor, mask);
++          g_object_unref (mask);
++        }
+     }
+ }
+ 
+-- 
+2.0.1
+
