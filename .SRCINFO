@@ -1,0 +1,16 @@
+pkgbase = ttf-impallari-raleway-dots
+	pkgdesc = A dotted version of Raleway, from Pablo Impallari
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.impallari.com/
+	install = updatefont.install
+	arch = any
+	groups = impallari-fonts
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.impallari.com/media/uploads/prosources/update-55-source.zip
+	md5sums = bd4538079ad667cf5f63f6d77cb2a503
+
+pkgname = ttf-impallari-raleway-dots
+
