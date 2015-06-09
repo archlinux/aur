@@ -2,7 +2,7 @@
 # Tue Jun  9 05:01:05 UTC 2015
 pkgbase = bcloud-git
 	pkgdesc = Baidu Pan client for Linux Desktop users
-	pkgver = 20150106
+	pkgver = 20150609
 	pkgrel = 1
 	url = https://github.com/LiuLang/bcloud
 	arch = any
@@ -17,7 +17,6 @@ pkgbase = bcloud-git
 	depends = python-lxml
 	depends = python-crypto
 	depends = webkitgtk
-	depends = python-crypto
 	depends = python-pyinotify
 	conflicts = bcloud
 	source = bcloud-git::git+https://github.com/LiuLang/bcloud.git
