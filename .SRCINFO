@@ -1,0 +1,26 @@
+pkgbase = python2-html2md
+	pkgdesc = Downloads HTML from a URL, optionally passes it through Instapaper’s mobilizer, and converts it to Markdown
+	pkgver = 0.1.3
+	pkgrel = 2
+	url = https://pypi.python.org/pypi/html2md
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-argcomplete
+	depends = python2-argh
+	depends = python2-html2text
+	depends = python2-logbook
+	depends = python2-pyquery
+	depends = python2-requests
+	depends = python2-verlib
+	provides = html2md
+	provides = python2-html2md
+	conflicts = html2md
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/h/html2md/html2md-0.1.3.tar.gz
+	md5sums = 5ce25928cf36859302bbf08734fdf21c
+	sha256sums = 7053cb8cb55b065f83127164405d4002f44fc57ac8e64b4c1e2ba210349ad5e0
+
+pkgname = python2-html2md
+
