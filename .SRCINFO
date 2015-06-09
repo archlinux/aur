@@ -1,0 +1,21 @@
+pkgbase = mba6x_bl-dkms
+	pkgdesc = Backlight for mba6x to fix post suspend/resume brightness.
+	pkgver = latest
+	pkgrel = 2
+	url = https://github.com/patjak/mba6x_bl
+	install = mba6x_bl-dkms.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = dkms
+	depends = linux-headers
+	provides = mba6x_bl
+	conflicts = mba6x_bl
+	backup = etc/modules-load.d/mba6x_bl-dkms.conf
+	source = git+https://github.com/patjak/mba6x_bl.git
+	source = mba6x_bl-dkms.conf
+	md5sums = SKIP
+	md5sums = 1d04b891c7a387a845a1eac768749c6b
+
+pkgname = mba6x_bl-dkms
+

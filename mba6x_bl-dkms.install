@@ -1,0 +1,29 @@
+post_install() {
+  dkms_install $1
+}
+
+pre_upgrade() {
+  dkms_remove $2
+}
+
+pre_remove() {
+  dkms_remove $1
+}
+
+post_upgrade() {
+  dkms_install $1
+}
+
+dkms_remove() {
+  local line=`dkms status -m mba6x_bl`
+  if echo "$line" | grep -E 'added|built|installed'; then
+    dkms remove -m mba6x_bl -v ${1%%-*} --all
+  fi
+}
+
+dkms_install() {
+  dkms install -m mba6x_bl -v ${1%%-*}
+  modprobe mba6x_bl
+
+  /usr/bin/depmod -a
+}
