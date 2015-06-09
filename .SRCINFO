@@ -1,0 +1,19 @@
+pkgbase = roguesynth-git
+	pkgdesc = Multimode softsynth with LV2 interface
+	pkgver = 405.a7c6579
+	pkgrel = 2
+	url = https://github.com/timowest/rogue
+	arch = i686
+	arch = x86_64
+	groups = lv2-plugins
+	license = GPL
+	makedepends = python-rdflib
+	depends = lv2
+	depends = lvtk
+	depends = fftw
+	depends = qt4
+	source = git://github.com/timowest/rogue.git
+	md5sums = SKIP
+
+pkgname = roguesynth-git
+
