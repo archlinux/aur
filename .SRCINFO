@@ -1,0 +1,19 @@
+pkgbase = coinmessage-git
+	pkgdesc = Bitcoin-based secure messaging system
+	pkgver = 20131216
+	pkgrel = 1
+	url = https://github.com/coinmessage/coinmessage
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-crypto
+	depends = python2-pycoin
+	provides = coinmessage
+	conflicts = coinmessage
+	source = git+https://github.com/coinmessage/coinmessage
+	sha256sums = SKIP
+
+pkgname = coinmessage-git
+
