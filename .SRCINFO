@@ -1,0 +1,14 @@
+pkgbase = kawa
+	pkgdesc = A Scheme implementation and framework targeted the JVM.
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://www.gnu.org/software/kawa/index.html
+	arch = i686
+	arch = x86_64
+	license = X11/MIT
+	depends = java-runtime
+	source = http://ftp.gnu.org/pub/gnu/kawa/kawa-2.0.tar.gz
+	sha256sums = bf73041cebff6e8bbf13883a9a5fefa8bffd88fc68547b9cb6d3314e616211e5
+
+pkgname = kawa
+
