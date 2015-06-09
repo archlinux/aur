@@ -1,0 +1,16 @@
+pkgbase = ttf-impallari-milonga
+	pkgdesc = Milonga is a Font inspired on “tangueros” art, from Pablo Impallari
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.impallari.com/projects/overview/milonga/
+	install = updatefont.install
+	arch = any
+	groups = impallari-fonts
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.impallari.com/media/uploads/prosources/update-82-source.zip
+	md5sums = 2e3fd7458a89a2b05448a2c95a573c27
+
+pkgname = ttf-impallari-milonga
+
