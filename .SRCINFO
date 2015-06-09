@@ -1,0 +1,32 @@
+pkgbase = liferea-unstable
+	pkgdesc = A desktop news aggregator for online news feeds and weblogs - Unstable
+	pkgver = 1.11.4
+	pkgrel = 1
+	url = http://lzone.de/liferea/
+	install = liferea-unstable.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	makedepends = diffutils
+	makedepends = intltool
+	depends = webkitgtk
+	depends = libnotify
+	depends = json-glib
+	depends = libpeas
+	depends = desktop-file-utils
+	optdepends = gnome-keyring: for keyring plugin support
+	optdepends = libgnome-keyring: for keyring plugin support
+	optdepends = gst-plugins-base: for media player plugin support
+	optdepends = gst-plugins-good: for media player plugin support
+	optdepends = gst-plugins-bad: for media player plugin support
+	provides = liferea
+	conflicts = liferea
+	conflicts = liferea-git
+	options = !libtool
+	options = !emptydirs
+	source = https://github.com/lwindolf/liferea/releases/download/v1.11.4/liferea-1.11.4.tar.bz2
+	sha256sums = 16b6a0cdddb13870d095ca55c1f00bf370e74248f29f21cb2c7ee90781ae42df
+
+pkgname = liferea-unstable
+
