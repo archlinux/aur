@@ -1,0 +1,17 @@
+pkgbase = flatbuffers
+	pkgdesc = An efficient cross platform serialization library for C++, with support for Java, C# and Go
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://google.github.io/flatbuffers/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	optdepends = go
+	optdepends = java-environment
+	optdepends = mono
+	source = https://github.com/google/flatbuffers/archive/v1.1.0.tar.gz
+	md5sums = a469b3058e53a12d49556e8e1bb5edea
+
+pkgname = flatbuffers
+
