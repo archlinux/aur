@@ -1,0 +1,25 @@
+pkgbase = mingw-w64-libgcrypt
+	pkgdesc = General purpose cryptographic library based on the code from GnuPG (mingw-w64)
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = http://www.gnupg.org
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-configure
+	makedepends = transfig
+	makedepends = ghostscript
+	depends = mingw-w64-libgpg-error
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = ftp://ftp.gnupg.org/gcrypt/libgcrypt/libgcrypt-1.6.3.tar.bz2
+	source = libgcrypt-mingw64-use-correct-datatype-for-GetProcessWorkingSet.patch
+	source = libgcrypt-use-correct-def-file.patch
+	source = libgcrypt-use-correct-asm-code-for-win64.patch
+	md5sums = 4262c3aadf837500756c2051a5c4ae5e
+	md5sums = 7bb247584a66a83677c618aec812ca9b
+	md5sums = 531e089caca74b5daf130b7173c2a5c5
+	md5sums = ccdd21fdd8b28690ed7e736a77606735
+
+pkgname = mingw-w64-libgcrypt
+
