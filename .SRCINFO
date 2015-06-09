@@ -1,0 +1,14 @@
+pkgbase = ruby-jekyll-jade-git
+	pkgdesc = Brings Jade support to the Jekyll.
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/snappylabs/jade-jekyll-plugin
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = ruby-jekyll
+	source = git+https://github.com/snappylabs/jade-jekyll-plugin.git
+	md5sums = SKIP
+
+pkgname = ruby-jekyll-jade-git
+
