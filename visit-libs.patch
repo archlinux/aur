@@ -1,0 +1,11 @@
+--- /opt/visit/bin/visit	2013-04-02 08:40:10.000000000 -0700
++++ visit	2013-04-02 08:57:00.055180106 -0700
+@@ -63,6 +63,8 @@
+     done
+ done
+ 
++export LD_LIBRARY_PATH=/opt/visit/current/linux-x86_64/lib:${LD_LIBRARY_PATH}
++
+ # Find the most recent VisIt python
+ visitpython=""
+ dir="$(dirname $0)"

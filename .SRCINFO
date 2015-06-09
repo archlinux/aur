@@ -1,0 +1,27 @@
+pkgbase = visit-bin
+	pkgdesc = Interactive parallel visualization and graphical analysis tool
+	pkgver = 2.9.1
+	pkgrel = 1
+	url = https://wci.llnl.gov/simulation/computer-codes/visit
+	arch = x86_64
+	license = BSD
+	license = custom
+	makedepends = bash
+	makedepends = cpio
+	depends = libpng12
+	depends = glu
+	provides = visit
+	conflicts = visit
+	conflicts = visit-build
+	noextract = visit2_9_1.linux-x86_64-rhel6.tar.gz
+	source = http://portal.nersc.gov/svn/visit/trunk/releases/2.9.1/visit2_9_1.linux-x86_64-rhel6.tar.gz
+	source = http://portal.nersc.gov/svn/visit/trunk/releases/2.9.1/visit-install2_9_1
+	source = visit-bin.sh
+	source = visit-libs.patch
+	sha256sums = 6ae02f9007e7690abbfe6cc669bbdef01b49003c888d4fb00d60bb36271834f7
+	sha256sums = a4ccbefbba784f8038e3f06a8e64ffe89da727e5cdce1f97ad771d111e6c8439
+	sha256sums = d07a11e67ad646579fbc341f30e1eb63ebd38a5fbdd4f3ea36e8f460419028da
+	sha256sums = abc1c05f6567281cb8654dfbe3d0ef87ec3537e8e60191ba0625d4f99feb27c7
+
+pkgname = visit-bin
+
