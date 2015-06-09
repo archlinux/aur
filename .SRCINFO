@@ -1,0 +1,14 @@
+pkgbase = python2-nltk_contrib-git
+	pkgdesc = Natural Language Toolkit, Contrib Area
+	pkgver = 20141014
+	pkgrel = 1
+	url = http://www.nltk.org/
+	arch = any
+	license = APACHE
+	depends = python2-nltk
+	depends = git
+	source = git+https://github.com/nltk/nltk_contrib.git
+	sha1sums = SKIP
+
+pkgname = python2-nltk_contrib-git
+
