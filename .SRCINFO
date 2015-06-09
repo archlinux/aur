@@ -1,13 +1,13 @@
 pkgbase = fuse-emulator-sdl
 	pkgdesc = The Free Unix Spectrum Emulator (SDL UI)
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fuse-emulator.sourceforge.net/fuse.php
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = sdl
-	depends = libspectrum>=1.0.0
+	depends = libspectrum>=1.1.0
 	depends = libxml2
 	depends = libpng
 	depends = alsa-lib
