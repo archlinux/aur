@@ -1,0 +1,23 @@
+[Desktop Entry]
+Name=foobar2000
+GenericName=Audio player
+GenericName[fr]=Lecteur audio
+Comment=Simple and powerful audio player.
+Comment[fr]=Lecteur audio simple et puissant.
+Actions=AppendToPlaylist;
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Terminal=false
+Icon=foobar2000
+Exec=foobar2000 -immediate %F
+Categories=AudioVideo;Audio;Player;
+MimeType=audio/aac;audio/x-ape;audio/basic;audio/mp4;audio/mpeg;audio/mpegurl;audio/vorbis;audio/x-flac;audio/x-mp2;audio/x-mp3;audio/x-mpegurl;audio/x-ms-wma;audio/x-oggflac;audio/x-speex;audio/x-vorbis;audio/x-wav;audio/m3u;audio/x-aifc;audio/x-aiffc;audio/x-aiff;audio/x-musepack;audio/x-wavpack;x-content/audio-player;audio/x-matroska;audio/x-vorbis+ogg;
+
+[Desktop Action AppendToPlaylist]
+Name=Append to Playlist
+Name[fr]=Ajouter à la liste de lecture
+Icon=foobar2000
+Exec=foobar2000 -add -immediate %F
+
+

@@ -1,0 +1,41 @@
+foobar2000 audio player
+Copyright © 2001-2010, Peter Pawlowski
+Portions copyright © 2005-2006 Holger Stenger
+Portions copyright © 2003-2005 Gian-Carlo Pascutto
+Icons copyright © 2007 Florian Trendelenburg
+Installer script and button icons copyright © 2003-2010 Janne Hyvärinen
+All rights reserved.
+
+Redistribution and use in binary form, without modification, are permitted provided that the following conditions are met:
+
+    * Only unmodified installers can be redistributed; redistribution of foobar2000 binaries in any other form is not permitted.
+    * Neither the name of the author nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE AUTHORS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Note that a separate less restrictive license applies to open source parts, downloadable separately.
+
+FAAD2 - Freeware Advanced Audio (AAC) Decoder including SBR decoding
+Copyright © 2003-2005 M. Bakker, Nero Software AG, http://www.nero.com
+
+Musepack decoding library
+Copyright © 1999-2007 Buschmann/Klemm/Piecha/Wolf/MDT
+
+WAVPACK Hybrid Lossless Wavefile Compressor
+Copyright © 1998-2009 Conifer Software
+
+libogg, libvorbis and libspeex libraries
+Copyright © 2002-2005 Xiph.org Foundation
+
+FLAC - Free Lossless Audio Codec
+Copyright © 2001-2007 Josh Coalson
+
+zlib general purpose compression library
+Copyright © 1995-2005 Jean-loup Gailly and Mark Adler
+
+unRAR source © Alexander Roshal
+
+SuperEQ library
+Copyright © Naoki Shibata, http://shibatch.sourceforge.net/
+Distributed under terms of LGPL, modified sources available for download separately.
+
