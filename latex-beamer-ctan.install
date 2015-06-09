@@ -1,0 +1,10 @@
+post_install(){
+    /usr/bin/texhash
+    /bin/true
+}
+
+post_remove(){
+    rm -rf /usr/share/texmf-dist/tex/latex/beamer
+    /usr/bin/texhash
+    /bin/true
+}
