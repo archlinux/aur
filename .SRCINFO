@@ -1,0 +1,16 @@
+pkgbase = mangonel
+	pkgdesc = A simple and pretty application launcher for KDE
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://projects.kde.org/mangonel
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdebase-runtime
+	source = http://download.kde.org/stable/mangonel/mangonel-1.1.tar.xz
+	md5sums = 5d2cabafcddd054e04f62dedcce4c156
+
+pkgname = mangonel
+
