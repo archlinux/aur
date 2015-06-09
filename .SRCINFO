@@ -1,0 +1,25 @@
+pkgbase = pantheon-photos-bzr
+	pkgdesc = The Pantheon Photos Manager
+	pkgver = r2758
+	pkgrel = 1
+	url = https://launchpad.net/pantheon-photos
+	install = pantheon-photos.install
+	arch = i686
+	arch = x86_64
+	groups = pantheon-unstable
+	license = GPL3
+	makedepends = bzr
+	makedepends = vala
+	depends = desktop-file-utils
+	depends = granite-bzr
+	depends = libgexiv2
+	depends = libgphoto2
+	depends = libraw
+	depends = webkitgtk
+	provides = pantheon-photos
+	conflicts = pantheon-photos
+	source = bzr+lp:pantheon-photos
+	sha256sums = SKIP
+
+pkgname = pantheon-photos-bzr
+
