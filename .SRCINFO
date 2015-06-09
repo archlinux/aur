@@ -1,0 +1,19 @@
+pkgbase = xsynth-dssi
+	pkgdesc = An analog-style (VCOs-VCF-VCA) synth plugin for DSSI
+	pkgver = 0.9.4
+	pkgrel = 2
+	url = http://dssi.sourceforge.net/download.html#Xsynth-DSSI
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = dssi
+	depends = gtk2
+	depends = liblo>=0.22
+	options = !libtool
+	source = http://downloads.sourceforge.net/project/dssi/xsynth-dssi/0.9.4/xsynth-dssi-0.9.4.tar.gz
+	source = xsynth-dssi
+	md5sums = 3432ecdac06407a992f80eb1c1ecf7cd
+	md5sums = c346e6a944f202fccb2278b77a5e184b
+
+pkgname = xsynth-dssi
+
