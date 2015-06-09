@@ -1,0 +1,22 @@
+pkgbase = ttf-trigger
+	pkgdesc = Chrono Trigger font collection
+	pkgver = 20120316
+	pkgrel = 2
+	url = http://www.chronocompendium.com
+	install = ttf-trigger.install
+	arch = any
+	license = Creative Commons
+	makedepends = dos2unix
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://chronofan.com/Black/Other/trigger.zip
+	source = http://chronofan.com/Black/Other/trigger_bold.zip
+	source = http://chronofan.com/Black/Other/trigger_light.zip
+	source = http://chronofan.com/Black/Other/trigger_mono.zip
+	md5sums = f9946ff4446602e64acc295e8212ff8e
+	md5sums = 825fc6c713564a14ca84f5ad188a3ecb
+	md5sums = 827d1c841802fb44fede3ac94350868c
+	md5sums = 19b16be7acba147db6453e751d3dd632
+
+pkgname = ttf-trigger
+
