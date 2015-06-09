@@ -1,0 +1,245 @@
+diff --git a/commands.c b/commands.c
+index 2f8a2fe..04c6f64 100644
+--- a/commands.c
++++ b/commands.c
+@@ -321,6 +321,71 @@ bool ci_scroll_to_edge(arg_t dir)
+ 	return img_pan_edge(&img, dir);
+ }
+ 
++bool ci_scroll_to_edge_seq(arg_t a)
++{
++	if (mode == MODE_IMAGE) {
++		switch (img.edgedir) {
++			case 1:
++				img.edgedir++;
++				img_pan_edge(&img, DIR_DOWN);
++				break;
++			case 2:
++				img.edgedir++;
++				img_pan_edge(&img, DIR_UP);
++				img_pan_edge(&img, DIR_LEFT);
++				break;
++			case 3:
++				img.edgedir++;
++				img_pan_edge(&img, DIR_DOWN);
++				break;
++			case 4:
++				img.edgedir = 1;
++				img_pan_edge(&img, DIR_UP);
++				img_pan_edge(&img, DIR_RIGHT);
++				break;
++		}
++		return true;
++	} else {
++		return false;
++	}
++}
++
++bool ci_scroll_manga(arg_t a)
++{
++	if (mode == MODE_IMAGE) {
++		int dy = img.win->h - img.h * img.zoom;
++		switch (img.edgedir) {
++			case 1:
++				img_pan(&img, DIR_DOWN, -1);
++				if (img.y == dy)
++					img.edgedir++;
++				break;
++			case 2:
++				if (dy == 0) {
++					img.edgedir = 4;
++				} else {
++					img.edgedir++;
++					img_pan_edge(&img, DIR_UP);
++					img_pan_edge(&img, DIR_LEFT);
++				}
++				break;
++			case 3:
++				img_pan(&img, DIR_DOWN, -1);
++				if (img.y == dy)
++					img.edgedir++;
++				break;
++			case 4:
++				img.edgedir = 1;
++				img_pan_edge(&img, DIR_UP);
++				img_pan_edge(&img, DIR_RIGHT);
++				break;
++		}
++		return true;
++	} else {
++		return false;
++	}
++}
++
+ /* Xlib helper function for i_drag() */
+ Bool is_motionnotify(Display *d, XEvent *e, XPointer a)
+ {
+diff --git a/commands.lst b/commands.lst
+index a658dd4..ea63fa7 100644
+--- a/commands.lst
++++ b/commands.lst
+@@ -21,6 +21,8 @@ I_CMD(navigate_frame)
+ I_CMD(toggle_animation)
+ I_CMD(scroll)
+ I_CMD(scroll_to_edge)
++I_CMD(scroll_to_edge_seq)
++I_CMD(scroll_manga)
+ I_CMD(drag)
+ I_CMD(set_zoom)
+ I_CMD(fit_to_win)
+diff --git a/config.def.h b/config.def.h
+index ac32bd7..e28abc4 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -83,8 +83,8 @@ static const keymap_t keys[] = {
+ 	{ 0,            XK_KP_Add,        g_zoom,               +1 },
+ 	{ 0,            XK_minus,         g_zoom,               -1 },
+ 	{ 0,            XK_KP_Subtract,   g_zoom,               -1 },
+-	{ 0,            XK_m,             g_toggle_image_mark,  None },
+-	{ 0,            XK_M,             g_reverse_marks,      None },
++	{ 0,            XK_M,             g_toggle_image_mark,  None },
++	{ ControlMask,  XK_M,             g_reverse_marks,      None },
+ 	{ ControlMask,  XK_m,             g_unmark_all,         None },
+ 	{ 0,            XK_N,             g_navigate_marked,    +1 },
+ 	{ 0,            XK_P,             g_navigate_marked,    -1 },
+@@ -126,6 +126,8 @@ static const keymap_t keys[] = {
+ 	{ 0,            XK_J,             i_scroll_to_edge,     DIR_DOWN },
+ 	{ 0,            XK_K,             i_scroll_to_edge,     DIR_UP },
+ 	{ 0,            XK_L,             i_scroll_to_edge,     DIR_RIGHT },
++	{ 0,            XK_m,             i_scroll_manga,       None },
++	{ 0,            XK_comma,         i_scroll_to_edge_seq, None },
+ 	{ 0,            XK_equal,         i_set_zoom,           100 },
+ 	{ 0,            XK_w,             i_fit_to_win,         SCALE_DOWN },
+ 	{ 0,            XK_W,             i_fit_to_win,         SCALE_FIT },
+diff --git a/image.c b/image.c
+index fe2c6e8..e206383 100644
+--- a/image.c
++++ b/image.c
+@@ -78,6 +78,8 @@ void img_init(img_t *img, win_t *win)
+ 
+ 	img->ss.on = options->slideshow > 0;
+ 	img->ss.delay = options->slideshow > 0 ? options->slideshow : SLIDESHOW_DELAY;
++	img->manga_re = (options->manga_mode) ? true : false;
++	img->edgedir = 1;
+ }
+ 
+ #if HAVE_LIBEXIF
+@@ -335,7 +337,8 @@ bool img_load(img_t *img, const fileinfo_t *file)
+ void img_close(img_t *img, bool decache)
+ {
+ 	int i;
+-
++	img->edgedir = 1;
++	img->manga_re = (options->manga_mode) ? true : false;
+ 	if (img == NULL)
+ 		return;
+ 
+@@ -371,6 +374,11 @@ void img_check_pan(img_t *img, bool moved)
+ 	ox = img->x;
+ 	oy = img->y;
+ 
++	if (img->manga_re) {
++		img->x = (win->w - w);
++		img->y = 0;
++		img->manga_re = false;
++	}
+ 	if (w < win->w)
+ 		img->x = (win->w - w) / 2;
+ 	else if (img->x > 0)
+diff --git a/image.h b/image.h
+index 35c0d71..b94d268 100644
+--- a/image.h
++++ b/image.h
+@@ -54,6 +54,8 @@ typedef struct {
+ 	bool dirty;
+ 	bool aa;
+ 	bool alpha;
++	int edgedir;
++	bool manga_re;
+ 
+ 	Imlib_Color_Modifier cmod;
+ 	int gamma;
+diff --git a/options.c b/options.c
+index 403785c..3f17266 100644
+--- a/options.c
++++ b/options.c
+@@ -33,7 +33,7 @@ const options_t *options = (const options_t*) &_options;
+ 
+ void print_usage(void)
+ {
+-	printf("usage: sxiv [-abcfhioqrtvZ] [-G GAMMA] [-g GEOMETRY] [-n NUM] "
++	printf("usage: sxiv [-abcfhimoqrtvZ] [-G GAMMA] [-g GEOMETRY] [-n NUM] "
+ 	       "[-N NAME] [-S DELAY] [-s MODE] [-z ZOOM] FILES...\n");
+ }
+ 
+@@ -68,7 +68,7 @@ void parse_options(int argc, char **argv)
+ 	_options.thumb_mode = false;
+ 	_options.clean_cache = false;
+ 
+-	while ((opt = getopt(argc, argv, "abcfG:g:hin:N:oqrS:s:tvZz:")) != -1) {
++	while ((opt = getopt(argc, argv, "abcfG:g:hin:N:moqrS:s:tvZz:")) != -1) {
+ 		switch (opt) {
+ 			case '?':
+ 				print_usage();
+@@ -113,6 +113,11 @@ void parse_options(int argc, char **argv)
+ 			case 'N':
+ 				_options.res_name = optarg;
+ 				break;
++			case 'm':
++				_options.manga_mode = true;
++				_options.scalemode = SCALE_ZOOM;
++				_options.zoom = 1.0;
++				break;
+ 			case 'o':
+ 				_options.to_stdout = true;
+ 				break;
+diff --git a/options.h b/options.h
+index 25abf16..39d7478 100644
+--- a/options.h
++++ b/options.h
+@@ -47,6 +47,7 @@ typedef struct {
+ 	/* misc flags: */
+ 	bool quiet;
+ 	bool thumb_mode;
++	bool manga_mode;
+ 	bool clean_cache;
+ } options_t;
+ 
+diff --git a/sxiv.1 b/sxiv.1
+index 41b03de..30b0f64 100644
+--- a/sxiv.1
++++ b/sxiv.1
+@@ -53,6 +53,10 @@ more information on GEOMETRY argument.
+ .BI "\-N " NAME
+ Set the resource name of sxiv's X window to NAME.
+ .TP
++.BI "\-m "
++Start in manga mode, scale all images to 100% and read images from right to
++left.
++.TP
+ .BI "\-n " NUM
+ Start at picture number NUM.
+ .TP
+@@ -146,10 +150,10 @@ Zoom in.
+ .B \-
+ Zoom out.
+ .TP
+-.B m
++.B M
+ Mark/unmark the current image.
+ .TP
+-.B M
++.B Ctrl-M
+ Reverse all image marks.
+ .TP
+ .B Ctrl-m
+@@ -268,6 +272,9 @@ Scroll to top image edge.
+ .TP
+ .B L
+ Scroll to right image edge.
++.TP
++.B m
++Pan in manga way (topright, bottomright, topleft, bottomleft).
+ .SS Zooming
+ .TP
+ .B =
