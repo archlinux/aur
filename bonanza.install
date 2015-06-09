@@ -1,0 +1,14 @@
+post_install() {
+  getent passwd bonanza >/dev/null || useradd --no-create-home --no-user-group --shell /sbin/nologin -d /dev/null bonanza
+  chown bonanza -R /opt/bonanza/ /usr/bin/bonanza
+  chmod 4755 /opt/bonanza/bonanza
+}
+
+post_upgrade() {
+  chown bonanza -R /opt/bonanza/ /usr/bin/bonanza
+  chmod 4755 /opt/bonanza/bonanza
+}
+
+pre_remove() {
+  getent passwd bonanza && userdel bonanza
+}

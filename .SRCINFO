@@ -1,0 +1,20 @@
+pkgbase = bonanza
+	pkgdesc = The Computer Shogi Program
+	pkgver = 6.0
+	pkgrel = 5
+	url = http://www.geocities.jp/bonanza_shogi/
+	install = bonanza.install
+	arch = i686
+	arch = x86_64
+	license = CUSTOM
+	source = http://gi.cs.uec.ac.jp:10140/bonanza_v6.0.zip
+	source = shogidokoro_usi_20140611.patch
+	source = bonanza
+	source = Makefile.patch
+	md5sums = 7e993748c8fd596dc6756e04c4732b5c
+	md5sums = 708675832b9c56fa807b78fa3a321f70
+	md5sums = 7224c254dd6cf5812b5feea20c675ae2
+	md5sums = e47b5538512d03bf61d60ed97d8fa937
+
+pkgname = bonanza
+

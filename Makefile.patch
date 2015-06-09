@@ -1,0 +1,11 @@
+--- bonanza_v6.0/src/client/Makefile.orig	2011-05-09 14:11:44.000000000 +0900
++++ bonanza_v6.0/src/client/Makefile	2014-05-22 13:05:56.424956348 +0900
+@@ -23,7 +23,7 @@
+ # -DDFPN             build the DFPN worker of mate-problems server.
+ # -DDFPN_CLIENT      enables the client-mode of mate-problem server.
+ 
+-OPT =-DNDEBUG -DMINIMUM -DHAVE_SSE4 -msse4.1 -DDFPN -DTLP -DDFPN_CLIENT -DINANIWA_SHIFT -DMNJ_LAN -DCSA_LAN
++OPT =-DUSI -DNDEBUG -DMINIMUM -DHAVE_SSE4 -msse4.1 -DDFPN -DTLP -DDFPN_CLIENT -DINANIWA_SHIFT -DMNJ_LAN -DCSA_LAN
+ 
+ help:
+ 	@echo "try targets as:"
