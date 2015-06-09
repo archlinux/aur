@@ -1,0 +1,30 @@
+Description: Fix sizeof(pointer) to be sizeof(buffer_pointed_to)
+Author: Olly Betts <olly@survex.com>
+Forwarded: no
+Last-Update: 2014-08-14
+
+--- a/src/vformat.c
++++ b/src/vformat.c
+@@ -1881,11 +1881,11 @@
+ 
+ //static unsigned char _evc_base64_rank[256];
+ 
+-static void base64_init(char *rank)
++static void base64_init(char *rank, size_t len)
+ {
+ 	int i;
+ 
+-	memset(rank, 0xff, sizeof(rank));
++	memset(rank, 0xff, len);
+ 	for (i=0;i<64;i++) {
+ 		rank[(unsigned int)base64_alphabet[i]] = i;
+ 	}
+@@ -2011,7 +2011,7 @@
+ static size_t base64_decode_step(const unsigned char *in, size_t len, unsigned char *out, int *state, unsigned int *save)
+ {
+ 	unsigned char base64_rank[256];
+-	base64_init((char*)base64_rank);
++	base64_init((char*)base64_rank, sizeof(base64_rank));
+ 
+ 	register const unsigned char *inptr;
+ 	register unsigned char *outptr;
