@@ -1,0 +1,29 @@
+pkgbase = butterflow
+	pkgdesc = Make slow motion and smooth motion videos from the command line
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/dthpham/butterflow
+	install = butterflow.install
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2-numpy
+	depends = ffmpeg>=2.4.1
+	depends = opencv>=2.4.8
+	depends = opencl-icd
+	depends = x264
+	optdepends = opencl-nvidia: NVIDIA device support
+	optdepends = opencl-nvidia-304xx: NVIDIA legacy device support
+	optdepends = opencl-nvidia-340xx: NVIDIA device support
+	optdepends = amdapp-sdk: AMD device suppport
+	optdepends = opencl-mesa: AMD/ATI Radeon device support
+	optdepends = intel-opencl-runtime: Intel processor device support
+	optdepends = beignet-git: Intel IvyBridge device support
+	provides = butterflow
+	conflicts = butterflow
+	source = http://srv.dthpham.me/butterflow-0.1.7.tar.gz
+	sha256sums = f0f12fd90cddf7fa2079247f3f55b26bfaaca5d83e19a22697ed20b2169ec3a3
+
+pkgname = butterflow
+

@@ -1,0 +1,6 @@
+post_install() {
+  echo "You still need to install at least one vendor-specific implementation of
+  OpenCL that supports your hardware (see the suggested packages below). For
+  information on how to satisfy this requirement, please read this Wiki page:
+  https://wiki.archlinux.org/index.php/GPGPU"
+}
