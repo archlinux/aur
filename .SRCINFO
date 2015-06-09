@@ -1,0 +1,16 @@
+pkgbase = haskell-bytestring-builder
+	pkgdesc = Provides methods for fully evaluating data structures (deep evaluation)
+	pkgver = 0.10.6.0.0
+	pkgrel = 1
+	url = https://github.com/lpsmith/bytestring-builder
+	install = bytestring-builder.install
+	arch = i686
+	arch = x86_64
+	license = BSD3
+	makedepends = ghc
+	options = strip
+	source = bytestring-builder-0.10.6.0.0.tar.gz::https://codeload.github.com/lpsmith/bytestring-builder/tar.gz/v0.10.6.0.0
+	sha256sums = ae682f7fa49092cd9ec5f022de49d343e553a5e86d805692228de1cb496afe5f
+
+pkgname = haskell-bytestring-builder
+
