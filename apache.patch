@@ -1,0 +1,11 @@
+--- a/doc/kolab-freebusy.conf
++++ b/doc/kolab-freebusy.conf
+@@ -1,6 +1,6 @@
+-ScriptAlias /freebusy /usr/share/kolab-freebusy/public_html/index.php
++ScriptAlias /freebusy /usr/share/webapps/kolab-freebusy/public_html/index.php
+ 
+-<Directory "/usr/share/kolab-freebusy/public_html/">
++<Directory "/usr/share/webapps/kolab-freebusy/public_html/">
+     AllowOverride All
+ 
+     <ifModule mod_authz_core.c>

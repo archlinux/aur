@@ -1,0 +1,22 @@
+pkgbase = kolab-freebusy
+	pkgdesc = Kolab Free/Busy Web Application
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = http://kolab.org
+	arch = any
+	license = GPL3
+	makedepends = php-composer
+	makedepends = git
+	depends = roundcubemail-plugins-kolab
+	depends = chwala
+	depends = pear-net-ldap3
+	optdepends = pykolab: configuration tool
+	source = http://mirror.kolabsys.com/pub/releases/kolab-freebusy-1.0.7.tar.gz
+	source = apache.patch
+	source = composer.patch
+	sha256sums = cdc4a2b4fa5e8fb5074356d619ee5c97748638707eff7dc3fec28250ad020da2
+	sha256sums = ae77b4b6738030181b6580a5d54a4c4e412653a11ed1aa2b3b211f81820a7057
+	sha256sums = 3f115d728fb9d1cbfc379ede7fc717dcc8d0105e5b0204807ecc221a826da64d
+
+pkgname = kolab-freebusy
+

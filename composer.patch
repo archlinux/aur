@@ -1,0 +1,28 @@
+--- a/composer.json
++++ b/composer.json
+@@ -4,14 +4,7 @@
+ 	"license": "AGPL-3.0",
+ 	"version": "1.0.6",
+ 	"repositories": [
+-		{
+-			"type": "pear",
+-			"url": "http://pear.php.net/"
+-		},
+-		{
+-			"type": "vcs",
+-			"url": "git://git.kolab.org/git/pear/Net_LDAP3"
+-		}
++
+ 	],
+ 	"require": {
+ 		"php": ">=5.3.3",
+@@ -19,9 +12,5 @@
+ 		"desarrolla2/cache":  "dev-master",
+ 		"sabre/vobject" : "2.1.*"
+ 	},
+-	"require-dev": {
+-		"pear-pear.php.net/net_ldap2": ">=2.0.12",
+-		"kolab/Net_LDAP3": "dev-master"
+-	},
+ 	"minimum-stability": "dev"
+ }
