@@ -1,0 +1,51 @@
+# Note this config assumes unicorn is listening on default port 9737.
+# Module dependencies
+#  mod_rewrite
+#  mod_proxy
+#  mod_proxy_http
+<VirtualHost *:80>
+    ServerName discourse.example.com
+    ServerSignature Off
+
+    ProxyPreserveHost On
+
+    # Ensure that encoded slashes are not decoded but left in their encoded state.
+    # http://doc.gitlab.com/ce/api/projects.html#get-single-project
+    AllowEncodedSlashes NoDecode
+
+    <Location />
+        # New authorization commands for apache 2.4 and up
+        # http://httpd.apache.org/docs/2.4/upgrading.html#access
+        Require all granted
+
+        ProxyPassReverse http://127.0.0.1:8080
+        ProxyPassReverse http://discourse.example.com/
+    </Location>
+
+    <LocationMatch "^/assets/.*$">
+        # Set caching headers here, providing advice to downstream cache
+        Header set Cache-Control "public, max-age = 604800"
+    </LocationMatch>
+
+    # apache equivalent of nginx try files
+    # http://serverfault.com/questions/290784/what-is-apaches-equivalent-of-nginxs-try-files
+    # http://stackoverflow.com/questions/10954516/apache2-proxypass-for-rails-app-gitlab
+    RewriteEngine on
+    RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_FILENAME} !-f
+    RewriteRule .* http://127.0.0.1:8080%{REQUEST_URI} [P,QSA]
+
+    # needed for downloading attachments
+    DocumentRoot /usr/share/webapps/discourse/public
+
+    # Set up apache error documents, if back end goes down an error page is thrown up.
+    ErrorDocument 403 /403.html
+    ErrorDocument 422 /422.html
+    ErrorDocument 500 /500.html
+    ErrorDocument 503 /503.html
+
+    LogFormat "%{X-Forwarded-For}i %l %u %t \"%r\" %>s %b" common_forwarded
+    ErrorLog  /var/log/httpd/logs/discourse.example.com_error.log
+    CustomLog /var/log/httpd/logs/discourse.example.com_forwarded.log common_forwarded
+    CustomLog /var/log/httpd/logs/discourse.example.com_access.log combined env=!dontlog
+    CustomLog /var/log/httpd/logs/discourse.example.com.log combined
+</VirtualHost>

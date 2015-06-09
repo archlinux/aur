@@ -1,0 +1,9 @@
+[Unit]
+Description=Trigger for daily discourse RAM cleanup
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+
+[Install]
+WantedBy=timer.target

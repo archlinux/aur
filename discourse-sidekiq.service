@@ -1,0 +1,26 @@
+[Unit]
+Description=Discourse Sidekiq Worker
+Requires=redis.service
+After=redis.service network.target
+
+[Service]
+User=discourse
+Group=discourse
+SyslogIdentifier=discourse-sidekiq
+WorkingDirectory=/usr/share/webapps/discourse
+Environment=RAILS_ENV=production RUBY_GC_MALLOC_LIMIT=90000000
+
+CapabilityBoundingSet=
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=full
+ProtectHome=true
+# NoNewPrivileges breaks discourse's email delivery if you
+# use postfix' sendmail wrapper. If you use an SMTP server
+# instead you can safely enable this security feature.
+# NoNewPrivileges=true
+
+ExecStart=/usr/bin/bundle exec "sidekiq -e production -L /var/log/discourse/sidekiq.log >> /var/log/discourse/sidekiq.log 2>&1"
+
+[Install]
+WantedBy=multi-user.target

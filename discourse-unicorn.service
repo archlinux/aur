@@ -1,0 +1,26 @@
+[Unit]
+Description=Discourse Unicorn Server
+Requires=redis.service
+After=redis.service network.target
+
+[Service]
+User=discourse
+Group=discourse
+SyslogIdentifier=discourse-unicorn
+WorkingDirectory=/usr/share/webapps/discourse
+PIDFile=/run/discourse/unicorn.pid
+Environment=RAILS_ENV=production RUBY_GC_MALLOC_LIMIT=90000000
+RuntimeDirectory=discourse
+RuntimeDirectoryMode=775
+
+CapabilityBoundingSet=
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=full
+ProtectHome=true
+NoNewPrivileges=true
+
+ExecStart=/usr/bin/bundle exec "unicorn_rails -c /etc/webapps/discourse/unicorn.conf.rb -E production"
+
+[Install]
+WantedBy=multi-user.target

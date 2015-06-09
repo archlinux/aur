@@ -1,0 +1,6 @@
+[Unit]
+Description=Discourse - A simple, flat forum
+Wants=discourse-unicorn.service discourse-sidekiq.service
+
+[Install]
+WantedBy=multi-user.target

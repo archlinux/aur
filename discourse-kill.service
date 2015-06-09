@@ -1,0 +1,6 @@
+[Unit]
+Description=Workaround for unicorn eating memory
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/systemctl try-restart discourse-unicorn.service discourse-sidekiq.service

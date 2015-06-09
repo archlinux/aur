@@ -1,0 +1,18 @@
+[Unit]
+Description=Discourse Update
+
+[Service]
+Type=oneshot
+User=discourse
+Group=discourse
+SyslogIdentifier=discourse-update
+WorkingDirectory=/usr/share/webapps/discourse
+Environment=RAILS_ENV=production
+
+CapabilityBoundingSet=
+PrivateTmp=true
+PrivateDevices=true
+ProtectHome=true
+NoNewPrivileges=true
+
+ExecStart=/usr/bin/bundle exec rake db:migrate assets:clean assets:precompile
