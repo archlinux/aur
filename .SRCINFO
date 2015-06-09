@@ -1,0 +1,20 @@
+pkgbase = ocaml-xml-light
+	pkgdesc = Objective Caml lightweight xml parser
+	pkgver = 2.2
+	pkgrel = 4
+	url = http://tech.motion-twin.com/xmllight.html
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = ocaml-findlib
+	depends = ocaml
+	options = !strip
+	options = !makeflags
+	options = staticlibs
+	source = http://tech.motion-twin.com/zip/xml-light-2.2.zip
+	source = META
+	md5sums = 7658985cfdaeeb94b579b932eeaa3e00
+	md5sums = ad22cde4d3a944673d3b0a25a1e835dc
+
+pkgname = ocaml-xml-light
+
