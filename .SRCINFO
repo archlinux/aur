@@ -1,0 +1,33 @@
+pkgbase = firefox-nightly-ru
+	pkgdesc = Web browser from mozilla.org, nightly build, russian version
+	pkgver = 41.0a1
+	pkgrel = 1
+	url = http://nightly.mozilla.org/
+	install = firefox-nightly-ru.install
+	arch = i686
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = alsa-lib
+	depends = libxt
+	depends = libnotify
+	depends = mime-types
+	depends = nss
+	depends = gtk2
+	depends = sqlite
+	depends = dbus-glib
+	depends = desktop-file-utils
+	conflicts = firefox-nightly
+	conflicts = firefox-nightly-russian
+	source = firefox-nightly.desktop
+	source = firefox-nightly-safe.desktop
+	source = firefox-nightly-ru.install
+	source = http://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n/firefox-41.0a1.ru.linux-.tar.bz2
+	md5sums = aa4eb1b1b9dc42c610847b384ac968d7
+	md5sums = 92de362052d776a06ef4e53e9e0a3ddc
+	md5sums = 04793335a2ba7d17d1bd92085461e77e
+	md5sums = 
+
+pkgname = firefox-nightly-ru
+

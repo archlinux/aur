@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Firefox Nightly
+GenericName=Firefox Nightly, русская версия
+Icon=/usr/share/pixmaps/firefox-nightly-icon.png
+Type=Application
+Categories=Application;Network;
+MimeType=text/html;x-scheme-handler/http;x-scheme-handler/https;
+Encoding=UTF-8
+Exec=firefox-nightly %u
+Terminal=false
+MultipleArgs=false
+StartupNotify=false
