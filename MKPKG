@@ -1,0 +1,8 @@
+arch=('any')
+pkgname=('elementary-dpms-helper-bzr' 'pantheon-default-settings-bzr')
+builddeps=('gtk-theme-elementary-bzr' 'pantheon-backgrounds-bzr'
+           'plank-theme-pantheon-bzr' 'ttf-opensans')
+
+check_bzr $packagedir/pantheon-default-settings-bzr/pantheon-default-settings
+
+# vim: ts=2 sw=2 et:
