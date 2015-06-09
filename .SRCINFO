@@ -1,0 +1,19 @@
+pkgbase = cumulus
+	pkgdesc = Cumulus is a free and Open Source flight computer for Linux
+	pkgver = 5.21.0
+	pkgrel = 1
+	url = http://www.kflog.org/cumulus/
+	arch = i686
+	arch = x86_64
+	arch = armv5h
+	arch = armv6h
+	arch = armv7h
+	license = custom
+	depends = qt4
+	source = https://github.com/kflog-project/Cumulus/archive/master.zip
+	source = cumulus.desktop
+	sha256sums = 03669ac4302c4bf0d607f0a3d50cf3f0cbfff9a13dc745f327e48339093a3fbf
+	sha256sums = efd04ecd966383d491dbd1fcfe22918c56653825a57c5778de56dc040e685087
+
+pkgname = cumulus
+

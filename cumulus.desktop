@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Cumulus
+Comment=A flight navigation aid for glider pilots and others
+Comment[de]=Eine Flug Navigations Hilfe für Segelflieger und andere
+Exec=/opt/cumulus/bin/cumulus
+Icon=/opt/cumulus/icons/cumulus-desktop48x48.png
+Path=
+Terminal=false
+StartupNotify=false
+GenericName=Flight navigation aid
+GenericName[de]=Flug Navigations Hilfe
+Categories=Utility;Qt;Navigation
