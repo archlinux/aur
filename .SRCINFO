@@ -1,0 +1,15 @@
+pkgbase = booklet
+	pkgdesc = Converts a pdf to a booklet
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://www.pro-linux.de/kurztipps/2/1387/comm/454512/re-din-a5-buch-erstellen.html
+	arch = any
+	license = unknown
+	depends = poppler
+	depends = psutils
+	depends = ghostscript
+	source = booklet
+	md5sums = d12c32884e57df6af6bc928e00289655
+
+pkgname = booklet
+
