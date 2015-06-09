@@ -1,0 +1,23 @@
+post_install() {
+  # Friendly message for new users
+  echo
+  echo 'The "liteide" package provides an IDE for editing and building Go projects.'
+  echo
+  echo 'Example use of the "go" tool:'
+  echo
+  echo '    mkdir ~/go'
+  echo '    export GOPATH=~/go'
+  echo '    export PATH=$PATH:~/go/bin'
+  echo '    go get code.google.com/p/go-tour/gotour'
+  echo
+}
+
+post_upgrade() {
+  echo
+  echo 'Shell and editor configuration has been removed from the go'
+  echo 'package for the 1.4 release. For more information, see:'
+  echo 'https://github.com/golang/go/wiki/IDEsAndTextEditorPlugins'
+  echo
+}
+
+# vim:set ts=2 sw=2 et:
