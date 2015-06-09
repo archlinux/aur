@@ -1,0 +1,20 @@
+pkgbase = alps
+	pkgdesc = Provides physics simulation code for strongly correlated quantum mechanical systems
+	pkgver = 2.2.b3_r7462
+	pkgrel = 1
+	url = http://alps.comp-phys.org
+	arch = i686
+	arch = x86_64
+	license = custom:ALPS
+	makedepends = cmake
+	makedepends = gcc-fortran
+	depends = boost
+	depends = fftw
+	depends = python2-scipy
+	depends = python2-h5py
+	depends = python2-matplotlib
+	source = http://alps.comp-phys.org/static/software/releases/alps-2.2.b3-r7462-src.tar.gz
+	md5sums = f739c2f6987aed76cc5e417c563ae053
+
+pkgname = alps
+
