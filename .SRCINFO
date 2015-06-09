@@ -1,0 +1,15 @@
+pkgbase = ruby-colorator
+	pkgdesc = String core extensions for terminal coloring.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/octopress/colorator
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = colorator-0.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/colorator-0.1.gem
+	sha1sums = 990e8354185850a44929c5980a170baddf0a4ec4
+
+pkgname = ruby-colorator
+
