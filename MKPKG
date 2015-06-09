@@ -1,0 +1,6 @@
+arch=('any')
+pkgname=('gtk-theme-elementary-bzr' 'plank-theme-pantheon-bzr')
+
+check_bzr $packagedir/gtk-theme-elementary-bzr/gtk-theme-elementary
+
+# vim: ts=2 sw=2 et:
