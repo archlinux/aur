@@ -1,0 +1,18 @@
+pkgbase = csv2html-git
+	pkgdesc = Convert CSV files into HTML tables or complete HTML documents
+	pkgver = 20140504
+	pkgrel = 1
+	url = https://github.com/dbohdan/csv2html
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-html
+	provides = csv2html
+	conflicts = csv2html
+	source = git+https://github.com/dbohdan/csv2html
+	sha256sums = SKIP
+
+pkgname = csv2html-git
+
