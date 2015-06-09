@@ -1,0 +1,24 @@
+pkgbase = pcmanx-gtk2
+	pkgdesc = A gtk+ based free BBS client
+	pkgver = 1.2
+	pkgrel = 2
+	url = http://code.google.com/p/pcmanx-gtk2
+	install = pcmanx.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = intltool
+	makedepends = pkg-config
+	depends = gtk2
+	depends = libltdl
+	optdepends = wget
+	options = !libtool
+	source = http://pcmanx-gtk2.googlecode.com/files/pcmanx-gtk2-1.2.tar.xz
+	source = pcmanx.install
+	md5sums = 035d6743f2844db9488166536b186e91
+	md5sums = 6374916400684c2db957be0250a4ca98
+
+pkgname = pcmanx-gtk2
+
