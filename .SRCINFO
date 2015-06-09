@@ -1,0 +1,33 @@
+pkgbase = caffeine-systray
+	pkgdesc = Fork of caffeine that maintains systray support.
+	pkgver = 2.5
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/hobarrera/caffeine-ng
+	install = caffeine-systray.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = dconf
+	depends = gtk2
+	depends = hicolor-icon-theme
+	depends = kaa-metadata
+	depends = python2-dbus
+	depends = python2-gobject
+	depends = python2-notify
+	depends = python2-xdg
+	depends = python2-xlib
+	provides = caffeine
+	provides = caffeine-bzr
+	provides = caffeine-oneclick
+	conflicts = caffeine
+	conflicts = caffeine-bzr
+	conflicts = caffeine-oneclick
+	replaces = caffeine-oneclick
+	options = !emptydirs
+	options = !libtool
+	source = https://github.com/hobarrera/caffeine-ng/archive/v2.5.zip
+	sha256sums = 146453c963f1f316151857e4e00537eded035158c0b00b66c9955d704c4d4df1
+
+pkgname = caffeine-systray
+
