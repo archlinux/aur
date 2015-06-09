@@ -1,0 +1,21 @@
+pkgbase = mingw-w64-smpeg2
+	pkgdesc = SDL MPEG Player Library (mingw-w64)
+	pkgver = 2.0.0
+	pkgrel = 3
+	epoch = 1
+	url = http://icculus.org/smpeg
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-configure
+	makedepends = subversion
+	depends = mingw-w64-crt
+	depends = mingw-w64-sdl2
+	provides = mingw-w64-smpeg-svn=408
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = smpeg2-2.0.0::svn://svn.icculus.org/smpeg/tags/release_2_0_0
+	md5sums = SKIP
+
+pkgname = mingw-w64-smpeg2
+
