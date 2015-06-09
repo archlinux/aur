@@ -1,0 +1,16 @@
+pkgbase = hexchat-indicator
+	pkgdesc = Unity Application Indicator for HexChat (Bazaar version)
+	pkgver = 3
+	pkgrel = 1
+	url = https://launchpad.net/hexchat-indicator/trunk
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = bzr
+	depends = indicator-messages
+	depends = libunity
+	source = hexchat-indicator::bzr+lp:hexchat-indicator
+	sha512sums = SKIP
+
+pkgname = hexchat-indicator
+
