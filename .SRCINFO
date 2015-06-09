@@ -1,0 +1,16 @@
+pkgbase = python2-globster
+	pkgdesc = Convert shell-like globs to regular expressions
+	pkgver = 0.1.0
+	pkgrel = 2
+	url = https://github.com/tsileo/globster
+	arch = any
+	license = GPL2
+	makedepends = python2-setuptools
+	depends = python2
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/g/globster/globster-0.1.0.tar.gz
+	md5sums = c4695f698ff71573c674204163b08ef9
+	sha256sums = c7f8e536bb25e9077ea7f988e2bb6851d5f7ad32c37b0d8862c051a9754e9713
+
+pkgname = python2-globster
+
