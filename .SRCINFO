@@ -1,0 +1,35 @@
+pkgbase = guitarix-git
+	pkgdesc = a virtual guitar amplifier for Linux
+	pkgver = 0.32.3.r39.gcf3e18e
+	pkgrel = 1
+	url = http://guitarix.sourceforge.net
+	install = guitarix-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = python2
+	makedepends = boost
+	makedepends = intltool
+	makedepends = lv2
+	makedepends = gperf
+	depends = gtkmm
+	depends = liblrdf
+	depends = boost-libs
+	depends = zita-convolver
+	depends = eigen
+	depends = bluez-libs
+	depends = lilv
+	depends = ffmpeg
+	optdepends = meterbridge: sound meters
+	provides = guitarix
+	provides = guitarix2
+	provides = gx_head
+	conflicts = guitarix
+	conflicts = guitarix2
+	conflicts = gx_head
+	source = guitarix::git+git://git.code.sf.net/p/guitarix/git
+	md5sums = SKIP
+
+pkgname = guitarix-git
+
