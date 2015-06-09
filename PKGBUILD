@@ -1,7 +1,7 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=batman-alfred
-pkgver=2014.4.0
+pkgver=2015.0
 pkgrel=1
 pkgdesc='Almighty Lightweight Fact Remote Exchange Daemon'
 arch=('i686' 'x86_64')
@@ -19,4 +19,4 @@ package() {
   make DESTDIR="${pkgdir}"  PREFIX=/usr SBINDIR=/usr/bin install
 }
 
-sha256sums=('99e6c64e7069b0b7cb861369d5c198bfc7d74d41509b8edd8a17ba78e7c8d034')
+sha256sums=('c66a20e5814b4afefa7b07370e20cc9a01b5f31ef9c554d132778f89e5ba736c')
