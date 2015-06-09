@@ -1,0 +1,15 @@
+pkgbase = nodejs-react-tools
+	pkgdesc = A set of complementary tools to React, including the JSX transformer
+	pkgver = 0.13.3
+	pkgrel = 1
+	url = https://github.com/facebook/react
+	arch = any
+	license = BSD3
+	makedepends = npm
+	depends = nodejs
+	provides = jsx
+	provides = nodejs-react-tools
+	conflicts = jsx
+
+pkgname = nodejs-react-tools
+
