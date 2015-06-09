@@ -1,0 +1,20 @@
+pkgbase = obkey-git
+	pkgdesc = Openbox Key Editor - converted to PyGObject.
+	pkgver = 1.0.11.gf599e29
+	pkgrel = 1
+	url = https://github.com/stevenhoneyman/obkey
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL2
+	makedepends = git
+	depends = python2
+	depends = python2-gobject
+	depends = gtk3
+	provides = obkey
+	conflicts = obkey
+	source = git+https://github.com/stevenhoneyman/obkey.git
+	md5sums = SKIP
+
+pkgname = obkey-git
+
