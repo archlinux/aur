@@ -1,0 +1,29 @@
+pkgbase = brackets-bin
+	pkgdesc = A code editor for HTML, CSS and JavaScript.
+	pkgver = 1.3
+	pkgrel = 1
+	url = http://brackets.io
+	install = brackets-bin.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = prelink
+	depends = gconf
+	depends = libgcrypt15
+	depends = nodejs
+	depends = nspr
+	depends = nss
+	depends = systemd
+	optdepends = google-chrome: to enable Live Preview
+	optdepends = gnuplot: to enable node benchmarking
+	optdepends = gtk2: to enable native UI
+	optdepends = ruby: to enable LiveDevelopment Inspector
+	optdepends = desktop-file-utils: for update-desktop-database
+	optdepends = hicolor-icon-theme: for hicolor theme hierarchy
+	provides = brackets=1.3
+	conflicts = brackets
+	conflicts = brackets-git
+	source = https://github.com/adobe/brackets/releases/download/release-1.3/Brackets.Release.1.3.-bit.deb
+
+pkgname = brackets-bin
+
