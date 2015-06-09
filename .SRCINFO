@@ -1,0 +1,21 @@
+pkgbase = mutt-kz-git
+	pkgdesc = Small but powerful text-based mail client (experimental fork) (development version)
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/karelzak/mutt-kz
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gnupg
+	makedepends = libxslt
+	depends = libidn
+	depends = krb5
+	depends = notmuch-runtime
+	provides = mutt
+	conflicts = mutt
+	source = git+https://github.com/karelzak/mutt-kz.git
+	sha256sums = SKIP
+
+pkgname = mutt-kz-git
+
