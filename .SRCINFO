@@ -1,0 +1,16 @@
+pkgbase = pycoind
+	pkgdesc = Pure-Python full node and libraries for bitcoind-based crypto-currencies (eg. bitcoin, litecoin, etc)
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/ricmoo/pycoind
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/p/pycoind/pycoind-0.0.3.tar.gz
+	md5sums = def32876e7188e1f9e91e6197202c73d
+	sha256sums = 9397dbc89c643e21dd7c1464a5f64247ac71d203e2bc94bbc7a2ac6be26c6585
+
+pkgname = pycoind
+
