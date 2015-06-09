@@ -1,0 +1,17 @@
+pkgbase = gimp-plugin-saveforweb
+	pkgdesc = Plugin to save optimized images for display on web pages
+	pkgver = 0.29.3
+	pkgrel = 2
+	url = http://registry.gimp.org/node/33
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = perl-xml-parser
+	makedepends = intltool
+	makedepends = gettext
+	depends = gimp>=2.3
+	source = http://registry.gimp.org/files/gimp-save-for-web-0.29.3.tar.bz2
+	md5sums = 9dae11ffa9f7b8e44a65df5b0e49a04c
+
+pkgname = gimp-plugin-saveforweb
+
