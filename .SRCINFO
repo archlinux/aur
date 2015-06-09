@@ -1,0 +1,15 @@
+pkgbase = kvasd-bin
+	pkgdesc = A soft-decision Reed Solomon decoder for the JT65 mode
+	pkgver = 1.12
+	pkgrel = 1
+	url = http://physics.princeton.edu/pulsar/k1jt/wsjtx.html
+	arch = i686
+	arch = x86_64
+	depends = gcc-libs
+	conflicts = kvasd
+	replaces = kvasd
+	source = http://sourceforge.net/p/wsjt/wsjt/5245/tree/trunk/kvasd-binary/Linux-i686/kvasd?format=raw
+	md5sums = e43b0a42681c1f5129de4714e5606712
+
+pkgname = kvasd-bin
+
