@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Planetary Annihilation
+GenericName=Strategy Game
+Comment=Total Annihilation-inspired game on a planetary scale
+Icon=PA
+Exec=/opt/PA/PA
+Path=/opt/PA
+Categories=Game;StrategyGame;
