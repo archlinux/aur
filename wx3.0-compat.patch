@@ -1,0 +1,58 @@
+Description: Fix to build with wxWidgets 3.0
+Author: Olly Betts <olly@survex.com>
+Last-Update: 2014-08-14
+
+--- a/desktop/src/Mode.h
++++ b/desktop/src/Mode.h
+@@ -23,6 +23,7 @@
+ #define __BARRYDESKTOP_MODE_H__
+ 
+ #include <wx/wx.h>
++#include <wx/listctrl.h>
+ 
+ class Mode
+ {
+--- a/desktop/src/bsyncjail.cc
++++ b/desktop/src/bsyncjail.cc
+@@ -177,8 +177,8 @@
+ void BarrySyncJail::HandleConflict(OpenSync::SyncConflict &conflict)
+ {
+ 	OpenSync::SyncConflict::iterator i;
+-	int size = 0;
+-	wxChar *buf = 0;
++	size_t size = 0;
++	const wxChar *buf = 0;
+ 
+ 	// start with a new sequence ID
+ 	m_sequenceID++;
+@@ -218,7 +218,7 @@
+ 	}
+ 
+ 	// then wait on the server to tell us what choice was made
+-	buf = m_conflict_con->Request(CONFLICT_ITEM_ANSWER, &size);
++	buf = (const wxChar *)m_conflict_con->Request(CONFLICT_ITEM_ANSWER, &size);
+ 	if( buf ) {
+ 		wxString msg(buf);
+ 		istringstream iss(string(msg.utf8_str()));
+--- a/desktop/src/MigrateDlg.cc
++++ b/desktop/src/MigrateDlg.cc
+@@ -81,7 +81,7 @@
+ 	wxCommandEvent event(MET_PROMPT_PASSWORD, wxID_ANY);
+ 	event.SetEventObject(m_dlg);
+ 	event.SetInt(bp.remaining_tries());
+-	m_dlg->AddPendingEvent(event);
++	m_dlg->GetEventHandler()->ProcessEvent(event);
+ 	m_dlg->WaitForEvent();
+ 
+ 	password_result = m_dlg->GetPassword().utf8_str();
+--- a/src/probe.cc
++++ b/src/probe.cc
+@@ -170,7 +170,7 @@
+ 	// now dump all logged error messages
+ 	if( auto_dump_log && m_fail_msgs.size() ) {
+ 		eout(string_vprintf(_("Probe logged %u exception messages:"),
+-			m_fail_msgs.size()));
++			(unsigned)m_fail_msgs.size()));
+ 		for( std::vector<std::string>::const_iterator b = m_fail_msgs.begin();
+ 			b != m_fail_msgs.end();
+ 			++b )
