@@ -1,0 +1,5 @@
+pkgname=('lib32-gstreamer0.10-base' 'lib32-gstreamer0.10-base-plugins')
+builddeps=('lib32-cdparanoia' 'lib32-gstreamer0.10' 'lib32-libtheora'
+           'lib32-libvisual' 'lib32-orc')
+
+# vim: ts=2 sw=2 et:

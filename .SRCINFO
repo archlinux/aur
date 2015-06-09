@@ -1,0 +1,38 @@
+pkgbase = lib32-gstreamer0.10-base
+	pkgver = 0.10.36
+	pkgrel = 7
+	url = http://gstreamer.freedesktop.org/
+	arch = x86_64
+	license = LGPL
+	makedepends = lib32-alsa-lib
+	makedepends = lib32-cdparanoia
+	makedepends = lib32-gstreamer0.10
+	makedepends = lib32-libgl
+	makedepends = lib32-libtheora
+	makedepends = lib32-libvisual
+	makedepends = lib32-libvorbis
+	makedepends = lib32-libxv
+	makedepends = lib32-orc
+	makedepends = lib32-pango
+	options = !emptydirs
+	source = http://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-0.10.36.tar.xz
+	sha256sums = 1fe45c3894903001d4d008b0713dab089f53726dcb5842d5b40c2595a984e64a
+
+pkgname = lib32-gstreamer0.10-base
+	pkgdesc = GStreamer Multimedia Framework Base plugin libraries
+	depends = gstreamer0.10-base
+	depends = lib32-gstreamer0.10
+	depends = lib32-orc
+	depends = lib32-libxv
+
+pkgname = lib32-gstreamer0.10-base-plugins
+	pkgdesc = GStreamer Multimedia Framework Base Plugins (gst-plugins-base)
+	depends = gstreamer0.10-base-plugins
+	depends = lib32-alsa-lib
+	depends = lib32-cdparanoia
+	depends = lib32-gstreamer0.10-base
+	depends = lib32-libtheora
+	depends = lib32-libvisual
+	depends = lib32-libvorbis
+	depends = lib32-pango
+
