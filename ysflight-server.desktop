@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Server for YsFlight
+Name[fr]=Serveur YsFlight
+Comment=A portable flight simulator
+Comment[fr]=Simulateur de vol multi-plateformes
+Exec=ysflight-server
+Icon=ysflight
+Terminal=true
+Categories=Game;Simulation;
