@@ -1,0 +1,36 @@
+pkgbase = ros-indigo-moveit-ros-benchmarks-gui
+	pkgdesc = ROS - MoveIt GUI tools for benchmarking.
+	pkgver = 0.6.5
+	pkgrel = 1
+	url = http://moveit.ros.org
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-interactive-markers
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-rviz
+	makedepends = ros-indigo-moveit-ros-benchmarks
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-moveit-ros-planning
+	makedepends = ros-indigo-cmake-modules
+	makedepends = ros-indigo-tf
+	makedepends = ros-indigo-eigen-conversions
+	makedepends = ros-indigo-moveit-ros-warehouse
+	makedepends = ros-indigo-moveit-ros-visualization
+	makedepends = pkg-config
+	depends = ros-indigo-interactive-markers
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-rviz
+	depends = ros-indigo-moveit-ros-benchmarks
+	depends = ros-indigo-moveit-ros-planning
+	depends = ros-indigo-tf
+	depends = ros-indigo-eigen-conversions
+	depends = ros-indigo-moveit-ros-warehouse
+	depends = ros-indigo-moveit-ros-visualization
+	source = moveit_ros_benchmarks_gui::git+https://github.com/ros-gbp/moveit_ros-release.git#tag=release/indigo/moveit_ros_benchmarks_gui/0.6.5-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-moveit-ros-benchmarks-gui
+
