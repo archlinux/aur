@@ -1,0 +1,24 @@
+post_install() {
+  _rmsymlink
+  _mksymlink
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  _rmsymlink
+}
+
+_mksymlink() {
+  echo -n "Symlinking pyrpcwallet.py to /usr/bin/pyrpcwallet..."
+  ln -s /usr/share/pyrpcwallet/pyrpcwallet.py /usr/bin/pyrpcwallet
+  echo "done"
+}
+
+_rmsymlink() {
+  echo -n "Removing symlinks..."
+  rm -f /usr/bin/pyrpcwallet
+  echo "done"
+}
