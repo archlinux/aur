@@ -1,0 +1,25 @@
+pkgbase = vivisect-git
+	pkgdesc = Static analysis / emulation / symbolik analysis framework for PE/Elf/Mach-O/Blob binary formats on various architectures
+	pkgver = 20150307
+	pkgrel = 1
+	url = https://github.com/vivisect/vivisect
+	install = vivisect.install
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	depends = python2
+	depends = python2-psycopg2
+	depends = python2-pyqt4
+	depends = qt4
+	provides = vivisect
+	conflicts = vivisect
+	source = git+https://github.com/vivisect/vivisect
+	source = vdbbin.sh
+	source = vivbin.sh
+	sha256sums = SKIP
+	sha256sums = bc0e8f4ad05ab33d658276de6ca76e846ea7057bab8dd80285840b5495c8127a
+	sha256sums = 8ba658b56c33295edab6c350793850eb366d7a16011cc0d49bd7c48a74638ce3
+
+pkgname = vivisect-git
+
