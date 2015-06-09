@@ -1,0 +1,17 @@
+pkgbase = tcptrace
+	pkgdesc = A TCP dump file analysis tool
+	pkgver = 6.6.7
+	pkgrel = 2
+	url = http://tcptrace.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libpcap
+	optdepends = tcpdump: for generating dumps
+	optdepends = gnuplot: for plotting graphs
+	optdepends = xplot: for plotting graphs
+	source = http://tcptrace.org/download/tcptrace-6.6.7.tar.gz
+	md5sums = 68128dc1817b866475e2f048e158f5b9
+
+pkgname = tcptrace
+
