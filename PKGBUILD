@@ -5,7 +5,7 @@
 pkgbase=xorg-server-bug865
 pkgname=xorg-server-bug865
 pkgver=1.17.1
-pkgrel=5 # build first with 0.1 and then rebuild it after xf86-input-evdev rebuild
+pkgrel=6 # build first with 0.1 and then rebuild it after xf86-input-evdev rebuild
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://xorg.freedesktop.org"
@@ -24,6 +24,10 @@ source=(${url}/releases/individual/xserver/xorg-server-${pkgver}.tar.bz2{,.sig}
         v2-xserver-Fix-a-crash-with-XDMCP-error-handler.patch
         0001-int10-Fix-error-check-for-pci_device_map_legacy.patch
         0001-mi-Partial-pie-slice-filled-arcs-may-need-more-space.patch
+        0001-sdksyms.sh-Make-sdksyms.sh-work-with-gcc5.patch
+        0001-dix-Add-unaccelerated-valuators-to-the-ValuatorMask.patch
+        0002-dix-hook-up-the-unaccelerated-valuator-masks.patch
+        fix-CVE-2015-3164.patch
         freedesktop-bug-865.patch)
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
               'C383B778255613DFDB409D91DB221A6900000011')
@@ -36,18 +40,29 @@ sha256sums=('2bf8e9f6f0a710dec1d2472467bff1f4e247cb6dcd76eb469aafdc8a2d7db2ab'
             'a73e33644682d9f430db987c192da0f7193907af50539669ebd59614a5ebd0f9'
             '2ea82cdbd695f21c935710847913ed58e22d3d5c0c18c96175a4a6cc1142c071'
             'ca89cc013844c5b50abfde4cc5e852ecdf4368f8b069ffd069a7100843c46e90'
+            'b4a4fbddebfa614d1a97e77dde98748682ee331fbf7be394480050670d6203aa'
+            '3dc795002b8763a7d29db94f0af200131da9ce5ffc233bfd8916060f83a8fad7'
+            '416a1422eed71efcebb1d893de74e7f27e408323a56c4df003db37f5673b3f96'
+            'bc6ac3e686e16f0357fd3b939c1c1f2845fdb444d5ec9c8c37fb69167cc54a28'
             'ad64fd593cd4cdfdd830c4295ebe1acd4259e45cfc12a258a162ecdbb11fd7ca')
 
 prepare() {
   cd "xorg-server-${pkgver}"
-  # fix FS#43884, not yet upstream
+  # fix FS#43884, merged upstream
   patch -Np1 -i ../os-access-fix-regression-in-server-interpreted-auth.patch
-  # partially fix FS#43867, not yet upstream
+  # partially fix FS#43867, merged upstream
   patch -Np1 -i ../v2-xserver-Fix-a-crash-with-XDMCP-error-handler.patch
   # fix FS#43924, merged upstream
   patch -Np1 -i ../0001-int10-Fix-error-check-for-pci_device_map_legacy.patch
   # fix FS#43937, merged upstream
   patch -Np1 -i ../0001-mi-Partial-pie-slice-filled-arcs-may-need-more-space.patch
+  # fix FS#45245, merged upstream
+  patch -Np1 -i ../0001-sdksyms.sh-Make-sdksyms.sh-work-with-gcc5.patch
+  # fix FS#45229, merged upstream
+  patch -Np1 -i ../0001-dix-Add-unaccelerated-valuators-to-the-ValuatorMask.patch
+  patch -Np1 -i ../0002-dix-hook-up-the-unaccelerated-valuator-masks.patch
+  # fix CVE-2015-3164, merged upstream
+  patch -Np1 -i ../fix-CVE-2015-3164.patch
   # The patch for freedesktop bug 865
   patch -Np1 -i "${srcdir}/freedesktop-bug-865.patch"
 }
@@ -108,7 +123,7 @@ package_xorg-server-bug865() {
   depends=(libepoxy libxdmcp libxfont libpciaccess libdrm pixman libgcrypt libxau xorg-server-common xf86-input-evdev libxshmfence libgl)
   # see xorg-server-*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
   # and /usr/lib/pkgconfig/xorg-server.pc in xorg-server-devel pkg
-  provides=('X-ABI-VIDEODRV_VERSION=19' 'X-ABI-XINPUT_VERSION=21' 'X-ABI-EXTENSION_VERSION=9.0' 'x-server' 'xorg-server=1.17.1')
+  provides=('X-ABI-VIDEODRV_VERSION=19' 'X-ABI-XINPUT_VERSION=21.1' 'X-ABI-EXTENSION_VERSION=9.0' 'x-server' 'xorg-server=1.17.1')
   groups=('xorg')
   conflicts=('nvidia-utils<=331.20' 'glamor-egl' 'xf86-video-modesetting' 'xorg-server')
   replaces=('glamor-egl' 'xf86-video-modesetting')
