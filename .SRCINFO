@@ -1,0 +1,15 @@
+pkgbase = totp-cli
+	pkgdesc = Cli application to generate OTP tokens for two-factor authentication.
+	pkgver = 1.0
+	pkgrel = 2
+	url = https://github.com/hobarrera/totp-cli
+	arch = any
+	license = MIT
+	depends = ruby-rotp
+	depends = xclip
+	depends = pass
+	source = https://github.com/hobarrera/totp-cli/archive/v1.0.tar.gz
+	md5sums = a561feb1b11588cc670ceb1de237c881
+
+pkgname = totp-cli
+
