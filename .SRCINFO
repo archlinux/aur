@@ -1,0 +1,15 @@
+pkgbase = kmscube-git
+	pkgdesc = example gl app using kms/gbm
+	pkgver = a
+	pkgrel = 1
+	url = https://github.com/robclark/kmscube
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = mesa
+	source = git://github.com/robclark/kmscube.git
+	md5sums = SKIP
+
+pkgname = kmscube-git
+
