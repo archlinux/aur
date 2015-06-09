@@ -1,0 +1,27 @@
+From 1fc018e412aea7f1f120342bbc9625a64d8bc4e9 Mon Sep 17 00:00:00 2001
+From: Taegil Bae <esrevinu@gmail.com>
+Date: Sun, 19 Jan 2014 19:08:17 +0900
+Subject: [PATCH 4/6] disable clickpad_guess_clickfingers
+
+---
+ src/synaptics.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/synaptics.c b/src/synaptics.c
+index aa7725d..07581eb 100644
+--- a/src/synaptics.c
++++ b/src/synaptics.c
+@@ -2710,8 +2710,10 @@ handle_clickfinger(SynapticsPrivate * priv, struct SynapticsHwState *hw)
+      * three fingers down: F3_CLICK
+      */
+ 
++    /*
+     if (para->clickpad)
+         nfingers = clickpad_guess_clickfingers(priv, hw);
++    */
+ 
+     switch (nfingers) {
+     case 1:
+-- 
+1.9.3
+

@@ -1,0 +1,30 @@
+From c3611342ce86d4d94c8e7f1ec4dae69ad45b86ea Mon Sep 17 00:00:00 2001
+From: Taegil Bae <esrevinu@gmail.com>
+Date: Sat, 22 Feb 2014 22:08:17 +0900
+Subject: [PATCH 6/6] add synatics' files into Makefile.am
+
+---
+ src/Makefile.am | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 5e0c3b3..5b83982 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -40,5 +40,12 @@ AM_CPPFLAGS =-I$(top_srcdir)/include $(LIBEVDEV_CFLAGS)
+                                emuWheel.c \
+                                draglock.c \
+                                apple.c \
+-                               axis_labels.h
++                               axis_labels.h \
++                               eventcomm.c \
++                               eventcomm.h \
++                               properties.c \
++                               synaptics.c \
++                               synapticsstr.h \
++                               synproto.c \
++                               synproto.h
+ 
+-- 
+1.9.3
+

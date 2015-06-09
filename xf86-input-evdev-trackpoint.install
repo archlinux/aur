@@ -1,0 +1,6 @@
+post_install() {
+    echo "This is for laptops with trackpoint and clickpad."
+    echo "In the default settings, the upper 40% area of touchpad will work as trackpoint button."
+    echo "The lower area will work as touchpad as it is."
+}
+
