@@ -1,0 +1,14 @@
+pkgbase = python-polib
+	pkgdesc = A library to manipulate, create and modify gettext files
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://bitbucket.org/izi/polib/
+	arch = any
+	license = MIT
+	depends = python
+	source = https://pypi.python.org/packages/source/p/polib/polib-1.0.6.tar.gz
+	md5sums = 2369620208823811a89a2da73ed606c9
+	sha256sums = 20d2a0d589a692c11df549bd7cda83c665eef2a83e017b843fecdf956edbad74
+
+pkgname = python-polib
+
