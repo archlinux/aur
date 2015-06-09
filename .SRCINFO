@@ -1,0 +1,17 @@
+pkgbase = gctwimax
+	pkgdesc = Linux driver for GDM7213 & GDM7205 GCT Semiconductor WiMax chip. Used by YTL's YES 4G service for it's Yes Go dongle.
+	pkgver = 0.0.3rc4
+	pkgrel = 1
+	url = https://code.google.com/p/gctwimax
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libusb
+	depends = libeap
+	source = http://gctwimax.googlecode.com/files/gctwimax-0.0.3rc4.tar.gz
+	source = http://gctwimax.googlecode.com/files/gctwimax-0.0.3rc4_libusb_context_fix.patch
+	md5sums = 55d643a2e18811207b96a31751dcd2ab
+	md5sums = 3caa82128bc96e2386124219c2afbfbe
+
+pkgname = gctwimax
+

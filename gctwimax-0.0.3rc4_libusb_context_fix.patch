@@ -1,0 +1,32 @@
+Date: 2012-04-28 22:16:26.652869800 +0200
+Subject: [PATCH] gctwimax: add libusb context when open device
+
+--- a/src/wimax.c	2011-11-26 23:41:27.659546400 +0200
++++ b/src/wimax.c	2012-04-28 22:16:26.652869800 +0300
+@@ -266,7 +266,7 @@
+ {
+ 	struct libusb_device_handle *handle = NULL;
+ 	int r;
+-	handle = libusb_open_device_with_vid_pid(NULL, 0x1076, 0x7f40);
++	handle = libusb_open_device_with_vid_pid(ctx, 0x1076, 0x7f40);
+ 	if (handle != NULL ){
+ 		int disk_if = 0;
+ 		
+@@ -316,7 +316,7 @@
+ 	struct libusb_device_handle *handle = NULL;
+ 
+ 	//Switch modem the same as in usb_modeswitch
+-	handle = libusb_open_device_with_vid_pid(NULL, 0x1076, 0x7f00);
++	handle = libusb_open_device_with_vid_pid(ctx, 0x1076, 0x7f00);
+ 	if (handle == NULL){
+ 		if (switch_wimax_device()){
+ 		
+@@ -324,7 +324,7 @@
+ 			do
+ 			{
+ 				sleep(1); // Wait while device switching
+-				handle = libusb_open_device_with_vid_pid(NULL, 0x1076, 0x7f00);
++				handle = libusb_open_device_with_vid_pid(ctx, 0x1076, 0x7f00);
+ 			}
+ 			while (retry++ < 5 && !handle);
+ 
