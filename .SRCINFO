@@ -1,0 +1,18 @@
+pkgbase = zero-cache
+	pkgdesc = A Open Source cross-platform distributed memory caching system based on ZMQ messaging library
+	pkgver = 2.2
+	pkgrel = 2
+	url = http://zero-cache.blogspot.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	depends = zeromq
+	source = git+https://github.com/ellysh/zero-cache.git#tag=2.2
+	source = stress_value_test.cpp.patch
+	md5sums = SKIP
+	md5sums = 9da6d84906605aa909f00af4c7a2529b
+
+pkgname = zero-cache
+

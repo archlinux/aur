@@ -1,0 +1,25 @@
+diff --git a/test/stress_array_test.cpp b/test/stress_array_test.cpp
+index 3592b61..dcdd043 100644
+--- a/test/stress_array_test.cpp
++++ b/test/stress_array_test.cpp
+@@ -6,6 +6,7 @@
+ 
+ #include "untyped_client.h"
+ #include "thread.h"
++#include <unistd.h>
+ 
+ using namespace std;
+ using namespace zero_cache;
+diff --git a/test/stress_value_test.cpp b/test/stress_value_test.cpp
+index c93926a..929d4df 100644
+--- a/test/stress_value_test.cpp
++++ b/test/stress_value_test.cpp
+@@ -5,7 +5,7 @@
+ 
+ #include "typed_client.h"
+ #include "thread.h"
+-
++#include <unistd.h>
+ using namespace std;
+ using namespace zero_cache;
+ 
