@@ -1,0 +1,18 @@
+pkgbase = python2-qrtools
+	pkgdesc = A high level library for reading and generating QR codes.
+	pkgver = 1.2
+	pkgrel = 4
+	url = https://launchpad.net/qr-tools
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = python2
+	depends = python2-pillow
+	depends = zbar
+	depends = qrencode
+	provides = python2-qrtools
+	source = https://launchpad.net/qr-tools/trunk/1.2/+download/qr-tools-1.2.tar.gz
+	md5sums = 07bd6018e2325dd29acb5f7623b3e018
+
+pkgname = python2-qrtools
+
