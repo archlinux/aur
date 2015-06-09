@@ -1,0 +1,21 @@
+pkgbase = nas
+	pkgdesc = Network Audio System is a network transparent, client/server audio transport system
+	pkgver = 1.9.4
+	pkgrel = 1
+	url = http://radscan.com/nas.html
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = imake
+	depends = libxaw
+	source = http://downloads.sourceforge.net/sourceforge/nas/nas-1.9.4.src.tar.gz
+	source = license
+	source = nasd.service
+	source = nasd
+	md5sums = dac0e6cd3e5d6a37ae1dff364236a752
+	md5sums = f11eb8c3fb83946e66e60f7532e8d5da
+	md5sums = 3bd8268d3655509b6e10475060dfbf10
+	md5sums = fb0acd5e3fae362a55d2fbeeb9be0dbb
+
+pkgname = nas
+

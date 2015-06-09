@@ -1,0 +1,13 @@
+[Unit]
+Description=Network Audio System daemon
+After=syslog.target
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/conf.d/nasd
+ExecStartPre=/usr/bin/modprobe snd-pcm-oss
+ExecStart=/usr/bin/nasd $NASD_OPTIONS
+
+[Install]
+WantedBy=multi-user.target
