@@ -8,7 +8,7 @@ arch=(any)
 license=('GPL')
 url="http://www.swgemu.com"
 _dlurl=http://launchpad2.net/SWGEmuLaunchpad_ubuntu_x86_64.tar.gz
-depends=('qt5-base')
+depends=('qt5-base','qt5-webkit')
 source=(launchpad launchpad.desktop launchpad.install icon.png ${_dlurl})
 md5sums=('b7041ff9bef465687f6df5a6fb9053db'
          '3d5fff82e58d1a1ff548f72a0cb466ea'
