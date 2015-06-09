@@ -1,6 +1,6 @@
 pkgbase = i2p-dev
 	pkgdesc = A distributed anonymous network (daily mtn->git sync)
-	pkgver = 0.9.19.33
+	pkgver = 0.9.20.4
 	pkgrel = 1
 	epoch = 1
 	url = https://geti2p.net
