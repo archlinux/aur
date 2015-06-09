@@ -1,0 +1,16 @@
+pkgbase = python2-html
+	pkgdesc = Simple, elegant HTML, XHTML and XML generation
+	pkgver = 1.16
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/html
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/h/html/html-1.16.tar.gz
+	md5sums = 39b9db7cdcc84607828be021172d441f
+	sha256sums = ebc768f23b54a71350d731a75f2ef3a4a4dbdad9ae68d58b527664b66088e456
+
+pkgname = python2-html
+
