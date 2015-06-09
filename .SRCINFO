@@ -1,0 +1,15 @@
+pkgbase = stapler-git
+	pkgdesc = Manipulate PDF documents from the command line
+	pkgver = 0.2b.39.g8b5f409
+	pkgrel = 1
+	url = http://github.com/hellerbarde/stapler
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = python2-pypdf2
+	depends = python2-setuptools
+	source = git+https://github.com/hellerbarde/stapler.git
+	md5sums = SKIP
+
+pkgname = stapler-git
+
