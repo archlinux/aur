@@ -1,0 +1,16 @@
+pkgbase = ttf-impallari-neuton-serif-family
+	pkgdesc = A classy blend of simplification, curvature, and angles, from Pablo Impallari
+	pkgver = 1.46
+	pkgrel = 1
+	url = http://www.impallari.com/projects/overview/neuton-serif-family/
+	install = updatefont.install
+	arch = any
+	groups = impallari-fonts
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.impallari.com/media/uploads/prosources/update-25-source.zip
+	md5sums = 28e071cc9185097b7f7df6d76c2d5db7
+
+pkgname = ttf-impallari-neuton-serif-family
+
