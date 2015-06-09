@@ -1,0 +1,17 @@
+pkgbase = python-pypdf2-git
+	pkgdesc = PyPDF2 library for Python3
+	pkgver = b17382f
+	pkgrel = 1
+	url = http://mstamy2.github.com/PyPDF2
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	conflicts = python-pypdf-git
+	source = git+https://github.com/mstamy2/PyPDF2.git
+	md5sums = SKIP
+
+pkgname = python-pypdf2-git
+
