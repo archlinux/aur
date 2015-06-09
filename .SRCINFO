@@ -1,0 +1,18 @@
+pkgbase = artefetcher-qt4-git
+	pkgdesc = a tool to fetch videos from Arte TV channel
+	pkgver = 0.5.3.r1.gc5e6dad
+	pkgrel = 1
+	url = http://artefetcher.sourceforge.net/
+	install = artefetcher-qt4-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = qt4
+	provides = artefetcher-qt4
+	conflicts = artefetcher-qt4
+	source = artefetcher-qt4::git+git://git.code.sf.net/p/artefetcher/code
+	md5sums = SKIP
+
+pkgname = artefetcher-qt4-git
+
