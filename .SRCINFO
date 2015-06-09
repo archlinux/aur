@@ -1,0 +1,21 @@
+pkgbase = openresolv-openrc
+	pkgdesc = resolv.conf management framework (resolvconf)
+	pkgver = 3.6.1
+	pkgrel = 6
+	url = http://roy.marples.name/projects/openresolv
+	arch = any
+	license = custom:BSD
+	depends = bash
+	depends = openrc-core
+	provides = openresolv
+	conflicts = openresolv
+	backup = etc/resolvconf.conf
+	source = http://roy.marples.name/downloads/openresolv/openresolv-3.6.1.tar.bz2
+	source = fs33801.patch
+	source = openrc-path.patch
+	sha1sums = 03bbbe32e3763ed3a17f83c500469ddc5969bbe7
+	sha1sums = 7d68b36dfd6c8f01f9bf21a726e82d4cffb48bca
+	sha1sums = 69177771673976506c24b4dfb88fa15fadd36077
+
+pkgname = openresolv-openrc
+
