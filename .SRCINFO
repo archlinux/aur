@@ -1,0 +1,14 @@
+pkgbase = nodejs-grunt
+	pkgdesc = The JavaScript Task Runner
+	pkgver = 0.4.5
+	pkgrel = 1
+	url = http://gruntjs.com/
+	arch = any
+	license = MIT
+	depends = nodejs
+	noextract = grunt-0.4.5.tgz
+	source = http://registry.npmjs.org/grunt/-/grunt-0.4.5.tgz
+	sha1sums = 56937cd5194324adff6d207631832a9d6ba4e7f0
+
+pkgname = nodejs-grunt
+
