@@ -1,0 +1,7 @@
+post_install () {
+  echo " * To enable TOMOYO Linux, append 'security=tomoyo' to the kernel"
+  echo "   boot options and initialize policy with this command:"
+  echo "     /usr/lib/tomoyo/init_policy"
+  echo "  Also you may pass TOMOYO_trigger parameter if CONFIG_SECURITY_TOMOYO_ACTIVATION_TRIGGER"
+  echo "  kernel option has wrong value"
+}

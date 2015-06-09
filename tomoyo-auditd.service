@@ -1,0 +1,15 @@
+[Unit]
+Description=Tomoyo Auditing
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/tomoyo-auditd
+ExecReload=/usr/bin/kill -HUP $MAINPID
+ProtectSystem=full
+ProtectHome=true
+PrivateNetwork=true
+PrivateDevices=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
