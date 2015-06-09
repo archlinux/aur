@@ -1,0 +1,22 @@
+pkgbase = lib32-libgcrypt15-git
+	pkgdesc = General purpose cryptographic library based on the code from GnuPG. Latest commit from 1.5 branch - API version 11 (32bit).
+	pkgver = 1.5.4.r3.g35cd81f
+	pkgrel = 1
+	url = http://www.gnupg.org
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = transfig
+	makedepends = gcc-multilib
+	makedepends = automake
+	makedepends = ghostscript
+	depends = lib32-libgpg-error
+	provides = lib32-libgcrypt=1.5.4.r3.g35cd81f
+	provides = lib32-libgcrypt15=1.5.4.r3.g35cd81f
+	conflicts = lib32-libgcrypt15
+	conflicts = lib32-libgcrypt11
+	source = git://git.gnupg.org/libgcrypt.git#branch=LIBGCRYPT-1-5-BRANCH
+	sha1sums = SKIP
+
+pkgname = lib32-libgcrypt15-git
+
