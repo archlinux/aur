@@ -1,0 +1,25 @@
+pkgbase = aria2-git
+	pkgdesc = Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink
+	pkgver = 1.16.4.30.gb292ae1
+	pkgrel = 1
+	epoch = 1
+	url = http://aria2.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cppunit
+	makedepends = python-sphinx
+	depends = gnutls
+	depends = libxml2
+	depends = sqlite3
+	depends = c-ares
+	depends = ca-certificates
+	provides = aria2
+	conflicts = aria2
+	conflicts = aria2-daemon-svn
+	source = git://github.com/tatsuhiro-t/aria2.git
+	md5sums = SKIP
+
+pkgname = aria2-git
+
