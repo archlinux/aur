@@ -1,0 +1,12 @@
+diff a/libs/extlib/extHashtbl.mli b/libs/extlib/extHashtbl.mli
+--- a/libs/extlib/extHashtbl.mli
++++ b/libs/extlib/extHashtbl.mli
+@@ -73,7 +73,7 @@ module Hashtbl :
+ 		functions. (note : functor support removed to avoid code
+ 		duplication). *)
+ 
+-	val create : int -> ('a, 'b) t
++	val create : ?random:bool -> int -> ('a, 'b) t
+ 	val clear : ('a, 'b) t -> unit
+ 	val add : ('a, 'b) t -> 'a -> 'b -> unit
+ 	val copy : ('a, 'b) t -> ('a, 'b) t

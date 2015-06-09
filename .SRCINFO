@@ -1,0 +1,31 @@
+pkgbase = haxe2
+	pkgdesc = A multiplatform open source programming language
+	pkgver = 2.10
+	pkgrel = 3
+	url = http://haxe.org/
+	install = haxe.install
+	arch = i686
+	arch = x86_64
+	groups = devel
+	license = GPL2
+	license = MIT
+	makedepends = subversion
+	makedepends = ocaml>=4.00.0
+	makedepends = zlib
+	makedepends = neko>=1.8.2
+	depends = neko>=1.8.2
+	provides = haxe
+	options = !strip
+	options = emptydirs
+	options = !makeflags
+	source = haxeserver
+	source = haxe.sh
+	source = haxe.csh
+	source = extlib.patch
+	md5sums = 27d7af131da515355cca04b8b404feaa
+	md5sums = 79cbf6ebdb3d56e980d1a17fa9cb3b2d
+	md5sums = 5e0e656293e92a6437d76f2f406438b5
+	md5sums = ae26bfc2ba01b870ba6ad2b3183b37af
+
+pkgname = haxe2
+
