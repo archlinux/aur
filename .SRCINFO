@@ -1,0 +1,14 @@
+pkgbase = apigility
+	pkgdesc = The world's easiest way to create high-quality APIs.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = http://www.apigility.org/
+	arch = any
+	license = BSD
+	depends = php>=5.4.8
+	options = !strip
+	source = https://github.com/zfcampus/zf-apigility-skeleton/releases/download/1.1.1/zf-apigility-skeleton-1.1.1.tgz
+	sha256sums = 3dd01dc8cca5cccea96c0c597bcda2a97fc785a303ed42f22420851ae551a94c
+
+pkgname = apigility
+
