@@ -1,0 +1,9 @@
+[Unit]
+Description=Music Player Daemon socket
+
+[Socket]
+ListenStream=6600
+Service=mpd.service
+
+[Install]
+WantedBy=default.target
