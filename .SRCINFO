@@ -1,0 +1,16 @@
+pkgbase = ttf-impallari-libre-caslon-text
+	pkgdesc = Libre Caslon in Text style, from Pablo Impallari
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://www.impallari.com/projects/overview/libre-caslon-display-and-text
+	install = updatefont.install
+	arch = any
+	groups = impallari-fonts
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.impallari.com/media/uploads/prosources/update-94-source.zip
+	md5sums = 588a7650bb441a569b81f927f71732cd
+
+pkgname = ttf-impallari-libre-caslon-text
+
