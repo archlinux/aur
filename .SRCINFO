@@ -1,0 +1,15 @@
+pkgbase = kicad-library-git
+	pkgdesc = The schematic and 3D libraries supported by KiCad team
+	pkgver = a
+	pkgrel = 1
+	url = https://github.com/KiCad/kicad-library
+	arch = any
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	conflicts = kicad-library-bzr
+	source = git://github.com/KiCad/kicad-library.git
+	md5sums = SKIP
+
+pkgname = kicad-library-git
+
