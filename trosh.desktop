@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1
+Type=Application
+Icon=gnome-mime-application-x-love-game
+Exec=trosh
+Terminal=false
+StartupNotify=false
+Name=Trosh: The Movie: The Game
+GenericName=Arcade Game
+Categories=Game;ArcadeGame;
