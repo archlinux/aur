@@ -1,0 +1,24 @@
+post_install() {
+  _rmsymlink
+  _mksymlink
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  _rmsymlink
+}
+
+_mksymlink() {
+  echo -n "Symlinking bitc to /usr/bin/bitc... "
+  ln -s /usr/share/bitc/bitc /usr/bin/bitc
+  echo "done"
+}
+
+_rmsymlink() {
+  echo -n "Removing symlinks..."
+  rm -f /usr/bin/bitc
+  echo "done"
+}

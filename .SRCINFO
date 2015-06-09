@@ -1,0 +1,24 @@
+pkgbase = bitc-git
+	pkgdesc = Thin SPV terminal-based Bitcoin client written in ANSI C
+	pkgver = 20141118
+	pkgrel = 1
+	url = https://github.com/bit-c/bitc
+	install = bitc.install
+	arch = any
+	license = MIT
+	makedepends = clang
+	makedepends = gcc
+	makedepends = git
+	makedepends = make
+	depends = curl
+	depends = leveldb
+	depends = ncurses
+	depends = openssl
+	depends = snappy
+	provides = bitc
+	conflicts = bitc
+	source = git+https://github.com/bit-c/bitc
+	sha256sums = SKIP
+
+pkgname = bitc-git
+
