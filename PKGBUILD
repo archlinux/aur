@@ -1,7 +1,7 @@
 # Maintainer: Jan-Erik Rediger <badboy at archlinux dot us>
 
 pkgname=bats-git
-pkgver=v0.4.0
+pkgver=v0.4.0.r5.g955309a
 pkgrel=1
 pkgdesc="Bash Automated Testing System"
 arch=("any")
@@ -16,7 +16,7 @@ _gitname='bats'
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
-  git describe --tags | sed 's/-/./g'
+  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
