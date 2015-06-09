@@ -1,0 +1,16 @@
+pkgbase = amgcl-git
+	pkgdesc = C++ library for solving large sparse linear systems with algebraic multigrid method
+	pkgver = 20150609
+	pkgrel = 2
+	url = http://github.com/ddemidov/amgcl
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	depends = boost-libs
+	provides = amgcl
+
+pkgname = amgcl-git
+
