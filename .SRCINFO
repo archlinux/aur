@@ -1,0 +1,16 @@
+pkgbase = gog-quest-for-infamy
+	pkgdesc = Quest For Infamy is a role-playing adventure game where you assume the identity of Mr. Roehm - a scoundrel who is on the run from his latest scrape. GOG Version. Linux native.
+	pkgver = 1.1.0.4
+	pkgrel = 3
+	url = http://www.gog.com/game/quest_for_infamy
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = custom
+	source = local://gog_quest_for_infamy_1.1.0.4.tar.gz
+	source = gog-quest-for-infamy
+	sha256sums = 2e1e05313e3c0db48831e284075019c18d9245f968ca1177ce82b6375e85bf00
+	sha256sums = 8e226ffb62292c57e4bc76eb0e565f272e6d9d2283541cef7648e3abbcf829de
+
+pkgname = gog-quest-for-infamy
+
