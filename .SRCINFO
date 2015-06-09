@@ -1,0 +1,21 @@
+pkgbase = hp-health
+	pkgdesc = HP System Health Application and Command line Utility Package
+	pkgver = 9.50_1628
+	pkgrel = 3
+	url = http://downloads.linux.hp.com/SDR/downloads/mcp
+	arch = i686
+	arch = x86_64
+	groups = hpproliant
+	license = CUSTOM
+	depends = bash
+	depends = dmidecode
+	depends = pciutils
+	source = http://downloads.linux.hp.com/SDR/downloads/mcp/centos/6//current/hp-health-9.50-1628.32.rhel6..rpm
+	source = hpasmd.service
+	source = hpasrd.service
+	sha256sums = 8dc1247dded64d620d72b02384997d3e6bf582233fa766ee9bd35c7ef17ecaed
+	sha256sums = 6db979dcc293bb4e73593e19e467c45a3f66bdab7df395ccb63218926aeb6050
+	sha256sums = 78913f4ab8230eafad68d9bfc69075ce81ccf06e7b77864f4a0aa73226d2cc90
+
+pkgname = hp-health
+

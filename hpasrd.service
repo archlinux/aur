@@ -1,0 +1,13 @@
+[Unit]
+Description=HP Advanced Server Recovery Daemon
+Requires=hpasmd.service
+After=hpasmd.service
+
+[Service]
+Type=forking
+ExecStart=/opt/hp/hp-health/bin/hp-asrd
+Restart=on-abort
+
+
+[Install]
+WantedBy=multi-user.target

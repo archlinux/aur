@@ -1,0 +1,11 @@
+[Unit]
+Description=Proliant System Health Monitor
+
+[Service]
+Type=forking
+ExecStartPre=-/usr/bin/modprobe ipmi_devintf
+ExecStart=/opt/hp/hp-health/bin/hpasmlited -f /dev/ipmi0
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
