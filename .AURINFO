@@ -1,0 +1,15 @@
+pkgbase = videogen
+	pkgdesc = generates modelines for videocards
+	pkgver = 0.33
+	pkgrel = 1
+	url = http://www.dynaweb.hu/opensource/videogen/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = pkgconfig
+	depends = bc
+	depends = glibc>=2.7-1
+	source = http://www.dynaweb.hu/opensource/videogen/download/videogen-0.33.tar.gz
+
+pkgname = videogen
+
