@@ -1,0 +1,16 @@
+pkgbase = ttf-impallari-ranchers
+	pkgdesc = 'Relaxed interpretations' of sans serif typefaces typical of 1950, from Pablo Impallari
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.impallari.com/projects/overview/ranchers
+	install = updatefont.install
+	arch = any
+	groups = impallari-fonts
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.impallari.com/media/uploads/prosources/update-69-source.zip
+	md5sums = cfcf1d48069d55010dd533ae0c7adaff
+
+pkgname = ttf-impallari-ranchers
+
