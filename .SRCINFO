@@ -1,0 +1,13 @@
+pkgbase = scamper
+	pkgdesc = designed to actively probe destinations in the Internet in parallel (at a specified packets-per-second rate) so that bulk data can be collected in a timely fashion
+	pkgver = 20140530
+	pkgrel = 1
+	url = http://www.caida.org/tools/measurement/scamper/
+	arch = i686
+	arch = x86_64
+	license = gpl
+	source = http://www.caida.org/tools/measurement/scamper/code/scamper-cvs-20140530.tar.gz
+	md5sums = d87170ac8af04b459af30c96e5406041
+
+pkgname = scamper
+
