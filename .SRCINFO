@@ -1,0 +1,165 @@
+pkgbase = php54
+	pkgver = 5.4.41
+	pkgrel = 1
+	url = http://www.php.net
+	arch = i686
+	arch = x86_64
+	license = PHP
+	makedepends = apache
+	makedepends = imap
+	makedepends = postgresql-libs
+	makedepends = libldap
+	makedepends = postfix
+	makedepends = libvpx
+	makedepends = sqlite
+	makedepends = unixodbc
+	makedepends = net-snmp
+	makedepends = libzip
+	makedepends = enchant
+	makedepends = file
+	makedepends = freetds
+	makedepends = libmcrypt
+	makedepends = tidyhtml
+	makedepends = aspell
+	makedepends = libltdl
+	makedepends = libpng
+	makedepends = libjpeg
+	makedepends = icu
+	makedepends = curl
+	makedepends = libxslt
+	makedepends = openssl
+	makedepends = bzip2
+	makedepends = db
+	makedepends = gmp
+	makedepends = freetype2
+	makedepends = systemd
+	source = http://www.php.net/distributions/php-5.4.41.tar.bz2
+	source = php.ini.patch
+	source = apache.conf
+	source = php-fpm.conf.in.patch
+	source = logrotate.d.php-fpm
+	source = php-fpm.service
+	source = php-fpm.tmpfiles
+	md5sums = e00817b920cfc6dde2d01d7a74c654c0
+	md5sums = 466e1436808a8baeb14021bc40cc4d86
+	md5sums = dec2cbaad64e3abf4f0ec70e1de4e8e9
+	md5sums = 262f637cc3af70b545a965a180272cbc
+	md5sums = e036c721e5ad927cd1613c7475a58b3a
+	md5sums = cc2940f5312ba42e7aa1ddfab74b84c4
+	md5sums = c60343df74f8e1afb13b084d5c0e47ed
+
+pkgname = php54
+	pkgdesc = An HTML-embedded scripting language
+	depends = pcre
+	depends = libxml2
+	depends = bzip2
+	depends = curl
+	provides = php-fileinfo
+	provides = php-gmp
+	provides = php-curl
+	provides = php
+	conflicts = php-fileinfo
+	conflicts = php-gmp
+	conflicts = php-curl
+	conflicts = php
+	replaces = php-fileinfo
+	replaces = php-gmp
+	replaces = php-curl
+	replaces = php
+	backup = etc/php/php.ini
+
+pkgname = php54-cgi
+	pkgdesc = CGI and FCGI SAPI for PHP
+	depends = php54
+
+pkgname = php54-apache
+	pkgdesc = Apache SAPI for PHP
+	depends = php54
+	depends = apache
+	backup = etc/httpd/conf/extra/php5_module.conf
+
+pkgname = php54-fpm
+	pkgdesc = FastCGI Process Manager for PHP
+	install = php-fpm.install
+	depends = php54
+	depends = systemd
+	backup = etc/php/php-fpm.conf
+
+pkgname = php54-embed
+	pkgdesc = Embed SAPI for PHP
+	depends = php54
+
+pkgname = php54-pear
+	pkgdesc = PHP Extension and Application Repository
+	depends = php54
+	backup = etc/php/pear.conf
+
+pkgname = php54-enchant
+	pkgdesc = enchant module for PHP
+	depends = php54
+	depends = enchant
+
+pkgname = php54-gd
+	pkgdesc = gd module for PHP
+	depends = php54
+	depends = libpng
+	depends = libjpeg
+	depends = freetype2
+	depends = libvpx
+
+pkgname = php54-intl
+	pkgdesc = intl module for PHP
+	depends = php54
+	depends = icu
+
+pkgname = php54-ldap
+	pkgdesc = ldap module for PHP
+	depends = php54
+	depends = libldap
+
+pkgname = php54-mcrypt
+	pkgdesc = mcrypt module for PHP
+	depends = php54
+	depends = libmcrypt
+	depends = libltdl
+
+pkgname = php54-mssql
+	pkgdesc = mssql module for PHP
+	depends = php54
+	depends = freetds
+
+pkgname = php54-odbc
+	pkgdesc = ODBC modules for PHP
+	depends = php54
+	depends = unixodbc
+
+pkgname = php54-pgsql
+	pkgdesc = PostgreSQL modules for PHP
+	depends = php54
+	depends = postgresql-libs
+
+pkgname = php54-pspell
+	pkgdesc = pspell module for PHP
+	depends = php54
+	depends = aspell
+
+pkgname = php54-snmp
+	pkgdesc = snmp module for PHP
+	depends = php54
+	depends = net-snmp
+
+pkgname = php54-sqlite
+	pkgdesc = sqlite module for PHP
+	depends = php54
+	depends = sqlite
+
+pkgname = php54-tidy
+	pkgdesc = tidy module for PHP
+	depends = php54
+	depends = tidyhtml
+
+pkgname = php54-xsl
+	pkgdesc = xsl module for PHP
+	depends = php54
+	depends = libxslt
+

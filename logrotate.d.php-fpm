@@ -1,0 +1,8 @@
+/var/log/php-fpm.log {
+	missingok
+	notifempty
+	delaycompress
+	postrotate
+		systemctl reload php-fpm.service || true
+	endscript
+}
