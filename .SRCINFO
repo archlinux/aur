@@ -1,0 +1,15 @@
+pkgbase = lib32-orc
+	pkgdesc = The Oild Runtime Compiler
+	pkgver = 0.4.23
+	pkgrel = 1
+	url = http://code.entropywave.com/projects/orc/
+	arch = x86_64
+	license = custom
+	makedepends = valgrind
+	depends = lib32-glibc
+	depends = orc
+	source = http://gstreamer.freedesktop.org/data/src/orc/orc-0.4.23.tar.xz
+	sha256sums = 767eaebce2941737b43368225ec54598b3055ca78b4dc50c4092f5fcdc0bdfe7
+
+pkgname = lib32-orc
+
