@@ -1,0 +1,14 @@
+pkgbase = msntp
+	pkgdesc = A very simple and portable SNTP client/server
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://www.hpcf.cam.ac.uk/export
+	arch = i686
+	arch = x86_64
+	license = custom:msntp
+	depends = sh
+	source = http://archive.ubuntu.com/ubuntu/pool/universe/m/msntp/msntp_1.6.dfsg.orig.tar.gz
+	md5sums = 24f5e31775a56b140eec27617e25549c
+
+pkgname = msntp
+
