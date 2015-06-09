@@ -1,0 +1,29 @@
+pkgbase = easytag-gtk2
+	pkgdesc = Simple application for viewing and editing tags in audio files
+	pkgver = 2.2.6
+	pkgrel = 1
+	url = http://easytag.sourceforge.net/
+	install = easytag.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = itstool
+	depends = id3lib
+	depends = libid3tag
+	depends = gtk2
+	depends = libvorbis
+	depends = flac
+	depends = speex
+	depends = wavpack
+	depends = taglib
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = opusfile
+	provides = easytag
+	conflicts = easytag
+	source = http://download.gnome.org/sources/easytag/2.2/easytag-2.2.6.tar.xz
+	sha256sums = 26437f0d698c3b16794336c335b40f53fa26aefeb77322e45e4e2501c4cff14a
+
+pkgname = easytag-gtk2
+
