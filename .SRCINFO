@@ -1,0 +1,22 @@
+pkgbase = openrefine-git
+	pkgdesc = Data transformation powertool (formerly Google Refine)
+	pkgver = 20150511
+	pkgrel = 1
+	url = https://github.com/OpenRefine/OpenRefine
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	makedepends = apache-ant
+	makedepends = git
+	depends = bash
+	depends = java-environment
+	provides = openrefine
+	conflicts = openrefine
+	options = !strip
+	source = openrefine::git+https://github.com/OpenRefine/OpenRefine
+	source = openrefine.sh
+	sha256sums = SKIP
+	sha256sums = 86d07412ad1e76b1b0b94d0ddf5f7af6102833baee29a9daedf45be5a568e4ea
+
+pkgname = openrefine-git
+
