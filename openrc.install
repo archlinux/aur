@@ -1,0 +1,19 @@
+pre_install() {
+	echo "	==> You can boot up systemd any time."
+	echo "	==> Add 'init=/usr/lib/systemd/systemd' to kernel command line."
+}
+
+post_install() {
+	echo "	==> Set up your network interface before you reboot."
+	local _url="http://www.gentoo.org/doc/en/handbook/handbook-x86.xml?part=4"
+	echo "	==> Visit ${_url}"
+	#rc-update -u
+}
+
+post_upgrade() {
+	post_install "$1"
+}
+
+post_remove() {
+	echo "	==> Make sure you install systemd-sysvcompat before you reboot!"
+}

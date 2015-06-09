@@ -1,0 +1,18 @@
+#!/usr/bin/openrc-run
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/kmod/files/Attic/kmod-static-nodes,v 1.2 2014/09/21 10:59:57 ssuominen dead $
+
+description="Create list of required static device nodes for the current kernel"
+
+depend() {
+	after dev-mount
+	before tmpfiles.dev dev
+}
+
+start() {
+	ebegin "Creating list of required static device nodes for the current kernel"
+	checkpath -q -d /run/tmpfiles.d
+	kmod static-nodes --format=tmpfiles --output=/run/tmpfiles.d/kmod.conf
+	eend $?
+}

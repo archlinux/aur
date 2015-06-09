@@ -1,0 +1,40 @@
+pkgbase = openrc-core
+	pkgdesc = Gentoo's universal init system, udev enabled.
+	pkgver = 0.16.4
+	pkgrel = 1
+	url = http://www.gentoo.org/proj/en/base/openrc/
+	install = openrc.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = inetutils
+	depends = psmisc
+	depends = sysvinit
+	depends = udev>=186
+	optdepends = dhcpcd-openrc: dhcpcd initscript
+	conflicts = openrc
+	conflicts = openrc-git
+	conflicts = initscripts
+	conflicts = systemd-sysvcompat
+	conflicts = openrc-sysvinit
+	backup = etc/rc.conf
+	backup = etc/conf.d/consolefont
+	backup = etc/conf.d/keymaps
+	backup = etc/conf.d/hostname
+	backup = etc/conf.d/modules
+	backup = etc/conf.d/net
+	backup = etc/conf.d/hwclock
+	backup = etc/inittab
+	source = http://dev.gentoo.org/~williamh/dist/openrc-0.16.4.tar.bz2
+	source = http://dev.gentoo.org/~williamh/dist/udev-init-scripts-27.tar.bz2
+	source = http://dev.gentoo.org/~robbat2/distfiles/netifrc-0.2.4.tar.bz2
+	source = openrc.logrotate
+	source = kmod-static-nodes
+	sha256sums = 6771257e208da2e4d20b4ac2e3e7f065eb8873566644ff385e9dbd6bc5221d21
+	sha256sums = 1a091c361e9845861c138b505881edcb7b68fcf91708db526dff0b320243c936
+	sha256sums = 9b53eb3c8e6e80cd4073a34f911a28055c28b9f7a9f119a397002b0de7ac0691
+	sha256sums = 0b44210db9770588bd491cd6c0ac9412d99124c6be4c9d3f7d31ec8746072f5c
+	sha256sums = fc90e8d480de39aff90e41477f79720a98bee2a2359c53c209d0ca7bb75fb6ba
+
+pkgname = openrc-core
+
