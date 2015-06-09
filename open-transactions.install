@@ -1,0 +1,24 @@
+post_install() {
+  printf "%b\n" "$opentxs"
+}
+
+read -d '' opentxs <<'EOF'
+###########################################################################
+###########################################################################
+##                                                                       ##
+##  Open-Transactions                                                    ##
+##  _________________                                                    ##
+##                                                                       ##
+##  Extract a tarball of sample contracts, baskets, server:              ##
+##                                                                       ##
+##      mkdir -p ~/opentxs && cd ~/opentxs                               ##
+##      tar -xvzf /usr/share/opentxs/user-samples.tar.gz -C .            ##
+##                                                                       ##
+##  To look at an example wallet (WARNING: resets user data):            ##
+##                                                                       ##
+##      mkdir -p ~/.ot                                                   ##
+##      cp -R ~/opentxs/ot-sample-data/* ~/.ot                           ##
+##                                                                       ##
+###########################################################################
+###########################################################################
+EOF
