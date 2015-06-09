@@ -1,0 +1,24 @@
+--- a/nemo-media-columns.py
++++ b/nemo-media-columns.py
+@@ -31,9 +31,10 @@
+ # for exif support
+ import pyexiv2
+ # for reading videos. for future improvement, this can also read mp3!
+-import kaa.metadata
++#import kaa.metadata
+ # for reading image dimensions
+-import Image
++#import Image
++from PIL import Image
+ # for reading pdf
+ try:
+ 	from pyPdf import PdfFileReader
+@@ -173,7 +174,7 @@
+ 				file.add_string_attribute('pixeldimensions',"[image read error]")
+ 
+ 		# video/flac handling
+-		if file.is_mime_type('video/x-msvideo') | file.is_mime_type('video/mpeg') | file.is_mime_type('video/x-ms-wmv') | file.is_mime_type('video/mp4') | file.is_mime_type('audio/x-flac') | file.is_mime_type('video/x-flv') | file.is_mime_type('video/x-matroska') | file.is_mime_type('audio/x-wav'):
++		if False or file.is_mime_type('video/x-msvideo') | file.is_mime_type('video/mpeg') | file.is_mime_type('video/x-ms-wmv') | file.is_mime_type('video/mp4') | file.is_mime_type('audio/x-flac') | file.is_mime_type('video/x-flv') | file.is_mime_type('video/x-matroska') | file.is_mime_type('audio/x-wav'):
+ 			try:
+ 				info=kaa.metadata.parse(filename)
+ 				try: file.add_string_attribute('length',"%02i:%02i:%02i" % ((int(info.length/3600)), (int(info.length/60%60)), (int(info.length%60))))
