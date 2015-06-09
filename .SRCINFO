@@ -1,0 +1,13 @@
+pkgbase = cec-firmware-upgrade
+	pkgdesc = Pulse-Eight's firmware upgrade program for the Pulse-Eight USB-CEC adapter
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/Pulse-Eight/libcec
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libusb-compat
+	provides = cec-firmware-upgrade
+
+pkgname = cec-firmware-upgrade
+
