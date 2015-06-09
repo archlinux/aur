@@ -1,0 +1,14 @@
+pkgbase = mmg3d
+	pkgdesc = Anisotropic tetrahedral remesher and moving mesh generator
+	pkgver = 4.0.1
+	pkgrel = 1
+	url = http://www.math.u-bordeaux1.fr/~cdobrzyn/logiciels/mmg3d.php
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	source = https://gforge.inria.fr/frs/download.php/latestfile/4758/mmg3d4-4.0.1-Source.tar.gz
+	sha256sums = fc249ce6ed1b20c71804af05213d5a90dcfe6b9e5d679b60623c1b19e1c42568
+
+pkgname = mmg3d
+
