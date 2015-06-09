@@ -1,0 +1,13 @@
+pkgbase = xsendkey
+	pkgdesc = xsendkey is a simple tool for generating keypresses in X
+	pkgver = 0.0
+	pkgrel = 1
+	url = http://people.csail.mit.edu/adonovan/hacks/xsendkey.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://web.archive.org/web/20130528093333/http://people.csail.mit.edu/adonovan/hacks/xsendkey.c
+	md5sums = e7a5538a11c33449c88caa8b901a13eb
+
+pkgname = xsendkey
+
