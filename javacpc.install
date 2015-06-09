@@ -1,0 +1,5 @@
+post_install() {
+  cat << EOF
+Make sure you belong to the input group for gamepad support!
+EOF
+}
