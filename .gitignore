@@ -1,0 +1,4 @@
+*.pkg.tar
+pkg/
+src/
+i2p.i2p/

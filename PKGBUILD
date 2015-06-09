@@ -14,7 +14,7 @@ export LG2=en
 ###########################################################
 
 pkgname=i2p-dev
-pkgver=0.9.19.33
+pkgver=0.9.20.4
 pkgrel=1
 epoch=1
 pkgdesc="A distributed anonymous network (daily mtn->git sync)"
