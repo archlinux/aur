@@ -1,0 +1,20 @@
+pkgbase = haskell-curl-aeson
+	pkgdesc = Communicate with HTTP service using JSON
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/zouppen/haskell-curl-aeson
+	install = curl-aeson.install
+	arch = i686
+	arch = x86_64
+	license = BSD3
+	makedepends = ghc
+	makedepends = haskell-aeson
+	makedepends = haskell-curl
+	makedepends = haskell-text
+	makedepends = haskell-utf8-string
+	options = strip
+	source = https://hackage.haskell.org/package/curl-aeson-0.0.4/curl-aeson-0.0.4.tar.gz
+	sha256sums = 3defd8313d3e34657bd4c5aa7f0c4e1b7a6e533eaeffc1571eee2de31021f1ba
+
+pkgname = haskell-curl-aeson
+
