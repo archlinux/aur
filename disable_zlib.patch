@@ -1,0 +1,42 @@
+Author: Roland Rosenfeld <roland@debian.org>
+Description: Disable ZLIB support for vmf files because zlib 1.2.6 implements
+ gzgetc as a macro instead of a function, which breaks the sunclock code.
+ In addition to this, sunclock does not find the *.vmf.gz files by default.
+
+--- sunclock-3.57.orig/Imakefile	2008-08-07 20:27:43.000000000 +0600
++++ sunclock-3.57/Imakefile	2012-05-10 20:20:55.739786239 +0600
+@@ -36,7 +36,7 @@
+ ZLIBDIR=
+ JINC=-I/opt/jpeg-6/include
+ 
+-CCOPTIONS = -Ae $(XPMINC) $(JINC) -DZLIB -DSHAREDIR=\"$(DESTDIR)$(SHAREDIR)\"
++CCOPTIONS = -Ae $(XPMINC) $(JINC) -DSHAREDIR=\"$(DESTDIR)$(SHAREDIR)\"
+ #else
+ # SunOS
+ 
+@@ -54,14 +54,14 @@
+ #ZLIBDIR=-L/usr/lib
+ #JINC=-I/usr/include
+ 
+-CCOPTIONS=-O -DZLIB -DSHAREDIR=\"$(DESTDIR)$(SHAREDIR)\" -DEMXBINDIR=\"$(DESTDIR)$(EMXBINDIR)\"
++CCOPTIONS=-O -DSHAREDIR=\"$(DESTDIR)$(SHAREDIR)\" -DEMXBINDIR=\"$(DESTDIR)$(EMXBINDIR)\"
+ #endif
+ 
+ SRCS=sunclock.c astro.c widgets.c tildepath.c dirlist.c \
+      readvmf.c readxpm.c readgif.c readjpeg.c readpng.c
+ OBJS=sunclock.o astro.o widgets.o tildepath.o dirlist.o \
+      readvmf.o readxpm.o readgif.o readjpeg.o readpng.o
+-LOCAL_LIBRARIES=-lX11 $(XPMLIBDIR) -lXpm $(ZLIBDIR) -lz \
++LOCAL_LIBRARIES=-lX11 $(XPMLIBDIR) -lXpm $(ZLIBDIR) \
+      $(JLIBDIR) -ljpeg -lpng -lm
+ DEPLIBS=		# I don't know what I'm doing, and I hate imake!
+ 
+@@ -85,7 +85,7 @@
+ 	cd i18n ; rm -f *~ ; cp -f Sunclock.* $(DESTDIR)$(SHAREDIR)/i18n
+ 	$(MKDIRHIER) $(DESTDIR)$(SHAREDIR)/earthmaps/vmf
+ 	cd vmf ; rm -f *~ ; cp -f * $(DESTDIR)$(SHAREDIR)/earthmaps/vmf
+-	cd $(DESTDIR)$(SHAREDIR)/earthmaps/vmf ; gzip -f *.vmf
++#	cd $(DESTDIR)$(SHAREDIR)/earthmaps/vmf ; gzip -f *.vmf
+ 	$(MKDIRHIER) $(DESTDIR)$(EMXBINDIR)
+ 	install -c -s editkit/emx $(DESTDIR)$(EMXBINDIR)/
+ 	$(MKDIRHIER) $(DESTDIR)$(SHAREDIR)/editkit

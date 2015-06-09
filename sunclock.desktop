@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Sunclock
+Comment=A sophisticated astronomical clock
+Exec=sunclock
+Icon=sunclock
+Terminal=false
+Categories=Education;Science;Astronomy;
