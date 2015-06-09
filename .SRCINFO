@@ -1,0 +1,18 @@
+pkgbase = python2-ltc_scrypt
+	pkgdesc = Bindings for scrypt proof of work used by Litecoin
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/ltc_scrypt
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = python2-setuptools
+	depends = python2
+	depends = scrypt
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/l/ltc_scrypt/ltc_scrypt-1.0.tar.gz
+	md5sums = 7d019c3c98f16eb466a272e518ffb014
+	sha256sums = a6a0bd2fb439c3ddb86b5de32ff65827c58726956dea278ffe27121e078420c1
+
+pkgname = python2-ltc_scrypt
+
