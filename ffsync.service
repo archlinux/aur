@@ -1,0 +1,14 @@
+[Unit]
+Description=Gunicorn server running Mozilla's Firefox Sync Server - Version 1.5
+After=network.target
+
+[Service]
+Type=simple
+User=ffsync
+Group=http
+UMask=007
+Restart=on-abort
+ExecStart=/opt/mozilla-firefox-sync-server/local/bin/gunicorn --paste /opt/mozilla-firefox-sync-server/syncserver.ini
+
+[Install]
+WantedBy=multi-user.target

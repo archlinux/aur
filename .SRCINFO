@@ -1,0 +1,24 @@
+pkgbase = mozilla-firefox-sync-server-git
+	pkgdesc = Mozilla Sync Server for built-in Firefox Sync - 1.5 version for Firefox 29+
+	pkgver = 1.5.2.r0.g3d216e9
+	pkgrel = 1
+	url = http://docs.services.mozilla.com/howtos/run-sync-1.5.html
+	install = mozilla-firefox-sync-server-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = python2
+	depends = python-virtualenv
+	conflicts = mozilla-firefox-sync-server-hg
+	options = !debug
+	backup = opt/mozilla-firefox-sync-server/syncserver.ini
+	source = mozilla-firefox-sync-server-git::git+https://github.com/mozilla-services/syncserver
+	source = ffsync.service
+	source = ffsync.tmpfiles
+	sha256sums = SKIP
+	sha256sums = f2e69486825f43f6a288adced31a6c2e51b0dbd84483aa427b2d85699c942446
+	sha256sums = 462bfdccc672339a03622dbe0a76a2df1b4293de8b240e82fe127a6befaa1a89
+
+pkgname = mozilla-firefox-sync-server-git
+
