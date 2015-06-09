@@ -1,0 +1,18 @@
+post_install() {
+    getent group twister &>/dev/null || groupadd -r -g 66 twister >/dev/null
+    getent passwd twister &>/dev/null || useradd -r -u 66 -g twister -d /var/lib/twister -s /bin/false twister >/dev/null
+    systemd-tmpfiles --create twister.conf
+
+    echo ">>> to start: systemctl start twister "
+    echo ">>> and open http://127.0.0.1:28332/home.html"
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    getent passwd twister &>/dev/null && userdel twister >/dev/null
+    getent group twister &>/dev/null && groupdel twister >/dev/null
+    true
+}

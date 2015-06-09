@@ -1,0 +1,20 @@
+pkgbase = twister-html-git
+	pkgdesc = Twister html User Interface
+	pkgver = 29.ddf4578
+	pkgrel = 2
+	url = http://twister.net.co/
+	install = twister-html-git.install
+	arch = any
+	license = MIT
+	license = BSD
+	makedepends = git
+	depends = twister-core-git
+	source = git://github.com/miguelfreitas/twister-html.git
+	source = twister.service
+	source = twister.tmpfiles
+	md5sums = SKIP
+	md5sums = 256ba30fe99fbf5d5070e6fa196e1d10
+	md5sums = 2a8702ee09350f66944dfb61779b4584
+
+pkgname = twister-html-git
+

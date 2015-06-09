@@ -1,0 +1,12 @@
+[Unit]
+Description=Twister daemon
+After=network.target
+
+[Service]
+User=twister
+PIDFile=/var/run/twister/twisterd.pid
+ExecStart=/usr/bin/twisterd -datadir=/var/lib/twister/data/ -pid=/var/run/twisterd.pid -rpcuser=user -rpcpassword=pwd -rpcallowip=127.0.0.1
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=default.target
