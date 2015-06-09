@@ -1,0 +1,19 @@
+pkgbase = python2-zerorpc
+	pkgdesc = A flexible RPC implementation based on zeromq and messagepack.
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = http://zerorpc.dotcloud.com
+	arch = any
+	license = MIT
+	depends = python2>=2.7
+	depends = python2-distribute
+	depends = zeromq>=2.2.0
+	depends = python2-msgpack
+	depends = python2-pyzmq>=2.2.0.1
+	depends = python2-gevent
+	options = !emptydirs
+	source = https://github.com/dotcloud/zerorpc-python/archive/v0.4.4.tar.gz
+	md5sums = 1f1decbb60cc8cd376d7a964ff0d0039
+
+pkgname = python2-zerorpc
+
