@@ -1,0 +1,48 @@
+pkgbase = lib32-mesa-r300-r600-radeonsi-git
+	pkgdesc = LIB32 Mesa R300, R600 & Radeon SI - git version.
+	pkgver = 70393.71e9457
+	pkgrel = 1
+	url = http://mesa3d.sourceforge.net
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = lib32-llvm-svn
+	makedepends = mesa-r300-r600-radeonsi-git
+	makedepends = lib32-libxshmfence
+	makedepends = lib32-libvdpau
+	makedepends = lib32-wayland
+	makedepends = python2-mako
+	makedepends = lib32-nettle
+	depends = lib32-libxxf86vm
+	depends = lib32-elfutils
+	depends = lib32-libxvmc
+	depends = lib32-libxdamage
+	depends = gcc-multilib
+	depends = lib32-libdrm
+	depends = mesa-r300-r600-radeonsi-git
+	depends = lib32-systemd
+	depends = lib32-libvdpau
+	depends = lib32-llvm-libs-svn
+	depends = lib32-libxshmfence
+	depends = lib32-wayland
+	depends = lib32-libtxc_dxtn
+	depends = lib32-nettle
+	optdepends = lib32-mesa-demos: glxinfo
+	provides = lib32-mesa=10.7.0-devel
+	provides = lib32-mesa-vdpau=10.7.0-devel
+	provides = lib32-libgl=10.7.0-devel
+	provides = lib32-mesa-libgl=10.7.0-devel
+	conflicts = lib32-mesa
+	conflicts = lib32-mesa-vdpau
+	conflicts = lib32-libgl
+	conflicts = lib32-mesa-libgl
+	options = !libtool
+	source = mesa-r300-r600-radeonsi-git::git+http://anongit.freedesktop.org/git/mesa/mesa#branch=master
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 5c65a0fe315dd347e09b1f2826a1df5a
+	sha512sums = SKIP
+	sha512sums = 25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2
+
+pkgname = lib32-mesa-r300-r600-radeonsi-git
+
