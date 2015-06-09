@@ -1,0 +1,15 @@
+pkgbase = samsung-ml-1915
+	pkgdesc = Samsung ML-1915 CUPS driver
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.samsung.com
+	arch = i686
+	arch = x86_64
+	license = custom:samsung
+	depends = cups
+	depends = ghostscript
+	source = http://downloadcenter.samsung.com/content/DR/200911/20091118142414703/UnifiedLinuxDriver_1.02.tar.gz
+	md5sums = 49e44d27a7a63ddb8ba1a5d4f650b35e
+
+pkgname = samsung-ml-1915
+
