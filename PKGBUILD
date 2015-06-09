@@ -1,5 +1,5 @@
-# Maintainer: Dylan Cali <calid1984@gmail.com>
-# Contributer: Alexander Görtz <aur@nyloc.de>
+# Maintainer: Alexander Görtz <aur@nyloc.de>
+# Contributer: Dylan Cali <calid1984@gmail.com>
 
 pkgname='google-authenticator-libpam-git'
 
