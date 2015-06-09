@@ -1,0 +1,23 @@
+pkgbase = uplink
+	pkgdesc = Trust is a weakness - a futuristic computer crime game
+	pkgver = 1.55
+	pkgrel = 4
+	url = http://www.introversion.co.uk/uplink
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libjpeg6
+	depends = mesa
+	depends = zlib
+	depends = libxdamage
+	noextract = uplink.zip
+	source = uplink.desktop
+	source = http://www.introversion.co.uk/uplink/downloads/uplink-patch-1.55.tar.gz
+	source = http://www.introversion.co.uk/uplink/downloads/UplinkBoBCodeCard.pdf
+	sha256sums = 52d5b1efaecca11b400c2ab7755924a8034c09a4edd201737ba61da6bc479c02
+	sha256sums = c8df0262817154926f73c373621783d0274fec3e0eb58cde0ebc6b2a407064eb
+	sha256sums = 147f41468b0d837a168c760d045b23eecd95a7936fca239d3bea78be0a1936a0
+	sha256sums = e5734f6c394b8eaa3a3449f4d4a6df0fefa4675fb8e8a515f83e4a3b710d528a
+
+pkgname = uplink
+

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Uplink
+GenericName=Futuristic computer crime game.
+Comment=Trust is a weakness.
+Encoding=UTF-8
+Version=1.55
+Type=Application
+Terminal=false
+Icon=uplink
+Exec=uplink
+Categories=Application;Game;
