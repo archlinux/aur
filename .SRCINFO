@@ -1,0 +1,21 @@
+pkgbase = gsignond-extension-pantheon-bzr
+	pkgdesc = Pantheon extension for gSSO
+	pkgver = r131
+	pkgrel = 1
+	url = https://launchpad.net/gsignond-extension-pantheon
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = libaccounts-glib
+	makedepends = vala
+	depends = gsignond
+	depends = libsecret
+	provides = gsignond-extension-pantheon
+	conflicts = gsignond-extension-pantheon
+	source = bzr+lp:gsignond-extension-pantheon
+	sha256sums = SKIP
+
+pkgname = gsignond-extension-pantheon-bzr
+
