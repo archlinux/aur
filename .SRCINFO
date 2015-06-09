@@ -1,0 +1,16 @@
+pkgbase = icdiff-git
+	pkgdesc = Improved colored diff
+	pkgver = 20141214
+	pkgrel = 1
+	url = https://github.com/jeffkaufman/icdiff
+	arch = any
+	license = PSFL
+	makedepends = git
+	depends = python
+	provides = icdiff
+	conflicts = icdiff
+	source = git+https://github.com/jeffkaufman/icdiff
+	sha256sums = SKIP
+
+pkgname = icdiff-git
+
