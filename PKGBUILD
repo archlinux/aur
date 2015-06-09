@@ -1,6 +1,6 @@
 pkgname=threadpool11-git
 pkgdesc='A fast, lock-free, cross-platform C++11 thread pooling library that is aiming to be lightweight and simple.'
-pkgver=2.0.6.r3.g31e6849
+pkgver=2.0.8.r0.g46c9afc
 pkgver() {
   cd "$pkgname"
   git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
