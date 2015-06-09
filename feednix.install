@@ -1,0 +1,3 @@
+post_update(){
+        echo "NOTE: New config file saved as $HOME/.config/feednix/config.json.new"
+}

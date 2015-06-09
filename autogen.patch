@@ -1,0 +1,7 @@
+--- feednix/src/Feednix/autogen.sh	2015-03-11 08:18:49.000000000 -0500
++++ autogen.sh	2015-03-11 08:44:40.615555703 -0500
+@@ -1,4 +1,2 @@
+ autoreconf -i
+-diff -u $HOME/.config/feednix/config.json ./config.json > patchfile
+-patch $HOME/.config/feednix/config.json < patchfile
+ sudo mkdir -p /etc/xdg/feednix && sudo cp config.json /etc/xdg/feednix

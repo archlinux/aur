@@ -1,0 +1,20 @@
+--- main.cpp.old	2015-03-13 09:25:58.248158621 -0500
++++ main.cpp	2015-03-13 09:26:49.435331485 -0500
+@@ -13,15 +13,14 @@
+ std::string HOME_PATH = getenv("HOME");
+ 
+ void atExitFunction(void){
+-    system(std::string("find " + std::string(HOME_PATH) + "/.config/feednix -type f -not -name \'config.json\' -and -not -name \'log.txt\' -delete 2> /dev/null").c_str());
++    system(std::string("find " + std::string(HOME_PATH) + "/.config/feednix -type f -not \\(-name \'config.json\' -or \'config.json.new\'\\) -and -not -name \'log.txt\' -delete 2> /dev/null").c_str());
+     system(std::string("rm -R " + TMPDIR + " 2> /dev/null").c_str());
+     if(curses != NULL)
+         curses->cleanup();
+-    std::cout << "Aborted.\nCheck log for details." << std::endl;
+ }
+ 
+ void sighandler(int signum){
+-    system(std::string("find " + std::string(HOME_PATH) + "/.config/feednix -type f -not -name \'config.json\' -and -not -name \'log.txt\' -delete 2> /dev/null").c_str());
++    system(std::string("find " + std::string(HOME_PATH) + "/.config/feednix -type f -not \(-name \'config.json\' -or \'config.json.new\'\) -and -not -name \'log.txt\' -delete 2> /dev/null").c_str());
+     signal(signum, SIG_DFL);
+     if(curses != NULL)
+         curses->cleanup();

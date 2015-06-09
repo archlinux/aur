@@ -1,0 +1,11 @@
+--- ../feednix/src/Feednix/src/CursesProvider.cpp	2015-03-11 08:18:49.000000000 -0500
++++ CursesProvider.cpp	2015-03-12 20:18:52.322024645 -0500
+@@ -66,7 +66,7 @@
+ 
+         currentRank = root["rank"].asBool();
+         if(root.isMember("previewActive"))
+-            activatePreview = access("/usr/bin/w3m", X_OK) ? false : root["preview_active"].asBool();
++            activatePreview = access("/usr/bin/w3m", X_OK) ? false : root["previewActive"].asBool();
+         if(root.isMember("enablePersistentCount"))
+             activeCount = root["enablePersistentCount"].asBool();
+         if(root.isMember("markReadWhileScrolling"))
