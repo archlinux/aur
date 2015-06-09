@@ -1,0 +1,21 @@
+pkgbase = varnish-vmod-dbrw
+	pkgdesc = Database-driven rewrites for Varnish Cache
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://www.gnu.org.ua/software/vmod-dbrw/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = varnish
+	makedepends = libtool
+	makedepends = pcre
+	depends = varnish
+	source = ftp://download.gnu.org.ua/pub/release/vmod-dbrw/vmod-dbrw-2.0.tar.gz
+	source = http://repo.varnish-cache.org/source/varnish-4.0.3.tar.gz
+	source = configure.ac.patch
+	md5sums = 1f7a3dfdf7d8ab3473f7c1b7b22b5564
+	md5sums = bf86f3630605c273b1bbadbbe518237a
+	md5sums = 3138ba8ffafc7d0295aa340c59003a40
+
+pkgname = varnish-vmod-dbrw
+

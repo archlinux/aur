@@ -1,0 +1,14 @@
+--- configure.ac	2014-12-15 12:36:48.553141203 +0900
++++ configure.ac.orig	2014-12-15 12:35:44.471492464 +0900
+@@ -77,9 +77,9 @@
+ AM_CONDITIONAL([VARNISH4],[test $VARNISHVERSION -eq 4])
+      
+ # Check that varnishtest is built in the varnish source directory
++AC_CHECK_FILE([/usr/bin/varnishtest],
+-AC_CHECK_FILE([$VARNISHSRC/bin/varnishtest/varnishtest],
+   [],
++  [AC_MSG_FAILURE([cannot find "/usr/bin/varnishtest". Please build your varnish source directory])]
+-  [AC_MSG_FAILURE([cannot find "$VARNISHSRC/bin/varnishtest/varnishtest". Please build your varnish source directory])]
+ )
+ 
+ # vmod installation dir
