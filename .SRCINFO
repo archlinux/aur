@@ -1,0 +1,15 @@
+pkgbase = chinese-calendar
+	pkgdesc = Chinese traditional calendar for Ubuntu Kylin
+	pkgver = 1.0.1
+	pkgrel = 2
+	url = https://launchpad.net/chinese-calendar/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	source_i686 = https://launchpad.net/chinese-calendar/1.0/1.0.1/+download/chinese-calendar_1.0.1-0~49~ubuntu15.04.1_i386.deb
+	md5sums_i686 = 7c0cd10ec78def7f965014bad1c4b101
+	source_x86_64 = https://launchpad.net/chinese-calendar/1.0/1.0.1/+download/chinese-calendar_1.0.1-0~49~ubuntu15.04.1_amd64.deb
+	md5sums_x86_64 = 1a131e62a2212521c64856a4caa5dd04
+
+pkgname = chinese-calendar
+
