@@ -1,0 +1,17 @@
+pkgbase = morris
+	pkgdesc = An implementation of the board game Nine Men's Morris
+	pkgver = 0.2
+	pkgrel = 2
+	url = http://www.nine-mens-morris.net/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = boost
+	depends = boost-libs
+	depends = gconf
+	depends = gtk2
+	source = http://www.nine-mens-morris.net/data/morris-0.2.tar.bz2
+	md5sums = 3baa1684810f3f1990a8af10b48a96f8
+
+pkgname = morris
+
