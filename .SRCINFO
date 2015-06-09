@@ -1,0 +1,17 @@
+pkgbase = delta
+	pkgdesc = An useful tool that lets you minimize interesting files subject to a test of their interestingness.
+	pkgver = 20060803
+	pkgrel = 1
+	url = http://delta.tigris.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = make
+	makedepends = gcc
+	makedepends = flex
+	depends = perl
+	source = http://delta.tigris.org/files/documents/3103/33566/delta-2006.08.03.tar.gz
+	md5sums = 7be4ac4ae9c1eb01ccf29d413d4cc64a
+
+pkgname = delta
+
