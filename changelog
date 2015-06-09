@@ -1,0 +1,18 @@
+2014-06-03 Gilrain <pierre.buard+aur gmail com>
+	* 1384505-1 :
+	  .AURINFO added
+
+2014-04-19 Gilrain <pierre.buard+aur gmail com>
+	* 1384505-1 :
+	  python2-pygments added to makedepends 
+
+2013-04-19 Gilrain <pierre.buard+aur gmail com>
+	* 1338643-1 :
+	  updated to docbook-xsl 1.78.1
+	  PKGBUILD conforms to pacman 4.1 guidelines
+
+2013-02-09 Gilrain <pierre.buard+aur gmail com>
+	* 1338643-1 :
+	  added changelog.
+	  updated to docbook-xsl 1.78.0
+	  expanded and reworked dependencies.
