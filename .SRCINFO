@@ -1,0 +1,29 @@
+pkgbase = python2-pbp
+	pkgdesc = Simple crypto tool
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/stef/pbp
+	install = pbp.install
+	arch = any
+	license = AGPL3
+	makedepends = gcc
+	makedepends = python2-setuptools
+	depends = libsodium
+	depends = python2
+	depends = python2-cffi
+	depends = python2-pysodium
+	depends = python2-scrypt
+	depends = python2-securestring
+	depends = scrypt
+	optdepends = python2-pyusb: PITCHFORK support
+	provides = pbp
+	provides = python2-pbp
+	conflicts = pbp
+	conflicts = python2-pbp
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/p/pbp/pbp-0.3.1.tar.gz
+	md5sums = 7b02092d0af7ea80541d167db3be3639
+	sha256sums = c8690905956ae1bc9d5733252d94a68c7d0c44244dcdf9ec5529c6e33b3b5b4a
+
+pkgname = python2-pbp
+

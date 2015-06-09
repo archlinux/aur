@@ -1,0 +1,94 @@
+post_install() {
+  printf "%b\n" "$pbp"
+}
+
+post_upgrade() {
+  post_install
+}
+
+read -d '' pbp <<'EOF'
+pbp - Usage
+
+Warning: pbp may need sudo privs on first run to create temp file
+(likely bug)
+
+Generate a key
+
+    pbp -g -n alice
+
+sending howdy.txt using public key encryption from alice to bob
+
+    pbp -c -S alice -r bob -i howdy.txt
+
+decrypt an encrypted file using public key crypto
+
+    pbp -d -S bob -i howdy.txt.pbp
+
+sending howdy.txt using secret key encryption
+
+    pbp -c -i howdy.txt
+
+decrypt an encrypted file using secret key crypto
+
+    pbp -d -i howdy.txt.pbp
+
+sign howdy.txt
+
+    pbp -s -S alice -i /howdy.txt
+
+verify howdy.txt
+
+    pbp -v -i howdy.txt.sig
+
+sign bobs key
+
+    pbp -m -S alice -n bob
+
+check sigs on carols key
+
+    pbp -C -n carol
+
+alice encrypts howdy.txt to bob using experimental forward secret mode
+
+    pbp -e -S alice -r bob -i howdy.txt -o ./secret-message
+
+bob decrypts howdy.txt from alice using experimental forward secret mode
+
+    pbp -E -S bob -r alice -i ./secret-message
+
+initiate ECDH key exchange
+
+    pbp -D1
+
+respond to ECDH key exchange
+
+    pbp -D2 -Dp 'public component from D1'
+
+finish ECDH key exchange
+
+    pbp -D3 -Dp 'public component from D2' -De 'secret exponent from D1'
+
+random streaming 23GByte of cryptographic randomness
+
+    pbp -R -Rs 23G -o /mnt/huge_fs/random_data
+
+participate in a 4-way DH exchange, 1st message
+
+    pbp -Ds -Dp 4 -S alice -n 'friends001' -i oldkeychain -o newkeychain
+
+participate in a 4-way DH exchange, 2nd message
+
+    pbp -De -S alice -n 'friends001' -i oldkeychain -o newkeychain
+
+this is one big pipe that creates a 3-way ECDH secret between alice, bob and carol:
+
+    pbp -Ds -S alice -Dp 3 -n 'test-dh' -i /dev/null |
+    pbp -Ds -S bob -Dp 3 -n 'test-dh' |
+    pbp -Ds -S carol -Dp 3 -n 'test-dh' |
+    pbp -De -S alice -Dp 3 -n 'test-dh' |
+    pbp -De -S bob -Dp 3 -n 'test-dh'
+
+of course instead of a pipe you could use any kind of transport mechanism
+
+(c) 2013, stf <s@ctrlc.hu>, dnet vsza@vsza.hu, AGPLv3.0+
+EOF
