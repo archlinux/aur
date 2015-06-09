@@ -1,0 +1,22 @@
+pkgbase = gsmartcontrol-svn
+	pkgdesc = A graphical user interface for the smartctl hard disk drive health inspection tool.
+	pkgver = r114
+	pkgrel = 1
+	url = http://gsmartcontrol.sourceforge.net/home
+	install = gsmartcontrol-svn.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = smartmontools
+	depends = gtkmm
+	depends = xorg-xmessage
+	depends = hicolor-icon-theme
+	optdepends = polkit: to run gsmartcontrol directly from menu
+	provides = gsmartcontrol
+	conflicts = gsmartcontrol
+	source = gsmartcontrol-svn::svn://svn.code.sf.net/p/gsmartcontrol/code/trunk/gsmartcontrol
+	source = org.archlinux.pkexec.gsmartcontrol.policy
+	source = gsmartcontrol_polkit
+
+pkgname = gsmartcontrol-svn
+
