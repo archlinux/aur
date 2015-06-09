@@ -1,0 +1,14 @@
+pkgbase = python-ansi-git
+	pkgdesc = ANSI cursor movement and graphics
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/tehmaze/ansi
+	arch = any
+	license = MIT
+	depends = python
+	options = !emptydirs
+	source = git+https://github.com/tehmaze/ansi.git
+	md5sums = SKIP
+
+pkgname = python-ansi-git
+
