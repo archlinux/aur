@@ -1,0 +1,14 @@
+pkgbase = fruit
+	pkgdesc = Fruit is a suprisingly strong, minimalistic chess engine
+	pkgver = 2.1
+	pkgrel = 2
+	url = http://wbec-ridderkerk.nl/html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	source = http://wbec-ridderkerk.nl/html/downloada/fruit/fruit_21.zip
+	md5sums = 52828a94ecdf8a50127516a53e9ee2d0
+
+pkgname = fruit
+
