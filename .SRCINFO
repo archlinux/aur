@@ -1,0 +1,14 @@
+pkgbase = grub-holdshift
+	pkgdesc = Script to hide GRUB unless shift is held down.
+	pkgver = 1.2
+	pkgrel = 2
+	url = https://github.com/hobarrera/grub-holdshift
+	install = grub-holdshift.install
+	arch = any
+	license = GPL
+	depends = grub
+	source = https://github.com/hobarrera/grub-holdshift/archive/v1.2.zip
+	md5sums = ee5422713548aa927322ba18f97b8798
+
+pkgname = grub-holdshift
+

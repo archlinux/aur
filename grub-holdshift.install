@@ -1,0 +1,9 @@
+post_install() {
+  echo Remember to run grub-mkconfig -o /boot/grub/grub.cfg
+  echo This won\'t be automated to avoid overwriting manutally-edited
+  echo grub.cfg files.
+}
+
+post_upgrade() {
+  post_install
+}
