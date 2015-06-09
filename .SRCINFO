@@ -1,0 +1,24 @@
+pkgbase = kdeplasma-applets-homerun-git
+	pkgdesc = An application launcher for KDE Plasma desktop - git version
+	pkgver = v1.2.4.14.ged1cfc9
+	pkgrel = 1
+	url = http://quickgit.kde.org/index.php?p=homerun.git&a=summary
+	install = kdeplasma-applets-homerun-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = BSD
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = git
+	makedepends = docbook-xsl
+	depends = kdebase-workspace
+	depends = kdebase-lib
+	provides = kdeplasma-applets-homerun
+	conflicts = kdeplasma-applets-homerun
+	source = kdeplasma-applets-homerun-git::git://anongit.kde.org/homerun.git
+	sha1sums = SKIP
+
+pkgname = kdeplasma-applets-homerun-git
+
