@@ -1,0 +1,32 @@
+# arg 1: the new package version
+post_install() {
+    /usr/share/programmers-dvorak/dvp.postinst.sh || return 1
+    echo "PROGRAMMER'S DVORAK SETUP"
+    echo "-------------------------"
+    echo "To use the Programmer's Dvorak layout in X, edit"
+    echo "/etc/X11/xorg.conf, find the line with the string"
+    echo "'XkbLayout', and change your current layout to 'dvp'."
+    echo "-------------------------"
+    echo "To use the layout at a virtual terminal, edit"
+    echo "/etc/vconsole.conf and change KEYMAP from your current"
+    echo "layout to 'dvp'."
+}
+
+pre_upgrade() {
+    /usr/share/programmers-dvorak/dvp.prerm.sh
+    /usr/share/programmers-dvorak/dvp.remove.sh
+}
+
+post_upgrade() {
+    /usr/share/programmers-dvorak/dvp.postinst.sh
+}
+
+pre_remove() {
+    /usr/share/programmers-dvorak/dvp.prerm.sh
+    /usr/share/programmers-dvorak/dvp.remove.sh
+}
+
+op=$1
+shift
+
+$op $*

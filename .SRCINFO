@@ -1,0 +1,21 @@
+pkgbase = programmers-dvorak
+	pkgdesc = Variant of the Dvorak keyboard layout designed for programmers
+	pkgver = 1.2
+	pkgrel = 5
+	url = http://www.kaufmann.no/roland/dvorak/
+	install = programmers-dvorak.install
+	arch = any
+	license = custom
+	makedepends = coreutils
+	depends = kbd
+	depends = libxslt
+	noextract = http://www.kaufmann.no/downloads/linux/dvp-1_2_1.map.gz
+	source = http://www.kaufmann.no/downloads/linux/kbddvp-1_2_1-src-linux.tgz
+	source = http://www.kaufmann.no/downloads/linux/dvp-1_2_1.map.gz
+	source = LICENSE
+	md5sums = 6d7797f1514be62cb01fbdf3a7e785a4
+	md5sums = 8cde9c8f6b4de6c7c2ebb27589a5116e
+	md5sums = 48ebb9016f6138334194103caba4483f
+
+pkgname = programmers-dvorak
+
