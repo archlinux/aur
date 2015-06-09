@@ -1,0 +1,39 @@
+--- Makefile	1997-12-14 19:43:35.000000000 +0100
++++ Makefile	2008-08-13 00:31:58.000000000 +0200
+@@ -10,14 +10,16 @@
+ # change this to your favorite ANSI C compiler
+ CC = gcc
+ 
++DESTDIR :=
++
+ # change this to the directory where you want the xtris binaries installed
+-BINDIR = /usr/local/bin
++BINDIR = $(DESTDIR)/usr/bin
+ 
+ # change this to the directory where you want the xtris manpages installed
+-MANDIR = /usr/local/man
++MANDIR = $(DESTDIR)/usr/share/man
+ 
+ # change according to taste and local custom...
+-CFLAGS = -O3 -D__USE_FIXED_PROTOTYPES__
++# CFLAGS = -O3 -D__USE_FIXED_PROTOTYPES__
+ 
+ # on Solaris and similar systems, you'll need to uncomment this:
+ # EXTRALIBS = -lnsl -lsocket 
+@@ -48,12 +50,11 @@
+ 
+ install:	xtris xtserv xtbot
+ 	-strip xtris xtserv xtbot
+-	-mkdir $(BINDIR) 2>/dev/null
+-	-mkdir $(MANDIR) 2>/dev/null
+-	-mkdir $(MANDIR)/man6 2>/dev/null
+-	cp xtris xtserv xtbot $(BINDIR)
++	install -m 755 -d $(BINDIR) 
++	install -m 755 -d $(MANDIR)/man6
++	cp xtris xtserv xtbot $(BINDIR)/
+ 	chmod 755 $(BINDIR)/xtris $(BINDIR)/xtserv $(BINDIR)/xtbot
+-	cp xtris.6 xtserv.6 xtbot.6 $(MANDIR)/man6
++	cp xtris.6 xtserv.6 xtbot.6 $(MANDIR)/man6/
+ 	chmod 644 $(MANDIR)/man6/xtris.6 $(MANDIR)/man6/xtserv.6 $(MANDIR)/man6/xtbot.6
+ 
+ tar:
