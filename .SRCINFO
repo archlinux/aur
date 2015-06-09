@@ -1,0 +1,21 @@
+pkgbase = epsxe
+	pkgdesc = Enhanced PSX emulator
+	pkgver = 1.9.25
+	pkgrel = 3
+	url = http://epsxe.com
+	install = epsxe.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	options = !strip
+	source = epsxe.desktop
+	source = epsxe.png
+	source = epsxe.sh
+	source = http://www.epsxe.com/files/epsxe1925lin.zip
+	md5sums = 087234e20ae9147f83df24b69fc93bca
+	md5sums = eb0c46b8ae1355c589792f6be1835e47
+	md5sums = 1d6d07e9e1c97ed2a7ce46a9b7419654
+	md5sums = dc54e1e3406b0010e0552cffabb16c0f
+
+pkgname = epsxe
+
