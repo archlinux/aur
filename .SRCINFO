@@ -1,0 +1,16 @@
+pkgbase = boron
+	pkgdesc = An interpreted, prototype-based, scripting language similar to Rebol.
+	pkgver = 0.2.10
+	pkgrel = 1
+	url = http://urlan.sourceforge.net/boron/
+	arch = i686
+	arch = x86_64
+	groups = lib
+	license = LGPL3
+	makedepends = zlib
+	options = !makeflags
+	source = http://osdn.dl.sourceforge.net/project/urlan/Boron/boron-0.2.10.tar.gz
+	md5sums = 42b1be7ee448e0abb36388f63cb25ffd
+
+pkgname = boron
+
