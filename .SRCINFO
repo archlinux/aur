@@ -1,0 +1,30 @@
+pkgbase = ocaml-core
+	pkgdesc = Industrial strength alternative to OCaml's standard library
+	pkgver = 112.24.01
+	pkgrel = 1
+	url = https://github.com/janestreet/core
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = ocaml-findlib
+	depends = ocaml
+	depends = ocaml-bin_prot
+	depends = camlp4
+	depends = ocaml-comparelib
+	depends = ocaml-core_kernel
+	depends = ocaml-custom_printf
+	depends = ocaml-enumerate
+	depends = ocaml-fieldslib
+	depends = ocaml-herelib
+	depends = ocaml-pa_bench
+	depends = ocaml-pa_ounit
+	depends = ocaml-pa_test
+	depends = ocaml-pipebang
+	depends = ocaml-sexplib
+	depends = ocaml-variantslib
+	options = !strip
+	source = https://ocaml.janestreet.com/ocaml-core/112.24/files/core-112.24.01.tar.gz
+	md5sums = 4c4bc769e1dc8249b973f692994c5406
+
+pkgname = ocaml-core
+
