@@ -1,0 +1,32 @@
+pkgbase = bitcoin-headless-addrindex
+	pkgdesc = Bitcoin Core headless P2P wallet with addrindex
+	pkgver = 0.10.2
+	pkgrel = 1
+	url = https://github.com/btcdrak/bitcoin
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = binutils
+	makedepends = gcc
+	makedepends = libtool
+	makedepends = make
+	makedepends = pkg-config
+	makedepends = yasm
+	depends = boost
+	depends = boost-libs
+	depends = miniupnpc
+	depends = openssl
+	provides = bitcoin-cli
+	provides = bitcoin-daemon
+	provides = bitcoin-tx
+	conflicts = bitcoin-cli
+	conflicts = bitcoin-daemon
+	conflicts = bitcoin-qt
+	conflicts = bitcoin-tx
+	source = bitcoin-headless-addrindex-0.10.2.tar.gz::https://codeload.github.com/btcdrak/bitcoin/tar.gz/addrindex-0.10.2
+	sha256sums = f106c7925ffb6b840ecdf26242375c3958cb199d5de8d029c9d50d3a0c3f1d67
+
+pkgname = bitcoin-headless-addrindex
+
