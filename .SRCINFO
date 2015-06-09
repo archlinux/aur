@@ -1,0 +1,32 @@
+pkgbase = soundmodem
+	pkgdesc = Multiplatform Soundcard Packet Radio Modem
+	pkgver = 0.18
+	pkgrel = 4
+	url = http://pv529.ncsrv.de/soundmodem/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = make
+	makedepends = libxml2
+	makedepends = alsa-lib
+	makedepends = gtk2
+	makedepends = audiofile
+	depends = audiofile
+	depends = gtk2
+	backup = etc/ax25/soundmodem.conf
+	backup = etc/conf.d/soundmodem
+	source = soundmodem.conf
+	source = soundmodem_conf.d
+	source = soundmodem_rc.d
+	source = http://pv529.ncsrv.de/soundmodem/soundmodem-0.18.tar.gz
+	source = soundmodem.service
+	source = 0001-Search-replace-of-extern-inline-static-inline.patch
+	md5sums = c9d051d31675d5543c86adc0bb52cd56
+	md5sums = 14303acf07a3127bd4f1fb3edfbb4df6
+	md5sums = 88bd23a85eb9e39629f87752512f8f8e
+	md5sums = 5058b3cc0397f11f23c3eb519960c47e
+	md5sums = 84c6e81fcf548e802aa7ee2f6eb7c529
+	md5sums = e265cf3d47ca02a8677c5e2dd5ad1f6d
+
+pkgname = soundmodem
+
