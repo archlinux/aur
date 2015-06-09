@@ -1,0 +1,14 @@
+pkgbase = info2man
+	pkgdesc = Converts info documentation pages to man pages
+	pkgver = 1.0
+	pkgrel = 5
+	url = http://www.cskk.ezoshosting.com/cs/css/info2pod.html
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = perl4-corelibs
+	source = http://www.cskk.ezoshosting.com/cs/css/info2man.tar.gz
+	md5sums = 303b9bf313e88558ff577806398f6c4c
+
+pkgname = info2man
+
