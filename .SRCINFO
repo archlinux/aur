@@ -1,0 +1,21 @@
+pkgbase = tinyandbig
+	pkgdesc = Tiny & Big - up that mountain - demo BETA
+	pkgver = 0.6
+	pkgrel = 1
+	url = http://www.tinyandbig.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = openal
+	depends = sdl
+	depends = sdl_mixer
+	depends = nvidia-cg-toolkit
+	source = http://tinyandbig.com/downloads/tinyandbig_upthatmountain_linux-0.6.tar.bz2
+	source = run.sh
+	source = tinyandbig.desktop
+	md5sums = 441d4224db73354853ce3adb172ffa5f
+	md5sums = 6a3129e01897004b5bb930de19ed5117
+	md5sums = 2d6c1066b1bee1b8508d4e9c0368a1db
+
+pkgname = tinyandbig
+
