@@ -1,0 +1,17 @@
+pkgbase = sqawk-git
+	pkgdesc = Like Awk but with SQL and table joins
+	pkgver = 20150128
+	pkgrel = 1
+	url = https://github.com/dbohdan/sqawk
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = sqlite-tcl
+	depends = tcl
+	depends = tcllib
+	source = git+https://github.com/dbohdan/sqawk
+	sha256sums = SKIP
+
+pkgname = sqawk-git
+
