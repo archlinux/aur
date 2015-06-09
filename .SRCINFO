@@ -1,0 +1,18 @@
+pkgbase = acl2
+	pkgdesc = ACL2 theorem prover.
+	pkgver = 7.1
+	pkgrel = 1
+	url = http://www.cs.utexas.edu/users/moore/acl2/
+	install = acl2.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = sbcl
+	options = !strip
+	source = https://github.com/acl2-devel/acl2-devel/releases/download/7.1/acl2-7.1.tar.gz
+	source = acl2
+	md5sums = 2d1cc71bc7b6982c6002111f91545fc7
+	md5sums = 284866c01f07fb5271e0a567cf93b228
+
+pkgname = acl2
+

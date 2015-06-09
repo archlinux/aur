@@ -1,0 +1,9 @@
+post_install() {
+    cd /opt/acl2
+    make LISP=`which sbcl`
+}
+
+post_upgrade() {
+    cd /opt/acl2
+    make LISP=`which sbcl`
+}
