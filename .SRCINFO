@@ -1,0 +1,15 @@
+pkgbase = xyzsh
+	pkgdesc = Interactive shell and text processing tools
+	pkgver = 1.5.8
+	pkgrel = 2
+	url = https://github.com/ab25cq/xyzsh
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = oniguruma
+	depends = gc
+	source = http://dl.sourceforge.jp/xyzsh/60140/xyzsh-1.5.8.tgz
+	md5sums = 4fab43dbd794fb4af871ac6c9989526b
+
+pkgname = xyzsh
+
