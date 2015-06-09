@@ -1,0 +1,14 @@
+pkgbase = gopreload-git
+	pkgdesc = Preloads files needed for given programs.
+	pkgver = 20131125
+	pkgrel = 1
+	url = http://forums.gentoo.org/viewtopic-t-622085-highlight-preload.html
+	install = gopreload.install
+	arch = any
+	license = GPL
+	depends = strace
+	depends = coreutils
+	conflicts = gopreload
+
+pkgname = gopreload-git
+

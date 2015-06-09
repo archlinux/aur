@@ -1,0 +1,27 @@
+post_upgrade() {
+	echo ""
+	echo "Issuing systemctl daemon-reload..."
+	systemctl daemon-reload
+	echo "Done."
+	echo ""
+}
+post_install() {
+	echo ""
+	echo "Issuing systemctl daemon-reload..."
+	systemctl daemon-reload
+	echo "Done."
+	echo ""
+	echo "Please, read docs in /usr/share/gopreload/README"
+	echo ""
+	echo "Use gopreload-prepare to add programs to the preload list"
+	echo "and systemctl start gopreload to preload them"
+	echo ""
+}
+
+post_remove() {
+	echo ""
+	echo "Issuing systemctl daemon-reload && ststemctl stop gopreload..."
+	systemctl  daemon-reload && systemctl stop gopreload &>/dev/null
+	echo "Done."
+	echo ""
+}
