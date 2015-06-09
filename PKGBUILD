@@ -1,4 +1,4 @@
-# Maintainer: fqqbar
+# Maintainer: zaidan <firas@zaidan.de>
 
 pkgname=eclipse-jautodoc
 pkgver=1.12.0
