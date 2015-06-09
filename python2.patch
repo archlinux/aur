@@ -1,0 +1,10 @@
+diff --git a/repo b/repo
+index 58e82fe..9812d21 100755
+--- a/repo
++++ b/repo
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ ## repo default configuration
+ ##

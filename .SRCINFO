@@ -1,0 +1,18 @@
+pkgbase = repo-git
+	pkgdesc = Tool built on top of git to help manage many git repositories. Part of the Android project.
+	pkgver = v1.12.22.17.g185307d
+	pkgrel = 1
+	url = https://source.android.com/source/developing.html
+	arch = any
+	license = APACHE
+	depends = git
+	depends = python2
+	provides = repo
+	conflicts = repo
+	source = repo::git+https://gerrit.googlesource.com/git-repo
+	source = python2.patch
+	sha256sums = SKIP
+	sha256sums = 389cf97d9de0993838615691a6c9036ce91d0c659378de6d3b8310cdb15d764c
+
+pkgname = repo-git
+
