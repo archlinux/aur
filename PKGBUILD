@@ -1,5 +1,5 @@
 # $Id: PKGBUILD 130460 2015-04-01 07:57:08Z fyan $
-# Maintainer: proudzhu <proudzhu at gmail.com>
+# Maintainer: proudzhu <proudzhu.fdu at gmail.com>
 # Contributor: Felix Yan <felixonmars@gmail.com>
 # Contributor: Albert.Zhou <albert.zhou@wiz.cn>
 
