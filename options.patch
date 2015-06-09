@@ -1,0 +1,13 @@
+--- options.py	2012-12-09 12:19:20.000000000 +0100
++++ options.2.py	2013-01-05 00:25:15.082279322 +0100
+@@ -335,7 +335,9 @@
+ 		self.optionsfilestxt = ('appearance1.opt', 'appearance2.opt', 'dignities.opt', 'triplicities.opt', 'terms.opt', 'decans.opt', 
+ 						'almutenchart.opt', 'almutentopicalandlots.opt', 'ayanamsa.opt', 'colors.opt', 'housesystem.opt', 'nodes.opt', 'orbs.opt', 
+ 						 'primarydirs.opt', 'primarykeys.opt', 'syzygy.opt', 'fixedstars.opt', 'profections.opt', 'firdaria.opt', 'deflocation.opt', 'pdsinchart.opt', 'menusel.opt', 'languages.opt', 'autosave.opt')
+-		self.optsdirtxt = 'Opts'
++		self.optsdirtxt = os.path.expanduser('~/.config/morinus-traditional')
++		if not os.path.exists(self.optsdirtxt):
++			os.makedirs(self.optsdirtxt)
+ 
+ 		self.appearance1opt = os.path.join(self.optsdirtxt, self.optionsfilestxt[0])
+ 		self.appearance2opt = os.path.join(self.optsdirtxt, self.optionsfilestxt[1])

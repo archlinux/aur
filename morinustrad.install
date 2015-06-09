@@ -1,0 +1,9 @@
+post_install() {
+cat << EOF
+The built-in ephemeris should be accurate enough for
+the years 1900 to 2100 or so. If you need accurate
+calculations outside this range, you should download
+Ephem[1234].zip from upstream and unzip them to
+"/usr/lib/python2.7/site-packages/morinustrad/SWEP/Ephem/".
+EOF
+}

@@ -1,0 +1,14 @@
+diff -aur src/Morinus/morin.py src/Morinus.mod/morin.py
+--- src/Morinus/morin.py	2012-07-06 09:02:26.000000000 +0000
++++ src/Morinus.mod/morin.py	2013-01-06 18:37:44.724247880 +0000
+@@ -114,6 +114,10 @@
+ 		self.title = title
+ 		self.origtitle = title
+ 		self.hortitle = title
++
++		_icon=wx.EmptyIcon()
++		_icon.CopyFromBitmap(wx.ArtProvider.GetBitmap("morinus-portrait-bw", wx.ART_MENU))
++		self.SetIcon(_icon)
+ 		
+ 		self.options = opts
+ 
