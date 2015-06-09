@@ -1,4 +1,4 @@
-# $Id: 0de0f994bcc0ef7421088f82c6ffef3550d9bb11 $
+# $Id$
 # Maintainer: Ido Rosen <ido@kernel.org>
 #
 # NOTE: To request changes to this package, please submit a pull request
