@@ -1,0 +1,13 @@
+pkgbase = vbump-git
+	pkgdesc = Automatically bump package versions
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/pbrisbin/vbump
+	arch = any
+	license = MIT
+	makedepends = git
+	source = git://github.com/pbrisbin/vbump
+	md5sums = SKIP
+
+pkgname = vbump-git
+
