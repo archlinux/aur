@@ -1,0 +1,24 @@
+pkgbase = merlin
+	pkgdesc = Context sensitive completion for OCaml in Vim and Emacs (ocamlmerlin binary only)
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://github.com/the-lambda-church/merlin
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	depends = ocaml
+	depends = ocaml-biniou
+	depends = ocaml-findlib
+	depends = ocaml-yojson
+	depends = python2
+	provides = merlin
+	provides = ocaml-merlin
+	conflicts = ocaml-merlin
+	conflicts = vim-ocaml-merlin-git
+	options = !strip
+	source = merlin-2.2.tar.gz::https://codeload.github.com/the-lambda-church/merlin/tar.gz/v2.2
+	sha256sums = 18278c95f9e3c32855a15fc5e14ac349a34001b6d3ab8833bdacaa0a6806562d
+
+pkgname = merlin
+
