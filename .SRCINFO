@@ -1,0 +1,26 @@
+pkgbase = switchboard-plug-online-accounts-bzr
+	pkgdesc = Online Accounts plug for Switchboard
+	pkgver = r192
+	pkgrel = 1
+	url = https://launchpad.net/switchboard-plug-onlineaccounts
+	install = switchboard-plug-online-accounts.install
+	arch = i686
+	arch = x86_64
+	groups = pantheon-unstable
+	license = GPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = vala
+	depends = gsignond-extension-pantheon-bzr
+	depends = gsignond-plugin-oauth-git
+	depends = gsignond-plugin-sasl-git
+	depends = libaccounts-glib
+	depends = switchboard-bzr
+	depends = webkit2gtk
+	provides = switchboard-plug-online-accounts
+	conflicts = switchboard-plug-online-accounts
+	source = switchboard-plug-online-accounts::bzr+lp:switchboard-plug-onlineaccounts
+	sha256sums = SKIP
+
+pkgname = switchboard-plug-online-accounts-bzr
+
