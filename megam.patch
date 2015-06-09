@@ -1,0 +1,48 @@
+--- Makefile	2007-10-09 02:06:04.000000000 +0900
++++ Makefile.modified	2013-03-16 23:45:19.420694775 +0900
+@@ -55,19 +55,19 @@
+ 
+ # Default setting of the WITH* variables. Should be changed if your
+ # local libraries are not found by the compiler.
+-WITHGRAPHICS =graphics.cma -cclib -lgraphics -cclib -L/usr/X11R6/lib -cclib -lX11
++WITHGRAPHICS =graphics.cma 
+ 
+-WITHUNIX =unix.cma -cclib -lunix
++WITHUNIX =unix.cma 
+ 
+-WITHSTR =str.cma -cclib -lstr
++WITHSTR =str.cma 
+ 
+-WITHBIGARRAY =bigarray.cma -cclib -lbigarray
++WITHBIGARRAY =bigarray.cma 
+ 
+-WITHNUMS =nums.cma -cclib -lnums
++WITHNUMS =nums.cma 
+ 
+-WITHTHREADS =threads.cma -cclib -lthreads
++WITHTHREADS =threads.cma 
+ 
+-WITHDBM =dbm.cma -cclib -lmldbm -cclib -lndbm
++WITHDBM =dbm.cma 
+ 
+ #WITHCLIBS =-I /usr/lib/ocaml/3.09.2/caml
+ WITHCLIBS =-I /usr/lib/ocaml/caml
+@@ -84,12 +84,12 @@
+ 
+ opt : $(EXEC).opt
+ 
+-#ocamlc -custom other options graphics.cma other files -cclib -lgraphics -cclib -lX11
+-#ocamlc -thread -custom other options threads.cma other files -cclib -lthreads
+-#ocamlc -custom other options str.cma other files -cclib -lstr
+-#ocamlc -custom other options nums.cma other files -cclib -lnums
+-#ocamlc -custom other options unix.cma other files -cclib -lunix
+-#ocamlc -custom other options dbm.cma other files -cclib -lmldbm -cclib -lndbm
++#ocamlc -custom other options graphics.cma other files
++#ocamlc -thread -custom other options threads.cma other files 
++#ocamlc -custom other options str.cma other files 
++#ocamlc -custom other options nums.cma other files 
++#ocamlc -custom other options unix.cma other files 
++#ocamlc -custom other options dbm.cma other files 
+ 
+ SOURCES1 = $(SOURCES:.mly=.ml)
+ SOURCES2 = $(SOURCES1:.mll=.ml)

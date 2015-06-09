@@ -1,0 +1,16 @@
+pkgbase = megam
+	pkgdesc = MEGA Model Optimization Package
+	pkgver = 0.92
+	pkgrel = 4
+	url = http://www.umiacs.umd.edu/~hal/megam/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = ocaml
+	source = http://hal3.name/megam/megam_src.tgz
+	source = megam.patch
+	md5sums = a8b02d3b62933e2a7fb1f4412840a431
+	md5sums = 0d79ac56e89615028895b8f5a4df4c27
+
+pkgname = megam
+
