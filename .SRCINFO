@@ -1,0 +1,21 @@
+pkgbase = pdf-xchange
+	pkgdesc = Perform simple editing of PDF files
+	pkgver = 5.5.313.1
+	pkgrel = 1
+	url = http://www.tracker-software.com/product/pdf-xchange-editor
+	install = pdf-xchange.install
+	arch = i686
+	arch = x86_64
+	license = Custom
+	makedepends = p7zip
+	makedepends = imagemagick
+	makedepends = gendesk
+	depends = wine
+	depends = hicolor-icon-theme
+	source_i686 = http://www.tracker-software.com/downloads/PDFXVE5.x86.msi
+	md5sums_i686 = dc74d64d7c0e1881116b90369c828dfe
+	source_x86_64 = http://www.tracker-software.com/downloads/PDFXVE5.x64.msi
+	md5sums_x86_64 = 09efa575d81dd578c6ee448eb22595d0
+
+pkgname = pdf-xchange
+
