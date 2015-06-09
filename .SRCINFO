@@ -1,0 +1,17 @@
+pkgbase = lazylpsolverlibs-git
+	pkgdesc = lazylpsolverlibs provides libraries that can replace at link time those of commercial lp solvers.
+	pkgver = 7d32dc6
+	pkgrel = 1
+	url = https://github.com/chmduquesne/lazylpsolverlibs.git
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = GPL
+	makedepends = gcc
+	depends = glib2
+	conflicts = lazylpsolverlibs
+	source = lazylpsolverlibs-git::git+https://github.com/chmduquesne/lazylpsolverlibs.git
+	sha1sums = SKIP
+
+pkgname = lazylpsolverlibs-git
+
