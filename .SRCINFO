@@ -1,0 +1,16 @@
+pkgbase = cutemaze
+	pkgdesc = Top-down maze game
+	pkgver = 1.1.1
+	pkgrel = 2
+	url = http://gottcode.org/cutemaze/
+	install = cutemaze.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qt5-base
+	depends = qt5-svg
+	source = http://gottcode.org/cutemaze/cutemaze-1.1.1-src.tar.bz2
+	sha256sums = 3236d012af36a8390b86524e84d38baa40a12203a1e991c653203f3a23a7445d
+
+pkgname = cutemaze
+
