@@ -1,0 +1,10 @@
+--- framebuffer.c.orig	2009-02-24 08:23:54.000000000 +0900
++++ framebuffer.c	2012-04-30 12:17:52.166479559 +0900
+@@ -55,6 +55,7 @@
+ #include <sys/sysmacros.h>
+ #include <linux/fb.h>
+ #include <linux/kd.h>
++#include <linux/major.h>
+ #elif defined (__FreeBSD__)
+ #include <osreldate.h>
+ #if __FreeBSD_version >= 410000

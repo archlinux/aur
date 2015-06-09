@@ -1,0 +1,11 @@
+--- jfbterm.conf.sample.Linux.orig	2009-02-12 09:45:59.000000000 +0900
++++ jfbterm.conf.sample.Linux	2014-05-19 09:10:04.488372963 +0900
+@@ -37,7 +37,7 @@
+ #
+ 
+ # 1) Use iso10646 font only, let iconv handle the rest
+-fontset: iso10646.1,pcf,U,/usr/share/fonts/X11/misc/unifont-5.1.20080820.pcf.gz
++fontset: iso10646.1,pcf,U,/usr/share/fonts/misc/unifont.pcf.gz
+ +fontset: vt100-graphics,pcf,L,/usr/share/jfbterm/fonts/vt100-graphics.pcf.gz
+ 
+ encoding: locale

@@ -1,0 +1,11 @@
+--- screensaver.c.orig	2009-01-24 00:53:37.000000000 +0900
++++ screensaver.c	2012-04-30 12:29:48.230657036 +0900
+@@ -61,7 +61,7 @@
+ #define UNBLANK (V_DISPLAY_ON)
+ #elif defined (__NetBSD__) || defined (__OpenBSD__)
+ #define UNBLANK (WSDISPLAYIO_VIDEO_ON)
+-#elif
++#else
+ 	#error not implement
+ #endif
+ 

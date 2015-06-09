@@ -1,0 +1,3 @@
+post_install() {
+  tic /usr/share/jfbterm/terminfo.jfbterm
+}

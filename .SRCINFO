@@ -1,0 +1,26 @@
+pkgbase = jfbterm-freebsd
+	pkgdesc = A multilingual terminal on framebuffer
+	pkgver = 0.6.1
+	pkgrel = 2
+	url = http://www.ac.auone-net.jp/~baba/jfbterm/
+	install = jfbterm-freebsd.install
+	arch = i686
+	arch = x86_64
+	groups = i18n
+	license = BSD
+	makedepends = sed
+	depends = pcf-unifont
+	depends = libpng
+	conflicts = jfbterm
+	backup = etc/jfbterm/jfbterm.conf
+	source = http://www.ac.auone-net.jp/~baba/jfbterm/jfbterm-FreeBSD-0.6.1.tar.gz
+	source = framebuffer.c.patch
+	source = screensaver.c.patch
+	source = jfbterm.conf.sample.Linux.patch
+	md5sums = fc5946d2ee0a9dae0d5aa6fc806416c3
+	md5sums = 976e2e90cd24b9280a255da72bd69db8
+	md5sums = e598fccf3ac19267386d8e29463c30ef
+	md5sums = c57861774ec9b05b8b59d936f6cdb4a6
+
+pkgname = jfbterm-freebsd
+
