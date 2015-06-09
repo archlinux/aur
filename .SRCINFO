@@ -1,0 +1,32 @@
+pkgbase = comodo
+	pkgdesc = An antivirus suite with real-time protection
+	pkgver = 1.1.268025
+	pkgrel = 6
+	url = https://www.comodo.com/
+	install = comodo.install
+	arch = x86_64
+	arch = i686
+	license = custom
+	depends = pam
+	depends = glibc
+	depends = qt4
+	depends = gcc-libs
+	optdepends = postfix
+	optdepends = exim
+	optdepends = qmail
+	optdepends = sendmail
+	optdepends = comodo-modules: real-time protection
+	options = !strip
+	source = comodo.sh
+	source = cmdagent.service
+	source = cmgdaemon.service
+	md5sums = cf564cf0421e14d1121eaa7112003c1e
+	md5sums = 372d8c3171424cb9e3ab0797842a7f77
+	md5sums = be4bb222442f2668075dc175cbbe964c
+	source_x86_64 = http://cdn.download.comodo.com/cavmgl/download/installs/1000/standalone/CAV_LINUX-1.1.268025-1.x86_64.rpm
+	md5sums_x86_64 = 555ee6f51d116d2462962a2e4256aeba
+	source_i686 = http://cdn.download.comodo.com/cavmgl/download/installs/1000/standalone/CAV_LINUX-1.1.268025-1.i686.rpm
+	md5sums_i686 = 94c3b08023754ecc09c81be1cc5e7ba0
+
+pkgname = comodo
+

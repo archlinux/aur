@@ -1,0 +1,11 @@
+[Unit]
+Description=Comodo Antivirus Agent
+After=network.target
+
+[Service]
+Type=forking
+WorkingDirectory=/opt/COMODO
+ExecStart=/opt/COMODO/cmdagent
+
+[Install]
+WantedBy=multi-user.target

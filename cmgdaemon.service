@@ -1,0 +1,11 @@
+[Unit]
+Description=Comodo Antivirus Daemon
+After=cmdagent.service
+
+[Service]
+Type=forking
+WorkingDirectory=/opt/COMODO
+ExecStart=/opt/COMODO/cmgdaemon
+
+[Install]
+WantedBy=multi-user.target

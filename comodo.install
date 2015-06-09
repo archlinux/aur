@@ -1,0 +1,42 @@
+post_install() {
+  _common
+}
+
+_common() {
+  update-desktop-database -q
+  /usr/bin/printf '----------------------------------------------------\n'
+  /usr/bin/printf '     Comodo has been installed to /opt/COMODO.\n'
+  if [[ "$1" != "update" ]]; then
+    /usr/bin/printf ' This directory will be added to your path when you\n'
+    /usr/bin/printf ' next log in (assuming you source /etc/profile.d/*)\n'
+  fi
+  /usr/bin/printf ' Run /opt/COMODO/post_setup.sh as root to configure\n'
+  /usr/bin/printf '                 this application.\n'
+  if [[ "$1" != "update" ]]; then
+    /usr/bin/printf '\n'
+    /usr/bin/printf '    After running post_setup, start the cmdagent\n'
+    /usr/bin/printf ' # systemctl start cmdagent.service\n'
+    /usr/bin/printf '  Then run /opt/COMODO/cav as your normal user and\n'
+    /usr/bin/printf '          update your virus definitions\n'
+    /usr/bin/printf '\n'
+    /usr/bin/printf ' Finally, if you want the mail scanner, you need to\n'
+    /usr/bin/printf '           start cmgdaemon.service\n'
+    /usr/bin/printf ' # systemctl start cmgdaemon.service\n'
+    /usr/bin/printf '\n'
+    /usr/bin/printf '  Remember to enable the services you want running\n'
+  fi
+  /usr/bin/printf '----------------------------------------------------\n'
+}
+
+post_remove() {
+  update-desktop-database -q
+  /usr/bin/printf '----------------------------------------------------\n'
+  /usr/bin/printf '   Be aware that you may still have redirfs/avflt\n'
+  /usr/bin/printf ' kernel modules loaded/installed on your system. You\n'
+  /usr/bin/printf '       will need to remove these manually.\n'
+  /usr/bin/printf '----------------------------------------------------\n'
+}
+
+post_upgrade() {
+  _common update
+}
