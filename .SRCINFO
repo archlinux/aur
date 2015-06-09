@@ -1,0 +1,25 @@
+pkgbase = i3pystatus
+	pkgdesc = i3status replacement written in python for the i3 window manager
+	pkgver = 3.32
+	pkgrel = 1
+	url = https://github.com/enkore/i3pystatus
+	arch = i686
+	arch = x86_64
+	license = mit
+	makedepends = python-setuptools
+	depends = python
+	optdepends = python-pyalsaaudio: For the alsa module.,
+	optdepends = python-dbus: For the thunderbird or now_playing modules.,
+	optdepends = python-psutil: For the mem, membar or network_traffic modules.,
+	optdepends = python-netifaces: For the network or wireless modules.,
+	optdepends = python-beautifulsoup4: For the parcel module.,
+	optdepends = python-cssselect: For the parcel module.,
+	optdepends = python-lxml: For the parcel module.,
+	optdepends = python-pywapi: For the weather module.,
+	optdepends = python-basiciw: For the wireless module.
+	optdepends = python-colour: For the pulseaudio module.
+	source = https://github.com/enkore/i3pystatus/archive/3.32.tar.gz
+	md5sums = 28bd78db1c53576781383a1c6111ea3a
+
+pkgname = i3pystatus
+
