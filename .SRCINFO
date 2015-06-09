@@ -1,0 +1,14 @@
+pkgbase = python-ipwhois
+	pkgdesc = IP Whois Resolution and Parsing
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://github.com/secynic/ipwhois
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-dnspython
+	source = https://pypi.python.org/packages/source/i/ipwhois/ipwhois-0.10.1.zip
+	sha1sums = 560a0cd8e8abf0bc43d14cfe664dc86dc62f4343
+
+pkgname = python-ipwhois
+
