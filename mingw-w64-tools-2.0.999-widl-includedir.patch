@@ -1,0 +1,22 @@
+--- a/mingw-w64-tools/widl/Makefile.am	2012-11-14 03:19:32.000000000 -0600
++++ b/mingw-w64-tools/widl/Makefile.am	2014-01-01 19:23:41.000000000 -0600
+@@ -56,7 +56,7 @@ widl_SOURCES = src/widl.h \
+   include/winnls.h \
+   include/winnt.rh
+ 
+-widl_CPPFLAGS = -I$(top_srcdir)/include -DDEFAULT_INCLUDE_DIR=\"$(includedir)/../$(target)/include\"
++widl_CPPFLAGS = -I$(top_srcdir)/include -DDEFAULT_INCLUDE_DIR=\"$(prefix)/$(target)/sys-root/mingw/include\"
+ widl_CFLAGS = -O3 -g -Wall -Wformat -Wpacked -Wmissing-declarations -Wimplicit-function-declaration -Wmissing-prototypes -Wstrict-aliasing=2
+ 
+ DISTCHECK_CONFIGURE_FLAGS = --host=$(host) --target=$(target)
+--- a/mingw-w64-tools/widl/Makefile.in	2012-11-14 03:19:32.000000000 -0600
++++ b/mingw-w64-tools/widl/Makefile.in	2014-01-01 19:24:08.137423600 -0600
+@@ -282,7 +282,7 @@ widl_SOURCES = src/widl.h \
+   include/winnls.h \
+   include/winnt.rh
+ 
+-widl_CPPFLAGS = -I$(top_srcdir)/include -DDEFAULT_INCLUDE_DIR=\"$(includedir)/../$(target)/include\"
++widl_CPPFLAGS = -I$(top_srcdir)/include -DDEFAULT_INCLUDE_DIR=\"$(prefix)/$(target)/sys-root/mingw/include\"
+ widl_CFLAGS = -O3 -g -Wall -Wformat -Wpacked -Wmissing-declarations -Wimplicit-function-declaration -Wmissing-prototypes -Wstrict-aliasing=2
+ DISTCHECK_CONFIGURE_FLAGS = --host=$(host) --target=$(target)
+ all: all-am

@@ -1,0 +1,21 @@
+pkgbase = mingw-w64-tools
+	pkgdesc = MinGW-w64 utilities
+	pkgver = 4.0.2
+	pkgrel = 1
+	url = http://mingw-w64.sourceforge.net
+	arch = i686
+	arch = x86_64
+	groups = mingw-w64
+	license = GPL3
+	license = LGPL2
+	options = !libtool
+	options = !emptydirs
+	source = http://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/mingw-w64-v4.0.2.tar.bz2
+	source = mingw-w64-tools-2.0.999-s390.patch
+	source = mingw-w64-tools-2.0.999-widl-includedir.patch
+	md5sums = bb6404499342e02447b7c49f47b06b5e
+	md5sums = 85a915187d7092c659a56fca102da04c
+	md5sums = e448767d2af073c99795f72bc4e1700c
+
+pkgname = mingw-w64-tools
+

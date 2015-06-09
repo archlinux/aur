@@ -1,0 +1,63 @@
+diff -up mingw-w64-v2.0.999/mingw/mingw-w64-tools/widl/include/basetsd.h.s390 mingw-w64-v2.0.999/mingw/mingw-w64-tools/widl/include/basetsd.h
+--- mingw-w64-v2.0.999/mingw/mingw-w64-tools/widl/include/basetsd.h.s390	2012-01-24 11:11:33.000000000 +0100
++++ mingw-w64-v2.0.999/mingw/mingw-w64-tools/widl/include/basetsd.h	2012-03-28 14:18:17.000000000 +0200
+@@ -36,7 +36,7 @@
+  * 64-bit.
+  */
+ 
+-#if (defined(__x86_64__) || defined(__powerpc64__) || defined(__sparc64__) || defined(__aarch64__)) && !defined(_WIN64)
++#if (defined(__x86_64__) || defined(__powerpc64__) || defined(__sparc64__) || defined(__aarch64__) || defined(__s390x__)) && !defined(_WIN64)
+ #define _WIN64
+ #endif
+ 
+@@ -305,6 +305,10 @@ typedef ULONG_PTR KAFFINITY, *PKAFFINITY
+ # undef  WORDS_BIGENDIAN
+ # undef  BITFIELDS_BIGENDIAN
+ # undef  ALLOW_UNALIGNED_ACCESS
++#elif defined(__s390__)
++# define WORDS_BIGENDIAN
++# define BITFIELDS_BIGENDIAN
++# define ALLOW_UNALIGNED_ACCESS
+ #elif !defined(RC_INVOKED) && !defined(__WIDL__) && !defined(__midl)
+ # error Unknown CPU architecture!
+ #endif
+diff -up mingw-w64-v2.0.999/mingw/mingw-w64-tools/widl/include/winnt.h.s390 mingw-w64-v2.0.999/mingw/mingw-w64-tools/widl/include/winnt.h
+--- mingw-w64-v2.0.999/mingw/mingw-w64-tools/widl/include/winnt.h.s390	2012-01-24 11:11:33.000000000 +0100
++++ mingw-w64-v2.0.999/mingw/mingw-w64-tools/widl/include/winnt.h	2012-03-28 14:20:07.000000000 +0200
+@@ -1910,6 +1910,36 @@ typedef struct _CONTEXT
+ 
+ #endif  /* __powerpc__ */
+ 
++#ifdef __s390__
++
++/*
++ * FIXME:
++ *
++ * There is no official CONTEXT structure defined for the S/390
++ * architecture, so I just made one up.
++ *
++ * This structure is completely dummy, made just to build widl.
++ *
++ */
++
++#define CONTEXT_S390            0x10000000
++
++#define CONTEXT_CONTROL         (CONTEXT_S390 | 0x00000001)
++#define CONTEXT_FLOATING_POINT  (CONTEXT_S390 | 0x00000002)
++#define CONTEXT_INTEGER         (CONTEXT_S390 | 0x00000004)
++
++#define CONTEXT_FULL (CONTEXT_CONTROL | CONTEXT_FLOATING_POINT | CONTEXT_INTEGER)
++
++#define EXCEPTION_READ_FAULT    0
++#define EXCEPTION_WRITE_FAULT   1
++#define EXCEPTION_EXECUTE_FAULT 8
++
++typedef struct _CONTEXT
++{
++} CONTEXT;
++
++#endif  /* __s390__ */
++
+ #if !defined(CONTEXT_FULL) && !defined(RC_INVOKED)
+ #error You need to define a CONTEXT for your CPU
+ #endif
