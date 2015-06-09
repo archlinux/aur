@@ -1,0 +1,169 @@
+From bf89fe818409d237dd2af14bc33326aed8edcaea Mon Sep 17 00:00:00 2001
+From: Tim Lunn <tim@feathertop.org>
+Date: Sun, 28 Apr 2013 15:10:00 +1000
+Subject: [PATCH 1/2] revert git drop library
+
+---
+ configure.ac                        | 15 +++++++++++-
+ panels/common/Makefile.am           |  3 +++
+ shell/Makefile.am                   | 47 ++++++++++++++++++++++++++++++-------
+ shell/libgnome-control-center.pc.in | 12 ++++++++++
+ 4 files changed, 68 insertions(+), 9 deletions(-)
+ create mode 100644 shell/libgnome-control-center.pc.in
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -19,6 +19,15 @@
+ LT_PREREQ([2.2])
+ LT_INIT
+ 
++# .so version for libgnome-control-center
++LIBGNOMECONTROLCENTER_CURRENT=1
++LIBGNOMECONTROLCENTER_REVISION=0
++LIBGNOMECONTROLCENTER_AGE=0
++AC_SUBST(LIBGNOMECONTROLCENTER_CURRENT)
++AC_SUBST(LIBGNOMECONTROLCENTER_REVISION)
++AC_SUBST(LIBGNOMECONTROLCENTER_AGE)
++
++
+ # Internationalization support
+ 
+ IT_PROG_INTLTOOL([0.40.1])
+@@ -334,9 +343,12 @@
+ PANEL_CFLAGS="-I\$(top_srcdir)/ -DG_LOG_DOMAIN=\"\\\"\$(cappletname)-cc-panel\\\"\" -DPANEL_ID=\"\\\"\$(cappletname)\\\"\""
+ AC_SUBST(PANEL_CFLAGS)
+ 
+-PANEL_LIBS=""
++PANEL_LIBS="\$(top_builddir)/shell/libgnome-control-center.la"
+ AC_SUBST(PANEL_LIBS)
+ 
++PANEL_LDFLAGS="-export_dynamic -avoid-version -module -no-undefined -export-symbols-regex '^g_io_module_(load|unload)'"
++AC_SUBST(PANEL_LDFLAGS)
++
+ dnl =======================================
+ dnl Update Mime Database
+ dnl =======================================
+@@ -416,6 +428,7 @@
+ 
+ AC_CONFIG_FILES([
+ Makefile
++shell/libgnome-control-center.pc
+ panels/Makefile
+ panels/common/Makefile
+ panels/background/Makefile
+--- a/panels/common/Makefile.am
++++ b/panels/common/Makefile.am
+@@ -21,8 +21,11 @@
+ 	cc-language-chooser.h
+ 
+ liblanguage_la_LIBADD = 		\
++	$(PANEL_LIBS)			    \
+ 	$(LIBLANGUAGE_LIBS)
+ 
++liblanguage_la_LDFLAGS = $(PANEL_LDFLAGS)
++
+ resource_files = $(shell glib-compile-resources --sourcedir=$(srcdir) --generate-dependencies $(srcdir)/common.gresource.xml)
+ cc-common-resources.c: common.gresource.xml $(resource_files)
+ 	$(AM_V_GEN) glib-compile-resources --target=$@ --sourcedir=$(srcdir) --generate-source --c-name cc_common $<
+--- a/shell/Makefile.am
++++ b/shell/Makefile.am
+@@ -29,14 +29,8 @@
+ 	cc-shell-category-view.h		\
+ 	cc-shell-item-view.c			\
+ 	cc-shell-item-view.h			\
+-	cc-editable-entry.c			\
+-	cc-editable-entry.h			\
+-	cc-panel-loader.c			\
+-	cc-panel-loader.h			\
+-	cc-panel.c				\
+-	cc-panel.h				\
+-	cc-shell.c				\
+-	cc-shell.h				\
++        cc-panel-loader.c                       \
++        cc-panel-loader.h                       \
+ 	hostname-helper.c			\
+ 	hostname-helper.h			\
+ 	cc-hostname-entry.c			\
+@@ -45,8 +39,43 @@
+ 
+ gnome_control_center_LDFLAGS = -export-dynamic
+ 
++lib_LTLIBRARIES = libgnome-control-center.la
++
++libgnome_control_center_include_HEADERS =      \
++	cc-panel.h                              \
++	cc-shell.h                              \
++	cc-editable-entry.h			\
++	$(NULL)
++
++libgnome_control_center_la_SOURCES =		\
++	cc-panel.c				\
++	cc-panel.h				\
++	cc-shell.c				\
++	cc-shell.h				\
++	cc-editable-entry.c			\
++	cc-editable-entry.h			\
++	$(NULL)
++
++libgnome_control_center_la_LDFLAGS =		\
++	-no-undefined				\
++	-version-info $(LIBGNOMECONTROLCENTER_CURRENT):$(LIBGNOMECONTROLCENTER_REVISION):$(LIBGNOMECONTROLCENTER_AGE) \
++        $(LIBGD_LIBS)                           \
++	$(NULL)
++
++libgnome_control_center_la_LIBADD = 		\
++	$(LIBGNOME_CONTROL_CENTER_LIBS)		\
++	$(NULL)
++
++libgnome_control_center_la_LIBTOOLFLAGS = --tag=disable-static
++
++libgnome_control_center_includedir = $(includedir)/gnome-control-center-1/libgnome-control-center
++
++pkgconfigdir=$(libdir)/pkgconfig
++pkgconfig_DATA=libgnome-control-center.pc
++
+ gnome_control_center_LDADD =						\
+ 	libshell.la							\
++	libgnome-control-center.la					\
+ 	$(SHELL_LIBS)							\
+ 	$(CHEESE_LIBS)							\
+ 	$(top_builddir)/libgd/libgd.la					\
+@@ -107,6 +136,7 @@
+ 
+ EXTRA_DIST =					\
+ 	gnome-control-center.desktop.in.in	\
++	libgnome-control-center.pc.in  		\
+ 	$(servicefile_in_files)                 \
+ 	$(completion_in_files)			\
+ 	list-panel.sh
+--- /dev/null
++++ b/shell/libgnome-control-center.pc.in
+@@ -0,0 +1,12 @@
++prefix=@prefix@
++exec_prefix=@exec_prefix@
++libdir=@libdir@
++includedir=@includedir@
++extensiondir=@libdir@/control-center-1/panels
++
++Name: libgnome-control-center
++Description: A library to create GNOME Control Center extensions
++Version: @VERSION@
++Requires: glib-2.0 gio-2.0 gtk+-3.0
++Libs: -L${libdir} -lgnome-control-center
++Cflags: -I${includedir}/gnome-control-center-1
+\ No newline at end of file
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -35,6 +35,12 @@
+ 
+ -include $(top_srcdir)/git.mk
+ 
++libgnome-control-center.la:
++	cd shell && $(MAKE) $(AM_MAKEFLAGS) libgnome-control-center.la
++
++BUILT_SOURCES = libgnome-control-center.la
++
++
+ dist-hook:
+ 	@if test -d "$(srcdir)/.git"; \
+ 	then \

@@ -1,0 +1,23 @@
+pkgbase = libgnome-control-center
+	pkgdesc = The Control Center for GNOME - shared library
+	pkgver = 3.16.0
+	pkgrel = 1
+	url = http://www.gnome.org
+	arch = i686
+	arch = x86_64
+	groups = gnome
+	license = GPL
+	makedepends = gnome-doc-utils
+	makedepends = intltool
+	makedepends = docbook-xsl
+	makedepends = gnome-common
+	makedepends = modemmanager
+	depends = gnome-control-center=3.16.0
+	options = !emptydirs
+	source = http://download.gnome.org/sources/gnome-control-center/3.16/gnome-control-center-3.16.0.tar.xz
+	source = revert-drop-library.patch
+	sha256sums = d2ca9ef8619fee91f2b54c0b8461185ecbcb003916f5ff077ddc3f97232d3b12
+	sha256sums = 80c964ecef5abf230fa274bb39fdff22c0f75cd082ad393211b3933a1bfa43b4
+
+pkgname = libgnome-control-center
+
