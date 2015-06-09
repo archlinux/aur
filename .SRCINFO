@@ -1,0 +1,19 @@
+pkgbase = themer-py-git
+	pkgdesc = Theme generator/manager by coleifer
+	pkgver = r3.242f183
+	pkgrel = 2
+	url = https://gist.github.com/coleifer/33484bff21c34644dae1
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python2
+	depends = python2-yaml
+	depends = python2-jinja
+	depends = python2-pillow
+	source = themer-py-git::git+https://gist.github.com/33484bff21c34644dae1.git
+	source = python2-fix.patch
+	sha256sums = SKIP
+	sha256sums = 4c48ee87d200ab6dfe2456f6e95534bdf0fd2add2335becb6d6145a01bdcb95c
+
+pkgname = themer-py-git
+
