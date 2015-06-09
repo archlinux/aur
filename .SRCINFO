@@ -1,0 +1,38 @@
+pkgbase = ttf-ms-fonts
+	pkgdesc = Core TTF Fonts from Microsoft
+	pkgver = 2.0
+	pkgrel = 10
+	url = http://corefonts.sourceforge.net/
+	install = ttf-ms-fonts.install
+	arch = any
+	license = custom:microsoft
+	makedepends = libarchive>=3.0.2
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	provides = ttf-font
+	source = http://downloads.sourceforge.net/corefonts/andale32.exe
+	source = http://downloads.sourceforge.net/corefonts/arial32.exe
+	source = http://downloads.sourceforge.net/corefonts/arialb32.exe
+	source = http://downloads.sourceforge.net/corefonts/comic32.exe
+	source = http://downloads.sourceforge.net/corefonts/courie32.exe
+	source = http://downloads.sourceforge.net/corefonts/georgi32.exe
+	source = http://downloads.sourceforge.net/corefonts/impact32.exe
+	source = http://downloads.sourceforge.net/corefonts/times32.exe
+	source = http://downloads.sourceforge.net/corefonts/trebuc32.exe
+	source = http://downloads.sourceforge.net/corefonts/verdan32.exe
+	source = http://downloads.sourceforge.net/corefonts/webdin32.exe
+	md5sums = cbdc2fdd7d2ed0832795e86a8b9ee19a
+	md5sums = 9637df0e91703179f0723ec095a36cb5
+	md5sums = c9089ae0c3b3d0d8c4b0a95979bb9ff0
+	md5sums = 2b30de40bb5e803a0452c7715fc835d1
+	md5sums = 4e412c772294403ab62fb2d247d85c60
+	md5sums = 4d90016026e2da447593b41a8d8fa8bd
+	md5sums = 7907c7dd6684e9bade91cff82683d9d7
+	md5sums = ed39c8ef91b9fb80f76f702568291bd5
+	md5sums = 0d7ea16cac6261f8513a061fbfcdb2b5
+	md5sums = 12d2a75f8156e10607be1eaa8e8ef120
+	md5sums = 230a1d13a365b22815f502eb24d9149b
+
+pkgname = ttf-ms-fonts
+
