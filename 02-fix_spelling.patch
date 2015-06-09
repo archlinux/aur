@@ -1,0 +1,276 @@
+Author: Jaromír Mikeš <mira.mikes@seznam.cz>
+Description: Fix spelling.
+Forwarded: yes
+
+Index: traverso/src/core/InputEngine.cpp
+===================================================================
+--- traverso.orig/src/core/InputEngine.cpp
++++ traverso/src/core/InputEngine.cpp
+@@ -194,7 +194,7 @@ InputEngine::InputEngine()
+ 		CommandPlugin* plug = qobject_cast<CommandPlugin*>(loader.instance());
+ 		if (plug) {
+ 			m_commandplugins.insert(plug->metaObject()->className(), plug);
+-			printf("InputEngine:: Succesfully loaded plugin: %s\n", plug->metaObject()->className());
++			printf("InputEngine:: Successfully loaded plugin: %s\n", plug->metaObject()->className());
+ 		} else {
+ 			printf("InputEngine:: Plugin load failed with %s\n", QS_C(loader.errorString()));
+ 		}
+Index: traverso/src/engine/PADriver.cpp
+===================================================================
+--- traverso.orig/src/engine/PADriver.cpp
++++ traverso/src/engine/PADriver.cpp
+@@ -130,7 +130,7 @@ int PADriver::setup(bool capture, bool p
+ 		Pa_Terminate();
+ 		return -1;
+ 	} else {
+-		printf("PADriver:: Succesfully initialized portaudio\n");
++		printf("PADriver:: Successfully initialized portaudio\n");
+ 	}
+ 	
+ 	
+@@ -218,7 +218,7 @@ int PADriver::setup(bool capture, bool p
+ 		Pa_Terminate();
+ 		return -1;
+ 	} else {
+-		printf("PADriver:: Succesfully opened portaudio stream\n");
++		printf("PADriver:: Successfully opened portaudio stream\n");
+ 	}
+ 	
+ 	AudioChannel* audiochannel;
+@@ -264,7 +264,7 @@ int PADriver::start( )
+ 		Pa_Terminate();
+ 		return -1;
+ 	} else {
+-		printf("PADriver:: Succesfully started portaudio stream\n");
++		printf("PADriver:: Successfully started portaudio stream\n");
+ 	}
+ 	
+ 	return 1;
+@@ -279,7 +279,7 @@ int PADriver::stop( )
+ 		device->message((tr("PADriver:: PortAudio error: %1").arg(Pa_GetErrorText( err ))), AudioDevice::WARNING);
+ 		Pa_Terminate();
+ 	} else {
+-		printf("PADriver:: Succesfully closed portaudio stream\n\n");
++		printf("PADriver:: Successfully closed portaudio stream\n\n");
+ 	}
+ 	
+ 	return 1;
+Index: traverso/src/plugins/LV2/LV2Plugin.cpp
+===================================================================
+--- traverso.orig/src/plugins/LV2/LV2Plugin.cpp
++++ traverso/src/plugins/LV2/LV2Plugin.cpp
+@@ -238,7 +238,7 @@ int LV2Plugin::create_instance()
+ 		printf("Failed to instantiate plugin.\n");
+ 		return -1;
+ 	} else {
+-// 		printf("Succesfully instantiated plugin.\n\n");
++// 		printf("Successfully instantiated plugin.\n\n");
+ 	}
+ 	
+ 	return 1;
+Index: traverso/src/sheetcanvas/AudioClipView.cpp
+===================================================================
+--- traverso.orig/src/sheetcanvas/AudioClipView.cpp
++++ traverso/src/sheetcanvas/AudioClipView.cpp
+@@ -1010,7 +1010,7 @@ Command * AudioClipView::set_audio_file(
+ 		// but it's not the proper place to do so!!
+ 		m_clip->set_sheet(m_sheet);
+ 		
+-		info().information(tr("Succesfully set AudioClip file to %1").arg(filename));
++		info().information(tr("Successfully set AudioClip file to %1").arg(filename));
+ 		
+ 		return ie().succes();
+ 	}
+Index: traverso/src/traverso/dialogs/RestoreProjectBackupDialog.cpp
+===================================================================
+--- traverso.orig/src/traverso/dialogs/RestoreProjectBackupDialog.cpp
++++ traverso/src/traverso/dialogs/RestoreProjectBackupDialog.cpp
+@@ -47,7 +47,7 @@ void RestoreProjectBackupDialog::accept(
+ 	
+ 	if (sucess) {
+ 		pm().load_project(m_projectname);
+-		info().information(tr("Succesfully restored backup from %1").arg(QDateTime::fromTime_t(restoretime).toString()));
++		info().information(tr("Successfully restored backup from %1").arg(QDateTime::fromTime_t(restoretime).toString()));
+ 		hide();
+ 	}
+ 	
+Index: traverso/resources/translations/traverso_bg.ts
+===================================================================
+--- traverso.orig/resources/translations/traverso_bg.ts
++++ traverso/resources/translations/traverso_bg.ts
+@@ -526,7 +526,7 @@ effect after restarting Traverso!</sourc
+     </message>
+     <message>
+         <location filename="../../src/sheetcanvas/AudioClipView.cpp" line="1013"/>
+-        <source>Succesfully set AudioClip file to %1</source>
++        <source>Successfully set AudioClip file to %1</source>
+         <translation>Успешно бе зададен АудиоКлип файл за %1</translation>
+     </message>
+ </context>
+@@ -2852,7 +2852,7 @@ p, li { white-space: pre-wrap; }
+     </message>
+     <message>
+         <location filename="../../src/core/ProjectConverter.cpp" line="304"/>
+-        <source>Conversion finished succesfully</source>
++        <source>Conversion finished successfully</source>
+         <translation>Конвертирането завърши успешно</translation>
+     </message>
+     <message>
+Index: traverso/resources/translations/traverso_cs.ts
+===================================================================
+--- traverso.orig/resources/translations/traverso_cs.ts
++++ traverso/resources/translations/traverso_cs.ts
+@@ -562,7 +562,7 @@ projeví až po novém spuštění Trave
+     </message>
+     <message>
+         <location filename="../../src/sheetcanvas/AudioClipView.cpp" line="1013"/>
+-        <source>Succesfully set AudioClip file to %1</source>
++        <source>Successfully set AudioClip file to %1</source>
+         <translation>Soubor se zvukovou ukázkou byl úspěšně nastaven na %1</translation>
+     </message>
+ </context>
+@@ -3004,7 +3004,7 @@ p, li { white-space: pre-wrap; }
+     </message>
+     <message>
+         <location filename="../../src/core/ProjectConverter.cpp" line="304"/>
+-        <source>Conversion finished succesfully</source>
++        <source>Conversion finished successfully</source>
+         <translation>Převod byl dokončen úspěšně</translation>
+     </message>
+     <message>
+Index: traverso/resources/translations/traverso_de.ts
+===================================================================
+--- traverso.orig/resources/translations/traverso_de.ts
++++ traverso/resources/translations/traverso_de.ts
+@@ -553,7 +553,7 @@ effect after restarting Traverso!</sourc
+     </message>
+     <message>
+         <location filename="../../src/sheetcanvas/AudioClipView.cpp" line="1013"/>
+-        <source>Succesfully set AudioClip file to %1</source>
++        <source>Successfully set AudioClip file to %1</source>
+         <translation>AudioClip Datei erfolgreich auf %1 gesetzt</translation>
+     </message>
+ </context>
+@@ -2981,7 +2981,7 @@ nach (Neu)laden des Projektes angewandt.
+     </message>
+     <message>
+         <location filename="../../src/core/ProjectConverter.cpp" line="304"/>
+-        <source>Conversion finished succesfully</source>
++        <source>Conversion finished successfully</source>
+         <translation>Konvertierung erfolgreich beendet</translation>
+     </message>
+     <message>
+Index: traverso/resources/translations/traverso_es.ts
+===================================================================
+--- traverso.orig/resources/translations/traverso_es.ts
++++ traverso/resources/translations/traverso_es.ts
+@@ -564,7 +564,7 @@ efecto al reiniciar Traverso!</translati
+     </message>
+     <message>
+         <location filename="../../src/sheetcanvas/AudioClipView.cpp" line="1013"/>
+-        <source>Succesfully set AudioClip file to %1</source>
++        <source>Successfully set AudioClip file to %1</source>
+         <translation>Archivo de AudioClip asignado correctamente  a %1</translation>
+     </message>
+ </context>
+@@ -3014,7 +3014,7 @@ p, li { white-space: pre-wrap; }
+     </message>
+     <message>
+         <location filename="../../src/core/ProjectConverter.cpp" line="304"/>
+-        <source>Conversion finished succesfully</source>
++        <source>Conversion finished successfully</source>
+         <translation>La conversión finalizó con éxito</translation>
+     </message>
+     <message>
+Index: traverso/resources/translations/traverso_fr.ts
+===================================================================
+--- traverso.orig/resources/translations/traverso_fr.ts
++++ traverso/resources/translations/traverso_fr.ts
+@@ -525,7 +525,7 @@ effect after restarting Traverso!</sourc
+     </message>
+     <message>
+         <location filename="../../src/sheetcanvas/AudioClipView.cpp" line="1013"/>
+-        <source>Succesfully set AudioClip file to %1</source>
++        <source>Successfully set AudioClip file to %1</source>
+         <translation type="unfinished"></translation>
+     </message>
+ </context>
+@@ -2863,7 +2863,7 @@ p, li { white-space: pre-wrap; }
+     </message>
+     <message>
+         <location filename="../../src/core/ProjectConverter.cpp" line="304"/>
+-        <source>Conversion finished succesfully</source>
++        <source>Conversion finished successfully</source>
+         <translation>Conversion réalisée avec succès</translation>
+     </message>
+     <message>
+Index: traverso/resources/translations/traverso_nl.ts
+===================================================================
+--- traverso.orig/resources/translations/traverso_nl.ts
++++ traverso/resources/translations/traverso_nl.ts
+@@ -553,7 +553,7 @@ effect after restarting Traverso!</sourc
+     </message>
+     <message>
+         <location filename="../../src/sheetcanvas/AudioClipView.cpp" line="1013"/>
+-        <source>Succesfully set AudioClip file to %1</source>
++        <source>Successfully set AudioClip file to %1</source>
+         <translation>Bestand %1 succesvol toegewezen aan AudioClip</translation>
+     </message>
+ </context>
+@@ -2956,7 +2956,7 @@ laden van het project.</translation>
+     </message>
+     <message>
+         <location filename="../../src/core/ProjectConverter.cpp" line="304"/>
+-        <source>Conversion finished succesfully</source>
++        <source>Conversion finished successfully</source>
+         <translation>Omzetting met succes afgerond</translation>
+     </message>
+     <message>
+Index: traverso/resources/translations/traverso_pt.ts
+===================================================================
+--- traverso.orig/resources/translations/traverso_pt.ts
++++ traverso/resources/translations/traverso_pt.ts
+@@ -525,7 +525,7 @@ effect after restarting Traverso!</sourc
+     </message>
+     <message>
+         <location filename="../../src/sheetcanvas/AudioClipView.cpp" line="1013"/>
+-        <source>Succesfully set AudioClip file to %1</source>
++        <source>Successfully set AudioClip file to %1</source>
+         <translation type="unfinished"></translation>
+     </message>
+ </context>
+@@ -2837,7 +2837,7 @@ p, li { white-space: pre-wrap; }
+     </message>
+     <message>
+         <location filename="../../src/core/ProjectConverter.cpp" line="304"/>
+-        <source>Conversion finished succesfully</source>
++        <source>Conversion finished successfully</source>
+         <translation type="unfinished"></translation>
+     </message>
+     <message>
+Index: traverso/src/core/ProjectConverter.cpp
+===================================================================
+--- traverso.orig/src/core/ProjectConverter.cpp
++++ traverso/src/core/ProjectConverter.cpp
+@@ -301,7 +301,7 @@ int ProjectConverter::save_converted_doc
+ 
+ void ProjectConverter::conversion_finished()
+ {
+-	emit message(tr("Conversion finished succesfully"));
++	emit message(tr("Conversion finished successfully"));
+ }
+ 
+ QString ProjectConverter::get_conversion_description()
+Index: traverso/src/engine/AudioDevice.h
+===================================================================
+--- traverso.orig/src/engine/AudioDevice.h
++++ traverso/src/engine/AudioDevice.h
+@@ -233,7 +233,7 @@ signals:
+ 	void stopped();
+ 	
+ 	/**
+-	 *      The started() signal is emited ones the AudioThread and AudioDriver have been succesfully
++	 *      The started() signal is emited ones the AudioThread and AudioDriver have been successfully
+ 	 *	setup.
+ 	 */
+ 	void started();

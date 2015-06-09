@@ -1,0 +1,17 @@
+Author: Jaromír Mikeš <mira.mikes@seznam.cz>
+Description: Fixing build. Thanks to Fabian Greffrath <fabian@greffrath.com>
+Forwarded: yes
+
+Index: traverso/src/core/InputEngine.cpp
+===================================================================
+--- traverso.orig/src/core/InputEngine.cpp
++++ traverso/src/core/InputEngine.cpp
+@@ -1519,7 +1519,7 @@ int InputEngine::init_map(const QString&
+ 				exists = true;
+ 				QString errorstring = QString("InputEngine:: keyfact with: type=%1, key1='%2', key2='%3' already exists!\n"
+ 						"You should only define keyfact types one time!!\n").arg(keyFactType).arg(key1).arg(key2); 
+-				printf(QS_C(errorstring));
++				printf("%s",QS_C(errorstring));
+ 				info().warning(errorstring);
+ 				break;
+ 			}

@@ -1,0 +1,29 @@
+pkgbase = traverso
+	pkgdesc = Digital Audio Workstation with an innovative User Interface
+	pkgver = 0.49.4
+	pkgrel = 1
+	url = http://traverso-daw.org/
+	install = traverso.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = qt4
+	depends = jack
+	depends = fftw
+	depends = wavpack
+	depends = lame
+	depends = libmad
+	depends = shared-mime-info
+	depends = lilv
+	source = http://ftp.debian.org/debian/pool/main/t/traverso/traverso_0.49.4.orig.tar.gz
+	source = traverso.1
+	source = 01-fix_build.patch
+	source = 02-fix_spelling.patch
+	md5sums = 35711db624ccb09044ea1a8dad2695ed
+	md5sums = da7454cb60b276aa1637ad79250e9ffb
+	md5sums = cb4c62ff0f38600c235216f87bace9f0
+	md5sums = d9839ac123cddb63692fc1258297877f
+
+pkgname = traverso
+
