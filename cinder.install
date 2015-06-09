@@ -1,0 +1,23 @@
+post_install() {
+  getent group cinder &>/dev/null || groupadd cinder >/dev/null
+  getent passwd cinder &>/dev/null || useradd  -d /var/lib/cinder -g cinder -s /bin/false cinder >/dev/null
+
+  chmod 755 /etc/cinder
+  chown -R cinder:cinder /etc/cinder
+  chown root:root /etc/cinder/rootwrap.conf
+  chown -R root:root /etc/cinder/rootwrap.d
+  chown cinder:cinder /var/lib/cinder
+  chown cinder /var/log/cinder
+  chown root:root /etc/sudoers.d/cinder_sudoers
+  chmod 440 /etc/sudoers.d/cinder_sudoers
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  getent passwd cinder &>/dev/null && userdel cinder >/dev/null
+  getent group cinder &>/dev/null && groupdel cinder >/dev/null
+  true
+}
