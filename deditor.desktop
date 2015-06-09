@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Encoding=UTF-8
+Name=Deditor
+Version=0.2.2
+Comment=Python text-editor
+GenericName=Deditor
+Terminal=false
+Icon=/usr/share/pixmaps/deditor.gif
+Type=Application
+Exec=python2 /usr/share/deditor/deditor.py
+Categories=Development;

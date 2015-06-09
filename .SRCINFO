@@ -1,0 +1,20 @@
+pkgbase = deditor
+	pkgdesc = The editor that boosts your python development
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://launchpad.net/deditor
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2
+	depends = wxpython
+	depends = paramiko
+	source = http://launchpad.net/deditor/0.x/0.3.0/+download/deditor_0.3.0_all.deb
+	source = deditor.desktop
+	source = deditor.sh
+	md5sums = 5ab2ea783863ebf2af42964d78f1fa03
+	md5sums = 90fb088dcb04194273428e67226fda2e
+	md5sums = 22a730764194046734749a954dcfbd4f
+
+pkgname = deditor
+
