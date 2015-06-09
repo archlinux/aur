@@ -2,7 +2,7 @@
 pkgname=think-git
 _pyname=think
 _gitname=think
-pkgver=0.1.1.r0.gd2436ef
+pkgver=0.1.2.r0.ge2eaa5f
 pkgrel=1
 pkgdesc='Terminal Think Music (git version)'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-setuptools')
 makedepends=('git')
 options=(!emptydirs)
 provides=('think')
-conflicts=('hink')
+conflicts=('think')
 source=("git://github.com/Kwpolska/${_gitname}.git")
 md5sums=('SKIP')
 
