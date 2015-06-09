@@ -1,0 +1,17 @@
+pkgbase = purpose
+	pkgdesc = Framework for providing abstractions to get the developer's purposes fulfilled
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://projects.kde.org/purpose
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = python
+	depends = kaccounts-integration
+	source = http://download.kde.org/unstable/purpose/purpose-0.1-alpha.tar.xz
+	source = accounts.diff
+	md5sums = ccb8ae820b4ed9b76bc7aca4cb5eba0a
+	md5sums = c00351fb0b7a666509db6ccef803d489
+
+pkgname = purpose
+
