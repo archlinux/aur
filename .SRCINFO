@@ -1,0 +1,21 @@
+pkgbase = gromacs
+	pkgdesc = A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.
+	pkgver = 5.0.5
+	pkgrel = 1
+	url = http://www.gromacs.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = fftw
+	depends = lesstif
+	depends = perl
+	depends = libxml2
+	depends = libsm
+	depends = libx11
+	options = !libtool
+	source = ftp://ftp.gromacs.org/pub/gromacs/gromacs-5.0.5.tar.gz
+	sha1sums = 990a93d62964eb80d310e713790795a36681eacf
+
+pkgname = gromacs
+
