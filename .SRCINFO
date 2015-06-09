@@ -1,0 +1,17 @@
+pkgbase = python2-tackpy
+	pkgdesc = Implements TACK in pure Python
+	pkgver = 0.9.9a
+	pkgrel = 1
+	url = http://tack.io
+	arch = any
+	license = custom:public domain
+	makedepends = python2-setuptools
+	depends = python2
+	optdepends = python2-m2crypto: fast elliptic curve and AES operations
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/t/tackpy/tackpy-0.9.9a.tar.gz
+	md5sums = b00321834abd5cb8c8cd5e547309ba3f
+	sha256sums = 041c4d1e4b20bf35ccd472761779506eff2a5bebb126526337cd7d21b894beed
+
+pkgname = python2-tackpy
+
