@@ -1,0 +1,24 @@
+pkgbase = python2-camlipy
+	pkgdesc = Unofficial Python client for Camlistore
+	pkgver = 0.1.1
+	pkgrel = 2
+	url = https://github.com/tsileo/camlipy
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-dirtools
+	depends = python2-docopt
+	depends = python2-requests
+	depends = python2-simplejson
+	provides = camlipy
+	provides = python2-camlipy
+	conflicts = camlipy
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/c/camlipy/camlipy-0.1.1.tar.gz
+	md5sums = 4fecdeb281bab1dfc452a19eec7c6725
+	sha256sums = fba9edeeee542542ed49b68a3b07b9ef0388622a618ac3948a23aeda5be5d7ba
+
+pkgname = python2-camlipy
+
