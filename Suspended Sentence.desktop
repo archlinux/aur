@@ -1,0 +1,11 @@
+[Desktop Entry]
+Categories=Game;
+Exec=suspended-sentence
+GenericName=Suspended Sentence
+Comment=A game about incarceration and duct tape
+Icon=suspended_sentence
+Name=Suspended Sentence
+StartupNotify=false
+Terminal=false
+Type=Application
+

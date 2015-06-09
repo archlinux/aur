@@ -1,0 +1,18 @@
+pkgbase = suspended-sentence
+	pkgdesc = A game about incarceration and duct tape, by Simon Cross, Neil Muller, Adrianna Pińska, Stefano Rivera and Jeremy Thurgood.
+	pkgver = 1.0.1
+	pkgrel = 2
+	url = http://suspended-sentence.org/
+	arch = any
+	license = unknown
+	depends = python2
+	depends = python2-pygame
+	source = https://suspended-sentence.org/releases/1.0.1/suspended-sentence-1.0.1.tgz
+	source = Suspended Sentence.desktop
+	source = suspended-sentence.sh
+	md5sums = 97e2d13847ed0ec71ca9c8c95294479e
+	md5sums = d5b759a2b3b3966aa516b20b99427c50
+	md5sums = 802a48ebfc653d43d0acd948ad677c78
+
+pkgname = suspended-sentence
+
