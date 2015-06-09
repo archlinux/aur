@@ -1,0 +1,18 @@
+pkgbase = miranda
+	pkgdesc = Miranda
+	pkgver = 2.042
+	pkgrel = 1
+	url = http://miranda.org.uk/
+	arch = i686,
+	arch = x86_64
+	license = custom
+	makedepends = pkgconfig
+	makedepends = wget
+	makedepends = tar
+	depends = 
+	provides = miranda
+	source = 
+	md5sums = 
+
+pkgname = miranda
+
