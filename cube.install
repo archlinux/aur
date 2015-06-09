@@ -1,0 +1,28 @@
+post_install() {
+  _mkuser
+  chown -R cube:cube /etc/cube /usr/share/cube
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  _rmuser
+  rm -rf /etc/cube /usr/share/cube
+}
+
+_mkuser() {
+  getent passwd cube &>/dev/null || {
+    echo -n "Creating cube user... "
+    grep -E "^cube:" /etc/group >/dev/null || groupadd cube
+    useradd -m -d /etc/cube -g cube -s /usr/bin/nologin cube
+    echo "done"
+  }
+}
+
+_rmuser() {
+  echo -n "Removing cube user... "
+  userdel -rf cube 2>/dev/null
+  echo "done"
+}

@@ -1,0 +1,15 @@
+[Unit]
+Description=Cube Evaluator
+Requires=mongodb.service
+After=mongodb.service
+
+[Service]
+User=cube
+Group=cube
+WorkingDirectory=/usr/share/cube
+ExecStart=/usr/bin/node bin/evaluator.js
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

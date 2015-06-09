@@ -1,0 +1,24 @@
+pkgbase = cube-git
+	pkgdesc = A system for analyzing time series data using MongoDB and Node
+	pkgver = 20140730
+	pkgrel = 1
+	url = http://square.github.io/cube/
+	install = cube.install
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = npm
+	depends = mongodb
+	depends = nodejs
+	provides = cube
+	conflicts = cube
+	source = git+https://github.com/square/cube
+	source = cube-collector.service
+	source = cube-evaluator.service
+	sha256sums = SKIP
+	sha256sums = d95365e0bdc8a53d32a83694ecfb13f7417d7fc235658bde7ebb58c0e4a0395d
+	sha256sums = 646857807ed967252e7e003377fe7dd7f17b23dd362886042a4ac6da052681e7
+
+pkgname = cube-git
+

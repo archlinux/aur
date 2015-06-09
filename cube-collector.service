@@ -1,0 +1,15 @@
+[Unit]
+Description=Cube Collector
+Requires=mongodb.service
+After=mongodb.service
+
+[Service]
+User=cube
+Group=cube
+WorkingDirectory=/usr/share/cube
+ExecStart=/usr/bin/node bin/collector.js
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
