@@ -3,7 +3,7 @@
 
 pkgname=cvc4
 pkgver=1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="CVC4: An automatic theorem prover"
 arch=(i686 x86_64)
 url="http://cvc4.cs.nyu.edu/web/"
@@ -12,8 +12,10 @@ optdepends=('readline: for an improved interaction support'
             # 'glpk' -- incompatible :(
             'cln: Alternative to gmp; can offer more performance')
 license=('custom')
-source=("http://cvc4.cs.nyu.edu/builds/src/cvc4-$pkgver.tar.gz")
-md5sums=('581c559c02b94fcb18b2e5b11432e009')
+source=("http://cvc4.cs.nyu.edu/builds/src/cvc4-$pkgver.tar.gz"
+        configure-boost-version.patch)
+md5sums=('581c559c02b94fcb18b2e5b11432e009'
+         'd9cbfad2415d4a675ebabf3f7c5cdd5d')
 options=(!libtool)
 
 if [[ -r /usr/lib/libcln.so ]]; then
@@ -26,6 +28,10 @@ fi
 #   WITH_GLPK="--with-glpk"
 #   depends=('glpk' ${depends[@]});
 # fi
+
+prepare() {
+    patch "$srcdir"/cvc4-$pkgver/configure configure-boost-version.patch
+}
 
 build() {
     cd "$srcdir"/cvc4-$pkgver
