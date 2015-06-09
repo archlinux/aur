@@ -1,0 +1,24 @@
+pkgbase = silentcast
+	pkgdesc = Silent Screencast: video record your screen and make it into an animated gif
+	pkgver = 2.0
+	pkgrel = 3
+	url = https://github.com/colinkeenan/silentcast
+	install = silentcast.install
+	arch = any
+	license = GPL
+	depends = bash
+	depends = ffmpeg
+	depends = imagemagick
+	depends = xdotool
+	depends = xorg-xrandr
+	depends = xorg-xwininfo
+	depends = wmctrl
+	depends = python-gobject
+	depends = python-cairo
+	depends = xdg-utils
+	depends = yad
+	source = https://github.com/colinkeenan/silentcast/archive/v2.0.tar.gz
+	md5sums = 4638cb6349efd807050df35e1f0a192f
+
+pkgname = silentcast
+
