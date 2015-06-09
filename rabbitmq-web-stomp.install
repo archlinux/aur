@@ -1,0 +1,12 @@
+post_install() {
+  rabbitmq-plugins enable rabbitmq_web_stomp
+  rabbitmq-plugins enable rabbitmq_web_stomp_examples
+  rc.d restart rabbitmq
+}
+
+pre_remove() {
+  rabbitmq-plugins disable rabbitmq_web_stomp
+  rabbitmq-plugins disable rabbitmq_web_stomp_examples
+}
+
+# vim:set ts=2 sw=2 et:
