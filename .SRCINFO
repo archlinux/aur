@@ -1,0 +1,17 @@
+pkgbase = btrbk-git
+	pkgdesc = A backup tool for btrfs subvolumes, taking advantage of btrfs specific capabilities to create atomic snapshots and transfer them incrementally to your backup locations.
+	pkgver = 20150609
+	pkgrel = 1
+	url = http://digint.ch/btrbk
+	arch = any
+	license = GPL3
+	depends = perl
+	depends = perl-date-calc
+	depends = btrfs-progs
+	optdepends = openssh: remote backup support
+	conflicts = btrbk
+	source = git+https://github.com/digint/btrbk.git
+	sha256sums = SKIP
+
+pkgname = btrbk-git
+
