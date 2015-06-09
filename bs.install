@@ -1,0 +1,99 @@
+_bs_user=bs
+_bs_group=bs
+
+post_install() {
+  _mkuser
+  _disable_cow
+  chown -R $_bs_user:$_bs_group /etc/bs /srv/bs /var/log/bs
+  printf "%b\n" "$xx"
+}
+
+post_remove() {
+  _rmuser
+  rm -rf /etc/bs /srv/bs /var/log/bs
+}
+
+
+# ------------------------------------------------------------------------------
+# helper functions for creating libbitcoin-server user / group
+# ------------------------------------------------------------------------------
+
+_mkuser() {
+  getent passwd $_bs_user &>/dev/null || {
+    echo -n "Creating libbitcoin-server user... "
+    grep -E "^$_bs_group:" /etc/group >/dev/null || groupadd $_bs_group
+    useradd -m -d /etc/bs -g $_bs_group -s /usr/bin/nologin $_bs_user
+    echo "done"
+  }
+}
+
+_rmuser() {
+  echo -n "Removing libbitcoin-server user... "
+  userdel -rf $_bs_user 2>/dev/null
+  echo "done"
+}
+
+
+# ------------------------------------------------------------------------------
+# helper functions for disabling btrfs Copy-On-Write (CoW)
+# https://wiki.archlinux.org/index.php/Btrfs#Copy-On-Write_.28CoW.29
+# ------------------------------------------------------------------------------
+
+# check if dir is btrfs
+_is_btrfs() {
+  if [[ $(df -TP "$1" | tail -n 1 | awk '{print $2}') == 'btrfs' ]]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+# disable btrfs CoW
+_chattrify() {
+  # original dir, with trailing slash stripped if it exists
+  _orig_dir=$( echo "$1" | sed 's@/$@@' )
+
+  # if original dir exists, back it up
+  [[ -d "$1" ]] && mv "$1" "${_orig_dir}"_old
+
+  # re-make original dir
+  mkdir -p "$1"
+
+  # set permissions on re-made dir
+  chmod "$2" "$1"
+
+  # disable btrfs CoW on re-made dir
+  chattr +C "$1"
+
+  # recursive copy to restore backed up dir while mainintaining disabled CoW
+  [[ -d "${_orig_dir}"_old ]] \
+    && find "${_orig_dir}"_old -mindepth 1 -maxdepth 1 -exec cp -R '{}' "$1" \;
+
+  # set ownership on re-made dir
+  chown -R $3:$4 "$1"
+
+  # purge backed up dir
+  [[ -d "${_orig_dir}"_old ]] && rm -rf "${_orig_dir}"_old
+}
+
+# if blockchain or log dir has btrfs filesystem, disable CoW:
+_disable_cow() {
+  for _dir in /srv/bs /var/log/bs; do
+    _is_btrfs "$_dir" && _chattrify "$_dir" "700" "$_bs_user" "$_bs_group"
+  done
+}
+
+read -d '' xx <<'EOF'
+libbitcoin-server
+=================
+
+To run normally:
+
+    $ bs --initchain /path/to/bs/config/file
+    $ bs /path/to/bs/config/file
+
+To run as a service:
+
+    $ sudo systemctl start bsinit # wait several mins for blockchain dir to init
+    $ sudo systemctl start bs
+EOF

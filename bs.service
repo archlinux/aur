@@ -1,0 +1,14 @@
+[Unit]
+Description=Libbitcoin server: a full Bitcoin node in the global peer-to-peer network
+Conflicts=bsinit.service
+
+[Service]
+Type=simple
+User=bs
+Group=bs
+ExecStart=/usr/bin/bs /etc/bs/bs.cfg
+ExecReload=/usr/bin/kill -s SIGHUP $MAINPID
+ExecStop=/usr/bin/kill -s SIGINT $MAINPID
+
+[Install]
+WantedBy=multi-user.target
