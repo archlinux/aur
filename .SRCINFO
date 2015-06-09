@@ -1,0 +1,16 @@
+pkgbase = python2-characters
+	pkgdesc = Tools for manipulating characters, strings, and character sets
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/halfmoonlabs/characters
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/c/characters/characters-0.1.0.tar.gz
+	md5sums = 9406a608b83c75ef318d442f7727779f
+	sha256sums = cbd749d58de6ce9b116d189853430ae2c58b954a5375acc325d1960a436dd8f2
+
+pkgname = python2-characters
+
