@@ -1,0 +1,14 @@
+pkgbase = rem2ics
+	pkgdesc = A script that will convert Remind events to iCalendar format
+	pkgver = 0.93
+	pkgrel = 1
+	url = http://mark.atwood.name/code/
+	arch = any
+	license = GPL2
+	depends = perl
+	depends = remind
+	source = http://mark.atwood.name/code/rem2ics/rem2ics-0.93.tar.gz
+	md5sums = 859e834d7b09b8e4ec93885a25464222
+
+pkgname = rem2ics
+
