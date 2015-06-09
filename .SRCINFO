@@ -1,0 +1,14 @@
+pkgbase = numix-frost-themes
+	pkgdesc = Official Numix GTK theme - Antergos edition
+	pkgver = 1.9.4
+	pkgrel = 1
+	url = http://numixproject.org/
+	arch = any
+	license = GPL3
+	depends = gtk-engine-murrine
+	replaces = gtk-theme-numix-frost
+	source = numix-frost-themes.tar.xz::http://repo.antergos.info/antergos/x86_64/numix-frost-themes-1.9.4-1-any.pkg.tar.xz
+	sha256sums = c942f0f8898680efc78d88f4709d2e707d97b2710aa13cd6d09243a3fd8f2f47
+
+pkgname = numix-frost-themes
+
