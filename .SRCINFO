@@ -1,0 +1,27 @@
+pkgbase = e2fsprogs-git
+	pkgdesc = Ext2/3/4 filesystem utilities (git)
+	pkgver = 1.42.12.r488.gad5d05d
+	pkgrel = 1
+	url = http://e2fsprogs.sourceforge.net
+	install = e2fsprogs.install
+	arch = i686
+	arch = x86_64
+	groups = base
+	license = GPL
+	license = LGPL
+	license = MIT
+	makedepends = git
+	makedepends = bc
+	depends = sh
+	depends = util-linux
+	provides = e2fsprogs
+	conflicts = e2fsprogs
+	options = staticlibs
+	backup = etc/mke2fs.conf
+	source = e2fsprogs-git::git://git.kernel.org/pub/scm/fs/ext2/e2fsprogs.git
+	source = MIT-LICENSE
+	sha256sums = SKIP
+	sha256sums = cc45386c1d71f438ad648fd7971e49e3074ad9dbacf9dd3a5b4cb61fd294ecbb
+
+pkgname = e2fsprogs-git
+
