@@ -1,0 +1,19 @@
+
+[Unit]
+Description=/etc/rc.d/haspd compatibility
+ConditionPathExists=/etc/rc.d/haspd
+After=syslog.target
+
+[Service]
+Type=forking
+ExecStart=/etc/rc.d/haspd start
+TimeoutSec=0
+StandardOutput=tty
+RemainAfterExit=yes
+
+ExecReload=/etc/rc.d/haspd restart
+
+ExecStop=/etc/rc.d/haspd stop
+
+[Install]
+WantedBy=multi-user.target
