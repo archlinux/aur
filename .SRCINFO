@@ -1,0 +1,17 @@
+pkgbase = camlpdf
+	pkgdesc = PDF-processing-library for OCaml
+	pkgver = 2.1.1
+	pkgrel = 2
+	url = https://github.com/johnwhitington/camlpdf
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = ocaml-findlib
+	depends = glibc
+	options = !makeflags
+	options = staticlibs
+	source = https://github.com/johnwhitington/camlpdf/archive/v2.1.1.tar.gz
+	md5sums = a3df80d071cc8d13ed119f9826941361
+
+pkgname = camlpdf
+
