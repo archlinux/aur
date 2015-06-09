@@ -1,0 +1,23 @@
+pkgbase = lib32-libxkbcommon
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = http://xkbcommon.org/
+	arch = x86_64
+	license = custom
+	makedepends = gcc-multilib
+	makedepends = lib32-libxcb
+	makedepends = xorg-util-macros
+	source = http://xkbcommon.org/download/libxkbcommon-0.5.0.tar.xz
+	sha256sums = 90bd7824742b9a6f52a6cf80e2cadd6f5349cf600a358d08260772615b89d19c
+
+pkgname = lib32-libxkbcommon
+	pkgdesc = Keyboard handling library using XKB data
+	depends = lib32-glibc
+	depends = libxkbcommon
+
+pkgname = lib32-libxkbcommon-x11
+	pkgdesc = Keyboard handling library using XKB data for X11 XCB clients
+	depends = lib32-libxcb
+	depends = lib32-libxkbcommon
+	depends = libxkbcommon-x11
+

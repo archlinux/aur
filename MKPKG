@@ -1,0 +1,3 @@
+pkgname=('lib32-libxkbcommon' 'lib32-libxkbcommon-x11')
+
+# vim: ts=2 sw=2 et:
