@@ -1,0 +1,44 @@
+pkgbase = gogglesmm-develop-git
+	pkgdesc = Goggles Music Manager
+	pkgver = 940
+	pkgrel = 1
+	url = http://gogglesmm.github.io
+	install = gogglesmm-develop-git.install
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = pkgconfig
+	makedepends = libpulse
+	makedepends = alsa-lib
+	makedepends = glproto
+	makedepends = dri2proto
+	depends = fox-devel>=1.7.46
+	depends = libogg
+	depends = libvorbis
+	depends = flac
+	depends = libmad
+	depends = faad2
+	depends = expat
+	depends = opus
+	depends = dbus
+	depends = taglib>=1.9.0
+	depends = sqlite3
+	depends = libgcrypt
+	depends = libepoxy
+	depends = glu
+	depends = libsamplerate
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	optdepends = libpulse: PulseAudio Output
+	optdepends = alsa-lib: Alsa Output
+	conflicts = gogglesmm
+	conflicts = gogglesmm-hg
+	conflicts = gogglesmm-git
+	source = gogglesmm-develop-git::git://github.com/gogglesmm/gogglesmm.git#branch=develop
+	md5sums = SKIP
+
+pkgname = gogglesmm-develop-git
+
