@@ -1,0 +1,18 @@
+pkgbase = imlib2-webp-git
+	pkgdesc = A WebP loader for Imlib2. Enables WebP support for every application that uses the imlib2 library.
+	pkgver = 20131017
+	pkgrel = 1
+	url = http://www.hauweele.net/~gawen/imlib2-webp.html
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = imlib2
+	depends = libwebp
+	provides = imlib2-webp
+	conflicts = imlib2-webp
+	source = imlib2-webp::git+https://github.com/gawen947/imlib2-webp.git
+	md5sums = SKIP
+
+pkgname = imlib2-webp-git
+
