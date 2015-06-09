@@ -1,0 +1,20 @@
+pkgbase = switchboard-plug-datetime-bzr
+	pkgdesc = Date & Time plug for Switchboard
+	pkgver = r56
+	pkgrel = 1
+	url = https://launchpad.net/switchboard-plug-datetime
+	arch = i686
+	arch = x86_64
+	groups = pantheon-unstable
+	license = GPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = vala
+	depends = switchboard-bzr
+	provides = switchboard-plug-datetime
+	conflicts = switchboard-plug-datetime
+	source = bzr+lp:switchboard-plug-datetime
+	sha256sums = SKIP
+
+pkgname = switchboard-plug-datetime-bzr
+
