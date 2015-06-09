@@ -11,7 +11,7 @@ arch=('x86_64')
 license=('GPL2' 'LGPL2.1')
 
 makedepends=('git' 'gnu-efi-libs' 'help2man' 'perl-file-slurp')
-depends=('openssl' 'sbsigntool' 'efivar' 'efibootmgr' 'dosfstools')
+depends=('openssl' 'sbsigntools' 'efivar' 'efibootmgr' 'dosfstools')
 optdepends=('mactel-boot: For bless command in Apple Mac systems')
 
 conflicts=("${_pkgname}")
