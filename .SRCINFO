@@ -1,0 +1,12 @@
+pkgbase = backports-patches-git
+	pkgdesc = frag+ack, chan_qos_frag, and chan-neg-1 patches for backports-patched.
+	pkgver = r9.e8ff5f4
+	pkgrel = 1
+	url = https://backports.wiki.kernel.org/index.php/Main_Page
+	arch = any
+	license = GPL
+	source = backports-patches-git::git+https://github.com/hellnet/backports-patches.git
+	sha256sums = SKIP
+
+pkgname = backports-patches-git
+
