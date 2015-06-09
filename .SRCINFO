@@ -1,0 +1,25 @@
+pkgbase = audacious-gtk3
+	pkgdesc = Lightweight, advanced audio player focused on audio quality
+	pkgver = 3.6.2
+	pkgrel = 1
+	url = http://audacious-media-player.org/
+	install = audacious.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = python2
+	depends = gtk3
+	depends = glib2
+	depends = libguess
+	depends = libsm
+	depends = gnome-icon-theme
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	optdepends = unzip: zipped skins support
+	provides = audacious
+	conflicts = audacious
+	source = http://distfiles.audacious-media-player.org/audacious-3.6.2-gtk3.tar.bz2
+	sha1sums = 3cc5dce780158448fb7566665d66d3c56753e626
+
+pkgname = audacious-gtk3
+
