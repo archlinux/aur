@@ -1,0 +1,20 @@
+pkgbase = coin-or-osi-git
+	pkgdesc = COIN-OR Open Solver Interface
+	pkgver = 0.107.4
+	pkgrel = 1
+	url = https://projects.coin-or.org/Osi
+	arch = i686
+	arch = x86_64
+	arch = arm
+	groups = coin-or
+	license = EPL
+	makedepends = gcc-fortran
+	depends = coin-or-coinutils
+	depends = glpk
+	depends = scipoptsuite
+	depends = lazylpsolverlibs-git
+	source = http://www.coin-or.org/download/source/Osi/Osi-0.107.4.tgz
+	sha1sums = c1496835a98791a86eabadd8aead96719690d701
+
+pkgname = coin-or-osi-git
+
