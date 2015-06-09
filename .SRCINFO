@@ -1,0 +1,20 @@
+pkgbase = xplanet-svn
+	pkgdesc = Renders an image of the earth into the X root window
+	pkgver = 20130526.202
+	pkgrel = 1
+	url = http://xplanet.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL2
+	makedepends = subversion
+	depends = pango
+	depends = libtiff
+	depends = libxss
+	provides = xplanet
+	conflicts = xplanet
+	source = xplanet::svn://svn.code.sf.net/p/xplanet/code/trunk
+	sha1sums = SKIP
+
+pkgname = xplanet-svn
+
