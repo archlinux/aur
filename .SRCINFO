@@ -1,0 +1,14 @@
+pkgbase = concatenator
+	pkgdesc = Genetic data matrix converter and concatenator
+	pkgver = 1.1.0
+	pkgrel = 2
+	url = http://cobig2.com
+	arch = any
+	license = GPL3
+	depends = perl
+	depends = tk
+	source = https://github.com/StuntsPT/concatenator/archive/1.1.0.tar.gz
+	md5sums = 092c17b31481c16a84d2260670668724
+
+pkgname = concatenator
+
