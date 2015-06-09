@@ -1,0 +1,18 @@
+pkgbase = tvenlinux-desktop
+	pkgdesc = Simple bash script to watch and record TV on GNU/Linux/BSD without capture card/tuner. (TV in Spain, Peru, Chile, Cuba, Venezuela, Bolivia and Argentina)
+	pkgver = 20140601
+	pkgrel = 1
+	url = http://www.tvenlinux.com/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = mplayer
+	depends = rtmpdump
+	optdepends = zenity: for GTK users
+	optdepends = kdialog: for QT users
+	optdepends = curl: for view EPG (Electronic Program Guide)
+	source = http://www.tvenlinux.com/TVenLinux.sh
+	source = http://www.tvenlinux.com/busi_tv.png
+
+pkgname = tvenlinux-desktop
+
