@@ -1,0 +1,12 @@
+pkgbase = asciidoc-fake
+	pkgdesc = A fake asciidoc to keep some packages happy, and save disk space
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.methods.co.nz/asciidoc
+	arch = any
+	license = GPL
+	provides = asciidoc
+	conflicts = asciidoc
+
+pkgname = asciidoc-fake
+
