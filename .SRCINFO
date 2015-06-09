@@ -1,0 +1,41 @@
+pkgbase = ros-indigo-moveit-ros-manipulation
+	pkgdesc = ROS - Components of MoveIt used for manipulation.
+	pkgver = 0.6.5
+	pkgrel = 1
+	url = http://moveit.ros.org
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-tf
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-moveit-msgs
+	makedepends = ros-indigo-manipulation-msgs
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-moveit-ros-move-group
+	makedepends = ros-indigo-rosconsole
+	makedepends = ros-indigo-actionlib
+	makedepends = ros-indigo-moveit-ros-planning
+	makedepends = ros-indigo-moveit-core
+	makedepends = ros-indigo-household-objects-database-msgs
+	makedepends = ros-indigo-cmake-modules
+	makedepends = ros-indigo-dynamic-reconfigure
+	makedepends = ros-indigo-pluginlib
+	depends = ros-indigo-tf
+	depends = ros-indigo-roscpp
+	depends = ros-indigo-moveit-msgs
+	depends = ros-indigo-manipulation-msgs
+	depends = ros-indigo-moveit-ros-move-group
+	depends = ros-indigo-rosconsole
+	depends = ros-indigo-actionlib
+	depends = ros-indigo-moveit-ros-planning
+	depends = ros-indigo-moveit-core
+	depends = ros-indigo-household-objects-database-msgs
+	depends = ros-indigo-dynamic-reconfigure
+	depends = ros-indigo-pluginlib
+	source = moveit_ros_manipulation::git+https://github.com/ros-gbp/moveit_ros-release.git#tag=release/indigo/moveit_ros_manipulation/0.6.5-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-moveit-ros-manipulation
+
