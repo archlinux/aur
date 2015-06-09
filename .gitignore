@@ -1,0 +1,7 @@
+.*
+!.SRCINFO
+!.gitignore
+release*.tar.gz
+makeself*.pkg.*
+pkg/
+src/
