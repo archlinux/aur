@@ -1,0 +1,7 @@
+post_install() {
+	ln -s /usr/share/webapps/webui-aria2 /srv/http/
+}
+
+post_remove() {
+	rm -f /srv/http/webui-aria2
+}

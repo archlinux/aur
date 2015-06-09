@@ -1,0 +1,17 @@
+pkgbase = webui-aria2
+	pkgdesc = Aria2 Web UI in pure HTML/CSS/Javascirpt
+	pkgver = 20140225
+	pkgrel = 1
+	url = https://github.com/ziahamza/webui-aria2
+	install = webui-aria2.install
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = webui-aria2
+	conflicts = webui-aria2
+	source = apache.example.conf
+	source = nginx.example.conf
+	source = webui-aria2.install
+
+pkgname = webui-aria2
+
