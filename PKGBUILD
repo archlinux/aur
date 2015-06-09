@@ -4,7 +4,7 @@
 _pkgname=ngrok
 pkgname=ngrok-git
 pkgver=latest
-pkgrel=16
+pkgrel=1
 pkgdesc='A tunneling, reverse proxy for developing and understanding networked, HTTP services (development version)'
 url='https://ngrok.com'
 license=('Apache')
