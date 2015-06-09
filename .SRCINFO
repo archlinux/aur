@@ -1,0 +1,15 @@
+pkgbase = doxyparse
+	pkgdesc = Parses source code and dumps the dependencies between the code elements.
+	pkgver = 1.5.9_20090622
+	pkgrel = 2
+	url = http://analizo.org
+	arch = any
+	groups = analizo
+	license = GPLv2
+	makedepends = qt4
+	makedepends = git
+	source = qtools.patch
+	sha512sums = 8095af5f6ba616864be6389b4245ab7a3a3723298635831c4f714468d6768cf86a382802ad8189053414f7701654ef683d1342936a31b98208ebf78f5e92485a
+
+pkgname = doxyparse
+
