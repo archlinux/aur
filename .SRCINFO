@@ -1,0 +1,24 @@
+pkgbase = libfm-git
+	pkgdesc = A glib/gio-based library to develop file managers. Does not include the GTK components.
+	pkgver = 1.2.2.1.35.gf238b1b
+	pkgrel = 1
+	url = http://www.lxde.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = libexif
+	makedepends = vala
+	makedepends = gtk-doc
+	makedepends = intltool
+	depends = menu-cache
+	optdepends = libexif
+	provides = libfm
+	provides = libfm-extra
+	conflicts = libfm
+	conflicts = libfm-extra
+	source = git+https://github.com/lxde/libfm.git
+	sha256sums = SKIP
+
+pkgname = libfm-git
+
