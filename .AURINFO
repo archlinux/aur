@@ -1,0 +1,18 @@
+pkgbase = clamav-light
+	pkgdesc = ClamAV manual scanner
+	pkgver = 0.98.4
+	pkgrel = 1
+	url = http://www.clamav.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = autoconf
+	depends = bzip2
+	depends = gcc-libs
+	depends = libltdl
+	conflicts = clamav
+	source = http://downloads.sourceforge.net/clamav/clamav-0.98.4.tar.gz
+
+pkgname = clamav-light
+
