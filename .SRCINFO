@@ -1,0 +1,15 @@
+pkgbase = tungsten
+	pkgdesc = A WolframAlpha CLI
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/ASzc/tungsten
+	arch = any
+	license = GPL3
+	depends = curl
+	depends = xmlstarlet
+	depends = bash
+	source = https://github.com/ASzc/tungsten/raw/release-1.2/tungsten.sh
+	sha256sums = 74d3dcf488680b3213f51b8740394ccf0e6c4c9e644a7cfb9d6a54d60349b582
+
+pkgname = tungsten
+
