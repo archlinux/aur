@@ -1,0 +1,20 @@
+pkgbase = switchboard-plug-keyboard-bzr
+	pkgdesc = Keyboard plug for Switchboard
+	pkgver = r321
+	pkgrel = 1
+	url = https://launchpad.net/switchboard-plug-keyboard
+	arch = i686
+	arch = x86_64
+	groups = pantheon-unstable
+	license = GPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = vala
+	depends = switchboard-bzr
+	provides = switchboard-plug-keyboard
+	conflicts = switchboard-plug-keyboard
+	source = bzr+lp:switchboard-plug-keyboard
+	sha256sums = SKIP
+
+pkgname = switchboard-plug-keyboard-bzr
+
