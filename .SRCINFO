@@ -1,0 +1,17 @@
+pkgbase = python2-verlib
+	pkgdesc = A new version comparison tool for distutils
+	pkgver = 0.1
+	pkgrel = 2
+	url = https://pypi.python.org/pypi/verlib
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = python2-setuptools
+	depends = python2
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/v/verlib/verlib-0.1.tar.gz
+	md5sums = 1cdf84a3e5334558e428b4067f586e7b
+	sha256sums = 652d097d114dc9076606a5416b0dc193df3ef2632596e6e0e9d21d2ba51bf267
+
+pkgname = python2-verlib
+
