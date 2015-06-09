@@ -1,0 +1,18 @@
+pkgbase = x11remote
+	pkgdesc = Simple mouse and keyboard remote control as touchscreen HTML5 web-app
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://github.com/apirogov/x11remote
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = ghc
+	makedepends = cabal-install
+	depends = xdotool
+	depends = xorg-xmodmap
+	source = git+https://github.com/apirogov/x11remote.git
+	md5sums = SKIP
+
+pkgname = x11remote
+
