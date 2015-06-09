@@ -1,0 +1,108 @@
+From 820f314dedb7b5816050ac67ab08e557e110fbce Mon Sep 17 00:00:00 2001
+From: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+Date: Wed, 31 Dec 2014 20:17:12 -0500
+Subject: [PATCH] Fixes to build with GNU g++
+
+---
+ gcmdump.cpp  | 13 +++++++------
+ rarcdump.cpp | 15 ++++++++-------
+ 2 files changed, 15 insertions(+), 13 deletions(-)
+
+diff --git a/gcmdump.cpp b/gcmdump.cpp
+index 2a0d66e..37e78d2 100644
+--- a/gcmdump.cpp
++++ b/gcmdump.cpp
+@@ -8,7 +8,8 @@
+ #include <string>
+ #include <iterator>
+ #include <stack>
+-#include <direct.h>
++#include <sys/stat.h>
++#include <unistd.h>
+ using namespace std;
+ 
+ typedef unsigned char u8;
+@@ -238,8 +239,8 @@ int main(int argc, char* argv[])
+   directoryEnd.push(fst.entries.size());
+ 
+   string dirName = argv[1] + string("_dir");
+-  _mkdir(dirName.c_str());
+-  _chdir(dirName.c_str());
++  mkdir(dirName.c_str(), S_IRWXU | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH);
++  chdir(dirName.c_str());
+ 
+   for(int i = 1; i < fst.entries.size(); ++i)
+   {
+@@ -250,15 +251,15 @@ int main(int argc, char* argv[])
+     {
+       directoryEnd.pop();
+       path = path.substr(0, path.rfind('/'));
+-      _chdir("..");
++      chdir("..");
+     }
+ 
+     if(e.isDirectory)
+     {
+       directoryEnd.push(e.nextOffset);
+ 
+-      _mkdir(e.name.c_str());
+-      _chdir(e.name.c_str());
++      mkdir(e.name.c_str(), S_IRWXU | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH);
++      chdir(e.name.c_str());
+ 
+       path = "/" + e.name;
+       int off = fst.entries[i].parentOffset;
+diff --git a/rarcdump.cpp b/rarcdump.cpp
+index 5424ff7..f7106c0 100644
+--- a/rarcdump.cpp
++++ b/rarcdump.cpp
+@@ -4,8 +4,9 @@
+ #include <cstdio>
+ #include <cstdlib>
+ #include <string>
+-#include <direct.h>
++#include <sys/stat.h>
+ #include <iostream>
++#include <unistd.h>
+ using namespace std;
+ 
+ typedef char c8;
+@@ -131,8 +132,8 @@ FileEntry getFileEntry(int i, const RarcHeader& h, FILE* f)
+ void dumpNode(const Node& n, const RarcHeader& h, FILE* f)
+ {
+   string nodeName = getString(n.filenameOffset + h.stringTableOffset + 0x20, f);
+-  _mkdir(nodeName.c_str());
+-  _chdir(nodeName.c_str());
++  mkdir(nodeName.c_str(), S_IRWXU | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH);
++  chdir(nodeName.c_str());
+ 
+   for(int i = 0; i < n.numFileEntries; ++i)
+   {
+@@ -162,7 +163,7 @@ void dumpNode(const Node& n, const RarcHeader& h, FILE* f)
+     }
+   }
+ 
+-  _chdir("..");
++  chdir("..");
+ }
+ 
+ void readFile(FILE* f)
+@@ -197,12 +198,12 @@ int main(int argc, char* argv[])
+     return EXIT_FAILURE;
+ 
+   string dirName = argv[1] + string("_dir");
+-  _mkdir(dirName.c_str());
+-  _chdir(dirName.c_str());
++  mkdir(dirName.c_str(), S_IRWXU | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH);
++  chdir(dirName.c_str());
+ 
+   readFile(f);
+ 
+-  _chdir("..");
++  chdir("..");
+   fclose(f);
+ 
+   return EXIT_SUCCESS;
+-- 
+2.2.1
+
