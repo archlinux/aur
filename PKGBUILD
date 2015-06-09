@@ -2,10 +2,10 @@
 
 pkgname=glmixer-svn
 _pkgname=glmixer
-pkgver=1.4.989
+pkgver=1.4.992
 pkgrel=1
 pkgdesc="Real-time graphics mixing for video performance"
-url="https://code.google.com/p/glmixer"
+url="http://sourceforge.net/projects/glmixer/"
 #install=glmixer.install
 changelog=.Changelog
 license="GPL"
@@ -14,7 +14,8 @@ provides=('glmixer')
 conflicts=('glmixer')
 depends=('qt4' 'qtwebkit' 'ffmpeg' 'opencv')
 makedepends=('subversion' 'cmake')
-source=("$srcdir/${_pkgname}::svn+http://${_pkgname}.googlecode.com/svn/trunk")
+#source=("$srcdir/${_pkgname}::svn+http://${_pkgname}.googlecode.com/svn/trunk")
+source=("$srcdir/${_pkgname}::svn+http://svn.code.sf.net/p/${_pkgname}/Source/trunk")
 md5sums=('SKIP')
 
 pkgver() {
