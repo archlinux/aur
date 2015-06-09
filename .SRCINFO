@@ -1,0 +1,15 @@
+pkgbase = bmap-tools
+	pkgdesc = Tool optimized for copying largely sparse files using information from a block map (bmap) file
+	pkgver = 3.2
+	pkgrel = 1
+	url = http://git.infradead.org/users/dedekind/bmap-tools.git
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2
+	source = git://git.infradead.org/users/dedekind/bmap-tools.git
+	sha256sums = SKIP
+
+pkgname = bmap-tools
+
