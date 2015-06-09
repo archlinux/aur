@@ -1,0 +1,17 @@
+pkgbase = wxhexeditor-git
+	pkgdesc = a free hex editor / disk editor for Linux, Windows and MacOSX
+	pkgver = r451.8c81439
+	pkgrel = 1
+	url = http://wxhexeditor.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = wxgtk
+	provides = wxhexeditor
+	conflicts = wxhexeditor
+	source = wxhexeditor::git+https://github.com/EUA/wxHexEditor.git
+	md5sums = SKIP
+
+pkgname = wxhexeditor-git
+
