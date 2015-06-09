@@ -1,0 +1,17 @@
+pkgbase = kio_gopher
+	pkgdesc = Gets you gopher protocol support in KIO.
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = http://userbase.kde.org/Kio_gopher
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdelibs
+	options = docs
+	source = http://download.kde.org/stable/extragear/kio-gopher-0.1.4.tar.bz2
+	md5sums = 401e7a22f35f9528512f36f6e2060d21
+
+pkgname = kio_gopher
+
