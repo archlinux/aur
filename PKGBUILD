@@ -2,7 +2,7 @@
 
 pkgname=swgemu
 pkgver=0.18
-pkgrel=3
+pkgrel=4
 pkgdesc="Launcher for Star Wars Galaxies Emulator"
 arch=(any)
 license=('GPL')
