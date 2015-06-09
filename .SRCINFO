@@ -1,0 +1,13 @@
+pkgbase = irssi-script-advanced-windowlist
+	pkgdesc = Adds a permanent advanced window list to irssi status bar
+	pkgver = 0.9b7
+	pkgrel = 1
+	url = http://anti.teamidiot.de/static/nei/*/Code/Irssi/
+	arch = any
+	license = GPL
+	depends = irssi
+	source = http://anti.teamidiot.de/static/nei/*/Code/Irssi/adv_windowlist.pl
+	md5sums = 57588498aa1c270c93b68d47fe0fa327
+
+pkgname = irssi-script-advanced-windowlist
+
