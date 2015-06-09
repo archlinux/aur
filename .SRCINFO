@@ -1,0 +1,15 @@
+pkgbase = ttf-montserrat
+	pkgdesc = Gorgeous geometric font with extended latin support (Regular, Alternates, Subrayada)
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://montserrat.zkysky.com.ar/en
+	install = ttf.install
+	arch = i686
+	arch = x86_64
+	license = SIL Open Font
+	provides = ttf-montserrat
+	source = http://marvid.fr/~eeva/mirror/Montserrat.tar.gz
+	md5sums = 7722f9573b957b3278bef2ad928ad5b1
+
+pkgname = ttf-montserrat
+
