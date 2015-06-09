@@ -1,0 +1,20 @@
+pkgbase = gsignond-plugin-sasl-git
+	pkgdesc = SASL plugin for gSSO
+	pkgver = r29.55f1e28
+	pkgrel = 1
+	url = https://01.org/gsso
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	depends = gsasl
+	depends = gsignond
+	provides = gsignond-plugin-sasl
+	conflicts = gsignond-plugin-sasl
+	source = git+https://gitlab.com/accounts-sso/gsignond-plugin-sasl.git
+	sha256sums = SKIP
+
+pkgname = gsignond-plugin-sasl-git
+
