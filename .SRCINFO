@@ -1,0 +1,13 @@
+pkgbase = ghu
+	pkgdesc = Unsubscribe from GitHub emails via their List-Unsubscribe header
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/pbrisbin/ghu
+	arch = any
+	license = MIT
+	depends = curl
+	source = https://github.com/pbrisbin/ghu/archive/v0.0.5.tar.gz
+	md5sums = 366ede7ec3a2edebf127210f2b3bad7d
+
+pkgname = ghu
+
