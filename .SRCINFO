@@ -1,0 +1,20 @@
+pkgbase = qnotero
+	pkgdesc = A Qt application which provides access to your Zotero references
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = http://cogsci.nl/software/qnotero
+	install = qnotero.install
+	arch = any
+	license = GPL
+	depends = python-pyqt4
+	depends = pdftk-bin
+	depends = desktop-file-utils
+	optdepends = gnote: for integration with gnote
+	optdepends = python-levenshtein: for integration with gnote
+	provides = gnotero
+	replaces = gnotero
+	source = https://github.com/smathot/qnotero/archive/release/1.0.0.tar.gz
+	sha256sums = e577a8fa3d77006f6f6e5851510ba0e2aa2ebec0895cd80813cbefa98aa3ef67
+
+pkgname = qnotero
+
