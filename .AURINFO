@@ -1,0 +1,29 @@
+pkgbase = 2mandvd
+	pkgdesc = DVD Authoring Maker In Linux Environnement
+	pkgver = 1.8.5
+	pkgrel = 2
+	url = http://2mandvd.tuxfamily.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = dvd+rw-tools
+	depends = dvdauthor
+	depends = exif
+	depends = ffmpeg
+	depends = ffmpegthumbnailer
+	depends = glu
+	depends = mencoder
+	depends = mjpegtools
+	depends = mplayer
+	depends = netpbm
+	depends = perl
+	depends = qt4
+	depends = sox
+	depends = transcode
+	depends = ttf-dejavu
+	optdepends = xine-ui: to preview the result
+	provides = 2mandvd
+	source = http://download.tuxfamily.org/2mandvd/2ManDVD-1.8.5.tar.gz
+
+pkgname = 2mandvd
+
