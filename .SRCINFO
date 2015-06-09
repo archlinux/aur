@@ -1,0 +1,17 @@
+pkgbase = hss-git
+	pkgdesc = A tool that extends the CSS syntax with powerful features such as variables and nested blocks
+	pkgver = r46.5af3d56
+	pkgrel = 1
+	url = http://ncannasse.fr/projects/hss
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = neko>=1.8.2
+	depends = neko>=1.8.2
+	options = !strip
+	source = hss::git+https://github.com/ncannasse/hss.git
+	md5sums = SKIP
+
+pkgname = hss-git
+
