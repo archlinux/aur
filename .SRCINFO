@@ -1,0 +1,14 @@
+pkgbase = servoblaster
+	pkgdesc = Userspace daemon that lets you control 8 (or more) servos from your RaspberryPi
+	pkgver = 20140103
+	pkgrel = 2
+	url = https://github.com/richardghirst/PiBits/tree/master/ServoBlaster
+	arch = armv6h
+	license = GPL
+	makedepends = gcc
+	makedepends = make
+	source = https://github.com/richardghirst/PiBits/archive/2ea384c0c71033ca239b51943b1321d84b39350e.tar.gz
+	md5sums = c6840744b5eb181305a19d72f43bffaf
+
+pkgname = servoblaster
+
