@@ -1,0 +1,28 @@
+diff -u --recursive krank-07.orig/krank krank-07/krank
+--- krank-07.orig/krank	2011-07-18 14:42:55.000000000 +0200
++++ krank-07/krank	2011-07-18 14:43:30.000000000 +0200
+@@ -2,4 +2,4 @@
+ KRANKPATH=`dirname $0`
+ PYTHONPATH=$KRANKPATH:$PYTHONPATH
+ export PYTHONPATH
+-python $KRANKPATH/src/Main.py
++python2 $KRANKPATH/src/Main.py
+diff -u --recursive krank-07.orig/src/Config.py krank-07/src/Config.py
+--- krank-07.orig/src/Config.py	2011-07-18 14:42:55.000000000 +0200
++++ krank-07/src/Config.py	2011-07-18 14:43:22.000000000 +0200
+@@ -91,6 +91,8 @@
+     def getConfigFilePath(self):
+         if os.sys.platform == 'darwin':
+             return os.path.expanduser('~/Library/Preferences/krank.cfg')
++        elif os.sys.platform == 'linux2':
++            return os.path.expanduser('~/.krankcfg')
+         else:
+             return os.path.join(os.environ['APPDATA'], 'krank.cfg')
+         
+@@ -185,4 +187,4 @@
+             stage = self.stage
+         return len([s for s in self['scores'][stage-1] if s['score'] < sys.maxint])
+     
+-    
+\ No newline at end of file
++

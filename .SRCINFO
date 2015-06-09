@@ -1,0 +1,18 @@
+pkgbase = krank
+	pkgdesc = A billiard-golf-breakout mix
+	pkgver = 0.7
+	pkgrel = 4
+	url = http://krank.sourceforge.net/
+	arch = any
+	license = custom:"Public Domain"
+	depends = python2-pygame
+	depends = python2-numpy
+	source = http://sourceforge.net/projects/krank/files/krank/07/krank-07.tar.bz2
+	source = krank-linux-config+python2.patch
+	source = krank.sh
+	sha1sums = 702bfeccf64d626aea4b529155bb131ffc331b16
+	sha1sums = 0e1da0d31d0727626e85c5990de360077aa92407
+	sha1sums = 98cedab00867175fa593ebe94ac497727d5bceb7
+
+pkgname = krank
+
