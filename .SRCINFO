@@ -1,0 +1,13 @@
+pkgbase = tcpkali
+	pkgdesc = Fast multi-core TCP and WebSockets load generator.
+	pkgver = 0.6
+	pkgrel = 1
+	url = http://github.com/machinezone/tcpkali
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = https://github.com/machinezone/tcpkali/releases/download/v0.6/tcpkali-0.6.tar.gz
+	md5sums = e94628c05c9b64f508de0ce61f1a4c3e
+
+pkgname = tcpkali
+
