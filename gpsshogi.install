@@ -1,0 +1,7 @@
+post_install() {
+	echo -n '>> Setting $GPSSHOGI_HOME/makefile.conf ...'
+	sed -i 's!^\(GPSSHOGI_REVISION_H = \)\(.*\)!\1/usr/include/gpsshogi/revision.h!' /usr/share/gpsshogi/makefile.conf
+	echo " done"
+	echo
+        echo 'Please relogin for the changes to GPSSHOGI_HOME environment variable to take effect.'
+}

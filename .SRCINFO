@@ -1,0 +1,29 @@
+pkgbase = gpsshogi-svn
+	pkgdesc = Shogi (Japanese chess) playing program based on OpenShogiLib
+	pkgver = r2925
+	pkgrel = 2
+	url = http://gps.tanaka.ecc.u-tokyo.ac.jp/gpsshogi/index.php?GPSShogiEn
+	install = gpsshogi.install
+	arch = i686
+	arch = x86_64
+	groups = lib
+	license = custom
+	makedepends = chrpath
+	makedepends = boost
+	makedepends = qtchooser
+	depends = libosl-svn
+	depends = gsl
+	depends = poco
+	depends = qt4
+	depends = boost-libs
+	source = gpsshogi.tar.gz::http://gps.tanaka.ecc.u-tokyo.ac.jp/cgi-bin/viewvc.cgi/trunk/gpsshogi/?root=gpsshogi&view=tar
+	source = makefile.conf.patch
+	source = gpsshogi.profile
+	source = Makefile.patch
+	md5sums = SKIP
+	md5sums = 539c37dcf4feb57b24ce2c155856f4e8
+	md5sums = 3bafa7d5464e856bca8b3e801e3a8617
+	md5sums = 3963a545156ea613d5371d0f38b1ca1b
+
+pkgname = gpsshogi-svn
+

@@ -1,0 +1,11 @@
+--- Makefile.orig	2009-06-20 22:31:42.000000000 +0900
++++ Makefile	2014-04-30 16:09:39.499061070 +0900
+@@ -26,7 +26,7 @@
+ 	cd lib; $(MAKE) clean
+ 
+ update-revision:
+-	cat $(GPSSHOGI_REVISION_H) | sed -e 's/r[0-9][0-9A-Z:]*/r'`svnversion`'/g' > $(GPSSHOGI_REVISION_H).new
++	cat $(GPSSHOGI_REVISION_H) | sed -e 's/r[0-9][0-9A-Z:]*/%%revision/g' > $(GPSSHOGI_REVISION_H).new
+ 	if cmp $(GPSSHOGI_REVISION_H) $(GPSSHOGI_REVISION_H).new > /dev/null; then \
+ 	  rm $(GPSSHOGI_REVISION_H).new; \
+ 	else \

@@ -1,0 +1,8 @@
+--- makefile.conf	2014-04-04 18:39:10.000000000 +0900
++++ makefile.conf.orig	2014-04-22 11:17:04.444834035 +0900
+@@ -1,4 +1,4 @@
+-OSL_HOME = $(GPSSHOGI_HOME)/../osl
++#OSL_HOME = $(GPSSHOGI_HOME)/../osl
+ -include $(GPSSHOGI_HOME)/makefile.local
+ -include $(OSL_HOME)/makefile.local
+ USE_GCH = 0
