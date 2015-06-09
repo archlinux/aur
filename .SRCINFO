@@ -1,0 +1,20 @@
+pkgbase = microperl
+	pkgdesc = Practical Extraction and Report Language - compact (very limited) single executable
+	pkgver = 5.20.0
+	pkgrel = 1
+	url = http://www.perl.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = PerlArtistic
+	depends = coreutils
+	depends = glibc
+	options = strip
+	options = !buildflags
+	source = http://www.cpan.org/src/5.0/perl-5.20.0.tar.gz
+	source = perl5.20_fix-microperl-makefile.patch
+	md5sums = 406ec049ebe3afcc80d9c76ec78ca4f8
+	md5sums = 2544059be91d5e9e4110f160b8a95ac7
+
+pkgname = microperl
+

@@ -1,0 +1,30 @@
+--- a/perl-5.20.0/Makefile.micro
++++ b/perl-5.20.0/Makefile.micro
+@@ -2,7 +2,7 @@
+ CCFLAGS = -c
+ DEFINES = -DPERL_CORE -DPERL_MICRO -DSTANDARD_C -DPERL_USE_SAFE_PUTENV \
+ 	  -DNO_MATHOMS
+-OPTIMIZE = 
++OPTIMIZE = -Os 
+ CFLAGS = $(DEFINES) $(OPTIMIZE)
+ LDFLAGS = 
+ LIBS = -lm
+@@ -14,7 +14,7 @@
+ 
+ all:	microperl
+ 
+-O = uav$(_O) udeb$(_O) udoio$(_O) udoop$(_O) udump$(_O) \
++O = uav$(_O) ucaretx$(_O) udeb$(_O) udoio$(_O) udoop$(_O) udump$(_O) \
+ 	uglobals$(_O) ugv$(_O) uhv$(_O) umro$(_O)\
+ 	umg$(_O) uperlmain$(_O) uop$(_O) ureentr$(_O) \
+ 	upad$(_O) uperl$(_O) uperlio$(_O) uperly$(_O) upp$(_O) \
+@@ -67,6 +67,9 @@
+ uav$(_O):	$(HE) av.c
+ 	$(CC) $(CCFLAGS) -o $@ $(CFLAGS) av.c
+ 
++ucaretx$(_O):	$(HE) caretx.c
++	$(CC) $(CCFLAGS) -o $@ $(CFLAGS) caretx.c
++
+ udeb$(_O):	$(HE) deb.c
+ 	$(CC) $(CCFLAGS) -o $@ $(CFLAGS) deb.c
+ 
