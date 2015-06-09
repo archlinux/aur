@@ -1,0 +1,16 @@
+pkgbase = python-f90nml
+	pkgdesc = A Fortran namelist parser for Python
+	pkgver = 0.12
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/f90nml
+	arch = any
+	license = Apache
+	makedepends = unzip
+	makedepends = python-distribute
+	depends = python
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/f/f90nml/f90nml-0.12.tar.gz
+	md5sums = adaf408524de86acda577a9da0c02db9
+
+pkgname = python-f90nml
+
