@@ -1,0 +1,15 @@
+pkgbase = osmfilter
+	pkgdesc = A tool to filter OpenStreetMap data files for specific tags.
+	pkgver = 1.4.0
+	pkgrel = 1
+	epoch = 2
+	url = http://wiki.openstreetmap.org/wiki/Osmfilter
+	arch = i686
+	arch = x86_64
+	license = AGPL3
+	depends = glibc
+	source = http://m.m.i24.cc/osmfilter.c
+	sha256sums = b49b488ee2f945e6779cb6c247dcfc580866bb16c8b61056594c2c99345da36e
+
+pkgname = osmfilter
+
