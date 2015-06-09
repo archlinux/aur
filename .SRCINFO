@@ -1,0 +1,14 @@
+pkgbase = perl-net-sdp
+	pkgdesc = Net::SDP is an SDP (Session Description Protocol) parser and generator.
+	pkgver = 0.07
+	pkgrel = 2
+	url = http://search.cpan.org/~njh/Net-SDP/
+	arch = any
+	license = GPL
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/N/NJ/NJH/Net-SDP-0.07.tar.gz
+	md5sums = bb70cb8ebb7ca57c20ac134ac4499e66
+
+pkgname = perl-net-sdp
+
