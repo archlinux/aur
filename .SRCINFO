@@ -1,0 +1,17 @@
+pkgbase = python2-mnemonic
+	pkgdesc = Implementation of Bitcoin BIP-0039
+	pkgver = 0.12
+	pkgrel = 1
+	url = https://github.com/trezor/python-mnemonic
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-pbkdf2
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/m/mnemonic/mnemonic-0.12.tar.gz
+	md5sums = 6c30c021309bbd1dced9adeeece82c1d
+	sha256sums = 44dab55918f3a97e277e29cabeb1fcb0c32a7a24dc954238c665045236a9b248
+
+pkgname = python2-mnemonic
+
