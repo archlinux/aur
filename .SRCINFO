@@ -1,0 +1,35 @@
+pkgbase = tile-molester
+	pkgdesc = Tile Molester is the next generation of tile editors
+	pkgver = 0.15a
+	pkgrel = 5
+	url = http://www.zophar.net/utilities/graphutil/tile-molester.html
+	arch = any
+	license = GPL
+	makedepends = dos2unix
+	makedepends = java-environment
+	depends = java-runtime
+	source = TileMolester_015a_src.zip::http://www.zophar.net/download_file/2737
+	source = fig1.png
+	source = fig2.png
+	source = fig3.png
+	source = fig4.png
+	source = fig5.png
+	source = help.htm
+	source = language.properties
+	source = TMIcon.png.in
+	source = tile-molester.sh
+	source = tile-molester.desktop
+	md5sums = a664f4fe532f03522f8d3ac2ab54af8a
+	md5sums = 992f5c830724d597d60c1ea0038815db
+	md5sums = d44bf0e1e143520cfcf0cae1daaa0239
+	md5sums = dbc27a22cd2a899597f5fd243fe04175
+	md5sums = bf33b58761069f4df69b39824d50e860
+	md5sums = da22f711669b8af87a38a5b80e3d92ab
+	md5sums = ae921e18903f9730d9b7a9a29e5871ab
+	md5sums = e0204644fecf63dfcf1bed0d2cb53197
+	md5sums = d6fff3a9990c2b307e4b42bc82b0b9ed
+	md5sums = 0d44d78cf531c7e00dda4d46ff080d49
+	md5sums = 4a38896184069180c97f4ddee623a6c1
+
+pkgname = tile-molester
+

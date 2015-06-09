@@ -1,0 +1,725 @@
+<html>
+<body>
+<center>
+<table width="70%">
+<tr><td>
+<center><h1>Tile Molester</h1></center>
+<center>Version 0.15a (Second public release)</center>
+<ul>
+<li><a href="#INSTALLATION">Installation Notes</a></li>
+<li><a href="#WHATSNEW">What's New</a></li>
+<li><a href="#INTRODUCTION">Introduction</a></li>
+<li><a href="#ARCHITECTURE">Architecture</a></li>
+<li><a href="#HOWTOUSE">How To Use</a></li>
+<li><a href="#TMSPEC">Configuring the Specs</a></li>
+<li><a href="#WRITINGFILELISTENERS">Writing File Listeners</a></li>
+<li><a href="#LANGUAGE">Language Support</a></li>
+<li><a href="#KNOWNISSUES">Known Issues</a></li>
+<li><a href="#FEEDBACK">Feedback and Contributions</a></li>
+</ul>
+<hr>
+<br><p>
+<a name="#INSTALLATION">
+<h2>Installation Notes</h2>
+This program requires the Java Runtime Environment (JRE) version 1.4.0 or later
+(1.4.2 is the one being used during development),
+which can be downloaded from <a href="http://java.sun.com">java.sun.com</a>.
+<br><p>
+Copy the Tile Molester ZIP file to a fresh directory. Unzip it (make sure to
+preserve the directory substructure). Now you can run Tile Molester by
+(for example) double-clicking on <b>tm.jar</b>.
+<br><p>
+Some people have had problems running Tile Molester because JAR files
+aren't associated with the Java runtime environment on their machines; typically
+it is associated with compression programs instead. (It seems this applies mostly (only?)
+to Windows, WinZip users.) If you don't want to change
+the associativity settings, you can 1) run Tile Molester from the commandline, by standing
+in the Tile Molester root directory and execute the command <font face="Courier">java -jar tm.jar</font>, or 2)
+put the preceding command in a batch file and save it in the Tile Molester root
+directory. Double-clicking on that file should then do the trick.<hr>
+<br><p>
+<a name="#WHATSNEW">
+<h2>What's New</h2>
+v0.15a:
+<br><p>
+<ul>
+<li>This release is mainly about fixing two nasty bugs related to saving
+palettes directly to a ROM. However, since this is a rather advanced
+(and even more scarcely documented) feature anyway I hope not too many
+of you have stumbled upon it.</li>
+<li>Newest official specification file included, which adds support for
+Genecyst/Kega/Gens save state & FCEUltra save state palette extraction,
+9bpp Genesis and 32bpp BMP palette formats.</li>
+<li>Added support for 3bpp linear tiles.</li>
+<li>Spanish translation is now included.</li>
+<li>Some other minor stuff was fixed.</li>
+</ul>
+<br><p>
+<hr>
+<br><p>
+<a name="#INTRODUCTION">
+<h2>Introduction</h2>
+Tile Molester, or TM for short, is a program that facilitates the viewing and
+editing of <i>raw</i> graphics data; that is, graphics contained in arbitrary
+binary files, where one usually doesn't have initial knowledge about the
+location and/or format of the graphics. The main area of application thus far
+has been videogame console binaries. In most cases, these files contain a
+large variety of data, not just graphics -- sound data and actual game code are
+two examples. Collections of data in one and the same file may be interspersed
+in any conceivable fashion, subject to hardware/software-constraints of the
+intended runtime-environment as well as the decisions made by the producers of
+the binary (the developers).
+<br><p>
+TM is a kind of visual explorer of such files, in
+that it allows the file contents to be interpreted and displayed in a multitude
+of ways. By perusing the file and tweaking the settings of the renderer, the
+binary data that corresponds to graphics may be made accessible in the way they
+are intended, and edited to the satisfaction of the user.
+<br><p>
+<hr>
+<br><p>
+<a name="#ARCHITECTURE">
+<h2>Architecture</h2>
+Tile Molester is designed to be as format-independent as possible. This concerns
+both graphics formats, file formats and palette formats.
+The basic, fundamental entity that fuels TM's functionality is what I've dubbed
+the "graphics codec". Simply put, a Tile Molester graphics codec is a definition
+of how a chunk of data (more specifically, an array of bytes) is to be
+transformed (decoded) into an 8x8 grid of pixels (or <i>tile</i>), and from pixels back to data
+(encoded). In other words, it is a specification of a graphics format, and it is
+precisely the information Tile Molester needs in order to support the viewing and
+editing of a particular format. There are absolutely no such hard-coded formats
+supported by Tile Molester; every format is defined in an external resource
+file that is read when the program is started. The resource file that comes
+with this program distribution contains definitions of several "standard" graphics
+formats that are well-known and documented. However, the user also has the
+ability to edit the resource file and configure/add additional formats.
+<br><p>
+In addition to merely defining and describing graphics codecs, they can also be
+hooked to file extensions (filters) used by the Open File dialog in Tile Molester.
+Upon loading a file with a defined extension, Tile Molester will then automatically
+switch to the graphics mode associated with that extension.
+<br><p>
+Furthermore, "file listeners" can be registered to deal with constraints of
+various file formats. A file listener provides the detection of a particular
+file format, and is allowed to process file data when it is loaded and/or saved in
+Tile Molester. For example, many formats have headers with fields that should
+be updated after data has been modified (such as checksums). Other formats
+contain interleaved data; the file listener may then de-interleave the data
+when it is loaded, so that it is readily viewable, and re-interleave it when
+the file is saved.
+<br><p>
+Palette formats and the associated file extensions for those are handled in a
+way similar to file filters. The location, size and format of palette data within
+files of particular extensions can be defined; the data is then managed automatically
+when a proper palette file is loaded in Tile Molester.
+<br><p>
+The separation of graphics and file format definitions from the actual program
+gives Tile Molester substantial flexibility in dealing with a variety of files
+and formats. Graphics-, file- and palette formats can be defined, customized,
+removed or added without requiring changes to Tile Molester itself.
+<br><p>
+Figure 1 illustrates the general idea behind graphics codecs.
+<br><p>
+<center><img src="fig1.png"></center>
+<br>
+<center><i>Figure 1: Relationships between graphics formats and codecs</i></center>
+<br><p>
+A <i>family of formats</i> is a group of graphics formats that have a set of
+attributes in common. A <i>generic codec</i> for such a family is an (abstract)
+graphics encoder/decoder that can be configured to support any member of it. A
+<i>specific format</i> is a member of the family. We can arrive at such a
+member by instantiating the set of attributes with specific values. Finally, a
+<i>specific codec</i> can be constructed by fusing a description of the
+specific format in some language (explained later) with the generic codec.
+<br><p>
+An example follows in Figure 2.
+<br><p>
+<center><img src="fig2.png"></center>
+<br>
+<center><i>Figure 2: How a codec for Game Boy tiles is constructed.</i></center>
+<br><p>
+<hr>
+<br><p>
+<a name="#HOWTOUSE">
+<h2>How To Use</h2>
+In terms of general file management and actual graphics editing, the program is
+purposefully very similar to programs such as Microsoft Paint and JASC Paintshop
+Pro. I will assume that the user has already had some experience with these or
+similar programs (and moreover, with GUI-driven applications in general), and
+therefore won't cover "For Dummies" aspects of program use. (If any Dummies
+should happen to read this: There might be a while before I get the backing and
+funds necessary to put out "Tile Molester For Dummies" -- patience please.)
+<br><p>
+I realize that this section is currently too brief, and will expand it once I
+get feedback concerning difficulties in using/accessing Tile Molester's
+functionality. The best way to learn about features right now is to goof around
+(or ask me questions).
+<br><p>
+<h3>Browsing the file</h3>
+Use the slider on the left side of the file window, the toolbar buttons or the
+keyboard. Like I mentioned, most binaries contain more than just graphics data
+so often you have to search through large portions of a file before you strike
+gold. (Uncompressed) graphics data is usually fairly easy to spot since it is
+a lot less "noisy" than, say, a sequence of program instructions. The strategy
+I use is to quickly scroll through the file using the slider, take note of
+"interesting" spots, and then start fine-tuning the other display settings until
+(hopefully) something cool reveals itself.
+<br><p>
+<h3>Resizing the tile canvas</h3>
+Changing the number of columns and rows that are displayed is often necessary in
+order to align graphics properly; for example, if a piece of graphics is eight
+tiles wide, you need to set the dimensions of the tile canvas accordingly
+(otherwise the graphics will look garbled). This can either be done from the
+Image->Canvas Size dialog, or incrementally through toolbar buttons. The
+keyboard shortcut keys for these are Shift+Up|Down|Left|Right.
+<br><p>
+<h3>1-D and 2-D modes explained</h3>
+From the View->Mode menu you can select either 1-Dimensional (1-D) or 2-Dimensional
+(2-D) mode. This is to facilitate both individual-tile and "bitmapped" graphics modes,
+respecticely. In 1-D mode, data is interpreted as a sequence of individual bitmaps
+each 8x8 pixels in size; each such 8x8 bitmap (<i>tile</i>) is stored one after the other in
+memory. In 2-D mode, the data is interpreted as full bitmaps, where each <i>scanline</i> is
+stored one after the other in memory.
+<br><p>
+1-D modes are common in consoles with small graphics memories, particularly older
+ones. 2-D modes are found in consoles with high resolutions and large graphics
+memories, which is the norm nowadays. Future versions of TM is likely to be geared
+more towards these systems; it is a problem right now that such modes can only be
+viewed with a horizontal resolution which is a multiple of eight. (But if I removed
+this "feature", the program wouldn't really be a <i>Tile</i> Molester, now would it. :-] )
+<br><p>
+<h3>Partioning the tile canvas into blocks</h3>
+Sometimes it is very useful to be able to divide the grid of tiles into smaller,
+adjacent regions of tiles, or <i>blocks</i>. These "sub-grids" then become the
+units of display. You can set the block dimensions from the View->Block Size->Custom
+dialog. For example, if you have determined that the file you are editing contains a
+series of bitmaps each 4x4 tiles in size, you can set the block size accordingly and
+stack an arbitrary amount of these alongside eachother by resizing the tile canvas.
+Figure 3 illustrates the idea. (Gridlines are enabled for both blocks and tiles here
+to show the boundaries between them.)
+<br><p>
+<center><img src="fig3.png"></center>
+<br><p>
+<center><i>Figure 3: Block size of 4x4 allowing display of multiple images.</i></center>
+<br><p>
+When you set the block size manually, it will stay fixed when you resize the tile
+canvas. If you want the block to be the same size as the tile canvas (i.e. treat
+the entire canvas as one image, which is the default behaviour), select Full Canvas
+from the View->Block Size menu.
+<br><p>
+<h3>Row-interleaving blocks</h3>
+This is only useful when working with certain 1-D graphics formats, to my knowledge;
+but it is indeed <i>very</i> useful. Basically, the tiles within each block are
+reordered as illustrated in this figure:
+<br><p>
+<center><img src="fig4.png"></center>
+<br><p>
+<center><i>Figure 4: A 4x2 block non-interleaved (left) versus interleaved (right).</i></center>
+<br><p>
+So in interleaved mode, instead of tiles simply being displayed left-to-right, they
+are displayed in a sort of zig-zag pattern. Or, more formally, for every pair of
+consecutive rows in a block, the first row contains the <i>even</i> tiles (0, 2, 4, ...)
+while the second row contains the <i>odd</i> tiles (1, 2, 3, ...). This achieves
+the nifty effect of properly displaying tiles that are 8x16 pixels in size, which
+was a popular format for sprites in a few consoles (NES, Game Boy, ...). Figure 5
+illustrates the dramatic impact that enabling row-interleaving has on the
+appearance of graphics in this format.
+<br><p>
+<center><img src="fig5.png"></center>
+<br><p>
+<center><i>Figure 5: Without row-interleaving (top) versus with row-interleaving (bottom).</i></center>
+<br><p>
+<h3>Setting the tile codec</h3>
+As was mentioned, when you open a file for viewing/editing Tile Molester attempts to
+guess the correct graphics mode based on the filename extension. However, it may be
+necessary to change the codec used for displaying graphics manually. This can be done
+either from the View->Tile Codec menu or by pressing TAB or Shift+TAB
+repeatedly to cycle forwards and backwards through the installed codecs, respectively.
+In older consoles, there was usually only a single graphics format per console, so
+changing the tile codec isn't necessary once that format has been established.
+But in newer consoles, there are often a variety of formats used; for example,
+graphics in the Nintendo 64 game "Zelda: Ocarina of Time" range from 4-bit to 32-bit.
+So even though Tile Molester defaults to displaying N64 files in, say, 16-bit ARGB mode,
+don't think that that's the only mode you'll find N64 graphics in.
+<br><p>
+<h3>Bookmarks</h3>
+A bookmark records most of the visual state information at the time it was
+created, including the file offset, graphics mode, block settings and display width & height.
+You can then restore those settings at a later time simply by selecting the
+appropriate bookmark from the Navigate menu. The bookmarks can be organized
+in folders hierarchically.
+<br><p>
+<h3>Importing Internal Palettes</h3>
+Palettes can be referenced or extracted directly from the file you are editing
+through the <font face="Arial">Palette->Import From->This File</font> dialog.
+So if you know the location, size and format of a palette  within a file, you can
+specify it here. (Figuring out the actual location of such data is beyond the
+scope of this document, and may vary greatly among file types.) The "Copy"
+checkbox in the import dialog specifies whether the data should be
+extracted (copied) from the file or if it should merely be referenced. If it is
+referenced, then any changes to the palette data also affect the data in the file.
+<br><p>
+Palette management is done in a way similar to bookmarks. If you create or import
+a palette and want to keep the information/data for it on a more permanent basis,
+select Palette->Add To Palettes.
+<br><p>
+<h3>Resource Files</h3>
+Each file has a corresponding resource file that contains the bookmarks and
+palettes recorded for that file. Such resource files are stored in XML format
+in the <font face="Courier">resources</font> folder. When you open a file,
+Tile Molester automatically loads the associated resource file.
+<br><p>
+<h3>Exporting and importing bitmaps</h3>
+... can be done from the edit menu: Copy To and Paste From, respectively. You
+can save and load bitmaps in a variety of formats. After exporting a chunk of
+graphics to a bitmap, you can edit it in a more powerful graphics application
+and import the bitmap back into Tile Molester again once you're satisfied.
+<br><p>
+<hr>
+<br><p>
+<a name="#TMSPEC">
+<h2>Configuring the Specs</h2>
+The following sections are mainly for advanced users who want to extend
+the format support in Tile Molester.
+<br><p>
+The Tile Molester specifications are stored in the file tmspec.xml, which is
+located in the same directory as tm.jar. The specs are written in XML
+(Extensible Markup Language). It is quite possible to write front-ends that can
+read, modify and write the contents of this file in a more user-friendly way,
+but this has not been a priority during the infancy stages of the application
+development. Thus, you need to be familiar with XML in order to configure the
+graphics formats, file extensions and such.
+<br><p>
+The layout of the specification file is like so:
+<br><p>
+<font color="#ff0000">-</font> <font color="#0000ff">&lt;</font><font color="#ff0000">tmspec</font><font color="#0000ff">&gt;</font><br>
+&nbsp;&nbsp;<font color="#ff0000">+</font> <font color="#0000ff">&lt;</font><font color="#ff0000">colorformats</font><font color="#0000ff">&gt;</font><br>
+&nbsp;&nbsp;<font color="#ff0000">+</font> <font color="#0000ff">&lt;</font><font color="#ff0000">tileformats</font><font color="#0000ff">&gt;</font><br>
+&nbsp;&nbsp;<font color="#ff0000">+</font> <font color="#0000ff">&lt;</font><font color="#ff0000">filefilters</font><font color="#0000ff">&gt;</font><br>
+&nbsp;&nbsp;<font color="#ff0000">+</font> <font color="#0000ff">&lt;</font><font color="#ff0000">palettefilters</font><font color="#0000ff">&gt;</font><br>
+&nbsp;&nbsp;<font color="#ff0000">+</font> <font color="#0000ff">&lt;</font><font color="#ff0000">filelisteners</font><font color="#0000ff">&gt;</font><br>
+<br><p>
+Each "major" tag and the allowed subtags are explained in detail in
+the following.
+<br><p>
+
+<a name="#DIRECTCOLOR">
+<b><font size="+1" face="Courier">directcolor</font></b><br><p>
+<b>Description</b>:<br>
+Defines a color in terms of Red, Green, Blue and Alpha components.<br>
+The components are specified as bitmasks in hexadecimal format. For example,
+if the bitmask for Red is FF0000, this states that the Red component is
+located in bits 16-23 of a word that holds a pixel (an <i>instance</i> of the color).<br>
+Each mask must have consecutive 1-bits and the number of 1-bits should not exceed 8.
+<br><p>
+<b>Attributes</b>:<br>
+<font face="Courier">id</font> - Unique identification string. <i>[Req]</i><br>
+<font face="Courier">bpp</font> - Bits per pixel. The number of bits used to
+store a pixel using this color format, for example the sum of the number of
+bits in the bitmasks. <i>[Req]</i> <br>
+<font face="Courier">rmask</font> - Bitmask for Red component. <i>[Req]</i><br>
+<font face="Courier">gmask</font> - Bitmask for Green component. <i>[Req]</i><br>
+<font face="Courier">bmask</font> - Bitmask for Blue component. <i>[Req]</i><br>
+<font face="Courier">amask</font> - Bitmask for Alpha component. <i>[Opt]</i>
+<br><p>
+<b>Subtags</b>:<br>
+<font face="Courier">description</font> - Plaintext description of the color format. <i>[Req]</i>
+<br><p>
+<b>Example</b>:<br>
+<font face="Courier">
+&lt;directcolor id="CF00" bpp="15" rmask="001F" gmask="03E0" bmask="7C00"&gt;<br>
+&nbsp;&nbsp;&lt;description&gt;15bpp BGR (555)&lt;/description&gt;<br>
+&lt;directcolor&gt;
+</font>
+<br><p>
+
+<a name="#INDEXEDCOLOR">
+<b><font size="+1" face="Courier">indexedcolor</font></b><br><p>
+<b>Description</b>:<br>
+Defines a set of colors through a table of predefined RGB values (palette).
+When a color in this format needs to be rendered, it can be looked up in the
+table to find its corresponding RGB representation.
+<br><p>
+<b>Attributes</b>:<br>
+<font face="Courier">id</font> - Unique identification string. <i>[Req]</i><br>
+<font face="Courier">bpp</font> - Bits per pixel. This value implicitly defines
+the size of the RGB lookup table; for example, if 6 bits per pixel are used, the
+table must hold 2^6=64 entries. <i>[Req]</i><br>
+<font face="Courier">format</font> - Refers to the id attribute of a defined
+<a href="#DIRECTCOLOR">directcolor</a> format. The entries in the RGB lookup
+table are stored in this format.<br>
+<font face="Courier">endianness</font> - The byte order of the RGB lookup table
+data (read on). Can be <font face="Courier">little</font> or <font face="Courier">
+big</font>; the former is default. <i>[Opt]</i>
+<br><p>
+<b>Subtags</b>:<br>
+<font face="Courier">data</font> - The RGB lookup table data, stored as a string
+of hexadecimal digits. The string is interpreted as a sequence of bytes stored in
+the appropriate directcolor format, using the specified byte order.<i>[Req]</i><br>
+<font face="Courier">description</font> - Plaintext description of the color format. <i>[Req]</i>
+<br><p>
+<b>Example</b>:<br>
+<font face="Courier">
+&lt;indexedcolor id="CF02" bpp="6" endianness="big"&gt;<br>
+&nbsp;&nbsp;&lt;data&gt;757575271B8F <i><font color="#0000ff">(and so on...)</font></i> 000000&lt;/data&gt;<br>
+&nbsp;&nbsp;&lt;description&gt;Nintendo (NES)&lt;/description&gt;<br>
+&lt;/indexedcolor&gt;
+</font>
+<br><p>
+
+<a name="#PLANARTILE">
+<b><font size="+1" face="Courier">planartile</font></b><br><p>
+<b>Description</b>:<br>
+Defines a palettized planar tile format.
+<br><p>
+<b>Attributes</b>:<br>
+<font face="Courier">id</font> - Unique identification string. <i>[Req]</i><br>
+<font face="Courier">bpp</font> - Bits per pixel. This also implicitly defines
+how many planes the tile consists of. <i>[Req]</i><br>
+<font face="Courier">planeorder</font> - The order of the bytes that make up a
+row (eight pixels) of the tile. It is a comma-separated list of offsets relative
+to zero. The largest offset should not exceed bpp-1. <i>[Req]</i>
+<br><p>
+<b>Subtags</b>:<br>
+<font face="Courier">description</font> - Plaintext description of the tile format. <i>[Req]</i>
+<br><p>
+<b>Example</b>:<br>
+<font face="Courier">
+&lt;planartile id="PL03" bpp="4" planeorder="0,1,2,3"&gt;<br>
+&nbsp;&nbsp;&lt;description>4bpp planar&lt;/description&gt;<br>
+&lt;/planartile&gt;
+</font>
+<br><p>
+
+<a name="#LINEARTILE">
+<b><font size="+1" face="Courier">lineartile</font></b><br><p>
+<b>Description</b>:<br>
+Defines a palettized linear tile format.
+<br><p>
+<b>Attributes</b>:<br>
+<font face="Courier">id</font> - Unique identification string. <i>[Req]</i><br>
+<font face="Courier">bpp</font> - Bits per pixel. Must be one of 1, 2, 4 or 8.<i>[Req]</i><br>
+<font face="Courier">ordering</font> - The order of individual pixel data within
+a byte. This is similar to endianness, but on the sub-byte level. Possible
+values are <font face="Courier">in</font> and <font face="Courier">reverse</font>;
+the former is default. <i>[Opt]</i>
+<br><p>
+<b>Subtags</b>:<br>
+<font face="Courier">description</font> - Plaintext description of the tile format. <i>[Req]</i>
+<br><p>
+<b>Example</b>:<br>
+<font face="Courier">
+&lt;lineartile id="LN03" bpp="2" ordering="reverse"&gt;<br>
+&nbsp;&nbsp;&lt;description&gt;2bpp linear, reverse-order&lt;/description&gt;<br>
+&lt;/lineartile&gt;
+</font>
+<br><p>
+
+<a name="#DIRECTCOLORTILE">
+<b><font size="+1" face="Courier">directcolortile</font></b><br><p>
+<b>Description</b>:<br>
+Defines a direct-color linear tile format.
+<br><p>
+<b>Attributes</b>:<br>
+<font face="Courier">id</font> - Unique identification string. <i>[Req]</i><br>
+<font face="Courier">bpp</font> - Bits per pixel. The number of bits used to
+store a pixel using this color format, for example the sum of the number of
+bits in the bitmasks. <i>[Req]</i> <br>
+<font face="Courier">rmask</font> - Bitmask for Red component. <i>[Req]</i><br>
+<font face="Courier">gmask</font> - Bitmask for Green component. <i>[Req]</i><br>
+<font face="Courier">bmask</font> - Bitmask for Blue component. <i>[Req]</i><br>
+<font face="Courier">amask</font> - Bitmask for Alpha component. <i>[Opt]</i>
+<br><p>
+<b>Subtags</b>:<br>
+<font face="Courier">description</font> - Plaintext description of the tile format. <i>[Req]</i>
+<br><p>
+<b>Example</b>:<br>
+<font face="Courier">
+&lt;directcolortile id="DC00" bpp="15" rmask="7C00" gmask="03E0" bmask="001F"&gt;<br>
+&nbsp;&nbsp;&lt;description&gt;15bpp RGB (555)&lt;/description&gt;<br>
+&lt;/directcolortile&gt;
+</font>
+<br><p>
+
+<a name="#COMPOSITETILE">
+<b><font size="+1" face="Courier">compositetile</font></b><br><p>
+<b>Description</b>:<br>
+Defines a composite tile format. A <i>composite tile</i> is a tile made up of two or
+more separate tiles, where each tile is of a format defined elsewhere. Each tile may
+itself be composite, so it is a sort of recursive format. As an example, Nintendo
+Entertainment System (NES) tiles are 2bpp planar, like Game Boy tiles; but unlike
+Game Boy tiles, NES tiles are stored as two consecutive (separate) 1bpp tiles.
+This behaviour cannot be specified through a regular
+<a href="#PLANARTILE">planartile</a> format; however, it is easily defined as
+a composite tile format.
+<br><p>
+<b>Attributes</b>:<br>
+<font face="Courier">id</font> - Unique identification string. <i>[Req]</i><br>
+<font face="Courier">formats</font> - A comma-separated list of tile format
+identification strings; these refer to tile formats defined elsewhere in the
+specification document. This list defines both the order (starting with the
+lowest bits) and the actual format of the individual tiles that make up the
+composite tile. The tiles are assumed to be stored consecutively in memory. <i>[Req]</i>
+<br><p>
+<b>Subtags</b>:<br>
+<font face="Courier">description</font> - Plaintext description of the tile format. <i>[Req]</i>
+<br><p>
+<b>Example</b>:<br>
+<font face="Courier">
+&lt;compositetile id="CP01" formats="PL01,PL00"&gt;<br>
+&nbsp;&nbsp;&lt;description&gt;3bpp planar, composite (2bpp+1bpp)&lt;/description&gt;<br>
+&lt;/compositetile&gt;
+</font>
+<br><p>
+
+<a name="#FILEFILTER">
+<b><font size="+1" face="Courier">filefilter</font></b><br><p>
+<b>Description</b>:<br>
+Defines a file filter. A <i>file filter</i> allows you to associate files of certain
+extensions with a default graphics format and display mode. The filter is
+used by the "Open File..." dialog in Tile Molester.
+<br><p>
+<b>Attributes</b>:<br>
+<font face="Courier">extensions</font> - A comma-separated list of file
+extensions (without the '.' character) to be included in the file filter.
+The wildcard character '?' is supported, which matches any character. <i>[Req]</i><br>
+<font face="Courier">tileformat</font> - Refers to a defined tile format that
+should be used to display files supported by this file filter.<i>[Req]</i><br>
+<font face="Courier">mode</font> - The default mode to display graphics in when
+a file supported by this file filter is opened. Can be
+<font face="Courier">1D</font> or <font face="Courier">2D</font>. <i>[Opt]</i>
+<br><p>
+<b>Subtags</b>:<br>
+<font face="Courier">description</font> - Plaintext description of the file filter. <i>[Req]</i>
+<br><p>
+<b>Example</b>:<br>
+<font face="Courier">
+&lt;filefilter extensions="n64,v64,z64" tileformat="DC06" mode="2D"&gt;<br>
+&nbsp;&nbsp;&lt;description>Nintendo 64 (*.n64, *.v64, *.z64)&lt;/description&gt;<br>
+&lt;/filefilter&gt;
+</font>
+<br><p>
+
+<a name="#PALETTEFILTER">
+<b><font size="+1" face="Courier">palettefilter</font></b><br><p>
+<b>Description</b>:<br>
+Defines a palette filter. A <i>palette filter</i> allows you to associate palette
+files (files containing palette data) of certain extensions with information on
+how palette data can be extracted from these files. The filter is used by the
+"Import Palette..." dialog in Tile Molester.
+<br><p>
+<b>Attributes</b>:<br>
+<font face="Courier">extensions</font> - A comma-separated list of file
+extensions (without the '.' character) to be included in the palette filter.
+The wildcard character '?' is supported, which matches any character. <i>[Req]</i><br>
+<font face="Courier">colorformat</font> - Identification string of a defined
+color format that will be used to read palette data from the file. <i>[Req]</i><br>
+<font face="Courier">size</font> - The size of the palette (number of entries). <i>[Req]</i><br>
+<font face="Courier">offset</font> - The starting offset of the palette data
+in the file.<i>[Req]</i>
+<font face="Courier">endianness</font> - The byte order of the palette data.
+Can be <font face="Courier">little</font> or <font face="Courier">
+big</font>; the former is default. <i>[Opt]</i>
+<br><p>
+<b>Subtags</b>:<br>
+<font face="Courier">description</font> - Plaintext description of the palette filter. <i>[Req]</i>
+<br><p>
+<b>Example</b>:<br>
+<font face="Courier">
+&lt;palettefilter extensions="zs?" colorformat="CF00" size="256" offset="52243" endianness="little"&gt;<br>
+&nbsp;&nbsp;&lt;description>ZSNES Save States (*.zs?)&lt;/description&gt;<br>
+&lt;/palettefilter&gt;
+</font>
+<br><p>
+
+<a name="#FILELISTENER">
+<b><font size="+1" face="Courier">filelistener</font></b><br><p>
+<b>Description</b>:<br>
+Registers a file listener. A <i>file listener</i> receives notifications when
+a file has been loaded and when it is about to be saved. At these times it may
+perform various operations on the data. For example, when the file is saved it
+may recalculate checksums. The first criteria for a file listener to receive
+file-loaded/file-saving notifications is that the extension of the file being
+saved is among the extensions hooked to that file listener. The second criteria
+is that the file listener must determine that the file data is indeed of the
+correct format (and not, say, a file of Format X saved with an extension
+typically related to Format Y). This is typically done by checking header
+fields (ID strings and such). The listener itself is implemented as a Java
+class (more about this in the next section).
+<br><p>
+<b>Attributes</b>:<br>
+<font face="Courier">classname</font> - The name of the Java class that
+implements the file listener. <i>[Req]</i><br>
+<br><p>
+<b>Subtags</b>:<br>
+None.
+<br><p>
+<b>Example</b>:<br>
+<font face="Courier">
+&lt;filelistener classname="NESFileListener"/&gt;<br>
+</font>
+<br><p>
+
+<i>Notes</i>:
+<br><p>
+<i>The specification structure and tags are not finalized and may change in
+future versions. Suggestions in this regard are welcome.</i>
+<br><p>
+<i>Don't mess with the specs if you don't got the pecs.</i>
+<br><p>
+<hr>
+<br><p>
+<a name="#WRITINGFILELISTENERS">
+<h2>Writing File Listeners</h2>
+Writing a file listener can be done by subclassing the abstract class <font face="Courier">
+TMFileListener</font>, which is found in the root directory of the source code
+distribution of the program. The following methods must be implemented:
+<br><p>
+<font face="Courier">public boolean doFormatDetect(final byte[] data, String extension)</font>:<br>
+Takes an array of bytes which is the contents of the file, and the lower-case
+file extension; returns <font face="Courier">true</font> if the data and extension
+complies with the format(s) that the file listener supports,
+<font face="Courier">false</font> otherwise. (One may choose to ignore the extension
+if the data itself can provide unambiguous evidence that the data is of the correct
+format; however, this isn't recommended in the general case.)<br>
+Typical code looks like this:
+<br><p>
+<font face="Courier">
+// <i>verify extension</i><br>
+if (!extension.equals("gba")) return false;<br>
+// <i>verify some header fields</i><br>
+// ...<br>
+if (!header_valid) return false;<br>
+// <i>format verified</i><br>
+return true;
+</font>
+<br><p>
+<font face="Courier">public void fileLoaded(byte[] data, String extension)</font>:<br>
+Invoked after the file has been loaded. <font face="Courier">data</font> is the
+contents of the file; <font face="Courier">extension</font> is the lower-case
+extension of the filename. This method is <i>only</i> invoked when
+<font face="Courier">doFormatDetect(data, extension)</font> has already returned
+<font face="Courier">true</font>.
+<br><p>
+<font face="Courier">public void fileSaving(byte[] data, String extension)</font>:<br>
+Invoked before the file is saved. The parameters are the same as for
+<font face="Courier">fileLoaded</font>.
+<br><p>
+Once the file listener has been compiled, it should be put in the Tile Molester root
+directory and registered in the &lt;filelisteners&gt; section of the specification
+file (tmspec.xml). The listener will then start receiving events the next time Tile
+Molester is started.
+<br><p>
+Only one file listener is allowed to process a particular file. The order of listeners
+as defined in the specification file defines the order in which Tile Molester will
+search for a listener when a file has been loaded. As soon as a file listener is found
+that returns <font face="Courier">true</font> in <font face="Courier">doFormatDetect</font>,
+that listener will receive both the fileLoaded and fileSaved events for the file that
+owns the data.
+<br><p>
+For real examples of file listeners, check out one or more of those that are included
+in the source distribution: These include <font face="Courier">GameBoyAdvanceFileListener</font>
+and <font face="Courier">SegaGenesisFileListener</font>.
+<br><p>
+<hr>
+<br><p>
+
+<a name="#LANGUAGE">
+<h2>Language Support</h2>
+Tile Molester can easily be translated to a different language. There are two
+steps required:
+<br><p>
+1. Copy the file <font face="Courier">language_template</font> (located in the
+<font face="Courier">languages</font> subfolder) to
+<font face="Courier">language_lc_CC.properties</font>, where <i>lc</i> is a
+lower-case, two-letter ISO language code (see, for example, <a href="http://www.ics.uci.edu/pub/ietf/http/related/iso639.txt">http://www.ics.uci.edu/pub/ietf/http/related/iso639.txt</a>)
+and CC is an upper-case, two-letter ISO country code (see, for example, <a href="http://www.chemie.fu-berlin.de/diverse/doc/ISO_3166.html">http://www.chemie.fu-berlin.de/diverse/doc/ISO_3166.html</a>).
+<br><p>
+2. Open the new file in your text editor of choice. The lines starting with #
+are comments and aren't strictly necessary to translate. Other lines are of the
+form
+<br><p>
+<i>TranslationKey</i> =
+<br><p>
+where <i>TranslationKey</i> is a descriptive name of a piece of text and must remain
+unchanged. On the right side of the equality sign, the actual text must be
+supplied in the proper language. You can use the standard English translation (<font face="Courier">language_en_US.properties</font>)
+as a guide for making new translations.
+<br><p>
+The help file can also be translated. To do so, copy one of the already translated
+help files (say, <font face="Courier">help_en_US.htm</font>) from the <font face="Courier">docs</font>
+directory to <font face="Courier">help_lc_CC.htm</font> (where lc and CC are the same as above)
+and translate the text within to the proper language.
+<br><p>
+<hr>
+<br><p>
+<a name="#KNOWNISSUES">
+<h2>Known Issues</h2>
+These are some of the current problems and shortcomings that will (hopefully) be
+addressed in the future. Complaints about these issues will generally
+be ignored (although the people who will be complaining probably haven't bothered
+reading this far...).
+<br><p>
+<ul>
+<li>Out of memory error when loading really large files. Nothing much I can do with
+it as it is due to the Java Virtual Machine (JVM). It can be rectified by forcing the
+JVM to grab more system memory on startup. Run Tile Molester from the command line
+with the option -mxXm, where X is the number of megabytes you require; i.e.
+<font face="Courier">java -mx500M -jar tm.jar</font> to allocate 500MB.</li>
+<li>Undoing and redoing Copy/Paste operations isn't totally kosher.</li>
+<li><font face="Arial">Edit Colors</font> in Palette menu doesn't do anything.
+It's supposed to bring up a dialog where you view all the colors in the current
+palette and click on them to edit. As of yet the only way to edit colors is by
+double-clicking on a color directly in the palette panel.</li>
+<li>Bizarre problem related to full-screen modes in some emulators. If you're running
+Tile Molester, then run, say, FCEUltra in full-screen mode, then go
+back to TM, sometimes the GUI isn't repainted -- it appears totally dead. The way to
+fix it is by changing the main window state, for example by minimizing and
+subsequently maximizing it. This is either due to a bug in the screen mode restoration of
+FCEUltra, a bug in the Java GUI runtimes, or both; there's not much I can do about it,
+unless I can come up with some cheap hack to work around it.</li>
+<li><font face="Arial">Move</font> button in Organize Bookmarks/Palettes dialog
+doesn't do anything. It's supposed to bring up a new dialog where you select a
+folder to move the item(s) to. But this is kinda redundant anyway, since you can
+move items by dragging and dropping. Easy to implement, low priority.</li>
+<li>Translation isn't applied 100% everywhere in the program.</li>
+<li>The <font face="Arial">Mover</font> tool (used for "dragging" the focus in
+a zoomed canvas) is a bit jerky, to put it mildly.</li>
+<li>In order to change languages after the first time you've run the program,
+you have to delete the file <font face="Courier">settings.xml</font> and
+restart Tile Molester.</li>
+<li>Lots of other tiny things that serve to darken my day. Oh, you know what they are.
+</ul>
+<br><p>
+<hr>
+<br><p>
+<a name="#FEEDBACK">
+<h2>Feedback and Contributions</h2>
+Got bugs? <a href="mailto:kenth@stud.ntnu.no">Try me</a>.
+<br><p>
+If you make a complete translation for a language which isn't currently supported
+by Tile Molester, you may send it my way and it will be posted on the website and
+included in the next version of the program.
+<br><p>
+The same goes for writing new file listeners, and defining new graphics/palette
+formats and filters. I am particularly interested in file listeners for Nintendo
+64 formats (n64, v64, z64), and definitions of the graphics formats used by
+various consoles
+(Playstation, Dreamcast, Atari Lynx, Atari Jaguar, GamePark32, ColecoVision,
+NeoGeo, Intellivision, Sega Saturn...)
+<br><p>
+I am also interested in collections of bookmarks and palettes (resource files)
+for console binaries. The plan is to build a large database of such resources,
+so that anyone who wants to edit a particular file can look up the database
+first to see what information has already been documented about it.
+<br><p>
+Check out the <a href="http://www.stud.ntnu.no/~kenth/tm/">Tile Molester website</a> for
+the latest news and developments.
+</td></tr>
+</table>
+<br><p>
+<i>&copy; Kent Hansen 2003</i>
+</center>
+</body>
+</html>
