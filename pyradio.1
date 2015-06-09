@@ -1,0 +1,61 @@
+.\" Copyright (C) 2011 Ben Dowling <http://www.coderholic.com/pyradio>
+.\" Copyright (C) 2012 aksr <aksr at t-com dot me>
+.\" This manual is freely distributable under the terms of the GPL.
+.\" It was originally written for Arch Linux (but may be used by
+.\" others).
+.\"
+.TH PYRADIO 1 "August 2012"
+
+.SH NAME
+.PP
+pyradio \- a console based Internet radio player
+
+.SH SYNOPSIS
+.PP
+\fBpyradio\fR [path/to/]stations.csv
+
+.SH DESCRIPTION
+.PP
+.B pyradio
+is a command line internet radio player. 
+.PP
+Requires mplayer.
+.PP
+It is possible to use 
+a custom stations list in ~/.pyradio/stations.csv.
+.PP
+If custom stations list is missing, \fBpyradio\fR would use a 
+default one.
+
+.SH Controls
+
+.IP \fB\Up/Down/PgUp/PgDown     
+Change station selection
+.IP \fBj/k
+Change station selection (vi-like)
+.IP \fBEnter                   
+Play selected station
+.IP \fB-/+                     
+Change volume
+.IP \fBm                       
+Mute
+.IP \fBr                       
+Select and play a random station
+.IP \fBSpace                   
+Stop/start playing selected station
+.IP \fBEsc/q                   
+Quit
+
+.SH FILES
+.PP
+.I /usr/share/doc/pyradio/stations.csv
+
+.I /usr/share/doc/pyradio/README.md
+
+.I /usr/share/doc/pyradio/LICENCE
+
+.SH AUTHOR
+.PP
+ \fBBen Dowling <http://www.coderholic.com/pyradio>
+.PP
+ The man page was written by \fBaksr <aksr at t-com dot me>\fR for Arch Linux.
