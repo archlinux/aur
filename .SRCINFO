@@ -1,0 +1,15 @@
+pkgbase = msgpack-erlang
+	pkgdesc = MessagePack (de)serializer implementation for Erlang
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/msgpack/msgpack-erlang/
+	arch = any
+	license = Apache
+	makedepends = rebar
+	makedepends = git
+	makedepends = erlang-nox
+	source = https://github.com/msgpack/msgpack-erlang/archive/0.3.2.tar.gz
+	md5sums = 01a1518095861b132d63878bea7a4ca8
+
+pkgname = msgpack-erlang
+
