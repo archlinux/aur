@@ -1,0 +1,19 @@
+# cover-thumbnailer.install
+
+post_install() {
+    update-desktop-database -q
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+    echo ""
+    echo "      Do not forget to delete the cache of thumbnails:"
+    echo "          rm rf ~/.thumbnails"
+    echo "          rm rf ~/.cache/thumbnails"
+    echo ""
+}
+
+post_upgrade() {
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+}
+
+post_remove() {
+    post_install $1
+}

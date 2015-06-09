@@ -1,0 +1,18 @@
+pkgbase = cover-thumbnailer
+	pkgdesc = A Python script which displays music album covers in nautilus, preview of pictures which are in a folder and more.
+	pkgver = 0.8.3
+	pkgrel = 4
+	url = https://launchpad.net/cover-thumbnailer
+	install = cover-thumbnailer.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gettext
+	depends = python2-pillow
+	depends = python2-gconf
+	provides = cover-thumbnailer
+	source = https://launchpad.net/cover-thumbnailer/v0.8/v0.8.3/+download/cover-thumbnailer_0.8.3_src.tar.gz
+	sha256sums = c0d5213743cb251428b9998d7838d6d6e64bb4bb9ccd3a21ffebb3fc21b688c4
+
+pkgname = cover-thumbnailer
+
