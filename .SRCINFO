@@ -1,0 +1,17 @@
+pkgbase = typecatcher
+	pkgdesc = Download Google webfonts for off-line use
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://launchpad.net/typecatcher
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = python3
+	depends = python-distutils-extra
+	depends = python-gobject
+	depends = yelp
+	source = https://launchpad.net/typecatcher/0.2/0.2/+download/typecatcher_0.2.tar.gz
+	md5sums = 3900950b2e0f240721545ddedb512566
+
+pkgname = typecatcher
+
