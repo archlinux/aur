@@ -1,0 +1,18 @@
+pkgbase = python-pycoin
+	pkgdesc = Python-based Bitcoin utility library
+	pkgver = 0.52
+	pkgrel = 1
+	url = https://github.com/richardkiss/pycoin
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	provides = pycoin
+	provides = python-pycoin
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/p/pycoin/pycoin-0.52.tar.gz
+	md5sums = 29c8bede819f55d82f40d514781b99ed
+	sha256sums = 03d6f3bd16a737476091ae83e9d6cde7ac23a270a3d5dabf5e1c19dd3cb1492e
+
+pkgname = python-pycoin
+
