@@ -4,7 +4,7 @@
 
 pkgname=colout-git
 _pkgname=colout
-pkgver=20131109
+pkgver=r180.9bf6de3
 pkgrel=1
 pkgdesc="Reads text on stdin and produces colorized and stylized output"
 arch=('any')
@@ -15,24 +15,16 @@ optdepends=('python-pygments')
 makedepends=('git')
 provides=($_pkgname)
 conflicts=($_pkgname)
-_gitroot="git://github.com/nojhan/colout.git"
-_gitname="colout"
+source=('colout::git://github.com/nojhan/colout.git')
+md5sums=('SKIP')
 
-build() {
-	cd "$srcdir"
-	msg "Performing source checkout..."
-	if [ -d "$_gitname" ]; then
-		cd "$_gitname"
-		git pull origin || return 1
-		cd ..
-	else
-		git clone "$_gitroot" || return 1
-	fi
-	msg "Source checkout finished."
+pkgver() {
+	cd "$srcdir/$_pkgname"
+	printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-         cd "$srcdir/$_pkgname"                                        
-         python setup.py install --root="$pkgdir/" --optimize=1       
+	cd "$srcdir/$_pkgname"
+	python setup.py install --root="$pkgdir/" --optimize=1
 }
 
