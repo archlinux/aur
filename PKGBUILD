@@ -1,0 +1,55 @@
+# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Contributor: sh4nks <sh4nks7@gmail.com
+
+pkgname=lightdm-pantheon-greeter-bzr
+pkgver=r359
+pkgrel=1
+pkgdesc='Pantheon greeter for LightDM'
+arch=('i686' 'x86_64')
+url='https://launchpad.net/pantheon-greeter'
+license=('GPL')
+groups=('pantheon-unstable')
+depends=('clutter-gtk' 'granite-bzr' 'libindicator-gtk3' 'lightdm')
+makedepends=('bzr' 'cmake' 'libxfixes' 'vala')
+provides=('lightdm-pantheon-greeter')
+conflicts=('lightdm-pantheon-greeter')
+install='lightdm-pantheon-greeter.install'
+source=('lightdm-pantheon-greeter::bzr+lp:pantheon-greeter'
+        'lightdm-pantheon-greeter-paths.patch')
+sha256sums=('SKIP'
+            '164d93b3dd75a5dfa2ecb4095bbf0f366e778544b4769b4a5c47be1cef952d1b')
+
+pkgver() {
+  cd lightdm-pantheon-greeter
+
+  echo "r$(bzr revno)"
+}
+
+prepare() {
+  cd lightdm-pantheon-greeter
+
+  patch -Np1 -i ../lightdm-pantheon-greeter-paths.patch
+}
+
+build() {
+  cd lightdm-pantheon-greeter
+
+  if [[ -d build ]]; then
+    rm -rf build
+  fi
+  mkdir build && cd build
+
+  cmake .. \
+    -DCMAKE_BUILD_TYPE='Release' \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DGSETTINGS_COMPILE='OFF'
+  make
+}
+
+package() {
+  cd lightdm-pantheon-greeter/build
+
+  make DESTDIR="${pkgdir}" install
+}
+
+# vim: ts=2 sw=2 et:

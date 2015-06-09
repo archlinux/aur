@@ -1,0 +1,6 @@
+pkgname=('lightdm-pantheon-greeter-bzr')
+builddeps=('granite-bzr' 'libindicator-gtk3')
+
+check_bzr $packagedir/$pkgname/${pkgname%-*}
+
+# vim: ts=2 sw=2 et:
