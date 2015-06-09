@@ -1,0 +1,23 @@
+pkgbase = i3lock-git
+	pkgdesc = An improved screenlocker based upon XCB and PAM
+	pkgver = 2.6
+	pkgrel = 1
+	url = http://i3wm.org/i3lock/
+	arch = i686
+	arch = x86_64
+	groups = i3-vcs
+	license = MIT
+	makedepends = git
+	depends = xcb-util-image
+	depends = libev
+	depends = cairo
+	depends = libxkbcommon-x11
+	provides = i3lock
+	conflicts = i3lock
+	options = docs
+	backup = etc/pam.d/i3lock
+	source = git://code.i3wm.org/i3lock
+	sha1sums = SKIP
+
+pkgname = i3lock-git
+
