@@ -1,0 +1,18 @@
+pkgbase = libgsignon-glib
+	pkgdesc = gSSO client library
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://01.org/gsso
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	depends = glib2
+	depends = python
+	source = git+https://gitlab.com/accounts-sso/libgsignon-glib.git#commit=799c0b9e
+	sha256sums = SKIP
+
+pkgname = libgsignon-glib
+
