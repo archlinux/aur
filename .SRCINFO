@@ -1,0 +1,15 @@
+pkgbase = perl-digest-crc
+	pkgdesc = Generic interface to CRC algorithms
+	pkgver = 0.18
+	pkgrel = 2
+	url = http://search.cpan.org/dist/Digest-CRC/
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/O/OL/OLIMAUL/Digest-CRC-0.18.tar.gz
+	sha256sums = 5c5329f37c46eb79835169508583da8767d9839350b69bb2b48ac6f594f70374
+
+pkgname = perl-digest-crc
+
