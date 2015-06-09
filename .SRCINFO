@@ -1,0 +1,34 @@
+pkgbase = midori-granite-bzr
+	pkgdesc = A lightweight, fast, and free web browser
+	pkgver = r6929
+	pkgrel = 1
+	url = http://midori-browser.org/
+	install = midori.install
+	arch = i686
+	arch = x86_64
+	groups = pantheon-unstable
+	license = LGPL2.1
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = intltool
+	makedepends = librsvg
+	makedepends = ninja
+	makedepends = vala
+	depends = gcr
+	depends = granite-bzr
+	depends = libnotify
+	depends = libxss
+	depends = libzeitgeist
+	depends = webkitgtk
+	depends = zeitgeist
+	optdepends = gst-plugins-base: HTML5 OGG videos support
+	optdepends = gst-plugins-good: HTML5 H264 and WebM videos support
+	optdepends = gst-libav: HTML5 H264 videos support
+	provides = midori
+	conflicts = midori
+	options = !emptydirs
+	source = bzr+lp:midori
+	sha256sums = SKIP
+
+pkgname = midori-granite-bzr
+
