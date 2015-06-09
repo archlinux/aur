@@ -1,7 +1,7 @@
 pkgbase = tzclock-gtk2
 	pkgdesc = Cairo clock to display the time around the world
 	pkgver = 2.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tzclock.org/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = tzclock-gtk2
 	depends = libgnomeui
 	conflicts = tzclock-gtk3
 	conflicts = tzclock
-	source = http://tzclock.org/releases/GTK2/tzclock-2.8.1.tar.bz2
+	source = http://www.theknight.co.uk/releases/GTK2/tzclock-2.8.1.tar.bz2
 	md5sums = 28657d101d2c2a4df619e959d7d78196
 
 pkgname = tzclock-gtk2

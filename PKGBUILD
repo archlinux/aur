@@ -4,15 +4,16 @@
 _pkgname=tzclock
 pkgname=${_pkgname}-gtk2
 pkgver=2.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cairo clock to display the time around the world"
 arch=('i686' 'x86_64')
 url="http://tzclock.org/"
 license="GPL"
 depends=('libgnomeui')
 conflicts=("${_pkgname}-gtk3" "${_pkgname}")
-source=("http://tzclock.org/releases/GTK2/${_pkgname}-$pkgver.tar.bz2")
+source=("http://www.theknight.co.uk/releases/GTK2/${_pkgname}-$pkgver.tar.bz2")
 md5sums=('28657d101d2c2a4df619e959d7d78196')
+DLAGENTS=('http::/usr/bin/wget -O %o %u')
 
 build() {
   cd $srcdir/${_pkgname}-$pkgver/
