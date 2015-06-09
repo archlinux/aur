@@ -1,0 +1,13 @@
+pkgbase = sslscan
+	pkgdesc = A fast tools to scan SSL services, such as HTTPS.
+	pkgver = 1.10.2
+	pkgrel = 1
+	url = https://github.com/DinoTools/sslscan/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = openssl
+	source = https://github.com/DinoTools/sslscan/archive/1.10.2.tar.gz
+	sha512sums = b7bf9a12c0469893bf1ada53f42cf0a7c286d6bcb5db260ea0ecd6c332ccb8ec6caafa07cd78d15582af5d154b6f4c84cee55ba2fe5a286cb9bd3f9c83e60c34
+
+pkgname = sslscan
