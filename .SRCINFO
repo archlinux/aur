@@ -1,0 +1,18 @@
+pkgbase = pacmixer
+	pkgdesc = alsamixer alike for PulseAudio.
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://github.com/KenjiTakahashi/pacmixer
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc-objc
+	makedepends = ninja
+	depends = ncurses
+	depends = libpulse
+	depends = gnustep-base
+	source = https://github.com/KenjiTakahashi/pacmixer/archive/0.6.tar.gz
+	md5sums = 2729f4fadcbce866e7b69b05a6f565f0
+
+pkgname = pacmixer
+
