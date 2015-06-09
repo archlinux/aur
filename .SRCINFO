@@ -1,0 +1,26 @@
+pkgbase = switchboard
+	pkgdesc = The Pantheon Control Center
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://launchpad.net/switchboard
+	install = switchboard.install
+	arch = i686
+	arch = x86_64
+	groups = pantheon
+	license = GPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = vala
+	depends = clutter-gtk
+	depends = granite-bzr
+	optdepends = switchboard-plug-about: About plug
+	optdepends = switchboard-plug-default-applications-bzr: Default applications plug
+	optdepends = switchboard-plug-elementary-tweaks-bzr: Elementary tweaks plug
+	optdepends = switchboard-plug-keyboard-bzr: Keyboard plug
+	optdepends = switchboard-plug-pantheon-shell-bzr: Pantheon Shell plug
+	optdepends = switchboard-plug-power-bzr: Power plug
+	source = https://launchpad.net/switchboard/2.x/2.0/+download/switchboard-2.0.0.tgz
+	sha256sums = 4439af2019cda29e6267df2c0dabdaeba129808b0da14b632dcda8713dabb12e
+
+pkgname = switchboard
+
