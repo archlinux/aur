@@ -1,0 +1,28 @@
+pkgbase = openms
+	pkgdesc = C++ library and tools for LC/MS data management and analyses
+	pkgver = 2.0.0
+	pkgrel = 2
+	url = http://open-ms.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = boost
+	depends = libsvm
+	depends = glpk
+	depends = xerces-c
+	depends = qtwebkit
+	depends = eigen
+	optdepends = dot2tex: Create package documentation during compilation
+	optdepends = texlive-core: Create package documentation during compilation
+	optdepends = texlive-latexextra: Create package documentation during compilation
+	optdepends = doxygen: Create package documentation during compilation
+	source = http://download.sourceforge.net/project/open-ms/OpenMS/OpenMS-2.0/OpenMS-2.0.0_src.tar.gz
+	source = OpenMS-TOPPView.desktop
+	source = OpenMS-TOPPAS.desktop
+	sha256sums = 957bbb28bf484b9e288986c103109298f9aeac8e4d5e68b8b58ac2e365d7ab3d
+	sha256sums = 76fab06730720c786a0b874ba6bb8b85adae85b11dde9c68c35a0d3e76d7f049
+	sha256sums = ba63c4aa90b1c055141cb0ef5bd199e390912595e7fdb8d30e9bb777f189ca30
+
+pkgname = openms
+

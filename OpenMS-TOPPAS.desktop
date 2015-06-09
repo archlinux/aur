@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=OpenMS-TOPPAS
+GenericName=
+Comment=Software for LC-MS data management and analyses
+Exec=TOPPAS
+Icon=applications-science
+Terminal=false
+Type=Application
+Categories=Science;
+StartupNotify=false
