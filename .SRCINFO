@@ -1,0 +1,23 @@
+pkgbase = proxygen-git
+	pkgdesc = A collection of C++ HTTP libraries including an easy to use HTTP server
+	pkgver = r209.0953640
+	pkgrel = 1
+	url = https://github.com/facebook/proxygen
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = autoconf-archive
+	makedepends = wget
+	makedepends = ruby
+	makedepends = gperftools
+	depends = fbthrift
+	depends = libcap
+	options = !makeflags
+	source = git+https://github.com/facebook/proxygen.git
+	source = EchoServer.cpp.patch
+	md5sums = SKIP
+	md5sums = f587fd8970bd02648474dac6d9d62326
+
+pkgname = proxygen-git
+
