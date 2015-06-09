@@ -1,0 +1,13 @@
+pkgbase = gtk-theme-numix-ocean
+	pkgdesc = Base16 Ocean colorscheme version of the Numix theme (supports GTK 2, GTK 3, Xfwm and Openbox)
+	pkgver = 2.0.2
+	pkgrel = 2
+	url = https://github.com/aaronjamesyoung/Numix-Ocean
+	arch = any
+	license = GPL3
+	depends = gtk-engine-murrine
+	source = https://github.com/aaronjamesyoung/Numix-Ocean/archive/Ocean.zip
+	md5sums = 7ccce16851029b830756e3ec4fc00666
+
+pkgname = gtk-theme-numix-ocean
+
