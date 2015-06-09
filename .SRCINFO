@@ -1,0 +1,17 @@
+pkgbase = goaljobs
+	pkgdesc = A flexible build system and business rules manager similar to make and cron, but much more powerful.
+	pkgver = 0.2
+	pkgrel = 3
+	url = http://rwmj.wordpress.com/tag/goaljobs/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = ocaml>=3.12.0
+	makedepends = ocaml-findlib
+	makedepends = ocaml-calendar
+	makedepends = camlp4
+	source = http://people.redhat.com/~rjones/goaljobs/files/goaljobs-0.2.tar.gz
+	md5sums = 70b74a9046e576f984e40b3729f5ca37
+
+pkgname = goaljobs
+
