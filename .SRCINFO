@@ -1,0 +1,21 @@
+pkgbase = wingpanel-indicator-power-bzr
+	pkgdesc = Power indicator for Wingpanel
+	pkgver = r34
+	pkgrel = 1
+	url = https://launchpad.net/wingpanel-indicator-power
+	install = wingpanel-indicator-power.install
+	arch = i686
+	arch = x86_64
+	groups = pantheon-unstable
+	license = GPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = vala
+	depends = wingpanel-rewrite-x11-bzr
+	provides = wingpanel-indicator-power
+	conflicts = wingpanel-indicator-power
+	source = bzr+lp:wingpanel-indicator-power
+	sha256sums = SKIP
+
+pkgname = wingpanel-indicator-power-bzr
+
