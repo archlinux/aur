@@ -19,7 +19,7 @@ makedepends=('upx')
 optdepends=('lib32-gtk-engines: libclearlooks.so library')
 install="kega-fusion.install"
 source=("http://www.carpeludum.com/download/Fusion363x.tar.gz"
-        "http://trya.alwaysdata.net/linux/Plugins(Linux).tar.gz"
+        "http://www.carpeludum.com/download/PluginsLinux.tar.gz"
         "http://trya.alwaysdata.net/linux/libmpg123.so.0.11.4.gz"
         "http://trya.alwaysdata.net/linux/icons/kega-fusion.png"
         kega-fusion.sh kega-fusion.desktop Fusion.ini)
