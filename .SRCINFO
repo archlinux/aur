@@ -1,0 +1,17 @@
+pkgbase = notpacman
+	pkgdesc = not pacman with physics
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = http://stabyourself.net/notpacman/
+	arch = any
+	license = CCPL:by-nc-sa
+	depends = love07
+	source = notpacman.sh
+	source = notpacman.desktop
+	source = http://stabyourself.net/dl.php?file=notpacman-1004/notpacman-linux.zip
+	sha256sums = b7bccecdde839f2692e549f6f3f4e4022d24c46a09d6b12f947a3d38d1327648
+	sha256sums = 5abee28bbe2a4b854f54d425d5de5462db90a60c8b3de1641c2d3e4c9de34c16
+	sha256sums = 9ec13bb0737d69c8954a5012ab3c84917f8db6285f74605c6faac7592a7ef2fc
+
+pkgname = notpacman
+

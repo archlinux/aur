@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Icon=gnome-mime-application-x-love-game
+Exec=notpacman
+Terminal=false
+StartupNotify=false
+Name=Not Pacman
+GenericName=Arcade Game
+Comment=Not Pacman with physics
+Categories=Game;ArcadeGame;
