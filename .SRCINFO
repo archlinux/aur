@@ -1,0 +1,17 @@
+pkgbase = kolab-syncroton
+	pkgdesc = ActiveSync Kolab Backend for Syncroton
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = http://kolab.org
+	arch = any
+	license = GPL3
+	depends = roundcubemail-plugins-kolab
+	depends = php-kolabformat
+	optdepends = pykolab: configuration tool
+	source = http://mirror.kolabsys.com/pub/releases/kolab-syncroton-2.3.1.tar.gz
+	source = apache.patch
+	sha256sums = 94a5056c89a7711ae46b1acea9bc3076190adcf80e9d7145adea4d23ce828be4
+	sha256sums = ca7860ec91bcffe3fc328204069d8580779d1164fb7262f0c5724b81d987faf3
+
+pkgname = kolab-syncroton
+

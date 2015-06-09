@@ -1,0 +1,41 @@
+--- a/docs/kolab-syncroton.conf
++++ b/docs/kolab-syncroton.conf
+@@ -1,9 +1,9 @@
+ # Kolab Syncroton configuration for Apache HTTPd
+ #
+ 
+-ScriptAlias /Microsoft-Server-ActiveSync /usr/share/kolab-syncroton/index.php
++ScriptAlias /Microsoft-Server-ActiveSync /usr/share/webapps/kolab-syncroton/index.php
+ 
+-<Directory "/usr/share/kolab-syncroton/">
++<Directory "/usr/share/webapps/kolab-syncroton/">
+     AllowOverride All
+     <ifModule mod_authz_core.c>
+         Require all granted
+@@ -14,7 +14,7 @@
+     </ifModule>
+ </Directory>
+ 
+-<Directory "/usr/share/kolab-syncroton/config/">
++<Directory "/usr/share/webapps/kolab-syncroton/config/">
+     Options -FollowSymLinks
+     <ifModule mod_authz_core.c>
+         Require all denied
+@@ -25,7 +25,7 @@
+     </ifModule>
+ </Directory>
+ 
+-<Directory "/usr/share/kolab-syncroton/lib/">
++<Directory "/usr/share/webapps/kolab-syncroton/lib/">
+     <ifModule mod_authz_core.c>
+         Require all denied
+     </ifModule>
+@@ -35,7 +35,7 @@
+     </ifModule>
+ </Directory>
+ 
+-<Directory "/usr/share/kolab-syncroton/logs/">
++<Directory "/usr/share/webapps/kolab-syncroton/logs/">
+     Options -FollowSymLinks
+     <ifModule mod_authz_core.c>
+         Require all denied
