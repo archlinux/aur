@@ -1,0 +1,17 @@
+pkgbase = httpsqs
+	pkgdesc = HTTP Simple Queue Service, message queue based on HTTP GET/POST protocol.
+	pkgver = 1.7
+	pkgrel = 1
+	url = http://code.google.com/p/httpsqs
+	arch = i686
+	arch = x64
+	license = BSD
+	depends = libevent
+	depends = tokyocabinet
+	source = http://httpsqs.googlecode.com/files/httpsqs-1.7.tar.gz
+	source = httpsqs
+	md5sums = 2e5a71a5ed04c30efeab9939ca39a786
+	md5sums = 66f5a727b0b1d7ddb44541a17953c58f
+
+pkgname = httpsqs
+
