@@ -1,0 +1,17 @@
+post_install() {
+  echo "******"
+  echo "*"
+  echo "* Credit BkkCoins:"
+  echo "* https://bitcointalk.org/index.php?topic=132061.msg1415456"
+  echo "*"
+  echo "* Run:"
+  echo "* mickey 3"
+  echo "*"
+  echo "* Create a QR code from mickey's generated private key:"
+  echo "* mickey |grep Privkey |cut -d\  -f2 |qrencode -o key.png"
+  echo "*"
+  echo "* Send mickey's Bitcoin address output to your printer:"
+  echo "* mickey 3 | lpr"
+  echo "*"
+  echo "******"
+}
