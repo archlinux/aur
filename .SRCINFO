@@ -1,0 +1,21 @@
+pkgbase = grip-git
+	pkgdesc = Gambas realtime infinality previewer
+	pkgver = 20120917
+	pkgrel = 1
+	url = https://github.com/kokoko3k/grip
+	arch = any
+	license = GPL
+	makedepends = gambas3-devel
+	makedepends = git
+	depends = gambas3-runtime>=3.1.1
+	depends = gambas3-gb-form>=3.1.1
+	depends = gambas3-gb-qt4>=3.1.1
+	depends = gambas3-gb-desktop>=3.1.1
+	depends = gambas3-gb-image>=3.1.1
+	depends = gambas3-script>=3.1.1
+	depends = gambas3-gb-form-stock>=3.1.1
+	depends = gambas3-gb-desktop-x11
+	depends = freetype2-infinality
+
+pkgname = grip-git
+
