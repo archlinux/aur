@@ -1,14 +1,14 @@
 pkgbase = postgresql-debversion
 	pkgdesc = Debian version number type for PostgreSQL
 	pkgver = 1.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://packages.debian.org/source/sid/postgresql-debversion
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = postgresql
 	depends = apt
-	source = http://ftp.debian.org/debian/pool/main/p/postgresql-debversion/postgresql-debversion_1.0.7.orig.tar.gz
+	source = http://httpredir.debian.org/debian/pool/main/p/postgresql-debversion/postgresql-debversion_1.0.7.orig.tar.gz
 	sha256sums = 13fb00112cd0ad0ce76b2415649aec02f8925d8b3e704fb4187c9a684435b2b6
 
 pkgname = postgresql-debversion
