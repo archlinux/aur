@@ -1,0 +1,14 @@
+_svc="modules_load"
+_rlvl="boot"
+
+post_install() {
+	_cmd="rc-update add ${_svc} ${_rlvl}"
+	#echo "	==> run '${_cmd}'"
+	${_cmd}
+}
+
+post_remove() {
+	_cmd="rc-update del ${_svc} ${_rlvl}"
+	#echo "	==> run '${_cmd}'"
+	${_cmd}
+}
