@@ -1,0 +1,14 @@
+pkgbase = 915resolution
+	pkgdesc = A tool to modify the video BIOS of the 800 and 900 series Intel graphics chipsets
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = http://915resolution.mango-lang.org/
+	arch = i686
+	arch = x86_64
+	license = custom:Public Domain
+	depends = bash
+	source = http://915resolution.mango-lang.org/915resolution-0.5.3.tar.gz
+	sha256sums = b64cab834b5e410bca555dc9db8e69f62f6f02496942f35ff4a68f3f27f1b542
+
+pkgname = 915resolution
+
