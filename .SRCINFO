@@ -1,0 +1,16 @@
+pkgbase = bir
+	pkgdesc = Simple graphical batch image resizer
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/agronick/BIR
+	arch = any
+	license = GPL
+	makedepends = gcc
+	depends = qt5-base
+	provides = bir
+	conflicts = bir-git
+	source = https://github.com/agronick/BIR/archive/2.0.tar.gz
+	sha256sums = e17bd1239343863006fa830bce229046c75512e66d51c529bda00cdf8c76e341
+
+pkgname = bir
+
