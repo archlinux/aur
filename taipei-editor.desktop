@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Penguin Taipei-Editor
+GenericName=
+Comment=Editor for your own taipei levels
+Icon=
+Exec=/usr/bin/taipedit
+Terminal=false
+Categories=Game;BoardGame;

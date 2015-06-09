@@ -1,0 +1,57 @@
+--- ace14/lib/xwin.c	
++++ ace-1.4/lib/xwin.c	
+@@ -89,10 +89,10 @@
+ /* Motif window hints */
+ typedef struct
+ {
+-  unsigned flags;
+-  unsigned functions;
+-  unsigned decorations;
+-  int inputMode;
++  unsigned long flags;
++  unsigned long functions;
++  unsigned long decorations;
++  long inputMode;
+ } PropMotifWmHints;
+ 
+ typedef PropMotifWmHints        PropMwmHints;
+@@ -841,13 +841,13 @@
+   png_ptr = png_create_read_struct (PNG_LIBPNG_VER_STRING, 0, 0, 0);
+   info_ptr = png_create_info_struct (png_ptr);
+ 
+-  if (setjmp (png_ptr->jmpbuf)) {
++  if (setjmp (png_jmpbuf (png_ptr))) {
+     fprintf(stderr, "Invalid PNG image!\n");
+     return;
+   }
+ 
+   file_bytes = src->file_data;
+-  png_set_read_fn (png_ptr, (voidp)&file_bytes, (png_rw_ptr)png_reader);
++  png_set_read_fn (png_ptr, (void *)&file_bytes, (png_rw_ptr)png_reader);
+ 
+   png_read_info (png_ptr, info_ptr);
+ 
+--- ace14/lib/make-imglib.c	
++++ ace-1.4/lib/make-imglib.c	
+@@ -86,7 +86,7 @@
+     png_ptr = png_create_read_struct (PNG_LIBPNG_VER_STRING, 0, 0, 0);
+     info_ptr = png_create_info_struct (png_ptr);
+ 
+-    if (setjmp (png_ptr->jmpbuf)) {
++    if (setjmp (png_jmpbuf (png_ptr))) {
+       fclose (f);
+       continue;
+     }
+
+--- ace14/lib/Makefile.am	
++++ ace-1.4/lib/Makefile.am
+@@ -6,7 +6,7 @@
+ CLEANFILES = images.c images.d
+ 
+ INCLUDES = $(X_CFLAGS) @PDA@
+-AM_LDFLAGS = $(X_LIBS)
++AM_LDFLAGS = $(X_LIBS) -lpng -lz -lm
+ 
+ BUILD_CC = @BUILD_CC@
+ AR = @AR@
+
