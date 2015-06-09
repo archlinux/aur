@@ -1,0 +1,26 @@
+pkgbase = stratum-tool
+	pkgdesc = Connects to Electrum server via Stratum protocol and allows querying Bitcoin wallet balances and other commands supported by the server
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/zouppen/stratum-tool
+	install = stratum-tool.install
+	arch = i686
+	arch = x86_64
+	license = AGPL3
+	makedepends = ghc
+	makedepends = haskell-aeson
+	makedepends = haskell-async
+	makedepends = haskell-bytestring-builder
+	makedepends = haskell-cmdargs
+	makedepends = haskell-connection
+	makedepends = haskell-curl-aeson
+	makedepends = haskell-network
+	makedepends = haskell-stm
+	makedepends = haskell-unordered-containers
+	makedepends = haskell-vector
+	options = strip
+	source = stratum-tool-0.0.5.tar.gz::https://codeload.github.com/zouppen/stratum-tool/tar.gz/v0.0.5
+	sha256sums = 4dec8c02050f9211b9b690ecfb8f324b86b982ca0bcee7682574df4038be864f
+
+pkgname = stratum-tool
+
