@@ -1,0 +1,10 @@
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+	if [[ $1 == '4.0.0' && $2 == '4.0.0rc1' ]]
+	then
+		SERVER=`grep elasticsearch_url: /etc/webapps/kibana/kibana.yml| cut -d\" -f2`
+		BODY=`curl -XGET $SERVER'/.kibana/config/4.0.0-rc1/_source'`
+		curl -XPUT $SERVER'/.kibana/config/4.0.0' -d "$BODY" && curl -XDELETE $SERVER'/.kibana/config/4.0.0-rc1'
+	fi
+}

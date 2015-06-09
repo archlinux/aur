@@ -1,0 +1,10 @@
+[Unit]
+Description=Kibana - dashboard for Elasticsearch
+After=elasticsearch.service
+
+[Service]
+User=nobody
+ExecStart=/usr/share/webapps/kibana/bin/kibana --quiet
+
+[Install]
+WantedBy=multi-user.target
