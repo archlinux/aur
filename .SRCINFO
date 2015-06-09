@@ -1,0 +1,16 @@
+pkgbase = sz81
+	pkgdesc = Sinclair ZX80/ZX81 emulator
+	pkgver = 2.1.7
+	pkgrel = 1
+	url = http://sz81.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = sdl
+	source = http://downloads.sourceforge.net/sourceforge/sz81/sz81-2.1.7-source.tar.gz
+	source = Makefile.patch
+	md5sums = e0ec83d076793e6275dd58d22139eabe
+	md5sums = ee08235fbd63a49b69f8572b01e810b7
+
+pkgname = sz81
+

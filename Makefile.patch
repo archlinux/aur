@@ -1,0 +1,31 @@
+--- Makefile	2011-02-12 23:28:52.000000000 +0100
++++ Makefile.new	2011-02-16 00:49:41.333334622 +0100
+@@ -1,9 +1,9 @@
+ # Comment/uncomment these to choose an installation destination
+ # System wide installation
+-#PREFIX?=/usr/local
+-#BINDIR?=$(PREFIX)/bin
+-#DOCDIR?=$(PREFIX)/share/doc/$(TARGET)
+-#PACKAGE_DATA_DIR?=$(PREFIX)/share/$(TARGET)
++PREFIX?=/usr
++BINDIR?=$(PREFIX)/bin
++DOCDIR?=$(PREFIX)/share/doc/$(TARGET)
++PACKAGE_DATA_DIR?=$(PREFIX)/share/$(TARGET)
+ 
+ # Local installation within your home folder
+ #PREFIX?=$(HOME)/Games/$(TARGET)
+@@ -12,10 +12,10 @@
+ #PACKAGE_DATA_DIR?=$(PREFIX)/data
+ 
+ # Run from current folder i.e. no installation
+-PREFIX?=.
+-BINDIR?=$(PREFIX)
+-DOCDIR?=$(PREFIX)
+-PACKAGE_DATA_DIR?=$(PREFIX)/data
++#PREFIX?=.
++#BINDIR?=$(PREFIX)
++#DOCDIR?=$(PREFIX)
++#PACKAGE_DATA_DIR?=$(PREFIX)/data
+ 
+ # For sz81 OSS_SOUND_SUPPORT is now synonymous with SDL_SOUND_SUPPORT.
+ # Comment this out if you don't want sound support.
