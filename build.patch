@@ -1,0 +1,35 @@
+# make an own build.xml because the sources do not contain all build files
+Index: chatty-0.7.1/build.xml
+===================================================================
+--- /dev/null
++++ chatty-0.7.1/build.xml
+@@ -0,0 +1,29 @@
++<project name="chatty" default="jar">
++  <target name="clean">
++    <delete dir="bin"/>
++    <delete dir="dist"/>
++    <delete dir="lib/dlls"/>
++  </target>
++
++  <target name="compile" depends="clean">
++     <mkdir dir="bin"/>
++     <javac srcdir="src/chatty" encoding="utf-8" destdir="bin">
++        <classpath>
++           <fileset dir="lib">
++              <include name="**/*.jar" />
++           </fileset>
++        </classpath>
++     </javac>
++     <copy  todir="bin">
++       <fileset dir="src" excludes="**/*.java"/>
++     </copy>
++  </target>
++
++  <target name="jar" depends="compile">
++     <mkdir dir="dist"/>
++     <jar manifest="manifest.mf" destfile="dist/chatty.jar">
++        <fileset dir="bin" />
++        <zipgroupfileset dir="lib" />
++     </jar>
++  </target>
++</project>

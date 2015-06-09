@@ -1,0 +1,8 @@
+# make a proper manifest
+Index: chatty-0.6/manifest.mf
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ chatty-0.6/manifest.mf	2014-02-14 17:49:57.795727061 +0100
+@@ -0,0 +1,2 @@
++Manifest-Version: 1.0
++Main-Class: chatty.Chatty

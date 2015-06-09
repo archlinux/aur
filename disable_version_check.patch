@@ -1,0 +1,60 @@
+# disable version check. updates come via package management
+Index: chatty-0.7.3/src/chatty/Version.java
+===================================================================
+--- chatty-0.7.3.orig/src/chatty/Version.java	2015-01-19 21:39:08.293772537 +0100
++++ chatty-0.7.3/src/chatty/Version.java	2015-01-19 21:39:08.285772538 +0100
+@@ -32,8 +32,8 @@
+     }
+     
+     private void checkForNewVersion() {
+-        LOGGER.info("Checking for new version..");
+-        new Thread(new VersionChecker()).start();
++        //LOGGER.info("Checking for new version..");
++        //new Thread(new VersionChecker()).start();
+     }
+     
+     /**
+Index: chatty-0.7.3/src/chatty/TwitchClient.java
+===================================================================
+--- chatty-0.7.3.orig/src/chatty/TwitchClient.java	2015-01-19 21:39:08.293772537 +0100
++++ chatty-0.7.3/src/chatty/TwitchClient.java	2015-01-19 21:39:08.289772538 +0100
+@@ -282,7 +282,7 @@
+         
+         // Check version, if enabled in this build
+         if (Chatty.VERSION_CHECK_ENABLED) {
+-            checkNewVersion();
++            //checkNewVersion();
+         }
+ 
+         // Connect or open connect dialog
+@@ -341,7 +341,7 @@
+      */
+     private void checkNewVersion() {
+         //g.setUpdateAvailable();
+-        if (!settings.getBoolean("checkNewVersion")) {
++        /*if (!settings.getBoolean("checkNewVersion")) {
+             return;
+         }
+         long ago = System.currentTimeMillis() - settings.getLong("versionLastChecked");
+@@ -367,7 +367,7 @@
+                     g.printSystem("You already have the newest version.");
+                 }
+             }
+-        });
++        });*/
+     }
+     
+     /**
+Index: chatty-0.7.3/src/chatty/Chatty.java
+===================================================================
+--- chatty-0.7.3.orig/src/chatty/Chatty.java	2015-01-19 21:39:08.293772537 +0100
++++ chatty-0.7.3/src/chatty/Chatty.java	2015-01-19 21:39:08.289772538 +0100
+@@ -53,7 +53,7 @@
+      * Enable Version Checker (if you compile and distribute this yourself, you
+      * may want to disable this)
+      */
+-    public static final boolean VERSION_CHECK_ENABLED = true;
++    public static final boolean VERSION_CHECK_ENABLED = false;
+     
+     /**
+      * The regular URL of the textfile where the most recent version is stored.
