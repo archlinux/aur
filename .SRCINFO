@@ -1,0 +1,15 @@
+pkgbase = idsk
+	pkgdesc = A tool for managing Amstrad CPC DSK images
+	pkgver = 0.13
+	pkgrel = 2
+	url = http://koaks.amstrad.free.fr/amstrad/projets/
+	install = idsk.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = addinclude
+	source = http://sid.cpc.free.fr/iDSK.0.13-src.tgz
+	md5sums = b221623d3039e09b15c5a071caf343b8
+
+pkgname = idsk
+

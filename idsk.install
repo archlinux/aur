@@ -1,0 +1,29 @@
+post_install() {
+  cat << EOF
+==========================================================
+English help text (help text in the program is in French):
+==========================================================
+
+Usage : 
+        iDSK <DSKfile> [OPTIONS] [files to process]
+OPTIONS :                              EXAMPLE
+-l : List disk catalog                 iDSK floppy.dsk -l
+-g : export ('Get') file               iDSK floppy.dsk -g myprog.bas
+-r : Remove file                       iDSK floppy.dsk -r myprog.bas
+-n : create New dsk file               iDSK floppy2.dsk -n
+-z : disassemble a binary file         iDSK floppy.dsk -z myprog.bin
+-b : list a Basic file                 iDSK floppy.dsk -b myprog.bas
+-d : list a Dams file                  iDSK floppy.dsk -d myprog.dms
+-h : list a binary file as Hexadecimal iDSK floppy.dsk -h myprog.bin
+-i : Import file                       iDSK floppy.dsk -i myprog.bas
+ -t : fileType (0=ASCII/1=BINARY)           ... -t 1
+ -e : hex Execute address of file           ... -e C000 -t 1
+ -c : hex loading address of file           ... -e C000 -c 4000 -t 1
+ -f : Force overwriting if file exists      ... -f
+ -o : insert a read-Only file               ... -o
+ -s : insert a System file                  ... -s
+ -u : insert file with User number          ... -u 3
+--------------------------------------------------------------------------------
+Please report bugs ! - Demoniak/Sid/PulkoMandy
+EOF
+}
