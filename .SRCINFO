@@ -1,0 +1,16 @@
+pkgbase = iiufrgs
+	pkgdesc = A package of LaTeX classes for INF/UFRGS
+	pkgver = r157.4ae3cb8
+	pkgrel = 1
+	url = https://github.com/schnorr/iiufrgs/
+	install = iiufrgs.install
+	arch = any
+	license = GPL
+	makedepends = pkgconfig
+	makedepends = git
+	depends = texlive-bin
+	source = git://github.com/schnorr/iiufrgs.git
+	md5sums = SKIP
+
+pkgname = iiufrgs
+
