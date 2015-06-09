@@ -1,0 +1,14 @@
+pkgbase = mp3nema
+	pkgdesc = A tool for analyzing and capturing data hidden between frames in an MP3 file or stream
+	pkgver = 0.4
+	pkgrel = 4
+	url = http://www.757labs.org/projects/mp3nema/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	source = https://github.com/enferex/mp3nema/archive/v0.4.tar.gz
+	md5sums = 999bbc16277d83fbd038c1fe21adf01b
+
+pkgname = mp3nema
+
