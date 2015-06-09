@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=ProTracker
+GenericName=ProTracker Music Program
+Comment=Tracker
+Icon=protracker
+Type=Application
+Categories=Music;
+Exec=protracker
+Terminal=false
+

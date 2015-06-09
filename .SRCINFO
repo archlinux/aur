@@ -1,0 +1,20 @@
+pkgbase = protracker-svn
+	pkgdesc = Rewrite of ProTracker v2.3D (Amiga)
+	pkgver = r996
+	pkgrel = 2
+	url = http://sourceforge.net/projects/protracker/
+	arch = i686
+	arch = x86_64
+	license = PD
+	makedepends = subversion
+	depends = sdl
+	depends = mesa
+	source = protracker-svn::svn://svn.code.sf.net/p/protracker/code/trunk
+	source = protracker.png
+	source = protracker.desktop
+	md5sums = SKIP
+	md5sums = 014452ddc77b8a115bfbcea2286a786c
+	md5sums = 17f38359b386a70f57f127ed841bd2b5
+
+pkgname = protracker-svn
+
