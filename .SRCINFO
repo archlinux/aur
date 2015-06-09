@@ -1,0 +1,18 @@
+pkgbase = webcam-access-monitor
+	pkgdesc = D-Bus service and Gnome Shell extension to monitor webcam access.
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/phw/webcam-access-monitor
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-pyinotify
+	depends = python-gobject
+	depends = python-dbus
+	depends = psmisc
+	optdepends = gnome-shell
+	source = git://github.com/phw/webcam-access-monitor.git#tag=0.1.4
+	md5sums = SKIP
+
+pkgname = webcam-access-monitor
+
