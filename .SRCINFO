@@ -1,0 +1,24 @@
+pkgbase = yara
+	pkgdesc = a tool aimed at helping malware researchers to identify and classify malware samples
+	pkgver = 3.3.0
+	pkgrel = 2
+	url = http://plusvic.github.io/yara/
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = automake
+	makedepends = libtool
+	makedepends = autoconf
+	makedepends = flex
+	makedepends = bison
+	depends = openssl
+	source = https://github.com/plusvic/yara/archive/v3.3.0.tar.gz
+	sha512sums = f763f4d5b71caf5aef20995d128e1e16f176746dd2fade1f3991a7a81e050ba8c0d9aa1d96bb4dc754e5f0a44fa799d620c5f4797bcd3205fad77f9c493c5532
+
+pkgname = yara
+
+pkgname = python-yara
+	depends = python
+	depends = yara
+	conflicts = python2-yara
+
