@@ -1,0 +1,15 @@
+pkgbase = mikmod
+	pkgdesc = A curses module player based on libmikmod
+	pkgver = 3.2.6
+	pkgrel = 1
+	url = http://mikmod.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libmikmod
+	depends = ncurses
+	source = http://downloads.sourceforge.net/project/mikmod/mikmod/3.2.6/mikmod-3.2.6.tar.gz
+	sha256sums = 04544e0edb36a19fab61233dff97430969cff378a98f5989a1378320550e2673
+
+pkgname = mikmod
+
