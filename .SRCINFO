@@ -1,0 +1,19 @@
+pkgbase = libucd-git
+	pkgdesc = Universal Charset Detector C/C++ API
+	pkgver = 553d21c
+	pkgrel = 1
+	url = https://github.com/yhfudev/cpp-libucd.git
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = GPL
+	makedepends = git
+	depends = gcc-libs
+	depends = bash
+	provides = libucd-git
+	conflicts = libucd
+	source = libucd-git::git+https://github.com/yhfudev/cpp-libucd.git
+	md5sums = SKIP
+
+pkgname = libucd-git
+
