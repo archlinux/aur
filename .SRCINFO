@@ -1,0 +1,14 @@
+pkgbase = dvbsnoop
+	pkgdesc = dvbsnoop is a DVB / MPEG stream analyzer program, which enables you to watch (live) stream information in human readable form
+	pkgver = 1.4.50
+	pkgrel = 2
+	url = http://dvbsnoop.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://downloads.sourceforge.net/sourceforge/dvbsnoop/dvbsnoop-1.4.50.tar.gz
+	md5sums = 68a5618c95b4372eea9ac5ec5005f299
+
+pkgname = dvbsnoop
+
