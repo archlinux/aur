@@ -1,0 +1,17 @@
+# Inform the user that they must have a copy of SWG
+post_install() {
+	echo ">>> You must have a legal copy of SWG"
+	echo ">>> All this package is, is the launchpad to start SWGEmu"
+	echo ">>> Please refer to http://www.swgemu.com for more info"
+}
+
+# Inform the user that their files still remain, and to
+# remove them if they wish
+post_remove() {
+	echo ">>> Please note, that removing swgemu-launchpad"
+	echo ">>> Does not remove any files you've installed"
+	echo ">>> During the SWG install process or any files"
+	echo ">>> SWGEmuLaunchpad may have installed. Please"
+	echo ">>> Refer to those two locations if you wish to"
+	echo ">>> Completely remove SWGEmu from your system."
+}

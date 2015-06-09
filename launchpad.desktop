@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=SWGEmu Launchpad
+Version=0.18
+Type=Application
+Terminal=false
+Categories=Game;
+Icon=/usr/share/pixmaps/SWGEMU/icon.png
+Exec=/opt/SWGEMU/Launchpad/SWGEmuLaunchpad
