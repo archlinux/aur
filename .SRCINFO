@@ -1,0 +1,14 @@
+pkgbase = emacs-julia-mode
+	pkgdesc = Emacs major mode for the Julia programming language
+	pkgver = 0.3.1
+	pkgrel = 2
+	url = http://www.julialang.org
+	install = emacs-julia-mode.install
+	arch = any
+	license = GPL
+	depends = emacs
+	source = https://raw.githubusercontent.com/JuliaLang/julia/master/contrib/julia-mode.el
+	md5sums = be9be3a7b7e549b41674551f34b83ebf
+
+pkgname = emacs-julia-mode
+

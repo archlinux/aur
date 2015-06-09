@@ -1,0 +1,16 @@
+post_install() {
+    cat <<EOF
+==> Include something like this in your .emacs:
+(autoload 'julia-mode "julia-mode"
+   "Major mode for editing Julia source files" t)
+(add-to-list 'auto-mode-alist '("\\.jl\\'" . julia-mode))
+EOF
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+op=$1
+shift
+$op $*
