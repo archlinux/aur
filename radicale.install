@@ -1,0 +1,16 @@
+post_install() {
+  getent group radicale &>/dev/null || groupadd radicale >/dev/null
+  getent passwd radicale &>/dev/null || useradd -r -s /usr/bin/false \
+    -g radicale -G radicale,http -d /etc/radicale/ radicale >/dev/null
+  chown -R radicale:radicale /etc/radicale/
+}
+ 
+post_update() {
+  chown -R radicale:radicale /etc/radicale/
+}
+ 
+pre_remove() {
+  getent passwd radicale &>/dev/null && userdel radicale >/dev/null
+  getent group radicale &>/dev/null && groupdel radicale >/dev/null
+  true
+}
