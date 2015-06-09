@@ -1,0 +1,15 @@
+[Unit]
+Description=Counterblock API server (reparse)
+Conflicts=counterblock.service
+Wants=counterparty-server.service mongodb.service redis.service
+After=counterparty-server.service mongodb.service redis.service
+
+[Service]
+User=counterblock
+Group=counterblock
+LimitNOFILE=65536
+EnvironmentFile=/etc/conf.d/counterblock
+ExecStart=/usr/bin/vex2 --path /usr/share/counterblock /usr/share/counterblock/bin/counterblock --data-dir=${DATA_DIR} --log-file=${LOG_FILE} --tx-log-file=${TX_LOG_FILE} --backend-connect=${BACKEND_CONNECT} --backend-port=${BACKEND_PORT} --backend-user=${BACKEND_USER} --backend-password=${BACKEND_PASSWORD} --counterparty-connect=${COUNTERPARTY_CONNECT} --counterparty-port=${COUNTERPARTY_PORT} --counterparty-user=${COUNTERPARTY_USER} --counterparty-password=${COUNTERPARTY_PASSWORD} --mongodb-connect=${MONGODB_CONNECT} --mongodb-port=${MONGODB_PORT} --mongodb-database=${MONGODB_DATABASE} --redis-connect=${REDIS_CONNECT} --redis-port=${REDIS_PORT} --redis-database=${REDIS_DATABASE} --rpc-host=${RPC_HOST} --rpc-port=${RPC_PORT} --socketio-host=${SOCKETIO_HOST} --socketio-port=${SOCKETIO_PORT} --socketio-chat-host=${SOCKETIO_CHAT_HOST} --socketio-chat-port=${SOCKETIO_CHAT_PORT} --support-email=${SUPPORT_EMAIL} --email-server=${EMAIL_SERVER} --verbose --reparse server
+
+[Install]
+WantedBy=multi-user.target

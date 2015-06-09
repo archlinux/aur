@@ -1,0 +1,49 @@
+post_install() {
+  printf "%b\n" "$counterblock"
+}
+
+post_upgrade() {
+  post_install
+}
+
+read -d '' counterblock <<'EOF'
+Counterblock
+============
+
+1) Setup Counterblock
+2) Use Counterblock
+
+
+Step 1. Setup
+-------------
+
+  $ mkdir -p ~/.config/counterblock
+  $ chmod 700 ~/.config/counterblock
+
+Recommended config:
+
+  $ cat > ~/.config/counterblock/modules.conf <<'EOF'
+  [LoadModule]
+  lib/modules/assets = True
+  lib/modules/dex = True
+  lib/modules/transaction_stats = True
+  EOF
+
+Recommended config for Counterwallet support:
+
+  $ cat > ~/.config/counterblock/modules.conf <<'EOF'
+  [LoadModule]
+  lib/modules/assets = True
+  lib/modules/counterwallet = True
+  lib/modules/counterwallet_iofeeds = True
+  lib/modules/dex = True
+  lib/modules/transaction_stats = True
+  lib/modules/betting = True
+  EOF
+
+
+Step 2. Use
+-----------
+
+  $ counterblock server
+EOF

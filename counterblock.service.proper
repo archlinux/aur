@@ -1,0 +1,19 @@
+[Unit]
+Description=Counterblock API server
+Conflicts=counterblock-reparse.service
+Wants=counterparty-server.service mongodb.service redis.service
+After=counterparty-server.service mongodb.service redis.service
+
+[Service]
+User=counterblock
+Group=counterblock
+LimitNOFILE=65536
+ExecStart=/usr/bin/vex2 --path /usr/share/counterblock /usr/share/counterblock/bin/counterblock \
+                   --config-file=/etc/counterblock/counterblock.conf \
+                   --data-dir=/usr/share/counterblock                \
+                   --log-file=/var/log/counterblock/counterblock.log \
+                   --tx-log-file=/var/log/counterblock/counterblock-transactions.log \
+                   --verbose server
+
+[Install]
+WantedBy=multi-user.target

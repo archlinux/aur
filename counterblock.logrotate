@@ -1,0 +1,11 @@
+/var/log/counterblock/*.log
+{
+        rotate 5
+        copytruncate
+        daily
+        missingok
+        notifempty
+        compress
+        delaycompress
+        sharedscripts
+}
