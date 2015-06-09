@@ -1,0 +1,14 @@
+pkgbase = python3-pyscreenshot-git
+	pkgdesc = Pyscreenshot tries to allow to take screenshots without installing 3rd party libraries
+	pkgver = 89.a813a54
+	pkgrel = 1
+	url = https://github.com/ponty/pyscreenshot
+	arch = any
+	license = GPL3
+	depends = python3
+	depends = python-pillow
+	depends = pygtk
+	source = git+https://github.com/ponty/pyscreenshot.git
+
+pkgname = python3-pyscreenshot-git
+
