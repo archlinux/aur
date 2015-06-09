@@ -1,0 +1,28 @@
+pkgbase = btcd
+	pkgver = 20150513
+	pkgrel = 1
+	url = https://github.com/btcsuite
+	arch = i686
+	arch = x86_64
+	groups = btcsuite
+	license = ISC
+	makedepends = git
+	makedepends = go
+	options = !strip
+	options = !emptydirs
+
+pkgname = btcd
+	pkgdesc = An alternative full node Bitcoin implementation written in Go
+	provides = btcd
+	conflicts = btcd
+
+pkgname = btcwallet
+	pkgdesc = Daemon handling Bitcoin wallet functions, with asynchronous blockchain queries and notifications over websockets
+	provides = btcwallet
+	conflicts = btcwallet
+
+pkgname = btcgui
+	pkgdesc = Graphical frontend to btcwallet and btcd written using gotk3
+	provides = btcgui
+	conflicts = btcgui
+
