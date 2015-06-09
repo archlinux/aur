@@ -1,0 +1,15 @@
+pkgbase = riak-erlang-client
+	pkgdesc = Erlang interface for Riak
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/basho/riak-erlang-client
+	arch = any
+	license = Apache
+	makedepends = rebar
+	makedepends = git
+	makedepends = erlang-nox
+	source = https://github.com/basho/riak-erlang-client/archive/2.1.1.zip
+	md5sums = 3b7decdeb2e0d7bd524852243c35fabb
+
+pkgname = riak-erlang-client
+
