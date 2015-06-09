@@ -2,7 +2,7 @@
 
 pkgbase=python-markups
 pkgname=(python-markups python2-markups)
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 _libname=Markups
 pkgdesc='Wrapper around various text markups'
@@ -31,4 +31,4 @@ package_python2-markups() {
     python2 setup.py install --root="$pkgdir"
 }
 
-sha256sums=('e601e9a9fff58403b4e2de3b8e8c34ce33a8604549c2344c569d815ae0e803f1')
+sha256sums=('1f3d6f7b85ac9ddcb936b8b2b6fa15a42ddc9dfc22a075d83d9160b5d59f6d84')
