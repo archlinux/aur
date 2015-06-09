@@ -1,0 +1,18 @@
+pkgbase = benelib
+	pkgdesc = A library containing many code snippets mostly for ROOT
+	pkgver = 0.22.fad95b5
+	pkgrel = 1
+	url = https://github.com/wutzi15/Benelib
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = root
+	makedepends = cmake
+	makedepends = boost
+	makedepends = boost-libs
+	depends = root
+	source = benelib::git+http://github.com/wutzi15/Benelib.git
+	md5sums = SKIP
+
+pkgname = benelib
+
