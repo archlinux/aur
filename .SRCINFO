@@ -1,0 +1,16 @@
+pkgbase = lib32-libmbim
+	pkgdesc = MBIM modem protocol helper library
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = http://www.freedesktop.org/wiki/Software/libmbim/
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc-multilib
+	makedepends = python
+	depends = lib32-systemd
+	depends = libmbim
+	source = http://www.freedesktop.org/software/libmbim/libmbim-1.12.0.tar.xz
+	sha256sums = b5b9e72d6b0a4d9e5a92b913c16426946f8f6cf60e648635306ebade44ace553
+
+pkgname = lib32-libmbim
+
