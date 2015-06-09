@@ -1,0 +1,25 @@
+pkgbase = pyethereum-git
+	pkgdesc = Ethereum Python client
+	pkgver = 20150519
+	pkgrel = 1
+	url = https://github.com/ethereum/pyethereum
+	arch = any
+	groups = ethereum
+	license = MIT
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-bitcoin
+	depends = python2-pyethash
+	depends = python2-pysha3
+	depends = python2-repoze.lru
+	depends = python2-rlp
+	depends = python2-structlog
+	depends = python2-yaml
+	provides = pyethereum
+	conflicts = pyethereum
+	source = git+https://github.com/ethereum/pyethereum#branch=develop
+	sha256sums = SKIP
+
+pkgname = pyethereum-git
+
