@@ -1,0 +1,8 @@
+post_install() {
+    cat <<EOF
+==> Put this in your ~/.emacs file to use whitespace-mode:
+
+(autoload 'whitespace-mode "whitespace-mode.el" "Whitespace editing mode." t)
+(setq auto-mode-alist (cons '("\.ws$" . whitespace-mode) auto-mode-alist))
+EOF
+}
