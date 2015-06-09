@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=WordNet
+Comment=Princeton Dictionary
+Categories=Application;Office;Dictionary
+Icon=/usr/share/pixmaps/wordnet.png
+Exec=wnb
+StartupWMClass=WordNet
+StartupNotify=false
+Terminal=false
+TryExec=wnb
