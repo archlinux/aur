@@ -1,0 +1,16 @@
+pkgbase = libreoffice-style-elementary-git
+	pkgdesc = elementary icons for LibreOffice
+	pkgver = bffd596
+	pkgrel = 1
+	url = https://github.com/shimmerproject/libreoffice-style-elementary
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = zip
+	conflicts = libreoffice-style-elementary
+	source = git+https://github.com/shimmerproject/libreoffice-style-elementary
+	sha256sums = SKIP
+
+pkgname = libreoffice-style-elementary-git
+
