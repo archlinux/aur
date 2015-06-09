@@ -1,0 +1,17 @@
+pkgbase = clup
+	pkgdesc = Clickable/configurable Update of Arch Linux
+	pkgver = 1.1
+	pkgrel = 3
+	url = https://github.com/colinkeenan/clup
+	install = clup.install
+	arch = any
+	license = GPL
+	source = https://raw.githubusercontent.com/colinkeenan/clup/v1.1/clup
+	source = https://raw.githubusercontent.com/colinkeenan/clup/v1.1/clup.conf
+	source = https://raw.githubusercontent.com/colinkeenan/clup/v1.1/clup.desktop
+	md5sums = 7450016149f28def649bf4fa22adef6c
+	md5sums = d5f3caab2d3068ecaf76e09a5ece98f2
+	md5sums = 0abe59259a20e473417204c8f31543f9
+
+pkgname = clup
+
