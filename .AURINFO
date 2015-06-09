@@ -1,0 +1,14 @@
+pkgbase = pecl-raphf
+	pkgdesc = Resource and persistent handles factory
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = http://pecl.php.net/package/raphf
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = autoconf
+	depends = php
+	source = http://pecl.php.net/get/raphf-1.0.4.tgz
+
+pkgname = pecl-raphf
+
