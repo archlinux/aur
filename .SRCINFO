@@ -1,0 +1,19 @@
+pkgbase = python2-paste-script
+	pkgdesc = A pluggable command-line frontend, including commands to setup package file layouts
+	pkgver = 1.7.5
+	pkgrel = 1
+	url = http://pythonpaste.org/script/
+	arch = any
+	license = custom
+	makedepends = python2-distribute
+	depends = python2
+	depends = python2-paste>=1.7
+	depends = python2-paste-deploy
+	optdepends = python2-cheetah: for templating
+	optdepends = python2-flup: utilities for WSGI
+	replaces = python-paste-script
+	source = http://pypi.python.org/packages/source/P/PasteScript/PasteScript-1.7.5.tar.gz
+	md5sums = 4c72d78dcb6bb993f30536842c16af4d
+
+pkgname = python2-paste-script
+
