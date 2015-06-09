@@ -1,0 +1,32 @@
+pkgbase = gimp-light
+	pkgdesc = A trimmed down install of the GNU Image Manipulation Program
+	pkgver = 2.8.10
+	pkgrel = 4
+	url = http://www.gimp.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	makedepends = intltool
+	depends = gtk2
+	depends = babl
+	depends = gegl
+	depends = libexif
+	depends = libxpm
+	depends = libjpeg
+	depends = libpng
+	provides = gimp
+	conflicts = gimp-devel
+	conflicts = gimp
+	source = http://download.gimp.org/pub/gimp/v2.8/gimp-2.8.10.tar.bz2
+	source = gimp-2.8.10-freetype.patch
+	source = gimp-2.8.10-device_info.patch
+	source = sessionrc
+	options = strip
+	options = !docs
+	options = !libtool
+	options = !staticlibs
+	options = emptydirs
+
+pkgname = gimp-light
+
