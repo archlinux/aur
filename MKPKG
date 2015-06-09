@@ -1,0 +1,4 @@
+pkgname=('gsignond')
+builddeps=('libgsignon-glib')
+
+# vim: ts=2 sw=2 et:

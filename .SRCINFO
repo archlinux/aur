@@ -1,0 +1,20 @@
+pkgbase = gsignond
+	pkgdesc = gSSO glib daemon
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://01.org/gsso
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	depends = dbus
+	depends = libgsignon-glib
+	depends = sqlite
+	backup = etc/gsignond.conf
+	source = git+https://gitlab.com/accounts-sso/gsignond.git#commit=deb5f757
+	sha256sums = SKIP
+
+pkgname = gsignond
+
