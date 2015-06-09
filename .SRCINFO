@@ -1,0 +1,19 @@
+pkgbase = python2-pyethash
+	pkgdesc = Python wrappers for ethash, the Ethereum proof of work hashing function
+	pkgver = 23.1
+	pkgrel = 1
+	url = https://github.com/ethereum/ethash
+	arch = i686
+	arch = x86_64
+	groups = ethereum
+	license = GPL
+	makedepends = gcc
+	makedepends = python2-setuptools
+	depends = python2
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/p/pyethash/pyethash-23.1.tar.gz
+	md5sums = bdb22f4a88fb0c0e8f5da5fad0c840cc
+	sha256sums = 1e001fe8b75b5c86e60a0685b3e6a0f1b02df494629240c720ffdcf991e518be
+
+pkgname = python2-pyethash
+
