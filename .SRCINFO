@@ -1,0 +1,15 @@
+pkgbase = lua51-pam
+	pkgdesc = Lua module for PAM authentication
+	pkgver = r27.20728f8
+	pkgrel = 1
+	url = https://github.com/devurandom/lua-pam
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	depends = pam
+	depends = lua51
+	source = lua-pam::git+git://github.com/devurandom/lua-pam.git
+	sha1sums = SKIP
+
+pkgname = lua51-pam
+
