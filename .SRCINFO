@@ -1,0 +1,20 @@
+pkgbase = cndrvcups-lb-cpca
+	pkgdesc = cpca module for Canon UFR II /LIPSLX Printer Driver
+	pkgver = 2.90
+	pkgrel = 3
+	url = http://support-au.canon.com.au/contents/AU/EN/0100270808.html
+	arch = x86_64
+	license = custom
+	makedepends = autoconf
+	makedepends = automake
+	depends = cndrvcups-common-lb
+	conflicts = cndrvcups-lb-bin
+	conflicts = cndrvcups-lb<=2.90-2
+	options = !emptydirs
+	options = !strip
+	options = !libtool
+	source = Linux_UFRII_PrinterDriver_V290_uk_EN.tar.gz::http://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAwMjcwODEx&cmp=ABS&lang=EN
+	sha512sums = 23181155f5719fa0a9c216c058be749b5faaa8ee745d260eba2e5e284ef4ff161e344289a7c301a2d74cc919c5031763b0daf41cd07686cfdce188492a9b34b2
+
+pkgname = cndrvcups-lb-cpca
+
