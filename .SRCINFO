@@ -1,0 +1,14 @@
+pkgbase = python-mosquitto
+	pkgdesc = MQTT version 3.1 client class
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = http://mosquitto.org/
+	arch = any
+	license = CUSTOM
+	makedepends = python3
+	depends = python
+	source = https://pypi.python.org/packages/source/m/mosquitto/mosquitto-1.2.3.tar.gz
+	md5sums = e25d3fb8eb258f7376c59f81870c78ca
+
+pkgname = python-mosquitto
+
