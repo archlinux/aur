@@ -1,0 +1,22 @@
+--- ./src/Gelide/Makefile.am	2014-11-13 01:02:28.488615347 -0300
++++ ./Gelide/Makefile.am	2014-11-13 00:59:54.134205002 -0300
+@@ -13,7 +13,7 @@
+ 	ui 
+ 
+ # Lugar de instalación de la documentación estandar
+-gelidedocdir = ${prefix}/doc/gelide
++gelidedocdir = ${prefix}/share/doc/gelide
+ # Archivos de documentación estandar a instalar
+ gelidedoc_DATA = \
+ 	AUTHORS \
+--- ./src/Gelide/doc/Makefile.am	2014-11-13 01:20:45.072578998 -0300
++++ ./Gelide/doc/Makefile.am	2014-11-13 01:28:57.618706060 -0300
+@@ -1,7 +1,7 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+ # Lugar de instalación de la documentación
+-gelide_docdir = ${prefix}/doc/gelide
++gelide_docdir = ${prefix}/share/doc/gelide
+ gelide_doc_DATA = \
+ 	SystemsAndEmulators-HowTo.es_ES.txt \
+ 	Gelide-configuration-file-format.txt
