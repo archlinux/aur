@@ -1,0 +1,26 @@
+pkgbase = ros-indigo-moveit-ros
+	pkgdesc = ROS - Components of MoveIt that use ROS.
+	pkgver = 0.6.5
+	pkgrel = 1
+	url = http://moveit.ros.org
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	depends = ros-indigo-moveit-ros-planning-interface
+	depends = ros-indigo-moveit-ros-robot-interaction
+	depends = ros-indigo-moveit-ros-manipulation
+	depends = ros-indigo-moveit-ros-benchmarks
+	depends = ros-indigo-moveit-ros-benchmarks-gui
+	depends = ros-indigo-moveit-ros-move-group
+	depends = ros-indigo-moveit-ros-planning
+	depends = ros-indigo-moveit-ros-perception
+	depends = ros-indigo-moveit-ros-warehouse
+	depends = ros-indigo-moveit-ros-visualization
+	source = moveit_ros::git+https://github.com/ros-gbp/moveit_ros-release.git#tag=release/indigo/moveit_ros/0.6.5-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-moveit-ros
+
