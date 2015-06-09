@@ -1,4 +1,4 @@
-# Maintainer: Maintainer: oi_wtf <brainpower at gulli dot com>
+# Maintainer: Maintainer: oi_wtf <brainpower at mailbox dot org>
 # Contributor: Vesa Kaihlavirta <vegai@iki.fi>
 # Contributor: Kristoffer Fossgård <kfs1@online.no>
 
