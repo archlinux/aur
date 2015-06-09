@@ -1,0 +1,13 @@
+pkgbase = python-couleur
+	pkgdesc = ANSI terminal tool for python, colored shell and other handy fancy features
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/gabrielfalcao/couleur
+	arch = any
+	license = APACHE
+	depends = python
+	source = python-couleur-0.5.0.tar.gz::https://github.com/gabrielfalcao/couleur/tarball/0.5.0
+	sha256sums = e828cd812a25089768d3a4af059b16f8c61f2249bb670ac2e0671e425dd51498
+
+pkgname = python-couleur
+
