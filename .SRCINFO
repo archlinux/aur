@@ -1,0 +1,12 @@
+pkgbase = guile-json
+	pkgdesc = JSON module for Guile
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/aconchillo/guile-json
+	arch = any
+	license = LGPL
+	source = http://download.savannah.gnu.org/releases/guile-json/guile-json-0.4.0.tar.gz
+	sha256sums = 0696062439ceb00d1026e9c352e8a6fac22de6fd6e38a9f5e7cc139ec511066c
+
+pkgname = guile-json
+
