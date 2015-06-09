@@ -1,0 +1,21 @@
+pkgbase = lib32-gstreamer0.10
+	pkgdesc = GStreamer Multimedia Framework
+	pkgver = 0.10.36
+	pkgrel = 5
+	url = http://gstreamer.freedesktop.org/
+	arch = x86_64
+	license = LGPL
+	makedepends = gcc-multilib
+	makedepends = git
+	makedepends = intltool
+	makedepends = python2
+	depends = gstreamer0.10
+	depends = lib32-glib2
+	depends = lib32-libxml2
+	source = git://anongit.freedesktop.org/gstreamer-sdk/gstreamer#commit=3ddc31eaa18c3be1613e43430eca78a3e445639e
+	source = bison3.patch
+	sha256sums = SKIP
+	sha256sums = ed154e280abf59b24d98a8ab0fe868b449b26aa61f7ae3813fab8ac615fcaefa
+
+pkgname = lib32-gstreamer0.10
+
