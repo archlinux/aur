@@ -1,0 +1,23 @@
+pkgbase = shine-git
+	pkgdesc = Revived fixed-point MP3 encoder
+	pkgver = git
+	pkgrel = 1
+	url = https://github.com/savonet/shine
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = make
+	makedepends = libtool
+	depends = glibc
+	provides = shine
+	conflicts = shine
+	options = !libtool
+	options = !strip
+	source = shine-git::git://github.com/savonet/shine.git
+	md5sums = SKIP
+
+pkgname = shine-git
+
