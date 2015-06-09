@@ -1,4 +1,5 @@
-# Maintainer: Dhananjay Sathe <dhananjaysathe@celti.name>
+# Maintainer: Dhananjay Sathe <dhananjaysathe@gmail.com>
+# Contributor: Patrick Burroughs (Celti) <celti@celti.name>
 
 pkgname=nuvola-app-rdio-git
 pkgver=r8.52a785d
