@@ -1,7 +1,7 @@
 pkgbase = epsxe
 	pkgdesc = Enhanced PSX emulator
 	pkgver = 1.9.25
-	pkgrel = 3
+	pkgrel = 4
 	url = http://epsxe.com
 	install = epsxe.install
 	arch = i686
@@ -16,6 +16,15 @@ pkgbase = epsxe
 	md5sums = eb0c46b8ae1355c589792f6be1835e47
 	md5sums = 1d6d07e9e1c97ed2a7ce46a9b7419654
 	md5sums = dc54e1e3406b0010e0552cffabb16c0f
+	depends_i686 = gtk2
+	depends_i686 = sdl_ttf
+	depends_i686 = libtinfo
+	depends_x86_64 = lib32-gtk2
+	depends_x86_64 = lib32-ncurses
+	depends_x86_64 = lib32-libxt
+	depends_x86_64 = lib32-sdl_ttf
+	depends_x86_64 = lib32-alsa-lib
+	depends_x86_64 = lib32-libtinfo
 
 pkgname = epsxe
 

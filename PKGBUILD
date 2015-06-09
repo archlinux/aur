@@ -3,12 +3,12 @@
 #
 pkgname=epsxe
 pkgver=1.9.25
-pkgrel=3
+pkgrel=4
 pkgdesc="Enhanced PSX emulator"
 url="http://epsxe.com"
 arch=('i686' 'x86_64')
-[ "$CARCH" = "i686" ] && depends+=(gtk2 sdl_ttf libtinfo)
-[ "$CARCH" = "x86_64" ] && depends+=(lib32-gtk2 lib32-ncurses lib32-libxt lib32-sdl_ttf lib32-alsa-lib lib32-libtinfo)
+depends_i686+=(gtk2 sdl_ttf libtinfo)
+depends_x86_64+=(lib32-gtk2 lib32-ncurses lib32-libxt lib32-sdl_ttf lib32-alsa-lib lib32-libtinfo)
 license=('unknown')
 install=${pkgname}.install
 options=(!strip)
