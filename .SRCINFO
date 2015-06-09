@@ -1,0 +1,13 @@
+pkgbase = fsharp
+	pkgdesc = The Open Edition of the F# compiler, core library and tools
+	pkgver = 3.1.1.32
+	pkgrel = 1
+	url = http://fsharp.org/
+	arch = any
+	license = Apache
+	depends = mono
+	source = fsharp-3.1.1.32.tar.gz::https://github.com/fsharp/fsharp/archive/3.1.1.32.tar.gz
+	md5sums = 6fa9a52ffe8b6d0a26330a8d6ac8f17e
+
+pkgname = fsharp
+
