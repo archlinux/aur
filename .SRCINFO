@@ -1,0 +1,20 @@
+pkgbase = gsignond-plugin-lastfm-bzr
+	pkgdesc = LastFM plugin for gSSO
+	pkgver = r7
+	pkgrel = 1
+	url = https://launchpad.net/gsignond-plugin-lastfm
+	install = gsignond-plugin-lastfm.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = vala
+	depends = switchboard-plug-online-accounts-bzr
+	provides = gsignond-plugin-lastfm
+	conflicts = gsignond-plugin-lastfm
+	source = bzr+lp:gsignond-plugin-lastfm
+	sha256sums = SKIP
+
+pkgname = gsignond-plugin-lastfm-bzr
+
