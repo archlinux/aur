@@ -1,0 +1,19 @@
+pkgbase = marble-minimal
+	pkgdesc = a virtual globe and world atlas (minimal version)
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = http://marble.kde.org
+	install = marble-minimal.install
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	license = GPL
+	makedepends = cmake
+	depends = qtwebkit
+	provides = kdeedu-marble
+	conflicts = kdeedu-marble
+	source = http://download.kde.org/stable/4.14.3/src/marble-4.14.3.tar.xz
+	md5sums = c102d058423e0cee1ee964eebe6ac6c2
+
+pkgname = marble-minimal
+
