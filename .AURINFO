@@ -1,0 +1,28 @@
+pkgbase = cyrus-imapd
+	pkgdesc = Cyrus IMAP mail server
+	pkgver = 2.5.3
+	pkgrel = 1
+	url = http://www.cyrusimap.org/
+	install = cyrus-imapd.install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = custom
+	depends = cyrus-sasl
+	depends = db
+	depends = libsasl
+	depends = perl
+	provides = imap-server
+	provides = pop3-server
+	conflicts = imap-server
+	conflicts = pop3-server
+	source = ftp://ftp.cyrusimap.org/cyrus-imapd/cyrus-imapd-2.5.3.tar.gz
+	source = cyrus-master-conf.d
+	source = cyrus-imapd.install
+	source = cyrus-master.service
+	options = !makeflags
+	backup = etc/cyrus/cyrus.conf
+	backup = etc/cyrus/imapd.conf
+
+pkgname = cyrus-imapd
+

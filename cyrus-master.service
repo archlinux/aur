@@ -1,0 +1,11 @@
+[Unit]
+Description=Cyrus IMAP mail server
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/lib/cyrus/bin/master -d
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target 
