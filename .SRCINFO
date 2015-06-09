@@ -1,0 +1,14 @@
+pkgbase = perl-net-idn-encode
+	pkgdesc = Net::IDN::Encode provides an easy-to-use interface for encoding and decoding Internationalized Domain Names (IDNs).
+	pkgver = 2.100
+	pkgrel = 1
+	url = http://search.cpan.org/~cfaerber/Net-IDN-Encode/
+	arch = any
+	license = GPL
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CF/CFAERBER/Net-IDN-Encode-2.100.tar.gz
+	md5sums = 5cd442c6e13631ef72d16bffe1e07a02
+
+pkgname = perl-net-idn-encode
+
