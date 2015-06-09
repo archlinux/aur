@@ -1,0 +1,15 @@
+pkgbase = ruby-jekyll-paginate
+	pkgdesc = Built-in Pagination Generator for Jekyll
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/jekyll/jekyll-paginate
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = jekyll-paginate-1.1.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/jekyll-paginate-1.1.0.gem
+	sha1sums = 38920468d904721334ac7b79ef13539ca9a86afd
+
+pkgname = ruby-jekyll-paginate
+
