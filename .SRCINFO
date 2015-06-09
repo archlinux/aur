@@ -1,0 +1,25 @@
+pkgbase = ubuntu-tweak
+	pkgdesc = An easy configuration tool for system and desktop settings
+	pkgver = 0.8.7
+	pkgrel = 1
+	url = http://ubuntu-tweak.com/
+	install = ubuntu-tweak.install
+	arch = any
+	license = GPL
+	makedepends = python2-distutils-extra
+	makedepends = python2-distribute
+	depends = compiz-ubuntu
+	depends = python2
+	depends = gconf
+	depends = libunique3
+	depends = hicolor-icon-theme
+	depends = python2-defer
+	depends = python2-lxml
+	options = !emptydirs
+	source = https://launchpad.net/ubuntu-tweak/0.8.x/0.8.7/+download/ubuntu-tweak-0.8.7.tar.gz
+	source = https://github.com/chenxiaolong/AUR-Files/raw/4073120d7dcf89bd237b771717b632cbe45d394d/ubuntu-tweak/0001-Arch-Linux-fixes.patch
+	sha512sums = edf17c276a3744ef5c42fe5d12f40fa530997fd91ae3f3703651afa60302817397b8123ca7543c5652d692166731ef25e8c556d4498451cc6b4a5ab673a33a21
+	sha512sums = d779424e82e4843fcaeff39ba6dfdd66bd7ed8793d0aaa5640e716e819d9ffbefe53989cddec9379edc31309d20a55a16eaa93fc33743fba3687c0286e292f81
+
+pkgname = ubuntu-tweak
+
