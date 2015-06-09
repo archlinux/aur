@@ -1,4 +1,4 @@
-# Maintainer: zaidan <firas@zaidan.de>
+# Maintainer: Firas Zaidan <firas@zaidan.de>
 
 pkgname=eclipse-jautodoc
 pkgver=1.12.0
