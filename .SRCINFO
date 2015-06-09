@@ -1,0 +1,14 @@
+pkgbase = ruby-jekyll-less
+	pkgdesc = Less CSS converter for Jekyll
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = http://github.com/zroger/jekyll-less
+	arch = any
+	depends = ruby-less
+	noextract = jekyll-less-0.0.4.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/jekyll-less-0.0.4.gem
+	sha1sums = eea390ea92dc2673f068eeaabee174c91b85fc24
+
+pkgname = ruby-jekyll-less
+
