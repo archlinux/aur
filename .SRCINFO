@@ -1,0 +1,28 @@
+pkgbase = scratch-text-editor
+	pkgdesc = The Pantheon Text Editor
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://launchpad.net/scratch
+	install = scratch-text-editor.install
+	arch = i686
+	arch = x86_64
+	groups = pantheon
+	license = GPL3
+	makedepends = cmake
+	makedepends = gobject-introspection
+	makedepends = vala
+	makedepends = vte3
+	makedepends = webkitgtk
+	depends = desktop-file-utils
+	depends = granite-bzr
+	depends = gtksourceview3
+	depends = libpeas
+	depends = zeitgeist
+	optdepends = vala: Outline extension
+	optdepends = vte3: Terminal extension
+	optdepends = webkitgtk: Browser Preview extension
+	source = https://launchpad.net/scratch/2.x/2.1/+download/scratch-2.1.0.tgz
+	sha256sums = daaaffbf1d990dd9359da27a594a29761100ffb12dd60b275f099f10646f225e
+
+pkgname = scratch-text-editor
+
