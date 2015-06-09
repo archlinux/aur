@@ -1,0 +1,28 @@
+post_install() {
+  _mkuser
+  chown -R eye:eye /etc/eye /var/log/eye
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  _rmuser
+  rm -rf /etc/eye /var/log/eye
+}
+
+_mkuser() {
+  getent passwd eye &>/dev/null || {
+    echo -n "Creating eye user... "
+    grep -E "^eye:" /etc/group >/dev/null || groupadd eye
+    useradd -m -d /etc/eye -g eye -s /usr/bin/nologin eye
+    echo "done"
+  }
+}
+
+_rmuser() {
+  echo -n "Removing eye user... "
+  userdel -rf eye 2>/dev/null
+  echo "done"
+}

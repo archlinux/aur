@@ -1,0 +1,26 @@
+pkgbase = eye
+	pkgdesc = Process monitoring tool inspired by Bluepill and God
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = https://github.com/kostya/eye
+	install = eye.install
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-celluloid
+	depends = ruby-celluloid-io
+	depends = ruby-sigar
+	depends = ruby-state_machine
+	depends = ruby-thor
+	provides = eye
+	provides = ruby-eye
+	conflicts = eye
+	conflicts = ruby-eye
+	noextract = eye-0.6.4.gem
+	source = https://rubygems.org/downloads/eye-0.6.4.gem
+	source = eye.service
+	sha256sums = 03ebe232205f607f16150757b2a6c146077cb4c765283fa811e74af01e30df2e
+	sha256sums = db91c9344e409635f66a981bd2735e8c34484f0246f06c1cdc5ad516ddcbdf5b
+
+pkgname = eye
+

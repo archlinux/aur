@@ -1,0 +1,11 @@
+[Unit]
+Description=Eye
+
+[Service]
+Type=simple
+PIDFile=/run/eye.pid
+ExecStart=/usr/bin/eye -c /etc/eye/eye.conf -P /run/eye.pid -l /var/log/eye --log-level info -D
+ExecStop=/usr/bin/eye terminate
+
+[Install]
+WantedBy=multi-user.target
