@@ -1,0 +1,33 @@
+pkgbase = bijiben-git
+	pkgdesc = Write out notes, every detail matters
+	pkgver = 3.17.2.r2.g5b079d0
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Bijiben
+	install = bijiben.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = itstool
+	makedepends = appstream-glib
+	makedepends = git
+	makedepends = gnome-common
+	depends = gtk3
+	depends = glib2
+	depends = libtracker-sparql
+	depends = libzeitgeist
+	depends = webkitgtk3
+	depends = dconf
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = evolution-data-server>=3.13.90
+	depends = evolution
+	depends = libxml2
+	provides = bijiben=3.17.2
+	conflicts = bijiben
+	options = !libtool
+	source = git://git.gnome.org/bijiben
+	sha256sums = SKIP
+
+pkgname = bijiben-git
+
