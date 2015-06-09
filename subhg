@@ -1,0 +1,37 @@
+#!/usr/bin/env sh
+
+# subhg
+#
+# A tiny wrapper around hg to help you manage
+# Mercurial sub-projects easily, safely, and simply.
+#
+# Created by Rusty Klophaus (@rklophaus)
+#
+# See http://blog.rusty.io/2010/01/24/submodules-and-subrepos-done-right/ for usage.
+
+
+if [ "$1" == "setup" ]; then
+	if [ -d ".hg" ]; then
+		mv .hg .subhg
+		echo "Converted to a subhg repository."
+		exit 0
+	else
+		echo "Could not find .hg directory."
+		exit -1
+	fi
+fi
+
+DIR=`pwd`
+while [ ! -d "$DIR/.subhg" ] && [ ! "$DIR" == "/" ]; do
+	DIR=`dirname $DIR`
+done
+
+if [ $DIR == "/" ]; then
+	echo "Not in a subhg repository!"
+	exit -1
+fi
+
+
+mv $DIR/.subhg $DIR/.hg
+(hg "$@")
+mv $DIR/.hg $DIR/.subhg

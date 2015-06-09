@@ -1,0 +1,18 @@
+pkgbase = subrepo
+	pkgdesc = Git & Mercurial subrepos done right
+	pkgver = 0.0.1
+	pkgrel = 2
+	url = http://blog.rusty.io/2010/01/24/submodules-and-subrepos-done-right/
+	arch = any
+	license = Apache
+	depends = git
+	depends = mercurial
+	provides = subgit subhg
+	conflicts = subgit-git subhg-git
+	source = subgit
+	source = subhg
+	sha256sums = f1fc0854c4162c0e1da5640e3609e10e2641b25835b05b9bb0c8d8ee0d9e12b6
+	sha256sums = 8fb862db6f0953f125ab3ad1c136b97f86c685c05f27a64df0b7c939147c4c3b
+
+pkgname = subrepo
+

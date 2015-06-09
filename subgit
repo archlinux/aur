@@ -1,0 +1,33 @@
+#!/usr/bin/env sh
+
+# subgit
+#
+# A tiny wrapper around git to help you manage
+# Git sub-projects easily, safely, and simply.
+#
+# Created by Rusty Klophaus (@rklophaus)
+#
+# See http://blog.rusty.io/2010/01/24/submodules-and-subrepos-done-right/ for usage.
+
+if [ "$1" == "setup" ]; then
+	if [ -d ".git" ]; then
+		mv .git .subgit
+		echo "Converted to a subgit repository."
+		exit 0
+	else
+		echo "Could not find .git directory."
+		exit -1
+	fi
+fi
+
+DIR=`pwd`
+while [ ! -d "$DIR/.subgit" ] && [ ! "$DIR" == "/" ]; do
+	DIR=`dirname $DIR`
+done
+
+if [ $DIR == "/" ]; then
+	echo "Not in a subgit repository!"
+	exit -1
+fi
+
+git --git-dir=$DIR/.subgit "$@"
