@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-opus
+	pkgdesc = Codec designed for interactive speech and audio transmission over the Internet (mingw-w64)
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://www.opus-codec.org
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-pkg-config
+	depends = mingw-w64-crt
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = http://downloads.us.xiph.org/releases/opus/opus-1.1.tar.gz
+	md5sums = c5a8cf7c0b066759542bc4ca46817ac6
+
+pkgname = mingw-w64-opus
+
