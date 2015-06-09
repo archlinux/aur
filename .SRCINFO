@@ -1,0 +1,17 @@
+pkgbase = android-sdk-build-tools-19.0.2
+	pkgdesc = Build-Tools for Google Android SDK (aapt, aidl, dexdump, dx, llvm-rs-cc)
+	pkgver = r19.0.2
+	pkgrel = 2
+	url = http://developer.android.com/sdk/index.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gcc-libs
+	depends = zlib
+	provides = android-sdk-build-tools=r19.0.2
+	options = !strip
+	source = https://dl-ssl.google.com/android/repository/build-tools_r19.0.2-linux.zip
+	sha1sums = a03a6bdea0091aea32e1b35b90a7294c9f04e3dd
+
+pkgname = android-sdk-build-tools-19.0.2
+
