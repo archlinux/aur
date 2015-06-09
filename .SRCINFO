@@ -1,0 +1,21 @@
+pkgbase = php-pdo_dblib
+	pkgdesc = pdo_dblib extension for PHP
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://pecl.php.net/package/PDO_DBLIB
+	install = php-pdo_dblib.install
+	arch = i686
+	arch = x86_64
+	license = PHP
+	makedepends = php
+	depends = php
+	depends = freetds
+	source = http://pecl.php.net/get/PDO_DBLIB-1.0.tgz
+	source = freetds.patch
+	source = php-54.patch
+	md5sums = 017135f92597e02dcacf1c37319f3b2a
+	md5sums = 77d3243e4a137bd199ac403caf12a002
+	md5sums = 75b34f46f3c964904e6a54cf3614cee4
+
+pkgname = php-pdo_dblib
+

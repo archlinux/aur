@@ -1,0 +1,29 @@
+--- configure	2011-10-26 21:19:17.203069001 +0300
++++ configure	2011-10-27 17:37:36.467863821 +0300
+@@ -4402,11 +4402,11 @@
+   if test "$PHP_PDO_DBLIB" = "yes"; then
+ 
+     for i in /usr/local /usr; do
+-      if test -f $i/include/tds.h; then
++      if test -f $i/include/tds_sysdep_public.h; then
+         PDO_FREETDS_INSTALLATION_DIR=$i
+         PDO_FREETDS_INCLUDE_DIR=$i/include
+         break
+-      elif test -f $i/include/freetds/tds.h; then
++      elif test -f $i/include/freetds/tds_sysdep_public.h; then
+         PDO_FREETDS_INSTALLATION_DIR=$i
+         PDO_FREETDS_INCLUDE_DIR=$i/include/freetds
+         break;
+@@ -4434,9 +4434,9 @@
+     PHP_LIBDIR=lib
+   fi
+ 
+-  if test ! -r "$PDO_FREETDS_INSTALLATION_DIR/$PHP_LIBDIR/libtds.a" && test ! -r "$PDO_FREETDS_INSTALLATION_DIR/$PHP_LIBDIR/libtds.so"; then
+-     as_fn_error $? "Could not find $PDO_FREETDS_INSTALLATION_DIR/$PHP_LIBDIR/libtds.a|so" "$LINENO" 5
+-  fi
++  #if test ! -r "$PDO_FREETDS_INSTALLATION_DIR/$PHP_LIBDIR/libtds.a" && test ! -r "$PDO_FREETDS_INSTALLATION_DIR/$PHP_LIBDIR/libtds.so"; then
++  #     as_fn_error $? "Could not find $PDO_FREETDS_INSTALLATION_DIR/$PHP_LIBDIR/libtds.a|so" "$LINENO" 5
++  #fi
+ 
+ 
+   if test "$PDO_FREETDS_INCLUDE_DIR" != "/usr/include"; then

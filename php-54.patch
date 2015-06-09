@@ -1,0 +1,30 @@
+Solo in ./.libs: pdo_dblib.la
+Solo in ./.libs: pdo_dblib.lai
+Solo in ./.libs: pdo_dblib.o
+Solo in ./.libs: pdo_dblib.so
+Solo in ./modules: pdo_dblib.la
+Solo in ./modules: pdo_dblib.so
+diff -rub ../PDO_DBLIB-1.0.orig/pdo_dblib.c ./pdo_dblib.c
+--- ../PDO_DBLIB-1.0.orig/pdo_dblib.c	2005-11-26 21:50:07.000000000 +0100
++++ ./pdo_dblib.c	2012-06-25 17:59:06.530679949 +0200
+@@ -34,7 +34,7 @@
+ 
+ ZEND_DECLARE_MODULE_GLOBALS(dblib)
+ 
+-function_entry pdo_dblib_functions[] = {
++zend_function_entry pdo_dblib_functions[] = {
+ 	{NULL, NULL, NULL}
+ };
+ 
+@@ -193,7 +193,7 @@
+ 
+ #if !PHP_DBLIB_IS_MSSQL
+ 	dberrhandle(error_handler);
+-	dbmsghandle(msg_handler);
++	dbmsghandle((MHANDLEFUNC) msg_handler);
+ #endif
+ 
+ 	return SUCCESS;
+Solo in .: pdo_dblib.la
+Solo in .: pdo_dblib.lo
+Solo in ../PDO_DBLIB-1.0.orig: pdo_dblib.loT
