@@ -1,0 +1,29 @@
+pkgbase = emacs-git
+	pkgdesc = GNU Emacs. Official git trunk.
+	pkgver = 25.0.50.r121790
+	pkgrel = 1
+	url = http://www.gnu.org/software/emacs/
+	install = emacs-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = librsvg
+	depends = gpm
+	depends = giflib
+	depends = libxpm
+	depends = libotf
+	depends = m17n-lib
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	depends = alsa-lib
+	depends = imagemagick
+	depends = gnutls
+	provides = emacs
+	conflicts = emacs
+	source = emacs-git::git://git.savannah.gnu.org/emacs.git
+	md5sums = SKIP
+
+pkgname = emacs-git
+
