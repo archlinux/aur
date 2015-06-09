@@ -1,0 +1,19 @@
+pkgbase = dgedit-git
+	pkgdesc = The DrumGizmo drumkit editor
+	pkgver = 0.r7.a9e821d
+	pkgrel = 1
+	url = http://www.drumgizmo.org/wiki/doku.php?id=getting_dgedit
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = qt4
+	depends = libsndfile
+	depends = libao
+	provides = dgedit
+	conflicts = dgedit
+	source = dgedit::git+http://git.drumgizmo.org/dgedit.git
+	md5sums = SKIP
+
+pkgname = dgedit-git
+
