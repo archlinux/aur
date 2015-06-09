@@ -1,0 +1,29 @@
+pkgbase = lib32-gtk3
+	pkgdesc = GObject-based multi-platform GUI toolkit (v3)
+	pkgver = 3.16.3
+	pkgrel = 1
+	url = http://www.gtk.org/
+	install = gtk3.install
+	arch = x86_64
+	license = LGPL
+	makedepends = gcc-multilib
+	makedepends = gobject-introspection
+	depends = gtk3
+	depends = lib32-at-spi2-atk
+	depends = lib32-colord
+	depends = lib32-gdk-pixbuf2
+	depends = lib32-json-glib
+	depends = lib32-libcups
+	depends = lib32-libepoxy
+	depends = lib32-libxcomposite
+	depends = lib32-libxcursor
+	depends = lib32-libxinerama
+	depends = lib32-libxkbcommon
+	depends = lib32-libxrandr
+	depends = lib32-pango
+	depends = lib32-rest
+	source = http://ftp.gnome.org/pub/gnome/sources/gtk+/3.16/gtk+-3.16.3.tar.xz
+	sha256sums = 2943fd4a6b02c2a9b2edd231c1d8f7a1d2f8d36996f14310d34f503dca9ebea4
+
+pkgname = lib32-gtk3
+
