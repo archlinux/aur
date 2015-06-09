@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-libaacs
+	pkgdesc = Advanced Access Content System (mingw-w64)
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = http://www.videolan.org/libaacs
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	depends = mingw-w64-libgpg-error
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = ftp://ftp.videolan.org/pub/videolan/libaacs/0.7.1/libaacs-0.7.1.tar.bz2
+	sha1sums = 09eb61bcfceca77cd779c4475093dd22a0cb5510
+
+pkgname = mingw-w64-libaacs
+
