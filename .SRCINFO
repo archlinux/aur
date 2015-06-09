@@ -1,0 +1,20 @@
+pkgbase = shmig-git
+	pkgdesc = Database migration tool written in BASH
+	pkgver = 20140727
+	pkgrel = 1
+	url = https://github.com/naquad/shmig
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = make
+	depends = bash
+	optdepends = mariadb: MySQL support
+	optdepends = postgresql: PostgreSQL support
+	optdepends = sqlite: SQLite support
+	provides = shmig
+	conflicts = shmig
+	source = git+https://github.com/naquad/shmig
+	sha256sums = SKIP
+
+pkgname = shmig-git
+
