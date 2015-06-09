@@ -1,0 +1,20 @@
+pkgbase = switchboard-plug-power-bzr
+	pkgdesc = Power plug for Switchboard
+	pkgver = r234
+	pkgrel = 1
+	url = https://launchpad.net/switchboard-plug-power
+	arch = i686
+	arch = x86_64
+	groups = pantheon-unstable
+	license = GPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = vala
+	depends = switchboard-bzr
+	provides = switchboard-plug-power
+	conflicts = switchboard-plug-power
+	source = bzr+lp:switchboard-plug-power
+	sha256sums = SKIP
+
+pkgname = switchboard-plug-power-bzr
+
