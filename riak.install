@@ -1,0 +1,30 @@
+user="riak"
+group="riak"
+home="/opt/riak"
+
+# arg 1:  the new package version
+post_install() {
+  useradd -r -s /sbin/nologin -d "$home" "$user"
+  chown -R "$user:$group" "$home"
+  chmod a+x "$home"
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+    cat <<EOF
+==> WARNING! Riak configuration (or even storage backend) may changed since
+==> the last version, check http://basho.com/ for changelog...
+EOF
+}
+
+# arg 1:  the old package version
+pre_remove() {
+  systemctl stop riak &> /dev/null
+  userdel "$user" &> /dev/null
+  groupdel "$group" &> /dev/null
+
+  cat <<EOF
+==> WARNING! /opt/riak/data has not been deleted.
+EOF
+}

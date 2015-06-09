@@ -1,0 +1,22 @@
+pkgbase = riak
+	pkgdesc = NOSQL database engine providing decentralized key-value store, flexible map/reduce engine and HTTP/JSON query interface
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = http://riak.basho.com/
+	install = riak.install
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = erlang-nox
+	makedepends = java-environment
+	optdepends = jdk7-openjdk
+	conflicts = tsung
+	options = !makeflags
+	backup = opt/riak/etc/riak.conf
+	source = http://s3.amazonaws.com/downloads.basho.com/riak/2.1/2.1.1/riak-2.1.1.tar.gz
+	source = riak.service
+	md5sums = 5da48c0b0fbbf5c8e21e6074f9ba7f7f
+	md5sums = ed4cda47fc1fad8b0a3fb3858600c578
+
+pkgname = riak
+
