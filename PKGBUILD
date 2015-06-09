@@ -27,6 +27,8 @@ build() {
 package() {
 	cd "${srcdir}/libfreenect2/examples/protonect";
 	make DESTDIR="${pkgdir}" install;
-	mkdir ${pkgdir}/usr/bin;
+	mkdir -p ${pkgdir}/usr/bin;
 	install bin/Protonect ${pkgdir}/usr/bin/Protonect;
+	cd "${srcdir}/libfreenect2";
+	install rules/90-kinect2.rules /etc/udev/rules.d/90-kinect2.rules;
 };
