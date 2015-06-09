@@ -1,0 +1,19 @@
+post_install() {
+  echo gtk-update-icon-cache ...
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+  echo update-mime-database ...
+  update-mime-database /usr/share/mime &> /dev/null
+  echo update-desktop-database ...
+  update-desktop-database -q
+  
+	echo ''
+	echo 'Notes:'
+	echo ''
+	echo 'You can use the game's own update function instead of updating the package.'
+	echo ''
+	echo 'IMPORTANT:'
+	echo ''
+	echo 'Make sure that all users who want to play Clonk Rage are in the group games!'
+	echo ''
+	
+}

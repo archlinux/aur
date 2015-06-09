@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/vnd.clonk.c4game">
+    <alias type="application/vnd.clonk.c4group" />
+    <comment>Clonk 4 System file</comment>
+    <comment xml:lang="de">Clonk 4 Systemdatei</comment>
+    <glob pattern="*.c4g" />
+    <icon name="c4g" />
+  </mime-type>
+  
+  <mime-type type="application/vnd.clonk.c4definition">
+    <alias type="application/vnd.clonk.c4group" />
+    <comment>Clonk 4 Object definition</comment>
+    <comment xml:lang="de">Clonk 4 Objektdefinition</comment>
+    <glob pattern="*.c4d" />
+    <icon name="c4d" />
+  </mime-type>
+  
+  <mime-type type="application/vnd.clonk.c4folder">
+    <alias type="application/vnd.clonk.c4group" />
+    <comment>Clonk 4 Scenario folder</comment>
+    <comment xml:lang="de">Clonk 4 Szenarienordner</comment>
+    <glob pattern="*.c4f" />
+    <icon name="c4f" />
+  </mime-type>
+  
+  <mime-type type="application/vnd.clonk.c4player">
+    <alias type="application/vnd.clonk.c4group" />
+    <comment>Clonk 4 Player</comment>
+    <comment xml:lang="de">Clonk 4 Spieler</comment>
+    <glob pattern="*.c4p" />
+    <icon name="c4p" />
+  </mime-type>
+  
+  <mime-type type="application/vnd.clonk.c4update">
+    <alias type="application/vnd.clonk.c4group" />
+    <comment>Clonk 4 Update</comment>
+    <comment xml:lang="de">Clonk 4 Update</comment>
+    <glob pattern="*.c4u" />
+    <icon name="c4u" />
+  </mime-type>
+  
+  <mime-type type="application/vnd.clonk.c4scenario">
+    <alias type="application/vnd.clonk.c4group" />
+    <comment>Clonk 4 Scenario</comment>
+    <comment xml:lang="de">Clonk 4 Szenario</comment>
+    <glob pattern="*.c4s" />
+    <icon name="c4s" />
+  </mime-type>
+  
+  <mime-type type="application/x-vnd.clonk.c4key">
+    <sub-class-of type="text/plain"/>
+    <comment>Clonk Registration key</comment>
+    <comment xml:lang="de">Clonk Registrierungsschlüssel</comment>
+    <glob pattern="*.c4k" />
+    <icon name="c4k" />
+  </mime-type>
+</mime-info>

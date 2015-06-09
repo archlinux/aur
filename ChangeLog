@@ -1,0 +1,11 @@
+2014-05-06 shad0w73 <shad0w73@maills.de>
+
+	* 4.9.10.7-1 :
+	added ChangeLog.
+	new upstream release.
+	Changed licenses.
+	Updated dependencies.
+	Moved new licenses to /usr/share/licenses/clonk_rage/.
+
+	* clonk_rage.install :
+	Removed license/register notification

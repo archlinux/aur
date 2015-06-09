@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Clonk Rage
+Type=Application
+Comment=An entertaining, action-packed game of strategy, tactics, and skill.
+Icon=clonk_rage
+Categories=Game;ActionGame;
+MimeType=application/x-vnd.clonk.c4key;application/vnd.clonk.c4group
+StartupNotify=true
+StartupWMClass=Clonk Rage
+Exec=clonk_rage
+Terminal=false

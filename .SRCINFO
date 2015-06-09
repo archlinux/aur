@@ -1,0 +1,32 @@
+pkgbase = clonk_rage
+	pkgdesc = An entertaining, action-packed game of strategy, tactics, and skill.
+	pkgver = 4.9.10.7
+	pkgrel = 1
+	url = http://clonk.de
+	install = clonk_rage.install
+	changelog = ChangeLog
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = ISC
+	license = CCPL:by-nc
+	license = custom:trademark
+	depends = glu
+	depends = libxpm
+	depends = sdl_mixer
+	depends = gtk2
+	depends = libpng12
+	depends = libjpeg6-turbo
+	depends = desktop-file-utils
+	depends = timidity++
+	source = http://www.clonkx.de/rage/cr_full_linux.tar.bz2
+	source = clonk_rage.desktop
+	source = de_clonk.xml
+	source = clonk_rage.sh
+	md5sums = a8bb948f02ac9d7950266c2ffbb7692a
+	md5sums = fca7370f1e9cb612edfc90b0f7d9d5ed
+	md5sums = 56b7e0903752a933a94dd3038b50fc56
+	md5sums = bbeed581309eac14697d030f6ac295ab
+
+pkgname = clonk_rage
+
