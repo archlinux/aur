@@ -1,0 +1,13 @@
+pkgbase = python-imaplib2
+	pkgdesc = Python IMAP4rev1 mail protocol client class using threads for parallel operation.
+	pkgver = 2.43
+	pkgrel = 2
+	url = http://imaplib2.sourceforge.net/
+	arch = any
+	license = Python
+	depends = python
+	source = https://github.com/bcoe/python-imaplib2/archive/6170b7d63f0859330eb8511e2e296d02f51aad58.zip
+	md5sums = e4013c613598be9d6545c780cc0c3366
+
+pkgname = python-imaplib2
+
