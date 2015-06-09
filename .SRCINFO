@@ -1,0 +1,22 @@
+pkgbase = python2-palm
+	pkgdesc = Fast protocol buffer library for Python (Protobufs Are Lightweight Messages)
+	pkgver = 0.1.7
+	pkgrel = 2
+	url = https://github.com/bumptech/palm
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = python2-setuptools
+	depends = python2
+	provides = palmc
+	provides = python2-palm
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/p/palm/palm-0.1.7.tar.gz
+	source = LICENSE
+	md5sums = f49942ae4746191e73e0935c4c31c6ae
+	md5sums = 6d0bd0996abe85ce1b772cbe989160c8
+	sha256sums = 4d6f4cb18ae861ac99c27abb454fdce06a627aa326fb6d8e81ce2c5d0f483ac7
+	sha256sums = 6b7c8132ae8c56d2090dbecf0e66a91bf06f6ed3d75ae4e7a001d69fa22990b1
+
+pkgname = python2-palm
+
