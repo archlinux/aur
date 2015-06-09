@@ -1,4 +1,5 @@
-# Contributor: EEva <eeva+aur at marvid fr>
+# Contributor: scolobb <scolobb at colimite fr> #THX for the mirror
+# Maintainer: EEva <eeva+aur at marvid fr>
 
 pkgname=ttf-montserrat
 provides="ttf-montserrat"
@@ -11,7 +12,7 @@ license=('SIL Open Font')
 depends=
 install=ttf.install
 makedepends=
-#source=()
+#source=('http://colimite.fr/aur-mirrors/Montserrat.tar.gz') #BACKUP
 source=('http://marvid.fr/~eeva/mirror/Montserrat.tar.gz')
 md5sums=('7722f9573b957b3278bef2ad928ad5b1')
 
