@@ -1,0 +1,17 @@
+pkgbase = abyss
+	pkgdesc = Assembly By Short Sequences - a de novo, parallel, paired-end sequence assembler
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = http://www.bcgsc.ca/platform/bioinfo/software/abyss
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = boost
+	makedepends = sparsehash
+	depends = openmpi
+	depends = boost-libs
+	source = https://github.com/bcgsc/abyss/releases/download/1.9.0/abyss-1.9.0.tar.gz
+	sha1sums = 7ae0f00e2205a4cdc75a92925176e5f343cb09ca
+
+pkgname = abyss
+
