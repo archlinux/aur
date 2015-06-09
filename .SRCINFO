@@ -1,0 +1,23 @@
+pkgbase = packer-combined
+	pkgdesc = Extended bash wrapper for pacman and aur see packer --help for extra features
+	pkgver = 20150530_1233
+	pkgrel = 1
+	url = https://bitbucket.org/replabrobin/packer
+	arch = any
+	license = GPL3
+	makedepends = mercurial
+	depends = grep
+	depends = sed
+	depends = bash
+	depends = curl
+	depends = pacman
+	depends = jshon
+	optdepends = sudo: install and update packages as non-root
+	optdepends = customizepkg: apply customizepkg modifications
+	provides = packer
+	conflicts = packer
+	source = packer-combined::hg+https://bitbucket.org/replabrobin/packer
+	sha256sums = SKIP
+
+pkgname = packer-combined
+
