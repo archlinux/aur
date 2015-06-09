@@ -1,0 +1,11 @@
+--- a/scripts/Makefile.in
++++ b/scripts/Makefile.in
+@@ -548,7 +548,7 @@
+   hypergeometric.py \
+   sequence.py
+ 
+-pythonlibdir = $(libdir)/python
++pythonlibdir = $(libdir)/python2.7
+ pythonlib_SCRIPTS = \
+   $(BUILT_PYTHON_LIB) \
+   $(NORMAL_PYTHON_LIB)
