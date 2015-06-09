@@ -1,0 +1,18 @@
+pkgbase = elementary-xfce-icons
+	pkgdesc = Elementary icons forked, extended and maintained for Xfce.
+	pkgver = 0.5
+	pkgrel = 4
+	url = https://github.com/shimmerproject/elementary-xfce
+	arch = any
+	license = GPL2
+	depends = gnome-icon-theme
+	optdepends = xfce-theme-albatross: matching Shimmer Project Xfce theme
+	optdepends = xfce-theme-bluebird: matching Shimmer Project Xfce theme
+	optdepends = xfce-theme-greybird: matching Shimmer Project Xfce theme
+	conflicts = elementary-xfce-icons-git
+	options = !strip
+	source = https://github.com/shimmerproject/elementary-xfce/archive/v0.5.zip
+	sha256sums = 174ec646ae16560a5a58a34d03f7f96cee2f586cb3563c90009bed87c1cb913e
+
+pkgname = elementary-xfce-icons
+
