@@ -1,0 +1,13 @@
+pkgbase = jclic
+	pkgdesc = Java applications for educational activities.
+	pkgver = 0.2.3.4
+	pkgrel = 3
+	url = http://projectes.lafarga.cat/projects/jclic
+	arch = any
+	license = GPL
+	depends = java-environment
+	source = http://clic.xtec.cat/dist/jclic/jclic-0.2.3.4.zip
+	md5sums = d4830f1d4772042c3f5a3890906ac171
+
+pkgname = jclic
+
