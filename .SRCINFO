@@ -1,0 +1,12 @@
+pkgbase = pacsync-hg
+	pkgdesc = A pacman frontend which manages packages based on a holistic view of the system
+	pkgver = 8
+	pkgrel = 3
+	url = https://bitbucket.org/isd/pacsync
+	arch = any
+	license = custom
+	source = http://bitbucket.org/isd/pacsync/get/tip.tar.bz2
+	md5sums = 21e9eba50b2727c7bde258b46c8349b2
+
+pkgname = pacsync-hg
+
