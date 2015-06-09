@@ -1,0 +1,18 @@
+pkgbase = brother-brgenml1
+	pkgdesc = LPR and CUPS driver for various Brother DCP, HL and MFC models. Complete list in package.
+	pkgver = 3.1.0_1
+	pkgrel = 2
+	url = http://support.brother.com/g/s/id/linux/en
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = cups
+	source = http://download.brother.com/welcome/dlf101124/brgenml1lpr-3.1.0-1.i386.rpm
+	source = http://download.brother.com/welcome/dlf101126/brgenml1cupswrapper-3.1.0-1.i386.rpm
+	source = brother_lpdwrapper_BrGenML1.patch
+	md5sums = 9ab1b4096a3258ef3498377ce0a76d82
+	md5sums = cdba9c13be7a39ad75daa575f7cdf76e
+	md5sums = 2ada870167986ea8e55b61c6be0d5201
+
+pkgname = brother-brgenml1
+

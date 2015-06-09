@@ -1,0 +1,23 @@
+53,54c53,55
+< $basedir =~ s/$PRINTER\/cupswrapper\/.*$/$PRINTER\//g;
+< 
+---
+> #$basedir =~ s/$PRINTER\/cupswrapper\/.*$/$PRINTER\//g;
+> my $PRINTER = "BrGenML1";
+> my $basedir = "/usr/share/Brother/Printer/$PRINTER";
+80c81
+< my $PRINTER=$basedir;
+---
+> #my $PRINTER=$basedir;
+87,89c88,90
+< $PRINTER =~ s/^\/opt\/.*\/Printers\///g;
+< $PRINTER =~ s/\/cupswrapper//g;
+< $PRINTER =~ s/\///g;
+---
+> #$PRINTER =~ s/^\/opt\/.*\/Printers\///g;
+> #$PRINTER =~ s/\/cupswrapper//g;
+> #$PRINTER =~ s/\///g;
+736c737
+<     $lpddir = $basedir."/lpd/";
+---
+>     $lpddir = $basedir."/lpd";
