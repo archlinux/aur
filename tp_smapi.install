@@ -1,0 +1,24 @@
+PKGVER="$(pacman -Q dkms-tp_smapi-debian | awk '{print $2}' | sed -nr 's/.*:(.*)-.*/\1/p')"
+
+post_install() {
+  dkms add -m "tp_smapi/${PKGVER}"
+  dkms build -m "tp_smapi/${PKGVER}"
+  dkms install -m "tp_smapi/${PKGVER}"
+  depmod -a
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  dkms remove -m "tp_smapi/${PKGVER}" --all
+}
+
+pre_upgrade() {
+  pre_remove
+}
+
+post_remove() {
+  depmod -a
+}
