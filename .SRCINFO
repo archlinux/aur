@@ -1,0 +1,17 @@
+pkgbase = ruby-haste-git
+	pkgdesc = Simple client for uploading text to a haste-server (hastebin) (development version)
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/seejohnrun/haste-client
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = ruby
+	depends = ruby-json
+	provides = ruby-haste
+	conflicts = ruby-haste
+	source = ruby-haste::git+https://github.com/seejohnrun/haste-client.git
+	sha256sums = SKIP
+
+pkgname = ruby-haste-git
+
