@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=mMass
+Comment=Open source tool for precise mass spectrometric data analysis and interpretation written in python.
+TryExec=mmass
+Exec=mmass %F
+Icon=mmass
+Terminal=false
+StartupNotify=false
+Categories=Science;
+MimeType=text/x-msd;
+Name[es_MX]=mMass

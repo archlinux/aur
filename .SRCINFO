@@ -1,0 +1,22 @@
+pkgbase = mmass
+	pkgdesc = Open source tool for precise mass spectrometric data analysis and interpretation written in python.
+	pkgver = 5.5.0
+	pkgrel = 3
+	url = http://www.mmass.org
+	install = mMass.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2-numpy
+	depends = wxpython2.8
+	source = http://www.mmass.org/download/files/v5.5.0/mmass_v5.5.0_source.zip
+	source = mMass.desktop
+	source = mMass.xml
+	source = mMass.install
+	sha256sums = e75e0792b51ed16f5b772f285b1be2031a0906fd35b02294752ccf816258508c
+	sha256sums = 7ff1fc2fdb2f2183819b85a0a1cbbd672cf8222efbc25447139db883b01d0ed4
+	sha256sums = 653e64ff46c4c0ddc2f7973ce1477670f7c0c5d4c9321aa3b7afa2c42a948793
+	sha256sums = 2c0ef77eeb0f20e2ab1381e82854cc46cbb7e176a921cd80e4a67bb25bc6c6ac
+
+pkgname = mmass
+
