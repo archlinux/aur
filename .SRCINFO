@@ -1,0 +1,28 @@
+pkgbase = voltron-git
+	pkgdesc = UI for GDB, LLDB and Vivisect's VDB
+	pkgver = 20150223
+	pkgrel = 1
+	url = https://github.com/snare/voltron
+	arch = any
+	license = Beerware
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-blessed
+	depends = python-cherrypy
+	depends = python-flask
+	depends = python-pygments
+	depends = python-rl
+	depends = python-scruffy
+	depends = readline
+	optdepends = gdb: GDB
+	optdepends = lldb: LLDB
+	optdepends = vivisect: VDB
+	provides = voltron
+	conflicts = voltron
+	options = !emptydirs
+	source = voltron::git+https://github.com/snare/voltron
+	sha256sums = SKIP
+
+pkgname = voltron-git
+
