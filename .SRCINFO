@@ -1,0 +1,19 @@
+pkgbase = unigine-heaven
+	pkgdesc = Unigine Benchmark
+	pkgver = 4.0
+	pkgrel = 1
+	url = http://www.unigine.com
+	arch = i686
+	arch = x86_64
+	license = custom:UNIGINE Engine
+	depends = libgl
+	depends = gcc-libs
+	depends = libxrandr
+	depends = libxinerama
+	depends = fontconfig
+	optdepends = openal: sound support
+	source = http://uk1-dl.techpowerup.com/Benchmarking/Unigine_Heaven-4.0.run
+	sha512sums = 3db8ae47c0f03bbd01c64e64021c83919a5b6b3f546aa426fe196021ae9e4cbcc44ead5b6a0315b6dd6817352ecb55a0b4a0758966198b12b6418b211551c902
+
+pkgname = unigine-heaven
+
