@@ -1,0 +1,28 @@
+pkgbase = fantom-hg
+	pkgdesc = OO,functional programming language designed to cross compile to Java,.NET and JavaScript
+	pkgver = r4214.64f424f699f4
+	pkgrel = 1
+	url = https://bitbucket.org/fantom
+	install = fantom.install
+	arch = i686
+	arch = x86_64
+	license = custom:AcademicFreeLicense3.0
+	makedepends = mercurial
+	makedepends = java-environment
+	makedepends = unzip
+	depends = java-runtime
+	optdepends = mariadb-jdbc
+	options = !purge
+	source = fantom-hg::hg+https://bitbucket.org/fantom/fan-1.0
+	source = https://bitbucket.org/fantom/fan-1.0/downloads/fantom-1.0.67.zip
+	source = LICENSE
+	source = fantom.profile
+	source = fantom.install
+	md5sums = SKIP
+	md5sums = 3f505db3e8e629914d6849e8739a6477
+	md5sums = 6f6f26e10fee5edcfa0dff72274e6d28
+	md5sums = 24709c14c5d3b5e12e5bfd2712d7a2f4
+	md5sums = b11183f32ccf65b5f67c3d94ab2a44d1
+
+pkgname = fantom-hg
+

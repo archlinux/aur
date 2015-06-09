@@ -1,0 +1,5 @@
+post_install() {
+  echo 'Please relogin to include fantom in your PATH.'
+}
+
+# vim:set ts=2 sw=2 et:
