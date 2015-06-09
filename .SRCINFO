@@ -1,0 +1,18 @@
+pkgbase = texlive-csse-fcs-hg
+	pkgdesc = LaTeX class for dissertations at http://kspt.icc.spbstu.ru/
+	pkgver = a1b0638
+	pkgrel = 5
+	url = https://bitbucket.org/ice_phoenix/csse-fcs-latex/
+	install = texlive-csse-fcs.install
+	arch = any
+	license = LPPL
+	makedepends = mercurial
+	depends = texlive-core
+	depends = texlive-langcyrillic
+	provides = texlive-csse-fcs
+	conflicts = texlive-csse-fcs
+	source = hg+https://bitbucket.org/ice_phoenix/csse-fcs-latex
+	md5sums = SKIP
+
+pkgname = texlive-csse-fcs-hg
+
