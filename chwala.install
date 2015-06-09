@@ -1,0 +1,10 @@
+post_install() {
+  systemd-tmpfiles --create
+  
+  chown http:http /var/log/chwala
+  chown http:http /var/cache/chwala
+}
+
+post_upgrade() {
+  post_install
+}

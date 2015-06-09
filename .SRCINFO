@@ -1,0 +1,24 @@
+pkgbase = chwala
+	pkgdesc = Kolab File Management
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = http://kolab.org
+	install = chwala.install
+	arch = any
+	license = AGPL3
+	depends = php-mcrypt
+	depends = pear-http-request2
+	depends = roundcubemail
+	depends = smarty3
+	depends = php-kolabformat
+	source = http://mirror.kolabsys.com/pub/releases/chwala-0.3.0.tar.gz
+	source = chwala.install
+	source = chwala.tmpfiles
+	source = apache.patch
+	sha256sums = e6da2d63d25a070b2a9dbcc437ba5e85048ce86fe736840001fc6702d0ea73bb
+	sha256sums = 63c6661fe031f001357ffbecaed8bcd9f1d56549d5223c89e583713cc01d9e51
+	sha256sums = e88b39da4157a2ff99e692d771b10c496ab1122f240d72db0a2c8bcacdfcf09b
+	sha256sums = d41a6b0eefdc7e5a4b134813bc772644e462eb7b768f2f18bd28aae9d169cfb6
+
+pkgname = chwala
+

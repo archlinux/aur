@@ -1,0 +1,13 @@
+--- a/doc/chwala.conf
++++ b/doc/chwala.conf
+@@ -1,8 +1,8 @@
+ # A suggested default configuration for chwala under httpd
+ 
+-Alias /chwala   /usr/share/chwala/public_html
++Alias /chwala   /usr/share/webapps/chwala/public_html
+ 
+-<Directory "/usr/share/chwala/public_html/">
++<Directory "/usr/share/webapps/chwala/public_html/">
+     AllowOverride All
+     <IfModule mod_authz_core.c>
+         # Apache 2.4
