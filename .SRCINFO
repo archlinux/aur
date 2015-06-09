@@ -1,0 +1,16 @@
+pkgbase = gtsam
+	pkgdesc = A library of C++ classes that implement smoothing and mapping (SAM) in robotics and vision, using factor graphs and Bayes networks as the underlying computing paradigm rather than sparse matrices.
+	pkgver = 3.2.1
+	pkgrel = 1
+	url = https://collab.cc.gatech.edu/borg/gtsam/
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = boost
+	depends = boost-libs
+	depends = intel-tbb
+	source = https://research.cc.gatech.edu/borg/sites/edu.borg/files/downloads/gtsam-3.2.1.tgz
+	md5sums = fbbd90319c636ac41233c1b6ff9fbf75
+
+pkgname = gtsam
+
