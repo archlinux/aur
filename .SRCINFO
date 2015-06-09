@@ -1,0 +1,16 @@
+pkgbase = crtmpserver-svn
+	pkgdesc = high performance streaming server
+	pkgver = 811
+	pkgrel = 1
+	url = http://www.rtmpd.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	makedepends = cmake
+	depends = openssl
+	provides = crtmpserver
+	conflicts = crtmpserver
+
+pkgname = crtmpserver-svn
+
