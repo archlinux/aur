@@ -1,0 +1,19 @@
+pkgbase = grpc-git
+	pkgdesc = A high performance, open source, general RPC framework that puts mobile and HTTP/2 first.
+	pkgver = 0.9.0.r84.g12bde00
+	pkgrel = 1
+	url = http://www.grpc.io/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = gtest
+	makedepends = gflags
+	depends = openssl
+	depends = protobuf3>=3.0.0_alpha_3
+	conflicts = grpc
+	options = !makeflags
+	source = git+https://github.com/grpc/grpc.git
+	md5sums = SKIP
+
+pkgname = grpc-git
+
