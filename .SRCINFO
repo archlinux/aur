@@ -1,0 +1,22 @@
+pkgbase = steam-libs
+	pkgdesc = Collection of libraries to launch Steam without its runtime environment
+	pkgver = 1.0.0.50
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/Steam#Using_native_runtime
+	arch = any
+	license = None
+	depends = lib32-dbus-glib
+	depends = lib32-gconf
+	depends = lib32-glew1.10
+	depends = lib32-gtk2
+	depends = lib32-libgcrypt15
+	depends = lib32-libjpeg6
+	depends = lib32-libnm-glib46
+	depends = lib32-libpng12
+	depends = lib32-libpulse
+	depends = lib32-libudev0
+	depends = lib32-libvpx
+	depends = lib32-openal
+
+pkgname = steam-libs
+
