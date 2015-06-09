@@ -1,0 +1,13 @@
+post_install() {
+  printf "%b\n" "$ws4gl"
+}
+
+read -d '' ws4gl <<'EOF'
+WebcamStudio
+============
+
+To use WebcamStudio, you need to have the v4l2loopback kernel module
+loaded first:
+
+    $ modprobe v4l2loopback
+EOF
