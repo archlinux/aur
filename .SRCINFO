@@ -1,0 +1,16 @@
+pkgbase = dcc
+	pkgdesc = Distributed Checksum Clearinghouse spam tool
+	pkgver = 1.3.158
+	pkgrel = 1
+	url = http://www.rhyolite.com/anti-spam/dcc/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = sh
+	source = http://www.rhyolite.com/anti-spam/dcc/source/old/dcc-1.3.158.tar.Z
+	source = http://www.rhyolite.com/dcc/LICENSE
+	sha256sums = 596bb4a02800a87501818215e61ac877e4d5a31ec0c8c227f23438f6b6b831c6
+	sha256sums = 8bce5cc14bd52293e9b6331cbd2979a12d667bbea615e65b18608b690f7b5fef
+
+pkgname = dcc
+
