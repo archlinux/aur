@@ -1,0 +1,23 @@
+pkgbase = linux_logo_archcustom
+	pkgdesc = Text-based logo and system information program
+	pkgver = 5.11
+	pkgrel = 2
+	url = http://www.deater.net/weave/vmwprod/linux_logo
+	install = linux_logo.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	depends = lsb-release
+	conflicts = linux_logo
+	source = http://www.deater.net/weave/vmwprod/linux_logo/linux_logo-5.11.tar.gz
+	source = arch.logo
+	source = linux_logo.conf
+	source = linux_logo.init
+	sha1sums = bd22808f165574cb3bc98c579aa48c0acab65f39
+	sha1sums = e88f2076f8682676a3b28ee1d4c4d3fec0bc2a94
+	sha1sums = 438bbdf26804bdec1f2ac501b966944b13335065
+	sha1sums = a79dbbd397c92aea302187348e27e1e3fb54e450
+
+pkgname = linux_logo_archcustom
+

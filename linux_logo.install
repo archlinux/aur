@@ -1,0 +1,13 @@
+post_install() {
+  echo 'TIP:'
+  echo '     You can use "rc.d {start|stop} linux_logo" for change the /etc/issue file'
+  echo
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  return
+}

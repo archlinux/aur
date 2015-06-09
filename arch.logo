@@ -1,0 +1,51 @@
+# Arch Linux Logo
+# Logo from http://bbs.archlinux.org and http://www.archlinux.de
+# Color Version and Text by efreak4u <efreak4u@gmx.net>
+# Adjustments made by Marcos Heredia <chelqo@gmail.com>
+
+SYSINFO_POSITION right
+NAME arch
+
+DESCRIPTION_STRING The ArchLinux Logo
+
+BEGIN_LOGO
+[0;1;34m                   -`                 [;0;0m
+[1;34m                  .o+                 [;0;0m                        _          _   _
+[1;34m                 `ooo/                [;0;0m    ____   _ __   ___  | |__      | | (_)  ___     _   _  _   _
+[1;34m                `+oooo:               [;0;0m   (__  | | '__) / __) |  _ \     | | | | | '_ \  | | | | \ \/ /
+[1;34m               `+oooooo:              [;0;0m  / _ \ | | |   | (__  | | | |    | | | | | | | | | |_| |  >  <
+[1;34m               -+oooooo+:             [;0;0m  \___,_| |_|    \___) |_| |_|    |_| |_| |_| |_|  \__,_| /_/\_\
+[1;34m             `/:-:++oooo+:            [;0;0m
+[1;34m            `/++++/+++++++:           [;0;0m
+[1;34m           `/++++++++++++++:          [;0;0m
+[1;34m          `/+++${c2}oooooooo/`        [;0;0m
+[1;34m         ./ooosssso++osssssso+`       [;0;0m
+[1;34m        .oossssso-````/ossssss+`      [;0;0m
+[1;34m       -osssssso.      :ssssssso.     [;0;0m
+[1;34m      :osssssss/        osssso+++.    [;0;0m
+[1;34m     /ossssssss/        +ssssooo/-    [;0;0m
+[1;34m   `/ossssso+/:-        -:/+osssso+-  [;0;0m
+[1;34m  `+sso+:-`                 `.-/+oso: [;0;0m
+[1;34m `++:.                           `-/  [;0;0m
+END_LOGO
+
+BEGIN_ASCII_LOGO
+                   -`
+                  .o+`                                        _       _   _
+                 `ooo/                    ____   _ __   ___  | |__   | | (_)  _ __    _   _  __  __
+                `+oooo:                  (__  | | '__) / __) |  _ \  | | | | | '_ \  | | | | \ \/ /
+               `+oooooo:                / _ \ | | |   | (__  | | | | | | | | | | | | | |_| |  >  <
+               -+oooooo+:               \___,_| |_|    \___) |_| |_| |_| |_| |_| |_|  \__,_| /_/\_\
+             `/:-:++oooo+:
+            `/++++/+++++++:           
+           `/++++++++++++++:          
+          `/+++${c2}oooooooo/`        
+         ./ooosssso++osssssso+`       
+        .oossssso-````/ossssss+`      
+       -osssssso.      :ssssssso.
+      :osssssss/        osssso+++.
+     /ossssssss/        +ssssooo/-
+   `/ossssso+/:-        -:/+osssso+-
+  `+sso+:-`                 `.-/+oso:
+ `++:.                           `-/+/
+END_ASCII_LOGO
