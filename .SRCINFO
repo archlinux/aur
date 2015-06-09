@@ -1,0 +1,18 @@
+pkgbase = kdeplasma-applets-redshift
+	pkgdesc = Provides a configuration interface and a switch to start/stop Redshift daemon.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://kde-apps.org/content/show.php/Redshift+plasmoid?content=148737
+	install = kdeplasma-applets-redshift.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdebase-workspace
+	depends = redshift
+	source = http://kde-apps.org/CONTENT/content-files/148737-redshift-plasmoid-1.0.tar.bz2
+	md5sums = 20477cbcdbfde96dcf3092e9fe326b41
+
+pkgname = kdeplasma-applets-redshift
+
