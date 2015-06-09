@@ -1,0 +1,19 @@
+pkgbase = python2-versiontools
+	pkgdesc = Smart replacement for plain tuple used in __version__
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = https://launchpad.net/versiontools
+	arch = any
+	license = LGPL3
+	makedepends = python2-setuptools
+	depends = python2
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/v/versiontools/versiontools-1.9.1.tar.gz
+	source = https://pypi.python.org/packages/source/v/versiontools/versiontools-1.9.1.tar.gz.asc
+	md5sums = 602b7db8eea30dd29a1d451997adf251
+	md5sums = 0af35b19da5b1218ebc0307338ee241c
+	sha256sums = a969332887a18a9c98b0df0ea4d4ca75972f24ca94f06fb87d591377e83414f6
+	sha256sums = 7a2b5ef5a84a8512313993d82a94c115183f58e6924f80a45e1fe067fb24b3f7
+
+pkgname = python2-versiontools
+
