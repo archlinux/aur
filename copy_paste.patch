@@ -1,0 +1,56 @@
+index 3c22019..e4b4822 100644
+--- a/yakuake/app/terminal.cpp
++++ b/yakuake/app/terminal.cpp
+@@ -24,6 +24,7 @@
+ 
+ #include <KActionCollection>
+ #include <KApplication>
++#include <KAction>
+ #include <KColorScheme>
+ #include <kde_terminal_interface.h>
+ #include <KLocalizedString>
+@@ -183,6 +184,16 @@ void Terminal::displayKPartLoadError()
+     layout->setStretchFactor(label,5);
+ }
+ 
++void Terminal::paste()
++{
++    QApplication::postEvent(m_terminalWidget, new QKeyEvent(QEvent::KeyPress, Qt::Key_V, Qt::ShiftModifier|Qt::ControlModifier));
++}
++
++void Terminal::clear_scrollback()
++{
++    QApplication::postEvent(m_terminalWidget, new QKeyEvent(QEvent::KeyPress, Qt::Key_K, Qt::ShiftModifier|Qt::ControlModifier));
++}
++
+ void Terminal::disableOffendingPartActions()
+ {
+     // This is an unwelcome stop-gap that will be removed once we can
+@@ -220,6 +231,14 @@ void Terminal::disableOffendingPartActions()
+ 
+         action = actionCollection->action("shrink-font");
+         if (action) action->setEnabled(false);
++	
++        KAction *newAct = actionCollection->addAction("terminal-paste", this, SLOT(paste()));
++        newAct->setShortcut(QKeySequence(Qt::ALT + Qt::Key_V));
++        newAct->setEnabled(true);
++
++        newAct = actionCollection->addAction("terminal-clear", this, SLOT(clear_scrollback()));
++        newAct->setShortcut(QKeySequence(Qt::ALT + Qt::Key_K));
++        newAct->setEnabled(true);
+     }
+ }
+ 
+diff --git a/app/terminal.h b/app/terminal.h
+index 23e70a0..59f2612 100644
+--- a/yakuake/app/terminal.h
++++ b/yakuake/app/terminal.h
+@@ -81,6 +81,8 @@ class Terminal : public QObject
+         void overrideShortcut(QKeyEvent* event, bool& override);
+         void silenceDetected();
+         void activityDetected();
++        void paste();
++        void clear_scrollback();
+ 
+ 
+     private:
