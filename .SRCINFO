@@ -1,0 +1,13 @@
+pkgbase = firefox-moonlight
+	pkgdesc = Alternative Silverlight plugin for Firefox using Mono
+	pkgver = 3.99.0.3
+	pkgrel = 11
+	url = http://www.go-mono.com/moonlight/download.aspx
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = unzip
+	depends = firefox
+
+pkgname = firefox-moonlight
+
