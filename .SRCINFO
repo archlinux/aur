@@ -1,0 +1,15 @@
+pkgbase = svtplay-dl
+	pkgdesc = Small command-line program to download videos from svtplay.se/tv4play.se/tv3play.se/tv8play.se/tv6play.se/viaplay.se/aftonbladet
+	pkgver = 0.10.2015.05.24
+	pkgrel = 1
+	url = https://github.com/spaam/svtplay-dl
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = rtmpdump
+	depends = python-crypto
+	source = https://github.com/spaam/svtplay-dl/archive/0.10.2015.05.24.tar.gz
+	md5sums = 8e2f6e64d8910bcb343a3c26cdefd5be
+
+pkgname = svtplay-dl
+
