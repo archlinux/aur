@@ -1,13 +1,13 @@
 pkgbase = eclipse-findbugs
 	pkgdesc = FindBugs plugin for Eclipse
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = http://findbugs.sourceforge.net/
 	arch = any
 	license = LGPL
 	depends = eclipse
-	source = http://downloads.sourceforge.net/project/findbugs/findbugs%20eclipse%20plugin/3.0.0/edu.umd.cs.findbugs.plugin.eclipse_3.0.0.20140706-2cfb468.zip
-	sha256sums = 9ed21548be987b418483b293376abcf8c150979f1b8bf5f1147e9a466a8fae97
+	source = http://downloads.sourceforge.net/project/findbugs/findbugs%20eclipse%20plugin/3.0.1/edu.umd.cs.findbugs.plugin.eclipse_3.0.1.20150306-5afe4d1.zip
+	sha256sums = 0320c733e5188a0a93ba136160e6d6479945d7f3f9dbd7817741ef96b3c02334
 
 pkgname = eclipse-findbugs
 

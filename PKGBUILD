@@ -3,9 +3,9 @@
 # Contributor: Piotr Beling <qwak@stud.ics.p.lodz.pl>
 
 pkgname=eclipse-findbugs
-pkgver=3.0.0
-_pkgdate=20140706
-_extraver=2cfb468
+pkgver=3.0.1
+_pkgdate=20150306
+_extraver=5afe4d1
 pkgrel=1
 pkgdesc="FindBugs plugin for Eclipse"
 arch=('any')
@@ -21,4 +21,4 @@ package() {
   cp -r "edu.umd.cs.findbugs.plugin.eclipse_${pkgver}.${_pkgdate}-${_extraver}" "$dest"
 }
 
-sha256sums=('9ed21548be987b418483b293376abcf8c150979f1b8bf5f1147e9a466a8fae97')
+sha256sums=('0320c733e5188a0a93ba136160e6d6479945d7f3f9dbd7817741ef96b3c02334')
