@@ -2,10 +2,10 @@
 
 pkgname=gnome-shell-extension-installer
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A bash script to search and install GNOME Shell extensions"
 arch=(any)
-license=(GPLv2)
+license=(GPL2)
 url=https://github.com/ianbrunelli/gnome-shell-extension-installer
 depends=(bash curl glib2 gnome-shell)
 optdepends=("less: to display comments and long descriptions more elegantly")
