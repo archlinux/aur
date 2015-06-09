@@ -1,0 +1,18 @@
+pkgbase = ruby-pygments.rb
+	pkgdesc = pygments wrapper for ruby
+	pkgver = 0.6.3
+	pkgrel = 2
+	url = https://github.com/tmm1/pygments.rb
+	arch = any
+	license = MIT
+	depends = python2
+	depends = ruby
+	depends = ruby-yajl-ruby
+	depends = ruby-posix-spawn
+	noextract = pygments.rb-0.6.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/pygments.rb-0.6.3.gem
+	sha1sums = 9d8e8de616c255ae4d4f7b356fcda5c0e6a7c07e
+
+pkgname = ruby-pygments.rb
+
