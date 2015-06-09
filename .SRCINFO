@@ -1,0 +1,25 @@
+pkgbase = python2-vdirsyncer
+	pkgdesc = Synchronize CalDAV and CardDAV.
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/untitaker/vdirsyncer
+	arch = any
+	license = MIT
+	checkdepends = python2-pytest
+	checkdepends = python2-wsgi-intercept>=0.6.1
+	checkdepends = python2-radicale
+	checkdepends = python2-werkzeug-git
+	checkdepends = python2-pytest-xprocess
+	checkdepends = python2-pytest-localserver
+	depends = python2-click
+	depends = python2-setuptools
+	depends = python2-lxml
+	depends = python2-requests-toolbelt
+	depends = python2-atomicwrites
+	source = https://github.com/untitaker/vdirsyncer/archive/0.5.1.zip
+	source = build.patch
+	md5sums = 5e73eb6f306157c8179ef3e608037caf
+	md5sums = b0b1e52f38d13d2e856a9699ca84410d
+
+pkgname = python2-vdirsyncer
+
