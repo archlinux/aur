@@ -1,0 +1,21 @@
+pkgbase = ntfs-3g-ar
+	pkgdesc = NTFS filesystem driver and utilities with experimental features
+	pkgver = 2015.3.14AR.1
+	pkgrel = 1
+	url = http://www.tuxera.com/community/ntfs-3g-advanced/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = util-linux
+	depends = fuse
+	provides = ntfsprogs
+	provides = ntfs-3g=2015.3.14-1
+	conflicts = ntfsprogs
+	conflicts = ntfs-3g
+	source = http://tuxera.com/opensource/ntfs-3g_ntfsprogs-2015.3.14.tgz
+	source = http://pagesperso-orange.fr/jp-andre/ntfs-3g_ntfsprogs-2015.3.14AR.1.tgz
+	sha1sums = 0ebd9adffd5a6ddcfbacade6be8efe1eba4b1a08
+	sha1sums = 5cb2a01f267e226b4413d6f13792d9928da9b59a
+
+pkgname = ntfs-3g-ar
+
