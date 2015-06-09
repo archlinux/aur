@@ -1,0 +1,21 @@
+pkgbase = lxqt-notificationd-git
+	pkgdesc = LXQt notification daemon and library.
+	pkgver = 0.9.0.14.g41a22ef
+	pkgrel = 1
+	url = http://lxqt.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = lxqt-common
+	depends = liblxqt-git
+	depends = kwindowsystem
+	provides = lxqt-notificationd
+	conflicts = lxqt-notificationd
+	source = git+https://github.com/lxde/lxqt-notificationd.git
+	sha256sums = SKIP
+
+pkgname = lxqt-notificationd-git
+
