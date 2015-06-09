@@ -1,0 +1,21 @@
+pkgbase = gauge
+	pkgdesc = Cairo Gauge to display values read from your PC
+	pkgver = 2.0.6
+	pkgrel = 1
+	url = http://tzclock.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkg-config
+	makedepends = desktop-file-utils
+	depends = libgnomeui
+	depends = cairo
+	depends = gtk3
+	depends = libgweather
+	depends = lm_sensors
+	conflicts = gauge-gtk2
+	source = http://tzclock.org/releases/source/gauge-2.0.6.tar.bz2
+	md5sums = 119bd01ee0f0b6660ef92dd94b5b0576
+
+pkgname = gauge
+
