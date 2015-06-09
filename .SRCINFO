@@ -1,0 +1,35 @@
+pkgbase = qllauncher-git
+	pkgdesc = Native standalone application to launch Quake Live on Linux
+	pkgver = 0.6.0.2.g25c916a
+	pkgrel = 2
+	url = https://bitbucket.org/fx_/quakelivelauncher/overview
+	install = qllauncher-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-opengl
+	depends = python-requests
+	depends = python-sleekxmpp
+	depends = python-pyqt5
+	depends = qt5-declarative
+	depends = qt5-multimedia
+	depends = qt5-graphicaleffects
+	depends = qt5-quickcontrols
+	depends = wine
+	depends = xorg-server-utils
+	provides = qllauncher
+	conflicts = qllauncher
+	source = qllauncher::git+https://bitbucket.org/fx_/quakelivelauncher.git
+	source = python-qllauncher::git+https://bitbucket.org/fx_/python3-qllauncher.git
+	source = fxqmlcontrols::git+https://bitbucket.org/fx_/fx-qml-controls.git
+	source = fxqmlhelpers::git+https://bitbucket.org/fx_/fx-qml-helpers.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = qllauncher-git
+
