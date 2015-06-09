@@ -1,0 +1,28 @@
+--- a/doc/hosted-kolab.conf
++++ b/doc/hosted-kolab.conf
+@@ -9,9 +9,9 @@
+ # See the Kolab Groupware Installation Manual for more information.
+ #
+ 
+-Alias /hosted-kolab /usr/share/kolab-webadmin/hosted/
++Alias /hosted-kolab /usr/share/webapps/kolab-webadmin/hosted/
+ 
+-<Directory "/usr/share/kolab-webadmin/hosted/">
++<Directory "/usr/share/webapps/kolab-webadmin/hosted/">
+     <IfModule mod_rewrite.c>
+         RewriteEngine on
+         # NOTE: This needs to point to the base uri of your installation.
+--- a/doc/kolab-webadmin.conf
++++ b/doc/kolab-webadmin.conf
+@@ -9,9 +9,9 @@
+ # See the Kolab Groupware Installation Manual for more information.
+ #
+ 
+-Alias /kolab-webadmin /usr/share/kolab-webadmin/public_html/
++Alias /kolab-webadmin /usr/share/webapps/kolab-webadmin/public_html/
+ 
+-<Directory "/usr/share/kolab-webadmin/public_html/">
++<Directory "/usr/share/webapps/kolab-webadmin/public_html/">
+     <IfModule mod_rewrite.c>
+         RewriteEngine on
+         # NOTE: This needs to point to the base uri of your installation.
