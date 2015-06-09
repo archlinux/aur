@@ -1,0 +1,16 @@
+pkgbase = mememaker-quiet
+	pkgdesc = Non-interactive version of mememaker with no bundled images
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = http://www.reddit.com/r/ScriptSwap/comments/r1oxf/bash_meme_maker_script_creates_meme_in_terminal/
+	arch = any
+	license = GPL
+	depends = imagemagick
+	depends = ttf-ms-fonts
+	provides = mememaker
+	conflicts = mememaker
+	source = mememaker
+	md5sums = be8d9536805fb1bf6d3e5ef11d3464a0
+
+pkgname = mememaker-quiet
+
