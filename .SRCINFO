@@ -1,0 +1,16 @@
+pkgbase = rebol-git
+	pkgdesc = A cross-platform data exchange language and a multi-paradigm dynamic programming language
+	pkgver = r348.22b126b
+	pkgrel = 1
+	url = http://www.rebol.com/r3/alpha-intro.html
+	arch = i686
+	arch = x86_64
+	groups = devel
+	license = Apache
+	makedepends = git
+	provides = rebol
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = rebol-git
+
