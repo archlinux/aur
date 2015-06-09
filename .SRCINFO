@@ -1,0 +1,15 @@
+pkgbase = ttf-kibitaki
+	pkgdesc = Japanese TrueType font for Programming
+	pkgver = 20140621
+	pkgrel = 1
+	url = https://github.com/Koruri/kibitaki
+	install = ttf.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://github.com/Koruri/kibitaki/archive/Kibitaki-20140621.tar.gz
+	md5sums = 399158d054a57443dd803df61eb55e74
+
+pkgname = ttf-kibitaki
+
