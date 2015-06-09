@@ -1,0 +1,17 @@
+pkgbase = python2-werkzeug-git
+	pkgdesc = The Swiss Army knife of Python web development (git python2 version)
+	pkgver = latest
+	pkgrel = 1
+	url = http://werkzeug.pocoo.org/
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	makedepends = git
+	depends = python2
+	provides = python2-werkzeug
+	conflicts = python2-werkzeug
+	source = git+https://github.com/mitsuhiko/werkzeug.git
+	md5sums = SKIP
+
+pkgname = python2-werkzeug-git
+
