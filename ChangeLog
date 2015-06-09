@@ -1,0 +1,12 @@
+2014-11-08  Mariusz Libera  <mariusz.libera@gmail.com>
+
+    1.10-1:
+    * new upstream release
+    * added ChangeLog
+    * corrected url address
+    * corrected download address
+    * modernized PKGBUILD
+    * upsteam changed license from EPL to AGPL3
+    * included README.txt and ChangeLog.txt in installation
+    * shortened description
+
