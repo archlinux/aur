@@ -1,0 +1,23 @@
+pkgbase = vuze
+	pkgdesc = The java-based bittorrent kitchen-sink servlet.
+	pkgver = 5.6.1.2
+	pkgrel = 1
+	url = http://azureus.sourceforge.net/
+	install = vuze.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = unzip
+	depends = java-runtime
+	depends = desktop-file-utils
+	optdepends = webkitgtk: For fully functional Vuze GUI. GTK3 based.
+	optdepends = mldht: Talk DHT to uTorrent, Transmission, etc. Install with internal plugin manager. It autoupdates.
+	optdepends = i2phelper: I2P support. Install with internal plugin manager. It autoupdates!
+	provides = azureus
+	noextract = Vuze_5612.jar
+	options = !strip
+	source = http://downloads.sourceforge.net/azureus/vuze/Vuze_5612/Vuze_5612_linux.tar.bz2
+	sha256sums = 66198316ec111cfb82e00f229d3f863a3a3716fa92241f1370e953cfc2e0fcdd
+
+pkgname = vuze
+
