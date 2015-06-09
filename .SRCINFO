@@ -1,0 +1,13 @@
+pkgbase = yakuake-skin-breeze-thin-dark-frameworks
+	pkgdesc = A Breeze Thin Dark skin for Yakuake (Plasma 5)
+	pkgver = 0.1
+	pkgrel = 2
+	url = http://opendesktop.org/content/show.php?content=169026
+	arch = any
+	license = GPL
+	depends = yakuake-frameworks-git
+	source = breeze-thin-dark.tar.xz::https://copy.com/D8s9BUKrpPeb3lQW/breeze-thin-dark.tar.xz?download=1
+	sha256sums = dbba7a8c9807742879b202f547f922fd1ffce646d41319b2ada111702abd480f
+
+pkgname = yakuake-skin-breeze-thin-dark-frameworks
+
