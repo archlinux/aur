@@ -1,0 +1,17 @@
+pkgbase = python2-jswebkit
+	pkgdesc = simple GTK+ HTML5 rich text editor
+	pkgver = 0.0.3
+	pkgrel = 4
+	url = http://code.google.com/p/gwrite/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = python2
+	depends = cython2
+	conflicts = python-jswebkit
+	replaces = python-jswebkit
+	source = http://gwrite.googlecode.com/files/python-jswebkit-0.0.3.tar.gz
+	md5sums = 514ed4dd5e540d160fcdac9c3c607371
+
+pkgname = python2-jswebkit
+
