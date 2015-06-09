@@ -1,0 +1,26 @@
+pkgbase = ros-indigo-moveit-ros-move-group
+	pkgdesc = ROS - The move_group node for MoveIt.
+	pkgver = 0.6.5
+	pkgrel = 1
+	url = http://moveit.ros.org
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-actionlib
+	makedepends = ros-indigo-moveit-ros-planning
+	makedepends = ros-indigo-moveit-core
+	makedepends = ros-indigo-tf
+	makedepends = ros-indigo-pluginlib
+	depends = ros-indigo-tf
+	depends = ros-indigo-actionlib
+	depends = ros-indigo-pluginlib
+	depends = ros-indigo-moveit-ros-planning
+	depends = ros-indigo-moveit-core
+	source = moveit_ros_move_group::git+https://github.com/ros-gbp/moveit_ros-release.git#tag=release/indigo/moveit_ros_move_group/0.6.5-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-moveit-ros-move-group
+
