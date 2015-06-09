@@ -1,0 +1,16 @@
+pkgbase = ttf-impallari-domine
+	pkgdesc = Domine is a perfect choice for newspapers or blogs where text is the main focus, from Pablo Impallari
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.impallari.com/projects/overview/domine/
+	install = updatefont.install
+	arch = any
+	groups = impallari-fonts
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.impallari.com/media/uploads/prosources/update-85-source.zip
+	md5sums = d1a26da138ff1fe248a213e1fee651aa
+
+pkgname = ttf-impallari-domine
+
