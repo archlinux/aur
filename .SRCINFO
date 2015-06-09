@@ -1,0 +1,30 @@
+pkgbase = lollypop-git
+	pkgdesc = Music player for GNOME
+	pkgver = 0.9.15.r554.g40f35e8
+	pkgrel = 1
+	url = https://github.com/gnumdk/lollypop
+	install = lollypop.install
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	makedepends = gnome-common
+	makedepends = intltool
+	makedepends = itstool
+	makedepends = python
+	makedepends = yelp-tools
+	depends = gobject-introspection
+	depends = gtk3
+	depends = python-dbus
+	depends = python-gobject
+	depends = python-cairo
+	depends = totem-plparser
+	optdepends = python-pylast: last.fm support
+	provides = lollypop=0.9.15.r554.g40f35e8
+	conflicts = lollypop
+	options = !emptydirs
+	source = git://github.com/gnumdk/lollypop.git
+	md5sums = SKIP
+
+pkgname = lollypop-git
+
