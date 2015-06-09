@@ -1,0 +1,18 @@
+pkgbase = xurls-git
+	pkgdesc = Extract urls from plain text
+	pkgver = v0.4.1.3.g652183e
+	pkgrel = 1
+	url = https://github.com/mvdan/xurls
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = go
+	provides = xurls
+	conflicts = xurls
+	options = !strip
+	source = xurls::git+https://github.com/mvdan/xurls
+	sha256sums = SKIP
+
+pkgname = xurls-git
+
