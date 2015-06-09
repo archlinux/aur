@@ -1,0 +1,28 @@
+--- morinus/src/Morinus/morinus.py	2010-12-27 10:55:22.000000000 +0100
++++ /usr/bin/morinus	2013-01-04 14:46:12.995707104 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ 
+ #Morinus, Astrology program
+@@ -21,15 +21,15 @@
+ import os
+ import sys
+ import wx
+-import options
+-import mtexts
+-import morin
++import morinus.options as options
++import morinus.mtexts as mtexts
++import morinus.morin as morin
+ 
+ 
+ class Morinus(wx.App):
+ 	def OnInit(self):
+ 		try:
+-			progPath = os.path.dirname(sys.argv[0])
++			progPath = "/usr/lib/python2.7/site-packages/morinus"
+ 			os.chdir(progPath)
+ 		except:
+ 			pass

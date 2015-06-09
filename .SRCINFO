@@ -1,0 +1,28 @@
+pkgbase = morinus
+	pkgdesc = Astrology software in wxPython
+	pkgver = 6.2
+	pkgrel = 5
+	url = https://sites.google.com/site/pymorinus/
+	install = morinus.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = wxpython
+	depends = python2-imaging
+	source = https://sites.google.com/site/pymorinus/Home/Morinus.zip
+	source = morinus.patch
+	source = options.patch
+	source = placedb.patch
+	source = addicon.patch
+	source = morinus-portrait.png
+	source = morinus.desktop
+	md5sums = 48b46dcf208d3099ab7e7a12fae30d55
+	md5sums = b49217822e54ca07f54c59381a857574
+	md5sums = eb443f82da4cf176aa6bbc7c9a08fd1a
+	md5sums = 0d9894dae21c06c167fc5a321e3ccdc0
+	md5sums = b9d737b537a18c1e66b775dafd878fed
+	md5sums = 4140ef94ff63a7b650e98fedc165945f
+	md5sums = d5325556826e5a3bf1cd65c71f645576
+
+pkgname = morinus
+

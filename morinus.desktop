@@ -1,0 +1,21 @@
+[Desktop Entry]
+Comment[de]=
+Comment=
+Encoding=UTF-8
+Exec=morinus
+GenericName[de]=
+GenericName=
+Icon=morinus-portrait
+MimeType=
+Name[de]=Morinus
+Name=Morinus
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+Version=1.0
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
