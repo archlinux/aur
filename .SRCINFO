@@ -1,0 +1,14 @@
+pkgbase = python2-paho-mqtt
+	pkgdesc = MQTT version 3.1/3.1.1 client class
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://eclipse.org/paho
+	arch = any
+	license = CUSTOM
+	makedepends = python2-distribute
+	depends = python2
+	source = https://pypi.python.org/packages/source/p/paho-mqtt/paho-mqtt-1.1.tar.gz
+	md5sums = a6407b74eb5e5411e157be1de5c11366
+
+pkgname = python2-paho-mqtt
+
