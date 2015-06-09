@@ -1,0 +1,10 @@
+--- fbthrift-0.24.0/thrift/lib/cpp2/protocol/Serializer.h	2015-03-27 07:17:13.000000000 +0900
++++ fbthrift.patched/src/fbthrift-0.24.0/thrift/lib/cpp2/protocol/Serializer.h	2015-03-29 22:42:05.330745866 +0900
+@@ -26,6 +26,7 @@
+ #include <thrift/lib/cpp2/protocol/SimpleJSONProtocol.h>
+ #include <thrift/lib/cpp/TApplicationException.h>
+ #include <folly/io/IOBuf.h>
++#include <gflags/gflags.h>
+ 
+ namespace apache { namespace thrift {
+ 
