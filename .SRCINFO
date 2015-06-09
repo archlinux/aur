@@ -1,0 +1,15 @@
+pkgbase = ttf-roboto-mono
+	pkgdesc = Roboto Mono is a monospaced addition to the Roboto type family.
+	pkgver = 20150606
+	pkgrel = 1
+	url = https://www.google.com/fonts/specimen/Roboto+Mono
+	install = ttf-roboto-mono.install
+	arch = any
+	license = Apache
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.markusweimar.de/public/ttf-roboto-mono-20150606.zip
+	sha256sums = 16ca33e93e1c6d9d60eb57045c3d49811df4bef0f8c7f91fd077529388fcfced
+
+pkgname = ttf-roboto-mono
+
