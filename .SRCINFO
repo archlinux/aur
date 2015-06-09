@@ -1,0 +1,33 @@
+pkgbase = parted-git
+	pkgdesc = A program for creating, destroying, resizing, checking, and copying partitions
+	pkgver = 3.2.r9.gf98f791
+	pkgrel = 1
+	url = http://www.gnu.org/software/parted/parted.html
+	install = parted-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	checkdepends = valgrind
+	checkdepends = perl-digest-crc
+	checkdepends = python2
+	makedepends = git
+	makedepends = rsync
+	makedepends = gperf
+	makedepends = bc
+	depends = device-mapper
+	depends = util-linux
+	depends = gettext
+	depends = e2fsprogs
+	depends = ncurses
+	depends = readline
+	optdepends = reiserfsprogs: for reiserfs partitions
+	provides = parted
+	conflicts = parted
+	options = !libtool
+	source = parted-git::git://git.savannah.gnu.org/parted.git
+	source = gnulib-git::git://git.savannah.gnu.org/gnulib.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = parted-git
+
