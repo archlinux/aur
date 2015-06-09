@@ -1,0 +1,18 @@
+pkgbase = qtermwidget-git
+	pkgdesc = A terminal widget for Qt
+	pkgver = 0.6.0.33.gda6838d
+	pkgrel = 1
+	url = https://github.com/qterminal/qtermwidget
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-base
+	provides = qtermwidget
+	conflicts = qtermwidget
+	source = git+https://github.com/qterminal/qtermwidget.git
+	sha256sums = SKIP
+
+pkgname = qtermwidget-git
+
