@@ -1,0 +1,15 @@
+pkgbase = tty-clock-git
+	pkgdesc = Analog clock in ncurses.
+	pkgver = latest
+	pkgrel = 1
+	url = http://github.com/xorg62/tty-clock
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = BSD
+	depends = ncurses
+	source = git+https://git@github.com/xorg62/tty-clock.git
+	md5sums = SKIP
+
+pkgname = tty-clock-git
+
