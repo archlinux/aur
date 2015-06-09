@@ -4,20 +4,15 @@ _name="cliff"
 _module="${_name}"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="1.12.0"
-pkgrel="2"
+pkgver="1.13.0"
+pkgrel="1"
 pkgdesc="Command Line Interface Formulation Framework"
 arch=("any")
 url="https://github.com/openstack/${_name}"
 license=("Apache")
-makedepends=("python-pbr>=0.6"
-             "python-pip"
-             "python-setuptools"
-             "python2-pbr>=0.6"
-             "python2-pip"
-             "python2-setuptools")
+makedepends=("python-pbr>=0.11" "python2-pbr>=0.11")
 source=("https://pypi.python.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('7609abc1789522fc4e228ea5567a9fd1db3963850396178adca3332cdd9c929a')
+sha256sums=('2b92d12cf1aa59c0cf1914b4b6b02b78daadac890a53d0e6b71b5220661ab9e0')
 
 prepare() {
     cd "${srcdir}/${_name}-${pkgver}"

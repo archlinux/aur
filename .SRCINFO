@@ -1,18 +1,14 @@
 pkgbase = python-cliff
 	pkgdesc = Command Line Interface Formulation Framework
-	pkgver = 1.12.0
-	pkgrel = 2
+	pkgver = 1.13.0
+	pkgrel = 1
 	url = https://github.com/openstack/cliff
 	arch = any
 	license = Apache
-	makedepends = python-pbr>=0.6
-	makedepends = python-pip
-	makedepends = python-setuptools
-	makedepends = python2-pbr>=0.6
-	makedepends = python2-pip
-	makedepends = python2-setuptools
-	source = https://pypi.python.org/packages/source/c/cliff/cliff-1.12.0.tar.gz
-	sha256sums = 7609abc1789522fc4e228ea5567a9fd1db3963850396178adca3332cdd9c929a
+	makedepends = python-pbr>=0.11
+	makedepends = python2-pbr>=0.11
+	source = https://pypi.python.org/packages/source/c/cliff/cliff-1.13.0.tar.gz
+	sha256sums = 2b92d12cf1aa59c0cf1914b4b6b02b78daadac890a53d0e6b71b5220661ab9e0
 
 pkgname = python-cliff
 	depends = python-cmd2>=0.6.7
