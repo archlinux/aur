@@ -1,0 +1,14 @@
+pkgbase = libggiwmh
+	pkgdesc = A libggi extension whereby wmh stands for 'Window Manager Hints'
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = http://ibiblio.org/ggicore/packages/libggiwmh.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libggi
+	source = http://downloads.sourceforge.net/project/ggi/misc/libggiwmh-0.3.2/libggiwmh-0.3.2.src.tar.gz
+	md5sums = 833ca6eb19b83c3c35d07ea3cf44e12b
+
+pkgname = libggiwmh
+
