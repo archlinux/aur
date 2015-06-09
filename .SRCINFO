@@ -1,0 +1,25 @@
+pkgbase = czmq-git
+	pkgdesc = High-level C binding for ZeroMQ
+	pkgver = 20150520
+	pkgrel = 1
+	url = https://github.com/zeromq/czmq
+	arch = i686
+	arch = x86_64
+	license = MPL
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = gcc
+	makedepends = git
+	makedepends = libtool
+	makedepends = make
+	makedepends = pkg-config
+	depends = gcc-libs
+	depends = libsodium
+	depends = zeromq
+	provides = czmq
+	conflicts = czmq
+	source = git+https://github.com/zeromq/czmq
+	sha256sums = SKIP
+
+pkgname = czmq-git
+
