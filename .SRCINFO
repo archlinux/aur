@@ -1,0 +1,17 @@
+pkgbase = openeuphoria
+	pkgdesc = Fast interpreted or compiled general purpose programming language.
+	pkgver = 4.1.0
+	pkgrel = 2
+	url = http://openeuphoria.org
+	arch = i686
+	arch = x86_64
+	license = custom:"OpenEuphoria License"
+	conflicts = euphoria
+	options = staticlibs
+	source_i686 = http://sourceforge.net/projects/rapideuphoria/files/Euphoria/4.1.0-beta2/euphoria-4.1.0-Linux-x86-57179171dbed.tar.gz/download
+	md5sums_i686 = 6264506b48d135c19fa85ecc44fb305b
+	source_x86_64 = http://sourceforge.net/projects/rapideuphoria/files/Euphoria/4.1.0-beta2/euphoria-4.1.0-Linux-x64-57179171dbed.tar.gz/download
+	md5sums_x86_64 = a19ac9fcbe92c4916e4af3499a0af6f8
+
+pkgname = openeuphoria
+
