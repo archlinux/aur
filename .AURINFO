@@ -1,0 +1,19 @@
+pkgbase = advcopy
+	pkgdesc = Advanced Copy is a mod for the GNU cp and GNU mv tools which adds a progress bar and provides some info on what's going on.
+	pkgver = 0.5
+	pkgrel = 2
+	url = http://beatex.org/web/advancedcopy.html
+	install = advcopy.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	depends = pam
+	depends = acl
+	depends = gmp
+	depends = libcap
+	source = ftp://ftp.gnu.org/gnu/coreutils/coreutils-8.23.tar.xz
+	source = advcpmv-0.5-8.23.patch
+
+pkgname = advcopy
+

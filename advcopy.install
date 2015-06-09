@@ -1,0 +1,16 @@
+profile_script='etc/profile.d/advcopy.sh'
+
+post_install() {
+  [[ -x $profile_script ]] && return 0
+  echo "alias vcp='vcp -g'" > $profile_script
+  chmod +x $profile_script
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+pre_remove() {
+  rm -f $profile_script
+}
+
