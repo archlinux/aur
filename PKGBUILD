@@ -7,12 +7,11 @@
 # features it finds support for on your system. If you want to avoid
 # linking against something you have installed, you'll have to disable
 # it in the configure below. The package() script will attempt to
-# update the dependencies based on dynamic libraries when packaging,
-# but this is currently experimental.
+# update the dependencies based on dynamic libraries when packaging.
 
 pkgname=mpv-git
 _gitname=mpv
-pkgver=0.8.3_135_g9b5a724
+pkgver=0.9.2_955_gf72028d
 pkgrel=1
 pkgdesc='Video player based on MPlayer/mplayer2 (git version)'
 arch=('i686' 'x86_64')
@@ -20,13 +19,8 @@ license=('GPL')
 url='http://mpv.io'
 _undetected_depends=('desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils')
 depends=('ffmpeg' "${_undetected_depends[@]}")
-# depends that used to be default (a long time ago, probably out of date):
-#  'lcms2' 'libcdio-paranoia' 'libdvdnav' 'libguess' 'libxinerama'
-#  'libxrandr' 'libxss' 'libxv' 'lirc-utils' 'lua' 'mpg123' 'smbclient'
-#  'wayland' 'libxkbcommon' # Note: libxkbcommon is only needed for wayland.
 optdepends=('youtube-dl: for --ytdl')
 makedepends=('git' 'python-docutils')
-# makedepends that used to be default: 'mesa' 'ladspa'
 provides=('mpv')
 conflicts=('mpv')
 options=('!emptydirs')
@@ -75,7 +69,7 @@ package() {
   install -m644 DOCS/{encoding.rst,tech-overview.txt} \
           "$pkgdir"/usr/share/doc/mpv
 
-  # Update dependencies automatically (experimental!)
+  # Update dependencies automatically based on dynamic libraries
   depends=("${_undetected_depends[@]}"
            $("$srcdir"/find-deps.py "$pkgdir"/usr/{bin/mpv,lib/libmpv.so}))
 }
