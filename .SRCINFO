@@ -1,0 +1,14 @@
+pkgbase = nautilus-data
+	pkgdesc = Nautilus data files for gnome-search-tool
+	pkgver = 3.10.1
+	pkgrel = 8
+	url = http://www.ubuntuupdates.org/package/core/trusty/main/base/nautilus-data
+	install = nautilus-data.install
+	arch = any
+	license = GPL
+	conflicts = nautilus
+	source = http://security.ubuntu.com/ubuntu/pool/main/n/nautilus/nautilus-data_3.10.1-0ubuntu8_all.deb
+	md5sums = e556bc3656a69dcdbf6cd39276941ff1
+
+pkgname = nautilus-data
+
