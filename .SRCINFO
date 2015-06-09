@@ -1,0 +1,33 @@
+pkgbase = sisu
+	pkgdesc = documents - structuring, publishing in multiple formats & search
+	pkgver = 7.1.5
+	pkgrel = 1
+	url = http://sisudoc.org
+	arch = any
+	license = GPL3
+	makedepends = ruby
+	depends = ruby
+	optdepends = zip: epub & odf:odt files
+	optdepends = unzip: epub & odf:odt files (not required)
+	optdepends = tree: report directory structure
+	optdepends = imagemagick: image support
+	optdepends = graphicsmagick: image support
+	optdepends = texlive-core: pdf
+	optdepends = texlive-latexextra: pdf
+	optdepends = texlive-fontsextra: pdf
+	optdepends = texlive-langcjk: pdf Chinese Japanese Korean (large optional dependency, comment out if not needed)
+	optdepends = sqlite: search, populate sqlite db
+	optdepends = ruby-sqlite3: search, populate sqlite db
+	optdepends = postgresql: search, populate postgresql db
+	optdepends = ruby-pg: search, populate postresql db
+	optdepends = ruby-fcgi: search, sample search form
+	optdepends = qrencode: qrcodes based on document metadata
+	conflicts = sisu-gem
+	conflicts = sisu-git
+	conflicts = sisu-git-gem
+	options = !emptydirs
+	source = http://www.sisudoc.org/sisu/archive/pool/main/s/sisu/sisu_7.1.5.orig.tar.xz
+	sha256sums = adf5286d1a5504c80f3486ae3ee2bb5dfbcb6987505a4f3bb4617795b50ba299
+
+pkgname = sisu
+
