@@ -1,0 +1,14 @@
+pkgbase = xtermcontrol
+	pkgdesc = Enables dynamic control of XFree86 xterm properties
+	pkgver = 3.2
+	pkgrel = 1
+	url = http://www.thrysoee.dk/xtermcontrol/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://www.thrysoee.dk/xtermcontrol/xtermcontrol-3.2.tar.gz
+	md5sums = 1abf1a8755e0f5c720a69a34f615f8a2
+
+pkgname = xtermcontrol
+
