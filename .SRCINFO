@@ -1,0 +1,14 @@
+pkgbase = libfyba
+	pkgdesc = Library for reading and writing to the national Norwegian geographical SOSI-format
+	pkgver = 4.1.1
+	pkgrel = 2
+	url = https://github.com/kartverket/fyba
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gcc-libs
+	source = https://github.com/kartverket/fyba/archive/4.1.1.tar.gz
+	sha512sums = 0a8951e0b7a7197bc03d86d0cda8deeb772f96ec13e482e3a3fa8f061c637775eabcf010d0a9a71c7bfe7dff360c31be5ed3bbe76112ae6a1b8a0056fb847458
+
+pkgname = libfyba
+
