@@ -1,0 +1,23 @@
+pkgbase = parrillada
+	pkgdesc = A CD/DVD burning application for MATE Desktop
+	pkgver = 1.6.2
+	pkgrel = 2
+	url = https://github.com/darkshram/parrillada
+	install = parrillada.install
+	arch = i686
+	arch = x86_64
+	groups = mate-extra
+	license = GPL2
+	depends = mate-desktop>=1.6
+	depends = gstreamer0.10
+	depends = cdrkit
+	depends = totem-plparser
+	optdepends = beagle>=0.3.0
+	optdepends = tracker>=0.7.0
+	optdepends = libburn>=0.4.0
+	optdepends = libisofs>=0.6.2
+	source = http://www.alcancelibre.org/projects/sources/parrillada/parrillada-1.6.2.tar.xz
+	md5sums = 830cb9f35e0eb4a60dd9152bddfc9f58
+
+pkgname = parrillada
+
