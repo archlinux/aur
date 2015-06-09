@@ -1,0 +1,13 @@
+pkgbase = nodejs-babel
+	pkgdesc = Turn ES6 code into readable vanilla ES5 with source maps
+	pkgver = 5.1.8
+	pkgrel = 1
+	url = https://babeljs.io/
+	arch = any
+	depends = nodejs
+	noextract = babel-5.1.8.tgz
+	source = http://registry.npmjs.org/babel/-/babel-5.1.8.tgz
+	sha1sums = 11a571e8e49a1952a1d80ce02e17663a941e8f67
+
+pkgname = nodejs-babel
+
