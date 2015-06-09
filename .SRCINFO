@@ -1,0 +1,15 @@
+pkgbase = portolan
+	pkgdesc = Portolan internet measurement tool
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://portolan.iet.unipi.it/
+	install = portolan.install
+	arch = any
+	license = custom
+	depends = java-runtime>=6
+	depends = wireless_tools
+	source = http://portolan.iet.unipi.it/wp-content/uploads/2014/11/portolan-1.0.1.tar.gz
+	sha512sums = SKIP
+
+pkgname = portolan
+

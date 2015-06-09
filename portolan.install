@@ -1,0 +1,23 @@
+post_install() {
+  systemctl daemon-reload
+  systemctl start portolan
+  systemctl enable portolan
+}
+
+pre_upgrade() {
+  systemctl stop portolan
+}
+
+post_upgrade() {
+  systemctl daemon-reload
+  systemctl start portolan
+}
+
+pre_remove() {
+  systemctl stop portolan
+  systemctl disable portolan
+}
+
+post_remove() {
+  rm -rf /usr/share/portolan
+}
