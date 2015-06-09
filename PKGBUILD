@@ -1,4 +1,4 @@
-## Maintainer: fqqbar
+## Maintainer: Firas Zaidan <firas@zaidan.de>
 ## Contributor: Markus Maiwald <mail@maiwald.tk>
 ## Contributor: zoe <chp321@gmail.com>
 
