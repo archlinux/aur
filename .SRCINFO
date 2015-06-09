@@ -1,0 +1,18 @@
+pkgbase = rtl8187se
+	pkgdesc = Realtek PCI Express wireless driver for use in newer kernels
+	pkgver = 4.0
+	pkgrel = 1
+	url = https://github.com/freestyl3r/rtl8187se
+	install = rtl8187se.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = linux-headers
+	provides = r8187se
+	source = https://github.com/freestyl3r/rtl8187se/archive/4.0.tar.gz
+	source = rtl8187se.install
+	md5sums = 25be1f0db4ee448f7823b7fddda8abe2
+	md5sums = 0f682bf6f9116dc5bc086fcfce769389
+
+pkgname = rtl8187se
+

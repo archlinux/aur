@@ -1,0 +1,14 @@
+post_install() {
+	depmod
+	echo '>>> To avoid conflicts with rtl8180, you can blacklist it with:'
+	echo '>>>  `echo "blacklist rtl8180" > /etc/modprobe.d/rtl8180_blacklist.conf`'
+}
+
+post_upgrade() {
+	depmod
+}
+
+post_remove() {
+	depmod
+}
+
