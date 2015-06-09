@@ -1,0 +1,10 @@
+[Desktop Entry] 
+Version=2.1.30 
+Type=Application 
+Name=Last.fm Scrobbler 
+Comment=Official Last.fm Scrobbler 
+Exec=lastfm-scrobbler 
+Icon=/usr/share/pixmaps/audioscrobbler.ico 
+Categories=Qt;AudioVideo; 
+Terminal=false 
+StartupNotify=true

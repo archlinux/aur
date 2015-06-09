@@ -1,0 +1,13 @@
+--- lastfm-desktop-2.1.30/app/client/Fingerprinter/LAV_Source.cpp 
++++ lastfm-desktop-2.1.30/app/client/Fingerprinter/LAV_Source.cpp 
+@@ -83,8 +83,8 @@
+     int duration;
+     int bitrate;
+     bool eof;
+-    uint8_t outBuffer[AVCODEC_MAX_AUDIO_FRAME_SIZE*4];
+-    uint8_t overflow[AVCODEC_MAX_AUDIO_FRAME_SIZE*4];
++    uint8_t outBuffer[192000*4];
++    uint8_t overflow[192000*4];
+     size_t overflowSize;
+ };
+ 
