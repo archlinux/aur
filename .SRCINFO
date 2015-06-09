@@ -1,0 +1,18 @@
+pkgbase = volctl2
+	pkgdesc = A volume control daemon.
+	pkgver = 2.3
+	pkgrel = 1
+	url = https://github.com/hobarrera/volctl2
+	arch = any
+	license = BSD
+	makedepends = python2
+	depends = python2-notify
+	depends = pygtk
+	depends = python2-xlib
+	depends = python2-pyalsaaudio
+	depends = python2-xdg
+	source = https://github.com/hobarrera/volctl2/archive/v2.3.zip
+	md5sums = da464c8c3e67dc35aaef553e60d27c64
+
+pkgname = volctl2
+
