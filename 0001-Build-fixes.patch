@@ -1,0 +1,38 @@
+From d4016734aa2c8e1119461cea37c670490d824a9b Mon Sep 17 00:00:00 2001
+From: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+Date: Thu, 1 Jan 2015 00:33:56 -0500
+Subject: [PATCH] Build fixes
+
+---
+ examples/glog_logger.cpp           | 2 +-
+ src/client/mesa/native_surface.cpp | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/examples/glog_logger.cpp b/examples/glog_logger.cpp
+index 24f2ec4..58616bc 100644
+--- a/examples/glog_logger.cpp
++++ b/examples/glog_logger.cpp
+@@ -49,7 +49,7 @@ struct google_gflag_guard_t
+ {
+     ~google_gflag_guard_t()
+     {
+-        std::call_once(shutdown_flag_gflags, google::ShutDownCommandLineFlags);
++        std::call_once(shutdown_flag_gflags, gflags::ShutDownCommandLineFlags);
+     }
+ } google_gflag_guard;
+ }
+diff --git a/src/client/mesa/native_surface.cpp b/src/client/mesa/native_surface.cpp
+index 8d31b21..cc9185a 100644
+--- a/src/client/mesa/native_surface.cpp
++++ b/src/client/mesa/native_surface.cpp
+@@ -19,6 +19,7 @@
+ #include <cstring>
+ #include "../client_buffer.h"
+ #include "native_surface.h"
++#include <iostream>
+ 
+ #include <boost/exception/diagnostic_information.hpp> 
+ 
+-- 
+2.2.1
+
