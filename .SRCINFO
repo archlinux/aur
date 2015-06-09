@@ -1,0 +1,20 @@
+pkgbase = switchboard-plug-notifications-bzr
+	pkgdesc = Notifications plug for Switchboard
+	pkgver = r106
+	pkgrel = 1
+	url = https://launchpad.net/switchboard-plug-applications
+	arch = i686
+	arch = x86_64
+	groups = pantheon-unstable
+	license = GPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = vala
+	depends = switchboard-bzr
+	provides = switchboard-plug-notifications
+	conflicts = switchboard-plug-notifications
+	source = bzr+lp:switchboard-plug-notifications
+	sha256sums = SKIP
+
+pkgname = switchboard-plug-notifications-bzr
+
