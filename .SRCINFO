@@ -1,0 +1,25 @@
+pkgbase = wingpanel-rewrite-x11-bzr
+	pkgdesc = The Pantheon Panel
+	pkgver = r77
+	pkgrel = 1
+	url = https://launchpad.net/wingpanel
+	install = wingpanel.install
+	arch = i686
+	arch = x86_64
+	groups = pantheon-unstable
+	license = GPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = vala
+	depends = gala-bzr
+	provides = wingpanel
+	provides = wingpanel-bzr
+	conflicts = wingpanel
+	conflicts = wingpanel-bzr
+	source = bzr+lp:~wingpanel-devs/wingpanel/wingpanel-rewrite-x11
+	source = wingpanel-fixes.patch
+	sha256sums = SKIP
+	sha256sums = 6f5101f8575a612f8e6c6b21ee9323c82ca1ec5c90fc1abf12a8f29ab2733fd7
+
+pkgname = wingpanel-rewrite-x11-bzr
+
