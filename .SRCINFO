@@ -1,0 +1,17 @@
+pkgbase = libprelude
+	pkgdesc = Provides the framework for using the Prelude system
+	pkgver = 1.2.5
+	pkgrel = 2
+	url = http://www.prelude-ids.org
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = swig
+	depends = gnutls
+	depends = python2
+	options = !libtool
+	source = https://www.prelude-ids.org/attachments/download/351/libprelude-1.2.5.tar.gz
+	md5sums = 626dfa935ad68cedc73f5263ae7e9c54
+
+pkgname = libprelude
+
