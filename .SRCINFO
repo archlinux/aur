@@ -1,0 +1,17 @@
+pkgbase = hpx-git
+	pkgdesc = A general purpose C++ runtime system for parallel and distributed applications of any scale
+	pkgver = 20150609
+	pkgrel = 3
+	url = http://stellar-group.org/libraries/hpx
+	arch = any
+	license = boost
+	makedepends = cmake
+	depends = boost
+	depends = gperftools
+	conflicts = hpx
+	options = staticlibs
+	source = https://github.com/STEllAR-GROUP/hpx/archive/master.zip
+	md5sums = SKIP
+
+pkgname = hpx-git
+
