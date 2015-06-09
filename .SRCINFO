@@ -1,0 +1,16 @@
+pkgbase = python2-clint-git
+	pkgdesc = Python Command-line Application Tools
+	pkgver = 0.3.3.28.gf1ab574
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/clint/
+	arch = any
+	license = custom:isc
+	makedepends = git
+	depends = python2
+	provides = python2-clint
+	conflicts = python2-clint
+	source = clint::git+https://github.com/kennethreitz/clint.git
+	md5sums = SKIP
+
+pkgname = python2-clint-git
+
