@@ -1,0 +1,22 @@
+pkgbase = paulstretch-git
+	pkgdesc = a program for stretching the audio
+	pkgver = 0.r23.7f5c399
+	pkgrel = 1
+	url = http://hypermammut.sourceforge.net/paulstretch
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = fltk
+	depends = mxml
+	depends = portaudio
+	depends = audiofile
+	depends = fftw
+	depends = libmad
+	provides = paulstretch
+	conflicts = paulstretch
+	source = paulstretch::git+https://github.com/paulnasca/paulstretch_cpp.git
+	md5sums = SKIP
+
+pkgname = paulstretch-git
+
