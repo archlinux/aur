@@ -1,0 +1,53 @@
+2014-08-02 Gilrain <pierre.buard+aur gmail com>
+	* 0.12-1 :
+	  new upstream release:
+	      New functionality:
+	      * check-rules sieve: New parameter 'byrule' to list failed messages
+		at the end of processing sorted by rule identifier.
+	      * new unfuzzy-qtclass-only sieve: Unfuzzy messages which were
+		fuzzied due to C++ class name change in code, in catalogs
+		derived by conversion from Qt Linguist translation files.
+	      * posummit: New field to set the precedence of summit subdirectories
+		(S.subdir_precedence), so that branch catalogs existing in
+		two or more branch subdirectories are always located in
+		the higher priority summit subdirectory.
+		When processing summit catalogs with some precedence set,
+		the order of processing is also following the precedence,
+		instead of being alphabetical by path throughout.
+	      * Syntax highlighting for code snippets in the user manual.
+	      * Updated language support (spelling, rules, etc):
+		Catalan, French, Galician, Norwegian, Serbian, Spanish.
+	      * Updated project-specific support: KDE.
+
+	      Modified functionality:
+	      * stats sieve: File with list of incomplete catalogs
+		(when setting 'incompfile' parameter ) is always written,
+		even if all catalogs are complete, i.e. empty list file is produced.
+		This prevents an old list file appearing as the new one.
+	      * posummit: When branch catalogs without expected corresponding
+		summit catalogs are detected (on merge and scatter), instead of
+		error a warning is issued. It has been seen in practice that
+		higher attention demanded by error was more trouble than worth.
+		Such branch catalogs are then skipped during the operation.
+
+	      Fixed bugs:
+	      * Word wrapping of message fields when writing catalogs was wrong
+		in some cases when visual and character word lengths were different
+		(e.g. CJK languages). This could have resulted in corrupted catalogs.
+	      * stats sieve: Heuristics for splitting word count from fuzzy messages
+		into translated/untranslated (when 'ondiff' parameter is issued)
+		will no longer cause negative additions.
+	      * More detailed licensing information throughout.
+	      * Adapted VCS handling for Subversion 1.7.
+	  python2-pygments added to makedepends
+
+2013-04-19 Gilrain <pierre.buard+aur gmail com>
+	* 0.11-3 :
+	  updated to docbook-xsl 1.78.1
+	  PKGBUILD conforms to pacman 4.1 guidelines
+
+2013-02-09 Gilrain <pierre.buard+aur gmail com>
+	* 0.11-2 :
+	  added changelog.
+	  updated to docbook-xsl 1.78.0
+	  expanded and reworked dependencies.

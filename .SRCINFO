@@ -1,0 +1,31 @@
+pkgbase = pology
+	pkgdesc = A framework for custom processing of PO files.
+	pkgver = 0.12
+	pkgrel = 1
+	url = http://techbase.kde.org/Localization/Tools/Pology
+	changelog = changelog
+	arch = any
+	license = GPL3
+	makedepends = cmake
+	makedepends = libxml2
+	makedepends = docbook-xsl
+	makedepends = epydoc
+	makedepends = python2-pygments
+	depends = python2
+	depends = gettext
+	optdepends = python2-dbus: to communicate with external applications
+	optdepends = python2-pyenchant: spell checking functionality (needs a dictionary)
+	optdepends = hunspell-lang: a spell-checking dictionary for your language(s)
+	optdepends = aspell-lang: a spell-checking dictionary for your language(s)
+	optdepends = ispell-lang: a spell-checking dictionary for your language(s)
+	optdepends = languagetool: used by the check-grammar sieve
+	optdepends = apertium: used by the pomtrans script
+	optdepends = git: for processing files under version control
+	optdepends = subversion: for processing files under version control
+	conflicts = pology-svn
+	options = !makeflags
+	source = http://pology.nedohodnik.net/release/pology-0.12.tar.bz2
+	sha256sums = 33fd75b7214fc70882df128b5651d4870cb7d6cc73ca27c5517b4686976de5de
+
+pkgname = pology
+
