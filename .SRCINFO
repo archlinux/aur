@@ -1,0 +1,32 @@
+pkgbase = spigot-plugin-essentials
+	pkgdesc = Essentials offers about 100 commands useful on just about every server, from kits to mob spawning.
+	pkgver = 2.x
+	pkgrel = 1
+	url = http://dev.bukkit.org/bukkit-plugins/essentials
+	arch = any
+	license = GPLv3
+	depends = craftbukkit>=1.8
+	noextract = Essentials-2.x-SNAPSHOT.jar
+	noextract = EssentialsAntiBuild-2.x-SNAPSHOT.jar
+	noextract = EssentialsChat-2.x-SNAPSHOT.jar
+	noextract = EssentialsGeoIP-2.x-SNAPSHOT.jar
+	noextract = EssentialsProtect-2.x-SNAPSHOT.jar
+	noextract = EssentialsSpawn-2.x-SNAPSHOT.jar
+	noextract = EssentialsXMPP-2.x-SNAPSHOT.jar
+	source = https://hub.spigotmc.org/jenkins/job/Spigot-Essentials/lastSuccessfulBuild/artifact/Essentials/target/Essentials-2.x-SNAPSHOT.jar
+	source = https://hub.spigotmc.org/jenkins/job/Spigot-Essentials/lastSuccessfulBuild/artifact/EssentialsAntiBuild/target/EssentialsAntiBuild-2.x-SNAPSHOT.jar
+	source = https://hub.spigotmc.org/jenkins/job/Spigot-Essentials/lastSuccessfulBuild/artifact/EssentialsChat/target/EssentialsChat-2.x-SNAPSHOT.jar
+	source = https://hub.spigotmc.org/jenkins/job/Spigot-Essentials/lastSuccessfulBuild/artifact/EssentialsGeoIP/target/EssentialsGeoIP-2.x-SNAPSHOT.jar
+	source = https://hub.spigotmc.org/jenkins/job/Spigot-Essentials/lastSuccessfulBuild/artifact/EssentialsProtect/target/EssentialsProtect-2.x-SNAPSHOT.jar
+	source = https://hub.spigotmc.org/jenkins/job/Spigot-Essentials/lastSuccessfulBuild/artifact/EssentialsSpawn/target/EssentialsSpawn-2.x-SNAPSHOT.jar
+	source = https://hub.spigotmc.org/jenkins/job/Spigot-Essentials/lastSuccessfulBuild/artifact/EssentialsXMPP/target/EssentialsXMPP-2.x-SNAPSHOT.jar
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = spigot-plugin-essentials
+
