@@ -1,0 +1,21 @@
+pkgbase = mjpg-streamer-git
+	pkgdesc = Stream mjpeg frames from a webcam via http
+	pkgver = a48d422
+	pkgrel = 1
+	url = http://sourceforge.net/projects/mjpg-streamer
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = GPL
+	makedepends = git
+	makedepends = gcc
+	depends = libjpeg-turbo
+	depends = imagemagick
+	provides = mjpg-streamer-git
+	conflicts = mjpg-streamer
+	conflicts = mjpg-streamer-svn
+	source = mjpg-streamer-git::git+https://github.com/codewithpassion/mjpg-streamer.git
+	md5sums = SKIP
+
+pkgname = mjpg-streamer-git
+
