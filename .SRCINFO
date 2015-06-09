@@ -1,0 +1,22 @@
+pkgbase = twister-core-git
+	pkgdesc = Twister core - p2p microblogging
+	pkgver = 4689.adc9e82
+	pkgrel = 1
+	url = http://twister.net.co/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	license = MIT
+	license = BSD
+	makedepends = git
+	makedepends = boost
+	depends = openssl
+	depends = db
+	depends = boost-libs
+	depends = miniupnpc
+	source = git://github.com/miguelfreitas/twister-core.git
+	md5sums = SKIP
+
+pkgname = twister-core-git
+
