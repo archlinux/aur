@@ -1,0 +1,16 @@
+pkgbase = enote
+	pkgdesc = Command line utility to backup Evernote notes and notebooks
+	pkgver = 0.1.1
+	pkgrel = 3
+	url = https://github.com/tkjacobsen/enote
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = evernote-sdk-python
+	depends = python2-beautifulsoup4
+	depends = python2-html2text-git
+	source = https://github.com/tkjacobsen/enote/archive/0.1.1.tar.gz
+	sha256sums = 47cd145e3ac3cd92d24e4942aa4b2ff63c57118e1b0057b675b38c5ab022ae46
+
+pkgname = enote
+
