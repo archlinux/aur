@@ -1,0 +1,26 @@
+pkgbase = wiznote-git
+	pkgdesc = Opensource cross-platform cloud based note-taking client
+	pkgver = 2.1.0.r1103.g38bce53
+	pkgrel = 1
+	url = http://www.wiznote.com
+	install = wiznote.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = custom
+	makedepends = cmake
+	makedepends = git
+	makedepends = boost
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	depends = qt5-base
+	depends = qt5-webkit
+	depends = crypto++
+	provides = wiznote
+	conflicts = wiznote
+	source = git+https://github.com/WizTeam/WizQTClient.git
+	md5sums = SKIP
+
+pkgname = wiznote-git
+
