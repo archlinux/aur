@@ -1,0 +1,15 @@
+pkgbase = ipbt
+	pkgdesc = A high-tech ttyrec player
+	pkgver = 20141026.2197432
+	pkgrel = 1
+	url = http://www.chiark.greenend.org.uk/~sgtatham/ipbt/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = ncurses
+	depends = perl
+	source = http://www.chiark.greenend.org.uk/~sgtatham/ipbt/ipbt-20141026.2197432.tar.gz
+	md5sums = aee6263c862c102f12cab1ae544d75a9
+
+pkgname = ipbt
+
