@@ -1,0 +1,16 @@
+pkgbase = ttf-impallari-kaushan-script
+	pkgdesc = Feels like writing quickly with an inked brush, from Pablo Impallari
+	pkgver = 1.02
+	pkgrel = 1
+	url = http://www.impallari.com/kaushan/
+	install = updatefont.install
+	arch = any
+	groups = impallari-fonts
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.impallari.com/media/releases/kaushan-script-v.1.02.zip
+	md5sums = 56c4d12b0afa2064249f258f2d8f6171
+
+pkgname = ttf-impallari-kaushan-script
+
