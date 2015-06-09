@@ -1,0 +1,16 @@
+diff -aur neard-0.15.orig/Makefile.am neard-0.15.new/Makefile.am
+--- neard-0.15.orig/Makefile.am	2014-12-08 00:20:48.000000000 +0100
++++ neard-0.15.new/Makefile.am	2015-04-13 17:01:51.164776838 +0200
+@@ -31,10 +31,10 @@
+ builtin_cflags =
+ builtin_libadd =
+ 
+-bin_PROGRAMS =
++bin_PROGRAMS = src/neard
+ 
+ pkglibexecdir = ${libexecdir}/nfc
+-pkglibexec_PROGRAMS = src/neard
++pkglibexec_PROGRAMS =
+ 
+ src_neard_SOURCES = $(gdbus_sources) $(gweb_sources) $(builtin_sources) \
+ 			src/main.c src/error.c src/near.h src/log.c \

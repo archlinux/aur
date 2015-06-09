@@ -1,0 +1,10 @@
+[Unit]
+Description=Near Field Communication Daemon
+Documentation=man:neard(8)
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/neard
+
+[Install]
+WantedBy=multi-user.target

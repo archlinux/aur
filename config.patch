@@ -1,0 +1,12 @@
+diff -aur neard-0.15.orig/src/main.conf neard-0.15.new/src/main.conf
+--- neard-0.15.orig/src/main.conf	2014-12-08 00:20:48.000000000 +0100
++++ neard-0.15.new/src/main.conf	2015-04-13 17:06:33.953061915 +0200
+@@ -4,7 +4,7 @@
+ # Constant polling will automatically trigger a new
+ # polling loop whenever a tag or a device is no longer
+ # in the RF field.
+-ConstantPoll = true
++ConstantPoll = false
+ 
+ # Automatically turn an adapter on when being discovered.
+ # Default value is false.
