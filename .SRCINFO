@@ -1,0 +1,24 @@
+pkgbase = pynote
+	pkgdesc = Manage notes on the commandline
+	pkgver = 1.0.0
+	pkgrel = 3
+	url = https://github.com/rumpelsepp/pynote
+	install = pynote.install
+	arch = any
+	license = MIT
+	makedepends = python-sphinx
+	makedepends = python-setuptools
+	depends = python
+	depends = python-plaintable
+	depends = python-click
+	depends = python-babel
+	optdepends = python-pygments: synthax highlighting support
+	provides = pynote
+	conflicts = pynote-docs
+	conflicts = pynote-git
+	conflicts = pynote-docs-git
+	source = https://pypi.python.org/packages/source/p/pynote/pynote-1.0.0.tar.gz
+	sha256sums = 6d4fe9d8234fcc1d09b4cd8d8def1c75745e02c895e2f8fe6e3c3987e3c02cbe
+
+pkgname = pynote
+
