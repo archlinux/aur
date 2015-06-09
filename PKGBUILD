@@ -4,8 +4,8 @@
 # vercheck-ppa: name=${pkgname}, url=ppa:bhdouglass/indicator-remindor, native
 
 pkgname=remindor-common
-pkgver=14.06
-_ppa_rel=0ubuntu1~trusty
+pkgver=15.06.1
+_ppa_rel=0ubuntu1~vivid
 pkgrel=1
 pkgdesc="Common files for indicator-remindor and remindor-qt"
 arch=(any)
@@ -15,7 +15,7 @@ groups=(unity-extra)
 depends=(python2-dateutil python2-dbus python2-feedparser python2-requests)
 makedepends=(python2-distutils-extra)
 source=("http://ppa.launchpad.net/bhdouglass/indicator-remindor/ubuntu/pool/main/r/remindor-common/remindor-common_${pkgver}-${_ppa_rel}.tar.gz")
-sha512sums=('f42e30bd30198cbd7c4b08187c1fe81e43811602aba599f16105568acc4de7712f38c97f8c451a69f5283c27db828d7c60c9c0e8ea436ee9a0fbe68d1eb8fa0a')
+sha512sums=('d782123e47757d4050944760b5ec92e2c27a30681ba4523a70616285d06ec8b099a4ea510badde1d7816dd6965804acaec0297fd9ae06dff3ff5c7349d40f452')
 
 package() {
   cd "${pkgname}"
