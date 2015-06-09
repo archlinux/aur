@@ -1,0 +1,13 @@
+pkgbase = xfce4-theme-plastic
+	pkgdesc = Plastic theme for Xfwm4, derived to kwin
+	pkgver = 0.91
+	pkgrel = 1
+	url = http://xfce-look.org/content/show.php/PlasticXFWM4?content=76315
+	arch = any
+	license = Artistic 2.0
+	options = !strip
+	source = http://xfce-look.org/CONTENT/content-files/76315-Plastic.tar.gz
+	md5sums = 2c205520d449f46642702813a266b060
+
+pkgname = xfce4-theme-plastic
+
