@@ -1,0 +1,23 @@
+pkgbase = mongoose-git
+	pkgdesc = Small and quick-to-use web server; https/php/cgi support - git development version
+	pkgver = 5.5_20140120.r34.g057c2d4
+	pkgrel = 1
+	url = http://code.google.com/p/mongoose/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = openssl
+	optdepends = php-cgi: for php support
+	provides = mongoose
+	conflicts = mongoose
+	backup = etc/mongoose/mongoose.conf
+	source = mongoose::git+https://github.com/cesanta/mongoose.git
+	source = mongoose.conf
+	source = mongoose.service
+	md5sums = SKIP
+	md5sums = 0a84c31ce93fa230251e40eff0e2d556
+	md5sums = 30c2fad1e3130a913b3d8beadbccbdf0
+
+pkgname = mongoose-git
+
