@@ -7,14 +7,14 @@ _gitbranch="master"
 _pkgname="pesign"
 pkgname="${_pkgname}-git"
 
-pkgver=0.110.7.g3c2374b
+pkgver=0.110.9.g2a1de2b
 pkgrel=1
 pkgdesc="Tools for manipulating signed PE-COFF binaries - GIT Version"
 url="https://github.com/rhinstaller/pesign"
 arch=('x86_64')
 license=('GPL2')
 makedepends=('git')
-depends=('popt' 'nss')
+depends=('libutil-linux' 'efivar' 'popt' 'nss')
 
 conflicts=("${_pkgname}")
 provides=("${_pkgname}=${pkgver}")
