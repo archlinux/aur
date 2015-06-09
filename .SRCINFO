@@ -1,0 +1,20 @@
+pkgbase = python2-gevent-git
+	pkgdesc = Coroutine-based concurrency library for Python
+	pkgver = 20141213
+	pkgrel = 1
+	url = https://github.com/surfly/gevent
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cython2
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-greenlet
+	provides = python2-gevent
+	conflicts = python2-gevent
+	source = python2-gevent::git+https://github.com/surfly/gevent
+	sha256sums = SKIP
+
+pkgname = python2-gevent-git
+
