@@ -1,0 +1,27 @@
+post_install() {
+  printf "%b\n" "$scmindent"
+}
+
+post_upgrade() {
+  post_install
+}
+
+read -d '' scmindent <<'EOF'
+In Vim, set the equalprg option to the filter name, which causes the
+indenting command = to invoke the filter rather than the built-in
+indenter.
+
+You might want to make the equalprg setting local to the files based on
+their extensions:
+
+    autocmd bufread,bufnewfile *.lisp,*.rkt,*.scm setlocal equalprg=scmindent
+
+or their filetypes:
+
+    autocmd filetype lisp,racket,scheme setlocal equalprg=scmindent
+
+In vi's other than Vim, use the ! command to invoke the filter on part
+or all of your buffer: Type ! to declare you'll be filtering; a movement
+command to scoop up the lines you'll be filtering; then the filter name
+(scmindent.rkt) followed by Return.
+EOF

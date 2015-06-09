@@ -1,0 +1,19 @@
+pkgbase = scmindent-git
+	pkgdesc = External filter program for properly indenting Racket, Scheme and Lisp
+	pkgver = 20140827
+	pkgrel = 1
+	url = https://github.com/ds26gte/scmindent
+	install = scmindent.install
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = racket
+	provides = lispindent
+	provides = scmindent
+	conflicts = lispindent
+	conflicts = scmindent
+	source = git+https://github.com/ds26gte/scmindent
+	sha256sums = SKIP
+
+pkgname = scmindent-git
+
