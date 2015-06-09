@@ -1,0 +1,20 @@
+pkgbase = fzf-extras
+	pkgdesc = Extra keybindings for fzf
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/atweiden/fzf-extras
+	install = fzf-extras.install
+	arch = any
+	license = MIT
+	depends = fzf
+	optdepends = ctags: select tags
+	optdepends = git: git checkout fuzzy commits, branches
+	optdepends = mlocate: locate files
+	optdepends = vim-fzf: fzf.vim
+	optdepends = xdg-utils: open files
+	optdepends = zsh: zsh keybindings
+	source = fzf-extras-0.0.5.tar.gz::https://codeload.github.com/atweiden/fzf-extras/tar.gz/0.0.5
+	sha256sums = ab46f8cd298460d85fa9402f64d4d62563d98be0bc241fa8bc61632ccb824cd9
+
+pkgname = fzf-extras
+
