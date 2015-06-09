@@ -1,0 +1,16 @@
+pkgbase = python2-vex
+	pkgdesc = Run commands in a virtualenv without modifying the current shell environment
+	pkgver = 0.0.18
+	pkgrel = 1
+	url = https://github.com/sashahart/vex
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/v/vex/vex-0.0.18.tar.gz
+	md5sums = 15f42bb9ca100c8f7a377e1a8f21c86a
+	sha256sums = f8215e982e32bf7d4f8ca39a4aced64060ba198389163b785bd51b6bb311c1d4
+
+pkgname = python2-vex
+
