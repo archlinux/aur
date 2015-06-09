@@ -1,0 +1,17 @@
+pkgbase = caled-git
+	pkgdesc = caled is a visual editor for LUT calibration files, it uses dispwin to upload and download the LUTs
+	pkgver = 20150109
+	pkgrel = 1
+	url = https://github.com/kokoko3k/caled
+	arch = any
+	license = gpl
+	makedepends = gambas3-devel git
+	depends = gambas3-gb-image>=3.0.0
+	depends = gambas3-runtime>=3.3.0
+	depends = gambas3-gb-qt4>=3.3.0
+	depends = gambas3-gb-form>=3.3.0
+	depends = gambas3-gb-image>=3.3.0
+	depends = argyllcms
+
+pkgname = caled-git
+
