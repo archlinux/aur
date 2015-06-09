@@ -1,0 +1,24 @@
+pkgbase = drumgizmo-git
+	pkgdesc = an open source cross-platform drum plugin and stand-alone application (lv2)
+	pkgver = 0.9.8.1.r20.g2699cb7
+	pkgrel = 1
+	url = http://www.drumgizmo.org
+	arch = i686
+	arch = x86_64
+	groups = lv2-plugins
+	license = GPL
+	makedepends = git
+	makedepends = cppunit
+	depends = libsmf
+	depends = jack
+	depends = libao
+	depends = qt4
+	provides = drumgizmo
+	conflicts = drumgizmo
+	source = drumgizmo::git+http://git.drumgizmo.org/drumgizmo.git
+	source = hugin::git+http://git.oftal.dk/hugin.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = drumgizmo-git
+
