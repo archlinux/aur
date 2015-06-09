@@ -1,0 +1,16 @@
+pkgbase = tetzle
+	pkgdesc = A tetromino jigsaw puzzle game
+	pkgver = 2.0.3
+	pkgrel = 3
+	url = http://gottcode.org/tetzle/
+	install = tetzle.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qt4
+	optdepends = jhead: auto-orient images
+	source = http://gottcode.org/tetzle/tetzle-2.0.3-src.tar.bz2
+	sha256sums = 6c29ea61501dcc0149ece879217df5710d1169bfae940a667af2a19605415b51
+
+pkgname = tetzle
+
