@@ -1,0 +1,17 @@
+pkgbase = python2-wssh-git
+	pkgdesc = A command-line utility/shell for WebSocket inspired by netcat
+	pkgver = r42.91b3b9c
+	pkgrel = 1
+	url = https://github.com/progrium/wssh
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = python2
+	depends = python2-gevent
+	depends = python2-ws4py
+	options = !emptydirs
+	source = wssh::git+https://github.com/progrium/wssh.git
+	md5sums = SKIP
+
+pkgname = python2-wssh-git
+
