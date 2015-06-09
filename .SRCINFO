@@ -1,0 +1,17 @@
+pkgbase = ocaml-inotify
+	pkgdesc = OCaml bindings for the inotify API
+	pkgver = 1.0
+	pkgrel = 4
+	url = https://github.com/vincenthz/ocaml-inotify
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = ocaml
+	makedepends = ocaml-findlib
+	options = !strip
+	options = staticlibs
+	source = https://github.com/vincenthz/ocaml-inotify/archive/v1.0.tar.gz
+	sha256sums = 4b218bb5b9c9a4aa703eedb3052d07e957a99bf7fec5cbba84980335f699d5e4
+
+pkgname = ocaml-inotify
+
