@@ -1,0 +1,20 @@
+post_install() {
+  gconfpkg --install pyrenamer
+  post_remove $1
+}
+
+pre_upgrade() {
+  pre_remove $1
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+pre_remove() {
+  gconfpkg --uninstall pyrenamer
+}
+
+post_remove() {
+  update-desktop-database -q
+}

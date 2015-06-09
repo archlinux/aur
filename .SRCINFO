@@ -1,0 +1,17 @@
+pkgbase = pyrenamer
+	pkgdesc = Mass file renamer
+	pkgver = 0.6.0
+	pkgrel = 9
+	url = http://www.infinicode.org
+	install = pyrenamer.install
+	arch = any
+	license = GPL2
+	makedepends = perl-xml-parser
+	depends = python2-gconf
+	optdepends = hachoir-metadata: rename multimedia files metadata
+	optdepends = python2-eyed3: rename MP3 files metadata
+	source = http://ftp.de.debian.org/debian/pool/main/p/pyrenamer/pyrenamer_0.6.0.orig.tar.gz
+	md5sums = a7159f803cd919ab76f17789189c577b
+
+pkgname = pyrenamer
+
