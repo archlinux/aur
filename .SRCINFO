@@ -1,7 +1,7 @@
 pkgbase = enhanceio-dkms-git
 	pkgdesc = dkms module for EnhanceIO block device caching
 	pkgver = 108.01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stec-inc/EnhanceIO
 	install = enhanceio-dkms-git.install
 	arch = i686

@@ -3,7 +3,7 @@
 
 pkgname=enhanceio-dkms-git
 pkgver=108.01
-pkgrel=1
+pkgrel=2
 pkgdesc="dkms module for EnhanceIO block device caching"
 arch=('i686' 'x86_64')
 url="https://github.com/stec-inc/EnhanceIO"
