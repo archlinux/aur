@@ -1,0 +1,12 @@
+pkgbase = archlinux-modern-ksplash
+	pkgdesc = A modern Arch Linux theme for Ksplash KDE splash screen
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://www.archlinux.org/
+	arch = any
+	license = GPL
+	source = http://tomoe.lbjackson.com/archlinux/archlinux-modern-ksplash-1.0.tar.gz
+	md5sums = ebbf29b8a14b9a3306ab4396a1e6823a
+
+pkgname = archlinux-modern-ksplash
+
