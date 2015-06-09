@@ -1,0 +1,19 @@
+pkgbase = pypar2
+	pkgdesc = Graphical frontend (PyGTK) for the Linux par2 utility
+	pkgver = 1.4
+	pkgrel = 7
+	url = http://pypar2.silent-blade.org/
+	install = pypar2.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = desktop-file-utils
+	depends = libglade
+	depends = par2cmdline
+	depends = pygtk
+	depends = vte
+	source = http://pypar2.silent-blade.org/uploads/Main/pypar2-1.4.tar.gz
+	source = http://ftp.de.debian.org/debian/pool/main/p/pypar2/pypar2_1.4-7.debian.tar.xz
+
+pkgname = pypar2
+
