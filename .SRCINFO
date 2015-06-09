@@ -1,0 +1,16 @@
+pkgbase = pass-sshaskpass
+	pkgdesc = Get ssh passphrase from pass
+	pkgver = 0.0.1
+	pkgrel = 2
+	url = https://github.com/jlesquembre/pass-sshaskpass
+	arch = any
+	license = GPLv2
+	depends = pass
+	depends = zenity
+	provides = x11-ssh-askpass
+	conflicts = x11-ssh-askpass
+	source = git://github.com/jlesquembre/pass-sshaskpass.git
+	md5sums = SKIP
+
+pkgname = pass-sshaskpass
+
