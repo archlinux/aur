@@ -1,0 +1,109 @@
+Only in old/bin: build_bithash
+Only in old/bin: correct
+Only in old/bin: count-kmers
+Only in old/bin: count-qmers
+diff -rup old/bin/quake.py new/bin/quake.py
+--- old/bin/quake.py	2012-06-22 22:58:49.675854704 -0400
++++ new/bin/quake.py	2012-06-22 22:58:34.139187280 -0400
+@@ -117,14 +117,14 @@ def main():
+     correct_options = make_cor_opts(options)
+     if options.model_gc:        
+         # run correct C++ code
+-        p = subprocess.Popen('%s/correct %s %s -m %s -a cutoffs.gc.txt -q %d' % (quake_dir, correct_options, reads_str, ctsf, quality_scale), shell=True)
++        p = subprocess.Popen('%s/quake-correct %s %s -m %s -a cutoffs.gc.txt -q %d' % (quake_dir, correct_options, reads_str, ctsf, quality_scale), shell=True)
+         os.waitpid(p.pid, 0)
+ 
+     else:
+         cutoff = get_cutoff()            
+ 
+         # run correct C++ code
+-        p = subprocess.Popen('%s/correct %s %s -m %s -c %s -q %d' % (quake_dir, correct_options, reads_str, ctsf, cutoff, quality_scale), shell=True)
++        p = subprocess.Popen('%s/quake-correct %s %s -m %s -c %s -q %d' % (quake_dir, correct_options, reads_str, ctsf, cutoff, quality_scale), shell=True)
+         os.waitpid(p.pid, 0)
+ 
+ 
+@@ -146,9 +146,9 @@ def count_kmers(readsf, reads_listf, k,
+ 
+     # count
+     if ctsf[-4:] == 'qcts':
+-        p = subprocess.Popen('cat %s | %s/count-qmers -k %d -q %d > %s' % (' '.join(fq_files), quake_dir, k, quality_scale, ctsf), shell=True)
++        p = subprocess.Popen('cat %s | %s/quake-count-qmers -k %d -q %d > %s' % (' '.join(fq_files), quake_dir, k, quality_scale, ctsf), shell=True)
+     else:
+-        p = subprocess.Popen('cat %s | %s/count-kmers -k %d > %s' % (' '.join(fq_files), quake_dir, k, ctsf), shell=True)
++        p = subprocess.Popen('cat %s | %s/quake-count-kmers -k %d > %s' % (' '.join(fq_files), quake_dir, k, ctsf), shell=True)
+     os.waitpid(p.pid, 0)
+ 
+ 
+diff -rup old/src/Makefile new/src/Makefile
+--- old/src/Makefile	2012-06-22 22:58:58.809188485 -0400
++++ new/src/Makefile	2012-06-22 23:06:00.979209086 -0400
+@@ -2,9 +2,9 @@ CXX      := g++
+ CXXFLAGS := $(CXXFLAGS) -fopenmp -I.
+ LDFLAGS  := -L. -lgzstream -lz
+ #INCLUDEDIR=
+-EXE_FILES := correct count-kmers count-qmers \
+-		count_qmers reduce-kmers reduce-qmers \
+-		trim build_bithash correct_stats
++EXE_FILES := quake-correct quake-count-kmers quake-count-qmers \
++		quake-count-qmers2 quake-reduce-kmers quake-reduce-qmers \
++		quake-trim quake-build-bithash quake-correct-stats
+ .PHONY: all clean
+ 
+ all: $(EXE_FILES)
+@@ -12,35 +12,36 @@ all: $(EXE_FILES)
+ clean:
+ 	-rm $(EXE_FILES) *.o
+ 
+-correct: correct.cpp Read.o bithash.o edit.o libgzstream.a
+-	$(CXX) $(CXXFLAGS) correct.cpp Read.o bithash.o edit.o -o correct $(LDFLAGS)
++quake-correct: correct.cpp Read.o bithash.o edit.o libgzstream.a
++	$(CXX) $(CXXFLAGS) correct.cpp Read.o bithash.o edit.o -o $@ $(LDFLAGS)
+ 
+-count-kmers: count-kmers.cpp count.o
+-	$(CXX) $(CXXFLAGS) count-kmers.cpp count.o -o count-kmers
++quake-count-kmers: count-kmers.cpp count.o
++	$(CXX) $(CXXFLAGS) count-kmers.cpp count.o -o $@
+ 
+-count-qmers: count-qmers.cpp count.o
+-	$(CXX) $(CXXFLAGS) count-qmers.cpp count.o -o count-qmers
++quake-count-qmers: count-qmers.cpp count.o
++	$(CXX) $(CXXFLAGS) count-qmers.cpp count.o -o $@
+ 
+-count_qmers: count_qmers.cpp count.o qmer_hash.o
+-	$(CXX) $(CXXFLAGS) -o count_qmers count_qmers.cpp count.o qmer_hash.o
++quake-count-qmers2: count_qmers.cpp count.o qmer_hash.o
++	$(CXX) $(CXXFLAGS) -o $@ count_qmers.cpp count.o qmer_hash.o
+ 
+-qmer_hash.o: qmer_hash.cpp qmer_hash.h
+-	$(CXX) $(CXXFLAGS) -c qmer_hash.cpp
+ 
+-reduce-kmers: reduce-kmers.cpp
+-	$(CXX) $(CXXFLAGS) reduce-kmers.cpp -o reduce-kmers
++quake-reduce-kmers: reduce-kmers.cpp
++	$(CXX) $(CXXFLAGS) reduce-kmers.cpp -o $@
++
++quake-reduce-qmers: reduce-qmers.cpp
++	$(CXX) $(CXXFLAGS) reduce-qmers.cpp -o $@
+ 
+-reduce-qmers: reduce-qmers.cpp
+-	$(CXX) $(CXXFLAGS) reduce-qmers.cpp -o reduce-qmers
++quake-trim: trim.cpp Read.o bithash.o edit.o libgzstream.a
++	$(CXX) $(CXXFLAGS) trim.cpp Read.o bithash.o edit.o -o $@ $(LDFLAGS)
+ 
+-trim: trim.cpp Read.o bithash.o edit.o libgzstream.a
+-	$(CXX) $(CXXFLAGS) trim.cpp Read.o bithash.o edit.o -o trim $(LDFLAGS)
++quake-build-bithash: build_bithash.cpp bithash.o
++	$(CXX) $(CXXFLAGS) build_bithash.cpp bithash.o -o $@
+ 
+-build_bithash: build_bithash.cpp bithash.o
+-	$(CXX) $(CXXFLAGS) build_bithash.cpp bithash.o -o build_bithash
++quake-correct-stats: stats.cpp
++	$(CXX) $(CXXFLAGS) stats.cpp -o $@
+ 
+-correct_stats: stats.cpp
+-	$(CXX) $(CXXFLAGS) stats.cpp -o correct_stats
++qmer_hash.o: qmer_hash.cpp qmer_hash.h
++	$(CXX) $(CXXFLAGS) -c qmer_hash.cpp
+ 
+ Read.o: Read.cpp Read.h bithash.o
+ 	$(CXX) $(CXXFLAGS) -c Read.cpp

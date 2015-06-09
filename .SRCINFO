@@ -1,0 +1,24 @@
+pkgbase = quake-bio
+	pkgdesc = A package to correct Illumina DNA sequencing reads
+	pkgver = 0.3.1
+	pkgrel = 2
+	url = http://www.cbcb.umd.edu/software/quake
+	arch = i686
+	arch = x86_64
+	license = Artistic2.0
+	makedepends = boost
+	depends = jellyfish
+	depends = boost-libs
+	depends = r
+	depends = python2
+	source = http://www.cbcb.umd.edu/software/quake/downloads/quake-0.3.1.tar.gz
+	source = quake-0.3.1-getopt.patch
+	source = quake-0.3.1-makefile.patch
+	source = quake-0.3.1-nameclash.patch
+	md5sums = 3f72ea0dedc8bc4c0bd0bd5c76235a93
+	md5sums = ae1d6f62706b041902ec63320a40f90b
+	md5sums = aa6fe2f977c9d9dd613890663c39cb2a
+	md5sums = c4acdbddf1d4e01c813ced61aec9d135
+
+pkgname = quake-bio
+
