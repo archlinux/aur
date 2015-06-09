@@ -1,0 +1,19 @@
+pkgbase = shedskin-git
+	pkgdesc = Experimental (restricted) Python-to-C++ compiler (development version)
+	pkgver = latest
+	pkgrel = 1
+	url = http://code.google.com/p/shedskin/
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python2
+	depends = pcre
+	depends = gc
+	depends = python2
+	provides = shedskin
+	conflicts = shedskin
+	source = shedskin::git+https://gitorious.org/shedskin/mainline.git
+	sha256sums = SKIP
+
+pkgname = shedskin-git
+
