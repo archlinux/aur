@@ -1,0 +1,16 @@
+pkgbase = python2-marshmallow
+	pkgdesc = A lightweight library for converting complex datatypes into native Python datatypes
+	pkgver = 2.0.0b2
+	pkgrel = 1
+	url = http://marshmallow.rtfd.org
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/m/marshmallow/marshmallow-2.0.0b2.tar.gz
+	md5sums = b958adde7fe431a43de1c38d63cf6993
+	sha256sums = c4bb1b8569bef322fea40658e523a47d559488e615f5db5789f520564851eb46
+
+pkgname = python2-marshmallow
+
