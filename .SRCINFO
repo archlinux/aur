@@ -1,0 +1,22 @@
+pkgbase = libjson-rpc-cpp-git
+	pkgdesc = C++ framework for json-rpc 1.0 and 2.0
+	pkgver = 20150220
+	pkgrel = 1
+	url = https://github.com/cinemast/libjson-rpc-cpp
+	install = libjson-rpc-cpp.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	checkdepends = boost
+	makedepends = cmake
+	depends = argtable
+	depends = curl
+	depends = jsoncpp
+	depends = libmicrohttpd
+	provides = libjson-rpc-cpp
+	conflicts = libjson-rpc-cpp
+	source = git+https://github.com/cinemast/libjson-rpc-cpp
+	sha256sums = SKIP
+
+pkgname = libjson-rpc-cpp-git
+
