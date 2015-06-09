@@ -1,0 +1,6 @@
+post_upgrade() {
+  echo "Important: Update 389-ds-base instances by stopping the appropriate systemd"
+  echo "services and running:"
+  echo
+  echo "  /usr/bin/setup-ds.pl -u -s General.UpdateMode=offline"
+}
