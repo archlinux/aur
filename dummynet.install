@@ -1,0 +1,11 @@
+post_install() {
+	depmod `uname -r`
+}
+
+post_upgrade() {
+	depmod `uname -r`
+}
+
+post_remove() {
+	depmod `uname -r`
+}
