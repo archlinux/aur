@@ -1,0 +1,19 @@
+pkgbase = lib32-libudev0
+	pkgdesc = Dynamic library to access udev device information (legacy)
+	pkgver = 182
+	pkgrel = 1
+	url = https://www.kernel.org/pub/linux/utils/kernel/hotplug/udev/udev.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-multilib
+	makedepends = gperf
+	makedepends = lib32-kmod
+	makedepends = lib32-util-linux
+	makedepends = usbutils
+	depends = lib32-glibc
+	source = https://www.kernel.org/pub/linux/utils/kernel/hotplug/udev-182.tar.xz
+	sha256sums = adb8892f3b8e4b7163703ed4a545774721a3d55a1062de001f08c477c03d97ab
+
+pkgname = lib32-libudev0
+
