@@ -1,0 +1,19 @@
+pkgbase = python2-crtauth-git
+	pkgdesc = A public key backed client/server authentication system
+	pkgver = 20140105
+	pkgrel = 1
+	url = https://github.com/spotify/crtauth
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2
+	provides = crtauth
+	provides = python2-crtauth
+	conflicts = crtauth
+	conflicts = python2-crtauth
+	source = python2-crtauth::git+https://github.com/spotify/crtauth
+	sha256sums = SKIP
+
+pkgname = python2-crtauth-git
+
