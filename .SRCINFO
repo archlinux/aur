@@ -1,0 +1,18 @@
+pkgbase = mkgmap-svn
+	pkgdesc = Create maps for Garmin GPS devices from OpenStreetMap (OSM) data.
+	pkgver = 3617
+	pkgrel = 1
+	url = http://www.mkgmap.org.uk
+	arch = any
+	license = GPL2
+	makedepends = subversion
+	makedepends = apache-ant
+	depends = java-runtime
+	conflicts = mkgmap
+	source = mkgmap
+	source = svn+http://svn.mkgmap.org.uk/mkgmap/trunk
+	sha256sums = 135dfbca5146cea34ef48ed6908a817efdfbbcccbb8adfbbb6a100f58c2c7bb6
+	sha256sums = SKIP
+
+pkgname = mkgmap-svn
+
