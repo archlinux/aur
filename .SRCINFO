@@ -1,0 +1,17 @@
+pkgbase = inkslides-git
+	pkgdesc = Forked and improved version of inkscapeslide-git
+	pkgver = r25.8e77203
+	pkgrel = 1
+	url = https://github.com/janoliver/inkslides.git
+	arch = i686
+	arch = x86_64
+	license = mit
+	makedepends = git
+	depends = python
+	depends = inkscape
+	depends = python-lxml
+	source = git+https://github.com/janoliver/inkslides.git
+	md5sums = SKIP
+
+pkgname = inkslides-git
+
