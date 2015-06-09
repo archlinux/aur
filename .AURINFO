@@ -1,0 +1,13 @@
+pkgbase = qinfo
+	pkgdesc = A tiny but strong ascii art text viewer written in C using GTK+.
+	pkgver = 1.0
+	pkgrel = 2
+	url = https://github.com/b52/qinfo
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	depends = gtk2
+	source = qinfo.zip::https://github.com/b52/qinfo/archive/9960dd847c4a5b25c11ca788e6b48ecb1b54074d.zip
+
+pkgname = qinfo
+
