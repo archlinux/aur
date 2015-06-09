@@ -1,0 +1,21 @@
+pkgbase = jed-git
+	pkgdesc = A freely available text editor for Unix and others OS - Latest development version
+	pkgver = 0.99.20.107
+	pkgrel = 2
+	url = http://www.jedsoft.org/snapshots/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = libxext
+	makedepends = libxt
+	depends = gpm
+	depends = slang
+	depends = libxft
+	provides = jed
+	conflicts = jed
+	options = !makeflags
+	source = http://www.jedsoft.org/snapshots/jed-pre0.99.20-107.tar.gz
+	md5sums = 24dbd559bba4eb4a477721d828ceb900
+
+pkgname = jed-git
+
