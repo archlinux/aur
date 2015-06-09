@@ -1,0 +1,17 @@
+pkgbase = ruby-activemodel
+	pkgdesc = A toolkit for building modeling frameworks (part of Rails).
+	pkgver = 4.2.1
+	pkgrel = 1
+	url = http://www.rubyonrails.org
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-activesupport
+	depends = ruby-builder
+	noextract = activemodel-4.2.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/activemodel-4.2.1.gem
+	sha1sums = d96404f52b8f70b43b8c4a55ad02b674432e9887
+
+pkgname = ruby-activemodel
+
