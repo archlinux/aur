@@ -1,0 +1,14 @@
+pkgbase = nodejs-jsxhint
+	pkgdesc = Wrapper for JSHint to allow hinting of JSX files
+	pkgver = 0.15.1
+	pkgrel = 1
+	url = https://github.com/STRML/JSXHint
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	provides = jsxhint
+	provides = nodejs-jsxhint
+
+pkgname = nodejs-jsxhint
+
