@@ -1,0 +1,14 @@
+pkgbase = powder
+	pkgdesc = A graphical roguelike, originally designed for the Game Boy Advance
+	pkgver = 117
+	pkgrel = 1
+	url = http://www.zincland.com/powder/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = sdl
+	source = http://zincland.com/powder/release/powder117_src.tar.gz
+	md5sums = c4f11cd0ad6b649474ed5ede84e7423b
+
+pkgname = powder
+
