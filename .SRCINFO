@@ -1,0 +1,25 @@
+pkgbase = pantheon-dock-bzr
+	pkgdesc = The Pantheon Dock
+	pkgver = r1050
+	pkgrel = 1
+	url = https://launchpad.net/pantheon-dock
+	install = pantheon-dock.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = bzr
+	makedepends = gnome-common
+	makedepends = intltool
+	makedepends = vala
+	depends = bamf
+	depends = libdbusmenu-gtk3
+	depends = libgee
+	provides = pantheon-dock
+	provides = plank
+	conflicts = pantheon-dock
+	conflicts = plank
+	source = bzr+lp:pantheon-dock
+	sha256sums = SKIP
+
+pkgname = pantheon-dock-bzr
+
