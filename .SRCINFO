@@ -1,0 +1,19 @@
+pkgbase = concoord
+	pkgdesc = Coordination service for distributed systems
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/denizalti/concoord
+	arch = any
+	license = BSD
+	makedepends = python2-distribute
+	depends = python2
+	depends = python2-dnspython
+	depends = python2-msgpack
+	provides = concoord
+	provides = openreplica
+	conflicts = openreplica
+	source = http://openreplica.org/src/concoord-1.1.0.tar.gz
+	sha256sums = fff6f4b669867f0b2ba3469a03497ac5e656292bfcf35412e353c8be48983e25
+
+pkgname = concoord
+
