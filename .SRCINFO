@@ -1,0 +1,20 @@
+pkgbase = lxqt-common-git
+	pkgdesc = Common data to run a LXQt session.
+	pkgver = 0.9.1.14.ga211dd5
+	pkgrel = 1
+	url = http://lxqt.org
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = liblxqt
+	makedepends = qt5-tools
+	depends = bash
+	depends = hicolor-icon-theme
+	provides = lxqt-common
+	conflicts = lxqt-common
+	source = git+https://github.com/lxde/lxqt-common.git
+	sha256sums = SKIP
+
+pkgname = lxqt-common-git
+
