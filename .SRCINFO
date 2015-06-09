@@ -1,0 +1,19 @@
+pkgbase = clojurescript-git
+	pkgdesc = Clojure to JS compiler, git version
+	pkgver = r3297.r2.ge962ec0
+	pkgrel = 1
+	url = https://github.com/clojure/clojurescript
+	install = clojurescript-git.install
+	arch = any
+	license = EPL
+	makedepends = git
+	makedepends = unzip
+	makedepends = curl
+	depends = java-runtime
+	source = git+https://github.com/clojure/clojurescript.git
+	source = clojurescript.sh
+	md5sums = SKIP
+	md5sums = 2265f31dcd3e5dad7ddd59a28b998bfb
+
+pkgname = clojurescript-git
+
