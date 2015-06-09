@@ -1,0 +1,16 @@
+pkgbase = ruby-rugged
+	pkgdesc = Ruby binding to the libgit2 linkable library
+	pkgver = 0.22.2
+	pkgrel = 1
+	url = https://github.com/libgit2/rugged
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libgit2
+	depends = ruby
+	noextract = rugged-0.22.2.gem
+	source = https://rubygems.org/downloads/rugged-0.22.2.gem
+	sha256sums = f7e6c8304eb5ec06c7366fb13e203eb738e20bf190c3aa99498d674db7b5379d
+
+pkgname = ruby-rugged
+
