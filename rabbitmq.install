@@ -1,0 +1,53 @@
+post_install() {
+  groupadd -r rabbitmq
+  useradd -r -g rabbitmq -m -d /var/lib/rabbitmq -c "RabbitMQ messaging server" rabbitmq
+  # mkdir -p /var/lib/rabbitmq/mnesia
+  chown -R rabbitmq:rabbitmq /var/log/rabbitmq
+  chown -R rabbitmq:rabbitmq /var/lib/rabbitmq
+  chown -R rabbitmq:root /etc/rabbitmq
+
+cat << EOF
+
+==> WARNING:
+==> This systemd unit executes rabbitmq as rabbitmq user. This is *DIFFERENT*
+==> from the legacy sysvinit scripts included in the package that 
+==> default on using the "root" user. DO NOT MIX usage of this systemd unit
+==> with rc.d initscripts, or permission problems may arise.
+==> To fix those, use the following command (as root):
+
+chown -R rabbitmq:rabbitmq /var/lib/rabbitmq
+
+==> DO NOT DELETE anything manually, that may make your rabbitmq install 
+==> unusable, until deletion of everything under /var/lib/rabbitmq
+
+EOF
+
+}
+
+post_upgrade() {
+  chown -R rabbitmq:rabbitmq /var/log/rabbitmq
+  chown -R rabbitmq:rabbitmq /var/lib/rabbitmq
+  chown -R rabbitmq:root /etc/rabbitmq
+  #echo "Warning: RabbitMQ Configuration File is /etc/rabbitmq/rabbitmq-env.conf for now!"
+
+  cat << EOF
+
+==> WARNING:
+==> The systemd unit executes rabbitmq as rabbitmq user. This is *DIFFERENT*
+==> from the legacy sysvinit scripts included in the package that 
+==> default on using the "root" user. DO NOT MIX usage of this systemd unit
+==> with rc.d initscripts, or permission problems may arise.
+==> To fix those, use the following command (as root):
+
+chown -R rabbitmq:rabbitmq /var/lib/rabbitmq
+
+==> DO NOT DELETE anything manually, that may make your rabbitmq install 
+==> unusable, until deletion of everything under /var/lib/rabbitmq
+
+EOF
+}
+
+post_remove() {
+  userdel rabbitmq
+  groupdel rabbitmq 2>/dev/null || /bin/true
+}
