@@ -12,7 +12,7 @@ source=('git+https://github.com/mutantmonkey/tor-control-port-proxy.git')
 sha256sums=('SKIP')
 
 package() {
-  cd $srcdir/tor-control-port-proxy
+  cd "$srcdir/tor-control-port-proxy"
   install -Dm755 tor-control-port-proxy \
     "${pkgdir}/usr/bin/tor-control-port-proxy"
   install -Dm644 tor-control-port-proxy.service \
