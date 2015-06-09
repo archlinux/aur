@@ -1,0 +1,14 @@
+pkgbase = podget-cvs
+	pkgdesc = Simple tool to automate downloading of podcasts
+	pkgver = 20150609
+	pkgrel = 1
+	url = http://podget.sourceforge.net/
+	arch = any
+	license = GPL3
+	makedepends = cvs
+	depends = wget
+	provides = podget
+	conflicts = podget
+
+pkgname = podget-cvs
+
