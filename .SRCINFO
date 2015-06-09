@@ -1,0 +1,13 @@
+pkgbase = pcf-unifont
+	pkgdesc = Bitmap version of the GNU Unifont
+	pkgver = 7.0.06
+	pkgrel = 1
+	url = http://unifoundry.com/unifont.html
+	arch = any
+	license = GPL
+	noextract = unifont-7.0.06.pcf.gz
+	source = http://unifoundry.com/pub/unifont-7.0.06/font-builds/unifont-7.0.06.pcf.gz
+	md5sums = d7d0c102abff5174d217c2d5976e13b7
+
+pkgname = pcf-unifont
+
