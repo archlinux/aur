@@ -1,0 +1,15 @@
+pkgbase = libreoffice-extension-perfectepub
+	pkgdesc = Extension for cleaning formatting errors in LibO files
+	pkgver = 0.0.7
+	pkgrel = 2
+	url = http://lukesblog.it/ebooks/ebook-tools/perfectepub/
+	arch = any
+	groups = libreoffice-extensions
+	license = LGPL
+	depends = libreoffice
+	depends = java-runtime
+	source = http://lukesblog.it/wp-content/plugins/cimy-counter/cc_redirect.php?cc=PerfectEpub&fn=http://dl.dropbox.com/u/14712909/macro/PerfectEpub/PerfectEpub-0.0.7.oxt
+	md5sums = c62ce487234fe927cd2bae3fb653a7f4
+
+pkgname = libreoffice-extension-perfectepub
+
