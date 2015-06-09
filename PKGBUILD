@@ -1,4 +1,4 @@
-# Maintainer: oi_wtf <brainpower at gulli dot com>
+# Maintainer: oi_wtf <brainpower at mailbox dot org>
 # Original-Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Original-Maintainer: Jan de Groot <jgc@archlinxu.org>
 # Contributor: Wael Nasreddine <gandalf@siemens-mobiles.org>
