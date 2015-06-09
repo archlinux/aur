@@ -1,0 +1,13 @@
+post_install() {
+    echo "  -> Updating icon cache..."
+    gtk-update-icon-cache -q -f -t /usr/share/icons/gnome
+    gtk-update-icon-cache -q -f -t /usr/share/icons/Adwaita
+}
+
+post_upgrade() {
+    post_install $1
+}
+
+post_remove() {
+    post_install $1
+}
