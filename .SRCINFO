@@ -1,0 +1,17 @@
+pkgbase = lib32-slang
+	pkgdesc = S-Lang is a powerful interpreted language
+	pkgver = 2.2.4
+	pkgrel = 2
+	url = http://www.jedsoft.org/slang/
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-multilib
+	depends = lib32-pcre
+	depends = lib32-zlib
+	depends = slang
+	options = !makeflags
+	source = ftp://ftp.fu-berlin.de/pub/unix/misc/slang/v2.2/slang-2.2.4.tar.bz2
+	sha256sums = 9a8257a9a2a55099af858b13338dc8f3a06dd2069f46f0df2c9c3bb84a01d5db
+
+pkgname = lib32-slang
+
