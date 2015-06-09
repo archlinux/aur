@@ -1,0 +1,14 @@
+pkgbase = eclipse-jautodoc
+	pkgdesc = JAutodoc is an Eclipse Plugin for automatically adding Javadoc and file headers to your source code.
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = http://jautodoc.sourceforge.net/
+	arch = any
+	license = Eclipse Public License 1.0,
+	license = Apache License 2.0
+	depends = eclipse
+	source = http://sourceforge.net/projects/jautodoc/files/jautodoc/1.12.0/jautodoc_1.12.0.zip
+	sha512sums = d963bdacde4f37b9237ae13c66600d1701502947ba7fd9d8f942c32073ea82da1cdb77149dae30ef3adf9e2c3d00beeafb4c0629b7a891299c2ccd0c3563cbbe
+
+pkgname = eclipse-jautodoc
+
