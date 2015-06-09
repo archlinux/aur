@@ -1,0 +1,27 @@
+pkgbase = kvirc4-svn
+	pkgdesc = Qt4 based IRC-Client, compiled with kde4 support - SVN Version
+	pkgver = 6381
+	pkgrel = 1
+	url = http://www.kvirc.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = subversion
+	makedepends = automoc4
+	makedepends = gettext
+	depends = qt4
+	depends = glibc
+	depends = openssl
+	depends = zlib
+	depends = kdelibs
+	depends = perl
+	provides = kvirc
+	provides = kvirc4
+	conflicts = kvirc4
+	conflicts = kvirc
+	source = svn+https://svn.kvirc.de/svn/trunk/kvirc
+	sha256sums = SKIP
+
+pkgname = kvirc4-svn
+
