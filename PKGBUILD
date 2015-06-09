@@ -3,8 +3,8 @@
 pkgname=transmission-csd
 _gitname=transmission
 _gitbranch="wip/gtk-3.14"
-pkgver=4.ed0b662
-pkgrel=3
+pkgver=r57.baf688f
+pkgrel=1
 pkgdesc="Fast, easy, and free BitTorrent client (GTK+ GUI), CSD port"
 arch=('i686' 'x86_64')
 license=('GPLv2')
@@ -21,19 +21,19 @@ provides=('transmission-gtk')
 md5sums=('SKIP')
  
 pkgver() {
-  cd "${_gitname}"
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+	cd "${_gitname}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${srcdir}/${_gitname}/"
-  ./autogen.sh --prefix=/usr
-  make
+	cd "${srcdir}/${_gitname}/"
+	./autogen.sh --prefix=/usr
+	make
 }
 
 package() {
-  cd "${srcdir}/${_gitname}/"
-  make -C gtk DESTDIR="$pkgdir" install
-  make -C po DESTDIR="$pkgdir" install
-  install -D -m644 COPYING "$pkgdir/usr/share/licenses/transmission-gtk/COPYING"
+	cd "${srcdir}/${_gitname}/"
+	make -C gtk DESTDIR="$pkgdir" install
+	make -C po DESTDIR="$pkgdir" install
+	install -D -m644 COPYING "$pkgdir/usr/share/licenses/transmission-gtk/COPYING"
 }
