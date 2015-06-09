@@ -1,0 +1,26 @@
+pkgbase = ros-indigo-moveit-ros-robot-interaction
+	pkgdesc = ROS - Components of MoveIt that offer interaction via interactive markers.
+	pkgver = 0.6.5
+	pkgrel = 1
+	url = http://moveit.ros.org
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-interactive-markers
+	makedepends = ros-indigo-roscpp
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-moveit-ros-planning
+	makedepends = ros-indigo-tf
+	makedepends = ros-indigo-eigen-conversions
+	depends = ros-indigo-interactive-markers
+	depends = ros-indigo-tf
+	depends = ros-indigo-eigen-conversions
+	depends = ros-indigo-moveit-ros-planning
+	depends = ros-indigo-roscpp
+	source = moveit_ros_robot_interaction::git+https://github.com/ros-gbp/moveit_ros-release.git#tag=release/indigo/moveit_ros_robot_interaction/0.6.5-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-moveit-ros-robot-interaction
+
