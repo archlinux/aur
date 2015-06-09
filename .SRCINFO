@@ -1,0 +1,13 @@
+pkgbase = instruct
+	pkgdesc = Program for using multi-locus genotype data to investigate population structure, and self-fertilization rates.
+	pkgver = 20090404
+	pkgrel = 1
+	url = http://cbsuapps.tc.cornell.edu/InStruct.aspx
+	arch = i686
+	arch = x86_64
+	license = Non-commercial
+	source = ftp://cbsuftp.tc.cornell.edu/BioHPC/var/InStruct_sources.zip
+	md5sums = 644642a1a732fcdf00647b784f468b75
+
+pkgname = instruct
+
