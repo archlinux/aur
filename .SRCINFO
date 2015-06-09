@@ -1,0 +1,35 @@
+pkgbase = hexchat-git
+	pkgdesc = A GTK+ based IRC client
+	pkgver = 2.11.0.9b2c560
+	pkgrel = 1
+	url = https://hexchat.github.io
+	install = hexchat.install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = GPL
+	makedepends = intltool
+	makedepends = git
+	makedepends = perl
+	makedepends = python
+	depends = gtk2
+	depends = openssl
+	depends = dbus-glib
+	depends = libcanberra
+	depends = libnotify
+	depends = libproxy
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	depends = sound-theme-freedesktop
+	depends = iso-codes
+	optdepends = enchant: for spell check
+	optdepends = perl: for perl plugin
+	optdepends = python: for python plugin
+	provides = hexchat
+	conflicts = hexchat
+	options = !libtool
+	source = git://github.com/hexchat/hexchat.git
+	md5sums = SKIP
+
+pkgname = hexchat-git
+
