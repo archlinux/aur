@@ -1,0 +1,26 @@
+pkgbase = gravit-git
+	pkgdesc = Design tool made in the spirit of Freehand and Fireworks
+	pkgver = 20150112
+	pkgrel = 1
+	url = https://github.com/Gravit-io/gravit
+	install = gravit.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = nodejs-bower
+	makedepends = nodejs-grunt-cli
+	makedepends = npm
+	makedepends = ruby-compass
+	makedepends = ruby-sass
+	depends = nodejs
+	provides = gravit
+	conflicts = gravit
+	options = !strip
+	source = git+https://github.com/Gravit-io/gravit
+	source = gravit.service
+	sha256sums = SKIP
+	sha256sums = 4f4ed48f5ebf5f9dac947d199e5065ac99061b482aa9e64684499532222c4792
+
+pkgname = gravit-git
+

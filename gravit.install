@@ -1,0 +1,48 @@
+post_install() {
+  _mkuser
+  chown -R gravit:gravit /etc/gravit /usr/share/gravit
+  printf "%b\n" "$gravit"
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  _rmuser
+  rm -rf /etc/gravit /usr/share/gravit
+}
+
+_mkuser() {
+  getent passwd gravit &>/dev/null || {
+    echo -n "Creating gravit user... "
+    grep -E "^gravit:" /etc/group >/dev/null || groupadd gravit
+    useradd -m -d /etc/gravit -g gravit -s /usr/bin/nologin gravit
+    echo "done"
+  }
+}
+
+_rmuser() {
+  echo -n "Removing gravit user... "
+  userdel -rf gravit 2>/dev/null
+  echo "done"
+}
+
+read -d '' gravit <<'EOF'
+#####################################################################
+#####################################################################
+##                                                                 ##
+##   Gravit                                                        ##
+##   ______                                                        ##
+##                                                                 ##
+##   Run the main application:                                     ##
+##                                                                 ##
+##      # systemctl start gravit                                   ##
+##                                                                 ##
+##   Then open Chromium and go to:                                 ##
+##                                                                 ##
+##      http://127.0.0.1:8999                                      ##
+##                                                                 ##
+#####################################################################
+#####################################################################
+EOF

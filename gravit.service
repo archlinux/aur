@@ -1,0 +1,13 @@
+[Unit]
+Description=Gravit
+
+[Service]
+User=gravit
+Group=gravit
+WorkingDirectory=/usr/share/gravit
+ExecStart=/usr/bin/grunt
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
