@@ -1,0 +1,16 @@
+pkgbase = bfast
+	pkgdesc = Blat-like Fast Accurate Search Tool; facilitates the fast and accurate mapping of short reads to reference sequences
+	pkgver = 0.7.0a
+	pkgrel = 2
+	url = http://sourceforge.net/apps/mediawiki/bfast/index.php?title=Main_Page
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = zlib
+	depends = bzip2
+	depends = perl
+	source = http://downloads.sourceforge.net/project/bfast/bfast/0.7.0/bfast-0.7.0a.tar.gz
+	md5sums = 9b0574dce903ab83e39e371b0a3bbbc6
+
+pkgname = bfast
+
