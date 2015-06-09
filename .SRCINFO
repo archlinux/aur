@@ -1,0 +1,15 @@
+pkgbase = pdf2png
+	pkgdesc = Convert PDF books to PNG, JPG, and other image formats.
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/aadityabagga/pdf2png
+	arch = any
+	license = GPL
+	depends = python-gobject
+	depends = ghostscript
+	conflicts = pdf2img-git
+	source = http://github.com/aadityabagga/pdf2png/archive/0.5.tar.gz
+	md5sums = f7cb3d67d5acb978e6ce910dfd213937
+
+pkgname = pdf2png
+
