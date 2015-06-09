@@ -1,0 +1,22 @@
+pkgbase = gog-baldurs-gate
+	pkgdesc = Chaos threatens to overwhelm the Sword Coast.
+	pkgver = 1.0.0.8
+	pkgrel = 1
+	url = http://www.gog.com/game/baldurs_gate_the_original_saga
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = custom
+	depends = freetype2
+	depends = wine
+	source = local://gog_baldurs_gate_1.0.0.8.tar.gz
+	source = gog-baldurs-gate
+	source = gog-bg-config
+	source = gog-bg-config.desktop
+	sha256sums = c2db4fc324c9f501d6699c48ca46d7be91ac9f3700b25a9f45ccbe1c4b36795d
+	sha256sums = 753996deb01ee6c31fbbe5aa026b468e234651ec44d402d176f8cc62e55841a3
+	sha256sums = 0b4dfa795a861fc605d7d42f059739910b92380d461d8bb2526bf93fcb1917a6
+	sha256sums = 392dd0c30932a517aa7b47c7b057a15b291ce4b235c6a18d786b69dc51e8f420
+
+pkgname = gog-baldurs-gate
+
