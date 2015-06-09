@@ -1,0 +1,7 @@
+2014-11-08  Mariusz Libera  <mariusz.libera@gmail.com>
+
+    0.5.2-8:
+    * added ChangeLog
+    * modernized PKGBUILD
+    * removed patch from makedepends
+

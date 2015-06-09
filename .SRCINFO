@@ -1,0 +1,19 @@
+pkgbase = kgmailnotifier
+	pkgdesc = A gmail notifier systray applet for KDE.
+	pkgver = 0.5.2
+	pkgrel = 8
+	url = http://opendesktop.org/content/show.php/KGmailNotifier?content=55375
+	install = kgmailnotifier.install
+	changelog = ChangeLog
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdebase-runtime
+	depends = kdeutils-kwalletmanager
+	source = http://opendesktop.org/CONTENT/content-files/55375-kgmailnotifier-0.5.2.tar.gz
+	md5sums = 1a05357487076972040fdac510d8434e
+
+pkgname = kgmailnotifier
+
