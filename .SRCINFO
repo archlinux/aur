@@ -1,0 +1,17 @@
+pkgbase = bitpaint
+	pkgdesc = Colored Bitcoin and smart contracts script
+	pkgver = 0.0.1
+	pkgrel = 2
+	url = https://bitcointalk.org/index.php?topic=117630.0
+	install = bitpaint.install
+	arch = any
+	license = AGPL
+	depends = bitcoin-daemon
+	depends = python2
+	depends = python2-jsonrpc-git
+	provides = bitpaint
+	source = bitpaint.py
+	sha256sums = 9c6c2a3886500c81407d3bef8d86c045bf3235cec3e182a0e3245c93e58de341
+
+pkgname = bitpaint
+
