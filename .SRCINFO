@@ -1,5 +1,5 @@
 pkgbase = yakuake-skin-breeze
-	pkgdesc = A Breeze skin for Yakuake
+	pkgdesc = A Breeze skin for Yakuake (KDE4)
 	pkgver = 1.0
 	pkgrel = 2
 	url = http://opendesktop.org/content/show.php?content=167519

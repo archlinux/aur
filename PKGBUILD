@@ -4,7 +4,7 @@ _pkgname=breeze
 pkgname=yakuake-skin-${_pkgname}
 pkgver=1.0
 pkgrel=2
-pkgdesc="A Breeze skin for Yakuake"
+pkgdesc="A Breeze skin for Yakuake (KDE4)"
 arch=('any')
 url="http://opendesktop.org/content/show.php?content=167519"
 license=('GPL')
