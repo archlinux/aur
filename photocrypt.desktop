@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Photocrypt
+Comment=Text-to-image steganography application
+Exec=photocrypt
+Icon=/opt/photocrypt/icon.png
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;Utility;
