@@ -1,0 +1,13 @@
+
+post_install() {
+  grep -q /bin/ksh etc/shells || echo /bin/ksh >> etc/shells
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+pre_remove() {
+  sed -i '/^\/bin\/ksh/d' etc/shells
+}
+

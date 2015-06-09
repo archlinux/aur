@@ -1,0 +1,17 @@
+pkgbase = pdksh
+	pkgdesc = A public domain clone of the AT&T Korn shell
+	pkgver = 5.2.14
+	pkgrel = 7
+	url = http://www.cs.mun.ca/~michael/pdksh/
+	install = pdksh.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glibc
+	source = http://www.cs.mun.ca/~michael/pdksh/files/pdksh-5.2.14.tar.gz
+	source = pdksh-5.2.14.patch
+	md5sums = 871106b3bd937e1afba9f2ef7c43aef3
+	md5sums = 3c746b7f7cee1710033c5ba6af5b5a9b
+
+pkgname = pdksh
+

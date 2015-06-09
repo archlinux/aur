@@ -1,0 +1,282 @@
+
+--- pdksh-5.2.14/exec.c	1999-07-13 18:53:46.000000000 +0200
++++ pdksh-5.2.14/exec.c	2013-06-16 00:10:39.214058154 +0200
+@@ -76,6 +76,7 @@
+ {
+ 	int i;
+ 	volatile int rv = 0;
++	volatile int rv_prop = 0; /* rv being propogated or newly generated? */
+ 	int pv[2];
+ 	char ** volatile ap;
+ 	char *s, *cp;
+@@ -157,6 +158,7 @@
+ 
+ 	  case TPAREN:
+ 		rv = execute(t->left, flags|XFORK);
++		rv_prop = 1;
+ 		break;
+ 
+ 	  case TPIPE:
+@@ -275,6 +277,7 @@
+ 			rv = execute(t->right, flags & XERROK);
+ 		else
+ 			flags |= XERROK;
++		rv_prop = 1;
+ 		break;
+ 
+ 	  case TBANG:
+@@ -323,6 +326,7 @@
+ 			}
+ 		}
+ 		rv = 0; /* in case of a continue */
++		rv_prop = 1;
+ 		if (t->type == TFOR) {
+ 			while (*ap != NULL) {
+ 				setstr(global(t->str), *ap++, KSH_UNWIND_ERROR);
+@@ -334,6 +338,7 @@
+ 			for (;;) {
+ 				if (!(cp = do_selectargs(ap, is_first))) {
+ 					rv = 1;
++					rv_prop = 0;
+ 					break;
+ 				}
+ 				is_first = FALSE;
+@@ -365,6 +370,7 @@
+ 		rv = 0; /* in case of a continue */
+ 		while ((execute(t->left, XERROK) == 0) == (t->type == TWHILE))
+ 			rv = execute(t->right, flags & XERROK);
++		rv_prop = 1;
+ 		break;
+ 
+ 	  case TIF:
+@@ -374,6 +380,7 @@
+ 		rv = execute(t->left, XERROK) == 0 ?
+ 			execute(t->right->left, flags & XERROK) :
+ 			execute(t->right->right, flags & XERROK);
++		rv_prop = 1;
+ 		break;
+ 
+ 	  case TCASE:
+@@ -386,10 +393,12 @@
+ 		break;
+ 	  Found:
+ 		rv = execute(t->left, flags & XERROK);
++		rv_prop = 1;
+ 		break;
+ 
+ 	  case TBRACE:
+ 		rv = execute(t->left, flags & XERROK);
++		rv_prop = 1;
+ 		break;
+ 
+ 	  case TFUNCT:
+@@ -401,6 +410,7 @@
+ 		 * (allows "ls -l | time grep foo").
+ 		 */
+ 		rv = timex(t, flags & ~XEXEC);
++		rv_prop = 1;
+ 		break;
+ 
+ 	  case TEXEC:		/* an eval'd TCOM */
+@@ -428,7 +438,7 @@
+ 	quitenv();		/* restores IO */
+ 	if ((flags&XEXEC))
+ 		unwind(LEXIT);	/* exit child */
+-	if (rv != 0 && !(flags & XERROK)) {
++	if (rv != 0 && !rv_prop && !(flags & XERROK)) {
+ 		if (Flag(FERREXIT))
+ 			unwind(LERROR);
+ 		trapsig(SIGERR_);
+
+--- pdksh-5.2.14/jobs.c	1999-07-13 18:50:56.000000000 +0200
++++ pdksh-5.2.14/jobs.c	2013-06-16 00:10:39.214058154 +0200
+@@ -219,8 +219,7 @@
+ static void		check_job ARGS((Job *j));
+ static void		put_job ARGS((Job *j, int where));
+ static void		remove_job ARGS((Job *j, const char *where));
+-static void		kill_job ARGS((Job *j));
+-static void	 	fill_command ARGS((char *c, int len, struct op *t));
++static int		kill_job ARGS((Job *j, int sig));
+ 
+ /* initialize job control */
+ void
+@@ -294,10 +293,17 @@
+ 				    && procpid == kshpid)))))
+ 		{
+ 			killed = 1;
+-			killpg(j->pgrp, SIGHUP);
++			if (j->pgrp == 0)
++				kill_job(j, SIGHUP);
++			else
++				killpg(j->pgrp, SIGHUP);
+ #ifdef JOBS
+-			if (j->state == PSTOPPED)
+-				killpg(j->pgrp, SIGCONT);
++			if (j->state == PSTOPPED) {
++				if (j->pgrp == 0)
++					kill_job(j, SIGCONT);
++				else
++					killpg(j->pgrp, SIGCONT);
++			}
+ #endif /* JOBS */
+ 		}
+ 	}
+@@ -497,7 +503,7 @@
+ 		put_job(j, PJ_PAST_STOPPED);
+ 	}
+ 
+-	fill_command(p->command, sizeof(p->command), t);
++	snptreef(p->command, sizeof(p->command), "%T", t);
+ 
+ 	/* create child process */
+ 	forksleep = 1;
+@@ -508,7 +514,7 @@
+ 		forksleep <<= 1;
+ 	}
+ 	if (i < 0) {
+-		kill_job(j);
++		kill_job(j, SIGKILL);
+ 		remove_job(j, "fork failed");
+ #ifdef NEED_PGRP_SYNC
+ 		if (j_sync_open) {
+@@ -823,11 +829,10 @@
+ 	}
+ 
+ 	if (j->pgrp == 0) {	/* started when !Flag(FMONITOR) */
+-		for (p=j->proc_list; p != (Proc *) 0; p = p->next)
+-			if (kill(p->pid, sig) < 0) {
+-				bi_errorf("%s: %s", cp, strerror(errno));
+-				rv = 1;
+-			}
++		if (kill_job(j, sig) < 0) {
++			bi_errorf("%s: %s", cp, strerror(errno));
++			rv = 1;
++		}
+ 	} else {
+ #ifdef JOBS
+ 		if (j->state == PSTOPPED && (sig == SIGTERM || sig == SIGHUP))
+@@ -1825,50 +1830,17 @@
+  *
+  * If jobs are compiled in then this routine expects sigchld to be blocked.
+  */
+-static void
+-kill_job(j)
++static int
++kill_job(j, sig)
+ 	Job	*j;
++	int	sig;
+ {
+ 	Proc	*p;
++	int	rval = 0;
+ 
+ 	for (p = j->proc_list; p != (Proc *) 0; p = p->next)
+ 		if (p->pid != 0)
+-			(void) kill(p->pid, SIGKILL);
+-}
+-
+-/* put a more useful name on a process than snptreef does (in certain cases) */
+-static void
+-fill_command(c, len, t)
+-	char		*c;
+-	int		len;
+-	struct op	*t;
+-{
+-	int		alen;
+-	char		**ap;
+-
+-	if (t->type == TEXEC || t->type == TCOM) {
+-		/* Causes problems when set -u is in effect, can also
+-		   cause problems when array indices evaluated (may have
+-		   side effects, eg, assignment, incr, etc.)
+-		if (t->type == TCOM)
+-			ap = eval(t->args, DOBLANK|DONTRUNCOMMAND);
+-		else
+-		*/
+-		ap = t->args;
+-		--len; /* save room for the null */
+-		while (len > 0 && *ap != (char *) 0) {
+-			alen = strlen(*ap);
+-			if (alen > len)
+-				alen = len;
+-			memcpy(c, *ap, alen);
+-			c += alen;
+-			len -= alen;
+-			if (len > 0) {
+-				*c++ = ' '; len--;
+-			}
+-			ap++;
+-		}
+-		*c = '\0';
+-	} else
+-		snptreef(c, len, "%T", t);
++			if (kill(p->pid, sig) < 0)
++				rval = -1;
++	return rval;
+ }
+
+--- pdksh-5.2.14/shf.c	1999-05-12 16:13:27.000000000 +0200
++++ pdksh-5.2.14/shf.c	2013-06-16 00:10:39.214058154 +0200
+@@ -355,7 +355,6 @@
+ 		shf->rp = nbuf + (shf->rp - shf->buf);
+ 		shf->wp = nbuf + (shf->wp - shf->buf);
+ 		shf->rbsize += shf->wbsize;
+-		shf->wbsize += shf->wbsize;
+ 		shf->wnleft += shf->wbsize;
+ 		shf->wbsize *= 2;
+ 		shf->buf = nbuf;
+
+--- pdksh-5.2.14/siglist.sh	1996-09-18 18:52:41.000000000 +0200
++++ pdksh-5.2.14/siglist.sh	2013-06-16 00:10:39.214058154 +0200
+@@ -11,19 +11,18 @@
+ out=tmpo$$.c
+ ecode=1
+ trapsigs='0 1 2 13 15'
+-trap 'rm -f $in $out; trap 0; exit $ecode' $trapsigs
++trap 'rm -f $in $out; exit $ecode' $trapsigs
+ 
+ CPP="${1-cc -E}"
+ 
+ # The trap here to make up for a bug in bash (1.14.3(1)) that calls the trap
+-(trap $trapsigs;
+- echo '#include "sh.h"';
++(echo '#include "sh.h"';
+  echo '	{ QwErTy SIGNALS , "DUMMY" , "hook for number of signals" },';
+  sed -e '/^[	 ]*#/d' -e 's/^[	 ]*\([^ 	][^ 	]*\)[	 ][	 ]*\(.*[^ 	]\)[ 	]*$/#ifdef SIG\1\
+ 	{ QwErTy SIG\1 , "\1", "\2" },\
+ #endif/') > $in
+ $CPP $in  > $out
+-sed -n 's/{ QwErTy/{/p' < $out | awk '{print NR, $0}' | sort +2n +0n |
++sed -n 's/{ QwErTy/{/p' < $out | awk '{print NR, $0}' | sort -n -k 3,3 -k 1,1 |
+     sed 's/^[0-9]* //' |
+     awk 'BEGIN { last=0; nsigs=0; }
+ 	{
+
+--- pdksh-5.2.14/var.c	1999-05-11 16:27:02.000000000 +0200
++++ pdksh-5.2.14/var.c	2013-06-16 00:10:39.214058154 +0200
+@@ -353,7 +353,9 @@
+ 	const char *s;
+ 	int error_ok;
+ {
+-	if (vq->flag & RDONLY) {
++	int no_ro_check = error_ok & 0x4;
++	error_ok &= ~0x4;
++	if ((vq->flag & RDONLY) && !no_ro_check) {
+ 		warningf(TRUE, "%s: is read only", vq->name);
+ 		if (!error_ok)
+ 			errorf(null);
+@@ -715,13 +717,13 @@
+ 	if (val != NULL) {
+ 		if (vp->flag&INTEGER) {
+ 			/* do not zero base before assignment */
+-			setstr(vp, val, KSH_UNWIND_ERROR);
++			setstr(vp, val, KSH_UNWIND_ERROR | 0x4);
+ 			/* Done after assignment to override default */
+ 			if (base > 0)
+ 				vp->type = base;
+ 		} else
+ 			/* setstr can't fail (readonly check already done) */
+-			setstr(vp, val, KSH_RETURN_ERROR);
++			setstr(vp, val, KSH_RETURN_ERROR | 0x4);
+ 	}
+ 
+ 	/* only x[0] is ever exported, so use vpbase */
