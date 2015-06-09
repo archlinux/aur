@@ -1,0 +1,20 @@
+pkgbase = boarding-party
+	pkgdesc = Boarding Party is a fast paced old school style FPS written in Java
+	pkgver = 1
+	pkgrel = 2
+	url = http://7dfps.com/?action=games&id=228
+	arch = any
+	groups = games
+	license = unknown
+	depends = java-environment
+	depends = bash
+	provides = boarding-party
+	conflicts = boarding-party
+	noextract = boarding-party.jar
+	source = http://www.intrrpt.com/downloads/boarding-party.jar
+	source = boarding-party
+	md5sums = fea397f8175e2d446a4a3a03c638553a
+	md5sums = 751a26b048ec398e7b59b68c9bb36df2
+
+pkgname = boarding-party
+
