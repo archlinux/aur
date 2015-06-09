@@ -1,0 +1,17 @@
+pkgbase = mtvcgui
+	pkgdesc = Mencoder TV Capture GUI
+	pkgver = 1.2
+	pkgrel = 3
+	url = http://www.santiagobruno.com.ar/programas.html#mtvcgui
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = hicolor-icon-theme
+	depends = mencoder
+	depends = mplayer
+	depends = python2-pyqt4
+	source = git+https://github.com/sbruno/mtvcgui.git
+	md5sums = SKIP
+
+pkgname = mtvcgui
+
