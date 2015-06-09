@@ -1,0 +1,13 @@
+pkgbase = scour
+	pkgdesc = An SVG scrubber
+	pkgver = 0.26
+	pkgrel = 1
+	url = http://www.codedread.com/scour/
+	arch = any
+	license = APACHE
+	depends = python2
+	source = http://www.codedread.com/scour//scour-0.26.zip
+	sha256sums = bb9ff799ed5590ac6611a1d7325d722541eb9b18937dcf40b086d7d35b7a2a1f
+
+pkgname = scour
+
