@@ -1,0 +1,18 @@
+pkgbase = gog-dragonsphere
+	pkgdesc = A challenging adventure game that will captivate with clever puzzles and thrilling environments.
+	pkgver = 1.0.0.1
+	pkgrel = 1
+	url = http://www.gog.com/game/dragonsphere
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = custom
+	depends = libpng12
+	depends = unionfs-fuse
+	source = local://dragonsphere_1.0.0.1.tar.gz
+	source = gog-dragonsphere
+	sha256sums = 27906a6c46b0c4d2b8830f5e363a4c4cf40121ab8f8c0caba81fa83323b6dc03
+	sha256sums = 1cb7c00e7bebc3a44ce1e7cce224acc8bda6b6668792bb95b84a2d1a71df8400
+
+pkgname = gog-dragonsphere
+

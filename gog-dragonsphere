@@ -1,0 +1,13 @@
+#!/usr/bin/bash
+gogdir="/opt/gog/dragonsphere"
+homedir="$HOME/.gog/dragonsphere"
+mkdir -p "$homedir"/{game,config/data/DRAGON}
+
+if [[ ! -e "$homedir/config/dosboxDragonsphere.conf" ]]; then
+  cp "$gogdir/dosboxDragonsphere.conf" "$homedir/config/dosboxDragonsphere.conf"
+fi
+
+unionfs "$homedir/config=RW:$gogdir=RO" "$homedir/game"
+"$homedir"/game/start.sh
+fusermount -u "$homedir/game"
+
