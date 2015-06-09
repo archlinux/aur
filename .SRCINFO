@@ -1,0 +1,32 @@
+pkgbase = solar_capture
+	pkgdesc = A set of tools for capturing, timestamping, processing, and injecting network traffic.
+	pkgver = 1.3.1.11
+	pkgrel = 1
+	url = http://www.solarflare.com/SolarCapture-Packet-Capture-Software
+	arch = x86_64
+	license = custom
+	makedepends = rpmextract
+	makedepends = openonload
+	makedepends = python2
+	makedepends = libaio
+	makedepends = libpcap
+	makedepends = findutils
+	depends = openonload
+	depends = sfptpd
+	depends = libpcap
+	depends = python2
+	depends = libaio
+	options = !libtool
+	options = !strip
+	options = !makeflags
+	options = !buildflags
+	options = staticlibs
+	source = http://127.0.0.1/SF-111817-DH-9_(SF-112972-LS-2)_SolarCapture_SDK.zip
+	source = http://127.0.0.1/SF-111817-DH-9_(SF-112974-LS-2)_SolarCapture_Live_Pro_RPMs.zip
+	source = http://127.0.0.1/SF-111817-DH-9_(SF-108469-CD-9)_SolarCapture_User_Guide.pdf
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = solar_capture
+

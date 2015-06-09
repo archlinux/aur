@@ -1,0 +1,58 @@
+--- Makefile.orig	2014-06-25 09:49:27.890282195 -0400
++++ Makefile	2014-06-25 09:55:08.418251742 -0400
+@@ -34,6 +34,17 @@
+ # SC_VER_EXTRA is used for things like release candidates, and is written
+ # by the packaging script.  It does not contribute to the library
+ # versioning, so releases must never set SC_VER_EXTRA.
++#
++# SC_INCLUDE is used to specify a custom header file path (for package
++# maintainers).
++#
++# SC_LIBRARY is used to specify a custom library path (for package
++# maintainers).
++#
++# SC_PYTHON is used to specify a custom python 2.x binary path.
++# SC_PYTHON_CONFIG is used to specify a custom python 2.x -config
++# binary path.
++
+ 
+ SC_VER_MAJ	:= 1
+ SC_VER_MIN	:= 2
+@@ -70,10 +81,16 @@ SC_BUILD	:= $(shell /bin/pwd)
+ SC_LIB		:= lib
+ SC_LIB_DBG	:= lib/debug
+ SC_INC		:= -Iinclude
++ifdef SC_INCLUDE
++SC_INC		+= -I$(SC_INCLUDE)
++endif
+ ifndef SC_RPM_BUILD
+ SC_LINK		:= -L$(SC_LIB) -Wl,-rpath,$(SC_BUILD)/$(SC_LIB) \
+ 		   -Wl,--enable-new-dtags
+ endif
++ifdef SC_LIBRARY
++SC_LINK		+= -L$(SC_LIBRARY)
++endif
+ SC_LINK		+= -lsolarcapture$(SC_VER_MAJ)
+ 
+ CWARNINGS	:= -Wall -Wundef -Wstrict-prototypes -Wpointer-arith \
+@@ -120,10 +137,17 @@ BUILTIN_OBJS	:= components/sc_writer.o
+ CORE_DBG_OBJS	:= $(patsubst %.o,%.dbg.o,$(CORE_OBJS))
+ BUILTIN_DBG_OBJS:= $(patsubst %.o,%.dbg.o,$(BUILTIN_OBJS))
+ 
+-PYTHON_CFLAGS	:= $(shell python-config --cflags 2>/dev/null)
+-PYTHON_LIBS	:= $(shell python-config --libs 2>/dev/null)
++ifndef SC_PYTHON
++SC_PYTHON		:= python
++endif
++ifndef SC_PYTHON_CONFIG
++SC_PYTHON		:= python-config
++endif
++
++PYTHON_CFLAGS	:= $(shell $(SC_PYTHON_CONFIG) --cflags 2>/dev/null)
++PYTHON_LIBS	:= $(shell $(SC_PYTHON_CONFIG) --libs 2>/dev/null)
+ ifeq ($(PYTHON_CFLAGS),)
+-PYTHON_VER	:= $(shell python -V 2>&1 | \
++PYTHON_VER	:= $(shell $(SC_PYTHON) -V 2>&1 | \
+ 			sed 's/Python \([0-9][0-9]*\.[0-9][0-9]*\).*/\1/')
+ PYTHON_CFLAGS	:= -fno-strict-aliasing -fPIC \
+ 		     -I/usr/include/python$(PYTHON_VER)
