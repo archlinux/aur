@@ -1,0 +1,18 @@
+pkgbase = wpa_supplicant_gui-qt5
+	pkgdesc = A Qt frontend to wpa_supplicant - ported to Qt5
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://github.com/stevenhoneyman/wpa_gui
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt5-base
+	depends = wpa_supplicant
+	conflicts = wpa_supplicant_gui
+	source = http://hostap.epitest.fi/releases/wpa_supplicant-2.2.tar.gz
+	source = wpa_gui2.2-add_qt5_support.patch
+	sha256sums = e0d8b8fd68a659636eaba246bb2caacbf53d22d53b2b6b90eb4b4fef0993c8ed
+	sha256sums = 65d23a1eca85e46fb075b63406ebde10b61491c448311618bd60acb056c1639b
+
+pkgname = wpa_supplicant_gui-qt5
+

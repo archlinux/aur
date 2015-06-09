@@ -1,0 +1,637 @@
+diff -urb wpa_gui-qt4/addinterface.cpp wpa_gui-qt5/addinterface.cpp
+--- wpa_gui-qt4/addinterface.cpp	2014-06-04 14:26:14.000000000 +0100
++++ wpa_gui-qt5/addinterface.cpp	2014-06-11 19:39:51.000000000 +0100
+@@ -41,8 +41,8 @@
+ 	interfaceWidget->headerItem()->setText(0, tr("driver"));
+ 	interfaceWidget->headerItem()->setText(1, tr("interface"));
+ 	interfaceWidget->headerItem()->setText(2, tr("description"));
+-	interfaceWidget->setItemsExpandable(FALSE);
+-	interfaceWidget->setRootIsDecorated(FALSE);
++	interfaceWidget->setItemsExpandable(false);
++	interfaceWidget->setRootIsDecorated(false);
+ 	vboxLayout->addWidget(interfaceWidget);
+ 
+ 	connect(interfaceWidget,
+@@ -196,9 +196,9 @@
+ 	 */
+ 	snprintf(cmd, sizeof(cmd),
+ 		 "INTERFACE_ADD %s\t%s\t%s\t%s\t%s\t%s",
+-		 sel->text(1).toAscii().constData(),
++		 sel->text(1).toLatin1().constData(),
+ 		 "default",
+-		 sel->text(0).toAscii().constData(),
++		 sel->text(0).toLatin1().constData(),
+ 		 "yes", "", "");
+ 	cmd[sizeof(cmd) - 1] = '\0';
+ 
+diff -urb wpa_gui-qt4/addinterface.h wpa_gui-qt5/addinterface.h
+--- wpa_gui-qt4/addinterface.h	2014-06-04 14:26:14.000000000 +0100
++++ wpa_gui-qt5/addinterface.h	2014-06-11 19:39:51.000000000 +0100
+@@ -11,9 +11,9 @@
+ 
+ #include <QObject>
+ 
+-#include <QtGui/QDialog>
+-#include <QtGui/QTreeWidget>
+-#include <QtGui/QVBoxLayout>
++#include <QDialog>
++#include <QTreeWidget>
++#include <QVBoxLayout>
+ 
+ class WpaGui;
+ 
+diff -urb wpa_gui-qt4/eventhistory.cpp wpa_gui-qt5/eventhistory.cpp
+--- wpa_gui-qt4/eventhistory.cpp	2014-06-04 14:26:14.000000000 +0100
++++ wpa_gui-qt5/eventhistory.cpp	2014-06-11 19:39:51.000000000 +0100
+@@ -73,15 +73,15 @@
+ }
+ 
+ 
+-EventHistory::EventHistory(QWidget *parent, const char *, bool, Qt::WFlags)
++EventHistory::EventHistory(QWidget *parent, const char *, bool, Qt::WindowFlags)
+ 	: QDialog(parent)
+ {
+ 	setupUi(this);
+ 
+ 	connect(closeButton, SIGNAL(clicked()), this, SLOT(close()));
+ 
+-	eventListView->setItemsExpandable(FALSE);
+-	eventListView->setRootIsDecorated(FALSE);
++	eventListView->setItemsExpandable(false);
++	eventListView->setRootIsDecorated(false);
+ 	elm = new EventListModel(parent);
+ 	eventListView->setModel(elm);
+ }
+diff -urb wpa_gui-qt4/eventhistory.h wpa_gui-qt5/eventhistory.h
+--- wpa_gui-qt4/eventhistory.h	2014-06-04 14:26:14.000000000 +0100
++++ wpa_gui-qt5/eventhistory.h	2014-06-11 19:39:51.000000000 +0100
+@@ -40,7 +40,7 @@
+ 
+ public:
+ 	EventHistory(QWidget *parent = 0, const char *name = 0,
+-		     bool modal = false, Qt::WFlags fl = 0);
++		     bool modal = false, Qt::WindowFlags fl = 0);
+ 	~EventHistory();
+ 
+ public slots:
+diff -urb wpa_gui-qt4/main.cpp wpa_gui-qt5/main.cpp
+--- wpa_gui-qt4/main.cpp	2014-06-04 14:26:14.000000000 +0100
++++ wpa_gui-qt5/main.cpp	2014-06-11 20:31:09.000000000 +0100
+@@ -14,7 +14,6 @@
+ #include <QtCore/QTranslator>
+ #include "wpagui.h"
+ 
+-
+ class WpaGuiApp : public QApplication
+ {
+ public:
+@@ -34,7 +33,7 @@
+ #ifndef QT_NO_SESSIONMANAGER
+ void WpaGuiApp::saveState(QSessionManager &manager)
+ {
+-	QApplication::saveState(manager);
++	QApplication::saveStateRequest(manager);
+ 	w->saveState();
+ }
+ #endif
+@@ -54,7 +53,7 @@
+ 		translator.load("wpa_gui_" + locale, "lang");
+ 	app.installTranslator(&translator);
+ 
+-	WpaGui w(&app);
++	WpaGui w(&app, 0, 0, 0, argc, argv); /* Pass through to parse_argv */
+ 
+ #ifdef CONFIG_NATIVE_WINDOWS
+ 	WSADATA wsaData;
+Only in wpa_gui-qt5/: Makefile
+Only in wpa_gui-qt5/: .moc
+diff -urb wpa_gui-qt4/networkconfig.cpp wpa_gui-qt5/networkconfig.cpp
+--- wpa_gui-qt4/networkconfig.cpp	2014-06-04 14:26:14.000000000 +0100
++++ wpa_gui-qt5/networkconfig.cpp	2014-06-11 19:39:51.000000000 +0100
+@@ -26,7 +26,7 @@
+ #define WPA_GUI_KEY_DATA "[key is configured]"
+ 
+ 
+-NetworkConfig::NetworkConfig(QWidget *parent, const char *, bool, Qt::WFlags)
++NetworkConfig::NetworkConfig(QWidget *parent, const char *, bool, Qt::WindowFlags)
+ 	: QDialog(parent)
+ {
+ 	setupUi(this);
+@@ -237,7 +237,7 @@
+ 	} else
+ 		id = edit_network_id;
+ 
+-	setNetworkParam(id, "ssid", ssidEdit->text().toAscii().constData(),
++	setNetworkParam(id, "ssid", ssidEdit->text().toLatin1().constData(),
+ 			true);
+ 
+ 	const char *key_mgmt = NULL, *proto = NULL, *pairwise = NULL;
+@@ -291,14 +291,14 @@
+ 		setNetworkParam(id, "group", "TKIP CCMP WEP104 WEP40", false);
+ 	}
+ 	if (pskEdit->isEnabled() &&
+-	    strcmp(pskEdit->text().toAscii().constData(),
++	    strcmp(pskEdit->text().toLatin1().constData(),
+ 		   WPA_GUI_KEY_DATA) != 0)
+ 		setNetworkParam(id, "psk",
+-				pskEdit->text().toAscii().constData(),
++				pskEdit->text().toLatin1().constData(),
+ 				psklen != 64);
+ 	if (eapSelect->isEnabled()) {
+ 		const char *eap =
+-			eapSelect->currentText().toAscii().constData();
++			eapSelect->currentText().toLatin1().constData();
+ 		setNetworkParam(id, "eap", eap, false);
+ 		if (strcmp(eap, "SIM") == 0 || strcmp(eap, "AKA") == 0)
+ 			setNetworkParam(id, "pcsc", "", true);
+@@ -314,21 +314,21 @@
+ 			if (inner.startsWith("EAP-"))
+ 				snprintf(phase2, sizeof(phase2), "auth=%s",
+ 					 inner.right(inner.size() - 4).
+-					 toAscii().constData());
++					 toLatin1().constData());
+ 		} else if (eap.compare("TTLS") == 0) {
+ 			if (inner.startsWith("EAP-"))
+ 				snprintf(phase2, sizeof(phase2), "autheap=%s",
+ 					 inner.right(inner.size() - 4).
+-					 toAscii().constData());
++					 toLatin1().constData());
+ 			else
+ 				snprintf(phase2, sizeof(phase2), "auth=%s",
+-					 inner.toAscii().constData());
++					 inner.toLatin1().constData());
+ 		} else if (eap.compare("FAST") == 0) {
+ 			const char *provisioning = NULL;
+ 			if (inner.startsWith("EAP-")) {
+ 				snprintf(phase2, sizeof(phase2), "auth=%s",
+ 					 inner.right(inner.size() - 4).
+-					 toAscii().constData());
++					 toLatin1().constData());
+ 				provisioning = "fast_provisioning=2";
+ 			} else if (inner.compare("GTC(auth) + MSCHAPv2(prov)")
+ 				   == 0) {
+@@ -354,21 +354,21 @@
+ 		setNetworkParam(id, "phase2", "NULL", false);
+ 	if (identityEdit->isEnabled() && identityEdit->text().length() > 0)
+ 		setNetworkParam(id, "identity",
+-				identityEdit->text().toAscii().constData(),
++				identityEdit->text().toLatin1().constData(),
+ 				true);
+ 	else
+ 		setNetworkParam(id, "identity", "NULL", false);
+ 	if (passwordEdit->isEnabled() && passwordEdit->text().length() > 0 &&
+-	    strcmp(passwordEdit->text().toAscii().constData(),
++	    strcmp(passwordEdit->text().toLatin1().constData(),
+ 		   WPA_GUI_KEY_DATA) != 0)
+ 		setNetworkParam(id, "password",
+-				passwordEdit->text().toAscii().constData(),
++				passwordEdit->text().toLatin1().constData(),
+ 				true);
+ 	else if (passwordEdit->text().length() == 0)
+ 		setNetworkParam(id, "password", "NULL", false);
+ 	if (cacertEdit->isEnabled() && cacertEdit->text().length() > 0)
+ 		setNetworkParam(id, "ca_cert",
+-				cacertEdit->text().toAscii().constData(),
++				cacertEdit->text().toLatin1().constData(),
+ 				true);
+ 	else
+ 		setNetworkParam(id, "ca_cert", "NULL", false);
+@@ -388,7 +388,7 @@
+ 
+ 	if (idstrEdit->isEnabled() && idstrEdit->text().length() > 0)
+ 		setNetworkParam(id, "id_str",
+-				idstrEdit->text().toAscii().constData(),
++				idstrEdit->text().toLatin1().constData(),
+ 				true);
+ 	else
+ 		setNetworkParam(id, "id_str", "NULL", false);
+@@ -396,7 +396,7 @@
+ 	if (prioritySpinBox->isEnabled()) {
+ 		QString prio;
+ 		prio = prio.setNum(prioritySpinBox->value());
+-		setNetworkParam(id, "priority", prio.toAscii().constData(),
++		setNetworkParam(id, "priority", prio.toLatin1().constData(),
+ 				false);
+ 	}
+ 
+@@ -468,7 +468,7 @@
+ 	 * Assume hex key if only hex characters are present and length matches
+ 	 * with 40, 104, or 128-bit key
+ 	 */
+-	txt = edit->text().toAscii().constData();
++	txt = edit->text().toLatin1().constData();
+ 	if (strcmp(txt, WPA_GUI_KEY_DATA) == 0)
+ 		return;
+ 	len = strlen(txt);
+diff -urb wpa_gui-qt4/networkconfig.h wpa_gui-qt5/networkconfig.h
+--- wpa_gui-qt4/networkconfig.h	2014-06-04 14:26:14.000000000 +0100
++++ wpa_gui-qt5/networkconfig.h	2014-06-11 19:39:51.000000000 +0100
+@@ -20,7 +20,7 @@
+ 
+ public:
+ 	NetworkConfig(QWidget *parent = 0, const char *name = 0,
+-		      bool modal = false, Qt::WFlags fl = 0);
++		      bool modal = false, Qt::WindowFlags fl = 0);
+ 	~NetworkConfig();
+ 
+ 	virtual void paramsFromScanResults(QTreeWidgetItem *sel);
+Only in wpa_gui-qt5/: .obj
+diff -urb wpa_gui-qt4/peers.cpp wpa_gui-qt5/peers.cpp
+--- wpa_gui-qt4/peers.cpp	2014-06-04 14:26:14.000000000 +0100
++++ wpa_gui-qt5/peers.cpp	2014-06-11 19:39:51.000000000 +0100
+@@ -62,7 +62,7 @@
+ };
+ 
+ 
+-Peers::Peers(QWidget *parent, const char *, bool, Qt::WFlags)
++Peers::Peers(QWidget *parent, const char *, bool, Qt::WindowFlags)
+ 	: QDialog(parent)
+ {
+ 	setupUi(this);
+@@ -323,13 +323,13 @@
+ 
+ 	if (peer_type == PEER_TYPE_WPS_ER_ENROLLEE) {
+ 		snprintf(cmd, sizeof(cmd), "WPS_ER_PIN %s %s %s",
+-			 uuid.toAscii().constData(),
+-			 input.get_string().toAscii().constData(),
+-			 addr.toAscii().constData());
++			 uuid.toLatin1().constData(),
++			 input.get_string().toLatin1().constData(),
++			 addr.toLatin1().constData());
+ 	} else {
+ 		snprintf(cmd, sizeof(cmd), "WPS_PIN %s %s",
+-			 addr.toAscii().constData(),
+-			 input.get_string().toAscii().constData());
++			 addr.toLatin1().constData(),
++			 input.get_string().toLatin1().constData());
+ 	}
+ 	reply_len = sizeof(reply) - 1;
+ 	if (wpagui->ctrlRequest(cmd, reply, &reply_len) < 0) {
+@@ -868,7 +868,7 @@
+ 		QStandardItem *item = find_addr(addr);
+ 		if (item == NULL || item->data(peer_role_type).toInt() !=
+ 		    PEER_TYPE_ASSOCIATED_STATION)
+-			add_single_station(addr.toAscii().constData());
++			add_single_station(addr.toLatin1().constData());
+ 		return;
+ 	}
+ 
+@@ -1350,8 +1350,8 @@
+ 		char reply[100];
+ 		size_t reply_len;
+ 		snprintf(cmd, sizeof(cmd), "P2P_CONNECT %s %s display",
+-			 addr.toAscii().constData(),
+-			 arg.toAscii().constData());
++			 addr.toLatin1().constData(),
++			 arg.toLatin1().constData());
+ 		reply_len = sizeof(reply) - 1;
+ 		if (wpagui->ctrlRequest(cmd, reply, &reply_len) < 0) {
+ 			QMessageBox msg;
+@@ -1384,8 +1384,8 @@
+ 	char reply[100];
+ 	size_t reply_len;
+ 	snprintf(cmd, sizeof(cmd), "P2P_CONNECT %s %s",
+-		 addr.toAscii().constData(),
+-		 arg.toAscii().constData());
++		 addr.toLatin1().constData(),
++		 arg.toLatin1().constData());
+ 	reply_len = sizeof(reply) - 1;
+ 	if (wpagui->ctrlRequest(cmd, reply, &reply_len) < 0) {
+ 		QMessageBox msg;
+@@ -1408,7 +1408,7 @@
+ 	char reply[100];
+ 	size_t reply_len;
+ 	snprintf(cmd, sizeof(cmd), "P2P_PROV_DISC %s display",
+-		 addr.toAscii().constData());
++		 addr.toLatin1().constData());
+ 	reply_len = sizeof(reply) - 1;
+ 	if (wpagui->ctrlRequest(cmd, reply, &reply_len) < 0) {
+ 		QMessageBox msg;
+@@ -1431,7 +1431,7 @@
+ 	char reply[100];
+ 	size_t reply_len;
+ 	snprintf(cmd, sizeof(cmd), "P2P_PROV_DISC %s keypad",
+-		 addr.toAscii().constData());
++		 addr.toLatin1().constData());
+ 	reply_len = sizeof(reply) - 1;
+ 	if (wpagui->ctrlRequest(cmd, reply, &reply_len) < 0) {
+ 		QMessageBox msg;
+@@ -1452,7 +1452,7 @@
+ 	char reply[100];
+ 	size_t reply_len;
+ 	snprintf(cmd, sizeof(cmd), "P2P_CONNECT %s pin",
+-		 addr.toAscii().constData());
++		 addr.toLatin1().constData());
+ 	reply_len = sizeof(reply) - 1;
+ 	if (wpagui->ctrlRequest(cmd, reply, &reply_len) < 0) {
+ 		QMessageBox msg;
+@@ -1480,8 +1480,8 @@
+ 	char reply[100];
+ 	size_t reply_len;
+ 	snprintf(cmd, sizeof(cmd), "P2P_CONNECT %s %s display",
+-		 addr.toAscii().constData(),
+-		 arg.toAscii().constData());
++		 addr.toLatin1().constData(),
++		 arg.toLatin1().constData());
+ 	reply_len = sizeof(reply) - 1;
+ 	if (wpagui->ctrlRequest(cmd, reply, &reply_len) < 0) {
+ 		QMessageBox msg;
+@@ -1515,8 +1515,8 @@
+ 	char reply[100];
+ 	size_t reply_len;
+ 	snprintf(cmd, sizeof(cmd), "P2P_CONNECT %s %s keypad",
+-		 addr.toAscii().constData(),
+-		 arg.toAscii().constData());
++		 addr.toLatin1().constData(),
++		 arg.toLatin1().constData());
+ 	reply_len = sizeof(reply) - 1;
+ 	if (wpagui->ctrlRequest(cmd, reply, &reply_len) < 0) {
+ 		QMessageBox msg;
+@@ -1535,7 +1535,7 @@
+ 	char reply[100];
+ 	size_t reply_len;
+ 	snprintf(cmd, sizeof(cmd), "P2P_GROUP_REMOVE %s",
+-		 ctx_item->data(peer_role_ifname).toString().toAscii().
++		 ctx_item->data(peer_role_ifname).toString().toLatin1().
+ 		 constData());
+ 	reply_len = sizeof(reply) - 1;
+ 	if (wpagui->ctrlRequest(cmd, reply, &reply_len) < 0) {
+@@ -1713,13 +1713,13 @@
+ 	int peer_type = ctx_item->data(peer_role_type).toInt();
+ 	if (peer_type == PEER_TYPE_WPS_ER_ENROLLEE) {
+ 		snprintf(cmd, sizeof(cmd), "WPS_ER_PBC %s",
+-			 ctx_item->data(peer_role_uuid).toString().toAscii().
++			 ctx_item->data(peer_role_uuid).toString().toLatin1().
+ 			 constData());
+ 	} else if (peer_type == PEER_TYPE_P2P ||
+ 		   peer_type == PEER_TYPE_P2P_CLIENT) {
+ 		snprintf(cmd, sizeof(cmd), "P2P_CONNECT %s pbc",
+ 			 ctx_item->data(peer_role_address).toString().
+-			 toAscii().constData());
++			 toLatin1().constData());
+ 	} else {
+ 		snprintf(cmd, sizeof(cmd), "WPS_PBC");
+ 	}
+@@ -1750,8 +1750,8 @@
+ 	size_t reply_len;
+ 
+ 	snprintf(cmd, sizeof(cmd), "WPS_ER_LEARN %s %s",
+-		 uuid.toAscii().constData(),
+-		 input.get_string().toAscii().constData());
++		 uuid.toLatin1().constData(),
++		 input.get_string().toLatin1().constData());
+ 	reply_len = sizeof(reply) - 1;
+ 	if (wpagui->ctrlRequest(cmd, reply, &reply_len) < 0) {
+ 		QMessageBox msg;
+diff -urb wpa_gui-qt4/peers.h wpa_gui-qt5/peers.h
+--- wpa_gui-qt4/peers.h	2014-06-04 14:26:14.000000000 +0100
++++ wpa_gui-qt5/peers.h	2014-06-11 19:39:51.000000000 +0100
+@@ -22,7 +22,7 @@
+ 
+ public:
+ 	Peers(QWidget *parent = 0, const char *name = 0,
+-		    bool modal = false, Qt::WFlags fl = 0);
++		    bool modal = false, Qt::WindowFlags fl = 0);
+ 	~Peers();
+ 	void setWpaGui(WpaGui *_wpagui);
+ 	void event_notify(WpaMsg msg);
+diff -urb wpa_gui-qt4/scanresults.cpp wpa_gui-qt5/scanresults.cpp
+--- wpa_gui-qt4/scanresults.cpp	2014-06-04 14:26:14.000000000 +0100
++++ wpa_gui-qt5/scanresults.cpp	2014-06-11 19:39:51.000000000 +0100
+@@ -14,7 +14,7 @@
+ #include "networkconfig.h"
+ 
+ 
+-ScanResults::ScanResults(QWidget *parent, const char *, bool, Qt::WFlags)
++ScanResults::ScanResults(QWidget *parent, const char *, bool, Qt::WindowFlags)
+ 	: QDialog(parent)
+ {
+ 	setupUi(this);
+@@ -26,8 +26,8 @@
+ 		SLOT(bssSelected(QTreeWidgetItem *)));
+ 
+ 	wpagui = NULL;
+-	scanResultsWidget->setItemsExpandable(FALSE);
+-	scanResultsWidget->setRootIsDecorated(FALSE);
++	scanResultsWidget->setItemsExpandable(false);
++	scanResultsWidget->setRootIsDecorated(false);
+ 	scanResultsWidget->setItemDelegate(new SignalBar(scanResultsWidget));
+ }
+ 
+diff -urb wpa_gui-qt4/scanresults.h wpa_gui-qt5/scanresults.h
+--- wpa_gui-qt4/scanresults.h	2014-06-04 14:26:14.000000000 +0100
++++ wpa_gui-qt5/scanresults.h	2014-06-11 19:39:51.000000000 +0100
+@@ -20,7 +20,7 @@
+ 
+ public:
+ 	ScanResults(QWidget *parent = 0, const char *name = 0,
+-		    bool modal = false, Qt::WFlags fl = 0);
++		    bool modal = false, Qt::WindowFlags fl = 0);
+ 	~ScanResults();
+ 
+ public slots:
+Only in wpa_gui-qt5/: .ui
+diff -urb wpa_gui-qt4/userdatarequest.cpp wpa_gui-qt5/userdatarequest.cpp
+--- wpa_gui-qt4/userdatarequest.cpp	2014-06-04 14:26:14.000000000 +0100
++++ wpa_gui-qt5/userdatarequest.cpp	2014-06-11 19:39:51.000000000 +0100
+@@ -12,7 +12,7 @@
+ 
+ 
+ UserDataRequest::UserDataRequest(QWidget *parent, const char *, bool,
+-				 Qt::WFlags)
++				 Qt::WindowFlags)
+ 	: QDialog(parent)
+ {
+ 	setupUi(this);
+@@ -89,6 +89,6 @@
+ 	QString cmd = QString(WPA_CTRL_RSP) + field + '-' +
+ 		QString::number(networkid) + ':' +
+ 		queryEdit->text();
+-	wpagui->ctrlRequest(cmd.toAscii().constData(), reply, &reply_len);
++	wpagui->ctrlRequest(cmd.toLatin1().constData(), reply, &reply_len);
+ 	accept();
+ }
+diff -urb wpa_gui-qt4/userdatarequest.h wpa_gui-qt5/userdatarequest.h
+--- wpa_gui-qt4/userdatarequest.h	2014-06-04 14:26:14.000000000 +0100
++++ wpa_gui-qt5/userdatarequest.h	2014-06-11 19:39:50.000000000 +0100
+@@ -20,7 +20,7 @@
+ 
+ public:
+ 	UserDataRequest(QWidget *parent = 0, const char *name = 0,
+-			bool modal = false, Qt::WFlags fl = 0);
++			bool modal = false, Qt::WindowFlags fl = 0);
+ 	~UserDataRequest();
+ 
+ 	int setParams(WpaGui *_wpagui, const char *reqMsg);
+Only in wpa_gui-qt5/: wpa_gui
+diff -urb wpa_gui-qt4/wpagui.cpp wpa_gui-qt5/wpagui.cpp
+--- wpa_gui-qt4/wpagui.cpp	2014-06-04 14:26:14.000000000 +0100
++++ wpa_gui-qt5/wpagui.cpp	2014-06-11 20:32:43.000000000 +0100
+@@ -32,7 +32,7 @@
+ }
+ #endif
+ 
+-WpaGui::WpaGui(QApplication *_app, QWidget *parent, const char *, Qt::WFlags)
++WpaGui::WpaGui(QApplication *_app, QWidget *parent, const char *, Qt::WindowFlags, int argc, char **argv)
+ 	: QMainWindow(parent), app(_app)
+ {
+ 	setupUi(this);
+@@ -135,7 +135,7 @@
+ 	msgNotifier = NULL;
+ 	ctrl_iface_dir = strdup("/var/run/wpa_supplicant");
+ 
+-	parse_argv();
++	parse_argv(argc, argv);
+ 
+ #ifndef QT_NO_SESSIONMANAGER
+ 	if (app->isSessionRestored()) {
+@@ -157,7 +157,7 @@
+ 	textStatus->setText(tr("connecting to wpa_supplicant"));
+ 	timer = new QTimer(this);
+ 	connect(timer, SIGNAL(timeout()), SLOT(ping()));
+-	timer->setSingleShot(FALSE);
++	timer->setSingleShot(false);
+ 	timer->start(1000);
+ 
+ 	if (openCtrlConnection(ctrl_iface) < 0) {
+@@ -229,11 +229,11 @@
+ }
+ 
+ 
+-void WpaGui::parse_argv()
++void WpaGui::parse_argv(int argc, char **argv)
+ {
+ 	int c;
+ 	for (;;) {
+-		c = getopt(qApp->argc(), qApp->argv(), "i:p:t");
++		c = getopt(argc, argv, "i:p:t");
+ 		if (c < 0)
+ 			break;
+ 		switch (c) {
+@@ -709,7 +709,7 @@
+ void WpaGui::helpAbout()
+ {
+ 	QMessageBox::about(this, "wpa_gui for wpa_supplicant",
+-			   "Copyright (c) 2003-2013,\n"
++			   "Copyright (c) 2003-2014,\n"
+ 			   "Jouni Malinen <j@w1.fi>\n"
+ 			   "and contributors.\n"
+ 			   "\n"
+@@ -978,7 +978,7 @@
+ 	else
+ 		cmd = "any";
+ 	cmd.prepend("SELECT_NETWORK ");
+-	ctrlRequest(cmd.toAscii().constData(), reply, &reply_len);
++	ctrlRequest(cmd.toLatin1().constData(), reply, &reply_len);
+ 	triggerUpdate();
+ 	stopWpsRun(false);
+ }
+@@ -994,11 +994,11 @@
+ 		cmd.truncate(cmd.indexOf(':'));
+ 	else if (!cmd.startsWith("all")) {
+ 		printf("Invalid editNetwork '%s'\n",
+-		       cmd.toAscii().constData());
++		       cmd.toLatin1().constData());
+ 		return;
+ 	}
+ 	cmd.prepend("ENABLE_NETWORK ");
+-	ctrlRequest(cmd.toAscii().constData(), reply, &reply_len);
++	ctrlRequest(cmd.toLatin1().constData(), reply, &reply_len);
+ 	triggerUpdate();
+ }
+ 
+@@ -1013,11 +1013,11 @@
+ 		cmd.truncate(cmd.indexOf(':'));
+ 	else if (!cmd.startsWith("all")) {
+ 		printf("Invalid editNetwork '%s'\n",
+-		       cmd.toAscii().constData());
++		       cmd.toLatin1().constData());
+ 		return;
+ 	}
+ 	cmd.prepend("DISABLE_NETWORK ");
+-	ctrlRequest(cmd.toAscii().constData(), reply, &reply_len);
++	ctrlRequest(cmd.toLatin1().constData(), reply, &reply_len);
+ 	triggerUpdate();
+ }
+ 
+@@ -1103,11 +1103,11 @@
+ 		cmd.truncate(cmd.indexOf(':'));
+ 	else if (!cmd.startsWith("all")) {
+ 		printf("Invalid editNetwork '%s'\n",
+-		       cmd.toAscii().constData());
++		       cmd.toLatin1().constData());
+ 		return;
+ 	}
+ 	cmd.prepend("REMOVE_NETWORK ");
+-	ctrlRequest(cmd.toAscii().constData(), reply, &reply_len);
++	ctrlRequest(cmd.toLatin1().constData(), reply, &reply_len);
+ 	triggerUpdate();
+ }
+ 
+@@ -1167,14 +1167,14 @@
+ 	int pos = cmd.indexOf(':');
+ 	if (pos < 0) {
+ 		printf("Invalid getNetworkDisabled '%s'\n",
+-		       cmd.toAscii().constData());
++		       cmd.toLatin1().constData());
+ 		return -1;
+ 	}
+ 	cmd.truncate(pos);
+ 	cmd.prepend("GET_NETWORK ");
+ 	cmd.append(" disabled");
+ 
+-	if (ctrlRequest(cmd.toAscii().constData(), reply, &reply_len) >= 0
++	if (ctrlRequest(cmd.toLatin1().constData(), reply, &reply_len) >= 0
+ 	    && reply_len >= 1) {
+ 		reply[reply_len] = '\0';
+ 		if (!str_match(reply, "FAIL"))
+@@ -1257,7 +1257,7 @@
+ 
+ void WpaGui::selectAdapter( const QString & sel )
+ {
+-	if (openCtrlConnection(sel.toAscii().constData()) < 0)
++	if (openCtrlConnection(sel.toLatin1().constData()) < 0)
+ 		printf("Failed to open control connection to "
+ 		       "wpa_supplicant.\n");
+ 	updateStatus();
+@@ -1557,7 +1557,7 @@
+ 	size_t reply_len = sizeof(reply);
+ 
+ 	QString cmd("WPS_REG " + bssFromScan + " " + wpsApPinEdit->text());
+-	if (ctrlRequest(cmd.toAscii().constData(), reply, &reply_len) < 0)
++	if (ctrlRequest(cmd.toLatin1().constData(), reply, &reply_len) < 0)
+ 		return;
+ 
+ 	wpsStatusText->setText(tr("Waiting for AP/Enrollee"));
+diff -urb wpa_gui-qt4/wpagui.h wpa_gui-qt5/wpagui.h
+--- wpa_gui-qt4/wpagui.h	2014-06-04 14:26:14.000000000 +0100
++++ wpa_gui-qt5/wpagui.h	2014-06-11 20:31:24.000000000 +0100
+@@ -23,7 +23,7 @@
+ 
+ public:
+ 	WpaGui(QApplication *app, QWidget *parent = 0, const char *name = 0,
+-	       Qt::WFlags fl = 0);
++	       Qt::WindowFlags fl = 0, int argc = 0, char **argv = 0);
+ 	~WpaGui();
+ 
+ 	virtual int ctrlRequest(const char *cmd, char *buf, size_t *buflen);
+@@ -39,7 +39,7 @@
+ #endif
+ 
+ public slots:
+-	virtual void parse_argv();
++	virtual void parse_argv(int argc, char **argv);
+ 	virtual void updateStatus();
+ 	virtual void updateNetworks();
+ 	virtual void helpIndex();
+diff -urb wpa_gui-qt4/wpa_gui.pro wpa_gui-qt5/wpa_gui.pro
+--- wpa_gui-qt4/wpa_gui.pro	2014-06-04 14:26:14.000000000 +0100
++++ wpa_gui-qt5/wpa_gui.pro	2014-06-11 19:42:52.000000000 +0100
+@@ -3,6 +3,7 @@
+ TRANSLATIONS	= lang/wpa_gui_de.ts
+ 
+ CONFIG	+= qt warn_on release
++QT += widgets
+ 
+ DEFINES += CONFIG_CTRL_IFACE
+ 
