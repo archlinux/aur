@@ -1,0 +1,15 @@
+pkgbase = nodejs-webpack
+	pkgdesc = Packs CommonJs/AMD modules for the browser
+	pkgver = 1.9.10
+	pkgrel = 1
+	url = http://github.com/webpack/webpack
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = webpack-1.9.10.tgz
+	source = http://registry.npmjs.org/webpack/-/webpack-1.9.10.tgz
+	sha1sums = 4257af09a9e40a92a6fe83e6db4006e571456021
+
+pkgname = nodejs-webpack
+
