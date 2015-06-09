@@ -1,0 +1,24 @@
+pkgbase = tuned-git
+	pkgdesc = Daemon that performs monitoring and adaptive configuration of devices in the system
+	pkgver = 2.4.1.r61.gd172b5b
+	pkgrel = 1
+	url = https://fedorahosted.org/tuned/
+	install = tuned.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = ethtool
+	depends = python2-configobj
+	depends = python2-pyudev
+	depends = python2-gobject2
+	depends = python2-decorator
+	depends = python2-dbus
+	optdepends = virt-what
+	optdepends = systemtap
+	provides = tuned
+	backup = etc/tuned/active_profile
+	source = tuned-git::git://git.fedorahosted.org/git/tuned.git
+	sha256sums = SKIP
+
+pkgname = tuned-git
+
