@@ -1,0 +1,25 @@
+pkgbase = zim-bzr
+	pkgdesc = A WYSIWYG text editor that aims at bringing the concept of a wiki to the desktop.
+	pkgver = r680
+	pkgrel = 1
+	url = http://zim-wiki.org/
+	install = zim.install
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = bzr
+	depends = pygtk
+	depends = ttf-dejavu
+	optdepends = bzr: Version Control plugin
+	optdepends = gnuplot: Insert Gnuplot plugin
+	optdepends = graphviz: Insert Diagram & Link Map plugins
+	optdepends = python2-gtkspell: Spell Checker plugin
+	optdepends = r: Insert GNU R Plot plugin
+	optdepends = scrot: Insert Screenshot plugin
+	optdepends = texlive-bin: Insert Equation plugin
+	conflicts = zim
+	source = zim::bzr+http://code.launchpad.net/~jaap.karssenberg/zim/pyzim/
+	md5sums = SKIP
+
+pkgname = zim-bzr
+
