@@ -1,0 +1,51 @@
+diff --git a/Makefile.am b/Makefile.am
+index ef95dbb..b70f986 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -24,7 +24,7 @@ encdet_src =	src/wxmedit/mad_encdet.cpp \
+ bin_PROGRAMS = wxmedit
+ check_PROGRAMS = wxmedit_test
+ TESTS = wxmedit_test
+-wxmedit_LDADD = ${curl_LIBS}
++wxmedit_LDADD = ${curl_LIBS} -lucd
+ wxmedit_CXXFLAGS = -DDATA_DIR=\"${datadir}\" ${curl_CFLAGS}
+ wxmedit_SOURCES =	$(enc_src) \
+ 	$(encdet_src) \
+diff --git a/src/xm/wxm_encdet.cpp b/src/xm/wxm_encdet.cpp
+index 715c7df..ca4edad 100644
+--- a/src/xm/wxm_encdet.cpp
++++ b/src/xm/wxm_encdet.cpp
+@@ -529,8 +529,13 @@ private:
+ };
+ #endif
+ 
++#if 1
++#include <libucd.h>
++#endif
++
+ void DetectEncoding(const wxByte *text, size_t len, wxm::WXMEncodingID &enc, bool skip_utf8)
+ {
++#if 0
+ 	UErrorCode status = U_ZERO_ERROR;
+ 	LocalUCharsetDetectorPointer csd(ucsdet_open(&status));
+ 	ucsdet_setText(csd.getAlias(), (const char*)text, len, &status);
+@@ -556,6 +561,19 @@ void DetectEncoding(const wxByte *text, size_t len, wxm::WXMEncodingID &enc, boo
+ 		else
+ 			enc_name.clear();
+ 	}
++#else
++    ucd_t det;
++    char buffer[UCD_MAX_ENCODING_NAME + 1] = "GB18030";
++    if (ucd_init (&det) >= 0) {
++        ucd_parse (&det, (const char*)text, len);
++        ucd_end (&det);
++        if (ucd_results (&det, buffer, sizeof(buffer) - 1) < 0) {
++            buffer[0] = 0;
++        }
++        ucd_clear(&det);
++    }
++    std::string enc_name(buffer);
++#endif
+ 
+ 	if(enc_name == "EUC-KR")
+ 		enc_name = "UHC";

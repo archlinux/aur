@@ -1,0 +1,25 @@
+pkgbase = wxmedit-git
+	pkgdesc = Cross-platform Text/Hex Editor, a fork of MadEdit with bug fixes and improvements
+	pkgver = dee626e
+	pkgrel = 1
+	url = https://wxmedit.github.io/
+	install = wxmedit.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = libucd-git
+	makedepends = boost
+	makedepends = wxgtk
+	depends = wxgtk
+	depends = libucd-git
+	depends = desktop-file-utils
+	depends = boost
+	conflicts = wxmedit
+	source = wxmedit-git::git+https://github.com/hltj/wxMEdit
+	source = wxmedit-encdet-mozilla.patch
+	md5sums = SKIP
+	md5sums = 46277ca991dc2d7bf227bb6628561f4e
+
+pkgname = wxmedit-git
+
