@@ -1,0 +1,578 @@
+#!/usr/bin/bash
+
+#A simple pacman and cower wrapper written in bash
+#Developer: William Hahn <bill@hahn3.com>
+
+##########Initialization##########
+
+#ensure that the HOME variable exists, fix for running under systemd timer
+if [[ -z $HOME ]]; then
+	HOME=/root
+fi
+
+#if .wrapaur folder does not exist, create it
+if [ ! -d $HOME/.wrapaur ]; then
+	mkdir $HOME/.wrapaur
+	echo "wrapaur directory created at $HOME/.wrapaur"
+fi
+
+#check for wrapaur config file and source it
+if [ -f $HOME/.wrapaurrc ]; then
+	source $HOME/.wrapaurrc
+else
+	echo -e "#Configuration file for wrapaur\n\n#Set country for reflector mirror update\ncountry=\n\n#Set number of top mirrors to sync\nmirrorcount=\n\n#Set for no prompts on mirror update\nmirrorprompt=\n\n#Set email for package updates\nemail=\n\n#Set colors\ncolor1=''\ncolor2=''\ncolor3=''" > $HOME/.wrapaurrc
+	echo "wrapaur configuration file created at $HOME/.wrapaurrc"
+	chmod 600 $HOME/.wrapaurrc
+fi
+
+##########Functions##########
+
+#update option selected
+update_all()
+{
+	#run pacman update
+	sudo pacman -Syu
+
+	#run cower update for AUR and assign item names to downloads variable
+	echo -e "${color1}:: ${color2}Checking the AUR for updates...${color3}"
+	downloads=$(cower -uddf -t $HOME/.wrapaur | cut -d ' ' -f 2)
+	downloads=$(echo -e $downloads | tac -s " ")
+	#check if updates were found and assigned to downloads variable
+	if [[ -z $downloads ]]; then
+		echo -e " ${color3}there is nothing to do"
+	else
+		#if downloads were found, echo download list and ask to install
+		echo -e "${color1}:: ${color2}Updates found...${color3}"
+		for line in $downloads
+		do
+			echo -e $line
+		done
+		dprompt=$(echo -e "${color1}:: ${color2}Proceed with installation? [Y/n] ${color3}")
+		until [ "$dchoice" == "y" ] || [ "$dchoice" == "n" ] || [ "$dchoice" == "Y" ] || [ "$dchoice" == "N" ]; do
+			read -p "$dprompt" dchoice
+		done	
+		#if chosen to install now, loop through each item in downloads variable, install and run pacman -U, then remove folder
+		if [ "$dchoice" == "y" ] || [ "$dchoice" == "Y" ]; then
+			for line in $downloads
+			do
+				cd $HOME/.wrapaur/$line
+				echo -e "installing  ${line}..."
+				eprompt=$(echo -e "${color1}:: ${color2}Edit PKGBUILD? [Y/n] ${color3}")
+				until [ "$echoice" == "y" ] || [ "$echoice" == "n" ] || [ "$echoice" == "Y" ] || [ "$echoice" == "N" ]; do
+					read -p "$eprompt" echoice
+				done	
+				#if chosen to edit PKGBUILD open editor
+				if [ "$echoice" == "y" ] || [ "$echoice" == "Y" ]; then
+					$EDITOR PKGBUILD
+				fi
+				makepkg -si
+				cd $HOME/.wrapaur
+				ruprompt=$(echo -e "${color1}:: ${color2}Remove source folder? [Y/n] ${color3}")
+				until [ "$ruchoice" == "y" ] || [ "$ruchoice" == "n" ] || [ "$ruchoice" == "Y" ] || [ "$ruchoice" == "N" ]; do
+					read -p "$ruprompt" ruchoice
+				done
+				if [ "$ruchoice" == "y" ] || [ "$ruchoice" == "Y" ]; then
+					rm -Rf $HOME/.wrapaur/$line
+				fi
+				echoice="x"
+				ruchoice="x"
+			done
+		else
+			echo -e " ${color3}updates downloaded to $HOME/.wrapaur"
+		fi
+	fi
+}
+
+#search option selected
+package_search()
+{
+	#search with pacman and cower
+	pacman -Ss $1
+	cower -sc $1
+}
+
+#official install option selected
+pac_install()
+{
+	#install from pacman
+	sudo pacman -S $1
+}
+
+#remove package using pacman
+pac_remove()
+{
+	#remove with pacman
+	sudo pacman -Rsn $1
+}
+
+#aur install option selected
+aur_install()
+{
+	#run cower download with dependencies, loop to install all downloaded packages
+	ainstalls=$(cower -ddf -t $HOME/.wrapaur $1 | cut -d ' ' -f 2)
+	ainstalls=$(echo -e $ainstalls | tac -s " ")
+	if [[ -z $ainstalls ]]; then
+		echo -e " ${color3}there is nothing to do"
+	else
+		#if packages were found, echo install list and ask to install
+		echo -e "${color1}:: ${color2}Packages found...${color3}"
+		for line in $ainstalls
+		do
+			echo -e $line
+		done
+		aprompt=$(echo -e "${color1}:: ${color2}Proceed with installation? [Y/n] ${color3}")
+		until [ "$ichoice" == "y" ] || [ "$ichoice" == "n" ] || [ "$ichoice" == "Y" ] || [ "$ichoice" == "N" ]; do
+			read -p "$aprompt" ichoice
+		done	
+		#if chosen to install now, loop through each item in ainstalls variable, install and run pacman -U, then remove folder
+		if [ "$ichoice" == "y" ] || [ "$ichoice" == "Y" ]; then
+			for line in $ainstalls
+			do
+				cd $HOME/.wrapaur/$line
+				echo -e "installing ${line}..."
+				eprompt=$(echo -e "${color1}:: ${color2}Edit PKGBUILD? [Y/n] ${color3}")
+				until [ "$echoice" == "y" ] || [ "$echoice" == "n" ] || [ "$echoice" == "Y" ] || [ "$echoice" == "N" ]; do
+					read -p "$eprompt" echoice
+				done	
+				#if chosen to edit PKGBUILD open editor
+				if [ "$echoice" == "y" ] || [ "$echoice" == "Y" ]; then
+					$EDITOR PKGBUILD
+				fi			
+				makepkg -si
+				cd $HOME/.wrapaur
+				raprompt=$(echo -e "${color1}:: ${color2}Remove source folder? [Y/n] ${color3}")
+				until [ "$rachoice" == "y" ] || [ "$rachoice" == "n" ] || [ "$rachoice" == "Y" ] || [ "$rachoice" == "N" ]; do
+					read -p "$raprompt" rachoice
+				done
+				if [ "$rachoice" == "y" ] || [ "$rachoice" == "Y" ]; then			
+					rm -Rf $HOME/.wrapaur/$line
+				fi
+				echoice="x"
+				rachoice="x"
+			done	
+		else
+			echo -e " ${color3}updates downloaded to $HOME/.wrapaur"
+		fi
+	fi
+}
+
+#clear cache option selected
+clear_cache()
+{
+	#clear pacman cache and optimize pacman database
+	sudo pacman -Sc
+	oprompt=$(echo -e "${color1}:: ${color2}Optimize Pacman Database? [Y/n] ${color3}")
+	until [ "$ochoice" == "y" ] || [ "$ochoice" == "n" ] || [ "$ochoice" == "Y" ] || [ "$ochoice" == "N" ]; do
+		read -p "$oprompt" ochoice
+	done
+	if [ "$ochoice" == "y" ] || [ "$ochoice" == "Y" ]; then
+		sudo pacman-optimize
+	fi
+	#empty source folders from .wrapaur folder
+	cprompt=$(echo -e "${color1}:: ${color2}Clear contents of .wrapaur folder? [Y/n] ${color3}")
+	until [ "$cchoice" == "y" ] || [ "$cchoice" == "n" ] || [ "$cchoice" == "Y" ] || [ "$cchoice" == "N" ]; do
+		read -p "$cprompt" cchoice
+	done
+	if [ "$cchoice" == "y" ] || [ "$cchoice" == "Y" ]; then			
+		rm -Rf $HOME/.wrapaur/*
+		echo -e "$HOME/.wrapaur contents cleared..."
+	fi
+}
+
+#Query Package Information
+query_packages()
+{
+	pacman -Qi $1
+}
+
+#update pacman mirrors
+update_mirrors()
+{
+	#check for mirrorcount option and set to 200 if not found
+	if [[ -z $mirrorcount ]]; then
+		mirrorcount=200
+	fi
+	#check if reflector is installed
+	reflector --help > /dev/null 2>/dev/null
+	if [ $? -eq 127 ]; then
+		echo -e "Optional dependency not installed.  Use wrapaur -i reflector"	
+	#run with no prompts
+	elif [ "$mirrorprompt" == "no" ] || [[ ! -t 0 ]]; then
+		sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
+		if [[ -z $country ]]; then
+			sudo reflector --verbose -l $mirrorcount -p http --sort rate --save /etc/pacman.d/mirrorlist
+		else
+			sudo reflector --verbose --country "${country}" -l $mirrorcount -p http --sort rate --save /etc/pacman.d/mirrorlist	
+		fi
+	#run with prompts
+	else
+		mprompt=$(echo -e "${color1}:: ${color2}Warning: This will overwrite your pacman mirror list at /etc/pacman.d/mirrorlist.  Proceed? [Y/n] ${color3}")
+		until [ "$mchoice" == "y" ] || [ "$mchoice" == "n" ] || [ "$mchoice" == "Y" ] || [ "$mchoice" == "N" ]; do
+			read -p "$mprompt" mchoice
+		done
+		if [ "$mchoice" == "y" ] || [ "$mchoice" == "Y" ]; then			
+			sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
+			if [[ -z $country ]]; then
+				rcprompt=$(echo -e "${color1}:: ${color2}Enter Country or All: ${color3}")
+				PS3=${rcprompt}
+				moptions=("Australia" "Austria" "Bangladesh" "Belarus" "Belgium" "Brazil" "Bulgaria" "Canada" "Chile" "China" "Colombia" "Croatia" "Czech Republic" "Denmark" "Ecuador" "Estonia" "Finland" "France" "Germany" "Greece" "Hong Kong" "Iceland" "India" "Ireland" "Italy" "Japan" "Kazakhstan" "Korea" "Lithuania" "Luxembourg" "Macedonia" "Netherlands" "New Caledonia" "New Zealand" "Norway" "Philippines" "Poland" "Portugal" "Romania" "Russian Federation" "Serbia" "Singapore" "Slovakia" "South Africa" "Spain" "Sri Lanka" "Sweden" "Switzerland" "Taiwan" "Turkey" "Ukraine" "United Kingdom" "United States" "Viet Nam" "All")
+				select opt in "${moptions[@]}"
+				do
+					case $opt in
+						"Australia")
+							country="Australia"
+							break
+							;;
+						"Austria")
+							country="Austria"	
+							break
+							;;
+						"Bangladesh")
+							country="Bangladesh"	
+							break
+							;;
+						"Belarus")
+							country="Belarus"	
+							break
+							;;
+						"Belgium")
+							country="Belgium"	
+							break
+							;;
+						"Brazil")
+							country="Brazil"	
+							break
+							;;
+						"Bulgaria")
+							country="Bulgaria"	
+							break
+							;;
+						"Canada")
+							country="Canada"	
+							break
+							;;
+						"Chile")
+							country="Chile"	
+							break
+							;;
+						"China")
+							country="China"	
+							break
+							;;
+						"Colombia")
+							country="Columbia"	
+							break
+							;;
+						"Croatia")
+							country="Croatia"	
+							break
+							;;
+						"Czech Republic")
+							country="Czech Republic"	
+							break
+							;;
+						"Denmark")
+							country="Denmark"	
+							break
+							;;
+						"Ecuador")
+							country="Ecuador"	
+							break
+							;;
+						"Estonia")
+							country="Estonia"	
+							break
+							;;
+						"Finland")
+							country="Finland"	
+							break
+							;;
+						"France")
+							country="France"	
+							break
+							;;
+						"Germany")
+							country="Germany"	
+							break
+							;;
+						"Greece")
+							country="Greece"	
+							break
+							;;
+						"Hong Kong")
+							country="Hong Kong"	
+							break
+							;;
+						"Iceland")
+							country="Iceland"	
+							break
+							;;
+						"India")
+							country="India"	
+							break
+							;;
+						"Ireland")
+							country="Ireland"	
+							break
+							;;
+						"Italy")
+							country="Italy"	
+							break
+							;;
+						"Japan")
+							country="Japan"	
+							break
+							;;
+						"Kazakhstan")
+							country="Kazakhstan"	
+							break
+							;;
+						"Korea")
+							country="Korea"	
+							break
+							;;
+						"Lithuania")
+							country="Lithuania"	
+							break
+							;;
+						"Luxembourg")
+							country="Luxembourg"	
+							break
+							;;
+						"Macedonia")
+							country="Macedonia"	
+							break
+							;;
+						"Netherlands")
+							country="Netherlands"	
+							break
+							;;
+						"New Caledonia")
+							country="New Caledonia"	
+							break
+							;;
+						"New Zealand")
+							country="New Zealand"	
+							break
+							;;
+						"Norway")
+							country="Norway"	
+							break
+							;;
+						"Philippines")
+							country="Philippines"	
+							break
+							;;
+						"Poland")
+							country="Poland"	
+							break
+							;;
+						"Portugal")
+							country="Portugal"	
+							break
+							;;
+						"Romania")
+							country="Romania"	
+							break
+							;;
+						"Russian Federation")
+							country="Russian Federation"	
+							break
+							;;
+						"Serbia")
+							country="Serbia"	
+							break
+							;;
+						"Singapore")
+							country="Singapore"	
+							break
+							;;
+						"Slovakia")
+							country="Slovakia"	
+							break
+							;;
+						"South Africa")
+							country="South Africa"	
+							break
+							;;
+						"Spain")
+							country="Spain"	
+							break
+							;;
+						"Sri Lanka")
+							country="Sri Lanka"	
+							break
+							;;
+						"Sweden")
+							country="Sweden"	
+							break
+							;;
+						"Switzerland")
+							country="Switzerland"	
+							break
+							;;
+						"Taiwan")
+							country="Taiwan"	
+							break
+							;;
+						"Turkey")
+							country="Turkey"	
+							break
+							;;
+						"Ukraine")
+							country="Ukraine"	
+							break
+							;;
+						"United Kingdom")
+							country="United Kingdom"	
+							break
+							;;
+						"United States")
+							country="United States"	
+							break
+							;;
+						"Viet Nam")
+							country="Viet Nam"	
+							break
+							;;
+						"All")
+							country="All"	
+							break
+							;;
+						*) echo Invalid Option;;
+					esac
+				done
+				if [ "$country" == "All" ] || [ "$country" == "all" ] || [ "$country" == "ALL" ]; then
+					sudo reflector --verbose -l $mirrorcount -p http --sort rate --save /etc/pacman.d/mirrorlist
+				else
+					sudo reflector --verbose --country "${country}" -l $mirrorcount -p http --sort rate --save /etc/pacman.d/mirrorlist
+				fi
+				echo -e " original mirrorlist has been backed up to /etc/pacman.d/mirrorlist.backup"
+			else
+				sudo reflector --verbose --country "${country}" -l $mirrorcount -p http --sort rate --save /etc/pacman.d/mirrorlist
+			fi
+		fi
+	fi
+}
+
+#list installed packages with package count
+list_packages()
+{
+	lprompt=$(echo -e "${color1}:: ${color2}List All, Explicitly Installed, Dependendies, Native only, Foreign Only, or Print Package Stats? [a/e/d/n/f/s] ${color3}")
+	until [ "$lchoice" == "a" ] || [ "$lchoice" == "A" ] || [ "$lchoice" == "e" ] || [ "$lchoice" == "E" ] || [ "$lchoice" == "d" ] || [ "$lchoice" == "D" ] || [ "$lchoice" == "n" ] || [ "$lchoice" == "N" ] || [ "$lchoice" == "f" ] || [ "$lchoice" == "F" ] || [ "$lchoice" == "s" ] || [ "$lchoice" == "S" ];  do
+		read -p "$lprompt" lchoice
+	done
+	if [ "$lchoice" == "a" ] || [ "$lchoice" == "A" ]; then
+		pacman -Q
+		totalpkg=$(pacman -Q | wc -l)
+		echo -e "Total installed packages: $totalpkg"
+	elif [ "$lchoice" == "e" ] || [ "$lchoice" == "E" ]; then
+		pacman -Qe
+		totalpkg=$(pacman -Qe | wc -l)
+		echo -e "Total explicitly installed packages: $totalpkg"
+	elif [ "$lchoice" == "d" ] || [ "$lchoice" == "D" ]; then
+		pacman -Qd
+		totalpkg=$(pacman -Qd | wc -l)
+		echo -e "Total installed as dependencies: $totalpkg"
+	elif [ "$lchoice" == "n" ] || [ "$lchoice" == "N" ]; then
+		pacman -Qn
+		totalpkg=$(pacman -Qn | wc -l)
+		echo -e "Total installed native packages: $totalpkg"
+	elif [ "$lchoice" == "f" ] || [ "$lchoice" == "F" ]; then
+		pacman -Qm
+		totalpkg=$(pacman -Qm | wc -l)
+		echo -e "Total installed foreign packages: $totalpkg"
+	elif [ "$lchoice" == "s" ] || [ "$lchoice" == "S" ]; then
+		totald=$(pacman -Qd | wc -l)
+		totale=$(pacman -Qe | wc -l)
+		totalen=$(pacman -Qen | wc -l)
+		totalef=$(pacman -Qem | wc -l)
+		totaldn=$(pacman -Qdn | wc -l)
+		totaldf=$(pacman -Qdm | wc -l)
+		totalp=$(pacman -Q | wc -l)
+		echo -e " Installed Package Stats:\n     Explicitly Installed Packages: ${totale}\n          Native: ${totalen}\n          Foreign: ${totalef}\n     Packages Installed as Dependencies: ${totald}\n          Native: ${totaldn}\n          Foreign: ${totaldf}\n     Total Packages Installed: ${totalp}"
+	fi
+}
+
+#check for updates and email results if email exists
+check_updates()
+{
+	#sync repos
+	sudo pacman -Sy
+	echo -e "${color1}:: ${color2}Checking for updates... ${color3}"
+	#check for updates and place in variables
+	pacupdates=$(pacman -Qu)
+	aurupdates=$(cower -u)
+	#write current updates to temp file
+	tempfile=$(mktemp -t wrapaur_current.XXXXXXXXXX)
+	echo -e "${pacupdates}\n${aurupdates}" > $tempfile
+	#check updates against history file to avoid repeated emails
+	diff -q <(sort $HOME/.wrapaur_history | uniq) <(sort $tempfile | uniq) > /dev/null
+	if [ $? -eq 1 ]; then
+		checkfile="yes"
+	fi
+	#remove temp files
+	rm $tempfile
+	if [[ ! -z $pacupdates ]] || [[ ! -z $aurupdates ]]; then
+		echo -e "[Official Updates]\n${pacupdates}\n\n[AUR Updates]\n${aurupdates}\n"
+	else
+		echo -e " No updates found."
+	fi
+	#send email if email option exists in config file
+	if [[ ! -z $email ]] && ( [[ ! -z $pacupdates ]] || [[ ! -z $aurupdates ]] ) && [ "$checkfile" == "yes" ]; then
+		echo -e "[Official Updates]\n${pacupdates}\n\n[AUR Updates]\n${aurupdates}\n" | mail -s "Arch Linux Updates Found" $email
+	fi
+	#save the history so email is not repeated for same updates
+	echo -e "${pacupdates}\n${aurupdates}" > $HOME/.wrapaur_history
+}
+
+usage()
+{
+	echo $'Usage: wrapaur [OPTION]... [PACKAGE]...\n(for multiple packages pass option each time; e.g. -i package1 -i package2)\n  -a install from aur\n  -c clean pacman cache with pacman -Sc, optimize pacman database, and clear .wrapaur folder\n  -e check for updates from official repositories and aur and print available updates or email results if email is present in .wrapaurrc (add to cron or systemd timer to have email updates for new packages)\n      note: email must be properly configured on system\n  -i install from official repositories\n  -l list installed packages with package count\n  -m update pacman mirrorlist wth reflector\n  -q query information on a specific package\n  -r remove a package with pacman -Rsn (for other removal options use pacman)\n  -s search official repositories and aur\n  -u update official repositories and aur'
+}
+
+##########Main Program##########
+
+while getopts "a:cei:lmq:r:s:u" args; do
+	case $args in
+		a)
+			aur_install $OPTARG
+			;;
+		c)
+			clear_cache
+			;;
+		e)
+			check_updates
+			;;
+		i)
+			pac_install $OPTARG
+			;;
+		l)
+			list_packages
+			;;
+		m)
+			update_mirrors
+			;;
+		q)
+			query_packages $OPTARG
+			;;
+		r)
+			pac_remove $OPTARG
+			;;
+		s)
+			package_search $OPTARG
+			;;
+		u)
+			update_all
+			;;
+		*)
+			usage
+			;;
+	esac
+done
+
+if [ $OPTIND == 1 ]; then
+	usage
+fi
+
+echo -ne '\e[0m'
