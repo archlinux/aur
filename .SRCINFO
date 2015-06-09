@@ -1,0 +1,22 @@
+pkgbase = dvbcut-qt4
+	pkgdesc = QT4 port of dvbcut, an MPEG2 video editing software
+	pkgver = 273.3c1f90f
+	pkgrel = 1
+	url = https://github.com/nextghost/dvbcut-qt4
+	install = dvbcut-qt4.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = desktop-file-utils
+	depends = qt4
+	depends = ffmpeg
+	depends = libao
+	depends = libmad
+	optdepends = mplayer: for video playback inside of DVBCUT
+	conflicts = dvbcut
+	source = dvbcut-qt4::git+https://github.com/nextghost/dvbcut-qt4.git
+	sha256sums = SKIP
+
+pkgname = dvbcut-qt4
+
