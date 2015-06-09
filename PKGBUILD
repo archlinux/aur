@@ -24,7 +24,7 @@ _OPENSSL_VERSION="0.9.8zf"
 _pkgname="ovmf"
 pkgname="${_pkgname}-svn"
 
-pkgver=17084
+pkgver=17582
 pkgrel=1
 pkgdesc="UEFI Firmware (OVMF) with Secure Boot Support - for Virtual Machines (QEMU) - from Tianocore EDK2 - SVN Version"
 url="https://tianocore.github.io/ovmf/"
