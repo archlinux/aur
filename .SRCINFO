@@ -1,0 +1,15 @@
+pkgbase = ruby-safe_yaml
+	pkgdesc = SameYAML provides an alternative implementation of YAML.load suitable for accepting user input in Ruby applications.
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/dtao/safe_yaml
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = safe_yaml-1.0.4.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/safe_yaml-1.0.4.gem
+	sha1sums = b42af3b12aca32cc7072694e39c0a54d7d80f9d0
+
+pkgname = ruby-safe_yaml
+
