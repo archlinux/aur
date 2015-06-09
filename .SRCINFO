@@ -1,0 +1,15 @@
+pkgbase = runawk
+	pkgdesc = AWK wrapper that provides support for modules
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/cheusov/runawk
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = bmake
+	makedepends = mk-configure
+	source = runawk-1.5.1.tar.gz::https://codeload.github.com/cheusov/runawk/tar.gz/runawk-1.5.1
+	sha256sums = b4f7dc2bb200c0147ada4bdecad5cd19100eca64bb38fda97b8178243cb4da4b
+
+pkgname = runawk
+
