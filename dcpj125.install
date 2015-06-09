@@ -1,0 +1,12 @@
+# new package version
+post_install() {
+cat <<-EndOfMessage
+  NOTE 1: Remember to add user to lp group using 
+  gpasswd -a USER lp
+  NOTE 2: Remember to logout after adding groups
+  NOTE 3: Remember to execute as root the following executable:	
+  /opt/brother/Printers/dcpj125/cupswrapper/cupswrapperdcpj125
+  NOTE 4: x86_64 users should also install 'lib32-libcups' package
+EndOfMessage
+}
+
