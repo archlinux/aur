@@ -1,0 +1,26 @@
+pkgbase = mingw-w64-ogre
+	pkgdesc = Scene-oriented, flexible 3D engine written in C++ (mingw-w64)
+	pkgver = 1.9.0
+	pkgrel = 2
+	url = http://www.ogre3d.org
+	arch = any
+	license = custom:MIT
+	makedepends = mingw-w64-cmake
+	makedepends = mercurial
+	depends = mingw-w64-boost
+	depends = mingw-w64-freeimage
+	depends = mingw-w64-freetype
+	depends = mingw-w64-zziplib
+	depends = mingw-w64-tinyxml
+	depends = mingw-w64-ois
+	options = !buildflags
+	options = staticlibs
+	options = !strip
+	options = !emptydirs
+	source = hg+http://bitbucket.org/sinbad/ogre#tag=v1-9-0
+	source = cmake30.patch::https://bitbucket.org/sinbad/ogre/commits/d84bce645d3dd439188d3d29d8da51c51765a085/raw/
+	md5sums = SKIP
+	md5sums = 116fb8009c8d4b499f9a885052cc0ea6
+
+pkgname = mingw-w64-ogre
+
