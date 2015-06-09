@@ -1,0 +1,21 @@
+pkgbase = ruby-vimdeck
+	pkgdesc = VIM as a presentation tool
+	pkgver = 0.2.9
+	pkgrel = 1
+	url = https://github.com/tybenz/vimdeck
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-artii
+	depends = ruby-asciiart
+	depends = ruby-redcarpet
+	optdepends = vim-syntaxrange-git: SyntaxRange plugin must be installed
+	provides = ruby-vimdeck
+	provides = vimdeck
+	conflicts = vimdeck
+	noextract = vimdeck-0.2.9.gem
+	source = https://rubygems.org/downloads/vimdeck-0.2.9.gem
+	sha256sums = 85767bbc67720ceb3d3e4b674795503433cde4e10f726fae00db7e4dc8a10ff5
+
+pkgname = ruby-vimdeck
+
