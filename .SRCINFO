@@ -1,0 +1,16 @@
+pkgbase = qsampler
+	pkgdesc = LinuxSampler Qt GUI
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = http://qsampler.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt4
+	depends = linuxsampler
+	depends = liblscp
+	source = http://downloads.sourceforge.net/qsampler/qsampler-0.2.3.tar.gz
+	md5sums = ae9e7d8b79771de2437bb40406eb42bc
+
+pkgname = qsampler
+
