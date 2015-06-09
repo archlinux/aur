@@ -1,0 +1,15 @@
+pkgbase = pidgin-gnome-shell-extension-git
+	pkgdesc = A GNOME Shell extension that provides integration with Pidgin.
+	pkgver = 96.c10caca
+	pkgrel = 1
+	url = https://github.com/Psykar/gnome-shell-extensions-pidgin
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = gnome-shell
+	depends = pidgin
+	source = git://github.com/xiehuc/gnome-shell-extensions-pidgin.git
+	sha1sums = SKIP
+
+pkgname = pidgin-gnome-shell-extension-git
+
