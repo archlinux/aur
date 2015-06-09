@@ -1,0 +1,22 @@
+pkgbase = libgcrypt15-git
+	pkgdesc = General purpose cryptographic library based on the code from GnuPG. Latest commit from 1.5 branch - API version 11.
+	pkgver = 1.5.4.r3.g35cd81f
+	pkgrel = 1
+	url = http://www.gnupg.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = transfig
+	makedepends = automake
+	makedepends = ghostscript
+	depends = libgpg-error
+	provides = libgcrypt=1.5.4.r3.g35cd81f
+	provides = libgcrypt15=1.5.4.r3.g35cd81f
+	conflicts = libgcrypt15
+	conflicts = libgcrypt11
+	source = git://git.gnupg.org/libgcrypt.git#branch=LIBGCRYPT-1-5-BRANCH
+	sha1sums = SKIP
+
+pkgname = libgcrypt15-git
+
