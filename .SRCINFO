@@ -1,0 +1,17 @@
+pkgbase = python-flask-httpauth
+	pkgdesc = Simple extension that provides Basic and Digest HTTP authentication for Flask routes
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://github.com/miguelgrinberg/Flask-HTTPAuth
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-flask
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/F/Flask-HTTPAuth/Flask-HTTPAuth-2.5.0.tar.gz
+	md5sums = 1e073a607fa9f023d55a84fd6570ad3d
+	sha256sums = b314f48c71e5ce276aa4845b69c952afc879c2eb17b4f2d26bdc09dee1334f5b
+
+pkgname = python-flask-httpauth
+
