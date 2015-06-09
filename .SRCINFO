@@ -1,0 +1,24 @@
+pkgbase = litecoin-git
+	pkgdesc = A peer-to-peer network-based digital currency (git version)
+	pkgver = 4179.88e2a2e
+	pkgrel = 1
+	epoch = 1
+	url = http://www.litecoin.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = boost
+	makedepends = gcc
+	makedepends = make
+	makedepends = automoc4
+	depends = qt4>=4.6
+	depends = boost-libs>=1.46
+	depends = miniupnpc>=1.6
+	provides = litecoin
+	conflicts = litecoin
+	source = git://github.com/litecoin-project/litecoin.git
+	md5sums = SKIP
+
+pkgname = litecoin-git
+
