@@ -1,0 +1,13 @@
+pkgbase = speedtouch-tools
+	pkgdesc = Speedtouch 585 Router Admin Tools for the Linux command-line
+	pkgver = r10.ba00e03
+	pkgrel = 1
+	url = https://github.com/johnlane/speedtouch-tools
+	arch = any
+	license = MIT
+	depends = python
+	depends = bash
+	source = git+https://github.com/johnlane/speedtouch-tools.git
+
+pkgname = speedtouch-tools
+
