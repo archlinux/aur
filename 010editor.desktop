@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=010 Editor
+Comment=Professional text and hex editing with Binary Templates technology
+Icon=010editor
+Exec=010editor
+Terminal=false
+Type=Application
+Categories=Development;
