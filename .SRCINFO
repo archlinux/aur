@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-pdcurses
+	pkgdesc = Curses library for MinGW-w64
+	pkgver = 3.4
+	pkgrel = 4
+	url = http://pdcurses.sourceforge.net
+	arch = any
+	license = public domain
+	makedepends = mingw-w64-gcc
+	depends = mingw-w64-crt
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = http://downloads.sourceforge.net/pdcurses/PDCurses-3.4.tar.gz
+	source = mingw-pdcurses-3.4-build.patch
+	md5sums = 4e04e4412d1b1392a7f9a489b95b331a
+	md5sums = d1a36327155f51a1073b930e3647e4aa
+
+pkgname = mingw-w64-pdcurses
+
