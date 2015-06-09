@@ -1,0 +1,16 @@
+pkgbase = timeset-gui
+	pkgdesc = A GUI for managing system date and time.
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://github.com/aadityabagga/timeset-gui
+	arch = any
+	license = GPL
+	depends = gksu
+	depends = python2-gobject
+	depends = ntp
+	optdepends = ntp-openrc: openrc ntp service
+	source = https://github.com/aadityabagga/timeset-gui/archive/2.2.tar.gz
+	sha1sums = 2b1cc037eb6616d77a7538058a53a7f1cec57f22
+
+pkgname = timeset-gui
+
