@@ -1,0 +1,23 @@
+pkgbase = findx-git
+	pkgdesc = Wrapper to extend the Unix find command
+	pkgver = 20141005
+	pkgrel = 1
+	url = https://github.com/drmikehenry/findx
+	arch = any
+	license = unknown
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2
+	provides = ffg
+	provides = ffx
+	provides = findx
+	provides = findx.py
+	conflicts = ffg
+	conflicts = ffx
+	conflicts = findx
+	conflicts = findx.py
+	source = git+https://github.com/drmikehenry/findx
+	sha256sums = SKIP
+
+pkgname = findx-git
+
