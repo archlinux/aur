@@ -1,0 +1,19 @@
+pkgbase = nano-latest
+	pkgdesc = Pico editor clone with enhancements (Latest version)
+	pkgver = 2.3.5
+	pkgrel = 1
+	url = http://www.nano-editor.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	depends = sh
+	optdepends = nano-syntax-highlighting-git: extra syntax highlighting files (AUR)
+	provides = nano
+	conflicts = nano
+	backup = etc/nanorc
+	source = http://www.nano-editor.org/dist/v2.3/nano-2.3.5.tar.gz
+	md5sums = a771f6283ac1edee8e5486209910c829
+
+pkgname = nano-latest
+
