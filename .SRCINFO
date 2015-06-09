@@ -1,0 +1,16 @@
+pkgbase = ttf-impallari-cabin-font
+	pkgdesc = A humanist sans inspired by Edward Johnston's and Eric Gill's typefaces, from Pablo Impallari
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://www.impallari.com/cabin/
+	install = updatefont.install
+	arch = any
+	groups = impallari-fonts
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.impallari.com/media/releases/cabin-font-v1.5.zip
+	md5sums = ae4b0e4e0298ac88589b8e57629a6a08
+
+pkgname = ttf-impallari-cabin-font
+
