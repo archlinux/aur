@@ -1,0 +1,17 @@
+pkgbase = rtl8812au-dkms-git
+	pkgdesc = A kernel module for Realtek 8812au network cards with dkms support
+	pkgver = 8283c82
+	pkgrel = 1
+	url = https://github.com/gnab/rtl8812au
+	install = rtl8812au-dkms-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = dkms
+	source = git+https://github.com/gnab/rtl8812au.git
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = 6d4ea7322b1ccdcd9351232e2e49f10ef93b93bfc2034f494cdd256d0b3bd8c0
+
+pkgname = rtl8812au-dkms-git
+

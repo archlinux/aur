@@ -1,0 +1,12 @@
+post_install() {
+   dkms install rtl8812au/${1%%-*}
+}
+pre_upgrade() {
+    pre_remove ${2%%-*}
+}
+post_upgrade() {
+    post_install ${1%%-*}
+}
+pre_remove() {
+   dkms remove rtl8812au/${1%%-*} --all
+}
