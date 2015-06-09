@@ -8,16 +8,16 @@
 pkgname=libqtelegram-ae
 _pkgname=libqtelegram-aseman-edition
 epoch=1
-pkgver=3.3
-pkgrel=2
+pkgver=4.1
+pkgrel=1
 pkgdesc="Telegram library written in Qt based on telegram-cli code"
 arch=('x86_64' 'x64')
 license=('GPL3')
 url=("https://launchpad.net/libqtelegram")
 depends=('qt5-base' 'qt5-multimedia')
 makedepends=('cmake')
-source=("https://github.com/Aseman-Land/libqtelegram-aseman-edition/archive/v3.3.tar.gz")
-sha256sums=('689f547de4649a3a295e32dbe1829af9171eed707c7b324e0cc842ebf78f3cd2')
+source=("https://github.com/Aseman-Land/libqtelegram-aseman-edition/archive/v$pkgver.tar.gz")
+sha256sums=('7cebd68d3c95b46b23933becc3d3e592a9101fbf1211dd807f59947f59b4b0d9')
 
 prepare() {
   cd $_pkgname-$pkgver
