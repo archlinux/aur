@@ -1,0 +1,23 @@
+pkgbase = ros-indigo-fcl
+	pkgdesc = ROS - FCL is a collision checking library.
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = http://gamma.cs.unc.edu/FCL/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-octomap
+	makedepends = ros-indigo-libccd
+	makedepends = ros-indigo-catkin
+	makedepends = boost
+	makedepends = pkg-config
+	depends = ros-indigo-octomap
+	depends = ros-indigo-libccd
+	depends = boost
+	source = fcl::git+https://github.com/ros-gbp/fcl-release.git#tag=release/indigo/fcl/0.3.2-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-fcl
+
