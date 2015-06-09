@@ -1,0 +1,29 @@
+pkgbase = freetype2-ubuntu
+	pkgdesc = TrueType font rendering library, with Ubuntu's LCD rendering patches
+	pkgver = 2.5.2
+	pkgrel = 7
+	url = https://launchpad.net/ubuntu/+source/freetype
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = zlib
+	depends = bzip2
+	depends = sh
+	provides = freetype2=2.5.2
+	conflicts = freetype2
+	conflicts = freetype2-cleartype
+	conflicts = freetype2-lcd
+	options = !libtool
+	source = http://downloads.sourceforge.net/sourceforge/freetype/freetype-2.5.2.tar.bz2
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/freetype_2.5.2-2ubuntu3.diff.gz
+	source = freetype-2.2.1-enable-valid.patch
+	source = freetype-2.3.0-enable-spr.patch
+	source = freetype-2.4.11-enable-sph.patch
+	md5sums = 10e8f4d6a019b124088d18bc26123a25
+	md5sums = 2bc6a04308b88c08b154672e9a975a4c
+	md5sums = 214119610444c9b02766ccee5e220680
+	md5sums = 38765b5cc604179bf3afe33671d8ae37
+	md5sums = 4d4a0caad7aa5e09bea0719cd80681bf
+
+pkgname = freetype2-ubuntu
+
