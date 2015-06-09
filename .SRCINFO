@@ -1,0 +1,17 @@
+pkgbase = python2-http-parser
+	pkgdesc = HTTP request/response parser for Python in C
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://github.com/benoitc/http-parser
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/h/http-parser/http-parser-0.8.3.tar.gz
+	md5sums = 751967e2785c829dffebdc9a511e0eec
+	sha256sums = e2aff90a60def3e476bd71694d8757c0f95ebf2fedf0a8ae34ee306e0b20db83
+
+pkgname = python2-http-parser
+
