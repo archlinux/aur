@@ -1,0 +1,17 @@
+pkgbase = viewpdf
+	pkgdesc = ViewPDF shows PDF files, clearly indicating annotations and possible mistakes
+	pkgver = 0.6.2
+	pkgrel = 2
+	url = http://www.qtrac.eu/viewpdf.html
+	install = viewpdf.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = poppler-qt
+	source = http://www.qtrac.eu/viewpdf-0.6.2.tar.gz
+	source = viewpdf.desktop
+	sha1sums = b157da0f145119f1392c97273e097742bd00d0ee
+	sha1sums = ccd061afebebc7c09b4e127ace729146beb4417e
+
+pkgname = viewpdf
+

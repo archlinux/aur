@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=ViewPDF
+Comment=ViewPDF shows PDF files
+Comment[es]=ViewPDF muestra archivos PDF
+Exec=viewpdf
+Icon=/usr/share/pixmaps/viewpdf.png
+Categories=Office;
+Encoding=UTF-8
+StartupNotify=true
