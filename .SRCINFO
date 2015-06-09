@@ -1,0 +1,14 @@
+pkgbase = uwsgitop-git
+	pkgdesc = uWSGI stats viewer
+	pkgver = 20130415
+	pkgrel = 1
+	url = http://github.com/unbit/uwsgitop.git
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = python2-distribute
+	depends = python2
+
+pkgname = uwsgitop-git
+
