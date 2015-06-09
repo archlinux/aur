@@ -1,6 +1,6 @@
 pkgbase = benelib
 	pkgdesc = A library containing many code snippets mostly for ROOT
-	pkgver = 0.22.fad95b5
+	pkgver = 0.23.4d95e0a
 	pkgrel = 1
 	url = https://github.com/wutzi15/Benelib
 	arch = x86_64
