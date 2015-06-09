@@ -1,0 +1,19 @@
+pkgbase = grail
+	pkgdesc = Gesture Recognition And Instantiation Library
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://launchpad.net/grail
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = inputproto
+	depends = frame>=2.5.0
+	depends = libxi
+	conflicts = utouch-grail
+	replaces = utouch-grail
+	options = !libtool
+	source = http://launchpad.net/grail/trunk/3.1.0/+download/grail-3.1.0.tar.gz
+	md5sums = f0f8c56430ee3717778dec6452201c33
+
+pkgname = grail
+
