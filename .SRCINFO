@@ -1,0 +1,21 @@
+pkgbase = pypy19
+	pkgdesc = A Python implementation written in Python, JIT enabled
+	pkgver = 1.9
+	pkgrel = 1
+	url = http://pypy.org
+	arch = i686
+	arch = x86_64
+	license = custom:MIT
+	makedepends = python2
+	depends = libffi
+	optdepends = openssl: openssl module
+	optdepends = expat: pyexpat module
+	optdepends = ncurses: ncurses module
+	optdepends = zlib: zlib module
+	optdepends = bzip2: bz2 module
+	provides = python2
+	source = https://bitbucket.org/pypy/pypy/get/release-1.9.tar.bz2
+	sha256sums = 9fd599acade49ef98017bbce4f179f19cf2680489ff15235d3bad5b20bde0d68
+
+pkgname = pypy19
+
