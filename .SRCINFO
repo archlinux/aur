@@ -1,0 +1,20 @@
+pkgbase = pantheon-print-bzr
+	pkgdesc = A small utility used to print documents that allows the user to set the preferences
+	pkgver = r8
+	pkgrel = 1
+	url = https://launchpad.net/pantheon-print
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = vala
+	depends = contractor
+	depends = gtk3
+	provides = pantheon-print
+	conflicts = pantheon-print
+	source = bzr+lp:pantheon-print
+	sha256sums = SKIP
+
+pkgname = pantheon-print-bzr
+
