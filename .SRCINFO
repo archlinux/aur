@@ -1,0 +1,20 @@
+pkgbase = batsh
+	pkgdesc = A language that compiles to Bash and Windows Batch
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/BYVoid/Batsh
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = ocp-build
+	depends = ocaml
+	depends = ocaml-core
+	depends = ocaml-ounit
+	depends = ocaml-dlist
+	depends = ocaml-cmdliner
+	options = !strip
+	source = https://github.com/BYVoid/Batsh/archive/v0.0.6.tar.gz
+	md5sums = aeb8a3a6b6c7c9de8b041dc9023b6a1a
+
+pkgname = batsh
+
