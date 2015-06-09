@@ -1,0 +1,34 @@
+pkgbase = ros-indigo-moveit-msgs
+	pkgdesc = ROS - Messages, services and actions used by MoveIt.
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = http://moveit.ros.org
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-indigo-shape-msgs
+	makedepends = ros-indigo-geometry-msgs
+	makedepends = ros-indigo-trajectory-msgs
+	makedepends = ros-indigo-std-msgs
+	makedepends = ros-indigo-catkin
+	makedepends = ros-indigo-message-generation
+	makedepends = ros-indigo-octomap-msgs
+	makedepends = ros-indigo-actionlib-msgs
+	makedepends = ros-indigo-sensor-msgs
+	makedepends = ros-indigo-object-recognition-msgs
+	depends = ros-indigo-shape-msgs
+	depends = ros-indigo-geometry-msgs
+	depends = ros-indigo-trajectory-msgs
+	depends = ros-indigo-std-msgs
+	depends = ros-indigo-message-runtime
+	depends = ros-indigo-octomap-msgs
+	depends = ros-indigo-actionlib-msgs
+	depends = ros-indigo-sensor-msgs
+	depends = ros-indigo-object-recognition-msgs
+	source = moveit_msgs::git+https://github.com/ros-gbp/moveit_msgs-release.git#tag=release/indigo/moveit_msgs/0.6.1-0
+	md5sums = SKIP
+
+pkgname = ros-indigo-moveit-msgs
+
