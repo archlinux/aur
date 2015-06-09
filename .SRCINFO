@@ -1,0 +1,18 @@
+pkgbase = music-file-organizer-git
+	pkgdesc = Audio file organizer that reads tags and renames files (development version)
+	pkgver = latest
+	pkgrel = 1
+	url = http://git.zx2c4.com/music-file-organizer
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = icu
+	depends = taglib
+	provides = music-file-organizer
+	conflicts = music-file-organizer
+	source = git+http://git.zx2c4.com/music-file-organizer
+	sha256sums = SKIP
+
+pkgname = music-file-organizer-git
+
