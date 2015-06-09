@@ -1,0 +1,13 @@
+pkgbase = earlyoom-git
+	pkgdesc = The Early OOM Daemon
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/rfjakob/earlyoom
+	arch = any
+	license = GPL
+	makedepends = git
+	source = git://github.com/rfjakob/earlyoom.git
+	md5sums = SKIP
+
+pkgname = earlyoom-git
+
