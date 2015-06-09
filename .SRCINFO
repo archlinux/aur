@@ -1,0 +1,16 @@
+pkgbase = helden-software
+	pkgdesc = Die Heldenverwaltung für das Pen&Paper-Rollenspiel "Das Schwarze Auge" (DSA)
+	pkgver = 5.5.0
+	pkgrel = 1
+	url = http://www.helden-software.de
+	install = helden-software.install
+	arch = any
+	license = custom
+	depends = java-runtime
+	depends = hicolor-icon-theme
+	depends = bash
+	source = http://online.helden-software.de/rep/pool/main/h/helden-software/helden-software_5.5.0-2_all.deb
+	sha256sums = 5158bc30b4c46c24ebe3e7104c5e6ddde65875ec23a064dd1c41cafddebf931d
+
+pkgname = helden-software
+
