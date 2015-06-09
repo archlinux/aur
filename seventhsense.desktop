@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Seventh Sense
+GenericName=Seventh Sense
+Comment=Lone Wolf book player
+Exec=seventhsense
+Icon=/usr/share/pixmaps/seventhsense.png
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Game
+
