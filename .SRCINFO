@@ -1,0 +1,15 @@
+pkgbase = opensim-rake
+	pkgdesc = Rake is meant to dump assets (textures, animations, notecards, scripts, etc...) from either Second Life™ or OpenSim to your local hard-drive.
+	pkgver = 20131012
+	pkgrel = 1
+	url = http://was.fm/opensim:rake
+	arch = any
+	license = GPLv3
+	depends = mono
+	source = http://was.fm/_media/opensim/rake.zip
+	source = opensim-rake.sh
+	md5sums = 53518eab4f5849f5bfaed4ba4149df5e
+	md5sums = 949e23cccf789411a842cb230282d2de
+
+pkgname = opensim-rake
+
