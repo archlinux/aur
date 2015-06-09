@@ -1,0 +1,19 @@
+pkgbase = python-libtorrent-rasterbar
+	pkgdesc = Python 3 bindings for the libtorrent library
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = http://www.libtorrent.org/python_binding.html
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = boost
+	depends = boost-libs
+	depends = geoip
+	depends = python
+	depends = libtorrent-rasterbar
+	options = !emptydirs
+	source = http://downloads.sourceforge.net/project/libtorrent/libtorrent/libtorrent-rasterbar-1.0.5.tar.gz
+	sha256sums = 474a43da2147bec7e333c10f70b07221f4732dd67e071d5e90acc7edb8f657b0
+
+pkgname = python-libtorrent-rasterbar
+
