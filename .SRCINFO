@@ -1,0 +1,16 @@
+pkgbase = dri2proto-git
+	pkgdesc = X11 DRI extension wire protocol.
+	pkgver = 2.8.3.gddc1287
+	pkgrel = 1
+	url = https://wiki.freedesktop.org/xorg/
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = xorg-util-macros
+	provides = dri2proto
+	conflicts = dri2proto
+	source = git://git.freedesktop.org/git/xorg/proto/dri2proto
+	sha256sums = SKIP
+
+pkgname = dri2proto-git
+
