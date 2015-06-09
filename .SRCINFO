@@ -1,0 +1,18 @@
+pkgbase = maltparser
+	pkgdesc = a data-driven parser generator for dependency parsing
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = http://www.maltparser.org/
+	install = maltparser.install
+	arch = any
+	license = custom
+	depends = java-environment
+	source = http://maltparser.org/dist/maltparser-1.8.1.tar.gz
+	source = maltparser.install
+	source = maltparser.sh
+	sha1sums = 4451cb6d2da68b818b2e26d55fee1f1fb0717a42
+	sha1sums = 42f22d7ec89db686d7eb491b30061f892046fada
+	sha1sums = 73bfa1c9ff4f216a66088adba221843033a6b2bc
+
+pkgname = maltparser
+

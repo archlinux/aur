@@ -1,0 +1,7 @@
+post_install() {
+    cat /usr/share/licenses/maltparser/LICENSE
+}
+
+post_upgrade() {
+    post_install
+}
