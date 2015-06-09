@@ -1,0 +1,18 @@
+pkgbase = msjnc
+	pkgdesc = MadScientist's JNC Session Manager
+	pkgver = 2.5
+	pkgrel = 1
+	url = https://github.com/madscientist/msjnc
+	arch = x86_64
+	depends = gtk2-perl
+	depends = glib-perl
+	depends = unzip
+	depends = lib32-zlib
+	depends = net-tools
+	depends = glib-perl
+	depends = perl-libwww
+	source = https://raw.github.com/madscientist/msjnc/master/msjnc
+	md5sums = 553ddad65b7c591b8e3b591846bafecd
+
+pkgname = msjnc
+
