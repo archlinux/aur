@@ -1,0 +1,19 @@
+pkgbase = lxqt-policykit-git
+	pkgdesc = The LXQt policykit authentication agent
+	pkgver = 0.9.0.1.g88d9a28
+	pkgrel = 1
+	url = http://lxqt.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = liblxqt-git
+	depends = polkit-qt5
+	provides = lxqt-policykit
+	conflicts = lxqt-policykit
+	source = git+https://github.com/lxde/lxqt-policykit.git
+	sha256sums = SKIP
+
+pkgname = lxqt-policykit-git
+
