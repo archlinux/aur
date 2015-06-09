@@ -1,0 +1,7 @@
+post_install() {
+	mkdir -p /var/games/netmaumau
+}
+
+pre_remove() {
+	rm -rf /var/games/netmaumau/NetMauMau.db
+}

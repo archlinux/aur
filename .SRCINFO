@@ -1,0 +1,50 @@
+pkgbase = netmaumau
+	pkgdesc = Server for the popular card game Mau Mau
+	pkgver = 0.20.1
+	pkgrel = 1
+	url = http://sourceforge.net/projects/netmaumau/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = lua51
+	makedepends = vim-minimal
+	makedepends = file
+	makedepends = popt
+	makedepends = sqlite
+	source = netmaumau-0.20.1.tar.gz::https://github.com/velnias75/NetMauMau/archive/V0.20.1.tar.gz
+	source = netmaumau.install
+	md5sums = ca496629a08f45273183fbdcd9a7de14
+	md5sums = ff49fcd3b06719e1d0a2555f3faf5225
+
+pkgname = netmaumau-server
+	pkgdesc = Server for the popular card game Mau Mau - server
+	install = netmaumau.install
+	depends = popt
+	depends = sqlite
+	depends = lua51
+	depends = libnetmaumaucommon4=0.20.1
+
+pkgname = netmaumau-client
+	pkgdesc = Server for the popular card game Mau Mau - console client
+	depends = popt
+	depends = gcc-libs
+	depends = libnetmaumaucommon4=0.20.1
+	depends = libnetmaumauclient3=0.20.1
+
+pkgname = libnetmaumaucommon4
+	pkgdesc = Server for the popular card game Mau Mau - common library
+	depends = file
+	depends = gcc-libs
+
+pkgname = libnetmaumauclient3
+	pkgdesc = Server for the popular card game Mau Mau - client library
+	depends = file
+	depends = gcc-libs
+	depends = libnetmaumaucommon4=0.20.1
+
+pkgname = netmaumau-dev
+	pkgdesc = Server for the popular card game Mau Mau - development files
+	arch = any
+	depends = libnetmaumaucommon4=0.20.1
+	depends = libnetmaumauclient3=0.20.1
+
