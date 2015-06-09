@@ -1,0 +1,19 @@
+pkgbase = alot
+	pkgdesc = terminal-based MUA for the notmuch mail system
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = https://github.com/pazz/alot
+	arch = any
+	license = GPL
+	depends = notmuch
+	depends = python2-pygpgme
+	depends = python2-magic
+	depends = python2-configobj
+	depends = python2-urwid
+	depends = python2-twisted
+	options = !emptydirs
+	source = alot-0.3.6.tar.gz::https://github.com/pazz/alot/archive/0.3.6.tar.gz
+	md5sums = 527ee0b24bf444e61b05604efe4658b0
+
+pkgname = alot
+
