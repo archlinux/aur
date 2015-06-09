@@ -1,0 +1,14 @@
+pkgbase = gdm-theme-brasillinux-eye
+	pkgdesc = Brasillinux eye GDM theme
+	pkgver = 0.6.1
+	pkgrel = 2
+	url = http://gnome-look.org/content/show.php/Brasillinux+Eye?content=43700
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gdm-old
+	source = https://launchpad.net/ubuntu/+source/gdm-themes/0.6.1/+build/758977/+files/gdm-themes_0.6.1_all.deb
+	md5sums = 7dd39b89b7ccab47d30b2f96ad71f94a
+
+pkgname = gdm-theme-brasillinux-eye
+
