@@ -1,0 +1,19 @@
+pkgbase = python2-python-pydown
+	pkgdesc = HTML5 presentation builder written in Python
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://isnowfy.github.io/pydown/
+	arch = any
+	license = MIT
+	depends = python2
+	depends = python2-markdown
+	depends = python2-pygments
+	provides = pydown
+	provides = python2-python-pydown
+	conflicts = pydown
+	source = https://pypi.python.org/packages/source/p/python-pydown/python-pydown-0.1.0.tar.gz
+	md5sums = 6bfea5b9fe80f11cc0611d01c639fdb8
+	sha256sums = 3ea055065c8de193f033fc5b684be0868570306b35f538ea844cdb68de719329
+
+pkgname = python2-python-pydown
+
