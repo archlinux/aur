@@ -1,0 +1,7 @@
+post_install() {
+    cat <<EOF
+==> Put this in your ~/.emacs file to use Oz mode:
+
+(require 'oz)
+EOF
+}
