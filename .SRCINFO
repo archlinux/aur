@@ -1,0 +1,15 @@
+pkgbase = ruby-mercenary
+	pkgdesc = Lightweight and flexible library for writing command-line apps in Ruby.
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = https://github.com/jekyll/mercenary
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = mercenary-0.3.5.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/mercenary-0.3.5.gem
+	sha1sums = 56884c5ee5a4fea5215dd0bfbd15a376aeaaa4ce
+
+pkgname = ruby-mercenary
+
