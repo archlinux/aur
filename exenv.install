@@ -1,0 +1,28 @@
+post_install() {
+  printf "%b\n" "$xnv"
+}
+
+post_upgrade() {
+  post_install
+}
+
+read -d '' xnv <<'EOF'
+exenv
+=====
+
+All exenv binaries, and autocompletion for bash and zsh have been
+installed.
+
+The only requirement for exenv to function properly is to add
+~/.exenv/shims to your PATH:
+
+    $ echo 'PATH=$HOME/.exenv/shims:$PATH' >> ~/.bashrc
+
+zsh note: Modify your ~/.zshrc file instead of ~/.bashrc
+
+For a kitchen sink configuration, add `exenv init` to your shell:
+
+    $ echo 'eval "$(exenv init -)"' >> ~/.bash_profile
+
+zsh note: Modify your ~/.zshenv file instead of ~/.bash_profile
+EOF

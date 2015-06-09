@@ -1,0 +1,17 @@
+pkgbase = exenv-git
+	pkgdesc = Elixir version management tool
+	pkgver = 20140615
+	pkgrel = 1
+	url = https://github.com/mururu/exenv
+	install = exenv.install
+	arch = any
+	license = MIT
+	makedepends = git
+	optdepends = elixir-build: compile and install different versions of Elixir
+	provides = exenv
+	conflicts = exenv
+	source = git+https://github.com/mururu/exenv
+	sha256sums = SKIP
+
+pkgname = exenv-git
+
