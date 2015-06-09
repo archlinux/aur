@@ -1,0 +1,32 @@
+post_install() {
+	
+	cat << EOF 
+
+rEFInd UEFI application has been installed at /usr/share/refind/refind_*.efi
+
+Other UEFI applications have been installed at /usr/share/refind/tools_*/
+
+UEFI drivers have been installed at /usr/share/refind/drivers_*/
+
+Copy the efi application (according to your UEFI ARCH) 
+and /usr/share/refind/refind.conf-sample to a sub-directory of <EFISYS>/EFI/
+as refind.conf and add an entry to firmware boot menu using efibootmgr
+or mactel-boot (for Macs)
+
+rEFInd Icons have been installed at /usr/share/refind/icons/
+rEFInd Fonts have been installed at /usr/share/refind/fonts/
+
+HTML Documentation is available at /usr/share/refind/docs/html/
+
+More info: https://wiki.archlinux.org/index.php/UEFI_Bootloaders#Using_rEFInd
+
+EOF
+	
+}
+
+post_upgrade() {
+	
+	post_install
+	
+}
+
