@@ -1,0 +1,18 @@
+pkgbase = ttf-impallari-sniglet
+	pkgdesc = A rounded display face that’s great for headlines, from Haley Fiege & Pablo Impallari
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://www.impallari.com/projects/overview/sniglet-extension
+	install = updatefont.install
+	arch = any
+	groups = impallari-fonts
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	conflicts = ttf-sniglet
+	conflicts = ttf-theleague-sniglet
+	source = http://www.impallari.com/media/uploads/prosources/update-99-source.zip
+	md5sums = b2e512183a3c636dacf9fc08b9791eff
+
+pkgname = ttf-impallari-sniglet
+
