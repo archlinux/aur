@@ -1,0 +1,16 @@
+pkgbase = android-bash-completion
+	pkgdesc = Bash completion for android, adb, emulator, fastboot, and repo
+	pkgver = 20131016
+	pkgrel = 1
+	url = https://github.com/mbrubeck/android-completion
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = android-sdk-platform-tools
+	depends = bash
+	depends = bash-completion
+	source = android-completion::git+https://github.com/mbrubeck/android-completion.git
+	md5sums = SKIP
+
+pkgname = android-bash-completion
+
