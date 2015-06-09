@@ -1,0 +1,24 @@
+post_install() {
+  _rmsymlink
+  _mksymlink
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  _rmsymlink
+}
+
+_mksymlink() {
+  echo -n "Symlinking streem executable... "
+  ln -s /usr/share/streem/bin/streem /usr/bin/streem
+  echo "done"
+}
+
+_rmsymlink() {
+  echo -n "Removing symlinks... "
+  rm -f /usr/bin/streem
+  echo "done"
+}

@@ -1,0 +1,18 @@
+pkgbase = streem
+	pkgdesc = Stream based concurrent scripting language
+	pkgver = 201507
+	pkgrel = 1
+	url = https://github.com/matz/streem
+	install = streem.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = bison
+	makedepends = flex
+	makedepends = gcc
+	makedepends = make
+	source = streem-201507.tar.gz::https://codeload.github.com/matz/streem/tar.gz/201507
+	sha256sums = e2893b98148a2ad64476dfeb1f90eae258b7d6e2af971c6ca8fc62580035db2f
+
+pkgname = streem
+
