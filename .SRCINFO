@@ -1,0 +1,15 @@
+pkgbase = pcspk
+	pkgdesc = A set of command line applications for using the PC speaker
+	pkgver = 0.0.6
+	pkgrel = 2
+	url = https://github.com/przemoc/pcspk
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	options = strip
+	options = !buildflags
+	source = http://download.przemoc.net/pcspk-0.0.6.tar.gz
+	md5sums = 41b4e81c3c6c56e6171b746049a688a1
+
+pkgname = pcspk
+
