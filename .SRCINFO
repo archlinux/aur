@@ -1,0 +1,27 @@
+pkgbase = wifite-git
+	pkgdesc = A tool to attack multiple WEP and WPA encrypted networks at the same time
+	pkgver = 138.edbdedd
+	pkgrel = 1
+	url = https://github.com/derv82/wifite
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python2
+	depends = aircrack-ng
+	depends = aircrack-ng-scripts
+	depends = python2-pexpect
+	optdepends = tk
+	optdepends = macchanger
+	optdepends = pyrit-svn
+	optdepends = cowpatty
+	optdepends = reaver
+	optdepends = wireshark-cli
+	conflicts = wifite
+	conflicts = wifite-svn
+	replaces = wifite
+	replaces = wifite-svn
+	source = wifite-git::git+https://github.com/derv82/wifite.git
+	sha256sums = SKIP
+
+pkgname = wifite-git
+
