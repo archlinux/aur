@@ -1,0 +1,24 @@
+pkgbase = python25
+	pkgdesc = A high-level scripting language
+	pkgver = 2.5.6
+	pkgrel = 4
+	url = https://www.python.org
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = tk
+	depends = db
+	depends = bzip2
+	depends = gdbm
+	depends = openssl
+	depends = zlib
+	depends = gcc-libs
+	depends = readline
+	options = !makeflags
+	source = https://www.python.org/ftp/python/2.5.6/Python-2.5.6.tar.bz2
+	source = https://www.python.org/ftp/python/2.5.6/Python-2.5.6.tar.bz2.asc
+	sha256sums = 57e04484de051decd4741fb4a4a3f543becc9a219af8b8063b5541e270f26dcc
+	sha256sums = SKIP
+
+pkgname = python25
+
