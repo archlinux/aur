@@ -1,0 +1,15 @@
+pkgbase = dxirc
+	pkgdesc = A simple IRC client
+	pkgver = 1.10.0
+	pkgrel = 3
+	url = http://dxirc.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = fox
+	depends = lua51
+	source = http://dxirc.googlecode.com/files/dxirc-1.10.0.tar.gz
+	md5sums = 59d066a7ae7de1f4f16df5856561a5b2
+
+pkgname = dxirc
+
