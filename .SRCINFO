@@ -1,0 +1,11 @@
+pkgbase = cgroupfs-mount-rc
+	pkgdesc = Simple scripts to properly mount the cgroupfs hierarchy
+	pkgver = 20141214
+	pkgrel = 1
+	url = http://github.com/mdevaev/cgroupfs-mount-rc.git
+	arch = any
+	license = GPL
+	makedepends = git
+
+pkgname = cgroupfs-mount-rc
+
