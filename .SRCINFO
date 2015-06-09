@@ -1,0 +1,15 @@
+pkgbase = ruby-nn-core
+	pkgdesc = Wraps the nanomsg networking library using Ruby FFI (foreign function interface).
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = http://github.com/chuckremes/nn-core
+	arch = any
+	depends = ruby
+	depends = ruby-ffi
+	noextract = nn-core-0.3.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/nn-core-0.3.0.gem
+	sha1sums = ed2011e555ce0bc3544be7a2322b1e6c61a836b6
+
+pkgname = ruby-nn-core
+
