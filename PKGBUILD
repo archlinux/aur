@@ -1,5 +1,5 @@
 # Maintainer:  Tristan Webb <tristan@fpcomplete.com>
-pkgname=stack
+pkgname=haskell-stack
 pkgver='0.0.0'
 pkgrel=1
 pkgdesc="The Haskell Tool Stack"
@@ -9,8 +9,8 @@ license=('BSD3')
 depends=('libtinfo')
 makedepends=()
 optdepends=('docker: Use Docker images to build your project in a temporary container')
-provides=('stack')
-conflicts=('stack-git')
+provides=('haskell-stack')
+conflicts=('haskell-stack-git')
 if [ "${CARCH}" = 'x86_64' ]; then
     _arch='x86_64'
     sha1sums=('1b0876a3dfcb5305d87e5dd422ff4e9e33409d48')
