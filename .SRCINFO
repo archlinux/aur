@@ -1,0 +1,14 @@
+pkgbase = pidgin-gpg
+	pkgdesc = Transparently encrypts your instant messages with RSA encryption. Easy-to-use, but very secure.
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/segler-alex/pidgin-gpg
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = pidgin
+	source = git+https://git@github.com/segler-alex/Pidgin-GPG.git
+	md5sums = SKIP
+
+pkgname = pidgin-gpg
+
