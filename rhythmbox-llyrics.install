@@ -1,0 +1,18 @@
+compile_glib2_schemas() {
+   /usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas/
+}
+
+post_install() {
+   echo 'compiling glib2 schemas'
+   compile_glib2_schemas
+}
+
+post_upgrade() {
+   echo 'recompiling glib2 schemas'
+   compile_glib2_schemas
+}
+
+post_remove() {
+   echo 'recompiling glib2 schemas'
+   compile_glib2_schemas
+}

@@ -1,0 +1,18 @@
+pkgbase = rhythmbox-llyrics
+	pkgdesc = A Rhythmbox plugin for displaying lyrics in the sidebar.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/dmo60/lLyrics
+	install = rhythmbox-llyrics.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = rhythmbox>=3.0
+	depends = python-chardet
+	depends = python-lxml
+	source = https://github.com/dmo60/lLyrics/archive/v1.0.zip
+	md5sums = d6b9a5dd1282d69bcd5e8f974c05cfa6
+
+pkgname = rhythmbox-llyrics
+
