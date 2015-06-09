@@ -1,0 +1,21 @@
+pkgbase = miv-git
+	pkgdesc = Vim plugin manager written in Haskell
+	pkgver = 20150216
+	pkgrel = 1
+	url = https://github.com/itchyny/miv
+	install = miv.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = ghc
+	makedepends = haskell-aeson
+	makedepends = haskell-hashable
+	makedepends = haskell-text
+	makedepends = haskell-unordered-containers
+	makedepends = haskell-yaml
+	options = strip
+	source = git+https://github.com/itchyny/miv
+	sha256sums = SKIP
+
+pkgname = miv-git
+
