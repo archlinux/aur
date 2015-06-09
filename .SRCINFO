@@ -1,0 +1,22 @@
+pkgbase = basic256
+	pkgdesc = Educational BASIC programming environment
+	pkgver = 1.1.4.0
+	pkgrel = 1
+	url = http://www.basic256.org/
+	arch = i686 x86_64
+	license = GPL2
+	makedepends = bison
+	makedepends = flex
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = qt5-webkit
+	depends = qt5-serialport
+	depends = sdl_mixer
+	depends = espeak
+	source = http://downloads.sourceforge.net/kidbasic/basic256_1.1.4.0.orig.tar.gz
+	source = basic256.desktop
+	md5sums = f8792253652b44cfad1d5e41bce7e472
+	md5sums = dfb1ee3ac38d86549ed5673b8ee46b49
+
+pkgname = basic256
+
