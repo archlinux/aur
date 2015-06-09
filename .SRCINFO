@@ -1,0 +1,19 @@
+pkgbase = kildclient-git
+	pkgdesc = A powerful MUD client written for GTK+ and support for Perl.
+	pkgver = r1347.e437da1
+	pkgrel = 1
+	url = http://kildclient.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = gtk3
+	depends = libglade
+	depends = gtkspell3
+	depends = perl-locale-gettext
+	depends = perl-json
+	source = kildclient::git+http://git.code.sf.net/p/kildclient/git
+	md5sums = SKIP
+
+pkgname = kildclient-git
+
