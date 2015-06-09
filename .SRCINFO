@@ -1,0 +1,19 @@
+pkgbase = haskell-stack-git
+	pkgdesc = The Haskell Tool Stack
+	pkgver = 20150609.9e3a332
+	pkgrel = 1
+	url = https://www.github.com/commercialhaskell/stack
+	arch = i686
+	arch = x86_64
+	license = BSD3
+	makedepends = ghc
+	makedepends = cabal-install
+	depends = libtinfo
+	optdepends = docker: Use Docker images to build your project in a temporary container
+	provides = haskell-stack
+	conflicts = haskell-stack
+	source = stack::git+git://localhost/stack.git
+	md5sums = SKIP
+
+pkgname = haskell-stack-git
+
