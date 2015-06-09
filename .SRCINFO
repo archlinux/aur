@@ -1,0 +1,16 @@
+pkgbase = aliedit
+	pkgdesc = www.alipay.com security control
+	pkgver = 1.0.3.20
+	pkgrel = 2
+	url = http://www.alipay.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libpng12
+	depends = gtk2
+	depends = gcc-libs
+	source = https://download.alipay.com/alipaysc/linux/aliedit/1.0.3.20/aliedit.tar.gz
+	md5sums = bb3e6270fc85c532beb8ee30b1deb80a
+
+pkgname = aliedit
+
