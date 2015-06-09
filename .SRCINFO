@@ -1,0 +1,11 @@
+pkgbase = nodejs-pegjs
+	pkgdesc = Parser generator for JavaScript
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = http://pegjs.org
+	arch = any
+	license = MIT
+	depends = nodejs
+
+pkgname = nodejs-pegjs
+
