@@ -1,0 +1,16 @@
+pkgbase = php54-memcache
+	pkgdesc = Memcache module for PHP (php54)
+	pkgver = 3.0.8
+	pkgrel = 3
+	url = http://pecl.php.net/package/memcache
+	install = php-memcache.install
+	arch = i686
+	arch = x86_64
+	license = PHP
+	depends = php54
+	backup = etc/php/conf.d/memcache.ini
+	source = http://pecl.php.net/get/memcache-3.0.8.tgz
+	sha256sums = 2cae5b423ffbfd33a259829849f6000d4db018debe3e29ecf3056f06642e8311
+
+pkgname = php54-memcache
+
