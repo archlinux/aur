@@ -1,0 +1,12 @@
+This version mainly improves upon existing features, and includes a handful of new additions and bug fixes.
+Updates:
+
+    Implemented hit object stacking algorithm. (#61)
+    Implemented "Half Time" and "Double Time" mods. Note that pitch is shifted, though. (#68)
+    Added playback speed selection during replays. (#68)
+    Improved hit animations during gameplay. (#71)
+    Implemented Catmull curves. (#76)
+    Added additional download servers: osu!Mirror and Hexide.
+    Changed font to Droid Sans Fallback.
+    Bug fixes for clip loading (#59, #60, #84), fade-in issues (#63), and XDG problems (#58).
+    A lot of code refactoring/renaming.
