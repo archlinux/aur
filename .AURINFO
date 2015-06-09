@@ -1,0 +1,13 @@
+pkgbase = fget
+	pkgdesc = a minimal http/ftp download tool
+	pkgver = 0.4.1
+	pkgrel = 4
+	url = http://www.fefe.de/fget/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = dietlibc
+	source = http://www.fefe.de/fget/fget-0.4.1.tar.bz2
+
+pkgname = fget
+
