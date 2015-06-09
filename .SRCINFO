@@ -1,0 +1,21 @@
+pkgbase = spim
+	pkgdesc = A MIPS32 simulator
+	pkgver = 8.0
+	pkgrel = 2
+	url = http://pages.cs.wisc.edu/~larus/spim.html
+	arch = i686
+	arch = x86_64
+	groups = emulators
+	license = custom:BSD
+	makedepends = bison
+	makedepends = flex
+	makedepends = m4
+	makedepends = imake
+	depends = libxaw
+	provides = xspim
+	conflicts = xspim
+	source = http://www.cs.wisc.edu/~larus/SPIM/spim-8.0.tar.gz
+	sha1sums = 979b91e0acb792310593d31aa65e49cccec73036
+
+pkgname = spim
+
