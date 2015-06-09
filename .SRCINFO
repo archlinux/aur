@@ -1,0 +1,20 @@
+pkgbase = hal-flash
+	pkgdesc = A libhal stub library forwarding to UDisks2 for flash to play DRM content
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/cshorler/hal-flash
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = autoconf>=2.60
+	makedepends = pkgconfig
+	makedepends = git
+	depends = udisks2
+	depends = dbus
+	provides = hal=0.5.15
+	conflicts = hal
+	source = https://github.com/cshorler/hal-flash/archive/v0.3.0.tar.gz
+	md5sums = 034943dde1c3e18266e396c7552542b4
+
+pkgname = hal-flash
+
