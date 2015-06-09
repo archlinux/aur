@@ -1,0 +1,19 @@
+pkgbase = vim-tern
+	pkgdesc = Tern plugin for Vim
+	pkgver = 55.c677b66
+	pkgrel = 1
+	url = https://github.com/marijnh/tern_for_vim
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = GPL3
+	makedepends = git
+	depends = vim
+	depends = nodejs
+	source = git+https://github.com/marijnh/tern_for_vim
+	source = vimdoc.install
+	sha256sums = SKIP
+	sha256sums = e74d002d6b3487e337e896cf6b0d8cb6898329df5f3e06aa73ded409baf7d8a7
+
+pkgname = vim-tern
+
