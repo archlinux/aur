@@ -1,0 +1,12 @@
+pkgbase = caledonia-backgrounds
+	pkgdesc = The official wallpaper collection for Caledonia (DE-independent)
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://malcer.deviantart.com
+	arch = any
+	license = CCPL
+	source = http://sourceforge.net/projects/caledonia/files/Caledonia%20Official%20Wallpapers/Caledonia_Official_Wallpaper_Collection-2.0.tar.gz
+	sha256sums = 42caaeff55359bb5789f2c624595a4d67011024ec5201d40212f381b82535e29
+
+pkgname = caledonia-backgrounds
+
