@@ -1,0 +1,24 @@
+pkgbase = slingshot-launcher-bzr
+	pkgdesc = The Pantheon Application Launcher
+	pkgver = r407
+	pkgrel = 1
+	url = https://launchpad.net/slingshot
+	install = slingshot-launcher.install
+	arch = i686
+	arch = x86_64
+	groups = pantheon
+	license = GPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = vala
+	depends = gala-bzr
+	depends = gnome-menus
+	depends = granite
+	depends = zeitgeist
+	provides = slingshot-launcher
+	conflicts = slingshot-launcher
+	source = slingshot-launcher::bzr+lp:slingshot
+	sha256sums = SKIP
+
+pkgname = slingshot-launcher-bzr
+
