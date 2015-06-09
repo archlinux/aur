@@ -1,0 +1,18 @@
+pkgbase = the_platinum_searcher
+	pkgdesc = A code search tool similar to ack and the_silver_searcher(ag)
+	pkgver = 1.7.7
+	pkgrel = 1
+	url = https://github.com/monochromegane/the_platinum_searcher
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	makedepends = mercurial
+	provides = pt
+	provides = the_platinum_searcher
+	source = git+https://github.com/monochromegane/the_platinum_searcher.git
+	md5sums = SKIP
+
+pkgname = the_platinum_searcher
+
