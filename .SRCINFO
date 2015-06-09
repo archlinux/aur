@@ -1,0 +1,22 @@
+pkgbase = kleiner-brauhelfer
+	pkgdesc = A Qt-based tool for hobby brewer to calculate and manage the beer brewing process.
+	pkgver = 1.4.1.0
+	pkgrel = 1
+	url = http://www.joerum.de/kleiner-brauhelfer
+	install = kleiner-brauhelfer.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qt5-base
+	depends = qt5-svg
+	depends = qt5-webkit
+	provides = kleiner-brauhelfer
+	source = http://www.joerum.de/kleiner-brauhelfer/lib/exe/fetch.php?media=download:01_04_01_00:kb_source_1_4_1_0.zip
+	source = kleiner-brauhelfer.desktop
+	source = kleiner-brauhelfer.png
+	md5sums = 173c15eaf5d951edffd2ae7a583160d1
+	md5sums = e438fa17b10accfbe0561d34aacd916e
+	md5sums = 6ae77b7221b09cd72d9f7181284998d5
+
+pkgname = kleiner-brauhelfer
+
