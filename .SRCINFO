@@ -1,0 +1,14 @@
+pkgbase = cinnamon-applet-better-places
+	pkgdesc = A Better Places Cinnamon Applet
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = http://cinnamon-spices.linuxmint.com/applets/view/54
+	arch = any
+	groups = cinnamon-applets
+	license = GPL
+	depends = cinnamon
+	source = http://cinnamon-spices.linuxmint.com/uploads/applets/PUXO-VDMY-NB96.zip
+	md5sums = b69c9191fa2513f88b106f9dd9b8f6f5
+
+pkgname = cinnamon-applet-better-places
+
