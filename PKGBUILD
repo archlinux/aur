@@ -1,8 +1,8 @@
 # Maintainer: Tolga HOŞGÖR <fasdfasdas@gmail.com>
 
 pkgname=rapidjson-git
-pkgver=r828.dd28719
-pkgrel=2
+pkgver=r1069.4e8e99c
+pkgrel=1
 pkgdesc="Rapidjson is an attempt to create the fastest JSON parser and generator."
 
 arch=('any')
