@@ -1,0 +1,20 @@
+post_install() {
+  echo "Updating icon cache"
+  gtk-update-icon-cache -q -f -t /usr/share/icons/hicolor
+	echo "Updating mime entries"
+	update-desktop-database -q
+}
+
+post_upgrade() {
+  echo "Updating icon cache"
+  gtk-update-icon-cache -q -f -t /usr/share/icons/hicolor
+	echo "Updating mime entries"
+	update-desktop-database -q
+}
+
+post_remove() {
+  echo "Updating icon cache"
+  gtk-update-icon-cache -q -f -t /usr/share/icons/hicolor
+	echo "Updating mime entries"
+	update-desktop-database -q
+}

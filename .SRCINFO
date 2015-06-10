@@ -1,0 +1,37 @@
+pkgbase = netsurf-git
+	pkgdesc = Lightweight and fast web browser
+	pkgver = 20120924
+	pkgrel = 1
+	url = http://www.netsurf-browser.org/
+	install = netsurf-git.install
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = re2c
+	makedepends = curl
+	makedepends = libnsbmp
+	makedepends = libnsgif
+	makedepends = libcss
+	makedepends = libhubbub-git
+	makedepends = libparserutils
+	makedepends = libdom-git>=20120924
+	makedepends = netsurf-buildsystem-git
+	makedepends = gendesk
+	makedepends = nsgenbind
+	depends = libmng
+	depends = libglade
+	depends = lcms
+	depends = librsvg
+	depends = lemon
+	depends = cairo
+	depends = desktop-file-utils
+	provides = netsurf
+	conflicts = netsurf
+	replaces = netsurf-svn
+	source = netsurf-git.png::http://ubuntu.allmyapps.com/data/n/e/netsurf-netsurf-web-browser/icon_48x48_netsurf.png
+	source = netsurf::git://git.netsurf-browser.org/netsurf.git
+	sha256sums = f0dbcc5d80bf03d706aa8b28a322aa7f169a40813848c2d1505691f6e2c7ef00
+	sha256sums = SKIP
+
+pkgname = netsurf-git
+
