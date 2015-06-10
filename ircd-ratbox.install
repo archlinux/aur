@@ -1,0 +1,33 @@
+post_upgrade() {
+    systemd-tmpfiles --create ircd-ratbox.conf
+
+    cat << EOF
+
+  Before starting the ircd, reload system modules by running:
+
+    systemctl daemon-reload
+
+  If you haven't previously done so, copy /etc/ircd-ratbox/example.conf
+  to /etc/ircd-ratbox/ircd.conf and configure it to your needs carefully.
+
+  Once things are configured, you can start the ircd by running:
+
+    systemctl start ircd-ratbox
+
+  You can also have the ircd start automatically at boot by running:
+
+    systemctl enable ircd-ratbox
+
+EOF
+}
+
+post_install() {
+    [[ ! `grep ircd /etc/passwd` ]] && useradd -r -U -s /bin/false -d / ircd && echo "Created 'ircd' user and group"
+    chown -R ircd.ircd /etc/ircd-ratbox
+    post_upgrade
+}
+
+post_remove() {
+    [[ `grep ircd /etc/passwd` ]] && userdel ircd && echo "Removed 'ircd' user and group"
+    return 0
+}

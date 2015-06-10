@@ -1,0 +1,12 @@
+[Unit]
+Description=Ratbox IRC Daemon
+
+[Service]
+User=ircd
+Type=forking
+GuessMainPID=yes
+ExecStart=/usr/bin/ircd
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
