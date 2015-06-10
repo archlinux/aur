@@ -1,0 +1,17 @@
+pkgbase = perl-sys-fs
+	pkgdesc = Perl/CPAN Module Sys::FS - filesystem interaction tools
+	pkgver = 0.11
+	pkgrel = 1
+	url = https://metacpan.org/release/Sys-FS
+	arch = any
+	license = PerlArtistic
+	depends = perl-log-tree
+	depends = perl-moose
+	depends = perl-namespace-autoclean
+	depends = perl-sys-run
+	options = !emptydirs
+	source = http://cpan.metacpan.org/authors/id/T/TE/TEX/Sys-FS-0.11.tar.gz
+	md5sums = feea0f446f91e59c64c410b549814407
+
+pkgname = perl-sys-fs
+
