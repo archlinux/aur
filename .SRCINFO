@@ -1,0 +1,19 @@
+pkgbase = commacd-git
+	pkgdesc = A faster way to move around Bash
+	pkgver = 20141108.r26.7780c93
+	pkgrel = 1
+	url = https://github.com/shyiko/commacd
+	install = commacd-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	source = git+https://github.com/shyiko/commacd.git
+	source = LICENSE
+	source = commacd.1
+	sha512sums = SKIP
+	sha512sums = 21de58a9ffd486ad1b4616b6c0674d04f05c4f2173ed4050da134a721b8fc23022a2254494d4e9e892691f5e6e1f3bfbdf8fed57ed9a4f2e19349041a2e53974
+	sha512sums = c2032ecb1ef92e413aab97d6adb787ceac1d112585347ef5c6e0b3cfcd09685337d34229e01c230d5781abddb2f213e5f0082d0d91aa7ea12f83f6f2b1d3a5d8
+
+pkgname = commacd-git
+

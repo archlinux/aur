@@ -1,0 +1,4 @@
+post_install(){
+    echo 'To use, add the following command to ~/.bashrc or /etc/bash.bashrc:'
+    echo '[[ -r "/usr/share/commacd/commacd.bash" ]] && source /usr/share/commacd/commacd.bash'
+}
