@@ -1,0 +1,15 @@
+pkgbase = sddm-theme-archpaint2
+	pkgdesc = Adaptation to SDDM of kdm-theme-archpaint2
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://www.archlinux.org/
+	install = sddm-theme-archpaint2.install
+	arch = any
+	license = CCPL:cc-by-sa
+	depends = sddm
+	depends = wallpaper-archpaint2
+	source = https://github.com/Guidobelix/sddm-theme-archpaint2/releases/download/v1.1/sddm-theme-archpaint2-1.1.tar.bz2
+	md5sums = 9583988ef78a18661114cf7af9f92f17
+
+pkgname = sddm-theme-archpaint2
+
