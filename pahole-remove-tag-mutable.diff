@@ -1,0 +1,10 @@
+--- ./dwarves_fprintf.c.orig	2015-02-09 11:41:13.639281983 +0300
++++ ./dwarves_fprintf.c	2015-02-09 11:41:19.319313497 +0300
+@@ -74,7 +74,6 @@ static const char *dwarf_tag_names[] = {
+ 	[DW_TAG_unspecified_type]	  = "unspecified_type",
+ 	[DW_TAG_partial_unit]		  = "partial_unit",
+ 	[DW_TAG_imported_unit]		  = "imported_unit",
+-	[DW_TAG_mutable_type]		  = "mutable_type",
+ 	[DW_TAG_condition]		  = "condition",
+ 	[DW_TAG_shared_type]		  = "shared_type",
+ #ifdef STB_GNU_UNIQUE
