@@ -1,0 +1,23 @@
+pkgbase = system-tar-and-restore
+	pkgdesc = Backup and Restore your system using tar or Transfer it with rsync
+	pkgver = 4.9
+	pkgrel = 1
+	url = https://github.com/tritonas00/system-tar-and-restore
+	install = readme.install
+	arch = any
+	license = GPL
+	depends = rsync
+	depends = wget
+	optdepends = dialog: Ncurses interface support
+	optdepends = grub: Grub support
+	optdepends = dosfstools: UEFI support
+	optdepends = efibootmgr: UEFI support
+	optdepends = syslinux: Syslinux support
+	optdepends = gptfdisk: GPT with Syslinux support
+	source = https://github.com/tritonas00/system-tar-and-restore/archive/4.9.tar.gz
+	source = readme.install
+	md5sums = dddc80d15190b44dd7d7b1571ee1570e
+	md5sums = 4a916d292566554a63b35df9ed094230
+
+pkgname = system-tar-and-restore
+
