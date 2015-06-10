@@ -1,0 +1,11 @@
+--- a/Makefile	2014-01-26 19:01:17.723542649 +0000
++++ b/Makefile	2014-01-26 19:02:24.532907919 +0000
+@@ -34,7 +34,7 @@
+ 	ar rs libutf8proc.a utf8proc.o
+ 
+ libutf8proc.so: utf8proc.o
+-	$(cc) -shared -o libutf8proc.so utf8proc.o
++	$(cc) -Wl,-soname,libutf8proc.so -shared -o libutf8proc.so utf8proc.o
+ 	chmod a-x libutf8proc.so
+ 
+ libutf8proc.dylib: utf8proc.o

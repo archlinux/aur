@@ -1,0 +1,11 @@
+--- a/Makefile	2014-01-26 18:55:57.400996757 +0000
++++ b/Makefile	2014-01-26 19:00:10.264164095 +0000
+@@ -3,7 +3,7 @@
+ 
+ # settings
+ 
+-cflags = -O2 -std=c99 -pedantic -Wall -fpic $(CFLAGS)
++cflags = -std=c99 -pedantic -fpic $(CFLAGS)
+ cc = $(CC) $(cflags)
+ 
+ 
