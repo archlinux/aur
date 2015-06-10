@@ -1,0 +1,24 @@
+pkgbase = mtaws
+	pkgdesc = Perl Multithreaded Multipart sync to Amazon Glacier
+	pkgver = 1.120
+	pkgrel = 2
+	url = http://mt-aws.com/
+	arch = any
+	license = GPL3
+	checkdepends = perl-test-tabs
+	checkdepends = perl-test-deep
+	checkdepends = perl-test-mockmodule
+	checkdepends = perl-test-spec
+	makedepends = perl-datetime
+	depends = perl
+	depends = perl-json-xs
+	depends = perl-libwww
+	optdepends = perl-lwp-protocol-https: HTTPS support
+	options = !emptydirs
+	options = purge
+	source = http://www.cpan.org/modules/by-module/App/App-MtAws-1.120.tar.gz
+	md5sums = c4d0a6e488129abd0390bb5bd2a42bb1
+	sha256sums = 1f52d822975b646ed9eb80edff859f260acd82cfb9b3fec833556e36664afc33
+
+pkgname = mtaws
+
