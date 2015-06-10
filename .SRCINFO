@@ -1,0 +1,18 @@
+pkgbase = larswm
+	pkgdesc = A tiling window manager based on 9wm
+	pkgver = 7.5.3
+	pkgrel = 4
+	url = http://porneia.free.fr/larswm/larswm.html
+	arch = i686
+	arch = x86_64
+	license = custom:9wm
+	makedepends = imake
+	depends = libxmu
+	backup = usr/share/X11/larswm/system.larswmrc
+	source = http://downloads.sourceforge.net/larswm/larswm-7.5.3.tar.gz
+	source = larswm.desktop
+	md5sums = a8048b8a93e381f3eb649194f254fa7d
+	md5sums = 528a346582657f7cae09fc89d143e634
+
+pkgname = larswm
+
