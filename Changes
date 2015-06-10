@@ -1,0 +1,864 @@
+Revision history for Net::SFTP::Foreign
+
+1.77  Nov 5, 2013
+        - release as stable
+        - fix misspellings in error message
+
+1.76_04  Oct 2, 2013
+        - fix 'Use of "goto" to jump into a construct is deprecated'
+          warning (bug report by Brent Bates)
+        - don't force permissions from rput when copy_perm is unset
+
+1.76_03  Aug 26, 2013
+        - fix several spelling errors
+        - add spell checking test
+        - remove pod test from MANIFEST
+        - ensure that pty is not destroyed before main object (bug
+          report by Stephen Wylie) during global destruction
+
+1.76_02  Apr 29, 2013
+        - remove warning happening when best_effort was set, specially
+          visible from Compat module (bug report by emerlyn at
+          PerlMonks)
+
+1.76_01  Apr 26, 2013
+        - protect against callbacks setting $\ (bug report by Thomas
+          Wadley)
+
+1.75  Apr 2, 2013
+        - release as stable
+
+1.74_07  Mar 21, 2013
+        - seek method was returning offset instead of success value
+          (bug report by Paul Kolano).
+
+1.74_06  Mar 12, 2013
+        - disconnect may kill some unrelated process when called
+          repeatly (bug report by Douglas Wilson)
+        - debug was clobbering $!
+
+1.74_05  Feb 5, 2013
+        - error was not being set on timeouts (bug report by Kqfh
+          Jjgrn)
+
+1.74_04  Oct 25, 2012
+        - overwriting rename of a file over itself was broken (bug
+          report by Mike Wilder)
+        - stat and lstat path arguments is now optional and defaults
+          to '.' (bug report by Paul Kolano)
+        - fstat was broken
+        - add git repository and bugtracker into meta files
+
+1.74_03  Sep 21, 2012
+        - put_content was broken (bug report by Caleb Cushing)
+        - document put_content method
+        - add more tests
+
+1.74_02  Jul 11, 2012
+        - rget was dieing when trying to copy remote symbolic links
+        - add support for get method slow-start feature: when file
+          size is unknown don't start asking for $queue_size packets
+          as it slows down the transfer of small files, instead,
+          starting from a queue size of one go gradually increasing it
+          until the stated maximum is reached (bug report by David
+          R. Wagner)
+        - parse supported2 extension
+
+1.74_01
+        - add support for password_prompt (feature request by Douglas
+          Wilson)
+
+1.73  May 11, 2012
+        - password authentication was broken on Solaris (maybe also on
+          others) due to an incorrect waitpid call (bug report and
+          solution by Douglas Wilson)
+        - disconnect was dieing when used with autodie on (bug report
+          by Douglas Wilson)
+
+1.72_02  May 4, 2012
+        - add methods truncate, chmod, chown and utime
+        - make setstat, stat and statvfs accept both a path and a
+          remote file/dir handle as its first argument
+        - deprecate fsetstat, fstat and fstatvfs
+        - refactor remove and rmdir generation
+        - add support for sparse file transfer
+        - minor doc improvements
+
+1.72_01  Mar 20, 2012
+        - add support for asks_for_username_at_login feature (feature
+          request by Horea Gligan)
+        - key_path now can accept an array
+
+1.71  Mar 14, 2012
+        - release as stable
+        - add support for vendor-id extension
+
+1.70_10  Mar 2, 2012
+        - now perm and umask can be used together on get method calls
+        - more cleanups for permission handling code on get method
+
+1.70_09  Mar 2, 2012
+        - autodie was no working for chmod errors on get
+        - get was unlinking the file when chmod failed even whith
+          append or resume set
+        - get was failing when chmod failed even if copy_perms was
+          dissabled (bug report by Rich Anderson)
+        - solve bad interaction between autodie, resume and append
+        - best_effort wrapped methods were not failing ever
+        - minor put method refactoring
+        - save globals on destructor entry
+        - better put method debugging
+
+1.70_08  Feb 19, 2012
+        - queue_size defaults per backend were using the wrong key
+          name and so being ignored. That was causing connections to
+          stall on Windows with the default backend.
+
+1.70_07  Feb 19, 2012
+        - put recovers from open calls failing due to the existence of
+          a remote file with the wrong permissions
+        - do not use accessors for status and error slots internally
+        - test_d and test_e methods where broken when used with
+          autodie, this bug may also affected rget, rput and other
+          high level methods
+
+1.70_06  Feb 13, 2012
+        - add put_content method
+        - support perm option in mget, mput, rget and rput methods
+        - better umask handling, now use an object to reset it at end
+          of scope
+        - improve debugging output
+
+1.70_05  Feb 5, 2012
+        - on Compat::get $remote argument is optional
+        - make Compat::(get|put) use best_effort by default
+        - add support for best_effort feature
+
+1.70_04  Jan 22, 2012
+        - check number of arguments passed to Compat methods
+
+1.70_03  Dec 11, 2011
+        - remove uninitialized warning when using a custom transport
+          (bug report by Kay-C. Baufeld)
+        - several spelling corrections (patch contributed by Nicholas
+          Bamber)
+
+1.70_02  Dec 10, 2011
+        - syntax error, POSIX::WNOHANG was recognized as bareword in
+          perl 5.8
+
+1.70_01  Dec 9, 2011
+        - do not use Expect to handle password authentication but a
+          hand-crafted method that uses IO::Pty directly
+        - solve problem with connections stalling when using password
+          authentication and the remote host was unreachable (bug
+          report by Srini T)
+
+1.69  Dec 9, 2011
+        - release as stable
+
+1.68_08 Oct 11, 2011
+        - accept an array reference in ssh_cmd
+        - use warnings::warnif to generate warnings
+        - minor doc improvements and corrections
+        - in case of sftp-server not found test were not skipped but
+          failed
+
+1.68_07  Oct 10, 2011
+        - password authentication was not working with the new
+          IPC::Open3 replacement code (bug report by Srini T)
+        - empty password handling was also broken
+        - allow setting the backend on all the tests
+
+1.68_06  Oct 9, 2011
+        - do not use the buggy IPC::Open3 under Unix/Linux. This is a
+          mayor internal change, please report any connection problems
+          that were not happening with previous versions of the module
+        - allow testing Windows backend under Unix
+
+1.68_05  Sep 27, 2011
+        - this version is more picky about incomplete responses to
+          stat requests when copy_perms or copy_time are enabled
+          (implicetly or explicitly) on get method
+        - handle incomplete attributes in stat response inside get
+          (bug report by Gus via the Perl Guru Forums).
+
+1.68_04  Sep 7, 2011
+        - accept passing undef as second argument to put, get, rput,
+          rget, mput and mget
+        - catch invalid undefined arguments in several places
+        - custom conversion usage was broken
+        - add %DEFAULTS to Compat package for setting default options
+          for Net::SFTP::Foreign methods called under the hood.
+
+1.68_03  Aug 28, 2011
+        - atomic feature added to get, put and higher level methods
+          using them
+        - cleanup feature added to get and put
+        - support for numbered feature added to rename
+        - save final target name when a reference is passed as
+          numbered option
+        - refactor rput and rget handling of put, put_symlink, get and
+          get_symlink options using hashes
+        - remove operation inside put_symlink was clobbering error and
+          status from previous symlink call
+        - solve several minor bugs related to autodie handling
+        - do not die from inside DESTROY methods when autodie is set
+        - resume feature in get method was broken
+        - refactor numbered logic inside _inc_numbered sub
+        - refactor _gen_save_status_method using local
+
+1.68_02  Jul 20, 2011
+        - make unix2dos clever so it doesn't convert CR+LF sequences
+          into CR+CR+LF (bug report by Pavel Albertyan).
+
+1.68_01  Jul 12, 2011
+        - add workaround for crippled versions of Scalar::Util
+        - document overwrite and numbered options as accepted by the
+          put method (reported by Paul Kolano)
+
+1.67  Jul 4, 2011
+        - released as stable in order to solve critical bug:
+        - solve regresion introduced in 1.63_05 that caused ssh to
+          hang when trying to access the tty
+        - pass password to plink via -pw and generate a warning when
+          doing so
+        - support for key_path constructor argument
+        - support for autodie mode
+        - docs misspelling errors corrected (reported by Michael
+          Stevens)
+
+1.66_01  Jun 3, 2011
+        - allow using regexp objects as patterns on glob and derived
+          methods
+        - some doc improvements
+
+1.65  May 17, 2011
+        - die_on_error was broken
+
+1.64  May 09, 2011
+        - release as stable
+        - document the write_delay and read_ahead options
+        - minor doc corrections
+
+1.63_10  Apr 13, 2011
+        - workaround bug in perl 5.6 calling STORE in a tied
+          filehandle
+        - solve "not enough arguments for grep" when using an old
+          version of Scalar::Util
+
+1.63_09  Apr 12, 2011
+        - an error in the handler accessors was adding and useless
+          wrapping layer
+          
+1.63_08  Jan 22, 2011
+        - bad method call inside mkpath corrected (bug report and
+          solution by Adam Pingel)
+
+1.63_07  Jan 20, 2011
+        - do not override PreferredAuthentication when explicitly set
+          by the user (bug report and solution by Ave Wrigley)
+
+1.63_06  Dec 10, 2010
+        - redirect_stderr_to_tty was redirecting to the wrong side of
+          the tty (bug report by Russ Brewer)
+
+1.63_05  Dec 6, 2010
+        - add support for hardlink@openssh.com extension
+        - add die_on_error method
+        - create a new process group for slave ssh process so that
+          signals sent from the terminal are not propagated
+        - better error messages
+
+1.63_04	 Nov 11, 2010
+	- workaround for IPC::Open3::open3 not working with tied file
+          handles on Windows (bug report by Barnabas Bona)
+        - several spelling corrections (contributed by Philippe Bruhat)
+
+1.63_03  Nov 10, 2010
+        - On some OSs (i.e. AIX) reading/writing from non-blocking fds
+          can result in EAGAIN even when select has indicated that
+          data was available (bug report and patch by Bill Godfrey)
+
+1.63_02  Nov 2, 2010
+        - Windows backend was not pipelining requests when called from
+          put method
+
+1.63_01
+        - support for Tectia client added (bug report by Russ Brewer)
+
+1.62  Oct 5, 2010
+        - _catch_tainted_args was not being imported from helpers (bug
+          report by rfbits at PerlMonks)
+
+1.61  Sep 22, 2010
+        - remove some dead code introducing unneeded constraints that
+          cause the Net::SSH2 backend to fail (bug report by Philippe
+          Vouters)
+
+1.60  Sep 20, 2010
+        - _ensure_list was not being imported from Helpers (bug report
+          and solution by Jean-Benoît Baudens)
+
+1.59  Sep 16, 2010
+	- kill ssh subprocess with KILL signal on Windows
+
+1.58_08  Aug 22, 2010
+	- import _hexdump from Helpers.pm (bug report by Chuck Kozak)
+	- call kill passing the signal name instead of using POSIX to
+          get its number
+
+1.58_07  Aug 2, 2010
+	- dump $! on failed sysreads and syswrites
+
+1.58_06  Jul 12, 2010
+	- rput was broken under Windows (bug report by Brian
+          E. Lozier)
+	- do not use Fcntl S_IS* macro wrappers as S_ISLNK is not
+          available under Windows
+	- new FAQ about put failing because of forbidden setstat
+	- minor doc improvements
+        - use "kill $name" instead of using POSIX to get the signal
+          number
+
+1.58_05  Jun 7, 2010
+	- add support for stderr_discard also in Windows backend
+
+1.58_04  Jun 7, 2010
+	- add support for stderr_discard
+
+1.58_03  May 27, 2010
+        - even more debugging for put method and the resume feature
+
+1.58_02
+        - add FAQ about strict host key checking
+        - better debugging for put method
+
+1.58_01  Apr 19, 2010
+	- add stderr redirection feature
+	- minor doc corrections	 
+	- add donating to OpenSSH entry in docs
+
+1.57  Mar 14, 2010
+        - release as stable
+
+1.56_09  Mar 11, 2010
+	- realpath feature was broken on find and ls methods (bug
+          report by Paul Kolano)
+	- taint checks on hashes were not reporting problems properly
+	- minor doc corrections
+
+1.56_08  Jan 5, 2010
+	- put'ting a tied file handle was generating some warnings
+          (bug report and patch by Gavin Carr)
+
+1.56_07  Dec 29, 2009
+	- new methods added: mget, mput, get_symlink, put_symlink
+	- new numbered feature
+	- some minor bugs corrected
+	- glob can now also be used from Net::SFTP::Foreign::Local
+	- some doc corrections and improvements
+	- _call_on_error was not cleaning up under some conditions
+
+1.56_06  Dec 14, 2009
+	- mkpath was broken, rewritten to not use the obsolete
+          _normalize_path method (bug report by Peter Edwards).
+	- add some tests for mkpath
+	- introduce internal _clear_error_and_status method
+	- completely remove _normalize_path
+	- correct bug in _debug not printing sub name under some
+          conditions
+
+1.56_05  Dec 9, 2009
+	- add support for plugable backends ***THIS IS A MAYOR
+          INTERNAL CHANGE THAT COULD INTRODUCE NEW BUGS***
+
+1.56_04  Dec 8, 2009
+	- remote file path joining sub rewritten (note: this could
+          change the module behaviour in some corner cases)
+	- new test file with path join operations
+	- rput('.',...) was failing due to bad path joining for local
+          filesystem (bug report by Aaron Paetznick).
+	- accept keyboard-interactive authentication
+	- some docs reorganization
+	- add pointer to my wish list :-)
+
+1.56_03  Nov 14, 2009
+	- use SIGTERM to kill children also on Windows
+	- workaround Cygwin bug, fopen(..., a); ftell() does not
+          return the size of the file
+
+1.56_01  Oct 26, 2009
+	- pass PreferredAuthentication option to SSH process to force
+          password authentication (bug and solution by Stewart
+          Heckenberg)
+	- use SIGTERM instead of SIGHUP to kill slave SSH process
+
+1.55  Sep 9, 2009
+        - re-release as stable
+
+1.54_03  Sep 4, 2009
+	- add debugging to _rel2abs
+
+1.54_02  Aug 19, 2009
+	- add extra sanity check to setcwd method. It seems that some
+          servers do not report an error when realpath is called on an
+          inexistent file (bug report by Ben Szulc)
+	- password authentication broken in AIX
+        - some documentation corrections
+        - more tests added
+
+1.54_01  Jul 22, 2009
+        - yet another "Password not requested as expected" bug solved,
+          $pty->close_slave was being called too soon (bug report by
+          Tim Rayner)
+
+1.53  Jul 6, 2009
+        - re-released as stable
+
+1.52_12  Jul 2, 2009
+	- also if using password authentication, detect when the
+          remote host key doesn't match the key stored in know_hosts
+          and abort the connection (bug report by Ryan Niebur).
+	- if using password authentication, detect when the target
+          host key has not been accepted yet (bug report by Ryan
+          Niebur)
+	- work around for IPC::Open3 feature missing in old versions
+          of that module that caused password authentication to fail
+          under 5.6.x perls (bug report by Vetrivel).
+        - find method would not follow links passed as arguments to
+          the method or others found when ordered mode was selected
+          (bug report by Paul Kolano)
+        - detect bad passwords and other password authentication
+          improvements
+        - sample scripts added
+        - atomic_rename was returning the wrong error code/string
+        - Perl 5.11 changes the EOF call interface for tied file
+          handles
+        - attributes flags slot was incorrectly set on new_from_buffer
+        - get/put_int64 optimization
+        - add calling function name to debug output
+        - add debug hexdumps for sysreads and syswrites
+        - optimize some common ls usages to reduce CPU utilization
+        - implement pipelining for ls command
+	- ls bug, wanted was being called with the wrong arguments
+	- add timestamps to debugging output
+	- ensure that attribute arguments are of class
+          Net::SFTP::Foreign::Attributes (feature request by Todd
+          Rinaldo)
+	- put_attributes was broken
+	- move _hexdump to Helpers package
+	- debug subsystem cleanup
+
+1.51  Apr 7, 2009
+        - "get" corrupted the fetched files if $\ was non empty (bug
+          report and solution by Dagfinn Ilmari Mannsaker)
+	- increment default packet and queue size
+
+1.50  Mar 18, 2009
+	- rel2abs was not collapsing duplicated slashes when joining
+          paths, generating paths as '//home' that have an unexpected
+          meaning under Windows (bug report and solution by Erik
+          Weidel)
+
+1.49  Mar 17, 2009
+	- use utf8::downgrade to handle data with may have its utf8
+          flag set (bug report by Jamie Lahowetz, solution by ikegami)
+	- emulate SSH2_FXF_APPEND mode not supported by OpenSSH SFTP
+          server
+	- open flags documented
+	- minor documentation corrections
+	- follow_links option from find method was broken (bug report
+          by Paul Kolano)
+	- spurious debugging message removed from statvfs
+        - put and get now accept a file handle instead of a file name
+          for the local file (feature request by David Morel)
+        - add support for append option in put and get
+	- put and get documentation reorganized
+	- improve write caching behavior, '_write_delay' is used to
+          control the write buffer size (feature request by David
+          Morel)
+
+1.47  Feb 13, 2009
+        - add support for per object dirty cleanup flag required by
+          proper Net::OpenSSH integration
+	- add support for old SSH1
+
+1.46  Dec 18, 2008
+        - release as stable version
+	- improve synopsis documentation
+	- commercial support offering note added
+
+1.45  Nov 11, 2008
+        - reduce localized scope for $SIG{__DIE__} and $@ (bug report
+          by David Serrano and David Riosalido)
+        - workaround incomplete unicode support in perl 5.6.x
+        - new FAQ entry about how to completely disable passwd
+          authentication
+        - add support for OpenSSH protocol extensions statvfs,
+          fstatvfs and posix-rename.
+        - add overwrite feature to rename method
+        - new fs_encoding feature added ***this is a mayor internal
+          change that could introduce new bugs***
+        - when parsing status msgs, the string was not being converted
+          to utf8
+        - croak when utf8 data is written to remote files in any way.
+        - binmode ssh_in and ssh_out
+        - some minor documentation corrections
+        - add support for mkpath (feature requested by Mark Murphy)
+        - add support for late_set_attr (bug report by Oliver Dunbar)
+        - add support for extended file attributes (bug report by
+          Oliver Dunbar)
+        - add support for the autodisconnect feature (bug report by
+          Jared Watkins).
+        - add support for multiprocess debugging
+
+1.44  Oct 9, 2008
+        - put was using block sizes 4 times bigger than
+          requested, bug introduced in 1.41 (reported by Hussain
+          Syed).
+
+1.43  Sep 8, 2008
+        - readline was slurping the full file contents (bug report by
+          Sylvain Cousineau).
+
+1.42  Jul 17, 2008
+        - experimental support for resuming file transfers
+        - some typos fixed
+        - TODO added
+
+1.41  Jul 16, 2008
+        - add support for on the fly data conversions including
+          dos2unix and unix2dos
+        - copy_perm => 0 was being ignored in several methods (bug
+          report by Dave Tauzell)
+
+1.40  Jun 24, 2008
+        - work around for servers that do not include the mandatory
+          error message on SSH_FXP_STATUS responses (bug report by
+          Hugh Lampert).
+
+1.39  Jun 23, 2008
+        - suppress warning on mod_perl environments (bug and solution
+          reported by Eric Rybski).
+
+1.38  May 20, 2008
+        - add experimental support for plink command
+        - on get, don't change file size passed to callback
+        - on get, survive stat failure for servers with stat/readdir
+          disabled (bug reported by Hussain Syed)
+        - default open mode set to read
+        - add support for block_size and queue_size constructor
+          arguments
+        - limit usage of Expect and PTYs to authentication phase (bug
+          reported by Tom Warkentin)
+        - honour copy_perm option in put method (bug report by Bruce
+          Harold)
+        - copy_perms option renamed to copy_perm for consistency
+          (copy_perms still supported)
+        - glob optimization
+        - typo in Net::SFTP::Foreign::Common::_set_errno was not
+          setting $! correctly (bug report by Rafael Kitover)
+        - add debugging support to _do_io and _set_(status|error)
+
+1.36  Apr 18, 2008
+        - forbid usage of Net::SFTP::Foreign methods from Compat
+          module (bug reported by Fred Zellinger)
+        - document the password and passphrase constructor
+          options.
+
+1.35  Feb 8, 2008
+        - put method was failing for binary files under Windows
+          because binmode was not set on the local filehandler (bug
+          report and patch by Patrick Frazer).
+
+1.34  Jan 8, 2008
+        - document rput. It said it was not implemented (bug report
+          by Paul Kolano).
+        - put method was failing for binary files under Windows
+          because binmode was not set on the local filehandler (bug
+          report and patch by Patrick Frazer).
+
+1.33  Jan 6, 2008
+        - rremove was not removing dirs (bug report by Paul Kolano).
+        - require perl >= 5.6
+        - add support for open/close and DESTROY debugging
+
+1.32  Dec 8, 2007
+        - add new question to FAQ
+        - document password and passphrase options (though, not
+          completely).
+        - somo minor documentation changes
+        - on testing look for sftp-server on libexec dirs
+        - and delete temporal files
+
+1.31  Oct 8, 2007
+        - remove Win32::Socketpair loading, it is not used anymore
+        - improve debugging
+        - do not croak when invalid data from the other side appears
+
+1.30  Aug 23, 2007
+        - add support for realpath option to ls method
+        - add support for realpath and names_only to glob method
+        - improve _set_status and _set_error methods
+        - add support for password authentication and for keys with
+          passphrases
+
+1.29  Aug 14, 2007
+        - add support for names_only option to ls and find methods
+        - make ls and find methods default to '.'
+        - DESTROY was also messing with $? and $! values (bug reported
+          by Dave Haywood)
+        - better usage checking for several methods
+        - add support for cwd (experimental)
+        - symlink docs corrected
+        - several other doc corrections
+
+1.28
+        - argument checking in rename was wrong (reported by Greg
+          Howard)
+        - disable DIE custom handlers when using eval
+
+1.27  Jul 7, 2007
+	- catch insecure $ENV{PATH} under taint mode (bug reported by
+	  jmarshll).
+
+1.26  Jul 5, 2007
+        - my email was missing from the docs
+        - make it work under taint checking (experimental feature).
+        - work around bug in dualvar under taint checking
+
+1.25  Jun 19, 2007
+        - remove some obsolete tests not working on 5.9.x
+
+1.24  Jun 18, 2007
+        - DESTROY was messing up $@ (bug reported by Kai Grossjohann)
+        - set $SIG{PIPE} handler inside _do_io to catch IO errors
+        - don't execute external command when transport option is used
+          on constructor
+
+1.23  May 23, 2007
+        - release as stable!
+        - some doc improvements
+
+0.90_22 Apr 29, 2007
+        - experimental Windows support added
+
+0.90_21 Apr 25, 2007
+        - some documentation improvements
+        - check that ctor 'more' arguments are not joined
+        - eliminate "Password" prompt on passwd_auth sample (solution
+          suggested by Fletch on PerlMonks)
+
+0.90_20 Apr 20, 2007
+        - add support for "transport" options on the constructor that
+          allows to use password authentication and keys protected by
+          a passphrase
+        - add password authentication sample
+
+0.90_19 Apr 5, 2007
+        - add abort method (feature requested by Jamie Lahowetz)
+
+0.90_18 Mar 23, 2007
+        - fallback to dirty cleanup if ssh process doesn't exit cleanly in
+          8 seconds (bug reported by Brandon Schendel).
+
+0.90_17 Mar 21, 2007 
+        - add support for dont_save flag in get method, required for
+          Compat module (bug reported by Jamie Lahowetz).
+
+0.90_16 Mar 18, 2007
+        - new tests added
+        - mkdir, rmdir, remove, setstat, fsetstat and _close methods
+          argument parsing was wrong (bug #25101 reported by
+          funkonaut)
+        - wrong detection of Sort::Key corrected
+        - debug mode was broken
+        - network errors do not die anymore, documented
+
+0.90_15 Dec 19 2006
+        - messages were not being queued on get method and so,
+          performance was very bad (reported by "sched" via
+          Perlmonks).
+        - Auto reduce block size on get method.
+
+0.90_14 Nov 8 2006
+        - FAQ section added on the module documentation
+        - Net::SFTP supplant was not working, corrected
+
+0.90_13 Sep 22 2006
+        - fchmod is not available everywhere, don't use it (bug and
+          solution reported by Andre Tomt).
+
+0.90_12 Aug 21 2006
+        - syntax error on Net::SFTP::Foreign::Compat corrected
+          (reported by Hans Schligtenhorst).
+        - supplant was misspelled
+        - correct some dependency problems on Compat.
+        - add test for Compat.
+
+0.90_11 Jun 30 2006
+        - don't croak from connect on runtime errors
+        - workaround bug in IPC::Open3 that leaves two processes
+          running
+
+0.90_10 May 17 2006
+        - 0 is a valid sftp handler.
+
+0.90_09 Apr 25 2006
+	- bug on _do_io method corrected
+
+0.90_08 Apr 24 2006
+	- bug for copy_perms => 0 corrected (reported by Erik
+	  Johansen).
+	- usage checks added to most commands.
+
+0.90_07 Apr 23 2006
+	- don't use pack for quads on little-endian systems (bug
+	  reported by Mogens Hafsjold)
+
+0.90_06 Feb 24 2006
+	- implement rput
+	- use Win32::Socketpair on Windows
+	- implement API for local fs in Local
+	- move common functions to Common and Helpers packages
+
+0.90_05 Feb 23 2006
+	- convert remote file handle strings to tied file handles
+	- most methods changed to mimic perl buil-ins
+	- attach file position to file handles.
+
+0.90_04 Feb 22 2006
+	- remove bug in get that could left remote file handles open
+	- new methods readlink, symlink, rremove, rget.
+
+0.90_03 Feb 21 2006
+	- minor corrections to the docs
+	- new methods glob and join implemented.
+
+0.90_02 Feb 20 2006
+	- added new method find
+	- ls method expanded with callback
+	- contructor rewritten
+	- better docs for Constants package
+	- Compat module updated
+	- several corrections on the docs
+	
+0.90_01 Feb 16 2006
+	- almost full rewrite exposing new much improved and
+	  incompatible API!!!
+
+--------------------------------------------------------------------------
+
+0.57  Nov 29 2005
+	- check sysread return value when reading from pipe (bug
+	  report and patch submited by Mina Naguib).
+
+0.56  Nov 14 2005
+	- correct bug on open2_cmd option
+
+0.55  Oct 24 2005
+	- kill ssh process when done (bug reported by Alf Carlsson).
+
+0.54  Sep 07 2005
+	- add support for transferring files bigger than 4GB
+
+0.53  May 03 2005
+	- link to SFTP draft actualised
+
+0.52  May 03 2005
+	- some typos corrected on the docs.
+	
+0.51  May 03 2005
+	- Net::SFTP::Foreign::Buffer reimplemented from scratch. It
+	  doesn't depend on Net::SSH::Perl::Buffer anymore.
+	- use foreign 'ssh' to open connections.
+
+0.50  May 02 2005
+	- Net::SFTP::Foreign FORKED !!!
+
+
+--------------------------------------------------------------------------
+Previous revision history for Net::SFTP
+
+0.09  2005.01.16
+    - New co-maintainer, David Robins (DBROBINS).
+    - Adds a 'warn' argument to the constructor to allow supression or
+      redirection of warnings.
+    - Allows the 'ssh_args' constructor argument to be either a hash ref or an
+      array ref.
+    - Adds a 'status' method which returns the last SSH2_FX_* status value, or
+      (status value, text) in list context (only useful after last failure).
+    - Adds brief summary comments to some methods.
+	- Returns failure if the remote open fails for 'get' (previous code ignored
+      it); also moves the remote open before the local open so that we don't
+      create empty local files if the remote file can't be opened.
+	- Changes 'ls' to return an array reference in scalar context.
+	- Documents: the fact that we die on protocol/local errors; the new option
+      and method; changes to 'get'/'put' (formerly 'put' didn't return anything
+      useful, and 'get's actual return values are the same, just better
+      documented).
+	- Adds a comprehensive remote test, but to use it one has to manually go in
+      and configure a server a certain way, so it defaults to skipping
+      everything; I'm including it as a base since there are currently no remote
+      tests at all.
+
+0.08  2003.12.12
+    - Net::SFTP::Buffer was passing an invalid option when loading
+      Net::SSH::Perl::Buffer.
+    - Add SUPPORT section to the docs.
+
+0.07  2003.11.14
+    - Require Net::SSH::Perl 1.24, which also includes circular
+      reference fixes.
+
+0.06  2003.11.14
+    - New maintainer, Dave Rolsky.
+    - Fixed a circular reference which caused connections to be held
+      open indefinitely in a persistent environment like mod_perl.
+      This uses weak references, so Perl 5.6.0+ is now required.  This
+      work was funded by Kineticode, Inc.
+    - Added a LICENSE file.
+
+0.05  2001.05.24
+    - Added help ('h' or '?') command to psftp. Moved all shell
+      functionality into Net::SFTP::Shell.
+    - Net::SFTP::Util needed to 'use Exporter'.
+
+0.04  2001.05.16
+    - Fixed bug in put method when running fsetstat command; it
+      was trying to set the UID/GID on the remote file, which
+      was giving a permission denied message. Should not try to
+      set UID/GID, so had to adjust flags.
+    - Added eg/psftp, a working SFTP shell.
+    - Moved READ and WRITE commands into their own methods
+      (do_read and do_write, respectively).
+    - Changed semantics of get method. Returning the contents of
+      the remote file is no longer connected to whether a local
+      file is passed as an argument; it is instead based on the
+      calling context of 'get'. Updated docs to reflect this.
+
+0.03  2001.05.15
+    - Documentation for all extra classes: Attributes, Buffer,
+      Constants, and Util.
+    - Documentation for command methods in Net::SFTP.
+    - Added binmode when reading/writing from local files.
+    - Added methods for all remaining commands in SFTP protocol
+      version 3 (eg. remove, rmdir, mkdir, realpath, etc.).
+    - Added callbacks to get and put, eg. for status messages,
+      etc.
+    - Fixed typo in Net::SFTP::Buffer::get_int64 that was breaking
+      reading 64-bit ints.
+
+0.02  2001.05.14
+    - Fixed bug with SSH2 server not sending one message per
+      packet, ie. multiple packets have to be retrieved to make
+      up one SFTP message. This would show up as a "Message length
+      too long" error. Thanks to Matt Good for the spot.
+    - Fixed bug with OpenSSH and SSH2 SFTP servers where after
+      a certain amount of bytes the connection would hang. This
+      was a bug in Net::SSH::Perl (channel window sizes) that is
+      fixed in version 1.13.
+
+0.01  2001.05.13
+    - original version; created by h2xs 1.19
