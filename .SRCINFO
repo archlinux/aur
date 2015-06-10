@@ -1,0 +1,15 @@
+pkgbase = setconf-py3
+	pkgdesc = Utility to easily change settings in configuration files
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = http://setconf.roboticoverlords.org/
+	arch = any
+	license = GPL2
+	depends = python
+	provides = setconf
+	conflicts = setconf
+	source = http://setconf.roboticoverlords.org/setconf-0.6.3.tar.xz
+	sha256sums = 859b72da867b57451d8139e268fe3faa58102504a942944a01e94920035e7ee1
+
+pkgname = setconf-py3
+
