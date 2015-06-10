@@ -1,0 +1,21 @@
+pkgbase = eviacam
+	pkgdesc = eViacam - Mouse replacement software that moves the pointer as you move your head.
+	pkgver = 2.0.1+r648.65a817d
+	pkgrel = 1
+	url = http://eviacam.sourceforge.net
+	arch = any
+	license = GPL v3
+	makedepends = git
+	makedepends = libtool
+	makedepends = automake
+	makedepends = autoconf
+	depends = opencv
+	depends = wxgtk
+	depends = gtk2
+	depends = libxext
+	depends = libxtst
+	source = eviacam::git+http://git.code.sf.net/p/eviacam/eviacam
+	md5sums = SKIP
+
+pkgname = eviacam
+
