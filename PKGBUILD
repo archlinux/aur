@@ -2,7 +2,7 @@
 # Contributor: olav-st <olav.s.th@gmail.com>
 
 pkgname=nomachine
-pkgver=4.6.3
+pkgver=4.6.4
 pkgrel=13
 pkgdesc="Remote desktop application"
 groups=('network')
