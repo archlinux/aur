@@ -1,0 +1,14 @@
+post_install()
+{
+  which java > /dev/null 2> /dev/null
+  if [ $? -ne 0 ]; then
+    echo "WARNING: You need the 'java' binary in your \$PATH to use LTSA.";
+  fi
+}
+
+post_upgrade()
+{
+  post_install $1
+}
+
+# vim:set ts=2 sw=2 et:
