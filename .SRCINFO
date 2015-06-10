@@ -1,0 +1,13 @@
+pkgbase = perl-x11-freedesktop-desktopentry
+	pkgdesc = CPAN/X11::FreeDesktop::DesktopEntry -- interface to .desktop files
+	pkgver = 0.04
+	pkgrel = 1
+	url = https://metacpan.org/module/X11::FreeDesktop::DesktopEntry
+	arch = any
+	license = GPL
+	options = !emptydirs
+	source = http://cpan.metacpan.org/authors/id/G/GB/GBROWN/X11-FreeDesktop-DesktopEntry-0.04.tar.gz
+	md5sums = b0b70924cacf82bbf7c7c2783374b927
+
+pkgname = perl-x11-freedesktop-desktopentry
+
