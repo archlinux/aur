@@ -1,0 +1,25 @@
+From 6e8aba4b75c217176fd5e24f16be244c35c5f8f0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Andr=C3=A1s=20Czig=C3=A1ny?= <ras@balabit.hu>
+Date: Wed, 7 May 2014 14:12:26 +0200
+Subject: [PATCH] set default binary as /usr/bin/cppcheck
+
+---
+ src/Settings.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Settings.cpp b/src/Settings.cpp
+index c6230fe..c5b68b3 100644
+--- a/src/Settings.cpp
++++ b/src/Settings.cpp
+@@ -41,7 +41,7 @@ void Settings::load()
+   QSettings& settings = *(Core::ICore::settings ());
+   settings.beginGroup (QLatin1String (SETTINGS_GROUP));
+   binaryFile_ = settings.value (QLatin1String (SETTINGS_BINARY_FILE),
+-                                QString ()).toString ();
++                                QLatin1String ("/usr/bin/cppcheck")).toString ();
+   checkOnBuild_ = settings.value (QLatin1String (SETTINGS_CHECK_ON_BUILD),
+                                   false).toBool ();
+   checkOnSave_ = settings.value (QLatin1String (SETTINGS_CHECK_ON_SAVE),
+-- 
+1.9.2
+

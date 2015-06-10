@@ -1,0 +1,22 @@
+pkgbase = qtcreator-cppcheck-plugin-git
+	pkgdesc = QtCreator plugin using cppcheck
+	pkgver = r22.68ab9a9
+	pkgrel = 1
+	url = http://gres.biz/qtc-cppcheck/
+	arch = i686
+	arch = x86_64
+	groups = qt
+	groups = qt5
+	license = MIT
+	makedepends = git
+	makedepends = qtcreator-src
+	depends = qtcreator
+	depends = cppcheck
+	provides = qtcreator-cppcheck-plugin
+	source = qtcreator-cppcheck-plugin-git::git+https://github.com/OneMoreGres/qtc-cppcheck.git#branch=master
+	source = binary_default.patch
+	sha256sums = SKIP
+	sha256sums = e417e53be8f58a8107008129253c20d9426f54d718ae3b07cbd64cc20ecfe9e5
+
+pkgname = qtcreator-cppcheck-plugin-git
+
