@@ -1,0 +1,15 @@
+pkgbase = python2-vobject
+	pkgdesc = Module for parsing and generating vCard and vCalendar files
+	pkgver = 0.8.1c
+	pkgrel = 5
+	url = http://vobject.skyhouseconsulting.com
+	arch = any
+	license = Apache
+	makedepends = python2-distribute
+	depends = python2-dateutil
+	depends = python2-pyicu
+	source = http://vobject.skyhouseconsulting.com/vobject-0.8.1c.tar.gz
+	sha256sums = 594113117f2017ed837c8f3ce727616f9053baa5a5463a7420c8249b8fc556f5
+
+pkgname = python2-vobject
+
