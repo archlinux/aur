@@ -1,0 +1,15 @@
+pkgbase = lc-git
+	pkgdesc = Commandline utility for listing directory contents in columns
+	pkgver = abd5c25
+	pkgrel = 1
+	url = http://github.com/xyproto/lc
+	install = lc.install
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = python
+	source = lc::git://github.com/xyproto/lc.git
+	md5sums = SKIP
+
+pkgname = lc-git
+

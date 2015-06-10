@@ -1,0 +1,10 @@
+post_install() {
+  echo
+  echo 'Unless you use the lc tool that comes with mono,'
+  echo 'using this alias is recommended:'
+  echo
+  echo "  alias lc='lsc'"
+  echo
+}
+
+# vim:set ts=2 sw=2 et:
