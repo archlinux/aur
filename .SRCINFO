@@ -1,0 +1,17 @@
+pkgbase = xorg-xgc
+	pkgdesc = Xaw-based graphics demo that shows/tests various features of the X11 core protocol graphics primitives.
+	pkgver = 1.0.4
+	pkgrel = 2
+	url = http://xorg.freedesktop.org/
+	arch = i686
+	arch = x86_64
+	groups = xorg-apps
+	groups = xorg
+	license = custom
+	makedepends = xorg-util-macros
+	depends = libxaw
+	source = http://xorg.freedesktop.org/archive/individual/app/xgc-1.0.4.tar.bz2
+	sha256sums = 5ed8dc52619ed563ad51b8428a1e1678cdd40b30e8160396ee9e41b46f247e8d
+
+pkgname = xorg-xgc
+
