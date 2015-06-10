@@ -12,7 +12,7 @@ makedepends=(git)
 source=("$pkgbase"::'git+https://github.com/BouKiCHi/mdxplayer.git'
         makefiles.patch)
 sha256sums=('SKIP'
-            '2c67ce4f2828b11c785eae52c874a06ad535ad8e762d4b70230959ed9217840b')
+            'd8f24d0a385ed081e496573abed032366a2e74c6ea4c6dada80d7571e40bf1c0')
 
 pkgver() {
   cd "$srcdir/$pkgbase"

@@ -30,7 +30,7 @@ index e56323b..fff9e7c 100644
  
  #
 diff --git i/jni/mdxmini/mak/lib.mak w/jni/mdxmini/mak/lib.mak
-index 38af592..bee1432 100644
+index 38af592..c24a1af 100644
 --- i/jni/mdxmini/mak/lib.mak
 +++ w/jni/mdxmini/mak/lib.mak
 @@ -3,13 +3,13 @@ LIB = $(OBJDIR)/libmdxmini.a
@@ -54,7 +54,7 @@ index 38af592..bee1432 100644
  	$(AR) rcs $@ $(OBJS)
  
 +$(OBJDIR)/libmdxmini.so : $(OBJS)
-+	$(CC) $(CFLAGS) -shared -o $@ $^ $(LIBS)
++	$(CC) $(CFLAGS) -Wl,-Bsymbolic -shared -o $@ $^ $(LIBS)
 +
  $(OBJDIR)/%.o : $(SRCDIR)/%.c
  	$(CC) $(CFLAGS) -o $@ $< -c
