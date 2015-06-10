@@ -1,0 +1,264 @@
+diff -up src/chbg-1.5/src/chwin.c.orig src/chbg-1.5/src/chwin.c
+--- src/chbg-1.5/src/chwin.c.orig	2001-07-26 15:27:07.000000000 -0600
++++ src/chbg-1.5/src/chwin.c	2014-05-16 05:07:12.000000000 -0600
+@@ -101,7 +101,7 @@ Window chwin_get_window()
+ 	Display *display;
+ 	Window win;
+ 
+-	display = XOpenDisplay (gdk_display_name);
++	display = XOpenDisplay (gdk_display_get_name(GDK_DISPLAY()));
+ 	win = get_click_window(display);
+         XCloseDisplay (display);
+ 
+diff -up src/chbg-1.5/src/esetroot.c.orig src/chbg-1.5/src/esetroot.c
+--- src/chbg-1.5/src/esetroot.c.orig	2001-07-22 08:02:27.000000000 -0600
++++ src/chbg-1.5/src/esetroot.c	2014-05-16 05:07:12.000000000 -0600
+@@ -45,7 +45,7 @@ int height;
+ 
+ 	gdk_flush ();
+ 
+-	display = XOpenDisplay (gdk_display_name);
++	display = XOpenDisplay (gdk_display_get_name(GDK_DISPLAY()));
+ 	XSetCloseDownMode (display, RetainPermanent);
+ 
+ 	result = XCreatePixmap (display,
+diff -up src/chbg-1.5/src/gaccel.c.orig src/chbg-1.5/src/gaccel.c
+--- src/chbg-1.5/src/gaccel.c.orig	2001-01-08 12:36:45.000000000 -0700
++++ src/chbg-1.5/src/gaccel.c	2014-05-16 05:07:12.000000000 -0600
+@@ -144,7 +144,7 @@ GtkWidget *parent;
+ 
+ 	if (!widget) return;
+ 
+-	if (!daccel_group) daccel_group = gtk_accel_group_get_default();
++	if (!daccel_group) daccel_group = gtk_accel_group_new();
+ 
+ 	if (!accel_group && parent)
+ 	{
+diff -up src/chbg-1.5/src/gtkclrbutton.c.orig src/chbg-1.5/src/gtkclrbutton.c
+--- src/chbg-1.5/src/gtkclrbutton.c.orig	2001-07-15 14:12:55.000000000 -0600
++++ src/chbg-1.5/src/gtkclrbutton.c	2014-05-16 05:07:12.000000000 -0600
+@@ -96,7 +96,7 @@ static void gtk_color_button_class_init
+ 				gtk_marshal_NONE__POINTER,
+ 				GTK_TYPE_NONE, 1, GTK_TYPE_POINTER);
+ 
+-	gtk_object_class_add_signals (object_class, color_button_signals, LAST_SIGNAL);
++/*	gtk_object_class_add_signals (object_class, color_button_signals, LAST_SIGNAL); */
+ 
+ 	klass->color_changed = NULL;
+ }
+diff -up src/chbg-1.5/src/gtkselbox.c.orig src/chbg-1.5/src/gtkselbox.c
+--- src/chbg-1.5/src/gtkselbox.c.orig	2000-10-10 16:34:27.000000000 -0600
++++ src/chbg-1.5/src/gtkselbox.c	2014-05-16 05:07:12.000000000 -0600
+@@ -47,8 +47,10 @@ static void	gtk_selbox_size_allocate(Gtk
+ 					 GtkAllocation		*allocation);
+ static void	gtk_selbox_paint	(GtkWidget		*widget,
+ 					 GdkRectangle		*area);
++#if 0
+ static void	gtk_selbox_draw		(GtkWidget		*widget,
+ 					 GdkRectangle		*area);
++#endif
+ static gint	gtk_selbox_expose	(GtkWidget		*widget,
+ 					 GdkEventExpose		*event);
+ static void	gtk_selbox_realize	(GtkWidget		*widget);
+@@ -89,7 +91,9 @@ static void gtk_selbox_class_init (GtkSe
+ 
+         widget_class->size_request = gtk_selbox_size_request;
+         widget_class->size_allocate = gtk_selbox_size_allocate;
++#if 0
+ 	widget_class->draw = gtk_selbox_draw;
++#endif
+ 	widget_class->expose_event = gtk_selbox_expose;
+ 	widget_class->realize = gtk_selbox_realize;
+ 
+@@ -314,6 +318,7 @@ static void gtk_selbox_paint (GtkWidget
+ 	}
+ }
+ 
++#if 0
+ static void gtk_selbox_draw (GtkWidget    *widget,
+ 			      GdkRectangle *area)
+ {
+@@ -330,6 +335,7 @@ static void gtk_selbox_draw (GtkWidget
+ 			gtk_widget_draw (GTK_BIN (widget)->child, &child_area);
+ 	}
+ }
++#endif
+ 
+ gint gtk_selbox_expose (
+ GtkWidget	*widget,
+diff -up src/chbg-1.5/src/gui_tools.c.orig src/chbg-1.5/src/gui_tools.c
+--- src/chbg-1.5/src/gui_tools.c.orig	2001-07-25 15:25:33.000000000 -0600
++++ src/chbg-1.5/src/gui_tools.c	2014-05-16 05:07:12.000000000 -0600
+@@ -262,7 +262,7 @@ gfloat val;
+ 	gtk_table_attach(GTK_TABLE(table), entry, col+1, col+2, row, row+1 ,
+ 			0, GTK_FILL, 2, 2);
+ 	gtk_widget_set_usize(entry,
+-		gdk_string_width(entry->style->font, "00000000000"), -1);
++		gdk_string_width(gdk_font_from_description(entry->style->font_desc), "00000000000"), -1);
+ 	gtk_widget_show(entry);
+ 
+ 	return entry;
+diff -up src/chbg-1.5/src/operations.c.orig src/chbg-1.5/src/operations.c
+--- src/chbg-1.5/src/operations.c.orig	2001-01-22 13:28:15.000000000 -0700
++++ src/chbg-1.5/src/operations.c	2014-05-16 05:07:12.000000000 -0600
+@@ -191,7 +191,7 @@ struct ext_dlg_t *ext_dlg;
+                         0.0, 1000000.0, 1.0, 10.0, 0.0);
+         ext_dlg->src_size = gtk_spin_button_new(adj , 0 , 0);
+         gtk_widget_set_usize(ext_dlg->src_size , 
+-                gdk_string_width((ext_dlg->src_size)->style->font , "wwwwwwwww") , -1);
++                gdk_string_width(gdk_font_from_description((ext_dlg->src_size)->style->font_desc) , "wwwwwwwww") , -1);
+         gtk_box_pack_start(GTK_BOX(pbox) , ext_dlg->src_size , FALSE , TRUE , 5);
+         gtk_widget_show(ext_dlg->src_size);
+ 
+@@ -211,7 +211,7 @@ char *button_label;
+ {
+ 	GtkWidget *bbox,*btn,*box;
+ 
+-	ext_dlg->tl = gtk_window_new(GTK_WINDOW_DIALOG);
++	ext_dlg->tl = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+ 	gtk_window_set_title(GTK_WINDOW(ext_dlg->tl), title);
+ 	gtk_container_border_width(GTK_CONTAINER(ext_dlg->tl), 4);
+ 	gtk_signal_connect(GTK_OBJECT(ext_dlg->tl), "destroy",
+diff -up src/chbg-1.5/src/settings.c.orig src/chbg-1.5/src/settings.c
+--- src/chbg-1.5/src/settings.c.orig	2001-01-22 13:28:47.000000000 -0700
++++ src/chbg-1.5/src/settings.c	2014-05-16 05:07:12.000000000 -0600
+@@ -93,7 +93,7 @@ GtkWidget *notebook;
+ 	slideint = gtk_spin_button_new(adj , 0 , 0);
+ 	SET_TOOLTIP(slideint, gettext("In picture preview you can activate automatic slideshows, this value is used to determine period for picture changes."));
+ 	gtk_widget_set_usize(slideint , 
+-		gdk_string_width(slideint->style->font , "wwwwwwwww") , -1);
++		gdk_string_width(gdk_font_from_description(slideint->style->font_desc) , "wwwwwwwww") , -1);
+ 	gtk_table_attach(GTK_TABLE(row), slideint, 1, 2, 0, 1, GTK_FILL, GTK_FILL, 1, 1);
+ 	gtk_widget_show(slideint);
+ 
+@@ -114,7 +114,7 @@ GtkWidget *notebook;
+ 	sho_width = gtk_spin_button_new(adj , 0 , 0);
+ 	SET_TOOLTIP(sho_width, gettext("From shader preview dialog, you can create pictures in PNG format and thus way export it to external image processing programs. This value specifies the width of shaded picture which will be passed to external program."));
+ 	gtk_widget_set_usize(sho_width, 
+-		gdk_string_width(sho_width->style->font , "wwwwwwwww") , -1);
++		gdk_string_width(gdk_font_from_description(sho_width->style->font_desc) , "wwwwwwwww") , -1);
+ 	gtk_table_attach(GTK_TABLE(row), sho_width, 1, 2, 1, 2, GTK_FILL, GTK_FILL, 1, 1);
+ 	gtk_widget_show(sho_width);
+ 
+@@ -135,7 +135,7 @@ GtkWidget *notebook;
+ 	sho_height = gtk_spin_button_new(adj , 0 , 0);
+ 	SET_TOOLTIP(sho_height, gettext("From shader preview dialog, you can create pictures in PNG format and thus way export it to external image processing programs. This value specifies the height of shaded picture which will be passed to external program."));
+ 	gtk_widget_set_usize(sho_height, 
+-		gdk_string_width(sho_height->style->font , "wwwwwwwww") , -1);
++		gdk_string_width(gdk_font_from_description(sho_height->style->font_desc) , "wwwwwwwww") , -1);
+ 	gtk_table_attach(GTK_TABLE(row), sho_height, 1, 2, 2, 3, GTK_FILL, GTK_FILL, 1, 1);
+ 	gtk_widget_show(sho_height);
+ 
+@@ -157,7 +157,7 @@ GtkWidget *notebook;
+ 	sh_per_page = gtk_spin_button_new(adj , 0 , 0);
+ 	SET_TOOLTIP(sh_per_page, gettext("Currently chbg have many shading effects. It takes horrible ammount of time to render such amount of pictures, so it is clever to let it render per pages. This value allows you to specify how many shaders will be on one page."));
+ 	gtk_widget_set_usize(sh_per_page, 
+-		gdk_string_width(sh_per_page->style->font , "wwwwwwwww") , -1);
++		gdk_string_width(gdk_font_from_description(sh_per_page->style->font_desc) , "wwwwwwwww") , -1);
+ 	gtk_table_attach(GTK_TABLE(row), sh_per_page, 1, 2, 3, 4, GTK_FILL, GTK_FILL, 1, 1);
+ 	gtk_widget_show(sh_per_page);
+ 
+diff -up src/chbg-1.5/src/setup.c.orig src/chbg-1.5/src/setup.c
+--- src/chbg-1.5/src/setup.c.orig	2001-08-02 14:38:06.000000000 -0600
++++ src/chbg-1.5/src/setup.c	2014-05-16 05:08:59.000000000 -0600
+@@ -2004,7 +2004,7 @@ GtkWidget *parent;
+ 	gtk_menu_bar_append(GTK_MENU_BAR(mbar), mbb);
+ 	gtk_menu_item_set_submenu(GTK_MENU_ITEM(mbb), menu);
+ 
+-	gtk_accel_group_attach (menu_accel_group, GTK_OBJECT (toplevel_window));
++/*	gtk_accel_group_attach (menu_accel_group, GTK_OBJECT (toplevel_window)); */
+ }
+ 
+ static void Delete(object, func_data)
+@@ -2342,10 +2342,10 @@ GtkWidget *col;
+ 	gtk_box_pack_start(GTK_BOX(col), hbox, FALSE, TRUE, 0);
+ 	gtk_widget_show(hbox);
+ 	
+-	tb = gtk_toolbar_new (GTK_ORIENTATION_HORIZONTAL, GTK_TOOLBAR_BOTH);
+-	gtk_toolbar_set_button_relief(GTK_TOOLBAR(tb), GTK_RELIEF_NONE);
++	tb = gtk_toolbar_new ();
++	gtk_toolbar_set_orientation(GTK_TOOLBAR(tb), GTK_ORIENTATION_HORIZONTAL);
++	gtk_toolbar_set_style(GTK_TOOLBAR(tb), GTK_TOOLBAR_BOTH);
+ 	gtk_container_add(GTK_CONTAINER(hbox), tb);
+-	gtk_toolbar_set_space_size (GTK_TOOLBAR (tb), 15);
+ 	gtk_widget_show (tb);
+ 
+ 	gtk_toolbar_append_space (GTK_TOOLBAR(tb));
+@@ -2852,7 +2852,7 @@ static void BannerSetProperties()
+ 	{
+ 		GtkWidget *box, *hbox, *button;
+ 
+-		tl = gtk_window_new(GTK_WINDOW_DIALOG);
++		tl = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+ 		gtk_window_set_title(GTK_WINDOW(tl),
+ 			gettext("Banner properties"));
+ 		gtk_signal_connect(GTK_OBJECT(tl), "destroy",
+@@ -2971,7 +2971,7 @@ prop_dlg_info_t *propinfo;
+ 				1000000.0, 1.0, 60.0, 0.0);
+ 	propinfo->interval_m = gtk_spin_button_new(adj, 0, 0);
+ 	gtk_widget_set_usize(propinfo->interval_m,
+-		gdk_string_width(propinfo->interval_m->style->font, "wwwww"),
++		gdk_string_width(gdk_font_from_description(propinfo->interval_m->style->font_desc), "wwwww"),
+ 		-1);
+ 	gtk_box_pack_start(GTK_BOX(pbox), propinfo->interval_m, FALSE, TRUE, 2);
+ 	gtk_widget_show(propinfo->interval_m);
+@@ -2984,7 +2984,7 @@ prop_dlg_info_t *propinfo;
+ 				59.0, 1.0, 10.0, 0.0);
+ 	propinfo->interval_s = gtk_spin_button_new(adj, 0, 0);
+ 	gtk_widget_set_usize(propinfo->interval_s,
+-		gdk_string_width(propinfo->interval_s->style->font, "wwwww"),
++		gdk_string_width(gdk_font_from_description(propinfo->interval_s->style->font_desc), "wwwww"),
+ 		-1);
+ 	gtk_box_pack_start(GTK_BOX(pbox), propinfo->interval_s, FALSE, TRUE, 2);
+ 	gtk_widget_show(propinfo->interval_s);
+@@ -2997,7 +2997,7 @@ prop_dlg_info_t *propinfo;
+ 				1000000.0, 1.0, 60.0, 0.0);
+ 	propinfo->interval_end_m = gtk_spin_button_new(adj, 0, 0);
+ 	gtk_widget_set_usize(propinfo->interval_end_m,
+-		gdk_string_width(propinfo->interval_end_m->style->font,
++		gdk_string_width(gdk_font_from_description(propinfo->interval_end_m->style->font_desc),
+ 			"wwwww"),
+ 		-1);
+ 	gtk_box_pack_start(GTK_BOX(pbox), propinfo->interval_end_m,
+@@ -3012,7 +3012,7 @@ prop_dlg_info_t *propinfo;
+ 				59.0, 1.0, 10.0, 0.0);
+ 	propinfo->interval_end_s = gtk_spin_button_new(adj, 0, 0);
+ 	gtk_widget_set_usize(propinfo->interval_end_s,
+-		gdk_string_width(propinfo->interval_end_s->style->font,
++		gdk_string_width(gdk_font_from_description(propinfo->interval_end_s->style->font_desc),
+ 			"wwwww"),
+ 		-1);
+ 	gtk_box_pack_start(GTK_BOX(pbox), propinfo->interval_end_s,
+diff -up src/chbg-1.5/src/shaderpv.c.orig src/chbg-1.5/src/shaderpv.c
+--- src/chbg-1.5/src/shaderpv.c.orig	2001-07-15 13:22:10.000000000 -0600
++++ src/chbg-1.5/src/shaderpv.c	2014-05-16 05:07:12.000000000 -0600
+@@ -362,7 +362,7 @@ shaderdlg_info *info;
+ 
+ 		info->w_sel = gtk_spin_button_new(adj , 0 , 0);
+ 		gtk_widget_set_usize(info->w_sel , 
+-			gdk_string_width(info->w_sel->style->font , "wwwwwww") , -1);
++			gdk_string_width(gdk_font_from_description(info->w_sel->style->font_desc) , "wwwwwww") , -1);
+ 		gtk_box_pack_start(GTK_BOX(box), info->w_sel, FALSE, FALSE, 3);
+ 		gtk_widget_show(info->w_sel);
+ 
+@@ -374,7 +374,7 @@ shaderdlg_info *info;
+ 
+ 		info->h_sel = gtk_spin_button_new(adj , 0 , 0);
+ 		gtk_widget_set_usize(info->h_sel , 
+-			gdk_string_width(info->h_sel->style->font , "wwwwwww") , -1);
++			gdk_string_width(gdk_font_from_description(info->h_sel->style->font_desc) , "wwwwwww") , -1);
+ 		gtk_box_pack_start(GTK_BOX(box), info->h_sel, FALSE, FALSE, 3);
+ 		gtk_widget_show(info->h_sel);
+ 
+diff -up src/chbg-1.5/src/thumb.c.orig src/chbg-1.5/src/thumb.c
+--- src/chbg-1.5/src/thumb.c.orig	2001-07-22 08:12:22.000000000 -0600
++++ src/chbg-1.5/src/thumb.c	2014-05-16 05:07:12.000000000 -0600
+@@ -1897,7 +1897,7 @@ struct thumbpv_info *info;
+ 		return;
+ 	}
+ 
+-	tl = gtk_window_new(GTK_WINDOW_DIALOG);
++	tl = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+ 	gtk_container_set_border_width(GTK_CONTAINER(tl), 4);
+ 	gtk_window_set_title(GTK_WINDOW(tl), gettext("ChBg: rename image"));
+ 	gtk_object_set_data_full(GTK_OBJECT(tl), "sel_list", sel,
