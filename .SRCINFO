@@ -1,0 +1,17 @@
+pkgbase = cppcheck-nogui
+	pkgdesc = A tool for static C/C++ code analysis - CLI version without GUI
+	pkgver = 1.68
+	pkgrel = 1
+	url = http://cppcheck.wiki.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = docbook-xsl
+	makedepends = python
+	depends = pcre
+	depends = python-pygments
+	source = http://sourceforge.net/projects/cppcheck/files/cppcheck/1.68/cppcheck-1.68.tar.gz/download
+	sha1sums = 88dea89bc87e811e497d0377f16be85e8d989bb1
+
+pkgname = cppcheck-nogui
+
