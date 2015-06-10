@@ -1,0 +1,32 @@
+pkgbase = gksu-polkit-git
+	pkgdesc = Replacement for gksu that uses PolicyKit
+	pkgver = 0.0.2.r3.gd7e3160
+	pkgrel = 1
+	epoch = 2
+	url = https://live.gnome.org/gksu
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	makedepends = gtk-doc
+	makedepends = vala
+	makedepends = intltool
+	depends = polkit
+	depends = libgee06
+	depends = gtk2
+	depends = startup-notification
+	depends = dbus-glib
+	depends = xorg-xauth
+	provides = gksu-polkit
+	conflicts = gksu-polkit
+	source = gksu-polkit-git::git://git.debian.org/~kov/gksu-polkit.git
+	source = gksu-polkit-0.0.3-policy.patch
+	source = gksu-polkit-dbus.patch
+	source = gksu-polkit.service
+	sha256sums = SKIP
+	sha256sums = 334e26dce80e0dead984b04122d22ee13e4c5ff5d370098c7e46503855fad250
+	sha256sums = a0efd0d989abb31c765f4eedda6e1ff99f99cfff1ef52bc11adb983505836f0d
+	sha256sums = 41ff7af4bfbb56893393f25135966b54c1bf7683fc38a2a0f0129fb23712b27b
+
+pkgname = gksu-polkit-git
+

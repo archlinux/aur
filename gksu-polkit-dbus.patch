@@ -1,0 +1,7 @@
+--- mechanism/org.gnome.Gksu.service.in	2008-09-19 01:20:07.000000000 +0200
++++ mechanism/org.gnome.Gksu.service.in	2012-09-15 21:30:56.475687372 +0200
+@@ -2,3 +2,4 @@
+ Name=org.gnome.Gksu
+ Exec=@sbindir@/gksu-server
+ User=root
++SystemdService=gksu.service
