@@ -1,5 +1,5 @@
 pkgbase = vice-gtk
-	pkgdesc = A Versatile Commodore Emulator , ethernet enabled
+	pkgdesc = A Versatile Commodore Emulator with menu entry , icons and dialog
 	pkgver = 2.4
 	pkgrel = 6
 	url = http://vice-emu.sourceforge.net
