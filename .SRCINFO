@@ -1,0 +1,16 @@
+pkgbase = octave-multicore
+	pkgdesc = An Octave-forge package providing functions for parallel processing on multiple cores.
+	pkgver = 0.2.15
+	pkgrel = 2
+	url = http://octave.sourceforge.net/multicore/
+	install = octave-multicore.install
+	arch = any
+	groups = octave-forge
+	license = GPL
+	depends = octave>=2.9.12
+	noextract = multicore-0.2.15.tar.gz
+	source = http://downloads.sourceforge.net/octave/multicore-0.2.15.tar.gz
+	md5sums = ae3fc6bf5e54f37924ef6f0b24463bcf
+
+pkgname = octave-multicore
+
