@@ -1,0 +1,20 @@
+pkgbase = acroread-it
+	pkgdesc = Adobe Acrobat Reader for viewing PDF files. Italian version
+	pkgver = 8.1.7
+	pkgrel = 4
+	url = http://www.adobe.com/products/acrobat/main.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = rpmextract
+	depends = desktop-file-utils
+	depends = bash
+	depends = lib32-gtk2
+	depends = lib32-mesa
+	source = http://ardownload.adobe.com/pub/adobe/reader/unix/8.x/8.1.7/ita/AdobeReader_ita-8.1.7-1.i486.rpm
+	source = acroread-scim.patch
+	md5sums = 9d3e0198354830d43ff5feb0ade52306
+	md5sums = 8422bddbb8c03535704a245f9858465e
+
+pkgname = acroread-it
+

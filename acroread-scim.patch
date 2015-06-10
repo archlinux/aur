@@ -1,0 +1,14 @@
+--- opt/Adobe/Reader8/bin/acroread.orig	2007-09-22 02:40:06.000000000 -0400
++++ opt/Adobe/Reader8/bin/acroread	2007-09-22 02:44:37.000000000 -0400
+@@ -528,6 +528,11 @@
+ mkdir -p "${HOME}/.adobe/Acrobat/$majorRelease/Preferences/mozilla"
+ cp -f "$ACRO_INSTALL_DIR/$ACRO_CONFIG/mozilla/prefs.js" "${HOME}/.adobe/Acrobat/$majorRelease/Preferences/mozilla/prefs.js"
+ 
++if [ "$GTK_IM_MODULE" = "scim" ]; then
++       GTK_IM_MODULE=xim
++       export GTK_IM_MODULE
++fi
++
+ if [ "$1" = "-DEBUG" ] ; then
+   ACRODEBUG=1
+   ACRO_CRASHLOG=1
