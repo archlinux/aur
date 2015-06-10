@@ -1,0 +1,5 @@
+pkg/
+src/
+notbit/
+*.tar.gz
+*.tar.xz

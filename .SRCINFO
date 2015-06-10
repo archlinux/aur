@@ -1,0 +1,16 @@
+pkgbase = notbit-git
+	pkgdesc = A minimal Bitmessage client
+	pkgver = r342.faf0930
+	pkgrel = 1
+	url = https://github.com/bpeel/notbit
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = openssl
+	provides = notbit=r342.faf0930
+	source = git+https://github.com/bpeel/notbit.git
+	sha1sums = SKIP
+
+pkgname = notbit-git
+
