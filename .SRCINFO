@@ -1,0 +1,17 @@
+pkgbase = fvwm-themes
+	pkgdesc = Themes for fvwm
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = http://fvwm-themes.sourceforge.net
+	arch = any
+	license = GPL
+	depends = bash
+	depends = perl
+	replaces = fvwm-themes-devel
+	source = http://downloads.sourceforge.net/sourceforge/fvwm-themes/fvwm-themes-0.7.0.tar.bz2
+	source = fvwm-themes.patch
+	md5sums = fca651b3f912873cc8cedf20ace1095e
+	md5sums = 9a5fc1f91d34a26715eb09a5febbe8de
+
+pkgname = fvwm-themes
+

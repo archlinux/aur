@@ -1,0 +1,65 @@
+diff -up src/fvwm-themes-0.7.0/bin/fvwm-themes-config.in.orig src/fvwm-themes-0.7.0/bin/fvwm-themes-config.in
+--- src/fvwm-themes-0.7.0/bin/fvwm-themes-config.in.orig	2003-10-20 08:45:50.000000000 -0600
++++ src/fvwm-themes-0.7.0/bin/fvwm-themes-config.in	2013-09-06 19:47:29.000000000 -0600
+@@ -275,7 +275,7 @@ sub getExpandedRc ($) {
+ 	my $file = shift;
+ 	### should detect infinitive loops?
+ 	if (!-f $file) {
+-		foreach (@searchPath) {
++		foreach (@searchPath, "$ROOT_PREFIX$ftDataDir") {
+ 			if (-f "$_/$file") { $file = "$_/$file"; last; }
+ 		}
+ 	}
+@@ -311,7 +311,7 @@ sub searchThemeCfgIncludeFile ($$) {
+ 		unshift @subDirs, ".";
+ 	}
+ 	my $dir;
+-	foreach $dir (@searchPath) {
++	foreach $dir (@searchPath, "$ROOT_PREFIX$ftDataDir") {
+ 		foreach (@subDirs) {
+ 			my $file = "$dir/$themesSubDir/$_/$file";
+ 			return $file if -f $file;
+@@ -656,7 +656,7 @@ sub parseComponentName ($) {
+ sub getThemeDir ($) {
+ 	my $theme = shift;
+ 	my $dir;
+-	foreach $dir (@searchPath) {
++	foreach $dir (@searchPath, "$ROOT_PREFIX$ftDataDir") {
+ 		my $dir = "$dir/$themesSubDir/$theme";
+ 		return $dir if -d $dir;
+ 	}
+@@ -966,6 +966,7 @@ sub new ($$;$$) {
+ 				$readFile = "$dir/$component";
+ 				$readFile .= ".d" if -d "$readFile.d" && !-e $readFile;
+ 				$readFile .= "/$mainDirFile" if -d $readFile;
++				$readFile =~ s{^$ROOT_PREFIX}{};
+ 			}
+ 			$cc->{'read-file'} = $readFile;
+ 		}
+@@ -1444,6 +1445,7 @@ sub getOwnThemeSubMenusRc ($) {
+ 				}
+ 				my $readFile = $cc->{'read-file'};
+ 				$readFile =~ s:/[^/]+$:/$variants->[$index]->{'file'}:;
++				$readFile =~ s{^$ROOT_PREFIX}{};
+ 				if ($readFile ne $cc->{'read-file'}) {
+ 					$cc->{'read-file'} = $readFile;
+ 					$self->setModified();
+@@ -2285,7 +2287,9 @@ Read @$rcFile2@
+ 	saveFile("$workDir/$rcFile", \$contents);
+ 
+ 	my $imagePath = "$workDir/$currentThemeSubDir/images:$workDir/images";
++	$imagePath =~ s{^$ROOT_PREFIX}{};
+ 	$imagePath .= ":$siteDir/images" if $workDir ne $siteDir;
++	$imagePath =~ s{:$ROOT_PREFIX}{:};
+ 	$imagePath .= ":$fvwmDefaultImagePath" if $fvwmDefaultImagePath;
+ 	$imagePath =~ s=(^|:)\Q$userDir\E(/|:|$)=$1\$FVWM_USERDIR$2=g;
+ 	$imagePath =~ s=(^|:)\Q$userHome\E(/|:|$)=$1\$HOME$2=g;
+@@ -2402,7 +2406,7 @@ GetOptions(
+ ) || wrongUsage();
+ 
+ shift @searchPath if $site;
+-$workDir = $searchPath[0];
++$workDir = "$ROOT_PREFIX$searchPath[0]";
+ $siteDir = $searchPath[-1];
+ 
+ if ($install) {
