@@ -1,0 +1,13 @@
+pkgbase = re2-hg
+	pkgdesc = Fast, safe and thread-friendly alternative to backtracking regular expression engines
+	pkgver = 1
+	pkgrel = 1
+	url = http://code.google.com/p/re2/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = mercurial
+	provides = re2
+
+pkgname = re2-hg
+
