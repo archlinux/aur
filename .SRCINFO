@@ -1,0 +1,19 @@
+pkgbase = perl-opengl
+	pkgdesc = Interface to OpenGL drawing/imaging library
+	pkgver = 0.6704
+	pkgrel = 1
+	url = https://metacpan.org/release/OpenGL/
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	makedepends = xorg-server-xvfb
+	depends = perl
+	depends = freeglut>=2.8.1
+	depends = glu>=9.0.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CH/CHM/OpenGL-0.6704.tar.gz
+	md5sums = 433e4f197d7200c219494a8604f3e06b
+
+pkgname = perl-opengl
+
