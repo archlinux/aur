@@ -1,0 +1,24 @@
+--- src/MainWindow.cc.old	2010-09-27 17:09:44.000000000 +0200
++++ src/MainWindow.cc	2010-09-27 17:10:51.000000000 +0200
+@@ -944,9 +944,8 @@
+ 			output += ToString( times[ i ] ) + " seconds\n";
+ 			adder += times[ i ];
+ 		}
+-		Gtk::MessageDialog::MessageDialog( *mw, "Times:\n" + output +
+-						   "\nAverage: " + ToString( adder / runs ) +
+-						   " seconds" ).run();
++		Gtk::MessageDialog md( *mw, "Times:\n" + output + "\nAverage: " + ToString( adder / runs ) + " seconds", false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_OK );
++		md.run();
+ 	}
+ 	else if( test == 1 )
+ 	{
+@@ -968,7 +967,8 @@
+ 		for( unsigned i = 0; i < runs; ++i )
+ 			editor_.event( (GdkEvent*)( &click ) );
+ 		timer.stop();
+-		Gtk::MessageDialog::MessageDialog( *mw, ToString( timer.elapsed() ) + " seconds" ).run();	
++		Gtk::MessageDialog md( *mw, ToString( timer.elapsed() ) + " seconds", false, Gtk::MESSAGE_WARNING, Gtk::BUTTONS_OK );	
++		md.run();
+ 
+ 		/*em.type = GDK_MOTION_NOTIFY;
+ 		em.window = editor_.get_window()->gobj();

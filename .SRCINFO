@@ -1,0 +1,19 @@
+pkgbase = sharpconstruct
+	pkgdesc = Create 3D models by sculpting
+	pkgver = 0.12
+	pkgrel = 5
+	url = http://sourceforge.net/projects/sharp3d/
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = addinclude
+	depends = gtkglextmm
+	depends = libglademm
+	depends = libsigc++
+	source = http://downloads.sourceforge.net/sourceforge/sharp3d/sharpconstruct-0.12-rc3.tar.bz2
+	source = arch.patch
+	sha256sums = 520195c8d96f73610eb14aefe6d1b79c835006490295ec79cc56011e9f396f0e
+	sha256sums = 1bf80724f4c75e3fb0c0bd4903bd0fc4fe1a024daf6d13c9dee852263cf0bbe0
+
+pkgname = sharpconstruct
+
