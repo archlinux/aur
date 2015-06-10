@@ -1,0 +1,17 @@
+pkgbase = gog-gemini-rue
+	pkgdesc = It’s a neo-noir sci-fi adventure that will take you across the galaxy.
+	pkgver = 1.0.0.2
+	pkgrel = 1
+	url = http://www.gog.com/game/gemini_rue
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = custom
+	depends = freetype2
+	source = local://gemini_rue_1.0.0.2.tar.gz
+	source = gog-gemini-rue
+	sha256sums = b0ceb9af5805d06e83e47ef646bf27f7debbc78c32a819ae44e5e9a1faf4e4ba
+	sha256sums = cac6758931e92fe1c3e4caa3f6843d7619cffd33457a536e67fa7059f2ee6248
+
+pkgname = gog-gemini-rue
+
