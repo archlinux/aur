@@ -1,0 +1,5 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Wine\DirectSound]
+"_HelBuflen"="8192"
+"SndQueueMax"="2"

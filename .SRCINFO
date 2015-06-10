@@ -1,0 +1,27 @@
+pkgbase = osu
+	pkgdesc = Freeware rhythm video game
+	pkgver = 20150510
+	pkgrel = 1
+	url = http://osu.ppy.sh
+	install = osu.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = wine
+	depends = xterm
+	depends = winetricks
+	source = http://m1.ppy.sh/r/osu!install.exe
+	source = directsound-latency.reg
+	source = osu.desktop
+	source = osu-fullscreen.desktop
+	source = osulauncher
+	source = osu.png
+	md5sums = SKIP
+	md5sums = 1d285eb3a5bdb6a70da89116dec18441
+	md5sums = d9749afe35fdd440e560d03b0a20a695
+	md5sums = 31bada75b7fe984395423c877d9bd036
+	md5sums = 9759a6ed1e0cf16afea7c496f305422f
+	md5sums = 33164b758af5645efca61a99f6ddd342
+
+pkgname = osu
+

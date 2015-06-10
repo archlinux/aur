@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=osu!
+Comment=Freeware rhythm video game
+GenericName=Freeware rhythm video game
+Exec=/opt/osu/osulauncher
+Icon=/opt/osu/osu.png
+Terminal=false
+Categories=Game;
