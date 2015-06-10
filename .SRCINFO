@@ -1,7 +1,7 @@
 pkgbase = teensyduino
 	pkgdesc = Arduino SDK with Teensyduino
 	pkgver = 1.23
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.pjrc.com/teensy/teensyduino.html
 	install = teensyduino.install
 	arch = i686
@@ -34,7 +34,7 @@ pkgbase = teensyduino
 	source = git+https://github.com/PaulStoffregen/teensy_loader_cli.git#commit=001da416bc362ff24485ff97e3a729bd921afe98
 	source = http://www.pjrc.com/teensy/49-teensy.rules
 	source = LICENSE
-	sha256sums = d817829bb2830cb690ed63f14d8a990bb513bef4a4ebc6227a82abdfc8bcd35d
+	sha256sums = ee29f80cc63cf3a21e844372721686372c2ca4b36e35430350d72e0b788a0ae2
 	sha256sums = 473b82156505e9bd903e4d8484e8d183f2e3bf3c1f7e29940b815929ae597b68
 	sha256sums = bdd3da81cad5429e1d59c7950f40e75a96d2dd6cab07c2ffb77153e6e860f4b3
 	sha256sums = 270b55353eb438d3790c7245e5ae16ff8bac9f98cfe927d6c9f2146a34499323
