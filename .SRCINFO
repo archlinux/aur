@@ -1,0 +1,15 @@
+pkgbase = setpppoe
+	pkgdesc = GUI tool to manage one or more PPPoE connections
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://code.google.com/p/setpppoe-gui/
+	arch = any
+	license = GPL3
+	depends = zenity
+	depends = net-tools
+	depends = gksu
+	source = http://setpppoe-gui.googlecode.com/files/setpppoe-1.0.tar.gz
+	md5sums = bb1c31ade642f70e3e2a0c25b6beac17
+
+pkgname = setpppoe
+
