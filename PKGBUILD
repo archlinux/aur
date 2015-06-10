@@ -1,13 +1,13 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=unity-system-compositor-bzr
-pkgver=191
+pkgver=218
 pkgrel=1
 pkgdesc="System compositor for Ubuntu"
 arch=(i686 x86_64)
 url="https://launchpad.net/unity-system-compositor"
 license=(GPL)
-depends=(boost cairo lightdm mesa-mir mir protobuf qt5-base xorg-server-mir)
+depends=(boost cairo lightdm mesa-mir mir protobuf xorg-server-mir)
 makedepends=(cmake)
 provides=(unity-system-compositor)
 conflicts=(unity-system-compositor)
