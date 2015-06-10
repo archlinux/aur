@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Icon=/usr/share/pixmaps/wasteland2.png
+Exec=/usr/bin/wasteland2
+Terminal=false
+StartupNotify=false
+
+Name=Wasteland 2
+Comment=The sequel to an adventure in post-nuclear America
+
+Categories=Game;
