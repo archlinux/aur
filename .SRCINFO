@@ -1,0 +1,16 @@
+pkgbase = sipvicious
+	pkgdesc = Tools for auditing SIP devices
+	pkgver = 0.2.8
+	pkgrel = 1
+	url = http://blog.sipvicious.org
+	install = sipvicious.install
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	depends = python2
+	conflicts = sipvicious-svn
+	source = http://sipvicious.googlecode.com/files/sipvicious-0.2.8.tar.gz
+	sha1sums = a243ee01a23d7a6305d170213f2a8675820a0df6
+
+pkgname = sipvicious
+
