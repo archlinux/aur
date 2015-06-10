@@ -1,0 +1,15 @@
+pkgbase = wm2
+	pkgdesc = The ideal window manager for today's elegant and ascetic programmer
+	pkgver = 4
+	pkgrel = 1
+	url = http://www.all-day-breakfast.com/wm2/
+	arch = x86_64
+	arch = i686
+	license = custom
+	makedepends = setconf
+	depends = libxmu
+	source = http://www.all-day-breakfast.com/wm2/wm2-4.tar.gz
+	sha256sums = a6c3352390f958c5033408ce73e1abd9677372a7c8c5949e39a62fda433b054d
+
+pkgname = wm2
+
