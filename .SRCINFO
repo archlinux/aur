@@ -1,0 +1,17 @@
+pkgbase = octave-data-smoothing
+	pkgdesc = Algorithms for smoothing noisy data
+	pkgver = 1.3.0
+	pkgrel = 2
+	url = http://octave.sourceforge.net/data-smoothing/
+	install = octave-data-smoothing.install
+	arch = any
+	groups = octave-forge
+	license = GPL3
+	depends = octave>=3.6.0
+	depends = octave-optim>=1.0.3
+	noextract = data-smoothing-1.3.0.tar.gz
+	source = http://downloads.sourceforge.net/octave/data-smoothing-1.3.0.tar.gz
+	md5sums = d8fc52ed097b5096f5e7ea16dc5ab343
+
+pkgname = octave-data-smoothing
+
