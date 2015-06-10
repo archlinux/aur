@@ -1,0 +1,374 @@
+diff --git a/cppsrc/U8glib.cpp b/cppsrc/U8glib.cpp
+index 542fc67..c2cc479 100644
+--- a/cppsrc/U8glib.cpp
++++ b/cppsrc/U8glib.cpp
+@@ -38,7 +38,7 @@
+ #include "U8glib.h"
+ 
+ 
+-
++#if defined(U8G_WITH_PINLIST)
+ uint8_t U8GLIB::initSPI(u8g_dev_t *dev, uint8_t sck, uint8_t mosi, uint8_t cs, uint8_t a0, uint8_t reset)
+ {
+   prepare();
+@@ -76,4 +76,5 @@ uint8_t U8GLIB::initRW8Bit(u8g_dev_t *dev, uint8_t d0, uint8_t d1, uint8_t d2, u
+   prepare();
+   return u8g_InitRW8Bit(&u8g, dev, d0, d1, d2, d3, d4, d5, d6, d7, cs, a0, wr, rd, reset); 
+ }
++#endif
+ 
+diff --git a/cppsrc/U8glib.h b/cppsrc/U8glib.h
+index e50b8c6..74b5775 100644
+--- a/cppsrc/U8glib.h
++++ b/cppsrc/U8glib.h
+@@ -87,10 +87,10 @@ class U8GLIB : public Print
+     u8g_uint_t getPrintRow(void) { return ty; }    
+     
+     /* implementation of the write interface to the print class */
+-#if defined(ARDUINO) && ARDUINO >= 100
+-    size_t write(uint8_t c) { tx += u8g_DrawGlyph(&u8g, tx, ty, c); return 1;}
+-#else
++#if defined(ARDUINO) && ARDUINO < 100
+     void write(uint8_t c) { tx += u8g_DrawGlyph(&u8g, tx, ty, c); }
++#else
++    size_t write(uint8_t c) { tx += u8g_DrawGlyph(&u8g, tx, ty, c); return 1;}
+ #endif
+     
+      /* screen rotation */
+diff --git a/csrc/u8g.h b/csrc/u8g.h
+index 046ec89..48f81e0 100644
+--- a/csrc/u8g.h
++++ b/csrc/u8g.h
+@@ -1150,6 +1150,8 @@ void u8g_UpdateDimension(u8g_t *u8g);
+ uint8_t u8g_Begin(u8g_t *u8g);				/* reset device, put it into default state and call u8g_UpdateDimension() */
+ uint8_t u8g_Init(u8g_t *u8g, u8g_dev_t *dev);   /* only usefull if the device only as hardcoded ports */
+ uint8_t u8g_InitComFn(u8g_t *u8g, u8g_dev_t *dev, u8g_com_fnptr com_fn);	/* Init procedure for anything which is not Arduino or AVR (e.g. ARM, but not Due, which is Arduino) */
++
++#if defined(U8G_WITH_PINLIST)
+ uint8_t u8g_InitSPI(u8g_t *u8g, u8g_dev_t *dev, uint8_t sck, uint8_t mosi, uint8_t cs, uint8_t a0, uint8_t reset);
+ uint8_t u8g_InitHWSPI(u8g_t *u8g, u8g_dev_t *dev, uint8_t cs, uint8_t a0, uint8_t reset);
+ uint8_t u8g_InitI2C(u8g_t *u8g, u8g_dev_t *dev, uint8_t options);	/* use U8G_I2C_OPT_NONE as options */
+@@ -1158,6 +1160,8 @@ uint8_t u8g_Init8Bit(u8g_t *u8g, u8g_dev_t *dev, uint8_t d0, uint8_t d1, uint8_t
+   uint8_t en, uint8_t cs1, uint8_t cs2, uint8_t di, uint8_t rw, uint8_t reset);
+ uint8_t u8g_InitRW8Bit(u8g_t *u8g, u8g_dev_t *dev, uint8_t d0, uint8_t d1, uint8_t d2, uint8_t d3, uint8_t d4, uint8_t d5, uint8_t d6, uint8_t d7, 
+   uint8_t cs, uint8_t a0, uint8_t wr, uint8_t rd, uint8_t reset);
++#endif
++
+ void u8g_FirstPage(u8g_t *u8g);
+ uint8_t u8g_NextPage(u8g_t *u8g);
+ uint8_t u8g_SetContrast(u8g_t *u8g, uint8_t contrast);
+diff --git a/dogmsrc/u8g_dogm128_api.c b/dogmsrc/u8g_dogm128_api.c
+index c3fc5aa..6802c69 100644
+--- a/dogmsrc/u8g_dogm128_api.c
++++ b/dogmsrc/u8g_dogm128_api.c
+@@ -60,6 +60,7 @@ uint8_t u8g_InitDogm128API(u8g_dev_t *dev)
+   return 1;
+ }
+ 
++#if defined(U8G_WITH_PINLIST)
+ uint8_t u8g_InitSPIDogm128API(u8g_dev_t *dev, uint8_t sck, uint8_t mosi, uint8_t cs, uint8_t a0, uint8_t reset)
+ {
+ 
+@@ -77,7 +78,7 @@ uint8_t u8g_InitHWSPIDogm128API(u8g_dev_t *dev, uint8_t cs, uint8_t a0, uint8_t
+   u8g_init_dogm_common();
+   return 1;
+ }
+-
++#endif
+ 
+ void u8g_SetDogmRot90(void)
+ {
+diff --git a/dogmsrc/u8g_dogm128_api.h b/dogmsrc/u8g_dogm128_api.h
+index ab981d0..802636d 100644
+--- a/dogmsrc/u8g_dogm128_api.h
++++ b/dogmsrc/u8g_dogm128_api.h
+@@ -75,8 +75,10 @@ extern uint8_t dog_height_minus_one;
+ 
+ /* this is a special u8g procedure to start up the dogm128 interface */
+ uint8_t u8g_InitDogm128API(u8g_dev_t *dev);
++#if defined(U8G_WITH_PINLIST)
+ uint8_t u8g_InitSPIDogm128API(u8g_dev_t *dev, uint8_t sck, uint8_t mosi, uint8_t cs, uint8_t a0, uint8_t reset);
+ uint8_t u8g_InitHWSPIDogm128API(u8g_dev_t *dev, uint8_t cs, uint8_t a0, uint8_t reset);
++#endif
+ void u8g_SetDogmRot90(void);
+ void u8g_SetDogmRot180(void);
+ void u8g_SetDogmRot270(void);
+diff --git a/sys/arduino/Chess/Chess.pde b/sys/arduino/Chess/Chess.pde
+index eeebe4a..7c4a917 100644
+--- a/sys/arduino/Chess/Chess.pde
++++ b/sys/arduino/Chess/Chess.pde
+@@ -135,6 +135,8 @@
+ //U8GLIB_SSD1351_128X128GH_332 u8g(8, 9, 7); // Arduino, HW SPI Com: SCK = 76, MOSI = 75, CS = 8, A0 = 9, RESET = 7 (Freetronics OLED)
+ //U8GLIB_SSD1351_128X128GH_HICOLOR u8g(8, 9, 7); // Arduino, HW SPI Com: SCK = 76, MOSI = 75, CS = 8, A0 = 9, RESET = 7 (Freetronics OLED)
+ 
++U8GLIB_SSD1306_128X32 u8g(13, 11, 10, 9);	// SW SPI Com: SCK = 13, MOSI = 11, CS = 10, A0 = 9
++
+ 
+ // DOGS102 shield configuration values
+ uint8_t uiKeyPrev = 2;
+@@ -156,7 +158,7 @@ uint8_t uiKeyCode = CHESS_KEY_NONE;
+ 
+ void uiSetup(void) {
+   // configure input keys 
+-  
++#if defined(ARDUINO)
+   pinMode(uiKeyPrev, INPUT);           // set pin to input
+   digitalWrite(uiKeyPrev, HIGH);       // turn on pullup resistors
+   pinMode(uiKeyNext, INPUT);           // set pin to input
+@@ -165,11 +167,13 @@ void uiSetup(void) {
+   digitalWrite(uiKeySelect, HIGH);       // turn on pullup resistors
+   pinMode(uiKeyBack, INPUT);           // set pin to input
+   digitalWrite(uiKeyBack, HIGH);       // turn on pullup resistors
++#endif
+ }
+ 
+ void uiStep(void)
+ {
+   uiKeyCodeSecond = uiKeyCodeFirst;
++#if defined(ARDUINO)
+   if ( digitalRead(uiKeyPrev) == LOW )
+     uiKeyCodeFirst = CHESS_KEY_PREV;
+   else if ( digitalRead(uiKeyNext) == LOW )
+@@ -178,9 +182,10 @@ void uiStep(void)
+     uiKeyCodeFirst = CHESS_KEY_SELECT;
+   else if ( digitalRead(uiKeyBack) == LOW )
+     uiKeyCodeFirst = CHESS_KEY_BACK;
+-  else 
++  else
++#endif
+     uiKeyCodeFirst = CHESS_KEY_NONE;
+-  
++
+   if ( uiKeyCodeSecond == uiKeyCodeFirst )
+     uiKeyCode = uiKeyCodeFirst;
+   else
+diff --git a/sys/arduino/ChessDogm/Chess.pde b/sys/arduino/ChessDogm/Chess.pde
+index 2ef5868..f40e4a1 100644
+--- a/sys/arduino/ChessDogm/Chess.pde
++++ b/sys/arduino/ChessDogm/Chess.pde
+@@ -66,7 +66,7 @@ uint8_t uiKeyCode = CHESS_KEY_NONE;
+ 
+ void uiSetup(void) {
+   // configure input keys 
+-  
++#if defined(ARDUINO)
+   pinMode(uiKeyPrev, INPUT);           // set pin to input
+   digitalWrite(uiKeyPrev, HIGH);       // turn on pullup resistors
+   pinMode(uiKeyNext, INPUT);           // set pin to input
+@@ -75,11 +75,13 @@ void uiSetup(void) {
+   digitalWrite(uiKeySelect, HIGH);       // turn on pullup resistors
+   pinMode(uiKeyBack, INPUT);           // set pin to input
+   digitalWrite(uiKeyBack, HIGH);       // turn on pullup resistors
++#endif
+ }
+ 
+ void uiStep(void)
+ {
+   uiKeyCodeSecond = uiKeyCodeFirst;
++#if defined(ARDUINO)
+   if ( digitalRead(uiKeyPrev) == LOW )
+     uiKeyCodeFirst = CHESS_KEY_PREV;
+   else if ( digitalRead(uiKeyNext) == LOW )
+@@ -88,9 +90,10 @@ void uiStep(void)
+     uiKeyCodeFirst = CHESS_KEY_SELECT;
+   else if ( digitalRead(uiKeyBack) == LOW )
+     uiKeyCodeFirst = CHESS_KEY_BACK;
+-  else 
++  else
++#endif
+     uiKeyCodeFirst = CHESS_KEY_NONE;
+-  
++
+   if ( uiKeyCodeSecond == uiKeyCodeFirst )
+     uiKeyCode = uiKeyCodeFirst;
+   else
+@@ -107,7 +110,7 @@ void setup() {
+ 
+   //u8g_SetDogmRot180();
+   uiSetup();
+-  chess_Init(&u8g_dogm128_obj);
++  chess_Init(&u8g_dogm128_obj, 0);
+ }
+ 
+ void loop() {  
+diff --git a/sys/arduino/GraphicsTest/GraphicsTest.pde b/sys/arduino/GraphicsTest/GraphicsTest.pde
+index f159b8d..973046c 100644
+--- a/sys/arduino/GraphicsTest/GraphicsTest.pde
++++ b/sys/arduino/GraphicsTest/GraphicsTest.pde
+@@ -133,6 +133,8 @@
+ //U8GLIB_SSD1351_128X128GH_332 u8g(8, 9, 7); // Arduino, HW SPI Com: SCK = 76, MOSI = 75, CS = 8, A0 = 9, RESET = 7 (Freetronics OLED)
+ //U8GLIB_SSD1351_128X128GH_HICOLOR u8g(8, 9, 7); // Arduino, HW SPI Com: SCK = 76, MOSI = 75, CS = 8, A0 = 9, RESET = 7 (Freetronics OLED)
+ 
++U8GLIB_SSD1306_128X64 u8g(13, 11, 10, 9);	// SW SPI Com: SCK = 13, MOSI = 11, CS = 10, A0 = 9
++
+ void u8g_prepare(void) {
+   u8g.setFont(u8g_font_6x10);
+   u8g.setFontRefHeightExtendedText();
+@@ -274,9 +276,10 @@ void setup(void) {
+   // flip screen, if required
+   //u8g.setRot180();
+ 
+-  
++#if defined(ARDUINO)
+   pinMode(13, OUTPUT);           
+   digitalWrite(13, HIGH);  
++#endif
+ }
+ 
+ void loop(void) {
+diff --git a/sys/arduino/SpaceTrashDogm/SpaceTrash.pde b/sys/arduino/SpaceTrashDogm/SpaceTrash.pde
+index f9eea77..acd3be3 100644
+--- a/sys/arduino/SpaceTrashDogm/SpaceTrash.pde
++++ b/sys/arduino/SpaceTrashDogm/SpaceTrash.pde
+@@ -65,7 +65,7 @@ uint8_t isFire = 0;
+ // setup the user interface
+ void uiSetup(void) {
+   // configure input keys 
+-  
++#if defined(ARDUINO)
+   pinMode(uiKeyUpPin, INPUT);           // set pin to input
+   digitalWrite(uiKeyUpPin, HIGH);       // turn on pullup resistors
+   pinMode(uiKeyDownPin, INPUT);           // set pin to input
+@@ -79,14 +79,15 @@ void uiSetup(void) {
+   digitalWrite(uiKeyDownPin2, HIGH);       // turn on pullup resistors
+   pinMode(uiKeyFirePin2, INPUT);           // set pin to input
+   digitalWrite(uiKeyFirePin2, HIGH);       // turn on pullup resistors
+-  
+-  
++#endif
++
+   // assign some (more or less) useful values to the output variables
+   shipLocation = 127;
+ }
+ 
+ // calculate new output values
+ void uiStep(void) {
++#if defined(ARDUINO)
+   if ( digitalRead(uiKeyUpPin) == LOW || digitalRead(uiKeyUpPin2) == LOW )
+     if ( shipLocation <= 255 -  uiIncrement )
+       shipLocation += uiIncrement;
+@@ -96,6 +97,7 @@ void uiStep(void) {
+   isFire = 0;
+   if ( digitalRead(uiKeyFirePin) == LOW || digitalRead(uiKeyFirePin2) == LOW )
+     isFire = 1;
++#endif
+ }
+ 
+ 
+@@ -121,7 +123,9 @@ void setup(void)
+   u8g_SetDogmRot180();
+   
+   uiSetup();
++#if defined(ARDUINO)
+   next_sec_time = millis() + 1000UL;
++#endif
+   fps = 0;
+   frame_cnt = 0;
+    
+@@ -139,12 +143,13 @@ void loop(void)
+   st_Step(shipLocation, 0, isFire);
+ 
+   frame_cnt++;
++#if defined(ARDUINO)
+   if ( next_sec_time < millis() )
+   {
+     fps = frame_cnt;
+     frame_cnt = 0;
+     next_sec_time = millis() + 1000UL;
+   }
+-  
++#endif
+ }
+ 
+diff --git a/sys/arduino/U8gLogo/U8gLogo.pde b/sys/arduino/U8gLogo/U8gLogo.pde
+index 151542d..a8fedd6 100644
+--- a/sys/arduino/U8gLogo/U8gLogo.pde
++++ b/sys/arduino/U8gLogo/U8gLogo.pde
+@@ -134,6 +134,8 @@
+ //U8GLIB_SSD1351_128X128GH_332 u8g(8, 9, 7); // Arduino, HW SPI Com: SCK = 76, MOSI = 75, CS = 8, A0 = 9, RESET = 7 (Freetronics OLED)
+ //U8GLIB_SSD1351_128X128GH_HICOLOR u8g(8, 9, 7); // Arduino, HW SPI Com: SCK = 76, MOSI = 75, CS = 8, A0 = 9, RESET = 7 (Freetronics OLED)
+ 
++U8GLIB_SSD1306_128X64 u8g(13, 11, 10, 9);	// SW SPI Com: SCK = 13, MOSI = 11, CS = 10, A0 = 9
++
+ //#define MINI_LOGO
+ 
+ void drawColorBox(void)
+diff --git a/sys/sdl/chess/main.c b/sys/sdl/chess/main.c
+index 2e39fb6..27bbe15 100644
+--- a/sys/sdl/chess/main.c
++++ b/sys/sdl/chess/main.c
+@@ -1,10 +1,8 @@
+ 
+-
+ #include "u8g.h"
+ #include <stdlib.h>
+ #include <stdio.h>
+ 
+-
+ int u8g_sdl_get_key(void);
+ 
+ uint8_t get_key_code(void)
+@@ -13,22 +11,27 @@ uint8_t get_key_code(void)
+   int sdl_key;
+   sdl_key = u8g_sdl_get_key();
+   chess_key = CHESS_KEY_NONE;
+-  if ( sdl_key > 0 )
+-  {
+-    if ( sdl_key == 'n' )
++  switch ( sdl_key ) {
++  case 'n':
++  case 274: // arrow down
++  case 275: // arrow right
+       chess_key = CHESS_KEY_NEXT;
+-    else if ( sdl_key == 'p' )
++      break;
++  case 'p':
++  case 273: // arrow up
++  case 276: // arrow left
+       chess_key = CHESS_KEY_PREV;
+-    else if ( sdl_key == ' ' )
++      break;
++  case ' ':
+       chess_key = CHESS_KEY_SELECT;
+-    else if ( sdl_key == 'q' )
++      break;
++  case 'q':
+       exit(0);
+-  }    
+-  return chess_key;  
++      break;
++  }
++  return chess_key;
+ }
+ 
+-
+-
+ int main(void)
+ {
+   
+@@ -83,4 +86,3 @@ int main(void)
+     chess_Step(CHESS_KEY_NONE);
+   }
+ }
+-
+diff --git a/sys/sdl/spacetrash/spacemain.c b/sys/sdl/spacetrash/spacemain.c
+index 0146ee6..2cf9210 100644
+--- a/sys/sdl/spacetrash/spacemain.c
++++ b/sys/sdl/spacetrash/spacemain.c
+@@ -1,11 +1,13 @@
+ 
+ 
+-#include "SDL.h"
+-#include "u8g.h"
+-//#include "u8g_dogm128_api.h"
+ #include <stdlib.h>
+ #include <stdio.h>
+ 
++#include <SDL.h>
++
++#include "u8g.h"
++//#include "u8g_dogm128_api.h"
++
+ 
+ // generic configuration values
+ uint8_t uiIncrement = 4;
