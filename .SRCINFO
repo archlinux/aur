@@ -1,0 +1,18 @@
+pkgbase = perl-bigip-icontrol
+	pkgdesc = A Perl interface to the F5 iControl API
+	pkgver = 0.097
+	pkgrel = 1
+	url = http://search.cpan.org/dist/BigIP-iControl/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	depends = perl-soap-lite
+	conflicts = perl-icontrol
+	replaces = perl-icontrol
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LT/LTP/BigIP-iControl-0.097.tar.gz
+	sha256sums = bd3e73bc2a17df5bf01a7d39ad8e99f508dd89394ed3bafda5a98b7f0b38f914
+
+pkgname = perl-bigip-icontrol
+
