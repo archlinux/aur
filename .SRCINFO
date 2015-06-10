@@ -1,0 +1,15 @@
+pkgbase = reform
+	pkgdesc = a PKGBUILD management suite
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://bitbucket.org/hav3lock/pub_rel/src
+	arch = any
+	license = GPL3
+	depends = perl
+	depends = perl-text-diff
+	depends = perl-config-simple
+	source = https://bitbucket.org/hav3lock/pub_rel/downloads/reform-0.2.2.tar.gz
+	md5sums = 216bea7c1508c2e16191d565f65cad92
+
+pkgname = reform
+
