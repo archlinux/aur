@@ -1,0 +1,13 @@
+pkgbase = elementary-usu-icons
+	pkgdesc = Elementary icon theme from USU
+	pkgver = 8.0.7
+	pkgrel = 1
+	url = http://opendesktop.org/content/show.php?content=148128
+	arch = any
+	license = GPL
+	depends = librsvg
+	source = http://art.learnfree.eu/elementary_usu-8.0.7.tar.gz
+	sha256sums = 67cfe9216ef6333bf55ce7848f125a1f3d6cba08a3782af0ae3ef27600fff7c8
+
+pkgname = elementary-usu-icons
+
