@@ -1,0 +1,16 @@
+pkgbase = winpager-git
+	pkgdesc = A dynamic window paging system for X.Org
+	pkgver = 20150225.r21.69466f0
+	pkgrel = 1
+	url = https://github.com/prurigro/winpager
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = wmctrl
+	depends = xorg-xwininfo
+	depends = xorg-xprop
+	source = git+https://github.com/prurigro/winpager
+	sha512sums = SKIP
+
+pkgname = winpager-git
+
