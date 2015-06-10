@@ -1,0 +1,13 @@
+pkgbase = guisu
+	pkgdesc = Script for running GUI programs as root, with fallbacks
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/xyproto/guisu
+	arch = any
+	license = MIT
+	depends = polkit
+	source = guisu-0.5.tgz::https://github.com/xyproto/guisu/archive/master.tar.gz
+	sha256sums = 35a811d9f0bd0156606a8b19f631cbc79b1185ddbb6ba1441360282cc9310c46
+
+pkgname = guisu
+
