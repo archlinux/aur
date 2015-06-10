@@ -1,0 +1,20 @@
+pkgbase = supermin
+	pkgdesc = Tool for creating supermin appliances
+	pkgver = 5.1.11
+	pkgrel = 1
+	url = http://people.redhat.com/~rjones/supermin/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = ocaml
+	makedepends = ocaml-findlib
+	makedepends = prelink
+	makedepends = cpio
+	depends = e2fsprogs
+	conflicts = febootstrap<=3.21
+	conflicts = supermin-git
+	source = http://libguestfs.org/download/supermin/supermin-5.1.11.tar.gz
+	md5sums = 5843cd7016022d4944227c3019c8b225
+
+pkgname = supermin
+
