@@ -1,0 +1,14 @@
+[Unit]
+Description=pacman-cage
+DefaultDependencies=no
+Before=shutdown.target local-fs.target
+After=remount-rootfs.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/etc/rc.d/pacmandb start
+ExecStop=/etc/rc.d/pacmandb stop
+
+[Install]
+WantedBy=local-fs.target

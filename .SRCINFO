@@ -1,0 +1,21 @@
+pkgbase = pacman-cage
+	pkgdesc = Creates a loopbacked filesystem to give better response times when using pacman.
+	pkgver = 2.9.8.2
+	pkgrel = 7
+	url = http://bbs.archlinux.org/viewtopic.php?id=20385
+	install = pacman-cage.install
+	arch = any
+	license = GPL
+	source = pacman-cage
+	source = pacman-uncage
+	source = pacmandb.rc
+	source = backup_pacmandb.cron
+	source = pacmandb.service
+	md5sums = 8d052630a7d9e01f62df126904ab2103
+	md5sums = a61819e8d8840a0eea3f4c87aa330340
+	md5sums = e62e8dbb900ab9f996631f470149f839
+	md5sums = 8b7dc8a570473667a53498eda219e65e
+	md5sums = 2618f1470f28e4e16f7aba705c0f10ba
+
+pkgname = pacman-cage
+
