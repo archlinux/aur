@@ -2,7 +2,7 @@
 
 pkgname=otf-mintspirit
 pkgver=1.005
-pkgrel=1
+pkgrel=2
 pkgdesc="A font designed by Hirwen Harendal and released by Arkandis Digital Foundry"
 arch=('any')
 url="http://arkandis.tuxfamily.org/adffonts.html"
@@ -12,7 +12,7 @@ depends=('fontconfig' 'xorg-mkfontdir' 'xorg-mkfontscale')
 install=otf.install
 source=("http://arkandis.tuxfamily.org/fonts/MintSpirit-20150322.zip")
 
-md5sums=('0907e79f4d9389f92e3862fbe3b95a57')
+sha256sums=('338f6e5f3660e393c534e214c2654f93aa1d83587e230f7d0186068612aef871')
 
 
 build() {
