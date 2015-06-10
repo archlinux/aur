@@ -1,0 +1,16 @@
+pkgbase = rasterizer
+	pkgdesc = Small program that draws random lines like it was 1987
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/xyproto/rasterizer
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = go
+	makedepends = go-sdl
+	depends = sdl
+	source = https://raw.github.com/xyproto/rasterizer/master/rasterizer.go
+	sha256sums = a36c824ce488aaf9af74139df90efba4d48d6bfbee536ea64156c664cfbb7bfa
+
+pkgname = rasterizer
+
