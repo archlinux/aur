@@ -3,9 +3,9 @@
 # Contributor: Ner0
 
 pkgname=nemo-ubuntu
-_ppa_ver=2.4.4
-_ppa_rel=2~webupd8~utopic0
-pkgver=2.4.4
+_ppa_ver=2.6.5
+_ppa_rel=2~webupd8~vivid02
+pkgver=2.6.5
 pkgrel=1
 pkgdesc="Cinnamon file manager (Nautilus fork)"
 arch=(i686 x86_64)
@@ -21,8 +21,8 @@ options=(!emptydirs)
 install=nemo.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/linuxmint/nemo/tarball/${pkgver}"
         "http://ppa.launchpad.net/webupd8team/nemo/ubuntu/pool/main/n/nemo/nemo_${_ppa_ver}-${_ppa_rel}.debian.tar.xz")
-sha512sums=('a4d0d488fdd7c4315f106874ac752801554b0cf7d5d246028e7aedae4bf8df28c5473660a2da6d65c184f7cc4a91ecc0af8b3ea3b896b0b37e90199f3fc73781'
-            'ec9aaed6ffd0ea92b58da27fc3f081938e35e88364079d64d9bfa6f25f72bd9012fe543438a1771ea607e0dedb77b88c87dceb1e1d72e0f03440162b82957797')
+sha512sums=('d5e6f3e06cb63140498a7b883fdbf6934ac7d9d7493ccde2038281733c28f82c942b5f7709a6bc8a126fedfd980631410f80c4ffd8477303f8a89bca3ce4eb48'
+            'a516bf1a6ec5fa1598225c6ca0043fc546240ab1d5bd86b928a617764fedfde34e17003e3c1d1abc18a1ade9dbc2ef0ace9f4f58d068154d3beffd1d792ad2f9')
 
 prepare() {
   cd linuxmint-nemo-*
@@ -42,11 +42,10 @@ prepare() {
   sed -i 's/add_class (\(.*\), "nemo-/add_class (\1, "nautilus-/' \
     libnemo-private/nemo-icon-{canvas-item,container}.c
 
-  # Fix build
-  sed -i '/AC_SUBST(DISABLE_DEPRECATED_CFLAGS)/d' configure.in
-
   # Rename 'Files' app name to avoid having the same as nautilus
   sed -i 's/^Name\(.*\)=.*/Name\1=Nemo/' data/nemo.desktop.in.in
+
+  sed -i '/gnome_bg_set_draw_background/d' libnemo-private/nemo-desktop-background.c
 }
 
 build() {
