@@ -3,7 +3,7 @@
 
 pkgname=perl-list-compare
 _pkgname=List-Compare
-pkgver=0.49
+pkgver=0.53
 pkgrel=1
 pkgdesc="Compare elements of two or more lists"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('perl-io-captureoutput')
 depends=('perl')
 options=('!emptydirs')
 source=(http://search.cpan.org/CPAN/authors/id/J/JK/JKEENAN/${_pkgname}-$pkgver.tar.gz) 
-sha256sums=('6f3b2a24efac189e4d7ddc6f7f1d814f4ba03e887c79105f73eb37fcfa7201d0')
+sha256sums=('fdbf4ff67b3135d44475fef7fcac0cd4706407d5720d26dca914860eb10f8550')
 
 build() {
   cd $srcdir/${_pkgname}-$pkgver
