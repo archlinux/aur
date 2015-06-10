@@ -1,0 +1,11 @@
+
+post_install() {
+  echo "For audio output, you likely need to setup OSS or emulation. Then you can launch"
+  echo "for ALSA:'aoss rollemup' or for PulseAudio:'padsp rollemup'. The launcher shell"
+  echo "script '/usr/bin/rollemup' is commented, just edit accordingly."
+  echo "Please also note that the game uses hardcoded keycodes for querty(us) keyboards!"
+} 
+
+post_upgrade() {
+  post_install
+}

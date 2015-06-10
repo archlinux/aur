@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Roll'em Up
+Comment=Classic pinball game
+Exec=rollemup
+Icon=rollemup
+Terminal=false
+Type=Application
+Categories=Game;
