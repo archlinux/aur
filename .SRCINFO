@@ -1,0 +1,19 @@
+pkgbase = animata-svn
+	pkgdesc = an open source real-time animation software
+	pkgver = 63
+	pkgrel = 1
+	url = http://animata.kibu.hu/
+	install = animata-svn.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = scons
+	depends = fltk
+	depends = mesa
+	provides = animata
+	conflicts = animata
+	source = animata.desktop
+	sha256sums = 0e12f6321f95080209b95223d9471aea37e20e8b78430ff95eba47a86a3e593a
+
+pkgname = animata-svn
+

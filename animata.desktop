@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Animata
+GenericName=Real-time animation editor
+Comment=Create real-time animations
+Exec=animata %f
+Icon=animata
+Terminal=false
+Categories=Graphics;2DGraphics;
+StartupNotify=true
