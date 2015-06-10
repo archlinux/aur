@@ -1,6 +1,6 @@
 pkgbase = bmon-git
 	pkgdesc = Portable bandwidth monitor and rate estimator
-	pkgver = 3.2.0.gd47fffc
+	pkgver = 3.6.15.g2ccea2c
 	pkgrel = 1
 	url = http://people.suug.ch/~tgr/bmon/
 	arch = i686

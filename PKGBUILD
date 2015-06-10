@@ -1,4 +1,4 @@
-# $Id$
+# $Id: 992fa3e31a82fe7f834a510476e8773a401b858c $
 # Maintainer: Ido Rosen <ido@kernel.org>
 # Contributor: Maxime Gauduin <alucryd@gmail.com>
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
@@ -9,7 +9,7 @@
 # 
 
 pkgname="bmon-git"
-pkgver=3.2.0.gd47fffc
+pkgver=3.6.15.g2ccea2c
 pkgrel=1
 pkgdesc="Portable bandwidth monitor and rate estimator"
 arch=('i686' 'x86_64')
@@ -42,7 +42,7 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   install -dm 755 "${pkgdir}/usr/share/doc/${pkgname%-*}"
-  install -m 644 ChangeLog LICENSE "${pkgdir}/usr/share/doc/${pkgname%-*}/"
+  install -m 644 ChangeLog LICENSE.MIT LICENSE.BSD "${pkgdir}/usr/share/doc/${pkgname%-*}/"
   install -dm 755 "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -s "/usr/share/doc/${pkgname-*}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/"
+  ln -s "/usr/share/doc/${pkgname-*}/LICENSE."{MIT,BSD} "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
