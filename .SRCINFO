@@ -1,0 +1,19 @@
+pkgbase = asclock-xlib
+	pkgdesc = The AfterStep clock dock app - Xlib version
+	pkgver = 2.0.12
+	pkgrel = 5
+	url = http://www.cs.mun.ca/~gstarkes/wmaker/dockapps/time.html#asclock
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	provides = asclock
+	conflicts = asclock
+	conflicts = asclock-gtk
+	source = http://gentoo.osuosl.org/distfiles/asclock-2.0.12.tar.gz
+	source = asclock.desktop
+	md5sums = 99cb6491358bb0044e9b75b2e06b043b
+	md5sums = 54149bbbef522b2bc5d5e65ef76f4cbd
+
+pkgname = asclock-xlib
+
