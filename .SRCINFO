@@ -1,0 +1,29 @@
+pkgbase = mingw-w64-libssh
+	pkgdesc = Library for accessing ssh client services through C libraries (mingw-w64)
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = http://www.libssh.org/
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-cmake
+	makedepends = mingw-w64-pkg-config
+	makedepends = doxygen
+	depends = mingw-w64-zlib
+	depends = mingw-w64-openssl
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = https://red.libssh.org/attachments/download/107/libssh-0.6.4.tar.gz
+	source = https://red.libssh.org/attachments/download/108/libssh-0.6.4.tar.asc
+	source = mingw-w64-pthreads.patch
+	source = mingw-as-unix.patch
+	source = mingw-DATADIR-conflict.patch
+	md5sums = 8a7daa171c69913f475dacffcb639fda
+	md5sums = SKIP
+	md5sums = ca268e1366633f988e21cbcf5a4d8145
+	md5sums = d819f18cb4ae07ad2a6589b02765b6c2
+	md5sums = 7be13e00d27ce77f862012ee0654019b
+
+pkgname = mingw-w64-libssh
+
