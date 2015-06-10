@@ -1,0 +1,37 @@
+pkgbase = buceutils-git
+	pkgdesc = A collection of simple utilities.
+	pkgver = 0.r50.g29583d6
+	pkgrel = 1
+	url = https://github.com/DMBuce/buceutils
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = tar
+	depends = p7zip
+	depends = gzip
+	depends = bzip2
+	depends = unrar
+	depends = xz
+	depends = unzip
+	depends = java-environment
+	depends = rpmextract
+	depends = cpio
+	depends = cabextract
+	depends = curl
+	depends = openssh
+	depends = diffutils
+	depends = perl
+	depends = perl-net-cidr-lite
+	depends = perl-spreadsheet-writeexcel
+	depends = alsa-utils
+	depends = xorg-xrandr
+	depends = awk
+	depends = imagemagick
+	depends = python
+	provides = buceutils
+	conflicts = buceutils
+	source = buceutils-git::git://github.com/DMBuce/buceutils.git
+	md5sums = SKIP
+
+pkgname = buceutils-git
+
