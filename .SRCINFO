@@ -1,0 +1,29 @@
+pkgbase = network-manager-applet-git
+	pkgdesc = GNOME frontends to Networkmanager
+	pkgver = 20130701
+	pkgrel = 1
+	url = http://www.gnome.org/projects/NetworkManager/
+	install = network-manager-applet-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = gobject-introspection
+	depends = networkmanager-git
+	depends = gtk3
+	depends = iso-codes
+	depends = libsecret
+	depends = notification-daemon
+	depends = libnotify
+	depends = gnome-icon-theme
+	depends = mobile-broadband-provider-info
+	provides = network-manager-applet
+	conflicts = network-manager-applet-svn
+	conflicts = network-manager-applet
+	options = !libtool
+	source = git://git.gnome.org/network-manager-applet
+	sha256sums = SKIP
+	sha512sums = SKIP
+
+pkgname = network-manager-applet-git
+
