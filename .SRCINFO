@@ -1,0 +1,17 @@
+pkgbase = tdl
+	pkgdesc = TODO list manager
+	pkgver = 1.5.2
+	pkgrel = 7
+	url = https://github.com/rc0/tdl
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	depends = readline
+	source = tdl::git://github.com/T-J-Teru/tdl.git#commit=382c52a2d1f2d064110c189459fe09a6edb12761
+	source = readline63.patch
+	md5sums = SKIP
+	md5sums = dada1488632f9d672e75e15cfb011ecb
+
+pkgname = tdl
+
