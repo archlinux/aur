@@ -1,0 +1,17 @@
+pkgbase = robotfindskitten
+	pkgdesc = Yet another zen simulation
+	pkgver = 2.7182818.701
+	pkgrel = 2
+	url = http://www.robotfindskitten.org/
+	install = robotfindskitten.install
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = setconf
+	depends = ncurses
+	options = zipman
+	source = http://robotfindskitten.org/download/POSIX/robotfindskitten-2.7182818.701.tar.gz
+	sha256sums = 7749a370796fd23e3b306b00de5f7fb7997a35fef30e3910ff159448c932d719
+
+pkgname = robotfindskitten
+
