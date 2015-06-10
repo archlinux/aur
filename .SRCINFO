@@ -1,0 +1,19 @@
+pkgbase = perl-text-findindent
+	pkgdesc = 'Heuristically determine the indent style'
+	pkgver = 0.10
+	pkgrel = 1
+	url = http://search.cpan.org/~smueller/Text-FindIndent
+	arch = i686
+	arch = x86_64
+	license = perl
+	makedepends = perl
+	depends = perl>=5.10.1
+	provides = text-findindent=0.10
+	provides = Text::FindIndent=0.10
+	provides = perl-text-findindent=0.10
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SM/SMUELLER/Text-FindIndent-0.10.tar.gz
+	md5sums = 765d619fc84e07b3c1e3ac6841e6a6b8
+
+pkgname = perl-text-findindent
+
