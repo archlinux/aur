@@ -1,0 +1,16 @@
+pkgbase = ttf-aenigma
+	pkgdesc = 465 free TrueType fonts by Brian Kent
+	pkgver = 20080510
+	pkgrel = 2
+	url = http://www.aenigmafonts.com
+	install = ttf-aenigma.install
+	arch = any
+	license = Freeware
+	makedepends = p7zip
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://ftp.debian.org/debian/pool/main/t/ttf-aenigma/ttf-aenigma_0.0.20080510.dfsg-1_all.deb
+	md5sums = acf30eaa480ece4bc0dad102332c9256
+
+pkgname = ttf-aenigma
+
