@@ -1,0 +1,29 @@
+pkgbase = ocserv-git
+	pkgdesc = OpenConnect VPN Server
+	pkgver = 0.10.5.r31.ge143f2a
+	pkgrel = 1
+	url = http://www.infradead.org/ocserv/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = freeradius
+	depends = autogen
+	depends = libpcl
+	depends = gnutls
+	depends = http-parser
+	depends = libnl
+	depends = libsystemd
+	depends = pam
+	depends = protobuf-c
+	depends = talloc
+	depends = libseccomp
+	depends = freeradius-client
+	provides = ocserv
+	conflicts = ocserv
+	backup = etc/ocserv.config
+	backup = etc/ocserv-passwd
+	source = ocserv-git::git://git.infradead.org/ocserv.git
+	md5sums = SKIP
+
+pkgname = ocserv-git
+
