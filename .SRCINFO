@@ -1,0 +1,15 @@
+pkgbase = load81-git
+	pkgdesc = C64 like environment for Lua and SDL
+	pkgver = 20120321
+	pkgrel = 1
+	url = https://github.com/antirez/load81
+	install = load81.install
+	arch = x86_64
+	arch = i686
+	license = BSD
+	depends = lua
+	depends = sdl
+	depends = sdl_gfx
+
+pkgname = load81-git
+
