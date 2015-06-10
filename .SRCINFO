@@ -16,7 +16,6 @@ pkgbase = retroshare-svn
 	depends = libgnome-keyring
 	depends = libxss
 	depends = libmicrohttpd
-	depends = opencv
 	depends = sqlcipher
 	depends = libssh
 	depends = protobuf

@@ -20,7 +20,7 @@ pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://retroshare.sourceforge.net/"
 license=('GPL' 'LGPL')
-depends=('qt4' 'libupnp' 'libgnome-keyring' 'libxss' 'libmicrohttpd' 'opencv' 'sqlcipher')
+depends=('qt4' 'libupnp' 'libgnome-keyring' 'libxss' 'libmicrohttpd' 'sqlcipher')
 makedepends=('subversion')
 provides=('retroshare')
 conflicts=('retroshare')
@@ -32,7 +32,7 @@ sha256sums=('SKIP'
 
 # Add missing dependencies if needed
 [[ $_build_nogui == true ]] && depends=(${depends[@]} 'libssh' 'protobuf')
-[[ $_build_voip == true ]] && depends=(${depends[@]} 'speex')
+[[ $_build_voip == true ]] && depends=(${depends[@]} 'speex' 'opencv')
 [[ $_build_feedreader == true ]] && depends=(${depends[@]} 'curl' 'libxslt')
 
 pkgver() {
