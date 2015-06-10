@@ -1,0 +1,25 @@
+pkgbase = libwnck+-git
+	pkgdesc = Window Navigator Construction Kit
+	pkgver = 2.31.0.r19.g7357429
+	pkgrel = 1
+	url = https://github.com/bbidulock/libwnck
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = libxt
+	makedepends = intltool
+	makedepends = gobject-introspection
+	makedepends = gnome-common
+	depends = gtk2
+	depends = startup-notification
+	depends = libxres
+	provides = libwnck=2.31.0
+	provides = libwnck+=2.31.0
+	conflicts = libwnck
+	conflicts = libwnck+
+	source = libwnck+-git::git+https://github.com/bbidulock/libwnck.git#branch=libwnck+
+	sha256sums = SKIP
+
+pkgname = libwnck+-git
+
