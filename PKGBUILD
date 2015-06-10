@@ -8,11 +8,8 @@ pkgdesc="An accuracy focused emulator for Sega Genesis/Mega Drive"
 arch=("i686" "x86_64")
 url="http://aamirm.hacking-cult.org/index_files/regen.htm"
 license=('custom')
-if [ "${CARCH}" == "x86_64" ]; then
-  depends=('lib32-gtk2' 'lib32-sdl' 'lib32-libpng12' 'lib32-alsa-lib' 'lib32-libxv' 'lib32-libgl' 'lib32-libffi5')
-else
-  depends=('gtk2' 'sdl' 'libpng12' 'alsa-lib' 'libxv' 'libgl' 'libffi5')
-fi
+depends=('gtk2' 'sdl' 'libpng12' 'alsa-lib' 'libxv' 'libgl' 'libffi5')
+depends_x86_64=('lib32-gtk2' 'lib32-sdl' 'lib32-libpng12' 'lib32-alsa-lib' 'lib32-libxv' 'lib32-libgl' 'lib32-libffi5')
 makedepends=('upx')
 source=("http://aamirm.hacking-cult.org/regen/regen-gtk-$pkgver.tar.bz2"
 	'regen.desktop' 'regen_icon.png' 'LICENSE')

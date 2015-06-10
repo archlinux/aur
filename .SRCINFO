@@ -23,6 +23,13 @@ pkgbase = regen
 	md5sums = bf8495d681e12d3d8520c8338ad6c1f6
 	md5sums = d88da0445234b85cc7521cc0313e57b3
 	md5sums = 12438e857789f43c6645e53ab0e395a1
+	depends_x86_64 = lib32-gtk2
+	depends_x86_64 = lib32-sdl
+	depends_x86_64 = lib32-libpng12
+	depends_x86_64 = lib32-alsa-lib
+	depends_x86_64 = lib32-libxv
+	depends_x86_64 = lib32-libgl
+	depends_x86_64 = lib32-libffi5
 
 pkgname = regen
 
