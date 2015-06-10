@@ -1,0 +1,16 @@
+pkgbase = ttf-roboto-slab
+	pkgdesc = Serif Roboto font from Google Keep
+	pkgver = 1.100262
+	pkgrel = 3
+	url = https://www.google.com/fonts/specimen/Roboto+Slab
+	install = ttf-roboto-slab.install
+	arch = any
+	license = APACHE
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = https://gavinhungry.io/pub/Roboto_Slab.zip
+	md5sums = 1222eadc0fece6cded684fcff6ec230b
+
+pkgname = ttf-roboto-slab
+
