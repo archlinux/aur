@@ -11,11 +11,6 @@ makedepends=('python-setuptools')
 source=("https://github.com/whilp/cli/archive/v${pkgver}.tar.gz")
 sha256sums=('66e54c2bb5e31f6d306679efe3297b020c14ce487e57e6a4bfac3f58033f782a')
 
-build() {
-  cd "${srcdir}/cli-$pkgver"
-  python setup.py build
-}
-
 package() {
   cd "${srcdir}/cli-$pkgver"
   python setup.py install --root=$pkgdir --prefix=/usr --optimize=1

@@ -8,7 +8,7 @@ pkgbase = python-cli
 	makedepends = python-setuptools
 	depends = python
 	source = https://github.com/whilp/cli/archive/v2.0.3.tar.gz
-	sha256sums = c6d1ed487322d964e8ebae1dc8edf1d50f434c28
+	sha256sums = 66e54c2bb5e31f6d306679efe3297b020c14ce487e57e6a4bfac3f58033f782a
 
 pkgname = python-cli
 
