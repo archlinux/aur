@@ -1,0 +1,15 @@
+pkgbase = mantis-wm-git
+	pkgdesc = Lightweight window manager for X
+	pkgver = 0.11.c5805bd
+	pkgrel = 2
+	url = http://github.com/andreas-volker/mantis-wm
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libx11
+	source = mantis-wm-git::git+https://github.com/andreas-volker/mantis-wm.git
+	md5sums = SKIP
+
+pkgname = mantis-wm-git
+
