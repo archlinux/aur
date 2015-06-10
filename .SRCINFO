@@ -1,0 +1,21 @@
+pkgbase = lxpolkit-git
+	pkgdesc = Simple polkit authentication agent for LXDE
+	pkgver = 0.1.0.r34.g55fc5d4
+	pkgrel = 2
+	epoch = 1
+	url = http://blog.lxde.org/?p=674
+	arch = i686
+	arch = x86_64
+	groups = lxde
+	license = GPL
+	makedepends = git
+	makedepends = intltool
+	depends = gtk2
+	depends = polkit
+	provides = lxpolkit
+	conflicts = lxpolkit
+	source = lxpolkit-git::git://lxde.git.sourceforge.net/gitroot/lxde/lxpolkit
+	md5sums = SKIP
+
+pkgname = lxpolkit-git
+
