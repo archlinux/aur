@@ -1,0 +1,17 @@
+pkgbase = bubblemon-dockapp
+	pkgdesc = This is a system monitoring dockapp, visually based on the GNOME 'BubbleMon' applet
+	pkgver = 1.46
+	pkgrel = 4
+	url = http://www.ne.jp/asahi/linux/timecop/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = patch
+	depends = gtk2
+	source = http://www.ne.jp/asahi/linux/timecop/software/bubblemon-dockapp-1.46.tar.gz
+	source = gdk2.patch
+	md5sums = f1f86fe5c725bf3a6f5fef8709992931
+	md5sums = 33e075f7d86b0dbceb76a00b8d744b05
+
+pkgname = bubblemon-dockapp
+

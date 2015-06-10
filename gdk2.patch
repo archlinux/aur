@@ -1,0 +1,102 @@
+diff -up src/bubblemon-dockapp-1.46/bubblemon.c.orig src/bubblemon-dockapp-1.46/bubblemon.c
+--- src/bubblemon-dockapp-1.46/bubblemon.c.orig	2003-09-30 18:37:32.000000000 -0600
++++ src/bubblemon-dockapp-1.46/bubblemon.c	2014-05-16 06:40:40.000000000 -0600
+@@ -531,6 +531,28 @@ static int get_screen_selection(void)
+     }
+ }
+ 
++static void show_dockapp(GdkWindow *dockapp)
++{
++    Window w, p, dummy1, *dummy2;
++    unsigned int dummy3;
++    XWMHints *hints;
++
++    XQueryTree(GDK_WINDOW_XDISPLAY(dockapp), GDK_WINDOW_XID(dockapp), &dummy1, &p, &dummy2,
++	    &dummy3);
++    if (dummy2)
++	XFree(dummy2);
++    w = XCreateSimpleWindow(GDK_WINDOW_XDISPLAY(dockapp), p, 0, 0, 1, 1, 0, 0, 0);
++    XReparentWindow(GDK_WINDOW_XDISPLAY(dockapp), GDK_WINDOW_XID(dockapp), w, 0, 0);
++    gdk_window_show(dockapp);
++    hints = XGetWMHints(GDK_WINDOW_XDISPLAY(dockapp), GDK_WINDOW_XID(dockapp));
++    hints->flags |= StateHint;
++    hints->initial_state = WithdrawnState;
++    XSetWMHints(GDK_WINDOW_XDISPLAY(dockapp), GDK_WINDOW_XID(dockapp), hints);
++    XFree(hints);
++    XReparentWindow(GDK_WINDOW_XDISPLAY(dockapp), GDK_WINDOW_XID(dockapp), p, 0, 0);
++    XDestroyWindow(GDK_WINDOW_XDISPLAY(dockapp), w);
++}
++
+ /* This is the function that actually creates the display widgets */
+ static void make_new_bubblemon_dockapp(void)
+ {
+@@ -605,7 +627,7 @@ static void make_new_bubblemon_dockapp(v
+     gdk_window_set_back_pixmap(bm.win, bm.pixmap, False);
+     gdk_window_set_back_pixmap(bm.iconwin, bm.pixmap, False);
+ 
+-    gdk_window_show(bm.win);
++    show_dockapp(bm.win);
+ #ifdef KDE_DOCKAPP
+     /* makes the dockapp visible inside KDE wm */
+     gdk_window_show(bm.iconwin);
+diff -up src/bubblemon-dockapp-1.46/Makefile.orig src/bubblemon-dockapp-1.46/Makefile
+--- src/bubblemon-dockapp-1.46/Makefile.orig	2003-10-03 18:22:07.000000000 -0600
++++ src/bubblemon-dockapp-1.46/Makefile	2014-05-16 06:41:21.000000000 -0600
+@@ -7,16 +7,16 @@ EXTRA += -DKERNEL_26
+ # EXTRA += -DUPSIDE_DOWN_DUCK
+ 
+ # where to install this program
+-PREFIX = /usr/local
++PREFIX = $(DESTDIR)/usr
+ 
+ # no user serviceable parts below
+ EXTRA += $(WMAN)
+ # optimization cflags
+-CFLAGS = -O3 -ansi -Wall `gtk-config --cflags` ${EXTRA}
++CFLAGS = -O3 -ansi -Wall `pkg-config x11 gdk-2.0 --cflags` ${EXTRA}
+ # profiling cflags
+-# CFLAGS = -ansi -Wall -pg -O3 `gtk-config --cflags` ${EXTRA} -DPRO
++# CFLAGS = -ansi -Wall -pg -O3 `pkg-config x11 gdk-2.0 --cflags` ${EXTRA} -DPRO
+ # test coverage cflags
+-# CFLAGS = -fprofile-arcs -ftest-coverage -Wall -ansi -g `gtk-config --cflags` ${EXTRA} -DPRO
++# CFLAGS = -fprofile-arcs -ftest-coverage -Wall -ansi -g `pkg-config x11 gdk-2.0 --cflags` ${EXTRA} -DPRO
+ 
+ 
+ SHELL=sh
+@@ -27,21 +27,21 @@ CC = gcc
+ # special things for Linux
+ ifeq ($(OS), Linux)
+     OBJS += sys_linux.o
+-    LIBS = `gtk-config --libs | sed "s/-lgtk//g"`
++    LIBS = `pkg-config x11 gdk-2.0 --libs | sed "s/-lgtk//g"`
+     INSTALL = -m 755
+ endif
+ 
+ # special things for FreeBSD
+ ifeq ($(OS), FreeBSD)
+     OBJS += sys_freebsd.o
+-    LIBS = `gtk-config --libs | sed "s/-lgtk//g"` -lkvm
++    LIBS = `pkg-config x11 gdk-2.0 --libs | sed "s/-lgtk//g"` -lkvm
+     INSTALL = -c -g kmem -m 2755 -o root
+ endif
+ 
+ # special things for OpenBSD
+ ifeq ($(OS), OpenBSD)
+     OBJS += sys_openbsd.o
+-    LIBS = `gtk-config --libs | sed "s/-lgtk//g"`
++    LIBS = `pkg-config x11 gdk-2.0 --libs | sed "s/-lgtk//g"`
+ endif
+ 
+ #special things for SunOS
+@@ -62,9 +62,9 @@ ifeq ($(OS), SunOS)
+     ifeq ($(COMPILER), gcc)
+ 	CFLAGS=-O3 -Wall
+     endif
+-    CFLAGS +=`gtk-config --cflags` ${EXTRA}
++    CFLAGS +=`pkg-config x11 gdk-2.0 --cflags` ${EXTRA}
+     OBJS += sys_sunos.o
+-    LIBS = `gtk-config --libs` -lkstat -lm
++    LIBS = `pkg-config x11 gdk-2.0 --libs` -lkstat -lm
+     INSTALL = -m 755
+ endif
+ 
