@@ -1,0 +1,14 @@
+pkgbase = ttf-adobe-song
+	pkgdesc = One fonts of Adobe's AdobeSongStd.L style.
+	pkgver = 5.002
+	pkgrel = 2
+	url = http://www.adobe.com
+	install = ttf-adobe-song.install
+	arch = any
+	license = unknown
+	depends = fontconfig
+	source = http://gthemes-china.googlecode.com/files/AdobeSongStd.tar.gz
+	md5sums = dfb255e52b55d5ecd2343a5f5465740e
+
+pkgname = ttf-adobe-song
+
