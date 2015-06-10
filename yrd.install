@@ -1,0 +1,19 @@
+post_install() {
+    # Create the yrd group if it doesn't exist
+    [[ $(getent group yrd) ]] \
+        || groupadd yrd
+
+    # Create /var/lib/yrd and /var/lib/yrd/peers.d if they don't exist
+    systemd-tmpfiles --create yrd.conf
+}
+
+post_upgrade() {
+    # Run the install commands
+    post_install
+}
+
+post_remove() {
+    # Remove the yrd group if it exists
+    [[ $(getent group yrd) ]] \
+        && groupdel yrd
+}
