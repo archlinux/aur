@@ -1,10 +1,11 @@
 pkgbase = thunderbird-lightning-bin
 	pkgdesc = A calendar that's fully integrated into Thunderbird.
 	pkgver = 3.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mozilla.org/en-US/projects/calendar/
 	arch = i686
 	arch = x86_64
+	groups = office
 	license = MPL
 	license = GPL
 	license = LGPL
@@ -15,7 +16,7 @@ pkgbase = thunderbird-lightning-bin
 	replaces = lightning-bin
 	options = !strip
 	source = lightning-3.3.3.xpi::https://addons.mozilla.org/thunderbird/downloads/file/295634/lightning-3.3.3-tb+sm-linux.xpi?src=api
-	sha1sums = ec57e16d37af32ac4f0051fdbc21c9e592f2a36e
+	sha1sums = 351dccc13e512cad870b6a58b9ec0b51dcbe510d
 
 pkgname = thunderbird-lightning-bin
 
