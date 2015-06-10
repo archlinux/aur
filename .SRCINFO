@@ -1,0 +1,21 @@
+pkgbase = tinytriangle
+	pkgdesc = Linux 4k intro skeleton (demoscene)
+	pkgver = 0.2
+	pkgrel = 2
+	url = http://roboticoverlords.org/tinytriangle/
+	arch = x86_64
+	arch = i686
+	license = ZLIB
+	makedepends = elfkickers
+	depends = libgl
+	depends = alsa-lib
+	depends = sdl
+	source = http://roboticoverlords.org/tinytriangle/tinytriangle-0.2.xz
+	source = http://roboticoverlords.org/tinytriangle/tinytriangle.desktop
+	source = http://roboticoverlords.org/tinytriangle/tinytriangle.png
+	sha256sums = aa638019bcc60c862fc264095d33add8871ceb0f729ba4b71c74c5343b68843e
+	sha256sums = e26f2adea9a317971563f773a11177c784d3dbe3c29cedf8cae33ac4514c67ed
+	sha256sums = a3c74ce02bfe583709ed8d5d40147994362bf14f218e747a3ec3a29561b5effa
+
+pkgname = tinytriangle
+
