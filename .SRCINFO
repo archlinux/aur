@@ -1,0 +1,15 @@
+pkgbase = python2-tornadio2-git
+	pkgdesc = Socket.io server implementation on top of Tornado
+	pkgver = b463209
+	pkgrel = 1
+	url = http://github.com/MrJoes/tornadio2
+	arch = any
+	license = APACHE
+	depends = python2
+	depends = python2-distribute
+	depends = python2-tornado
+	source = python2-tornadio2-git::git://github.com/mrjoes/tornadio2.git
+	md5sums = SKIP
+
+pkgname = python2-tornadio2-git
+
