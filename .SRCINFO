@@ -1,0 +1,17 @@
+pkgbase = perl-math-planepath
+	pkgdesc = Math::PlanePath -- points on a path through the 2-D plane
+	pkgver = 119
+	pkgrel = 1
+	url = https://metacpan.org/release/Math-PlanePath/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	depends = perl-constant-defer
+	depends = perl-math-libm
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/K/KR/KRYDE/Math-PlanePath-119.tar.gz
+	md5sums = 9f801c33fe099b943f46ceccbc5fab40
+
+pkgname = perl-math-planepath
+
