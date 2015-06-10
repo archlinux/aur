@@ -1,7 +1,5 @@
 # Maintainer: Ben Alex <ben.alex@acegi.com.au>
 
-# See https://github.com/benalexau/libnx-aur for AUR PKGBUILD history
-
 pkgname=libnx
 pkgver=2.9.477
 pkgrel=1
