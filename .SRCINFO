@@ -1,0 +1,40 @@
+pkgbase = remmina-gtk2
+	pkgdesc = Remmina is a remote desktop client written in GTK+.
+	pkgver = 1.0.0
+	pkgrel = 3
+	url = http://remmina.sourceforge.net/
+	install = remmina.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = pkgconfig
+	makedepends = cmake
+	makedepends = avahi
+	makedepends = libxkbfile
+	makedepends = freerdp
+	makedepends = telepathy-glib
+	depends = libssh
+	depends = libgnome-keyring
+	depends = vte
+	depends = telepathy-glib
+	depends = freerdp
+	optdepends = avahi
+	optdepends = libxkbfile
+	optdepends = gnome-keyring
+	provides = grdc
+	provides = grdc=1.0.0
+	provides = remmina-plugins
+	provides = remmina
+	conflicts = grdc
+	conflicts = remmina
+	replaces = remmina-plugins
+	source = https://github.com/downloads/FreeRDP/Remmina/Remmina-1.0.0.tar.gz
+	source = https://github.com/FreeRDP/Remmina/commit/569d9bb702d06c061dfbbf3c590d57ea83a04369.diff
+	source = https://github.com/FreeRDP/Remmina/commit/f7d1038ba358a295fb46c681db5c47e4ead97306.diff
+	md5sums = 701c540acaab961bc3adf130a2ddb8b1
+	md5sums = a979c898d5e53446cec9d01912ad9243
+	md5sums = b2a9c0e80ac7b0c8a26935bbe289aa3b
+
+pkgname = remmina-gtk2
+
