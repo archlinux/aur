@@ -1,0 +1,15 @@
+pkgbase = perl-math-convexhull
+	pkgdesc = Math::ConvexHull - Calculate convex hulls using Graham's scan (n*log(n))
+	pkgver = 1.04
+	pkgrel = 1
+	url = https://metacpan.org/release/Math-ConvexHull/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SM/SMUELLER/Math-ConvexHull-1.04.tar.gz
+	md5sums = 5d9225c5fadf5c71172cd88c81661d4d
+
+pkgname = perl-math-convexhull
+
