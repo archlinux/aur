@@ -11,9 +11,9 @@ url="http://www.structlog.org"
 license=('Apache' 'MIT')
 options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/s/${pkgname#python2-}/${pkgname#python2-}-$pkgver.tar.gz"{,.asc})
-md5sums=('c8e2b395b74031202f24e800e10be669'
+md5sums=('245dcd145d14e7633e3d089cebcaf327'
          'SKIP')
-sha256sums=('1017abfe5e8cd292da859368a5d372e8a3c3b4d353cf6fd27cc13cda32f152cb'
+sha256sums=('fbd9cac9537dd2370a2d8580113e5a02b8b136b7c2fb9d25c476ef4d220b16b5'
             'SKIP')
 validpgpkeys=('C2A04F86ACE28ADCF817DBB7AE2536227F69F181')
 
