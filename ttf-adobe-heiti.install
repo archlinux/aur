@@ -1,0 +1,12 @@
+post_install() {
+  echo -n "Updating font cache... "
+  fc-cache -f > /dev/null
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  post_install $1
+}

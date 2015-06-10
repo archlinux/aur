@@ -1,0 +1,14 @@
+pkgbase = ttf-adobe-fangsong
+	pkgdesc = One fonts of Adobe's AdobeFangsongStd.R style.
+	pkgver = 5.004
+	pkgrel = 2
+	url = http://www.adobe.com
+	install = ttf-adobe-heiti.install
+	arch = any
+	license = unknown
+	depends = fontconfig
+	source = http://gthemes-china.googlecode.com/files/AdobeFangsongStd.tar.gz
+	md5sums = 422e9125821651fd9d1461eb30809167
+
+pkgname = ttf-adobe-fangsong
+
