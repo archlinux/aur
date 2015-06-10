@@ -1,0 +1,6 @@
+*.xz
+*.gz
+pkg
+src
+*.tgz
+sdgit
