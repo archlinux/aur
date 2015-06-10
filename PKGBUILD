@@ -4,12 +4,12 @@
 
 pkgname=thunderbird-lightning-bin
 pkgver=3.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A calendar that's fully integrated into Thunderbird."
 arch=('i686' 'x86_64')
+groups=('office')
 url="https://www.mozilla.org/en-US/projects/calendar/"
 license=('MPL' 'GPL' 'LGPL')
-groups=('office')
 depends=('thunderbird>=31' 'libnotify')
 makedepends=()
 options=(!strip)
