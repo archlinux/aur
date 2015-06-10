@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Calcoo
+GenericName=Scientific Calculator
+Exec=calcoo
+Icon=calcoo
+Categories=Application;Education;Science;

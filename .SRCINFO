@@ -1,0 +1,19 @@
+pkgbase = calcoo
+	pkgdesc = RPN and algebraic scientific calculator
+	pkgver = 1.3.18
+	pkgrel = 4
+	url = http://calcoo.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = cairo
+	depends = gtk2
+	source = http://downloads.sourceforge.net/calcoo/calcoo-1.3.18.tar.gz
+	source = calcoo.png
+	source = calcoo.desktop
+	md5sums = 0740045dc83fb74c7b40a785b37a6514
+	md5sums = 11153b0b476e41f649b6a174bea7db6e
+	md5sums = d560d82dd5869120f6d544ac4d10cb9b
+
+pkgname = calcoo
+
