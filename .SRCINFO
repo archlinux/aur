@@ -1,0 +1,15 @@
+pkgbase = ttf-tamil
+	pkgdesc = TTF tamil fonts from The Tamil Linux Project.
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://tamillinux.sourceforge.net/
+	install = ttf-tamil.install
+	arch = any
+	license = GPL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://sourceforge.net/projects/tamillinux/files/tamil_opentype_fonts/1.0/tamil_opentype_fonts-1.0.tgz/download
+	sha256sums = 2771ca603fb02520cb1ea2dac10400fd4f512d7a8883a7ecffefe6595a93dcf5
+
+pkgname = ttf-tamil
+
