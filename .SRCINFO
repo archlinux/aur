@@ -1,0 +1,13 @@
+pkgbase = terminfo-italics
+	pkgdesc = Common terminfo formats patched to support italics
+	pkgver = 5.9
+	pkgrel = 1
+	url = http://www.gnu.org/software/ncurses/
+	arch = any
+	license = MIT
+	makedepends = ncurses
+	source = LICENSE
+	sha512sums = 710b8e810862868eb3fbb2e5a63098f4303f0080b4b760931ee6ae406866aba5fe9df2387c5d0506e2d3a74864e7ccc7a81ddd7e0f671d7de8bc1ceecaa04b35
+
+pkgname = terminfo-italics
+
