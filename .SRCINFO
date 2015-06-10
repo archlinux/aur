@@ -1,0 +1,15 @@
+pkgbase = hachoir-subfile
+	pkgdesc = A tool based on hachoir-parser to find subfiles in any binary stream.
+	pkgver = 0.5.3
+	pkgrel = 4
+	url = http://bitbucket.org/haypo/hachoir/wiki/hachoir-regex
+	arch = any
+	license = GPL2
+	depends = hachoir-core
+	depends = hachoir-parser
+	depends = hachoir-regex
+	source = http://cheeseshop.python.org/packages/source/h/hachoir-subfile/hachoir-subfile-0.5.3.tar.gz
+	md5sums = 74ff4f86f8ecbc864b6c8a84cbc8164f
+
+pkgname = hachoir-subfile
+
