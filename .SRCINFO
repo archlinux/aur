@@ -1,0 +1,20 @@
+pkgbase = cjdscript
+	pkgdesc = Script to deploy and run the collection of working tools included with cjdns
+	pkgver = 10.2
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/prurigro/cjdscript
+	arch = any
+	license = GPL3
+	depends = git
+	depends = python2
+	depends = nodejs
+	depends = wget
+	optdepends = cmake: Required for the PySide python2 library
+	optdepends = qt4: Required for the PySide python2 library
+	optdepends = pygtk: Required for the matplotlib python2 library
+	source = https://github.com/prurigro/cjdscript/archive/v10.2.tar.gz
+	sha512sums = 4fc821fd95f29da249ec185b022d6e704b7e16e04f1eebe3b8229626ab849a20b55dde150ec71a2075d28401fc44495ede1f1ecdf9732c396a94598b6618f802
+
+pkgname = cjdscript
+
