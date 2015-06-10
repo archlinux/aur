@@ -1,0 +1,20 @@
+#!/usr/bin/bash
+gogdir="/opt/gog/duke-nukem-3d"
+homedir="$HOME/.gog/duke-nukem-3d"
+mkdir -p "$homedir"/{game,config/data}
+
+if [[ ! -e "$homedir/config/dosboxDuke3D.conf" ]]; then
+  cp "$gogdir/dosboxDuke3D.conf" "$homedir/config/dosboxDuke3D.conf"
+fi
+
+if [[ ! -e "$homedir/config/data/DUKE3D.GRP" ]]; then
+  cp "$gogdir/data/DUKE3D.GRP" "$homedir/config/data/DUKE3D.GRP"
+fi
+
+if [[ ! -e "$homedir/config/data/DUKE3D.CFG" ]]; then
+  cp "$gogdir/data/DUKE3D.CFG" "$homedir/config/data/DUKE3D.CFG"
+fi
+
+unionfs "$homedir/config=RW:$gogdir=RO" "$homedir/game"
+"$homedir"/game/start.sh
+fusermount -u "$homedir/game" 

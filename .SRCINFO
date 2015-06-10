@@ -1,0 +1,18 @@
+pkgbase = gog-duke-nukem-3d
+	pkgdesc = This sci-fi scrolling shooter brings you some of the most intense action ever seen on the PC.
+	pkgver = 1.0.0.7
+	pkgrel = 1
+	url = http://www.gog.com/game/duke_nukem_3d_atomic_edition
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = custom
+	depends = libpng12
+	depends = unionfs-fuse
+	source = local://gog_duke_nukem_3d_1.0.0.7.tar.gz
+	source = gog-duke-nukem-3d
+	sha256sums = ba81c81d5f35f3aa424d30d9ab1c8441f8967bf4776cc85299efc95eea257ea3
+	sha256sums = 84703ccf958c6bcc41ffac6d5c2ed9b86a2ceffb845e232c869acfe953f50f9d
+
+pkgname = gog-duke-nukem-3d
+
