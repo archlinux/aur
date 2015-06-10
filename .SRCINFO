@@ -1,0 +1,15 @@
+pkgbase = python2-pyand-git
+	pkgdesc = A Python wrapper library for ADB and Fastboot
+	pkgver = r54.f90701b
+	pkgrel = 1
+	url = https://github.com/Zyg0te/pyand
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2
+	source = python2-pyand-git::git+https://github.com/Zyg0te/pyand.git
+	md5sums = SKIP
+
+pkgname = python2-pyand-git
+
