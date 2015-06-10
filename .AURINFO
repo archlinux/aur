@@ -1,0 +1,19 @@
+pkgbase = libhubbub-git
+	pkgdesc = HTML5 compliant parsing library
+	pkgver = 20120904
+	pkgrel = 1
+	url = http://www.netsurf-browser.org/projects/hubbub/
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = netsurf-buildsystem
+	depends = libparserutils
+	provides = hubbub
+	provides = libhubbub
+	conflicts = hubbub
+	replaces = hubbub-svn
+	source = git://git.netsurf-browser.org/libhubbub.git
+
+pkgname = libhubbub-git
+
