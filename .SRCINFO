@@ -1,0 +1,30 @@
+pkgbase = jwm-git
+	pkgdesc = JWM is a light-weight window manager for the X11 Window System. Git version.
+	pkgver = s1104
+	pkgrel = 1
+	url = http://joewing.net/projects/jwm/
+	arch = i686
+	arch = x86_64
+	groups = x11
+	license = GPL2
+	makedepends = git
+	depends = fribidi
+	depends = librsvg
+	depends = libxinerama
+	depends = libxmu
+	depends = libxext
+	depends = libpng
+	depends = libx11
+	depends = libxft
+	depends = libjpeg>=7
+	depends = libxpm
+	provides = jwm
+	conflicts = jwm
+	conflicts = jwm-snapshot
+	conflicts = jwm-flashfixed
+	conflicts = jwm-snapshot-lite
+	source = git://github.com/joewing/jwm.git
+	md5sums = SKIP
+
+pkgname = jwm-git
+
