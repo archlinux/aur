@@ -63,6 +63,7 @@ package() {
 
 	install -D -m644 ../LICENSE.BSD "$pkgdir/usr/share/licenses/$pkgname/LICENSE.BSD"
 	install -D -m644 ../README      "$pkgdir/usr/share/doc/$pkgname/README"
+	install -D -m644 ../BUGS        "$pkgdir/usr/share/doc/$pkgname/BUGS"
 }
 
 # vim: set ft=sh ts=4 sw=4 noet:
