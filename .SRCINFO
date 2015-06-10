@@ -1,0 +1,15 @@
+pkgbase = westpac-git
+	pkgdesc = Westpac balance and transaction history scraper
+	pkgver = r22.624089b
+	pkgrel = 1
+	url = https://github.com/benalexau/westpac-balance-scraper
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = python2-pycurl
+	depends = python2-beautifulsoup3
+	source = westpac-git::git+https://github.com/benalexau/westpac-balance-scraper.git
+	md5sums = SKIP
+
+pkgname = westpac-git
+
