@@ -1,0 +1,5 @@
+/var/log/webdis.log {
+   notifempty
+   copytruncate
+   missingok
+}

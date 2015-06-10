@@ -1,0 +1,14 @@
+[Unit]
+Description=REST server for Redis data
+After=network.target
+
+[Service]
+Type=forking
+User=webdis
+Group=webdis
+WorkingDirectory=/var/lib/webdis
+ExecStart=/usr/bin/webdis /etc/webdis.prod.json
+ExecStop=/bin/kill -15 $MAINPID
+
+[Install]
+WantedBy=multi-user.target

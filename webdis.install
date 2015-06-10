@@ -1,0 +1,35 @@
+post_install() {
+  # Found a free UID here: https://wiki.archlinux.org/index.php/DeveloperWiki:UID_/_GID_Database
+
+  # Make sure user webdis exists
+  if grep -q "^webdis:" /etc/group &> /dev/null ; then
+    groupmod -g 53 -n webdis webdis &> /dev/null
+  else
+    groupadd -g 53 webdis &> /dev/null
+  fi
+  
+  # Make sure group webdis exists
+  if grep -q "^webdis:" /etc/passwd 2> /dev/null ; then
+    usermod -s /sbin/nologin -c "Webdis user" -d /var/empty -u 53 -g webdis webdis &> /dev/null
+  else
+    useradd -s /sbin/nologin -c "Webdis user" -d /var/empty -u 53 -g webdis -r webdis &> /dev/null
+  fi 
+
+  # Create /var/lib/webdis, with the right permissions
+  install -d /var/lib/webdis
+  chown webdis:webdis /var/lib/webdis
+} 
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  # Remove the webdis user and group
+  userdel webdis &> /dev/null
+  groupdel webdis &> /dev/null || true
+  # rmoeve /var/lib/webdis
+  rm -rf /var/run/webdis/ &> /dev/null || true
+}
+
+# vim:set ts=2 sw=2 et:

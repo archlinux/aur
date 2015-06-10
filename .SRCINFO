@@ -1,0 +1,22 @@
+pkgbase = webdis
+	pkgdesc = REST server for Redis data
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = http://webd.is/
+	install = webdis.install
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = git
+	depends = redis
+	depends = libevent
+	depends = jansson
+	source = webdis::git://github.com/nicolasff/webdis.git#tag=0.1.1
+	source = webdis.service
+	source = webdis.logrotate
+	sha256sums = SKIP
+	sha256sums = 3c77e6968a0926c8b56755acab430f32c3e883f50b2f6f59d4dce2501bf247a7
+	sha256sums = f409fefee8533e60db6a6340c021b77b57f55cfcbf26ae4acdc3b672c7aa79b7
+
+pkgname = webdis
+
