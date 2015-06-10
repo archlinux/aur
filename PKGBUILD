@@ -1,7 +1,5 @@
 # Maintainer: Ben Alex <ben.alex@acegi.com.au>
 
-# See https://github.com/benalexau/twstools-aur for AUR PKGBUILD history
-
 pkgname=twstools
 pkgver=0.4.3
 pkgrel=1
