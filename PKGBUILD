@@ -3,7 +3,7 @@
 
 pkgname=mat
 pkgver=0.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Metadata anonymisation toolkit"
 arch=('any')
 url="https://mat.boum.org"
@@ -12,11 +12,12 @@ depends=('python2-distutils-extra' 'python2' 'hachoir-core' 'hachoir-parser' 'py
 optdepends=('perl-image-exiftool: extended image support',
 'mutagen: extended audio format support')
 source=(https://mat.boum.org/files/mat-${pkgver}.tar.xz)
+sha256sums=('616fc4ba13a7ce2a20acd6639a776fa4ee6a61caf999ed64b4545d3f83a41cfd')
 
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"
-  python2 setup.py install --root="${pkgdir}"
+  python2 setup.py install --root="$pkgdir/" --optimize=1
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:ts=2:sw=2:et:
-sha256sums=('616fc4ba13a7ce2a20acd6639a776fa4ee6a61caf999ed64b4545d3f83a41cfd')
