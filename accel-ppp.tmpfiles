@@ -1,0 +1,2 @@
+d /run/accel-ppp 0755 root root -
+d /var/log/accel-ppp 0755 root root -

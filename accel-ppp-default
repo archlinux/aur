@@ -1,0 +1,4 @@
+# Any extra options you want to pass to aceel-pppd
+# on start-up should be put here.
+ARGS="-c /etc/accel-ppp.conf"
+PIDFILE="/run/accel-pppd.pid"

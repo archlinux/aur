@@ -1,0 +1,14 @@
+[Unit]
+Description=Accel-PPPD Daemon
+Conflicts=pptpd.service
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/conf.d/accel-pppd
+ExecStart=/usr/bin/accel-pppd -d -p $PIDFILE $ARGS
+ExecReload=/usr/bin/kill -SIGUSR1 $MAINPID
+PIDFile=/run/accel-pppd.pid
+Type=forking
+
+[Install]
+WantedBy=multi-user.target
