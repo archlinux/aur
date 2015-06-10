@@ -1,0 +1,16 @@
+pkgbase = http-parser
+	pkgdesc = Parser for HTTP Request/Response written in C
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://github.com/joyent/http-parser
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	provides = http-parser
+	source = http-parser::git+https://github.com/joyent/http-parser.git#tag=v2.5.0
+	md5sums = SKIP
+
+pkgname = http-parser
+
