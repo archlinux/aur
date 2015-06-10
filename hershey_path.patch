@@ -1,0 +1,11 @@
+--- Makefile.old	2013-02-02 14:38:39.897709024 +0100
++++ Makefile	2013-02-02 14:38:26.334540377 +0100
+@@ -24,7 +24,7 @@
+ # Where the fonts a going to live (For making the Hershey library)
+ # (Remember /tmp usually gets cleared from time to time)
+ #
+-FONTLIB = /usr/local/lib/hershey/
++FONTLIB = /usr/share/hershey/
+ 
+ #
+ #  For BSD type machines we need to use ranlib

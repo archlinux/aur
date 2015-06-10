@@ -1,0 +1,27 @@
+pkgbase = gophervr
+	pkgdesc = A 3-D interface to Gopherspace
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = http://gopher.floodgap.com/gopher/gw?gopher://gopher.floodgap.com:70/1/gophervr
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = curl
+	makedepends = tar
+	makedepends = imake
+	makedepends = patch
+	depends = lesstif
+	optdepends = xterm: for telnet connections
+	optdepends = inetutils: for telnet connections
+	optdepends = xv: for image display
+	optdepends = sox: for audio playback
+	optdepends = lynx: for HTML files
+	source = hershey_path.patch
+	source = gophervr.desktop
+	source = gophervr_icon.png
+	md5sums = 1985131a840223fea895f46803650c8c
+	md5sums = 357365c3e59262d92e1d0382cd842e53
+	md5sums = 05f51b00d10f6dac04ca5d03b62e88e1
+
+pkgname = gophervr
+
