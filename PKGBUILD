@@ -35,5 +35,5 @@ package() {
   install -d "${pkgdir}"/opt/"${pkgname}"
   cp -r * "${pkgdir}"/opt/"${pkgname}"
   install -d "${pkgdir}"/usr/bin/
-  ln -s "/opt/"${pkgname}"/run.py" "${pkgdir}"/usr/bin/${pkgname}
+  ln -s "/opt/"${pkgname}"/run.py" "${pkgdir}"/usr/bin/"${pkgname}"
 }
