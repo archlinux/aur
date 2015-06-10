@@ -1,0 +1,20 @@
+pkgbase = promoe-git
+	pkgdesc = XMMS2 client that looks like Winamp Classic
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/dsvensson/promoe
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = python2
+	makedepends = git
+	depends = xmms2
+	depends = qt5-base
+	depends = avahi
+	depends = boost
+	depends = libarchive
+	source = git://github.com/dsvensson/promoe.git
+	md5sums = SKIP
+
+pkgname = promoe-git
+
