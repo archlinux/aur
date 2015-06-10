@@ -1,16 +1,17 @@
 pkgbase = nomachine
 	pkgdesc = Remote desktop application
-	pkgver = 4.6.3
+	pkgver = 4.6.4
 	pkgrel = 13
 	url = http://www.nomachine.com
 	install = nomachine.install
 	arch = x86_64
+	groups = network
 	license = custom:"NoMachine EULA"
 	depends = bash
 	conflicts = nxmanager nxwebplayer nxserver nxnode nxclient
 	options = !strip
-	source = http://download.nomachine.com/download/4.6/Linux/nomachine_4.6.3_13_x86_64.tar.gz
-	sha256sums = f288b4deced2cdd953204aa0b731ae97d06020aa57c8aeff371d11e532558d3f
+	source_x86_64 = http://download.nomachine.com/download/4.6/Linux/nomachine_4.6.4_13_x86_64.tar.gz
+	md5sums_x86_64 = 71cb30177e1b0b105f5973e201daefbd
 
 pkgname = nomachine
 
