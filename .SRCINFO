@@ -1,0 +1,19 @@
+pkgbase = gpaint
+	pkgdesc = A small easy-to-use paint program for the GNOME Desktop
+	pkgver = 0.3.3
+	pkgrel = 12
+	url = http://savannah.gnu.org/projects/gpaint/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = libglade
+	depends = gdk-pixbuf2
+	source = ftp://alpha.gnu.org/gnu/gpaint/gpaint-2-0.3.3.tar.gz
+	source = fill.patch::https://savannah.gnu.org/patch/download.php?file_id=19341
+	source = gpaint.desktop
+	sha256sums = 541706460610c8bd917225a0370762b66e378e756afa780e67677eeb0a2dd0eb
+	sha256sums = d8600339f2a53e21c46e150e29817f1f999d8963859712d2f988b38687ebb2a5
+	sha256sums = c4ccd43e1343befa8cfcca0e644fd2268315b328277346ebf236260e467d62cd
+
+pkgname = gpaint
+

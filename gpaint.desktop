@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=GNU Paint
+Comment=A small-scale painting program for GNOME, the GNU Desktop
+Comment[fr]=Un petit outil de dessin pour GNOME, le desktop GNU
+Comment[pt_BR]=Um pequeno programa de desenho para o GNOME, o Desktop GNU
+TryExec=gpaint
+Exec=gpaint
+Icon=gnome-logo-icon-transparent
+Terminal=false
+Type=Application
+Categories=Graphics;
