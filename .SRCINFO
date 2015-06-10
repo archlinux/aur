@@ -1,0 +1,25 @@
+pkgbase = gnome-system-monitor-gtk2
+	pkgdesc = A system monitor for GNOME (GTK2 version)
+	pkgver = 2.28.2
+	pkgrel = 3
+	url = https://help.gnome.org/users/gnome-system-monitor/
+	install = gnome-system-monitor.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkg-config
+	makedepends = gnome-doc-utils
+	makedepends = intltool
+	depends = libwnck
+	depends = libgtop
+	depends = gtkmm
+	depends = librsvg
+	depends = gnome-icon-theme
+	depends = gconf
+	provides = gnome-system-monitor
+	conflicts = gnome-system-monitor
+	source = ftp://ftp.gnome.org/pub/gnome/sources/gnome-system-monitor/2.28/gnome-system-monitor-2.28.2.tar.bz2
+	md5sums = 3f0bca9b0ebc7a365466851cd580d167
+
+pkgname = gnome-system-monitor-gtk2
+

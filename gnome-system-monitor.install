@@ -1,0 +1,19 @@
+pkgname_=gnome-system-monitor
+
+post_install() {
+  glib-compile-schemas /usr/share/glib-2.0/schemas
+}
+
+pre_upgrade() {
+  if [ -f usr/share/gconf/schemas/${pkgname_}.schemas ]; then
+    /usr/sbin/gconfpkg --uninstall ${pkgname_}
+  fi
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  post_install $1
+}
