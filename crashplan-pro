@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+
+. /etc/rc.conf
+. /etc/rc.d/functions
+
+if [[ -f /etc/profile.d/jre.sh ]]; then
+    . /etc/profile.d/jre.sh
+elif [[ -f /etc/profile.d/openjdk6.sh ]]; then
+    . /etc/profile.d/openjdk6.sh
+fi
+
+WD=/opt/crashplan-pro
+CRASHPLAN=$WD/bin/CrashPlanEngine
+VARS=$WD/install.vars
+CONFIG=$WD/bin/run.conf
+
+test -f $VARS || exit 0
+test -f $CONFIG || exit 0
+test -f $CRASHPLAN || exit 0
+
+. $VARS
+. $CONFIG
+
+
+
+if [[ ${LC_ALL} ]]; then
+    LOCALE=`sed 's/\..*//g' <<< ${LC_ALL}`
+    export LC_ALL="${LOCALE}.UTF-8"
+elif [[ ${LC_CTYPE} ]]; then
+    LOCALE=`sed 's/\..*//g' <<< ${LC_CTYPE}`
+    export LC_CTYPE="${LOCALE}.UTF-8"
+elif [[ ${LANG} ]]; then
+    LOCALE=`sed 's/\..*//g' <<< ${LANG}`
+    export LANG="${LOCALE}.UTF-8"
+else
+    export LANG="en_US.UTF-8"
+fi
+
+[[ `$CRASHPLAN status` != "CrashPlan Engine is stopped." ]] && PID=`$CRASHPLAN status | sed -r 's/CrashPlan Engine \(pid ([0-9]+)\).*/\1/'`
+
+case "$1" in
+    start)
+	stat_busy "Starting CrashPlan Engine"
+	PWD=`pwd`
+	cd $WD
+	[[ -z "$PID" ]] && nice -n 19 $CRASHPLAN start > /dev/null
+	if [ $? -gt 0 ]; then
+	    stat_fail
+	else
+	    add_daemon crashplan
+	    stat_done
+	fi
+	cd $PWD
+	;;
+    stop)
+	stat_busy "Stopping CrashPlan Engine"
+	[[ ! -z "&PID" ]] && $CRASHPLAN stop &> /dev/null
+	if [ $? -gt 0 ]; then
+	    stat_fail
+	else
+	    rm_daemon crashplan
+	    stat_done
+	fi
+	;;
+    restart)
+	$0 stop
+	sleep 1
+	$0 start
+	;;
+    status)
+	$CRASHPLAN status
+	;;
+    *)
+	echo "Usage: $0 <start|stop|restart|status>" >&2
+	exit 3
+	;;
+esac
+
