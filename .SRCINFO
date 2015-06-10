@@ -1,0 +1,16 @@
+pkgbase = tiddlywiki
+	pkgdesc = Personal wiki where everything is in one html-file
+	pkgver = 5.1.9
+	pkgrel = 1
+	url = http://www.tiddlywiki.com/
+	arch = x86_64
+	arch = i686
+	license = BSD
+	depends = xdg-utils
+	source = http://www.tiddlywiki.com/empty.html
+	source = tiddlywiki.py
+	sha256sums = e46433f77d69cf7ee0849499f92a31be1703c09f3898c15fe12bd230a3a4b8af
+	sha256sums = de87f833dec4d1bf7c352b89bbab55d6974ea69026cb42269d59fec65e727625
+
+pkgname = tiddlywiki
+
