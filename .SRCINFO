@@ -1,0 +1,16 @@
+pkgbase = perl-list-compare
+	pkgdesc = Compare elements of two or more lists
+	pkgver = 0.49
+	pkgrel = 1
+	url = http://search.cpan.org/~JKEENAN/List-Compare/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-io-captureoutput
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JK/JKEENAN/List-Compare-0.49.tar.gz
+	sha256sums = 6f3b2a24efac189e4d7ddc6f7f1d814f4ba03e887c79105f73eb37fcfa7201d0
+
+pkgname = perl-list-compare
+
