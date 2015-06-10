@@ -1,0 +1,14 @@
+pkgbase = ttf-adobe-kaiti
+	pkgdesc = One fonts of Adobe's AdobeKaitiStd.R style.
+	pkgver = 5.004
+	pkgrel = 2
+	url = http://www.adobe.com
+	install = ttf-adobe-kaiti.install
+	arch = any
+	license = unknown
+	depends = fontconfig
+	source = http://gthemes-china.googlecode.com/files/AdobeKaitiStd.tar.gz
+	md5sums = b37c29aafb8b80bd89f9c95cdd7097b5
+
+pkgname = ttf-adobe-kaiti
+
