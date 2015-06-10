@@ -1,0 +1,8 @@
+post_install() {
+	systemctl enable dump1090
+}
+
+pre_remove() {
+	systemctl stop dump1090
+	systemctl disable dump1090
+}

@@ -1,0 +1,12 @@
+[Unit]
+Description=RtlSdr mode S decoder
+Wants=network-online.target
+After=syslog.target network-online.target
+
+[Service]
+Restart=always
+RestartSec=30
+ExecStart=/usr/bin/dump1090 --quiet --net --gain -10
+
+[Install]
+WantedBy=multi-user.target
