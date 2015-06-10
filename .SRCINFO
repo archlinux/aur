@@ -1,0 +1,26 @@
+pkgbase = ansible-py3-git
+	pkgdesc = Radically simple IT automation platform
+	pkgver = 1.6.0.218.g188ab7b
+	pkgrel = 1
+	url = http://www.ansible.com
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = asciidoc
+	makedepends = fakeroot
+	makedepends = bc
+	depends = python
+	depends = python-paramiko
+	depends = python-jinja
+	depends = python-yaml
+	optdepends = python-pyasn1: needed for accelerated mode
+	optdepends = python-crypto: needed for accelerated mode
+	optdepends = python-keyczar: needed for accelerated mode
+	provides = ansible
+	conflicts = ansible
+	backup = etc/ansible/ansible.cfg
+	source = ansible-py3-git::git://github.com/ansible/ansible.git
+	md5sums = SKIP
+
+pkgname = ansible-py3-git
+
