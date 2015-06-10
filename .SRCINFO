@@ -1,0 +1,13 @@
+pkgbase = hachoir-regex
+	pkgdesc = Regex manipulation Python library used by hachoir-subfile for fast pattern matching.
+	pkgver = 1.0.5
+	pkgrel = 2
+	url = http://bitbucket.org/haypo/hachoir/wiki/hachoir-regex
+	arch = any
+	license = GPL2
+	depends = python2
+	source = http://cheeseshop.python.org/packages/source/h/hachoir-regex/hachoir-regex-1.0.5.tar.gz
+	md5sums = 6e1430cc5efcf82b6895364a6bf36d11
+
+pkgname = hachoir-regex
+
