@@ -2,7 +2,7 @@
 
 _pkgname=FanFicFare
 pkgname=fanficfare-git
-pkgver=2.2.7.r0.g6ff1ed4
+pkgver=2.2.8.r0.gc0adf8e
 pkgrel=1
 pkgdesc="A tool for downloading fanfiction to eBook formats"
 arch=('any')
