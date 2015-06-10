@@ -1,0 +1,17 @@
+pkgbase = perl-data-perl
+	pkgdesc = Data::Perl - Base classes wrapping fundamental Perl data types
+	pkgver = 0.002009
+	pkgrel = 1
+	url = http://search.cpan.org/~mattp/Data-Perl-0.002009/
+	install = 
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-role-tiny
+	depends = perl-list-moreutils
+	source = http://search.cpan.org/CPAN/authors/id/M/MA/MATTP/Data-Perl-0.002009.tar.gz
+	options = !emptydirs
+
+pkgname = perl-data-perl
+
