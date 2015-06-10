@@ -1,0 +1,14 @@
+pkgbase = wla_dx
+	pkgdesc = Multi Platform Cross Assembler Package for GB-Z80 (Game Boy), Z80 (GG, SMS, MSX, Spectrum, Ti86, etc), 6502 (NES, etc), 65C02 (VIC-20, etc), 6510 (C64, etc), 65816 (SNES, etc), HUC6280 (PC-Engine) and SPC-700 (SNES sound chip)
+	pkgver = 9.6
+	pkgrel = 1
+	url = https://github.com/vhelin/wla-dx
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = bash
+	source = https://github.com/vhelin/wla-dx/archive/v9.6.tar.gz
+	sha512sums = 9d1c570f74e33e07d5f27d7ba28e8bde045d6e78c2a8ff57f2aa78583e03ed1fbec19ae54ff98f9e8764fd2720be52acc6f838ec9704f8a3e1022b533fa247f1
+
+pkgname = wla_dx
+
