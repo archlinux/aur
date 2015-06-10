@@ -1,0 +1,22 @@
+pkgbase = surface-evolver
+	pkgdesc = Interactive program for the modelling of liquid surfaces shaped by various forces and constraints
+	pkgver = 2.70
+	pkgrel = 1
+	url = http://www.susqu.edu/brakke/evolver/evolver.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = readline
+	depends = ncurses
+	depends = freeglut
+	source = http://www.susqu.edu/brakke/aux/downloads/evolver-2.70.tar.gz
+	source = rl_mid.h
+	source = rl_head.h
+	source = readline.c
+	md5sums = 78f85ab07d5e79dbf69c99760570fb02
+	md5sums = b529d62f8c69e54ceb50782721953898
+	md5sums = 4fd7e25cbc867c019098aeada64b7ec7
+	md5sums = 573aaa9d13d953bd96e22bc6bcccf155
+
+pkgname = surface-evolver
+
