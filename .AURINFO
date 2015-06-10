@@ -1,0 +1,22 @@
+pkgbase = redshiftgui-bin
+	pkgdesc = Monitor color adjustment tool
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = http://github.com/maoserr/redshiftgui
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	depends = gtk2
+	depends = curl
+	depends = libxcb
+	depends = libxrandr
+	depends = libxxf86vm
+	depends = libsm
+	replaces = redshiftgui
+	source = https://github.com/maoserr/redshiftgui/releases/download/0.2.4-Arch64/RedshiftGUI-0.2.4-Linux-i686.tar.gz
+	source = redshiftgui.sh
+	sha256sums = 4d34de7b9bf106569bd7b87f2cd96640e60f723cf27e37e89219c8ea5b14cb2d
+	sha256sums = df03e192fe32bda2ea546be85faf51c030ae8dd46c40aad229e39b6b296897b5
+
+pkgname = redshiftgui-bin
+
