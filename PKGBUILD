@@ -2,7 +2,7 @@
 
 # Maintainer: Immae <ismael.bouya@normalesup.org>
 pkgname=tack
-pkgver=1.07_20130713
+pkgver=1.07_20150606
 pkgrel=1
 pkgdesc="A program that can be used to verify or refine a terminfo (terminal information) description of a terminal."
 arch=('i686' 'x86_64')
@@ -29,5 +29,5 @@ package() {
 }
 
 
-md5sums=('c79fd171415dbdce11032e6bb42aa6f6')
+md5sums=('bcd046cedaf3cb0415a01e0b398e5b2f')
 
