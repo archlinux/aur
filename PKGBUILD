@@ -30,8 +30,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_SHARED_LIBS=ON \
     -DLIBGIT2_TESTS=OFF \
-    -DBUILD_TESTS=OFF \
-    -DINSTALL_INC=/usr/include
+    -DBUILD_TESTS=OFF
   make
 
   cd "${srcdir}/build-qt5"
