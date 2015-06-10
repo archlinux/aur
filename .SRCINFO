@@ -1,13 +1,13 @@
 pkgbase = sabermod-prebuilts
 	pkgdesc = Prebuilt libraries for the SaberMod toolchain.
-	pkgver = 2015.06.02
+	pkgver = 2015.06.10
 	pkgrel = 1
 	url = http://sabermod.net/
 	arch = x86_64
 	license = GPL-3
 	provides = sabermod-prebuilts
 	conflicts = sabermod-prebuilts
-	source = http://oceighty.co/sm/sabermod-prebuilts-2015.06.02.zip
+	source = http://oceighty.co/sm/sabermod-prebuilts-2015.06.10.zip
 	sha256sums = SKIP
 
 pkgname = sabermod-prebuilts

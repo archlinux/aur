@@ -1,6 +1,6 @@
 _name=sabermod-prebuilts
 pkgname=$_name
-pkgver=2015.06.02
+pkgver=2015.06.10
 pkgrel=1
 pkgdesc="Prebuilt libraries for the SaberMod toolchain."
 license=('GPL-3')
