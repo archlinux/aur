@@ -1,0 +1,17 @@
+pkgbase = python2-gelatin-git
+	pkgdesc = Transform text files to XML, JSON, or YAML
+	pkgver = r73.7865dfa
+	pkgrel = 1
+	url = https://github.com/knipknap/Gelatin
+	arch = any
+	license = GPL2
+	makedepends = python2-distribute
+	depends = python2
+	depends = python2-lxml
+	depends = python2-yaml
+	depends = python2-simpleparse
+	source = python2-gelatin-git::git+https://github.com/knipknap/Gelatin.git
+	md5sums = SKIP
+
+pkgname = python2-gelatin-git
+
