@@ -1,0 +1,15 @@
+pkgbase = perl-math-convexhull-monotonechain
+	pkgdesc = Math::ConvexHull::MonotoneChain - Andrew's monotone chain algorithm for finding a convex hull in 2D
+	pkgver = 0.01
+	pkgrel = 1
+	url = https://metacpan.org/release/Math-ConvexHull-MonotoneChain/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SM/SMUELLER/Math-ConvexHull-MonotoneChain-0.01.tar.gz
+	md5sums = eaac1a9350f914fea5bbce2029b95b57
+
+pkgname = perl-math-convexhull-monotonechain
+
