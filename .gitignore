@@ -1,0 +1,6 @@
+/pkg/
+/src/
+/pflag
+/rwidth
+/tewisay
+*.pkg.tar.xz
