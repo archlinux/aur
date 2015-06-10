@@ -1,0 +1,2 @@
+#!/bin/sh
+WINEDEBUG=fixme-all exec /usr/bin/wine /usr/share/tak/takc.exe $@
