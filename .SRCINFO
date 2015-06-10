@@ -1,0 +1,28 @@
+pkgbase = gedit2
+	pkgdesc = A text editor for GNOME
+	pkgver = 2.30.4
+	pkgrel = 7
+	url = http://www.gnome.org
+	install = gedit2.install
+	arch = i686
+	arch = x86_64
+	groups = gnome-extra
+	license = GPL
+	makedepends = gnome-doc-utils>=0.20.2
+	makedepends = intltool
+	depends = gconf>=2.32.0
+	depends = pygtksourceview2>=2.10.1
+	depends = enchant>=1.5.0
+	depends = desktop-file-utils
+	depends = iso-codes>=3.10.1
+	depends = libsm
+	depends = python2
+	provides = gedit
+	conflicts = gedit
+	options = !libtool
+	options = !emptydirs
+	source = http://ftp.gnome.org/pub/gnome/sources/gedit/2.30/gedit-2.30.4.tar.bz2
+	sha256sums = a561fe3dd1d199baede1bd07c4ee65f06fc7c494dd4d3327117f04149a608e3c
+
+pkgname = gedit2
+
