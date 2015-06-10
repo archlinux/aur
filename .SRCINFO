@@ -1,0 +1,13 @@
+pkgbase = jemdoc-mathjax-git
+	pkgdesc = a static site generator for creating simple academic websites
+	pkgver = 235.487b094
+	pkgrel = 0
+	url = https://web.stanford.edu/~wsshin/jemdoc+mathjax.html
+	arch = any
+	license = GPL
+	depends = python2
+	source = git+https://github.com/wsshin/jemdoc_mathjax.git
+	sha1sums = SKIP
+
+pkgname = jemdoc-mathjax-git
+
