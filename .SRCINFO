@@ -1,0 +1,13 @@
+pkgbase = ccode-git
+	pkgdesc = ViM autocompletion for C
+	pkgver = 20110326
+	pkgrel = 1
+	url = https://github.com/nsf/ccode
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	depends = clang
+
+pkgname = ccode-git
+
