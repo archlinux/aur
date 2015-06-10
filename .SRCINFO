@@ -1,0 +1,13 @@
+pkgbase = fvwm-themes-extra
+	pkgdesc = Extra themes for fvwm
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = http://fvwm-themes.sourceforge.net
+	arch = any
+	license = GPL
+	replaces = fvwm-themes-extra-devel
+	source = http://downloads.sourceforge.net/sourceforge/fvwm-themes/fvwm-themes-extra-0.7.0.tar.gz
+	md5sums = 66c13802933942949c7c1be79a497496
+
+pkgname = fvwm-themes-extra
+
