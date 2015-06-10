@@ -1,0 +1,31 @@
+pkgbase = retroshare-svn
+	pkgdesc = Serverless encrypted instant messenger with filesharing, chatgroups, e-mail.
+	pkgver = 7261
+	pkgrel = 1
+	url = http://retroshare.sourceforge.net/
+	install = retroshare.install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL
+	license = LGPL
+	makedepends = subversion
+	depends = qt4
+	depends = libupnp
+	depends = libgnome-keyring
+	depends = libxss
+	depends = libssh
+	depends = protobuf
+	depends = speex
+	depends = curl
+	depends = libxslt
+	provides = retroshare
+	conflicts = retroshare
+	source = svn://svn.code.sf.net/p/retroshare/code/branches/v0.5.5
+	source = retroshare.install
+	sha256sums = SKIP
+	sha256sums = 47c23238cbfabb6f07b6a25666ee5941243176360ca28ec31378d94e87326ec1
+
+pkgname = retroshare-svn
+
