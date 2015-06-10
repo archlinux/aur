@@ -1,0 +1,20 @@
+pkgbase = bbdock
+	pkgdesc = An application launcher dockapp supporting PNG files and transparency
+	pkgver = 0.2.9
+	pkgrel = 4
+	url = http://bbdock.nethence.com/
+	changelog = ChangeLog
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = libxt
+	depends = libx11
+	depends = libpng12
+	depends = gcc-libs
+	source = http://bbdock.nethence.com/download/bbdock-0.2.9.tar.gz
+	source = libpng12.patch
+	md5sums = 58c19526f5c425c9a9f0f09d191a83b0
+	md5sums = f33fd591743da8fab5cd74992ee00cb1
+
+pkgname = bbdock
+

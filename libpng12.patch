@@ -1,0 +1,45 @@
+diff -pur bbdock-0.2.9.orig/configure bbdock-0.2.9/configure
+--- bbdock-0.2.9.orig/configure	2011-03-29 13:48:36.000000000 -0600
++++ bbdock-0.2.9/configure	2013-04-11 01:56:33.000000000 -0600
+@@ -4707,13 +4707,13 @@ test "x$XLIB" = "xno" && as_fn_error "st
+ LIBS="$LIBS -lX11"
+ ############################################
+ 
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for png_create_read_struct in -lpng" >&5
+-$as_echo_n "checking for png_create_read_struct in -lpng... " >&6; }
++{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for png_create_read_struct in -lpng12" >&5
++$as_echo_n "checking for png_create_read_struct in -lpng12... " >&6; }
+ if test "${ac_cv_lib_png_png_create_read_struct+set}" = set; then :
+   $as_echo_n "(cached) " >&6
+ else
+   ac_check_lib_save_LIBS=$LIBS
+-LIBS="-lpng  $LIBS"
++LIBS="-lpng12  $LIBS"
+ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
+@@ -4748,10 +4748,10 @@ if test "x$ac_cv_lib_png_png_create_read
+ #define HAVE_LIBPNG 1
+ _ACEOF
+ 
+-  LIBS="-lpng $LIBS"
++  LIBS="-lpng12 $LIBS"
+ 
+ else
+-  as_fn_error "libpng not found" "$LINENO" 5
++  as_fn_error "libpng12 not found" "$LINENO" 5
+ fi
+ 
+ 
+diff -pur bbdock-0.2.9.orig/src/Makefile bbdock-0.2.9/src/Makefile
+--- bbdock-0.2.9.orig/src/Makefile	2011-03-29 13:48:36.000000000 -0600
++++ bbdock-0.2.9/src/Makefile	2013-04-11 01:58:36.000000000 -0600
+@@ -99,7 +99,7 @@ INSTALL_SCRIPT = ${INSTALL}
+ INSTALL_STRIP_PROGRAM = ${SHELL} $(install_sh) -c -s
+ LDFLAGS =  -LNONE/lib -L/usr/local/lib
+ LIBOBJS = 
+-LIBS = -lz -lpng  -lX11
++LIBS = -lz -lpng12  -lX11
+ LTLIBOBJS = 
+ MAKEINFO = ${SHELL} /home/markus/src/archive/bbdock/current/missing --run makeinfo
+ OBJEXT = o

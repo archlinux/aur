@@ -1,0 +1,10 @@
+2013-04-11 Brian Bidulock <bidulock@openss7.org>
+
+	* bbdoc 0.2.9-3 :
+	  updated PKGBUILD
+	  patched for legacy libpng12
+	
+	* libpng12.patch : patched for legacy libpng12
+
+	* ChangeLog : added changelog
+
