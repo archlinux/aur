@@ -1,0 +1,487 @@
+# This patch is based on the Ubuntu patch for TiEmu 3.02, see 
+# http://packages.ubuntu.com/de/oneiric/tiemu
+
+
+diff -purN tiemu-3.03.orig/src/gui/calc/calc.c tiemu-3.03/src/gui/calc/calc.c
+--- tiemu-3.03.orig/src/gui/calc/calc.c	2007-12-16 16:29:16.000000000 +0100
++++ tiemu-3.03/src/gui/calc/calc.c	2011-11-04 23:11:40.000000000 +0100
+@@ -313,7 +313,7 @@ on_drawingarea1_expose_event           (
+ {
+     gdk_draw_pixmap(
+         widget->window,
+-		widget->style->fg_gc[GTK_WIDGET_STATE (widget)],
++		widget->style->fg_gc[gtk_widget_get_state (widget)],
+ 		pixmap,
+ 		event->area.x, event->area.y,
+ 		event->area.x, event->area.y,
+@@ -586,7 +586,7 @@ int  hid_init(void)
+ 
+     // Install LCD refresh: 100 FPS (10 ms)
+     tid = g_timeout_add((params.lcd_rate == -1) ? 50 : params.lcd_rate, 
+-		(GtkFunction)hid_refresh, NULL);
++		(GSourceFunc)hid_refresh, NULL);
+ 
+ 	explicit_destroy = 0;
+ 	gtk_widget_show(main_wnd);	// show wnd here
+@@ -640,7 +640,7 @@ void hid_lcd_rate_set(void)
+ 	g_source_remove(tid);
+ 
+ 	tid = g_timeout_add((params.lcd_rate == -1) ? 50 : params.lcd_rate, 
+-		(GtkFunction)hid_refresh, NULL);
++		(GSourceFunc)hid_refresh, NULL);
+ }
+ 
+ int hid_switch_with_skin(void)
+diff -purN tiemu-3.03.orig/src/gui/calc/popup.c tiemu-3.03/src/gui/calc/popup.c
+--- tiemu-3.03.orig/src/gui/calc/popup.c	2009-05-08 22:43:47.000000000 +0200
++++ tiemu-3.03/src/gui/calc/popup.c	2011-11-04 22:45:28.000000000 +0100
+@@ -26,7 +26,9 @@
+ #  include <config.h>
+ #endif
+ 
++#undef GTK_DISABLE_DEPRECATED
+ #include <gtk/gtk.h>
++#define GTK_DISABLE_DEPRECATED
+ #include <glade/glade.h>
+ #include <stdlib.h>
+ #include <string.h>
+diff -purN tiemu-3.03.orig/src/gui/calc/screen.c tiemu-3.03/src/gui/calc/screen.c
+--- tiemu-3.03.orig/src/gui/calc/screen.c	2006-11-06 18:18:51.000000000 +0100
++++ tiemu-3.03/src/gui/calc/screen.c	2011-11-04 23:12:09.000000000 +0100
+@@ -187,7 +187,7 @@ void redraw_skin(void)
+ 	skin_infos.image = gdk_pixbuf_scale_simple(skin_infos.raw, wr.wr.w, wr.wr.h, GDK_INTERP_NEAREST);
+ 
+ 	// and draw image into pixmap (next, into window on expose event)
+-    gdk_draw_pixbuf(pixmap, main_wnd->style->fg_gc[GTK_WIDGET_STATE(main_wnd)],
++    gdk_draw_pixbuf(pixmap, main_wnd->style->fg_gc[gtk_widget_get_state(main_wnd)],
+ 		  skin_infos.image, 0, 0, 0, 0, -1, -1, GDK_RGB_DITHER_NONE, 0, 0);
+ 	gdk_window_invalidate_rect(main_wnd->window, &wr.gr, FALSE);
+ }
+@@ -204,7 +204,7 @@ void redraw_lcd(void)
+ 		gdk_pixbuf_scale_simple(skin_infos.raw, sr.w, sr.h, GDK_INTERP_NEAREST);
+ 
+ 	// and draw
+-	gdk_draw_pixbuf(pixmap, main_wnd->style->fg_gc[GTK_WIDGET_STATE(main_wnd)],
++	gdk_draw_pixbuf(pixmap, main_wnd->style->fg_gc[gtk_widget_get_state(main_wnd)],
+ 		  skin_infos.image, ls.x, ls.y, lr.x, lr.y, lr.w, lr.h, GDK_RGB_DITHER_NONE, 0, 0);
+ 	gtk_widget_queue_draw_area(area, lr.x, lr.y, lr.w, lr.h);
+ }
+@@ -324,7 +324,7 @@ int hid_update_lcd(void)
+ 			skin_infos.image = gdk_pixbuf_scale_simple(lcd, lr.w, lr.h, GDK_INTERP_NEAREST);
+ 
+ 			// and draw image into pixmap (next, into window on expose event)
+-			gdk_draw_pixbuf(pixmap, main_wnd->style->fg_gc[GTK_WIDGET_STATE(main_wnd)],
++			gdk_draw_pixbuf(pixmap, main_wnd->style->fg_gc[gtk_widget_get_state(main_wnd)],
+ 			 skin_infos.image, src.x, src.y, lr.x, lr.y, src.w, src.h,
+ 			  GDK_RGB_DITHER_NONE, 0, 0);
+ 			gtk_widget_queue_draw_area(area, lr.x, lr.y, src.w, src.h);
+@@ -332,7 +332,7 @@ int hid_update_lcd(void)
+ 		else
+ 		{
+ 			// and draw image into pixmap (next, into window on expose event)
+-			gdk_draw_pixbuf(pixmap, main_wnd->style->fg_gc[GTK_WIDGET_STATE(main_wnd)],
++			gdk_draw_pixbuf(pixmap, main_wnd->style->fg_gc[gtk_widget_get_state(main_wnd)],
+ 			  lcd_mem, src.x, src.y, lr.x, lr.y, src.w, src.h,
+ 			  GDK_RGB_DITHER_NONE, 0, 0);
+ 			gtk_widget_queue_draw_area(area, lr.x, lr.y, src.w, src.h);
+diff -purN tiemu-3.03.orig/src/gui/debugger/dbg_all.c tiemu-3.03/src/gui/debugger/dbg_all.c
+--- tiemu-3.03.orig/src/gui/debugger/dbg_all.c	2009-05-08 12:56:40.000000000 +0200
++++ tiemu-3.03/src/gui/debugger/dbg_all.c	2011-11-04 22:46:29.000000000 +0100
+@@ -90,21 +90,21 @@ void gtk_debugger_refresh(void)
+ {	
+ 	WND_TMR_START();
+ 
+-	if(options3.dbg_dock || GTK_WIDGET_VISIBLE(dbgw.regs))
++	if(options3.dbg_dock || gtk_widget_get_visible(dbgw.regs))
+ 		dbgregs_refresh_window();
+-	if(options3.dbg_dock || GTK_WIDGET_VISIBLE(dbgw.mem))
++	if(options3.dbg_dock || gtk_widget_get_visible(dbgw.mem))
+ 		dbgmem_refresh_window();
+-	if(options3.dbg_dock || GTK_WIDGET_VISIBLE(dbgw.bkpts))
++	if(options3.dbg_dock || gtk_widget_get_visible(dbgw.bkpts))
+ 		dbgbkpts_refresh_window();
+-	if(options3.dbg_dock || GTK_WIDGET_VISIBLE(dbgw.pclog))
++	if(options3.dbg_dock || gtk_widget_get_visible(dbgw.pclog))
+ 		dbgpclog_refresh_window();
+-	if(options3.dbg_dock || GTK_WIDGET_VISIBLE(dbgw.code))
++	if(options3.dbg_dock || gtk_widget_get_visible(dbgw.code))
+ 		dbgcode_refresh_window();
+-    if(options3.dbg_dock || GTK_WIDGET_VISIBLE(dbgw.stack))
++    if(options3.dbg_dock || gtk_widget_get_visible(dbgw.stack))
+ 		dbgstack_refresh_window();
+-	if(options3.dbg_dock || GTK_WIDGET_VISIBLE(dbgw.heap))
++	if(options3.dbg_dock || gtk_widget_get_visible(dbgw.heap))
+ 		dbgheap_refresh_window();
+-	if(options3.dbg_dock || GTK_WIDGET_VISIBLE(dbgw.iop))
++	if(options3.dbg_dock || gtk_widget_get_visible(dbgw.iop))
+ 		dbgiop_refresh_window();
+ 
+ 	WND_TMR_STOP("Debugger Refresh Time");
+@@ -163,7 +163,7 @@ int gtk_debugger_enter(int context)
+ 	gtk_debugger_refresh();
+ 
+ 	// enable the debugger if GDB disabled it
+-	if (!options3.dbg_dock && !GTK_WIDGET_SENSITIVE(dbgw.regs))
++	if (!options3.dbg_dock && !gtk_widget_get_sensitive(dbgw.regs))
+ 		gtk_debugger_enable();
+ 
+ 	// handle automatic debugging requests
+@@ -180,7 +180,7 @@ int gtk_debugger_enter(int context)
+ 
+ 			ti68k_bkpt_get_pgmentry_offset(id, &handle, &offset);
+ 			ti68k_bkpt_del_pgmentry(handle);
+-			if(options3.dbg_dock || GTK_WIDGET_VISIBLE(dbgw.bkpts))
++			if(options3.dbg_dock || gtk_widget_get_visible(dbgw.bkpts))
+ 				dbgbkpts_refresh_window();
+ 
+ 			delete_command(NULL, 0);
+diff -purN tiemu-3.03.orig/src/gui/debugger/dbg_bkpts.c tiemu-3.03/src/gui/debugger/dbg_bkpts.c
+--- tiemu-3.03.orig/src/gui/debugger/dbg_bkpts.c	2009-05-06 21:48:47.000000000 +0200
++++ tiemu-3.03/src/gui/debugger/dbg_bkpts.c	2011-11-04 22:46:29.000000000 +0100
+@@ -388,7 +388,7 @@ GtkWidget* dbgbkpts_display_window(void)
+ 		gtk_window_iconify(GTK_WINDOW(wnd));
+ #endif
+ 
+-	if(!GTK_WIDGET_VISIBLE(dbgw.bkpts) && !options3.bkpts.closed)
++	if(!gtk_widget_get_visible(dbgw.bkpts) && !options3.bkpts.closed)
+ 		gtk_widget_show(wnd);
+ 
+ 	return wnd;
+diff -purN tiemu-3.03.orig/src/gui/debugger/dbg_code.c tiemu-3.03/src/gui/debugger/dbg_code.c
+--- tiemu-3.03.orig/src/gui/debugger/dbg_code.c	2009-05-06 21:48:47.000000000 +0200
++++ tiemu-3.03/src/gui/debugger/dbg_code.c	2011-11-04 22:46:29.000000000 +0100
+@@ -1117,7 +1117,7 @@ void gdbcallback_refresh_debugger(void)
+ 
+ int dbgcode_quit_enabled(void)
+ {
+-	return GTK_WIDGET_SENSITIVE(mi.m8);
++	return gtk_widget_get_sensitive(mi.m8);
+ }
+ 
+ static int close_debugger_wrapper(gpointer data)
+diff -purN tiemu-3.03.orig/src/gui/debugger/dbg_dock.c tiemu-3.03/src/gui/debugger/dbg_dock.c
+--- tiemu-3.03.orig/src/gui/debugger/dbg_dock.c	2008-05-26 18:48:30.000000000 +0200
++++ tiemu-3.03/src/gui/debugger/dbg_dock.c	2011-11-04 23:05:02.000000000 +0100
+@@ -151,22 +151,22 @@ void dbgdock_set_sensitivity(int state)
+ 
+ void dbgdock_show_all(int all)
+ {
+-	if(!GTK_WIDGET_VISIBLE(dbgw.dock) && all)
++	if(!gtk_widget_get_visible(dbgw.dock) && all)
+         gtk_widget_show(dbgw.dock);
+ 
+-	if(GTK_WIDGET_VISIBLE(dbgw.iop))
++	if(gtk_widget_get_visible(dbgw.iop))
+         gtk_window_iconify(GTK_WINDOW(dbgw.iop));
+-	if(GTK_WIDGET_VISIBLE(dbgw.pclog))
++	if(gtk_widget_get_visible(dbgw.pclog))
+         gtk_window_iconify(GTK_WINDOW(dbgw.pclog));
+ }
+ 
+ void dbgdock_hide_all(int all)
+ {
+-	if(GTK_WIDGET_VISIBLE(dbgw.dock) && all)
++	if(gtk_widget_get_visible(dbgw.dock) && all)
+         gtk_widget_hide(dbgw.dock);
+ 
+-    if(GTK_WIDGET_VISIBLE(dbgw.pclog))
++    if(gtk_widget_get_visible(dbgw.pclog))
+         gtk_widget_hide(dbgw.pclog);
+-	if(GTK_WIDGET_VISIBLE(dbgw.iop))
++	if(gtk_widget_get_visible(dbgw.iop))
+         gtk_widget_hide(dbgw.iop);
+ }
+diff -purN tiemu-3.03.orig/src/gui/debugger/dbg_heap.c tiemu-3.03/src/gui/debugger/dbg_heap.c
+--- tiemu-3.03.orig/src/gui/debugger/dbg_heap.c	2009-05-06 21:48:47.000000000 +0200
++++ tiemu-3.03/src/gui/debugger/dbg_heap.c	2011-11-04 22:46:29.000000000 +0100
+@@ -171,7 +171,7 @@ GtkWidget* dbgheap_display_window(void)
+ 		gtk_window_iconify(GTK_WINDOW(dbgw.heap));
+ #endif
+ 
+-	if(!GTK_WIDGET_VISIBLE(dbgw.heap) && !options3.heap.closed)
++	if(!gtk_widget_get_visible(dbgw.heap) && !options3.heap.closed)
+ 		gtk_widget_show(dbgw.heap);
+ 
+ 	return dbgw.heap;
+diff -purN tiemu-3.03.orig/src/gui/debugger/dbg_iop.c tiemu-3.03/src/gui/debugger/dbg_iop.c
+--- tiemu-3.03.orig/src/gui/debugger/dbg_iop.c	2009-05-02 21:46:04.000000000 +0200
++++ tiemu-3.03/src/gui/debugger/dbg_iop.c	2011-11-04 22:46:29.000000000 +0100
+@@ -455,7 +455,7 @@ GtkWidget* dbgiop_display_window(void)
+ 		gtk_window_iconify(GTK_WINDOW(dbgw.iop));
+ #endif
+     
+-	if(!GTK_WIDGET_VISIBLE(dbgw.iop) && !options3.iop.closed)
++	if(!gtk_widget_get_visible(dbgw.iop) && !options3.iop.closed)
+ 		gtk_widget_show(dbgw.iop);
+ 
+ 	return dbgw.iop;
+diff -purN tiemu-3.03.orig/src/gui/debugger/dbg_mem.c tiemu-3.03/src/gui/debugger/dbg_mem.c
+--- tiemu-3.03.orig/src/gui/debugger/dbg_mem.c	2009-05-06 21:48:47.000000000 +0200
++++ tiemu-3.03/src/gui/debugger/dbg_mem.c	2011-11-04 22:46:29.000000000 +0100
+@@ -435,7 +435,7 @@ GtkWidget* dbgmem_display_window(void)
+ 		gtk_window_iconify(GTK_WINDOW(dbgw.mem));
+ #endif
+ 
+-	if(!GTK_WIDGET_VISIBLE(dbgw.mem) && !options3.mem.closed)
++	if(!gtk_widget_get_visible(dbgw.mem) && !options3.mem.closed)
+ 		gtk_widget_show(dbgw.mem);
+ 
+     return dbgw.mem;
+@@ -605,7 +605,7 @@ dbgmem_button6_clicked
+ 
+ GLADE_CB void
+ on_notebook1_switch_page               (GtkNotebook     *notebook,
+-                                        GtkNotebookPage *page,
++                                        gpointer        *page,
+                                         guint            page_num,
+                                         gpointer         user_data)
+ {
+diff -purN tiemu-3.03.orig/src/gui/debugger/dbg_pclog.c tiemu-3.03/src/gui/debugger/dbg_pclog.c
+--- tiemu-3.03.orig/src/gui/debugger/dbg_pclog.c	2009-05-02 21:46:04.000000000 +0200
++++ tiemu-3.03/src/gui/debugger/dbg_pclog.c	2011-11-04 22:46:29.000000000 +0100
+@@ -163,7 +163,7 @@ GtkWidget* dbgpclog_display_window(void)
+ 		gtk_window_iconify(GTK_WINDOW(dbgw.pclog));
+ #endif
+ 
+-	if(!GTK_WIDGET_VISIBLE(dbgw.pclog) && !options3.pclog.closed)
++	if(!gtk_widget_get_visible(dbgw.pclog) && !options3.pclog.closed)
+ 		gtk_widget_show(dbgw.pclog);
+ 
+ 	return dbgw.pclog;
+diff -purN tiemu-3.03.orig/src/gui/debugger/dbg_regs.c tiemu-3.03/src/gui/debugger/dbg_regs.c
+--- tiemu-3.03.orig/src/gui/debugger/dbg_regs.c	2009-05-06 21:48:47.000000000 +0200
++++ tiemu-3.03/src/gui/debugger/dbg_regs.c	2011-11-04 22:46:29.000000000 +0100
+@@ -302,7 +302,7 @@ GtkWidget* dbgregs_display_window(void)
+ 		gtk_window_iconify(GTK_WINDOW(dbgw.regs));
+ #endif
+ 
+-	if(!GTK_WIDGET_VISIBLE(dbgw.regs) && !options3.regs.closed)
++	if(!gtk_widget_get_visible(dbgw.regs) && !options3.regs.closed)
+ 		gtk_widget_show(dbgw.regs);
+ 
+ 	return dbgw.regs;
+diff -purN tiemu-3.03.orig/src/gui/debugger/dbg_romcall.c tiemu-3.03/src/gui/debugger/dbg_romcall.c
+--- tiemu-3.03.orig/src/gui/debugger/dbg_romcall.c	2007-07-05 13:36:10.000000000 +0200
++++ tiemu-3.03/src/gui/debugger/dbg_romcall.c	2011-11-04 22:46:29.000000000 +0100
+@@ -29,7 +29,9 @@
+ #  include <config.h>
+ #endif
+ 
+-#include <gtk/gtk.h>
++#undef GTK_DISABLE_DEPRECATED
++ #include <gtk/gtk.h>
++#define GTK_DISABLE_DEPRECATED
+ #include <glade/glade.h>
+ #include <string.h>
+ 
+diff -purN tiemu-3.03.orig/src/gui/debugger/dbg_stack.c tiemu-3.03/src/gui/debugger/dbg_stack.c
+--- tiemu-3.03.orig/src/gui/debugger/dbg_stack.c	2009-05-06 21:48:47.000000000 +0200
++++ tiemu-3.03/src/gui/debugger/dbg_stack.c	2011-11-04 22:46:29.000000000 +0100
+@@ -197,7 +197,7 @@ GtkWidget* dbgstack_display_window(void)
+ 		gtk_window_iconify(GTK_WINDOW(dbgw.stack));
+ #endif
+ 
+-	if(!GTK_WIDGET_VISIBLE(dbgw.stack) && !options3.stack.closed)
++	if(!gtk_widget_get_visible(dbgw.stack) && !options3.stack.closed)
+ 		gtk_widget_show(dbgw.stack);
+ 
+ 	return dbgw.stack;
+diff -purN tiemu-3.03.orig/src/gui/debugger/dbg_wnds.c tiemu-3.03/src/gui/debugger/dbg_wnds.c
+--- tiemu-3.03.orig/src/gui/debugger/dbg_wnds.c	2009-05-07 09:18:02.000000000 +0200
++++ tiemu-3.03/src/gui/debugger/dbg_wnds.c	2011-11-04 23:07:54.000000000 +0100
+@@ -74,21 +74,21 @@ void dbgwnds_minimize_all(int all)
+ 	if(options3.dbg_dock)
+ 		return;
+ 
+-    if(GTK_WIDGET_VISIBLE(dbgw.regs))
++    if(gtk_widget_get_visible(dbgw.regs))
+         gtk_window_iconify(GTK_WINDOW(dbgw.regs));
+-    if(GTK_WIDGET_VISIBLE(dbgw.bkpts))
++    if(gtk_widget_get_visible(dbgw.bkpts))
+         gtk_window_iconify(GTK_WINDOW(dbgw.bkpts));
+-    if(GTK_WIDGET_VISIBLE(dbgw.mem))
++    if(gtk_widget_get_visible(dbgw.mem))
+         gtk_window_iconify(GTK_WINDOW(dbgw.mem));
+-    if(GTK_WIDGET_VISIBLE(dbgw.pclog))
++    if(gtk_widget_get_visible(dbgw.pclog))
+         gtk_window_iconify(GTK_WINDOW(dbgw.pclog));
+-    if(GTK_WIDGET_VISIBLE(dbgw.code) & all)
++    if(gtk_widget_get_visible(dbgw.code) & all)
+         gtk_window_iconify(GTK_WINDOW(dbgw.code));
+-    if(GTK_WIDGET_VISIBLE(dbgw.stack))
++    if(gtk_widget_get_visible(dbgw.stack))
+         gtk_window_iconify(GTK_WINDOW(dbgw.stack));
+-	if(GTK_WIDGET_VISIBLE(dbgw.heap))
++	if(gtk_widget_get_visible(dbgw.heap))
+         gtk_window_iconify(GTK_WINDOW(dbgw.heap));
+-	if(GTK_WIDGET_VISIBLE(dbgw.iop))
++	if(gtk_widget_get_visible(dbgw.iop))
+         gtk_window_iconify(GTK_WINDOW(dbgw.iop));
+ }
+ 
+@@ -98,21 +98,21 @@ void dbgwnds_unminimize_all(int all)
+ 	if(options3.dbg_dock)
+ 		return;
+ 
+-    if(GTK_WIDGET_VISIBLE(dbgw.regs))
++    if(gtk_widget_get_visible(dbgw.regs))
+         gtk_window_deiconify(GTK_WINDOW(dbgw.regs));
+-    if(GTK_WIDGET_VISIBLE(dbgw.bkpts))
++    if(gtk_widget_get_visible(dbgw.bkpts))
+         gtk_window_deiconify(GTK_WINDOW(dbgw.bkpts));
+-    if(GTK_WIDGET_VISIBLE(dbgw.mem))
++    if(gtk_widget_get_visible(dbgw.mem))
+         gtk_window_deiconify(GTK_WINDOW(dbgw.mem));
+-    if(GTK_WIDGET_VISIBLE(dbgw.pclog))
++    if(gtk_widget_get_visible(dbgw.pclog))
+         gtk_window_deiconify(GTK_WINDOW(dbgw.pclog));
+-    if(GTK_WIDGET_VISIBLE(dbgw.code) & all)
++    if(gtk_widget_get_visible(dbgw.code) & all)
+         gtk_window_deiconify(GTK_WINDOW(dbgw.code));
+-    if(GTK_WIDGET_VISIBLE(dbgw.stack))
++    if(gtk_widget_get_visible(dbgw.stack))
+         gtk_window_deiconify(GTK_WINDOW(dbgw.stack));
+-	if(GTK_WIDGET_VISIBLE(dbgw.heap))
++	if(gtk_widget_get_visible(dbgw.heap))
+         gtk_window_deiconify(GTK_WINDOW(dbgw.heap));
+-	if(GTK_WIDGET_VISIBLE(dbgw.iop))
++	if(gtk_widget_get_visible(dbgw.iop))
+         gtk_window_deiconify(GTK_WINDOW(dbgw.iop));
+ }
+ 
+@@ -122,21 +122,21 @@ void dbgwnds_show_all(int all)
+     if(options3.dbg_dock)
+ 		return;
+ 
+-    if(!GTK_WIDGET_VISIBLE(dbgw.regs))
++    if(!gtk_widget_get_visible(dbgw.regs))
+         gtk_widget_show(dbgw.regs);
+-    if(!GTK_WIDGET_VISIBLE(dbgw.bkpts))
++    if(!gtk_widget_get_visible(dbgw.bkpts))
+         gtk_widget_show(dbgw.bkpts);
+-    if(!GTK_WIDGET_VISIBLE(dbgw.mem))
++    if(!gtk_widget_get_visible(dbgw.mem))
+         gtk_widget_show(dbgw.mem);
+-    if(!GTK_WIDGET_VISIBLE(dbgw.pclog))
++    if(!gtk_widget_get_visible(dbgw.pclog))
+         gtk_widget_show(dbgw.pclog);
+-    if(!GTK_WIDGET_VISIBLE(dbgw.code) && all)
++    if(!gtk_widget_get_visible(dbgw.code) && all)
+         gtk_widget_show(dbgw.code);
+-    if(!GTK_WIDGET_VISIBLE(dbgw.stack))
++    if(!gtk_widget_get_visible(dbgw.stack))
+         gtk_widget_show(dbgw.stack);
+-	if(!GTK_WIDGET_VISIBLE(dbgw.heap))
++	if(!gtk_widget_get_visible(dbgw.heap))
+         gtk_widget_show(dbgw.heap);
+-	if(!GTK_WIDGET_VISIBLE(dbgw.iop))
++	if(!gtk_widget_get_visible(dbgw.iop))
+         gtk_widget_show(dbgw.iop);
+ }
+ 
+@@ -146,21 +146,21 @@ void dbgwnds_hide_all(int all)
+     if(options3.dbg_dock)
+ 		return;
+ 
+-    if(GTK_WIDGET_VISIBLE(dbgw.regs))
++    if(gtk_widget_get_visible(dbgw.regs))
+         gtk_widget_hide(dbgw.regs);
+-    if(GTK_WIDGET_VISIBLE(dbgw.bkpts))
++    if(gtk_widget_get_visible(dbgw.bkpts))
+         gtk_widget_hide(dbgw.bkpts);
+-    if(GTK_WIDGET_VISIBLE(dbgw.mem))
++    if(gtk_widget_get_visible(dbgw.mem))
+         gtk_widget_hide(dbgw.mem);
+-    if(GTK_WIDGET_VISIBLE(dbgw.pclog))
++    if(gtk_widget_get_visible(dbgw.pclog))
+         gtk_widget_hide(dbgw.pclog);
+-    if(GTK_WIDGET_VISIBLE(dbgw.code) && all)
++    if(gtk_widget_get_visible(dbgw.code) && all)
+         gtk_widget_hide(dbgw.code);
+-    if(GTK_WIDGET_VISIBLE(dbgw.stack))
++    if(gtk_widget_get_visible(dbgw.stack))
+         gtk_widget_hide(dbgw.stack);
+-	if(GTK_WIDGET_VISIBLE(dbgw.heap))
++	if(gtk_widget_get_visible(dbgw.heap))
+         gtk_widget_hide(dbgw.heap);
+-	if(GTK_WIDGET_VISIBLE(dbgw.iop))
++	if(gtk_widget_get_visible(dbgw.iop))
+         gtk_widget_hide(dbgw.iop);
+ }
+ 
+@@ -338,7 +338,7 @@ void update_submenu(GtkWidget *widget, g
+ 	if(!options3.dbg_dock)
+ 	{
+ 		g_signal_handlers_block_by_func(GTK_OBJECT(item), on_registers1_activate, NULL);
+-		gtk_check_menu_item_set_active(item, GTK_WIDGET_VISIBLE(dbgw.regs));
++		gtk_check_menu_item_set_active(item, gtk_widget_get_visible(dbgw.regs));
+ 		g_signal_handlers_unblock_by_func(GTK_OBJECT(item), on_registers1_activate, NULL);
+ 	}
+ 	else
+@@ -350,7 +350,7 @@ void update_submenu(GtkWidget *widget, g
+ 	if(!options3.dbg_dock)
+ 	{
+ 		g_signal_handlers_block_by_func(GTK_OBJECT(item), on_breakpoints1_activate, NULL);
+-		gtk_check_menu_item_set_active(item, GTK_WIDGET_VISIBLE(dbgw.bkpts));
++		gtk_check_menu_item_set_active(item, gtk_widget_get_visible(dbgw.bkpts));
+ 		g_signal_handlers_unblock_by_func(GTK_OBJECT(item), on_breakpoints1_activate, NULL);
+ 	}
+ 	else
+@@ -362,7 +362,7 @@ void update_submenu(GtkWidget *widget, g
+ 	if(!options3.dbg_dock)
+ 	{
+ 		g_signal_handlers_block_by_func(GTK_OBJECT(item), on_memory1_activate, NULL);
+-		gtk_check_menu_item_set_active(item, GTK_WIDGET_VISIBLE(dbgw.mem));
++		gtk_check_menu_item_set_active(item, gtk_widget_get_visible(dbgw.mem));
+ 		g_signal_handlers_unblock_by_func(GTK_OBJECT(item), on_memory1_activate, NULL);
+ 	}
+ 	else
+@@ -372,7 +372,7 @@ void update_submenu(GtkWidget *widget, g
+     elt = g_list_nth(list, 3);
+     item = GTK_CHECK_MENU_ITEM(elt->data);
+     g_signal_handlers_block_by_func(GTK_OBJECT(item), on_pc_log1_activate, NULL);
+-    gtk_check_menu_item_set_active(item, GTK_WIDGET_VISIBLE(dbgw.pclog));
++    gtk_check_menu_item_set_active(item, gtk_widget_get_visible(dbgw.pclog));
+     g_signal_handlers_unblock_by_func(GTK_OBJECT(item), on_pc_log1_activate, NULL);
+ 
+     // stack
+@@ -381,7 +381,7 @@ void update_submenu(GtkWidget *widget, g
+ 	if(!options3.dbg_dock)
+ 	{
+ 		g_signal_handlers_block_by_func(GTK_OBJECT(item), on_stack_frame1_activate, NULL);
+-		gtk_check_menu_item_set_active(item, GTK_WIDGET_VISIBLE(dbgw.stack));
++		gtk_check_menu_item_set_active(item, gtk_widget_get_visible(dbgw.stack));
+ 		g_signal_handlers_unblock_by_func(GTK_OBJECT(item), on_stack_frame1_activate, NULL);
+ 	}
+ 	else
+@@ -393,7 +393,7 @@ void update_submenu(GtkWidget *widget, g
+ 	if(!options3.dbg_dock)
+ 	{
+ 		g_signal_handlers_block_by_func(GTK_OBJECT(item), on_heap_frame1_activate, NULL);
+-		gtk_check_menu_item_set_active(item, GTK_WIDGET_VISIBLE(dbgw.heap));
++		gtk_check_menu_item_set_active(item, gtk_widget_get_visible(dbgw.heap));
+ 		g_signal_handlers_unblock_by_func(GTK_OBJECT(item), on_heap_frame1_activate, NULL);
+ 	}
+ 	else
+@@ -403,7 +403,7 @@ void update_submenu(GtkWidget *widget, g
+ 	elt = g_list_nth(list, 6);
+     item = GTK_CHECK_MENU_ITEM(elt->data);
+     g_signal_handlers_block_by_func(GTK_OBJECT(item), on_ioports_frame1_activate, NULL);
+-    gtk_check_menu_item_set_active(item, GTK_WIDGET_VISIBLE(dbgw.iop));
++    gtk_check_menu_item_set_active(item, gtk_widget_get_visible(dbgw.iop));
+     g_signal_handlers_unblock_by_func(GTK_OBJECT(item), on_ioports_frame1_activate, NULL);
+ 
+ 	// dock/multi mode
+diff -purN tiemu-3.03.orig/src/gui/filesel.c tiemu-3.03/src/gui/filesel.c
+--- tiemu-3.03.orig/src/gui/filesel.c	2007-12-16 16:54:33.000000000 +0100
++++ tiemu-3.03/src/gui/filesel.c	2011-11-04 22:45:28.000000000 +0100
+@@ -41,7 +41,9 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#undef GTK_DISABLE_DEPRECATED
+ #include <gtk/gtk.h>
++#define GTK_DISABLE_DEPRECATED
+ #include <string.h>
+ 
+ #ifdef __WIN32__
