@@ -1,0 +1,17 @@
+pkgbase = libmemcache
+	pkgdesc = the C API for memcached
+	pkgver = 1.4.0.rc2
+	pkgrel = 1
+	url = http://people.freebsd.org/~seanc/libmemcache
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	depends = glibc
+	source = http://people.freebsd.org/~seanc/libmemcache/libmemcache-1.4.0.rc2.tar.bz2
+	sha512sums = 4b8c09c425d48d0ad040d3f01ec3c0d88babefb702b666d5cb3d10eac9993be88d00120b57b6224f7d55ae979d3136de10d5ddc793d9aa7f8b9531b5d79449d0
+
+pkgname = libmemcache
+
