@@ -1,0 +1,21 @@
+pkgbase = lycklig-git
+	pkgdesc = Image processing for lucky imaging.
+	pkgver = 20150207
+	pkgrel = 1
+	url = https://gitorious.org/adv/lycklig
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	makedepends = tclap
+	depends = opencv
+	depends = python3-wand
+	depends = python-pyqt4
+	depends = python-scipy
+	provides = lycklig
+	conflicts = lycklig
+
+pkgname = lycklig-git
+
