@@ -1,0 +1,5 @@
+post_upgrade() {
+  echo "To enable luajit's jit add the following line to your"
+  echo "~/.config/awesome/rc.lua:"
+  echo "    pcall(function() jit.on() end)"
+}

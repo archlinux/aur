@@ -1,0 +1,76 @@
+From eb808361afe551b46a175cd5e6292d00eeb41dce Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?J=C3=B6rg=20Thalheim?= <joerg@higgsboson.tk>
+Date: Sun, 30 Dec 2012 22:41:36 +0100
+Subject: [PATCH] add luajit
+
+---
+ FindLuaJIT.cmake    | 19 +++++++++++++++++++
+ awesomeConfig.cmake |  9 +++++----
+ 2 files changed, 24 insertions(+), 4 deletions(-)
+ create mode 100644 FindLuaJIT.cmake
+
+diff --git a/FindLuaJIT.cmake b/FindLuaJIT.cmake
+new file mode 100644
+index 0000000..b7fa56b
+--- /dev/null
++++ b/FindLuaJIT.cmake
+@@ -0,0 +1,19 @@
++find_path(LUAJIT_INCLUDE_DIR luajit.h
++	NAMES luajit.h
++	PATH_SUFFIXES luajit-2.0)
++
++if (LUAJIT_FIND_STATIC)
++	find_library(LUAJIT_LIBRARIES luajit.a
++		NAMES libluajit-5.1.a)
++else (LUATJIT_FIND_STATIC)
++	find_library(LUAJIT_LIBRARIES luajit
++		NAMES luajit-5.1)
++endif (LUAJIT_FIND_STATIC)
++
++mark_as_advanced(LUAJIT_INCLUDE_DIR)
++mark_as_advanced(LUAJIT_LIBRARIES)
++
++# handle the QUIETLY and REQUIRED arguments and set LUAJIT_FOUND to TRUE if 
++# all listed variables are TRUE
++INCLUDE(FindPackageHandleStandardArgs)
++FIND_PACKAGE_HANDLE_STANDARD_ARGS(LUAJIT DEFAULT_MSG LUAJIT_LIBRARIES LUAJIT_INCLUDE_DIR)
+diff --git a/awesomeConfig.cmake b/awesomeConfig.cmake
+index 009be17..ba76003 100644
+--- a/awesomeConfig.cmake
++++ b/awesomeConfig.cmake
+@@ -62,7 +62,8 @@ include(FindDoxygen)
+ # pkg-config
+ include(FindPkgConfig)
+ # lua 5.1
+-include(FindLua51)
++#include(FindLua51)
++include(FindLuaJIT.cmake)
+ # }}}
+ 
+ # {{{ Check if documentation can be build
+@@ -188,19 +189,19 @@ else()
+ endif()
+ 
+ # Error check
+-if(NOT LUA51_FOUND AND NOT LUA50_FOUND) # This is a workaround to a cmake bug
++if(NOT LUA51_FOUND AND NOT LUA50_FOUND AND NOT LUAJIT_FOUND) # This is a workaround to a cmake bug
+     message(FATAL_ERROR "lua library not found")
+ endif()
+ 
+ set(AWESOME_REQUIRED_LDFLAGS
+     ${AWESOME_COMMON_REQUIRED_LDFLAGS}
+     ${AWESOME_REQUIRED_LDFLAGS}
+-    ${LUA_LIBRARIES})
++    ${LUAJIT_LIBRARIES})
+ 
+ set(AWESOME_REQUIRED_INCLUDE_DIRS
+     ${AWESOME_COMMON_REQUIRED_INCLUDE_DIRS}
+     ${AWESOME_REQUIRED_INCLUDE_DIRS}
+-    ${LUA_INCLUDE_DIR})
++    ${LUAJIT_INCLUDE_DIR})
+ # }}}
+ 
+ # {{{ Optional libraries
+-- 
+1.8.0.3
+
