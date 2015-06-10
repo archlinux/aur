@@ -1,0 +1,23 @@
+pkgbase = mingw-w64-libvpx
+	pkgdesc = VP8 and VP9 codec (mingw-w64)
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = http://www.webmproject.org/
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-gcc
+	makedepends = yasm
+	makedepends = git
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = libvpx::git+http://code.google.com/p/webm.libvpx#tag=v1.4.0
+	source = configure.patch
+	source = mingwstrtok.patch
+	md5sums = SKIP
+	md5sums = 3eda3d2e433469458b3e4767ac1d722f
+	md5sums = 15da30a2ad44c8934ec52ea6b28ff156
+
+pkgname = mingw-w64-libvpx
+

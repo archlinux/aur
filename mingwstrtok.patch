@@ -1,0 +1,12 @@
+diff -ru libvpx-1.4.0/vpx/src/svc_encodeframe.c patched/vpx/src/svc_encodeframe.c
+--- libvpx-1.4.0/vpx/src/svc_encodeframe.c	2015-05-01 00:28:10.296159958 +0200
++++ patched/vpx/src/svc_encodeframe.c	2015-05-01 00:39:00.537769455 +0200
+@@ -28,6 +28,8 @@
+ #include "vpx_mem/vpx_mem.h"
+ #include "vp9/common/vp9_onyxc_int.h"
+ 
++#undef MINGW_HAS_SECURE_API
++
+ #ifdef __MINGW32__
+ #define strtok_r strtok_s
+ #ifndef MINGW_HAS_SECURE_API
