@@ -1,0 +1,16 @@
+pkgbase = accel-ppp-ipoe-module-lts
+	pkgdesc = Ipoe kernel module for accel-ppp running under linux-lts
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = http://sourceforge.net/apps/trac/accel-ppp/
+	install = accel-ppp-ipoe-module-lts.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = dkms
+	makedepends = linux-lts-headers
+	makedepends = accel-ppp-ipoe-dkms=1.9.0
+	depends = linux-lts
+
+pkgname = accel-ppp-ipoe-module-lts
+
