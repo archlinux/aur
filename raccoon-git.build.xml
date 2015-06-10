@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="build" name="Raccoon">
+    <property environment="env"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.7"/>
+    <property name="source" value="1.7"/>
+    <path id="Raccoon.classpath">
+        <pathelement location="bin"/>
+        <pathelement location="../commons-cli-#commons_cli_pkgver#.jar"/>
+        <pathelement location="../commons-io-#commons_io_pkgver#.jar"/>
+        <pathelement location="../commons-logging-#commons_logging_pkgver#.jar"/>
+        <pathelement location="../httpclient-#httpclient_pkgver#.jar"/>
+        <pathelement location="../httpcore-#httpcore_pkgver#.jar"/>
+        <pathelement location="../protobuf-java-#protobuf_java_pkgver#.jar"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src/main/java">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src/main/resources">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src/main/java"/>
+            <src path="src/main/resources"/>
+            <classpath refid="Raccoon.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target name="App">
+        <java classname="de.onyxbits.raccoon.App" failonerror="true" fork="yes">
+            <classpath refid="Raccoon.classpath"/>
+        </java>
+    </target>
+    <target name="jar">
+        <jar destfile="build/raccoon-git.jar" filesetmanifest="mergewithoutmain">
+            <manifest>
+                <attribute name="Main-Class" value="de.onyxbits.raccoon.App"/>
+                <attribute name="Class-Path" value="."/>
+            </manifest>
+            <fileset dir="bin"/>
+            <zipfileset excludes="META-INF/*.SF" src="../commons-cli-#commons_cli_pkgver#.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../commons-io-#commons_io_pkgver#.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../commons-logging-#commons_logging_pkgver#.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../httpclient-#httpclient_pkgver#.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../httpcore-#httpcore_pkgver#.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../protobuf-java-#protobuf_java_pkgver#.jar"/>
+        </jar>
+    </target>
+</project>
