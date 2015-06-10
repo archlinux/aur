@@ -1,0 +1,15 @@
+pkgbase = simutrans-pakhd
+	pkgdesc = Handdrawn imageset for Simutrans
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://hd.simutrans.com/
+	arch = any
+	license = PerlArtistic
+	options = !strip
+	source = http://hd.simutrans.com/release/PakHD_v04B_100-0.zip
+	source = http://hd.simutrans.com/release/pakHD_v04B_menuconf.zip
+	md5sums = 0d8cee7da9720e8758830827f7a71407
+	md5sums = aa227de7fbe97c97dee129d983fb6e04
+
+pkgname = simutrans-pakhd
+
