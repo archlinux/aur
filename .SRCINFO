@@ -1,0 +1,15 @@
+pkgbase = netcdf-java
+	pkgdesc = network Common Data Form interface for array-oriented data access implemented in Java
+	pkgver = 4.6.2
+	pkgrel = 2
+	url = http://www.unidata.ucar.edu/software/thredds/current/netcdf-java/
+	arch = any
+	license = apache
+	depends = java-runtime
+	optdepends = netcdf: native implementation of netCDF with C bindings
+	noextract = netcdfAll-4.6.2.jar
+	source = ftp://ftp.unidata.ucar.edu/pub/netcdf-java/v4.6/netcdfAll-4.6.2.jar
+	sha1sums = 29295a23177e44998d0ef36caf6b01789124f3ba
+
+pkgname = netcdf-java
+
