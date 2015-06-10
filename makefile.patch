@@ -1,0 +1,15 @@
+diff --git a/Makefile b/Makefile
+index a3b87ff..ba33431 100644
+--- a/Makefile
++++ b/Makefile
+@@ -57,8 +57,8 @@ distclean: clean
+ 	-rm Makefile
+ 
+ install: all
+-	mkdir -p $(DESTDIR)$(bindir)
+-	cp fondu ufond showfond dfont2res tobin frombin lumper setfondname $(DESTDIR)$(bindir)
++	mkdir -p "$(DESTDIR)"$(bindir)
++	cp fondu ufond showfond dfont2res tobin frombin lumper setfondname "$(DESTDIR)"$(bindir)
+ 
+ 
+ VERSION:=$(shell date +"%y%d%m")

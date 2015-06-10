@@ -1,0 +1,15 @@
+pkgbase = fondu
+	pkgdesc = Mac font conversion utility
+	pkgver = 060102
+	pkgrel = 4
+	url = http://fondu.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	source = http://fondu.sourceforge.net/fondu_src-060102.tgz
+	source = makefile.patch
+	sha256sums = 22bb535d670ebc1766b602d804bebe7e84f907c219734e6a955fcbd414ce5794
+	sha256sums = c6390af3ba4daecf7d548d0f0c46e691444fa31ba67f530e5354720288314f6b
+
+pkgname = fondu
+
