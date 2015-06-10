@@ -1,6 +1,6 @@
 diff -aur nvidiabl-master.source/nvidiabl-module.c nvidiabl-master.patch/nvidiabl-module.c
 --- nvidiabl-master.source/nvidiabl-module.c	2014-04-08 07:16:19.000000000 +1000
-+++ nvidiabl-master.patch/nvidiabl-module.c	2015-05-22 18:13:50.407373072 +1000
++++ nvidiabl-master.patch/nvidiabl-module.c	2015-06-10 17:57:51.575688758 +1000
 @@ -214,7 +214,7 @@
  #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,39)
  	
@@ -10,3 +10,12 @@ diff -aur nvidiabl-master.source/nvidiabl-module.c nvidiabl-master.patch/nvidiab
  			props.type = backlight_type_ids[iii].type;
  			printk(KERN_INFO "nvidiabl: backlight type is %s\n", backlight_type_ids[iii].id);
  		}
+diff -aur nvidiabl-master.source/scripts/usr/local/sbin/nvidiablctl nvidiabl-master.patch/scripts/usr/local/sbin/nvidiablctl
+--- nvidiabl-master.source/scripts/usr/local/sbin/nvidiablctl	2014-04-08 07:16:19.000000000 +1000
++++ nvidiabl-master.patch/scripts/usr/local/sbin/nvidiablctl	2015-06-10 17:58:58.903272233 +1000
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#! /usr/bin/bash
+ #
+ # nvidiablctl v0.2
+ #

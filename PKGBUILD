@@ -5,7 +5,7 @@
 
 pkgname=nvidiabl
 pkgver=0.88
-pkgrel=2
+pkgrel=3
 pkgdesc="Backlight driver for NVidia graphics adapters"
 
 arch=('x86_64' 
@@ -15,29 +15,31 @@ license=('GPL')
 
 makedepends=('linux-headers'
              'unzip')
-optdepends=('nvidiablctl: adjust backlight easily')
-conflicts=(nvidia-bl)
+conflicts=('nvidia-bl' 'nvidiablctl')
 
 install=nvidiabl.install
 source=(https://github.com/guillaumezin/nvidiabl/archive/master.zip 
-        nvidiabl-module.c.patch)
+        nvidiabl-master.patch)
 md5sums=('5fdda33fedcb78320c1581e84b395d39'
-         '20fb3f129307b3c7289610c98b94520e')
+         '79e5699da970908d6ec8dba114df87cb')
 
 prepare() {
-  cd "$srcdir/nvidiabl-master/"
-  patch -p1 -i $srcdir/nvidiabl-module.c.patch
+  cd "${srcdir}/nvidiabl-master/"
+  patch -p1 -i "${srcdir}/nvidiabl-master.patch"
 }
 
 build() {
-  cd "$srcdir/nvidiabl-master/"
+  cd "${srcdir}/nvidiabl-master/"
   make
 }
 
 package() {
-  cd "$srcdir/nvidiabl-master/"
+  cd "${srcdir}/nvidiabl-master/"
   _extramodules="extramodules-$(uname -r | cut -f-2 -d'.')-$(uname -r|sed -e 's/.*-//g')"
   _MODPATH="${pkgdir}/usr/lib/modules/${_extramodules}/"
-  install -d $_MODPATH
-  install -m 644 -c nvidiabl.ko _$MODPATH
+  install -d "${_MODPATH}"
+  install -d "${pkgdir}/usr/bin/"
+
+  install -m 644 "${srcdir}/nvidiabl-master/nvidiabl.ko" "${_MODPATH}"
+  install -m 644 scripts/usr/local/sbin/nvidiablctl "${pkgdir}/usr/bin/"
 }
