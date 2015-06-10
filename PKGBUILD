@@ -1,8 +1,8 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=nemo-media-columns
-_ver=2.4.0+rebecca
-pkgver=2.4.0
+_ver=2.6.0+rafaela
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Nemo extension to display music/EXIF and PDF metadata info"
 arch=(any)
@@ -11,7 +11,7 @@ license=(GPL)
 depends=(mutagen nemo-python python2-exiv2 python2-pillow python2-pypdf)
 source=("http://packages.linuxmint.com/pool/main/n/nemo-media-columns/nemo-media-columns_${_ver}.tar.gz"
         fixes.patch)
-sha512sums=('e30f1ce9f6b251bccae478c5c518c7fb70ccba318109f128e7c4e0b8740ecc2ce8e2a797c2683746400c0dae56050d19a41b001b63166af16a360a62b51dfdf8'
+sha512sums=('064305dedd94b8c53c993a0ce6944925e40d70fedb45d7571a7b85537de21c856bafd987db3aa4cd8c78f2b078d4702b72af76da488ddfa5c884beb4f952046a'
             '0f352129c727a74be9bdae32c86ea32a801449bcdeb86376cc10a53f9974441eb788f23156d58d97e2066eff2255aeb9c4ddd9c7ffd8430c4b957c57aa4cda2d')
 
 prepare() {
