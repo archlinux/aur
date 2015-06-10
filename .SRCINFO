@@ -1,0 +1,15 @@
+pkgbase = chromeos-apk-git
+	pkgdesc = Extract Android APKs for running in Chrome OS OR Chrome in OS X, Linux and Windows
+	pkgver = 20150123.r121.775c17c
+	pkgrel = 2
+	url = https://github.com/vladikoff/chromeos-apk
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	depends = nodejs
+	source = git+https://github.com/vladikoff/chromeos-apk.git
+	sha512sums = SKIP
+
+pkgname = chromeos-apk-git
+
