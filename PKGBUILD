@@ -1,15 +1,15 @@
 # Maintainer: James An <james@jamesan.ca>
 
 pkgname=aegir
-pkgver=7.x_3.0_alpha2
-pkgrel=3
-pkgdesc="Configuration for a dedicated Aegir server."
+pkgver=7.x_3.0_beta2
+pkgrel=2
+pkgdesc="Configuration for a dedicated Aegir server to host Drupal sites."
 arch=('any')
 url='http://aegirproject.org'
 license=('GPL')
 depends=(
-    'aegir-provision'
-    'aegir-hostmaster'
+    "$pkgname-provision"
+    "$pkgname-hostmaster"
     'cron'
     'nginx'
     'php-fpm'
@@ -23,44 +23,62 @@ depends=(
 options=(emptydirs)
 install=$pkgname.install
 source=(
-    'msmtprc'
+    "msmtprc.$pkgname"
     'nginx.conf'
     'nginx.svc.conf'
-    'php.ini'
+    "$pkgname.ini"
     'sudoers'
-    'systemd.service'
-    'systemd.target'
+    "$pkgname.service"
+    "$pkgname.target"
 )
-md5sums=('1e9dd39b8c305eaab83e41a782e7c3c9'
-         '3079abdb035783843375b1745d651f8b'
+md5sums=('ef91c3e0f09e6737105fc1b9971758cc'
+         '829ac9283a168f796354e78e8bc8e496'
          '75535f9870f06c540f513262a9b7b1ab'
-         '451f623150d84118f6801a63053226f0'
-         'b3bd87cc4571873fd860bf4b6a0e51fa'
+         '879237d0ca0dc54d5cdb4307adb40005'
+         'cb3462fda27156851badf51d5a0595ae'
          '4889b3de48732ec149a71aeb72039455'
          '80773e4278e09b14cc6843e346540a9d')
+
+pkgver() {
+    echo \
+      $(drush rl --fields=version --field-labels=0 provision | sort | grep -v 'dev' | tail -n1 | tr '-' '_' | tr -d ' ') \
+      $(drush rl --fields=version --field-labels=0 hostmaster | sort | grep -v 'dev' | tail -n1 | tr '-' '_' | tr -d ' ') \
+      | tr ' ' $'\n' | sort -ur | head -n1
+}
+
+prepare() {
+    for extension in gd pdo_mysql; do
+        echo -e "; Required extension for $pkgname\nextension=$extension.so" >| "$extension.$pkgname.ini"
+    done
+}
 
 package() {
     msg2 'Adding config files'
     install -dm750                  "$pkgdir/etc/sudoers.d"
     install -Dm440 sudoers          "$pkgdir/etc/sudoers.d/$pkgname"
     install -Dm644 nginx.conf       "$pkgdir/etc/nginx/$pkgname.conf"
-    install -Dm644 php.ini          "$pkgdir/etc/php/conf.d/$pkgname.ini"
-    install -Dm644 msmtprc          "$pkgdir/etc/msmtprc.aegir"
+    install -Dm644 "$pkgname.ini"   "$pkgdir/etc/php/conf.d/$pkgname.ini"
+    install -Dm644 "msmtprc.$pkgname" "$pkgdir/etc/msmtprc.$pkgname"
+    install -Dm644 <( ) "$pkgdir/var/spool/cron/$pkgname"
+    for extension in gd pdo_mysql; do
+      install -Dm644 $extension.$pkgname.ini "$pkgdir/etc/php/conf.d/$extension.$pkgname.ini"
+    done
 
     msg2 'Adding systemd files'
     install -Dm644 nginx.svc.conf   "$pkgdir/usr/lib/systemd/system/nginx.service.d/$pkgname.conf"
-    install -Dm644 systemd.service  "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+    install -Dm644 "$pkgname.service"  "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+    install -Dm644 "$pkgname.target" "$pkgdir/usr/lib/systemd/system/$pkgname.target"
 
-    msg2 'Creating aegir directory structure'
-    mkdir -pm700 "$pkgdir/var/lib/aegir/config/server_master/nginx/"{platform,post,pre,subdir,platform,vhost}".d"
-    mkdir -pm755 "$pkgdir/var/lib/aegir/"{backups,clients,config{,/{includes,self,server_localhost,server_master{,/nginx}}}}
-    mkdir -pm755 "$pkgdir/var/lib/aegir/"{.drush/cache,platforms}
-    ln -sr server_master/nginx.conf "$pkgdir/var/lib/aegir/config/nginx.conf"
-    ln -sr nginx_vhost_common.conf "$pkgdir/var/lib/aegir/config/includes/nginx_advanced_include.conf"
-    ln -sr nginx_vhost_common.conf "$pkgdir/var/lib/aegir/config/includes/nginx_simple_include.conf"
+    msg2 'Creating $pkgname directory structure'
+    mkdir -p "$pkgdir/var/lib/$pkgname"
+    umask 077
+    mkdir -p "$pkgdir/var/lib/$pkgname/"{backups,clients/admin,config/{includes,self,server_master/nginx/{platform,post,pre,subdir,platform,vhost}.d}}
+    umask 022
+    mkdir -p "$pkgdir/var/lib/$pkgname/"{,config{includes,self,server_localhost,server_master/nginx}}
 
-    install -Dm644 <( ) "$pkgdir/var/spool/cron/http"
-    install -Dm644 systemd.target "$pkgdir/usr/lib/systemd/system/$pkgname.target"
+    ln -s "/var/lib/$pkgname/config/server_master/nginx.conf"         "$pkgdir/var/lib/$pkgname/config/nginx.conf"
+    ln -s "/var/lib/$pkgname/config/includes/nginx_vhost_common.conf" "$pkgdir/var/lib/$pkgname/config/includes/nginx_advanced_include.conf"
+    ln -s "/var/lib/$pkgname/config/includes/nginx_vhost_common.conf" "$pkgdir/var/lib/$pkgname/config/includes/nginx_simple_include.conf"
 
-    chown -R http:http "$pkgdir/var/lib/$pkgname" "$pkgdir/var/spool/cron/http"
+    chown -R 696:http "$pkgdir/var/lib/$pkgname" "$pkgdir/var/spool/cron/$pkgname"
 }

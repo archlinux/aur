@@ -1,5 +1,6 @@
 [Unit]
 Description=Aegir queue daemon
+PartOf=aegir.target
 After=mysqld.service php-fpm.service nginx.service
 
 [Service]
@@ -7,6 +8,7 @@ Type=simple
 ExecStart=/usr/bin/drush --quiet @hostmaster hosting-queued
 User=aegir
 Restart=always
+SuccessExitStatus=1
 
 [Install]
 WantedBy=multi-user.target
