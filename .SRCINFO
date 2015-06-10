@@ -1,0 +1,28 @@
+pkgbase = luciole
+	pkgdesc = Stop-motion software
+	pkgver = 0.9.3
+	pkgrel = 2
+	url = http://festival.inattendu.org/Luciole
+	install = luciole.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2-dbus
+	depends = gnome-python
+	depends = gstreamer0.10-base-plugins
+	depends = gstreamer0.10-good-plugins
+	depends = gstreamer0.10-python
+	depends = imagemagick
+	depends = mjpegtools
+	depends = python2
+	depends = pygtk
+	depends = python2-imaging
+	depends = python2-gudev
+	optdepends = ffmpeg: for export feature
+	optdepends = mencoder: for export feature
+	source = http://launchpad.net/luciole/0.9/0.9.3/+download/luciole-0.9.3.tar.gz
+	md5sums = a04ef1d9ea3e3071781f3c317e65845a
+	sha1sums = ec6a80eb697344387d02f6925cbf6526c06794d6
+
+pkgname = luciole
+
