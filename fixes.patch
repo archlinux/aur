@@ -1,0 +1,64 @@
+diff -up src/flphoto-1.3.1/camera.cxx.orig src/flphoto-1.3.1/camera.cxx
+--- src/flphoto-1.3.1/camera.cxx.orig	2006-07-17 19:11:22.000000000 -0600
++++ src/flphoto-1.3.1/camera.cxx	2014-03-24 00:42:21.000000000 -0600
+@@ -42,6 +42,8 @@
+ #  define fl_mkdir(p)	mkdir(p)
+ #else
+ #  include <unistd.h>
++#  include <sys/stat.h>
++#  include <sys/types.h>
+ #  define fl_mkdir(p)	mkdir(p, 0777)
+ #endif // WIN32 && !__CYGWIN__
+ #include <errno.h>
+@@ -63,8 +65,7 @@
+ static void	get_files(Camera *camera, const char *folder,
+ 		          CameraList *list, GPContext *context);
+ static unsigned	progress_start(GPContext *context, float target,
+-			       const char *format, va_list args,
+-        		       void *data);
++			       const char *format, void *data);
+ static void	progress_update(GPContext *context, unsigned id, float current,
+ 		                void *data);
+ static void	purge_thumbnails(void);
+@@ -909,7 +910,6 @@ static unsigned				// O - ID number
+ progress_start(GPContext  *context,	// I - Current context
+                float      target,	// I - Target size
+ 	       const char *format,	// I - Progress text, if any
+-	       va_list    args,		// I - Pointer to additional args
+                void       *data)	// I - Callback data
+ {
+   Fl_Progress	*p = (Fl_Progress *)data;
+diff -up src/flphoto-1.3.1/Fl_Print_Dialog2.cxx.orig src/flphoto-1.3.1/Fl_Print_Dialog2.cxx
+--- src/flphoto-1.3.1/Fl_Print_Dialog2.cxx.orig	2006-11-26 14:45:08.000000000 -0700
++++ src/flphoto-1.3.1/Fl_Print_Dialog2.cxx	2014-03-24 00:40:44.000000000 -0600
+@@ -56,6 +56,7 @@
+ 
+ #ifdef HAVE_LIBCUPS
+ #  include <cups/cups.h>
++#  include <cups/ppd.h>
+ #endif // HAVE_LIBCUPS
+ 
+ 
+diff -up src/flphoto-1.3.1/image.cxx.orig src/flphoto-1.3.1/image.cxx
+--- src/flphoto-1.3.1/image.cxx.orig	2006-11-18 06:56:11.000000000 -0700
++++ src/flphoto-1.3.1/image.cxx	2014-03-24 00:40:44.000000000 -0600
+@@ -92,6 +92,7 @@ extern "C" {
+ 
+ #ifdef HAVE_LIBPNG
+ #  include <png.h>
++#  include <zlib.h>
+ #endif // HAVE_LIBPNG
+ 
+ 
+diff -up src/flphoto-1.3.1/Makefile.in.orig src/flphoto-1.3.1/Makefile.in
+--- src/flphoto-1.3.1/Makefile.in.orig	2006-11-19 08:51:00.000000000 -0700
++++ src/flphoto-1.3.1/Makefile.in	2014-03-24 00:40:44.000000000 -0600
+@@ -103,7 +103,7 @@ VPATH		=	$(srcdir)
+ # Targets...
+ #
+ 
+-TRANSLATIONS =	po/de po/en_CA po/en_GB po/es po/fr po/it po/nl po/pt po/sv
++TRANSLATIONS =	po/de po/en_CA po/en_GB po/es po/fr
+ TARGETS	=	\
+ 		fldcraw$(EXEEXT) \
+ 		flphoto$(EXEEXT) \

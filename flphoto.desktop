@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=flPhoto
+Comment=FLTK Photo Album
+TryExec=flphoto
+Exec=flphoto %F
+Icon=flphoto
+Terminal=false
+Type=Application
+MimeType=application/x-flphoto;
+Patterns=*.album
+Encoding=UTF-8
+Categories=Graphics;Photography;
+StartupNotify=false

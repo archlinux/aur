@@ -1,0 +1,21 @@
+pkgbase = flphoto
+	pkgdesc = Basic image management and display program based on the FLTK toolkit
+	pkgver = 1.3.1
+	pkgrel = 4
+	url = http://www.easysw.com/~mike/flphoto/
+	install = flphoto.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = fltk
+	depends = libgphoto2
+	depends = libcups
+	source = http://downloads.sourceforge.net/sourceforge/fltk/flphoto-1.3.1-source.tar.gz
+	source = fixes.patch
+	source = flphoto.desktop
+	md5sums = 5e02353cadfc07250731f34f24e83866
+	md5sums = 9664ac1af80f9871a9c17bb72dd019b4
+	md5sums = c8a81fe1ba9708d85c29972ad28057fd
+
+pkgname = flphoto
+
