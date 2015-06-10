@@ -1,0 +1,16 @@
+pkgbase = octave-audio
+	pkgdesc = Audio recording, processing and playing tools.
+	pkgver = 1.1.4
+	pkgrel = 3
+	url = http://octave.sourceforge.net/audio/
+	install = octave-audio.install
+	arch = any
+	groups = octave-forge
+	license = GPL
+	depends = octave>=2.9.7
+	noextract = audio-1.1.4.tar.gz
+	source = http://downloads.sourceforge.net/octave/audio-1.1.4.tar.gz
+	md5sums = 643dac1ecf0f31c870b4bd9ce7bbd98c
+
+pkgname = octave-audio
+
