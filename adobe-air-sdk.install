@@ -1,0 +1,12 @@
+post_install() {
+/usr/bin/cat << EOF
+
+Adobe AIR SDK requires you to re-login to your profile before using
+
+To run an Adobe Air application, extract the archive into a folder and run:
+
+    adl -nodebug app-folder/META-INF/AIR/application.xml app-folder
+
+EOF
+}
+
