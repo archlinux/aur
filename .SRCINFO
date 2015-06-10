@@ -1,0 +1,15 @@
+pkgbase = optimize-git
+	pkgdesc = Script for tweaking the system for better desktop performance
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://github.com/xyproto/optimize
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	depends = setconf
+	source = optimize-git::git://github.com/xyproto/optimize.git#tag=0.2
+	md5sums = SKIP
+
+pkgname = optimize-git
+
