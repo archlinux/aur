@@ -1,0 +1,17 @@
+pkgbase = ttf-mintysis
+	pkgdesc = A font designed by Hirwen Harendal and released by Arkandis Digital Foundry (TTF version of otf-mintspirit)
+	pkgver = 1.002
+	pkgrel = 2
+	url = http://arkandis.tuxfamily.org/adffonts.html
+	install = ttf.install
+	arch = any
+	groups = adf-fonts
+	license = custom:conflicting information:GPL or OFL 1.1
+	depends = fontconfig
+	depends = xorg-mkfontdir
+	depends = xorg-mkfontscale
+	source = http://arkandis.tuxfamily.org/fonts/Mintysis-20120623.zip
+	sha256sums = 53774b17a783756037448e15e2756987ff451391a86619285bc9459b80463450
+
+pkgname = ttf-mintysis
+
