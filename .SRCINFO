@@ -1,0 +1,15 @@
+pkgbase = lib32-libusb0
+	pkgdesc = Library to enable user space application programs to communicate with USB devices. 0.x branch. Debian's binary.
+	pkgver = 0.1.12
+	pkgrel = 6
+	url = http://libusb.sourceforge.net/
+	arch = x86_64
+	license = LGPL
+	depends = sh
+	provides = lib32-libusb-compat
+	conflicts = lib32-libusb-compat
+	source = http://ftp.debian.org/debian/pool/main/libu/libusb/libusb-0.1-4_0.1.12-25_i386.deb
+	md5sums = 316254e4ae2ff97f520948ffbb4af1ad
+
+pkgname = lib32-libusb0
+
