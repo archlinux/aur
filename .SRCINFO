@@ -1,0 +1,17 @@
+pkgbase = virtualdub
+	pkgdesc = Video editing software (uses the WIN32 API)
+	pkgver = 1.10.4
+	pkgrel = 1
+	url = http://www.virtualdub.org/
+	install = virtualdub.install
+	arch = any
+	license = GPL2
+	makedepends = gendesk
+	depends = wine
+	source = https://downloads.sourceforge.net/project/virtualdub/virtualdub-win/1.10.4.35491/VirtualDub-1.10.4.zip
+	source = virtualdub.sh
+	sha256sums = 0502648057fd1345f6755914e5d32bb55230ae63f63cd829298544e9ea5a4b98
+	sha256sums = c4ea2b1b1cfa585433495e9f4621233461e5d9cd4e26792caa52507b06dafc81
+
+pkgname = virtualdub
+
