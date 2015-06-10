@@ -1,0 +1,14 @@
+pkgbase = freecell
+	pkgdesc = A console (ncurses) version of the popular solitaire game Freecell.
+	pkgver = 1.0
+	pkgrel = 4
+	url = http://www.linusakesson.net/software/freecell.php
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	source = http://www.linusakesson.net/files/freecell-1.0.tar.gz
+	md5sums = d696de7f57d4f5c69659232aa50bd27d
+
+pkgname = freecell
+
