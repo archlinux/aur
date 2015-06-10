@@ -1,0 +1,8 @@
+post_install() {
+    systemd-sysusers piler.conf
+    systemd-tmpfiles --create piler.conf
+}
+
+post_upgrade(){
+    systemd-tmpfiles --create pillar.conf
+}

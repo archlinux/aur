@@ -1,0 +1,16 @@
+[Unit]
+Description=MailPiler
+Documentation=http://www.mailpiler.org
+After=network.target
+
+[Service]
+Type=forking
+User=piler
+Group=piler
+ExecStart=/usr/bin/piler -d
+RuntimeDirectory=piler
+PIDFile=/run/piler/piler.pid
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
