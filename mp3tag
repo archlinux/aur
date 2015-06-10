@@ -1,0 +1,16 @@
+#!/bin/bash
+unset WINEPREFIX
+if [ ! -d "$HOME"/.mp3tag ] ; then
+   mkdir -p "$HOME"/.mp3tag
+   touch "$HOME"/.mp3tag/mp3tag.cfg
+   ln -s /usr/share/mp3tag/data "$HOME"/.mp3tag/data
+   ln -s /usr/share/mp3tag/export "$HOME"/.mp3tag/export
+   ln -s /usr/share/mp3tag/lang "$HOME"/.mp3tag/lang
+   ln -s /usr/share/mp3tag/help "$HOME"/.mp3tag/help
+   ln -s /usr/share/mp3tag/Mp3tag.exe "$HOME"/.mp3tag/mp3tag
+   ln -s /usr/share/mp3tag/Mp3tagShell32.dll "$HOME"/.mp3tag/Mp3tagShell32.dll
+   ln -s /usr/share/mp3tag/Mp3tagShell64.dll "$HOME"/.mp3tag/Mp3tagShell64.dll
+   ln -s /usr/share/mp3tag/tak_deco_lib.dll "$HOME"/.mp3tag/tak_deco_lib.dll
+fi
+WINEDEBUG=-all wine "$HOME"/.mp3tag/mp3tag "$@"
+

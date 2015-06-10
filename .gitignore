@@ -1,0 +1,8 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!LICENSE
+!mp3tag
+!mp3tag.desktop
+!mp3tag.png

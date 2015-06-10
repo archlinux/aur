@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Categories=AudioVideo
+Name=Mp3tag
+Comment=The universal tag editor
+Icon=mp3tag
+Exec=mp3tag
+Terminal=false
+Type=Application
+
