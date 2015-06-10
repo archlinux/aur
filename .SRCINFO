@@ -1,0 +1,22 @@
+pkgbase = nethack-x11
+	pkgdesc = Single-player roguelike dungeon exploration game
+	pkgver = 3.4.3
+	pkgrel = 8
+	url = http://www.nethack.org/
+	arch = x86_64
+	arch = i686
+	license = custom
+	makedepends = gendesk
+	makedepends = setconf
+	depends = libxaw
+	conflicts = nethack
+	backup = etc/nethackrc
+	source = http://downloads.sourceforge.net/nethack/nethack-343-src.tgz
+	source = nethack-x11.patch
+	source = nethack-x11.png::http://bugs.gentoo.org/attachment.cgi?id=86458
+	sha256sums = bb39c3d2a9ee2df4a0c8fdde708fbc63740853a7608d2f4c560b488124866fe4
+	sha256sums = 1b3857f2c1ae5e418ab26ab2ed5dbb9eb61c506f262b07e15e9464c3c6734452
+	sha256sums = e1e0b059c617af04ee88bed4b03b73c02f022663e001c5485fe9900ca2d76295
+
+pkgname = nethack-x11
+
