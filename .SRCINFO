@@ -1,0 +1,22 @@
+pkgbase = melissi-client-git
+	pkgdesc = A client for Melissi Cloud Storage Server
+	pkgver = 20110718
+	pkgrel = 1
+	url = http://melissi.org
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python2-distribute
+	depends = pygobject
+	depends = pygtk
+	depends = glade
+	depends = python-notify
+	depends = python2-pyinotify
+	depends = twisted
+	depends = python2-storm
+	depends = pywebkitgtk
+	depends = pyxdg
+	provides = melissi
+
+pkgname = melissi-client-git
+
