@@ -1,0 +1,18 @@
+pkgbase = fvwm-xdg-menu-git
+	pkgdesc = XDG application menu with full support for FVWM
+	pkgver = r51.g4b49473
+	pkgrel = 1
+	url = http://github.com/domichel/fvwm-xdg-menu
+	install = fvwm-xdg-menu.install
+	arch = any
+	groups = xde
+	license = GPL2
+	makedepends = git
+	depends = gtk-update-icon-cache
+	provides = fvwm-xdg-menu
+	conflicts = fvwm-xdg-menu
+	source = fvwm-xdg-menu-git::git://github.com/domichel/fvwm-xdg-menu.git
+	md5sums = SKIP
+
+pkgname = fvwm-xdg-menu-git
+
