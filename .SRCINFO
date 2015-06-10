@@ -1,0 +1,20 @@
+pkgbase = indicator-pastie
+	pkgdesc = GTK clipboard manager compatible with indicators.
+	pkgver = 0.6.7.5
+	pkgrel = 3
+	url = https://launchpad.net/pastie
+	install = indicator-pastie.install
+	arch = any
+	license = GPL
+	depends = python2
+	depends = indicator-application
+	depends = python2-keybinder2
+	depends = python2-gnomevfs
+	depends = python2-gconf
+	source = https://launchpad.net/~hel-sheep/+archive/pastie/+files/pastie_0.6.7.5~ppam1.tar.gz
+	source = pastie.svg
+	sha512sums = e6e750c603b37debd872f3bace5d9bcef2c3d4a189012d7ceaa55d7b4f3b3a7d6fb613229761ff1295cbf566c2aab48ea0d3dc97a852a9bbbe6b528889141deb
+	sha512sums = 9095190ce33d2e68ba091f3cbaef1a3e2a042c68f938b858500d486e44406d059bd80be6fbefbbd065d2b70a5df967b4a1d1db47e3ef370c5a1bee608a4d5c24
+
+pkgname = indicator-pastie
+

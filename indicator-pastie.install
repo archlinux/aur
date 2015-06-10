@@ -1,0 +1,10 @@
+post_install()
+{
+echo "NOTICE: If you'd like to use a mono icon, copy /usr/share/pixmaps/pastie.svg to ~/.pastie"
+}
+
+post_upgrade()
+{
+echo "NOTICE: If you'd like to use a mono icon, copy /usr/share/pixmaps/pastie.svg to ~/.pastie"
+}
+
