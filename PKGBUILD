@@ -59,6 +59,7 @@ package() {
 	mv "bindings/ruby/html/" "$pkgdir/usr/share/doc/$pkgname/rdoc"
 
 	install -D -m644 ../AUTHORS   "$pkgdir/usr/share/doc/$pkgname/AUTHORS"
+	install -D -m644 ../ChangeLog "$pkgdir/usr/share/doc/$pkgname/ChangeLog"
 	install -D -m644 ../README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
 
