@@ -9,6 +9,7 @@ url="http://github.com/rscholer/${_pkgname}"
 license=('MIT')
 depends=('python')
 conflicts=("${_pkgname}")
+provides=("${_pkgname}")
 makedepends=('git' 'python-setuptools')
 optdepends=('alsa-utils: for alsa pipe menu'
             'exo: for opening applications'

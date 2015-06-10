@@ -13,6 +13,7 @@ pkgbase = python-obpm-git
 	optdepends = python-moc: for mocp pipe menus
 	optdepends = python-pyalsaaudio: for alsa pipe menu
 	optdepends = python-setuptools: for running scripts
+	provides = python-obpm
 	conflicts = python-obpm
 	source = git+http://github.com/rscholer/python-obpm
 	sha256sums = SKIP
