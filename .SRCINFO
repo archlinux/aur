@@ -1,0 +1,19 @@
+pkgbase = bison27
+	pkgdesc = General-purpose parser generator
+	pkgver = 2.7.1
+	pkgrel = 4
+	url = http://www.gnu.org/software/bison/bison.html
+	install = bison.install
+	arch = x86_64
+	arch = i686
+	groups = base-devel
+	license = GPL3
+	depends = glibc
+	depends = m4
+	provides = bison=2.7.1
+	conflicts = bison
+	source = ftp://ftp.gnu.org/gnu/bison/bison-2.7.1.tar.xz
+	sha256sums = b409adcbf245baadb68d2f66accf6fdca5e282cafec1b865f4b5e963ba8ea7fb
+
+pkgname = bison27
+
