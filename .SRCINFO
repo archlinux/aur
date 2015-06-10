@@ -1,0 +1,18 @@
+pkgbase = sdr-j-dabreceiver
+	pkgdesc = The DAB decoding software (SDR-J)
+	pkgver = 0.98
+	pkgrel = 0
+	url = http://www.sdr-j.tk/
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = fftw
+	depends = qwt
+	depends = faad2
+	depends = portaudio
+	depends = rtl-sdr
+	source = http://www.sdr-j.tk/sdr-j-dabreceiver-0.98.tgz
+	md5sums = 58fbef4cd8d418ddc23f5a85ec87c1b8
+
+pkgname = sdr-j-dabreceiver
+
