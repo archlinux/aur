@@ -1,0 +1,50 @@
+pkgbase = mgba-git
+	pkgver = r2168.5213b8a
+	pkgrel = 1
+	url = http://mgba.io/
+	arch = i686
+	arch = x86_64
+	license = custom:MPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt5-base
+	makedepends = qt5-multimedia
+	makedepends = sdl2
+	makedepends = zlib
+	makedepends = libpng
+	makedepends = libzip
+	makedepends = libedit
+	makedepends = ffmpeg
+	makedepends = imagemagick
+	makedepends = desktop-file-utils
+	source = git+https://github.com/mgba-emu/mgba.git
+	sha1sums = SKIP
+
+pkgname = libmgba-git
+	pkgdesc = Shared library of mGBA
+	install = mgba.install
+	depends = zlib
+	depends = libpng
+	depends = libzip
+	depends = libedit
+	depends = ffmpeg
+	depends = imagemagick
+	provides = libmgba
+	conflicts = libmgba
+
+pkgname = mgba-sdl-git
+	pkgdesc = A Nintendo Gameboy Advance Emulator focusing on both speed and accuracy
+	depends = libmgba-git
+	depends = sdl2
+	provides = mgba-sdl
+	conflicts = mgba-sdl
+
+pkgname = mgba-qt-git
+	pkgdesc = A Nintendo Gameboy Advance Emulator focusing on both speed and accuracy - Qt5 UI
+	depends = libmgba-git
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = sdl2
+	provides = mgba-qt
+	conflicts = mgba-qt
+
