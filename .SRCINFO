@@ -1,0 +1,22 @@
+pkgbase = lincity-ng-beta
+	pkgdesc = A city simulation game
+	pkgver = 2.9
+	pkgrel = 2
+	url = http://sourceforge.net/projects/lincity-ng.berlios/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = ftjam
+	makedepends = glu
+	depends = sdl_mixer
+	depends = sdl_ttf
+	depends = sdl_image
+	depends = physfs
+	depends = libxml2
+	depends = sdl_gfx
+	depends = libgl
+	source = http://downloads.sourceforge.net/project/lincity-ng.berlios/lincity-ng-2.9.beta.tar.bz2
+	sha512sums = 3ec9997971c7c5a0d027cc09cb7608f965122d5f7dccc7bffcab1bf84d50db495a2b42131ec80a049138a35625c7cfe6e49214be248cdceeefe056616ff71bc9
+
+pkgname = lincity-ng-beta
+
