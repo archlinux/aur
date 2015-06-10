@@ -1,0 +1,14 @@
+pkgbase = dcpu16
+	pkgdesc = DCPU-16 emulator
+	pkgver = r22.998bb5f
+	pkgrel = 1
+	url = https://github.com/dcpu16/dcpu16-go
+	arch = x86_64
+	arch = i686
+	license = unknown
+	makedepends = go
+	source = git://github.com/dcpu16/dcpu16-go.git
+	options = !strip
+
+pkgname = dcpu16
+
