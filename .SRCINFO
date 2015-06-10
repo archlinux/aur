@@ -1,0 +1,14 @@
+pkgbase = git-rpg-git
+	pkgdesc = A minimal role-playing game for git to grind out xp while you grind out bugfixes
+	pkgver = 20120907.r22.87b8dcf
+	pkgrel = 1
+	url = https://github.com/stevvvn/git-rpg
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = ruby
+	source = git-rpg::git+https://github.com/stevvvn/git-rpg
+	sha512sums = SKIP
+
+pkgname = git-rpg-git
+
