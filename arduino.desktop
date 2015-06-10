@@ -9,3 +9,4 @@ Type=Application
 Terminal=false
 MimeType=text/x-arduino;
 Categories=Development;
+StartupWMClass=processing-app-Base
