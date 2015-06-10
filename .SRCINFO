@@ -1,0 +1,19 @@
+pkgbase = obex-data-server
+	pkgdesc = A D-Bus service providing high-level OBEX client and server side functionality
+	pkgver = 0.4.6
+	pkgrel = 10
+	url = http://wiki.muiline.com/obex-data-server
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = dbus-glib
+	depends = openobex
+	depends = imagemagick
+	depends = libusb-compat
+	source = http://pkgs.fedoraproject.org/repo/pkgs/obex-data-server/obex-data-server-0.4.6.tar.gz/961ca5db6fe9c97024e133cc6203cc4d/obex-data-server-0.4.6.tar.gz
+	source = obex-data-server-openobex17.patch
+	md5sums = 961ca5db6fe9c97024e133cc6203cc4d
+	md5sums = 4199b3f0178d2b58eb36ee36ed1d07d5
+
+pkgname = obex-data-server
+
