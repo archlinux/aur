@@ -1,0 +1,37 @@
+--- imgur.py.orig	2012-07-10 23:20:04.995334722 -0500
++++ imgur.py	2012-07-13 11:25:48.078324809 -0500
+@@ -237,7 +237,7 @@
+         """ Converts a list into "(foo,bar,baz)" """
+         if isinstance(datas, (list, tuple)):
+             datas = "(%s)" % (",".join(str(e) for e in datas))
+-        elif not datas.startswith("("):
++        elif datas is not None and not datas.startswith("("):
+             datas = "(%s)" % datas
+         return datas
+ 
+@@ -319,7 +319,7 @@
+         return datas["albums"]["message"]
+ 
+     def edit_album(self, album_id, title="", description="", cover="",
+-            privacy="", layout="", images="", add_images="", del_images=""):
++            privacy="", layout="", images="", add="", delete=""):
+         """
+         Edit an album
+         privacy: public/hidden/secret
+@@ -327,13 +327,13 @@
+         cover: a hash of an image in the account
+         'images' replaces all images in the album
+ 
+-        images, add_images and del_images must be a list of hashes,
++        images, add and delete must be a list of hashes,
+             or a string formatted like (hash1,hash2,...)
+         """
+-        for k in ("images", "add_images", "del_images"):
++        for k in ("images", "add", "delete"):
+             locals()[k] = self._liststr(locals()[k])
+         datas = self._get_json("_albmedit", album_id, title, description,
+-                cover, privacy, layout, images, add_images, del_images)
++                cover, privacy, layout, images, add, delete)
+         imgs = (self._infos(img) for img in datas["albums"])
+         return "\n *** \n".join(imgs)
+ 

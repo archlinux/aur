@@ -1,0 +1,18 @@
+pkgbase = imgur-cli-svn
+	pkgdesc = A command-line client for imgur.
+	pkgver = 4
+	pkgrel = 3
+	url = http://code.google.com/p/imgur-cli/
+	arch = any
+	license = GPL3
+	makedepends = subversion
+	depends = python2
+	provides = imgur-cli
+	conflicts = imgur-cli
+	source = imgur.py-fix-edit-album.patch
+	source = imgur-cli-svn::svn+http://imgur-cli.googlecode.com/svn/trunk/
+	md5sums = 5ad8a9a5e96f20f346e756771638abbf
+	md5sums = SKIP
+
+pkgname = imgur-cli-svn
+
