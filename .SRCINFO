@@ -1,0 +1,15 @@
+pkgbase = http2check
+	pkgdesc = Utility for checking if a given webserver supports HTTP/2
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/xyproto/http2check/
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	makedepends = git
+	source = git://github.com/xyproto/http2check.git#tag=0.4
+	md5sums = SKIP
+
+pkgname = http2check
+
