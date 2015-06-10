@@ -6,7 +6,6 @@
 pkgname=teensyduino
 pkgver=1.23
 _arduino=1.6.4
-_loader=2.1
 pkgrel=3
 pkgdesc="Arduino SDK with Teensyduino"
 arch=('i686' 'x86_64')
