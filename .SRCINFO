@@ -1,0 +1,21 @@
+pkgbase = libdaq-static
+	pkgdesc = Data Acquisition library for packet I/O.
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = http://www.snort.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = ca-certificates
+	depends = libpcap
+	provides = libdaq
+	conflicts = libdaq
+	options = !libtool
+	options = staticlibs
+	source = http://www.snort.org/dl/snort-current/daq-2.0.1.tar.gz
+	source = http://www.snort.org/dl/snort-current/daq-2.0.1.tar.gz.sig
+	md5sums = 044aa3663d44580d005293eeb8ccf175
+	md5sums = SKIP
+
+pkgname = libdaq-static
+
