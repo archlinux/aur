@@ -1,0 +1,17 @@
+pkgbase = iotop-py3
+	pkgdesc = View I/O usage of processes
+	pkgver = 0.6
+	pkgrel = 1
+	url = http://guichaz.free.fr/iotop/
+	arch = any
+	license = GPL
+	makedepends = bc
+	makedepends = python
+	depends = python
+	provides = iotop
+	conflicts = iotop
+	source = http://guichaz.free.fr/iotop/files/iotop-0.6.tar.bz2
+	sha256sums = 3adea2a24eda49bbbaeb4e6ed2042355b441dbd7161e883067a02bfc8dcef75b
+
+pkgname = iotop-py3
+
