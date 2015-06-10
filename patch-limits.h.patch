@@ -1,0 +1,11 @@
+diff -urp sipp.svn/scenario.hpp sipp.svn/scenario.hpp.patched
+--- sipp.svn/scenario.hpp		2008-01-08 23:03:23.000000000 +0100
++++ sipp.svn/scenario.hpp.patched	2010-05-13 14:34:41.000000000 +0200
+@@ -30,6 +30,7 @@
+ #include "variables.hpp"
+ #include "message.hpp"
+ #include "stat.hpp"
++#include "limits.h"
+ 
+ 
+ #define MSG_TYPE_SENDCMD   0
