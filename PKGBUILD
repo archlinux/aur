@@ -3,7 +3,7 @@
 
 pkgname=ttf-adf
 pkgver=20110731
-pkgrel=2
+pkgrel=3
 pkgdesc="True Type Fonts released by Arkandis Digital Foundry"
 arch=('any')
 url="http://arkandis.tuxfamily.org/adffonts.html"
@@ -18,30 +18,33 @@ http://arkandis.tuxfamily.org/fonts/OrnementsADF.zip
 http://arkandis.tuxfamily.org/fonts/SymbolADF.zip
 )
 
-md5sums=('b3c0b4fe19127bc93ab31382761b9ff3'
-         '961d3a2bcee5666074b71ec34d086747'
-         'a481b57003078d503e73a121991127d8'
-         '9ee8b15af0fe9e23d55b046ce735b70f')
+sha256sums=('5a252bf7fbfca67aa421798f2fbe48c2f5d46208330633499553b308ef6d3bf2'
+            '724a625e30f4317af5dc7b3e99a5de8128c23e025f83bd48977fa4dcb03ad35c'
+            '97a4a5f71db57e80fa5edb73c27d736c9b5c4de972b5bc072bba5854d27fa571'
+            '4d8b7e7af9e3fa8149398f515d564200161fa3ca33423dee3b1e6b90d030e780')
 
 build() {
-  # nothing to do
-  true
+    # nothing to do
+    true
 }
 
 package() {
-  install -d ${pkgdir}/usr/share/fonts/TTF/
-  install -Dm644 "${srcdir}"/*/[Tt][Tt][CcFf]/*.[Tt][Tt][CcFf]   "${pkgdir}"/usr/share/fonts/TTF/
-  install -Dm644 "${srcdir}"/*/*/[Tt][Tt][CcFf]/*.[Tt][Tt][CcFf] "${pkgdir}"/usr/share/fonts/TTF/
+    install -d ${pkgdir}/usr/share/fonts/TTF/
+    install -Dm644 "${srcdir}"/*/[Tt][Tt][CcFf]/*.[Tt][Tt][CcFf]   "${pkgdir}"/usr/share/fonts/TTF/
+    install -Dm644 "${srcdir}"/*/*/[Tt][Tt][CcFf]/*.[Tt][Tt][CcFf] "${pkgdir}"/usr/share/fonts/TTF/
 
-  install -Dm644 "${srcdir}"/Irianis*/NOTICE.txt "${pkgdir}"/usr/share/licenses/ttf-adf/LICENSE
-  echo -ne "********************************************************************************\n\n" \
-                                      >> "${pkgdir}"/usr/share/licenses/ttf-adf/LICENSE
-  cat "${srcdir}"/Romande*/NOTICE.txt >> "${pkgdir}"/usr/share/licenses/ttf-adf/LICENSE
-  echo -ne "********************************************************************************\n\n" \
-                                      >> "${pkgdir}"/usr/share/licenses/ttf-adf/LICENSE
-  cat "${srcdir}"/Ornements*/NOTICE   >> "${pkgdir}"/usr/share/licenses/ttf-adf/LICENSE
-  echo -ne "********************************************************************************\n\n" \
-                                      >> "${pkgdir}"/usr/share/licenses/ttf-adf/LICENSE
-  cat "${srcdir}"/Symbol*/NOTICE      >> "${pkgdir}"/usr/share/licenses/ttf-adf/LICENSE
+    install -Dm644 "${srcdir}"/Irianis*/NOTICE.txt "${pkgdir}"/usr/share/licenses/ttf-adf/LICENSE
+    for font in ${source[@]}; do
+        font=$(basename $font)
+        font=${font%.zip}
+        font=${font%-*}
+        font=${font/Symbol/Symbols}
+        echo -ne "********************************************************************************\n\n" \
+                                         >> "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+        cat "${srcdir}"/${font}*/NOTICE* >> "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    done
+
+    echo -ne "********************************************************************************\n\n" \
+                                     >> "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cat "${srcdir}"/${font}*/TTF/COPYING >> "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
