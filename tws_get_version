@@ -1,0 +1,56 @@
+#!/bin/sh
+
+# Exit status codes:
+#   0 =  Version reported correctly
+#   1 =  Error
+
+TWS_TIMEOUT="15"
+
+if ! test -e "$1"; then
+	echo "Usage:   $0 <jar file | TWS dir>" 1>&2
+	echo "Example: $0 $HOME/.tws_scripts/unixmacosx_latest.jar" 1>&2
+	exit 1
+fi
+
+ARG1="$(readlink -v -f "$1")" || exit 1
+
+TDIR="$(mktemp -d -t twsdir.XXXX)" || exit 1
+trap "rm -rf ${TDIR}" exit
+cd "${TDIR}" || exit 1
+
+if test -d "${ARG1}"; then
+	if test -f "${ARG1}/jts.ini" ;then
+		TWS_DIR="${ARG1}"
+	else
+		echo "error: directory '"${ARG1}"' is not a TWS installation" 2>&1
+		exit 1
+	fi
+else
+	if jar xf "${ARG1}" &>/dev/null && test -f IBJts/jts.jar; then
+		TWS_DIR="IBJts"
+	else
+		echo "error: invalid jar file '"${ARG1}"'" 2>&1
+		exit 1
+	fi
+fi
+
+TWS_HOME="${TDIR}/twshome"
+mkdir "${TWS_HOME}" || exit 1
+cp -a "${TWS_DIR}/jts.ini" "${TWS_HOME}" || exit 1
+LOG_FIFO="${TDIR}/twslogpipe"
+mkfifo "${LOG_FIFO}" || exit 1
+
+TWS_CP="${TWS_DIR}/jts:${TWS_DIR}/*"
+java -cp "${TWS_CP}" jclient.LoginFrame "${TWS_HOME}" &>"${LOG_FIFO}" &
+disown
+TWS_PID="$!"
+
+VERSION_LINE="$(timeout --preserve-status "${TWS_TIMEOUT}" grep -m1 --line-buffered ": Build" "${LOG_FIFO}")"
+kill -9 "${TWS_PID}" &>/dev/null
+
+if test "${VERSION_LINE}" == ""; then
+	echo "could not grep version string" 1>&2
+	exit 1
+fi
+
+echo "${VERSION_LINE}" |sed -e 's/.*Build //1' -e 's/,.*//1'

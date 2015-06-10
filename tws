@@ -1,0 +1,181 @@
+#!/bin/bash
+#
+# tws: - comfortable shell script for running TWS
+#
+# usage: - set your paths in config section below
+#        - see --help
+#
+# Copyright (C) 2011 Ruediger Meier <sweet_f_a@gmx.de>
+# License: BSD 3-Clause
+
+
+#### config section
+
+TWS_HOME="${HOME}/.tws"
+TWS_DIR="/opt/TWS/IBJts"
+IBController_DIR="/opt/TWS/IBController"
+
+
+#### defaults, don't change!
+
+GATEWAY="0"
+JAVA_OPTS=""
+CONTROLLER="0"
+PATCHED="0"
+LOOP="0"
+DRYRUN="0"
+
+
+#### funcs
+
+_print_usage()
+{
+	cat <<EOF
+Usage: $0  [--gw] [--javaopts OPTIONS] [-p|--patched] [-c|--controller] \
+[--loop] [--tws TWS_DIR] [--test] [--] [TWS_HOME]
+EOF
+}
+
+_parse_cmd()
+{
+	local TEMP
+	TEMP=$(getopt -o cph \
+		--long gw,javaopts:,controller,patched,loop,tws:,test,help \
+		-n "$0" -- "$@" \
+		) || return 1
+	eval set -- "$TEMP"
+
+	while true ; do
+	case "$1" in
+		--gw)
+			GATEWAY="1"; shift;;
+		--javaopts)
+			JAVA_OPTS="$2"; shift 2;;
+		-c|--controller)
+			CONTROLLER="1"; shift;;
+		-p|--patched)
+			PATCHED="1"; shift;;
+		--loop)
+			LOOP="1"; shift 1;;
+		--tws)
+			TWS_DIR="$(readlink -f "$2")"; shift 2;;
+		--test)
+			DRYRUN="1"; shift 1;;
+		--help)
+			_print_usage; exit 0;;
+		--)
+			shift ; break ;;
+		*)
+			echo "$0: Internal error!" >&2; return 1;;
+		esac
+	done
+
+	#Remaining arguments:
+	if test "$#" -gt 1  ;then
+		echo "$0: bad usage" 2>&1
+		return 1
+	elif test "$#" -gt 0  ;then
+		TWS_HOME="$1"
+	fi
+
+	LOGFILE="${TWS_HOME}/tws_restart.log"
+}
+
+echo_log()
+{
+	local now=`date "+%F %T"`
+	echo -e "${now}: $@" |tee -a "${LOGFILE}" >&2
+}
+
+eval_loop()
+{
+	if test ${LOOP} = 0 ;then
+		echo_log "start tws"
+		eval "$@"
+		echo_log "tws exit code $?"
+	else
+		local i="0";
+		while true; do
+			echo_log "start tws loop $i"
+			eval "$@"
+			echo_log "tws exit code $? ... will be restarted"
+			i="$(( i+1 ))"
+			sleep 1
+		done
+	fi
+}
+
+_java_exec()
+{
+	if [ "${DRYRUN}" = "1" ] ;then
+		echo "CONTROLLER='${CONTROLLER}'"
+		echo "PATCHED='${PATCHED}'"
+		echo "IBController_DIR='${IBController_DIR}'"
+		echo "TWS_DIR='${TWS_DIR}'"
+		echo "TWS_HOME='${TWS_HOME}'"
+		echo "CLASSPATH='${CLASSPATH}'"
+		echo "java ${JAVA_OPTS} -cp '${CLASSPATH}' $@"
+	else
+		eval_loop "java ${JAVA_OPTS} -cp '${CLASSPATH}' $@"
+	fi
+}
+
+
+
+
+#### here we go
+
+if ! _parse_cmd "$@" ;then
+	exit 1
+fi
+
+
+
+if [ "${PATCHED}" = 1 ] ;then
+	TWS_DIR=${TWS_DIR}-patched
+fi
+
+if ! test -d  "${TWS_DIR}" ;then
+	echo "$0: invalid TWS_DIR: '${TWS_DIR}'" >&2
+	exit 1
+fi
+if ! test -d  "${TWS_HOME}" ;then
+	echo "$0: invalid TWS_HOME: '${TWS_HOME}'" >&2
+	exit 1
+fi
+
+cd "${TWS_HOME}" || exit 1
+
+
+
+#getting classpath
+for jarfile in ${TWS_DIR}/*.jar ;do
+     CLASSPATH="${CLASSPATH}:${jarfile}"
+done
+#add path to (eventually existing) patches
+CLASSPATH=${TWS_DIR}/include_patches:${TWS_DIR}/jts:${CLASSPATH}
+
+
+if [ "${CONTROLLER}" = 1 ] ;then
+	temp=""
+	if ! temp="$(sed '/^IbDir=\.\r\{0,1\}$/!d' IBController.ini 2>/dev/null)" ;then
+		echo "$0: ${TWS_HOME}/IBController.ini not found" >&2;
+		exit 1
+	fi
+	if test -z "${temp}" ;then
+		echo "$0: ${TWS_HOME}/IBController.ini must contain 'IbDir=.'" >&2;
+		exit 1
+	fi
+	CLASSPATH="${IBController_DIR}/IBController.jar:${CLASSPATH}"
+	if [ "${GATEWAY}" = 1 ] ;then
+		_java_exec ibcontroller.IBGatewayController ./IBController.ini
+	else
+		_java_exec ibcontroller.IBController ./IBController.ini
+	fi
+else
+	if [ "${GATEWAY}" = 1 ] ;then
+		_java_exec ibgateway.GWClient .
+	else
+		_java_exec jclient.LoginFrame .
+	fi
+fi

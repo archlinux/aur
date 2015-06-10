@@ -1,0 +1,62 @@
+#!/bin/bash
+
+# Exit status codes:
+#   0 =  PKGBUILD is already up-to-date
+#   1 =  PKGBUILD has been updated
+#   2 =  Error
+
+tws_check_update &> /dev/null
+if [ "$?" -eq 2 ]; then echo "tws_check_update failed"; exit 2; fi
+
+PRG="$0"
+
+while [ -h "$PRG" ]; do
+    ls=`ls -ld "$PRG"`
+    link=`expr "$ls" : '.*-> \(.*\)$'`
+    if expr "$link" : '/.*' > /dev/null; then
+        PRG="$link"
+    else
+        PRG=`dirname "$PRG"`/"$link"
+    fi
+done
+SCRIPT_HOME=`dirname "$PRG"`
+
+if [ ! -e "$SCRIPT_HOME/PKGBUILD" ] ; then
+  echo "$SCRIPT_HOME/PKGBUILD missing"
+  exit 2
+fi
+if [ ! -e "$HOME/.tws_scripts/unixmacosx_latest.jar" ] ; then
+  echo "tws_check_update does not appear to have run"
+  exit 2
+fi
+
+VER="`tws_get_version ${HOME}/.tws_scripts/unixmacosx_latest.jar`"
+if [ "$?" -eq 1 ]; then echo "tws_get_version failed"; exit 2; fi
+
+grep -q "pkgver=${VER}" $SCRIPT_HOME/PKGBUILD
+if [ "$?" -eq 0 ]; then
+  exit 0
+else
+  cd $SCRIPT_HOME
+  rm -rf *.jar *.xz *.gz pkg src
+  sed -i "s/pkgver=.*/pkgver=${VER}/" PKGBUILD
+  # Next line from https://bugs.archlinux.org/task/15051
+  { rm PKGBUILD; awk '$0 ~ /^md5sums/ {i = 1; system("makepkg -g 2>/dev/null")}; !i {print}; $0 ~ /\)/ {i = 0}' > PKGBUILD; } < PKGBUILD
+  makepkg
+  if ! ls *.xz &> /dev/null ; then
+    echo "Package creation failure"
+    exit 2
+  fi
+  NAMCAP=`namcap -m *.xz | grep -v bash`
+  if [ ! "$NAMCAP" == "" ]; then
+    echo "Namcap failed build: $NAMCAP"
+    exit 2
+  fi
+  mksrcinfo
+  if ! ls *.gz &> /dev/null ; then
+    echo "Source tarball creation failure"
+    exit 2
+  fi
+  echo "$SCRIPT_HOME/PKGBUILD updated for TWS ${VER}"
+  exit 1
+fi

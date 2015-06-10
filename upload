@@ -1,0 +1,24 @@
+#!/bin/bash
+
+PRG="$0"
+
+while [ -h "$PRG" ]; do
+    ls=`ls -ld "$PRG"`
+    link=`expr "$ls" : '.*-> \(.*\)$'`
+    if expr "$link" : '/.*' > /dev/null; then
+        PRG="$link"
+    else
+        PRG=`dirname "$PRG"`/"$link"
+    fi
+done
+SCRIPT_HOME=`dirname "$PRG"`
+
+$SCRIPT_HOME/update
+if [ "$?" -eq 1 ]; then
+  echo "Uploading updated TWS"
+  burp -c office $SCRIPT_HOME/*.gz
+  echo "Updating Git"
+  cd $SCRIPT_HOME
+  git commit -a -m "Commit from upload script due to new version"
+  git push
+fi

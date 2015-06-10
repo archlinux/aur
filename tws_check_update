@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# Exit status codes:
+#   0 =  Existing version is latest
+#   1 =  New version of TWS available
+#   2 =  Error
+
+DOWNLOAD_DIR="$HOME/.tws_scripts"
+FILE_MIRROR="unixmacosx_latest.jar"
+URL_MIRROR="http://download2.interactivebrokers.com/download"
+FILE_CUR="${DOWNLOAD_DIR}/${FILE_MIRROR}"
+
+get_perm_file_name()
+{
+	local ver;
+	local dst;
+	ver="$(tws_get_version "$1" || echo unknown)"
+	dst="$(echo "$1" | sed -e "s/\(.*\)\.\(.*\)/\1-${ver}.\2/g" -e 's/_latest//g')"
+	echo "${dst}"
+}
+
+mkdir -p $DOWNLOAD_DIR
+
+TDIR="$(mktemp -d -t twsdl.XXXX)" || exit 2
+trap "rm -rf ${TDIR}" exit
+cd "${TDIR}" || exit 2
+
+# create fake sparse file for wget because wget -K is broken and -O file
+# conflicts with -N
+if test -f "${FILE_CUR}" ; then
+	truncate -r "${FILE_CUR}" "${FILE_MIRROR}"
+	touch -r "${FILE_CUR}" "${FILE_MIRROR}"
+fi
+
+if wget --no-verbose -U x -N -P "${TDIR}" "${URL_MIRROR}/${FILE_MIRROR}" ;then 
+    if test "${FILE_MIRROR}" -nt "${FILE_CUR}" ; then
+	DST="$(get_perm_file_name "${FILE_MIRROR}")"
+        mv "${FILE_MIRROR}" "${DOWNLOAD_DIR}/${DST}"
+	ln -sf "${DST}" "${FILE_CUR}"
+	echo "TWS $(echo "${DST}" |sed 's/.*-\(.*\)\..*/\1/g') fetched" 1>&2
+	exit 1
+    else
+        echo "TWS $(readlink "${DOWNLOAD_DIR}/${FILE_MIRROR}" |sed 's/.*-\(.*\)\..*/\1/g') is latest" 1>&2
+	exit 0
+    fi
+else
+    echo "TWS update failed" 1>&2
+    exit 2
+fi
+
