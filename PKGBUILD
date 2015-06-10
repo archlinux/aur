@@ -17,13 +17,6 @@ options=(!emptydirs)
 package() {
   #cd $srcdir/$pkgname-$pkgver
   cd $srcdir/$pkgname-$_gitver
-
-  #find . -type f -exec sed -i \
-  #  -e'1s|^#!/usr/bin/env python$|#!/usr/bin/env python2|' \
-  #  -e '1s|^#!/usr/bin/python$|#!/usr/bin/env python2|' \
-  #  "{}" \;
-
-  #python2 setup.py install --root=$pkgdir
   python setup.py install --root=$pkgdir
 }
 
