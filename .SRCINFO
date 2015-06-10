@@ -1,0 +1,17 @@
+pkgbase = sswf
+	pkgdesc = Script SWF, includes an ActionScript compiler
+	pkgver = 1.8.4
+	pkgrel = 4
+	url = http://www.m2osw.com/sswf
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = bash
+	depends = freetype2
+	depends = libjpeg-turbo
+	options = !emptydirs
+	source = http://kent.dl.sourceforge.net/sourceforge/sswf/sswf-1.8.4-src.tar.bz2
+	md5sums = ce4879970160fee18a8f9dee9bf215ae
+
+pkgname = sswf
+
