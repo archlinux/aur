@@ -1,0 +1,17 @@
+pkgbase = duckling-git
+	pkgdesc = Tiny unfinished 2D platform game
+	pkgver = 18b35a8
+	pkgrel = 1
+	url = http://github.com/xyproto/duckling
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = python2
+	depends = python2-pygame
+	provides = duckling
+	conflicts = duckling
+	source = duckling::git://github.com/xyproto/duckling.git
+	md5sums = SKIP
+
+pkgname = duckling-git
+
