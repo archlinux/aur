@@ -1,0 +1,43 @@
+pkgbase = accel-ppp-git
+	pkgdesc = High performance PPTP/L2TP/PPPoE/IPoE server
+	pkgver = r1179.b8b91d8
+	pkgrel = 1
+	url = http://sourceforge.net/apps/trac/accel-ppp/
+	install = accel-ppp.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake>=2.6
+	makedepends = libnl1
+	makedepends = net-snmp>=5.x
+	makedepends = lua51
+	depends = openssl>=1.0.0
+	depends = pcre>=8.30
+	depends = libnl
+	optdepends = accel-ppp-ipoe-module-git
+	optdepends = logrotate
+	conflicts = accel-ppp
+	options = docs
+	backup = etc/accel-ppp.conf
+	backup = etc/accel-ppp.lua
+	backup = etc/snmp/accel-ppp.conf
+	source = accel-ppp::git+git://git.code.sf.net/p/accel-ppp/code
+	source = accel-ppp-default
+	source = accel-ppp.logrotate
+	source = accel-ppp.lua
+	source = accel-ppp.tmpfiles
+	source = accel-pppd.service
+	source = dictionary.accel_ipoe
+	source = dictionary.ppp
+	md5sums = SKIP
+	md5sums = bb3e20c8808000f4efe52230c13a13f3
+	md5sums = 0536dd60960e76cf5a6cdbf0518782d8
+	md5sums = 816dd5ea9534a077dfd63b6cd529738a
+	md5sums = 5be7d42b434b74d7e692b19a9e3c4297
+	md5sums = e5dec17bd405052fc647a805db5dd449
+	md5sums = 7b94e1ab23db6c849dac3cb86246007d
+	md5sums = 4e0d4fc5975ea8794ea286e8fbfa56cd
+
+pkgname = accel-ppp-git
+
