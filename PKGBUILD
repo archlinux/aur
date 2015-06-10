@@ -14,11 +14,6 @@ conflicts=('python-twitter-tools' 'python-twitter-tools-git' 'python-twitter-git
 source=("http://pypi.python.org/packages/source/t/twitter/twitter-${pkgver}.tar.gz")
 sha256sums=('85396c4c33b9b213f3d2d805caaf6b386b9e277af9117eb51e5a782f77257376')
 
-build() {
-  cd "$srcdir/twitter-$pkgver"
-  python setup.py build
-}
-
 package() {
   cd "$srcdir/twitter-$pkgver"
   python setup.py install --root=$pkgdir --optimize=1
