@@ -1,0 +1,18 @@
+pkgbase = ruby-libnotify
+	pkgdesc = ruby bindings for libnotify, a library for desktop notifications
+	pkgver = 0.5.1
+	pkgrel = 2
+	url = http://github.com/vargolo/ruby-libnotify
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = ruby-pkgconfig
+	depends = ruby
+	depends = libnotify
+	depends = ruby-gtk2
+	noextract = ruby-libnotify-0.5.1.gem
+	source = http://gems.rubyforge.org/gems/ruby-libnotify-0.5.1.gem
+	md5sums = 174e7e63d5807aa2cae054d5d94ad666
+
+pkgname = ruby-libnotify
+
