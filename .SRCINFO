@@ -1,0 +1,34 @@
+pkgbase = ooniprobe
+	pkgdesc = Open Observatory of Network Interference
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://ooni.torproject.org
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	makedepends = python2-dnspython
+	makedepends = python2-docutils
+	makedepends = python2-zope-interface
+	makedepends = libdnet
+	depends = python2
+	depends = tor
+	depends = tcpdump
+	depends = python2-yaml
+	depends = python2-twisted
+	depends = python2-ipaddr
+	depends = python2-pyopenssl
+	depends = python2-geoip
+	depends = txtorcon
+	depends = python2-txsocksx
+	depends = python2-parsley
+	depends = scapy
+	depends = python2-pcapy
+	depends = python2-service-identity
+	depends = geoip-asndata
+	depends = geoip-database
+	depends = geoip-citydata
+	source = https://pypi.python.org/packages/source/o/ooniprobe/ooniprobe-1.2.2.tar.gz
+	md5sums = 056735d6955a4f210701d7a304dba821
+
+pkgname = ooniprobe
+
