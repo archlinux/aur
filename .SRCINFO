@@ -1,0 +1,15 @@
+pkgbase = radit-essential
+	pkgdesc = Librerías para Radit/iRadit.
+	pkgver = 1.0.0+r3.6935cc6
+	pkgrel = 1
+	url = http://www.radit.org/net
+	arch = any
+	license = GPL v3
+	makedepends = git
+	depends = libbass
+	depends = libbassenc
+	source = radit-essential::git+https://github.com/jfperini/radit-essential.git
+	md5sums = SKIP
+
+pkgname = radit-essential
+
