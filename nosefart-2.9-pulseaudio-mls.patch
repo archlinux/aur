@@ -1,0 +1,219 @@
+diff -rupN nosefart-2.9-mls/Makefile nosefart-2.9-pulseaudio-mls/Makefile
+--- nosefart-2.9-mls/Makefile	2013-05-10 21:38:51.000000000 +0200
++++ nosefart-2.9-pulseaudio-mls/Makefile	2014-06-28 03:07:43.520316254 +0200
+@@ -2,7 +2,7 @@
+ # Configuration
+ 
+ CC = gcc
+-CFLAGS = 
++CFLAGS = -lpulse -lpulse-simple
+ LDFLAGS = -lm
+ PREFIX = /usr
+ WANT_DEBUG=TRUE
+diff -rupN nosefart-2.9-mls/src/linux/main_linux.c nosefart-2.9-pulseaudio-mls/src/linux/main_linux.c
+--- nosefart-2.9-mls/src/linux/main_linux.c	2013-05-10 21:37:49.000000000 +0200
++++ nosefart-2.9-pulseaudio-mls/src/linux/main_linux.c	2014-06-28 02:53:13.660348144 +0200
+@@ -18,6 +18,7 @@ UNIX systems */
+ #include <sys/ioctl.h>
+ #include <sys/types.h>
+ #include <sys/soundcard.h>
++#include <pulse/simple.h>
+ #include <sys/stat.h>
+ 
+ #include "types.h"
+@@ -57,6 +58,16 @@ static int bufferSize;
+ static unsigned char *buffer = 0, *bufferPos = 0;
+ static int audiofd;
+ 
++pa_simple *audio = NULL;
++pa_sample_spec audiospec = {
++   .format = PA_SAMPLE_U8,
++   .rate = 44100,
++   .channels = 1
++};
++
++int paerror;
++
++
+ static int * plimit_frames = NULL;
+ static int shm_id;
+ 
+@@ -182,12 +193,13 @@ void handle_auto_calc(char * filename, i
+ 
+ /* HAS ROOT PERMISSIONS -- BE CAREFUL */
+ /* Open up the DSP, then drop the root permissions */
+-static void open_hardware(const char *device)
++//static void open_hardware(const char *device)
++static void open_hardware()
+ {
+    struct stat status;
+ 
+    /* Open the file (with root permissions, if we have them) */
+-   if(-1 == (audiofd = open(device, O_WRONLY, 0)))
++/*   if(-1 == (audiofd = open(device, O_WRONLY, 0)))
+    {
+       switch(errno)
+       {
+@@ -199,10 +211,30 @@ static void open_hardware(const char *de
+          exit(1);
+       }
+    }
++*/
++   if ( bits == 8 ) {
++     audiospec.format = PA_SAMPLE_U8;
++   } else {
++     audiospec.format = PA_SAMPLE_S16LE;
++   }
++
++   audiospec.channels = 1;
++   audiospec.rate = freq;
++
++   audio = pa_simple_new(NULL,            // Default server
++                         "nosefart",      // appname
++                         PA_STREAM_PLAYBACK,
++                         NULL,            // Default device
++                         "Music",         // Stream description
++                         &audiospec,      // Sample format
++                         NULL,            // Use default channel map
++                         NULL,            // Use default buffering attributes.
++                         NULL             // Ignore error code.
++                        );
+ 
+    /* For safety, we should check that device is, in fact, a device.
+       `nosefart -d /etc/passwd MegaMan2.nsf` wouldn't sound so pretty. */
+-   if(-1 == fstat(audiofd, &status))
++  /* if(-1 == fstat(audiofd, &status))
+    {
+       switch(errno)
+       {
+@@ -217,15 +249,18 @@ static void open_hardware(const char *de
+          printf("Unable to stat %s.\n", device);
+          exit(1);
+       }
+-   }
++   }*/
+    /* if it's not a char device and it's not /dev/dsp */
+    /* The second check is because when run with esddsp, /dev/dsp
+    doesn't show up as a char device. The original author (Matthew Conte) seems
+    to have thought that esddsp should work without this hack.  Is doing this 
+    bad? --Matthew Strait */
+-   if( !S_ISCHR(status.st_mode) && strcmp("/dev/dsp", device))
++/*   if( !S_ISCHR(status.st_mode) && strcmp("/dev/dsp", device))
+    {
+-      printf("%s is not a character device.\n", device);
++      printf("%s is not a character device.\n", device);*/
++
++   if ( audio == NULL ) {
++      printf("Could not connect to Pulseaudio server.\n");
+       exit(1);
+    }
+ 
+@@ -233,14 +268,19 @@ static void open_hardware(const char *de
+    if(geteuid() != getuid()) setuid(getuid());
+ }
+ 
++
+ /* Configure the DSP */
++/* This function used to perform the various ioctls on /dev/dsp
++ * when written for OSS.  Device is largely configured when opened
++ * under pulseaudio.  -- kjotte 14Mar2009
++ */
+ static void init_hardware(void)
+ {
+    int stereo = 0;
+    int param, retval, logDataSize;
+    int format;
+    
+-   switch(bits)
++/*   switch(bits)
+    {
+    case 8:
+       format = AFMT_U8;
+@@ -252,12 +292,12 @@ static void init_hardware(void)
+       printf("Bad sample depth: %i\n", bits);
+       exit(1);
+    }
+-   
++  */ 
+    /* sound buffer */
+    dataSize = freq / nsf->playback_rate * (bits / 8);
+ 
+    /* Configure the DSP */
+-   logDataSize = -1;
++  /* logDataSize = -1;
+    while((1 << ++logDataSize) < dataSize);
+    param = 0x10000 | logDataSize + 4;
+    retval = ioctl(audiofd, SNDCTL_DSP_SETFRAGMENT, &param);
+@@ -294,8 +334,10 @@ static void init_hardware(void)
+       printf("Unable to get buffer size\n");
+       exit(1);
+    }
++*/
+    /* set up our data buffer */
+-   bufferSize = param;
++//   bufferSize = param;
++	bufferSize = (int)pa_frame_size(&audiospec);
+    buffer = malloc((bufferSize / dataSize + 1) * dataSize);
+    bufferPos = buffer;
+    memset(buffer, 0, bufferSize);
+@@ -304,7 +346,8 @@ static void init_hardware(void)
+ /* close what we've opened */
+ static void close_hardware(void)
+ {
+-   close(audiofd);
++ //  close(audiofd);
++	pa_simple_free(audio);
+    free(buffer);
+    buffer = 0;
+    bufferSize = 0;
+@@ -319,7 +362,7 @@ static void show_help(void)
+    printf("\t-h  \tHelp\n");
+    printf("\t-v  \tVersion information\n");
+    printf("\n\t-t x\tStart playing track x (default: 1)\n");
+-   printf("\n\t-d x\tUse device x (default: /dev/dsp)\n");
++   //printf("\n\t-d x\tUse device x (default: /dev/dsp)\n");
+    printf("\t-s x\tPlay at x times the normal speed.\n");
+    printf("\t-f x\tUse x sampling rate (default: 44100)\n");
+    printf("\t-B x\tUse sample size of x bits (default: 8)\n");
+@@ -554,7 +597,8 @@ static void play(char * filename, int tr
+       if(bufferPos >= buffer + bufferSize)
+       {
+          if(frames >= starting_frame)
+-           write(audiofd, buffer, bufferPos - buffer);
++           //write(audiofd, buffer, bufferPos - buffer);
++			pa_simple_write(audio,buffer,bufferPos-buffer,&paerror);
+          bufferPos = buffer;
+       }
+ 
+@@ -581,7 +625,7 @@ static void close_nsf_file(void)
+ /* HAS ROOT PERMISSIONS -- BE CAREFUL */
+ int main(int argc, char **argv)
+ {
+-   char *device = "/dev/dsp";
++   //char *device = "/dev/dsp";
+    char *filename;
+    int track = 1;
+    int done = 0;
+@@ -611,10 +655,10 @@ int main(int argc, char **argv)
+       case 'v':
+          show_info();
+          break;
+-      case 'd':
++ /*     case 'd':
+          device = malloc( strlen(optarg) + 1 );
+          strcpy(device, optarg);
+-         break;
++         break;*/
+       case 't':
+          track = strtol(optarg, 0, 10);
+          break;
+@@ -672,7 +716,8 @@ int main(int argc, char **argv)
+    }
+    /* open_hardware uses, then discards, root permissions */
+    if(!justdisplayinfo) 
+-	open_hardware(device);
++	//open_hardware(device);
++	open_hardware();
+ 
+    load_nsf_file(filename);
+ 
