@@ -1,0 +1,12 @@
+pkgbase = python2-pylearn2
+	pkgdesc = Machine learning library based on Theano
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://github.com/lisa-lab/pylearn2
+	arch = any
+	license = GPL
+	depends = python2-theano
+	source = git://github.com/lisa-lab/pylearn2.git
+
+pkgname = python2-pylearn2
+
