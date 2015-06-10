@@ -1,0 +1,23 @@
+pkgbase = treesheets-git
+	pkgdesc = The ultimate replacement for spreadsheets, mind mappers, outliners, PIMs, text editors and small databases
+	pkgver = r109.69990a2
+	pkgrel = 1
+	url = http://treesheets.com/
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = zlib
+	makedepends = git
+	depends = wxgtk
+	depends = webkitgtk2
+	source = git://github.com/aardappel/treesheets.git#branch=master
+	source = treesheets.desktop
+	source = myframe.patch
+	sha512sums = SKIP
+	sha512sums = e423f46c1ea08d7429a3ffe027911dba52ded81228c6110f695ff19d56090ed93a6081bbc98329aa509f9888b042f995bfa3ce87cbcb34db9aab352f929b5bc2
+	sha512sums = 6c4db7d55a4df02b4b71674fc4ae2f303886d62bef2b0673fa6f5d05257021d771eb18075e96087f365fe0c91b989cc82c171ff8cea8f5cce9b85e4b4df97410
+
+pkgname = treesheets-git
+
