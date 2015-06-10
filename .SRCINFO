@@ -1,0 +1,15 @@
+pkgbase = archlog-git
+	pkgdesc = View changes to a svn repo, formatted as a ChangeLog
+	pkgver = 0.5.r0.g3178189
+	pkgrel = 1
+	url = http://github.com/xyproto/archlog
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = go
+	depends = subversion
+	source = archlog::git://github.com/xyproto/archlog.git#tag=0.5
+	md5sums = SKIP
+
+pkgname = archlog-git
+
