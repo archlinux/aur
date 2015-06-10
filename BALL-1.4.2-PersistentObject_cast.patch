@@ -1,0 +1,12 @@
+diff -ur BALL-1.4.2/source/FORMAT/PDBFileDetails.C BALL-1.4.2-n/source/FORMAT/PDBFileDetails.C
+--- BALL-1.4.2/source/FORMAT/PDBFileDetails.C	2013-01-25 11:34:25.000000000 +0100
++++ BALL-1.4.2-n/source/FORMAT/PDBFileDetails.C	2013-06-14 13:03:35.096928205 +0200
+@@ -898,7 +898,7 @@
+ 	{
+ 		if (!(current_protein_->hasProperty("CRYSTALINFO")))
+ 		{
+-			boost::shared_ptr<CrystalInfo> temp_ptr(new CrystalInfo());
++			boost::shared_ptr<PersistentObject> temp_ptr(new CrystalInfo());
+ 			current_protein_->setProperty(NamedProperty("CRYSTALINFO", temp_ptr));
+ 		}
+ 
