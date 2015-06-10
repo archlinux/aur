@@ -1,0 +1,18 @@
+pkgbase = plv8-9.4-bin
+	pkgdesc = plv8js is a procedural language add-on for PostgreSQL
+	pkgver = 1.4.3
+	pkgrel = 1
+	url = https://code.google.com/p/plv8js/
+	arch = i686
+	arch = x86_64
+	license = BSD new
+	makedepends = git
+	depends = postgresql
+	depends = v8-3.14
+	provides = plv8
+	conflicts = plv8js-git
+	source = http://apt.postgresql.org/pub/repos/apt/pool/main/p/plv8/postgresql-9.4-plv8_1.4.2.ds-3~24.git9187996.pgdg14.10%2b1_amd64.deb
+	md5sums = 496637c0925a4e3d42cf9cc6c42b9096
+
+pkgname = plv8-9.4-bin
+
