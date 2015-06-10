@@ -5,7 +5,7 @@
 # Contributor: Joan Rieu <toto_pirate@hotmail.fr>
 
 pkgname=roxterm-gtk2-git
-pkgver=2.9.0.r10.g4415109
+pkgver=2.9.7.r0.geaf5c06
 pkgrel=1
 pkgdesc="Tabbed, VTE-based terminal emulator (GTK2 version)"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ makedepends=('git' 'docbook-xsl' 'xmlto' 'po4a' 'python2' 'python2-lockfile' 'im
 provides=('roxterm')
 conflicts=('roxterm' 'roxterm-git' 'roxterm-gtk2')
 install=roxterm-gtk2-git.install
-source=("$pkgname::git://git.code.sf.net/p/roxterm/code")
+source=("$pkgname::git://git.code.sf.net/p/roxterm/code#tag=2.9.7")
 md5sums=('SKIP')
 
 pkgver() {
