@@ -1,0 +1,17 @@
+pkgbase = python2-ssh
+	pkgdesc = Python SSH2 protocol library
+	pkgver = 1.8.0
+	pkgrel = 3
+	url = http://pypi.python.org/pypi/ssh
+	arch = any
+	license = LGPL
+	checkdepends = python2-nose
+	makedepends = python2-distribute
+	depends = python2
+	depends = pycrypto
+	options = !emptydirs
+	source = http://pypi.python.org/packages/source/s/ssh/ssh-1.8.0.tar.gz
+	md5sums = bc4dd59ec0c7bdf78a3840652cac824e
+
+pkgname = python2-ssh
+
