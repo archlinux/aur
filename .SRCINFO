@@ -1,0 +1,23 @@
+pkgbase = libgnomecups
+	pkgdesc = GNOME CUPS library
+	pkgver = 0.2.3
+	pkgrel = 13
+	url = http://www.gnome.org/
+	arch = x86_64
+	arch = i686
+	license = LGPL
+	license = GPL
+	makedepends = perl-xml-parser
+	depends = libcups
+	options = !libtool
+	source = http://ftp.gnome.org/pub/GNOME/sources/libgnomecups/0.2/libgnomecups-0.2.3.tar.bz2
+	source = libgnomecups_0.2.3-ignore-ipp-not-found.patch
+	source = gentoo1.patch::http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/net-print/libgnomecups/files/libgnomecups-0.2.3-glib.h.patch?revision=1.1
+	source = gentoo2.patch::http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/net-print/libgnomecups/files/libgnomecups-0.2.3-cups-1.6.patch?revision=1.1
+	md5sums = dc4920c15c9f886f73ea74fbff0ae48b
+	md5sums = 973a1b9d93013ce431400a14b78f5d94
+	md5sums = de094a91df09f2136f13e5380b9bfa84
+	md5sums = b9e1d6a5eda9ecb98a1fcb6f8d0e9b4d
+
+pkgname = libgnomecups
+

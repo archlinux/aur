@@ -1,0 +1,11 @@
+--- a/libgnomecups/gnome-cups-request.c	2007-01-31 10:49:17.000000000 -0800
++++ b/libgnomecups/gnome-cups-request.c	2009-11-24 12:49:30.000000000 -0800
+@@ -349,7 +349,7 @@
+ 		if (request->response == NULL)
+ 			status = IPP_INTERNAL_ERROR;
+ 
+-		if (status > IPP_OK_CONFLICT) {
++		if (status > IPP_OK_CONFLICT && status != IPP_NOT_FOUND) {
+ 			g_warning ("IPP request failed with status %d", status);
+ 			if (request->error != NULL)
+ 				*(request->error) = g_error_new (GNOME_CUPS_ERROR, 
