@@ -1,0 +1,14 @@
+pkgbase = libmcs
+	pkgdesc = Library which abstracts the storage of configuration settings
+	pkgver = 0.7.2
+	pkgrel = 2
+	url = http://www.atheme.org/project/mcs
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = libmowgli
+	source = http://distfiles.atheme.org/libmcs-0.7.2.tbz2
+	sha1sums = 20c30bf7d4b3043848b5180de4c2cb61f7e0154c
+
+pkgname = libmcs
+
