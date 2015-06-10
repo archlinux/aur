@@ -1,0 +1,18 @@
+pkgbase = gog-lure-of-the-temptress
+	pkgdesc = From the creators of the Broken Sword series, Revolution Software, comes the first in a series of 'Virtual Theater' adventure game.
+	pkgver = 1.0.0.4
+	pkgrel = 1
+	url = http://www.gog.com/game/lure_of_the_temptress
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = custom
+	depends = freetype2
+	depends = unionfs-fuse
+	source = local://gog_lure_of_the_temptress_1.0.0.4.tar.gz
+	source = gog-lure-of-the-temptress
+	sha256sums = 5bce0b04cd3402c64ae50ca2f99c91c2cd3f5407f2afa5ffece7b672caedbea3
+	sha256sums = 892b9732d7fef04023ee88a5fb07f6ce630b9975cfb348489d0f11f786f5bde3
+
+pkgname = gog-lure-of-the-temptress
+
