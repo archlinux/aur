@@ -1,0 +1,17 @@
+pkgbase = firmware-tools
+	pkgdesc = Scripts and tools to manage firmware and BIOS updates
+	pkgver = 2.1.14
+	pkgrel = 3
+	url = http://linux.dell.com/repo/firmware/
+	arch = any
+	license = GPL
+	license = OSL
+	makedepends = make
+	makedepends = gawk
+	depends = python2
+	depends = python2-libgnome
+	source = http://linux.dell.com/libsmbios/download/firmware-tools/firmware-tools-2.1.14/firmware-tools-2.1.14.tar.bz2
+	sha256sums = ae3bb3df48ad17e3169e5559aed1e9b09e378e024396236c7e4f2acf76c773b2
+
+pkgname = firmware-tools
+
