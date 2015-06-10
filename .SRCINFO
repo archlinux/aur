@@ -1,0 +1,13 @@
+pkgbase = zoem
+	pkgdesc = Zoem programming language
+	pkgver = 11.166
+	pkgrel = 1
+	url = http://micans.org/zoem/
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	source = http://micans.org/zoem/src/zoem-11-166.tar.gz
+	sha256sums = 1267a222ae2ee998a91dbe66df19cf998a0e7db45c7e59821049ae6b791f37fe
+
+pkgname = zoem
+
