@@ -1,0 +1,19 @@
+pkgbase = copyq-plugin-itemweb-git
+	pkgdesc = Clipboard manager with searchable and editable history. Itemweb plugin.
+	pkgver = 20140126
+	pkgrel = 1
+	url = https://github.com/hluk/CopyQ
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = qtwebkit
+	depends = copyq-git
+	provides = copyq-plugin-itemweb
+	conflicts = copyq-plugin-itemweb
+	source = copyq-plugin-itemweb-git::git+https://github.com/hluk/CopyQ.git
+	md5sums = SKIP
+
+pkgname = copyq-plugin-itemweb-git
+
