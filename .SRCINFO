@@ -1,0 +1,14 @@
+pkgbase = key-logic-ext
+	pkgdesc = Dependencies for key-logic
+	pkgver = 2.2
+	pkgrel = 2
+	url = http://www.key-project.org
+	arch = any
+	license = LGPL
+	license = IBM
+	license = BSD
+	source = http://www.key-project.org/download/releases/2.2.2/KeYExtLib-2.2.tgz
+	sha256sums = 8348b8d3450eb876bf4d0823d2fbd56257b92475b6f9c52c4bdf80e7088f2a68
+
+pkgname = key-logic-ext
+
