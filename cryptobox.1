@@ -1,0 +1,53 @@
+.\" generated with Ronn/v0.7.3
+.\" http://github.com/rtomayko/ronn/tree/0.7.3
+.
+.TH "CRYPTOBOX" "" "May 2014" "" "cryptobox"
+A wrapper script for \fBcryptsetup\fR that makes it easy to create, mount and unmount encrypted image files using LUKS\.
+.
+.SH "Requirements"
+
+\fBcryptsetup\fR
+.RS 4
+Userspace setup tool for transparent encryption of block devices using\.
+.RE
+.PP
+
+\fButil\-linux\fR
+.RS 4
+Miscellaneous system utilities for Linux, required for \fBlosetup\fR and \fBmkfs\fR\.
+.RE
+.PP
+
+.IP "" 0
+.
+.SH "Usage"
+.
+\fBcryptobox\fR
+.RS 4
+Displays the list of commands
+.RE
+.PP
+
+\fBcryptobox c filename\.img filesystem size\-in\-mb\fR
+.RS 4
+Creates an image file with a given filesystem and size in megabytes\. (eg: \fBcryptobox c myimg\.img ext4 128\fR)
+.RE
+.PP
+
+\fBcryptobox m filename\.img /mount/point\fR
+.RS 4
+Mounts a given image file on a given directory\. (eg: \fBcryptobox m myimg\.img /mnt/cryptoimg\fR)
+.RE
+.PP
+
+\fBcryptobox u /mount/point\fR
+.RS 4
+Unmounts an image file from a given directory\. (eg: \fBcryptobox u /mnt/cryptoimg\fR)
+.RE
+.PP
+
+.SH "Credits"
+Written by Kevin MacMartin: GitHub Projects \fIhttps://github\.com/prurigro?tab=repositories\fR | Arch Linux AUR Packages \fIhttps://aur\.archlinux\.org/packages/?SeB=m&K=prurigro\fR
+.
+.SH "License"
+This script is open source and licensed under the GPLv3 \fIhttp://www\.gnu\.org/copyleft/gpl\.html\fR\.

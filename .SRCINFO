@@ -1,0 +1,18 @@
+pkgbase = cryptobox
+	pkgdesc = A simple frontend script for creating, mounting and umounting luks encrypted disk images
+	pkgver = 20140529.r9.f32decc
+	pkgrel = 2
+	url = https://github.com/prurigro/cryptobox
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = coreutils
+	depends = cryptsetup
+	depends = util-linux
+	source = git://github.com/prurigro/cryptobox.git#branch=master
+	source = cryptobox.1
+	sha512sums = SKIP
+	sha512sums = cdbe0bd873401c4d366318cef784969f70004baf7760aadba96c109d3879faa3456f3c0ff00466539a27ff8ad96a785d12cea4376eda4d06999839ba9b3db256
+
+pkgname = cryptobox
+
