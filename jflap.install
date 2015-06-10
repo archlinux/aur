@@ -1,0 +1,13 @@
+# Maintainers: swyter <swyterzone+aur@gmail.com>
+
+post_upgrade()
+{
+	# make the svg icon appear correctly without having to wait for a restart:
+	gtk-update-icon-cache -f "/usr/share/icons/hicolor"
+}
+post_install()
+{
+	# call that thing up there :)
+	post_upgrade
+}
+

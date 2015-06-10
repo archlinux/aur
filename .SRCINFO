@@ -1,0 +1,22 @@
+pkgbase = jflap-beta
+	pkgdesc = Software to learning the basic concepts of Formal Languages and Automata Theory, latest version
+	pkgver = 7.0
+	pkgrel = 2
+	url = http://www.jflap.org/
+	install = jflap.install
+	arch = any
+	license = CCPL
+	depends = java-runtime
+	conflicts = j_flap
+	noextract = JFLAP.jar
+	source = http://www.jflap.org/jflaptmp/may15-2011/withoutSource/JFLAP.jar
+	source = jflap.sh
+	source = jflap.desktop
+	source = swyter-jflap-icon.svg
+	md5sums = 95d5f8f9f098331f6f61c24f7931589f
+	md5sums = 6ce7e5c80d16fdc9d4f04089b50a0e96
+	md5sums = 0fd855a18bacaac9f88cdec60597e90e
+	md5sums = 6925236e7c32342045a7ad1b31984cfb
+
+pkgname = jflap-beta
+
