@@ -1,0 +1,21 @@
+pkgbase = perl-spread
+	pkgdesc = Perl extension for the Spread group communication system
+	pkgver = 3.17.4.4
+	pkgrel = 5
+	url = http://search.cpan.org/~jesus/Spread-3.17.4.4/Spread.pm
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = Perl
+	depends = perl
+	depends = gtk2-perl
+	depends = perl-extutils-depends
+	depends = perl-extutils-pkgconfig
+	depends = libunique
+	depends = spread-daemon
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JE/JESUS/Spread-3.17.4.4.tar.gz
+	md5sums = 751314b7494530ad8feff2c10ac23010
+
+pkgname = perl-spread
+
