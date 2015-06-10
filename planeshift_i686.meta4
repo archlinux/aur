@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metalink xmlns="urn:ietf:params:xml:ns:metalink">
+  <published>2014-01-03T22:15:00Z</published>
+  <file name="PlaneShift-v0.6.3-x86.run">
+    <version>0.6.3</version>
+    <description>
+    PlaneShift 0.6.3 for 32-bit Linux
+    </description>
+    <hash type="md5">ba9500f83b15aea19bdbe2491d538ca2</hash>
+    <url location="fr" priority="1">http://mirror.osmmo.org/planeshift/PlaneShift-v0.6.3-x86.run</url>
+    <url location="de" priority="1">http://kiwi.frubar.net/planeshift/PlaneShift-v0.6.3-x86.run</url>
+    <url location="de" priority="1">http://mirroring.psde.de/PlaneShift-v0.6.3-x86.run</url>
+    <url location="us" priority="1">http://mirrors.redlem.com/PlaneShift/PlaneShift-v0.6.3-x86.run</url>
+    <metaurl mediatype="torrent" priority="2">http://194.116.72.94/bt/PlaneShift-v0.6.3-x86.run.torrent</metaurl>
+  </file>
+</metalink>

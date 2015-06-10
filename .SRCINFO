@@ -1,0 +1,29 @@
+pkgbase = planeshift
+	pkgdesc = Open source and cross-platform 3D Fantasy MMORPG
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = http://www.planeshift.it/
+	install = planeshift.install
+	arch = x86_64
+	arch = i686
+	license = GPL
+	license = custom:PlaneShift Content License
+	makedepends = gendesk
+	makedepends = aria2
+	depends = libgl
+	depends = libsm
+	depends = libxmu
+	depends = libxpm
+	depends = openal
+	options = emptydirs
+	source = planeshift_x86_64.meta4
+	source = planeshift_i686.meta4
+	source = license.txt
+	source = scriptfix.patch
+	sha256sums = 19daff9fd80bcf8a52cd4ce49af7509048083efa49d6efd5867c46e0e2b96073
+	sha256sums = 11aafef3fed081f42889124d393a8008c40e34a49abf16b94d7b49f1390dbab3
+	sha256sums = 51ba4271c77c00efe087f2f456ae777853f85b97767cf085d2fb8f9b82c082fc
+	sha256sums = b97231a4aa4b41ca1b5ca785086a02b61461d669db6561b580692ca6f3444a99
+
+pkgname = planeshift
+
