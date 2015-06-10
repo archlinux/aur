@@ -1,0 +1,27 @@
+pkgbase = kbibtex-next-git
+	pkgdesc = A BibTeX editor for KDE (latest development version)
+	pkgver = 0.9.90.r19.gcf671d89
+	pkgrel = 1
+	epoch = 1
+	url = https://userbase.kde.org/KBibTeX
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	makedepends = git
+	makedepends = extra-cmake-modules
+	makedepends = qca-qt5
+	makedepends = kdoctools
+	depends = poppler-qt5
+	depends = kio
+	depends = icu
+	depends = qt5-networkauth
+	depends = qt5-xmlpatterns
+	depends = libxml2
+	depends = libxslt
+	optdepends = okular: Document preview
+	provides = kbibtex
+	conflicts = kbibtex
+	source = git+https://invent.kde.org/office/kbibtex.git#branch=kbibtex/0.10
+	sha512sums = SKIP
+
+pkgname = kbibtex-next-git
