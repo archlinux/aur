@@ -1,0 +1,15 @@
+pkgbase = joy2key
+	pkgdesc = Translate joystick movements into keystrokes
+	pkgver = 1.6.3
+	pkgrel = 2
+	url = https://sourceforge.net/projects/joy2key/
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	depends = libx11
+	depends = xorg-xwininfo
+	source = http://sourceforge.net/projects/joy2key/files/joy2key/1.6.3/joy2key-1.6.3.tar.bz2
+	sha256sums = cf6f452632bb661cf889d843e9ebb9f4fe6ddf4bfe14193ebf74c2d1e2b89f50
+
+pkgname = joy2key
+
