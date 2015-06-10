@@ -1,0 +1,7 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=CWM
+Comment=A clean and simple window manager for X inspired by evilwm
+Exec=/usr/bin/cwm
+TryExec=/usr/bin/cwm
+Type=XSession
