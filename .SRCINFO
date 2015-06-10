@@ -1,0 +1,22 @@
+pkgbase = pacrepo-git
+	pkgdesc = A collection of pacman-related tools
+	pkgver = 0.r40.gbb49a53
+	pkgrel = 1
+	url = https://github.com/DMBuce/pacrepo
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = openssh
+	depends = pacman
+	depends = bash
+	depends = patch
+	depends = vim
+	depends = reflector
+	provides = pacrepo
+	conflicts = pacrepo
+	backup = etc/pacrepo.conf
+	source = pacrepo-git::git://github.com/DMBuce/pacrepo.git
+	md5sums = SKIP
+
+pkgname = pacrepo-git
+
