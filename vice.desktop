@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=VICE
+Comment=Emulator for Commodore's 8-bit computers 
+Exec=vice
+Terminal=false
+Type=Application
+Categories=Game;Emulator;
+Icon=/usr/share/applications/vice.png

@@ -1,0 +1,15 @@
+--- a/configure.in	2011-02-19 23:07:05.000000000 +0100
++++ b/configure.in	2012-08-06 13:18:46.000000000 +0200
+@@ -1990,12 +1990,7 @@
+
+ fi
+
+-AC_PATH_PROGS(FCCACHE, fc-cache, false)
+-if test x"$FCCACHE" = "xfalse"; then
+   AM_CONDITIONAL(HAVE_FC_CACHE, false)
+-else
+-  AM_CONDITIONAL(HAVE_FC_CACHE, true)
+-fi
+
+ if test x"$is_amigaos4" = "xyes"; then
+   if test x"$enable_sdlui" != "xyes"; then

@@ -1,0 +1,11 @@
+--- a/configure.in	2012-11-01 16:37:51.000000000 +0100
++++ b/configure.in	2012-11-03 18:07:35.000000000 +0100
+@@ -3424,7 +3419,7 @@
+     ;;
+   linux*)
+     if test x"$host_cpu" = "xx86_64"; then
+-      VICEDIR="$PREFIX/lib64/vice"
++      VICEDIR="$PREFIX/lib/vice"
+       AM_CONDITIONAL(ALTERNATE_DOCDIR, false)
+     else
+       VICEDIR="$PREFIX/lib/vice"

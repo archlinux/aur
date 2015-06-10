@@ -1,0 +1,79 @@
+#!/bin/bash
+
+title="VICE: Which emulator do you want to use ?"
+emulator_type=`matedialog  --width="530" --height="275" --title="$title" --list --radiolist --column="Click Here" \
+    --column="Emulator Type" --column="Description" \
+    FALSE "x64" "C64 emulator"\
+    FALSE "x64dtv" "C64 Direct-to-TV (DTV) emulator"\
+    FALSE "x128" "C128 emulator"\
+    FALSE "xvic" "VIC20 emulator"\
+    FALSE "xpet" "PET emulator"\
+    FALSE "xplus4" "PLUS4 emulator"\
+    FALSE "xcbm2" "CBM-II emulator"\
+    | sed 's/ max//g' `
+
+echo "$emulator_type chosen as the Emulator Type!."
+
+#user must select a target type (Check if they cancelled)
+if [ ! "$emulator_type" ]; then
+                           exit
+fi
+
+######### This part takes the selection and applies it!  #############
+
+if [ "$emulator_type" = "x64" ]
+then
+        # Do x64 here.
+        x64 
+
+elif [ "$emulator_type" = "x64dtv" ]
+then
+        # Do x64dtv here.
+        x64dtv
+
+elif [ "$emulator_type" = "x128" ]
+then
+        # Do x128 here.
+        x128 
+
+
+
+elif [ "$emulator_type" = "xvic" ]
+then
+        # Do xvic here.
+        xvic 
+
+
+
+elif [ "$emulator_type" = "xpet" ]
+then
+        # Do xpet here.
+        xpet 
+
+
+
+elif [ "$emulator_type" = "xplus4" ]
+then
+        # Do xplus4 here.
+        xplus4 
+
+
+
+elif [ "$emulator_type" = "xcbm2" ]
+then
+        # Do xcbm2 here.
+        xcbm2 
+
+else
+
+#if [ "$exit_type" = "Cancel" ]
+#then
+        # Do Cancel here.
+    sleep 1 | matedialog --progress --percentage=95 --title=Cancelling Exit --auto-close --auto-kill --no-cancel --width=300
+fi
+
+
+
+
+
+
