@@ -1,0 +1,13 @@
+pkgbase = nweb
+	pkgdesc = Tiny web server for serving static pages
+	pkgver = 23
+	pkgrel = 1
+	url = http://www.ibm.com/developerworks/systems/library/es-nweb.html
+	arch = x86_64
+	arch = i686
+	license = custom
+	makedepends = lynx
+	source = http://public.dhe.ibm.com/systems/power/community/aix/nweb/nweb.zip
+
+pkgname = nweb
+
