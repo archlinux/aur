@@ -1,0 +1,19 @@
+pkgbase = tasksh-git
+	pkgdesc = A shell command that wraps Taskwarrior commands
+	pkgver = 20141222.r62.c5e6d77
+	pkgrel = 1
+	url = http://tasktools.org/projects/tasksh.html
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = task
+	source = git+https://git.tasktools.org/scm/ex/tasksh.git
+	sha512sums = SKIP
+
+pkgname = tasksh-git
+
