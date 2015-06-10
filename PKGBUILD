@@ -41,5 +41,5 @@ package() {
   install -d "${pkgdir}/usr/bin/"
 
   install -m 644 "${srcdir}/nvidiabl-master/nvidiabl.ko" "${_MODPATH}"
-  install -m 644 scripts/usr/local/sbin/nvidiablctl "${pkgdir}/usr/bin/"
+  install -m 755 scripts/usr/local/sbin/nvidiablctl "${pkgdir}/usr/bin/"
 }
