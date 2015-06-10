@@ -1,0 +1,32 @@
+ONLINE MULTIPLAYER
+
+To play online multiplayer (EA passed support of this service to XWIS):
+    1. Run the game
+    2. At the Main Menu click Internet. After a series of messages you will be
+       at the username creation screen.
+    3. XWIS allows you to ignore the 'New Account' button. Enter any username, 
+       and a password 8 characters long.
+    4. Select your country location and desired server, then hit OK. You
+       should be taken to the main online lobby where you can join/create games
+       if users are online.
+For more information visit http://xwis.net/forums/index.php/topic/168665-tiberian-sun-readme-first/
+
+
+LAN MULTIPLAYER
+
+Tiberian Sun's LAN Multiplayer natively uses IPX. To replace this with UDP, a replacement binary is required. Download  ts_ra2_lanpatch_1_00.zip  and place  wsock32.dll in the game's  SUN/  directory (under $HOME/.tiberiansun/). Note that this patch will break online multiplayer, but it can simply be removed to restore that functionality.
+
+One potential source of the patch zip: http://digiex.net/downloads/download-center-2-0/games/3423-tiberian-sun-red-alert-2-lan-patch.html
+
+
+GAME SERIALS
+
+An unfortunate oversight of EA, when they released the game as freeware, was forgetting about the multiplayer mode's check on game serials. When more than two people join a game, they have to have unique serial numbers. Fortunately, there is a way around this, however it requires downloading a utility released by a software cracking group.
+
+Razor 1911 released  rzrtsfix.zip  in 1999. This zip contains an executable that will set a random serial number for your game. Read the NFO file in the zip for more information.
+
+One potential source of the serial zip (caution, this is not the safest site on the internet): http://gf.wiretarget.com/tiberian_sun.htm
+Scroll to the bottom and download the link labelled "Serial Changer Done by Razor 1911"
+
+To execute the utility properly, extract the executable somewhere, cd into the  SUN/  directory (under $HOME/.tiberiansun/), and run the following:
+WINEPREFIX="$HOME/.tiberiansun/tiberiansun" WINEARCH="win32" wine $pathToUtility

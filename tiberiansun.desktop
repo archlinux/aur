@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Icon=/usr/share/icons/tiberiansun.ico
+Exec=/usr/bin/tiberiansun
+Terminal=false
+StartupNotify=false
+
+Name=Tiberan Sun
+Comment=GDI and NOD battle in a future Earth seeded with the extraterrestrial substance Tiberium.
+
+Categories=Game;
+

@@ -1,0 +1,6 @@
+/pkg/
+/src/
+/extracttemp/
+*.rar
+*.tar
+*.swp

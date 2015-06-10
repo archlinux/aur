@@ -1,0 +1,10 @@
+post_install() {
+    if [[ "$(uname -m)"  =~ "64" ]]
+    then
+        echo "If you are using 64-bit architecture, don't forget to install a 32-bit graphics driver."
+    fi
+}
+
+post_remove() {
+    echo "To completely clean all files generated from this package, delete ~/.tiberiansun"
+}
