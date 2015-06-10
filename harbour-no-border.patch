@@ -1,0 +1,13 @@
+diff --git a/src/DockApp.cc b/src/DockApp.cc
+index 5fc9cef..8d6b6a8 100644
+--- a/src/DockApp.cc
++++ b/src/DockApp.cc
+@@ -32,7 +32,7 @@ using std::endl;
+ #endif // DEBUG
+ 
+ const uint DOCKAPP_DEFAULT_SIDE = 64;
+-const uint DOCKAPP_BORDER_WIDTH = 2;
++const uint DOCKAPP_BORDER_WIDTH = 0;
+ 
+ //! @brief DockApp constructor
+ DockApp::DockApp(Window win) :
