@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Solitude
+GenericName=Tomes of Solitude
+Exec=solitude
+Icon=solitude.png
+Terminal=false
+Type=Application
+Categories=Application;Game;
