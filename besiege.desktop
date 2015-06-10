@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Besiege
+GenericName=Besiege
+Comment=A physics based building puzzler.
+Exec=/usr/bin/besiege
+Icon=/usr/share/besiege/Besiege_Data/Resources/UnityPlayer.png
+Terminal=false
+Type=Application
+Categories=Game;

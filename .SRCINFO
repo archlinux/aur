@@ -1,0 +1,17 @@
+pkgbase = besiege
+	pkgdesc = A physics based building puzzler.
+	pkgver = 0.08
+	pkgrel = 1
+	url = http://besiegethegame.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	depends = glu
+	source = besiege.desktop
+	source = besiege
+	sha256sums = c6cef3d0bfef18cf355cbb31843463fbeaad9057d958e055bffaa4a261e5b5dd
+	sha256sums = 9ae91d4d571866d2ac004d7d5b6c3ce4e593ca2cb7ff410be81897dbd4810ae2
+
+pkgname = besiege
+
