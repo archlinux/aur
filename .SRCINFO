@@ -1,0 +1,16 @@
+pkgbase = puae-git
+	pkgdesc = Amiga emulator for *nix systems - successor of E-UAE
+	pkgver = 20110803
+	pkgrel = 1
+	url = http://github.com/GnoStiC/PUAE
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = alsa-lib
+	depends = gtk2
+	depends = libgl
+	depends = sdl
+
+pkgname = puae-git
+
