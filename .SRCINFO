@@ -1,0 +1,21 @@
+pkgbase = fusedav-git
+	pkgdesc = A webdav filesystem based on FUSE
+	pkgver = fd90308
+	pkgrel = 1
+	url = https://github.com/pantheon-systems/fusedav/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = autoconf
+	depends = fuse
+	depends = neon
+	depends = leveldb
+	depends = systemd
+	depends = jemalloc
+	depends = uriparser
+	source = git://github.com/pantheon-systems/fusedav.git
+	md5sums = SKIP
+
+pkgname = fusedav-git
+
