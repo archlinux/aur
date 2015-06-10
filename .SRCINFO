@@ -1,0 +1,14 @@
+pkgbase = git-pull-request
+	pkgdesc = git command to automatically pull locally github pull requests
+	pkgver = 20140430
+	pkgrel = 1
+	url = http://www.splitbrain.org/blog/2011-06/19-automate_github_pull_requests
+	arch = any
+	license = MIT
+	depends = python2
+	depends = git
+	source = git+https://github.com/splitbrain/git-pull-request.git
+	sha1sums = SKIP
+
+pkgname = git-pull-request
+
