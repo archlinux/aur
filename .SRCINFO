@@ -1,0 +1,34 @@
+pkgbase = arduino10
+	pkgdesc = Arduino prototyping platform SDK (old version)
+	pkgver = 1.0.6
+	pkgrel = 2
+	epoch = 1
+	url = http://arduino.cc/en/Main/Software
+	install = arduino.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = icoutils
+	depends = gtk2
+	depends = libusb-compat
+	depends = java-runtime
+	depends = java-rxtx
+	depends = desktop-file-utils
+	conflicts = arduino
+	conflicts = arduino-toolchain
+	options = !strip
+	options = staticlibs
+	source = arduino-fix-arguments.patch
+	source = arduino.desktop
+	source = arduino.xml
+	sha256sums = 631921fce485d14c79bcdc31d5d6f3a95d729d49975390b6b785fe49d238ff65
+	sha256sums = d817829bb2830cb690ed63f14d8a990bb513bef4a4ebc6227a82abdfc8bcd35d
+	sha256sums = 473b82156505e9bd903e4d8484e8d183f2e3bf3c1f7e29940b815929ae597b68
+	source_i686 = http://downloads.arduino.cc/arduino-1.0.6-linux32.tgz
+	sha256sums_i686 = f059a572231abafb92099a3a404c0a41502c3413668610676c40029384edc658
+	source_x86_64 = http://downloads.arduino.cc/arduino-1.0.6-linux64.tgz
+	sha256sums_x86_64 = 1ff175c487de335981d3aad64cf212b56cb2c778a6bdd6655045335ffc65e147
+
+pkgname = arduino10
+

@@ -1,0 +1,25 @@
+--- a/arduino	2013-04-11 13:31:37.000000000 +0200
++++ b/arduino	2014-01-12 15:18:46.159694131 +0100
+@@ -2,6 +2,16 @@
+  
+ APPDIR="$(dirname -- "$(readlink -f -- "${0}")" )"
+ 
++args=()
++for arg in "$@"
++do
++    if [[ "$arg" == -* ]]; then
++        args+=("$arg")
++    else
++        args+=("$(realpath "$arg")")
++    fi
++done
++
+ cd "$APPDIR"
+  
+ for LIB in \
+@@ -19,4 +29,4 @@
+ 
+ export PATH="${APPDIR}/java/bin:${PATH}"
+ 
+-java -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel processing.app.Base "$@"
++java -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel processing.app.Base "${args[@]}"

@@ -1,0 +1,15 @@
+post_upgrade() {
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+  update-desktop-database -q
+  update-mime-database /usr/share/mime >/dev/null
+}
+
+post_install() {
+  post_upgrade
+
+  echo "Don't forget to add yourself to the uucp and lock groups: gpasswd -a <user> uucp && gpasswd -a <user> lock (execute as root)"
+}
+
+post_remove() {
+  post_upgrade
+}
