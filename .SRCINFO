@@ -1,0 +1,12 @@
+pkgbase = jemdoc
+	pkgdesc = a light markup designed for websites
+	pkgver = 0.7.4
+	pkgrel = 0
+	url = http://jemdoc.jaboc.net/index.html
+	arch = any
+	license = GPL
+	makedepends = curl
+	depends = python2
+
+pkgname = jemdoc
+
