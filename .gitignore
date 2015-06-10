@@ -1,0 +1,7 @@
+*.pkg.tar
+*.src.tar.gz
+*.tar.bz2*
+pkg/
+src/
+PKGBUILD.9
+tahoe-lafs-i2p-*.patch
