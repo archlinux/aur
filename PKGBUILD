@@ -3,11 +3,10 @@
 pkgname=backup-conf
 pkgdesc='This script create a backup of your config files in a tree format on current folder'
 url="https://github.com/LaraCraft93/$pkgname"
-pkgver=4.4.2
+pkgver=5.0
 pkgrel=1
 license=('GPL')
 arch=('any')
-backup=('etc/backup-conf.conf')
 install='backup-conf.install'
 
 depends=('util-linux'
