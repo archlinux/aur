@@ -1,0 +1,14 @@
+pkgbase = bubblefishymod
+	pkgdesc = Plugin for gkrellm with duck and fishs.
+	pkgver = 0.6.4
+	pkgrel = 2
+	url = http://www.jnrowe.ukfsn.org/projects/bfm.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gkrellm
+	source = bfm-0.6.4.tar.bz2::http://download.chinaunix.net/down.php?id=1624&ResourceID=865&site=1
+	md5sums = db6395852d7d08a2481139497cc6a957
+
+pkgname = bubblefishymod
+
