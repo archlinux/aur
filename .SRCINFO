@@ -1,0 +1,21 @@
+pkgbase = libasl
+	pkgdesc = Multiphysics simulation software package (Advanced Simulation Library)
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = http://asl.org.il/
+	arch = i686
+	arch = x86_64
+	license = AGPL3
+	makedepends = cmake
+	makedepends = opencl-headers
+	depends = vtk
+	depends = libcl
+	depends = boost
+	optdepends = libmatio: Matlab file format support (should be installed before build)
+	conflicts = libasl-git
+	options = !buildflags
+	source = libasl-0.1.2.tar.gz::https://github.com/AvtechScientific/ASL/archive/v0.1.2.tar.gz
+	sha256sums = bdbd4a6027fa514d921019fd0572418d064106ce5be1d952b47afba18b5d448c
+
+pkgname = libasl
+
