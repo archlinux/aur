@@ -1,0 +1,17 @@
+pkgbase = python2-lmfit
+	pkgdesc = Least-Squares Minimization with Constraints for Python
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = http://lmfit.github.io/lmfit-py/
+	arch = any
+	license = BSD
+	checkdepends = python2-nose
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-numpy
+	depends = python2-scipy
+	source = https://github.com/lmfit/lmfit-py/archive/0.8.3.tar.gz
+	md5sums = f5a06cf18611f3dc323e3a1bab8d45fa
+
+pkgname = python2-lmfit
+
