@@ -1,0 +1,27 @@
+pkgbase = perlpanel-git
+	pkgdesc = The ideal accompaniment to a light-weight Window Manager such as OpenBox, or a desktop-drawing program like iDesk.
+	pkgver = 0.9.1.37
+	pkgrel = 1
+	url = https://github.com/bbidulock/perlpanel
+	install = perlpanel.install
+	arch = any
+	license = GPL
+	depends = glade-perl
+	depends = gnome-vfs-perl
+	depends = perl-timedate
+	depends = perl-gnome2-wnck
+	depends = perl-locale-gettext
+	depends = perl-xml-parser
+	depends = perl-xml-simple
+	optdepends = perl-xmms: XMMS applet
+	optdepends = xdg-traymenu: XDGMenu applet
+	optdepends = perl-hardware-sensorparser: Sensors applet
+	provides = perlpanel
+	conflicts = perlpanel
+	conflicts = perlpanel-light
+	options = !emptydirs
+	source = perlpanel-git::git+https://github.com/bbidulock/perlpanel.git
+	md5sums = SKIP
+
+pkgname = perlpanel-git
+
