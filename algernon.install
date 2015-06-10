@@ -1,0 +1,10 @@
+post_install() {
+  getent group algernon >/dev/null || groupadd --system algernon
+  getent passwd algernon >/dev/null || useradd --system -g algernon \
+    -d /srv/algernon -s /bin/false algernon
+
+  install -dm700 srv/algernon
+  chown algernon:algernon srv/algernon
+}
+
+# vim:set ts=2 sw=2 et:
