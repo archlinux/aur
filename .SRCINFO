@@ -1,0 +1,20 @@
+pkgbase = monkeyjump-git
+	pkgdesc = Minimalistic GUI for playing Go with GnuGo and other GTP applications
+	pkgver = a6fcea4
+	pkgrel = 1
+	url = http://github.com/xyproto/monkeyjump
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = setconf
+	makedepends = python2-distribute
+	depends = python2-pygame
+	depends = gnugo
+	backup = etc/monkeyjump/gnugocmd.conf
+	backup = etc/monkeyjump/theme.conf
+	backup = etc/monkeyjump/keybindings.conf
+	source = monkeyjump::git://github.com/xyproto/monkeyjump.git
+	md5sums = SKIP
+
+pkgname = monkeyjump-git
+
