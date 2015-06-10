@@ -1,0 +1,15 @@
+post_install() {
+  echo -ne $'Updating font cache ...\n\e[1A\e[24C'
+  fc-cache -f > /dev/null
+  mkfontscale /usr/share/fonts/OTF
+  mkfontdir /usr/share/fonts/OTF
+  echo -ne $'done.\n'
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  post_install $1
+}
