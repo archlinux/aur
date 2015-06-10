@@ -1,0 +1,15 @@
+pkgbase = fake86
+	pkgdesc = An 8086 PC emulator written in C
+	pkgver = 0.13.9.16
+	pkgrel = 2
+	url = http://fake86.rubbermallet.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = sdl
+	depends = libpcap
+	source = http://downloads.sourceforge.net/sourceforge/fake86/fake86-0.13.9.16.tar.gz
+	sha256sums = c4f9af66aa1026228a45845bf2bc0ae4eb28b6d0d692c89d4e67f56c3fe3bb20
+
+pkgname = fake86
+
