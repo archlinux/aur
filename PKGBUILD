@@ -3,8 +3,8 @@
 # Contributor: Marcel Pfeiffer <pfeiffer.marcel@gmx.de>
 
 pkgname=konstruktor-git
-pkgver=0.9.0.beta1.r78.g67ef13e
-pkgrel=2
+pkgver=0.9.0.beta1.r95.gcb9d35f
+pkgrel=1
 pkgdesc="A LDraw-based virtual LEGO(r) CAD for KDE 5."
 arch=('i686' 'x86_64')
 url="http://opendesktop.org/content/show.php?content=138138"
