@@ -1,0 +1,14 @@
+pkgbase = lalcal
+	pkgdesc = A clock/calendar for your system tray
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://xerxesdaphat.googlepages.com/lalcal,aclockforyoursystemtray
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxft
+	source = http://xerxesdaphat.googlepages.com/lalcal.tar.gz
+	md5sums = a8650b3fcd7e2639a3ed57d1952fc01b
+
+pkgname = lalcal
+
