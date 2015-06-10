@@ -1,0 +1,14 @@
+pkgbase = calcc
+	pkgdesc = useful command-line calculator (32/64 bit numbers)
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = http://aluigi.org/mytoolz.htm#calcc
+	arch = i686
+	arch = x86_64
+	license = Open Source
+	makedepends = gcc
+	source = http://aluigi.org/mytoolz/calcc.zip
+	md5sums = 05da69e83f7e04f20c98bf4fd67b8ebf
+
+pkgname = calcc
+
