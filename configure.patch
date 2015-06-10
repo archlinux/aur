@@ -1,0 +1,11 @@
+--- tcprstat-build/configure.ac	2011-11-13 00:38:58.004882000 +1100
++++ tcprstat-build/configure.ac	2011-11-13 00:53:34.714854119 +1100
+@@ -43,7 +43,7 @@
+ # Checks for header files.
+ AC_CHECK_HEADERS(
+     [arpa/inet.h netinet/in.h stdint.h stdlib.h string.h sys/time.h unistd.h])
+-AC_CHECK_HEADER([pcap/sll.h], , [buildpcap=yes])
++AC_CHECK_HEADER([pcap/sll.h], [buildpcap=no], [buildpcap=yes])
+ 
+ # Checks for typedefs, structures, and compiler characteristics.
+ AC_TYPE_UINT16_T

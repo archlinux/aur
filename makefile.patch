@@ -1,0 +1,11 @@
+--- tcprstat-build/src/Makefile.am	2011-11-13 00:38:58.004882000 +1100
++++ tcprstat-build/src/Makefile.am	2011-11-13 01:08:56.987127799 +1100
+@@ -20,7 +20,7 @@
+ 
+ AM_CFLAGS = -Wall -Werror -g
+ 
+-bin_PROGRAMS = tcprstat tcprstat-static
++bin_PROGRAMS = tcprstat
+ tcprstat_SOURCES = tcprstat.h tcprstat.c functions.h functions.c capture.h \
+ 	capture.c process-packet.h process-packet.c local-addresses.h \
+ 	local-addresses.c stats.h stats.c output.h output.c stats-hash.h \

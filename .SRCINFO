@@ -1,0 +1,21 @@
+pkgbase = tcprstat-bzr
+	pkgdesc = A protocol-agnostic libpcap-based tool for measuring TCP response times
+	pkgver = 73
+	pkgrel = 1
+	url = https://launchpad.net/tcprstat
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = bzr
+	depends = libpcap
+	provides = tcprstat
+	conflicts = tcprstat
+	options = !libtool
+	options = !emptydirs
+	source = configure.patch
+	source = makefile.patch
+	md5sums = a0a259c1498927b0d14f94f7178ac910
+	md5sums = 7395c29d5937ee04e137a990adb5a054
+
+pkgname = tcprstat-bzr
+
