@@ -1,0 +1,16 @@
+pkgbase = weatherspect
+	pkgdesc = A weather simulator using ASCII animations
+	pkgver = 1.11
+	pkgrel = 2
+	url = http://robobunny.com/projects/weatherspect/html/
+	arch = any
+	license = GPL
+	depends = perl-term-animation
+	depends = perl-weather-underground
+	source = http://robobunny.com/projects/weatherspect/weatherspect_v1.11.tar.gz
+	source = weatherspect.1
+	sha512sums = 02bef58a31f7ca6e428d0efca7948160bc0a2283ea9329f433f2e3295f9e0190b0412e49632f1820fd744b68d5ab79bcbb04f5a914b023e3f94800fb4802362b
+	sha512sums = 0f3f75418bae698d788d6ef7db373a8fe03ab289752083068f549add4af71daf2fa414a5ee9d640d6f7546f61719221bf003402b3a3a68813e0fd3edfb09c9d5
+
+pkgname = weatherspect
+
