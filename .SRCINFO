@@ -1,0 +1,16 @@
+pkgbase = ca-certificates-dn42
+	pkgdesc = dn42 root certificates for *.dn42 and 172.22.0.0/15
+	pkgver = 20150513
+	pkgrel = 1
+	url = https://dn42.net/services/Certificate-Authority
+	install = ca-certificates-dn42.install
+	arch = any
+	license = custom:RDL
+	depends = ca-certificates-utils
+	source = dn42.crt
+	md5sums = acf3819613105a5285288e78b00ab67b
+	sha1sums = 35fb8d352831bd591ee3175f5464efc573a017f3
+	sha256sums = 7c73f59d93ff148bffbb817ac069f161736f0c2580d69418316e83fa46602992
+
+pkgname = ca-certificates-dn42
+
