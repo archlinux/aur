@@ -1,0 +1,22 @@
+pkgbase = libvncserver-git
+	pkgdesc = VNC server for real X displays
+	pkgver = 0.9.10.r38.g97f442e
+	pkgrel = 1
+	url = https://LibVNC.github.io
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = autoconf-archive
+	depends = libpng
+	depends = libjpeg
+	depends = gnutls
+	depends = libgcrypt
+	depends = openssl
+	provides = libvncserver
+	conflicts = libvncserver
+	options = !emptydirs
+	source = libvncserver-git::git+https://github.com/libvnc/libvncserver.git
+	sha1sums = SKIP
+
+pkgname = libvncserver-git
+
