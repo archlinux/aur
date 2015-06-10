@@ -1,0 +1,15 @@
+pkgbase = jerasure-git
+	pkgdesc = C implementation of Reed-Solomon coding
+	pkgver = 20150108
+	pkgrel = 1
+	url = https://github.com/tsuraan/Jerasure
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = gf-complete-git
+
+pkgname = jerasure-git
+
