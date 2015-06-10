@@ -1,7 +1,7 @@
 pkgbase = linuxptp-git
 	pkgdesc = An implementation of the Precision Time Protocol (PTP) according to IEEE standard 1588 for Linux.
-	pkgver = 1.5.r0.ga1e2a08
-	pkgrel = 2
+	pkgver = 1.5.r13.g572438b
+	pkgrel = 1
 	url = http://linuxptp.sourceforge.net/
 	arch = i686
 	arch = x86_64
