@@ -13,7 +13,7 @@ pkgbase = backup-conf
 	optdepends = git: for git management
 	source = https://github.com/LaraCraft93/backup-conf/archive/v5.0.tar.gz
 	source = backup-conf.install
-	md5sums = a07297fd7ff46481d9e6cd7c4de6704c
+	md5sums = 728d69dde7fff0d6616230ca18c46e7a
 	md5sums = b452e0f879c2d25650330a37ed13f110
 
 pkgname = backup-conf
