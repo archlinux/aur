@@ -1,0 +1,15 @@
+pkgbase = qemu-user-static
+	pkgdesc = A generic and open source processor emulator which achieves a good emulation speed by using dynamic translation, statically linked.
+	pkgver = 2.3
+	pkgrel = 1
+	url = http://wiki.qemu.org/Index.html
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	optdepends = binfmt-support: to allow handling foreign ELF binaries and executing them via qemu
+	source = http://ftp.debian.org/debian/pool/main/q/qemu/qemu-user-static_2.3+dfsg-5_i386.deb
+	sha1sums = f3f95c3b98945de1e717e32207e9af06a0458487
+
+pkgname = qemu-user-static
+
