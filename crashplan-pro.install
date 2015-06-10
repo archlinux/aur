@@ -4,7 +4,7 @@ post_install () {
     echo ""
     echo "Your system is currently configured to watch $INOTIFY_WATCHES files in real time."
     echo "CrashPlan recommends using a larger value; see the CrashPlan support site for details."
-    echo "e.g. add the following line to /etc/sysctl.conf "
+    echo "e.g. add the following line to /etc/sysctl.d/99-sysctl.conf "
     echo "  fs.inotify.max_user_watches=1048576"
     echo ""
   fi
