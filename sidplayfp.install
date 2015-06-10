@@ -1,0 +1,39 @@
+pkgname=sidplay-residfp
+
+post_install() {
+  cat << _EOF 
+
+- A default configuration is created in:
+- ~/.config/sidplayfp/sidplayfp.ini
+- on the first run.
+-
+- Edit to suit your needs.
+-
+- Some SIDs also need C64 ROM files in order to play correctly!
+- 
+- Install the VICE C64 emulator and use the ROM files found in:
+- /usr/lib/vice/C64 and set the appropriate ini options for
+- kernel, basic and chargen ROMs.
+
+_EOF
+}
+
+post_upgrade() {
+  cat << _EOF 
+
+- A default configuration is now created in:
+- ~/.config/sidplayfp/sidplayfp.ini
+- on the first run.
+-
+- Edit to suit your needs or migrate your old configuration from:
+- ~/.sidplay/sidplay2.ini (taking note of any diffs)
+-
+- Some SIDs also need C64 ROM files in order to play correctly!
+- 
+- Install the VICE C64 emulator and use the ROM files found in:
+- /usr/lib/vice/C64 and set the appropriate ini options for
+- kernel, basic and chargen ROMs.
+
+_EOF
+}
+
