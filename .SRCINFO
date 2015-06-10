@@ -1,0 +1,17 @@
+pkgbase = perl-gnupg-interface
+	pkgdesc = Object methods for interacting with GnuPG
+	pkgver = 0.52
+	pkgrel = 1
+	url = http://search.cpan.org/dist/GnuPG-Interface
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = gnupg
+	depends = perl-moox-late
+	depends = perl-moox-handlesvia
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AL/ALEXMV/GnuPG-Interface-0.52.tar.gz
+	sha256sums = 247a9f5a88bb6745281c00d0f7d5d94e8599a92396849fd9571356dda047fd35
+
+pkgname = perl-gnupg-interface
+
