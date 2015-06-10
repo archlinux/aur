@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=lldpd-git
-pkgver=0.7.13.11
+pkgver=0.7.15.15
 pkgrel=1
 pkgdesc="LLDP daemon for GNU/Linux implementing both reception and sending"
 arch=('i686' 'x86_64')
