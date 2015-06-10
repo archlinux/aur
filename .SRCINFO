@@ -1,0 +1,25 @@
+pkgbase = go-sdl-example
+	pkgdesc = SDL example for Go, with graphics and soundeffects
+	pkgver = 20130107
+	pkgrel = 1
+	url = https://github.com/banthar/Go-SDL/tree/master/test
+	arch = x86_64
+	arch = i686
+	license = custom
+	makedepends = go
+	makedepends = git
+	makedepends = gendesk
+	makedepends = setconf
+	depends = sdl
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = sdl_ttf
+	options = !strip
+	options = !emptydirs
+	source = go-sdl-example.tar.gz::https://github.com/banthar/Go-SDL/tarball/master
+	source = go-sdl-example.png::http://www.libsdl.org/tmp/SDL/Xcode-iOS/Template/SDL%20iOS%20Application/Icon.png
+	sha256sums = 5d5e277a3f0fd50fcc1f63164275a4136397c6dd634b767474c3dbb0f2da612d
+	sha256sums = 518d4922881cb735d0d81391cb778898a567052f7e7dcb724fd633fea36626dc
+
+pkgname = go-sdl-example
+
