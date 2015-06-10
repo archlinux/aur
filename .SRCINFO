@@ -1,0 +1,22 @@
+pkgbase = salsapipe-git
+	pkgdesc = Encrypted network tunneling using salsa20 from libnettle and GPG from libgpgme
+	pkgver = 20140730.r25.51c5c6b
+	pkgrel = 1
+	url = https://github.com/0xcaca0/salsapipe
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	groups = archassault
+	groups = archassault-networking
+	license = GPL3
+	makedepends = git
+	depends = gpgme
+	depends = nettle
+	source = git://github.com/0xcaca0/salsapipe.git#branch=master
+	source = LICENSE
+	sha512sums = SKIP
+	sha512sums = 98cb62428d5dd50917a5ce69ad4e7508b5447b1aba83080e2d870f3b410db3747d0ff31b142b9d1c3b8dab10fba028fb78962b23d02cd47352bc2f2cd7dd8620
+
+pkgname = salsapipe-git
+
