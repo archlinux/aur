@@ -1,0 +1,20 @@
+pkgbase = shattered-pixel-dungeon-git
+	pkgdesc = Shattered fork of the popular rogue-like game
+	pkgver = 163v0.2.4d
+	pkgrel = 1
+	url = http://shatteredpixel.tumblr.com/
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = java-environment
+	depends = java-runtime
+	depends = bash
+	source = shattered-pixel-dungeon::git+https://github.com/00-Evan/shattered-pixel-dungeon-gdx.git
+	source = shattered-pixel-dungeon.sh
+	source = shattered-pixel-dungeon.desktop
+	sha512sums = SKIP
+	sha512sums = 88814d1f33eea6bd5656d3ca731ed5a6cfce10ecdae24012252c5b32c4b194ec75fb0e22cac70897802679086c6a32e210d52933ec45ca94ff350ac4ad7c266e
+	sha512sums = 204a7bcedbbc14bdad6586e4b759b326191a7fd2c344dadc7032495d4caa5fe32edac4118d7294229a6fe24f6684416fff37e260bbc9dde9e50846a03ba77db8
+
+pkgname = shattered-pixel-dungeon-git
+
