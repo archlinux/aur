@@ -1,0 +1,15 @@
+pkgbase = python2-parsley
+	pkgdesc = A parser generator library based on OMeta, and other useful parsing tools.
+	pkgver = 1.2
+	pkgrel = 2
+	url = https://github.com/python-parsley/parsley
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	conflicts = python2-parsley-git
+	source = https://pypi.python.org/packages/source/P/Parsley/Parsley-1.2.tar.gz
+	md5sums = 9905aa78f3256604f56e7bdd6aaf6123
+
+pkgname = python2-parsley
+
