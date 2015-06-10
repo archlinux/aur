@@ -1,0 +1,15 @@
+pkgbase = avrdude-osuisp2-svn
+	pkgdesc = Download/upload/manipulate the ROM and EEPROM contents of AVR microcontrollers (with OSU-ISP.2 patch)
+	pkgver = 2
+	pkgrel = 2
+	url = http://beaversource.oregonstate.edu/projects/osuisp2/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	depends = libusb-compat
+	depends = readline
+	conflicts = avrdude
+
+pkgname = avrdude-osuisp2-svn
+
