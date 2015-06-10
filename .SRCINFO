@@ -1,0 +1,15 @@
+pkgbase = dbm
+	pkgdesc = A little tool to access gdbm files from shell
+	pkgver = 0.11.0
+	pkgrel = 4
+	url = http://www.scylla-charybdis.com/tool.php/dbm
+	changelog = ChangeLog
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = gdbm
+	source = http://www.scylla-charybdis.com/download/dbm-0.11.0-20080519-114741.tar.gz
+	md5sums = 664002670194f213c09cde05aeadd6f9
+
+pkgname = dbm
+
