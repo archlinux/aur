@@ -1,0 +1,11 @@
+
+post_upgrade() {
+  cat << _EOF 
+
+* IMPORTANT: Location of the tmpwatch binary has changed
+* from /usr/sbin to /usr/bin -- be sure to update any
+* scripts or cron jobs.
+
+_EOF
+}
+
