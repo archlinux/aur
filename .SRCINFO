@@ -1,0 +1,21 @@
+pkgbase = jwmtools-git
+	pkgdesc = Various tools for jwm window manager.
+	pkgver = r75.4689c0b
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/kostelnik/jwmtools
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libglade
+	depends = libxss
+	provides = jwmtools
+	conflicts = jwmtools
+	source = jwmtools-git::git+https://github.com/kostelnik/jwmtools.git
+	source = build.patch
+	md5sums = SKIP
+	md5sums = 010273979c95da69f3fcf5a35fe06cb4
+
+pkgname = jwmtools-git
+

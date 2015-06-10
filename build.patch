@@ -1,0 +1,575 @@
+diff -up jwmtools-git/appmenugen/appmenugen.c.orig jwmtools-git/appmenugen/appmenugen.c
+--- jwmtools-git/appmenugen/appmenugen.c.orig	2014-07-10 04:15:49.000000000 -0600
++++ jwmtools-git/appmenugen/appmenugen.c	2014-07-10 04:15:51.000000000 -0600
+@@ -92,7 +92,7 @@ void item_print(gpointer ptr, gpointer u
+     item->name,
+     item->exec,
+     item->icon,
+-    (int)user_data);
++    (int)(long)user_data);
+ }
+ 
+ void jwm_menu_begin(const gchar * label, const gchar * icon) {
+@@ -108,7 +108,7 @@ void jwm_menu_end() {
+ void jwm_program(gpointer ptr, gpointer user_data) {
+   // print item for JWM menu
+   Item *item = (Item*)ptr;
+-  if (item->category == (int)user_data) {
++  if (item->category == (int)(long)user_data) {
+     if (item->icon==NULL) {
+       printf("item->name = %s\n",item->name);
+       g_error("item->icon is null");
+@@ -137,7 +137,7 @@ void jwm_program(gpointer ptr, gpointer
+ void jwm_category(GPtrArray *items, const gchar * category, int id) {
+   // print one submenu
+   jwm_menu_begin(category,"folder.png");
+-  g_ptr_array_foreach(items,jwm_program,(gpointer)id);
++  g_ptr_array_foreach(items,jwm_program,(gpointer)(long)id);
+   jwm_menu_end();
+ }
+ 
+diff -up jwmtools-git/appmenugen/Makefile.orig jwmtools-git/appmenugen/Makefile
+--- jwmtools-git/appmenugen/Makefile.orig	2014-07-10 04:15:49.000000000 -0600
++++ jwmtools-git/appmenugen/Makefile	2014-07-10 04:15:51.000000000 -0600
+@@ -3,21 +3,19 @@ include ../config.mk
+ PROGS=appmenugen
+ 
+ CC = g++
+-CFLAGS  = -I. -ggdb
+-LIBS    = -L. -L/usr/lib
+-CFLAGS += -Wall -Werror -Wpointer-arith -Wmissing-declarations -fno-strict-aliasing
+-CFLAGS += `pkg-config --cflags cairo pango pangocairo gtk+-2.0 gmodule-2.0 gmodule-export-2.0 libglade-2.0 glib-2.0`
+-CFLAGS += -DVERSION=\"${VERSION}\" -DPREFIX=\"${PREFIX}\"
+-LIBS   += `pkg-config --libs cairo pango pangocairo gtk+-2.0 gmodule-2.0 gmodule-export-2.0 libglade-2.0 glib-2.0`
+-LIBS2   =
++M_CFLAGS  = -I.
++M_CFLAGS += `pkg-config --cflags x11 gtk+-2.0 libglade-2.0`
++M_CFLAGS += -DVERSION=\"${VERSION}\" -DPREFIX=\"${PREFIX}\"
++LIBS    = `pkg-config --libs libglade-2.0 gtk+-2.0 x11`
++LIBS   += -L. -L/usr/lib
+ 
+ all: $(PROGS)
+ 
+ %.o: %.c
+-	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
++	$(CC) -c $(CXXFLAGS) $(CPPFLAGS) $(M_CFLAGS) $< -o $@
+ 
+-%: %.c
+-	$(CC) $(CFLAGS) $(CPPFLAGS) $(LIBS) $^ $(LIBS2) -o $@
++$(PROGS): %: %.o
++	$(CC) $(LDFLAGS) $^ $(LIBS) -o $@
+ #	strip $@
+ 
+ clean:
+diff -up jwmtools-git/libonce/Makefile.orig jwmtools-git/libonce/Makefile
+--- jwmtools-git/libonce/Makefile.orig	2014-07-10 04:15:50.000000000 -0600
++++ jwmtools-git/libonce/Makefile	2014-07-10 04:15:51.000000000 -0600
+@@ -3,21 +3,19 @@ include ../config.mk
+ PROGS=demo
+ 
+ CC = gcc
+-CFLAGS  = -I. -ggdb
+-LIBS    = -L. -L/usr/lib
+-CFLAGS += -Wall -Werror -Wpointer-arith -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -fno-strict-aliasing
+-CFLAGS += `pkg-config --cflags cairo pango pangocairo gtk+-2.0 gmodule-2.0 gmodule-export-2.0 libglade-2.0`
+-CFLAGS += -DVERSION=\"${VERSION}\" -DPREFIX=\"${PREFIX}\" -I../../jwmtools/s
+-LIBS   += `pkg-config --libs cairo pango pangocairo gtk+-2.0 gmodule-2.0 gmodule-export-2.0 libglade-2.0`
+-LIBS2   =
++M_CFLAGS  = -I.
++M_CFLAGS += `pkg-config --cflags x11 gtk+-2.0 libglade-2.0`
++M_CFLAGS += -DVERSION=\"${VERSION}\" -DPREFIX=\"${PREFIX}\" -I../../jwmtools/s
++LIBS    = `pkg-config --libs libglade-2.0 gtk+-2.0 x11`
++LIBS   += -L. -L/usr/lib
+ 
+ all: $(PROGS)
+ 
+ %.o: %.c
+-	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
++	$(CC) -c $(CFLAGS) $(CPPFLAGS) $(M_CFLAGS) $< -o $@
+ 
+-%: %.c
+-	$(CC) $(CFLAGS) $(CPPFLAGS) $(LIBS) $^ $(LIBS2) -o $@
++$(PROGS): %: %.o
++	$(CC) $(LDFLAGS) $^ $(LIBS) -o $@
+ #	strip $@
+ 
+ clean:
+diff -up jwmtools-git/movemousecursor/Makefile.orig jwmtools-git/movemousecursor/Makefile
+--- jwmtools-git/movemousecursor/Makefile.orig	2014-07-10 04:15:50.000000000 -0600
++++ jwmtools-git/movemousecursor/Makefile	2014-07-10 04:15:51.000000000 -0600
+@@ -3,21 +3,19 @@ include ../config.mk
+ PROGS=movemousecursor
+ 
+ CC = gcc
+-CFLAGS  = -I. -ggdb
+-LIBS    = -L. -L/usr/lib
+-CFLAGS += -Wall -Werror -Wpointer-arith -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -fno-strict-aliasing
+-CFLAGS += `pkg-config --cflags cairo pango pangocairo gtk+-2.0 gmodule-2.0 gmodule-export-2.0 libglade-2.0`
+-CFLAGS += -DVERSION=\"${VERSION}\" -DPREFIX=\"${PREFIX}\"
+-LIBS   += `pkg-config --libs cairo pango pangocairo gtk+-2.0 gmodule-2.0 gmodule-export-2.0 libglade-2.0`
+-LIBS2   =
++M_CFLAGS  = -I.
++M_CFLAGS += `pkg-config --cflags x11 gtk+-2.0 libglade-2.0`
++M_CFLAGS += -DVERSION=\"${VERSION}\" -DPREFIX=\"${PREFIX}\"
++LIBS    = `pkg-config --libs libglade-2.0 gtk+-2.0 x11`
++LIBS   += -L. -L/usr/lib
+ 
+ all: $(PROGS)
+ 
+ %.o: %.c
+-	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
++	$(CC) -c $(CFLAGS) $(CPPFLAGS) $(M_CFLAGS) $< -o $@
+ 
+-%: %.c
+-	$(CC) $(CFLAGS) $(CPPFLAGS) $(LIBS) $^ $(LIBS2) -o $@
++$(PROGS): %: %.o
++	$(CC) $(LDFLAGS) $^ $(LIBS) -o $@
+ #	strip $@
+ 
+ clean:
+diff -up jwmtools-git/scandirstr/Makefile.orig jwmtools-git/scandirstr/Makefile
+--- jwmtools-git/scandirstr/Makefile.orig	2014-07-10 04:15:50.000000000 -0600
++++ jwmtools-git/scandirstr/Makefile	2014-07-10 04:15:51.000000000 -0600
+@@ -1,22 +1,19 @@
+ PROGS=scandir_demo
+ 
+ CC = gcc
+-CFLAGS  = -I. -ggdb
+-LIBS    = -L. -L/usr/lib
+-CFLAGS += -Wall -Werror -Wpointer-arith -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -fno-strict-aliasing
+-CFLAGS += `pkg-config --cflags cairo pango pangocairo gtk+-2.0 gmodule-2.0 gmodule-export-2.0 libglade-2.0`
+-CFLAGS += -DVERSION=\"${VERSION}\" -DPREFIX=\"${PREFIX}\"
+-LIBS   += `pkg-config --libs cairo pango pangocairo gtk+-2.0 gmodule-2.0 gmodule-export-2.0 libglade-2.0`
+-
+-LIBS2   =
++M_CFLAGS  = -I.
++M_CFLAGS += `pkg-config --cflags x11 gtk+-2.0 libglade-2.0`
++M_CFLAGS += -DVERSION=\"${VERSION}\" -DPREFIX=\"${PREFIX}\"
++LIBS    = `pkg-config --libs libglade-2.0 gtk+-2.0 x11`
++LIBS   += -L. -L/usr/lib
+ 
+ all: $(PROGS)
+ 
+ %.o: %.c
+-	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
++	$(CC) -c $(M_CFLAGS) $(CPPFLAGS) $< -o $@
+ 
+-%: %.c
+-	$(CC) $(CFLAGS) $(CPPFLAGS) $(LIBS) $^ $(LIBS2) -o $@
++$(PROGS): %: %.o
++	$(CC) $(LDFLAGS) $^ $(LIBS) -o $@
+ #	strip $@
+ 
+ clean:
+diff -up jwmtools-git/scandirstr/scandirstr.c.orig jwmtools-git/scandirstr/scandirstr.c
+--- jwmtools-git/scandirstr/scandirstr.c.orig	2014-07-10 04:15:50.000000000 -0600
++++ jwmtools-git/scandirstr/scandirstr.c	2014-07-10 04:15:51.000000000 -0600
+@@ -10,8 +10,8 @@
+ #include <errno.h>
+ #include <dirent.h>
+ 
+-#include "../../jwmtools/s/s.h"
+-#include "../../jwmtools/s/s.c"
++#include "s.h"
++#include "s.c"
+ 
+ char * scandirstr(char * path) {
+   // return \n separated string of directory listing, e.g "foo\nbar\nsomething.txt\0"
+diff -up jwmtools-git/scandirstr/scandirstr.h.orig jwmtools-git/scandirstr/scandirstr.h
+--- jwmtools-git/scandirstr/scandirstr.h.orig	2014-07-10 04:15:50.000000000 -0600
++++ jwmtools-git/scandirstr/scandirstr.h	2014-07-10 04:15:51.000000000 -0600
+@@ -10,7 +10,7 @@
+ #include <errno.h>
+ #include <dirent.h>
+ 
+-#include "../../jwmtools/s/s.h"
++#include "s.h"
+ 
+ char * scandirstr(char * path);
+ int scandirstrchanged(char * path, char ** old);
+diff -up jwmtools-git/slock/Makefile.orig jwmtools-git/slock/Makefile
+--- jwmtools-git/slock/Makefile.orig	2014-07-10 04:15:50.000000000 -0600
++++ jwmtools-git/slock/Makefile	2014-07-10 04:15:51.000000000 -0600
+@@ -6,21 +6,21 @@ include config.mk
+ SRC = slock.c
+ OBJ = ${SRC:.c=.o}
+ CC = gcc
+-CFLAGS += -Wall -Werror -Wpointer-arith -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -fno-strict-aliasing
+-CFLAGS += `pkg-config --cflags cairo pango pangocairo gtk+-2.0 gmodule-2.0 gmodule-export-2.0 libglade-2.0`
+-CFLAGS += -DVERSION=\"${VERSION}\" -DPREFIX=\"${PREFIX}\"
++M_CFLAGS = `pkg-config --cflags x11 cairo pango pangocairo gtk+-2.0 gmodule-2.0 gmodule-export-2.0 libglade-2.0`
++M_CFLAGS += -DVERSION=\"${VERSION}\" -DPREFIX=\"${PREFIX}\"
+ 
+ all: options slock
+ 
+ options:
+ 	@echo slock build options:
+-	@echo "CFLAGS   = ${CFLAGS}"
++	@echo "CFLAGS   = ${CFLAGS} $(M_CFLAGS)"
++	@echo "CPPFLAGS = ${CPPFLAGS}"
+ 	@echo "LDFLAGS  = ${LDFLAGS}"
+ 	@echo "CC       = ${CC}"
+ 
+ .c.o:
+ 	@echo CC $<
+-	@${CC} -c ${CFLAGS} $<
++	@${CC} -c ${CFLAGS} $(CPPFLAGS) $(M_FLAGS) $<
+ 
+ ${OBJ}: config.mk
+ 
+diff -up jwmtools-git/s/Makefile.orig jwmtools-git/s/Makefile
+--- jwmtools-git/s/Makefile.orig	2014-07-10 04:15:50.000000000 -0600
++++ jwmtools-git/s/Makefile	2014-07-10 04:15:51.000000000 -0600
+@@ -3,21 +3,19 @@ include ../config.mk
+ PROGS=demo
+ 
+ CC = gcc
+-CFLAGS  = -I. -ggdb
+-LIBS    = -L. -L/usr/lib
+-CFLAGS += -Wall -Werror -Wpointer-arith -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -fno-strict-aliasing
+-CFLAGS += `pkg-config --cflags cairo pango pangocairo gtk+-2.0 gmodule-2.0 gmodule-export-2.0 libglade-2.0`
+-CFLAGS += -DVERSION=\"${VERSION}\" -DPREFIX=\"${PREFIX}\"
+-LIBS   += `pkg-config --libs cairo pango pangocairo gtk+-2.0 gmodule-2.0 gmodule-export-2.0 libglade-2.0`
+-LIBS2   =
++M_CFLAGS  = -I.
++M_CFLAGS += `pkg-config --cflags x11 gtk+-2.0 libglade-2.0`
++M_CFLAGS += -DVERSION=\"${VERSION}\" -DPREFIX=\"${PREFIX}\"
++LIBS    = `pkg-config --libs libglade-2.0 gtk+-2.0 x11`
++LIBS   += -L. -L/usr/lib
+ 
+ all: $(PROGS)
+ 
+ %.o: %.c
+-	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
++	$(CC) -c $(CFLAGS) $(CPPFLAGS) $(M_CFLAGS) $< -o $@
+ 
+-%: %.c
+-	$(CC) $(CFLAGS) $(CPPFLAGS) $(LIBS) $^ $(LIBS2) -o $@
++$(PROGS): %: %.o
++	$(CC) $(LDFLAGS) $^ $(LIBS) $(LIBS2) -o $@
+ #	strip $@
+ 
+ clean:
+diff -up jwmtools-git/s/s.c.orig jwmtools-git/s/s.c
+--- jwmtools-git/s/s.c.orig	2014-07-10 04:15:50.000000000 -0600
++++ jwmtools-git/s/s.c	2014-07-10 04:15:51.000000000 -0600
+@@ -297,7 +297,7 @@ void STests(int level) {
+   
+   // test
+   SFree(a);
+-  STestI((int)a,0,"string free and set to NULL");
++  STestI((int)(long)a,0,"string free and set to NULL");
+         
+   // test
+   a = SCreate("0123456789");
+diff -up jwmtools-git/sysmonitor/Makefile.orig jwmtools-git/sysmonitor/Makefile
+--- jwmtools-git/sysmonitor/Makefile.orig	2014-07-10 04:15:50.000000000 -0600
++++ jwmtools-git/sysmonitor/Makefile	2014-07-10 04:15:51.000000000 -0600
+@@ -3,21 +3,19 @@ include ../config.mk
+ PROGS=sysmonitor
+ 
+ CC = gcc
+-CFLAGS  = -I. -ggdb
+-LIBS    = -L. -L/usr/lib
+-CFLAGS += -Wall -Werror -Wpointer-arith -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -fno-strict-aliasing
+-CFLAGS += `pkg-config --cflags cairo pango pangocairo gtk+-2.0 gmodule-2.0 gmodule-export-2.0 libglade-2.0`
+-CFLAGS += -DVERSION=\"${VERSION}\" -DPREFIX=\"${PREFIX}\"
+-LIBS   += `pkg-config --libs cairo pango pangocairo gtk+-2.0 gmodule-2.0 gmodule-export-2.0 libglade-2.0`
+-LIBS2   =
++M_CFLAGS  = -I.
++M_CFLAGS += `pkg-config --cflags x11 gtk+-2.0 libglade-2.0`
++M_CFLAGS += -DVERSION=\"${VERSION}\" -DPREFIX=\"${PREFIX}\"
++LIBS    = `pkg-config --libs libglade-2.0 gtk+-2.0 x11`
++LIBS   += -L. -L/usr/lib
+ 
+ all: $(PROGS)
+ 
+ %.o: %.c
+-	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
++	$(CC) -c $(CFLAGS) $(CPPFLAGS) $(M_CFLAGS) $< -o $@
+ 
+-%: %.c
+-	$(CC) $(CFLAGS) $(CPPFLAGS) $(LIBS) $^ $(LIBS2) -o $@
++$(PROGS): %: %.o
++	$(CC) $(LDFLAGS) $^ $(LIBS) $(LIBS2) -o $@
+ #	strip $@
+ 
+ clean:
+diff -up jwmtools-git/traybattery/Makefile.orig jwmtools-git/traybattery/Makefile
+--- jwmtools-git/traybattery/Makefile.orig	2014-07-10 04:15:50.000000000 -0600
++++ jwmtools-git/traybattery/Makefile	2014-07-10 04:15:51.000000000 -0600
+@@ -3,21 +3,19 @@ include ../config.mk
+ PROGS=traybattery
+ 
+ CC = gcc
+-CFLAGS  = -I. -ggdb
+-LIBS    = -L. -L/usr/lib
+-CFLAGS += -Wall -Wpointer-arith -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -fno-strict-aliasing
+-CFLAGS += `pkg-config --cflags cairo pango pangocairo gtk+-2.0 gmodule-2.0 gmodule-export-2.0 libglade-2.0`
+-CFLAGS += -DVERSION=\"${VERSION}\" -DPREFIX=\"${PREFIX}\" -DSYS_BATTERY_PATH=\"${SYS_BATTERY_PATH}\" -I../../jwmtools/s
+-LIBS   += `pkg-config --libs cairo pango pangocairo gtk+-2.0 gmodule-2.0 gmodule-export-2.0 libglade-2.0`
+-LIBS2   =
++M_CFLAGS  = -I. -I ../s
++M_CFLAGS += `pkg-config --cflags x11 gtk+-2.0 libglade-2.0`
++M_CFLAGS += -DVERSION=\"${VERSION}\" -DPREFIX=\"${PREFIX}\" -DSYS_BATTERY_PATH=\"${SYS_BATTERY_PATH}\" -I../../jwmtools/s
++LIBS    = `pkg-config --libs libglade-2.0 gtk+-2.0 x11`
++LIBS   += -L. -L/usr/lib
+ 
+ all: $(PROGS)
+ 
+ %.o: %.c
+-	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
++	$(CC) -c $(CFLAGS) $(CPPFLAGS) $(M_CFLAGS) $< -o $@
+ 
+-%: %.c
+-	$(CC) $(CFLAGS) $(CPPFLAGS) $(LIBS) $^ $(LIBS2) -o $@
++$(PROGS): %: %.o
++	$(CC) $(LDFALGS) $^ $(LIBS) -o $@
+ #	strip $@
+ 
+ clean:
+diff -up jwmtools-git/traykeymap/Makefile.orig jwmtools-git/traykeymap/Makefile
+--- jwmtools-git/traykeymap/Makefile.orig	2014-07-10 04:15:51.000000000 -0600
++++ jwmtools-git/traykeymap/Makefile	2014-07-10 04:15:51.000000000 -0600
+@@ -3,21 +3,19 @@ include ../config.mk
+ PROGS=traykeymap
+ 
+ CC = gcc
+-CFLAGS  = -I. -ggdb
+-LIBS    = -L. -L/usr/lib
+-CFLAGS += -Wall -Werror -Wpointer-arith -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -fno-strict-aliasing
+-CFLAGS += `pkg-config --cflags cairo pango pangocairo gtk+-2.0 gmodule-2.0 gmodule-export-2.0 libglade-2.0`
+-CFLAGS += -DVERSION=\"${VERSION}\" -DPREFIX=\"${PREFIX}\"
+-LIBS   += `pkg-config --libs cairo pango pangocairo gtk+-2.0 gmodule-2.0 gmodule-export-2.0 libglade-2.0`
+-LIBS2   =
++M_CFLAGS  = -I.
++M_CFLAGS += `pkg-config --cflags x11 gtk+-2.0 libglade-2.0`
++M_CFLAGS += -DVERSION=\"${VERSION}\" -DPREFIX=\"${PREFIX}\"
++LIBS    = `pkg-config --libs libglade-2.0 gtk+-2.0 x11`
++LIBS   += -L. -L/usr/lib
+ 
+ all: $(PROGS)
+ 
+ %.o: %.c
+-	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
++	$(CC) -c $(CFLAGS) $(CPPFLAGS) $(M_CFLAGS) $< -o $@
+ 
+-%: %.c
+-	$(CC) $(CFLAGS) $(CPPFLAGS) $(LIBS) $^ $(LIBS2) -o $@
++$(PROGS): %: %.o
++	$(CC) $(LDFLAGS) $^ $(LIBS) $(LIBS2) -o $@
+ #	strip $@
+ 
+ clean:
+diff -up jwmtools-git/traymonitor/Makefile.orig jwmtools-git/traymonitor/Makefile
+--- jwmtools-git/traymonitor/Makefile.orig	2014-07-10 04:15:51.000000000 -0600
++++ jwmtools-git/traymonitor/Makefile	2014-07-10 04:15:51.000000000 -0600
+@@ -3,21 +3,19 @@ include ../config.mk
+ PROGS=traymonitor
+ 
+ CC = gcc
+-CFLAGS  = -I. -ggdb
+-LIBS    = -L. -L/usr/lib
+-CFLAGS += -Wall -Werror -Wpointer-arith -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -fno-strict-aliasing
+-CFLAGS += `pkg-config --cflags cairo pango pangocairo gtk+-2.0 gmodule-2.0 gmodule-export-2.0 libglade-2.0 glib-2.0`
+-CFLAGS += -DVERSION=\"${VERSION}\" -DPREFIX=\"${PREFIX}\"
+-LIBS   += `pkg-config --libs cairo pango pangocairo gtk+-2.0 gmodule-2.0 gmodule-export-2.0 libglade-2.0 glib-2.0`
+-LIBS2   =
++M_CFLAGS  = -I.
++M_CFLAGS += `pkg-config --cflags x11 gtk+-2.0 libglade-2.0`
++M_CFLAGS += -DVERSION=\"${VERSION}\" -DPREFIX=\"${PREFIX}\"
++LIBS    = `pkg-config --libs libglade-2.0 gtk+-2.0 x11`
++LIBS   += -L. -L/usr/lib
+ 
+ all: $(PROGS)
+ 
+ %.o: %.c
+-	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
++	$(CC) -c $(CFLAGS) $(CPPFLAGS) $(M_CFLAGS) $< -o $@
+ 
+-%: %.c
+-	$(CC) $(CFLAGS) $(CPPFLAGS) $(LIBS) $^ $(LIBS2) -o $@
++$(PROGS): %: %.o
++	$(CC) $(LDFLAGS) $^ $(LIBS) $(LIBS2) -o $@
+ #	strip $@
+ 
+ clean:
+diff -up jwmtools-git/trayscript/Makefile.orig jwmtools-git/trayscript/Makefile
+--- jwmtools-git/trayscript/Makefile.orig	2014-07-10 04:15:51.000000000 -0600
++++ jwmtools-git/trayscript/Makefile	2014-07-10 04:15:51.000000000 -0600
+@@ -3,21 +3,20 @@ include ../config.mk
+ PROGS=trayscript
+ 
+ CC = gcc
+-CFLAGS  = -I. -ggdb
+-LIBS    = -L. -L/usr/lib
+-CFLAGS += -Wall -Werror -Wpointer-arith -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -fno-strict-aliasing
+-CFLAGS += `pkg-config --cflags cairo pango pangocairo gtk+-2.0 gmodule-2.0 gmodule-export-2.0 libglade-2.0`
+-CFLAGS += -DVERSION=\"${VERSION}\" -DPREFIX=\"${PREFIX}\"
+-LIBS   += `pkg-config --libs cairo pango pangocairo gtk+-2.0 gmodule-2.0 gmodule-export-2.0 libglade-2.0`
++M_CFLAGS  = -I.
++M_CFLAGS += `pkg-config --cflags x11 gtk+-2.0 libglade-2.0`
++M_CFLAGS += -DVERSION=\"${VERSION}\" -DPREFIX=\"${PREFIX}\"
++LIBS    = `pkg-config --libs libglade-2.0 gtk+-2.0 x11`
++LIBS   += -L. -L/usr/lib
+ LIBS2   =
+ 
+ all: $(PROGS)
+ 
+ %.o: %.c
+-	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
++	$(CC) -c $(CFLAGS) $(CPPFLAGS) $(M_CFLAGS) $< -o $@
+ 
+-%: %.c
+-	$(CC) $(CFLAGS) $(CPPFLAGS) $(LIBS) $^ $(LIBS2) -o $@
++$(PROGS): %: %.o
++	$(CC) $(LDFLAGS) $^ $(LIBS) -o $@
+ #	strip $@
+ 
+ clean:
+@@ -25,4 +24,4 @@ clean:
+ 
+ test:
+ 	./trayscript -name SAMPLE -script ./sample.sh -interval 5
+-  
+\ No newline at end of file
++  
+diff -up jwmtools-git/trayusermount/Makefile.orig jwmtools-git/trayusermount/Makefile
+--- jwmtools-git/trayusermount/Makefile.orig	2014-07-10 04:15:51.000000000 -0600
++++ jwmtools-git/trayusermount/Makefile	2014-07-10 04:15:51.000000000 -0600
+@@ -3,21 +3,19 @@ include ../config.mk
+ PROGS=trayusermount blkid_test 
+ 
+ CC = gcc
+-CFLAGS  = -I. -ggdb
+-LIBS    = -L. -L/usr/lib
+-CFLAGS += -Wall -Werror -Wpointer-arith -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -fno-strict-aliasing
+-CFLAGS += `pkg-config --cflags cairo pango pangocairo gtk+-2.0 gmodule-2.0 gmodule-export-2.0 libglade-2.0` -I../scandirstr -I../s
+-CFLAGS += -DVERSION=\"${VERSION}\" -DPREFIX=\"${PREFIX}\"
+-LIBS   += `pkg-config --libs cairo pango pangocairo gtk+-2.0 gmodule-2.0 gmodule-export-2.0 libglade-2.0`
+-LIBS2   =
++M_CFLAGS  = -I. -I../s -I../scandirstr
++M_CFLAGS += `pkg-config --cflags x11 gtk+-2.0 libglade-2.0`
++M_CFLAGS += -DVERSION=\"${VERSION}\" -DPREFIX=\"${PREFIX}\"
++LIBS    = `pkg-config --libs libglade-2.0 gtk+-2.0 x11`
++LIBS   += -L. -L/usr/lib
+ 
+ all: $(PROGS)
+ 
+ %.o: %.c
+-	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
++	$(CC) -c $(CFLAGS) $(CPPFLAGS) $(M_CFLAGS) $< -o $@
+ 
+-%: %.c
+-	$(CC) $(CFLAGS) $(CPPFLAGS) $(LIBS) $^ $(LIBS2) -o $@
++$(PROGS): %: %.o
++	$(CC) $(LDFLAGS) $^ $(LIBS) -o $@
+ #	strip $@
+ 
+ clean:
+diff -up jwmtools-git/trayvolume/Makefile.orig jwmtools-git/trayvolume/Makefile
+--- jwmtools-git/trayvolume/Makefile.orig	2014-07-10 04:15:51.000000000 -0600
++++ jwmtools-git/trayvolume/Makefile	2014-07-10 04:15:51.000000000 -0600
+@@ -3,21 +3,19 @@ include ../config.mk
+ PROGS=pavolumeup pavolumedown alsavolumeup alsavolumedown trayvolume-alsa trayvolume-pulse
+ 
+ CC = gcc
+-CFLAGS  = -I. -ggdb
+-LIBS    = -L. -L/usr/lib
+-CFLAGS += -Wall -Werror -Wpointer-arith -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -fno-strict-aliasing
+-CFLAGS += `pkg-config --cflags cairo pango pangocairo gtk+-2.0 gmodule-2.0 gmodule-export-2.0 libglade-2.0`
+-CFLAGS += -DVERSION=\"${VERSION}\" -DPREFIX=\"${PREFIX}\"
+-LIBS   += `pkg-config --libs cairo pango pangocairo gtk+-2.0 gmodule-2.0 gmodule-export-2.0 libglade-2.0`
+-LIBS2   =
++M_CFLAGS  = -I.
++M_CFLAGS += `pkg-config --cflags x11 gtk+-2.0 libglade-2.0`
++M_CFLAGS += -DVERSION=\"${VERSION}\" -DPREFIX=\"${PREFIX}\"
++LIBS    = `pkg-config --libs libglade-2.0 gtk+-2.0 x11`
++LIBS   += -L. -L/usr/lib
+ 
+ all: $(PROGS)
+ 
+ %.o: %.c
+-	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
++	$(CC) -c $(CFLAGS) $(CPPFLAGS) $(M_CFLAGS) $< -o $@
+ 
+-%: %.c
+-	$(CC) $(CFLAGS) $(CPPFLAGS) $(LIBS) $^ $(LIBS2) -o $@
++$(PROGS): %: %.o
++	$(CC) $(LDFLAGS) $^ $(LIBS) -o $@
+ #	strip $@
+ 
+ clean:
+diff -up jwmtools-git/trayweather/Makefile.orig jwmtools-git/trayweather/Makefile
+--- jwmtools-git/trayweather/Makefile.orig	2014-07-10 04:15:51.000000000 -0600
++++ jwmtools-git/trayweather/Makefile	2014-07-10 04:15:51.000000000 -0600
+@@ -3,21 +3,20 @@ include ../config.mk
+ PROGS=trayweather
+ 
+ CC = gcc
+-CFLAGS  = -I. -ggdb
+-LIBS    = -L. -L/usr/lib
+-CFLAGS += -Wall -Werror -Wpointer-arith -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -fno-strict-aliasing
+-CFLAGS += `pkg-config --cflags cairo pango pangocairo gtk+-2.0 gmodule-2.0 gmodule-export-2.0 libglade-2.0`
+-CFLAGS += -DVERSION=\"${VERSION}\" -DPREFIX=\"${PREFIX}\" -DVERY_OLD_GLIB=${VERY_OLD_GLIB}
+-LIBS   += `pkg-config --libs cairo pango pangocairo gtk+-2.0 gmodule-2.0 gmodule-export-2.0 libglade-2.0`
++M_CFLAGS  = -I.
++M_CFLAGS += `pkg-config --cflags x11 gtk+-2.0 libglade-2.0`
++M_CFLAGS += -DVERSION=\"${VERSION}\" -DPREFIX=\"${PREFIX}\" -DVERY_OLD_GLIB=${VERY_OLD_GLIB}
++LIBS    = `pkg-config --libs libglade-2.0 gtk+-2.0 x11`
++LIBS   += -L. -L/usr/lib
+ LIBS2   = -lmetar
+ 
+ all: $(PROGS)
+ 
+ %.o: %.c
+-	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
++	$(CC) -c $(CFLAGS) $(CPPFLAGS) $(M_CFLAGS) $< -o $@
+ 
+-%: %.c
+-	$(CC) $(CFLAGS) $(CPPFLAGS) $(LIBS) $^ $(LIBS2) -o $@
++$(PROGS): %: %.o
++	$(CC) $(LDFLAGS) $^ $(LIBS) $(LIBS2) -o $@
+ #	strip $@
+ 
+ clean:
+diff -up jwmtools-git/xidletools/Makefile.orig jwmtools-git/xidletools/Makefile
+--- jwmtools-git/xidletools/Makefile.orig	2014-07-10 04:15:51.000000000 -0600
++++ jwmtools-git/xidletools/Makefile	2014-07-10 04:18:04.000000000 -0600
+@@ -3,21 +3,19 @@ include ../config.mk
+ PROGS=xidletime xidlerun
+ 
+ CC = gcc
+-CFLAGS  = -I. -ggdb
+-LIBS    = -L. -L/usr/lib
+-CFLAGS += -Wall -Werror -Wpointer-arith -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -fno-strict-aliasing
+-CFLAGS += `pkg-config --cflags cairo pango pangocairo gtk+-2.0 gmodule-2.0 gmodule-export-2.0 libglade-2.0`
+-CFLAGS += -DVERSION=\"${VERSION}\" -DPREFIX=\"${PREFIX}\"
+-LIBS   += `pkg-config --libs cairo pango pangocairo gtk+-2.0 gmodule-2.0 gmodule-export-2.0 libglade-2.0 xscrnsaver`
+-LIBS2   =
++M_CFLAGS  = -I.
++M_CFLAGS += `pkg-config --cflags x11 xext xscrnsaver gtk+-2.0 libglade-2.0`
++M_CFLAGS += -DVERSION=\"${VERSION}\" -DPREFIX=\"${PREFIX}\"
++LIBS    = `pkg-config --libs libglade-2.0 gtk+-2.0 xscrnsaver xext x11`
++LIBS   += -L. -L/usr/lib
+ 
+ all: $(PROGS)
+ 
+ %.o: %.c
+-	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
++	$(CC) -c $(CFLAGS) $(CPPFLAGS) $(M_CFLAGS) $< -o $@
+ 
+-%: %.c
+-	$(CC) $(CFLAGS) $(CPPFLAGS) $(LIBS) $^ $(LIBS2) -o $@
++$(PROGS): %: %.o
++	$(CC) $(LDFLAGS) $^ $(LIBS) -o $@
+ #	strip $@
+ 
+ clean:
+@@ -25,4 +23,4 @@ clean:
+ 
+ test:
+ 	./xidletime
+-  
+\ No newline at end of file
++  
