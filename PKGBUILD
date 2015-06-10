@@ -57,6 +57,8 @@ package() {
 	mv "$pkgdir/usr/sbin" "$pkgdir/usr/bin"
 	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
 	mv "bindings/ruby/html/" "$pkgdir/usr/share/doc/$pkgname/rdoc"
+
+	install -D -m644 ../README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
 
 # vim: set ft=sh ts=4 sw=4 noet:
