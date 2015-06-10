@@ -1,6 +1,6 @@
 pkgbase = jsonrpc-c-git
 	pkgdesc = A library for a C program to receive or make JSON-RPC requests on tcp sockets (no HTTP).
-	pkgver = r39.a575174
+	pkgver = r41.ab8ec1e
 	pkgrel = 1
 	url = https://github.com/airtame/jsonrpc-c
 	arch = i686
