@@ -1,0 +1,16 @@
+pkgbase = perl-x11-keyboard
+	pkgdesc = Perl keyboard support functions for X11
+	pkgver = 1.4
+	pkgrel = 2
+	url = http://search.cpan.org/dist/X11-Keyboard/
+	arch = any
+	license = MIT
+	depends = perl-x11-protocol
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/E/EC/ECALDER/X11-Keyboard-1.4.tar.gz
+	source = LICENSE
+	md5sums = 6e41bc24bac68acf200667343f916248
+	md5sums = 42a48808c1b33b5f44ce74e3baed856c
+
+pkgname = perl-x11-keyboard
+
