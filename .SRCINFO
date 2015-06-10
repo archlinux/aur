@@ -1,0 +1,16 @@
+pkgbase = archon-exec
+	pkgdesc = Wrapper script for launching Android APK files with ARChon
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/prurigro/archon-exec
+	install = archon-exec.install
+	arch = any
+	license = MIT
+	depends = archon
+	depends = chromeos-apk-git
+	depends = chromium
+	source = https://github.com/prurigro/archon-exec/archive/v1.2.tar.gz
+	sha512sums = 989a33b68b047104b00ae272d6af6bd6a8a740eb563b318a20ef185c31e3f8a15d6b458494a850417976a1f4a856f00a8d72b60a261320ab1a9c5ddcf6aa3518
+
+pkgname = archon-exec
+
