@@ -1,0 +1,23 @@
+pkgbase = moonscript
+	pkgdesc = Dynamic scripting language that compiles into Lua
+	pkgver = 0.2.6
+	pkgrel = 2
+	url = http://moonscript.org/
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = curl
+	depends = luarocks
+	depends = lua
+	depends = lua-filesystem
+	depends = lua-lpeg
+	depends = lua-alt-getopt
+	optdepends = linotify-git: lua bindings to inotify
+	source = https://raw.githubusercontent.com/leafo/moonscript/v0.2.6/moonscript-dev-1.rockspec
+	source = https://raw.githubusercontent.com/leafo/moonscript/v0.2.6/README.md
+	source = https://raw.githubusercontent.com/leafo/moonscript/v0.2.6/docs/reference.md
+	source = http://moonscript.org/reference/index.html
+
+pkgname = moonscript
+
