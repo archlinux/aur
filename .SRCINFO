@@ -1,0 +1,17 @@
+pkgbase = pam_pkcs11
+	pkgdesc = PAM module allows a X.509 certificate based user login
+	pkgver = 0.6.6
+	pkgrel = 1
+	url = http://www.opensc-project.org/pam_pkcs11/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = pcsclite
+	backup = etc/pam_pkcs11/pam_pkcs11.conf
+	backup = etc/pam_pkcs11/subject_mapping
+	backup = etc/pam_pkcs11/card_eventmgr.conf
+	source = https://github.com/OpenSC/pam_pkcs11/archive/pam_pkcs11-0.6.6.tar.gz
+	md5sums = 12eeccb422fd6e99cb46fa72466c7174
+
+pkgname = pam_pkcs11
+
