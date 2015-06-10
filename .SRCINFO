@@ -1,0 +1,22 @@
+pkgbase = maniadrive
+	pkgdesc = Acrobatic racing game
+	pkgver = 1.2
+	pkgrel = 18
+	url = http://maniadrive.raydium.org/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	license = custom:CC by-sa 2.0
+	makedepends = gendesk
+	depends = libgl
+	depends = alsa-lib
+	depends = mesa
+	source = http://prdownloads.sourceforge.net/maniadrive/ManiaDrive-1.2-linux-i386.tar.gz
+	source = maniadrive.png::http://framakey.org/uploads/Portables/PortableManiaDrive_128px.png
+	source = license.txt
+	sha256sums = ea524a4613139290b0f85fb6a1a8206d398cba27a2bddb4173ad60b399cbcae4
+	sha256sums = 1c69692578961117af2d17cfdfd9678b458bf7430efa58ed42c2f348e26444f7
+	sha256sums = 60e4d9d0dd67ddf5ee4d0e60219e29f6824b6e0ec1232194110f696b46936f19
+
+pkgname = maniadrive
+
