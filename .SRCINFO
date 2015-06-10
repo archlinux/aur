@@ -1,0 +1,19 @@
+pkgbase = perl-gtk2-ex-widgetbits
+	pkgdesc = Gtk2::Ex::WidgetBits -- concatenated list models
+	pkgver = 48
+	pkgrel = 1
+	url = https://metacpan.org/release/Gtk2-Ex-WidgetBits
+	arch = any
+	license = LGPL
+	license = Perl
+	depends = perl
+	depends = gtk2-perl
+	depends = perl-glib-ex-objectbits
+	depends = perl-scope-guard
+	depends = perl-test-weaken
+	options = !emptydirs
+	source = http://cpan.metacpan.org/authors/id/K/KR/KRYDE/Gtk2-Ex-WidgetBits-48.tar.gz
+	md5sums = f65aadb9213492b2ceaad874c5b49943
+
+pkgname = perl-gtk2-ex-widgetbits
+
