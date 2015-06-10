@@ -10,6 +10,7 @@ license=('GPL2')
 makedepends=('git')
 depends=('adwaita-icon-theme' 'gnome-icon-theme')
 conflicts=("${_pkgname}-icons")
+provides=("${_pkgname}-icons")
 options=(!strip)
 install="${pkgname}.install"
 source=("git+${url}")

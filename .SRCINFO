@@ -9,6 +9,7 @@ pkgbase = elementary-xfce-icons-git
 	makedepends = git
 	depends = adwaita-icon-theme
 	depends = gnome-icon-theme
+	provides = elementary-xfce-icons
 	conflicts = elementary-xfce-icons
 	options = !strip
 	source = git+https://github.com/shimmerproject/elementary-xfce
