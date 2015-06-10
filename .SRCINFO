@@ -1,0 +1,27 @@
+pkgbase = mosh-sshagent-git
+	pkgdesc = Mobile shell with support for ssh-agent-forwarding and out-of-band
+	pkgver = 20150210
+	pkgrel = 1
+	url = http://mosh.mit.edu/
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = GPL3
+	makedepends = git
+	depends = protobuf
+	depends = ncurses
+	depends = zlib
+	depends = openssh
+	depends = perl
+	depends = perl-io-tty
+	depends = libutempter
+	optdepends = perl-io-socket-ip: for IPv6 support
+	optdepends = vte-mosh-fix: to work properly in vte
+	optdepends = vte3-mosh-fix: to work properly in vte3
+	conflicts = mosh
+	conflicts = mosh-git
+	source = git+https://github.com/kevinr/mosh.git#branch=kevinr-ssh-agent-forwarding
+	md5sums = SKIP
+
+pkgname = mosh-sshagent-git
+
