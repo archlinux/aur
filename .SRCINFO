@@ -1,0 +1,15 @@
+pkgbase = gpdfx
+	pkgdesc = A graphical tool to extract parts of a PDF as a PDF
+	pkgver = 1.1
+	pkgrel = 7
+	url = http://www.lhnr.de/ext/gpdfx/index.php
+	arch = any
+	license = GPL
+	depends = python2
+	depends = texlive-core
+	depends = python2-poppler
+	source = http://www.lhnr.de/ext/gpdfx/gpdfx-1.1.tar.gz
+	md5sums = baf61782b83e1c2189331821a856bdbd
+
+pkgname = gpdfx
+
