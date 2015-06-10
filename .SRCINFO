@@ -1,0 +1,21 @@
+pkgbase = xfce4-soundmenu-plugin
+	pkgdesc = A very basic xfce4-panel plugin to control any players MPRIS2 compatible.
+	pkgver = 0.7.0
+	pkgrel = 2
+	url = https://github.com/matiasdelellis/xfce4-soundmenu-plugin
+	install = xfce4-soundmenu-plugin.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = intltool
+	depends = xfce4-panel
+	depends = libmpris2client
+	optdepends = libclastfm: for Lastfm support
+	optdepends = glyr-git: to search lyrics
+	optdepends = libkeybinder: for global keyboard shortcuts support
+	optdepends = libnotify: Notification support
+	source = https://github.com/matiasdelellis/xfce4-soundmenu-plugin/releases/download/v0.7.0/xfce4-soundmenu-plugin-0.7.0.tar.bz2
+	md5sums = fe5b914ecc27360b941e3000eac8676e
+
+pkgname = xfce4-soundmenu-plugin
+
