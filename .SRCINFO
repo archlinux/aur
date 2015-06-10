@@ -1,0 +1,14 @@
+pkgbase = dcpu-16
+	pkgdesc = DCPU-16 assembler and emulator written in C++
+	pkgver = r3
+	pkgrel = 2
+	url = http://n.ethz.ch/~vartokb/dcpu.html
+	arch = x86_64
+	arch = i686
+	license = unknown
+	depends = sdl
+	source = http://n.ethz.ch/~vartokb/download/dcpu-16-r3.tar.bz2
+	sha256sums = 7c4c6d606b504552eb8871899be151fc7fd6401f1274a3d0928d9dc823095c08
+
+pkgname = dcpu-16
+
