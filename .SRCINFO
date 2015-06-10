@@ -1,0 +1,16 @@
+pkgbase = navicat-lite
+	pkgdesc = A fast, reliable and affordable Database Administration tool purpose-built for simplifying database management and reducing administration costs.
+	pkgver = 10.0.6
+	pkgrel = 2
+	url = http://www.navicat.com
+	arch = any
+	license = custom
+	source = http://dl.dropbox.com/u/152616/navicat100_lite_en.tar.gz
+	source = navicat.desktop
+	source = navicat
+	md5sums = f44cb252012eadd5d4935414de68d087
+	md5sums = 0a40410d7be7d9e324002c368eafd0b3
+	md5sums = a7f10a4d9c2c3901829c35c5bf9aae97
+
+pkgname = navicat-lite
+
