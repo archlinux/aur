@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python2-structlog
-pkgver=15.1.0
+pkgver=15.2.0
 pkgrel=1
 pkgdesc="Structured logging for Python"
 arch=('any')
