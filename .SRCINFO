@@ -1,0 +1,17 @@
+pkgbase = firmware-extract
+	pkgdesc = A firmware-tools plugin to add firmware extraction from vendor binaries
+	pkgver = 2.0.13
+	pkgrel = 1
+	url = http://linux.dell.com/repo/firmware/
+	arch = any
+	license = GPL
+	license = OSL
+	makedepends = make
+	makedepends = gawk
+	depends = python2
+	provides = firmware-extract
+	source = http://linux.dell.com/libsmbios/download/firmware-extract/firmware-extract-2.0.13/firmware-extract-2.0.13.tar.bz2
+	sha256sums = 507fe9aa33f5630c2b8859e2b9ec80fc4ff73dead24d7eaf640978e5873ccf96
+
+pkgname = firmware-extract
+
