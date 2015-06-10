@@ -1,0 +1,17 @@
+pkgbase = kwallet-query-git
+	pkgdesc = Use this tool to query wallets from the command-line interface
+	pkgver = r5.340a45b
+	pkgrel = 1
+	url = https://projects.kde.org/projects/playground/utils/kwallet-query
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = kwallet
+	conflicts = kwallet-query
+	source = git://anongit.kde.org/kwallet-query
+	md5sums = SKIP
+
+pkgname = kwallet-query-git
+
