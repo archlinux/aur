@@ -1,0 +1,17 @@
+pkgbase = ipycli-git
+	pkgdesc = IPython subapp that supports adding arbitrary notebooks from the command line
+	pkgver = r135.baa33ed
+	pkgrel = 1
+	url = https://github.com/dalejung/ipycli/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = python2
+	depends = python2
+	depends = ipython2
+	source = git://github.com/dalejung/ipycli.git
+	md5sums = SKIP
+
+pkgname = ipycli-git
+
