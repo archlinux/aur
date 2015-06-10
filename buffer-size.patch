@@ -1,0 +1,26 @@
+diff --git i/jni/mdxmini/src/mdxmini.c w/jni/mdxmini/src/mdxmini.c
+index a5bb8e3..dd7a89e 100755
+--- i/jni/mdxmini/src/mdxmini.c
++++ w/jni/mdxmini/src/mdxmini.c
+@@ -199,7 +199,7 @@ void mdx_set_dir ( t_mdxmini *data , char  * dir )
+ 
+ void mdx_set_rate( int freq )
+ {
+-	dsp_speed = freq;
++	dsp_speed = freq > 192000 ? 192000 : freq;
+ }
+ 
+ void mdx_set_max_loop(t_mdxmini *data , int loop)
+diff --git i/jni/mdxmini/src/pcm8.c w/jni/mdxmini/src/pcm8.c
+index 940f90a..f7c8003 100755
+--- i/jni/mdxmini/src/pcm8.c
++++ w/jni/mdxmini/src/pcm8.c
+@@ -199,7 +199,7 @@ int pcm8_open( MDX_DATA *mdx, songdata *data )
+   self->pcm_buffer = NULL;
+ 
+ 
+-  self->sample_buffer_size = 1024;
++  self->sample_buffer_size = 13312;
+   //  self->dsp_speed * PCM8_SYSTEM_RATE / 1000;
+ 
+   if ( self->is_encoding_stereo == FLAG_TRUE ) {

@@ -10,8 +10,10 @@ url='https://github.com/BouKiCHi/mdxplayer/tree/master/jni/mdxmini'
 license=(GPL2)
 makedepends=(git)
 source=("$pkgbase"::'git+https://github.com/BouKiCHi/mdxplayer.git'
+        buffer-size.patch
         makefiles.patch)
 sha256sums=('SKIP'
+            '4f8ec91487736c9ad864f54c615b491c406464573469ed59b1d4f6be77cf2812'
             'd8f24d0a385ed081e496573abed032366a2e74c6ea4c6dada80d7571e40bf1c0')
 
 pkgver() {
@@ -25,6 +27,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/$pkgbase"
   patch -p1 -i "$srcdir"/makefiles.patch
+  patch -p1 -i "$srcdir"/buffer-size.patch
 }
 
 build() {
