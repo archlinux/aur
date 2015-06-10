@@ -1,0 +1,14 @@
+pkgbase = spread0r
+	pkgdesc = txt reader which makes you reading twice as fast as usual
+	pkgver = 1.0
+	pkgrel = 2
+	url = https://github.com/xypiie/spread0r
+	arch = any
+	license = GPL2
+	depends = perl
+	depends = gtk2-perl
+	source = https://github.com/xypiie/spread0r/archive/v1.0.tar.gz
+	md5sums = 3d9c44c2c4ce56de0c9214e6e7e8b9a3
+
+pkgname = spread0r
+
