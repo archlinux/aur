@@ -10,20 +10,20 @@
 pkgname=accountsservice-ubuntu
 _ubuntu_rel=1ubuntu9
 _ubuntu_ver=0.6.37
-pkgver=0.6.39
+pkgver=0.6.40
 pkgrel=1
 pkgdesc="D-Bus interface for user account query and manipulation"
 arch=(i686 x86_64)
 url="http://cgit.freedesktop.org/accountsservice/"
 license=(GPL3)
 depends=(glib2 polkit systemd lightdm-ubuntu)
-makedepends=(intltool gobject-introspection vala)
+makedepends=(intltool gobject-introspection python2 vala)
 provides=("accountsservice=${pkgver}")
 conflicts=(accountsservice)
 source=("http://cgit.freedesktop.org/accountsservice/snapshot/accountsservice-${pkgver}.tar.xz"
         "https://launchpad.net/ubuntu/+archive/primary/+files/accountsservice_${_ubuntu_ver:-${pkgver}}-${_ubuntu_rel}.debian.tar.xz"
         0001-Support-setting-reading-LightDM-autologin-setings.patch)
-sha512sums=('95010b312650eaa629a8ef5ea29a0fd1b8c256c67e645e7b35d77967306ea7591f507d3c2df385ea3393cbb26fa4c798716d301bcbfd9dbb350a6f9172810db8'
+sha512sums=('41cd507c5a451cc88b8e6b28725c103ccd1d5819a60fdcea9e201a248ab609c5fe26ddc1eaebe6781425094cc073fb32485041ade83c433d4add952e172ae189'
             'b6c51ec1ca513100f109629ddd0c2b6575e5cba8f5ef5c39399ae8bc8a53078a22b522747cd659ed96de217555fbda5238de06f698c6d94a530eacd2b807a615'
             '0ba299e57a1629993f19bbc07178262bd07040f64e61df78c7b16596956be8037c6aff087505ece9d2f65c1bc66c8628ab09bcdb6ba9e2e4b2a6e937dd6cb2df')
 
