@@ -1,3 +1,6 @@
+#Maintainer: Carlos Franke <carlos_franke at lemtank dot de>
+#Contributor: Kyle Keen <keenerd@gmail.com>
+
 _pkgname=bdflib
 pkgname=python2-$_pkgname
 pkgver=1.0.0
