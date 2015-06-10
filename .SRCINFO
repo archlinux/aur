@@ -1,0 +1,17 @@
+pkgbase = pdcurses
+	pkgdesc = Cross-platform (DOS, OS/2, Win32, X11 and SDL) curses implementation
+	pkgver = 3.4
+	pkgrel = 6
+	url = https://github.com/macton/pdcurses
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = xaw3d
+	depends = bash
+	depends = sdl
+	options = staticlibs
+	source = pdcurses-3.4.tgz::https://github.com/macton/pdcurses/archive/master.tar.gz
+	sha256sums = 9b9185071a0ccfe8ae06ddd8fc75c2afecf5ebc54812f4de821d563114a97e12
+
+pkgname = pdcurses
+
