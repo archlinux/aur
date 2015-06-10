@@ -1,0 +1,14 @@
+pkgbase = libnsbmp-svn
+	pkgdesc = Library for decoding BMP and ICO image formats
+	pkgver = 14008
+	pkgrel = 1
+	url = http://www.netsurf-browser.org/projects/libnsbmp/
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = subversion
+	makedepends = netsurf-buildsystem-git
+	provides = libnsbmp
+
+pkgname = libnsbmp-svn
+
