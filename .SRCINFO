@@ -1,0 +1,15 @@
+pkgbase = combust-git
+	pkgdesc = iptables/nftables firewall script with profiles
+	pkgver = 0.50.0dcc612
+	pkgrel = 1
+	url = https://github.com/gavinhungry/combust
+	arch = any
+	license = MIT
+	depends = iptables
+	depends = nftables
+	backup = etc/combust/combust.conf
+	source = combust::git+https://github.com/gavinhungry/combust.git#branch=master
+	md5sums = SKIP
+
+pkgname = combust-git
+
