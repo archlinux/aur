@@ -1,0 +1,26 @@
+pkgbase = cjdns-git
+	pkgdesc = A routing engine designed for security, scalability, speed and ease of use
+	pkgver = 0.3.3357
+	pkgrel = 1
+	url = https://github.com/cjdelisle/cjdns
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL3
+	makedepends = git
+	makedepends = nodejs
+	makedepends = python2
+	depends = glibc
+	optdepends = cjdnsify: allows you to run some programs bound to your cjdns address
+	optdepends = libnacl: speed up the build process by skipping the need to compile cnacl
+	optdepends = cjdns-git-sysvinit: support for sysvinit (rc.d)
+	options = !distcc
+	options = !strip
+	options = !buildflags
+	source = git+https://github.com/cjdelisle/cjdns#branch=crashey
+	sha512sums = SKIP
+
+pkgname = cjdns-git
+
