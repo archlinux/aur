@@ -1,0 +1,14 @@
+pkgbase = vim-delimitmate
+	pkgdesc = Provides auto-balancing and some expansions for parens, quotes, etc.
+	pkgver = 2.6
+	pkgrel = 1
+	url = http://www.vim.org/scripts/script.php?script_id=2754
+	arch = any
+	groups = vim-plugins
+	license = unknown
+	depends = vim
+	source = vim-delimitmate.vba::http://www.vim.org/scripts/download_script.php?src_id=14758
+	md5sums = 7aa765483e79095f4532835106acfbb9
+
+pkgname = vim-delimitmate
+
