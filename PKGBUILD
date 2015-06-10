@@ -1,32 +1,31 @@
-# Maintainer: stqn
+# Maintainer: sehraf
+# Contributor: stqn
 
 # Set this to true to build and install retroshare-nogui
 _build_nogui=true
 
 # Set this to true to build and install the plugins
-_build_linkscloud=true
-_build_feedreader=true
-_build_voip=true
+_build_feedreader=false
+_build_voip=false
 
 ### Nothing to be changed below this line ###
 
-_branch="branches/v0.5.5"
-#_svnmod=trunk
-_svnmod=v0.5.5
+#_branch="branches/v0.5.5"
+_svnmod=trunk
 
 pkgname=retroshare-svn
-pkgver=7261
+pkgver=8406
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://retroshare.sourceforge.net/"
 license=('GPL' 'LGPL')
-depends=('qt4' 'libupnp' 'libgnome-keyring' 'libxss')
+depends=('qt4' 'libupnp' 'libgnome-keyring' 'libxss' 'libmicrohttpd')
 makedepends=('subversion')
 provides=('retroshare')
 conflicts=('retroshare')
 install='retroshare.install'
-source=('svn://svn.code.sf.net/p/retroshare/code/'$_branch
+source=('svn://svn.code.sf.net/p/retroshare/code/'$_svnmod
 		'retroshare.install')
 sha256sums=('SKIP'
 			'47c23238cbfabb6f07b6a25666ee5941243176360ca28ec31378d94e87326ec1')
@@ -66,10 +65,22 @@ build() {
 	make
 	cd ../..
 
+	msg "Compiling pegmarkdown..."
+	cd supportlibs/pegmarkdown
+	$_qmake
+	make
+	cd ../..
+
 	msg "Compiling libretroshare..."
 	cd libretroshare/src
 	$_qmake
 	LANG=C ./version_detail.sh
+	make
+	cd ../..
+
+	msg "Compiling libresapi..."
+	cd libresapi/src
+	$_qmake
 	make
 	cd ../..
 
@@ -91,14 +102,6 @@ build() {
 	if [[ "$_build_feedreader" == "true" ]] ; then
 		msg "Compiling FeedReader plugin..."
 		cd "plugins/FeedReader"
-		$_qmake
-		make
-		cd ../..
-	fi
-
-	if [[ "$_build_linkscloud" == "true" ]] ; then
-		msg "Compiling LinksCloud plugin..."
-		cd "plugins/LinksCloud"
 		$_qmake
 		make
 		cd ../..
@@ -126,20 +129,15 @@ package() {
 	fi
 
 	# Plugins
-	if [[ "$_build_linkscloud" == "true" ]] ; then
-		install -D -m 755 \
-			"plugins/LinksCloud/libLinksCloud.so" \
-			"${pkgdir}/usr/lib/retroshare/extensions/libLinksCloud.so"
-	fi
 	if [[ "$_build_voip" == "true" ]] ; then
 		install -D -m 755 \
 			"plugins/VOIP/libVOIP.so" \
-			"${pkgdir}/usr/lib/retroshare/extensions/libVOIP.so"
+			"${pkgdir}/usr/lib/retroshare/extensions6/libVOIP.so"
 	fi
 	if [[ "$_build_feedreader" == "true" ]] ; then
 		install -D -m 755 \
 			"plugins/FeedReader/libFeedReader.so" \
-			"${pkgdir}/usr/lib/retroshare/extensions/libFeedReader.so"
+			"${pkgdir}/usr/lib/retroshare/extensions6/libFeedReader.so"
 	fi
 
 	# Applications menu entry
@@ -158,7 +156,7 @@ StartupNotify=true
 Categories=Network;InstantMessaging;FileTransfer;Chat;Email;
 EOF
 	install -D -m 644 \
-		"retroshare-gui/src/gui/images/retrosharelogo1.png" \
+		"retroshare-gui/src/gui/images/logo/logo_512.png" \
 		"${pkgdir}/usr/share/pixmaps/retroshare_blue.png"
 
 	# bdboot (needed to bootstrap the DHT)
