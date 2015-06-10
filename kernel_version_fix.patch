@@ -1,0 +1,124 @@
+diff -Naur a/Makefile b/Makefile
+--- a/Makefile	2013-07-02 19:38:49.000000000 +0300
++++ b/Makefile	2013-12-16 15:27:24.449280259 +0200
+@@ -64,6 +64,9 @@
+ #PLATFORM = UBICOM_IPX8
+ #PLATFORM = INTELP6
+ 
++KERNEL_VERSION = $(shell uname -r | cut -d. -f1-2) 
++KERNEL24=
++
+ #APSOC
+ ifeq ($(MODULE),3050)
+ PLATFORM = RALINK_3050
+@@ -333,7 +336,7 @@
+ 	$(MAKE) -C $(RT28xx_DIR)/os/Threadx -f $(RT28xx_DIR)/os/ThreadX/Makefile
+ 
+ LINUX:
+-ifneq (,$(findstring 2.4,$(LINUX_SRC)))
++ifneq ($(KERNEL24),)
+ 
+ ifeq ($(OSABL),YES)
+ 	cp -f os/linux/Makefile.4.util $(RT28xx_DIR)/os/linux/Makefile
+@@ -459,7 +462,7 @@
+ 
+ uninstall:
+ ifeq ($(TARGET), LINUX)
+-ifneq (,$(findstring 2.4,$(LINUX_SRC)))
++ifneq ($(KERNEL24),)
+ 	$(MAKE) -C $(RT28xx_DIR)/os/linux -f Makefile.4 uninstall
+ else
+ 	$(MAKE) -C $(RT28xx_DIR)/os/linux -f Makefile.6 uninstall
+@@ -468,7 +471,7 @@
+ 
+ install:
+ ifeq ($(TARGET), LINUX)
+-ifneq (,$(findstring 2.4,$(LINUX_SRC)))
++ifneq ($(KERNEL24),)
+ 	$(MAKE) -C $(RT28xx_DIR)/os/linux -f Makefile.4 install
+ else
+ 	$(MAKE) -C $(RT28xx_DIR)/os/linux -f Makefile.6 install
+@@ -476,7 +479,7 @@
+ endif
+ 
+ libwapi:
+-ifneq (,$(findstring 2.4,$(LINUX_SRC)))
++ifneq ($(KERNEL24),)
+ 	cp -f os/linux/Makefile.libwapi.4 $(RT28xx_DIR)/os/linux/Makefile
+ 	$(MAKE) -C $(RT28xx_DIR)/os/linux/
+ else
+@@ -486,7 +489,7 @@
+ 
+ osutil:
+ ifeq ($(OSABL),YES)
+-ifneq (,$(findstring 2.4,$(LINUX_SRC)))
++ifneq ($(KERNEL24),)
+ 	cp -f os/linux/Makefile.4.util $(RT28xx_DIR)/os/linux/Makefile
+ 	$(MAKE) -C $(RT28xx_DIR)/os/linux/
+ else
+@@ -497,7 +500,7 @@
+ 
+ osnet:
+ ifeq ($(OSABL),YES)
+-ifneq (,$(findstring 2.4,$(LINUX_SRC)))
++ifneq ($(KERNEL24),)
+ 	cp -f os/linux/Makefile.4.netif $(RT28xx_DIR)/os/linux/Makefile
+ 	$(MAKE) -C $(RT28xx_DIR)/os/linux/
+ else
+@@ -507,7 +510,7 @@
+ endif
+ 
+ osdrv:
+-ifneq (,$(findstring 2.4,$(LINUX_SRC)))
++ifneq ($(KERNEL24),)
+ 	cp -f os/linux/Makefile.4 $(RT28xx_DIR)/os/linux/Makefile
+ 	$(MAKE) -C $(RT28xx_DIR)/os/linux/
+ else
+diff -Naur a/os/linux/config.mk b/os/linux/config.mk
+--- a/os/linux/config.mk	2013-07-02 11:04:08.000000000 +0300
++++ b/os/linux/config.mk	2013-12-16 15:23:38.000000000 +0200
+@@ -717,7 +717,7 @@
+ endif
+ 
+ ifeq ($(PLATFORM),INF_DANUBE)
+-ifneq (,$(findstring 2.4,$(LINUX_SRC)))
++ifneq ($(KERNEL24),)
+ # Linux 2.4
+ WFLAGS += -DINF_DANUBE -DRT_BIG_ENDIAN
+ else
+@@ -821,7 +821,7 @@
+ endif
+ 
+ ifeq ($(PLATFORM),INF_DANUBE)
+-	ifneq (,$(findstring 2.4,$(LINUX_SRC)))
++	ifneq ($(KERNEL24),)
+ 	CFLAGS := -I$(RT28xx_DIR)/include $(WFLAGS) -Wundef -fno-strict-aliasing -fno-common -ffreestanding -Os -fomit-frame-pointer -G 0 -mno-abicalls -fno-pic -pipe -msoft-float  -mabi=32 -march=mips32 -Wa,-32 -Wa,-march=mips32 -Wa,-mips32 -Wa,--trap -I$(LINUX_SRC)/include/asm-mips/mach-generic
+ 	else
+ 	CFLAGS := -I$(RT28xx_DIR)/include $(WFLAGS) -Wundef -fno-strict-aliasing -fno-common -ffreestanding -Os -fomit-frame-pointer -G 0 -mno-abicalls -fno-pic -pipe -msoft-float  -mabi=32 -march=mips32r2 -Wa,-32 -Wa,-march=mips32r2 -Wa,-mips32r2 -Wa,--trap -I$(LINUX_SRC)/include/asm-mips/mach-generic
+@@ -855,7 +855,7 @@
+ endif
+ 
+ ifeq ($(PLATFORM),PC)
+-    ifneq (,$(findstring 2.4,$(LINUX_SRC)))
++    ifneq ($(KERNEL24),)
+ 	# Linux 2.4
+ 	CFLAGS := -D__KERNEL__ -I$(LINUX_SRC)/include -I$(RT28xx_DIR)/include -O2 -fomit-frame-pointer -fno-strict-aliasing -fno-common -pipe -mpreferred-stack-boundary=2 -march=i686 -DMODULE -DMODVERSIONS -include $(LINUX_SRC)/include/linux/modversions.h $(WFLAGS)
+ 	export CFLAGS
+@@ -922,7 +922,7 @@
+ endif
+ 
+ ifeq ($(PLATFORM),MT85XX)
+-    ifneq (,$(findstring 2.4,$(LINUX_SRC)))
++    ifneq ($(KERNEL24),)
+ 	# Linux 2.4
+ 	CFLAGS := -D__KERNEL__ -I$(LINUX_SRC)/include -I$(RT28xx_DIR)/include -O2 -fomit-frame-pointer -fno-strict-aliasing -fno-common -pipe -mpreferred-stack-boundary=2 -march=i686 -DMODULE -DMODVERSIONS -include $(LINUX_SRC)/include/linux/modversions.h $(WFLAGS)
+ 	export CFLAGS
+@@ -943,7 +943,7 @@
+ endif
+ 
+ ifeq ($(PLATFORM),NXP_TV550)
+-    ifneq (,$(findstring 2.4,$(LINUX_SRC)))
++    ifneq ($(KERNEL24),)
+         # Linux 2.4
+         CFLAGS := -D__KERNEL__ -I$(LINUX_SRC)/include -I$(RT28xx_DIR)/include -O2 -fomit-frame-pointer -fno-strict-aliasing -fno-common -pipe -mpreferred-stack-boundary=2 -march=mips -DMODULE -DMODVERSIONS -include $(LINUX_SRC)/include/linux/modversions.h $(WFLAGS)
+         export CFLAGS

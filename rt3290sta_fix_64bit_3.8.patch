@@ -1,0 +1,64 @@
+diff -rupN a/include/os/rt_linux.h b/include/os/rt_linux.h
+--- a/include/os/rt_linux.h	2012-05-08 05:27:26.000000000 +0000
++++ b/include/os/rt_linux.h	2013-10-17 23:55:33.903364091 +0000
+@@ -987,15 +987,15 @@ void linux_pci_unmap_single(void *handle
+ 		(RTPKT_TO_OSPKT(_pkt)->len) = (_len)
+ 		
+ #define GET_OS_PKT_DATATAIL(_pkt) \
+-		(RTPKT_TO_OSPKT(_pkt)->tail)
++		((unsigned char*)skb_tail_pointer(RTPKT_TO_OSPKT(_pkt)))
+ #define SET_OS_PKT_DATATAIL(_pkt, _start, _len)	\
+-		((RTPKT_TO_OSPKT(_pkt))->tail) = (PUCHAR)((_start) + (_len))
++		(skb_set_tail_pointer((RTPKT_TO_OSPKT(_pkt)), (_len)))
+ 		
+ #define GET_OS_PKT_HEAD(_pkt) \
+ 		(RTPKT_TO_OSPKT(_pkt)->head)
+ 
+ #define GET_OS_PKT_END(_pkt) \
+-		(RTPKT_TO_OSPKT(_pkt)->end)
++		((unsigned char*)skb_end_pointer(RTPKT_TO_OSPKT(_pkt)))
+ 
+ #define GET_OS_PKT_NETDEV(_pkt) \
+ 		(RTPKT_TO_OSPKT(_pkt)->dev)
+diff -rupN a/os/linux/rt_linux.c b/os/linux/rt_linux.c
+--- a/os/linux/rt_linux.c	2012-05-08 05:27:26.000000000 +0000
++++ b/os/linux/rt_linux.c	2013-10-17 23:57:10.576701607 +0000
+@@ -505,9 +505,9 @@ PNDIS_PACKET duplicate_pkt(
+ 		MEM_DBG_PKT_ALLOC_INC(skb);
+ 
+ 		skb_reserve(skb, 2);
+-		NdisMoveMemory(skb->tail, pHeader802_3, HdrLen);
++		NdisMoveMemory((unsigned char*)skb_tail_pointer(skb), pHeader802_3, HdrLen);
+ 		skb_put(skb, HdrLen);
+-		NdisMoveMemory(skb->tail, pData, DataSize);
++		NdisMoveMemory((unsigned char*)skb_tail_pointer(skb), pData, DataSize);
+ 		skb_put(skb, DataSize);
+ 		skb->dev = pNetDev;	/*get_netdev_from_bssid(pAd, FromWhichBSSID); */
+ 		pPacket = OSPKT_TO_RTPKT(skb);
+@@ -659,7 +659,7 @@ PNDIS_PACKET ClonePacket(
+ 		pClonedPkt->dev = pRxPkt->dev;
+ 		pClonedPkt->data = pData;
+ 		pClonedPkt->len = DataSize;
+-		pClonedPkt->tail = pClonedPkt->data + pClonedPkt->len;
++		skb_set_tail_pointer(pClonedPkt, DataSize);
+ 		ASSERT(DataSize < 1530);
+ 	}
+ 	return pClonedPkt;
+@@ -705,7 +705,7 @@ void wlan_802_11_to_802_3_packet(
+ 	pOSPkt->dev = pNetDev;
+ 	pOSPkt->data = pData;
+ 	pOSPkt->len = DataSize;
+-	pOSPkt->tail = pOSPkt->data + pOSPkt->len;
++	skb_set_tail_pointer(pOSPkt, DataSize);
+ 
+ 	/* */
+ 	/* copy 802.3 header */
+@@ -4924,7 +4924,7 @@ Note:
+ */
+ VOID RtmpOsPktTailAdjust(IN PNDIS_PACKET pNetPkt,
+ 			 IN UINT removedTagLen) {
+-	OS_PKT_TAIL_ADJUST(pNetPkt, removedTagLen);
++	skb_set_tail_pointer(pNetPkt, pNetPkt->len - removedTagLen)
+ }
+ 
+ /*

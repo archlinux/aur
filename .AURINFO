@@ -1,0 +1,24 @@
+pkgbase = rt3290sta-dkms
+	pkgdesc = Drivers for rt3290 chipset wireless cards
+	pkgver = 2.6.0.0
+	pkgrel = 5
+	url = http://www.ralinktech.com/
+	install = rt3290sta.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	makedepends = linux-headers
+	depends = dkms
+	conflicts = rt2860
+	conflicts = rt3090
+	conflicts = rt3290sta
+	replaces = rt3290sta
+	source = https://launchpad.net/~barracuda72/+archive/ralink/+files/rt3290-dkms_2.6.0.0rev1-0ubuntu1~ppa1.tar.gz
+	source = rt3290sta_fix_64bit_3.8.patch
+	source = kernel_version_fix.patch
+	source = 3.14fix.patch
+	source = sta_fix.patch
+
+pkgname = rt3290sta-dkms
+

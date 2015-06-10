@@ -1,0 +1,28 @@
+
+post_install() {
+
+    echo "Adding Module to DKMS build system"
+    dkms add -m rt3290 -v 2.6.0.0rev1
+
+    echo "Doing initial module build"
+    dkms build -m rt3290 -v 2.6.0.0rev1
+
+    echo "Installing initial module"
+    dkms install -m rt3290 -v 2.6.0.0rev1 --force
+
+    echo "************************************************************"
+    echo 'Remember to enable DKMS at boot with "systemctl enable dkms"'
+    echo "************************************************************"
+}
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+
+    echo "Uninstalling initial module"
+    dkms uninstall -m rt3290 -v 2.6.0.0rev1
+
+    echo "Removing module from DKMS system"
+    dkms remove -m rt3290 -v 2.6.0.0rev1 --all
+}

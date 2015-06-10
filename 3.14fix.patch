@@ -1,0 +1,17 @@
+diff -Naur a/include/os/rt_linux.h b/include/os/rt_linux.h
+--- a/include/os/rt_linux.h	2012-05-08 08:27:26.000000000 +0300
++++ b/include/os/rt_linux.h	2014-02-07 00:47:15.752558956 +0200
+@@ -269,8 +269,13 @@
+ 
+ typedef struct _OS_FS_INFO_
+ {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3,14,0)
+ 	int				fsuid;
+ 	int				fsgid;
++#else
++	kuid_t				fsuid;
++	kgid_t				fsgid;
++#endif
+ 	mm_segment_t	fs;
+ } OS_FS_INFO;
+ 
