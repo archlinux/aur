@@ -1,0 +1,24 @@
+pkgbase = hellcat-git
+	pkgdesc = netcat that takes unfair advantage of traffic shaping systems that don't initially ratelimit
+	pkgver = r45.8873f05
+	pkgrel = 1
+	url = https://github.com/matildah/hellcat
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = clang
+	makedepends = git
+	depends = glibc
+	provides = hellcat
+	conflicts = hellcat
+	replaces = hellcat
+	source = git://github.com/matildah/hellcat.git#branch=master
+	source = hellcat-build.patch
+	sha512sums = SKIP
+	sha512sums = e5f697b5ffba48dbc7d88caa286e02dc59f1fdea0a889b32df64cf6dfd2bae62dcc4b7223fb7fab7d7f6c89832f2fb7e8d87255944cfe1ff2cbd1c69a863397c
+
+pkgname = hellcat-git
+
