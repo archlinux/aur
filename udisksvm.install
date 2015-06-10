@@ -1,0 +1,35 @@
+post_install() {
+  echo '
+-------------------------------------------------------------------------
+This package contains two scripts which work together:
+
+a UDisks wrapper: udisksvm 
+
+It is generally run in the backgroud when a window manager starts,
+and wait for USB devices being plugged in, or a CD/DVD being inserted
+-------------------------------------------------------------------------
+a systray GUI utility: traydvm 
+
+It is called by udisksvm when a device is plugged in, or a CD/DVD inserted
+and shows an icon in the system tray, featuring a right-click menu
+-------------------------------------------------------------------------
+INFOS ABOUT THE SCRIPTS ARE GIVEN IN: /usr/share/udisksvm/README
+-------------------------------------------------------------------------
+'
+}
+
+post_upgrade() {
+  echo '
+-------------------------------------------------------------------------
+Automounting is disabled by default
+to enable it, use the '-a', '--auto' command line option of udisksvm
+
+Notification balloon messages are enabled by default
+to disable them, use the '-s', '--silent' command line option of udisksvm
+-------------------------------------------------------------------------
+INFOS ABOUT THE SCRIPTS ARE GIVEN IN: /usr/share/udisksvm/README
+-------------------------------------------------------------------------
+'
+}
+
+# vim:set ts=2 sw=2 et:

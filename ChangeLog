@@ -1,0 +1,193 @@
+2011-02-15 Bernard Baeyens (berbae)
+
+	* 1.0-1 :
+	First release of the udisksvm script
+	with the associated default.xml configuration file for traydevice.
+2011-03-28
+	* 1.0-2 :
+	Change the source origins to github repository
+	Change architecture to "any"
+2011-05-08
+        * 1.1-0 :
+	Change default mount options : flush instead of sync for vfat file
+	system, and added nodev for all mount commands
+2011-05-15
+        * 1.2-0 :
+	New traydevice configuration file name: udisksvm.xml
+	traydevice now uses the -c option for the configuration file
+	tooltip is now the Label name if available and Uuid if not
+2011-10-22
+        * 1.3-0 :
+	Don't use 'eval' anymore to populate the variables
+	from 'udisks--show-infos'
+2011-10-25
+        * 1.4-0 :
+	Missing '-c $TRAYCONF' in the pgrep test for optical disks
+	Using (exec traydevice ...) & to launch traydevice
+	Using 'udisks --eject' instead of '/usr/bin/eject' in udisksvm.xml
+2012-01-26
+        * 1.5-0 :
+	Rollback of the change to launch traydevice with exec
+	Remove automount for optical disks
+	The mounting/unmounting for them is still under traydevice control
+	as is the ejection of unmounted optical disks
+2012-05-13
+        * 1.6-1 :
+	Don't give eject choice for mounted optical disks
+	they must be unmounted before ejection is possible)
+	Blank optical disks are now under traydevice control for ejection
+	or mounting after burning an iso file
+	but the label will not be seen until ejection/insertion of the disk)
+2012-05-21
+        * 1.7-1 :
+	Added ntfs filesystem type
+2012-06-05
+        * 1.8-1 :
+	Rewriting of the script in Python2
+	It now uses the dbus interface to UDisks, instead of the 'udisks'
+	command (but the 'udisks' command is still used by traydevice)
+2012-06-16
+        * 1.9-1 :
+	Added some errors management
+	Added redirection to /dev/null at traydevice command lines
+2012-06-23
+        * 1.10-1 :
+	Rewriting of the script in Python3
+	It uses the UDisks DBus API with the GDBus part of the GIO module
+	of GLib, via GObject-Introspection
+	usage: udisksvm [-h] [-v] [-n] [-d] traydconf
+	Added command lines options:
+	   positional arguments:
+	     traydconf      configuration file for traydevice
+	                    default: /usr/share/udisksvm/udisksvm.xml
+	   optional arguments:
+	     -h, --help     show help message and exit
+	     -v, --version  show program's version number and exit
+	     -n, --noauto   do not automount
+	     -d, --debug    show internal infos
+2012-06-30
+        * 1.11-1 :
+	The 'traydevice' utility is replaced with 'traydvm'
+	'traydvm' is a python3 script which uses gobject-introspection for
+	GIO, GLib and Gtk3
+	It has no configuration file and a predefined simple popup menu
+	with only 'Mount', 'Unmount' and 'Eject' actions
+	It is the last stage before migrating to UDisks2
+2012-07-08
+        * 2.0-1 :
+	Porting to UDisks2
+2012-07-10
+        * 2.1-1 :
+	Improving/optimizing the code:
+	Don't use the 'IdUsage' property anymore, the test of the filesystem
+	interface is better
+	Don't use the 'Number' property of the partition interface anymore
+	but use the 'IsContainer' and 'IsContained' properties to, presently,
+	limit the mounting on block devices to plain partitions
+	Improve the 'handler_on_changed' function in the udiskvm script
+	to act only if one tested property on optical disk has changed since
+	last call to it
+	Better identified messages from traydvm, when the debug option is
+	used: they are prefixed with '-----traydvm----->'
+	Simplification of the 'setup_sensitive' function to only look for a
+	change in mountpoints
+	The traydvm script ignores all changes made to partitions or file
+	system types or label, while it is running; if such changes are made
+	on a device, while traydvm is running on it, the device has first to be
+	plugged out/in to re-launch traydvm on it
+2012-08-02
+        * 2.1.1-1 :
+	Bug fix when there is no CD/DVD drive at /dev/sr0
+2012-10-14
+        * 2.2-1 :
+	Added connection to 'interface-added' signal, to act on Filesystem
+	interface addition to an already present object
+	Added default values to 'iscontainer' and 'iscontained' variables
+	when there is no Partition interface
+	In traydvm, change in the detection of optical disk, using the Drive
+	interface 'Optical' property
+2012-10-18
+        * 2.2.1-1 :
+	Using python2 because the gobject introspection scheme is broken with
+	new python 3.3.0 release
+2013-01-12
+        * 2.2.2-1 :
+	Using python3 again
+	Changed the call_sync method with call_mount_sync, call_unmount_sync
+	and call_eject_sync of the udisks2 filesystem interface; they are
+	easier and lighter to use
+2013-04-22
+        * 2.2.3-1 :
+	Don't use signal handler anymore to end processes
+	But use the KeyboardInterrupt exception
+	So <Ctrl-C> or SIGINT ends 'udisksvm' and 'traydvm'
+2013-07-12
+        * 2.2.4-1 :
+	Replace the 'gi._glib.GError' exception with 'GLib.GError'
+	Remove the 'ntfs-3g' file system type which is rejected by UDisks2
+2013-08-06
+        * 2.3.0-1 :
+	New feature: notifications of 'Mount' and 'UnMount' actions
+	or of errors when executing actions
+	this can be disabled by the '-s', '--silent' command line option
+	Important change: automounting is disabled by default
+	and enabled by the '-a', '--auto' command line option
+	added the 'sync' mount option for 'ext2' file system
+	better management of added objects
+	small improvements of code
+2013-08-30
+        * 2.3.1-1 :
+	Code modified to pass a PEP8 Python style guide compliance test
+	Don't show jobs objects added and removed
+	Use only string methods
+	Use get_block(), get_filesystem(), get_partition(), get_drive()
+	instead of the get_interface('...') method
+	Use 'is not None' in tests
+	Change 'audiotracks' with 'numaudio' names
+	Use all uppercase constant names
+	Use 'except Exception:' in traydvm script
+	Change name of popup menu name from 'udisksvm' to 'traydvm'
+2013-09-27
+        * 2.3.2-1 :
+	Added test of 'HintSystem' property to prevent creation of icons of
+	internal disks partitions if udisks2 is restarted when udisksvm is
+	running
+	Added version option parameter to traydvm command
+2013-10-08
+        * 2.3.3-1 :
+	Dysfunction fixes following the Gtk3 upgrade from 3.8.4 to 3.10.0:
+	Removed the tooltip feature of the system tray icon
+	Removed usage of the gnome stock icons in the popup menu
+	This is a temporary release before a re-writing of the popup menu
+	generation and associated actions.
+2013-10-15
+        * 2.4.0-1 :
+	Re-writing of the traydvm popup menu generation and associated actions
+	Don't use deprecated features of Gtk+ 3.10:
+	GtkActions, GtkUIManager and all stock items of Gnome
+	The tooltip feature of the GtkStatusIcon tray icon is disabled because
+	it prevents the popup menu from being shown correctly (probably a bug
+	in Gtk 3.10); but the tooltip text can be seen as the popup menu title
+        * 2.4.1-1 :
+	Fix typo in popup menu 'Unmount' instead of 'Unount'
+2013-11-18
+        * 2.4.2-1 :
+	Added multi media card device management
+	Small improvements of drive treatment in traydvm
+2013-12-18
+        * 2.5.0-1 :
+	Re-enabling tooltip which is now dynamically generated and shows the
+	state of the device as well as the mountpoint if appropriate.
+2014-10-30
+        * 2.6.0-1 :
+	traydvm now uses Qt5 GUI toolkit through Python bindings PyQt5 instead
+	of Gtk3, where GtkStatusIcon is now deprecated
+	the notification messages now use the message balloon feature of
+	QWidgets.QSystemTrayIcon
+	the dummy '-n, --noauto' command line option is removed
+	the 'oxygen-icons' theme is used by default
+2014-12-13
+        * 2.6.1-1 :
+	switch to the Qt4 GUI toolkit through Python bindings PyQt4
+	because PyQt5 did not yet follow the Qt5 upgrade to 5.4.0
+	and so is broken presently
