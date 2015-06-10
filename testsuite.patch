@@ -1,0 +1,86 @@
+diff -ru schroedinger-1.0.11/testsuite/Makefile.am patched/testsuite/Makefile.am
+--- schroedinger-1.0.11/testsuite/Makefile.am	2012-01-23 02:32:45.000000000 +0100
++++ patched/testsuite/Makefile.am	2013-06-15 16:21:17.920105217 +0200
+@@ -97,9 +97,10 @@
+ #wavelet_2d_CFLAGS = $(SCHRO_CFLAGS)
+ #wavelet_2d_LDADD = $(SCHRO_LIBS)
+ wavelet_2d_SOURCES = wavelet_2d.c
+-nodist_wavelet_2d_SOURCES = $(top_srcdir)/schroedinger/tmp-orc.c
++nodist_wavelet_2d_SOURCES = $(top_builddir)/schroedinger/tmp-orc.c
+ 
+ wavelet_max_gain_SOURCES = wavelet_max_gain.c
++nodist_wavelet_max_gain_SOURCES = $(top_builddir)/schroedinger/tmp-orc.c
+ 
+ wavelet_noise_2d_SOURCES = wavelet_noise_2d.c
+ 
+@@ -118,7 +119,7 @@
+ #quant_CFLAGS = 
+ #quant_LDADD = -lm
+ quant_SOURCES = quant.c
+-nodist_quant_SOURCES = $(top_srcdir)/schroedinger/tmp-orc.c
++nodist_quant_SOURCES = $(top_builddir)/schroedinger/tmp-orc.c
+ 
+ #sort_CFLAGS = $(SCHRO_CFLAGS)
+ #sort_LDADD = $(SCHRO_LIBS)
+diff -ru schroedinger-1.0.11/testsuite/Makefile.in patched/testsuite/Makefile.in
+--- schroedinger-1.0.11/testsuite/Makefile.in	2012-01-23 03:06:41.000000000 +0100
++++ patched/testsuite/Makefile.in	2013-06-15 16:35:51.133250813 +0200
+@@ -283,7 +283,9 @@
+ 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
+ 	$(am__DEPENDENCIES_1)
+ am_wavelet_max_gain_OBJECTS = wavelet_max_gain.$(OBJEXT)
+-wavelet_max_gain_OBJECTS = $(am_wavelet_max_gain_OBJECTS)
++nodist_wavelet_max_gain_OBJECTS = tmp-orc.$(OBJEXT)
++wavelet_max_gain_OBJECTS = $(am_wavelet_max_gain_OBJECTS) \
++	$(nodist_wavelet_max_gain_OBJECTS)
+ wavelet_max_gain_LDADD = $(LDADD)
+ wavelet_max_gain_DEPENDENCIES = libschrotest.la $(am__DEPENDENCIES_1) \
+ 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
+@@ -599,8 +601,9 @@
+ #wavelet_2d_CFLAGS = $(SCHRO_CFLAGS)
+ #wavelet_2d_LDADD = $(SCHRO_LIBS)
+ wavelet_2d_SOURCES = wavelet_2d.c
+-nodist_wavelet_2d_SOURCES = $(top_srcdir)/schroedinger/tmp-orc.c
++nodist_wavelet_2d_SOURCES = $(top_builddir)/schroedinger/tmp-orc.c
+ wavelet_max_gain_SOURCES = wavelet_max_gain.c
++nodist_max_gain_SOURCES = $(top_builddir)/schroedinger/tmp-orc.c
+ wavelet_noise_2d_SOURCES = wavelet_noise_2d.c
+ 
+ #phasecorrelation_CFLAGS = $(SCHRO_CFLAGS)
+@@ -618,7 +621,7 @@
+ #quant_CFLAGS = 
+ #quant_LDADD = -lm
+ quant_SOURCES = quant.c
+-nodist_quant_SOURCES = $(top_srcdir)/schroedinger/tmp-orc.c
++nodist_quant_SOURCES = $(top_builddir)/schroedinger/tmp-orc.c
+ 
+ #sort_CFLAGS = $(SCHRO_CFLAGS)
+ #sort_LDADD = $(SCHRO_LIBS)
+@@ -890,19 +893,19 @@
+ @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+ @am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(orc_test_CFLAGS) $(CFLAGS) -c -o orc_test-orc_test.obj `if test -f 'orc_test.c'; then $(CYGPATH_W) 'orc_test.c'; else $(CYGPATH_W) '$(srcdir)/orc_test.c'; fi`
+ 
+-tmp-orc.o: $(top_srcdir)/schroedinger/tmp-orc.c
+-@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT tmp-orc.o -MD -MP -MF $(DEPDIR)/tmp-orc.Tpo -c -o tmp-orc.o `test -f '$(top_srcdir)/schroedinger/tmp-orc.c' || echo '$(srcdir)/'`$(top_srcdir)/schroedinger/tmp-orc.c
++tmp-orc.o: $(top_builddir)/schroedinger/tmp-orc.c
++@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT tmp-orc.o -MD -MP -MF $(DEPDIR)/tmp-orc.Tpo -c -o tmp-orc.o `test -f '$(top_builddir)/schroedinger/tmp-orc.c' || echo '$(srcdir)/'`$(top_builddir)/schroedinger/tmp-orc.c
+ @am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/tmp-orc.Tpo $(DEPDIR)/tmp-orc.Po
+-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='$(top_srcdir)/schroedinger/tmp-orc.c' object='tmp-orc.o' libtool=no @AMDEPBACKSLASH@
++@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='$(top_builddir)/schroedinger/tmp-orc.c' object='tmp-orc.o' libtool=no @AMDEPBACKSLASH@
+ @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o tmp-orc.o `test -f '$(top_srcdir)/schroedinger/tmp-orc.c' || echo '$(srcdir)/'`$(top_srcdir)/schroedinger/tmp-orc.c
++@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o tmp-orc.o `test -f '$(top_builddir)/schroedinger/tmp-orc.c' || echo '$(srcdir)/'`$(top_builddir)/schroedinger/tmp-orc.c
+ 
+-tmp-orc.obj: $(top_srcdir)/schroedinger/tmp-orc.c
+-@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT tmp-orc.obj -MD -MP -MF $(DEPDIR)/tmp-orc.Tpo -c -o tmp-orc.obj `if test -f '$(top_srcdir)/schroedinger/tmp-orc.c'; then $(CYGPATH_W) '$(top_srcdir)/schroedinger/tmp-orc.c'; else $(CYGPATH_W) '$(srcdir)/$(top_srcdir)/schroedinger/tmp-orc.c'; fi`
++tmp-orc.obj: $(top_builddir)/schroedinger/tmp-orc.c
++@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT tmp-orc.obj -MD -MP -MF $(DEPDIR)/tmp-orc.Tpo -c -o tmp-orc.obj `if test -f '$(top_builddir)/schroedinger/tmp-orc.c'; then $(CYGPATH_W) '$(top_builddir)/schroedinger/tmp-orc.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/schroedinger/tmp-orc.c'; fi`
+ @am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/tmp-orc.Tpo $(DEPDIR)/tmp-orc.Po
+-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='$(top_srcdir)/schroedinger/tmp-orc.c' object='tmp-orc.obj' libtool=no @AMDEPBACKSLASH@
++@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='$(top_builddir)/schroedinger/tmp-orc.c' object='tmp-orc.obj' libtool=no @AMDEPBACKSLASH@
+ @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o tmp-orc.obj `if test -f '$(top_srcdir)/schroedinger/tmp-orc.c'; then $(CYGPATH_W) '$(top_srcdir)/schroedinger/tmp-orc.c'; else $(CYGPATH_W) '$(srcdir)/$(top_srcdir)/schroedinger/tmp-orc.c'; fi`
++@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o tmp-orc.obj `if test -f '$(top_builddir)/schroedinger/tmp-orc.c'; then $(CYGPATH_W) '$(top_builddir)/schroedinger/tmp-orc.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/schroedinger/tmp-orc.c'; fi`
+ 
+ mostlyclean-libtool:
+ 	-rm -f *.lo

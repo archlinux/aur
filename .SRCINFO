@@ -1,0 +1,25 @@
+pkgbase = mingw-w64-schroedinger
+	pkgdesc = An implemenation of the Dirac video codec in ANSI C code (mingw-w64)
+	pkgver = 1.0.11
+	pkgrel = 3
+	url = http://www.diracvideo.org/
+	arch = any
+	license = GPL2
+	license = LGPL2.1
+	license = MPL
+	license = MIT
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-pkg-config
+	depends = mingw-w64-crt
+	depends = mingw-w64-orc
+	options = !strip
+	options = !buildflags
+	options = !libtool
+	options = staticlibs
+	source = http://www.diracvideo.org/download/schroedinger/schroedinger-1.0.11.tar.gz
+	source = testsuite.patch
+	md5sums = da6af08e564ca1157348fb8d92efc891
+	md5sums = 0d6d1f8e78befde9bd04d7e93aed0b67
+
+pkgname = mingw-w64-schroedinger
+
