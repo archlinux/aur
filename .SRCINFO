@@ -1,0 +1,16 @@
+pkgbase = flipse
+	pkgdesc = Windowmaker Dockapps in one window
+	pkgver = r23.9d4f4df
+	pkgrel = 1
+	url = http://github.com/niklas/flipse
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = libxaw
+	depends = libwnck
+	source = flipse::git+https://github.com/niklas/flipse.git
+	md5sums = SKIP
+
+pkgname = flipse
+
