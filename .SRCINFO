@@ -1,0 +1,12 @@
+pkgbase = fvwm-icons
+	pkgdesc = Old icons of the FVWM-Project.
+	pkgver = 20070101
+	pkgrel = 2
+	url = http://www.fvwm.org
+	arch = any
+	license = GPL
+	source = http://www.fvwm.org/generated/icon_download/fvwm_icons-20070101.tar.gz
+	md5sums = c6d98849680a1c306067aa085519e46c
+
+pkgname = fvwm-icons
+
