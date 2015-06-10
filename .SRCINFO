@@ -1,0 +1,15 @@
+pkgbase = libcss-svn
+	pkgdesc = CSS parser and selection engine
+	pkgver = 13772
+	pkgrel = 1
+	url = http://www.netsurf-browser.org/projects/libcss/
+	arch = any
+	license = MIT
+	makedepends = subversion
+	depends = libparserutils>=0.1.0
+	depends = libwapcaplet-svn>=13777
+	provides = libcss=0.0.3
+	conflicts = libcss
+
+pkgname = libcss-svn
+
