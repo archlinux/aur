@@ -1,5 +1,5 @@
 pkgbase = gdb-ibuclaw-git
-	pkgdesc = The GNU Debugger
+	pkgdesc = The GNU Debugger modified for D language support
 	pkgver = 20150609
 	pkgrel = 1
 	url = http://www.gnu.org/software/gdb/

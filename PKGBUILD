@@ -4,7 +4,7 @@
 pkgname=gdb-ibuclaw-git
 pkgver=20150609
 pkgrel=1
-pkgdesc="The GNU Debugger"
+pkgdesc="The GNU Debugger modified for D language support"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/gdb/"
 license=('GPL3')
