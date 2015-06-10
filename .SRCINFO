@@ -1,0 +1,18 @@
+pkgbase = perl-boost-geometry-utils
+	pkgdesc = Boost::Geometry::Utils - Bindings for the Boost Geometry library
+	pkgver = 0.15
+	pkgrel = 1
+	url = https://metacpan.org/release/Boost-Geometry-Utils/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	depends = perl-module-build-withxspp
+	depends = perl-extutils-typemaps-default
+	depends = perl-extutils-xspp
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AA/AAR/Boost-Geometry-Utils-0.15.tar.gz
+	md5sums = 14d705f8efda8db81e118aa8c8a21bed
+
+pkgname = perl-boost-geometry-utils
+
