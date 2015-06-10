@@ -1,0 +1,15 @@
+pkgbase = perl-spread-message
+	pkgdesc = CPAN/Spread::Message - provide messaging using the Spread toolkit
+	pkgver = 0.21
+	pkgrel = 3
+	url = https://metacpan.org/module/Spread::Message
+	arch = any
+	license = PerlArtistic
+	depends = perl
+	depends = perl-spread
+	options = !emptydirs
+	source = http://cpan.metacpan.org/authors/id/M/MA/MARKPF/Spread-Message-0.21.tar.gz
+	md5sums = 995863a6415049cfd7f7ece9c61b5574
+
+pkgname = perl-spread-message
+
