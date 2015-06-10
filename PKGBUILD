@@ -3,7 +3,7 @@
 pkgname=kimchi
 _gitname=kimchi-1.4.1
 pkgver=1.4.1
-pkgrel=4
+pkgrel=5
 
 pkgdesc="HTML5 management for KVM"
 
@@ -53,14 +53,14 @@ source=(
  "python2.patch"
  "proxy.patch"
  "kimchid.service"
- "arch_support.path"
+ "arch_support.patch"
 )
 
 md5sums=('92be5f41bd08a7a769880767bf03a435'
          '1106f1f362e0b7f01409242486b2c495'
          'd8b6bfc1b210cc819dac46931aaecd7f'
          '356d68fd7735c826c36cbde651ebd675'
-         'bc3c6a1ed184240370fadecaac1b0f59')
+         '3cfc5d399b56f9bdec6a53244fa3d591')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
@@ -69,7 +69,7 @@ build() {
   msg "Patching for www user"
   patch -p1 -i ../proxy.patch
   msg "Patching for Arch support"
-  patch -p1 -i ../arch_support.path
+  patch -p1 -i ../arch_support.patch
   #./autogen.sh --prefix=/usr --sysconfdir=/etc --localstatedir=/var PYTHON=/usr/bin/python3
   PYTHON=/usr/bin/python2.7 ./autogen.sh --system
   make

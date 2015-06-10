@@ -1,7 +1,7 @@
 pkgbase = kimchi
 	pkgdesc = HTML5 management for KVM
 	pkgver = 1.4.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/kimchi-project/kimchi
 	arch = any
 	license = LGPL2.1
@@ -38,12 +38,12 @@ pkgbase = kimchi
 	source = python2.patch
 	source = proxy.patch
 	source = kimchid.service
-	source = arch_support.path
+	source = arch_support.patch
 	md5sums = 92be5f41bd08a7a769880767bf03a435
 	md5sums = 1106f1f362e0b7f01409242486b2c495
 	md5sums = d8b6bfc1b210cc819dac46931aaecd7f
 	md5sums = 356d68fd7735c826c36cbde651ebd675
-	md5sums = bc3c6a1ed184240370fadecaac1b0f59
+	md5sums = 3cfc5d399b56f9bdec6a53244fa3d591
 
 pkgname = kimchi
 
