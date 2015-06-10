@@ -1,0 +1,19 @@
+pkgbase = getver
+	pkgdesc = Utility for finding the latest version number for a given URL
+	pkgver = 0.33
+	pkgrel = 1
+	url = https://github.com/xyproto/getver
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = setconf
+	provides = bumpver
+	conflicts = bumpver
+	replaces = bumpver
+	source = git://github.com/xyproto/getver.git#tag=0.33
+	md5sums = SKIP
+
+pkgname = getver
+
