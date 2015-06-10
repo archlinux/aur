@@ -1,0 +1,22 @@
+post_install() {
+  getent group dowse >/dev/null 2>&1 || groupadd -r dowse
+  getent passwd dowse >/dev/null 2>&1 || useradd -g dowse -d /usr/share/dowse -s /bin/zsh -r dowse
+  chown -R dowse:dowse /usr/share/dowse
+
+  echo "==> In order to configure dowse you need to adjust both 'network' and 'settings' files"
+  echo "    into dowse configuration dir: /usr/share/dowse/conf. See /usr/share/doc/dowse/conf"
+  echo "    for exmaples."
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  if getent passwd dowse >/dev/null 2>&1; then
+    userdel dowse
+  fi
+  if getent group dowse >/dev/null 2>&1; then
+    groupdel dowse
+  fi
+}

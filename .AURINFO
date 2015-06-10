@@ -1,0 +1,30 @@
+pkgbase = dowse-git
+	pkgdesc = Minimalistic tool to configure the routing of a local area network
+	pkgver = 81.e365694
+	pkgrel = 1
+	url = https://github.com/dyne/dowse
+	install = dowse.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = zsh
+	depends = privoxy
+	depends = squid
+	depends = dnsmasq
+	depends = tor
+	depends = daemontools
+	depends = iptables
+	depends = ebtables
+	provides = dowse
+	conflicts = dowse
+	backup = usr/share/dowse/conf/network
+	backup = usr/share/dowse/conf/settings
+	source = git://github.com/dyne/dowse.git
+	source = dowse.sh
+	source = dowse.service
+	md5sums = SKIP
+	md5sums = 4d296e0099e15aa82fdf42fbe111dc5d
+	md5sums = 112e9e1e5b0bee78abdd09dba2e7606d
+
+pkgname = dowse-git
+
