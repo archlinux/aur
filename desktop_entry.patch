@@ -1,0 +1,11 @@
+--- AfterStep.desktop.in	2014-03-25 13:12:02.882076891 +0100
++++ AfterStep.desktop.in.new	2014-03-25 13:15:38.652083555 +0100
+@@ -4,6 +4,8 @@
+ [Desktop Entry]
+ Name=AfterStep
+ Type=Application
++Exec=/usr/bin/afterstep
++TryExec=/usr/bin/afterstep
+ Comment=AfterStep is feature rich NeXTish window manager.
+ # name we put on the WM spec check window
+ X-GNOME-WMName=AfterStep

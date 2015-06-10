@@ -1,0 +1,27 @@
+pkgbase = afterstep-git
+	pkgdesc = A Window Manager based on NextStep Interface
+	pkgver = 2.2.12.r18.g4f62e0d
+	pkgrel = 1
+	url = http://www.afterstep.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = libxt
+	depends = gtk2>=2.18.6
+	depends = libpng
+	depends = libtiff
+	depends = readline
+	depends = freetype2
+	depends = dbus-core
+	depends = librsvg
+	provides = afterstep
+	conflicts = afterstep
+	options = !emptydirs
+	options = staticlibs
+	source = afterstep::git+https://github.com/sashavasko/afterstep-devel.git
+	source = desktop_entry.patch
+	md5sums = SKIP
+	md5sums = 90cb380546b5d64208f13ab4f473f56d
+
+pkgname = afterstep-git
+
