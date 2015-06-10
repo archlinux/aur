@@ -1,0 +1,12 @@
+post_upgrade() {
+  gtk-update-icon-cache --quiet /usr/share/icons/hicolor
+}
+
+post_install() {
+  post_upgrade
+  echo 'Run mailnag-config to configure Mailnag'
+}
+
+post_remove() {
+  post_upgrade
+}
