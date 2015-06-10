@@ -1,0 +1,30 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=XSession
+Name=Fluxbox
+Icon=fluxbox
+Exec=startfluxbox
+TryExec=fluxbox
+GenericName=Window Manager
+GenericName[fr]=Gestionnaire de Fenêtres
+GenericName[pt]=Gestor de Janelas
+Comment=Highly configurable and low resource X11 Window manager
+Categories=WindowManager;Application;System
+StartupNotify=false
+NoDisplay=true
+X-GNOME-WMName=fluxbox
+X-GNOME-Autostart-Phase=WindowManager
+X-GNOME-Provides=windowmanager
+X-GNOME-Autostart-Notify=false
+Actions=XDE;
+
+[Desktop Action XDE]
+Name=XDE
+Icon=xde
+Exec=xde-session -desktop FLUXBOX -startwm fluxbox
+Comment=Fluxbox in an XDE session
+
+[Window Manager]
+SessionManaged=true
+StartupNotification=false
+X-XDE-Managed=false
