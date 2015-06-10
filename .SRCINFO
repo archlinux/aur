@@ -1,0 +1,18 @@
+pkgbase = libgcrypt-git
+	pkgdesc = General purpose cryptographic library based on the code from GnuPG
+	pkgver = 1.6.0+164+gceaa97f
+	pkgrel = 1
+	url = http://www.gnupg.org
+	install = libgcrypt-git.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = libgpg-error>=1.13-1
+	provides = libgcrypt=1.6.0+164+gceaa97f
+	conflicts = libgcrypt
+	source = git://git.gnupg.org/libgcrypt.git
+	sha1sums = SKIP
+
+pkgname = libgcrypt-git
+
