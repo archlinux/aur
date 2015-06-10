@@ -1,5 +1,4 @@
 # Contributor: Ben Alex <ben.alex@acegi.com.au>
-# https://github.com/benalexau/rpi-gpio-ntp-aur
 
 pkgname=rpi-gpio-ntp
 pkgver=1.5

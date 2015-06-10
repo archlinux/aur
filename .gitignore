@@ -1,0 +1,6 @@
+*.tgz
+*.xz
+*.gz
+pkg
+src
+rpi-gpio-ntp
