@@ -1,0 +1,19 @@
+pkgbase = mini
+	pkgdesc = Stripped down lead version of aewm++
+	pkgver = r34.0ee8bd7
+	pkgrel = 1
+	url = https://github.com/frankhale/mini
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = gendesk>=0.6
+	makedepends = git
+	makedepends = clang
+	depends = gcc-libs
+	depends = libxext
+	depends = json-c
+	source = mini::git+https://github.com/frankhale/mini.git
+	md5sums = SKIP
+
+pkgname = mini
+
