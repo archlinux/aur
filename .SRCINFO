@@ -1,0 +1,17 @@
+pkgbase = retrovol
+	pkgdesc = A sound volume mixer
+	pkgver = 0.14.1
+	pkgrel = 1
+	url = https://github.com/pizzasgood/retrovol
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = git
+	depends = gtk2
+	depends = alsa-lib
+	source = retrovol::git+https://github.com/pizzasgood/retrovol.git#tag=v0.14.1
+	md5sums = SKIP
+
+pkgname = retrovol
+
