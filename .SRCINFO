@@ -1,0 +1,16 @@
+pkgbase = rp-pppoe-gui
+	pkgdesc = GUI from/for Roaring Penguin's Point-to-Point Protocol over Ethernet client
+	pkgver = 3.11
+	pkgrel = 3
+	url = http://www.roaringpenguin.com/pppoe/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = rp-pppoe=3.11
+	depends = tk
+	options = !emptydirs
+	source = http://www.roaringpenguin.com/files/download/rp-pppoe-3.11.tar.gz
+	sha1sums = 7b7b379c90b749cebd9fef99dff871e42d6972f9
+
+pkgname = rp-pppoe-gui
+
