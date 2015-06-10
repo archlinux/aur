@@ -1,0 +1,15 @@
+Version r7282-2
+	* Remove sdl2_gfx dependency.
+
+Version r7282-1
+	* Update to new path management in build system
+
+Version r7261-1
+	* Total rework to use pacmans bzr capabilities and new widelands-data
+	dependencies introduced/changed after build 18
+
+Version 6346-2
+	* we need to conflict with widelands-data as well, not only with widelands
+
+Version 6346
+	* Initial version
