@@ -5,7 +5,7 @@
 pkgname=openblas-lapack
 _pkgname=OpenBLAS
 pkgver=0.2.14
-pkgrel=3
+pkgrel=4
 pkgdesc="Optimized BLAS library based on GotoBLAS2 1.13 BSD (providing blas, lapack, and cblas)"
 arch=('i686' 'x86_64')
 url="http://xianyi.github.com/OpenBLAS/"
@@ -18,7 +18,7 @@ options=(!emptydirs)
 source=(${_pkgname}-v${pkgver}.tar.gz::https://github.com/xianyi/OpenBLAS/archive/v${pkgver}.tar.gz)
 sha256sums=('2411c4f56f477b42dff54db2b7ffc0b7cf53bb9778d54982595c64cc69c40fc1')
 
-_config="USE_OPENMP=0 USE_THREAD=1 MAJOR_VERSION=3 NO_LAPACK=0"
+_config="FC=gfortran USE_OPENMP=0 USE_THREAD=1 MAJOR_VERSION=3 NO_LAPACK=0"
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -27,7 +27,7 @@ build() {
   NCORE4PROC=`grep "cores" /proc/cpuinfo|sort|tail -n 1|sed -e 's/cpu cores.*: //'`
   let NCORE=NPROC*NCORE4PROC
 
-  make ${_config} NUM_THREADS=$NCORE libs netlib shared
+  make ${_config} NUM_THREADS=${NCORE} libs netlib shared
 }
 
 check() {
