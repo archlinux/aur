@@ -1,0 +1,17 @@
+pkgbase = nimble-git
+	pkgdesc = Package manager for the Nimrod programming language
+	pkgver = 186
+	pkgrel = 2
+	url = https://github.com/nimrod-code/nimble
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = nim
+	makedepends = git
+	conflicts = nimble
+	replaces = nimble
+	source = nimble-git::git+https://github.com/nimrod-code/nimble.git
+	md5sums = SKIP
+
+pkgname = nimble-git
+
