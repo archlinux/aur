@@ -1,0 +1,17 @@
+pkgbase = gog-silent-service-1
+	pkgdesc = Prepare to dive into Silent Service, the submarine simulation that recreates authentic World War II sea patrols in the bloody waters of the South Pacific.
+	pkgver = 1.0.0.6
+	pkgrel = 1
+	url = http://www.gog.com/game/silent_service_12
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libpng12
+	depends = unionfs-fuse
+	source = local://gog_silent_service_1_1.0.0.6.tar.gz
+	source = gog-silent-service-1
+	sha256sums = ec42a0c160de7851d9da835a71cf43406459b4650785d44ef9b52a8e529b33f8
+	sha256sums = 6da31c2ed99247ae32d5fac2ccf664ade82660d4546a39df2d8f71ca4c38a496
+
+pkgname = gog-silent-service-1
+
