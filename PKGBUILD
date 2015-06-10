@@ -20,7 +20,7 @@ optdepends=('git: for git management')
 source=("https://github.com/LaraCraft93/$pkgname/archive/v$pkgver.tar.gz"
        "backup-conf.install")
 
-md5sums=('a2ce85ae88f9a9bebad4e8936710a05d'
+md5sums=('a07297fd7ff46481d9e6cd7c4de6704c'
          'b452e0f879c2d25650330a37ed13f110')
 
 build() {
