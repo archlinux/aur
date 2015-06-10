@@ -1,0 +1,13 @@
+pkgbase = thue
+	pkgdesc = Thue programming language
+	pkgver = 1.5_2012.0916
+	pkgrel = 1
+	url = http://catseye.tc/node/Thue.html
+	arch = any
+	license = custom:PD
+	depends = python
+	source = http://catseye.tc/distfiles/thue-1.5-2012.0916.zip
+	sha256sums = 28834a581bbf75822f965e97ff2717c7de705252fb4cebc306f4a1789fdfebc5
+
+pkgname = thue
+
