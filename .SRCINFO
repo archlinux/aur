@@ -1,0 +1,18 @@
+pkgbase = zfs-snap-manager
+	pkgdesc = A bunch of python2 scripts running as a service, using a configuration file to manage ZFS snapshots
+	pkgver = 0.1.12
+	pkgrel = 2
+	url = https://github.com/khenderick/zfs-snap-manager
+	install = zfs-snap-manager.install
+	arch = any
+	license = MIT
+	depends = zfs
+	depends = python2>=2.7
+	depends = openssh
+	depends = mbuffer
+	depends = python2-daemon
+	source = https://github.com/khenderick/zfs-snap-manager/archive/v0.1.12.zip
+	md5sums = a106ff10fc5ae5dd28fc137acc1cd8fe
+
+pkgname = zfs-snap-manager
+

@@ -1,0 +1,16 @@
+post_install() {
+	systemctl daemon-reload
+}
+
+post_upgrade() {
+	systemctl daemon-reload
+	systemctl restart zfs-snap-manager
+}
+
+pre_remove() {
+	systemctl disable zfs-snap-manager
+}
+
+post_remove() {
+	systemctl daemon-reload
+}
