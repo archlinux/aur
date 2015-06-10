@@ -1,0 +1,16 @@
+pkgbase = failsafewm
+	pkgdesc = A frameless, low-footprint window manager designed for failsafe sessions
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = http://freecode.com/projects/failsafewm/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libx11
+	source = http://www.small-window-manager.de/failsafewm-0.0.2.tgz
+	source = failsafewm.1
+	md5sums = 8ec6487cdf585775d9351f626d0de11f
+	md5sums = 5e131ee1031fc84f0d07b7e829396bca
+
+pkgname = failsafewm
+
