@@ -9,14 +9,11 @@ pkgdesc="A PlayStation emulator, not plugin based"
 arch=('i686' 'x86_64')
 url="http://psxemulator.gazaxian.com/"
 license=('unknown')
-if [ "$CARCH" == "x86_64" ]; then
-  depends=('lib32-gtkglext' 'lib32-alsa-lib' 'lib32-libglade' 'lib32-xcb-util' 'lib32-libpng14' 'lib32-pangox-compat')
-  optdepends=('lib32-gtk-engines: libclearlooks.so library'
-              'lib32-bug-buddy: libgnomesegvhandler.so library'
-              'lib32-alsa-plugins: for PulseAudio users')
-else
-  depends=('gtkglext' 'alsa-lib' 'libglade' 'xcb-util' 'libpng14' 'pangox-compat')
-fi
+depends=('gtkglext' 'alsa-lib' 'libglade' 'xcb-util' 'libpng14' 'pangox-compat')
+depends_x86_64=('lib32-gtkglext' 'lib32-alsa-lib' 'lib32-libglade' 'lib32-xcb-util' 'lib32-libpng14' 'lib32-pangox-compat')
+optdepends_x86_64=('lib32-gtk-engines: libclearlooks.so library'
+                   'lib32-bug-buddy: libgnomesegvhandler.so library'
+                   'lib32-alsa-plugins: for PulseAudio users')
 install="psx.install"
 source=("http://trya.alwaysdata.net/linux/pSX_linux_1_13.tar.bz2"
         "http://trya.alwaysdata.net/linux/icons/psx.png"

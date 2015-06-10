@@ -24,6 +24,15 @@ pkgbase = psx
 	md5sums = 263960da5c0ee779700f235512de4200
 	md5sums = 3b93679970229887294aee79fef1924e
 	md5sums = 5ad67ab8608edde9545571a9e8bc19e9
+	depends_x86_64 = lib32-gtkglext
+	depends_x86_64 = lib32-alsa-lib
+	depends_x86_64 = lib32-libglade
+	depends_x86_64 = lib32-xcb-util
+	depends_x86_64 = lib32-libpng14
+	depends_x86_64 = lib32-pangox-compat
+	optdepends_x86_64 = lib32-gtk-engines: libclearlooks.so library
+	optdepends_x86_64 = lib32-bug-buddy: libgnomesegvhandler.so library
+	optdepends_x86_64 = lib32-alsa-plugins: for PulseAudio users
 
 pkgname = psx
 
