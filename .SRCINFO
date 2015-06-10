@@ -1,6 +1,6 @@
 pkgbase = colobot-gold-data
 	pkgdesc = Data pack for Colobot GOLD real-time strategy game.
-	pkgver = 0.1.4_alpha
+	pkgver = 0.1.5_alpha
 	pkgrel = 1
 	url = http://colobot.info
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = colobot-gold-data
 	makedepends = cmake
 	makedepends = po4a
 	optdepends = colobot-gold-music: ingame music
-	source = https://github.com/colobot/colobot-data/archive/colobot-gold-0.1.4-alpha.zip
-	md5sums = fcdf80d4e73cf6a1c014e8799c10401a
-	sha1sums = 5eac6acd749feb5f0982b169a300ce9b5a9c3f95
+	source = https://github.com/colobot/colobot-data/archive/colobot-gold-0.1.5-alpha.zip
+	md5sums = 938f909200dc3800cd6e94d2256fc125
+	sha1sums = a9e87cf4563a29f74a5871d44e5a4a1c003835ff
 
 pkgname = colobot-gold-data
 
