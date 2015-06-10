@@ -1,0 +1,14 @@
+pkgbase = python2-objpool
+	pkgdesc = An object pooling library
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/grnet/objpool
+	arch = any
+	license = BSD
+	makedepends = python2-distribute
+	depends = python2
+	source = http://pypi.python.org/packages/source/o/objpool/objpool-0.3.tar.gz
+	md5sums = a80eb465b4e4a05c43a1023e946ca441
+
+pkgname = python2-objpool
+
