@@ -1,0 +1,17 @@
+pkgbase = octave-statistics
+	pkgdesc = Additional statistics functions for Octave.
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = http://octave.sourceforge.net/statistics/
+	install = octave-statistics.install
+	arch = any
+	groups = octave-forge
+	license = custom
+	depends = octave>=3.6.1
+	depends = octave-io>=1.0.18
+	noextract = statistics-1.2.4.tar.gz
+	source = http://downloads.sourceforge.net/octave/statistics-1.2.4.tar.gz
+	md5sums = d816a7c7a1bad7e640ef5e07d0501eb8
+
+pkgname = octave-statistics
+
