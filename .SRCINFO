@@ -1,0 +1,15 @@
+pkgbase = glua
+	pkgdesc = VM and compiler for Lua
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/yuin/gopher-lua
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	makedepends = git
+	source = git://github.com/yuin/gopher-lua#commit=6327022d5824a61eccd70f1a3c04b8632621ca6b
+	md5sums = SKIP
+
+pkgname = glua
+
