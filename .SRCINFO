@@ -1,0 +1,18 @@
+pkgbase = space_dapp
+	pkgdesc = A spacer dockapp
+	pkgver = 0.0.1
+	pkgrel = 4
+	url = http://tenr.de/howto/space_dapp/space_dapp.html
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libx11
+	depends = libxext
+	depends = libxcb
+	depends = libxau
+	depends = libxdmcp
+	source = http://darkshed.net/files/c_cpp/bits/space_dapp.c
+	md5sums = 187b12a1f68fcfe13442d9a65261230d
+
+pkgname = space_dapp
+
