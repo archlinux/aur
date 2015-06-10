@@ -1,0 +1,20 @@
+post_install() {
+  cat << EOF
+==> To enable apparmor, add this to kernel boot line:
+    
+        apparmor=1 security=apparmor
+
+==> Warning: To full functionality you must have kernel
+==>          with apparmor patchset.
+EOF
+}
+
+post_remove() {
+  cat << EOF
+==> To completely remove, delete this from kernel boot line:
+
+        apparmor=1 security=apparmor
+
+EOF
+}
+

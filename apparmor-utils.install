@@ -1,0 +1,15 @@
+post_install() {
+#	echo 'Creating /var/log/messages symlink to improve compatibility...'
+#	ln -sf messages.log /var/log/messages
+cat << EOF
+
+==> Use /etc/apparmor/logprof.conf to change system log file
+==> configuration if you have a not-standard syslog-ng.conf.   
+
+EOF
+}
+
+post_upgrade() {
+	post_install $1
+}
+
