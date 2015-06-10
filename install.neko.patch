@@ -1,0 +1,62 @@
+--- neko/neko-1.8.2/src/tools/install.neko.orig	2011-09-10 17:52:00.000000000 +0900
++++ neko/neko-1.8.2/src/tools/install.neko	2012-04-01 21:06:33.966017153 +0900
+@@ -39,11 +39,11 @@
+ // LIBS DATAS
+ 
+ libs = {
+-	mod_neko => {
++	/*mod_neko => {
+ 		src => $array("../../vm/stats","mod_neko","cgi"),
+ 		inc => "httpd.h",
+ 		incname => "Apache 1.3.x"
+-	},
++	},*/
+ 	mod_neko2 => {
+ 		src => $array("../../vm/stats","mod_neko","cgi"),
+ 		inc => $array("httpd.h","apr.h"),
+@@ -90,12 +90,12 @@
+ 		cflags => switch system { "Mac" => "" default => "`pkg-config --cflags gtk+-2.0`" },
+ 		lparams => switch system { "Mac" => "-framework Carbon" default => "`pkg-config --libs gtk+-2.0` -lgthread-2.0" },
+ 	},
+-	mod_tora => {
++	/*mod_tora => {
+ 		src => $array("../common/socket","protocol","mod_tora"),
+ 		inc => "httpd.h",
+ 		incname => "Apache 1.3.x",
+ 		cflags => "-I../common",
+-	},
++	},*/
+ 	mod_tora2 => {
+ 		src => $array("../common/socket","protocol","mod_tora"),
+ 		inc => $array("httpd.h","apr.h"),
+@@ -152,18 +152,19 @@
+ 	var inc2;
+ 	if( isap2 )
+ 		inc2 = $array(
+-			"/usr/local/apache2/include",
+-			"/usr/include/apache2",
+-			"/opt/local/apache2/include",
++//			"/usr/local/apache2/include",
++//			"/usr/include/apache2",
++			"/usr/include/httpd",
++//			"/opt/local/apache2/include",
+ 			"/usr/include/apr-1",
+-			"/usr/include/apr-1.0",
+-			"/usr/include/apr-0",
+-			"/usr/local/include/apr-1",
+-			"/usr/local/include/apr-1.0",
+-			"/usr/local/include/apr-0",
+-			"/opt/local/include/apr-1",
+-			"/opt/local/include/apr-1.0",
+-			"/opt/local/include/apr-0"
++//			"/usr/include/apr-1.0",
++//			"/usr/include/apr-0",
++//			"/usr/local/include/apr-1",
++//			"/usr/local/include/apr-1.0",
++//			"/usr/local/include/apr-0",
++//			"/opt/local/include/apr-1",
++//			"/opt/local/include/apr-1.0",
++//			"/opt/local/include/apr-0"
+ 		);
+ 	else
+ 		inc2 = $array(

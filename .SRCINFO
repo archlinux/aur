@@ -1,0 +1,26 @@
+pkgbase = neko
+	pkgdesc = High-level language which can also be used as an embedded scripting language
+	pkgver = 2.0.0
+	pkgrel = 6
+	url = http://nekovm.org/
+	arch = x86_64
+	arch = i686
+	license = LGPL
+	makedepends = pkgconfig
+	makedepends = setconf
+	makedepends = apr
+	depends = gc
+	depends = gtk2
+	depends = libmariadbclient
+	depends = sqlite
+	depends = apache
+	options = !strip
+	source = git://github.com/HaxeFoundation/neko.git#tag=v2-0
+	source = http://ftp.de.debian.org/debian/pool/main/n/neko/neko_2.0.0-3.debian.tar.gz
+	source = install.neko.patch
+	sha256sums = SKIP
+	sha256sums = 5cd4b458398c94f740fd8643e2b70c51460653fecfc13ba097708096e0cf5ee8
+	sha256sums = 999e85cb77941c908bd4650f9d7177519fb2b35e50cc24f9d8465506c03d8d4f
+
+pkgname = neko
+
