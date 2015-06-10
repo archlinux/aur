@@ -1,0 +1,16 @@
+pkgbase = ghextris
+	pkgdesc = Tetris-like game on a hexagonal grid
+	pkgver = 0.9.0
+	pkgrel = 4
+	url = http://mjr.iki.fi/software/ghextris
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = gettext
+	makedepends = setconf
+	depends = gnome-python
+	source = http://mjr.iki.fi/software/ghextris_0.9.0-1.tar.gz
+	sha256sums = cd67776a35561879407208a5ecd201a23fcd5726a4962eaba1e25219c44c4cd6
+
+pkgname = ghextris
+
