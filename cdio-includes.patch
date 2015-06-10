@@ -1,0 +1,12 @@
+diff -upr consonance-0.5.1.orig/src/cdda.h consonance-0.5.1/src/cdda.h
+--- consonance-0.5.1.orig/src/cdda.h	2013-01-14 05:14:54.000000000 +0200
++++ consonance-0.5.1/src/cdda.h	2013-01-14 05:15:16.000000000 +0200
+@@ -18,7 +18,7 @@
+ #ifndef CDDA_H
+ #define CDDA_H
+ 
+-#include <cdio/cdda.h>
++#include <cdio/paranoia/cdda.h>
+ #include <cdio/cd_types.h>
+ 
+ struct con_cdda_decoder {

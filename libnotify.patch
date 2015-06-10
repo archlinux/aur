@@ -1,0 +1,18 @@
+diff --git a/src/statusicon.c b/src/statusicon.c
+index f72e808..04efa58 100644
+--- a/src/statusicon.c
++++ b/src/statusicon.c
+@@ -47,11 +47,10 @@ void show_osd(struct con_win *cwin)
+ 
+ 	/* Create notification instance */
+ 
+-	osd = notify_notification_new_with_status_icon(
++	osd = notify_notification_new(
+ 		cwin->cstate->curr_mobj->tags->title,
+ 		(const gchar *)body,
+-		NULL,
+-		GTK_STATUS_ICON(cwin->status_icon));
++		gtk_status_icon_get_icon_name(GTK_STATUS_ICON(cwin->status_icon)));
+ 	notify_notification_set_timeout(osd, OSD_TIMEOUT);
+ 
+ 	/* Add album art if set */
