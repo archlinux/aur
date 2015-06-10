@@ -1,0 +1,14 @@
+pkgbase = python-pypdf2
+	pkgdesc = PDF toolkit
+	pkgver = 1.24
+	pkgrel = 1
+	url = http://mstamy2.github.com/PyPDF2
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.python.org/packages/source/P/PyPDF2/PyPDF2-1.24.tar.gz
+	md5sums = 87cbb41c24bd98e6f70a37bb4a97446c
+
+pkgname = python-pypdf2
+
