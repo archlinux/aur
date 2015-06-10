@@ -10,7 +10,8 @@ pkgbase = sdr-j-dabreceiver
 	depends = qwt
 	depends = faad2
 	depends = portaudio
-	depends = rtl-sdr
+	conflicts = dabstick-radio
+	replaces = dabstick-radio
 	source = http://www.sdr-j.tk/sdr-j-dabreceiver-0.98.tgz
 	md5sums = 58fbef4cd8d418ddc23f5a85ec87c1b8
 
