@@ -1,0 +1,17 @@
+pkgbase = convertall
+	pkgdesc = Unit conversion program (Qt)
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = http://convertall.bellz.org/
+	install = convertall.install
+	arch = any
+	license = GPL
+	depends = python-pyqt4
+	depends = desktop-file-utils
+	source = http://download.sourceforge.net/project/convertall/0.6.0/convertall-0.6.0.tar.gz
+	source = convertall.desktop
+	sha256sums = 871ce44bd59566a95b88fdb9c0ce196389a72c56192387a62b308ead358f87c0
+	sha256sums = 4f7ac9402580e866b360e07e07bfe1d05311f64f996dcf647094db6de9455212
+
+pkgname = convertall
+

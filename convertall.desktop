@@ -1,0 +1,14 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Name=ConvertAll
+GenericName=Unit Converter
+GenericName[fr]=Coonvertisseur d'unités
+Comment=Convert between many different units
+Comment[fr]=Convertissez entre différentes unités
+Icon=convertall
+Exec=convertall
+Terminal=false
+Type=Application
+Categories=Education;Science;KDE;Qt;
+
