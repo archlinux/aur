@@ -1,0 +1,33 @@
+pkgbase = bombono-dvd
+	pkgdesc = DVD authoring program with nice and clean GUI
+	pkgver = 1.2.2
+	pkgrel = 4
+	url = http://www.bombono.org
+	install = bombono-dvd.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = scons
+	depends = gtk2
+	depends = gtkmm
+	depends = mjpegtools
+	depends = ffmpeg
+	depends = libdvdread
+	depends = dvdauthor
+	depends = dvd+rw-tools
+	depends = twolame
+	depends = libxml++
+	depends = boost
+	depends = enca
+	depends = cdrkit
+	optdepends = gvfs: web browser integration
+	conflicts = bombono-dvd-git
+	source = http://downloads.sourceforge.net/bombono/bombono-dvd-1.2.2.tar.bz2
+	source = fix_ffmpeg_codecid.patch
+	source = bombono-dvd-1.2.2-ffmpeg26.patch
+	sha256sums = 3ffaadc803dc2526d2805629ee928800ce150cb2e6a40b6724d898c76366f68b
+	sha256sums = decc8f9261b0fcd18780080438c9fc4297d56a281355f195a5dee9a92abf474a
+	sha256sums = ee89adeff7bd19d731eac96c180d5d59766bb3a68f3b21b898199e1cb6c5639e
+
+pkgname = bombono-dvd
+
