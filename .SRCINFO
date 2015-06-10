@@ -1,0 +1,14 @@
+pkgbase = uif2iso
+	pkgdesc = Tool for converting single/multi part UIF image files to ISO
+	pkgver = 0.1.7c
+	pkgrel = 2
+	url = http://aluigi.org/mytoolz.htm#uif2iso
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = zlib
+	source = http://aluigi.altervista.org/mytoolz/uif2iso.zip
+	sha256sums = b78dde3e8bc28559f73e2feb46d41c8f57b511ddbe25d63ada704ef8697528ec
+
+pkgname = uif2iso
+
