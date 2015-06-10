@@ -1,0 +1,48 @@
+pkgbase = openasb-server
+	pkgdesc = Software to manage LAN-House and Cyber ​​Café (Server).
+	pkgver = 0.8
+	pkgrel = 1
+	url = http://www.openasb.com
+	arch = any
+	license = GPL v2
+	depends = gambas3-gb-image>=3.5
+	depends = gambas3-gb-image<=3.99.0
+	depends = gambas3-gb-qt4>=3.5
+	depends = gambas3-gb-qt4<=3.99.0
+	depends = gambas3-gb-form>=3.5
+	depends = gambas3-gb-form<=3.99.0
+	depends = gambas3-gb-crypt>=3.5
+	depends = gambas3-gb-crypt<=3.99.0
+	depends = gambas3-gb-db>=3.5
+	depends = gambas3-gb-db<=3.99.0
+	depends = gambas3-gb-db-form>=3.5
+	depends = gambas3-gb-db-form<=3.99.0
+	depends = gambas3-gb-desktop>=3.5
+	depends = gambas3-gb-desktop<=3.99.0
+	depends = gambas3-gb-form-dialog>=3.5
+	depends = gambas3-gb-form-dialog<=3.99.0
+	depends = gambas3-gb-settings>=3.5
+	depends = gambas3-gb-settings<=3.99.0
+	depends = gambas3-gb-net>=3.5
+	depends = gambas3-gb-net<=3.99.0
+	depends = gambas3-gb-net-curl>=3.5
+	depends = gambas3-gb-net-curl<=3.99.0
+	depends = gambas3-gb-qt4-ext>=3.5
+	depends = gambas3-gb-qt4-ext<=3.99.0
+	depends = gambas3-gb-qt4-webkit>=3.5
+	depends = gambas3-gb-qt4-webkit<=3.99.0
+	depends = gambas3-gb-sdl-sound>=3.5
+	depends = gambas3-gb-sdl-sound<=3.99.0
+	depends = gambas3-gb-v4l>=3.5
+	depends = gambas3-gb-v4l<=3.99.0
+	depends = gambas3-gb-web>=3.5
+	depends = gambas3-gb-web<=3.99.0
+	depends = gambas3-gb-db-sqlite3>=3.5
+	depends = gambas3-gb-db-sqlite3<=3.99.0
+	depends = vinagre
+	depends = wakeonlan
+	source = openasb-server.deb::http://www.openasb.com/softwares/ubuntu/openasb_0.8.0-0ubuntu1_all.deb
+	md5sums = 4711e5424938970a414f317ec1ef669e
+
+pkgname = openasb-server
+
