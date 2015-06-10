@@ -1,0 +1,20 @@
+pkgbase = gfontview
+	pkgdesc = An outline font viewer for Linux.
+	pkgver = 0.5.0
+	pkgrel = 3
+	url = http://gfontview.sourceforge.net/
+	changelog = ChangeLog
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = giflib
+	depends = gtk
+	depends = t1lib
+	options = !emptydirs
+	source = http://downloads.sourceforge.net/project/gfontview/gfontview/0.5.0/gfontview-0.5.0.tar.gz
+	source = http://games.linux.sk/files/freetype-1.3.1.tar.gz
+	md5sums = f06e0e9d67f7d8b3af251fa593e83eeb
+	md5sums = 9a9e7ad00c1ef6dfbf8f8e19ceefb300
+
+pkgname = gfontview
+
