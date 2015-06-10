@@ -8,6 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/rscholer/${_pkgname}"
 license=('GPL3')
 conflicts=("${_pkgname}")
+provides=("${_pkgname}")
 makedepends=('asciidoc' 'git')
 depends=('libx11')
 source=("git+${url}")

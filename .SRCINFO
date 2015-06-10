@@ -9,6 +9,7 @@ pkgbase = desktoggle-git
 	makedepends = asciidoc
 	makedepends = git
 	depends = libx11
+	provides = desktoggle
 	conflicts = desktoggle
 	source = git+https://github.com/rscholer/desktoggle
 	sha256sums = SKIP
