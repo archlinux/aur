@@ -1,0 +1,16 @@
+pkgbase = otf-fifthleg
+	pkgdesc = Font used for openSUSE-branded material
+	pkgver = 0.6
+	pkgrel = 5
+	url = http://jimmac.musichall.cz/log/?p=440
+	install = otf-fifthleg.install
+	arch = i686
+	arch = x86_64
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://api.opensuse.org/public/source/openSUSE:Factory/fifth-leg-font/opensuse-font-fifth-leg-0.6.tar.bz2
+	md5sums = 5a9852e078b4c9ccd8fe5c472bba1184
+
+pkgname = otf-fifthleg
+
