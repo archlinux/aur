@@ -1,0 +1,15 @@
+pkgbase = snapraid
+	pkgdesc = tool for Snapshot RAID: generate parity files, maintain checksums on data, restore lost data
+	pkgver = 8.1
+	pkgrel = 1
+	url = http://snapraid.sourceforge.net/
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	depends = openssl
+	conflicts = snapraid-git
+	source = http://sourceforge.net/projects/snapraid/files/snapraid-8.1.tar.gz
+	sha256sums = 6bf89a1319ac3403958cd2c98a9c6102728c0070cfa1aedd90c4561d93c54e5d
+
+pkgname = snapraid
+
