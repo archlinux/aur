@@ -1,0 +1,13 @@
+pkgbase = perl-image-base
+	pkgdesc = Base class for loading, manipulating and saving images
+	pkgver = 1.17
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Image-Base/
+	arch = any
+	license = GPL
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/K/KR/KRYDE/Image-Base-1.17.tar.gz
+	sha256sums = f6d0d4d03026ba6a19d2ac3495171fc123522345630cadc7f43b53a667b95f81
+
+pkgname = perl-image-base
+
