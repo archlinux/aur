@@ -1,0 +1,15 @@
+pkgbase = spread-java
+	pkgdesc = Spread is an open source toolkit that provides a high performance messaging service - Java Bindings
+	pkgver = 4.4.0
+	pkgrel = 2
+	url = http://www.spread.org
+	arch = any
+	license = custom
+	makedepends = apache-ant
+	depends = java-environment
+	optdepends = spread-daemon: daemon to connect to
+	source = http://www.spread.org/download/spread-src-4.4.0.tar.gz?FILE=spread-src-4.4.0.tar.gz&name=aur&company=archlinux&email=foo@example.org
+	md5sums = 969d315ce857982192bd48441353d944
+
+pkgname = spread-java
+
