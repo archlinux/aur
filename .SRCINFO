@@ -1,0 +1,19 @@
+pkgbase = python2-pims
+	pkgdesc = Python Image Sequence: Load video and sequential images
+	pkgver = 0.2.2
+	pkgrel = 2
+	url = https://github.com/soft-matter/pims
+	arch = any
+	license = BSD
+	checkdepends = python2-nose
+	makedepends = python2-setuptools
+	makedepends = python2-scipy
+	makedepends = python2-matplotlib
+	makedepends = python2-scikit-image
+	depends = python2
+	depends = python2-tifffile
+	source = https://github.com/soft-matter/pims/archive/v0.2.2.zip
+	md5sums = 6e7aa05d83184af37b094135c025dedf
+
+pkgname = python2-pims
+
