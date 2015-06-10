@@ -1,24 +1,17 @@
 # Maintainer: Damien Guihal <dguihal@gmail.com>
 pkgname=soapui
 pkgver=5.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A graphical Java program for inspecting, invoking, monitoring, simulating/mocking and functional/load/compliance/surveillance testing of REST/WADL and SOAP/WSDL-based Web Services over HTTP."
 arch=('i686' 'x86_64')
 url="http://www.soapui.org/"
-license=('LGPLv2')
+license=('EUPL V.1.1')
 groups=()
-depends=('java-runtime')
-makedepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
+depends=('java-environment', 'hicolor-icon-theme')
 source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/SoapUI-$pkgver-linux-bin.tar.gz"
         "http://freeapps.co.uk.s3.amazonaws.com/images/thumbnails/$pkgname.png"
         "$pkgname.desktop"
         "$pkgname")
-noextract=()
 #generate with 'makepkg -g'
 md5sums=('69497d409c2e6038f3c684741ffe3566'
          '3cc08aca62edb502fc53013edf69f640'
