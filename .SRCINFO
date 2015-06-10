@@ -1,0 +1,13 @@
+pkgbase = libtwsapi
+	pkgdesc = Portable C++ API for Interactive Brokers
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/rudimeier/twsapi
+	arch = any
+	license = custom
+	depends = gcc-libs
+	source = https://bitbucket.org/rudimeier/twsapi/downloads/twsapi-0.6.0.tar.gz
+	md5sums = e3f9c21f3a79eb9fda89b182c541070b
+
+pkgname = libtwsapi
+
