@@ -2,15 +2,15 @@
 # Author:     Tim Reddehase <robustus@rightsrestricted.com>
 
 pkgname=serverprint
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="printing on a remote printer via ssh"
 arch=('any')
 url="https://github.com/0robustus1/serverprint"
 license=('MIT')
 depends=('perl' 'poppler' 'ghostscript')
-source=("https://github.com/0robustus1/serverprint/archive/0.1.1.tar.gz")
-sha1sums=('d26352c5007ffb9c9d91b4c79685946b41c60fe7')
+source=("https://github.com/0robustus1/serverprint/archive/0.1.2.tar.gz")
+sha1sums=('270e6e137b9922ef103d62f5ef62d06d0b4c4420')
 provides=('serverprint')
 conflicts=('serverprint')
 
