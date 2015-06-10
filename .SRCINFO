@@ -1,0 +1,14 @@
+pkgbase = sux
+	pkgdesc = Wrapper around su which will transfer your X credentials
+	pkgver = 1.0.1
+	pkgrel = 3
+	url = http://sourceforge.net/projects/sux/
+	arch = any
+	license = custom
+	depends = coreutils
+	depends = xorg-xauth
+	source = http://downloads.sourceforge.net/project/sux/sux/1.0.1/sux-1.0.1.tar.gz
+	md5sums = 73613f8515e0d90bdd9e871b6fe2e2eb
+
+pkgname = sux
+
