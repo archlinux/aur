@@ -1,0 +1,21 @@
+pkgbase = tidy-html5-bbatsche
+	pkgdesc = Experimental fork of Tidy for HTML5 documents (bbatsche fork)
+	pkgver = 20140907.r122.3b68968
+	pkgrel = 2
+	url = https://github.com/bbatsche/tidy-html5
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = custom
+	makedepends = git
+	depends = glibc
+	provides = tidyhtml
+	conflicts = tidyhtml
+	replaces = tidyhtml
+	source = git+https://github.com/bbatsche/tidy-html5.git
+	sha512sums = SKIP
+
+pkgname = tidy-html5-bbatsche
+
