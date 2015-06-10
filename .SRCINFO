@@ -1,0 +1,14 @@
+pkgbase = buildhosts-git
+	pkgdesc = Download and use custom hosts sources to build /etc/hosts
+	pkgver = 20150202.r9.719a8e7
+	pkgrel = 1
+	url = https://github.com/prurigro/buildhosts
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = curl
+	source = git+https://github.com/prurigro/buildhosts.git
+	sha512sums = SKIP
+
+pkgname = buildhosts-git
+
