@@ -1,0 +1,15 @@
+pkgbase = go-check
+	pkgdesc = Rich testing framework
+	pkgver = 1
+	pkgrel = 2
+	url = http://launchpad.net/gocheck
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = go
+	makedepends = bzr
+	options = !strip
+	options = !emptydirs
+
+pkgname = go-check
+
