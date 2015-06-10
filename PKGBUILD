@@ -1,6 +1,6 @@
 # Maintainer: Buce <dmbuce@gmail.com>
 pkgname=clicraft-git
-pkgver=0.0.8.r55.gbc48c1b
+pkgver=0.0.11.r17.g1cb093c
 pkgver() {
   cd "$srcdir/$pkgname"
   if ! git describe --tags 2>/dev/null; then
@@ -18,9 +18,7 @@ makedepends=("git" "asciidoc")
 optdepends=("c10t: for map.sh action script" "mcexplore: for explore.sh action script")
 provides=('clicraft')
 conflicts=('clicraft')
-backup=("etc/clicraft/action.d/explore.sh"
-        "etc/clicraft/action.d/map.sh"
-        "etc/cron.d/clicraft"
+backup=("etc/cron.d/clicraft"
         "etc/logrotate.d/clicraft")
 install="$pkgname.install"
 source=("$pkgname::git://github.com/DMBuce/${pkgname%-git}.git"
