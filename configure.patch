@@ -1,0 +1,26 @@
+--- configure	2014-09-11 20:13:20.000000000 +0200
++++ configure.patched	2014-09-12 22:24:56.733496460 +0200
+@@ -17466,20 +17466,9 @@
+ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
+-/* Override any GCC internal prototype to avoid an error.
+-   Use char because int might match the return type of a GCC
+-   builtin and then its argument prototype would still apply.  */
+-#ifdef __cplusplus
+-extern "C"
+-#endif
+-char exit ();
+-int
+-main ()
+-{
+-return exit ();
+-  ;
+-  return 0;
+-}
++ #include <boost/python/module.hpp>
++ BOOST_PYTHON_MODULE(test){}
++ int main(){return 0;}
+ _ACEOF
+ if ac_fn_cxx_try_link "$LINENO"; then :
+   eval "$as_ac_Lib=yes"

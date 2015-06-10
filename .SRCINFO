@@ -1,0 +1,31 @@
+pkgbase = python-graph-tool
+	pkgdesc = A Python module for manipulation and statistical analysis of graphs
+	pkgver = 2.2.43
+	pkgrel = 1
+	url = http://projects.skewed.de/graph-tool/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = sparsehash
+	makedepends = python2-cairo
+	depends = boost
+	depends = python3
+	depends = expat
+	depends = python3-scipy
+	depends = python3-numpy
+	depends = cgal
+	optdepends = graphviz: graph layout
+	optdepends = cairomm: graph drawing
+	optdepends = python-cairo: graph drawing
+	optdepends = python-matplotlib: graph drawing
+	provides = python3-graph-tool
+	conflicts = python3-graph-tool
+	replaces = python3-graph-tool
+	options = !libtool
+	source = http://downloads.skewed.de/graph-tool/graph-tool-2.2.43.tar.bz2
+	source = configure.patch
+	sha256sums = c0ef941dc611fad5800c64417543e751f9edaeb511460ba06a43263c5b0efbd6
+	sha256sums = a3499be132a34b1bf64e26d6ccbd9a4804d9f06eb1fd9cac2bce0966d54324f1
+
+pkgname = python-graph-tool
+
