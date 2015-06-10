@@ -1,0 +1,36 @@
+pkgbase = sinerider
+	pkgdesc = A game of numerical sledding. It will make you see math the way mathematicians see it: a creative process of exploration and discovery. Math is the ultimate puzzle, and SineRider is the ultimate math puzzle game.
+	pkgver = 0.3.36
+	pkgrel = 1
+	url = http://sineridergame.com/
+	install = sinerider.install
+	arch = x86_64
+	arch = i686
+	license = custom:freeware
+	license = unknown
+	depends = glibc
+	depends = glu
+	depends = libgl
+	depends = libx11
+	depends = libxext
+	depends = libxcursor
+	depends = libxrandr
+	depends = gcc-libs
+	depends = expat
+	depends = libglapi
+	depends = libxdamage
+	depends = libxfixes
+	depends = libxcb
+	depends = libxshmfence
+	depends = libxxf86vm
+	depends = libdrm
+	depends = libxrender
+	depends = libxau
+	depends = libxdmcp
+	source = https://s3.amazonaws.com/sinerider/SineRider+Linux.zip
+	source = sinerider.desktop
+	md5sums = 4f7066ce13d50e91b42b0b2e27260f34
+	md5sums = 778d8fd98d2a051882220c7b55bd0846
+
+pkgname = sinerider
+
