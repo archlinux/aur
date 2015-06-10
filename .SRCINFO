@@ -1,0 +1,15 @@
+pkgbase = gtkhotkey
+	pkgdesc = Platform independent hotkey handling for Gtk+ applications
+	pkgver = 0.2.1
+	pkgrel = 9
+	url = https://launchpad.net/gtkhotkey
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = intltool
+	depends = gtk2
+	source = http://launchpad.net/gtkhotkey/0.2/0.2.1/+download/gtkhotkey-0.2.1.tar.gz
+	md5sums = bfdc73e68e9adbe0d506d31a25862914
+
+pkgname = gtkhotkey
+
