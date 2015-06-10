@@ -1,0 +1,22 @@
+pkgbase = mongo-cxx-driver-legacy
+	pkgdesc = Official MongoDB C++ driver (legacy).
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = http://www.mongodb.org
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = scons
+	makedepends = boost
+	makedepends = readline
+	depends = boost-libs
+	depends = openssl
+	depends = libsasl
+	provides = mongo-cxx-driver
+	conflicts = mongodb<2.6.0
+	options = staticlibs
+	source = https://github.com/mongodb/mongo-cxx-driver/archive/legacy-1.0.3.tar.gz
+	sha512sums = 5912184b19ce1eba55c8bbf4645e1976a60a5af3bbdfeb0a1e549b36cd2636d972c3c06c2e2071167726466c04c935ff2472dcb94767f1b97987f7357a938b31
+
+pkgname = mongo-cxx-driver-legacy
+
