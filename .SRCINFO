@@ -1,0 +1,14 @@
+pkgbase = cuse
+	pkgdesc = MIDI sequencer for the terminal
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://pi4.informatik.uni-mannheim.de/~haensel/cuse/index_en.html
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	depends = libcdk
+	source = http://pi4.informatik.uni-mannheim.de/~haensel/cuse/files/cuse-0.5-src.tar.gz
+	sha256sums = 13461c78a4be80f76dc0217f30f92351813788134b38dbf5eaf98e0a158c57a2
+
+pkgname = cuse
+
