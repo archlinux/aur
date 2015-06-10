@@ -1,0 +1,20 @@
+pkgbase = bbswitch-git
+	pkgdesc = kernel module allowing to switch dedicated graphics card on Optimus laptops (Git version)
+	pkgver = v0.6.3.gf982a09
+	pkgrel = 1
+	url = http://github.com/Bumblebee-Project/bbswitch
+	install = bbswitch.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = linux-headers
+	makedepends = git
+	provides = bbswitch
+	conflicts = bbswitch
+	conflicts = dkms-bbswitch
+	conflicts = dkms-bbswitch-git
+	source = bbswitch-git::git+https://github.com/Bumblebee-Project/bbswitch.git#branch=develop
+	md5sums = SKIP
+
+pkgname = bbswitch-git
+
