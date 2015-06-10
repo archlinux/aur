@@ -6,7 +6,7 @@
 
 pkgname=openvswitch-git
 epoch=1
-pkgver=2.3.1.r7.g8091d03
+pkgver=2.3.1.r55.g1cb39f3
 pkgrel=1
 pkgdesc="Production Quality, Multilayer Open Virtual Switch"
 url="http://openvswitch.org"
