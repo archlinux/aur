@@ -1,0 +1,14 @@
+pkgbase = sys
+	pkgdesc = Friendly systemctl wrapper
+	pkgver = 0.1
+	pkgrel = 2
+	url = http://github.com/xyproto/sys/
+	arch = any
+	license = GPL2
+	depends = bash
+	depends = sudo
+	source = git://github.com/xyproto/sys.git#tag=0.1
+	md5sums = SKIP
+
+pkgname = sys
+
