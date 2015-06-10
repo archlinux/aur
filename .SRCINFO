@@ -1,0 +1,27 @@
+pkgbase = thiswarofmine-gog
+	pkgdesc = Experience war not as a soldier, but as a group of civilians in a besieged city.
+	pkgver = 1.2.0.3
+	pkgrel = 1
+	url = http://www.gog.com/game/this_war_of_mine
+	arch = i686
+	arch = x86_64
+	license = custom:commercial
+	depends = openal
+	depends = gcc-libs
+	depends = glibc
+	depends = libx11
+	depends = libxau
+	depends = libxcb
+	depends = libxdmcp
+	depends = libxext
+	depends = libgl
+	options = !strip
+	source = thiswarofmine-gog.desktop
+	source = launch-thiswarofmine.sh
+	source = gog_this_war_of_mine_1.2.0.3.tar.gz::file://gog_this_war_of_mine_1.2.0.3.tar.gz
+	sha256sums = ce9720a6f72402c354bfc12dace96609b847c96c496c2f706080a3696d38ae4e
+	sha256sums = b1ac5ee88d49466585a65db109000c2c5c9cadb315aba06504abdd6ae79b168e
+	sha256sums = 5b5d00a35a1d933ad4bcfefa35c86631d57cf8c72d1535e12cb4daed5a6287c6
+
+pkgname = thiswarofmine-gog
+

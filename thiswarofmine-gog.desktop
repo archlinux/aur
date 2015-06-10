@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Icon=/usr/share/pixmaps/thiswarofmine-gog.png
+Exec=/usr/bin/thiswarofmine-gog
+Terminal=false
+StartupNotify=false
+
+Name=This War of Mine
+Comment=Experience war not as a soldier, but as a group of civilians in a besieged city.
+
+Categories=Game;
