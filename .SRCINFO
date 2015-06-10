@@ -1,0 +1,24 @@
+pkgbase = cheesetracker
+	pkgdesc = Software sampler and step-based sequencer. Impulse Tracker clone.
+	pkgver = 0.9.15.4
+	pkgrel = 8
+	url = http://cheesetracker.sourceforge.net/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = addinclude
+	makedepends = scons
+	makedepends = clang
+	depends = libsigc++
+	depends = qt4
+	depends = jack
+	depends = audiofile
+	source = http://sourceforge.net/projects/cheesetracker/files/cheesetracker/cheesetracker-0.9.15.4/cheesetracker-0.9.15.4.tar.bz2
+	source = SConstruct
+	source = detect.py
+	sha256sums = 444cee4ee53c72ade6d109c263beac7f36c186bc22cd7ce5f86b095da60e0a02
+	sha256sums = 031bd83d47b3d8665459952234aab58f379b30bf17611dda970c5b9b00e6f800
+	sha256sums = 7224dc83b3eea66a5c85776d5c6db17b16e71576dee66ab1a07a506923659ef0
+
+pkgname = cheesetracker
+
