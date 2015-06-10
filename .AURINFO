@@ -1,0 +1,12 @@
+pkgbase = cgvg
+	pkgdesc = Commandline tools for searching and browsing sourcecode
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = http://uzix.org/cgvg.html
+	arch = any
+	license = GPL
+	depends = perl-perl4-corelibs
+	source = http://www.uzix.net/cgvg/cgvg-1.6.3.tar.gz
+
+pkgname = cgvg
+
