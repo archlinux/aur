@@ -1,0 +1,20 @@
+pkgbase = webp-npapi
+	pkgdesc = A WebP plugin for NPAPI-compliant browsers on GNU/Linux
+	pkgver = 1.0.0.0
+	pkgrel = 1
+	url = https://code.google.com/p/webp-npapi-linux/
+	arch = i686
+	arch = x86_64
+	arch = mips64el
+	license = APACHE
+	makedepends = subversion
+	makedepends = gtk2
+	depends = libwebp
+	options = !makeflags
+	source = webp-npapi::svn+https://webp-npapi-linux.googlecode.com/svn/trunk/
+	source = ftp://gnu.mirror.iweb.com/icecat/4.0/icecat-4.0.tar.xz
+	md5sums = SKIP
+	md5sums = 04548bfd70e6a66cd75cdb1f1fc81eb4
+
+pkgname = webp-npapi
+
