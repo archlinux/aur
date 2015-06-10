@@ -1,0 +1,16 @@
+pkgbase = arduino-mk
+	pkgdesc = A Makefile for Arduino Sketches
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://github.com/sudar/Arduino-Makefile
+	arch = any
+	license = LGPL2.1
+	depends = arduino
+	depends = make
+	depends = python
+	depends = python-pyserial
+	source = https://github.com/sudar/Arduino-Makefile/archive/1.5.tar.gz
+	sha256sums = 4b05faff3c5b647471652420b2b80a3f6edbf4fa08d422476cd4c2d546b44441
+
+pkgname = arduino-mk
+
