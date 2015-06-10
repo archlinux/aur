@@ -1,0 +1,8 @@
+post_install() {
+  echo "  -> copy all files from /usr/share/echinus/examples to ~/.echinus"
+  echo "  -> see /usr/share/doc/echinus/README and 'man echinus' for details"
+}
+
+post_upgrade() {
+  post_install $1
+}

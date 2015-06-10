@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=echinus
+Comment=A window manager for X in the spirit of dwm
+TryExec=/usr/bin/echinus
+Exec=echinus
+Icon=
