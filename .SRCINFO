@@ -1,0 +1,15 @@
+pkgbase = lshwd
+	pkgdesc = lists hardware and approp modules
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = http://user-contributions.org/projects/lshwd/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libusb-compat
+	depends = pciutils
+	source = lshwd-1.1.4.tar.gz::https://github.com/bbidulock/lshwd/archive/1.1.4.tar.gz
+	md5sums = 3e5471808855c7f8d232dec935a44695
+
+pkgname = lshwd
+
