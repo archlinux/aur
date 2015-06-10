@@ -1,0 +1,14 @@
+pkgbase = stardork
+	pkgdesc = An ncurses-based space shooter
+	pkgver = 0.7
+	pkgrel = 1
+	url = http://stardork.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	source = http://downloads.sourceforge.net/project/stardork/stardork-0.7.tar.gz
+	md5sums = d830ec5b26c5a02abcae5811fae28e41
+
+pkgname = stardork
+
