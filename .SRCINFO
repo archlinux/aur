@@ -1,0 +1,15 @@
+pkgbase = htmlcr
+	pkgdesc = htmlcrunch speeds up your HTML pages by removing things that are ignored by browsers anyway, such as superflous blanks, line feeds and comments
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = http://www.sourcefiles.org/Miscellaneous/htmlcr-0.8.1-src.zip.shtml
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	depends = unzip
+	source = http://www.sourcefiles.org/Miscellaneous/htmlcr-0.8.1-src.zip
+	md5sums = 7ede46804d75ab1d8c368f1e343b3d47
+
+pkgname = htmlcr
+
