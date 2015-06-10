@@ -1,0 +1,14 @@
+pkgbase = xvid4conf
+	pkgdesc = Creates XviD configuration files
+	pkgver = 1.13
+	pkgrel = 1
+	url = http://twolife.be
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = gtk2
+	source = http://twolife.be/xvid4conf/xvid4conf_1.13.tar.gz
+	md5sums = 84dad76f806f0806be670704636b1951
+
+pkgname = xvid4conf
+
