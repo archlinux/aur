@@ -1,0 +1,11 @@
+pkgbase = dropbox-dummy
+	pkgdesc = A dummy package to provide dropbox dependency (in case you use it from ~/.local/share)
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.dropbox.com
+	arch = any
+	license = WTFPL
+	provides = dropbox
+
+pkgname = dropbox-dummy
+
