@@ -1,0 +1,20 @@
+pkgbase = opencinematools
+	pkgdesc = Tools for the creation of digital cinema packages
+	pkgver = 1.1.2
+	pkgrel = 2
+	url = https://code.google.com/p/opencinematools/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = asdcplib
+	depends = expat
+	depends = libtiff
+	depends = openjpeg
+	depends = openssl
+	source = https://opencinematools.googlecode.com/files/opencinematools-1.1.2-src.zip
+	source = Makefile
+	sha256sums = 56737d2874c2d33a4a8083b372af8bf39c7b3959e0fd5e14555b27a5ebbf7d0f
+	sha256sums = 88e36b0b56adc2e0b8f62d0945537bb625b6d8148e6e62b0f2370a366608bddd
+
+pkgname = opencinematools
+
