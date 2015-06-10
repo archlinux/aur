@@ -1,0 +1,14 @@
+pkgbase = nightfall
+	pkgdesc = Cjdns inet auto-peering tracker
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/kpcyrd/nightfall
+	install = nightfall.install
+	arch = any
+	license = GPL3
+	depends = nodejs
+	source = https://github.com/kpcyrd/nightfall/archive/v1.1.tar.gz
+	sha512sums = ec9238bd809d5bc5343655c9f7f433c06116b903b78c8c9bd6fee72167f5a6c7435f42a6c2bb405235dc7c39271c8df2aa241cf5199df418d0d101d1dbc33a6c
+
+pkgname = nightfall
+
