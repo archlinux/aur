@@ -1,0 +1,15 @@
+pkgbase = perl-test-tabs
+	pkgdesc = checks the presence of tabs in your project
+	pkgver = 0.005
+	pkgrel = 1
+	url = https://metacpan.org/release/Test-Tabs
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	source = http://www.cpan.org/modules/by-module/Test/Test-Tabs-0.005.tar.gz
+	options = !emptydirs
+	options = purge
+
+pkgname = perl-test-tabs
+
