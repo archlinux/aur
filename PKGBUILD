@@ -5,8 +5,8 @@ desktop_arch=(i686 x86_64)
 mobile_arch=()
 
 pkgname=mir
-_actual_ver=0.9.0
-_extra_ver=+15.04.20141125
+_actual_ver=0.13.2
+_extra_ver=+15.10.20150605
 pkgver=${_actual_ver}${_extra_ver}
 pkgrel=1
 pkgdesc="Ubuntu's new display server"
@@ -21,7 +21,7 @@ depends+=(glm mesa-libgl mesa)
 
 if in_array "${CARCH}" "${desktop_arch[@]}"; then
     depends+=(libdrm)
-elif in_array "${CARCH}" "${desktop_arch[@]}"; then
+elif in_array "${CARCH}" "${mobile_arch[@]}"; then
     # Currently unpackaged. Presumably, Ubuntu's fork will need to be used
     depends+=(libhybris)
 fi
@@ -30,8 +30,8 @@ makedepends=(cmake30 doxygen graphviz libxslt umockdev)
 
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/mir_${_actual_ver}${_extra_ver}.orig.tar.gz"
         0001-Build-fixes.patch)
-sha512sums=('9ffb51f2acc6749652b6e20631337e82b4a2fac653e7a83a652834550f8ad94552d1663df72c0fb4fbe032abe0cd72b8a44faedacc2587e566494f7a75b6e8e8'
-            '46e2dad6390efeb96370b29be2a7ad85ff4234c0ca926337db25cbc2e0e0f395d8d656decd1d60289b321f2774b87e30095edb5d8ed35e45aa7b07187b35beb6')
+sha512sums=('440db939bf53224b52fddfd254c76ff259908aefb56d7e7571f8fcc6d6705be4d2c39d560c267cc131a00ccb22ec091897b998280b9f8294561ce334653193c7'
+            '8e10a13a9d55ece03e0ed88fdaa84beb3e04d28ac8b2f05ba6c9518a5c24974059b8a35b6cc8fcf1b2be0fdc2e610b18db774c76d21950d86fd44f8950c4fecf')
 
 prepare() {
     cd "mir-${_actual_ver}${_extra_ver}"
