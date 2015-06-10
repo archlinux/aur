@@ -1,0 +1,23 @@
+pkgbase = perl-class-adapter
+	pkgdesc = Perl implementation of the "Adapter" Design Pattern
+	pkgver = 1.08
+	pkgrel = 1
+	url = http://search.cpan.org/~adamk/Class-Adapter
+	arch = i686
+	arch = x86_64
+	license = perl
+	makedepends = perl
+	depends = perl>=5.10.1
+	provides = class-adapter=1.08
+	provides = Class::Adapter::Clear=1.08
+	provides = perl-class-adapter-clear=1.08
+	provides = Class::Adapter=1.08
+	provides = perl-class-adapter=1.08
+	provides = Class::Adapter::Builder=1.08
+	provides = perl-class-adapter-builder=1.08
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/Class-Adapter-1.08.tar.gz
+	md5sums = 4a1dbb281eac71f666d2eeccf4cc8b99
+
+pkgname = perl-class-adapter
+
