@@ -1,0 +1,1 @@
+/home/xinkai/projects/XwareDesktop/PKGBUILD
