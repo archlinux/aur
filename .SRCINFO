@@ -1,0 +1,17 @@
+pkgbase = diskmoose-git
+	pkgdesc = Console application for warning users when they are running out of disk space
+	pkgver = 22e19f7
+	pkgrel = 1
+	url = http://github.com/xyproto/diskmoose
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = go
+	depends = cowsay
+	provides = diskmoose
+	conflicts = diskmoose
+	source = diskmoose::git://github.com/xyproto/diskmoose.git
+	md5sums = SKIP
+
+pkgname = diskmoose-git
+
