@@ -1,0 +1,70 @@
+*** ./src/eggtrayicon.c	2007-04-04 21:57:16.000000000 +0400
+--- ./src/eggtrayicon.c	2013-01-06 01:17:48.581374222 +0400
+***************
+*** 164,170 ****
+  #if HAVE_GTK_MULTIHEAD
+    display = GDK_DISPLAY_XDISPLAY (gtk_widget_get_display (GTK_WIDGET (icon)));
+  #else
+!   display = gdk_display;
+  #endif
+    
+    gdk_error_trap_push ();
+--- 164,170 ----
+  #if HAVE_GTK_MULTIHEAD
+    display = GDK_DISPLAY_XDISPLAY (gtk_widget_get_display (GTK_WIDGET (icon)));
+  #else
+!   display = gdk_x11_get_default_xdisplay();
+  #endif
+    
+    gdk_error_trap_push ();
+***************
+*** 192,198 ****
+  #if HAVE_GTK_MULTIHEAD
+    xdisplay = GDK_DISPLAY_XDISPLAY (gtk_widget_get_display (GTK_WIDGET (icon)));
+  #else
+!   xdisplay = gdk_display;
+  #endif
+    
+    if (icon->manager_window != None)
+--- 192,198 ----
+  #if HAVE_GTK_MULTIHEAD
+    xdisplay = GDK_DISPLAY_XDISPLAY (gtk_widget_get_display (GTK_WIDGET (icon)));
+  #else
+!   xdisplay = gdk_x11_get_default_xdisplay();
+  #endif
+    
+    if (icon->manager_window != None)
+***************
+*** 309,315 ****
+  EggTrayIcon*
+  egg_tray_icon_new (const gchar *name)
+  {
+!   return egg_tray_icon_new_for_xscreen (DefaultScreenOfDisplay (gdk_display), name);
+  }
+  
+  guint
+--- 309,315 ----
+  EggTrayIcon*
+  egg_tray_icon_new (const gchar *name)
+  {
+!   return egg_tray_icon_new_for_xscreen (DefaultScreenOfDisplay (gdk_x11_get_default_xdisplay()), name);
+  }
+  
+  guint
+***************
+*** 347,353 ****
+  #if HAVE_GTK_MULTIHEAD
+        xdisplay = GDK_DISPLAY_XDISPLAY (gtk_widget_get_display (GTK_WIDGET (icon)));
+  #else
+!       xdisplay = gdk_display;
+  #endif
+        
+        ev.type = ClientMessage;
+--- 347,353 ----
+  #if HAVE_GTK_MULTIHEAD
+        xdisplay = GDK_DISPLAY_XDISPLAY (gtk_widget_get_display (GTK_WIDGET (icon)));
+  #else
+!       xdisplay = gdk_x11_get_default_xdisplay();
+  #endif
+        
+        ev.type = ClientMessage;
