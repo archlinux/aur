@@ -1,0 +1,16 @@
+pkgbase = mailnag-goa-plugin-git
+	pkgdesc = Mailnag GNOME Online Accounts Plugin
+	pkgver = 20150222.r10.903d991
+	pkgrel = 1
+	url = https://github.com/pulb/mailnag-goa-plugin
+	arch = any
+	license = GPL
+	depends = mailnag
+	depends = gnome-online-accounts
+	provides = mailnag-goa-plugin
+	conflicts = mailnag-goa-plugin
+	source = git+https://github.com/pulb/mailnag-goa-plugin
+	sha512sums = SKIP
+
+pkgname = mailnag-goa-plugin-git
+
