@@ -1,0 +1,6 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=twobwm
+Comment=A fast floating and keyboard driven window manager
+Exec=twobwm
+Type=XSession
