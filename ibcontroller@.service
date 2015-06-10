@@ -1,0 +1,17 @@
+[Unit]
+Description=IBController
+After=network.target
+
+[Service]
+Type=simple
+TimeoutSec=0
+User=root
+Group=root
+
+KillMode=control-group
+
+ExecStartPre=/bin/sh -c "mkdir -p /var/run/xvfb"
+ExecStart=/usr/sbin/xvfb-run --auto-servernum -f /var/run/xvfb/%I java -cp /usr/share/java/ib-tws/jts.jar:/usr/share/java/ib-tws/total.2013.jar:/usr/share/java/ibcontroller/ibcontroller.jar -Xmx512M -XX:MaxPermSize=128M ibcontroller.IBGatewayController /etc/ibcontroller/%I.ini
+
+[Install]
+WantedBy=multi-user.target

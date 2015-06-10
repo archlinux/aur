@@ -1,0 +1,26 @@
+pkgbase = ib-controller
+	pkgdesc = Manages headless Interactive Brokers IB Gateway instances
+	pkgver = 2.12
+	pkgrel = 3
+	url = https://github.com/benalexau/ibcontroller-aur
+	arch = any
+	license = GPL3
+	depends = ib-tws
+	depends = xorg-server-xvfb
+	depends = xorg-server
+	depends = gtk2
+	depends = libxrender
+	depends = libxtst
+	depends = gsettings-desktop-schemas
+	depends = ttf-dejavu
+	source = https://github.com/ib-controller/ib-controller/releases/download/2.12.2/IBController-2.12.2.zip
+	source = fdemo.ini
+	source = edemo.ini
+	source = ibcontroller@.service
+	md5sums = 71cf5d83257a454f3157d64cbeb49f59
+	md5sums = 8e8a058f3cecc490db9b1a5368624b06
+	md5sums = 77d02d9b5cbcd1ad3f37d116f1f217e1
+	md5sums = 2ce6f7efe6ce6f38c1ad8d9e5e1cc7ae
+
+pkgname = ib-controller
+
