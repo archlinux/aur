@@ -1,0 +1,15 @@
+pkgbase = nodejs-generator-aspnet
+	pkgdesc = Yeoman generator for ASP.Net
+	pkgver = 0.0.35
+	pkgrel = 1
+	url = https://github.com/yeoman/generator-aspnet
+	arch = any
+	license = APACHE
+	depends = nodejs-yeoman
+	noextract = generator-aspnet-.tgz
+	options = !emptydirs
+	source = http://registry.npmjs.org/generator-aspnet/-/generator-aspnet-0.0.35.tgz
+	sha256sums = 2481573d4a6a5543b759c4a6fb952efd9128107b5a005b92abdced02fbbd68ac
+
+pkgname = nodejs-generator-aspnet
+
