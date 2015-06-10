@@ -1,0 +1,13 @@
+post_install() {
+  nspluginwrapper -i /usr/lib32/mozilla/plugins/libflashplayer.so
+}
+
+post_remove() {
+  nspluginwrapper -r /usr/lib32/mozilla/plugins/libflashplayer.so
+}
+
+post_update() {
+  nspluginwrapper -u /usr/lib32/mozilla/plugins/libflashplayer.so
+}
+
+# vim:set ts=2 sw=2 et:

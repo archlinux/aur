@@ -1,0 +1,13 @@
+pkgbase = midori-flash
+	pkgdesc = Flash for the latest version of Midori
+	pkgver = 1
+	pkgrel = 3
+	url = https://wiki.archlinux.org/index.php/Midori
+	install = midori-flash.install
+	arch = x86_64
+	license = GPL
+	depends = lib32-flashplugin
+	depends = nspluginwrapper
+
+pkgname = midori-flash
+
