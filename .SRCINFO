@@ -1,0 +1,25 @@
+pkgbase = wikidpad-dev
+	pkgdesc = wikidPad is a Wiki-like notebook for storing your thoughts, ideas, todo lists, contacts, or anything else you can think of to write down. [Development version]
+	pkgver = 2.3beta12
+	pkgrel = 1
+	url = http://wikidpad.sourceforge.net/
+	arch = any
+	license = custom
+	makedepends = unzip
+	depends = wxpython
+	depends = python2-pysqlite
+	provides = wikidpad
+	conflicts = wikidpad
+	replaces = wikidpad
+	noextract = WikidPad-2.3beta12-src.zip
+	source = http://downloads.sourceforge.net/wikidpad/WikidPad-2.3beta12-src.zip
+	source = wikidpad-dev
+	source = wikidpad-dev.desktop
+	source = wikidpad-dev.png
+	md5sums = 0a29912e96a0bb74ace1b93824e58145
+	md5sums = 37ff74df2af02a091c7b8d8533d5ad2b
+	md5sums = e93014425c38f4a7a023258fde5ac512
+	md5sums = c44e552a8b856610a3e859d1602d5cf1
+
+pkgname = wikidpad-dev
+

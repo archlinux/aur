@@ -1,0 +1,6 @@
+pkg/
+src/
+wikidpad-dev/
+*.tar.gz
+*.tar.xz
+*.zip
