@@ -1,0 +1,14 @@
+pkgbase = ratfor
+	pkgdesc = Preprocessor for fortran
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://sepwww.stanford.edu/doku.php?id=sep:software:ratfor
+	arch = x86_64
+	arch = i686
+	license = unknown
+	makedepends = setconf
+	source = http://sepwww.stanford.edu/lib/exe/fetch.php?media=sep:software:ratfor77.tar.gz
+	sha256sums = 695fb151e8b4bde74bbbbbb9eff72b4ad2d5b1bfe839ec036f0288de4fe7c1bc
+
+pkgname = ratfor
+
