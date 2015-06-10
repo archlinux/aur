@@ -1,0 +1,18 @@
+pkgbase = fbpager-git
+	pkgdesc = A virtual desktop pager for fluxbox (Development tree)
+	pkgver = r7.8e0927e
+	pkgrel = 2
+	url = http://www.fluxbox.org/fbpager
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = gcc-libs
+	depends = libxrender
+	provides = fbpager
+	conflicts = fbpager
+	source = fbpager-git::git://git.fluxbox.org/fbpager.git
+	md5sums = SKIP
+
+pkgname = fbpager-git
+
