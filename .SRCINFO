@@ -1,0 +1,13 @@
+pkgbase = vim-molokai
+	pkgdesc = Port of the monokai colorscheme for TextMate
+	pkgver = 1.1
+	pkgrel = 3
+	url = http://www.vim.org/scripts/script.php?script_id=2340
+	arch = any
+	license = custom
+	depends = vim
+	source = http://www.vim.org/scripts/download_script.php?src_id=9750
+	md5sums = fea8138fa815caa399f8b4fcf56bfe0e
+
+pkgname = vim-molokai
+
