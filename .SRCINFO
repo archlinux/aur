@@ -1,0 +1,23 @@
+pkgbase = mcwm-git
+	pkgdesc = A minimalist floating window manager written on top of the XCB
+	pkgver = 20130209.2.r11.gee7d9df
+	pkgrel = 3
+	url = https://github.com/bbidulock/mcwm
+	arch = i686
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	depends = xcb-util-wm
+	depends = xcb-util-keysyms
+	depends = bash
+	provides = mcwm
+	conflicts = mcwm
+	conflicts = 2bwm
+	conflicts = 2bwm-git
+	source = mcwm-git::git+https://github.com/bbidulock/mcwm.git
+	source = mcwm.desktop
+	md5sums = SKIP
+	md5sums = 8daed020f1a9df4b774207b30d954c53
+
+pkgname = mcwm-git
+
