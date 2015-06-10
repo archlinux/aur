@@ -1,0 +1,19 @@
+pkgbase = perl-moox-late
+	pkgdesc = MooX::late - easily translate Moose code to Moo
+	pkgver = 0.015
+	pkgrel = 2
+	url = http://search.cpan.org/~tobyink/MooX-late/
+	install = 
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-moo
+	depends = perl-test-requires
+	depends = perl-test-fatal
+	depends = perl-type-tiny
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/MooX-late-0.015.tar.gz
+	options = !emptydirs
+
+pkgname = perl-moox-late
+
