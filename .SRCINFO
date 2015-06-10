@@ -1,0 +1,25 @@
+pkgbase = insanerzshooter-svn
+	pkgdesc = Old school 2D shoot 'em up game
+	pkgver = 30
+	pkgrel = 1
+	url = http://insanerzshooter.googlepages.com/
+	install = insanerzshooter.install
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = setconf
+	makedepends = subversion
+	makedepends = gendesk
+	depends = sdl_image
+	depends = sdl_ttf
+	depends = sdl_mixer
+	depends = sdl_gfx
+	depends = ttf-bitstream-vera
+	depends = gcc-libs
+	provides = insanerzshooter-svn
+	conflicts = insanerzshooter
+	source = svn+http://insanerzshooter.googlecode.com/svn/trunk/
+	md5sums = SKIP
+
+pkgname = insanerzshooter-svn
+
