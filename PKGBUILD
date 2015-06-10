@@ -10,7 +10,7 @@
 
 pkgname="opencv-git"
 pkgver=3.0.0.r1.g424c2bd
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Computer Vision Library"
 url="http://opencv.org/"
 license=('BSD')
@@ -27,11 +27,9 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 changelog="ChangeLog"
 source=("${pkgname%-git}::git+http://github.com/Itseez/opencv.git"
-        'pkgconfig.patch'
         'fsh.patch')
 md5sums=('SKIP'
-         '8226678a6f11ddd9d7163f079108d6cc'
-         '67f341ed6b0f007caab518fe24816026')
+         '752652494b42fd1532f52b789a85947f')
 
 _cmakeopts=('-D WITH_OPENCL=ON'
             '-D WITH_OPENGL=ON'
@@ -64,11 +62,6 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${pkgname%-git}"
-
-    # hack-fix pkg-config mess
-    # see https://bugs.archlinux.org/task/32430
-    # and http://code.opencv.org/issues/1925
-    patch -p1 -i "${srcdir}/pkgconfig.patch"
 
     # hack-fix folder naming inconsistency that they won't fix
     # see http://code.opencv.org/issues/2512

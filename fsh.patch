@@ -1,19 +1,18 @@
-From 4e24953da4569ffcefdecae8543168850f70e21b Mon Sep 17 00:00:00 2001
+From 2bb4ca7cc656969a9e2c655e594428b465edbfed Mon Sep 17 00:00:00 2001
 From: Valentin Churavy <v.churavy@gmail.com>
 Date: Sat, 28 Mar 2015 01:30:01 +0900
-Subject: [PATCH 2/2] fsh.patch
+Subject: [PATCH] fsh.patch
 
 ---
  CMakeLists.txt                                  | 14 +++++++-------
- cmake/OpenCVGenPkgconfig.cmake                  |  2 +-
  cmake/templates/opencv_run_all_tests_unix.sh.in |  2 +-
- 3 files changed, 9 insertions(+), 9 deletions(-)
+ 2 files changed, 8 insertions(+), 8 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index d06ef1a..ece2dc3 100644
+index d9a17b3..3b4d9ad 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -276,7 +276,7 @@ endif()
+@@ -300,7 +300,7 @@ endif()
  if(ANDROID OR WIN32)
    set(OPENCV_DOC_INSTALL_PATH doc)
  else()
@@ -22,7 +21,7 @@ index d06ef1a..ece2dc3 100644
  endif()
  
  if(WIN32 AND CMAKE_HOST_SYSTEM_NAME MATCHES Windows)
-@@ -318,7 +318,7 @@ if(OPENCV_TEST_DATA_PATH AND NOT OPENCV_TEST_DATA_INSTALL_PATH)
+@@ -342,7 +342,7 @@ if(OPENCV_TEST_DATA_PATH AND NOT OPENCV_TEST_DATA_INSTALL_PATH)
    elseif(WIN32)
      set(OPENCV_TEST_DATA_INSTALL_PATH "testdata")
    else()
@@ -31,7 +30,7 @@ index d06ef1a..ece2dc3 100644
    endif()
  endif()
  
-@@ -347,10 +347,10 @@ else()
+@@ -371,10 +371,10 @@ else()
      set(OPENCV_OTHER_INSTALL_PATH   etc)
    else()
      set(OPENCV_LIB_INSTALL_PATH     lib${LIB_SUFFIX})
@@ -46,7 +45,7 @@ index d06ef1a..ece2dc3 100644
    endif()
    set(OPENCV_INCLUDE_INSTALL_PATH "include")
  
-@@ -358,7 +358,7 @@ else()
+@@ -382,7 +382,7 @@ else()
    if(LIB_SUFFIX AND NOT SIZEOF_VOID_P_BITS EQUAL LIB_SUFFIX)
      set(OPENCV_CONFIG_INSTALL_PATH lib${LIB_SUFFIX}/cmake/opencv)
    else()
@@ -55,19 +54,6 @@ index d06ef1a..ece2dc3 100644
    endif()
  endif()
  
-diff --git a/cmake/OpenCVGenPkgconfig.cmake b/cmake/OpenCVGenPkgconfig.cmake
-index ac42445..7e0c319 100644
---- a/cmake/OpenCVGenPkgconfig.cmake
-+++ b/cmake/OpenCVGenPkgconfig.cmake
-@@ -48,7 +48,7 @@ foreach(CVLib ${OpenCV_LIB_COMPONENTS})
- 
-   #need better solution....
-   if(libpath MATCHES "3rdparty")
--    set(installDir "share/OpenCV/3rdparty/${OPENCV_LIB_INSTALL_PATH}")
-+    set(installDir "share/opencv/3rdparty/${OPENCV_LIB_INSTALL_PATH}")
-   else()
-     set(installDir "${OPENCV_LIB_INSTALL_PATH}")
-   endif()
 diff --git a/cmake/templates/opencv_run_all_tests_unix.sh.in b/cmake/templates/opencv_run_all_tests_unix.sh.in
 index 7b946af..82370dc 100644
 --- a/cmake/templates/opencv_run_all_tests_unix.sh.in
@@ -82,5 +68,5 @@ index 7b946af..82370dc 100644
  # Run tests
  
 -- 
-2.3.4
+2.4.2
 

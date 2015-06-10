@@ -1,7 +1,12 @@
+2015-06-10 Valentin Churavy <v.churavy@gmail.com>
+
+	* 3.0.0.r1.g424c2bd-2 :
+	Remove pkgconfig.patch
+
 2015-06-09 Valentin Churavy <v.churavy@gmail.com>
 
 	* 3.0.0.r1.g424c2bd :
-	Adapt patches to upstream changes
+	Port package to aur4
 
 2015-03-27 Valentin Churavy <v.churavy@gmail.com>
 	

@@ -1,7 +1,7 @@
 pkgbase = opencv-git
 	pkgdesc = Open Source Computer Vision Library
 	pkgver = 3.0.0.r1.g424c2bd
-	pkgrel = 1
+	pkgrel = 2
 	url = http://opencv.org/
 	changelog = ChangeLog
 	arch = i686
@@ -28,11 +28,9 @@ pkgbase = opencv-git
 	conflicts = opencv
 	options = staticlibs
 	source = opencv::git+http://github.com/Itseez/opencv.git
-	source = pkgconfig.patch
 	source = fsh.patch
 	md5sums = SKIP
-	md5sums = 8226678a6f11ddd9d7163f079108d6cc
-	md5sums = 67f341ed6b0f007caab518fe24816026
+	md5sums = 752652494b42fd1532f52b789a85947f
 
 pkgname = opencv-git
 
