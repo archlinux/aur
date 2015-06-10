@@ -1,0 +1,13 @@
+pkgbase = bozocrack-git
+	pkgdesc = A silly & effective MD5 cracker using Google Search
+	pkgver = 20130417
+	pkgrel = 1
+	url = https://github.com/juuso/BozoCrack
+	arch = any
+	license = GPL
+	depends = ruby
+	source = git+https://github.com/juuso/BozoCrack.git
+	md5sums = SKIP
+
+pkgname = bozocrack-git
+
