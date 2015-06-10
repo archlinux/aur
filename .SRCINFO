@@ -1,0 +1,18 @@
+pkgbase = panoply
+	pkgdesc = NetCDF, HDF and GRIB Data Viewer by NASA GISS
+	pkgver = 4.2.1
+	pkgrel = 1
+	url = http://www.giss.nasa.gov/tools/panoply/
+	arch = any
+	groups = nasa-tools
+	license = custom
+	depends = java-runtime>=7
+	source = http://www.giss.nasa.gov/tools/panoply/PanoplyJ.zip
+	source = LICENSES
+	source = panoply-script.patch
+	sha1sums = d50eed499f6478c2fa70eaff25adb93ebf580a0f
+	sha1sums = a83855747414873269e21aaff1a53d13ab5de304
+	sha1sums = 207bb600e19bfc56af0f57fbdf77a6a17d30be7f
+
+pkgname = panoply
+
