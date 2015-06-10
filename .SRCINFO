@@ -1,0 +1,15 @@
+pkgbase = fortune-classe-americaine-fr
+	pkgdesc = Fortune cookies: La Classe americaine quotes in french
+	pkgver = 20110606
+	pkgrel = 1
+	url = http://ianux.fr/abitbol
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = fortune-mod
+	source = abitbol
+	md5sums = 6079e17e302a87dc8c0fc827a37299c8
+	sha1sums = 014123f2b792c04d71113f6accf48a1c4a91e50f
+
+pkgname = fortune-classe-americaine-fr
+
