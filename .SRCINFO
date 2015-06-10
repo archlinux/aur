@@ -1,0 +1,30 @@
+pkgbase = lldpd-git
+	pkgdesc = LLDP daemon for GNU/Linux implementing both reception and sending
+	pkgver = 0.7.15.15
+	pkgrel = 1
+	url = http://vincentbernat.github.io/lldpd/
+	install = lldpd.install
+	arch = i686
+	arch = x86_64
+	license = custom:"ISC"
+	makedepends = git
+	depends = libxml2
+	depends = net-snmp
+	depends = libevent
+	depends = libbsd
+	depends = jansson
+	provides = lldpd
+	conflicts = lldpd
+	options = !libtool
+	backup = etc/lldpd.conf
+	source = lldpd-git::git+https://github.com/vincentbernat/lldpd.git
+	source = lldpd.service
+	source = lldpd.install
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 73eaa8101f84e787138aee3927455c36
+	md5sums = 18d76cccdbbfed66c9c39232dd5f81ae
+	md5sums = 8ae98663bac55afe5d989919d296f28a
+
+pkgname = lldpd-git
+

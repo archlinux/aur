@@ -1,0 +1,16 @@
+[Unit]
+Description=LLDP daemon
+Documentation=man:lldpd(8)
+Requires=snmpd.service
+After=snmpd.service network.target
+
+[Service]
+Type=notify
+NotifyAccess=main
+ExecStart=/usr/bin/lldpd -u /run/lldpd.socket -x -c -f -s -e -l -M 2
+ExecReload=/usr/bin/lldpcli -u /run/lldpd.socket -c /etc/lldpd.conf -c /etc/lldpd.d
+ExecReload=/usr/bin/lldpcli -u /run/lldpd.socket update
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
