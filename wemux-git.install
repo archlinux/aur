@@ -1,0 +1,9 @@
+post_install() {
+   echo "#####################################################################"
+   echo "#  IMPORTANT:                                                       #"
+   echo "#  In order to use wemux you must set a user to be a wemux host by  #"
+   echo "#  adding their username to the host_list in /etc/wemux/wemux.conf. #"
+   echo "#####################################################################"
+}
+
+# vim:set ts=2 sw=2 et:
