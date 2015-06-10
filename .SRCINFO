@@ -1,0 +1,16 @@
+pkgbase = perl-xml-descent
+	pkgdesc = Recursive descent XML parsing
+	pkgver = 1.04
+	pkgrel = 1
+	url = https://metacpan.org/release/XML-Descent
+	arch = any
+	license = PerlArtistic
+	checkdepends = perl-test-differences
+	checkdepends = perl-test-more
+	depends = perl-xml-tokeparser
+	options = !emptydirs
+	source = http://cpan.metacpan.org/authors/id/A/AN/ANDYA/XML-Descent-1.04.tar.gz
+	md5sums = 9e00f2c1a31d8cacd91fb23a30dc6fc6
+
+pkgname = perl-xml-descent
+
