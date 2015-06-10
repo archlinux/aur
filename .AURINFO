@@ -1,0 +1,29 @@
+pkgbase = dowse
+	pkgdesc = Minimalistic tool to configure the routing of a local area network
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/dyne/dowse
+	install = dowse.install
+	arch = any
+	license = GPL
+	depends = zsh
+	depends = privoxy
+	depends = squid
+	depends = dnsmasq
+	depends = tor
+	depends = daemontools
+	depends = iptables
+	depends = ebtables
+	backup = usr/share/dowse/conf/network
+	backup = usr/share/dowse/conf/settings
+	source = https://releases.dyne.org/dowse/dowse-0.5.tar.gz
+	source = https://releases.dyne.org/dowse/dowse-0.5.tar.gz.asc
+	source = dowse.sh
+	source = dowse.service
+	sha256sums = 3c818fa7ca54829c107cb324bb7419cfe4c88f087900c5c42a8e57fb69adffe2
+	sha256sums = SKIP
+	sha256sums = aa6072eac2bd0102697a1b8dcaa7d65535c60a93b5073cfb2fedeccab7660750
+	sha256sums = 55d07c0166c10a536190845e70ee68c781d47164050d51906639cc2016a7aaea
+
+pkgname = dowse
+

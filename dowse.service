@@ -1,0 +1,10 @@
+[Unit]
+Description=Dowse
+After=network.target
+
+[Service]
+User=dowse
+ExecStart=/usr/bin/dowse start
+
+[Install]
+WantedBy=multi-user.target
