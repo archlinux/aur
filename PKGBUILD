@@ -1,7 +1,5 @@
 # Maintainer: Ben Alex <ben.alex@acegi.com.au>
 
-# See https://github.com/benalexau/ib-tws for AUR maintenance helper
-
 pkgname=ib-tws
 pkgver=949.3e
 pkgrel=1
@@ -56,4 +54,3 @@ package() {
 	install -Dm644 *.jar ${pkgdir}/usr/share/java/${pkgname}
 	install -Dm644 *.ini ${pkgdir}/usr/share/java/${pkgname}
 }
-
