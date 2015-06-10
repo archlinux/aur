@@ -1,0 +1,18 @@
+pkgbase = libnx
+	pkgdesc = Nanex NxCore tape processing library
+	pkgver = 2.9.477
+	pkgrel = 1
+	url = http://nanex.net
+	arch = x86_64
+	license = custom
+	makedepends = sed
+	depends = gcc-libs
+	source = LICENSE
+	source = libnx.pc
+	source = http://www.nanex.net/downloads/Linux/BETA/20141216.NxCoreAPIDU.tgz
+	md5sums = a6363119bc093d441db85bdf38c7b58e
+	md5sums = 98834a18dc623ec64cf3b965fa8ec6bd
+	md5sums = 3bd43ad96641781079ad80e50197d876
+
+pkgname = libnx
+

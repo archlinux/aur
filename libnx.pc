@@ -1,0 +1,11 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: libnx
+Description: Nanex NxCore tape processing library
+Version: 2.9.472
+Libs: -L${libdir} -lnx
+Libs.private: -ldl
+Cflags: -I${includedir}
