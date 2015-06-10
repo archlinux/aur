@@ -1,0 +1,23 @@
+pkgbase = gdb-ibuclaw-git
+	pkgdesc = The GNU Debugger
+	pkgver = 20150609
+	pkgrel = 1
+	url = http://www.gnu.org/software/gdb/
+	install = gdb.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = expat
+	depends = ncurses
+	depends = python2
+	depends = xz
+	provides = gdb
+	conflicts = gdb
+	options = !libtool
+	backup = etc/gdb/gdbinit
+	source = gdb::git+https://github.com/ibuclaw/gdb.git
+	md5sums = SKIP
+
+pkgname = gdb-ibuclaw-git
+
