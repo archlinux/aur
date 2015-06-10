@@ -1,0 +1,20 @@
+pkgbase = key-logic
+	pkgdesc = A dynamic logic proof tool
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = http://www.key-project.org
+	arch = any
+	license = GPL2
+	depends = jdk
+	source = http://www.key-project.org/download/releases/2.4.1/KeY-2.4.1.tgz
+	sha256sums = 865e7186a031b4eb8d1575114dbf1a7da1179e00341568d89324462e84083321
+
+pkgname = key-logic
+	depends = jdk
+	depends = key-logic-ext
+	optdepends = key-logic-examples
+
+pkgname = key-logic-examples
+	pkgdesc = Example proofs for KeY
+	depends = key-logic
+
