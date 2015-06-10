@@ -1,0 +1,14 @@
+pkgbase = pycrc
+	pkgdesc = A free, easy to use Cyclic Redundancy Check (CRC) calculator and C source code generator
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = http://www.tty1.net/pycrc/
+	arch = any
+	license = MIT
+	depends = python
+	options = !emptydirs
+	source = http://sourceforge.net/projects/pycrc/files/pycrc/pycrc-0.8.2/pycrc-0.8.2.tar.gz
+	sha256sums = 3bc8b65d3451b393daae7c50b86a5e4fb5a0ee0a49321847fcbc4aa734b9d667
+
+pkgname = pycrc
+
