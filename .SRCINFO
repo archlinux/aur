@@ -1,0 +1,16 @@
+pkgbase = sddm-theme-archpaint2-breeze
+	pkgdesc = Adaptation to SDDM of kdm-theme-archpaint2 using breeze components
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://www.archlinux.org/
+	install = sddm-theme-archpaint2-breeze.install
+	arch = any
+	license = CCPL:cc-by-sa
+	depends = sddm
+	depends = wallpaper-archpaint2
+	depends = breeze
+	source = https://github.com/Guidobelix/sddm-theme-archpaint2/releases/download/v1.1/sddm-theme-archpaint2-breeze-1.1.tar.bz2
+	md5sums = 53e1ccff3cd693ebf00f7668b7b1303d
+
+pkgname = sddm-theme-archpaint2-breeze
+
