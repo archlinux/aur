@@ -1,0 +1,22 @@
+pkgbase = qpdfview
+	pkgdesc = A tabbed PDF viewer using the poppler library.
+	pkgver = 0.4.15
+	pkgrel = 1
+	url = https://launchpad.net/qpdfview
+	install = qpdfview.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = qt5-tools
+	depends = libcups
+	depends = poppler-qt5
+	depends = qt5-svg
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	optdepends = libspectre: for PostScript support (required at build time)
+	optdepends = djvulibre: for DjVu support (required at build time)
+	source = http://launchpad.net/qpdfview/trunk/0.4.15/+download/qpdfview-0.4.15.tar.gz
+	md5sums = d7e4066f9062a00380e9aa78c12a882e
+
+pkgname = qpdfview
+
