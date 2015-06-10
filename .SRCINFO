@@ -1,0 +1,21 @@
+pkgbase = freetuxtv
+	pkgdesc = WebTV player to watch ADSL TV on the PC.
+	pkgver = 0.6.6
+	pkgrel = 2
+	url = http://code.google.com/p/freetuxtv/
+	install = freetuxtv.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = intltool
+	depends = vlc
+	depends = gtk3
+	depends = sqlite
+	depends = curl
+	depends = libnotify
+	conflicts = freetuxtv-svn
+	source = http://freetuxtv.googlecode.com/files/freetuxtv-0.6.6.tar.gz
+	sha1sums = 6c42778d65bf20b7aeb70614c696d6736d0fa5cf
+
+pkgname = freetuxtv
+
