@@ -3,7 +3,7 @@
 
 pkgname=stardict-en-ru-bars
 pkgver=2.4.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Large english-russian dictionary for Stardict"
 license=('unknown')
 optdepends=(
@@ -11,7 +11,7 @@ optdepends=(
 )
 url="http://stardict.sourceforge.net"
 md5sums=('9ef8466511414320d1fa6413b7c12f2f')
-source=("http://abloz.com/huzheng/stardict-dic/ru/$pkgname-$pkgver.tar.bz2")
+source=("http://getfr.no-ip.org/pub/dc/software/stardict-ru/$pkgname-$pkgver.tar.bz2")
 arch=(any)
 package() {
     cd $srcdir/$pkgname-$pkgver/
