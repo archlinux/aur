@@ -1,0 +1,13 @@
+pkgbase = xmlfs
+	pkgdesc = mount xml files as directory structures
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = http://github.com/halhen/xmlfs
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = fuse>=2.6
+	depends = libxml2
+
+pkgname = xmlfs
+
