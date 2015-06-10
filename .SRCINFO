@@ -1,0 +1,21 @@
+pkgbase = mingw-w64-gsm
+	pkgdesc = Shared libraries for GSM 06.10 lossy speech compression (mingw-w64)
+	pkgver = 1.0.13
+	pkgrel = 8
+	url = http://www.quut.com/gsm/
+	arch = any
+	license = custom
+	makedepends = mingw-w64-gcc
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://www.quut.com/gsm/gsm-1.0.13.tar.gz
+	source = makefile.patch
+	source = win32.patch
+	md5sums = c1ba392ce61dc4aff1c29ea4e92f6df4
+	md5sums = 1f17f4c181769a091891092e1fdc1e3c
+	md5sums = bb2919748d4ed7eb3174af976126f501
+
+pkgname = mingw-w64-gsm
+

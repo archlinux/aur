@@ -1,0 +1,20 @@
+diff -ru gsm-1.0-pl13/inc/config.h patched/inc/config.h
+--- gsm-1.0-pl13/inc/config.h	2006-04-26 21:14:26.000000000 +0200
++++ patched/inc/config.h	2013-06-14 17:20:37.435375581 +0200
+@@ -17,12 +17,16 @@
+ #define	HAS_FCNTL_H	1		/* /usr/include/fcntl.h		*/
+ #define	HAS_ERRNO_DECL	1		/* errno.h declares errno	*/
+ 
++#ifdef __WIN32
++
++#else
+ #define	HAS_FSTAT 	1		/* fstat syscall		*/
+ #define	HAS_FCHMOD 	1		/* fchmod syscall		*/
+ #define	HAS_CHMOD 	1		/* chmod syscall		*/
+ #define	HAS_FCHOWN 	1		/* fchown syscall		*/
+ #define	HAS_CHOWN 	1		/* chown syscall		*/
+ /*efine	HAS__FSETMODE 	1		/* _fsetmode -- set file mode	*/
++#endif
+ 
+ #define	HAS_STRING_H 	1		/* /usr/include/string.h 	*/
+ /*efine	HAS_STRINGS_H	1		/* /usr/include/strings.h 	*/
