@@ -1,0 +1,19 @@
+pkgbase = systemd-readahead
+	pkgdesc = Standalone version of the fast built-in readahead implementation dropped in systemd 217
+	pkgver = 216
+	pkgrel = 1
+	url = https://dev.gentoo.org/~pacho/systemd-readahead.html
+	install = systemd-readahead.install
+	arch = i686
+	arch = x86_64
+	license = LGPL-2.1 MIT
+	makedepends = make
+	makedepends = autoconf
+	makedepends = gperf
+	makedepends = sed
+	depends = systemd>216
+	source = http://www.freedesktop.org/software/systemd/systemd-216.tar.xz
+	md5sums = 04fda588a04f549da0f397dce3ae6a39
+
+pkgname = systemd-readahead
+
