@@ -1,0 +1,14 @@
+post_upgrade() {
+  setup_eclipse_splash
+}
+
+post_install() {
+  post_upgrade
+}
+
+pre_remove() {
+  /usr/bin/setup_eclipse_splash -r
+  rm /usr/share/eclipse-splash/*backup*.bmp
+}
+
+# vim:set ts=2 sw=2 et:

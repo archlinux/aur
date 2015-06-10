@@ -1,0 +1,20 @@
+pkgbase = eclipse-pony-splash
+	pkgdesc = Pony splash screen for Eclipse
+	pkgver = 1.1
+	pkgrel = 2
+	url = http://www.equestriadaily.com/
+	install = setupsplash.install
+	arch = any
+	license = custom
+	license = BSD
+	makedepends = imagemagick
+	makedepends = curl
+	depends = eclipse
+	depends = python
+	conflicts = eclipse-motivational-splash
+	conflicts = eclipse-black-splash
+	source = setupsplash.py
+	sha1sums = 9eca5e73f3440b97b6caf2fa4adb13cff8bf820e
+
+pkgname = eclipse-pony-splash
+
