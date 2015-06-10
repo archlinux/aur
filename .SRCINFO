@@ -1,0 +1,17 @@
+pkgbase = python-pillow-git
+	pkgdesc = Python Imaging Library (PIL) fork. (git, Python 3)
+	pkgver = 1.7.6.r1267.gbed2e42
+	pkgrel = 1
+	url = https://github.com/python-imaging/Pillow
+	arch = any
+	license = custom:PIL
+	makedepends = git
+	depends = python
+	provides = python3-imaging
+	conflicts = python3-imaging
+	options = !emptydirs
+	source = git://github.com/python-imaging/Pillow.git
+	md5sums = SKIP
+
+pkgname = python-pillow-git
+
