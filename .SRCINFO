@@ -1,0 +1,17 @@
+pkgbase = pyncrypt
+	pkgdesc = PyNCrypt: Yet another OpenSSL wrapper for python
+	pkgver = 0.6.4
+	pkgrel = 3
+	url = http://tachyon.in/ncrypt
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pyrex
+	depends = python2
+	source = http://fs.tachyon.in.s3.amazonaws.com/ncrypt/ncrypt-0.6.4.tar.gz
+	source = pyncrypt.patch
+	md5sums = cd1fdb07e925808d707854d171e4b6b1
+	md5sums = ce9c5accf4fb5b1908ed554a55ee9e46
+
+pkgname = pyncrypt
+

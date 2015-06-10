@@ -1,0 +1,130 @@
+--- ncrypt-0.6.4/ncrypt_bignum.pyx	2006-10-09 03:36:51.000000000 -0400
++++ ncrypt-0.6.4/ncrypt_bignum.pyx	2010-08-25 23:55:58.353333523 -0400
+@@ -29,7 +29,7 @@
+ cdef class BigNum :
+     cdef BIGNUM *bn
+ 
+-    def __new__( self, x=None ) :
++    def __cinit__( self, x=None ) :
+         self.bn = BN_new()
+ 
+     cdef _free( self ) :
+--- ncrypt-0.6.4/ncrypt_cipher.pyx	2006-10-09 03:36:51.000000000 -0400
++++ ncrypt-0.6.4/ncrypt_cipher.pyx	2010-08-25 23:55:58.470000178 -0400
+@@ -43,7 +43,7 @@
+     cdef EVP_CIPHER *c
+     cdef object cipherAlgo, cipherMode
+ 
+-    def __new__( self, cipherAlgo, cipherMode ) :
++    def __cinit__( self, cipherAlgo, cipherMode ) :
+         self.c = NULL
+ 
+     def __dealloc__( self ) :
+@@ -84,7 +84,7 @@
+     cdef EVP_CIPHER_CTX *ctx
+     cdef int cipherFinalized
+ 
+-    def __new__( self, cipherType, key, iv, encryptFlag ) :
++    def __cinit__( self, cipherType, key, iv, encryptFlag ) :
+         self.outBuffer = NULL
+         self.outBufferSize = 0
+         self.ctx = AllocCipherContext()
+--- ncrypt-0.6.4/ncrypt_dh.pyx	2006-10-09 03:36:51.000000000 -0400
++++ ncrypt-0.6.4/ncrypt_dh.pyx	2010-08-25 23:55:58.473333517 -0400
+@@ -50,7 +50,7 @@
+ class DHError( ncrypt_err.BaseLibraryError ) : pass
+ 
+ cdef class DH :
+-    def __new__( self ) :
++    def __cinit__( self ) :
+         self.dh = DH_new()
+ 
+     def __dealloc__( self ) :
+--- ncrypt-0.6.4/ncrypt_digest.pyx	2006-10-09 03:36:51.000000000 -0400
++++ ncrypt-0.6.4/ncrypt_digest.pyx	2010-08-25 23:55:58.486666850 -0400
+@@ -32,7 +32,7 @@
+ ALGORITHMS = ('MD5','SHA1','SHA224','SHA256','SHA384','SHA512')
+ 
+ cdef class DigestType :
+-    def __new__( self, evpMd ) :
++    def __cinit__( self, evpMd ) :
+         self.m = NULL
+ 
+     def __dealloc__( self ) :
+@@ -60,7 +60,7 @@
+     cdef int digestFinalized
+     cdef readonly object digestType
+ 
+-    def __new__( self, digestType ) :
++    def __cinit__( self, digestType ) :
+         self.ctx = NULL
+         self.digestFinalized = 0
+ 
+--- ncrypt-0.6.4/ncrypt_rsa.pyx	2006-10-09 03:36:52.000000000 -0400
++++ ncrypt-0.6.4/ncrypt_rsa.pyx	2010-08-25 23:55:58.530000183 -0400
+@@ -117,7 +117,7 @@
+ PADDING_PKCS1_OAEP = 1
+ 
+ cdef class RSAKey :
+-    def __new__( self ) :
++    def __cinit__( self ) :
+         self.rsa = RSA_new()
+ 
+     def __dealloc__( self ) :
+--- ncrypt-0.6.4/ncrypt_ssl.pyx	2006-10-09 03:36:52.000000000 -0400
++++ ncrypt-0.6.4/ncrypt_ssl.pyx	2010-08-25 23:55:58.556666844 -0400
+@@ -172,7 +172,7 @@
+ cdef class SSLContext :
+     cdef SSL_CTX *c
+ 
+-    def __new__( self, sslMethod, sslMethodType=-1 ) :
++    def __cinit__( self, sslMethod, sslMethodType=-1 ) :
+         self.c = NULL
+ 
+     def __dealloc__( self ) :
+@@ -245,7 +245,7 @@
+     cdef object sslContext
+     cdef readonly object sock
+ 
+-    def __new__( self, sslContext, sock ) :
++    def __cinit__( self, sslContext, sock ) :
+         self.s = NULL
+ 
+     def __dealloc__( self ) :
+--- ncrypt-0.6.4/ncrypt_x509.pxd	2006-10-09 03:36:52.000000000 -0400
++++ ncrypt-0.6.4/ncrypt_x509.pxd	2009-08-28 08:42:41.000000000 -0400
+@@ -1,5 +1,12 @@
++cimport ncrypt_digest, ncrypt_rsa
++
+ cdef extern from "openssl/x509.h" :
+     ctypedef struct X509
++    ctypedef struct X509_NAME
++
++cdef class X509Name :
++    cdef X509_NAME *xn
++    cdef int fromX509_NAME( self, X509_NAME *xnptr )
+ 
+ cdef class X509Certificate :
+     cdef X509 *x
+--- ncrypt-0.6.4/ncrypt_x509.pyx	2006-10-09 03:36:52.000000000 -0400
++++ ncrypt-0.6.4/ncrypt_x509.pyx	2009-08-28 08:44:27.000000000 -0400
+@@ -126,9 +126,7 @@
+ class X509Error( ncrypt_err.BaseLibraryError ) : pass
+ 
+ cdef class X509Name :
+-    cdef X509_NAME *xn
+-
+-    def __new__( self ) :
++    def __cinit__( self ) :
+         self.xn = NULL
+ 
+     def __dealloc__( self ) :
+@@ -203,7 +201,7 @@
+         raise X509Error, 'unable to find field name: %s' % fieldName
+ 
+ cdef class X509Certificate :
+-    def __new__( self, data=None ) :
++    def __cinit__( self, data=None ) :
+         self.x = NULL
+ 
+     def __dealloc__( self ) :
