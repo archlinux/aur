@@ -1,0 +1,14 @@
+pkgbase = firmware-addon-dell
+	pkgdesc = A firmware-tools plugin to handle BIOS/Firmware for Dell systems.
+	pkgver = 2.2.9
+	pkgrel = 2
+	url = http://linux.dell.com/repo/firmware/
+	arch = any
+	license = GPL
+	license = OSL
+	depends = python2
+	source = http://linux.dell.com/libsmbios/download/firmware-addon-dell/firmware-addon-dell-2.2.9/firmware-addon-dell-2.2.9.tar.bz2
+	sha256sums = 22b6bab8facbc34531789daf51e08063450a805f17eaad306cc6bcee730b5c02
+
+pkgname = firmware-addon-dell
+
