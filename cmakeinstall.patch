@@ -1,0 +1,31 @@
+diff -ru mygui-MyGUI3.2.2/CMake/Utils/MyGUIConfigTargets.cmake patched/CMake/Utils/MyGUIConfigTargets.cmake
+--- mygui-MyGUI3.2.2/CMake/Utils/MyGUIConfigTargets.cmake	2015-01-26 16:32:35.000000000 +0100
++++ patched/CMake/Utils/MyGUIConfigTargets.cmake	2015-02-06 17:11:23.008434639 +0100
+@@ -1,7 +1,17 @@
+ # Configure settings and install targets
+ # FIXME: Copypasted from Ogre and need lots of changes
+ 
+-if (WIN32)
++if(MINGW)
++	set(MYGUI_RELEASE_PATH "/release")
++	set(MYGUI_RELWDBG_PATH "/relwithdebinfo")
++	set(MYGUI_MINSIZE_PATH "/minsizerel")
++	set(MYGUI_DEBUG_PATH "/debug")
++	set(MYGUI_LIB_RELEASE_PATH "/release")
++	set(MYGUI_LIB_RELWDBG_PATH "/relwithdebinfo")
++	set(MYGUI_LIB_MINSIZE_PATH "/minsizerel")
++	set(MYGUI_LIB_DEBUG_PATH "/debug")
++	set(MYGUI_PLUGIN_PATH "/opt")
++elseif (WIN32)
+ 	set(MYGUI_RELEASE_PATH "/Release")
+ 	set(MYGUI_RELWDBG_PATH "/RelWithDebInfo")
+ 	set(MYGUI_MINSIZE_PATH "/MinSizeRel")
+@@ -194,7 +204,7 @@
+ 		target_link_libraries(${PROJECTNAME} gdiplus)
+ 	endif()
+ 	target_link_libraries(${PROJECTNAME}
+-		MyGUIEngine
++		MyGUIEngine ${Boost_LIBRARIES}
+ 	)
+ 
+ 	if (MYGUI_GENERATE_LIST_FILES_FROM_VSPROJECT)
