@@ -1,0 +1,15 @@
+pkgbase = livestreamer-curses
+	pkgdesc = A curses frontend to livestreamer.
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = https://github.com/gapato/livestreamer-curses
+	arch = any
+	license = MIT
+	depends = livestreamer
+	depends = ncurses
+	options = !strip
+	source = https://pypi.python.org/packages/source/l/livestreamer-curses/livestreamer-curses-1.5.2.tar.gz
+	md5sums = ea07058f327a3acdc62dc4301a4a6b85
+
+pkgname = livestreamer-curses
+
