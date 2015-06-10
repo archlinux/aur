@@ -1,0 +1,20 @@
+--- checkgmail-47/checkgmail	2011-09-08 09:42:57.066218240 +0200
++++ checkgmail-47.patched/checkgmail	2011-09-08 17:13:06.990218240 +0200
+@@ -920,7 +920,8 @@
+ 			print "Error: No GALX input field found\n";
+ 			return "Error: No GALX input field found";
+ 		}
+-		$post_galx = URI_escape(URI_unescape($1));
++		my $galx = URI_unescape($1);
++		$post_galx = URI_escape($galx);
+ 		
+ 		# Find the data to post
+ 		my $post_data;
+@@ -936,6 +937,7 @@
+ 		my $post_req = HTTP::Request->new('POST' => "https://www.google.com/accounts/ServiceLoginAuth?service=mail");
+ 		$post_req->content_type('application/x-www-form-urlencoded');
+ 		$post_req->content($post_data);
++		$post_req->header('Cookie' => "GALX=$galx");
+ 		my $post_response = $ua->request($post_req);
+ 		if ($post_response->is_error) {
+ 			my $code = $response->code;

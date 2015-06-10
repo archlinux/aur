@@ -1,0 +1,824 @@
+diff -aur checkgmail-1.13/ChangeLog checkgmail-svn/ChangeLog
+--- checkgmail-1.13/ChangeLog	2008-01-18 18:36:45.000000000 -0500
++++ checkgmail-svn/ChangeLog	2011-12-25 15:32:53.000000000 -0500
+@@ -1,3 +1,9 @@
++(Version 1.14 - SVN, not yet released)
++- New Feature: Show the number of unread messages beside the tray icon with the -numbers switch.  It's pretty basic and ugly right now, but it works ok.  I may think about modifying the display to an iPhone-style numbers thing at some time in the future ... (This will require re-writing the tray icon code, but it's possible in theory).
++- Changed: Tray icon transparency should now work (I think!)  It's a kludgy hack, but it works for Ubuntu's default theme for Lucid Lynx (10.04), and seems to work for most other GTK themes.  Setting the tray icon background doesn't work anymore, and should be deprecated soon.
++- Changed: -no_login is now default behaviour (since we can no longer log into Gmail directly)
++- Lots of other bugfixes, compatibility fixes and changes
++
+ (Version 1.13 - 19/1/08)
+ - New Feature: -update command-line switch will download the latest version of the program from SVN and show the user a diff between the two versions, before asking the user if they want to upgrade.  This feature will hopefully be improved in newer versions (at the moment there is no version tracking or checking routinely for updates).
+ - New Feature: Restart command in right-click menu (makes it easy to restart the program if it hangs on "Checking Gmail ...")
+diff -aur checkgmail-1.13/checkgmail checkgmail-svn/checkgmail
+--- checkgmail-1.13/checkgmail	2008-01-17 01:30:23.000000000 -0500
++++ checkgmail-svn/checkgmail	2011-12-25 15:32:53.000000000 -0500
+@@ -5,8 +5,8 @@
+ # system tray; optionally saves password in encrypted form using
+ # machine-unique passphrase
+ 
+-# version 1.12.1svn (25/6/2007)
+-# Copyright Â© 2005-7 Owen Marshall
++# version 1.14pre2-svn (4/11/2010)
++# Copyright Â© 2005-10 Owen Marshall
+ 
+ # This program is free software; you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+@@ -31,12 +31,16 @@
+ # Command-line processing
+ #
+ 
+-my ($version, $silent, $nocrypt, $update, $notsexy, $profile, $disable_monitors_check, $private, $cookies, $popup_size, $hosted_tmp, $show_popup_delay, $popup_persistence, $usekwallet, $libsexy);
++# global variables (can't be set global in the BEGIN block)
++my ($version, $silent, $nocrypt, $update, $notsexy, $profile, $disable_monitors_check, 
++		$private, $cookies, $popup_size, $hosted_tmp, $show_popup_delay, 
++		$popup_persistence, $usekwallet, $libsexy, $nologin, $mailno, $debug);
+ BEGIN {
+-	$version = "1.12.1svn";
++	$version = "1.14pre2-svn";
+ 	$silent = 1;
+ 	$profile = "";
+ 	$cookies = 1;
++	$nologin = 1;
+ 	$show_popup_delay = 250;
+ 	$popup_persistence = 100;
+ 	
+@@ -64,6 +68,10 @@
+ 				$notsexy = 1;
+ 				last };
+ 				
++			/no-login/ && do {
++				$nologin = 1;
++				last };
++				
+ 			/cookie_login/ && do {
+ 				$cookies = 1;
+ 				last };
+@@ -105,8 +113,20 @@
+ 				$update = 1;
+ 				last };
+ 				
+-			print "CheckGmail v$version\nCopyright Â© 2005-7 Owen Marshall\n\n";
+-			print "usage: checkgmail [-profile=profile_name] [-popup_delay=millisecs] [-hosted=hosted_domain] [-no_cookies] [-popup_persistence=millisecs] [-private] [-v | -verbose] [-nocrypt] [-no-libsexy] [-disable-monitors-check] [-update] [-h]\n\n";
++				
++			/numbers/ && do {
++				$mailno = 1;
++				last };
++				
++			/debug/ && do {
++				$debug = 1;
++				$silent = 0;
++				last };
++				
++				
++				
++			print "CheckGmail v$version\nCopyright Â© 2005-10 Owen Marshall\n\n";
++			print "usage: checkgmail [-profile=profile_name] [-popup_delay=millisecs] [-hosted=hosted_domain] [-no_cookies] [-popup_persistence=millisecs] [-private] [-v | -verbose] [-nocrypt] [-no-libsexy] [-disable-monitors-check] [-numbers] [-update] [-h]\n\n";
+ 			exit 1;
+ 			
+ 		}	
+@@ -158,6 +178,7 @@
+ 	my $failed_packages;
+ 		
+ 	my $eval_sub = sub {
++		print "$_\n" if $debug;
+ 		eval $_;
+ 		if ($@) {
+ 			return unless m/(use|require)\s*([\w:-]+).*?\;/;
+@@ -176,9 +197,12 @@
+ 	use Thread::Queue;
+ 	use Thread::Semaphore;
+ 	use threads::shared;
++	use Encode;
+ 	use XML::Simple;
+ 	use FileHandle;
+ 	use LWP::UserAgent;
++	# use LWP::Debug qw(+);
++	use HTTP::Request::Common;
+ 	use Crypt::SSLeay;
+ 	")) {&$eval_sub($_)};
+ 	if ($failed_packages) {
+@@ -332,6 +356,7 @@
+ my $HOME : shared;
+ my $icons_dir : shared;
+ my $gmail_at : shared;
++my $gmail_ik : shared;
+ my $gmail_hid : shared;
+ my $gmail_sid : shared;
+ my $gmail_gausr : shared;
+@@ -355,14 +380,17 @@
+ my $fat_lady = new Thread::Semaphore(0);
+ my $child_exit : shared = 0; # to signal exit to child
+ 
++print "About to start new thread ...\n" if $debug;
+ # Start http checking thread ...
+ my $http_check = new threads(\&http_check);
++print "Parent: Process now continues ...\n" if $debug;
+ 
+ 
+ #######################
+ # Prefs and Variables
+ #
+ 
++print "Parent: Setting up global variables ...\n" if $debug;
+ # Prefs hash
+ my %pref_variables = (
+ 	user => \$user,
+@@ -409,27 +437,33 @@
+ $gmail_address = gen_prefix_url()."/feed/atom";
+ # $gmail_address = $hosted ? "mail.google.com/a/$hosted/feed/atom" : "mail.google.com/mail/feed/atom";
+ 
++# for every gmail action ...
+ my %gmail_act = (
+ 	archive => 'rc_%5Ei',
+ 	read => 'rd',
+ 	spam => 'sp',
+ 	delete => 'tr',
++	star => 'st',
++	unstar => 'xst',
+ );
+ 
++# ... there's a gmail re-action :)
+ my %gmail_undo = (
+ 	archive => 'ib',
+ 	read => 'ur',
+ 	spam => 'us',
+ 	delete => 'ib:trash',
++	star => 'xst',
+ );
+ 
+ my @undo_buffer;
+-my $ua;
++my ($ua, $cookie_jar);
+ my ($menu_x, $menu_y);
+ my @popup_status;
+ my $status_label;
+ # my $message_flag;
+ 
++print "Parent: Checking the existence of ~/.checkgmail ...\n" if $debug;
+ # Create the default .checkgmail directory and migrate prefs from users of older versions
+ unless (-d $prefs_dir) {
+ 	if (-e "$prefs_dir") {
+@@ -452,22 +486,26 @@
+ # Icons
+ #
+ 
++print "Parent: Loading icon data ...\n" if $debug;
+ # we load the pixmaps as uuencoded data
+-my ($error_data, $no_mail_data, $mail_data, $compose_mail_data);
++my ($error_data, $no_mail_data, $mail_data, $compose_mail_data, $star_on_data, $star_off_data);
+ load_icon_data();
+ 
+-my ($no_mail_pixbuf, $mail_pixbuf, $error_pixbuf);
++my ($no_mail_pixbuf, $mail_pixbuf, $error_pixbuf, $star_pixbuf, $nostar_pixbuf);
+ my ($custom_no_mail_pixbuf, $custom_mail_pixbuf, $custom_error_pixbuf);
+ set_icons();
+ 
+ my $image = Gtk2::Image->new_from_pixbuf($no_mail_pixbuf);
+ 
++
+ ##############
+ # Setup tray
+ #
+ 
++print "Parent: Setting up system tray ...\n" if $debug;
+ my $tray = Gtk2::TrayIcon->new("gmail");
+ my $eventbox = Gtk2::EventBox->new;
++my $ebox2 = Gtk2::EventBox->new;
+ my $tray_hbox = Gtk2::HBox->new(0,0);
+ $tray_hbox->set_border_width(2);
+ 
+@@ -485,17 +523,29 @@
+ my %issued_h;
+ my @labels;
+ 
+-$eventbox->add($tray_hbox);
++$eventbox->add($ebox2);
++$ebox2->add($tray_hbox);
+ $tray_hbox->pack_start($image,0,0,0);
+ 
++# number of new mail messages (use -numbers)
++my $number_label;
++if ($mailno) {
++	$number_label = Gtk2::Label->new;
++	$number_label->hide;
++	$number_label->set_markup("0");
++	$tray_hbox->pack_start($number_label,0,0,2);
++}
++
+ 
+ ########################
+ # Read prefs and login
+ #
+ 
++print "Parent: Reading translations ...\n" if $debug;
+ # Read translations if they exist ...
+ read_translations();
+ 
++print "Parent: Reading prefs ...\n" if $debug;
+ # First time configuration ...
+ unless (read_prefs()) {
+ 	show_prefs();
+@@ -532,7 +582,7 @@
+ 
+ $tray->add($eventbox);
+ $tray->show_all;
+-
++print "Parent: System tray now complete ...\n" if $debug;
+ 
+ ############################
+ # enter/leave notification
+@@ -603,6 +653,7 @@
+ # All set? Let's login ...
+ #
+ 
++print "Parent: Sending semaphore to child process ...\n" if $debug;
+ # She's singing ...
+ $fat_lady->up;
+ 
+@@ -675,6 +726,7 @@
+ 
+ sub http_check {
+ 	# Threaded process for sending HTTP requests ...
++	print "Child: Checking thread now starting ... waiting for semaphore to continue\n" if $debug;
+ 	
+ 	# Variable initialisation isn't over until the fat lady sings ...
+ 	$fat_lady->down;
+@@ -682,6 +734,8 @@
+ 		
+ 	# set up the useragent ....
+ 	$ua = LWP::UserAgent->new();
++	$ua->requests_redirectable (['GET', 'HEAD', 'POST']);
++	# push @{ $ua->requests_redirectable }, 'POST';
+ 	
+ 	# set time-out - defaults to 90 seconds or $delay, whichever is shorter
+ 	$ua->timeout($delay/1000<90 ? $delay/1000 : 90);	
+@@ -689,7 +743,7 @@
+ 	# Get the cookie if requested
+ 	if ($cookies) {		
+ 		use HTTP::Cookies;
+-		my $cookie_jar = HTTP::Cookies->new();
++		$cookie_jar = HTTP::Cookies->new();
+ 		
+ 		$ua->cookie_jar($cookie_jar);
+ 		
+@@ -715,15 +769,22 @@
+ 			# deciphering the login form! :)
+ 			unless ($hosted) {
+ 				# Normal Gmail login action ...
+-				$error = http_get("https://www.google.com/accounts/ServiceLoginAuth?ltmpl=yj_wsad&ltmplcache=2&continue=https%3A%2F%2Fmail.google.com%2Fmail%3F&service=mail&rm=false&ltmpl=yj_wsad&Email=$URI_user&Passwd=$URI_passwd&rmShown=1&null=Sign+in", "LOGIN");
++				$error = http_get("Email=$URI_user&Passwd=$URI_passwd", "LOGIN");
++
+ 				# $cookie_jar->scan(\&scan_at);
++				# unless ($error || !$gmail_sid || !$gmail_gausr) {
++					# $error = http_get("https://mail.google.com/mail/?pli=1&auth=$gmail_sid&gausr=$gmail_gausr", 'LOGIN');
++				# }
++
+ 				# $error = http_get("https://mail.google.com/mail?nsr=0&auth=$gmail_sid&gausr=$gmail_gausr", "LOGIN");
+ 	
+ 			} else {
+ 				# hosted domains work differently ...
+ 				# First we POST a login
+-				$error = http_get("https://www.google.com/a/$hosted/LoginAction|at=null&continue=http%3A%2F%2Fmail.google.com%2Fa%2F$hosted&service=mail&userName=$URI_user&password=$URI_passwd", "POST");
+-				
++				# $error = http_get("https://www.google.com/a/$hosted/LoginAction|at=null&continue=http%3A%2F%2Fmail.google.com%2Fa%2F$hosted&service=mail&userName=$URI_user&password=$URI_passwd", "POST");
++				# thanks to Olinto Neto for this fix for hosted domains:
++				$error = http_get("https://www.google.com/a/$hosted/LoginAction2|at=null&continue=http%3A%2F%2Fmail.google.com%2Fa%2F$hosted&service=mail&Email=$URI_user&Passwd=$URI_passwd", "POST");
++
+ 				# Then we grab the HID ("Hosted ID"?) cookie
+ 				$cookie_jar->scan(\&scan_at);
+ 				
+@@ -821,42 +882,115 @@
+ 		$ua->request($req);
+ 		return;
+ 		
++	} elsif ($method eq 'POST_MB') {
++		# quick hack to grab the message text ...
++		my ($add1, $add2) = ($address =~ m/(.*)\|(.*)/);
++		# print "($add1, $add2)\n" unless $silent;
++		
++		my $req = HTTP::Request->new('POST' => $add1);
++  		$req->content_type('application/x-www-form-urlencoded');
++  		$req->content($add2);
++		
++		my $response = $ua->request($req);
++		
++		my $http = $response->content;
++		$label =~ s/\///g;
++		return "LABEL=$label\n$http";
++		
+ 	} elsif ($method eq 'LOGIN') {
+-		# a further hack to streamline the cookie login process
+-		my $req = HTTP::Request->new('GET' => "$address");
+-
++		# New LOGIN method written by Gerben van der Lubbe on Oct 6, 2009.
++		# (based in turn on vially's (https://sourceforge.net/users/vially/) PHP code.
++		
++		# Well, we did get a URL here, but it doesn't make any sense to send both LOGIN and the URL to this function.
++		# So, this URL is just the username and password addition.
++		my $req = HTTP::Request->new('GET' => "https://www.google.com/accounts/ServiceLogin?service=mail");
+ 		my $response = $ua->request($req);
+-		if ($response->is_error) {
++		if($response->is_error) {
+ 			my $code = $response->code;
+ 			my $message = $response->message;
+ 			$error = "Error: $code $message";
+ 			$http_status->enqueue($error);
++			return $error;
+ 		}
+ 		my $http = $response->content;
+-		# print "\n--------\n$http\n";
+-		
+-		# New google accounts use a strange javascript/meta-refresh redirect ...
+-		# ... but we catch them with this! :)
+-		if ($http =~ m/location\.replace\("(.*)"\)/) {
+-			my $new_addr = $1;
+-			$new_addr =~ s/\\u003d/=/g;
+-			$new_addr =~ s/\\075/=/g;
+-			$new_addr =~ s/\\46/&/g;
+-			$new_addr =~ s/\\75/=/g;
+-			return unless $new_addr =~ m/^http/i;
+-			
+- 			print "\nNew login method: manually following redirect address $new_addr ...\n\n" unless $silent;
+-			
+-			my $req2 = HTTP::Request->new('GET' => "$new_addr");
+-			my $response2 = $ua->request($req2);
+-			if ($response2->is_error) {
+-				my $code = $response2->code;
+-				my $message = $response2->message;
++
++		# Find the value of the GALX input field
++		my ($post_galx) = ($http =~ m/"GALX".*?value="(.*?)"/ismg);
++		unless ($post_galx) {
++			print "Error: No GALX input field found\n";
++			return "Error: No GALX input field found";
++		}
++		$post_galx = URI_escape(URI_unescape($1));
++		
++		# Find the data to post
++		my $post_data;
++		$post_data = "ltmpl=default&ltmplcache=2&continue=http://mail.google.com/mail/?ui%3Dhtml&service=mail&rm=false&scc=1&GALX=$post_galx&$address&PersistentCookie=yes&rmShown=1&signIn=Sign+in&asts=";
++		
++		# Hide personal data from verbose display
++		my $post_display = $post_data;
++		$post_display =~ s/Email=(.*?)&/Email=******/;
++		$post_display =~ s/Passwd=(.*?)&/Passwd=******/;
++		print "Logging in with post data $post_display\n" unless $silent;
++
++		# Send the post data to the login URL
++		my $post_req = HTTP::Request->new('POST' => "https://www.google.com/accounts/ServiceLoginAuth?service=mail");
++		$post_req->content_type('application/x-www-form-urlencoded');
++		$post_req->content($post_data);
++		my $post_response = $ua->request($post_req);
++		if ($post_response->is_error) {
++			my $code = $response->code;
++			my $message = $response->message;
++			$error = "Error: $code $message";
++			$http_status->enqueue($error);
++			return $error;
++		}
++		my $post_http = $post_response->content;
++
++		# Find the location we're directed to, if any
++		if ($post_http =~ m/location\.replace\("(.*)"\)/) {
++			# Rewrite the redirect URI.
++			# This URI uses \xXX. Replace those, and just to be sure \\. \" we don't handle, though.
++			my $redirect_address = $1;
++			$redirect_address =~ s/\\\\/\\/g;
++			$redirect_address =~ s/\\x([0-9a-zA-Z]{2})/chr(hex($1))/eg;
++			print "Redirecting to ".$redirect_address."\n" unless $silent;
++
++			# And request the actual URL
++			my $req = HTTP::Request->new('GET' => $redirect_address);
++			my $response = $ua->request($req);
++			if($response->is_error) {
++				my $code = $response->code;
++				my $message = $response->message;
+ 				$error = "Error: $code $message";
+ 				$http_status->enqueue($error);
++				return $error;
+ 			}
+-			# my $http = $response2->content;
++		} else {
++			print "No location.replace found in HTML\n" unless $silent;
+ 		}
++		
++		# Last part of the login process, in order to get Gmail's globar variables
++		# (including the all-important ik parameter)
++		$req = HTTP::Request->new('GET' => "https://mail.google.com/mail/?shva=1");
++		$response = $ua->request($req);
++		if($response->is_error) {
++			my $code = $response->code;
++			my $message = $response->message;
++			$error = "Error: $code $message";
++			$http_status->enqueue($error);
++			return $error;
++		}
++		$http = $response->content;
++		
++		# The globals.  Lots of goodies here, which we don't need right now 
++		# but which might come in handy later ... 
++		if ($http =~ m/var GLOBALS=\[,.*?,.*?,.*?,.*?,.*?,.*?,.*?,.*?,"(.*?)"/) {
++			$gmail_ik = $1;
++		} else {
++			print "Unable to find gmail_ik ... full message text won't work :(\n\n";
++		}
++
++		
+ 		return $error;
+ 		
+ 	} elsif ($method eq 'LOGOUT') {
+@@ -961,13 +1095,25 @@
+ 		# uncomment below to see the datapack structure
+ 		print "atom:\n$atom\n\n" unless $silent;
+ 		
+-		# mb is the message body ... and there's often more than one block!
++		# as of 2/11/10, we can no longer use the old ui=1 datapack
++		# Unfortunately, the new ui=2 datapack is quite a bit less pleasant
++		# to use, with no nice "mb" cues ...
++		
+ 		my ($mb, $ma); 
+-		while ($atom =~ m/\["mb","(.*?)",\d\]/g) {
++		
++		# if ($atom =~ m/\["ms",.*?,.*?,.*?,.*?,.*?,.*?,.*?,.*?,\[.*?"\].*?\[.*?\[.*?,.*?,.*?,.*?,.*?,"(.*?)",\[/s) {#.*?,.*?,.*?,\[,.*?,.*?,.*?,.*?,.*?,"(.*?)",\[/g);
++			# print "\n\n-----\nYYYYY!\n$1\n";
++		# } else {
++			# print "\n\n-----\nNOPE!\n\n";
++		# }
++		
++		# See what you've made me do, Google??  Just look at this fugly regex ...
++		while ($atom =~ m/\["ms",.*?,.*?,.*?,.*?,.*?,.*?,.*?,.*?,\[.*?"\].*?\[.*?\[.*?,.*?,.*?,.*?,.*?,"(.*?)",\[/sg) {
+ 			$mb .= "$1";
+ 		}
+-		
++				
+ 		# ma is the attachment, if any
++		# (I suspect this doesn't work anymore with the new datapack ...)
+ 		while ($atom =~ m/\["ma",\[(.*?)\]/g) {
+ 			my $att = $1;
+ 			$ma = "/mail/images/paperclip.gif"; # default attachment
+@@ -981,7 +1127,7 @@
+ 		print "cleaned text is\n$mb\n\n" unless $silent;
+ 						
+ 		# cs is the message id
+-		my ($cs) = ($atom =~ m/\["cs","(.*?)"/);
++		my ($cs) = ($atom =~ m/.*\["ms","(.*?)"/s);
+ 		$messages_ext{$cs}->{text} = $mb;
+ 		$messages_ext{$cs}->{shown} = 1;
+ 		$messages_ext{$cs}->{attachment} = $ma;
+@@ -1045,9 +1191,9 @@
+ 			my $author = $author_name || $author_mail;
+ 						
+ 			# clean text for Pango compatible display ...
+-			$title = clean_text($title);
+-			$author = clean_text($author);
+-			$summary = clean_text($summary);
++			$title = clean_text_and_decode($title);
++			$author = clean_text_and_decode($author);
++			$summary = clean_text_and_decode($summary);
+ 			
+ 			my ($year, $month, $day, $hour, $min, $sec) = ($issued =~ m/(\d+)-(\d+)-(\d+)T(\d+):(\d+):(\d+)Z/);
+ 			my $time_abs = $sec+$min*60+$hour*3600+$day*86400+$month*2678400+$year*32140800;
+@@ -1089,7 +1235,7 @@
+ 		# Create popup text
+ 		if ($popup_authors) {
+ 			$popup_authors =~ s/, ([\w\s-]+)$/ $trans{notify_and} $1/; # replace final comma with "and"
+-			$popup_authors = clean_text($popup_authors);
++			$popup_authors = clean_text_and_decode($popup_authors);
+ 			$popup_text = "<span foreground=\"#000000\"><small>$trans{notify_new_mail}$popup_authors ...</small></span>";
+ 		}
+ 		
+@@ -1111,6 +1257,32 @@
+ 	return 1;
+ }
+ 
++# Note -- for some reason (?? why ??) the title does not need decoding; all other data apparently does.  Very strange ...
++sub clean_text_and_decode {
++	($_) = @_;
++	# some basic replacements so that the text is readable ...
++	# (these aren't used by pango markup, unlike other HTML escapes)
++	s/&hellip;/\.\.\./g;
++	s/&\s/\&amp; /g;
++	s/\\u003c/</g;
++	# s/\\n//g;
++	s/<br\s*\/*\\*>/\n/g;
++	s/</\&lt;/g;
++	s/>/\&gt;/g;
++	s/&(?>([\w\d\,\.]+))(?!;)/\&amp;$1/g; #not a great fix, but at least it's simple (heavy irony ... :)
++	s/&nbsp;/ /g;
++	# s/\\n/\n/g;
++	# Encode::from_to($body, 'utf-8', 'iso-8859-15');
++	# eval { decode("utf8", $_, Encode::FB_CROAK); };
++	# my $body_decode = $@ ? $_ : decode("utf8", $_);
++	#my $body_decode= decode("utf-8", $_);
++	
++	# I have no idea why this works ...
++	my $body_encode = encode("utf8", $_);
++	my $body_decode = decode("utf8", $body_encode);
++	
++	return $body_decode;
++}
+ 
+ sub clean_text {
+ 	($_) = @_;
+@@ -1129,6 +1301,7 @@
+ 	return $_;
+ }
+ 
++
+ sub clean_text_body {
+ 	($_) = @_;
+ 	# some basic replacements so that the text is readable ...
+@@ -1164,9 +1337,13 @@
+ 	# s/&(?>([\w\d\,\.]+))(?!;)/\&amp;$1/g; #not a great fix, but at least it's simple (heavy irony ... :)
+ 	s/&nbsp;/ /g;
+ 	# s/\\n/\n/g;
+-	use Encode;
+ 	# Encode::from_to($body, 'utf-8', 'iso-8859-15');
+-	my $body_decode= decode("utf-8", $_);
++	# eval { decode("utf8", $_, Encode::FB_CROAK); };
++	# my $body_decode = $@ ? $_ : decode("utf8", $_);
++	# my $body_encode = encode("utf8", $_);
++	
++	# I have no idea why this works either ...
++	my $body_decode = decode("utf8", $_);
+ 
+ 	return $body_decode;
+ }
+@@ -1335,6 +1512,14 @@
+ 	my ($status, $text) = @_;	
+ 	my $new_mail = @messages;
+ 	
++	# display number of messages
++	if ($mailno) {
++		# print "setting \"$new_mail\"\n";
++		$number_label->set_markup("$new_mail");
++		$new_mail ? $number_label->show : $number_label->hide;
++		# $new_mail ? $number_label->set_markup("$new_mail") : $number_label->set_markup(" ")
++	}
++	
+ 	my @sorted_messages = sort {$b->{time} <=> $a->{time}} @messages;
+ 	@messages = @sorted_messages;
+ 	
+@@ -1482,23 +1667,35 @@
+ 		my $hbox_t = Gtk2::HBox->new(0,0);
+ 		$notify_vbox->pack_start($hbox_t,0,0,0);
+ 		
++		my $vbox_t = Gtk2::VBox->new(0,0);
++		$hbox_t->pack_start($vbox_t,0,0,0);	
++		
++		my $hbox_tt = Gtk2::HBox->new(0,0);
++		$vbox_t->pack_start($hbox_tt,0,0,0);
++			
++				
++		
+ 		my $title_l = Gtk2::Label->new;
+-		$title_l->set_markup("<span foreground=\"#000000\"><b><u>$title</u></b></span><small> <span foreground=\"#006633\">$label</span></small>\n<b>$trans{notify_from}</b> $author");
++		$title_l->set_markup("<span foreground=\"#000000\"><b><u>$title</u></b></span><small> <span foreground=\"#006633\">$label</span></small>");
+ 		$title_l->set_line_wrap(1);
+ 		
+ 		my $title_l_ebox = Gtk2::EventBox->new();
+ 		$title_l_ebox->modify_bg('normal', Gtk2::Gdk::Color->new (65000, 65000, 65000));
+-		my $s1 = $title_l_ebox->signal_connect(enter_notify_event=>sub{$title_l->set_markup("<span foreground=\"#000000\"><b><u><i>$title</i></u></b></span><small> <span foreground=\"#006633\">$label</span></small>\n<b>$trans{notify_from}</b> $author")});
+-		my $s2 = $title_l_ebox->signal_connect(leave_notify_event=>sub{$title_l->set_markup("<span foreground=\"#000000\"><b><u>$title</u></b></span><small> <span foreground=\"#006633\">$label</span></small>\n<b>$trans{notify_from}</b> $author")});
++		my $s1 = $title_l_ebox->signal_connect(enter_notify_event=>sub{$title_l->set_markup("<span foreground=\"#000000\"><b><u><i>$title</i></u></b></span><small> <span foreground=\"#006633\">$label</span></small>")});
++		my $s2 = $title_l_ebox->signal_connect(leave_notify_event=>sub{$title_l->set_markup("<span foreground=\"#000000\"><b><u>$title</u></b></span><small> <span foreground=\"#006633\">$label</span></small>")});
+ 		$title_l_ebox->signal_connect(button_press_event=>sub{
+-			# grabbing the full text of a message!
++			# grabbing the full text of a message
+ 			return unless $cookies;
+ 			$title_l_ebox->signal_handler_disconnect($s1);
+ 			$title_l_ebox->signal_handler_disconnect($s2);
+ 			unless ($mb) {
++				# print "Message ID = $id\n";
+ 				# yep, here's the magic code.  This accesses the datapack, which we read with a little hack in the check routine ...
+-				$request->enqueue("GET:".gen_prefix_url()."/?ui=1&view=cv&search=all&th=$id&ww=1173&qt=&prf=1&pft=undefined&rq=xm&at=$gmail_at");
+-				# $request->enqueue("GET:".gen_prefix_url()."/?ui=2&ik=b8bb7ca6af&view=cv&search=all&th=$id&rt=j&prf=1");
++				#$request->enqueue("GET:".gen_prefix_url()."/?ui=1&view=cv&search=all&th=$id&qt=&prf=1&pft=undefined&rq=xm&at=$gmail_at");
++				
++				# As of 3/11/10, Gmail has removed access to the old ui=1 version of Gmail
++				# ui=2 requires a POST command to get the datapack (which has also changed formats slightly)
++				$request->enqueue("POST_MB:".gen_prefix_url()."/?ui=2&ik=$gmail_ik&rid=&view=cv&prf=1&_reqid=&nsc=1|&mb=0&rt=j&cat=all&search=cat&th=$id&at=$gmail_at");
+ 			} else {
+ 				# this allows the message text to be toggled ...
+ 				# oh yes, we're all about usability here, folks! :)
+@@ -1508,8 +1705,69 @@
+ 		});
+ 		
+ 		$title_l_ebox->add($title_l);		
+-		$hbox_t->pack_start($title_l_ebox,0,0,0);
++		$hbox_tt->pack_start($title_l_ebox,0,0,0);
++		
++		# short spacer
++		my $title_spacer = Gtk2::HBox->new(0,0);
++		$title_spacer->set_border_width(1);
++		$vbox_t->pack_start($title_spacer,0,0,0);
++		
++		# my god, gtk2 has the most stupid packing routines imaginable!!!
++		my $hbox_from = Gtk2::HBox->new(0,0);
++		$vbox_t->pack_start($hbox_from,0,0,0);
++		
++		
++		# --- Starring messages ---
++		# Note: there's no way to check the star-status of a message from the atom feed
++		# of course, we're gradually getting to the stage where it'd be much easier to
++		# poll the server via http requests now, than to retrieve messages via the feed.
++		# (I'm thinking about it!  Definitely thinking about it ... :)
++		#
++		# In the meantime, the icon adds a quick way to star messages that you'd like
++		# to come back to later, but ignore for the present.
++		
++		# Star icons are taken from Mozilla Firefox 3 (http://getfirefox.com), licensed under
++		# the Creative Commons license
++		
++		my $star_i = Gtk2::Image->new();
++		if ($messages_ext{$id}->{star}) {
++			$star_i->set_from_pixbuf($star_pixbuf);
++		} else {
++			$messages_ext{$id}->{star}=0;
++			$star_i->set_from_pixbuf($nostar_pixbuf);
++		}
++		
++		my $star_ebox = Gtk2::EventBox->new();
++		$star_ebox->modify_bg('normal', Gtk2::Gdk::Color->new (65000, 65000, 65000));
++		$star_ebox->signal_connect(button_press_event=>sub{
++			# setting the star
++			return unless $cookies;
++			$messages_ext{$id}->{star} = 1-$messages_ext{$id}->{star};
++			if ($messages_ext{$id}->{star}) {
++				$star_i->set_from_pixbuf($star_pixbuf);
++				$request->enqueue(gen_action_url($gmail_act{star},$id));
++			} else {
++				$star_i->set_from_pixbuf($nostar_pixbuf);
++				$request->enqueue(gen_action_url($gmail_act{unstar},$id));
++			}				
++		});	
++		
++		$star_ebox->add($star_i);		
++		
++		my $star_space = Gtk2::HBox->new(0,0);
++		$star_space->set_border_width(3);	
++		
++		# From: line (with star)
++		my $from_l = Gtk2::Label->new;
++		$from_l->set_markup("<b>$trans{notify_from}</b> $author");
++		$from_l->set_line_wrap(1);
+ 		
++		$hbox_from->pack_start($from_l,0,0,0);
++		$hbox_from->pack_start($star_space,0,0,0);	
++		$hbox_from->pack_start($star_ebox,0,0,0);	
++		
++		
++		# --- Attachment icon ---
+ 		if ($messages_ext{$id}->{attachment}) {
+ 			$att = $messages_ext{$id}->{attachment};
+ 			my ($image_name) = ($att =~ m/.*\/(.*)$/);		
+@@ -1684,6 +1942,7 @@
+ 		show_notify($win_notify_temp);
+ 	} else {
+ 		$win_notify->destroy if $win_notify;
++		$win_notify="";
+ 		$win_notify = $win_notify_temp;
+ 	}
+ }
+@@ -1742,6 +2001,11 @@
+ sub get_login_href {
+ 	# Login directly to gmail ...
+ 	$_ = shift;
++	
++	# The following is for people who like to stay permanently logged in ...
++	# (enable with -no-login on the command-line for now ...)
++	return $_ if $nologin;
++	
+ 	my ($options) = m/.*?\?(.*)/;
+ 	my $options_uri = $options ? "?&$options" : "";
+ 	
+@@ -1775,7 +2039,9 @@
+ 	# Now that we can grab the full text of messages, we'd better clear the cache while we're here ...
+ 	# NB - I realise this won't remove all cached text, in the rare event someone looks at the full message text,
+ 	# and then opens it manually in the webbrowser - but it's the simplest solution for now ...
+-	$messages_ext{$id}=undef;
++	unless ($act =~ m/st/) {
++		$messages_ext{$id}=undef;
++	}
+ 	
+ 	# Undeleting items from trash needs to have the search variable as "trash"
+ 	# - this is a quick hack to get around it!
+@@ -1902,15 +2168,22 @@
+ 	
+ 	# move the window
+ 	$new_win->move($move_x,$move_y) if ($move_x || $move_y);
+-	$new_win->show_all unless ($new_win->visible);
++	Gtk2->main_iteration while (Gtk2->events_pending);
+ 	
+-	# $scrolled->set_vadjustment($vadj) if $vadj;
++	# $new_win->show_all unless ($new_win->visible);
++	# Gtk2->main_iteration while (Gtk2->events_pending);
+ 
++	# $scrolled->set_vadjustment($vadj) if $vadj;
++	
++	# a small sleep to make compiz work better
++	# select(undef, undef, undef, 0.150);
+ 	if ($win_notify_temp) {
+ 		$win_notify->destroy;
++		$win_notify="";
+ 		$win_notify=$new_win;
+ 	}
+-	
++	# Gtk2->main_iteration while (Gtk2->events_pending);
++
+ 	
+ 	($old_x, $old_y) = ($move_x,$move_y);
+ 	
+@@ -2847,6 +3120,8 @@
+ 	$mail_pixbuf = load_pixbuf($mail_data);
+ 	$no_mail_pixbuf = load_pixbuf($no_mail_data);
+ 	$error_pixbuf = load_pixbuf($error_data);
++	$star_pixbuf = load_pixbuf($star_on_data);
++	$nostar_pixbuf = load_pixbuf($star_off_data);
+ 	
+ 	# load custom icons if defined
+ 	$custom_mail_pixbuf = Gtk2::Gdk::Pixbuf->new_from_file($mail_icon) if $mail_icon;
+@@ -2975,6 +3250,41 @@
+ M-G7[%EY9PC1-%`)-W-4:.9N%A:><.\'FZ"36L.A<O3;"XM(1A"`>]Q2";R7`H
+ MG:9>-;$;#:Q:%0F)AM5@YX[M%-<_=VY!UW42R3T_+F2?@^@!%%6CMR^&KNMM
+ B#2;O3$]=_HN/.,G_J.\25[KK%,1Y@@````!)14Y$KD)@@@``');
++
++	$star_on_data = unpack("u",
++'MB5!.1PT*&@H````-24A$4@```!`````0"`8````?\_]A````!\'-"250("`@(
++M?`ADB`````EP2%ES```-UP``#=<!0BB;>````!ET15AT4V]F=\'=A<F4`=W=W
++M+FEN:W-C87!E+F]R9YON/!H```)\241!5#B-G5-=2U11%%W[W\'-GQID[V1A^
++MI2/-1&9?.D%*,>)3/?10T4-%)4R1^!1!1(\1%/4#`B\'ZH!DMD`KRH;>@\'IIK
++M0F$@E*$&HYD.(I0?,Z-S[SV[A]`<\'%_:<&"S66NOM0[G$#.C6)D)JA="O`-1
++M3CG.L6B,AXOA1%$V`")Q,]AXN7);Y\'I("\'%G(QR8>=U)QE\'1W^.V\'&N6E3W\'
++M\'YX9=C*.ZF+8C1QT5NUH9U(_`?LKMNZZQ``ZBSI-QN$"<`5`2`BMAHBJ&=38
++M<BKE$3P,J%]P1#,^OMRY3\'"&F\'E:*6<2P#B`>V1VBQ?EX=,G:O=>TZ6[$IHT
++M0)H/1*Y_,FH!2EFP<Q/(YU+(9Z=X:OBA-3\[]$:P4JD2?UB4E!Z`[@E"R$`A
++M&0"$%\33D\'(*/K\;@=J3Y/+5"&9.43(./PG15Q$^W[;]8)<D`0`Z``6H!;"3
++M!NP)L#T&0$#I;1A)7K5^I]\/L%+\'B9EA)D@2T7VW$;JP[W"W)C$`ML8!7@(X
++M\_>R9!UL[2B^O.UP<O-CO<Q\,1IC2P)`-,8V@`XS09[TV/,SM0U\')%2V,(:K
++M$3.CK^WLW&A?-,;M*V-9$%73*XPM$0EA@/0&0!@`"%`+@/##*&N20G-5%7!6
++M&C-!Q$R\'O(\'](*T6Y&E%+K<)V44/R-,*TH(HV=P$5JK93-"J\%H\'>Z2[S\'!Y
++MZV\';B_@Q>,M*CSY>)I!=\'C[KJXO<UG5O$+JWRI7/3$8`?"IP`*!461F5\'GG`
++M@Z\:G/3(HUYVED+*R85FOO<\^=RW6TU_ZV)E916`TM67N/8W]O>XGQ*)@\'*6
++M[D9C;*[-:B:H16B>&\PJPRI_+AICM6[!_]0?8_PDB6*NF@(`````245.1*Y"
++"8((`');
++
++	$star_off_data = unpack("u",
++'MB5!.1PT*&@H````-24A$4@```!`````0"`8````?\_]A````!\'-"250("`@(
++M?`ADB````?9)1$%4.(VMD\%J$V$4A;_)C&,F36B2,;1-:TA;720N3+.H@R!(
++M$0*&K+((:.)3]`&ZRK)TF3?(&R3071]`*18B5!$%H8(FFC).F.DTU\4,4FLB
++M")[5SW_//=S_W/.KS(<.;`(F8`.7LTB1OPB8@\\\'@SG`XO`_<FD>:)Z#&X_%D
++MH5!82Z?3J5PNEP2T?Q%(=CJ=-/`)^\'!P<)`"DK.("J"&Q1OA60-BCN,4#<-X
++M"7B3R>11+!9[#3@$7OC`!?!=`Y;W]_=7&XW&RG0ZO5A<7-0U33,,P_@!?%04
++M143$=EUWRW5=9SP>>Y%(1.UVNY]W=W?/-.`RG\\\\;V6QV"7@#O`<FP#=%422<
++MM*?K>E+7=2.12*P#]\KELA,^D0BPMK>WM^W[?DM$[L[Q!1\'9%)$7[7;[`7#[
++MNH=+]7I]RW7=9R*R/J,YY_O^\V:S60:60__^0+[?[S\6D8<S!+:/CHYV@(VK
++M]]?7Z)=*I07@2]BT(B*K8>UKL5A<(-C`+UP/1RR3R9C`1$2>>IZ7\#Q/1,0!
++M7J52*1,PYDUPLU:KQ555C0([AX>\'MFF:)Z9IGO1ZO7/@B:JJ>JO52@#160):
++M-!J=CD:CD659QY5*Y9UMVZ>>YYU6J]6WEF4=V[9]KBC*)4\'H@-^=5`C<58$1
++C0>JNPB#XF5/@#!#^!WX"JHNT6FM(-L<`````245.1*Y"8((`');
+ 	
+ }
+ 
+@@ -2986,7 +3296,14 @@
+ sub URI_escape {
+ 	# Turn text into HTML escape codes
+ 	($_) = @_;
+-	s/(.)/$escapes{$1}/g;
++	s/([^a-zA-Z0-9])/$escapes{$1}/g;
++	return $_;
++}
++
++sub URI_unescape {
++	# Turn HTML escape code into text
++	($_) = @_;
++	s/%([0-9A-Fa-f]{2})/chr(hex($1))/eg;
+ 	return $_;
+ }
+ 
+diff -aur checkgmail-1.13/man/checkgmail.1.gz checkgmail-svn/man/checkgmail.1.gz
+--- checkgmail-1.13/man/checkgmail.1.gz	2007-05-08 09:26:24.000000000 -0400
++++ checkgmail-svn/man/checkgmail.1.gz	2011-12-25 15:32:53.000000000 -0500
+@@ -1,6 +1,10 @@
+-‹™ÇEcheckgmail.1 }WaoÛ6ı®_AôS2ØjÓaP¬ÒÄm´¶;ÛŠ4h‰²¸H¤JRvûí{w”l9íú¥µ$òøîİã»Kº¼/.J•=~¨¥®^ˆ³$IWbzşi’Ş‹/cáw>¨Z'wB6M¥‚Vd´FH—É,³­	¢°Nµô2\|Îæ‹ëE’¾‹{ÖüínÜ8[èJİ‹»qiqBN¿Û´ÍC®*¹£Gc2kµòüÑé¼c#şãr+ëU\˜¹]8Ø}<ør²¸¸¹/¯gÓaBÚi„¬‚rF½Q]St¡•ã>jÓ>a].l(ñî'£Ÿ:|*®E)¤#áUÖ:ÅK[¯¼¨µÑµ¬Ä
+-o¶:¥Øh)„>[ˆó`kQ(•û4IçóçĞ¾a[g@iBÈ	ô?d=–Êì)hã”WXF(8®Î0+¥Y+?":lCg ¶$ô¨…àBĞæ\ûÕÀ+Ê©X[İôï=G5m½M´"WÇzJ•1(ï%IÅ…5…^·.¦ƒÈn¯Ç+é»Èf˜/­¼^|‡ÜVJx]C|#¡*µ–H‡97v\ëQÇT<çSêÚw{EÅ®v}Å4(U®f ô~k].|°hS´õJÓÙ[B¼7â‚öæÍ‚aˆ“Ÿ›ú4!ÔòÚÉšşßh`æT"£\i–2¬PmÖüİË±Ü¬jXÇÌQÌ1—´–OºnëˆX‡^;5F%•£0;ÛºC%³R]«ï1éZÙ´¬f@I¼^İ	ÍÒî°*Ò4$yES:TK¬•Q5R8H¹Æ¹ jÜıµUG‰œPlÊWâÓù…yÒíË_"¹ÖH`íÔ>ØušŠÉ1Uû¡ã²÷b…[)2é[(Ö)™ÓJ*c%¹ªOa¿å5‘¨çH¬Ú jK
+-¨ë”QÈª²ÛX¹€2–¬ ›"½pœÒv®Ê •]/Mü!QZ‡C‚†œ {l›î¶¿GæG9õ²À¢5ı!äªQ&¦AûæÊU@Ÿ·@ô¿¢lßêªŠu>0"ı)] 0jŞ=@¬´™æÇ·ş”TalØ[I'–/†;c¯…Ñ/çdö_z‡{×ıx ’ß'·>V!=nWF¥dïà­TX:¯P$á3ËMÆjP¤øÕÃS¡ş}™ZnM([KL'×-—Ô£üâ9>œ,£5‡>—ë‚q„cçõ”zŸnìboïâŠø$r‹'sŸœG`!6êñÈ7ı;[à˜b’®S*P'¼ÁWªGP>¤F¡	1Ô±gõxúeBˆ’¥Å#^İ-E%×}}úÚj’²\Ó)ËURİ™b¤;Mß½Ÿá#,-£¢=£c«Ídßàö7İjPNò Ø‰ä6ÑÅï]Íö ‘ÎH‹îâÚùÀ>~ŞÛ¾¦²kglëeßÓ+»Æsfaw´ÿ˜ßÑQüÜªÈ œSI×i ³uWZsÊ´†t·PÚœäÃ…euQ¨b0Ñ¼½c¤Üi¸…¿O*Dß‰Ş-Ñ¼W*l•Š™Ô–XÚ›şáÖZyß?ûŞ¼R´tß¹ÁÔ¥*$dOe~ıË«Ãùd@IÊgéÙ+qB>«qlÿÚS¡r°#8Óaz2p¯ûŞWå8œV8aÇÖIŞƒ1‡ÎÒ_Ó×œØ¯0‡.xMŞg{-Úû§Ìœ…ÄÊº1Kê}‡ÙnÄ‹aÊtuáËıÉÉˆo‘íd‚¬šÑ¡/ÊÿšĞ7Ò.ÑQÏ·és{&|Ïb±mX fƒw<
+-<;î8²SÊHâ
+-m¶@;{çÚHÇu‘Ü'úÙ&“  BØ6ÖÍ]€)0d}«•>ŞU„A«5+=»-sh’n§¯¨?Òƒod}¤é8ˆ'ó¾!àNn¸;|?v—2Î”c4”b06>£³¬Ô@Àƒ³iòÿÒşÉÅ÷:àÁ¨ƒhlæı¥êõí=DøV,–—³ÛåP×Ü—“Kí%®¿ğÇ=›»&ş£¡n<hÀ}~qùQ;NíôjB'q.±ÙñÓuÛÉôë›ÙôÓdº¤õWËå|ñ0¿™ıõ9Iod+ûjğP7ÚYSS+#9Éèm ÄMø“ô†§ÁĞXhn¹ö‰fh‡
+-ˆ-İ=¯G…Dï¯?N0\wä—Ü·Ó§ºb¨ğ×Zı_Ôğm’|»·‚Íï·~ÄCKÜÀ¯x³ï6âøóÛåÕì&™mó“t¾ÄM¿Y<şI"şA¤8×nv§”4ÍÑt!Û +šºã]¿'ÿv3  
+\ No newline at end of file
++‹k\½K checkgmail.1 }WaÛ6ı®_Áë—îl%iQ.l7›Æ@bkoÛ`³h‰²x+‘
++IÙkàĞß~o†”-osı²kIäğÍÌ›7Ã|ı^|w]«âñ×Vêæ;ñ*ËòÕ{1¿úx“Ş‹ÏSá>¨V'Bv]£‚V´FH—É¢°½	¢²Nµô2\}š/–«Ù*Ë‰{¶üí~Ú9[éF=ˆûimqBI¿:Ûõİ—R5ò@Æ~)¬}ÔÊóG§w2ğø¯˜î”ÛX¯âÂÂºÀ?ûv£oè»2­¯"š·7«ëÛÙr=[ÌÇ^j/¤²	ÊôN%·æ6èJ+Ç~}Ğ¦ÂºRØPãİ?~JÁñ¹˜²RI&Â«¢wŠ—ö^yÑj£[ÙˆŞìuj±ÓRÀ}¶WÁ¶¢Rªôy–/—Ï¡ı%º Jk`B†Uÿ·©ÈÅïµ2ÇG2Ú9å–
++¶«,ji¶ÊO(¶£3 [z$Hpvhs©}‡áùW¬m‚î†÷­ÆDğŠRëÉUÆ ¼—8&×ÖTzÛ»è,ÿz7›n¤O–ÉÌØ_:Zy½5øn”ğº#'B5j+áÇÜØMp½Gsñ<R·>íu %»9Ó©r-í¤÷{ëJáƒu@› m7šÎŞkäŒ¾×D»×¯WC\üØµ—¡»·N¶ô§™]‰%ãJ3…”aÚj³åï^î(ÊÃÁÚ ‡môÉœrJ[ù¤Û¾ˆu8àµSSdR92s°½;YP²¨EĞ­úV$]o@ÛŠ¶ ªPR\¯ŒL„fj'¬Š8M'I^ÑÕÙ[e”cTTnq.5íşÚ«3G.È¶
++õKññêZÈ²©úÊp®7XÛG».sqsª£‹àñŞ{±AUŠBúŒuJ–´’ÒØHÎêS8îAzMTÂ9›>ˆÖÚÎº &²iì>fnD ‚)+H»ˆ/l§¶€]j§
++på0P¿H-˜Ã¡@A
++CJP<ö]ªöwğüÌ§ØQõ¦ “1„RuÊD7hßR¹èËˆş/)GÛ÷ºibO‘~)]Á0rŒ^  VÚBsŠã[I¬06¥$Á‰éË£à.Xk¡şë%u€Ïƒì¿¹O?¾PÊ²;3“ÕUP*Y;G¸VJ,W)‡ á3ÓMÆl¥øÕOÏÍS¢ş|‘Ÿúª&Ô½)¦“ÛŒSê‘~2òœN’Ñ›Só+uÅ8Â¹òzr}p7¶¶7÷qE|¥Å“yÈ®"ÁF°`ùxäJÿÆ(¦¸É·9%(oô•ò”¹QhBu¤D¬Ya™bgiñ„W§¢jävÈ¯S_{MT–[:¥bºJÊ;‡îÎó_^‹OĞ¦–QQÑÆUˆbrlpÇŠçÄEµ¥“4 r"¹M$ûˆ{E¥ÙŸ(’„´J…SiçëâóÎ9•©±¬×COoìÏ……ÜÑşóøNÎì—VÅ@9•t‰…m;¨ÒÈ8¦¶Ó¤‚îj[}8±Ì.êÁ#V¤%[ÕƒÀ¤f‰M½a’='z–æqŸ™Š3NvÇÿs‰65ô>ˆÕosÉÃ/iÙ(’mŠ5;œBì©!Şô[º¯*¢'Aåh¿Ö|DM1d²VòÌ¾GVNêò—#x£îÍ=w"¿K4tÑ?d+b b—’0»Qa¯TÌYk	ã±½ôe4´“Â0…l-=Î(p÷­ª$
++œıÃO/Oç“ì!ä).âUşê¥¸ ¢qìğÚS˜Jğ@°—g‰<¦
++6tù¦ñİ©à´Ú!†‰å ÆœNx•ÿœÿÀ€g&ÎKÂU-¯Áqw¤EÇN!gQLuiÃšºüiŠğb´)t áäˆdÂzaSAà×Çä4ÈMF†äèdˆ·|{VâËÂöƒpp)šZ™ã¡ç™Ùij51:µŒAÜ` ¨0x 
++GŞIÇy‘Ü‡)® Po8°ï¬9›0¡Pˆœõ=šŠôQ•`n‚ªt\Òs_cãÀ7ªßÉvœôtÉ–ÃèA€İp:ü8õ&ù‰Óóm©8¯ù3È¬¡5"ğèlºø|n>Ùõ·z$à¡%Fî8¶ZDÙ™á[±Z¿]Ü­Ç¼æ	${«½„Ğùñeå|ºÀæ4®üİø:ƒqùÙà‘'Â«	Ä¹ÍŸ4WÜÌ›İ.æoækZÿ~½^®¾,o|ÊòÛÉÊqT}ÔvÖ´Ô´‰N2ª8 ñ¸ñ,’Q´Ãx\i.ìİ2 öTÇ¸İ·"Èw³7}fç³ÇPò§¶a¨Ğ—†ÊáD]ßn²¿îmĞĞ[?à¡§Ø@ox³OqüÕİúıâ6[ìó£t¾F%‰Y<şZ¯~Š}M·rIÓ
++²º¡ûE¼^ş;û¬]b2  
+\ No newline at end of file
+Only in checkgmail-svn/man: .svn
+Only in checkgmail-svn: .svn

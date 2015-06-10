@@ -1,0 +1,12 @@
+diff -aur checkgmail-47/checkgmail checkgmail-47.patched/checkgmail
+--- checkgmail-47/checkgmail	2011-12-25 15:32:53.000000000 -0500
++++ checkgmail-47.patched/checkgmail	2011-12-25 15:46:09.000000000 -0500
+@@ -203,7 +203,7 @@
+ 	use LWP::UserAgent;
+ 	# use LWP::Debug qw(+);
+ 	use HTTP::Request::Common;
+-	use Crypt::SSLeay;
++	use LWP::Protocol::https;
+ 	")) {&$eval_sub($_)};
+ 	if ($failed_packages) {
+ 		unless ($failed_packages =~ /Gtk2\s/) {
