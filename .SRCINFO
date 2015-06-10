@@ -1,0 +1,19 @@
+pkgbase = gnome-mpv-git
+	pkgdesc = GNOME frontend for MPV
+	pkgver = v0.4.r34.gfd394fb
+	pkgrel = 1
+	url = https://github.com/gnome-mpv/gnome-mpv
+	install = gnome-mpv.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = intltool
+	depends = gtk3
+	depends = mpv
+	optdepends = youtube-dl: for video-sharing websites playback
+	source = gnome-mpv-git::git+https://github.com/gnome-mpv/gnome-mpv.git
+	md5sums = SKIP
+
+pkgname = gnome-mpv-git
+
