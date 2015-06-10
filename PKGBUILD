@@ -60,6 +60,8 @@ package() {
 		mv "$pkgdir/"usr/lib64/* "$pkgdir/"usr/lib
 		rmdir "$pkgdir/"usr/lib64
 	fi
+
+	install -D -m644 ../LICENSE.BSD "$pkgdir/usr/share/licenses/$pkgname/LICENSE.BSD"
 }
 
 # vim: set ft=sh ts=4 sw=4 noet:
