@@ -2,16 +2,16 @@
 
 _pkgname=cppcheck
 pkgname=${_pkgname}-nogui
-pkgver=1.68
+pkgver=1.69
 pkgrel=1
 pkgdesc="A tool for static C/C++ code analysis - CLI version without GUI"
 arch=('i686' 'x86_64')
-url="http://cppcheck.wiki.sourceforge.net/"
+url="http://sourceforge.net/projects/cppcheck/"
 license=('GPL')
 depends=('pcre' 'python-pygments')
 makedepends=('docbook-xsl' 'python')
 source=(http://sourceforge.net/projects/cppcheck/files/cppcheck/${pkgver}/cppcheck-${pkgver}.tar.gz/download)
-sha1sums=('88dea89bc87e811e497d0377f16be85e8d989bb1')
+sha1sums=('75da97aca2991a88840d52993e012c95ded6f7ff')
 
 build() {
    cd "${_pkgname}-${pkgver}"
