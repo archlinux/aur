@@ -1,0 +1,19 @@
+pkgbase = videomaker
+	pkgdesc = Build a movie from pictures
+	pkgver = 0.2
+	pkgrel = 2
+	url = https://github.com/sciunto/VideoMaker
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = texlive-core
+	depends = texlive-bin
+	depends = mencoder
+	depends = ffmpeg
+	depends = python-pillow
+	source = https://source.sciunto.org/videomaker/VideoMaker-0.2.tar.bz2
+	md5sums = 1d02ea2a6cc7ca4381df15322ee61843
+
+pkgname = videomaker
+
