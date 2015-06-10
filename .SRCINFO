@@ -1,0 +1,24 @@
+pkgbase = pixel-dungeon-git
+	pkgdesc = A rogue-like game inspired by Brogue
+	pkgver = 1.7.2a.125
+	pkgrel = 2
+	url = http://pixeldungeon.watabou.ru
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = java-environment
+	depends = java-runtime
+	depends = bash
+	source = pixel-dungeon::git+https://github.com/Arcnor/pixel-dungeon-gdx.git
+	source = pixel-dungeon.sh
+	source = pixel-dungeon.desktop
+	source = no-encryption.patch
+	source = level-change-save.patch
+	sha512sums = SKIP
+	sha512sums = ab43ee17312fbb28daf456f569e9a9ac8c60a22faea500959f8d82794ef3d0a78e21056136742e281f024256bae01e59810c8ced96d9c9fde9abe9ccdb1ed9b6
+	sha512sums = 74c30ef63fec229f199dc9ad1758dab8cdd6484198e143b9defb1a91f52381a8eafd3a2563b3bbc78d97fab306b96fabcfd19ec112616d49c03b5bacc6c3b4a5
+	sha512sums = 93293f1051cdb5860f22c4c952019f04b0ec41e873f9313bd1d0a15a90defce360779ff75d239d0ceb07ce1a2320b2234473ba9cd95f6269e1568bf173b2b0f9
+	sha512sums = 8ad6bf714477e6cc00deb80967ebba332acd4a9ee1a9ba202ef887b07031ec3bd73603a8f7d6584313ac5e4c86da052b94db0e979524c1f8f17f0b49e0a4ea41
+
+pkgname = pixel-dungeon-git
+

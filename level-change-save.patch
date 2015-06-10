@@ -1,0 +1,14 @@
+--- a/core/src/com/watabou/pixeldungeon/Dungeon.java
++++ b/core/src/com/watabou/pixeldungeon/Dungeon.java
+@@ -314,6 +314,11 @@ public class Dungeon {
+ 		hero.viewDistance = light == null ? level.viewDistance : Math.max( Light.DISTANCE, level.viewDistance );
+ 		
+ 		observe();
++		try {
++			saveAll();
++		} catch (Exception e) {
++			// Failed to save for some reason
++		}
+ 	}
+ 	
+ 	public static boolean posNeeded() {

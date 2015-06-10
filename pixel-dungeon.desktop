@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Pixel Dungeon
+Comment=Rogue-like game inspired by Brogue
+Exec=pixel-dungeon
+Icon=pixel-dungeon
+Terminal=false
+Categories=Game;
