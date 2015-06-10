@@ -1,0 +1,17 @@
+pkgbase = samsung_magician
+	pkgdesc = Utility for Samsung SSDs. User guide: http://www.samsung.com/global/business/semiconductor/minisite/SSD/downloads/software/Samsung_Magician_DC_v10_User_Guide.pdf
+	pkgver = v1.0_rtm_p2
+	pkgrel = 2
+	url = http://www.samsung.com/
+	arch = x86_64
+	arch = i686
+	license = custom
+	depends = jsoncpp
+	depends = hdparm
+	source = http://www.samsung.com/global/business/semiconductor/minisite/SSD/downloads/software/samsung_magician_dc-v1.0_rtm_p2.tar.gz
+	source = LICENSE
+	md5sums = b7e88ecac15adddaa5bfae3f679ee2ca
+	md5sums = 138596cfbe00f6b9ead1829b300f5e83
+
+pkgname = samsung_magician
+
