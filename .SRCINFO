@@ -1,0 +1,26 @@
+pkgbase = bsnes-classic-git
+	pkgdesc = SNES emulator with Qt GUI and debugger
+	pkgver = 0.73r62.c134d41
+	pkgrel = 1
+	url = https://github.com/awjackson/bsnes-classic
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = mesa
+	makedepends = git
+	depends = libao
+	depends = libpulse
+	depends = openal
+	depends = qt4
+	depends = sdl
+	depends = xdialog
+	provides = bsnes-classic
+	conflicts = bsnes-classic
+	conflicts = bsnes-plus
+	source = git+https://github.com/awjackson/bsnes-classic.git
+	source = bsnes
+	sha256sums = SKIP
+	sha256sums = d3630df281d533312821bff1d27126df437534e39f37c7d42c1cd347d6d240b5
+
+pkgname = bsnes-classic-git
+

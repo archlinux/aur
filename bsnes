@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Check for profiles and prompt user with a GUI
+[ -e /usr/bin/bsnes-accuracy ] && tag1=accuracy
+[ -e /usr/bin/bsnes-compatibility ] && tag2=compatibility
+[ -e /usr/bin/bsnes-performance ] && tag3=performance
+profile="$(Xdialog --stdout --no-tags --title "bsnes-classic" --radiolist "Choose a profile" 0 0 0 "$tag1" "Accuracy" off "$tag2" "Compatibility" off "$tag3" "Performance" off)"
+
+# Launch selected profile
+exec bsnes-$profile "$@"
