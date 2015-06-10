@@ -1,0 +1,16 @@
+pkgbase = cernbox
+	pkgdesc = Synchronization client for CERN's CERNBox cloud service (based on ownCloud)
+	pkgver = 1.7.2_3.1
+	pkgrel = 2
+	url = http://cernbox.web.cern.ch/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = neon
+	depends = qtwebkit
+	depends = qtkeychain
+	provides = ocsync
+	provides = cernboxsync
+
+pkgname = cernbox
+
