@@ -1,6 +1,6 @@
 pkgbase = ttf-roboto-slab
 	pkgdesc = Serif Roboto font from Google Keep
-	pkgver = 1.100262
+	pkgver = 1.100263
 	pkgrel = 3
 	url = https://www.google.com/fonts/specimen/Roboto+Slab
 	install = ttf-roboto-slab.install
@@ -9,8 +9,16 @@ pkgbase = ttf-roboto-slab
 	depends = fontconfig
 	depends = xorg-fonts-encodings
 	depends = xorg-font-utils
-	source = https://gavinhungry.io/pub/Roboto_Slab.zip
-	md5sums = 1222eadc0fece6cded684fcff6ec230b
+	source = https://googlefontdirectory.googlecode.com/hg/apache/robotoslab/LICENSE.txt?r=f7e52be013a41d64a5f5105ab0e1d82fc3e48478
+	source = https://googlefontdirectory.googlecode.com/hg/apache/robotoslab/RobotoSlab-Bold.ttf?r=f7e52be013a41d64a5f5105ab0e1d82fc3e48478
+	source = https://googlefontdirectory.googlecode.com/hg/apache/robotoslab/RobotoSlab-Light.ttf?r=f7e52be013a41d64a5f5105ab0e1d82fc3e48478
+	source = https://googlefontdirectory.googlecode.com/hg/apache/robotoslab/RobotoSlab-Regular.ttf?r=f7e52be013a41d64a5f5105ab0e1d82fc3e48478
+	source = https://googlefontdirectory.googlecode.com/hg/apache/robotoslab/RobotoSlab-Thin.ttf?r=f7e52be013a41d64a5f5105ab0e1d82fc3e48478
+	md5sums = 3b83ef96387f14655fc854ddc3c6bd57
+	md5sums = d63ef23299458362f3edbf6cd8c2c510
+	md5sums = 79754934891c17dd798ca5e7eb5fa9a9
+	md5sums = 1ec06eed11bbcb1ee510b8f3522adea8
+	md5sums = 317a4210ef29a41c456503c8e5951448
 
 pkgname = ttf-roboto-slab
 
