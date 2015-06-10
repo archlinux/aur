@@ -1,0 +1,14 @@
+pkgbase = tcplay-helper-git
+	pkgdesc = A helper script for mounting and unmounting tcplay containers
+	pkgver = r26.eba59c5
+	pkgrel = 1
+	url = https://github.com/Zyg0te/tcplay-helper
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = tcplay
+	source = tcplay-helper-git::git+https://github.com/Zyg0te/tcplay-helper.git
+	md5sums = SKIP
+
+pkgname = tcplay-helper-git
+
