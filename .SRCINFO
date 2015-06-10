@@ -1,0 +1,15 @@
+pkgbase = easyloggingpp
+	pkgdesc = Robust, thread-safe lightweight single header only C++ logging library
+	pkgver = 9.80
+	pkgrel = 1
+	url = https://github.com/easylogging/easyloggingpp
+	arch = any
+	license = custom
+	optdepends = gcc: compiler that supports C++11
+	source = https://raw.githubusercontent.com/easylogging/easyloggingpp/v9.80/src/easylogging++.h
+	source = https://raw.githubusercontent.com/easylogging/easyloggingpp/v9.80/LICENCE
+	sha1sums = 8d9cb14c96f3f12bf5fbfd4e7d7f4b6f8d1e21b3
+	sha1sums = e6539fb007f23ea9dd9582c0780e87ee5aafb28c
+
+pkgname = easyloggingpp
+
