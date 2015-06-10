@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Teensy Loader
+GenericName=Teensy Loader
+Comment=Teensy Loader GUI
+Exec=teensy-loader
+Icon=teensy
+Type=Application
+Terminal=false
+Categories=Development;
