@@ -1,0 +1,18 @@
+pkgbase = gate
+	pkgdesc = GATE Developer is a development environment that provides a rich set of graphical interactive tools for the creation, measurement and maintenance of software components for processing human language.
+	pkgver = 8.1
+	pkgrel = 1
+	url = http://gate.ac.uk/
+	arch = any
+	license = LGPL
+	depends = java-runtime
+	options = !strip
+	source = http://downloads.sourceforge.net/sourceforge/gate/gate-8.1-build5169-BIN.zip
+	source = gate.desktop
+	source = gate.png
+	md5sums = 8502db86975056410fb500993e2d727e
+	md5sums = a7a2cb37bf093d4b4164c7d381661f33
+	md5sums = acf3e7a9fcbdedd24589394260d56d12
+
+pkgname = gate
+
