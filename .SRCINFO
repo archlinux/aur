@@ -1,0 +1,18 @@
+pkgbase = camorama
+	pkgdesc = Webcam application featuring various image filters
+	pkgver = 0.19
+	pkgrel = 5
+	url = http://camorama.fixedgear.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = gettext
+	depends = libgnomeui
+	source = http://ftp.gnome.org/pub/GNOME/sources/camorama/0.19/camorama-0.19.tar.bz2
+	source = camorama.patch
+	md5sums = 75025ba37d1dd1c398d92ba2dbef43ee
+	md5sums = 03892e0cad8402f578579214fb9b054a
+
+pkgname = camorama
+
