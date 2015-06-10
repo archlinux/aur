@@ -1,0 +1,17 @@
+pkgbase = minecraft-overviewer
+	pkgdesc = Render large resolution images of a Minecraft map with a Google Maps powered interface
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/overviewer/Minecraft-Overviewer
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	depends = python2
+	depends = python-imaging
+	depends = python2-numpy
+	source = minecraft-overviewer::git://github.com/overviewer/Minecraft-Overviewer.git#tag=v0.12.0
+	md5sums = SKIP
+
+pkgname = minecraft-overviewer
+
