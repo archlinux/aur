@@ -1,0 +1,20 @@
+pkgbase = eclipse-motivational-splash
+	pkgdesc = Motivational splash screen for Eclipse
+	pkgver = 1.1
+	pkgrel = 2
+	url = http://thxforthe.info/
+	install = setupsplash.install
+	arch = any
+	license = custom
+	license = BSD
+	makedepends = imagemagick
+	makedepends = curl
+	depends = eclipse
+	depends = python
+	conflicts = eclipse-pony-splash
+	conflicts = eclipse-black-splash
+	source = setupsplash.py
+	sha1sums = 3aff3c10b7a1b12c7f4f3774393fcaf4ea02a502
+
+pkgname = eclipse-motivational-splash
+
