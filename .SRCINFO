@@ -1,0 +1,19 @@
+pkgbase = python-pymatic-git
+	pkgdesc = Python library for automating GUI applications (alpha version)
+	pkgver = 74e32d9
+	pkgrel = 1
+	url = http://github.com/xyproto/pymatic
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	depends = python
+	depends = xautomation
+	depends = xorg-server-xvfb
+	depends = zenity
+	depends = scrot
+	depends = gocr
+	source = pymatic::git://github.com/xyproto/pymatic.git
+	md5sums = SKIP
+
+pkgname = python-pymatic-git
+
