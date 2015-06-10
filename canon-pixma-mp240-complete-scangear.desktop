@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Canon MP240 Scangear
+Exec=/usr/bin/scangearmp
+Icon=/usr/share/pixmaps/canon-pixma-mp240-complete-scangear-icon.svg
+Categories=Graphics;2DGraphics;
+
