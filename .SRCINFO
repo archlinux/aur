@@ -1,0 +1,13 @@
+pkgbase = netsurf-buildsystem-git
+	pkgdesc = Netsurf Build System
+	pkgver = 20120904
+	pkgrel = 1
+	url = http://source.netsurf-browser.org/?p=buildsystem.git;a=summary
+	arch = x86_64
+	arch = i686
+	license = unknown
+	provides = netsurf-buildsystem
+	conflicts = netsurf-buildsystem
+
+pkgname = netsurf-buildsystem-git
+
