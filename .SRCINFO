@@ -1,0 +1,12 @@
+pkgbase = trapproto
+	pkgdesc = Trap extension headers
+	pkgver = 3.4.3
+	pkgrel = 1
+	url = http://www.x.org
+	arch = any
+	license = custom
+	source = http://xorg.freedesktop.org/releases/individual/proto/trapproto-3.4.3.tar.bz2
+	md5sums = 3b713239e5e6b269b31cb665563358df
+
+pkgname = trapproto
+
