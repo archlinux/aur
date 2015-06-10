@@ -1,0 +1,36 @@
+pkgbase = sbagen
+	pkgdesc = A binural brainwave generator
+	pkgver = 1.4.5
+	pkgrel = 6
+	url = http://uazu.net/sbagen
+	install = sbagen.install
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL
+	makedepends = libmad
+	makedepends = libvorbis
+	depends = bash
+	depends = perl
+	options = !strip
+	source = http://uazu.net/sbagen/sbagen-1.4.5.tgz
+	source = http://uazu.net/sbagen/sbagen-river-1.4.1.tgz
+	source = http://uazu.net/sbagen/rhybag-0.1.1.tgz
+	source = http://uazu.net/sbagen/binaural-analysis-20040521.tgz
+	source = anarange.1
+	source = downsample.1
+	source = rhybag.1
+	sha512sums = 35a8cdf0ca59cef01200a102c6f718b163006eec6c3450e7ee32bac0454be2db4d9a4df2f1a52d6cc2beda1d45bf9a7816a2c9dfae710eef14dbe5667cec9bf9
+	sha512sums = f61c9308c671dc9cef9b9e60ba37cc5a9dc6ac45b5ab34d0818e08f6006eeba0ede4756e0c5375b11963e04f4e1e801119af8df8726c867e3be399983b12bc30
+	sha512sums = 19a432b3d465881a113b0aad3f774062952b3f0229ae77e668b0c43d47c94d595cae1b7178c7a30fbc7d7f05da1cc9c0255ad0de7daba8023da2fd7fc6057e2b
+	sha512sums = ca60751ed67bf87aa75465fc1f70a57f3ae4e704a0ff5f745d955b65dd624394be74bc19470b8d5d25df13c70241efac355b66a49773d0584623157151e0b074
+	sha512sums = a14924d7b001f2e558b97d32a844dd18b54eb7ae7a1111a25dae1b3c53129cedeb546043301ee15ac33fed03ad4dc5330e534c3ab27d3f1f6a166499319cbaa7
+	sha512sums = a84e774f1a4c1f57716f3097228baebb8caf5424bd1316ce1d8f596cac44e9a16c1a56814405b48b87557108db1d4cf4fee56875b82d7390ec3c41d4e2a280a8
+	sha512sums = db30da37feb3c970f1dcc5271aa9350b3694c48fdb5585db2e6f3f178f9cd26af1fd48d238786ccac19d2f65ebcccff9622b358b2a16396696e94448e66648f5
+	depends_x86_64 = lib32-glibc
+	makedepends_x86_64 = gcc-multilib
+
+pkgname = sbagen
+

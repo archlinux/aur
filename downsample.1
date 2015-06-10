@@ -1,0 +1,37 @@
+.TH "DOWNSAMPLE" "" "July 2014" "" "Downsample Usage Information"
+.
+.SH "NAME"
+.
+.nf
+
+downsample
+.
+.fi
+.
+.SH "SYNOPSIS"
+.
+.nf
+
+downsample <input\-rate> <downsamping\-ratio> [<gain>] <in\.raw >out\.txt
+.
+.fi
+.
+.SH "DESCRIPTION"
+Extract the audio from the CD or tape at 44100Hz as a WAV or RAW audio file (i\.e\. 16\-bit stereo little\-endian data)\. You\'ll need a RAW (headerless) file to work on, but as a short\-cut you can treat a 16\-bit WAV file as a RAW file \-\- the worst that can happen is that the L+R channels get swapped and there is a bit of noise at the start of the recording\.
+.
+.P
+The point of downsampling is to reduce the amount of data that needs to be processed later, speeding up the process\. A sampling rate of 2004\.5Hz leaves everything up to ~700Hz intact\. If you are looking at higher carrier frequencies, you\'ll need to use a higher sampling rate when you downsample, and it will be a bit slower to run\.
+.
+.SH "EXAMPLE"
+Downsample this RAW file to 2004\.5Hz using \'downsample\':
+.
+.IP "" 4
+.
+.nf
+
+downsample 44100 22 <in\.raw >out\.raw
+.
+.fi
+.
+.IP "" 0
+

@@ -1,0 +1,38 @@
+.TH "ANARANGE" "" "July 2014" "" "Anarange Usage Information"
+.
+.SH "NAME"
+.
+.nf
+
+anarange
+.
+.fi
+.
+.SH "SYNOPSIS"
+.
+.nf
+
+anarange <rate> <from> <to> <step> <in\.raw >out\.txt
+.
+.fi
+.
+.SH "DESCRIPTION"
+Get a rough idea of where the interesting frequencies are using some other visual frequency\-display application\. You can now use the \fBanarange\fR command to analyze the downsampled file \fBin\.raw\fR, produced by the output of the \fBdownsample\fR command\.
+.
+.P
+The analysis works by doing using very narrow filters to pick up each of those frequency bands separately, using this to pick up the peak frequency in each channel\. From this the binaural carrier and beat frequencies are calculated, and the amplitude\. This is not fool\-proof \-\- noise or other frequencies in the same frequency range on the recording can put off the readings, but by scanning through the results, you will soon be able to see the trends and distinguish the real data from the interference\.
+.
+.P
+Note that the algorithm may need tweaking if you have a recording that isn\'t being analysed well\. This is all still quite improvised code \-\- I\'m not making any promises that this is going to work straight off for everything\. You may have to modify the code a little\. (There is also quite a lot of unused routines in the source from previous experimental approaches\.)
+.
+.P
+The parameters here are: the sampling rate (Hz), the lower and upper bounds of the frequency range to analyse (Hz,Hz), and the step to use\. For example, in the line above, there will be (132\-118)/0\.1 bands analysed, or 140\. The analysis outputs its results for every second of the recording, so the output text file can be quite long\.
+.
+.SH "EXAMPLE"
+.
+.nf
+
+anarange 2004\.5 118 132 0\.1 <in\.raw >out\.txt
+.
+.fi
+

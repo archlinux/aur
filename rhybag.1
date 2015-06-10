@@ -1,0 +1,37 @@
+.TH "RHYBAG" "" "July 2014" "" "Rhybag Usage Information"
+.
+.SH "NAME"
+rhybag
+.
+.SH "DESCRIPTION"
+Rhythmic Binaural Generator, version 0\.1\.1
+
+Generate smooth fast-changing binaural sequences, perhaps for inclusion with music.
+.
+.SH "USAGE"
+.
+.nf
+
+rhybag [options] sequence\-file [sequence]
+.
+.fi
+.
+.SH "OPTIONS"
+.
+.nf
+
+\-o file      Output raw data to a file instead of to /dev/dsp
+\-o file\.wav  Output WAV\-format data to a file
+\-O           Output raw data to standard output
+
+\-r rate      Manually select an output rate (Hz, default is 44100Hz)
+\-S fade_ms   Set the time over which to fade sudden volume changes (def 5ms)
+\-A vol       Set master volume to given 0x0\.0000000000003p\-1022ge of maximum
+\-M vol       Manually set master volume level (0x0\.0000000000002p\-1022ge)
+\-D           Generate debugging dump of notes and sequences
+\-DD          Also generate debugging dump of rendering events
+.
+.fi
+.
+.SH "LICENSE"
+Copyright (c) 1999 Jim Peters, released under the GNU GPL
