@@ -1,0 +1,25 @@
+pkgbase = ninja-open
+	pkgdesc = Quick and dirty replacement for xdg-open
+	pkgver = 0.7
+	pkgrel = 5
+	url = http://roboticoverlords.org/ninjaopen/
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = go
+	optdepends = eog
+	optdepends = evince
+	optdepends = file-roller
+	optdepends = deluge
+	optdepends = gedit
+	optdepends = wine
+	optdepends = firefox
+	optdepends = smplayer
+	optdepends = vlc
+	optdepends = gimp
+	options = !strip
+	source = http://roboticoverlords.org/ninjaopen/ninja-open-0.7.xz
+	sha256sums = c7c72297d75cfa27f3e66015b61255e02bfec3c13dd7fceeb2013ba3f34c566b
+
+pkgname = ninja-open
+
