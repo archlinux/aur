@@ -1,0 +1,16 @@
+pkgbase = pewpew-git
+	pkgdesc = A cool retro shooting game
+	pkgver = 20120322
+	pkgrel = 1
+	url = https://github.com/mastergreg/pewpew
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = freeglut
+	makedepends = freealut
+	depends = freeglut
+	depends = freealut
+
+pkgname = pewpew-git
+
