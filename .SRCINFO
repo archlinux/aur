@@ -1,0 +1,18 @@
+pkgbase = aewm
+	pkgdesc = Minimal window manager - includes separate utilities
+	pkgver = 1.3.12
+	pkgrel = 6
+	url = http://www.red-bean.com/decklin/aewm
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = gtk2
+	backup = usr/share/aewm/aewmrc
+	backup = usr/share/aewm/clientsrc
+	source = http://www.red-bean.com/decklin/aewm/aewm-1.3.12.tar.bz2
+	source = makefile.patch
+	md5sums = 1addbb7e802535dc5f109d79bfea02a5
+	md5sums = 14c64b37451e675de641e4cc9e661945
+
+pkgname = aewm
+
