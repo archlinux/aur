@@ -1,0 +1,15 @@
+pkgbase = citebib
+	pkgdesc = Generate a nice Bibtex or Latex bibliography according to the document content
+	pkgver = 0.4.1
+	pkgrel = 2
+	url = https://github.com/sciunto/CiteBib
+	arch = any
+	license = GPL3
+	checkdepends = python-nose
+	makedepends = python-setuptools
+	depends = python
+	depends = python-bibtexparser
+	source = http://source.sciunto.org/citebib/citebib-0.4.1.tar.bz2
+
+pkgname = citebib
+
