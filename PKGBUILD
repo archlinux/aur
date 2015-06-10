@@ -5,7 +5,7 @@ desktop_arch=(i686 x86_64)
 mobile_arch=()
 
 pkgname=mir-bzr
-pkgver=2189
+pkgver=2644
 pkgrel=1
 pkgdesc="Ubuntu's new display server"
 arch=(${desktop_arch[@]} ${mobile_arch[@]})
@@ -13,24 +13,26 @@ url="https://launchpad.net/mir"
 # Server is GPL, client is LGPL, various other files are BSD and Apache
 license=(GPL LGPL BSD Apache)
 
+provides=(mir)
+conflicts=(mir)
+
 depends=(boost gflags google-glog liburcu lttng-ust libxkbcommon protobuf)
 # At the moment, Mir does require Mesa's libGL
 depends+=(glm mesa-libgl mesa)
 
 if in_array "${CARCH}" "${desktop_arch[@]}"; then
     depends+=(libdrm)
-elif in_array "${CARCH}" "${desktop_arch[@]}"; then
+elif in_array "${CARCH}" "${mobile_arch[@]}"; then
     # Currently unpackaged. Presumably, Ubuntu's fork will need to be used
     depends+=(libhybris)
 fi
 
 makedepends=(cmake30 doxygen graphviz libxslt umockdev)
-makedepends+=(mir)
 
 source=(mir::bzr+https://code.launchpad.net/~mir-team/mir/development-branch
         0001-Build-fixes.patch)
 sha512sums=('SKIP'
-            '3ab08f33eaebf324e718f0caa803b7317b42cb7de0acf1178e7e657b25252ea190283d1028779a8785fb276e60dc2459b72c9d6878ca41b8cd16ae01b97b1b26')
+            '3c9a9174ca72902d22f2ab74b7df26283c96c81c0daab58b629fbeb7e6cc3c278db69be53eb89a9b241d5f10a30d7f547a67004c980be0b109e49e651bf08bf5')
 
 pkgver() {
     cd mir
@@ -70,7 +72,7 @@ build() {
     fi
 
   cmake-3.0 . "${params[@]}"
-  make -j1
+  make
 }
 
 package() {

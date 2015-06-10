@@ -1,13 +1,29 @@
-From d4016734aa2c8e1119461cea37c670490d824a9b Mon Sep 17 00:00:00 2001
+From 5c3a6130e7f64cfd64acd701e49cdb76e261ff1d Mon Sep 17 00:00:00 2001
 From: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 Date: Thu, 1 Jan 2015 00:33:56 -0500
 Subject: [PATCH] Build fixes
 
 ---
- examples/glog_logger.cpp           | 2 +-
- src/client/mesa/native_surface.cpp | 1 +
- 2 files changed, 2 insertions(+), 1 deletion(-)
+ CMakeLists.txt                           | 4 ++--
+ examples/glog_logger.cpp                 | 2 +-
+ src/platforms/mesa/server/kms/cursor.cpp | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
 
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 130fe58..517bea3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -58,8 +58,8 @@ set(CMAKE_BUILD_TYPE ${CMAKE_BUILD_TYPE} CACHE STRING "${build_types}" FORCE)
+ # Enable cmake-gui to display a drop down list for CMAKE_BUILD_TYPE
+ set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "${build_types}")
+ 
+-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pthread -g -Werror -Wall -pedantic -Wextra -fPIC")
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread -g -std=c++14 -Werror -Wall -fno-strict-aliasing -pedantic -Wnon-virtual-dtor -Wextra -fPIC")
++set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pthread -g -Wall -pedantic -Wextra -fPIC")
++set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread -g -std=c++14 -Wall -fno-strict-aliasing -pedantic -Wnon-virtual-dtor -Wextra -fPIC")
+ 
+ if ("${CMAKE_CXX_COMPILER}" MATCHES "clang")
+   set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-return-type-c-linkage -Wno-mismatched-tags")
 diff --git a/examples/glog_logger.cpp b/examples/glog_logger.cpp
 index 24f2ec4..58616bc 100644
 --- a/examples/glog_logger.cpp
@@ -21,18 +37,19 @@ index 24f2ec4..58616bc 100644
      }
  } google_gflag_guard;
  }
-diff --git a/src/client/mesa/native_surface.cpp b/src/client/mesa/native_surface.cpp
-index 8d31b21..cc9185a 100644
---- a/src/client/mesa/native_surface.cpp
-+++ b/src/client/mesa/native_surface.cpp
-@@ -19,6 +19,7 @@
- #include <cstring>
- #include "../client_buffer.h"
- #include "native_surface.h"
-+#include <iostream>
+diff --git a/src/platforms/mesa/server/kms/cursor.cpp b/src/platforms/mesa/server/kms/cursor.cpp
+index fee0ef7..6c18481 100644
+--- a/src/platforms/mesa/server/kms/cursor.cpp
++++ b/src/platforms/mesa/server/kms/cursor.cpp
+@@ -25,7 +25,7 @@
+ #include "mir/graphics/cursor_image.h"
  
- #include <boost/exception/diagnostic_information.hpp> 
+ #include <xf86drm.h>
+-#include <drm/drm.h>
++#include <libdrm/drm.h>
+ 
+ #include <boost/exception/errinfo_errno.hpp>
  
 -- 
-2.2.1
+2.4.2
 
