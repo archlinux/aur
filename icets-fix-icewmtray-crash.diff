@@ -1,0 +1,13 @@
+--- ./icets.cpp.orig	2010-03-22 00:42:19.231913625 +1000
++++ ./icets.cpp	2010-03-22 00:43:34.611221044 +1000
+@@ -311,7 +311,9 @@
+      }/* if(bakFile.exists()) */
+ 
+     //restart IceWM
+-    system("pkill -1 icewm");
++    // Use killall instead of pkill, because pkill kills all icewm processes
++    // like icewmtray - in this case we lost view of running tray apps
++    system("killall -1 icewm");
+ }/* setTheme() */
+ 
+ /**
