@@ -1,0 +1,16 @@
+pkgbase = perl-module-build-withxspp
+	pkgdesc = Module::Build::WithXSpp - XS++ enhanced flavour of Module::Build
+	pkgver = 0.14
+	pkgrel = 1
+	url = https://metacpan.org/release/Module-Build-WithXSpp/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	depends = perl-extutils-cppguess
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SM/SMUELLER/Module-Build-WithXSpp-0.14.tar.gz
+	md5sums = f3d6ad08127f62eed9baef131870f450
+
+pkgname = perl-module-build-withxspp
+
