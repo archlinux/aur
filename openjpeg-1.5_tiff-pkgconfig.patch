@@ -1,0 +1,22 @@
+diff -rupN openjpeg-1.5.2/configure.ac openjpeg-1.5.2-new/configure.ac
+--- openjpeg-1.5.2/configure.ac	2014-03-27 11:58:08.000000000 +0100
++++ openjpeg-1.5.2-new/configure.ac	2014-04-03 17:53:10.326944770 +0200
+@@ -266,17 +266,7 @@ AC_MSG_CHECKING([whether to build with T
+ AC_MSG_RESULT([${want_tiff}])
+ 
+ if test "x${want_tiff}" = "xyes" ; then
+-
+-   OPJ_CHECK_LIB(
+-      [tiff.h],
+-      [tiff],
+-      [TIFFOpen],
+-      [have_libtiff="yes"],
+-      [have_libtiff="no"])
+-
+-   if test "x${have_libtiff}" = "xno" ; then
+-      AC_MSG_WARN([Can not find a usuable TIFF library. Make sure that CPPFLAGS and LDFLAGS are correctly set.])
+-   fi
++   PKG_CHECK_MODULES([TIFF], libtiff-4)
+ fi
+ 
+ AC_MSG_CHECKING([whether TIFF is available])

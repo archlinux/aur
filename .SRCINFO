@@ -1,0 +1,33 @@
+pkgbase = mingw-w64-openjpeg
+	pkgdesc = An open source JPEG 2000 codec (mingw-w64)
+	pkgver = 1.5.2
+	pkgrel = 2
+	url = http://www.openjpeg.org
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-configure
+	makedepends = dos2unix
+	makedepends = lib32-glibc
+	depends = mingw-w64-crt
+	depends = mingw-w64-lcms2
+	depends = mingw-w64-libtiff
+	depends = mingw-w64-libpng
+	depends = mingw-w64-zlib
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = http://downloads.sourceforge.net/openjpeg.mirror/openjpeg-1.5.2.tar.gz
+	source = openjpeg-1.5_tiff-pkgconfig.patch
+	source = rhbz1037945_CVE-2013-1447.patch
+	source = rhbz1037948_CVE-2013-6887.patch
+	source = rhbz1082997_CVE-2014-0158.patch
+	source = cdecl.patch
+	md5sums = c41772c30fb1c272358b3707233134a1
+	md5sums = 1ec1549edd75de3f5f69275bd4d0adfa
+	md5sums = 8d6b76c2fe04c5f2ef03cbdc90087ca0
+	md5sums = f76f8d2639883e0e91b6c8517557aa95
+	md5sums = 089dc6f3fb3b43fd533ee6f9ea03cd9a
+	md5sums = 673edf457f9b4f3fdc9a083e1857a76a
+
+pkgname = mingw-w64-openjpeg
+
