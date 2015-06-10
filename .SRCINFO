@@ -1,0 +1,15 @@
+pkgbase = openssh-ldap-helper
+	pkgdesc = perform ssh pubkey validation through LDAP
+	pkgver = 20140927
+	pkgrel = 2
+	url = https://github.com/lesovsky/uber-scripts/tree/master/openssh-ldap-helper
+	install = openssh-ldap-helper.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = openldap
+	source = git+https://github.com/lesovsky/uber-scripts.git
+	md5sums = SKIP
+
+pkgname = openssh-ldap-helper
+

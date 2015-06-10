@@ -1,0 +1,7 @@
+post_install(){
+  cat <<EOF
+  # Add the following lines to /etc/ssh/sshd_config
+  AuthorizedKeysCommand /usr/lib/openssh-ldap-helper/openssh-ldap-helper
+  AuthorizedKeysCommandUser root
+EOF
+}
