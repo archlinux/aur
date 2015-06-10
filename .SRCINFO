@@ -1,0 +1,13 @@
+pkgbase = mkinitcpio-kms
+	pkgdesc = A hook to include common kernel modules for early KMS (from archiso)
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.archlinux.org/
+	arch = any
+	license = GPL
+	depends = bash
+	source = archiso_kms
+	md5sums = c97b5720c31a1fec6d5da74cb65f8799
+
+pkgname = mkinitcpio-kms
+
