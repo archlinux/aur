@@ -1,0 +1,4 @@
+*.pkg.tar.xz
+/pkg/
+/src/
+/gtk-theme-clearlooks-flat-compact/
