@@ -1,0 +1,112 @@
+diff -up fbdesk-1.4.1/src/main.cc.gcc43 fbdesk-1.4.1/src/main.cc
+--- fbdesk-1.4.1/src/main.cc.gcc43	2008-03-31 23:36:49.000000000 -0400
++++ fbdesk-1.4.1/src/main.cc	2008-03-31 23:37:12.000000000 -0400
+@@ -23,6 +23,8 @@
+ #include "FbDesk.hh"
+ #include "version.h"
+ 
++#include <cstdlib>
++#include <cstring>
+ #include <iostream>
+ #include <stdexcept>
+ #include <signal.h>
+diff -up fbdesk-1.4.1/src/FbDesk.cc.gcc43 fbdesk-1.4.1/src/FbDesk.cc
+--- fbdesk-1.4.1/src/FbDesk.cc.gcc43	2008-03-31 23:36:06.000000000 -0400
++++ fbdesk-1.4.1/src/FbDesk.cc	2008-03-31 23:36:32.000000000 -0400
+@@ -39,6 +39,7 @@
+ #include <algorithm>
+ #include <unistd.h>
+ #include <cstdio>
++#include <cstring>
+ 
+ using namespace std;
+ using namespace FbTk;
+diff -up fbdesk-1.4.1/src/FbTk/KeyUtil.cc.gcc43 fbdesk-1.4.1/src/FbTk/KeyUtil.cc
+--- fbdesk-1.4.1/src/FbTk/KeyUtil.cc.gcc43	2008-03-31 23:34:03.000000000 -0400
++++ fbdesk-1.4.1/src/FbTk/KeyUtil.cc	2008-03-31 23:34:13.000000000 -0400
+@@ -24,6 +24,7 @@
+ #include "KeyUtil.hh"
+ #include "App.hh"
+ 
++#include <cstring>
+ #include <string>
+ 
+ namespace {
+diff -up fbdesk-1.4.1/src/FbTk/ThemeItems.cc.gcc43 fbdesk-1.4.1/src/FbTk/ThemeItems.cc
+--- fbdesk-1.4.1/src/FbTk/ThemeItems.cc.gcc43	2008-03-31 23:34:33.000000000 -0400
++++ fbdesk-1.4.1/src/FbTk/ThemeItems.cc	2008-03-31 23:34:59.000000000 -0400
+@@ -39,6 +39,8 @@
+ #include "Image.hh"
+ #include "StringUtil.hh"
+ 
++#include <cstdlib>
++#include <cstring>
+ #include <string>
+ #ifdef HAVE_CSTDIO
+   #include <cstdio>
+diff -up fbdesk-1.4.1/src/FbTk/FbPixmap.cc.gcc43 fbdesk-1.4.1/src/FbTk/FbPixmap.cc
+--- fbdesk-1.4.1/src/FbTk/FbPixmap.cc.gcc43	2008-03-31 23:32:29.000000000 -0400
++++ fbdesk-1.4.1/src/FbTk/FbPixmap.cc	2008-03-31 23:32:45.000000000 -0400
+@@ -30,6 +30,7 @@
+ #include <X11/Xatom.h>
+ #include <iostream>
+ #include <string>
++#include <cstring>
+ 
+ using namespace std;
+ 
+diff -up fbdesk-1.4.1/src/FbTk/Theme.cc.gcc43 fbdesk-1.4.1/src/FbTk/Theme.cc
+--- fbdesk-1.4.1/src/FbTk/Theme.cc.gcc43	2008-03-31 23:30:11.000000000 -0400
++++ fbdesk-1.4.1/src/FbTk/Theme.cc	2008-03-31 23:31:24.000000000 -0400
+@@ -29,6 +29,7 @@
+ #include "FileUtil.hh"
+ #include "Image.hh"
+ 
++#include <algorithm>
+ #ifdef HAVE_CSTDIO
+   #include <cstdio>
+ #else
+diff -up fbdesk-1.4.1/src/FbTk/TextBox.cc.gcc43 fbdesk-1.4.1/src/FbTk/TextBox.cc
+--- fbdesk-1.4.1/src/FbTk/TextBox.cc.gcc43	2008-03-31 23:33:15.000000000 -0400
++++ fbdesk-1.4.1/src/FbTk/TextBox.cc	2008-03-31 23:33:27.000000000 -0400
+@@ -27,6 +27,7 @@
+ #include "App.hh"
+ #include "KeyUtil.hh"
+ 
++#include <cstdlib>
+ #ifdef HAVE_CCTYPE
+   #include <cctype>
+ #else
+diff -up fbdesk-1.4.1/src/FbTk/XFontImp.cc.gcc43 fbdesk-1.4.1/src/FbTk/XFontImp.cc
+--- fbdesk-1.4.1/src/FbTk/XFontImp.cc.gcc43	2006-03-25 06:53:47.000000000 -0500
++++ fbdesk-1.4.1/src/FbTk/XFontImp.cc	2008-03-31 23:26:33.000000000 -0400
+@@ -28,6 +28,7 @@
+ 
+ #include <X11/Xutil.h>
+ 
++#include <cstdlib>
+ #include <iostream>
+ #include <new>
+ #ifdef HAVE_CSTDIO
+diff -up fbdesk-1.4.1/src/FbTk/StringUtil.cc.gcc43 fbdesk-1.4.1/src/FbTk/StringUtil.cc
+--- fbdesk-1.4.1/src/FbTk/StringUtil.cc.gcc43	2008-03-31 23:31:48.000000000 -0400
++++ fbdesk-1.4.1/src/FbTk/StringUtil.cc	2008-03-31 23:32:07.000000000 -0400
+@@ -49,6 +49,7 @@
+ #include <memory>
+ #include <algorithm>
+ #include <string>
++#include <cstring>
+ 
+ using std::string;
+ using std::transform;
+diff -up fbdesk-1.4.1/src/FbTk/TextureRender.cc.gcc43 fbdesk-1.4.1/src/FbTk/TextureRender.cc
+--- fbdesk-1.4.1/src/FbTk/TextureRender.cc.gcc43	2008-03-31 23:27:43.000000000 -0400
++++ fbdesk-1.4.1/src/FbTk/TextureRender.cc	2008-03-31 23:29:41.000000000 -0400
+@@ -31,6 +31,7 @@
+ #include "FbPixmap.hh"
+ #include "GContext.hh"
+ 
++#include <cstring>
+ #include <iostream>
+ #include <string>
+ #ifdef HAVE_CSTDIO

@@ -1,0 +1,13 @@
+2013-04-12 Brian Bidulock <bidulock@openss7.org>
+
+	* 1.4.1-2 :
+	rewrote PKGBUILD to support makepkg 4.1.0
+	add --disable-png to ./configure because it is a part
+	of FbTk that is not used by fbdesk anyway.
+
+	* options.patch :
+	patches options processing in src/main.cc
+	original author could not count!
+
+	* ChangeLog :
+	added changelog

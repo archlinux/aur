@@ -1,0 +1,21 @@
+pkgbase = fbdesk
+	pkgdesc = Fluxbox Utility for creating and managing Icons on a Fluxbox Desktop
+	pkgver = 1.4.1
+	pkgrel = 3
+	url = http://fluxbox.org/fbdesk/
+	changelog = ChangeLog
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxft
+	depends = imlib2
+	depends = libxpm
+	source = http://fluxbox.sourceforge.net/download/fbdesk-1.4.1.tar.gz
+	source = fbdesk-1.4.1-gcc43.patch
+	source = fbdesk-1.4.1-options.patch
+	md5sums = b65136d2d52524492c8a5bc233b7f34b
+	md5sums = 6c0730137cb50185d4c6d88f69553d2d
+	md5sums = 7cc0f132b43dd7fcdf9daac798eb7275
+
+pkgname = fbdesk
+

@@ -1,0 +1,16 @@
+diff -purN fbdesk-1.4.1.patched/src/main.cc fbdesk-1.4.1/src/main.cc
+--- fbdesk-1.4.1.patched/src/main.cc	2013-04-12 02:35:49.000000000 -0600
++++ fbdesk-1.4.1/src/main.cc	2013-04-12 02:36:37.000000000 -0600
+@@ -70,10 +70,10 @@ int main(int argc, char **argv) try {
+     // determine arguments
+     for (int i=1; i<argc; ++i) {
+         if (strcmp("-display", argv[i]) == 0 && // display connection
+-            i + 1 < argc) {
++            i + 1 <= argc) {
+             displaystr = argv[++i];
+         } else if (strcmp("-rc", argv[i]) == 0 && // resource file
+-                   i + 1 < argc) {
++                   i + 1 <= argc) {
+             resource_filename = argv[++i];
+         } if (strcmp("-v", argv[i]) == 0) {
+             cout<<"FbDesk "<<FBDESK_VERSION<<" Copyright (c) 2003-2006 Henrik Kinnunen"<<endl;
