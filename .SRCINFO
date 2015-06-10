@@ -1,0 +1,16 @@
+pkgbase = octave-specfun
+	pkgdesc = Special functions including ellipitic functions, etc
+	pkgver = 1.1.0
+	pkgrel = 3
+	url = http://octave.sourceforge.net/specfun/
+	install = octave-specfun.install
+	arch = any
+	groups = octave-forge
+	license = custom
+	depends = octave>=3.4.0
+	noextract = specfun-1.1.0.tar.gz
+	source = http://downloads.sourceforge.net/octave/specfun-1.1.0.tar.gz
+	md5sums = eef8c1ff37b05d5e3388ecedc045d53a
+
+pkgname = octave-specfun
+
