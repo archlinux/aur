@@ -1,0 +1,16 @@
+pkgbase = python2-bdflib
+	pkgdesc = A Python library for reading, writing and modifying bitmap fonts in BDF format
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://gitorious.org/bdflib
+	arch = any
+	license = GPL2
+	depends = python2
+	provides = bdflib-git
+	conflicts = bdflib-git
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/b/bdflib/bdflib-v1.0.0.tar.gz
+	md5sums = 0de53859b2420e51169c349657f2ee97
+
+pkgname = python2-bdflib
+
