@@ -1,0 +1,13 @@
+pkgbase = python2-requesocks
+	pkgdesc = Python HTTP for Humans, with socks proxy support
+	pkgver = 0.10.8
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/requesocks
+	arch = any
+	license = ISC
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://pypi.python.org/packages/source/r/requesocks/requesocks-0.10.8.tar.gz
+
+pkgname = python2-requesocks
+
