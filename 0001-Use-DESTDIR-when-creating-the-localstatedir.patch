@@ -1,0 +1,22 @@
+From 00437de0d3b943ef959ad638eb54908145c0d272 Mon Sep 17 00:00:00 2001
+From: Mike Swanson <mikeonthecomputer@gmail.com>
+Date: Tue, 9 Jun 2015 22:10:06 -0700
+Subject: [PATCH] Use DESTDIR when creating the localstatedir
+
+---
+ Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 3ee2380..ac93353 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -2,4 +2,4 @@ SUBDIRS = src
+ sysconf_DATA = swapspace.conf
+ 
+ install-data-local:
+-	$(MKDIR_P) $(localstatedir)/lib/swapspace
++	$(MKDIR_P) $(DESTDIR)/$(localstatedir)/lib/swapspace
+-- 
+2.4.2
+

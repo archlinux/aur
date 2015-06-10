@@ -1,18 +1,17 @@
 pkgbase = swapspace
 	pkgdesc = A dynamic swap manager
-	pkgver = 1.10
-	pkgrel = 5
-	url = http://pqxx.org/development/swapspace
+	pkgver = 1.12
+	pkgrel = 1
+	url = https://github.com/Tookmund/Swapspace
 	arch = i686
 	arch = x86_64
 	license = GPL
-	options = !buildflags
 	backup = etc/swapspace.conf
-	source = http://pqxx.org/download/software/swapspace/swapspace-1.10.tar.gz
-	source = Makefile.patch
+	source = https://github.com/Tookmund/Swapspace/archive/v1.12.tar.gz
+	source = 0001-Use-DESTDIR-when-creating-the-localstatedir.patch
 	source = swapspace.service
-	sha256sums = 37256d6759be5cefbb50afbeba8bb0f159b3488aecd972898fcc6f4d5e6a3573
-	sha256sums = 7f23fee1563ae1730cd89a3e3994a610d032a53c147178b3b0c9d9b62dfd233a
+	sha256sums = a9b594c4ef8d8e4750087eb8e7e8b757cb1962ec3ad7ca155676de7143f7ffd1
+	sha256sums = 20c25de6f08b1f4ea892177bc87ba3343f58db1897bdcbd5dfcd470f919dd57a
 	sha256sums = b829b4f4976c715238702da9b5fcebe3cf4f167c761d9a93347610c1d251ba70
 
 pkgname = swapspace
