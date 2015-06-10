@@ -1,0 +1,25 @@
+pkgbase = gnome-video-arcade
+	pkgdesc = Simple GTK3 MAME front-end wich supports both XMAME and SDLMAME.
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = http://live.gnome.org/GnomeVideoArcade
+	install = gnome-video-arcade.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = pkgconfig
+	makedepends = gnome-doc-utils
+	depends = dconf
+	depends = dbus
+	depends = gtk3
+	depends = libwnck3
+	depends = gstreamer0.10-base-plugins
+	depends = hicolor-icon-theme
+	depends = sdlmame
+	depends = sqlite3
+	source = http://ftp.gnome.org/pub/GNOME/sources/gnome-video-arcade/0.8/gnome-video-arcade-0.8.3.tar.xz
+	sha1sums = d2e658f8e409d30229c79e905d2168eecd1a1bb6
+
+pkgname = gnome-video-arcade
+
