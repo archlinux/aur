@@ -1,0 +1,14 @@
+pkgbase = rtptools
+	pkgdesc = Number of small applications that can be used for processing RTP data.
+	pkgver = 1.20
+	pkgrel = 3
+	url = http://www.cs.columbia.edu/IRT/software/rtptools/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glibc
+	source = http://www.cs.columbia.edu/IRT/software/rtptools/download/rtptools-1.20.tar.gz
+	sha256sums = 99d681f6e328486fa1fc16581b0a5974e31eb2708101683ee9c8a0b6bed31050
+
+pkgname = rtptools
+
