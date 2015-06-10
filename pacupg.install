@@ -1,0 +1,9 @@
+post_install() {
+    echo "-> ATTENTION"
+    echo "-> If you have not already, you MUST setup a snapper config." 
+    echo "-> You can do this by executing $(tput bold)snapper create-config /$(tput sgr0)"
+    echo "-> You should then edit $(tput bold)/etc/snapper/configs/root$(tput sgr0) to your liking." 
+    echo "-> It is also recommended that you start the snapper cleanup service $(tput bold)sudo systemctl start snapper-cleanup.timer && sudo systemctl enable snapper-cleanup.timer$(tput sgr0)"
+    echo "-> More information can be found on the Arch Wiki page for snapper: https://wiki.archlinux.org/index.php/Snapper"
+    echo -e "\n\n-> Additionally, if you plan on using this script with grub-btrfs, you should make your grub directory a subvolume so it isn't reverted when you undo snapshots"
+}

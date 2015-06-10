@@ -1,0 +1,22 @@
+pkgbase = pacupg
+	pkgdesc = Script that wraps package and AUR upgrades in btrfs snapshots and provides an easy way to roll them back
+	pkgver = r254.f2a7e5c
+	pkgrel = 1
+	url = https://github.com/crossroads1112/bin/tree/master/pacupg
+	install = pacupg.install
+	arch = any
+	license = GPL
+	depends = pacman
+	depends = bash
+	depends = package-query
+	depends = rsync
+	depends = snapper
+	depends = btrfs-progs
+	depends = coreutils
+	optdepends = pacaur: AUR support
+	optdepends = grub-btrfs: Add btrfs snapshots to grub menu
+	source = git+https://github.com/crossroads1112/bin.git
+	md5sums = SKIP
+
+pkgname = pacupg
+
