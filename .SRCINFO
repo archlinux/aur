@@ -1,0 +1,16 @@
+pkgbase = perl-gtk2-ex-splash
+	pkgdesc = Gtk2::Ex::Splash -- toplevel splash widget
+	pkgver = 52
+	pkgrel = 1
+	url = https://metacpan.org/release/Gtk2-Ex-Splash
+	arch = any
+	license = LGPL
+	license = Perl
+	checkdepends = perl-devel-findref
+	depends = gtk2-perl
+	options = !emptydirs
+	source = http://cpan.metacpan.org/authors/id/K/KR/KRYDE/Gtk2-Ex-Splash-52.tar.gz
+	md5sums = 47a0d0a4c5407f180d2f11eb77b1b614
+
+pkgname = perl-gtk2-ex-splash
+
