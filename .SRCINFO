@@ -1,0 +1,16 @@
+pkgbase = octave-plot
+	pkgdesc = Additional ploting tools for Octave.
+	pkgver = 1.1.0
+	pkgrel = 2
+	url = http://octave.sourceforge.net/plot/
+	install = octave-plot.install
+	arch = any
+	groups = octave-forge
+	license = GPL
+	depends = octave>=3.2
+	noextract = plot-1.1.0.tar.gz
+	source = http://downloads.sourceforge.net/octave/plot-1.1.0.tar.gz
+	md5sums = 2e75d4c9d880bf82e851963218bee96d
+
+pkgname = octave-plot
+
