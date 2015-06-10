@@ -1,0 +1,20 @@
+pkgbase = lxkb_config-git
+	pkgdesc = A keyboard configuration application for LXDE
+	pkgver = r153.cec6ebd
+	pkgrel = 1
+	url = http://lxde.org/
+	arch = i686
+	arch = x86_64
+	groups = lxde
+	license = GPL
+	makedepends = git
+	makedepends = intltool
+	depends = gtk2
+	provides = lxkb_config
+	conflicts = lxkb_config
+	options = !emptydirs
+	source = lxkb_config-git::git://lxde.git.sourceforge.net/gitroot/lxde/lxkb_config
+	md5sums = SKIP
+
+pkgname = lxkb_config-git
+
