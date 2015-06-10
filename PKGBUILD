@@ -1,0 +1,39 @@
+# Maintainer: Alexander Rødseth <rodseth@gmail.com>
+# Contributor: Daniel Micay <danielmicay@gmail.com>
+
+pkgname=android-ndk
+pkgver=r10d
+pkgrel=3
+pkgdesc='Android C/C++ developer kit'
+arch=('x86_64' 'i686')
+url='http://developer.android.com/sdk/ndk/'
+license=('GPL' 'LGPL' 'custom')
+options=('!strip' 'staticlibs')
+backup=('etc/profile.d/android-ndk.sh')
+install="$pkgname.install"
+provides=('android-ndk')
+replaces=('android-ndk32' 'android-ndk64')
+source_x86_64=("${pkgname}_x86_64.bin::http://dl.google.com/android/ndk/${pkgname}-$pkgver-linux-x86_64.bin" 'android-ndk.sh')
+source_i686=("${pkgname}_i686.bin::http://dl.google.com/android/ndk/${pkgname}-$pkgver-linux-x86.bin" 'android-ndk.sh')
+md5sums_x86_64=('263b83071e6bca15f67898548d8d236e'
+         '372f74400bfa061642c4b4175f2ddb48')
+md5sums_i686=('70ed6d8c34e7e620c145b791e8eeef89'
+         '372f74400bfa061642c4b4175f2ddb48')
+
+prepare() {
+  chmod +x ${pkgname}_$CARCH.bin
+  ./${pkgname}_$CARCH.bin
+}
+
+package() {
+  install -d "$pkgdir/opt"
+  mv "$pkgname-$pkgver" "$pkgdir/opt/$pkgname"
+
+  install -Dm755 android-ndk.sh "$pkgdir/etc/profile.d/android-ndk.sh"
+
+  # Fix broken permissions
+  chmod -R o=g "$pkgdir/opt/$pkgname"
+  find "$pkgdir/opt/$pkgname" -perm 744 -exec chmod 755 {} +
+}
+
+# vim:set ts=2 sw=2 et:
