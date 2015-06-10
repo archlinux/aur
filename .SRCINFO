@@ -1,0 +1,21 @@
+pkgbase = copyq-git
+	pkgdesc = Clipboard manager with searchable and editable history.
+	pkgver = 20140202
+	pkgrel = 1
+	url = https://github.com/hluk/CopyQ
+	install = copyq.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = qt4
+	depends = libxtst
+	optdepends = copyq-plugin-itemweb-git
+	provides = copyq
+	conflicts = copyq
+	source = copyq-git::git+https://github.com/hluk/CopyQ.git
+	md5sums = SKIP
+
+pkgname = copyq-git
+
