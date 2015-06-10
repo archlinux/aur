@@ -1,0 +1,13 @@
+diff -up working/Makefile.orig working/Makefile
+diff -up working/src/glass.h.orig working/src/glass.h
+--- working/src/glass.h.orig	2015-01-07 18:50:25.000000000 -0700
++++ working/src/glass.h	2015-01-07 18:44:58.000000000 -0700
+@@ -10,6 +10,7 @@
+ 
+ #include "point.h"
+ 
++#include <unistd.h>
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <string.h>
+diff -up working/src/windowmanager.h.orig working/src/windowmanager.h

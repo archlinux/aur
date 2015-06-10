@@ -1,0 +1,19 @@
+pkgbase = glasswm
+	pkgdesc = Small windowmanager forked from aewm++
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/RiJo/glass
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = gendesk>=0.6
+	makedepends = git
+	depends = gcc-libs
+	depends = libxext
+	source = glasswm::git+https://github.com/RiJo/glass.git
+	source = build.patch
+	md5sums = SKIP
+	md5sums = a9373dcb2b18869b3088f5ce3fae4b4e
+
+pkgname = glasswm
+
