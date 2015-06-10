@@ -1,0 +1,13 @@
+pkgbase = chaloult
+	pkgdesc = Chaloult condensé Truetype fonts.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.calq.gouv.qc.ca/normes/organismes.htm#modeles
+	install = ttf.install
+	arch = any
+	license = custom
+	source = http://www.calq.gouv.qc.ca/normes/pc/Chaloult_pc.zip
+	md5sums = 69a2a3d0f08fabdfd27efb63e5d35a25
+
+pkgname = chaloult
+
