@@ -1,0 +1,17 @@
+pkgbase = 8play
+	pkgdesc = An unofficial command-line player for 8tracks.com
+	pkgver = 2
+	pkgrel = 1
+	url = https://github.com/jgmp/8play
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = curl
+	depends = json-c
+	depends = ffmpeg
+	depends = sdl
+	source = https://github.com/jgmp/archive/raw/master/8play-2.tar.gz
+	md5sums = 0c851a8fe47382d066cdb22b68cd64e2
+
+pkgname = 8play
+
