@@ -1,0 +1,25 @@
+pkgbase = ib-tws
+	pkgdesc = Electronic trading platform from discount brokerage firm Interactive Brokers
+	pkgver = 949.3e
+	pkgrel = 1
+	url = http://interactivebrokers.com/
+	arch = any
+	license = custom
+	makedepends = imagemagick
+	depends = java-environment
+	depends = bash
+	source = LICENSE
+	source = ib-tws
+	source = ib-tws.desktop
+	source = ib-gw
+	source = ib-gw.desktop
+	source = http://download2.interactivebrokers.com/download/unixmacosx_latest.jar
+	md5sums = e1cae2de592add7133bb08123e8db1ad
+	md5sums = c407d22dfafdb33ec2fe97eeb5e9f0aa
+	md5sums = 9205b5eade96d69f8e470cc52c30db4a
+	md5sums = c95eeb41fec3aae6ad5e82703a39060c
+	md5sums = ffa9fcfb623850e5c9e796040bdbd052
+	md5sums = 0d34d5f35335523c3833cb06623d06ce
+
+pkgname = ib-tws
+
