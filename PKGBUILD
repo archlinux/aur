@@ -34,10 +34,8 @@ package() {
     cd "$_gitname"
     make DESTDIR="$pkgdir" install
 
-    install -D -d doc/sample-config "$pkgdir/etc/tinc/"
-
-    sed 's,#!/usr/bin/env python,#!/usr/bin/env python2,' $pkgdir/usr/bin/tinc-gui > $pkgdir/usr/bin/tinc-gui2
-    install -D -m755 "$pkgdir/usr/bin/tinc-gui2" "$pkgdir/usr/bin/tinc-gui"
+    # tinc-gui is a python2 application, and horribly outdated
+    sed 's,#!/usr/bin/env python,#!/usr/bin/env python2,' $pkgdir/usr/bin/tinc-gui > $pkgdir/usr/bin/tinc-gui
 
     install -D -m644 "$srcdir/tinc@.service" "$pkgdir/usr/lib/systemd/system/tinc@.service"
 }
