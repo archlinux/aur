@@ -1,0 +1,13 @@
+update_icon_cache() {
+	gtk-update-icon-cache usr/share/icons/hicolor
+	gtk-update-icon-cache usr/share/icons/FVWM_Xdg
+}
+post_install() {
+	update_icon_cache
+}
+post_upgrade() {
+	update_icon_cache
+}
+post_remove() {
+	update_icon_cache
+}
