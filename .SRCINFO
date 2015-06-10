@@ -1,0 +1,15 @@
+pkgbase = perl-math-libm
+	pkgdesc = Math::Libm - Perl extension for the C math library, libm
+	pkgver = 1.00
+	pkgrel = 1
+	url = https://metacpan.org/release/Math-Libm/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DS/DSLEWART/Math-Libm-1.00.tar.gz
+	md5sums = 26a4ce8fe507d04c7d40b9eadac428ae
+
+pkgname = perl-math-libm
+
