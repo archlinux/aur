@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Icon=/usr/share/pixmaps/torchlight2-hib.png
+Exec=/usr/bin/torchlight2-hib
+Terminal=false
+StartupNotify=false
+
+Name=Torchlight 2
+Comment=An action RPG dungeon crawler
+
+Categories=Game;

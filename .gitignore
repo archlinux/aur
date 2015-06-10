@@ -1,0 +1,6 @@
+/extract/
+*.swp
+Torchlight2-linux-*.sh
+*.tar
+*.tar.xz
+*.tar.gz

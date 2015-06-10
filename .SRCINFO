@@ -1,0 +1,31 @@
+pkgbase = torchlight2-hib
+	pkgdesc = An action RPG dungeon crawler
+	pkgver = 20150401
+	pkgrel = 1
+	url = http://www.torchlight2game.com/
+	arch = i686
+	arch = x86_64
+	license = custom:commercial
+	depends = bzip2
+	depends = fmodex
+	depends = freeimage
+	depends = freetype2
+	depends = gcc-libs
+	depends = glibc
+	depends = libgl
+	depends = libutil-linux
+	depends = libx11
+	depends = libxau
+	depends = libxdmcp
+	depends = libxext
+	depends = libxft
+	depends = sdl2
+	depends = zlib
+	options = !strip
+	source = torchlight2-hib.desktop
+	source = Torchlight2-linux-2015-04-01.sh::hib://Torchlight2-linux-2015-04-01.sh
+	sha256sums = 9c6690eb23404539da0f3960811f5dd035a4b579b3d5e98780edf10be9860970
+	sha256sums = c469f4144ac0c253d68ba294a68747bff70cf6bfcff7193890ebb755a653db0d
+
+pkgname = torchlight2-hib
+
