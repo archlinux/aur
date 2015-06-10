@@ -1,0 +1,14 @@
+pkgbase = ski
+	pkgdesc = Ski game for the console
+	pkgver = 6.9
+	pkgrel = 1
+	url = http://www.catb.org/esr/ski/
+	arch = any
+	license = GPL
+	depends = python2
+	options = zipman
+	source = http://www.catb.org/esr/ski/ski-6.9.tar.gz
+	md5sums = 6ccf2ebcc74d75d7d434cb22875f4032
+
+pkgname = ski
+
