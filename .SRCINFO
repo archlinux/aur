@@ -1,0 +1,17 @@
+pkgbase = marave-svn
+	pkgdesc = A relaxed text editor
+	pkgver = 469
+	pkgrel = 2
+	url = http://marave.googlecode.com
+	arch = any
+	license = GPL
+	makedepends = svn
+	depends = python2
+	depends = python2-pyqt4
+	optdepends = kdebindings-python
+	optdepends = python-pyenchant
+	provides = marave
+	conflicts = marave
+
+pkgname = marave-svn
+
