@@ -1,0 +1,21 @@
+pkgbase = perl-net-pcap
+	pkgdesc = Perl/CPAN Module Net::Pcap
+	pkgver = 0.17
+	pkgrel = 4
+	url = https://metacpan.org/release/Net-Pcap
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = libpcap
+	options = !emptydirs
+	source = http://cpan.metacpan.org/authors/id/S/SA/SAPER/Net-Pcap-0.17.tar.gz
+	source = makefile.patch
+	source = listdatalinks.patch
+	md5sums = fbe911ba5f57d5ba43494434ffb828a0
+	md5sums = 5e96f92128b562f66ba092d23700f6c1
+	md5sums = c6781cc15f79672b91fe3be96cb43c3d
+
+pkgname = perl-net-pcap
+
