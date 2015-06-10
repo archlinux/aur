@@ -1,0 +1,14 @@
+pkgbase = tear-pages
+	pkgdesc = Simple script to remove the first page of a PDF
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/sciunto/tear-pages
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pypdf2
+	source = http://source.sciunto.org/tear-pages/tear-pages-0.2.tar.bz2
+
+pkgname = tear-pages
+
