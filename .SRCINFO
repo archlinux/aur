@@ -1,0 +1,16 @@
+pkgbase = quartz
+	pkgdesc = A richly featured, open source job scheduling library that can be integrated within virtually any Java application
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = http://www.quartz-scheduler.org/
+	arch = any
+	license = APACHE
+	depends = java-environment
+	depends = log4j
+	depends = slf4j
+	options = !strip
+	source = http://d2zwv9pap9ylyd.cloudfront.net/quartz-2.2.1-distribution.tar.gz
+	md5sums = 24d02d71a27ada1e41b2df822277d268
+
+pkgname = quartz
+
