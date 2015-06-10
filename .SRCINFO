@@ -1,0 +1,16 @@
+pkgbase = arxiv2bib
+	pkgdesc = Get a BibTeX entry from an arXiv id number
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = http://nathangrigg.github.io/arxiv2bib/
+	arch = any
+	license = BSD
+	checkdepends = python-nose
+	checkdepends = python-mock
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/nathangrigg/arxiv2bib/archive/1.0.5.tar.gz
+	md5sums = 63568d0d4a0e78b8851588662b4eddde
+
+pkgname = arxiv2bib
+
