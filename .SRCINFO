@@ -1,0 +1,14 @@
+pkgbase = libdbf
+	pkgdesc = Library for accessing the content of dBASE III, IV, and 5.0 files
+	pkgver = 0.0.2
+	pkgrel = 2
+	url = http://dbf.berlios.de
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = intltool
+	source = https://github.com/quentindemetz/libdbf/archive/0.0.2.tar.gz
+	md5sums = ebf9069074f282721947e5e3261f4bfb
+
+pkgname = libdbf
+
