@@ -1,0 +1,21 @@
+pkgbase = poclbm-git
+	pkgdesc = PyOpenCL bitcoin miner
+	pkgver = 20120920.55.g2ae15b7
+	pkgrel = 1
+	url = https://github.com/m0mchil/poclbm
+	arch = any
+	license = custom:public domain
+	makedepends = git
+	depends = python2
+	depends = python2-pyopencl
+	depends = python2-pyserial
+	depends = python2-numpy
+	provides = poclbm
+	conflicts = poclbm
+	source = poclbm.sh
+	source = poclbm::git://github.com/m0mchil/poclbm.git
+	sha256sums = da1cb0f2520882fb6a4af2209fabf06008359712e5d04812d2c77c697601c9f0
+	sha256sums = SKIP
+
+pkgname = poclbm-git
+
