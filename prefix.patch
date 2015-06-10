@@ -1,0 +1,17 @@
+--- makefile	2014-12-23 12:37:36.000000000 +0100
++++ makefile	2014-12-25 22:34:08.879777998 +0100
+@@ -37,10 +37,10 @@
+ version := $(shell $(srcdir)/version.sh $(srcdir))
+ VPATH	= $(srcdir)
+ 
+-prefix	= /usr/local
+-sbindir	= $(prefix)/sbin
+-mandir	= $(prefix)/man
+-man8dir	= $(mandir)/man8
++prefix	?= /usr/local
++sbindir	?= $(prefix)/sbin
++mandir	?= $(prefix)/man
++man8dir	?= $(mandir)/man8
+ 
+ all: $(PRG)
+ 
