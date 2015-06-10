@@ -1,0 +1,13 @@
+pkgbase = perl-file-blarf
+	pkgdesc = Perl/CPAN Module File::Blarf - Simple reading and writing of files
+	pkgver = 0.12
+	pkgrel = 1
+	url = https://metacpan.org/release/File-Blarf
+	arch = any
+	license = PerlArtistic
+	options = !emptydirs
+	source = http://cpan.metacpan.org/authors/id/T/TE/TEX/File-Blarf-0.12.tar.gz
+	md5sums = acf4abb13fdc033d888c61b5d101bad6
+
+pkgname = perl-file-blarf
+
