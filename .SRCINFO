@@ -1,0 +1,15 @@
+pkgbase = hachoir-urwid
+	pkgdesc = User interface based on hachoir-parser to explore a binary file.
+	pkgver = 1.1
+	pkgrel = 4
+	url = http://bitbucket.org/haypo/hachoir/wiki/hachoir-regex
+	arch = any
+	license = GPL2
+	depends = hachoir-core
+	depends = hachoir-parser
+	depends = python2-urwid
+	source = http://cheeseshop.python.org/packages/source/h/hachoir-urwid/hachoir-urwid-1.1.tar.gz
+	md5sums = 71957e421578168093fd6ba1f0e64e34
+
+pkgname = hachoir-urwid
+
