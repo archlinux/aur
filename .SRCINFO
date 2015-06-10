@@ -1,0 +1,18 @@
+pkgbase = vim-railscasts
+	pkgdesc = railscasts color theme that works in 256color terminals as well as gui
+	pkgver = 1.1
+	pkgrel = 2
+	url = http://www.vim.org/scripts/script.php?script_id=2175
+	install = vimdoc.install
+	arch = i686
+	arch = x86_64
+	groups = vim-plugins
+	license = custom
+	depends = vim
+	source = vim-railscasts::http://www.vim.org/scripts/download_script.php?src_id=8379
+	source = license.txt
+	md5sums = 262b9a7bd797b0c7cef344262e6a33ab
+	md5sums = efbd5986e691ce8c876fb86e8f5961ea
+
+pkgname = vim-railscasts
+
