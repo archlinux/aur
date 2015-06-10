@@ -1,0 +1,19 @@
+pkgbase = python2-liblarch-git
+	pkgdesc = Python library to easily handle data structure, with a GTK binding
+	pkgver = v0.1.r90.g0e5ff7e
+	pkgrel = 1
+	url = https://live.gnome.org/liblarch
+	arch = any
+	license = LGPL3
+	checkdepends = python2-nose
+	makedepends = git
+	makedepends = python2
+	makedepends = python2-distribute
+	depends = python2
+	provides = python2-liblarch
+	conflicts = python2-liblarch
+	source = git://github.com/liblarch/liblarch.git
+	md5sums = SKIP
+
+pkgname = python2-liblarch-git
+
