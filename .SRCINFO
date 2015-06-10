@@ -1,0 +1,63 @@
+pkgbase = networkmanager-git
+	pkgdesc = Network Management daemon
+	pkgver = 1.1.0.r12290.g5eba53c
+	pkgrel = 1
+	url = http://www.gnome.org/projects/NetworkManager
+	install = networkmanager-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	checkdepends = libx11
+	checkdepends = python-gobject
+	checkdepends = python-dbus
+	makedepends = dhclient
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	makedepends = intltool
+	makedepends = iptables
+	makedepends = modemmanager
+	makedepends = ppp=2.4.7
+	makedepends = rp-pppoe
+	makedepends = vala
+	depends = dbus-glib
+	depends = libmm-glib
+	depends = libndp
+	depends = libnewt
+	depends = libnl
+	depends = libsoup
+	depends = libteam
+	depends = libutil-linux
+	depends = nss
+	depends = polkit
+	depends = wpa_supplicant
+	optdepends = dhclient: DHCPv6 support
+	optdepends = dnsmasq: connection sharing
+	optdepends = bluez: Bluetooth support
+	optdepends = openresolv: resolvconf support
+	optdepends = ppp: dialup connection support
+	optdepends = rp-pppoe: ADSL support
+	optdepends = modemmanager: cellular network support
+	provides = networkmanager=1.1.0.r12290.g5eba53c
+	provides = libnm-glib=1.1.0.r12290.g5eba53c
+	conflicts = networkmanager
+	conflicts = libnm-glib
+	options = !emptydirs
+	options = !libtool
+	backup = etc/NetworkManager/NetworkManager.conf
+	source = networkmanager-git::git://anongit.freedesktop.org/NetworkManager/NetworkManager
+	source = git://git.gnome.org/libgsystem
+	source = NetworkManager.conf
+	source = disable_set_hostname.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 759db295ddae7a6dc6b29211fc0ec08695f875584d456dd146d3679e2c33e2e3
+	sha256sums = 689e6702297a4cccfed660cb27d87accde86e89875b1f35f29ce0b6400baf1c4
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = e7bb02132503f8c5d021ac0354f156c7775c35ea6590eb48143e7ff61b1b0b6507c3d9679c69d2315eb0e15c8805d41c2f6cbef2370058b34fc8eefc0f471bc3
+	sha512sums = 587c1183a1dc94af4f6926a1de97e07422cb0d50f45b31a2405123df4629ad4412e7ada583c66c9d88f67e58f2559c3b80909960f1bd0a00d9adbcf5255b73af
+
+pkgname = networkmanager-git
+
