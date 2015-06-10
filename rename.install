@@ -1,0 +1,5 @@
+## arg 1:  the new package version
+post_install() {
+  echo binary is renamed to renamexm to avoid conflicts with util-linux-ng
+}
+# vim:set ts=2 sw=2 et:

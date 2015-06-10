@@ -1,0 +1,12 @@
+diff -Naur rename-1.3_old/rename.c rename-1.3/rename.c
+--- rename-1.3_old/rename.c	2009-10-18 18:13:58.000000000 +0200
++++ rename-1.3/rename.c	2009-10-18 17:56:54.000000000 +0200
+@@ -65,7 +65,7 @@
+ 
+ #if HAVE_REGEX_H
+   #include <regex.h>
+-#elif
++#else
+   #include "regex.h"
+ #endif
+ 
