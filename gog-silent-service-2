@@ -1,0 +1,12 @@
+#!/usr/bin/bash
+gogdir="/opt/gog/silent-service-2"
+homedir="$HOME/.gog/silent-service-2"
+mkdir -p "$homedir"/{game,config/data}
+
+if [[ ! -e "$homedir/config/dosboxSilentService.conf" ]]; then
+  cp "$gogdir/dosboxSilentService.conf" "$homedir/config/dosboxSilentService.conf"
+fi
+
+unionfs "$homedir/config=RW:$gogdir=RO" "$homedir/game"
+"$homedir"/game/start.sh
+fusermount -u "$homedir/game" 
