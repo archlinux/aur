@@ -26,7 +26,7 @@ prepare() {
 }
 
 package_key-logic() {
-    optdepends=("$pkgbase-examples")
+    optdepends=("$pkgbase-examples: for example proofs")
     depends+=("$pkgbase-ext")
     install -Dm755 de/uka/ilkd/key/util/install/startProver_linux \
         $pkgdir/usr/bin/$pkgbase

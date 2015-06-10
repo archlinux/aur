@@ -12,7 +12,7 @@ pkgbase = key-logic
 pkgname = key-logic
 	depends = jdk
 	depends = key-logic-ext
-	optdepends = key-logic-examples
+	optdepends = key-logic-examples: for example proofs
 
 pkgname = key-logic-examples
 	pkgdesc = Example proofs for KeY
