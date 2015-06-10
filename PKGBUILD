@@ -1,7 +1,5 @@
 # Maintainer: Ben Alex <ben.alex@acegi.com.au>
 
-# See https://github.com/benalexau/libstatsd-cpp-aur for AUR PKGBUILD history
-
 pkgname=libstatsd-cpp
 pkgver=0.0.2
 pkgrel=1
