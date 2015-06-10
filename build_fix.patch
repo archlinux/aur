@@ -1,0 +1,111 @@
+diff --git a/src/configure/makefile.in b/src/configure/makefile.in
+index 2a001e7..781c87f 100644
+--- a/src/configure/makefile.in
++++ b/src/configure/makefile.in
+@@ -4,7 +4,7 @@ PROF	= -g -O
+ OBJDIR  = obj
+ VPATH   = .:obj
+ NOCRYPT	=
+-C_FLAGS = -Wall $(PROF) $(NOCRYPT)
++C_FLAGS = -Wall -Wno-write-strings -Wnarrowing -Wno-unused -fpermissive $(PROF) $(NOCRYPT)
+ L_FLAGS = $(PROF)
+ LIBS	= @ZLIBS@
+ 
+diff --git a/src/d2magsys.cpp b/src/d2magsys.cpp
+index f3fa189..ea32bb2 100644
+--- a/src/d2magsys.cpp
++++ b/src/d2magsys.cpp
+@@ -939,10 +939,10 @@ void do_sinfo(char_data *ch, char * argument)
+ #define MAX_SPELL_TARGET_NAMES (4)
+ /****************************************************************************/
+ char *spell_target_names[MAX_SPELL_TARGET_NAMES]={
+-	{ "Area Affect or Informational Spells" },
+-	{ "Offensive Spells" },
+-	{ "Defensive or Self-Only Spells" },
+-	{ "Object Spells" },
++	 "Area Affect or Informational Spells" ,
++	 "Offensive Spells" ,
++	 "Defensive or Self-Only Spells" ,
++	 "Object Spells" ,
+ };
+ int spell_target_names_count[MAX_SPELL_TARGET_NAMES];
+ /****************************************************************************/
+diff --git a/src/dawnstat.cpp b/src/dawnstat.cpp
+index e0bb69c..379b5b9 100644
+--- a/src/dawnstat.cpp
++++ b/src/dawnstat.cpp
+@@ -159,7 +159,7 @@ char *dawnstat_generate_statistics_text()
+ #	else
+ 		ENCODE_STRH("unix","compiled_platform");		
+ #	endif
+-#elif 
++#else
+ 	ENCODE_STRH("unknown","compiled_platform");
+ #endif
+ 	// possible compiler thing of interest
+diff --git a/src/gameedit.cpp b/src/gameedit.cpp
+index 67dcbb4..829f32d 100644
+--- a/src/gameedit.cpp
++++ b/src/gameedit.cpp
+@@ -1597,11 +1597,11 @@ void save_continents()
+ void create_continents()
+ {
+ 	const char *continent_create_table[]={
+-		{"none"}, {"valarin"}, {"endomar"}, {"kerallyan"}, {"rhynia"}, 
+-		{"ring_isle"}, {"orcs"}, {"elenarthya"}, {"confederacy"},
+-		{"delenth"}, {"markrist"}, {"aarislan"}, {"faerie_ring"},
+-		{"plane_air"}, {"plane_water"}, {"plane_earth"}, {"plane_fire"},
+-		{NULL},
++		"none", "valarin", "endomar", "kerallyan", "rhynia", 
++		"ring_isle", "orcs", "elenarthya", "confederacy",
++		"delenth", "markrist", "aarislan", "faerie_ring",
++		"plane_air", "plane_water", "plane_earth", "plane_fire",
++		NULL,
+ 	};
+ 
+ 	continent_type *c;
+diff --git a/src/herbedit.cpp b/src/herbedit.cpp
+index af7a89a..81acf3b 100644
+--- a/src/herbedit.cpp
++++ b/src/herbedit.cpp
+@@ -52,23 +52,23 @@ void herbdata_read_continent(gio_type *, int, void *data, FILE *fp)
+ {
+ 	const char *continent_convert_table[]=
+ 	{
+-		{"none"			},
+-		{"valarin"		},
+-		{"endomar"		},
+-		{"kerallyan"	},
+-		{"rhynia"		},
+-		{"ring_isle"	},
+-		{"orcs"			},
+-		{"elenarthya"	},
+-		{"confederacy"	},
+-		{"delenth"		},
+-		{"markrist"		},
+-		{"aarislan"		},
+-		{"faerie_ring"	},
+-		{"plane_air"	},
+-		{"plane_water"	},
+-		{"plane_earth"	},
+-		{"plane_fire"	},
++		"none"			,
++		"valarin"		,
++		"endomar"		,
++		"kerallyan"	,
++		"rhynia"		,
++		"ring_isle"	,
++		"orcs"			,
++		"elenarthya"	,
++		"confederacy"	,
++		"delenth"		,
++		"markrist"		,
++		"aarislan"		,
++		"faerie_ring"	,
++		"plane_air"	,
++		"plane_water"	,
++		"plane_earth"	,
++		"plane_fire"	,
+ 	};
+ 	HERB_DATA * h;
+ 	char *pstr;

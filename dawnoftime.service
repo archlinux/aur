@@ -1,0 +1,13 @@
+[Unit]
+Description=A Mud codebase originally based on ROM
+Wants=network.target
+
+[Service]
+User=dawnoftime
+Group=dawnoftime
+ExecStart=/bin/sh -c "cd /var/lib/dawnoftime; /usr/bin/dawn 4000"
+GuessMainPID=yes
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

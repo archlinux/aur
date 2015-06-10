@@ -1,0 +1,47 @@
+HOMEDIR="/var/lib/dawnoftime"
+
+post_upgrade() {
+    # If it doesn't exist, create the config dir with a working default
+    if [ ! -d "$HOMEDIR" ]; then
+        systemd-tmpfiles --create dawnoftime.conf
+        su - dawnoftime -c "cp -R /usr/share/dawnoftime/* ${HOMEDIR}/"
+        su - dawnoftime -c "dawn 2"
+    else
+        echo "The directory '${HOMEDIR}' already exists, if this was created by an earlier version it may need to be removed and the command 'dawn 2' from from inside"
+    fi
+
+    # Reload the systemd daemon so it sees the new service scripts
+    systemctl --system daemon-reload
+
+    # Explain how things work!
+    echo -e '\nThe latest Dawn of Time has been installed:'
+    echo -e "  * The Dawn of Time conf dir is located in: \"${HOMEDIR}\""
+    echo -e "  * If the conf dir existed pre-upgrade, you may need to run \"dawn 2\" in: \"${HOMEDIR}\""
+    echo -e "  * You can start the MUD as a system service on port 4000: 'systemctl start dawnoftime'"
+}
+
+post_install() {
+    # Create the user/group if they don't exist and lock the user's password
+    [[ ! $(getent group dawnoftime) ]] \
+        && groupadd dawnoftime \
+        && echo "Group 'dawnoftime' added"
+    [[ ! $(getent passwd dawnoftime) ]] \
+        && useradd -c 'Dawn of Time Server User' -g dawnoftime -d "$HOMEDIR" -s /usr/bin/bash dawnoftime \
+        && echo "User 'dawnoftime' added"
+    passwd -l dawnoftime > /dev/null
+
+    # Reload systemd and show instructions like during an upgrade
+    post_upgrade
+}
+
+post_remove() {
+    # Delete the dawnoftime username and group if they exist
+    [[ $(getent passwd dawnoftime) ]] && userdel dawnoftime
+    [[ $(getent group dawnoftime) ]] && groupdel dawnoftime
+
+    # Explain that the config directory has not been deleted
+    echo -e '\nDawn of Time has been removed:'
+    echo -e "  * The \"dawnoftime\" user and \"dawnoftime\" group have been removed"
+    echo -e "  * The \"$HOMEDIR\" folder containing your custom configuration was kept, and must be deleted manually to be removed"
+    return 0
+}
