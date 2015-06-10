@@ -1,0 +1,14 @@
+pkgbase = peksystray
+	pkgdesc = Peksystray is a small system tray designed for all the light window managers supporting docking.
+	pkgver = 0.4.0
+	pkgrel = 6
+	url = http://sourceforge.net/projects/peksystray/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libx11
+	source = http://downloads.sourceforge.net/sourceforge/peksystray/peksystray-0.4.0.tar.bz2
+	md5sums = 735a216684f1db65bfe71697452cafc0
+
+pkgname = peksystray
+
