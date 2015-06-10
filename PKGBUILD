@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=http-parser-git
-pkgver=2.4.1.r0.g36f107f
+pkgver=2.5.r3.g39ff097
 pkgrel=1
 pkgdesc="Parser for HTTP Request/Response written in C"
 arch=('i686' 'x86_64')
@@ -35,9 +35,9 @@ package() {
         "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
   install -Dm644 http_parser.h "${pkgdir}/usr/include/http_parser.h"
-  install -Dm644 libhttp_parser.so.2.4.1 "${pkgdir}/usr/lib/libhttp_parser.so.2.4.1"
+  install -Dm644 libhttp_parser.so.2.5.0 "${pkgdir}/usr/lib/libhttp_parser.so.2.5.0"
   
-  ln -sf libhttp_parser.so.2.4.1 "${pkgdir}/usr/lib/libhttp_parser.so.2.4"
-  ln -sf libhttp_parser.so.2.4.1 "${pkgdir}/usr/lib/libhttp_parser.so.2"
-  ln -sf libhttp_parser.so.2.4.1 "${pkgdir}/usr/lib/libhttp_parser.so"
+  ln -sf libhttp_parser.so.2.5.0 "${pkgdir}/usr/lib/libhttp_parser.so.2.5"
+  ln -sf libhttp_parser.so.2.5.0 "${pkgdir}/usr/lib/libhttp_parser.so.2"
+  ln -sf libhttp_parser.so.2.5.0 "${pkgdir}/usr/lib/libhttp_parser.so"
 }
