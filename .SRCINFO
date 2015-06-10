@@ -1,0 +1,15 @@
+pkgbase = samsung-ml1710
+	pkgdesc = Samsung ML-1710 CUPS driver
+	pkgver = 1
+	pkgrel = 2
+	url = http://www.samsung.com
+	arch = i686
+	arch = x86_64
+	license = custom:samsung
+	depends = cups
+	depends = ghostscript
+	source = http://downloadcenter.samsung.com/content/DR/200707/20070720165436796_UnifiedLinuxDriver.tar.gz
+	sha256sums = 16eeb8ffd482289222b0defc9159a47db1402e5022233070d28fd27f07750754
+
+pkgname = samsung-ml1710
+
