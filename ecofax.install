@@ -1,0 +1,12 @@
+post_install() {
+    if [ -f /usr/share/ppd/cups-included/postscript.ppd ]; then
+	lpadmin -p EcoFax -v ecofaxcb: -E -P /usr/share/ppd/cups-included/postscript.ppd -o PageSize=A4
+    else
+	lpadmin -p EcoFax -v ecofaxcb: -E -P /usr/share/ppd/cupsfilters/Generic-PDF_Printer-PDF.ppd -o PageSize=A4
+    fi
+}
+
+pre_remove() {
+    lpadmin -x EcoFax
+}
+
