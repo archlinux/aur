@@ -1,0 +1,13 @@
+pkgbase = gtk-theme-dark-linux
+	pkgdesc = Improved gnome theme from my earlier no-name-jet version theme...
+	pkgver = 0.7
+	pkgrel = 1
+	url = http://metak.deviantart.com/art/Dark-linux-0-6-150406617
+	arch = any
+	license = GPL
+	replaces = dark-linux
+	source = http://www.deviantart.com/download/150406617/Dark_linux_0_7_by_metak.zip
+	md5sums = 719b0d95ddb9415a4a9919f759609b20
+
+pkgname = gtk-theme-dark-linux
+
