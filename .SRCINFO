@@ -1,0 +1,14 @@
+pkgbase = perl-x11-protocol-more
+	pkgdesc = CPAN/X11::Protocol::Enhanced -- extensions to X11::Protocol
+	pkgver = 0.05
+	pkgrel = 1
+	url = https://metacpan.org/module/X11::Protocol::Enhanced
+	arch = any
+	license = GPL
+	depends = perl-x11-protocol
+	options = !emptydirs
+	source = http://www.cpan.org/authors/id/B/BI/BIDULOCK/X11-Protocol-More-0.05.tar.gz
+	md5sums = 1d7befe159a0b6fbe7ea6e59b9fc641e
+
+pkgname = perl-x11-protocol-more
+
