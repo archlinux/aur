@@ -1,0 +1,13 @@
+pkgbase = twstools
+	pkgdesc = Command line tools around Interactive Brokers TWS API
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/rudimeier/twstools
+	arch = any
+	license = BSD
+	depends = libtwsapi
+	source = https://bitbucket.org/rudimeier/twstools/downloads/twstools-0.4.3.tar.gz
+	md5sums = 527f71d5def8359ffd5c7b4bc8a07547
+
+pkgname = twstools
+
