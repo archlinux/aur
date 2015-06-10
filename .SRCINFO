@@ -1,0 +1,16 @@
+pkgbase = intel-xdk-iot
+	pkgdesc = JavaScript on-board app and HTML5 companion app development
+	pkgver = 1912
+	pkgrel = 1
+	url = http://xdk.intel.com/iot
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = rpmextract
+	depends = libudev0
+	source = intel-xdk-iot
+	source = https://download.xdk.intel.com/iot/iot_web_linux_master_1912.tgz
+	md5sums = 251ae4edbe9fbd775dc1910f9df4e481
+
+pkgname = intel-xdk-iot
+
