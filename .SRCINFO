@@ -1,0 +1,23 @@
+pkgbase = dahdi
+	pkgdesc = DAHDI drivers for Asterisk
+	pkgver = 2.10.0.1
+	pkgrel = 1
+	url = http://www.asterisk.org/
+	install = dahdi.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = linux-headers
+	depends = linux
+	depends = libusb
+	depends = perl
+	conflicts = zaptel
+	source = http://downloads.asterisk.org/pub/telephony/dahdi-linux-complete/releases/dahdi-linux-complete-2.10.0.1+2.10.0.1.tar.gz
+	source = Makefile.patch
+	source = dahdi.service
+	sha256sums = 7d462d3b007214572f9d049a6d2b6808ab3b91c0bdfca7a91a84c6925056bc55
+	sha256sums = 132b61b37d2e299e93154480a0f66c8493dda552ea6606de0b7344134d1e06a5
+	sha256sums = 7c91314aacab22ffd02794abfa7db49f44a796ea54f3e2bc4276616e68b90e0f
+
+pkgname = dahdi
+

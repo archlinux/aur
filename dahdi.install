@@ -1,0 +1,14 @@
+post_install() {
+  depmod -a
+  udevadm control --reload-rules
+}
+
+post_upgrade() {
+  depmod -a
+}
+
+post_remove() {
+  depmod -a
+}
+
+# vim:set ts=2 sw=2 et:
