@@ -1,0 +1,18 @@
+pkgbase = perl-math-geometry-voronoi
+	pkgdesc = Math::Geometry::Voronoi - compute Voronoi diagrams from sets of points
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://metacpan.org/release/Math-Geometry-Voronoi/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	depends = perl-params-validate
+	depends = perl-class-accessor
+	depends = perl-try-tiny
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SA/SAMTREGAR/Math-Geometry-Voronoi-1.3.tar.gz
+	md5sums = 44392be55ff56870aaff286dd735a5e2
+
+pkgname = perl-math-geometry-voronoi
+
