@@ -1,0 +1,13 @@
+pkgbase = python-rt
+	pkgdesc = Interface to the RT (Request Tracker) API
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://redmine.labs.nic.cz/projects/python-rt
+	arch = any
+	license = GPL3
+	depends = python
+	source = https://redmine.labs.nic.cz/attachments/download/337/rt-1.0.1.tar.gz
+	sha256sums = 598fa26c5e3734297d283f73dc5b6e69ceb464675a88e5594e899d6ebf1f77c7
+
+pkgname = python-rt
+
