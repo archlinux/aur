@@ -1,0 +1,36 @@
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+
+pkgname=blackbox-git
+pkgver=0.71.1.0
+pkgrel=1
+pkgdesc="A window manager for X11"
+arch=('i686' 'x86_64')
+url="https://github.com/bbidulock/blackboxwm"
+license=('MIT')
+provides=('blackbox' 'blackboxwm')
+conflicts=('blackbox' 'blackbox-cvs' 'blackboxwm')
+depends=('libxext' 'libxft')
+options=('!libtool' 'staticlibs')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/bbidulock/blackboxwm.git")
+md5sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  git describe --tags --long | sed 's|-|.|g;s|[.]g[a-f0-9]*$||'
+}
+
+build() {
+  cd $pkgname
+  ./autogen.sh
+  ./configure --prefix=/usr --mandir=/usr/share/man
+  make V=0
+}
+
+package() {
+  cd $pkgname
+  make DESTDIR="$pkgdir/" install
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+}
+
+# vim: et sw=2:
