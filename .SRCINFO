@@ -1,0 +1,15 @@
+pkgbase = beef
+	pkgdesc = Flexible interpreter for the Brainfuck programming language
+	pkgver = 1.0.0
+	pkgrel = 3
+	url = http://kiyuko.org/software/beef
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = addinclude
+	depends = cattle
+	source = beef-1.0.0.tgz::http://kiyuko.org/software/beef/releases/1.0.0/source
+	sha256sums = cd730b01173e615bfe04569df9aef4a39cf2d1295df0417c1d787b86e6fb4004
+
+pkgname = beef
+
