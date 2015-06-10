@@ -1,0 +1,14 @@
+pkgbase = lxnm
+	pkgdesc = A Network Manager (Part of LXDE)
+	pkgver = 0.2.2
+	pkgrel = 4
+	url = http://lxde.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = glib2
+	source = http://downloads.sourceforge.net/sourceforge/lxde/lxnm-0.2.2.tar.gz
+	md5sums = 2ee64e5fad4a27a522f1eb2da08dd46a
+
+pkgname = lxnm
+
