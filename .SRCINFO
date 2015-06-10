@@ -1,0 +1,18 @@
+pkgbase = pnmixer
+	pkgdesc = GTK volume mixer applet that runs in the system tray.
+	pkgver = 0.5.1
+	pkgrel = 3
+	url = https://github.com/nicklan/pnmixer
+	arch = i686
+	arch = x86_64
+	groups = pnmixer
+	license = GPL
+	depends = gtk2
+	depends = alsa-lib
+	source = https://github.com/downloads/nicklan/pnmixer/pnmixer-0.5.1.tar.gz
+	source = pnmixer-0.5.1-configure.in.patch
+	md5sums = 2288af95ab280721b39b7c33601d5dd4
+	md5sums = d7aef8eb1cec18858fb2faefe6584276
+
+pkgname = pnmixer
+
