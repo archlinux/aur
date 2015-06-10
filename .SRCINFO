@@ -1,0 +1,16 @@
+pkgbase = python-vitalus-git
+	pkgdesc = Python rsync wrapper for backup
+	pkgver = v0.3.8.r6.g73abf81
+	pkgrel = 1
+	url = https://github.com/sciunto/Vitalus
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = rsync
+	source = git://github.com/sciunto/Vitalus.git
+	md5sums = SKIP
+
+pkgname = python-vitalus-git
+
