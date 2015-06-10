@@ -1,0 +1,17 @@
+pkgbase = octave-octcdf
+	pkgdesc = A NetCDF interface for octave. This interface is depreciated. Please use the netcdf package instead (possibly in combination with ncarray).
+	pkgver = 1.1.8
+	pkgrel = 2
+	url = http://octave.sourceforge.net/octcdf/
+	install = octave-octcdf.install
+	arch = any
+	groups = octave-forge
+	license = GPL
+	makedepends = netcdf
+	depends = octave>=3.4.0
+	noextract = octcdf-1.1.8.tar.gz
+	source = http://downloads.sourceforge.net/octave/octcdf-1.1.8.tar.gz
+	md5sums = 981f0937cdf45415f966ea1886ba8136
+
+pkgname = octave-octcdf
+
