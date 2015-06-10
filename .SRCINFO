@@ -1,0 +1,15 @@
+pkgbase = python2-html2text
+	pkgdesc = Converts a page of HTML into clean, easy-to-read plain ASCII text.
+	pkgver = 2015.4.14
+	pkgrel = 1
+	url = https://github.com/Alir3z4/html2text/
+	arch = any
+	license = GPL3
+	checkdepends = python2-nose
+	makedepends = python2-setuptools
+	depends = python2
+	source = http://pypi.python.org/packages/source/h/html2text/html2text-2015.4.14.tar.gz
+	sha256sums = b966f618423e12b202f53652a57ea28b9d95861882f93658dcbd7d899603aa85
+
+pkgname = python2-html2text
+
