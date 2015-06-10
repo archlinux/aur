@@ -12,16 +12,16 @@ makedepends=(git autoconf)
 provides=(dcaenc)
 conflicts=(dcaenc)
 options=(!libtool)
-source=("git+git://gitorious.org/dtsenc/dtsenc.git")
+source=("git+https://gitlab.com/patrakov/dcaenc.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd dtsenc
+  cd dcaenc
   echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
 build() {
-  cd dtsenc
+  cd dcaenc
 
   autoreconf -vfi
   ./configure --prefix=/usr
@@ -29,12 +29,12 @@ build() {
 }
 
 check() {
-  cd dtsenc
+  cd dcaenc
   make -k check
 }
 
 package() {
-  cd dtsenc
+  cd dcaenc
   make DESTDIR="${pkgdir}/" install
 }
 
