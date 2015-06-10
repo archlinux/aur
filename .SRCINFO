@@ -1,0 +1,14 @@
+pkgbase = nuvola-app-spotify-git
+	pkgdesc = Spotify integration for Nuvola Player.
+	pkgver = r17.548023a
+	pkgrel = 1
+	url = https://github.com/tiliado/nuvola-app-spotify
+	arch = any
+	license = custom:BSD
+	makedepends = git
+	depends = nuvolaplayer-git
+	source = nuvola-app-spotify-git::git+https://github.com/tiliado/nuvola-app-spotify.git
+	sha256sums = SKIP
+
+pkgname = nuvola-app-spotify-git
+
