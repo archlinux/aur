@@ -1,0 +1,25 @@
+pkgbase = cppdb
+	pkgdesc = CppDB is an SQL connectivity library that is designed to provide platform and Database independent connectivity API.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = http://cppcms.com/sql/cppdb/
+	arch = i686
+	arch = x86_64
+	license = custom:Boost Software License
+	license = MIT
+	makedepends = cmake
+	makedepends = sqlite
+	makedepends = libmariadbclient
+	makedepends = postgresql-libs
+	makedepends = unixodbc
+	optdepends = sqlite
+	optdepends = libmariadbclient
+	optdepends = postgresql-libs
+	optdepends = unixodbc
+	provides = cppdb
+	conflicts = cppdb
+	source = http://sourceforge.net/projects/cppcms/files/cppdb/0.3.1/cppdb-0.3.1.tar.bz2/download
+	sha256sums = d60eef5a732d8f84ef5e4a2845a8cefc543a6c75bf3782589c2cf6aa150b992e
+
+pkgname = cppdb
+
