@@ -1,0 +1,14 @@
+2013-05-18  Mariusz Libera  <mariusz.libera@gmail.com>
+
+	0.13-2:
+	* new maintainer
+	* updated to svn version shiped in Debian and Fedora - renames zzcat to zzat
+	* added Debian patches
+	* added !staticlibs !libtool options
+	* added !buildflags - some flags may break zzuf - better safe than sorry 
+	* added check() function
+	* added glibc to depends
+	* changed license to custom and added LICENSE file
+	* updated PKGBUILD
+	* added Changelog
+

@@ -1,0 +1,22 @@
+pkgbase = zzuf
+	pkgdesc = Transparent application input fuzzer.
+	pkgver = 0.13.svn20100215
+	pkgrel = 1
+	url = http://caca.zoy.org/wiki/zzuf
+	changelog = Changelog
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glibc
+	options = !buildflags
+	options = !libtool
+	options = !staticlibs
+	source = http://ftp.debian.org/debian/pool/main/z/zzuf/zzuf_0.13.svn20100215.orig.tar.gz
+	source = 100_more_tolerant_test.diff
+	source = 200_libc_symbol_versioning.diff
+	sha256sums = 012b195cdc8e6c62fc25e4e357a5fd9d686d5b4faa59a8fcf7fb0d0906ebcff4
+	sha256sums = 5aecac85a56fc2bb4d8d1402aee4fa78f709bb6cde24338b53c2809039e7a936
+	sha256sums = 788adac61b5632867e2a685fe7db771e209cfefdd15343d861fba04fbee858fb
+
+pkgname = zzuf
+

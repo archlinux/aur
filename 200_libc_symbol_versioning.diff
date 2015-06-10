@@ -1,0 +1,77 @@
+Index: zzuf-0.13.svn20100215/src/libzzuf/lib-load.h
+===================================================================
+--- zzuf-0.13.svn20100215.orig/src/libzzuf/lib-load.h	2010-01-13 02:16:46.000000000 +0100
++++ zzuf-0.13.svn20100215/src/libzzuf/lib-load.h	2012-04-17 01:26:49.068253763 +0200
+@@ -20,6 +20,7 @@
+ 
+ #ifdef HAVE_DLFCN_H
+ #   include <dlfcn.h>
++extern void *_zz_dl_lib;
+ #   define NEW(x) x
+ #   define LOADSYM(x) \
+         do { \
+@@ -29,7 +30,7 @@
+                  * otherwise we may miss a lot of stuff if we wait for \
+                  * the linker to load us fully. */ \
+                 _zz_init(); \
+-                ORIG(x) = dlsym(RTLD_NEXT, STR(x)); \
++                ORIG(x) = dlsym(_zz_dl_lib, STR(x)); \
+             } \
+             if(!ORIG(x)) \
+                 abort(); \
+Index: zzuf-0.13.svn20100215/src/libzzuf/sys.c
+===================================================================
+--- zzuf-0.13.svn20100215.orig/src/libzzuf/sys.c	2010-01-13 02:16:46.000000000 +0100
++++ zzuf-0.13.svn20100215/src/libzzuf/sys.c	2012-04-17 01:26:35.476253559 +0200
+@@ -16,12 +16,19 @@
+ 
+ #include "config.h"
+ 
++/* Need this for RTLD_NEXT */
++#define _GNU_SOURCE
++
+ #if defined HAVE_STDINT_H
+ #   include <stdint.h>
+ #elif defined HAVE_INTTYPES_H
+ #   include <inttypes.h>
+ #endif
+ 
++#ifdef HAVE_DLFCN_H
++#   include <dlfcn.h>
++#endif
++
+ #if defined HAVE_WINDOWS_H
+ #   include <windows.h>
+ #   include <imagehlp.h>
+@@ -34,6 +41,10 @@
+ 
+ #include "sys.h"
+ 
++#if defined HAVE_DLFCN_H
++void *_zz_dl_lib = RTLD_NEXT;
++#endif
++
+ #if defined HAVE_WINDOWS_H
+ static void insert_func(void *, void *, void *);
+ 
+@@ -71,6 +82,20 @@
+         insert_func(entry.hModule, LoadLibraryA_orig, LoadLibraryA_new);
+     }
+     CloseHandle(list);
++#elif defined HAVE_DLFCN_H
++    /* If glibc is recent enough, we use dladdr() to get its address. This
++     * way we are sure that the symbols we load are the most recent version,
++     * or we may get weird problems. We choose fileno as a random symbol to
++     * get, because we know we don't divert it. */
++#   if HAVE_DLADDR
++    Dl_info di;
++    if (dladdr(&fileno, &di) != 0)
++    {
++        void *lib = dlopen(di.dli_fname, RTLD_NOW);
++        if (lib)
++            _zz_dl_lib = lib;
++    }
++#   endif
+ #else
+     /* Nothing to do on our platform */
+ #endif
