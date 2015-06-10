@@ -1,0 +1,5 @@
+*.swp
+*.tar.bz2
+*.tar.xz
+*.tar
+/extract

@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Icon=/usr/share/pixmaps/gunpoint.png
+Exec=/usr/bin/gunpoint
+Terminal=false
+StartupNotify=false
+
+Name=Gunpoint
+Comment=A stealth puzzle game that lets you rewire its levels to trick people
+
+Categories=Game;
+

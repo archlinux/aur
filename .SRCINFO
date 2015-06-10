@@ -1,0 +1,32 @@
+pkgbase = gunpoint
+	pkgdesc = A stealth puzzle game that lets you rewire its levels to trick people
+	pkgver = 1410971363
+	pkgrel = 1
+	url = http://www.gunpointgame.com/
+	arch = i686
+	arch = x86_64
+	license = custom:commercial
+	depends = libogg
+	depends = libvorbis
+	depends = libxrandr
+	depends = nvidia-cg-toolkit
+	depends = openal
+	depends = glibc
+	depends = gcc-libs
+	depends = libx11
+	depends = libpng12
+	depends = libxcb
+	depends = libxext
+	depends = zlib
+	depends = libxau
+	depends = libxdmcp
+	depends = libgl
+	source = gunpoint.desktop
+	source = launch-gunpoint.sh
+	source = GunpointLinux_170914_1410971363.tar.gz::hib://GunpointLinux_170914_1410971363.tar.gz
+	sha256sums = a43f225c31e995fd6b0225a7743755d991df1b4f45b26ab54d919194f549553e
+	sha256sums = 9e98fd2445561db881c1a555a5141fa0fae18c14ca738dd73ba7d33b781dfa7a
+	sha256sums = 8fe96b3402a48eed890155479138ef84f31b238c9631f5833ca377d08af0e3bd
+
+pkgname = gunpoint
+
