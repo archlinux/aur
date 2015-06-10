@@ -1,0 +1,13 @@
+post_install() {
+	echo "UPDATING STEAMCMD FOR FIRST USE!"
+	exec /usr/share/steamcmd/steamcmd.sh +quit
+	chgrp -R users /usr/share/steamcmd
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	rm -rf /usr/share/steamcmd
+}
