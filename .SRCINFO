@@ -1,0 +1,17 @@
+pkgbase = xorg-rgb
+	pkgdesc = X colorname to RGB mapping database
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = http://xorg.freedesktop.org/
+	arch = i686
+	arch = x86_64
+	groups = xorg-apps
+	groups = xorg
+	license = custom
+	makedepends = xorg-util-macros
+	depends = glibc
+	source = http://xorg.freedesktop.org/archive/individual/app/rgb-1.0.5.tar.bz2
+	sha256sums = 8e936e648ffddce2e7184790efa15e4fa2bcb47f9da5469515d212c61bc8f857
+
+pkgname = xorg-rgb
+
