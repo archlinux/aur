@@ -7,15 +7,12 @@ pkgdesc="An emulator of classic Sega consoles, including SMS/GG, Genesis/Megadri
 url="http://www.carpeludum.com/kega-fusion"
 license=('custom')
 arch=('i686' 'x86_64')
-if [ "$CARCH" == "x86_64" ]; then
-  depends=('lib32-alsa-lib' 'lib32-glu' 'lib32-libsm' 'lib32-gtk2' 'lib32-mpg123')
-  optdepends=('lib32-gtk-engines: libclearlooks.so library'
-              'lib32-alsa-plugins: for PulseAudio users')
-else
-  depends=('alsa-lib' 'glu' 'libsm' 'gtk2' 'mpg123')
-  optdepends=('gtk-engines: libclearlooks.so library')
-fi
+depends=('alsa-lib' 'glu' 'libsm' 'gtk2' 'mpg123')
+optdepends=('gtk-engines: libclearlooks.so library')
 makedepends=('upx')
+depends_x86_64=('lib32-alsa-lib' 'lib32-glu' 'lib32-libsm' 'lib32-gtk2' 'lib32-mpg123')
+optdepends_x86_64=('lib32-gtk-engines: libclearlooks.so library'
+                   'lib32-alsa-plugins: for PulseAudio users')
 install="kega-fusion.install"
 source=("http://www.carpeludum.com/download/Fusion363x.tar.gz"
         "http://www.carpeludum.com/download/PluginsLinux.tar.gz"

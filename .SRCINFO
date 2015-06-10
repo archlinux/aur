@@ -27,6 +27,13 @@ pkgbase = kega-fusion
 	md5sums = 130ce3ac8bd1993a32be20c051ffc779
 	md5sums = 5ecf6ba3ef1eff460ee659ef7b6e78db
 	md5sums = 30396e603a6996e8f20a6be32430b6f6
+	depends_x86_64 = lib32-alsa-lib
+	depends_x86_64 = lib32-glu
+	depends_x86_64 = lib32-libsm
+	depends_x86_64 = lib32-gtk2
+	depends_x86_64 = lib32-mpg123
+	optdepends_x86_64 = lib32-gtk-engines: libclearlooks.so library
+	optdepends_x86_64 = lib32-alsa-plugins: for PulseAudio users
 
 pkgname = kega-fusion
 
