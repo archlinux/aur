@@ -1,0 +1,34 @@
+pkgbase = geany-plugins-git
+	pkgdesc = Various plugins for Geany
+	pkgver = 1.24.213.gc12f0d3
+	pkgrel = 1
+	url = http://plugins.geany.org/
+	install = geany-plugins-git.install
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	makedepends = libtool
+	makedepends = python
+	makedepends = gpgme
+	makedepends = ctpl
+	makedepends = lua
+	makedepends = intltool
+	makedepends = vala
+	depends = geany-git
+	depends = vte
+	depends = lua
+	depends = libwebkit
+	depends = ctpl
+	depends = gpgme
+	depends = gtkspell
+	depends = hicolor-icon-theme
+	optdepends = hspell: hebrew spell checker
+	provides = geany-plugins
+	conflicts = geany-plugins-svn
+	conflicts = geany-plugins
+	source = geany-plugins::git://github.com/geany/geany-plugins.git
+	md5sums = SKIP
+
+pkgname = geany-plugins-git
+
