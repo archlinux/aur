@@ -1,0 +1,16 @@
+pkgbase = perl-extutils-makemaker-aur
+	pkgdesc = ExtUtils::MakeMaker - Create a module Makefile
+	pkgver = 7.04
+	pkgrel = 1
+	url = https://metacpan.org/release/ExtUtils-MakeMaker/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	provides = perl-extutils-makemaker=7.04
+	options = !emptydirs
+	source = http://www.cpan.org/authors/id/B/BI/BINGOS/ExtUtils-MakeMaker-7.04.tar.gz
+	md5sums = c280fa6a0dfe1d21d6b42792c041ddf7
+
+pkgname = perl-extutils-makemaker-aur
+
