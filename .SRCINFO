@@ -1,0 +1,24 @@
+pkgbase = deskcon-desktop-git
+	pkgdesc = Integrates your Smartphone in your Desktop
+	pkgver = 20150501.r93.ca6fcf4
+	pkgrel = 1
+	url = https://github.com/MK-42/deskcon-desktop
+	install = deskcon-desktop.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python2-pyopenssl
+	depends = python2-gobject
+	depends = python2-dbus
+	depends = pygtk
+	depends = libnotify
+	depends = dbus-glib
+	optdepends = gnome-shell: for use of the included Gnome 3 desktop extension
+	options = !strip
+	source = git+https://github.com/MK-42/deskcon-desktop
+	source = deskcon.1
+	sha512sums = SKIP
+	sha512sums = 144e9a15a01fc63694fa5d26c819ca2474a6cdad802ec1ab984a049b474c4db2419b25ad52f03eb4c2e702524bb0ef6c746fd0436014d8291a83e1e2f4836d2f
+
+pkgname = deskcon-desktop-git
+

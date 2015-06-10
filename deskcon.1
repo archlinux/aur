@@ -1,0 +1,63 @@
+.if !\n(.g \{\
+.	if !\w|\*(lq| \{\
+.		ds lq ``
+.		if \w'\(lq' .ds lq "\(lq
+.	\}
+.	if !\w|\*(rq| \{\
+.		ds rq ''
+.		if \w'\(rq' .ds rq "\(rq
+.	\}
+.\}
+.ie t .ds Tx \s-1T\v'.4n'\h'-.1667'E\v'-.4n'\h'-.125'X\s0
+. el  .ds Tx TeX
+.de Id
+. ds Yr \\$4
+. substring Yr 0 3
+. ds Mn \\$4
+. substring Mn 5 6
+. ds Dy \\$4
+. substring Dy 8 9
+. \" ISO 8601 date, complete format, extended representation
+. ds Dt \\*(Yr-\\*(Mn-\\*(Dy
+..
+.TH DESKCON 1 \*(Dt "deskcon (git)" "User Commands"
+.hy 0
+.
+.SH "NAME"
+.B DeskCon \-
+Integrates your Smartphone in your Desktop
+.
+.SH "DeskCon"
+Version 0\.3 (GIT)
+.
+.P
+Integrates your Android Device in the Desktop\. Receive Notifications, Files and Commands from your mobile Device on your Desktop PC\. The Data is send over a secure TLS Connection\. The Connection is encrypted and authenticated with self\-signed Certificates (RSA\-2048 PK)\.
+.
+.P
+Warning: This Project is still in development (beta) and may contain some Bugs or Security Holes\. If you find any, please report them ^^
+.
+.SH "Information"
+.
+.nf
+
+\- Project Website http://www\.screenfreeze\.net/deskcon
+\- Source https://github\.com/screenfreeze/deskcon\-desktop
+\- Google Play Store https://play\.google\.com/store/apps/details?id=net\.screenfreeze\.deskcon
+.
+.fi
+.
+.SH "Usage"
+.
+.nf
+
+\- make sure Ports 8082 and 8083 tcp are open
+\- (optional) activate the Gnome3 extension
+\- start the DeskCon Desktop Server by running: deskcon\-server
+\- configure the server by running: deskcon\-server\-settings
+\- (optional) change config File in ~/\.deskcon
+\- To pair with a new Device, start deskcon\-setupdevice or use the Gnome Extension or Unity Indicator
+\- start DeskCon App on your Android Device
+\- select Network > Desktop Hosts
+\- click the + Button and enter the IP of your Desktop PC
+\- check whether the Fingerprints match
+.

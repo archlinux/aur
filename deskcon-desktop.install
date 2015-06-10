@@ -1,0 +1,3 @@
+post_install() {
+    printf '%s\n' 'Make sure ports 8082 and 8083 tcp are open before running, and check out the deskcon man page for more information'
+}
