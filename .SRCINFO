@@ -1,0 +1,15 @@
+pkgbase = aurtic
+	pkgdesc = Download and extract source packages from AUR
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/xyproto/aurtic/
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	makedepends = git
+	source = git://github.com/xyproto/aurtic#tag=0.2
+	md5sums = SKIP
+
+pkgname = aurtic
+
