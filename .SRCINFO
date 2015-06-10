@@ -1,0 +1,15 @@
+pkgbase = unixday
+	pkgdesc = Utility for dealing with unix days
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://github.com/xyproto/unixday
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	makedepends = git
+	source = git://github.com/xyproto/unixday.git#tag=0.1
+	md5sums = SKIP
+
+pkgname = unixday
+
