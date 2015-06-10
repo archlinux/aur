@@ -1,0 +1,17 @@
+pkgbase = tider-git
+	pkgdesc = Lightweight time tracker (GTK+)
+	pkgver = 0.0.0
+	pkgrel = 11
+	url = http://pusto.org/en/tider/
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = python-gobject
+	depends = gtk3
+	depends = libnotify
+	provides = tider
+	source = tider-git::git://github.com/naspeh/tider.git
+	sha256sums = SKIP
+
+pkgname = tider-git
+
