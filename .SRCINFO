@@ -1,0 +1,14 @@
+pkgbase = papoandyo
+	pkgdesc = A modern fairytale in an jump-and-run puzzle solving computer game
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://www.weareminority.com/papo-yo/
+	arch = i686
+	arch = x86_64
+	license = custom: commercial
+	noextract = PapoYo_linux_1389070953.sh
+	source = hib://PapoYo_linux_1389070953.sh
+	md5sums = d8222b87222f4eb05025584bf923da41
+
+pkgname = papoandyo
+
