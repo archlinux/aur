@@ -1,0 +1,32 @@
+pkgbase = budgie-desktop
+	pkgdesc = Simple GTK3 desktop experience from Solus Project
+	pkgver = 8.2
+	pkgrel = 2
+	url = http://solus-project.com/
+	install = budgie-desktop.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = python2
+	makedepends = vala
+	makedepends = gobject-introspection
+	depends = libwnck3
+	depends = gnome-menus
+	depends = gnome-settings-daemon
+	depends = libpeas
+	depends = mutter>=3.14
+	depends = desktop-file-utils
+	depends = libgee
+	depends = gnome-themes-standard
+	depends = gtk3>=3.14
+	depends = libpulse
+	depends = upower
+	depends = intltool
+	source = budgie-desktop-8.2.tar.gz::https://github.com/solus-project/budgie-desktop/archive/v8.2.tar.gz
+	source = git+https://git.gnome.org/browse/libgnome-volume-control#commit=e14dbe8
+	sha256sums = 039e15e26f17ad210feb9b69ad2a15ed330ffa231013ff734b31f80e9b219645
+	sha256sums = SKIP
+
+pkgname = budgie-desktop
+
