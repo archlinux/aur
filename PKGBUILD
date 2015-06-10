@@ -11,6 +11,7 @@ depends=('gtk3' 'mpv')
 makedepends=('git' 'intltool')
 optdepends=('youtube-dl: for video-sharing websites playback')
 install=gnome-mpv.install
+conflicts=('gnome-mpv')
 source=("$pkgname::git+https://github.com/gnome-mpv/gnome-mpv.git")
 md5sums=('SKIP')
 
