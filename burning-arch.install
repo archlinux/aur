@@ -1,0 +1,13 @@
+post_install() {
+  echo "==> Edit your /etc/slim.conf and change the current_theme to burning-arch:"
+  echo "==> current_theme       burning-arch"
+}
+
+post_remove() {
+  echo "==> Edit your /etc/slim.conf and change the current_theme for"
+  echo "==> a another theme than burning-arch"
+}
+
+op=$1
+shift
+$op $*
