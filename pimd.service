@@ -1,0 +1,15 @@
+[Unit]
+Description=PIM Daemon
+After=network.target
+ConditionPathExists=/etc/pimd.conf
+Conflicts=mrouted.service smcroute.service
+
+[Service]
+Type=forking
+PIDFile=/var/run/pimd.pid
+ExecStart=/usr/bin/pimd
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
