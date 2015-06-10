@@ -1,0 +1,13 @@
+pkgbase = python2-tifffile
+	pkgdesc = Read and write image data from and to TIFF files
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/tifffile
+	arch = any
+	license = BSD
+	depends = python2
+	source = https://pypi.python.org/packages/source/t/tifffile/tifffile-0.4.tar.gz
+	md5sums = d92dba2d7ea08e47bfbf9282c2d2e8dc
+
+pkgname = python2-tifffile
+
