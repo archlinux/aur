@@ -1,0 +1,20 @@
+pkgbase = xfce4-power-manager-1.2
+	pkgdesc = Power manager for Xfce desktop (1.2.x)
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://www.xfce.org/
+	install = xfce4-power-manager-1.2.install
+	arch = i686
+	arch = x86_64
+	groups = xfce4
+	license = GPL2
+	makedepends = intltool
+	depends = xfce4-panel
+	depends = upower
+	depends = libnotify
+	depends = hicolor-icon-theme
+	source = http://archive.xfce.org/src/apps/xfce4-power-manager/1.2/xfce4-power-manager-1.2.0.tar.bz2
+	md5sums = 935599b7114b0a4b0e2c9a5d6c72524c
+
+pkgname = xfce4-power-manager-1.2
+
