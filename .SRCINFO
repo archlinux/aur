@@ -1,0 +1,90 @@
+pkgbase = linux-libre-rt
+	pkgver = 3.18.13_gnu.rt10
+	pkgrel = 1
+	url = https://rt.wiki.kernel.org/
+	arch = i686
+	arch = x86_64
+	arch = mips64el
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	options = !strip
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.18-gnu/linux-libre-3.18-gnu.tar.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.18-gnu/linux-libre-3.18-gnu.tar.xz.sign
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.18.13-gnu/patch-3.18-gnu-3.18.13-gnu.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.18.13-gnu/patch-3.18-gnu-3.18.13-gnu.xz.sign
+	source = http://www.kernel.org/pub/linux/kernel/projects/rt/3.18/older/patch-3.18.13-rt10.patch.xz
+	source = http://www.kernel.org/pub/linux/kernel/projects/rt/3.18/older/patch-3.18.13-rt10.patch.sign
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm.sig
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm.sig
+	source = config.i686
+	source = config.x86_64
+	source = config.mips64el
+	source = linux.preset
+	source = change-default-console-loglevel.patch
+	source = https://repo.parabola.nu/other/linux-libre/patches/3.18-rc6-48c0ad793f-loongson-community.patch
+	source = https://repo.parabola.nu/other/linux-libre/patches/3.18-rc6-48c0ad793f-loongson-community.patch.sig
+	sha256sums = 0f347d8eba8a6878246b94b3559eb0371d96a3f43de2f134513e274de11a60cf
+	sha256sums = SKIP
+	sha256sums = cd0baedefbb12b74cdc76e9a42e735ac710513bc59d9df6a72e963ac01cb983d
+	sha256sums = SKIP
+	sha256sums = 4852137491341a3f1d976cf5b17c038fdc74b167d555195aacd61094b02ce741
+	sha256sums = SKIP
+	sha256sums = bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494
+	sha256sums = SKIP
+	sha256sums = 13bd7a8d9ed6b6bc971e4cd162262c5a20448a83796af39ce394d827b0e5de74
+	sha256sums = SKIP
+	sha256sums = 6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a
+	sha256sums = SKIP
+	sha256sums = eef029fd77f0de3d7724d722e13f4aa3a850158565bd608c834db23d702a8707
+	sha256sums = 5662022f3820005108e9591e1a6944b753b8b068540316568723e9fee2a34e40
+	sha256sums = e2b7479c8d2693421e759a1ff07508a989533f19b8c96916f617983e95a58d2a
+	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
+	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
+	sha256sums = 81adca8b3f58156f4a245cb7f20750041a9e6848b282942d7d9e213a04c96c9f
+	sha256sums = SKIP
+
+pkgname = linux-libre-rt
+	pkgdesc = The Linux-libre-rt kernel and modules with realtime preemption
+	install = linux.install
+	depends = coreutils
+	depends = linux-libre-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = linux-rt=3.18.13_rt10
+	conflicts = linux-rt
+	conflicts = kernel26-rt
+	conflicts = kernel26-libre-rt
+	replaces = linux-rt
+	replaces = kernel26-rt
+	replaces = kernel26-libre-rt
+	backup = etc/mkinitcpio.d/linux-libre-rt.preset
+
+pkgname = linux-libre-rt-headers
+	pkgdesc = Header files and scripts for building modules for Linux-libre-rt kernel
+	provides = linux-rt-headers=3.18.13_rt10
+	conflicts = linux-rt-headers
+	conflicts = kernel26-rt-headers
+	conflicts = kernel26-libre-rt-headers
+	replaces = linux-rt-headers
+	replaces = kernel26-rt-headers
+	replaces = kernel26-libre-rt-headers
+
+pkgname = linux-libre-rt-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre-rt kernel
+	provides = linux-rt-docs=3.18.13_rt10
+	conflicts = linux-rt-docs
+	conflicts = kernel26-rt-docs
+	conflicts = kernel26-libre-rt-docs
+	replaces = linux-rt-docs
+	replaces = kernel26-rt-docs
+	replaces = kernel26-libre-rt-docs
+
