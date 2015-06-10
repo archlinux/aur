@@ -1,0 +1,22 @@
+pkgbase = mount-gtk2-git
+	pkgdesc = A graphical front end for udisks and mount
+	pkgver = 1.4.3.r2.g386125b
+	pkgrel = 1
+	epoch = 1
+	url = http://mount-gtk.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = c++-gtk-utils-gtk2
+	depends = udisks2
+	depends = libnotify
+	provides = mount-gtk=1.4.3.r2.g386125b
+	conflicts = mount-gtk
+	options = !buildflags
+	options = !emptydirs
+	source = mount-gtk2-git::git://mount-gtk.git.sourceforge.net/gitroot/mount-gtk/mount-gtk
+	sha256sums = SKIP
+
+pkgname = mount-gtk2-git
+
