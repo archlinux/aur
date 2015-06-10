@@ -1,0 +1,15 @@
+pkgbase = ttf-perfectdos
+	pkgdesc = Fonts similar to what BIOS/DOS looks like
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.dafont.com/perfect-dos-vga-437.font
+	arch = any
+	license = custom:free
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = perfectdos.zip::http://img.dafont.com/dl/?f=perfect_dos_vga_437
+	sha256sums = cf5c22a3094e5452e473a912086d2c81d014b3e762235218a958b289757a7d5d
+
+pkgname = ttf-perfectdos
+
