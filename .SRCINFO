@@ -1,0 +1,19 @@
+pkgbase = v8-3.14
+	pkgdesc = A fast and modern javascript engine (old 3.14 version required for plv8)
+	pkgver = 3.14.5
+	pkgrel = 1
+	url = http://code.google.com/p/v8
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = subversion
+	makedepends = python2
+	depends = gcc-libs
+	depends = readline
+	provides = v8
+	conflicts = v8
+	source = http://commondatastorage.googleapis.com/chromium-browser-official/v8-3.14.5.tar.bz2
+	sha256sums = 361ad3b63dc7c9d0943b72b1be592a8135e4ddb0e416b9bcf02b4d2df514fca7
+
+pkgname = v8-3.14
+
