@@ -1,0 +1,34 @@
+pkgbase = linux-next-git
+	pkgver = 20150610
+	pkgrel = 1
+	url = http://www.kernel.org/
+	arch = any
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = git
+	makedepends = linux-firmware
+	makedepends = mkinitcpio
+	options = !strip
+	source = git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git
+	md5sums = SKIP
+
+pkgname = linux-next-git
+	pkgdesc = The Linux next kernel and modules (git version)
+	install = linux-next-git.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=18
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = kernel26-next-git=20150610
+	provides = kernel26-next-git-headers=20150610
+	conflicts = kernel26-next-git
+	conflicts = kernel26-next-git-headers
+	replaces = kernel26-next-git
+	replaces = kernel26-next-git-headers
+	backup = etc/mkinitcpio.d/linux-next-git.preset
+
