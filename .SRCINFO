@@ -1,0 +1,22 @@
+pkgbase = prog-express
+	pkgdesc = Prog-Express is a modern, intuitive and free control software for the Batronix USB programming devices
+	pkgver = 3.7.3
+	pkgrel = 1
+	url = http://www.batronix.com/
+	arch = i686
+	arch = x86_64
+	license = custom:Freeware
+	depends = xz
+	depends = libarchive
+	depends = mono
+	depends = mono-basic
+	depends = libusb
+	depends = sqlite
+	depends = libgdiplus
+	source_i686 = http://www.batronix.com//exe/Batronix/Prog-Express/deb/prog-express-3.7.3-1.i386.deb
+	sha256sums_i686 = 365a9bf42a9ac4f0af531da0ea5bbc56ce9e407afd96b9ecbc8d37929a7d93fe
+	source_x86_64 = http://www.batronix.com//exe/Batronix/Prog-Express/deb/prog-express-3.7.3-1.amd64.deb
+	sha256sums_x86_64 = 8337b7afa96442a62af4ea46d7c58f031aa41d9886abb8a6b8bda96da2d23c5a
+
+pkgname = prog-express
+
