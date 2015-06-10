@@ -1,0 +1,19 @@
+*** src/SDLSasteroids-3.0.1/src/sbitmap.h	2003-08-16 15:57:14.000000000 +0000
+--- ../SDLSasteroids-3.0.1/src/sbitmap.h	2011-01-01 15:45:03.000000000 +0000
+***************
+*** 36,42 ****
+    void LoadImage(char* path);
+    void LoadSurface(SDL_Surface* surface);
+  
+!   void put(float x, float y, float rotate = 1.0f, float rotate = 1.0f, float layer = 0.0f);
+    void putA(float x, float y, float layer = 0.0f, float alpha = 1.0f);
+    
+    inline float width() const
+--- 36,42 ----
+    void LoadImage(char* path);
+    void LoadSurface(SDL_Surface* surface);
+  
+!   void put(float x, float y, float sf = 1.0f, float rotate = 1.0f, float layer = 0.0f);
+    void putA(float x, float y, float layer = 0.0f, float alpha = 1.0f);
+    
+    inline float width() const

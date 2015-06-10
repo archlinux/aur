@@ -1,0 +1,33 @@
+*** src/SDLSasteroids-3.0.1/Makefile	2011-01-01 16:12:18.000000000 +0000
+--- src/SDLSasteroids-3.0.1/Makefile2	2011-01-01 16:12:09.000000000 +0000
+***************
+*** 1,9 ****
+  # Makefile for sasteroids
+  
+  # Edit Bellow to change the installation locations
+! GAMEDIR=/usr/share/sasteroids/
+! BINDIR=/usr/bin/
+! MANDIR=/usr/man
+  
+  # For OpenGL
+  EXTRA_DEFINES="-DWANT_OPENGL -DHAVE_SOUND"
+--- 1,9 ----
+  # Makefile for sasteroids
+  
+  # Edit Bellow to change the installation locations
+! GAMEDIR=$(DESTDIR)/usr/share/sasteroids/
+! BINDIR=$(DESTDIR)/usr/bin/
+! MANDIR=$(DESTDIR)/usr/man
+  
+  # For OpenGL
+  EXTRA_DEFINES="-DWANT_OPENGL -DHAVE_SOUND"
+***************
+*** 24,29 ****
+--- 24,30 ----
+  	install -d $(GAMEDIR)/sounds
+  	install -d $(GAMEDIR)/fonts
+  	install -d $(BINDIR)
++ 	install -d $(MANDIR)
+  	install --strip --mode=755 src/sasteroids $(BINDIR)
+  	install --mode=644 sasteroids.6 $(MANDIR)/man6
+  	install --mode=644 fonts/nicefont.ttf $(GAMEDIR)/fonts/
