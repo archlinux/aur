@@ -1,0 +1,16 @@
+pkgbase = libjpeg7
+	pkgdesc = Library of JPEG support functions, version 7
+	pkgver = 7
+	pkgrel = 1
+	url = http://www.ijg.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = libtool
+	depends = glibc
+	options = !libtool
+	source = http://www.ijg.org/files/jpegsrc.v7.tar.gz
+	md5sums = 382ef33b339c299b56baf1296cda9785
+
+pkgname = libjpeg7
+
