@@ -1,0 +1,15 @@
+pkgbase = python2-gitissius-git
+	pkgdesc = A distributed bug tracker for git.
+	pkgver = 20111022
+	pkgrel = 1
+	url = http://gitissius.org
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python2-distribute
+	depends = python2
+	optdepends = python2-colorama: for color support
+	conflicts = python2-gitissius
+
+pkgname = python2-gitissius-git
+
