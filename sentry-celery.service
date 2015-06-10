@@ -1,0 +1,12 @@
+[Unit]
+Description=Sentry's task queue provider.
+After=network.target
+
+[Service]
+User=sentry
+Restart=always
+Environment=PATH=/opt/sentry/bin
+ExecStart=/opt/sentry/bin/sentry --config=/etc/sentry/sentry.conf.py celery worker --loglevel=ERROR -B -s /opt/sentry/celery/celerybeat-schedule
+
+[Install]
+WantedBy=multi-user.target

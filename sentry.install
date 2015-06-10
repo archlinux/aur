@@ -1,0 +1,194 @@
+post_install(){
+
+    /usr/sbin/useradd -s /bin/false -d /opt/sentry -r sentry
+
+    /usr/bin/chown -R root:root /opt/sentry
+    /usr/bin/chown -R sentry:sentry /opt/sentry/.python-eggs
+    /usr/bin/chown -R sentry:sentry /etc/sentry
+    /usr/bin/chown root:root /etc/sentry
+
+    # Storage location for Celery's database.
+    /usr/bin/mkdir -p /opt/sentry/celery
+    /usr/bin/chown sentry:sentry /opt/sentry/celery
+
+    # Generate a new configuration.
+    if [ ! -e "/etc/sentry/sentry.conf.py" ] ; then
+        "/opt/sentry/bin/sentry" init "/etc/sentry/sentry.conf.py"
+    fi
+
+    /usr/bin/chmod 0600 /etc/sentry/sentry.conf.py
+    
+cat << EOF
+
+
+INSTALLING OR UPGRADING
+
+IF YOU'RE INSTALLING OR UPGRADING SENTRY, you will need to issue the following
+command before starting the server:
+
+    sudo -u sentry PATH=/opt/sentry/bin:\$PATH \\
+        /opt/sentry/bin/sentry --config=/etc/sentry/sentry.conf.py upgrade
+
+Be sure to edit the configuration file "/etc/sentry/sentry.conf.py" first!
+
+If you're upgrading Sentry, sometimes it may be necessary to run:
+
+    sudo systemctl --system daemon-reload
+    
+!!! BACK-UP YOUR SENTRY DATABASE BEFORE UPGRADING !!!
+
+RUNNING
+
+If you're starting Sentry for the first time, you'll may want to create at
+least one administrative account. To do so, run the createuser utility:
+
+    sudo -u sentry PATH=/opt/sentry/bin:\$PATH \\
+        /opt/sentry/bin/sentry --config=/etc/sentry/sentry.conf.py createuser
+
+and create a "superuser" when prompted.
+
+To start sentry, simply run the service (sentry-celery, required by sentry,
+will be started automatically):
+
+    sudo systemctl start sentry
+    
+To run Sentry without systemd, such as to test your configuration, use:
+
+    sudo -u sentry PATH=/opt/sentry/bin:\$PATH \\
+        --config=/etc/sentry/sentry.conf.py start
+
+EXTRAS
+
+Neither MySQL nor PostgreSQL support is installed into the Python virtualenv
+when building from the PKGBUILD. If you require either of these, you will
+need to install them manually (but don't forget to change your configuration
+file, /etc/sentry/sentry.conf.py to match!):
+
+    # MySQL
+    sudo -u sentry -- /usr/bin/bash -c \\
+    'source /opt/sentry/bin/activate && /opt/sentry/bin/pip install mysql-python'
+
+    # PostgreSQL
+    sudo -u sentry -- /usr/bin/bash -c \\
+    'source /opt/sentry/bin/activate && /opt/sentry/bin/pip install psycopg2'
+
+If you need additional Sentry plugins, you'll need to use Sentry's local copy
+of pip to install them in a manner similar to the one outlined above.
+
+I appreciate the tips and suggestions I've received since converting this
+package to a (mostly) pure virtualenv installation. Please report any issues
+related to the PKGBUILD on the AUR page or open a ticket on my Github
+project page:
+
+https://aur.archlinux.org/packages/sentry/
+https://github.com/zancarius/archlinux-pkgbuilds
+
+REMOVAL
+
+As of Sentry 7.1.4, this package will no longer remove the Sentry user by
+default. You must perform this step manually.
+
+EOF
+}
+
+post_upgrade(){
+
+    /usr/bin/chown -R root:root /opt/sentry
+    /usr/bin/chown -R sentry:sentry /etc/sentry
+    /usr/bin/chown -R sentry:sentry /opt/sentry/.python-eggs
+    /usr/bin/chown root:root /etc/sentry
+
+    # Storage location for Celery's database.
+    /usr/bin/mkdir -p /opt/sentry/celery
+    /usr/bin/chown sentry:sentry /opt/sentry/celery
+
+    /usr/bin/chmod 0600 /etc/sentry/sentry.conf.py
+
+cat << EOF
+
+UPGRADING - READ THIS FIRST
+
+If you're upgrading Sentry from any prior version, you will first need to
+stop the Sentry service and then reload systemd (sentry-celery first appeared
+in the Sentry 7.1.4 PKGBUILD; if you're upgrading from previous versions, omit
+it from these steps):
+
+    sudo systemctl stop sentry sentry-celery
+    sudo systemctl --system daemon-reload
+
+to ensure that the new systemd service file has been installed.
+
+You will also need to upgrade your database schema. To do so, copy and paste
+the following command (WITHOUT Sentry running):
+
+    sudo -u sentry PATH=/opt/sentry/bin:\$PATH \\
+        /opt/sentry/bin/sentry --config=/etc/sentry/sentry.conf.py upgrade
+
+You may need to run this command if you're creating a new installation or
+migrating database servers. Sentry will usually check migrations prior to
+starting, but ideally this step should be performed separately.
+
+Between major (and sometimes minor) version bumps, Sentry's configuration has
+a habit of changing, often introducing new options without which Sentry will
+not launch. As of the Sentry 7.1.4-2 PKGBUILD, Sentry's configuration is
+generated during installation only. You will need to regenerate the
+configuration and check the changes by hand (vimdiff is useful here):
+
+    sudo -u sentry /opt/sentry/bin/sentry init /etc/sentry/sentry.conf.new.py
+
+!!! ALWAYS BACK-UP YOUR DATABASE PRIOR TO UPGRADING SENTRY !!!
+
+WARNINGS
+
+If you have upgraded to Pacman 4.2 or later, Sentry's installation process
+will generate a large number of permissions- and ownership-related warnings.
+Ignore these. Following Sentry 7.1.4, this package will now correct the
+ownership so subsequent installs will no longer complain.
+
+If something happens and Sentry will not run, make sure that 1) you've
+migrated your database schema via Sentry's upgrade process (above) and 2)
+the contents of the /etc/sentry directory are owned by the sentry user.
+Other directories that may need permission tweaks include
+/opt/sentry/.python-eggs and /opt/sentry/celery.
+
+EXTRAS
+
+Neither MySQL nor PostgreSQL support is installed into the Python virtualenv
+when building from the PKGBUILD. If you require either of these, you will
+need to install them manually (but don't forget to change your configuration
+file, /etc/sentry/sentry.conf.py to match!):
+
+    # MySQL
+    sudo -u sentry -- /usr/bin/bash -c \\
+    'source /opt/sentry/bin/activate && /opt/sentry/bin/pip install mysql-python'
+
+    # PostgreSQL
+    sudo -u sentry -- /usr/bin/bash -c \\
+    'source /opt/sentry/bin/activate && /opt/sentry/bin/pip install psycopg2'
+
+If you need additional Sentry plugins, you'll need to use Sentry's local copy
+of pip to install them in a manner similar to the one outlined above.
+
+The Celery backend and task queue is now installed as a separate service
+and is no longer managed by Sentry. This is started via the sentry-celery
+systemd service and requires some configuration before it will work. For a
+basic setup to get started quickly, you'll need to uncomment the variables
+CELERY_ALWAYS_EAGER and BROKER_URL in /etc/sentry/sentry.conf.py. This also
+implies that Sentry now REQUIRES Redis as a dependency.
+
+I appreciate the tips and suggestions I've received since converting this
+package to a (mostly) pure virtualenv installation. Please report any issues
+related to the PKGBUILD on the AUR page or open a ticket on my Github
+project page:
+
+https://aur.archlinux.org/packages/sentry/
+https://github.com/zancarius/archlinux-pkgbuilds
+
+REMOVAL
+
+As of Sentry 7.1.4, this package will no longer remove the Sentry user by
+default. You must perform this step manually.
+
+EOF
+
+}

@@ -1,0 +1,25 @@
+pkgbase = sentry
+	pkgdesc = Python-based realtime logging and aggregation server.
+	pkgver = 7.5.4
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/sentry
+	install = sentry.install
+	arch = any
+	license = BSD
+	makedepends = python2-pip
+	makedepends = python2-setuptools
+	makedepends = python2-virtualenv
+	depends = python2
+	depends = redis
+	options = !strip
+	source = https://pypi.python.org/packages/source/s/sentry/sentry-7.5.4.tar.gz
+	source = sentry.install
+	source = sentry.service
+	source = sentry-celery.service
+	md5sums = f68f9a17ca893a9c747f96d970449080
+	md5sums = 8aab776f3d428c417f51522c256b5aeb
+	md5sums = 8d1d8d166a88bc89ad2265fd67ab3523
+	md5sums = 78dd3e18109c2bf92f7f884de0237781
+
+pkgname = sentry
+
