@@ -1,0 +1,35 @@
+pkgbase = kamailio
+	pkgdesc = Rock solid SIP server
+	pkgver = 4.3.0
+	pkgrel = 1
+	url = http://www.kamailio.org/
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = flex
+	makedepends = bison
+	makedepends = docbook2x
+	makedepends = mariadb
+	makedepends = postgresql
+	makedepends = libxml2
+	makedepends = radiusclient-ng
+	makedepends = lua51
+	makedepends = mono
+	makedepends = hiredis
+	makedepends = libpurple
+	makedepends = net-snmp
+	makedepends = libunistring
+	makedepends = python2
+	optdepends = mariadb: mysql support
+	optdepends = expat: xmpp/jabber support
+	optdepends = libxml2: cpl and presence modules support
+	optdepends = postgresql: postgresql backend
+	backup = etc/kamailio/kamctlrc
+	backup = etc/kamailio/kamailio.cfg
+	backup = etc/kamailio/kamailio-basic.cfg
+	backup = etc/kamailio/kamailio-advanced.cfg
+	source = http://www.kamailio.org/pub/kamailio/4.3.0/src/kamailio-4.3.0_src.tar.gz
+	sha256sums = e4bd1d166a58817237809f754b39f3039c60ac0ab60794bb0f7627b6890caec4
+
+pkgname = kamailio
+
