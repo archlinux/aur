@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Heimdall
+Type=Application
+Comment=Samsung Galaxy Firmware Flasher
+Terminal=false
+Exec=heimdall-frontend
+Icon=heimdall
+Categories=System;
+GenericName=Firmware Flasher

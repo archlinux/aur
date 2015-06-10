@@ -1,0 +1,4 @@
+post_install() {
+    echo "The donation menu and links in the UI have been removed from the GUI in this version."
+    echo -e "Please consider donating to the developer @ http://glassechidna.com.au/donate/ - Thanks!\n"
+}

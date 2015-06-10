@@ -1,0 +1,343 @@
+diff --git a/heimdall-frontend/Source/FirmwareInfo.cpp b/heimdall-frontend/Source/FirmwareInfo.cpp
+index a32ddea..9caf974 100644
+--- a/heimdall-frontend/Source/FirmwareInfo.cpp
++++ b/heimdall-frontend/Source/FirmwareInfo.cpp
+@@ -355,7 +355,6 @@ void FirmwareInfo::Clear(void)
+ 
+ 	developers.clear();
+ 	url.clear();
+-	donateUrl.clear();
+ 
+ 	deviceInfos.clear();
+ 
+@@ -369,7 +368,7 @@ void FirmwareInfo::Clear(void)
+ 
+ bool FirmwareInfo::IsCleared(void) const
+ {
+-	return (name.isEmpty() && version.isEmpty() && platformInfo.IsCleared() && developers.isEmpty() && url.isEmpty() && url.isEmpty() && donateUrl.isEmpty()
++	return (name.isEmpty() && version.isEmpty() && platformInfo.IsCleared() && developers.isEmpty() && url.isEmpty() && url.isEmpty()
+ 		&& deviceInfos.isEmpty() && pitFilename.isEmpty() && !repartition && !noReboot && fileInfos.isEmpty());
+ }
+ 
+@@ -382,7 +381,6 @@ bool FirmwareInfo::ParseXml(QXmlStreamReader& xml)
+ 	bool foundPlatform = false;
+ 	bool foundDevelopers = false;
+ 	bool foundUrl = false;
+-	bool foundDonateUrl = false;
+ 	bool foundDevices = false;
+ 	bool foundPit = false;
+ 	bool foundRepartition = false;
+@@ -519,18 +517,6 @@ bool FirmwareInfo::ParseXml(QXmlStreamReader& xml)
+ 
+ 				url = xml.readElementText();
+ 			}
+-			else if (xml.name() == "donateurl")
+-			{
+-				if (foundDonateUrl)
+-				{
+-					Alerts::DisplayError("Found multiple <donateurl> elements in <firmware>.");
+-					return (false);
+-				}
+-
+-				foundDonateUrl = true;
+-
+-				donateUrl = xml.readElementText();
+-			}
+ 			else if (xml.name() == "devices")
+ 			{
+ 				if (foundDevices)
+@@ -736,13 +722,6 @@ void FirmwareInfo::WriteXml(QXmlStreamWriter& xml) const
+ 		xml.writeEndElement();
+ 	}
+ 
+-	if (!donateUrl.isEmpty())
+-	{
+-		xml.writeStartElement("donateurl");
+-		xml.writeCharacters(donateUrl);
+-		xml.writeEndElement();
+-	}
+-
+ 	xml.writeStartElement("devices");
+ 
+ 	for (int i = 0; i < deviceInfos.length(); i++)
+diff --git a/heimdall-frontend/Source/FirmwareInfo.h b/heimdall-frontend/Source/FirmwareInfo.h
+index 8f05ab4..d2975da 100644
+--- a/heimdall-frontend/Source/FirmwareInfo.h
++++ b/heimdall-frontend/Source/FirmwareInfo.h
+@@ -166,7 +166,6 @@ namespace HeimdallFrontend
+ 
+ 			QList<QString> developers;
+ 			QString url;
+-			QString donateUrl;
+ 
+ 			QList<DeviceInfo> deviceInfos;
+ 
+@@ -237,16 +236,6 @@ namespace HeimdallFrontend
+ 				this->url = url;
+ 			}
+ 
+-			const QString& GetDonateUrl(void) const
+-			{
+-				return (donateUrl);
+-			}
+-
+-			void SetDonateUrl(const QString& donateUrl)
+-			{
+-				this->donateUrl = donateUrl;
+-			}
+-
+ 			const QList<DeviceInfo>& GetDeviceInfos(void) const
+ 			{
+ 				return (deviceInfos);
+diff --git a/heimdall-frontend/Source/mainwindow.cpp b/heimdall-frontend/Source/mainwindow.cpp
+index 46dc381..bb5c686 100644
+--- a/heimdall-frontend/Source/mainwindow.cpp
++++ b/heimdall-frontend/Source/mainwindow.cpp
+@@ -227,7 +227,6 @@ void MainWindow::UpdateLoadPackageInterfaceAvailability(void)
+ 	if (loadedPackageData.IsCleared())
+ 	{
+ 		developerHomepageButton->setEnabled(false);
+-		developerDonateButton->setEnabled(false);
+ 
+ 		loadFirmwareButton->setEnabled(false);
+ 	}
+@@ -238,11 +237,6 @@ void MainWindow::UpdateLoadPackageInterfaceAvailability(void)
+ 		else
+ 			developerHomepageButton->setEnabled(false);
+ 
+-		if (!loadedPackageData.GetFirmwareInfo().GetDonateUrl().isEmpty())
+-			developerDonateButton->setEnabled(true);
+-		else
+-			developerDonateButton->setEnabled(false);
+-
+ 		loadFirmwareButton->setEnabled(heimdallState == HeimdallState::Stopped);
+ 	}
+ }
+@@ -426,7 +420,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
+ 	QObject::connect(functionTabWidget, SIGNAL(currentChanged(int)), this, SLOT(FunctionTabChanged(int)));
+ 	
+ 	// Menu
+-	QObject::connect(actionDonate, SIGNAL(triggered()), this, SLOT(OpenDonationWebpage()));
+ 	QObject::connect(actionVerboseOutput, SIGNAL(toggled(bool)), this, SLOT(SetVerboseOutput(bool)));
+ 	QObject::connect(actionResumeConnection, SIGNAL(toggled(bool)), this, SLOT(SetResume(bool)));
+ 	QObject::connect(actionAboutHeimdall, SIGNAL(triggered()), this, SLOT(ShowAbout()));
+@@ -434,7 +427,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
+ 	// Load Package Tab
+ 	QObject::connect(browseFirmwarePackageButton, SIGNAL(clicked()), this, SLOT(SelectFirmwarePackage()));
+ 	QObject::connect(developerHomepageButton, SIGNAL(clicked()), this, SLOT(OpenDeveloperHomepage()));
+-	QObject::connect(developerDonateButton, SIGNAL(clicked()), this, SLOT(OpenDeveloperDonationWebpage()));
+ 	QObject::connect(loadFirmwareButton, SIGNAL(clicked()), this, SLOT(LoadFirmwarePackage()));
+ 
+ 	QObject::connect(partitionsListWidget, SIGNAL(currentRowChanged(int)), this, SLOT(SelectPartition(int)));
+@@ -461,7 +453,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
+ 	QObject::connect(createPlatformVersionLineEdit, SIGNAL(textChanged(const QString&)), this, SLOT(PlatformVersionChanged(const QString&)));
+ 
+ 	QObject::connect(createHomepageLineEdit, SIGNAL(textChanged(const QString&)), this, SLOT(HomepageUrlChanged(const QString&)));
+-	QObject::connect(createDonateLineEdit, SIGNAL(textChanged(const QString&)), this, SLOT(DonateUrlChanged(const QString&)));
+ 
+ 	QObject::connect(createDevelopersListWidget, SIGNAL(currentRowChanged(int)), this, SLOT(SelectDeveloper(int)));
+ 	QObject::connect(createDeveloperNameLineEdit, SIGNAL(textChanged(const QString&)), this, SLOT(DeveloperNameChanged(const QString&)));
+@@ -500,11 +491,6 @@ MainWindow::~MainWindow()
+ {
+ }
+ 
+-void MainWindow::OpenDonationWebpage(void)
+-{
+-	QDesktopServices::openUrl(QUrl("http://www.glassechidna.com.au/donate/", QUrl::StrictMode));
+-}
+-
+ void MainWindow::SetVerboseOutput(bool enabled)
+ {
+ 	verboseOutput = enabled;
+@@ -544,12 +530,6 @@ void MainWindow::OpenDeveloperHomepage(void)
+ 		Alerts::DisplayWarning(QString("Cannot open invalid URL:\n%1").arg(loadedPackageData.GetFirmwareInfo().GetUrl()));
+ }
+ 
+-void MainWindow::OpenDeveloperDonationWebpage(void)
+-{
+-	if (!QDesktopServices::openUrl(QUrl(loadedPackageData.GetFirmwareInfo().GetDonateUrl(), QUrl::TolerantMode)))
+-		Alerts::DisplayWarning(QString("Cannot open invalid URL:\n%1").arg(loadedPackageData.GetFirmwareInfo().GetDonateUrl()));
+-}
+-
+ void MainWindow::LoadFirmwarePackage(void)
+ {
+ 	workingPackageData.Clear();
+@@ -992,11 +972,6 @@ void MainWindow::HomepageUrlChanged(const QString& text)
+ 	workingPackageData.GetFirmwareInfo().SetUrl(text);
+ }
+ 
+-void MainWindow::DonateUrlChanged(const QString& text)
+-{
+-	workingPackageData.GetFirmwareInfo().SetDonateUrl(text);
+-}
+-
+ void MainWindow::DeveloperNameChanged(const QString& text)
+ {
+ 	UNUSED(text);
+diff --git a/heimdall-frontend/Source/mainwindow.h b/heimdall-frontend/Source/mainwindow.h
+index 6aa9519..9281862 100644
+--- a/heimdall-frontend/Source/mainwindow.h
++++ b/heimdall-frontend/Source/mainwindow.h
+@@ -110,7 +110,6 @@ namespace HeimdallFrontend
+ 
+ 		public slots:
+ 
+-			void OpenDonationWebpage(void);
+ 			void SetVerboseOutput(bool enabled);
+ 			void ShowAbout(void);
+ 
+@@ -119,7 +118,6 @@ namespace HeimdallFrontend
+ 			// Load Package Tab
+ 			void SelectFirmwarePackage(void);
+ 			void OpenDeveloperHomepage(void);
+-			void OpenDeveloperDonationWebpage(void);
+ 			void LoadFirmwarePackage(void);
+ 
+ 			// Flash Tab
+@@ -147,7 +145,6 @@ namespace HeimdallFrontend
+ 			void PlatformVersionChanged(const QString& text);
+ 
+ 			void HomepageUrlChanged(const QString& text);
+-			void DonateUrlChanged(const QString& text);
+ 
+ 			void DeveloperNameChanged(const QString& text);
+ 			void SelectDeveloper(int row);
+diff --git a/heimdall-frontend/aboutform.ui b/heimdall-frontend/aboutform.ui
+index b7f00f3..ed4e918 100644
+--- a/heimdall-frontend/aboutform.ui
++++ b/heimdall-frontend/aboutform.ui
+@@ -151,15 +151,6 @@ p, li { white-space: pre-wrap; }
+          <property name="frameShadow">
+           <enum>QFrame::Plain</enum>
+          </property>
+-         <property name="text">
+-          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+-p, li { white-space: pre-wrap; }
+-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Lucida Grande'; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
+-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt;&quot;&gt;If you appreciate this software and you would like to support future development please consider donating:&lt;/span&gt;&lt;/p&gt;
+-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:10pt;&quot;&gt;&lt;/p&gt;
+-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;a href=&quot;http://www.glassechidna.com.au/donate/&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; text-decoration: underline; color:#0000ff;&quot;&gt;http://www.glassechidna.com.au/donate/&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+-         </property>
+          <property name="textFormat">
+           <enum>Qt::RichText</enum>
+          </property>
+diff --git a/heimdall-frontend/mainwindow.ui b/heimdall-frontend/mainwindow.ui
+index ce42a89..4bb472e 100644
+--- a/heimdall-frontend/mainwindow.ui
++++ b/heimdall-frontend/mainwindow.ui
+@@ -342,22 +342,6 @@
+         <bool>true</bool>
+        </property>
+       </widget>
+-      <widget class="QPushButton" name="developerDonateButton">
+-       <property name="enabled">
+-        <bool>false</bool>
+-       </property>
+-       <property name="geometry">
+-        <rect>
+-         <x>410</x>
+-         <y>30</y>
+-         <width>71</width>
+-         <height>23</height>
+-        </rect>
+-       </property>
+-       <property name="text">
+-        <string>Donate</string>
+-       </property>
+-      </widget>
+       <widget class="QPushButton" name="developerHomepageButton">
+        <property name="enabled">
+         <bool>false</bool>
+@@ -1149,19 +1133,6 @@
+        <property name="title">
+         <string>URLs (Optional)</string>
+        </property>
+-       <widget class="QLabel" name="createDonateLabel">
+-        <property name="geometry">
+-         <rect>
+-          <x>10</x>
+-          <y>60</y>
+-          <width>81</width>
+-          <height>16</height>
+-         </rect>
+-        </property>
+-        <property name="text">
+-         <string>Donate</string>
+-        </property>
+-       </widget>
+        <widget class="QLabel" name="createHomepageLabel">
+         <property name="geometry">
+          <rect>
+@@ -1191,22 +1162,6 @@
+          <bool>false</bool>
+         </property>
+        </widget>
+-       <widget class="QLineEdit" name="createDonateLineEdit">
+-        <property name="enabled">
+-         <bool>true</bool>
+-        </property>
+-        <property name="geometry">
+-         <rect>
+-          <x>100</x>
+-          <y>60</y>
+-          <width>181</width>
+-          <height>21</height>
+-         </rect>
+-        </property>
+-        <property name="readOnly">
+-         <bool>false</bool>
+-        </property>
+-       </widget>
+       </widget>
+      </widget>
+      <widget class="QGroupBox" name="createPlatformVersionGroup">
+@@ -1848,12 +1803,6 @@
+     </property>
+     <addaction name="actionAboutHeimdall"/>
+    </widget>
+-   <widget class="QMenu" name="menuDonate">
+-    <property name="title">
+-     <string>Donate</string>
+-    </property>
+-    <addaction name="actionDonate"/>
+-   </widget>
+    <widget class="QMenu" name="menuAdvanced">
+     <property name="title">
+      <string>Advanced</string>
+@@ -1862,7 +1811,6 @@
+     <addaction name="separator"/>
+     <addaction name="actionVerboseOutput"/>
+    </widget>
+-   <addaction name="menuDonate"/>
+    <addaction name="menuAdvanced"/>
+    <addaction name="menuHelp"/>
+   </widget>
+@@ -1876,11 +1824,6 @@
+     <string>About Heimdall</string>
+    </property>
+   </action>
+-  <action name="actionDonate">
+-   <property name="text">
+-    <string>Donate to Glass Echidna</string>
+-   </property>
+-  </action>
+   <action name="actionPackage_Creation">
+    <property name="text">
+     <string>Package Creation</string>
+@@ -1913,7 +1856,6 @@
+   <tabstop>platformLineEdit</tabstop>
+   <tabstop>developerNamesLineEdit</tabstop>
+   <tabstop>developerHomepageButton</tabstop>
+-  <tabstop>developerDonateButton</tabstop>
+   <tabstop>supportedDevicesListWidget</tabstop>
+   <tabstop>includedFilesListWidget</tabstop>
+   <tabstop>repartitionRadioButton</tabstop>
+@@ -1930,7 +1872,6 @@
+   <tabstop>createPlatformNameLineEdit</tabstop>
+   <tabstop>createPlatformVersionLineEdit</tabstop>
+   <tabstop>createHomepageLineEdit</tabstop>
+-  <tabstop>createDonateLineEdit</tabstop>
+   <tabstop>createDeveloperNameLineEdit</tabstop>
+   <tabstop>addDeveloperButton</tabstop>
+   <tabstop>createDevelopersListWidget</tabstop>
