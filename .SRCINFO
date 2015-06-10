@@ -1,0 +1,15 @@
+pkgbase = perl-snmp-info
+	pkgdesc = Perl/CPAN Module SNMP::Info
+	pkgver = 3.23
+	pkgrel = 1
+	url = https://metacpan.org/release/SNMP-Info
+	arch = any
+	license = BSD
+	depends = perl
+	depends = net-snmp
+	options = !emptydirs
+	source = http://cpan.metacpan.org/authors/id/O/OL/OLIVER/SNMP-Info-3.23.tar.gz
+	md5sums = 06fd59b728c6266e881a6ebeb13d228a
+
+pkgname = perl-snmp-info
+
