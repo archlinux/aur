@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Ferrando <alferpal@gmail.com>
 
 pkgname=iojs
-pkgver=2.0.2
+pkgver=2.2.1
 _foldername=iojs-v${pkgver}
 pkgrel=1
 pkgdesc='Evented I/O for V8 JavaScript - Node.js fork'
@@ -16,7 +16,6 @@ conflicts=('nodejs' 'iojs-bin')
 options=('!emptydirs')
 source=("https://iojs.org/dist/v${pkgver}/iojs-v${pkgver}.tar.gz")
 install=iojs.install
-sha256sums=('31cc88739c368ddc1c0d259ab8dc3f2040649f5e4e91456f6fdb3be8815e3ae3')
 
 prepare() {
 
@@ -42,7 +41,6 @@ build() {
     --prefix=/usr \
     --shared-openssl \
     --shared-zlib \
-    --with-intl=system-icu \
     --without-npm 
   make
 }
