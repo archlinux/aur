@@ -1,0 +1,51 @@
+diff -aur selectwm-0.4.1.orig/src/define.h selectwm-0.4.1/src/define.h
+--- selectwm-0.4.1.orig/src/define.h	2002-05-27 14:28:40.000000000 +0600
++++ selectwm-0.4.1/src/define.h	2012-05-16 14:47:32.224088035 +0600
+@@ -1,6 +1,5 @@
+ #include "config.h"
+ 
+-#define GTK_DISABLE_DEPRECATED
+ #define G_DISABLE_DEPRECATED
+ 
+ #ifdef ENABLE_NLS
+diff -aur selectwm-0.4.1.orig/src/miscui.c selectwm-0.4.1/src/miscui.c
+--- selectwm-0.4.1.orig/src/miscui.c	2004-04-22 01:04:30.000000000 +0600
++++ selectwm-0.4.1/src/miscui.c	2012-05-16 14:30:18.880748861 +0600
+@@ -171,14 +171,14 @@
+ 	choptions.spin = spin;
+ 	choptions.selectwm_config = selectwm_config;
+ 	g_signal_connect (G_OBJECT (btn), "clicked", G_CALLBACK(change_options), &choptions);
+-	GTK_WIDGET_SET_FLAGS (btn, GTK_CAN_DEFAULT);
++	gtk_widget_set_can_default(GTK_WIDGET(btn), TRUE);
+ 	gtk_container_add (GTK_CONTAINER (bbox), btn);
+ 	gtk_widget_grab_default (btn);
+ 	btn = gtk_button_new_from_stock (GTK_STOCK_CANCEL);
+ 	g_signal_connect_swapped (G_OBJECT (btn), "clicked", G_CALLBACK(gtk_widget_destroy), window);
+ 	gtk_container_add (GTK_CONTAINER (bbox), btn);
+ 
+-	GTK_WIDGET_SET_FLAGS (btn, GTK_CAN_DEFAULT);
++	gtk_widget_set_can_default(GTK_WIDGET(btn), TRUE);
+ 
+ 	gtk_widget_show_all (win_vbox);
+ 	gtk_widget_show (window);
+diff -aur selectwm-0.4.1.orig/src/options.c selectwm-0.4.1/src/options.c
+--- selectwm-0.4.1.orig/src/options.c	2002-05-22 23:39:27.000000000 +0600
++++ selectwm-0.4.1/src/options.c	2012-05-16 14:28:00.837414748 +0600
+@@ -32,7 +32,7 @@
+ #include "miscui.h"
+ #include "modify.h"
+ 
+-static GString *getline (FILE *fichier) {
++static GString *getline_new (FILE *fichier) {
+ 	GString *temp;
+ 	gchar buf[128];
+ 	
+@@ -64,7 +64,7 @@
+ 	}
+ 	buf = g_string_new ("");
+ 	while (!feof (config)) {
+-		buf = getline (config);
++		buf = getline_new (config);
+ 
+ 		if (buf->len > 0 && buf->str[0] != '#') {
+ 			if (g_strrstr (buf->str, ":")) {
