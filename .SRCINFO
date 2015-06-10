@@ -1,0 +1,18 @@
+pkgbase = python2-pyocr
+	pkgdesc = Optical character recognition (OCR) tool wrapper for python
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/jflesch/pyocr
+	arch = any
+	license = GPL3
+	makedepends = python2
+	makedepends = python2-setuptools
+	depends = python2-pillow
+	depends = tesseract
+	provides = python2-pyocr
+	conflicts = python2-pyocr
+	source = https://github.com/jflesch/pyocr/archive/v0.3.0.zip
+	sha256sums = 74b7bc84db345fbd316adf54815e16a01bc697f2f3f08c901b7a9aca2cdb8c30
+
+pkgname = python2-pyocr
+
