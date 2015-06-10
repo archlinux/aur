@@ -1,0 +1,10 @@
+post_install() {
+  getent group dovenull &> /dev/null || groupadd -g 74 dovenull &> /dev/null
+  getent group dovecot &> /dev/null  || groupadd -g 76 dovecot &> /dev/null
+  getent passwd dovenull &> /dev/null || useradd -s /sbin/nologin -c "Dovecot user for completely untrustworthy processes" -d /var/empty -u 74 -g dovenull -r dovenull &> /dev/null
+  getent passwd dovecot &> /dev/null  || useradd -s /sbin/nologin -c "Dovecot user" -d /var/empty -u 76 -g dovecot -r dovecot &> /dev/null
+}
+
+post_remove() {
+  rm -rf /var/run/dovecot/ &> /dev/null || /bin/true
+}
