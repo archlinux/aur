@@ -1,0 +1,13 @@
+pkgbase = lettersalad
+	pkgdesc = CLI game - Solve wordsearch puzzles.
+	pkgver = 0.5
+	pkgrel = 2
+	url = http://www.dynamix-tontechnik.ch/linux_lettersalad.html
+	arch = any
+	license = GPL
+	depends = python
+	source = http://www.dynamix-tontechnik.ch/code/lettersalad/0.5/lettersalad.tar.gz
+	md5sums = 599e9eefeb5e0cc130a074b20d89943a
+
+pkgname = lettersalad
+
