@@ -1,0 +1,12 @@
+--- Makefile.dist	2009-01-08 13:36:04.598489682 -0700
++++ Makefile	2009-01-08 13:40:23.116347817 -0700
+@@ -13,9 +13,6 @@
+ 	mkdir -p $(DESTDIR)/etc/logrotate.d
+ 	install -m 644 yum.logrotate $(DESTDIR)/etc/logrotate.d/yum
+ 
+-	mkdir -p $(DESTDIR)/etc/rc.d/init.d
+-	install -m 755 yum-updatesd.init $(DESTDIR)/etc/rc.d/init.d/yum-updatesd
+-
+ 	mkdir -p $(DESTDIR)/etc/dbus-1/system.d/
+ 	install -m 755 yum-updatesd-dbus.conf $(DESTDIR)/etc/dbus-1/system.d/yum-updatesd.conf
+ 
