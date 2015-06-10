@@ -1,0 +1,29 @@
+pkgbase = indigo
+	pkgdesc = Physically-based unbiased render engine
+	pkgver = 2.4.13
+	pkgrel = 1
+	url = http://www.indigorenderer.com/
+	install = indigo.install
+	arch = x86_64
+	arch = i686
+	license = custom
+	depends = wxgtk
+	depends = libtiff4
+	depends = libjpeg6
+	options = docs
+	backup = opt/indigo/inifile.xml
+	source = http://www.indigorenderer.com/dist/beta/indigo_v2.4.13.tar.gz
+	source = indigo.desktop
+	source = indigo.png
+	source = indigo.sh
+	source = indigo_console.sh
+	source = http://www.indigorenderer.com/dist/exporters/blendigo/blendigo-linux-2.4.Stable.2.tar.gz
+	md5sums = bec2669449d62180516c8fd4d5c751ef
+	md5sums = 3d1ee12344502bda3a41f496e97a4cf4
+	md5sums = 19fde0fa8b9151f7d2aa56710a1296d6
+	md5sums = a186f890883ab81744904a93ff91f56e
+	md5sums = 09062de09facc7652f8fe9e6e4de635f
+	md5sums = 401bacee3fe7e8b1272f7e02a0978257
+
+pkgname = indigo
+

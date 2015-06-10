@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Indigo
+Comment=A physically-based renderer
+Exec=indigo %f
+Icon=indigo
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Categories=Graphics;3DGraphics;
