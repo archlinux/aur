@@ -1,0 +1,115 @@
+2014-01-10, v0.6.1
+	* Comply with the AstakosClient changes made in kamaki 0.12
+
+2014-01-08, v0.6
+	* Rename the dialog-based application to snf-image-creator and the
+	  non-interactive command line one to snf-mkimage
+	* Support Windows Server 2012 R2
+	* Allow image creation for unsupported media
+	* Make winexe an optional dependency
+	* Fix bugs
+
+2013-10-09, v0.5.3
+	* Fix a bug in snf-mkimage expert mode were the program could crash if
+	  the image did not have any image properties
+
+2013-09-09, v0.5.2
+	* Fix some errors in the ci scripts
+
+2013-08-23, v0.5.1
+	* Allow more characters in the cloud name
+	* Fix various bugs
+	* Handle kamaki config errors
+
+2013-08-04, v0.5
+	* Add support for sysprep-parameters
+	* Add support for syspreping Windows media
+	* Code cleanup
+
+2013-07-31, v0.4.4
+	* Fix a bug where the system tried to use file scrubbing without
+	  checking if it was supported
+
+2013-07-18, v0.4.3
+	* Force TERM=linux when working on xterm. This makes dialog behave
+	  better under OpenSUSE
+
+2013-07-17, v0.4.2
+	* Fix a dialog bug affecting only OpenSUSE
+
+2013-06-21, v0.4.1
+	* Fix a bug that caused an abnormal termination when trying to
+	  determine the available users in a Windows image
+
+2013-06-21, v0.4
+	* Populate the USERS metadata in Windows images
+	* Support kamaki 0.9 and synnefo 0.14
+	* Change the metadata file format to json
+	* Support the devflow building system
+
+2013-05-27, v0.3
+	* Support media hosting FreeBSD systems
+	* Check if remote files exist when uploading images to pithos
+	* Make the md5sum and metadate files public if image gets registered as
+	  public
+	* Fix minor bugs and typos
+
+2013-05-01, v0.2.10
+	* Fix a bug where acl and user_xattr mount options where not respected
+	  in host bundling operation
+
+2013-04-25, v0.2.9
+	* Support kamaki 0.8
+	* Fix a bug in util.get_command()
+	* Move some linux specific code from unix.py to linux.py
+
+2013-03-28, v0.2.8
+	* Fix a bug in wizard mode
+	* Cleanup and refine the code
+
+2013-03-21, v0.2.7
+	* Fix a bug in host bundling mode where some files were erroneously
+	  excluded from the image
+	* Fix a bug were snf-image-creator tried to verify the token even when
+	  -t option was not defined by the user
+
+2013-03-19, v0.2.6
+	* Fix a bug in host bundling mode where the permissions of /tmp and
+	  /var/tmp were not respected
+
+2013-03-19, v0.2.5
+	* Add support for private images
+	* Only use the token to authenticate to synnefo
+	* Show the user-provided info in the confirmation dialog of the wizard
+	* Fix minor typos & bugs
+
+2013-03-06, v0.2.4
+	* Rename README.rst to README
+	* Enforce raw image format in libguestfs
+	* User user id instead of e-mail when authentication with synnefo
+
+2013-01-30, v0.2.3
+	* Add support for gpt partition tables in bundle volume
+	* Add AUTHORS ChangeLog and man pages
+	* support pyparted 3.4 and python 2.6
+
+2013-01-22, v0.2.2
+	* Fix bugs in bundle_host and cleanup functions
+
+2013-01-16, v0.2.1
+	* Fix bug in dialog
+	* Support python-sendfile 2.x
+
+2013-01-14, v0.2
+	* Add support for bundling the host system
+	* Add new tmpdir option for specifying a temporary directory
+	* Add .kamakirc as sensitive userdatat in cleanup_userdata sysprep
+	* Fix typos & bugs
+
+2012-12-03, v0.1.1
+	* Fix bugs in dialog wizard
+	* Fix typos
+
+2012-11-05, v0.1
+	* Initial Version
+
