@@ -1,0 +1,34 @@
+pkgbase = gwyddion
+	pkgdesc = A data visualization and processing tool for scanning probe miscroscopy (SPM, i.e. AFM, STM, MFM, SNOM/NSOM, ...) and profilometry, useful also for general image and 2D data analysis
+	pkgver = 2.41
+	pkgrel = 1
+	url = http://gwyddion.net/
+	install = gwyddion.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	depends = gtk2
+	depends = pango
+	depends = cairo
+	depends = gtkglext
+	depends = desktop-file-utils
+	depends = python2
+	depends = pygtk
+	depends = hicolor-icon-theme
+	depends = openexr
+	depends = fftw
+	depends = libunique
+	optdepends = libxmu: for alternative "remote control" backend
+	optdepends = gconf: better GNOME and XFce integration (SPM file thumbnails)
+	optdepends = libxml2: SPML file support
+	optdepends = zlib: Matlab MAT5 file support
+	optdepends = perl: development of plug-in
+	optdepends = ruby: development of plug-in
+	optdepends = fpc: development of plug-in
+	optdepends = gtksourceview2: Pygwy console syntax highlighting
+	source = http://downloads.sourceforge.net/sourceforge/gwyddion/gwyddion-2.41.tar.xz
+	sha256sums = dcccba56231d6553ded5ba3613f70e4b71f4365e6482e65c69b4eea8bb4d8afa
+
+pkgname = gwyddion
+
