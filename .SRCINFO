@@ -1,0 +1,23 @@
+pkgbase = light-locker-gtk2
+	pkgdesc = A simple session locker
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/the-cavalry/light-locker
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = gnome-common
+	makedepends = intltool
+	depends = dbus-glib
+	depends = gtk2
+	depends = libxxf86misc
+	depends = lightdm
+	depends = libxss
+	provides = light-locker
+	conflicts = light-locker
+	conflicts = light-locker-git
+	source = https://github.com/the-cavalry/light-locker/releases/download/v1.4.0/light-locker-1.4.0.tar.bz2
+	sha256sums = 560f20390b24513d5bf7b691bac5d745b76eb21ac3bccd877b73cb7f6d137ec3
+
+pkgname = light-locker-gtk2
+
