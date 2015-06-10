@@ -1,0 +1,10 @@
+[Unit]
+Description=iked daemon
+After=syslog.target network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/iked
+
+[Install]
+WantedBy=multi-user.target

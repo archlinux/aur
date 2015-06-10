@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+GenericName=Shrew VPN Client
+Comment=VPN Client
+Name=Shrew VPN Client
+Exec=qikea
+Icon=/usr/share/icons/ikea.png
+Type=Application
+Terminal=false
+Categories=Application;Network;

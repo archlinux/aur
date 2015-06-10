@@ -1,0 +1,30 @@
+pkgbase = shrew-vpn-client
+	pkgdesc = A portable VPN client for Linux with Qt GUI
+	pkgver = 2.2.1
+	pkgrel = 2
+	url = http://www.shrew.net/
+	arch = i686
+	arch = x86_64
+	license = osi
+	makedepends = gcc
+	makedepends = flex
+	makedepends = libedit
+	makedepends = bison
+	makedepends = cmake
+	depends = qt4
+	depends = openssl
+	optdepends = openldap
+	optdepends = logrotate
+	conflicts = shrew-vpn-client-alpha
+	backup = etc/iked.conf
+	source = http://www.shrew.net/download/ike/ike-2.2.1-release.tbz2
+	source = ikea.desktop
+	source = iked.conf
+	source = iked.service
+	md5sums = 8fc14ac86771ee693d3950757c84f335
+	md5sums = 5b35a4246eb1b7bd4bfb6780c23d39f2
+	md5sums = 3cfe649578267235d60ab7cfb6fb4c57
+	md5sums = e90d5922d37f9e45515c5754a3a29c73
+
+pkgname = shrew-vpn-client
+
