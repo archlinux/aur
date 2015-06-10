@@ -1,14 +1,14 @@
 pkgbase = mtree
 	pkgdesc = Map a directory hierarchy
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
-	url = http://code.google.com/p/mtree-port
+	url = https://github.com/archiecobbs/mtree-port
 	arch = i686
 	arch = x86_64
 	license = BSD
 	depends = openssl
-	source = https://s3.amazonaws.com/archie-public/mtree-port/mtree-1.0.2.tar.gz
-	md5sums = d406a51fdf66f89efbdabd295c21b07f
+	source = https://github.com/archiecobbs/mtree-port/archive/1.0.3.tar.gz
+	md5sums = c8a1ec08d65187f2a18c50cc09260add
 
 pkgname = mtree
 
