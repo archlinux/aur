@@ -1,0 +1,18 @@
+pkgbase = compiz-monowall-plugin-git
+	pkgdesc = Compiz 0.8.x plugin to switch workspaces independently on each connected monitor
+	pkgver = 0.4.37666c2
+	pkgrel = 1
+	url = https://github.com/blackhole89/compiz-monowall
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = compiz-core<0.9.0
+	depends = compiz-bcop
+	source = compiz-monowall-plugin-git::git+https://github.com/blackhole89/compiz-monowall.git#branch=master
+	source = cairo_include_path.patch
+	md5sums = SKIP
+	md5sums = 4f1781df9c9ad8b0ffa46e99c1ca3dc7
+
+pkgname = compiz-monowall-plugin-git
+

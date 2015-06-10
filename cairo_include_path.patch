@@ -1,0 +1,13 @@
+--- compiz-monowall-plugin-git/monowall.c.ORIG	2014-11-21 16:11:52.874651363 -0800
++++ compiz-monowall-plugin-git/monowall.c	2014-11-21 16:11:59.218072928 -0800
+@@ -35,8 +35,8 @@
+ 
+ #include <GL/glu.h>
+ 
+-#include <cairo-xlib-xrender.h>
+-#include <cairo.h>
++#include <cairo/cairo-xlib-xrender.h>
++#include <cairo/cairo.h>
+ 
+ #define PI 3.14159265359f
+ #define VIEWPORT_SWITCHER_SIZE 100
