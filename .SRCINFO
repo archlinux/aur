@@ -1,0 +1,12 @@
+pkgbase = ultimate-gnome-icon-theme
+	pkgdesc = An original theme created entirely by the author in Inkscape
+	pkgver = 0.5.1
+	pkgrel = 3
+	url = http://www.gnome-look.org/content/show.php/Ultimate+Gnome?content=75000
+	arch = any
+	license = GPL
+	source = http://ultimate-gnome.googlecode.com/files/UltimateGnome.0.5.1.tar.gz
+	md5sums = 2803274beac6028343c48a41416516a1
+
+pkgname = ultimate-gnome-icon-theme
+
