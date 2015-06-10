@@ -1,0 +1,16 @@
+pkgbase = tilem
+	pkgdesc = TI calculator emulator.
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://lpg.ticalc.org/prj_tilem/index.html
+	install = tilem.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2>=2.4
+	depends = libticalcs
+	source = http://downloads.sourceforge.net/tilem/tilem-2.0.tar.bz2
+	md5sums = 44c4c671bcdaf3d1e1c27c724a1e1857
+
+pkgname = tilem
+
