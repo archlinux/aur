@@ -1,0 +1,14 @@
+pkgbase = spl
+	pkgdesc = SPL Programming Language
+	pkgver = 1.0pre6
+	pkgrel = 1
+	url = http://www.clifford.at/spl/
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = setconf
+	source = http://www.clifford.at/spl/releases/spl-1.0pre6.tar.gz
+	sha256sums = 737658aea624f17ede8bb965b89cbd4acf40148906c55d3eebc8cc34d1755c30
+
+pkgname = spl
+
