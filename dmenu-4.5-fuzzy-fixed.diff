@@ -1,0 +1,94 @@
+diff -rupN orig/dmenu.c new/dmenu.c
+--- orig/dmenu.c	2015-02-03 11:21:10.802786099 -0700
++++ new/dmenu.c	2015-02-03 11:22:45.321029644 -0700
+@@ -34,6 +34,9 @@ static void grabkeyboard(void);
+ static void insert(const char *str, ssize_t n);
+ static void keypress(XKeyEvent *ev);
+ static void match(void);
++static void match_fuzzy(void);
++static void match_tokens(void);
++static char *strchri(const char *s, int c);
+ static size_t nextrune(int inc);
+ static void paste(void);
+ static void readitems(void);
+@@ -64,12 +67,14 @@ static Item *matches, *matchend;
+ static Item *prev, *curr, *next, *sel;
+ static Window win;
+ static XIC xic;
++static Bool fuzzy;
+ 
+ static char *histfile = NULL;
+ static Item *histitems, *histend;
+ 
+ static int (*fstrncmp)(const char *, const char *, size_t) = strncmp;
+ static char *(*fstrstr)(const char *, const char *) = strstr;
++static char *(*fstrchr)(const char *, const int) = strchr;
+ 
+ int
+ main(int argc, char *argv[]) {
+@@ -86,9 +91,12 @@ main(int argc, char *argv[]) {
+ 			topbar = False;
+ 		else if(!strcmp(argv[i], "-f"))   /* grabs keyboard before reading stdin */
+ 			fast = True;
++		else if(!strcmp(argv[i], "-z"))   /* enable fuzzy matching */
++			fuzzy = True;
+ 		else if(!strcmp(argv[i], "-i")) { /* case-insensitive item matching */
+ 			fstrncmp = strncasecmp;
+ 			fstrstr = cistrstr;
++			fstrchr = strchri;
+ 		}
+ 		else if(i+1 == argc)
+ 			usage();
+@@ -464,8 +472,52 @@ keypress(XKeyEvent *ev) {
+ 	drawmenu();
+ }
+ 
++char *
++strchri(const char *s, int c) {
++	char *u, *l;
++	if(!isalpha(c)) return strchr(s, c);
++	if(isupper(c)) {
++		u = strchr(s, c);
++		l = strchr(s, tolower(c));
++	}
++	else {
++		l = strchr(s, c);
++		u = strchr(s, toupper(c));
++	}
++
++	if(u && l) return u < l ? u : l;
++	return u == NULL ? l : u;
++}
++
+ void
+ match(void) {
++	if(fuzzy) match_fuzzy();
++	else match_tokens();
++}
++
++void
++match_fuzzy(void) {
++	int i;
++	size_t len;
++	Item *item;
++
++	char *pos;
++
++	len = strlen(text);
++
++	matches = matchend = NULL;
++	for(item = items; item && item->text; item++) {
++		i = 0;
++		for(pos = fstrchr(item->text, text[i]); pos && text[i]; i++, pos = fstrchr(pos+1, text[i]));
++		if(i == len) appenditem(item, &matches, &matchend);
++	}
++
++	curr = sel = matches;
++	calcoffsets();
++}
++
++void
++match_tokens(void) {
+ 	static char **tokv = NULL;
+ 	static int tokn = 0;
+ 

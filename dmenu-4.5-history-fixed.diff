@@ -1,0 +1,216 @@
+diff -rupN without/dmenu.1 with/dmenu.1
+--- without/dmenu.1	2015-02-03 11:15:59.416937469 -0700
++++ with/dmenu.1	2015-02-03 11:16:13.160976522 -0700
+@@ -20,6 +20,8 @@ dmenu \- dynamic menu
+ .IR color ]
+ .RB [ \-sf
+ .IR color ]
++.RB [ \-hist
++.IR "<filename>" ]
+ .RB [ \-v ]
+ .P
+ .BR dmenu_run " ..."
+@@ -70,6 +72,9 @@ defines the selected background color.
+ .BI \-sf " color"
+ defines the selected foreground color.
+ .TP
++.BI \-hist " <histfile>"
++the file to use for history
++.TP
+ .B \-v
+ prints version information to stdout, then exits.
+ .SH USAGE
+diff -rupN without/dmenu.c with/dmenu.c
+--- without/dmenu.c	2015-02-03 11:15:59.416937469 -0700
++++ with/dmenu.c	2015-02-03 11:19:01.935443821 -0700
+@@ -36,7 +36,7 @@ static void keypress(XKeyEvent *ev);
+ static void match(void);
+ static size_t nextrune(int inc);
+ static void paste(void);
+-static void readstdin(void);
++static void readitems(void);
+ static void run(void);
+ static void setup(void);
+ static void usage(void);
+@@ -65,6 +65,9 @@ static Item *prev, *curr, *next, *sel;
+ static Window win;
+ static XIC xic;
+ 
++static char *histfile = NULL;
++static Item *histitems, *histend;
++
+ static int (*fstrncmp)(const char *, const char *, size_t) = strncmp;
+ static char *(*fstrstr)(const char *, const char *) = strstr;
+ 
+@@ -104,6 +107,8 @@ main(int argc, char *argv[]) {
+ 			selbgcolor = argv[++i];
+ 		else if(!strcmp(argv[i], "-sf"))  /* selected foreground color */
+ 			selfgcolor = argv[++i];
++		else if(!strcmp(argv[i], "-hist"))
++			histfile = argv[++i];
+ 		else
+ 			usage();
+ 
+@@ -114,10 +119,10 @@ main(int argc, char *argv[]) {
+ 
+ 	if(fast) {
+ 		grabkeyboard();
+-		readstdin();
++		readitems();
+ 	}
+ 	else {
+-		readstdin();
++		readitems();
+ 		grabkeyboard();
+ 	}
+ 	setup();
+@@ -127,6 +132,59 @@ main(int argc, char *argv[]) {
+ 	return ret;
+ }
+ 
++static int
++writehistory(char *command) {
++	FILE *f;
++	Item *histitem;
++	char *histline;
++	char *histcmd;
++	int currcnt = 1;
++	int histcnt;
++
++	if(!histfile || strlen(command) <= 0)
++		return 0;
++
++	if((f = fopen(histfile, "w"))) {
++		/* get the current count of previous runs for this command */
++		for(histitem = histitems; histitem && histitem->text; histitem=histitem->right) {
++			histline = strdup(histitem->text);
++			histcmd = strsep(&histline, "\t");
++			if(strcmp(command, histcmd) == 0) {
++				currcnt = atoi(strsep(&histline, "\t")) + 1;
++			}
++		}
++
++		/* loop through history printing those with more runs */
++		for(histitem = histitems; histitem && histitem->text; histitem=histitem->right) {
++			histline = strdup(histitem->text);
++			histcmd = strsep(&histline, "\t");
++			histcnt = atoi(strsep(&histline, "\t"));
++			if(histcnt > currcnt) {
++				fprintf(f, "%s", histitem->text);
++			} else {
++				break;
++			}
++		}
++
++		/* print this command now so it's the first in line with this run count */
++		/* reducing the count by 1 here to keep the next comparison loop simple */
++		fprintf(f, "%s\t%d\n", command, currcnt--);
++
++		/* print all the rest except this command's old line */
++		for(; histitem && histitem->text; histitem=histitem->right) {
++			histline = strdup(histitem->text);
++			histcmd = strsep(&histline, "\t");
++			histcnt = atoi(strsep(&histline, "\t"));
++			if(histcnt < currcnt || strcmp(command, histcmd) != 0)
++				fprintf(f, "%s", histitem->text);
++		}
++		fclose(f);
++		return 1;
++	}
++
++	return 0;
++}
++
+ void
+ appenditem(Item *item, Item **list, Item **last) {
+ 	if(*last)
+@@ -378,6 +436,7 @@ keypress(XKeyEvent *ev) {
+ 	case XK_KP_Enter:
+ 		puts((sel && !(ev->state & ShiftMask)) ? sel->text : text);
+ 		ret = EXIT_SUCCESS;
++ 		writehistory( (sel == NULL) ? text : sel->text);
+ 		running = False;
+ 		break;
+ 	case XK_Right:
+@@ -484,26 +543,60 @@ paste(void) {
+ }
+ 
+ void
+-readstdin(void) {
+-	char buf[sizeof text], *p, *maxstr = NULL;
+-	size_t i, max = 0, size = 0;
++readitems(void) {
++	char buf[sizeof text], *p, *maxstr = NULL, *histline, *histcmd;
++	size_t i = 0, j = 0, k = 0, max = 0, size = 0;
++	FILE *f;
++	Bool listed;
++	Item *histitem;
++	histitems = histend = NULL;
++
++	if(histfile && (f = fopen(histfile, "r"))) {
++		for(; fgets(buf, sizeof buf, f); i++) {
++			histitem = malloc(sizeof *histitem);
++			histitem->text = strdup(buf);
++			appenditem(histitem, &histitems, &histend);
++			if(i+1 >= size / sizeof *items)
++				if(!(items = realloc(items, (size += BUFSIZ))))
++					eprintf("cannot realloc %u bytes:", size);
++			if((p = strchr(buf, '\n')))
++				*p = '\0';
++			histline = strdup(buf);
++			histcmd = strsep(&histline, "\t");
++			if(!(items[i].text = strdup(histcmd)))
++				eprintf("cannot strdup %u bytes:", strlen(histcmd)+1);
++			if(strlen(items[i].text) > max)
++				max = strlen(maxstr = items[i].text);
++		}
++		fclose(f);
++	}
+ 
+ 	/* read each line from stdin and add it to the item list */
+-	for(i = 0; fgets(buf, sizeof buf, stdin); i++) {
+-		if(i+1 >= size / sizeof *items)
+-			if(!(items = realloc(items, (size += BUFSIZ))))
+-				eprintf("cannot realloc %u bytes:", size);
++	for(j = i; fgets(buf, sizeof buf, stdin); j++) {
+ 		if((p = strchr(buf, '\n')))
+ 			*p = '\0';
+-		if(!(items[i].text = strdup(buf)))
+-			eprintf("cannot strdup %u bytes:", strlen(buf)+1);
+-		if(strlen(items[i].text) > max)
+-			max = strlen(maxstr = items[i].text);
++		listed = False;
++		for(k = 0; k < i; k++) {
++			if(strcmp(buf, items[k].text) == 0) {
++				listed = True;
++				j--;
++				break;
++			}
++		}
++		if(!listed) {
++			if(j+1 >= size / sizeof *items)
++				if(!(items = realloc(items, (size += BUFSIZ))))
++					eprintf("cannot realloc %u bytes:", size);
++			if(!(items[j].text = strdup(buf)))
++				eprintf("cannot strdup %u bytes:", strlen(buf)+1);
++			if(strlen(items[j].text) > max)
++				max = strlen(maxstr = items[j].text);
++		}
+ 	}
+ 	if(items)
+-		items[i].text = NULL;
++		items[j].text = NULL;
+ 	inputw = maxstr ? textw(dc, maxstr) : 0;
+-	lines = MIN(lines, i);
++	lines = MIN(lines, j);
+ }
+ 
+ void
+@@ -617,6 +710,6 @@ setup(void) {
+ void
+ usage(void) {
+ 	fputs("usage: dmenu [-b] [-f] [-i] [-l lines] [-p prompt] [-fn font]\n"
+-	      "             [-nb color] [-nf color] [-sb color] [-sf color] [-v]\n", stderr);
++	      "             [-nb color] [-nf color] [-sb color] [-sf color] [-hist histfile] [-v]\n", stderr);
+ 	exit(EXIT_FAILURE);
+ }
