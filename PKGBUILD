@@ -2,7 +2,7 @@
 # Note: Haven't really tested it with i686, but it should work all the same... at least in theory. :)
 
 pkgname=sinerider
-pkgver=0.3.36
+pkgver=0.4
 pkgrel=1
 epoch=
 pkgdesc="A game of numerical sledding. It will make you see math the way mathematicians see it: a creative process of exploration and discovery. Math is the ultimate puzzle, and SineRider is the ultimate math puzzle game."
@@ -20,7 +20,7 @@ replaces=()
 backup=()
 options=()
 source=("https://s3.amazonaws.com/sinerider/SineRider+Linux.zip" "sinerider.desktop")
-md5sums=("4f7066ce13d50e91b42b0b2e27260f34"
+md5sums=("36071911e1f861c017004feca55f4f10"
          "778d8fd98d2a051882220c7b55bd0846")
 install=sinerider.install
 
