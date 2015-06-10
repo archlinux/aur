@@ -1,0 +1,25 @@
+pkgbase = ctwm
+	pkgdesc = Richard's Tab Window Manager
+	pkgver = 3.8.2
+	pkgrel = 1
+	url = http://ctwm.org/
+	arch = x86_64
+	arch = i686
+	license = custom:MIT
+	license = custom:X
+	makedepends = imake
+	makedepends = setconf
+	depends = glibc
+	depends = libjpeg-turbo
+	depends = libxmu
+	depends = libxpm
+	backup = etc/X11/ctwm/system.ctwmrc
+	source = http://ctwm.org/dist/ctwm-3.8.2.tar.xz
+	source = Imakefile.local
+	source = copyright
+	sha256sums = 574d67a8a69f2f1ebaa71aa40cc50667e814f74b51f5db8886e2def6a3e0900f
+	sha256sums = ba8b25071ba0cdf03299dd827296b0fd8a6e549dac6f1ce8d50d9f26afd17041
+	sha256sums = 5242dcee1ffc736abd3e7022648c51039da7f4d998a2eb1eaee57367816886c1
+
+pkgname = ctwm
+

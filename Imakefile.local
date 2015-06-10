@@ -1,0 +1,114 @@
+XCOMM This is the local configuration file for Imakefile for ctwm.
+XCOMM
+XCOMM Some of the things you can define also come with make variables that
+XCOMM can be manipulated.  All such variables have names starting with\
+XCOMM USER_.
+
+XCOMM ----------------------------------------------------------------------
+XCOMM Feature: Use IMCONV features.
+XCOMM Uhmm, I really don't know what this is about. -- Richard Levitte
+XCOMM
+XCOMM The make variables USER_IMCONVLIBDIR and USER_IMCONVINCDIR can be
+XCOMM used to configure library search paths and include file search paths
+XCOMM to find the imconv libraries and header files.
+XCOMM
+XCOMM Example:
+XCOMM
+XCOMM #define IMCONV
+XCOMM USER_IMCONVLIBDIR = -L/logiciels/public/graphix/lib
+XCOMM USER_IMCONVINCDIR = -I/logiciels/public/graphix/include
+XCOMM
+#undef  IMCONV
+
+XCOMM ----------------------------------------------------------------------
+XCOMM Feature: Use sounds
+XCOMM If you want sound support through librplay, defined USE_SOUND.
+XCOMM
+XCOMM The make variables USER_SOUNDLIBDIR and USER_SOUNDINCDIR can be
+XCOMM used to configure library search paths and include file search paths
+XCOMM to find the rplay libraries and header files.
+XCOMM
+XCOMM Example:
+XCOMM
+XCOMM #define USE_SOUND
+XCOMM USER_SOUNDLIBDIR = -L/usr/lib
+XCOMM USER_SOUNDINCDIR = -I/usr/include
+XCOMM
+#undef USE_SOUND
+
+XCOMM ----------------------------------------------------------------------
+XCOMM Feature: Use XPM images
+XCOMM If you want XPM support, define XPM.
+XCOMM
+XCOMM The make variables USER_XPMLIBDIR and USER_XPMINCDIR can be
+XCOMM used to configure library search paths and include file search paths
+XCOMM to find the xpm libraries and header files.
+XCOMM
+XCOMM Example:
+XCOMM
+XCOMM #define XPM
+XCOMM USER_XPMLIBDIR = -L/usr/lib
+XCOMM USER_XPMINCDIR = -I/usr/include
+XCOMM
+#define XPM
+
+XCOMM ----------------------------------------------------------------------
+XCOMM Feature: Use Jpeg images
+XCOMM If you want JPEG support, define JPEG.
+XCOMM
+XCOMM The make variables USER_JPEGLIBDIR and USER_JPEGINCDIR can be
+XCOMM used to configure library search paths and include file search paths
+XCOMM to find the jpeg libraries and header files.
+XCOMM
+XCOMM Example:
+XCOMM
+XCOMM #define JPEG
+XCOMM USER_JPEGLIBDIR = -L/usr/lib
+XCOMM USER_JPEGINCDIR = -I/usr/include
+XCOMM
+#define JPEG
+
+XCOMM ----------------------------------------------------------------------
+XCOMM Feature: Using M4 to process the ctwm configuration file
+XCOMM If you want to process the ctwm configuration file with m4, define
+XCOMM USE_M4.
+XCOMM
+#define USE_M4
+
+XCOMM ----------------------------------------------------------------------
+XCOMM Feature: Support for Gnome extensions
+XCOMM If you want to build with Gnome extensions, define GNOME.
+XCOMM
+#define GNOME
+
+XCOMM ----------------------------------------------------------------------
+XCOMM Feature: Use GNU regex
+XCOMM If you want to build with GNU regex instead of the internal regex
+XCOMM functions, define USE_GNU_REGEX.
+XCOMM
+#undef  USE_GNU_REGEX
+
+XCOMM DEBUGGING:
+
+XCOMM ----------------------------------------------------------------------
+XCOMM Feature: General debugging
+XCOMM If you want to get all kinds of debugging output from CTWM, define
+XCOMM DEBUG.
+XCOMM
+#undef  DEBUG
+
+XCOMM ----------------------------------------------------------------------
+XCOMM Feature: Debug the parser
+XCOMM If you want debugging output for the configuration file parser,
+XCOMM define DEBUGPARSER
+XCOMM
+#undef  DEBUGPARSER
+
+XCOMM ----------------------------------------------------------------------
+XCOMM Feature: Compile with lots and lots of warnings
+XCOMM If you use gcc, and want to build with as much paranoia as possible,
+XCOMM define GCC_PEDANTIC.
+XCOMM Quite honestly, I would recommend for you not to use it for now.
+XCOMM You'll just start running and screaming :-).	-- Richard Levitte
+XCOMM
+#undef  GCC_PEDANTIC
