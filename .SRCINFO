@@ -1,0 +1,19 @@
+pkgbase = python-pycparser-git
+	pkgdesc = C parser and AST generator written in Python
+	pkgver = 20131228
+	pkgrel = 1
+	url = https://github.com/eliben/pycparser
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = git
+	depends = python
+	depends = python-ply
+	conflicts = pycparser
+	conflicts = python-pycparser
+	conflicts = python-pycparser-hg
+	source = pycparser::git://github.com/eliben/pycparser.git
+	sha256sums = SKIP
+
+pkgname = python-pycparser-git
+
