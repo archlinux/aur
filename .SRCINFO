@@ -1,0 +1,14 @@
+pkgbase = php-jsonreader-git
+	pkgdesc = A JSON pull-parser extension for PHP based on libvktor
+	pkgver = r38.c829b3b
+	pkgrel = 1
+	url = https://github.com/shevron/ext-jsonreader
+	arch = i686
+	arch = x86_64
+	license = PHP
+	depends = php
+	source = php-jsonreader-git::git+https://github.com/shevron/ext-jsonreader.git
+	sha256sums = SKIP
+
+pkgname = php-jsonreader-git
+
