@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=μwm
+Comment=Micro (μ) Window Manger
+Exec=uwm
+Terminal=false
+Type=XSession
+Icon=uwm16x16
+
+[Window Manager]
+SessionManaged=false
+X-XDE-Managed=true

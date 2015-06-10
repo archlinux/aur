@@ -1,0 +1,24 @@
+pkgbase = uwm
+	pkgdesc = Micro (u) Window Manager
+	pkgver = 0.30
+	pkgrel = 3
+	url = http://uwm.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = AGPL3
+	makedepends = git
+	depends = xcb-util-renderutil
+	depends = xcb-util-image
+	depends = xcb-util-keysyms
+	depends = bash
+	depends = libpng
+	depends = libjpeg
+	depends = xcb-util-wm
+	backup = usr/share/X11/uwm/system.uwmrc
+	source = uwm::git://git.code.sf.net/p/uwm/code#tag=0.30
+	source = uwm.desktop
+	md5sums = SKIP
+	md5sums = a16c73faeab8c1fc3c74f3320776789a
+
+pkgname = uwm
+
