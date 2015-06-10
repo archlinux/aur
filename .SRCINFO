@@ -1,0 +1,25 @@
+pkgbase = jitsi
+	pkgdesc = An audio/video SIP VoIP phone and instant messenger written in Java (formerly SIP-Communicator)
+	pkgver = 2.8.5426
+	pkgrel = 1
+	url = http://jitsi.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = apache-ant
+	makedepends = java-environment
+	depends = java-runtime
+	options = !strip
+	options = !emptydirs
+	options = zipman
+	options = !libtool
+	options = docs
+	source = http://download.jitsi.org/jitsi/src/jitsi-src-2.8.5426.zip
+	source = jitsi.desktop
+	source = jitsi.sh
+	sha256sums = e649867e186cf195c4b1bb159d7ffe0a38c4dc60659e5c55f9a74461a309f36c
+	sha256sums = 61e3bec3470790fa067f87d978016ec4452a6fd3dfba2c9afa5245b58d3cb19d
+	sha256sums = 529722efc3bae6cb8923680363a4d778ccf78db9caf20bee90a110d34181d9f5
+
+pkgname = jitsi
+
