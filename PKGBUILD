@@ -3,7 +3,7 @@
 # Contributor: Timm Preetz <timm@preetz.us>
 
 pkgname=vala-git
-pkgver=7085.9bcc61c
+pkgver=7142.cc038c1
 pkgrel=1
 pkgdesc="Compiler for the GObject type system"
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ url="http://live.gnome.org/Vala"
 license=(LGPL)
 depends=(glib2)
 makedepends=(git libxslt)
-provides=("vala=0.26.1")
+provides=("vala=0.28.0")
 conflicts=(vala vala-devel)
 options=(!libtool)
 source=('git+git://git.gnome.org/vala')
