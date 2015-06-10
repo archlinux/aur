@@ -1,0 +1,15 @@
+pkgbase = lm
+	pkgdesc = List Movies. Grab metadata fromIMDB and interact with opensubtitles
+	pkgver = 0.4
+	pkgrel = 3
+	url = https://github.com/RedRise/lm
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = imdbpy
+	depends = python2
+	source = https://github.com/downloads/RedRise/lm/lm-0.4.tar.gz
+	md5sums = 8ade7a89af4385e525ca6d294461363e
+
+pkgname = lm
+
