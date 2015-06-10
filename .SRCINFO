@@ -1,0 +1,18 @@
+pkgbase = python2-txsocksx
+	pkgdesc = SOCKS{4,4a,5} endpoints for twisted
+	pkgver = 1.13.0.3
+	pkgrel = 2
+	url = https://github.com/habnabit/txsocksx
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-twisted
+	depends = python2-pyopenssl
+	depends = python2-parsley
+	conflicts = python2-txsocksx-git
+	source = https://pypi.python.org/packages/source/t/txsocksx/txsocksx-1.13.0.3.tar.gz
+	md5sums = 05d03a7137a11affe4bcb7c8effba220
+
+pkgname = python2-txsocksx
+
