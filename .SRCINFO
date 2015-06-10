@@ -1,0 +1,22 @@
+pkgbase = python-pandas-git
+	pkgdesc = R-like data analyis library for Python.
+	pkgver = v0.13.0.r80.gd75c29d
+	pkgrel = 1
+	url = http://pandas.pydata.org
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = cython
+	depends = python
+	depends = python-numpy
+	depends = python-dateutil
+	depends = python-pytz
+	optdepends = python-scipy: miscellaneous statistical functions
+	optdepends = python-matplotlib-git: for plotting
+	provides = python-pandas-git
+	conflicts = python-pandas
+	source = git://github.com/pydata/pandas.git
+	md5sums = SKIP
+
+pkgname = python-pandas-git
+
