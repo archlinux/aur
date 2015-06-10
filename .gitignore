@@ -1,4 +1,5 @@
 *.pkg.tar*
 *.src.tar*
+/chocolate-doom/
 src
 pkg

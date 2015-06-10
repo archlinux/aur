@@ -3,8 +3,8 @@
 pkgname=(chocolate-{doom,heretic,hexen,strife,common}-git)
 _pkgname=${pkgname[0]/-git/}
 pkgdesc="Historically-accurate Doom, Heretic, Hexen, and Strife ports."
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.chocolate-doom.org/"
 license=('GPL2')
@@ -21,11 +21,15 @@ pkgver() {
   echo $version
 }
 
-build() {
+prepare() {
   cd "${_pkgname}"
 
   # Change binary dir from /usr/games to /usr/bin
   sed 's|/games|/bin|g' -i src{,/setup}/Makefile.am
+}
+
+build() {
+  cd "${_pkgname}"
 
   ./autogen.sh --prefix=/usr
   make

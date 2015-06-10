@@ -1,7 +1,7 @@
 pkgbase = chocolate-doom-git
 	pkgdesc = Historically-accurate Doom, Heretic, Hexen, and Strife ports.
-	pkgver = 2.1.0
-	pkgrel = 2
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = http://www.chocolate-doom.org/
 	arch = i686
 	arch = x86_64
