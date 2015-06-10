@@ -1,0 +1,27 @@
+pkgbase = sunflower
+	pkgdesc = Small, customizable twin-panel file manager
+	pkgver = 0.2_59
+	pkgrel = 5
+	url = http://sunflower-fm.org
+	install = sunflower.install
+	arch = any
+	license = GPL3
+	depends = desktop-file-utils
+	depends = pygtk
+	depends = librsvg
+	optdepends = python2-gnomekeyring: password storage for remote mounts
+	optdepends = python2-notify: desktop notifications service
+	optdepends = vte: integrated vte-based terminal
+	optdepends = mutagen: audio-metadata support
+	optdepends = gvfs: mount-management
+	optdepends = python2-dbus: single application instance support
+	conflicts = sunflower-hg
+	options = !strip
+	options = !zipman
+	source = http://sunflower-fm.org/pub/sunflower-0.2-59.tgz
+	source = sunflower
+	md5sums = ad3d894003685bbcec3d13bec12058b4
+	md5sums = 95b68d1631f9406d55bd772231b021e6
+
+pkgname = sunflower
+
