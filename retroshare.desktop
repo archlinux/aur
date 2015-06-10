@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=RetroShare
+GenericName=Sharing Network
+Comment=Secure Communication with Your Friends
+Icon=/usr/share/pixmaps/retroshare.png
+Exec=/usr/bin/retroshare
+Terminal=false
+StartupNotify=true
+Categories=Network;InstantMessaging;FileTransfer;Chat;Email;

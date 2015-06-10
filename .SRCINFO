@@ -1,0 +1,30 @@
+pkgbase = retroshare
+	pkgdesc = Serverless encrypted instant messenger with filesharing, chatgroups, e-mail.
+	pkgver = 0.5.5c
+	pkgrel = 2
+	url = http://retroshare.sourceforge.net/
+	install = retroshare.install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = LGPL
+	license = GPL
+	depends = qt4
+	depends = libupnp
+	depends = libgnome-keyring
+	depends = libxss
+	depends = libssh
+	depends = protobuf
+	depends = speex
+	depends = curl
+	depends = libxslt
+	source = http://sourceforge.net/projects/retroshare/files/RetroShare/0.5.5c/retroshare_0.5.5-0.7068.tar.gz
+	source = retroshare.install
+	source = retroshare.desktop
+	sha256sums = 772b0d7916137e81fc0f5ea14f0a8fa70d3d7acb701ca0b0c1c66018f2255650
+	sha256sums = 4b50547648612e9091536205402a4da9ddea9c18c0f71e5d6cd30b2226f206d9
+	sha256sums = 70be00968f2477e368f75393f193e76f366fff2dadab869c855e92048060cf29
+
+pkgname = retroshare
+
