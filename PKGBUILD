@@ -3,7 +3,7 @@
 
 pkgname=roundcube-carddav
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="This plugin allows users to export their contacts via CardDAV"
 arch=('any')
 url="http://www.graviox.de/"
