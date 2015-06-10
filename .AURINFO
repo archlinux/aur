@@ -1,0 +1,29 @@
+pkgbase = asciiportal
+	pkgdesc = Text based puzzle game inspired by the popular video game
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/cymonsgames/ASCIIpOrtal
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = imagemagick
+	makedepends = gendesk
+	makedepends = pdcurses
+	makedepends = cmake
+	makedepends = setconf
+	makedepends = yaml-cpp
+	makedepends = boost
+	makedepends = git
+	depends = sdl
+	depends = sdl_mixer
+	depends = pdcurses
+	depends = yaml-cpp
+	source = git://github.com/cymonsgames/ASCIIpOrtal.git#tag=v1.3-beta7
+	source = asciiportal_large.png::http://fc01.deviantart.net/fs71/f/2010/318/3/5/portal_ascii_icon___button_by_lightmystic-d32udqx.png
+	source = asciiportal.sh
+	source = asciiportal.patch
+	source = https://yaml-cpp.googlecode.com/files/yaml-cpp-0.3.0.tar.gz
+	source = Makefile.default
+
+pkgname = asciiportal
+

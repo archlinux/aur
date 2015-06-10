@@ -1,0 +1,159 @@
+# Default Makefile for ASCIIpOrtal
+# It compiles pdcurses for SDL locally, use 'linux32' or 'linux64' target if it
+# is already available on your system.
+# Note that for release, the 'dist' target of this Makefile is not suitable:
+# use target 'all' from the main Makefile instead.
+
+include Makefile.common
+
+PORT = default
+
+### Custom variables ###
+
+PDCURSES_DIR = /usr/lib
+PDCURSES_VER = 3.4
+
+YAML-CPP_VER = 0.3.0
+
+### Customisable variables ###
+
+# Custom base name: everything (binary, tarballs) will be built using this base name.
+# Unless heavy changes in the codebase (eg. a mod), you should use DISTNAME instead.
+#ASCIIPORTAL := $(ASCIIPORTAL)-mod
+
+# Custom base name for release (tarball). Keeping '-$(PORT)' is generally a good option,
+# but feel free to change it.
+#DISTNAME := $(DISTNAME)-$(PORT)
+
+# This should pick up the local version of pdcurses_SDL
+CXXFLAGS := $(CXXFLAGS) `sdl-config --cflags` -U__NOSDL__ -U__NOSOUND__ -U__DINGOO__ -U__GP2X__ -I .. -I ../yaml-cpp/include -I /usr/include -I /usr/include/xcurses
+
+# Custom link flags
+LINKFLAGS := -L ../yaml-cpp $(LINKFLAGS) /usr/lib/libpdcurses.a `sdl-config --libs` -L/usr/lib -l SDL_mixer
+
+# Additional files to be included in release tarball.
+#FILES_INCLUDE_DIST := $(FILES_INCLUDE_DIST) custom_readme.txt example.dll foo/bar.xml
+
+
+### Required variables ###
+
+# C++ compiler. You might want to change this for cross-compilation.
+CXX = g++
+
+# Tarball name for release. You should not edit anything excepted the extension,
+# see DISTNAME above.
+#TARBALL = $(DISTNAME).zip
+TARBALL = $(DISTNAME).tar.gz
+TARBALL_SRC = $(DISTNAME)-src.tar.gz
+# hard-coded at the moment (because of the '-' in the name)
+TARBALL_DEB = asciiportal_1.3.orig.tar.gz
+
+# Final executable name. Same thing, you should only edit the extension.
+#EXE_NAME = $(ASCIIPORTAL).exe
+EXE_NAME = $(ASCIIPORTAL)
+
+
+### Required targets ###
+
+# Dummy target if called directly
+wrong-way:
+	@echo
+	@echo "[*] This Makefile is not intended to be run directly."
+	@echo "[*] Instead, call the main Makefile with the proper target!"
+	@echo "[*] In most cases, a simple 'make' should work though."
+
+# Targets called by the main Makefile:
+$(PORT):
+	$(MAKE) -f Makefile.$(PORT) almostclean execlean
+	$(MAKE) -f Makefile.$(PORT) $(EXE_NAME)
+
+dist:
+	$(MAKE) -f Makefile.$(PORT) almostclean execlean distclean saveclean
+	$(MAKE) -f Makefile.$(PORT) $(TARBALL)
+	$(MAKE) -f Makefile.$(PORT) clean execlean
+
+all:
+	$(MAKE) -f Makefile.$(PORT) dist
+
+# This is supposed to work out-of-the-box
+#../yaml-cpp
+%.o: src/%.cpp
+	$(CXX) -c $(CXXFLAGS) $<
+
+# Replace by OBJECTS_NOSOUND if needed
+$(EXE_NAME): /usr/lib/libpdcurses.a $(OBJECTS)
+	$(CXX) $^ $(LINKFLAGS) -o $@
+	@echo
+	@echo "[*] $(EXE_NAME) successfully built."
+
+# You might want to add additional targets here (see 'Makefile.mingw32')
+$(TARBALL): $(EXE_NAME)
+	mkdir $(DISTNAME)
+	cp -r $(EXE_NAME) $(FILES_INCLUDE_DIST) $(DISTNAME)
+#	zip -r $@ $(DISTNAME) # zip is bad, but anyway...
+	tar czf $@ $(DISTNAME) # tar.gz
+#	tar cjf $@ $(DISTNAME) # tar.bz2
+#	tar cJf $@ $(DISTNAME) # tar.xz
+	rm -rf $(DISTNAME)
+	# This is only to test if the tarball was really generated
+	ls $(TARBALL)
+	@echo
+	@echo "[*] $(TARBALL) successfully generated."
+
+# This is supposed to clean anything you've added/compiled, excepted the
+# main executable
+clean:
+	rm -f *.o
+	rm -rf $(PDCURSES_DIR)
+	rm -f PDCurses-$(PDCURSES_VER).tar.gz
+
+almostclean:
+	rm -f *.o
+
+# Clean the generated executable
+execlean:
+	rm -f $(EXE_NAME)
+
+# Clean the generated tarball
+distclean:
+	rm -f $(TARBALL)
+	rm -f $(TARBALL_SRC)
+
+
+### Custom targets ###
+
+# This is for targets you would need somewhere. Again, see 'Makefile.mingw32'
+# for an example
+
+install: saveclean
+	mkdir -p $(DESTDIR)/usr/share/asciiportal
+	mkdir -p $(DESTDIR)/usr/share/doc/asciiportal
+	mkdir -p $(DESTDIR)/usr/bin
+	cp -r media/ maps/ $(DESTDIR)/usr/share/asciiportal/
+	cp README CHANGELOG $(DESTDIR)/usr/share/doc/asciiportal/
+	cp $(EXE_NAME) $(DESTDIR)/usr/bin/
+	chmod 0644 $(DESTDIR)/usr/share/doc/asciiportal/*
+	chmod 0755 $(DESTDIR)/usr/bin/$(EXE_NAME)
+
+$(TARBALL_SRC):
+	mkdir $(DISTNAME)-src
+	cp -r $(FILES_INCLUDE_SRC) $(DISTNAME)-src
+#	zip -r $(TARBALL_SRC) $(DISTNAME)-src # zip is bad, but anyway...
+	tar czf $(TARBALL_SRC) $(DISTNAME)-src # tar.gz
+#	tar cjf $(TARBALL_SRC) $(DISTNAME)-src # tar.bz2
+#	tar cJf $(TARBALL_SRC) $(DISTNAME)-src # tar.xz
+	rm -rf $(DISTNAME)-src
+
+source:
+	$(MAKE) -f Makefile.$(PORT) clean distclean execlean saveclean
+	$(MAKE) -f Makefile.$(PORT) $(TARBALL_SRC)
+
+debian-source: $(TARBALL_SRC)
+	cp $(TARBALL_SRC) asciiportal_1.3.orig.tar.gz
+
+#../yaml-cpp: ../yaml-cpp/libyaml-cpp.a
+#
+#../yaml-cpp/libyaml-cpp.a:
+#	cd ../yaml-cpp && cmake .
+#	make -C ../yaml-cpp
+

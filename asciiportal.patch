@@ -1,0 +1,42 @@
+--- ASCIIpOrtal-linux-Makefile.txt	2009-11-14 13:39:36.000000000 +0200
++++ ASCIIpOrtal-linux-Makefile.txt	2010-07-11 01:48:54.023319988 +0300
+@@ -8,13 +8,13 @@
+ PACKAGENAME = asciiportal-linux64
+ WINDOWSZIP = asciiportal.zip
+ 
+-GPPOPTS = -O2
++CXXFLAGS = -O2 `xcurses-config --cflags`
+ 
+-all: asciiportal
++all: ASCIIpOrtal
+ 
+ clean:
+ 	rm -f *.o
+-	rm -f asciiportal
++	rm -f ASCIIpOrtal
+ 
+ fullclean: clean
+ 	rm -rf $(PACKAGENAME)
+@@ -34,19 +34,7 @@
+ 	tar cvfz $(PACKAGENAME).tar.gz $(PACKAGENAME)
+ 
+ %.o: %.cpp $(PDCSDLDIR)
+-	g++ -I $(PDCSDLDIR) -c $(GPPOPTS) $<
+-
+-asciiportal: al_input.o ap_draw.o ap_play.o ap_sound.o main.o menu.o $(PDCSDLDIR)/sdl1/libpdcurses.a
+-	g++ $^ -lSDL -lSDL_mixer -o $@
+-
+-$(PDCSDLDIR)/sdl1/libpdcurses.a: $(PDCSDLDIR)
+-	cd `dirname $@` && make
+-
+-$(PDCSDLDIR): PDCurses-$(PDCSVER).tar.gz
+-	tar xvfz $<
+-
+-PDCurses-$(PDCSVER).tar.gz:
+-	wget http://sourceforge.net/projects/pdcurses/files/pdcurses/$(PDCSVER)/PDCurses-$(PDCSVER).tar.gz/download
+-	if [[ ! -f $@ ]]; then echo "Download of $@ failed, please provide file."; exit; fi
+-
++	g++ -c $(GPPOPTS) $<
+ 
++ASCIIpOrtal: ap_input.o ap_draw.o ap_play.o ap_sound.o main.o menu.o
++	g++ $^ -lSDL -lSDL_mixer /usr/lib/libpdcurses.a -o $@
