@@ -1,0 +1,20 @@
+pkgbase = sheeplifter
+	pkgdesc = Control a wolf in a spaceship and abduct sheep in 3D (arcade game)
+	pkgver = 2
+	pkgrel = 5
+	url = http://code.google.com/p/sheeplifter/
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = gendesk
+	depends = java-runtime
+	depends = lwjgl
+	source = http://sheeplifter.googlecode.com/files/Sheeplifter_GC_2.zip
+	source = sheeplifter.png
+	source = run.sh
+	sha256sums = 0d35701e538b8a6c61e6940dae63d222c6df799e60958bdfd2bd0199aba5c527
+	sha256sums = 15c09faf8ee47847dda8071853639663bd09b8fcc638ce599398d7beb103e5c7
+	sha256sums = ca257e05e4849cc215120923d656f6e43fdea7cc280009fc92b02c902db52f63
+
+pkgname = sheeplifter
+
