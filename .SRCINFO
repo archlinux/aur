@@ -1,0 +1,15 @@
+pkgbase = perl-xml-sax-expatxs
+	pkgdesc = Perl SAX 2 XS extension to Expat parser
+	pkgver = 1.33
+	pkgrel = 1
+	url = https://metacpan.org/release/XML-SAX-ExpatXS/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PC/PCIMPRICH/XML-SAX-ExpatXS-1.33.tar.gz
+	md5sums = 3d69bb642ea275871a2f91a08a51cd8c
+
+pkgname = perl-xml-sax-expatxs
+
