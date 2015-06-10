@@ -16,10 +16,21 @@ index 9b63041..53bc547 100644
  $(OBJDIR)/sdlplay.o: sdlplay.c
  	$(CC) -o $@ $< -c $(CFLAGS)
 diff --git i/jni/mdxmini/mak/general.mak w/jni/mdxmini/mak/general.mak
-index e56323b..fff9e7c 100644
+index e56323b..51872ec 100644
 --- i/jni/mdxmini/mak/general.mak
 +++ w/jni/mdxmini/mak/general.mak
-@@ -19,8 +19,7 @@ endif
+@@ -10,17 +10,16 @@ SLIBS =
+ LFLAGS =
+  
+ ifdef DEBUG
+-CFLAGS = -g -O0
++CFLAGS ?= -g -O0
+ OBJDIR = obj_dbg
+ else
+-CFLAGS = -g -O3
++CFLAGS ?= -g -O3
+ OBJDIR = obj
+ endif
  
  # iconv
  ifneq ($(OS),Windows_NT)

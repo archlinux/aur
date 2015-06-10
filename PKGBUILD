@@ -14,7 +14,7 @@ source=("$pkgbase"::'git+https://github.com/BouKiCHi/mdxplayer.git'
         makefiles.patch)
 sha256sums=('SKIP'
             '4f8ec91487736c9ad864f54c615b491c406464573469ed59b1d4f6be77cf2812'
-            'd8f24d0a385ed081e496573abed032366a2e74c6ea4c6dada80d7571e40bf1c0')
+            '8711dd394c9b99e351026a8e88583d61142cab29a344434338b9589022a64582')
 
 pkgver() {
   cd "$srcdir/$pkgbase"
