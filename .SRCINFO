@@ -1,0 +1,16 @@
+pkgbase = python2-urutu
+	pkgdesc = A Python based parallel programming library for GPUs
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/urutu/Urutu
+	arch = any
+	license = apache
+	checkdepends = python2-nose
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-pycuda
+	source = https://github.com/urutu/Urutu/archive/v1.1.zip
+	md5sums = 09e3ff0157d1aef4bf486839c3361fe3
+
+pkgname = python2-urutu
+
