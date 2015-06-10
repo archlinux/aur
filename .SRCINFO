@@ -1,0 +1,13 @@
+pkgbase = kip-git
+	pkgdesc = Command line script to keep usernames and passwords in GnuPG encrypted text files
+	pkgver = 20120909
+	pkgrel = 2
+	url = https://github.com/grahamking/kip
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-distribute
+	options = !emptydirs
+
+pkgname = kip-git
+
