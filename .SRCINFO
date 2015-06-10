@@ -1,0 +1,15 @@
+pkgbase = dcpu16-kballard
+	pkgdesc = Cycle-accurate implementation of the DCPU-16 CPU
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://github.com/kballard/dcpu16
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	makedepends = git
+	options = !strip
+	options = !emptydirs
+
+pkgname = dcpu16-kballard
+
