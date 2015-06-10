@@ -1,0 +1,21 @@
+pkgbase = python2-episode-renamer
+	pkgdesc = TV episode renamer SCRIPT
+	pkgver = 0.4.5
+	pkgrel = 1
+	url = https://github.com/skorokithakis/episode-renamer
+	arch = any
+	license = BSD
+	makedepends = python2-distribute
+	depends = python2
+	depends = python2-simplejson
+	depends = python2-beautifulsoup3
+	optdepends = atomicparsley: To set all the correct tags
+	provides = episoderenamer
+	conflicts = episode-renamer-git
+	source = http://pypi.python.org/packages/source/e/episode-renamer/episode-renamer-0.4.5.tar.gz
+	source = LICENSE
+	md5sums = e63a4b24b759b6264fc4ca067fd7d1cb
+	md5sums = 856bd6790da692386fec07b97fee22ce
+
+pkgname = python2-episode-renamer
+
