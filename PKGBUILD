@@ -1,0 +1,17 @@
+# Maintainer: Marcel Korpel <marcel[dot]korpel[at]gmail>
+
+pkgname=ttf-kix
+pkgver=1
+pkgrel=1
+pkgdesc='The KIX code is a barcode-like format used by the Dutch Post to encode zip codes and street numbers in a machine-readable format (Royal Mail 4 State Code)'
+arch=('any')
+url='http://www.postnl.nl/klantenservice/bestellen-en-downloaden/documentatie-downloaden/kix-code/'
+license=('unknown')
+depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+install=$pkgname.install
+source=('http://www.postnl.nl/Images/KIX-font-brg-ttf-PostNL_tcm10-11662.zip')
+sha256sums=('fa113518a3a4528b5a3960efa6a6a4fbd17836bca65d1ce626bb87f52e646b4f')
+
+package() {
+  install -Dm644 "${srcdir}/Kixbrg__.ttf" "${pkgdir}/usr/share/fonts/TTF/Kixbrg__.ttf"
+}
