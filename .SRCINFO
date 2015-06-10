@@ -1,0 +1,14 @@
+pkgbase = circa-git
+	pkgdesc = Programming language designed for live coding
+	pkgver = 20121202
+	pkgrel = 1
+	url = http://circa-lang.org/
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = make
+	sha256sums = b764966421087ea21211570465ce1a6cfa10423e4f679bade558a362a12879e8
+	sha256sums = f0dbcc5d80bf03d706aa8b28a322aa7f169a40813848c2d1505691f6e2c7ef00
+
+pkgname = circa-git
+
