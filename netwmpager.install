@@ -1,0 +1,13 @@
+post_install() {
+  cat << EOF
+
+==> netwmpager post-install message:
+==> Copy /usr/share/netwmpager/config-example to ~/.config/netwmpager/config 
+
+EOF
+}
+
+op=$1
+shift
+
+$op $*

@@ -1,0 +1,15 @@
+pkgbase = netwmpager
+	pkgdesc = A NetWM/EWMH compatible pager
+	pkgver = 2.05
+	pkgrel = 2
+	url = http://onion.dynserv.net/~timo/?page=Projects/netwmpager
+	install = netwmpager.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxft
+	source = http://sourceforge.net/projects/sf-xpaint/files/netwmpager/netwmpager-2.05.tar.bz2
+	md5sums = 622485be511d3258c892c68ccccc87a6
+
+pkgname = netwmpager
+
