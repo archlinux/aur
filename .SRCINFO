@@ -1,0 +1,76 @@
+pkgbase = linux-libre-pae
+	pkgver = 4.0.5_gnu
+	pkgrel = 1
+	url = http://linux-libre.fsfla.org/
+	arch = i686
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	options = !strip
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0-gnu/linux-libre-4.0-gnu.tar.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0-gnu/linux-libre-4.0-gnu.tar.xz.sign
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0.5-gnu/patch-4.0-gnu-4.0.5-gnu.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0.5-gnu/patch-4.0-gnu-4.0.5-gnu.xz.sign
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm.sig
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm.sig
+	source = config
+	source = linux.preset
+	source = change-default-console-loglevel.patch
+	sha256sums = 0e2dd5be12c1f82ab3d03b89cbe3f1a20e14332ec42c102efb226a6283fdd38a
+	sha256sums = SKIP
+	sha256sums = 5ac82d1955fee5abccda157ef2399b34d4fd1c2310a33d19c09ca5953b308172
+	sha256sums = SKIP
+	sha256sums = bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494
+	sha256sums = SKIP
+	sha256sums = 13bd7a8d9ed6b6bc971e4cd162262c5a20448a83796af39ce394d827b0e5de74
+	sha256sums = SKIP
+	sha256sums = 6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a
+	sha256sums = SKIP
+	sha256sums = a77c1bd4473e4a6eae2f276f4fc677054732cd282e001bbe8abab8da7fcda60a
+	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
+	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
+
+pkgname = linux-libre-pae
+	pkgdesc = The Linux-libre-pae kernel and modules with PAE support (HIGHMEM64G)
+	install = linux.install
+	depends = coreutils
+	depends = linux-libre-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = linux-pae=4.0.5
+	conflicts = linux-pae
+	conflicts = kernel26-pae
+	conflicts = kernel26-libre-pae
+	replaces = linux-pae
+	replaces = kernel26-pae
+	replaces = kernel26-libre-pae
+	backup = etc/mkinitcpio.d/linux-libre-pae.preset
+
+pkgname = linux-libre-pae-headers
+	pkgdesc = Header files and scripts for building modules for Linux-libre-pae kernel
+	provides = linux-pae-headers=4.0.5
+	conflicts = linux-pae-headers
+	conflicts = kernel26-pae-headers
+	conflicts = kernel26-libre-pae-headers
+	replaces = linux-pae-headers
+	replaces = kernel26-pae-headers
+	replaces = kernel26-libre-pae-headers
+
+pkgname = linux-libre-pae-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre-pae kernel
+	provides = linux-pae-docs=4.0.5
+	conflicts = linux-pae-docs
+	conflicts = kernel26-pae-docs
+	conflicts = kernel26-libre-pae-docs
+	replaces = linux-pae-docs
+	replaces = kernel26-pae-docs
+	replaces = kernel26-libre-pae-docs
+
