@@ -1,0 +1,16 @@
+pkgbase = glacier-hash
+	pkgdesc = Computes the SHA256 tree hash of a file
+	pkgver = 1
+	pkgrel = 0
+	url = https://docs.aws.amazon.com/amazonglacier/latest/dev/checksum-calculations.html
+	arch = any
+	license = custom
+	makedepends = java-environment
+	depends = java-runtime
+	source = glacier-hash
+	source = TreeHash.java
+	md5sums = dff070b256b9d7d936e657ab5263d131
+	md5sums = 1308e53e009bbcf507556505e13beac4
+
+pkgname = glacier-hash
+
