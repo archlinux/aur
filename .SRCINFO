@@ -1,0 +1,15 @@
+pkgbase = launch
+	pkgdesc = Launch.app is a small programm for executing applications, based on WINGs library.
+	pkgver = 1.0pre1
+	pkgrel = 2
+	url = http://stepmaker.sourceforge.net/launch.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = windowmaker
+	options = !buildflags
+	source = http://downloads.sourceforge.net/sourceforge/stepmaker/Launch.app-1.0pre1.tar.gz
+	md5sums = 9b51931c7eefd618348bfd2b2b10a7a7
+
+pkgname = launch
+
