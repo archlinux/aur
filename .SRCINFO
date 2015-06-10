@@ -1,0 +1,27 @@
+pkgbase = mingw-w64-recode
+	pkgdesc = Converts files between various character sets and usages (mingw-w64)
+	pkgver = 3.6
+	pkgrel = 9
+	url = http://recode.progiciels-bpi.ca/index.html
+	arch = any
+	license = GPL
+	license = LGPL
+	makedepends = mingw-w64-gcc
+	depends = mingw-w64-crt
+	depends = mingw-w64-gettext
+	options = !strip !buildflags staticlibs
+	source = recode-3.6.tar.gz::https://github.com/pinard/recode/tarball/v3.6
+	source = http://ftp.de.debian.org/debian/pool/main/r/recode/recode_3.6-17.diff.gz
+	source = recode-3.6-as-if.patch
+	source = recode-3.6-gettextfix.diff
+	source = autotools.patch
+	source = mingw.patch
+	md5sums = f82e9a6ede9119268c13493c9add2809
+	md5sums = 3716ae269074e31add3d29387ff09438
+	md5sums = fca7484ba332c8ad59eb02334883cd92
+	md5sums = eb602e80a24b5448604bfebeacc55304
+	md5sums = 8680ae965cdcd26f0dea1b8f85c34226
+	md5sums = 515d43fe361a44f576fea310f85472ae
+
+pkgname = mingw-w64-recode
+
