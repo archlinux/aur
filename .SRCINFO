@@ -1,0 +1,14 @@
+pkgbase = airtame-cli-git
+	pkgdesc = The AIRTAME Command Line interface
+	pkgver = r36.0eb1a15
+	pkgrel = 1
+	url = http://www.airtame.com
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	depends = jsonrpc-c-git
+	source = airtame-cli-git::git+https://github.com/airtame/airtame-cli.git
+	sha1sums = SKIP
+
+pkgname = airtame-cli-git
+
