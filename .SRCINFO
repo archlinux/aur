@@ -1,0 +1,14 @@
+pkgbase = go-synth
+	pkgdesc = Go synth
+	pkgver = 20121119
+	pkgrel = 1
+	url = https://github.com/nf/gosynth
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = go
+	options = !strip
+	options = !emptydirs
+
+pkgname = go-synth
+
