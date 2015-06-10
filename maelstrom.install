@@ -1,0 +1,18 @@
+pre_upgrade() {
+  if [ -f usr/games/Maelstrom-Scores ]; then
+    mv usr/games/Maelstrom-Scores var/games/Maelstrom.scores.old
+  fi
+}
+
+post_upgrade() {
+  if [ -f var/games/Maelstrom.scores.old ]; then
+    mv var/games/Maelstrom.scores.old var/games/Maelstrom.scores
+    chown root:games var/games/Maelstrom.scores
+    chmod 664 var/games/Maelstrom.scores
+  fi
+}
+
+op=$1
+shift
+
+$op $*

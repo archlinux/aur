@@ -1,0 +1,38 @@
+--- scores.cpp.orig	2007-12-26 19:07:53.000000000 +0000
++++ scores.cpp	2007-12-26 19:08:30.000000000 +0000
+@@ -15,7 +15,7 @@
+ #include "load.h"
+ #include "dialog.h"
+ 
+-#define MAELSTROM_SCORES	"Maelstrom-Scores"
++#define MAELSTROM_SCORES	"/var/games/Maelstrom.scores"
+ #define NUM_SCORES		10		// Do not change this!
+ 
+ /* Everyone can write to scores file if defined to 0 */
+@@ -44,7 +44,7 @@
+ 	}
+ 	memset(&hScores, 0, sizeof(hScores));
+ 
+-	scores_src = SDL_RWFromFile(path.Path(MAELSTROM_SCORES), "rb");
++	scores_src = SDL_RWFromFile(MAELSTROM_SCORES, "rb");
+ 	if ( scores_src != NULL ) {
+ 		for ( i=0; i<NUM_SCORES; ++i ) {
+ 			SDL_RWread(scores_src, hScores[i].name,
+@@ -72,7 +72,7 @@
+ #ifdef unix
+ 	omask=umask(SCORES_PERMMASK);
+ #endif
+-	scores_src = SDL_RWFromFile(path.Path(MAELSTROM_SCORES), "wb");
++	scores_src = SDL_RWFromFile(MAELSTROM_SCORES, "wb");
+ 	if ( scores_src != NULL ) {
+ 		for ( i=0; i<NUM_SCORES; ++i ) {
+ 			SDL_RWwrite(scores_src, hScores[i].name,
+@@ -83,7 +83,7 @@
+ 		SDL_RWclose(scores_src);
+ 	} else {
+ 		error("Warning: Couldn't save scores to %s\n",
+-						path.Path(MAELSTROM_SCORES));
++						MAELSTROM_SCORES);
+ 	}
+ #ifdef unix
+ 	umask(omask);

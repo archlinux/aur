@@ -1,0 +1,27 @@
+pkgbase = maelstrom
+	pkgdesc = Asteroids-type game with sound and 3D objects
+	pkgver = 3.0.6
+	pkgrel = 3
+	url = http://www.libsdl.org/projects/Maelstrom/index.html
+	install = maelstrom.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl_net
+	depends = gcc-libs
+	backup = var/games/Maelstrom.scores
+	source = http://www.libsdl.org/projects/Maelstrom/src/Maelstrom-3.0.6.tar.gz
+	source = maelstrom-3.0.6-64bits.patch
+	source = maelstrom-scores.patch
+	source = Maelstrom.desktop
+	md5sums = 96aa6359538a6bd60b4198a792de578b
+	md5sums = 471ef416576d1ba7dabfa12a4825e271
+	md5sums = 131dc95ec8d23f510cdec2bb10dbb9b4
+	md5sums = 4e9009d8c1b7afd68f54084565135d6c
+	sha1sums = 2036fb814db2263ca44ebe3397dbed66720249b7
+	sha1sums = 3156c1607727b2dcf9b946b60db3053f650dddef
+	sha1sums = b2c49116069f33fefceb56bebe18ded3f31e8e6a
+	sha1sums = 8190cc973ea82ba2b629132931b7164e27643205
+
+pkgname = maelstrom
+
