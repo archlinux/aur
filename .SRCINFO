@@ -1,0 +1,16 @@
+pkgbase = hachoir-wx
+	pkgdesc = Graphical user interface for hachoir.
+	pkgver = 0.3
+	pkgrel = 2
+	url = http://bitbucket.org/haypo/hachoir/wiki/hachoir-metadata
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = hachoir-core
+	depends = hachoir-parser
+	depends = wxpython
+	source = http://cheeseshop.python.org/packages/source/h/hachoir-wx/hachoir-wx-0.3.tar.gz
+	md5sums = ad957029c165d9ba52a6f1ebf92ea647
+
+pkgname = hachoir-wx
+
