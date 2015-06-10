@@ -1,0 +1,9 @@
+post_install(){
+    echo "
+    NOTE: The fb-adb-android-arm.zip archive contains a build of fb-adb
+    compatible with Android devices that have an ARM CPU. To use fb-adb to
+    communicate with an Android device, this must be deployed to
+    /system/bin/fb-adb (or /system/xbin/fb-adb if the /system/xbin directory is
+    used by the ROM)
+    "
+}
