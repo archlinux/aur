@@ -19,6 +19,7 @@ source_x86_64=(http://download.nomachine.com/download/4.6/Linux/${pkgname}_${pkg
 package()
 {
   cd "$srcdir"
+  mkdir "$srcdir/NX/etc" -p
   install -d "$pkgdir/usr/"
   cp -a NX "$pkgdir/usr/NX"
 }
