@@ -1,0 +1,17 @@
+pkgbase = cmdiag
+	pkgdesc = Docsis cable modem diagnostic
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://cmdiag.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = net-snmp
+	provides = cmdiag=0.2
+	source = http://downloads.sourceforge.net/cmdiag/cmdiag-0.2.tar.gz
+	source = cmdiag.cpp.patch
+	md5sums = e1bde5ef9d1c0f976f4cfe0af990d4e8
+	md5sums = 0ea5b066687e07db5c8551f82c819301
+
+pkgname = cmdiag
+

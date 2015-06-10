@@ -1,0 +1,10 @@
+--- cmdiag.cpp.orig	2008-05-01 22:42:18.000000000 +0200
++++ cmdiag.cpp	2011-08-08 12:05:24.113372114 +0200
+@@ -13,6 +13,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <unistd.h>
++#include <string.h>
+ #include "bar.h"
+ #include "pbar.h"
+ #include "globals.h"
