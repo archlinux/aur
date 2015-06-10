@@ -1,0 +1,16 @@
+pkgbase = perevod-git
+	pkgdesc = Lightweight selection translator (GTK+)
+	pkgver = 0.0.0
+	pkgrel = 3
+	url = https://github.com/naspeh/perevod
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = python-gobject
+	depends = gtk3
+	provides = perevod
+	source = perevod-git::git://github.com/naspeh/perevod.git
+	sha256sums = SKIP
+
+pkgname = perevod-git
+
