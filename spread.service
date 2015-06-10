@@ -1,0 +1,14 @@
+[Unit]
+Description=spread messaging daemon
+After=syslog.target network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/spread $SPREAD_OPTS
+
+User=spread
+Group=spread
+UMask=0007
+
+[Install]
+WantedBy=multi-user.target

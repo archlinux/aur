@@ -1,0 +1,21 @@
+post_install() {
+	getent group spread &>/dev/null || groupadd -r spread >/dev/null
+	getent passwd spread &>/dev/null || useradd -r -d /var/lib/spread -s /bin/false -g spread spread >/dev/null
+	true
+}
+
+post_upgrade() {
+	post_install
+    true
+}
+
+pre_remove() {
+	systemctl stop spread.service &>/dev/null
+	true
+}
+
+post_remove() {
+	getent passwd spread &>/dev/null && userdel spread >/dev/null
+	getent group spread &>/dev/null && groupdel spread >/dev/null
+	true
+}
