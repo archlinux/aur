@@ -1,0 +1,17 @@
+pkgbase = libbassenc
+	pkgdesc = An extension that allows BASS channels to be encoded using command-line encoders with STDIN support.
+	pkgver = 2.4.12.8
+	pkgrel = 1
+	url = http://www.un4seen.com/bass.html#addons
+	arch = i686
+	arch = x86_64
+	license = custom:basslicence
+	makedepends = unzip
+	depends = libbass
+	source = http://us.un4seen.com/files/bassenc24-linux.zip
+	source = LICENSE
+	md5sums = a554085402c6d668eabf678f8dec4e24
+	md5sums = 9ba933735ead25f00741f2e6d3abed05
+
+pkgname = libbassenc
+
