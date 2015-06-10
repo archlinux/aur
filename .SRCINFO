@@ -1,0 +1,51 @@
+pkgbase = qira-git
+	pkgdesc = QEMU Interactive Runtime Analyser
+	pkgver = r1000.3313476
+	pkgrel = 4
+	url = http://qira.me/
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = python2-setuptools
+	makedepends = python2-virtualenv
+	makedepends = python2-pip
+	makedepends = fakeroot
+	makedepends = fakechroot
+	makedepends = wget
+	makedepends = glib2
+	makedepends = unzip
+	makedepends = zlib
+	makedepends = git
+	makedepends = pixman
+	makedepends = libjpeg
+	makedepends = libpng
+	makedepends = sdl
+	makedepends = alsa-lib
+	makedepends = nss
+	makedepends = glib2
+	makedepends = gnutls>=2.4.1
+	makedepends = bluez-libs
+	makedepends = vde2
+	makedepends = util-linux
+	makedepends = curl
+	makedepends = libsasl
+	makedepends = libgl
+	makedepends = libpulse
+	makedepends = seabios
+	makedepends = libcap-ng
+	makedepends = libaio
+	makedepends = libseccomp
+	makedepends = libiscsi
+	makedepends = libcacard
+	makedepends = spice
+	makedepends = spice-protocol
+	makedepends = python2
+	makedepends = usbredir
+	depends = graphviz
+	depends = zlib
+	options = !strip
+	source = qira-git::git+http://github.com/BinaryAnalysisPlatform/qira.git#branch=master
+	md5sums = SKIP
+
+pkgname = qira-git
+
