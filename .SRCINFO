@@ -1,0 +1,23 @@
+pkgbase = minecraft-map-auto-trim-git
+	pkgdesc = Delete unecessary minecraft chunks.
+	pkgver = 0.r25.g69adce0
+	pkgrel = 1
+	url = https://github.com/hwei/Minecraft-Map-Auto-Trim
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = findutils
+	makedepends = java-environment
+	depends = java-environment
+	depends = bash
+	provides = mmat
+	provides = minecraft-map-auto-trim
+	conflicts = mmat
+	conflicts = minecraft-map-auto-trim
+	source = minecraft-map-auto-trim-git::git://github.com/hwei/Minecraft-Map-Auto-Trim.git
+	source = mmat.sh
+	md5sums = SKIP
+	md5sums = ff6d7ad70f0bb1baacdb03c6b6b2cad8
+
+pkgname = minecraft-map-auto-trim-git
+
