@@ -1,0 +1,24 @@
+pkgbase = despotify-svn
+	pkgdesc = Console client for Spotify (development version)
+	pkgver = 521
+	pkgrel = 2
+	url = http://despotify.sourceforge.net/
+	install = despotify.install
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = subversion
+	makedepends = ncurses
+	makedepends = libtool
+	makedepends = expat
+	depends = libvorbis
+	depends = openssl
+	depends = libao
+	depends = mpg123
+	conflicts = despotify-pulse-svn
+	conflicts = despotify-ao-svn
+	source = despotify::svn://svn.code.sf.net/p/despotify/code/
+	sha256sums = SKIP
+
+pkgname = despotify-svn
+
