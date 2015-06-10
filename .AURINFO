@@ -1,0 +1,15 @@
+pkgbase = tardisgo
+	pkgdesc = Create mobile applications with Go, by transpiling to Haxe
+	pkgver = 0.1
+	pkgrel = 2
+	url = http://tardisgo.github.io/
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = haxe
+	source = git://github.com/tardisgo/tardisgo.git#tag=v0.1
+
+pkgname = tardisgo
+
