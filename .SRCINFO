@@ -1,0 +1,18 @@
+pkgbase = octave-control
+	pkgdesc = Computer-Aided Control System Design (CACSD) Tools for GNU Octave, based on the proven SLICOT Library
+	pkgver = 2.8.1
+	pkgrel = 1
+	url = http://octave.sourceforge.net/control/
+	install = octave-control.install
+	arch = any
+	groups = octave-forge
+	license = GPL3
+	makedepends = gcc-fortran
+	depends = octave>=3.8.0
+	noextract = control-2.8.1.tar.gz
+	options = !makeflags
+	source = http://downloads.sourceforge.net/octave/control-2.8.1.tar.gz
+	md5sums = 0b6141a0937c9be83cabb49256d0f3c8
+
+pkgname = octave-control
+
