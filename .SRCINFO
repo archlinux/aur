@@ -1,0 +1,17 @@
+pkgbase = gsimplecal-gtk2
+	pkgdesc = Simple and lightweight GTK calendar
+	pkgver = 2.1
+	pkgrel = 1
+	url = http://dmedvinsky.github.com/gsimplecal
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = gtk2
+	provides = gsimplecal
+	conflicts = gsimplecal
+	conflicts = gsimplecal-git
+	source = https://github.com/dmedvinsky/gsimplecal/archive/v2.1.tar.gz
+	md5sums = 170ac0bdc8663d97dec436e45b195491
+
+pkgname = gsimplecal-gtk2
+
