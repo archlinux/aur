@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=digikam-frameworks-git
-pkgver=5.0.0.r32077.929ac0f
+pkgver=5.0.0.r32112.0d5276b
 pkgrel=1
 pkgdesc='Digital photo management application for KDE. KF5 Frameworks branch (GIT Version)'
 arch=('i686' 'x86_64')
@@ -10,8 +10,9 @@ url="http://www.digikam.org/"
 depends=('knotifyconfig' 'kfilemetadata'
          'libkdcraw-frameworks-git'  'libkexiv2-frameworks-git' 'libkipi-frameworks-git' 'libkface-frameworks-git' 'libkgeomap-frameworks-git'
          'libpgf' 'libgphoto2' 'liblqr' 'lensfun')
-makedepends=('eigen' 'doxygen' 'python' 'boost' 'extra-cmake-modules' 'kdoctools' 'git')
-optdepends=('kipi-plugins-frameworks-git: for more tools and plugins')
+makedepends=('eigen' 'doxygen' 'python' 'boost' 'extra-cmake-modules' 'kdoctools' 'git' 'mariadb')
+optdepends=('kipi-plugins-frameworks-git: for more tools and plugins'
+            'mariadb: MySQL support')
 conflicts=('digikam')
 provides=('digikam')
 install=digikam-frameworks-git.install
@@ -35,9 +36,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLIB_INSTALL_DIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    -DBUILD_TESTING=OFF \
-    -DENABLE_MYSQLSUPPORT=ON \
-    -DENABLE_MEDIAPLAYER=OFF
+    -DBUILD_TESTING=OFF
   make
 }
 
