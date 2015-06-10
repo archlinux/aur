@@ -1,0 +1,15 @@
+pkgbase = plasma-theme-archpaint2
+	pkgdesc = Plasma 5 theme based on archpaint2 wallpaper
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://www.archlinux.org/
+	install = plasma-theme-archpaint2.install
+	arch = any
+	license = CCPL:cc-by-sa
+	depends = wallpaper-archpaint2
+	depends = plasma-workspace
+	source = https://github.com/Guidobelix/plasma-theme-archpaint2/releases/download/v1.1/plasma-theme-archpaint2-1.1.tar.bz2
+	md5sums = 6808508d7806d6326434ecdf89a2cb7e
+
+pkgname = plasma-theme-archpaint2
+
