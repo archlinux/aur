@@ -1,0 +1,13 @@
+pkgbase = joyutils
+	pkgdesc = jscal, jstest, and jsattach utilities for the linux joystick driver
+	pkgver = 1.2.15
+	pkgrel = 6
+	url = http://atrey.karlin.mff.cuni.cz/~vojtech/joystick/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = addinclude
+	source = ftp://atrey.karlin.mff.cuni.cz/pub/linux/joystick/joystick-1.2.15.tar.gz
+
+pkgname = joyutils
+
