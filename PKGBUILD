@@ -1,7 +1,7 @@
 # Maintainer: Philipp Klein <philipptheklein@gmail.com>
 pkgname=gdrive
-pkgver=1.6.1
-pkgrel=2
+pkgver=1.8.0
+pkgrel=1
 pkgdesc="Command line utility for uploading and downloading single files to your Google Drive"
 arch=('x86_64' 'i686')
 url="https://github.com/prasmussen/gdrive"
@@ -18,7 +18,7 @@ options=()
 install=
 changelog=
 source=("https://github.com/prasmussen/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('50d5851c6f6cfa52713c001dae03a2c189ee3d9a255e8bf58ce8d4dadab5b9fc')
+sha256sums=('c68ca12c9e6f585f2ac7c13cb36839503bb29df96b5713c865d2829ee2ece6b0')
 noextract=()
 _gourl="github.com/prasmussen/gdrive"
 
