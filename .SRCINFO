@@ -1,0 +1,21 @@
+pkgbase = python2-trackpy
+	pkgdesc = tools for particle tracking
+	pkgver = 0.2.4
+	pkgrel = 2
+	url = https://github.com/soft-matter/trackpy
+	arch = any
+	license = BSD
+	checkdepends = python2-nose
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-numpy
+	depends = python2-scipy
+	depends = python2-matplotlib
+	depends = python2-pandas
+	depends = python2-yaml
+	depends = python2-pims
+	source = https://github.com/soft-matter/trackpy/archive/v0.2.4.zip
+	md5sums = d5327b79365e808eb85f7aafec37c523
+
+pkgname = python2-trackpy
+
