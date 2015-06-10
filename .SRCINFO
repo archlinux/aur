@@ -1,0 +1,19 @@
+pkgbase = sinfo
+	pkgdesc = A monitoring tool for networked computers.
+	pkgver = 0.0.48
+	pkgrel = 4
+	url = http://www.ant.uni-bremen.de/whomes/rinas/sinfo/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = arm
+	license = GPL
+	depends = ncurses
+	depends = boost
+	source = http://www.ant.uni-bremen.de/whomes/rinas/sinfo/download/sinfo-0.0.48.tar.gz
+	source = sinfod.service
+	md5sums = 5e92a5c94ff69a68b64b7b776c75d4bf
+	md5sums = 5bf5ea9334d10165dfdc2612b6a84688
+
+pkgname = sinfo
+
