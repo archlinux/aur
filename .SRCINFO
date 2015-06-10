@@ -1,7 +1,7 @@
 pkgbase = masterpdfeditor
 	pkgdesc = A complete solution for creation and editing PDF files. (Free for non-commercial use)
-	pkgver = 3.0.62
-	pkgrel = 3
+	pkgver = 3.1.0
+	pkgrel = 1
 	url = http://code-industry.net/free-pdf-editor.php
 	install = masterpdfeditor.install
 	arch = i686
@@ -10,10 +10,10 @@ pkgbase = masterpdfeditor
 	depends = qt4
 	source = masterpdfeditor.desktop
 	sha256sums = 29218c206e5b78776bc3ec44a760773273274bb56baee5e19e06c3ec55db59fd
-	source_i686 = http://code-industry.net/public/master-pdf-editor-3.0.62_i386.tar.gz
-	sha256sums_i686 = 5505ac3e7a4956ff794a5b568e1b07d427c60629692029ba9737923dce6985eb
-	source_x86_64 = http://code-industry.net/public/master-pdf-editor-3.0.62_amd64.tar.gz
-	sha256sums_x86_64 = 8849e0ddb35a9cee12042aa56bfa6096f08e945139c09dbaa00356a71767ef2f
+	source_i686 = http://code-industry.net/public/master-pdf-editor-3.1.0_i386.tar.gz
+	sha256sums_i686 = c58ca83b91f1115b77763c86160bf3106bb044783704494c160066b3d778ddbc
+	source_x86_64 = http://code-industry.net/public/master-pdf-editor-3.1.0_amd64.tar.gz
+	sha256sums_x86_64 = ac1e9c05d62a4417a6357ee1fc259fde1a83c19a80eb572e30f62032f3e286ad
 
 pkgname = masterpdfeditor
 
