@@ -1,0 +1,16 @@
+pkgbase = docker-tray
+	pkgdesc = Docker is a docking application (WindowMaker dock app) which acts as a system tray for KDE and GNOME2.
+	pkgver = 1.5
+	pkgrel = 3
+	url = http://icculus.org/openbox/2/docker/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	depends = glib2
+	depends = libx11
+	source = http://icculus.org/openbox/2/docker/docker-1.5.tar.gz
+	md5sums = 349320bebd43babb8b43e11c7aae0293
+
+pkgname = docker-tray
+
