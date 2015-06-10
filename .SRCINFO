@@ -1,0 +1,19 @@
+pkgbase = qemacs
+	pkgdesc = Quick version of Emacs
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = http://bellard.org/qemacs/
+	install = qemacs.install
+	arch = x86_64
+	arch = i686
+	license = LGPL2.1
+	makedepends = texi2html
+	makedepends = setconf
+	depends = libxv
+	provides = qemacs
+	conflicts = qemacs-cvs
+	source = http://bellard.org/qemacs/qemacs-0.3.3.tar.gz
+	sha256sums = 2ffba66a44783849282199acfcc08707debc7169394a8fd0902626222f27df94
+
+pkgname = qemacs
+

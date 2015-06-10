@@ -1,0 +1,9 @@
+post_upgrade() {
+  echo 'Install qemacs-cvs instead if you wish "qemacs -nw" to work.'
+}
+
+post_install() {
+  post_upgrade
+}
+
+# vim:set ts=2 sw=2 et:
