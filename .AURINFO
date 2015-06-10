@@ -1,0 +1,12 @@
+pkgbase = wine-qqintl
+	pkgdesc = Wine QQ International 2012 by Deepin.
+	pkgver = 0.1.3
+	pkgrel = 2
+	url = http://www.imqq.com/
+	arch = i686
+	arch = x86_64
+	license = Other
+	source = wine-qqintl_0.1.3-2_i386.deb::http://packages.linuxdeepin.com/deepin/pool/non-free/d/deepinwine-qqintl/wine-qqintl_0.1.3-2_i386.deb
+
+pkgname = wine-qqintl
+
