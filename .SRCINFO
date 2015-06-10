@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-fribidi
+	pkgdesc = A Free Implementation of the Unicode Bidirectional Algorithm (mingw-w64)
+	pkgver = 0.19.6
+	pkgrel = 2
+	url = http://fribidi.org
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-gcc
+	depends = mingw-w64-crt
+	depends = mingw-w64-glib2
+	options = !strip
+	options = !buildflags
+	options = !libtool
+	options = staticlibs
+	source = http://fribidi.org/download/fribidi-0.19.6.tar.bz2
+	md5sums = ce93d862344991173dabb609bf93ca1d
+
+pkgname = mingw-w64-fribidi
+
