@@ -1,0 +1,14 @@
+pkgbase = diglog
+	pkgdesc = Design and simulate circuits
+	pkgver = 5.51
+	pkgrel = 1
+	url = http://heim.ifi.uio.no/~inf103/Grl/
+	arch = x86_64
+	arch = i686
+	license = unknown
+	conflicts = chipmunksystem
+	source = http://heim.ifi.uio.no/~inf103/Grl/prog/diglog/diglog-5.51-linux-i386-glibc2.tar.gz
+	sha256sums = 5e61a8be69febfac15d902a4ce301b2f1edf2c5239ce9089a80e652a6ebabe52
+
+pkgname = diglog
+
