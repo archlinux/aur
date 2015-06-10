@@ -1,0 +1,22 @@
+pkgbase = sems
+	pkgdesc = Free, high performance, extensible media and application server for SIP (RFC3261) based VoIP services.
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = http://iptel.org/sems
+	arch = i686
+	arch = x86_64
+	license = GPLv2+
+	depends = speex
+	depends = bash
+	depends = python
+	source = http://ftp.iptel.org/pub/sems/sems-1.5.0.tar.gz
+	source = rc.d-sems
+	source = patch-Makefile.defs.patch
+	source = patch-python2.patch
+	md5sums = ec0a88f9081679b3b4ab9d06e84ea759
+	md5sums = 01cbd7bc12dd94b35ef9f723156f4105
+	md5sums = dbf2ffd36d0527a8eb24bd4f82736972
+	md5sums = 47dc4e26f3370b52edf494b7c37b293a
+
+pkgname = sems
+

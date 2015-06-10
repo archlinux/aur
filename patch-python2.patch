@@ -1,0 +1,29 @@
+diff -aur sems-1.4.1-orig//apps/dsm/mods/mod_py/Makefile sems-1.4.1/apps/dsm/mods/mod_py/Makefile
+--- sems-1.4.1-orig//apps/dsm/mods/mod_py/Makefile	2011-07-18 10:14:51.172843572 +0200
++++ sems-1.4.1/apps/dsm/mods/mod_py/Makefile	2011-07-18 10:15:38.022840968 +0200
+@@ -1,6 +1,6 @@
+ plug_in_name = mod_py
+ 
+-PYTHON_VERSION ?= $(shell python -c 'import sys;print sys.version[0:3]')
++PYTHON_VERSION ?= $(shell python2 -c 'import sys;print sys.version[0:3]')
+ PY_VER = $(PYTHON_VERSION)
+ PY_EXE = python$(PY_VER)
+ 
+@@ -36,4 +36,4 @@
+ ifneq ($(OS),solaris)
+ PYTHON_module_ldflags += -Xlinker --export-dynamic
+ endif
+-endif
+\ No newline at end of file
++endif
+diff -aur sems-1.4.1-orig//apps/ivr/Makefile.defs sems-1.4.1/apps/ivr/Makefile.defs
+--- sems-1.4.1-orig//apps/ivr/Makefile.defs	2011-07-18 10:14:51.162843570 +0200
++++ sems-1.4.1/apps/ivr/Makefile.defs	2011-07-18 10:15:19.269508826 +0200
+@@ -1,6 +1,6 @@
+ # Python version: 2.5, 2.4 or 2.3
+ #
+-PYTHON_VERSION ?= $(shell python -c 'import sys;print sys.version[0:3]')
++PYTHON_VERSION ?= $(shell python2 -c 'import sys;print sys.version[0:3]')
+ 
+ PY_VER = $(PYTHON_VERSION)
+ PY_EXE = python$(PY_VER)

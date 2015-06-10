@@ -1,0 +1,10 @@
+197,200c197,200
+< bin-dir = sbin/
+< modules-dir = lib/sems/plug-in/
+< audio-dir = lib/sems/audio/
+< lib-dir = lib/sems/
+---
+> bin-dir = usr/bin/
+> modules-dir = usr/lib/sems/plug-in/
+> audio-dir = usr/lib/sems/audio/
+> lib-dir = usr/lib/sems/
