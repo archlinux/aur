@@ -22,15 +22,15 @@ build() {
 package_python-nikola() {
   depends=('python' 'python-doit' 'python-pygments' 'python-pillow'
            'python-docutils' 'python-mako' 'python-unidecode' 'python-lxml'
-           'python-yapsy' 'python-pyrss2gen' 'python-dateutil' 'python-logbook'
+           'python-yapsy=1.10.423' 'python-pyrss2gen' 'python-dateutil' 'python-logbook'
            'python-blinker' 'python-natsort')
   depends+=('python-nikola-doc')
   optdepends=('python-requests: for theme and plugin installation, and various web services'
               'python-markdown: for Markdown support'
               'python-jinja: for Jinja2 themes'
-              'python-livereload==2.3.2: for automatically refreshing browsers'
+              'python-livereload=2.3.2: for automatically refreshing browsers'
               'python-pyphen>=0.9.1: for hyphenation'
-              'python-pygal==1.7.0: for SVG graph plotting'
+              'python-pygal=1.7.0: for SVG graph plotting'
               'python-typogrify>=2.0.4: for typographical enhancements'
               'python-webassets: for bundling assets'
               'ipython-notebook: for ipynb support'
@@ -48,15 +48,15 @@ package_python-nikola() {
 package_python2-nikola() {
   depends=('python2' 'python2-doit' 'python2-pygments' 'python2-pillow'
            'python2-docutils' 'python2-mako' 'python2-unidecode' 'python2-lxml'
-           'python2-yapsy' 'python2-pyrss2gen' 'python2-dateutil' 'python2-logbook'
+           'python2-yapsy=1.10.423' 'python2-pyrss2gen' 'python2-dateutil' 'python2-logbook'
            'python2-blinker' 'python2-natsort')
   depends+=('python-nikola-doc')
   optdepends=('python2-requests: for theme and plugin installation, and various web services'
               'python2-markdown: for Markdown support'
               'python2-jinja: for Jinja2 themes'
-              'python2-livereload==2.3.2: for automatically refreshing browsers'
+              'python2-livereload=2.3.2: for automatically refreshing browsers'
               'python2-pyphen>=0.9.1: for hyphenation'
-              'python2-pygal==1.7.0: for SVG graph plotting'
+              'python2-pygal=1.7.0: for SVG graph plotting'
               'python2-typogrify>=2.0.4: for typographical enhancements'
               'python2-webassets: for bundling assets'
               'ipython2-notebook: for ipynb support'

@@ -22,7 +22,7 @@ pkgname = python-nikola
 	depends = python-mako
 	depends = python-unidecode
 	depends = python-lxml
-	depends = python-yapsy
+	depends = python-yapsy=1.10.423
 	depends = python-pyrss2gen
 	depends = python-dateutil
 	depends = python-logbook
@@ -32,9 +32,9 @@ pkgname = python-nikola
 	optdepends = python-requests: for theme and plugin installation, and various web services
 	optdepends = python-markdown: for Markdown support
 	optdepends = python-jinja: for Jinja2 themes
-	optdepends = python-livereload==2.3.2: for automatically refreshing browsers
+	optdepends = python-livereload=2.3.2: for automatically refreshing browsers
 	optdepends = python-pyphen>=0.9.1: for hyphenation
-	optdepends = python-pygal==1.7.0: for SVG graph plotting
+	optdepends = python-pygal=1.7.0: for SVG graph plotting
 	optdepends = python-typogrify>=2.0.4: for typographical enhancements
 	optdepends = python-webassets: for bundling assets
 	optdepends = ipython-notebook: for ipynb support
@@ -53,7 +53,7 @@ pkgname = python2-nikola
 	depends = python2-mako
 	depends = python2-unidecode
 	depends = python2-lxml
-	depends = python2-yapsy
+	depends = python2-yapsy=1.10.423
 	depends = python2-pyrss2gen
 	depends = python2-dateutil
 	depends = python2-logbook
@@ -63,9 +63,9 @@ pkgname = python2-nikola
 	optdepends = python2-requests: for theme and plugin installation, and various web services
 	optdepends = python2-markdown: for Markdown support
 	optdepends = python2-jinja: for Jinja2 themes
-	optdepends = python2-livereload==2.3.2: for automatically refreshing browsers
+	optdepends = python2-livereload=2.3.2: for automatically refreshing browsers
 	optdepends = python2-pyphen>=0.9.1: for hyphenation
-	optdepends = python2-pygal==1.7.0: for SVG graph plotting
+	optdepends = python2-pygal=1.7.0: for SVG graph plotting
 	optdepends = python2-typogrify>=2.0.4: for typographical enhancements
 	optdepends = python2-webassets: for bundling assets
 	optdepends = ipython2-notebook: for ipynb support
