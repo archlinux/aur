@@ -1,0 +1,18 @@
+pkgbase = matwm2-svn
+	pkgdesc = A nice tiling or floating window manager
+	pkgver = r793
+	pkgrel = 4
+	url = http://code.google.com/p/segin-utils/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = svn
+	depends = libxinerama
+	depends = libxft
+	source = matwm2-svn::svn+http://segin-utils.googlecode.com/svn/trunk/matwm2
+	source = matwm2.desktop
+	md5sums = SKIP
+	md5sums = 8b9993b93fe1d5337b631165db7252c9
+
+pkgname = matwm2-svn
+

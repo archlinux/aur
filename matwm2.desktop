@@ -1,0 +1,6 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=matwm2
+Comment=A nice tiling or floating window manager
+Exec=matwm2
+Type=XSession
