@@ -1,0 +1,15 @@
+pkgbase = loopcenter
+	pkgdesc = Record and play back loops
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = http://loopcenter.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = jack
+	depends = fltk
+	source = http://sourceforge.net/projects/loopcenter/files/loopcenter/0.1.2/loopcenter-0.1.2.tar.gz/download
+	md5sums = 909c0493d2f204f8a77b7f66270d5d20
+
+pkgname = loopcenter
+
