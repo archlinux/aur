@@ -14,7 +14,7 @@ optdepends=('liblo' 'avahi' 'libusb' 'libusb-compat' 'libftdi-compat' 'openslp')
 conflicts=('ola')
 source=("git+https://github.com/OpenLightingProject/ola.git")
 # uncomment for 0.9.5
-#source=("$pkgname::git+https://github.com/OpenLightingProject/ola#tag=0.9.5")
+#source=("git+https://github.com/OpenLightingProject/ola.git#tag=0.9.5")
 sha256sums=('SKIP')
 
 _gitname="ola"
