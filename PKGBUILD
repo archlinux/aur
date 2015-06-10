@@ -36,7 +36,7 @@ package() {
 
     install -D -d doc/sample-config "$pkgdir/etc/tinc/"
 
-    sed 's,#!/usr/bin/python,#!/usr/bin/python2,' $pkgdir/usr/bin/tinc-gui > $pkgdir/usr/bin/tinc-gui2
+    sed 's,#!/usr/bin/env python,#!/usr/bin/env python2,' $pkgdir/usr/bin/tinc-gui > $pkgdir/usr/bin/tinc-gui2
     install -D -m755 "$pkgdir/usr/bin/tinc-gui2" "$pkgdir/usr/bin/tinc-gui"
 
     install -D -m644 "$srcdir/tinc@.service" "$pkgdir/usr/lib/systemd/system/tinc@.service"
