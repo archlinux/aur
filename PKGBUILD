@@ -1,7 +1,7 @@
 # Maintainer: Suhaimi Ghazali <serdotlinecho@gmail.com>
 
 pkgname=gnome-mpv-git
-pkgver=v0.4.r34.gfd394fb
+pkgver=0.4.r34.gfd394fb
 pkgrel=1
 pkgdesc="GNOME frontend for MPV"
 arch=('i686' 'x86_64')
@@ -11,16 +11,16 @@ depends=('gtk3' 'mpv')
 makedepends=('git' 'intltool')
 optdepends=('youtube-dl: for video-sharing websites playback')
 install=gnome-mpv.install
-source=("${pkgname}::git+https://github.com/gnome-mpv/gnome-mpv.git")
+source=("$pkgname::git+https://github.com/gnome-mpv/gnome-mpv.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "${pkgname}"
-    git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+    cd "$pkgname"
+    git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "${pkgname}"
+    cd "$pkgname"
     autoreconf -sfi
     intltoolize -c --automake
     ./configure --prefix=/usr
@@ -28,6 +28,6 @@ build() {
 }
 
 package() {
-    cd "${pkgname}"
-    make DESTDIR="${pkgdir}" install
+    cd "$pkgname"
+    make DESTDIR="$pkgdir" install
 }
