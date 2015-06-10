@@ -1,0 +1,21 @@
+pkgbase = grisbi
+	pkgdesc = Personal financial management program
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = http://www.grisbi.org
+	install = grisbi.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gettext
+	makedepends = grep
+	makedepends = intltool
+	depends = desktop-file-utils
+	depends = gtk2
+	optdepends = libofx: for OFX support
+	options = !libtool
+	source = http://downloads.sourceforge.net/grisbi/grisbi-1.0.0.tar.bz2
+	sha256sums = 8a23d26777666814d918702ad9207bac433abd3ac71568d53f7c485670f92c55
+
+pkgname = grisbi
+
