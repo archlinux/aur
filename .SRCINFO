@@ -1,0 +1,18 @@
+pkgbase = aurood-git
+	pkgdesc = Out of date notifier for AUR packages
+	pkgver = 20120206.r7.a59889c
+	pkgrel = 1
+	url = https://github.com/falconindy/aurood
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = custom
+	makedepends = git
+	depends = pacman
+	source = git://github.com/falconindy/aurood.git#branch=master
+	sha512sums = SKIP
+
+pkgname = aurood-git
+
