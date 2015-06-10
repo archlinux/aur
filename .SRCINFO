@@ -1,0 +1,16 @@
+pkgbase = ourico
+	pkgdesc = A lightweight EWMH taskbar, originally designed for echinus
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = http://freecode.com/projects/ourico
+	install = ourico.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libxft
+	conflicts = ourico-hg
+	source = http://plhk.ru/static/ourico/ourico-0.1.7.tar.gz
+	md5sums = 6b8af8bf5afc7b9b9f13500c25b19db4
+
+pkgname = ourico
+
