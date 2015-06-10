@@ -1,0 +1,9 @@
+post_install() {
+  touch /etc/hptcfg
+  echo "hptiop" > /etc/hptcfg
+  echo "Make sure to enter the correct driver in /etc/hptcfg"
+  echo "Start the WebGUI daemon with 'systemctl start hptwebgui'"
+  echo "The WebGUI is available at: http://localhost:7402"
+  echo "  Default username: RAID"
+  echo "  Default password: hpt"
+}

@@ -1,0 +1,13 @@
+[Unit]
+Description=HighPoint RocketRAID webGUI daemon
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/hptsvr /etc/hptcfg
+ExecStop=/usr/bin/hptsvr --kill /etc/hptcfg
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=default.target
