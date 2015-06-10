@@ -1,0 +1,12 @@
+post_install() {
+  # Setup the systemd tmpfiles
+  systemd-tmpfiles --create syncthing-discosrv.conf
+
+  # Install the user and group if they don't exist
+  getent passwd syncthing || {
+    useradd -r -U -s /bin/nologin -d /var/discosrv syncthing
+    printf '%s\n' 'The syncthing user and group have been created'
+  }
+
+  printf '%s\n' 'The Syncthing Discovery Server has been installed!'
+}

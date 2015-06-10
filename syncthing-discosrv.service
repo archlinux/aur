@@ -1,0 +1,19 @@
+[Unit]
+Description=Syncthing discovery server
+After=network.target
+
+[Service]
+User=syncthing
+Group=syncthing
+ExecStart=/usr/bin/syncthing-discosrv
+Restart=on-failure
+SuccessExitStatus=2
+
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=full
+ProtectHome=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
