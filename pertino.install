@@ -1,0 +1,16 @@
+post_install() {
+    systemctl enable pgateway
+    systemctl start pgateway
+    echo "To authenticate, run: pertino -u <username> -p <password>"
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+}
+
+pre_remove() {
+    systemctl stop pgateway
+    systemctl disable pgateway
+    rm -f /usr/share/pertino/.1
+    rm -f /usr/share/pertino/tunnel-store.txt
+}
