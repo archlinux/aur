@@ -1,0 +1,10 @@
+[Unit]
+Description=Raspberry Pi GPIO PPS NTP Receiver
+
+[Service]
+Type=forking
+EnvironmentFile=/etc/rpi-gpio-ntp.conf
+ExecStart=/usr/bin/rpi_gpio_ntp $OPTS
+
+[Install]
+WantedBy=multi-user.target

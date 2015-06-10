@@ -1,0 +1,19 @@
+pkgbase = rpi-gpio-ntp
+	pkgdesc = Raspberry Pi GPIO PPS NTP Receiver
+	pkgver = 1.5
+	pkgrel = 2
+	url = http://vanheusden.com/time/rpi_gpio_ntp/
+	arch = any
+	license = GPL2
+	makedepends = make
+	makedepends = gcc
+	backup = etc/rpi-gpio-ntp.conf
+	source = http://vanheusden.com/time/rpi_gpio_ntp/rpi_gpio_ntp-1.5.tgz
+	source = rpi-gpio-ntp.conf
+	source = rpi-gpio-ntp.service
+	md5sums = fbb99cd1481121b216bb0e6f7c6ba1b9
+	md5sums = a44541e3253bc112ba55a76646ae7c0b
+	md5sums = df78058ea1378fe400f4b47b4e06cae2
+
+pkgname = rpi-gpio-ntp
+
