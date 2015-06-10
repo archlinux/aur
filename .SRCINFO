@@ -1,0 +1,21 @@
+pkgbase = limoo-git
+	pkgdesc = Limoo is multiplatform and modern image viewer, focused on better user interface...
+	pkgver = r50.6657bf1
+	pkgrel = 1
+	url = http://labs.sialan.org/projects/limoo
+	arch = x86_64
+	arch = i686
+	license = GPLv3
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = qt5-graphicaleffects
+	depends = qt5-quickcontrols
+	depends = qt5-declarative
+	depends = qt5-quick1
+	depends = exiv2
+	provides = limoo
+	conflicts = limoo
+	conflicts = limoo-bin
+
+pkgname = limoo-git
+
