@@ -1,0 +1,20 @@
+pkgbase = clarity-icon-theme
+	pkgdesc = Vector icons in 8 colourthemes for GTK
+	pkgver = 0.4.0
+	pkgrel = 3
+	url = http://gnome-look.org/content/show.php/Clarity?content=135654
+	arch = any
+	license = GPL3
+	makedepends = imagemagick
+	makedepends = librsvg
+	options = !strip
+	options = !zipman
+	source = http://load.boenki.org/clarity-icon-theme_0.4.0.tar.gz
+	source = clarity-icon-theme-rsvg.patch::https://github.com/jcubic/Clarity/commit/eec45bfefd0874b059aaf7926d134cc31ad7fd31.patch
+	source = clarity-icon-theme-huge-icons.patch::https://github.com/jcubic/Clarity/commit/63d2a085b11c5315c10fc115d4bbc4610ba6ed24.patch
+	md5sums = 4f843a762272967b177ebfa18b54fd6e
+	md5sums = ce4559e558d4f19577cfd72bb2aabeb8
+	md5sums = 27161dd28fc51bfa0da84aa193444811
+
+pkgname = clarity-icon-theme
+
