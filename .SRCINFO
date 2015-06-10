@@ -1,0 +1,20 @@
+pkgbase = virtle-git
+	pkgdesc = libvirt wrapped in a shell.
+	pkgver = 0.r7.g7cd2603
+	pkgrel = 1
+	url = https://github.com/DMBuce/virtle
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = libvirt
+	depends = virt-manager
+	depends = sed
+	depends = bash
+	provides = virtle
+	conflicts = virtle
+	backup = etc/virtle.conf
+	source = virtle-git::git://github.com/DMBuce/virtle.git
+	md5sums = SKIP
+
+pkgname = virtle-git
+
