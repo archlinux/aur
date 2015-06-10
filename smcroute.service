@@ -1,0 +1,15 @@
+[Unit]
+Description=Static Multicast Route Daemon
+After=network.target
+ConditionPathExists=/etc/smcroute.conf
+Conflicts=pimd.service mrouted.service
+
+[Service]
+Type=forking
+PIDFile=/var/run/smcroute.pid
+ExecStart=/usr/bin/smcroute -d
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
