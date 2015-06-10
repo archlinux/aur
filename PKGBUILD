@@ -1,7 +1,10 @@
 # Maintainer: Martin Weinelt <martin@darmstadt.freifunk.net>
 
+# things can get a little crashy at times, so better have debug symbols handy
+# OPTIONS+=(debug !strip)
+
 pkgname=tinc-pre-git
-pkgver=release.1.1pre11.143.gbfe231b
+pkgver=1.1pre11.143.gbfe231b
 pkgrel=1
 pkgdesc="Virtual Private Network daemon (prerelease)"
 arch=('any')
@@ -17,7 +20,7 @@ _gitname=tinc
 
 pkgver() {
     cd "$_gitname"
-    git describe --tags | sed 's/-/./g'
+    git describe --tags | sed 's/-/./g' | cut -d'.' -f2-
 }
 
 build() {
