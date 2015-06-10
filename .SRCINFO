@@ -1,0 +1,15 @@
+pkgbase = simian
+	pkgdesc = A similarity analyser that identifies duplication in Java, C-sharp, C, C++, COBOL, Ruby, JSP, ASP, HTML, XML, Visual Basic, Groovy source code and even plain text files
+	pkgver = 2.3.35
+	pkgrel = 1
+	url = http://harukizaemon.com/simian
+	arch = any
+	license = custom
+	depends = java-runtime
+	source = http://harukizaemon.com/simian/simian-2.3.35.tar.gz
+	source = simian
+	md5sums = f0d1ff48f44251f57937f26baca7d60a
+	md5sums = 83707665662bb85d5878ff13421f4c4a
+
+pkgname = simian
+
