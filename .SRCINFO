@@ -1,0 +1,20 @@
+pkgbase = etwm
+	pkgdesc = Claude's Tab Window Manager with full ICCCM/EMWH support.
+	pkgver = 3.8.3
+	pkgrel = 2
+	url = https://github.com/bbidulock/etwm/
+	arch = i686
+	arch = x86_64
+	license = custom:MIT/X Consortium
+	depends = libxinerama
+	depends = libxrandr
+	depends = libxmu
+	depends = libxpm
+	depends = libjpeg
+	options = !emptydirs
+	backup = usr/share/X11/etwm/system.etwmrc
+	source = https://github.com/bbidulock/etwm/releases/download/3.8.3/etwm-3.8.3.tar.bz2
+	md5sums = 0e4122799dc141fe803b8632821377d9
+
+pkgname = etwm
+
