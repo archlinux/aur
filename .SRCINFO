@@ -1,0 +1,13 @@
+pkgbase = libparserutils-svn
+	pkgdesc = A library for building efficient parsers
+	pkgver = 12813
+	pkgrel = 1
+	url = http://www.netsurf-browser.org/projects/libparserutils/
+	arch = any
+	license = MIT
+	makedepends = subversion
+	provides = libparserutils=0.1.0
+	conflicts = libparserutils
+
+pkgname = libparserutils-svn
+
