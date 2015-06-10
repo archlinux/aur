@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=wikidPad
+Comment=wikidPad is a Wiki-like notebook for storing your thoughts, ideas, todo lists, contacts, or anything else you can think of to write down.
+Exec=wikidpad
+Icon=wikidpad.png
+Terminal=false
+Type=Application
+Categories=Application;Office
