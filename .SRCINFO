@@ -1,0 +1,13 @@
+pkgbase = libnsgif-svn
+	pkgdesc = A library for decoding the GIF image format
+	pkgver = 12168
+	pkgrel = 1
+	url = http://www.netsurf-browser.org/projects/libnsgif/
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = subversion
+	provides = libnsgif
+
+pkgname = libnsgif-svn
+
