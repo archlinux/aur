@@ -1,0 +1,14 @@
+pkgbase = pdfjumbler
+	pkgdesc = A simple tool to rearrange/merge/delete pages from PDF files
+	pkgver = 0.16
+	pkgrel = 6
+	url = http://sourceforge.net/projects/pdfjumbler/
+	arch = i686
+	arch = x86_64
+	license = AGPL
+	depends = java-runtime
+	source = http://downloads.sourceforge.net/pdfjumbler/pdfjumbler-0.16.jar
+	md5sums = a56fefbd6f7b09c9b1e71ef53b87eb9e
+
+pkgname = pdfjumbler
+
