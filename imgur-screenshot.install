@@ -1,0 +1,14 @@
+post_install() {
+  update-desktop-database -q
+  echo "Visit https://github.com/jomo/imgur-screenshot for configuration help"
+}
+
+post_upgrade() {
+  update-desktop-database -q
+}
+
+post_remove() {
+  post_upgrade
+}
+
+# vim:set ts=2 sw=2 et:

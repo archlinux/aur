@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=imgur-screenshot
+Comment=Upload the image to imgur web service
+Exec=imgur-screenshot %F
+Icon=/usr/share/pixmaps/imgur-screenshot.png
+MimeType=image/png;image/jpeg;image/bmp;image/gif;image/tiff;image/xcf;
+Categories=Graphics;Network;

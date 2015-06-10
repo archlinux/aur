@@ -1,0 +1,22 @@
+pkgbase = imgur-screenshot-git
+	pkgdesc = Take screenshot selection, upload to imgur + more cool things
+	pkgver = 1.5.4.r16.g9bbe72d
+	pkgrel = 1
+	url = https://github.com/jomo/imgur-screenshot
+	install = imgur-screenshot.install
+	arch = any
+	license = MIT
+	depends = curl
+	depends = grep
+	optdepends = libnotify: for desktop notifications
+	optdepends = scrot: for making screenshots
+	optdepends = xclip: for copying screenshot URLs to clipboard
+	source = git+https://github.com/jomo/imgur-screenshot.git
+	source = imgur-screenshot.desktop
+	source = imgur-screenshot.png
+	md5sums = SKIP
+	md5sums = 459431a977061e56894315ce151d9bef
+	md5sums = 3780c9f2183f7d4705ab86ab077e3885
+
+pkgname = imgur-screenshot-git
+
