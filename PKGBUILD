@@ -22,7 +22,7 @@ build() {
 	cd "$pkgname-$pkgname-$pkgver"/build
 	cmake -DCMAKE_BUILD_TYPE=Release    \
 	      -DCMAKE_INSTALL_PREFIX=/usr   \
-	      -DCMAKE_SKIP_INSTALL_RPATH=ON \
+		  -DCMAKE_SKIP_INSTALL_RPATH=ON \
 	      -DPYTHON_DESIRED=3            \
 	      ../libcomps
 	make
@@ -41,6 +41,8 @@ package() {
 		mv "$pkgdir/"usr/lib64/* "$pkgdir/"usr/lib
 		rmdir "$pkgdir/"usr/lib64
 	fi
+
+	install -D -m644 ../README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
 
 # vim: set ft=sh ts=4 sw=4 noet:
