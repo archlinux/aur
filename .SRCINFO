@@ -1,6 +1,6 @@
 pkgbase = haskell-stack-git
 	pkgdesc = The Haskell Tool Stack
-	pkgver = 20150609.9e3a332
+	pkgver = 20150609.527642d
 	pkgrel = 1
 	url = https://www.github.com/commercialhaskell/stack
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = haskell-stack-git
 	optdepends = docker: Use Docker images to build your project in a temporary container
 	provides = haskell-stack
 	conflicts = haskell-stack
-	source = stack::git+git://github.com:commercialhaskell/stack.git
+	source = stack::git+https://github.com/commercialhaskell/stack.git
 	md5sums = SKIP
 
 pkgname = haskell-stack-git

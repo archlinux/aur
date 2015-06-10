@@ -1,7 +1,7 @@
 # Maintainer:  Tristan Webb <tristan@fpcomplete.com>
 pkgname=haskell-stack-git
 _pkgname=stack
-pkgver=20150609.9e3a332
+pkgver=20150609.527642d
 pkgrel=1
 pkgdesc="The Haskell Tool Stack"
 arch=('i686' 'x86_64')
@@ -25,6 +25,7 @@ prepare() {
   cabal update
   cabal clean
   cabal install --only-dependencies --reorder-goals --enable-tests
+  cabal install cpphs
 }
 
 build() {
