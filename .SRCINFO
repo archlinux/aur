@@ -1,0 +1,14 @@
+pkgbase = python2-nbt
+	pkgdesc = Named Binary Tag Reader/Writer
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = http://github.com/twoolie/NBT
+	arch = any
+	license = MIT
+	makedepends = python2-distribute
+	depends = python2
+	source = python2-nbt::git+https://github.com/twoolie/NBT.git#tag=version-1.4.1
+	md5sums = SKIP
+
+pkgname = python2-nbt
+
