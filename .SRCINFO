@@ -1,0 +1,19 @@
+pkgbase = iradit
+	pkgdesc = iRadit es un proyecto de software libre para el operador de radio.
+	pkgver = 1.0.2+r6.235cab1
+	pkgrel = 1
+	url = http://www.radit.org/net
+	install = iradit.install
+	arch = any
+	license = GPL v3
+	makedepends = git
+	depends = qt4
+	depends = taglib
+	depends = lame
+	depends = vorbis-tools
+	depends = radit-essential
+	source = iradit::git+https://github.com/jfperini/iradit.git
+	md5sums = SKIP
+
+pkgname = iradit
+
