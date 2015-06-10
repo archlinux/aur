@@ -1,0 +1,15 @@
+pkgbase = xml-coreutils
+	pkgdesc = A collection of Unix/POSIX command line tools for processing XML files.
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = http://xml-coreutils.sourceforge.net
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	depends = slang
+	depends = expat
+	source = http://downloads.sourceforge.net/xml-coreutils/xml-coreutils-0.8.1.tar.gz
+	md5sums = 44eea36f296f70a35384d1c552fc5131
+
+pkgname = xml-coreutils
+
