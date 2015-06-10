@@ -1,0 +1,28 @@
+pkgbase = ncmpcpp-git
+	pkgdesc = An almost exact clone of ncmpc with some new features.
+	pkgver = 1891.746527f
+	pkgrel = 1
+	epoch = 1
+	url = http://unkart.ovh.org/ncmpcpp/
+	install = ncmpcpp-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = boost
+	makedepends = pkg-config
+	depends = ncurses
+	depends = libmpdclient>=2.8
+	depends = boost-libs
+	optdepends = curl: fetch lyrics
+	optdepends = taglib: tag editor
+	optdepends = fftw: frequency spectrum mode visualization
+	conflicts = ncmpcpp
+	conflicts = ncmpcpp-xdg-config
+	conflicts = ncmpcpp-xdg-config-git
+	conflicts = ncmpcpp-color
+	source = git+git://repo.or.cz/ncmpcpp.git
+	md5sums = SKIP
+
+pkgname = ncmpcpp-git
+

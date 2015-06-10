@@ -1,0 +1,11 @@
+post_install() {
+  echo ""
+  echo ":: Example configuration files can be found in"
+  echo ":: /usr/share/doc/ncmpcpp"
+}
+
+post_upgrade() {
+	post_install
+}
+
+# vim:set ts=2 sw=2 et:
