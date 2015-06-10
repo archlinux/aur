@@ -1,0 +1,17 @@
+pkgbase = octave-optim
+	pkgdesc = Non-linear optimization toolkit.
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = http://octave.sourceforge.net/optim/
+	install = octave-optim.install
+	arch = any
+	groups = octave-forge
+	license = custom
+	depends = octave>=3.6.0
+	depends = octave-struct>=1.0.10
+	noextract = optim-1.4.1.tar.gz
+	source = http://downloads.sourceforge.net/octave/optim-1.4.1.tar.gz
+	md5sums = baedb7446a4fb7c7fc7329d35e99a1db
+
+pkgname = octave-optim
+
