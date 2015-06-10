@@ -1,0 +1,17 @@
+pkgbase = minecraft-region-fixer-git
+	pkgdesc = Tries to fix Minecraft worlds (or region files).
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/Fenixin/Minecraft-Region-Fixer
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = python2
+	provides = minecraft-region-fixer
+	conflicts = minecraft-region-fixer
+	source = minecraft-region-fixer-git::git://github.com/Fenixin/Minecraft-Region-Fixer.git
+	md5sums = SKIP
+
+pkgname = minecraft-region-fixer-git
+
