@@ -1,0 +1,17 @@
+pkgbase = rubyroom
+	pkgdesc = Ruby clone of the Whiteroom full-screen text editor
+	pkgver = 0.4
+	pkgrel = 3
+	url = http://rubyroom.rubyforge.org/
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	depends = ruby-gtk2
+	optdepends = fortune-mod: for poetic inspiration
+	source = git://github.com/xyproto/rubyroom.git#tag=0.4
+	source = http://rubyroom.rubyforge.org/rubyroom.png
+	md5sums = SKIP
+	md5sums = 9a1fe6c9d67679c0d4dbbdf78a233cba
+
+pkgname = rubyroom
+
