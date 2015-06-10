@@ -1,0 +1,1 @@
+SUBSYSTEM=="usb", ATTRS{idVendor}=="4670", ATTRS{idProduct}=="9394", GROUP="users", MODE="0666", SYMLINK="ndsadapter"
