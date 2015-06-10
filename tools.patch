@@ -1,0 +1,16 @@
+--- enca-1.14/tools/Makefile.am	2009-08-25 10:33:34.000000000 +0200
++++ patched/tools/Makefile.am	2014-01-01 15:50:09.180753219 +0100
+@@ -31,7 +31,12 @@
+ 	sed -e 's/^#define \([A-Z0-9_]*\) \(.*\)/@\1@ \2/' -e 's/"//g' -e 's/NULL$$//' -e 's/ /\//' -e 's/^\(.*\)$$/s\/\1\//' $(top_builddir)/iconvenc.h >encodings.sed
+ 
+ encodings.h: encodings.sed $(srcdir)/encodings.dat make_hash
+-	sed -f encodings.sed $(srcdir)/encodings.dat | ./make_hash >encodings.h
++	@if test "$(EXEEXT)" == ".exe"; then \
++	  mv make_hash make_hash.exe; \
++	  sed -f encodings.sed $(srcdir)/encodings.dat | wine make_hash.exe >encodings.h; \
++	else \
++	  sed -f encodings.sed $(srcdir)/encodings.dat | ./make_hash >encodings.h; \
++	fi
+ 
+ # Normally there's no need to regenerate tables, they are copy-and-pasted
+ # into the C source manually, but the rules are here.  Run `make tables'

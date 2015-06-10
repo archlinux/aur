@@ -1,0 +1,21 @@
+pkgbase = mingw-w64-enca
+	pkgdesc = Charset analyser and converter (mingw-w64)
+	pkgver = 1.16
+	pkgrel = 1
+	url = http://cihar.com/software/enca/
+	arch = any
+	license = GPL
+	makedepends = mingw-w64-gcc
+	makedepends = wine
+	depends = mingw-w64-crt
+	depends = mingw-w64-recode
+	options = !strip !buildflags staticlibs
+	source = http://dl.cihar.com/enca/enca-1.16.tar.xz
+	source = configure.patch
+	source = tools.patch
+	md5sums = 0a1483530b1fdb9e2a54786489ee0b69
+	md5sums = efb65212b3dffbd29eb253ec07f2db63
+	md5sums = e62da0e6fd31affa1f3e15171dbc95c6
+
+pkgname = mingw-w64-enca
+
