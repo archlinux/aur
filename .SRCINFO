@@ -1,0 +1,15 @@
+pkgbase = perl-extutils-typemaps-default
+	pkgdesc = ExtUtils::Typemaps::Default - A set of useful typemaps
+	pkgver = 1.05
+	pkgrel = 1
+	url = https://metacpan.org/release/ExtUtils-Typemaps-Default/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SM/SMUELLER/ExtUtils-Typemaps-Default-1.05.tar.gz
+	md5sums = 346c127faf7b74bc4cfc29fa3e8e6f8d
+
+pkgname = perl-extutils-typemaps-default
+
