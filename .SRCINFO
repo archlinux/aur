@@ -1,0 +1,17 @@
+pkgbase = pybtex-bzr
+	pkgdesc = Pybtex reads citation information from a file and produces a formatted bibliography.
+	pkgver = 836
+	pkgrel = 1
+	url = https://code.launchpad.net/pybtex
+	arch = any
+	license = GPL
+	makedepends = python2
+	makedepends = bzr
+	depends = python2
+	provides = python2-pybtex
+	conflicts = python2-pybtex
+	source = pybtex::bzr+lp:pybtex
+	md5sums = SKIP
+
+pkgname = pybtex-bzr
+
