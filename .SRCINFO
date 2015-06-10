@@ -1,0 +1,15 @@
+pkgbase = libsigcpp1.2
+	pkgdesc = A typesafe callback system for standard C++
+	pkgver = 1.2.7
+	pkgrel = 3
+	url = http://libsigc.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = setconf
+	depends = glibc
+	source = http://ftp.gnome.org/pub/GNOME/sources/libsigc++/1.2/libsigc++-1.2.7.tar.bz2
+	md5sums = 212f48536019e1f003d2509b4c9b36df
+
+pkgname = libsigcpp1.2
+
