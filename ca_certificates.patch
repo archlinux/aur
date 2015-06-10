@@ -1,0 +1,9 @@
+Index: kamaki/kamaki/defaults.py
+===================================================================
+--- kamaki.orig/kamaki/defaults.py	2014-10-03 17:21:42.000000000 +0300
++++ kamaki/kamaki/defaults.py	2014-10-03 17:25:31.000000000 +0300
+@@ -39,3 +39,4 @@
+ CACERTS_DEFAULT_PATH = None
+
+ # To overwrite any of the above, append new assignments bellow
++CACERTS_DEFAULT_PATH = '/etc/ssl/certs/ca-certificates.crt'

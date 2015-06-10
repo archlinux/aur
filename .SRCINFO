@@ -1,0 +1,22 @@
+pkgbase = kamaki
+	pkgdesc = A command-line tool for managing clouds
+	pkgver = 0.13
+	pkgrel = 3
+	url = http://code.grnet.gr/projects/kamaki
+	changelog = Changelog
+	arch = any
+	license = BSD
+	makedepends = python2-distribute
+	makedepends = python2-sphinx
+	depends = python2-objpool
+	depends = python2-progress
+	depends = python2-dateutil
+	depends = astakosclient
+	optdepends = python2-ansicolors: for color support
+	source = https://pypi.python.org/packages/source/k/kamaki/kamaki-0.13.tar.gz
+	source = ca_certificates.patch
+	md5sums = ad3d9a2e9398534b70012809b97fd6c5
+	md5sums = 34afd4f5b468a23fcf6a99bf947b8f71
+
+pkgname = kamaki
+

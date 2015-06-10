@@ -1,0 +1,73 @@
+.. _Changelog:
+
+Unified Changelog file for Kamaki versions >= 0.13
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. _Changelog-0.13:
+
+v0.13
+=====
+
+Released: Tue Nov 18 11:13:58 EET 2014
+
+Features
+--------
+
+* Name and Type filters in endpoint list
+* In image register, meta gets same sharing as image
+* Allow image register to auto-resolve remote path from local file
+* Merge ClientError and AstakosClientException --> AstakosClientError
+* Restore kamaki file publish/unpublish
+* Accept username or UUID in kamaki file --account/--to-account
+* History has now a buffer limit
+* Slice notation in history show
+* Datetime support in DateArgument
+* Resources can be reassigned to projects
+* Update account API commands to reflect changes in synnefo 0.16
+* Implement a get_endpoint_url method and use it
+* Rename kamaki.clients.Client.base_url --> endpoint_url, keep BW compatibility
+* Remove deprecated --hard argument in "kamaki server reboot"
+* Modify upload and download command semantics, to be more intuitive
+* Implement more console types (vnc-ws and vnc-wss)
+* Support secure HTTP connections with SSL [grnet/kamaki#54]
+
+Support
+-------
+
+* Adjust project commands to project_API changes
+* Add "dateutils" to dependencies
+* Rename packages, classes and objects to conform to pep8 standards
+* Use the term "project_id" instead of "project" everywhere in kamaki.clients
+* Update library documentation with examples [grnet/kamaki#49]
+
+
+Bug Fixes
+---------
+
+* Register image with upload but no metafile
+* Minor typos and updates in command help messages
+* All URL-related params are now URL-encoded
+* In file list, show all directories as directories
+* Do not let file-* cmds to create containers
+* Fix unicode-related bugs in error reporting
+* Modify HTTP logs and console output to escape control characters
+  [grnet/kamaki#32]
+* Fix bug of incorrectly suppressed errors in "kamaki network create"
+  [grnet/kamaki#56]
+* Set a default logger to LoggedAstakosClient [grnet/kamaki#58]
+* Show the correct name when switching kamaki users
+  [grnet/kamaki#66]
+* Fix Python 2.6 compatibility concerning HTTPS arguments
+  [grnet/kamaki#73]
+* Fix Python 2.6 compatibility concerning encode parameters
+* Rename "raise_ssl_errors" to "ignore_ssl" in HTTPConnection class
+  [grnet/kamaki#74]
+* Warn or raise errors when the configuration file is inaccessible
+  [grnet/kamaki#71]
+* Handle non-ascii characters when managing configuration options
+  [grnet/kamaki#76]
+* Handle SSL unicode bug with grace [grnet/kamaki#67]
+* Check server status before changing it [grnet/kamaki#57]
+* Fix format of "create_volume" return values
+* Support old history files [grnet/kamaki#80]
+
