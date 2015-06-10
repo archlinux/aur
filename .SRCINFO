@@ -1,0 +1,16 @@
+pkgbase = perl-extutils-parsexs-aur
+	pkgdesc = Converts Perl XS code into C code
+	pkgver = 3.24
+	pkgrel = 1
+	url = https://metacpan.org/release/ExtUtils-ParseXS
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	provides = perl-extutils-parsexs=3.24
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SM/SMUELLER/ExtUtils-ParseXS-3.24.tar.gz
+	md5sums = e6be3f1d493e04ed805576104cf4328b
+
+pkgname = perl-extutils-parsexs-aur
+
