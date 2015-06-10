@@ -1,0 +1,17 @@
+pkgbase = perl-sys-gamin
+	pkgdesc = Sys::Gamin - Perl interface to Gamin (File Access Monitor implementation)
+	pkgver = 0.1
+	pkgrel = 4
+	url = https://metacpan.org/release/Sys-Gamin
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = PerlArtistic
+	depends = perl
+	depends = gamin
+	options = !emptydirs
+	source = http://cpan.metacpan.org/authors/id/G/GA/GARNACHO/Sys-Gamin-0.1.tar.gz
+	md5sums = 4eb05138c28e8a5f12340938b0823a4c
+
+pkgname = perl-sys-gamin
+
