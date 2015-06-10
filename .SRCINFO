@@ -1,0 +1,19 @@
+pkgbase = perl-moox-handlesvia
+	pkgdesc = MooX::HandlesVia - NativeTrait-like behavior for Moo
+	pkgver = 0.001008
+	pkgrel = 2
+	url = http://search.cpan.org/~mattp/MooX-HandlesVia-0.001008/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-moo
+	depends = perl-moox-types-mooselike
+	depends = perl-strictures
+	depends = perl-data-perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MA/MATTP/MooX-HandlesVia-0.001008.tar.gz
+	sha256sums = b0946f23b3537763b8a96b8a83afcdaa64fce4b45235e98064845729acccfe8c
+
+pkgname = perl-moox-handlesvia
+
