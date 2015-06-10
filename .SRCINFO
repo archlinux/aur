@@ -1,0 +1,23 @@
+pkgbase = als-dkms
+	pkgdesc = ASUS Zenbook ambient light sensor kernel module (DKMS)
+	pkgver = r27
+	pkgrel = 1
+	url = https://github.com/danieleds/als
+	install = als-dkms.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	depends = gcc
+	depends = make
+	optdepends = linux-headers
+	optdepends = linux-lts-headers
+	provides = als-driver-git
+	conflicts = als-driver-git
+	replaces = als-driver-git
+	source = als::git+https://github.com/danieleds/als.git
+	sha512sums = SKIP
+
+pkgname = als-dkms
+

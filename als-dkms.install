@@ -1,0 +1,23 @@
+post_install() {
+    dkms add -m als -v ${1%%-*}
+    dkms install -m als -v ${1%%-*}
+    cat << EOF
+==> The ALS (Ambient Light Sensor) module has been installed.
+==> To load the ALS module, run 'modprobe als', or add it to a config
+    in /etc/modules-load.d to have it load during startup.
+==> To check and update every boot, enable the dkms service by running:
+    systemctl enable dkms.service
+EOF
+}
+
+pre_upgrade() {
+    pre_remove ${2%%-*}
+}
+
+post_upgrade() {
+    post_install ${1%%-*}
+}
+
+pre_remove() {
+    dkms remove -m als -v ${1%%-*} --all
+}
