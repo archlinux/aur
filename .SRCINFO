@@ -1,0 +1,22 @@
+pkgbase = archon
+	pkgdesc = Execute Android APKs
+	pkgver = 1.2
+	pkgrel = 8
+	url = https://bitbucket.org/vladikoff/archon
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = Apache
+	license = custom
+	makedepends = git
+	makedepends = openssl
+	depends = chromium
+	optdepends = archon-exec: wrapper script for launching android apk files
+	optdepends = chromeos-apk: extract and convert android apks into archon apks
+	optdepends = google-chrome: run the archon extension the same as chromium
+	options = !strip
+	source = git+https://bitbucket.org/vladikoff/archon.git#tag=v1.2-
+	sha512sums = SKIP
+
+pkgname = archon
+
