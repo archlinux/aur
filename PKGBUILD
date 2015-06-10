@@ -11,11 +11,11 @@ install='backup-conf.install'
 
 depends=('util-linux'
          'gettext'
-         'colordiff'
-         'sudo'
-         )
+         'sudo')
 
-optdepends=('git: for git management')
+optdepends=('diffutils: the default diff tool'
+            'colordiff: a colored diff tool'
+            'git: for git management')
 
 source=("https://github.com/LaraCraft93/$pkgname/archive/v$pkgver.tar.gz"
        "backup-conf.install")
