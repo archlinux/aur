@@ -1,0 +1,24 @@
+pkgbase = logisim
+	pkgdesc = An educational tool for designing and simulating digital logic circuits
+	pkgver = 2.7.1
+	pkgrel = 7
+	url = http://www.cburch.com/logisim/
+	install = logisim.install
+	arch = any
+	license = GPL2
+	depends = sh
+	depends = java-runtime
+	depends = gtk-update-icon-cache
+	depends = desktop-file-utils
+	depends = shared-mime-info
+	source = http://downloads.sourceforge.net/sourceforge/circuit/logisim-generic-2.7.1.jar
+	source = logisim.xml
+	source = logisim.desktop
+	source = logisim.sh
+	sha256sums = 362a78c12ad18c203fed868872c4a01cd9c12141379d92e892bbe2c37e627bc2
+	sha256sums = 9dd50eb99edeff5f74247ae9b050d56c1366818ea80fbdcc6c5e24bfabfec5c0
+	sha256sums = 4d5ae9f9d5f5789469f3580a81ee568ca426f324df3ba37d7e4c8d6b20dc638c
+	sha256sums = 56eaac407f6ae64289ab228269edb8b1a2bbe647e2baf5dfab7f481c9db8e680
+
+pkgname = logisim
+
