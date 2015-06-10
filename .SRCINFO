@@ -1,0 +1,19 @@
+pkgbase = linux-libre-api-headers
+	pkgdesc = Kernel headers sanitized for use in userspace
+	pkgver = 4.0_gnu
+	pkgrel = 1
+	url = http://www.gnu.org/software/libc
+	arch = i686
+	arch = x86_64
+	arch = mips64el
+	license = GPL2
+	provides = linux-api-headers=4.0
+	conflicts = linux-api-headers
+	replaces = linux-api-headers
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0-gnu/linux-libre-4.0-gnu.tar.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0-gnu/linux-libre-4.0-gnu.tar.xz.sign
+	md5sums = 87edb0b508abb8d8484bc08daa2ee96d
+	md5sums = SKIP
+
+pkgname = linux-libre-api-headers
+
