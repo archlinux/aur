@@ -1,0 +1,14 @@
+--- Makefile
++++ Makefile
+@@ -14,8 +14,8 @@
+ GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL = 0
+ CFLAGS = -Wall
+ #CFLAGS = -Wall -g 
+-CPPFLAGS = $(shell pkg-config --cflags gtk+-2.0 cairo glib-2.0 gstreamer-0.10 gconf-2.0)  -DDATADIR=\""$(pkgdatadir)"\"  -DLOCALDIR=\""$(localedir)"\"
+-LDLIBS = $(shell pkg-config --libs gtk+-2.0 cairo glib-2.0 gstreamer-0.10 gconf-2.0)  -DDATADIR=\""$(pkgdatadir)"\"  -DLOCALDIR=\""$(localedir)"\"
++CPPFLAGS = $(shell pkg-config --cflags gtk+-2.0 cairo glib-2.0 gstreamer-0.10 gconf-2.0 x11)  -DDATADIR=\""$(pkgdatadir)"\"  -DLOCALDIR=\""$(localedir)"\"
++LDLIBS = $(shell pkg-config --libs gtk+-2.0 cairo glib-2.0 gstreamer-0.10 gconf-2.0 x11) -lm -DDATADIR=\""$(pkgdatadir)"\"  -DLOCALDIR=\""$(localedir)"\"
+ LDFLAGS = -g 
+ CC = gcc
+ target = gamine
+
