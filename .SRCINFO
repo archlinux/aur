@@ -1,0 +1,14 @@
+pkgbase = python2-progress
+	pkgdesc = Easy to use progress bars
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://docs.dev.grnet.gr/pypi/
+	arch = any
+	license = MIT
+	makedepends = python2-distribute
+	depends = python2
+	source = http://pypi.python.org/packages/source/p/progress/progress-1.2.tar.gz
+	md5sums = c1dbf49a41e80408d3874d976ba894cc
+
+pkgname = python2-progress
+
