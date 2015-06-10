@@ -1,0 +1,15 @@
+pkgbase = brebis
+	pkgdesc = A fully automated backup checker
+	pkgver = 0.9
+	pkgrel = 1
+	url = http://brebisproject.org
+	install = brebis.install
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	source = http://brebisproject.org/attachments/download/18/brebis-0.9.tar.gz
+	md5sums = d24575ec497bfab7e0a923cbd6df997d
+
+pkgname = brebis
+

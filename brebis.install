@@ -1,0 +1,5 @@
+post_install() {
+  echo 'See the documentation for the configuration:'
+  echo 'http://brebisproject.org/projects/brebis/wiki/How_to_configure_and_use_Brebis'
+}
+
