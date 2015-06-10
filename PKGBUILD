@@ -8,23 +8,25 @@ pkgbase=mesa-mir
 pkgname=(opencl-mesa-mir libva-mesa-driver-mir mesa-vdpau-mir mesa-mir
          mesa-libgl-mir)
 _ubuntu_rel=0ubuntu1
-_ubuntu_ver=10.3.2
-pkgver=10.4.1
+_ubuntu_ver=10.5.2
+pkgver=10.5.7
 pkgrel=1
 arch=(i686 x86_64)
-makedepends=(python2 libxml2 libx11 glproto libdrm dri2proto dri3proto
+url="http://mesa3d.sourceforge.net"
+makedepends=(python2-mako libxml2 libx11 glproto libdrm dri2proto dri3proto
              presentproto libxshmfence libxxf86vm libxdamage libvdpau libva
              wayland elfutils llvm systemd libomxil-bellagio libclc clang)
 # Requires Mir, of course
 makedepends+=(mir)
-url="http://mesa3d.sourceforge.net"
 license=(custom)
-source=("ftp://ftp.freedesktop.org/pub/mesa/${pkgver}/MesaLib-${pkgver}.tar.bz2"
+source=("ftp://ftp.freedesktop.org/pub/mesa/${pkgver}/mesa-${pkgver}.tar.xz"{,.sig}
         "https://launchpad.net/ubuntu/+archive/primary/+files/mesa_${_ubuntu_ver:-${pkgver}}-${_ubuntu_rel}.diff.gz"
         LICENSE)
-sha512sums=('2b24541f36ff3ebe4485169cc1d778be4109de1e11373ebf651e155469cce73c8786058ce9d2bf3dc4df0558b2de80daf8913141dfcd59c5033892c150d397c5'
-            'b02f4651046a749e94fbc61ec7baa6540d58f869a283199d4fad15371d102116dfb1f71619c6d73ee02785f30dab2fa9a85820d264b5c1e06fce47e5cf094468'
+sha512sums=('0ccd9c3700d4c12a6625ad2a5ca46c721135fc3ef9650a6571f210f9f203d44c327e76604e3627edede2a561f88e2fabcf47a339bbd7c106a9c6408ed25a446c'
+            'SKIP'
+            '9a3580a29dfe01d2997631ea481e05bee8dc514a1853e90a4b79e88e9cd86062e4130c84f02b90ae0af21f82e135030498d1d7e97be59f90ec370a49a2ea41bd'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2')
+validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D') # Emil Velikov <emil.l.velikov@gmail.com>
 
 prepare() {
   cd ?esa-*
@@ -33,6 +35,7 @@ prepare() {
   patch -p1 -i "../mesa_${_ubuntu_ver:-${pkgver}}-${_ubuntu_rel}.diff"
 
   for i in $(grep -v '#' debian/patches/series); do
+    msg "Applying ${i}"
     patch -p1 -i "debian/patches/${i}"
   done
 }
