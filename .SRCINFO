@@ -1,0 +1,14 @@
+pkgbase = cheat-bash-git
+	pkgdesc = A Bash reimplementation of a command line tool to create and view interactive cheatsheets
+	pkgver = 20140917.r29.19f26b8
+	pkgrel = 1
+	url = https://github.com/jahendrie/cheat
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash
+	source = git://github.com/jahendrie/cheat.git#branch=master
+	sha512sums = SKIP
+
+pkgname = cheat-bash-git
+
