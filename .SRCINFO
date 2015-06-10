@@ -1,0 +1,13 @@
+pkgbase = libwapcaplet-svn
+	pkgdesc = A string internment library with rapid string comparison
+	pkgver = 13777
+	pkgrel = 1
+	url = http://www.netsurf-browser.org/projects/libwapcaplet/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = subversion
+	provides = libwapcaplet
+
+pkgname = libwapcaplet-svn
+
