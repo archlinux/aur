@@ -1,0 +1,15 @@
+pkgbase = flint++-git
+	pkgdesc = C++ port of Facebooks flint
+	pkgver = r239.b3f3672
+	pkgrel = 1
+	url = https://github.com/L2Program/FlintPlusPlus
+	arch = i686
+	arch = x86_64
+	license = custom:Boost
+	makedepends = git
+	provides = flint++
+	source = flint++-git::git+https://github.com/L2Program/FlintPlusPlus.git
+	sha256sums = SKIP
+
+pkgname = flint++-git
+
