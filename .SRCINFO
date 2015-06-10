@@ -1,0 +1,15 @@
+pkgbase = rpmdevtools
+	pkgdesc = RPM Development Tools
+	pkgver = 8.6
+	pkgrel = 1
+	url = https://fedorahosted.org/rpmdevtools/
+	arch = any
+	license = GPL2
+	makedepends = help2man
+	depends = python
+	depends = rpm-org
+	source = https://fedorahosted.org/released/rpmdevtools/rpmdevtools-8.6.tar.xz
+	md5sums = daee90323a325efee01257c1e9c6aced
+
+pkgname = rpmdevtools
+
