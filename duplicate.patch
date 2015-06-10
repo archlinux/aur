@@ -1,0 +1,29 @@
+diff -up src/konstruktor-0.9-beta1/src/app/renderwidget.cpp.orig src/konstruktor-0.9-beta1/src/app/renderwidget.cpp
+--- src/konstruktor-0.9-beta1/src/app/renderwidget.cpp.orig	2014-04-23 17:08:46.000000000 -0600
++++ src/konstruktor-0.9-beta1/src/app/renderwidget.cpp	2014-04-23 17:11:19.000000000 -0600
+@@ -395,14 +395,14 @@ void RenderWidget::renderPointArray()
+ 		
+ 		glBegin(GL_POINTS);
+ 		
+-		int i = 0;
++		int j = 0;
+ 		for (ldraw::model::const_iterator it = currentModel_->elements().begin(); it != currentModel_->elements().end(); ++it) {
+ 			if ((*it)->get_type() == ldraw::type_ref) {
+ 				ldraw::element_ref *r = CAST_AS_REF(*it);
+ 				ldraw::model *rm = r->get_model();
+ 				
+ 				if (rm) {
+-					if (!tvset_->query(rm, i, 0)) {
++					if (!tvset_->query(rm, j, 0)) {
+ 						if (!rm->custom_data<ldraw::metrics>())
+ 							rm->init_custom_data<ldraw::metrics>();
+ 						
+@@ -414,7 +414,7 @@ void RenderWidget::renderPointArray()
+ 					}				
+ 				}
+ 			}
+-			++i;
++			++j;
+ 		}
+ 		
+ 		glEnd();

@@ -1,0 +1,22 @@
+pkgbase = konstruktor
+	pkgdesc = A LDraw-based virtual LEGO(r) CAD for KDE 4.
+	pkgver = 0.9.beta1
+	pkgrel = 1
+	url = http://opendesktop.org/content/show.php?content=138138
+	install = konstruktor.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdebase-runtime
+	depends = glu
+	depends = povray
+	depends = ldraw-parts-library
+	source = http://konstruktor.influx.kr/konstruktor-0.9-beta1.tar.bz2
+	source = duplicate.patch
+	md5sums = 702881530e111285968f889bffda6001
+	md5sums = 9a60c645ca845399503dd320bed436c4
+
+pkgname = konstruktor
+
