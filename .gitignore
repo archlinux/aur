@@ -1,0 +1,5 @@
+pkg/
+src/
+libassuan/
+*.tar.gz
+*.tar.xz
