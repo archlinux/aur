@@ -1,0 +1,15 @@
+pkgbase = perl-net-interface
+	pkgdesc = Net::Interface - Perl extension to access network interfaces
+	pkgver = 1.012
+	pkgrel = 5
+	url = https://metacpan.org/release/Net-Interface
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = PerlArtistic
+	options = !emptydirs
+	source = http://cpan.metacpan.org/authors/id/M/MI/MIKER/Net-Interface-1.012.tar.gz
+	md5sums = cfa0c390c506996c004fb5b214fc4a7c
+
+pkgname = perl-net-interface
+
