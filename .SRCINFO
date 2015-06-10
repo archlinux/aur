@@ -1,0 +1,37 @@
+pkgbase = xcfa_cli
+	pkgdesc = Audio Files Conversion - CLI version
+	pkgver = 0.0.7
+	pkgrel = 3
+	url = http://www.xcfa.tuxfamily.org/static9/xcfa-cli
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = taglib
+	depends = alsa-lib
+	depends = curl
+	depends = desktop-file-utils
+	optdepends = a52dec: Decode ATSC A/52 audio streams,
+	optdepends = aacplusenc: AAC+ encoder,
+	optdepends = mp3check: Check MP3 files for consistency,
+	optdepends = faac: Audio Codeur freeware,
+	optdepends = faad2: MPEG-4 and MPEG-2 AAC decoder,
+	optdepends = flac: WAV/FLAC Conversion,
+	optdepends = lame: WAV/MP3 Conversion,
+	optdepends = mac: Monkey Audio Console Front End/APE,
+	optdepends = musepack-tools: Musepack decoder/encoder,
+	optdepends = mplayer: player and extractor,
+	optdepends = mp3gain: Lossless MP3 normalizer,
+	optdepends = normalize: WAV files normalizer,
+	optdepends = libnotify: Desktop notification library,
+	optdepends = shorten: Fast compression for waveform files,
+	optdepends = shntool: A multi-purpose WAVE data processing and reporting utility,
+	optdepends = sox: The Swiss Army knife of sound processing tools,
+	optdepends = vorbis-tools: WAV/OGG Conversion,
+	optdepends = vorbisgain: Calculate the replay gain for Ogg Vorbis files,
+	optdepends = wavpack: Hybrid Lossless Audio Compressor
+	conflicts = xcfa
+	source = http://download.tuxfamily.org/xcfaudio/xcfa_cli/xcfa_cli-0.0.7.tar.gz
+	md5sums = 3e4a541e8f5a4142ec508cdf35c34b6a
+
+pkgname = xcfa_cli
+
