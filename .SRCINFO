@@ -1,0 +1,16 @@
+pkgbase = protobuf-vala
+	pkgdesc = A plugin for the Google protocol buffer compiler to generate Vala code.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://launchpad.net/protobuf-vala
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = protobuf
+	options = !libtool
+	options = !emptydirs
+	source = https://launchpad.net/protobuf-vala/trunk/0.1.0/+download/protobuf-vala-0.1.0.tar.xz
+	sha512sums = effec20b6f88cc9bd323eec3adcc816289982186646a9bd106a8a3fd324b0675538beae0e8eca0176055ed9e00f7a32df8ab596e66c8f49a94807aa5ad459940
+
+pkgname = protobuf-vala
+
