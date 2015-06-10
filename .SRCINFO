@@ -1,0 +1,14 @@
+pkgbase = firefox-os-simulator
+	pkgdesc = Firefox OS simulator
+	pkgver = 4.0.2
+	pkgrel = 1
+	url = https://addons.mozilla.org/en-US/firefox/addon/firefox-os-simulator/
+	arch = any
+	license = MPL
+	depends = firefox
+	options = !strip
+	source = https://addons.mozilla.org/firefox/downloads/file/219110/firefox_os_simulator-4.0.2-fx-linux.xpi
+	md5sums = 7db32bf2fcb11e656579bdb628065fb6
+
+pkgname = firefox-os-simulator
+
