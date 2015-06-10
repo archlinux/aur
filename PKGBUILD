@@ -2,7 +2,7 @@
 _author=FGA
 _perlmod=Zabbix2-API
 pkgname=perl-zabbix2-api
-pkgver=0.012
+pkgver=0.013
 pkgrel=1
 pkgdesc="Access the JSON-RPC API of a Zabbix server"
 arch=('any')
@@ -14,13 +14,12 @@ depends=(
   'perl-log-any'
   'perl-libwww'
   'perl-moo>=1.001000'
-  'perl-moo-lax'
   'perl-params-validate'
   'perl-uri'
   )
 options=(!emptydirs)
 source=(http://cpan.metacpan.org/authors/id/${_author:0:1}/${_author:0:2}/$_author/$_perlmod-$pkgver.tar.gz)
-md5sums=('83dc1afca04e1e409f7758dfda1b8955')
+md5sums=('92a983f611847af6487e2fea161c6606')
 
 build() {
   cd "$srcdir/$_perlmod-$pkgver"
