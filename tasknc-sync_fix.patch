@@ -1,0 +1,13 @@
+diff --git a/src/tasklist.c b/src/tasklist.c
+index 3a5c323..0c106c0 100644
+--- a/src/tasklist.c
++++ b/src/tasklist.c
+@@ -308,7 +308,7 @@ void key_tasklist_sync() /* {{{ */
+ 
+ 	statusbar_message(cfg.statusbar_timeout, "synchronizing tasks...");
+ 
+-	ret = task_interactive_command("yes n | task merge && task push");
++	ret = task_interactive_command("yes n | task sync");
+ 
+ 	if (ret==0)
+ 	{

@@ -1,0 +1,79 @@
+diff --git a/doc/manual.pod b/doc/manual.pod
+index 3903e28..c97ae3f 100644
+--- a/doc/manual.pod
++++ b/doc/manual.pod
+@@ -105,7 +105,7 @@ resort list (prompted for sort order)
+ 
+ =item B<y>
+ 
+-synchronize (run task merge and task push)
++synchronize (run task sync)
+ 
+ =item B<q>
+ 
+@@ -131,7 +131,7 @@ open command prompt
+ 
+ =head1 CONFIGURATION
+ 
+-tasknc honors a config file located at 
++tasknc honors a config file located at
+ 
+     $XDG_CONFIG_HOME/tasknc/config
+ 
+@@ -157,7 +157,9 @@ Commands are either supplied at the command prompt or listed in the configuratio
+ 
+ =item
+ 
+-=item B<color> I<object> I<foreground> I<background> I<rule> assign an I<object> to be a color when I<rule> is satisfied.  Only task I<object>s evaluate I<rule>s.  The following objects are available:
++=item B<color> I<object> I<foreground> I<background> I<rule> assign an I<object> to be a color when I<rule> is satisfied.  Only task I<object>s evaluate I<rule>s.
++
++The following objects are available:
+ 
+ =over 4
+ 
+@@ -169,7 +171,11 @@ Commands are either supplied at the command prompt or listed in the configuratio
+ 
+ =back
+ 
+-=item Colors are specified in one of three formats:
++=item
++
++=item
++
++Colors are specified in one of three formats:
+ 
+ =over 4
+ 
+@@ -181,7 +187,11 @@ Commands are either supplied at the command prompt or listed in the configuratio
+ 
+ =back
+ 
+-=item Rules are specified in the following format: ~I<pattern> I<arg>.  Pattern is a single character; if lowercase it indicates a positive match, and if uppercase it indicates a negative match.  Regular expression arguments must be enclosed in single quotes.  The following patterns are available:
++=item
++
++=item Rules are specified in the following format: ~I<pattern> I<arg>.  Pattern is a single character; if lowercase it indicates a positive match, and if uppercase it indicates a negative match.  Regular expression arguments must be enclosed in single quotes.
++
++The following patterns are available:
+ 
+ =over 4
+ 
+@@ -289,7 +299,9 @@ Commands are either supplied at the command prompt or listed in the configuratio
+ 
+ =item
+ 
+-=item B<sort> I<optarg> applies a sort defined by string I<optarg> or prompts user for sort mode with no arg.  The sort string defines the priority of each sort component.  Tasks will first be compared by the first character's order, if they are equal, the next characters sort order will be evaluated.  The default sort order is due, priority, project, uuid (notated drpu).  Capitalized characters indicate invert the sort for that field.  The following characters are valid sorts:
++=item B<sort> I<optarg> applies a sort defined by string I<optarg> or prompts user for sort mode with no arg.  The sort string defines the priority of each sort component.  Tasks will first be compared by the first character's order, if they are equal, the next characters sort order will be evaluated.  The default sort order is due, priority, project, uuid (notated drpu).  Capitalized characters indicate invert the sort for that field.
++
++The following characters are valid sorts:
+ 
+ =over 4
+ 
+@@ -319,7 +331,7 @@ Commands are either supplied at the command prompt or listed in the configuratio
+ 
+ =item
+ 
+-=item B<sync> runs 'task merge && task push'.
++=item B<sync> runs 'task sync'.
+ 
+ =item
+ 

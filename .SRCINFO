@@ -1,0 +1,31 @@
+pkgbase = taskwarrior-tasknc-git
+	pkgdesc = a ncurses wrapper around taskwarrior
+	pkgver = 20130227.r546.1274698
+	pkgrel = 3
+	url = https://github.com/mjheagle8/tasknc
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = task
+	depends = perl
+	provides = tasknc-git
+	conflicts = tasknc-git
+	replaces = tasknc-git
+	source = git://github.com/mjheagle8/tasknc.git#branch=master
+	source = tasknc-build_fix.patch
+	source = tasknc-sync_fix.patch
+	source = tasknc-man_cleanup.patch
+	source = tasknc-emptyfilter_fix.patch
+	sha512sums = SKIP
+	sha512sums = b0297b2526b9bbef296f0a67f0209bfe85fd15f714701534f29ed85cd7da5bd3ca16d6457ee2859ee074b8ccf2db73cf46eb492c89953bac91d4778f823cb3cc
+	sha512sums = af3d5cd6e6277b5be1b50bfbe4549c0db195f8a1a7dd07285140448326a380674331fb3e283b84fe992150d428d0200d2c9376342137f356b7edfcaf150fd8aa
+	sha512sums = 5dfeb7c7732c9490010b22628e8012414c3dd96ecb98540d826b306cc1b4731b2055bdb180e012534ec642b19fbd735ad9782cb43ea39381f662c38aa777bdfe
+	sha512sums = f105652d6235d77a277105c92097d9f552c1bb988cdc72c621bb2264b60b97ff3fcf50ed967467ca06f50fd7120007cee232e3dfb021a373cb09f38340e082b2
+
+pkgname = taskwarrior-tasknc-git
+

@@ -1,0 +1,19 @@
+diff --git a/src/tasklist.c b/src/tasklist.c
+index 0c106c0..b392076 100644
+--- a/src/tasklist.c
++++ b/src/tasklist.c
+@@ -475,8 +475,12 @@ void tasklist_window() /* {{{ */
+ 		/* check for an empty task list */
+ 		if (head == NULL)
+ 		{
+-			tnc_fprintf(logfp, LOG_ERROR, "it appears that your task list is empty. %s does not yet support empty task lists.", PROGNAME);
+-			ncurses_end(-1);
++			if (strcmp(active_filter,"") == 0){
++				tnc_fprintf(logfp, LOG_ERROR, "it appears that your task list is empty. %s does not yet support empty task lists.", PROGNAME);
++				ncurses_end(-1);
++			}
++			active_filter = strdup("");
++			reload = true;
+ 		}
+ 
+ 		/* get the screen size */
