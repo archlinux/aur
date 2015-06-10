@@ -1,0 +1,27 @@
+pkgbase = gitsync-git
+	pkgdesc = Git repository syncronisation daemon
+	pkgver = 20131011.r35.296e001
+	pkgrel = 2
+	url = https://github.com/raybejjani/gitsync
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = BSD
+	makedepends = git
+	makedepends = go
+	makedepends = make
+	makedepends = python2
+	depends = glibc
+	source = gitsync.1
+	source = git://github.com/raybejjani/gitsync.git
+	source = git://github.com/ngmoco/timber.git
+	source = hg+https://code.google.com/p/go.net/
+	sha512sums = 9e292631ed38bc81c48b67294236da9e41e7a4e5839290973c76c53128f1c080635c92518452fa5410891037d312508002ced0d92b7dad6921ad63b7e3790ae2
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = gitsync-git
+
