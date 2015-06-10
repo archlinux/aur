@@ -1,0 +1,16 @@
+pkgbase = dclibzpoc
+	pkgdesc = Libraries for the ZPoC Christian File Sharing program
+	pkgver = 0.3.7
+	pkgrel = 1
+	url = http://www.zpoc.com.br/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxml2
+	depends = bzip2
+	depends = qt3
+	source = http://rullz.lv/zpoc/download/dclibzpoc-0.3.7-2.tar.bz2
+	md5sums = 26ae9f295f58fe2686c0ab2085e51db5
+
+pkgname = dclibzpoc
+
