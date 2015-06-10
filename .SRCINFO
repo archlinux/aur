@@ -1,0 +1,30 @@
+pkgbase = gcc44
+	pkgdesc = The GNU Compiler Collection (4.4.x)
+	pkgver = 4.4.7
+	pkgrel = 6
+	url = http://gcc.gnu.org/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	license = LGPL
+	license = custom
+	makedepends = setconf
+	depends = binutils
+	depends = mpfr
+	depends = cloog
+	depends = zlib
+	depends = elfutils
+	options = !libtool
+	options = !buildflags
+	options = staticlibs
+	source = http://www.mirrorservice.org/sites/sourceware.org/pub/gcc/releases/gcc-4.4.7/gcc-4.4.7.tar.bz2
+	source = gcc-hash-style-both.patch
+	source = gcc_pure64.patch
+	source = siginfo_t_fix.patch
+	sha256sums = 5ff75116b8f763fa0fb5621af80fc6fb3ea0f1b1a57520874982f03f26cd607f
+	sha256sums = a600550d3d2b2fb8ee6a547c68c3a08a2af7579290b340c35ee5598c9bb305a5
+	sha256sums = 2d369cf93c6e15c3559c3560bce581e0ae5f1f34dc86bca013ac67ef1c1a9ff9
+	sha256sums = 4df866dcfd528835393d2b6897651158faf6d84852158fbf2e4ffc113ec7d201
+
+pkgname = gcc44
+
