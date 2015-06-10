@@ -1,0 +1,15 @@
+pkgbase = perl-data-tree
+	pkgdesc = Perl/CPAN Module Data::Tree - a hash-based tree-like data structure
+	pkgver = 0.16
+	pkgrel = 1
+	url = https://metacpan.org/release/Data-Tree
+	arch = any
+	license = PerlArtistic
+	depends = perl-moose
+	depends = perl-namespace-autoclean
+	options = !emptydirs
+	source = http://cpan.metacpan.org/authors/id/T/TE/TEX/Data-Tree-0.16.tar.gz
+	md5sums = d0ec6733d2a2f2f57cc1c920f10c7dc6
+
+pkgname = perl-data-tree
+
