@@ -1,0 +1,31 @@
+pkgbase = arduino
+	pkgdesc = Arduino prototyping platform SDK
+	pkgver = 1.6.4
+	pkgrel = 2
+	epoch = 1
+	url = http://arduino.cc/en/Main/Software
+	install = arduino.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = icoutils
+	depends = gtk2
+	depends = libusb-compat
+	depends = java-runtime
+	depends = desktop-file-utils
+	depends = libtinfo
+	depends = giflib
+	options = !strip
+	options = staticlibs
+	source = arduino.desktop
+	source = arduino.xml
+	sha256sums = d817829bb2830cb690ed63f14d8a990bb513bef4a4ebc6227a82abdfc8bcd35d
+	sha256sums = 473b82156505e9bd903e4d8484e8d183f2e3bf3c1f7e29940b815929ae597b68
+	source_i686 = http://downloads.arduino.cc/arduino-1.6.4-linux32.tar.xz
+	sha256sums_i686 = c30e6d681bb8d70c468b2110919ee99689668c8ca3af83a5bd0005934c761466
+	source_x86_64 = http://downloads.arduino.cc/arduino-1.6.4-linux64.tar.xz
+	sha256sums_x86_64 = eb9f2dae8b2cd131e9744eb9385af7a765888cb17916e0163ce171124546495c
+
+pkgname = arduino
+
