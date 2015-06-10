@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Icon=/usr/share/pixmaps/handoffate-gog.png
+Exec=/usr/bin/handoffate-gog
+Terminal=false
+StartupNotify=false
+
+Name=Hand of Fate
+Comment=A hybrid roguelike/action-RPG/deck builder
+
+Categories=Game;

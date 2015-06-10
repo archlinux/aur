@@ -1,0 +1,29 @@
+pkgbase = handoffate-gog
+	pkgdesc = A hybrid roguelike/action-RPG/deck builder
+	pkgver = 1.0.0.1
+	pkgrel = 1
+	url = http://www.gog.com/game/hand_of_fate
+	arch = i686
+	arch = x86_64
+	license = custom:commercial
+	depends = gcc-libs
+	depends = gcc-libs-multilib
+	depends = glibc
+	depends = glu
+	depends = libx11
+	depends = libxau
+	depends = libxcb
+	depends = libxcursor
+	depends = libxdmcp
+	depends = libxext
+	depends = libxfixes
+	depends = libxrandr
+	depends = libxrender
+	depends = libgl
+	source = handoffate-gog.desktop
+	source = gog_hand_of_fate_1.0.0.1.tar.gz::file://gog_hand_of_fate_1.0.0.1.tar.gz
+	sha256sums = 065176e1ddc31fdb96af3f7910522573fdace45ff931763b05b1e3ec7797efe9
+	sha256sums = 9e1265898618f3d55ad022b5dd932b8bdd0752eb042a3b387fe1a2ab6996f494
+
+pkgname = handoffate-gog
+
