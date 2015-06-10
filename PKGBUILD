@@ -2,7 +2,7 @@
 
 pkgname=unity-system-compositor
 _actual_ver=0.0.5
-_extra_ver=+15.04.20141204
+_extra_ver=+15.10.20150506.1
 _ubuntu_rel=0ubuntu1
 pkgver=${_actual_ver}${_extra_ver/\+/.}
 pkgrel=1
@@ -10,21 +10,21 @@ pkgdesc="System compositor for Ubuntu"
 arch=(i686 x86_64)
 url="https://launchpad.net/unity-system-compositor"
 license=(GPL)
-depends=(boost cairo lightdm mesa-mir mir protobuf qt5-base xorg-server-mir)
+depends=(boost cairo lightdm mesa-mir mir protobuf xorg-server-mir)
 makedepends=(cmake)
 options=(!emptydirs)
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${_actual_ver}${_extra_ver}.orig.tar.gz"
         "https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${_actual_ver}${_extra_ver}-${_ubuntu_rel}.diff.gz")
-sha512sums=('99920086983801d472d200a7bb30c14ceafd0981bb709664985cc555549e8f1eb4059718ea8909ad75bae178cd3cc50c653ce833ad6ffede0ef6ff53f727f88b'
-            'df928f17813e7682300da4f1e70a5c7f3f76f8d28c895844f4d14c415476169ad83cfebcca3671d495207232bc3ee78afc8cb94bebc9eaf2187d67003d7dda88')
+sha512sums=('3aa87f419bd7a64733a1c532d406bbb886156616386d4a37e7f09c12bab81d0479443ff5d94a9f3cc5cfb1fda78bd4ceafd80c5f55640ce426fb9add826acb07'
+            '097f12259754e19bded3f44c4bc068ed9793f9dce1cc12cfbf18c9eb714ec6944f257c993860222ffb14c1e4196aaac64b74b91c0e8c5dee59012c35b5b89b3d')
 
 prepare() {
-  cd "${pkgname}-${_actual_ver}${_extra_ver}"
+  cd "${pkgname}-${_actual_ver}${_extra_ver/.10./.04.}"
   patch -p1 -i "../${pkgname}_${_actual_ver}${_extra_ver}-${_ubuntu_rel}.diff"
 }
 
 build() {
-  cd "${pkgname}-${_actual_ver}${_extra_ver}"
+  cd "${pkgname}-${_actual_ver}${_extra_ver/.10./.04.}"
   cmake . \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_SYSCONFDIR=/etc \
@@ -33,7 +33,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname}-${_actual_ver}${_extra_ver}"
+  cd "${pkgname}-${_actual_ver}${_extra_ver/.10./.04.}"
   make DESTDIR="${pkgdir}/" install
 
   mv "${pkgdir}"/usr/{sbin/*,bin/}
