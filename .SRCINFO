@@ -1,0 +1,15 @@
+pkgbase = meteo
+	pkgdesc = Meteo es un proyecto de software libre que recopila datos meteorológicos para Radit.
+	pkgver = 1.0.2+r2.ea7996c
+	pkgrel = 1
+	url = http://www.radit.org/net
+	install = meteo.install
+	arch = any
+	license = GPL v3
+	makedepends = git
+	depends = qt4
+	source = meteo::git+https://github.com/jfperini/meteo.git
+	md5sums = SKIP
+
+pkgname = meteo
+
