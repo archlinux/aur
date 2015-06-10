@@ -1,0 +1,11 @@
+[Unit]
+Description=A network audio server
+After=network.target
+
+[Service]
+ExecStart=-/usr/bin/rplayd --inetd --no-fork
+StandardInput=socket
+StandardOutput=inherit
+StandardError=journal
+User=nobody
+Group=audio

@@ -1,0 +1,9 @@
+[Unit]
+Description=A network audio server
+
+[Service]
+ExecStart=/usr/bin/rplayd --fork --no-inetd
+RestartSec=1
+
+[Install]
+WantedBy=multi-user.target

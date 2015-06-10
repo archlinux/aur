@@ -1,0 +1,10 @@
+[Unit]
+Description=Rplay Socket
+Conflicts=rplayd.service
+
+[Socket]
+ListenStream=5556
+Accept=true
+
+[Install]
+WantedBy=sockets.target
