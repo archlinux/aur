@@ -3,7 +3,7 @@
 
 srcname='zed'
 pkgname="ocaml-${srcname}"
-pkgver='1.3'
+pkgver='1.4'
 pkgrel=1
 pkgdesc='An abstract engine for text editing'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('ocaml' 'ocaml-camomile' 'ocaml-react')
 makedepends=('ocaml-findlib')
 source=("https://github.com/diml/zed/archive/${pkgver}.tar.gz")
 options=('!strip')
-md5sums=('59f1d4b08f4b156f21d2378d34fc5b7d')
+md5sums=('47661250ed1b3e12c886d19c1a019675')
 
 build() {
     cd "$srcdir/${srcname}-${pkgver}"
