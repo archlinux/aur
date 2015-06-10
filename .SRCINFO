@@ -1,0 +1,15 @@
+pkgbase = idesk-extras
+	pkgdesc = graphical configuration for idesktop plus icons
+	pkgver = 1.37
+	pkgrel = 6
+	url = http://www.jmurray.id.au/idesk-extras.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = idesk
+	depends = xdialog
+	source = http://ftp.nluug.nl/pub/os/Linux/distr/amigolinux/download/DeskTop/IconMgmt/idesk-extras-1.37/idesk-extras-1.37.tar.bz2
+	md5sums = 05d570d04cc8eb18b5d5486676b84b8b
+
+pkgname = idesk-extras
+
