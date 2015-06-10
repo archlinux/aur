@@ -1,0 +1,10 @@
+--- glacier-cmd-git/setup.py.ORIG	2014-01-19 12:17:32.330147144 -0800
++++ glacier-cmd-git/setup.py	2014-01-19 12:17:36.070147314 -0800
+@@ -34,7 +34,6 @@
+           'boto',
+           'python-dateutil',
+           'pytz',
+-          'argparse',
+           'prettytable'
+       ],
+     entry_points="""
