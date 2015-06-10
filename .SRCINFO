@@ -1,0 +1,18 @@
+pkgbase = perl-log-tree
+	pkgdesc = Perl/CPAN Module Log::Tree - lightweight but highly configuration logging class
+	pkgver = 0.15
+	pkgrel = 1
+	url = https://metacpan.org/release/Log-Tree
+	arch = any
+	license = PerlArtistic
+	depends = perl-data-tree
+	depends = perl-io-interactive
+	depends = perl-log-dispatch
+	depends = perl-moose
+	depends = perl-namespace-autoclean
+	options = !emptydirs
+	source = http://cpan.metacpan.org/authors/id/T/TE/TEX/Log-Tree-0.15.tar.gz
+	md5sums = 98a80b40924f6cae9ae816ad9ab0fcdf
+
+pkgname = perl-log-tree
+
