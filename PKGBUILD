@@ -15,12 +15,12 @@ _svnmod=trunk
 
 pkgname=retroshare-svn
 pkgver=8406
-pkgrel=1
+pkgrel=2
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://retroshare.sourceforge.net/"
 license=('GPL' 'LGPL')
-depends=('qt4' 'libupnp' 'libgnome-keyring' 'libxss' 'libmicrohttpd')
+depends=('qt4' 'libupnp' 'libgnome-keyring' 'libxss' 'libmicrohttpd' 'opencv' 'sqlcipher')
 makedepends=('subversion')
 provides=('retroshare')
 conflicts=('retroshare')
