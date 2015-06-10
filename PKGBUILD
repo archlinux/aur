@@ -1,13 +1,11 @@
 # Maintainer: Ben Alex <ben.alex@acegi.com.au>
 
-# Using GitHub as upstream URL instead of IBController, as GitHub has lots of docs on usage to assist users.
-
 pkgname=ib-controller
 pkgver=2.12
 pkgrel=3
 pkgdesc='Manages headless Interactive Brokers IB Gateway instances'
 arch=('any')
-url="https://github.com/benalexau/ibcontroller-aur"
+url="https://github.com/ib-controller/ib-controller"
 license=('GPL3')
 depends=(ib-tws xorg-server-xvfb xorg-server gtk2 libxrender libxtst gsettings-desktop-schemas ttf-dejavu)
 
