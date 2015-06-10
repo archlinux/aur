@@ -1,0 +1,74 @@
+diff -up src/velox-0.0.3/modules/alsa.c.orig src/velox-0.0.3/modules/alsa.c
+--- src/velox-0.0.3/modules/alsa.c.orig	2014-03-27 03:59:31.000000000 -0600
++++ src/velox-0.0.3/modules/alsa.c	2014-03-27 04:00:01.000000000 -0600
+@@ -20,8 +20,8 @@
+ #include <stdio.h>
+ #include <assert.h>
+ #include <yaml.h>
+-#include <asoundlib.h>
+-#include <mixer.h>
++#include <alsa/asoundlib.h>
++#include <alsa/mixer.h>
+ 
+ #include <velox/velox.h>
+ #include <velox/module.h>
+diff -up src/velox-0.0.3/velox/event.c.orig src/velox-0.0.3/velox/event.c
+--- src/velox-0.0.3/velox/event.c.orig	2014-03-27 03:57:53.000000000 -0600
++++ src/velox-0.0.3/velox/event.c	2014-03-27 03:58:00.000000000 -0600
+@@ -272,7 +272,7 @@ static void unmap_notify(xcb_unmap_notif
+ 
+         xcb_grab_server(c);
+ 
+-        property_values[0] = XCB_WM_STATE_WITHDRAWN;
++        property_values[0] = XCB_ICCCM_WM_STATE_WITHDRAWN;
+         property_values[1] = 0;
+         xcb_change_property(c, XCB_PROP_MODE_REPLACE, window->window_id, WM_STATE, WM_STATE, 32, 2, property_values);
+ 
+diff -up src/velox-0.0.3/velox/velox.c.orig src/velox-0.0.3/velox/velox.c
+--- src/velox-0.0.3/velox/velox.c.orig	2014-03-27 03:56:23.000000000 -0600
++++ src/velox-0.0.3/velox/velox.c	2014-03-27 03:57:38.000000000 -0600
+@@ -314,7 +314,7 @@ void show_window(xcb_window_t window_id)
+ 
+     DEBUG_ENTER
+ 
+-    property_values[0] = XCB_WM_STATE_NORMAL;
++    property_values[0] = XCB_ICCCM_WM_STATE_NORMAL;
+     property_values[1] = 0;
+     xcb_change_property(c, XCB_PROP_MODE_REPLACE, window_id, WM_STATE, WM_STATE, 32, 2, property_values);
+ 
+@@ -327,7 +327,7 @@ void hide_window(xcb_window_t window_id)
+ 
+     DEBUG_ENTER
+ 
+-    property_values[0] = XCB_WM_STATE_WITHDRAWN; // FIXME: Maybe this should be iconic?
++    property_values[0] = XCB_ICCCM_WM_STATE_WITHDRAWN; // FIXME: Maybe this should be iconic?
+     property_values[1] = 0;
+     xcb_change_property(c, XCB_PROP_MODE_REPLACE, window_id, WM_STATE, WM_STATE, 32, 2, property_values);
+ 
+@@ -766,7 +766,7 @@ void manage(xcb_window_t window_id)
+ 
+         xcb_map_window(c, window->window_id);
+ 
+-        property_values[0] = XCB_WM_STATE_NORMAL;
++        property_values[0] = XCB_ICCCM_WM_STATE_NORMAL;
+         property_values[1] = 0;
+         xcb_change_property(c, XCB_PROP_MODE_REPLACE, window->window_id, WM_STATE, WM_STATE, 32, 2, property_values);
+ 
+@@ -885,7 +885,7 @@ void manage_existing_windows()
+             continue;
+         }
+ 
+-        if (window_attributes_replies[child]->map_state == XCB_MAP_STATE_VIEWABLE || ((uint32_t *) xcb_get_property_value(state_replies[child]))[0] == XCB_WM_STATE_ICONIC)
++        if (window_attributes_replies[child]->map_state == XCB_MAP_STATE_VIEWABLE || ((uint32_t *) xcb_get_property_value(state_replies[child]))[0] == XCB_ICCCM_WM_STATE_ICONIC)
+         {
+             manage(children[child]);
+         }
+@@ -894,7 +894,7 @@ void manage_existing_windows()
+     {
+         if (*((xcb_window_t *) xcb_get_property_value(property_replies[child])) &&
+             (window_attributes_replies[child]->map_state == XCB_MAP_STATE_VIEWABLE ||
+-            ((uint32_t *) xcb_get_property_value(state_replies[child]))[0] == XCB_WM_STATE_ICONIC))
++            ((uint32_t *) xcb_get_property_value(state_replies[child]))[0] == XCB_ICCCM_WM_STATE_ICONIC))
+         {
+             manage(children[child]);
+         }

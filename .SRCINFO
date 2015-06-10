@@ -1,0 +1,25 @@
+pkgbase = velox
+	pkgdesc = A simple xcb window manager inspired by awesome, xmonad, and dwm.
+	pkgver = 0.0.3
+	pkgrel = 2
+	url = http://www.ohloh.net/p/velox-wm
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = xcb-util
+	depends = xcb-util-wm
+	depends = alsa-lib
+	depends = libx11
+	depends = libyaml
+	depends = libmpdclient
+	source = https://github.com/downloads/michaelforney/velox/velox-0.0.3.tar.bz2
+	source = xcb-atom.patch
+	source = xcb-aux.patch
+	source = build-fixes.patch
+	md5sums = 0eda26856cdc9fbc68593b6b360970db
+	md5sums = d008e54ee2cc11e69c6d98afed1d5726
+	md5sums = 37368fc1b753e4ec6d3a2469f701cd8b
+	md5sums = 0e79b777b060ea412b47b4cf52458bf6
+
+pkgname = velox
+

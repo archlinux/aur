@@ -1,0 +1,12 @@
+diff -up src/velox-0.0.3/cmake/Modules/FindXCB-Aux.cmake.orig src/velox-0.0.3/cmake/Modules/FindXCB-Aux.cmake
+--- src/velox-0.0.3/cmake/Modules/FindXCB-Aux.cmake.orig	2014-03-27 03:51:44.000000000 -0600
++++ src/velox-0.0.3/cmake/Modules/FindXCB-Aux.cmake	2014-03-27 03:52:11.000000000 -0600
+@@ -16,7 +16,7 @@ find_path(XCB-Aux_INCLUDE_DIR
+ )
+ 
+ find_library(XCB-Aux_LIBRARY
+-    NAMES xcb-aux
++    NAMES xcb-util
+     PATHS ${XCB-Aux_PKGCONF_LIBRARY_DIRS}
+ )
+ 

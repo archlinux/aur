@@ -1,0 +1,12 @@
+diff -up src/velox-0.0.3/cmake/Modules/FindXCB-Atom.cmake.orig src/velox-0.0.3/cmake/Modules/FindXCB-Atom.cmake
+--- src/velox-0.0.3/cmake/Modules/FindXCB-Atom.cmake.orig	2014-03-27 03:48:31.000000000 -0600
++++ src/velox-0.0.3/cmake/Modules/FindXCB-Atom.cmake	2014-03-27 03:48:42.000000000 -0600
+@@ -16,7 +16,7 @@ find_path(XCB-Atom_INCLUDE_DIR
+ )
+ 
+ find_library(XCB-Atom_LIBRARY
+-    NAMES xcb-atom
++    NAMES xcb-util
+     PATHS ${XCB-Atom_PKGCONF_LIBRARY_DIRS}
+ )
+ 
