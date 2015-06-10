@@ -1,0 +1,14 @@
+pkgbase = fatelf-utils
+	pkgdesc = Utils for FatELF - Universal Binaries for Linux
+	pkgver = 108.0a4566740a98
+	pkgrel = 1
+	url = https://www.icculus.org/fatelf/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	source = hg+https://hg.icculus.org/icculus/fatelf
+	md5sums = SKIP
+
+pkgname = fatelf-utils
+
