@@ -1,14 +1,14 @@
 # Maintainer: Raimar Buehmann (raimar)
 
 pkgname=lxsession-git
-pkgver=0.5.2.r966.20150208
+pkgver=0.5.2.r967.20150321
 pkgrel=1
 epoch=1
 pkgdesc='Lightweight X11 session manager for LXDE'
 arch=('i686' 'x86_64')
 url="http://lxde.org/"
 license=('GPL2')
-groups=('lxde')
+groups=('lxde-git')
 depends=('polkit' 'dbus-glib' 'libunique' 'libkeybinder2')
 makedepends=('pkgconfig' 'intltool' 'docbook-xml' 'docbook-xsl' 'vala')
 provides=('lxsession' 'lxsession-edit' 'lxpolkit' 'lxde-settings-daemon' 'lxsession-lite')

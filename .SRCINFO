@@ -1,12 +1,12 @@
 pkgbase = lxsession-git
 	pkgdesc = Lightweight X11 session manager for LXDE
-	pkgver = 0.5.2.r966.20150208
+	pkgver = 0.5.2.r967.20150321
 	pkgrel = 1
 	epoch = 1
 	url = http://lxde.org/
 	arch = i686
 	arch = x86_64
-	groups = lxde
+	groups = lxde-git
 	license = GPL2
 	makedepends = pkgconfig
 	makedepends = intltool
