@@ -1,0 +1,13 @@
+pkgbase = icompile
+	pkgdesc = Zero-configuration build system
+	pkgver = 0.5.16
+	pkgrel = 1
+	url = http://ice.sourceforge.net
+	arch = any
+	license = BSD
+	depends = python2
+	source = http://kent.dl.sourceforge.net/sourceforge/ice/icompile-0.5.16.tar.gz
+	md5sums = 34aee2f877f45b85c934cf11a340503e
+
+pkgname = icompile
+
