@@ -1,0 +1,14 @@
+pkgbase = gimp-script-descreen
+	pkgdesc = A GIMP script that does descreening using the FFT Fourier plugin.
+	pkgver = 1.0
+	pkgrel = 4
+	url = http://registry.gimp.org/node/24411
+	arch = any
+	license = none
+	depends = gimp
+	depends = gimp-fourier
+	source = http://registry.gimp.org/files/descreen.scm
+	sha256sums = 4f789e64a010e4e25ba34dee1e4b93db52583bde8616288417d1469481242e81
+
+pkgname = gimp-script-descreen
+
