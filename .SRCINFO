@@ -1,0 +1,17 @@
+pkgbase = tiled-java
+	pkgdesc = General purpose tile map editor
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = http://mapeditor.org/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = apache-ant
+	depends = java-runtime
+	source = http://sourceforge.net/projects/tiled/files/Tiled/0.7.2/tiled-0.7.2-src.zip
+	source = tiled-java.sh
+	sha256sums = 15a2ee9557395f47a423b69305ad962b4b07bb678c0b7b13e686b31331c4c802
+	sha256sums = c6ce26823e75036392113f896249fafbca2b4229659914da2097ec40d7b49053
+
+pkgname = tiled-java
+
