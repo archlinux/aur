@@ -1,0 +1,17 @@
+pkgbase = vsprog-git
+	pkgdesc = Versaloon Programmer Platform is a generic framework for MCU programming. Unofficial repo!
+	pkgver = a
+	pkgrel = 1
+	url = http://www.versaloon.com/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = subversion
+	depends = libusb
+	depends = libxml2
+	provides = vsprog
+	source = git+https://github.com/swiftgeek/vsprog.git
+	md5sums = SKIP
+
+pkgname = vsprog-git
+
