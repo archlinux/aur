@@ -1,0 +1,21 @@
+pkgbase = python-trackpy
+	pkgdesc = tools for particle tracking
+	pkgver = 0.2.4
+	pkgrel = 2
+	url = https://github.com/soft-matter/trackpy
+	arch = any
+	license = BSD
+	checkdepends = python-nose
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-matplotlib
+	depends = python-pandas
+	depends = python-yaml
+	depends = python-pims
+	source = https://github.com/soft-matter/trackpy/archive/v0.2.4.zip
+	md5sums = d5327b79365e808eb85f7aafec37c523
+
+pkgname = python-trackpy
+
