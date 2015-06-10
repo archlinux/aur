@@ -1,0 +1,17 @@
+pkgbase = flwm-git
+	pkgdesc = Fast Light Window Manager
+	pkgver = 1.14.r8.gc896405
+	pkgrel = 1
+	url = https://github.com/bbidulock/flwm
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = fltk
+	provides = flwm
+	conflicts = flwm
+	conflicts = flwm-tc
+	source = flwm-git::git+https://github.com/bbidulock/flwm.git
+	md5sums = SKIP
+
+pkgname = flwm-git
+
