@@ -1,0 +1,81 @@
+diff -up src/Gnome2-Wnck-0.16/xs/WnckScreen.xs.orig src/Gnome2-Wnck-0.16/xs/WnckScreen.xs
+--- src/Gnome2-Wnck-0.16/xs/WnckScreen.xs.orig	2007-08-02 14:18:38.000000000 -0600
++++ src/Gnome2-Wnck-0.16/xs/WnckScreen.xs	2014-05-01 22:18:49.000000000 -0600
+@@ -176,4 +176,6 @@ wnck_screen_get_workspaces (WnckScreen *
+ 
+ const char_ornull * wnck_screen_get_window_manager_name (WnckScreen *screen);
+ 
++int wnck_screen_get_window_manager_pid (WnckScreen *screen);
++
+ int wnck_screen_get_number (WnckScreen *screen);
+diff -up src/Gnome2-Wnck-0.16/xs/WnckWindow.xs.orig src/Gnome2-Wnck-0.16/xs/WnckWindow.xs
+--- src/Gnome2-Wnck-0.16/xs/WnckWindow.xs.orig	2007-08-02 14:18:38.000000000 -0600
++++ src/Gnome2-Wnck-0.16/xs/WnckWindow.xs	2014-05-01 22:14:29.000000000 -0600
+@@ -114,6 +114,30 @@ gboolean
+ wnck_window_is_sticky (window)
+ 	WnckWindow *window
+ 
++##  void wnck_window_set_fixed (WnckWindow *window, gboolean fixed)
++void
++wnck_window_set_fixed (window, fixed)
++	WnckWindow *window
++	gboolean fixed
++
++##  void wnck_window_set_filled (WnckWindow *window, gboolean fill)
++void
++wnck_window_set_filled (window, fill)
++	WnckWindow *window
++	gboolean fill
++
++##  void wnck_window_set_floating (WnckWindow *window, gboolean floats)
++void
++wnck_window_set_floating (window, floats)
++	WnckWindow *window
++	gboolean floats
++
++##  void wnck_window_set_undecorated (WnckWindow *window, gboolean undec)
++void
++wnck_window_set_undecorated (window, undec)
++	WnckWindow *window
++	gboolean undec
++
+ ##  void wnck_window_set_skip_pager (WnckWindow *window, gboolean skip)
+ void
+ wnck_window_set_skip_pager (window, skip)
+@@ -319,6 +343,36 @@ gboolean
+ wnck_window_is_fullscreen (window)
+ 	WnckWindow *window
+ 
++##  gboolean wnck_window_is_focused (WnckWindow *window)
++gboolean
++wnck_window_is_focused (window)
++	WnckWindow *window
++
++##  gboolean wnck_window_is_modal (WnckWindow *window)
++gboolean
++wnck_window_is_modal (window)
++	WnckWindow *window
++
++##  gboolean wnck_window_is_fixed (WnckWindow *window)
++gboolean
++wnck_window_is_fixed (window)
++	WnckWindow *window
++
++##  gboolean wnck_window_is_filled (WnckWindow *window)
++gboolean
++wnck_window_is_filled (window)
++	WnckWindow *window
++
++##  gboolean wnck_window_is_floating (WnckWindow *window)
++gboolean
++wnck_window_is_floating (window)
++	WnckWindow *window
++
++##  gboolean wnck_window_is_undecorated (WnckWindow *window)
++gboolean
++wnck_window_is_undecorated (window)
++	WnckWindow *window
++
+ ##  void wnck_window_set_fullscreen (WnckWindow *window, gboolean fullscreen)
+ void
+ wnck_window_set_fullscreen (window, fullscreen)
