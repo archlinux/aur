@@ -1,0 +1,29 @@
+pkgbase = clicraft
+	pkgdesc = A command-line wrapper for a minecraft or bukkit server.
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://github.com/DMBuce/clicraft
+	install = clicraft.install
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = asciidoc
+	depends = bash
+	depends = tmux
+	depends = curl
+	depends = java-runtime
+	optdepends = c10t: for map.sh action script
+	optdepends = mcexplore: for explore.sh action script
+	backup = etc/clicraft/action.d/explore.sh
+	backup = etc/clicraft/action.d/map.sh
+	backup = etc/cron.d/clicraft
+	backup = etc/logrotate.d/clicraft
+	source = clicraft::git://github.com/DMBuce/clicraft.git#tag=0.0.7
+	source = clicraft.install
+	source = clicraft.rc
+	md5sums = SKIP
+	md5sums = 631669f302dffa059b4bdc915374d3d6
+	md5sums = dce883d9854859651b62b3477d0b5d4a
+
+pkgname = clicraft
+

@@ -1,0 +1,20 @@
+post_install() {
+  post_upgrade
+  chown -R minecraft:minecraft /etc/clicraft /var/lib/clicraft >/dev/null
+}
+
+post_upgrade() {
+  getent group  "minecraft" &>/dev/null || groupadd -r minecraft >/dev/null
+  getent passwd "minecraft" &>/dev/null || useradd  -r -g minecraft -d "/var/lib/clicraft" -s "/bin/bash" minecraft >/dev/null
+}
+
+post_remove() {
+  if getent passwd "minecraft" &>/dev/null; then
+    userdel minecraft
+  fi
+  if getent group "minecraft" &>/dev/null; then
+    groupdel minecraft
+  fi
+}
+
+# vim:set ts=2 sw=2 et:
