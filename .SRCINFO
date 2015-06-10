@@ -1,0 +1,23 @@
+pkgbase = gzip-rsyncable
+	pkgdesc = GNU compression utility
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://www.gnu.org/software/gzip/
+	install = gzip.install
+	arch = i686
+	arch = x86_64
+	groups = base
+	groups = base-devel
+	license = GPL3
+	depends = glibc
+	depends = bash
+	depends = less
+	provides = gzip
+	conflicts = gzip
+	source = ftp://ftp.gnu.org/pub/gnu/gzip/gzip-1.6.tar.xz
+	source = debian_patches_rsyncable.diff
+	md5sums = da981f86677d58a106496e68de6f8995
+	md5sums = 21aab4810c49c9a7fd0a09b7a7749e58
+
+pkgname = gzip-rsyncable
+
