@@ -11,7 +11,7 @@ _srcname=linux-4.0
 _pkgver=4.0.4
 _rtpatchver=rt1
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -36,8 +36,8 @@ sha256sums=('0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991'
             'SKIP'
             'd69e0a95e30acc679343593a0c9d8eb9caf874cc2a97ae599691aef4e5a589f7'
             'SKIP'
-            'b600f30cc50ae29730c1df5f1d9258ecebd111696b584c925014461ecc473535'
-            '86f8c13fcd99409c720ab5ca25d7134dcd2e5b3b720182b446f4c76aa9fbcf00'
+            '7db363fd3001c5235a6ec499310ecec6f552faa3c2872954ccbb9d02e6e8e817'
+            'cb290ad42aed7f297d90b112227af533e37cfeabbf8bff8a9df4674647b461ab'
             '2abb6e506e4a687723d6a6dc21703f5d2b42a8956fbc3313e3da2b03c718c80d'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '7a42d16108eb9a8eacadef3603527fa1beab857cc4db3bd228858488fb1f3fda'
