@@ -1,0 +1,16 @@
+pkgbase = wmdrawer
+	pkgdesc = Dockapp with retractable button bar to launch applications
+	pkgver = 0.10.5
+	pkgrel = 3
+	url = http://people.easter-eggs.org/~valos/wmdrawer/
+	arch = i686
+	arch = x86_64
+	groups = x11
+	license = GPL
+	depends = gdk-pixbuf
+	depends = gtk
+	source = http://people.easter-eggs.org/~valos/wmdrawer/wmdrawer-0.10.5.tar.gz
+	md5sums = 608bf2f75fdd084f8e63764c31a2a9a5
+
+pkgname = wmdrawer
+
