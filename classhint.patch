@@ -1,0 +1,15 @@
+diff -up src/wmMoonClock-1.27/Src/xutils.c.orig src/wmMoonClock-1.27/Src/xutils.c
+--- src/wmMoonClock-1.27/Src/xutils.c.orig	2014-04-12 07:21:03.000000000 -0600
++++ src/wmMoonClock-1.27/Src/xutils.c	2014-04-12 07:22:35.000000000 -0600
+@@ -228,8 +228,10 @@ void openXwindow(int argc, char *argv[],
+      *  Activate hints 
+      */
+     XSetWMNormalHints(display, win, &mysizehints);
++    if (strrchr(wname, '/'))
++	    wname = strrchr(wname, '/') + 1;
+     classHint.res_name = wname;
+-    classHint.res_class = wname;
++    classHint.res_class = "DockApp";
+     XSetClassHint(display, win, &classHint);
+ 
+ 

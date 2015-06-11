@@ -1,0 +1,16 @@
+pkgbase = wmmoonclock
+	pkgdesc = WindowMaker dockapp that shows lunar ephemeris to fairly high accuracy
+	pkgver = 1.27
+	pkgrel = 2
+	url = http://www.cs.mun.ca/~gstarkes/wmaker/dockapps/time.html#wmmoonclock
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	source = http://www.cs.mun.ca/~gstarkes/wmaker/dockapps/files/wmMoonClock-1.27.tar.gz
+	source = classhint.patch
+	md5sums = c85bc974e70c867d556805505d3be48c
+	md5sums = 03685215040f4cf4cc42e2697db786b0
+
+pkgname = wmmoonclock
+
