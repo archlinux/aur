@@ -1,0 +1,6 @@
+i360gm/
+pkg/
+src/
+*.tar.*
+*.zip
+*.7z

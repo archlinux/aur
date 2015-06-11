@@ -1,0 +1,14 @@
+pkgbase = exiso-git
+	pkgdesc = An xdvdfs .iso (xbox iso) file extraction and creation tool.
+	pkgver = 2.7.0.r29.7a83e3c
+	pkgrel = 1
+	url = https://github.com/Intline9/i360gm.git
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	source = git://github.com/Intline9/i360gm.git
+	sha512sums = SKIP
+
+pkgname = exiso-git
+
