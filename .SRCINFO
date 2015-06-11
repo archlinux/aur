@@ -1,0 +1,14 @@
+pkgbase = wmflame
+	pkgdesc = A dock app that makes an animated flame
+	pkgver = 0.60
+	pkgrel = 1
+	url = http://novalis.dorm.reed.edu/cgi.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	source = http://www.cs.mun.ca/~gstarkes/wmaker/dockapps/files/wmflame-0.60.tar.gz
+	md5sums = a9de2b284d95cc9933ce9ba869a6fa67
+
+pkgname = wmflame
+
