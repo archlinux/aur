@@ -1,0 +1,18 @@
+pkgbase = python2-textblob-aptagger-git
+	pkgdesc = A fast and accurte part-of-speach tagger for Python 2 based on the Averaged Perception. For use with TextBlob
+	pkgver = 0.3.0.dev.r15.92a9b99
+	pkgrel = 1
+	url = https://github.com/sloria/textblob-aptagger
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-textblob-git
+	provides = python2-textblob-aptagger
+	conflicts = python2-textblob-aptagger
+	source = git+https://github.com/sloria/textblob-aptagger.git
+	sha256sums = SKIP
+
+pkgname = python2-textblob-aptagger-git
+
