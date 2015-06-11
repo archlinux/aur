@@ -1,0 +1,16 @@
+pkgbase = perl-test-utf8
+	pkgdesc = handy utf8 tests
+	pkgver = 1.01
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Test-utf8
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.7.3
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MA/MARKF/Test-utf8-1.01.tar.gz
+	md5sums = 58351d9e168399f6e55fb0982cdbe6a1
+	sha512sums = 07dcd5ed98a63f7d96bb0fc629b168773d02bb4c93c5bc44ec60738fc29669794547dfde5913f9de682cd583cf85f4d82b6151398aaebcfec9278525447b9c4e
+
+pkgname = perl-test-utf8
+
