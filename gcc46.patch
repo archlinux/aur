@@ -1,0 +1,13 @@
+diff --git a/smartgame/SgPointSetUtil.h b/smartgame/SgPointSetUtil.h
+index a9432c6..0c91077 100644
+--- a/smartgame/SgPointSetUtil.h
++++ b/smartgame/SgPointSetUtil.h
+@@ -64,7 +64,7 @@ public:
+     std::istream& Read(std::istream& in) const;
+ 
+ private:
+-    mutable SgPointSet& m_pointSet; // allow temp objects to modify
++    SgPointSet& m_pointSet; // allow temp objects to modify
+ };
+ 
+ /** @relatesalso SgReadPointSet */

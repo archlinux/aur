@@ -1,0 +1,19 @@
+pkgbase = fuego
+	pkgdesc = A collection of C++ libraries for the game of Go
+	pkgver = 1.1
+	pkgrel = 4
+	url = http://fuego.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = boost
+	depends = boost-libs
+	source = http://downloads.sourceforge.net/project/fuego/fuego/1.1/fuego-1.1.tar.gz
+	source = gcc46.patch
+	source = boost_fix.patch
+	md5sums = 9c53cad89efd2a7943e31b667002d258
+	md5sums = 788114d7d1ba774c462d5ec83129d1bb
+	md5sums = 14bc9b2a789a52fb2a3a64f3cff0f769
+
+pkgname = fuego
+

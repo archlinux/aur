@@ -1,0 +1,64 @@
+--- trunk/gtpengine/GtpEngine.cpp	2012/08/26 17:53:23	1602
++++ trunk/gtpengine/GtpEngine.cpp	2012/08/26 17:54:42	1603
+@@ -349,7 +349,11 @@
+     {
+         cerr << "GtpEngine: sleep " << seconds << '\n';
+         xtime time;
+-        xtime_get(&time, boost::TIME_UTC);
++        #if BOOST_VERSION >= 105000
++            xtime_get(&time, boost::TIME_UTC_);
++        #else
++            xtime_get(&time, boost::TIME_UTC);
++        #endif
+         time.sec += seconds;
+         thread::sleep(time);
+         cerr << "GtpEngine: sleep done\n";
+
+--- trunk/go/GoGtpEngine.cpp	2012/08/26 17:53:23	1602
++++ trunk/go/GoGtpEngine.cpp	2012/08/26 17:54:42	1603
+@@ -1623,7 +1623,11 @@
+     // Call GoPlayer::Ponder() after 0.2 seconds delay to avoid calls in very
+     // short intervals between received commands
+     boost::xtime time;
+-    boost::xtime_get(&time, boost::TIME_UTC);
++    #if BOOST_VERSION >= 105000
++        boost::xtime_get(&time, boost::TIME_UTC_);
++    #else
++         boost::xtime_get(&time, boost::TIME_UTC);
++    #endif
+     bool aborted = false;
+     for (int i = 0; i < 200; ++i)
+     {
+--- trunk/go/GoGtpEngine.cpp	(revision 1494)
++++ trunk/go/GoGtpEngine.cpp	(working copy)
+@@ -378,7 +378,7 @@
+     CheckMaxClearBoard();
+     if (! m_sentinelFile.empty() && exists(m_sentinelFile))
+         throw GtpFailure() << "Detected sentinel file '"
+-                           << m_sentinelFile.native_file_string() << "'";
++                           << m_sentinelFile.string() << "'";
+     if (Board().MoveNumber() > 0)
+         GameFinished();
+     Init(Board().Size());
+--- trunk/fuegomain/FuegoMainUtil.cpp	(revision 1494)
++++ trunk/fuegomain/FuegoMainUtil.cpp	(working copy)
+@@ -22,7 +22,7 @@
+ {
+     path normalizedFile = file;
+     normalizedFile.normalize();
+-    string nativeFile = normalizedFile.native_file_string();
++    string nativeFile = normalizedFile.string();
+     SgDebug() << "Loading opening book from '" << nativeFile << "'... ";
+     ifstream in(nativeFile.c_str());
+     if (! in)
+--- trunk/fuegomain/FuegoMain.cpp	(revision 1494)
++++ trunk/fuegomain/FuegoMain.cpp	(working copy)
+@@ -62,7 +62,7 @@
+ {
+     if (programPath == 0)
+         return "";
+-    return path(programPath, boost::filesystem::native).branch_path();
++    return path(programPath);
+ }
+ 
+ void Help(po::options_description& desc, ostream& out)
