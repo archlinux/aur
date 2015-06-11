@@ -1,0 +1,19 @@
+pkgbase = python-ircreactor-git
+	pkgdesc = Conversion of IRC messages into intermediate representation
+	pkgver = 0.16.7fb4457
+	pkgrel = 2
+	url = https://github.com/mammon-ircd/ircreactor
+	arch = any
+	license = custom
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = python-ircreactor-git::git+https://github.com/mammon-ircd/ircreactor.git
+	md5sums = SKIP
+
+pkgname = python-ircreactor-git
+	depends = python
+
+pkgname = python2-ircreactor-git
+	depends = python2
+
