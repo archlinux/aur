@@ -1,0 +1,9 @@
+post_install() {
+  echo "To create database environment, load script"
+  echo "/usr/share/pgagent.sql"
+}
+
+post_upgrade() {
+  echo "To update the database environment for the new version,"
+  echo "load the script /usr/share/pgagent_upgrade.sql"
+}

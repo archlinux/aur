@@ -1,0 +1,15 @@
+[Unit]
+Description=Job scheduler for PostgreSQL on %i
+After=network.target
+
+[Service]
+Type=forking
+EnvironmentFile=/etc/conf.d/pgagent@%i
+ExecStart=/usr/bin/pgagent -t ${PGA_POLL} -r ${PGA_RETRY} -s ${PGA_LOG} -l ${PGA_LEVEL} \
+          hostaddr=${PG_HOST} dbname=${PG_DBNAME} user=${PG_USER}
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
