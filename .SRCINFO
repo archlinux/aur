@@ -1,0 +1,25 @@
+pkgbase = mkdocs
+	pkgdesc = Project documentation with Markdown.
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = http://www.mkdocs.org
+	arch = any
+	license = BSD
+	checkdepends = flake8
+	checkdepends = python-coverage
+	checkdepends = python-nose
+	checkdepends = python-mock
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/m/mkdocs/mkdocs-0.14.0.tar.gz
+	sha256sums = 5c182d3c5b148fa574d0f9be4900480a9e8ceab5d1f89e49f5a2bae0245a493a
+
+pkgname = mkdocs
+	depends = livereload>=2.3.2
+	depends = python-click>=4.0
+	depends = python-jinja>=2.7.1
+	depends = python-markdown>=2.3.1
+	depends = python-six>=1.4.0
+	depends = python-tornado>=4.1
+	depends = python-yaml>=3.10
+
