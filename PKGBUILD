@@ -71,7 +71,7 @@ _NUMAdisable=y	# Disable NUMA in kernel config
 pkgname=(linux-lts-ck linux-lts-ck-headers)
 _kernelname=-lts-ck
 _srcname=linux-3.14
-pkgver=3.14.43
+pkgver=3.14.44
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -101,12 +101,11 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
 		"${_bfqpath}/0002-block-introduce-the-BFQ-v7r7-I-O-sched-for-3.14.patch"
 		"${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r7-for-3.14.0.patch"
 		'fix_CPU0_microcode_on_resume.patch'
-		'gcc5_buildfixes.diff'
-		'md-raid0-fix-restore-to-sector-variable-in-raid0_mak.patch')
+		'gcc5_buildfixes.diff')
 
 sha512sums=('5730d83a7a81134c1e77c0bf89e42dee4f8251ad56c1ac2be20c59e26fdfaa7bea55f277e7af156b637f22e1584914a46089af85039177cb43485089c74ac26e'
             'SKIP'
-            '05ee3b65deb951079aa7e9e56c1708ce874fd3651da7b9a22e1dd1f273ae78757aa1b78ccd409670129cde044f1f50b8c216e66e1675ab1613b17211f61147bd'
+            '3eed66584f6cb3958fdbb2d0e15eb240d68d317e073c2a4fbc02d35af773429a968144e3d2eea49c58fe90395de4fd6cf8de909075b95cce0d60ad241c90df4b'
             'SKIP'
             'd745370376e660245e0a5cc4512f0c584a4c782ddb0747637d6ec60021d95afa09d5728f44756c48843b398ba3072823bea99b1713c0833c941a522da0b6f305'
             '1a112daacec768b588af4549a6e90fa24a251b4632bd14dd1ccbb818838a009df25f9df369ad71e3ef9a6900f4e8ff37f8132bd8450c1653c1a6eb7bdffb0ad5'
@@ -123,8 +122,7 @@ sha512sums=('5730d83a7a81134c1e77c0bf89e42dee4f8251ad56c1ac2be20c59e26fdfaa7bea5
             '525c8b1582c84be8075eb6370b1f3efa077347d1cd1fae6126b1bbffc15b85bb563effcc243becef3a471b7874b2b6dbe810474341f1c9578578fb3db98de5b8'
             '832c5795a39a790179f971dfbaae589bc9baa0400949868191e1f01b1580a0aae574e4fc48973ecf4325fa1d0c8d763e8721da0b8011d287c07a3a52a34f9aba'
             '532df1bdcacfb5453dc8b4a0f44c33146cb3c01a28c073a3b8f9900f4e65cb23763c99eeb7128d3448ba1e6f54632c5867f5f3d82ee2ee1b7033ff921ef8e7ba'
-            '1fa9ffbe9db18514b679b3392b58e6a3e1a72b46f09eb8199c69765281d81ccc7bba12101381605ce531db42557aa2eb96302ab3de9bd0d90827eab99e9e438d'
-            '5df1963f88e6ad2637e0e94e5c5ef8849b5b3762f8a03a4df1cfcc3533199b034563d0df898189fb08b60bc10d149b0280c76e3285363d8d77bdd6a9f93b5d52')
+            '947997e7719168b176a24193ec0d1d8b9760dfa9335f8c9bd4842730a497787589b8917361af01600d0164b9574911e64ce80395146340a6c352119e6544295c')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -138,9 +136,6 @@ prepare() {
 	# add upstream patch
 	msg "Patching source to v$pkgver"
 	patch -p1 -i "${srcdir}/patch-${pkgver}"
-
-	# https://bugzilla.kernel.org/show_bug.cgi?id=98501
-	patch -Np1 -i "${srcdir}/md-raid0-fix-restore-to-sector-variable-in-raid0_mak.patch"
 
 	# buildfixes for gcc5
 	# https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/scsi/qla2xxx/qla_nx2.c?id=9493c2422cae272d6f1f567cbb424195defe4176
