@@ -1,0 +1,26 @@
+pkgbase = jnethack
+	pkgdesc = Japanized Nethack, A single player dungeon exploration game
+	pkgver = 3.4.3_0.11
+	pkgrel = 5
+	url = http://jnethack.sourceforge.jp/
+	install = jnethack.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = bzip2
+	depends = ncurses
+	depends = gzip
+	options = !makeflags
+	source = http://downloads.sourceforge.net/nethack/nethack-343-src.tgz
+	source = jnethack-3.4.3-0.11.diff.gz::http://sourceforge.jp/frs/redir.php?f=%2Fjnethack%2F58545%2Fjnethack-3.4.3-0.11.diff.gz
+	source = http://jnethack.sourceforge.jp/patch/utf8-ibm.patch
+	source = http://www.phys98.homeip.net/~ide/src/jnethack-3.4.3-0.10-yahpmon.patch.bz2
+	source = jnethack-3.4.3-0.11-mc.diff
+	md5sums = 21479c95990eefe7650df582426457f9
+	md5sums = 2d7ddbc4772a1fcff9a607abff851a75
+	md5sums = 33904a278b8c36cb5f17cf7a4db21a97
+	md5sums = 2d3b58e7b71ef44589d7887434bde3f8
+	md5sums = b3b4de971fe61738f7de69802174d876
+
+pkgname = jnethack
+

@@ -1,0 +1,5 @@
+nethack-*-src.tgz
+*.patch*
+*.diff*
+jnethack-*.tar.[gx]z
+!jnethack-3.4.3-0.11-mc.diff
