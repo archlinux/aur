@@ -1,0 +1,20 @@
+diff -up tmp1/Src/weather.pl.orig tmp1/Src/weather.pl
+--- tmp1/Src/weather.pl.orig	2014-05-19 07:39:02.000000000 -0600
++++ tmp1/Src/weather.pl	2010-12-01 12:37:21.000000000 -0700
+@@ -109,11 +109,11 @@ debug("vis: $visibility");
+ #{
+ #	$i++; # visibility with fractions, not using
+ #}
+-#$next=@args[$i];
+-#if($next=~m/FT/)
+-#{
+-#	$i++; # visibility in feet, not using
+-#}
++$next=@args[$i];
++if($next=~m/\//)
++{
++	$i++; # fractional visibility, skipping
++}
+ 
+ $tmp="";
+ $weather="";

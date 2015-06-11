@@ -1,0 +1,17 @@
+Description: New Metereological Station Information Lookup page
+ This patch updates the url of the NOAA's Metereological Station Information
+ Lookup page in the INSTALL documentation file.
+Author: Doug Torrance <dtorrance@monmouthcollege.edu>
+Last-Update: <2014-04-29>
+
+--- wmfrog-0.3.1.orig/INSTALL
++++ wmfrog-0.3.1/INSTALL
+@@ -37,7 +37,7 @@ You might need to set the location of pe
+ Use
+ --------------------------------------------------------------------------------
+ Find your METAR station name here: 
+-http://www.nws.noaa.gov/tg/siteloc.shtml
++http://www.nws.noaa.gov/tg/siteloc.php
+ For example Reno, NV is KRNO
+ Also you will want to set your Time offset from UTC(GMT), for example Pacific time is GMT-8, so offset is -8
+ 

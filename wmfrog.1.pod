@@ -1,0 +1,109 @@
+Rxu#  This is manual page in Perl POD format. Read more at
+#  http://perldoc.perl.org/perlpod.html or run command:
+#
+#     perldoc perlpod | less
+#
+#  To check the syntax:
+#
+#     podchecker *.pod
+#
+#  Create manual page with command:
+#
+#    pod2man PAGE.N.pod > PAGE.N
+
+=pod
+
+=head1 NAME
+
+wmfrog - a dockapp for showing weather in graphical way
+
+=head1 SYNOPSIS
+
+  wmfrog [options] -stattion <METAR station id>
+
+=head1 OPTIONS
+
+=over 4
+
+=item B<-delay minutes>
+
+Override time (in minutes) between updates. Default is 15.
+
+=item B<-m, -metric>
+
+Display Temperature in metric unit: Celcius.
+
+=item B<-o offset>
+
+Time offset of location from UTC. Positive or negative integer
+expressed in hours, like +1 or -7.
+
+=item B<-s, -station>
+
+Required option. The 4-character METAR Station ID. See
+http://en.wikipedia.org/wiki/METAR
+
+=item B<-w knots>
+
+Set the maximum wind in KNOTS for percentage of max / scaling. Default
+is 50 Knots.
+
+=item B<-tmp directory>
+
+Set the temporary directory where the METAR data files are downloaded
+Default is C</tmp>.
+
+=item B<-l label>
+
+Set displayed text to 4 character (max) label to replace the METAR
+station id.
+
+=back
+
+=head1 DESCRIPTION
+
+A dockapp for weather reports. Includes clouds (clear, few,
+scattered, broken, overcast ...); Precipitations (drizzle, rain, snow,
+ice christals: light/moderate or heavy); Special weather (Blowing wind
+/ Freezing / Thunderstorm, funnel cloud...); Humidity perentage; Wind
+speed (average & gust); Wind Direction; Temperature (Celcius or
+Fareinheit); Station name can be configured and weather report time is
+displayed.
+
+To find out more about the METAR/TAF system, see
+I<Frequently Asked Questions about METAR/SPECI and TAF> at
+http://www.nws.noaa.gov/oso/oso1/oso12/faq.htm
+
+To find your city Metar code go to NOAA's Meteorological Station
+Information Lookup page I<Meteorological Products Processed At The
+NWSTG> at at http://www.nws.noaa.gov/tg/siteloc.php
+
+=head1 ENVIRONMENT
+
+None.
+
+=head1 FILES
+
+=over 4
+
+=item /tmp/<station-id>/
+
+Stored data files. The directory can be changed with option B<-tmp>
+
+=back
+
+=head1 SEE ALSO
+
+wmweather(1)
+wmweather+(1)
+
+=head1 AUTHORS
+
+program was written by Thibaut Colar <tcolar@users.sourceforge.net>
+
+This manual page is based on 0.1.6 version of the program. Updated by Jari
+Aalto <jari.aalto@cante.net>. Released under license GNU GPL v2 or (at
+your option) any later version. For more information about license, visit
+<http://www.gnu.org/copyleft/gpl.html>.
+
+=cut

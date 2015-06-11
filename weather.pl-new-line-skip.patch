@@ -1,0 +1,20 @@
+Description: New line skip in weather.pl.
+ Previously, there were 12 lines between the "START BODY OF TEXT HERE" comment
+ and the time in the html file downloaded from weather.noaa.gov for processing
+ weather information.  Now, however, the number of lines has increased to 21,
+ and weather.pl was not able to correctly parse the weather information.
+ .
+ This patch fixes this issue.
+Author: Doug Torrance <dtorrance@monmouthcollege.edu>
+
+--- wmfrog-0.3.1.orig/Src/weather.pl
++++ wmfrog-0.3.1/Src/weather.pl
+@@ -40,7 +40,7 @@ if($mode eq "http")
+ 		$line=<DATA>;
+     }
+     $i=0;
+-    while($i!=12 && !eof(DATA))
++    while($i!=21 && !eof(DATA))
+     {
+ 		$line=<DATA>;
+ 		$i++;

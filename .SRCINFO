@@ -1,0 +1,26 @@
+pkgbase = wmfrog
+	pkgdesc = A WindowMaker dock app for weather reports.
+	pkgver = 0.3.1
+	pkgrel = 2
+	url = http://sourceforge.net/projects/wmfrog
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	source = http://downloads.sourceforge.net/wmfrog/wmfrog-0.3.1.tgz
+	source = debian-orig.patch
+	source = 20-weather.pl.patch
+	source = weather.pl-new-line-skip.patch
+	source = renamed-wmfrog.c.patch
+	source = new-station-lookup-url.patch
+	source = wmfrog.1.pod
+	md5sums = 3469ae5043a7bec538dff31b4a2397ea
+	md5sums = 7b2fece308e94c6ba2281fae83ece24b
+	md5sums = 95cb86928984baa7dfe5b5a8870efa09
+	md5sums = f8872dc232a91aeaa465f9139068842c
+	md5sums = 86e8eeb4b5508c30eab08e9f51964e53
+	md5sums = 26315cb650d3f26fcd27dcac323f10b2
+	md5sums = f16d84c6bc8ea9f432c5055d6354a9f8
+
+pkgname = wmfrog
+

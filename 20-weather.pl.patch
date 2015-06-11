@@ -1,0 +1,176 @@
+From: Jari Aalto <jari.aalto@cante.net>
+Subject: Fix Perl warnings, array subscript, test directory
+
+Updated by Doug Torrance <dtorrance@monmouthcollege.edu> for new upstream version 0.3.1.
+
+--- wmfrog-0.3.1.orig/Src/weather.pl
++++ wmfrog-0.3.1/Src/weather.pl
+@@ -2,9 +2,9 @@
+ #Thibaut Colar: http://www.colar.net/ 
+ #2002/05
+ 
+-#The Weather data can be retrieved through http of ftp.
++#The weather data can be retrieved through http or ftp.
+ #Http is faster, however this might get broken if NOAA change their webpage layout
+-#in wich case you should choose ftp.
++#in which case you should choose ftp.
+ 
+ $mode="http"; # html || ftp
+ 
+@@ -32,7 +32,7 @@ if($mode eq "ftp")
+ $line="";
+ $file="${tmpfolder}/${station}_dat";
+ open(DATA,"<$file");
+-$allGood=0;
++#$allGood=0;
+ if($mode eq "http")
+ {
+     while((! ($line=~m/START BODY OF TEXT HERE/)) && !eof(DATA))
+@@ -55,7 +55,7 @@ if(eof(DATA))
+ 
+ $line=<DATA>;
+ chomp $line;
+-($junk,$time)=split(/\ /,$line);
++(undef,$time)=split(/\ /,$line);
+ ($hour,$minute)=split(/:/,$time);
+ $line="";
+ if($mode eq "http")
+@@ -82,26 +82,26 @@ debug("args: @args");
+ debug("line: $line");
+ 
+ $i=0;
+-$station=@args[$i];
++$station=$args[$i];
+ if(($station eq 'METAR') or ($station eq 'SPECI'))
+ {
+-	$station=@args[$i+1];
++	$station=$args[$i+1];
+ 	$i++
+ }
+ $i++;#date (ln 1)
+ $i++;#time (ln 1)
+ $i++;#station (ln 2)
+ $i++;#datetime (ln 2)
+-$wind=@args[$i];
++$wind=$args[$i];
+ if($wind eq 'AUTO')
+ {
+-	$wind=@args[$i+1];
++	$wind=$args[$i+1];
+ 	$i++;
+ }
+ debug("wind: $wind");
+ 
+ $i++;
+-$visibility=@args[$i];
++$visibility=$args[$i];
+ $i++;#Visibility
+ debug("vis: $visibility");
+ 
+@@ -109,16 +109,16 @@ debug("vis: $visibility");
+ #{
+ #	$i++; # visibility with fractions, not using
+ #}
+-$next=@args[$i];
++$next=$args[$i];
+ if($next=~m/\//)
+ {
+ 	$i++; # fractional visibility, skipping
+ }
+ 
+-$tmp="";
++#$tmp="";
+ $weather="";
+ $clouds="";
+-while((! (@args[$i]=~/\//)) && ($i<@args))
++while((! ($args[$i]=~/\//)) && ($i<@args))
+ {
+     $intensity="";
+     $desc="";
+@@ -126,7 +126,7 @@ while((! (@args[$i]=~/\//)) && ($i<@args
+     $obsc="";
+     $misc="";
+     $j=0;
+-    $curent=@args[$i];
++    $curent=$args[$i];
+     
+     debug("cur : $curent");
+     
+@@ -140,7 +140,7 @@ while((! (@args[$i]=~/\//)) && ($i<@args
+     if($curent=~/^VV/)
+     {
+ 		$clouds.="VV,".substr($curent,2,3).";";
+-		$wasNotCloud="yes";
++		#$wasNotCloud="yes";
+     }
+     if(($curent=~/^CLR/) or ($curent=~/^SCK/) or ($curent=~/^FEW/) or ($curent=~/^SCT/)  or ($curent=~/^BKN/)   or ($curent=~/^OVC/))
+     {
+@@ -193,7 +193,7 @@ while((! (@args[$i]=~/\//)) && ($i<@args
+ 	}    
+     $i++;
+ }
+-($temp,$dew)=split(/\//,@args[$i]);
++($temp,$dew)=split(/\//,$args[$i]);
+ 
+ 
+ $dir=substr($wind,0,3);
+@@ -264,31 +264,36 @@ debug("Dew:$dew");
+ 
+ 
+ #check for ok temperature
+-open(GREP, "grep Temp $tmpfolder/${station} | ");
+-$templine=<GREP>;
+-$templine=~m/^Temp:(.*)$/;
++if ( -d "$tmpfolder/$station" )
+ {
+-	$lattemp=$1;
+-	if($temp>-50 && $temp<150)
+-	{
+-		if($lasttemp>-50 && $lasttemp<150)
+-		{
+-			if($temp>-2 && $temp<2)
+-			{
+-				if($lasttemp>7 || $lasttemp<-7)
+-				{
+-					#probably invalid
+-					$station="";
+-				}
+-			}
+-		}
+-	}
+-	else
+-	{
+-		$station="";
+-	}
++    open(GREP, "grep Temp $tmpfolder/${station} | ");
++    $templine=<GREP>;
++
++    $templine=~m/^Temp:(.*)$/;
++    {
++	    # $lattemp=$1;
++	    if($temp>-50 && $temp<150)
++	    {
++		    if($lasttemp>-50 && $lasttemp<150)
++		    {
++			    if($temp>-2 && $temp<2)
++			    {
++				    if($lasttemp>7 || $lasttemp<-7)
++				    {
++					    #probably invalid
++					    $station="";
++				    }
++			    }
++		    }
++	    }
++	    else
++	    {
++	    #invalid
++	    $station="";
++	    }
++    }
++    close GREP;
+ }
+-close GREP;
+ 
+ debug("Station: $station");
+ 
