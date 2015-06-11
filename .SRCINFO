@@ -1,6 +1,6 @@
 pkgbase = lampe
 	pkgdesc = Interactive bash-script to control your Philips Hue lights.
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/poinck/lampe
 	arch = any
@@ -8,7 +8,8 @@ pkgbase = lampe
 	depends = curl
 	depends = bc
 	depends = zenity
-	source = git+https://github.com/poinck/lampe#tag=1.0.3
+	depends = json-sh
+	source = git+https://github.com/poinck/lampe#tag=1.0.4
 	md5sums = SKIP
 
 pkgname = lampe

@@ -6,7 +6,7 @@ pkgdesc="Interactive bash-script to control your Philips Hue lights."
 arch=("any")
 url="https://github.com/poinck/lampe"
 license=('custom')
-depends=( 'curl' 'bc' 'zenity' )
+depends=( 'curl' 'bc' 'zenity' 'json-sh' )
 source=( "git+https://github.com/poinck/${pkgname}#tag=$pkgver"
 )
 md5sums=( SKIP )
