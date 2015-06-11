@@ -1,0 +1,17 @@
+pkgbase = octave-odepkg
+	pkgdesc = A package for solving ordinary differential equations and more.
+	pkgver = 0.8.5
+	pkgrel = 1
+	url = http://octave.sourceforge.net/odepkg/index.html
+	install = octave-odepkg.install
+	arch = i686
+	arch = x86_64
+	license = GPLv2+
+	makedepends = gcc-fortran
+	depends = octave>=3.2.0
+	noextract = odepkg-0.8.5.tar.gz
+	source = http://downloads.sourceforge.net/octave/odepkg-0.8.5.tar.gz
+	sha512sums = 9dde767687f817648d6a28155c4a2282317f49aa233635117d53eccdac0128f1d893194f48563f82ba354a639c623ed61b90aa4760009a14bc99fbe7f695853e
+
+pkgname = octave-odepkg
+

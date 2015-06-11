@@ -1,0 +1,14 @@
+pkg=odepkg
+
+post_install() {
+  echo "pkg prefix /usr/share/octave/packages /usr/lib   /octave/packages; pkg install -global /usr/share/octave/$pkg.tar.gz"   | octave --silent
+}
+
+post_upgrade() {
+  post_remove
+  post_install
+}
+
+post_remove() {
+  echo "pkg prefix /usr/share/octave/packages /usr   /lib/octave/packages; pkg uninstall $pkg" | octave --silent
+}
