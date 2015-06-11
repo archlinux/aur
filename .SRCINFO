@@ -1,0 +1,20 @@
+pkgbase = vivacious-folder-colors-addon
+	pkgdesc = Addon folder colors for the vivacious-colors icon theme.
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://www.ravefinity.com/p/vivacious-colors-gtk-icon-theme.html
+	install = update-icon-cache.install
+	arch = any
+	groups = x11
+	license = custom:cc-by-sa-3.0
+	license = GPL2
+	depends = vivacious-colors
+	options = !strip
+	options = !zipman
+	options = libtool
+	options = staticlibs
+	source = vivacious-folder-colors-addon-1.1.tar.gz::https://googledrive.com/host/0B7iDWdwgu9QAbXlKT2lRT3VBdzA
+	md5sums = 9628976cd469964b30b58830890c9dfc
+
+pkgname = vivacious-folder-colors-addon
+
