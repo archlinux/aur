@@ -1,0 +1,15 @@
+pkgbase = xde-styles
+	pkgdesc = Four consistent styles across light-weight WMs for XDE
+	pkgver = 1.1.79
+	pkgrel = 1
+	url = http://github.com/bbidulock/xde-styles
+	arch = any
+	groups = xde
+	license = CCPL:by-sa
+	makedepends = git
+	depends = m4
+	source = xde-styles::git://github.com/bbidulock/xde-styles.git
+	md5sums = SKIP
+
+pkgname = xde-styles
+
