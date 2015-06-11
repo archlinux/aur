@@ -1,0 +1,17 @@
+pkgbase = qmenu-git
+	pkgdesc = Tool for creating simple menus in linux environments.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/teopost/qmenu
+	arch = i686
+	arch = x86_64
+	license = PUBLIC
+	makedepends = git
+	depends = ncurses
+	provides = qmenu
+	conflicts = qmenu
+	source = git://github.com/teopost/qmenu.git
+	md5sums = SKIP
+
+pkgname = qmenu-git
+
