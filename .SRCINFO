@@ -1,0 +1,27 @@
+pkgbase = vertcoin-git
+	pkgdesc = Peer-to-peer network based digital currency (includes both the qtclient and the headless daemon)
+	pkgver = 0.9.0.1
+	pkgrel = 1
+	url = http://www.vertcoin.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = automoc4
+	makedepends = qrencode
+	makedepends = miniupnpc
+	makedepends = git
+	depends = qt4>=4.6
+	depends = boost-libs>=1.46
+	depends = miniupnpc>=1.6
+	depends = qrencode>=3.4.3
+	depends = secp256k1-git
+	provides = vertcoin
+	conflicts = vertcoin
+	source = vertcoin::git+https://github.com/vertcoin/vertcoin
+	source = vertcoin-git.desktop
+	md5sums = SKIP
+	md5sums = 6e3e6cd6803a6fde4fea761c71307b22
+
+pkgname = vertcoin-git
+

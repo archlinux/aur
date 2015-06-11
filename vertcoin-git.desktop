@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Vertcoin
+Comment=Vertcoin P2P Cryptocurrency
+Exec=/usr/bin/vertcoin-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/vertcoin128.png
+MimeType=x-scheme-handler/vertcoin;
+Categories=Office;
