@@ -1,0 +1,18 @@
+pkgbase = kubernetes
+	pkgdesc = Container Cluster Manager for Docker
+	pkgver = 0.18.2
+	pkgrel = 1
+	url = http://kubernetes.io/
+	install = kubernetes.install
+	arch = x86_64
+	arch = i686
+	license = APACHE
+	makedepends = go
+	depends = glibc
+	source = https://github.com/GoogleCloudPlatform/kubernetes/archive/v0.18.2.tar.gz
+	source = kubernetes.install
+	sha256sums = 3859334c1eb14b819523fd0fd2792ff0fe7392e4db4ff445d08beeed3754c425
+	sha256sums = f40b4b14a71f8138de69021e967d993e8b14db2cebe66eee20c7e66839ad1fde
+
+pkgname = kubernetes
+
