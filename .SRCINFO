@@ -1,0 +1,25 @@
+pkgbase = iceweasel-extension-archsearch
+	pkgdesc = Iceweasel Arch search engines (AUR, Pkgs, BBS, Wiki, etc.)
+	pkgver = 0.8.2
+	pkgrel = 6
+	url = http://archlinux.org/
+	arch = any
+	license = GPL
+	depends = iceweasel
+	source = arch-bugs-fs.xml
+	source = arch-bugs-t.xml
+	source = arch-forum-a.xml
+	source = arch-forum-c.xml
+	source = arch-pkgs.xml
+	source = arch-wiki.xml
+	source = aur.xml
+	md5sums = df18835df1ea78bc3fc0e05f934b1e46
+	md5sums = 0226a317c8bf23feaa80e21d1706f2d5
+	md5sums = 4eaa3d26ac41077ee25b66127ad9ef0a
+	md5sums = 2435c34ea6a012fe08a8d17a051e5f80
+	md5sums = 403c346ce089ec56c2db67f9f3d87514
+	md5sums = dbb93d1e793b92252b69f65110b33c42
+	md5sums = bd0896ec148707b6980d23adc6015448
+
+pkgname = iceweasel-extension-archsearch
+
