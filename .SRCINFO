@@ -1,0 +1,18 @@
+pkgbase = gog-stargunner
+	pkgdesc = This sci-fi scrolling shooter brings you some of the most intense action ever seen on the PC.
+	pkgver = 1.0.0.8
+	pkgrel = 1
+	url = http://www.gog.com/game/stargunner
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = custom
+	depends = libpng12
+	depends = unionfs-fuse
+	source = local://gog_stargunner_1.0.0.8.tar.gz
+	source = gog-stargunner
+	sha256sums = d04dd70b598fdd3b23e7d05fa1626feed08fd93d98511775dc33e2a537d69311
+	sha256sums = 692da4ad689edcad2f4e082ee40eb44cdbefb89adb1b61ea4e14f40c08910c4f
+
+pkgname = gog-stargunner
+

@@ -1,0 +1,12 @@
+#!/usr/bin/bash
+gogdir="/opt/gog/stargunner"
+homedir="$HOME/.gog/stargunner"
+mkdir -p "$homedir"/{game,config/data}
+
+if [[ ! -e "$homedir/config/dosbox_stargun.conf" ]]; then
+  cp "$gogdir/dosbox_stargun.conf" "$homedir/config/dosbox_stargun.conf"
+fi
+
+unionfs "$homedir/config=RW:$gogdir=RO" "$homedir/game"
+"$homedir"/game/start.sh
+fusermount -u "$homedir/game"
