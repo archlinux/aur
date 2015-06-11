@@ -1,0 +1,15 @@
+pkgbase = gkrellmpc
+	pkgdesc = A mpd control plugin for gkrellm2
+	pkgver = 0.1_beta9
+	pkgrel = 6
+	url = http://mpd.wikia.com/wiki/Client:GKrellMPC
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gkrellm
+	depends = curl
+	source = http://mina.naguib.ca/dist/gkrellmpc-0.1_beta9.tar.gz
+	md5sums = cb3ba81e7e9a73f0e84623d50df09340
+
+pkgname = gkrellmpc
+
