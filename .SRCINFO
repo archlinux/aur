@@ -1,0 +1,14 @@
+pkgbase = python2-pp
+	pkgdesc = Parallel and distributed programming for Python 2
+	pkgver = 1.6.4
+	pkgrel = 1
+	url = http://www.parallelpython.com
+	arch = i686
+	arch = x86_64
+	license = BSD-like license
+	depends = python2>=2.5
+	source = http://www.parallelpython.com/downloads/pp/pp-1.6.4.tar.gz
+	sha256sums = fa271f17641e069f19e25d352885e3a475797c657b30e433d8227c3d882163fa
+
+pkgname = python2-pp
+
