@@ -1,8 +1,9 @@
 pkgbase = ruby-mailcatcher
 	pkgdesc = Catches mail and serves it through a dream.
 	pkgver = 0.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://mailcatcher.me
+	install = ruby-mailcatcher.install
 	arch = any
 	license = MIT
 	makedepends = rubygems
@@ -17,8 +18,19 @@ pkgbase = ruby-mailcatcher
 	provides = mailcatcher
 	conflicts = mailcatcher
 	noextract = mailcatcher-0.6.1.gem
+	options = !emptydirs
 	source = http://gems.rubyforge.org/gems/mailcatcher-0.6.1.gem
+	source = mailcatcher.service
+	source = mailcatcher-http.socket
+	source = mailcatcher-http@.service
+	source = mailcatcher-smtp.socket
+	source = mailcatcher-smtp@.service
 	md5sums = bdeb5656e0931d1b211b52aa0f9e31f5
+	md5sums = 877e07e9d8a2ddea3dd1d27644e77565
+	md5sums = 26f37032d32b33b02388778d1d41601f
+	md5sums = 2b9e475d3ba8d144b5fbf6f32162e3ac
+	md5sums = 5d19076f812ba58be414955a7880d9d2
+	md5sums = 0f7f88dd6c36fa69ea6635f27aa7d29b
 
 pkgname = ruby-mailcatcher
 

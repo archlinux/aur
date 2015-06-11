@@ -1,0 +1,10 @@
+[Unit]
+Description=Mailcatcher Service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/mailcatcher --ip localhost --foreground --verbose
+KillSignal=SIGKILL
+
+[Install]
+WantedBy=multi-user.target

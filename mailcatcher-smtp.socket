@@ -1,0 +1,9 @@
+[Unit]
+Description=Mailcatcher SMTP Activation Socket
+
+[Socket]
+ListenStream=25
+Accept=true
+
+[Install]
+WantedBy=sockets.target

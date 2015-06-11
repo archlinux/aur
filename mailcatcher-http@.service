@@ -1,0 +1,9 @@
+[Unit]
+Description=Mailcatcher HTTP Mapping Service
+Wants=mailcatcher.service
+After=network.target mailcatcher.service
+
+[Service]
+ExecStart=/usr/bin/nc localhost 1080
+StandardInput=socket
+StandardOutput=socket
