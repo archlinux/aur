@@ -1,0 +1,36 @@
+#!/usr/bin/bash
+gogdir="/opt/gog/rise-of-the-triad-dark-war"
+homedir="$HOME/.gog/rise-of-the-triad-dark-war"
+mkdir -p "$homedir"/{game,config/data}
+
+if [[ ! -e "$homedir/config/dosboxRiseOTT.conf" ]]; then
+  cp "$gogdir/dosboxRiseOTT.conf" "$homedir/config/dosboxRiseOTT.conf"
+fi
+
+if [[ ! -e "$homedir/config/data/DARKWAR.WAD" ]]; then
+  cp "$gogdir/data/DARKWAR.WAD" "$homedir/config/data/DARKWAR.WAD"
+fi
+
+if [[ ! -e "$homedir/config/data/REMOTE1.RTS" ]]; then
+  cp "$gogdir/data/REMOTE1.RTS" "$homedir/config/data/REMOTE1.RTS"
+fi
+
+if [[ ! -e "$homedir/config/data/SOUND.ROT" ]]; then
+  cp "$gogdir/data/SOUND.ROT" "$homedir/config/data/SOUND.ROT"
+fi
+
+if [[ ! -e "$homedir/config/data/SCORES.ROT" ]]; then
+  cp "$gogdir/data/SCORES.ROT" "$homedir/config/data/SCORES.ROT"
+fi
+
+if [[ ! -e "$homedir/config/data/BATTLE.ROT" ]]; then
+  cp "$gogdir/data/BATTLE.ROT" "$homedir/config/data/BATTLE.ROT"
+fi
+
+if [[ ! -e "$homedir/config/data/CONFIG.ROT" ]]; then
+  cp "$gogdir/data/CONFIG.ROT" "$homedir/config/data/CONFIG.ROT"
+fi
+
+unionfs "$homedir/config=RW:$gogdir=RO" "$homedir/game"
+"$homedir"/game/start.sh
+fusermount -u "$homedir/game"
