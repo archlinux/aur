@@ -1,0 +1,180 @@
+--- wordplay-7.22.orig/wordplay.c
++++ wordplay-7.22/wordplay.c
+@@ -142,7 +142,7 @@
+ #define max(A, B) ((A) > (B) ? (A) : (B))
+ #define min(A, B) ((A) < (B) ? (A) : (B))
+
+-#define DEFAULT_WORD_FILE "words721.txt"
++#define DEFAULT_WORD_FILE "/usr/share/wordplay/words721.txt"
+ #define WORDBLOCKSIZE 4096
+ #define MAX_WORD_LENGTH 128
+ #define SAFETY_ZONE MAX_WORD_LENGTH + 1
+--- wordplay-7.22.orig/words721.txt
++++ wordplay-7.22/words721.txt
+@@ -7172,6 +7172,7 @@
+ DUCTILE
+ DUCTWORK
+ DUD
++DUDE
+ DUDLEY
+ DUE
+ DUEL
+--- wordplay-7.22.orig/wordplay.1
++++ wordplay-7.22/wordplay.1
+@@ -0,0 +1,156 @@
++.TH FOO 1 "DECEMBER 1996" "" "Commands"
++.SH NAME
++wordplay \- anagram finder
++.SH SYNOPSIS
++.B wordplay string [\-slxavnmd] [\-w word] [\-f wordfile]
++.SH DESCRIPTION
++.B wordplay
++is an anagram finder. What is an anagram?  Well, let's turn to
++Merriam-Webster's Collegiate Dictionary, Tenth Edition:
++.IP anagram:
++a word or phrase made by transposing the letters of another word or phrase.
++.PP
++Each letter in the anagram must appear with the same frequency as in the
++original string.
++.PP
++For example, the letters in the word "stop" can be rearranged to spell
++"tops" or "pots" or "sotp".  "sotp" is not a word and is not of interest
++when generating anagrams.  "stop" has four letters, so there are 24 ways
++to rearrange its letters.  However, very few of the rearrangements actually
++spell words.
++.PP
++Wordplay, by using a list of words, takes a specified string of letters and
++uses the list of words to find anagrams of the string.
++.PP
++By the way, "Wordplay" anagrams to "Rowdy Pal", and the program really can
++live up to that particular anagram.  I have been able to come up with
++anagrams of most of my coworkers' names that are humorous, descriptive,
++satirical, or, occasionally, quite vulgar.
++.SH OPTIONS
++.IP string
++String to be anagrammed.  This should be seen to the program \fBas a
++single argument\fP.  If you feel you must put spaces in the string, under
++UNIX, you will have to put backslashes in front of the spaces or just put
++the entire string in double quotes.  Just leave the spaces out because the
++program throws them out anyway.
++.IP -s
++Silent operation.  If this option is used, the header and line
++numbers are not printed.  This is useful if you want the output to
++contain only the anagrams.  Use this option with the l (and x) option
++to generate a wordlist which can be piped or redirected.
++This option does not suppress error messages that are printed to
++stderr.  Finding zero anagrams is not an error.
++.IP -l
++Print list of candidate words before anagramming.  This is the list of
++words that can be spelled with the letters from the specified string,
++with no letters being used more often that they appear in the input
++string.
++.IP -x
++Do not perform anagramming.  Use with l if you just want the
++candidate word list without anagrams.
++.IP -a
++Allow anagrams containing two or more occurrences of a word.
++.IP -v
++Consider strings with no vowels as candidate words and do not give
++up when there are no vowels remaining after extractions.
++.IP -m
++Limit candidate word length to a maximum number of letters.
++Follow by an integer.  m12 means limit words to 12 letters.
++m5 means limit them to 5 letters.
++.IP -n
++Limit candidate word length to a minimum number of letters.
++Follow by an integer.  n2 means limit words to 2 letters.
++n11 means limit them to 11 letters.
++.IP -d
++Limit number of words in anagrams to a maximum number.
++Follow by an integer.  d3 means no anagrams should contain more
++than 3 words.  d12 means limit anagrams to 12 words.  This is
++currently the option that I recommend to limit output, since
++an optimization has been added to speed execution in some cases
++when this option is used.
++.IP -w
++Specify a word which should appear in all anagrams.  This is useful
++if you already have a word in mind that you want in the anagrams.
++This option should be specified at the end of the command, followed
++by a space and the word to use.
++.IP -f
++Specify which word list to use.  See example!  This option should
++be specified at the end of the command, followed by a space and the
++alternate wordfile name.  This is useful if you have other word lists
++to try or if you are interested in making your own customized word
++list.
++New feature:  Use a hyphen as the filename if the wordlist should
++be read from stdin.
++.SH EXAMPLES
++.IP "wordplay persiangulf"
++Anagram the string "persiangulf" .
++.IP "wordplay anagramming -lx"
++Print the list of words from the wordlist that can be spelled by using
++the letters from the word "anagramming".  A letter may not be used more
++often than the number of times it occurs in the word "anagramming".
++No anagrams are generated.
++.IP "wordplay tomservocrow -n3m8"
++Anagram the string "tomservocrow" .  Do not use words shorter than
++3 letters or longer than 8 letters.
++.IP "wordplay persiangulf -ld3m10 -f /usr/share/dict/words"
++Print the candidate words for the string "persiangulf".
++Print anagrams containing up to 3 words, without considering any
++words longer than 10 characters.  Use the file "/usr/share/dict/words"
++rather than "words721.txt".
++.IP "wordplay soylentgreen -n3w stolen -f w2"
++Print anagrams of "soylentgreen" containing the word "stolen" and
++use the file "w2" as the wordlist file.  Discard candidate words
++shorter than 3 characters.
++.IP "wordplay university -slx"
++Print the candidate word list for the string "university".  The
++output will consist of just the words.  This output is more useful
++for redirecting to a file or for piping to another program.
++.IP "wordplay trymeout -s"
++Anagram the string "trymeout" and print the anagrams with no line
++numbers.  The header will not be printed.  This is useful for piping
++the output to another process (or saving it to a file to be used
++by another program) without having to parse the output to remove the
++numbers and header.
++.IP "wordplay trymeout -v"
++Anagram "trymeout" as usual, but in case vowel-free strings are in
++the wordlist, consider them as possible candidate words.
++.IP "cat wordlist1 wordlist2 wordlist3 | sort -u | wordplay trymeout -f -"
++Anagram "trymeout" and read the wordlist from stdin, so that, in
++this case, the three wordlists "wordlist1", "wordlist2",
++and "wordlist3" will be concatenated and piped into
++.B wordplay
++as the wordlist.  The "sort -u" is there to remove duplicate words
++from the combined wordlist.
++.SH NOTES
++If the option specifiers are combined, as in "an7m7d5f" or "d3n5f", the f
++should come last, followed by a space and the word list file.
++.PP
++The "w" option is used in the same manner.
++.PP
++Limit the number of words to consider, if desired, using the n and m
++options, or better yet, use the d option to limit depth, when anagramming
++certain time-consuming strings.  The program is currently optimized to speed
++execution in some cases when the d option is used.
++.PP
++It is highly recommended that the "words721.txt" file distributed with the program be
++used, since many nonsense two and three-letter combinations that are not
++words have been eliminated.  This makes the quality of the output slightly
++better and speeds execution of the program a slight bit.  Any word list may
++be used, as long as there is one word per line.  Feel free to create your
++own custom word list and use it instead.  The word list does not have to be
++sorted in any particular way.
++.SH FILES
++.I /usr/share/games/wordplay/words721.txt
++.RS
++Default word list file.
++.RE
++.SH DISTRIBUTION
++This program was written for fun and is free.  Distribute it as you please,
++but please distribute the entire package, with the original words721.txt and
++the readme file.  If you modify the code, please mention my name in it as
++the original author.  Please send me a copy of improvements you make, because I
++may include them in a future version.
++.SH AUTHOR
++Wordplay was written by Evans A Criswell <criswell@cs.uah.edu>
++.PP
++This man page was written by Joey Hess <joeyh@debian.org>
