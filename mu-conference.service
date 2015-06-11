@@ -1,0 +1,16 @@
+[Unit]
+Description=Multi-user conference component for jabber server
+After=network.target jabberd.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/mu-conference -c /etc/jabberd/muc.xml -s
+PIDFile=/run/mu-conference/mu-conference.pid
+ExecReload=/bin/kill -1 $MAINPID
+Restart=always
+User=jabber
+Group=jabber
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,13 @@
+post_install() {
+    echo "By default, mu-conference runs as the user 'jabberd.'"
+    echo
+    echo "Edit the file /etc/jabberd/muc.xml to your liking."
+    echo
+    echo "At the very least, you must make sure that your password"
+    echo "in muc.xml matches the one you've set in jabberd2's"
+    echo "router.xml file."
+    echo
+    echo "You need to also set the location of the PID file to"
+    echo "/run/mu-conference/mu-conference.pid"
+}
+

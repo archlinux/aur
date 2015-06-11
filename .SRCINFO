@@ -1,0 +1,20 @@
+pkgbase = mu-conference
+	pkgdesc = Multi-user conference component for a jabber server
+	pkgver = 0.8.81
+	pkgrel = 2
+	url = https://gna.org/projects/mu-conference/
+	install = mu-conference.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = jabberd2
+	backup = etc/jabberd/muc.xml
+	source = http://download.gna.org/mu-conference/mu-conference-0.8.81.tar.gz
+	source = mu-conference.service
+	source = mu-conference.tmpfiles
+	md5sums = 66f15f772dde0a8cfd94621ed795167c
+	md5sums = 8f926f09ad3d2f92ff1f5d422efc11c2
+	md5sums = a8e674defd2f161d15be5f139fb90b65
+
+pkgname = mu-conference
+
