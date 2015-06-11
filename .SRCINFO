@@ -1,0 +1,18 @@
+pkgbase = glippy
+	pkgdesc = not so simple clipboard manager for GNOME
+	pkgver = 0.6
+	pkgrel = 5
+	url = https://launchpad.net/glippy
+	install = glippy.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = automake
+	depends = mono
+	depends = gnome-sharp
+	options = !emptydirs
+	source = http://launchpad.net/glippy/1.0/0.6/+download/glippy-0.6.tar.gz
+	md5sums = 27338fe72e44e8563e912bc7d06478b0
+
+pkgname = glippy
+
