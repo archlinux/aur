@@ -1,0 +1,18 @@
+pkgbase = kodi-devel-pvr-demo
+	pkgdesc = Demo PVR addon for Kodi
+	pkgver = 20150306.b4b7de1
+	pkgrel = 1
+	url = https://github.com/kodi-pvr/pvr.demo
+	arch = i686
+	arch = x86_64
+	groups = kodi-devel
+	license = GPL
+	makedepends = cmake
+	makedepends = kodi-devel-platform
+	makedepends = kodi-devel-libplatform
+	depends = kodi-devel
+	source = https://github.com/kodi-pvr/pvr.demo/archive/b4b7de1d2013dd463b9320de28b4aa790e00a786.tar.gz
+	md5sums = SKIP
+
+pkgname = kodi-devel-pvr-demo
+
