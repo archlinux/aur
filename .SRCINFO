@@ -1,0 +1,21 @@
+pkgbase = gates-of-tartaros
+	pkgdesc = Extensible minimal replacement for agetty with SSH support
+	pkgver = 1428445207
+	pkgrel = 1
+	url = https://github.com/GNU-Pony/gates-of-tartaros
+	install = gates-of-tartaros.install
+	arch = any
+	license = GPL3
+	makedepends = make
+	makedepends = sed
+	makedepends = coreutils
+	makedepends = texinfo
+	depends = util-linux
+	depends = bash
+	depends = coreutils
+	optdepends = openssh
+	source = https://github.com/GNU-Pony/gates-of-tartaros/archive/1428445207.tar.gz
+	sha256sums = 5b49d6882e95691c71c87524e8d709249b0c53568d4ac5d335e62f494f1c43bc
+
+pkgname = gates-of-tartaros
+
