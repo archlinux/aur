@@ -1,0 +1,18 @@
+pkgbase = symfony2
+	pkgdesc = A web-application framework for PHP projects
+	pkgver = 2.7
+	pkgrel = 1
+	url = http://symfony.com
+	install = symfony2.install
+	arch = any
+	license = MIT
+	depends = php
+	options = !emptydirs
+	options = !strip
+	source = symfony2::http://symfony.com/installer
+	source = symfony2.bash::https://raw.github.com/wyrfel/Symfony-Bash-Completion-Script/master/etc/bash_completion.d/symfony
+	md5sums = 71d0692e69d5da7c4dd56bc89b088d52
+	md5sums = 2772cb1b65cc83a90e25122dbc526078
+
+pkgname = symfony2
+

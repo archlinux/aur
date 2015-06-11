@@ -1,0 +1,10 @@
+#/usr/bin/php -d extension=phar.so -d extension=openssl.so "$pkgdir"/usr/share/webapps/symfony
+post_install() {
+echo
+echo "Warning: phar.so and openssl.so must be enabled and date.timezone set in your php.ini"
+echo "also update your $PATH to include /usr/share/webapps/
+echo "Note: $ sed -i.bak -e 's/;extension=phar.so/extension=phar.so/g' -e 's/;extension=openssl.so/extension=openssl.so/g' /etc/php/php.ini
+}
+post_upgrade() {
+post_install
+}
