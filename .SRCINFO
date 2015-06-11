@@ -1,0 +1,16 @@
+pkgbase = howm
+	pkgdesc = Hitori Otegaru Wiki Modoki: A note-taking tool on Emacs.
+	pkgver = 1.4.2
+	pkgrel = 2
+	url = http://howm.sourceforge.jp/index.html
+	install = howm.install
+	arch = any
+	groups = editors
+	license = GPL2
+	depends = emacs
+	optdepends = ruby: HTML conversion and calendar support
+	source = http://howm.sourceforge.jp/a/howm-1.4.2.tar.gz
+	md5sums = 704001b8e4031e3293fc3eb1cb08befa
+
+pkgname = howm
+
