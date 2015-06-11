@@ -1,0 +1,673 @@
+From 011a2710a69cd345a8ee3a6b2f15407b4c3b355a Mon Sep 17 00:00:00 2001
+From: Jeremy Huddleston <jeremyhu@apple.com>
+Date: Sun, 25 Sep 2011 07:56:15 +0000
+Subject: Require xt >= 1.0 for appdefaultdir
+
+https://bugs.freedesktop.org/show_bug.cgi?id=7237
+
+Signed-off-by: Jeremy Huddleston <jeremyhu@apple.com>
+---
+diff --git a/configure.ac b/configure.ac
+index b488f0c..a4222f1 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -383,7 +383,7 @@ PKG_CHECK_MODULES(AUTH, xau)
+ # Greeter
+ #
+ 
+-PKG_CHECK_MODULES(XDMGREET, xt x11 xext)
++PKG_CHECK_MODULES(XDMGREET, xt >= 1.0 x11 xext)
+ 
+ GREETERLIB="${XDMLIBDIR}/libXdmGreet.so"
+ AX_DEFINE_DIR(DEF_GREETER_LIB, GREETERLIB, [Location of Xdm Greeter library])
+--
+cgit v0.9.0.2-2-gbebe
+From 618039261b0c7f14eb3b32c8f636464369724407 Mon Sep 17 00:00:00 2001
+From: Alan Coopersmith <alan.coopersmith@oracle.com>
+Date: Wed, 21 Sep 2011 02:11:20 +0000
+Subject: Mark some chars as const to fix gcc -Wwrite-strings warnings
+
+Can't fix all the warnings, due to the Xt API, but can fix a bunch.
+
+Signed-off-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+---
+diff --git a/greeter/greet.c b/greeter/greet.c
+index 539ce17..82e2c21 100644
+--- a/greeter/greet.c
++++ b/greeter/greet.c
+@@ -110,9 +110,9 @@ void    (*__xdm_SessionExit)(struct display *d, int status, int removeAuth) = NU
+ void    (*__xdm_DeleteXloginResources)(struct display *d, Display *dpy) = NULL;
+ int     (*__xdm_source)(char **environ, char *file) = NULL;
+ char    **(*__xdm_defaultEnv)(void) = NULL;
+-char    **(*__xdm_setEnv)(char **e, char *name, char *value) = NULL;
++char    **(*__xdm_setEnv)(char **e, const char *name, const char *value) = NULL;
+ char    **(*__xdm_putEnv)(const char *string, char **env) = NULL;
+-char    **(*__xdm_parseArgs)(char **argv, char *string) = NULL;
++char    **(*__xdm_parseArgs)(char **argv, const char *string) = NULL;
+ void    (*__xdm_printEnv)(char **e) = NULL;
+ char    **(*__xdm_systemEnv)(struct display *d, char *user, char *home) = NULL;
+ void    (*__xdm_LogOutOfMem)(const char * fmt, ...) = NULL;
+diff --git a/greeter/verify.c b/greeter/verify.c
+index ea62cd2..5d2ad17 100644
+--- a/greeter/verify.c
++++ b/greeter/verify.c
+@@ -61,7 +61,7 @@ from The Open Group.
+ extern char *crypt(const char *, const char *);
+ #endif
+ 
+-static char *envvars[] = {
++static const char *envvars[] = {
+     "TZ",			/* SYSV and SVR4, but never hurts */
+ #if defined(sony) && !defined(SYSTYPE_SYSV) && !defined(_SYSTYPE_SYSV)
+     "bootdev",
+@@ -94,8 +94,8 @@ static char **
+ userEnv (struct display *d, int useSystemPath, char *user, char *home, char *shell)
+ {
+     char	**env;
+-    char	**envvar;
+-    char	*str;
++    const char	**envvar;
++    const char	*str;
+ 
+     env = defaultEnv ();
+     env = setEnv (env, "DISPLAY", d->name);
+diff --git a/include/dm.h b/include/dm.h
+index 316dd46..4085cae 100644
+--- a/include/dm.h
++++ b/include/dm.h
+@@ -443,7 +443,7 @@ extern void UnsecureDisplay (struct display *d, Display *dpy);
+ extern void execute(char **argv, char **environ);
+ 
+ /* server.c */
+-extern char *_SysErrorMsg (int n);
++extern const char *_SysErrorMsg (int n);
+ extern int StartServer (struct display *d);
+ extern int WaitForServer (struct display *d);
+ extern void ResetServer (struct display *d);
+@@ -462,10 +462,10 @@ extern int Asprintf(char ** ret, const char *restrict format, ...)
+     _X_ATTRIBUTE_PRINTF(2,3);
+ # endif
+ extern char *localHostname (void);
+-extern char **parseArgs (char **argv, char *string);
+-extern char **setEnv (char **e, char *name, char *value);
++extern char **parseArgs (char **argv, const char *string);
++extern char **setEnv (char **e, const char *name, const char *value);
+ extern char **putEnv(const char *string, char **env);
+-extern char *getEnv (char **e, char *name);
++extern char *getEnv (char **e, const char *name);
+ extern void CleanUpChild (void);
+ extern void freeArgs (char **argv);
+ extern void freeEnv (char **env);
+@@ -478,7 +478,7 @@ extern int Verify (struct display *d, struct greet_info *greet, struct verify_in
+ extern char *NetworkAddressToHostname (CARD16 connectionType, ARRAY8Ptr connectionAddress);
+ extern int AnyWellKnownSockets (void);
+ extern void DestroyWellKnownSockets (void);
+-extern void SendFailed (struct display *d, char *reason);
++extern void SendFailed (struct display *d, const char *reason);
+ extern void StopDisplay (struct display *d);
+ extern void WaitForChild (void);
+ extern void WaitForSomething (void);
+diff --git a/include/greet.h b/include/greet.h
+index 6b6689e..0d607ba 100644
+--- a/include/greet.h
++++ b/include/greet.h
+@@ -65,9 +65,9 @@ struct dlfuncs {
+     void (*_DeleteXloginResources)(struct display *d, Display *dpy);
+     int (*_source)(char **environ, char *file);
+     char **(*_defaultEnv)(void);
+-    char **(*_setEnv)(char **e, char *name, char *value);
++    char **(*_setEnv)(char **e, const char *name, const char *value);
+     char **(*_putEnv)(const char *string, char **env);
+-    char **(*_parseArgs)(char **argv, char *string);
++    char **(*_parseArgs)(char **argv, const char *string);
+     void (*_printEnv)(char **e);
+     char **(*_systemEnv)(struct display *d, char *user, char *home);
+     void (*_LogOutOfMem)(const char * fmt, ...);
+@@ -149,9 +149,9 @@ extern	void    (*__xdm_SessionExit)(struct display *d, int status, int removeAut
+ extern	void    (*__xdm_DeleteXloginResources)(struct display *d, Display *dpy);
+ extern	int     (*__xdm_source)(char **environ, char *file);
+ extern	char    **(*__xdm_defaultEnv)(void);
+-extern	char    **(*__xdm_setEnv)(char **e, char *name, char *value);
++extern	char    **(*__xdm_setEnv)(char **e, const char *name, const char *value);
+ extern	char    **(*__xdm_putEnv)(const char *string, char **env);
+-extern	char    **(*__xdm_parseArgs)(char **argv, char *string);
++extern	char    **(*__xdm_parseArgs)(char **argv, const char *string);
+ extern	void    (*__xdm_printEnv)(char **e);
+ extern	char    **(*__xdm_systemEnv)(struct display *d, char *user, char *home);
+ extern	void    (*__xdm_LogOutOfMem)(const char * fmt, ...);
+diff --git a/xdm/access.c b/xdm/access.c
+index d0850ad..7035375 100644
+--- a/xdm/access.c
++++ b/xdm/access.c
+@@ -667,7 +667,7 @@ scanHostlist (
+ /* Returns non-0 iff string is matched by pattern.  Does case folding.
+  */
+ static int
+-patternMatch (char *string, char *pattern)
++patternMatch (const char *string, char *pattern)
+ {
+     int	    p, s;
+ 
+diff --git a/xdm/auth.c b/xdm/auth.c
+index bbca167..9e5cba2 100644
+--- a/xdm/auth.c
++++ b/xdm/auth.c
+@@ -116,7 +116,7 @@ int chown(int a,int b,int c) {}
+ 
+ struct AuthProtocol {
+     unsigned short  name_length;
+-    char	    *name;
++    const char	    *name;
+     void	    (*InitAuth)(unsigned short len, char *name);
+     Xauth	    *(*GetAuth)(unsigned short len, char *name);
+     void	    (*GetXdmcpAuth)(
+diff --git a/xdm/file.c b/xdm/file.c
+index 6e929b8..7b7f3d3 100644
+--- a/xdm/file.c
++++ b/xdm/file.c
+@@ -225,7 +225,7 @@ ParseDisplay (char *source, DisplayType *acceptableTypes, int numAcceptable)
+ }
+ 
+ static struct displayMatch {
+-	char		*name;
++	const char	*name;
+ 	DisplayType	type;
+ } displayTypes[] = {
+ 	{ "local",		{ Local, Permanent, FromFile } },
+diff --git a/xdm/resource.c b/xdm/resource.c
+index ece4de3..83901a2 100644
+--- a/xdm/resource.c
++++ b/xdm/resource.c
+@@ -145,10 +145,10 @@ int	choiceTimeout;	/* chooser choice timeout */
+ #define DEF_UDP_PORT	"177"	    /* registered XDMCP port, dont change */
+ 
+ struct dmResources {
+-	char	*name, *class;
+-	int	type;
+-	char	**dm_value;
+-	char	*default_value;
++	const char	*name, *class;
++	int		type;
++	char		**dm_value;
++	const char	*default_value;
+ } DmResources[] = {
+ { "servers",	"Servers", 	DM_STRING,	&servers,
+ 				DEF_SERVER_LINE} ,
+@@ -203,10 +203,10 @@ struct dmResources {
+ #define boffset(f)	XtOffsetOf(struct display, f)
+ 
+ struct displayResource {
+-	char	*name, *class;
+-	int	type;
+-	int	offset;
+-	char	*default_value;
++	const char	*name, *class;
++	int		type;
++	int		offset;
++	const char	*default_value;
+ };
+ 
+ /* resources for managing the server */
+@@ -289,15 +289,16 @@ XrmDatabase	DmResourceDB;
+ 
+ static void
+ GetResource (
+-    char    *name,
+-    char    *class,
+-    int	    valueType,
+-    char    **valuep,
+-    char    *default_value)
++    const char    *name,
++    const char    *class,
++    int            valueType,
++    char         **valuep,
++    const char    *default_value)
+ {
+     char	*type;
+     XrmValue	value;
+-    char	*string, *new_string;
++    const char	*string;
++    char	*new_string;
+     char	str_buf[50];
+     int	len;
+ 
+diff --git a/xdm/server.c b/xdm/server.c
+index 7fe55e6..1bb8873 100644
+--- a/xdm/server.c
++++ b/xdm/server.c
+@@ -62,9 +62,9 @@ CatchUsr1 (int n)
+     errno = olderrno;
+ }
+ 
+-char *_SysErrorMsg (int n)
++const char *_SysErrorMsg (int n)
+ {
+-    char *s = strerror(n);
++    const char *s = strerror(n);
+     return (s ? s : "unknown error");
+ }
+ 
+diff --git a/xdm/util.c b/xdm/util.c
+index 033633a..60aab21 100644
+--- a/xdm/util.c
++++ b/xdm/util.c
+@@ -97,7 +97,7 @@ printEnv (char **e)
+ }
+ 
+ static char *
+-makeEnv (char *name, char *value)
++makeEnv (const char *name, const char *value)
+ {
+ 	char	*result;
+ 
+@@ -111,7 +111,7 @@ makeEnv (char *name, char *value)
+ }
+ 
+ char *
+-getEnv (char **e, char *name)
++getEnv (char **e, const char *name)
+ {
+ 	int	l = strlen (name);
+ 
+@@ -127,7 +127,7 @@ getEnv (char **e, char *name)
+ }
+ 
+ char **
+-setEnv (char **e, char *name, char *value)
++setEnv (char **e, const char *name, const char *value)
+ {
+ 	char	**new, **old;
+ 	char	*newe;
+@@ -207,9 +207,9 @@ freeEnv (char **env)
+ #define isblank(c)	((c) == ' ' || c == '\t')
+ 
+ char **
+-parseArgs (char **argv, char *string)
++parseArgs (char **argv, const char *string)
+ {
+-	char	*word;
++	const char *word;
+ 	char	*save;
+ 	char    **newargv;
+ 	int	i;
+diff --git a/xdm/xdmauth.c b/xdm/xdmauth.c
+index 4b945cf..66804a4 100644
+--- a/xdm/xdmauth.c
++++ b/xdm/xdmauth.c
+@@ -44,7 +44,7 @@ static char	auth_name[256];
+ static int	auth_name_len;
+ 
+ static void
+-XdmPrintDataHex (char *s, char *a, int l)
++XdmPrintDataHex (const char *s, const char *a, int l)
+ {
+     int	i;
+ 
+@@ -56,7 +56,7 @@ XdmPrintDataHex (char *s, char *a, int l)
+ 
+ # ifdef XDMCP
+ static void
+-XdmPrintArray8Hex (char *s, ARRAY8Ptr a)
++XdmPrintArray8Hex (const char *s, ARRAY8Ptr a)
+ {
+     XdmPrintDataHex (s, (char *) a->data, a->length);
+ }
+diff --git a/xdm/xdmcp.c b/xdm/xdmcp.c
+index 5bc4716..1c34e7c 100644
+--- a/xdm/xdmcp.c
++++ b/xdm/xdmcp.c
+@@ -74,7 +74,7 @@ static void request_respond (struct sockaddr *from, int fromlen, int length, int
+ static void send_accept (struct sockaddr *to, int tolen, CARD32 sessionID, ARRAY8Ptr authenticationName, ARRAY8Ptr authenticationData, ARRAY8Ptr authorizationName, ARRAY8Ptr authorizationData, int fd);
+ static void send_alive (struct sockaddr *from, int fromlen, int length, int fd);
+ static void send_decline (struct sockaddr *to, int tolen, ARRAY8Ptr authenticationName, ARRAY8Ptr authenticationData, ARRAY8Ptr status, int fd);
+-static void send_failed (struct sockaddr *from, int fromlen, char *name, CARD32 sessionID, char *reason, int fd);
++static void send_failed (struct sockaddr *from, int fromlen, const char *name, CARD32 sessionID, const char *reason, int fd);
+ static void send_refuse (struct sockaddr *from, int fromlen, CARD32 sessionID, int fd);
+ static void send_unwilling (struct sockaddr *from, int fromlen, ARRAY8Ptr authenticationName, ARRAY8Ptr status, int fd);
+ static void send_willing (struct sockaddr *from, int fromlen, ARRAY8Ptr authenticationName, ARRAY8Ptr status, int fd);
+@@ -1300,7 +1300,7 @@ abort:
+ void
+ SendFailed (
+     struct display  *d,
+-    char	    *reason)
++    const char	    *reason)
+ {
+     Debug ("Display start failed, sending Failed\n");
+     send_failed ((struct sockaddr *)(d->from), d->fromlen, d->name,
+@@ -1311,9 +1311,9 @@ static void
+ send_failed (
+     struct sockaddr *from,
+     int		    fromlen,
+-    char	    *name,
++    const char	    *name,
+     CARD32	    sessionID,
+-    char	    *reason,
++    const char	    *reason,
+     int		    fd)
+ {
+     static char	buf[256];
+@@ -1416,7 +1416,7 @@ NetworkAddressToHostname (
+ # else
+ 	    char dotted[20];
+ # endif
+-	    char *local_name = "";
++	    const char *local_name = "";
+ 	    int af_type;
+ 
+ # if defined(IPv6) && defined(AF_INET6)
+--
+cgit v0.9.0.2-2-gbebe
+From c43eb799774743bc50233eff6643c51a5fbe6899 Mon Sep 17 00:00:00 2001
+From: Alan Coopersmith <alan.coopersmith@oracle.com>
+Date: Wed, 21 Sep 2011 02:22:48 +0000
+Subject: Fix warnings about printing longs with int type format strings
+
+Signed-off-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+---
+diff --git a/xdm/dm.c b/xdm/dm.c
+index cd0ee25..7bc2605 100644
+--- a/xdm/dm.c
++++ b/xdm/dm.c
+@@ -536,7 +536,7 @@ WaitForChild (void)
+ 		  time(&now);
+ 		  crash = d->lastReserv &&
+ 		    ((now - d->lastReserv) < XDM_BROKEN_INTERVAL);
+-		  Debug("time %i %i try %i of %i%s\n", now, d->lastReserv,
++		  Debug("time %li %li try %i of %i%s\n", now, d->lastReserv,
+ 			d->reservTries, d->reservAttempts,
+ 			crash ? " crash" : "");
+ 
+diff --git a/xdm/xdmauth.c b/xdm/xdmauth.c
+index 66804a4..b3c1c16 100644
+--- a/xdm/xdmauth.c
++++ b/xdm/xdmauth.c
+@@ -234,7 +234,7 @@ XdmGetKey(struct protoDisplay *pdpy, ARRAY8Ptr displayID)
+ 	if (line[0] == '#' || sscanf (line, "%s %s", id, key) != 2)
+ 	    continue;
+ 	bzero(line, sizeof(line));
+-	Debug ("Key entry for \"%s\" %d bytes\n", id, strlen(key));
++	Debug ("Key entry for \"%s\" %ld bytes\n", id, strlen(key));
+ 	if (strlen (id) == displayID->length &&
+ 	    !strncmp (id, (char *)displayID->data, displayID->length))
+ 	{
+--
+cgit v0.9.0.2-2-gbebe
+From 8eee942be0db913511b4c53f94829e1201dfdf00 Mon Sep 17 00:00:00 2001
+From: Michał Górny <mgorny@gentoo.org>
+Date: Wed, 28 Sep 2011 19:25:17 +0000
+Subject: Support systemd startup notification.
+
+If libsystemd-daemon support is enabled, xdm uses it to announce its
+startup as soon as the session is established. This gives the user
+opportunity to delay I/O-intensive operations until the X server is
+started so that they would not interfere with its loading while keeping
+the machine busy when user types in his/her login.
+
+Reviewed-by: Jamey Sharp <jamey@minilop.net>
+Reviewed-by: Gaetan Nadon <memsize@videotron.ca>
+Signed-off-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+---
+diff --git a/Makefile.am b/Makefile.am
+index e5f9f5c..bb6b51c 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -43,8 +43,13 @@ endif LINT
+ if HAVE_SYSTEMD
+ systemdsystemunit_DATA = xdm.service
+ 
+-xdm.service: xdm.service.in
+-	$(AM_V_GEN)$(SED) -e 's|BINDIR|$(bindir)|g' < $< > $@
++xdm.service: xdm.service.in Makefile
++if USE_SYSTEMD_DAEMON
++	$(AM_V_GEN)$(SED) -e 's|BINDIR|$(bindir)|g' < xdm.service.in > $@
++else !USE_SYSTEMD_DAEMON
++	$(AM_V_GEN)$(SED) -e 's|BINDIR|$(bindir)|g' -e '/[Nn]otify/d' < xdm.service.in > $@
++endif !USE_SYSTEMD_DAEMON
++
+ endif HAVE_SYSTEMD
+ CLEANFILES = xdm.service
+ EXTRA_DIST = xdm.service.in
+diff --git a/configure.ac b/configure.ac
+index a4222f1..fcb37f8 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -146,6 +146,7 @@ if test "x$USE_SELINUX" != "xno" ; then
+ fi
+ 
+ # Check whether to install systemd unit files, as suggested in daemon(7).
++# When a full path is specified, this does not require systemd installed.
+ AC_ARG_WITH([systemdsystemunitdir], AS_HELP_STRING([--with-systemdsystemunitdir=DIR],
+ 	[Directory for systemd service files (default from the System and Service Manager)]),,
+ 	[with_systemdsystemunitdir=auto])
+@@ -166,6 +167,21 @@ AS_IF([test "x$with_systemdsystemunitdir" != "xno"], [
+ ])
+ AM_CONDITIONAL(HAVE_SYSTEMD, [test "x$with_systemdsystemunitdir" != "xno"])
+ 
++# Check whether to enable systemd startup notification.
++# This requires libsystemd-daemon.
++AC_ARG_WITH([systemd-daemon], AS_HELP_STRING([--with-systemd-daemon],
++	[Add support for systemd startup notification (default is autodetected)]),
++	[USE_SYSTEMD_DAEMON=$withval], [USE_SYSTEMD_DAEMON=auto])
++AS_IF([test "x$USE_SYSTEMD_DAEMON" != "xno"], [
++    PKG_CHECK_MODULES([SYSTEMD_DAEMON], [libsystemd-daemon],
++	[AC_DEFINE(USE_SYSTEMD_DAEMON,1,[Use systemd startup notification])],
++	[AS_IF([test "x$USE_SYSTEMD_DAEMON" = "xyes"],
++	    [AC_MSG_ERROR([systemd startup notification support requested, but libsystemd-daemon not found.])]
++	)]
++    )
++])
++AM_CONDITIONAL(USE_SYSTEMD_DAEMON, [test "x$USE_SYSTEMD_DAEMON" != "xno"])
++
+ # FIXME: Find better test for which OS'es use su -m  - for now, just try to
+ # mirror the Imakefile setting of:
+ # if  defined(OpenBSDArchitecture) || defined(NetBSDArchitecture) || defined(FreeBSDArchitecture) || defined(DarwinArchitecture)
+diff --git a/xdm.service.in b/xdm.service.in
+index d15e072..e782dd9 100644
+--- a/xdm.service.in
++++ b/xdm.service.in
+@@ -4,6 +4,8 @@ After=systemd-user-sessions.service
+ 
+ [Service]
+ ExecStart=BINDIR/xdm -nodaemon
++Type=notify
++NotifyAccess=all
+ 
+ [Install]
+ Alias=graphical.target.wants/xdm.service
+diff --git a/xdm/Makefile.am b/xdm/Makefile.am
+index aa9765c..797b5c5 100644
+--- a/xdm/Makefile.am
++++ b/xdm/Makefile.am
+@@ -22,11 +22,11 @@
+ bin_PROGRAMS = xdm
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/include
+-AM_CFLAGS = $(CWARNFLAGS) $(XDM_CFLAGS)
++AM_CFLAGS = $(CWARNFLAGS) $(XDM_CFLAGS) $(SYSTEMD_DAEMON_CFLAGS)
+ 
+ # The xdm binary needs to export symbols so that they can be used from
+ # libXdmGreet.so loaded through a dlopen call from session.c
+-AM_LDFLAGS = $(XDM_LIBS) -export-dynamic
++AM_LDFLAGS = $(XDM_LIBS) $(SYSTEMD_DAEMON_LIBS) -export-dynamic
+ 
+ xdm_SOURCES =		\
+         access.c	\
+diff --git a/xdm/session.c b/xdm/session.c
+index 5fd47f0..573747d 100644
+--- a/xdm/session.c
++++ b/xdm/session.c
+@@ -81,6 +81,10 @@ extern int key_setnet(struct key_netstarg *arg);
+ #  define RTLD_NOW 1
+ # endif
+ 
++#ifdef USE_SYSTEMD_DAEMON
++#include <systemd/sd-daemon.h>
++#endif
++
+ #ifdef USE_SELINUX
+ /* This should be run just before we exec the user session. */
+ static int
+@@ -349,6 +353,12 @@ ManageSession (struct display *d)
+ 	exit(UNMANAGE_DISPLAY);
+ 	}
+ 
++#ifdef USE_SYSTEMD_DAEMON
++	/* Subsequent notifications will be ignored by systemd
++	 * and calling this function will clean up the env */
++	sd_notify(1, "READY=1");
++#endif
++
+     /* tell the possibly dynamically loaded greeter function
+      * what data structure formats to expect.
+      * These version numbers are registered with The Open Group. */
+--
+cgit v0.9.0.2-2-gbebe
+From 284532c0884893728b75ca37f5d2a9a33f7bc8db Mon Sep 17 00:00:00 2001
+From: Julien Cristau <jcristau@debian.org>
+Date: Sat, 22 Oct 2011 15:14:46 +0000
+Subject: greeter: link against -lXrender if xft is enabled
+
+XmuCvtStringToXftColor uses XRenderParseColor, so require xrender for
+the xft option, and link against it.
+
+Signed-off-by: Julien Cristau <jcristau@debian.org>
+Reviewed-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+---
+diff --git a/configure.ac b/configure.ac
+index fcb37f8..d20ae28 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -345,10 +345,10 @@ AC_ARG_WITH(xft,
+ 	AS_HELP_STRING([--with-xft],
+ 			[Use Xft to draw text (default is YES if installed)]),
+ 	[USE_XFT="$withval"],
+-	PKG_CHECK_EXISTS(xft, [USE_XFT="yes"], [USE_XFT="no"]))
++	PKG_CHECK_EXISTS(xft xrender, [USE_XFT="yes"], [USE_XFT="no"]))
+ 
+ if test "x$USE_XFT" = "xyes" ; then
+-	PKG_CHECK_MODULES(XFT, xft)
++	PKG_CHECK_MODULES(XFT, xft xrender)
+ 	GREETER_CFLAGS="$GREETER_CFLAGS $XFT_CFLAGS"
+ 	GREETER_LIBS="$GREETER_LIBS $XFT_LIBS"
+ 	AC_DEFINE([USE_XFT], 1,
+diff --git a/greeter/Login.c b/greeter/Login.c
+index 99a3932..d899376 100644
+--- a/greeter/Login.c
++++ b/greeter/Login.c
+@@ -86,6 +86,10 @@ from The Open Group.
+ # include <X11/extensions/Xinerama.h>
+ #endif
+ 
++#ifdef USE_XFT
++# include <X11/extensions/Xrender.h>
++#endif
++
+ #ifndef DEBUG
+ # define XDM_ASSERT(a)	/* do nothing */
+ #else
+--
+cgit v0.9.0.2-2-gbebe
+From a02edebf21aae37f8564d7b9fad01d5d2942ad8d Mon Sep 17 00:00:00 2001
+From: Matthieu Herrb <matthieu.herrb@laas.fr>
+Date: Mon, 07 Nov 2011 16:01:44 +0000
+Subject: Fix build outside of source dir. Fixes distcheck too.
+
+Signed-off-by: Matthieu Herrb <matthieu.herrb@laas.fr>
+Reviewed-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+---
+diff --git a/Makefile.am b/Makefile.am
+index bb6b51c..e9da40f 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -45,9 +45,9 @@ systemdsystemunit_DATA = xdm.service
+ 
+ xdm.service: xdm.service.in Makefile
+ if USE_SYSTEMD_DAEMON
+-	$(AM_V_GEN)$(SED) -e 's|BINDIR|$(bindir)|g' < xdm.service.in > $@
++	$(AM_V_GEN)$(SED) -e 's|BINDIR|$(bindir)|g' < ${srcdir}/xdm.service.in > $@
+ else !USE_SYSTEMD_DAEMON
+-	$(AM_V_GEN)$(SED) -e 's|BINDIR|$(bindir)|g' -e '/[Nn]otify/d' < xdm.service.in > $@
++	$(AM_V_GEN)$(SED) -e 's|BINDIR|$(bindir)|g' -e '/[Nn]otify/d' < ${srcdir}/xdm.service.in > $@
+ endif !USE_SYSTEMD_DAEMON
+ 
+ endif HAVE_SYSTEMD
+--
+cgit v0.9.0.2-2-gbebe
+From ad7a54288f62c0266540279dac775ebee68f092e Mon Sep 17 00:00:00 2001
+From: Matthieu Herrb <matthieu.herrb@laas.fr>
+Date: Thu, 15 Dec 2011 21:14:23 +0000
+Subject: replace <varargs.h> by <stdarg.h>. Spotted my Marco Peereboom with clang.
+
+Reviewed-by: Mark Kettenis <kettenis@openbsd.org>
+Signed-off-by: Matthieu Herrb <matthieu.herrb@laas.fr>
+---
+diff --git a/greeter/verify.c b/greeter/verify.c
+index 5d2ad17..1221874 100644
+--- a/greeter/verify.c
++++ b/greeter/verify.c
+@@ -48,7 +48,7 @@ from The Open Group.
+ # include	<errno.h>
+ #elif defined(USE_BSDAUTH)
+ # include	<login_cap.h>
+-# include	<varargs.h>
++# include	<stdarg.h>
+ # include	<bsd_auth.h>
+ #elif defined(USESECUREWARE)
+ # include       <sys/types.h>
+--
+cgit v0.9.0.2-2-gbebe
+From 78403f6a7420798bf24798811c8c6b936c9ccb34 Mon Sep 17 00:00:00 2001
+From: Alan Coopersmith <alan.coopersmith@oracle.com>
+Date: Sat, 07 Jan 2012 03:34:30 +0000
+Subject: Add some missing malloc failure checks
+
+Flagged by Solaris Studio 12.3 code analyzer
+
+Signed-off-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+---
+diff --git a/xdm/access.c b/xdm/access.c
+index 7035375..b16a066 100644
+--- a/xdm/access.c
++++ b/xdm/access.c
+@@ -304,6 +304,11 @@ tryagain:
+     if (!hostOrAlias)
+ 	return NULL;
+     h = malloc (sizeof (DisplayEntry));
++    if (!h)
++    {
++	LogOutOfMem ("ReadHostEntry: DisplayEntry\n");
++	return NULL;
++    }
+     h->hopCount = 1;
+     if (*hostOrAlias == ALIAS_CHARACTER)
+     {
+@@ -423,6 +428,11 @@ tryagain:
+     if (!displayOrAlias)
+ 	return NULL;
+     d = malloc (sizeof (DisplayEntry));
++    if (!d)
++    {
++	LogOutOfMem ("ReadDisplayEntry: DisplayEntry\n");
++	return NULL;
++    }
+     d->notAllowed = 0;
+     d->notBroadcast = 0;
+     d->chooser = 0;
+diff --git a/xdm/choose.c b/xdm/choose.c
+index 6f077eb..e5e003d 100644
+--- a/xdm/choose.c
++++ b/xdm/choose.c
+@@ -128,6 +128,11 @@ RememberIndirectClient (
+ 	    connectionType == i->connectionType)
+ 	    return 1;
+     i = malloc (sizeof (IndirectUsersRec));
++    if (!i)
++    {
++	LogOutOfMem ("RememberIndirectClient\n");
++	return 0;
++    }
+     if (!XdmcpCopyARRAY8 (clientAddress, &i->client))
+     {
+ 	free (i);
+--
+cgit v0.9.0.2-2-gbebe

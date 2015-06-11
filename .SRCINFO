@@ -1,0 +1,46 @@
+pkgbase = xorg-xdm-xlogin
+	pkgdesc = X Display Manager
+	pkgver = 1.1.11
+	pkgrel = 6
+	url = http://xorg.freedesktop.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = pkgconfig
+	makedepends = xorg-util-macros
+	makedepends = xtrans
+	depends = pam
+	depends = libxaw
+	depends = libxinerama
+	depends = xorg-xrdb
+	depends = xorg-sessreg
+	depends = libxft
+	depends = systemd
+	provides = xorg-xdm=1.1.11
+	conflicts = xorg-xdm
+	replaces = xorg-xdm
+	options = !libtool
+	backup = etc/X11/xdm/Xaccess
+	backup = etc/X11/xdm/Xresources
+	backup = etc/X11/xdm/Xservers
+	backup = etc/X11/xdm/xdm-config
+	backup = etc/pam.d/xdm
+	backup = etc/X11/xdm/Xsetup_0
+	backup = etc/X11/xdm/Xsession
+	source = http://xorg.freedesktop.org//releases/individual/app/xdm-1.1.11.tar.bz2
+	source = Xsession-loginshell.patch
+	source = Xsession-xsm.patch
+	source = xdm-1.0.5-sessreg-utmp-fix-bug177890.patch
+	source = xdm.pam
+	source = git_fixes.diff
+	source = xlogin.patch
+	sha256sums = d4da426ddea0124279a3f2e00a26db61944690628ee818a64df9d27352081c47
+	sha256sums = fd3e7c20837b42a8ab111369fd6dc9612f9edb91c1f6904cca1d6a1fa3cfa0ff
+	sha256sums = 77a1ce9bdf363591b72798db08b4df3589bd4e64737fd32cf9028f9245450edb
+	sha256sums = 5f380a2d6f77feb910d77f7f6843fce9b00ff7610c159fc029ee44cc6c23a48a
+	sha256sums = 7d6818a1c1a44e9bd38774c035e03b0b831f6646681bc2bf556761aec7baf418
+	sha256sums = 781b5577bb070220d018a11832d0d4a65fd16e130730ba26fb055c3aa68156b2
+	sha256sums = 4bb8742f9bef48df06430112fa7665dd78a5d5d6a5f835dd21b0ea0fc8c04801
+
+pkgname = xorg-xdm-xlogin
+
