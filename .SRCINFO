@@ -1,0 +1,16 @@
+pkgbase = python2-numpydoc
+	pkgdesc = Sphinx extension to support docstrings in Numpy format
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://projects.scipy.org/numpy/browser/trunk/doc/sphinxext
+	arch = any
+	license = BSD
+	depends = python2
+	depends = python2-sphinx
+	conflicts = python-numpydoc
+	options = !emptydirs
+	source = http://pypi.python.org/packages/source/n/numpydoc/numpydoc-0.5.tar.gz
+	sha256sums = 93f050bceb52489d92f85c346981f1962c867c01f233d3252894ceae5cb48d34
+
+pkgname = python2-numpydoc
+
