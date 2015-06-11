@@ -1,0 +1,16 @@
+post_install() {
+cat << EOF
+Copy /usr/share/x264transcode/autoripper.conf to ~/.autoripper.conf
+and edit to suit your setup.
+
+=====
+In the rare case you have a mplayer variant without the mencoder
+binary (e.g mplayer-minimal), you'll have to install the mencoder
+package separately (or use either extra/mplayer or AUR/mplayer-svn)
+=====
+EOF
+}
+
+post_upgrade() {
+  post_install $1
+}
