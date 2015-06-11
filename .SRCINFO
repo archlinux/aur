@@ -1,0 +1,20 @@
+pkgbase = python-verhulst-git
+	pkgdesc = Python 3 library for evaluating binary logistic regressions fitted with scikit-learn. Statistical analysis and plotting routines to evaluate binary logistic regressions
+	pkgver = 0.1.0.r15.6d27c3c
+	pkgrel = 2
+	url = https://github.com/rpetchler/verhulst
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-matplotlib
+	provides = python-verhulst
+	conflicts = python-verhulst
+	source = git+https://github.com/rpetchler/verhulst.git
+	sha256sums = SKIP
+
+pkgname = python-verhulst-git
+
