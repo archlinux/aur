@@ -1,0 +1,17 @@
+pkgbase = python2-locust-git
+	pkgdesc = An easy-to-use, distributed, user load testing tool.
+	pkgver = v0.7.2.r33.g5e9c300
+	pkgrel = 1
+	url = http://locust.io/
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python2-gevent>=1.0.1
+	depends = python2-flask>=0.10.1
+	depends = python2-requests>=2.4.1
+	depends = python2-msgpack>=0.4.2
+	source = git://github.com/locustio/locust.git
+	md5sums = SKIP
+
+pkgname = python2-locust-git
+
