@@ -1,0 +1,167 @@
+diff -Nur spooles.orig/I2Ohash/src/util.c spooles/I2Ohash/src/util.c
+--- spooles.orig/I2Ohash/src/util.c	1998-05-31 00:45:12.000000000 +0200
++++ spooles/I2Ohash/src/util.c	2013-11-09 04:47:21.036844339 +0100
+@@ -39,9 +39,10 @@
+ */
+ loc1 = (key1 + 1) % hashtable->nlist ;
+ loc2 = (key2 + 1) % hashtable->nlist ;
+-loc  = (loc1*loc2) % hashtable->nlist ;
++long int loc3  = (long int)loc1*(long int)loc2 % hashtable->nlist ;
++loc =(int) loc3;
+ #if MYDEBUG > 0
+-fprintf(stdout, "\n loc1 = %d, loc2 = %d, loc3 = %d", loc1, loc2, loc) ;
++fprintf(stdout, "\n loc1 = %d, loc2 = %d, loc3 = %ld, loc = %d", loc1, loc2, loc3, loc) ;
+ fflush(stdout) ;
+ #endif
+ /*
+@@ -158,9 +159,10 @@
+ #endif
+ loc1 = (key1 + 1) % hashtable->nlist ;
+ loc2 = (key2 + 1) % hashtable->nlist ;
+-loc  = (loc1*loc2) % hashtable->nlist ;
++long int loc3  = (long int)loc1*(long int)loc2 % hashtable->nlist ;
++loc =(int) loc3;
+ #if MYDEBUG > 0
+-fprintf(stdout, "\n loc1 = %d, loc2 = %d, loc3 = %d", loc1, loc2, loc) ;
++fprintf(stdout, "\n loc1 = %d, loc2 = %d, loc3 = %ld, loc = %d", loc1, loc2, loc3, loc) ;
+ fflush(stdout) ;
+ #endif
+ /*
+diff -Nur spooles.orig/makefile spooles/makefile
+--- spooles.orig/makefile	1999-01-25 21:39:39.000000000 +0100
++++ spooles/makefile	2013-11-09 04:51:02.256864351 +0100
+@@ -124,7 +124,9 @@
+ 	cd ZV               ; make lib
+ 	cd misc             ; make lib
+ #cd MPI              ; make lib
+-#cd MT               ; make lib
++	cd MT               ; make lib
++	gcc -shared */*/*.lo -Wl,-soname,libspooles.so.2.2 -o libspooles.so.2.2 -lpthread -lm
++	ln -s libspooles.so.2.2 libspooles.so
+ 
+ global :
+ 	cd A2/src             ; make -f makeGlobalLib
+diff -Nur spooles.orig/Make.inc spooles/Make.inc
+--- spooles.orig/Make.inc	1999-01-18 22:48:55.000000000 +0100
++++ spooles/Make.inc	2013-11-09 04:46:42.026840810 +0100
+@@ -12,7 +12,7 @@
+ # for solaris
+ #
+ # CC = gcc
+-  CC = /usr/lang-4.0/bin/cc
++#  CC = /usr/lang-4.0/bin/cc
+ #
+ # for sgi
+ #
+@@ -28,7 +28,7 @@
+ # 
+ # OPTLEVEL = 
+ # OPTLEVEL = -g -v
+-  OPTLEVEL = -O
++  OPTLEVEL = -O3
+ # OPTLEVEL = -xO5 -v
+ # OPTLEVEL = -O3
+ # OPTLEVEL = -O4
+@@ -43,7 +43,7 @@
+ #  set any load flags
+ #
+ #  LDFLAGS = -Wl,+parallel -Wl,+tm,spp2000 # for hp exemplar
+-   LDFLAGS =
++#   LDFLAGS =
+ #
+ #---------------------------------------------------------------------
+ #
+@@ -103,7 +103,7 @@
+ #  MPI install library
+ #
+ # MPI_INSTALL_DIR = 
+-  MPI_INSTALL_DIR = /usr/local/mpich-1.0.13
++#  MPI_INSTALL_DIR = /usr/lib/openmpi
+ #
+ #---------------------------------------------------------------------
+ #
+@@ -142,6 +142,6 @@
+ #  MPI include path
+ #
+ # MPI_INCLUDE_DIR = 
+-  MPI_INCLUDE_DIR = -I$(MPI_INSTALL_DIR)/include
++#  MPI_INCLUDE_DIR = -I/usr/include/mpi
+ #
+ #---------------------------------------------------------------------
+diff -Nur spooles.orig/makeLib spooles/makeLib
+--- spooles.orig/makeLib	1998-12-16 18:47:58.000000000 +0100
++++ spooles/makeLib	2013-11-09 04:46:55.813508724 +0100
+@@ -64,14 +64,19 @@
+    $srcname = " \\\n     " . $src ;
+    print $srcname ;
+ }
++print "\n\n.SUFFIXES: .c .o .lo .a .so" ;
+ print "\n\nOBJ_FILES = \$\{SRC:.c=.o\}" ;
++print "\n\nLOBJ_FILES = \$\{SRC:.c=.lo\}" ;
+ print "\n\n" ;
+ print <<'EOF' ;
+ .c.o :
+-	$(PURIFY) $(CC) -c $(CFLAGS) $*.c -o $(OBJ)_$*.o
++	$(PURIFY) $(CC) -c $(CFLAGS) $*.c -o $(OBJ)_$*.o $(MPI_INCLUDE_DIR)
+ 
+-../../spooles.a : ${OBJ_FILES}
+-	$(AR) $(ARFLAGS) ../../spooles.a $(OBJ)_*.o
++.c.lo :
++	$(PURIFY) $(CC) -c $(CFLAGS) $*.c -fPIC -DPIC -o $(OBJ)_$*.lo $(MPI_INCLUDE_DIR)
++
++../../libspooles.a : ${OBJ_FILES} ${LOBJ_FILES}
++	$(AR) $(ARFLAGS) ../../libspooles.a $(OBJ)_*.o
+ 	rm -f $(OBJ)_*.o
+-	$(RANLIB) ../../spooles.a
++	$(RANLIB) ../../libspooles.a
+ EOF
+diff -Nur spooles.orig/MPI/makefile spooles/MPI/makefile
+--- spooles.orig/MPI/makefile	1998-12-17 16:47:44.000000000 +0100
++++ spooles/MPI/makefile	2013-11-09 04:46:42.026840810 +0100
+@@ -2,7 +2,7 @@
+ 	cd drivers ; make drivers
+ 
+ lib :
+-	cd src ; make spoolesMPI.a
++	cd src ; make makeLib
+ 
+ clean :
+ 	cd src ; make clean
+diff -Nur spooles.orig/MPI/src/makefile spooles/MPI/src/makefile
+--- spooles.orig/MPI/src/makefile	1998-12-16 22:54:41.000000000 +0100
++++ spooles/MPI/src/makefile	2013-11-09 04:46:42.026840810 +0100
+@@ -42,3 +42,8 @@
+ 
+ clean :
+ 	- rm -f *.a *.o
++
++makeLib :
++	perl ../../makeLib > makeG
++	make -f makeG
++	rm -f makeG
+diff -Nur spooles.orig/MT/makefile spooles/MT/makefile
+--- spooles.orig/MT/makefile	1998-12-17 16:47:48.000000000 +0100
++++ spooles/MT/makefile	2013-11-09 04:46:42.026840810 +0100
+@@ -2,7 +2,7 @@
+ 	cd drivers ; make drivers
+ 
+ lib :
+-	cd src ; make spoolesMT.a
++	cd src ; make makeLib
+ 
+ clean :
+ 	cd src ; make clean
+diff -Nur spooles.orig/timings.h spooles/timings.h
+--- spooles.orig/timings.h	1998-06-02 19:42:14.000000000 +0200
++++ spooles/timings.h	2013-11-09 04:45:41.823502031 +0100
+@@ -2,9 +2,8 @@
+ #define _TIMINGS_
+ #include <sys/time.h>
+ static struct timeval  TV ;
+-static struct timezone TZ ;
+ #define MARKTIME(t) \
+-   gettimeofday(&TV, &TZ) ; \
++   gettimeofday(&TV, NULL) ; \
+    t = (TV.tv_sec + 0.000001*TV.tv_usec)
+ #endif
+ 

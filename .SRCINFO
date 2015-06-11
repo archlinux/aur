@@ -1,0 +1,24 @@
+pkgbase = spooles
+	pkgdesc = SParse Object Oriented Linear Equations Solver
+	pkgver = 2.2
+	pkgrel = 5
+	url = http://www.netlib.org/linalg/spooles
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = perl
+	makedepends = ghostscript
+	depends = glibc
+	noextract = spooles.2.2.tgz
+	noextract = ReferenceManual.ps.gz
+	source = http://www.netlib.org/linalg/spooles/spooles.2.2.tgz
+	source = http://www.netlib.org/linalg/spooles/ReferenceManual.ps.gz
+	source = spooles.patch
+	source = license.txt
+	md5sums = 5789ca60d1ae565a4eaef6d03ca837af
+	md5sums = 9e5e32828f59c4cf066fdb34218705e7
+	md5sums = 4bb065242e3df5b39a99370dd0f5e57a
+	md5sums = 0f6276a9728bcf7ab0a31350d9a906c2
+
+pkgname = spooles
+
