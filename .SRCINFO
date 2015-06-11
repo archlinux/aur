@@ -1,0 +1,15 @@
+pkgbase = demimove
+	pkgdesc = A file browser for mass renaming.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/mikar/demimove
+	arch = any
+	license = MIT
+	depends = python2-pyqt4
+	depends = python2-docopt
+	depends = python2-setuptools
+	source = https://github.com/mikar/demimove/archive/master.tar.gz
+	sha256sums = SKIP
+
+pkgname = demimove
+
