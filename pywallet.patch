@@ -1,0 +1,14 @@
+@@ -4904,8 +4904,11 @@
+ 		for i,sec in enumerate(recoveredKeys):
+ 			sec=sec.encode('hex')
+ 			print("\nImporting key %4d/%d:"%(i+1, len(recoveredKeys)))
+-			importprivkey(db, sec, "recovered: %s"%sec, None, True)
+-			importprivkey(db, sec+'01', "recovered: %s"%sec, None, True)
++                        try:
++                            importprivkey(db, sec, "recovered: %s"%sec, None, True)
++                            importprivkey(db, sec+'01', "recovered: %s"%sec, None, True)
++                        except:
++                            pass
+ 		db.close()
+ 
+ 		print("\n\nThe new wallet %s/%s contains the %d recovered key%s"%(options.recov_outputdir, recov_wallet_name, len(recoveredKeys), iais(len(recoveredKeys))))
