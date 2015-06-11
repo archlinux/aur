@@ -1,0 +1,17 @@
+pkgbase = teamspeak3-plugin-massmover
+	pkgdesc = Plugin for Teamspeak 3. Allows moving several users at once.
+	pkgver = 0.57.20
+	pkgrel = 2
+	url = http://addons.teamspeak.com/directory/plugins/miscellaneous/TS3MassMover.html
+	arch = i686
+	arch = x86_64
+	license = Unknown
+	makedepends = teamspeak3
+	depends = teamspeak3
+	conflicts = teamspeak-plugin-massmover
+	replaces = teamspeak-plugin-massmover
+	source = TS3MassMover-v0.57.20.zip::http://addons.teamspeak.com/directory/addon/download/TS3MassMover.html
+	sha1sums = c912cd911d66b3a3fe2b9c502f5b64cb72386ecc
+
+pkgname = teamspeak3-plugin-massmover
+
