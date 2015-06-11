@@ -11,8 +11,8 @@ pkgbase = mkaur
 	depends = bash
 	depends = xdg-utils
 	depends = coreutils
-	optdepends = aurploader: Upload package directly to AURv3
-	optdepends = git: AURv4 upload support
+	depends = git
+	optdepends = aurploader: Upload package directly to AURv3 (legacy)
 	source = git+https://github.com/crossroads1112/bin.git
 	md5sums = SKIP
 
