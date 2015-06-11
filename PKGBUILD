@@ -6,7 +6,7 @@
 
 _pkgname='influxdb'
 pkgname="$_pkgname-git"
-pkgver=v0.9.0.rc31.r74.g1fb9c54
+pkgver=v0.9.0.rc33.r80.ged4d009
 pkgrel=1
 epoch=
 pkgdesc='Scalable datastore for metrics, events, and real-time analytics'
@@ -14,11 +14,9 @@ arch=('i686' 'x86_64')
 url='http://influxdb.org/'
 license=('MIT')
 groups=()
-depends=('leveldb' 'rocksdb')
 makedepends=('autoconf' 'protobuf' 'bison' 'flex' 'go' 'gawk' 'mercurial' 'git')
 checkdepends=()
-optdepends=()
-provides=('influxdb')
+
 conflicts=()
 replaces=()
 backup=('etc/influxdb.conf')
@@ -31,7 +29,7 @@ source=("git+https://github.com/influxdb/influxdb.git"
 noextract=()
 md5sums=('SKIP'
          'a73293aa5489a70bdfa01f8a5dfee359'
-         '56d2385232a6be54df21ec890d66f00c')
+         '37772f833acd9f5f8ac9c2bd3f1c3be8')
 
 pkgver() {
 	cd "$_pkgname"
@@ -46,6 +44,8 @@ build() {
 	go get -u -f ./...
 	go build ./...
 	go install ./...
+
+	sed -i 's|/var/opt|/var/lib|g' etc/config.sample.toml
 }
 
 check() {
@@ -59,16 +59,11 @@ package() {
   # systemctl service file
   install -D -m644  "$srcdir/influxdb.service" "$pkgdir/usr/lib/systemd/system/influxdb.service"
 
-  cd "$srcdir/src/github.com/influxdb/influxdb"
-
   # influxdb binary
   install -D -m755 "$srcdir/bin/influx" "$pkgdir/usr/bin/influx"
   install -D -m755 "$srcdir/bin/influxd" "$pkgdir/usr/bin/influxd"
   install -D -m755 "$srcdir/bin/urlgen" "$pkgdir/usr/bin/urlgen"
 
   # configuration file
-  cd etc
-  sed -i 's|/var/opt/influxdb/raft|/var/lib/influxdb/raft|g' config.sample.toml
-  sed -i 's|/var/opt/influxdb/db|/var/lib/influxdb/db|g' config.sample.toml
-  install -D -m644 config.sample.toml "$pkgdir/etc/influxdb.conf"
+  install -D -m644 "$srcdir/src/github.com/influxdb/influxdb/etc/config.sample.toml" "$pkgdir/etc/influxdb.conf"
 }

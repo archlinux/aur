@@ -1,6 +1,6 @@
 pkgbase = influxdb-git
 	pkgdesc = Scalable datastore for metrics, events, and real-time analytics
-	pkgver = v0.9.0.rc31.r74.g1fb9c54
+	pkgver = v0.9.0.rc33.r80.ged4d009
 	pkgrel = 1
 	url = http://influxdb.org/
 	install = influxdb.install
@@ -15,16 +15,13 @@ pkgbase = influxdb-git
 	makedepends = gawk
 	makedepends = mercurial
 	makedepends = git
-	depends = leveldb
-	depends = rocksdb
-	provides = influxdb
 	backup = etc/influxdb.conf
 	source = git+https://github.com/influxdb/influxdb.git
 	source = influxdb.service
 	source = influxdb.install
 	md5sums = SKIP
 	md5sums = a73293aa5489a70bdfa01f8a5dfee359
-	md5sums = 56d2385232a6be54df21ec890d66f00c
+	md5sums = 37772f833acd9f5f8ac9c2bd3f1c3be8
 
 pkgname = influxdb-git
 
