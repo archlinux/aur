@@ -1,0 +1,14 @@
+pkgbase = python-yep-git
+	pkgdesc = Profile compiled code (C/C++/Fortran) from the Python interpreter.
+	pkgver = 0.1.r14.gfd22ac9
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/yep/
+	arch = any
+	license = BSD
+	depends = gperftools
+	depends = python
+	source = git://github.com/fabianp/yep.git
+	md5sums = SKIP
+
+pkgname = python-yep-git
+
