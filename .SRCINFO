@@ -1,0 +1,16 @@
+pkgbase = stlink-git
+	pkgdesc = stm32 discovery line linux programmer.
+	pkgver = 20120217
+	pkgrel = 1
+	url = https://github.com/texane/stlink
+	install = stlink-git.install
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = libusb>=1.0
+	depends = pkg-config
+	provides = stlink
+	conflicts = stlink
+
+pkgname = stlink-git
+

@@ -1,0 +1,18 @@
+# arg 1:  the new package version
+post_install() {
+	modprobe -r usb-storage && modprobe usb-storage
+	udevadm control --reload-rules
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+	modprobe -r usb-storage && modprobe usb-storage
+	udevadm control --reload-rules
+}
+
+# arg 1:  the old package version
+post_remove() {
+	modprobe -r usb-storage && modprobe usb-storage
+	udevadm control --reload-rules
+}
