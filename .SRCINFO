@@ -1,0 +1,19 @@
+pkgbase = wmcpumon
+	pkgdesc = A windowmaker dockapp which shows the usage of each cpu in the system
+	pkgver = 1.02
+	pkgrel = 4
+	url = http://wmcpumon.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	groups = x11
+	license = AGPL3
+	depends = libxext
+	depends = libxcb
+	depends = xcb-util
+	depends = xcb-util-wm
+	depends = xcb-util-image
+	source = http://wmcpumon.sourceforge.net/wmcpumon-2011-05-02-14.tar.bz2
+	md5sums = 368ebfb30be65ac2a0c107111ad8df86
+
+pkgname = wmcpumon
+
