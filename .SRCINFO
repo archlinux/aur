@@ -1,0 +1,15 @@
+pkgbase = cconv
+	pkgdesc = A iconv based simplified-traditional chinese conversion tool
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = http://code.google.com/p/cconv/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	options = !libtool
+	source = http://cconv.googlecode.com/files/cconv-0.6.2.tar.gz
+	sha1sums = 9775f91fd5600d176552a88625aaa1f64ece09c1
+
+pkgname = cconv
+
