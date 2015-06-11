@@ -1,0 +1,17 @@
+pkgbase = wmapp
+	pkgdesc = DockApp Graphics Library
+	pkgver = 0.0.4.3
+	pkgrel = 1
+	url = http://www.starplot.org/wmapp/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	options = staticlibs
+	source = http://www.starplot.org/wmapp/downloads/wmapp-0.0.4.3.tar.gz
+	source = const.patch
+	md5sums = 38a0e1ebe586a0d89aeb6e0b05be66f9
+	md5sums = f51006971d888f5721809a86162d2691
+
+pkgname = wmapp
+

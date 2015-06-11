@@ -1,0 +1,236 @@
+diff -up src/wmapp-0.0.4.3/example1/debian-tiny.xpm.orig src/wmapp-0.0.4.3/example1/debian-tiny.xpm
+--- src/wmapp-0.0.4.3/example1/debian-tiny.xpm.orig	2002-05-01 15:46:18.000000000 -0600
++++ src/wmapp-0.0.4.3/example1/debian-tiny.xpm	2014-05-16 23:32:53.000000000 -0600
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * debian_tiny_xpm[] = {
++static const char * debian_tiny_xpm[] = {
+ "9 9 38 1",
+ " 	c None",
+ ".	c #AEAAAE",
+diff -up src/wmapp-0.0.4.3/example1/window0.cc.orig src/wmapp-0.0.4.3/example1/window0.cc
+--- src/wmapp-0.0.4.3/example1/window0.cc.orig	2003-09-15 14:50:08.000000000 -0600
++++ src/wmapp-0.0.4.3/example1/window0.cc	2014-05-16 23:32:53.000000000 -0600
+@@ -1,3 +1,5 @@
++#include <ctime>
++#include <cstdlib>
+ #include "../wmapp.h"
+ #include "../wmframe.h"
+ #include "../wmwindow.h"
+@@ -181,7 +183,7 @@ makewindow0(WMWindow *w0)
+   r.setled(WMLed::Error);
+ 
+   // should set initial total of seconds
+-  srand(std::time(0));
++  std::srand(std::time(0));
+   meterbar.setstyle(WMMeterBar::Spectrum);
+   meterbar.setvalue(150, false);
+   meterbar.settotal(306, false);
+diff -up src/wmapp-0.0.4.3/wmapp.cc.orig src/wmapp-0.0.4.3/wmapp.cc
+--- src/wmapp-0.0.4.3/wmapp.cc.orig	2006-01-09 06:23:35.000000000 -0700
++++ src/wmapp-0.0.4.3/wmapp.cc	2014-05-16 23:32:53.000000000 -0600
+@@ -1,4 +1,5 @@
+ #include <string>
++#include <string.h>
+ #include "wmapp.h"
+ #include "wmwindow.h"
+ 
+diff -up src/wmapp-0.0.4.3/wmframe.cc.orig src/wmapp-0.0.4.3/wmframe.cc
+--- src/wmapp-0.0.4.3/wmframe.cc.orig	2003-01-05 10:15:55.000000000 -0700
++++ src/wmapp-0.0.4.3/wmframe.cc	2014-05-16 23:32:53.000000000 -0600
+@@ -130,7 +130,7 @@ WMFrame::clip(char *xpm_array[65])
+   if (! transparency() || border()) { // create a mask for drawing children
+     if (!wClipMask) {
+       wClipMask = new WMPixmap;
+-      WMApp::Xw.create_pixmap(*wClipMask, xpm_array);
++      WMApp::Xw.create_pixmap(*wClipMask, const_cast<const char **>(xpm_array));
+       X::XFreePixmap(WMApp::Xw.xdisplay(), wClipMask->pixmap);
+       // free unused pixmap
+       wClipMask->pixmap = wClipMask->mask;
+diff -up src/wmapp-0.0.4.3/wmimage.cc.orig src/wmapp-0.0.4.3/wmimage.cc
+--- src/wmapp-0.0.4.3/wmimage.cc.orig	2003-01-04 18:17:03.000000000 -0700
++++ src/wmapp-0.0.4.3/wmimage.cc	2014-05-16 23:32:53.000000000 -0600
+@@ -43,10 +43,10 @@ WMImage::seticon(const WMPixmap &pm, boo
+ }
+ 
+ void
+-WMImage::seticon(char *xpm[], bool dodisplay)
++WMImage::seticon(const char *xpm[], bool dodisplay)
+ {
+   if (icon()) WMApp::Xw.free_pixmap(wIcon);
+-  if (WMApp::Xw.create_pixmap(wIcon, xpm))
++  if (WMApp::Xw.create_pixmap(wIcon, const_cast<const char **>(xpm)))
+     { wIconPtr = &wIcon; if (dodisplay) display(); }
+   else wIconPtr = 0;
+ }
+diff -up src/wmapp-0.0.4.3/wmimage.h.orig src/wmapp-0.0.4.3/wmimage.h
+--- src/wmapp-0.0.4.3/wmimage.h.orig	2003-01-04 18:17:03.000000000 -0700
++++ src/wmapp-0.0.4.3/wmimage.h	2014-05-16 23:32:53.000000000 -0600
+@@ -24,7 +24,7 @@ class WMImage : public virtual WMWidget
+   void seticon(bool dodisplay = true); //make an empty icon
+   void seticon(const WMPixmap *, bool dodisplay = true);
+   void seticon(const WMPixmap &, bool dodisplay = true);
+-  void seticon(char *xpm[], bool dodisplay = true);
++  void seticon(const char *xpm[], bool dodisplay = true);
+   void setbgcolor(Color, bool dodisplay = true);
+   Color bgcolor() const;
+   const WMPixmap * icon() const;
+diff -up src/wmapp-0.0.4.3/wmwindow.cc.orig src/wmapp-0.0.4.3/wmwindow.cc
+--- src/wmapp-0.0.4.3/wmwindow.cc.orig	2003-01-04 18:17:03.000000000 -0700
++++ src/wmapp-0.0.4.3/wmwindow.cc	2014-05-16 23:32:53.000000000 -0600
+@@ -1,4 +1,5 @@
+ #include <iostream>
++#include <string.h>
+ #include "wmwindow.h"
+ #include "wmapp.h"
+ 
+@@ -64,7 +65,7 @@ WMWindow::initpixmaps()
+     child(i)->clip(mask_xpm);
+ 
+   // finally, create the pixmap and mask
+-  WMApp::Xw.create_pixmap(pixmap(), mask_xpm);
++  WMApp::Xw.create_pixmap(pixmap(), const_cast<const char **>(mask_xpm));
+   WMApp::Xw.fill_rectangle(pixmap(), 0, 0, 64, 64, 0xFFFFFF /*white*/);
+ 
+   // clean up
+diff -up src/wmapp-0.0.4.3/xpm/charmap-large.xpm.orig src/wmapp-0.0.4.3/xpm/charmap-large.xpm
+--- src/wmapp-0.0.4.3/xpm/charmap-large.xpm.orig	2001-12-12 03:27:18.000000000 -0700
++++ src/wmapp-0.0.4.3/xpm/charmap-large.xpm	2014-05-16 23:32:53.000000000 -0600
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * charmap_large_xpm[] = {
++static const char * charmap_large_xpm[] = {
+ "112 66 5 1",
+ " 	c None",
+ ".	c #282828",
+diff -up src/wmapp-0.0.4.3/xpm/charmap-medium.xpm.orig src/wmapp-0.0.4.3/xpm/charmap-medium.xpm
+--- src/wmapp-0.0.4.3/xpm/charmap-medium.xpm.orig	2001-12-12 10:52:55.000000000 -0700
++++ src/wmapp-0.0.4.3/xpm/charmap-medium.xpm	2014-05-16 23:32:53.000000000 -0600
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * charmap_medium_xpm[] = {
++static const char * charmap_medium_xpm[] = {
+ "96 54 5 1",
+ " 	c None",
+ ".	c #282828",
+diff -up src/wmapp-0.0.4.3/xpm/charmap-micro.xpm.orig src/wmapp-0.0.4.3/xpm/charmap-micro.xpm
+--- src/wmapp-0.0.4.3/xpm/charmap-micro.xpm.orig	2006-01-09 06:23:35.000000000 -0700
++++ src/wmapp-0.0.4.3/xpm/charmap-micro.xpm	2014-05-16 23:32:53.000000000 -0600
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * charmap_micro_xpm [] = {
++static const char * charmap_micro_xpm [] = {
+ /* width height ncolors cpp [x_hot y_hot] */
+ "64 42 4 1",
+ ". c #282828",
+diff -up src/wmapp-0.0.4.3/xpm/charmap-mini.xpm.orig src/wmapp-0.0.4.3/xpm/charmap-mini.xpm
+--- src/wmapp-0.0.4.3/xpm/charmap-mini.xpm.orig	2014-05-16 23:33:50.000000000 -0600
++++ src/wmapp-0.0.4.3/xpm/charmap-mini.xpm	2014-05-16 23:34:00.000000000 -0600
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * charmap_mini_xpm [] = {
++static const char * charmap_mini_xpm [] = {
+ /* width height ncolors cpp [x_hot y_hot] */
+ "64 54 5 1",
+ /* colors */
+diff -up src/wmapp-0.0.4.3/xpm/charmap-small.xpm.orig src/wmapp-0.0.4.3/xpm/charmap-small.xpm
+--- src/wmapp-0.0.4.3/xpm/charmap-small.xpm.orig	2001-12-12 10:53:13.000000000 -0700
++++ src/wmapp-0.0.4.3/xpm/charmap-small.xpm	2014-05-16 23:32:53.000000000 -0600
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * charmap_small_xpm[] = {
++static const char * charmap_small_xpm[] = {
+ "80 54 5 1",
+ " 	c None",
+ ".	c #282828",
+diff -up src/wmapp-0.0.4.3/xpm/checkbox.xpm.orig src/wmapp-0.0.4.3/xpm/checkbox.xpm
+--- src/wmapp-0.0.4.3/xpm/checkbox.xpm.orig	2001-04-01 10:35:13.000000000 -0600
++++ src/wmapp-0.0.4.3/xpm/checkbox.xpm	2014-05-16 23:32:54.000000000 -0600
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * checkbox_xpm[] = {
++static const char * checkbox_xpm[] = {
+ "9 9 2 1",
+ ".	c #AEAAAE",
+ "+	c #000000",
+diff -up src/wmapp-0.0.4.3/xpm/emptybar.xpm.orig src/wmapp-0.0.4.3/xpm/emptybar.xpm
+--- src/wmapp-0.0.4.3/xpm/emptybar.xpm.orig	2001-03-26 22:28:40.000000000 -0700
++++ src/wmapp-0.0.4.3/xpm/emptybar.xpm	2014-05-16 23:32:54.000000000 -0600
+@@ -1,5 +1,5 @@
+ /* XPM for empty bar - taken from wmtop's progress bar, dimmed with GIMP */
+-static char * emptybar_xpm[] = {
++static const char * emptybar_xpm[] = {
+ "58 1 58 1",
+ " 	c None",
+ ".	c #007007",
+diff -up src/wmapp-0.0.4.3/xpm/fullbar.xpm.orig src/wmapp-0.0.4.3/xpm/fullbar.xpm
+--- src/wmapp-0.0.4.3/xpm/fullbar.xpm.orig	2001-03-26 21:14:17.000000000 -0700
++++ src/wmapp-0.0.4.3/xpm/fullbar.xpm	2014-05-16 23:32:54.000000000 -0600
+@@ -1,5 +1,5 @@
+ /* XPM for full progress bar - taken from wmtop */
+-static char * fullbar_xpm[] = {
++static const char * fullbar_xpm[] = {
+ "58 1 58 1",
+ " 	c None",
+ ".	c #00FF0F",
+diff -up src/wmapp-0.0.4.3/xpm/leds.xpm.orig src/wmapp-0.0.4.3/xpm/leds.xpm
+--- src/wmapp-0.0.4.3/xpm/leds.xpm.orig	2001-03-26 21:04:29.000000000 -0700
++++ src/wmapp-0.0.4.3/xpm/leds.xpm	2014-05-16 23:32:54.000000000 -0600
+@@ -1,5 +1,5 @@
+ /* XPM for LED lights - taken from wmppp */
+-static char * leds_xpm[] = {
++static const char * leds_xpm[] = {
+ "16 4 7 1",
+ " 	c None",
+ ".	c #202020",
+diff -up src/wmapp-0.0.4.3/xpm/tile.xpm.orig src/wmapp-0.0.4.3/xpm/tile.xpm
+--- src/wmapp-0.0.4.3/xpm/tile.xpm.orig	2001-03-31 09:23:16.000000000 -0700
++++ src/wmapp-0.0.4.3/xpm/tile.xpm	2014-05-16 23:32:54.000000000 -0600
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char *tile_xpm[] = {
++static const char *tile_xpm[] = {
+ "64 64 54 1",
+ " 	c #F3CEF3CEF3CE",
+ ".	c #000000000000",
+diff -up src/wmapp-0.0.4.3/xpm/xbutton.xpm.orig src/wmapp-0.0.4.3/xpm/xbutton.xpm
+--- src/wmapp-0.0.4.3/xpm/xbutton.xpm.orig	2001-04-01 10:35:00.000000000 -0600
++++ src/wmapp-0.0.4.3/xpm/xbutton.xpm	2014-05-16 23:32:54.000000000 -0600
+@@ -1,5 +1,5 @@
+ /* XPM */
+-static char * xbutton_xpm[] = {
++static const char * xbutton_xpm[] = {
+ "9 9 2 1",
+ ".	c #AEAAAE",
+ "+	c #000000",
+diff -up src/wmapp-0.0.4.3/xwrapper.cc.orig src/wmapp-0.0.4.3/xwrapper.cc
+--- src/wmapp-0.0.4.3/xwrapper.cc.orig	2003-09-15 14:32:49.000000000 -0600
++++ src/wmapp-0.0.4.3/xwrapper.cc	2014-05-16 23:32:54.000000000 -0600
+@@ -69,13 +69,13 @@ Xwrapper::get_point(const WMPixmap& src,
+ }
+ 
+ bool
+-Xwrapper::create_pixmap(WMPixmap & dest, char * pixmap_bytes[]) const
++Xwrapper::create_pixmap(WMPixmap & dest, const char * pixmap_bytes[]) const
+ {
+   dest.attr.exactColors = false;
+   dest.attr.closeness = 40000;
+   dest.attr.valuemask = X_MACRO(XpmExactColors | XpmCloseness |
+ 				XpmReturnPixels | XpmReturnExtensions);
+-  int error = X::XpmCreatePixmapFromData(xDisplay, xRootWindow, pixmap_bytes,
++  int error = X::XpmCreatePixmapFromData(xDisplay, xRootWindow, const_cast<char **>(pixmap_bytes),
+ 		  			 &dest.pixmap, &dest.mask, &dest.attr);
+   if (error == X_MACRO(XpmSuccess)) {
+     X::XGCValues gcv;
+diff -up src/wmapp-0.0.4.3/xwrapper.h.orig src/wmapp-0.0.4.3/xwrapper.h
+--- src/wmapp-0.0.4.3/xwrapper.h.orig	2006-01-09 06:17:18.000000000 -0700
++++ src/wmapp-0.0.4.3/xwrapper.h	2014-05-16 23:32:54.000000000 -0600
+@@ -66,7 +66,7 @@ class Xwrapper {
+   const X::Window	xrootwin() const;
+   X::GC			get_GC() const;
+   
+-  bool create_pixmap(WMPixmap & dest, char * pixmap_bytes[]) const;
++  bool create_pixmap(WMPixmap & dest, const char * pixmap_bytes[]) const;
+   bool create_pixmap(WMPixmap & dest, const WMPixmap & source) const;
+   bool create_pixmap(WMPixmap & dest, const WMPixmap * source) const;
+   bool create_pixmap(WMPixmap & dest, int width, int height) const;
