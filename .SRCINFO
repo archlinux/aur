@@ -1,0 +1,19 @@
+pkgbase = python-ircmatch-git
+	pkgdesc = python extension for fast IRC mask matching and collapsing
+	pkgver = 1.2.18.0083a41
+	pkgrel = 1
+	url = https://github.com/mammon-ircd/ircmatch
+	arch = any
+	license = custom
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = python-ircmatch-git::git+https://github.com/mammon-ircd/ircmatch.git
+	md5sums = SKIP
+
+pkgname = python-ircmatch-git
+	depends = python
+
+pkgname = python2-ircmatch-git
+	depends = python2
+
