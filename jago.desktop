@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=JagoClient
+GenericName=Jago Go Client
+Comment=A SGF viewer + an IGS client + GMP client
+Comment[de]=Ein SGF Betrachter sowie IGS und GMP Client.
+Exec=java -jar /usr/share/java/jago/jago.jar
+Icon=jago
+Type=Application
+Categories=Java;Game;BoardGame;
+MimeType=application/x-go-sgf;text/sgf;text/x-sgf;
