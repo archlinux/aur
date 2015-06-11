@@ -1,0 +1,18 @@
+pkgbase = glfw3-git
+	pkgdesc = A free, open source, portable framework for OpenGL application development. (git version)
+	pkgver = 3.1.1.r87.g08b3af4
+	pkgrel = 1
+	url = http://www.glfw.org/
+	arch = any
+	license = custom:ZLIB
+	makedepends = cmake
+	makedepends = git
+	depends = libxi
+	depends = libgl
+	depends = libxrandr
+	conflicts = glfw
+	source = glfw::git+https://github.com/glfw/glfw.git#branch=master
+	md5sums = SKIP
+
+pkgname = glfw3-git
+
