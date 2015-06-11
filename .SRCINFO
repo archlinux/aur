@@ -1,6 +1,6 @@
 pkgbase = jriver-media-center
 	pkgdesc = The Most Comprehensive Media Software
-	pkgver = 20.0.110
+	pkgver = 20.0.114
 	pkgrel = 1
 	url = http://www.jriver.com/
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = jriver-media-center
 	optdepends = vorbis-tools:
 	optdepends = lame:
 	optdepends = musepack-tools:
-	source = http://files.jriver.com/mediacenter/channels/v20/latest/MediaCenter-20.0.110.deb
+	source = http://files.jriver.com/mediacenter/channels/v20/latest/MediaCenter-20.0.114.deb
 	source = License.txt
-	sha256sums = 60c6e0816a47fb1d7f8b42b6ce53d68bf22cd8a7757a668d488425c20409ed4f
+	sha256sums = a8bd7deb403e9314f036d4430af9cb56580ddd8e2e9218bd7d8fa848f1364c30
 	sha256sums = ee00f430918df6be37777a61e12812875b5583379c78daaa969bae7383a41fbd
 
 pkgname = jriver-media-center
