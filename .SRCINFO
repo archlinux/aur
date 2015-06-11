@@ -1,0 +1,26 @@
+pkgbase = nvidia-346xx-dkms
+	pkgdesc = NVIDIA kernel module sources (DKMS) 346 Series
+	pkgver = 346.59
+	pkgrel = 1
+	url = http://www.nvidia.com/
+	install = nvidia-dkms.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = dkms
+	depends = nvidia-346xx-utils
+	optdepends = linux-headers: Build the module for Arch kernel
+	optdepends = linux-lts-headers: Build the module for LTS Arch kernel
+	provides = nvidia
+	provides = nvidia-dkms
+	conflicts = nvidia
+	conflicts = nvidia-dkms
+	source = linux3.18.patch
+	sha256sums = 63a52af60e2ee36a2efa41022780802de7eec5b315aa1580a2fa1eb208d8fa87
+	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/346.59/NVIDIA-Linux-x86-346.59.run
+	sha256sums_i686 = 65cf83fccc02399d54212cbeea1c2364e4974687c3ad6cba87cc109476ad2129
+	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/346.59/NVIDIA-Linux-x86_64-346.59-no-compat32.run
+	sha256sums_x86_64 = 4c7941e9248a931b720f050c38822708aa8176c4464fc40d02e1c7dd7ebbe767
+
+pkgname = nvidia-346xx-dkms
+
