@@ -1,0 +1,24 @@
+pkgbase = python2-geopy
+	pkgdesc = Geocoding Toolbox for Python 2. Includes geocoder classes for the OpenStreetMap,ESRI ArcGIS,Google,Baidu,Bing,Yahoo,Yandex,IGN France,GeoNames,NaviData,OpenMapQuest,What3Words,OpenCage,SmartyStreets,geocoder.us, and GeocodeFarm geocoder services.
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://github.com/geopy/geopy
+	arch = any
+	license = custom
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-requests-oauthlib
+	depends = python2-pytz
+	provides = python2-geopy-git
+	provides = geopy
+	provides = geopy-svn
+	provides = geopy-svn-reverse-geocode-branch
+	conflicts = python2-geopy-git
+	conflicts = geopy
+	conflicts = geopy-svn
+	conflicts = geopy-svn-reverse-geocode-branch
+	source = https://pypi.python.org/packages/source/g/geopy/geopy-1.9.0.tar.gz
+	md5sums = ec2a0943cfcbac67a410d70b22fe3288
+
+pkgname = python2-geopy
+
