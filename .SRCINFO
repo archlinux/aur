@@ -1,7 +1,7 @@
 pkgbase = vibrancy-colors
 	pkgdesc = A flat icon theme composed from many open source icon projects
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ravefinity.com/p/vibrancy-colors-gtk-icon-theme.html
 	install = update-icon-cache.install
 	arch = any

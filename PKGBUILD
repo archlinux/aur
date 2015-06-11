@@ -1,7 +1,7 @@
 # Maintainer: ThePilot <afuturepilotis at gmail dot com>
 pkgname=vibrancy-colors
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A flat icon theme composed from many open source icon projects"
 arch=('any')
 url="http://www.ravefinity.com/p/vibrancy-colors-gtk-icon-theme.html"
