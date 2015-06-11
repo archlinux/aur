@@ -1,0 +1,12 @@
+#!/usr/bin/bash
+gogdir="/opt/gog/sid-meier-s-colonization"
+homedir="$HOME/.gog/sid-meier-s-colonization"
+mkdir -p "$homedir"/{game,config/data/MPS/COLONIZE}
+
+if [[ ! -e "$homedir/config/dosboxCOL.conf" ]]; then
+  cp "$gogdir/dosboxCOL.conf" "$homedir/config/dosboxCOL.conf"
+fi
+
+unionfs "$homedir/config=RW:$gogdir=RO" "$homedir/game"
+"$homedir"/game/start.sh
+fusermount -u "$homedir/game" 

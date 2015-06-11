@@ -1,0 +1,17 @@
+pkgbase = gog-sid-meier-s-colonization
+	pkgdesc = a turn-based strategy game themed on the early European colonization of the New World
+	pkgver = 1.0.0.3
+	pkgrel = 1
+	url = http://www.gog.com/game/sid_meiers_colonization
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libpng12
+	depends = unionfs-fuse
+	source = local://sid_meier_s_colonization_1.0.0.3.tar.gz
+	source = gog-sid-meier-s-colonization
+	sha256sums = e5924289e5a17a6938591e0e5d78a3ac0b1af6b8892ab63023f5b7c3fcbd610d
+	sha256sums = aee047994508557aba9e5719f1ef5d5b652f3f56bd21d2d0faeed9064ecdfb42
+
+pkgname = gog-sid-meier-s-colonization
+
