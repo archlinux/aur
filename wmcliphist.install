@@ -1,0 +1,13 @@
+post_install() {
+  cat << EOF
+
+==> Copy the file /etc/wmcliphistrc.sample into your home directory
+==> ( ~/.wmcliphistrc )
+
+EOF
+}
+
+op=$1
+shift
+
+$op $*

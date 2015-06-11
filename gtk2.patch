@@ -1,0 +1,78 @@
+diff -up src/wmcliphist/foodock/foodock.c.orig src/wmcliphist/foodock/foodock.c
+--- src/wmcliphist/foodock/foodock.c.orig	2014-05-16 07:16:06.000000000 -0600
++++ src/wmcliphist/foodock/foodock.c	2014-05-16 07:21:37.000000000 -0600
+@@ -83,3 +83,23 @@ void foo_set_wmhints(GtkWidget *mw,
+     
+     XFree(wm_hints);
+ }
++
++void foo_show_dockapp(GtkWidget *dockapp) {
++    Window w, p, dummy1, *dummy2;
++    unsigned int dummy3;
++    XWMHints *hints;
++
++    XQueryTree(GDK_DISPLAY(), GDK_WINDOW_XID(dockapp->window), &dummy1, &p, &dummy2, &dummy3);
++    if (dummy2)
++	XFree(dummy2);
++    w = XCreateSimpleWindow(GDK_DISPLAY(), p, 0, 0, 1, 1, 0, 0, 0);
++    XReparentWindow(GDK_DISPLAY(), GDK_WINDOW_XID(dockapp->window), w, 0, 0);
++    gtk_widget_show(dockapp);
++    hints = XGetWMHints(GDK_DISPLAY(), GDK_WINDOW_XID(dockapp->window));
++    hints->flags |= StateHint;
++    hints->initial_state = WithdrawnState;
++    XSetWMHints(GDK_DISPLAY(), GDK_WINDOW_XID(dockapp->window), hints);
++    XFree(hints);
++    XReparentWindow(GDK_DISPLAY(), GDK_WINDOW_XID(dockapp->window), p, 0, 0);
++    XDestroyWindow(GDK_DISPLAY(), w);
++}
+diff -up src/wmcliphist/foodock/foodock.h.orig src/wmcliphist/foodock/foodock.h
+--- src/wmcliphist/foodock/foodock.h.orig	2014-05-16 07:16:12.000000000 -0600
++++ src/wmcliphist/foodock/foodock.h	2014-05-16 07:16:57.000000000 -0600
+@@ -41,3 +41,5 @@ void foo_set_wmhints(GtkWidget *mw,
+ 		     GtkWidget *dw,
+ 		     int margc,
+ 		     char *margv[]);
++
++void foo_show_dockapp(GtkWidget *dockapp);
+diff -up src/wmcliphist/Makefile.orig src/wmcliphist/Makefile
+--- src/wmcliphist/Makefile.orig	2014-05-16 07:24:18.000000000 -0600
++++ src/wmcliphist/Makefile	2014-05-16 07:24:53.000000000 -0600
+@@ -1,6 +1,6 @@
+ CC ?= gcc
+ PREFIX = /usr/local
+-INCLUDES = `pkg-config --cflags gtk+-2.0` -I. -Ifoodock
++INCLUDES = `pkg-config x11 gtk+-2.0 --cflags` -I. -Ifoodock
+ 
+ # for normal use
+ CFLAGS += -Wall -ansi -pedantic $(INCLUDES)
+@@ -12,7 +12,7 @@ DEBUG =
+ #CFLAGS += -Wall -g -ansi $(INCLUDES) -DFNCALL_DEBUG
+ #DEBUG = debug.o
+ 
+-LIBS = `pkg-config --libs gtk+-2.0`
++LIBS = `pkg-config x11 gtk+-2.0 --libs`
+ 
+ OBJECTS = wmcliphist.o clipboard.o gui.o rcconfig.o history.o hotkeys.o utils.o $(DEBUG)
+ TARGET = wmcliphist
+diff -up src/wmcliphist/wmcliphist.c.orig src/wmcliphist/wmcliphist.c
+--- src/wmcliphist/wmcliphist.c.orig	2014-05-16 07:15:56.000000000 -0600
++++ src/wmcliphist/wmcliphist.c	2014-05-16 07:23:06.000000000 -0600
+@@ -345,14 +345,14 @@ main(int argc, char **argv)
+ 				GTK_SIGNAL_FUNC(button_press),
+ 				GTK_OBJECT(menu_hist));
+ 
+-
+-		/* show icon */
+-		gtk_widget_show(dock_app);
+-		gtk_widget_show(main_window);
+  
+ 		/* Set WMHints - after gtk_widget_show() due to changes in GTK+ 2.4 */
+ 		foo_set_wmhints(main_window, dock_app, argc, argv);
+ 
++		/* show icon */
++		gtk_widget_show(dock_app);
++		foo_show_dockapp(main_window);
++
+ 		gdk_window_shape_combine_mask(main_window->window, icon_mask, 0, 0);
+ 		gdk_window_shape_combine_mask(dock_app->window, icon_mask, 0, 0);
+ 	}
