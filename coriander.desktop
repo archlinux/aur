@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Coriander
+Version=2.0.2
+Exec=/usr/local/bin/coriander
+Comment=A Graphical User Interface for controlling IEEE1394 (Firewire) cameras
+Comment[ru_RU]=Графический интерфейс для управления IEEE1394 (Firewire) камерой
+Icon=coriander/coriander-logo
+Type=Application
+Terminal=false
+StartupNotify=true
+Encoding=UTF-8
+Categories=AudioVideo;Video; 
