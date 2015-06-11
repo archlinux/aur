@@ -1,0 +1,19 @@
+pkgbase = python2-psutil-kilo
+	pkgdesc = A cross-platform process and system utilities module for Python2
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = http://code.google.com/p/psutil/
+	arch = i686
+	arch = x86_64
+	license = custom: BSD
+	checkdepends = net-tools
+	checkdepends = procps-ng
+	makedepends = python2
+	makedepends = python2-setuptools
+	depends = glibc
+	depends = python2
+	source = https://pypi.python.org/packages/source/p/psutil/psutil-1.2.1.tar.gz
+	md5sums = 80c3b251389771ab472e554e6c729c36
+
+pkgname = python2-psutil-kilo
+
