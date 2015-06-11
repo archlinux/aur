@@ -1,0 +1,11 @@
+post_install() {
+  cat << EOF
+==> Put the followings in your \$HOME/.emacs file to use fold-dwim
+
+(require 'fold-dwim)
+(global-set-key (kbd "<f7>")      'fold-dwim-toggle)
+(global-set-key (kbd "<M-f7>")    'fold-dwim-hide-all)
+(global-set-key (kbd "<S-M-f7>")  'fold-dwim-show-all)
+
+EOF
+}

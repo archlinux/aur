@@ -1,0 +1,14 @@
+pkgbase = emacs-fold-dwim
+	pkgdesc = DWIM stands for “DoWhatIMean”, as in the idea that one keystroke can do different things depending on the context.
+	pkgver = 1.3
+	pkgrel = 2
+	url = http://www.dur.ac.uk/p.j.heslin/Software/Emacs/
+	install = emacs-fold-dwim.install
+	arch = any
+	license = GPL
+	depends = emacs
+	source = http://www.dur.ac.uk/p.j.heslin/Software/Emacs//Download/fold-dwim.el
+	md5sums = c1c835d061e142d55f27c76848fe4891
+
+pkgname = emacs-fold-dwim
+
