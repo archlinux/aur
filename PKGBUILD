@@ -4,12 +4,12 @@ _name="mkdocs"
 
 pkgname="${_name}"
 pkgver="0.14.0"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="Project documentation with Markdown."
 arch=("any")
 url="http://www.mkdocs.org"
 license=("BSD")
-makedepends=("python-setuptools" "python2-setuptools")
+makedepends=("python-setuptools")
 source=("https://pypi.python.org/packages/source/${pkgname:0:1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('5c182d3c5b148fa574d0f9be4900480a9e8ceab5d1f89e49f5a2bae0245a493a')
 
