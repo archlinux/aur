@@ -1,0 +1,17 @@
+pkgbase = gsettings-qt-bzr
+	pkgdesc = Qml bindings for GSettings.
+	pkgver = 0.1.r69
+	pkgrel = 1
+	url = https://launchpad.net/gsettings-qt
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = bzr
+	depends = qt5-base
+	depends = qt5-declarative
+	provides = gsettings-qt
+	source = gsettings-qt::bzr+http://bazaar.launchpad.net/~system-settings-touch/gsettings-qt/trunk/
+	md5sums = SKIP
+
+pkgname = gsettings-qt-bzr
+
