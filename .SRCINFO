@@ -1,0 +1,16 @@
+pkgbase = g15rhythmbox
+	pkgdesc = A plugin to display Rhythmbox information on a Logitech G15 LCD
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://mail.gnome.org/archives/rhythmbox-devel/2008-July/msg00062.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = g15composer
+	depends = g15daemon
+	depends = rhythmbox
+	source = http://www.mail-archive.com/rhythmbox-devel@gnome.org/msg05390/LogitechG15.tar.gz
+	md5sums = f3639f1776bcda47d428a45ac2b63973
+
+pkgname = g15rhythmbox
+
