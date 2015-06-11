@@ -1,0 +1,14 @@
+pkgbase = vim_bridge-git
+	pkgdesc = A Python-to-Vim bridge decorator to call Python functions in Vim scripts.
+	pkgver = 20101206
+	pkgrel = 1
+	url = https://github.com/nvie/vim_bridge
+	arch = any
+	license = BSD
+	depends = python2
+	depends = vim
+	source = git+https://github.com/nvie/vim_bridge.git
+	sha1sums = SKIP
+
+pkgname = vim_bridge-git
+
