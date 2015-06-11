@@ -1,0 +1,17 @@
+pkgbase = perl-cache-cache
+	pkgdesc = Generic cache interface and implementations
+	pkgver = 1.06
+	pkgrel = 3
+	url = http://search.cpan.org/~JSWARTZ/Cache-Cache
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl-digest-sha1>=2.02
+	depends = perl-error>=0.15
+	depends = perl-ipc-sharelite>=0.09
+	options = !emptydirs
+	source = http://www.cpan.org/authors/id/J/JS/JSWARTZ/Cache-Cache-1.06.tar.gz
+	md5sums = 4425f44ddb138a799290802e5aad46ef
+
+pkgname = perl-cache-cache
+
