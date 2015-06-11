@@ -4,17 +4,27 @@ pkgname=(chocolate-{doom,heretic,hexen,strife,common})
 pkgbase=${pkgname[0]}
 pkgdesc="Historically-accurate Doom, Heretic, Hexen, and Strife ports."
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.chocolate-doom.org/"
 license=('GPL2')
 depends=('libsamplerate' 'sdl_mixer' 'sdl_net')
 makedepends=('python')
-source=(http://chocolate-doom.org/downloads/${pkgver}/${pkgbase}-${pkgver}.tar.gz)
-sha256sums=('9fa9c56e72f8a04adf8f0800141192e9bafd38c9e424f70942ece6e515570173')
+source=(http://chocolate-doom.org/downloads/${pkgver}/${pkgbase}-${pkgver}.tar.gz
+        0001-setup-Fix-help-URL-for-level-warp-menu.patch)
+sha256sums=('9fa9c56e72f8a04adf8f0800141192e9bafd38c9e424f70942ece6e515570173'
+            'f890dac486a77ace888e18419e0a3f95c2ff59fab9bea08eb92558c3d7320e50')
 
 prepare() {
   cd "${pkgbase}-${pkgver}"
+
+  for patch in ../*.patch; do
+    if [ ! -f "$patch" ]; then
+      break;
+    else
+      patch -p1 -i "$patch"
+    fi
+  done
 
   # Change binary dir from /usr/games to /usr/bin
   sed 's|/games|/bin|g' -i src{,/setup}/Makefile.in

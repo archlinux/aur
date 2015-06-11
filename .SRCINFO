@@ -1,7 +1,7 @@
 pkgbase = chocolate-doom
 	pkgdesc = Historically-accurate Doom, Heretic, Hexen, and Strife ports.
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.chocolate-doom.org/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,9 @@ pkgbase = chocolate-doom
 	depends = sdl_mixer
 	depends = sdl_net
 	source = http://chocolate-doom.org/downloads/2.2.0/chocolate-doom-2.2.0.tar.gz
+	source = 0001-setup-Fix-help-URL-for-level-warp-menu.patch
 	sha256sums = 9fa9c56e72f8a04adf8f0800141192e9bafd38c9e424f70942ece6e515570173
+	sha256sums = f890dac486a77ace888e18419e0a3f95c2ff59fab9bea08eb92558c3d7320e50
 
 pkgname = chocolate-doom
 	pkgdesc = Doom port accurately reproducing the original DOS EXEs.
