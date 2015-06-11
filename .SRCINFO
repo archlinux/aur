@@ -1,0 +1,17 @@
+pkgbase = zsh-dwim-git
+	pkgdesc = A ZSH Do What I Mean key. Attempts to predict what you will want to do next.
+	pkgver = r72.9cfd536
+	pkgrel = 2
+	url = https://github.com/oknowton/zsh-dwim
+	install = dwim.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = zsh
+	provides = zsh-dwim
+	conflicts = zsh-dwim
+	source = git+https://github.com/oknowton/zsh-dwim.git
+	sha256sums = SKIP
+
+pkgname = zsh-dwim-git
+

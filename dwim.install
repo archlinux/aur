@@ -1,0 +1,9 @@
+post_install() {
+  echo
+  echo "Before using this you need to add it to your .zshrc"
+  echo "echo 'source /usr/share/zsh-dwim/init.zsh' >> ~/.zshrc && source ~/.zshrc"
+  echo
+  echo "Usage:"
+  echo "Type a command and hit control-u and zsh-dwim will attempt to transform your command."
+  echo "Typing control-u at an empty command prompt will recall the previous command from your history and then attempt to transform it."
+}
