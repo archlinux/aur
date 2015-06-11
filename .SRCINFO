@@ -1,0 +1,14 @@
+pkgbase = python2-logbook
+	pkgdesc = logging sytem for Python that replaces the standard library’s logging module
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = http://packages.python.org/Logbook/index.html
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2>=2.6
+	source = http://pypi.python.org/packages/source/L/Logbook/Logbook-0.9.0.tar.gz
+	md5sums = 5bd467a7173dd8aac4d33bb49d709464
+
+pkgname = python2-logbook
+
