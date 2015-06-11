@@ -1,0 +1,4 @@
+post_install() {
+	echo ">>> To start glass-wm, add following to ~/.xinitrc"
+	echo ">>> exec glass-wm"
+}

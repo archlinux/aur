@@ -1,0 +1,24 @@
+pkgbase = glass-wm-git
+	pkgdesc = Glass is a small, extensible, window manager.
+	pkgver = r249.58dce10
+	pkgrel = 1
+	url = https://github.com/cdbfoster/glass
+	install = glass-wm.install
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = xcb-util-wm
+	depends = pango
+	depends = xcb-util-keysyms
+	depends = xcb-util
+	provides = glass-wm
+	conflicts = glass-wm
+	source = glass-wm::git+https://github.com/cdbfoster/glass.git
+	source = glass-wm.desktop
+	md5sums = SKIP
+	md5sums = a2c7c82c3a2348aabfc7321bbd4b08e8
+
+pkgname = glass-wm-git
+
