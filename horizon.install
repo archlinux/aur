@@ -1,0 +1,16 @@
+post_install() {
+#  mkdir -p /usr/share/openstack-dashboard/static/dashboard/css
+#  mkdir -p /usr/share/openstack-dashboard/static/dashboard/js
+  ln -s /usr/share/openstack-dashboard/static/dashboard/css /usr/share/openstack-dashboard/openstack_dashboard/static/dashboard/css
+  ln -s /usr/share/openstack-dashboard/static/dashboard/js /usr/share/openstack-dashboard/openstack_dashboard/static/dashboard/js
+  chown -R http /usr/share/openstack-dashboard
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  rm -rf /usr/share/openstack-dashboard
+  true
+}
