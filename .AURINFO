@@ -1,0 +1,16 @@
+pkgbase = klog
+	pkgdesc = Ham radio logging
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = http://jaime.robles.es/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = automoc4
+	makedepends = cmake
+	depends = kdebase-runtime
+	depends = hamlib
+	source = http://download-mirror.savannah.gnu.org/releases/klog/klog-0.6.2.tar.gz
+
+pkgname = klog
+
