@@ -1,0 +1,15 @@
+pkgbase = svxlink-sounds-en_us-heather-8k
+	pkgdesc = Sound Package en_US-heather from svxlink in medium quality
+	pkgver = 13.12
+	pkgrel = 2
+	url = http://sourceforge.net/projects/svxlink/
+	arch = any
+	license = GPL
+	depends = svxlink
+	provides = svxlink-sounds
+	replaces = sounds-en_us-heather
+	source = svxlink-sounds-en_us-heather-8k-13.12.tar.bz2::https://github.com/sm0svx/svxlink-sounds-en_US-heather/releases/download/14.08/svxlink-sounds-en_US-heather-8k-13.12.tar.bz2
+	sha256sums = dbd21caa2042d24f15ba056e9dfc2a9938c42e2f57162b0820eee94876ccc538
+
+pkgname = svxlink-sounds-en_us-heather-8k
+
