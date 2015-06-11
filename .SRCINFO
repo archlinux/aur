@@ -1,0 +1,17 @@
+pkgbase = hts
+	pkgdesc = Modified version (patch) of the Hidden Markov Model Toolkit (htk).
+	pkgver = 2.2
+	pkgrel = 4
+	url = http://hts.sp.nitech.ac.jp/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = wget
+	makedepends = patch
+	depends = libx11
+	conflicts = htk
+	source = http://hts.sp.nitech.ac.jp/archives/2.2/HTS-2.2_for_HTK-3.4.1.tar.bz2
+	md5sums = 76b7674a01f1edfeb5b4bbca4f5e39a2
+
+pkgname = hts
+
