@@ -8,7 +8,9 @@ pkgbase = qrigol-git
 	makedepends = git
 	makedepends = qt5-webkit
 	source = git://github.com/wd5gnr/qrigol.git
+	source = 40-rigol.rules
 	md5sums = SKIP
+	md5sums = 45bf05e7568c4f0c359282e4199654a9
 
 pkgname = qrigol-git
 
