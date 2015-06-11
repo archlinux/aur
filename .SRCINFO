@@ -1,0 +1,23 @@
+pkgbase = sysvinit
+	pkgdesc = Linux System V Init
+	pkgver = 2.88
+	pkgrel = 15
+	url = http://savannah.nongnu.org/projects/sysvinit
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = GPL
+	depends = glibc
+	depends = procps-ng>=3.3.9
+	conflicts = systemd-sysvcompat
+	source = http://download.savannah.gnu.org/releases/sysvinit/sysvinit-2.88dsf.tar.bz2
+	source = 0001-simplify-writelog.patch
+	source = 0002-remove-ansi-escape-codes-from-log-file.patch
+	source = 0001-do-not-build-sulogin-on-archlinux-it-is-provided-by-.patch
+	sha256sums = 60bbc8c1e1792056e23761d22960b30bb13eccc2cabff8c7310a01f4d5df1519
+	sha256sums = 8126d09a35bdb9137bb19dc31b58cf1e829137fba34f7dcde7598018e1736826
+	sha256sums = 90d38e4351ef9d77088661b411eb2b20eda435676e1e407f3d959ca2064d5c1e
+	sha256sums = 43fed9d36b92f15bcdbde6ba2a2784a57115562795942c09dd33ff37a51cb138
+
+pkgname = sysvinit
+
