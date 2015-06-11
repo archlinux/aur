@@ -1,0 +1,13 @@
+[Unit]
+Description=Etherpad-Lite server
+After=syslog.target network.target
+
+[Service]
+Type=simple
+User=etherpad
+Group=etherpad
+WorkingDirectory=/var/lib/etherpad-lite
+ExecStart=/usr/share/webapps/etherpad-lite/bin/run.sh
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,19 @@
+post_install(){
+  getent group etherpad &>/dev/null || groupadd -r etherpad &>/dev/null
+  getent passwd etherpad &>/dev/null || \
+    useradd -r -s /usr/bin/bash -g etherpad -G etherpad,http -m \
+    -d /var/lib/etherpad-lite etherpad >/dev/null
+    #useradd -r -s /usr/bin/false -g etherpad -G etherpad,http -m \
+
+  ln -s /var/lib/etherpad-lite /usr/share/webapps/etherpad-lite/var
+  touch etherpad /usr/share/webapps/etherpad-lite/APIKEY.txt
+  chmod 644 /usr/share/webapps/etherpad-lite/APIKEY.txt
+  chown etherpad:etherpad /usr/share/webapps/etherpad-lite/APIKEY.txt
+
+  systemd-tmpfiles --create etherpad-lite.conf
+}
+
+post_remove() {
+  getent passwd etherpad &>/dev/null && userdel etherpad >/dev/null
+  getent group etherpad &>/dev/null && groupdel etherpad >/dev/null
+}
