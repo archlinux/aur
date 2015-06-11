@@ -1,0 +1,14 @@
+pkgbase = levmar
+	pkgdesc = Levenberg-Marquardt nonlinear least squares algorithms in C/C++
+	pkgver = 2.6
+	pkgrel = 2
+	url = http://www.ics.forth.gr/~lourakis/levmar
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = f2c
+	depends = lapack
+	source = http://www.ics.forth.gr/~lourakis/levmar/levmar-2.6.tgz
+
+pkgname = levmar
+
