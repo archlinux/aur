@@ -1,0 +1,6 @@
+post_upgrade() {
+  # Make sure new rc script can shutdown running dbus
+  if [ -f run/dbus.pid -a -d run/dbus ]; then
+    mv run/dbus.pid run/dbus/pid
+  fi
+}
