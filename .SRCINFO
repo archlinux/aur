@@ -1,0 +1,19 @@
+pkgbase = faience-azur-icon-theme-lite
+	pkgdesc = An icon theme based on Faenza
+	pkgver = 0.5.1
+	pkgrel = 3
+	url = http://tiheum.deviantart.com/art/Faience-icon-theme-255099649
+	arch = any
+	license = GPL3
+	depends = librsvg
+	conflicts = faenza-icon-theme
+	conflicts = faenza-icon-theme-lite
+	conflicts = faience-icon-theme
+	options = !strip
+	source = http://ppa.launchpad.net/tiheum/equinox/ubuntu/pool/main/f/faience-icon-theme/faience-icon-theme_0.5.1.tar.gz
+	source = http://ppa.launchpad.net/tiheum/equinox/ubuntu/pool/main/f/faenza-icon-theme/faenza-icon-theme_1.3.1.tar.gz
+	sha256sums = da4e6e921c465caeb8904d4fc6a183b173c8000c08abce625b5b6739f5a0867a
+	sha256sums = afd1c32229989e4cf09733c1ce5f2a651e585d86f45e98e9de6e8813f15d0edc
+
+pkgname = faience-azur-icon-theme-lite
+
