@@ -53,7 +53,7 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/$_gitname"
-	make options \
+	make \
 		DESTDIR="$pkgdir" \
 		CXX="${_CXX}" \
 		PREFIX="${_PREFIX}" \
@@ -61,6 +61,7 @@ prepare() {
 		INCLUDE_ZSH_COMPLETION=${_INCLUDE_ZSH_COMPLETION} \
 		INCLUDE_UDEV_RULE=${_INCLUDE_UDEV_RULE} \
 		INCLUDE_SYSTEMD_UNIT=${_INCLUDE_SYSTEMD_UNIT} \
+		options
 }
 
 build() {
@@ -72,7 +73,7 @@ build() {
 		INCLUDE_BASH_COMPLETION=${_INCLUDE_BASH_COMPLETION} \
 		INCLUDE_ZSH_COMPLETION=${_INCLUDE_ZSH_COMPLETION} \
 		INCLUDE_UDEV_RULE=${_INCLUDE_UDEV_RULE} \
-		INCLUDE_SYSTEMD_UNIT=${_INCLUDE_SYSTEMD_UNIT} \
+		INCLUDE_SYSTEMD_UNIT=${_INCLUDE_SYSTEMD_UNIT}
 }
 
 package() {
