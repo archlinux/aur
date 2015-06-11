@@ -1,0 +1,14 @@
+pkgbase = wmifinfo
+	pkgdesc = A simple applet showing basic network configuration for all available interfaces
+	pkgver = 0.09
+	pkgrel = 4
+	url = http://zevv.nl/play/code/wmifinfo/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	source = http://zevv.nl/play/code/wmifinfo/wmifinfo-0.09.tgz
+	md5sums = 0c7a2a65e756cf41d94dea3e9268c7e7
+
+pkgname = wmifinfo
+
