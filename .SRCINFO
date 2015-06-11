@@ -1,0 +1,15 @@
+pkgbase = python2-snmp-passpersist
+	pkgdesc = This module is a SNMP passpersist backend for Net-SNMP.
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/snmp-passpersist
+	arch = any
+	license = GPLv3
+	makedepends = python2-setuptools
+	depends = python2>=2.6
+	depends = net-snmp
+	source = http://pypi.python.org/packages/source/s/snmp-passpersist/snmp_passpersist-1.3.0.tar.gz
+	md5sums = 8680ea404d2fbe906b06256a2acf0ccb
+
+pkgname = python2-snmp-passpersist
+
