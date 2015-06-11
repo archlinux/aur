@@ -1,0 +1,69 @@
+Common subdirectories: openssh-6.8p1.orig/contrib and openssh-6.8p1/contrib
+diff -u openssh-6.8p1.orig/kex.c openssh-6.8p1/kex.c
+--- openssh-6.8p1.orig/kex.c	2015-03-17 01:49:20.000000000 -0400
++++ openssh-6.8p1/kex.c	2015-05-08 10:53:07.224569741 -0400
+@@ -82,6 +82,8 @@
+ 	{ KEX_DHGEX_SHA256, KEX_DH_GEX_SHA256, 0, SSH_DIGEST_SHA256 },
+ #endif /* HAVE_EVP_SHA256 */
+ #ifdef OPENSSL_HAS_ECC
++	{ KEX_ECDH_SHA2_SECP256K1, KEX_ECDH_SHA2, NID_secp256k1,
++            SSH_DIGEST_SHA256 },
+ 	{ KEX_ECDH_SHA2_NISTP256, KEX_ECDH_SHA2,
+ 	    NID_X9_62_prime256v1, SSH_DIGEST_SHA256 },
+ 	{ KEX_ECDH_SHA2_NISTP384, KEX_ECDH_SHA2, NID_secp384r1,
+diff -u openssh-6.8p1.orig/kex.h openssh-6.8p1/kex.h
+--- openssh-6.8p1.orig/kex.h	2015-03-17 01:49:20.000000000 -0400
++++ openssh-6.8p1/kex.h	2015-05-08 10:53:07.224569741 -0400
+@@ -55,6 +55,7 @@
+ #define	KEX_DHGEX_SHA1		"diffie-hellman-group-exchange-sha1"
+ #define	KEX_DHGEX_SHA256	"diffie-hellman-group-exchange-sha256"
+ #define	KEX_RESUME		"resume@appgate.com"
++#define KEX_ECDH_SHA2_SECP256K1 "ecdh-sha2-secp256k1"
+ #define	KEX_ECDH_SHA2_NISTP256	"ecdh-sha2-nistp256"
+ #define	KEX_ECDH_SHA2_NISTP384	"ecdh-sha2-nistp384"
+ #define	KEX_ECDH_SHA2_NISTP521	"ecdh-sha2-nistp521"
+diff -u openssh-6.8p1.orig/myproposal.h openssh-6.8p1/myproposal.h
+--- openssh-6.8p1.orig/myproposal.h	2015-03-17 01:49:20.000000000 -0400
++++ openssh-6.8p1/myproposal.h	2015-05-08 10:53:07.227903085 -0400
+@@ -31,6 +31,7 @@
+ #ifdef OPENSSL_HAS_ECC
+ #ifdef OPENSSL_HAS_NISTP521
+ # define KEX_ECDH_METHODS \
++	"ecdh-sha2-secp256k1," \
+ 	"ecdh-sha2-nistp256," \
+ 	"ecdh-sha2-nistp384," \
+ 	"ecdh-sha2-nistp521,"
+@@ -44,6 +45,7 @@
+ 	"ecdsa-sha2-nistp521,"
+ #else
+ # define KEX_ECDH_METHODS \
++	"ecdh-sha2-secp256k1," \
+ 	"ecdh-sha2-nistp256," \
+ 	"ecdh-sha2-nistp384,"
+ # define HOSTKEY_ECDSA_CERT_METHODS \
+Common subdirectories: openssh-6.8p1.orig/openbsd-compat and openssh-6.8p1/openbsd-compat
+Common subdirectories: openssh-6.8p1.orig/regress and openssh-6.8p1/regress
+Common subdirectories: openssh-6.8p1.orig/scard and openssh-6.8p1/scard
+diff -u openssh-6.8p1.orig/sshkey.c openssh-6.8p1/sshkey.c
+--- openssh-6.8p1.orig/sshkey.c	2015-03-17 01:49:20.000000000 -0400
++++ openssh-6.8p1/sshkey.c	2015-05-08 10:55:34.348328846 -0400
+@@ -93,6 +93,7 @@
+ 	{ "ssh-rsa", "RSA", KEY_RSA, 0, 0 },
+ 	{ "ssh-dss", "DSA", KEY_DSA, 0, 0 },
+ # ifdef OPENSSL_HAS_ECC
++	{ "ecdsa-sha2-secp256k1", "ECDSA", KEY_ECDSA, NID_secp256k1, 0 },
+ 	{ "ecdsa-sha2-nistp256", "ECDSA", KEY_ECDSA, NID_X9_62_prime256v1, 0 },
+ 	{ "ecdsa-sha2-nistp384", "ECDSA", KEY_ECDSA, NID_secp384r1, 0 },
+ #  ifdef OPENSSL_HAS_NISTP521
+diff -u openssh-6.8p1.orig/ssh-keyscan.c openssh-6.8p1/ssh-keyscan.c
+--- openssh-6.8p1.orig/ssh-keyscan.c	2015-03-17 01:49:20.000000000 -0400
++++ openssh-6.8p1/ssh-keyscan.c	2015-05-08 10:57:55.585386521 -0400
+@@ -271,7 +271,7 @@
+ 	    c->c_keytype == KT_DSA ?  "ssh-dss" :
+ 	    (c->c_keytype == KT_RSA ? "ssh-rsa" :
+ 	    (c->c_keytype == KT_ED25519 ? "ssh-ed25519" :
+-	    "ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521"));
++	    "ecdsa-sha2-secp256k1,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521"));
+ 	if ((r = kex_setup(c->c_ssh, myproposal)) != 0) {
+ 		free(c->c_ssh);
+ 		fprintf(stderr, "kex_setup: %s\n", ssh_err(r));
