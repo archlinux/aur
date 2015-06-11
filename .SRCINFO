@@ -1,0 +1,16 @@
+pkgbase = wmeyes
+	pkgdesc = A dock app providing swallowed XEyes
+	pkgver = 0
+	pkgrel = 1
+	url = http://home.istar.ca/~jenora/wmeyes.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = imake
+	depends = libxpm
+	depends = libxmu
+	source = http://www.cs.mun.ca/~gstarkes/wmaker/dockapps/files/wmeyes.tgz
+	md5sums = 611509fd1ced9fc90abaa6487ea307eb
+
+pkgname = wmeyes
+
