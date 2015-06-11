@@ -1,0 +1,17 @@
+pkgbase = wmbattery
+	pkgdesc = Battery monitor dockapp for Window Maker
+	pkgver = 2.41
+	pkgrel = 1
+	url = http://kitenet.net/~joey/code/wmbattery/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	depends = hal
+	source = git://git.kitenet.net/wmbattery#tag=2.41
+	source = disable-apm.patch
+	md5sums = SKIP
+	md5sums = c5e2a979ade6d16069065c93f2cf2402
+
+pkgname = wmbattery
+
