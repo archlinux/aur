@@ -1,7 +1,7 @@
 pkgbase = stlink-git
 	pkgdesc = stm32 discovery line linux programmer.
-	pkgver = r590.f5b8603
-	pkgrel = 9
+	pkgver = r662.fdfb82b
+	pkgrel = 10
 	url = https://github.com/texane/stlink
 	install = stlink-git.install
 	arch = i686

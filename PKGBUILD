@@ -1,7 +1,7 @@
-# Maintainer: Christian Mauderer <c_mauderer[at]yahoo[dot]de>
+# Maintainer: Christian Mauderer <oss@c-mauderer.de>
 pkgname=stlink-git
-pkgrel=9
-pkgver=r590.f5b8603
+pkgrel=10
+pkgver=r662.fdfb82b
 pkgdesc="stm32 discovery line linux programmer."
 arch=('i686' 'x86_64')
 url="https://github.com/texane/stlink"
@@ -23,7 +23,7 @@ pkgver() {
 build() {
 	cd "${srcdir}/${pkgname}"
 	./autogen.sh
-	./configure --prefix="/usr/"
+	./configure --prefix="/usr/" --with-gtk
 	make
 } 
 
