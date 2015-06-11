@@ -1,0 +1,35 @@
+pkgbase = 2gis
+	pkgdesc = Geographic Information System (GIS) for some Russian and Ukrainian cities.
+	pkgver = 3.14.12.0
+	pkgrel = 1
+	url = http://help.2gis.ru/linux/
+	install = 2gis.install
+	arch = i686
+	arch = x86_64
+	license = Adware
+	makedepends = xdg-utils
+	source = http://download.2gis.ru/arhives/2GISShell-3.14.12.0.orig.zip
+	source = 2gis_16.png
+	source = 2gis_32.png
+	source = 2gis_48.png
+	source = 2gis_64.png
+	source = 2gis_128.png
+	source = 2gis_256.png
+	source = 2gis-launch
+	source = 2gis.desktop
+	source = LICENSE.ru
+	source = LICENSE.ua
+	md5sums = cc8281ff42a1eb1803babe2a1dc7232c
+	md5sums = 3126035adc7f7873d55137bb921e5356
+	md5sums = 6b37fc39d33dc7123eafa15739c51009
+	md5sums = 556a7554782ade8f92aa1618db864dea
+	md5sums = d81f31d399f8518802e827ee030e09d9
+	md5sums = e9d4e16abe81b7f9faccb6b0ffe6be42
+	md5sums = a822bf76a89d614bb34019543a31014b
+	md5sums = d444c77bbc94c687d8edbee794f8f115
+	md5sums = 5da78116da466a791741f4c9c29839b7
+	md5sums = 415c638aa454ab03b1977c5156888e14
+	md5sums = 841a50883a42fe12688e84f66bd26caf
+
+pkgname = 2gis
+

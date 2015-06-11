@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=2GIS
+Name[ru_RU]=2ГИС
+Exec=2gis
+Icon=2gis
+StartupNotify=true
+Categories=Application;Utility;
