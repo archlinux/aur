@@ -1,0 +1,16 @@
+pkgbase = python2-xstatic-angular
+	pkgdesc = XStatic-Angular
+	pkgver = 1.3.7.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/XStatic-Angular
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python2-setuptools
+	makedepends = python2-pip
+	depends = python2
+	source = https://pypi.python.org/packages/source/X/XStatic-Angular/XStatic-Angular-1.3.7.0.tar.gz
+	md5sums = fa26884ab0b2acfa09e372aedd7e7b04
+
+pkgname = python2-xstatic-angular
+
