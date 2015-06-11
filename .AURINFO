@@ -1,0 +1,28 @@
+pkgbase = cryptsetup-nuke-keys
+	pkgdesc = cryptsetup patched to nuke all keyslots given a certain passphrase
+	pkgver = 1.6.6
+	pkgrel = 1
+	url = https://github.com/offensive-security/cryptsetup-nuke-keys
+	arch = i686
+	arch = x86_64
+	groups = base
+	license = GPL
+	makedepends = util-linux
+	depends = device-mapper
+	depends = libgcrypt
+	depends = popt
+	depends = libutil-linux
+	provides = cryptsetup
+	conflicts = cryptsetup
+	source = https://www.kernel.org/pub/linux/utils/cryptsetup/v1.6/cryptsetup-1.6.6.tar.xz
+	source = encrypt_hook
+	source = encrypt_install
+	source = sd-encrypt
+	source = cryptsetup.c.patch
+	source = keymanage.c.patch
+	source = libcryptsetup.h.patch
+	source = setup.c.patch
+	options = !emptydirs
+
+pkgname = cryptsetup-nuke-keys
+

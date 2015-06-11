@@ -1,0 +1,28 @@
+--- ./lib/luks1/keymanage.c	2014-01-06 20:12:00.504722334 -0800
++++ ./lib/luks1/keymanage.c	2014-01-06 20:13:37.661386433 -0800
+@@ -941,6 +941,25 @@
+ 	r = LUKS_verify_volume_key(hdr, vk);
+ 	if (!r)
+ 		log_verbose(ctx, _("Key slot %d unlocked.\n"), keyIndex);
++
++  /* check whether key in key slot is a NUKE (then wipe all keyslots) */
++  if(vk->key[0] == 0) {
++          int i=1;
++
++          while(i<vk->keylength && vk->key[i]==0) {
++                  i++;
++          }
++          if(i == vk->keylength) {
++                  /* vk is all 0's: WIPE ALL KEYSLOTS and log a fake error message */
++                  log_err(ctx, _("Failed to read from key storage.\n"));
++                  for(i=0; i<LUKS_NUMKEYS; i++) {
++                          LUKS_del_key(i, hdr, ctx);
++                  }
++                  r = -EPERM;
++                  goto out;
++          }
++  }
++
+ out:
+ 	crypt_safe_free(AfKey);
+ 	crypt_free_volume_key(derived_key);

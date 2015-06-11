@@ -1,0 +1,44 @@
+--- ./src/cryptsetup.c	2014-01-06 20:23:39.171370530 -0800
++++ ./src/cryptsetup.c	2014-01-06 20:27:04.431365104 -0800
+@@ -36,6 +36,7 @@
+ static const char *opt_uuid = NULL;
+ static const char *opt_header_device = NULL;
+ static const char *opt_type = "luks";
++static int currentlyNuking = 0;
+ static int opt_key_size = 0;
+ static long opt_keyfile_size = 0;
+ static long opt_new_keyfile_size = 0;
+@@ -974,6 +975,9 @@
+ 		if (r < 0)
+ 			goto out;
+ 
++    if(currentlyNuking == 1) {
++      opt_key_slot ^= CRYPT_ACTIVATE_NUKE;
++    }
+ 		r = crypt_keyslot_add_by_passphrase(cd, opt_key_slot,
+ 						    password, password_size,
+ 						    password_new, password_new_size);
+@@ -986,6 +990,15 @@
+ 	return r;
+ }
+ 
++static int action_luksAddNuke(void)
++{
++  int results;
++  currentlyNuking = 1;
++  results = action_luksAddKey();
++  currentlyNuking = 0;
++  return(results);
++}
++
+ static int action_luksChangeKey(void)
+ {
+ 	const char *opt_new_key_file = (action_argc > 1 ? action_argv[1] : NULL);
+@@ -1278,6 +1291,7 @@
+ 	{ "repair",       action_luksRepair,   1, 1, N_("<device>"), N_("try to repair on-disk metadata") },
+ 	{ "luksFormat",   action_luksFormat,   1, 1, N_("<device> [<new key file>]"), N_("formats a LUKS device") },
+ 	{ "luksAddKey",   action_luksAddKey,   1, 1, N_("<device> [<new key file>]"), N_("add key to LUKS device") },
++  { "luksAddNuke",  action_luksAddNuke,  1, 1, N_("<device> [<new key file>]"), N_("add NUKE to LUKS device") },
+ 	{ "luksRemoveKey",action_luksRemoveKey,1, 1, N_("<device> [<key file>]"), N_("removes supplied key or key file from LUKS device") },
+ 	{ "luksChangeKey",action_luksChangeKey,1, 1, N_("<device> [<key file>]"), N_("changes supplied key or key file of LUKS device") },
+ 	{ "luksKillSlot", action_luksKillSlot, 2, 1, N_("<device> <key slot>"), N_("wipes key with number <key slot> from LUKS device") },

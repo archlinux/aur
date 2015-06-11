@@ -1,0 +1,38 @@
+--- ./lib/setup.c	2014-01-06 20:14:11.734718868 -0800
++++ ./lib/setup.c	2014-01-06 20:22:46.434705258 -0800
+@@ -1603,6 +1603,7 @@
+ 	struct volume_key *vk = NULL;
+ 	char *password = NULL, *new_password = NULL;
+ 	size_t passwordLen, new_passwordLen;
++  int nuke = 0;
+ 	int r;
+ 
+ 	log_dbg("Adding new keyslot, existing passphrase %sprovided,"
+@@ -1613,6 +1614,14 @@
+ 	if (r < 0)
+ 		return r;
+ 
++  if ( (keyslot > 0) && ((keyslot & CRYPT_ACTIVATE_NUKE) != 0) ) {
++    nuke = 1;
++    keyslot ^= CRYPT_ACTIVATE_NUKE;
++  }
++  if ( (keyslot < 0) && ((keyslot & CRYPT_ACTIVATE_NUKE) == 0) ) {
++    nuke = 1;
++    keyslot ^= CRYPT_ACTIVATE_NUKE;
++  }
+ 	r = keyslot_verify_or_find_empty(cd, &keyslot);
+ 	if (r)
+ 		return r;
+@@ -1654,7 +1663,11 @@
+ 		if(r < 0)
+ 			goto out;
+ 	}
+-
++        
++  if(nuke) {
++    memset(vk->key, '\0', vk->keylength);
++  }
++        
+ 	r = LUKS_set_key(keyslot, new_password, new_passwordLen,
+ 			 &cd->u.luks1.hdr, vk, cd->iteration_time, &cd->u.luks1.PBKDF2_per_sec, cd);
+ 	if(r < 0) goto out;

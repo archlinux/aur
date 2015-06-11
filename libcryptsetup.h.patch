@@ -1,0 +1,11 @@
+--- ./lib/libcryptsetup.h	2014-01-06 20:10:05.351392053 -0800
++++ ./lib/libcryptsetup.h	2014-01-06 20:11:12.141390279 -0800
+@@ -725,6 +725,8 @@
+ #define CRYPT_ACTIVATE_PRIVATE (1 << 4)
+ /** corruption detected (verity), output only */
+ #define CRYPT_ACTIVATE_CORRUPTED (1 << 5)
++/** key slot is a nuke, will wipe all keyslots */
++#define CRYPT_ACTIVATE_NUKE (1 << 30)
+ 
+ /**
+  * Active device runtime attributes
