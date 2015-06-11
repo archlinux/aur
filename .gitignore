@@ -1,2 +1,3 @@
-*.tar.{gz,xz}
+*.tar.gz
+*.tar.xz
 twittering-mode/
