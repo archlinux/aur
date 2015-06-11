@@ -1,0 +1,15 @@
+post_install() {
+  echo -n "Updating font cache... "
+  fc-cache /usr/share/fonts/open-dyslexic
+  mkfontscale /usr/share/fonts/open-dyslexic
+  mkfontdir /usr/share/fonts/open-dyslexic
+  echo "done."
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  post_install $1
+}

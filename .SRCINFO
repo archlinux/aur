@@ -1,0 +1,15 @@
+pkgbase = open-dyslexic-fonts
+	pkgdesc = A set of fonts developed with improved readability for dyslexics in mind.
+	pkgver = r148.27a457b
+	pkgrel = 1
+	url = http://dyslexicfonts.com/
+	install = open-dyslexic-fonts.install
+	arch = any
+	license = CC-By 3.0
+	makedepends = git
+	depends = fontconfig
+	source = git+https://github.com/antijingoist/open-dyslexic.git
+	md5sums = SKIP
+
+pkgname = open-dyslexic-fonts
+
