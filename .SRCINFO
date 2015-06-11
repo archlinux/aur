@@ -1,0 +1,15 @@
+pkgbase = android-platform-21
+	pkgdesc = Android SDK Platform, API-21
+	pkgver = 5.0.1_r02
+	pkgrel = 1
+	url = http://developer.android.com/sdk/index.html
+	arch = any
+	license = custom
+	depends = android-sdk
+	depends = android-sdk-platform-tools
+	options = !strip
+	source = http://dl.google.com/android/repository/android-21_r02.zip
+	sha512sums = a4e68fe01369505499c9f0a99a228a7717a73f6e74ef0a59dc3f0bd48706a715b132b5ba4ca5a484dafd465c2ab08a5fbe525b487c62824fca2fab44cade809c
+
+pkgname = android-platform-21
+
