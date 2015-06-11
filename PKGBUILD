@@ -1,9 +1,9 @@
 # Maintainer: Christian Mauderer <c_mauderer[at]yahoo[dot]de>
 pkgname=stlink-git
-pkgver=20120311
-pkgrel=2
+pkgver=20120318
+pkgrel=3
 pkgdesc="stm32 discovery line linux programmer."
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url="https://github.com/texane/stlink"
 license=('custom')
 depends=('libusb>=1.0' 'pkg-config')
