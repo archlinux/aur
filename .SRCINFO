@@ -1,0 +1,26 @@
+pkgbase = g15mpd
+	pkgdesc = A simple frontend for the Media Player Daemon, for use with G15Daemon.
+	pkgver = 1.0.0
+	pkgrel = 3
+	url = http://www.g15tools.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = gcc
+	makedepends = libtool
+	makedepends = make
+	makedepends = patch
+	makedepends = pkg-config
+	depends = g15daemon
+	depends = libmpd
+	depends = libxtst
+	options = !libtool
+	source = http://downloads.sourceforge.net/g15daemon/g15mpd-1.0.0.tar.bz2
+	source = g15mpd-libmpdheader.patch
+	md5sums = 20f44c69b121750c27879e04c2cdff60
+	md5sums = 6392a59672f0b737535a9bcf04ba49a0
+
+pkgname = g15mpd
+
