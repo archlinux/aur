@@ -1,0 +1,18 @@
+pkgbase = wmweather+
+	pkgdesc = Downloads the National Weather Service METAR bulletins, ANV and MRF forecasts, and any weather map for display in a WindowMaker dockapp
+	pkgver = 2.15
+	pkgrel = 1
+	url = http://sourceforge.net/projects/wmweatherplus
+	arch = i686
+	arch = x86_64
+	groups = x11
+	license = GPL
+	depends = pcre
+	depends = libxpm
+	depends = curl
+	depends = windowmaker
+	source = http://downloads.sf.net/wmweatherplus/wmweather+-2.15.tar.gz
+	md5sums = 5eea25d708abe1da3549672b898bd0d4
+
+pkgname = wmweather+
+
