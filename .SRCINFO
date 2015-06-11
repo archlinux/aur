@@ -1,0 +1,15 @@
+pkgbase = python2-taskflow
+	pkgdesc = Structured state management library
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://launchpad.net/taskflow
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://pypi.python.org/packages/source/t/taskflow/taskflow-0.1.3.tar.gz
+	md5sums = e0b469d7647fe316583e20f60d041702
+
+pkgname = python2-taskflow
+
