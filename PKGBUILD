@@ -3,7 +3,7 @@
 pkgname=vim_lib
 pkgver=97.367812f
 pkgrel=1
-pkgdesc="Base library for vim plygins by Delphinium"
+pkgdesc="Base library for vim plugins by Delphinium"
 arch=('any')
 url='https://github.com/Bashka/vim_lib'
 license=('GPL')
