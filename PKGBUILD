@@ -1,18 +1,17 @@
 # Maintainer: Auguste Pop <auguste [at] gmail [dot] com>
 
 pkgname=crafty
-pkgver=24.0
+pkgver=24.1
 pkgrel=1
 pkgdesc="A computer chess program"
 arch=('i686' 'x86_64')
 url="http://www.cis.uab.edu/hyatt/"
 license=('custom')
-backup=()
 source=(http://www.cis.uab.edu/hyatt/crafty/source/$pkgname-$pkgver.zip
         http://www.cis.uab.edu/hyatt/crafty/book/book.bin
         http://www.cis.uab.edu/hyatt/crafty/book/books.bin
         copyright)
-md5sums=('51429d18732e86c80c6ade2af06a92a6'
+md5sums=('6a3d5498aa867e97221c7458251ef87b'
          '6d527840579904bf0e0b0a456a580a9b'
          '966a852a2ccd3c32e9167061592928d3'
          '438cec9f32fb79f58822f97cf64e7afb')
@@ -23,6 +22,7 @@ prepare()
     sed -i -e 's:./runprof:sh ./runprof:' -e \
         "s:'-DTEST:'-DBOOKDIR=\"\\\\\"/usr/share/crafty\\\\\"\" -DTEST:" \
         Makefile
+    [[ $arch == "i686" ]] && sed -i -e '/opt/s/ -DINLINEASM//g' Makefile
     sed -i 's:"crafty.hlp":BOOKDIR"/crafty.hlp":' option.c
 }
 
