@@ -1,0 +1,14 @@
+pkgbase = par
+	pkgdesc = Paragraph reformatter
+	pkgver = 1.52
+	pkgrel = 4
+	url = http://www.nicemice.net/par/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glibc
+	source = http://www.nicemice.net/par/Par152.tar.gz
+	md5sums = 4ccacd824171ba2c2f14fb8aba78b9bf
+
+pkgname = par
+
