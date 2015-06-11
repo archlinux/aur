@@ -1,14 +1,14 @@
 # Maintainer: Yuki Chiba <yuki.from.akita@gmail.com>
 
 pkgname=auto-complete-nxml-git
-pkgver=0.r27.aece0b9
-pkgrel=2
+pkgver=0.r28.ac7b09a
+pkgrel=1
 pkgdesc="An extension of Emacs provides completion by auto-complete.el on nXML-mode"
 arch=('any')
 url="https://github.com/aki2o/auto-complete-nxml"
 license=('GPL')
 groups=()
-depends=('emacs' 'emacs-auto-complete-git')
+depends=('emacs' 'emacs-auto-complete')
 makedepends=('git')
 optdepends=()
 provides=()
