@@ -1,0 +1,17 @@
+pkgbase = ucglib-git
+	pkgdesc = Color graphics library for embedded systems
+	pkgver = 59e157e
+	pkgrel = 1
+	url = https://github.com/olikraus/ucglib.git
+	arch = i686
+	arch = x86_64
+	arch = armv5tel
+	arch = armv7l
+	license = BSD
+	makedepends = wiringpi-git
+	depends = wiringpi-git
+	source = ucglib-git::git+https://github.com/yhfudev/ucglib.git
+	md5sums = SKIP
+
+pkgname = ucglib-git
+
