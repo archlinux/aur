@@ -1,0 +1,20 @@
+pkgbase = applebloom
+	pkgdesc = Apple Bloom the pony dictionary
+	pkgver = 1396811847
+	pkgrel = 1
+	url = https://github.com/GNU-Pony/applebloom
+	install = applebloom.install
+	arch = any
+	license = AGPL3
+	makedepends = make
+	makedepends = coreutils
+	makedepends = sed
+	makedepends = texinfo
+	makedepends = gzip
+	depends = bash
+	depends = coreutils
+	source = https://github.com/GNU-Pony/applebloom/archive/1396811847.tar.gz
+	sha256sums = 899e6cc9ccdb3143158e43b8f0bedcb3babdb89533ad575eb72e339f183cc7bc
+
+pkgname = applebloom
+
