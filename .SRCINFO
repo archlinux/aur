@@ -1,0 +1,16 @@
+pkgbase = perl-netpacket
+	pkgdesc = assemble/disassemble network packets at the protocol level
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://metacpan.org/release/NetPacket
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/Y/YA/YANICK/NetPacket-1.6.0.tar.gz
+	md5sums = 17ba0407dada096f046f513387e88818
+
+pkgname = perl-netpacket
+
