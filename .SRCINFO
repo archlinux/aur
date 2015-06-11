@@ -1,0 +1,13 @@
+pkgbase = nodejs-nib
+	pkgdesc = Stylus mixins, utilities, components, and gradient image generation
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/visionmedia/nib
+	arch = any
+	depends = nodejs-stylus
+	noextract = nib-1.1.0.tgz
+	source = http://registry.npmjs.org/nib/-/nib-1.1.0.tgz
+	sha1sums = 527c19662a10a2b565fe85e9b309d622aa7557d3
+
+pkgname = nodejs-nib
+
