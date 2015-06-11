@@ -1,0 +1,344 @@
+diff -up src/waimea-0.4.0/src/Net.cc.orig src/waimea-0.4.0/src/Net.cc
+--- src/waimea-0.4.0/src/Net.cc.orig	2002-11-06 04:55:10.000000000 -0700
++++ src/waimea-0.4.0/src/Net.cc	2013-11-10 04:20:46.000000000 -0700
+@@ -326,7 +326,7 @@ void NetHandler::GetWMNormalHints(WaWind
+  * @param ww WaWindow object
+  */
+ void NetHandler::GetState(WaWindow *ww) {
+-    CARD32 *data;
++    long *data;
+ 
+     ww->state = WithdrawnState;
+     XGrabServer(display);
+@@ -352,7 +352,7 @@ void NetHandler::GetState(WaWindow *ww)
+  * @param newstate State to change to
+  */
+ void NetHandler::SetState(WaWindow *ww, int newstate) {
+-    CARD32 data[2];
++    long data[2];
+     
+     ww->state = newstate;
+     switch (ww->state) {
+@@ -391,7 +391,7 @@ void NetHandler::SetState(WaWindow *ww,
+  * @param ww WaWindow object
+  */
+ void NetHandler::GetWmState(WaWindow *ww) {
+-    CARD32 *data;
++    long *data;
+     bool vert = false, horz = false, shaded = false, title = false,
+         handle = false, border = false, decor = false;
+     unsigned int i;
+@@ -469,8 +469,8 @@ void NetHandler::GetWmState(WaWindow *ww
+  */
+ void NetHandler::SetWmState(WaWindow *ww) {
+     int i = 0;
+-    CARD32 data[10];
+-    CARD32 data2[6];
++    long data[10];
++    long data2[6];
+ 
+     XGrabServer(display);
+     if (validatedrawable(ww->id)) {
+@@ -511,7 +511,7 @@ void NetHandler::SetWmState(WaWindow *ww
+  * @param ws WaScreen object
+  */
+ void NetHandler::SetSupported(WaScreen *ws) {
+-    CARD32 data[43];
++    long data[43];
+     int i = 0;
+ 
+     data[i++] = net_supported;
+@@ -596,10 +596,10 @@ void NetHandler::SetSupportedWMCheck(WaS
+  * @param ws WaScreen object
+  */
+ void NetHandler::SetClientList(WaScreen *ws) {
+-    CARD32 *data;
++    long *data;
+     int i = 0;
+ 
+-    data = new CARD32[ws->wawindow_list_map_order.size() + 1];
++    data = new long[ws->wawindow_list_map_order.size() + 1];
+ 
+     list<WaWindow *>::iterator it =
+         ws->wawindow_list_map_order.begin();
+@@ -624,13 +624,13 @@ void NetHandler::SetClientList(WaScreen
+  * @param ws WaScreen object
+  */
+ void NetHandler::SetClientListStacking(WaScreen *ws) {
+-    CARD32 *data;
++    long *data;
+     list<WaWindow *>::reverse_iterator rit;
+     list<WindowObject *>::reverse_iterator writ;
+     list<WaWindow *>::iterator it;    
+     int i = 0;
+ 
+-    data = new CARD32[ws->wawindow_list.size() + 1];
++    data = new long[ws->wawindow_list.size() + 1];
+     
+     it = ws->wawindow_list_stacking_aab.begin();
+     for (; it != ws->wawindow_list_stacking_aab.end(); ++it)
+@@ -660,7 +660,7 @@ void NetHandler::SetClientListStacking(W
+  * @param ws WaScreen object
+  */
+ void NetHandler::GetClientListStacking(WaScreen *ws) {
+-    CARD32 *data;
++    long *data;
+     WaWindow *ww;
+     unsigned int i;
+     
+@@ -702,11 +702,11 @@ void NetHandler::GetClientListStacking(W
+  * @param ww WaWindow that was set active or NULL if root window.
+  */
+ void NetHandler::SetActiveWindow(WaScreen *ws, WaWindow *ww) {
+-    CARD32 *data;
++    long *data;
+     list<WaWindow *>::iterator it;
+     int i = 0;
+ 
+-    data = new CARD32[ws->wawindow_list.size() + 1];
++    data = new long[ws->wawindow_list.size() + 1];
+     
+     if (ww) {
+         ws->focus = false;
+@@ -738,7 +738,7 @@ void NetHandler::SetActiveWindow(WaScree
+  */
+ void NetHandler::GetActiveWindow(WaScreen *ws) {
+     WaWindow *ww;
+-    CARD32 *data;
++    long *data;
+     int i;
+     
+     if (XGetWindowProperty(display, ws->id, net_active_window, 0L,
+@@ -908,7 +908,7 @@ void NetHandler::SetVirtualPos(WaWindow
+  * @param ww WaWindow object
+  */
+ void NetHandler::GetWmStrut(WaWindow *ww) {
+-    CARD32 *data;
++    long *data;
+     WMstrut *wm_strut;
+     bool found = false;
+     int status;
+@@ -959,7 +959,7 @@ void NetHandler::GetWmStrut(WaWindow *ww
+  */
+ void NetHandler::GetWmPid(WaWindow *ww) {
+     char tmp[32];
+-    CARD32 *data;
++    long *data;
+ 
+     XGrabServer(display);
+     if (validatedrawable(ww->id)) {
+@@ -986,7 +986,7 @@ void NetHandler::GetWmPid(WaWindow *ww)
+  * @param ws WaScreen object
+  */
+ void NetHandler::GetDesktopViewPort(WaScreen *ws) {
+-    CARD32 *data;
++    long *data;
+     
+     if (XGetWindowProperty(display, ws->id, net_desktop_viewport, 0L, 2L, 
+                            false, XA_CARDINAL, &real_type,
+@@ -1007,7 +1007,7 @@ void NetHandler::GetDesktopViewPort(WaSc
+  * @param ws WaScreen object
+  */
+ void NetHandler::SetDesktopViewPort(WaScreen *ws) {
+-    CARD32 data[2];
++    long data[2];
+ 
+     data[0] = ws->v_x;
+     data[1] = ws->v_y;
+@@ -1025,7 +1025,7 @@ void NetHandler::SetDesktopViewPort(WaSc
+  * @param ws WaScreen object
+  */
+ void NetHandler::SetDesktopGeometry(WaScreen *ws) {
+-    CARD32 data[2];
++    long data[2];
+ 
+     data[0] = ws->v_xmax + ws->width;
+     data[1] = ws->v_ymax + ws->height;    
+@@ -1042,7 +1042,7 @@ void NetHandler::SetDesktopGeometry(WaSc
+  * @param ws WaScreen object
+  */
+ void NetHandler::SetNumberOfDesktops(WaScreen *ws) {
+-    CARD32 data[1];
++    long data[1];
+ 
+     data[0] = ws->desktop_list.size();
+     XChangeProperty(display, ws->id, net_number_of_desktops, XA_CARDINAL, 32,
+@@ -1058,7 +1058,7 @@ void NetHandler::SetNumberOfDesktops(WaS
+  * @param ws WaScreen object
+  */
+ void NetHandler::SetCurrentDesktop(WaScreen *ws) {
+-    CARD32 data[1];
++    long data[1];
+     
+     data[0] = ws->current_desktop->number;
+     XChangeProperty(display, ws->id, net_current_desktop, XA_CARDINAL, 32,
+@@ -1074,7 +1074,7 @@ void NetHandler::SetCurrentDesktop(WaScr
+  * @param ws WaScreen object
+  */
+ void NetHandler::GetCurrentDesktop(WaScreen *ws) {
+-    CARD32 *data;
++    long *data;
+ 
+     if (XGetWindowProperty(display, ws->id, net_current_desktop, 0L, 1L, 
+                            false, XA_CARDINAL, &real_type, &real_format, 
+@@ -1120,7 +1120,7 @@ void NetHandler::SetDesktopNames(WaScree
+  * @param ws WaScreen object
+  */
+ void NetHandler::SetWorkarea(WaScreen *ws) {
+-    CARD32 data[4 * 16];
++    long data[4 * 16];
+     int i = 0;
+     
+     list<Desktop *>::iterator it = ws->desktop_list.begin();
+@@ -1189,7 +1189,7 @@ void NetHandler::DeleteSupported(WaScree
+  * @param ws WaScreen object
+  */
+ void NetHandler::GetXRootPMapId(WaScreen *ws) {
+-    CARD32 *data;
++    long *data;
+ 
+     XSync(ws->display, false);
+     if (XGetWindowProperty(ws->pdisplay, ws->id, xrootpmap_id, 0L, 1L, 
+@@ -1217,7 +1217,7 @@ void NetHandler::GetXRootPMapId(WaScreen
+  * @param ww WaWindow object
+  */
+ void NetHandler::GetWmType(WaWindow *ww) {
+-    CARD32 *data;
++    long *data;
+     int status;
+     
+     XGrabServer(display);
+@@ -1320,7 +1320,7 @@ void NetHandler::GetWmType(WaWindow *ww)
+  * @param ww WaWindow object
+  */
+ void NetHandler::SetDesktop(WaWindow *ww) {
+-    CARD32 data[1];
++    long data[1];
+ 
+     data[0] = 0;
+     if (ww->desktop_mask & (1L << ww->wascreen->current_desktop->number))
+@@ -1353,7 +1353,7 @@ void NetHandler::SetDesktop(WaWindow *ww
+  * @param ww WaWindow object
+  */
+ void NetHandler::SetDesktopMask(WaWindow *ww) {
+-    CARD32 data[1];
++    long data[1];
+ 
+     data[0] = ww->desktop_mask;
+ 
+@@ -1375,7 +1375,7 @@ void NetHandler::SetDesktopMask(WaWindow
+  * @param ww WaWindow object
+  */
+ void NetHandler::GetDesktop(WaWindow *ww) {
+-    CARD32 *data;
++    long *data;
+ 
+     XGrabServer(display);
+     if (validatedrawable(ww->id)) {
+@@ -1415,7 +1415,7 @@ void NetHandler::GetDesktop(WaWindow *ww
+  * @return True if window is systray window, otherwise false
+  */
+ bool NetHandler::IsSystrayWindow(Window w) {
+-    CARD32 *data;
++    long *data;
+     
+     items_read = 0;
+     XGrabServer(display);
+@@ -1442,10 +1442,10 @@ bool NetHandler::IsSystrayWindow(Window
+  * @param ws WaScreen object
+  */
+ void NetHandler::SetSystrayWindows(WaScreen *ws) {
+-    CARD32 *data;
++    long *data;
+     int i = 0;
+ 
+-    data = new CARD32[ws->systray_window_list.size() + 1];
++    data = new long[ws->systray_window_list.size() + 1];
+ 
+     list<Window>::iterator it = ws->systray_window_list.begin();
+     for (; it != ws->systray_window_list.end(); it++)
+diff -up src/waimea-0.4.0/src/Net.hh.orig src/waimea-0.4.0/src/Net.hh
+--- src/waimea-0.4.0/src/Net.hh.orig	2002-11-06 04:55:10.000000000 -0700
++++ src/waimea-0.4.0/src/Net.hh	2013-11-10 04:19:37.000000000 -0700
+@@ -34,9 +34,9 @@ class NetHandler;
+ #define PropMotifWmHintsElements 3
+ 
+ typedef struct {
+-    CARD32 flags;
+-    CARD32 functions;
+-    CARD32 decorations;
++    long flags;
++    long functions;
++    long decorations;
+ } MwmHints;
+ 
+ #define _NET_WM_STATE_REMOVE 0
+diff -up src/waimea-0.4.0/src/Resources.cc.orig src/waimea-0.4.0/src/Resources.cc
+--- src/waimea-0.4.0/src/Resources.cc.orig	2002-11-06 04:55:10.000000000 -0700
++++ src/waimea-0.4.0/src/Resources.cc	2013-09-10 21:46:50.000000000 -0600
+@@ -1568,7 +1568,7 @@ void ResourceHandler::LoadActions(WaScre
+                                                            NULL);
+                             str = str + i3 + 1;
+                             ReadActions((char *) buffer2, defs, &wacts,
+-                                        &ext_list->list, wascreen);
++                                        &ext_list->alist, wascreen);
+                         }
+                         else if (str[0] == 'n' && str[1] == '/') {
+                             for (i3 = 2; str[i3] != '\0' &&
+@@ -1583,7 +1583,7 @@ void ResourceHandler::LoadActions(WaScre
+                                                            NULL);
+                             str = str + i3 + 1;
+                             ReadActions((char *) buffer2, defs, &wacts,
+-                                        &ext_list->list, wascreen);
++                                        &ext_list->alist, wascreen);
+                         }
+                         else if (str[0] == 't' && str[1] == '/') {
+                             for (i3 = 2; str[i3] != '\0' &&
+@@ -1598,7 +1598,7 @@ void ResourceHandler::LoadActions(WaScre
+                                                            str + 2);
+                             str = str + i3 + 1;
+                             ReadActions((char *) buffer2, defs, &wacts,
+-                                        &ext_list->list, wascreen);
++                                        &ext_list->alist, wascreen);
+                         }
+                         else if (! strncasecmp(str, "window", 6)) {
+                             str = str + 6;
+diff -up src/waimea-0.4.0/src/Resources.hh.orig src/waimea-0.4.0/src/Resources.hh
+--- src/waimea-0.4.0/src/Resources.hh.orig	2002-11-06 04:55:10.000000000 -0700
++++ src/waimea-0.4.0/src/Resources.hh	2013-09-10 21:46:50.000000000 -0600
+@@ -193,13 +193,13 @@ public:
+         delete name;
+         delete cl;
+         delete title;
+-        ACTLISTCLEAR(list);
++        ACTLISTCLEAR(alist);
+     }
+     
+     Regex *name;
+     Regex *cl;
+     Regex *title;
+-    list<WaAction *> list;
++    list<WaAction *> alist;
+ };
+ 
+ class StrComp {
+diff -up src/waimea-0.4.0/src/Window.cc.orig src/waimea-0.4.0/src/Window.cc
+--- src/waimea-0.4.0/src/Window.cc.orig	2002-11-06 04:55:10.000000000 -0700
++++ src/waimea-0.4.0/src/Window.cc	2013-09-10 21:46:50.000000000 -0600
+@@ -280,13 +280,13 @@ list <WaAction *> *WaWindow::GetActionLi
+         if (classhint) {
+             if (classhint->res_name &&
+                 (*it)->name->Match(classhint->res_name))
+-                return &((*it)->list);
++                return &((*it)->alist);
+             else if (classhint->res_class &&
+                      (*it)->cl->Match(classhint->res_class))
+-                return &((*it)->list);
++                return &((*it)->alist);
+         }
+         if ((*it)->title->Match(name))
+-            return &((*it)->list);
++            return &((*it)->alist);
+     }
+     return NULL;
+ }
