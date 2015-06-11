@@ -1,0 +1,17 @@
+pkgbase = teamspeak-plugin-love-svn
+	pkgdesc = Plugin for Teamspeak 3. Allows follwing users through channels.
+	pkgver = 49
+	pkgrel = 2
+	url = http://sourceforge.net/p/ts3love/home/ts3love/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = subversion
+	makedepends = teamspeak3
+	makedepends = unzip
+	depends = teamspeak3
+	source = svn://svn.code.sf.net/p/ts3love/code/trunk
+	md5sums = SKIP
+
+pkgname = teamspeak-plugin-love-svn
+
