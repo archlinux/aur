@@ -1,0 +1,43 @@
+. $topsrcdir/browser/config/mozconfig
+
+ac_add_options --prefix=/usr
+ac_add_options --libdir=/usr/lib
+
+# Iceweasel
+ac_add_options --disable-official-branding
+ac_add_options --with-branding=debian/branding
+
+# We wont save user profile in ~/.mozilla/iceweasel instead of ~/.mozilla/firefox
+# Using debian branding it needs to set MOZ_APP_PROFILE too
+ac_add_options --with-user-appdir=.mozilla
+ac_add_options --with-app-basename=iceweasel
+
+# System libraries
+ac_add_options --with-system-nspr
+ac_add_options --with-system-nss
+ac_add_options --with-system-jpeg
+ac_add_options --with-system-zlib
+ac_add_options --with-system-bz2
+ac_add_options --with-system-png
+ac_add_options --with-system-libevent
+ac_add_options --with-system-libvpx
+ac_add_options --with-system-icu
+ac_add_options --enable-system-hunspell
+ac_add_options --enable-system-sqlite
+ac_add_options --enable-system-ffi
+#ac_add_options --enable-system-cairo
+ac_add_options --enable-system-pixman
+
+# Features
+ac_add_options --enable-startup-notification
+ac_add_options --enable-pulseaudio
+ac_add_options --enable-gstreamer=1.0
+
+ac_add_options --disable-crashreporter
+ac_add_options --disable-updater
+ac_add_options --disable-installer
+ac_add_options --disable-debug-symbols
+
+# Other
+mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/moz-objdir
+

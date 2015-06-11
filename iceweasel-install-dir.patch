@@ -1,0 +1,13 @@
+diff --git a/config/baseconfig.mk b/config/baseconfig.mk
+index 7ca8e35..6e92846 100644
+--- a/config/baseconfig.mk
++++ b/config/baseconfig.mk
+@@ -5,7 +5,7 @@
+ MOZ_APP_BASE_VERSION = $(firstword $(subst ., ,$(MOZ_APP_VERSION))).$(word 2,$(subst ., ,$(MOZ_APP_VERSION)))
+ includedir := $(includedir)/$(MOZ_APP_NAME)-$(MOZ_APP_BASE_VERSION)
+ idldir = $(datadir)/idl/$(MOZ_APP_NAME)-$(MOZ_APP_BASE_VERSION)
+-installdir = $(libdir)/$(MOZ_APP_NAME)-$(MOZ_APP_BASE_VERSION)
++installdir = $(libdir)/$(MOZ_APP_NAME)
+ sdkdir = $(libdir)/$(MOZ_APP_NAME)-devel-$(MOZ_APP_BASE_VERSION)
+ ifndef TOP_DIST
+ TOP_DIST = dist
