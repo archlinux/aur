@@ -11,30 +11,20 @@ depends=('dkms')
 optdepends=('linux-headers: If running standard kernel, otherwise find matching headers for your kernel')
 install=broadcom-wl-dkms.install
 conflicts=('broadcom-wl')
-source_x86_64=("http://www.broadcom.com/docs/linux_sta/hybrid-v35_64-nodebug-pcoem-${pkgver//./_}.tar.gz"
-	'broadcom-wl-dkms.conf'
+source=('broadcom-wl-dkms.conf'
 	'dkms.conf'
 	'license.patch'
 	'linux-recent.patch'
 	'gcc.patch')
-sha256sums_x86_64=('3d994cc6c05198f4b6f07a213ac1e9e45a45159899e6c4a7feca5e6c395c3022'
-	'b97bc588420d1542f73279e71975ccb5d81d75e534e7b5717e01d6e6adf6a283'
+sha256sums=('b97bc588420d1542f73279e71975ccb5d81d75e534e7b5717e01d6e6adf6a283'
 	'4e719f9c8468f7c802bb0e52939f2680abb1287d3817d91252958f0ae82f983b'
 	'2f70be509aac743bec2cc3a19377be311a60a1c0e4a70ddd63ea89fae5df08ac'
 	'ea2da813f890aa029d41b117f1b78d4379720c108101aef46aeb54df3c261f66'
 	'b07ce80f2e079cce08c8ec006dda091f6f73f158c8a62df5bac2fbabb6989849')
-source_i686=("http://www.broadcom.com/docs/linux_sta/hybrid-v35-nodebug-pcoem-${pkgver//./_}.tar.gz"
-	'broadcom-wl-dkms.conf'
-	'dkms.conf'
-	'license.patch'
-	'linux-recent.patch'
-	'gcc.patch')
-sha256sums_i686=('b196543a429c22b2b8d75d0c1d9e6e7ff212c3d3e1f42cc6fd9e4858f01da1ad'
-	'b97bc588420d1542f73279e71975ccb5d81d75e534e7b5717e01d6e6adf6a283'
-	'4e719f9c8468f7c802bb0e52939f2680abb1287d3817d91252958f0ae82f983b'
-	'2f70be509aac743bec2cc3a19377be311a60a1c0e4a70ddd63ea89fae5df08ac'
-	'ea2da813f890aa029d41b117f1b78d4379720c108101aef46aeb54df3c261f66'
-	'b07ce80f2e079cce08c8ec006dda091f6f73f158c8a62df5bac2fbabb6989849')
+source_x86_64=("http://www.broadcom.com/docs/linux_sta/hybrid-v35_64-nodebug-pcoem-${pkgver//./_}.tar.gz")
+sha256sums_x86_64=('3d994cc6c05198f4b6f07a213ac1e9e45a45159899e6c4a7feca5e6c395c3022')
+source_i686=("http://www.broadcom.com/docs/linux_sta/hybrid-v35-nodebug-pcoem-${pkgver//./_}.tar.gz")
+sha256sums_i686=('b196543a429c22b2b8d75d0c1d9e6e7ff212c3d3e1f42cc6fd9e4858f01da1ad')
 backup=('etc/modprobe.d/broadcom-wl-dkms.conf')
 build() {
 	cd "${srcdir}"
