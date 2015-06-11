@@ -1,0 +1,19 @@
+pkgbase = sushi-shifter-git
+	pkgdesc = Automatic shifter for SRT and ASS subtitle based on audio streams.
+	pkgver = 0.4.4.r8.g6e027a8
+	pkgrel = 1
+	url = https://github.com/tp7/Sushi
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = python2
+	depends = python2-numpy
+	depends = opencv
+	optdepends = ffmpeg: if demuxing is used
+	optdepends = mkvtoolnix-cli: faster timecodes extraction when demuxing
+	source = sushi-shifter-git::git://github.com/tp7/Sushi.git
+	md5sums = SKIP
+
+pkgname = sushi-shifter-git
+
