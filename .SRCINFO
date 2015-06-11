@@ -1,0 +1,15 @@
+pkgbase = python2-xstatic-rickshaw
+	pkgdesc = XStatic-Rickshaw
+	pkgver = 1.5.0.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/XStatic-Rickshaw
+	arch = i686
+	arch = x86_64
+	makedepends = python2-setuptools
+	makedepends = python2-pip
+	depends = python2
+	source = https://pypi.python.org/packages/source/X/XStatic-Rickshaw/XStatic-Rickshaw-1.5.0.0.tar.gz
+	md5sums = 789fffdced10e93e10f75ce1ade6fc6c
+
+pkgname = python2-xstatic-rickshaw
+
