@@ -14,7 +14,7 @@ conflicts=(opentyrian)
 replaces=(opentyrian-svn)
 install=opentyrian.install
 source=(opentyrian::hg+https://bitbucket.org/opentyrian/opentyrian
-        http://sites.google.com/a/camanis.net/opentyrian/tyrian/tyrian21.zip)
+        http://www.camanis.net/opentyrian/tyrian21.zip)
 md5sums=('SKIP'
          '2a3b206a6de25ed4b771af073f8ca904')
 
@@ -25,7 +25,10 @@ pkgver() {
 
 package() {
   cd opentyrian
-  make DESTDIR="$pkgdir" prefix=/usr install
+  make DESTDIR="$pkgdir" prefix=/usr install \
+    CPPFLAGS="-DNDEBUG $CPPFLAGS" \
+    CFLAGS="-pedantic -MMD $CFLAGS" \
+    LDFLAGS="$LDFLAGS"
 
   install -Dm644 linux/opentyrian.desktop "$pkgdir/usr/share/applications/opentyrian.desktop"
   for _x in 22 24 32 48 128; do

@@ -17,7 +17,7 @@ pkgbase = opentyrian-hg
 	conflicts = opentyrian
 	replaces = opentyrian-svn
 	source = opentyrian::hg+https://bitbucket.org/opentyrian/opentyrian
-	source = http://sites.google.com/a/camanis.net/opentyrian/tyrian/tyrian21.zip
+	source = http://www.camanis.net/opentyrian/tyrian21.zip
 	md5sums = SKIP
 	md5sums = 2a3b206a6de25ed4b771af073f8ca904
 
