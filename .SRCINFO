@@ -1,0 +1,13 @@
+pkgbase = awmtt
+	pkgdesc = Test and preview your AwesomeWM configuration with Xephyr
+	pkgver = 0.4
+	pkgrel = 2
+	url = https://github.com/mikar/awmtt
+	arch = any
+	license = MIT
+	depends = xorg-server-xephyr
+	source = https://raw.github.com/mikar/awmtt/master/awmtt.sh
+	sha256sums = 146f68ac831ce6bc2f417472c7b46c121efce31a63b911c2324368bb83da103e
+
+pkgname = awmtt
+
