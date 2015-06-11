@@ -1,0 +1,22 @@
+pkgbase = python2-hyperopt-sklearn-git
+	pkgdesc = Hyperparameter Optimization for sklearn (scikit-learn)
+	pkgver = 0.0.1.r95.12f854c
+	pkgrel = 1
+	url = https://github.com/hyperopt/hyperopt-sklearn
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-hyperopt
+	depends = python2-numpy
+	depends = python2-scipy
+	depends = python2-nose
+	depends = python2-scikit-learn
+	provides = python2-hyperopt-sklearn
+	conflicts = python2-hyperopt-sklearn
+	source = git+https://github.com/hyperopt/hyperopt-sklearn.git
+	sha256sums = SKIP
+
+pkgname = python2-hyperopt-sklearn-git
+
