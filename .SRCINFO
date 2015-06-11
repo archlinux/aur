@@ -1,0 +1,15 @@
+pkgbase = xorg-beforelight
+	pkgdesc = MIT-SCREEN-SAVER sample
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = http://www.x.org/
+	arch = x86_64
+	arch = i686
+	license = custom
+	depends = libxss
+	depends = libxt
+	source = http://xorg.freedesktop.org/releases/individual/app/beforelight-1.0.5.tar.bz2
+	md5sums = d587e2e64d63d0a33e7e911727f9ebd4
+
+pkgname = xorg-beforelight
+
