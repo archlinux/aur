@@ -1,0 +1,19 @@
+pkgbase = vim-ledger-git
+	pkgdesc = Vim filetype plugin for ledger files.
+	pkgver = 30.r0.g2bfbe22
+	pkgrel = 1
+	url = https://www.github.com/ledger/vim-ledger
+	install = vimdoc.install
+	arch = i686
+	arch = x86_64
+	groups = vim-plugins
+	license = GPL
+	makedepends = git
+	depends = vim
+	provides = vim-ledger
+	conflicts = vim-ledger
+	source = vim-ledger::git+https://github.com/ledger/vim-ledger
+	md5sums = SKIP
+
+pkgname = vim-ledger-git
+
