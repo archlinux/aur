@@ -1,4 +1,4 @@
-pkgbase = pyhamcrest
+pkgbase = pyhamcrest-git
 	pkgdesc = A framework for writing matcher objects, allowing you to declaratively define "match" rules
 	pkgver = 1.8.2.r18.g6d8389a
 	pkgrel = 1

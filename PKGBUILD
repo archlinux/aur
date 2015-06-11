@@ -2,7 +2,7 @@
 # Package Repository: https://github.com/mij-aur-packages/pyhamcrest-git
 
 _pkgname=PyHamcrest
-pkgbase=${_pkgname,,}
+pkgbase=${_pkgname,,}-git
 pkgname=(python{2,}-pyhamcrest-git)
 pkgver=1.8.2.r18.g6d8389a
 pkgrel=1
