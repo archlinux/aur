@@ -14,6 +14,7 @@ conflicts=(emacs-navi2ch)
 install=navi2ch.install
 source=("${pkgname%-git}"::'git://github.com/naota/navi2ch.git')
 md5sums=('SKIP')
+changelog=$pkgname.changelog
 
 
 pkgver() {
