@@ -2,7 +2,7 @@
 
 gitname=htop
 pkgname=${gitname}-git
-pkgver=517.64ecba2
+pkgver=527.abe165f
 pkgrel=1
 pkgdesc="Interactive text-mode process viewer"
 url="https://github.com/hishamhm/${gitname}"
@@ -15,7 +15,7 @@ optdepends=('lsof: list open files for running process'
 provides=('htop')
 conflicts=('htop')
 options=('!emptydirs')
-source=("git+${url}.git#commit=e3d1ca")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {

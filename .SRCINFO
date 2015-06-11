@@ -1,6 +1,6 @@
 pkgbase = htop-git
 	pkgdesc = Interactive text-mode process viewer
-	pkgver = 517.64ecba2
+	pkgver = 527.abe165f
 	pkgrel = 1
 	url = https://github.com/hishamhm/htop
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = htop-git
 	provides = htop
 	conflicts = htop
 	options = !emptydirs
-	source = git+https://github.com/hishamhm/htop.git#commit=e3d1ca
+	source = git+https://github.com/hishamhm/htop.git
 	sha256sums = SKIP
 
 pkgname = htop-git
