@@ -1,0 +1,18 @@
+pkgbase = semantik
+	pkgdesc = A mindmapping-like tool for document generation (reports, thesis, etc)
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = https://code.google.com/p/semantik/
+	install = install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = waf
+	depends = kdebase-runtime
+	source = http://ftp.waf.io/pub/release/semantik-0.9.4.tar.bz2
+	source = install
+	sha256sums = 940a3b37700f1e88b6c29ff13e0d33a73832f0db856a8738b3e939d8f0c73aa2
+	sha256sums = a981f2afe77ec69545b3912a99ee6c560388d178cd39c9a21ae21e270024159b
+
+pkgname = semantik
+
