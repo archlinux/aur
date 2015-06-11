@@ -1,0 +1,21 @@
+pkgbase = tracktion-6
+	pkgdesc = Commercial Music Production Software
+	pkgver = 6.1.9
+	pkgrel = 1
+	url = http://www.tracktion.com/
+	install = tracktion.install
+	arch = x86_64
+	license = custom
+	depends = alsa-lib
+	depends = mesa
+	optdepends = jack: A low-latency audio server
+	optdepends = ladspa-plugins: a set of ladspa plugins
+	source = http://www.tracktion.com/downloads/tracktion6-64/TracktionInstall_6_1_9_Linux_64Bit.deb
+	source = license
+	source = Tracktion6.desktop
+	md5sums = 5e6485ed69610551d52bb523ce922389
+	md5sums = d7bac73a1a52d26b337761a1d7ec561d
+	md5sums = 6fca61296f0c1ebadfc09afdb794f8a9
+
+pkgname = tracktion-6
+

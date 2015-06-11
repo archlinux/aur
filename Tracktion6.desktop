@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=6.1.0
+Name=Tracktion 6
+Comment=Audio and MIDI workstation
+Exec=/usr/bin/Tracktion6 %u
+Icon=tracktion
+Terminal=false
+Type=Application
+Categories=AudioEditing;AudioVideo;Audio;
+MimeType=application/x-tracktion-project;
+StartupNotify=true
