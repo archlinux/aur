@@ -1,0 +1,17 @@
+pkgbase = python-rainbow-logging-handler-git
+	pkgdesc = Ultimate Python 3 colorized logger with user-custom colors
+	pkgver = 2.2.2.r2.gd2d8a88
+	pkgrel = 2
+	url = https://github.com/laysakura/rainbow_logging_handler
+	arch = any
+	license = Public Domain
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = python-rainbow-logging-handler
+	conflicts = python-rainbow-logging-handler
+	source = git+https://github.com/laysakura/rainbow_logging_handler.git
+	sha256sums = SKIP
+
+pkgname = python-rainbow-logging-handler-git
+
