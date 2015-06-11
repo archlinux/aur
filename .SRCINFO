@@ -1,0 +1,15 @@
+pkgbase = python2-xstatic-d3
+	pkgdesc = XStatic-D3
+	pkgver = 3.1.6.2
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/XStatic-D3
+	arch = i686
+	arch = x86_64
+	makedepends = python2-setuptools
+	makedepends = python2-pip
+	depends = python2
+	source = https://pypi.python.org/packages/source/X/XStatic-D3/XStatic-D3-3.1.6.2.tar.gz
+	md5sums = 835164e50cfbeb781a42e4d16f75a50c
+
+pkgname = python2-xstatic-d3
+
