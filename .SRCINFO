@@ -1,0 +1,27 @@
+pkgbase = x11vnc-git
+	pkgdesc = VNC server for real X displays
+	pkgver = 0.9.14.r358.gaf86975
+	pkgrel = 1
+	url = https://LibVNC.github.io
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = autoconf-archive
+	depends = libvncserver
+	depends = libxtst
+	depends = libxinerama
+	depends = libxdamage
+	depends = libxrandr
+	depends = avahi
+	optdepends = tk: GUI support
+	optdepends = net-tools: -auth guess
+	optdepends = xf86-video-dummy: Xdummy script
+	optdepends = java-environment: java-applet support
+	provides = x11vnc
+	conflicts = x11vnc
+	options = !emptydirs
+	source = x11vnc-git::git+https://github.com/bbidulock/x11vnc.git
+	sha1sums = SKIP
+
+pkgname = x11vnc-git
+
