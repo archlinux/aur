@@ -1,0 +1,15 @@
+[Unit]
+Description=Echolink Software
+After=network.target
+After=sound.target
+
+[Service]
+Type=simple
+User=svxlink
+Group=svxlink
+ExecStart=/usr/bin/svxlink
+Restart=always
+
+
+[Install]
+WantedBy=multi-user.target

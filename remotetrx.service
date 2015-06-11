@@ -1,0 +1,14 @@
+[Unit]
+Description=Echolink Software Remotetrx
+After=network.target
+After=sound.target
+
+[Service]
+Type=simple
+User=svxlink
+Group=svxlink
+ExecStart=/usr/bin/remotetrx
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
