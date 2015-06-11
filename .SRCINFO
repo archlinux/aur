@@ -1,0 +1,15 @@
+pkgbase = tideways-cli
+	pkgdesc = Tideways Profiler CLI
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://tideways.io
+	arch = i686
+	arch = x86_64
+	license = custom
+	provides = tideways-cli
+	conflicts = tideways-cli
+	source = https://s3-eu-west-1.amazonaws.com/qafoo-profiler/downloads/tideways-cli_0.2.3_linux_i386.tar.gz
+	sha256sums = 3da16594e5006283041f407d78fb4d88a9521da9a08ee93a6ec5fe3eb551d8f8
+
+pkgname = tideways-cli
+
