@@ -1,0 +1,16 @@
+pkgbase = grabc
+	pkgdesc = A utility for reporting the color of a pixel.
+	pkgver = 1.1
+	pkgrel = 4
+	url = http://www.muquit.com/muquit/software/grabc/grabc.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = libx11
+	depends = libx11
+	source = http://www.muquit.com/muquit/software/grabc/grabc1.1.tar.gz
+	md5sums = d8d308f3183c719309f35c249db4f9ed
+	sha512sums = 9a2416fd0cda7bd6fb65092572e6ba932eeac33a8534efe53be8f4bac3576884003dd50075363acd2d8466a406ba8799a0cef51086700269728894913a748aeb
+
+pkgname = grabc
+
