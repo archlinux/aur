@@ -1,0 +1,18 @@
+pkgbase = pylotro-git
+	pkgdesc = LOTRO/DDO Launcher (needed to login to Turbine Inc. servers)
+	pkgver = 40
+	pkgrel = 1
+	url = https://launchpad.net/~ajackson-bcs/+archive/ppa/
+	arch = i386
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = openal
+	depends = python2-pyqt
+	provides = pylotro
+	conflicts = pylotro
+	source = pylotro-git::git+https://github.com/nwestfal/pylotro.git
+	md5sums = SKIP
+
+pkgname = pylotro-git
+
