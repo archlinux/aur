@@ -1,0 +1,9 @@
+[Unit]
+Description=FreeDiameter
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/freeDiameterd --config=/etc/freediameter/freediameter.conf
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,4 @@
+post_install () {
+  printf "Create configuration file /etc/freediameter/freediameter.conf before first start\n"
+  printf "For sample configuration files, see /etc/freediameter/samples/\n"
+}

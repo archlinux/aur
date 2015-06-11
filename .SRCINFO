@@ -1,0 +1,19 @@
+pkgbase = freediameter
+	pkgdesc = An open source implementation of the diameter protocol
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = http://www.freediameter.net/
+	install = freediameter.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = gnutls
+	depends = libidn
+	source = http://www.freediameter.net/hg/freeDiameter/archive/1.2.0.tar.gz
+	source = freediameter.service
+	sha256sums = 0601a7f559af6596dff8e18f5c9b17bc66de50d8e05640aa64a3403a841cb228
+	sha256sums = d6bea4c108526222d1096a031eb8d1ff168eb73b0a22747a6efe85098759d52f
+
+pkgname = freediameter
+
