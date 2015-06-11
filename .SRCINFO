@@ -1,0 +1,20 @@
+pkgbase = use
+	pkgdesc = A utility to help casual user install multiple versions of a software package
+	pkgver = 1.12.1
+	pkgrel = 1
+	url = http://use.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = custom:3-clause BSD
+	makedepends = gcc
+	makedepends = glibc
+	makedepends = make
+	makedepends = coreutils
+	makedepends = perl
+	makedepends = sed
+	depends = glibc
+	source = use-1.12.1.tar.gz::https://downloads.sourceforge.net/project/use/Version%201.12.1/use.d.tar.gz
+	sha256sums = 9efd990bd3e2cf40e74e56ecb7f849e5050e69aa24317633adbe2e1ce360efbe
+
+pkgname = use
+
