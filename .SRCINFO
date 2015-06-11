@@ -1,0 +1,14 @@
+pkgbase = gkrellaclock
+	pkgdesc = Analog clock
+	pkgver = 0.3.4
+	pkgrel = 3
+	url = http://sites.google.com/site/gkrellaclock
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gkrellm
+	source = http://oborlinux.free.fr/arch/gkrellaclock-0.3.4.tar.gz
+	md5sums = 37957ad3db335af4ed62dcab00856b09
+
+pkgname = gkrellaclock
+
