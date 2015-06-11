@@ -1,0 +1,18 @@
+pkgbase = g15stats
+	pkgdesc = A CPU/Mem/Swap/Network monitoring client for G15Daemon.
+	pkgver = 1.9.7
+	pkgrel = 1
+	url = http://g15tools.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	depends = libg15
+	depends = libg15render
+	depends = g15daemon
+	depends = libgtop
+	source = http://sourceforge.net/projects/g15daemon/files/G15Stats/1.9.7/g15stats-1.9.7.tar.bz2
+	source = g15stats.service
+	sha1sums = 4780aac4d32b98b8c7ad7383425093803ca89cf2
+	sha1sums = f2e5dfd80d0b6d6ddbafe1fdf1bfe2ae97c3498e
+
+pkgname = g15stats
+

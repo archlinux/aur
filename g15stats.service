@@ -1,0 +1,12 @@
+[Unit]
+Description=Logitech G15 Stats
+Requires=g15daemon.service
+After=g15daemon.service
+
+[Service]
+ExecStart=/usr/bin/g15stats
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target 
