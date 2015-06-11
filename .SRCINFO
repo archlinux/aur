@@ -1,0 +1,17 @@
+pkgbase = eclipse-subversive-svn-connector
+	pkgdesc = Subversive SVN Connectors
+	pkgver = 4.1.3.I20150214_1700
+	pkgrel = 1
+	url = http://www.polarion.com/products/svn/subversive.php
+	arch = any
+	license = EPL
+	depends = eclipse-subversive
+	noextract = eclipse-subversive-svn-connector-4.1.3.I20150214_1700-feature.jar
+	noextract = eclipse-subversive-svn-connector-4.1.3.I20150214_1700-plugin.jar
+	source = eclipse-subversive-svn-connector-4.1.3.I20150214_1700-feature.jar::http://community.polarion.com/projects/subversive/download/eclipse/4.0/update-site/features/org.polarion.eclipse.team.svn.connector_4.1.3.I20150214-1700.jar
+	source = eclipse-subversive-svn-connector-4.1.3.I20150214_1700-plugin.jar::http://community.polarion.com/projects/subversive/download/eclipse/4.0/update-site/plugins/org.polarion.eclipse.team.svn.connector_4.1.3.I20150214-1700.jar
+	md5sums = 0d126ced1e7455dde98458202a5b1a89
+	md5sums = cf4746777c5d5b9caa8c1bbfcdaa233d
+
+pkgname = eclipse-subversive-svn-connector
+
