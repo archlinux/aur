@@ -1,0 +1,22 @@
+pkgbase = wmclock
+	pkgdesc = Dockable clock applet for Window Maker
+	pkgver = 1.0.14
+	pkgrel = 1
+	url = http://www.bluestop.org/wmclock/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = imake
+	depends = libxpm
+	optdepends = windowmaker
+	source = http://www.bluestop.org/wmclock/wmclock-1.0.14.tar.gz
+	source = fix_12_year_display.patch
+	source = manpage_fixes.patch
+	source = manpage_xpm_notes.patch
+	md5sums = 15a83f45e2baabec26b22a2153aa2417
+	md5sums = 3063f4dd017b24046ba9d0c932d85583
+	md5sums = cff551b14bab22daad6f546602ddb90a
+	md5sums = 7e716bc8b110a41e548f7bbaf707b2b9
+
+pkgname = wmclock
+
