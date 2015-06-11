@@ -1,0 +1,14 @@
+pkgbase = cedilla
+	pkgdesc = A simple text printer that uses Unicode internally
+	pkgver = 0.7
+	pkgrel = 1
+	url = http://www.pps.jussieu.fr/~jch/software/cedilla/
+	arch = any
+	license = GPL
+	depends = clisp
+	depends = texlive-core
+	source = http://www.pps.jussieu.fr/~jch/software/files/cedilla-0.7.tar.gz
+	md5sums = 57d2a80d3fd8fdc72827ada5e6257be2
+
+pkgname = cedilla
+
