@@ -1,0 +1,36 @@
+From ad464b856318691c1277dd3239573d18dd04bb08 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+Date: Tue, 28 Apr 2015 22:09:33 +0200
+Subject: [PATCH] gnutls: Switch backend priorities so gnutls-pkcs11 is
+ preferred
+
+---
+ tls/gnutls/gtlsbackend-gnutls-pkcs11.c | 2 +-
+ tls/gnutls/gtlsbackend-gnutls.c        | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tls/gnutls/gtlsbackend-gnutls-pkcs11.c b/tls/gnutls/gtlsbackend-gnutls-pkcs11.c
+index 48be45e..429acbb 100644
+--- a/tls/gnutls/gtlsbackend-gnutls-pkcs11.c
++++ b/tls/gnutls/gtlsbackend-gnutls-pkcs11.c
+@@ -61,5 +61,5 @@ g_tls_backend_gnutls_pkcs11_register (GIOModule *module)
+   g_io_extension_point_implement (G_TLS_BACKEND_EXTENSION_POINT_NAME,
+ 				  g_tls_backend_gnutls_pkcs11_get_type(),
+ 				  "gnutls-pkcs11",
+-				  -5);
++				  0);
+ }
+diff --git a/tls/gnutls/gtlsbackend-gnutls.c b/tls/gnutls/gtlsbackend-gnutls.c
+index 55ec1a5..ca79b92 100644
+--- a/tls/gnutls/gtlsbackend-gnutls.c
++++ b/tls/gnutls/gtlsbackend-gnutls.c
+@@ -310,5 +310,5 @@ g_tls_backend_gnutls_register (GIOModule *module)
+   g_io_extension_point_implement (G_TLS_BACKEND_EXTENSION_POINT_NAME,
+ 				  g_tls_backend_gnutls_get_type(),
+ 				  "gnutls",
+-				  0);
++				  -5);
+ }
+-- 
+2.3.6
+
