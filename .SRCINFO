@@ -1,0 +1,13 @@
+pkgbase = python-q
+	pkgdesc = Quick-and-dirty debugging output for tired (Python) programmers
+	pkgver = 2.5
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/q/
+	arch = any
+	license = Apache
+	depends = python
+	source = http://pypi.python.org/packages/source/q/q/q-2.5.tar.gz
+	md5sums = d4c4ee489dea818f85dfcfb9156fe8de
+
+pkgname = python-q
+
