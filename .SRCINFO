@@ -1,0 +1,16 @@
+pkgbase = emacs-rnc-mode-git
+	pkgdesc = An Emacs major mode for editing XML schemas in RELAX-NG Compact syntax
+	pkgver = 1.0.6.0.gb39dc23
+	pkgrel = 3
+	url = https://github.com/TreeRex/rnc-mode
+	install = emacs-rnc-mode-git.install
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = emacs
+	optdepends = jing: On-the-fly syntax checking of your schema
+	source = rnc-mode::git+https://github.com/TreeRex/rnc-mode.git
+	md5sums = SKIP
+
+pkgname = emacs-rnc-mode-git
+

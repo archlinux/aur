@@ -1,0 +1,8 @@
+post_install() {
+  cat << EOF
+==> Put the followings in your \$HOME/.emacs file to use rnc-mode
+
+(autoload 'rnc-mode "rnc-mode")
+(add-to-list 'auto-mode-alist '("\\.rnc$" . rnc-mode))
+EOF
+}
