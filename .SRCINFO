@@ -1,0 +1,14 @@
+pkgbase = libics
+	pkgdesc = the reference library for Image Cytometry Standard, an open standard
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = http://libics.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	depends = zlib
+	source = http://sourceforge.net/projects/libics/files/libics/libics-1.5.2.tar.gz
+	md5sums = d394225ae454be05c2440641e40d5408
+
+pkgname = libics
+
