@@ -1,0 +1,17 @@
+pkgbase = python2-termcolor-git
+	pkgdesc = Termcolor Python 2 Library (improved fork)
+	pkgver = 1.1.0r4.cd49afc
+	pkgrel = 1
+	url = https://github.com/edmund-huber/termcolor
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python2
+	depends = python2-setuptools
+	provides = python2-termcolor
+	conflicts = python2-termcolor
+	source = git+https://github.com/edmund-huber/termcolor.git
+	sha256sums = SKIP
+
+pkgname = python2-termcolor-git
+
