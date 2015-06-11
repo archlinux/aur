@@ -1,0 +1,15 @@
+pkgbase = python2-xstatic-jasmine
+	pkgdesc = XStatic-Jasmine
+	pkgver = 2.1.2.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/XStatic-Jasmine
+	arch = i686
+	arch = x86_64
+	makedepends = python2-setuptools
+	makedepends = python2-pip
+	depends = python2
+	source = https://pypi.python.org/packages/source/X/XStatic-Jasmine/XStatic-Jasmine-2.1.2.0.tar.gz
+	md5sums = 63fdb4a8668eb70ceef1a311e8b02dcb
+
+pkgname = python2-xstatic-jasmine
+
