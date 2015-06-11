@@ -1,6 +1,6 @@
 pkgbase = watchman-sm-services-git
 	pkgdesc = Service scripts for watchman
-	pkgver = r126.578fdab
+	pkgver = r136.6d33ef6
 	pkgrel = 1
 	url = https://github.com/fbt/watchman-services
 	arch = any
