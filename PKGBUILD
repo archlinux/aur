@@ -1,7 +1,7 @@
 # Maintainer: Andrejs Mivreņiks <gim at fastmail dot fm>
 pkgname=libasl
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Multiphysics simulation software package (Advanced Simulation Library)'
 arch=('i686' 'x86_64')
 url='http://asl.org.il/'
@@ -24,7 +24,7 @@ prepare() {
 build() {
   cd "$srcdir/ASL-$pkgver"
   mkdir -p build && cd build
-  cmake -G "Unix Makefiles" ../
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -G "Unix Makefiles" ../
   make
 }
 
