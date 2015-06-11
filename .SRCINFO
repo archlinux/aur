@@ -1,0 +1,17 @@
+pkgbase = nodejs-normit-git
+	pkgdesc = Google translate with speech synthesis in your terminal as node package
+	pkgver = 1.0.8.r97.d445ed3
+	pkgrel = 2
+	url = https://github.com/pawurb/normit
+	arch = any
+	license = custom
+	makedepends = git
+	depends = nodejs
+	depends = mpg123
+	provides = nodejs-normit
+	conflicts = nodejs-normit
+	source = git+https://github.com/pawurb/normit.git
+	sha256sums = SKIP
+
+pkgname = nodejs-normit-git
+
