@@ -1,0 +1,29 @@
+pkgbase = ccnet
+	pkgdesc = A framework for writing networked applications in C.
+	pkgver = 1.4.2
+	pkgrel = 11
+	url = https://github.com/haiwen/ccnet/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	license = custom
+	makedepends = vala>=0.8
+	makedepends = pacman>=4.1
+	depends = libevent>=2.0
+	depends = libzdb>=2.10.2
+	depends = libsearpc>=1.2.2
+	depends = jansson>=2.2.1
+	depends = libldap
+	depends = python2>=2.6
+	source = https://github.com/haiwen/ccnet/archive/v4.2.4.tar.gz
+	source = https://raw.githubusercontent.com/haiwen/ccnet/master/COPYRIGHT
+	source = libccnet.pc.patch
+	source = 0001-Add-autoconfiguration-for-libjansson.patch
+	sha256sums = 49ebcfddbb2de2ec74faaaf9e6fd5f6104f05c2c477946706afa4f3ea24686f5
+	sha256sums = c07aeccf581c255e60acbddcc6af90290e0d6354e6ec0ee1987b82845d3d57ac
+	sha256sums = 66c3b02c3981db6a80819e0ae103bedadf8dfdf81405a7f75a9cba714acf973f
+	sha256sums = 382b1da33e2b6c0ebab8d3921d92b7417fa11d969ad822cd43aee499fd7b3d94
+
+pkgname = ccnet
+
