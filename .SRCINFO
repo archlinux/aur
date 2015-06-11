@@ -1,0 +1,17 @@
+pkgbase = python-bottlenose-git
+	pkgdesc = A stable, up-to-date Python 3 wraper for the Amazon Product Advertising API
+	pkgver = 0.6.2.r113.bf4b02a
+	pkgrel = 2
+	url = https://github.com/lionheart/bottlenose
+	arch = any
+	license = APACHE
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = python-bottlenose
+	conflicts = python-bottlenose
+	source = git+https://github.com/lionheart/bottlenose.git
+	sha256sums = SKIP
+
+pkgname = python-bottlenose-git
+
