@@ -1,0 +1,15 @@
+pkgbase = vim_plugmanager
+	pkgdesc = Vim plugins management by Delphinium
+	pkgver = 97.367812f
+	pkgrel = 1
+	url = https://github.com/Bashka/vim_plugmanager
+	install = vim_plugmanager.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = vim vim_lib
+	source = vim_plugmanager::git+git://github.com/Bashka/vim_plugmanager.git
+	md5sums = SKIP
+
+pkgname = vim_plugmanager
+
