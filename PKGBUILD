@@ -1,13 +1,16 @@
+# $Id$
+# Maintainer: Benjamin Robin <dev@benjarobin.fr>
+
 pkgname=eclipse-subversive
-pkgver=2.0.4.I20150123_1700
+pkgver=3.0.0.I20150529_1700
 pkgrel=1
 pkgdesc="Eclipse plug-in that provides Subversion support."
 arch=('any')
 url="http://www.eclipse.org/subversive/"
 license=('EPL')
 depends=('eclipse')
-source=("http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/technology/subversive/2.0/builds/Subversive-${pkgver//_/-}.zip")
-md5sums=('8c73236f7eb6befd39f1394b9e8c5d06')
+source=("http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/technology/subversive/3.0/builds/Subversive-${pkgver//_/-}.zip")
+md5sums=('36fdff2f8bbd1c1834073d474bcc3359')
 
 package()
 {
