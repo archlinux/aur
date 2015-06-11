@@ -4,8 +4,8 @@
 # Contributor: Olivier Biesmans <olivier at biesmans dot fr>
 
 pkgname=mitmproxy
-pkgver=0.12.0
-pkgrel=2
+pkgver=0.12.1
+pkgrel=1
 pkgdesc="SSL-capable man-in-the-middle HTTP proxy"
 arch=('any')
 url="http://mitmproxy.org/"
@@ -20,7 +20,7 @@ optdepends=('python2-pyamf: Contentviews - Decodes AMF files'
 conflicts=('mitmproxy-git')
 provides=('python2-libmproxy')
 source=("http://mitmproxy.org/download/$pkgname-$pkgver.tar.gz")
-sha256sums=('7c317b06d94c63ab3b44c6162a4a6eab4d3e829494b0ae8cba8a18d4e4addcc8')
+sha256sums=('a7a59faa1f79a97c5cbd7acdaca72cfbf9903b9e39823226bc5d8a30efc07e70')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
