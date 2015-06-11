@@ -1,0 +1,48 @@
+# arg 1:  the new package version
+# arg 2:  the old package version
+
+KERNEL_NAME=-lts318
+KERNEL_VERSION=
+
+post_install () {
+  # updating module dependencies
+  echo ">>> Updating module dependencies. Please wait ..."
+  depmod ${KERNEL_VERSION}
+  echo ">>> Generating initial ramdisk, using mkinitcpio.  Please wait..."
+  mkinitcpio -p linux${KERNEL_NAME}
+}
+
+post_upgrade() {
+	pacman -Sl linux-lts31x &>/dev/null
+	hasrepolts31x=$?
+
+  if findmnt --fstab -uno SOURCE /boot &>/dev/null && ! mountpoint -q /boot; then
+    echo "WARNING: /boot appears to be a separate partition but is not mounted."
+  fi
+
+  # updating module dependencies
+  echo ">>> Updating module dependencies. Please wait ..."
+  depmod ${KERNEL_VERSION}
+  echo ">>> Generating initial ramdisk, using mkinitcpio.  Please wait..."
+  mkinitcpio -p linux${KERNEL_NAME}
+
+  if [ $(vercmp $2 3.13) -lt 0 ]; then
+    echo ">>> WARNING: AT keyboard support is no longer built into the kernel."
+    echo ">>>          In order to use your keyboard during early init, you MUST"
+    echo ">>>          include the 'keyboard' hook in your mkinitcpio.conf."
+  fi
+
+	if [ $hasrepolts31x -eq 0 ]; then
+		echo
+		echo ">>> Thank you for using http://dl.dropbox.com/u/298301785/arch/linux-lts31x/$arch"
+		echo ">>> for your linux-lts31x package needs."
+	fi
+	echo ">>> The repository support thread can be found at:"
+	echo ">>> https://bbs.archlinux.org/viewtopic.php?id=187339"
+}
+
+post_remove() {
+  # also remove the compat symlinks
+  rm -f boot/initramfs-linux${KERNEL_NAME}.img
+  rm -f boot/initramfs-linux${KERNEL_NAME}-fallback.img
+}
