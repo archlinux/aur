@@ -1,0 +1,15 @@
+pkgbase = iucode-tool
+	pkgdesc = Tool to manipulate Intel® IA-32/X86-64 microcode bundles
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://gitorious.org/iucode-tool
+	arch = x86_64
+	arch = i686
+	license = GPL
+	source = https://gitorious.org/iucode-tool/releases/raw/master:iucode-tool_1.2.1.tar.xz
+	source = https://gitorious.org/iucode-tool/releases/raw/master:iucode-tool_1.2.1.tar.xz.asc
+	md5sums = 0d1a56323299b3b5c1a50bf3c73cd29d
+	md5sums = SKIP
+
+pkgname = iucode-tool
+
