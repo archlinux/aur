@@ -1,0 +1,14 @@
+pkgbase = sshcd
+	pkgdesc = ssh command with directory specification support
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/fraction/sshcd
+	arch = any
+	license = MIT
+	depends = openssh
+	depends = bash
+	source = https://github.com/fraction/sshcd/archive/v1.0.3.tar.gz
+	sha256sums = 7c5b3dd5ece57a849467167279385cbb8e433617afefe8dee409e3d60d199ca8
+
+pkgname = sshcd
+
