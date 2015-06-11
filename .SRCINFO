@@ -1,0 +1,19 @@
+pkgbase = kydpdict
+	pkgdesc = A front-end to YDP Collins Dictionary
+	pkgver = 0.9.5
+	pkgrel = 4
+	url = http://fossies.org/linux/privat/kydpdict-0.9.5.tar.gz/kydpdict-0.9.5/contrib/kydpdict.pl.1
+	install = kydpdict.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt3
+	source = http://fossies.org/linux/privat/kydpdict-0.9.5.tar.bz2
+	source = kydpdict.png
+	source = kydpdict.desktop
+	md5sums = 4da97f41c63666f3d9e151a18c0ef65e
+	md5sums = dee4f28a7c681292226d06ab97b39e3e
+	md5sums = e42aed4dde1a7f203586220d04737237
+
+pkgname = kydpdict
+
