@@ -1,0 +1,13 @@
+pkgbase = plymouth-theme-paw-arch
+	pkgdesc = Plymouth theme inspired by Mac OS X boot splash, but with Arch Linux logo
+	pkgver = 1
+	pkgrel = 2
+	url = http://kahlil88.deviantart.com/art/Paw-Arch-Plymouth-Theme-208418769
+	arch = any
+	license = unknown
+	depends = plymouth
+	source = http://fc05.deviantart.net/fs71/f/2011/131/6/7/paw_arch_plymouth_theme_by_kahlil88-d3g34y9.zip
+	md5sums = 96725fabe237d1afaca2ae55ea80b367
+
+pkgname = plymouth-theme-paw-arch
+
