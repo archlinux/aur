@@ -1,0 +1,17 @@
+pkgbase = zbackup
+	pkgdesc = A versatile deduplicating backup tool
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = http://zbackup.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = xz
+	depends = openssl
+	depends = protobuf
+	source = https://github.com/zbackup/zbackup/archive/1.4.1.tar.gz
+	md5sums = 143c69e1b8a7c016224d836beae3b7e1
+
+pkgname = zbackup
+
