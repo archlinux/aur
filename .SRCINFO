@@ -1,0 +1,24 @@
+pkgbase = xlockmore-nomotif
+	pkgdesc = screen saver / locker for the X Window System - no motif
+	pkgver = 5.46
+	pkgrel = 1
+	url = http://www.tux.org/~bagleyd/xlockmore.html
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = mesa
+	depends = gtk2
+	depends = libxpm
+	depends = libxmu
+	depends = glu
+	optdepends = fortune-mod
+	provides = xlockmore
+	conflicts = xlockmore
+	options = !makeflags
+	source = http://www.tux.org/~bagleyd/xlock/xlockmore-5.46.tar.xz
+	source = LICENSE
+	md5sums = 068b9c2bfbcdd02461edbac4d729cd27
+	md5sums = a64afab4283f53972a6702c2e59850d7
+
+pkgname = xlockmore-nomotif
+
