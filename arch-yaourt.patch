@@ -1,0 +1,335 @@
+diff --git a/src/FilePanel.cpp b/src/FilePanel.cpp
+index 8691ca3..6cffb52 100644
+--- a/src/FilePanel.cpp
++++ b/src/FilePanel.cpp
+@@ -66,6 +66,7 @@ extern FXStringDict* fsdevices;
+ extern FXStringDict* mtdevices;
+ extern FXbool deb_based;
+ extern FXbool rpm_based;
++extern FXbool pkg_based;
+ #endif
+ 
+ extern FXbool allowPopupScroll;
+@@ -3582,10 +3583,12 @@ long FilePanel::onCmdPopupMenu(FXObject* o,FXSelector s,void* p)
+ 			// Last and before last file extensions
+ 			FXString ext1=name.rafter('.',1);
+ 			FXString ext2=name.rafter('.',2);
++			FXString ext3=name.rafter('.',3);
+ 			
+ 			// Convert these extensions to lower case
+ 			ext1.lower();			
+ 			ext2.lower();
++			ext3.lower();
+ 
+ 			// Destination folder name
+ 			FXString extract_to_folder;
+@@ -3601,6 +3604,14 @@ long FilePanel::onCmdPopupMenu(FXObject* o,FXSelector s,void* p)
+ 				new FXMenuCommand(menu,_("&Extract here"),archexticon,current,FilePanel::ID_EXTRACT_HERE);
+ 				new FXMenuCommand(menu,extract_to_folder,archexticon,current,FilePanel::ID_EXTRACT_TO_FOLDER);
+ 				new FXMenuCommand(menu,_("E&xtract to..."),archexticon,current,FilePanel::ID_EXTRACT);
++#if defined(linux)
++				if (ext3=="pkg.tar.xz")
++				{
++					new FXMenuCommand(menu,_("&View"),packageicon,current,FilePanel::ID_VIEW);
++					new FXMenuCommand(menu,_("Install/Up&grade"),packageicon,current,ID_PKG_INSTALL);
++					new FXMenuCommand(menu,_("Un&install"),packageicon,current,ID_PKG_UNINSTALL);
++				}
++#endif
+ 			}
+ 			else if ((num==1) && (ext1=="gz" || ext1=="bz2" || ext1=="xz" || ext1=="z"))
+ 			{
+@@ -4265,6 +4276,8 @@ long FilePanel::onCmdPkgInstall(FXObject*,FXSelector,void*)
+ 			cmd="rpm -Uvh " + path;
+ 		else if(comparecase(ext,"deb")==0)
+ 			cmd="dpkg -i "+ path;
++		else if(comparecase(ext,"xz")==0)
++			cmd="yaourt -U "+ path;
+                    
+ 		// Wait cursor
+ 		getApp()->beginWaitCursor();
+@@ -4313,6 +4326,11 @@ long FilePanel::onCmdPkgUninstall(FXObject*,FXSelector,void*)
+ 			name=name.section('_',0);
+ 			cmd="dpkg -r "+ name;
+ 		}
++		else if(comparecase(ext,"xz")==0)
++		{
++			name=name.section('-',0);
++			cmd="yaourt -R "+ name;
++		}
+ 		
+ 		// Wait cursor
+ 		getApp()->beginWaitCursor();
+@@ -4728,6 +4746,8 @@ long FilePanel::onCmdPkgQuery(FXObject* o,FXSelector sel,void*)
+ 		cmd="rpm -qf " + ::quote(file);
+ 	else if(deb_based)
+ 		cmd="dpkg -S " + ::quote(file);
++	else if(pkg_based)
++		cmd="yaourt -Qo " + ::quote(file) + " 2>/dev/null";
+ 	else
+ 	{
+ 		MessageBox::error(this,BOX_OK,_("Error"),_("No compatible package manager (rpm or dpkg) found!"));
+@@ -4780,6 +4800,13 @@ long FilePanel::onCmdPkgQuery(FXObject* o,FXSelector sel,void*)
+ 		else
+ 			str="";
+ 	}
++	if (pkg_based)	// PKG based distribution
++	{
++		if (str.find("owned by ") != -1)
++			str=str.erase(0,str.find("owned by ")+9);
++		else
++			str="";
++	}
+ 
+ 	// Display the related output message
+ 	FXString message;
+diff --git a/src/Properties.cpp b/src/Properties.cpp
+index f01603f..94feaef 100644
+--- a/src/Properties.cpp
++++ b/src/Properties.cpp
+@@ -228,6 +228,14 @@ PropertiesBox::PropertiesBox(FXWindow *win,FXString file,FXString path): DialogB
+ 
+ 	extension=file.rafter('.',1);
+ 	extension=extension.lower();
++#if defined(linux)
++	FXString ext3;
++	ext3=file.rafter('.',3);
++	ext3=ext3.lower();
++	if (ext3=="pkg.tar.xz")
++		editlbl = _("Install/Upgrade:");
++	else
++#endif
+ 	if (extension=="gz" || extension=="tgz" || extension=="tar" || extension=="taz" || extension=="bz2"
+ 	    || extension=="tbz2" || extension=="tbz" || extension =="xz" || extension=="txz" || extension=="zip"
+ 	    || extension=="7z" || extension=="Z" || extension=="lzh" || extension=="rar"
+diff --git a/src/SearchPanel.cpp b/src/SearchPanel.cpp
+index 19106d4..7ce021a 100644
+--- a/src/SearchPanel.cpp
++++ b/src/SearchPanel.cpp
+@@ -52,6 +52,7 @@ extern int OpenNum;
+ #if defined(linux)
+ extern FXbool deb_based;
+ extern FXbool rpm_based;
++extern FXbool pkg_based;
+ #endif
+ 
+ // Button separator margins and height 
+@@ -1687,16 +1688,22 @@ long SearchPanel::onCmdPopupMenu(FXObject* o,FXSelector s,void* p)
+ 			// Last and before last file extensions
+ 			FXString ext1=name.rafter('.',1);
+ 			FXString ext2=name.rafter('.',2);
++			FXString ext3=name.rafter('.',3);
+ 			
+ 			// Convert these extensions to lower case
+ 			ext1.lower();			
+ 			ext2.lower();
++			ext3.lower();
+ 
+ 			// Display the extract and package menus according to the archive extensions
+ 			if((num==1) && (ext2=="tar.gz" || ext2=="tar.bz2" || ext2=="tar.xz" || ext2=="tar.z"))
+ 			{
+ 				ar=TRUE;
+ 				new FXMenuCommand(menu,_("E&xtract to..."),archexticon,this,SearchPanel::ID_EXTRACT);
++#if defined(linux)
++				if (ext3=="pkg.tar.xz")
++					new FXMenuCommand(menu,_("&View"),packageicon,this,SearchPanel::ID_VIEW);
++#endif
+ 			}
+ 			else if ((num==1) && (ext1=="gz" || ext1=="bz2" || ext1=="xz" || ext1=="z"))
+ 			{
+@@ -3368,9 +3375,11 @@ long SearchPanel::onCmdPkgQuery(FXObject* o,FXSelector sel,void*)
+ 		cmd="rpm -qf " + ::quote(file);
+ 	else if(deb_based)
+ 		cmd="dpkg -S " + ::quote(file);
++	else if(pkg_based)
++		cmd="yaourt -Qo " + ::quote(file) + " 2>/dev/null";
+ 	else
+ 	{
+-		MessageBox::error(this,BOX_OK,_("Error"),_("No compatible package manager (rpm or dpkg) found!"));
++		MessageBox::error(this,BOX_OK,_("Error"),_("No compatible package manager (rpm, dpkg or yaourt) found!"));
+ 		return 0;
+ 	}
+ 
+@@ -3420,6 +3429,14 @@ long SearchPanel::onCmdPkgQuery(FXObject* o,FXSelector sel,void*)
+ 		else
+ 			str="";
+ 	}
++	if (pkg_based)	// PKG based distribution
++	{
++		// "No package" indicates no package otherwise part after "owned by"
++		if (str.find("owned by ") != -1)
++			str=str.erase(0,str.find("owned by ")+9);
++		else
++			str="";
++	}
+ 
+ 	// Display the related output message
+ 	FXString message;
+diff --git a/src/XFilePackage.cpp b/src/XFilePackage.cpp
+index e0e341d..d08ec00 100644
+--- a/src/XFilePackage.cpp
++++ b/src/XFilePackage.cpp
+@@ -31,6 +31,7 @@
+ char **args;
+ FXbool dpkg=FALSE;
+ FXbool rpm=FALSE;
++FXbool yaourt=FALSE;
+ FXColor highlightcolor;
+ FXbool allowPopupScroll=FALSE;
+ FXuint single_click;
+@@ -212,7 +213,7 @@ XFilePackage::~XFilePackage()
+ long XFilePackage::onCmdAbout(FXObject*,FXSelector,void*)
+ {
+ 	FXString msg;
+-	msg.format(_("X File Package Version %s is a simple rpm or deb package manager.\n\n"),VERSION);
++	msg.format(_("X File Package Version %s is a simple rpm, deb or pkg package manager.\n\n"),VERSION);
+ 	msg += COPYRIGHT;
+ 	MessageBox about(this,_("About X File Package"),msg.text(),xfpicon,BOX_OK|DECOR_TITLE|DECOR_BORDER,
+ 	                 JUSTIFY_CENTER_X|ICON_BEFORE_TEXT|LAYOUT_TOP|LAYOUT_LEFT|LAYOUT_FILL_X|LAYOUT_FILL_Y);
+@@ -229,6 +230,8 @@ long XFilePackage::onCmdOpen(FXObject*,FXSelector,void*)
+             _("RPM source packages"),	"*.src.rpm",
+             _("RPM packages"),			"*.rpm",
+             _("DEB packages"),			"*.deb",
++            _("SRC packages"),			"*.src.tar.gz",
++            _("PKG packages"),			"*.pkg.tar.xz",
+ 			NULL
+         };
+ 
+@@ -268,6 +271,8 @@ long XFilePackage::onCmdInstall(FXObject*,FXSelector,void*)
+ 		cmd="rpm -Uvh "+filename;
+ 	else if(comparecase(ext,"deb")==0)
+ 		cmd="dpkg -i "+filename;
++	else if(comparecase(ext,"xz")==0)
++		cmd="yaourt -U "+filename;
+ 	else
+ 	{
+ 		MessageBox::error(this,BOX_OK,_("Error"),_("Unknown package format"));
+@@ -318,6 +323,13 @@ long XFilePackage::onCmdUninstall(FXObject*,FXSelector,void*)
+ 		package=package.section('_',0);
+ 		cmd="dpkg -r "+ package;
+ 	}
++	else if(comparecase(ext,"xz")==0)
++	{
++		// Get package name
++		package=FXPath::name(filename);
++		package=package.section('-',0);
++		cmd="yaourt -R "+ package;
++	}
+ 	else
+ 	{
+ 		MessageBox::error(this,BOX_OK,_("Error"),_("Unknown package format"));
+@@ -416,6 +428,11 @@ long XFilePackage::onUpdFileList(FXObject*,FXSelector,void*)
+ 		errorflag=FALSE;
+ 		cmd="dpkg -c "+::quote(filename);
+ 	}
++	else if(comparecase(ext,"xz")==0)
++	{
++		errorflag=FALSE;
++		cmd="yaourt -Qlpq "+::quote(filename);
++	}
+ 	else if (errorflag==FALSE)
+ 	{
+ 		errorflag=TRUE;
+@@ -480,6 +497,12 @@ long XFilePackage::onUpdDescription(FXObject*,FXSelector,void*)
+ 		buf += _("[DEB package]\n"); 
+ 		cmd="dpkg -I "+::quote(filename);
+ 	}
++	else if(comparecase(ext,"xz")==0)
++	{
++		errorflag=FALSE;
++		buf += _("[PKG package]\n");
++		cmd="yaourt -Qip "+::quote(filename);
++	}
+ 	else if (errorflag==FALSE)
+ 	{
+ 		errorflag=TRUE;
+@@ -627,7 +650,7 @@ void XFilePackage::create()
+         -h, --help         Print (this) help screen and exit.\n\
+         -v, --version      Print version information and exit.\n\
+ \n\
+-    [package] is the path to the rpm or deb package you want to open on start up.\n\
++    [package] is the path to the rpm, deb or arch package you want to open on start up.\n\
+ \n")
+ 
+ 
+@@ -793,11 +816,27 @@ int main(int argc,char* argv[])
+ 	if (strstr(textrpm,"RPM")!=NULL)
+ 		rpm=TRUE;
+ 	pclose(rpmcmd);
++
++	cmd="yaourt --version 2>&1";
++	FILE *pkgcmd=popen(cmd.text(),"r");
++	if(!pkgcmd)
++	{
++		perror("popen");
++		exit(1);
++	}
++	char textpkg[10000]={0};
++	FXString bufpkg;
++	while(fgets(textpkg,sizeof(textpkg),pkgcmd))
++		bufpkg+=textpkg;
++	snprintf(textpkg,sizeof(textpkg)-1,"%s",bufpkg.text());
++	if (strstr(textpkg,"yaourt")!=NULL)
++		yaourt=TRUE;
++	pclose(pkgcmd);
+ 	
+ 	// No package manager was found
+-	if ((dpkg==FALSE) && (rpm==FALSE))
++	if ((dpkg==FALSE) && (rpm==FALSE) && (yaourt==FALSE))
+ 	{
+-        MessageBox::error(window,BOX_OK,_("Error"),_("No compatible package manager (rpm or dpkg) found!"));
++        MessageBox::error(window,BOX_OK,_("Error"),_("No compatible package manager (rpm, dpkg or yaourt) found!"));
+ 		exit(1);
+ 	}
+ 
+diff --git a/src/help.h b/src/help.h
+index 850ec0d..5c44c09 100644
+--- a/src/help.h
++++ b/src/help.h
+@@ -49,7 +49,7 @@
+     - Integrated text editor (X File Write, Xfw)\n \
+     - Integrated text viewer (X File View, Xfv)\n \
+     - Integrated image viewer (X File Image, Xfi)\n \
+-    - Integrated package (rpm or deb) viewer / installer / uninstaller (X File Package, Xfp)\n \
++    - Integrated package (rpm, deb or pkg) viewer / installer / uninstaller (X File Package, Xfp)\n \
+     - Custom shell scripts (like Nautilus scripts)\n \
+     - Search files and directories\n \
+     - Copy/Cut/Paste files from and to your favorite desktop (GNOME/KDE/XFCE/ROX)\n \
+diff --git a/src/main.cpp b/src/main.cpp
+index 79bf00c..5586ae3 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -198,6 +198,7 @@ char **args;
+ #if defined(linux)
+ FXbool deb_based=FALSE;
+ FXbool rpm_based=FALSE;
++FXbool pkg_based=FALSE;
+ #endif
+ 
+ // Base directories (according to the Freedesktop specification version 0.7)
+@@ -336,6 +337,26 @@ int main(int argc,char *argv[])
+ 			rpm_based=TRUE;
+ 		pclose(rpmcmd);
+ 	}
++
++	// When the distro is neither debian nor rpm based, test if
++	// yaourt based.
++	if (!deb_based && !rpm_based) {
++		cmd="yaourt --version 2>&1";
++		FILE *pkgcmd=popen(cmd.text(),"r");
++		if (!pkgcmd)
++		{
++			perror("popen");
++			exit(1);
++		}
++		char textpkg[10000]={0};
++		FXString bufpkg;
++		while(fgets(textpkg,sizeof(textpkg),pkgcmd))
++			bufpkg+=textpkg;
++		snprintf(textpkg,sizeof(textpkg)-1,"%s",bufpkg.text());
++		if (strstr(textpkg,"yaourt")!=NULL)
++			pkg_based=TRUE;
++		pclose(pkgcmd);
++	}
+ #endif
+ 
+ 	// Parse basic arguments
