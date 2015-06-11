@@ -3,8 +3,8 @@
 # Contributor: Joel Goguen <jgoguen (at-sign) jgoguen (period) ca>
 
 pkgname=thunderbird-lightning-bin
-pkgver=4.0b6
-pkgrel=2
+pkgver=4.0b3
+pkgrel=1
 pkgdesc="A calendar that's fully integrated into Thunderbird."
 arch=('i686' 'x86_64')
 groups=('office')
@@ -16,8 +16,9 @@ options=(!strip)
 provides=(lightning=${pkgver})
 replaces=("lightning-bin")
 conflicts=("lightning-bin")
-source=(lightning-$pkgver.xpi::https://addons.mozilla.org/thunderbird/downloads/file/320906/lightning-${pkgver}-sm+tb-linux.xpi)
-sha1sums=('e01a6bd3eca98fd455deb510c1f31270a8cbe3f3')
+# https://addons.mozilla.org/de/thunderbird/addon/lightning/versions/
+source=(lightning-$pkgver.xpi::https://addons.mozilla.org/thunderbird/downloads/file/312892/lightning-${pkgver}-sm+tb-linux.xpi)
+sha1sums=('df791348a73cabfc75f3c1ecd138af9ebe989834')
 
 package() {
   mkdir -p ${pkgdir}/usr/lib/thunderbird/extensions/${pkgname}
@@ -25,9 +26,11 @@ package() {
   bsdtar -x -f ${srcdir}/lightning-$pkgver.xpi
 
   _emid=$(grep em:id install.rdf | tail -n 1 | sed 's/.*>\(.*\)<.*/\1/')
-  cd ../
+  cd ..
   mv ${pkgname} ${_emid}
   cd ${_emid}
+  # fix minimum version
+  sed -i 's/<em:minVersion>38.0</<em:minVersion>38.0.0</' install.rdf
 
   # Fix permissions
   find -type d -exec chmod 0755 \{\} \+
