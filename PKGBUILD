@@ -1,7 +1,7 @@
 # Maintainer: Stefan Seering <stefanarch@gmx.de>
 pkgname='teamspeak-plugin-love-svn'
 pkgver=49
-pkgrel=2
+pkgrel=3
 pkgdesc='Plugin for Teamspeak 3. Allows follwing users through channels.'
 arch=('i686' 'x86_64')
 url='http://sourceforge.net/p/ts3love/home/ts3love/'
@@ -20,7 +20,7 @@ build() {
 package() {
   cd -- trunk
   mkdir -p -- "$pkgdir/opt/teamspeak3/plugins"
-  cp libtslove.so "$pkgdir/opt/teamspeak3/plugins"
+  cp -- libtslove.so "$pkgdir/opt/teamspeak3/plugins"
 }
 
 # vim:set ts=2 sw=2 et:
