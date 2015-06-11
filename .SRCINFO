@@ -1,7 +1,7 @@
 pkgbase = libasl
 	pkgdesc = Multiphysics simulation software package (Advanced Simulation Library)
 	pkgver = 0.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://asl.org.il/
 	arch = i686
 	arch = x86_64

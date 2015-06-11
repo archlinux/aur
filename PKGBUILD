@@ -1,7 +1,7 @@
 # Maintainer: Andrejs Mivreņiks <gim at fastmail dot fm>
 pkgname=libasl
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Multiphysics simulation software package (Advanced Simulation Library)'
 arch=('i686' 'x86_64')
 url='http://asl.org.il/'
@@ -31,4 +31,7 @@ build() {
 package() {
   cd "$srcdir/ASL-$pkgver/build"
   make DESTDIR="$pkgdir/" install
+
+  # Add LICENSE file
+  install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
