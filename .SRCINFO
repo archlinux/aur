@@ -1,0 +1,14 @@
+pkgbase = eclipse-subclipse
+	pkgdesc = Subversion integration for the Eclipse platform
+	pkgver = 1.10.5
+	pkgrel = 1
+	url = http://subclipse.tigris.org/
+	arch = any
+	license = EPL
+	depends = eclipse
+	depends = subversion
+	source = http://subclipse.tigris.org/files/documents/906/49382/site-1.10.5.zip
+	md5sums = 5537c75cf09189351672a8807cb75d61
+
+pkgname = eclipse-subclipse
+
