@@ -1,0 +1,17 @@
+pkgbase = muchsync
+	pkgdesc = synchronize notmuch mail across machines
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.muchsync.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = notmuch
+	depends = sqlite3
+	depends = openssl
+	depends = openssh
+	source = http://www.muchsync.org/src/muchsync-1.tar.gz
+	md5sums = 6ce5a25f9585bea56f1f62e2801163a1
+
+pkgname = muchsync
+
