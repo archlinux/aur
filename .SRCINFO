@@ -1,0 +1,20 @@
+pkgbase = perl-net-frame
+	pkgdesc = the base framework for frame crafting
+	pkgver = 1.15
+	pkgrel = 1
+	url = https://metacpan.org/release/Net-Frame
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-bit-vector
+	depends = perl-class-gomor
+	depends = perl-net-ipv6addr
+	depends = perl-socket6
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/G/GO/GOMOR/Net-Frame-1.15.tar.gz
+	md5sums = 927650f18121f369e1a167272b9efbda
+
+pkgname = perl-net-frame
+
