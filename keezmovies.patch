@@ -1,0 +1,131 @@
+# update plugin
+Index: xvst-2.5.1/resources/services/keezmovies/keezmovies.js
+===================================================================
+--- xvst-2.5.1.orig/resources/services/keezmovies/keezmovies.js	2014-01-10 20:28:16.225627825 +0100
++++ xvst-2.5.1/resources/services/keezmovies/keezmovies.js	2014-01-10 20:30:28.293623896 +0100
+@@ -23,9 +23,8 @@
+ *
+ */
+ 
+-function RegistVideoService()
+-{
+-	this.version = "1.0.4a";
++function RegistVideoService() {
++	this.version = "1.0.5";
+ 	this.minVersion = "2.0.0a";
+ 	this.author = "Xesc & Technology 2014";
+ 	this.website = "http://www.keezmovies.com/";
+@@ -35,8 +34,7 @@
+ 	this.musicSite = false;
+ }
+ 
+-function getVideoInformation(url)
+-{
++function getVideoInformation(url) {
+ 	// video information
+ 	var result = new VideoDefinition();
+ 	// download webpage
+@@ -53,8 +51,101 @@
+ 	return result;
+ }
+ 
+-function getVideoServiceIcon()
+-{
++function searchVideos(keyWord, pageIndex) {
++	const URL_SEARCH            = "http://www.keezmovies.com/video?search=%1&page=%2";
++	const HTML_SEARCH_START     = '<div class="pag2Block float-left" style="width:804px;">';
++	const HTML_SEARCH_FINISH    = '<div class="gray-border block friend-row">';
++	const HTML_SEARCH_SEPARATOR = "</li>";
++
++	// replace all spaces for "+"
++	keyWord = strReplace(keyWord, " ", "+");
++
++	// init search results object
++	var searchResults = new SearchResults();
++
++	// init http object
++	var http = new Http();
++	var html = http.downloadWebpage(strFormat(URL_SEARCH, keyWord, pageIndex));
++
++	var noResIx = strIndexOf(html, "did not match any videos");
++	if (noResIx == -1) {
++
++		// get the search summary
++		var summary = copyBetween(html, '<h2 class="title float-left">', '</h2>'); 	
++		searchResults.setSummary(summary);
++
++		// get results html block
++		var htmlResults = copyBetween(html, HTML_SEARCH_START, HTML_SEARCH_FINISH);
++
++		// if we found some results then...
++		if (htmlResults != "") {
++			var blocks = splitString(htmlResults, HTML_SEARCH_SEPARATOR);
++			for (n = 0; n < blocks.length-1; n++)
++				parseResultItem(searchResults, blocks[n]);
++		}
++	}
++
++	// return search results
++	return searchResults;
++}
++
++function cleanSummary(summary) {
++	// remove all "\n"
++	summary = strReplace(summary, "\n", "");
++
++	// remove unused tags
++	summary = strReplace(summary, "</span>", '');
++	summary = strReplace(summary, "<span>", '');
++	summary = strReplace(summary, "<em>", '');
++	summary = strReplace(summary, "</em>", '');
++
++	// remove &quot;
++	summary = strReplace(summary, "&quot;", "");
++
++	// return cleanned summary
++	return summary;
++}
++
++function parseResultItem(searchResults, html) {
++	// vars
++	var tmp, videoUrl, imageUrl, title, description, duration, rating;
++
++	// get video url
++	videoUrl = copyBetween(html, 'href="', '"');
++
++	// get title and image url
++	tmp= copyBetween(html, '<img', '/>');
++	title = copyBetween(tmp, 'alt="', '"');
++	imageUrl = copyBetween(tmp, 'src="', '"');
++				
++	// get video description
++	description = "";
++
++	// get video duration
++	tmp = copyBetween(html, '<var class="duration">', '</var>');	
++	duration = convertToSeconds(tmp); 
++
++	// get rating
++	rating = copyBetween(html, '<strong >', '%</strong>')/10;
++
++	// add to results list
++	searchResults.addSearchResult(videoUrl, imageUrl, title, description, duration, rating);
++}
++
++function convertToSeconds(text) {
++	// how many ":" exists?
++	var count = getTokenCount(text, ":");
++
++	// get mins and seconds
++	var h = new Number(h = count == 3 ? getToken(tmp2, ":", 0) * 3600 : 0);
++	var m = new Number(getToken(text, ":", count - 2) * 60);
++	var s = new Number(getToken(text, ":", count - 1));
++
++	// convert h:m:s to seconds
++	return h + m + s;
++}
++
++function getVideoServiceIcon() {
+ 	return new Array(
+ 		0x89,0x50,0x4e,0x47,0x0d,0x0a,0x1a,0x0a,0x00,0x00,0x00,0x0d,0x49,0x48,0x44,0x52,
+ 		0x00,0x00,0x00,0x10,0x00,0x00,0x00,0x10,0x08,0x03,0x00,0x00,0x00,0x28,0x2d,0x0f,

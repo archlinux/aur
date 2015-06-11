@@ -1,0 +1,17 @@
+The update will not work anyway.
+Index: xvst-2.5.1/src/options.cpp
+===================================================================
+--- xvst-2.5.1.orig/src/options.cpp	2014-01-10 20:22:19.441638438 +0100
++++ xvst-2.5.1/src/options.cpp	2014-01-10 20:22:19.437638438 +0100
+@@ -355,9 +355,9 @@
+ 
+ 	languageFile = LanguageManager::getDefaultUserLanguage(getLanguagesPath()); // "english_uk.language";
+ 
+-	installAutomaticallyUpdates = true;
++	installAutomaticallyUpdates = false;
+ 	lastUpdate = QDate(2007, 01, 01);
+-	checkForUpdatesOnStartup = true;
++	checkForUpdatesOnStartup = false;
+ 	checkForUpdatesEvery = 1;
+ 
+ 	displayBugReport = true;

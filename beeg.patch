@@ -1,0 +1,128 @@
+New plugin.
+Index: xvst-2.5/resources/services/beeg/beeg.js
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ xvst-2.5/resources/services/beeg/beeg.js	2013-03-29 17:01:19.486267000 +0100
+@@ -0,0 +1,122 @@
++/*
++*
++* This file is part of xVideoServiceThief,
++* an open-source cross-platform Video service download
++*
++* Copyright (C) 2007 - 2009 Xesc & Technology
++*
++* This program is free software: you can redistribute it and/or modify
++* it under the terms of the GNU General Public License as published by
++* the Free Software Foundation, either version 3 of the License, or
++* (at your option) any later version.
++*
++* This program is distributed in the hope that it will be useful,
++* but WITHOUT ANY WARRANTY; without even the implied warranty of
++* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++* GNU General Public License for more details.
++*
++* You should have received a copy of the GNU General Public License
++* along with xVideoServiceThief. If not, see <http://www.gnu.org/licenses/>.
++*
++* Contact e-mail: Xesc <xeskuu.xvst@gmail.com>
++* Program URL   : http://xviservicethief.sourceforge.net/
++*
++*/
++
++function RegistVideoService()
++{
++	this.version = "3.1.0";
++	this.minVersion = "2.0.0a";
++	this.author = "Xesc & Technology 2009";
++	this.website = "http://www.beeg.com/";
++	this.ID = "beeg.com";
++	this.caption = "beeg.";
++	this.adultContent = true;
++	this.musicSite = false;
++}
++
++function getVideoInformation(url)
++{
++	// video information
++	var result = new VideoDefinition();
++	// download webpage
++	var http = new Http();
++	var html = http.downloadWebpage(url);
++	// get video title
++	result.title = copyBetween(html, "<title>", "</title>");
++	// get the flv url
++	result.URL = copyBetween(html, "so.addVariable('file','", "');");
++	if(result.URL == "") {
++		result.URL = copyBetween(html, "'file': '", "',");
++	}
++	// return the video information
++	return result;
++}
++
++function searchVideos(keyWord, pageIndex)
++{
++	const URL_SEARCH = "http://beeg.com/section/home/%1/";
++	const HTML_SEARCH_ID = 'var tumbid  =[';
++	const HTML_SEARCH_ALT = 'var tumbalt =[';
++	const HTML_SEARCH_END = '];';
++	const RESULTS_PER_PAGE = 5;
++	var nCurrentPageIndex = 1;
++	var nResultsToSkip = (pageIndex - 1) * RESULTS_PER_PAGE ;
++	var nCurrentResults = 0;
++	// remember the first ID so if we find again we know we searched past the last site
++	var nFirstId = -1;
++	// init search results object
++	var searchResults = new SearchResults();
++	while(nCurrentResults < RESULTS_PER_PAGE) {
++		// init http object
++		var http = new Http();
++		var html = http.downloadWebpage(strFormat(URL_SEARCH, nCurrentPageIndex));
++		// did we reach the end?
++		if(strIndexOf(html, HTML_SEARCH_ID, 0, false) == -1) {			
++			break;
++		}
++		var IDs = copyBetween(html, HTML_SEARCH_ID, HTML_SEARCH_END);
++		var Alts = copyBetween(html, HTML_SEARCH_ALT, HTML_SEARCH_END);
++		// if we found some results then...
++		if (IDs != "")
++		{
++			// the IDs and alt-texts are JavaScript arrays already
++			var IDblocks = eval('[' + IDs + ']');
++			var Altblocks = eval('[' + Alts + ']');
++			for (n = 0; n < IDblocks.length; n++) {
++				var title = Altblocks[n];
++				var videoURL = "http://beeg.com/" + IDblocks[n];
++				var imageURL = "http://cdn.anythumb.com/120x90/" + IDblocks[n] + ".jpg";
++				var imageId = IDblocks[n]
++				if(nFirstId == -1) {
++					nFirstId = imageId;
++				} else if(nFirstId == imageId) {
++					// we found the same imageId again. Stop the search.
++					return searchResults;
++				}
++				if(strIndexOf(title, keyWord, 0, false) != -1) {
++					//print('[' + nResultsToSkip + '][' + nCurrentResults + '] ' + title);
++					if(nResultsToSkip > 0) {
++						nResultsToSkip--;
++					} else {
++						if( nCurrentResults < RESULTS_PER_PAGE ) {
++							searchResults.addSearchResult(videoURL, imageURL, title, title, 0, 0);
++							nCurrentResults++;
++						}
++						if( nCurrentResults >= RESULTS_PER_PAGE ) {
++							break;
++						}
++					}
++				}
++			}
++		}
++		nCurrentPageIndex++;
++	}
++	// return search results
++	return searchResults;
++}
++
++function getVideoServiceIcon()
++{
++	return "http://beeg.com/favicon.ico";
++}
