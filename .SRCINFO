@@ -1,0 +1,19 @@
+pkgbase = emacs-twittering-mode-git
+	pkgdesc = An Emacs major mode for Twitter (git version)
+	pkgver = v3.0.0.29.gb04a3af
+	pkgrel = 1
+	url = http://twmode.sourceforge.net/index.html
+	install = emacs-twittering-mode-git.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = emacs>=23.1
+	depends = curl
+	optdepends = gnupg: For keeping an OAuth authorized token in a local storage encrypted with master password
+	provides = emacs-twittering-mode
+	conflicts = emacs-twittering-mode
+	source = twittering-mode::git+https://github.com/hayamiz/twittering-mode.git
+	md5sums = SKIP
+
+pkgname = emacs-twittering-mode-git
+
