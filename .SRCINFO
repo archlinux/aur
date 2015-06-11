@@ -1,0 +1,14 @@
+pkgbase = python2-oslosphinx-kilo
+	pkgdesc = OpenStack Sphinx Extensions and Theme
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/oslosphinx
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/o/oslosphinx/oslosphinx-2.5.0.tar.gz
+	md5sums = 2548a1da0c24853c4758eb314530d830
+
+pkgname = python2-oslosphinx-kilo
+	depends = python2
+
