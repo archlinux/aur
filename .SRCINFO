@@ -1,0 +1,15 @@
+pkgbase = iceweasel-extension-archforumsearch-it
+	pkgdesc = Iceweasel search engines for Arch Linux Italian forum
+	pkgver = 0.1
+	pkgrel = 2
+	url = http://www.archlinux.it/forum/
+	arch = any
+	license = GPL
+	depends = iceweasel
+	source = arch-forum-a-it.xml
+	source = arch-forum-c-it.xml
+	md5sums = 22afcceb949a93e52e4e355877496a03
+	md5sums = 4ac4b6067980728d39997d2878dc8b58
+
+pkgname = iceweasel-extension-archforumsearch-it
+
