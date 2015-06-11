@@ -1,0 +1,13 @@
+pkgbase = pachi-go
+	pkgdesc = A reasonably strong engine built within a simple modular framework
+	pkgver = 11.00
+	pkgrel = 1
+	url = http://pachi.or.cz/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = https://github.com/pasky/pachi/archive/pachi-11.00-retsugen.tar.gz
+	md5sums = 6924b14774c3daf30c6e2e105bee88e9
+
+pkgname = pachi-go
+
