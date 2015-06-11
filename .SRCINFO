@@ -1,0 +1,17 @@
+pkgbase = wireframesketcher
+	pkgdesc = WireframeSketcher, wireframing tool for professionals (Trial)
+	pkgver = 4.4.5
+	pkgrel = 1
+	url = http://wireframesketcher.com
+	arch = i686
+	arch = x86_64
+	license = nonfree
+	depends = java-runtime
+	depends = gtk2>=2.8.0
+	depends = webkitgtk2
+	depends = libxtst
+	source = http://cdn.wireframesketcher.com/studio/dist/WireframeSketcher-4.4.5_i386.deb
+	sha512sums = bdd5da00302028b2881f9210eff7fc78117f62a253e5605f4a7aae5fa392b865a5a804a6bd525fe4888273c5b1b19bce1bc996cdf570d9556bfd3236af97228c
+
+pkgname = wireframesketcher
+
