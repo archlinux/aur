@@ -1,0 +1,34 @@
+pkgbase = exo-git
+	pkgdesc = Extensions to Xfce by os-cillation.
+	pkgver = 0.10.6.r1635.ce731c3
+	pkgrel = 2
+	epoch = 1
+	url = http://git.xfce.org/xfce/exo/tree/README
+	install = exo-git.install
+	arch = i686
+	arch = x86_64
+	groups = xfce4-git
+	license = GPL2
+	license = LGPL2.1
+	makedepends = xfce4-dev-tools
+	makedepends = git
+	makedepends = pkgconfig
+	makedepends = libnotify
+	makedepends = perl-uri
+	makedepends = pygtk>=2.13
+	depends = libxfce4util
+	depends = gtk2>=2.18.6-1
+	depends = glib2>=2.22.4-1
+	depends = hicolor-icon-theme
+	depends = libxfce4ui
+	depends = libsm
+	optdepends = libnotify: enables notification support
+	optdepends = perl: enables mail-compose helper script
+	provides = exo
+	conflicts = exo
+	options = !libtool
+	source = git://git.xfce.org/xfce/exo
+	md5sums = SKIP
+
+pkgname = exo-git
+
