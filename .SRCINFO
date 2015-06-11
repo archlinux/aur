@@ -1,0 +1,30 @@
+pkgbase = python-ratelim-git
+	pkgver = 0.1.6.r15.e75c81c
+	pkgrel = 2
+	url = https://github.com/themiurgo/ratelim
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	makedepends = python
+	makedepends = python2
+	makedepends = python-decorator
+	makedepends = python2-decorator
+	source = git+https://github.com/themiurgo/ratelim.git
+	sha256sums = SKIP
+
+pkgname = python-ratelim-git
+	pkgdesc = Ratelim is a simple Python 3 library that limits the number of times a function can be called during a time interval. It is particularly useful when using online APIs, which commonly enforce rate limits.
+	depends = python
+	depends = python-decorator
+	provides = python-ratelim
+	conflicts = python-ratelim
+
+pkgname = python2-ratelim-git
+	pkgdesc = Ratelim is a simple Python 2 library that limits the number of times a function can be called during a time interval. It is particularly useful when using online APIs, which commonly enforce rate limits.
+	depends = python2
+	depends = python2-decorator
+	provides = python2-ratelim
+	conflicts = python2-ratelim
+
