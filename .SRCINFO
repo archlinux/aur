@@ -1,0 +1,64 @@
+pkgbase = linux-lts310-ck
+	pkgdesc = Arch Linux LTS Kernel and modules with the ck1 patchset featuring the Brain Fuck Scheduler v0.440.
+	pkgver = 3.10.76
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/Linux-ck
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.10.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.10.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.10.76.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.10.76.sign
+	source = http://ck.kolivas.org/patches/3.0/3.10/3.10-ck1/patch-3.10-ck1.bz2
+	source = http://repo-ck.com/source/gcc_patch/enable_additional_cpu_optimizations_for_gcc_v4.9+.patch.gz
+	source = enable_haswell_pstate_driver.patch
+	source = linux-lts310-ck.preset
+	source = change-default-console-loglevel.patch
+	source = config
+	source = config.x86_64
+	source = criu-no-expert.patch
+	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.10.8+-v7r7/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r7-3.10.8+.patch
+	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.10.8+-v7r7/0002-block-introduce-the-BFQ-v7r7-I-O-sched-for-3.10.8+.patch
+	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.10.8+-v7r7/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r7-for-3.10.8+.patch
+	source = 3.10.76+-ck1.patch
+	source = 3.10.76+-ck1.patch.asc
+	sha256sums = df27fa92d27a9c410bfe6c4a89f141638500d7eadcca5cce578954efc2ad3544
+	sha256sums = SKIP
+	sha256sums = 0882a31148e5305d7f54925393d1e63afd271aa6770638a0c78b3d4322d69cee
+	sha256sums = SKIP
+	sha256sums = 747d893b69d040dd82650a1a2d509155beace337020619194661049920650ed6
+	sha256sums = c6c4a9f77683b95c37636b20c4bc8a1f8214c87feef7fc469e58534fcc32fb4a
+	sha256sums = d7fada52453d12a24af9634024c36792697f97ce0bc6552939cd7b2344d00cd9
+	sha256sums = 7424c04897d7cf4e07e167f807a0f7e7ee459f041fe7341675435e315570d1bb
+	sha256sums = 56bd99e54429a25a144f2d221718b67f516344ffd518fd7dcdd752206ec5be69
+	sha256sums = dc81ec15419d733d6b2bd56c20c67c671c694b82aea949e90c8b4e0b58939786
+	sha256sums = cf64b0ada5c3d1326a8446e5bfa1f4648cd403570d87c284ef271da1ba3d186f
+	sha256sums = daa75228a4c45a925cc5dbfeba884aa696a973a26af7695adc198c396474cbd5
+	sha256sums = 7e6a68b324f117ea3134729bd7f10a6064c3315557957fe84e0a41c0c8ea8d61
+	sha256sums = 096a4453295eefa0d8acdeb874ad359d26c4dfef842b4b9ff8449e062d54f843
+	sha256sums = 6ec3d2c03f0425f9d5a13ebbb44e3840baeba8085ca0a08c087b05226c2f49b9
+	sha256sums = e98c19d4d71bad1615b1e4b428837c047b5105c91930b5212b7a68ac9aebe11d
+	sha256sums = SKIP
+
+pkgname = linux-lts310-ck
+	pkgdesc = The linux-lts310 kernel and modules with the ck1 patchset featuring the Brain Fuck Scheduler v0.440
+	install = linux-lts310-ck.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = modprobed_db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
+	backup = etc/mkinitcpio.d/linux-lts310-ck.preset
+
+pkgname = linux-lts310-ck-headers
+	pkgdesc = Header files and scripts to build modules for linux-lts310-ck.
+	depends = linux-lts310-ck
+	provides = linux-lts310-ck-headers=3.10.76
+	provides = linux-headers=3.10.76
+
