@@ -1,0 +1,11 @@
+[Unit]
+Description=Subnode Daemon
+After=network.target
+
+[Service]
+User=subnode
+Group=subnode
+ExecStart=/opt/subnode/server.sh
+
+[Install]
+WantedBy=multi-user.target

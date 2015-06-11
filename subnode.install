@@ -1,0 +1,20 @@
+## arg 1:  the new package version
+post_install() {
+  useradd -d /opt/subnode -s /bin/false subnode &> /dev/null
+  chown -R subnode\: /opt/subnode
+}
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  chown -R subnode\: /opt/subnode
+}
+
+## arg 1:  the old package version
+pre_remove() {
+  userdel subnode &> /dev/null
+}
+
+post_remove() {
+  echo 'Some files have not been removed because they are created by subnode itself, e.g. the show database.'
+}
+
