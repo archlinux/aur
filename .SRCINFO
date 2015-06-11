@@ -1,0 +1,17 @@
+pkgbase = kde-thumbnailer-apk
+	pkgdesc = Preview image generator plugin for Android Application Package files.
+	pkgver = 1.0
+	pkgrel = 3
+	url = http://kde-apps.org/content/show.php/KDE+APK+Thumbnailer?content=156421
+	install = kde-thumbnailer-apk.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdelibs
+	source = http://kde-apps.org/CONTENT/content-files/156421-kde-thumbnailer-apk-1.0.tar.bz2
+	sha256sums = aefb7296a5207e13c4f3624acb6fd3ea359972fbee7f618686f970036067f476
+
+pkgname = kde-thumbnailer-apk
+
