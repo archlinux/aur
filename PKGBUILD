@@ -1,7 +1,7 @@
 # Maintainer: Christian Mauderer <c_mauderer[at]yahoo[dot]de>
 pkgname=stlink-git
-pkgrel=8
-pkgver=r553.c84d8fa
+pkgrel=9
+pkgver=r590.f5b8603
 pkgdesc="stm32 discovery line linux programmer."
 arch=('i686' 'x86_64')
 url="https://github.com/texane/stlink"
@@ -37,6 +37,7 @@ package() {
 	install -Dm644 "stlink_v1.modprobe.conf"   "${pkgdir}/etc/modprobe.d/stlink_v1.modprobe.conf"
 	install -Dm644 "49-stlinkv1.rules"         "${pkgdir}/etc/udev/rules.d/49-stlinkv1.rules"
 	install -Dm644 "49-stlinkv2.rules"         "${pkgdir}/etc/udev/rules.d/49-stlinkv2.rules"
+	install -Dm644 "49-stlinkv2-1.rules"       "${pkgdir}/etc/udev/rules.d/49-stlinkv2-1.rules"
 	install -Dm644 "README"                    "${pkgdir}/usr/share/doc/${pkgname}/README"
 	install -Dm644 "ACKNOWLEDGMENTS"           "${pkgdir}/usr/share/doc/${pkgname}/ACKNOWLEDGMENTS"
 	install -Dm644 "AUTHORS"                   "${pkgdir}/usr/share/doc/${pkgname}/AUTHORS"
