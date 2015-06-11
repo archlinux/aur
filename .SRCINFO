@@ -1,7 +1,7 @@
 pkgbase = syncthing-git
 	pkgdesc = Open Source Continuous Replication / Cluster Synchronization Thing
 	pkgver = 0.11.8.r13.g983d7ec
-	pkgrel = 1
+	pkgrel = 2
 	url = http://syncthing.net/
 	install = syncthing-git.install
 	arch = i686

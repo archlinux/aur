@@ -3,7 +3,7 @@
 
 pkgname=syncthing-git
 pkgver=0.11.8.r13.g983d7ec
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Continuous Replication / Cluster Synchronization Thing"
 url="http://syncthing.net/"
 license=('MPLv2')
