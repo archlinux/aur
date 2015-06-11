@@ -1,0 +1,86 @@
+From 7b34ab1dbeb4a1e29d7475af65f42e1cb6f60de8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mattias=20Andr=C3=A9e?= <maandree@operamail.com>
+Date: Sat, 19 Apr 2014 19:36:05 +0200
+Subject: [PATCH 2/3] Fix for full and semi-transparency under negative image.
+
+---
+ hw/xfree86/modes/xf86Cursors.c | 49 +++++++++++++++++++++++++++++++-----------
+ 1 file changed, 37 insertions(+), 12 deletions(-)
+
+diff --git a/hw/xfree86/modes/xf86Cursors.c b/hw/xfree86/modes/xf86Cursors.c
+index 3cb499f..5afd740 100644
+--- a/hw/xfree86/modes/xf86Cursors.c
++++ b/hw/xfree86/modes/xf86Cursors.c
+@@ -209,6 +209,41 @@ set_bit(CARD8 *image, xf86CursorInfoPtr cursor_info, int x, int y, Bool mask)
+ }
+ 
+ /*
++ * Remap a cursor pixel according to the gamma ramps
++ */
++static CARD32
++cursor_gamma_correct(xf86CrtcPtr crtc, CARD32 bits)
++{
++    float  alpha;
++    CARD32 old_red,   new_red;
++    CARD32 old_green, new_green;
++    CARD32 old_blue,  new_blue;
++
++    if (!(crtc->gamma_red && crtc->gamma_size == 256))
++        return bits;
++
++    alpha = (float)((bits >> 24) & 255) / 255.f;
++
++    old_red   = (bits >> 16) & 255;
++    old_green = (bits >>  8) & 255;
++    old_blue  = (bits >>  0) & 255;
++
++    new_red   = (crtc->gamma_red  [old_red  ]) >> 8;
++    new_green = (crtc->gamma_green[old_green]) >> 8;
++    new_blue  = (crtc->gamma_blue [old_blue ]) >> 8;
++
++    new_red   = new_red   * alpha + old_red   * (1 - alpha);
++    new_green = new_green * alpha + old_green * (1 - alpha);
++    new_blue  = new_blue  * alpha + old_blue  * (1 - alpha);
++
++    new_red   = new_red   < 0 ? 0 : new_red   > 255 ? 255 : new_red;
++    new_green = new_green < 0 ? 0 : new_green > 255 ? 255 : new_green;
++    new_blue  = new_blue  < 0 ? 0 : new_blue  > 255 ? 255 : new_blue;
++
++    return (bits & 0xFF000000) | (new_red << 16) | (new_green << 8) | (new_blue << 0);
++}
++
++/*
+  * Load a two color cursor into a driver that supports only ARGB cursors
+  */
+ static void
+@@ -242,12 +277,7 @@ xf86_crtc_convert_cursor_to_argb(xf86CrtcPtr crtc, unsigned char *src)
+             }
+             else
+                 bits = 0;
+-            if (crtc->gamma_red && crtc->gamma_size == 256) {
+-                bits = (bits & 0xFF000000) |
+-                       ((crtc->gamma_red[(bits >> 16) & 255] >> 8) << 16) |
+-                       (crtc->gamma_green[(bits >> 8) & 255] & 0xFF00) |
+-                       (crtc->gamma_blue[bits & 255] >> 8);
+-            }
++            bits = cursor_gamma_correct(crtc, bits);
+             cursor_image[y * cursor_info->MaxWidth + x] = bits;
+         }
+     crtc->funcs->load_cursor_argb(crtc, cursor_image);
+@@ -547,12 +577,7 @@ xf86_crtc_load_cursor_argb(xf86CrtcPtr crtc, CursorPtr cursor)
+                 bits = cursor_source[yin * source_width + xin];
+             else
+                 bits = 0;
+-            if (crtc->gamma_red && crtc->gamma_size == 256) {
+-                bits = (bits & 0xFF000000) |
+-                       ((crtc->gamma_red[(bits >> 16) & 255] >> 8) << 16) |
+-                       (crtc->gamma_green[(bits >> 8) & 255] & 0xFF00) |
+-                       (crtc->gamma_blue[bits & 255] >> 8);
+-            }
++            bits = cursor_gamma_correct(crtc, bits);
+             cursor_image[y * image_width + x] = bits;
+         }
+ 
+-- 
+1.9.2
+

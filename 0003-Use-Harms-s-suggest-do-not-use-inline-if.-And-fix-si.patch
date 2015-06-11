@@ -1,0 +1,54 @@
+From b167a4d01048fc624fdf95faffa74099e5bd8efb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mattias=20Andr=C3=A9e?= <maandree@operamail.com>
+Date: Mon, 21 Apr 2014 01:05:35 +0200
+Subject: [PATCH 3/3] Use Harms's suggest: do not use inline if. And fix
+ signness issue: CARD32 is unsigned, which results in that if a value because
+ less than zero it would be incorrectly corrected to be 255 rather than 0.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Mattias Andrée <maandree@operamail.com>
+---
+ hw/xfree86/modes/xf86Cursors.c | 18 +++++++++++-------
+ 1 file changed, 11 insertions(+), 7 deletions(-)
+
+diff --git a/hw/xfree86/modes/xf86Cursors.c b/hw/xfree86/modes/xf86Cursors.c
+index 5afd740..b18b7e6 100644
+--- a/hw/xfree86/modes/xf86Cursors.c
++++ b/hw/xfree86/modes/xf86Cursors.c
+@@ -214,10 +214,10 @@ set_bit(CARD8 *image, xf86CursorInfoPtr cursor_info, int x, int y, Bool mask)
+ static CARD32
+ cursor_gamma_correct(xf86CrtcPtr crtc, CARD32 bits)
+ {
+-    float  alpha;
+-    CARD32 old_red,   new_red;
+-    CARD32 old_green, new_green;
+-    CARD32 old_blue,  new_blue;
++    float   alpha;
++    int32_t old_red,   new_red;
++    int32_t old_green, new_green;
++    int32_t old_blue,  new_blue;
+ 
+     if (!(crtc->gamma_red && crtc->gamma_size == 256))
+         return bits;
+@@ -236,9 +236,13 @@ cursor_gamma_correct(xf86CrtcPtr crtc, CARD32 bits)
+     new_green = new_green * alpha + old_green * (1 - alpha);
+     new_blue  = new_blue  * alpha + old_blue  * (1 - alpha);
+ 
+-    new_red   = new_red   < 0 ? 0 : new_red   > 255 ? 255 : new_red;
+-    new_green = new_green < 0 ? 0 : new_green > 255 ? 255 : new_green;
+-    new_blue  = new_blue  < 0 ? 0 : new_blue  > 255 ? 255 : new_blue;
++    /* Make sure the floating point operations did not yeild invalid results. */
++    if (new_red   < 0x00)  new_red   = 0x00;
++    if (new_red   > 0xFF)  new_red   = 0xFF;
++    if (new_green < 0x00)  new_green = 0x00;
++    if (new_green > 0xFF)  new_green = 0xFF;
++    if (new_blue  < 0x00)  new_blue  = 0x00;
++    if (new_blue  > 0xFF)  new_blue  = 0xFF;
+ 
+     return (bits & 0xFF000000) | (new_red << 16) | (new_green << 8) | (new_blue << 0);
+ }
+-- 
+1.9.2
+

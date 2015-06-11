@@ -1,0 +1,55 @@
+From e63b5656a6509ece2d5ffb1fb962911519163988 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mattias=20Andr=C3=A9e?= <maandree@operamail.com>
+Date: Tue, 15 Apr 2014 02:45:25 +0200
+Subject: [PATCH 1/3] When an cursor is set, it is adjusted to use the gamma
+ ramps of the CRTC:s that it is loaded on.
+
+This could be improved to be done in
+`crtc->funcs->load_cursor_argb` with more
+accurate adjustments. But I was not able to
+find where `crtc->funcs->load_cursor_argb`
+is implement.
+
+Additionally, `xf86_reload_cursors` should be
+called when the gamma settings changes. This
+way the cursor's colours are adjusted to use
+the gamma settings directly when the gamma
+is modified rather than the next time its
+image changes.
+---
+ hw/xfree86/modes/xf86Cursors.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/hw/xfree86/modes/xf86Cursors.c b/hw/xfree86/modes/xf86Cursors.c
+index 2b0db34..3cb499f 100644
+--- a/hw/xfree86/modes/xf86Cursors.c
++++ b/hw/xfree86/modes/xf86Cursors.c
+@@ -242,6 +242,12 @@ xf86_crtc_convert_cursor_to_argb(xf86CrtcPtr crtc, unsigned char *src)
+             }
+             else
+                 bits = 0;
++            if (crtc->gamma_red && crtc->gamma_size == 256) {
++                bits = (bits & 0xFF000000) |
++                       ((crtc->gamma_red[(bits >> 16) & 255] >> 8) << 16) |
++                       (crtc->gamma_green[(bits >> 8) & 255] & 0xFF00) |
++                       (crtc->gamma_blue[bits & 255] >> 8);
++            }
+             cursor_image[y * cursor_info->MaxWidth + x] = bits;
+         }
+     crtc->funcs->load_cursor_argb(crtc, cursor_image);
+@@ -541,6 +547,12 @@ xf86_crtc_load_cursor_argb(xf86CrtcPtr crtc, CursorPtr cursor)
+                 bits = cursor_source[yin * source_width + xin];
+             else
+                 bits = 0;
++            if (crtc->gamma_red && crtc->gamma_size == 256) {
++                bits = (bits & 0xFF000000) |
++                       ((crtc->gamma_red[(bits >> 16) & 255] >> 8) << 16) |
++                       (crtc->gamma_green[(bits >> 8) & 255] & 0xFF00) |
++                       (crtc->gamma_blue[bits & 255] >> 8);
++            }
+             cursor_image[y * image_width + x] = bits;
+         }
+ 
+-- 
+1.9.2
+
