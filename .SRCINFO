@@ -1,0 +1,20 @@
+pkgbase = chm-thumbnailer
+	pkgdesc = CHM thumbnailer for GNOME desktop
+	pkgver = 1.2
+	pkgrel = 3
+	url = https://bbs.archlinux.org/viewtopic.php?pid=846033
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = chmlib
+	depends = gdk-pixbuf2
+	depends = libxml2
+	depends = gconf
+	depends = desktop-file-utils
+	source = chm-thumbnailer.c
+	source = chm-thumbnailer.thumbnailer
+	md5sums = e6d56e78454d650553edbdaeedfa7878
+	md5sums = 7c0d9df8b2c96692ae479d124bf65a6b
+
+pkgname = chm-thumbnailer
+

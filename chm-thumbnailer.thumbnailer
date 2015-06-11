@@ -1,0 +1,4 @@
+[Thumbnailer Entry]
+TryExec=chm-thumbnailer
+Exec=chm-thumbnailer %i %o %s
+MimeType=application/x-chm
