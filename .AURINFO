@@ -1,0 +1,15 @@
+pkgbase = eclipse-anyedittools
+	pkgdesc = Adds several new tools to the context menu of text-based Eclipse editors, to output consoles, to Eclipse main menu and editor toolbar.
+	pkgver = 2.4.11.201409071702
+	pkgrel = 1
+	url = http://andrei.gmxhome.de/anyedit/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = eclipse>=3.5
+	noextract = de.loskutov.anyedit.AnyEditTools_2.4.11.201409071702.jar
+	source = http://dl.bintray.com/iloveeclipse/plugins/de.loskutov.anyedit.AnyEditTools_2.4.11.201409071702.jar
+	md5sums = 4c108caa5ef4caaaaca08f5ed5ac165f
+
+pkgname = eclipse-anyedittools
+
