@@ -1,0 +1,6 @@
+polkit.addRule(function(action, subject) {
+    if (action.id == "org.freedesktop.upower.hibernate" ||
+        action.id == "org.freedesktop.upower.suspend") {
+        return polkit.Result.YES;
+    }
+});

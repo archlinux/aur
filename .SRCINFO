@@ -1,0 +1,24 @@
+pkgbase = desktop-privileges
+	pkgdesc = A collection of polkit rules to manage automounting of removable media, suspend and hibernate actions and CPU frequency settings.
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/desktop-privileges/
+	arch = any
+	license = GPL
+	depends = polkit-consolekit
+	depends = udisks2-nosystemd
+	depends = upower-pm-utils
+	optdepends = mate-power-manager-upower
+	conflicts = polkit-automount-upower-rules
+	replaces = polkit-automount-upower-rules
+	source = 10-cpufreqselector.rules
+	source = 10-udisks.rules
+	source = 10-udisks2.rules
+	source = 10-upower.rules
+	sha256sums = 681d85042aa06197e00aa54a47d0331f9c8675fdc555321b611a6ec3ab0eb73f
+	sha256sums = 002ec5fd0592bb9a25321ed4836913cdaa818d3322212bd7d0f315509bda7b62
+	sha256sums = f3f8cb03c13a84cacbc8f1e4517253a009d96335eb648a1253676dac75466766
+	sha256sums = 805cadc921bce8b11f1f6e170428a7d30fc9377f143df1ff4b0efe0e625a96bf
+
+pkgname = desktop-privileges
+
