@@ -1,0 +1,17 @@
+pkgbase = python2-gendercomputer-git
+	pkgdesc = Python 2 library that tries to guess a persons gender based on their name and location.
+	pkgver = r32.4868688
+	pkgrel = 1
+	url = https://github.com/tue-mdse/genderComputer
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2
+	provides = python2-gendercomputer
+	conflicts = python2-gendercomputer
+	source = git+https://github.com/tue-mdse/genderComputer.git
+	sha256sums = SKIP
+
+pkgname = python2-gendercomputer-git
+
