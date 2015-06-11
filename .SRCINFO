@@ -1,0 +1,20 @@
+pkgbase = marrie-git
+	pkgdesc = A simple podcast client that runs on the Command Line Interface.
+	pkgver = 0.3.1.r4.g5fb3db1
+	pkgrel = 2
+	url = https://github.com/rafaelmartins/marrie
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = python2
+	depends = python2-feedparser
+	optdepends = wget: content downloading tool
+	optdepends = mplayer: video/audio playback support
+	provides = marrie
+	conflicts = marrie
+	source = git://github.com/rafaelmartins/marrie.git
+	md5sums = SKIP
+
+pkgname = marrie-git
+
