@@ -1,0 +1,19 @@
+pkgbase = demibot
+	pkgdesc = A modular IRC bot
+	pkgver = 0.3
+	pkgrel = 2
+	url = https://github.com/mikar/demibot
+	install = demibot.install
+	arch = any
+	license = MIT
+	depends = twisted
+	depends = python2-docopt
+	depends = python2-setuptools
+	optdepends = python2-requests
+	optdepends = python2-beautifulsoup4
+	optdepends = python2-dateutil
+	source = https://github.com/mikar/demibot/archive/master.tar.gz
+	sha256sums = SKIP
+
+pkgname = demibot
+
