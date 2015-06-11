@@ -1,0 +1,17 @@
+--- geeknote-original.py	2014-10-08 10:55:58.338928272 -0700
++++ geeknote-updated.py	2014-10-08 11:18:04.441379720 -0700
+@@ -117,6 +117,14 @@
+                     out.failureMessage("Sorry, you do not have permissions "
+                                        "to do this operation.")
+ 
++                # Rate limited
++                # Patched because otherwise if you get rate limited you still keep
++                # hammering the server on scripts
++                elif errorCode == 19:
++                    print("\nRate Limit Hit: Please wait %s seconds before continuing" %
++                          str(e.rateLimitDuration))
++                    tools.exitErr()
++
+                 else:
+                     return False
+ 
