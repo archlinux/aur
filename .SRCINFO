@@ -1,0 +1,15 @@
+pkgbase = python-dill-git
+	pkgdesc = Serialize all of python (almost)
+	pkgver = 0.2.1.r87.g71b0181
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/dill/
+	arch = any
+	license = BSD
+	depends = python
+	provides = python-dill
+	conflicts = python-dill
+	source = git://github.com/uqfoundation/dill.git
+	md5sums = SKIP
+
+pkgname = python-dill-git
+
