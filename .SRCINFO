@@ -1,0 +1,14 @@
+pkgbase = vim-gocode
+	pkgdesc = An autocompletion daemon for the Go programming language (vim scripts)
+	pkgver = 20150303
+	pkgrel = 2
+	url = https://github.com/nsf/gocode
+	arch = any
+	license = MIT
+	depends = vim>=7.0
+	depends = gocode-daemon
+	source = https://github.com/nsf/gocode/archive/v.20150303.tar.gz
+	md5sums = d379961598b8a3c4a67a9d26df291c40
+
+pkgname = vim-gocode
+
