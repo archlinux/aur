@@ -1,0 +1,14 @@
+pkgbase = wmwifi
+	pkgdesc = A wireless network interface monitor dockapp for Window Maker
+	pkgver = 0.6
+	pkgrel = 4
+	url = http://dockapps.org/file.php/id/222
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	source = http://gd.tuwien.ac.at/opsys/linux/gentoo/distfiles/wmwifi-0.6.tar.gz
+	md5sums = b170d4a6c4fc42774b9798cf98af1c27
+
+pkgname = wmwifi
+
