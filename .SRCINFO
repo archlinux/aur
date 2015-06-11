@@ -1,0 +1,14 @@
+pkgbase = ttf-jgaramond
+	pkgdesc = Free Garamond-based TrueType font
+	pkgver = 20010820
+	pkgrel = 1
+	url = http://www.janthor.com/jGaramond/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	source = http://www.janthor.com/jGaramond/jGara.zip
+	md5sums = dcfa9f2ca0772e47a378026f02306c99
+
+pkgname = ttf-jgaramond
+
