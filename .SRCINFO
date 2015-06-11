@@ -1,0 +1,14 @@
+pkgbase = wmmatrix
+	pkgdesc = Dock app that simulates the text scrolls from the movie "The Matrix"
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://nis-www.lanl.gov/~mgh/WindowMaker/DockApps.shtml
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	source = http://gentoo.osuosl.org/distfiles/wmMatrix-0.2.tar.gz
+	md5sums = 4e9f0c94e78ad65ea9a564fba5f7a187
+
+pkgname = wmmatrix
+
