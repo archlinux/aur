@@ -1,0 +1,25 @@
+#!/usr/bin/bash
+ID=planescape-torment
+WRITABLE='*.ini *.bif *.key'
+EXE=Torment.exe
+USERDIR=$HOME/.gog/$ID
+export WINEPREFIX=$USERDIR/.wine
+export WINEDEBUG=-all
+
+if ! [ -d $USERDIR ]
+then
+    INSTALLDIR=/opt/gog/$ID
+    mkdir -p $(dirname $USERDIR)
+    cp -as $INSTALLDIR $USERDIR
+    WINEARCH=win32 wineboot -i
+    rm $WINEPREFIX/dosdevices/"z:"
+    ln -s $USERDIR $WINEPREFIX/drive_c
+    cd $USERDIR
+    for file in $WRITABLE
+    do
+	cp -a --remove-destination $INSTALLDIR/$file $file
+    done
+fi
+
+cd $WINEPREFIX/drive_c/$ID
+wine $EXE 
