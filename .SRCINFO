@@ -1,0 +1,24 @@
+pkgbase = python2-scitools-git
+	pkgdesc = python library for scientific computing, git version
+	pkgver = 20150315
+	pkgrel = 2
+	url = https://github.com/hplgit/scitools
+	arch = any
+	license = custom:BSD Simplified
+	makedepends = python2
+	makedepends = python2-numpy
+	makedepends = gnuplot
+	makedepends = python2-gnuplot
+	makedepends = mercurial
+	depends = python2
+	optdepends = python2-scipy
+	optdepends = python2-scientificpython
+	optdepends = vtk
+	provides = python2-scitools
+	conflicts = python2-scitools
+	replaces = python2-scitools-hg
+	source = git+https://github.com/hplgit/scitools.git
+	md5sums = SKIP
+
+pkgname = python2-scitools-git
+
