@@ -1,0 +1,34 @@
+pkgbase = python2-imaging
+	pkgdesc = PIL. Provides image processing capabilities for python
+	pkgver = 1.1.7
+	pkgrel = 10
+	url = http://www.pythonware.com/products/pil/index.htm
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	arch = armv6l
+	license = custom:"pil"
+	makedepends = tk
+	makedepends = sane
+	makedepends = patch
+	depends = python2
+	depends = libjpeg
+	depends = freetype2
+	depends = lcms
+	optdepends = tk: for the ImageTK module
+	optdepends = sane: for the ImageSane module
+	provides = pil=1.1.7
+	provides = python-imaging=1.1.7
+	provides = python2-pillow=1.0
+	conflicts = pil
+	conflicts = python-imaging
+	replaces = pil
+	replaces = python-imaging
+	source = http://effbot.org/downloads/Imaging-1.1.7.tar.gz
+	source = patch_freetype_includes.patch
+	md5sums = fc14a54e1ce02a0225be8854bfba478e
+	md5sums = d0fdf5b560fb010dde8a9c40f1f84e9c
+
+pkgname = python2-imaging
+
