@@ -1,0 +1,16 @@
+pkgbase = topmenu-gtk3-git
+	pkgdesc = Gtk3 module for topmenu.
+	pkgver = 2015.03.22
+	pkgrel = 1
+	url = https://git.javispedro.com/cgit/topmenu-gtk.git/about/
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	depends = gtk3
+	options = !libtool
+	source = git+http://git.javispedro.com/cgit/topmenu-gtk.git
+	sha1sums = SKIP
+
+pkgname = topmenu-gtk3-git
+
