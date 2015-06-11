@@ -1,0 +1,15 @@
+pkgbase = python2-xstatic-bootstrap-scss
+	pkgdesc = XStatic-Bootstrap-SCSS
+	pkgver = 3.2.0.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/XStatic-Bootstrap-SCSS
+	arch = i686
+	arch = x86_64
+	makedepends = python2-setuptools
+	makedepends = python2-pip
+	depends = python2
+	source = https://pypi.python.org/packages/source/X/XStatic-Bootstrap-SCSS/XStatic-Bootstrap-SCSS-3.2.0.0.tar.gz
+	md5sums = 903d7de8aef6bee93d976b42d35edf7b
+
+pkgname = python2-xstatic-bootstrap-scss
+
