@@ -1,0 +1,53 @@
+diff -up wmbiff-0.4.27/wmbiff/gnutls-common.c.orig wmbiff-0.4.27/wmbiff/gnutls-common.c
+--- wmbiff-0.4.27/wmbiff/gnutls-common.c.orig	2014-07-03 16:45:39.000000000 -0600
++++ wmbiff-0.4.27/wmbiff/gnutls-common.c	2014-07-03 16:51:11.000000000 -0600
+@@ -4,7 +4,6 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <gnutls/gnutls.h>
+-#include <gnutls/extra.h>
+ #include <gnutls/x509.h>
+ #include <gnutls/openpgp.h>
+ #include <time.h>
+@@ -335,10 +334,15 @@ void print_openpgp_info(gnutls_session s
+ void print_cert_vrfy(gnutls_session session)
+ {
+ 
+-	int status;
+-	status = gnutls_certificate_verify_peers(session);
++	int status, retval;
++	retval = gnutls_certificate_verify_peers2(session, &status);
+ 	printf("\n");
+ 
++	if (retval != GNUTLS_E_SUCCESS) {
++		printf("- Could not verify certificate (err: %s)\n",
++		       gnutls_strerror(retval));
++		return;
++	}
+ 	if (status == GNUTLS_E_NO_CERTIFICATE_FOUND) {
+ 		printf("- Peer did not send any certificate.\n");
+ 		return;
+@@ -637,8 +641,6 @@ void parse_comp(char **comp, int ncomp,
+ 				comp_priority[j++] = GNUTLS_COMP_NULL;
+ 			if (strncasecmp(comp[i], "ZLI", 3) == 0)
+ 				comp_priority[j++] = GNUTLS_COMP_ZLIB;
+-			if (strncasecmp(comp[i], "LZO", 3) == 0)
+-				comp_priority[j++] = GNUTLS_COMP_LZO;
+ 		}
+ 		comp_priority[j] = 0;
+ 	}
+diff -up wmbiff-0.4.27/wmbiff/tlsComm.c.orig wmbiff-0.4.27/wmbiff/tlsComm.c
+--- wmbiff-0.4.27/wmbiff/tlsComm.c.orig	2014-07-03 16:41:16.000000000 -0600
++++ wmbiff-0.4.27/wmbiff/tlsComm.c	2014-07-03 16:44:55.000000000 -0600
+@@ -419,8 +419,9 @@ tls_check_certificate(struct connection_
+ 		bad_certificate(scs, "Unable to get certificate from peer.\n");
+ 		return;	/* bad_cert will exit if -skip-certificate-check was not given */
+ 	}
+-	certstat = gnutls_certificate_verify_peers(scs->tls_state);
+-	if (certstat == GNUTLS_E_NO_CERTIFICATE_FOUND) {
++	if (gnutls_certificate_verify_peers2(scs->tls_state, &certstat) != GNUTLS_E_SUCCESS) {
++		bad_certificate(scs, "cannot verify certificate.\n");
++	} else if (certstat == GNUTLS_E_NO_CERTIFICATE_FOUND) {
+ 		bad_certificate(scs, "server presented no certificate.\n");
+ #ifdef GNUTLS_CERT_CORRUPTED
+ 	} else if (certstat & GNUTLS_CERT_CORRUPTED) {
