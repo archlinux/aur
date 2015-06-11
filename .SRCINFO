@@ -1,0 +1,18 @@
+pkgbase = migemo-git
+	pkgdesc = Japanese incremental search with 'Romaji' on Emacsen (git version)
+	pkgver = 1.9.1.r11.gc2240af
+	pkgrel = 1
+	url = https://github.com/emacs-jp/migemo
+	install = migemo-git.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = emacs>=24
+	depends = cmigemo
+	provides = migemo
+	conflicts = migemo
+	source = migemo::git+https://github.com/emacs-jp/migemo.git
+	md5sums = SKIP
+
+pkgname = migemo-git
+
