@@ -1,0 +1,34 @@
+
+
+The password manager extension for Midori is based on formhistory.c and on my
+userscript for password management (http://userscripts.org/scripts/show/62098).
+It works by reading the network passwords with domain "midori" from the login
+keyring and storing them in a GHashTable. Whenever your browser loads a page
+with a corresponding address in the GHashTable, a script that inserts user
+and password is built and executed on that page. Whenever you submit a login
+form, a similar script is built and executed, and returns the new data, which
+is stored in the GHashTable and in the login keyring.
+When you choose to never store a password for a site, the extension will store
+a user/password pair equal to __never_store_here__/whatever. The user part of
+the pair (i.e. __never_store_here__) is used to remember that passwords must
+not be stored.
+Sometimes the extension fails to detect that a form has been submitted, so it
+won't store your user/password pair. In such cases use the lpins utility to
+manually insert the pair into the login keyring, like this
+
+$ lpins http://www.averystrangelogin.com user password
+
+Note that the pair is inserted in the login keyring, not in the GHashTable, so
+you need to deactivate/reactivate the extension so it'll read the new pair.
+
+Missing features:
+* I don't know how to check when the login is successful, so wrong user-
+  password pairs will be stored.
+* There isn't a utility for listing/deleting/modifying passwords, use seahorse
+  for these tasks (Midori passwords have domain "midori").
+* I don't know how to deal with password forms that uses md5hash for basic
+  protection (like ubuntu forums), so the extension won't work for these sites.
+
+Please note that I'm not an expert in internet security, crypting algorithms,
+javascript programming or webkit programming, so use this extension at your
+own risk.

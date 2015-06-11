@@ -1,0 +1,10 @@
+--- CMakeLists.txt.orig	2014-04-08 03:24:14.093572141 +0200
++++ CMakeLists.txt	2014-04-08 03:24:26.476905529 +0200
+@@ -119,6 +119,7 @@
+                   gmodule-2.0
+                   gio-2.0>=2.32.3
+                   libsoup-gnome-2.4>=2.27.90
++                  gnome-keyring-1
+                   )
+ add_definitions("-DHAVE_LIBXML")
+ add_definitions("-DGIO_VERSION=\"${DEPS_gio-2.0_VERSION}\"")

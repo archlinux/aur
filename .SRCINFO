@@ -1,0 +1,32 @@
+pkgbase = midori-passwordmanager
+	pkgdesc = A password manager for Midori
+	pkgver = 0.3
+	pkgrel = 13
+	url = http://www.midori-browser.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = python2
+	makedepends = intltool
+	makedepends = vala
+	makedepends = librsvg
+	makedepends = cmake
+	depends = midori
+	depends = gnome-keyring
+	depends = libgnome-keyring
+	optdepends = seahorse: to edit/delete passwords
+	source = http://www.midori-browser.org/downloads/midori_0.5.10_all_.tar.bz2
+	source = passwordmanager.c
+	source = passwordmanager.js
+	source = cmakelist.diff
+	source = README
+	source = lpins.c
+	md5sums = 2f250a5015923b6eeca606629e7bf042
+	md5sums = 94c6ec8ddd50ca4d226d8413ef85c0f2
+	md5sums = f9a91b8d929d4cb6407a769603fca619
+	md5sums = 51c3e704947b0626716ab83e199d06c4
+	md5sums = defadec00ebd02506fb1106f7fe5f2ae
+	md5sums = d11b1f035e4a044e2727ef226db9482b
+
+pkgname = midori-passwordmanager
+
