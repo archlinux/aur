@@ -1,0 +1,6 @@
+post_install() {
+  echo
+  echo 'Now, when logging in with a Display Manager, you can choose the session type "Awesome Cinnamon".'
+}
+
+# vim:set sts=2 ts=2 sw=2 et:

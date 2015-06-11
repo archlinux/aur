@@ -1,0 +1,21 @@
+pkgbase = awesome-cinnamon
+	pkgdesc = Launch awesome with cinnamon-settings-daemon
+	pkgver = 0.1
+	pkgrel = 4
+	url = https://github.com/clfarron4/archlinux-awesome-cinnamon/
+	install = awesome-cinnamon.install
+	arch = any
+	license = CCPL
+	depends = awesome
+	depends = cinnamon>=2.0
+	depends = notification-daemon
+	conflicts = awesome-gnome
+	source = awesome-cinnamon.desktop
+	source = awesome.desktop
+	source = awesome.session
+	md5sums = 42803aa2f97cec2bb68ca3ea4324dc2a
+	md5sums = 871ecdef3228176b42e9e455c63e942f
+	md5sums = 918dc0803431c8248b2b40849be20cbc
+
+pkgname = awesome-cinnamon
+

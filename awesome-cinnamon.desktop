@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Awesome Cinnamon
+Comment=Dynamic window manager
+TryExec=/usr/bin/cinnamon
+Exec=cinnamon-session-cinnamon --session=awesome
+Type=XSession
