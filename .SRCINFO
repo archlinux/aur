@@ -1,0 +1,14 @@
+pkgbase = createvm
+	pkgdesc = Script to create VMware virtual machine
+	pkgver = 0.5
+	pkgrel = 2
+	url = https://github.com/beeman/createvm.sh
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = bash
+	source = https://github.com/beeman/createvm.sh/archive/0.5.tar.gz
+	md5sums = 40b39ca6879b02234046d79bd7a02700
+
+pkgname = createvm
+
