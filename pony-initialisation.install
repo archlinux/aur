@@ -1,0 +1,23 @@
+_files=(rc.conf rc.d)
+
+infodir="usr/share/info"
+
+
+post_install() {
+  [[ -x "usr/bin/install-info" ]] || return 0
+  for file in "${_files[@]}"; do
+    install-info -- "${infodir}/${file}.info.gz" "${infodir}/dir" 2> /dev/null
+  done
+}
+
+post_upgrade() {
+  post_install "$1"
+}
+
+pre_remove() {
+  [[ -x "usr/bin/install-info" ]] || return 0
+  for file in "${_files[@]}"; do
+    install-info --delete -- "${infodir}/${file}.info.gz" "${infodir}/dir" 2> /dev/null
+  done
+}
+

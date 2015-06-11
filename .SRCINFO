@@ -1,0 +1,35 @@
+pkgbase = pony-initialisation
+	pkgdesc = System bootup scripts for sysvinit
+	pkgver = 1381025241
+	pkgrel = 2
+	url = https://github.com/GNU-Pony/pony-initialisation
+	install = pony-initialisation.install
+	arch = any
+	license = GPL3
+	makedepends = make
+	makedepends = coreutils
+	makedepends = grep
+	makedepends = sed
+	makedepends = asciidoc
+	makedepends = texinfo
+	makedepends = gzip
+	depends = glibc
+	depends = bash
+	depends = coreutils
+	depends = iproute2
+	depends = ncurses
+	depends = kbd
+	depends = findutils
+	provides = initscripts
+	provides = initscripts-fork
+	conflicts = initscripts
+	conflicts = initscripts-fork
+	backup = etc/inittab
+	backup = etc/rc.conf
+	backup = etc/rc.local
+	backup = etc/rc.local.shutdown
+	source = https://github.com/GNU-Pony/pony-initialisation/archive/1381025241.tar.gz
+	sha256sums = 56cfd3d3e13f0507d251c34079fc57f301e11934ff9ddecc9591798691a00c62
+
+pkgname = pony-initialisation
+
