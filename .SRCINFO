@@ -1,0 +1,23 @@
+pkgbase = nvidia-lts-ck
+	pkgdesc = NVIDIA drivers for linux-lts-ck
+	pkgver = 352.09
+	pkgrel = 1
+	url = http://www.nvidia.com/
+	install = nvidia-lts-ck.install
+	arch = i686
+	arch = x86_64
+	groups = lts-ck-generic
+	license = custom
+	makedepends = linux-lts-ck-headers>=3.14.25
+	depends = linux-lts-ck>=3.14.25
+	depends = nvidia-utils=352.09
+	depends = nvidia-libgl
+	provides = nvidia
+	options = !strip
+	source_i686 = ftp://download.nvidia.com/XFree86/Linux-x86/352.09/NVIDIA-Linux-x86-352.09.run
+	md5sums_i686 = 0e009686400c522209eaa8ab835ff81f
+	source_x86_64 = ftp://download.nvidia.com/XFree86/Linux-x86_64/352.09/NVIDIA-Linux-x86_64-352.09-no-compat32.run
+	md5sums_x86_64 = eb5ad6a07dc03e0a19d5f6fa069c494b
+
+pkgname = nvidia-lts-ck
+
