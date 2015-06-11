@@ -1,0 +1,21 @@
+pkgbase = lib32-libtiff3
+	pkgdesc = Legacy version of the library for manipulation of TIFF images (32-bit)
+	pkgver = 3.9.5
+	pkgrel = 2
+	url = http://www.remotesensing.org/libtiff/
+	arch = x86_64
+	license = custom
+	makedepends = lib32-libgl
+	makedepends = lib32-libxmu
+	makedepends = lib32-libxi
+	makedepends = gcc-multilib
+	depends = lib32-libjpeg
+	depends = lib32-zlib
+	depends = libtiff3
+	options = !libtool
+	source = ftp://ftp.remotesensing.org/pub/libtiff/tiff-3.9.5.tar.gz
+	md5sums = 8fc7ce3b4e1d0cc8a319336967815084
+	sha1sums = f40aab20fb2f609b5cbc1171c40b66a1445e3773
+
+pkgname = lib32-libtiff3
+
