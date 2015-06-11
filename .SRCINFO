@@ -1,0 +1,16 @@
+pkgbase = android-file-transfer
+	pkgdesc = Android MTP client with minimalistic UI.
+	pkgver = 2.3
+	pkgrel = 1
+	url = https://github.com/whoozle/android-file-transfer-linux
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = qt5-base
+	depends = fuse
+	source = https://github.com/whoozle/android-file-transfer-linux/archive/v2.3.tar.gz
+	md5sums = 42cb2ff57ec6525cd2040f8e1989e504
+
+pkgname = android-file-transfer
+
