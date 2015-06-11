@@ -1,0 +1,27 @@
+pkgbase = tsclient2-svn
+	pkgdesc = Terminal Server Client [tsclient] is a GTK2 frontend for rdesktop and other remote desktop tools.
+	pkgver = r127
+	pkgrel = 1
+	url = http://sourceforge.net/projects/tsclient
+	install = tsclient2-svn.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = perlxml
+	makedepends = sharutils
+	makedepends = subversion
+	makedepends = gnome-common
+	depends = rdesktop
+	depends = gnome-desktop2
+	depends = networkmanager
+	depends = libgnomeui
+	depends = desktop-file-utils
+	provides = tsclient2
+	provides = tsclient
+	conflicts = tsclient
+	replaces = tsclient2
+	source = tsclient2-svn::svn://svn.code.sf.net/p/tsclient/code/branches/tsclient-unstable
+	md5sums = SKIP
+
+pkgname = tsclient2-svn
+
