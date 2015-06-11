@@ -1,0 +1,22 @@
+pkgbase = python2-textblob-git
+	pkgdesc = A Python 2 library for processing textual data. Provides an API for diving into commmon natural language processing (NLP) tasks such as part-of-speech tagging, noun phrase extraction, sentiment analysis, classification, translation, and more.
+	pkgver = 0.9.1.r355.238aa50
+	pkgrel = 2
+	url = https://github.com/sloria/textblob
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-nltk
+	depends = python2-nose
+	depends = python2-mock
+	depends = nltk-data
+	optdepends = python2-textblob-aptagger-git: A fast and accurte part-of-speech tagger for TextBlob
+	provides = python2-textblob
+	conflicts = python2-textblob
+	source = git+https://github.com/sloria/textblob.git
+	sha256sums = SKIP
+
+pkgname = python2-textblob-git
+
