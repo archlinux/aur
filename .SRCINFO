@@ -1,0 +1,21 @@
+pkgbase = python2-scikit-learn-mlp-git
+	pkgdesc = A set of python modules for machine learning and data mining. This version has MultilayerPerceptronClassifier support
+	pkgver = 0.17.dev0.0.4.r17943.g98ca513
+	pkgrel = 2
+	url = https://github.com/scikit-learn/scikit-learn
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python2-setuptools
+	makedepends = cython2
+	depends = python2
+	depends = python2-scipy
+	provides = python2-scikit-learn
+	provides = python2-scikit-learn-git
+	conflicts = python2-scikit-learn
+	conflicts = python2-scikit-learn-git
+	source = git+https://github.com/scikit-learn/scikit-learn.git
+	sha256sums = SKIP
+
+pkgname = python2-scikit-learn-mlp-git
+
