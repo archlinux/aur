@@ -1,0 +1,15 @@
+pkgbase = wmtop
+	pkgdesc = wmapplet for monitoring cpu usage
+	pkgver = 0.84
+	pkgrel = 3
+	url = http://wmtop.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = xorg-server
+	depends = libxpm
+	source = http://downloads.sourceforge.net/wmtop/wmtop-0.84.tar.bz2
+	md5sums = 2bab22c5bc3a5b887e7c03d6dbfe59d7
+
+pkgname = wmtop
+
