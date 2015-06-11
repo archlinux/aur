@@ -1,0 +1,16 @@
+pkgbase = ale
+	pkgdesc = Anti-Lamenessing Engine - image enhancement tools
+	pkgver = 0.9.0.3
+	pkgrel = 2
+	url = http://repo.or.cz/w/Ale.git
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = perl-exiftool
+	depends = imagemagick
+	depends = dcraw
+	source = https://dl.dropboxusercontent.com/u/51889968/ale-0.9.0.3.tar.gz
+	md5sums = ace3d9874577085112adbf409f27b069
+
+pkgname = ale
+
