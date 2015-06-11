@@ -1,0 +1,30 @@
+pkgbase = python2-internetarchive-git
+	pkgdesc = A Python 2 wrapper for the various Internet Archive APIs (IA-S3, Metadata API, etc)
+	pkgver = 0.8.3.r682.1c1e482
+	pkgrel = 2
+	url = https://github.com/jjjake/ia-wrapper
+	arch = any
+	license = AGPL3
+	makedepends = git
+	depends = python2
+	depends = python2-setuptools
+	depends = python2-clint
+	depends = python2-six
+	depends = python2-yaml
+	depends = python2-requests
+	depends = python2-jsonpatch
+	depends = python2-pytest
+	depends = python2-docopt
+	depends = python2-args
+	depends = python2-jsonpointer
+	optdepends = python2-ujson: faster json parsing
+	optdepends = python2-gevent: concurrent downloads
+	optdepends = cython2: speedups
+	provides = python2-internetarchive
+	conflicts = python2-internetarchive
+	conflicts = python-internetarchive-git
+	source = git+https://github.com/jjjake/ia-wrapper.git
+	sha256sums = SKIP
+
+pkgname = python2-internetarchive-git
+
