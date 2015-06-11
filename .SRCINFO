@@ -1,0 +1,25 @@
+pkgbase = ethercoin-qt-git
+	pkgdesc = Cryptocurrency pegged to Ethereum
+	pkgver = r3358.6e94e09
+	pkgrel = 2
+	url = http://ethercoin.cc/
+	install = ethercoin-qt-git.install
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = boost
+	makedepends = gcc
+	makedepends = make
+	makedepends = git
+	depends = qt4
+	depends = miniupnpc
+	depends = boost-libs
+	provides = ethercoin-qt
+	conflicts = ethercoin-qt
+	source = git+https://github.com/ethercoin/ethercoin.git
+	source = ethercoin.desktop
+	sha256sums = SKIP
+	sha256sums = 9e83e2fa233699bf1b9fec0a4108a171ab7945aa9732225c25cbf748cb7787ff
+
+pkgname = ethercoin-qt-git
+

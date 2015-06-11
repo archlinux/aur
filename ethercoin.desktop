@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Ethercoin
+Comment=Ethercoin P2P Cryptocurrency
+Exec=/usr/bin/ethercoin-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/ethercoin.png
+MimeType=x-scheme-handler/ethercoin;
+Categories=Network;
