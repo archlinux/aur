@@ -20,8 +20,8 @@
 pkgname=cyra
 pkgdesc='A C++ command line parsing library'
 
-pkgver=0.5.2beta
-_srcver=0.5.2-beta
+pkgver=0.5.3beta
+_srcver=0.5.3-beta
 
 pkgrel=1
 
@@ -33,7 +33,7 @@ license=('GPL')
 
 # Sources
 source=("https://github.com/lost-echo/cyra/archive/${_srcver}.tar.gz")
-md5sums=('c784b5a1af5f2529adcf49550796734e')
+md5sums=('684a693a8d68d7f467073b240c83b95b')
 
 # Options
 options=('debug' '!strip' 'staticlibs')
