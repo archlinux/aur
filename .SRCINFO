@@ -1,0 +1,16 @@
+pkgbase = wmblueclock
+	pkgdesc = A clock dockapp (for WindowMaker, OpenBOx, AfterStep, etc.)
+	pkgver = 3
+	pkgrel = 1
+	url = http://github.com/vampirefrog/wmblueclock
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libxpm
+	depends = libxft
+	source = wmblueclock::git+https://github.com/vampirefrog/wmblueclock.git
+	md5sums = SKIP
+
+pkgname = wmblueclock
+
