@@ -5,7 +5,31 @@
   VERSION = 3
   PATCHLEVEL = 18
 - SUBLEVEL = 5
-+ SUBLEVEL = 12
++ SUBLEVEL = 14
  -EXTRAVERSION =
  +EXTRAVERSION = -tresor0.3
   NAME = Diseased Newt
+@@ -443,6 +443,7 @@
+ +#include <linux/module.h>
+ +#include <crypto/aes.h>
+ +#include <linux/smp.h>
+++#include <asm/i387.h>
+ +
+ +
+ +/*
+@@ -493,6 +494,7 @@
+ +	preempt_disable();
+ +	/* Calling local_irq_save saves and disables interrupts */
+ +	local_irq_save(*irq_flags);
+++	kernel_fpu_begin();
+ +}
+ +
+ +
+@@ -501,6 +503,7 @@
+ + */
+ +static inline void tresor_epilog(unsigned long *irq_flags)
+ +{
+++	kernel_fpu_end();
+ +	local_irq_restore(*irq_flags);
+ +	preempt_enable();
+ +}
