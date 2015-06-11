@@ -1,0 +1,75 @@
+post_install() {
+
+echo "Creating ogar user and group if they don't exist"
+  if ! getent group "ogar" >/dev/null; then
+    groupadd -r ogar
+  fi
+  if ! getent passwd "ogar" >/dev/null; then
+    useradd -r -M -N -g ogar -d /usr/share/ogar -s /usr/bin/nologin -c 'Ogar Server' ogar
+  fi
+
+echo "Symlinking gameserver.ini to /etc/ogar"
+ln -s /usr/share/ogar/gameserver.ini /etc/ogar
+
+echo "Installing ws module"
+rm -R /root/.npm
+cd /usr/share/ogar
+npm install ws
+
+echo "Setting proper permissions"
+chown -R ogar:ogar /usr/share/ogar
+chmod -R 755 /usr/share/ogar
+
+}
+
+post_upgrade() {
+
+echo "Creating ogar user and group if they don't exist"
+  if ! getent group "ogar" >/dev/null; then
+    groupadd -r ogar
+  fi
+  if ! getent passwd "ogar" >/dev/null; then
+    useradd -r -M -N -g ogar -d /usr/share/ogar -s /usr/bin/nologin -c 'Ogar Server' ogar
+  fi
+
+echo "Symlinking gameserver.ini to /etc/ogar"
+ln -s /usr/share/ogar/gameserver.ini /etc/ogar
+
+echo "Installing ws module"
+rm -R /root/.npm
+cd /usr/share/ogar
+npm install ws
+
+echo "Setting proper permissions"
+chown -R ogar:ogar /usr/share/ogar
+chmod -R 755 /usr/share/ogar
+
+}
+
+pre_remove() {
+  if systemctl --quiet is-active ogar; then
+    systemctl stop ogar
+  fi
+}
+
+post_remove() {
+
+echo "Removing ogar user and group"
+  if getent passwd "ogar" >/dev/null; then
+    userdel ogar > /dev/null
+  fi
+  if getent group "ogar" >/dev/null; then
+    groupdel ogar >/dev/null
+  fi
+
+echo "Unlinking /etc/ogar"
+unlink /etc/ogar
+
+echo "Removing ws module"
+cd /usr/share/ogar
+npm uninstall ws
+
+}
+
+# vim:set ts=2 sw=2 et:
+

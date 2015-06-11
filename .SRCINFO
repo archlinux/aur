@@ -1,0 +1,18 @@
+pkgbase = ogar
+	pkgdesc = A fully functional open source Agar.io server implementation, written in Node.js.
+	pkgver = git
+	pkgrel = 1
+	url = https://github.com/vram4/Ogar
+	install = ogar.install
+	arch = any
+	license = Apache
+	depends = nodejs
+	depends = npm
+	depends = wget
+	depends = systemd
+	backup = usr/share/ogar/gameserver.ini
+	source = ogar.service
+	sha1sums = 17e04c0c5872f64ed05bf0f6844ee276210d7bda
+
+pkgname = ogar
+
