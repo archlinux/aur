@@ -1,0 +1,23 @@
+diff -purN netcdf-perl-1.2.4.orig/src/netCDFPerl.1 netcdf-perl-1.2.4/src/netCDFPerl.1
+--- netcdf-perl-1.2.4.orig/src/netCDFPerl.1	1999-07-21 10:38:27.000000000 -0600
++++ netcdf-perl-1.2.4/src/netCDFPerl.1	2013-03-27 00:40:13.000000000 -0600
+@@ -1,7 +1,8 @@
+ .\" $Id: netCDFPerl.1,v 1.7 1999/07/21 16:38:27 steve Exp $
+-.TH netCDFPerl 1 "$Date: 1999/07/21 16:38:27 $" "Printed: \n(yr-\n(mo-\n(dy" "UNIDATA UTILITIES"
++.nr yr +1900
++.TH NetCDF 3 "$Date: 1999/07/21 16:38:27 $" "Printed: \n(yr-\n(mo-\n(dy" "UNIDATA UTILITIES"
+ .SH NAME
+-netCDFPerl \- perl extension for netCDF dataset access
++NetCDF \- perl extension for netCDF dataset access
+ .SH SYNOPSIS
+ .na
+ .nh
+@@ -15,7 +16,7 @@ NetCDF::create("foo.nc", NetCDF::CLOBBER
+ .hy
+ .SH DESCRIPTION
+ .PP
+-\fBnetCDFPerl\fP is a Perl 5 extension-module interface to the services
++\fBNetCDF\fP is a Perl 5 extension-module interface to the services
+ provided by the netCDF version 2 API, netcdf2(3).
+ .PP
+ The functions in the netCDF version 2 library can be accessed by a Perl 5 script

@@ -1,0 +1,25 @@
+pkgbase = perl-netcdf
+	pkgdesc = A perl extension module for scientific data access via the netCDF API
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = http://www.unidata.ucar.edu/software/netcdf-perl/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = netcdf
+	depends = perl
+	provides = netcdf-perl-1.2.4
+	conflicts = netcdf-perl
+	replaces = netcdf-perl
+	options = !emptydirs
+	source = ftp://ftp.unidata.ucar.edu/pub/netcdf-perl/netcdf-perl-1.2.4.tar.gz
+	source = netcdf-perl.patch
+	source = netcdf.patch
+	source = ftp://ftp.unidata.ucar.edu/pub/netcdf/old/netcdf-2.4.3.tar.Z
+	md5sums = 36b517662bda6a12a76f817acb49a993
+	md5sums = 290b8c4efe0957e2a17bc6962464c0dc
+	md5sums = 645d9746d0a2a2a63e3af7e11b727da2
+	md5sums = e9371fd9f10dd147374bda38028fd9b1
+
+pkgname = perl-netcdf
+

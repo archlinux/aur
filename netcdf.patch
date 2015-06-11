@@ -1,0 +1,13 @@
+diff -purN netcdf-2.4.3.orig/src/doc/netcdf.3 netcdf-2.4.3/src/doc/netcdf.3
+--- netcdf-2.4.3.orig/src/doc/netcdf.3	1995-07-18 13:39:39.000000000 -0600
++++ netcdf-2.4.3/src/doc/netcdf.3	2013-03-27 00:55:16.000000000 -0600
+@@ -1,6 +1,7 @@
+-.TH NETCDF 3 "26 February 1993" "Printed: \n(yr.\n(mo.\n(dy" "UNIDATA LIBRARY FUNCTIONS"
++.nr yr +1900
++.TH NETCDF2 3 "26 February 1993" "Printed: \n(yr.\n(mo.\n(dy" "UNIDATA LIBRARY FUNCTIONS"
+ .SH NAME
+-netcdf \- Unidata Network Common Data Form (netCDF) library
++netcdf2 \- Unidata Network Common Data Form (netCDF) library
+ .SH SYNOPSIS
+ .ft B
+ .na
