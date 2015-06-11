@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=XSession
+Name=wm2
+GenericName=Window Manager
+Comment=The ideal window manager for today's ascetic programmer
+Exec=wm2
+Icon=wm2
+
+[Window Manager]
+SessionManaged=true
+X-XDE-Managed=true
