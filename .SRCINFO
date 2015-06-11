@@ -1,0 +1,16 @@
+pkgbase = gkrellmms
+	pkgdesc = GKrellm plugin which allows you to control XMMS from within GKrellm.
+	pkgver = 2.1.22
+	pkgrel = 4
+	url = http://gkrellm.luon.net/gkrellmms.phtml
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gkrellm
+	depends = gtk2
+	depends = xmms
+	source = http://gkrellm.luon.net/files/gkrellmms-2.1.22.tar.gz
+	md5sums = 2739eaf7047d7c8d203111a3c2e7eb17
+
+pkgname = gkrellmms
+
