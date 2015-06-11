@@ -1,0 +1,15 @@
+pkgbase = fairymax
+	pkgdesc = An engine playing chess variants
+	pkgver = 4.8R
+	pkgrel = 1
+	url = http://home.hccnet.nl/h.g.muller/CVfairy.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	backup = usr/share/fairymax/fmax.ini
+	backup = usr/share/fairymax/qmax.ini
+	source = http://home.hccnet.nl/h.g.muller/fairymax.tar.gz
+	md5sums = 8465d0286946d88ca222872565869887
+
+pkgname = fairymax
+
