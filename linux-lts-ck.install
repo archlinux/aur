@@ -1,0 +1,38 @@
+KERNEL_NAME=-lts-ck
+KERNEL_VERSION=
+
+post_install () {
+	# updating module dependencies
+	echo ">>> Updating module dependencies. Please wait ..."
+	depmod ${KERNEL_VERSION}
+	echo ">>> Generating initial ramdisk, using mkinitcpio.  Please wait..."
+	mkinitcpio -p linux${KERNEL_NAME}
+}
+
+post_upgrade() {
+	pacman -Sl linux-lts-ck &>/dev/null
+	hasrepoltsck=$?
+
+	if findmnt --fstab -uno SOURCE /boot &>/dev/null && ! mountpoint -q /boot; then
+		echo "WARNING: /boot appears to be a separate partition but is not mounted."
+	fi
+	# updating module dependencies
+	echo ">>> Updating module dependencies. Please wait ..."
+	depmod ${KERNEL_VERSION}
+	echo ">>> Generating initial ramdisk, using mkinitcpio.  Please wait..."
+	mkinitcpio -p linux${KERNEL_NAME}
+
+	if [ $hasrepoltsck -eq 0 ]; then
+		echo
+		echo ">>> Thank you for using http://dl.dropbox.com/u/298301785/arch/linux-lts-ck/$arch"
+		echo ">>> for your linux-lts-ck package needs."
+	fi
+	echo ">>> The repository support thread can be found at:"
+	echo ">>> https://bbs.archlinux.org/viewtopic.php?id=187339"
+}
+
+post_remove() {
+	# also remove the compat symlinks
+	rm -f boot/initramfs-linux${KERNEL_NAME}.img
+	rm -f boot/initramfs-linux${KERNEL_NAME}-fallback.img
+}

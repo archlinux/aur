@@ -1,0 +1,175 @@
+diff -aur linux-3.14-bfs447/kernel/sched/bfs.c linux-3.14-bfs454/kernel/sched/bfs.c
+--- linux-3.14-bfs447/kernel/sched/bfs.c	2014-08-31 23:54:14.545880780 +0100
++++ linux-3.14-bfs454/kernel/sched/bfs.c	2014-08-31 23:54:38.815879467 +0100
+@@ -139,7 +139,7 @@
+ 
+ void print_scheduler_version(void)
+ {
+-	printk(KERN_INFO "BFS CPU scheduler v0.447 by Con Kolivas.\n");
++	printk(KERN_INFO "BFS CPU scheduler v0.454 by Con Kolivas.\n");
+ }
+ 
+ /*
+@@ -1144,6 +1144,13 @@
+ 	int dest_cpu;
+ };
+ 
++/* Enter with grq lock held. We know p is on the local cpu */
++static inline void __set_tsk_resched(struct task_struct *p)
++{
++	set_tsk_need_resched(p);
++	set_preempt_need_resched();
++}
++
+ /*
+  * wait_task_inactive - wait for a thread to unschedule.
+  *
+@@ -1469,30 +1476,6 @@
+ }
+ 
+ #ifdef CONFIG_SMP
+-static void
+-ttwu_do_activate(struct rq *rq, struct task_struct *p, int wake_flags)
+-{
+-	ttwu_activate(p, rq, false);
+-	ttwu_post_activation(p, rq, true);
+-}
+-
+-static void sched_ttwu_pending(void)
+-{
+-	struct rq *rq = this_rq();
+-	struct llist_node *llist = llist_del_all(&rq->wake_list);
+-	struct task_struct *p;
+-
+-	grq_lock();
+-
+-	while (llist) {
+-		p = llist_entry(llist, struct task_struct, wake_entry);
+-		llist = llist_next(llist);
+-		ttwu_do_activate(rq, p, 0);
+-	}
+-
+-	grq_unlock();
+-}
+-
+ void scheduler_ipi(void)
+ {
+ 	/*
+@@ -1501,27 +1484,6 @@
+ 	 * this IPI.
+ 	 */
+ 	preempt_fold_need_resched();
+-
+-	if (llist_empty(&this_rq()->wake_list))
+-		return;
+-
+-	/*
+-	 * Not all reschedule IPI handlers call irq_enter/irq_exit, since
+-	 * traditionally all their work was done from the interrupt return
+-	 * path. Now that we actually do some work, we need to make sure
+-	 * we do call them.
+-	 *
+-	 * Some archs already do call them, luckily irq_enter/exit nest
+-	 * properly.
+-	 *
+-	 * Arguably we should visit all archs and update all handlers,
+-	 * however a fair share of IPIs are still resched only so this would
+-	 * somewhat pessimize the simple resched case.
+-	 */
+-	irq_enter();
+-	sched_ttwu_pending();
+-
+-	irq_exit();
+ }
+ #endif /* CONFIG_SMP */
+ 
+@@ -1766,7 +1728,7 @@
+ 			 * do child-runs-first in anticipation of an exec. This
+ 			 * usually avoids a lot of COW overhead.
+ 			 */
+-			set_tsk_need_resched(parent);
++			__set_tsk_resched(parent);
+ 		} else
+ 			try_preempt(p, rq);
+ 	} else {
+@@ -1778,7 +1740,7 @@
+ 		 	* be slightly earlier.
+ 		 	*/
+ 			rq->rq_time_slice = 0;
+-			set_tsk_need_resched(parent);
++			__set_tsk_resched(parent);
+ 		}
+ 		time_slice_expired(p);
+ 	}
+@@ -2901,9 +2863,10 @@
+ 
+ 	/* p->time_slice < RESCHED_US. We only modify task_struct under grq lock */
+ 	p = rq->curr;
++
+ 	grq_lock();
+ 	requeue_task(p);
+-	set_tsk_need_resched(p);
++	__set_tsk_resched(p);
+ 	grq_unlock();
+ }
+ 
+@@ -3797,12 +3760,6 @@
+  */
+ int idle_cpu(int cpu)
+ {
+-#ifdef CONFIG_SMP
+-	struct rq *rq = cpu_rq(cpu);
+-
+-	if (!llist_empty(&rq->wake_list))
+-		return 0;
+-#endif
+ 	return cpu_curr(cpu) == cpu_rq(cpu)->idle;
+ }
+ 
+@@ -4697,9 +4654,9 @@
+  */
+ bool __sched yield_to(struct task_struct *p, bool preempt)
+ {
++	struct rq *rq, *p_rq;
+ 	unsigned long flags;
+ 	int yielded = 0;
+-	struct rq *rq;
+ 
+ 	rq = this_rq();
+ 	grq_lock_irqsave(&flags);
+@@ -4707,6 +4664,8 @@
+ 		yielded = -ESRCH;
+ 		goto out_unlock;
+ 	}
++
++	p_rq = task_rq(p);
+ 	yielded = 1;
+ 	if (p->deadline > rq->rq_deadline)
+ 		p->deadline = rq->rq_deadline;
+@@ -4714,7 +4673,8 @@
+ 	rq->rq_time_slice = 0;
+ 	if (p->time_slice > timeslice())
+ 		p->time_slice = timeslice();
+-	set_tsk_need_resched(rq->curr);
++	if (preempt && rq != rq)
++		resched_task(p_rq->curr);
+ out_unlock:
+ 	grq_unlock_irqrestore(&flags);
+ 
+@@ -5164,7 +5124,7 @@
+ 	task_grq_unlock(&flags);
+ 
+ 	if (running_wrong)
+-		_cond_resched();
++		__cond_resched();
+ 
+ 	return ret;
+ }
+@@ -5504,7 +5464,6 @@
+ 		break;
+ 
+ 	case CPU_DYING:
+-		sched_ttwu_pending();
+ 		/* Update our root-domain */
+ 		grq_lock_irqsave(&flags);
+ 		if (rq->rd) {
