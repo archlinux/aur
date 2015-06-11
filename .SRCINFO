@@ -1,0 +1,19 @@
+pkgbase = ptxdist
+	pkgdesc = Embedded Linux build system
+	pkgver = 2015.05.0
+	pkgrel = 1
+	url = http://www.ptxdist.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = dialog
+	depends = flex
+	depends = bison
+	depends = patch
+	depends = python2
+	source = http://www.pengutronix.de/software/ptxdist/download/ptxdist-2015.05.0.tar.bz2
+	sha256sums = c26d28057a71f06cb102fa6058b62efe7625a27997fdc0b6ee47adf151804f28
+	sha512sums = c3d3109be4a85b63c2809286d6174ec1f8dcc9ac7cebf5aa276d9589339e06fcb2f1838e1e0ed526d8da2e0e01b0056a1542cd889f5d66c9cba571d25891fdee
+
+pkgname = ptxdist
+
