@@ -1,0 +1,14 @@
+pkgbase = python2-baker
+	pkgdesc = Easy, powerful access to Python functions from the command line.
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://bitbucket.org/mchaput/baker/wiki/Home
+	arch = x86_64
+	arch = i686
+	license = Apache License 2.0
+	depends = python2
+	source = http://pypi.python.org/packages/source/B/Baker/Baker-1.3.tar.gz
+	md5sums = e628d935accf915abf6cdef77b81d8d3
+
+pkgname = python2-baker
+
