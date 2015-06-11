@@ -1,0 +1,14 @@
+pkgbase = wminet
+	pkgdesc = A dock app for monitoring internet connections
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = http://www.swanson.ukfsn.org/#wminet
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	source = http://www.swanson.ukfsn.org/wmdock/wminet-3.0.0.tar.gz
+	md5sums = 78a5b269591633e20ced393bc4743f54
+
+pkgname = wminet
+
