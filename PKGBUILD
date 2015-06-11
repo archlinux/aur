@@ -1,0 +1,23 @@
+# Maintainer:  danyf90 <daniele.formichelli@gmail.com>
+
+pkgname=lcdnurse
+pkgver=1.0.3
+pkgrel=3
+pkgdesc='Heal dead pixels on your LCD screen thanks to the blink method'
+url='http://congelli.eu/prog_info_lcdnurse.html'
+license=('GPL')
+arch=('i686' 'x86_64')
+depends=('wxgtk2.8')
+source=("http://yantis-scripts.s3.amazonaws.com/lcdnurse-1.0.3.tar.gz")
+sha512sums=('e40d4c542e4848404fa7ba398d6a359474bc516c48cd824dd28aac0f30cded0a36daf8fc3cbb16e58cf90c467e6fde4e785d5611f0b743e57f214a874e35bbea')
+
+build() {
+  cd $srcdir/$pkgname-$pkgver
+  ./configure --prefix=/usr --with-wx-config=/usr/bin/wx-config-2.8
+  make
+}
+
+package() {
+  cd $srcdir/$pkgname-$pkgver
+  make DESTDIR=$pkgdir install
+}
