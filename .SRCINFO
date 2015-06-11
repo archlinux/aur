@@ -1,0 +1,30 @@
+pkgbase = haxe-git
+	pkgdesc = An open-source high-level multiplatform programming language and compiler that can produce applications and source code for many different platforms from a single code-base
+	pkgver = 11145
+	pkgrel = 1
+	url = https://github.com/HaxeFoundation/haxe
+	install = haxe.install
+	arch = i686
+	arch = x86_64
+	groups = devel
+	license = GPL2
+	license = MIT
+	makedepends = git
+	makedepends = ocaml
+	makedepends = sed
+	makedepends = zlib
+	makedepends = neko>=2.0.0
+	makedepends = help2man
+	depends = neko>=2.0.0
+	provides = haxe
+	conflicts = haxe
+	options = !strip
+	options = emptydirs
+	options = !makeflags
+	source = haxe.sh
+	source = haxe::git+https://github.com/HaxeFoundation/haxe
+	md5sums = 2744426baf31e3602473bcb8397947e3
+	md5sums = SKIP
+
+pkgname = haxe-git
+
