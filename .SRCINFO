@@ -1,0 +1,12 @@
+pkgbase = vkaudiosaver
+	pkgdesc = A tool for listening & downloading the music from social network VK.COM
+	pkgver = 1.5.1
+	pkgrel = 2
+	url = http://vkaudiosaver.ru/
+	arch = i686
+	arch = x86_64
+	groups = network
+	license = GPL3
+
+pkgname = vkaudiosaver
+
