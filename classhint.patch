@@ -1,0 +1,15 @@
+diff -up src/wmwork-0.2.5/src/wmgeneral.c.orig src/wmwork-0.2.5/src/wmgeneral.c
+--- src/wmwork-0.2.5/src/wmgeneral.c.orig	2014-04-12 06:56:33.000000000 -0600
++++ src/wmwork-0.2.5/src/wmgeneral.c	2014-04-12 06:57:10.000000000 -0600
+@@ -440,8 +440,10 @@ void openXwindow(int argc, char *argv[],
+ 
+ 	/* Activate hints */
+ 	XSetWMNormalHints(display, win, &mysizehints);
++	if (strrchr(wname, '/'))
++		wname = strrchr(wname, '/') + 1;
+ 	classHint.res_name = wname;
+-	classHint.res_class = wname;
++	classHint.res_class = "DockApp";
+ 	XSetClassHint(display, win, &classHint);
+ 
+ 	XSelectInput(display, win, ButtonPressMask | ExposureMask | ButtonReleaseMask | PointerMotionMask | StructureNotifyMask | EnterWindowMask | LeaveWindowMask | KeyPressMask | KeyReleaseMask);

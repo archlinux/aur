@@ -1,0 +1,16 @@
+pkgbase = wmwork
+	pkgdesc = A dock app that helps you keep track of time worked on projects
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = http://web.archive.org/web/20121028075048/http://dockapps.windowmaker.org/file.php/id/25
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	source = ftp://ftp.oregonstate.edu/.2/gentoo/distfiles/wmwork-0.2.5.tar.gz
+	source = classhint.patch
+	md5sums = 6680fa359430dcb4a987abb8973492c2
+	md5sums = a0654659d13a1433e8f872b32c36f816
+
+pkgname = wmwork
+
