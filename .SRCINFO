@@ -1,5 +1,5 @@
 pkgbase = u8gfonttest-git
-	pkgdesc = font test for u8glib
+	pkgdesc = Show UTF-8 human readable strings from source code to your tiny LCD via u8glib
 	pkgver = b4e88de
 	pkgrel = 1
 	url = https://github.com/yhfudev/u8glib-fontutf8.git

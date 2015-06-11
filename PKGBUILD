@@ -3,7 +3,7 @@
 pkgname=u8gfonttest-git
 pkgver=b4e88de
 pkgrel=1
-pkgdesc="font test for u8glib"
+pkgdesc="Show UTF-8 human readable strings from source code to your tiny LCD via u8glib"
 arch=( 'i686' 'x86_64' 'armv5tel' 'armv7l' )
 url="https://github.com/yhfudev/u8glib-fontutf8.git"
 license=('GPL')
