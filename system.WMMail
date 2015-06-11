@@ -1,0 +1,39 @@
+{
+  DisableBeep = No;
+  DoubleClickTime = 250;
+  DisplayMessageCount = None;
+  DisplayColor = "#FFFFFF";
+  DisplayFont = "-*-helvetica-medium-r-*-*-10-*-*-*-*-*-*-*";
+  DisplayLocation = (0, 10);
+  Animations = {
+    Empty = {
+      Delay = 10;
+      Frames = (
+        "/usr/lib/GNUstep/Apps/WMMail.app/Anims/asmail/asmail-no.xpm"
+      );
+    };
+    Old = {
+      Delay = 10;
+      Frames = (
+        "/usr/lib/GNUstep/Apps/WMMail.app/Anims/asmail/asmail-old.xpm"
+      );
+    };
+    New = {
+      Delay = 10;
+      Frames = (
+        "/usr/lib/GNUstep/Apps/WMMail.app/Anims/asmail/asmail-new.xpm"
+      );
+    };
+  };
+  Mailboxes = (
+    {
+      Name = "Home";
+      Type = mbox;
+      UpdateInterval = 15;
+      Options = {
+        CheckTimeStampOnly = No;
+        Path = "$MAIL";
+      };
+    }
+  );
+}

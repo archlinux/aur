@@ -1,0 +1,366 @@
+.\" Hey, Emacs! This is an -*- nroff -*- source file.
+.\" Copyright (c) 1999 Marcelo E. Magallon <mmagallo@debian.org>
+.\" Currently maintained by Chris Waters <xtifr@debian.org>
+.\"
+.\" This is free documentation; you can redistribute it and/or
+.\" modify it under the terms of the GNU General Public License as
+.\" published by the Free Software Foundation; either version 2 of
+.\" the License, or (at your option) any later version.
+.\"
+.\" The GNU General Public License's references to "object code"
+.\" and "executables" are to be interpreted as the output of any
+.\" document formatting or typesetting system, including
+.\" intermediate and printed output.
+.\"
+.\" This manual is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public
+.\" License along with this manual; if not, write to the Free
+.\" Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,
+.\" MA  02111-1307  USA
+.TH WMMail.app 1 "26 Sep 2002" "WMMail.app 0.64" "Window Maker"
+.SH NAME
+WMMail.app \- Window Maker Mail.app
+.SH SYNOPSIS
+.B WMMail \fI[options ...]\fP \fI[<pathname>]\fP
+.SH DESCRIPTION
+\fBWMMail.app\fP is a "mail-checker" like \fBxbiff\fP(1x). It indicates
+the status of the user's mailbox by showing animated XPM icons when
+incoming mails are detected. Additionally, it can be configured to
+execute a program on incoming mail and/or on mouse double-clicks, and
+can provide a count of emails in the user's mailbox.
+.P
+\fBWMMail.app\fP is based on \fBasmail\fP, a similar applet designed
+for the AfterStep window manager.  However, \fBWMMail.app\fP has been
+re-written to be compatible with the Window Maker Dock,
+i.e. \fBWMMail.app\fP can be dragged and dropped on (and off) the Dock
+dynamically.  It also uses a different config file format, more
+consistent with the one used by Window Maker.
+.P
+To use \fBWMMail.app\fP with the Window Maker Dock, simply drag the
+\fBWMMail.app\fP icon to the Window Maker Dock.
+.P
+To use \fBWMMail.app\fP with another window manager, you may need to
+use the \fB\-s\fP option.  This tells \fBWMMail.app\fP to use its
+main window, rather than leaving it blank and trying to hide it.  If a
+small, empty window appears when you run \fBWMMail.app\fP, try this.
+
+.SH OPTIONS
+.TP
+.B \-help, \-h
+Prints a help message
+.TP
+.B \-quiet, \-q
+Suppress all error messages
+.TP
+.B \-swallowed, \-s
+Show window as well as appicon (for swallowing with AfterStep or other
+window manager).
+.TP
+.B <pathname>
+Full path of defaults domain to use.  If none is specified, a series of
+paths are searched for this file.  See the \fIFILES\fP section for
+more information.
+
+.SH CONFIGURATION FILE
+The configuration file consists of a single PropList dictionary, which
+in turn is composed of several PropList key\-value pairs. The
+recognized keys are:
+.TP
+.B DisableBeep (Yes|No)
+When set to `Yes', \fBWMMail\fP won't make an audible signal when new
+mail is found.
+.TP
+.B DoubleClickTime (Int)
+\fBWMMail\fP will consider two clicks a double click event if they
+arrive in less than 'DoubleClickTime' milliseconds appart from each
+other.
+.TP
+.B DisplayEachMailbox (Yes|No)
+(Experimental) Show name of each mailbox containing new messages along
+with its message counts.  Must be used with Animations!
+.TP
+.B DisplayMessageCount (None|NewOnly|TotalOnly|NewOverTotal)
+\fINone\fP, no message count is displayed; \fINewOnly\fP, only the new
+messages count is displayed; \fITotalOnly\fP, only the total message
+count is displayed; \fINewOverTotal\fP, the message count is displayed
+as 'New/Total'
+.TP
+.B DisplayColor (Color)
+the string name of a color with respect to the screen associated with
+a colormap.  An RGB Device specification is identified by the prefix
+``rgb:'' and conforms to the following syntax:
+rgb:<red>/<green>/<blue>, where each component is of the form
+\fIhhhh\fP where `h' is a single hexadecimal digit. `h' is scaled to 4
+bits, `hh' to 8, `hhh' to 12 and `hhhh' to 16 bits.  The forms `#RGB',
+`#RRGGBB', `#RRRGGGBBB' and `#RRRRGGGGBBBB' are also accepted. An RGB
+intensity specification is identified by the prefix ``rgbi:'' and
+conforms to the following syntax: rgbi:<red>/<green>/<blue>, where
+each componet is a floating point value between 0.0 and 1.0,
+inclusive.
+.TP
+.B DisplayFont (Font)
+The font used for displaying the count information. `Font' is a
+standard structured format for font names string. Since it probably
+contains `*' and or `?', you have to enclose it in double quotes.
+.TP
+.B ExecuteOnNew (String)
+The program (and arguments) to excecute when new mail is found.
+.TP
+.B ExecuteOnClick (String)
+The program (and arguments) to excecute when a double click event is
+processed.
+.TP
+.B DisplayLocation (Coordinates)
+Specifies the coordinates relative to the lower left corner where the
+\fImessage count\fP is displayed.
+.TP
+.B Animations (Dictionary)
+This dictionary consists in turn of three dictionaries: \fIEmpty\fP,
+\fIOld\fP and \fINew\fP. Each of them can have two entries:
+\fIDelay\fP and \fIFrames\fP. \fIDelay\fP specifies the number of
+tenths of seconds to stop between each frame of the animation;
+\fIFrames\fP is an array that lists all the pixmaps in the animation.
+You have to specify the full path to the pixmaps. List the pixmaps in
+the order you want them to be shown. If you do not want an animation,
+list just one icon.
+.TP
+.B Mailboxes (Array)
+Specifies all the mailboxes \fBWMMail.app\fP should monitor.  Each
+element of the array is a dictionary which varies according to the
+mailbox type.  See the \fBMailboxes\fP section.  The generic keys for
+each mailbox are \fIName\fP (string), the name of current mailbox;
+\fIType\fP (string), the type of the mailbox; 
+.\" \fIExecuteOnUpdate\fP (string), the name of the program to execute
+.\" when the mailbox status is updated; 
+\fIUpdateInterval\fP (int), the number of seconds between updates
+(default: 15); and \fIOptions\fP (dictionary), which are options
+specific to each mailbox type.
+
+.SH MAILBOXES
+\fBWMMail.app\fP can monitor several types of mailboxes, namely
+\fImbox\fP, \fImh\fP, \fImaildir\fP, \fIpop3\fP and \fIimap\fP. Each
+mailbox type takes different options:
+.TP
+.B mbox
+\fIPath\fP (string), the path to the mailbox. \fICheckTimeStampOnly\fP
+(Yes|No), the state of the mailbox changes according to the following
+rules: no mailbox or empty mailbox, no mail; smaller than last time
+but non-zero, old mail; read after most recent write, old mail; no
+read after most recent write and same size as last time, no change;
+bigger than last time, new mail. If \fICheckTimeStampOnly\fP is set to
+`No', the status changes according to: no mailbox or empty mailbox, no
+mail; no new mails, old mail; same number of new mails or fewer, no
+change; more new mails than last time, new mail.
+\fIMailboxHasInternalData\fP (Yes|No), if set to `Yes' it means
+there's an "internal data" message stored in the mailbox and it should
+no be taken into account when computing the total mail count in the
+mailbox (IMAP daemons write this kind of message for bookkeeping
+purposes -- and yes, everyone hates them).  This option defaults to
+`No'.
+.TP
+.B mh
+\fIPath\fP (string), the path to the mailbox. The status changes
+according to: no folder or empty folder, no mail; no new mails, old
+mail; same number of new mails or fewer, no change; more new mails
+than last time, new mail.
+.TP
+.B maildir
+\fIPath\fP (string), the path to the mailbox. The state is determined
+in the same way as for \fImboxes\fP.
+.TP
+.B pop3
+\fIHostname\fP (string), the POP3 server.  \fIUsername\fP (string),
+the username on the server.  \fIPassword\fP (string), the password.
+\fIPort\fP (int), the port number to use (optional, default is 110).
+
+.TP
+.B imap
+\fIHostname\fP (string), the IMAP server.  \fIUsername\fP (string),
+the username on the server.  \fIPassword\fP (string), the password.
+\fIPort\fP (int), the port number to use (optional, default is 143).
+\fIFolder\fP (string), the name of the folder to check (optional,
+default is "INBOX").  \fIUseSelect\fP (Yes|No), use the slower
+"SELECT" command to examine mailbox if set to `Yes'.  May be necessary
+with some older (broken?) IMAP servers which don't support the
+default "EXAMINE" command properly (optional, default is `No').
+
+.SH EXAMPLES
+Here is an example of a configuration file.
+.EX
+.nf
+{
+  DisableBeep = No;
+  DoubleClickTime = 250;
+  DisplayMessageCount = None;
+  DisplayColor = "#FFFFFF";
+  DisplayFont = "-*-helvetica-medium-r-*-*-10-*-*-*-*-*-*-*";
+  DisplayLocation = (0, 10);
+  ExecuteOnClick = "wterm \-name mail \-e mutt";
+  ExecuteOnNew = "play ~/GNUstep/Library/WMMail.app/Sounds/doorbell.au";
+.\"  ExecuteOnNewOnce = No;
+  Animations = {
+    Empty = {
+      Delay = 10;
+      Frames = ("~/GNUstep/Library/WMMail.app/Anims/NeXT/Mail1.xpm");
+    };
+    Old = {
+      Delay = 10;
+      Frames = ("~/GNUstep/Library/WMMail.app/Anims/NeXT/Mail1.xpm");
+    };
+    New = {
+      Delay = 2;
+      Frames = (
+        "~/GNUstep/Library/WMMail.app/Anims/NeXT/Mail1.xpm",
+        "~/GNUstep/Library/WMMail.app/Anims/NeXT/Mail2.xpm",
+        "~/GNUstep/Library/WMMail.app/Anims/NeXT/Mail3.xpm",
+        "~/GNUstep/Library/WMMail.app/Anims/NeXT/Mail2.xpm"
+      );
+    };
+  };
+  Mailboxes = (
+    {
+      Name = "Home";
+      Type = mbox;
+      UpdateInterval = 15;
+.\"      ExecuteOnUpdate = "/usr/bin/fetchmail";
+      Options = {
+        CheckTimeStampOnly = No;
+        Path = "$(MAIL)";
+      };
+    },
+    {
+      Name = "MH Folder";
+      Type = mh;
+      UpdateInterval = 60;
+.\"      ExecuteOnUpdate = "";
+      Options = {
+        Path = "~bryan/Mail/inbox"
+      };
+    },
+    {
+      Name = "MailDir Folder";
+      Type = maildir;
+      UpdateInterval = 15;
+.\"      ExecuteOnUpdate = "";
+      Options = {
+        Path = "~bryan/MailDir";
+      };
+    },
+    {
+      Name = "School";
+      Type = imap;
+      UpdateInterval = 300;
+.\"      ExecuteOnUpdate = "";
+      Options = {
+        Hostname = "mailserver.school.edu";
+        Username = "bryan";
+        Password = "secret";
+        Folder = "mail/INBOX";
+      };
+    }
+  );
+}
+.EE
+.fi
+
+Normally, the status is only updated after a certain amount of time
+has passed (15 seconds, by default).  However, you can force an update
+by sending a SIGUSR1 signal to wmmail.  This can be used, for example,
+by procmail(1) to notify wmmail that mail has just arrived.  Simply
+add the following to the end of your ~/.procmailrc:
+.P
+.nf
+# Notify WMMail.app of the updated inbox
+#
+:0hci
+| (sleep 1 && killall \-USR1 WMMail) </dev/null &
+.fi
+
+.SH FILES
+.TP
+.B ~/GNUstep/Defaults/WMMail
+\fBWMMail.app\fP defaults.
+.TP
+.B /etc/GNUstep/Defaults/WMMail
+System wide defaults.
+.TP
+.B /usr/lib/GNUstep/Apps/WMMail.app/Anims
+\fBWMMail.app\fP's animations are installed here.
+.TP
+.B /usr/lib/GNUstep/Apps/WMMail.app/Sounds
+\fBWMMail.app\fP's sounds are installed here.
+
+.SH ENVIRONMENT
+.IP GNUSTEP_USER_ROOT
+specifies the initial path for the Defaults directory. "Defaults/" is
+appended to this variable to determine the actual location of the
+databases. If the varialbe is not set, it defaults to "~/GNUstep"
+.IP GNUSTEP_LOCAL_ROOT
+specifies the location of the system-wide \fBlocal\fP GNUstep
+directory (this is useful, for example, in those cases where the
+system-wide location is really a network wide location). If this
+variable is empty, GNUSTEP_SYSTEM_ROOT is looked for.
+.IP GNUSTEP_SYSTEM_ROOT
+specifies the location of the system-wide GNUstep directory. If this
+variable is empty, it defaults to /etc/GNUstep
+
+.SH BUGS
+ExecuteOnNewOnce (previously AlwaysNewMailExecute) is broken.
+.P
+ExecuteOnUpdate is broken.
+.P
+DisplayEachMailbox crashes if no Animations defined.
+.P
+With some weird, old combination of OS and X Window, e.g. Solaris with
+X11R5, SunOS with OpenWindows, etc., the WMMail application icon may
+not show up when the program is run. If this is the case for you, add
+the following line to your ~/GNUstep/Defaults/WMWindowAttributes:
+.BR
+WMMail = { EmulateAppIcon = Yes; };
+.P
+With some window managers that have an automatic dock or "slit"
+(i.e. blackbox or fluxbox), an extra empty window may appear in the
+dock/slit area.  This is harmless, and you can make the window
+disappear by selecting "restart" from the window manager's menu.
+
+.SH VERSION
+This man page is up-to-date for version 0.64 of \fBWMMail.app\fP.
+
+.SH AUTHORS
+\fBWMMail.app\fP is based on \fBasmail\fP for the AfterStep window
+manager (C) 1996, 1997, 1998 by Per Liden <per@rsn.hk-r.se>
+(http://www.rby.hk-r.se/~pt96pli/)
+.P
+All modifications made to \fBasmail\fP to make it work with Window
+Maker and further development, (C) 1997, 1998, 1999 by Bryan Chan
+<bryan.chan@utoronto.ca>. \fBWMMail.app\fP is licensed through the
+GNU General Public License. Read COPYING for the complete license.
+.P
+The NeXT-lookalike XPM icons are acquired from an \fBasmail\fP hack by
+Jon Leffert <jbleffer@midway.uchicago.edu>.
+.P
+The notification sounds are acquired from xbiff++, an enhanced xbiff
+by Mike Wagner <wagner@cadillac.siemens.com> and Jamie Zawinski
+<jwz@netscape.com>.
+.P
+\fBWMMail.app\fP also contains code from:
+.TP
+.B Window Maker (http://windowmaker.org/)
+Alfredo K. Kojima (kojima@windowmaker.org)
+.TP
+.B Malaprop (http://www.sorted.org/~pete/wmaker)
+Peter Bentley (pete@sorted.org)
+.TP
+.B GNU CC (http://fsf.varesearch.com/software/gcc)
+Free Software Foundation, Inc.
+.P
+This manpage was written by Marcelo Magallon <mmagallo@debian.org> for
+the Debian Project, and has been maintained and updated by Chris
+Waters <xtifr@debian.org>.  This is free documentation; you can
+redistribute it and/or modify it under the terms of the GNU General
+Public License as published by the Free Software Foundation; either
+version 2 of the License, or (at your option) any later version.
