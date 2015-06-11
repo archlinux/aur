@@ -1,0 +1,27 @@
+pkgbase = alsa-utils-transparent
+	pkgdesc = A patched version of the alsa-utils package to support transparent terminals
+	pkgver = 1.0.29
+	pkgrel = 1
+	url = http://www.alsa-project.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	depends = alsa-lib>1.0.24
+	depends = dialog
+	depends = pciutils
+	depends = ncurses
+	depends = psmisc
+	depends = libsamplerate
+	provides = alsa-utils
+	conflicts = alsa-utils
+	source = ftp://ftp.alsa-project.org/pub/utils/alsa-utils-1.0.29.tar.bz2
+	source = 90alsa
+	source = transparency.patch
+	md5sums = 6b289bf874c4c9a63f4b3973093dd404
+	md5sums = 529216f6a46e61a546640e08ea7a0879
+	md5sums = 586f985eea6abf0a6a6c753ea4fa542e
+
+pkgname = alsa-utils-transparent
+
