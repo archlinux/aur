@@ -1,0 +1,19 @@
+pkgbase = urlscan-git
+	pkgdesc = Replacement for urlview with html context and other improvements.
+	pkgver = r49.f0ae093
+	pkgrel = 1
+	url = https://github.com/firecat53/urlscan
+	install = urlscan.install
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-urwid
+	provides = urlscan
+	conflicts = urlscan
+	source = git://github.com/firecat53/urlscan.git
+	md5sums = SKIP
+
+pkgname = urlscan-git
+
