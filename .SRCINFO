@@ -22,7 +22,7 @@ pkgbase = partitionmanager-git
 	optdepends = dosfstools: FAT32 support
 	provides = partitionmanager
 	conflicts = partitionmanager
-	source = git://anongit.kde.org/partitionmanager#branch=kpmcore
+	source = git://anongit.kde.org/partitionmanager
 	sha1sums = SKIP
 
 pkgname = partitionmanager-git

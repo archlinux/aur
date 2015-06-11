@@ -18,7 +18,7 @@ optdepends=('e2fsprogs: ext2/3/4 support'
             'reiserfsprogs: Reiser support'
             'ntfsprogs: NTFS support'
             'dosfstools: FAT32 support')
-source=('git://anongit.kde.org/partitionmanager#branch=kpmcore')
+source=('git://anongit.kde.org/partitionmanager')
 sha1sums=('SKIP')
 install=partitionmanager-git.install
 
