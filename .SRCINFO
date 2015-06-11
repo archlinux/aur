@@ -1,0 +1,19 @@
+pkgbase = emerald-themes
+	pkgdesc = Themes for emerald
+	pkgver = 0.8.10
+	pkgrel = 1
+	url = http://www.northfield.ws/projects/compiz
+	arch = any
+	groups = compiz-fusion
+	groups = compiz-fusion-kde
+	groups = compiz-fusion-gtk
+	license = GPL
+	makedepends = intltool
+	makedepends = pkgconfig
+	depends = emerald
+	conflicts = emerald-themes-git
+	source = http://www.northfield.ws/projects/compiz/releases/0.8.10/emerald-themes.tar.gz
+	sha256sums = 07224509f85f37f3e080a50532a43bf5e5cbcfdc92faae14df42966648be85d0
+
+pkgname = emerald-themes
+
