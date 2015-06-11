@@ -1,0 +1,16 @@
+pkgbase = python2-oslo-rootwrap-kilo
+	pkgdesc = Oslo rootwrap - A root escalation wrapper for OpenStack
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/oslo.rootwrap/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-six
+	source = https://pypi.python.org/packages/source/o/oslo.rootwrap/oslo.rootwrap-1.6.0.tar.gz
+	md5sums = dde8877cf09581a7dd24673806f778dd
+
+pkgname = python2-oslo-rootwrap-kilo
+
