@@ -1,0 +1,15 @@
+pkgbase = topmenu-mozilla-git
+	pkgdesc = Firefox/Thunderbird Javascript module for TopMenu.
+	pkgver = 2015.01.21
+	pkgrel = 2
+	url = https://gitorious.org/topmenu
+	arch = any
+	license = LGPL3
+	makedepends = git
+	makedepends = zip
+	depends = topmenu-gtk-git
+	source = git+http://gitorious.org/topmenu/topmenu-mozilla.git
+	sha1sums = SKIP
+
+pkgname = topmenu-mozilla-git
+
