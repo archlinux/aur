@@ -1,0 +1,16 @@
+pkgbase = wmbluemem
+	pkgdesc = A memory monitoring dockapp (for WindowMaker, OpenBOx, AfterStep etc)
+	pkgver = 4
+	pkgrel = 1
+	url = http://github.com/vampirefrog/wmbluemem
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libxpm
+	depends = libxft
+	source = wmbluemem::git+https://github.com/vampirefrog/wmbluemem.git
+	md5sums = SKIP
+
+pkgname = wmbluemem
+
