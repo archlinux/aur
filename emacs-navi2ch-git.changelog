@@ -1,6 +1,0 @@
-2013-06-19 yuki-san <yuki.from.akita _at_ gmail.com>
-
-	* PKGBUILD
-	Modified to follow "VCS PKGBUILD Guidelines" (https://wiki.archlinux.org/index.php/VCS_PKGBUILD_Guidelines)
-        Change git repo to git://github.com/naota/navi2ch.git
-

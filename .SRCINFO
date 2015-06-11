@@ -4,7 +4,6 @@ pkgbase = emacs-navi2ch-git
 	pkgrel = 1
 	url = http://navi2ch.sourceforge.net/
 	install = navi2ch.install
-	changelog = emacs-navi2ch-git.changelog
 	arch = any
 	license = GPL2
 	makedepends = git
