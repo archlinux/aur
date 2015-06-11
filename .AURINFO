@@ -1,0 +1,19 @@
+pkgbase = python2-temper
+	pkgdesc = This is a rewrite of a userspace USB driver for TEMPer devices presenting a USB ID like this: 0c45:7401 Microdia
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/padelt/temper-python
+	install = python2-temper.install
+	arch = any
+	license = unknown
+	makedepends = python-distribute
+	depends = python2
+	depends = python2-pyusb-beta
+	depends = python2-setuptools
+	depends = python2-snmp-passpersist
+	provides = python2-temper
+	source = https://github.com/padelt/temper-python/archive/master.zip
+	source = munin.patch
+
+pkgname = python2-temper
+

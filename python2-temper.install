@@ -1,0 +1,11 @@
+post_install() {
+  echo "What to add to snmpd.conf"
+  echo ""
+  echo "To emulate an APC Battery/Internal temperature value, add something like this to snmpd.conf. The highest of all measured temperatures in degrees celcius as an integer is reported."
+  echo "pass_persist    .1.3.6.1.4.1.318.1.1.1.2.2.2 /usr/bin/temper-snmp"
+  echo ""
+  echo "Alternatively, emulate a Cisco device's temperature information with the following. The first three detected devices will be reported as ..13.1.3.1.3.1, ..3.2 and ..3.3 . The value is the temperature in degree celcius as an integer."
+  echo "pass_persist    .1.3.6.1.4.1.9.9.13.1.3 /usr/bin/temper-snmp"
+  echo ""
+  echo "Add --testmode to the line (as an option to snmp.py to enable a mode where APC reports 99°C and Cisco OIDs report 97, 98 and 99°C respectively."
+}

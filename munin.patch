@@ -1,0 +1,21 @@
+--- etc/munin-temperature.orig	2014-07-02 16:26:17.000000000 +0200
++++ etc/munin-temperature	2014-08-29 20:42:59.770393653 +0200
+@@ -7,7 +7,7 @@
+ #
+ # This code is licensed under the GNU public license (GPL). See LICENSE.md for details.
+ 
+-from temper.temper import TemperHandler
++from temperusb.temper import TemperHandler
+ import sys
+ 
+ handler = TemperHandler()
+@@ -21,7 +21,8 @@
+ devices = handler.get_devices()
+ for device in devices:
+     port = device.get_ports()
+-    port_name = port.replace('.', '_')
++    port_name = str(port)
++    #.replace('.', '_')
+     if is_config:
+         if len(devices) > 1:
+             print "temp_" + port_name + ".label Temperature in °C (port {0:s})".format(port)
