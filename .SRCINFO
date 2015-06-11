@@ -1,0 +1,14 @@
+pkgbase = latex-fitch-uoo
+	pkgdesc = LaTeX macros for Fitch style natural deduction
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://www.mathstat.dal.ca/~selinger/fitch
+	install = fitch.install
+	arch = any
+	license = GPL
+	depends = texlive-core
+	source = http://www.mathstat.dal.ca/~selinger/fitch/fitch-0.5.tgz
+	sha256sums = 0d3173a63420eb5b9981b9c7db0bad0b24278272a666cc31e0c7af8a14ecc4af
+
+pkgname = latex-fitch-uoo
+
