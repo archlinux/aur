@@ -1,0 +1,193 @@
+diff -up src/volumeicon-0.5.0/configure.ac.orig src/volumeicon-0.5.0/configure.ac
+--- src/volumeicon-0.5.0/configure.ac.orig	2013-02-25 09:06:49.000000000 -0700
++++ src/volumeicon-0.5.0/configure.ac	2014-05-17 08:58:51.000000000 -0600
+@@ -35,7 +35,7 @@ AC_ARG_ENABLE([notify],
+   [notify=no])
+ 
+ # Check for gtk
+-PKG_CHECK_MODULES([GTK], [gtk+-3.0 >= 3.0])
++PKG_CHECK_MODULES([GTK], [gtk+-2.0 >= 2.16])
+ AC_SUBST(GTK_CFLAGS)
+ AC_SUBST(GTK_LIBS)
+ 
+@@ -64,8 +64,8 @@ AC_ARG_WITH([oss-include-path],
+       OSS_CPPFLAGS="-I${OSSLIBDIR}/include/sys"
+       OSS_HEADER="${OSSLIBDIR}/include/sys/soundcard.h"
+     else
+-      OSS_CPPFLAGS="-I/usr/lib/oss/include/sys"
+-      OSS_HEADER="/usr/lib/oss/include/sys/soundcard.h"
++      OSS_CPPFLAGS=""
++      OSS_HEADER="sys/soundcard.h"
+     fi
+   ]
+ )
+@@ -75,7 +75,7 @@ AC_ARG_WITH([oss-include-path],
+ # to fail.
+ OLD_CPPFLAGS=${CPPFLAGS}
+ CPPFLAGS="${OSS_CPPFLAGS}"
+-AC_CHECK_HEADER([soundcard.h], [], [AC_MSG_ERROR([could not find soundcard.h])], [])
++AC_CHECK_HEADER([sys/soundcard.h], [], [AC_MSG_ERROR([could not find soundcard.h])], [])
+ CPPFLAGS=${OLD_CPPFLAGS}
+ 
+ # Pass the absolute path to the OSS header file
+diff -up src/volumeicon-0.5.0/src/bind.c.orig src/volumeicon-0.5.0/src/bind.c
+--- src/volumeicon-0.5.0/src/bind.c.orig	2012-10-25 09:59:10.000000000 -0600
++++ src/volumeicon-0.5.0/src/bind.c	2014-05-17 08:57:35.000000000 -0600
+@@ -151,7 +151,11 @@ grab_ungrab_with_ignorable_modifiers (Gd
+ 			XGrabKey (GDK_WINDOW_XDISPLAY (rootwin),
+ 			          keycode,
+ 			          modifiers | mod_masks [i],
++#if GTK_CHECK_VERSION(3,0,0)
+ 			          gdk_x11_window_get_xid (rootwin),
++#elif GTK_CHECK_VERSION(2,16,0)
++				  GDK_WINDOW_XID (rootwin),
++#endif
+ 			          False,
+ 			          GrabModeAsync,
+ 			          GrabModeAsync);
+@@ -159,7 +163,12 @@ grab_ungrab_with_ignorable_modifiers (Gd
+ 			XUngrabKey (GDK_WINDOW_XDISPLAY (rootwin),
+ 			            keycode,
+ 			            modifiers | mod_masks [i],
+-			            gdk_x11_window_get_xid (rootwin));
++#if GTK_CHECK_VERSION(3,0,0)
++			            gdk_x11_window_get_xid (rootwin)
++#elif GTK_CHECK_VERSION(2,16,0)
++			            GDK_WINDOW_XID (rootwin)
++#endif
++				   );
+ 		}
+ 	}
+ 	gdk_flush();
+diff -up src/volumeicon-0.5.0/src/volumeicon.c.orig src/volumeicon-0.5.0/src/volumeicon.c
+--- src/volumeicon-0.5.0/src/volumeicon.c.orig	2013-02-25 08:52:49.000000000 -0700
++++ src/volumeicon-0.5.0/src/volumeicon.c	2014-05-17 08:57:35.000000000 -0600
+@@ -527,6 +527,7 @@ static gboolean scale_timeout(gpointer d
+ 	gtk_window_get_size(GTK_WINDOW(m_scale_window), &window.width, &window.height);
+ 	gtk_status_icon_get_geometry(m_status_icon, NULL, &icon, NULL);
+ 
++#if GTK_CHECK_VERSION(3,0,0)
+ 	GdkWindow *root_window;
+ 	GdkDeviceManager *device_manager;
+ 	GdkDevice *pointer;
+@@ -536,6 +537,15 @@ static gboolean scale_timeout(gpointer d
+ 	device_manager = gdk_display_get_device_manager(gdk_window_get_display(root_window));
+ 	pointer = gdk_device_manager_get_client_pointer(device_manager);
+ 	gdk_window_get_device_position(root_window, pointer, &x, &y, NULL);
++#elif GTK_CHECK_VERSION(2,16,0)
++	GdkWindow *root_window;
++	gint x, y;
++
++	root_window = gtk_widget_get_root_window(m_scale_window);
++	gdk_display_get_pointer(gdk_window_get_display(root_window), NULL, &x, &y, NULL);
++#else
++#error No GTK version
++#endif
+ 
+ 	if(scale_point_in_rect(&window, x, y) || scale_point_in_rect(&icon, x, y))
+ 	{
+@@ -827,6 +837,7 @@ static void render_widget (cairo_t *cair
+ 	cairo_paint (cairo_context);
+ }
+ 
++#if GTK_CHECK_VERSION(3,0,0)
+ static void update_widget (GtkWidget *widget, gint width, gint height)
+ {
+ 	cairo_surface_t *mask;
+@@ -857,6 +868,32 @@ static void update_widget (GtkWidget *wi
+ 		cairo_surface_destroy(mask);
+ 	}
+ }
++#elif GTK_CHECK_VERSION(2,0,0)
++static void update_widget (GtkWidget *widget, gint width, gint height)
++{
++	GdkPixmap *bitmap;
++	
++	bitmap = gdk_pixmap_new(NULL, width, height, 1);
++	if (bitmap != NULL) {
++		cairo_t *cairo_context = gdk_cairo_create(GDK_DRAWABLE(bitmap));
++
++		if (cairo_status(cairo_context) == CAIRO_STATUS_SUCCESS) {
++
++			render_widget(cairo_context, width, height);
++			cairo_destroy(cairo_context);
++
++			gtk_widget_input_shape_combine_mask(widget, NULL, 0, 0);
++			if (!gtk_widget_is_composited(widget))
++				gtk_widget_input_shape_combine_mask(widget, bitmap, 0, 0);
++
++			gtk_widget_shape_combine_mask(widget, NULL, 0, 0);
++			if (!gtk_widget_is_composited(widget))
++				gtk_widget_shape_combine_mask(widget, bitmap, 0, 0);
++		}
++		g_object_unref(G_OBJECT(bitmap));
++	}
++}
++#endif
+ 
+ static gboolean on_configure (GtkWidget *widget, GdkEventConfigure *event, gpointer user_data)
+ {
+@@ -871,9 +908,17 @@ static gboolean on_configure (GtkWidget
+ 
+ static gboolean on_draw (GtkWidget *widget, cairo_t *cairo_context, gpointer user_data)
+ {
++#if GTK_CHECK_VERSION(3,0,0)
+ 	render_widget(cairo_context,
+ 		gtk_widget_get_allocated_width(widget),
+ 		gtk_widget_get_allocated_height(widget));
++#elif GTK_CHECK_VERSION(2,16,0)
++	GtkAllocation allocation;
++	gtk_widget_get_allocation(widget,&allocation);
++	render_widget(cairo_context,
++		allocation.width,
++		allocation.height);
++#endif
+ 	return FALSE;
+ }
+ 
+@@ -888,10 +933,17 @@ static void scale_setup()
+ {
+ 	GdkScreen *screen;
+ 
++#if GTK_CHECK_VERSION(3,0,0)
+ 	if(config_get_use_horizontal_slider())
+ 		m_scale = gtk_scale_new_with_range(GTK_ORIENTATION_HORIZONTAL, 0.0, 100.0, 1.0);
+ 	else
+ 		m_scale = gtk_scale_new_with_range(GTK_ORIENTATION_VERTICAL, 0.0, 100.0, 1.0);
++#elif GTK_CHECK_VERSION(2,16,0)
++	if (config_get_use_horizontal_slider())
++		m_scale = gtk_hscale_new_with_range(0.0, 100.0, 1.0);
++	else
++		m_scale = gtk_vscale_new_with_range(0.0, 100.0, 1.0);
++#endif
+ 	gtk_range_set_inverted(GTK_RANGE(m_scale), TRUE);
+ 	gtk_scale_set_draw_value(GTK_SCALE(m_scale), config_get_show_sound_level());
+ 
+@@ -904,15 +956,27 @@ static void scale_setup()
+ 			gtk_widget_set_visual(GTK_WIDGET(m_scale_window), visual);
+ 			gtk_widget_set_app_paintable(GTK_WIDGET(m_scale_window), TRUE);
+ 			gtk_widget_realize(GTK_WIDGET(m_scale_window));
++#if GTK_CHECK_VERSION(3,0,0)
+ 			gdk_window_set_background_pattern(gtk_widget_get_window(GTK_WIDGET(m_scale_window)), NULL);
++#elif GTK_CHECK_VERSION(2,16,0)
++			gdk_window_set_back_pixmap(gtk_widget_get_window(GTK_WIDGET(m_scale_window)), NULL, FALSE);
++#endif
+ 			gtk_window_set_type_hint(GTK_WINDOW(m_scale_window), GDK_WINDOW_TYPE_HINT_DOCK);
+ 
+ 			g_signal_connect(G_OBJECT(m_scale_window), "draw", G_CALLBACK(on_draw), NULL);
+ 			g_signal_connect(G_OBJECT(m_scale_window), "configure-event", G_CALLBACK(on_configure), NULL);
+ 
++#if GTK_CHECK_VERSION(3,0,0)
+ 			update_widget(GTK_WIDGET(m_scale_window),
+ 				gtk_widget_get_allocated_width(GTK_WIDGET(m_scale_window)),
+ 				gtk_widget_get_allocated_height(GTK_WIDGET(m_scale_window)));
++#elif GTK_CHECK_VERSION(2,16,0)
++			GtkAllocation allocation;
++			gtk_widget_get_allocation(GTK_WIDGET(m_scale_window), &allocation);
++			update_widget(GTK_WIDGET(m_scale_window),
++				allocation.width,
++				allocation.height);
++#endif
+ 		}
+ 	}
+ 
