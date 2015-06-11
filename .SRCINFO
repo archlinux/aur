@@ -1,0 +1,19 @@
+pkgbase = crafty
+	pkgdesc = A computer chess program
+	pkgver = 24.0
+	pkgrel = 1
+	url = http://www.cis.uab.edu/hyatt/
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = http://www.cis.uab.edu/hyatt/crafty/source/crafty-24.0.zip
+	source = http://www.cis.uab.edu/hyatt/crafty/book/book.bin
+	source = http://www.cis.uab.edu/hyatt/crafty/book/books.bin
+	source = copyright
+	md5sums = 51429d18732e86c80c6ade2af06a92a6
+	md5sums = 6d527840579904bf0e0b0a456a580a9b
+	md5sums = 966a852a2ccd3c32e9167061592928d3
+	md5sums = 438cec9f32fb79f58822f97cf64e7afb
+
+pkgname = crafty
+
