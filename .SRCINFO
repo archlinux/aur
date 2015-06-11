@@ -1,0 +1,19 @@
+pkgbase = gofish
+	pkgdesc = Simple gopher/web server with HTTP support
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://gofish.sourceforge.net/
+	install = gofish.install
+	arch = i686
+	arch = x86_64
+	license = GPL-2
+	provides = gopherd
+	backup = etc/gofish.conf
+	backup = etc/gofish-www.conf
+	source = http://downloads.sourceforge.net/gofish/gofish-1.2.tar.gz
+	source = gopherd.rc.d
+	md5sums = a44fc268354ec97324fa25572910c412
+	md5sums = 23ff978124baeec51950beb9ff2973ae
+
+pkgname = gofish
+

@@ -1,0 +1,27 @@
+post_install() {
+  echo -n "Adding gopher system group... "
+  groupadd -g 41 gopher && echo "done."
+
+  echo -n "Adding gopher system user... "
+  useradd -g 41 -u 41 -d /var/gopher \
+    -s /bin/false gopher && echo "done."
+  passwd -l gopher &> /dev/null
+
+  post_upgrade $1
+}
+
+post_upgrade() {
+  echo -n "Refreshing directory caches... "
+  mkcache -r &> /dev/null && echo "done."
+}
+
+post_remove() {
+  echo -n  "Removing gopher system user... "
+  userdel gopher  &> /dev/null && echo "done."
+  echo -n "Removing gopher system group... "
+  groupdel gopher &> /dev/null && echo "done."
+}
+
+op=$1
+shift
+$op $*
