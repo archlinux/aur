@@ -1,0 +1,36 @@
+From 9fc57b8f4f3e4e88f7b130ecf75c1bee46b8e797 Mon Sep 17 00:00:00 2001
+From: Christian Hesse <eworm@leda.eworm.de>
+Date: Wed, 29 Jan 2014 11:59:09 +0100
+Subject: [PATCH 1/1] fix tests if scp is not installed
+
+---
+ regress/multiplex.sh | 6 +++++-
+ 1 file changed, 5 insertion(+), 1 deletion(-)
+
+diff --git a/regress/multiplex.sh b/regress/multiplex.sh
+index 3e697e6..3b49b5b 100644
+--- a/regress/multiplex.sh
++++ b/regress/multiplex.sh
+@@ -12,6 +12,10 @@ fi
+ 
+ P=3301  # test port
+ 
++SRC=$(dirname ${SCRIPT})
++cp ${SRC}/scp-ssh-wrapper.sh ${OBJ}/scp-ssh-wrapper.scp
++chmod 755 ${OBJ}/scp-ssh-wrapper.scp
++
+ wait_for_mux_master_ready()
+ {
+ 	for i in 1 2 3 4 5; do
+@@ -66,7 +66,7 @@ cmp ${DATA} ${COPY}		|| fail "sftp: corrupted copy of ${DATA}"
+ 
+ rm -f ${COPY}
+ trace "scp transfer over multiplexed connection and check result"
+-${SCP} -S ${SSH} -F $OBJ/ssh_config -oControlPath=$CTL otherhost:${DATA} ${COPY} >>$TEST_REGRESS_LOGFILE 2>&1
++${SCP} -S ${OBJ}/scp-ssh-wrapper.scp -F $OBJ/ssh_config -oControlPath=$CTL otherhost:${DATA} ${COPY} >>$TEST_REGRESS_LOGFILE 2>&1
+ test -f ${COPY}			|| fail "scp: failed copy ${DATA}" 
+ cmp ${DATA} ${COPY}		|| fail "scp: corrupted copy of ${DATA}"
+ 
+-- 
+1.8.5.3
+
