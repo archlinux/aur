@@ -1,7 +1,7 @@
 # Maintainer: Christian Mauderer <c_mauderer[at]yahoo[dot]de>
 pkgname=stlink-git
-pkgver=20121130
-pkgrel=6
+pkgrel=7
+pkgver=r553.c84d8fa
 pkgdesc="stm32 discovery line linux programmer."
 arch=('i686' 'x86_64')
 url="https://github.com/texane/stlink"
@@ -12,44 +12,34 @@ conflicts=('stlink')
 provides=('stlink')
 install='stlink-git.install'
 options=('!makeflags')
+source=("${pkgname}"::'git+https://github.com/texane/stlink.git')
+md5sums=('SKIP')
 
-_gitroot="https://github.com/texane/stlink"
-_gitname="stlink"
+pkgver() {
+	cd "${srcdir}/${pkgname}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
-	cd "${srcdir}"
-
-	msg "Connecting to GIT server...."
-	if [ -d ${_gitname} ] ; then
-		cd ${_gitname} && git pull origin
-		msg "The local files are updated."
-	else
-		git clone --depth=1 ${_gitroot} ${_gitname}
-	fi
-	msg "GIT checkout done or server timeout"
-
-	msg "Create working copy"
-	# do not copy over the .git folder
-	rm -rf "${srcdir}/${_gitname}-build"
-	mkdir "${srcdir}/${_gitname}-build"
-	cd "${srcdir}/${_gitname}" && ls -A | grep -v .git | xargs -d '\n' cp -r -t ../${_gitname}-build
-
-	msg "Start actual build"
-	cd "${srcdir}/${_gitname}-build"
+	cd "${srcdir}/${pkgname}"
 	./autogen.sh
-	./configure
+	./configure --prefix="/usr/"
 	make
 } 
 
 package() {
-	cd "${srcdir}/${_gitname}-build"
-	install -Dm644 "stlink_v1.modprobe.conf" "${pkgdir}/etc/modprobe.d/stlink_v1.modprobe.conf"
-	install -Dm644 "49-stlinkv1.rules" "${pkgdir}/etc/udev/rules.d/49-stlinkv1.rules"
-	install -Dm644 "49-stlinkv2.rules" "${pkgdir}/etc/udev/rules.d/49-stlinkv2.rules"
-	install -Dm755 "st-flash" "${pkgdir}/usr/bin/st-flash"
-	install -Dm755 "st-util" "${pkgdir}/usr/bin/st-util"
-	install -Dm644 "LICENSE" "${pkgdir}/usr/share/doc/${pkgname}/LICENSE"
-	install -Dm644 "README" "${pkgdir}/usr/share/doc/${pkgname}/README"
-	install -Dm644 "ACKNOWLEDGMENTS" "${pkgdir}/usr/share/doc/${pkgname}/ACKNOWLEDGMENTS"
+	cd "${srcdir}/${pkgname}"
+
+	# install binaries
+	make DESTDIR="$pkgdir" install
+
+	# install additional files
+	install -Dm644 "stlink_v1.modprobe.conf"   "${pkgdir}/etc/modprobe.d/stlink_v1.modprobe.conf"
+	install -Dm644 "49-stlinkv1.rules"         "${pkgdir}/etc/udev/rules.d/49-stlinkv1.rules"
+	install -Dm644 "49-stlinkv2.rules"         "${pkgdir}/etc/udev/rules.d/49-stlinkv2.rules"
+	install -Dm644 "LICENSE"                   "${pkgdir}/usr/share/doc/${pkgname}/LICENSE"
+	install -Dm644 "README"                    "${pkgdir}/usr/share/doc/${pkgname}/README"
+	install -Dm644 "ACKNOWLEDGMENTS"           "${pkgdir}/usr/share/doc/${pkgname}/ACKNOWLEDGMENTS"
+	install -Dm644 "AUTHORS"                   "${pkgdir}/usr/share/doc/${pkgname}/AUTHORS"
 	install -Dm644 "doc/tutorial/tutorial.pdf" "${pkgdir}/usr/share/doc/${pkgname}/tutorial.pdf"
 }
