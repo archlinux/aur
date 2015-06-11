@@ -1,7 +1,7 @@
 pkgbase = uwm-git
 	pkgdesc = Micro (u) Window Manager
-	pkgver = 0.30.10
-	pkgrel = 6
+	pkgver = 0.30.11
+	pkgrel = 1
 	url = http://uwm.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -18,8 +18,10 @@ pkgbase = uwm-git
 	conflicts = uwm
 	backup = usr/share/X11/uwm/system.uwmrc
 	source = uwm-git::git://git.code.sf.net/p/uwm/code
+	source = arrayextern.patch
 	source = uwm.desktop
 	md5sums = SKIP
+	md5sums = e808fdf6d91ad062d0234ee72f30e4e1
 	md5sums = a16c73faeab8c1fc3c74f3320776789a
 
 pkgname = uwm-git
