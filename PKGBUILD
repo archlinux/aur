@@ -1,25 +1,30 @@
-# Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
-# Contributor: 
+# Maintainer: Chris Foster <cdbfoster@gmail.com>
+# Contributor: Josip Ponjavic
 
 pkgname=glass-wm-git
-pkgver=r249.58dce10
+pkgver=0.1.r4.g351cb77
 pkgrel=1
-pkgdesc="Glass is a small, extensible, window manager."
-arch=('x86_64' 'i686')
+pkgdesc="A small, extensible, window manager."
+arch=('i686' 'x86_64')
 url="https://github.com/cdbfoster/glass"
 license=('GPL3')
-depends=('xcb-util-wm' 'pango' 'xcb-util-keysyms' 'xcb-util')
-makedepends=('git' 'cmake')
-conflicts=("${pkgname%-*}")
+depends=('pango'
+         'xcb-util'
+         'xcb-util-cursor'
+         'xcb-util-keysyms'
+         'xcb-util-wm')
+makedepends=('cmake'
+             'git'
+             'pkg-config')
 provides=("${pkgname%-*}")
+conflicts=("${pkgname%-*}")
 install="${pkgname%-*}.install"
 source=("${pkgname%-*}::git+$url.git" 'glass-wm.desktop')
 md5sums=('SKIP' 'a2c7c82c3a2348aabfc7321bbd4b08e8')
 
 pkgver() {
     cd "${pkgname%-*}"
-
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/^v//'
 }
 
 prepare() {
@@ -27,14 +32,14 @@ prepare() {
 }
 
 build() {
-    cd "build"
+    cd build
 
-    cmake ../${pkgname%-*}
+    cmake -DCMAKE_BUILD_TYPE=Release "../${pkgname%-*}"
     make
 }
 
 package() {
-    install -Dm755 "$srcdir/build/glass" "$pkgdir/usr/bin/glass-wm"
+    install -Dm755 "$srcdir/build/glass-wm" "$pkgdir/usr/bin/glass-wm"
     install -Dm644 "$srcdir/${pkgname%-*}.desktop" \
         "$pkgdir/usr/share/xsessions/${pkgname%-*}.desktop"
 }
