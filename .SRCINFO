@@ -1,0 +1,38 @@
+pkgbase = python-geocoder-git
+	pkgver = geocoder.r507.a40d6af
+	pkgrel = 2
+	url = https://github.com/DenisCarriere/geocoder
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	makedepends = flake8
+	makedepends = python2-flake8
+	makedepends = python-nose
+	makedepends = python2-nose
+	makedepends = python-tox
+	makedepends = python2-tox
+	makedepends = python-requests
+	makedepends = python2-requests
+	makedepends = python-ratelim-git
+	makedepends = python2-ratelim-git
+	source = git+https://github.com/DenisCarriere/geocoder.git
+	sha256sums = SKIP
+
+pkgname = python-geocoder-git
+	pkgdesc = A pure Python 3 Geocoding module made easy. Supports ArcGIS, Bing,CanadaPost,FreeGeoIP Geocoder.ca, Geonames, Google, HERE, MapQuest, MaxMind, OpenCage, OpenStreetMap, GeoOttawa, TomTom, Yahoo )
+	depends = python
+	depends = python-requests
+	depends = python-ratelim-git
+	provides = python-geocoder
+	conflicts = python-geocoder
+
+pkgname = python2-geocoder-git
+	pkgdesc = A pure Python 2 Geocoding module made easy. Supports ArcGIS, Bing,CanadaPost,FreeGeoIP Geocoder.ca, Geonames, Google, HERE, MapQuest, MaxMind, OpenCage, OpenStreetMap, GeoOttawa, TomTom, Yahoo )
+	depends = python2
+	depends = python2-requests
+	depends = python2-ratelim-git
+	provides = python2-geocoder
+	conflicts = python2-geocoder
+
