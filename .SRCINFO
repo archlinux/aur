@@ -1,0 +1,19 @@
+pkgbase = lib32-libcurl-gnutls
+	pkgdesc = An URL retrieval utility and library
+	pkgver = 7.42.1
+	pkgrel = 0
+	url = http://curl.haxx.se
+	arch = x86_64
+	license = custom
+	makedepends = gcc-multilib
+	depends = lib32-libssh2
+	depends = lib32-gnutls
+	options = !libtool
+	options = !strip
+	source = http://curl.haxx.se/download/curl-7.42.1.tar.gz
+	source = http://curl.haxx.se/download/curl-7.42.1.tar.gz.asc
+	md5sums = 8df5874c4a67ad55496bf3af548d99a2
+	md5sums = SKIP
+
+pkgname = lib32-libcurl-gnutls
+
