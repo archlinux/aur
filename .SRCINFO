@@ -1,0 +1,17 @@
+pkgbase = zaw-git
+	pkgdesc = zsh anything.el-like widget
+	pkgver = r179.c3308b6
+	pkgrel = 1
+	url = https://github.com/zsh-users/zaw
+	install = zaw.install
+	arch = any
+	license = custom
+	makedepends = git
+	depends = zsh
+	provides = zaw
+	conflicts = zaw
+	source = git+https://github.com/zsh-users/zaw.git
+	sha256sums = SKIP
+
+pkgname = zaw-git
+

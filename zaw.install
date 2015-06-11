@@ -1,0 +1,14 @@
+post_install() {
+  echo "Before using this you need to add it to your .zshrc"
+  echo
+  echo "For ZSH:"
+  echo "echo 'source /usr/share/zaw/zaw.zsh' >> ~/.zshrc && source ~/.zshrc"
+  echo
+  echo "1) Trigger zaw by pressing Ctrl-x ; (^x;)'"
+  echo "2) select source and press enter"
+  echo "3) filter items with zsh patterns seperated by spaces, use ^N, ^P and select one"
+  echo "4) execute action by pressing enter key or press Meta-enter for alternative action"
+  echo "   instead, press tab key and select action you want to execute"
+}
+
+
