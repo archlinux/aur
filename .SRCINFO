@@ -1,0 +1,41 @@
+pkgbase = xgboost-git
+	pkgver = r1639.00a8076
+	pkgrel = 2
+	url = https://github.com/tqchen/xgboost
+	arch = x86_64
+	license = APACHE
+	makedepends = git
+	source = git+https://github.com/tqchen/xgboost.git
+	sha256sums = SKIP
+
+pkgname = xgboost-git
+	pkgdesc = An optimized general purpose gradient boosting library. Which is parallelized using OpenMP. It implements machine learning algorithm under gradient boosting framework, including generalized linear model and gradient boosted regression tree
+	depends = python
+	depends = bash
+	optdepends = python-xgboost-git: Python 3 Wrapper
+	optdepends = python2-xgboost-git: Python 2 Wrapper
+	provides = xgboost
+	conflicts = xgboost
+
+pkgname = python-xgboost-git
+	pkgdesc = XGBoost Python 3 wrapper
+	depends = xgboost
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-setuptools
+	depends = bash
+	provides = python-xgboost
+	conflicts = python-xgboost
+
+pkgname = python2-xgboost-git
+	pkgdesc = XGBoost Python 2 wrapper
+	depends = xgboost
+	depends = python2
+	depends = python2-numpy
+	depends = python2-scipy
+	depends = python2-setuptools
+	depends = bash
+	provides = python2-xgboost
+	conflicts = python2-xgboost
+
