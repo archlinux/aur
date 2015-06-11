@@ -1,0 +1,16 @@
+pkgbase = nullidentdmod
+	pkgdesc = Minimal identd server with customizable userid
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://web.craft.net.br/NullidentdMod/
+	arch = any
+	license = GPL
+	conflicts = oidentd
+	conflicts = nullidentd
+	conflicts = pindetd
+	conflicts = nullidentdmod-git
+	source = https://github.com/BlackXT/nullidentdmod/archive/v1.1.tar.gz
+	sha256sums = d7f6553df72b593aaf1fcbdb489bf4a2a6e93caeff56d0c0182316c14bd0049e
+
+pkgname = nullidentdmod
+
