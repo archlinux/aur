@@ -1,22 +1,22 @@
 # Maintainer: James An <james@jamesan.ca>
 
-pkgname=speedtest-cli-git
-_gitname=speedtest-cli
-pkgver=0.3.2.r2.gffd2c7f
+_pkgname=speedtest-cli
+pkgname="$_pkgname-git"
+pkgver=0.3.2.r12.g514b310
 pkgrel=1
 pkgdesc='Command line interface for testing internet bandwidth using speedtest.net - git devel branch'
 arch=('any')
-url='https://github.com/sivel/speedtest-cli'
+url="https://github.com/sivel/$_pkgname"
 license=('Apache')
 depends=('python')
 makedepends=('git' 'python-setuptools')
-provides=($_gitname)
-provides=($_gitname)
-source=("git+https://github.com/sivel/speedtest-cli.git#branch=devel")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$_pkgname"::"git+https://github.com/sivel/$_pkgname.git#branch=devel")
 md5sums=('SKIP')
 
 pkgver() {
-    cd $_gitname
+    cd $_pkgname
     (
         set -o pipefail
         git describe --long --tag | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
@@ -25,7 +25,7 @@ pkgver() {
 }
 
 package(){
-    cd $_gitname
+    cd $_pkgname
 
     python setup.py install install --root="$pkgdir/" --optimize=1
 }
