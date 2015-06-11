@@ -2,9 +2,9 @@
 
 pkgname=semantik
 pkgver=0.9.4
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
-url="https://code.google.com/p/semantik/"
+url="https://ita1024.github.io/semantik/"
 makedepends=('waf')
 license=('GPL')
 source=("http://ftp.waf.io/pub/release/${pkgname}-${pkgver}.tar.bz2" 'install')

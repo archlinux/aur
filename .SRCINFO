@@ -1,8 +1,8 @@
 pkgbase = semantik
 	pkgdesc = A mindmapping-like tool for document generation (reports, thesis, etc)
 	pkgver = 0.9.4
-	pkgrel = 1
-	url = https://code.google.com/p/semantik/
+	pkgrel = 2
+	url = https://ita1024.github.io/semantik/
 	install = install
 	arch = i686
 	arch = x86_64
