@@ -1,0 +1,13 @@
+pkgbase = natch
+	pkgdesc = A software solving chess proof games
+	pkgver = 2.5Beta
+	pkgrel = 1
+	url = http://natch.free.fr/Natch.html
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	source = http://natch.free.fr/Natch/Natch-2.5Beta.tar.gz
+	md5sums = 95065310b1d5ee2a9ebf85111c55399b
+
+pkgname = natch
+
