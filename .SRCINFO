@@ -1,0 +1,33 @@
+pkgbase = apng-utils
+	pkgdesc = apngasm for assembling apng files, apngdis for disassembling apng files, and gif2apng/apng2gif for converting.
+	pkgver = 2.9
+	pkgrel = 3
+	url = http://sourceforge.net/projects/apngdis/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = libpng
+	depends = gcc-libs
+	provides = apngasm
+	provides = apngdis
+	provides = gif2apng
+	provides = apng2gif
+	noextract = gif2apng-1.9-src.zip
+	noextract = apngasm-2.9-src.zip
+	noextract = apng2gif-1.7-src.zip
+	noextract = apngdis-2.8-src.zip
+	source = http://sourceforge.net/projects/apngdis/files/2.8/apngdis-2.8-src.zip
+	source = http://sourceforge.net/projects/apngasm/files/2.9/apngasm-2.9-src.zip
+	source = http://sourceforge.net/projects/gif2apng/files/1.9/gif2apng-1.9-src.zip
+	source = http://sourceforge.net/projects/apng2gif/files/1.7/apng2gif-1.7-src.zip
+	md5sums = 2e8a430ae2a8c544af4965840d9fad23
+	md5sums = f2619444e125157ce22438e963a80c0b
+	md5sums = 4e7336fe6b71c18ac830bb2977204819
+	md5sums = 9877249603e7d01bc1970130a40cd035
+	sha256sums = 58f5082025f3e97d9072dfe3fbd3abc43252ee118a7463209b65d05b8fd71741
+	sha256sums = 5dfd34c9a560da81f91d37b891e23761c74659fe36e04ab2a46696562a9ed876
+	sha256sums = 3b21308e935d799b3ffb4a86c6e00ffa4cb9b3f72f52d58d51c66eb0574ae7d2
+	sha256sums = 6c7b2cce851378f2fc8f6b490ce098e9cf0038aa05da7099771c8be94620e6ca
+
+pkgname = apng-utils
+
