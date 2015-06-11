@@ -1,0 +1,14 @@
+[Unit]
+Description=Tideways Profiler Daemon
+After=network.target
+
+[Service]
+Type=simple
+User=tideways
+Group=tideways
+ExecStart=/usr/bin/tideways-daemon -pidfile=/run/tideways/tideways-daemon.pid -log=/var/log/tideways/daemon.log
+PIDFile=/run/tideways/tideways-daemon.pid
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

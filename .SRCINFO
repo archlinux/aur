@@ -1,0 +1,20 @@
+pkgbase = tideways-daemon
+	pkgdesc = Tideways Profiler Daemon
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = https://tideways.io
+	install = tideways-daemon.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = https://s3-eu-west-1.amazonaws.com/qafoo-profiler/downloads/tideways-daemon_linux_i386-1.2.4.tar.gz
+	source = tideways-daemon.service
+	source = tmpfiles.conf
+	source = sysusers.conf
+	sha256sums = b83057204db31d82f2294e437d55fb0326100e04b34e092506079f3938c362c9
+	sha256sums = e30dba70919aefb00d8971da9cda001bb850e29d0025246ab76bec26f33bba06
+	sha256sums = 520b99347e7ba822235c03d2791bc17b12b899bcaaed323ca66dd42a55675f40
+	sha256sums = 1f50f02fa3d71f42c73d254f1d4667d5517794fec8c7d478abdd9e8f8e35018a
+
+pkgname = tideways-daemon
+

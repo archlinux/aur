@@ -1,0 +1,18 @@
+post_install() {
+    systemd-sysusers tideways-daemon.conf
+    systemd-tmpfiles --create tideways-daemon.conf
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+  if getent passwd tideways >/dev/null 2>&1; then
+    userdel tideways
+  fi
+
+  if getent group tideways >/dev/null 2>&1; then
+    groupdel tideways
+  fi
+}
