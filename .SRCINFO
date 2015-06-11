@@ -1,0 +1,17 @@
+pkgbase = symlinks
+	pkgdesc = Scan and change symbolic links
+	pkgver = 1.4.3
+	pkgrel = 2
+	url = https://github.com/brandt/symlinks
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = MIT
+	depends = glibc
+	conflicts = symlinks-git
+	source = https://github.com/brandt/symlinks/archive/v1.4.3.tar.gz
+	sha1sums = f4f0115b0c468ac4a44a4bfe378f1921383c8f6d
+	sha256sums = 27105b2898f28fd53d52cb6fa77da1c1f3b38e6a0fc2a66bf8a25cd546cb30b2
+
+pkgname = symlinks
+
