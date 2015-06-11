@@ -1,0 +1,96 @@
+pkgbase = openss7-git
+	pkgdesc = OpenSS7 Fast-STREAMS and Protocol Suites
+	pkgver = 1.1.8.7.ge3ccfa1
+	pkgrel = 1
+	url = http://www.openss7.org
+	arch = x86_64
+	arch = i686
+	license = AGPL3
+	makedepends = doxygen
+	makedepends = gcc-gcj
+	makedepends = gcc-libs
+	makedepends = ghostscript
+	makedepends = gjdoc
+	makedepends = glibc
+	makedepends = gnupg
+	makedepends = gnuplot
+	makedepends = imagemagick
+	makedepends = latex2html
+	makedepends = linux
+	makedepends = linux-headers
+	makedepends = linux-lts
+	makedepends = linux-lts-headers
+	makedepends = lsof
+	makedepends = net-snmp
+	makedepends = openssl
+	makedepends = swig
+	makedepends = systemd
+	makedepends = tcl
+	makedepends = texlive-bin
+	makedepends = texlive-core
+	makedepends = transfig
+	makedepends = gawk
+	makedepends = java-environment
+	makedepends = lm_sensors
+	makedepends = popt
+	conflicts = openss7
+	conflicts = strigi
+	options = !emptydirs
+	options = ccache
+	options = !distcc
+	options = !makeflags
+	source = openss7-git::git+https://github.com/openss7/openss7.git
+	md5sums = SKIP
+
+pkgname = openss7-git
+	pkgdesc = OpenSS7 Fast-STREAMS and Protocol Suites
+	install = openss7-git.install
+	depends = net-snmp
+	depends = gawk
+	depends = lm_sensors
+	depends = popt
+	optdepends = perl-tk: for graphical utilities
+	optdepends = gtkdialog: for graphical utilities
+	provides = openss7
+	conflicts = openss7
+	conflicts = strigi
+	conflicts = lksctp-tools
+	conflicts = strace
+	options = !emptydirs
+	options = strip
+	options = !zipman
+	backup = etc/snmp/snmp.d/01openss7
+	backup = etc/sock2path.d/openss7
+
+pkgname = openss7-modules-git
+	pkgdesc = OpenSS7 Fast-STREAMS and protocol Suites ( Kernel Modules)
+	install = openss7-modules-git.install
+	depends = openss7-git
+	depends = linux=
+	provides = openss7-kernel=1.1.8.7.ge3ccfa1
+	provides = openss7-modules=1.1.8.7.ge3ccfa1
+	conflicts = openss7-modules
+	options = !emptydirs
+	options = !strip
+
+pkgname = openss7-modules-lts-git
+	pkgdesc = OpenSS7 Fast-STREAMS and protocol Suites ( Kernel Modules)
+	install = openss7-modules-lts-git.install
+	depends = openss7-git
+	depends = linux-lts=
+	provides = openss7-modules-git=1.1.8.7.ge3ccfa1
+	provides = openss7-kernel=1.1.8.7.ge3ccfa1
+	provides = openss7-modules-lts=1.1.8.7.ge3ccfa1
+	conflicts = openss7-modules-lts
+	options = !emptydirs
+	options = !strip
+
+pkgname = openss7-java-git
+	pkgdesc = OpenSS7 Fast-STREAMS and Protocol Suites (Java)
+	install = openss7-java-git.install
+	depends = openss7-git
+	depends = gcc-gcj
+	depends = java-environment
+	provides = openss7-java=1.1.8.7.ge3ccfa1
+	conflicts = openss7-java
+

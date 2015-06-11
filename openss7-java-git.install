@@ -1,0 +1,57 @@
+_post_jnilibs() {
+  echo ">>> Finishing JNI libraries..." >&2
+  if [[ -x usr/bin/libtool ]] ; then
+    libtool --mode=finish --quiet usr/lib/java
+  else
+    ldconfig -n usr/lib/java
+  fi
+}
+_post_gcjlibs() {
+  echo ">>> Finishing GCJ libraries..." >&2
+  if [[ -x usr/bin/libtool ]] ; then
+    libtool --mode=finish --quiet usr/lib/gcj/openss7
+  else
+    ldconfig -n usr/lib/gcj/openss7
+  fi
+}
+_post_gcjmaps() {
+  echo ">>> Rebuilding GCJ maps..." >&2
+  if [[ -x usr/bin/rebuild-gcj-db ]] ; then
+    rebuild-gcj-db
+  elif [[ -x usr/bin/gcj-dbtool ]] ; then
+    db=$(gcj-dbtool -p usr/lib)
+    if [[ -n "$db" ]] ; then
+      dirname "$db"|xargs mkdir -p
+      gcj-dbtool -n "${db}.tmp" 64
+      find usr/lib/gcj -follow -name '*.db' -print0|\
+        xargs -0 gcj-dbtool -m "${db}.tmp" "${db}.tmp"
+      mv -f -- "${db}.tmp" "${db}"
+    fi
+  fi
+}
+_post_jarfile() {
+  echo ">>> Updating JAVA repositories..." >&2
+  if [[ -x usr/bin/rebuild-jar-repository ]]; then
+    rebuild-jar-repository usr/share/java
+  fi
+}
+post_remove() {
+  _post_jnilibs || :
+  _post_gcjlibs || :
+  _post_gcjmaps || :
+  _post_jarfile || :
+}
+post_upgrade() {
+  _post_jnilibs || :
+  _post_gcjlibs || :
+  _post_gcjmaps || :
+  _post_jarfile || :
+}
+post_install() {
+  _post_jnilibs || :
+  _post_gcjlibs || :
+  _post_gcjmaps || :
+  _post_jarfile || :
+}
+
+# vim: sw=2 et

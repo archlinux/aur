@@ -1,0 +1,15 @@
+post_install() {
+    EXTRAMODULES='extramodules-3.18-ARCH'
+    depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
+}
+
+post_upgrade() {
+    EXTRAMODULES='extramodules-3.18-ARCH'
+    depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
+}
+
+post_remove() {
+    EXTRAMODULES='extramodules-3.18-ARCH'
+    depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
+}
+

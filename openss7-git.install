@@ -1,0 +1,97 @@
+infodir=usr/share/info
+bindir=usr/bin
+manuals=( ATM carrier cci cdi chi cnam dlpi dlpi_porting FR hlr INET ISDN
+          lab libxnet libxnsl lli mapi MG mg mtpi mxi nli npi npi_mtp
+          npi_sccp openss7 OSI PHYS porting sbc sccpi sdli sdti sg sgp
+          SIGTRAN sli SPG SPG2 ss SS7 ssg STREAMS STREAMS_FAQ tci tpi
+          tpi_sccp tri TTY VOIP voip wan X25 x25_porting x400p xcc xmap
+          XNS xti_sccp )
+
+post_install() {
+  for n in ${manuals[@]} ; do
+    for e in '' '.gz' '.bz2' '.lzma' '.xz' ; do
+      [ -f $infodir${n}.info${e} ] || continue
+      install-info --info-dir=$infodir $infodir/${n}.info${e} 2>&1 || :
+      break
+    done
+  done
+  systemctl --system daemon-reload
+  ldconfig -n usr/lib
+  [[ -d usr/lib32 ]] && ldconfig -n usr/lib32
+  locale-gen
+  update-netconfig
+  update-sock2path
+  update-snmpconf --install
+  if [[ -x usr/bin/tclsh ]]; then
+    for d in `find usr/lib/OpenSS71.1 -mindepth 1 -maxdepth 1 -type d` ; do
+      echo -e "pkg_mkIndex $d\\nexit" | tclsh || :
+    done
+  fi
+}
+
+pre_upgrade() {
+  for n in ${manuals[@]} ; do
+    for e in '' '.gz' '.bz2' '.lzma' '.xz'; do
+      [ -f $infodir/${n}.info${e} ] || continue
+      install-info --delete --info-dir=$infodir $infodir/${n}.info${e} >/dev/null 2>&1 || :
+      break
+    done
+  done
+}
+
+post_upgrade() {
+  for n in ${manuals[@]} ; do
+    for e in '' '.gz' '.bz2' '.lzma' '.xz' ; do
+      [ -f $infodir${n}.info${e} ] || continue
+      install-info --info-dir=$infodir $infodir/${n}.info${e} 2>&1 || :
+      break
+    done
+  done
+  systemctl --system daemon-reload
+  ldconfig -n usr/lib
+  [[ -d usr/lib32 ]] && ldconfig -n usr/lib32
+  locale-gen
+  update-netconfig
+  update-sock2path
+  update-snmpconf --install
+  if [[ -x usr/bin/tclsh ]]; then
+    for d in `find usr/lib/OpenSS71.1 -mindepth 1 -maxdepth 1 -type d` ; do
+      echo -e "pkg_mkIndex $d\\nexit" | tclsh || :
+    done
+  fi
+}
+
+pre_remove() {
+  rm -f -- etc/nslconfig.d/openss7
+  rmdir -p -- etc/nslconfig.d >/dev/null 2>&1 || :
+  update-netconfig
+  rm -f -- etc/sock2path.d/openss7
+  rmdir -p -- etc/sock2path.d >/dev/null 2>&1 || :
+  update-sock2path
+  rm -f -- etc/snmp/snmp.d/*openss7
+  rmdir -p -- etc/snmp/snmp.d >/dev/null 2>&1 || :
+  update-snmpconf --remove
+  for n in ${manuals[@]} ; do
+    for e in '' '.gz' '.bz2' '.lzma' '.xz'; do
+      [ -f $infodir/${n}.info${e} ] || continue
+      install-info --delete --info-dir=$infodir $infodir/${n}.info${e} >/dev/null 2>&1 || :
+      break
+    done
+  done
+}
+
+post_remove() {
+  systemctl --system daemon-reload
+  ldconfig -n usr/lib
+  [[ -d usr/lib32 ]] && ldconfig -n usr/lib32
+  files="usr/lib/OpenSS71.1/pkgIndex.tcl usr/lib/OpenSS71.1/*/pkgIndex.tcl"
+  for f in $files; do
+    [ -f "$f" ] || continue
+    rm -f -- "$f" || :
+    if [ -d "`dirname $f`" ]; then
+      rmdir -p -- "`dirname $f`" 2>/dev/null || :
+    fi
+  done
+}
+
+# vim: sw=2 et
