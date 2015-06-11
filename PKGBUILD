@@ -3,7 +3,7 @@
 pkgname=pcsc-cyberjack
 pkgver=3.99.5_SP05
 _pkgver=3.99.5final.SP05
-pkgrel=4
+pkgrel=5
 pkgdesc="PCSC Driver for Reiner SCT cyberjack Cardreaders"
 arch=('i686' 'x86_64')
 url="http://support.reiner-sct.de/"
@@ -22,6 +22,7 @@ build() {
 
     ./configure \
         --prefix=/usr \
+        --mandir=/usr/share/man/man8 \
         --sysconfdir=/etc/"${pkgname}"  \
         --enable-udev \
         --with-usbdropdir=$(pkg-config libpcsclite --variable=usbdropdir)

@@ -1,7 +1,7 @@
 pkgbase = pcsc-cyberjack
 	pkgdesc = PCSC Driver for Reiner SCT cyberjack Cardreaders
 	pkgver = 3.99.5_SP05
-	pkgrel = 4
+	pkgrel = 5
 	url = http://support.reiner-sct.de/
 	arch = i686
 	arch = x86_64
