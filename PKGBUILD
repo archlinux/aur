@@ -1,5 +1,6 @@
-# $Id: PKGBUILD 205494 2014-02-06 05:24:01Z bisson $
-# Maintainer: Gaetan Bisson <bisson@archlinux.org>
+# $Id$
+# Maintainer: Benjamin Robin <dev@benjarobin.fr>
+# Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: James Rayner <james@archlinux.org>
 # Contributor: Partha Chowdhury <kira.laucas@gmail.com>
@@ -7,7 +8,7 @@
 pkgname=conky-audacious
 _pkgname=conky
 pkgver=1.9.0
-pkgrel=4
+pkgrel=7
 pkgdesc='Lightweight system monitor for X'
 url='http://conky.sourceforge.net/'
 license=('BSD' 'GPL')
@@ -35,6 +36,7 @@ build() {
 		--enable-imlib2 \
 		--enable-wlan \
 		--enable-audacious
+
 	make
 }
 

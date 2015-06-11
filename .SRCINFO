@@ -1,7 +1,7 @@
 pkgbase = conky-audacious
 	pkgdesc = Lightweight system monitor for X
 	pkgver = 1.9.0
-	pkgrel = 4
+	pkgrel = 7
 	url = http://conky.sourceforge.net/
 	arch = i686
 	arch = x86_64
