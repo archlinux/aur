@@ -1,0 +1,17 @@
+pkgbase = beamer-theme-cwru-git
+	pkgdesc = Beamer theme for Case Western Reserve University.
+	pkgver = r10.9482287
+	pkgrel = 2
+	url = https://github.com/mruffalo/beamer-theme-cwru/tree/master/theme
+	install = beamer-theme-cwru-git.install
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = texlive-core
+	provides = beamer-theme-cwru
+	conflicts = beamer-theme-cwru
+	source = git://github.com/mruffalo/beamer-theme-cwru.git
+	md5sums = SKIP
+
+pkgname = beamer-theme-cwru-git
+
