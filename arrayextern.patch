@@ -1,0 +1,51 @@
+diff --git a/core-array.c b/core-array.c
+index 906e6a1..ad0b844 100644
+--- a/core-array.c
++++ b/core-array.c
+@@ -296,35 +296,34 @@ static const int ArrayBurstSize = 256;
+ 
+ // -------------------------------------------------------------------------
+ 
+-extern inline void *AllocMem(size_t);
+-extern inline void FreeMem(void *, size_t);
+-
+-#ifndef AllocMem
+-
++#ifdef AllocMem
++extern
++#else
++static
++#endif
+ /**
+ **	better malloc
+ **
+ **	@param size	size of memory area to allocate
+ */
+-static inline void *AllocMem(size_t size)
++inline void *AllocMem(size_t size)
+ {
+     return malloc(size);
+ }
+ 
++#ifdef FreeMem
++extern
++#else
++static
+ #endif
+-
+-#ifndef FreeMem
+-
+ /**
+ **	better free
+ */
+-static inline void FreeMem(void *data, __attribute__ ((unused)) size_t size)
++inline void FreeMem(void *data, __attribute__ ((unused)) size_t size)
+ {
+     free(data);
+ }
+ 
+-#endif
+-
+ // -------------------------------------------------------------------------
+ // Helper functions
+ 
