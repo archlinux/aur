@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Brickshooter
+Exec=brickshooter
+TryExec=brickshooter
+Icon=brickshooter
+Comment=A puzzle game where you'll have to clear an area from bricks.
+Terminal=false
+Type=Application
+Categories=Game;LogicGame;

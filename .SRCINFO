@@ -1,0 +1,22 @@
+pkgbase = brickshooter
+	pkgdesc = A small puzzle game where you'll have to clear the central area from blocks.
+	pkgver = 0.04
+	pkgrel = 2
+	url = http://linux.softpedia.com/get/GAMES-ENTERTAINMENT/Puzzle/brickshooter-37619.shtml
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl
+	depends = sdl_mixer
+	depends = sdl_image
+	source = http://mirror.amdmi3.ru/distfiles/brickshooter-0.04.tar.gz
+	source = brickshooter
+	source = brickshooter.desktop
+	source = brickshooter.png
+	md5sums = 9b2308e44591917b8d1f0b0382b7e878
+	md5sums = 2cc6383a4dec9ef7ca40a8c09d27bea8
+	md5sums = fccfdb36a7499184849a86410e9b3a46
+	md5sums = d3ad3f00689b0422c6db3ef9359c1acc
+
+pkgname = brickshooter
+
