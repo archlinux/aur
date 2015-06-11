@@ -1,0 +1,16 @@
+pkgbase = wmbluecpu
+	pkgdesc = A CPU monitoring dockapp (for WindowMaker, OpenBOx, AfterStep and so on)
+	pkgver = 4
+	pkgrel = 1
+	url = http://github.com/vampirefrog/wmbluecpu
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libxpm
+	depends = libxft
+	source = wmbluecpu::git+https://github.com/vampirefrog/wmbluecpu.git
+	md5sums = SKIP
+
+pkgname = wmbluecpu
+
