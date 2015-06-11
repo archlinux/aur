@@ -1,0 +1,16 @@
+pkgbase = haxe3-bin
+	pkgdesc = HaXe (pronounced as hex) is an open source programming language, multiple backends, mostly web-targeted.
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = http://haxe.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	conflicts = haxe-bin
+	conflicts = haxe
+	replaces = haxe
+	options = !strip
+	source = http://haxe.org/website-content/downloads/3.2.0/downloads/haxe-3.2.0-.tar.gz
+
+pkgname = haxe3-bin
+
