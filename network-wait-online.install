@@ -1,0 +1,22 @@
+
+## arg 1:  the new package version
+post_install() {
+    post_upgrade $1 0
+}
+
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+    echo ""
+    echo "To enable the service provided by this package, you need to run:"
+    echo "=> systemctl enable network-wait-online@address-to-wait.service"
+    echo "where 'address-to-wait' can be an IP or a domain..."
+    echo ""
+    echo "If the defaults options do not fit your need (timeout, method to wait...), "
+    echo "or if the service used to connect to the network is not dhcpcd@.service: "
+    echo "=> copy the service to '/etc/systemd/system/', "
+    echo "add desired options to the ExecStart= line, and changed the After= line."
+    echo "List of options can be provided by running: 'network-wait-online -h'"
+    echo ""
+}

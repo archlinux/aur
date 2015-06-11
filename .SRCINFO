@@ -1,0 +1,18 @@
+pkgbase = network-wait-online
+	pkgdesc = Network wait connection ready
+	pkgver = 1.0
+	pkgrel = 3
+	url = http://forums.archlinux.fr/topic12900.html
+	install = network-wait-online.install
+	arch = any
+	license = GPL
+	depends = iputils
+	depends = iproute2
+	depends = systemd
+	source = network-wait-online.sh
+	source = network-wait-online@.service
+	md5sums = 474bb67b387f65129a5dd28f15949ab9
+	md5sums = 6dcbded3675e36174921c2d6d162e837
+
+pkgname = network-wait-online
+
