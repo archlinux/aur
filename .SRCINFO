@@ -1,0 +1,19 @@
+pkgbase = wmfire2
+	pkgdesc = A WindowMaker dockapp that displays flames to monitor CPU, memory etc
+	pkgver = 1.2.4
+	pkgrel = 4
+	url = http://www.swanson.ukfsn.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libgtop
+	depends = gtk2
+	provides = wmfire
+	conflicts = wmfire
+	source = http://www.swanson.ukfsn.org/wmfire/wmfire-1.2.4.tar.gz
+	source = gtk2.patch
+	md5sums = e0f298a542ce784806d3e8d1f555e51b
+	md5sums = 9e84a18725988cc2864e7449e31a7414
+
+pkgname = wmfire2
+

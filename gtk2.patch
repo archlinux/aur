@@ -1,0 +1,28 @@
+diff -up src/wmfire-1.2.4/src/wmfire.c.orig src/wmfire-1.2.4/src/wmfire.c
+--- src/wmfire-1.2.4/src/wmfire.c.orig	2014-05-16 17:21:52.000000000 -0600
++++ src/wmfire-1.2.4/src/wmfire.c	2014-05-16 18:00:49.000000000 -0600
+@@ -628,10 +628,21 @@ make_wmfire_dockapp(void)
+ 	icon = gdk_pixmap_create_from_xpm_d(bm.win, NULL, NULL, icon_xpm);
+ 	gdk_window_set_icon(bm.win, bm.iconwin, icon, NULL);
+ 
+-	gdk_window_show(bm.win);
++	{
++		Window w, p, dummy1, *dummy2;
++		unsigned int dummy3;
++		Display *dpy = GDK_WINDOW_XDISPLAY(bm.win);
+ 
+-	/* Moved after gdk_window_show due to change in GTK 2.4 */
+-	XSetWMHints(GDK_WINDOW_XDISPLAY(bm.win), win, &wmhints);
++		XQueryTree(dpy, win, &dummy1, &p, &dummy2, &dummy3);
++		if (dummy2)
++			XFree(dummy2);
++		w = XCreateSimpleWindow(dpy, p, 0, 0, 1, 1, 0, 0, 0);
++		XReparentWindow(dpy, win, w, 0, 0);
++		gdk_window_show(bm.win);
++		XSetWMHints(dpy, win, &wmhints);
++		XReparentWindow(dpy, win, p, 0, 0);
++		XDestroyWindow(dpy, w);
++	}
+ 
+ 	if (bm.x > 0 || bm.y > 0)
+ 		gdk_window_move(bm.win, bm.x, bm.y);
