@@ -1,0 +1,22 @@
+pkgbase = libsearpc
+	pkgdesc = A simple and easy-to-use C language RPC framework (including both server side & client side) based on GObject System.
+	pkgver = 1.2.2
+	pkgrel = 8
+	url = https://github.com/haiwen/libsearpc/
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPLv3
+	depends = glib2>=2.16.0
+	depends = pacman>=4.1
+	depends = jansson>=2.2.1
+	depends = libtool>=1.4
+	optdepends = python2-simplejson
+	source = https://github.com/haiwen/libsearpc/archive/v3.0-latest.tar.gz
+	source = libsearpc.pc.patch
+	sha256sums = 56313771e0ad7dc075c4590b6a75daeb3939937b21716d82c91be2612133b8cd
+	sha256sums = aec39a303aaebc0777a22d8c53367f52f619654d63f62b362d75c1c599e632f4
+
+pkgname = libsearpc
+
