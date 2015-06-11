@@ -1,6 +1,6 @@
 pkgbase = gtkterm-git
 	pkgdesc = A gtk+ based serial port communication program
-	pkgver = 109.c62d7ce
+	pkgver = 90.0fa2adc
 	pkgrel = 1
 	url = https://fedorahosted.org/gtkterm/
 	install = gtkterm-git.install
@@ -10,12 +10,12 @@ pkgbase = gtkterm-git
 	makedepends = git
 	makedepends = intltool
 	makedepends = gnome-common
-	depends = gtk3
-	depends = vte3
+	depends = gtk2
+	depends = vte
 	depends = systemd
 	provides = gtkterm
 	conflicts = gtkterm
-	source = gtkterm::git+http://git.fedorahosted.org/git/gtkterm.git
+	source = gtkterm::git+http://git.fedorahosted.org/git/gtkterm.git#branch=0.99.7
 	md5sums = SKIP
 
 pkgname = gtkterm-git
