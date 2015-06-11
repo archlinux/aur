@@ -1,0 +1,15 @@
+pkgbase = wmbatteries
+	pkgdesc = a dockapp based on wmacpiload
+	pkgver = 0.1.3
+	pkgrel = 8
+	url = http://sourceforge.net/projects/wmbatteries/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	depends = libxext
+	source = http://downloads.sourceforge.net/project/wmbatteries/wmbatteries/wmbatteries-0.1.3/wmbatteries-0.1.3.tar.bz2
+	md5sums = ed74f6f0e3945731615e92efed00f4dd
+
+pkgname = wmbatteries
+
