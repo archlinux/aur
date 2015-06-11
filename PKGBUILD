@@ -4,7 +4,9 @@
 
 pkgname=emacs-pretest
 _pkgname=emacs
-pkgver=24.3.94
+pkgver=24.4rc1
+_pkgver=24.4
+_rc=-rc1
 pkgrel=1
 pkgdesc="The extensible, customizable, self-documenting real-time display editor -- pretest version"
 arch=('i686' 'x86_64')
@@ -14,21 +16,21 @@ depends=('librsvg' 'gpm' 'giflib' 'libxpm' 'libotf' 'm17n-lib' 'gtk3' 'hicolor-i
 install=emacs.install
 provides=("emacs==$pkgver")
 conflicts=('emacs')
-source=(ftp://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$pkgver.tar.xz{,.sig})
-md5sums=('00fabc2b64824f8824d0ed5a5b2cf216'
+source=(ftp://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$_pkgver$_rc.tar.xz{,.sig})
+md5sums=('ad487658ad7421ad8d7b5152192eb945'
          'SKIP')
-sha256sums=('5751cac3e1604ad100f9847ff8a429c1b0907b26032152c040e89f294e515bc2'
+sha256sums=('47e391170db4ca0a3c724530c7050655f6d573a711956b4cd84693c194a9d4fd'
             'SKIP')
 
 build() {
-  cd "$srcdir"/$_pkgname-$pkgver
+  cd "$srcdir"/$_pkgname-$_pkgver
   ac_cv_lib_gif_EGifPutExtensionLast=yes ./configure --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib \
     --localstatedir=/var --with-x-toolkit=gtk3 --with-xft
   make
 }
 
 package() {
-  cd "$srcdir"/$_pkgname-$pkgver
+  cd "$srcdir"/$_pkgname-$_pkgver
   make DESTDIR="$pkgdir" install
 
   # remove conflict with ctags package
@@ -37,7 +39,7 @@ package() {
   # remove conflict with texinfo
   rm "$pkgdir"/usr/share/info/info.info.gz
   # fix user/root permissions on usr/share files
-  find "$pkgdir"/usr/share/emacs/$pkgver -exec chown root:root {} \;
+  find "$pkgdir"/usr/share/emacs/$_pkgver -exec chown root:root {} \;
   # fix perms on /var/games
   chmod 775 "$pkgdir"/var/games
   chmod 775 "$pkgdir"/var/games/emacs
