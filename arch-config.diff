@@ -1,89 +1,188 @@
-diff -upr xrdp-git/instfiles/Makefile.am xrdp-git-new/instfiles/Makefile.am
---- xrdp-git/instfiles/Makefile.am	2015-04-24 16:38:02.092787754 -0700
-+++ xrdp-git-new/instfiles/Makefile.am	2015-04-24 16:47:21.346145399 -0700
-@@ -4,14 +4,16 @@ xrdp.service
- 
- SUBDIRS = \
-   pam.d \
--  init.d \
--  default \
-   pulse
- 
- if HAVE_SYSTEMD
- systemdsystemunit_DATA = \
-         xrdp-sesman.service \
-         xrdp.service
-+else
-+SUBDIRS+= \
-+  init.d \
-+  default
- endif
- 
- startscriptdir=$(sysconfdir)/xrdp
-@@ -35,5 +37,7 @@ startscript_DATA = \
- # must be tab below
- install-data-hook:
- 	chmod 755 $(DESTDIR)$(sysconfdir)/xrdp/xrdp.sh
--	chmod 755 $(DESTDIR)$(sysconfdir)/init.d/xrdp
--	sed -i 's|__BASE__|$(prefix)|' $(DESTDIR)$(sysconfdir)/init.d/xrdp;
-+	if [ -f $(DESTDIR)$(sysconfdir)/init.d/xrdp ]; then \
-+	  chmod 755 $(DESTDIR)$(sysconfdir)/init.d/xrdp \
-+	  sed -i 's|__BASE__|$(prefix)|' $(DESTDIR)$(sysconfdir)/init.d/xrdp; \
-+	fi
 diff -upr xrdp-git/instfiles/pam.d/xrdp-sesman xrdp-git-new/instfiles/pam.d/xrdp-sesman
---- xrdp-git/instfiles/pam.d/xrdp-sesman	2015-04-24 16:38:02.096121088 -0700
-+++ xrdp-git-new/instfiles/pam.d/xrdp-sesman	2015-04-24 16:44:57.272805802 -0700
-@@ -1,5 +1,9 @@
+--- xrdp-git/instfiles/pam.d/xrdp-sesman	2015-05-08 02:11:57.617641140 +0200
++++ xrdp-git-new/instfiles/pam.d/xrdp-sesman	2015-05-08 02:15:40.454759756 +0200
+@@ -1,5 +1,5 @@
  #%PAM-1.0
 -@include common-auth
 -@include common-account
 -@include common-session
 -@include common-password
-+#@include common-auth
-+#@include common-account
-+#@include common-session
-+#@include common-password
 +auth include system-auth
 +account include system-auth
 +password include system-auth
-+session include system-auth
++session include system-login
+diff -upr xrdp-git/instfiles/xrdp.service xrdp-git-new/instfiles/xrdp.service
+--- xrdp-git/instfiles/xrdp.service	2015-05-08 02:11:57.617641140 +0200
++++ xrdp-git-new/instfiles/xrdp.service	2015-05-08 02:15:40.458093047 +0200
+@@ -6,9 +6,8 @@ After=syslog.target network.target xrdp-
+ [Service]
+ Type=forking
+ PIDFile=/var/run/xrdp.pid
+-EnvironmentFile=/etc/sysconfig/xrdp
+-ExecStart=/usr/sbin/xrdp $XRDP_OPTIONS
+-ExecStop=/usr/sbin/xrdp $XRDP_OPTIONS --kill
++ExecStart=/usr/bin/xrdp
++ExecStop=/usr/bin/xrdp --kill
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff -upr xrdp-git/instfiles/xrdp-sesman.service xrdp-git-new/instfiles/xrdp-sesman.service
+--- xrdp-git/instfiles/xrdp-sesman.service	2015-05-08 02:11:57.617641140 +0200
++++ xrdp-git-new/instfiles/xrdp-sesman.service	2015-05-08 02:15:40.458093047 +0200
+@@ -6,9 +6,8 @@ StopWhenUnneeded=true
+ [Service]
+ Type=forking
+ PIDFile=/var/run/xrdp-sesman.pid
+-EnvironmentFile=/etc/sysconfig/xrdp
+-ExecStart=/usr/sbin/xrdp-sesman $SESMAN_OPTIONS
+-ExecStop=/usr/sbin/xrdp-sesman $SESMAN_OPTIONS --kill
++ExecStart=/usr/bin/xrdp-sesman
++ExecStop=/usr/bin/xrdp-sesman --kill
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff -upr xrdp-git/instfiles/xrdp.sh xrdp-git-new/instfiles/xrdp.sh
+--- xrdp-git/instfiles/xrdp.sh	2015-05-08 02:11:57.617641140 +0200
++++ xrdp-git-new/instfiles/xrdp.sh	2015-05-08 02:15:40.458093047 +0200
+@@ -17,7 +17,7 @@
+ # Description: starts xrdp
+ ### END INIT INFO
+ 
+-SBINDIR=/usr/local/sbin
++SBINDIR=/usr/bin
+ LOG=/dev/null
+ CFGDIR=/etc/xrdp
+ 
+diff -upr xrdp-git/sesman/sesman.ini xrdp-git-new/sesman/sesman.ini
+--- xrdp-git/sesman/sesman.ini	2015-05-08 02:11:57.657640614 +0200
++++ xrdp-git-new/sesman/sesman.ini	2015-05-08 02:29:13.184254406 +0200
+@@ -57,7 +57,7 @@ DisconnectedTimeLimit=0
+ Policy=Default
+ 
+ [Logging]
+-LogFile=xrdp-sesman.log
++LogFile=/dev/null
+ LogLevel=DEBUG
+ EnableSyslog=1
+ SyslogLevel=DEBUG
+@@ -90,7 +90,7 @@ param8=tcp
+ 
+ [Chansrv]
+ # drive redirection, defaults to xrdp_client if not set
+-FuseMountName=thinclient_drives
++FuseMountName=xrdp
+ 
+ [SessionVariables]
+ PULSE_SCRIPT=/etc/xrdp/pulse/default.pa
 diff -upr xrdp-git/sesman/startwm.sh xrdp-git-new/sesman/startwm.sh
---- xrdp-git/sesman/startwm.sh	2015-04-24 16:38:02.116121089 -0700
-+++ xrdp-git-new/sesman/startwm.sh	2015-04-24 16:43:36.872802307 -0700
-@@ -8,6 +8,17 @@ wm_start()
+--- xrdp-git/sesman/startwm.sh	2015-05-08 02:11:57.660973904 +0200
++++ xrdp-git-new/sesman/startwm.sh	2015-05-08 02:15:40.461426338 +0200
+@@ -3,26 +3,20 @@
+ #start the window manager
+ wm_start()
+ {
+-  if [ -r /etc/default/locale ]; then
+-    . /etc/default/locale
++  if [ -r /etc/locale.conf ]; then
++    . /etc/locale.conf
      export LANG LANGUAGE
    fi
  
+-  # debian
+-  if [ -r /etc/X11/Xsession ]; then
+-    . /etc/X11/Xsession
 +  # arch user
 +  if [ -r ~/.xinitrc ]; then
 +    . ~/.xinitrc
-+    exit 0
-+  fi
+     exit 0
+   fi
+ 
+-  # el
+-  if [ -r /etc/X11/xinit/Xsession ]; then
+-    . /etc/X11/xinit/Xsession
+-    exit 0
+-  fi
+-
+-  # suse
+-  if [ -r /etc/X11/xdm/Xsession ]; then
+-    . /etc/X11/xdm/Xsession
 +  # arch
 +  if [ -r /etc/X11/xinit/xinitrc ]; then
 +    . /etc/X11/xinit/xinitrc
-+    exit 0
-+  fi
-+
-   # debian
-   if [ -r /etc/X11/Xsession ]; then
-     . /etc/X11/Xsession
+     exit 0
+   fi
+ 
 diff -upr xrdp-git/xrdp/xrdp.ini xrdp-git-new/xrdp/xrdp.ini
---- xrdp-git/xrdp/xrdp.ini	2015-04-24 16:38:02.152787757 -0700
-+++ xrdp-git-new/xrdp/xrdp.ini	2015-04-24 16:46:19.786142723 -0700
+--- xrdp-git/xrdp/xrdp.ini	2015-05-08 02:11:57.724306405 +0200
++++ xrdp-git-new/xrdp/xrdp.ini	2015-05-08 02:49:45.958735044 +0200
 @@ -51,7 +51,7 @@ grey=dedede
  # require_credentials=yes
-
+ 
  # set a default entry for autorun if the client send login and pass directly
 -autorun=xrdp1
 +autorun=xrdp2
-
+ 
  bulk_compression=yes
-
+ 
+@@ -67,14 +67,14 @@ use_fastpath=both
+ #
+ 
+ # Login Screen Window Title
+-#ls_title=My Login Title
++ls_title=Archlinux Login
+ 
+ # top level window background color in RGB format
+ ls_top_window_bg_color=009cb5
+ 
+ # width and height of login screen
+ ls_width=350
+-ls_height=430
++ls_height=330
+ 
+ # login screen background color in RGB format
+ ls_bg_color=dedede
+@@ -84,8 +84,8 @@ ls_bg_color=dedede
+ 
+ # logo
+ # full path to bmp-file or file in shared folder
+-ls_logo_filename=
+-ls_logo_x_pos=55
++ls_logo_filename=/usr/share/xrdp/archlinux.bmp
++ls_logo_x_pos=35
+ ls_logo_y_pos=50
+ 
+ # for positioning labels such as username, password etc
+@@ -97,22 +97,22 @@ ls_input_x_pos=110
+ ls_input_width=210
+ 
+ # y pos for first label and combo box
+-ls_input_y_pos=220
++ls_input_y_pos=180
+ 
+ # OK button
+ ls_btn_ok_x_pos=142
+-ls_btn_ok_y_pos=370
++ls_btn_ok_y_pos=280
+ ls_btn_ok_width=85
+ ls_btn_ok_height=30
+ 
+ # Cancel button
+ ls_btn_cancel_x_pos=237
+-ls_btn_cancel_y_pos=370
++ls_btn_cancel_y_pos=280
+ ls_btn_cancel_width=85
+ ls_btn_cancel_height=30
+ 
+ [Logging]
+-LogFile=xrdp.log
++LogFile=/dev/null
+ LogLevel=DEBUG
+ EnableSyslog=1
+ SyslogLevel=DEBUG
 @@ -139,6 +139,15 @@ tcutils=true
  # for debugging xrdp, add following line to section xrdp1
  # chansrvport=/tmp/.xrdp/xrdp_chansrv_socket_7210
-
+ 
 +[xrdp0]
 +name=sesman-Xvnc-delay
 +lib=libvnc.so
