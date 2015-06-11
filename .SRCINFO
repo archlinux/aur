@@ -1,0 +1,15 @@
+pkgbase = consul
+	pkgdesc = Service discovery and high-available (CP) KV storage
+	pkgver = 0.5.2
+	pkgrel = 2
+	url = https://www.consul.io/
+	arch = x86_64
+	license = custom:MPLv2
+	depends = glibc
+	source = https://dl.bintray.com/mitchellh/consul/0.5.2_linux_amd64.zip
+	source = LICENSE
+	sha256sums = 171cf4074bfca3b1e46112105738985783f19c47f4408377241b868affa9d445
+	sha256sums = bef1747eda88b9ed46e94830b0d978c3499dad5dfe38d364971760881901dadd
+
+pkgname = consul
+
