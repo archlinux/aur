@@ -1,0 +1,18 @@
+pkgbase = python-args-git
+	pkgdesc = Argument parsing for Humans for Python 3
+	pkgver = 0.1.0.r37.36c727b
+	pkgrel = 1
+	url = https://github.com/kennethreitz/args
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = python
+	depends = python-setuptools
+	depends = python-nose
+	provides = python-args
+	conflicts = python-args
+	source = git+https://github.com/kennethreitz/args.git
+	sha256sums = SKIP
+
+pkgname = python-args-git
+
