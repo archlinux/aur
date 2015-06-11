@@ -1,0 +1,14 @@
+pkgbase = wmdiskmon
+	pkgdesc = A dockapp that monitors your disks usage in a portable way, using the POSIX command df -P.
+	pkgver = 0.0.2
+	pkgrel = 6
+	url = http://tnemeth.free.fr/projets/dockapps.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	source = http://tnemeth.free.fr/projets/programmes/wmdiskmon-0.0.2.tar.gz
+	md5sums = 4b02066a58752c3e7100abc0544c2c66
+
+pkgname = wmdiskmon
+
