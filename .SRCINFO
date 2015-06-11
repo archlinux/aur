@@ -1,0 +1,63 @@
+pkgbase = keystone-icehouse
+	pkgdesc = OpenStack Identity
+	pkgver = 2014.1.3
+	pkgrel = 1
+	url = https://launchpad.net/keystone/
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	makedepends = python2-sphinx
+	makedepends = python2-oslosphinx
+	depends = python2
+	depends = python2-setuptools
+	source = https://launchpad.net/keystone/icehouse/2014.1.3/+download/keystone-2014.1.3.tar.gz
+	source = keystone.service
+	md5sums = 7cf290976596515474e9af64f8167fb0
+	md5sums = 4af52db88c8a5ca56ae26aefcd1c4828
+
+pkgname = keystone-icehouse
+	pkgdesc = OpenStack Identity - Daemon
+	install = keystone.install
+	depends = python2-keystone-icehouse
+	conflicts = keystone
+	conflicts = keystone-havana
+	backup = etc/keystone/keystone.conf
+
+pkgname = python2-keystone-icehouse
+	pkgdesc = OpenStack Identity - Python library
+	depends = python2-pbr>=0.6
+	depends = python2-pbr<1.0
+	depends = python2-webob>=1.2.3
+	depends = python2-eventlet>=0.13.0
+	depends = python2-greenlet>=0.3.2
+	depends = python2-netaddr>=0.7.6
+	depends = python2-paste-deploy>=1.5.0
+	depends = python2-paste
+	depends = python2-routes>=1.12.3
+	depends = python2-six>=1.6.0
+	depends = python2-sqlalchemy>=0.7.8
+	depends = python2-sqlalchemy<0.9.99
+	depends = python2-migrate-icehouse>=0.8.2
+	depends = python2-passlib
+	depends = python2-lxml>=2.3
+	depends = python2-iso8601>=0.1.9
+	depends = python2-keystoneclient>=0.7.0
+	depends = python2-oslo-config>=1.2.0
+	depends = python2-oslo-messaging>=1.3.0
+	depends = python2-babel>=1.3
+	depends = python2-oauthlib>=0.6
+	depends = python2-dogpile-cache>=0.5.0
+	depends = python2-jsonschema>=2.0.0
+	depends = python2-jsonschema<3.0.0
+	depends = python2-pycadf>=0.4.1
+	depends = python2-pam
+	depends = python2-anyjson
+	depends = python2-kombu
+	depends = python2-amqp
+	depends = python2-amqplib
+	optdepends = python2-pysqlite: optional backend
+	optdepends = python2-memcached>=1.48: optional backend
+	optdepends = python2-ldap=2.3.13: optional backend
+	conflicts = python2-keystone
+	conflicts = python2-keystone-havana
+
