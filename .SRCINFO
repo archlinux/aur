@@ -1,0 +1,20 @@
+pkgbase = python2-caldav
+	pkgdesc = a caldav client library
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://bitbucket.org/cyrilrbt/caldav/wiki/Home
+	arch = any
+	license = GPL
+	depends = python2
+	depends = python2-lxml
+	depends = python2-vobject
+	depends = python2-dateutil
+	depends = python2-distribute
+	options = !emptydirs
+	source = http://pypi.python.org/packages/source/c/caldav/caldav-0.2.2.tar.gz
+	md5sums = c038dcd9564fa1260ebb25976f136610
+	sha1sums = b8d84565aeb5be77d3572b172acf7f4aff8ad0df
+	sha256sums = 845ed1c76c6755e0d036ddf7bf4f77d159edaaafa62561b9125b09712d944ef9
+
+pkgname = python2-caldav
+
