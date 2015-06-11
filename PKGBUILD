@@ -1,7 +1,7 @@
 # Maintainer: ThePilot <afuturepilotis at gmail dot com>
 pkgname=rave-x-colors
 pkgver=2.0B
-pkgrel=1
+pkgrel=2
 pkgdesc="A vivid and classically styled icon theme based on Faenza. The inspiration for Mint-X, but with support for dark panels."
 arch=('any')
 url="http://www.ravefinity.com/p/rave-x-icon-theme.html"
