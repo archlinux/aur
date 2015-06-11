@@ -3,14 +3,14 @@
 
 pkgname=munge
 pkgver=0.5.11
-pkgrel=3
+pkgrel=4
 pkgdesc="An authentication service for creating and validating credentials. It is designed to be highly scalable for use in an HPC cluster environment."
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/munge/"
 license=('GPL3' 'LGPL3')
-depends=('openssl' 'bzip2')
-makedepends=('zlib')
-provides=('munge')
+depends=('openssl')
+optdepends=("zlib: zlib compression support"
+			"bzip2: bzip2 compression support")
 install=$pkgname.install
 source=("http://munge.googlecode.com/files/$pkgname-$pkgver.tar.bz2"
         "arch_munge.init"
