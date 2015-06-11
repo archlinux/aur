@@ -1,0 +1,73 @@
+.\" Hey, Emacs!  This is an -*- nroff -*- source file.
+.\" wmifs is copyright 1999-2003 by Jordi Mallach <jordi@debian.org>
+.\"          copyright 2003-2004 by Romain Francoise <rfrancoise@debian.org>
+.\" 
+.\" This is free documentation, see the latest version of the GNU
+.\" General Public License for copying conditions. There is NO warranty.
+
+
+.TH WMIFS 1 "December 26, 2001" "wmifs"
+       
+.SH NAME
+wmifs \- a dockable network traffic monitor
+.SH SYNOPSIS
+.B wmifs
+[-d <display name>] [-i <interface name>] [-l] [-w] [-h] [-v]
+
+.SH DESCRIPTION
+WMiFS is a dockable applet for X11 that can monitor all your network
+interfaces. It's designed for WindowMaker's Dock and AfterStep's Wharf,
+but it's not dependant on these window managers and should work with
+any other.
+It can display the net load using a standard bar graph or using a waveform
+mode. It also displays the state of the interface with a group of leds.
+Clicking on the interface name will cycle to the next interface in the
+system. Users can define commands to be executed when the different mouse
+buttons are pressed on the main window.
+
+.SH OPTIONS
+.TP
+.B \-h
+Show summary of options.
+.TP
+.B \-v
+Show version of the program.
+.TP
+.B \-d <display name>
+Use an alternate X display.
+.TP
+.B \-i <interface name>
+Interface that should come up initially when executing wmifs.  If you
+use "auto" as interface name, the first active ("up") interface will be
+used.
+.TP
+.B \-I <interval>   
+Sampling interval, in seconds (default: 0.05).
+.TP
+.B \-l
+Starts wmifs in lock mode. Useful if combined with \-i, if you want to
+monitor a, for example, ppp device which isn't up when wmifs is started.
+It won't switch to the next available interface.
+.TP
+.B \-s <interval>
+Scrolling interval, in seconds (default: 5)
+.TP
+.B \-w
+Use the waveform graph instead of the classic one.
+
+.SH FILES
+.TP
+.I /etc/wmifsrc
+system wide wmifs configuration file.
+.TP
+.I ~/.wmifsrc
+peruser wmifs configuration file.
+
+.SH AUTHOR
+This manual page was written by Jordi Mallach <jordi@sindominio.net>
+for the Debian GNU/Linux system (but may be used by others).
+
+.SH SEE ALSO
+.PD 0
+.TP
+\fI/usr/share/doc/wmifs\fP

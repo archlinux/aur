@@ -1,0 +1,18 @@
+pkgbase = wmifs
+	pkgdesc = A network monitor for all network devices that shows the transmission ratio
+	pkgver = 1.3b1
+	pkgrel = 1
+	url = http://web.cs.mun.ca/~gstarkes/wmaker/dockapps/net.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	source = http://web.cs.mun.ca/~gstarkes/wmaker/dockapps/files/wmifs-1.3b1.tar.gz
+	source = wmifs.patch
+	source = wmifs.1
+	md5sums = 4a6ec0141792debac2803e0697fa1dd6
+	md5sums = d7583278ebea71bc8798337268e56ea3
+	md5sums = a4a2e3977d451946f1fee93a70f6a17f
+
+pkgname = wmifs
+

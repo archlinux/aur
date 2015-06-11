@@ -1,0 +1,537 @@
+diff -up src/wmifs.app/wmifs/Makefile.orig src/wmifs.app/wmifs/Makefile
+--- src/wmifs.app/wmifs/Makefile.orig	1998-05-13 16:00:59.000000000 -0600
++++ src/wmifs.app/wmifs/Makefile	2014-05-19 08:07:55.000000000 -0600
+@@ -1,3 +1,10 @@
++
++DESTDIR =
++prefix =/usr/local
++bindir=${prefix}/bin
++CONF=/etc
++
++CC     = gcc
+ LIBDIR = -L/usr/X11R6/lib
+ LIBS   = -lXpm -lXext -lX11
+ OBJS =	wmifs.o \
+@@ -5,29 +12,32 @@ OBJS =	wmifs.o \
+ 		../wmgeneral/misc.o \
+ 		../wmgeneral/list.o
+ 
++CFLAGS += -Wall -O2 -g
++
++INSTALL = /usr/bin/install
++INSTALL_DIR     = $(INSTALL) -p -d -o root -g root -m 755
++INSTALL_PROGRAM = $(INSTALL) -p -o root -g root -m 755
++INSTALL_FILE    = $(INSTALL) -p -o root -g root -m 644
+ 
+ .c.o:
+-	cc -c -O2 -Wall $< -o $*.o
++	$(CC) -c $(CFLAGS) $< -o $*.o
+ 
+ wmifs: $(OBJS)
+-	cc -o wmifs $^ -lXext $(LIBDIR) $(LIBS)
++	$(CC) $(LDFLAGS) -o wmifs $^ -lXext $(LIBDIR) $(LIBS)
+ 
+ all:: wmifs
+ 
+ clean::
+ 	for i in $(OBJS) ; do \
+-		rm $$i ; \
++		rm -f $$i ; \
+ 	done
+-	rm wmifs
++	rm -f wmifs
+ 
+ install::
+-	cp -f wmifs /usr/local/bin/
+-	chmod 755 /usr/local/bin/wmifs
+-	chown root:root /usr/local/bin/wmifs
+-	cp sample.wmifsrc /etc/wmifsrc
+-	chown root:root /etc/wmifsrc
+-	chmod 644 /etc/wmifsrc
+-	cp -f sample.wmifsrc $(HOME)/.wmifsrc
+-	echo "WMiFS-1.3beta installation finished..."
+-	echo " "
+-	echo "have fun! ;-)"
++	$(INSTALL_DIR) $(DESTDIR)$(bindir)
++	$(INSTALL_DIR) $(DESTDIR)$(CONF)
++	$(INSTALL_PROGRAM) wmifs $(DESTDIR)$(bindir)
++	$(INSTALL_FILE) sample.wmifsrc $(DESTDIR)$(CONF)/wmifsrc
++	@echo "WMiFS-1.3beta installation finished..."
++	@echo " "
++	@echo "have fun! ;-)"
+diff -up src/wmifs.app/wmifs/wmifs.c.orig src/wmifs.app/wmifs/wmifs.c
+--- src/wmifs.app/wmifs/wmifs.c.orig	1998-05-13 16:07:51.000000000 -0600
++++ src/wmifs.app/wmifs/wmifs.c	2014-05-19 08:07:55.000000000 -0600
+@@ -74,6 +74,30 @@
+ 	----
+ 	Changes:
+ 	---
++	02/29/2004 (Tom Marshall, tommy@home.tig-grr.com)
++		* Patch to add a special interface name "auto" for the -i
++		  option. "wmifs -i auto" will automatically select the
++		  first up interface.
++	01/08/2004 (Peter Samuelson, peter@samba-tng.org)
++		* Patch to make make sampling and scrolling intervals
++		  customizable, adds new options -I and -s.
++	01/15/2002 (Matyas Koszik, koszik@debijan.lonyay.edu.hu)
++		* Patch that fixes segfaults on long interface names.
++	08/31/2001 (Davi Leal, davileal@terra.es)
++		* Patch that cuts long interface names, so they look
++		  good in wmifs. For example, "dummy0" gets displayed
++		  as "dumm0", "vmnet10" as "vmn10", etc.
++	06/16/2001 (Jorge Garc?a, Jorge.Garcia@uv.es)
++		* Added the LockMode, so wmifs doesn't swap to another
++		  interface if the one requested with "-i" isn't up.
++	05/06/2001 (Jordi Mallach, jordi@sindominio.net)
++		* Integrated many patches, fixing issues with suspended
++		  wmifs.
++	07/21/1999 (Stephen Pitts, smpitts@midsouth.rr.com)
++		* Added new constant: BUFFER_SIZE to determine the size
++		  of the buffer used in fgets() operations. Right now,
++		  its at 512 bytes. Fixed crashing on my system when
++		  one line of /proc/net/dev was longer than 128 bytes
+ 	04/05/1998 (Martijn Pieterse, pieterse@xs4all.nl)
+ 		* Changed the "middle of the waveform" line color
+ 		* Moved the RedrawWindow out of the main loop. 
+@@ -166,6 +190,7 @@
+ #include <sys/types.h>
+ #include <sys/ioctl.h>
+ #include <sys/socket.h>
++#include <sys/time.h>
+ 
+ #include <X11/Xlib.h>
+ #include <X11/xpm.h>
+@@ -180,10 +205,24 @@
+ #include "wmifs-master.xpm"
+ #include "wmifs-mask.xbm"
+ 
++/* How often to check for new network interface, in ms */
++#define CHECK_INTERFACE_INTERVAL 5000
++
++/* How often to query the interfaces, in ms */
++#define DEFAULT_SAMPLE_INTERVAL 50
++
+   /***********/
+  /* Defines */
+ /***********/
+ 
++#ifndef ifr__name
++#define ifr__name ifr_name
++#endif
++
++#ifndef stats_ptr
++#define stats_ptr stats.p.FIXME
++#endif
++
+ /* Fill in the hardcoded actions */
+ #define LEFT_ACTION (NULL)
+ #define MIDDLE_ACTION (NULL)
+@@ -195,8 +234,10 @@
+ #define LED_NET_TX			(5)
+ #define LED_NET_POWER		(6)
+ 
+-#define WMIFS_VERSION "1.2.1"
++#define WMIFS_VERSION "1.3b1"
+ 
++/* the size of the buffer read from /proc/net/ */
++#define BUFFER_SIZE 512
+   /**********************/
+  /* External Variables */
+ /**********************/
+@@ -207,10 +248,12 @@ extern	char **environ;
+  /* Global Variables */
+ /********************/
+ 
+-char	*ProgName;
+ char	*active_interface = NULL;
+ int		TimerDivisor=60;
+ int		WaveForm=0;
++int		LockMode=0;
++int		SampleInt = DEFAULT_SAMPLE_INTERVAL;
++int		ScrollSpeed = CHECK_INTERFACE_INTERVAL;
+ 
+   /*****************/
+  /* PPP variables */
+@@ -247,17 +290,13 @@ void get_ppp_stats(struct ppp_stats *cur
+  /* Main */
+ /********/
+ 
+-void main(int argc, char *argv[]) {
++int main(int argc, char *argv[]) {
+ 
+ 	int		i;
+ 	
+ 
+ 	/* Parse Command Line */
+ 
+-	ProgName = argv[0];
+-	if (strlen(ProgName) >= 5)
+-		ProgName += (strlen(ProgName) - 5);
+-	
+ 	for (i=1; i<argc; i++) {
+ 		char *arg = argv[i];
+ 
+@@ -273,6 +312,17 @@ void main(int argc, char *argv[]) {
+ 				active_interface = argv[i+1];
+ 				i++;
+ 				break;
++			case 'I' :
++				SampleInt = atof(argv[i+1]) * 1000;
++				i++;
++				break;
++			case 'l' :
++				LockMode = 1;
++				break;
++			case 's' :
++				ScrollSpeed = atof(argv[i+1]) * 1000;
++				i++;
++				break;
+ 			case 'v' :
+ 				printversion();
+ 				exit(0);
+@@ -289,18 +339,19 @@ void main(int argc, char *argv[]) {
+ 	}
+ 
+ 	wmifs_routine(argc, argv);
++	return 0;
+ }
+ 
+ /*******************************************************************************\
+ |* wmifs_routine															   *|
+ \*******************************************************************************/
+ 
+-#define MAX_STAT_DEVICES 4
++#define MAX_STAT_DEVICES 16
+ 
+ typedef struct {
+ 
+ 	char	name[8];
+-	int		his[55][2];
++	int	his[55][2];
+ 	long	istatlast;
+ 	long	ostatlast;
+ 	
+@@ -334,13 +385,13 @@ void wmifs_routine(int argc, char **argv
+ 	int			stat_online;
+ 	int			stat_current;
+ 
+-	long		starttime;
+-	long		curtime;
+-	long		nexttime;
++	unsigned int	curtime;
++	unsigned int	nexttime;
++	struct timeval	tv, tv2;
+ 
+ 	long		ipacket, opacket, istat, ostat;
+ 
+-	char		temp[128];
++	char		temp[BUFFER_SIZE];
+ 	char		*p;
+ 
+ 	for (i=0; i<MAX_STAT_DEVICES; i++) {
+@@ -355,9 +406,13 @@ void wmifs_routine(int argc, char **argv
+ 
+ 	stat_current = 0;
+ 	if (active_interface) {
++		int isauto = !strcmp(active_interface, "auto");
+ 		for (i=0; i<stat_online; i++) {
+-			if (!strcmp(stat_devices[i].name, active_interface))
++			if ((isauto && stillonline(stat_devices[i].name)) ||
++			    !strcmp(stat_devices[i].name, active_interface)) {
+ 				stat_current = i;
++				break;
++			}
+ 		}
+ 	}
+ 	
+@@ -365,17 +420,19 @@ void wmifs_routine(int argc, char **argv
+ 	if (MIDDLE_ACTION) middle_action = strdup(MIDDLE_ACTION);
+ 	if (RIGHT_ACTION) right_action = strdup(RIGHT_ACTION);
+ 
+-	/* Scan throught  the .rc files */
+-	strcpy(temp, "/etc/wmifsrc");
+-	parse_rcfile(temp, wmifs_keys);
++	/* Scan throught the .rc files */
++	parse_rcfile("/etc/wmifsrc", wmifs_keys);
+ 
+ 	p = getenv("HOME");
++	if (p == NULL || *p == 0) {
++		fprintf(stderr, "Unknown $HOME directory, please check your environment\n");
++		return;
++	}
+ 	strcpy(temp, p);
+ 	strcat(temp, "/.wmifsrc");
+ 	parse_rcfile(temp, wmifs_keys);
+ 
+-	strcpy(temp, "/etc/wmifsrc.fixed");
+-	parse_rcfile(temp, wmifs_keys);
++	parse_rcfile("/etc/wmifsrc.fixed", wmifs_keys);
+ 
+ 	openXwindow(argc, argv, wmifs_master_xpm, wmifs_mask_bits, wmifs_mask_width, wmifs_mask_height);
+ 
+@@ -383,19 +440,16 @@ void wmifs_routine(int argc, char **argv
+ 	AddMouseRegion(0, 5, 5, 35, 15);
+ 	AddMouseRegion(1, 5, 20, 58, 58);
+ 
+-	starttime = time(0);
+-	nexttime = starttime + 5;
+-
+-	for (i=0; i<stat_online; i++) {
+-		get_statistics(stat_devices[i].name, &ipacket, &opacket, &istat, &ostat);
+-		stat_devices[i].istatlast = istat;
+-		stat_devices[i].ostatlast = ostat;
+-	}
++	gettimeofday(&tv2, NULL);
++	nexttime = ScrollSpeed;
+ 
+ 	DrawActiveIFS(stat_devices[stat_current].name);
+ 
+ 	while (1) {
+-		curtime = time(0);
++		gettimeofday(&tv, NULL);
++		curtime = (tv.tv_sec - tv2.tv_sec) * 1000 
++			+ (tv.tv_usec - tv2.tv_usec) / 1000;
++
+ 		waitpid(0, NULL, WNOHANG);
+ 
+ 		for (i=0; i<stat_online; i++) {
+@@ -424,17 +478,14 @@ void wmifs_routine(int argc, char **argv
+ 			
+ 			stat_devices[i].istatlast = istat;
+ 			stat_devices[i].ostatlast = ostat;
+-			RedrawWindow();
+ 		}
++		RedrawWindow();
+ 		
+ 		if (curtime >= nexttime) {
+-			nexttime+=5;
++			nexttime=curtime+ScrollSpeed;
+ 
++			DrawStats(&stat_devices[stat_current].his[0][0], 54, 40, 5, 58);
+ 			for (i=0; i<stat_online; i++) {
+-				if (i == stat_current) {
+-
+-					DrawStats(&stat_devices[i].his[0][0], 54, 40, 5, 58);
+-				}
+ 				if (stillonline(stat_devices[i].name)) {
+ 					for (j=1; j<54; j++) {
+ 						stat_devices[i].his[j-1][0] = stat_devices[i].his[j][0];
+@@ -458,9 +509,7 @@ void wmifs_routine(int argc, char **argv
+ 				exit(0);
+ 				break;
+ 			case ButtonPress:
+-				i = CheckMouseRegion(Event.xbutton.x, Event.xbutton.y);
+-
+-				but_stat = i;
++				but_stat = CheckMouseRegion(Event.xbutton.x, Event.xbutton.y);
+ 				break;
+ 			case ButtonRelease:
+ 				i = CheckMouseRegion(Event.xbutton.x, Event.xbutton.y);
+@@ -473,7 +522,7 @@ void wmifs_routine(int argc, char **argv
+ 						stat_online = checknetdevs();
+ 						stat_current = 0;
+ 						for (i=0; i<stat_online; i++) {
+-							if (!strncmp(temp, stat_devices[i].name, 4)) {
++							if (!strcmp(temp, stat_devices[i].name)) {
+ 								stat_current = i;
+ 							}
+ 						}
+@@ -510,7 +559,7 @@ void wmifs_routine(int argc, char **argv
+ 			}
+ 		}
+ 
+-		usleep(50000L);
++		usleep(SampleInt * 1000);
+ 	}
+ }
+ 
+@@ -518,7 +567,7 @@ void wmifs_routine(int argc, char **argv
+ |* void DrawActiveIFS(char *)												   *|
+ \*******************************************************************************/
+ 
+-void DrawActiveIFS(char *name) {
++void DrawActiveIFS(char *real_name) {
+ 
+ 	/* Cijfers op: 0,65
+ 	   Letters op: 0,75
+@@ -530,11 +579,22 @@ void DrawActiveIFS(char *name) {
+ 	int		i;
+ 	int		c;
+ 	int		k;
++	int		len;
++	char		name[256];
+ 
+ 
+ 	copyXPMArea(5, 84, 30, 10, 5, 5);
+ 
+ 
++	strcpy(name,real_name);
++	len = strlen(name);
++	if (len > 5)
++	{
++		for (i=len-5; i<len && !(name[i]>='0' && name[i]<='9'); i++)  ;
++		for (; i<=len; i++) /* '=' to get the '\0' character moved too \*/
++			name[i-(len-5)] = name[i];
++	}
++
+ 	k = 5;
+ 	for (i=0; name[i]; i++) {
+ 		if (i == strlen(name)-1 && strlen(name) <= 4 && name[strlen(name)-1] >= '0' && name[strlen(name)-1] <= '9') {
+@@ -562,7 +622,7 @@ void DrawActiveIFS(char *name) {
+ int get_statistics(char *devname, long *ip, long *op, long *is, long *os) {
+ 
+ 	FILE				*fp;
+-	char				temp[128];
++	char				temp[BUFFER_SIZE];
+ 	char				*p;
+ 	char				*tokens = " |:\n";
+ 	int					input, output;
+@@ -596,8 +656,8 @@ int get_statistics(char *devname, long *
+ 
+ 	/* Read from /proc/net/dev the stats! */
+ 	fp = fopen("/proc/net/dev", "r");
+-	fgets(temp, 128, fp);
+-	fgets(temp, 128, fp);
++	fgets(temp, BUFFER_SIZE, fp);
++	fgets(temp, BUFFER_SIZE, fp);
+ 
+ 	input = -1;
+ 	output = -1;
+@@ -614,7 +674,7 @@ int get_statistics(char *devname, long *
+ 		p = strtok(NULL, tokens);
+ 	} while (input == -1 || output == -1);
+ 
+-	while (fgets(temp, 128, fp)) {
++	while (fgets(temp, BUFFER_SIZE, fp)) {
+ 		if (strstr(temp, devname)) {
+ 			found = 0;
+ 			p = strtok(temp, tokens);
+@@ -645,15 +705,16 @@ int get_statistics(char *devname, long *
+ int stillonline(char *ifs) {
+ 
+ 	FILE	*fp;
+-	char	temp[128];
++	char	temp[BUFFER_SIZE];
+ 	int		i;
+ 
+ 	i = 0;
+ 	fp = fopen("/proc/net/route", "r");
+ 	if (fp) {
+-		while (fgets(temp, 128, fp)) {
++		while (fgets(temp, BUFFER_SIZE, fp)) {
+ 			if (strstr(temp, ifs)) {
+ 				i = 1; /* Line is alive */
++				break;
+ 			}
+ 		}
+ 		fclose(fp);
+@@ -668,7 +729,7 @@ int stillonline(char *ifs) {
+ int checknetdevs(void) {
+ 
+ 	FILE	*fd;
+-	char	temp[128];
++	char	temp[BUFFER_SIZE];
+ 	char	*p;
+ 	int		i=0,j;
+ 	int		k;
+@@ -685,11 +746,14 @@ int checknetdevs(void) {
+ 	fd = fopen("/proc/net/dev", "r");
+ 	if (fd) {
+ 		/* Skip the first 2 lines */
+-		fgets(temp, 128, fd);
+-		fgets(temp, 128, fd);
+-		while (fgets(temp, 128, fd)) {
++		fgets(temp, BUFFER_SIZE, fd);
++		fgets(temp, BUFFER_SIZE, fd);
++		while (fgets(temp, BUFFER_SIZE, fd)) {
+ 			p = strtok(temp, tokens);
+-			
++			if(p == NULL) {
++					printf("Barfed on: %s", temp);
++					break;
++			}
+ 			/* Skip dummy code */
+ 			
+ 			if (!strncmp(p, "dummy", 5))
+@@ -702,6 +766,8 @@ int checknetdevs(void) {
+ 				strcpy(foundbuffer[devsfound], p);
+ 				devsfound++;
+ 			}
++			if (devsfound >= MAX_STAT_DEVICES)
++				break;
+ 		}
+ 		fclose(fd);
+ 	}
+@@ -723,7 +789,7 @@ int checknetdevs(void) {
+ 		}
+ 	}
+ 
+-	for (i=0, j=0; j<MAX_STAT_DEVICES; i++) {
++	for (i=0, j=0; j<MAX_STAT_DEVICES; i++, j++) {
+ 
+ 		while (!stat_devices[j].name[0] && j < MAX_STAT_DEVICES)
+ 			j++;
+@@ -731,8 +797,6 @@ int checknetdevs(void) {
+ 		if (j < MAX_STAT_DEVICES && i != j) {
+ 			stat_devices[i] = stat_devices[j];
+ 		}
+-		
+-		j++;
+ 	}
+ 	i--;
+ 
+@@ -749,8 +813,23 @@ int checknetdevs(void) {
+ 			i++;
+ 		}
+ 	}
++	if (LockMode && active_interface != NULL) {
++		k = 0;
++		for (j=0; j<i; j++)
++			if (!strcmp(stat_devices[j].name, active_interface)) {
++				k = 1;
++				break;
++			}
++		if (!k) {
++			strcpy(stat_devices[i].name, active_interface);
++			for (k=0; k<48; k++) {
++				stat_devices[i].his[k][0] = 0;
++				stat_devices[i].his[k][1] = 0;
++			}
++			devsfound++;
++		}
+ 
+-
++	}
+ 	return devsfound;
+ }
+ 
+@@ -765,7 +844,7 @@ void DrawStats(int *his, int num, int si
+ 	int		*p;
+ 	int		p0,p1,p2,p3;
+ 
+-	pixels_per_byte = 1*size;
++	pixels_per_byte = size;
+ 	p = his;
+ 	for (j=0; j<num; j++) {
+ 		if (p[0] + p[1] > pixels_per_byte)
+@@ -822,6 +901,9 @@ void usage(void) {
+ 	fprintf(stderr, "\t-d <display name>\n");
+ 	fprintf(stderr, "\t-h\tthis help screen\n");
+ 	fprintf(stderr, "\t-i <interface name>\tdefault (as it appears in /proc/net/route)\n");
++	fprintf(stderr, "\t-I <interval>\tsampling interval, in seconds (default: 0.05)\n");
++	fprintf(stderr, "\t-l\tstarts in lock mode\n");
++	fprintf(stderr, "\t-s <interval>\tscrolling interval, in seconds (default: 5)\n");
+ 	fprintf(stderr, "\t-v\tprint the version number\n");
+ 	fprintf(stderr, "\t-w\twaveform load\n");
+ 	fprintf(stderr, "\n");
+@@ -851,9 +933,8 @@ void get_ppp_stats(struct ppp_stats *cur
+ 	sprintf(req.ifr__name, "ppp%d", PPP_UNIT);
+ 
+ 	if (ioctl(ppp_h, SIOCGPPPSTATS, &req) < 0) {
+-		fprintf(stderr, "heyho!\n");
++/*		fprintf(stderr, "heyho!\n"); */
+ 	}
+-
+ 	*cur = req.stats;
+ }
+ 
