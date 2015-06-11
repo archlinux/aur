@@ -1,0 +1,20 @@
+pkgbase = python2-gnumpy-git
+	pkgdesc = Gnumpy is a simple Python 2 module that interfaces in a way almost identical to numpy, but does its computations on your computers GPU
+	pkgver = 0.3dev.0.2.r1.gde735a9
+	pkgrel = 1
+	url = https://github.com/dnouri/gnumpy
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2
+	optdepends = python2-cudamat-git: Use GPU instead of CPU
+	provides = python2-gnumpy
+	provides = python2-npmat
+	conflicts = python2-gnumpy
+	conflicts = python2-npmat
+	source = git+https://github.com/dnouri/gnumpy.git
+	sha256sums = SKIP
+
+pkgname = python2-gnumpy-git
+
