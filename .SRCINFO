@@ -1,0 +1,13 @@
+pkgbase = zxfer
+	pkgdesc = transfer ZFS filesystems, snapshots, properties, files and directories
+	pkgver = 0.9.9
+	pkgrel = 1
+	url = https://code.google.com/p/zxfer
+	arch = any
+	license = BSD
+	depends = zfs
+	source = https://zxfer.googlecode.com/files/zxfer-0.9.9.tar.bz2
+	md5sums = 3a2a52de6ac4a8b1565d875ccde90f2d
+
+pkgname = zxfer
+
