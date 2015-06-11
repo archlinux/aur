@@ -1,0 +1,14 @@
+pkgbase = lib32-gtk-xfce-engine
+	pkgdesc = Xfce Gtk+-2.0 engine (32-bit)
+	pkgver = 2.10.1
+	pkgrel = 1
+	url = http://www.xfce.org/
+	arch = x86_64
+	license = GPL2
+	depends = gtk2
+	depends = gtk-xfce-engine
+	source = http://archive.xfce.org/src/xfce/gtk-xfce-engine/2.10/gtk-xfce-engine-2.10.1.tar.bz2
+	sha256sums = 4a92910205881f707f2cc8d3c9b00a95feb58eb9084d932c841f3ed027f7063d
+
+pkgname = lib32-gtk-xfce-engine
+
