@@ -1,14 +1,16 @@
 pkgbase = autobuild
 	pkgdesc = Linden Lab Automated Package Management and Build System
-	pkgver = 0.8.12
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = http://wiki.secondlife.com/wiki/Autobuild
 	arch = any
 	license = MIT
-	makedepends = python2-distribute
+	makedepends = python2-setuptools
 	depends = python2
-	source = http://pypi.python.org/packages/source/a/autobuild/autobuild-0.8.12.tar.gz
-	sha1sums = 5960c008c1f4a64c0d31ef11e18d50de4d09d69a
+	depends = python2-pydot
+	depends = llbase
+	source = http://pypi.python.org/packages/source/a/autobuild/autobuild-1.0.1.tar.gz
+	sha1sums = 4afd82d9e5c21974a7cbbbcc93a7e00939d49f3c
 
 pkgname = autobuild
 
