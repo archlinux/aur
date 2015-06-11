@@ -1,0 +1,14 @@
+pkgbase = retro-bzr
+	pkgdesc = Retro is a portable, stack-based language with roots in Forth.
+	pkgver = 453
+	pkgrel = 1
+	url = http://retroforth.com
+	arch = i686
+	arch = x86_64
+	license = ISC
+	makedepends = bzr
+	makedepends = python-docutils
+	provides = retro
+
+pkgname = retro-bzr
+
