@@ -1,0 +1,21 @@
+pkgbase = xorg-grandr-git
+	pkgdesc = Provides a friendly interface to monitor configuration and includes controls for video mode, rotation and monitor position.
+	pkgver = 0.1.5.g2aa67e3
+	pkgrel = 1
+	url = http://cgit.freedesktop.org/xorg/app/grandr
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = gtk2
+	depends = gconf
+	depends = libx11
+	provides = xorg-grandr
+	conflicts = xorg-grandr
+	source = git://anongit.freedesktop.org/git/xorg/app/grandr.git
+	source = xlib_dep.patch
+	md5sums = SKIP
+	md5sums = 0a272a3f108a1c646838178610ef998b
+
+pkgname = xorg-grandr-git
+
