@@ -1,0 +1,16 @@
+pkgbase = paswitch
+	pkgdesc = Switch PulseAudio sink for all applications from the commandline.
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://www.tablix.org/~avian/blog/archives/2012/06/switching_pulseaudio_output_device/
+	arch = x86_64
+	arch = i686
+	license = gpl
+	makedepends = git
+	depends = libpulse
+	provides = paswitch
+	source = paswitch-0.1::git+http://www.tablix.org/~avian/git/paswitch.git
+	md5sums = SKIP
+
+pkgname = paswitch
+
