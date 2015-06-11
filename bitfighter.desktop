@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Bitfighter
+Comment=A free multiplayer 2-D space combat game with Robotron-like controls
+Exec=bitfighter
+Icon=bitfighter
+Terminal=false
+Categories=Game;ArcadeGame;
