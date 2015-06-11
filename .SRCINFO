@@ -1,0 +1,16 @@
+pkgbase = windwm
+	pkgdesc = Wind is window manager implements most parts of the ICCCM and EWMH/NetWM standards
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://windwm.sourceforge.net/
+	arch = x86_64
+	arch = i686
+	license = custom
+	depends = libxft
+	source = http://downloads.sourceforge.net/project/windwm/wind-1.5.tar.gz
+	source = windwm.desktop
+	sha1sums = 7924ee392c531674b94efa44a49787e1e377763a
+	sha1sums = fdf5db200cf880328254dd01015e06c0de807655
+
+pkgname = windwm
+
