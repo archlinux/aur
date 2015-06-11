@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Exec=/usr/bin/qtgain
+Type=Application
+Categories=Application;AudioVideo;Audio;
+Name=QtGain
+GenericName=QtGain
+Comment=Frontend for mp3gain, vorbisgain and metaflac
+Comment[de]=Frontend für mp3gain, vorbisgain und metaflac
+Comment[ru]=Графическая оболчка для mp3gain, vorbisgain и metaflac
+Terminal=false
+StartupNotify=false
+Icon=/usr/share/pixmaps/qtgain.png

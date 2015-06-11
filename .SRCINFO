@@ -1,0 +1,22 @@
+pkgbase = qtgain
+	pkgdesc = Simply frontend for mp3gain, vorbisgain and metaflac to replay gain your tracks
+	pkgver = 0.9.8
+	pkgrel = 2
+	url = http://www.qt-apps.org/content/show.php/QtGain?content=56842
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	makedepends = gcc
+	depends = qt4
+	optdepends = mp3gain: For MP3 support
+	optdepends = vorbisgain: For OGG support
+	optdepends = flac: For FLAC suppot
+	optdepends = aacgain: For AAC support
+	source = qtgain::git://git.code.sf.net/p/qtgain/code#commit=b45c51bb5a21c2cd3d275cf63876bcc1242a591c
+	source = qtgain.desktop
+	md5sums = SKIP
+	md5sums = 296ce0f158f8b7d6b80cbfd895e12e5e
+
+pkgname = qtgain
+
