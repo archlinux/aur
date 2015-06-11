@@ -1,0 +1,17 @@
+pkgbase = gkrellkam
+	pkgdesc = Plugin for gkrellm2 to retrieve webcam pictures
+	pkgver = 2.0.0
+	pkgrel = 2
+	url = http://gkrellkam.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	depends = gkrellm
+	depends = gtk2
+	depends = wget
+	source = http://downloads.sourceforge.net/gkrellkam/gkrellkam_2.0.0.tar.gz
+	md5sums = 657c99de172bc7598098a6a4196ff07b
+
+pkgname = gkrellkam
+
