@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Frets On Fire
+Comment=A great GuitarHero clone!
+Exec=fretsonfire
+Encoding=UTF-8
+Icon=/usr/share/pixmaps/fretsonfire.png
+Categories=Game;ArcadeGame;
+Terminal=false
+StartupNotify=false
