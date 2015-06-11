@@ -1,7 +1,6 @@
-# Author: Benjamin Robin <benjarobin gmail>
-
-# $Id: PKGBUILD 175827 2013-01-22 09:52:02Z foutrelis $
-# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
+# $Id$
+# Maintainer: Benjamin Robin <dev@benjarobin.fr>
+# Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Thayer Williams <thayer@archlinux.org>
 # Contributor: Alexander Fehr <pizzapunk gmail com>
@@ -10,12 +9,13 @@
 _pkgname=slim
 pkgname=${_pkgname}-unicode
 pkgver=1.3.6
-pkgrel=4
+pkgrel=5
 pkgdesc="Desktop-independent graphical login manager for X11"
 arch=('i686' 'x86_64')
 url="http://slim.berlios.de/"
 license=('GPL2')
-depends=('pam' 'libxmu' 'libpng' 'libjpeg' 'libxft' 'libxrandr' 'xorg-xauth')
+depends=('pam' 'libxmu' 'libpng' 'libjpeg' 'libxft' 'libxrandr' 'xorg-xauth'
+         'ttf-font')
 makedepends=('cmake' 'freeglut')
 backup=('etc/slim.conf' 'etc/logrotate.d/slim' 'etc/pam.d/slim'
         'etc/slimlock.conf')
