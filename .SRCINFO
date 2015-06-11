@@ -1,0 +1,16 @@
+pkgbase = python2-pyvtk-git
+	pkgdesc = tools for manipulating VTK files in Python, git version
+	pkgver = 20140411
+	pkgrel = 3
+	url = https://code.google.com/p/pyvtk
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python2
+	provides = pyvtk
+	conflicts = pyvtk
+	source = git+https://code.google.com/p/pyvtk
+	md5sums = SKIP
+
+pkgname = python2-pyvtk-git
+
