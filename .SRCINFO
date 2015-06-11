@@ -1,0 +1,20 @@
+pkgbase = nano-svn
+	pkgdesc = Pico editor clone with enhancements, svn version
+	pkgver = 5227
+	pkgrel = 1
+	url = http://www.nano-editor.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = texinfo
+	makedepends = subversion
+	depends = glibc
+	depends = ncurses
+	provides = nano
+	conflicts = nano
+	backup = etc/nanorc
+	source = nano::svn+svn://svn.savannah.gnu.org/nano/trunk/nano
+	md5sums = SKIP
+
+pkgname = nano-svn
+
