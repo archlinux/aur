@@ -1,0 +1,19 @@
+pkgbase = opencblas
+	pkgdesc = An optimized CBLAS library based on GotoBLAS2 1.13 BSD
+	pkgver = 0.2.14
+	pkgrel = 1
+	url = http://www.openblas.net/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = perl
+	depends = gcc-libs
+	provides = cblas=3.3.0
+	conflicts = cblas
+	options = !makeflags
+	options = !emptydirs
+	source = OpenBLAS-v0.2.14.tar.gz::http://github.com/xianyi/OpenBLAS/archive/v0.2.14.tar.gz
+	md5sums = 53cda7f420e1ba0ea55de536b24c9701
+
+pkgname = opencblas
+
