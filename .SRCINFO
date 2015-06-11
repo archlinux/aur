@@ -1,0 +1,14 @@
+pkgbase = xorg-xditview
+	pkgdesc = Display ditroff output
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = http://www.x.org/
+	arch = x86_64
+	arch = i686
+	license = custom
+	depends = libxaw
+	source = http://xorg.freedesktop.org/releases/individual/app/xditview-1.0.3.tar.bz2
+	md5sums = a9a49c84477be93cdd1cd7726d758574
+
+pkgname = xorg-xditview
+
