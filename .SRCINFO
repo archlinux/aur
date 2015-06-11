@@ -1,0 +1,12 @@
+pkgbase = lightzone
+	pkgdesc = A professional photo browser and editor, like Aperture or Lightroom
+	pkgver = 4.1.1
+	pkgrel = 1
+	url = http://lightzoneproject.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = javahelp2
+
+pkgname = lightzone
+
