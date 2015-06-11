@@ -1,0 +1,19 @@
+pkgbase = perl-html-prettyprinter
+	pkgdesc = HTML::PrettyPrinter - generate nice HTML files from HTML syntax trees.
+	pkgver = 0.03
+	pkgrel = 1
+	url = https://metacpan.org/release/HTML-PrettyPrinter
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-html-parser
+	depends = perl-html-tree
+	depends = perl-html-tagset
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/C/CL/CLMS/HTML-PrettyPrinter-0.03.tar.gz
+	md5sums = 4d3f84ba4e35cb7fac863b828b7f2b68
+
+pkgname = perl-html-prettyprinter
+
