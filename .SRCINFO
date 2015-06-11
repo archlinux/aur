@@ -7,7 +7,8 @@ pkgbase = vim_plugmanager
 	arch = any
 	license = GPL
 	makedepends = git
-	depends = vim vim_lib
+	depends = vim
+	depends = vim_lib
 	source = vim_plugmanager::git+git://github.com/Bashka/vim_plugmanager.git
 	md5sums = SKIP
 
