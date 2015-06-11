@@ -1,0 +1,13 @@
+# Contributor: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
+
+--- configure.in.old	2012-07-28 14:43:52.428180576 +0200
++++ configure.in	2012-07-28 14:43:21.008180956 +0200
+@@ -31,7 +31,7 @@
+ AM_PROG_CC_STDC
+ AC_HEADER_STDC
+ 
+-pkg_modules="gtk+-2.0 >= 2.0.0 gconf-2.0 xrandr >= 1.2"
++pkg_modules="gtk+-2.0 >= 2.0.0 gconf-2.0 xrandr >= 1.2 x11 gthread-2.0"
+ PKG_CHECK_MODULES(PACKAGE, [$pkg_modules])
+ AC_SUBST(PACKAGE_CFLAGS)
+ AC_SUBST(PACKAGE_LIBS)
