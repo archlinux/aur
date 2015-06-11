@@ -1,0 +1,33 @@
+pkgbase = qmplay2-git
+	pkgdesc = QMPlay2 is a video and audio player which can play most formats and codecs
+	pkgver = 16.06.10
+	pkgrel = 1
+	url = http://qt-apps.org/content/show.php/QMPlay2?content=153339
+	arch = i686
+	arch = x86_64
+	arch = armv7
+	arch = armv6
+	arch = armv5
+	license = LGPL
+	makedepends = make
+	makedepends = gcc
+	makedepends = git
+	depends = qt4
+	depends = ffmpeg
+	depends = libass
+	depends = libgl
+	depends = libva
+	depends = libxv
+	depends = alsa-lib
+	depends = libcdio
+	depends = taglib
+	depends = libcddb
+	optdepends = pulseaudio
+	optdepends = youtube-dl
+	provides = qmplay2
+	conflicts = qmplay2
+	source = git+https://github.com/zaps166/QMPlay2
+	md5sums = SKIP
+
+pkgname = qmplay2-git
+
