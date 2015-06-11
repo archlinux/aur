@@ -1,0 +1,14 @@
+pkgbase = geany-modeline-git
+	pkgdesc = Add modeline support to Geany, a GTK2 code editor.
+	pkgver = r3.b626f01
+	pkgrel = 1
+	url = http://github.com/mjhayes/geany-modeline
+	arch = any
+	license = custom
+	makedepends = git
+	depends = geany
+	source = geany-modeline-git::git://github.com/mjhayes/geany-modeline.git#branch=master
+	md5sums = SKIP
+
+pkgname = geany-modeline-git
+
