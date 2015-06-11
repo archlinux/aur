@@ -1,0 +1,17 @@
+pkgbase = python2-pathtools-git
+	pkgdesc = Path utilities for Python 2.
+	pkgver = 0.1.1.r42.06d2c7d
+	pkgrel = 1
+	url = https://github.com/gorakhargosh/pathtools
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python2
+	depends = python2-setuptools
+	provides = python2-pathtools
+	conflicts = python2-pathtools
+	source = git+https://github.com/gorakhargosh/pathtools.git
+	sha256sums = SKIP
+
+pkgname = python2-pathtools-git
+
