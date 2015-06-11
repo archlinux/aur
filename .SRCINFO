@@ -1,0 +1,15 @@
+pkgbase = qt5-examples
+	pkgdesc = Examples and demos from qt5 documentation
+	pkgver = 5.4.1
+	pkgrel = 1
+	url = http://qt-project.org/
+	arch = any
+	license = LGPL
+	depends = qt5-base
+	depends = qt5-tools
+	depends = qt5-doc
+	source = http://download.qt.io/official_releases/qt/5.4/5.4.1/single/qt-everywhere-opensource-src-5.4.1.tar.xz
+	sha1sums = daa3373af8d6656a1066ff23bc9100b5ca004ecf
+
+pkgname = qt5-examples
+
