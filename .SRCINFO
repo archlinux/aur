@@ -1,0 +1,42 @@
+pkgbase = clementine-qt5-git
+	pkgdesc = Experimental Qt5 version of Clementine, a modern music player and library organiser.
+	pkgver = 1.2.3.r1195.gcc079ec
+	pkgrel = 1
+	url = http://www.clementine-player.org/
+	install = clementine.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = boost
+	makedepends = cmake
+	makedepends = mesa
+	depends = gst-plugins-base
+	depends = gst-libav
+	depends = taglib
+	depends = glew
+	depends = liblastfm-qt5-git
+	depends = libgpod
+	depends = desktop-file-utils
+	depends = libmtp
+	depends = libplist
+	depends = hicolor-icon-theme
+	depends = qt5-base
+	depends = sparsehash
+	depends = libechonest-qt5-git
+	depends = libcdio
+	depends = protobuf
+	depends = crypto++
+	depends = chromaprint
+	depends = libmygpo-qt5-git
+	optdepends = gst-plugins-good: for use with "Good" plugin libraries
+	optdepends = gst-plugins-bad: for use with "Bad" plugin libraries
+	optdepends = gst-plugins-ugly: for use with "Ugly" plugin libraries
+	provides = clementine
+	conflicts = clementine
+	replaces = clementine
+	source = git+https://github.com/clementine-player/Clementine.git#branch=qt5
+	sha256sums = SKIP
+
+pkgname = clementine-qt5-git
+
