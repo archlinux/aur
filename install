@@ -1,0 +1,14 @@
+post_install() {
+  update-mime-database usr/share/mime > /dev/null
+  update-desktop-database -q
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+  gtk-update-icon-cache -q -t -f usr/share/icons/Faenza
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  post_install
+}
