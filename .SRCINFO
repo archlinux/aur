@@ -1,0 +1,22 @@
+pkgbase = python-skdata-git
+	pkgdesc = Skdata is a library of data sets for machine learning and statistics. This module provides standardized Python 3 access to toy problems as well as popular computer vision and natural language processing data sets
+	pkgver = 0.0.4.r441.3cfc359
+	pkgrel = 2
+	url = https://github.com/jaberg/skdata
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-nose
+	depends = python-scikit-learn
+	depends = python-joblib
+	depends = python-numpy
+	depends = python-lockfile
+	provides = python-skdata
+	conflicts = python-skdata
+	source = git+https://github.com/jaberg/skdata.git
+	sha256sums = SKIP
+
+pkgname = python-skdata-git
+
