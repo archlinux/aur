@@ -1,0 +1,14 @@
+pkgbase = xorg-viewres
+	pkgdesc = Graphical class/resource browser for Xt
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = http://www.x.org/
+	arch = x86_64
+	arch = i686
+	license = custom
+	depends = libxaw
+	source = http://xorg.freedesktop.org/releases/individual/app/viewres-1.0.4.tar.bz2
+	md5sums = e4651e55dccb0ae234e49bdc0b984fc9
+
+pkgname = xorg-viewres
+
