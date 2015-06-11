@@ -1,0 +1,17 @@
+pkgbase = python2-sh-git
+	pkgdesc = A full-fledged subprocess interface for Python 2 that allows you to call any program as if it were a function
+	pkgver = 1.11.r708.7a4e296
+	pkgrel = 2
+	url = https://github.com/amoffat/sh
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2
+	provides = python2-sh
+	conflicts = python2-sh
+	source = git+https://github.com/amoffat/sh
+	sha256sums = SKIP
+
+pkgname = python2-sh-git
+
