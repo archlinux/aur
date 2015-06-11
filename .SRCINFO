@@ -1,7 +1,8 @@
 pkgbase = xorg-grandr-git
 	pkgdesc = Provides a friendly interface to monitor configuration and includes controls for video mode, rotation and monitor position.
-	pkgver = grandr.0.1.5.g2aa67e3
+	pkgver = 0.1.5.g2aa67e3
 	pkgrel = 1
+	epoch = 1
 	url = http://cgit.freedesktop.org/xorg/app/grandr
 	arch = i686
 	arch = x86_64
