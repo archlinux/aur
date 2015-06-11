@@ -1,0 +1,18 @@
+pkgbase = epanet2-git
+	pkgdesc = EPANET performs extended period simulation of the water movement and quality behavior within pressurized pipe networks.
+	pkgver = 2.00.12
+	pkgrel = 2
+	url = http://www.epa.gov/
+	arch = i686
+	arch = x86_64
+	license = Public Domain
+	makedepends = git
+	optdepends = programmers-toolkit-git: Toolkit for specialized applications development.
+	optdepends = MultiSpecies-eXtension-git: enables EPANET to model complex reaction schemes between multispecies.
+	provides = epanet2
+	conflicts = epanet2
+	source = git://github.com/lothar-mar/epanet2.git
+	md5sums = SKIP
+
+pkgname = epanet2-git
+
