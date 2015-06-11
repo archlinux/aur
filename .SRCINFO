@@ -1,0 +1,18 @@
+pkgbase = python2-plac-git
+	pkgdesc = Command line parser for Python 2. Parsing the command line the easy way
+	pkgver = 0.7.4.r2.bc10e66
+	pkgrel = 1
+	url = https://github.com/kennethreitz-archive/plac
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2
+	provides = python2-plac
+	conflicts = python-plac
+	conflicts = python2-plac
+	source = git+https://github.com/kennethreitz-archive/plac.git
+	sha256sums = SKIP
+
+pkgname = python2-plac-git
+
