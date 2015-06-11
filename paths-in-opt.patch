@@ -1,0 +1,121 @@
+diff --git a/include/ClientCaches.py b/include/ClientCaches.py
+index 4dd2292..9e0e3ee 100644
+--- a/include/ClientCaches.py
++++ b/include/ClientCaches.py
+@@ -486,4 +486,4 @@ class ThumbnailCache( object ):
+                 
+             
+         
+-    
+\ No newline at end of file
++    
+diff --git a/include/ClientGUI.py b/include/ClientGUI.py
+index 96fef72..ea9f71f 100755
+--- a/include/ClientGUI.py
++++ b/include/ClientGUI.py
+@@ -131,7 +131,7 @@ class FrameGUI( ClientGUICommon.FrameThatResizes ):
+         aboutinfo.SetVersion( HydrusData.ToString( HC.SOFTWARE_VERSION ) )
+         aboutinfo.SetDescription( CC.CLIENT_DESCRIPTION )
+         
+-        with open( HC.BASE_DIR + os.path.sep + 'license.txt', 'rb' ) as f: license = f.read()
++        with open( '/usr/share/licenses/hydrus/license.txt', 'rb' ) as f: license = f.read()
+         
+         aboutinfo.SetLicense( license )
+         
+@@ -1884,7 +1884,7 @@ The password is cleartext here but obscured in the entry dialog. Enter a blank p
+                 
+             elif command == '8chan_board': webbrowser.open( 'http://8ch.net/hydrus/index.html' )
+             elif command == 'file_integrity': self._CheckFileIntegrity()
+-            elif command == 'help': webbrowser.open( 'file://' + HC.BASE_DIR + '/help/index.html' )
++            elif command == 'help': webbrowser.open( 'file:///opt/hydrus/help/index.html' )
+             elif command == 'help_about': self._AboutWindow()
+             elif command == 'help_shortcuts': wx.MessageBox( CC.SHORTCUT_HELP )
+             elif command == 'import_files': self._ImportFiles()
+@@ -3100,4 +3100,4 @@ class FrameSplash( ClientGUICommon.Frame ):
+         
+         self.Refresh()
+         
+-    
+\ No newline at end of file
++    
+diff --git a/include/ClientGUIDialogs.py b/include/ClientGUIDialogs.py
+index 3b964a7..3f5efb5 100755
+--- a/include/ClientGUIDialogs.py
++++ b/include/ClientGUIDialogs.py
+@@ -664,7 +664,7 @@ class DialogFirstStart( Dialog ):
+         self._ok.SetForegroundColour( ( 0, 128, 0 ) )
+         
+         message1 = 'Hi, this looks like the first time you have started the hydrus client. Don\'t forget to check out the'
+-        link = wx.HyperlinkCtrl( self, id = -1, label = 'help', url = 'file://' + HC.BASE_DIR + '/help/index.html' )
++        link = wx.HyperlinkCtrl( self, id = -1, label = 'help', url = 'file:///opt/hydrus/help/index.html' )
+         message2 = 'if you haven\'t already.'
+         message3 = 'When you close this dialog, the client will start its local http server. You will probably get a firewall warning.'
+         message4 = 'You can block it if you like, or you can allow it. It doesn\'t phone home, or expose your files to your network; it just provides another way to locally export your files.'
+@@ -5133,4 +5133,4 @@ class DialogYesNo( Dialog ):
+         if event.KeyCode == wx.WXK_ESCAPE: self.EndModal( wx.ID_NO )
+         else: event.Skip()
+         
+-    
+\ No newline at end of file
++    
+diff --git a/include/HydrusConstants.py b/include/HydrusConstants.py
+index 79580fd..327989c 100755
+--- a/include/HydrusConstants.py
++++ b/include/HydrusConstants.py
+@@ -3,9 +3,9 @@ import sys
+ 
+ # dirs
+ 
+-BASE_DIR = sys.path[0]
++BASE_DIR = os.path.expanduser("~/.local/share/hydrus")
+ 
+-BIN_DIR = BASE_DIR + os.path.sep + 'bin'
++BIN_DIR = "/opt/hydrus/bin"
+ DB_DIR = BASE_DIR + os.path.sep + 'db'
+ CLIENT_ARCHIVES_DIR = DB_DIR + os.path.sep + 'client_archives'
+ CLIENT_FILES_DIR = DB_DIR + os.path.sep + 'client_files'
+@@ -16,8 +16,14 @@ SERVER_MESSAGES_DIR = DB_DIR + os.path.sep + 'server_messages'
+ CLIENT_UPDATES_DIR = DB_DIR + os.path.sep + 'client_updates'
+ SERVER_UPDATES_DIR = DB_DIR + os.path.sep + 'server_updates'
+ LOGS_DIR = BASE_DIR + os.path.sep + 'logs'
+-STATIC_DIR = BASE_DIR + os.path.sep + 'static'
+-
++STATIC_DIR = '/opt/hydrus/static'
++TEMP_DIR = BASE_DIR + os.path.sep + 'temp'
++
++for dirs in [LOGS_DIR, TEMP_DIR, DB_DIR]:
++    try:
++        os.makedirs(dirs)
++    except os.error:
++        pass
+ #
+ 
+ PLATFORM_WINDOWS = False
+@@ -556,4 +562,4 @@ sqlite3.register_adapter( bool, int )
+ 
+ sqlite3.register_converter( 'BLOB_BYTES', str )
+ sqlite3.register_converter( 'INTEGER_BOOLEAN', integer_boolean_to_bool )
+-sqlite3.register_converter( 'TEXT_YAML', yaml.safe_load )
+\ No newline at end of file
++sqlite3.register_converter( 'TEXT_YAML', yaml.safe_load )
+diff --git a/include/HydrusServerResources.py b/include/HydrusServerResources.py
+index 8c3779c..3037df8 100644
+--- a/include/HydrusServerResources.py
++++ b/include/HydrusServerResources.py
+@@ -784,11 +784,11 @@ class HydrusResourceCommandBooruThumbnail( HydrusResourceCommandBooru ):
+         mime = media_result.GetMime()
+         
+         if mime in HC.MIMES_WITH_THUMBNAILS: path = ClientFiles.GetThumbnailPath( hash, full_size = False )
+-        elif mime in HC.AUDIO: path = HC.STATIC_DIR + os.path.sep + 'audio_resized.png'
+-        elif mime in HC.VIDEO: path = HC.STATIC_DIR + os.path.sep + 'video_resized.png'
+-        elif mime == HC.APPLICATION_FLASH: path = HC.STATIC_DIR + os.path.sep + 'flash_resized.png'
+-        elif mime == HC.APPLICATION_PDF: path = HC.STATIC_DIR + os.path.sep + 'pdf_resized.png'
+-        else: path = HC.STATIC_DIR + os.path.sep + 'hydrus_resized.png'
++        elif mime in HC.AUDIO: path = HC.TEMP_DIR + os.path.sep + 'audio_resized.png'
++        elif mime in HC.VIDEO: path = HC.TEMP_DIR + os.path.sep + 'video_resized.png'
++        elif mime == HC.APPLICATION_FLASH: path = HC.TEMP_DIR + os.path.sep + 'flash_resized.png'
++        elif mime == HC.APPLICATION_PDF: path = HC.TEMP_DIR + os.path.sep + 'pdf_resized.png'
++        else: path = HC.TEMP_DIR + os.path.sep + 'hydrus_resized.png'
+         
+         response_context = ResponseContext( 200, path = path )
+         

@@ -1,0 +1,26 @@
+diff --git a/include/ClientGUI.py b/include/ClientGUI.py
+index ea9f71f..3edbf21 100755
+--- a/include/ClientGUI.py
++++ b/include/ClientGUI.py
+@@ -234,20 +234,7 @@ class FrameGUI( ClientGUICommon.FrameThatResizes ):
+                     
+                     HydrusData.ShowText( u'Starting server\u2026' )
+                     
+-                    my_scriptname = sys.argv[0]
+-                    
+-                    if my_scriptname.endswith( 'pyw' ):
+-                        
+-                        if HC.PLATFORM_WINDOWS or HC.PLATFORM_OSX: python_bin = 'pythonw'
+-                        else: python_bin = 'python'
+-                        
+-                        subprocess.Popen( python_bin + ' "' + HC.BASE_DIR + os.path.sep + 'server.pyw"', shell = True )
+-                        
+-                    else:
+-                        
+-                        if HC.PLATFORM_WINDOWS: subprocess.Popen( '"' + HC.BASE_DIR + os.path.sep + 'server.exe"', shell = True )
+-                        else: subprocess.Popen( '"./' + HC.BASE_DIR + os.path.sep + 'server"', shell = True )
+-                        
++                    subprocess.Popen( ["hydrus-server"] )
+                     
+                     time_waited = 0
+                     

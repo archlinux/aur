@@ -1,0 +1,44 @@
+pkgbase = hydrus
+	pkgdesc = Danbooru-like image tagging and searching system for the desktop
+	pkgver = 160
+	pkgrel = 1
+	url = http://hydrusnetwork.github.io/hydrus/
+	install = hydrus.install
+	arch = any
+	license = WTFPL
+	makedepends = git
+	depends = python2
+	depends = wxpython
+	depends = opencv
+	depends = python2-beautifulsoup4
+	depends = python2-yaml
+	depends = hsaudiotag
+	depends = python2-pypdf2
+	depends = python2-pafy
+	depends = python2-lz4
+	depends = python2-numpy
+	depends = python2-twisted
+	depends = python2-pillow
+	depends = python2-potr
+	depends = python2-flvlib
+	depends = python2-socks
+	optdepends = ffmpeg: show duration and other information on video thumbnails
+	optdepends = miniupnpc: automatic port forwarding
+	options = !strip
+	source = hydrus::git+https://github.com/hydrusnetwork/hydrus.git#commit=54238debc3004889ae5b5777076838bece5a0d57
+	source = paths-in-opt.patch
+	source = running-the-server.patch
+	source = cython-workarounds.patch
+	source = hydrus-client
+	source = hydrus-server
+	source = hydrus.desktop
+	sha256sums = SKIP
+	sha256sums = 039fc987703dd6ea37cbef0831112d03ebf3d1e55fa38271f4d13b6fa686c5b0
+	sha256sums = 9218f8b48ecf91075132914693dbc3afbd8bf0bcd69989be1c044eacb9191da3
+	sha256sums = 5ee65187005e2807c98e385da122ff63c9ac856c35b4875989aad29d0f314d25
+	sha256sums = b2bf66b1068969e9598742d5c128cb04fd609512b0cff0ad5e25ecb6cdd35678
+	sha256sums = ac7254e3cdb359ebae302655b72b9f74b85d9e817c326fa28173791b3fb4f114
+	sha256sums = 9ba3942ac1a37f6b39c98ae6592573402bf08d8376f64554d0696c0fed6fd0e2
+
+pkgname = hydrus
+
