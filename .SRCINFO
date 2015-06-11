@@ -1,0 +1,19 @@
+pkgbase = pacman-static
+	pkgdesc = Statically-compiled pacman (to fix or install systems without libc)
+	pkgver = 2015
+	pkgrel = 5
+	url = http://www.archlinux.org/pacman/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gnupg
+	makedepends = abs
+	makedepends = asciidoc
+	makedepends = python2
+	makedepends = fakechroot
+	optdepends = gnupg: verify package integrity
+	source = genpacmanstatic
+	sha256sums = 77c706302199aa096dc990a71494f4525b819a81deab194cd2fc5ab1b6032b28
+
+pkgname = pacman-static
+
