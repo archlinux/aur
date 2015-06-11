@@ -1,0 +1,88 @@
+diff -up src/wmclockmon-0.8.1/src/Makefile.am.orig src/wmclockmon-0.8.1/src/Makefile.am
+--- src/wmclockmon-0.8.1/src/Makefile.am.orig	2005-04-07 03:37:43.000000000 -0600
++++ src/wmclockmon-0.8.1/src/Makefile.am	2014-04-09 21:55:26.000000000 -0600
+@@ -13,13 +13,7 @@ wmclockmon_SOURCES =   \
+ 	parts.xpm \
+ 	letters.xpm
+ 
+-CPPFLAGS = @CPPFLAGS@ @DFLAGS@
++wmclockmon_CPPFLAGS = $(DFLAGS) $(HEADER_SEARCH_PATH) -DDATADIR=\"$(pkgdatadir)\"
++wmclockmon_CFLAGS = `pkg-config gtk+ --cflags`
++wmclockmon_LDFLAGS = $(LIBRARY_SEARCH_PATH) $(XLIBS) `pkg-config gtk+ --libs`
+ 
+-INCLUDES = @HEADER_SEARCH_PATH@
+-
+-wmclockmon_LDADD = @LIBRARY_SEARCH_PATH@ @XLIBS@
+-
+-INSTALL_PROGRAM = \
+-	@INSTALL_PROGRAM@ \
+-	@SETGID_FLAGS@ \
+-	$(AM_INSTALL_PROGRAM_FLAGS)
+diff -up src/wmclockmon-0.8.1/styles/Makefile.am.orig src/wmclockmon-0.8.1/styles/Makefile.am
+--- src/wmclockmon-0.8.1/styles/Makefile.am.orig	2014-04-09 22:01:14.000000000 -0600
++++ src/wmclockmon-0.8.1/styles/Makefile.am	2014-04-09 22:01:41.000000000 -0600
+@@ -1,5 +1,5 @@
+-# extra distribution files \
+-data_DATA =  \
++# extra distribution files
++dist_pkgdata_DATA =  \
+ backlight0_off.xpm \
+ backlight0_on.xpm \
+ backlight1_off.xpm \
+diff -up src/wmclockmon-0.8.1/wmclockmon-cal/Makefile.am.orig src/wmclockmon-0.8.1/wmclockmon-cal/Makefile.am
+--- src/wmclockmon-0.8.1/wmclockmon-cal/Makefile.am.orig	2005-04-07 03:37:43.000000000 -0600
++++ src/wmclockmon-0.8.1/wmclockmon-cal/Makefile.am	2014-04-09 21:55:33.000000000 -0600
+@@ -1,6 +1,6 @@
+ bin_PROGRAMS = wmclockmon-cal
+ 
+-wmclockmon_SOURCES =   \
++wmclockmon_cal_SOURCES =   \
+ 	defines.h \
+ 	main.c \
+ 	main.h \
+@@ -9,13 +9,6 @@ wmclockmon_SOURCES =   \
+ 	tools.c \
+ 	tools.h
+ 
+-CPPFLAGS = @CPPFLAGS@ @DFLAGS@
+-
+-INCLUDES = @HEADER_SEARCH_PATH@
+-
+-wmclockmon_LDADD = @LIBRARY_SEARCH_PATH@ @XLIBS@
+-
+-INSTALL_PROGRAM = \
+-	@INSTALL_PROGRAM@ \
+-	@SETGID_FLAGS@ \
+-	$(AM_INSTALL_PROGRAM_FLAGS)
++wmclockmon_cal_CPPFLAGS = $(DFLAGS) $(HEADER_SEARCH_PATH) -DDATADIR=\"$(pkgdatadir)\"
++wmclockmon_cal_CFLAGS = `pkg-config gtk+ --cflags`
++wmclockmon_cal_LDFLAGS = $(LIBRARY_SEARCH_PATH) $(XLIBS) `pkg-config gtk+ --libs`
+diff -up src/wmclockmon-0.8.1/wmclockmon-config/Makefile.am.orig src/wmclockmon-0.8.1/wmclockmon-config/Makefile.am
+--- src/wmclockmon-0.8.1/wmclockmon-config/Makefile.am.orig	2005-04-07 03:37:43.000000000 -0600
++++ src/wmclockmon-0.8.1/wmclockmon-config/Makefile.am	2014-04-09 21:55:36.000000000 -0600
+@@ -1,6 +1,6 @@
+-bin_PROGRAMS = wmclockmon
++bin_PROGRAMS = wmclockmon-config
+ 
+-wmclockmon_SOURCES =   \
++wmclockmon_config_SOURCES =   \
+ 	actions.c \
+ 	actions.h \
+ 	configfile.h \
+@@ -16,13 +16,6 @@ wmclockmon_SOURCES =   \
+ 	tools.h \
+ 	variables.h
+ 
+-CPPFLAGS = @CPPFLAGS@ @DFLAGS@
+-
+-INCLUDES = @HEADER_SEARCH_PATH@
+-
+-wmclockmon_LDADD = @LIBRARY_SEARCH_PATH@ @XLIBS@
+-
+-INSTALL_PROGRAM = \
+-	@INSTALL_PROGRAM@ \
+-	@SETGID_FLAGS@ \
+-	$(AM_INSTALL_PROGRAM_FLAGS)
++wmclockmon_config_CPPFLAGS = $(DFLAGS) $(HEADER_SEARCH_PATH) -DDATADIR=\"$(pkgdatadir)\"
++wmclockmon_config_CFLAGS = `pkg-config gtk+ --cflags`
++wmclockmon_config_LDFLAGS = $(LIBRARY_SEARCH_PATH) $(XLIBS) `pkg-config gtk+ --libs`

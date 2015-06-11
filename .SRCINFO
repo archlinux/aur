@@ -1,0 +1,19 @@
+pkgbase = wmclockmon
+	pkgdesc = A dockapp which displays a clock in 12/24h mode with alarm mode and 3 different LCD styles
+	pkgver = 0.8.1
+	pkgrel = 6
+	url = http://tnemeth.free.fr/projets/dockapps.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	depends = libxpm
+	source = http://tnemeth.free.fr/projets/programmes/wmclockmon-0.8.1.tar.gz
+	source = build1.2.patch
+	source = build2.0.patch
+	md5sums = e5569e326f5542a181dd123836f652ee
+	md5sums = 793aa2abf60996d29de4ef97cc7b37fa
+	md5sums = 641dc6f5bc5449a59fe206cefa068b95
+
+pkgname = wmclockmon
+

@@ -1,0 +1,128 @@
+diff -up src/wmclockmon-0.8.1/src/Makefile.am.orig src/wmclockmon-0.8.1/src/Makefile.am
+--- src/wmclockmon-0.8.1/src/Makefile.am.orig	2005-04-07 03:37:43.000000000 -0600
++++ src/wmclockmon-0.8.1/src/Makefile.am	2014-04-09 22:20:36.000000000 -0600
+@@ -13,13 +13,7 @@ wmclockmon_SOURCES =   \
+ 	parts.xpm \
+ 	letters.xpm
+ 
+-CPPFLAGS = @CPPFLAGS@ @DFLAGS@
++wmclockmon_CPPFLAGS = $(DFLAGS) $(HEADER_SEARCH_PATH) -DDATADIR=\"$(pkgdatadir)\" -DGTK_ENABLE_BROKEN -Dgtk_widget_draw_default\(x\)
++wmclockmon_CFLAGS = `pkg-config gtk+-2.0 --cflags`
++wmclockmon_LDFLAGS = $(LIBRARY_SEARCH_PATH) $(XLIBS) `pkg-config gtk+-2.0 --libs`
+ 
+-INCLUDES = @HEADER_SEARCH_PATH@
+-
+-wmclockmon_LDADD = @LIBRARY_SEARCH_PATH@ @XLIBS@
+-
+-INSTALL_PROGRAM = \
+-	@INSTALL_PROGRAM@ \
+-	@SETGID_FLAGS@ \
+-	$(AM_INSTALL_PROGRAM_FLAGS)
+diff -up src/wmclockmon-0.8.1/styles/Makefile.am.orig src/wmclockmon-0.8.1/styles/Makefile.am
+--- src/wmclockmon-0.8.1/styles/Makefile.am.orig	2005-04-07 03:37:43.000000000 -0600
++++ src/wmclockmon-0.8.1/styles/Makefile.am	2014-04-09 22:08:44.000000000 -0600
+@@ -1,5 +1,5 @@
+-# extra distribution files \
+-data_DATA =  \
++# extra distribution files
++dist_pkgdata_DATA =  \
+ backlight0_off.xpm \
+ backlight0_on.xpm \
+ backlight1_off.xpm \
+diff -up src/wmclockmon-0.8.1/wmclockmon-cal/mainwindow.c.orig src/wmclockmon-0.8.1/wmclockmon-cal/mainwindow.c
+diff -up src/wmclockmon-0.8.1/wmclockmon-cal/Makefile.am.orig src/wmclockmon-0.8.1/wmclockmon-cal/Makefile.am
+--- src/wmclockmon-0.8.1/wmclockmon-cal/Makefile.am.orig	2005-04-07 03:37:43.000000000 -0600
++++ src/wmclockmon-0.8.1/wmclockmon-cal/Makefile.am	2014-04-09 22:20:30.000000000 -0600
+@@ -1,6 +1,6 @@
+ bin_PROGRAMS = wmclockmon-cal
+ 
+-wmclockmon_SOURCES =   \
++wmclockmon_cal_SOURCES =   \
+ 	defines.h \
+ 	main.c \
+ 	main.h \
+@@ -9,13 +9,6 @@ wmclockmon_SOURCES =   \
+ 	tools.c \
+ 	tools.h
+ 
+-CPPFLAGS = @CPPFLAGS@ @DFLAGS@
+-
+-INCLUDES = @HEADER_SEARCH_PATH@
+-
+-wmclockmon_LDADD = @LIBRARY_SEARCH_PATH@ @XLIBS@
+-
+-INSTALL_PROGRAM = \
+-	@INSTALL_PROGRAM@ \
+-	@SETGID_FLAGS@ \
+-	$(AM_INSTALL_PROGRAM_FLAGS)
++wmclockmon_cal_CPPFLAGS = $(DFLAGS) $(HEADER_SEARCH_PATH) -DDATADIR=\"$(pkgdatadir)\" -DGTK_ENABLE_BROKEN -Dgtk_widget_draw_default\(x\)
++wmclockmon_cal_CFLAGS = `pkg-config gtk+-2.0 --cflags`
++wmclockmon_cal_LDFLAGS = $(LIBRARY_SEARCH_PATH) $(XLIBS) `pkg-config gtk+-2.0 --libs`
+diff -up src/wmclockmon-0.8.1/wmclockmon-config/mainwindow.c.orig src/wmclockmon-0.8.1/wmclockmon-config/mainwindow.c
+--- src/wmclockmon-0.8.1/wmclockmon-config/mainwindow.c.orig	2014-04-09 22:15:02.000000000 -0600
++++ src/wmclockmon-0.8.1/wmclockmon-config/mainwindow.c	2014-04-09 22:15:27.000000000 -0600
+@@ -12,7 +12,7 @@
+ 
+ static GtkWidget *edit;
+ static GtkWidget *set;
+-static GtkWidget *remove;
++static GtkWidget *remov;
+ 
+ static gint list_sel_cb (GtkCList *clist,
+                          gint row,
+@@ -22,7 +22,7 @@ static gint list_sel_cb (GtkCList *clist
+     selected_row = row;
+     gtk_widget_set_sensitive(edit,   TRUE);
+     gtk_widget_set_sensitive(set,    TRUE);
+-    gtk_widget_set_sensitive(remove, TRUE);
++    gtk_widget_set_sensitive(remov,  TRUE);
+     return TRUE;
+ }
+ 
+@@ -35,7 +35,7 @@ gint list_unsel_cb (GtkCList *clist,
+     selected_row = -1;
+     gtk_widget_set_sensitive(edit,   FALSE);
+     gtk_widget_set_sensitive(set,    FALSE);
+-    gtk_widget_set_sensitive(remove, FALSE);
++    gtk_widget_set_sensitive(remov,  FALSE);
+     return TRUE;
+ }
+ 
+@@ -283,7 +283,7 @@ void create_mainwindow() {
+     gtk_table_attach_defaults(GTK_TABLE(table), bouton, 1, 2, 0, 1);
+     gtk_widget_set_sensitive(bouton, FALSE);
+     gtk_widget_show(bouton);
+-    remove = bouton;
++    remov = bouton;
+ 
+ 
+     label = gtk_label_new(" Alarms ");
+diff -up src/wmclockmon-0.8.1/wmclockmon-config/Makefile.am.orig src/wmclockmon-0.8.1/wmclockmon-config/Makefile.am
+--- src/wmclockmon-0.8.1/wmclockmon-config/Makefile.am.orig	2005-04-07 03:37:43.000000000 -0600
++++ src/wmclockmon-0.8.1/wmclockmon-config/Makefile.am	2014-04-09 22:20:34.000000000 -0600
+@@ -1,6 +1,6 @@
+-bin_PROGRAMS = wmclockmon
++bin_PROGRAMS = wmclockmon-config
+ 
+-wmclockmon_SOURCES =   \
++wmclockmon_config_SOURCES =   \
+ 	actions.c \
+ 	actions.h \
+ 	configfile.h \
+@@ -16,13 +16,6 @@ wmclockmon_SOURCES =   \
+ 	tools.h \
+ 	variables.h
+ 
+-CPPFLAGS = @CPPFLAGS@ @DFLAGS@
+-
+-INCLUDES = @HEADER_SEARCH_PATH@
+-
+-wmclockmon_LDADD = @LIBRARY_SEARCH_PATH@ @XLIBS@
+-
+-INSTALL_PROGRAM = \
+-	@INSTALL_PROGRAM@ \
+-	@SETGID_FLAGS@ \
+-	$(AM_INSTALL_PROGRAM_FLAGS)
++wmclockmon_config_CPPFLAGS = $(DFLAGS) $(HEADER_SEARCH_PATH) -DDATADIR=\"$(pkgdatadir)\" -DGTK_ENABLE_BROKEN -Dgtk_widget_draw_default\(x\)
++wmclockmon_config_CFLAGS = `pkg-config gtk+-2.0 --cflags`
++wmclockmon_config_LDFLAGS = $(LIBRARY_SEARCH_PATH) $(XLIBS) `pkg-config gtk+-2.0 --libs`
