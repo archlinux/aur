@@ -9,7 +9,7 @@ arch=('any')
 url="http://www.eevblog.com/forum/testgear/free-ds1052eds1102e-software-for-linux/msg684186/"
 license=('GPL2')
 makedepends=('git' 'qt5-webkit')
-source=("git://github.com/wd5gnr/qrigol.git")
+source=("git://github.com/wd5gnr/qrigol.git" '40-rigol.rules')
 md5sums=('SKIP')
 
 pkgver() {
@@ -28,4 +28,6 @@ package() {
   cd "$srcdir/${_pkgname}"
   install -d "$pkgdir/usr/bin"
   install -m 755 "$srcdir/${_pkgname}/qrigol" "$pkgdir/usr/bin/qrigol"
+  install -d "$pkgdir/usr/lib/udev/rules.d/"
+  install -m 644 "$srcdir/40-rigol.rules" "${pkgdir}/usr/lib/udev/rules.d/"
 }

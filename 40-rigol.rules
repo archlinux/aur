@@ -1,0 +1,13 @@
+ACTION!="add|change", GOTO="rigol_rules_end"
+SUBSYSTEM!="usb|usbmisc|usb_device", GOTO="rigol_rules_end"
+
+# Rigol DS1000 series
+ATTRS{idVendor}=="1ab1", ATTRS{idProduct}=="0588", MODE="664", GROUP="plugdev"
+
+# Rigol DS2000 series
+ATTRS{idVendor}=="1ab1", ATTRS{idProduct}=="04b0", MODE="664", GROUP="plugdev"
+
+# Rigol DG4000 series
+ATTRS{idVendor}=="1ab1", ATTRS{idProduct}=="0641", MODE="664", GROUP="plugdev"
+
+LABEL="rigol_rules_end"
