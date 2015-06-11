@@ -11,10 +11,10 @@
 # Contributor: Luke Shumaker <lukeshu@sbcglobal.net>
 
 pkgbase=linux-libre-rt      # Build stock -rt kernel
-_pkgbasever=3.18-gnu
-_pkgver=3.18.13-gnu
-_rtbasever=3.18
-_rtpatchver=rt10
+_pkgbasever=4.0-gnu
+_pkgver=4.0.4-gnu
+_rtbasever=4.0
+_rtpatchver=rt1
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=('kernel26%' 'kernel26-libre%') # '%' gets replaced with _kernelname
@@ -23,7 +23,7 @@ _replacesoldmodules=() # '%' gets replaced with _kernelname
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}_${_rtpatchver}
 pkgver=${_pkgver//-/_}.${_rtpatchver}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'mips64el')
 url="https://rt.wiki.kernel.org/"
 license=('GPL2')
@@ -46,14 +46,17 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
+        'md-raid0-fix-restore-to-sector-variable-in-raid0_mak.patch'
+        'i915-bogus-warning-from-i915-when-running-on-PREEMPT_RT.patch'
+        'fix-typo-in-intel-sst.patch'
         # loongson-community patch: http://linux-libre.fsfla.org/pub/linux-libre/lemote/gnewsense/pool/debuginfo/
-        "https://repo.parabola.nu/other/linux-libre/patches/3.18-rc6-48c0ad793f-loongson-community.patch"
-        "https://repo.parabola.nu/other/linux-libre/patches/3.18-rc6-48c0ad793f-loongson-community.patch.sig")
-sha256sums=('0f347d8eba8a6878246b94b3559eb0371d96a3f43de2f134513e274de11a60cf'
+        "https://repo.parabola.nu/other/linux-libre/patches/4.0.2-ae91f13af5-loongson-community.patch"
+        "https://repo.parabola.nu/other/linux-libre/patches/4.0.2-ae91f13af5-loongson-community.patch.sig")
+sha256sums=('0e2dd5be12c1f82ab3d03b89cbe3f1a20e14332ec42c102efb226a6283fdd38a'
             'SKIP'
-            'cd0baedefbb12b74cdc76e9a42e735ac710513bc59d9df6a72e963ac01cb983d'
+            'e447de9a53c5aefd25f0474f3304ab87076b88353badaae20dcbd85712e85e61'
             'SKIP'
-            '4852137491341a3f1d976cf5b17c038fdc74b167d555195aacd61094b02ce741'
+            'd69e0a95e30acc679343593a0c9d8eb9caf874cc2a97ae599691aef4e5a589f7'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -61,12 +64,15 @@ sha256sums=('0f347d8eba8a6878246b94b3559eb0371d96a3f43de2f134513e274de11a60cf'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            'eef029fd77f0de3d7724d722e13f4aa3a850158565bd608c834db23d702a8707'
-            '5662022f3820005108e9591e1a6944b753b8b068540316568723e9fee2a34e40'
-            'e2b7479c8d2693421e759a1ff07508a989533f19b8c96916f617983e95a58d2a'
+            'af56a529b4ecf2d2022e90a2cb45b333ddb2c289ba67a2fa230ae8ffa1d4312d'
+            '38ad70222577fc0c995569228dc9104b00deee0846995542661d1fcc2a8e9344'
+            '5bf34aee37178508394885b9b8f870c5ace955aca18f3d5ccc25fea876d8b334'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '81adca8b3f58156f4a245cb7f20750041a9e6848b282942d7d9e213a04c96c9f'
+            'b8911ed02e9f463bdff9dfe0dde84f0b3a9650aa989a5e9a6c4fad67a0ce19c9'
+            '396e6adf67143770881d0609633e40a8bf3e462ca6e539773466a561940d84d8'
+            'a2bb8b48f0ddcd432f2ac62bef731357c29d106f2d32efa92ef571476d722216'
+            '13e141279af2bc17decfc041e015710daac9a6cd1c9b4e871a76cb8f916b9e22'
             'SKIP')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
@@ -110,9 +116,18 @@ prepare() {
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
+  # https://bugzilla.kernel.org/show_bug.cgi?id=98501
+  patch -Np1 -i "${srcdir}/md-raid0-fix-restore-to-sector-variable-in-raid0_mak.patch"
+
+  # stop a bogus WARN_ON with i915
+  patch -p1 -i "${srcdir}/i915-bogus-warning-from-i915-when-running-on-PREEMPT_RT.patch"
+
+  # fix a typo in soc/intel/sst/sst.c
+  patch -p1 -i "${srcdir}/fix-typo-in-intel-sst.patch"
+
   # Adding loongson-community patch
   if [ "${CARCH}" == "mips64el" ]; then
-    patch -p1 -i ${srcdir}/3.18-rc6-48c0ad793f-loongson-community.patch
+    patch -p1 -i ${srcdir}/4.0.2-ae91f13af5-loongson-community.patch
   fi
 
   cat "${srcdir}/config.${CARCH}" > ./.config
@@ -187,8 +202,6 @@ _package() {
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
   # remove the firmware
   rm -rf "${pkgdir}/lib/firmware"
-  # gzip -9 all modules to save 100MB of space
-  find "${pkgdir}" -name '*.ko' -exec gzip -9 {} \;
   # make room for external modules
   ln -s "../extramodules-${_basekernel}${_kernelname}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
   # add real version for building modules and running depmod from post_install/upgrade

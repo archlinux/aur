@@ -1,6 +1,6 @@
 pkgbase = linux-libre-rt
-	pkgver = 3.18.13_gnu.rt10
-	pkgrel = 1
+	pkgver = 4.0.4_gnu.rt1
+	pkgrel = 2
 	url = https://rt.wiki.kernel.org/
 	arch = i686
 	arch = x86_64
@@ -12,12 +12,12 @@ pkgbase = linux-libre-rt
 	makedepends = inetutils
 	makedepends = bc
 	options = !strip
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.18-gnu/linux-libre-3.18-gnu.tar.xz
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.18-gnu/linux-libre-3.18-gnu.tar.xz.sign
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.18.13-gnu/patch-3.18-gnu-3.18.13-gnu.xz
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.18.13-gnu/patch-3.18-gnu-3.18.13-gnu.xz.sign
-	source = http://www.kernel.org/pub/linux/kernel/projects/rt/3.18/older/patch-3.18.13-rt10.patch.xz
-	source = http://www.kernel.org/pub/linux/kernel/projects/rt/3.18/older/patch-3.18.13-rt10.patch.sign
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0-gnu/linux-libre-4.0-gnu.tar.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0-gnu/linux-libre-4.0-gnu.tar.xz.sign
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0.4-gnu/patch-4.0-gnu-4.0.4-gnu.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0.4-gnu/patch-4.0-gnu-4.0.4-gnu.xz.sign
+	source = http://www.kernel.org/pub/linux/kernel/projects/rt/4.0/older/patch-4.0.4-rt1.patch.xz
+	source = http://www.kernel.org/pub/linux/kernel/projects/rt/4.0/older/patch-4.0.4-rt1.patch.sign
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm
@@ -29,13 +29,16 @@ pkgbase = linux-libre-rt
 	source = config.mips64el
 	source = linux.preset
 	source = change-default-console-loglevel.patch
-	source = https://repo.parabola.nu/other/linux-libre/patches/3.18-rc6-48c0ad793f-loongson-community.patch
-	source = https://repo.parabola.nu/other/linux-libre/patches/3.18-rc6-48c0ad793f-loongson-community.patch.sig
-	sha256sums = 0f347d8eba8a6878246b94b3559eb0371d96a3f43de2f134513e274de11a60cf
+	source = md-raid0-fix-restore-to-sector-variable-in-raid0_mak.patch
+	source = i915-bogus-warning-from-i915-when-running-on-PREEMPT_RT.patch
+	source = fix-typo-in-intel-sst.patch
+	source = https://repo.parabola.nu/other/linux-libre/patches/4.0.2-ae91f13af5-loongson-community.patch
+	source = https://repo.parabola.nu/other/linux-libre/patches/4.0.2-ae91f13af5-loongson-community.patch.sig
+	sha256sums = 0e2dd5be12c1f82ab3d03b89cbe3f1a20e14332ec42c102efb226a6283fdd38a
 	sha256sums = SKIP
-	sha256sums = cd0baedefbb12b74cdc76e9a42e735ac710513bc59d9df6a72e963ac01cb983d
+	sha256sums = e447de9a53c5aefd25f0474f3304ab87076b88353badaae20dcbd85712e85e61
 	sha256sums = SKIP
-	sha256sums = 4852137491341a3f1d976cf5b17c038fdc74b167d555195aacd61094b02ce741
+	sha256sums = d69e0a95e30acc679343593a0c9d8eb9caf874cc2a97ae599691aef4e5a589f7
 	sha256sums = SKIP
 	sha256sums = bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494
 	sha256sums = SKIP
@@ -43,12 +46,15 @@ pkgbase = linux-libre-rt
 	sha256sums = SKIP
 	sha256sums = 6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a
 	sha256sums = SKIP
-	sha256sums = eef029fd77f0de3d7724d722e13f4aa3a850158565bd608c834db23d702a8707
-	sha256sums = 5662022f3820005108e9591e1a6944b753b8b068540316568723e9fee2a34e40
-	sha256sums = e2b7479c8d2693421e759a1ff07508a989533f19b8c96916f617983e95a58d2a
+	sha256sums = af56a529b4ecf2d2022e90a2cb45b333ddb2c289ba67a2fa230ae8ffa1d4312d
+	sha256sums = 38ad70222577fc0c995569228dc9104b00deee0846995542661d1fcc2a8e9344
+	sha256sums = 5bf34aee37178508394885b9b8f870c5ace955aca18f3d5ccc25fea876d8b334
 	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
-	sha256sums = 81adca8b3f58156f4a245cb7f20750041a9e6848b282942d7d9e213a04c96c9f
+	sha256sums = b8911ed02e9f463bdff9dfe0dde84f0b3a9650aa989a5e9a6c4fad67a0ce19c9
+	sha256sums = 396e6adf67143770881d0609633e40a8bf3e462ca6e539773466a561940d84d8
+	sha256sums = a2bb8b48f0ddcd432f2ac62bef731357c29d106f2d32efa92ef571476d722216
+	sha256sums = 13e141279af2bc17decfc041e015710daac9a6cd1c9b4e871a76cb8f916b9e22
 	sha256sums = SKIP
 
 pkgname = linux-libre-rt
@@ -59,7 +65,7 @@ pkgname = linux-libre-rt
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux-rt=3.18.13_rt10
+	provides = linux-rt=4.0.4_rt1
 	conflicts = linux-rt
 	conflicts = kernel26-rt
 	conflicts = kernel26-libre-rt
@@ -70,7 +76,7 @@ pkgname = linux-libre-rt
 
 pkgname = linux-libre-rt-headers
 	pkgdesc = Header files and scripts for building modules for Linux-libre-rt kernel
-	provides = linux-rt-headers=3.18.13_rt10
+	provides = linux-rt-headers=4.0.4_rt1
 	conflicts = linux-rt-headers
 	conflicts = kernel26-rt-headers
 	conflicts = kernel26-libre-rt-headers
@@ -80,7 +86,7 @@ pkgname = linux-libre-rt-headers
 
 pkgname = linux-libre-rt-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre-rt kernel
-	provides = linux-rt-docs=3.18.13_rt10
+	provides = linux-rt-docs=4.0.4_rt1
 	conflicts = linux-rt-docs
 	conflicts = kernel26-rt-docs
 	conflicts = kernel26-libre-rt-docs
