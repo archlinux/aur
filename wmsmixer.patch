@@ -1,0 +1,14 @@
+diff -pur wmsmixer-0.5.1.orig/Imakefile wmsmixer-0.5.1/Imakefile
+--- wmsmixer-0.5.1.orig/Imakefile	2003-04-12 16:08:16.000000000 -0600
++++ wmsmixer-0.5.1/Imakefile	2013-03-26 02:12:24.000000000 -0600
+@@ -6,8 +6,8 @@ OSSAUDIO =
+ 
+ DEPLIBS = $(DEPXLIB) 
+ LOCAL_LIBRARIES = $(XPMLIB) $(XLIB) $(OSSAUDIO)
+-CC = c++ -m32
+-LD = c++ -m32 -nostdlib
++CC = c++
++LD = c++ -nostdlib
+ 
+ SRCS = wmsmixer.cc
+ OBJS = wmsmixer.o

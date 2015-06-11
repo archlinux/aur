@@ -1,0 +1,17 @@
+pkgbase = wmsmixer
+	pkgdesc = a hack to wmmixer which makes some changes to the display
+	pkgver = 0.5.1
+	pkgrel = 4
+	url = http://web.archive.org/web/20121021072220/http://dockapps.windowmaker.org/file.php/id/63
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = imake
+	depends = libxpm
+	source = wmsmixer-0.5.1.tar.gz
+	source = wmsmixer.patch
+	md5sums = 02ba412c97c7cc3365690fe74c99f145
+	md5sums = ebaa6d3394ec845d2c8a2c41cb295d56
+
+pkgname = wmsmixer
+
