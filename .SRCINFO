@@ -1,0 +1,29 @@
+pkgbase = ponyguests
+	pkgdesc = Login wrapper to enable guest accounts
+	pkgver = 1428445099
+	pkgrel = 1
+	url = https://github.com/GNU-Pony/ponyguests
+	install = ponyguests.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = make
+	makedepends = coreutils
+	makedepends = linux-api-headers>=3.4
+	makedepends = glibc
+	makedepends = gcc
+	makedepends = sed
+	makedepends = texinfo
+	depends = sh
+	depends = coreutils
+	depends = grep
+	depends = sed
+	depends = bc
+	depends = shadow
+	depends = linux>=3.4
+	depends = glibc
+	source = https://github.com/GNU-Pony/ponyguests/archive/1428445099.tar.gz
+	sha256sums = 95105124ca7e4839f62e61352cddf416fe6aad761dc9558bef775787d7d863ce
+
+pkgname = ponyguests
+
