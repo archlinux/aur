@@ -1,0 +1,14 @@
+pkgbase = wmitime
+	pkgdesc = A dock app showing standard time, date and Internet time
+	pkgver = 0.3
+	pkgrel = 3
+	url = http://www.cs.mun.ca/~gstarkes/wmaker/dockapps/time.html#wmitime
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	source = http://www.cs.mun.ca/~gstarkes/wmaker/dockapps/files/wmitime-0.3.tar.gz
+	md5sums = 7168e9d6b5930d510727530a309d812c
+
+pkgname = wmitime
+
