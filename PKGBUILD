@@ -1,9 +1,10 @@
-# Maintainer: Otto VonStein <otto>
-# Contributor: ex-maintainer Benjamin Robin <benjarobin>
+# $Id$
+# Maintainer: Benjamin Robin <dev@benjarobin.fr>
+# Contributor: Otto VonStein <otto>
 
 pkgname=pencil2d-git
 _gitname=pencil2d
-pkgver=1413.2630deb
+pkgver=1426.841bbb7
 pkgrel=1
 pkgdesc="Animation/drawing software, that lets you create traditional hand-drawn animation using both bitmap and vector graphics"
 arch=('i686' 'x86_64')
@@ -28,7 +29,8 @@ pkgver()
 prepare()
 {
     cd "${_gitname}"
-    #patch -p1 -i "${srcdir}/pencil2d.patch"
+    # Translation build is broken
+    sed -i "/SUBDIRS/s/l10n//" pencil.pro
 }
 
 build()
@@ -43,8 +45,8 @@ build()
 package()
 {
     cd "${_gitname}"
-	install -D -m755 app/Pencil2D "${pkgdir}/usr/bin/pencil2d"
-	install -D -m644 icons/icon.png "${pkgdir}/usr/share/pixmaps/pencil2d.png"
-	install -D -m644 "${srcdir}/pencil2d.desktop" "${pkgdir}/usr/share/applications/pencil2d.desktop"
+    install -D -m755 app/Pencil2D "${pkgdir}/usr/bin/pencil2d"
+    install -D -m644 icons/icon.png "${pkgdir}/usr/share/pixmaps/pencil2d.png"
+    install -D -m644 "${srcdir}/pencil2d.desktop" "${pkgdir}/usr/share/applications/pencil2d.desktop"
 }
 
