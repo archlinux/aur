@@ -1,0 +1,35 @@
+pkgbase = python2-neurokernel-git
+	pkgdesc = Neurokernel is a Python framework for developing models of the fruit fly brain and executing them on multiple NVIDIA GPUs (For Python 2)
+	pkgver = 0.1.r1134.5fed176
+	pkgrel = 2
+	url = http://neurokernel.github.io
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = python2
+	depends = cuda
+	depends = python2-bottleneck
+	depends = python2-matplotlib
+	depends = python2-pyzmq
+	depends = python2-scipy
+	depends = python2-numpy
+	depends = python2-numexpr
+	depends = python2-pytables
+	depends = python2-futures
+	depends = python2-networkx
+	depends = python2-pycuda
+	depends = python2-twiggy
+	depends = python2-bidict-git
+	depends = python2-msgpack-numpy-git
+	depends = python2-nose
+	depends = python2-mock
+	depends = python2-h5py
+	depends = python2-setuptools
+	depends = cython2
+	provides = python2-neurokernel
+	conflicts = python2-neurokernel
+	source = git+https://github.com/neurokernel/neurokernel.git
+	sha256sums = SKIP
+
+pkgname = python2-neurokernel-git
+
