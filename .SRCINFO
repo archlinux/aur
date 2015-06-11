@@ -1,0 +1,16 @@
+pkgbase = bully
+	pkgdesc = Retrieve WPA/WPA2 passphrase from a WPS enabled access point.
+	pkgver = 1.0.22
+	pkgrel = 2
+	url = https://github.com/bdpurcell/bully
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = make
+	depends = libpcap
+	depends = openssl
+	source = https://github.com/blshkv/bully/archive/v1.0-22.tar.gz
+	sha512sums = 7b25225afd55da87df33436d2192673731d9c6300bc146f8f55dcfddf03a2308db33161c3ca1c99b30b2275d9822ff44122298669fff0efd3752a2a0e6991dc3
+
+pkgname = bully
+
