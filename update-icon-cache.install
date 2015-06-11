@@ -1,0 +1,14 @@
+post_install() {
+ for dir in usr/share/icons/Vivacious*; do
+  gtk-update-icon-cache -ftq $dir
+ done
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  post_install
+}
+

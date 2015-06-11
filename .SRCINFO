@@ -1,0 +1,19 @@
+pkgbase = vivacious-colors
+	pkgdesc = A vivid and modern GTK icon theme. Featuring a completely NEW set of application icons (Re-designed by RAVEfinity based on Plasma-Next, Flattr and Emerald).
+	pkgver = 1.1a
+	pkgrel = 1
+	url = http://www.ravefinity.com/p/vivacious-colors-gtk-icon-theme.html
+	install = update-icon-cache.install
+	arch = any
+	groups = x11
+	license = custom:cc-by-sa-3.0
+	license = GPL2
+	options = !strip
+	options = !zipman
+	options = libtool
+	options = staticlibs
+	source = vivacious-colors-1.1a.tar.gz::https://googledrive.com/host/0B7iDWdwgu9QAemEzQVo5aHJneU0
+	md5sums = d9b76c5f1f2b1816ee54abc9791c4af0
+
+pkgname = vivacious-colors
+
