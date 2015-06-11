@@ -1,0 +1,26 @@
+pkgbase = insight-fm
+	pkgdesc = The Lumina Desktop Environment's file manager
+	pkgver = 0.8.4
+	pkgrel = 1
+	url = https://github.com/pcbsd/lumina
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = qt5-tools
+	makedepends = qt5-base
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = qt5-x11extras
+	depends = oxygen
+	depends = oxygen-icons
+	depends = desktop-file-utils
+	depends = qtchooser
+	provides = insight-fm
+	conflicts = lumina-de-git
+	conflicts = lumina-desktop
+	conflicts = lumina-desktop-git
+	source = https://github.com/pcbsd/lumina/archive/v0.8.4-Release-P1.tar.gz
+	md5sums = 7f6fe869e99ee0816bcea12c0da92acd
+
+pkgname = insight-fm
+
