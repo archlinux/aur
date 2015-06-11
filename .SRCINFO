@@ -1,0 +1,16 @@
+pkgbase = ttf-nova
+	pkgdesc = A font familly originally created for making inscriptions on stone.
+	pkgver = 20110529
+	pkgrel = 2
+	url = http://openfontlibrary.org/font/nova
+	install = nova.install
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = http://openfontlibrary.org/assets/downloads/nova/84af1e3cda286046b841f0d608a87da4/nova.zip
+	md5sums = 84af1e3cda286046b841f0d608a87da4
+
+pkgname = ttf-nova
+
