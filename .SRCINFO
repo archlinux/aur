@@ -1,0 +1,21 @@
+pkgbase = python2-nolearn-git
+	pkgdesc = Contains a number of wrappers around existing neural network libraries, along with a few machine learning utility modules. Most functionality is written to be compatible with the the excellent scikit-learn library.
+	pkgver = 0.6adev.0.5.r99.gfbf6f40
+	pkgrel = 2
+	url = https://github.com/dnouri/nolearn
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-docopt
+	depends = python2-gdbn
+	depends = python2-joblib
+	depends = python2-scikit-learn
+	provides = python2-nolearn
+	conflicts = python2-nolearn
+	source = git+https://github.com/dnouri/nolearn.git
+	sha256sums = SKIP
+
+pkgname = python2-nolearn-git
+
