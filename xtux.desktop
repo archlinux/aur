@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=XTux
+Comment=A Gauntlet-style arcade game for X11 with multiplayer mode
+Exec=xtux
+Icon=xtux.xpm
+Terminal=false
+Categories=Game;ActionGame;

@@ -1,0 +1,37 @@
+--- xtux.orig/Makefile	2003-02-04 20:59:01.000000000 +0500
++++ xtux/Makefile	2012-02-26 16:31:00.092498256 +0600
+@@ -5,7 +5,7 @@
+ #============================================================#
+ 
+ #Change this to where you want to put the data directory.
+-DATADIR = `pwd`/data
++DATADIR = /usr/share/xtux
+ #Eg you might want to put the data files here......
+ #DATADIR = /usr/share/games/xtux
+ 
+--- xtux.orig/src/client/win.h	2003-03-05 20:20:04.000000000 +0500
++++ xtux/src/client/win.h	2012-02-26 15:59:09.479154124 +0600
+@@ -11,9 +11,9 @@
+ #define DEF_WIN_H 384
+ 
+ /* Font names */
+-#define MED_FONT_18 "-adobe-helvetica-medium-r-*-*-18-*-*-*-*-*-*-*"
+-#define BOLD_FONT_14 "-*-helvetica-bold-r-*-*-14-*-*-*-*-*-iso8859-*"
+-#define BOLD_FONT_24 "-*-helvetica-bold-r-*-*-24-*-*-*-*-*-iso8859-*"
++#define MED_FONT_18 "-*-*-medium-r-*-*-18-*-*-*-*-*-*-*"
++#define BOLD_FONT_14 "-*-*-bold-r-*-*-14-*-*-*-*-*-iso8859-*"
++#define BOLD_FONT_24 "-*-*-bold-r-*-*-24-*-*-*-*-*-iso8859-*"
+ 
+ typedef struct {
+     Display *d;
+--- xtux.orig/src/client/menu.c	2003-03-05 19:54:17.000000000 +0500
++++ xtux/src/client/menu.c	2012-02-26 19:52:47.701065955 +0600
+@@ -726,7 +726,7 @@
+ 	for( i=0 ; i<3 ; i++ )
+ 	    close(i); /* Close STD-IN, -OUT, -ERR */
+ 
+-	system("./tux_serv -e");
++	system("tux_serv -e");
+ 	/* execlp( "./tux_serv", "-e" );
+ 	   perror("execlp"); */
+ 	exit(-1);

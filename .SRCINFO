@@ -1,0 +1,18 @@
+pkgbase = xtux
+	pkgdesc = A Gauntlet-style arcade game for X11 with multiplayer mode
+	pkgver = 20030306
+	pkgrel = 1
+	url = http://xtux.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	source = http://downloads.sourceforge.net/xtux/xtux-src-20030306.tar.gz
+	source = xtux.patch
+	source = xtux.desktop
+	md5sums = 6ca5d3b48c30411d1a64b4316d5cf6a9
+	md5sums = d04e19ea067837eda0f1ce066d9c8f3a
+	md5sums = 504541ae6fadcb6d56387aedda475979
+
+pkgname = xtux
+
