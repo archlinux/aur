@@ -1,0 +1,19 @@
+pkgbase = python2-cytoolz-git
+	pkgdesc = Cython implementation of Toolz for Python 2. High performance functional utilities.
+	pkgver = 0.7.4dev.r172.c9f6b06
+	pkgrel = 2
+	url = http://github.com/pytoolz/cytoolz
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python2-setuptools
+	makedepends = cython2
+	makedepends = python2-nose
+	depends = python2
+	provides = python2-cytoolz
+	conflicts = python2-cytoolz
+	source = git+http://github.com/pytoolz/cytoolz.git
+	sha256sums = SKIP
+
+pkgname = python2-cytoolz-git
+
