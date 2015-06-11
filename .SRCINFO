@@ -1,0 +1,16 @@
+pkgbase = tumbld-git
+	pkgdesc = A bash script to download all the images from a tumblr or set of tumblrs
+	pkgver = r16.7c6a9ef
+	pkgrel = 1
+	url = https://github.com/nixterrimus/tumbld
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = wget
+	provides = tumbld
+	conflicts = tumbld
+	source = git+https://github.com/nixterrimus/tumbld.git
+	sha256sums = SKIP
+
+pkgname = tumbld-git
+
