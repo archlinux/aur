@@ -1,0 +1,25 @@
+pkgbase = keepassx2-yubikey-git
+	pkgdesc = KeePassX cross platform password manager with support for the YubiKey challenge-response hardware token.
+	pkgver = 2.0.alpha6.r88.g33650c4
+	pkgrel = 1
+	url = https://github.com/kylemanna/keepassx
+	install = keepassx2.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = intltool
+	makedepends = cmake
+	depends = libxtst
+	depends = qt4
+	depends = yubico-c
+	depends = yubikey-personalization
+	conflicts = keepassx-svn
+	conflicts = keepassx
+	conflicts = keepassx2,
+	conflicts = keepassx2-git
+	source = keepassx2-yubikey-git::git+https://github.com/keepassx/keepassx.git#commit=33650c4a040550ff4a3d60f9c26bdb4d69203223
+	md5sums = SKIP
+
+pkgname = keepassx2-yubikey-git
+
