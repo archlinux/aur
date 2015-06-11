@@ -1,0 +1,16 @@
+pkgbase = ttf-inconsolata-hellenic
+	pkgdesc = Monospace font for pretty code listings and for the terminal (augmented with Hellenic glyphs)
+	pkgver = 1.17
+	pkgrel = 2
+	url = http://www.cosmix.org/software/
+	install = ttf-inconsolata-hellenic.install
+	arch = any
+	license = custom:OFL
+	makedepends = unzip
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.cosmix.org/software/files/InconsolataHellenic.zip
+	md5sums = ef6725eb45236c1620baba06a25e14d2
+
+pkgname = ttf-inconsolata-hellenic
+
