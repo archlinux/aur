@@ -1,4 +1,4 @@
-This change is to help users with Postfix that aren't using the -I option
+This change is to help users with Postfix that aren't using the -a option
 to not pass mail from authenticated users through SpamAssassin. Postfix,
 unlike Sendmail, does not provide the {auth_ssf} macro, so in the case
 where mail is from an authenticated user, the modified code can now add
@@ -7,9 +7,9 @@ add (authenticated bits=nnn)), and this is scored favourably by SpamAssassin.
 
 http://bugzilla.redhat.com/730308
 
---- spamass-milter-0.3.2/spamass-milter.cpp
-+++ spamass-milter-0.3.2/spamass-milter.cpp
-@@ -1046,9 +1046,14 @@
+--- spamass-milter.cpp
++++ spamass-milter.cpp
+@@ -1069,9 +1069,14 @@ mlfi_envrcpt(SMFICTX* ctx, char** envrcp
  
  		rec_header = (string) "Received: from " + macro_s + " (" + macro__ + ")\r\n\t";
  

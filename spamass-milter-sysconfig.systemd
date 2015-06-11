@@ -11,4 +11,4 @@
 #EXTRA_FLAGS="-m -r 15"
 
 # Some sane defaults (don't modify message too much; reject if score is too high; ignore authenticated senders; ignore outgoing mail)
-EXTRA_FLAGS="-m -r 15 -I -i 127.0.0.1"
+EXTRA_FLAGS="-m -r 15 -a -i 127.0.0.1"

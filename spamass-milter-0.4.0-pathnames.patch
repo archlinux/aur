@@ -1,6 +1,5 @@
-diff -up spamass-milter-0.3.1/README.pathnames spamass-milter-0.3.1/README
---- spamass-milter-0.3.1/README.pathnames	2010-03-23 20:54:37.630904869 +0000
-+++ spamass-milter-0.3.1/README	2010-03-23 20:55:22.007964867 +0000
+--- README
++++ README
 @@ -42,7 +42,7 @@ put the spamass-milter binary and set th
  you want to use. YOU WILL MOST LIKELY HAVE TO EDIT THE VARIABLES ON
  TOP OF THIS FILE.
@@ -18,4 +17,4 @@ diff -up spamass-milter-0.3.1/README.pathnames spamass-milter-0.3.1/README
 +INPUT_MAIL_FILTER(`spamassassin', `S=unix:/var/run/spamass-milter/spamass-milter.sock, F=, T=C:15m;S:4m;R:4m;E:10m')dnl
  define(`confMILTER_MACROS_ENVRCPT',confMILTER_MACROS_ENVRCPT`, b, r, v, Z')dnl
  
- should do the trick. Of course you need to modify the path of the
+ 

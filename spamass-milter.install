@@ -1,22 +1,7 @@
-setup_user() {
-  /usr/bin/getent group sa-milt >/dev/null || (/usr/bin/groupadd -r sa-milt && echo "Added sa-milt group")
-  /usr/bin/getent passwd sa-milt >/dev/null || \
-    (/usr/bin/useradd -r -g sa-milt -d /var/lib/spamass-milter \
-    -s /usr/bin/nologin -c "SpamAssassin Milter" sa-milt && echo "Added sa-milt user")
-  # Fix homedir for upgrades
-  /usr/bin/usermod --home /var/lib/spamass-milter sa-milt &>/dev/null
-
-  # This is needed because the milter needs to "give away" the MTA communication
-  # socket to the postfix group, and it needs to be a member of the group to do
-  # that.
-  # (Adds sa-milt user to postfix group if postfix group exists)
-  /usr/bin/getent group postfix >/dev/null && /usr/bin/usermod -a -G postfix sa-milt
-}
-
 # arg 1:  the new package version
 post_install() {
-  setup_user
   systemctl daemon-reload
+  systemd-sysusers /usr/lib/sysusers.d/spamass-milter.conf
   systemd-tmpfiles --create /usr/lib/tmpfiles.d/spamass-milter.conf
   systemd-tmpfiles --create /usr/lib/tmpfiles.d/spamass-milter-postfix.conf
   echo "Use the systemd unit spamass-milter.service or spamass-milter-root.service depending on your needs."
@@ -25,7 +10,10 @@ post_install() {
 # arg 1:  the new package version
 # arg 2:  the old package version
 post_upgrade() {
-  setup_user
+  if [[ "$2" < "0.4.0" ]]; then
+    echo "WARNING: The '-I' argument has been changed upstream to '-a'; update your configuration accordingly"
+  fi
+
   systemctl daemon-reload
   systemd-tmpfiles --create /usr/lib/tmpfiles.d/spamass-milter.conf
   systemd-tmpfiles --create /usr/lib/tmpfiles.d/spamass-milter-postfix.conf
@@ -44,10 +32,11 @@ pre_remove() {
 
 # arg 1:  the old package version
 post_remove() {
+  # Delete the sa-milt username and group if they exist (they should)
+  [[ $(getent passwd sa-milt) ]] && userdel sa-milt
+  [[ $(getent group sa-milt) ]] && groupdel sa-milt
+  echo "The 'sa-milt' user and group have been removed."
   systemctl daemon-reload
-  /usr/bin/userdel sa-milt && echo "Removed sa-milt user"
-  # Since sa-milt should be the only user in the sa-milt group, by default removing the user will also remove the group. But we add this extra check just in case.
-  /usr/bin/getent group sa-milt >/dev/null || (/usr/bin/groupdel sa-milt && echo "Removed sa-milt group")
 }
 
 # vim:set ts=2 sw=2 et:

@@ -9,10 +9,9 @@ https://savannah.nongnu.org/bugs/index.php?17178
 http://bugs.debian.org/510665
 http://bugzilla.redhat.com/496763
 
-diff -up spamass-milter-0.3.2/spamass-milter.cpp.rcvd spamass-milter-0.3.2/spamass-milter.cpp
---- spamass-milter-0.3.2/spamass-milter.cpp.rcvd	2011-02-15 10:46:55.000000000 +0000
-+++ spamass-milter-0.3.2/spamass-milter.cpp	2011-02-15 10:50:25.538111680 +0000
-@@ -966,7 +966,7 @@ mlfi_envrcpt(SMFICTX* ctx, char** envrcp
+--- spamass-milter.cpp
++++ spamass-milter.cpp
+@@ -996,7 +996,7 @@ mlfi_envrcpt(SMFICTX* ctx, char** envrcp
  
  		assassin->output((string)
  			"Received: from "+macro_s+" ("+macro__+")\r\n\t"+
