@@ -1,0 +1,16 @@
+pkgbase = gimp-plugin-image-reg
+	pkgdesc = Image registration plugin for the GIMP
+	pkgver = 0.5.5
+	pkgrel = 1
+	url = http://registry.gimp.org/node/24248
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = intltool
+	makedepends = gettext
+	depends = gimp
+	source = http://downloads.sourceforge.net/gimp-image-reg/gimp-image-reg-0.5.5.tar.gz
+	md5sums = 405b87140880de18d695173ee6b08981
+
+pkgname = gimp-plugin-image-reg
+
