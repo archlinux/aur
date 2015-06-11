@@ -1,0 +1,15 @@
+pkgbase = svxlink-sounds-en_us-heather-16k
+	pkgdesc = Sound Package en_US-heather-16k from svxlink in high quality
+	pkgver = 13.12
+	pkgrel = 3
+	url = http://sourceforge.net/projects/svxlink/
+	arch = any
+	license = GPL
+	depends = svxlink
+	provides = svxlink-sounds
+	replaces = sounds-en_us-heather-16k
+	source = svxlink-sounds-en_us-heather-16k-13.12.tar.bz2::https://github.com/sm0svx/svxlink-sounds-en_US-heather/releases/download/14.08/svxlink-sounds-en_US-heather-16k-13.12.tar.bz2
+	sha256sums = 26c19d7019d22bac1b5deb49fe7b2197ec5ca7b16daa02ec1d0a058a926f5c69
+
+pkgname = svxlink-sounds-en_us-heather-16k
+
