@@ -1,0 +1,15 @@
+pkgbase = python2-xstatic-angular-lrdragndrop
+	pkgdesc = XStatic-Angular-lrdragndrop
+	pkgver = 1.0.2.2
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/XStatic-Angular-lrdragndrop
+	arch = i686
+	arch = x86_64
+	makedepends = python2-setuptools
+	makedepends = python2-pip
+	depends = python2
+	source = https://pypi.python.org/packages/source/X/XStatic-Angular-lrdragndrop/XStatic-Angular-lrdragndrop-1.0.2.2.tar.gz
+	md5sums = afd682cab9f436cf22b025dfcabaa225
+
+pkgname = python2-xstatic-angular-lrdragndrop
+
