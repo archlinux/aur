@@ -1,6 +1,6 @@
 pkgbase = nullidentdmod-git
 	pkgdesc = Minimal identd server with customizable userid
-	pkgver = 20150601.21.a31bcf2
+	pkgver = 20150610.22.c3f0e54
 	pkgrel = 1
 	url = http://web.craft.net.br/NullidentdMod/
 	arch = any

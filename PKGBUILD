@@ -1,6 +1,7 @@
-# Maintainet: AcidHub <acidhub@craft.net.br>
+# Maintainer: AcidHub <acidhub@craft.net.br>
+
 pkgname=nullidentdmod-git
-pkgver=20150601.21.a31bcf2
+pkgver=20150610.22.c3f0e54
 pkgrel=1
 pkgdesc="Minimal identd server with customizable userid"
 conflicts=('oidentd' 'nullidentd' 'pindetd')
@@ -23,7 +24,7 @@ build() {
 package() {
     cd "${pkgname%-*}"
     make DESTDIR="${pkgdir}" PREFIX=/usr install
-    install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 
