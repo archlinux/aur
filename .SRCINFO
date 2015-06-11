@@ -1,0 +1,14 @@
+pkgbase = gocode-daemon
+	pkgdesc = An autocompletion daemon for the Go programming language (binary only)
+	pkgver = 20150303
+	pkgrel = 1
+	url = https://github.com/nsf/gocode
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = go
+	source = https://github.com/nsf/gocode/archive/v.20150303.tar.gz
+	md5sums = d379961598b8a3c4a67a9d26df291c40
+
+pkgname = gocode-daemon
+
