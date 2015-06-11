@@ -1,0 +1,16 @@
+pkgbase = castawesome
+	pkgdesc = A GUI frontend for ffmpeg livestreaming
+	pkgver = 0.15.1
+	pkgrel = 3
+	url = http://sourceforge.net/projects/castawesome/
+	arch = any
+	license = GPL3
+	depends = ffmpeg
+	depends = gtk3
+	depends = python2
+	depends = python2-gobject
+	source = https://github.com/TheSamsai/Castawesome/releases/download/0.15.1/castawesome-0.15.1.tar.gz
+	sha256sums = 65466f03a9981976bb7cbfc8f8c66384b12b2a2aaef7024a3356b43d9d7f33ca
+
+pkgname = castawesome
+
