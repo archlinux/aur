@@ -1,0 +1,15 @@
+pkgbase = kodi-devel-libplatform
+	pkgdesc = Platform support library used by libCEC and binary add-ons for Kodi
+	pkgver = 1.0.9
+	pkgrel = 1
+	url = http://www.kodi.tv
+	arch = i686
+	arch = x86_64
+	groups = kodi-devel
+	license = GPL
+	makedepends = cmake
+	source = http://mirrors.xbmc.org/build-deps/sources/platform-1.0.9.tar.gz
+	md5sums = SKIP
+
+pkgname = kodi-devel-libplatform
+
