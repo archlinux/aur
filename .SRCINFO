@@ -1,0 +1,23 @@
+pkgbase = libkml-git
+	pkgdesc = A KML library written in C++ with bindings to other languages
+	pkgver = r742.9b50572
+	pkgrel = 3
+	url = https://github.com/google/libkml
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = expat
+	depends = uriparser
+	optdepends = swig: bindings for additional languages
+	optdepends = python2: python bindings
+	optdepends = jdk: java bindings
+	provides = minizip
+	provides = libkml
+	conflicts = minizip
+	conflicts = libkml
+	source = libkml::git://github.com/google/libkml.git
+	md5sums = SKIP
+
+pkgname = libkml-git
+
