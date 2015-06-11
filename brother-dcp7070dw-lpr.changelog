@@ -1,0 +1,12 @@
+2015-01-11 Erik Westrup <erik.westrup@gmail.com>
+	
+	*2.1.0_1-3
+	Updated URL to point to the product.
+
+2013-08-16 Erik Westrup <erik.westrup@gmail.com>
+	
+	*2.1.0_1-2
+	One 'source' line too much in PKGBUILD.
+
+	*2.1.0_1-1
+	First submission of the package.

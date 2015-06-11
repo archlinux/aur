@@ -1,0 +1,19 @@
+pkgbase = brother-dcp7070dw-lpr
+	pkgdesc = Brother DCP-7070DW lpr drivers.
+	pkgver = 2.1.0_1
+	pkgrel = 3
+	url = http://support.brother.com/g/b/downloadtop.aspx?c=eu_ot&lang=en&prod=dcp7070dw_eu
+	changelog = brother-dcp7070dw-lpr.changelog
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = custom:brother
+	makedepends = rpmextract
+	depends = lib32-glibc
+	optdepends = brother-dcp7070dw-cups: cupswrapper.
+	noextract = dcp7070dwlpr-2.1.0-1.i386.rpm
+	source = http://www.brother.com/pub/bsc/linux/dlf/dcp7070dwlpr-2.1.0-1.i386.rpm
+	md5sums = 8c117577f9b48670c849d910c8386f5a
+
+pkgname = brother-dcp7070dw-lpr
+
