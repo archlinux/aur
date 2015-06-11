@@ -1,0 +1,71 @@
+diff -up src/wmpiki-0.2.4/README.orig src/wmpiki-0.2.4/README
+--- src/wmpiki-0.2.4/README.orig	2005-03-30 17:50:20.000000000 -0700
++++ src/wmpiki-0.2.4/README	2013-09-02 21:23:40.000000000 -0600
+@@ -8,7 +8,7 @@ Authors: sill <sill@ll.pl>, pasp <pasp@l
+ 
+ Wmpiki is a dockapp which checks and displays small leds 
+ for indicate hosts activity (up to eight hosts). The configuration 
+-file is ~/.clay/wmpiki.rc, so use text editor to change settings.
++file is ~/.config/wmpiki.rc, so use text editor to change settings.
+ The method to determine hosts is very primitive and auwful, but it works ;-)
+ ('ping output + grep' - if you can do it better please do).
+ 
+@@ -39,7 +39,7 @@ where X indicate host number from 1 to 8
+ 
+ Since version 0.2.4 you can run two commands by performing LMB or RMB
+ click on the wmpiki dock. These comands can be reconfigured (defaults
+-are LMB - gnome-nettool, RMB - ethereal) by editing ~/.clay/wmpiki.rc file.
++are LMB - gnome-nettool, RMB - ethereal) by editing ~/.config/wmpiki.rc file.
+ 
+ As was metioned earlier used metod for determine host activity 
+ is strange :O For default 'ping_options' wmpiki will use following command:
+diff -up src/wmpiki-0.2.4/src/mask.h.orig src/wmpiki-0.2.4/src/mask.h
+--- src/wmpiki-0.2.4/src/mask.h.orig	2005-03-30 17:35:25.000000000 -0700
++++ src/wmpiki-0.2.4/src/mask.h	2013-09-02 21:23:40.000000000 -0600
+@@ -1,6 +1,6 @@
+ #define MASK_WIDTH 64
+ #define MASK_HEIGHT 64
+-static unsigned char wmpiki_mask_bits[] = {
++static char wmpiki_mask_bits[] = {
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0xf8, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x1f, 0xf8, 0xff, 0xff, 0xff,
+diff -up src/wmpiki-0.2.4/src/wmpiki.c.orig src/wmpiki-0.2.4/src/wmpiki.c
+--- src/wmpiki-0.2.4/src/wmpiki.c.orig	2005-03-30 17:52:27.000000000 -0700
++++ src/wmpiki-0.2.4/src/wmpiki.c	2013-09-02 21:25:12.000000000 -0600
+@@ -90,7 +90,7 @@ XEvent Event;
+ FILE *ping_f[MAX_HOSTS];
+ char linebuffer[MAX_BUFFER_SIZE];
+ long start_time, current_time, next_time[MAX_HOSTS];
+-int i, launch, but_stat = -1;
++int i, launch;
+ 
+ int xfd = 0;
+ fd_set inputs;
+@@ -208,7 +208,7 @@ int yspacing_table[8] =  {  6,  6,  5,
+ 							break;
+     
+                         case ButtonPress:
+-                            but_stat = dcl_check_mouse_region(Event.xbutton.x, Event.xbutton.y);
++                            dcl_check_mouse_region(Event.xbutton.x, Event.xbutton.y);
+                             break;
+     
+                         case ButtonRelease:
+@@ -254,7 +254,7 @@ void wmpiki_write_prefs(void)
+ int i;
+ char tmpbuffer[MAX_VALUE_LEN];
+ 
+-	if (dcl_prefs_openfile (dcl_getfilename_config (".clay", "wmpiki.rc"), P_WRITE)) {
++	if (dcl_prefs_openfile (dcl_getfilename_config (".config", "wmpiki.rc"), P_WRITE)) {
+     
+ 		for(i=0; i<MAX_HOSTS; i++) {
+ 			sprintf(tmpbuffer, "host%d", i+1);
+@@ -308,7 +308,7 @@ int i;
+ 
+ 	defined_hosts_number = 0;
+ 
+-	if (dcl_prefs_openfile (dcl_getfilename_config(".clay", "wmpiki.rc"), P_READ)) {
++	if (dcl_prefs_openfile (dcl_getfilename_config(".config", "wmpiki.rc"), P_READ)) {
+ 
+ 		for(i=0; i<MAX_HOSTS; i++)
+ 			defined_hosts[i] = false;
