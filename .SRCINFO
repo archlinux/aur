@@ -1,0 +1,15 @@
+pkgbase = xcursor-ize-vision
+	pkgdesc = a couple of X cursor that similar to Windows 7 cursor.
+	pkgver = 0.git
+	pkgrel = 1
+	url = https://github.com/izmntuk/xcursor-ize-vision
+	arch = any
+	license = GPL3
+	makedepends = bash
+	makedepends = xorg-xcursorgen
+	makedepends = git
+	source = git+https://github.com/izmntuk/xcursor-ize-vision.git
+	md5sums = SKIP
+
+pkgname = xcursor-ize-vision
+
