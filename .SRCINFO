@@ -1,0 +1,17 @@
+pkgbase = python2-googlebooks-git
+	pkgdesc = A Python 2 Google Books API library
+	pkgver = 1.0.r5.1600688
+	pkgrel = 1
+	url = https://github.com/hoffmann/googlebooks
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2
+	provides = python2-googlebooks
+	conflicts = python2-googlebooks
+	source = git+https://github.com/hoffmann/googlebooks.git
+	sha256sums = SKIP
+
+pkgname = python2-googlebooks-git
+
