@@ -1,0 +1,17 @@
+pkgbase = perl-class-gomor
+	pkgdesc = another class and object builder
+	pkgver = 1.03
+	pkgrel = 1
+	url = https://metacpan.org/release/Class-Gomor
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/G/GO/GOMOR/Class-Gomor-1.03.tar.gz
+	md5sums = 701c0d407574cd5bb1c52537a63ac276
+	sha512sums = b5447df8a8ef5d6c28ffedb6effaf8e2723f347acec244b6251254d1a0651039b7ebb44d7171c3437ae48810342471bd7dbda4b9c3ea2a2030075ef9de106920
+
+pkgname = perl-class-gomor
+
