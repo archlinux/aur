@@ -1,0 +1,14 @@
+pkgbase = otf-auretech
+	pkgdesc = Custom font based on Star Wars Galactic Basic (Aurebesh/Aurek-Besh) by Tycho_Ordo on theforce.net - Technumbers version
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://boards.theforce.net/threads/new-aurebesh-font.50009464
+	install = otf-auretech.install
+	arch = any
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://www.dropbox.com/s/jsdrwvldw71my96/AureTech.otf
+	md5sums = bb97e49bbe9c2a6d32ae96d8458a1ae5
+
+pkgname = otf-auretech
+
