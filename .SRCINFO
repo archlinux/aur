@@ -1,0 +1,14 @@
+pkgbase = wmbinclock
+	pkgdesc = A dockable WindowMaker app (docklet) binary clock.
+	pkgver = 0.5
+	pkgrel = 3
+	url = http://wmbinclock.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	source = http://downloads.sourceforge.net/wmbinclock/wmbinclock-0.5.tar.bz2
+	md5sums = ba268e66b59b100edb9da1cee064c258
+
+pkgname = wmbinclock
+
