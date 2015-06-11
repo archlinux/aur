@@ -1,0 +1,57 @@
+Index: configure
+===================================================================
+--- configure	(revision 177)
++++ configure	(working copy)
+@@ -12202,7 +12202,7 @@
+ if test -n "$with_pppd_plugin_dir" ; then
+     PPPD_PLUGIN_DIR="$with_pppd_plugin_dir"
+ else
+-    PPPD_PLUGIN_DIR="${libdir}/pppd/2.4.5"
++    PPPD_PLUGIN_DIR="${libdir}/pppd/2.4.7"
+ fi
+ 
+ 
+Index: configure.ac
+===================================================================
+--- configure.ac	(revision 177)
++++ configure.ac	(working copy)
+@@ -92,7 +92,7 @@
+ if test -n "$with_pppd_plugin_dir" ; then
+     PPPD_PLUGIN_DIR="$with_pppd_plugin_dir"
+ else
+-    PPPD_PLUGIN_DIR="${libdir}/pppd/2.4.5"
++    PPPD_PLUGIN_DIR="${libdir}/pppd/2.4.7"
+ fi
+ AC_SUBST(PPPD_PLUGIN_DIR)
+ 
+Index: debian/control
+===================================================================
+--- debian/control	(revision 177)
++++ debian/control	(working copy)
+@@ -16,7 +16,7 @@
+ 
+ Package: sstp-client
+ Architecture: any
+-Depends: ${shlibs:Depends}, ${misc:Depends}, libsstp-client0 (= ${binary:Version}), ppp (>= 2.4.5), adduser
++Depends: ${shlibs:Depends}, ${misc:Depends}, libsstp-client0 (= ${binary:Version}), ppp (>= 2.4.7), adduser
+ Recommends: network-manager-sstp | network-manager-sstp-gnome
+ Description: Connect to a Microsoft Windows 2008 server using SSTP VPN
+  A client implementation of Secure Socket Tunneling Protocol (SSTP) for 
+Index: debian/sstp-client.install
+===================================================================
+--- debian/sstp-client.install	(revision 177)
++++ debian/sstp-client.install	(working copy)
+@@ -1,2 +1,2 @@
+ /usr/sbin/sstpc
+-/usr/lib/pppd/2.4.5/sstp-pppd-plugin.so
++/usr/lib/pppd/2.4.7/sstp-pppd-plugin.so
+Index: sstp-client.spec
+===================================================================
+--- sstp-client.spec	(revision 177)
++++ sstp-client.spec	(working copy)
+@@ -1,4 +1,4 @@
+-%define ppp_version 2.4.5
++%define ppp_version 2.4.7
+ %define event_version 2.0.10
+ 
+ Name:		sstp-client

@@ -1,0 +1,26 @@
+pkgbase = sstp-client-svn-stable
+	pkgdesc = SSTP client tested SVN experimantally stable revision
+	pkgver = 1.0.9
+	pkgrel = 8
+	url = http://sstp-client.sourceforge.net/
+	install = sstp-client-svn-stable.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc
+	makedepends = ppp=2.4.7
+	makedepends = subversion
+	depends = ppp=2.4.7
+	depends = openssl
+	provides = sstp-client-svn-stable
+	source = actual_ppp_version.diff
+	source = 50-sstp.PROFILE.sh.sample
+	source = sstp.options.sample
+	source = sstp-client-svn-stable::svn+https://sstp-client.svn.sourceforge.net/svnroot/sstp-client/branches/1.0.9
+	md5sums = ce28d5cd37e9f14bf8519857863d7029
+	md5sums = 77d94e6f536b44c48475c1b25264ffbb
+	md5sums = 86cf8dd3ab976ae90b399dbad3a477c8
+	md5sums = SKIP
+
+pkgname = sstp-client-svn-stable
+
