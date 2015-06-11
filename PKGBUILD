@@ -1,14 +1,6 @@
 # Maintainer: Arnoud Willemsen <mail@lynthium.com>
 
-# Build utility as well? defaults to yes. Leave empty for no
-_buildutil=y
-
-if [ -n "$_buildutil" ]; then
-	pkgname=('clevo-xsm-wmi'
-         'clevo-xsm-wmi-utility')
-else
-	pkgname=('clevo-xsm-wmi')
-fi
+pkgname='clevo-xsm-wmi'
 pkgver='0.4'
 _pkgtag='ea6d0253b59f'
 pkgrel=1
@@ -19,21 +11,14 @@ url='https://bitbucket.org/lynthium/clevo-xsm-wmi'
 source=("clevo-xsm-wmi-${pkgver}.src.tar.gz::https://bitbucket.org/lynthium/clevo-xsm-wmi/get/v${pkgver}.tar.gz")
 options=(!emptydirs)
 makedepends=('linux-headers')
+install='clevo-xsm-wmi.install'
 
 build() {
     cd "${srcdir}/lynthium-clevo-xsm-wmi-${_pkgtag}/module"
     make
-
-    if [ -n "$_buildutil" ]; then
-	    cd "${srcdir}/lynthium-clevo-xsm-wmi-${_pkgtag}/utility"
-	    qmake && make
-    fi
 }
 
-package_clevo-xsm-wmi() {
-	install='clevo-xsm-wmi.install'
-    depends=''
-
+package() {
     cd "${srcdir}/lynthium-clevo-xsm-wmi-${_pkgtag}/module"
 
     _PACKAGES=`pacman -Qsq linux`
@@ -60,15 +45,4 @@ package_clevo-xsm-wmi() {
     mkdir -p "${pkgdir}/etc/modules-load.d"
     echo "clevo-xsm-wmi" > "${pkgdir}/etc/modules-load.d/clevo-xsm-wmi.conf"
 }
-if [ -n "$_buildutil" ]; then
-	package_clevo-xsm-wmi-utility() {
-        depends=('qt5-base')
-
-	    cd "${srcdir}/lynthium-clevo-xsm-wmi-${_pkgtag}/utility"
-
-	    install -Dm755 clevo-xsm-wmi ${pkgdir}/usr/bin/clevo-xsm-wmi
-	    install -Dm755 systemd/clevo-xsm-wmi.service ${pkgdir}/usr/lib/systemd/system/clevo-xsm-wmi.service
-	    install -D -m644 /usr/share/licenses/common/GPL2/license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	}
-fi
 md5sums=('9a9b35fcf80113cf0b4a551bbf73ea59')

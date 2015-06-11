@@ -3,6 +3,7 @@ pkgbase = clevo-xsm-wmi
 	pkgver = 0.4
 	pkgrel = 1
 	url = https://bitbucket.org/lynthium/clevo-xsm-wmi
+	install = clevo-xsm-wmi.install
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -12,8 +13,4 @@ pkgbase = clevo-xsm-wmi
 	md5sums = 9a9b35fcf80113cf0b4a551bbf73ea59
 
 pkgname = clevo-xsm-wmi
-	install = clevo-xsm-wmi.install
-
-pkgname = clevo-xsm-wmi-utility
-	depends = qt5-base
 
