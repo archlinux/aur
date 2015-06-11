@@ -1,0 +1,23 @@
+pkgbase = xtetris
+	pkgdesc = A classical tetris game for X11
+	pkgver = 2.6
+	pkgrel = 2
+	url = http://happypenguin.org/show?XTetris
+	install = xtetris.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imake
+	depends = libxaw
+	depends = xbitmaps
+	source = http://www.ibiblio.org/pub/Linux/games/arcade/tetris/xtetris-2.6.tar.gz
+	source = xtetris.patch
+	source = xtetris.png
+	source = xtetris.desktop
+	md5sums = 9547dd17d0e53e295dd61f794b7acdb2
+	md5sums = 50f4ac4b36845da03e2a7e3757696a2c
+	md5sums = 98f0495078541db455b5fc5da896b83b
+	md5sums = ebdda0c5f9dfd764cbc59e77a6f664b8
+
+pkgname = xtetris
+

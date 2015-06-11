@@ -1,0 +1,49 @@
+--- xtetris-2.6.orig/Imakefile	1992-10-19 23:06:07.000000000 +0500
++++ xtetris-2.6/Imakefile	2012-03-02 12:40:31.887443450 +0600
+@@ -1,15 +1,15 @@
+ /* Search for "COLOR" if you want xtetris to run on a color monitor by 
+    default */
+ 
+-#define ScoreDir $(LIBDIR)      /* Directory for the score file. */
++#define ScoreDir /var/lib/xtetris      /* Directory for the score file. */
+ #define ScoreFile xtetris-scores/* Filename for the score file. */
+-#define BitmapDir $(INCDIR)/bitmaps /* May need to change this to
++#define BitmapDir /usr/include/X11/bitmaps /* May need to change this to
+ 				       /usr/include/X11/bitmaps, if you get a
+ 				       message like "can't convert string
+ 				       'stripe4' to pixmap." */
+ 
+         BITMAPS = stripe4 
+-        DEFINES = -DHIGH_SCORE_TABLE=\"$(LIBDIR)/xtetris-scores\"
++        DEFINES = -DHIGH_SCORE_TABLE=\"/var/lib/xtetris/xtetris-scores\"
+         HEADERS = defs.h
+            SRCS = main.c init.c shape.c support.c notify.c window.c score.c\
+                   draw.c
+@@ -43,6 +43,6 @@
+     "-DCOLOR". */
+ 
+ Xtetris.ad: Xtetris.ad.all
+-	xrdb -n Xtetris.ad.all -UCOLOR > Xtetris.ad
++	xrdb -n Xtetris.ad.all -DCOLOR > Xtetris.ad
+ clean::
+ 	$(RM) Xtetris.c.ad Xtetris.bw.ad Xtetris.ad
+--- xtetris-2.6.orig/Xtetris.ad.all	1995-02-11 11:38:29.000000000 +0500
++++ xtetris-2.6/Xtetris.ad.all	2012-03-02 12:14:45.140768040 +0600
+@@ -2,7 +2,7 @@
+ ?.baseTranslations:		#override <Unmap>:Pause()
+ *Background:			black
+ *BorderColor:			white
+-*Font:				-*-helvetica-bold-r-*-*-*-120-*-*-*-*-*-*
++*Font:				-*-*-bold-r-*-*-*-120-*-*-*-*-*-*
+ *Frame*sensitive:		true
+ *Frame.Buttons*width:		80
+ *NewGame.fromVert:		Start
+@@ -86,7 +86,7 @@
+ *Status.right:			ChainRight
+ *Status.vertDistance:		175
+ *Status.width:			100
+-*TitleBar.Font:			-*-new century schoolbook-*-i-*-*-*-120-*-*-*-*-*-*
++*TitleBar.Font:			-*-*-*-i-*-*-*-120-*-*-*-*-*-*
+ *TitleBar.Label:		XTETRIS 2.6
+ *TitleBar.foreground:		white
+ *TitleBar.height:		20
