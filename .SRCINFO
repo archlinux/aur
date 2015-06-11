@@ -1,0 +1,14 @@
+pkgbase = untex
+	pkgdesc = A tool for removing LaTeX commands from input
+	pkgver = 1.3
+	pkgrel = 3
+	url = ftp://ftp.thp.uni-duisburg.de/pub/source/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = ftp://ftp.thp.uni-duisburg.de/pub/source/untex-1.3.tar.gz
+	md5sums = 909da862cdccea0f6987467be72f103a
+
+pkgname = untex
+
