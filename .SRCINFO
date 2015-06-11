@@ -1,0 +1,26 @@
+pkgbase = blueproximity
+	pkgdesc = A proximity detector for your mobile phone via bluetooth.
+	pkgver = 1.2.5
+	pkgrel = 6
+	url = http://sourceforge.net/projects/blueproximity/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = bluez-utils
+	depends = pygtk
+	depends = python2-configobj>=4.7.0-1
+	depends = python2-pybluez>=0.14-2
+	depends = python2
+	depends = librsvg
+	options = emptydirs
+	source = http://colocrossing.dl.sourceforge.net/sourceforge/blueproximity/blueproximity-1.2.5.tar.gz
+	source = blueproximity.desktop
+	source = blueproximity.xpm
+	source = blueproximity-1.2.5.orig.patch
+	md5sums = 5fa33a73869d1b6f40957bdba3da636b
+	md5sums = 1e08ef00fc87ccd5ab78f893efa8ff2d
+	md5sums = 1e2f0204a6a54bee5b5263cb0f5cd8f0
+	md5sums = 8c42f275aaa26a22df690bccac3ad7be
+
+pkgname = blueproximity
+
