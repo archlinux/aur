@@ -1,0 +1,24 @@
+pkgbase = pony.computer
+	pkgdesc = Show computer information and a pony
+	pkgver = 1428445028
+	pkgrel = 1
+	url = https://github.com/GNU-Pony/pony.computer
+	install = pony.computer.install
+	arch = any
+	license = GPL3
+	makedepends = make
+	makedepends = coreutils
+	makedepends = sed
+	makedepends = texinfo
+	depends = sh
+	depends = ponysay
+	depends = coreutils
+	depends = python3
+	optdepends = linux: Additional system information can be provided with Linux kernel's procfs /proc
+	optdepends = filesystem: Identification of distribution
+	optdepends = lsb-release: Identification of distribution
+	source = https://github.com/GNU-Pony/pony.computer/archive/1428445028.tar.gz
+	sha256sums = 997f8be119e36cbbdcafee2126ceccfac3e6551d839b78a93aba748f33d4469d
+
+pkgname = pony.computer
+
