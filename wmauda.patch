@@ -1,0 +1,238 @@
+diff -up src/wmauda-0.9/Makefile.orig src/wmauda-0.9/Makefile
+--- src/wmauda-0.9/Makefile.orig	2012-03-26 16:27:20.000000000 -0600
++++ src/wmauda-0.9/Makefile	2014-05-11 11:55:17.000000000 -0600
+@@ -7,12 +7,15 @@ INSTALL_DIR	:= $(PREFIX)/bin
+ PIXMAP_DIR	:= $(PREFIX)/share/pixmaps
+ MANPAGE_DIR	:= $(PREFIX)/share/man/man1
+ 
+-CFLAGS 	+= $(shell pkg-config audacious --cflags) $(shell pkg-config dbus-1 --cflags) -DPIXMAP_DIR="\"$(PIXMAP_DIR)\""
+-LIBS 	:= $(shell pkg-config audacious --libs) $(shell pkg-config audclient --libs)  $(shell pkg-config dbus-1 --libs)
++CFLAGS 	+= $(shell pkg-config audacious2 --cflags) $(shell pkg-config dbus-1 --cflags) -DPIXMAP_DIR="\"$(PIXMAP_DIR)\""
++LIBS 	:= $(shell pkg-config audacious2 --libs) $(shell pkg-config audclient2 --libs)  $(shell pkg-config dbus-1 --libs)
+ 
+ CFLAGS  += $(shell pkg-config gtk+-2.0 --cflags)
+ LIBS    += $(shell pkg-config gtk+-2.0 --libs)
+ 
++CFLAGS  += $(shell pkg-config dbus-glib-1 --cflags)
++LIBS    += $(shell pkg-config dbus-glib-1 --libs) -lX11
++
+ OBJS 	= wmauda.o
+ HEADERS = dock-master.xpm
+ 
+diff -up src/wmauda-0.9/wmauda.c.orig src/wmauda-0.9/wmauda.c
+--- src/wmauda-0.9/wmauda.c.orig	2012-03-26 16:23:14.000000000 -0600
++++ src/wmauda-0.9/wmauda.c	2014-05-11 11:55:38.000000000 -0600
+@@ -26,8 +26,8 @@
+ #include <string.h>
+ #include <ctype.h>
+ 
+-#include <audacious/dbus.h>
+-#include <audacious/audctrl.h>
++#include <audacious2/dbus.h>
++#include <audacious2/audctrl.h>
+ 
+ #include "dock-master.xpm"
+ 
+@@ -134,7 +134,7 @@ GdkBitmap *mask, *launch_mask;
+ GdkGC *dock_gc;
+ GtkTooltips *tooltips = NULL;
+ 
+-char *xmms_cmd = "audacious";
++char *xmms_cmd = "audacious2";
+ gboolean xmms_running = FALSE;
+ 
+ gboolean has_geometry = FALSE, single_click = FALSE, song_title = FALSE;
+@@ -151,33 +151,33 @@ GtkTargetEntry drop_types[] =
+ 
+ void action_play(void)
+ {
+-	audacious_remote_play(dbus_proxy);
++	audacious2_remote_play(dbus_proxy);
+ }
+ 
+ void action_pause(void)
+ {
+-	audacious_remote_pause(dbus_proxy);
++	audacious2_remote_pause(dbus_proxy);
+ }
+ 
+ void action_eject(void)
+ {
+-	audacious_remote_playlist_clear(dbus_proxy);
+-	audacious_remote_stop(dbus_proxy);
++	audacious2_remote_playlist_clear(dbus_proxy);
++	audacious2_remote_stop(dbus_proxy);
+ }
+ 
+ void action_prev(void)
+ {
+-	audacious_remote_playlist_prev(dbus_proxy);
++	audacious2_remote_playlist_prev(dbus_proxy);
+ }
+ 
+ void action_next(void)
+ {
+-	audacious_remote_playlist_next(dbus_proxy);
++	audacious2_remote_playlist_next(dbus_proxy);
+ }
+ 
+ void action_stop(void)
+ {
+-	audacious_remote_stop(dbus_proxy);
++	audacious2_remote_stop(dbus_proxy);
+ }
+ 
+ gboolean inside_region(int mx, int my, int x, int y, int w, int h)
+@@ -260,11 +260,11 @@ void draw_seekslider(void)
+ void real_draw_scrolltext(GdkWindow * w)
+ {
+         /* get titlestring */
+-	gint pl_pos = audacious_remote_get_playlist_pos(dbus_proxy);
++	gint pl_pos = audacious2_remote_get_playlist_pos(dbus_proxy);
+ 
+ 	if (pl_pos != -1)
+ 	{
+-	        char *title = audacious_remote_get_playlist_title(dbus_proxy, pl_pos);
++	        char *title = audacious2_remote_get_playlist_title(dbus_proxy, pl_pos);
+ 		if (title)
+ 		{
+ 		        /* render text */	
+@@ -352,7 +352,7 @@ void wheel_scroll_cb(GtkWidget *w, GdkEv
+ 				volslider_pos = 0;
+ 			if (volslider_pos > VOLSLIDER_HEIGHT)
+ 				volslider_pos = VOLSLIDER_HEIGHT;
+-			audacious_remote_set_main_volume(dbus_proxy, (volslider_pos * 100) / VOLSLIDER_HEIGHT);
++			audacious2_remote_set_main_volume(dbus_proxy, (volslider_pos * 100) / VOLSLIDER_HEIGHT);
+ 			draw_volslider();
+ 		}
+ 	}
+@@ -368,10 +368,10 @@ void button_press_cb(GtkWidget *w, GdkEv
+ 	{
+ 		if ((event->button == 2) || (event->button == 3))
+ 		{
+-			if(audacious_remote_is_main_win(dbus_proxy))
+-				audacious_remote_main_win_toggle(dbus_proxy, FALSE);
++			if(audacious2_remote_is_main_win(dbus_proxy))
++				audacious2_remote_main_win_toggle(dbus_proxy, FALSE);
+ 			else
+-				audacious_remote_main_win_toggle(dbus_proxy, TRUE);
++				audacious2_remote_main_win_toggle(dbus_proxy, TRUE);
+ 		}
+ 	}
+ 
+@@ -392,7 +392,7 @@ void button_press_cb(GtkWidget *w, GdkEv
+ 		if (inside_region(event->x, event->y, VOLSLIDER_X, VOLSLIDER_Y, VOLSLIDER_WIDTH, VOLSLIDER_HEIGHT))
+ 		{
+ 			volslider_pos = VOLSLIDER_HEIGHT - (event->y - VOLSLIDER_Y);
+-			audacious_remote_set_main_volume(dbus_proxy, (volslider_pos * 100) / VOLSLIDER_HEIGHT);
++			audacious2_remote_set_main_volume(dbus_proxy, (volslider_pos * 100) / VOLSLIDER_HEIGHT);
+ 			draw_volslider();
+ 			volslider_dragging = TRUE;
+ 		}
+@@ -449,8 +449,8 @@ void button_release_cb(GtkWidget *w, Gdk
+ 	volslider_dragging = FALSE;
+ 	if (seekslider_dragging)
+ 	{
+-		len = audacious_remote_get_playlist_time(dbus_proxy, audacious_remote_get_playlist_pos(dbus_proxy));
+-		audacious_remote_jump_to_time(dbus_proxy, (seekslider_pos * len) / SEEKSLIDER_MAX);
++		len = audacious2_remote_get_playlist_time(dbus_proxy, audacious2_remote_get_playlist_pos(dbus_proxy));
++		audacious2_remote_jump_to_time(dbus_proxy, (seekslider_pos * len) / SEEKSLIDER_MAX);
+ 		seekslider_dragging = FALSE;
+ 	}
+ 
+@@ -485,7 +485,7 @@ void motion_notify_cb(GtkWidget *w, GdkE
+ 			volslider_pos = 0;
+ 		if (volslider_pos > VOLSLIDER_HEIGHT)
+ 			volslider_pos = VOLSLIDER_HEIGHT;
+-		audacious_remote_set_main_volume(dbus_proxy, (volslider_pos * 100) / VOLSLIDER_HEIGHT);
++		audacious2_remote_set_main_volume(dbus_proxy, (volslider_pos * 100) / VOLSLIDER_HEIGHT);
+ 		draw_volslider();
+ 	}
+ 	if (seekslider_dragging)
+@@ -515,7 +515,7 @@ static void update_tooltip(void)
+ 	if (!tooltips)
+ 		return;
+ 	
+-	new_pos = audacious_remote_get_playlist_pos(dbus_proxy);
++	new_pos = audacious2_remote_get_playlist_pos(dbus_proxy);
+ 
+ 	if (new_pos == 0)
+ 	{
+@@ -523,7 +523,7 @@ static void update_tooltip(void)
+ 		 * Need to do some extra checking, as we get 0 also on
+ 		 * a empty playlist
+ 		 */
+-		char *current = audacious_remote_get_playlist_file(dbus_proxy, 0);
++		char *current = audacious2_remote_get_playlist_file(dbus_proxy, 0);
+ 		if (!filename && current)
+ 		{
+ 			filename = current;
+@@ -547,7 +547,7 @@ static void update_tooltip(void)
+ 	{
+ 		char *tip = NULL;
+ 		char *title =
+-			audacious_remote_get_playlist_title(dbus_proxy, new_pos);
++			audacious2_remote_get_playlist_title(dbus_proxy, new_pos);
+ 		if (title)
+ 		{
+ 			tip = g_strdup_printf("%d. %s", new_pos+1, title);
+@@ -564,7 +564,7 @@ int timeout_func(gpointer data)
+ 	int new_pos, pos;
+ 	gboolean playing, running;
+ 
+-	running = audacious_remote_is_running(dbus_proxy);
++	running = audacious2_remote_is_running(dbus_proxy);
+ 
+ 	if (running)
+ 	{
+@@ -576,7 +576,7 @@ int timeout_func(gpointer data)
+ 		}
+ 		if (!volslider_dragging)
+ 		{
+-			new_pos = (audacious_remote_get_main_volume(dbus_proxy) * 40) / 100;
++			new_pos = (audacious2_remote_get_main_volume(dbus_proxy) * 40) / 100;
+ 
+ 			if (new_pos < 0)
+ 				new_pos = 0;
+@@ -593,7 +593,7 @@ int timeout_func(gpointer data)
+ 		update_tooltip();
+ 		draw_scrolltext();
+ 
+-		playing = audacious_remote_is_playing(dbus_proxy);
++		playing = audacious2_remote_is_playing(dbus_proxy);
+ 		if (!playing && seekslider_visible)
+ 		{
+ 			seekslider_visible = FALSE;
+@@ -603,8 +603,8 @@ int timeout_func(gpointer data)
+ 		}
+ 		else if (playing)
+ 		{
+-			int len, p = audacious_remote_get_playlist_pos(dbus_proxy);
+-			len = audacious_remote_get_playlist_time(dbus_proxy, p);
++			int len, p = audacious2_remote_get_playlist_pos(dbus_proxy);
++			len = audacious2_remote_get_playlist_time(dbus_proxy, p);
+ 			if (len == -1)
+ 			{
+ 				seekslider_visible = FALSE;
+@@ -615,7 +615,7 @@ int timeout_func(gpointer data)
+ 			else if (!seekslider_dragging)
+ 			{
+ 				seekslider_visible = TRUE;
+-				pos = audacious_remote_get_output_time(dbus_proxy);
++				pos = audacious2_remote_get_output_time(dbus_proxy);
+ 				if (len != 0)
+ 					new_pos = (pos * SEEKSLIDER_MAX) / len;
+ 				else
+@@ -654,9 +654,9 @@ void drag_data_received(GtkWidget *widge
+ 	if (selection_data->data)
+ 	{
+ 		char *url = selection_data->data;
+-		audacious_remote_playlist_clear(dbus_proxy);
+-		audacious_remote_playlist_add_url_string(dbus_proxy, url);
+-		audacious_remote_play(dbus_proxy);
++		audacious2_remote_playlist_clear(dbus_proxy);
++		audacious2_remote_playlist_add_url_string(dbus_proxy, url);
++		audacious2_remote_play(dbus_proxy);
+ 	}
+ }
+ 

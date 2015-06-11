@@ -1,0 +1,16 @@
+pkgbase = wmauda
+	pkgdesc = Remote control dockapp for audacious
+	pkgver = 0.9
+	pkgrel = 2
+	url = http://www.netswarm.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = audacious2
+	source = http://www.netswarm.net/misc/wmauda-0.9.tar.gz
+	source = wmauda.patch
+	md5sums = 2b194221c0cebbb87fd57da4bf024f13
+	md5sums = ce4988f82bcfb0d754c10b4d578b8a18
+
+pkgname = wmauda
+
