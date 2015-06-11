@@ -1,0 +1,15 @@
+pkgbase = ncompress
+	pkgdesc = The classic unix compression utility which can handle the ancient .Z archive
+	pkgver = 4.2.4.4
+	pkgrel = 2
+	url = http://sourceforge.net/projects/ncompress
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	provides = compress
+	source = https://mirrors.kernel.org/gentoo/distfiles/ncompress-4.2.4.4.tar.gz
+	md5sums = 4be215caacf3d082bfe24cfdbaba538e
+
+pkgname = ncompress
+
