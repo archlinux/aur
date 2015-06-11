@@ -1,0 +1,459 @@
+Index: softwerk/trunk/softwerk/SConstruct
+===================================================================
+--- softwerk/trunk/softwerk/SConstruct	(revision 21)
++++ softwerk/trunk/softwerk/SConstruct	(revision 25)
+@@ -32,7 +32,6 @@
+     EnumOption('DIST_TARGET', 'Build target for cross compiling packagers', 'auto', allowed_values=('auto', 'i386', 'i686', 'x86_64', 'powerpc', 'tiger', 'panther', 'none' ), ignorecase=2),
+     BoolOption('EXTRA_WARN', 'Compile with -Wextra, -ansi, and -pedantic.  Might break compilation.  For pedants', 0),
+     BoolOption('FPU_OPTIMIZATION', 'Build runtime checked assembler code', 1),
+-    BoolOption('LIBLO', 'Compile with support for liblo library', 1),
+     BoolOption('NLS', 'Set to turn on i18n support', 1),
+     PathOption('PREFIX', 'Set the install "prefix"', '/usr/local'),
+     BoolOption('SYSLIBS', 'DEPRECATED, DO NOT USE THIS OPTION', 1),
+@@ -630,10 +629,6 @@
+     env.Append(CXXFLAGS="-ansi")
+ #    env.Append(CFLAGS="-iso")
+ 
+-if env['LIBLO']:
+-    env.Append(CCFLAGS="-DHAVE_LIBLO")
+-
+-
+ #
+ # fix scons nitpickiness on APPLE
+ #
+@@ -672,17 +667,6 @@
+ #
+ # Check for liblo
+ 
+-if env['LIBLO']:
+-    libraries['lo'] = LibraryInfo ()
+-    prep_libcheck(env, libraries['lo'])
+-
+-    conf = Configure (libraries['lo'])
+-    if conf.CheckLib ('lo', 'lo_server_new') == False:
+-        print "liblo does not appear to be installed."
+-        sys.exit (1)
+-    
+-    libraries['lo'] = conf.Finish ()
+-
+ #
+ # Audio/MIDI library (needed for MIDI, since audio is all handled via JACK)
+ #
+Index: softwerk/trunk/softwerk/src/sequencer.h
+===================================================================
+--- softwerk/trunk/softwerk/src/sequencer.h	(revision 21)
++++ softwerk/trunk/softwerk/src/sequencer.h	(revision 25)
+@@ -213,7 +213,7 @@
+ 
+ 	static void* _sequencer_thread (void*);
+ 	void* sequencer_thread ();
+-	int midi_read (MIDI::Port&);
++	int midi_read ();
+ 	int thread_pipe[2];
+ 	bool thread_running;
+ 	void stop ();
+Index: softwerk/trunk/softwerk/src/step_ui.cc
+===================================================================
+--- softwerk/trunk/softwerk/src/step_ui.cc	(revision 21)
++++ softwerk/trunk/softwerk/src/step_ui.cc	(revision 25)
+@@ -348,10 +348,10 @@
+ 		"f",
+ 		"f#",
+ 		"g",
++		"g#",
+ 		"a",
+ 		"a#",
+-		"b",
+-		"b#"
++		"b"
+ 	};
+ 
+ 	int octave = val/12;
+Index: softwerk/trunk/softwerk/src/sequencer.cc
+===================================================================
+--- softwerk/trunk/softwerk/src/sequencer.cc	(revision 21)
++++ softwerk/trunk/softwerk/src/sequencer.cc	(revision 25)
+@@ -19,6 +19,7 @@
+ */
+ 
+ #include <cstring>
++#include <set>
+ 
+ #include <stdio.h>
+ #include <sys/time.h>
+@@ -46,6 +47,7 @@
+ #include <midi++/channel.h>
+ #include <midi++/parser.h>
+ #include <midi++/manager.h>
++#include <midi++/alsa_sequencer.h>
+ 
+ #include "step.h"
+ #include "sequence.h"
+@@ -69,11 +71,12 @@
+ 
+ using namespace PBD;
+ using namespace sigc;
++using std::set;
+ 
+ Sequencer *Sequencer::theSequencer = 0;
+ 
+ int
+-Sequencer::midi_read (MIDI::Port& port)
++Sequencer::midi_read ()
+ {
+ 	MIDI::byte buf[512];
+ 	
+@@ -85,12 +88,8 @@
+ 	
+ 	while (1) {
+ 		
+-		// cerr << "+++ READ ON " << port.name() << endl;
+-		
+-		int nread = port.read (buf, sizeof (buf));
++		int nread = MIDI::ALSA_SequencerMidiPort::read_all_ports (buf, sizeof (buf));
+ 
+-		// cerr << "-- READ (" << nread << " ON " << port.name() << endl;
+-		
+ 		if (nread > 0) {
+ 			if ((size_t) nread < sizeof (buf)) {
+ 				break;
+@@ -102,7 +101,6 @@
+ 		} else if (errno == EAGAIN) {
+ 			break;
+ 		} else {
+-			fatal << "Error reading from MIDI port " << port.name() << endmsg;
+ 			/*NOTREACHED*/
+ 		}
+ 	}
+@@ -125,6 +123,8 @@
+ 	struct sched_param rtparam;
+ 	list<MIDI::Port*> ports;
+ 	ticks_t next_wakeup = TICK_MAX;
++        set<int> fds_used;
++        bool read_done = false;
+ 
+ 	PBD::ThreadCreated (pthread_self(), "sequencer");
+ 
+@@ -157,7 +157,7 @@
+ 	pfd_size = ports.size() + 1;
+ 	pfd = new pollfd[pfd_size];
+ 
+-	while (1) {
++        while (1) {
+ 
+ 		int n;
+ 		
+@@ -165,6 +165,8 @@
+ 
+ 		/* Always poll the thread pipe */
+ 
++                fds_used.clear ();
++
+ 		pfd[0].fd = thread_pipe[0];
+ 		pfd[0].events = POLLIN|POLLHUP|POLLERR;
+ 		nfds = 1;
+@@ -174,7 +176,16 @@
+ 			/* only poll ports if we're meant to be busy */
+ 
+ 			for (i = ports.begin(), n = 1; i != ports.end() && n < pfd_size; ++n, ++i) {
+-				pfd[n].fd = (*i)->selectable();
++                                
++                                int fd = (*i)->selectable();
++                                
++                                if (fds_used.find (fd) != fds_used.end()) {
++                                        continue;
++                                }
++
++                                fds_used.insert (fd);
++
++				pfd[n].fd = fd;
+ 				pfd[n].events = POLLIN|POLLHUP|POLLERR;
+ 				nfds++;
+ 			}
+@@ -235,23 +246,28 @@
+ 			continue;
+ 		}
+ 
+-		for (i = ports.begin(), n = 1; i != ports.end() && n < nfds; ++n) {
++                /* now check all sequencer related fds, and do port i/o if any data is necessary.
++                 */
+ 
+-			list<MIDI::Port*>::iterator tmp;
++                read_done = false;
+ 
+-			tmp = i;
+-			++tmp;
++                for (n = 1; n < nfds; ++n) {
+ 
+ 			if (pfd[n].revents & ~POLLIN) {
+-				ports.erase (i);
+-			} else if (pfd[n].revents & POLLIN) {
+-				midi_read (**i);
++                                
++                                ports.clear ();
++
++			} else if (pfd[n].revents & POLLIN & !read_done) {
++                                
++                                /* data ready on a sequencer-related port, but we can't
++                                   know which one, so read them all.
++                                */
++
++                                midi_read ();
++                                read_done = true;
+ 			}
+-			
+-			i = tmp;
+ 		}
+ 
+-
+ 	  tick:
+ 		next_wakeup = clock_tick ();
+ 		
+@@ -282,6 +298,9 @@
+ 	use_rtc = with_rtc;
+ 	thread_running = false;
+ 	poll_timeout = -1;
++        midi_ticks = 0;
++	carry_usecs = 0;
++	last_tick_usecs = 0;
+ 
+ 	if (pipe (thread_pipe)) {
+ 		error << "could not create thread pipe ("
+@@ -315,9 +334,6 @@
+ 		theSequencer = this;
+ 	}
+ 
+-	carry_usecs = 0;
+-	last_tick_usecs = 0;
+-
+ 	default_steps = num_steps;
+ 
+ 	for (size_t i = 0; i < num_seqs; i++) {
+@@ -480,7 +496,11 @@
+ 	gettimeofday (&tcurrent_tick, &tz);
+ 
+ 	current_usecs = (tcurrent_tick.tv_sec * 1000000) + tcurrent_tick.tv_usec;
+-	elapsed_usecs = carry_usecs + (current_usecs - last_tick_usecs);
++        if (last_tick_usecs) {
++                elapsed_usecs = carry_usecs + (current_usecs - last_tick_usecs);
++        } else {
++                elapsed_usecs = 0;
++        }
+ 
+ 	if (usecs_per_tick > CLOCK_INTERVAL) {
+ 	
+@@ -520,10 +540,13 @@
+ 
+ 	if (inc > 0) {
+ 		midi_ticks += inc;
+-		last_tick_usecs = current_usecs;
+ 		carry_usecs = elapsed_usecs - (inc * usecs_per_tick);
+ 		carry_usecs = carry_usecs > 0 ? carry_usecs : 0;
+ 	}
++
++        if (inc > 0 || last_tick_usecs == 0) {
++                last_tick_usecs = current_usecs;
++        }
+ }
+ 
+ void
+Index: softwerk/trunk/softwerk/src/actions.cc
+===================================================================
+--- softwerk/trunk/softwerk/src/actions.cc	(revision 21)
++++ softwerk/trunk/softwerk/src/actions.cc	(revision 25)
+@@ -215,7 +215,7 @@
+ void
+ ActionManager::uncheck_toggleaction (const char * name)
+ {
+-	char *last_slash = strrchr (name, '/');
++	char *last_slash = strrchr ( const_cast<char*>(name), '/');
+ 
+ 	if (last_slash == 0) {
+ 		fatal << string_compose (_("programmer error: %1 %2"), X_("illegal toggle action name"), name) << endmsg;
+Index: softwerk/trunk/softwerk/libs/pbd/convert.cc
+===================================================================
+--- softwerk/trunk/softwerk/libs/pbd/convert.cc	(revision 21)
++++ softwerk/trunk/softwerk/libs/pbd/convert.cc	(revision 25)
+@@ -17,6 +17,8 @@
+ 
+ */
+ 
++#include <cstdio>
++
+ #include <cmath>
+ #include <locale>
+ #include <algorithm>
+@@ -27,6 +29,7 @@
+ #include <inttypes.h>
+ #include <glibmm/ustring.h>
+ 
++
+ #include "pbd/convert.h"
+ 
+ #include "i18n.h"
+Index: softwerk/trunk/softwerk/libs/pbd/stacktrace.cc
+===================================================================
+--- softwerk/trunk/softwerk/libs/pbd/stacktrace.cc	(revision 21)
++++ softwerk/trunk/softwerk/libs/pbd/stacktrace.cc	(revision 25)
+@@ -17,6 +17,8 @@
+ 
+ */
+ 
++#include <cstdio>
++
+ #include <pbd/stacktrace.h>
+ #include <iostream>
+ 
+Index: softwerk/trunk/softwerk/libs/midi++2/alsa_sequencer_midiport.cc
+===================================================================
+--- softwerk/trunk/softwerk/libs/midi++2/alsa_sequencer_midiport.cc	(revision 21)
++++ softwerk/trunk/softwerk/libs/midi++2/alsa_sequencer_midiport.cc	(revision 25)
+@@ -45,6 +45,7 @@
+ using namespace PBD;
+ 
+ snd_seq_t* ALSA_SequencerMidiPort::seq = 0;
++ALSA_SequencerMidiPort::AllPorts ALSA_SequencerMidiPort::_all_ports;
+ 
+ ALSA_SequencerMidiPort::ALSA_SequencerMidiPort (const XMLNode& node)
+ 	: Port (node)
+@@ -75,6 +76,8 @@
+ 
+ ALSA_SequencerMidiPort::~ALSA_SequencerMidiPort ()
+ {
++        _all_ports.erase (port_id);
++
+ 	if (decoder) {
+ 		snd_midi_event_free (decoder);
+ 	}
+@@ -90,6 +93,7 @@
+ ALSA_SequencerMidiPort::selectable () const
+ {
+ 	struct pollfd pfd[1];
++
+ 	if (0 <= snd_seq_poll_descriptors (seq, pfd, 1, POLLIN | POLLOUT)) {
+ 		return pfd[0].fd;
+ 	}
+@@ -139,28 +143,55 @@
+ int 
+ ALSA_SequencerMidiPort::read (byte *buf, size_t max)
+ {
++        /* does nothing. ALSA MIDI ports must be read
++           using the ::read_all_ports() static method.
++        */
++        return 0;
++}
++
++int 
++ALSA_SequencerMidiPort::read_all_ports (byte *buf, size_t max)
++{
+ 	TR_FN();
+ 	int err;
+ 	snd_seq_event_t *ev;
+-	if (0 <= (err = snd_seq_event_input (seq, &ev))) {
+-		TR_VAL(err);
+-		err = snd_midi_event_decode (decoder, buf, max, ev);
+-	}
+ 
++	err = snd_seq_event_input (seq, &ev);
++
+ 	if (err > 0) {
+-		bytes_read += err;
+ 
+-		if (input_parser) {
+-			input_parser->raw_preparse (*input_parser, buf, err);
+-			for (int i = 0; i < err; i++) {
+-				input_parser->scanner (buf[i]);
+-			}	
+-			input_parser->raw_postparse (*input_parser, buf, err);
+-		}
+-	}
++                AllPorts::iterator p = _all_ports.find (ev->dest.port);
++                
++                if (p == _all_ports.end()) {
++                        /* no error reading but port does not exist */
++                        return 0;
++                }
++                
++                return p->second->read_self (buf, max, ev);
++        } 
++
+ 	return -ENOENT == err ? 0 : err;
+ }
+ 
++int
++ALSA_SequencerMidiPort::read_self (byte* buf, size_t max, snd_seq_event_t* ev)
++{
++        int evsize = snd_midi_event_decode (decoder, buf, max, ev);
++
++        bytes_read += evsize;
++
++        if (input_parser) {
++                input_parser->raw_preparse (*input_parser, buf, evsize);
++
++                for (int i = 0; i < evsize; i++) {
++                        input_parser->scanner (buf[i]);
++                }	
++                input_parser->raw_postparse (*input_parser, buf, evsize);
++        }
++
++        return 0;
++}
++
+ int 
+ ALSA_SequencerMidiPort::create_ports (const Port::Descriptor& desc)
+ {
+@@ -183,6 +214,8 @@
+ 		snd_seq_ev_set_source (&SEv, port_id);
+ 		snd_seq_ev_set_subs (&SEv);
+ 		snd_seq_ev_set_direct (&SEv);
++
++                _all_ports.insert (make_pair (port_id, this));
+ 		
+ 		return 0;
+ 	}
+Index: softwerk/trunk/softwerk/libs/midi++2/midi.cc
+===================================================================
+--- softwerk/trunk/softwerk/libs/midi++2/midi.cc	(revision 21)
++++ softwerk/trunk/softwerk/libs/midi++2/midi.cc	(revision 25)
+@@ -161,7 +161,7 @@
+ 	char *lparen;
+ 	size_t len;
+ 
+-	if ((lparen = strrchr (name, '(')) != 0) {
++	if ((lparen = strrchr (const_cast<char*>(name), '(')) != 0) {
+ 		return atoi (lparen+1);
+ 	} else {
+ 		len = strcspn (name, "0123456789");
+Index: softwerk/trunk/softwerk/libs/midi++2/midi++/alsa_sequencer.h
+===================================================================
+--- softwerk/trunk/softwerk/libs/midi++2/midi++/alsa_sequencer.h	(revision 21)
++++ softwerk/trunk/softwerk/libs/midi++2/midi++/alsa_sequencer.h	(revision 25)
+@@ -21,6 +21,7 @@
+ 
+ #include <vector>
+ #include <string>
++#include <map>
+ 
+ #include <fcntl.h>
+ #include <unistd.h>
+@@ -47,6 +48,10 @@
+ 	XMLNode& get_state() const;
+ 	void set_state (const XMLNode&);
+ 
++        static int read_all_ports (byte* buf, size_t max);
++
++        int read_self (byte* buf, size_t max, snd_seq_event_t* ev);
++
+   protected:
+ 	/* Direct I/O */
+ 	
+@@ -64,6 +69,9 @@
+ 
+ 	int create_ports (const Port::Descriptor&);
+ 
++        typedef std::map<int,ALSA_SequencerMidiPort*> AllPorts;
++        static AllPorts _all_ports;
++
+ 	static int init_client (std::string name);
+ 	static snd_seq_t* seq;
+ 

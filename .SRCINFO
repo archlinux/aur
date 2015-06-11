@@ -1,0 +1,20 @@
+pkgbase = softwerk
+	pkgdesc = A software analogue MIDI sequencer, modelled on hardware analogue sequencers like Doepfer's Schaltwerk
+	pkgver = 3.0
+	pkgrel = 6
+	url = http://softwerk.linuxaudiosystems.com/softwerk/softwerk/trunk/softwerk/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = scons
+	makedepends = boost
+	depends = libxslt
+	depends = alsa-lib
+	depends = gtkmm
+	source = http://ardour.org/files/softwerk-3.0.tar.bz2
+	source = rev_21_to_25.diff
+	md5sums = a58a0854927ca46eff10ce6af123f35c
+	md5sums = 86849b739c057d680e955e3192326ffc
+
+pkgname = softwerk
+
