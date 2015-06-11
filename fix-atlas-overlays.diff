@@ -1,3 +1,14 @@
+From 405c514eab9e2abffe8d1a8912646447e6a29cfa Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Kilian=20K=C3=B6ppchen?= <kiliankoeppchen@googlemail.com>
+Date: Fri, 2 Jan 2015 22:52:54 +0100
+Subject: [PATCH] Use animationloader instead of imagemanager to
+
+retrieve images. The imagemanager isn't necessarily aware of
+the files available as animations.
+---
+ horizons/component/coloroverlaycomponent.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
 diff --git a/horizons/component/coloroverlaycomponent.py b/horizons/component/coloroverlaycomponent.py
 index 23d138b..41bbbff 100644
 --- a/horizons/component/coloroverlaycomponent.py

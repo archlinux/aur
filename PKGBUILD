@@ -17,9 +17,9 @@ conflicts=('unknown-horizons-svn' 'unknown-horizons-git')
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz"
         "fix-atlas-overlays.diff::https://github.com/unknown-horizons/unknown-horizons/commit/405c514eab9e2abffe8d1a8912646447e6a29cfa.patch")
 md5sums=('276ed6118eba6af615a286ff2989da6c'
-         'befa5c1525bc0acbdd3b270734d51ff3')
+         '19259e1a80873925aea281772f014be3')
 sha256sums=('5f9dd483e81ad89bff1bc46739349ab531cc930830bf17ef390ac239940a236b'
-            'f393f8ca09d697ae5dc793b7693f17f3065415cc4ea8a8fabb72dfd8517bec4c')
+            'e051fb7555d9478e06ee278856b27d1e0ef94cf88db9babdf0f903e5df03ef6f')
 
 prepare() {
     cd "$srcdir/$pkgname"
