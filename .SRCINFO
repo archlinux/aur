@@ -1,0 +1,14 @@
+pkgbase = wmstickynotes
+	pkgdesc = A dock app for keeping small notes around the desktop
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://sourceforge.net/projects/wmstickynotes/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = gtk2
+	source = http://downloads.sourceforge.net/wmstickynotes/wmstickynotes-0.3.tar.gz
+	md5sums = 088bd3e1d42f98c34d4f34cb480faf4b
+
+pkgname = wmstickynotes
+
