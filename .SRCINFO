@@ -1,0 +1,24 @@
+pkgbase = python2-word-cloud-git
+	pkgdesc = A little word cloud generator in Python 2
+	pkgver = 1.1.0.r117.6ebeab0
+	pkgrel = 2
+	url = https://github.com/amueller/word_cloud
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2
+	depends = cython2
+	depends = python2-pillow
+	depends = python2-numpy
+	depends = ttf-droid
+	provides = python2-word_cloud
+	conflicts = python2-word_cloud
+	source = git+https://github.com/amueller/word_cloud.git
+	source = wordcloud.patch
+	sha256sums = SKIP
+	sha256sums = 0d3379d5a8c4481c2a3deaa8ab809c1817fa9a5e6178f7a55773ef45f46c8f10
+
+pkgname = python2-word-cloud-git
+
