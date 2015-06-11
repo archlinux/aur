@@ -1,0 +1,14 @@
+pkgbase = dashpipe
+	pkgdesc = A utility for ponifying and deponifying text
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = http://github.com/DanielOaks/dashpipe/
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = perl
+	source = https://github.com/DanielOaks/dashpipe/archive/v1.0.3.tar.gz
+	sha256sums = c8ed2242113bb5cd867ed934fe0f9745666c289711e70bb54a3c5903e04e3553
+
+pkgname = dashpipe
+
