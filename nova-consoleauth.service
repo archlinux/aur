@@ -1,0 +1,9 @@
+[Unit]
+Description=Nova ConsoleAuth server
+
+[Service]
+ExecStart=/usr/bin/nova-consoleauth --config-dir /etc/nova/
+User=nova
+
+[Install]
+WantedBy=multi-user.target
