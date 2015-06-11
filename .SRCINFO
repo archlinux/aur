@@ -1,0 +1,14 @@
+pkgbase = vim_lib
+	pkgdesc = Base library for vim plygins by Delphinium
+	pkgver = 97.367812f
+	pkgrel = 1
+	url = https://github.com/Bashka/vim_lib
+	install = vim_lib.install
+	arch = any
+	makedepends = git
+	depends = vim
+	source = vim_lib::git+git://github.com/Bashka/vim_lib.git
+	md5sums = SKIP
+
+pkgname = vim_lib
+

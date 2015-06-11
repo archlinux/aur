@@ -1,0 +1,8 @@
+post_install () {
+  echo "Add lines from 'usr/share/vim/bundle/vim_lib/vimrc to your ~/.vimrc' to start using vim_lib."
+}
+
+post_remove () {
+	echo "Please clean ~/.vimrc to avoid errors."
+}
+
