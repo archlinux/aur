@@ -1,0 +1,20 @@
+pkgbase = pluzzdl-git
+	pkgdesc = Software to retreive videos from French website pluzz.
+	pkgver = 0.9.4.r8.g28a731c
+	pkgrel = 2
+	url = https://github.com/mrtvfuencxozd/pluzzdl
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = python2
+	depends = python2-crypto
+	depends = python2-socksipy-git
+	depends = python2-beautifulsoup3
+	depends = ffmpeg
+	provides = pluzzdl
+	conflicts = pluzzdl
+	source = git+https://github.com/mattetti/pluzzdl.git
+	source = scriptfix.patch
+
+pkgname = pluzzdl-git
+
