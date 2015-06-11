@@ -1,0 +1,17 @@
+pkgbase = openbr
+	pkgdesc = Open Source Biometrics
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://openbiometrics.org/
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-base
+	depends = qt5-svg
+	depends = opencv
+	source = git+https://github.com/biometrics/openbr.git
+	sha256sums = SKIP
+
+pkgname = openbr
+
