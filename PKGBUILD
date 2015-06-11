@@ -2,7 +2,7 @@
 # Contributor: Alexander Baldeck <alexander@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 pkgname=xorg-xdm-git
-pkgver=1.1.11.28.gcdc7b57
+pkgver=1.1.11.32.gd0e3262
 pkgrel=1
 pkgdesc="X Display Manager"
 arch=(i686 x86_64)
