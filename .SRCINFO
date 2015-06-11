@@ -1,5 +1,5 @@
 pkgbase = linux-libre-lts-grsec
-	pkgver = 3.14.43_gnu.201505272112
+	pkgver = 3.14.44_gnu.201506082249
 	pkgrel = 1
 	url = https://grsecurity.net/
 	arch = i686
@@ -14,10 +14,10 @@ pkgbase = linux-libre-lts-grsec
 	options = !strip
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.14-gnu/linux-libre-3.14-gnu.tar.xz
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.14-gnu/linux-libre-3.14-gnu.tar.xz.sign
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.14.43-gnu/patch-3.14-gnu-3.14.43-gnu.xz
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.14.43-gnu/patch-3.14-gnu-3.14.43-gnu.xz.sign
-	source = https://repo.parabola.nu/other/grsecurity-libre/stable/grsecurity-libre-3.1-3.14.43-201505272112.patch
-	source = https://repo.parabola.nu/other/grsecurity-libre/stable/grsecurity-libre-3.1-3.14.43-201505272112.patch.sig
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.14.44-gnu/patch-3.14-gnu-3.14.44-gnu.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/3.14.44-gnu/patch-3.14-gnu-3.14.44-gnu.xz.sign
+	source = https://repo.parabola.nu/other/grsecurity-libre/stable/grsecurity-libre-3.1-3.14.44-201506082249.patch
+	source = https://repo.parabola.nu/other/grsecurity-libre/stable/grsecurity-libre-3.1-3.14.44-201506082249.patch.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm
@@ -38,9 +38,9 @@ pkgbase = linux-libre-lts-grsec
 	source = https://repo.parabola.nu/other/linux-libre/patches/3.14.26-8475f027b4-loongson-community_grsecurity.patch.sig
 	sha256sums = 477555c709b9407fe37dbd70d3331ff9dde1f9d874aba2741f138d07ae6f281b
 	sha256sums = SKIP
-	sha256sums = 1c8d7336a4176e3a96de49688cb268cc5e7a44063d32a2597a339094f3f7cc16
+	sha256sums = 684af3ce9116a1e3f099c1fe4a85b13105777637def19db0c0100cbf9952a0cd
 	sha256sums = SKIP
-	sha256sums = c047eb1d73e65b954c880a578044ad6959d61fadc89c308be11b2ad4917184fd
+	sha256sums = e58c9fbd28e8b7932f342022061cc09f344675ed5aae9275172d84bac5bd68de
 	sha256sums = SKIP
 	sha256sums = bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494
 	sha256sums = SKIP
@@ -57,7 +57,7 @@ pkgbase = linux-libre-lts-grsec
 	sha256sums = 52dec83a8805a8642d74d764494acda863e0aa23e3d249e80d4b457e20a3fd29
 	sha256sums = 65d58f63215ee3c5f9c4fc6bce36fc5311a6c7dbdbe1ad29de40647b47ff9c0d
 	sha256sums = cf2e7a2d00787f754028e7459688c2755a406e632ce48b60952fa4ff7ed6f4b7
-	sha256sums = 470d6d019d288dce02b4a9758a34ea71d41715663a19a164749212a470a131e7
+	sha256sums = 9c89039a0f876888fda3be6f574bca5a120e3587d8342747bbc0723b0b4cde7a
 	sha256sums = 4637b23fc0cb21520c9da612cd39c38a52bd00c80778e39110fc2e72118f9c10
 	sha256sums = SKIP
 
@@ -72,7 +72,7 @@ pkgname = linux-libre-lts-grsec
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = gradm: to configure and enable Role Based Access Control (RBAC)
 	optdepends = paxd-libre: to enable PaX exploit mitigations and apply exceptions automatically
-	provides = linux-lts-grsec=3.14.43.201505272112
+	provides = linux-lts-grsec=3.14.44.201506082249
 	conflicts = linux-lts-grsec
 	conflicts = kernel26-lts-grsec
 	conflicts = kernel26-libre-lts-grsec
@@ -83,7 +83,7 @@ pkgname = linux-libre-lts-grsec
 
 pkgname = linux-libre-lts-grsec-headers
 	pkgdesc = Header files and scripts for building modules for Linux-libre-lts-grsec kernel
-	provides = linux-lts-grsec-headers=3.14.43.201505272112
+	provides = linux-lts-grsec-headers=3.14.44.201506082249
 	conflicts = linux-lts-grsec-headers
 	conflicts = kernel26-lts-grsec-headers
 	conflicts = kernel26-libre-lts-grsec-headers
@@ -93,7 +93,7 @@ pkgname = linux-libre-lts-grsec-headers
 
 pkgname = linux-libre-lts-grsec-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre-lts-grsec kernel
-	provides = linux-lts-grsec-docs=3.14.43.201505272112
+	provides = linux-lts-grsec-docs=3.14.44.201506082249
 	conflicts = linux-lts-grsec-docs
 	conflicts = kernel26-lts-grsec-docs
 	conflicts = kernel26-libre-lts-grsec-docs
