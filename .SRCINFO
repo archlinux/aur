@@ -1,0 +1,14 @@
+pkgbase = vim-fluxkeys
+	pkgdesc = Fluxbox fluxkeys syntax highlighting
+	pkgver = 20091101
+	pkgrel = 5
+	url = http://www.vim.org/scripts/script.php?script_id=882
+	arch = any
+	groups = vim-plugins
+	license = GPL
+	depends = vim
+	source = vim-fluxkeys::http://www.vim.org/scripts/download_script.php?src_id=11641
+	md5sums = 150a587964d562e10b033fd38a822f9c
+
+pkgname = vim-fluxkeys
+
