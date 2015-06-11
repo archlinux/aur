@@ -1,0 +1,16 @@
+pkgbase = android-x86-system-image-21
+	pkgdesc = Android x86 Atom System Image, API-21
+	pkgver = 21_r03
+	pkgrel = 2
+	url = https://software.intel.com/en-us/android/tools
+	arch = any
+	license = custom
+	depends = android-platform-21
+	optdepends = qemu
+	optdepends = libvirt
+	options = !strip
+	source = http://dl.google.com/android/repository/sys-img/android/sysimg_x86-21_r03.zip
+	sha512sums = 91744a516f9bf77d01bca62091976b44f03a63ce43528c5633efad484f47e8f94e0c23cdde85f77b5a041459097f5ed37e8446fe59f2dde41c683952eb70cf4e
+
+pkgname = android-x86-system-image-21
+
