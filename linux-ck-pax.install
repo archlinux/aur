@@ -1,0 +1,31 @@
+KERNEL_NAME=-ck-pax
+KERNEL_VERSION=
+
+# set a sane PATH to ensure that critical utils like depmod will be found
+export PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+
+post_install () {
+	# updating module dependencies
+	echo ">>> Updating module dependencies. Please wait ..."
+	depmod ${KERNEL_VERSION}
+	echo ">>> Generating initial ramdisk, using mkinitcpio.	 Please wait..."
+	mkinitcpio -p linux${KERNEL_NAME}
+}
+
+post_upgrade() {
+	if findmnt --fstab -uno SOURCE /boot &>/dev/null && ! mountpoint -q /boot; then
+		echo "WARNING: /boot appears to be a separate partition but is not mounted."
+	fi
+
+	# updating module dependencies
+	echo ">>> Updating module dependencies. Please wait ..."
+	depmod ${KERNEL_VERSION}
+	echo ">>> Generating initial ramdisk, using mkinitcpio.	 Please wait..."
+	mkinitcpio -p linux${KERNEL_NAME}
+}
+
+post_remove() {
+	# also remove the compat symlinks
+	rm -f boot/initramfs-linux${KERNEL_NAME}.img
+	rm -f boot/initramfs-linux${KERNEL_NAME}-fallback.img
+}

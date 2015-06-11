@@ -1,0 +1,75 @@
+pkgbase = linux-ck-pax
+	pkgver = 3.19.2
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/Linux-ck
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.19.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.19.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.19.2.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.19.2.sign
+	source = http://ck.kolivas.org/patches/3.0/3.19/3.19-ck1/patch-3.19-ck1.xz
+	source = http://repo-ck.com/source/gcc_patch/enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch.gz
+	source = config.x86_64
+	source = config
+	source = linux-ck-pax.preset
+	source = change-default-console-loglevel.patch
+	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.19.0-v7r7/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r7-3.19.patch
+	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.19.0-v7r7/0002-block-introduce-the-BFQ-v7r7-I-O-sched-for-3.19.patch
+	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.19.0-v7r7/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r7-for-3.19.0.patch
+	source = pax-ck-3.19.2-test11.patch
+	source = pax-ck-3.19.2-test11.patch.asc
+	source = http://grsecurity.net/~paxguy1/pax-linux-3.19.2-test11.patch
+	sha256sums = be42511fe5321012bb4a2009167ce56a9e5fe362b4af43e8c371b3666859806c
+	sha256sums = SKIP
+	sha256sums = c2e2e745e7bad33f367432280f7a8451e2488b1f851f24e2830f15279fb87b0f
+	sha256sums = SKIP
+	sha256sums = 6d3043360485bbf3b8b6b780d62ff529074489e6a4d0086607de873d1278c031
+	sha256sums = deacee3a3d9b06bc2aae74d908cef183dd39c4f3049567c488950f019ec95d79
+	sha256sums = c0ca33ee9e2ec6dd6f170ab9f99f575e0b448afdf45ff45e847737454cf66fa9
+	sha256sums = 88ae4bcd38deb06c1aa4d9fdbb4f0b5f8ce536aff2fe96c4708006f7d3addf6d
+	sha256sums = f126f7d4005b5d0adb61f0ccde95ac42baaf6f2bec14babd6d14935e377481b2
+	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
+	sha256sums = fac4a507a7a16948a0069be784624f87effeb0b7992507104c7db81c190c93e2
+	sha256sums = 621d4877d992f353ec6d9f977377552077aeebe85c47e65716e99d699af5cb11
+	sha256sums = 1509740239a2f5b623bc05b3b9efbfd4e2fa75029503e0770a274f7e7c59d79f
+	sha256sums = 49fdeb3568a833eb33cfb05538ec020ec38498cd3109f48332cb57963ed52e00
+	sha256sums = SKIP
+	sha256sums = a02d28fb2105c360add549897b44ae6e9f2b52c6f8f891129849b38930380afc
+
+pkgname = linux-ck-pax
+	pkgdesc = Linux Kernel with the ck1 patchset featuring the Brain Fuck Scheduler v0.461 and PaX security patch.
+	install = linux-ck-pax.install
+	groups = base
+	depends = linux-pax-flags
+	depends = coreutils
+	depends = linux-firmware
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = nvidia-dkms: nVidia drivers via dkms
+	optdepends = nvidia-beta-dkms: nVidia beta drivers via dkms
+	optdepends = nvidia-340xx-dkms: nVidia drivers via dkms, 340xx legacy branch
+	optdepends = modprobed_db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
+	provides = linux-ck=3.19.2
+	provides = linux-pax=3.19.2
+	conflicts = kernel26-ck
+	conflicts = kernel26-pax
+	replaces = kernel26-ck
+	replaces = kernel26-pax
+	backup = etc/mkinitcpio.d/linux-ck-pax.preset
+
+pkgname = linux-ck-pax-headers
+	pkgdesc = Header files and scripts to build modules for linux-ck-pax.
+	groups = base
+	depends = linux-ck-pax
+	provides = linux-ck-pax-headers=3.19.2
+	provides = linux-pax-headers=3.19.2
+	provides = linux-ck-headers=3.19.2
+	conflicts = kernel26-ck-pax-headers
+	replaces = kernel26-ck-pax-headers
+
