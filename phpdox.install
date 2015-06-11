@@ -1,0 +1,4 @@
+post_install()
+{
+  echo "Please activate the extensions 'iconv', 'phar' and 'xsl' in your php.ini."
+}
