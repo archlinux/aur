@@ -1,0 +1,18 @@
+pkgbase = pdftk
+	pkgdesc = Pdftk is a simple tool for doing everyday things with PDF documents
+	pkgver = 2.02
+	pkgrel = 4
+	url = http://www.pdfhacks.com/pdftk
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gcc-gcj=5.1.0
+	depends = gcc-gcj-ecj
+	options = !makeflags
+	source = http://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/pdftk-2.02-src.zip
+	source = Makefile.Arch
+	sha1sums = a4a27e984c5e1401cfa44b8e92a64113d7396a06
+	sha1sums = 95d55ad8ea8dfcb44bdd4af3954868ca10b1cad1
+
+pkgname = pdftk
+
