@@ -1,0 +1,16 @@
+pkgbase = gtorrentviewer
+	pkgdesc = A torrent viewer and editor.
+	pkgver = 0.2b
+	pkgrel = 7
+	url = http://gtorrentviewer.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = perl-xml-parser
+	depends = curl
+	depends = gtk2
+	source = https://downloads.sourceforge.net/gtorrentviewer/GTorrentViewer-0.2b.tar.gz
+	md5sums = c29058a09f26693863404ecdb2580770
+
+pkgname = gtorrentviewer
+
