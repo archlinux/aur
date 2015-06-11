@@ -1,0 +1,16 @@
+pkgbase = wmsystemtray
+	pkgdesc = system tray designed as a Window Maker dockapp
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://wmsystemtray.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxmu
+	depends = libxfixes
+	depends = libxpm
+	source = http://downloads.sourceforge.net/wmsystemtray/wmsystemtray-1.4.tar.gz
+	md5sums = 5f04edd3989b5030176492943795b6b0
+
+pkgname = wmsystemtray
+
