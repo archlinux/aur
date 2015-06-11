@@ -1,0 +1,20 @@
+pkgbase = brother-mfc-j6510dw
+	pkgdesc = LPR and CUPS driver for the Brother MFC-J6510DW
+	pkgver = 3.0.0
+	pkgrel = 3
+	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
+	install = brother-mfc-j6510dw.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = tcsh
+	depends = deb2targz
+	depends = perl
+	depends = a2ps
+	source = http://www.brother.com/pub/bsc/linux/dlf/mfcj6510dwlpr-3.0.0-1.i386.deb
+	source = http://www.brother.com/pub/bsc/linux/dlf/mfcj6510dwcupswrapper-3.0.0-1.i386.deb
+	md5sums = b45aa1c4524eceecaf8f620a3abe1c61
+	md5sums = 753494cf9dabdc35987bff23aa28836b
+
+pkgname = brother-mfc-j6510dw
+
