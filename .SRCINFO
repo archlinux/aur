@@ -1,0 +1,15 @@
+pkgbase = wmbubble
+	pkgdesc = Official maintained fork of timecop's bubblemon-dockapp
+	pkgver = 1.49rc2.r13.gcd98c65
+	pkgrel = 1
+	url = http://github.com/rnjacobs/wmbubble
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libx11
+	source = wmbubble::git+https://github.com/rnjacobs/wmbubble.git#branch=debian
+	md5sums = SKIP
+
+pkgname = wmbubble
+
