@@ -1,0 +1,27 @@
+--- shadow-4.2.1/libmisc/chkname.c.orig	2014-05-08 09:43:11.000000000 +0100
++++ shadow-4.2.1/libmisc/chkname.c	2014-07-19 11:13:35.157291993 +0100
+@@ -50,14 +50,22 @@
+ {
+ 	/*
+ 	 * User/group names must match [a-z_][a-z0-9_-]*[$]
++	 * Path by Andy Pieters to allow Upper-case 
++	 * (match [A-Za-z_][A-Za-z_0-9-]*[$])
+ 	 */
+-	if (('\0' == *name) ||
+-	    !((('a' <= *name) && ('z' >= *name)) || ('_' == *name))) {
++	
++	if (
++		('\0' == *name) ||
++	    !(( ('a' <= *name) && ('z' >= *name) ) ||
++		  ( ('A' <= *name) && ('Z'>=*name) )   ||
++			('_' == *name)
++		  )) {
+ 		return false;
+ 	}
+ 
+ 	while ('\0' != *++name) {
+ 		if (!(( ('a' <= *name) && ('z' >= *name) ) ||
++			  ( ('A' <= *name) && ('Z' >= *name) ) ||
+ 		      ( ('0' <= *name) && ('9' >= *name) ) ||
+ 		      ('_' == *name) ||
+ 		      ('-' == *name) ||
