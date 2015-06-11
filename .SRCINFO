@@ -1,0 +1,15 @@
+pkgbase = libaudclient
+	pkgdesc = Legacy D-Bus client library for Audacious
+	pkgver = 3.4.90
+	pkgrel = 1
+	url = http://audacious-media-player.org/
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	depends = glib2
+	depends = dbus-glib
+	source = http://distfiles.audacious-media-player.org/libaudclient-3.5-rc2.tar.bz2
+	sha1sums = 150ae0469f017da9322d456295aa9257d9be84af
+
+pkgname = libaudclient
+
