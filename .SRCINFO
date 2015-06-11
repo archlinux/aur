@@ -1,0 +1,26 @@
+pkgbase = fretsonfire-svn
+	pkgdesc = A game of musical skill and fast fingers. Play guitar with the keyboard as accurately as possible, svn version
+	pkgver = 178
+	pkgrel = 1
+	url = http://fretsonfire.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	depends = python2-pygame
+	depends = python2-opengl
+	depends = python2-pillow
+	depends = python2-numpy
+	optdepends = glew: Used for render-to-texture support
+	optdepends = pyogg: Used for streaming OGG files from the disk
+	optdepends = vorbis-tools: Used to import Guitar Hero files
+	conflicts = fretsonfire
+	source = fretsonfire.desktop
+	source = fretsonfire.sh
+	source = fretsonfire.png
+	md5sums = f7101049f9f0ad882c52014b31284c40
+	md5sums = efdf3d9f7bcc37f7a8aa27d47bcc239a
+	md5sums = 66668cad0211bf4e6ab1bd5efa8f65bf
+
+pkgname = fretsonfire-svn
+
