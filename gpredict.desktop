@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Gpredict
+Comment=Satellite tracker
+Comment[ru]=Отслеживание положения спутников в реальном времени и прогнозирование прохождения
+Comment[uk]=Відстежування положення супутників в реальному часі та прогнозування проходження
+Exec=gpredict
+Icon=gpredict-icon
+Terminal=false
+Type=Application
+Categories=HamRadio;Science;Astronomy;Education;Network;
