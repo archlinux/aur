@@ -1,0 +1,23 @@
+--- Makefile	2008-02-25 02:05:56.000000000 +0000
++++ Makefile_modified	2008-05-09 21:00:18.000000000 +0100
+@@ -8,7 +8,7 @@
+ expat: expat-1.95.8/.libs/libexpat.a
+ 
+ expat-1.95.8/.libs/libexpat.a:
+-	cd expat-1.95.8; ./configure; make
++	cd expat-1.95.8; CFLAGS="$(CFLAGS) -fPIC" ./configure; make
+ 
+ INC=-fPIC -shared -O -ansi -Iblender -Iagg-2.5/include -Iexpat-1.95.8/lib
+ # -DDEBUG
+--- agg-2.5/src/Makefile	2006-10-09 05:07:22.000000000 +0100
++++ agg-2.5/src/Makefile_modified	2008-05-09 21:01:16.000000000 +0100
+@@ -53,7 +53,7 @@
+ 	rm -rf ctrl/SunWS_cache
+ 
+ %.o: %.cpp
+-	$(CXX) -c $(CXXFLAGS) $*.cpp -o $@
++	$(CXX) -fPIC -c $(CXXFLAGS) $*.cpp -o $@
+ 
+ %.o: %.c
+-	$(C) -c $(CXXFLAGS) $*.c -o $@
++	$(C) -fPIC -c $(CXXFLAGS) $*.c -o $@
