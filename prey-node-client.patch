@@ -1,0 +1,70 @@
+diff --git bin/prey bin/prey
+index 5b5203c..915abd7 100755
+--- bin/prey
++++ bin/prey
+@@ -4,11 +4,11 @@ PATH="$PATH:/usr/local/bin"
+ dir="$(dirname $0)"
+ [ -x "$dir/node" ] && node="$dir/node" || node="$(command -v node || command -v nodejs)"
+ 
+-# if current file is a symlink (e.g. installed via npm) we'll append
++# if current file is a symlink (e.g. installed via pacman) we'll append
+ # the relative path to where the package is actually installed.
+ if [ -n "$(readlink $0 2> /dev/null)" ]; then
+   rel="$(dirname $(readlink $0))"
+-  dir="$dir/$rel"
++  dir="$rel"
+ fi
+ 
+ script="lib/agent/cli.js"
+diff --git lib/agent/actions/alert/linux/flash.py lib/agent/actions/alert/linux/flash.py
+index 38a26b2..e7ac631 100755
+--- lib/agent/actions/alert/linux/flash.py
++++ lib/agent/actions/alert/linux/flash.py
+@@ -1,10 +1,4 @@
+-#!/bin/sh
+-''':'
+-':'; python=$(command -v python)
+-':'; [ -z "$python" ] || [ -n "${python##*usr*}" ] && python="/usr/bin/python"
+-':'; exec "$python" "$0" "$@"
+-'''
+-
++#!/usr/bin/env python2
+ # coding: utf8
+ 
+ #############################################
+diff --git lib/conf/gui/linux/prey-config.py lib/conf/gui/linux/prey-config.py
+index f9f9eb4..66549ef 100755
+--- lib/conf/gui/linux/prey-config.py
++++ lib/conf/gui/linux/prey-config.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ ################################################
+ # Prey Configurator for Linux
+ # By Tomas Pollak
+diff --git prey.conf.default prey.conf.default
+index 2b2b141..d39a885 100644
+--- prey.conf.default
++++ prey.conf.default
+@@ -9,7 +9,7 @@ plugin_list = control-panel
+ auto_connect = false
+ 
+ # Allows Prey to auto-update itself when new versions are released.
+-auto_update = true
++auto_update = false
+ 
+ # Fetch edge releases before they reach the stable branch. No effect without auto_update.
+ download_edge = false
+diff --git lib/system/linux/index.js lib/system/linux/index.js
+index c68f3c2..0d8216d 100644
+--- lib/system/linux/index.js
++++ lib/system/linux/index.js_new
+@@ -39,6 +39,6 @@ exports.process_running = function(process_name, callback){
+ 
+ // restarts NetworkManager so it reconnects
+ exports.reconnect = function(callback){
+-  var cmd = "service NetworkManager restart";
++  var cmd = "systemctl restart NetworkManager.service";
+   exec(cmd, callback);
+ };
+

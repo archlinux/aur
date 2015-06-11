@@ -1,0 +1,29 @@
+pkgbase = prey-node-client
+	pkgdesc = Remote tracking and monitoring application for laptops, smartphones, and other electronic devices
+	pkgver = 1.3.10
+	pkgrel = 1
+	url = https://preyproject.com/
+	install = prey-node-client.install
+	arch = x86_64
+	arch = i686
+	license = GPLv3
+	depends = nodejs
+	depends = mpg123
+	depends = xawtv
+	depends = scrot
+	depends = openssh
+	depends = wireless_tools
+	depends = lsb-release
+	depends = python2
+	depends = pygtk
+	depends = networkmanager
+	replaces = prey-tracker
+	source = prey-node-client.patch
+	sha256sums = 1b296df026b6f2fd4278e4457e20e305122c69f524dfa39ed5e4e559de536252
+	source_x86_64 = https://s3.amazonaws.com/prey-releases/node-client/1.3.10/prey-linux-1.3.10-x64.zip
+	sha256sums_x86_64 = 2173450552360ec9b9e1520179e4a9a751d04b8daf21f007e3f344e56d505ce3
+	source_i686 = https://s3.amazonaws.com/prey-releases/node-client/1.3.10/prey-linux-1.3.10-x86.zip
+	sha256sums_i686 = a31b24c9ff094e02078a6b5f5e274e32e0696ae0165c9a04bd23448ff66da1ad
+
+pkgname = prey-node-client
+
