@@ -1,0 +1,14 @@
+pkgbase = eventstat-git
+	pkgdesc = Simple monitoring of system events
+	pkgver = V0.01.33.r0.gfc7a504
+	pkgrel = 1
+	url = http://kernel.ubuntu.com/~cking/eventstat/
+	arch = any
+	license = GPL
+	makedepends = git
+	conflicts = eventstat
+	source = git+git://kernel.ubuntu.com/cking/eventstat.git
+	sha256sums = SKIP
+
+pkgname = eventstat-git
+
