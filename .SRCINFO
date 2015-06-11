@@ -1,0 +1,18 @@
+pkgbase = bisonc++
+	pkgdesc = C++ parser generator
+	pkgver = 4.09.02
+	pkgrel = 2
+	url = http://bisoncpp.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = icmake
+	makedepends = yodl
+	depends = libbobcat
+	source = http://downloads.sourceforge.net/project/bisoncpp/bisonc++/4.09.02/bisonc++_4.09.02.orig.tar.gz
+	source = manual_license.patch
+	md5sums = cdb9a11ec237f10b1c8cc31e7f4076d0
+	md5sums = bab1f76582bd7518df6debe7265fdd7c
+
+pkgname = bisonc++
+
