@@ -1,0 +1,33 @@
+pkgbase = python2-glanceclient-openstack
+	pkgdesc = OpenStack image service client libs
+	pkgver = 0.14.1
+	pkgrel = 1
+	url = https://launchpad.net/glance
+	arch = any
+	license = custom
+	makedepends = python2-setuptools
+	depends = python2-greenlet>=0.3.2
+	depends = python2-sqlalchemy>=0.7.8
+	depends = python2-sqlalchemy<0.9.99
+	depends = python2-anyjson>=0.3.3
+	depends = python2-eventlet>=0.13.0
+	depends = python2-paste-deploy>=1.5.0
+	depends = python2-paste
+	depends = python2-routes>=1.12.3
+	depends = python2-webob>=1.2.3
+	depends = python2-wsgiref>=0.1.2
+	depends = python2-migrate-icehouse>=0.7.2
+	depends = python2-httplib2
+	depends = python2-kombu>=2.4.8
+	depends = python2-crypto>=2.6
+	depends = python2-iso8601>=0.1.8
+	depends = python2-lxml>=2.3
+	depends = python2-passlib
+	depends = python2-netaddr
+	depends = python2-sendfile
+	depends = python2-xattr
+	source = https://pypi.python.org/packages/source/p/python-glanceclient/python-glanceclient-0.14.1.tar.gz
+	md5sums = 1e629e5300f11562da8b1ea09e5c1311
+
+pkgname = python2-glanceclient-openstack
+
