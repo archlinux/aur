@@ -1,0 +1,22 @@
+pkgbase = python2-hyperopt-git
+	pkgdesc = Distributed Asynchronous Hyperparameter Optimization for Python 2. Bayesian optimization hyperparameter model selection
+	pkgver = 0.0.3.dev.r863.f8275df
+	pkgrel = 2
+	url = https://github.com/hyperopt/hyperopt
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-numpy
+	depends = python2-scipy
+	depends = python2-nose
+	depends = python2-pymongo
+	depends = python2-networkx
+	provides = python2-hyperopt
+	conflicts = python2-hyperopt
+	source = git+https://github.com/hyperopt/hyperopt.git
+	sha256sums = SKIP
+
+pkgname = python2-hyperopt-git
+
