@@ -1,0 +1,157 @@
+# translation of cy.po to Cymraeg
+# translation of en.po to Cymraeg
+# KD at KGyfieithu <kyfieithu@dotmon.com>, 2004.
+msgid ""
+msgstr ""
+"Project-Id-Version: cy\n"
+"POT-Creation-Date: 2003-06-12 19:34+0400\n"
+"PO-Revision-Date: 2004-04-30 21:12+0100\n"
+"Last-Translator: KD at KGyfieithu <kyfieithu@dotmon.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language-Team: Cymraeg <cy@li.org>\n"
+"X-Generator: KBabel 1.2\n"
+
+#: src/wdmLogin/Login.c:79
+msgid "no help available."
+msgstr ""
+"Rhyngwyneb graffegol yw wdm, sy'n cael ei ddefnyddio i ddilysu defnyddiwr i'r cysawd, a gweithredu'r broses o fewngofnodi. \n"
+"\n"
+"\n"
+"Rhowch eich defnydd-enw (userid) wrth yr anogiad a gwasgwch <dychwelyd>.  Bydd y panel wedyn yn dangos anogiad i chi roi eich cyfrinair.  Rhowch y cyfrinair a gwasgwch <dychwelyd>.\n"
+"\n"
+"\n"
+"Byddwch yn cael eich mewngofnodi, a bydd y rheolydd ffenestri yn cael ei gychwyn.\n"
+"\n"
+"\n"
+"Mae'r dewisiad yn y naidlen Cychwyn WM yn penodi'r paramedr i basio i Xsession i gychwyn y rheolydd ffenestri.\n"
+"\n"
+"\n"
+"Bydd DimNewid yn cychwyn yr un reolydd ffenestri a ddefnyddir am y sesiwn diwethaf.\n"
+"\n"
+"\n"
+"Mae methu-diogel yn sesiwn xterm syml, a bydd y dewisiadau eraill yn y rhestr yn cychwyn y rheolydd ffenestri a ddangosir (yn dibynnu ar eich arsefydliad) .\n"
+"\n"
+"\n"
+"Mae'r dewisiad yn y naidlen Dewisiadau yn penodi:\n"
+"\n"
+"     Enw - mewngofnodi i'r cysawd\n"
+"\n"
+"     Ailgychwyn - terfynu ac ailgychwyn y cysawd\n"
+"\n"
+"     Terfynu - terfynu y cysawd ac aros\n"
+"\n"
+"     Gadael - gadael y panel mewngofnod\n"
+"\n"
+"\n"
+"Mwy na thebyg, bydd angen rhoi defnydd-enw a chyfrinair dilys, neu ddefnyddenw gwraidd ('root') a chyfrinair gwraidd i weithredu Ailgychwyn, Terfynu neu Adael.\n"
+"\n"
+"\n"
+"NODER:  Bwriedir Gadael fel cymorth wrth profi wdm.  Bydd yn diffodd y gweinydd-x, and rhaid terfynu wdm drwy wneud rhywbeth arall.  Bydd cychwyn wdm fel proses wedi'i ddatglymu yn golygu ei bod hi'n anodd ei derfynu.\n"
+"\n"
+"\n"
+"Mae Gadael yn gwneud yr un peth â ctrl-r yn xdm.\n"
+"\n"
+"\n"
+"1. Bydd y botwm Dechrau Eto yn gwaredu'r wybodaeth fewngofnodi gyfredol a chychwyn y broses fewngofnodi unwaith eto.\n"
+"\n"
+"\n"
+"2. Gweler y dudalen man am wybodaeth ychwanegol am ffurfweddu'r pecyn yma.  Mae nifer o ddewisiadau am osod y lliw neu bicsfap cefndir, y logo i'r panel mewngofnodi, y dewisiad o reolyddion ffenestri i'w cychwyn, a'r dilysiant mewngofnodi ar gyfer ailgychwyn, terfynu a gadael."
+
+#: src/wdmLogin/Login.c:114
+msgid "Login"
+msgstr "Enw"
+
+#: src/wdmLogin/Login.c:114
+msgid "Reboot"
+msgstr "Ailgychwyn"
+
+#: src/wdmLogin/Login.c:114
+msgid "Halt"
+msgstr "Terfynu"
+
+#: src/wdmLogin/Login.c:115
+msgid "ExitLogin"
+msgstr "Gadael"
+
+#: src/wdmLogin/Login.c:118
+msgid "Login failed"
+msgstr "Methodd y mewngofnodi"
+
+#: src/wdmLogin/Login.c:118
+msgid "Reboot failed"
+msgstr "Methodd yr ailgychwyn"
+
+#: src/wdmLogin/Login.c:119
+msgid "Halt failed"
+msgstr "Methodd y terfynu"
+
+#: src/wdmLogin/Login.c:119
+msgid "ExitLogin failed"
+msgstr "Methodd y gadael"
+
+#: src/wdmLogin/Login.c:279
+msgid "NoChange"
+msgstr "DimNewid"
+
+#: src/wdmLogin/Login.c:298
+msgid "failsafe"
+msgstr "methu-diogel"
+
+#: src/wdmLogin/Login.c:376
+msgid "ERROR"
+msgstr "GWALL"
+
+#: src/wdmLogin/Login.c:435
+msgid "Password:"
+msgstr "Cyfrinair:"
+
+#: src/wdmLogin/Login.c:443 src/wdmLogin/Login.c:772
+msgid "Login name:"
+msgstr "Enw:"
+
+#: src/wdmLogin/Login.c:474
+msgid "invalid name"
+msgstr "enw annilys"
+
+#: src/wdmLogin/Login.c:496
+msgid "validating"
+msgstr "dilysu"
+
+#: src/wdmLogin/Login.c:498 src/wdmLogin/Login.c:529
+msgid "exiting"
+msgstr "terfynu"
+
+#: src/wdmLogin/Login.c:547
+msgid "Close Help"
+msgstr "Cau"
+
+#: src/wdmLogin/Login.c:554 src/wdmLogin/Login.c:866
+msgid "Help"
+msgstr "Cymorth"
+
+#: src/wdmLogin/Login.c:720
+msgid "Login Authentication"
+msgstr "Dilysu Mewngofnodi"
+
+#: src/wdmLogin/Login.c:729
+msgid "Welcome to"
+msgstr "Croeso i"
+
+#: src/wdmLogin/Login.c:816
+msgid "Start WM"
+msgstr "Cychwyn WM"
+
+#: src/wdmLogin/Login.c:834
+msgid "Options"
+msgstr "Dewisiadau"
+
+#: src/wdmLogin/Login.c:874
+msgid "Start Over"
+msgstr "Dechrau Eto"
+
+#: src/wdmLogin/Login.c:881
+msgid "Go!"
+msgstr "I ffwrdd â ni!"
+

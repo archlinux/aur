@@ -1,0 +1,11 @@
+[Unit]
+Description=X-Window Display Manager
+After=systemd-user-sessions.service
+
+[Service]
+ExecStart=/usr/bin/wdm -config /etc/wdm/wdm-config
+Type=forking
+#NotifyAccess=all
+
+[Install]
+Alias=display-manager.service
