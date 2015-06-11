@@ -1,0 +1,16 @@
+pkgbase = otf-miama
+	pkgdesc = A calligraphic font.
+	pkgver = 1.0
+	pkgrel = 4
+	url = http://www.dafont.com/fr/miama.font
+	install = miama.install
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = http://img.dafont.com/dl/?f=miama
+	md5sums = cb31fce0104b8f2d3881900a73aaad6e
+
+pkgname = otf-miama
+
