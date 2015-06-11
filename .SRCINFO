@@ -1,0 +1,16 @@
+pkgbase = wmsysmon
+	pkgdesc = A WindowMaker dock applet for system monitoring.
+	pkgver = 0.7.7
+	pkgrel = 2
+	url = http://www.gnugeneration.com/software/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	source = http://www.gnugeneration.com/software/wmsysmon/wmsysmon-0.7.7.tar.gz
+	source = wmsysmon.patch
+	md5sums = 0f8ec86a9808f5123c22ff427559fc48
+	md5sums = 294458cf7791c083fa162e718541cea5
+
+pkgname = wmsysmon
+

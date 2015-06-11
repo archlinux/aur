@@ -1,0 +1,74 @@
+diff -purN wmsysmon-0.7.7.orig/Makefile wmsysmon-0.7.7/Makefile
+--- wmsysmon-0.7.7.orig/Makefile	1969-12-31 17:00:00.000000000 -0700
++++ wmsysmon-0.7.7/Makefile	2013-03-26 05:00:57.000000000 -0600
+@@ -0,0 +1,22 @@
++CC = gcc
++
++LIBDIR += -L/usr/X11R6/lib
++LDFLAGS += -lXpm -lXext -lX11 -lm -s
++#CFLAGS = -g #-DMONDEBUG
++CFLAGS += -Wall -O3 -fomit-frame-pointer -I/usr/X11R6/include #-DHI_INTS #undefine HI_INTS if your x86 SMP or alpha
++
++BIN = src/wmsysmon
++OBJS =	src/wmgeneral.o \
++	src/wmsysmon.o
++
++$(BIN): $(OBJS)
++	$(CC) -o $(BIN) $(OBJS) $(LIBDIR) $(LDFLAGS)
++
++all: wmsysmon
++
++clean:
++	rm -f $(OBJS) $(BIN)
++
++install: $(BIN)
++	mkdir -p $(DESTDIR)/usr/bin
++	install -g root -o root $(BIN) $(DESTDIR)/usr/bin
+diff -purN wmsysmon-0.7.7.orig/src/Makefile wmsysmon-0.7.7/src/Makefile
+--- wmsysmon-0.7.7.orig/src/Makefile	2001-12-24 00:01:43.000000000 -0700
++++ wmsysmon-0.7.7/src/Makefile	2013-03-26 05:06:06.000000000 -0600
+@@ -1,9 +1,9 @@
+ CC = gcc
+ 
+ LIBDIR += -L/usr/X11R6/lib
+-LDFLAGS += -lXpm -lXext -lX11 -lm -s
++LDFLAGS += -lXpm -lXext -lX11 -lm
+ #CFLAGS = -g #-DMONDEBUG
+-CFLAGS += -Wall -O3 -m486 -fomit-frame-pointer -I/usr/X11R6/include #-DHI_INTS #undefine HI_INTS if your x86 SMP or alpha
++CFLAGS += -Wall -O3 -fomit-frame-pointer -I/usr/X11R6/include #-DHI_INTS #undefine HI_INTS if your x86 SMP or alpha
+ 
+ BIN = wmsysmon
+ OBJS =	wmgeneral.o \
+@@ -17,5 +17,6 @@ all: wmsysmon
+ clean:
+ 	rm -f $(OBJS) $(BIN)
+ 
+-install:
+-	install -g root -o root $(BIN) /usr/local/bin
++install: $(BIN)
++	mkdir -p $(DESTDIR)/usr/bin
++	install -g root -o root $(BIN) $(DESTDIR)/usr/bin
+diff -purN wmsysmon-0.7.7.orig/src/wmsysmon.c wmsysmon-0.7.7/src/wmsysmon.c
+--- wmsysmon-0.7.7.orig/src/wmsysmon.c	2001-12-24 00:11:58.000000000 -0700
++++ wmsysmon-0.7.7/src/wmsysmon.c	2013-03-26 05:04:01.000000000 -0600
+@@ -288,6 +288,7 @@ void wmsysmon_routine(int argc, char **a
+ #ifdef MONDEBUG
+ 				printf("got: %i\n", Event.type);
+ #endif
++				break;
+ 			}
+ 		}
+ 
+@@ -851,10 +852,10 @@ void usage(void)
+ #ifdef HI_INTS
+ 			"| 01234567   UV   |  <--- 0-N are hardware interrupts 0-23\n"
+ 			"| 89ABCDEF   WX   |  <--- U,V are Page IN/OUT, W,X are Swap IN/OUT\n"
+-			"| GHIJKLMN   YZ   |\n"
++			"| GHIJKLMN   YZ   |  <--- Y,Z are Swap IN/OUT\n"
+ #else
+ 			"| 01234567   WX   |  <--- 0-F are hardware interrupts 0-15\n"
+-			"| 89ABCDEF   YZ   |  <--- W,X are Page IN/OUT, W,X are Swap IN/OUT\n"
++			"| 89ABCDEF   YZ   |  <--- W,X are Page IN/OUT, Y,Z are Swap IN/OUT\n"
+ #endif
+ 			"-------------------\n");
+ 
