@@ -1,0 +1,4 @@
+post_install () {
+	echo "To use this tool simply run loader and you should be set."
+	echo "If it doesn't work, run r5u87x-loader --reload (as root)."
+}

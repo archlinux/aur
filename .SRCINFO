@@ -1,0 +1,22 @@
+pkgbase = r5u87x-hg
+	pkgdesc = Userspace module for Ricoh R5U870 OEM cameras.
+	pkgver = 64
+	pkgrel = 8
+	url = https://bitbucket.org/ahixon/r5u87x/
+	install = r5u87x-hg.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = mercurial
+	makedepends = glib2
+	makedepends = libusb-compat
+	makedepends = pkgconfig
+	depends = glib2
+	depends = libusb-compat
+	optdepends = guile
+	replaces = r5u870
+	source = hg+https://bitbucket.org/ahixon/r5u87x
+	md5sums = SKIP
+
+pkgname = r5u87x-hg
+
