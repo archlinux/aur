@@ -1,0 +1,38 @@
+diff -urN ora2pg-13.0.orig/Makefile.PL ora2pg-13.0/Makefile.PL
+--- ora2pg-13.0.orig/Makefile.PL	2014-06-02 16:16:35.000000000 +0200
++++ ora2pg-13.0/Makefile.PL	2014-09-30 11:02:36.621469259 +0200
+@@ -636,23 +636,23 @@
+ 	my $postamble = qq{
+ install_all :
+ 	\@echo "Installing default configuration file ($DEST_CONF_FILE) to $CONFDIR"
+-	\@\$(MKPATH) $CONFDIR/ora2pg
+-	\@\$(CP) -f $DEST_CONF_FILE $CONFDIR/ora2pg/$DEST_CONF_FILE
+-	\@\$(MKPATH) $DOCDIR
+-	\@\$(CP) -f README $DOCDIR/README
+-	\@\$(CP) -f INSTALL $DOCDIR/INSTALL
+-	\@\$(CP) -f changelog $DOCDIR/changelog
++	\@\$(MKPATH) \$(DESTDIR)$CONFDIR/ora2pg
++	\@\$(CP) -f $DEST_CONF_FILE \$(DESTDIR)$CONFDIR/ora2pg/$DEST_CONF_FILE
++	\@\$(MKPATH) \$(DESTDIR)$DOCDIR
++	\@\$(CP) -f README \$(DESTDIR)$DOCDIR/README
++	\@\$(CP) -f INSTALL \$(DESTDIR)$DOCDIR/INSTALL
++	\@\$(CP) -f changelog \$(DESTDIR)$DOCDIR/changelog
+ };
+ 	if ($^O =~ /MSWin32|dos/i) {
+ 		my $tmp_conf = quotemeta($CONFDIR);
+ 		$postamble = qq{
+ install_all :
+ 	\@echo "Installing default configuration file ($DEST_CONF_FILE) to $CONFDIR"
+-	\@\$(MKPATH) $CONFDIR
+-	\@\$(CP) $DEST_CONF_FILE $CONFDIR\\$DEST_CONF_FILE
+-	\@\$(CP) README $CONFDIR\\README
+-	\@\$(CP) INSTALL $CONFDIR\\INSTALL
+-	\@\$(CP) changelog $CONFDIR\\changelog
++	\@\$(MKPATH) \$(DESTDIR)$CONFDIR
++	\@\$(CP) $DEST_CONF_FILE \$(DESTDIR)$CONFDIR\\$DEST_CONF_FILE
++	\@\$(CP) README \$(DESTDIR)$CONFDIR\\README
++	\@\$(CP) INSTALL \$(DESTDIR)$CONFDIR\\INSTALL
++	\@\$(CP) changelog \$(DESTDIR)$CONFDIR\\changelog
+ };
+ 	}
+         return $postamble;
