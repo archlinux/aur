@@ -1,0 +1,14 @@
+pkgbase = python2-pyvtk
+	pkgdesc = tools for manipulating VTK files in Python
+	pkgver = 0.4.85
+	pkgrel = 1
+	url = https://code.google.com/p/pyvtk/
+	arch = any
+	license = GPL
+	depends = python2
+	conflicts = pyvtk
+	source = https://pypi.python.org/packages/source/P/PyVTK/PyVTK-0.4.85.tar.gz
+	md5sums = 76c9d9a38fbc72e4e38a3eaf69f992ea
+
+pkgname = python2-pyvtk
+
