@@ -1,0 +1,27 @@
+pkgbase = s3fs-fuse-git
+	pkgdesc = FUSED-based file system backed by Amazon S3 with OpenSSL support
+	pkgver = 1.78.r449.3056644
+	pkgrel = 2
+	url = https://github.com/s3fs-fuse/s3fs-fuse
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = glib2
+	makedepends = mime-types
+	makedepends = libxml++
+	makedepends = libgcrypt
+	makedepends = openssl>=0.9.8
+	depends = fuse>=2.8.4
+	depends = curl
+	depends = libxml2
+	provides = s3fs-fuse
+	provides = s3fs
+	conflicts = s3fs-fuse
+	conflicts = s3fs
+	conflicts = s3fs-c-git
+	source = git+https://github.com/s3fs-fuse/s3fs-fuse.git
+	sha256sums = SKIP
+
+pkgname = s3fs-fuse-git
+
