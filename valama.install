@@ -1,0 +1,4 @@
+post_install() {
+	ldconfig
+	glib-compile-schemas /usr/share/glib-2.0/schemas/
+}

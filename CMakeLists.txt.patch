@@ -1,0 +1,20 @@
+--- CMakeLists.txt.orig	2015-06-11 11:43:28.036297582 +0200
++++ CMakeLists.txt	2015-06-11 11:44:36.155148246 +0200
+@@ -212,7 +212,7 @@
+ 
+ set(default_vala_flags
+   "--thread"
+-  "--target-glib" "${GLIB2.0_VERSION}"
++  "--target-glib" "2.32"
+   "--enable-experimental"
+   "--fatal-warnings"
+ )
+@@ -310,7 +310,7 @@
+       "--vapidir" "${VALA_DATADIR}/vapi"
+       "--vapidir" "${CMAKE_SOURCE_DIR}/vapi"
+       "--vapidir" "${VALA_VAPIDIR}"
+-      "--target-glib" "${GLIB2.0_VERSION}"
++      "--target-glib" "2.32"
+       ${extra_valadoc_opts}
+       ${valadoc_debug}
+   )
