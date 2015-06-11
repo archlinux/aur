@@ -1,0 +1,17 @@
+pkgbase = kflog
+	pkgdesc = Flight planning and analysis software
+	pkgver = 4.10.0
+	pkgrel = 1
+	url = http://www.kflog.org/
+	arch = i686
+	arch = x86_64
+	arch = armv5h
+	arch = armv6h
+	arch = armv7h
+	license = custom
+	depends = qt4
+	source = https://github.com/kflog-project/KFLog/archive/4.10.0.tar.gz
+	sha256sums = 62bb49f8d41c9b988a4f77981301e14ea5eaa8cbb874ce266dd100f6247703eb
+
+pkgname = kflog
+
