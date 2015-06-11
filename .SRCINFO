@@ -1,0 +1,15 @@
+pkgbase = wmmand
+	pkgdesc = Mandelbrot set browser docapp for Window Maker
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = http://github.com/ciotog/wmMand
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libxpm
+	source = wmmand::git+https://github.com/ciotog/wmMand.git
+	md5sums = SKIP
+
+pkgname = wmmand
+
