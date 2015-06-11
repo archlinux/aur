@@ -1,0 +1,15 @@
+pkgbase = python2-taskflow-kilo
+	pkgdesc = Taskflow for task-oriented systems
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://launchpad.net/taskflow
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://pypi.python.org/packages/source/t/taskflow/taskflow-0.7.1.tar.gz
+	md5sums = 188512b3d1b5cf296fd912e24b9fb171
+
+pkgname = python2-taskflow-kilo
+
