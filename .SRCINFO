@@ -1,0 +1,37 @@
+pkgbase = mate-session-manager-upower
+	pkgdesc = The MATE Session Handler with upower (i.e. no-systemd) support
+	pkgver = 1.8.1
+	pkgrel = 4
+	url = http://mate-desktop.org
+	install = mate-session-manager-upower.install
+	arch = i686
+	arch = x86_64
+	groups = mate
+	license = GPL
+	license = LGPL
+	makedepends = mate-common
+	makedepends = pangox-compat
+	makedepends = perl-xml-parser
+	makedepends = xmlto
+	depends = dbus-glib
+	depends = gtk2
+	depends = libsm
+	depends = libxtst
+	depends = mate-desktop
+	depends = mate-polkit
+	depends = mate-settings-daemon
+	depends = ttf-dejavu
+	depends = xdg-user-dirs
+	depends = upower-pm-utils
+	optdepends = lightdm-gtk2-greeter: A lightweight display manager
+	optdepends = onboard: On-screen keyboard useful for mobility impaired users
+	optdepends = orca: Screen reader for blind or visually impaired individuals
+	optdepends = xdg-user-dirs-gtk: Add autostart that prompts to rename user directories when switching locales
+	optdepends = yelp: for reading MATE help documents
+	provides = mate-session-manager
+	conflicts = mate-session-manager
+	source = http://pub.mate-desktop.org/releases/1.8/mate-session-manager-1.8.1.tar.xz
+	sha1sums = af07f12aaad1c6fd7626dfcf95c01c519bde3819
+
+pkgname = mate-session-manager-upower
+
