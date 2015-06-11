@@ -1,0 +1,24 @@
+pkgbase = python2-troveclient-openstack
+	pkgdesc = Client library for Openstack DBaaS API
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://launchpad.net/trove
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-pbr
+	depends = python2-prettytable
+	depends = python2-requests
+	depends = python2-simplejson
+	depends = python2-babel
+	depends = python2-six
+	conflicts = python2-troveclient
+	conflicts = python2-troveclient-git
+	conflicts = python2-troveclient-havana
+	source = http://archive.ubuntu.com/ubuntu/pool/main/p/python-troveclient/python-troveclient_1.0.3.orig.tar.gz
+	md5sums = 33ded699896801e66ed8a7a1b13faff5
+
+pkgname = python2-troveclient-openstack
+
