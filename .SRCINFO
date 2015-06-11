@@ -1,0 +1,19 @@
+pkgbase = python-pyecho-git
+	pkgdesc = A Python 3 wrapper for the (undocumented) Amazon Echo API
+	pkgver = r11.1fdb0f5
+	pkgrel = 2
+	url = https://github.com/scotttherobot/PyEcho
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-beautifulsoup4
+	depends = python-requests
+	provides = python-pyecho
+	conflicts = python-pyecho
+	source = git+https://github.com/scotttherobot/PyEcho.git
+	sha256sums = SKIP
+
+pkgname = python-pyecho-git
+
