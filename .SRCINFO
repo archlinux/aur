@@ -1,0 +1,19 @@
+pkgbase = topmenu-gtk-git
+	pkgdesc = A standalone global menu bar for Gtk+ 2.0 based desktop environments.
+	pkgver = 2015.03.22
+	pkgrel = 1
+	url = https://git.javispedro.com/cgit/topmenu-gtk.git/about/
+	install = topmenu-gtk.install
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	depends = libwnck
+	optdepends = mate-topmenu-applet-git: Mate panel applet
+	optdepends = xfce4-topmenu-plugin-git: Xfce4 panel plugin
+	options = !libtool
+	source = git+http://git.javispedro.com/cgit/topmenu-gtk.git
+	sha1sums = SKIP
+
+pkgname = topmenu-gtk-git
+

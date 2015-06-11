@@ -1,0 +1,23 @@
+post_install() {
+   echo ""
+   echo "==> Installation notes for MATE and Xfce4 users:"
+   echo ""
+   echo " Be sure that GTK_MODULES environment variable"
+   echo " is set to \"topmenu-gtk-module\" after user login."
+   echo " For example, you may want to add following line "
+   echo " to your /etc/profile configuration file:"
+   echo ""
+   echo " export GTK_MODULES=topmenu-gtk-module"
+   echo ""
+   echo " and relogin to apply changes. "
+   echo ""
+   gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+}
+
+post_upgrade() {
+   post_install
+}
+
+post_remove() {
+   gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+}
