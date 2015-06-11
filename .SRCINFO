@@ -1,0 +1,18 @@
+pkgbase = tiptop
+	pkgdesc = Tiptop: Hardware Performance Counters for the Masses
+	pkgver = 2.2
+	pkgrel = 1
+	url = http://tiptop.gforge.inria.fr/releases/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxml2
+	depends = ncurses
+	depends = zlib
+	depends = xz
+	provides = tiptop
+	source = http://tiptop.gforge.inria.fr/releases/tiptop-2.2.tar.gz
+	md5sums = 74255a29acf44569db021b080ad3e3f7
+
+pkgname = tiptop
+
