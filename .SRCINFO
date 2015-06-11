@@ -1,0 +1,17 @@
+pkgbase = wmpower
+	pkgdesc = A Window Maker applet showing power management status
+	pkgver = 0.4.3
+	pkgrel = 2
+	url = http://wmpower.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	optdepends = cpufreqd
+	source = http://downloads.sourceforge.net/wmpower/wmpower-0.4.3.tar.bz2
+	source = wmpower.patch
+	md5sums = 22be08382dc408f3b925a198e46dd0be
+	md5sums = 30d429437f41b539c07ba806065c6839
+
+pkgname = wmpower
+
