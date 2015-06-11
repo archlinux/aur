@@ -1,0 +1,18 @@
+pkgbase = python-bidict-git
+	pkgdesc = Provides a bidirectional mapping data structure and related functionality to naturally work with one-to-one relations in Python 3
+	pkgver = 0.3.2.dev.r30.f6fc702
+	pkgrel = 2
+	url = https://bidict.readthedocs.org/en/latest
+	arch = any
+	license = ISC
+	makedepends = git
+	depends = python
+	provides = python-bidict
+	conflicts = python-bidict
+	source = git+https://github.com/jab/bidict.git
+	source = http://opensource.org/licenses/isc-license
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = python-bidict-git
+
