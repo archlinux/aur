@@ -1,0 +1,14 @@
+pkgbase = mlmmj
+	pkgdesc = Mailing-list manager
+	pkgver = 1.2.19.0
+	pkgrel = 1
+	url = http://mlmmj.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sh
+	source = http://mlmmj.org/releases/mlmmj-1.2.19.0.tar.bz2
+	sha256sums = 3bcd7f5a17234ef570836f043ea4aacfdaf47d542c4ad4cbe4b2293c3bdb3cde
+
+pkgname = mlmmj
+
