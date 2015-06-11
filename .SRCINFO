@@ -1,0 +1,16 @@
+pkgbase = sjk
+	pkgdesc = Swiss Java Knife is CLI tool for JVM diagnostic, troubleshooting and profiling
+	pkgver = 0.3.6
+	pkgrel = 2
+	url = https://github.com/aragozin/jvm-tools
+	arch = any
+	license = APACHE
+	depends = sh
+	depends = java-environment
+	source = https://bintray.com/artifact/download/aragozin/generic/sjk-0.3.6.jar
+	source = sjk
+	sha256sums = 492593be28144635439fabe3acc647c496fbdecc0246c948e60bcfb8a33162e2
+	sha256sums = 62d6e80ec8d66bd2b68760599d5b2320910d961405d85560de09481bbfb0d7c0
+
+pkgname = sjk
+
