@@ -1,0 +1,18 @@
+pkgbase = kodi-devel-audiodecoder-snesapu
+	pkgdesc = SPC decoder addon for Kodi
+	pkgver = 20150309.9fc775b
+	pkgrel = 1
+	url = https://github.com/notspiff/audiodecoder.snesapu
+	arch = i686
+	arch = x86_64
+	groups = kodi-devel
+	license = GPL
+	makedepends = cmake
+	makedepends = kodi-devel-platform
+	makedepends = kodi-devel-libplatform
+	depends = kodi-devel
+	source = https://github.com/notspiff/audiodecoder.snesapu/archive/9fc775b13279567ac880f076beb9eead88747467.tar.gz
+	md5sums = SKIP
+
+pkgname = kodi-devel-audiodecoder-snesapu
+
