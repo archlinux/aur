@@ -1,0 +1,21 @@
+pkgbase = arc-gtk-theme-git
+	pkgdesc = Arc is a flat theme with transparent elements for GTK 3, GTK 2 and Gnome-Shell. It supports GTK 3 and GTK 2 based desktop environments like Gnome, Unity, Budgie, Pantheon, etc.
+	pkgver = 53.74f43ab
+	pkgrel = 1
+	url = https://github.com/horst3180/Arc-theme
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = automake
+	makedepends = autoconf
+	depends = gnome-themes-standard
+	depends = gtk-engine-murrine
+	provides = arc-theme
+	conflicts = arc-theme
+	replaces = arc-theme
+	options = !strip
+	source = arc-gtk-theme-git::git+https://github.com/horst3180/arc-theme.git
+	sha256sums = SKIP
+
+pkgname = arc-gtk-theme-git
+
