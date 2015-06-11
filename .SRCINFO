@@ -1,0 +1,18 @@
+pkgbase = fdupes-jody-git
+	pkgdesc = A program for identifying or deleting duplicate files residing within specified directories with additional patches
+	pkgver = 1.51.jody4.r67.9e03e71
+	pkgrel = 1
+	url = https://github.com/jbruchon/fdupes-jody/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = fdupes
+	conflicts = fdupes
+	source = fdupes-jody-git::git+https://github.com/jbruchon/fdupes-jody.git
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = 38c96b27f2ca86a9c7ca0cb79faf34a4de1d03675b8c4b60d0c628b6b0f41255
+
+pkgname = fdupes-jody-git
+
