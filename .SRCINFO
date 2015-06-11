@@ -1,0 +1,24 @@
+pkgbase = freediameter-hg
+	pkgdesc = An open source implementation of the diameter protocol
+	pkgver = 1288.389c26b904d7
+	pkgrel = 1
+	url = http://www.freediameter.net/
+	install = freediameter-hg.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = mercurial
+	makedepends = bison
+	makedepends = flex
+	depends = gnutls
+	depends = libidn
+	provides = freediameter
+	conflicts = freediameter
+	source = freediameter::hg+http://www.freediameter.net/hg/freeDiameter/
+	source = freediameter.service
+	sha256sums = SKIP
+	sha256sums = d6bea4c108526222d1096a031eb8d1ff168eb73b0a22747a6efe85098759d52f
+
+pkgname = freediameter-hg
+

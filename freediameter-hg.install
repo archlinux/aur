@@ -1,0 +1,13 @@
+post_install ()
+{
+	echo "Create configuration file /etc/freediameter/freediameter.conf before first start"
+	echo "For sample configuration files, see /etc/freediameter/samples/"
+	echo "Systemd service file is at /usr/lib/systemd/system/freediameter.service"
+}
+post_upgrade ()
+{
+	echo "WARNING: Some changes were made."
+	echo "Configuration path changed and SysVinit support was dropped, systemd support added."
+	echo ""
+	post_install
+}
