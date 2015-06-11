@@ -1,6 +1,6 @@
 pkgbase = xorg-xsm-git
 	pkgdesc = X Session Manager
-	pkgver = 1.0.3.r6.g0caed2f
+	pkgver = 1.0.3.r7.g6c335e1
 	pkgrel = 1
 	url = http://xorg.freedesktop.org/
 	arch = x86_64
