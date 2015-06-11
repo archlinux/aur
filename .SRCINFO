@@ -1,0 +1,17 @@
+pkgbase = python2-mnemonic-git
+	pkgdesc = Python 2 library for Mnemonic code for generating deterministic keys (Implementation of Bitcoin BIP-0039)
+	pkgver = 0.12.r116.648f972
+	pkgrel = 2
+	url = https://github.com/trezor/python-mnemonic
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python2
+	depends = python2-pbkdf2
+	provides = python2-mnemonic
+	conflicts = python2-mnemonic
+	source = git+https://github.com/trezor/python-mnemonic.git
+	sha256sums = SKIP
+
+pkgname = python2-mnemonic-git
+
