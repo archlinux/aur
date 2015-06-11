@@ -1,0 +1,15 @@
+pkgbase = python2-xstatic-spin
+	pkgdesc = XStatic-Spin
+	pkgver = 1.2.5.2
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/XStatic-Spin
+	arch = i686
+	arch = x86_64
+	makedepends = python2-setuptools
+	makedepends = python2-pip
+	depends = python2
+	source = https://pypi.python.org/packages/source/X/XStatic-Spin/XStatic-Spin-1.2.5.2.tar.gz
+	md5sums = df83f80fd0b11545b64497112996e49e
+
+pkgname = python2-xstatic-spin
+
