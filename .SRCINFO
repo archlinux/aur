@@ -1,0 +1,21 @@
+pkgbase = python2-trezor-git
+	pkgdesc = Python library for communicating with TREZOR Bitcoin Hardware Wallet
+	pkgver = 0.6.5.r478.d8f3a47
+	pkgrel = 2
+	url = https://github.com/trezor/python-trezor
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python2
+	depends = cython2
+	depends = protobuf
+	depends = python2-protobuf
+	depends = python2-mnemonic-git
+	depends = python2-cython-hidapi-git
+	provides = python2-trezor
+	conflicts = python2-trezor
+	source = git://github.com/trezor/python-trezor.git
+	sha256sums = SKIP
+
+pkgname = python2-trezor-git
+
