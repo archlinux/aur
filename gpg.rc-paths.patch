@@ -1,0 +1,29 @@
+From: Antonio Radici <antonio@debian.org>
+Date: Thu, 27 Feb 2014 16:30:20 +0100
+Subject: gpg.rc-paths
+
+Use the correct path of pgpewrap.
+
+Gbp-Pq: Topic misc
+---
+ contrib/gpg.rc | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/contrib/gpg.rc b/contrib/gpg.rc
+index 7511f3c..27a76b9 100644
+--- a/contrib/gpg.rc
++++ b/contrib/gpg.rc
+@@ -49,11 +49,11 @@ set pgp_clearsign_command="gpg --no-verbose --batch --quiet --output - %?p?--pas
+ 
+ # create a pgp/mime encrypted attachment
+ # set pgp_encrypt_only_command="pgpewrap gpg-2comp -v --batch --output - --encrypt --textmode --armor --always-trust -- -r %r -- %f"
+-set pgp_encrypt_only_command="pgpewrap gpg --batch --quiet --no-verbose --output - --encrypt --textmode --armor --always-trust -- -r %r -- %f"
++set pgp_encrypt_only_command="/usr/lib/mutt/pgpewrap gpg --batch --quiet --no-verbose --output - --encrypt --textmode --armor --always-trust -- -r %r -- %f"
+ 
+ # create a pgp/mime encrypted and signed attachment
+ # set pgp_encrypt_sign_command="pgpewrap gpg-2comp %?p?--passphrase-fd 0? -v --batch --output - --encrypt --sign %?a?-u %a? --armor --always-trust -- -r %r -- %f"
+-set pgp_encrypt_sign_command="pgpewrap gpg %?p?--passphrase-fd 0? --batch --quiet --no-verbose --textmode --output - --encrypt --sign %?a?-u %a? --armor --always-trust -- -r %r -- %f"
++set pgp_encrypt_sign_command="/usr/lib/mutt/pgpewrap gpg %?p?--passphrase-fd 0? --batch --quiet --no-verbose --textmode --output - --encrypt --sign %?a?-u %a? --armor --always-trust -- -r %r -- %f"
+ 
+ # import a key into the public key ring
+ set pgp_import_command="gpg --no-verbose --import %f"

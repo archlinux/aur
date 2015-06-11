@@ -1,0 +1,115 @@
+From: Antonio Radici <antonio@debian.org>
+Date: Thu, 27 Feb 2014 14:42:36 +0100
+Subject: sensible_browser_position
+
+This is the sensible browser position patch by Haakon Riiser.
+
+  * Found in: <20050309162127.GA5656@s>
+    http://lists.df7cb.de/mutt/message/20050309.162127.a244a894.en.html
+
+Gbp-Pq: Topic features
+---
+ browser.c   | 24 +++++++++++++++++++++---
+ menu.c      | 11 +++++++++++
+ mutt_menu.h |  1 +
+ 3 files changed, 33 insertions(+), 3 deletions(-)
+
+diff --git a/browser.c b/browser.c
+index cda4900..dbb31c8 100644
+--- a/browser.c
++++ b/browser.c
+@@ -56,6 +56,7 @@ typedef struct folder_t
+   int num;
+ } FOLDER;
+ 
++static char OldLastDir[_POSIX_PATH_MAX] = "";
+ static char LastDir[_POSIX_PATH_MAX] = "";
+ static char LastDirBackup[_POSIX_PATH_MAX] = "";
+ 
+@@ -536,15 +537,33 @@ static void init_menu (struct browser_state *state, MUTTMENU *menu, char *title,
+   menu->tagged = 0;
+   
+   if (buffy)
++  {
++    menu->is_mailbox_list = 1;
+     snprintf (title, titlelen, _("Mailboxes [%d]"), mutt_buffy_check (0));
++  }
+   else
+   {
++    menu->is_mailbox_list = 0;
+     strfcpy (path, LastDir, sizeof (path));
+     mutt_pretty_mailbox (path, sizeof (path));
+ #ifdef USE_IMAP
+   if (state->imap_browse && option (OPTIMAPLSUB))
+-    snprintf (title, titlelen, _("Subscribed [%s], File mask: %s"),
+-	      path, NONULL (Mask.pattern));
++     {
++       char *p = strrchr (OldLastDir, '/');
++       if (p && p - OldLastDir == mutt_strlen (LastDir) &&
++          mutt_strncmp (LastDir, OldLastDir, p - OldLastDir) == 0)
++       {
++        /* If we get here, it means that LastDir is the parent directory of
++         * OldLastDir.  I.e., we're returning from a subdirectory, and we want
++         * to position the cursor on the directory we're returning from. */
++        int i;
++        for (i = 0; i < state->entrymax; i++)
++          if (mutt_strcmp (state->entry[i].name, p + 1) == 0)
++            menu->current = i;
++       }
++       snprintf (title, titlelen, _("Directory [%s], File mask: %s"),
++                path, NONULL(Mask.pattern));
++     }
+   else
+ #endif
+     snprintf (title, titlelen, _("Directory [%s], File mask: %s"),
+@@ -731,7 +750,6 @@ void _mutt_select_file (char *f, size_t flen, int flags, char ***files, int *num
+ #endif
+ 	    )
+ 	  {
+-	    char OldLastDir[_POSIX_PATH_MAX];
+ 
+ 	    /* save the old directory */
+ 	    strfcpy (OldLastDir, LastDir, sizeof (OldLastDir));
+diff --git a/menu.c b/menu.c
+index e03dd33..27b5f8e 100644
+--- a/menu.c
++++ b/menu.c
+@@ -849,8 +849,17 @@ int menu_redraw (MUTTMENU *menu)
+ 
+ int mutt_menuLoop (MUTTMENU *menu)
+ {
++  static int last_position = -1;
+   int i = OP_NULL;
+ 
++  if ( menu->max && menu->is_mailbox_list ) {
++    if ( last_position > (menu->max-1) ) {
++      last_position = -1;
++    } else if (last_position >= 0) {
++      menu->current = last_position;
++    }
++  }
++
+   FOREVER
+   {
+     if (option (OPTMENUCALLER))
+@@ -1078,6 +1087,8 @@ int mutt_menuLoop (MUTTMENU *menu)
+ 	break;
+ 
+       default:
++        if (menu->is_mailbox_list)
++          last_position = menu->current;
+ 	return (i);
+     }
+   }
+diff --git a/mutt_menu.h b/mutt_menu.h
+index 82abecd..404b6dd 100644
+--- a/mutt_menu.h
++++ b/mutt_menu.h
+@@ -49,6 +49,7 @@ typedef struct menu_t
+   int offset;	/* which screen row to start the index */
+   int pagelen;	/* number of entries per screen */
+   int tagprefix;
++  int is_mailbox_list;
+ 
+   /* Setting dialog != NULL overrides normal menu behavior. 
+    * In dialog mode menubar is hidden and prompt keys are checked before

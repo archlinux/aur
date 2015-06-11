@@ -1,0 +1,22 @@
+From: Evgeni Golov <evgeni@debian.org>
+Date: Wed, 5 Mar 2014 08:11:47 +0100
+Subject: fix-configure-test-operator
+
+Gbp-Pq: Topic misc
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index e7ebe01..2d57b76 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1187,7 +1187,7 @@ if test "x$with_idn" != "xno"; then
+     ])
+ 
+     if test "$with_idn" != auto; then
+-      if test $have_stringprep_h = no || test $have_idna_h = no || test $ac_cv_search_STRINGPREP_CHECK_VERSION = no; then
++      if test "$have_stringprep_h" = no || test "$have_idna_h" = no || test "$ac_cv_search_STRINGPREP_CHECK_VERSION" = no; then
+ 	AC_MSG_ERROR([IDN was requested, but libidn was not usable on this system])
+       fi
+     fi

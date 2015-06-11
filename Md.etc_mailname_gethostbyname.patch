@@ -1,0 +1,82 @@
+From: Antonio Radici <antonio@debian.org>
+Date: Thu, 27 Feb 2014 15:58:54 +0100
+Subject: Md.etc_mailname_gethostbyname
+
+If /etc/mailname is present, the hostname inside the file will be
+used, rather than calling gethostbyname() on the actual hostname.
+
+Gbp-Pq: Topic debian-specific
+---
+ init.c | 41 +++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 41 insertions(+)
+
+diff --git a/init.c b/init.c
+index 81bb9e7..1401664 100644
+--- a/init.c
++++ b/init.c
+@@ -48,6 +48,7 @@
+ #include <unistd.h>
+ #include <string.h>
+ #include <sys/utsname.h>
++#include <netdb.h>
+ #include <errno.h>
+ #include <sys/wait.h>
+ #include <sys/time.h>
+@@ -2965,6 +2966,31 @@ static void mutt_srandom (void)
+   srandom(seed);
+ }
+ 
++int getmailname(char *s, size_t l)
++{
++    FILE *f;
++    char tmp[512];
++    char *p = tmp;
++
++    if ((f = fopen ("/etc/mailname", "r")) == NULL)
++       return (-1);
++
++    if (fgets (tmp, 510, f) != NULL) {
++      while (*p && !ISSPACE(*p) && l > 0) {
++	*s++ = *p++;
++	l--;
++      }
++      if (*(s-1) == '.')
++	s--;
++      *s = 0;
++
++      fclose (f);
++      return 0;
++    }
++    fclose (f);
++    return (-1);
++}
++
+ void mutt_init (int skip_sys_rc, LIST *commands)
+ {
+   struct passwd *pw;
+@@ -3041,10 +3067,25 @@ void mutt_init (int skip_sys_rc, LIST *commands)
+     Hostname = mutt_substrdup (utsname.nodename, p);
+     p++;
+     strfcpy (buffer, p, sizeof (buffer)); /* save the domain for below */
++    Fqdn = safe_strdup (utsname.nodename);
+   }
+   else
+     Hostname = safe_strdup (utsname.nodename);
+ 
++  /* if /etc/mailname exists use it and ignore everything else */
++  if (getmailname(buffer, sizeof (buffer)) != -1)
++      Fqdn = safe_strdup(buffer);
++
++  /* try gethostbyname(3) if /etc/mailname does not exists */
++  if (!Fqdn) {
++    struct hostent *hp;
++
++    if ((hp = gethostbyname(Hostname)))
++	Fqdn = safe_strdup(hp->h_name);
++  }
++
++  if (Fqdn) {
++  } else
+ #ifndef DOMAIN
+ #define DOMAIN buffer
+   if (!p && getdnsdomainname (buffer, sizeof (buffer)) == -1)

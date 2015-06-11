@@ -1,0 +1,29 @@
+From: Antonio Radici <antonio@debian.org>
+Date: Thu, 27 Feb 2014 16:38:41 +0100
+Subject: 543467-thread-segfault
+
+Added a patch to prevent segfault when Ctrl+R is hit
+on a malformed group of messages.
+(see upstream bug http://bugs.mutt.org/3335)
+
+Gbp-Pq: Topic upstream
+---
+ flags.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/flags.c b/flags.c
+index 5309bb7..133fa35 100644
+--- a/flags.c
++++ b/flags.c
+@@ -303,7 +303,10 @@ void mutt_tag_set_flag (int flag, int bf)
+ int mutt_thread_set_flag (HEADER *hdr, int flag, int bf, int subthread)
+ {
+   THREAD *start, *cur = hdr->thread;
+-  
++
++  if ( !hdr->thread )
++    return (-1);
++
+   if ((Sort & SORT_MASK) != SORT_THREADS)
+   {
+     mutt_error _("Threading is not enabled.");

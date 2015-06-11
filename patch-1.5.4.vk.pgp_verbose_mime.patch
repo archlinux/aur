@@ -1,0 +1,63 @@
+From: Antonio Radici <antonio@debian.org>
+Date: Thu, 27 Feb 2014 14:45:01 +0100
+Subject: patch-1.5.4.vk.pgp_verbose_mime
+
+Enable pgp_mime_signature_filename and
+pgp_mime_signature_description.
+
+Gbp-Pq: Topic features-old
+---
+ globals.h |  2 ++
+ init.h    | 12 ++++++++++++
+ pgp.c     |  2 ++
+ 3 files changed, 16 insertions(+)
+
+diff --git a/globals.h b/globals.h
+index a7e2304..5b6e56a 100644
+--- a/globals.h
++++ b/globals.h
+@@ -244,6 +244,8 @@ WHERE char *PgpVerifyKeyCommand;
+ WHERE char *PgpListSecringCommand;
+ WHERE char *PgpListPubringCommand;
+ WHERE char *PgpGetkeysCommand;
++WHERE char *PgpMimeSignatureFilename;
++WHERE char *PgpMimeSignatureDescription;
+ 
+ /*-- formerly in smime.h --*/
+ WHERE char *SmimeDefaultKey;
+diff --git a/init.h b/init.h
+index d4a882b..a64992a 100644
+--- a/init.h
++++ b/init.h
+@@ -2590,6 +2590,18 @@ struct option_t MuttVars[] = {
+   ** a line quoted text if it also matches $$smileys. This mostly
+   ** happens at the beginning of a line.
+   */
++  { "pgp_mime_signature_filename", DT_STR, R_NONE, UL &PgpMimeSignatureFilename, UL "signature.asc"},
++  /*
++  ** .pp
++  ** This option sets the filename used for signature parts in PGP/MIME
++  ** signed messages.
++  */
++  { "pgp_mime_signature_description", DT_STR, R_NONE, UL &PgpMimeSignatureDescription, UL "Digital signature"},
++  /*
++  ** .pp
++  ** This option sets the Content-Description used for signature parts in
++  ** PGP/MIME signed messages.
++  */
+ 
+ 
+ 
+diff --git a/pgp.c b/pgp.c
+index 506a078..92dee8c 100644
+--- a/pgp.c
++++ b/pgp.c
+@@ -1127,6 +1127,8 @@ BODY *pgp_sign_message (BODY *a)
+   t->disposition = DISPNONE;
+   t->encoding = ENC7BIT;
+   t->unlink = 1; /* ok to remove this file after sending. */
++  mutt_set_parameter ("name", PgpMimeSignatureFilename, &t->parameter);
++  t->description = safe_strdup (PgpMimeSignatureDescription);
+ 
+   return (a);
+ }

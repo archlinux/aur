@@ -1,0 +1,25 @@
+From: Antonio Radici <antonio@debian.org>
+Date: Thu, 27 Feb 2014 17:38:03 +0100
+Subject: path_max
+
+Gbp-Pq: Topic upstream
+---
+ mutt.h | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/mutt.h b/mutt.h
+index b71f071..4db92a6 100644
+--- a/mutt.h
++++ b/mutt.h
+@@ -52,6 +52,11 @@
+ #include <limits.h>
+ #endif
+ 
++/* PATH_MAX is undefined on the hurd */
++#ifndef PATH_MAX
++#define PATH_MAX _POSIX_PATH_MAX
++#endif
++
+ #include <pwd.h>
+ #include <grp.h>
+ 

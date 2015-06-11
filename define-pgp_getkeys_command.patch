@@ -1,0 +1,24 @@
+From: Antonio Radici <antonio@debian.org>
+Date: Thu, 27 Feb 2014 16:27:19 +0100
+Subject: define-pgp_getkeys_command
+
+Disabling pgp_getkeys_command until upstream fixes it.
+
+Gbp-Pq: Topic misc
+---
+ contrib/gpg.rc | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/contrib/gpg.rc b/contrib/gpg.rc
+index d6c9def..7511f3c 100644
+--- a/contrib/gpg.rc
++++ b/contrib/gpg.rc
+@@ -72,6 +72,8 @@ set pgp_list_secring_command="gpg --no-verbose --batch --quiet --with-colons --l
+ 
+ # fetch keys
+ # set pgp_getkeys_command="pkspxycwrap %r"
++# This will work when #172960 will be fixed upstream
++# set pgp_getkeys_command="gpg --recv-keys %r"
+ 
+ # pattern for good signature - may need to be adapted to locale!
+ 

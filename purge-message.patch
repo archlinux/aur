@@ -1,0 +1,241 @@
+From: Cedric Duval <cedricduval@free.fr>
+Date: Thu, 27 Feb 2014 14:21:59 +0100
+Subject: purge-message
+
+(requires trash folder patch)
+
+This patch adds the purge-message function, which, unlike delete-message,
+will bypass the trash folder and really delete the mail.
+
+You can bind this function to <esc>D, for instance, by adding the following
+lines to your muttrc:
+
+bind index \eD purge-message
+bind pager \eD purge-message
+
+Please be very careful with this function, and try to use it as less as
+possible. The risk resides in getting into the habit of always using
+purge-message instead of delete-message, which would really defeat the
+purpose of having a trash folder feature.
+
+* Patch last synced with upstream:
+  - Date: 2007-02-15
+  - File: http://cedricduval.free.fr/mutt/patches/download/patch-1.5.5.1.cd.purge_message.3.4
+
+* Changes made:
+  - Updated to 1.5.13
+  - Fixed indentation of "purged" in mutt.h.
+
+Signed-off-by: Matteo F. Vescovi <mfvescovi@gmail.com>
+
+Gbp-Pq: Topic features
+---
+ OPS         |  1 +
+ curs_main.c | 12 ++++++++++--
+ flags.c     | 10 ++++++++++
+ functions.h |  2 ++
+ mutt.h      |  2 ++
+ mx.c        |  1 +
+ pager.c     |  8 +++++++-
+ pattern.c   |  4 +++-
+ 8 files changed, 36 insertions(+), 4 deletions(-)
+
+diff --git a/OPS b/OPS
+index 8414a8b..02cea8e 100644
+--- a/OPS
++++ b/OPS
+@@ -142,6 +142,7 @@ OP_PREV_ENTRY "move to the previous entry"
+ OP_PREV_LINE "scroll up one line"
+ OP_PREV_PAGE "move to the previous page"
+ OP_PRINT "print the current entry"
++OP_PURGE_MESSAGE "really delete the current entry, bypassing the trash folder"
+ OP_QUERY "query external program for addresses"
+ OP_QUERY_APPEND "append new query results to current results"
+ OP_QUIT "save changes to mailbox and quit"
+diff --git a/curs_main.c b/curs_main.c
+index 16ddbc9..d266708 100644
+--- a/curs_main.c
++++ b/curs_main.c
+@@ -1844,6 +1844,7 @@ int mutt_index_menu (void)
+ 	MAYBE_REDRAW (menu->redraw);
+ 	break;
+ 
++      case OP_PURGE_MESSAGE:
+       case OP_DELETE:
+ 
+ 	CHECK_MSGCOUNT;
+@@ -1854,6 +1855,7 @@ int mutt_index_menu (void)
+ 	if (tag)
+ 	{
+ 	  mutt_tag_set_flag (M_DELETE, 1);
++	  mutt_tag_set_flag (M_PURGED, (op != OP_PURGE_MESSAGE) ? 0 : 1);
+ 	  if (option (OPTDELETEUNTAG))
+ 	    mutt_tag_set_flag (M_TAG, 0);
+ 	  menu->redraw = REDRAW_INDEX;
+@@ -1861,6 +1863,8 @@ int mutt_index_menu (void)
+ 	else
+ 	{
+ 	  mutt_set_flag (Context, CURHDR, M_DELETE, 1);
++	  mutt_set_flag (Context, CURHDR, M_PURGED,
++			 (op != OP_PURGE_MESSAGE) ? 0 : 1);
+ 	  if (option (OPTDELETEUNTAG))
+ 	    mutt_set_flag (Context, CURHDR, M_TAG, 0);
+ 	  if (option (OPTRESOLVE))
+@@ -2162,11 +2166,13 @@ int mutt_index_menu (void)
+ 	if (tag)
+ 	{
+ 	  mutt_tag_set_flag (M_DELETE, 0);
++	  mutt_tag_set_flag (M_PURGED, 0);
+ 	  menu->redraw = REDRAW_INDEX;
+ 	}
+ 	else
+ 	{
+ 	  mutt_set_flag (Context, CURHDR, M_DELETE, 0);
++	  mutt_set_flag (Context, CURHDR, M_PURGED, 0);
+ 	  if (option (OPTRESOLVE) && menu->current < Context->vcount - 1)
+ 	  {
+ 	    menu->current++;
+@@ -2187,9 +2193,11 @@ int mutt_index_menu (void)
+ 	CHECK_ACL(M_ACL_DELETE, _("undelete message(s)"));
+ 
+ 	rc = mutt_thread_set_flag (CURHDR, M_DELETE, 0,
+-				   op == OP_UNDELETE_THREAD ? 0 : 1);
++				   op == OP_UNDELETE_THREAD ? 0 : 1)
++	  + mutt_thread_set_flag (CURHDR, M_PURGED, 0,
++				  op == OP_UNDELETE_THREAD ? 0 : 1);
+ 
+-	if (rc != -1)
++	if (rc > -1)
+ 	{
+ 	  if (option (OPTRESOLVE))
+ 	  {
+diff --git a/flags.c b/flags.c
+index dfa6a50..5309bb7 100644
+--- a/flags.c
++++ b/flags.c
+@@ -104,6 +104,16 @@ void _mutt_set_flag (CONTEXT *ctx, HEADER *h, int flag, int bf, int upd_ctx)
+       }
+       break;
+ 
++    case M_PURGED:
++      if (bf)
++      {
++	if (!h->purged)
++	  h->purged = 1;
++      }
++      else if (h->purged)
++	h->purged = 0;
++      break;
++
+     case M_NEW:
+ 
+       if (!mutt_bit_isset(ctx->rights,M_ACL_SEEN))
+diff --git a/functions.h b/functions.h
+index 7a1c5a9..a29388c 100644
+--- a/functions.h
++++ b/functions.h
+@@ -121,6 +121,7 @@ const struct binding_t OpMain[] = { /* map: index */
+   { "toggle-write",		OP_TOGGLE_WRITE,		"%" },
+   { "next-thread",		OP_MAIN_NEXT_THREAD,		"\016" },
+   { "next-subthread",		OP_MAIN_NEXT_SUBTHREAD,		"\033n" },
++  { "purge-message",		OP_PURGE_MESSAGE,		NULL },
+   { "query",			OP_QUERY,			"Q" },
+   { "quit",			OP_QUIT,			"q" },
+   { "reply",			OP_REPLY,			"r" },
+@@ -213,6 +214,7 @@ const struct binding_t OpPager[] = { /* map: pager */
+   { "print-message",	OP_PRINT,			"p" },
+   { "previous-thread",	OP_MAIN_PREV_THREAD,		"\020" },
+   { "previous-subthread",OP_MAIN_PREV_SUBTHREAD,	"\033p" },
++  { "purge-message",	OP_PURGE_MESSAGE,		NULL },
+   { "quit",		OP_QUIT,			"Q" },
+   { "exit",		OP_EXIT,			"q" },
+   { "reply",		OP_REPLY,			"r" },
+diff --git a/mutt.h b/mutt.h
+index 0b879b9..8cee3d2 100644
+--- a/mutt.h
++++ b/mutt.h
+@@ -186,6 +186,7 @@ enum
+   M_UNDELETE,
+   M_DELETED,
+   M_APPENDED,
++  M_PURGED,
+   M_FLAG,
+   M_TAG,
+   M_UNTAG,
+@@ -711,6 +712,7 @@ typedef struct header
+   unsigned int flagged : 1; 		/* marked important? */
+   unsigned int tagged : 1;
+   unsigned int appended : 1;		/* has been saved */
++  unsigned int purged : 1;		/* bypassing the trash folder */
+   unsigned int deleted : 1;
+   unsigned int changed : 1;
+   unsigned int attach_del : 1; 		/* has an attachment marked for deletion */
+diff --git a/mx.c b/mx.c
+index f7fd01f..89b9431 100644
+--- a/mx.c
++++ b/mx.c
+@@ -806,6 +806,7 @@ static int trash_append (CONTEXT *ctx)
+     {
+       for (i = 0 ; i < ctx->msgcount ; i++)
+ 	if (ctx->hdrs[i]->deleted && !ctx->hdrs[i]->appended
++	    && !ctx->hdrs[i]->purged
+ 	    && mutt_append_message (ctx_trash, ctx, ctx->hdrs[i], 0, 0) == -1)
+ 	  {
+ 	    mx_close_mailbox (ctx_trash, NULL);
+diff --git a/pager.c b/pager.c
+index 23eb8ca..b17afb4 100644
+--- a/pager.c
++++ b/pager.c
+@@ -2350,12 +2350,15 @@ search_next:
+ 	MAYBE_REDRAW (redraw);
+ 	break;
+ 
++      case OP_PURGE_MESSAGE:
+       case OP_DELETE:
+ 	CHECK_MODE(IsHeader (extra));
+ 	CHECK_READONLY;
+ 	CHECK_ACL(M_ACL_DELETE, _("delete message"));
+ 
+ 	mutt_set_flag (Context, extra->hdr, M_DELETE, 1);
++	mutt_set_flag (Context, extra->hdr, M_PURGED,
++		       ch != OP_PURGE_MESSAGE ? 0 : 1);
+         if (option (OPTDELETEUNTAG))
+ 	  mutt_set_flag (Context, extra->hdr, M_TAG, 0);
+ 	redraw = REDRAW_STATUS | REDRAW_INDEX;
+@@ -2682,6 +2685,7 @@ search_next:
+ 	CHECK_ACL(M_ACL_DELETE, _("undelete message"));
+ 
+ 	mutt_set_flag (Context, extra->hdr, M_DELETE, 0);
++	mutt_set_flag (Context, extra->hdr, M_PURGED, 0);
+ 	redraw = REDRAW_STATUS | REDRAW_INDEX;
+ 	if (option (OPTRESOLVE))
+ 	{
+@@ -2697,9 +2701,11 @@ search_next:
+ 	CHECK_ACL(M_ACL_DELETE, _("undelete message(s)"));
+ 
+ 	r = mutt_thread_set_flag (extra->hdr, M_DELETE, 0,
++				  ch == OP_UNDELETE_THREAD ? 0 : 1)
++	  + mutt_thread_set_flag (extra->hdr, M_PURGED, 0,
+ 				  ch == OP_UNDELETE_THREAD ? 0 : 1);
+ 
+-	if (r != -1)
++	if (r > -1)
+ 	{
+ 	  if (option (OPTRESOLVE))
+ 	  {
+diff --git a/pattern.c b/pattern.c
+index 7af1c38..4cdbd05 100644
+--- a/pattern.c
++++ b/pattern.c
+@@ -1358,8 +1358,10 @@ int mutt_pattern_func (int op, char *prompt)
+       {
+ 	switch (op)
+ 	{
+-	  case M_DELETE:
+ 	  case M_UNDELETE:
++	    mutt_set_flag (Context, Context->hdrs[Context->v2r[i]], M_PURGED,
++			   0);
++	  case M_DELETE:
+ 	    mutt_set_flag (Context, Context->hdrs[Context->v2r[i]], M_DELETE, 
+ 			  (op == M_DELETE));
+ 	    break;

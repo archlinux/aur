@@ -1,0 +1,25 @@
+From: Antonio Radici <antonio@debian.org>
+Date: Thu, 27 Feb 2014 16:45:38 +0100
+Subject: 542817-smimekeys-tmpdir
+
+Skip the configured tmpdir if it contains '=',
+that convention is used only by Mutt.
+(see upstream http://bugs.mutt.org/3324)
+
+Gbp-Pq: Topic upstream
+---
+ smime_keys.pl | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/smime_keys.pl b/smime_keys.pl
+index a825358..2f4544a 100755
+--- a/smime_keys.pl
++++ b/smime_keys.pl
+@@ -946,6 +946,7 @@ sub newfile ($;$$) {
+ 	$option = "notemp" if (not defined($option));
+ 	if (! $tmpdir and $option eq "temp") {
+ 		$tmpdir = mutt_Q 'tmpdir';
++                $tmpdir = '/tmp' if ($tmpdir =~ m/=/); # if the tmpdir contains '=', use the default
+ 		$tmpdir = newfile("$tmpdir/smime");
+ 		mkdir $tmpdir, 0700 || die "Can't create $tmpdir: $!\n";
+ 	}

@@ -1,0 +1,160 @@
+From: Cedric Duval <cedricduval@free.fr>
+Date: Thu, 27 Feb 2014 12:06:21 +0100
+Subject: ifdef
+
+This command allows to test if a feature has been compiled in before
+actually attempting to configure / use it.
+
+Syntax:
+
+ifdef <item> <command>
+
+where <item> can be the name of a variable, function, or command.
+
+Examples:
+
+ifdef  imap-fetch-mail  'source ~/.mutt/imap_setup'
+ifdef  trash  set trash=~/Mail/trash
+
+* Patch last synced with upstream:
+  - Date: 2007-02-15
+  - File:
+    http://cedricduval.free.fr/mutt/patches/download/patch-1.5.4.cd.ifdef.1
+
+* Changes made:
+  - Updated to 1.5.13
+  - Also look for commands
+  - Use mutt_strcmp in favor of ascii_strncasecmp to compare strings.
+
+Signed-off-by: Matteo F. Vescovi <mfvescovi@gmail.com>
+
+Gbp-Pq: Topic features
+---
+ doc/manual.xml.head | 22 ++++++++++++++++++++
+ init.c              | 59 +++++++++++++++++++++++++++++++++++++++++++++++++++++
+ init.h              |  2 ++
+ 3 files changed, 83 insertions(+)
+
+diff --git a/doc/manual.xml.head b/doc/manual.xml.head
+index 0093685..18ae918 100644
+--- a/doc/manual.xml.head
++++ b/doc/manual.xml.head
+@@ -4378,6 +4378,28 @@ from which to read input (e.g.  <literal><command>source</command>
+ 
+ </sect1>
+ 
++<sect1 id="ifdef">
++
++<title>Configuring features conditionally</title>
++
++<para>
++Usage: <literal>ifdef</literal> <emphasis>item</emphasis> <emphasis>command</emphasis>
++</para>
++
++<para>
++This command allows to test if a feature has been compiled in, before
++actually executing the command. Item can be either the name of a
++function, variable, or command. Example:
++</para>
++
++<para>
++<screen>
++ifdef imap_keepalive 'source ~/.mutt/imap_setup'
++</screen>
++</para>
++
++</sect1>
++
+ <sect1 id="unhook">
+ <title>Removing Hooks</title>
+ 
+diff --git a/init.c b/init.c
+index 4897b9e..cc3cf4b 100644
+--- a/init.c
++++ b/init.c
+@@ -601,6 +601,65 @@ static void remove_from_list (LIST **l, const char *str)
+   }
+ }
+ 
++static int parse_ifdef (BUFFER *tmp, BUFFER *s, unsigned long data, BUFFER *err)
++{
++  int i, j, res = 0;
++  BUFFER token;
++
++  memset (&token, 0, sizeof (token));
++  mutt_extract_token (tmp, s, 0);
++
++  /* is the item defined as a variable? */
++  res = (mutt_option_index (tmp->data) != -1);
++
++  /* a function? */
++  if (!res)
++    for (i = 0; !res && i < MENU_MAX; i++)
++    {
++      struct binding_t *b = km_get_table (Menus[i].value);
++
++      if (!b)
++	continue;
++
++      for (j = 0; b[j].name; j++)
++	if (!mutt_strcmp (tmp->data, b[j].name))
++	{
++	  res = 1;
++	  break;
++	}
++    }
++
++  /* a command? */
++  if (!res)
++    for (i = 0; Commands[i].name; i++)
++    {
++      if (!mutt_strcmp (tmp->data, Commands[i].name))
++      {
++	res = 1;
++	break;
++      }
++    }
++
++  if (!MoreArgs (s))
++  {
++    snprintf (err->data, err->dsize, _("ifdef: too few arguments"));
++    return (-1);
++  }
++  mutt_extract_token (tmp, s, M_TOKEN_SPACE);
++
++  if (res)
++  {
++    if (mutt_parse_rc_line (tmp->data, &token, err) == -1)
++    {
++      mutt_error ("Erreur: %s", err->data);
++      FREE (&token.data);
++      return (-1);
++    }
++    FREE (&token.data);
++  }
++  return 0;
++}
++
+ static int parse_unignore (BUFFER *buf, BUFFER *s, unsigned long data, BUFFER *err)
+ {
+   do
+diff --git a/init.h b/init.h
+index 395cd3f..80d05ce 100644
+--- a/init.h
++++ b/init.h
+@@ -3487,6 +3487,7 @@ static int parse_lists (BUFFER *, BUFFER *, unsigned long, BUFFER *);
+ static int parse_unlists (BUFFER *, BUFFER *, unsigned long, BUFFER *);
+ static int parse_alias (BUFFER *, BUFFER *, unsigned long, BUFFER *);
+ static int parse_unalias (BUFFER *, BUFFER *, unsigned long, BUFFER *);
++static int parse_ifdef (BUFFER *, BUFFER *, unsigned long, BUFFER *);
+ static int parse_ignore (BUFFER *, BUFFER *, unsigned long, BUFFER *);
+ static int parse_unignore (BUFFER *, BUFFER *, unsigned long, BUFFER *);
+ static int parse_source (BUFFER *, BUFFER *, unsigned long, BUFFER *);
+@@ -3537,6 +3538,7 @@ const struct command_t Commands[] = {
+   { "group",		parse_group,		M_GROUP },
+   { "ungroup",		parse_group,		M_UNGROUP },
+   { "hdr_order",	parse_list,		UL &HeaderOrderList },
++  { "ifdef",		parse_ifdef,		0 },
+ #ifdef HAVE_ICONV
+   { "iconv-hook",	mutt_parse_hook,	M_ICONVHOOK },
+ #endif

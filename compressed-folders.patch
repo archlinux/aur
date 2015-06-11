@@ -1,0 +1,1188 @@
+From: Roland Rosenfeld <roland@spinnaker.de>
+Date: Thu, 27 Feb 2014 15:46:00 +0100
+Subject: compressed-folders
+
+The home page for this patch is:
+
+  http://www.spinnaker.de/mutt/compressed/
+
+* Patch last synced with upstream:
+  - Date: 2008-05-20
+  - File: http://www.spinnaker.de/mutt/compressed/patch-1.5.18.rr.compressed.1.gz
+
+* Changes made:
+  - 2008-05-20 myon: refreshed to remove hunks in auto* files
+  - 2009-09-15 myon: refreshed for mutt-1.5.19
+                     status.c:103: add sizeof (tmp) to mutt_pretty_mailbox
+  - 2009-09-15 scotton: removed doc/Muttrc for mutt-1.5.19 (only patch doc/Muttrc.head)
+  - 2009-09-11 antonio: removed DefaultMagic, see 541360
+  - 2010-05-31 myon: remove commented paragraph "Use folders..." in
+                     doc/Muttrc.head, see #578096
+  - 2014-03-17 evgeni: move remove_file and restore_path declaration before
+                       their first use
+
+Signed-off-by: Matteo F. Vescovi <mfvescovi@gmail.com>
+
+Gbp-Pq: Topic features
+---
+ Makefile.am         |   4 +-
+ compress.c          | 499 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ compress.h          |  27 +++
+ configure.ac        |   5 +
+ curs_main.c         |   5 +
+ doc/manual.xml.head | 199 +++++++++++++++++++++
+ doc/muttrc.man.head |  18 ++
+ hook.c              |  14 ++
+ init.h              |   5 +
+ main.c              |   6 +
+ mbox.c              |  10 ++
+ mutt.h              |  10 ++
+ mx.c                |  42 ++++-
+ mx.h                |   3 +
+ po/POTFILES.in      |   1 +
+ po/de.po            |  30 ++++
+ status.c            |   8 +
+ 17 files changed, 883 insertions(+), 3 deletions(-)
+ create mode 100644 compress.c
+ create mode 100644 compress.h
+
+diff --git a/Makefile.am b/Makefile.am
+index 8166b1b..09dd64b 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -22,7 +22,7 @@ BUILT_SOURCES = keymap_defs.h patchlist.c reldate.h conststrings.c $(HCVERSION)
+ bin_PROGRAMS = mutt @DOTLOCK_TARGET@ @PGPAUX_TARGET@
+ mutt_SOURCES = \
+ 	addrbook.c alias.c attach.c base64.c browser.c buffy.c color.c \
+-	crypt.c cryptglue.c \
++	crypt.c cryptglue.c compress.c \
+ 	commands.c complete.c compose.c copy.c curs_lib.c curs_main.c date.c \
+ 	edit.c enter.c flags.c init.c filter.c from.c \
+ 	getdomain.c group.c \
+@@ -61,7 +61,7 @@ EXTRA_mutt_SOURCES = account.c bcache.c crypt-gpgme.c crypt-mod-pgp-classic.c \
+ 	bcache.h browser.h hcache.h mbyte.h mutt_idna.h remailer.h url.h
+ 
+ EXTRA_DIST = COPYRIGHT GPL OPS OPS.PGP OPS.CRYPT OPS.SMIME TODO UPDATING \
+-	configure account.h \
++	configure account.h compress.h \
+ 	attach.h buffy.h charset.h copy.h crypthash.h dotlock.h functions.h gen_defs \
+ 	globals.h hash.h history.h init.h keymap.h mutt_crypt.h \
+ 	mailbox.h mapping.h md5.h mime.h mutt.h mutt_curses.h mutt_menu.h \
+diff --git a/compress.c b/compress.c
+new file mode 100644
+index 0000000..9bbf211
+--- /dev/null
++++ b/compress.c
+@@ -0,0 +1,499 @@
++/*
++ * Copyright (C) 1997 Alain Penders <Alain@Finale-Dev.com>
++ *
++ *     This program is free software; you can redistribute it and/or modify
++ *     it under the terms of the GNU General Public License as published by
++ *     the Free Software Foundation; either version 2 of the License, or
++ *     (at your option) any later version.
++ *
++ *     This program is distributed in the hope that it will be useful,
++ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *     GNU General Public License for more details.
++ *
++ *     You should have received a copy of the GNU General Public License
++ *     along with this program; if not, write to the Free Software
++ *     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
++ */
++
++#if HAVE_CONFIG_H
++# include "config.h"
++#endif
++
++#include "mutt.h"
++
++#ifdef USE_COMPRESSED
++
++#include "mx.h"
++#include "mailbox.h"
++#include "mutt_curses.h"
++
++#include <errno.h>
++#include <string.h>
++#include <unistd.h>
++#include <sys/stat.h>
++
++typedef struct
++{
++  const char *close;	/* close-hook  command */
++  const char *open;	/* open-hook   command */
++  const char *append;	/* append-hook command */
++  off_t size;		/* size of real folder */
++} COMPRESS_INFO;
++
++
++/*
++ * ctx - context to lock
++ * excl - exclusive lock?
++ * retry - should retry if unable to lock?
++ */
++int mbox_lock_compressed (CONTEXT *ctx, FILE *fp, int excl, int retry)
++{
++  int r;
++
++  if ((r = mx_lock_file (ctx->realpath, fileno (fp), excl, 1, retry)) == 0)
++    ctx->locked = 1;
++  else if (retry && !excl)
++  {
++    ctx->readonly = 1;
++    return 0;
++  }
++
++  return (r);
++}
++
++void mbox_unlock_compressed (CONTEXT *ctx, FILE *fp)
++{
++  if (ctx->locked)
++  {
++    fflush (fp);
++
++    mx_unlock_file (ctx->realpath, fileno (fp), 1);
++    ctx->locked = 0;
++  }
++}
++
++static int is_new (const char *path)
++{
++  return (access (path, W_OK) != 0 && errno == ENOENT) ? 1 : 0;
++}
++
++static const char* find_compress_hook (int type, const char *path)
++{
++  const char* c = mutt_find_hook (type, path);
++  return (!c || !*c) ? NULL : c;
++}
++
++int mutt_can_read_compressed (const char *path)
++{
++  return find_compress_hook (M_OPENHOOK, path) ? 1 : 0;
++}
++
++/*
++ * if the file is new, we really do not append, but create, and so use
++ * close-hook, and not append-hook
++ */
++static const char* get_append_command (const char *path, const CONTEXT* ctx)
++{
++  COMPRESS_INFO *ci = (COMPRESS_INFO *) ctx->compressinfo;
++  return (is_new (path)) ? ci->close : ci->append;
++}
++
++int mutt_can_append_compressed (const char *path)
++{
++  int magic;
++
++  if (is_new (path))
++  {
++    char *dir_path = safe_strdup(path);
++    char *aux = strrchr(dir_path, '/');
++    int dir_valid = 1;
++    if (aux)
++    {
++      *aux='\0';
++      if (access(dir_path, W_OK|X_OK))
++        dir_valid = 0;
++    }
++    safe_free((void**)&dir_path);
++    return dir_valid && (find_compress_hook (M_CLOSEHOOK, path) ? 1 : 0);
++  }
++
++  magic = mx_get_magic (path);
++
++  if (magic != 0 && magic != M_COMPRESSED)
++    return 0;
++
++  return (find_compress_hook (M_APPENDHOOK, path)
++	  || (find_compress_hook (M_OPENHOOK, path)
++	      && find_compress_hook (M_CLOSEHOOK, path))) ? 1 : 0;
++}
++
++/* open a compressed mailbox */
++static COMPRESS_INFO *set_compress_info (CONTEXT *ctx)
++{
++  COMPRESS_INFO *ci;
++
++  /* Now lets uncompress this thing */
++  ci = safe_malloc (sizeof (COMPRESS_INFO));
++  ctx->compressinfo = (void*) ci;
++  ci->append = find_compress_hook (M_APPENDHOOK, ctx->path);
++  ci->open = find_compress_hook (M_OPENHOOK, ctx->path);
++  ci->close = find_compress_hook (M_CLOSEHOOK, ctx->path);
++  return ci;
++}
++
++static void set_path (CONTEXT* ctx)
++{
++  char tmppath[_POSIX_PATH_MAX];
++
++  /* Setup the right paths */
++  ctx->realpath = ctx->path;
++
++  /* Uncompress to /tmp */
++  mutt_mktemp (tmppath, sizeof(tmppath));
++  ctx->path = safe_malloc (strlen (tmppath) + 1);
++  strcpy (ctx->path, tmppath);
++}
++
++static int get_size (const char* path)
++{
++  struct stat sb;
++  if (stat (path, &sb) != 0)
++    return 0;
++  return (sb.st_size);
++}
++
++static void store_size (CONTEXT* ctx)
++{
++  COMPRESS_INFO *ci = (COMPRESS_INFO *) ctx->compressinfo;
++  ci->size = get_size (ctx->realpath);
++}
++
++static const char *
++compresshook_format_str (char *dest, size_t destlen, size_t col, char op,
++			 const char *src, const char *fmt,
++			 const char *ifstring, const char *elsestring,
++			 unsigned long data, format_flag flags)
++{
++  char tmp[SHORT_STRING];
++
++  CONTEXT *ctx = (CONTEXT *) data;
++  switch (op)
++  {
++  case 'f':
++    snprintf (tmp, sizeof (tmp), "%%%ss", fmt);
++    snprintf (dest, destlen, tmp, ctx->realpath);
++    break;
++  case 't':
++    snprintf (tmp, sizeof (tmp), "%%%ss", fmt);
++    snprintf (dest, destlen, tmp, ctx->path);
++    break;
++  }
++  return (src);
++}
++
++/*
++ * check that the command has both %f and %t
++ * 0 means OK, -1 means error
++ */
++int mutt_test_compress_command (const char* cmd)
++{
++  return (strstr (cmd, "%f") && strstr (cmd, "%t")) ? 0 : -1;
++}
++
++static char *get_compression_cmd (const char* cmd, const CONTEXT* ctx)
++{
++  char expanded[_POSIX_PATH_MAX];
++  mutt_FormatString (expanded, sizeof (expanded), 0, cmd,
++		     compresshook_format_str, (unsigned long) ctx, 0);
++  return safe_strdup (expanded);
++}
++
++int mutt_check_mailbox_compressed (CONTEXT* ctx)
++{
++  COMPRESS_INFO *ci = (COMPRESS_INFO *) ctx->compressinfo;
++  if (ci->size != get_size (ctx->realpath))
++  {
++    FREE (&ctx->compressinfo);
++    FREE (&ctx->realpath);
++    mutt_error _("Mailbox was corrupted!");
++    return (-1);
++  }
++  return (0);
++}
++
++void restore_path (CONTEXT* ctx)
++{
++  FREE (&ctx->path);
++  ctx->path = ctx->realpath;
++}
++
++/* remove the temporary mailbox */
++void remove_file (CONTEXT* ctx)
++{
++  if (ctx->magic == M_MBOX || ctx->magic == M_MMDF)
++    remove (ctx->path);
++}
++
++int mutt_open_read_compressed (CONTEXT *ctx)
++{
++  char *cmd;
++  FILE *fp;
++  int rc;
++
++  COMPRESS_INFO *ci = set_compress_info (ctx);
++  if (!ci->open) {
++    ctx->magic = 0;
++    FREE (&ctx->compressinfo);
++    return (-1);
++  }
++  if (!ci->close || access (ctx->path, W_OK) != 0)
++    ctx->readonly = 1;
++
++  set_path (ctx);
++  store_size (ctx);
++
++  if (!ctx->quiet)
++    mutt_message (_("Decompressing %s..."), ctx->realpath);
++
++  cmd = get_compression_cmd (ci->open, ctx);
++  if (cmd == NULL)
++    return (-1);
++  dprint (2, (debugfile, "DecompressCmd: '%s'\n", cmd));
++
++  if ((fp = fopen (ctx->realpath, "r")) == NULL)
++  {
++    mutt_perror (ctx->realpath);
++    FREE (&cmd);
++    return (-1);
++  }
++  mutt_block_signals ();
++  if (mbox_lock_compressed (ctx, fp, 0, 1) == -1)
++  {
++    fclose (fp);
++    mutt_unblock_signals ();
++    mutt_error _("Unable to lock mailbox!");
++    FREE (&cmd);
++    return (-1);
++  }
++
++  endwin ();
++  fflush (stdout);
++  fprintf (stderr, _("Decompressing %s...\n"),ctx->realpath);
++  rc = mutt_system (cmd);
++  mbox_unlock_compressed (ctx, fp);
++  mutt_unblock_signals ();
++  fclose (fp);
++
++  if (rc)
++  {
++    mutt_any_key_to_continue (NULL);
++    ctx->magic = 0;
++    FREE (&ctx->compressinfo);
++    mutt_error (_("Error executing: %s : unable to open the mailbox!\n"), cmd);
++    // remove the partial uncompressed file
++    remove_file (ctx);
++    restore_path (ctx);
++  }
++  FREE (&cmd);
++  if (rc)
++    return (-1);
++
++  if (mutt_check_mailbox_compressed (ctx))
++    return (-1);
++
++  ctx->magic = mx_get_magic (ctx->path);
++
++  return (0);
++}
++
++int mutt_open_append_compressed (CONTEXT *ctx)
++{
++  FILE *fh;
++  COMPRESS_INFO *ci = set_compress_info (ctx);
++
++  if (!get_append_command (ctx->path, ctx))
++  {
++    if (ci->open && ci->close)
++      return (mutt_open_read_compressed (ctx));
++
++    ctx->magic = 0;
++    FREE (&ctx->compressinfo);
++    return (-1);
++  }
++
++  set_path (ctx);
++
++  if (!is_new (ctx->realpath))
++      if ((fh = fopen (ctx->path, "w")))
++	fclose (fh);
++  /* No error checking - the parent function will catch it */
++
++  return (0);
++}
++
++/* close a compressed mailbox */
++void mutt_fast_close_compressed (CONTEXT *ctx)
++{
++  dprint (2, (debugfile, "mutt_fast_close_compressed called on '%s'\n",
++	      ctx->path));
++
++  if (ctx->compressinfo)
++  {
++    if (ctx->fp)
++      fclose (ctx->fp);
++    ctx->fp = NULL;
++    /* if the folder was removed, remove the gzipped folder too */
++    if ((ctx->magic > 0)
++	&& (access (ctx->path, F_OK) != 0)
++	&& ! option (OPTSAVEEMPTY))
++      remove (ctx->realpath);
++    else
++      remove_file (ctx);
++
++    restore_path (ctx);
++    FREE (&ctx->compressinfo);
++  }
++}
++
++/* return 0 on success, -1 on failure */
++int mutt_sync_compressed (CONTEXT* ctx)
++{
++  char *cmd;
++  int rc = 0;
++  FILE *fp;
++  COMPRESS_INFO *ci = (COMPRESS_INFO *) ctx->compressinfo;
++
++  if (!ctx->quiet)
++    mutt_message (_("Compressing %s..."), ctx->realpath);
++
++  cmd = get_compression_cmd (ci->close, ctx);
++  if (cmd == NULL)
++    return (-1);
++
++  if ((fp = fopen (ctx->realpath, "a")) == NULL)
++  {
++    mutt_perror (ctx->realpath);
++    FREE (&cmd);
++    return (-1);
++  }
++  mutt_block_signals ();
++  if (mbox_lock_compressed (ctx, fp, 1, 1) == -1)
++  {
++    fclose (fp);
++    mutt_unblock_signals ();
++    mutt_error _("Unable to lock mailbox!");
++    store_size (ctx);
++    FREE (&cmd);
++    return (-1);
++  }
++
++  dprint (2, (debugfile, "CompressCommand: '%s'\n", cmd));
++
++  endwin ();
++  fflush (stdout);
++  fprintf (stderr, _("Compressing %s...\n"), ctx->realpath);
++  if (mutt_system (cmd))
++  {
++    mutt_any_key_to_continue (NULL);
++    mutt_error (_("%s: Error compressing mailbox! Original mailbox deleted, uncompressed one kept!\n"), ctx->path);
++    rc = -1;
++  }
++
++  mbox_unlock_compressed (ctx, fp);
++  mutt_unblock_signals ();
++  fclose (fp);
++
++  FREE (&cmd);
++
++  store_size (ctx);
++
++  return (rc);
++}
++
++int mutt_slow_close_compressed (CONTEXT *ctx)
++{
++  FILE *fp;
++  const char *append;
++  char *cmd;
++  COMPRESS_INFO *ci = (COMPRESS_INFO *) ctx->compressinfo;
++
++  dprint (2, (debugfile, "mutt_slow_close_compressed called on '%s'\n",
++	      ctx->path));
++
++  if (! (ctx->append
++	 && ((append = get_append_command (ctx->realpath, ctx))
++	     || (append = ci->close))))
++  {
++    /* if we can not or should not append, we only have to remove the */
++    /* compressed info, because sync was already called               */
++    mutt_fast_close_compressed (ctx);
++    return (0);
++  }
++
++  if (ctx->fp)
++    fclose (ctx->fp);
++  ctx->fp = NULL;
++
++  if (!ctx->quiet)
++  {
++    if (append == ci->close)
++      mutt_message (_("Compressing %s..."), ctx->realpath);
++    else
++      mutt_message (_("Compressed-appending to %s..."), ctx->realpath);
++  }
++
++  cmd = get_compression_cmd (append, ctx);
++  if (cmd == NULL)
++    return (-1);
++
++  if ((fp = fopen (ctx->realpath, "a")) == NULL)
++  {
++    mutt_perror (ctx->realpath);
++    FREE (&cmd);
++    return (-1);
++  }
++  mutt_block_signals ();
++  if (mbox_lock_compressed (ctx, fp, 1, 1) == -1)
++  {
++    fclose (fp);
++    mutt_unblock_signals ();
++    mutt_error _("Unable to lock mailbox!");
++    FREE (&cmd);
++    return (-1);
++  }
++
++  dprint (2, (debugfile, "CompressCmd: '%s'\n", cmd));
++
++  endwin ();
++  fflush (stdout);
++
++  if (append == ci->close)
++    fprintf (stderr, _("Compressing %s...\n"), ctx->realpath);
++  else
++    fprintf (stderr, _("Compressed-appending to %s...\n"), ctx->realpath);
++
++  if (mutt_system (cmd))
++  {
++    mutt_any_key_to_continue (NULL);
++    mutt_error (_(" %s: Error compressing mailbox!  Uncompressed one kept!\n"),
++		ctx->path);
++    FREE (&cmd);
++    mbox_unlock_compressed (ctx, fp);
++    mutt_unblock_signals ();
++    fclose (fp);
++    return (-1);
++  }
++
++  mbox_unlock_compressed (ctx, fp);
++  mutt_unblock_signals ();
++  fclose (fp);
++  remove_file (ctx);
++  restore_path (ctx);
++  FREE (&cmd);
++  FREE (&ctx->compressinfo);
++
++  return (0);
++}
++
++#endif /* USE_COMPRESSED */
+diff --git a/compress.h b/compress.h
+new file mode 100644
+index 0000000..9dbf027
+--- /dev/null
++++ b/compress.h
+@@ -0,0 +1,27 @@
++/*
++ * Copyright (C) 1997 Alain Penders <Alain@Finale-Dev.com>
++ *
++ *     This program is free software; you can redistribute it and/or modify
++ *     it under the terms of the GNU General Public License as published by
++ *     the Free Software Foundation; either version 2 of the License, or
++ *     (at your option) any later version.
++ *
++ *     This program is distributed in the hope that it will be useful,
++ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *     GNU General Public License for more details.
++ *
++ *     You should have received a copy of the GNU General Public License
++ *     along with this program; if not, write to the Free Software
++ *     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
++ */
++
++int mutt_can_read_compressed (const char *);
++int mutt_can_append_compressed (const char *);
++int mutt_open_read_compressed (CONTEXT *);
++int mutt_open_append_compressed (CONTEXT *);
++int mutt_slow_close_compressed (CONTEXT *);
++int mutt_sync_compressed (CONTEXT *);
++int mutt_test_compress_command (const char *);
++int mutt_check_mailbox_compressed (CONTEXT *);
++void mutt_fast_close_compressed (CONTEXT *);
+diff --git a/configure.ac b/configure.ac
+index 3d5f11b..e7ebe01 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -812,6 +812,11 @@ AC_ARG_ENABLE(locales-fix, AS_HELP_STRING([--enable-locales-fix],[The result of
+                 AC_DEFINE(LOCALES_HACK,1,[ Define if the result of isprint() is unreliable. ])
+         fi])
+ 
++AC_ARG_ENABLE(compressed, AC_HELP_STRING([--enable-compressed], [Enable compressed folders support]),
++	[if test x$enableval = xyes; then
++                AC_DEFINE(USE_COMPRESSED,1, [ Define to support compressed folders. ])
++        fi])
++
+ AC_ARG_WITH(exec-shell, AS_HELP_STRING([--with-exec-shell=SHELL],[Specify alternate shell (ONLY if /bin/sh is broken)]),
+         [if test $withval != yes; then
+                 AC_DEFINE_UNQUOTED(EXECSHELL, "$withval",
+diff --git a/curs_main.c b/curs_main.c
+index d266708..e7f11bd 100644
+--- a/curs_main.c
++++ b/curs_main.c
+@@ -1154,6 +1154,11 @@ int mutt_index_menu (void)
+         {
+ 	  int check;
+ 
++#ifdef USE_COMPRESSED
++	  if (Context->compressinfo && Context->realpath)
++	    mutt_str_replace (&LastFolder, Context->realpath);
++	  else
++#endif
+ 	  mutt_str_replace (&LastFolder, Context->path);
+ 	  oldcount = Context ? Context->msgcount : 0;
+ 
+diff --git a/doc/manual.xml.head b/doc/manual.xml.head
+index 18ae918..4366758 100644
+--- a/doc/manual.xml.head
++++ b/doc/manual.xml.head
+@@ -6121,6 +6121,205 @@ selection. Highest priority has the mailbox given with the
+ 
+ </chapter>
+ 
++<sect1 id="compressedfolders">
++<title>Compressed folders Support (OPTIONAL)</title>
++
++<para>
++If Mutt was compiled with compressed folders support (by running the
++<emphasis>configure</emphasis> script with the
++<emphasis>--enable-compressed</emphasis> flag), Mutt can open folders
++stored in an arbitrary format, provided that the user has a script to
++convert from/to this format to one of the accepted.
++
++The most common use is to open compressed archived folders e.g. with
++gzip.
++
++In addition, the user can provide a script that gets a folder in an
++accepted format and appends its context to the folder in the
++user-defined format, which may be faster than converting the entire
++folder to the accepted format, appending to it and converting back to
++the user-defined format.
++
++There are three hooks defined (<link
++linkend="open-hook">open-hook</link>, <link
++linkend="close-hook">close-hook</link> and <link
++linkend="append-hook">append-hook</link>) which define commands to
++uncompress and compress a folder and to append messages to an existing
++compressed folder respectively.
++
++For example:
++
++<screen>
++open-hook \\.gz$ "gzip -cd %f &gt; %t"
++close-hook \\.gz$ "gzip -c %t &gt; %f"
++append-hook \\.gz$ "gzip -c %t &gt;&gt; %f"
++</screen>
++
++You do not have to specify all of the commands. If you omit <link
++linkend="append-hook">append-hook</link>, the folder will be open and
++closed again each time you will add to it. If you omit <link
++linkend="close-hook">close-hook</link> (or give empty command) , the
++folder will be open in the mode. If you specify <link
++linkend="append-hook">append-hook</link> though you'll be able to
++append to the folder.
++
++Note that Mutt will only try to use hooks if the file is not in one of
++the accepted formats. In particular, if the file is empty, mutt
++supposes it is not compressed. This is important because it allows the
++use of programs that do not have well defined extensions. Just use
++&quot;.&quot; as a regexp. But this may be surprising if your
++compressing script produces empty files. In this situation, unset
++<link linkend="save-empty">&dollar;save&lowbar;empty</link>, so that
++the compressed file will be removed if you delete all of the messages.
++</para>
++
++<sect2 id="open-hook">
++<title>Open a compressed mailbox for reading</title>
++
++<para>
++Usage: <literal>open-hook</literal> <emphasis>regexp</emphasis> &quot;<emphasis>command</emphasis>&quot;
++
++The <emphasis>command</emphasis> is the command that can be used for
++opening the folders whose names match <emphasis>regexp</emphasis>.
++
++The <emphasis>command</emphasis> string is the printf-like format
++string, and it should accept two parameters: &percnt;f, which is
++replaced with the (compressed) folder name, and &percnt;t which is
++replaced with the name of the temporary folder to which to write.
++
++&percnt;f and &percnt;t can be repeated any number of times in the
++command string, and all of the entries are replaced with the
++appropriate folder name. In addition, &percnt;&percnt; is replaced by
++&percnt;, as in printf, and any other &percnt;anything is left as is.
++
++The <emphasis>command</emphasis> should <emphasis
++role="bold">not</emphasis> remove the original compressed file.  The
++<emphasis>command</emphasis> should return non-zero exit status if it
++fails, so mutt knows something's wrong.
++
++Example:
++
++<screen>
++open-hook \\.gz$ "gzip -cd %f &gt; %t"
++</screen>
++
++If the <emphasis>command</emphasis> is empty, this operation is
++disabled for this file type.
++</para>
++</sect2>
++
++<sect2 id="close-hook">
++<title>Write a compressed mailbox</title>
++
++<para>
++Usage: <literal>close-hook</literal> <emphasis>regexp</emphasis> &quot;<emphasis>command</emphasis>&quot;
++
++This is used to close the folder that was open with the <link
++linkend="open-hook">open-hook</link> command after some changes were
++made to it.
++
++The <emphasis>command</emphasis> string is the command that can be
++used for closing the folders whose names match
++<emphasis>regexp</emphasis>. It has the same format as in the <link
++linkend="open-hook">open-hook</link> command. Temporary folder in this
++case is the folder previously produced by the <link
++linkend="open-hook">open-hook</link> command.
++
++The <emphasis>command</emphasis> should <emphasis
++role="bold">not</emphasis> remove the decompressed file. The
++<emphasis>command</emphasis> should return non-zero exit status if it
++fails, so mutt knows something's wrong.
++
++Example:
++
++<screen>
++close-hook \\.gz$ "gzip -c %t &gt; %f"
++</screen>
++
++If the <emphasis>command</emphasis> is empty, this operation is
++disabled for this file type, and the file can only be open in the
++read-only mode.
++
++<link linkend="close-hook">close-hook</link> is not called when you
++exit from the folder if the folder was not changed.
++</para>
++</sect2>
++
++<sect2 id="append-hook">
++<title>Append a message to a compressed mailbox</title>
++
++<para>
++Usage: <literal>append-hook</literal> <emphasis>regexp</emphasis> &quot;<emphasis>command</emphasis>&quot;
++
++This command is used for saving to an existing compressed folder.  The
++<emphasis>command</emphasis> is the command that can be used for
++appending to the folders whose names match
++<emphasis>regexp</emphasis>. It has the same format as in the <link
++linkend="open-hook">open-hook</link> command.  The temporary folder in
++this case contains the messages that are being appended.
++
++The <emphasis>command</emphasis> should <emphasis
++role="bold">not</emphasis> remove the decompressed file. The
++<emphasis>command</emphasis> should return non-zero exit status if it
++fails, so mutt knows something's wrong.
++
++Example:
++
++<screen>
++append-hook \\.gz$ "gzip -c %t &gt;&gt; %f"
++</screen>
++
++When <link linkend="append-hook">append-hook</link> is used, the folder
++is not opened, which saves time, but this means that we can not find
++out what the folder type is. Thus the default (<link
++linkend="mbox-type">&dollar;mbox&lowbar;type</link>) type is always
++supposed (i.e.  this is the format used for the temporary folder).
++
++If the file does not exist when you save to it, <link
++linkend="close-hook">close-hook</link> is called, and not <link
++linkend="append-hook">append-hook</link>. <link
++linkend="append-hook">append-hook</link> is only for appending to
++existing folders.
++
++If the <emphasis>command</emphasis> is empty, this operation is
++disabled for this file type. In this case, the folder will be open and
++closed again (using <link linkend="open-hook">open-hook</link> and
++<link linkend="close-hook">close-hook</link>respectively) each time you
++will add to it.
++</para>
++</sect2>
++
++<sect2>
++<title>Encrypted folders</title>
++
++<para>
++The compressed folders support can also be used to handle encrypted
++folders. If you want to encrypt a folder with PGP, you may want to use
++the following hooks:
++
++<screen>
++open-hook  \\.pgp$ "pgp -f &lt; %f &gt; %t"
++close-hook \\.pgp$ "pgp -fe YourPgpUserIdOrKeyId &lt; %t &gt; %f"
++</screen>
++
++Please note, that PGP does not support appending to an encrypted
++folder, so there is no append-hook defined.
++
++If you are using GnuPG instead of PGP, you may use the following hooks
++instead:
++
++<screen>
++open-hook  \\.gpg$ "gpg --decrypt &lt; %f &gt; %t"
++close-hook \\.gpg$ "gpg --encrypt --recipient YourGpgUserIdOrKeyId &lt; %t &gt; %f"
++</screen>
++
++<emphasis role="bold">Note:</emphasis> the folder is temporary stored
++decrypted in the /tmp directory, where it can be read by your system
++administrator. So think about the security aspects of this.
++</para>
++</sect2>
++</sect1>
++
+ <chapter id="mimesupport">
+ <title>Mutt's MIME Support</title>
+ 
+diff --git a/doc/muttrc.man.head b/doc/muttrc.man.head
+index 30b96a2..b0ed18c 100644
+--- a/doc/muttrc.man.head
++++ b/doc/muttrc.man.head
+@@ -354,6 +354,24 @@ specify the ID of the public key to be used when encrypting messages
+ to a certain recipient.  The meaning of "key ID" is to be taken
+ broadly: This can be a different e-mail address, a numerical key ID,
+ or even just an arbitrary search string.
++.PP
++.nf
++\fBopen-hook\fP \fIregexp\fP "\fIcommand\fP"
++\fBclose-hook\fP \fIregexp\fP "\fIcommand\fP"
++\fBappend-hook\fP \fIregexp\fP "\fIcommand\fP"
++.fi
++.IP
++These commands provide a way to handle compressed folders. The given
++\fBregexp\fP specifies which folders are taken as compressed (e.g.
++"\fI\\\\.gz$\fP"). The commands tell Mutt how to uncompress a folder
++(\fBopen-hook\fP), compress a folder (\fBclose-hook\fP) or append a
++compressed mail to a compressed folder (\fBappend-hook\fP). The
++\fIcommand\fP string is the
++.BR printf (3)
++like format string, and it should accept two parameters: \fB%f\fP,
++which is replaced with the (compressed) folder name, and \fB%t\fP
++which is replaced with the name of the temporary folder to which to
++write.
+ .TP
+ \fBpush\fP \fIstring\fP
+ This command adds the named \fIstring\fP to the keyboard buffer.
+diff --git a/hook.c b/hook.c
+index 34f3106..2a27419 100644
+--- a/hook.c
++++ b/hook.c
+@@ -24,6 +24,10 @@
+ #include "mailbox.h"
+ #include "mutt_crypt.h"
+ 
++#ifdef USE_COMPRESSED
++#include "compress.h"
++#endif
++
+ #include <limits.h>
+ #include <string.h>
+ #include <stdlib.h>
+@@ -92,6 +96,16 @@ int mutt_parse_hook (BUFFER *buf, BUFFER *s, unsigned long data, BUFFER *err)
+     memset (&pattern, 0, sizeof (pattern));
+     pattern.data = safe_strdup (path);
+   }
++#ifdef USE_COMPRESSED
++  else if (data & (M_APPENDHOOK | M_OPENHOOK | M_CLOSEHOOK))
++  {
++    if (mutt_test_compress_command (command.data))
++    {
++      strfcpy (err->data, _("badly formatted command string"), err->dsize);
++      return (-1);
++    }
++  }
++#endif
+   else if (DefaultHook && !(data & (M_CHARSETHOOK | M_ICONVHOOK | M_ACCOUNTHOOK))
+            && (!WithCrypto || !(data & M_CRYPTHOOK))
+       )
+diff --git a/init.h b/init.h
+index a64992a..0e4f47f 100644
+--- a/init.h
++++ b/init.h
+@@ -3578,6 +3578,11 @@ const struct command_t Commands[] = {
+   { "fcc-hook",		mutt_parse_hook,	M_FCCHOOK },
+   { "fcc-save-hook",	mutt_parse_hook,	M_FCCHOOK | M_SAVEHOOK },
+   { "folder-hook",	mutt_parse_hook,	M_FOLDERHOOK },
++#ifdef USE_COMPRESSED
++  { "open-hook",	mutt_parse_hook,	M_OPENHOOK },
++  { "close-hook",	mutt_parse_hook,	M_CLOSEHOOK },
++  { "append-hook",	mutt_parse_hook,	M_APPENDHOOK },
++#endif
+   { "group",		parse_group,		M_GROUP },
+   { "ungroup",		parse_group,		M_UNGROUP },
+   { "hdr_order",	parse_list,		UL &HeaderOrderList },
+diff --git a/main.c b/main.c
+index 0ce245b..5ab1868 100644
+--- a/main.c
++++ b/main.c
+@@ -431,6 +431,12 @@ static void show_version (void)
+ #else
+ 	"-LOCALES_HACK  "
+ #endif
++
++#ifdef USE_COMPRESSED
++	"+COMPRESSED  "
++#else
++	"-COMPRESSED  "
++#endif
+ 	      
+ #ifdef HAVE_WC_FUNCS
+ 	"+HAVE_WC_FUNCS  "
+diff --git a/mbox.c b/mbox.c
+index 253061a..6d3b6bd 100644
+--- a/mbox.c
++++ b/mbox.c
+@@ -29,6 +29,10 @@
+ #include "copy.h"
+ #include "mutt_curses.h"
+ 
++#ifdef USE_COMPRESSED
++#include "compress.h"
++#endif
++
+ #include <sys/stat.h>
+ #include <dirent.h>
+ #include <string.h>
+@@ -1069,6 +1073,12 @@ bail:  /* Come here in case of disaster */
+ int mbox_close_mailbox (CONTEXT *ctx)
+ {
+   mx_unlock_file (ctx->path, fileno (ctx->fp), 1);
++
++#ifdef USE_COMPRESSED
++  if (ctx->compressinfo)
++    mutt_slow_close_compressed (ctx);
++#endif
++
+   mutt_unblock_signals ();
+   mx_fastclose_mailbox (ctx);
+   return 0;
+diff --git a/mutt.h b/mutt.h
+index 8cee3d2..b71f071 100644
+--- a/mutt.h
++++ b/mutt.h
+@@ -144,6 +144,11 @@ typedef enum
+ #define M_ACCOUNTHOOK	(1<<9)
+ #define M_REPLYHOOK	(1<<10)
+ #define M_SEND2HOOK     (1<<11)
++#ifdef USE_COMPRESSED
++#define M_OPENHOOK	(1<<12)
++#define M_APPENDHOOK	(1<<13)
++#define M_CLOSEHOOK	(1<<14)
++#endif
+ 
+ /* tree characters for linearize_tree and print_enriched_string */
+ #define M_TREE_LLCORNER		1
+@@ -889,6 +894,11 @@ typedef struct _context
+   int flagged;			/* how many flagged messages */
+   int msgnotreadyet;		/* which msg "new" in pager, -1 if none */
+ 
++#ifdef USE_COMPRESSED
++  void *compressinfo;		/* compressed mbox module private data */
++  char *realpath;		/* path to compressed mailbox */
++#endif /* USE_COMPRESSED */
++
+   short magic;			/* mailbox type */
+ 
+   unsigned char rights[(RIGHTSMAX + 7)/8];	/* ACL bits */
+diff --git a/mx.c b/mx.c
+index cc60517..07dba0c 100644
+--- a/mx.c
++++ b/mx.c
+@@ -30,6 +30,10 @@
+ #include "keymap.h"
+ #include "url.h"
+ 
++#ifdef USE_COMPRESSED
++#include "compress.h"
++#endif
++
+ #ifdef USE_IMAP
+ #include "imap.h"
+ #endif
+@@ -414,6 +418,10 @@ int mx_get_magic (const char *path)
+     return (-1);
+   }
+ 
++#ifdef USE_COMPRESSED
++  if (magic == 0 && mutt_can_read_compressed (path))
++    return M_COMPRESSED;
++#endif
+   return (magic);
+ }
+ 
+@@ -453,6 +461,13 @@ static int mx_open_mailbox_append (CONTEXT *ctx, int flags)
+ {
+   struct stat sb;
+ 
++#ifdef USE_COMPRESSED
++  /* special case for appending to compressed folders -
++   * even if we can not open them for reading */
++  if (mutt_can_append_compressed (ctx->path))
++    mutt_open_append_compressed (ctx);
++#endif
++
+   ctx->append = 1;
+ 
+ #ifdef USE_IMAP
+@@ -616,7 +631,12 @@ CONTEXT *mx_open_mailbox (const char *path, int flags, CONTEXT *pctx)
+   }
+ 
+   ctx->magic = mx_get_magic (path);
+-  
++
++#ifdef USE_COMPRESSED
++  if (ctx->magic == M_COMPRESSED)
++    mutt_open_read_compressed (ctx);
++#endif
++
+   if(ctx->magic == 0)
+     mutt_error (_("%s is not a mailbox."), path);
+ 
+@@ -721,6 +741,10 @@ void mx_fastclose_mailbox (CONTEXT *ctx)
+     mutt_free_header (&ctx->hdrs[i]);
+   FREE (&ctx->hdrs);
+   FREE (&ctx->v2r);
++#ifdef USE_COMPRESSED
++  if (ctx->compressinfo)
++    mutt_fast_close_compressed (ctx);
++#endif
+   FREE (&ctx->path);
+   FREE (&ctx->pattern);
+   if (ctx->limit_pattern) 
+@@ -773,6 +797,12 @@ static int sync_mailbox (CONTEXT *ctx, int *index_hint)
+   
+   if (tmp && tmp->new == 0)
+     mutt_update_mailbox (tmp);
++
++#ifdef USE_COMPRESSED
++  if (rc == 0 && ctx->compressinfo)
++    return mutt_sync_compressed (ctx);
++#endif
++
+   return rc;
+ }
+ 
+@@ -1043,6 +1073,11 @@ int mx_close_mailbox (CONTEXT *ctx, int *index_hint)
+       !mutt_is_spool(ctx->path) && !option (OPTSAVEEMPTY))
+     mx_unlink_empty (ctx->path);
+ 
++#ifdef USE_COMPRESSED
++  if (ctx->compressinfo && mutt_slow_close_compressed (ctx))
++    return (-1);
++#endif
++
+   mx_fastclose_mailbox (ctx);
+ 
+   return 0;
+@@ -1361,6 +1396,11 @@ int mx_check_mailbox (CONTEXT *ctx, int *index_hint, int lock)
+ {
+   int rc;
+ 
++#ifdef USE_COMPRESSED
++  if (ctx->compressinfo)
++    return mutt_check_mailbox_compressed (ctx);
++#endif
++
+   if (ctx)
+   {
+     if (ctx->locked) lock = 0;
+diff --git a/mx.h b/mx.h
+index 4a00715..2ef4ec7 100644
+--- a/mx.h
++++ b/mx.h
+@@ -36,6 +36,9 @@ enum
+   M_MAILDIR,
+   M_IMAP,
+   M_POP
++#ifdef USE_COMPRESSED
++  , M_COMPRESSED
++#endif
+ };
+ 
+ WHERE short DefaultMagic INITVAL (M_MBOX);
+diff --git a/po/POTFILES.in b/po/POTFILES.in
+index 2d01add..3654ad1 100644
+--- a/po/POTFILES.in
++++ b/po/POTFILES.in
+@@ -8,6 +8,7 @@ charset.c
+ color.c
+ commands.c
+ compose.c
++compress.c
+ crypt-gpgme.c
+ crypt.c
+ cryptglue.c
+diff --git a/po/de.po b/po/de.po
+index dd2dda5..75d56f3 100644
+--- a/po/de.po
++++ b/po/de.po
+@@ -5178,6 +5178,36 @@ msgstr "Extrahiere unterst
+ msgid "show S/MIME options"
+ msgstr "Zeige S/MIME Optionen"
+ 
++
++#: compress.c:228 compress.c:253
++#, c-format
++msgid "Decompressing %s...\n"
++msgstr "Entpacke %s...\n"
++
++#: compress.c:350 compress.c:377 compress.c:423 compress.c:454
++#, c-format
++msgid "Compressing %s...\n"
++msgstr "Komprimiere %s...\n"
++
++#: compress.c:381
++#, c-format
++msgid ""
++"%s: Error compressing mailbox! Original mailbox deleted, uncompressed one "
++"kept!\n"
++msgstr ""
++"%s: Fehler beim Komprimieren der Mailbox! Ursprüngliche Mailbox gelöscht, "
++"entpackte gespeichert!\n"
++
++#: compress.c:425 compress.c:456
++#, c-format
++msgid "Compressed-appending to %s...\n"
++msgstr "Hänge komprimiert an %s... an\n"
++
++#: compress.c:461
++#, c-format
++msgid " %s: Error compressing mailbox!  Uncompressed one kept!\n"
++msgstr " %s: Fehler beim packen der Mailbox! Entpackte Mailbox gespeichert!\n"
++
+ #~ msgid "Clear"
+ #~ msgstr "Klartext"
+ 
+diff --git a/status.c b/status.c
+index 6051e3a..e8693c8 100644
+--- a/status.c
++++ b/status.c
+@@ -96,6 +96,14 @@ status_format_str (char *buf, size_t buflen, size_t col, char op, const char *sr
+ 
+     case 'f':
+       snprintf (fmt, sizeof(fmt), "%%%ss", prefix);
++#ifdef USE_COMPRESSED
++      if (Context && Context->compressinfo && Context->realpath)
++      {
++	 strfcpy (tmp, Context->realpath, sizeof (tmp));
++	 mutt_pretty_mailbox (tmp, sizeof (tmp));
++      }
++      else
++#endif
+       if (Context && Context->path)
+       {
+ 	strfcpy (tmp, Context->path, sizeof (tmp));

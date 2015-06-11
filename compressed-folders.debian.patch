@@ -1,0 +1,22 @@
+From: Antonio Radici <antonio@debian.org>
+Date: Thu, 27 Feb 2014 15:49:18 +0100
+Subject: compressed-folders.debian
+
+To enable the use of compressed folders.
+
+Gbp-Pq: Topic features
+---
+ config-debian.h | 4 ++++
+ 1 file changed, 4 insertions(+)
+ create mode 100644 config-debian.h
+
+diff --git a/config-debian.h b/config-debian.h
+new file mode 100644
+index 0000000..fdf5322
+--- /dev/null
++++ b/config-debian.h
+@@ -0,0 +1,4 @@
++#ifndef USE_COMPRESSED
++#error "You forgot to update debian/patches/autotools-update."
++#error "Run sh debian/update-autotools.sh"
++#endif

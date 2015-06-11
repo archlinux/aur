@@ -1,0 +1,83 @@
+From: Antonio Radici <antonio@debian.org>
+Date: Tue, 4 Mar 2014 15:40:45 +0100
+Subject: multiple-fcc
+
+A patch that allows multiple FCC separated by commas,
+written by Omen Wild.
+
+Original website: http://www.mandarb.com/mutt/
+Bug asking for the inclusion: #586454
+
+Gbp-Pq: Topic mutt-patched
+---
+ protos.h  |  1 +
+ send.c    |  2 +-
+ sendlib.c | 30 ++++++++++++++++++++++++++++++
+ 3 files changed, 32 insertions(+), 1 deletion(-)
+
+diff --git a/protos.h b/protos.h
+index 38c8c01..551b142 100644
+--- a/protos.h
++++ b/protos.h
+@@ -362,6 +362,7 @@ int mutt_user_is_recipient (HEADER *);
+ void mutt_update_num_postponed (void);
+ int mutt_wait_filter (pid_t);
+ int mutt_which_case (const char *);
++int mutt_write_multiple_fcc (const char *path, HEADER *hdr, const char *msgid, int, char *);
+ int mutt_write_fcc (const char *path, HEADER *hdr, const char *msgid, int, char *);
+ int mutt_write_mime_body (BODY *, FILE *);
+ int mutt_write_mime_header (BODY *, FILE *);
+diff --git a/send.c b/send.c
+index 18b9390..893c859 100644
+--- a/send.c
++++ b/send.c
+@@ -1747,7 +1747,7 @@ full_fcc:
+        * message was first postponed.
+        */
+       msg->received = time (NULL);
+-      if (mutt_write_fcc (fcc, msg, NULL, 0, NULL) == -1)
++      if (mutt_write_multiple_fcc (fcc, msg, NULL, 0, NULL) == -1)
+       {
+ 	/*
+ 	 * Error writing FCC, we should abort sending.
+diff --git a/sendlib.c b/sendlib.c
+index 0f05298..9d83401 100644
+--- a/sendlib.c
++++ b/sendlib.c
+@@ -2680,6 +2680,36 @@ static void set_noconv_flags (BODY *b, short flag)
+   }
+ }
+ 
++/* Handle a Fcc with multiple, comma separated entries. */
++int mutt_write_multiple_fcc (const char *path, HEADER *hdr, const char *msgid, int post, char *fcc) {
++   char fcc_tok[_POSIX_PATH_MAX];
++   char fcc_expanded[_POSIX_PATH_MAX];
++   char *tok = NULL;
++   int status;
++
++  strfcpy(fcc_tok, path, _POSIX_PATH_MAX);
++
++   tok = strtok(fcc_tok, ",");
++   dprint(1, (debugfile, "Fcc: initial mailbox = '%s'\n", tok));
++   /* mutt_expand_path already called above for the first token */
++   if((status = mutt_write_fcc (tok, hdr, NULL, 0, NULL)) != 0)
++	  return status;
++
++   while((tok = strtok(NULL, ",")) != NULL) {
++	  if(*tok) {
++		 /* Only call mutt_expand_path iff tok has some data */
++		 dprint(1, (debugfile, "Fcc: additional mailbox token = '%s'\n", tok));
++		 strfcpy(fcc_expanded, tok, sizeof(fcc_expanded));
++		 mutt_expand_path(fcc_expanded, sizeof(fcc_expanded));
++		 dprint(1, (debugfile, "     Additional mailbox expanded = '%s'\n", fcc_expanded));
++		 if((status = mutt_write_fcc (fcc_expanded, hdr, NULL, 0, NULL)) != 0)
++			return status;
++	  }
++   }
++
++   return 0;
++}
++
+ int mutt_write_fcc (const char *path, HEADER *hdr, const char *msgid, int post, char *fcc)
+ {
+   CONTEXT f;

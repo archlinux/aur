@@ -1,0 +1,115 @@
+From: Christoph Berg <myon@debian.org>
+Date: Fri, 14 Mar 2014 08:41:46 +0100
+Subject: update_german_translation
+
+Gbp-Pq: Topic translations
+---
+ po/de.po | 24 ++++++++----------------
+ 1 file changed, 8 insertions(+), 16 deletions(-)
+
+diff --git a/po/de.po b/po/de.po
+index 75d56f3..a2218c8 100644
+--- a/po/de.po
++++ b/po/de.po
+@@ -3,7 +3,7 @@ msgstr ""
+ "Project-Id-Version: 1.5.20\n"
+ "Report-Msgid-Bugs-To: \n"
+ "POT-Creation-Date: 2014-03-12 09:18-0700\n"
+-"PO-Revision-Date: 2008-05-18 10:28+0200\n"
++"PO-Revision-Date: 2014-03-14 08:34+0100\n"
+ "Last-Translator: Rocco Rutte <pdmef@gmx.net>\n"
+ "Language-Team: German <mutt-po@mutt.org>\n"
+ "Language: de\n"
+@@ -587,9 +587,8 @@ msgid "Descrip"
+ msgstr "Beschr."
+ 
+ #: compose.c:117
+-#, fuzzy
+ msgid "Not supported"
+-msgstr "Markieren wird nicht unterstützt."
++msgstr "Nicht unterstützt"
+ 
+ #: compose.c:122
+ msgid "Sign, Encrypt"
+@@ -1742,7 +1741,6 @@ msgstr "L
+ #. * declared "static" (sigh)
+ #.
+ #: edit.c:41
+-#, fuzzy
+ msgid ""
+ "~~\t\tinsert a line beginning with a single ~\n"
+ "~b users\tadd users to the Bcc: field\n"
+@@ -2654,7 +2652,6 @@ msgstr ""
+ "       mutt -v[v]\n"
+ 
+ #: main.c:124
+-#, fuzzy
+ msgid ""
+ "options:\n"
+ "  -A <alias>\texpand the given alias\n"
+@@ -2667,6 +2664,7 @@ msgstr ""
+ "Optionen:\n"
+ "  -A <alias>\tExpandiere den angegebenen Alias\n"
+ "  -a <file>\tHängt Datei an die Message an\n"
++"\t\tDie Dateiliste muss mit \"--\" beendet werden\n"
+ "  -b <address>\tEmpfänger einer unsichtbaren Kopie (Bcc:)\n"
+ "  -c <address>\tEmpfänger einer Kopie (Cc:)\n"
+ "  -D\t\tGib die Werte aller Variablen aus"
+@@ -3004,9 +3002,8 @@ msgid "Unable to get certificate from peer"
+ msgstr "Kann kein Zertifikat vom Server erhalten"
+ 
+ #: mutt_ssl.c:424
+-#, fuzzy, c-format
+ msgid "%s connection using %s (%s)"
+-msgstr "SSL Verbindung unter Verwendung von %s (%s)"
++msgstr "%s-Verbindung unter Verwendung von %s (%s)"
+ 
+ #: mutt_ssl.c:526
+ msgid "Unknown"
+@@ -3396,9 +3393,8 @@ msgid "error in pattern at: %s"
+ msgstr "Fehler in Muster bei: %s"
+ 
+ #: pattern.c:830
+-#, fuzzy, c-format
+ msgid "missing pattern: %s"
+-msgstr "Fehlender Parameter"
++msgstr "Fehlendes Muster: %s"
+ 
+ #: pattern.c:840
+ #, c-format
+@@ -3516,9 +3512,8 @@ msgid "Can't invoke PGP"
+ msgstr "Kann PGP nicht aufrufen"
+ 
+ #: pgp.c:1590
+-#, fuzzy, c-format
+ msgid "PGP (e)ncrypt, (s)ign, sign (a)s, (b)oth, %s format, or (c)lear? "
+-msgstr "PGP (v)erschl., (s)ign., sign. (a)ls, (b)eides, %s, (k)ein PGP? "
++msgstr "PGP (v)erschl., (s)ign., sign. (a)ls, (b)eides, %s-Format, (k)ein PGP? "
+ 
+ #: pgp.c:1591
+ msgid "PGP/M(i)ME"
+@@ -3533,22 +3528,19 @@ msgstr "(i)nline"
+ #. * it.  The 'i' key is appended in this version.
+ #.
+ #: pgp.c:1597
+-#, fuzzy
+ msgid "esabfci"
+-msgstr "vsabpku"
++msgstr "vsabfki"
+ 
+ #. The keys accepted *must* be a prefix of the accepted keys in the "if"
+ #. * clause above since the switch statement below depends on it.
+ #.
+ #: pgp.c:1604
+-#, fuzzy
+ msgid "PGP (e)ncrypt, (s)ign, sign (a)s, (b)oth, or (c)lear? "
+ msgstr "PGP (v)erschl., (s)ign., sign. (a)ls, (b)eides, %s, (k)ein PGP? "
+ 
+ #: pgp.c:1605
+-#, fuzzy
+ msgid "esabfc"
+-msgstr "vsabpku"
++msgstr "vsabfk"
+ 
+ #: pgpinvoke.c:308
+ msgid "Fetching PGP key..."

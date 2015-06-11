@@ -1,0 +1,22 @@
+From: Antonio Radici <antonio@debian.org>
+Date: Mon, 10 Feb 2014 18:14:45 +0100
+Subject: am-maintainer-mode
+
+Gbp-Pq: Topic misc
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 1b6e010..3d5f11b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -7,7 +7,7 @@ AC_INIT([mutt],[m4_esyscmd(tr -d \\n <VERSION)])
+ AC_CONFIG_SRCDIR(mutt.h)
+ AM_INIT_AUTOMAKE
+ AC_CONFIG_HEADERS([config.h])
+-
++AM_MAINTAINER_MODE
+ AC_SUBST([CONFIG_STATUS_DEPENDENCIES], ['$(top_srcdir)/VERSION'])
+ 
+ MUTT_VERSION=`env sh "$srcdir/version.sh"`

@@ -1,0 +1,25 @@
+From: Antonio Radici <antonio@debian.org>
+Date: Thu, 27 Feb 2014 17:14:35 +0100
+Subject: 383769-score-match
+
+Better matching for ~f, same as mutt-ng did.
+(see upstream http://bugs.mutt.org/2179)
+
+Gbp-Pq: Topic upstream
+---
+ score.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/score.c b/score.c
+index 6f952a5..7bc4d83 100644
+--- a/score.c
++++ b/score.c
+@@ -133,7 +133,7 @@ void mutt_score_message (CONTEXT *ctx, HEADER *hdr, int upd_ctx)
+   hdr->score = 0; /* in case of re-scoring */
+   for (tmp = Score; tmp; tmp = tmp->next)
+   {
+-    if (mutt_pattern_exec (tmp->pat, 0, NULL, hdr) > 0)
++    if (mutt_pattern_exec (tmp->pat, M_MATCH_FULL_ADDRESS, NULL, hdr) > 0)
+     {
+       if (tmp->exact || tmp->val == 9999 || tmp->val == -9999)
+       {

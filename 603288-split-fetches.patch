@@ -1,0 +1,33 @@
+From: Antonio Radici <antonio@debian.org>
+Date: Thu, 27 Feb 2014 17:16:58 +0100
+Subject: 603288-split-fetches
+
+A workaround for Exchange 2010 IMAP protocol,
+tracked in http://bugs.mutt.org/3459,
+already merged in the ubuntu version of Mutt.
+
+Gbp-Pq: Topic upstream
+---
+ imap/message.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/imap/message.c b/imap/message.c
+index 3504be8..4234e22 100644
+--- a/imap/message.c
++++ b/imap/message.c
+@@ -240,6 +240,15 @@ int imap_read_headers (IMAP_DATA* idata, int msgbegin, int msgend)
+       char *cmd;
+ 
+       fetchlast = msgend + 1;
++      /* Microsoft Exchange 2010 violates the IMAP protocol and
++       * starts omitting messages if one FETCHes more than 2047 (or
++       * or somewhere around that number. We therefore split the
++       * FETCH into chunks of 2000 messages each */
++      if (fetchlast - msgno - 1 > 2000)
++      {
++        fetchlast = msgno+1 + 2000;
++      }
++
+       safe_asprintf (&cmd, "FETCH %d:%d (UID FLAGS INTERNALDATE RFC822.SIZE %s)",
+                      msgno + 1, fetchlast, hdrreq);
+       imap_cmd_start (idata, cmd);

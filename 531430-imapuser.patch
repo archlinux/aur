@@ -1,0 +1,26 @@
+From: Antonio Radici <antonio@debian.org>
+Date: Thu, 27 Feb 2014 16:36:23 +0100
+Subject: 531430-imapuser
+
+Fixes a problem where the imap->login has the precedence
+so the user is asked with wrong informaton,
+see upstream #3240.
+
+Gbp-Pq: Topic upstream
+---
+ account.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/account.c b/account.c
+index f738991..bf59995 100644
+--- a/account.c
++++ b/account.c
+@@ -222,7 +222,7 @@ int mutt_account_getpass (ACCOUNT* account)
+   else
+   {
+     snprintf (prompt, sizeof (prompt), _("Password for %s@%s: "),
+-              account->flags & M_ACCT_LOGIN ? account->login : account->user,
++              ((account->flags & M_ACCT_LOGIN) && !(account->user)) ? account->login : account->user,
+               account->host);
+     account->pass[0] = '\0';
+     if (mutt_get_password (prompt, account->pass, sizeof (account->pass)))

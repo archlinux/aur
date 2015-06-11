@@ -1,0 +1,29 @@
+From: Antonio Radici <antonio@debian.org>
+Date: Thu, 27 Feb 2014 16:56:37 +0100
+Subject: 553321-ansi-escape-segfault
+
+This patch prevents Mutt from crashing when *buf is freed,
+the root cause is the fact that an adjacent memory segment
+(*fmt) overruns and overwrite prev_size field in the heap.
+
+The bug and the patch were forwarded upstream,
+see http://bugs.mutt.org/3371
+
+Gbp-Pq: Topic upstream
+---
+ pager.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pager.c b/pager.c
+index b17afb4..7b61266 100644
+--- a/pager.c
++++ b/pager.c
+@@ -1053,7 +1053,7 @@ fill_buffer (FILE *f, LOFF_T *last_pos, LOFF_T offset, unsigned char **buf,
+     q = *fmt;
+     while (*p)
+     {
+-      if (*p == '\010' && (p > *buf))
++      if (*p == '\010' && (p > *buf) && (q > *fmt))
+       {
+ 	if (*(p+1) == '_')	/* underline */
+ 	  p += 2;

@@ -1,0 +1,127 @@
+From: Antonio Radici <antonio@debian.org>
+Date: Thu, 27 Feb 2014 16:22:51 +0100
+Subject: 467432-write_bcc
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+The purpose of this patch is to alter the behavior of the write_bcc option
+because exim4, the default SMTP in Debian, does not strip the Bcc headers; by
+default write_bcc is set so this could cause a privacy leak.
+
+The behavior that this patch introduces is: never write the Bcc header when the
+message is sent, otherwise, if the message is sent to Fcc, then this optin
+will be evaluated and the Bcc header will be written based on that.
+
+Background discussion on this is in the following bugs:
+http://bugs.debian.org/304718
+http://bugs.debian.org/467432
+
+This patch is a slightly modified version of the patch provided by
+Stefan Völkel <stefan@bc-bd.org> in the second bug.
+
+Gbp-Pq: Topic debian-specific
+---
+ headers.c |  2 +-
+ init.h    | 11 +++--------
+ protos.h  |  2 +-
+ send.c    |  4 ++--
+ sendlib.c |  6 +++---
+ 5 files changed, 10 insertions(+), 15 deletions(-)
+
+diff --git a/headers.c b/headers.c
+index 578b33d..f701c8e 100644
+--- a/headers.c
++++ b/headers.c
+@@ -52,7 +52,7 @@ void mutt_edit_headers (const char *editor,
+   }
+   
+   mutt_env_to_local (msg->env);
+-  mutt_write_rfc822_header (ofp, msg->env, NULL, 1, 0);
++  mutt_write_rfc822_header (ofp, msg->env, NULL, 1, 0, 1);
+   fputc ('\n', ofp);	/* tie off the header. */
+ 
+   /* now copy the body of the message. */
+diff --git a/init.h b/init.h
+index 875cad8..42b79d6 100644
+--- a/init.h
++++ b/init.h
+@@ -3440,14 +3440,9 @@ struct option_t MuttVars[] = {
+   { "write_bcc",	DT_BOOL, R_NONE, OPTWRITEBCC, 1},
+   /*
+   ** .pp
+-  ** Controls whether mutt writes out the ``Bcc:'' header when preparing
+-  ** messages to be sent.  Exim users may wish to unset this. If mutt
+-  ** is set to deliver directly via SMTP (see $$smtp_url), this
+-  ** option does nothing: mutt will never write out the ``Bcc:'' header
+-  ** in this case.
+-  ** .pp
+-  ** \fBNote:\fP On Debian systems, exim4 and postfix strip BCC headers by
+-  ** default. The above warning applies to exim3 users, see /etc/Muttrc.
++  ** Controls whether mutt writes out the Bcc header when saving
++  ** messages to FCC. Bcc headers will never be written to a message
++  ** when sending it. Note: this behavior is Debian specific.
+   */
+   { "write_inc",	DT_NUM,	 R_NONE, UL &WriteInc, 10 },
+   /*
+diff --git a/protos.h b/protos.h
+index 8542f91..38c8c01 100644
+--- a/protos.h
++++ b/protos.h
+@@ -366,7 +366,7 @@ int mutt_write_fcc (const char *path, HEADER *hdr, const char *msgid, int, char
+ int mutt_write_mime_body (BODY *, FILE *);
+ int mutt_write_mime_header (BODY *, FILE *);
+ int mutt_write_one_header (FILE *fp, const char *tag, const char *value, const char *pfx, int wraplen, int flags);
+-int mutt_write_rfc822_header (FILE *, ENVELOPE *, BODY *, int, int);
++int mutt_write_rfc822_header (FILE *, ENVELOPE *, BODY *, int, int, int);
+ void mutt_write_references (LIST *, FILE *, int);
+ int mutt_yesorno (const char *, int);
+ void mutt_set_header_color(CONTEXT *, HEADER *);
+diff --git a/send.c b/send.c
+index fce003c..18b9390 100644
+--- a/send.c
++++ b/send.c
+@@ -994,10 +994,10 @@ static int send_message (HEADER *msg)
+     unset_option (OPTWRITEBCC);
+ #endif
+ #ifdef MIXMASTER
+-  mutt_write_rfc822_header (tempfp, msg->env, msg->content, 0, msg->chain ? 1 : 0);
++  mutt_write_rfc822_header (tempfp, msg->env, msg->content, 0, msg->chain ? 1 : 0, 0);
+ #endif
+ #ifndef MIXMASTER
+-  mutt_write_rfc822_header (tempfp, msg->env, msg->content, 0, 0);
++  mutt_write_rfc822_header (tempfp, msg->env, msg->content, 0, 0, 0);
+ #endif
+ #ifdef USE_SMTP
+   if (old_write_bcc)
+diff --git a/sendlib.c b/sendlib.c
+index cede853..0f05298 100644
+--- a/sendlib.c
++++ b/sendlib.c
+@@ -1929,7 +1929,7 @@ out:
+ 
+ 
+ int mutt_write_rfc822_header (FILE *fp, ENVELOPE *env, BODY *attach,
+-			      int mode, int privacy)
++			      int mode, int privacy, int should_write_bcc)
+ {
+   char buffer[LONG_STRING];
+   char *p, *q;
+@@ -1972,7 +1972,7 @@ int mutt_write_rfc822_header (FILE *fp, ENVELOPE *env, BODY *attach,
+   else if (mode > 0)
+     fputs ("Cc: \n", fp);
+ 
+-  if (env->bcc)
++  if (env->bcc && should_write_bcc)
+   {
+     if(mode != 0 || option(OPTWRITEBCC))
+     {
+@@ -2727,7 +2727,7 @@ int mutt_write_fcc (const char *path, HEADER *hdr, const char *msgid, int post,
+   /* post == 1 => postpone message. Set mode = -1 in mutt_write_rfc822_header()
+    * post == 0 => Normal mode. Set mode = 0 in mutt_write_rfc822_header()
+    * */
+-  mutt_write_rfc822_header (msg->fp, hdr->env, hdr->content, post ? -post : 0, 0);
++  mutt_write_rfc822_header (msg->fp, hdr->env, hdr->content, post ? -post : 0, 0, 1);
+ 
+   /* (postponment) if this was a reply of some sort, <msgid> contians the
+    * Message-ID: of message replied to.  Save it using a special X-Mutt-

@@ -1,0 +1,198 @@
+From: Cristoph Berg <myon@debian.org>
+Date: Thu, 27 Feb 2014 12:25:51 +0100
+Subject: xtitles
+
+This is the xterm title patch as found on the mutt mailing lists.
+
+* Changes made:
+  - 2007-01-27 myon: using %P caused a segfault, updated status.c to catch
+    menu==NULL.
+  - 2007-02-20 myon: make the note about the xterm_set_titles defaults a
+    comment.
+  - 2008-08-02 myon: move set_xterm_* prototypes into the proper header file
+    (cleaner code, no functional change, evades conflict with sidebar patch)
+
+Signed-off-by: Matteo F. Vescovi <mfvescovi@gmail.com>
+
+Gbp-Pq: Topic features
+---
+ curs_main.c | 20 ++++++++++++++++++++
+ globals.h   |  2 ++
+ init.c      | 20 ++++++++++++++++++++
+ init.h      | 21 +++++++++++++++++++++
+ mutt.h      |  1 +
+ mutt_menu.h |  2 ++
+ pager.c     |  7 +++++++
+ status.c    |  2 ++
+ 8 files changed, 75 insertions(+)
+
+diff --git a/curs_main.c b/curs_main.c
+index aa4b044..16ddbc9 100644
+--- a/curs_main.c
++++ b/curs_main.c
+@@ -110,6 +110,19 @@ static const char *No_visible = N_("No visible messages.");
+ 
+ extern size_t UngetCount;
+ 
++#define ASCII_CTRL_G                  0x07
++#define ASCII_CTRL_OPEN_SQUARE_BRAKET 0x1b
++
++void set_xterm_title_bar(char *title)
++{
++  fprintf(stderr ,"%c]2;%s%c", ASCII_CTRL_OPEN_SQUARE_BRAKET, title, ASCII_CTRL_G);
++}
++
++void set_xterm_icon_name(char *name)
++{
++  fprintf(stderr, "%c]1;%s%c", ASCII_CTRL_OPEN_SQUARE_BRAKET, name, ASCII_CTRL_G);
++}
++
+ void index_make_entry (char *s, size_t l, MUTTMENU *menu, int num)
+ {
+   format_flag flag = M_FORMAT_MAKEPRINT | M_FORMAT_ARROWCURSOR | M_FORMAT_INDEX;
+@@ -560,6 +573,13 @@ int mutt_index_menu (void)
+ 	mutt_paddstr (COLS, buf);
+ 	NORMAL_COLOR;
+ 	menu->redraw &= ~REDRAW_STATUS;
++	if (option(OPTXTERMSETTITLES))
++	{
++	  menu_status_line (buf, sizeof (buf), menu, NONULL (XtermTitle));
++	  set_xterm_title_bar(buf);
++	  menu_status_line (buf, sizeof (buf), menu, NONULL (XtermIcon));
++	  set_xterm_icon_name(buf);
++	}
+       }
+ 
+       menu->redraw = 0;
+diff --git a/globals.h b/globals.h
+index 6fefe5b..584cd0c 100644
+--- a/globals.h
++++ b/globals.h
+@@ -141,6 +141,8 @@ WHERE char *Tempdir;
+ WHERE char *Tochars;
+ WHERE char *Username;
+ WHERE char *Visual;
++WHERE char *XtermTitle;
++WHERE char *XtermIcon;
+ 
+ WHERE char *CurrentFolder;
+ WHERE char *LastFolder;
+diff --git a/init.c b/init.c
+index cc3cf4b..81bb9e7 100644
+--- a/init.c
++++ b/init.c
+@@ -1877,6 +1877,26 @@ static int parse_set (BUFFER *tmp, BUFFER *s, unsigned long data, BUFFER *err)
+ 	toggle_option (MuttVars[idx].data);
+       else
+ 	set_option (MuttVars[idx].data);
++
++      /* sanity check for xterm */
++      if ((mutt_strcmp (MuttVars[idx].option, "xterm_set_titles") == 0)
++		&& option (OPTXTERMSETTITLES))
++      {
++	char *ep = getenv ("TERM");
++	/* Make sure that the terminal can take the control codes */
++	if (ep == NULL) unset_option (MuttVars[idx].data);
++	else if (mutt_strncasecmp (ep, "xterm", 5) &&
++		 mutt_strncasecmp (ep, "color-xterm", 11) &&
++		 mutt_strncasecmp (ep, "eterm", 5) &&
++		 mutt_strncasecmp (ep, "kterm", 5) &&
++		 mutt_strncasecmp (ep, "nxterm", 6) &&
++		 mutt_strncasecmp (ep, "putty", 5) &&
++		 mutt_strncasecmp (ep, "screen", 6) &&
++		 mutt_strncasecmp (ep, "cygwin", 6) &&
++		 mutt_strncasecmp (ep, "rxvt", 4) )
++	  unset_option (MuttVars[idx].  data);
++
++      }
+     }
+     else if (myvar || DTYPE (MuttVars[idx].type) == DT_STR ||
+ 	     DTYPE (MuttVars[idx].type) == DT_PATH ||
+diff --git a/init.h b/init.h
+index 80d05ce..cf8e75a 100644
+--- a/init.h
++++ b/init.h
+@@ -3412,6 +3412,27 @@ struct option_t MuttVars[] = {
+   ** Also see the $$read_inc, $$net_inc and $$time_inc variables and the
+   ** ``$tuning'' section of the manual for performance considerations.
+   */
++  {"xterm_icon",       DT_STR,   R_BOTH, UL &XtermIcon,  UL "M%?n?AIL&ail?"},
++  /*
++  ** .pp
++  ** Controls the format of the icon title, as long as xterm_set_titles
++  ** is enabled. This string is identical in formatting to the one used by
++  ** ``$$status_format''.
++  */
++  {"xterm_set_titles", DT_BOOL,  R_BOTH, OPTXTERMSETTITLES, 0},
++  /* The default must be off to force in the validity checking. */
++  /*
++  ** .pp
++  ** Controls whether mutt sets the xterm title bar and icon name
++  ** (as long as you are in an appropriate terminal).
++  */
++  {"xterm_title",      DT_STR,   R_BOTH, UL &XtermTitle, UL "Mutt with %?m?%m messages&no messages?%?n? [%n NEW]?"},
++  /*
++  ** .pp
++  ** Controls the format of the title bar of the xterm provided that
++  ** xterm_set_titles has been set. This string is identical in formatting
++  ** to the one used by ``$$status_format''.
++  */
+   /*--*/
+   { NULL, 0, 0, 0, 0 }
+ };
+diff --git a/mutt.h b/mutt.h
+index dcd7dc5..1d7e177 100644
+--- a/mutt.h
++++ b/mutt.h
+@@ -449,6 +449,7 @@ enum
+   OPTWRAPSEARCH,
+   OPTWRITEBCC,		/* write out a bcc header? */
+   OPTXMAILER,
++  OPTXTERMSETTITLES,
+ 
+   OPTCRYPTUSEGPGME,
+   OPTCRYPTUSEPKA,
+diff --git a/mutt_menu.h b/mutt_menu.h
+index d459bef..82abecd 100644
+--- a/mutt_menu.h
++++ b/mutt_menu.h
+@@ -103,6 +103,8 @@ void menu_current_middle (MUTTMENU *);
+ void menu_current_bottom (MUTTMENU *);
+ void menu_check_recenter (MUTTMENU *);
+ void menu_status_line (char *, size_t, MUTTMENU *, const char *);
++void set_xterm_title_bar (char *title);
++void set_xterm_icon_name (char *name);
+ 
+ MUTTMENU *mutt_new_menu (int);
+ void mutt_menuDestroy (MUTTMENU **);
+diff --git a/pager.c b/pager.c
+index 486d8c8..23eb8ca 100644
+--- a/pager.c
++++ b/pager.c
+@@ -1812,6 +1812,13 @@ mutt_pager (const char *banner, const char *fname, int flags, pager_t *extra)
+ 	mutt_paddstr (COLS, bn);
+       }
+       NORMAL_COLOR;
++      if (option(OPTXTERMSETTITLES))
++      {
++	menu_status_line (buffer, sizeof (buffer), index, NONULL (XtermTitle));
++	set_xterm_title_bar(buffer);
++	menu_status_line (buffer, sizeof (buffer), index, NONULL (XtermIcon));
++	set_xterm_icon_name(buffer);
++      }
+     }
+ 
+     if ((redraw & REDRAW_INDEX) && index)
+diff --git a/status.c b/status.c
+index 1bb9a5a..6051e3a 100644
+--- a/status.c
++++ b/status.c
+@@ -195,6 +195,8 @@ status_format_str (char *buf, size_t buflen, size_t col, char op, const char *sr
+       break;
+ 
+     case 'P':
++      if (!menu)
++	break;
+       if (menu->top + menu->pagelen >= menu->max)
+ 	cp = menu->top ? "end" : "all";
+       else

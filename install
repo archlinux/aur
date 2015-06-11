@@ -1,0 +1,8 @@
+post_install() {
+	cat <<EOF
+
+==> For GPG support, add the following to your muttrc:
+==> source /etc/Muttrc.gpg.dist
+
+EOF
+}

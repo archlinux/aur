@@ -1,0 +1,39 @@
+From: Antonio Radici <antonio@debian.org>
+Date: Thu, 27 Feb 2014 16:17:42 +0100
+Subject: dont_document_not_present_features
+
+As the patch says, this will add an include so only
+documented options for Debian will be used.
+
+Gbp-Pq: Topic debian-specific
+---
+ functions.h | 2 +-
+ init.h      | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/functions.h b/functions.h
+index a29388c..26171a0 100644
+--- a/functions.h
++++ b/functions.h
+@@ -35,7 +35,7 @@
+ 
+ #ifdef _MAKEDOC
+ # include "config.h"
+-# include "doc/makedoc-defs.h"
++/* # include "doc/makedoc-defs.h" include only documented options for Debian */
+ #endif
+ 
+ const struct binding_t OpGeneric[] = { /* map: generic */
+diff --git a/init.h b/init.h
+index 7768683..dc69e2c 100644
+--- a/init.h
++++ b/init.h
+@@ -19,7 +19,7 @@
+ 
+ #ifdef _MAKEDOC
+ # include "config.h"
+-# include "doc/makedoc-defs.h"
++/* # include "makedoc-defs.h" include only documented options for Debian */
+ #else
+ # include "sort.h"
+ #endif

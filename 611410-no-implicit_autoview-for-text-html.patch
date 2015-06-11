@@ -1,0 +1,52 @@
+From: Antonio Radici <antonio@debian.org>
+Date: Thu, 27 Feb 2014 17:36:31 +0100
+Subject: 611410-no-implicit_autoview-for-text-html
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+This patch blacklist text/html from the list of documents that will be
+shown automatically, the patch (the muttlib.c part) has been written by
+Loïc Minier <lool@dooz.org>, I've added the documentation bit.
+
+The patch has been forwarded upstream originally by Loïc on:
+http://bugs.mutt.org/3496
+
+The original Debian bug for this problem is:
+http://bugs.debian.org/611410
+
+Gbp-Pq: Topic upstream
+---
+ init.h    | 4 +++-
+ muttlib.c | 3 +++
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/init.h b/init.h
+index 42b79d6..08e004c 100644
+--- a/init.h
++++ b/init.h
+@@ -1222,7 +1222,9 @@ struct option_t MuttVars[] = {
+   ** ``\fCcopiousoutput\fP'' flag set for \fIevery\fP MIME attachment it doesn't have
+   ** an internal viewer defined for.  If such an entry is found, mutt will
+   ** use the viewer defined in that entry to convert the body part to text
+-  ** form.
++  ** form. MIME attachments with 'text' types, with the only exception
++  ** of text/html, are excluded: they will be shown as they are unless auto_view
++  ** is specified.
+   */
+   { "include",		DT_QUAD, R_NONE, OPT_INCLUDE, M_ASKYES },
+   /*
+diff --git a/muttlib.c b/muttlib.c
+index 0425d45..c0d2026 100644
+--- a/muttlib.c
++++ b/muttlib.c
+@@ -658,6 +658,9 @@ int mutt_needs_mailcap (BODY *m)
+   switch (m->type)
+   {
+     case TYPETEXT:
++      /* we don't want to display text/html */
++      if (!ascii_strcasecmp ("html", m->subtype))
++        return 1;
+       /* we can display any text, overridable by auto_view */
+       return 0;
+       break;

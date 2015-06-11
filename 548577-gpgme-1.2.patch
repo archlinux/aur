@@ -1,0 +1,39 @@
+From: Antonio Radici <antonio@debian.org>
+Date: Thu, 27 Feb 2014 16:50:21 +0100
+Subject: 548577-gpgme-1.2
+
+This patch fixes upstream bug http://bugs.mutt.org/3300,
+so that Mutt will be able to open pgp crypted/signed
+message with gpgme.
+
+Gbp-Pq: Topic upstream
+---
+ init.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/init.c b/init.c
+index e0a0757..20a66bd 100644
+--- a/init.c
++++ b/init.c
+@@ -53,6 +53,10 @@
+ #include <sys/wait.h>
+ #include <sys/time.h>
+ 
++#if defined(CRYPT_BACKEND_GPGME)
++#include <gpgme.h>
++#endif
++
+ #define CHECK_PAGER \
+   if ((CurrentMenu == MENU_PAGER) && (idx >= 0) &&	\
+ 	    (MuttVars[idx].flags & R_RESORT)) \
+@@ -3277,6 +3281,10 @@ void mutt_init (int skip_sys_rc, LIST *commands)
+ 
+   mutt_read_histfile ();
+ 
++#ifdef CRYPT_BACKEND_GPGME
++  gpgme_check_version (NULL);
++#endif
++
+ #if 0
+   set_option (OPTWEED); /* turn weeding on by default */
+ #endif
