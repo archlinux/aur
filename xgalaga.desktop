@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=XGalaga
+Comment=An open source remake of the classic arcade game Galaga
+Exec=xgalaga
+Icon=xgalaga
+Terminal=false
+Categories=Game;ArcadeGame;
