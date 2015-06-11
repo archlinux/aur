@@ -1,0 +1,14 @@
+pkgbase = gkrellmlaunch
+	pkgdesc = GKrellM plugin to add quicklaunch tabs for your favorite apps
+	pkgver = 0.5
+	pkgrel = 7
+	url = http://gkrellmlaunch.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gkrellm
+	source = http://downloads.sourceforge.net/project/gkrellmlaunch/gkrellmlaunch/0.5/gkrellmlaunch-0.5.tar.gz
+	md5sums = 110797c344a09daac71f71643b91fc6e
+
+pkgname = gkrellmlaunch
+
