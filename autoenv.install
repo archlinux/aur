@@ -1,0 +1,13 @@
+post_install() {
+  echo "Before using this you need to add it to your .bashrc or .zshrc"
+  echo
+  echo "For Bash:"
+  echo "echo 'source /usr/share/autoenv-git/activate.sh' >> ~/.bashrc && source ~/.bashrc"
+  echo
+  echo "For ZSH:"
+  echo "echo 'source /usr/share/autoenv-git/activate.sh' >> ~/.zshrc && source ~/.zshrc"
+  echo 
+  echo "Note: Autoenv overrides cd. If you already do this, invoke autoenv_init within your custom cd after sourcing activate.sh."
+}
+
+
