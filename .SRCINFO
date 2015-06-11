@@ -1,0 +1,14 @@
+pkgbase = wmsmpmon
+	pkgdesc = A WindowMaker dockapp that graphs usage for multiple CPU's as well as memory and swap usage.
+	pkgver = 3.1
+	pkgrel = 2
+	url = http://www.ribbrock.org/binabit/wmSMPmon/index.en.htm
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	source = http://lancre.ribbrock.org/uploads/TRi/wmSMPmon/wmSMPmon-3.1.tar.gz
+	md5sums = 37e379428c1f42d47b941647627cfabb
+
+pkgname = wmsmpmon
+
