@@ -1,23 +1,21 @@
 pkgbase = smlsharp
 	pkgdesc = A new programming language in the Standard ML family
 	pkgver = 2.0.0
-	pkgrel = 4
+	pkgrel = 3
 	url = http://www.pllab.riec.tohoku.ac.jp/smlsharp/
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = ed
 	makedepends = cpio
-	makedepends = llvm>=3.6
+	makedepends = llvm>=3.5
 	depends = gmp
 	options = libtool
 	options = staticlibs
 	source = http://www.pllab.riec.tohoku.ac.jp/smlsharp/download/smlsharp-2.0.0.tar.gz
 	source = llvm-3.5.patch::https://github.com/susurri/smlsharp/commit/c9b743fff63b1f3fb1c83c47f80751e72faa0925.patch
-	source = llvm-3.6.patch::https://github.com/susurri/smlsharp/commit/65c6ab5dd4a55a4674858ba1e9da9cd0f45c168e.patch
 	md5sums = df71724704c967a51e7c1db77ee5d0b1
 	md5sums = 8d03886bb9fabf988177fbded1fdf910
-	md5sums = 7c2248aeb30284831de03fdc4c941a8d
 
 pkgname = smlsharp
 
