@@ -1,0 +1,11 @@
+--- tresor-patch-3.18.5_i686	2015-02-06 20:26:52.331348357 +0000
++++ tresor-patch-3.18.5_i686.patched	2015-02-06 21:32:34.534852217 +0000
+@@ -5,7 +5,7 @@
+ @@ -1,7 +1,7 @@
+  VERSION = 3
+  PATCHLEVEL = 18
+- SUBLEVEL = 5
++ SUBLEVEL = 12
+ -EXTRAVERSION =
+ +EXTRAVERSION = -tresor0.3
+  NAME = Diseased Newt
