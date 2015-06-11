@@ -1,0 +1,15 @@
+pkgbase = python-flask-mail
+	pkgdesc = A Flask extension for sending email messages. (python3 version)
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/Flask-Mail
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = python-flask
+	depends = python-blinker
+	source = https://pypi.python.org/packages/source/F/Flask-Mail/Flask-Mail-0.9.1.tar.gz
+	md5sums = 04b35a42a44ec7aa724ec8ce55e2e08e
+
+pkgname = python-flask-mail
+
