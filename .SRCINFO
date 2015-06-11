@@ -1,0 +1,17 @@
+pkgbase = datamash-git
+	pkgdesc = A command-line program which performs numeric, textual and statistical operations on plain text data.
+	pkgver = v1.0.6.r54.gf8ae71f
+	pkgrel = 2
+	url = https://www.gnu.org/software/datamash/
+	install = datamash.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = glibc
+	provides = datamash
+	conflicts = datamash
+	source = git://git.sv.gnu.org/datamash.git
+	sha256sums = SKIP
+
+pkgname = datamash-git
+
