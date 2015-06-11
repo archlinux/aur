@@ -1,0 +1,21 @@
+pkgbase = aprx-svn
+	pkgdesc = Lightweight APRS digipeater and i-Gate interface
+	pkgver = 596
+	pkgrel = 1
+	url = http://wiki.ham.fi/Aprx.en
+	arch = i686
+	arch = x86_64
+	arch = armv5h
+	arch = armv6h
+	arch = armv7h
+	license = custom
+	makedepends = subversion
+	depends = glibc
+	backup = etc/aprx.conf
+	source = http://ham.zmailer.org/oh2mqk/aprx/aprx-2.08.svn593.tar.gz
+	source = aprx.service
+	sha256sums = 609e1b863e9cdd402aa205a9094328d5973219cff0ebcac5f6e1987ccedf5c6b
+	sha256sums = d510592068d1ef0e83ef104bb5af82da861d3418cfa6cf3a70be585fec96bb53
+
+pkgname = aprx-svn
+
