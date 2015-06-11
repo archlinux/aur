@@ -2,7 +2,7 @@
 # Contributor: Nezmer <Nezmer@allurelinux.org>
 
 pkgname=libsoup-gnome-git
-pkgver=2.46.0.r24.g035842c
+pkgver=2.50.0.r11.gb4120b5
 pkgrel=1
 pkgdesc="Gnome HTTP Library with gnome integration enabled /git repo"
 epoch=1

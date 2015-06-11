@@ -1,6 +1,6 @@
 pkgbase = libsoup-gnome-git
 	pkgdesc = Gnome HTTP Library with gnome integration enabled /git repo
-	pkgver = 2.46.0.r24.g035842c
+	pkgver = 2.50.0.r11.gb4120b5
 	pkgrel = 1
 	epoch = 1
 	url = http://live.gnome.org/LibSoup
