@@ -1,0 +1,13 @@
+pkgbase = teamspeak-soundpack-portal
+	pkgdesc = Soundpack for Teamspeak 3. Making it sound like the game Portal.
+	pkgver = 1
+	pkgrel = 9
+	url = http://addons.teamspeak.com/directory/skins/sound-packs/Portal-Sound-Pack.html
+	arch = any
+	license = Unknown
+	depends = teamspeak3
+	source = portal.zip::http://addons.teamspeak.com/directory/addon/download/Portal-Sound-Pack.html
+	sha1sums = cbfd9a69423ac839afd3b0a7dc84e40c79150c7f
+
+pkgname = teamspeak-soundpack-portal
+
