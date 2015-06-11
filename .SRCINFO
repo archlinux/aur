@@ -1,0 +1,20 @@
+pkgbase = python2-scitools
+	pkgdesc = python library for scientific computing
+	pkgver = 0.9.0
+	pkgrel = 5
+	url = https://github.com/hplgit/scitools
+	arch = any
+	license = custom:BSD Simplified
+	makedepends = python2
+	makedepends = python2-numpy
+	makedepends = gnuplot
+	makedepends = python2-gnuplot
+	depends = python2
+	optdepends = python2-scipy
+	optdepends = python2-scientificpython
+	optdepends = vtk
+	source = https://github.com/hplgit/scitools/archive/scitools-0.9.0.tar.gz
+	sha512sums = 90ff58136e0d9e6b13018c5f31db9cb68e37938f00e9f07c828c814ed065c8fc14aa6a795170f2616d95e3d39f1e72cfbebc328ee7e489e500d9481f458b6545
+
+pkgname = python2-scitools
+
