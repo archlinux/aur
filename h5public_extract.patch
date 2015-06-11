@@ -1,0 +1,23 @@
+diff -aur med-3.0.8_SRC.pristine/include/H5public_extract.h.in med-3.0.8_SRC.new/include/H5public_extract.h.in
+--- med-3.0.8_SRC.pristine/include/H5public_extract.h.in	2015-03-05 11:12:31.668511247 -0500
++++ med-3.0.8_SRC.new/include/H5public_extract.h.in	2015-03-05 11:22:20.159242461 -0500
+@@ -24,13 +24,15 @@
+ 
+ //Extraction depuis H5public.h.
+ 
++%{
+ @HDF5_TYPEDEF_HERR_T@
+ @HDF5_TYPEDEF_HID_T@
+ @HDF5_TYPEDEF_HSIZE_T@
+-
+-#typedef int herr_t;
+-#typedef int hid_t;
+-#typedef unsigned long long   hsize_t;
++%}
++  
++typedef int herr_t;
++typedef int hid_t;
++typedef unsigned long long   hsize_t;
+ 
+ #ifdef __cplusplus
+ }

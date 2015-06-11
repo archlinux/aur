@@ -1,0 +1,24 @@
+pkgbase = med-openmpi
+	pkgdesc = MED stands for Modelisation et Echanges de Donnees, i.e. Data Modelization and Exchanges - MED is code-aster exchange module linked to hdf5
+	pkgver = 3.0.8
+	pkgrel = 2
+	url = http://www.code-aster.org/outils/med/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = gcc-fortran
+	makedepends = coreutils
+	makedepends = openmpi
+	makedepends = swig
+	depends = hdf5-openmpi
+	depends = zlib
+	provides = med
+	conflicts = med
+	replaces = med
+	source = http://files.salome-platform.org/Salome/other/med-3.0.8.tar.gz
+	source = h5public_extract.patch
+	md5sums = 4f514a352c9a256f678077eea99b75c5
+	md5sums = 156ab9456bab7b70237d0fc785b97e7c
+
+pkgname = med-openmpi
+
