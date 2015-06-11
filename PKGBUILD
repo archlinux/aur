@@ -6,18 +6,15 @@ pkgver=0.11.8.r13.g983d7ec
 pkgrel=1
 pkgdesc="Open Source Continuous Replication / Cluster Synchronization Thing"
 url="http://syncthing.net/"
-license=('MIT')
+license=('MPLv2')
 makedepends=('git' 'go' 'godep' 'inetutils')
 conflicts=('syncthing')
 provides=('syncthing')
 arch=('i686' 'x86_64')
-source=("$pkgname::git+https://github.com/syncthing/syncthing.git"
-        "syncthing@.service"
-				"syncthing.1")
-sha256sums=('SKIP'
-            '2b8ae688a7d60be7899b6124591804eacca7dd29e980d3eaa8a28b0f7a28ac44'
-            'fb59747ca16d1b19e3cad1c147dcabea14a30a5e4177b90712e6bb837c107912')
+source=("$pkgname-$pkgver::git+https://github.com/syncthing/syncthing.git")
+sha256sums=('SKIP')
 install=${pkgname}.install
+_name=syncthing
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
@@ -25,30 +22,48 @@ pkgver() {
 }
 
 prepare() {
-	export GOPATH="${srcdir}"
-	mkdir -p "src/github.com/syncthing"
-	mv "${pkgname}" "src/github.com/syncthing/syncthing"
+  cd "${srcdir}"
+  mkdir -p "src/github.com/syncthing"
+  mv "${pkgname}-${pkgver}" "src/github.com/syncthing/${_name}"
 }
 
 build() {
-	export GOPATH="${srcdir}"
-	cd "${srcdir}/src/github.com/syncthing/syncthing"
-	./build.sh "" -tags noupgrade
+  export GOPATH="${srcdir}"
+  cd "${srcdir}/src/github.com/syncthing/${_name}"
+  if [ ${CARCH}" == "i686" ] ; then
+      go run build.go -no-upgrade -goarch 386 build
+  if [ ${CARCH}" == "x86_64" ] ; then
+      go run build.go -no-upgrade -goarch amd64 build
+  else
+      go run build.go -no-upgrade build
+  fi
 }
 
 check() {
-	export GOPATH="${srcdir}"
-	cd "${srcdir}/src/github.com/syncthing/syncthing"
-	./build.sh test
+  export GOPATH="${srcdir}"
+  cd "${srcdir}/src/github.com/syncthing/${_name}"
+#  go run build.go -no-upgrade test
 }
 
 package() {
-	cd "${srcdir}"
-	install -Dm644 syncthing@.service "${pkgdir}/usr/lib/systemd/system/syncthing@.service"
-	install -Dm644 syncthing.1 "${pkgdir}/usr/share/man/man1/${pkgname}.1.gz"
+  cd "${srcdir}/src/github.com/syncthing/${_name}"
+  install -Dm755 ${_name} "${pkgdir}/usr/bin/${_name}"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${_name}/README.md"
+  install -Dm644 "etc/linux-systemd/system/${_name}@.service" "${pkgdir}/usr/lib/systemd/system/${_name}@.service"
+  install -Dm644 "etc/linux-systemd/user/${_name}.service" "${pkgdir}/usr/lib/systemd/user/${_name}.service"
 
-	cd "${srcdir}/src/github.com/syncthing/syncthing"
-	install -Dm755 bin/syncthing "${pkgdir}/usr/bin/syncthing"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 README.md "${pkgdir}/usr/share/doc/syncthing/README.md"
+# license
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${_name}/LICENSE
+
+# man pages
+  cd "${srcdir}/src/github.com/syncthing/${_name}/man"
+  for file in $(find . -name '*.1' -print); do
+    install -Dm644 $file "${pkgdir}"/usr/share/man/man1/$file
+  done
+  for file in $(find . -name '*.5' -print); do
+    install -Dm644 $file "${pkgdir}"/usr/share/man/man5/$file
+  done
+  for file in $(find . -name '*.7' -print); do
+    install -Dm644 $file "${pkgdir}"/usr/share/man/man7/$file
+  done
 }
