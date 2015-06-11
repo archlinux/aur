@@ -1,6 +1,6 @@
 pkgbase = kdevplatform-git
 	pkgdesc = A C/C++ development platform for KDE. (GIT Version)
-	pkgver = 1.90.90.r12542.28d895e
+	pkgver = 1.90.90.r12568.71e3d0a
 	pkgrel = 1
 	url = http://www.kdevelop.org/
 	install = kdevplatform-git.install
@@ -22,7 +22,7 @@ pkgbase = kdevplatform-git
 	depends = knewstuff
 	depends = knotifyconfig
 	depends = grantlee-qt5
-	depends = libkomparediff2
+	depends = libkomparediff2-git
 	depends = hicolor-icon-theme
 	optdepends = kompare-git: difference checking
 	optdepends = subversion: Subversion plugin
