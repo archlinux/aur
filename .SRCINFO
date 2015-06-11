@@ -1,0 +1,14 @@
+pkgbase = gkrellm-xkb
+	pkgdesc = A gkrellm2 plugin which displays a small flag based on active keyboard layout.
+	pkgver = 1.05
+	pkgrel = 2
+	url = http://sweb.cz/tripie/gkrellm/xkb
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gkrellm
+	source = http://sweb.cz/tripie/gkrellm/xkb/dist/gkrellm-xkb-1.05.tar.gz
+	md5sums = 4342cee10c839179f6126658a7b29321
+
+pkgname = gkrellm-xkb
+
