@@ -1,0 +1,16 @@
+pkgbase = python-pyclewn
+	pkgdesc = A Vim front-end to the gdb and pdb debuggers
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/pyclewn
+	install = vimdoc.install
+	arch = any
+	license = GPL2
+	depends = python
+	depends = gvim>=7.3
+	depends = gdb
+	source = https://pypi.python.org/packages/source/p/pyclewn/pyclewn-2.1.tar.gz
+	md5sums = e0ca9d863c443e8faec768e2978180db
+
+pkgname = python-pyclewn
+
