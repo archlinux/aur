@@ -1,6 +1,6 @@
 pkgbase = u8glib-git
 	pkgdesc = Universal Graphics Library for 8 Bit Embedded Systems
-	pkgver = 2efa3aa
+	pkgver = 910f4eb
 	pkgrel = 1
 	url = http://code.google.com/p/u8glib/
 	arch = i686
@@ -11,25 +11,7 @@ pkgbase = u8glib-git
 	makedepends = wiringpi-git
 	depends = wiringpi-git
 	source = u8glib-git::git+https://github.com/yhfudev/u8glib.git
-	source = autoclean.sh
-	source = autogen.sh
-	source = configure.ac
-	source = Makefile.am
-	source = Printable.h
-	source = Print.h
-	source = WString.h
-	source = wpimain.cpp
-	source = u8glib-hg-automake.patch
 	md5sums = SKIP
-	md5sums = b69ad754ec4ee727f9176d67729957ed
-	md5sums = a365f85909306565a791091cd3f72581
-	md5sums = 971e68a376117a4dfa54c497378217ff
-	md5sums = fd028df31fd1240f522927bda525af89
-	md5sums = 0fe78d8a3c557d144ba1b644f07f4697
-	md5sums = 27ed87162d28c5a16128df5ff232f8a9
-	md5sums = a27c0b55ca396d7b53d77dcfb0f5460e
-	md5sums = 238d6c7f801a600ee6ce05cc7a54e7d8
-	md5sums = 32b2bb35158432c229f33bb44f542ca9
 
 pkgname = u8glib-git
 
