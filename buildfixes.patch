@@ -1,0 +1,172 @@
+diff -up src/wmcalendar-0.5.2/Src/calendar.c.orig src/wmcalendar-0.5.2/Src/calendar.c
+--- src/wmcalendar-0.5.2/Src/calendar.c.orig	2014-05-17 01:16:40.000000000 -0600
++++ src/wmcalendar-0.5.2/Src/calendar.c	2014-05-17 01:35:49.000000000 -0600
+@@ -1,5 +1,6 @@
+ #include "calendar.h"
+ 
++const char* get_icsfile();
+ int  get_datetype(int day){return datetype[day][0];}
+ 
+ /*------------------------------------------------------
+@@ -48,7 +49,7 @@ void move2(GtkWidget *widget, GdkEventMo
+ 
+ 
+ 
+-void kill (GtkWidget * widget)
++void killit (GtkWidget * widget)
+ {
+     gtk_widget_destroy ((GtkWidget*)gtk_widget_get_toplevel(widget));
+     gtk_main_quit ();
+@@ -193,7 +194,7 @@ void showDay(struct icaltimetype dt){
+ 	gtk_signal_connect(GTK_OBJECT (event_box), "button_press_event",
+ 			   GTK_SIGNAL_FUNC (move), NULL);
+ 	gtk_signal_connect(GTK_OBJECT (event_box2), "button_press_event",
+-			   (GtkSignalFunc) kill, GTK_OBJECT(dayView));
++			   (GtkSignalFunc) killit, GTK_OBJECT(dayView));
+ 
+ 	gtk_widget_realize(dayView);
+ 	//	gtk_window_set_position(GTK_WINDOW (dayView),GTK_WIN_POS_CENTER_ON_PARENT);
+@@ -313,9 +314,9 @@ int dayevents(struct icaltimetype dt, Gt
+  -----------------------------------------------------*/
+ void deleteCalObjs(){
+     int i;
+-    struct calObj* help;
++    struct calobj* help;
+     while(calRoot){
+-	help = (struct calObj*) calRoot->next;
++	help = calRoot->next;
+ 	free(calRoot->text);
+ 	free(calRoot->comp);
+ 	free(calRoot);
+diff -up src/wmcalendar-0.5.2/Src/calendarfunc.c.orig src/wmcalendar-0.5.2/Src/calendarfunc.c
+--- src/wmcalendar-0.5.2/Src/calendarfunc.c.orig	2014-05-17 01:24:31.000000000 -0600
++++ src/wmcalendar-0.5.2/Src/calendarfunc.c	2014-05-17 01:24:43.000000000 -0600
+@@ -22,6 +22,7 @@
+ 
+ #include "calendarfunc.h"
+ #include <stdio.h>
++#include <math.h>
+ 
+ 
+ 
+diff -up src/wmcalendar-0.5.2/Src/calendarfunc.h.orig src/wmcalendar-0.5.2/Src/calendarfunc.h
+--- src/wmcalendar-0.5.2/Src/calendarfunc.h.orig	2014-05-17 01:22:29.000000000 -0600
++++ src/wmcalendar-0.5.2/Src/calendarfunc.h	2014-05-17 01:22:43.000000000 -0600
+@@ -22,7 +22,7 @@
+ 
+ #include <unistd.h>
+ #include <stdlib.h>
+-#include <ical.h>
++#include <libical/ical.h>
+ #define TIMZ 3.0
+ #define MINAGE 13.5
+ #define SUNSET 19.5 /*approximate */
+diff -up src/wmcalendar-0.5.2/Src/calendar.h.orig src/wmcalendar-0.5.2/Src/calendar.h
+--- src/wmcalendar-0.5.2/Src/calendar.h.orig	2014-05-17 01:22:36.000000000 -0600
++++ src/wmcalendar-0.5.2/Src/calendar.h	2014-05-17 01:22:43.000000000 -0600
+@@ -1,4 +1,4 @@
+-#include <ical.h>
++#include <libical/ical.h>
+ #include <stdlib.h>
+ #include <gtk/gtk.h>
+ #include <string.h>
+diff -up src/wmcalendar-0.5.2/Src/dockapp.c.orig src/wmcalendar-0.5.2/Src/dockapp.c
+--- src/wmcalendar-0.5.2/Src/dockapp.c.orig	2014-05-17 01:23:24.000000000 -0600
++++ src/wmcalendar-0.5.2/Src/dockapp.c	2014-05-17 01:30:49.000000000 -0600
+@@ -23,6 +23,7 @@
+  * modified by Seiichi SATO <ssato@sh.rim.or.jp>
+  */
+ 
++#include <unistd.h>
+ #include "dockapp.h"
+ 
+ #define WINDOWED_SIZE_W 64
+diff -up src/wmcalendar-0.5.2/Src/dockapp.h.orig src/wmcalendar-0.5.2/Src/dockapp.h
+--- src/wmcalendar-0.5.2/Src/dockapp.h.orig	2014-05-17 01:36:30.000000000 -0600
++++ src/wmcalendar-0.5.2/Src/dockapp.h	2014-05-17 01:37:43.000000000 -0600
+@@ -23,55 +23,17 @@
+  * modified by Seiichi SATO <ssato@sh.rim.or.jp>
+  */
+ 
+-#ifdef HAVE_CONFIG_H
+-#include "config.h"
+-#endif
+-
+ #include <X11/Xlib.h>
+ #include <X11/xpm.h>
+ #include <X11/extensions/shape.h>
+-
+ #include <stdio.h>
+-
+-#if STDC_HEADERS
+-# include <stdlib.h>
+-# include <stddef.h>
+-#else
+-# if HAVE_STDLIB_H
+-#  include <stdlib.h>
+-# endif
+-#endif
+-
+-#if HAVE_STRING_H
+-# if !STDC_HEADERS && HAVE_MEMORY_H
+-#  include <memory.h>
+-# endif
+-# include <string.h>
+-#endif
+-#if HAVE_STRINGS_H
+-# include <strings.h>
+-#endif
+-
+-#if HAVE_SELECT
+-# include <sys/select.h>
+-#endif
+-
+-#if TIME_WITH_SYS_TIME
+-# include <sys/time.h>
+-# include <time.h>
+-#else
+-# if HAVE_SYS_TIME_H
+-#  include <sys/time.h>
+-# else
+-#  include <time.h>
+-# endif
+-#endif
+-
+-#if HAVE_UNISTD_H
+-# include <unistd.h>
+-#else
+-/* We are in trouble. */
+-#endif
++#include <stdlib.h>
++#include <stddef.h>
++#include <string.h>
++#include <sys/select.h>
++#include <sys/time.h>
++#include <time.h>
++#include <unistd.h>
+ 
+ extern Display *display;
+ extern Bool dockapp_iswindowed;
+diff -up src/wmcalendar-0.5.2/Src/Makefile.orig src/wmcalendar-0.5.2/Src/Makefile
+--- src/wmcalendar-0.5.2/Src/Makefile.orig	2014-05-17 01:17:11.000000000 -0600
++++ src/wmcalendar-0.5.2/Src/Makefile	2014-05-17 01:20:23.000000000 -0600
+@@ -1,6 +1,6 @@
+ CC     = gcc
+-INCLUDES  = `pkg-config --cflags gtk+-2.0` -I. 
+-LFLAGS = `pkg-config --libs gtk+-2.0`
++INCLUDES  = `pkg-config x11 xext gtk+-2.0 --cflags` -I. 
++LFLAGS = -lm `pkg-config x11 xext gtk+-2.0 --libs`
+ 
+ # for BSD
+ #INCLUDES = `gtk12-config --cflags` -I. 
+diff -up src/wmcalendar-0.5.2/Src/wmCalendar.c.orig src/wmcalendar-0.5.2/Src/wmCalendar.c
+--- src/wmcalendar-0.5.2/Src/wmCalendar.c.orig	2014-05-17 01:28:48.000000000 -0600
++++ src/wmcalendar-0.5.2/Src/wmCalendar.c	2014-05-17 01:29:06.000000000 -0600
+@@ -7,6 +7,7 @@
+  *  		a calendar dockapp
+  -----------------------------------------------------*/
+ 
++#include <unistd.h>
+ #include "wmCalendar.h"
+               
+ /*------------------------------------------------------

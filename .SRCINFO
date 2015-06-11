@@ -1,0 +1,18 @@
+pkgbase = wmcalendar
+	pkgdesc = A calendar dock app
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = http://sourceforge.net/projects/wmcalendar/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libical
+	depends = libxpm
+	depends = gtk2
+	source = http://downloads.sourceforge.net/wmcalendar/wmcalendar-0.5.2.tar.gz
+	source = buildfixes.patch
+	md5sums = 4151430410d608bd68368f3c15de567b
+	md5sums = c3830611a7135813c4171e9e5a1b9a01
+
+pkgname = wmcalendar
+
