@@ -1,0 +1,48 @@
+shopt -s extglob dotglob
+
+_warning() {
+    /bin/cat << EOF
+    ===> 
+    ===> In order to run Desura, you have to be in the 'users' group.
+    ===> (which you most likely are unless you are running as root)
+    ===> 
+    ===> The patcher has a bug where it continously updates. If this
+    ===> happens to you then just hit cancel while it is DOWNLOADING
+    ===> and the login screen should be minimized. Find it then login.
+EOF
+}
+
+post_install() {
+  _warning
+  post_upgrade
+}
+
+pre_upgrade() {
+  pre_remove
+}
+
+post_upgrade() {
+  echo "Updating icon and desktop caches..."
+  xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+  update-desktop-database -qv
+  echo "done."
+}
+
+pre_remove() {
+  # Delete .desktop files
+  xdg-desktop-menu uninstall --mode user opt/desura/desura.desktop opt/desura/desura-force.desktop
+
+  # Delete old files
+  rm -rf opt/desura/.settings/!(cache|games|iteminfo_c.sqlite)
+  rm -rf opt/desura/!(common|.settings)
+}
+
+post_remove() {
+  post_upgrade
+    /bin/cat << EOF
+    ===> 
+    ===> Desura's downloads cache and installed games are kept in /opt/desura folder.
+    ===> In order to delete Desura completely, remove /opt/desura folder by hand.
+    ===> 
+EOF
+}
