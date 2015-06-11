@@ -1,0 +1,18 @@
+pkgbase = epanet2.toolkit-git
+	pkgdesc = The EPANET Toolkit allows researchers to use the simulation engine within other applications, such as optimisation algorithms.
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://www.epa.gov/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = epanet2-git
+	provides = epanet2.toolkit
+	conflicts = epanet2.toolkit
+	options = staticlibs
+	source = git+https://bitbucket.org/lothar_m/epanet2.toolkit/epanet2.toolkit.git
+	md5sums = SKIP
+
+pkgname = epanet2.toolkit-git
+
