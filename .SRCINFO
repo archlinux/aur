@@ -1,0 +1,23 @@
+pkgbase = nvidia-340xx-lts-ck
+	pkgdesc = NVIDIA drivers for linux-lts-ck
+	pkgver = 340.76
+	pkgrel = 9
+	url = http://www.nvidia.com/
+	install = nvidia-340xx-lts-ck.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = linux-lts-ck-headers>=3.14.25
+	depends = linux-lts-ck>=3.14.25
+	depends = nvidia-340xx-utils=340.76
+	depends = nvidia-340xx-libgl
+	provides = nvidia-340xx
+	conflicts = nvidia-lts-ck
+	options = !strip
+	source_i686 = ftp://download.nvidia.com/XFree86/Linux-x86/340.76/NVIDIA-Linux-x86-340.76.run
+	md5sums_i686 = 8064c0a0998c3e7ee3c98ac1832b8194
+	source_x86_64 = ftp://download.nvidia.com/XFree86/Linux-x86_64/340.76/NVIDIA-Linux-x86_64-340.76-no-compat32.run
+	md5sums_x86_64 = 440df290e213280d6e20d4d4be6f8b4c
+
+pkgname = nvidia-340xx-lts-ck
+
