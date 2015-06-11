@@ -1,0 +1,21 @@
+pkgbase = python2-pushybullet-git
+	pkgdesc = Python 2 bindings for Pushbullet API v2 with freedom of usage in mind
+	pkgver = 1.5.4.r154.3f34a2b
+	pkgrel = 2
+	url = https://github.com/kstep/pushybullet
+	arch = any
+	license = custom
+	makedepends = git
+	depends = python2
+	depends = python2-setuptools
+	depends = python2-simplejson
+	optdepends = python2-websocket-client: read pushes stream in real-time
+	optdepends = python2-dateutil: parse datetime in string format
+	optdepends = python2-magic: file type autodetection
+	provides = python2-pushybullet
+	conflicts = python2-pushybullet
+	source = git+https://github.com/kstep/pushybullet.git
+	sha256sums = SKIP
+
+pkgname = python2-pushybullet-git
+
