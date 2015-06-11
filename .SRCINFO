@@ -1,0 +1,16 @@
+pkgbase = gcsms-git
+	pkgdesc = Send SMS for free through shell using Google Calendar API
+	pkgver = 33.08e1bb3
+	pkgrel = 1
+	url = https://github.com/oxplot/gcsms
+	arch = any
+	license = GPLv3
+	makedepends = git
+	depends = python
+	provides = gcsms
+	conflicts = gcsms
+	source = git+https://github.com/oxplot/gcsms.git
+	md5sums = SKIP
+
+pkgname = gcsms-git
+
