@@ -1,0 +1,18 @@
+pkgbase = oh-my-zsh-powerline-theme-git
+	pkgdesc = oh-my-zsh Powerline style theme
+	pkgver = r61.8df8e04
+	pkgrel = 2
+	url = https://github.com/jeremyFreeAgent/oh-my-zsh-powerline-theme
+	install = oh-my-zsh-powerline-theme.install
+	arch = any
+	license = custom
+	makedepends = git
+	depends = zsh
+	depends = oh-my-zsh-git
+	provides = oh-my-zsh-powerline-theme
+	conflicts = oh-my-zsh-powerline-theme
+	source = git+https://github.com/jeremyFreeAgent/oh-my-zsh-powerline-theme.git
+	sha256sums = SKIP
+
+pkgname = oh-my-zsh-powerline-theme-git
+
