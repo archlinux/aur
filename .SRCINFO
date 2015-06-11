@@ -1,0 +1,14 @@
+pkgbase = gkrellm-mailwatch
+	pkgdesc = Gkrellm plugin to setup extra counters for your mailboxes
+	pkgver = 2.4.3
+	pkgrel = 2
+	url = http://gkrellm.luon.net/mailwatch.phtml
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gkrellm
+	source = http://gkrellm.luon.net/files/gkrellm-mailwatch-2.4.3.tar.gz
+	md5sums = f3f5edbf7f573067d9ef0486965e2fa1
+
+pkgname = gkrellm-mailwatch
+
