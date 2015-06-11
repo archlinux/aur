@@ -1,0 +1,27 @@
+diff -urN SVNPlot-0.8.1.orig/svngraphs.py SVNPlot-0.8.1/svngraphs.py
+--- SVNPlot-0.8.1.orig/svngraphs.py	2014-05-13 22:07:10.000000000 +0200
++++ SVNPlot-0.8.1/svngraphs.py	2014-10-02 21:56:04.689700950 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python2
+ '''
+ svngraphs.py
+ Copyright (C) 2009 Nitin Bhide (nitinbhide@gmail.com)
+diff -urN SVNPlot-0.8.1.orig/svnlog2sqlite.py SVNPlot-0.8.1/svnlog2sqlite.py
+--- SVNPlot-0.8.1.orig/svnlog2sqlite.py	2014-04-30 16:46:04.000000000 +0200
++++ SVNPlot-0.8.1/svnlog2sqlite.py	2014-10-02 21:56:14.586342309 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python2
+ '''
+ svnlog2sqlite.py
+ Copyright (C) 2009 Nitin Bhide (nitinbhide@gmail.com)
+diff -urN SVNPlot-0.8.1.orig/svnplotjs.py SVNPlot-0.8.1/svnplotjs.py
+--- SVNPlot-0.8.1.orig/svnplotjs.py	2014-04-30 16:46:06.000000000 +0200
++++ SVNPlot-0.8.1/svnplotjs.py	2014-10-02 21:56:36.276285637 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python2
+ '''
+ svnplot-js.py
+ Copyright (C) 2009 Nitin Bhide (nitinbhide@gmail.com)
