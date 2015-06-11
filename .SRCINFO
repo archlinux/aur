@@ -1,0 +1,19 @@
+pkgbase = essentia
+	pkgdesc = Open-source C++ library for audio analysis and audio-based music information retrieval
+	pkgver = 2.0.1
+	pkgrel = 2
+	url = http://essentia.upf.edu/
+	arch = x86_64
+	license = GPL
+	depends = python2
+	depends = python2-numpy
+	depends = libyaml
+	depends = python2-yaml
+	depends = fftw
+	depends = ffmpeg
+	depends = taglib
+	depends = libsamplerate
+	source = https://github.com/MTG/essentia/archive/2.0.1.zip
+	md5sums = 026b2f1b1c120f6cf5b1998e4262521b
+
+pkgname = essentia
