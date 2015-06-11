@@ -1,0 +1,25 @@
+pkgbase = opera-116
+	pkgdesc = The fastest browser on earth. Last 11-series version, if you find opera 12 unstable or bloated.
+	pkgver = 11.62_1347
+	pkgrel = 2
+	url = http://www.opera.com/browser/
+	install = opera-116.install
+	arch = i686
+	arch = x86_64
+	license = custom:opera
+	depends = gcc-libs
+	depends = libxt
+	depends = freetype2
+	depends = libxext
+	optdepends = gstreamer0.10-base-plugins: HTML5 Video support
+	optdepends = gstreamer0.10-good: HTML5 Video support
+	provides = opera
+	options = !strip
+	options = !zipman
+	source = http://arc.opera.com/snapshot/linux-freebsd/opera-11.62-1347.i386.linux.tar.xz
+	source = http://people.opera.com/ruario/opera-next-icons_20111107.tar.xz
+	sha256sums = 0d5a8f88453637c5248628cf343e57ef4f130971c7fc65a2b4dcbef2c5ec057d
+	sha256sums = 4040aad19e11c6e32d3603467858bf58dd389b24a4314e7cbb8b86c9c7b689fd
+
+pkgname = opera-116
+
