@@ -1,0 +1,18 @@
+pkgbase = topmenu-qt-git
+	pkgdesc = Qt4 module for Topmenu.
+	pkgver = 2015.02.14
+	pkgrel = 1
+	url = https://gitorious.org/topmenu
+	arch = i686
+	arch = x86_64
+	groups = mate-extra
+	license = GPL
+	makedepends = qt4-private-headers-dev
+	depends = qt4
+	depends = topmenu-gtk-git
+	options = !libtool
+	source = git+http://gitorious.org/topmenu/topmenu-qt.git
+	sha1sums = SKIP
+
+pkgname = topmenu-qt-git
+
