@@ -4,8 +4,8 @@
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 
 pkgname=windowmaker-git
-pkgver=0.95.6.r0.g3bd9e83
-pkgrel=2
+pkgver=0.95.6.r304.gb295a20
+pkgrel=1
 pkgdesc="An X11 window manager with a NEXTSTEP look and feel"
 arch=('i686' 'x86_64')
 url="http://www.windowmaker.org/"
@@ -13,13 +13,11 @@ license=('GPL' 'custom')
 provides=('windowmaker')
 conflicts=('windowmaker')
 makedepends=('git')
-depends=('imagemagick' 'libxinerama' 'libxrandr' 'libxmu' 'libbsd' 'libxpm' 'libxft' 'libtiff' 'giflib' 'libexif')
+depends=('imagemagick' 'libxinerama' 'libxrandr' 'libxmu' 'libbsd' 'libxpm' 'libxft' 'libwebp' 'libexif')
 source=("$pkgname::git://repo.or.cz/wmaker-crm.git"
-	wmaker.desktop
-	giflib-5.1.0.patch)
+	wmaker.desktop)
 md5sums=('SKIP'
-         '2fba97bebfd691836b92b8f0db79ff13'
-         '59ec642cd64a1b5222ba672a19afe489')
+         '2fba97bebfd691836b92b8f0db79ff13')
 
 pkgver() {
   cd $pkgname
@@ -28,7 +26,6 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  patch -Np2 -b -z .orig -i ../giflib-5.1.0.patch
   
   autoreconf -fi
   
@@ -46,8 +43,8 @@ build() {
   cd $pkgname
   [ -z "$LINGUAS" ] && export LINGUAS="`ls po/*.po | sed 's:po/\(.*\)\.po$:\1:'|tr '\n' ' '`"
   ./configure --prefix=/usr --sysconfdir=/etc --enable-xinerama \
-    --with-nlsdir=/usr/share/locale --with-gnustepdir=/usr/lib/GNUstep \
-    --enable-usermenu --enable-modelock --enable-xrandr
+    --localedir=/usr/share/locale --with-gnustepdir=/usr/lib/GNUstep \
+    --enable-usermenu --enable-modelock
   make V=0
 }
 
