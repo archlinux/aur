@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Light Table
+Comment=Light Table IDE
+Type=Application
+Icon=lighttable
+Exec=lighttable
+Categories=Utility;TextEditor;Development
+Terminal=false
+MimeType=text/plain;

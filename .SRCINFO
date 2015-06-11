@@ -1,0 +1,30 @@
+pkgbase = lighttable
+	pkgdesc = New interactive IDE that lets you modify running programs and embed anything from websites to games.
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = http://www.lighttable.com/
+	install = lighttable.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = nss
+	depends = alsa-lib
+	depends = desktop-file-utils
+	depends = gconf
+	depends = libudev.so.0
+	depends = gtk2
+	options = !strip
+	options = !emptydirs
+	source = lighttable
+	source = lighttable-0.7.2-.tar.gz::http://d35ac8ww5dfjyg.cloudfront.net/playground/bins/0.7.2/LightTableLinux64.tar.gz
+	source = lighttable.desktop
+	source = lighttable.png
+	source = LICENSE
+	md5sums = e772b3547fdc3a6e32f81e7303422fd1
+	md5sums = e49c9c57d1dec787a58094cc7e6d3f63
+	md5sums = 04a62702b59810a36bca7623bf9e932c
+	md5sums = f8c055be2f047ff4aaffdd028f62f027
+	md5sums = 8870b5e12f58e6a19a53f4fa938755e8
+
+pkgname = lighttable
+
