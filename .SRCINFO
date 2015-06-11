@@ -1,0 +1,18 @@
+pkgbase = tokyocabinet
+	pkgdesc = a modern implementation of DBM
+	pkgver = 1.4.48
+	pkgrel = 1
+	url = http://fallabs.com/tokyocabinet/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = gcc>=3.1
+	makedepends = make
+	makedepends = pkgconfig
+	depends = zlib
+	depends = bzip2
+	source = http://fallabs.com/tokyocabinet/tokyocabinet-1.4.48.tar.gz
+	md5sums = fd03df6965f8f56dd5b8518ca43b4f5e
+
+pkgname = tokyocabinet
+
