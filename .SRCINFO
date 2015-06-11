@@ -1,0 +1,33 @@
+pkgbase = non-daw-git
+	pkgdesc = A modular Digital Audio Workstation system - Git version.
+	pkgver = 0.r1795.60059f4
+	pkgrel = 1
+	url = http://non.tuxfamily.org
+	install = non.install
+	arch = i686
+	arch = x86_64
+	groups = multimedia
+	license = GPL
+	makedepends = git
+	makedepends = python
+	makedepends = libxpm
+	depends = jack
+	depends = liblo
+	depends = libsigc++
+	depends = liblrdf
+	depends = hicolor-icon-theme
+	depends = ntk
+	provides = non-timeline
+	provides = non-mixer
+	provides = non-session-manager
+	provides = non-sequencer
+	conflicts = non-daw
+	conflicts = non-timeline
+	conflicts = non-mixer
+	conflicts = non-session-manager
+	conflicts = non-sequencer
+	source = git://git.tuxfamily.org/gitroot/non/non.git
+	md5sums = SKIP
+
+pkgname = non-daw-git
+
