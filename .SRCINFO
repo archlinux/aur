@@ -1,5 +1,5 @@
 pkgbase = linux-libre-grsec
-	pkgver = 4.0.4_gnu.201505272113
+	pkgver = 4.0.5_gnu.201506082251
 	pkgrel = 1
 	url = https://grsecurity.net/
 	arch = i686
@@ -14,10 +14,10 @@ pkgbase = linux-libre-grsec
 	options = !strip
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0-gnu/linux-libre-4.0-gnu.tar.xz
 	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0-gnu/linux-libre-4.0-gnu.tar.xz.sign
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0.4-gnu/patch-4.0-gnu-4.0.4-gnu.xz
-	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0.4-gnu/patch-4.0-gnu-4.0.4-gnu.xz.sign
-	source = https://repo.parabola.nu/other/grsecurity-libre/test/grsecurity-libre-3.1-4.0.4-201505272113.patch
-	source = https://repo.parabola.nu/other/grsecurity-libre/test/grsecurity-libre-3.1-4.0.4-201505272113.patch.sig
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0.5-gnu/patch-4.0-gnu-4.0.5-gnu.xz
+	source = http://linux-libre.fsfla.org/pub/linux-libre/releases/4.0.5-gnu/patch-4.0-gnu-4.0.5-gnu.xz.sign
+	source = https://repo.parabola.nu/other/grsecurity-libre/test/grsecurity-libre-3.1-4.0.5-201506082251.patch
+	source = https://repo.parabola.nu/other/grsecurity-libre/test/grsecurity-libre-3.1-4.0.5-201506082251.patch.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig
 	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm
@@ -33,9 +33,9 @@ pkgbase = linux-libre-grsec
 	source = https://repo.parabola.nu/other/linux-libre/patches/4.0.2-ae91f13af5-loongson-community_grsecurity.patch.sig
 	sha256sums = 0e2dd5be12c1f82ab3d03b89cbe3f1a20e14332ec42c102efb226a6283fdd38a
 	sha256sums = SKIP
-	sha256sums = e447de9a53c5aefd25f0474f3304ab87076b88353badaae20dcbd85712e85e61
+	sha256sums = 5ac82d1955fee5abccda157ef2399b34d4fd1c2310a33d19c09ca5953b308172
 	sha256sums = SKIP
-	sha256sums = fde84ebae38758cd99d86177791d830f4e8bfae8b16eed46a357d5581783c213
+	sha256sums = 3ad65bfdc8a03bf1f50efba91534e22e3c98475b0f4695629b2fda0b4c7b4078
 	sha256sums = SKIP
 	sha256sums = bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494
 	sha256sums = SKIP
@@ -62,7 +62,7 @@ pkgname = linux-libre-grsec
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = gradm: to configure and enable Role Based Access Control (RBAC)
 	optdepends = paxd-libre: to enable PaX exploit mitigations and apply exceptions automatically
-	provides = linux-grsec=4.0.4.201505272113
+	provides = linux-grsec=4.0.5.201506082251
 	conflicts = linux-grsec
 	conflicts = kernel26-grsec
 	conflicts = kernel26-libre-grsec
@@ -73,7 +73,7 @@ pkgname = linux-libre-grsec
 
 pkgname = linux-libre-grsec-headers
 	pkgdesc = Header files and scripts for building modules for Linux-libre-grsec kernel
-	provides = linux-grsec-headers=4.0.4.201505272113
+	provides = linux-grsec-headers=4.0.5.201506082251
 	conflicts = linux-grsec-headers
 	conflicts = kernel26-grsec-headers
 	conflicts = kernel26-libre-grsec-headers
@@ -83,7 +83,7 @@ pkgname = linux-libre-grsec-headers
 
 pkgname = linux-libre-grsec-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-libre-grsec kernel
-	provides = linux-grsec-docs=4.0.4.201505272113
+	provides = linux-grsec-docs=4.0.5.201506082251
 	conflicts = linux-grsec-docs
 	conflicts = kernel26-grsec-docs
 	conflicts = kernel26-libre-grsec-docs
