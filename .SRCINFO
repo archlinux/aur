@@ -1,0 +1,16 @@
+pkgbase = wallet-recover-bin
+	pkgdesc = Search hard drives sector by sector for bitcoin private keys. Useful for finding lost bitcoin and recovering erased bitcoin wallets
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/Hartland/wallet-recover-0.3
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gcc-libs
+	source = https://github.com/Hartland/wallet-recover-0.3/raw/master/bin/32/wallet-recover
+	source = https://github.com/Hartland/wallet-recover-0.3/raw/master/LICENSE.txt
+	md5sums = 8b247358955a45206a5862e962094d37
+	md5sums = 8cf03855d2affaeb70b7e412601626d2
+
+pkgname = wallet-recover-bin
+
