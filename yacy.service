@@ -1,0 +1,14 @@
+[Unit]
+Description=YaCy P2P Web Search
+After=network.target
+
+[Service]
+PIDFile=/opt/yacy/.yacy/yacy.pid
+ExecStart=/opt/yacy/yacy start
+ExecReload=/opt/yacy/yacy restart
+ExecStop=/opt/yacy/yacy stop
+User=yacy
+TimeoutStopSec=50
+
+[Install]
+WantedBy=multi-user.target
