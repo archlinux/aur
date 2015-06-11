@@ -1,0 +1,11 @@
+--- CMakeLists.txt	2015-06-04 15:08:42.414256487 +0200
++++ CMakeLists.txt.patch	2015-06-04 15:08:14.510491630 +0200
+@@ -98,7 +98,7 @@
+ set(LIB_SUFFIX "" CACHE STRING "The directories where to install libraries to")
+ set(LIB_INSTALL_DIR lib${LIB_SUFFIX} )
+ set(LIB_DIR_PKGCONF "${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}")
+-set(INCLUDE_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/include/mygpo-qt" CACHE PATH "The directory the headers are installed in")
++set(INCLUDE_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/include/mygpo-qt${MYGPO_QT_VERSION_SUFFIX}" CACHE PATH "The directory the headers are installed in")
+ set(CMAKECONFIG_INSTALL_DIR ${LIB_INSTALL_DIR}/cmake/mygpo-qt )
+ 
+ if( APPLE )

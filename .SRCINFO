@@ -1,0 +1,20 @@
+pkgbase = libmygpo-qt5-git
+	pkgdesc = A C++/Qt client library for gpodder.net. Git and Qt5 version.
+	pkgver = 1.0.8.2.g7946293
+	pkgrel = 1
+	url = http://wiki.gpodder.org/wiki/Libmygpo-qt
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = cmake
+	makedepends = doxygen
+	depends = qt5-base
+	provides = libmygpo-qt5
+	conflicts = libmygpo-qt5
+	source = git+https://github.com/gpodder/libmygpo-qt.git
+	source = include_suffix.patch
+	sha256sums = SKIP
+	sha256sums = 7994f3c29086268b8138e7ac0c0d1a99acfa55e07a7695507f314903b890f79d
+
+pkgname = libmygpo-qt5-git
+
