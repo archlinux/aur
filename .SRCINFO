@@ -1,0 +1,15 @@
+pkgbase = gkrellmwireless
+	pkgdesc = Gkrellm plugin that monitors the signal quality of your wireless networking card
+	pkgver = 2.0.3
+	pkgrel = 2
+	url = http://gkrellm.luon.net/gkrellmwireless.phtml
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gkrellm
+	depends = gtk2
+	source = http://gkrellm.luon.net/files/gkrellmwireless-2.0.3.tar.gz
+	md5sums = 42ee66a43eb3da5af9f13d3d10d354f6
+
+pkgname = gkrellmwireless
+
