@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=HoDoKu
+Comment=A sudoku helper written in Java
+Exec=hodoku
+Icon=hodoku
+Terminal=false
+Categories=Game;LogicGame;Java

@@ -1,0 +1,20 @@
+pkgbase = hodoku-build
+	pkgdesc = A sudoku helper written in Java
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = http://hodoku.sourceforge.net
+	arch = any
+	license = GPL3
+	makedepends = apache-ant
+	makedepends = java-environment
+	depends = java-runtime
+	conflicts = hodoku
+	source = http://downloads.sourceforge.net/project/hodoku/hodoku/hodoku_2.2.0/hodoku-2-2-0-src.zip
+	source = hodoku.sh
+	source = hodoku.desktop
+	md5sums = 175efa11ef9eedc2995b4446d7008502
+	md5sums = 883f82c99d42ad5113e84c6a501a66b5
+	md5sums = 557ca158902fddf06cbda7c7c9480c08
+
+pkgname = hodoku-build
+
