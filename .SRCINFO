@@ -1,0 +1,20 @@
+pkgbase = python2-theanets-git
+	pkgdesc = A library of neural networks in Theano for Python 2
+	pkgver = 0.6.0pre.r1240.77b2e11
+	pkgrel = 2
+	url = https://github.com/lmjohns3/theano-nets
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-theano
+	depends = python2-climate
+	depends = python2-skdata
+	provides = python2-theanets
+	conflicts = python2-theanets
+	source = git+https://github.com/lmjohns3/theano-nets.git
+	sha256sums = SKIP
+
+pkgname = python2-theanets-git
+
