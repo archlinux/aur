@@ -1,0 +1,36 @@
+pkgbase = python2-blueman
+	pkgdesc = A GTK+ Bluetooth Manager (BlueZ 5)
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/blueman-project/blueman
+	install = python2-blueman.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = cython2
+	makedepends = intltool
+	makedepends = libtool
+	depends = bluez
+	depends = dbus-glib
+	depends = gconf
+	depends = gtk3
+	depends = notification-daemon
+	depends = libnotify
+	depends = polkit
+	depends = python2-cairo
+	depends = python2-dbus
+	depends = python2-gobject
+	depends = python2-pybluez
+	depends = startup-notification
+	optdepends = dnsmasq: DHCP server for Network Access Point
+	optdepends = pulseaudio: for some audio support
+	conflicts = blueman-git
+	conflicts = blueman-bzr
+	conflicts = blueman
+	source = blueman-2.0.zip::https://github.com/blueman-project/blueman/archive/2.0.zip
+	sha256sums = 8050900603104fb2d10a125d8466df0d9b7eb107b588738a37672f30f90ba99b
+
+pkgname = python2-blueman
+
