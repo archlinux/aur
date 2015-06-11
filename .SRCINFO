@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-gmail-notify
+	pkgdesc = Utilizes Gnome Online Accounts to login to gmail and check your incomig mails.
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = http://gn.makrodata.org/
+	install = gschemas.install
+	arch = any
+	license = GPL2
+	makedepends = gnome-common
+	makedepends = unzip
+	depends = gnome-shell>=3.10
+	source = gnome-shell-extension-gmail-notify.zip::http://gn.makrodata.org/index.php?option=com_weblinks&task=weblink.go&id=31&Itemid=103
+	sha512sums = 68accb81f13271b7969741828dfe27c120757b0422471bd7e840b81389e6f540602e7a7f251101792a3156d59d4c0d91a8d5a7eb615ae9bc645b4668b77805f8
+
+pkgname = gnome-shell-extension-gmail-notify
+
