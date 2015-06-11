@@ -1,0 +1,18 @@
+pkgbase = cldoc
+	pkgdesc = cldoc is a clang based documentation generator for C and C++. cldoc tries to solve the issue of writing C/C++ software documentation with a modern, non-intrusive and robust approach.
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://jessevdk.github.com/cldoc
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = ruby-sass
+	makedepends = nodejs
+	depends = python2
+	depends = python2-pyparsing
+	options = !emptydirs
+	source = cldoc-1.6::https://github.com/jessevdk/cldoc/archive/v1.6.tar.gz
+	md5sums = e338535fc0fafe68a8f0f2f2ca79e8fd
+
+pkgname = cldoc
+
