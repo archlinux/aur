@@ -1,0 +1,21 @@
+pkgbase = bluej
+	pkgdesc = An integrated Java environment specifically designed for introductory teaching
+	pkgver = 3.1.5
+	pkgrel = 1
+	url = http://www.bluej.org
+	arch = any
+	license = GPL2
+	license = BSD
+	makedepends = libarchive
+	depends = sh
+	depends = java-runtime
+	depends = java-environment
+	source = http://www.bluej.org/download/files/bluej-315.jar
+	source = bluej
+	source = bluej.desktop
+	md5sums = e734dc61473e6d8cab315c6497eb871b
+	md5sums = 94b9bc934a337ed44e2239dd362520f6
+	md5sums = 6cfbab36d21971e09bd0dc8a470c52e5
+
+pkgname = bluej
+

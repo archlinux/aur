@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Exec=/usr/bin/bluej
+Name=BlueJ
+GenericName=Java IDE
+Icon=/usr/share/java/bluej/images/bluej-icon-48.png
+Terminal=false
+Type=Application
+Categories=Java;Development
+
