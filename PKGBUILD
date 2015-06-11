@@ -4,7 +4,6 @@
 # Contributor: Adam Russell <adamlr6+arch@gmail.com>
 pkgname=openchange
 _codename=NANOPROBE
-_dlid=246
 pkgver=2.2
 pkgrel=4
 pkgdesc="A portable, open source implementation of Microsoft Exchange server \
@@ -17,19 +16,22 @@ depends=('samba>=4.2' 'libical' 'sqlite3' 'file' 'boost' 'python2' 'libmariadbcl
 makedepends=('ccache' 'python2' 'docbook-xsl' 'libxslt')
 options=(!makeflags)
 # Releases are mirrored at http://tracker.openchange.org/projects/openchange/files
-source=("http://tracker.openchange.org/attachments/download/${_dlid}/${pkgname}-${pkgver}-${_codename}.tar.gz"
+source=("https://github.com/openchange/openchange/archive/${pkgname}-${pkgver}-${_codename}.tar.gz"
         "openchange-samba42.patch")
 
-sha256sums=('f15eb26d16370e85f01649300dd6722c31f0750437a4b60acd604a79439cf688'
+sha256sums=('84e22ea408b46e2c7ba2894af3b8514cc45434c85f55198a321dc5ea194ac6d8'
             '8e4c2afede896e16a74be87323412bdcad8173d6943107a0aab38c6b77860887')
 
+# Used to be pkgname-pkgver-codename, but now we have two openchanges. WAT
+_srcsubdir="${pkgname}-${pkgname}-${pkgver}-${_codename}"
+
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}-${_codename}"
+    cd "${srcdir}/${_srcsubdir}"
 
     patch -p1 < "${srcdir}/openchange-samba42.patch"
 
-    PYTHON_CALLERS="$(find ${srcdir}/${pkgname}-${pkgver}-${_codename} -name '*.py')
-                    $(find ${srcdir}/${pkgname}-${pkgver}-${_codename} -name 'configure.ac')
+    PYTHON_CALLERS="$(find ${srcdir}/${_srcsubdir} -name '*.py')
+                    $(find ${srcdir}/${_srcsubdir} -name 'configure.ac')
                     setup/openchange_newuser setup/openchange_provision
                     mapiproxy/services/web/rpcproxy/rpcproxy.wsgi"
     sed -i -e "s|/usr/bin/env python$|/usr/bin/env python2|" \
@@ -56,7 +58,7 @@ build() {
 package() {
     _pyver=`python2 -c 'import sys; print(sys.version[:3])'`
 
-    cd "${srcdir}/${pkgname}-${pkgver}-${_codename}"
+    cd "${srcdir}/${_srcsubdir}"
     make DESTDIR="$pkgdir/" install
 
     # NOTE:  Not using `make installman' because that generates a bunch
