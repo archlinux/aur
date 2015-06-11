@@ -1,0 +1,21 @@
+diff -up src/wmmaiload-2.3.0/wmmaiload/Makefile.orig src/wmmaiload-2.3.0/wmmaiload/Makefile
+--- src/wmmaiload-2.3.0/wmmaiload/Makefile.orig	2014-04-10 11:39:11.000000000 -0600
++++ src/wmmaiload-2.3.0/wmmaiload/Makefile	2014-04-10 11:39:52.000000000 -0600
+@@ -69,7 +69,7 @@ OBJS             = $(SRCS:%.c=%.o)
+ DEFAULT_CPPFLAGS = $(CPPFLAGS) $(EXTRA_CPPFLAGS)
+ 
+ ALL_CFLAGS       = $(CFLAGS) $(DEBUG_CFLAGS) $(USER_CFLAGS)
+-ALL_CPPFLAGS     = $(DEFAULT_CPPFLAGS) $(DEBUG_CPPFLAGS) $(USER_CPPFLAGS)
++ALL_CPPFLAGS     = $(DEFAULT_CPPFLAGS) $(DEBUG_CPPFLAGS) $(USER_CPPFLAGS) -D_GNU_SOURCE
+ ALL_LIBS         = $(LDFLAGS) $(DEBUG_LDFLAGS) $(USER_LDFLAGS)
+ 
+ 
+@@ -110,7 +110,7 @@ config.h: Init.make config.h.in
+ dep: .dependencies
+ 
+ $(PROGRAM): $(OBJS)
+-	$(CC) -o $(TARGET) $(OBJS) $(ALL_LIBS)
++	$(CC) -o $(TARGET) $(OBJS) $(ALL_LIBS) -lcrypto
+ 
+ %.o: %.c
+ 	$(CC) -c $(ALL_CFLAGS)  $(ALL_CPPFLAGS) $<

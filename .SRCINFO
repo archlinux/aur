@@ -1,0 +1,17 @@
+pkgbase = wmmaiload
+	pkgdesc = A dockapp that monitors your incoming mails
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = http://tnemeth.free.fr/projets/dockapps.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	depends = libxpm
+	source = http://tnemeth.free.fr/projets/programmes/wmmaiload-2.3.0.tar.bz2
+	source = build2.3.0.patch
+	md5sums = ad45b973e905d3e2daa3575fe4097097
+	md5sums = 45e2e2105b312b0c5f4977fe3ba023df
+
+pkgname = wmmaiload
+
