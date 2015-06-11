@@ -1,0 +1,21 @@
+pkgbase = libpassphrase
+	pkgdesc = Personalisable library for TTY passphrase reading
+	pkgver = 1428445396
+	pkgrel = 1
+	url = https://github.com/GNU-Pony/libpassphrase
+	install = libpassphrase.install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = GPL3
+	makedepends = make
+	makedepends = coreutils
+	makedepends = gcc
+	makedepends = texinfo
+	makedepends = gzip
+	depends = glibc
+	source = https://github.com/GNU-Pony/libpassphrase/archive/1428445396.tar.gz
+	sha256sums = 6c721c89aeac150a990591193f73e6625a54fbd5e79d709c0adddc3b5ba4c5ca
+
+pkgname = libpassphrase
+
