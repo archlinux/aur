@@ -1,0 +1,20 @@
+pkgbase = ntk-git
+	pkgdesc = Fork of FLTK 1.3.0 with additional functionality.
+	pkgver = 0.r151.5719b00
+	pkgrel = 1
+	url = http://non.tuxfamily.org/
+	arch = i686
+	arch = x86_64
+	license = custom:LGPL
+	makedepends = git
+	makedepends = python2
+	depends = libxft
+	depends = cairo
+	depends = libjpeg
+	provides = ntk
+	conflicts = ntk
+	source = git://git.tuxfamily.org/gitroot/non/fltk.git
+	md5sums = SKIP
+
+pkgname = ntk-git
+
