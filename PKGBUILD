@@ -4,7 +4,7 @@ pkgname=wmmail
 _appname=WMMail
 _realname=${_appname}.app
 pkgver=0.64
-pkgrel=7
+pkgrel=8
 pkgdesc="A WindowMaker dock applet for email reporting."
 arch=('i686' 'x86_64')
 #url="http://dockapps.windowmaker.org/file.php/id/93"
@@ -12,23 +12,31 @@ url="http://web.archive.org/web/20121102092600/http://dockapps.windowmaker.org/f
 license=('GPL')
 options=('!emptydirs')
 depends=('windowmaker')
-source=("${_realname}-${pkgver}.tar.gz" "${pkgname}.patch" "system.${_appname}" "${_appname}.1")
+source=("http://www.gnu-darwin.org/distfiles/${_realname}-${pkgver}.tar.gz"
+	"${pkgname}.patch"
+	"system.${_appname}"
+	"${_appname}.1")
 md5sums=('fc596db9f2f6b52eec3a303178106c8e'
-         '88d2beab580f972610165fbc95767031'
+         '687c39c6f26ee60b1e04de44bc2765d7'
          '3e4e2e065c6e419a522949cb0afc22d0'
          'ccaf16328da78a003274f230c3640cdb')
+
+prepare() {
+  cd "${srcdir}/${_realname}-${pkgver}"
+  patch -Np2 -b -z .orig -i "${srcdir}/${pkgname}.patch"
+  cp /usr/share/automake-1.15/config.sub .
+  cp /usr/share/automake-1.15/config.guess .
+  autoreconf -fiv
+}
 
 build() {
   appspath=usr/lib/GNUstep/Apps
 
   cd "${srcdir}/${_realname}-${pkgver}"
-  patch -Np2 -b -z .orig -i "${srcdir}/${pkgname}.patch"
-  cp /usr/share/automake-1.14/config.sub .
-  cp /usr/share/automake-1.14/config.guess .
-  autoreconf -fiv
   ./configure --with-appspath=/${appspath} --x-includes=/usr/include/X11 --x-libraries=/usr/lib/X11
   make
 }
+
 package() {
   appspath=usr/lib/GNUstep/Apps
   dfltsdir=etc/GNUstep/Defaults
