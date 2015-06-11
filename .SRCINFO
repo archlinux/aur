@@ -1,0 +1,19 @@
+pkgbase = python2-oslo-i18n-kilo
+	pkgdesc = OpenStack Common Libraries - Internationalization and translation library
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/openstack/oslo.i18n
+	arch = any
+	license = GPL
+	makedepends = python2-setuptools
+	makedepends = python2-pbr>=0.8
+	provides = python2-oslo-i18n
+	source = https://pypi.python.org/packages/source/o/oslo.i18n/oslo.i18n-1.5.0.tar.gz
+	md5sums = 4ed6035729343bb4becdc5ffe6dc8e24
+
+pkgname = python2-oslo-i18n-kilo
+	depends = python2
+	depends = python2-babel>=1.3
+	depends = python2-six>=1.9.0
+	depends = python2-pbr>=0.8
+
