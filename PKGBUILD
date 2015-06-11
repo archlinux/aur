@@ -1,5 +1,5 @@
 pkgname=craftbukkit-plugin-terrain-control
-pkgver=2.7.1
+pkgver=2.7.2
 pkgrel=1
 pkgdesc="TerrainControl is an advanced world generator. Through various configuration files it gives the user control over almost every aspect of Minecraft terrain generation"
 arch=(any)

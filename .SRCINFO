@@ -1,13 +1,13 @@
 pkgbase = craftbukkit-plugin-terrain-control
 	pkgdesc = TerrainControl is an advanced world generator. Through various configuration files it gives the user control over almost every aspect of Minecraft terrain generation
-	pkgver = 2.7.1
+	pkgver = 2.7.2
 	pkgrel = 1
 	url = http://dev.bukkit.org/bukkit-plugins/terrain-control
 	arch = any
 	license = SpoutDev v1
 	depends = craftbukkit>=1.8
-	noextract = terraincontrol-bukkit-2.7.1-SNAPSHOT.jar
-	source = http://build.mctcp.com/job/TerrainControl%20-%20Master%20-%20Gradle/default/lastSuccessfulBuild/artifact/platforms/bukkit/build/distributions/terraincontrol-bukkit-2.7.1-SNAPSHOT.jar
+	noextract = terraincontrol-bukkit-2.7.2-SNAPSHOT.jar
+	source = http://build.mctcp.com/job/TerrainControl%20-%20Master%20-%20Gradle/default/lastSuccessfulBuild/artifact/platforms/bukkit/build/distributions/terraincontrol-bukkit-2.7.2-SNAPSHOT.jar
 	md5sums = SKIP
 
 pkgname = craftbukkit-plugin-terrain-control
