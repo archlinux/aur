@@ -1,0 +1,15 @@
+pkgbase = tapiir
+	pkgdesc = A simple and flexible audio effects processor, inspired by the classical magnetic tape delay systems
+	pkgver = 0.7.3
+	pkgrel = 2
+	url = http://www.resorama.com/maarten/tapiir/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = jack
+	depends = fltk
+	source = http://www.resorama.com/maarten/files/tapiir-0.7.3.tgz
+	md5sums = 0746206a69acb7252ff0ffa9af47cd54
+
+pkgname = tapiir
+
