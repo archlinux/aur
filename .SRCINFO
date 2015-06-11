@@ -1,0 +1,15 @@
+pkgbase = wmappl
+	pkgdesc = wmappl is a simple scrolling application launcher for the WindowMaker dock
+	pkgver = 0.71
+	pkgrel = 5
+	url = http://wmappl.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	depends = imlib2
+	source = ftp://ftp.uni-kl.de/pub/linux/gentoo/distfiles/wmappl-0.71.tar.gz
+	md5sums = a72ed0dba969ff0e5e507680bf40fdd6
+
+pkgname = wmappl
+
