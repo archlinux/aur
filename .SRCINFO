@@ -1,0 +1,15 @@
+pkgbase = yodl
+	pkgdesc = Implements a pre-document language and tools to process it.
+	pkgver = 3.05.00
+	pkgrel = 1
+	url = http://yodl.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = icmake
+	depends = bash
+	source = http://downloads.sourceforge.net/project/yodl/yodl/3.05.00/yodl_3.05.00.orig.tar.gz
+	sha512sums = 45eccfb59853f57ffe2219b6de26e9851a28c59049b6165cc5dbd7201b5078b5930a286c0b2c61f534483b80f7c8c5de79925784ac6c29843d8c3842b508f7a8
+
+pkgname = yodl
+
