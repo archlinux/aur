@@ -1,5 +1,5 @@
 pkgname=wsmancli
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Command line client utilities for WS-Management"
 arch=('i686' 'x86_64')
@@ -7,7 +7,7 @@ url="https://github.com/Openwsman/$pkgname"
 license=('BSD')
 depends=('openwsman>=2.5')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-md5sums=('bbf801acba9a84565e9cfa05f0bd6f08')
+md5sums=('df418d6d78160fd4f88f890a8953907a')
 
 build() {
 	cd "$pkgname-$pkgver"
