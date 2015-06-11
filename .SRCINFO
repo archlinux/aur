@@ -1,0 +1,19 @@
+pkgbase = tinc-pre
+	pkgdesc = VPN (Virtual Private Network) daemon (Pre-release)
+	pkgver = 1.1pre11
+	pkgrel = 2
+	url = http://www.tinc-vpn.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = lzo2
+	depends = zlib
+	depends = openssl
+	optdepends = wxpython: gui support
+	provides = tinc-pre
+	conflicts = tinc
+	source = http://www.tinc-vpn.org/packages/tinc-1.1pre11.tar.gz
+	md5sums = e9cc2971927d31e703f0c2b1791a4edf
+
+pkgname = tinc-pre
+
