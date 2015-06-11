@@ -1,7 +1,7 @@
 pkgbase = ruby-libnotify
 	pkgdesc = ruby bindings for libnotify, a library for desktop notifications
 	pkgver = 0.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/vargolo/ruby-libnotify
 	arch = i686
 	arch = x86_64
