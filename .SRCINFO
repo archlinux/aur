@@ -1,0 +1,19 @@
+pkgbase = wdm-git
+	pkgdesc = A replacement X window display manager similar to, and based on XDM
+	pkgver = 1.28.r39.g6d47e25
+	pkgrel = 1
+	url = https://github.com/raorn/wdm
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = windowmaker-git
+	depends = libdbus
+	provides = wdm
+	conflicts = wdm
+	conflicts = wdm-git
+	source = wdm-git::git+https://github.com/raorn/wdm.git
+	md5sums = SKIP
+
+pkgname = wdm-git
+
