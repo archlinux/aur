@@ -1,0 +1,16 @@
+pkgbase = otf-gnutypewriter
+	pkgdesc = A free font imitating a real typewriter.
+	pkgver = 20110624
+	pkgrel = 2
+	url = http://openfontlibrary.org/font/gnutypewriter
+	install = gnutypewriter.install
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = http://openfontlibrary.org/assets/downloads/gnutypewriter/8a7cb57723df9125503083ed59e7a11c/gnutypewriter.zip
+	md5sums = 8a7cb57723df9125503083ed59e7a11c
+
+pkgname = otf-gnutypewriter
+
