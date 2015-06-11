@@ -1,0 +1,17 @@
+pkgbase = perl-glib-ev
+	pkgdesc = Coerce Glib into using the EV module as event loop
+	pkgver = 2.02
+	pkgrel = 4
+	url = http://search.cpan.org/perldoc?Glib::EV
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = PerlArtistic
+	depends = glib-perl
+	depends = perl-ev
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/ML/MLEHMANN/Glib-EV-2.02.tar.gz
+	md5sums = 550417252d37af703095855aadbf8558
+
+pkgname = perl-glib-ev
+
