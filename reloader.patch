@@ -1,0 +1,16 @@
+--- reloader.py	2014-10-13 13:10:08.354595249 -0700
++++ reloader-updated	2014-10-13 13:25:48.200914826 -0700
+@@ -71,8 +71,12 @@
+         self._process = Popen(self.command)
+         log('green', 'STARTED %s' % self._process)
+ 
+-        self.swid = int(Popen(['/usr/bin/env', 'xdotool', 'getwindowfocus'],
++        if self.focus:
++            self.swid = int(Popen(['/usr/bin/env', 'xdotool', 'getwindowfocus'],
+                               stdout=PIPE).communicate()[0])
++        else:
++            self.swid = 0
++
+         if self.focus:
+             while time() < t + self.focus:
+                 # try to detect a window appeared by tracking focus

@@ -1,0 +1,22 @@
+pkgbase = pythonar-git
+	pkgdesc = Provides a simple way to restart applications when you change source code or resources thus providing better workflow. Written in Python 2
+	pkgver = r19.9b2a3b4
+	pkgrel = 2
+	url = https://github.com/kivy/pythonar
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python2
+	depends = python2-colorama
+	depends = python2-termcolor
+	depends = python2-watchdog
+	optdepends = xdotool: x11 automation
+	provides = pythonar
+	conflicts = pythonar
+	source = git+https://github.com/kivy/pythonar.git
+	source = reloader.patch
+	sha256sums = SKIP
+	sha256sums = 412cd7de6c52f4d3d6e11ff1af059e1e2e995270dd0e483fa834ddc6b7653f43
+
+pkgname = pythonar-git
+
