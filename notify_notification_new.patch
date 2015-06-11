@@ -1,0 +1,15 @@
+--- /tmp/notification.c
++++ /home/ok/build/pkgbuilds/zenity-gtk2/src/zenity-2.32.1/src/notification.c
+@@ -184,10 +184,10 @@
+             icon = freeme = g_filename_to_uri (icon_file, NULL, NULL);
+           }
+ 
+-          notif = notify_notification_new_with_status_icon (
++          notif = notify_notification_new(
+                               message[0] /* title */,
+                               message[1] /* summary */,
+-                              icon, status_icon);
++                              icon);
+ 
+           g_strfreev (message);
+           g_free (freeme);
