@@ -1,0 +1,29 @@
+pkgbase = screencloud
+	pkgdesc = Easy to use screenshot sharing application.
+	pkgver = 1.2.0
+	pkgrel = 2
+	url = http://screencloud.net
+	install = screencloud.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = quazip
+	depends = libqxt
+	depends = python2
+	optdepends = python2-crypto: required for SFTP support
+	options = strip
+	options = docs
+	options = libtool
+	options = staticlibs
+	options = emptydirs
+	options = zipman
+	options = purge
+	options = !upx
+	options = !debug
+	source_i686 = screencloud-1.2.0-1-32.pkg.tar.xz::http://download.opensuse.org/repositories/home:/olav-st/Arch_Extra/i686/screencloud-1.2.0-1-i686.pkg.tar.xz
+	sha256sums_i686 = SKIP
+	source_x86_64 = screencloud-1.2.0-1-64.pkg.tar.xz::http://download.opensuse.org/repositories/home:/olav-st/Arch_Extra/x86_64/screencloud-1.2.0-1-x86_64.pkg.tar.xz
+	sha256sums_x86_64 = SKIP
+
+pkgname = screencloud
+
