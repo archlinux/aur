@@ -1,0 +1,11 @@
+--- today.c	2010-06-27 02:22:33.000000000 +0300
++++ today.c.arch	2010-11-09 18:09:18.376441001 +0200
+@@ -9,7 +9,7 @@
+ Share and enjoy!
+ */
+ 
+-#define GLOBAL "/usr/local/share/today/today.dat"
++#define GLOBAL "/usr/share/today/today.dat"
+ #define BEFORE 0
+ #define AFTER 2
+ #define LINELEN 40

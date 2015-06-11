@@ -1,0 +1,18 @@
+pkgbase = today
+	pkgdesc = Eortologio is a console utility that displays fixed and movable feasts of the Greek calendar.
+	pkgver = 0.66
+	pkgrel = 2
+	url = http://sourceforge.net/projects/gtoday/
+	install = today.install
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = gcc
+	options = strip
+	source = gtoday-0.66.tar.bz2::http://downloads.sourceforge.net/gtoday/gtoday-0.66.tar.bz2
+	source = archfs.patch
+	sha256sums = b8a6ab6c28ed18054456a196a12c61547dff7556c6e0d6436fbd6447f284cf1b
+	sha256sums = 50677fae0180e2e20b59c5c230a85497784573c1e20bf4c7665684ad8a231a9b
+
+pkgname = today
+
