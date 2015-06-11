@@ -1,0 +1,19 @@
+pkgbase = cnijfilter-mp520
+	pkgdesc = Canon IJ Printer Driver for Pixma MP520 multifunctional
+	pkgver = 2.80
+	pkgrel = 2
+	url = http://www.canon.co.uk/For_Home/Product_Finder/Multifunctionals/Inkjet/PIXMA_MP520/index.asp
+	arch = x86_64
+	arch = i686
+	license = custom:cnijfilter-common
+	makedepends = rpmextract
+	depends = libxi
+	depends = libcups
+	depends = popt
+	depends = lib32-libtiff3
+	depends = lib32-libpng12
+	source = http://files.canon-europe.com/files/soft28477/Software/28477.tgz
+	md5sums = e88e7dedfce1e2565a6437933e9e6a3c
+
+pkgname = cnijfilter-mp520
+
