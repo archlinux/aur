@@ -1,5 +1,5 @@
 pkgbase = dbmodel
-	pkgdesc = A qt tool for drawing entity-relationalship diagrams.
+	pkgdesc = A qt tool for drawing entity-relationship diagrams.
 	pkgver = 0.3
 	pkgrel = 5
 	url = http://oxygene.sk/lukas/dbmodel/

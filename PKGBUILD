@@ -4,7 +4,7 @@
 pkgname=dbmodel
 pkgver=0.3
 pkgrel=5
-pkgdesc="A qt tool for drawing entity-relationalship diagrams."
+pkgdesc="A qt tool for drawing entity-relationship diagrams."
 arch=('i686' 'x86_64')
 url="http://oxygene.sk/lukas/dbmodel/"
 license="GPL"
