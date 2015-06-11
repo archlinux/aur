@@ -1,0 +1,16 @@
+pkgbase = python-iniparse
+	pkgdesc = Better INI parser library for Python
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://code.google.com/p/iniparse
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-six
+	source = http://iniparse.googlecode.com/files/iniparse-0.4.tar.gz
+	source = http://pkgs.fedoraproject.org/cgit/python-iniparse.git/plain/python-iniparse-python3-compat.patch
+	sha1sums = 2b2af8a19f3e5c212c27d7c524cd748fa0b38650
+	sha1sums = 670a6a70633b297a9586679b7da8312fe9720698
+
+pkgname = python-iniparse
+
