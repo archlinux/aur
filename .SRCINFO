@@ -1,0 +1,15 @@
+pkgbase = python2-xstatic-font-awesome
+	pkgdesc = XStatic-Font-Awesome
+	pkgver = 4.3.0.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/XStatic-Font-Awesome
+	arch = i686
+	arch = x86_64
+	makedepends = python2-setuptools
+	makedepends = python2-pip
+	depends = python2
+	source = https://pypi.python.org/packages/source/X/XStatic-Font-Awesome/XStatic-Font-Awesome-4.3.0.0.tar.gz
+	md5sums = 56e637fe7b3dcdd2ebd683996ad60759
+
+pkgname = python2-xstatic-font-awesome
+
