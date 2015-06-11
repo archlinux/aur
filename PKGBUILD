@@ -1,5 +1,5 @@
 pkgname=qmplay2-git
-pkgver=16.06.10
+pkgver=15.06.10
 pkgrel=1
 pkgdesc='QMPlay2 is a video and audio player which can play most formats and codecs'
 arch=('i686' 'x86_64' 'armv7' 'armv6' 'armv5')
