@@ -1,0 +1,16 @@
+pkgbase = swmm5-git
+	pkgdesc = Hydraulic and hidrologic modelation engine for wastewater drainage systems.
+	pkgver = 5.0.022
+	pkgrel = 1
+	url = http://www.epa.gov/
+	arch = i686
+	arch = x86_64
+	license = Public Domain
+	makedepends = git
+	provides = swmm5
+	conflicts = swmm5
+	source = git://github.com/lothar-mar/swmm5.git#branch=testing
+	md5sums = SKIP
+
+pkgname = swmm5-git
+
