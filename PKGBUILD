@@ -1,7 +1,7 @@
 # Maintainer: Christian Mauderer <c_mauderer[at]yahoo[dot]de>
 pkgname=stlink-git
-pkgver=20120217
-pkgrel=1
+pkgver=20120311
+pkgrel=2
 pkgdesc="stm32 discovery line linux programmer."
 arch=('x86_64')
 url="https://github.com/texane/stlink"
@@ -11,6 +11,7 @@ makedepends=('git')
 conflicts=('stlink')
 provides=('stlink')
 install='stlink-git.install'
+options=('!makeflags')
 
 _gitroot="https://github.com/texane/stlink"
 _gitname="stlink"
