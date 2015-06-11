@@ -10,7 +10,7 @@ makedepends=('git')
 options=()
 install=
 source=('git+https://github.com/veltman/clmystery.git')
-md5sums=('SKIP') 
+md5sums=('SKIP')
 
 
 pkgver() 
