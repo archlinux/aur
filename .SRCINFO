@@ -1,0 +1,12 @@
+pkgbase = xproxymngproto
+	pkgdesc = Proxy manager headers
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = http://www.x.org
+	arch = any
+	license = custom
+	source = http://xorg.freedesktop.org/releases/individual/proto/xproxymanagementprotocol-1.0.3.tar.bz2
+	md5sums = 9de22ca1522008c28fb03dfc41ba2d30
+
+pkgname = xproxymngproto
+
