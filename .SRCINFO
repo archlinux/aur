@@ -1,0 +1,15 @@
+pkgbase = perl-string-compare
+	pkgdesc = String::Compare - Compare two strings and return how much they are alike
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://search.cpan.org/dist/String-Compare
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DR/DRUOSO/String-Compare-0.4.tar.gz
+	md5sums = 0a5ba97f0a071dd23c0ebe1b8ef4c2c3
+
+pkgname = perl-string-compare
+
