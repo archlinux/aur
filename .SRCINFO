@@ -1,0 +1,13 @@
+pkgbase = javagnutar
+	pkgdesc = Java library for GNU Tar archives
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = http://code.google.com/p/javagnutar/
+	arch = any
+	license = Apache
+	makedepends = unzip
+	makedepends = wget
+	depends = java-runtime>=1.5
+
+pkgname = javagnutar
+
