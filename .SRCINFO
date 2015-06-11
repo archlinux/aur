@@ -1,0 +1,18 @@
+pkgbase = chess-merida
+	pkgdesc = A truetype chess font for diagrams and figurine notation
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://www.enpassant.dk/chess/fonteng.htm
+	install = merida.install
+	arch = any
+	license = custom
+	makedepends = unzip
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.enpassant.dk/chess/downl/merid_tt.zip
+	source = merida.install
+	md5sums = fdd8933e38932cf91d971c0667f1d0b5
+	md5sums = 5ae0a6e3a2b9dd955467c59f8276e5c6
+
+pkgname = chess-merida
+
