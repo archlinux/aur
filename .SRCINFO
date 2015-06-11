@@ -1,0 +1,28 @@
+pkgbase = hamlib-git
+	pkgdesc = Ham radio equipment control libraries
+	pkgver = 3f1bde0
+	pkgrel = 1
+	url = http://hamlib.org
+	arch = i686
+	arch = x86_64
+	arch = armv5h
+	arch = armv6h
+	arch = armv7h
+	license = GPL
+	license = LGPL
+	makedepends = libtool
+	makedepends = swig
+	depends = perl
+	depends = python2
+	depends = tcl
+	depends = libxml2
+	depends = libusb
+	provides = hamlib
+	conflicts = hamlib
+	options = !emptydirs
+	source = hamlib-git::git+git://git.code.sf.net/p/hamlib/code
+	md5sums = SKIP
+	sha256sums = SKIP
+
+pkgname = hamlib-git
+
