@@ -6,7 +6,7 @@ pkgdesc="A fully functional open source Agar.io server implementation, written i
 arch=(any)
 url="https://github.com/vram4/Ogar"
 license=('Apache')
-depends=('nodejs' 'npm' 'wget' 'systemd')
+depends=('nodejs' 'npm' 'curl' 'systemd')
 source=('ogar.service')
 sha1sums=('17e04c0c5872f64ed05bf0f6844ee276210d7bda')
 install="${pkgname}.install"
@@ -14,7 +14,7 @@ backup=('usr/share/ogar/gameserver.ini')
 
 package() {
 	cd $srcdir
-	wget https://github.com/vram4/Ogar/archive/master.zip
+	curl -L -O https://github.com/vram4/Ogar/archive/master.zip
 	bsdtar -xf master.zip
 	mv Ogar-master ogar
 	mkdir -p $pkgdir/usr/share
