@@ -1,0 +1,17 @@
+pkgbase = flexc++
+	pkgdesc = C++ scanner generator
+	pkgver = 2.02.00
+	pkgrel = 1
+	url = http://flexcpp.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = icmake>=7.19.0
+	makedepends = gcc>=4.7.1
+	makedepends = yodl>=3.00.0
+	depends = libbobcat>=3.01.00
+	source = http://downloads.sourceforge.net/project/flexcpp/2.02.00/flexc++_2.02.00.orig.tar.gz
+	md5sums = 8a2b9be97b6cfde1b599b6ac925f39fe
+
+pkgname = flexc++
+
