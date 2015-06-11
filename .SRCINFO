@@ -1,0 +1,31 @@
+pkgbase = libsoup-gnome-git
+	pkgdesc = Gnome HTTP Library with gnome integration enabled /git repo
+	pkgver = 2.50.0.r11.gb4120b5
+	pkgrel = 1
+	epoch = 1
+	url = http://live.gnome.org/LibSoup
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = intltool
+	makedepends = gtk-doc
+	makedepends = git
+	makedepends = gnome-common
+	depends = gnome-keyring
+	depends = libproxy
+	provides = libsoup
+	provides = libsoup-git
+	conflicts = libsoup
+	conflicts = libsoup-newest
+	conflicts = libsoup-git
+	conflicts = libsoup-gnome
+	replaces = libsoup
+	replaces = libsoup-newest
+	replaces = libsoup-git
+	replaces = libsoup-gnome
+	options = !libtool
+	source = libsoup-gnome-git::git://git.gnome.org/libsoup
+	md5sums = SKIP
+
+pkgname = libsoup-gnome-git
+
