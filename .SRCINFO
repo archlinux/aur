@@ -1,0 +1,17 @@
+pkgbase = websockify-openstack
+	pkgdesc = WebSocket to TCP proxy/bridge.
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = http://github.com/kanaka/websockify
+	arch = any
+	license = LGPL3
+	makedepends = python2
+	makedepends = python2-distribute
+	depends = python2
+	depends = python2-numpy
+	provides = websockify
+	source = https://github.com/kanaka/websockify/archive/v0.5.1.tar.gz
+	md5sums = 6b603874b502bcd9d509e664c97ca780
+
+pkgname = websockify-openstack
+
