@@ -1,0 +1,17 @@
+pkgbase = bbconf-cvs
+	pkgdesc = All-in-one GUI configurator for the Blackbox WM and bbkeys, development version
+	pkgver = 20090721
+	pkgrel = 1
+	url = http://bbconf.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = blackbox
+	depends = qt3
+	optdepends = bbkeys: To configure bbkeys's behavior here too
+	provides = bbconf
+	conflicts = bbconf
+	options = !libtool
+
+pkgname = bbconf-cvs
+
