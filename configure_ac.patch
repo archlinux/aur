@@ -1,0 +1,36 @@
+--- configure.ac	2014-12-16 14:13:01.725298702 +0100
++++ configure.ac	2014-12-16 14:14:05.825300136 +0100
+@@ -137,31 +137,8 @@
+   LIBS="$LIBS -ldsound -lgdi32"
+ fi
+ 
+-if test x$cross_compiling = xyes; then
+-  gtk=no
+-  xlibs="$LIBS"
+-  LIBS="$LIBS -L$CROSSCOMPPATH/gtk/lib"
+-  AC_CHECK_LIB(gtk,gtk_main,gtk=yes)
+-  LIBS="$xlibs"
+-  if test x$gtk = xyes; then
+-    GTK_CFLAGS="-I$CROSSCOMPPATH/gtk/include -I$CROSSCOMPPATH/gtk/include/glib -I$CROSSCOMPPATH/gtk/include/gdk"
+-    GTK_LIBS="-L$CROSSCOMPPATH/gtk/lib -lgtk -lgdk -lglib"
+-    PTHREAD_CFLAGS="-I$CROSSCOMPPATH/gtk/include"
+-    PTHREAD_LIBS="-L$CROSSCOMPPATH/gtk/lib"
+-    AUDIOFILE_CFLAGS="-I$CROSSCOMPPATH/audiofile/include"
+-    AUDIOFILE_LIBS="-L$CROSSCOMPPATH/audiofile/lib -laudiofile"
+-  fi
+-else
+-  PKG_CHECK_MODULES(XML,libxml-2.0)
+-  PKG_CHECK_MODULES(GTK,gtk+-2.0 >= 2.6.0)
+-  PKG_CHECK_MODULES(AUDIOFILE,audiofile)
+-fi
+-
+-dnl Check for recently introduced GTK symbols
+-xlibs="$LIBS"
+-LIBS="$GTK_LIBS $LIBS"
+-AC_CHECK_FUNCS(gtk_widget_set_tooltip_text gtk_widget_is_drawable gtk_widget_get_realized gtk_widget_set_realized gtk_widget_set_can_default gtk_widget_set_can_focus gtk_dialog_get_action_area gtk_dialog_get_content_area gtk_widget_get_allocation gtk_widget_set_allocation gtk_widget_get_state gtk_widget_get_window gtk_widget_set_window gtk_widget_set_has_window gtk_widget_style_attach)
+-LIBS="$xlibs"
++PKG_CHECK_MODULES(XML,libxml-2.0)
++PKG_CHECK_MODULES(AUDIOFILE,audiofile)
+ 
+ dnl Enable to try building with XXX_DISABLE_DEPRECATED. Never ship with
+ dnl them enabled!

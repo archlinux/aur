@@ -1,0 +1,9 @@
+[Unit]
+Description=Soundmodem TNC
+
+[Service]
+EnvironmentFile=/etc/conf.d/soundmodem
+ExecStart=/usr/sbin/soundmodem $SOUNDMODEM_ARGS /etc/ax25/soundmodem.conf
+
+[Install]
+WantedBy=multi-user.target

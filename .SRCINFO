@@ -1,0 +1,33 @@
+pkgbase = soundmodem-server
+	pkgdesc = Multiplatform Soundcard Packet Radio Modem without configuration GUI
+	pkgver = 0.18
+	pkgrel = 1
+	url = http://pv529.ncsrv.de/soundmodem/
+	arch = i686
+	arch = x86_64
+	arch = armv5h
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	depends = audiofile
+	depends = libxml2
+	depends = alsa-lib
+	provides = soundmodem
+	conflicts = soundmodem
+	backup = etc/ax25/soundmodem.conf
+	backup = etc/conf.d/soundmodem
+	source = configure_ac.patch
+	source = 0001-Search-replace-of-extern-inline-static-inline.patch
+	source = soundmodem.conf
+	source = soundmodem_conf.d
+	source = http://pv529.ncsrv.de/soundmodem/soundmodem-0.18.tar.gz
+	source = soundmodem.service
+	sha256sums = c97f91b5ac9ad0b218a3d2de3b843cc934d6112da9df4c1c9b72d4f04fd03520
+	sha256sums = 3a6e57ae1b89acbc25cb4758f2130e936f83fcec0aa1488f92f46c3d59e2d9b1
+	sha256sums = 36ed996571e2b39c75b27a5f765527bdcc737c4d30a681983c8415f4c742b825
+	sha256sums = 6719bc2d61dcf6edc4a8bcad4467a58696e0ce0f066badc39f6c0d47686cc2c3
+	sha256sums = f033c1716df1378cda646dbb1c48ea9fb9a068772c6686f2ca411bfa64245c1c
+	sha256sums = 3be5b647f4798ff93df84a02097f97223f00508e6d2031cdbf0ee5f85397de81
+
+pkgname = soundmodem-server
+
