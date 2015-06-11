@@ -1,0 +1,16 @@
+pkgbase = ttf-caracteres
+	pkgdesc = A family of typefaces used on roadsigns in France.
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://simplythebest.net/fonts/fonts/caracteres.html
+	install = caracteres.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = http://simplythebest.net/fonts/fonts/download=367
+	md5sums = 22d9ae4cb9e04680e879e4c2850e471f
+
+pkgname = ttf-caracteres
+
