@@ -1,0 +1,18 @@
+pkgbase = python2-swmmtoolbox-git
+	pkgdesc = The swmmtoolbox is a python script that extracts data from the SWMM5 binary output file.
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://bitbucket.org/timcera/swmmtoolbox
+	arch = i686
+	arch = x86_64
+	license = Sleepycat
+	makedepends = git
+	depends = python2-construct>=2.5
+	depends = python2-tstoolbox-git>=0.8
+	optdepends = swmm5-git: swmm5 computational engine
+	provides = swmmtoolbox
+	conflicts = swmmtoolbox
+	md5sums = SKIP
+
+pkgname = python2-swmmtoolbox-git
+
