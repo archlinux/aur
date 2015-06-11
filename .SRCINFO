@@ -1,0 +1,15 @@
+pkgbase = mintlocale
+	pkgdesc = Locale selection for the Cinnamon Desktop
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/linuxmint/mintlocale
+	arch = any
+	license = GPL2
+	depends = python2-gobject
+	source = http://packages.linuxmint.com/pool/main/m/mintlocale/mintlocale_1.2.2.tar.gz
+	source = apt_pkg.patch
+	sha256sums = 92050d3138954e2114aac4e75c1f927b40d52123ade4fdfbb3a8d6d25aaf37ec
+	sha256sums = d18b6ae1a699b5a31436bbaf2a18d96d64a54e33a6d5daa1c60dfb0250f2dbc2
+
+pkgname = mintlocale
+

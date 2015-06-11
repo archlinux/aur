@@ -1,0 +1,27 @@
+diff --git /usr/lib/linuxmint/mintLocale/mintLocale.py /usr/lib/linuxmint/mintLocale/mintLocale.py
+--- /usr/lib/linuxmint/mintLocale/mintLocale.py
++++ /usr/lib/linuxmint/mintLocale/mintLocale.py
+This patch removes the options to Add/Remove Languages in Language Settings, as ArchLinux does not use apt (hence no apt_pkg option is available).
+index 990e39b..89267b5 100755
+@@ -14,7 +14,6 @@
+     import ConfigParser
+     import grp
+     import locale
+-    import apt
+     import tempfile
+     from subprocess import Popen   
+ except Exception, detail:
+@@ -396,7 +395,12 @@
+         self.accountService = AccountsService.UserManager.get_default().get_user(current_user)
+         self.accountService.connect('notify::is-loaded', self.accountservice_ready)
+         self.accountService.connect('changed::', self.accountservice_changed)
+-
++		
++        try:
++            import apt_pkg
++        except ImportError:
++            return
++		
+         groups = grp.getgrall()
+         for group in groups:
+             (name, pw, gid, mem) = group
