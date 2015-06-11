@@ -1,7 +1,7 @@
 pkgbase = updategeoip
 	pkgdesc = Updates geoip with the free country- and city-databases by MaxMind.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://aur.archlinux.org/packages.php?ID=23225
 	arch = any
 	license = GPL
