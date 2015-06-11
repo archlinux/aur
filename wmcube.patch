@@ -1,0 +1,54 @@
+diff -up src/wmcube/wmcube/wmcube.c.orig src/wmcube/wmcube/wmcube.c
+--- src/wmcube/wmcube/wmcube.c.orig	2000-10-23 14:11:47.000000000 -0600
++++ src/wmcube/wmcube/wmcube.c	2013-09-04 02:16:37.000000000 -0600
+@@ -132,7 +132,6 @@ int main(int argc, char **argv)
+ 	int		j, i = 0, rot_speed = 0, cpu_usage = 0, rot_step = 1;
+ 	long	screen_speed = 10000;    // microseconds between screen updates (approx.)
+ 	long	cpu_update = 490000;     // microseconds between cpu update (approx.)
+-	int		but_stat = -1;
+ 	int		loop = 0;
+ 	XEvent	Event;
+ 
+@@ -289,7 +288,6 @@ int main(int argc, char **argv)
+ 					break;
+ 				case ButtonPress:
+ 					j = CheckMouseRegion(Event.xbutton.x, Event.xbutton.y);
+-					but_stat = j;
+ 					
+ 					break;
+ 				case ButtonRelease:
+@@ -682,7 +680,7 @@ void sortz(int nofelements) {   // Inser
+ 			
+ 		while ((i > -1) && (temparr[i] > key)) {
+ 			temparr[i+1] = temparr[i];
+-			zorder[i+1] = zorder[i--];
++			zorder[i+1] = zorder[i]; i--;
+ 		}
+ 
+ 		zorder[i+1] = k;										
+@@ -904,7 +902,7 @@ int loadobj(char *filename) {
+ 	
+ 	FILE *fp;
+ 	char tmp[64] = {""};
+-	int i = 0, counter = 1;
++	int i = 0;
+ 
+ 	//printf("\nLoading file %s...",filename); fflush(stdout);
+ 	
+@@ -922,7 +920,6 @@ int loadobj(char *filename) {
+ 	}
+ 
+ 	fscanf(fp,"%s",tmp);
+-	counter = atoi(tmp);
+ 
+ 	while ((strcmp(tmp,"WMCUBE_LINES") != 0) && (strcmp(tmp,"WMCUBE_PLANES") != 0)) {		
+ 
+@@ -956,7 +953,7 @@ int loadobj(char *filename) {
+ 		while (1) {
+ 		
+ 			cline = (int *)realloc(cline,(i+2)*sizeof(int)); mem_alloc_error(cline);
+-			fscanf(fp,"%d %d",&cline[i++],&cline[i++]);
++			fscanf(fp,"%d %d",&cline[i],&cline[i+1]); i += 2;
+ 			//printf("\n%d %d",cline[i-2],cline[i-1]);
+ 			if (feof(fp)) break;
+ 		

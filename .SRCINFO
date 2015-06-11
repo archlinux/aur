@@ -1,0 +1,16 @@
+pkgbase = wmcube
+	pkgdesc = 3D objects tumbling about representing CPU load
+	pkgver = 0.98
+	pkgrel = 3
+	url = http://web.archive.org/web/20121116163211/http://dockapps.windowmaker.org/file.php/id/162
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	source = wmcube-0.98.tar.gz
+	source = wmcube.patch
+	md5sums = efc6f484c53f0a98a76925a6e1a74cd3
+	md5sums = 83d0ba27b2122d248123c677e2713e07
+
+pkgname = wmcube
+
