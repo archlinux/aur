@@ -1,0 +1,13 @@
+pkgbase = emacs-find-recursive
+	pkgdesc = Emacs extension that lets you find files recursively in a directory
+	pkgver = 20010326
+	pkgrel = 2
+	url = http://www.webweavertech.com/ovidiu/emacs/
+	arch = any
+	license = GPL2
+	depends = emacs
+	source = http://www.webweavertech.com/ovidiu/emacs/find-recursive.txt
+	md5sums = 468fcc4848e4adf54af4fdbe78581b95
+
+pkgname = emacs-find-recursive
+
