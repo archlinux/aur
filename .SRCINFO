@@ -1,0 +1,22 @@
+pkgbase = python2-django-icehouse
+	pkgdesc = A high-level Python Web framework that encourages rapid development and clean design
+	pkgver = 1.6.7
+	pkgrel = 1
+	url = http://www.djangoproject.com/
+	arch = any
+	license = BSD
+	makedepends = python2
+	makedepends = python2-setuptools
+	source = https://www.djangoproject.com/m/releases/1.6/Django-1.6.7.tar.gz
+	md5sums = f31e2f953feb258e3569e962790630b6
+	sha256sums = 9a64211c96a3262bb2545acc82af5d8f3da0175299f7c7e901e4ed455be965fb
+
+pkgname = python2-django-icehouse
+	depends = python2
+	optdepends = mysql-python: for MySQL backend
+	optdepends = python2-psycopg2: for PostgreSQL backend
+	provides = python2-django
+	conflicts = django
+	conflicts = python2-django
+	replaces = django
+
