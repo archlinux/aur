@@ -1,0 +1,31 @@
+pkgbase = lib32-nss-chacha20
+	pkgdesc = Mozilla Network Security Services with ChaCha20-Poly1305 (32-bit)
+	pkgver = 3.19.1
+	pkgrel = 0
+	url = http://www.mozilla.org/projects/security/pki/nss/
+	arch = x86_64
+	license = MPL
+	license = GPL
+	makedepends = gcc-multilib
+	makedepends = perl
+	depends = lib32-nspr>=4.10.7
+	depends = lib32-sqlite>=3.6.17
+	depends = nss
+	depends = lib32-zlib
+	depends = lib32-p11-kit
+	provides = lib32-nss
+	conflicts = lib32-nss
+	options = !strip
+	options = !makeflags
+	options = staticlibs
+	source = https://ftp.mozilla.org/pub/security/nss/releases/NSS_3_19_1_RTM/src/nss-3.19.1.tar.gz
+	source = nss.pc.in
+	source = ssl-renegotiate-transitional.patch
+	source = mozilla820740-chacha20.patch
+	sha256sums = b7be709551ec13206d8e3e8c065b894fa981c11573115e9478fa051029c52fff
+	sha256sums = b9f1428ca2305bf30b109507ff335fa00bce5a7ce0434b50acd26ad7c47dd5bd
+	sha256sums = 12df04bccbf674db1eef7a519a28987927b5e9c107b1dc386686f05e64f49a97
+	sha256sums = 5e9b6e3d1b35b0c634178d07d1b289a641b397d8199099917fbb240c83f8d5b9
+
+pkgname = lib32-nss-chacha20
+
