@@ -1,0 +1,15 @@
+pkgbase = gkremldk
+	pkgdesc = a GKrellM plugin showing/setting current mldonkey donwload/upload rate.
+	pkgver = 0.9.8
+	pkgrel = 2
+	url = http://www.tof2k.com/gkremldk/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gkrellm
+	depends = glibc
+	source = http://www.tof2k.com/gkremldk/gkremldk-src-0.9.8.tbz
+	md5sums = 15c5a4c49fde11dd09f92da8305ba5df
+
+pkgname = gkremldk
+
