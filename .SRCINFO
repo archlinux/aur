@@ -1,0 +1,14 @@
+pkgbase = xorg-xmore
+	pkgdesc = Plain text display for the X window system
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://www.x.org/
+	arch = x86_64
+	arch = i686
+	license = custom
+	depends = libxaw
+	source = http://xorg.freedesktop.org/releases/individual/app/xmore-1.0.2.tar.bz2
+	md5sums = e66f16684e92d3ca035c27003157cdbd
+
+pkgname = xorg-xmore
+
