@@ -1,0 +1,44 @@
+diff -up src/xorg-xdm/xdm/choose.c.orig src/xorg-xdm/xdm/choose.c
+--- src/xorg-xdm/xdm/choose.c.orig	2014-03-27 00:13:25.000000000 -0600
++++ src/xorg-xdm/xdm/choose.c	2014-03-27 00:13:59.000000000 -0600
+@@ -54,6 +54,11 @@ in this Software without prior written a
+ # include <time.h>
+ # define Time_t time_t
+ 
++# ifdef HAVE_SETPROCTITLE
++#  include <sys/types.h>
++#  include <bsd/unistd.h>
++# endif
++
+ static int
+ FormatBytes (
+     unsigned char *data,
+diff -up src/xorg-xdm/xdm/genauth.c.orig src/xorg-xdm/xdm/genauth.c
+--- src/xorg-xdm/xdm/genauth.c.orig	2014-03-27 00:15:27.000000000 -0600
++++ src/xorg-xdm/xdm/genauth.c	2014-03-27 00:15:54.000000000 -0600
+@@ -43,6 +43,10 @@ from The Open Group.
+ #include <time.h>
+ #define Time_t time_t
+ 
++#ifdef HAVE_ARC4RANDOM
++#include <bsd/stdlib.h>
++#endif
++
+ #ifdef HASXDMAUTH
+ static unsigned char	key[8];
+ #endif
+diff -up src/xorg-xdm/xdm/session.c.orig src/xorg-xdm/xdm/session.c
+--- src/xorg-xdm/xdm/session.c.orig	2014-03-27 00:16:39.000000000 -0600
++++ src/xorg-xdm/xdm/session.c	2014-03-27 00:17:20.000000000 -0600
+@@ -85,6 +85,11 @@ extern int key_setnet(struct key_netstar
+ #include <systemd/sd-daemon.h>
+ #endif
+ 
++#ifdef HAVE_SETPROCTITLE
++# include <sys/types.h>
++# include <bsd/unistd.h>
++#endif
++
+ #ifdef USE_SELINUX
+ /* This should be run just before we exec the user session. */
+ static int
