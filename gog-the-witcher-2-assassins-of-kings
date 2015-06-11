@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+gogdir="/opt/gog/the-witcher-2-assassins-of-kings"
+
+"$gogdir"/start.sh

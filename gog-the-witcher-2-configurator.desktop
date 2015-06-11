@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=The Witcher 2 Assassins Of Kings - Configurator
+Comment=The Witcher 2 Assassins Of Kings - Configurator (GOG.com)
+Exec=gog-the-witcher-2-configurator
+Icon=/opt/gog/the-witcher-2-assassins-of-kings/game/linux/icons/witcher2-configurator.png
+Terminal=false
+Type=Application
+Categories=Game;
