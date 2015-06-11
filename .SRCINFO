@@ -1,0 +1,15 @@
+pkgbase = python2-xstatic-jquery
+	pkgdesc = XStatic-jQuery
+	pkgver = 1.10.2.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/XStatic-jQuery
+	arch = i686
+	arch = x86_64
+	makedepends = python2-setuptools
+	makedepends = python2-pip
+	depends = python2
+	source = https://pypi.python.org/packages/source/X/XStatic-jQuery/XStatic-jQuery-1.10.2.1.tar.gz
+	md5sums = 7a29efeab6961ef00ea2272c923f4503
+
+pkgname = python2-xstatic-jquery
+
