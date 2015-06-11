@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Pencil
+Exec=pencil2d %F
+Icon=pencil2d
+Categories=Graphics;2DGraphics;
