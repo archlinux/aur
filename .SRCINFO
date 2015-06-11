@@ -1,7 +1,7 @@
 pkgbase = caatinga
 	pkgdesc = A command line backup program written in Python
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/headmastersquall/caatinga
 	arch = any
 	license = GPL3
