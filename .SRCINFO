@@ -1,0 +1,15 @@
+pkgbase = xorg-xfindproxy
+	pkgdesc = Locate X proxy services
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://www.x.org/
+	arch = x86_64
+	arch = i686
+	license = custom
+	makedepends = xproxymngproto
+	depends = libxt
+	source = http://xorg.freedesktop.org/releases/individual/app/xfindproxy-1.0.2.tar.bz2
+	md5sums = 2fa74c68511ae845f52c2f33e641d0fd
+
+pkgname = xorg-xfindproxy
+
