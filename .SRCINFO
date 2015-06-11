@@ -1,0 +1,20 @@
+pkgbase = hodoku
+	pkgdesc = Sudoku generator/solver/analyzer
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = http://hodoku.sourceforge.net/en/index.php
+	arch = any
+	license = GPL3
+	depends = java-runtime
+	noextract = hodoku.jar
+	source = http://downloads.sourceforge.net/project/hodoku/hodoku/hodoku_2.2.0/hodoku.jar
+	source = hodoku.sh
+	source = hodoku.png
+	source = hodoku.desktop
+	md5sums = fa8d728b76f524b97762f4fe0b82152a
+	md5sums = 883f82c99d42ad5113e84c6a501a66b5
+	md5sums = 01d77a4d9f4fd1fb36690ee8a3bae6c4
+	md5sums = 557ca158902fddf06cbda7c7c9480c08
+
+pkgname = hodoku
+
