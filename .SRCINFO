@@ -1,0 +1,14 @@
+pkgbase = latex-beamer
+	pkgdesc = Beamer is a LaTeX class for creating slides for presentations.
+	pkgver = 3_36
+	pkgrel = 1
+	url = http://bitbucket.org/rivanvx/beamer/wiki/Home
+	install = latex-beamer.install
+	arch = any
+	license = GPL
+	depends = texlive-core
+	source = https://bitbucket.org/rivanvx/beamer/get/version-3-36.tar.bz2
+	sha256sums = 3a7ff9df09b65db9c65bd1d7b613540cf275adc5c2a7981dc27abd03e49bf735
+
+pkgname = latex-beamer
+
