@@ -1,0 +1,34 @@
+pkgbase = gdc-git
+	pkgdesc = GDC, The D Programming Language (D2) frontend for GCC. GIT master branch compiled with GCC trunk snapshot.
+	pkgver = 4.9.20140416.1325.3209d01
+	pkgrel = 1
+	url = https://github.com/D-Programming-GDC/GDC
+	arch = i686
+	arch = x86_64
+	groups = dlang
+	groups = dlang-gdc
+	license = GPL
+	makedepends = binutils>=2.22
+	makedepends = git
+	depends = perl
+	depends = libmpc
+	depends = cloog
+	provides = gdc
+	provides = d-compiler
+	provides = d-runtime
+	provides = d-stdlib
+	conflicts = gdc1-bin
+	conflicts = gdc1-hg
+	conflicts = gdc
+	options = !libtool
+	options = !emptydirs
+	options = !buildflags
+	source = ftp://gcc.gnu.org/pub/gcc/snapshots/4.9-20140416/gcc-4.9-20140416.tar.bz2
+	source = gdc::git://github.com/D-Programming-GDC/GDC.git
+	source = folders.diff
+	sha256sums = a1bac4e9fe8d8eca0c70fe22374e34abecd138dfc49130b01d73133f68b03b48
+	sha256sums = SKIP
+	sha256sums = 82f1ba0825164a74660bd5008d8f3acae1bacc3271c86475efc1601fe0da73c4
+
+pkgname = gdc-git
+
