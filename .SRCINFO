@@ -1,0 +1,20 @@
+pkgbase = gerty-git
+	pkgdesc = Automation tool for network operation tasks
+	pkgver = e9db8d7
+	pkgrel = 2
+	url = https://github.com/ssinaygin/gerty
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = pandoc
+	depends = perl-expect
+	depends = perl-net-snmp
+	depends = perl
+	depends = perl-xml-libxml
+	provides = gerty
+	conflicts = gerty
+	source = git+https://github.com/ssinyagin/gerty.git
+	md5sums = SKIP
+
+pkgname = gerty-git
+
