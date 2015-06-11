@@ -1,0 +1,14 @@
+pkgbase = thinkwatt
+	pkgdesc = record power consumption, calculate the average and create a gnuplot graphic
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/mikar/thinkwatt
+	arch = any
+	license = GPL
+	depends = gnuplot
+	optdepends = tp_smapi
+	source = https://github.com/mikar/thinkwatt/raw/master/thinkwatt
+	sha256sums = 531c0eceebe74f632ab9e70a6c3b419c0d933a7329d3037cf9a514569451d702
+
+pkgname = thinkwatt
+
