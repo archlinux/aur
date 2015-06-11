@@ -1,0 +1,39 @@
+Description: Use the X appTime from QX11Info instead of system time.
+ Use the X appTime from QX11Info instead of system time.
+ .
+ libdbusmenu-qt (0.9.2-0yasi3) quantal; urgency=low
+ .
+   * Fix X current timestamp
+Author: Joe Yasi <joe.yasi@gmail.com>
+
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: http://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- a/libdbusmenu-qt-0.9.2/src/dbusmenuimporter.cpp
++++ b/libdbusmenu-qt-0.9.2/src/dbusmenuimporter.cpp
+@@ -34,6 +34,7 @@
+ #include <QTimer>
+ #include <QToolButton>
+ #include <QWidgetAction>
++#include <QX11Info>
+ 
+ // Local
+ #include "dbusmenutypes_p.h"
+@@ -276,7 +277,7 @@ public:
+     void sendEvent(int id, const QString &eventId)
+     {
+         QVariant empty = QVariant::fromValue(QDBusVariant(QString()));
+-        uint timestamp = QDateTime::currentDateTime().toTime_t();
++        uint timestamp = QX11Info::appTime();
+         m_interface->asyncCall("Event", id, eventId, empty, timestamp);
+     }
+ };
