@@ -1,0 +1,13 @@
+pkgbase = dooble-common
+	pkgdesc = Common files for package variants for Dooble
+	pkgver = 1.52
+	pkgrel = 2
+	url = http://dooble.sourceforge.net/
+	arch = any
+	license = custom:3-clause BSD
+	makedepends = qtchooser
+	source = dooble-1.52.tar.gz::http://downloads.sourceforge.net/project/dooble/Version%201.52/Dooble-Source.tar.gz?r=
+	sha256sums = 407091a7dbd9d6969f0450a97e0fa9a153ea7773ae1af599a5226e7bc7467173
+
+pkgname = dooble-common
+
