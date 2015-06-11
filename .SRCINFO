@@ -1,0 +1,14 @@
+pkgbase = somanyjaggedshards
+	pkgdesc = An abstract game about squeezing through awkward spaces.
+	pkgver = 1.01
+	pkgrel = 1
+	url = http://www.niallmoody.com/games/so-many-jagged-shards
+	arch = i686
+	arch = x86_64
+	license = gpl
+	makedepends = cmake
+	source = http://downloads.niallmoody.com/SoManyJaggedShards-1.01-src.zip
+	md5sums = b1018f1909cacef7dc7e601d7a3fa777
+
+pkgname = somanyjaggedshards
+
