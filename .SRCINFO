@@ -1,0 +1,17 @@
+pkgbase = macchanger-git
+	pkgdesc = GNU MAC Changer : A small utility to change your NIC's MAC address
+	pkgver = 1.7.0.r46.f4f66e1
+	pkgrel = 1
+	url = https://github.com/alobbs/macchanger
+	install = macchanger.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = glibc
+	provides = macchanger
+	conflicts = macchanger
+	source = git+https://github.com/alobbs/macchanger.git
+	sha256sums = SKIP
+
+pkgname = macchanger-git
+
