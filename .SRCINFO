@@ -1,0 +1,15 @@
+pkgbase = polymer
+	pkgdesc = A port of KDE QT style Plastik, which does not depend on any KDE libraries
+	pkgver = 0.3.2
+	pkgrel = 9
+	url = http://kde-look.org/content/show.php?content=21748
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	depends = qt3
+	source = http://www.kde-look.org/CONTENT/content-files/21748-polymer-0.3.2.tar.bz2
+	md5sums = 5e566deb55586069378c85cb477f5005
+
+pkgname = polymer
+
