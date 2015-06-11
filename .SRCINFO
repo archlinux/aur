@@ -1,0 +1,17 @@
+pkgbase = python2-html2text-git
+	pkgdesc = Python 2 package that converts a page of HTML into clean, easy-to-read plain ASCII text. Better yet, that ASCII also happens to be valid Markdown (a text-to-HTML format)
+	pkgver = r400.80a0b93
+	pkgrel = 2
+	url = http://alir3z4.github.io/html2text
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python2
+	depends = python2-setuptools
+	provides = python2-html2text
+	conflicts = python2-html2text
+	source = git+https://github.com/Alir3z4/html2text.git
+	sha256sums = SKIP
+
+pkgname = python2-html2text-git
+
