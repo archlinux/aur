@@ -1,0 +1,20 @@
+pkgbase = python2-gdbn-git
+	pkgdesc = This package contains Python 2 code for pre-trained deep neural networks. RBM pre-training is supported and backpropagation. There are a handful of possible unit types. For training, minibatched stochastic gradient descent is implemented.
+	pkgver = 0.2dev.0.1.r1.g7b805fa
+	pkgrel = 1
+	url = https://github.com/dnouri/gdbn
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-gnumpy
+	depends = python2-npmat
+	optdepends = python2-cudamat-git: Use GPU instead of CPU
+	provides = python2-gdbn
+	conflicts = python2-gdbn
+	source = git+https://github.com/dnouri/gdbn.git
+	sha256sums = SKIP
+
+pkgname = python2-gdbn-git
+
