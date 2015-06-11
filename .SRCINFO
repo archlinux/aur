@@ -1,0 +1,14 @@
+pkgbase = latex-fitch
+	pkgdesc = A LaTeX package for Fitch-style proofs
+	pkgver = 1.6
+	pkgrel = 2
+	url = http://folk.uio.no/johanw/FitchSty.html
+	install = fitch.install
+	arch = any
+	license = GPL
+	depends = tetex
+	source = fitch.sty
+	md5sums = d62bdd0267c217d6017baef950b9205a
+
+pkgname = latex-fitch
+

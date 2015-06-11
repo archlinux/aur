@@ -1,0 +1,112 @@
+% $Id: fitch.sty,v 1.6 2003/06/28 16:53:00 johanw Exp $
+
+% Macros for Fitch-style formal proofs
+% Johan W. Klüwer, June 10, 2001
+
+
+\RequirePackage{mdwtab,latexsym,amsmath,amsfonts,ifthen}
+
+
+% Line height in proofs
+\newlength{\fitchlineht}
+\setlength{\fitchlineht}{1.5\baselineskip}
+% Horizontal indent between proof levels
+\newlength{\fitchindent}
+\setlength{\fitchindent}{1em}
+% Indent to comment
+\newlength{\fitchcomind}
+\setlength{\fitchcomind}{2em}
+% Line number width
+\newlength{\fitchnumwd}
+\setlength{\fitchnumwd}{1em}
+
+% Altered from mdwtab.sty: shorter vline, for start of subproof
+\makeatletter
+\newcommand\fvline[1][\arrayrulewidth]{\vrule\@height.5\fitchlineht\@width#1\relax}
+\makeatother
+% Ordinary vertical line
+\newcommand{\fa}{\vline\hspace*{\fitchindent}}
+% Vertical line, shorter: Use at start of (sub)proof
+\newcommand{\fb}{\fvline\hspace*{\fitchindent}}
+% Hypothesis
+\newcommand{\fh}{\fvline%
+  \makebox[0pt][l]{{%
+      \raisebox{-1.4ex}[0pt][0pt]{\rule{1.5em}{\arrayrulewidth}}}}%
+  \hspace*{\fitchindent}}
+% Hypothesis, with longer vert line: for >1 hypothesis
+\newcommand{\fj}{\vline%
+  \makebox[0pt][l]{{%
+      \raisebox{-1.4ex}[0pt][0pt]{\rule{1.5em}{\arrayrulewidth}}}}%
+  \hspace*{\fitchindent}}
+% Modal subproof: takes argument = operator
+\newcommand{\fitchmodal}[1]{% 
+  \makebox[0pt][r]{${}^{#1}$\,}\fvline\hspace*{\fitchindent}}
+\newcommand{\fn}{\fitchmodal{\Box}}% Box subproof 
+\newcommand{\fp}{\fitchmodal{\Diamond}}% Diamond subproof
+% Modal subproof with hypothesis in first line (as in Fitch)
+\newcommand{\fitchmodalh}[1]{% 
+  \makebox[0pt][r]{${}^{#1}$\,}%
+  \fvline%
+  \makebox[0pt][l]{{%
+      \raisebox{-1.4ex}[0pt][0pt]{\rule{1.5em}{\arrayrulewidth}}}}%
+  \hspace*{\fitchindent}}
+% Rule: formula introduction marker. \fr with line, \fs without line
+\newcommand{\fr}{%
+  \makebox[0pt][r]{${\rhd}$\,\,}\vline\hspace*{\fitchindent}}
+\newcommand{\fs}{%
+  \makebox[0pt][r]{${\rhd}$\,\,}}
+% Box around argument, like new variable in ql
+\newcommand{\fw}[1]{\fbox{\footnotesize $#1$}}
+
+% 
+\newcounter{fitchcounter}
+\setcounter{fitchcounter}{0}
+%To avoid starting from 1, \setboolean{resetfitchcounter}{false}
+\newboolean{resetfitchcounter}
+\setboolean{resetfitchcounter}{true}
+%To avoid increasing numbers, \setboolean{increasefitchcounter}{false}
+\newboolean{increasefitchcounter}
+\setboolean{increasefitchcounter}{true}
+%\formatfitchcounter can be altered if need be, though only once per proof
+\newcommand{\formatfitchcounter}[1]{\arabic{#1}}
+%Typeset the counter
+\newcommand{\fitchcounter}{%
+  \ifthenelse{\boolean{increasefitchcounter}}{\addtocounter{fitchcounter}{1}}{}
+  \formatfitchcounter{fitchcounter}}
+
+%A line with a special number -- a tag, e.g. \ftag{\vdots}{}
+\newcommand{\ftag}[2]{\multicolumn{1}%
+  {!{\makebox[\fitchnumwd][r]{#1}\hspace{\fitchindent}}Ml@{\hspace{\fitchcomind}}}%
+  {#2}}
+
+\newenvironment{fitchnum}%
+{\ifthenelse{\boolean{resetfitchcounter}}{\setcounter{fitchcounter}{0}}{}
+  \begin{tabular}{!{\makebox[\fitchnumwd][r]{\fitchcounter }\hspace{\fitchindent}}Ml@{\hspace{\fitchcomind}}l}}%
+{\end{tabular}}
+
+\newenvironment{fitchunum}%
+{\begin{tabular}{!{\makebox[\fitchnumwd][r]{}\hspace{\fitchindent}}Ml@{\hspace{\fitchcomind}}l}}%
+{\end{tabular}}
+
+\newenvironment{fitch}{\renewcommand{\arraystretch}{1.5}
+  \begin{fitchnum}}{\end{fitchnum}}
+\newenvironment{fitch*}{\renewcommand{\arraystretch}{1.5}
+  \begin{fitchunum}}{\end{fitchunum}}
+
+% The following is useful for giving a numbered formula, then the proof.
+\newenvironment{flem}[2]%
+{\begin{eqnarray}
+    &#1\label{#2}\\
+    &\begin{fitch}}%
+    {\end{fitch}\notag\end{eqnarray}}
+
+%To write comment field for two consecutive lines, with brace
+\newcommand{\ftwocom}[1]{%
+  \parbox[t]{3cm}{
+    \raisebox{-.6\baselineskip}[\baselineskip][0pt]{%
+      $\left.
+        \begin{aligned}
+          \,\\ \,
+        \end{aligned}
+      \right\}$\quad #1}
+  }}

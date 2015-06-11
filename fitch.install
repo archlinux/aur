@@ -1,0 +1,11 @@
+post_upgrade() {
+    echo    " updating the filename database..."
+    texconfig-sys rehash
+    echo    " done."
+}
+
+post_remove() {
+    echo    " updating the filename database..."
+    texconfig-sys rehash
+    echo    " done."
+}
