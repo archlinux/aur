@@ -1,0 +1,19 @@
+## arg 1:  the new package version
+post_install() {
+cat <<End-of-message
+
+    Configuration: For most users it will be enough to run:
+
+        $ goobook authenticate
+
+    and follow the instructions.
+
+    To get access to more settings you can create a .goobookrc in your home directory:
+
+        $ goobook config-template > ~/.goobookrc
+
+    See https://gitlab.com/goobook/goobook#tab-readme for more information.
+
+End-of-message
+}
+# vim:set ts=2 sw=2 et:
