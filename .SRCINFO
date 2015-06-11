@@ -1,0 +1,15 @@
+pkgbase = python2-xstatic-angular-bootstrap
+	pkgdesc = XStatic-Angular-Bootstrap
+	pkgver = 0.11.0.3
+	pkgrel = 1
+	url = http://githubranking.com/stackforge/xstatic-angular-bootstrap
+	arch = i686
+	arch = x86_64
+	makedepends = python2-setuptools
+	makedepends = python2-pip
+	depends = python2
+	source = https://github.com/stackforge/xstatic-angular-bootstrap/archive/0.11.0.3.tar.gz
+	md5sums = 581488c5f3190f978e77431c370d047c
+
+pkgname = python2-xstatic-angular-bootstrap
+
