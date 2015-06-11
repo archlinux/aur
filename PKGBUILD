@@ -1,13 +1,13 @@
 # Maintainer: Christian Mauderer <c_mauderer[at]yahoo[dot]de>
 pkgname=stlink-git
-pkgver=20120318
-pkgrel=3
+pkgver=20120531
+pkgrel=4
 pkgdesc="stm32 discovery line linux programmer."
 arch=('i686' 'x86_64')
 url="https://github.com/texane/stlink"
 license=('custom')
 depends=('libusb>=1.0' 'pkg-config')
-makedepends=('git')
+makedepends=('git' 'autoconf')
 conflicts=('stlink')
 provides=('stlink')
 install='stlink-git.install'
@@ -36,8 +36,8 @@ build() {
 
 	msg "Start actual build"
 	cd "${srcdir}/${_gitname}-build"
-	sed 's/-Werror //g' gdbserver/Makefile > gdbserver/Makefile_new
-	mv gdbserver/Makefile_new gdbserver/Makefile
+	./autogen.sh
+	./configure
 	make
 } 
 
@@ -46,8 +46,8 @@ package() {
 	install -Dm644 "stlink_v1.modprobe.conf" "${pkgdir}/etc/modprobe.d/stlink_v1.modprobe.conf"
 	install -Dm644 "49-stlinkv1.rules" "${pkgdir}/etc/udev/rules.d/49-stlinkv1.rules"
 	install -Dm644 "49-stlinkv2.rules" "${pkgdir}/etc/udev/rules.d/49-stlinkv2.rules"
-	install -Dm755 "flash/st-flash" "${pkgdir}/usr/bin/st-flash"
-	install -Dm755 "gdbserver/st-util" "${pkgdir}/usr/bin/st-util"
+	install -Dm755 "st-flash" "${pkgdir}/usr/bin/st-flash"
+	install -Dm755 "st-util" "${pkgdir}/usr/bin/st-util"
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/doc/${pkgname}/LICENSE"
 	install -Dm644 "README" "${pkgdir}/usr/share/doc/${pkgname}/README"
 	install -Dm644 "ACKNOWLEDGMENTS" "${pkgdir}/usr/share/doc/${pkgname}/ACKNOWLEDGMENTS"
