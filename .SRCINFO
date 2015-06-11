@@ -1,14 +1,10 @@
 pkgbase = mkdocs
 	pkgdesc = Project documentation with Markdown.
 	pkgver = 0.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mkdocs.org
 	arch = any
 	license = BSD
-	checkdepends = flake8
-	checkdepends = python-coverage
-	checkdepends = python-nose
-	checkdepends = python-mock
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	source = https://pypi.python.org/packages/source/m/mkdocs/mkdocs-0.14.0.tar.gz
