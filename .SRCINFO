@@ -1,0 +1,29 @@
+pkgbase = splashtool
+	pkgdesc = A simple tool for creating SYSLINUX splashes without fuss
+	pkgver = 1428445153
+	pkgrel = 1
+	url = https://github.com/GNU-Pony/splashtool
+	install = splashtool.install
+	arch = any
+	license = AGPL3
+	makedepends = make
+	makedepends = coreutils
+	makedepends = sed
+	makedepends = glibc
+	makedepends = gcc
+	makedepends = texinfo
+	depends = gzip
+	depends = nafe
+	depends = kbd
+	depends = imagemagick
+	depends = bash
+	depends = awk
+	depends = grep
+	depends = sed
+	depends = coreutils
+	depends = glibc
+	source = https://github.com/GNU-Pony/splashtool/archive/1428445153.tar.gz
+	sha256sums = a25957c5f20166f7590f9795e0736faf955bf5f583b3d7b299031259c68a36a9
+
+pkgname = splashtool
+
