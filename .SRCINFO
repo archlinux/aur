@@ -1,0 +1,15 @@
+pkgbase = xbrightness
+	pkgdesc = Software X11 brightness control
+	pkgver = 0.3
+	pkgrel = 3
+	url = http://shallowsky.com/software/xbrightness/
+	arch = i686
+	arch = x86_64
+	groups = x11
+	license = custom
+	depends = libxmu
+	source = http://shallowsky.com/software/xbrightness/xbrightness-0.3-mika-akk.tar.gz
+	md5sums = 3b7a35a67407ffc07aed9dd8b42caa68
+
+pkgname = xbrightness
+
