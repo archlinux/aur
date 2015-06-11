@@ -1,0 +1,15 @@
+pre_upgrade() {
+  [[ -e /etc/pisg ]] && {
+    echo "Backing up your layout-directory (/etc/pisg/layout) to /etc/pisg/backup"
+    [[ ! -e /etc/pisg/backup ]] && {
+		  mkdir -v /etc/pisg/backup
+    }
+	  cp -av /etc/pisg/layout /etc/pisg/backup
+  }
+  /bin/true
+}
+
+op=$1 
+shift 
+$op $*
+

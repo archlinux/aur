@@ -1,0 +1,16 @@
+pkgbase = pisg
+	pkgdesc = An irc log parser
+	pkgver = 0.73
+	pkgrel = 1
+	url = http://pisg.sourceforge.net/
+	install = pisg.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = perl
+	backup = etc/pisg/pisg.cfg
+	source = http://prdownloads.sourceforge.net/pisg/pisg-0.73.tar.gz
+	md5sums = e0d43082c0bc20e19978743ebf2fcf8b
+
+pkgname = pisg
+
