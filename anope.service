@@ -1,0 +1,17 @@
+[Unit]
+Description=A set of IRC Services designed for flexibility and ease of use
+Requires=network.target
+After=network.target
+
+[Service]
+Type=simple
+PIDFile=/run/anope/anope.pid
+ExecStart=/usr/bin/services --confdir=/etc/anope --dbdir=/var/lib/anope --localedir=/usr/lib/anope/locale --logdir=/var/log/anope --modulesdir=/usr/lib/anope --nofork
+ExecReload=/bin/kill -1 $MAINPID
+Restart=always
+User=anope
+Group=anope
+
+[Install]
+WantedBy=multi-user.target
+

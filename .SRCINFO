@@ -1,0 +1,24 @@
+pkgbase = anope
+	pkgdesc = A set of IRC Services designed for flexibility and ease of use
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = http://www.anope.org/
+	install = anope.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	optdepends = mariadb: MySQL database support
+	optdepends = sqlite: SQLite database support
+	optdepends = cyrus-sasl: SASL authentication support
+	source = http://downloads.sourceforge.net/project/anope/anope-stable/Anope%202.0.2/anope-2.0.2-source.tar.gz
+	source = anope.install
+	source = anope.service
+	source = anope.tmpfiles
+	sha1sums = ae365d90edbc4cecbfa64cc79f39dca2db0e851c
+	sha1sums = 6cc27cc78fdbac84efbc7e40986fa9412d5f7e9f
+	sha1sums = 9ffa7e103e05cc7fee52e13794ecf7172f3e3f42
+	sha1sums = 7d38218fef729433ca32b81514264beea9981cf8
+
+pkgname = anope
+

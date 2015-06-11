@@ -1,0 +1,17 @@
+post_install() {
+    getent group anope &>/dev/null || groupadd -r anope >/dev/null
+    getent passwd anope &>/dev/null || useradd -r -g anope -d /var/lib/anope -s /bin/false -c anope anope >/dev/null
+
+    echo "To configure anope, copy /etc/anope/example.conf to"
+    echo "/etc/anope/services.conf and edit it to your liking."
+    echo
+    echo "The systemd service uses a value of /run/anope/anope.pid"
+    echo "by default. When editing your services.conf file, be"
+    echo "sure to set the location of the PID file to this value."
+}
+
+post_remove() {
+    getent passwd anope &>/dev/null && userdel anope >/dev/null
+    getent group anope &>/dev/null && groupdel anope >/dev/null
+}
+
