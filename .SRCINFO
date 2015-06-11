@@ -1,0 +1,24 @@
+pkgbase = cerberus-logging
+	pkgdesc = Log-in logging extension for cerberus
+	pkgver = 1428445270
+	pkgrel = 1
+	url = https://github.com/GNU-Pony/cerberus-logging
+	install = cerberus-logging.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = make
+	makedepends = coreutils
+	makedepends = gcc
+	makedepends = glibc
+	makedepends = audit
+	makedepends = texinfo
+	depends = glibc
+	depends = coreutils
+	depends = sh
+	optdepends = audit: for logging with audit
+	source = https://github.com/GNU-Pony/cerberus-logging/archive/1428445270.tar.gz
+	sha256sums = fedb5423eef21f108f1a293c17e625a3e49be9b891737b65b1284b6817ef59f1
+
+pkgname = cerberus-logging
+
