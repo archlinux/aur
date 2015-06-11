@@ -1,0 +1,18 @@
+pkgbase = kodi-devel-audioencoder-wav
+	pkgdesc = Wav encoder addon for Kodi
+	pkgver = 20141102.40aaedf
+	pkgrel = 2
+	url = https://github.com/xbmc/audioencoder.wav
+	arch = i686
+	arch = x86_64
+	groups = kodi-devel
+	license = GPL
+	makedepends = cmake
+	depends = kodi-devel
+	conflicts = kodi-audioencoder-wav-devel
+	replaces = kodi-audioencoder-wav-devel
+	source = https://github.com/xbmc/audioencoder.wav/archive/40aaedfa1cd9c75749c82f6e1bd7c42ef61fdb38.tar.gz
+	md5sums = SKIP
+
+pkgname = kodi-devel-audioencoder-wav
+
