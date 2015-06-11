@@ -1,3 +1,5 @@
+# Maintainer: zaps166 <spaz16@wp.pl>
+
 pkgname=qmplay2-git
 pkgver=15.06.10
 pkgrel=1
@@ -11,7 +13,7 @@ conflicts=('qmplay2')
 provides=('qmplay2')
 makedepends=('make' 'gcc' 'git')
 source=('git+https://github.com/zaps166/QMPlay2')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver()
 {
