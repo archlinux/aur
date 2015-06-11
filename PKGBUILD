@@ -1,8 +1,8 @@
 # Maintainer: Kevin Brodsky <corax26 at gmail dot com>
 # Contributor: Anton Jongsma <anton@felrood.nl>
 pkgname=bisonc++
-pkgver=4.09.02
-pkgrel=2
+pkgver=4.10.01
+pkgrel=1
 pkgdesc='C++ parser generator'
 arch=('i686' 'x86_64')
 url='http://bisoncpp.sourceforge.net'
@@ -12,9 +12,8 @@ makedepends=('icmake' 'yodl')
 optdepends=()
 source=("http://downloads.sourceforge.net/project/bisoncpp/bisonc++/${pkgver}/bisonc++_${pkgver}.orig.tar.gz"
         'manual_license.patch')
-md5sums=('cdb9a11ec237f10b1c8cc31e7f4076d0'
+md5sums=('712a8e941a826f7f984ac0ba3d160b5b'
          'bab1f76582bd7518df6debe7265fdd7c')
-
 
 build() {
   cd "$srcdir/bisonc++-${pkgver}"
