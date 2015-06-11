@@ -1,0 +1,20 @@
+pkgbase = python-cython-hidapi-git
+	pkgdesc = A Cython interface to the HIDAPI from https://github.com/signal11/hidapi for Python 3
+	pkgver = 0.7.99.5.r58.78722d3
+	pkgrel = 2
+	url = https://github.com/trezor/cython-hidapi
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = python
+	depends = libusb
+	depends = python-setuptools
+	depends = cython
+	provides = python-cython-hidapi
+	conflicts = python-cython-hidapi
+	source = git+https://github.com/trezor/cython-hidapi.git
+	sha256sums = SKIP
+
+pkgname = python-cython-hidapi-git
+
