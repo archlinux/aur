@@ -1,0 +1,21 @@
+pkgbase = networkmanager-dmenu-git
+	pkgdesc = Control NetworkManager via dmenu
+	pkgver = r9.0a6fa27
+	pkgrel = 4
+	url = https://github.com/firecat53/nmcli-dmenu
+	install = networkmanager-dmenu.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = networkmanager
+	optdepends = dmenu: either dmenu or rofi is required
+	optdepends = rofi: either dmenu or rofi is required
+	optdepends = network-manager-applet: for the nm-connection-editor GUI
+	provides = networkmanager-dmenu
+	conflicts = networkmanager-dmenu
+	source = networkmanager-dmenu::git+https://github.com/firecat53/nmcli-dmenu.git
+	md5sums = SKIP
+
+pkgname = networkmanager-dmenu-git
+

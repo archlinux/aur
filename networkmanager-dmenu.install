@@ -1,0 +1,8 @@
+## arg 1:  the new package version
+post_install() {
+cat <<End-of-message
+
+To customize dmenu, copy /usr/share/doc/networkmanager-dmenu-git/config.ini.example into ~/.config/networkmanager-dmenu/config.ini and edit:
+    
+End-of-message
+}
