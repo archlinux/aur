@@ -1,0 +1,18 @@
+pkgbase = python-colorama-git
+	pkgdesc = Simple cross-plaform colored terminal text in Python 3
+	pkgver = 0.3.3.r116.97e2635
+	pkgrel = 2
+	url = https://github.com/tartley/colorama
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = python
+	depends = python-setuptools
+	depends = python-mock
+	provides = python-colorama
+	conflicts = python-colorama
+	source = git+https://github.com/tartley/colorama.git
+	sha256sums = SKIP
+
+pkgname = python-colorama-git
+
