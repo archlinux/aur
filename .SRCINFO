@@ -1,0 +1,15 @@
+pkgbase = python2-xstatic-jquery-ui
+	pkgdesc = XStatic-jquery-ui
+	pkgver = 1.11.0.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/XStatic-jquery-ui
+	arch = i686
+	arch = x86_64
+	makedepends = python2-setuptools
+	makedepends = python2-pip
+	depends = python2
+	source = https://pypi.python.org/packages/source/X/XStatic-jquery-ui/XStatic-jquery-ui-1.11.0.1.tar.gz
+	md5sums = 03d8ea7a0dab29d548e7bc195703b04f
+
+pkgname = python2-xstatic-jquery-ui
+
