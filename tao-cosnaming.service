@@ -1,0 +1,14 @@
+[Unit]
+Description=TAO Naming Service
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/run/tao/tao-cosnaming.pid
+EnvironmentFile=/etc/tao/tao-cosnaming.opt
+User=tao
+Group=tao
+ExecStart=/usr/bin/tao_cosnaming -p /run/tao/tao-cosnaming.pid $OPTIONS -ORBSvcConf /etc/tao/tao-cosnaming.conf -ORBDaemon
+
+[Install]
+WantedBy=multi-user.target

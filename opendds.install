@@ -1,0 +1,16 @@
+post_install(){
+  # new password and equal group allocated in system range
+  usr/bin/getent passwd tao >/dev/null 2>&1 || \
+  usr/bin/useradd  -K SYS_UID_MIN=100 -K SYS_UID_MAX=499 \
+                   -K SYS_GID_MIN=100 -K SYS_GID_MAX=499 \
+                   -K USERGROUPS_ENAB=yes -r -U -d /run/tao -s /bin/false tao
+  true
+}
+
+post_remove(){
+  usr/bin/getent passwd tao >/dev/null 2>&1 && usr/bin/userdel  tao
+  usr/bin/getent group  tao >/dev/null 2>&1 && usr/bin/groupdel tao
+  true
+}
+
+# vim:set ts=2 sw=2 ft=sh et:

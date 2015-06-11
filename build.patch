@@ -1,0 +1,130 @@
+diff -up src/DDS/dds/DdsDcps.mpc.orig src/DDS/dds/DdsDcps.mpc
+--- src/DDS/dds/DdsDcps.mpc.orig	2014-09-25 16:14:52.000000000 -0600
++++ src/DDS/dds/DdsDcps.mpc	2014-09-25 16:21:44.000000000 -0600
+@@ -202,8 +202,8 @@ project(OpenDDS_Dcps): taolib, core, cov
+   }
+ 
+   verbatim(gnuace, postinstall) {
+-"	echo export DDS_ROOT=$(INSTALL_PREFIX)/share/dds> $(INSTALL_PREFIX)/share/dds/dds-devel.sh"
+-"	@$(MKDIR) $(INSTALL_PREFIX)/share/dds/dds"
+-"	ln -sf $(INSTALL_PREFIX)/include/dds/Version.h $(INSTALL_PREFIX)/share/dds/dds"
++"	echo export DDS_ROOT=$(INSTALL_PREFIX)/share/dds> $(DESTDIR)$(INSTALL_PREFIX)/share/dds/dds-devel.sh"
++"	@$(MKDIR) $(DESTDIR)$(INSTALL_PREFIX)/share/dds/dds"
++"	ln -sf $(INSTALL_PREFIX)/include/dds/Version.h $(DESTDIR)$(INSTALL_PREFIX)/share/dds/dds"
+   }
+ }
+diff -up src/DDS/dds/idl/opendds_idl.mpc.orig src/DDS/dds/idl/opendds_idl.mpc
+--- src/DDS/dds/idl/opendds_idl.mpc.orig	2014-09-25 16:14:52.000000000 -0600
++++ src/DDS/dds/idl/opendds_idl.mpc	2014-09-25 16:21:44.000000000 -0600
+@@ -30,8 +30,8 @@ project: aceexe, crosscompile, install {
+   }
+ 
+   verbatim(gnuace, postinstall) {
+-"	@$(MKDIR) $(INSTALL_PREFIX)/share/dds/bin"
+-"	ln -sf $(INSTALL_PREFIX)/bin/opendds_idl $(INSTALL_PREFIX)/share/dds/bin"
++"	@$(MKDIR) $(DESTDIR)$(INSTALL_PREFIX)/share/dds/bin"
++"	ln -sf $(INSTALL_PREFIX)/bin/opendds_idl $(DESTDIR)$(INSTALL_PREFIX)/share/dds/bin"
+   }
+ 
+ }
+diff -up src/ORB/CIAO/ccm/CCM_stub.mpc.orig src/ORB/CIAO/ccm/CCM_stub.mpc
+--- src/ORB/CIAO/ccm/CCM_stub.mpc.orig	2014-09-25 16:12:04.000000000 -0600
++++ src/ORB/CIAO/ccm/CCM_stub.mpc	2014-09-25 16:19:03.000000000 -0600
+@@ -140,7 +140,7 @@ project(CCM_stub) : install, ciaolib_wit
+   }
+ 
+   verbatim(gnuace, postinstall) {
+-"	$(MKDIR) $(INSTALL_PREFIX)/share/ciao/ccm"
+-"	ln -sf $(INSTALL_PREFIX)/include/ccm/Components.idl $(INSTALL_PREFIX)/share/ciao/ccm"
++"	$(MKDIR) $(DESTDIR)$(INSTALL_PREFIX)/share/ciao/ccm"
++"	ln -sf $(INSTALL_PREFIX)/include/ccm/Components.idl $(DESTDIR)$(INSTALL_PREFIX)/share/ciao/ccm"
+   }
+ }
+diff -up src/ORB/CIAO/connectors/dds4ccm/idl/ndds/ndds_idltocpp_stub.mpc.orig src/ORB/CIAO/connectors/dds4ccm/idl/ndds/ndds_idltocpp_stub.mpc
+--- src/ORB/CIAO/connectors/dds4ccm/idl/ndds/ndds_idltocpp_stub.mpc.orig	2014-09-25 16:12:12.000000000 -0600
++++ src/ORB/CIAO/connectors/dds4ccm/idl/ndds/ndds_idltocpp_stub.mpc	2014-09-25 16:19:41.000000000 -0600
+@@ -22,7 +22,7 @@ project (CIAO_NDDS_idl_gen) : install, n
+   }
+ 
+   verbatim(gnuace, postinstall) {
+-"	cp ndds_dcps_instance_handle.idl $(INSTALL_PREFIX)/include/connectors/dds4ccm/idl/ndds/"
++"	cp ndds_dcps_instance_handle.idl $(DESTDIR)$(INSTALL_PREFIX)/include/connectors/dds4ccm/idl/ndds/"
+   }
+ }
+ 
+@@ -68,8 +68,8 @@ project (CIAO_NDDS_idl_install_only) {
+ 
+   verbatim(gnuace, bottom) {
+ "install:"
+-"	$(MKDIR) $(INSTALL_PREFIX)/share/ciao/connectors/dds4ccm/idl/ndds"
+-"	cp *.idl $(INSTALL_PREFIX)/share/ciao/connectors/dds4ccm/idl/ndds"
++"	$(MKDIR) $(DESTDIR)$(INSTALL_PREFIX)/share/ciao/connectors/dds4ccm/idl/ndds"
++"	cp *.idl $(DESTDIR)$(INSTALL_PREFIX)/share/ciao/connectors/dds4ccm/idl/ndds"
+   }
+ 
+ }
+diff -up src/ORB/CIAO/tools/IDL3_to_IDL2/IDL3_to_IDL2.mpc.orig src/ORB/CIAO/tools/IDL3_to_IDL2/IDL3_to_IDL2.mpc
+--- src/ORB/CIAO/tools/IDL3_to_IDL2/IDL3_to_IDL2.mpc.orig	2014-09-25 16:12:46.000000000 -0600
++++ src/ORB/CIAO/tools/IDL3_to_IDL2/IDL3_to_IDL2.mpc	2014-09-25 16:20:08.000000000 -0600
+@@ -69,7 +69,7 @@ project(TAO_IDL3_TO_IDL2_EXE) : aceexe,
+   }
+ 
+   verbatim(gnuace, postinstall) {
+-"	@$(MKDIR) $(INSTALL_PREFIX)/share/ace/bin"
+-"	ln -sf $(INSTALL_PREFIX)/bin/tao_idl3_to_idl2 $(INSTALL_PREFIX)/share/ace/bin"
++"	@$(MKDIR) $(DESTDIR)$(INSTALL_PREFIX)/share/ace/bin"
++"	ln -sf $(INSTALL_PREFIX)/bin/tao_idl3_to_idl2 $(DESTDIR)$(INSTALL_PREFIX)/share/ace/bin"
+   }
+ }
+diff -up src/ORB/CIAO/tools/IDL3_to_XMI/IDL3_TO_XMI.mpc.orig src/ORB/CIAO/tools/IDL3_to_XMI/IDL3_TO_XMI.mpc
+--- src/ORB/CIAO/tools/IDL3_to_XMI/IDL3_TO_XMI.mpc.orig	2014-09-25 16:12:46.000000000 -0600
++++ src/ORB/CIAO/tools/IDL3_to_XMI/IDL3_TO_XMI.mpc	2014-09-25 16:20:31.000000000 -0600
+@@ -64,7 +64,7 @@ project(CIAO_IDL3_TO_XMI_EXE) : aceexe,
+   }
+ 
+   verbatim(gnuace, postinstall) {
+-"	@$(MKDIR) $(INSTALL_PREFIX)/share/ace/bin"
+-"	ln -sf $(INSTALL_PREFIX)/bin/tao_idl3_to_xmi $(INSTALL_PREFIX)/share/ace/bin"
++"	@$(MKDIR) $(DESTDIR)$(INSTALL_PREFIX)/share/ace/bin"
++"	ln -sf $(INSTALL_PREFIX)/bin/tao_idl3_to_xmi $(DESTDIR)$(INSTALL_PREFIX)/share/ace/bin"
+   }
+ }
+diff -up src/ORB/DAnCE/dance/DAnCE_Properties.mpc.orig src/ORB/DAnCE/dance/DAnCE_Properties.mpc
+--- src/ORB/DAnCE/dance/DAnCE_Properties.mpc.orig	2014-09-25 16:12:47.000000000 -0600
++++ src/ORB/DAnCE/dance/DAnCE_Properties.mpc	2014-09-25 16:21:11.000000000 -0600
+@@ -24,8 +24,8 @@ project(DAnCE_Properties_IDL) : install,
+   }
+ 
+   verbatim(gnuace, postinstall) {
+-"	cp ../rules.dance.GNU $(INSTALL_PREFIX)/share/dance"
+-"	perl -i -pe's!\\$$[{(]DANCE_ROOT[})]!$(INSTALL_PREFIX)/include!g;' $(INSTALL_PREFIX)/share/dance/rules.dance.GNU"
+-"	echo export DANCE_ROOT=$(INSTALL_PREFIX)/share/dance> $(INSTALL_PREFIX)/share/dance/dance-devel.sh"
++"	cp ../rules.dance.GNU $(DESTDIR)$(INSTALL_PREFIX)/share/dance"
++"	perl -i -pe's!\\$$[{(]DANCE_ROOT[})]!$(INSTALL_PREFIX)/include!g;' $(DESTDIR)$(INSTALL_PREFIX)/share/dance/rules.dance.GNU"
++"	echo export DANCE_ROOT=$(INSTALL_PREFIX)/share/dance> $(DESTDIR)$(INSTALL_PREFIX)/share/dance/dance-devel.sh"
+   }
+ }
+diff -up src/ORB/DAnCE/dance/LocalityManager/Daemon/Locality_Manager.mpc.orig src/ORB/DAnCE/dance/LocalityManager/Daemon/Locality_Manager.mpc
+--- src/ORB/DAnCE/dance/LocalityManager/Daemon/Locality_Manager.mpc.orig	2014-09-25 16:12:47.000000000 -0600
++++ src/ORB/DAnCE/dance/LocalityManager/Daemon/Locality_Manager.mpc	2014-09-25 16:21:30.000000000 -0600
+@@ -34,6 +34,6 @@ project (DAnCE_LocalityManager_Exec) : d
+   }
+ 
+   verbatim(gnuace, postinstall) {
+-"	cp Locality_Manager_Task.cpp Locality_Manager.cpp Locality_Manager_Task.h $(INSTALL_PREFIX)/include/dance/LocalityManager/Daemon"
++"	cp Locality_Manager_Task.cpp Locality_Manager.cpp Locality_Manager_Task.h $(DESTDIR)$(INSTALL_PREFIX)/include/dance/LocalityManager/Daemon"
+   }
+ }
+diff -up src/ORB/TAO/TAO_IDL/tao_idl.mpc.orig src/ORB/TAO/TAO_IDL/tao_idl.mpc
+--- src/ORB/TAO/TAO_IDL/tao_idl.mpc.orig	2014-09-25 16:13:02.000000000 -0600
++++ src/ORB/TAO/TAO_IDL/tao_idl.mpc	2014-09-25 16:21:44.000000000 -0600
+@@ -36,7 +36,8 @@ project(TAO_IDL_EXE) : aceexe, install,
+ "	@$(MKDIR) $(DESTDIR)$(INSTALL_PREFIX)/share/ace/bin"
+ "	ln -sf $(INSTALL_PREFIX)/bin/tao_idl $(DESTDIR)$(INSTALL_PREFIX)/share/ace/bin"
+ "	@$(MKDIR) $(DESTDIR)$(INSTALL_PREFIX)/share/ace/lib"
+-"	ln -sf $(INSTALL_PREFIX)/$(INSTALL_LIB)/$(LIB_PREFIX)TAO_IDL_[FB]E.$(SOEXT) $(DESTDIR)$(INSTALL_PREFIX)/share/ace/lib"
++"	ln -sf $(INSTALL_PREFIX)/$(INSTALL_LIB)/$(LIB_PREFIX)TAO_IDL_FE.$(SOEXT) $(DESTDIR)$(INSTALL_PREFIX)/share/ace/lib"
++"	ln -sf $(INSTALL_PREFIX)/$(INSTALL_LIB)/$(LIB_PREFIX)TAO_IDL_BE.$(SOEXT) $(DESTDIR)$(INSTALL_PREFIX)/share/ace/lib"
+   }
+ 
+   Source_Files {
