@@ -1,0 +1,48 @@
+pkgbase = linux-lts310
+	pkgdesc = The linux-lts310 kernel and modules - 3.10 longterm stable kernel
+	pkgver = 3.10.76
+	pkgrel = 1
+	url = https://www.kernel.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.10.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.10.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.10.76.xz
+	source = https://www.kernel.org/pub/linux/kernel/v3.x/patch-3.10.76.sign
+	source = enable_haswell_pstate_driver.patch
+	source = linux-lts310.preset
+	source = change-default-console-loglevel.patch
+	source = config
+	source = config.x86_64
+	source = criu-no-expert.patch
+	sha256sums = df27fa92d27a9c410bfe6c4a89f141638500d7eadcca5cce578954efc2ad3544
+	sha256sums = SKIP
+	sha256sums = 0882a31148e5305d7f54925393d1e63afd271aa6770638a0c78b3d4322d69cee
+	sha256sums = SKIP
+	sha256sums = d7fada52453d12a24af9634024c36792697f97ce0bc6552939cd7b2344d00cd9
+	sha256sums = abd98bed3e743ba60809fe54a1a5c6b46b9f401844b0beef8da1708b1fe8196b
+	sha256sums = 56bd99e54429a25a144f2d221718b67f516344ffd518fd7dcdd752206ec5be69
+	sha256sums = 9f3ac423acd111057786196413798e46d7f88435d34a28eb6af882b197f11597
+	sha256sums = efc600449f588e8baff59f7595c885cedd5b83af8302aa9e87a4a8171e72bd50
+	sha256sums = daa75228a4c45a925cc5dbfeba884aa696a973a26af7695adc198c396474cbd5
+
+pkgname = linux-lts310
+	pkgdesc = The linux-lts310 kernel and modules - 3.10 longterm stable kernel
+	install = linux-lts310.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = modprobed_db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
+	backup = etc/mkinitcpio.d/linux-lts310.preset
+
+pkgname = linux-lts310-headers
+	pkgdesc = Header files and scripts to build modules for linux-lts310.
+	depends = linux-lts310
+
