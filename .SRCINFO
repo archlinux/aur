@@ -1,0 +1,12 @@
+pkgbase = awesome-themes-git
+	pkgdesc = Theme Collection for AwesomeWM, updated for 3.5.2. This is the successor of awesome34-themes-git
+	pkgver = 20131121
+	pkgrel = 2
+	url = https://github.com/mikar/awesome-themes
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = awesome
+
+pkgname = awesome-themes-git
+
