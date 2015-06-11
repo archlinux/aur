@@ -1,0 +1,8 @@
+--- src/indicator-sysmonitor.orig/indicator-sysmonitor	2012-08-23 22:33:49.206770349 +0200
++++ src/indicator-sysmonitor/indicator-sysmonitor	2012-08-23 22:31:50.366486753 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ # coding: utf-8
+ #
+ # A simple indicator applet displaying cpu and memory information

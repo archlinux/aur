@@ -1,0 +1,20 @@
+pkgbase = indicator-sysmonitor-bzr
+	pkgdesc = Show cpu and memory usage and also various temperature sensors.
+	pkgver = 0.4.1
+	pkgrel = 4
+	url = https://launchpad.net/indicator-sysmonitor
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libindicator3
+	depends = python2-psutil
+	depends = python
+	depends = bzr
+	optdepends = lm_sensors
+	optdepends = gnu-netcat
+	optdepends = hddtemp
+	source = python2.patch
+	md5sums = fcaed89339fe394ddbcc161157fdb490
+
+pkgname = indicator-sysmonitor-bzr
+
