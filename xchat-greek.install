@@ -1,0 +1,21 @@
+# Message displayed for a fresh install.
+post_install()
+{
+  echo "================================================================="
+  echo "The script is installed in /usr/lib/[he]xchat/plugins/. You must"
+  echo "copy it in \$HOME/.xchat2/ or \$HOME/.config/hexchat/ and edit"
+  echo "the \$codepage variable to suit your needs. You also MUST set the"
+  echo "xchat/hexchat charset to utf8 (/charset UTF8 )"
+  echo "================================================================="
+}
+
+# Message for an update.
+post_upgrade()
+{
+  echo "================================================================="
+  echo "The script is installed in /usr/lib/[he]xchat/plugins/. You must"
+  echo "copy it in \$HOME/.xchat2/ or \$HOME/.config/hexchat/ and edit"
+  echo "the \$codepage variable to suit your needs. You also MUST set the"
+  echo "xchat/hexchat charset to utf8 (/charset UTF8 )"
+  echo "================================================================="
+}
