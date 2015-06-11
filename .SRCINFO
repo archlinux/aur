@@ -1,0 +1,20 @@
+pkgbase = libbobcat
+	pkgdesc = Bobcat (Brokken's Own Base Classes And Templates) library
+	pkgver = 3.25.01
+	pkgrel = 1
+	url = http://bobcat.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = icmake
+	makedepends = openssl
+	makedepends = libmilter
+	makedepends = libx11
+	makedepends = yodl
+	depends = openssl
+	depends = libx11
+	source = http://downloads.sourceforge.net/project/bobcat/bobcat/3.25.01/bobcat_3.25.01.orig.tar.gz
+	md5sums = df15f4b981df4f423c408d31198d94c5
+
+pkgname = libbobcat
+
