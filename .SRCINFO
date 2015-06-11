@@ -1,0 +1,14 @@
+pkgbase = gkrelltop
+	pkgdesc = Displays the top-x cpu hogging tasks
+	pkgver = 2.2.13
+	pkgrel = 4
+	url = http://sourceforge.net/projects/gkrelltop
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gkrellm
+	source = http://downloads.sourceforge.net/gkrelltop/gkrelltop_2.2.13.orig.tar.gz
+	md5sums = 53994487dd5727348b9950b7f2896756
+
+pkgname = gkrelltop
+
