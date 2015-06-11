@@ -1,0 +1,17 @@
+pkgbase = vim-codepad
+	pkgdesc = Post the contents of your current buffer to the pastebin service at codepad.org
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://www.vim.org/scripts/script.php?script_id=2298
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = custom
+	depends = gvim
+	source = vim-codepad::http://www.vim.org/scripts/download_script.php?src_id=13438
+	source = license.txt
+	md5sums = a08286132612828b01d5257d4a98cc3c
+	md5sums = efbd5986e691ce8c876fb86e8f5961ea
+
+pkgname = vim-codepad
+
