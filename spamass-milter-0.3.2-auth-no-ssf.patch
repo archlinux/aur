@@ -1,0 +1,28 @@
+This change is to help users with Postfix that aren't using the -I option
+to not pass mail from authenticated users through SpamAssassin. Postfix,
+unlike Sendmail, does not provide the {auth_ssf} macro, so in the case
+where mail is from an authenticated user, the modified code can now add
+an (authenticated) hint in the dummy Received: header (where Sendmail would
+add (authenticated bits=nnn)), and this is scored favourably by SpamAssassin.
+
+http://bugzilla.redhat.com/730308
+
+--- spamass-milter-0.3.2/spamass-milter.cpp
++++ spamass-milter-0.3.2/spamass-milter.cpp
+@@ -1046,9 +1046,14 @@
+ 
+ 		rec_header = (string) "Received: from " + macro_s + " (" + macro__ + ")\r\n\t";
+ 
+-		if (strlen(macro_auth_ssf))
++		if (strlen(macro_auth_authen))
+ 		{
+-			rec_header += (string) "(authenticated bits=" + macro_auth_ssf + ")\r\n\t";
++			rec_header += (string) "(authenticated";
++			if (strlen(macro_auth_ssf))
++			{
++				rec_header += (string) " bits=" + macro_auth_ssf;
++			}
++			rec_header += (string) ")\r\n\t";
+ 		}
+ 
+ 		rec_header += (string) "by " + macro_j + " (" + macro_v + "/" + macro_Z + ") with " +

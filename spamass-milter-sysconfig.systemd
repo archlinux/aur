@@ -1,0 +1,14 @@
+### Override for your different local config if necessary
+#SOCKET=/run/spamass-milter/spamass-milter.sock
+
+### You may add configuration parameters here, see spamass-milter(1)
+###
+### Note that the -x option for expanding aliases and virtusertable entries
+### only works if spamass-milter is run as root; you will need to use
+### spamass-milter-root.service instead of spamass-milter.service if you
+### wish to do this but otherwise it's best to run as the unprivileged user
+### sa-milt by using the normal spamass-milter.service
+#EXTRA_FLAGS="-m -r 15"
+
+# Some sane defaults (don't modify message too much; reject if score is too high; ignore authenticated senders; ignore outgoing mail)
+EXTRA_FLAGS="-m -r 15 -I -i 127.0.0.1"

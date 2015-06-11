@@ -1,0 +1,104 @@
+Add option -g group to have the milter create a group-writeable socket
+for communication with the MTA and set the GID of the socket to the
+specified group. This makes it possible to use the milter via a
+unix-domain socket with Postfix as the MTA (Postfix doesn't run as
+root and would otherwise be unable to use the socket).
+
+http://bugzilla.redhat.com/452248
+
+diff -up spamass-milter-0.3.1/spamass-milter.cpp.group spamass-milter-0.3.1/spamass-milter.cpp
+--- spamass-milter-0.3.1/spamass-milter.cpp.group	2010-03-24 13:30:19.030834527 +0000
++++ spamass-milter-0.3.1/spamass-milter.cpp	2010-03-24 13:40:54.712898107 +0000
+@@ -89,6 +89,8 @@
+ #endif
+ #include <errno.h>
+ 
++#include <grp.h>
++
+ // C++ includes
+ #include <cstdio>
+ #include <cstddef>
+@@ -180,8 +182,9 @@ int
+ main(int argc, char* argv[])
+ {
+    int c, err = 0;
+-   const char *args = "fd:mMp:P:r:u:D:i:Ib:B:e:x";
++   const char *args = "fd:mMp:P:r:u:D:i:Ib:B:e:xg:";
+    char *sock = NULL;
++   char *group = NULL;
+    bool dofork = false;
+    char *pidfilename = NULL;
+    FILE *pidfile = NULL;
+@@ -228,6 +231,9 @@ main(int argc, char* argv[])
+ 			case 'p':
+ 				sock = strdup(optarg);
+ 				break;
++			case 'g':
++				group = strdup(optarg);
++				break;
+ 			case 'P':
+ 				pidfilename = strdup(optarg);
+ 				break;
+@@ -287,6 +293,7 @@ main(int argc, char* argv[])
+       cout << "                      [-P pidfile] [-r nn] [-u defaultuser] [-x]" << endl;
+       cout << "                      [-- spamc args ]" << endl;
+       cout << "   -p socket: path to create socket" << endl;
++      cout << "   -g group: socket group (perms to 660 as well)" << endl;
+       cout << "   -b bucket: redirect spam to this mail address.  The orignal" << endl;
+       cout << "          recipient(s) will not receive anything." << endl;
+       cout << "   -B bucket: add this mail address as a BCC recipient of spam." << endl;
+@@ -354,6 +361,30 @@ main(int argc, char* argv[])
+ 	} else {
+       debug(D_MISC, "smfi_register succeeded");
+    }
++
++	if (group)
++	{
++		struct group *gr;
++
++		(void) smfi_opensocket(0);
++		gr = getgrnam(group);
++		if (gr)
++		{
++			int rc;
++			rc = chown(sock, (uid_t)-1, gr->gr_gid);
++			if (!rc)
++			{
++				(void) chmod(sock, 0660);
++			} else {
++				perror("group option, chown");
++				exit(EX_NOPERM);
++			}
++		} else { 
++			perror("group option, getgrnam");
++			exit(EX_NOUSER);
++		}
++	}
++
+ 	debug(D_ALWAYS, "spamass-milter %s starting", PACKAGE_VERSION);
+ 	err = smfi_main();
+ 	debug(D_ALWAYS, "spamass-milter %s exiting", PACKAGE_VERSION);
+diff -up spamass-milter-0.3.1/spamass-milter.1.in.group spamass-milter-0.3.1/spamass-milter.1.in
+--- spamass-milter-0.3.1/spamass-milter.1.in.group	2010-03-24 13:30:19.026834927 +0000
++++ spamass-milter-0.3.1/spamass-milter.1.in	2010-03-24 13:30:19.033834685 +0000
+@@ -13,6 +13,7 @@
+ .Op Fl D Ar host
+ .Op Fl e Ar defaultdomain
+ .Op Fl f
++.Op Fl g Ar group
+ .Op Fl i Ar networks
+ .Op Fl I
+ .Op Fl m
+@@ -108,6 +109,12 @@ flag.
+ Causes
+ .Nm
+ to fork into the background.
++.It Fl g Ar group
++Makes the socket for communication with the MTA group-writable (mode 0750)
++and sets the socket's group to
++.Ar group .
++This option is intended for use with MTA's like Postfix that do not run as
++root, and is incompatible with Sendmail usage.
+ .It Fl i Ar networks
+ Ignores messages if the originating IP is in the network(s) listed.
+ The message will be passed through without calling SpamAssassin at all.

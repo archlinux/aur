@@ -1,0 +1,29 @@
+# Note: this unit file runs spamass-milter as the unprivileged user sa-milt,
+# which is not compatible with the milter's -x option for performing
+# virtusertable and alias expansion. If you are not using the -x option,
+# there is no need for the milter to run as root and it is best not to do so.
+# However, if you are using the -x option, you will need to run the milter as
+# root and should use the spamass-milter-root.service unit instead of this one.
+
+[Unit]
+Description = Mail filter for SpamAssassin
+Wants = spamassassin.service
+After = syslog.target
+After = local-fs.target
+After = network.target
+After = spamassassin.service
+Before = sendmail.service
+Before = postfix.service
+Conflicts = spamass-milter-root.service
+
+[Service]
+Type = simple
+UMask = 0022
+Environment = SOCKET=/run/spamass-milter/spamass-milter.sock SOCKET_OPTIONS= EXTRA_FLAGS=
+EnvironmentFile = -/etc/spamass-milter
+EnvironmentFile = -/etc/spamass-milter-postfix
+User = sa-milt
+ExecStart = /usr/bin/spamass-milter $SOCKET_OPTIONS -p $SOCKET $EXTRA_FLAGS
+
+[Install]
+WantedBy = multi-user.target

@@ -1,0 +1,248 @@
+Fix compiler warnings in recent gcc versions, mainly relating to deprecated
+conversions from string constants to char *.
+
+Most of these relate to missing "const" declarations in the libmilter API
+so I just used const_cast to clear them. For non libmilter-related issues,
+I tried to fix them more cleanly.
+
+The only other change of note is to check the result of the fwrite()
+function and log a warning if all of the data wasn't written (this is in
+the spambucket code).
+
+diff -up spamass-milter-0.3.2/spamass-milter.cpp.syntax spamass-milter-0.3.2/spamass-milter.cpp
+--- spamass-milter-0.3.2/spamass-milter.cpp.syntax	2011-02-14 21:53:02.000000000 +0000
++++ spamass-milter-0.3.2/spamass-milter.cpp	2011-02-15 10:09:59.748036059 +0000
+@@ -129,9 +129,11 @@ int daemon(int nochdir, int noclose);
+ 
+ static const char Id[] = "$Id: spamass-milter.cpp,v 1.94 2011/02/14 21:50:53 dnelson Exp $";
+ 
++static char FilterName[] = "SpamAssassin";
++
+ struct smfiDesc smfilter =
+   {
+-    "SpamAssassin", // filter name
++    FilterName, // filter name
+     SMFI_VERSION,   // version code -- leave untouched
+     SMFIF_ADDHDRS|SMFIF_CHGHDRS|SMFIF_CHGBODY,  // flags
+     mlfi_connect, // info filter callback
+@@ -357,7 +359,7 @@ main(int argc, char* argv[])
+ // }}}
+ 
+ /* Update a header if SA changes it, or add it if it is new. */
+-void update_or_insert(SpamAssassin* assassin, SMFICTX* ctx, string oldstring, t_setter setter, char *header )
++void update_or_insert(SpamAssassin* assassin, SMFICTX* ctx, string oldstring, t_setter setter, const char *header )
+ {
+ 	string::size_type eoh1 = assassin->d().find("\n\n");
+ 	string::size_type eoh2 = assassin->d().find("\n\r\n");
+@@ -383,12 +385,12 @@ void update_or_insert(SpamAssassin* assa
+ 			if (oldsize > 0)
+ 			{
+ 				debug(D_UORI, "u_or_i: changing");
+-				smfi_chgheader(ctx, header, 1, newstring.size() > 0 ? 
++				smfi_chgheader(ctx, const_cast<char*>(header), 1, newstring.size() > 0 ? 
+ 					cstr : NULL );
+ 			} else if (newstring.size() > 0)
+ 			{
+ 				debug(D_UORI, "u_or_i: inserting");
+-				smfi_addheader(ctx, header, cstr);
++				smfi_addheader(ctx, const_cast<char*>(header), cstr);
+ 			}
+ 		} else
+ 		{
+@@ -448,7 +450,7 @@ assassinate(SMFICTX* ctx, SpamAssassin* 
+ 	if (do_reject)
+ 	{
+ 		debug(D_MISC, "Rejecting");
+-		smfi_setreply(ctx, "550", "5.7.1", "Blocked by SpamAssassin");
++		smfi_setreply(ctx, const_cast<char*>("550"), const_cast<char*>("5.7.1"), const_cast<char*>("Blocked by SpamAssassin"));
+ 
+ 
+ 		if (flag_bucket)
+@@ -457,14 +459,11 @@ assassinate(SMFICTX* ctx, SpamAssassin* 
+ 			   send another copy.  The milter API will not let you send the
+ 			   message AND return a failure code to the sender, so this is
+ 			   the only way to do it. */
+-			char *popen_argv[3];
++			char sendmail_prog[] = SENDMAIL;
++			char * const popen_argv[3] = { sendmail_prog, spambucket, NULL };
+ 			FILE *p;
+ 			pid_t pid;
+ 
+-			popen_argv[0] = SENDMAIL;
+-			popen_argv[1] = spambucket;
+-			popen_argv[2] = NULL;
+-			
+ 			debug(D_COPY, "calling %s %s", SENDMAIL, spambucket);
+ 			p = popenv(popen_argv, "w", &pid);
+ 			if (!p)
+@@ -473,7 +472,10 @@ assassinate(SMFICTX* ctx, SpamAssassin* 
+ 			} else
+ 			{
+ 				// Send message provided by SpamAssassin
+-				fwrite(assassin->d().c_str(), assassin->d().size(), 1, p);
++				if (fwrite(assassin->d().c_str(), assassin->d().size(), 1, p) != 1)
++				{
++					debug(D_COPY, "fwrite incomplete (%s) when copying to spambucket", strerror(errno));
++				}
+ 				fclose(p); p = NULL;
+ 				waitpid(pid, NULL, 0);
+ 			}
+@@ -494,7 +496,7 @@ assassinate(SMFICTX* ctx, SpamAssassin* 
+                 // time. Note, this may generate multiple X-Spam-Orig-To
+                 // headers, but that's okay.
+                 while( !assassin->recipients.empty()) {
+-                  if ( smfi_addheader( ctx, "X-Spam-Orig-To", (char *)assassin->recipients.front().c_str()) != MI_SUCCESS ) {
++                  if ( smfi_addheader( ctx, const_cast<char *>("X-Spam-Orig-To"), (char *)assassin->recipients.front().c_str()) != MI_SUCCESS ) {
+                         throw string( "Failed to save recipient" );
+                   }
+ 
+@@ -737,7 +739,7 @@ mlfi_envfrom(SMFICTX* ctx, char** envfro
+ {
+   SpamAssassin* assassin;
+   struct context *sctx = (struct context *)smfi_getpriv(ctx);
+-  char *queueid;
++  const char *queueid;
+ 
+   if (sctx == NULL)
+   {
+@@ -764,7 +766,7 @@ mlfi_envfrom(SMFICTX* ctx, char** envfro
+   // remember the MAIL FROM address
+   assassin->set_from(string(envfrom[0]));
+   
+-  queueid=smfi_getsymval(ctx,"i");
++  queueid=smfi_getsymval(ctx, const_cast<char *>("i"));
+   if (!queueid)
+   {
+     queueid="unknown";
+@@ -802,14 +804,11 @@ mlfi_envrcpt(SMFICTX* ctx, char** envrcp
+ 		/* open a pipe to sendmail so we can do address expansion */
+ 
+ 		char buf[1024];
+-		char *popen_argv[4];
++		char sendmail_prog[] = SENDMAIL;
++		char sendmail_mode[] = "-bv";
++		char * const popen_argv[4] = { sendmail_prog, sendmail_mode, envrcpt[0], NULL };
+ 		pid_t pid;
+ 		
+-		popen_argv[0] = SENDMAIL;
+-		popen_argv[1] = "-bv";
+-		popen_argv[2] = envrcpt[0];
+-		popen_argv[3] = NULL;
+-
+ 		debug(D_RCPT, "calling %s -bv %s", SENDMAIL, envrcpt[0]);
+ 
+ 		p = popenv(popen_argv, "r", &pid);
+@@ -871,7 +870,7 @@ mlfi_envrcpt(SMFICTX* ctx, char** envrcp
+ 		char date[32];
+ 
+ 		/* RFC 822 date. */
+-		macro_b = smfi_getsymval(ctx, "b");
++		macro_b = smfi_getsymval(ctx, const_cast<char *>("b"));
+ 		if (!macro_b)                                  
+ 		{
+ 			time_t tval;
+@@ -882,7 +881,7 @@ mlfi_envrcpt(SMFICTX* ctx, char** envrcp
+ 		}
+ 
+ 		/* queue ID */
+-		macro_i = smfi_getsymval(ctx, "i");
++		macro_i = smfi_getsymval(ctx, const_cast<char *>("i"));
+ 		if (!macro_i)
+ 		{
+ 			macro_i = "unknown";
+@@ -890,7 +889,7 @@ mlfi_envrcpt(SMFICTX* ctx, char** envrcp
+ 		}
+ 
+ 		/* FQDN of this site */
+-		macro_j = smfi_getsymval(ctx, "j");
++		macro_j = smfi_getsymval(ctx, const_cast<char *>("j"));
+ 		if (!macro_j)
+ 		{
+ 			macro_j = "localhost";
+@@ -898,7 +897,7 @@ mlfi_envrcpt(SMFICTX* ctx, char** envrcp
+ 		}
+ 
+ 		/* Protocol used to receive the message */
+-		macro_r = smfi_getsymval(ctx, "r");
++		macro_r = smfi_getsymval(ctx, const_cast<char *>("r"));
+ 		if (!macro_r)
+ 		{
+ 			macro_r = "SMTP";
+@@ -910,14 +909,14 @@ mlfi_envrcpt(SMFICTX* ctx, char** envrcp
+ 		   fixed.  Until that day, use the value remembered by
+ 		   mlfi_helo()
+ 		*/
+-		macro_s = smfi_getsymval(ctx, "s");
++		macro_s = smfi_getsymval(ctx, const_cast<char *>("s"));
+ 		if (!macro_s)
+ 			macro_s = sctx->helo;
+ 		if (!macro_s)
+ 			macro_s = "nohelo";
+ 
+ 		/* Sendmail binary version */
+-		macro_v = smfi_getsymval(ctx, "v");
++		macro_v = smfi_getsymval(ctx, const_cast<char *>("v"));
+ 		if (!macro_v)
+ 		{
+ 			macro_v = "8.13.0";
+@@ -925,7 +924,7 @@ mlfi_envrcpt(SMFICTX* ctx, char** envrcp
+ 		}
+ 
+ 		/* Sendmail .cf version */
+-		macro_Z = smfi_getsymval(ctx, "Z");
++		macro_Z = smfi_getsymval(ctx, const_cast<char *>("Z"));
+ 		if (!macro_Z)
+ 		{
+ 			macro_Z = "8.13.0";
+@@ -933,7 +932,7 @@ mlfi_envrcpt(SMFICTX* ctx, char** envrcp
+ 		}
+ 
+ 		/* Validated sending site's address */
+-		macro__ = smfi_getsymval(ctx, "_");
++		macro__ = smfi_getsymval(ctx, const_cast<char *>("_"));
+ 		if (!macro__)
+ 		{
+ 			macro__ = "unknown";
+@@ -1321,10 +1320,10 @@ void SpamAssassin::Connect()
+       // XXX arbitrary 100-argument max
+       int argc = 0;
+       char** argv = (char**) malloc(100*sizeof(char*));
+-      argv[argc++] = SPAMC;
++      argv[argc++] = strdup(SPAMC);
+       if (flag_sniffuser) 
+       {
+-        argv[argc++] = "-u";
++        argv[argc++] = strdup("-u");
+         if ( expandedrcpt.size() != 1 )
+         {
+           // More (or less?) than one recipient, so we pass the default
+@@ -1349,7 +1348,7 @@ void SpamAssassin::Connect()
+       }
+       if (spamdhost) 
+       {
+-        argv[argc++] = "-d";
++        argv[argc++] = strdup("-d");
+         argv[argc++] = spamdhost;
+       }
+       if (spamc_argc)
+@@ -2091,7 +2090,7 @@ char *strlwr(char *str)
+ }
+ 
+ /* Log a message about missing milter macros, but only the first time */
+-void warnmacro(char *macro, char *scope)
++void warnmacro(const char *macro, const char *scope)
+ {
+ 	if (warnedmacro)
+ 		return;
+diff -up spamass-milter-0.3.2/spamass-milter.h.syntax spamass-milter-0.3.2/spamass-milter.h
+--- spamass-milter-0.3.2/spamass-milter.h.syntax	2011-02-14 21:53:02.000000000 +0000
++++ spamass-milter-0.3.2/spamass-milter.h	2011-02-15 10:06:33.788736593 +0000
+@@ -185,7 +185,7 @@ void parse_networklist(char *string, str
+ int ip_in_networklist(struct in_addr ip, struct networklist *list);
+ void parse_debuglevel(char* string);
+ char *strlwr(char *str);
+-void warnmacro(char *macro, char *scope);
++void warnmacro(const char *macro, const char *scope);
+ FILE *popenv(char *const argv[], const char *type, pid_t *pid);
+ 
+ #endif

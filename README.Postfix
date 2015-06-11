@@ -1,0 +1,13 @@
+Installing the spamass-milter-postfix package changes the default behaviour
+of spamass-milter to be more Postfix-friendly, i.e.:
+
+   The Unix-domain socket used for MTA communication is changed to
+   /var/run/spamass-milter/postfix/sock, and that socket is
+   writable by the postfix group.
+
+To configure Postfix to use the milter, add to /etc/postfix/main.cf:
+
+  smtpd_milters = unix:/var/run/spamass-milter/postfix/sock
+
+For further information, see:
+http://www.postfix.org/MILTER_README.html

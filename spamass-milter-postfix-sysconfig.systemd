@@ -1,0 +1,5 @@
+# For Postfix support, use a postfix-group-writable socket
+# for communication with the MTA
+# This uses a Debian-style chrooted postfix
+SOCKET="/var/spool/postfix/spamass/spamass.sock"
+SOCKET_OPTIONS="-g postfix"

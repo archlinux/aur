@@ -1,0 +1,91 @@
+diff -up spamass-milter-0.3.1/spamass-milter.cpp.authuser spamass-milter-0.3.1/spamass-milter.cpp
+--- spamass-milter-0.3.1/spamass-milter.cpp.authuser	2010-03-23 21:04:56.976920217 +0000
++++ spamass-milter-0.3.1/spamass-milter.cpp	2010-03-23 21:07:12.508020535 +0000
+@@ -172,6 +172,7 @@ char *spambucket;
+ bool flag_full_email = false;		/* pass full email address to spamc */
+ bool flag_expand = false;	/* alias/virtusertable expansion */
+ bool warnedmacro = false;	/* have we logged that we couldn't fetch a macro? */
++bool ignore_authenticated_senders = false;	/* authenticated users bypass spam checks */
+ 
+ // {{{ main()
+ 
+@@ -179,7 +180,7 @@ int
+ main(int argc, char* argv[])
+ {
+    int c, err = 0;
+-   const char *args = "fd:mMp:P:r:u:D:i:b:B:e:x";
++   const char *args = "fd:mMp:P:r:u:D:i:Ib:B:e:x";
+    char *sock = NULL;
+    bool dofork = false;
+    char *pidfilename = NULL;
+@@ -211,6 +212,10 @@ main(int argc, char* argv[])
+ 				debug(D_MISC, "Parsing ignore list");
+ 				parse_networklist(optarg, &ignorenets);
+ 				break;
++			case 'I':
++				debug(D_MISC, "Ignore authenticated senders");
++				ignore_authenticated_senders = true;
++				break;
+ 			case 'm':
+ 				dontmodifyspam = true;
+ 				smfilter.xxfi_flags &= ~SMFIF_CHGBODY;
+@@ -278,7 +283,7 @@ main(int argc, char* argv[])
+       cout << PACKAGE_NAME << " - Version " << PACKAGE_VERSION << endl;
+       cout << "SpamAssassin Sendmail Milter Plugin" << endl;
+       cout << "Usage: spamass-milter -p socket [-b|-B bucket] [-d xx[,yy...]] [-D host]" << endl;
+-      cout << "                      [-e defaultdomain] [-f] [-i networks] [-m] [-M]" << endl;
++      cout << "                      [-e defaultdomain] [-f] [-i networks] [-I] [-m] [-M]" << endl;
+       cout << "                      [-P pidfile] [-r nn] [-u defaultuser] [-x]" << endl;
+       cout << "                      [-- spamc args ]" << endl;
+       cout << "   -p socket: path to create socket" << endl;
+@@ -292,6 +297,7 @@ main(int argc, char* argv[])
+       cout << "   -f: fork into background" << endl;
+       cout << "   -i: skip (ignore) checks from these IPs or netblocks" << endl;
+       cout << "          example: -i 192.168.12.5,10.0.0.0/8,172.16.0.0/255.255.0.0" << endl;
++      cout << "   -I: skip (ignore) checks if sender is authenticated" << endl;
+       cout << "   -m: don't modify body, Content-type: or Subject:" << endl;
+       cout << "   -M: don't modify the message at all" << endl;
+       cout << "   -P pidfile: Put processid in pidfile" << endl;
+@@ -746,6 +752,22 @@ mlfi_envfrom(SMFICTX* ctx, char** envfro
+   }
+   /* debug(D_ALWAYS, "ZZZ got private context %p", sctx); */
+ 
++  if (ignore_authenticated_senders)
++  {
++    char *auth_authen;
++
++    auth_authen = smfi_getsymval(ctx, const_cast<char *>("{auth_authen}"));
++    debug(D_MISC, "auth_authen=%s", auth_authen ?: "<unauthenticated>");
++
++    if (auth_authen)
++    {
++      debug(D_MISC, "sender authenticated (%s) - accepting message",
++	    auth_authen);
++      debug(D_FUNC, "mlfi_envfrom: exit ignore");
++      return SMFIS_ACCEPT;
++    }
++  }
++
+   debug(D_FUNC, "mlfi_envfrom: enter");
+   try {
+     // launch new SpamAssassin
+diff -up spamass-milter-0.3.1/spamass-milter.1.in.authuser spamass-milter-0.3.1/spamass-milter.1.in
+--- spamass-milter-0.3.1/spamass-milter.1.in.authuser	2004-03-18 18:37:08.000000000 +0000
++++ spamass-milter-0.3.1/spamass-milter.1.in	2010-03-23 21:06:27.148897685 +0000
+@@ -14,6 +14,7 @@
+ .Op Fl e Ar defaultdomain
+ .Op Fl f
+ .Op Fl i Ar networks
++.Op Fl I
+ .Op Fl m
+ .Op Fl M
+ .Op Fl P Ar pidfile
+@@ -119,6 +120,8 @@ Multiple
+ flags will append to the list.
+ For example, if you list all your internal networks, no outgoing emails
+ will be filtered.
++.It Fl I
++Ignores messages if the sender has authenticated via SMTP AUTH.
+ .It Fl m
+ Disables modification of the 
+ .Ql Subject: 

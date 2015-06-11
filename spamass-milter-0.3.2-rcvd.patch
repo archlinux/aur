@@ -1,0 +1,23 @@
+The code in spamass-milter.cpp that tries to create a
+Sendmail-compatible header was broken and generated a header
+that was incorrectly parsed by SpamAssassin.
+
+This is mostly fixed now apart from the space that needs
+adding prior to the "(" between macro_j and macro_v.
+
+https://savannah.nongnu.org/bugs/index.php?17178
+http://bugs.debian.org/510665
+http://bugzilla.redhat.com/496763
+
+diff -up spamass-milter-0.3.2/spamass-milter.cpp.rcvd spamass-milter-0.3.2/spamass-milter.cpp
+--- spamass-milter-0.3.2/spamass-milter.cpp.rcvd	2011-02-15 10:46:55.000000000 +0000
++++ spamass-milter-0.3.2/spamass-milter.cpp	2011-02-15 10:50:25.538111680 +0000
+@@ -966,7 +966,7 @@ mlfi_envrcpt(SMFICTX* ctx, char** envrcp
+ 
+ 		assassin->output((string)
+ 			"Received: from "+macro_s+" ("+macro__+")\r\n\t"+
+-			"by "+macro_j+"("+macro_v+"/"+macro_Z+") with "+macro_r+" id "+macro_i+";\r\n\t"+
++			"by "+macro_j+" ("+macro_v+"/"+macro_Z+") with "+macro_r+" id "+macro_i+";\r\n\t"+
+ 			macro_b+"\r\n\t"+
+ 			"(envelope-from "+assassin->from()+")\r\n");
+ 
