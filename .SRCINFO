@@ -1,0 +1,15 @@
+pkgbase = python2-semantic-version
+	pkgdesc = Semantic version comparison for Python
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = https://github.com/rbarrois/python-semanticversion
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/s/semantic_version/semantic_version-2.4.1.tar.gz
+	sha256sums = 33018ab2807ba395c418b4633993a7572b8a4b3e924823f5828788023b3c9b30
+
+pkgname = python2-semantic-version
+
