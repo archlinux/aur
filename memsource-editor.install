@@ -1,0 +1,8 @@
+post_install() {
+  gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+  update-mime-database /usr/share/mime
+}
+
+post_remove() {
+  post_install
+}
