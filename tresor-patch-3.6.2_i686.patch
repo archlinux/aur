@@ -1,0 +1,91 @@
+--- tresor-patch-3.6.2_i686	2014-11-10 12:24:34.130000533 +0000
++++ tresor-patch-3.14.24_i686	2014-11-11 13:23:39.146667003 +0000
+@@ -4,11 +4,11 @@
+ +++ b/Makefile
+ @@ -1,7 +1,7 @@
+  VERSION = 3
+- PATCHLEVEL = 6
+- SUBLEVEL = 2
++ PATCHLEVEL = 14
++ SUBLEVEL = 40
+ -EXTRAVERSION =
+ +EXTRAVERSION = -tresor0.3
+- NAME = Terrified Chipmunk
++ NAME = Remembering Coco
+  
+  # *DOCUMENTATION*
+ diff --git a/arch/x86/crypto/Makefile b/arch/x86/crypto/Makefile
+@@ -23,10 +23,11 @@
+  obj-$(CONFIG_CRYPTO_GHASH_CLMUL_NI_INTEL) += ghash-clmulni-intel.o
+  
+  obj-$(CONFIG_CRYPTO_CRC32C_INTEL) += crc32c-intel.o
+-@@ -41,5 +42,6 @@ serpent-sse2-x86_64-y := serpent-sse2-x86_64-asm_64.o serpent_sse2_glue.o
+- serpent-avx-x86_64-y := serpent-avx-x86_64-asm_64.o serpent_avx_glue.o
++@@ -41,6 +42,7 @@ endif
++ endif
+  
+  aesni-intel-y := aesni-intel_asm.o aesni-intel_glue.o fpu.o
++ aesni-intel-$(CONFIG_64BIT) += aesni-intel_avx-x86_64.o
+ +tresor-y := tresor_asm.o tresor_glue.o tresor_key.o
+  ghash-clmulni-intel-y := ghash-clmulni-intel_asm.o ghash-clmulni-intel_glue.o
+  sha1-ssse3-y := sha1_ssse3_asm.o sha1_ssse3_glue.o
+--- tresor-patch-3.6.2_i686	2014-11-10 12:24:34.130000533 +0000
++++ tmp	2014-11-11 13:23:39.146667003 +0000
+@@ -1321,8 +1321,8 @@
+ index c4c6a5c..3df6d99 100644
+ --- a/arch/x86/kernel/ptrace.c
+ +++ b/arch/x86/kernel/ptrace.c
+-@@ -673,6 +673,10 @@ static unsigned long ptrace_get_debugreg(struct task_struct *tsk, int n)
+- 	struct thread_struct *thread = &(tsk->thread);
++@@ -673,6 +673,10 @@ static unsigned long ptrace_get_debugreg
++ 	struct thread_struct *thread = &tsk->thread;
+  	unsigned long val = 0;
+  
+ +#ifdef CONFIG_CRYPTO_TRESOR
+@@ -1330,32 +1330,35 @@
+ +#endif
+ +
+  	if (n < HBP_NUM) {
+- 		struct perf_event *bp;
++ 		struct perf_event *bp = thread->ptrace_bps[n];
+  
+-@@ -705,6 +709,10 @@ static int ptrace_set_breakpoint_addr(struct task_struct *tsk, int nr,
+- 	if (ptrace_get_breakpoints(tsk) < 0)
+- 		return -ESRCH;
++@@ -726,6 +730,10 @@ static int ptrace_set_breakpoint_addr(st
++ 	struct perf_event *bp = t->ptrace_bps[nr];
++ 	int err = 0;
+  
+ +#ifdef CONFIG_CRYPTO_TRESOR
+ +	return -EBUSY;
+ +#endif
+ +
+- 	if (!t->ptrace_bps[nr]) {
+- 		ptrace_breakpoint_init(&attr);
++ 	if (!bp) {
+  		/*
+-@@ -759,6 +767,12 @@ static int ptrace_set_debugreg(struct task_struct *tsk, int n,
++ 		 * Put stub len and type to create an inactive but correct bp.
++@@ -759,6 +767,15 @@ static int ptrace_set_debugreg(struct task_struct *tsk, int n,
+  	/* There are no DR4 or DR5 registers */
+- 	if (n == 4 || n == 5)
+- 		return -EIO;
++ 	int rc = -EIO;
+++ 
+ +#ifdef CONFIG_CRYPTO_TRESOR
+++	if (n == 4 || n == 5)
+++		return -EIO;
+ +	else if (n == 6 || n == 7)
+ +		return -EPERM;
+ +	else
+ +		return -EBUSY;
+ +#endif
+  
+- 	if (n == 6) {
+- 		thread->debugreg6 = val;
++ 	if (n < HBP_NUM) {
++ 		rc = ptrace_set_breakpoint_addr(tsk, n, val);
++ 	} else if (n == 6) {
+ diff --git a/crypto/Kconfig b/crypto/Kconfig
+ index a323805..4ab450d 100644
+ --- a/crypto/Kconfig
