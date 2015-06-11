@@ -1,7 +1,7 @@
 pkgbase = xdg-traymenu
 	pkgdesc = XDG compliant system tray and root menu generator
-	pkgver = 0.01.34
-	pkgrel = 3
+	pkgver = 0.01.40
+	pkgrel = 1
 	url = https://github.com/bbidulock/xdg-traymenu
 	arch = any
 	groups = xde
