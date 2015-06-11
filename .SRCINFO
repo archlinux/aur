@@ -1,0 +1,16 @@
+pkgbase = cython-kivy
+	pkgdesc = C-Extensions for Python; Kivy-compatible version
+	pkgver = 0.21.2
+	pkgrel = 1
+	url = http://www.cython.org
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = python-setuptools
+	depends = python
+	conflicts = cython
+	source = http://cython.org/release/Cython-0.21.2.tar.gz
+	sha256sums = b01af23102143515e6138a4d5e185c2cfa588e0df61c0827de4257bac3393679
+
+pkgname = cython-kivy
+
