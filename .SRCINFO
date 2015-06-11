@@ -1,0 +1,13 @@
+pkgbase = texlive-europecv
+	pkgdesc = Unofficial class for European curricula vitæ
+	pkgver = 20140627
+	pkgrel = 1
+	url = http://www.ctan.org/tex-archive/macros/latex/contrib/europecv/
+	arch = any
+	license = GPL
+	depends = texlive-latexextra
+	source = europecv-20140627.zip::http://mirror.ctan.org/macros/latex/contrib/europecv.zip
+	sha256sums = 8774724fa20744777d2ce7275024f5969b0cdd09684033949b833410c45112d5
+
+pkgname = texlive-europecv
+
