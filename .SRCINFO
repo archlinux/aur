@@ -1,0 +1,15 @@
+pkgbase = yacpi
+	pkgdesc = ncurses-based acpi monitor.
+	pkgver = 3.0.1
+	pkgrel = 4
+	url = http://www.ngolde.de/yacpi.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	depends = libacpi
+	source = http://www.ngolde.de/download/yacpi-3.0.1.tar.gz
+	sha1sums = 4282cbdd546586e101c096d9fbf1445c31b62df8
+
+pkgname = yacpi
+
