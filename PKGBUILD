@@ -5,7 +5,7 @@
 pkgbase=xorg-server-bug865
 pkgname=xorg-server-bug865
 pkgver=1.17.1
-pkgrel=6 # build first with 0.1 and then rebuild it after xf86-input-evdev rebuild
+pkgrel=7 # build first with 0.1 and then rebuild it after xf86-input-evdev rebuild
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://xorg.freedesktop.org"
@@ -28,6 +28,9 @@ source=(${url}/releases/individual/xserver/xorg-server-${pkgver}.tar.bz2{,.sig}
         0001-dix-Add-unaccelerated-valuators-to-the-ValuatorMask.patch
         0002-dix-hook-up-the-unaccelerated-valuator-masks.patch
         fix-CVE-2015-3164.patch
+        systemd-logind-dont-second-guess-D-Bus-default-tim.patch
+        systemd-logind-filter-out-non-signal-messages-from.patch
+        0001-modesetting-Fix-software-cursor-fallback.patch
         freedesktop-bug-865.patch)
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
               'C383B778255613DFDB409D91DB221A6900000011')
@@ -44,6 +47,9 @@ sha256sums=('2bf8e9f6f0a710dec1d2472467bff1f4e247cb6dcd76eb469aafdc8a2d7db2ab'
             '3dc795002b8763a7d29db94f0af200131da9ce5ffc233bfd8916060f83a8fad7'
             '416a1422eed71efcebb1d893de74e7f27e408323a56c4df003db37f5673b3f96'
             'bc6ac3e686e16f0357fd3b939c1c1f2845fdb444d5ec9c8c37fb69167cc54a28'
+            'a8b9670844d784e9a0d6880f5689bbc107e071518acdbaa8c3ce5debca6b663b'
+            '97e4d5a6cfcf916889c493e232aec6f16d9447eb641bafb6e0afa9b27cfdc47e'
+            'a0c0dbf5fe27994d52d5892c9c7cecf72792c5fa35db57b112ee7b17980faa75'
             'ad64fd593cd4cdfdd830c4295ebe1acd4259e45cfc12a258a162ecdbb11fd7ca')
 
 prepare() {
@@ -63,6 +69,14 @@ prepare() {
   patch -Np1 -i ../0002-dix-hook-up-the-unaccelerated-valuator-masks.patch
   # fix CVE-2015-3164, merged upstream
   patch -Np1 -i ../fix-CVE-2015-3164.patch
+
+  # Fix FS#44304, merged upstream
+  patch -Np1 -i ../systemd-logind-filter-out-non-signal-messages-from.patch
+  patch -Np1 -i ../systemd-logind-dont-second-guess-D-Bus-default-tim.patch
+
+  # Fix software cursor fallback (possible fix for FS#44602)
+  patch -Np1 -i ../0001-modesetting-Fix-software-cursor-fallback.patch
+
   # The patch for freedesktop bug 865
   patch -Np1 -i "${srcdir}/freedesktop-bug-865.patch"
 }

@@ -1,0 +1,90 @@
+From e90798c142dedc4fd296936b69fe34a40d0aa35a Mon Sep 17 00:00:00 2001
+From: Ray Strode <rstrode@redhat.com>
+Date: Fri, 10 Apr 2015 14:19:50 -0400
+Subject: [PATCH] systemd-logind: filter out non-signal messages from message
+ filter
+
+It's possible to receive a message reply in the message filter if a
+previous message call timed out locally before the reply arrived.
+
+The message_filter function only handles signals, at the moment, and
+does not properly handle message replies.
+
+This commit changes the message_filter function to filter out all
+non-signal messages, including spurious message replies.
+
+https://bugzilla.redhat.com/show_bug.cgi?id=1209347
+---
+ hw/xfree86/os-support/linux/systemd-logind.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/hw/xfree86/os-support/linux/systemd-logind.c b/hw/xfree86/os-support/linux/systemd-logind.c
+index 49758f4..57c87c0 100644
+--- a/hw/xfree86/os-support/linux/systemd-logind.c
++++ b/hw/xfree86/os-support/linux/systemd-logind.c
+@@ -286,60 +286,63 @@ systemd_logind_ack_pause(struct systemd_logind_info *info,
+                                        DBUS_TYPE_INVALID)) {
+         LogMessage(X_ERROR, "systemd-logind: out of memory\n");
+         goto cleanup;
+     }
+ 
+     reply = dbus_connection_send_with_reply_and_block(info->conn, msg,
+                                                       DBUS_TIMEOUT, &error);
+     if (!reply)
+         LogMessage(X_ERROR, "systemd-logind: failed to ack pause: %s\n",
+                    error.message);
+ 
+ cleanup:
+     if (msg)
+         dbus_message_unref(msg);
+     if (reply)
+         dbus_message_unref(reply);
+     dbus_error_free(&error);
+ }
+ 
+ static DBusHandlerResult
+ message_filter(DBusConnection * connection, DBusMessage * message, void *data)
+ {
+     struct systemd_logind_info *info = data;
+     struct xf86_platform_device *pdev = NULL;
+     InputInfoPtr pInfo = NULL;
+     int ack = 0, pause = 0, fd = -1;
+     DBusError error;
+     dbus_int32_t major, minor;
+     char *pause_str;
+ 
++    if (dbus_message_get_type (message) != DBUS_MESSAGE_TYPE_SIGNAL)
++        return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
++
+     dbus_error_init(&error);
+ 
+     if (dbus_message_is_signal(message,
+                                "org.freedesktop.DBus", "NameOwnerChanged")) {
+         char *name, *old_owner, *new_owner;
+ 
+         dbus_message_get_args(message, &error,
+                               DBUS_TYPE_STRING, &name,
+                               DBUS_TYPE_STRING, &old_owner,
+                               DBUS_TYPE_STRING, &new_owner, DBUS_TYPE_INVALID);
+         if (dbus_error_is_set(&error)) {
+             LogMessage(X_ERROR, "systemd-logind: NameOwnerChanged: %s\n",
+                        error.message);
+             dbus_error_free(&error);
+             return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
+         }
+ 
+         if (name && strcmp(name, "org.freedesktop.login1") == 0)
+             FatalError("systemd-logind disappeared (stopped/restarted?)\n");
+ 
+         return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
+     }
+ 
+     if (strcmp(dbus_message_get_path(message), info->session) != 0)
+         return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
+ 
+     if (dbus_message_is_signal(message, "org.freedesktop.login1.Session",
+                                "PauseDevice")) {
+         if (!dbus_message_get_args(message, &error,
+                                DBUS_TYPE_UINT32, &major,
+-- 
+2.3.3
