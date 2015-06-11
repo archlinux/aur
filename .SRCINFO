@@ -1,0 +1,20 @@
+pkgbase = adb
+	pkgdesc = adb (Android Debug Bridge CLI tool), an Android platform tool
+	pkgver = android.5.1.1_r3
+	pkgrel = 3
+	url = http://tools.android.com/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = Apache
+	makedepends = git
+	depends = openssl
+	depends = zlib
+	conflicts = adb-git
+	source = https://android.googlesource.com/platform/system/core/+archive/android-5.1.1_r3.tar.gz
+	source = adbMakefile
+	sha512sums = SKIP
+	sha512sums = 46c5ff1938a9da99628d18904487418013fe5e150e84de88bf37000c84620e9cd20d4c0c78516ee5b1f0a150f73e4f0f801ff8f991a41a476536c4feb12101e2
+
+pkgname = adb
+
