@@ -1,0 +1,20 @@
+pkgbase = python2-pysaml2
+	pkgdesc = Python implementation of SAML Version 2
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/pysaml2
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	provides = python2-pysaml2
+	source = https://pypi.python.org/packages/source/p/pysaml2/pysaml2-2.4.0.tar.gz
+	sha256sums = a26804150ddc5da803d0df4b7026b613a3571c387fd6d107f6263aabf2c84ec6
+
+pkgname = python2-pysaml2
+	depends = python2-repoze.who-openstack
+	depends = python2-pyasn1
+	depends = xmlsec
+	depends = python2-mako
+	depends = memcached
+	depends = python2-memcached
+
