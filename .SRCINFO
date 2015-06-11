@@ -1,0 +1,29 @@
+pkgbase = xf86-input-libinput-git
+	pkgdesc = Generic input driver for the X.Org server based on libinput. Git version
+	pkgver = 0.11.0.r0.g449b496
+	pkgrel = 1
+	url = http://xorg.freedesktop.org/
+	arch = i686
+	arch = x86_64
+	groups = xorg-drivers
+	groups = xorg
+	license = custom
+	makedepends = xorg-server-devel
+	makedepends = X-ABI-XINPUT_VERSION=22.1
+	makedepends = libxi
+	makedepends = libx11
+	makedepends = resourceproto
+	makedepends = scrnsaverproto
+	depends = libinput
+	provides = xf86-input-libinput
+	conflicts = xorg-server<1.16
+	conflicts = X-ABI-XINPUT_VERSION<22
+	conflicts = X-ABI-XINPUT_VERSION>=23
+	conflicts = xf86-input-libinput
+	source = git://anongit.freedesktop.org/xorg/driver/xf86-input-libinput
+	source = 90-libinput.conf
+	sha256sums = SKIP
+	sha256sums = d4a728caadb7924852dcdc0da4de950c6fb9ebd8999d4e3af3d0baaa51cd0e75
+
+pkgname = xf86-input-libinput-git
+
