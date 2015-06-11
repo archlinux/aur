@@ -1,0 +1,14 @@
+2015-01-11 Erik Westrup <erik.westrup@gmail.com>
+	
+	*2.0.4_2-3
+	Updated URL to point to the product.
+
+2014-04-07 Erik Westrup <erik.westrup@gmail.com>
+	
+	*2.0.4_2-2
+	Run setup program with superuser privileges.
+
+2013-08-16 Erik Westrup <erik.westrup@gmail.com>
+	
+	*2.0.4_2-1
+	First submission of the package.

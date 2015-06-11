@@ -1,0 +1,21 @@
+pkgbase = brother-dcp7070dw-cups
+	pkgdesc = Brother DCP-7070DW CUPS drivers.
+	pkgver = 2.0.4_2
+	pkgrel = 3
+	url = http://support.brother.com/g/b/downloadtop.aspx?c=eu_ot&lang=en&prod=dcp7070dw_eu
+	install = brother-dcp7070dw-cups.install
+	changelog = brother-dcp7070dw-cups.changelog
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = custom:brother
+	makedepends = rpmextract
+	depends = brother-dcp7070dw-lpr
+	depends = cups
+	optdepends = brscan4: scanner support.
+	noextract = cupswrapperDCP7070DW-2.0.4-2.i386.rpm
+	source = http://www.brother.com/pub/bsc/linux/dlf/cupswrapperDCP7070DW-2.0.4-2.i386.rpm
+	md5sums = a67e6e62d8b768b958c0cebf97064c94
+
+pkgname = brother-dcp7070dw-cups
+

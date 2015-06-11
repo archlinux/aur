@@ -1,0 +1,19 @@
+pkgver="2.0.4_2"
+
+post_install() {
+	echo "Running setup program..."
+	sudo /usr/local/Brother/Printer/DCP7070DW/cupswrapper/cupswrapperDCP7070DW-${pkgver%_*}
+	echo "done."
+
+	cat << EOF
+==> Now visit the CUPS configuration page to add your printer @ http://localhost:631/admin
+==> 
+==> Install brscan4 for scanner support. Details and script for automating scans: https://github.com/erikw/dotfiles/blob/personal/bin/scan_dcp7070dw.sh
+EOF
+}
+
+pre_remove() {
+	echo "Running setup program to uninstall..."
+	sudo /usr/local/Brother/Printer/DCP7070DW/cupswrapper/cupswrapperDCP7070DW-${pkgver%_*} -e
+	echo "done."
+}
