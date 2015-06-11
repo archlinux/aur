@@ -1,6 +1,6 @@
 pkgbase = bmc
 	pkgdesc = Simple script to download and store your articles.
-	pkgver = 0.4
+	pkgver = 0.5
 	pkgrel = 1
 	url = https://github.com/Phyks/BMC/
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = bmc
 	depends = python-socks
 	depends = python-isbnlib
 	depends = python-arxiv2bib
-	source = https://github.com/Phyks/BMC/archive/v0.4.zip
-	md5sums = 20013cee194d02d02c5be89d2f28dfbf
+	source = https://github.com/Phyks/BMC/archive/v0.5.zip
+	sha256sums = 2f4fd890425b2ca02b9d8b9bc2e6a168acf63045782ef05a9392fc079bd024ab
 
 pkgname = bmc
 
