@@ -1,0 +1,15 @@
+pkgbase = wmcdplay
+	pkgdesc = A CD player WindowMaker dock app
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://windowmaker.org/dockapps/?name=wmcdplay
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = imake
+	depends = libxpm
+	source = wmcdplay-1.1.tar.gz::http://windowmaker.org/dockapps/?download=wmcdplay-1.1.tar.gz
+	md5sums = SKIP
+
+pkgname = wmcdplay
+
