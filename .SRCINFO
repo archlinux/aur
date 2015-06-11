@@ -1,0 +1,19 @@
+pkgbase = odeskteam-beta
+	pkgdesc = The oDesk Team client for odesk.com
+	pkgver = 3.12.19
+	pkgrel = 1
+	url = http://www.odesk.com/downloads
+	arch = i686
+	arch = x86_64
+	license = custom:ODESK TEAM LICENSE AGREEMENT
+	depends = libxss
+	depends = phonon-qt4
+	conflicts = godesk
+	conflicts = odeskteam
+	source_i686 = https://www.odesk.com/downloads/linux/beta/odeskteam_3.12.19_i386.deb
+	sha256sums_i686 = 7209a631f7e091d4c8af6e375ed9a28989c2845124f862de58abd1007f0c94d8
+	source_x86_64 = https://www.odesk.com/downloads/linux/beta/odeskteam_3.12.19_amd64.deb
+	sha256sums_x86_64 = c2687daf78b6ca25b000e2805fdadcd93d0071c718d2796f8873037d4f778b5b
+
+pkgname = odeskteam-beta
+
