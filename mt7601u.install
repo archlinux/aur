@@ -1,0 +1,12 @@
+post_install() {
+    EXTRAMODULES='extramodules-4.0-ARCH'
+    depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
+}
+
+post_upgrade() {
+   post_install
+}
+
+post_remove() {
+   post_install
+}
