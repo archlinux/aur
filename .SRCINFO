@@ -1,0 +1,22 @@
+pkgbase = dar
+	pkgdesc = A full featured command-line backup tool, short for Disk ARchive
+	pkgver = 2.4.17
+	pkgrel = 1
+	url = http://dar.linux.free.fr/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = doxygen
+	depends = libgcrypt
+	depends = zlib
+	depends = lzo
+	depends = bzip2
+	depends = attr
+	optdepends = perl: for running some samples
+	options = !libtool
+	backup = etc/darrc
+	source = http://downloads.sourceforge.net/sourceforge/dar/dar-2.4.17.tar.gz
+	sha1sums = b0a5b87ead362baf21190899d34766aa65d76bba
+
+pkgname = dar
+
