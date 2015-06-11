@@ -8,7 +8,7 @@ arch=('any')
 url="http://gnome-look.org/content/show.php/Numix-Cursor?content=169299"
 license=('GPL')
 depends=('libxcursor')
-source=("${pkgname}-${pkgver}.tar.xz::http://gnome-look.org/CONTENT/content-files/169299-numix-cursor.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::http://gnome-look.org/CONTENT/content-files/169299-numix-cursor.tar.gz")
 md5sums=('b15c1880992292b557890669bcfdb19b')
 
 
