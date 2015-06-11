@@ -1,0 +1,18 @@
+pkgbase = python-markdown2-git
+	pkgdesc = A fast and complete implementation of Markdown in Python 3
+	pkgver = 2.3.0.r13.g596d48b
+	pkgrel = 1
+	url = https://github.com/trentm/python-markdown2
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-setuptools
+	optdepends = python-pygments: testing
+	provides = python-markdown2
+	conflicts = python-markdown2
+	source = git+https://github.com/trentm/python-markdown2.git
+	sha256sums = SKIP
+
+pkgname = python-markdown2-git
+
