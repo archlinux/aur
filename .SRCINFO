@@ -1,0 +1,23 @@
+pkgbase = activemq
+	pkgdesc = Popular and powerful open source messaging and Integration Patterns provider
+	pkgver = 5.4.2
+	pkgrel = 2
+	url = http://activemq.apache.org
+	install = install
+	arch = x86_64
+	license = Apache 2.0
+	depends = java-runtime
+	depends = lsb-release
+	conflicts = apache-activemq
+	options = !strip
+	source = ftp://bgbilling.ru/pub/bgbilling/activemq/linux/apache-activemq-5.4.2.tgz
+	source = profile.sh
+	source = profile.csh
+	source = service
+	md5sums = cb732e4c0e64bc35b7d0088c078b1719
+	md5sums = 4c934209808f54d70ef8314bc2966657
+	md5sums = a36634b281a3e8ce5a6ed5b85828bca2
+	md5sums = 2dfc3365bae1927524d3cd409fcc77ef
+
+pkgname = activemq
+

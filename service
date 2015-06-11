@@ -1,0 +1,10 @@
+[Unit]
+Description=Messaging and Integration Patterns provider
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/opt/activemq/bin/linux/activemq start >/dev/null 2>&1
+
+[Install]
+WantedBy=multi-user.target

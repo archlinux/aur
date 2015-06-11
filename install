@@ -1,0 +1,7 @@
+post_install() {
+	echo
+	echo '  -> '
+	echo '  -> Edit wrapper.conf, enter the full path to the executable java'
+	echo '  -> '
+	echo
+}
