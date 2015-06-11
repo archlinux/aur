@@ -1,0 +1,20 @@
+pkgbase = php-tideways
+	pkgdesc = Tideways Profiler PHP Extension
+	pkgver = 2.0.7
+	pkgrel = 1
+	url = https://github.com/tideways/php-profiler-extension
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = php
+	makedepends = git
+	depends = php>=5.4.0
+	provides = php-tideways
+	conflicts = php-tideways
+	source = https://github.com/tideways/php-profiler-extension/archive/v2.0.7.tar.gz
+	source = https://github.com/tideways/profiler/releases/download/v2.0.1/Tideways.php
+	sha256sums = 885257d4215a2d8e7402b20132ecfe2bf749148569f27e8b122832bbe7b1e351
+	sha256sums = 6d1bf02e28e9af11fb5b7a006e0daa8c469c38c35267fa2f2fe9b33269bcd041
+
+pkgname = php-tideways
+
