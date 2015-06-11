@@ -1,0 +1,14 @@
+pkgbase = xorg-xsetmode
+	pkgdesc = Set an X input device as the main pointer
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://www.x.org/
+	arch = x86_64
+	arch = i686
+	license = custom
+	depends = libxi
+	source = http://xorg.freedesktop.org/releases/individual/app/xsetmode-1.0.0.tar.bz2
+	md5sums = d074e79d380b031d2f60e4cd56538c93
+
+pkgname = xorg-xsetmode
+
