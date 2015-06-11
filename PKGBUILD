@@ -11,7 +11,7 @@ _srcname=linux-3.18
 _pkgver=3.18.13
 _rtpatchver=rt10
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -33,8 +33,8 @@ sha256sums=('becc413cc9e6d7f5cc52a3ce66d65c3725bc1d1cc1001f4ce6c32b69eb188cbd'
             'SKIP'
             '4852137491341a3f1d976cf5b17c038fdc74b167d555195aacd61094b02ce741'
             'SKIP'
-            '4b584754f0836f9650cb9764baba1323e40a1eac1c12b4ece8f78b2f754029e7'
-            'f006a4a5de50aa964e0daead471313df353b1385f69c3c30f283bde99ef26611'
+            '579b174b2239b52ab4b0ffb48aca79f4c26a8544bdfdf2bf4e816d17300414d6'
+            '3e1e9a5fe6d48a0f14faafd749827bee1541dad62392ebd0e288ab3006282ddd'
             'a8886f2c9896f81f59cf0413b3e380cda2fbdc667eb9ce8dfcb0fceb6d92279f'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '7a42d16108eb9a8eacadef3603527fa1beab857cc4db3bd228858488fb1f3fda')
