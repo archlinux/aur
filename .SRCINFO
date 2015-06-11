@@ -1,0 +1,26 @@
+pkgbase = mt7601u-dkms
+	pkgdesc = Kernel module for MediaTek MT7601U USB dongles, written from scratch based on the vendor GPL-driver. Unlike the vendor driver this driver uses modern Linux WiFi infrastructure and should work flawlessly with NetworkManager, wicd, wpa_supplicant and such.
+	pkgver = 3.1
+	pkgrel = 1
+	url = http://www.ralinktech.com
+	install = mt7601u-dkms.install
+	arch = any
+	license = GPL
+	depends = linux-headers>=3.19
+	depends = dkms
+	conflicts = dkms-mt7601u
+	conflicts = mt7601u-ap-dkms
+	conflicts = dkms-mt7601u-latest
+	noextract = DPO_MT7601U_LinuxSTA_3.0.0.4_20130913.tar.bz2
+	options = !strip
+	source = https://github.com/kuba-moo/mt7601u/archive/master.zip
+	source = http://www.mediatek.com/AmazonS3/Downloads/linux/DPO_MT7601U_LinuxSTA_3.0.0.4_20130913.tar.bz2
+	source = mt7601u.conf
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 16e4d1b97a128a8f92f27af3124a331327c861996c9dda0dc337a77822b8931d
+	sha256sums = 3035f0d88d9cc6395237064026e64df737e964fe762591bdf41c508ca7070411
+
+pkgname = mt7601u-dkms
+

@@ -1,0 +1,21 @@
+# old version (without -$pkgrel): ${1%%-*}
+# new version (without -$pkgrel): ${2%%-*}
+
+post_install() {
+    dkms install mt7601u/${1%%-*}
+    echo ">>> You might need to modprobe mt7601u manually."
+    echo ">>> Read the documentation in /usr/share/doc/mt7601/README."
+}
+
+pre_upgrade() {
+    pre_remove ${2%%-*}
+}
+
+post_upgrade() {
+    post_install ${1%%-*}
+}
+
+pre_remove() {
+    dkms remove mt7601u/${1%%-*} --all
+}
+
