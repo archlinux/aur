@@ -1,0 +1,14 @@
+pkgbase = texlive-flashcards
+	pkgdesc = A class for typesetting flashcards.
+	pkgver = 1.0.1
+	pkgrel = 2
+	url = http://ctan.org/pkg/flashcards
+	install = texlive-flashcards.install
+	arch = any
+	license = GPL
+	depends = texlive-core
+	source = http://mirror.ctan.org/macros/latex/contrib/flashcards.zip
+	md5sums = 21f85c9b291a0d06e815ce09d89f4463
+
+pkgname = texlive-flashcards
+
