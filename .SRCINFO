@@ -1,0 +1,27 @@
+pkgbase = teeworlds-ddrace-git
+	pkgdesc = A 2D multiplayer arcade (Git version)
+	pkgver = d289e4d
+	pkgrel = 1
+	url = http://ddrace.info
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = python
+	makedepends = git
+	makedepends = bam
+	depends = mesa
+	depends = sdl
+	depends = freetype2
+	depends = glu
+	provides = teeworlds
+	conflicts = teeworlds
+	replaces = teewars
+	source = teeworlds-ddrace-git::git://github.com/DDRace/teeworlds.git
+	source = DDRace.desktop
+	source = set-data-dir.patch
+	md5sums = SKIP
+	md5sums = f41ee1b3dfc1a5ccee9308636f3a4b1b
+	md5sums = a0910710090b9e5431947d0eae553dda
+
+pkgname = teeworlds-ddrace-git
+

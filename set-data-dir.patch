@@ -1,0 +1,12 @@
+diff -Nur DDRace.orig/src/engine/shared/storage.cpp DDRace/src/engine/shared/storage.cpp
+--- DDRace.orig/src/engine/shared/storage.cpp	2012-08-19 17:59:45.715994039 +0200
++++ DDRace/src/engine/shared/storage.cpp	2012-08-19 18:21:26.479424820 +0200
+@@ -5,7 +5,7 @@
+ #include "linereader.h"
+ 
+ // compiled-in data-dir path
+-#define DATA_DIR "data"
++#define DATA_DIR "/usr/share/DDRace/data"
+ 
+ class CStorage : public IStorage
+ {

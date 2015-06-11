@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Icon=DDRace
+Exec=DDRace
+Terminal=false
+StartupNotify=false
+
+Name=TeeWorlds DDRace
+GenericName=Arcade Game
+Comment=is a 2D multiplayer arcade
+
+Categories=Game;ArcadeGame;
