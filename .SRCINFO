@@ -1,0 +1,16 @@
+pkgbase = cloc-svn
+	pkgdesc = Count Lines of Code, svn version
+	pkgver = 1.62
+	pkgrel = 1
+	url = http://cloc.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	depends = perl
+	conflicts = cloc
+	source = svn+http://svn.code.sf.net/p/cloc/code/trunk
+	md5sums = SKIP
+
+pkgname = cloc-svn
+
