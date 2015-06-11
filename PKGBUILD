@@ -2,24 +2,24 @@
 
 pkgname=libspoton
 pkgver=0.22
-pkgrel=1
+pkgrel=2
 pkgdesc='Binding library for Spot-On'
 url='http://spot-on.sourceforge.net/'
 arch=('i686' 'x86_64')
 license=('custom:3-clause BSD')
 depends=('sqlite' 'libgcrypt>=1.5' 'libntru')
 makedepends=('sqlite' 'libgcrypt>=1.5' 'make' 'gcc' 'coreutils')
-source=("spot-on-${pkgver}.tar.gz::https://downloads.sourceforge.net/project/spot-on/Version%20${pkgver}/Spot-On.d.tar.gz")
-sha256sums=('94f5ffcc98eae7d79c796866ac1d9ab45e739e1c71d7b95359f2663f29f46021')
+source=("https://github.com/textbrowser/spot-on/archive/v${pkgver}.tar.gz")
+sha256sums=('b6c2015274e9fca2f887f1f9638f8d6c50514987b9081c5e86044246da32ce80')
 
 
 build() {
-    cd "$srcdir/spot-on.d/libSpotOn"
+    cd "$srcdir/spot-on-${pkgver}/libSpotOn"
     make
 }
 
 package () {
-    cd "$srcdir/spot-on.d/libSpotOn"
+    cd "$srcdir/spot-on-${pkgver}/libSpotOn"
     install -dm755 -- "$pkgdir/usr/lib"
     install -m755 -- libspoton.so "$pkgdir/usr/lib/libspoton.so"
     install -dm755 -- "$pkgdir/usr/include"

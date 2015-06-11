@@ -1,7 +1,7 @@
 pkgbase = libspoton
 	pkgdesc = Binding library for Spot-On
 	pkgver = 0.22
-	pkgrel = 1
+	pkgrel = 2
 	url = http://spot-on.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = libspoton
 	depends = sqlite
 	depends = libgcrypt>=1.5
 	depends = libntru
-	source = spot-on-0.22.tar.gz::https://downloads.sourceforge.net/project/spot-on/Version%200.22/Spot-On.d.tar.gz
-	sha256sums = 94f5ffcc98eae7d79c796866ac1d9ab45e739e1c71d7b95359f2663f29f46021
+	source = https://github.com/textbrowser/spot-on/archive/v0.22.tar.gz
+	sha256sums = b6c2015274e9fca2f887f1f9638f8d6c50514987b9081c5e86044246da32ce80
 
 pkgname = libspoton
 
