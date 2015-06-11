@@ -1,0 +1,9 @@
+[Unit]
+Description=Neutron LBaaS agent
+
+[Service]
+ExecStart=/usr/bin/neutron-lbaas-agent --config-file=/etc/neutron/neutron.conf --config-file=/etc/neutron/lbaas_agent.ini --log-file=/var/log/neutron/lbaas-agent.log
+User=neutron
+
+[Install]
+WantedBy=multi-user.target

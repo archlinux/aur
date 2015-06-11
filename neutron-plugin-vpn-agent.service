@@ -1,0 +1,9 @@
+[Unit]
+Description=Neutron VPN Plugin Agent
+
+[Service]
+ExecStart=/usr/bin/neutron-vpn-agent --config-file=/etc/neutron/neutron.conf --config-file=/etc/neutron/vpn_agent.ini --log-file=/var/log/neutron/vpn_agent.log
+User=neutron
+
+[Install]
+WantedBy=multi-user.target

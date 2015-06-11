@@ -1,0 +1,210 @@
+pkgbase = neutron-icehouse
+	pkgdesc = A virtual network service for Openstack
+	pkgver = 2014.1.3
+	pkgrel = 1
+	url = https://launchpad.net/neutron
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	makedepends = python2-sphinx
+	makedepends = python2-oslosphinx
+	depends = python2
+	depends = python2-setuptools
+	source = https://launchpad.net/neutron/icehouse/2014.1.3/+download/neutron-2014.1.3.tar.gz
+	source = neutron-dhcp-agent.service
+	source = neutron-l3-agent.service
+	source = neutron-lbaas-agent.service
+	source = neutron-metadata-agent.service
+	source = neutron-plugin-linuxbridge-agent.service
+	source = neutron-plugin-metering-agent.service
+	source = neutron-plugin-mlnx-agent.service
+	source = neutron-plugin-nec-agent.service
+	source = neutron-plugin-openvswitch-agent.service
+	source = neutron-plugin-ryu-agent.service
+	source = neutron-plugin-vpn-agent.service
+	source = neutron-server-default
+	source = neutron-server.service
+	source = neutron_sudoers
+	source = neutron.plugin.openvswitch.install
+	md5sums = be08b386162facd20c6927c6f565a1f2
+	md5sums = c59c436057efbb2317487a0822aa97e7
+	md5sums = ca5d870e84ca2cce40bab18bf770870f
+	md5sums = f080ddbe9b270c1ffd241db9723bc565
+	md5sums = 1ab745acf0da636c4484803969229714
+	md5sums = 31ed220677df34466ca25fb1d64e9df0
+	md5sums = ef5a00d81ecea910fb29706e3181fc80
+	md5sums = 926c8fe2ec3fd79955ed8f74109fceea
+	md5sums = 50bc95405d91d73a583c508a0446e38c
+	md5sums = f40d35da4256957eb0dd6e0ce6a4c696
+	md5sums = 50946c6024c5043c7046968e6eb9b698
+	md5sums = 9f2af5aef38b58a6b11f715059aecb95
+	md5sums = 91d4643e9c29210cc82ec8c8c512675d
+	md5sums = 7c710afee7078e7a52d3708acd158c26
+	md5sums = 2cfc83f85ae2f8bc790e280da721262d
+	md5sums = fd68f680bfa312a0a17c705924cfe662
+
+pkgname = python2-neutron-icehouse
+	pkgdesc = A virtual network service for Openstack - Python library
+	depends = python2-pbr>=0.6
+	depends = python2-pbr<1.0
+	depends = python2-paste
+	depends = python2-paste-deploy>=1.5.0
+	depends = python2-routes>=1.12.3
+	depends = python2-amqplib>=0.6.1
+	depends = python2-amqp
+	depends = python2-anyjson>=0.3.3
+	depends = python2-argparse
+	depends = python2-babel>=1.3
+	depends = python2-eventlet>=0.13.0
+	depends = python2-greenlet>=0.3.2
+	depends = python2-httplib2>=0.7.5
+	depends = python2-requests>=1.1
+	depends = python2-iso8601>=0.1.9
+	depends = python2-jsonrpclib
+	depends = python2-jinja
+	depends = python2-kombu>=2.4.8
+	depends = python2-netaddr>=0.7.6
+	depends = python2-neutronclient>=2.3.4
+	depends = python2-neutronclient<3.0.0
+	depends = python2-sqlalchemy>=0.7.8
+	depends = python2-sqlalchemy<0.9.99
+	depends = python2-webob>=1.2.3
+	depends = python2-keystoneclient>=0.7.0
+	depends = python2-alembic>=0.4.1
+	depends = python2-six>=1.6.0
+	depends = python2-stevedore>=0.14
+	depends = python2-oslo-config>=1.2.0
+	depends = python2-oslo-rootwrap
+	depends = python2-novaclient>=2.17.0
+
+pkgname = neutron-dhcp-agent-icehouse
+	pkgdesc = A virtual network service for Openstack - DHCP agent
+	depends = neutron-icehouse
+	depends = dnsmasq
+	depends = neutron-metadata-agent-icehouse
+	backup = etc/neutron/dhcp_agent.ini
+
+pkgname = neutron-l3-agent-icehouse
+	pkgdesc = A virtual network service for Openstack - l3 agent
+	depends = neutron-icehouse
+	depends = neutron-metadata-agent-icehouse
+	backup = etc/neutron/l3_agent.ini
+
+pkgname = neutron-lbaas-agent-icehouse
+	pkgdesc = A virtual network service for Openstack - LBaaS agent
+	depends = neutron-icehouse
+	depends = neutron-metadata-agent-icehouse
+	depends = haproxy
+	backup = etc/neutron/lbaas_agent.ini
+
+pkgname = neutron-metadata-agent-icehouse
+	pkgdesc = A virtual network service for Openstack - metadata agent
+	depends = neutron-icehouse
+	backup = etc/neutron/metadata_agent.ini
+
+pkgname = neutron-plugin-bigswitch-icehouse
+	pkgdesc = A virtual network service for Openstack - BigSwitch agent
+	depends = neutron-icehouse
+	backup = etc/neutron/plugins/bigswitch/restproxy.ini
+
+pkgname = neutron-plugin-brocade-icehouse
+	pkgdesc = A virtual network service for Openstack - Brocade agent
+	depends = neutron-icehouse
+	backup = etc/neutron/plugins/brocade/brocade.ini
+
+pkgname = neutron-plugin-cisco-icehouse
+	pkgdesc = A virtual network service for Openstack - Cisco agent
+	depends = neutron-icehouse
+	backup = etc/neutron/plugins/cisco/cisco_plugins.ini
+
+pkgname = neutron-plugin-hyperv-icehouse
+	pkgdesc = A virtual network service for Openstack - Hyper-V plugin
+	depends = neutron-icehouse
+	backup = etc/neutron/plugins/hyperv/hyperv_neutron_plugin.ini
+
+pkgname = neutron-plugin-linuxbridge-icehouse
+	pkgdesc = A virtual network service for Openstack - linuxbridge plugin
+	depends = neutron-icehouse
+	backup = etc/neutron/plugins/linuxbridge/linuxbridge_conf.ini
+
+pkgname = neutron-plugin-linuxbridge-agent-icehouse
+	pkgdesc = A virtual network service for Openstack - linuxbridge plugin agent
+	depends = neutron-icehouse
+	depends = bridge-utils
+	depends = neutron-plugin-linuxbridge-icehouse
+
+pkgname = neutron-plugin-metaplugin-icehouse
+	pkgdesc = A virtual network service for Openstack - Metaplugin plugin
+	depends = neutron-icehouse
+	backup = etc/neutron/plugins/metaplugin/metaplugin.ini
+
+pkgname = neutron-plugin-metering-agent-icehouse
+	pkgdesc = A virtual network service for Openstack - metering plugin agent
+	depends = neutron-icehouse
+	backup = etc/neutron/metering_agent.ini
+
+pkgname = neutron-plugin-midonet-icehouse
+	pkgdesc = A virtual network service for Openstack - Midonet plugin
+	depends = neutron-icehouse
+	backup = etc/neutron/plugins/midonet/midonet.ini
+
+pkgname = neutron-plugin-mlnx-agent-icehouse
+	pkgdesc = A virtual network service for Openstack - MLNX plugin agent
+	depends = neutron-icehouse
+	backup = etc/neutron/plugins/mlnx/mlnx_conf.ini
+
+pkgname = neutron-plugin-nec-icehouse
+	pkgdesc = A virtual network service for Openstack - NEC plugin
+	depends = neutron-icehouse
+	backup = etc/neutron/plugins/nec/nec.ini
+
+pkgname = neutron-plugin-nec-agent-icehouse
+	pkgdesc = A virtual network service for Openstack - NEC plugin agent
+	depends = neutron-icehouse
+	depends = openvswitch
+	depends = neutron-plugin-nec-icehouse
+
+pkgname = neutron-plugin-nicira-icehouse
+	pkgdesc = A virtual network service for Openstack - Nicira plugin
+	depends = neutron-icehouse
+	backup = etc/neutron/plugins/nicira/nvp.ini
+
+pkgname = neutron-plugin-openvswitch-icehouse
+	pkgdesc = A virtual network service for Openstack - Open vSwitch plugin
+	install = neutron.plugin.openvswitch.install
+	depends = neutron-icehouse
+	backup = etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini
+
+pkgname = neutron-plugin-openvswitch-agent-icehouse
+	pkgdesc = A virtual network service for Openstack - Open vSwitch plugin agent
+	depends = openvswitch
+	depends = neutron-icehouse
+	depends = neutron-plugin-openvswitch-icehouse
+
+pkgname = neutron-plugin-plumgrid-icehouse
+	pkgdesc = A virtual network service for Openstack - PLUMgrid plugin
+	depends = neutron-icehouse
+	backup = etc/neutron/plugins/plumgrid/plumgrid.ini
+
+pkgname = neutron-plugin-ryu-icehouse
+	pkgdesc = A virtual network service for Openstack - RYU plugin
+	depends = neutron-icehouse
+	backup = etc/neutron/plugins/ryu/ryu.ini
+
+pkgname = neutron-plugin-ryu-agent-icehouse
+	pkgdesc = A virtual network service for Openstack - RYU plugin agent
+	depends = neutron-icehouse
+	depends = neutron-plugin-ryu-icehouse
+
+pkgname = neutron-plugin-vpn-agent-icehouse
+	pkgdesc = A virtual network service for Openstack - VPN plugin agent
+	depends = neutron-icehouse
+
+pkgname = neutron-icehouse
+	pkgdesc = A virtual network service for Openstack - Server
+	install = neutron.install
+	depends = python2-neutron-icehouse
+	optdepends = neutron-plugin-openvswitch-icehouse
+	backup = etc/neutron/api-paste.ini
+	backup = etc/neutron/neutron.conf
+

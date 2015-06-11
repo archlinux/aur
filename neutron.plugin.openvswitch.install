@@ -1,0 +1,12 @@
+post_install() {
+  chown -R neutron:neutron /etc/neutron/plugins
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  echo OK
+  true
+}
