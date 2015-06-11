@@ -3,9 +3,9 @@
 
 _pkgname=drush
 pkgname=$_pkgname-git
-pkgver=7.0.0.rc1.r48.ga237d1d
+pkgver=8.0.0.beta11.r3.gaf918de
 pkgrel=1
-pkgdesc="The Drupal command-line shell, git version."
+pkgdesc='The Drupal command-line shell, git version.'
 arch=('any')
 url="https://github.com/drush-ops/$pkgname"
 license=('GPL')
