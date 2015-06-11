@@ -1,0 +1,19 @@
+pkgbase = postgresql-uuid-ossp
+	pkgdesc = PostgreSQL UUID-OSSP Extension
+	pkgver = 9.4.2
+	pkgrel = 1
+	url = http://www.postgresql.org/
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = BSD
+	depends = readline
+	depends = postgresql>=9.4
+	depends = uuid
+	options = !makeflags
+	source = ftp://ftp.postgresql.org/pub/source/v9.4.2/postgresql-9.4.2.tar.bz2
+	sha256sums = 81fda191c165ba1d25d75cd0166ece5abdcb4a7f5eca01b349371e279ebb4d11
+
+pkgname = postgresql-uuid-ossp
+
