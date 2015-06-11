@@ -1,0 +1,18 @@
+pkgbase = gog-sam-and-max-hit-the-road
+	pkgdesc = Grab your nightstick, squeal like a siren, and Hit the Road with Sam & Max, Freelance Police, as they attempt to crack their toughest case.
+	pkgver = 1.0.0.6
+	pkgrel = 1
+	url = http://www.gog.com/game/sam_max_hit_the_road
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = custom
+	depends = freetype2
+	depends = unionfs-fuse
+	source = local://gog_sam_and_max_hit_the_road_1.0.0.6.deb
+	source = gog-sam-and-max-hit-the-road
+	sha256sums = 588819de0a6c28387a374ffb01520a7ceb1096a5590d31707d9ae790fab33c7c
+	sha256sums = 73a3d1b794f0f95b43e32aeb7cd9d9ab33d09ee44ada315ef1b100986016382a
+
+pkgname = gog-sam-and-max-hit-the-road
+
