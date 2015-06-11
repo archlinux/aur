@@ -3,7 +3,7 @@
 pkgname=qt5-examples
 _srcpkg=qt5
 pkgdesc='Examples and demos from qt5 documentation'
-pkgver=5.4.1
+pkgver=5.4.2
 _qtver=5.4
 pkgrel=1
 arch=('any')
@@ -14,7 +14,7 @@ depends=(qt5-base qt5-tools qt5-doc)
 
 _pkgfqn="qt-everywhere-opensource-src-${pkgver}"
 source=("http://download.qt.io/official_releases/qt/${_qtver}/${pkgver}/single/${_pkgfqn}.tar.xz")
-sha1sums=('daa3373af8d6656a1066ff23bc9100b5ca004ecf')
+sha1sums=('6796dd329fa6f464188bf0cd9dd69a9c2f6cd24c')
 
 package() {
     base=${pkgdir}/usr/share/doc/qt/examples
