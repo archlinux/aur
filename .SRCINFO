@@ -1,0 +1,16 @@
+pkgbase = wmhdplop
+	pkgdesc = A dockapp that monitors your hard-drives
+	pkgver = 0.9.9
+	pkgrel = 3
+	url = http://hules.free.fr/wmhdplop/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gkrellm
+	depends = imlib2
+	optdepends = gkrellm: to use as gkrellm plugin
+	source = http://hules.free.fr/wmhdplop/wmhdplop-0.9.9.tar.gz
+	md5sums = a64337205bc30faa45053965cc957b0e
+
+pkgname = wmhdplop
+
