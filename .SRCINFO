@@ -1,0 +1,15 @@
+pkgbase = python2-pushy
+	pkgdesc = A library for transparently accessing objects in a remote Python interpreter
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = http://awilkins.id.au/pushy/
+	arch = any
+	license = MIT
+	makedepends = python2-distribute
+	depends = python2
+	depends = python2-paramiko
+	source = https://pypi.python.org/packages/source/p/pushy/pushy-0.5.3.zip
+	md5sums = deb2cb14fdb4bee4684f44f919cb4cae
+
+pkgname = python2-pushy
+
