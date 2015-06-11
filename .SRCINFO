@@ -1,0 +1,16 @@
+pkgbase = xorg-editres
+	pkgdesc = a dynamic resource editor for X Toolkit applications
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = http://xorg.freedesktop.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = xorg-util-macros
+	depends = libxt
+	depends = libxaw
+	source = http://xorg.freedesktop.org/releases/individual/app/editres-1.0.6.tar.bz2
+	md5sums = 623322610e4040393e0ff2a69e6612cd
+
+pkgname = xorg-editres
+
