@@ -1,0 +1,19 @@
+pkgbase = gamera
+	pkgdesc = Framework for building document analysis applications.
+	pkgver = 3.4.2
+	pkgrel = 1
+	url = http://gamera.informatik.hsnr.de
+	arch = i686
+	arch = x86_64
+	arch = armv5h
+	arch = armv6h
+	arch = armv7h
+	license = GPL
+	depends = python2
+	depends = libtiff
+	depends = libpng
+	source = http://downloads.sourceforge.net/sourceforge/gamera/gamera-3.4.2.tar.gz
+	md5sums = ca31f70a9735203bc1f37073e8a2a495
+
+pkgname = gamera
+
