@@ -1,0 +1,19 @@
+pkgbase = python-vispy-git
+	pkgdesc = A high-performance interactive 2D/3D data visualization library.
+	pkgver = v0.3.0.r650.g6ee85e2
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/vispy/
+	arch = any
+	license = BSD
+	depends = python-numpy
+	optdepends = python-glfw: a possible backend
+	optdepends = python-opengl: a possible backend
+	optdepends = python-pyglet: a possible backend
+	optdepends = python-pyqt4: a possible backend
+	optdepends = python-pysdl2: a possible backend
+	optdepends = python-pyside: a possible backend
+	source = git://github.com/vispy/vispy.git
+	md5sums = SKIP
+
+pkgname = python-vispy-git
+
