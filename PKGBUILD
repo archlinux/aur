@@ -1,4 +1,4 @@
-# Maintainer:  Timofey Titovets <Nefelim4ag@gmail.com>
+# Maintainer:  Michael Beasley <youvegotmoxie@gmail.com>
 # Contributor: Boohbah <boohbah at gmail.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
@@ -6,7 +6,7 @@
 pkgbase=linux-next-git
 pkgname=("${pkgbase}")
 _srcname=linux-next
-pkgver=20150610
+pkgver=20150611
 pkgrel=1
 arch=('any')
 url="http://www.kernel.org/"
