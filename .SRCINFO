@@ -1,0 +1,15 @@
+pkgbase = typoratio-git
+	pkgdesc = A tool that calculates typographical ratios.
+	pkgver = 1.0.r1.gd03e51e
+	pkgrel = 1
+	url = http://github.com/cdbfoster/typoratio
+	arch = i686
+	arch = x86_64
+	license = GPL
+	provides = typoratio
+	conflicts = typoratio
+	source = typoratio-git::git+http://github.com/cdbfoster/typoratio
+	md5sums = SKIP
+
+pkgname = typoratio-git
+
