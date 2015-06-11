@@ -1,0 +1,15 @@
+pkgbase = wmnet
+	pkgdesc = A network monitor applet for WindowMaker
+	pkgver = 1.06
+	pkgrel = 4
+	url = http://www.katharineosborne.com/wmnet/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = imake
+	depends = libxext
+	source = http://www.sfr-fresh.com/linux/misc/old/wmnet-1.06.tar.gz
+	md5sums = 64e74c37c0cb5fd4fb81cfb0f5c4a264
+
+pkgname = wmnet
+
