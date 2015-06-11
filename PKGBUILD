@@ -12,8 +12,9 @@ pkgdesc='An open source Linux client for Google Drive with support for the new D
 arch=('i686' 'x86_64')
 url='https://github.com/vitalif/grive2'
 license=('GPL2')
-depends=('yajl' 'curl' 'libgcrypt' 'boost-libs' 'json-c' 'expat')
-optdepends=('cppunit: unit tests')
+depends=('yajl' 'curl' 'libgcrypt' 'boost-libs' 'gcc-libs' 'json-c' 'expat')
+optdepends=("cppunit: unit tests"
+			"binutils: backtrace and libiberty")
 makedepends=('cmake' 'git' 'boost')
 provides=('grive')
 conflicts=('grive')
