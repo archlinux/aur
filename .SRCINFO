@@ -8,7 +8,7 @@ pkgbase = typoratio-git
 	license = GPL
 	provides = typoratio
 	conflicts = typoratio
-	source = typoratio-git::git+http://github.com/cdbfoster/typoratio
+	source = typoratio::git+http://github.com/cdbfoster/typoratio
 	md5sums = SKIP
 
 pkgname = typoratio-git
