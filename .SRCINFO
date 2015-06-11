@@ -1,0 +1,24 @@
+pkgbase = python2-keystonemiddleware-kilo
+	pkgdesc = Middleware for OpenStack Identity
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/keystonemiddleware/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-babel
+	depends = python2-iso8601
+	depends = python2-netaddr
+	depends = python2-oslo-config
+	depends = python2-pbr
+	depends = python2-keystoneclient
+	depends = python2-requests
+	depends = python2-six
+	depends = python2-webob
+	source = https://pypi.python.org/packages/source/k/keystonemiddleware/keystonemiddleware-1.5.1.tar.gz
+	md5sums = 56972470e94f4f56c915ed9cd6b4b60e
+
+pkgname = python2-keystonemiddleware-kilo
+
