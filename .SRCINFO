@@ -1,0 +1,28 @@
+pkgbase = vtwm-git
+	pkgdesc = A lightweight, customizable window manager with a virtual desktop
+	pkgver = 5.5.0.rc8.15
+	pkgrel = 5
+	url = http://www.vtwm.org
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libxpm
+	depends = libxmu
+	depends = libxft
+	depends = libxinerama
+	depends = libxrandr
+	depends = esound
+	depends = rplay
+	optdepends = m4: for config file preprocessing
+	provides = vtwm
+	conflicts = vtwm
+	options = !makeflags
+	backup = usr/share/X11/vtwm/system.vtwmrc
+	source = vtwm-git::git://git.code.sf.net/p/vtwm/code
+	source = vtwm.desktop
+	md5sums = SKIP
+	md5sums = 7b4fcabdd4cf2b3a03683c37cb0fa82b
+
+pkgname = vtwm-git
+
