@@ -1,0 +1,24 @@
+pkgbase = xdg-launch-git
+	pkgdesc = A command line XDG compliant launcher
+	pkgver = 0.4.r0.g6668df0
+	pkgrel = 1
+	url = http://github.com/bbidulock/xdg-launch
+	install = xdg-launch-git.install
+	arch = i686
+	arch = x86_64
+	groups = xde
+	license = GPL
+	makedepends = git
+	makedepends = pkgconfig
+	depends = desktop-file-utils
+	depends = gtk2
+	depends = libnotify
+	depends = startup-notification
+	optdepends = dmenu: to use dmenu_launch script
+	provides = xdg-launch
+	conflicts = xdg-launch
+	source = xdg-launch-git::git+https://github.com/bbidulock/xdg-launch
+	md5sums = SKIP
+
+pkgname = xdg-launch-git
+
