@@ -1,12 +1,8 @@
-# $Id$
-# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
-# Contributor: Alexander Fehr <pizzapunk gmail com>
-# Contributor: Xilon <xilonmu@gmail.com>
-# Contributor: William Giokas <1007380@gmail.com>
+# Maintainer: Chinmay Dalal <w5vwg64uy@relay.firefox.com>
 
 pkgname=powertop-git
 _pkgname=powertop
-pkgver=2.7.r17.g98f5452
+pkgver=2.14.r15.g50d3c90
 pkgrel=1
 pkgdesc='A tool to diagnose issues with power consumption and power management, git version'
 arch=('i686' 'x86_64')
