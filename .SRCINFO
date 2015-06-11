@@ -1,0 +1,19 @@
+pkgbase = cwrap-git
+	pkgdesc = Automatical generate Cython wrappers from C & C++ header files
+	pkgver = 0.0.r1489.c522f6d
+	pkgrel = 2
+	url = https://github.com/geggo/cwrap
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2
+	depends = llvm-libs
+	depends = clang
+	provides = cwrap
+	conflicts = cwrap
+	source = git+https://github.com/geggo/cwrap.git
+	sha256sums = SKIP
+
+pkgname = cwrap-git
+
