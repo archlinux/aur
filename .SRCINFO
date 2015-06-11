@@ -1,0 +1,20 @@
+pkgbase = cmigemo-git
+	pkgdesc = An implementation of Migemo in C
+	pkgver = rel.1_2.r38.g5c014a8
+	pkgrel = 2
+	url = http://www.kaoriya.net/software/cmigemo/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	license = custom
+	makedepends = git
+	makedepends = nkf
+	makedepends = curl
+	provides = cmigemo
+	conflicts = cmigemo
+	options = !makeflags
+	source = cmigemo::git+https://github.com/koron/cmigemo.git
+	md5sums = SKIP
+
+pkgname = cmigemo-git
+
