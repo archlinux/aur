@@ -1,0 +1,16 @@
+pkgbase = wmbluegpu
+	pkgdesc = A GPU temperature monitoring dockapp (for WindowMaker, OpenBOx, AfterStep etc)
+	pkgver = 9
+	pkgrel = 1
+	url = http://github.com/vampirefrog/wmbluegpu
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libxpm
+	depends = libxft
+	source = wmbluegpu::git+https://github.com/vampirefrog/wmbluegpu.git
+	md5sums = SKIP
+
+pkgname = wmbluegpu
+
