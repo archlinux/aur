@@ -8,6 +8,7 @@ pkgbase = nullidentdmod-git
 	conflicts = oidentd
 	conflicts = nullidentd
 	conflicts = pindetd
+	conflicts = nullidentdmod
 	source = git+https://github.com/BlackXT/nullidentdmod
 	sha1sums = SKIP
 
