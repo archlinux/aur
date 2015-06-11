@@ -1,0 +1,23 @@
+pkgbase = kdemultimedia-kmix-git
+	pkgdesc = KDE volume control program. KMix. KDE's full featured mini mixer
+	pkgver = 4.6RC1.r1978.f911772
+	pkgrel = 2
+	epoch = 1
+	url = http://www.kde.org/applications/multimedia/kmix/
+	install = kmix.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = FDL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = git
+	makedepends = docbook-xsl
+	depends = kdebase-runtime
+	provides = kdemultimedia-kmix
+	conflicts = kdemultimedia-kmix
+	source = kmix::git://anongit.kde.org/kmix
+	md5sums = SKIP
+
+pkgname = kdemultimedia-kmix-git
+
