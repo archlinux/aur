@@ -1,0 +1,45 @@
+diff -U 3 -b -B -d -r -- a/slimlock.cpp b/slimlock.cpp
+--- a/slimlock.cpp	2013-10-02 00:38:05.000000000 +0200
++++ b/slimlock.cpp	2014-02-23 17:34:22.187787743 +0100
+@@ -48,19 +48,19 @@
+ void *RaiseWindow(void *data);
+ 
+ // I really didn't wanna put these globals here, but it's the only way...
+-Display* dpy;
+-int scr;
+-Window win;
+-Cfg* cfg;
+-Panel* loginPanel;
+-string themeName = "";
++static Display* dpy;
++static int scr;
++static Window win;
++static Cfg* cfg;
++static Panel* loginPanel;
++static string themeName = "";
+ 
+-pam_handle_t *pam_handle;
+-struct pam_conv conv = {ConvCallback, NULL};
++static pam_handle_t *pam_handle;
++static struct pam_conv conv = {ConvCallback, NULL};
+ 
+-CARD16 dpms_standby, dpms_suspend, dpms_off, dpms_level;
+-BOOL dpms_state, using_dpms;
+-int term;
++static CARD16 dpms_standby, dpms_suspend, dpms_off, dpms_level;
++static BOOL dpms_state, using_dpms;
++static int term;
+ 
+ static void
+ die(const char *errstr, ...) {
+@@ -73,6 +73,10 @@
+ }
+ 
+ int main(int argc, char **argv) {
++
++	// We need to set the locale to get the input encoded in UTF-8
++	setlocale (LC_ALL, "");
++
+ 	if((argc == 2) && !strcmp("-v", argv[1]))
+ 		die(APPNAME"-"VERSION", © 2010-2012 Joel Burget\n");
+ 	else if(argc != 1)
