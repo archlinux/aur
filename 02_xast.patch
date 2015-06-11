@@ -1,0 +1,94 @@
+--- Makefile	2011-10-23 14:50:19.549756075 +0600
++++ Makefile.new	2011-10-23 14:50:07.673089811 +0600
+@@ -6,7 +6,7 @@
+ #LDFLAGS = -s -L/usr/local/lib
+ LDFLAGS = -s -L/util/X11/lib
+ LIBS = -lm -lX11
+-TARGET = xast.exe
++TARGET = xast
+ SRCS = xast.c
+ OBJS = xast.o 
+ ALL = README xasteroids xast.docs xast.man Makefile $(SRCS) 
+--- xast.c	2011-10-23 15:16:38.859702325 +0600
++++ xast.c.new	2011-10-23 15:19:39.573029507 +0600
+@@ -9,6 +9,8 @@
+ 		Arrow keys.
+ 		ANSI-C cleanups.
+ 		Use usleep() instead of a delay loop, when available.
++		Changed default window size and speed (2011).
++		Disabled timer penalty because of problems with its speed (2011).
+ 
+ 	Changes from version 4.3:
+ 
+@@ -46,10 +48,7 @@
+ #include <X11/Xutil.h>
+ #include <X11/keysym.h>
+ #include <math.h>
+-
+-#ifdef HAS_USLEEP
+ #include <unistd.h>
+-#endif
+ 
+ #ifndef __STDC__
+ define void
+@@ -130,7 +129,7 @@
+ 		{{0,0}, {pi,20},{7*pi/4,28},{pi/4,28},{pi,20}}
+ 	};
+ Boom	blist = NULL;
+-double	drawscale = 1, speedscale = 1;
++double	drawscale = 1, speedscale = 0.2;
+ int	width, height,
+ 	energy,		/* # of turns shield is good for	*/
+ 	highscore = 0, level,
+@@ -716,7 +715,7 @@
+ 	screen = DefaultScreen(disp);
+ 	bg = BlackPixel(disp, screen);
+ 	fg = WhitePixel(disp, screen);
+-	hint.x = 150; hint.y = 200; hint.width = 550; hint.height = 550;
++	hint.x = 50; hint.y = 50; hint.width = 1024; hint.height = 768;
+ 	hint.flags = PPosition | PSize;
+ 	width = hint.width; height = hint.height-letheight-1;
+ 	depth = DefaultDepth (disp, screen);
+@@ -818,17 +817,17 @@
+ 			    key = XLookupKeysym ((XKeyEvent *)&event, 0);
+ 			    if (!shield_on) switch (key)
+ 			    {	case XK_Left: case XK_e:
+-				    obj[SHIP].rotvel = obj[SHIP].rotvel - .1; break;
++				    obj[SHIP].rotvel = obj[SHIP].rotvel - .02; break;
+ 				case XK_Right: case XK_r:
+-				    obj[SHIP].rotvel = obj[SHIP].rotvel + .1; break;
++				    obj[SHIP].rotvel = obj[SHIP].rotvel + .02; break;
+ 				case XK_w:
+ 				    obj[SHIP].rot -= pi/4; break;
+ 				case XK_t:
+ 				    obj[SHIP].rot += pi/4; break;
+ 				case XK_d:
+-				    obj[SHIP].rotvel = obj[SHIP].rotvel - .02; break;
++				    obj[SHIP].rotvel = obj[SHIP].rotvel - .005; break;
+ 				case XK_f:
+-				    obj[SHIP].rotvel = obj[SHIP].rotvel + .02; break;
++				    obj[SHIP].rotvel = obj[SHIP].rotvel + .005; break;
+ 				case XK_Up: case THRUST:
+ 				    obj[SHIP].xvel += cos(obj[SHIP].rot);
+ 				    obj[SHIP].yvel += sin(obj[SHIP].rot);
+@@ -900,7 +899,6 @@
+ 		}   }
+ 		if (!pause)
+ 		{   moveobjs(&crashed);
+-		    if (ships) score--;	/* timer effect	*/
+ 		    if (!counter)
+ 		    {	counter = counterstart;	/* Restart counter */
+ 			if (crashed == 2)
+@@ -978,11 +976,7 @@
+ 			}
+ 			else	obj[ENEMYBUL].alive = 0;
+ 		    }
+-#ifdef HAS_USLEEP
+-		    usleep(delay);
+-#else
+-		    for (i = 0; i < delay; i++);
+-#endif
++		    usleep(2000);
+ 		}
+ 	    }
+ 	}
