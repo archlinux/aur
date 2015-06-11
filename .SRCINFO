@@ -1,0 +1,16 @@
+pkgbase = python-nameparser
+	pkgdesc = A simple Python 2 module for parsing human names into their individual components
+	pkgver = v0.3.3
+	pkgrel = 1
+	url = https://github.com/derek73/python-nameparser
+	arch = any
+	license = custom
+	makedepends = python-setuptools
+	depends = python
+	provides = python-nameparser
+	conflicts = python-nameparser
+	source = https://pypi.python.org/packages/source/n/nameparser/nameparser-0.3.3.tar.gz
+	md5sums = eee37936846c38781b00654e59f6e372
+
+pkgname = python-nameparser
+
