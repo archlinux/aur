@@ -1,0 +1,14 @@
+pkgbase = xorg-xtrap
+	pkgdesc = X Trap sample clients
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://www.x.org/
+	arch = x86_64
+	arch = i686
+	license = custom
+	depends = libxtrap
+	source = http://xorg.freedesktop.org/releases/individual/app/xtrap-1.0.2.tar.bz2
+	md5sums = 97a62a011a11f03b46d72851aa298fa8
+
+pkgname = xorg-xtrap
+
