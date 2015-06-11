@@ -1,0 +1,15 @@
+pkgbase = xorg-xfwp
+	pkgdesc = X firewall proxy
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://www.x.org/
+	arch = x86_64
+	arch = i686
+	license = custom
+	makedepends = xproxymngproto
+	depends = libice
+	source = http://xorg.freedesktop.org/releases/individual/app/xfwp-1.0.2.tar.bz2
+	md5sums = eeb558aad30a8b2bc1f1f0e919ea6f38
+
+pkgname = xorg-xfwp
+
