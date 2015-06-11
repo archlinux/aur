@@ -1,0 +1,42 @@
+pkgbase = iceweasel-bin
+	pkgdesc = Debian Browser based on Mozilla Firefox (bin version)
+	pkgver = 38.0.1.deb5
+	pkgrel = 2
+	url = https://packages.debian.org/sid/iceweasel
+	install = iceweasel.install
+	arch = i686
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = gtk2
+	depends = icu
+	depends = mozilla-common
+	depends = libxt
+	depends = startup-notification
+	depends = mime-types
+	depends = dbus-glib
+	depends = alsa-lib
+	depends = libnotify
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = libvpx
+	depends = libevent
+	depends = nss
+	depends = hunspell
+	depends = sqlite
+	optdepends = iceweasel-sync: Speed up Iceweasel using tmpfs
+	optdepends = mozplugger: A Mozilla & Firefox multimedia plugin.
+	optdepends = mozilla-searchplugins: extra search plugins
+	optdepends = iceweasel-extension-archsearch: Iceweasel Arch search engines (AUR, Pkgs, BBS, Wiki, etc.)
+	optdepends = iceweasel-extension-archforumsearch-it: Iceweasel search engines for Arch Linux Italian forum
+	optdepends = gst-libav: h.264 video
+	optdepends = gst-plugins-good: h.264 video
+	optdepends = networkmanager: Location detection via available WiFi networks
+	provides = iceweasel=38.0.1
+	conflicts = iceweasel
+	source = http://ftp.de.debian.org/debian/pool/main/i//iceweasel/iceweasel_38.0.1-5_i386.deb
+	sha1sums = 1cb632ec4c4f94125becdb1d3b5e6152b09bb8ed
+
+pkgname = iceweasel-bin
+
