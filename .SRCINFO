@@ -1,0 +1,24 @@
+pkgbase = python2-word2vec-git
+	pkgdesc = Python 2 interface to word2vec. Used for converting words into vectors for machine learning and deep learning
+	pkgver = 0.7.1.r109.bec7e3a
+	pkgrel = 2
+	url = https://github.com/danielfrg/word2vec
+	arch = x86_64
+	license = APACHE
+	makedepends = git
+	makedepends = python2-setuptools
+	makedepends = make
+	depends = python2
+	depends = python2-numpy
+	depends = python2-scikit-learn
+	depends = python2-joblib
+	optdepends = ipython2: For examples
+	provides = python2-word2vec
+	conflicts = python2-word2vec
+	conflicts = word2vec-svn
+	conflicts = python-word2vec
+	source = git+https://github.com/danielfrg/word2vec.git
+	sha256sums = SKIP
+
+pkgname = python2-word2vec-git
+
