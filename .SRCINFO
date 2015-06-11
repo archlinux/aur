@@ -1,0 +1,24 @@
+pkgbase = audioconvert
+	pkgdesc = Audio Sync and Conversion Utility
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = http://gogglesmm.github.io/
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = GPL3
+	makedepends = pkgconfig
+	depends = fox>=1.7.48
+	depends = taglib
+	optdepends = faac: for aac support
+	optdepends = faad2: for aac support
+	optdepends = flac: for flac support
+	optdepends = lame: for mp3 support
+	optdepends = musepack-tools: for mpc support
+	optdepends = vorbis-tools: for ogg support
+	optdepends = opus-tools: for opus support
+	source = audioconvert-0.4.4.tar.gz::https://github.com/gogglesmm/audioconvert/archive/0.4.4.tar.gz
+	md5sums = 380dd602fc1abdc83ae209439368b348
+
+pkgname = audioconvert
+
