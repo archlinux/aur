@@ -1,0 +1,18 @@
+pkgbase = otf-gamaliel
+	pkgdesc = Modern blackletter, inspired on the typeface of an incunable printed in Barcelona by Joan Rosembach at year 1496.
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://sid.ethz.ch/debian/ttf-gamaliel
+	install = gamaliel.install
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = http://sid.ethz.ch/debian/ttf-gamaliel/Gamaliel.otf
+	source = OFL.txt
+	md5sums = 252299ad933b2acb62e561c828c86f75
+	md5sums = b2cd1f908e1f6e76c16f214033b3e93f
+
+pkgname = otf-gamaliel
+
