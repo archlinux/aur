@@ -1,0 +1,13 @@
+pkgbase = openarkkit
+	pkgdesc = The openark kit provides common utilities to administer, diagnose and audit MySQL databases.
+	pkgver = 196
+	pkgrel = 2
+	url = https://code.google.com/p/openarkkit
+	arch = any
+	license = custom
+	depends = python2
+	source = https://openarkkit.googlecode.com/files/openark-kit-196.tar.gz
+	sha256sums = d740a413febd8b62e1785c928f0bc584cd02ce630b51fe9005248fd401f2f6d8
+
+pkgname = openarkkit
+
