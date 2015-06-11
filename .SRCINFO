@@ -1,0 +1,15 @@
+pkgbase = cuda-z-svn
+	pkgdesc = CUDA Information Utility.
+	pkgver = LATEST
+	pkgrel = 2
+	url = http://cuda-z.sourceforge.net/
+	arch = x86_64
+	license = GPL3
+	makedepends = svn
+	depends = cuda
+	depends = qt5-base
+	source = svn://svn.code.sf.net/p/cuda-z/code/trunk
+	sha512sums = SKIP
+
+pkgname = cuda-z-svn
+
