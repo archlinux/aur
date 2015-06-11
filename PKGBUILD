@@ -1,7 +1,7 @@
 # Maintainer: Mikael Eriksson <mikael_eriksson@miffe.org>
 
 pkgname=libjpeg6-turbo
-pkgver=1.3.1
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="libjpeg derivative with accelerated baseline JPEG compression and decompression"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ provides=('libjpeg6')
 conflicts=('libjpeg6')
 options=('!libtool')
 source=(http://sourceforge.net/projects/libjpeg-turbo/files/$pkgver/libjpeg-turbo-$pkgver.tar.gz)
-md5sums=('2c3a68129dac443a72815ff5bb374b05')
+md5sums=('b1f6b84859a16b8ebdcda951fa07c3f2')
 
 build() {
   cd "$srcdir/libjpeg-turbo-$pkgver"
