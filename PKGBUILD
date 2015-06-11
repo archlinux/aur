@@ -2,12 +2,12 @@
 
 pkgname=dooble
 pkgver=1.52
-pkgrel=2
+pkgrel=3
 pkgdesc='A safe WebKit Web browser'
 url='http://dooble.sourceforge.net/'
 arch=('i686' 'x86_64')
 license=('custom:3-clause BSD')
-depends=('libpng' 'qt5-base' 'qt5-webkit' 'openssl' 'libspoton=0.17c' "dooble-common=${pkgver}")
+depends=('libpng' 'qt5-base' 'qt5-webkit' 'openssl' 'libspoton=0.22' "dooble-common=${pkgver}")
 makedepends=('libpng' 'qt5-base' 'qt5-webkit' 'openssl' 'qt5-tools' 'sed' 'coreutils')
 source=("dooble-${pkgver}.tar.gz::http://downloads.sourceforge.net/project/dooble/Version%20${pkgver}/Dooble-Source.tar.gz?r=")
 sha256sums=('407091a7dbd9d6969f0450a97e0fa9a153ea7773ae1af599a5226e7bc7467173')
