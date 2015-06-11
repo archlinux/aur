@@ -1,0 +1,23 @@
+pkgbase = got-diminished
+	pkgdesc = Extension for gates-of-tartaros to minimise memory usage after logging in
+	pkgver = 1396890724
+	pkgrel = 1
+	url = https://github.com/GNU-Pony/got-diminished
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = GPL3
+	makedepends = make
+	makedepends = sed
+	makedepends = coreutils
+	makedepends = gcc
+	depends = glibc
+	depends = coreutils
+	depends = util-linux
+	depends = gates-of-tartaros
+	optdepends = openssh
+	source = https://github.com/GNU-Pony/got-diminished/archive/1396890724.tar.gz
+	sha256sums = 5d143931d9ec8cd2dbf9347aabb269ba2180ef4a961547ac31467091ec537be4
+
+pkgname = got-diminished
+
