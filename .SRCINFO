@@ -1,0 +1,17 @@
+pkgbase = ticker-git
+	pkgdesc = Ticker is a program that scrolls a message across the top or bottom line of your screen, in a manner similar to a stock ticker. Ticker supports communicating with programs that changes the text periodically.
+	pkgver = 1.9.r5.g51260c4
+	pkgrel = 1
+	url = http://joeyh.name/code/ticker/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = slang
+	provides = ticker
+	conflicts = ticker
+	source = git://git.kitenet.net/ticker
+	md5sums = SKIP
+
+pkgname = ticker-git
+
