@@ -1,0 +1,15 @@
+pkgbase = wmweather
+	pkgdesc = Shows local weather conditions in a WindowMaker dockapp
+	pkgver = 1.31
+	pkgrel = 5
+	url = https://github.com/bbidulock/wmWeather
+	arch = i686
+	arch = x86_64
+	groups = x11
+	license = GPL
+	depends = libxpm
+	source = https://github.com/bbidulock/wmWeather/releases/download/1.31/wmWeather-1.31.tar.gz
+	md5sums = b7982ef0ced0c700d23e152b6ddbd338
+
+pkgname = wmweather
+
