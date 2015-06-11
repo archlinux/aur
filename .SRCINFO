@@ -1,0 +1,19 @@
+pkgbase = python-monary-hg
+	pkgdesc = Perform high-performance column queries from MongoDB for Python 3. 10x speedup over pymongo alone.
+	pkgver = 0.3.0.r69.efc4072b9b7f
+	pkgrel = 1
+	url = https://bitbucket.org/djcbeach/monary
+	arch = x86_64
+	license = apache
+	makedepends = mercurial
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pymongo
+	depends = python-numpy
+	provides = python-monary
+	conflicts = python-monary
+	source = hg+https://bitbucket.org/djcbeach/monary
+	sha256sums = SKIP
+
+pkgname = python-monary-hg
+
