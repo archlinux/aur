@@ -1,0 +1,16 @@
+pkgbase = xqproxy
+	pkgdesc = XDMCP query proxy
+	pkgver = 0.1.2
+	pkgrel = 4
+	url = https://github.com/bbidulock/xqproxy
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = libx11
+	source = https://github.com/bbidulock/xqproxy/releases/download/0.1.2/xqproxy-0.1.2.tar.bz2
+	md5sums = 906ce26fe99045457b59e33bfe84df5c
+
+pkgname = xqproxy
+
