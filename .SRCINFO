@@ -1,0 +1,23 @@
+pkgbase = fbterm-git
+	pkgdesc = A fast framebuffer-based terminal emulator for Linux
+	pkgver = 20150509
+	pkgrel = 1
+	url = https://github.com/izmntuk/fbterm
+	install = INSTALL
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = gpm
+	makedepends = libx86
+	depends = fontconfig
+	optdepends = libx86: accelerator with VESA compatible video card
+	optdepends = gpm: mouse selection support
+	provides = fbterm
+	conflicts = fbterm
+	source = git+https://github.com/izmntuk/fbterm
+	source = INSTALL
+	sha1sums = SKIP
+	sha1sums = SKIP
+
+pkgname = fbterm-git
+

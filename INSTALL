@@ -1,0 +1,18 @@
+post_install() {
+	cat <<EOF
+
+==> To run fbterm as a non-root user, do:
+
+sudo gpasswd -a YOUR_USERNAME video
+
+
+==> To enable keyboard shortcuts for non-root users, do:
+
+sudo setcap 'cap_sys_tty_config+ep' /usr/bin/fbterm
+
+EOF
+}
+
+post_upgrade() {
+	post_install $1
+}
