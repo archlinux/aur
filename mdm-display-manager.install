@@ -1,0 +1,25 @@
+pkgname=mate-display-manager
+
+post_install() {
+	getent group mdm >/dev/null 2>&1 || groupadd -g 128 mdm
+	getent passwd mdm >/dev/null 2>&1 || usr/sbin/useradd -c 'Linux Mint Display Manager' -u 128 -g mdm -d /var/lib/mdm -s /sbin/nologin mdm
+	passwd -l mdm > /dev/null
+	chown root:mdm /var/lib/mdm > /dev/null
+	chmod 1770 /var/lib/mdm > /dev/null
+
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+	printf "\n By default the tty1 is disabled, this because a bug"
+	printf "\n that if tty1 is runing, then mdm is automagically  "
+	printf "\n restarted in a infinite loop, this take around     "
+	printf "\n 1 minute post login, please not force the use of   "
+	printf "\n getty@tty1 unles you know how deal with the problem"
+	printf "\n"
+	printf "\n For systemd use: # systemctl enable mdm"
+	printf "\n"
+}
+
+post_remove() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+	getent passwd mdm || userdel mdm
+	getent group mdm || groupdel mdm
+}
