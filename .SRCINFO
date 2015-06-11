@@ -1,0 +1,15 @@
+pkgbase = emacs-clojure-mode
+	pkgdesc = Emacs major mode for the clojure language
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://github.com/technomancy/clojure-mode
+	install = emacs-clojure-mode.install
+	arch = any
+	license = GPL3
+	depends = emacs
+	optdepends = paredit: enhanced LISP structure editing
+	source = https://github.com/clojure-emacs/clojure-mode/archive/3.0.1.tar.gz
+	sha256sums = 96f238d0d1615eddb07d15c99834e5750120f523e9ef0c14919dee1e8f1705ef
+
+pkgname = emacs-clojure-mode
+
