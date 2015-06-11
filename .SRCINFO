@@ -1,0 +1,23 @@
+pkgbase = mygui-ogre1.8
+	pkgdesc = A multilayer and overlappable GUI System for OGRE. Built against OGRE 1.8.
+	pkgver = 3.2.2
+	pkgrel = 1
+	url = http://mygui.info/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = boost
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = ttf-dejavu
+	depends = boost-libs
+	depends = ogre-1.8
+	depends = ois
+	optdepends = mygui-docs: documentation
+	provides = mygui
+	source = https://github.com/MyGUI/mygui/archive/MyGUI3.2.2.tar.gz
+	md5sums = 0023a689a2a63febc2cc703f81f86c62
+
+pkgname = mygui-ogre1.8
+
