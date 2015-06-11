@@ -1,0 +1,16 @@
+pkgbase = android-glass-gdk-19
+	pkgdesc = Google Glass Development Kit Preview, API-19
+	pkgver = xe22_r11
+	pkgrel = 1
+	url = https://developers.google.com/glass/develop/gdk/index
+	arch = any
+	license = custom
+	depends = android-platform-19
+	options = !strip
+	source = http://dl.google.com/glass/xe22/google-gdk.zip
+	source = source.properties
+	sha1sums = 52cadbec4d42ce68a667e7e4ea461ef8b81924ef
+	sha1sums = e1fbebdeecc03b9e03586a80b19faac185c8a7ed
+
+pkgname = android-glass-gdk-19
+
