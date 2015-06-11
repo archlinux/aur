@@ -1,0 +1,30 @@
+pkgbase = conky-audacious
+	pkgdesc = Lightweight system monitor for X
+	pkgver = 1.9.0
+	pkgrel = 4
+	url = http://conky.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	license = GPL
+	makedepends = docbook2x
+	depends = glib2
+	depends = curl
+	depends = lua
+	depends = wireless_tools
+	depends = libxml2
+	depends = libxft
+	depends = libxdamage
+	depends = imlib2
+	depends = audacious
+	depends = libaudclient
+	provides = conky
+	conflicts = conky
+	options = !emptydirs
+	backup = etc/conky/conky.conf
+	backup = etc/conky/conky_no_x11.conf
+	source = http://downloads.sourceforge.net/project/conky/conky/1.9.0/conky-1.9.0.tar.gz
+	sha1sums = a8d26d002370c9b877ae77ad3a3bbd2566b38e5d
+
+pkgname = conky-audacious
+
