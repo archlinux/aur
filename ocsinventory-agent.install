@@ -1,0 +1,9 @@
+post_install() {
+    echo "Edit /etc/ocsinventory/ocsinventory-agent.cfg with your server details."
+}
+pre_upgrade() {
+    mv /etc/ocsinventory/ocsinventory-agent.cfg /etc/ocsinventory/ocsinventory-agent.cfg.OLD
+}
+post_upgrade() {
+    mv /etc/ocsinventory/ocsinventory-agent.cfg.OLD /etc/ocsinventory/ocsinventory-agent.cfg
+}

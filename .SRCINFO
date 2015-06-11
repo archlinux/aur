@@ -1,0 +1,32 @@
+pkgbase = ocsinventory-agent
+	pkgdesc = Hardware and software inventory tool (client)
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = http://www.ocsinventory-ng.org
+	install = ocsinventory-agent.install
+	arch = any
+	license = GPL
+	depends = dmidecode
+	depends = pciutils
+	depends = perl-crypt-ssleay
+	depends = perl-xml-sax
+	depends = perl-libwww
+	depends = perl-net-ip
+	depends = perl-xml-namespacesupport
+	depends = perl-xml-simple
+	depends = perl-proc-daemon
+	depends = perl-proc-pid-file
+	depends = perl-net-ssleay
+	optdepends = smartmontools
+	backup = etc/ocsinventory/ocsinventory-agent.cfg
+	source = https://launchpad.net/ocsinventory-unix-agent/stable-2.1/2.1.1/+download/Ocsinventory-Unix-Agent-2.1.1.tar.gz
+	source = modules.conf
+	source = ocsinventory-agent
+	source = ocsinventory-agent.cfg
+	md5sums = 195960e048bfa77badc2a3df382a5a88
+	md5sums = a2a8a3ee7018d5681403088dcd3d2c2e
+	md5sums = 9419012794e5e134bc152cfd388d63e7
+	md5sums = 3be05b06c7a6e269d9a4c74dcf239d19
+
+pkgname = ocsinventory-agent
+
