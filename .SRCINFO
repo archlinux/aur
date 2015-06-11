@@ -1,5 +1,5 @@
 pkgbase = plasma-theme-archlinux
-	pkgdesc = Plasma 5 theme inspited by Archlinux minimalism
+	pkgdesc = Plasma 5 theme inspired by Archlinux minimalism
 	pkgver = 1.0
 	pkgrel = 2
 	url = http://www.archlinux.org/

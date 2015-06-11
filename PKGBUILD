@@ -3,7 +3,7 @@
 pkgname=plasma-theme-archlinux
 pkgver=1.0
 pkgrel=2
-pkgdesc="Plasma 5 theme inspited by Archlinux minimalism"
+pkgdesc="Plasma 5 theme inspired by Archlinux minimalism"
 arch=('any')
 url="http://www.archlinux.org/"
 license=('CCPL:cc-by-sa')
