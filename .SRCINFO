@@ -1,0 +1,19 @@
+pkgbase = kodi-devel-pvr-njoy
+	pkgdesc = Njoy N7 PVR client addon for Kodi
+	pkgver = 20150331.fcd6294
+	pkgrel = 1
+	url = https://github.com/kodi-pvr/pvr.njoy
+	arch = i686
+	arch = x86_64
+	groups = kodi-devel
+	license = GPL
+	makedepends = cmake
+	makedepends = kodi-devel-platform
+	makedepends = kodi-devel-libplatform
+	depends = kodi-devel
+	depends = tinyxml
+	source = https://github.com/kodi-pvr/pvr.njoy/archive/fcd62943f976be1a60786643aaa01ebd98c0964e.tar.gz
+	md5sums = SKIP
+
+pkgname = kodi-devel-pvr-njoy
+
