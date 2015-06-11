@@ -1,0 +1,9 @@
+[Unit]
+Description=Cinder Scheduler service
+
+[Service]
+ExecStart=/usr/bin/cinder-scheduler --config-dir /etc/cinder/
+User=cinder
+
+[Install]
+WantedBy=multi-user.target

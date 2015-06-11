@@ -1,0 +1,9 @@
+[Unit]
+Description=Cinder Volume service
+
+[Service]
+ExecStart=/usr/bin/cinder-volume --config-dir /etc/cinder/
+User=root
+
+[Install]
+WantedBy=multi-user.target

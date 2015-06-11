@@ -1,0 +1,9 @@
+[Unit]
+Description=Cinder API service
+
+[Service]
+ExecStart=/usr/bin/cinder-api --config-dir /etc/cinder/
+User=cinder
+
+[Install]
+WantedBy=multi-user.target
