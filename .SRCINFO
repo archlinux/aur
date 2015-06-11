@@ -1,0 +1,29 @@
+pkgbase = eclipse-platform
+	pkgdesc = A minimal installation suitable for complete per-user customization with the built-in Eclipse package manager
+	pkgver = 4.4.2
+	pkgrel = 2
+	url = http://www.eclipse.org
+	install = eclipse-platform.install
+	arch = i686
+	arch = x86_64
+	license = EPL
+	depends = java-environment
+	depends = gtk2
+	depends = unzip
+	depends = libwebkit
+	depends = libxtst
+	depends = hicolor-icon-theme
+	provides = eclipse=4.4.2
+	conflicts = eclipse
+	options = !strip
+	source = http://www.eclipse.org/downloads/download.php?file=/eclipse/downloads/drops4/R-4.4.2-201502041700/eclipse-platform-4.4.2-linux-gtk.tar.gz&r=1
+	source = eclipse.sh
+	source = eclipse.svg
+	source = eclipse.desktop
+	md5sums = ee01d78a2c8a85d59df8fc5275d73c35
+	md5sums = e07b2ccfc4689c288fd876a4beb8403d
+	md5sums = a0f93d5e697837d75911f5af9a386f19
+	md5sums = 45b39512f5e3e97fa078598a11245504
+
+pkgname = eclipse-platform
+
