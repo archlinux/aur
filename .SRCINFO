@@ -1,0 +1,15 @@
+pkgbase = python2-xstatic-qunit
+	pkgdesc = XStatic-QUnit
+	pkgver = 1.14.0.2
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/XStatic-QUnit
+	arch = i686
+	arch = x86_64
+	makedepends = python2-setuptools
+	makedepends = python2-pip
+	depends = python2
+	source = https://pypi.python.org/packages/source/X/XStatic-QUnit/XStatic-QUnit-1.14.0.2.tar.gz
+	md5sums = 21d48252d3301bd7ae530bfeffa3d108
+
+pkgname = python2-xstatic-qunit
+
