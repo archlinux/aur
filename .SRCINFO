@@ -1,0 +1,16 @@
+pkgbase = gkrellxmms2
+	pkgdesc = A plugin for GKrellM2 to control basic functions of XMMS2
+	pkgver = 0.7.1
+	pkgrel = 2
+	url = http://wejp.k.vu/projects/xmms2/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = xmms2
+	depends = gtk2
+	depends = gkrellm
+	source = http://wejp.k.vu/files/gxmms2-0.7.1.tar.gz
+	sha256sums = fa3fef28935d29665bd7d788db2dcd131e177c7d9ee71423c096a410bfc05a27
+
+pkgname = gkrellxmms2
+
