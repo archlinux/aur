@@ -1,0 +1,15 @@
+pkgbase = smp_utils
+	pkgdesc = Utilities for the Serial Attached SCSI (SAS) Management Protocol (SMP)
+	pkgver = 0.98
+	pkgrel = 1
+	url = http://sg.danny.cz/sg/smp_utils.html
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = glibc
+	source = http://sg.danny.cz/sg/p/smp_utils-0.98.tar.xz
+	sha1sums = 2c8296b0dc1f131a59729f4a8e46306a2938ad77
+	sha256sums = e1e470d0b851bd1b1a1dae8d831d4c1f1a9a62bad9eb1966b870a20100b886cc
+
+pkgname = smp_utils
+
