@@ -1,6 +1,6 @@
 # Maintainer: Chad "crossroads1112" Sharp <crossroads1112@riseup.net>
 pkgname=mkaur
-pkgver=r254.f2a7e5c
+pkgver=r255.71d9e9d
 pkgrel=1
 pkgdesc="Script that helps to automate creation AUR packages."
 arch=('any')

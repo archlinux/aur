@@ -1,6 +1,6 @@
 pkgbase = mkaur
 	pkgdesc = Script that helps to automate creation AUR packages.
-	pkgver = r254.f2a7e5c
+	pkgver = r255.71d9e9d
 	pkgrel = 1
 	url = https://github.com/crossroads1112/bin
 	arch = any
