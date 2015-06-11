@@ -1,0 +1,22 @@
+pkgbase = python2-pybitcointools-git
+	pkgdesc = Python Bitcoin Tools - Simple, common-sense Bitcoin-themed Python ECC library for Python 2
+	pkgver = 1.1.28.r209.6efa55b
+	pkgrel = 2
+	url = https://github.com/vbuterin/pybitcointools
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python2
+	depends = python2-setuptools
+	depends = python2-socks
+	depends = python2-pyasn1
+	depends = python2-pyasn1-modules
+	depends = python2-tlslite
+	optdepends = electrum: Electrum wallet support
+	provides = python2-pybitcointools
+	conflicts = python2-pybitcointools python2-bitcoinlib-git
+	source = git+https://github.com/vbuterin/pybitcointools.git
+	sha256sums = SKIP
+
+pkgname = python2-pybitcointools-git
+
