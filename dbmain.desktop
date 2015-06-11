@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=DB-Main
+Comment=A free data-modeling and data-architecture tool
+Exec=dbmain
+Icon=dbmain
+Terminal=false
+Type=Application
+Categories=Office;
