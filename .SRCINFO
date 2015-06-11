@@ -1,0 +1,64 @@
+pkgbase = poppler-git
+	pkgver = 0.33.0.r4409.11f117c
+	pkgrel = 2
+	url = http://poppler.freedesktop.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = libjpeg
+	makedepends = gcc-libs
+	makedepends = cairo
+	makedepends = fontconfig
+	makedepends = openjpeg
+	makedepends = gtk2
+	makedepends = qt4
+	makedepends = pkgconfig
+	makedepends = lcms2
+	makedepends = gobject-introspection
+	makedepends = icu
+	makedepends = qt5-base
+	options = !emptydirs
+	source = git://git.freedesktop.org/git/poppler/poppler
+	source = git://git.freedesktop.org/git/poppler/test
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = poppler-git
+	pkgdesc = PDF rendering library based on xpdf 3.0
+	depends = libjpeg
+	depends = gcc-libs
+	depends = cairo
+	depends = fontconfig
+	depends = openjpeg
+	depends = lcms2
+	optdepends = poppler-data: encoding data to display PDF documents containing CJK characters
+	provides = poppler=0.33.0
+	provides = poppler
+	conflicts = poppler-qt3<0.33.0
+	conflicts = poppler
+
+pkgname = poppler-glib-git
+	pkgdesc = Poppler glib bindings
+	depends = poppler-git
+	depends = glib2
+	provides = poppler-glib
+	conflicts = poppler-glib
+
+pkgname = poppler-qt4-git
+	pkgdesc = Poppler Qt4 bindings
+	depends = poppler-git
+	depends = qt4
+	provides = poppler-qt=0.33.0
+	conflicts = poppler-qt
+	conflicts = poppler-qt4
+	replaces = poppler-qt
+	replaces = poppler-qt4
+
+pkgname = poppler-qt5-git
+	pkgdesc = Poppler Qt5 bindings
+	depends = poppler-git
+	depends = qt5-base
+	provides = poppler-qt5
+	conflicts = poppler-qt5
+
