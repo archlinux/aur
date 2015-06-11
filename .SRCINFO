@@ -1,0 +1,16 @@
+pkgbase = tabview-git
+	pkgdesc = Curses CSV/tabular data viewer
+	pkgver = r33.d0d3417
+	pkgrel = 1
+	url = https://github.com/firecat53/tabview
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python
+	provides = tabview
+	conflicts = tabview
+	source = git://github.com/firecat53/tabview.git
+	md5sums = SKIP
+
+pkgname = tabview-git
+
