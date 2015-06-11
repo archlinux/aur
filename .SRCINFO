@@ -1,0 +1,23 @@
+pkgbase = python2-migrate-kilo
+	pkgdesc = provides a way to deal with database schema changes in SQLAlchemy projects
+	pkgver = 0.9.6
+	pkgrel = 1
+	url = http://sqlalchemy-migrate.googlecode.com/
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	makedepends = git
+	depends = python2
+	depends = python2-sqlalchemy
+	depends = python2-decorator
+	depends = python2-tempita
+	depends = python2-pip
+	depends = python2-six
+	depends = python2-decorator
+	depends = python2-pbr
+	provides = python2-migrate
+	source = https://pypi.python.org/packages/source/s/sqlalchemy-migrate/sqlalchemy-migrate-0.9.6.tar.gz
+	md5sums = SKIP
+
+pkgname = python2-migrate-kilo
+
