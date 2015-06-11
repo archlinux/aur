@@ -2,8 +2,8 @@
 
 pkgbase=reposurgeon
 pkgname=({cy,}reposurgeon)
-pkgver=3.25
-pkgrel=3
+pkgver=3.26
+pkgrel=1
 pkgdesc="Performs surgery on version control repositories."
 arch=('any')
 url="http://www.catb.org/esr/$pkgbase/"
@@ -18,8 +18,8 @@ optdepends=('bzr'
             'mercurial'
             'src'
             'subversion')
-source=($url$pkgbase-$pkgver.tar.gz)
-sha256sums=('dce106162e300a8a3196299f4ff84e401dd9030fc970d63492cf58dec2d0f6fa')
+source=("$url$pkgbase-$pkgver.tar.gz")
+sha256sums=('e14416637f73fa3437280e57b77e5cfe4ca892d9aac1c534ccd6246d0e1ffe92')
 
 build() {
   cd "$srcdir/$pkgbase-$pkgver"
