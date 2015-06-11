@@ -1,0 +1,18 @@
+pkgbase = kodi-devel-audiodecoder-vgmstream
+	pkgdesc = VGM decoder addon for Kodi
+	pkgver = 20150309.0c3a51a
+	pkgrel = 1
+	url = https://github.com/notspiff/audiodecoder.vgmstream
+	arch = i686
+	arch = x86_64
+	groups = kodi-devel
+	license = GPL
+	makedepends = cmake
+	makedepends = kodi-devel-platform
+	makedepends = kodi-devel-libplatform
+	depends = kodi-devel
+	source = https://github.com/notspiff/audiodecoder.vgmstream/archive/0c3a51a229de22f667e33208791052e8c00962d2.tar.gz
+	md5sums = SKIP
+
+pkgname = kodi-devel-audiodecoder-vgmstream
+
