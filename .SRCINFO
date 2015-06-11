@@ -1,0 +1,17 @@
+pkgbase = python2-sqlalchemy-kilo
+	pkgdesc = Python 2 SQL toolkit and Object Relational Mapper
+	pkgver = 0.9.9
+	pkgrel = 1
+	url = http://www.sqlalchemy.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python2
+	depends = python2
+	provides = python2-sqlalchemy
+	conflicts = python2-sqlalchemy
+	source = https://pypi.python.org/packages/source/S/SQLAlchemy/SQLAlchemy-0.9.9.tar.gz
+	md5sums = 8a10a9bd13ed3336ef7333ac2cc679ff
+
+pkgname = python2-sqlalchemy-kilo
+
