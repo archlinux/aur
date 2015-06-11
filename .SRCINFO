@@ -1,0 +1,20 @@
+pkgbase = cerberus-securetty
+	pkgdesc = securetty support for cerberus
+	pkgver = 1428445363
+	pkgrel = 1
+	url = https://github.com/GNU-Pony/cerberus-securetty
+	install = cerberus-securetty.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = make
+	makedepends = coreutils
+	makedepends = texinfo
+	depends = grep
+	depends = coreutils
+	depends = sh
+	source = https://github.com/GNU-Pony/cerberus-securetty/archive/1428445363.tar.gz
+	sha256sums = b63ed4b5f60b1c9731a801da01f8b04484cd930c78a56a264096d60594642fc8
+
+pkgname = cerberus-securetty
+
