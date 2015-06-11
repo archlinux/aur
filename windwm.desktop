@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Wind
+Comment=Wind window manager
+Exec=wind
+TryExec=wind
+Icon=
+Type=Application

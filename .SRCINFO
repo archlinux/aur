@@ -1,0 +1,19 @@
+pkgbase = windwm-git
+	pkgdesc = Wind is window manager implements most parts of the ICCCM and EWMH/NetWM standards
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://windwm.sourceforge.net/
+	arch = x86_64
+	arch = i686
+	license = custom
+	makedepends = git
+	depends = libxft
+	provides = windwm
+	conflicts = windwm
+	source = git://git.code.sf.net/p/windwm/code
+	source = windwm.desktop
+	md5sums = SKIP
+	md5sums = 9568e6caf809710bf147f5e947ac1517
+
+pkgname = windwm-git
+
