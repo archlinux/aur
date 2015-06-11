@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=0.1.0.0
+Type=Application
+Name=Velocity
+Exec=velocity %f
+Icon=velocity
+Comment=Browse and edit Xbox 360 files
+Terminal=false
+MimeType=application/x-extension-iml;
