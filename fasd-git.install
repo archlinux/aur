@@ -1,0 +1,11 @@
+post_install() {
+        cat <<EOF
+
+==> To use, run the following: eval "\$(fasd --init auto)"
+==>
+==> You should also put the above in your shell rc file. For additional
+==> initialization options, see the install directions at the following
+==> url: https://github.com/clvv/fasd
+
+EOF
+}

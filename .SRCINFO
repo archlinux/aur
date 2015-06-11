@@ -1,0 +1,20 @@
+pkgbase = fasd-git
+	pkgdesc = Command-line productivity booster, offers quick access to files and directories
+	pkgver = 1.0.1.r300.61ce53b
+	pkgrel = 2
+	epoch = 1
+	url = https://github.com/Neki/fasd
+	install = fasd-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	provides = fasd
+	conflicts = fasd
+	source = git+https://github.com/clvv/fasd.git
+	source = fasd-git.install
+	md5sums = SKIP
+	md5sums = 540298da2619dc8ad7e10661b1d701e8
+
+pkgname = fasd-git
+
