@@ -1,0 +1,19 @@
+pkgbase = wdm-crm-git
+	pkgdesc = A replacement X window display manager similar to, and based on XDM
+	pkgver = 1.28.r40.gd9a51b4
+	pkgrel = 1
+	url = https://github.com/bbidulock/wdm
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = windowmaker-crm-git
+	depends = libdbus
+	provides = wdm
+	conflicts = wdm
+	conflicts = wdm-git
+	source = wdm-crm-git::git+https://github.com/bbidulock/wdm.git#branch=next
+	md5sums = SKIP
+
+pkgname = wdm-crm-git
+
