@@ -1,0 +1,14 @@
+pkgbase = qrigol-git
+	pkgdesc = Qt assistant for Rigol DS1000 series scopes
+	pkgver = a
+	pkgrel = 1
+	url = http://www.eevblog.com/forum/testgear/free-ds1052eds1102e-software-for-linux/msg684186/
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = qt5-webkit
+	source = git://github.com/wd5gnr/qrigol.git
+	md5sums = SKIP
+
+pkgname = qrigol-git
+
