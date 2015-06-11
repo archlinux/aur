@@ -1,0 +1,22 @@
+pkgbase = grig
+	pkgdesc = Rig control (cat) program
+	pkgver = 0.8.0
+	pkgrel = 4
+	url = http://groundstation.sourceforge.net/grig/
+	arch = i686
+	arch = x86_64
+	arch = armv5h
+	arch = armv6h
+	arch = armv7h
+	license = GPL
+	depends = hamlib
+	depends = gtk2
+	source = http://downloads.sourceforge.net/groundstation/grig-0.8.0.tar.gz
+	source = grig.desktop
+	source = g_thread.patch
+	sha256sums = d621a3400b7720d6671d18bff2e7627cc1442d58df161cc8789851300495d3f3
+	sha256sums = d216d4bbc8e364a2ed3066659e694204451a7f182a9448df9acb1d8c85808c5c
+	sha256sums = 77a25f821356528a732c08970ca05b9f556564e4517e16304fa14a172040f165
+
+pkgname = grig
+
