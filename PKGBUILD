@@ -34,7 +34,7 @@ source=("${pkgname}::git+https://github.com/hydrusnetwork/${pkgname}.git#commit=
         hydrus-server
         hydrus.desktop)
 sha256sums=('SKIP'
-            '039fc987703dd6ea37cbef0831112d03ebf3d1e55fa38271f4d13b6fa686c5b0'
+            '7dd551b634da283c0acbd1a2e556b4dbce45e2eeb0127b516b18d549109239ff'
             '9218f8b48ecf91075132914693dbc3afbd8bf0bcd69989be1c044eacb9191da3'
             '5ee65187005e2807c98e385da122ff63c9ac856c35b4875989aad29d0f314d25'
             'b2bf66b1068969e9598742d5c128cb04fd609512b0cff0ad5e25ecb6cdd35678'
