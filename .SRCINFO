@@ -1,0 +1,17 @@
+pkgbase = icu-48
+	pkgdesc = International Components for Unicode library
+	pkgver = 4.8.1.1
+	pkgrel = 1
+	url = http://www.icu-project.org/
+	arch = i686
+	arch = x86_64
+	license = custom:"icu"
+	depends = gcc-libs
+	depends = sh
+	source = http://download.icu-project.org/files/icu4c/4.8.1.1/icu4c-4_8_1_1-src.tgz
+	source = icu.8198.revert.icu5431.patch
+	md5sums = ea93970a0275be6b42f56953cd332c17
+	md5sums = ebd5470fc969c75e52baf4af94a9ee82
+
+pkgname = icu-48
+
