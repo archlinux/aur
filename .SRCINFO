@@ -5,6 +5,7 @@ pkgbase = vim_lib
 	url = https://github.com/Bashka/vim_lib
 	install = vim_lib.install
 	arch = any
+	license = GPL
 	makedepends = git
 	depends = vim
 	source = vim_lib::git+git://github.com/Bashka/vim_lib.git
