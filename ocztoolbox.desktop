@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=OCZ ToolBox
+GenericName=OCZ ToolBox
+Comment=The OCZ Toolbox is designed to update firmware and BIOS, secure erase, view SMART attributes, and view drive details of your OCZ SSD with the click of a button.
+Exec=ocztoolbox
+Icon=ocztoolbox
+Terminal=false
+Type=Application
+Categories=Utility;
+StartupNotify=false
