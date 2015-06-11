@@ -1,0 +1,13 @@
+pkgbase = emacs-d-mode
+	pkgdesc = Emacs major mode for the D programming language
+	pkgver = 2.0.6
+	pkgrel = 1
+	url = http://www.wikiservice.at/d/wiki.cgi?EditorSupport/EmacsEditor
+	install = emacs-d-mode.install
+	arch = any
+	license = GPL2
+	source = https://github.com/Emacs-D-Mode-Maintainers/Emacs-D-Mode/tarball/2.0.6
+	sha256sums = e15b325be67dd2c515ca79113d808f9d84f4e65db02167d0423d14d17c8c7109
+
+pkgname = emacs-d-mode
+
