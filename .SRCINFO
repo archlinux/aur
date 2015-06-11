@@ -1,0 +1,17 @@
+pkgbase = gmpmee-git
+	pkgdesc = GMP modular exponent extension
+	pkgver = 20140222.1dc0a1084d
+	pkgrel = 1
+	url = http://www.verificatum.com/verificatum/index.html
+	install = gmpmee.install
+	arch = x86_64
+	arch = i686
+	license = GPLv3
+	depends = gmp
+	provides = verificatum=1.0.8
+	conflicts = verificatum
+	source = verificatum::git+https://github.com/agoravoting/verificatum.git
+	md5sums = SKIP
+
+pkgname = gmpmee-git
+
