@@ -1,0 +1,19 @@
+pkgbase = clevo-xsm-wmi
+	pkgdesc = A reverse engineering driver for the Clevo SM series backlight keyboard.
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://bitbucket.org/lynthium/clevo-xsm-wmi
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = linux-headers
+	options = !emptydirs
+	source = clevo-xsm-wmi-0.4.src.tar.gz::https://bitbucket.org/lynthium/clevo-xsm-wmi/get/v0.4.tar.gz
+	md5sums = 9a9b35fcf80113cf0b4a551bbf73ea59
+
+pkgname = clevo-xsm-wmi
+	install = clevo-xsm-wmi.install
+
+pkgname = clevo-xsm-wmi-utility
+	depends = qt5-base
+
