@@ -1,0 +1,23 @@
+diff -up src/hpanel-0.3.2/Makefile.old src/hpanel-0.3.2/Makefile
+--- src/hpanel-0.3.2/Makefile.old	2002-12-01 15:12:15.000000000 -0700
++++ src/hpanel-0.3.2/Makefile	2014-01-08 16:28:03.000000000 -0700
+@@ -1,13 +1,12 @@
+ CC=cc
+-CFLAGS= -O2 -I/usr/X11R6/include -DHAVE_XPM -DXFT -DCLOCK
+-LDFLAGS= -L/usr/X11R6/lib -lX11 -lXpm -lXft
+ PROGNAME=hpanel
+ 
+ $(PROGNAME): Makefile hpanel.c hpanel.h icon.xpm
+-	$(CC) $(CFLAGS) $(LDFLAGS) hpanel.c -o $(PROGNAME)
+-	@ls -l $(PROGNAME)
+-	strip $(PROGNAME)
+-	@ls -l $(PROGNAME)
++	$(CC) $(CFLAGS) \
++		-I/usr/include/freetype2 -DHAVE_XPM -DXFT -DCLOCK \
++		-L/usr/lib -lz -lX11 -lXpm -lXft -lXrender -lfontconfig -lfreetype \
++		hpanel.c -o $(PROGNAME)
+ 
+ install:
+-	install $(PROGNAME) /usr/local/bin
++	install -D -m 775 $(PROGNAME) $(DESTDIR)/usr/bin/$(PROGNAME)
++	install -D -m 644 COPYING $(DESTDIR)/usr/share/licenses/$(PROGNAME)/COPYING

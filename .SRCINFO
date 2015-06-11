@@ -1,0 +1,17 @@
+pkgbase = hpanel
+	pkgdesc = A lightweight taskbar panel for NetWM compliant window managers
+	pkgver = 0.3.2
+	pkgrel = 3
+	url = http://freshmeat.net/projects/hpanel/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libxft
+	depends = libxpm
+	source = http://www.phrat.de/hpanel-0.3.2.tar.gz
+	source = hpanel.patch
+	md5sums = 94eda6b7a14253f5e36b2cea57a14b01
+	md5sums = e79f336982e85709e991fa1c9f466831
+
+pkgname = hpanel
+
