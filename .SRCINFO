@@ -1,0 +1,17 @@
+pkgbase = loki-render
+	pkgdesc = Distribute the rendering of Blender 3D images (frames) across several computers
+	pkgver = 0.6.2b
+	pkgrel = 1
+	epoch = 1
+	url = http://loki-render.berlios.de
+	arch = any
+	license = GPL
+	depends = blender
+	depends = java-runtime>=6
+	source = loki-render
+	source = http://downloads.sourceforge.net/project/loki-render/loki-render/0.6.2b/lokiRender_062b.zip
+	md5sums = 973dfa476bb2e5f513730009af90deea
+	md5sums = 66eb9db3352ee0309975ca06ac65fa7a
+
+pkgname = loki-render
+
