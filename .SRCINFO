@@ -1,0 +1,15 @@
+pkgbase = tinyxml2
+	pkgdesc = Simple, small, C++ XML parser that can be easily integrated into other programs
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/leethomason/tinyxml2
+	arch = x86_64
+	arch = i686
+	license = zlib
+	makedepends = cmake
+	depends = gcc-libs
+	source = https://github.com/leethomason/tinyxml2/archive/3.0.0.tar.gz
+	md5sums = 26584d2c1666aea5e664c105eb4e8153
+
+pkgname = tinyxml2
+
