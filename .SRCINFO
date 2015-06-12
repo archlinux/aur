@@ -1,0 +1,15 @@
+pkgbase = tdu
+	pkgdesc = text-mode disk usage report tool
+	pkgver = 2008_05_07
+	pkgrel = 2
+	url = http://webonastick.com/tdu/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	depends = glib2
+	source = http://webonastick.com/tdu/tdu-2008-05-07.tar.gz
+	md5sums = 3cf00f961d27964974e28dd2e69f2baf
+
+pkgname = tdu
+
