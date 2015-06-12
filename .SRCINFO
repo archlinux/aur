@@ -1,0 +1,13 @@
+pkgbase = gimp-script-make-anaglyph
+	pkgdesc = makes anaglyph from 2 layers
+	pkgver = 1
+	pkgrel = 1
+	url = http://registry.gimp.org/node/6527
+	arch = any
+	license = GPL
+	depends = gimp
+	source = http://registry.gimp.org/files/script-fu-make-anaglyph.scm
+	md5sums = 1ecaa7eb4b145883d12e2b680ff75b1a
+
+pkgname = gimp-script-make-anaglyph
+
