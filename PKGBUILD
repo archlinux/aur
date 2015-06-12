@@ -1,7 +1,7 @@
 # Maintainer: Andrejs Mivreņiks <gim at fastmail dot fm>
 pkgname=libasl
-pkgver=0.1.2
-pkgrel=3
+pkgver=0.1.3
+pkgrel=1
 pkgdesc='Multiphysics simulation software package (Advanced Simulation Library)'
 arch=('i686' 'x86_64')
 url='http://asl.org.il/'
@@ -12,13 +12,13 @@ optdepends=('libmatio: Matlab file format support (should be installed before bu
 conflicts=('libasl-git')
 options=(!buildflags)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AvtechScientific/ASL/archive/v${pkgver}.tar.gz")
-sha256sums=('bdbd4a6027fa514d921019fd0572418d064106ce5be1d952b47afba18b5d448c')
+sha256sums=('7d5214dcd0da84695fe967038f25ced9cbd02075515926f485003c7f915cf0cf')
 
 prepare() {
   cd "$srcdir/ASL-$pkgver"
   # Add fpermissive flag to avoid some build issues
   # https://github.com/AvtechScientific/ASL/issues/2
-  sed -i "s/set(CMAKE_CXX_FLAGS \"-Wall -O3 -std=c++11\")/set(CMAKE_CXX_FLAGS \"-Wall -O3 -std=c++11 -fpermissive\")/g" CMakeLists.txt
+  sed -i "s/set(CMAKE_CXX_STANDARD 11)/set(CMAKE_CXX_STANDARD 11)\n\tset(CMAKE_CXX_FLAGS "-fpermissive")/g" CMakeLists.txt
 }
 
 build() {
