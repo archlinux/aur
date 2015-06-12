@@ -6,7 +6,7 @@ pkgver=1.0.3
 pkgrel=1
 pkgdesc="A Breeze Dark skin for Yakuake (Plasma 5)"
 arch=('any')
-url="http://opendesktop.org/content/content=170330"
+url="http://opendesktop.org/content/show.php?content=170330"
 license=('GPL')
 depends=('yakuake-frameworks-git')
 source=("${_pkgname}.tar.xz::https://copy.com/jWvNPzWQFBDAlInB/breeze-dark.tar.xz?download=1")
