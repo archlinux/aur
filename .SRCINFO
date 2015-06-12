@@ -1,0 +1,15 @@
+pkgbase = python2-zotero
+	pkgdesc = A Python wrapper fro the Zotero API
+	pkgver = 0.9.9
+	pkgrel = 2
+	url = https://github.com/urschrei/pyzotero
+	arch = any
+	license = GPL
+	depends = python2-feedparser
+	depends = python2-poster
+	depends = python2-pytz
+	source = https://github.com/urschrei/pyzotero/archive/v0.9.9.tar.gz
+	md5sums = 608419f9fd9fcd1cb1d78695985a9bee
+
+pkgname = python2-zotero
+
