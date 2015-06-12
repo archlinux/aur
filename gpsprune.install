@@ -1,0 +1,19 @@
+post_install() {
+    /bin/true
+}
+
+post_upgrade() {
+    echo "Note for upgrading users:"
+    echo "/usr/bin/prune has been renamed to gpsprune to resolve conflict"
+    echo "with graphviz package"
+    /bin/true
+}
+
+pre_remove() {
+   /bin/true
+}
+
+op=$1
+shift
+
+$op "$@"
