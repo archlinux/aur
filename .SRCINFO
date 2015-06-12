@@ -1,0 +1,19 @@
+pkgbase = fdmf
+	pkgdesc = utility for finding pairs of music files in a collection based on audio fingerprint
+	pkgver = 0.0.9s
+	pkgrel = 4
+	url = http://w140.com/audio/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = perl
+	depends = mplayer
+	depends = mpg123
+	depends = vorbis-tools
+	depends = plotutils
+	depends = fftw
+	source = http://w140.com/audio/fdmf-0.0.9s.tar.gz
+	md5sums = 853a7c18612b64baf52383a3d7894587
+
+pkgname = fdmf
+
