@@ -1,0 +1,15 @@
+pkgbase = nightsky
+	pkgdesc = A basic renderer of the night sky.
+	pkgver = 20100829
+	pkgrel = 2
+	url = http://nightsky.sourceforge.net/
+	install = nightsky.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl_image
+	source = http://downloads.sourceforge.net/project/nightsky/nightsky-20100829.tar.gz
+	md5sums = fa2ab06368988678aa14319aa3f07aac
+
+pkgname = nightsky
+

@@ -1,0 +1,9 @@
+post_install() {
+    echo "Copy /usr/share/nightsky/example-nightsky.yml to ~/.nightsky.yml "
+    echo "for each user and edit it to reflect your location "
+    echo "before running nightsky."
+}
+
+post_upgrade() {
+    post_install
+}
