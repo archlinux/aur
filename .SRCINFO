@@ -1,0 +1,16 @@
+pkgbase = rdiff-backup-fs
+	pkgdesc = Filesystem in userspace for rdiff-backup repositories
+	pkgver = 1.0.0
+	pkgrel = 3
+	url = http://code.google.com/p/rdiff-backup-fs/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = fuse
+	depends = zlib
+	source = http://rdiff-backup-fs.googlecode.com/files/rdiff-backup-fs-1.0.0.tar.gz
+	md5sums = c59fb6796ff4a70e0759fbc79b52db07
+	sha512sums = 35d82ae183c559d93110f6ad0645e75e3fa02fea09194517488312c2c73a00cdcdadd3813a532f2eb986417b2af9dc245c298963bc8fb7758b54464d284db327
+
+pkgname = rdiff-backup-fs
+
