@@ -1,0 +1,13 @@
+pkgbase = git-lfs-test-server
+	pkgdesc = An open source Git extension for versioning large files
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://git-lfs.github.com/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	source = https://github.com/github/lfs-test-server/releases/download/v0.1.2/lfs-test-server-linux-386-0.1.2.tar.gz
+	md5sums = 3db223416b67aca24dff93cfd8eb60ba
+
+pkgname = git-lfs-test-server
+
