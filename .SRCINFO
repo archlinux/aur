@@ -1,0 +1,15 @@
+pkgbase = packer-io
+	pkgdesc = Packer is a tool for creating identical machine images for multiple platforms from a single source configuration.
+	pkgver = 0.7.5
+	pkgrel = 1
+	url = http://www.packer.io
+	arch = x86_64
+	arch = i686
+	license = MPL2
+	depends = unzip
+	noextract = packer-0.7.5.zip
+	source = packer-0.7.5.zip::https://dl.bintray.com/mitchellh/packer/packer_0.7.5_linux_amd64.zip
+	sha256sums = 8fab291c8cc988bd0004195677924ab6846aee5800b6c8696d71d33456701ef6
+
+pkgname = packer-io
+
