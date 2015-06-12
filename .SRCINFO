@@ -1,0 +1,16 @@
+pkgbase = android-sdk-build-tools-18.0.1
+	pkgdesc = Build-Tools for Google Android SDK (aapt, aidl, dexdump, dx, llvm-rs-cc)
+	pkgver = r18.0.1
+	pkgrel = 1
+	url = http://developer.android.com/sdk/index.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gcc-libs
+	depends = zlib
+	options = !strip
+	source = http://dl-ssl.google.com/android/repository/build-tools_r18.0.1-linux.zip
+	sha1sums = f11618492b0d2270c332325d45d752d3656a9640
+
+pkgname = android-sdk-build-tools-18.0.1
+
