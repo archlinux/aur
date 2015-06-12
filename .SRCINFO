@@ -1,0 +1,17 @@
+pkgbase = vim-airline-git
+	pkgdesc = A lean & mean statusline for vim that's light as air.
+	pkgver = 0.7.r60.gf45ecda
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/bling/vim-airline
+	install = airline.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = vim-runtime
+	optdepends = otf-powerline-symbols-git: Use the Powerline symbols
+	source = airline::git+https://github.com/bling/vim-airline.git#branch=master
+	md5sums = SKIP
+
+pkgname = vim-airline-git
+
