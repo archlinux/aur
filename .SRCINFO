@@ -1,0 +1,18 @@
+pkgbase = pathvisio
+	pkgdesc = Pathway visualization tool
+	pkgver = 3.1.2
+	pkgrel = 1
+	url = http://www.pathvisio.org/
+	arch = any
+	license = LGPL
+	makedepends = java-environment
+	makedepends = apache-ant
+	depends = java-runtime
+	replaces = pathvisio-devel
+	source = http://www.pathvisio.org/data/releases/3.1.2/pathvisio_src-3.1.2-r3950.tar.gz
+	source = pathvisio.sh
+	md5sums = d60e854a8a2cab6c04fc39c726b0fefb
+	md5sums = 68c218612a2f09c8e378c013f8d60117
+
+pkgname = pathvisio
+
