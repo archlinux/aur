@@ -1,3 +1,5 @@
+*.pkg.tar.xz
 pkg
 src
+shattered-pixel-dungeon
 remakepkg
