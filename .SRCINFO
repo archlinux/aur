@@ -1,0 +1,13 @@
+pkgbase = python2-la
+	pkgdesc = Label the rows, columns, any dimension, of your NumPy arrays
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/la
+	arch = any
+	license = BSD
+	depends = python2-bottleneck
+	source = https://pypi.python.org/packages/source/l/la/la-0.6.0.tar.gz
+	md5sums = 94fe960d4d8bf1e92781990afb4e018d
+
+pkgname = python2-la
+
