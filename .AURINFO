@@ -1,0 +1,12 @@
+pkgbase = python2-tsne
+	pkgdesc = Python library containing T-SNE algorithms
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/danielfrg/tsne
+	arch = any
+	license = BSD
+	depends = python2-numpy-openblas
+	source = https://pypi.python.org/packages/source/t/tsne/tsne-0.1.tar.gz
+
+pkgname = python2-tsne
+
