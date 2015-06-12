@@ -1,0 +1,15 @@
+pkgbase = somoclu
+	pkgdesc = Massively parallel self-organizing maps: accelerate training on multicore CPUs, GPUs, and clusters
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/peterwittek/somoclu
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	optdepends = cuda: cuda support
+	optdepends = openmpi: mpi support
+	source = https://github.com/peterwittek/somoclu/archive/1.4.1.tar.gz
+	sha512sums = 23691b27c75d78854a4a37dad47f9b8f85102c597919559c1d2315e14650e1e38aeb18c0be11a96a9bba31d27e0995359af03b3a1140271c63531f692b41ff6e
+
+pkgname = somoclu
+
