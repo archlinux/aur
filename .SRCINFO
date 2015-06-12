@@ -1,0 +1,21 @@
+pkgbase = mullerfoto-fotostar_de
+	pkgdesc = an offline client for uploading and ordering photos at cewe.de - Schlecker Foto Digital Service (used to be FotoStar Client)
+	pkgver = 4.6.8
+	pkgrel = 2
+	url = http://www.cewe.de/
+	install = schleckerfotodigiservice.install
+	arch = i686
+	license = custom:eula
+	depends = libx11
+	depends = curl
+	conflicts = mullerfoto-fotostar_cz
+	conflicts = mullerfoto-fotostar_sk
+	source = http://dls.photoprintit.de/download/Data/1119/hps/Schlecker_Fotoservice.tgz
+	source = schleckerfotodigiservice.desktop
+	source = cewefotoschau.desktop
+	md5sums = c8a30c0bbc36cea3400fbd097e908116
+	md5sums = 15f89990079d333ad3ac54f4df2082a9
+	md5sums = c360fa7f1e3b16853062922c38fc5559
+
+pkgname = mullerfoto-fotostar_de
+

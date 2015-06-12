@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Schlecker Foto Digital Service (photoshow)
+Comment=View/edit your photos before uploading them to Schlecker Foto Digital Service
+Exec=CeweFotoschau
+Icon=fotoschau.xpm
+Categories=Graphics;Photography;

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Schlecker Foto Digital Service
+Comment=Offline client for cewe.de service
+Exec=SchleckerFotoDigitalService
+Icon=schleckerfotodigiservice.xpm
+Categories=Graphics;Photography;
