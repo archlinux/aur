@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Zelvici
+Comment=Funny 2D platform game
+Exec=zelvici
+Terminal=false
+Type=Application
+Categories=Game;ArcadeGame;
+StartupNotify=true
