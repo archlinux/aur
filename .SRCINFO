@@ -1,0 +1,15 @@
+pkgbase = owncloud-app-maps-git
+	pkgdesc = Owncloud maps app
+	pkgver = ab405b8
+	pkgrel = 1
+	url = https://github.com/owncloud/maps
+	arch = any
+	license = AGPL
+	depends = owncloud
+	conflicts = owncloud-app-maps
+	options = !strip
+	source = owncloud-app-maps-git::git+https://github.com/owncloud/maps.git
+	sha512sums = SKIP
+
+pkgname = owncloud-app-maps-git
+
