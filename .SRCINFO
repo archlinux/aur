@@ -1,0 +1,17 @@
+pkgbase = perl-app-makebeamerinfo
+	pkgdesc = Creates .info file for use with Impressive and LaTeX Beamer
+	pkgver = 2.002
+	pkgrel = 4
+	url = https://github.com/jberger/MakeBeamerInfo
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-module-build
+	depends = perl>=5.10.0
+	optdepends = perl-tk: Enable GUI support
+	options = !emptydirs
+	source = http://www.cpan.org/modules/by-authors/id/J/JB/JBERGER/App-makebeamerinfo-2.002.tar.gz
+	sha256sums = 6c8327d76056016508403da0ad848c82429a0e43c1a3b390e952a88adeedd906
+
+pkgname = perl-app-makebeamerinfo
+
