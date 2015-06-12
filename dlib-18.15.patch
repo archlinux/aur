@@ -1,0 +1,116 @@
+diff -ruN dlib-18.15/dlib/cmake dlib-18.15-fixed/dlib/cmake
+--- dlib-18.15/dlib/cmake	2015-05-08 04:39:21.000000000 +0800
++++ dlib-18.15-fixed/dlib/cmake	2015-05-08 17:08:26.328545784 +0800
+@@ -16,7 +16,7 @@
+     # By default, g++ won't warn or error if you forget to return a value in a
+     # function which requires you to do so.  This option makes it give a warning
+     # for doing this. 
+-    add_definitions("-Wreturn-type")
++    set(${CMAKE_CXX_FLAGS} "${CMAKE_CXX_FLAGS} -Wreturn-type")
+ endif()
+ 
+ # Setup some options to allow a user to enable SSE and AVX instruction use.  
+diff -ruN dlib-18.15/dlib/cmake_find_blas.txt dlib-18.15-fixed/dlib/cmake_find_blas.txt
+--- dlib-18.15/dlib/cmake_find_blas.txt	2015-05-08 04:39:21.000000000 +0800
++++ dlib-18.15-fixed/dlib/cmake_find_blas.txt	2015-05-08 17:08:26.331879117 +0800
+@@ -261,6 +261,89 @@
+     endif()
+ 
+ 
++elseif(WIN32 AND CMAKE_CROSSCOMPILING)
++
++   message(STATUS "Searching for BLAS and LAPACK")
++
++   # try to find LAPACK libraries while cross compiling
++   set(extra_paths
++        /usr/i686-w64-mingw32/lib
++        /usr/i686-w64-mingw32/lib/atlas-sse3
++        /usr/i686-w64-mingw32/lib/atlas-sse2
++        /usr/i686-w64-mingw32/lib/atlas
++        /usr/x86_64-w64-mingw32/lib
++        /usr/x86_64-w64-mingw32/lib/atlas-sse3
++        /usr/x86_64-w64-mingw32/lib/atlas-sse2
++        /usr/x86_64-w64-mingw32/lib/atlas)
++
++   if (NOT lapack_found)
++      find_library(lapack_lib NAMES lapack lapack-3 PATHS ${extra_paths})
++      if (lapack_lib)
++         set(lapack_libraries ${lapack_lib})
++         set(lapack_found 1)
++         message(STATUS "Found LAPACK library")
++      endif()
++      mark_as_advanced( lapack_lib)
++   endif()
++
++   # try to find some other BLAS libraries if we didn't find the MKL
++   
++   if (NOT blas_found)
++      find_library(atlas_lib atlas PATHS ${extra_paths})
++      find_library(cblas_lib cblas PATHS ${extra_paths})
++      if (atlas_lib AND cblas_lib)
++         set(blas_libraries ${atlas_lib} ${cblas_lib})
++         set(blas_found 1)
++         message(STATUS "Found ATLAS BLAS library")
++      endif()
++      mark_as_advanced( atlas_lib cblas_lib)
++   endif()
++
++   if (NOT blas_found)
++      find_library(cblas_lib cblas PATHS ${extra_paths})
++      if (cblas_lib)
++         set(blas_libraries ${cblas_lib})
++         set(blas_found 1)
++         message(STATUS "Found CBLAS library")
++      endif()
++      mark_as_advanced( cblas_lib)
++   endif()
++
++   if (NOT blas_found)
++      find_library(generic_blas blas PATHS ${extra_paths})
++      if (generic_blas)
++         set(blas_libraries ${generic_blas})
++         set(blas_found 1)
++         message(STATUS "Found BLAS library")
++      endif()
++      mark_as_advanced( generic_blas)
++   endif()
++
++   # Make sure we really found a CBLAS library.  That is, it needs to expose
++   # the proper cblas link symbols.  So here we test if one of them is present
++   # and assume everything is good if it is. Note that we don't do this check if
++   # we found the Intel MKL since for some reason CHECK_FUNCTION_EXISTS doesn't work
++   # with it.  But it's fine since the MKL should always have cblas.
++   if (blas_found AND NOT found_intel_mkl)
++      INCLUDE (CheckFunctionExists)
++      set(CMAKE_REQUIRED_LIBRARIES ${blas_libraries})
++      CHECK_FUNCTION_EXISTS(cblas_ddot HAVE_CBLAS)
++      if (NOT HAVE_CBLAS)
++         message(STATUS "BLAS library does not have cblas symbols, so dlib will not use BLAS or LAPACK")
++         set(blas_found 0)
++         set(lapack_found 0)
++      endif()
++   endif()
++
++   if (NOT blas_found)
++      message(" *****************************************************************************")
++      message(" *** No BLAS library found so using dlib's built in BLAS.  However, if you ***")
++      message(" *** install an optimized BLAS such as openblas or the Intel MKL your code ***")
++      message(" *** will run faster.  On Ubuntu you can install openblas by executing:    ***")
++      message(" ***    sudo apt-get install libopenblas-dev liblapack-dev                 ***")
++      message(" *****************************************************************************")
++   endif()
++
+ endif()
+ 
+ 
+diff -ruN dlib-18.15/dlib/CMakeLists.txt dlib-18.15-fixed/dlib/CMakeLists.txt
+--- dlib-18.15/dlib/CMakeLists.txt	2015-05-08 04:39:21.000000000 +0800
++++ dlib-18.15-fixed/dlib/CMakeLists.txt	2015-05-08 17:08:26.331879117 +0800
+@@ -227,6 +227,7 @@
+          if (PNG_FOUND AND LIBPNG_IS_GOOD)
+             include_directories(${PNG_INCLUDE_DIR})
+             set (dlib_needed_libraries ${dlib_needed_libraries} ${PNG_LIBRARY})
++            set (dlib_needed_libraries ${dlib_needed_libraries} ${ZLIB_LIBRARY})
+          else()
+             # If we can't find libpng then statically compile it in.
+             include_directories(external/libpng external/zlib)
