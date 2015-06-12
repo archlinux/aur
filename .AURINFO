@@ -1,0 +1,15 @@
+pkgbase = firehose_get
+	pkgdesc = TCGA data portal
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = http://gdac.broadinstitute.org/
+	arch = any
+	license = unknown
+	makedepends = unzip
+	depends = bash
+	noextract = firehose_get-v0.4.3.zip
+	source = http://gdac.broadinstitute.org/runs/code/firehose_get-v0.4.3.zip
+	md5sums = a3da043d086458be1ae62bc5fc48f9d0
+
+pkgname = firehose_get
+
