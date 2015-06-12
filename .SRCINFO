@@ -1,0 +1,14 @@
+pkgbase = django-paging
+	pkgdesc = An efficient paginator that works.
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/django-paging
+	arch = any
+	license = BSD
+	depends = python2
+	depends = python2-django
+	source = http://pypi.python.org/packages/source/d/django-paging/django-paging-0.2.5.tar.gz
+	md5sums = 282ef984815f73ce43189d288b2bae2a
+
+pkgname = django-paging
+
