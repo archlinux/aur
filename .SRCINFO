@@ -1,0 +1,16 @@
+pkgbase = taverna
+	pkgdesc = A tool for designing and executing workflows
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = http://www.taverna.org.uk/
+	arch = any
+	license = LGPL
+	depends = java-runtime
+	depends = graphviz
+	optdepends = r
+	noextract = taverna-2.5.0.zip
+	source = taverna-2.5.0.zip::https://bbuseruploads.s3.amazonaws.com/taverna/taverna-workbench-product/downloads/taverna-workbench-enterprise-2.5.0-standalone.zip?Signature=ZRureiBbIGh%2BjlCfZq%2F1%2BIPUDfc%3D&Expires=1409410695&AWSAccessKeyId=0EMWEFSGA12Z1HF1TZ82
+	md5sums = 504052ff387346097f02f9877da99b28
+
+pkgname = taverna
+
