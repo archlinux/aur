@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=System;
+Comment=Pasteall
+Exec=pasteall
+Icon=pasteall
+Name=Pasteall
+Terminal=false
+Type=Application

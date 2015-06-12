@@ -1,0 +1,20 @@
+pkgbase = pasteall
+	pkgdesc = A clipboard monitor simple and functional
+	pkgver = 0.3
+	pkgrel = 4
+	url = https://github.com/LaraCraft93/Pasteall
+	arch = any
+	license = GPL
+	makedepends = python2-distribute
+	depends = python2
+	depends = libnotify
+	depends = pygtk
+	depends = python2-gobject2
+	depends = python2-notify
+	source = https://github.com/LaraCraft93/Pasteall/tarball/v0.3
+	source = pasteall.desktop
+	md5sums = 0e68d8aaea6bd4360f0e582334fdd29c
+	md5sums = f4f74be5aaecdc10e5e209d3ff7442f8
+
+pkgname = pasteall
+
