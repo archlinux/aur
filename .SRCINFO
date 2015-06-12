@@ -1,0 +1,19 @@
+pkgbase = python-pythonpy
+	pkgdesc = command line kung fu with python (python -c, with tab completion and shorthand)
+	pkgver = 0.3.8
+	pkgrel = 1
+	url = https://github.com/Russell91/pythonpy
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	optdepends = bash-completion: shell completion support
+	provides = python-pythonpy
+	conflicts = python2-pythonpy
+	source = https://pypi.python.org/packages/source/p/pythonpy/pythonpy-0.3.8.tar.gz
+	source = bash_completion.patch
+	sha256sums = cb4655aaf749075b5e48b0069ca7b8eaa5ba8f1eaf1b1e2304a06e67e545a943
+	sha256sums = c3dfc5951d9e97dbfd5a64f63f29a7f851c24c6bba565a9594bc7614303f9f69
+
+pkgname = python-pythonpy
+
