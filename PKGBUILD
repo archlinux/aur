@@ -15,7 +15,7 @@ source=('git+https://github.com/janvidar/uhub.git'
 sha1sums=('SKIP'
           'a72699fb05ba6ad48a3ff0d18d8ef2904c29c6a5'
           'fa06f77fe35eee8dea6c8d2be81486a2ecc35a5b')
-install="uhub.install"
+install=uhub-git.install
 backup=('etc/uhub/motd.txt'
         'etc/uhub/plugins.conf'
         'etc/uhub/rules.txt'

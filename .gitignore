@@ -5,4 +5,4 @@
 !uhub.service
 !uhub.tmpfiles
 !uhub.sysuser
-!uhub.install
+!uhub-git.install
