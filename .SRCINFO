@@ -1,0 +1,23 @@
+pkgbase = projectlibre
+	pkgdesc = ProjectLibre is an open source project management software
+	pkgver = 1.5.9
+	pkgrel = 3
+	url = http://www.projectlibre.org
+	install = projectlibre.install
+	arch = any
+	license = CPAL
+	depends = java-runtime
+	replaces = project-libre
+	source = http://downloads.sourceforge.net/project/projectlibre/ProjectLibre/1.5.9/projectlibre-1.5.9.tar.gz
+	source = projectlibre.png
+	source = projectlibre.desktop
+	source = projectlibre.patch
+	source = projectlibre.xml
+	md5sums = 37e179a27c64ee3188f1e865afb9e415
+	md5sums = cbeee50a6324b473c17899616f3effbd
+	md5sums = e93fab66e95915aaf9ef204d914b6e9f
+	md5sums = 3ba36d01fffe815d94afe66edc45b02f
+	md5sums = 78bb62198c864aa6ac7a103c044f5b56
+
+pkgname = projectlibre
+

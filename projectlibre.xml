@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+	<mime-type type="application/x-projectlibre">
+		<comment>ProjectLibre</comment>
+		<magic priority="50">
+			<match value="com.projity.server.data.ProjectData" type="string" offset="16:50"/> 
+		</magic>
+		<glob pattern="*.pod"/>
+	</mime-type>
+</mime-info>

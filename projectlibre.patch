@@ -1,0 +1,34 @@
+--- projectlibre-1.5.9/projectlibre.sh	2015-04-24 15:15:41.994690838 +0800
++++ projectlibre-1.5.9/projectlibre.sh.new	2015-04-24 15:18:16.871360970 +0800
+@@ -52,9 +52,9 @@
+ CONF_DIR="$HOME/.projectlibre"
+ RUN_CONF="$CONF_DIR/run.conf"
+ VERSION_FILE="$CONF_DIR/java-version"
+-JAVA_INSTALL_DIR="/usr/java"
++JAVA_INSTALL_DIR="/usr/lib/jvm/default-runtime"
+ JAVA_INSTALL_DIR_EXE="bin/java"
+-JAVA_INSTALL_DIR2="/usr/lib/jvm"
++JAVA_INSTALL_DIR2="/usr/lib/jvm/default"
+ JAVA_INSTALL_DIR_EXE2="bin/java"
+ JAVA_INSTALL_DIR3="/opt/ibm"
+ JAVA_INSTALL_DIR_EXE3="jre/bin/java"
+@@ -63,8 +63,8 @@
+ #Default conf values
+ JAVA_EXE="java"
+ JAVA_OPTS="-Xms128m -Xmx768m"
+-#OPENPROJ_HOME0="/usr/share/projectlibre"
+-OPENPROJ_HOME0=`(dirname $0)`
++OPENPROJ_HOME0="/usr/share/projectlibre"
++#OPENPROJ_HOME0=`(dirname $0)`
+ OPENPROJ_HOME="$OPENPROJ_HOME0"
+ LOG_LEVEL="DEBUG"
+ LOG_FILE="/dev/null"
+@@ -113,7 +113,7 @@
+ 	"$JAVA_EXE" -version > "$VERSION_FILE" 2>&1 || rm -f "$VERSION_FILE"
+ 
+ 	if [ -r "$VERSION_FILE" ]; then
+-		JAVA_VERSION=`cat "$VERSION_FILE" | head -n 1 | awk '{ print substr($3, 2, length($3)-2); }'`
++		JAVA_VERSION=`grep -i 'java version' "$VERSION_FILE" | awk '{ print substr($3, 2, length($3)-2); }'`
+ 		if [ "x$OS_NAME" = "xSunOS" ]; then
+ 			echo "    Java version: $JAVA_VERSION \c"
+ 		else

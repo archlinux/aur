@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=ProjectLibre
+Comment=Open source project management software
+Exec=/usr/bin/projectlibre %f
+Icon=/usr/share/pixmaps/projectlibre.png
+Terminal=false
+Type=Application
+Categories=Application;Office;ProjectManagement;
+MimeType=application/x-projectlibre;
