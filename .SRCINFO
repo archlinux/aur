@@ -1,0 +1,14 @@
+pkgbase = animtext
+	pkgdesc = an SDL based utility to generate text animations in the style of old DOS prompts
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://luolamies.org/software/misc/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = sdl
+	source = http://luolamies.org/software/misc/animtext.tar.gz
+	md5sums = 5871c00f4396d4eabf70ffb905a20d21
+
+pkgname = animtext
+
