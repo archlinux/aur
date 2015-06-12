@@ -1,0 +1,14 @@
+pkgbase = surl
+	pkgdesc = a URL shortening command line application that supports various sites
+	pkgver = 0.7.1.1
+	pkgrel = 2
+	url = https://launchpad.net/surl
+	arch = i686
+	arch = x86_64
+	license = GPL-3
+	depends = python2
+	source = http://launchpad.net/surl/trunk/0.7.1/+download/surl-0.7.1.1.tar.gz
+	md5sums = 788198b93dcb82c21a4dbc802d908cf7
+
+pkgname = surl
+
