@@ -1,0 +1,14 @@
+pkgbase = dustaet-hib
+	pkgdesc = Dust: An Elysian Tail. An action packed 2D, hack'n'slay platformer
+	pkgver = 01082014
+	pkgrel = 2
+	url = http://www.noogy.com/main.html
+	arch = i686
+	arch = x86_64
+	license = custom:commercial
+	makedepends = imagemagick
+	source = hib://dustaet-01082014-bin
+	sha512sums = e79f9e67256640e2587ba738d4213c7763c63f8084ae1046f1604c674cc396b8f4183b6d890a540d979dead899bbf1ec5016dce4729bfbb4876d9dec92cbc1ae
+
+pkgname = dustaet-hib
+
