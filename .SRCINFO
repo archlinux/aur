@@ -1,0 +1,15 @@
+pkgbase = fortune-mod-zh
+	pkgdesc = Chinese poems for fortune-mod
+	pkgver = 1.9
+	pkgrel = 1
+	url = http://packages.qa.debian.org/f/fortune-zh.html
+	arch = i686
+	arch = x86_64
+	groups = fortune-mods
+	license = GPL
+	depends = fortune-mod
+	source = http://ftp.debian.org/debian/pool/main/f/fortune-zh/fortune-zh_1.9.tar.gz
+	md5sums = a9112eb9626997009512fb895b3a0a91
+
+pkgname = fortune-mod-zh
+
