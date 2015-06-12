@@ -1,0 +1,15 @@
+pkgbase = bournal
+	pkgdesc = bash script that allows you to write, search and edit encrypted journal entrie
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://becauseinter.net/bournal/
+	arch = i686
+	arch = x86_64
+	license = gpl
+	depends = gnupg
+	depends = bash
+	source = http://becauseinter.net/bournal/bournal-1.5.tar.gz
+	md5sums = 465efa201af345c3bb3acdb47b1f7c67
+
+pkgname = bournal
+
