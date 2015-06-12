@@ -1,0 +1,24 @@
+pkgbase = glibc-static
+	pkgdesc = GNU C Library
+	pkgver = 2.21
+	pkgrel = 1
+	url = http://www.gnu.org/software/libc
+	arch = i686
+	arch = x86_64
+	groups = base
+	license = GPL
+	license = LGPL
+	makedepends = gcc>=4.9
+	depends = linux-api-headers>=3.16
+	depends = tzdata
+	depends = filesystem>=2013.01
+	options = !strip
+	options = staticlibs
+	options = !emptydirs
+	source = http://ftp.gnu.org/gnu/libc/glibc-2.21.tar.xz
+	source = http://ftp.gnu.org/gnu/libc/glibc-2.21.tar.xz.sig
+	md5sums = 9cb398828e8f84f57d1f7d5588cf40cd
+	md5sums = SKIP
+
+pkgname = glibc-static
+
