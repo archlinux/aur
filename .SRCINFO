@@ -1,0 +1,14 @@
+pkgbase = geany-checkpath
+	pkgdesc = Geany wrapper for autodetect permissions/root
+	pkgver = 2.3
+	pkgrel = 4
+	url = http://lara.craft.net.br/
+	arch = any
+	license = GPL
+	depends = sudo
+	depends = geany
+	source = http://lara.craft.net.br/geany-checkpath.sh
+	md5sums = d5641706739e486128ba71b5e73ccdb9
+
+pkgname = geany-checkpath
+
