@@ -1,0 +1,21 @@
+pkgbase = lightdm-webkit-greeter
+	pkgdesc = A lightweight display manager
+	pkgver = 0.1.2
+	pkgrel = 6
+	url = https://launchpad.net/lightdm-webkit-greeter
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = LGPL3
+	makedepends = gnome-doc-utils
+	makedepends = gobject-introspection
+	makedepends = intltool
+	depends = lightdm
+	depends = webkitgtk2
+	depends = gtk-engines
+	options = !libtool
+	source = http://launchpad.net/lightdm-webkit-greeter/trunk/0.1.2/+download/lightdm-webkit-greeter-0.1.2.tar.gz
+	md5sums = ff8247d5bbf3026140531061fbf1f51e
+
+pkgname = lightdm-webkit-greeter
+
