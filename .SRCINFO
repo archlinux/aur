@@ -1,0 +1,14 @@
+pkgbase = logintop10
+	pkgdesc = Command-line utility that creates several top-10 lists from the wtmp (usually in /var/log/) on your system.
+	pkgver = 1.9
+	pkgrel = 2
+	url = http://www.vanheusden.com/logintop10/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://www.vanheusden.com/logintop10/logintop10-1.9.tgz
+	md5sums = e816ad4eb9f18b0f779241df1c4d971a
+
+pkgname = logintop10
+
