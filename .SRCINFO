@@ -1,0 +1,20 @@
+pkgbase = dualsub-git
+	pkgdesc = tool for merging and translating subtitles
+	pkgver = 20140617
+	pkgrel = 1
+	url = https://github.com/bonigarcia/dualsub
+	arch = i686
+	arch = x86_64
+	license = GPL-3
+	makedepends = git
+	makedepends = maven
+	depends = java-environment
+	source = dualsub-git::git://github.com/bonigarcia/dualsub
+	source = dualsub.png
+	source = dualsub.desktop
+	md5sums = SKIP
+	md5sums = 38af0208f8ec2831c38d72fce55e2a63
+	md5sums = 3aef26346ba8deac17cea0e0336ea0af
+
+pkgname = dualsub-git
+

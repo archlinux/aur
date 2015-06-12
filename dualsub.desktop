@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=DualSub
+Comment=A tool for merging and translating subtitles
+Exec=dualsub
+Icon=/usr/share/pixmaps/dualsub.png
+Terminal=false
+Type=Application
+Categories=AudioVideo;
+StartupNotify=true
