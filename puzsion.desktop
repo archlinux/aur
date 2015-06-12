@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Puzsion
+GenericName=Logic Game
+Comment=A little logic game
+Exec=puzsion
+Icon=puzsion
+Categories=Game;LogicGame;

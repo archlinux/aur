@@ -1,0 +1,22 @@
+post_install() {
+  chmod 775 /usr/share/puzsion
+  chgrp games /usr/share/puzsion
+  chgrp games /usr/share/puzsion/files
+  chgrp games /usr/share/puzsion/files/*
+
+  echo "Add user to group games to make the game playable. Please note that this application is not multiuser friendly."
+  /bin/true
+}
+
+post_upgrade() {
+/bin/true
+}
+
+pre_remove() {
+/bin/true
+}
+
+op=$1
+shift
+
+$op "$@"
