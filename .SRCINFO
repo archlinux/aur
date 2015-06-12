@@ -1,0 +1,16 @@
+pkgbase = wsdlpull
+	pkgdesc = A C++ web services client library
+	pkgver = 1.24
+	pkgrel = 1
+	url = http://wsdlpull.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = doxygen
+	depends = curl
+	options = !libtool
+	source = http://downloads.sourceforge.net/project/wsdlpull/wsdlpull/wsdlpull%201.24/wsdlpull-1.24.tar.gz
+	md5sums = c77e1637ebb113921cb4fa5408bff67b
+
+pkgname = wsdlpull
+
