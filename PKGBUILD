@@ -3,14 +3,15 @@
 # Contributor: Daniele Paolella <dp@mcrservice.it>
 
 pkgname='pypy-virtualenv'
-pkgver=1.11.6
+pkgver=13.0.3
 pkgrel=1
 pkgdesc="Virtual Python Environment builder"
 url="http://www.virtualenv.org/"
 arch=('any')
 license=('MIT')
-depends=('pypy' 'pypy-distribute')
+depends=('pypy' 'pypy3')
 source=("http://pypi.python.org/packages/source/v/virtualenv/virtualenv-$pkgver.tar.gz")
+md5sums=('cd2043ea72448d65dcc54d33744c2214')
 
 package() {
   cd "$srcdir/virtualenv-$pkgver"
@@ -26,4 +27,3 @@ package() {
   install -D -m644 LICENSE.txt \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-md5sums=('f61cdd983d2c4e6aeabb70b1060d6f49')
