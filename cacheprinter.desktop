@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Cacheprinter
+Comment=Search and export geocaches
+Exec=cacheprinter
+Icon=cacheprinter
+Terminal=false
+Type=Application
+Categories=Utility;
+StartupNotify=true

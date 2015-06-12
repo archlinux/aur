@@ -1,0 +1,15 @@
+pkgbase = cacheprinter
+	pkgdesc = utility to download, print or export geocaching.com listings
+	pkgver = 0.4.2e_201227_0850
+	pkgrel = 1
+	url = http://cacheprinter.bubbles.sk/
+	arch = any
+	license = custom:freeware
+	depends = java-runtime
+	source = http://cacheprinter.bubbles.sk/cacheprinter.jar
+	source = cacheprinter.desktop
+	md5sums = d48d9dc584180ed39d3c110ccc208a0f
+	md5sums = ca12990219ec87de909a802fab568682
+
+pkgname = cacheprinter
+
