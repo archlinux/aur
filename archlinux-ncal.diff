@@ -1,0 +1,12 @@
+--- bsdmainutils-8.2.2/usr.bin/ncal/Makefile	2010-11-28 21:23:02.000000000 +0800
++++ arch-8.2.2/usr.bin/ncal/Makefile	2011-08-27 10:48:06.266157448 +0800
+@@ -6,6 +6,6 @@
+ topdir=../..
+ include $(topdir)/config.mk
+ 
+-install-2:
+-	(cd $(bindir); ln -sf ncal cal)
+-	(cd $(mandir); ln -sf ncal.1 cal.1)
++#install-2:
++#	(cd $(bindir); ln -sf ncal cal)
++#	(cd $(mandir); ln -sf ncal.1 cal.1)

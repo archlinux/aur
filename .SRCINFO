@@ -1,0 +1,19 @@
+pkgbase = bsdmainutils
+	pkgdesc = Some BSD-style programs including ncal and lorder.
+	pkgver = 9.0.6
+	pkgrel = 1
+	url = https://launchpad.net/ubuntu/+source/bsdmainutils
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = make
+	makedepends = patch
+	depends = bash
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/bsdmainutils_9.0.6ubuntu1.tar.gz
+	source = archlinux-ncal.diff
+	md5sums = 72e37357a2ba75ab3418d2f9d5dbe75c
+	md5sums = b2934a2c01150397738e4f9a62b1786c
+
+pkgname = bsdmainutils
+
