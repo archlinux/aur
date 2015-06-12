@@ -1,0 +1,22 @@
+pkgbase = vde2-static
+	pkgdesc = Virtual Distributed Ethernet for emulators like qemu
+	pkgver = 2.3.2
+	pkgrel = 5
+	url = http://sourceforge.net/projects/vde/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = CUSTOM
+	makedepends = python
+	depends = bash
+	depends = libpcap
+	depends = openssl
+	options = !makeflags
+	options = staticlibs
+	options = !emptydirs
+	source = http://downloads.sourceforge.net/vde/vde2-2.3.2.tar.bz2
+	md5sums = 46fbc5f97f03dc517aa3b2c9d9ea6628
+
+pkgname = vde2-static
+
