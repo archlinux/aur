@@ -1,0 +1,16 @@
+pkgbase = vim-r
+	pkgdesc = This plugin improves Vim's support for editing R code
+	pkgver = 0.9.9.7
+	pkgrel = 4
+	url = http://www.vim.org/scripts/script.php?script_id=2628
+	arch = any
+	license = unknown
+	makedepends = unzip
+	depends = vim
+	depends = tmux
+	noextract = -0.9.9.7.zip
+	source = vim-r-0.9.9.7.zip::http://www.vim.org/scripts/download_script.php?src_id=20996
+	md5sums = 4485189412a413856cf0bc01d2b53dc4
+
+pkgname = vim-r
+
