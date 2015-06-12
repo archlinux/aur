@@ -1,17 +1,19 @@
 pkgbase = cacti-spine
 	pkgdesc = Faster poller for Cacti.
-	pkgver = 0.8.8_c
-	pkgrel = 1
+	pkgver = 0.8.8_d
+	pkgrel = 2
 	url = http://cacti.net/spine_info.php
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = libmariadbclient
 	depends = net-snmp
-	depends = cacti=0.8.8_c
+	depends = cacti=0.8.8_d
 	backup = etc/spine.conf
-	source = http://www.cacti.net/downloads/spine/cacti-spine-0.8.8c.tar.gz
-	md5sums = 448c813422f943dc09b237bd8022002a
+	source = make.patch
+	source = http://www.cacti.net/downloads/spine/cacti-spine-0.8.8d.tar.gz
+	md5sums = c36d7a35a9b9760fb6a8c53a007f06a7
+	md5sums = 7724218aff3695369a20f05d2aeb993b
 
 pkgname = cacti-spine
 

@@ -1,0 +1,40 @@
+diff -Naur cacti-spine-0.8.8d/configure.ac cacti-spine-0.8.8d-patched/configure.ac
+--- cacti-spine-0.8.8d/configure.ac	2015-06-08 20:26:02.000000000 +0200
++++ cacti-spine-0.8.8d-patched/configure.ac	2015-06-12 16:41:21.401118417 +0200
+@@ -9,8 +9,8 @@
+ AC_PREFIX_DEFAULT(/usr/local/spine)
+ AC_LANG(C)
+ 
+-AM_INIT_AUTOMAKE(spine, 0.8.8d)
+-AM_CONFIG_HEADER(config/config.h)
++AM_INIT_AUTOMAKE
++AC_CONFIG_HEADER(config/config.h)
+ 
+ # static libraries
+ AC_ARG_WITH(static,
+@@ -272,7 +272,12 @@
+ )
+ AC_DEFINE_UNQUOTED(SNMP_LOCALNAME, $havelocalname, If snmp localname session structure member exists)
+ 
+-AC_CHECK_LIB(netsnmp, snmp_timeout)
++AC_CHECK_LIB(netsnmp, snmp_timeout,
++  [ LIBS="-lnetsnmp $LIBS"
++    AC_DEFINE(USE_NET_SNMP, 1, New Net SNMP Version)
++  ],
++  AC_MSG_RESULT(Cannot find NET-SNMP libraries(snmp))
++)
+ 
+ # ****************** Spine Result Buffer Check ***********************
+ # Check for the default spine output buffer size
+diff -Naur cacti-spine-0.8.8d/Makefile.am cacti-spine-0.8.8d-patched/Makefile.am
+--- cacti-spine-0.8.8d/Makefile.am	2015-06-08 20:26:02.000000000 +0200
++++ cacti-spine-0.8.8d-patched/Makefile.am	2015-06-12 16:41:39.961073148 +0200
+@@ -5,4 +5,6 @@
+ configdir = $(sysconfdir)
+ config_DATA = spine.conf.dist
+ 
+-bin_PROGRAMS = spine
+\ No newline at end of file
++bin_PROGRAMS = spine
++
++ACLOCAL_AMFLAGS = -I m4
