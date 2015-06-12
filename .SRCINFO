@@ -1,0 +1,18 @@
+pkgbase = my-own-repo-web-interface
+	pkgdesc = Custom user repo interface (pacman/rpm/deb)
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://code.google.com/p/archlinux-stuff/wiki/MyOwnRepo
+	install = my-own-repo-web-interface.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = perl
+	depends = php
+	depends = perl-dbd-sqlite
+	backup = srv/my-own-repo/config.php
+	source = http://archlinux-stuff.googlecode.com/files/my-own-repo-web-interface-0.2.tar.gz
+	md5sums = 9fb3c8aa5a4140005f5fd5b79a8d05fc
+
+pkgname = my-own-repo-web-interface
+

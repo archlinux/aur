@@ -1,0 +1,15 @@
+post_install() {
+  (cd /srv/my-own-repo && ln -s -f default-theme.css theme.css)
+}
+
+post_upgrade() {
+  echo 'Check /srv/my-own-repo/theme.css symlink!'
+}
+
+pre_remove() {
+  rm -f /srv/my-own-repo/theme.css
+}
+
+op=$1
+shift
+$op $*
