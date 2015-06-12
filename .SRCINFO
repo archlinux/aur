@@ -1,0 +1,14 @@
+pkgbase = biomart
+	pkgdesc = A query-oriented data management system
+	pkgver = 0.8
+	pkgrel = 1
+	url = http://www.biomart.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = java-runtime
+	source = ftp://ftp.ebi.ac.uk/pub/software/biomart/martj_current/martj-bin.tar.gz
+	md5sums = 9381d0fd3a76652bfbebc60b209d9e0c
+
+pkgname = biomart
+
