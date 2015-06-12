@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=GSpiceUI
+Comment=A GUI to various freely available Spice electronic circuit simulators
+Encoding=UTF-8
+Type=Application
+Categories=Application;Science
+Exec=gspiceui
