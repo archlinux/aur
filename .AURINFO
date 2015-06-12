@@ -1,0 +1,14 @@
+pkgbase = osmchange
+	pkgdesc = a tool to merge .osc OsmChange files into an .osm Planet file
+	pkgver = 0.7
+	pkgrel = 2
+	url = http://wiki.openstreetmap.org/wiki/Osmchange_(program)
+	arch = i686
+	arch = x86_64
+	license = gpl
+	depends = glibc
+	source = http://m.m.i24.cc/osmchange.c
+	md5sums = 2b9f24e758e150aa68572fd73b87045b
+
+pkgname = osmchange
+
