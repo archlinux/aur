@@ -1,0 +1,23 @@
+pkgbase = gnome-shell-extension-weather-git
+	pkgdesc = A simple GNOME Shell extension for displaying weather informations from several cities
+	pkgver = r572.329139f
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/Neroth/gnome-shell-extension-weather
+	install = gschemas.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = gnome-common
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = intltool
+	depends = dconf
+	depends = gettext
+	depends = pkg-config
+	replaces = gnome-shell-extension-weather-neroth-git
+	source = git+https://github.com/Neroth/gnome-shell-extension-weather
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-weather-git
+
