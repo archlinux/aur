@@ -1,0 +1,20 @@
+pkgbase = fltk11
+	pkgdesc = Graphical user interface toolkit for X. Legacy 1.1.xx version.
+	pkgver = 1.1.10
+	pkgrel = 3
+	url = http://www.fltk.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = mesa
+	depends = bash
+	depends = zlib
+	depends = libjpeg
+	depends = libxft
+	depends = libxext
+	provides = fltk=1.1.10
+	source = http://fltk.org/pub/fltk/1.1.10/fltk-1.1.10-source.tar.bz2
+	md5sums = a1765594bc427ff892e36089fe1fa672
+
+pkgname = fltk11
+
