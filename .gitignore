@@ -1,0 +1,5 @@
+*.pkg.tar
+*.src.tar.gz
+pkg/
+src/
+tor/
