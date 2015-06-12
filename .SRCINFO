@@ -1,0 +1,16 @@
+pkgbase = pylibpcap
+	pkgdesc = Python module for the libpcap packet capture library, based on the original python libpcap module by Aaron Rhodes.
+	pkgver = 0.6.4
+	pkgrel = 2
+	url = http://pylibpcap.sourceforge.net/
+	arch = any
+	license = BSD
+	makedepends = python2
+	makedepends = libpcap
+	depends = python2
+	depends = libpcap
+	source = http://downloads.sourceforge.net/project/pylibpcap/pylibpcap/0.6.4/pylibpcap-0.6.4.tar.gz
+	md5sums = 7ebcaa72f998f85744be226b91d88aa3
+
+pkgname = pylibpcap
+
