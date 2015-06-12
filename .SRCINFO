@@ -1,0 +1,19 @@
+pkgbase = bookshelf
+	pkgdesc = Virtual bookshelf browser for the terminal
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/maandree/bookshelf
+	arch = any
+	license = GPL3
+	makedepends = texinfo
+	makedepends = gzip
+	depends = bash
+	depends = grep
+	depends = coreutils
+	optdepends = jfbview: default document viewer under TTY
+	optdepends = xpdf: default document viewer under X
+	source = https://github.com/maandree/bookshelf/archive/1.tar.gz
+	sha256sums = cfa0a9f1482533ccc0be068abd9deab716d966b837668dfdca0beba10dfa9493
+
+pkgname = bookshelf
+
