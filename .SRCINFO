@@ -1,0 +1,18 @@
+pkgbase = pydio-sync-ui-git
+	pkgdesc = Pydio Sync Client - QT5 UI
+	pkgver = r125.69a07e0
+	pkgrel = 2
+	url = http://pyd.io
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = git
+	depends = qt5-base
+	depends = pydio-sync-git
+	provides = pydio-sync-ui
+	conflicts = pydio-sync-ui
+	source = git://github.com/pydio/pydio-sync-ui.git
+	md5sums = SKIP
+
+pkgname = pydio-sync-ui-git
+
