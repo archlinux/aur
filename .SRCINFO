@@ -1,0 +1,25 @@
+pkgbase = wilink
+	pkgdesc = Instant messaging client and SIP softphone for Wifirst customers
+	pkgver = 2.4.2
+	pkgrel = 4
+	url = https://github.com/jlaine/wilink
+	install = wilink.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake>=2.8.2
+	depends = libmad
+	depends = libvorbis
+	depends = libxss
+	depends = qxmpp
+	depends = qdjango
+	depends = libnotify
+	depends = libgnome-keyring
+	depends = libgphoto2
+	source = https://download.wifirst.net/public/wiLink-2.4.2.tar.bz2
+	source = link-X11.patch
+	sha1sums = a4c826c0a70c3ca0dcd953a2474f0ea576d0f9b1
+	sha1sums = 42b07fdca0a26fe4e2c34c53b50158c60536266e
+
+pkgname = wilink
+

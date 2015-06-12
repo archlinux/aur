@@ -1,0 +1,11 @@
+--- wiLink-2.4.2/src/app/CMakeLists.txt.orig	2013-03-12 09:55:15.000000000 +0100
++++ wiLink-2.4.2/src/app/CMakeLists.txt	2013-06-26 15:27:29.000000000 +0200
+@@ -19,6 +19,8 @@
+ if(APPLE)
+     list(APPEND app_SOURCES application_mac.mm)
+     list(APPEND app_LIBRARIES "-framework AppKit")
++elseif(UNIX)
++    list(APPEND app_LIBRARIES X11)
+ endif()
+ 
+ qt4_wrap_cpp(app_MOC_SOURCES ${app_MOC_HEADERS})
