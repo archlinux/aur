@@ -1,0 +1,16 @@
+pkgbase = nixieclock
+	pkgdesc = a simple little desktop clock that displays the current date and time using little icons of actual nixie tube digits
+	pkgver = 1.64
+	pkgrel = 1
+	url = http://seriss.com/people/erco/unixtools/nixieclock/
+	arch = i686
+	arch = x86_64
+	license = GPL-2
+	depends = fltk
+	source = http://seriss.com/people/erco/unixtools/nixieclock/nixieclock-1.64.tar.gz
+	source = nixieclock.desktop
+	md5sums = 957f44ba9bf0b0f189e2374f1d952842
+	md5sums = 7a94c95044f8027ec600554ed9a7844d
+
+pkgname = nixieclock
+
