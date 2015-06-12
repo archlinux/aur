@@ -1,6 +1,6 @@
 pkgbase = backintime
 	pkgver = 1.1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://launchpad.net/backintime
 	arch = any
 	license = GPL
@@ -32,6 +32,7 @@ pkgname = backintime-cli
 	depends = openssh
 	depends = python-keyring
 	depends = python-dbus
+	depends = polkit
 	optdepends = backintime: QT4 GUI version
 	optdepends = encfs: encrypted filesystem in user-space
 	optdepends = pm-utils: for laptops allows an option to not snapshot on battery
