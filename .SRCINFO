@@ -1,0 +1,14 @@
+pkgbase = bennugd-core
+	pkgdesc = a programming language to create games (Fenix successor) - core
+	pkgver = latest
+	pkgrel = 3
+	url = http://sourceforge.net/projects/bennugd/
+	arch = i686
+	license = GPL
+	depends = libdes
+	depends = openssl
+	source = http://bennugd.svn.sourceforge.net/viewvc/bennugd.tar.gz?view=tar
+	md5sums = ee5ca6f6d29066b9a3b3e8a0b182b1b4
+
+pkgname = bennugd-core
+
