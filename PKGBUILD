@@ -2,7 +2,7 @@
 # Contributor: Nathan Dyer <https://launchpad.net/~nathandyer>
 
 pkgname=vocal-bzr
-pkgver=r296
+pkgver=r286
 pkgrel=1
 pkgdesc='Vocal Podcast Manager. Simple Podcast Client for the Modern Desktop.'
 arch=('i686' 'x86_64')
