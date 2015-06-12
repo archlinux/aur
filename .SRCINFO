@@ -1,0 +1,20 @@
+pkgbase = blueshift-tray
+	pkgdesc = Systray wrapper for Blueshift
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/maandree/blueshift-tray
+	install = blueshift-tray.install
+	arch = any
+	license = GPL3
+	makedepends = make
+	makedepends = coreutils
+	makedepends = sed
+	makedepends = auto-auto-complete
+	depends = python2
+	depends = pygtk
+	depends = blueshift>=1.4
+	source = https://github.com/maandree/blueshift-tray/archive/1.2.tar.gz
+	sha256sums = 521d6f7da630dc6e2b8ebd44a98760e3bc7413c7f2cc6905b182aede6c7f9fb7
+
+pkgname = blueshift-tray
+
