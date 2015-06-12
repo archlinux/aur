@@ -1,0 +1,36 @@
+pkgbase = canon-pixma-mg5500-complete
+	pkgdesc = Complete stand alone driver set (printing and scanning) for Canon Pixma MG5500 series
+	pkgver = 4.00
+	pkgrel = 2
+	url = http://www.canon-europe.com/Support/Consumer_Products/products/Fax__Multifunctionals/InkJet/PIXMA_MG_series/PIXMA_MG5540.aspx
+	install = canon-pixma-mg5500-complete.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = deb2targz
+	makedepends = sed
+	source = http://gdlp01.c-wss.com/gds/6/0100005506/01/cnijfilter-mg5500series-4.00-1-deb.tar.gz
+	source = http://gdlp01.c-wss.com/gds/3/0100005523/01/scangearmp-mg5500series-2.20-1-deb.tar.gz
+	source = canon-pixma-mg5500-complete.license
+	source = canon-pixma-mg5500-complete-scangear.desktop
+	source = canon-pixma-mg5500-complete-scangear-icon.png
+	md5sums = f1163d22c0a6d869120b90900fd1a640
+	md5sums = e96527b7401c291e22e4bd85ded9caac
+	md5sums = d8faf0e75ee3d1989eed39d55cb3e8fb
+	md5sums = 26ebae4fc269fa9d3efa56373345921f
+	md5sums = 3feefd413092d7152f47b7451ba79efe
+	depends_i686 = popt
+	depends_i686 = libpng12
+	depends_i686 = libusb-compat
+	depends_i686 = libtiff4
+	depends_i686 = libxml2
+	depends_i686 = gtk2
+	depends_x86_64 = lib32-popt
+	depends_x86_64 = lib32-libpng12
+	depends_x86_64 = lib32-libusb-compat
+	depends_x86_64 = lib32-libtiff4
+	depends_x86_64 = lib32-libxml2
+	depends_x86_64 = lib32-gtk2
+
+pkgname = canon-pixma-mg5500-complete
+
