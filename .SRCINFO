@@ -1,0 +1,20 @@
+pkgbase = voxatron
+	pkgdesc = Voxatron is an action/adventure game set in a world completely made of tiny cubes that can be blasted to smithereens
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = http://www.lexaloffle.com/voxatron.php
+	arch = i686
+	arch = x86_64
+	groups = humblevoxatronbundle
+	groups = games
+	license = custom: "commercial"
+	options = !strip
+	source = hib://voxatron_0.3.2_i386.tar.gz
+	source = voxatron.desktop
+	source = vox-exec
+	md5sums = 58cbe8e1a6b8027cfdcfb16d5d61276f
+	md5sums = 184c021b52d3a9c8ac5f49435b4b93e0
+	md5sums = bb84f6fcd7cdb18eb417173a6f58e00e
+
+pkgname = voxatron
+

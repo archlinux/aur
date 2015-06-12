@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=Game;ActionGame;AdventureGame;
+Exec=/usr/bin/voxatron
+Icon=voxatron-icon
+Terminal=false
+Type=Application
+Name=Voxatron
+Comment=Action/adventure game set in a fully destructible world made of voxels.
