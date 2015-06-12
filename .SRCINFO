@@ -1,0 +1,13 @@
+pkgbase = jpegtran_crop_bin
+	pkgdesc = Stable jpegtran version with the lossless crop and scale feature
+	pkgver = 9a
+	pkgrel = 1
+	url = http://sylvana.net/jpegcrop/jpegtran/
+	arch = i686
+	license = other
+	conflicts = jpegtran_crop
+	source = http://sylvana.net/jpegcrop/jpegcrop.tar.gz
+	md5sums = 563acde9ef32cd438543c17162a1c5de
+
+pkgname = jpegtran_crop_bin
+
