@@ -1,0 +1,15 @@
+pkgbase = owncloud-app-notes-git
+	pkgdesc = Owncloud notes app
+	pkgver = 0.5.276.g405ccf0
+	pkgrel = 1
+	url = https://github.com/owncloud/notes
+	arch = any
+	license = AGPL
+	depends = owncloud
+	conflicts = owncloud-app-notes
+	options = !strip
+	source = owncloud-app-notes-git::git+https://github.com/owncloud/notes.git
+	sha512sums = SKIP
+
+pkgname = owncloud-app-notes-git
+
