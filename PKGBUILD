@@ -4,7 +4,7 @@
 
 pkgname=php-box
 pkgver=2.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An application for building and managing Phars"
 url="https://github.com/box-project/box2"
 license="MIT"

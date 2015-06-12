@@ -1,6 +1,15 @@
 post_install() {
   echo
   echo "php-box is installed as executable 'php-box'."
+  if ! /usr/bin/php -i | grep Phar >/dev/null; then
+    echo
+    echo "[WARNING] the Phar extension of php must be enabled."
+    echo "[WARNING] check if the line extension=phar.so is commented out in your php.ini"
+  fi
+  if ! /usr/bin/php -i | grep 'phar.readonly.*Off.*' >/dev/null; then
+    echo
+    echo "[WARNING] the phar.readonly option of php must be set to 'Off'."
+  fi
 }
 
 post_upgrade() {
