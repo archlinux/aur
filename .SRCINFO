@@ -1,0 +1,21 @@
+pkgbase = amoebax
+	pkgdesc = A cute and addictive action-puzzle game
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = http://www.emma-soft.com/games/amoebax/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = libpng
+	depends = libogg
+	depends = libvorbis
+	depends = gcc-libs
+	source = http://www.emma-soft.com/games/amoebax/download/amoebax-0.2.1.tar.bz2
+	source = binreloc-cpp-fix.patch
+	md5sums = 16835cf051334bd3d75345d879b23cdf
+	md5sums = 29a30fcc18689733022676a383ff3589
+
+pkgname = amoebax
+
