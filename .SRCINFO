@@ -1,6 +1,6 @@
 pkgbase = manpages-fr-extra
 	pkgdesc = Pages de manuel Linux francophones complementaires de 'Debian-l10n-French'
-	pkgver = 20141109
+	pkgver = 20150130
 	pkgrel = 2
 	url = http://www.debian.org/international/french/
 	changelog = changelog
@@ -9,8 +9,8 @@ pkgbase = manpages-fr-extra
 	optdepends = man-pages-fr: pages de base
 	provides = man-pages-fr-extra
 	options = docs
-	source = http://ftp.fr.debian.org/debian/pool/main/m/manpages-fr-extra/manpages-fr-extra_20141109_all.deb
-	md5sums = 0267b81dcedc6abd4b619d75d39f214e
+	source = http://ftp.fr.debian.org/debian/pool/main/m/manpages-fr-extra/manpages-fr-extra_20150130_all.deb
+	md5sums = 6dd00d17f09973970fb60b40a4600bf2
 
 pkgname = manpages-fr-extra
 
