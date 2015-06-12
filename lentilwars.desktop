@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Lentilwars
+Comment=Shoot 'em up arcade game
+Exec=lentilwars
+Icon=lentilwars.xpm
+Categories=Game;ArcadeGame;

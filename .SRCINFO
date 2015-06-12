@@ -1,0 +1,20 @@
+pkgbase = lentilwars
+	pkgdesc = 2D "tabletop" multiplayer shooter game
+	pkgver = 1.1.0
+	pkgrel = 3
+	url = http://lwars.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL-2
+	makedepends = fpc
+	depends = sdl_mixer
+	depends = sdl_ttf
+	depends = sdl_image
+	depends = sdl_gfx
+	source = http://sourceforge.net/projects/lwars/files/lwars/Lentilwars-1.1.0/lentilwars_1_1_0_all.tar.gz/download
+	source = lentilwars.desktop
+	md5sums = 38700e51807f36edb17fba1ba262d926
+	md5sums = d397227c7509ecd07964b6c1313f1402
+
+pkgname = lentilwars
+
