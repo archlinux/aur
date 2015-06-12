@@ -1,0 +1,16 @@
+pkgbase = lm_sensors-f2a78m-conf
+	pkgdesc = libsensors3 configuration file for the GIGABYTE GA-F2a78M-D3H
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://lara.craft.net.br
+	install = lm_sensors-f2a78m-conf.install
+	arch = any
+	license = GPL
+	depends = lm_sensors
+	source = http://lara.craft.net.br/f2a78m.conf
+	source = lm_sensors-f2a78m-conf.install
+	md5sums = f4a8db81b0914cc872fa7373873a11e6
+	md5sums = d1fe9b78311a562011a86cd3ce88d4ff
+
+pkgname = lm_sensors-f2a78m-conf
+
