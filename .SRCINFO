@@ -1,0 +1,15 @@
+pkgbase = spark
+	pkgdesc = Cross-platform real-time collaboration client optimized for business and organizations.
+	pkgver = 2.7.0
+	pkgrel = 0
+	url = http://www.igniterealtime.org/projects/spark/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	conflicts = spark-svn
+	options = !strip
+	source = http://download.igniterealtime.org/spark/spark_2_7_0.tar.gz
+	md5sums = 1e9b78887c31f45a8e500cd8f7cfdde4
+
+pkgname = spark
+
