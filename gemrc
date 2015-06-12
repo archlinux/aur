@@ -1,0 +1,8 @@
+# Read about the gemrc format at http://guides.rubygems.org/command-reference/#gem-environment
+#
+# --user-install is used to install to $HOME/.gem/ by default since we want to separate
+# pacman installed gems and gem installed gems.
+#
+# --no-ri and --no-rdoc is used to speed up gem installation.
+#
+gem: --user-install --no-ri --no-rdoc

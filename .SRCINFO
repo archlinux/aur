@@ -1,0 +1,44 @@
+pkgbase = ruby
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = http://www.ruby-lang.org/en/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	license = custom
+	makedepends = jemalloc
+	makedepends = hardening-wrapper
+	makedepends = gdbm
+	makedepends = openssl
+	makedepends = libffi
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = libyaml
+	makedepends = ttf-dejavu
+	makedepends = tk
+	options = !emptydirs
+	source = http://cache.ruby-lang.org/pub/ruby/2.2/ruby-2.2.2.tar.xz
+	source = gemrc
+	sha256sums = f033b5d08ab57083e48c1d81bcd7399967578c370b664da90e12a32891424462
+	sha256sums = d36fbabb1cdd492dd4bf04d8db5a313f52e3b61ad0422c830950f83a972a53f4
+
+pkgname = ruby
+	pkgdesc = An object-oriented language for quick and easy programming
+	install = ruby.install
+	depends = gdbm
+	depends = openssl
+	depends = libffi
+	depends = libyaml
+	depends = gmp
+	depends = zlib
+	depends = jemalloc
+	optdepends = ruby-docs: Ruby documentation
+	optdepends = tk: for Ruby/TK
+	provides = rubygems
+	provides = rake
+	conflicts = rake
+	backup = etc/gemrc
+
+pkgname = ruby-docs
+	pkgdesc = Documentation files for ruby
+
