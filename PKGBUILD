@@ -11,7 +11,7 @@ arch=(i686 x86_64)
 url="http://www.gnupg.org"
 license=('LGPL')
 depends=('libgpg-error>=1.13-1')
-makedepends=('git')
+makedepends=('git' 'ghostscript' 'transfig')
 provides=("libgcrypt=${pkgver}")
 conflicts=('libgcrypt')
 install=${pkgname}.install

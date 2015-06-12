@@ -8,6 +8,8 @@ pkgbase = libgcrypt-git
 	arch = x86_64
 	license = LGPL
 	makedepends = git
+	makedepends = ghostscript
+	makedepends = transfig
 	depends = libgpg-error>=1.13-1
 	provides = libgcrypt=1.6.0+164+gceaa97f
 	conflicts = libgcrypt
