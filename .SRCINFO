@@ -1,0 +1,14 @@
+pkgbase = laspack
+	pkgdesc = Package for solving large sparse systems of linear equations.
+	pkgver = 1.12.2
+	pkgrel = 2
+	url = http://www.mgnet.org/mgnet/Codes/laspack/html/laspack.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	options = staticlibs
+	source = http://www.netlib.org/linalg/laspack.tgz
+	md5sums = fcfb3c86cc993e29eb477191b1136a8d
+
+pkgname = laspack
+
