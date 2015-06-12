@@ -1,0 +1,15 @@
+pkgbase = gkrellm-hddtemp
+	pkgdesc = A hddtemp plugin for gkrellm2
+	pkgver = 0.2_beta
+	pkgrel = 3
+	url = http://www.guzu.net/linux/hddtemp.php
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gkrellm
+	depends = hddtemp>=0.3.beta
+	source = http://www.guzu.net/files/gkrellm-hddtemp-0.2-beta.tar.gz
+	md5sums = b4f3b90692acbce1f74cac05ce2264fa
+
+pkgname = gkrellm-hddtemp
+
