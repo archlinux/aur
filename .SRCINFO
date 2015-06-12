@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-openblas-lapack
 	pkgdesc = An optimized BLAS library based on GotoBLAS2 1.13 BSD, providing optimized blas, lapack, and cblas. (mingw-w64)
-	pkgver = 0.2.13
+	pkgver = 0.2.14
 	pkgrel = 1
 	url = http://xianyi.github.com/OpenBLAS/
 	arch = any
@@ -20,8 +20,8 @@ pkgbase = mingw-w64-openblas-lapack
 	options = !makeflags
 	options = !strip
 	options = staticlibs
-	source = OpenBLAS-v0.2.13.tar.gz::http://github.com/xianyi/OpenBLAS/archive/v0.2.13.tar.gz
-	md5sums = bba7b37b5a5b6674fda91dcb2faab145
+	source = OpenBLAS-v0.2.14.tar.gz::http://github.com/xianyi/OpenBLAS/archive/v0.2.14.tar.gz
+	md5sums = 53cda7f420e1ba0ea55de536b24c9701
 
 pkgname = mingw-w64-openblas-lapack
 
