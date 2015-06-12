@@ -1,0 +1,15 @@
+pkgbase = epm
+	pkgdesc = ESP Package manager is a UNIX software and file packaging program
+	pkgver = 4.2
+	pkgrel = 1
+	url = http://www.epmhome.org
+	arch = i686
+	arch = x86_64
+	license = GPL-2
+	depends = libxft
+	depends = gcc-libs
+	source = http://ftp.funet.fi/pub/mirrors/ftp.easysw.com/pub/epm/4.2/epm-4.2-source.tar.gz
+	md5sums = 3805b1377f910699c4914ef96b273943
+
+pkgname = epm
+
