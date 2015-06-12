@@ -1,0 +1,15 @@
+pkgbase = perl-math-geometry-planar-gpc-polygon
+	pkgdesc = OO wrapper to gpc library
+	pkgver = 0.05
+	pkgrel = 1
+	url = http://search.cpan.org/~Math/Math-Geometry-Planar-GPC-Polygon
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl-inline>=0.44
+	options = !emptydirs
+	source = http://www.cpan.org/authors/id/E/EW/EWILHELM/Math/Math-Geometry-Planar-GPC-Polygon-0.05.tar.gz
+	md5sums = 78f595f7a829995c0b8acd72ba19469d
+
+pkgname = perl-math-geometry-planar-gpc-polygon
+
