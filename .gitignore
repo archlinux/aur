@@ -1,0 +1,5 @@
+*
+!.gitignore
+!nvidia-monitor.install
+!PKGBUILD
+!.SRCINFO

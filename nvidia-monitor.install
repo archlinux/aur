@@ -1,0 +1,19 @@
+## arg 1:  the new package version
+post_install() {
+	kbuildsycoca4 2> /dev/null
+	echo "Please restart plasma to use this plasmoid. If you don't want to log off and log in again, just run :"
+	echo "  kquitapp plasma-desktop"
+	echo "  kstart plasma-desktop"
+	echo "If you're using the netbook version replace plasma-desktop by plasma-netbook"
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+	post_install
+}
+
+## arg 1:  the old package version
+post_remove() {
+	kbuildsycoca4 2> /dev/null
+}

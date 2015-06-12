@@ -1,0 +1,20 @@
+pkgbase = kdeplasma-addons-applets-nvidia-monitor-git
+	pkgdesc = An applet that monitor nvidia GPU using NVCtrl api (with proprietary drivers). Not supporting SLI yet.
+	pkgver = 0.4
+	pkgrel = 2
+	url = https://github.com/mdevlamynck/nvidia-monitor
+	install = nvidia-monitor.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = kdeplasma-addons-libs
+	depends = nvidia-utils
+	depends = kdebase-workspace
+	depends = libxnvctrl
+	source = git+https://github.com/mdevlamynck/nvidia-monitor.git
+	md5sums = SKIP
+
+pkgname = kdeplasma-addons-applets-nvidia-monitor-git
+
