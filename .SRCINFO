@@ -1,0 +1,15 @@
+pkgbase = gpmd85emulator
+	pkgdesc = Multiplatform GNU/GPL Tesla PMD 85 Emulator
+	pkgver = 0.9.1402
+	pkgrel = 2
+	url = http://sourceforge.net/projects/gpmd85emulator/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gcc-libs
+	depends = sdl
+	source = http://downloads.sourceforge.net/project/gpmd85emulator/GPMD85emulator.v0.9.1402.tar.gz
+	md5sums = c009d0e3be6ca357c4ce00eda7eb8ad7
+
+pkgname = gpmd85emulator
+
