@@ -1,0 +1,12 @@
+pkgbase = servedir
+	pkgdesc = Simple tool for sharing and uploading files through HTTP protocol.
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/mikolajb/servedir
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+
+pkgname = servedir
+
