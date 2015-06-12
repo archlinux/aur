@@ -1,0 +1,18 @@
+pkgbase = antigravitaattori
+	pkgdesc = a multiplayer flying saucer racing game
+	pkgver = 0.0.3
+	pkgrel = 3
+	url = http://luolamies.org/software/antigrav/
+	arch = i686
+	license = GPL-2
+	depends = libpng
+	depends = sdl
+	depends = mesa
+	depends = freealut
+	source = http://luolamies.org/software/antigrav/antigrav-0.0.3.tar.gz
+	source = antigrav.desktop
+	md5sums = 20e357bacdff1a04da399c9a5b983ff0
+	md5sums = 2fe08f941d366e2cc0a993ea0d0445eb
+
+pkgname = antigravitaattori
+
