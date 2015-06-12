@@ -1,0 +1,43 @@
+79,80c79,80
+<   - directory ${LIBDIR}/ccfe/ccfe.menu     (the previous test menu)
+<   - file      ${LIBDIR}/ccfe/it_works.txt  (this file)
+---
+>   - directory /usr/lib/ccfe/ccfe.menu     (the previous test menu)
+>   - file      /usr/lib/ccfe/it_works.txt  (this file)
+121a122,128
+>   exp_etcdir="\/etc\/ccfe"
+>   exp_bindir="\/usr\/bin"
+>   exp_libdir="\/usr\/lib"
+>   exp_logdir="\/var\/log\/ccfe"
+>   exp_msgdir="\/usr\/share\/ccfe\/msg"
+>   exp_docdir="\/usr\/share\/doc"
+> 
+158,167c165,174
+<     cat <<EOT > "$ETCDIR/$SAVED_INFO"
+< # Installed on $(date)
+< ETCDIR="$ETCDIR"
+< BINDIR="$BINDIR"
+< LIBDIR="$LIBDIR"
+< LOGDIR="$LOGDIR"
+< MSGDIR="$MSGDIR"
+< MANDIR="$MANDIR"
+< DOCDIR="$DOCDIR"
+< EOT
+---
+>     #cat <<EOT > "$ETCDIR/$SAVED_INFO"
+> ## Installed on $(date)
+> #ETCDIR="$ETCDIR"
+> #BINDIR="$BINDIR"
+> #LIBDIR="$LIBDIR"
+> #LOGDIR="$LOGDIR"
+> #MSGDIR="$MSGDIR"
+> #MANDIR="$MANDIR"
+> #DOCDIR="$DOCDIR"
+> #EOT
+316,321d322
+<   exp_etcdir=$(echo $ETCDIR | sed -e 's/\//\\\//g')
+<   exp_bindir=$(echo $BINDIR | sed -e 's/\//\\\//g')
+<   exp_libdir=$(echo $LIBDIR | sed -e 's/\//\\\//g')
+<   exp_logdir=$(echo $LOGDIR | sed -e 's/\//\\\//g')
+<   exp_msgdir=$(echo $MSGDIR | sed -e 's/\//\\\//g')
+<   exp_docdir=$(echo $DOCDIR | sed -e 's/\//\\\//g')
