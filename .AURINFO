@@ -1,0 +1,19 @@
+pkgbase = misti-fonts
+	pkgdesc = Misti's fonts (ttf)
+	pkgver = 2014
+	pkgrel = 3
+	url = http://mistifonts.com/
+	install = misti.install
+	arch = any
+	license = free for personal use
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://mistifonts.com/all%20fonts/all%20misti%27s%20fonts.zip
+	source = Terms.txt
+	source = misti.install
+	md5sums = 5b4fb253f92ee23b57521f6b87aecdd1
+	md5sums = cc9d7b475c85b4c662fc23e6b43ece8c
+	md5sums = a1a8cdd720dc8b3e1129714b72440610
+
+pkgname = misti-fonts
+
