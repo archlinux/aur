@@ -1,0 +1,28 @@
+pkgbase = vocal-bzr
+	pkgdesc = Vocal Podcast Manager. Simple Podcast Client for the Modern Desktop.
+	pkgver = r296
+	pkgrel = 1
+	url = https://launchpad.net/vocal
+	install = vocal.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = bzr
+	makedepends = vala
+	makedepends = cmake
+	depends = libnotify
+	depends = libunity-bzr
+	depends = libxml2
+	depends = granite
+	depends = gtk3
+	depends = gstreamer
+	depends = sqlite3
+	depends = clutter-gtk
+	depends = icu
+	provides = vocal
+	conflicts = vocal
+	source = bzr+lp:vocal
+	sha256sums = SKIP
+
+pkgname = vocal-bzr
+
