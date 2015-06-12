@@ -1,0 +1,14 @@
+pkgbase = primer3
+	pkgdesc = Tool to design flanking oligo nucleotides for DNA amplification
+	pkgver = 2.3.6
+	pkgrel = 1
+	url = http://primer3.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = BSD
+	license = GPL
+	source = http://sourceforge.net/projects/primer3/files/primer3/2.3.6/primer3-src-2.3.6.tar.gz
+	md5sums = 6e437ec00f82452b2187da78375f3ed3
+
+pkgname = primer3
+
