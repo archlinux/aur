@@ -1,21 +1,21 @@
 # Maintainer: Spike29 <leguen.yannick@gmail.com>
 # Contributor: Samir Faci <csgeek@archlinux.us>
-# Contributor: Timothée Ravier <tim@siosm.fr>
+# Contributor: TimothÃ©e Ravier <tim@siosm.fr>
 
 pkgname='qxmpp'
-pkgver='0.7.5'
-pkgrel='4'
+pkgver='0.8.3'
+pkgrel='1'
 pkgdesc='An XMPP client library based on Qt & C++'
 arch=('i686' 'x86_64')
-url='http://code.google.com/p/qxmpp/'
+url='https://github.com/qxmpp-project/qxmpp'
 license=('LGPL2.1')
-depends=('qt4>=4.5')
+depends=('qt4')
 optdepends=('speex: required to enable speex audio codec'
             'libvpx: required to enable vpx video codec'
 	    'libtheora: required to enable theora video codec') 
-conflicts=('qxmpp-git' 'qxmpp-leechcraft-git')
-source=("http://qxmpp.googlecode.com/files/$pkgname-$pkgver.tar.gz")
-sha1sums=('184f658fa5b2e001f8fb24ad7c5bfa93ddfb2eb2')
+conflicts=('qxmpp-git' 'qxmpp-leechcraft-git' 'qxmpp-qt5' 'qxmpp-qt5-git')
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha1sums=('63828a91be14b68ec6f091b30a292d47eaf7a3c0')
  
 build() {
 	cd "$srcdir/$pkgname-$pkgver/"
