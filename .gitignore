@@ -2,9 +2,9 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
-!adchpp-bzr.install
-!adchpp-bzr.service
-!adchpp-bzr.sysuser
-!adchpp-bzr.tmpfile
+!adchpp.install
+!adchpp.service
+!adchpp.sysuser
+!adchpp.tmpfile
 !adchpp.sh
 
