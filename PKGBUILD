@@ -2,7 +2,7 @@
 pkgbase=diaspora-git
 _projectname=diaspora
 pkgname=('diaspora-mysql-git' 'diaspora-postgresql-git')
-pkgver=0.5.0.1.r308.gc1813aa
+pkgver=0.5.0.1.r380.gb0de392
 pkgrel=1
 pkgdesc="A distributed privacy aware social network (development head)"
 arch=('i686' 'x86_64')
@@ -65,6 +65,7 @@ _package() {
 
   msg "Bundle dependencies"
   echo "gem: --no-rdoc --no-ri --no-user-install" > $_srcdir/.gemrc
+  HOME=$_srcdir $_bundle config --local build.sigar '--with-cppflags="-fgnu89-inline"'
   HOME=$_srcdir $_bundle install --without development test --with $_db --deployment
   HOME=$_srcdir $_bundle clean
 

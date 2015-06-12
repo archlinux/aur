@@ -1,6 +1,6 @@
 pkgbase = diaspora-git
 	pkgdesc = A distributed privacy aware social network (development head)
-	pkgver = 0.5.0.1.r308.gc1813aa
+	pkgver = 0.5.0.1.r380.gb0de392
 	pkgrel = 1
 	url = http://diasporafoundation.org
 	install = diaspora.install
