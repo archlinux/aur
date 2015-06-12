@@ -1,0 +1,14 @@
+pkgbase = python2-indentfinder-hg
+	pkgdesc = Detect the indentation scheme used in a file.
+	pkgver = 55_ec4e8baa59b5
+	pkgrel = 1
+	url = http://www.freehackers.org/Indent_Finder
+	arch = any
+	license = BSD
+	makedepends = mercurial
+	depends = python2
+	source = IndentFinder::hg+http://sources.freehackers.org/IndentFinder
+	md5sums = SKIP
+
+pkgname = python2-indentfinder-hg
+
