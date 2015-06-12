@@ -1,0 +1,17 @@
+pkgbase = git-hub
+	pkgdesc = Git command line interface to GitHub
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/sociomantic/git-hub
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = python2-docutils
+	depends = python2
+	depends = git
+	depends = bash-completion
+	source = git+https://github.com/sociomantic/git-hub.git#tag=v0.9.0
+	sha1sums = SKIP
+
+pkgname = git-hub
+
