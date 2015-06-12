@@ -1,0 +1,13 @@
+pkgbase = peat
+	pkgdesc = Repeat commands!
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/sjl/peat
+	arch = any
+	license = GPL3
+	depends = python2
+	source = https://github.com/sjl/peat/archive/v0.3.0.tar.gz
+	md5sums = c8826f667d69e274e476966806adaf30
+
+pkgname = peat
+
