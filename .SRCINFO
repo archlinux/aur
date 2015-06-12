@@ -1,0 +1,26 @@
+pkgbase = wingpanel-globalmenu-bzr
+	pkgdesc = The Pantheon Panel with globalmenu support
+	pkgver = r217
+	pkgrel = 1
+	url = https://code.launchpad.net/~erasmo-marin/+junk/wingpanel-globalmenu
+	install = wingpanel-globalmenu.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = vala
+	depends = granite-bzr
+	depends = ido
+	depends = libindicator-gtk3
+	depends = libwnck3
+	optdepends = indicator-datetime: Display date and time
+	optdepends = indicator-pantheon-session-bzr: Pantheon session indicator
+	optdepends = indicator-power: Battery idicator
+	provides = wingpanel
+	conflicts = wingpanel
+	source = bzr+lp:~erasmo-marin/+junk/wingpanel-globalmenu
+	sha256sums = SKIP
+
+pkgname = wingpanel-globalmenu-bzr
+
