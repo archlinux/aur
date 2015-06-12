@@ -1,0 +1,15 @@
+pkgbase = qdjango
+	pkgdesc = A Qt-based C++ web framework
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/jlaine/qdjango/
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	depends = qt5-script
+	conflicts = qdjango-git
+	source = https://github.com/jlaine/qdjango/archive/v0.5.0.tar.gz
+	md5sums = 268f2feb32c8b999dd4fdaab911add76
+
+pkgname = qdjango
+
