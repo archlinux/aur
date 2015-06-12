@@ -1,0 +1,13 @@
+pkgbase = geany-theme-github
+	pkgdesc = A github like theme for Geany
+	pkgver = 1
+	pkgrel = 3
+	url = http://lara.craft.net.br
+	arch = any
+	license = GPL
+	depends = geany
+	source = http://lara.craft.net.br/Geany/github.conf
+	md5sums = 16cd235a443dbf3bed3c85096869e60c
+
+pkgname = geany-theme-github
+
