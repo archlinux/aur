@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Be The Wumpus
+Comment=A game with no graphics
+Exec=bethewumpus
+Icon=bethewumpus
+Categories=Game;AdventureGame;

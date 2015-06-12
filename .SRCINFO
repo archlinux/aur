@@ -1,0 +1,20 @@
+pkgbase = bethewumpus
+	pkgdesc = a game with no graphics, with no text, only audio
+	pkgver = 0.05
+	pkgrel = 4
+	url = http://bethewumpus.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL-2
+	depends = portaudio
+	depends = libvorbis
+	depends = gtk2
+	source = http://downloads.sourceforge.net/project/bethewumpus/bethewumpus/betheuwumpus-0.05/bethewumpus-0.05.tar.gz
+	source = bethewumpus.png
+	source = bethewumpus.desktop
+	md5sums = b99f8eed9f654313f1e33baf15c5c1e7
+	md5sums = 8a71fccd029ac49a4f903b3b79f0301c
+	md5sums = 10e1ba8b71e7e808404578fd05f83e0a
+
+pkgname = bethewumpus
+
