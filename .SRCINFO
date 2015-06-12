@@ -1,0 +1,16 @@
+pkgbase = unstickpixels
+	pkgdesc = Screen loop to try to unstick stuck pixels
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/maandree/unstickpixels
+	arch = any
+	license = GPL3
+	makedepends = texinfo
+	makedepends = gzip
+	depends = python3
+	depends = coreutils
+	source = https://github.com/maandree/unstickpixels/archive/1.tar.gz
+	sha256sums = 78b2c47f8f4819624c310e5fc790d9a40055e0811d532a0d5db9a22b9c763299
+
+pkgname = unstickpixels
+
