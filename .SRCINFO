@@ -1,0 +1,33 @@
+pkgbase = pydio-sync-git
+	pkgdesc = Pydio Sync Client
+	pkgver = r504.dd770f8
+	pkgrel = 1
+	url = http://pyd.io
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2-pyzmq
+	depends = python2-appdirs
+	depends = python2-xmltodict
+	depends = python2-yaml
+	depends = python2-argh
+	depends = python2-keyring
+	depends = python2-pathlib
+	depends = python2-pathtools
+	depends = python2-pydispatcher
+	depends = python2-aniso8601
+	depends = python2-requests
+	depends = python2-watchdog
+	depends = python2-cffi
+	depends = python2-flask
+	depends = python2-flask-restful
+	depends = python2-six
+	depends = python2-pytz
+	provides = pydio-sync
+	conflicts = pydio-sync
+	source = git://github.com/pydio/pydio-sync.git
+	md5sums = SKIP
+
+pkgname = pydio-sync-git
+
