@@ -1,0 +1,18 @@
+--- src/plex/machines.py.orig	2010-05-28 00:25:10.914630098 +0300
++++ src/plex/machines.py	2010-05-28 00:26:54.144574644 +0300
+@@ -115,6 +115,15 @@
+     def __str__(self):
+         return "State %d" % self.number
+ 
++    def __lt__(self, other):
++        return id(self) < id(other)
++
++    def __gt__(self, other):
++        return id(self) > id(other)
++
++    def __hash__(self):
++        return id(self)
++
+     def dump(self, file):
+         import string
+         # Header
