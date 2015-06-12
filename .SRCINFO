@@ -1,0 +1,16 @@
+pkgbase = adaptagrams-git
+	pkgdesc = A library of tools and reusable code for adaptive diagramming applications
+	pkgver = r1171.997b13d
+	pkgrel = 1
+	url = http://adaptagrams.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	optdepends = cairo
+	options = !libtool
+	source = adaptagrams-git::git+https://github.com/mjwybrow/adaptagrams.git
+	md5sums = SKIP
+
+pkgname = adaptagrams-git
+
