@@ -1,0 +1,20 @@
+pkgbase = bazel-git
+	pkgdesc = Correct, reproducible, and fast builds for everyone
+	pkgver = r858.18629fb
+	pkgrel = 1
+	url = http://bazel.io/
+	install = bazel.install
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = protobuf
+	depends = java-environment=8
+	depends = libarchive
+	depends = gcc-libs-multilib
+	depends = zip
+	depends = unzip
+	options = !strip
+
+pkgname = bazel-git
+
