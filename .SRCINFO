@@ -1,0 +1,15 @@
+pkgbase = omni
+	pkgdesc = Fast OpenMP source to source compiler
+	pkgver = 1.6a
+	pkgrel = 2
+	url = http://www.hpcs.cs.tsukuba.ac.jp/omni-compiler/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = bash
+	depends = java-environment
+	source = http://www.hpcs.cs.tsukuba.ac.jp/omni-compiler/download/Omni-1.6a.tar.gz
+	md5sums = 1b61f04eebf699034ffcb1b0a19ca721
+
+pkgname = omni
+
