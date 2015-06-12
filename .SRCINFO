@@ -1,0 +1,16 @@
+pkgbase = mofilereader
+	pkgdesc = API that lets you read .mo-Files and use their content just as you would do with GNUs gettext
+	pkgver = 0.1.2
+	pkgrel = 2
+	url = http://code.google.com/p/mofilereader/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	source = http://mofilereader.googlecode.com/files/moFileReader.0.1.2.zip
+	source = http://wiki.rigsofrods.com/images/1/1f/MoFR.patch
+	md5sums = 768b2e118c1e845622593e7c4b76777b
+	md5sums = 94ed75c7e1a8a419099a7ef72025985a
+
+pkgname = mofilereader
+
