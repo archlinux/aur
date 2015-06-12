@@ -1,0 +1,13 @@
+diff --git a/src/policy.c b/src/policy.c
+index 74afc28..2163c48 100644
+--- a/src/policy.c
++++ b/src/policy.c
+@@ -554,7 +554,7 @@ int device_removable_silent(const char * device)
+ 	    blockdevpath, whitelisted_bus);
+     }
+     else
+-      debug("Device %s does not belong to any whitelisted bus\n");
++      debug("Device %s does not belong to any whitelisted bus\n", device);
+   } 
+   return removable;
+ }

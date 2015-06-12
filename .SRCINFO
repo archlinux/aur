@@ -1,0 +1,25 @@
+pkgbase = pmount
+	pkgdesc = mount removable devices as normal user
+	pkgver = 0.9.23
+	pkgrel = 12
+	url = http://pmount.alioth.debian.org/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL2
+	makedepends = intltool
+	depends = sysfsutils>=2.0.0-1
+	depends = util-linux
+	backup = etc/pmount.allow
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/pmount_0.9.23.orig.tar.bz2
+	source = https://anonscm.debian.org/cgit/pmount/pmount-debian.git/plain/debian/completion/pmount
+	source = fix-pmount-segfault.diff
+	md5sums = db19f5bf3151b1b41705ec7bafa439d3
+	md5sums = 224f24127f8ab3605de8b9bcb433882f
+	md5sums = b66c2def19476b8e6945c28629b692df
+	sha256sums = db38fc290b710e8e9e9d442da2fb627d41e13b3ee80326c15cc2595ba00ea036
+	sha256sums = 2f3983432533d453cb1217b8e6804264e22fa689a0e73a2a4d8d11f0b704bacc
+	sha256sums = cd1739e70cd4e195d166b7a32a45cbfa6abd1d04f2ddb8f159ef8b5f62142114
+
+pkgname = pmount
+
