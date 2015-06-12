@@ -1,0 +1,18 @@
+pkgbase = perl-gnome2-print
+	pkgdesc = Perl wrappers for the Gnome Print utilities.
+	pkgver = 1.000
+	pkgrel = 3
+	url = http://search.cpan.org/~EBASSI/Gnome2-Print
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = libgnomeprintui
+	depends = perl-extutils-depends
+	depends = perl-extutils-pkgconfig
+	options = !emptydirs
+	source = http://www.cpan.org/authors/id/E/EB/EBASSI/Gnome2-Print-1.000.tar.gz
+	md5sums = 66578c2ffaebbe035a0735e65ad71c3f
+
+pkgname = perl-gnome2-print
+
