@@ -1,0 +1,14 @@
+# mkinitcpio preset file for the 'linux' package
+
+ALL_config="/etc/mkinitcpio.conf"
+ALL_kver="/boot/vmlinuz-linux-drm-intel-nightly"
+
+PRESETS=('default' 'fallback')
+
+#default_config="/etc/mkinitcpio.conf"
+default_image="/boot/initramfs-linux-drm-intel-nightly.img"
+#default_options=""
+
+#fallback_config="/etc/mkinitcpio.conf"
+fallback_image="/boot/initramfs-linux-drm-intel-nightly-fallback.img" 
+fallback_options="-S autodetect"
