@@ -1,0 +1,14 @@
+pkgbase = miscfiles
+	pkgdesc = The GNU Miscfiles collection. Includes the Webster's Second International English wordlist and appendix English wordlist.
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://www.gnu.org/software/miscfiles/
+	install = miscfiles.install
+	arch = any
+	license = GPL
+	depends = util-linux
+	source = ftp://gnu.mirrorcatalogs.com/gnu/miscfiles/miscfiles-1.5.tar.gz
+	md5sums = d80bc60eb1eef394da46c794e5236f07
+
+pkgname = miscfiles
+

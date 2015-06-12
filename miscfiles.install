@@ -1,0 +1,18 @@
+
+post_install () {
+  if [ ! -L /usr/share/dict/words ] ; then
+    pushd /usr/share/dict > /dev/null 2>&1
+    ln -s ./web2 words
+    popd > /dev/null 2>&1
+  fi
+}
+
+post_upgrade () {
+  post_install $1
+}
+
+post_remove () {
+  if [ -L /usr/share/dict/words -a `readlink -f /usr/share/dict/words` = "/usr/share/dict/web2" ] ; then
+    rm -f /usr/share/dict/words
+  fi
+}
