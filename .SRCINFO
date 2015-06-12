@@ -1,0 +1,15 @@
+pkgbase = ropper
+	pkgdesc = Show information about binary files and find gadgets to build rop chains for different architectures
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/sashs/Ropper
+	arch = any
+	license = GPL2
+	makedepends = python-setuptools
+	depends = python-capstone
+	depends = sqlite
+	source = ropper-1.5.1.tar.gz::https://github.com/sashs/Ropper/archive/v1.5.1.tar.gz
+	sha512sums = f8a7b79d63171299e34581940e05c5a427dfdc5a430cb1ecdba94b27381e953628bdd8d5f3869d43b9f219ef005985c2a7f1e7f8b05c84a9590cc0c50b3a503a
+
+pkgname = ropper
+
