@@ -1,8 +1,8 @@
 # Maintainer: Victor Dmitriyev <mrvvitek@gmail.com>
 
 pkgname=scilab-git
-pkgver=5.5.1.124.gfaf2372
-pkgrel=2
+pkgver=5.5.1.270.g5598095
+pkgrel=1
 pkgdesc='A scientific software package for numerical computations'
 arch=('i686' 'x86_64')
 url="http://www.scilab.org/"
@@ -14,7 +14,9 @@ depends=(
 'blas'
 'lapack'
 'arpack'
-'java-runtime' 'java-flexdock' 'jogl>=2.2.4' 'scirenderer' 'jrosetta' 'java-commons-logging' 'javahelp2' 'jlatexmath' 'jlatexmath-fop' 'jgraphx' 'fop' 'fop-hyph' 'jeuclid-core' 'java-batik' 'java-xmlgraphics-commons'
+'java-runtime' 'java-flexdock' 'scirenderer' 'jrosetta' 'java-commons-logging' 'javahelp2' 'jlatexmath' 'jlatexmath-fop' 'jgraphx' 'fop' 'fop-hyph' 'jeuclid-core' 'java-xmlgraphics-commons'
+'jogl2.2.4'
+'java-batik1.7'
 'tcl' 'tk'
 'saxon-he'
 'gettext' 'pvm' 'fftw' 'libmatio' 'umfpack'
