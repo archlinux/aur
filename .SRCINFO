@@ -1,0 +1,20 @@
+pkgbase = photocrypt-git
+	pkgdesc = A text-to-image steganography tool
+	pkgver = 0.6.r1.gf7d0927
+	pkgrel = 1
+	url = https://github.com/munikarmanish/photocrypt
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = opencv
+	makedepends = gtkmm
+	makedepends = openssl
+	provides = photocrypt
+	conflicts = photocrypt
+	source = git+https://github.com/munikarmanish/photocrypt
+	source = photocrypt.desktop
+	sha256sums = SKIP
+	sha256sums = 0614b31b3a1e6e80c737c6711a983be6889e70f78374318b4848f23442cd6801
+
+pkgname = photocrypt-git
+
