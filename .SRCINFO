@@ -1,0 +1,13 @@
+pkgbase = dex2jar
+	pkgdesc = Tools to work with android .dex and java .class files
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://sourceforge.net/projects/dex2jar/
+	arch = any
+	license = Apache
+	depends = java-runtime
+	source = http://sourceforge.net/projects/dex2jar/files/dex2jar-2.0.zip
+	sha1sums = 9df351a67db5f327fb3726bb7b5c795029547301
+
+pkgname = dex2jar
+
