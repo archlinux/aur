@@ -1,0 +1,28 @@
+pkgbase = elmerfem-git
+	pkgdesc = Simulation tool for CFD, FEM, electromagnetics, heat transfer and others featuring a PDE solver.
+	pkgver = 20150611.25b81fc
+	pkgrel = 1
+	url = http://www.csc.fi/english/pages/elmer
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gcc-fortran
+	makedepends = cmake
+	depends = qwt
+	depends = vtk5
+	depends = suitesparse
+	depends = arpack
+	depends = glu
+	depends = qtwebkit
+	depends = tk
+	provides = elmerfem
+	conflicts = elmer_umfpack
+	conflicts = elmerfem-svn
+	options = !emptydirs
+	options = !makeflags
+	source = git+https://github.com/ElmerCSC/elmerfem.git
+	sha256sums = SKIP
+
+pkgname = elmerfem-git
+
