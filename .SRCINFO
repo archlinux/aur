@@ -1,0 +1,14 @@
+pkgbase = staden-io_lib
+	pkgdesc = A fully developed set of DNA sequence assembly (Gap4), editing and analysis tools (Spin) for Unix, Linux, MacOSX and MS Windows. Library files.
+	pkgver = 1.13.3
+	pkgrel = 1
+	url = http://staden.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = curl
+	source = http://downloads.sourceforge.net/project/staden/io_lib/1.13.3/io_lib-1.13.3.tar.gz
+	md5sums = 819393d28cb0a8606242e5a8445f6ac1
+
+pkgname = staden-io_lib
+
