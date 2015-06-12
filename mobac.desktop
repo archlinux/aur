@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Mobile Atlas Creator
+Comment=Offline atlas creator for GPS handhels and cell phone applications
+Exec=mobac
+Icon=mobac
+Categories=Education;Geography;

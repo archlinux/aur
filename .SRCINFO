@@ -1,0 +1,22 @@
+pkgbase = mobac-svn
+	pkgdesc = application that creates atlases for the J2ME application TrekBuddy
+	pkgver = 2021
+	pkgrel = 1
+	url = http://mobac.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = apache-ant
+	makedepends = sed
+	makedepends = subversion
+	makedepends = java-environment
+	depends = java-runtime
+	provides = mobac
+	conflicts = mobac
+	source = mobac.desktop
+	source = directories.ini
+	md5sums = 78a831bdc101f859138700f7e61ff148
+	md5sums = eacac8afe131dda257e5d3dfff6c6ac5
+
+pkgname = mobac-svn
+
