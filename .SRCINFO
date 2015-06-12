@@ -1,0 +1,19 @@
+pkgbase = rms-pics
+	pkgdesc = Download all photos from http://stallman.org/photos/
+	pkgver = 2
+	pkgrel = 1
+	url = https://github.com/maandree/rms-pics
+	arch = any
+	license = custom:GNUAllPermissive
+	makedepends = make
+	makedepends = coreutils
+	depends = bash
+	depends = coreutils
+	depends = wget
+	depends = grep
+	depends = sed
+	source = https://github.com/maandree/rms-pics/archive/2.tar.gz
+	sha256sums = 01ebb3543d4e4625ec5027e290f5371aed77bd8483f324453a1b730c777e5bec
+
+pkgname = rms-pics
+
