@@ -1,0 +1,16 @@
+pkgbase = vim-fakeclip
+	pkgdesc = Pseudo X11-clipboard / screen / tmux register
+	pkgver = 0.2.10
+	pkgrel = 1
+	url = http://www.vim.org/scripts/script.php?script_id=2098
+	install = vimdoc.install
+	arch = i686
+	arch = x86_64
+	groups = vim-plugins
+	license = MIT
+	depends = vim
+	source = vim-fakeclip.zip::http://www.vim.org/scripts/download_script.php?src_id=17281
+	md5sums = c9ae69effaf8adada8b5db4b216e8072
+
+pkgname = vim-fakeclip
+
