@@ -1,0 +1,18 @@
+pkgbase = jd-gui
+	pkgdesc = A standalone graphical utility that displays Java source codes of .class files
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://jd.benow.ca/
+	arch = any
+	license = GPL3
+	makedepends = gradle
+	depends = java-runtime
+	provides = jd-gui
+	conflicts = jd-gui-bin
+	source = https://github.com/java-decompiler/jd-gui/archive/v1.1.0.tar.gz
+	md5sums = 0309bb3aaf57b734a4f6d67d2ecfe4df
+	sha1sums = e6ffeb063d668c66c8a490345291139091d642e9
+	sha256sums = 1463e736da3d2f4c7b2cf7a8d0374f3956f770ca1254069510efcb7a60409826
+
+pkgname = jd-gui
+
