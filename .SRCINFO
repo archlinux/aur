@@ -1,0 +1,25 @@
+pkgbase = krandom
+	pkgdesc = Keccak-based userspace pseudorandom number generator
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/maandree/krandom
+	install = krandom.install
+	arch = i686
+	arch = x86_64
+	license = AGPL3
+	makedepends = libkeccak
+	makedepends = argparser
+	makedepends = glibc
+	makedepends = auto-auto-complete
+	makedepends = texinfo
+	makedepends = gcc
+	makedepends = make
+	makedepends = coreutils
+	depends = libkeccak
+	depends = argparser
+	depends = glibc
+	source = https://github.com/maandree/krandom/archive/1.2.tar.gz
+	sha256sums = 7aa622a9d456b846f589fd4e47c926559294248db19b30538e5fc550e842bac5
+
+pkgname = krandom
+
