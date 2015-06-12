@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Grappling Hook (demo)
+Comment=first-person action puzzle/platform game
+Exec=grappling-hook-demo
+Categories=Game;ActionGame;

@@ -1,0 +1,20 @@
+pkgbase = grappling_hook_demo
+	pkgdesc = first-person action/puzzle game (demo)
+	pkgver = 1
+	pkgrel = 3
+	url = http://ghook.speedrungames.com/
+	arch = i686
+	license = custom:EULA
+	depends = java-runtime
+	depends = openal
+	depends = libxrandr
+	depends = libxcursor
+	conflicts = grappling_hook
+	options = !strip
+	source = http://ghook.speedrungames.com/download/GrapplingHook_Demo.tar.gz
+	source = grappling_hook_demo.desktop
+	md5sums = 70570ddd282f569144c542acc134d861
+	md5sums = c638bf71376733da5a9551abbd8a33f6
+
+pkgname = grappling_hook_demo
+
