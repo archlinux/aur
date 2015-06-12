@@ -1,6 +1,6 @@
-diff -ruN dlib-18.15/dlib/cmake dlib-18.15-fixed/dlib/cmake
---- dlib-18.15/dlib/cmake	2015-05-08 04:39:21.000000000 +0800
-+++ dlib-18.15-fixed/dlib/cmake	2015-05-08 17:08:26.328545784 +0800
+diff -ruN dlib-18.16/dlib/cmake dlib-18.16-fixed/dlib/cmake
+--- dlib-18.16/dlib/cmake	2015-06-04 08:15:45.000000000 +0800
++++ dlib-18.16-fixed/dlib/cmake	2015-06-12 09:59:41.793632173 +0800
 @@ -16,7 +16,7 @@
      # By default, g++ won't warn or error if you forget to return a value in a
      # function which requires you to do so.  This option makes it give a warning
@@ -10,9 +10,9 @@ diff -ruN dlib-18.15/dlib/cmake dlib-18.15-fixed/dlib/cmake
  endif()
  
  # Setup some options to allow a user to enable SSE and AVX instruction use.  
-diff -ruN dlib-18.15/dlib/cmake_find_blas.txt dlib-18.15-fixed/dlib/cmake_find_blas.txt
---- dlib-18.15/dlib/cmake_find_blas.txt	2015-05-08 04:39:21.000000000 +0800
-+++ dlib-18.15-fixed/dlib/cmake_find_blas.txt	2015-05-08 17:08:26.331879117 +0800
+diff -ruN dlib-18.16/dlib/cmake_find_blas.txt dlib-18.16-fixed/dlib/cmake_find_blas.txt
+--- dlib-18.16/dlib/cmake_find_blas.txt	2015-06-04 08:15:45.000000000 +0800
++++ dlib-18.16-fixed/dlib/cmake_find_blas.txt	2015-06-12 09:59:41.793632173 +0800
 @@ -261,6 +261,89 @@
      endif()
  
@@ -103,9 +103,9 @@ diff -ruN dlib-18.15/dlib/cmake_find_blas.txt dlib-18.15-fixed/dlib/cmake_find_b
  endif()
  
  
-diff -ruN dlib-18.15/dlib/CMakeLists.txt dlib-18.15-fixed/dlib/CMakeLists.txt
---- dlib-18.15/dlib/CMakeLists.txt	2015-05-08 04:39:21.000000000 +0800
-+++ dlib-18.15-fixed/dlib/CMakeLists.txt	2015-05-08 17:08:26.331879117 +0800
+diff -ruN dlib-18.16/dlib/CMakeLists.txt dlib-18.16-fixed/dlib/CMakeLists.txt
+--- dlib-18.16/dlib/CMakeLists.txt	2015-06-04 08:15:45.000000000 +0800
++++ dlib-18.16-fixed/dlib/CMakeLists.txt	2015-06-12 09:59:41.793632173 +0800
 @@ -227,6 +227,7 @@
           if (PNG_FOUND AND LIBPNG_IS_GOOD)
              include_directories(${PNG_INCLUDE_DIR})

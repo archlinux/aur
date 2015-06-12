@@ -1,9 +1,0 @@
-post_install() {
-    echo "*****************************************"
-    echo "** The cmake file has been modified to **"
-    echo "** work with the pre-build library.    **"
-    echo "** The original file has been renamed  **"
-    echo "** to cmake.orig                       **"
-    echo "*****************************************"
-}
-
