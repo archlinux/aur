@@ -1,0 +1,14 @@
+pkgbase = litmus
+	pkgdesc = WebDAV server protocol compliance test suite
+	pkgver = 0.13
+	pkgrel = 3
+	url = http://www.webdav.org/neon/litmus/
+	arch = any
+	license = GPL
+	depends = neon>=0.26
+	provides = litmus
+	source = http://www.webdav.org/neon/litmus/litmus-0.13.tar.gz
+	md5sums = 7c081e182214e771bc615232ef475b00
+
+pkgname = litmus
+
