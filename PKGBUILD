@@ -14,7 +14,11 @@ conflicts=('python-xlib')
 source=("git+https://github.com/LiuLang/python3-xlib.git")
 md5sums=('SKIP')
 
-
+pkgver() {
+  cd "${_pkgname}"
+  git describe --tags | sed 's/^v//;s/-/./g'
+}
+    
 build() {
   cd "${srcdir}/${_gitname}"
   python3 setup.py build
