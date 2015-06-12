@@ -1,0 +1,14 @@
+pkgbase = trophy
+	pkgdesc = A 2D car racing action game with shooting and dropping bombs
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = http://trophy.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = clanlib10
+	source = http://downloads.sourceforge.net/trophy/trophy-2.0.3.tar.gz
+	md5sums = a16c20ebfd8b852f4fe74a58dc7cdf2f
+
+pkgname = trophy
+
