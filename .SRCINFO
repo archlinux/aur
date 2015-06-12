@@ -1,0 +1,23 @@
+pkgbase = hubicfuse-git
+	pkgdesc = A fuse filesystem to access HubiC cloud storage (git)
+	pkgver = 20150317
+	pkgrel = 1
+	url = https://github.com/TurboGit/hubicfuse
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	makedepends = libxml2
+	makedepends = pkg-config
+	makedepends = make
+	depends = fuse
+	depends = libxml2
+	depends = json-c
+	provides = hubicfuse
+	conflicts = hubicfuse
+	source = git+https://github.com/TurboGit/hubicfuse.git
+	sha256sums = SKIP
+
+pkgname = hubicfuse-git
+
