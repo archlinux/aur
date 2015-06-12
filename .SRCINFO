@@ -1,0 +1,16 @@
+pkgbase = binfmt-support
+	pkgdesc = register interpreters for various binary formats
+	pkgver = 2.1.5
+	pkgrel = 1
+	url = http://packages.debian.org/en/sid/binfmt-support
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libpipeline
+	source = http://ftp.de.debian.org/debian/pool/main/b/binfmt-support/binfmt-support_2.1.5.orig.tar.gz
+	source = binfmt-support.service
+	md5sums = 13e241cfd5571c9a2100baf9ab4aedc9
+	md5sums = 72df6ac607ebfe9eface932b76b66291
+
+pkgname = binfmt-support
+
