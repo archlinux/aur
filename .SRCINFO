@@ -1,0 +1,21 @@
+pkgbase = redis-dns-git
+	pkgdesc = A gevent redis based DNS server with dyndns like API (forked from https://github.com/coagentpai/redis-dns)
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/rains31/redis-dns
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = redis
+	depends = python2-daemon
+	depends = python2-dnspython
+	depends = python2-gevent
+	depends = python2-redis
+	provides = redis-dns
+	conflicts = redis-dns
+	source = git+https://github.com/rains31/redis-dns.git
+	sha1sums = SKIP
+
+pkgname = redis-dns-git
+
