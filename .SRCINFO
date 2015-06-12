@@ -1,0 +1,34 @@
+pkgbase = ncbi-toolkit
+	pkgdesc = Applications, scripts and C++ libraries for the analysis of biological data
+	pkgver = 9.0.0
+	pkgrel = 1
+	url = http://www.ncbi.nlm.nih.gov/books/NBK7160/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = autoconf
+	depends = python2
+	depends = pcre
+	depends = sqlite
+	depends = lzo2
+	depends = libtiff
+	depends = giflib
+	depends = libxpm
+	depends = libmysqlclient
+	depends = libpng
+	depends = gnutls
+	depends = libxml2
+	depends = libxslt
+	optdepends = fltk
+	optdepends = wxgtk
+	optdepends = db48
+	optdepends = fcgi
+	provides = blast+-bin
+	conflicts = blast+-bin
+	source = ftp://ftp.ncbi.nlm.nih.gov/toolbox/ncbi_tools++/ARCHIVE/9_0_0/ncbi_cxx--9_0_0.tar.gz
+	source = LICENSE
+	md5sums = 46cbd232e024690ae617d1c44f3380b4
+	md5sums = 344b3873e649094cf2dbaac7b55cafbc
+
+pkgname = ncbi-toolkit
+
