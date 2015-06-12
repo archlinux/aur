@@ -1,0 +1,21 @@
+pkgbase = andyetitmoves-demo
+	pkgdesc = physics-based platform game (demo)
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = http://www.andyetitmoves.net/
+	arch = i686
+	arch = x86_64
+	license = custom:shareware
+	depends = mesa
+	depends = libxft
+	depends = sdl_image
+	depends = libtheora
+	depends = libvorbis
+	depends = openal
+	depends = libpng12
+	options = !strip
+	source = andyetitmovesdemo.desktop
+	md5sums = 32794af11a18207c0fc1ce5fbd26e30c
+
+pkgname = andyetitmoves-demo
+
