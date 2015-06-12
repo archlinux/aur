@@ -1,0 +1,14 @@
+pkgbase = pbf2osm-git
+	pkgdesc = tool to convert pbf to osm
+	pkgver = 20120318
+	pkgrel = 1
+	url = http://git.openstreetmap.nl/index.cgi/pbf2osm.git/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	depends = protobuf-c
+	depends = bzip2
+
+pkgname = pbf2osm-git
+
