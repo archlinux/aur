@@ -1,0 +1,43 @@
+pkgbase = seafile-server
+	pkgdesc = Next-generation open source cloud storage with advanced features on privacy protection and teamwork. (Server components, without seahub)
+	pkgver = 4.2.2
+	pkgrel = 1
+	url = https://github.com/haiwen/seafile/
+	install = seafile-server.install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL3
+	makedepends = vala
+	makedepends = intltool
+	depends = seafile-shared>=4.2.4
+	depends = python2-mako
+	depends = python2-dateutil
+	depends = python2-webpy
+	depends = python2-pip
+	depends = python2-virtualenv
+	depends = python2-flup
+	depends = python2-six
+	depends = libevhtp-seafile<=1.2.9
+	depends = fuse
+	conflicts = django
+	conflicts = django-rest-framework,
+	conflicts = seafile
+	options = !libtool
+	options = !emptydirs
+	source = https://github.com/haiwen/seafile/archive/v4.2.2-server.tar.gz
+	source = seafile-admin_virtualenv.patch
+	source = seafile-server.install
+	source = seafile-server@.service
+	source = seahub-preupgrade
+	source = 0001-Revert-server-put-pids-folder-out-of-seafile-data.patch
+	sha256sums = 8c131d5fb9f42023aca851fc1d32c4ef774063c3bc751860b88c68a2daceb295
+	sha256sums = 4127284c1d8a4d071925cbcc870ca460fd736e2d53e8ab5806ccf3dd03d5e537
+	sha256sums = 315e753e8f5dc41cc88a0b65c7db68c097d67674c8b466319486da6a749f541f
+	sha256sums = 943ed1bb7d4908b452ce8b7abff26e56f3f24582f6a2cf6e0dc4bf2bffd0a6d8
+	sha256sums = 6a04e89eee4030d06d79f21912c7aa531dfc7beb5d3f51b66ec2bd62f95401ec
+	sha256sums = b1748e826d8e7cccdd825b99864b74dfb5795312f8878d63e9a87105f4382e29
+
+pkgname = seafile-server
+

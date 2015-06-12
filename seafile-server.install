@@ -1,0 +1,82 @@
+## arg 1:  the new package version
+pre_install() {
+	virtualenv2 --system-site-packages /usr/lib/seafile/seafileenv
+	virtualenv2 --relocatable /usr/lib/seafile/seafileenv
+	source /usr/lib/seafile/seafileenv/bin/activate
+
+	pip install pip
+
+	# Dependencies as per
+	# http://manual.seafile.com/build_seafile/server.html
+	pip install "django==1.5.2"
+	pip install "Djblets==0.6.14" --no-deps --allow-external Djblets --allow-unverified Djblets
+	# sqlite3 module should be included in python distribution
+	pip install simplejson
+	# Pillow as replacement for PIL
+	pip install Pillow
+	pip install chardet
+	pip install "gunicorn==18"
+	pip install "django-compressor==1.4"
+	pip install "django-statici18n==1.1.2"
+	pip install six
+	pip install python-dateutil
+
+	# Additional dependencies
+	pip install django-pipeline
+
+	deactivate
+}
+
+#pacman complains if these functions don't exist, so we might as well
+#appease it.
+
+## arg 1:  the new package version
+post_install() {
+  echo " " > /dev/null
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+pre_upgrade() {
+	virtualenv2 --system-site-packages /usr/lib/seafile/seafileenv
+	virtualenv2 --relocatable /usr/lib/seafile/seafileenv
+	source /usr/lib/seafile/seafileenv/bin/activate
+
+	pip install --upgrade pip
+
+	# Dependencies as per
+	# http://manual.seafile.com/build_seafile/server.html
+	pip install --upgrade "django==1.5.2"
+	pip install --upgrade "Djblets==0.6.14" --no-deps --allow-external Djblets --allow-unverified Djblets
+	# sqlite3 module should be included in python distribution
+	pip install --upgrade simplejson
+	# Pillow as replacement for PIL
+	pip install --upgrade Pillow
+	pip install --upgrade chardet
+	pip install --upgrade "gunicorn==18"
+	pip install "django-compressor==1.4"
+	pip install "django-statici18n==1.1.2"
+	pip install --upgrade six
+	pip install --upgrade python-dateutil
+
+	# Additional dependencies
+	pip install --upgrade django-pipeline
+
+	deactivate
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  echo " " > /dev/null
+}
+
+## arg 1:  the old package version
+pre_remove() {
+  echo " " > /dev/null
+}
+
+## arg 1:  the old package version
+post_remove() {
+	rm -rf /usr/lib/seafile/seafileenv
+}
