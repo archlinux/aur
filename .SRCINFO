@@ -1,0 +1,18 @@
+pkgbase = glslhacker
+	pkgdesc = A free cross-platform demotool for creating demos.
+	pkgver = 0.8.0.0
+	pkgrel = 2
+	url = http://www.geeks3d.com/glslhacker/
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	depends = fmodex
+	depends = ffmpeg-compat-55
+	depends = ffmpeg-compat
+	depends = freeimage
+	depends = glu
+	source = http://www.ozone3d.net/glslhacker/dl/GLSLHacker_DEV_linux64.zip
+	md5sums = 983cbd359cb56c696d40d2011b3deec0
+
+pkgname = glslhacker
+
