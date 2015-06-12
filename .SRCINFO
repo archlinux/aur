@@ -1,0 +1,21 @@
+pkgbase = seafile-client
+	pkgdesc = Seafile is an online file storage and collaboration tool. This is seafile client for synchronizing your local files with seafile server.
+	pkgver = 4.2.4
+	pkgrel = 1
+	url = https://github.com/haiwen/seafile-client/
+	install = seafile-client.install
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	depends = seafile-shared>=4.2.4
+	depends = qt5-base
+	depends = qt5-webkit
+	depends = qt5-tools
+	options = !libtool
+	options = !emptydirs
+	source = https://github.com/haiwen/seafile-client/archive/v4.2.4.tar.gz
+	sha256sums = 49b8c7b2161a8a8fadbc2e2e36a80642d67ba8fd11b975a3f5f391d76de4c9af
+
+pkgname = seafile-client
+
