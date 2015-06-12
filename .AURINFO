@@ -1,0 +1,17 @@
+pkgbase = copasi
+	pkgdesc = COmplex PAthway SImulator for analysis of biochemical networks and their dynamics
+	pkgver = 4.13.87
+	pkgrel = 1
+	url = http://www.copasi.org/
+	install = copasi.install
+	arch = i686
+	arch = x86_64
+	license = Artistic 2.0
+	depends = shared-mime-info
+	depends = qtwebkit
+	depends = glu
+	source = copasi-desktop.tar.gz
+	noextract = copasi-4.13.87.tar.gz
+
+pkgname = copasi
+

@@ -1,0 +1,35 @@
+# utils function is based on virtualbox.install
+utils() {
+  if [ -x usr/bin/update-mime-database ]; then
+    echo ">>> Updating Shared MIME-Info database..."
+    update-mime-database /usr/share/mime
+#    update-mime-database /usr/share/mime > /dev/null 2>&1
+  fi
+
+  if [ -x usr/bin/xdg-icon-resource ]; then
+    echo ">>> Updating desktop icon system..."
+    xdg-icon-resource forceupdate --theme hicolor
+#    xdg-icon-resource forceupdate --theme hicolor > /dev/null 2>&1
+  fi
+
+  if [ -x usr/bin/update-desktop-database ]; then
+    echo ">>> Updating MIME-desktop association cache database..."
+    update-desktop-database
+#    usr/bin/update-desktop-database -q
+  fi
+}
+
+post_install() {
+  utils
+  echo ">>> COPASIDIR environment variable will be set by /etc/profile.d/copasi.sh"
+  echo ">>> You may have to relogin or source it."
+}
+
+post_upgrade() {
+  utils
+}
+
+post_remove() {
+  utils
+}
+
