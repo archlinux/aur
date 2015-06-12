@@ -1,0 +1,18 @@
+pkgbase = xmobar-does-chase-have-a-job-yet
+	pkgdesc = doeschasehaveajobyet.com as an xmobar monitor
+	pkgver = 2
+	pkgrel = 1
+	url = https://github.com/maandree/xmobar-does-chase-have-a-job-yet
+	arch = any
+	license = custom:GNUAllPermissive
+	makedepends = make
+	makedepends = coreutils
+	depends = wget
+	depends = sh
+	depends = grep
+	depends = coreutils
+	source = https://github.com/maandree/xmobar-does-chase-have-a-job-yet/archive/2.tar.gz
+	sha256sums = b896024d5c2d5c5b882c1d03aec545d2ce49f8c107e4bca0fd93a66f91e07ef5
+
+pkgname = xmobar-does-chase-have-a-job-yet
+
