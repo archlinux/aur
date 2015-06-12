@@ -1,0 +1,22 @@
+pkgbase = cmdipc
+	pkgdesc = System V and POSIX IPC from the command line
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/maandree/cmdipc
+	install = cmdipc.install
+	arch = any
+	license = GPL3
+	license = custom:GFDL1.3
+	makedepends = make
+	makedepends = sed
+	makedepends = zip
+	makedepends = texinfo
+	depends = python3
+	depends = python-posix_ipc
+	depends = python-sysv-ipc
+	depends = argparser
+	source = https://github.com/maandree/cmdipc/archive/1.2.1.tar.gz
+	sha256sums = a02a934028d7c0e6b6eb4911bb70b29a01187eee748e571fd71c547086fe30d9
+
+pkgname = cmdipc
+
