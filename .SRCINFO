@@ -1,0 +1,14 @@
+pkgbase = phylip
+	pkgdesc = A collection of programmes for evolutive genetics and inferring phylogenies
+	pkgver = 3.696
+	pkgrel = 1
+	url = http://evolution.genetics.washington.edu/phylip.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	optdepends = java-runtime
+	source = http://evolution.gs.washington.edu/phylip/download/phylip-3.696.tar.gz
+	md5sums = dbe5abc26f6089ead3dba41c2db526ee
+
+pkgname = phylip
+
