@@ -1,13 +1,13 @@
 pkgbase = cc-tool
 	pkgdesc = Support for Texas Instruments CC Debugger
-	pkgver = 0.24
+	pkgver = 0.26
 	pkgrel = 1
 	url = http://sourceforge.net/projects/cctool/
 	arch = x86_64
 	license = GPL
 	depends = boost>=1.34.0
-	source = http://downloads.sourceforge.net/project/cctool/cc-tool-0.24-src.tgz
-	md5sums = 4b95889a60aa8162d1f41ed19bf14f7b
+	source = http://downloads.sourceforge.net/project/cctool/cc-tool-0.26-src.tgz
+	md5sums = 26960676f3e6264e612c299fbf8ec5ea
 
 pkgname = cc-tool
 

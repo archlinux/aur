@@ -1,5 +1,5 @@
 pkgname=cc-tool
-pkgver=0.24
+pkgver=0.26
 pkgrel=1
 pkgdesc="Support for Texas Instruments CC Debugger"
 arch=('x86_64')
@@ -7,7 +7,7 @@ url='http://sourceforge.net/projects/cctool/'
 license=('GPL')
 depends=('boost>=1.34.0')
 source=( "http://downloads.sourceforge.net/project/cctool/$pkgname-$pkgver-src.tgz" )
-md5sums=('4b95889a60aa8162d1f41ed19bf14f7b')
+md5sums=('26960676f3e6264e612c299fbf8ec5ea')
 
 build() {
   cd "$srcdir/cc-tool"
