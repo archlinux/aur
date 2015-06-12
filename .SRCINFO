@@ -1,0 +1,19 @@
+pkgbase = mullerfoto-fotostar_sk
+	pkgdesc = an offline client for uploading and ordering photos at fotolab.sk (aka FotoStar Client)
+	pkgver = 4.6.7
+	pkgrel = 1
+	url = http://www.fotolab.sk/
+	install = mullerfoto.install
+	arch = i686
+	license = custom:eula
+	depends = libx11
+	depends = curl
+	conflicts = mullerfoto-fotostar_de
+	conflicts = mullerfoto-fotostar_cz
+	source = http://dls.photoprintit.de/download/Data/5316/hps/setup_Moj_CEWE_FOTOSVET_46.tgz
+	source = mullerfoto.desktop
+	md5sums = d1f2d5913de2a0652255e3f608c2ec93
+	md5sums = 7d751150ce96432e66a28b4e8fd6aca2
+
+pkgname = mullerfoto-fotostar_sk
+

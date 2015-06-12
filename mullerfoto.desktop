@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=FotoStar Offline Client
+Comment=Offline client for FotoStar service
+Exec=MullerFoto
+Icon=mullerfoto.xpm
+Categories=Graphics;Photography;
