@@ -1,0 +1,16 @@
+pkgbase = cropgui
+	pkgdesc = a simple tool for lossless jpeg cropping
+	pkgver = 0.1.1
+	pkgrel = 5
+	url = http://emergent.unpythonic.net/01235516977
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libjpeg
+	depends = tk
+	depends = python2-imaging
+	source = http://media.unpythonic.net/emergent-files/01248401946/cropgui_0.1.1.tar.gz
+	md5sums = b2919654044ba8b0552c308c4909b95f
+
+pkgname = cropgui
+
