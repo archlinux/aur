@@ -1,0 +1,15 @@
+pkgbase = olpw
+	pkgdesc = Online Planning Worksheets - tool to help with HACMP cluster planning
+	pkgver = 1
+	pkgrel = 2
+	url = http://www-03.ibm.com/systems/power/software/availability/aix/apps/applications.html
+	install = olpw.install
+	arch = i686
+	license = custom:EULA
+	depends = java-runtime
+	depends = bash
+	source = http://www-03.ibm.com/systems/resources/systems_power_software_availability_aix_olpw.zip
+	md5sums = 4d8534e42620f4a9a87d00f303c5bca4
+
+pkgname = olpw
+

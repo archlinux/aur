@@ -1,0 +1,20 @@
+post_install() {
+  echo '--------------------------------------------------'
+  echo 'You *MUST* read and agree to the license stored in'
+  echo '/usr/share/java/olpw/lic.txt before using this sw.'
+  echo '--------------------------------------------------'
+  /bin/true
+}
+
+post_upgrade() {
+/bin/true
+}
+
+pre_remove() {
+/bin/true
+}
+
+op=$1
+shift
+
+$op "$@"
