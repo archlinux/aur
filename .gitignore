@@ -1,3 +1,5 @@
+*.pkg.tar.xz
 pkg
 src
+pixel-dungeon
 remakepkg
