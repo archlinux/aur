@@ -1,0 +1,24 @@
+--- pam_chroot-0.9.2/pam_chroot.c	2012-01-26 10:38:58.254803332 +0100
++++ pam_chroot-0.9.2/pam_chroot.c	2012-01-26 10:39:17.874379096 +0100
+@@ -638,10 +638,8 @@ int _pam_get_chrootdir(const char* user,
+  *  then pass it to this function */
+ int _pam_do_chroot(pam_handle_t *pamh, _opts *opts) {
+   int err,debug;
+-  char *name;
+   char const *user;
+ 
+-  name = NULL;
+   debug = opts->flags & _PAM_OPTS_DEBUG;
+ 
+   err = pam_get_user(pamh, &user, NULL);
+--- pam_chroot-0.9.2/Makefile	2012-01-26 10:48:46.919177650 +0100
++++ pam_chroot-0.9.2/Makefile	2012-01-26 10:48:39.269329003 +0100
+@@ -13,7 +13,7 @@ OUT=pam_chroot.so
+ all:	$(OUT)
+ 
+ %.so: %.o
+-	$(LD) $(LDFLAGS) -o $@ $< -lpam
++	$(LD) $(LDFLAGS) -o $@ $< -lpam -lc -shared
+ 
+ clean:
+ 	rm -f *.o $(OUT)

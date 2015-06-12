@@ -1,0 +1,17 @@
+pkgbase = pam_chroot
+	pkgdesc = allows chroot users
+	pkgver = 0.9.2
+	pkgrel = 3
+	url = http://sourceforge.net/projects/pam-chroot/files/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = pam
+	backup = etc/security/chroot.conf
+	source = http://downloads.sourceforge.net/project/pam-chroot/pam-chroot/v0.9.2/pam_chroot-0.9.2.tar.bz2
+	source = pam_chroot.patch
+	md5sums = 03b224b113fed5f58cca2ca5cde0aa8b
+	md5sums = 5df865a2d3cbd199488fe895616f96c9
+
+pkgname = pam_chroot
+
