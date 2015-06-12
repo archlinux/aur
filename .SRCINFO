@@ -1,0 +1,18 @@
+pkgbase = pythonnet-svn
+	pkgdesc = Call .NET Common Language Runtime (CLR) from Python
+	pkgver = r159
+	pkgrel = 1
+	url = http://pythonnet.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = svn
+	depends = python2
+	depends = mono
+	source = pythonnet-svn::svn+https://pythonnet.svn.sourceforge.net/svnroot/pythonnet/trunk/pythonnet
+	source = pythonnet.patch
+	md5sums = SKIP
+	md5sums = a0f99e5275dbfe8e3a37ceaae9299f5b
+
+pkgname = pythonnet-svn
+

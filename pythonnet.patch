@@ -1,0 +1,72 @@
+diff -ur pythonnet/Makefile pythonnet_patched/Makefile
+--- pythonnet/Makefile	2013-05-10 10:04:31.611567157 +0100
++++ pythonnet_patched/Makefile	2013-05-10 10:04:41.581632786 +0100
+@@ -16,6 +16,7 @@
+ SITEPACKAGES = $(shell $(PYTHON) -c "from distutils.sysconfig import get_python_lib; \
+     print get_python_lib(plat_specific=1, standard_lib=0)")
+ INSTALL=/usr/bin/install -m644
++DESTDIR ?= /
+ # Contributed by VIKAS DHIMAN -  - Thanks, Vikas!
+ ARCH_FULL = $(shell uname -m)
+ ifneq (, $(findstring 86, $(ARCH_FULL)))
+@@ -186,7 +187,7 @@
+ 	$(RUNNER) python.exe
+ 
+ install: all
+-	$(PYTHON) setup.py install
++	$(PYTHON) setup.py install --root=$(DESTDIR)
+ 
+ mkkey:
+ 	$(SN) -k $(KEYFILE)
+diff -ur pythonnet/setup.py pythonnet_patched/setup.py
+--- pythonnet/setup.py	2013-05-10 10:04:26.931536353 +0100
++++ pythonnet_patched/setup.py	2013-05-10 10:04:41.584966141 +0100
+@@ -18,7 +18,7 @@
+ from distutils.core import Extension
+ import subprocess
+ 
+-VERSION = "%i.%i" % sys.version_info[:2] 
++VERSION = "%i.%i" % sys.version_info[:2]
+ 
+ def pkgconfig(*packages, **kw):
+     """From http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/502261
+@@ -58,4 +58,6 @@
+ setup(name="clr",
+     ext_modules = extensions,
+     scripts = ["src/monoclr/clrpython%s" % VERSION],
+-    )
+\ No newline at end of file
++    packages = [""],
++    package_data = { '': ["Python.Runtime.dll", "Python.Runtime.dll.config"] }
++    )
+diff -ur pythonnet/src/monoclr/Makefile pythonnet_patched/src/monoclr/Makefile
+--- pythonnet/src/monoclr/Makefile	2013-05-10 10:04:31.274898275 +0100
++++ pythonnet_patched/src/monoclr/Makefile	2013-05-10 10:04:41.581632786 +0100
+@@ -16,11 +16,11 @@
+ PY_CFLAGS = -I$(shell $(PYTHON) -c "from distutils.sysconfig import get_config_vars; \
+     print get_config_vars('CFLAGS')[0] + ' -I' + get_config_vars('CONFINCLUDEPY')[0]")
+ 
+-MONO_LIBS = $(shell pkg-config --libs mono)		# Was --libs mono
+-MONO_CFLAGS = $(shell pkg-config --cflags mono)	# Was --cflags mono
++MONO_LIBS = $(shell pkg-config --libs mono-2)		# Was --libs mono
++MONO_CFLAGS = $(shell pkg-config --cflags mono-2)	# Was --cflags mono
+ 
+ LIBS = $(MONO_LIBS) $(PY_LIBS)
+-CFLAGS = $(MONO_CFLAGS) $(PY_CFLAGS)
++CFLAGS = $(MONO_CFLAGS) $(PY_CFLAGS) $(shell pkg-config --cflags glib-2.0) -fPIC
+ 
+ all: clr$(BASENAME) $(BASENAME) clr.so
+ 
+diff -ur pythonnet/src/monoclr/pynetinit.c pythonnet_patched/src/monoclr/pynetinit.c
+--- pythonnet/src/monoclr/pynetinit.c	2013-05-10 10:04:31.274898275 +0100
++++ pythonnet_patched/src/monoclr/pynetinit.c	2013-05-10 10:04:41.581632786 +0100
+@@ -37,7 +37,7 @@
+      * if you are planning on using the dllmaps defined on the
+      * system configuration
+      */
+-    //mono_config_parse(NULL);
++    mono_config_parse(NULL);
+ 
+     /* I can't use this call to run the main_thread_handler. The function
+      * runs it in another thread but *this* thread holds the Python
+Only in pythonnet/src/runtime: clrmodule.il
