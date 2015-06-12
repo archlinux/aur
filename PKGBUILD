@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=kipi-plugins-frameworks-git
-pkgver=5.0.0.r10369.d56650d
+pkgver=5.0.0.r10377.5ebbbe7
 pkgrel=1
 pkgdesc="A collection of plugins extending the KDE graphics and image applications as digiKam, Gwenview, and KPhotoalbum. KF5 Frameworks branch (GIT version)"
 url='http://www.digikam.org/sharedlibs'
@@ -20,14 +20,6 @@ pkgver() {
   echo "$(echo ${_ver} | tr ' ' .).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  mkdir -p build
-
-  cd kipi-plugins
-  for i in $(grep -R '<libkdcraw/' | cut -d ':' -f1 ); do sed 's|<libkdcraw/|<kdcraw/|g' -i "${i}"; done
-  for i in $(grep -R '<libkipi/interface' | cut -d ':' -f1 ); do sed 's|<libkipi/|<kipi/|g' -i "${i}"; done
-}
-
 build() {
   cd build
   cmake ../kipi-plugins \
@@ -42,4 +34,3 @@ build() {
 package() {
   make -C build DESTDIR=${pkgdir} install
 }
-

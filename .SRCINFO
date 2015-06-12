@@ -1,6 +1,6 @@
 pkgbase = kipi-plugins-frameworks-git
 	pkgdesc = A collection of plugins extending the KDE graphics and image applications as digiKam, Gwenview, and KPhotoalbum. KF5 Frameworks branch (GIT version)
-	pkgver = 5.0.0.r10369.d56650d
+	pkgver = 5.0.0.r10377.5ebbbe7
 	pkgrel = 1
 	url = http://www.digikam.org/sharedlibs
 	install = kipi-plugins-frameworks-git.install
