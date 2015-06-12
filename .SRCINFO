@@ -1,6 +1,6 @@
 pkgbase = synnefo-git
 	pkgdesc = A Qt based front end for the ICC based Oyranos Color Management System. (GIT version)
-	pkgver = 0.9.5.164.g3ea8955
+	pkgver = 1.1.0.r167.cf5e48f
 	pkgrel = 1
 	url = http://www.oyranos.org/synnefo/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = synnefo-git
 	makedepends = cmake
 	makedepends = oyranos-git
 	conflicts = synnefo
-	source = synnefo::git+https://gitorious.org/synnefo/bekus-synnefo.git
+	source = synnefo::git+https://github.com/oyranos-cms/Synnefo.git
 	source = COPYING
 	sha1sums = SKIP
 	sha1sums = 37cb5e34ad08d853124a42d06e273b2c6f33fe4b
