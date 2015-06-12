@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Galcon Fusion (demo)
+Comment=galactic arcade-strategy game
+Exec=gfusion-demo
+Icon=gfusion-demo
+Categories=Game;StrategyGame;
