@@ -1,0 +1,12 @@
+pkgbase = sisiya-webui-images
+	pkgdesc = The SisIYA daemon.
+	pkgver = 0.6.31
+	pkgrel = 1
+	url = http://www.sisiya.org
+	arch = any
+	license = GPL2
+	source = http://sourceforge.net/projects/sisiya/files/sisiya/0.6.31/pacman/sisiya-webui-images-0.6.31.tar.gz
+	md5sums = 11d25daa094a3451d8577aa2faab8276
+
+pkgname = sisiya-webui-images
+

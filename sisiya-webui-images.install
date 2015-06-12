@@ -1,0 +1,4 @@
+## arg 1:  the new package version
+post_install() {
+	chown -R http /var/lib/sisiya-webui-images
+}
