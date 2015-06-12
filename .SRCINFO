@@ -1,0 +1,19 @@
+pkgbase = avida
+	pkgdesc = A software platform to study evolution of digital organisms
+	pkgver = 2.12.4
+	pkgrel = 1
+	url = http://avida.devosoft.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = custom
+	makedepends = cmake
+	depends = gcc-libs
+	depends = ncurses
+	source = http://downloads.sourceforge.net/avida/avida-2.12.4-src.tar.gz
+	source = avida.patch
+	md5sums = db4a687190f9fcc8b8ae84613d536d0a
+	md5sums = a7ac844269d3f169f53e8e30005755f5
+
+pkgname = avida
+

@@ -1,0 +1,20 @@
+--- avida-2.12.3-src.orig/avida-core/source/analyze/cAnalyzeTreeStats_Gamma.cc	2012-02-02 22:50:29.000000000 +0600
++++ avida-2.12.3-src/avida-core/source/analyze/cAnalyzeTreeStats_Gamma.cc	2012-05-08 19:32:18.793044457 +0600
+@@ -27,6 +27,7 @@
+ 
+ #include <math.h>
+ #include <iostream>
++#include <cstdlib>
+ 
+ using namespace std;
+ 
+--- avida-2.12.3-src.orig/avida-core/source/tools/tArray.h	2012-02-02 22:50:29.000000000 +0600
++++ avida-2.12.3-src/avida-core/source/tools/tArray.h	2012-05-08 19:33:04.783042892 +0600
+@@ -24,6 +24,7 @@
+ #define tArray_h
+ 
+ #include <cassert>
++#include <cstdlib>
+ 
+ #ifndef NULL
+ #define NULL 0
