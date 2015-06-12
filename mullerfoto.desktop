@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=CeWe Photoshow
+Name[cs]=CeWe prezentace fotografií
+Comment=View/edit your photos before uploading them to FotoStar
+Exec=MullerFoto
+Icon=fotoschau.xpm
+Categories=Graphics;Photography;

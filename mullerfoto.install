@@ -1,0 +1,26 @@
+post_install() {
+  echo '--------------------------------------------------'
+  echo 'You *MUST* read and agree to the license stored in'
+  echo '/usr/share/mullerfoto-fotostar_cz/EULA.txt before'
+  echo 'you start using it'
+  echo '--------------------------------------------------'
+
+  chgrp camera /usr/share/mullerfoto-fotostar_cz
+  chmod 775 /usr/share/mullerfoto-fotostar_cz
+
+  echo "Add user to group camera to be able to use FotoStar."
+  /bin/true
+}
+
+post_upgrade() {
+/bin/true
+}
+
+pre_remove() {
+/bin/true
+}
+
+op=$1
+shift
+
+$op "$@"

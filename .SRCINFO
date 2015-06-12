@@ -1,0 +1,21 @@
+pkgbase = mullerfoto-fotostar_cz
+	pkgdesc = an offline client for uploading and ordering photos at fotolab.cz (aka FotoStar Client)
+	pkgver = 4.6.8
+	pkgrel = 2
+	url = http://foto-sberna.fotolab.cz/objednat-foto-komfortni-software-zdarma.html
+	install = mullerfoto.install
+	arch = i686
+	license = custom:eula
+	depends = libx11
+	depends = curl
+	conflicts = mullerfoto-fotostar_de
+	conflicts = mullerfoto-fotostar_sk
+	source = http://dls.photoprintit.de/download/Data/4860/hps/setup_Fotolab_Fotosvet_4.tgz
+	source = mullerfoto.desktop
+	source = fotosvet.desktop
+	md5sums = a7a70e128056fa8ebd0a6a6104488d3b
+	md5sums = de6d7b4e78b7e9ff17dad0631e373e9e
+	md5sums = 442801b82feee66d61aa796d573b3d82
+
+pkgname = mullerfoto-fotostar_cz
+

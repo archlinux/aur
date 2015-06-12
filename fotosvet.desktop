@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=CeWe FotoLab Fotosvet4
+Comment=Make an order at FotoLab using this offline client
+Exec=Fotosvet4
+Icon=mullerfoto.xpm
+Categories=Graphics;Photography;
