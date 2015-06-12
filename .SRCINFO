@@ -1,0 +1,19 @@
+pkgbase = klish
+	pkgdesc = A modular framework for implementing a CISCO-like CLI
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = http://libcode.org/projects/klish
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = gcc-libs
+	depends = zlib
+	depends = expat
+	provides = clish
+	conflicts = clish
+	options = !libtool
+	source = http://libcode.org/attachments/download/55/klish-2.0.4.tar.xz
+	md5sums = f71d9948705da50094d7b7129fe39275
+
+pkgname = klish
+
