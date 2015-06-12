@@ -1,0 +1,27 @@
+pkgbase = owncloud-client-git
+	pkgdesc = ownCloud client based on mirall
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = http://owncloud.org/
+	install = owncloud-client-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = sqlite3
+	depends = neon
+	depends = qtkeychain
+	depends = qtwebkit
+	provides = mirall
+	provides = mirall-git
+	provides = owncloud-client
+	conflicts = mirall-git
+	conflicts = owncloud-client
+	conflicts = owncloud-client-ngs
+	options = !strip
+	backup = etc/owncloud-client-git/sync-exclude.lst
+	source = mirall::git+https://github.com/owncloud/mirall.git
+	md5sums = SKIP
+
+pkgname = owncloud-client-git
+
