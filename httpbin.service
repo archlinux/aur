@@ -1,0 +1,13 @@
+[Unit]
+Description=httpbin request/response testing framework
+After=network.target
+
+[Service]
+User=nobody
+Restart=always
+Environment=PATH=/opt/httpbin/bin
+EnvironmentFile=-/etc/conf.d/httpbin
+ExecStart=/opt/httpbin/bin/gunicorn --log-level=error --bind=$HOST:$PORT httpbin:app
+
+[Install]
+WantedBy=multi-user.target

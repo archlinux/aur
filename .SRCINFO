@@ -1,0 +1,21 @@
+pkgbase = httpbin
+	pkgdesc = HTTP request and response service.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/httpbin
+	arch = any
+	license = ISC
+	makedepends = python-pip
+	makedepends = python-setuptools
+	makedepends = python-virtualenv
+	depends = python
+	options = !strip
+	source = https://pypi.python.org/packages/3.4/h/httpbin/httpbin-0.2.0-py2.py3-none-any.whl
+	source = httpbin.service
+	source = httpbin.confd
+	md5sums = 66a4290ddf8f0111253b98d851c5460f
+	md5sums = 921f3b939d3370d405539b9bafc075af
+	md5sums = 418aea521325ca495317590192d505a0
+
+pkgname = httpbin
+
