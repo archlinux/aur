@@ -1,0 +1,19 @@
+pkgbase = util-say
+	pkgdesc = Tools for creating ponies for cowsay and cowsay-like programs
+	pkgver = 3.2.1
+	pkgrel = 1
+	url = https://github.com/maandree/util-say
+	arch = any
+	license = GPL3
+	makedepends = java-environment>=6
+	makedepends = bash
+	depends = java-runtime>=6
+	optdepends = imagemagick: allows imgsrcrecovery to read frames in GIF files
+	optdepends = perl: required for cowsay import support
+	provides = util-say
+	conflicts = util-say
+	source = https://github.com/maandree/util-say/archive/3.2.1.tar.gz
+	sha256sums = 38539e74d97afb719ad71f694ff08fc024ae71a33f60dd5d94e163d5bc66e98f
+
+pkgname = util-say
+
