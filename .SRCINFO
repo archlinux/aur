@@ -1,0 +1,15 @@
+pkgbase = tcoffee
+	pkgdesc = An alignment tool for Protein, DNA and RNA sequences
+	pkgver = 11.00.8cbe486
+	pkgrel = 1
+	url = http://www.tcoffee.org/Projects/tcoffee/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = gcc-libs
+	depends = gcc-fortran
+	source = http://www.tcoffee.org/Packages/Stable/Latest/T-COFFEE_distribution_Version_11.00.8cbe486.tar.gz
+	md5sums = bd91485c06eda4f2ffcb61542d3ce302
+
+pkgname = tcoffee
+
