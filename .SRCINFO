@@ -1,0 +1,19 @@
+pkgbase = opencl-headers12-svn
+	pkgdesc = OpenCL 1.2 (Open Computing Language) header files (svn version)
+	pkgver = 1.2.r31481
+	pkgrel = 1
+	epoch = 1
+	url = http://www.khronos.org/registry/cl/
+	arch = any
+	license = custom
+	makedepends = subversion
+	optdepends = libcl: OpenCL library
+	provides = opencl-headers,
+	provides = opencl-headers12
+	conflicts = opencl-headers,
+	conflicts = opencl-headers12
+	source = opencl-headers12-svn::svn+https://cvs.khronos.org/svn/repos/registry/trunk/public/cl/api/1.2/
+	md5sums = SKIP
+
+pkgname = opencl-headers12-svn
+
