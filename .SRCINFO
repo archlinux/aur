@@ -1,0 +1,14 @@
+pkgbase = vim-repeat
+	pkgdesc = Use the repeat command (.) with supported plugins
+	pkgver = 1.1
+	pkgrel = 2
+	url = http://www.vim.org/scripts/script.php?script_id=2136
+	arch = any
+	groups = vim-plugins
+	license = custom:vim
+	depends = vim
+	source = repeat.zip::http://www.vim.org/scripts/download_script.php?src_id=19285
+	md5sums = 267d8b5621903b64d128b175bd3f521a
+
+pkgname = vim-repeat
+
