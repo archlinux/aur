@@ -1,0 +1,17 @@
+post_install() {
+  /bin/true
+}
+
+post_upgrade() {
+   echo "-- Group games membership is no more a requirement for configuration saving. Configuration is now saved into ~/.racer --"
+/bin/true
+}
+
+pre_remove() {
+/bin/true
+}
+
+op=$1
+shift
+
+$op "$@"

@@ -1,0 +1,14 @@
+pkgbase = racer
+	pkgdesc = 2D car racing game
+	pkgver = 1.1.1
+	pkgrel = 4
+	url = http://hippo.nipax.cz/download.cz.php?id=64
+	install = racer.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	source = http://hippo.nipax.cz/src/racer-1.1.1.tar.gz
+	md5sums = 7f2c8982e3960d0282117b57ac749de1
+
+pkgname = racer
+
