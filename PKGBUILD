@@ -4,8 +4,8 @@
 # Contributor: Sylvain HENRY <hsyl20@yahoo.fr>
 
 pkgname=opencl-headers12-svn
-pkgver=1.2.r31481
-pkgrel=1
+pkgver=1.2.r31482
+pkgrel=2
 epoch=1
 pkgdesc='OpenCL 1.2 (Open Computing Language) header files (svn version)'
 arch=('any')
@@ -13,8 +13,8 @@ url='http://www.khronos.org/registry/cl/'
 license=('custom')
 makedepends=('subversion')
 optdepends=('libcl: OpenCL library')
-provides=('opencl-headers', 'opencl-headers12')
-conflicts=('opencl-headers', 'opencl-headers12')
+provides=('opencl-headers' 'opencl-headers12')
+conflicts=('opencl-headers' 'opencl-headers12')
 source=("$pkgname::svn+https://cvs.khronos.org/svn/repos/registry/trunk/public/cl/api/1.2/")
 md5sums=('SKIP')
 

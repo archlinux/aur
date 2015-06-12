@@ -1,0 +1,4 @@
+*.tar.xz
+opencl-headers12-svn/
+pkg/
+src/
