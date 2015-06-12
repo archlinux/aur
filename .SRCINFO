@@ -1,0 +1,14 @@
+pkgbase = hmmer2
+	pkgdesc = Profile hidden Markov models (profile HMMs) for database searching using statistical descriptions of a sequence family's consensus
+	pkgver = 2.4i
+	pkgrel = 1
+	url = http://hmmer.janelia.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = ftp://selab.janelia.org/pub/software/hmmer/2.4i/hmmer-2.4i.tar.gz
+	md5sums = dab234c87e026ac1de942450750acd20
+
+pkgname = hmmer2
+
