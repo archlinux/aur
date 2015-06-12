@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Aladin
+GenericName=Aladin
+Comment=Aladin is an interactive software sky atlas
+Exec=aladin
+Icon=aladin
+Terminal=false
+Type=Application
+Categories=Application;Sciences;Other;

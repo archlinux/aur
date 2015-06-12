@@ -1,0 +1,21 @@
+pkgbase = aladin
+	pkgdesc = Interactive software sky atlas
+	pkgver = 8.040
+	pkgrel = 1
+	url = http://aladin.u-strasbg.fr/aladin.gml
+	arch = any
+	license = GPL3
+	depends = java-environment
+	depends = sh
+	noextract = Aladin.jar
+	source = http://aladin.u-strasbg.fr/java/download/Aladin.jar
+	source = aladin.run
+	source = aladin.png
+	source = aladin.desktop
+	md5sums = 5211640414b5c9e9921171b804b5f4f5
+	md5sums = 8f5c34afe96b4a3034806ea1b70c8c77
+	md5sums = c79258b73b96c53c98779ae7c2003f31
+	md5sums = 870c25beb85eaf25f78530f52f0fac62
+
+pkgname = aladin
+
