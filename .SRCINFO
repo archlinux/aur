@@ -1,0 +1,15 @@
+pkgbase = gimp-plugin-id-photo
+	pkgdesc = id photo for documents gimp plugin
+	pkgver = 20120611beta
+	pkgrel = 1
+	url = http://gimp-id-photo.ru/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = python2
+	depends = gimp
+	source = http://gimp-id-photo.ru/files/id_photo_BETA_for_GIMP-2.8.x_11_June_2012.zip
+	md5sums = 199971d207e8c9af503d22a6f411d531
+
+pkgname = gimp-plugin-id-photo
+
