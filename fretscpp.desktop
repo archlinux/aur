@@ -1,0 +1,16 @@
+[Desktop Entry]
+Type=Application
+Name=Fretscpp
+Exec=/usr/bin/fretscpp
+Comment=Frets on Fire rewritten in c++
+Comment[pt_BR]=Frets on Fire reescrito em c++
+Icon=/usr/share/games/fretscpp/fretscpp.png
+Terminal=false
+Categories=Game;
+StartupNotify=false
+
+
+
+
+
+

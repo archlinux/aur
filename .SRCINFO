@@ -1,0 +1,25 @@
+pkgbase = fretscpp
+	pkgdesc = Frets on Fire (Free Rhythm Game) - rewritten in C++
+	pkgver = 20130115
+	pkgrel = 1
+	url = http://code.google.com/p/fretscpp/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libvorbis
+	depends = libpng
+	depends = mesa
+	depends = sdl
+	depends = libvpx
+	optdepends = fretscpp-songs: songs for fretscpp
+	provides = fretscpp
+	source = fretscpp-src::git://github.com/radu124/fretscpp.git
+	source = fretscpp.desktop
+	source = fretscpp.png
+	md5sums = SKIP
+	md5sums = 68ebf5a34fb13d6d2a3a7f274cb53211
+	md5sums = 3d444719ce2e76040e7e567250e99f94
+
+pkgname = fretscpp
+
