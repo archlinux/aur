@@ -1,0 +1,18 @@
+pkgbase = xtraceroute
+	pkgdesc = gtk version of traceroute using opengl to show a globe with lines for routes
+	pkgver = 0.9.1
+	pkgrel = 5
+	url = http://www.archive.org/details/tucows_31913_Xtraceroute
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtkglarea
+	depends = gdk-pixbuf
+	depends = dnsutils
+	depends = traceroute
+	depends = gtkglarea1
+	source = http://www.archive.org/download/tucows_31913_Xtraceroute/xtraceroute-0.9.1.tar.gz
+	md5sums = ac212fed3ac9dc06851e5ffbe95901c0
+
+pkgname = xtraceroute
+
