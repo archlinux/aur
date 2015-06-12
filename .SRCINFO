@@ -1,0 +1,20 @@
+pkgbase = valauncher-git
+	pkgdesc = Simple application launcher written in Vala
+	pkgver = a3dfa74
+	pkgrel = 3
+	url = https://github.com/Mic92/valauncher.git
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	makedepends = vala
+	depends = gtk3
+	depends = libgee
+	provides = valauncher
+	conflicts = valauncher
+	source = valauncher::git+git://github.com/Mic92/valauncher.git
+	md5sums = SKIP
+
+pkgname = valauncher-git
+
