@@ -1,0 +1,18 @@
+pkgbase = alarm
+	pkgdesc = Schedule an alarm for a program when starting it
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/maandree/alarm
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = make
+	makedepends = coreutils
+	makedepends = gcc
+	makedepends = glibc
+	depends = glibc
+	source = https://github.com/maandree/alarm/archive/1.tar.gz
+	sha256sums = b4af27a5fff94a993f7f751d0bde564b5ba2905aa3abeebcf324231d799f8578
+
+pkgname = alarm
+
