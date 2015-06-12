@@ -1,0 +1,13 @@
+pkgbase = zoneclient
+	pkgdesc = simple Python script to register your dynamic IP address with zoneedit's dynamic IP DNS service
+	pkgver = 0.64
+	pkgrel = 1
+	url = http://zoneclient.sourceforge.net/
+	arch = any
+	license = gpl2
+	depends = python2
+	source = http://zoneclient.sourceforge.net/zoneclient.py
+	md5sums = 0b6844e7726a30d2f7dceaa9cb124f64
+
+pkgname = zoneclient
+
