@@ -1,7 +1,7 @@
 pkgbase = clamassassin
 	pkgdesc = A simple virus filter wrapper for ClamAV.
 	pkgver = 1.2.4
-	pkgrel = 5
+	pkgrel = 6
 	url = http://jameslick.com/clamassassin/
 	arch = any
 	license = BSD
@@ -9,7 +9,9 @@ pkgbase = clamassassin
 	depends = clamav
 	depends = sh
 	source = http://jameslick.com/clamassassin/clamassassin-1.2.4.tar.gz
-	md5sums = ce063e807ae29ab6666db9e01d01cc4c
+	source = clamassassin-clamd.patch
+	sha256sums = 63bae3963d27548d0fc7bbf76eb6bc5506291e9e1cb95aa13390497c4c17a100
+	sha256sums = 0904dccc934b86fbcde982e8ba21aeed2a1db8aeb6df1e2a6403358f161a6222
 
 pkgname = clamassassin
 

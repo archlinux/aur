@@ -1,0 +1,11 @@
+--- clamassassin	2015-06-12 15:53:34.363051744 +0100
++++ clamassassin	2015-06-12 15:53:44.202174454 +0100
+@@ -132,7 +132,7 @@
+ bailiferr $?
+ 
+ # Set version header string
+-CLAMVERS=`${CLAMSCAN} -V --stdout`
++CLAMVERS=`${CLAMSCAN} -V --stdout | tail -1`
+ 
+ if [ ${ADDSCANNERFLAG} != 0 ]
+ then
