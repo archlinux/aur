@@ -1,0 +1,15 @@
+pkgbase = antiktv-svn
+	pkgdesc = Program for watching IPTV from local ISP Antik.sk
+	pkgver = 4
+	pkgrel = 1
+	url = http://code.google.com/p/antiktv/
+	arch = i686
+	license = GPL
+	makedepends = fpc
+	makedepends = lazarus
+	makedepends = gtk2
+	source = antiktv.desktop
+	md5sums = 28ff7e3cd81a075d3077f79aa9a46308
+
+pkgname = antiktv-svn
+

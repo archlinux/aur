@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=AntikTV
+GenericName=AntikTV 
+Comment=Watching IPTV from Antik.sk
+Exec=antiktv
+Categories=Video;
