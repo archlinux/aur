@@ -1,0 +1,15 @@
+pkgbase = gstatz
+	pkgdesc = utility for tracking cycles of menstruation and for prediction of next period's date
+	pkgver = 1.3
+	pkgrel = 3
+	url = http://sourceforge.net/projects/gstatz/
+	arch = i686
+	license = GPL-3
+	depends = java-runtime
+	source = http://downloads.sourceforge.net/gstatz/GStatz-1.3.tar.gz
+	source = gstatz.desktop
+	md5sums = 3048e374fab008da862f67b941302642
+	md5sums = 5519455d2ae558c537980bb987cf1138
+
+pkgname = gstatz
+

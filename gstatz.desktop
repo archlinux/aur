@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=GStatz
+Comment=Tracking menstrual cycles
+Exec=gstatz
+Categories=Education;Calendar;
