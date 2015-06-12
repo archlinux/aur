@@ -1,0 +1,19 @@
+pkgbase = sigal
+	pkgdesc = Simple static gallery generator
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://github.com/saimn/sigal
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-click
+	depends = python-jinja
+	depends = python-markdown
+	depends = python-pillow
+	depends = python-pilkit
+	depends = python-blinker
+	source = http://pypi.python.org/packages/source/s/sigal/sigal-0.9.2.tar.gz
+	md5sums = 70a739895d432f2046e6cdbf4eee6d2d
+
+pkgname = sigal
+
