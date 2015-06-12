@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=X-Lite
+Comment=A free SIP softphone
+Exec=xtensoftphone
+Terminal=false
+Type=Application
+Categories=Application;Network;Telephony;
+StartupNotify=true

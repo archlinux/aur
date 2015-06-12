@@ -1,0 +1,16 @@
+pkgbase = xlite_bin
+	pkgdesc = a multiplatform fully functioning softphone (binary only)
+	pkgver = 2.0
+	pkgrel = 4
+	url = http://www.counterpath.net/x-lite
+	arch = i686
+	license = custom
+	depends = libstdc++5
+	depends = libglade
+	source = http://gentoo.mirrors.pair.com/distfiles/X-Lite_Install.tar.gz
+	source = xlite.desktop
+	md5sums = 6041fa4b2c553407373e6020c55da4ae
+	md5sums = de98459edd82d90dcb40ccc62a47c6b5
+
+pkgname = xlite_bin
+
