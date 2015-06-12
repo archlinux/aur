@@ -1,0 +1,14 @@
+pkgbase = termite-terminfo
+	pkgdesc = Just the terminfo for termite (A Simple VTE-based terminal)
+	pkgver = 7
+	pkgrel = 1
+	url = https://github.com/thestinger/termite/
+	arch = any
+	license = LGPL
+	makedepends = ncurses
+	makedepends = git
+	source = termite::git+https://github.com/thestinger/termite#tag=v7
+	md5sums = SKIP
+
+pkgname = termite-terminfo
+
