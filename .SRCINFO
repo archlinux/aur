@@ -1,0 +1,15 @@
+pkgbase = turnserver
+	pkgdesc = TURN server
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = http://turnserver.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = confuse
+	depends = openssl
+	source = http://downloads.sourceforge.net/project/turnserver/turnserver-0.7.2.tar.bz2
+	md5sums = 47aeea6e1e0af56cde904673249b6931
+
+pkgname = turnserver
+
