@@ -1,0 +1,34 @@
+--- src/main.cc.orig
++++ src/main.cc
+@@ -542,7 +542,6 @@ 
+   gtk_widget_set_name(win, "Msh_Run_Window");
+   gtk_window_set_title(GTK_WINDOW(win), "Execute program feat. completion");
+   gtk_window_set_policy(GTK_WINDOW(win), FALSE, FALSE, TRUE);
+-  // gtk_window_set_position(GTK_WINDOW(win), GTK_WIN_POS_CENTER);
+   gtk_container_set_border_width(GTK_CONTAINER(win), 4);
+   gtk_signal_connect(GTK_OBJECT(win), "destroy",
+                      GTK_SIGNAL_FUNC(gtk_main_quit), NULL);
+@@ -654,7 +653,10 @@ 
+   }
+   else
+   {
+-    gtk_widget_set_uposition(win, prefs_left, prefs_top);
++  	if ((prefs_top == -1) && (prefs_left == -1))
++		gtk_window_set_position(GTK_WINDOW(win), GTK_WIN_POS_CENTER);
++	else
++		gtk_widget_set_uposition(win, prefs_left, prefs_top);
+   }
+ 
+   gtk_widget_show(win);
+--- config/gmrunrc.orig
++++ config/gmrunrc
+@@ -7,7 +7,8 @@ 
+ TermExec = ${Terminal} -e
+ AlwaysInTerm = ssh telnet ftp lynx mc vi vim pine centericq perldoc man
+ 
+-# Set window geometry (except height)
++# Set window geometry (except height).
++# Top / Left = -1: Center dialog box in the current screen.
+ Width = 400
+ Top = 100
+ Left = 200

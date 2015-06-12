@@ -1,0 +1,22 @@
+pkgbase = gmrun-multihead
+	pkgdesc = A simple program which provides a run program window
+	pkgver = 0.9.2
+	pkgrel = 2
+	url = http://sf.net/projects/gmrun
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	depends = popt
+	provides = gmrun
+	conflicts = gmrun
+	conflicts = gmrun-xdg
+	source = http://downloads.sourceforge.net/gmrun/gmrun-0.9.2.tar.gz
+	source = gcc43.patch
+	source = center-and-multihead.patch
+	md5sums = 6cef37a968006d9496fc56a7099c603c
+	md5sums = 3a0b69d8c2cac6cfb551b9d235441ecb
+	md5sums = 11bcdeb1a0618f13545c0a127a25114f
+
+pkgname = gmrun-multihead
+
