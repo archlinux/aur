@@ -1,0 +1,14 @@
+pkgbase = pynmonanalyzer
+	pkgdesc = Python tool for reformatting and plotting/graphing NMON output
+	pkgver = 1.0.2
+	pkgrel = 2
+	url = https://github.com/madmaze/pynmonanalyzer
+	arch = any
+	license = GPL3
+	depends = python2
+	depends = python2-matplotlib
+	source = https://pypi.python.org/packages/source/p/pyNmonAnalyzer/pyNmonAnalyzer-1.0.2.tar.gz
+	md5sums = bb5f7da495132c80f2a6f249bd6fe0c3
+
+pkgname = pynmonanalyzer
+
