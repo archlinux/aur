@@ -1,0 +1,14 @@
+pkgbase = pbftoosm
+	pkgdesc = tool to convert from .pbf to .osm format
+	pkgver = 1.0
+	pkgrel = 4
+	url = http://wiki.openstreetmap.org/wiki/Pbftoosm
+	arch = i686
+	arch = x86_64
+	license = gpl
+	depends = zlib
+	source = http://m.m.i24.cc/pbftoosm.c
+	md5sums = f8316f207012521491e81ae1de3488e7
+
+pkgname = pbftoosm
+
