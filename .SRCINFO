@@ -1,6 +1,6 @@
 pkgbase = geany-plugins-gtk3-git
 	pkgdesc = Plugins for Geany
-	pkgver = 1.24.23.g0d11ade
+	pkgver = 1.24.r386.g3aac929
 	pkgrel = 1
 	url = http://plugins.geany.org/
 	install = geany-plugins.install
@@ -8,10 +8,7 @@ pkgbase = geany-plugins-gtk3-git
 	arch = i686
 	license = GPL
 	makedepends = git
-	makedepends = automake
-	makedepends = autoconf
 	makedepends = intltool
-	makedepends = libtool
 	makedepends = python
 	depends = geany-gtk3-git
 	depends = lua51
@@ -23,7 +20,7 @@ pkgbase = geany-plugins-gtk3-git
 	provides = geany-plugins
 	conflicts = geany-plugins-svn
 	conflicts = geany-plugins
-	source = git://github.com/geany/geany-plugins.git
+	source = geany-plugins::git://github.com/geany/geany-plugins.git
 	md5sums = SKIP
 
 pkgname = geany-plugins-gtk3-git
