@@ -1,0 +1,17 @@
+pkgbase = python-wdb.server
+	pkgdesc = An improbable web debugger through WebSockets (server)
+	pkgver = 2.0.7
+	pkgrel = 1
+	url = http://github.com/Kozea/wdb
+	arch = any
+	license = GPLv3
+	makedepends = python3
+	depends = python
+	depends = python-tornado
+	depends = tornado_systemd
+	depends = python-psutil
+	source = https://pypi.python.org/packages/source/w/wdb.server/wdb.server-2.0.7.tar.gz
+	md5sums = 223f444be7747e9392532c4ceeb658f2
+
+pkgname = python-wdb.server
+
