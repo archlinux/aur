@@ -1,0 +1,18 @@
+pkgbase = python2-sundials
+	pkgdesc = Python wrapper for the SUite of Non-linear DIfferential/ALgebraic Solvers (SUNDIALS)
+	pkgver = 2.5.0a1
+	pkgrel = 1
+	url = http://pysundials.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = python2
+	depends = sundials
+	replaces = python2-pysundials
+	source = http://sourceforge.net/projects/pysundials/files/pysundials-2.5.0-a1.tar.gz
+	source = config
+	md5sums = d3bc1233aaaf55c0d42da838ceea9f14
+	md5sums = 880551f9fba1d77db7e5a3f7f77f7e69
+
+pkgname = python2-sundials
+
