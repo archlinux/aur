@@ -1,0 +1,13 @@
+pkgbase = friendly-find
+	pkgdesc = A friendlier find (ffind).
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/sjl/friendly-find
+	arch = any
+	license = GPL3
+	depends = python2
+	source = https://github.com/sjl/friendly-find/archive/v0.3.2.tar.gz
+	md5sums = 69f02172ab77430a61ec7b55f527db0b
+
+pkgname = friendly-find
+
