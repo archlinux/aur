@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=4.5.6
+Name="Tracktion 4 Free"
+Comment=Audio and MIDI workstation
+Exec=/usr/bin/Tracktion-4-Free %u
+Icon=/usr/share/tracktion-4-free/icon.png
+Terminal=false
+Type=Application
+Categories=AudioEditing;AudioVideo;Audio;
+MimeType=application/x-tracktion-project;
+StartupNotify=true
+Name[en_US]=Tracktion-4-Free
