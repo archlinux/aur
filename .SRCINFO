@@ -1,0 +1,13 @@
+pkgbase = geany-tags
+	pkgdesc = Geany tags for C, C++, CSS, GLSL, Java, JavaScript, LaTeX, PHP, Python, Ruby, Tcl, Vala and more
+	pkgver = 20141127
+	pkgrel = 1
+	url = http://wiki.geany.org/tags/start
+	arch = any
+	license = GPL
+	depends = geany
+	source = geany-tags.tar.bz2::http://wiki.geany.org/get_tags
+	md5sums = 3a187ded43542107de05d6d455faf5e8
+
+pkgname = geany-tags
+
