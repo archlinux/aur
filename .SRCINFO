@@ -1,0 +1,12 @@
+pkgbase = cppreference-qt
+	pkgdesc = A complete reference for the features in the C++ Standard Library, for qt help
+	pkgver = 20141118
+	pkgrel = 1
+	url = http://en.cppreference.com/
+	arch = any
+	license = CCPL:cc-by-sa
+	source = http://upload.cppreference.com/mwiki/images/2/2c/qch_book_20141118.tar.gz
+	md5sums = cb0da55a4363000bea7a41e27e1cb1fa
+
+pkgname = cppreference-qt
+
