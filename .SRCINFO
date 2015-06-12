@@ -1,0 +1,17 @@
+pkgbase = elementary-add-icon-theme-git
+	pkgdesc = Additional icons for elementary OS Freya.
+	pkgver = 205.d1b5acd
+	pkgrel = 1
+	url = https://github.com/varlesh/elementary-add
+	install = elementary-add-icon-theme.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = elementary-icon-theme-bzr
+	provides = elementary-add-icon-theme-git
+	conflicts = elementary-add-icon-theme-git
+	source = git+https://github.com/varlesh/elementary-add.git
+	md5sums = SKIP
+
+pkgname = elementary-add-icon-theme-git
+
