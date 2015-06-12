@@ -1,0 +1,13 @@
+pkgbase = gc-shrink
+	pkgdesc = Small command line program that removes garbage from gamecube images to created smaller images.
+	pkgver = 0.2
+	pkgrel = 2
+	url = http://www.gotwalls.com/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	source = http://www.gotwalls.com/files/gc-shrink-0.2.zip
+	md5sums = fa9cfbf8a465ddd35dd1d1e09c616f24
+
+pkgname = gc-shrink
+
