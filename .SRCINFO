@@ -1,6 +1,6 @@
 pkgbase = libbuddy-git
 	pkgdesc = Simple library for managing iBuddy and Blync devices
-	pkgver = 0.3.1.4.gce49d25
+	pkgver = 0.3.1.8.g75f323f
 	pkgrel = 1
 	url = https://github.com/zrax/libbuddy
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = libbuddy-git
 	arch = armv7h
 	license = GPL2
 	makedepends = git
-	depends = libusb-compat
+	depends = libusb
 	provides = libbuddy
 	conflicts = libbuddy
 	source = git://github.com/zrax/libbuddy.git
