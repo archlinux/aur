@@ -1,0 +1,14 @@
+pkgbase = gesftpserver
+	pkgdesc = Green End SFTP Server - experimental free SFTP server
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://www.greenend.org.uk/rjk/sftpserver/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	source = http://www.greenend.org.uk/rjk/sftpserver/sftpserver-0.1.tar.gz
+	md5sums = 367e2e465e13a748ee8dfee974ca68fc
+
+pkgname = gesftpserver
+
