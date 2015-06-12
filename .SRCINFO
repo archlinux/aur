@@ -1,0 +1,24 @@
+pkgbase = mando-git
+	pkgdesc = human computer interface using a camera and a projector
+	pkgver = 20110407
+	pkgrel = 1
+	url = http://mando.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gcc-fortran
+	makedepends = glut
+	makedepends = boost
+	depends = lapack
+	depends = fftw
+	depends = qt
+	depends = libxtst
+	depends = v4l-utils
+	source = f2c.h
+	source = videodev.h
+	md5sums = b24aef06939beb5300b835805896ea0f
+	md5sums = 427e5832466726a86e5b55b1329d2e9e
+
+pkgname = mando-git
+
