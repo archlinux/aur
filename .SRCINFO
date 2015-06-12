@@ -1,0 +1,29 @@
+pkgbase = feedreader-bzr
+	pkgdesc = A simple feedreader client for web services like Tiny Tiny RSS and in the future others.
+	pkgver = r248
+	pkgrel = 1
+	url = https://launchpad.net/feedreader
+	install = feedreader.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = vala
+	makedepends = gobject-introspection
+	makedepends = cmake
+	makedepends = bzr
+	depends = sqlite3
+	depends = gtk3
+	depends = webkit2gtk
+	depends = libunity
+	depends = libnotify
+	depends = html2text-with-utf8
+	depends = libsoup
+	depends = json-glib
+	depends = libsecret
+	provides = feedreader
+	conflicts = feedreader
+	source = bzr+lp:feedreader
+	sha256sums = SKIP
+
+pkgname = feedreader-bzr
+
