@@ -1,0 +1,13 @@
+pkgbase = beatbuddy-hib
+	pkgdesc = A hand-drawn arcade game with unique music interaction.
+	pkgver = 1396630212
+	pkgrel = 1
+	url = http://www.threaks.com/
+	arch = i686
+	arch = x86_64
+	license = custom:commercial
+	source = hib://BeatbuddyLinux_1396630212.zip
+	sha512sums = 55bb2781a3971fcf55c8361f4bf0e9829e27e59241604773b2e6275bcc502cd82702bb2e818bba29567ce4c0cc1578ba4a85f817282767598884471d30c2175c
+
+pkgname = beatbuddy-hib
+
