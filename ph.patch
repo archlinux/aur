@@ -1,0 +1,14 @@
+--- /home/jose/tarballs/pacman/redeemer/src/redeemer-src/src/ph.h	2005-04-03 08:03:14.000000000 +0200
++++ ph.h	2009-04-10 21:19:37.000000000 +0200
+@@ -33,9 +33,9 @@
+ using namespace std;
+ 
+ 
+-#ifndef _MSC_VER
++/*#ifndef _MSC_VER
+ #define _MSC_VER 0
+-#endif
++#endif */
+ 
+ // SDL-ko
+ /*
