@@ -1,0 +1,14 @@
+pkgbase = otf-powerline-symbols-git
+	pkgdesc = Fallback font for the Powerline symbols
+	pkgver = 20130118
+	pkgrel = 4
+	url = https://github.com/powerline/powerline
+	install = powerline-symbols.install
+	arch = any
+	license = MIT
+	makedepends = git
+	source = powerline::git+https://github.com/powerline/powerline.git#branch=develop
+	sha256sums = SKIP
+
+pkgname = otf-powerline-symbols-git
+
