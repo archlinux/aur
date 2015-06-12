@@ -1,0 +1,16 @@
+pkgbase = perl-set-object
+	pkgdesc = Set of Objects (smalltalkish: IdentitySet)
+	pkgver = 1.34
+	pkgrel = 1
+	url = http://search.cpan.org/~rurban/Set-Object-1.34/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	source = http://www.cpan.org/authors/id/R/RU/RURBAN/Set-Object-1.34.tar.gz
+	md5sums = 15721030d597c2744ff3846ccdd419dc
+
+pkgname = perl-set-object
+
