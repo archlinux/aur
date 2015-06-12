@@ -1,0 +1,25 @@
+pkgbase = python2-copperhead-git
+	pkgdesc = Provides a data-parallel subset of Python for NVidia GPU programming (CUDA)
+	pkgver = r348.6e624e3
+	pkgrel = 1
+	url = http://code.google.com/p/copperhead/
+	arch = i686
+	arch = x86_64
+	license = Apache 2.0
+	makedepends = mercurial
+	makedepends = python2-pytools
+	makedepends = scons
+	depends = python2-pycuda
+	depends = python2-codepy
+	depends = python2-decorator
+	depends = thrust
+	optdepends = boost
+	optdepends = python2-matplotlib
+	optdepends = python2-scipy
+	optdepends = plac
+	replaces = copperhead-hg
+	source = python2-copperhead-git::git+https://github.com/copperhead/copperhead
+	md5sums = SKIP
+
+pkgname = python2-copperhead-git
+
