@@ -2,7 +2,7 @@
 
 pkgname=ropper
 _pkgname=Ropper
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="Show information about binary files and find gadgets to build rop chains for different architectures"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('python-capstone' 'sqlite')
 makedepends=('python-setuptools')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/sashs/${_pkgname}/archive/v${pkgver}.tar.gz)
-sha512sums=('922120243854cb9231b8bae8b53eff63579b2ad7007d24af00d2eb7bf142c2847e10aa2c1d90717fee822d93718ee016c25a3563cd160e7a8a75d04bbdecf677')
+sha512sums=('4bb389edbf7619fac15deb114284691662782829414143e002ce6ec37401c9afcdf7644c557a7fb8783e44a36f0042a8145ecb0a5d08809ebe3eefb01fa8e165')
 
 build() {
   cd ${_pkgname}-${pkgver}
