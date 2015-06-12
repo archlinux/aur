@@ -1,0 +1,17 @@
+pkgbase = django-social-auth
+	pkgdesc = Social authentication made simple.
+	pkgver = 0.7.28
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/django-social-auth
+	arch = any
+	license = BSD
+	makedepends = python2-distribute
+	depends = python2
+	depends = python2-openid
+	depends = python2-oauth2
+	conflicts = django-socialauth-git
+	source = http://pypi.python.org/packages/source/d/django-social-auth/django-social-auth-0.7.28.tar.gz
+	md5sums = 50fb14cc829fc28d6021e711e206f228
+
+pkgname = django-social-auth
+
