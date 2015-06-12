@@ -1,0 +1,15 @@
+pkgbase = vim-indentfinder-hg
+	pkgdesc = Set vim's indentation scheme to match a newly opened buffer
+	pkgver = 55_ec4e8baa59b5
+	pkgrel = 1
+	url = http://www.freehackers.org/Indent_Finder
+	arch = any
+	license = BSD
+	makedepends = mercurial
+	depends = vim
+	depends = python2-indentfinder-hg
+	source = IndentFinder-vim::hg+http://sources.freehackers.org/IndentFinder
+	md5sums = SKIP
+
+pkgname = vim-indentfinder-hg
+
