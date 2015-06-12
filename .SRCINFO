@@ -1,0 +1,17 @@
+pkgbase = bakonf
+	pkgdesc = Tool that creates a backup of selected configuration files and information about running system
+	pkgver = 0.6.0
+	pkgrel = 5
+	url = http://www.nongnu.org/bakonf/
+	arch = i686
+	arch = x86_64
+	license = gpl
+	depends = python
+	depends = py3-bsddb
+	source = http://download.savannah.gnu.org/releases/bakonf/bakonf-0.6.0.tar.gz
+	source = pacmandb.xml
+	md5sums = 21925237229175dc1dd31d37911c4dad
+	md5sums = d98dc1a8d572b562214689f9e3ed0cd2
+
+pkgname = bakonf
+

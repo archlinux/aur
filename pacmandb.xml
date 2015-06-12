@@ -1,0 +1,8 @@
+<bakonf>
+<!--
+    Pacman local database
+-->
+<filesystem>
+    <scan>/var/lib/pacman/local</scan>
+</filesystem>
+</bakonf>
