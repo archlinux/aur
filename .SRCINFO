@@ -1,0 +1,15 @@
+pkgbase = iverbs_bin
+	pkgdesc = Multiplatform irregular verbs learning tool
+	pkgver = 0.5beta3
+	pkgrel = 3
+	url = http://iverbs.sourceforge.net
+	arch = i686
+	license = GPL
+	depends = gtk2
+	source = http://sourceforge.net/projects/iverbs/files/Linux%20-%20binary%20archive/0.5-beta3/iverbs_0.5-beta3_i386_bin.tar.gz
+	source = iverbs.desktop
+	md5sums = 1eda1305e2b5d6dcaf9d79123c21db42
+	md5sums = 4f504c2a9d9bd64e77c9999faa70504a
+
+pkgname = iverbs_bin
+

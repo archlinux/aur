@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=iVerbs
+Comment=Utility that helps learning irregular verbs
+Exec=iverbs.sh
+Icon=iverbs
+Categories=Education;Languages;
