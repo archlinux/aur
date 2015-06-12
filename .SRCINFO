@@ -1,0 +1,14 @@
+pkgbase = nodejs-jsontool
+	pkgdesc = a 'json' command for massaging JSON on the command line
+	pkgver = 7.0.2
+	pkgrel = 1
+	url = http://github.com/trentm/json
+	arch = any
+	license = MIT
+	depends = nodejs
+	noextract = jsontool-7.0.2.tgz
+	source = http://registry.npmjs.org/jsontool/-/jsontool-7.0.2.tgz
+	sha256sums = 9c7e82a8cd5b71b1c866c7da0e6595c15bd4ec83f288985a4ac94089b504cffb
+
+pkgname = nodejs-jsontool
+
