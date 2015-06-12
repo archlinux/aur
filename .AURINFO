@@ -1,0 +1,15 @@
+pkgbase = psani-profi
+	pkgdesc = Program that will teach you touchtyping (czech)
+	pkgver = 3.3.00
+	pkgrel = 2
+	url = http://www.sallyx.org/sally/psani-vsemi-deseti/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = bash
+	depends = xorg-luit
+	source = http://www.sallyx.org/sally/psani-vsemi-deseti/start.php?target=download&file=psani-profi_3.3.00
+	md5sums = 51f3b930ac46a562326cc587704258cf
+
+pkgname = psani-profi
+
