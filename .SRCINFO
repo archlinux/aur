@@ -1,0 +1,18 @@
+pkgbase = firefox-vacuum
+	pkgdesc = Script for optimize firefox database
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://lara.craft.net.br
+	install = firefox-vacuum.install
+	arch = any
+	license = GPL
+	depends = sqlite
+	source = http://lara.craft.net.br/firefox-vacuum.sh
+	source = firefox-vacuum.service
+	source = firefox-vacuum.install
+	md5sums = aab7e95b516e1ecf62d3868adcbaafca
+	md5sums = c3e55982db31cbd4ffd8905587e8845d
+	md5sums = 4668361cd676fb04731e7d584f769f7a
+
+pkgname = firefox-vacuum
+

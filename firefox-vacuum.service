@@ -1,0 +1,13 @@
+[Unit]
+Description=Optimize firefox profile
+Before=umount.target
+
+[Service]
+User=%I
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/bin/true
+ExecStop=/usr/bin/firefox-vacuum
+
+[Install]
+WantedBy=multi-user.target
