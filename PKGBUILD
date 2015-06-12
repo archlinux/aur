@@ -3,7 +3,7 @@
 pkgbase=python-nikola
 _pyname=nikola
 pkgname=('python-nikola' 'python2-nikola' 'python-nikola-doc')
-pkgver=7.5.0
+pkgver=7.5.1
 pkgrel=1
 pkgdesc='A modular, fast, simple, static website generator.'
 arch=('any')
