@@ -1,0 +1,16 @@
+pkgbase = mozilla_password_dump-git
+	pkgdesc = dump firefox/thunderbird passwords into CSV file
+	pkgver = 20121015
+	pkgrel = 1
+	url = https://github.com/kholia/mozilla_password_dump
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = chrpath
+	depends = nss
+	depends = nspr
+	depends = sqlite
+
+pkgname = mozilla_password_dump-git
+
