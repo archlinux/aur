@@ -1,0 +1,15 @@
+pkgbase = python2-svglib
+	pkgdesc = An experimental library for reading and converting SVG.
+	pkgver = 0.6.3
+	pkgrel = 4
+	url = http://pypi.python.org/pypi/svglib/0.6.3
+	arch = any
+	license = LGPL
+	depends = python2
+	depends = python2-reportlab
+	options = !emptydirs
+	source = http://pypi.python.org/packages/source/s/svglib/svglib-0.6.3.tar.gz
+	md5sums = 454edcfef70d52f62e0e434f2efad853
+
+pkgname = python2-svglib
+
