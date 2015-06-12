@@ -1,0 +1,13 @@
+pkgbase = bugzilla-l10n-ja
+	pkgdesc = japanese localization for bugzilla
+	pkgver = 4.4.5
+	pkgrel = 1
+	url = http://www.bug-ja.org/
+	arch = any
+	license = GPL
+	depends = bugzilla
+	source = bugzilla-4.4.5.ja::svn+http://svn.bug-ja.org/bugzilla/bugzilla-l10n-ja-4.4/tags/4.4.5/
+	md5sums = SKIP
+
+pkgname = bugzilla-l10n-ja
+
