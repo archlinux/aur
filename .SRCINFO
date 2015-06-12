@@ -1,0 +1,17 @@
+pkgbase = retrotetris
+	pkgdesc = a simple tetris remake
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://sourceforge.net/projects/retropong/
+	arch = i686
+	license = GPL2
+	depends = sdl_mixer
+	depends = sdl_ttf
+	depends = bash
+	source = http://downloads.sourceforge.net/project/retropong/retrotetris.tar.gz
+	source = retrotetris.desktop
+	md5sums = 1d85ef7972a731d9ccc0eee650682eb5
+	md5sums = fd30cf926d46327995848620398873fe
+
+pkgname = retrotetris
+
