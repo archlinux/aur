@@ -1,0 +1,32 @@
+pkgbase = brackets-git
+	pkgdesc = Adobe Brackets - An open source code editor for the web, written in JavaScript, HTML and CSS.
+	pkgver = 1.3
+	pkgrel = 1
+	url = http://brackets.io
+	install = brackets-git.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = p7zip
+	makedepends = gyp-git
+	depends = gconf
+	depends = libgcrypt15
+	depends = nodejs
+	depends = npm
+	depends = libudev.so.0
+	depends = nspr
+	depends = nss
+	optdepends = chromium: for live view
+	optdepends = google-chrome: for live view
+	provides = brackets
+	provides = adobe-brackets
+	conflicts = brackets
+	conflicts = brackets-bin
+	source = brackets-shell::git+https://github.com/adobe/brackets-shell.git
+	source = brackets::git+https://github.com/adobe/brackets.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = brackets-git
+
