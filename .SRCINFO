@@ -1,6 +1,6 @@
 pkgbase = dorian-flat
-	pkgdesc = A dark flat theme. For Gnome 3.16,openbox, xfwm4, Gnome-Shell, Cinnamon, MATE, Firefox, & Chromium
-	pkgver = 3.16_04_06102015
+	pkgdesc = A dark flat theme. For Gnome 3.16,openbox, xfwm4, xfdashboard, Gnome-Shell, Cinnamon, MATE, Firefox, & Chromium
+	pkgver = 3.16_05_06122015
 	pkgrel = 1
 	url = http://fav.me/d8w4ms7
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = dorian-flat
 	depends = gtk-engines
 	depends = gnome-themes-standard>=3.16
 	depends = gtk-engine-murrine>=0.98.2
-	source = https://dl.dropboxusercontent.com/u/330352/dorian-flat-3.16-04_06102015.zip
-	md5sums = 368e5e8f5e2e4d4a0d2313a9957c3ece
+	source = https://dl.dropboxusercontent.com/u/330352/dorian-flat-3.16-05_06122015.zip
+	md5sums = 3c68e4aabab76c63dc473595954ebfec
 
 pkgname = dorian-flat
 
