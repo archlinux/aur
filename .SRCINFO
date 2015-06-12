@@ -11,7 +11,7 @@ pkgbase = python-nikola
 	makedepends = python2-setuptools
 	options = !emptydirs
 	source = https://pypi.python.org/packages/source/N/Nikola/nikola-7.5.1.tar.gz
-	md5sums = ed298fb4950baaf1b96c477e497edaa9
+	md5sums = b064411ca587d1bda89748288ef7c2ee
 
 pkgname = python-nikola
 	depends = python
@@ -32,7 +32,6 @@ pkgname = python-nikola
 	optdepends = python-requests: for theme and plugin installation, and various web services
 	optdepends = python-markdown: for Markdown support
 	optdepends = python-jinja: for Jinja2 themes
-	optdepends = python-livereload=2.3.2: for automatically refreshing browsers
 	optdepends = python-pyphen>=0.9.1: for hyphenation
 	optdepends = python-pygal=1.7.0: for SVG graph plotting
 	optdepends = python-typogrify>=2.0.4: for typographical enhancements
@@ -63,7 +62,6 @@ pkgname = python2-nikola
 	optdepends = python2-requests: for theme and plugin installation, and various web services
 	optdepends = python2-markdown: for Markdown support
 	optdepends = python2-jinja: for Jinja2 themes
-	optdepends = python2-livereload=2.3.2: for automatically refreshing browsers
 	optdepends = python2-pyphen>=0.9.1: for hyphenation
 	optdepends = python2-pygal=1.7.0: for SVG graph plotting
 	optdepends = python2-typogrify>=2.0.4: for typographical enhancements

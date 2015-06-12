@@ -12,7 +12,7 @@ license=('MIT')
 options=(!emptydirs)
 makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools')
 source=("https://pypi.python.org/packages/source/N/Nikola/${_pyname}-${pkgver}.tar.gz")
-md5sums=('ed298fb4950baaf1b96c477e497edaa9')
+md5sums=('b064411ca587d1bda89748288ef7c2ee')
 
 build() {
   cd "${srcdir}/${_pyname}-${pkgver}"
@@ -28,7 +28,6 @@ package_python-nikola() {
   optdepends=('python-requests: for theme and plugin installation, and various web services'
               'python-markdown: for Markdown support'
               'python-jinja: for Jinja2 themes'
-              'python-livereload=2.3.2: for automatically refreshing browsers'
               'python-pyphen>=0.9.1: for hyphenation'
               'python-pygal=1.7.0: for SVG graph plotting'
               'python-typogrify>=2.0.4: for typographical enhancements'
@@ -54,7 +53,6 @@ package_python2-nikola() {
   optdepends=('python2-requests: for theme and plugin installation, and various web services'
               'python2-markdown: for Markdown support'
               'python2-jinja: for Jinja2 themes'
-              'python2-livereload=2.3.2: for automatically refreshing browsers'
               'python2-pyphen>=0.9.1: for hyphenation'
               'python2-pygal=1.7.0: for SVG graph plotting'
               'python2-typogrify>=2.0.4: for typographical enhancements'
