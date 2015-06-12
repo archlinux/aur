@@ -1,0 +1,21 @@
+pkgbase = green-arc-gtk-theme-git
+	pkgdesc = Green Arc is a flat theme with transparent elements for GTK 3, GTK 2 and Gnome-Shell. It supports GTK 3 and GTK 2 based desktop environments like Gnome, Unity, Budgie, Pantheon, etc. Based on regular Arc Theme
+	pkgver = 56.2758997
+	pkgrel = 1
+	url = https://github.com/ryanvade/Arc-theme
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gnome-themes-standard
+	depends = gtk-engine-murrine
+	provides = green-arc-theme
+	provides = arc-theme-git
+	conflicts = arc-theme-git
+	conflicts = green-arc-theme
+	replaces = green-arc-theme
+	options = !strip
+	source = green-arc-gtk-theme-git::git+https://github.com/ryanvade/Arc-theme.git
+	sha256sums = SKIP
+
+pkgname = green-arc-gtk-theme-git
+
