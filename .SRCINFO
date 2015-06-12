@@ -1,0 +1,16 @@
+pkgbase = colourpipe
+	pkgdesc = Collection of programs used to colour the output of other programs
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/maandree/colourpipe
+	arch = any
+	license = GPL3
+	makedepends = java-environment
+	depends = java-runtime
+	provides = colourpipe
+	conflicts = colourpipe
+	source = https://github.com/maandree/colourpipe/archive/1.0.2.tar.gz
+	md5sums = 8d78f49847625fe0f1b11c996c2d824b
+
+pkgname = colourpipe
+
