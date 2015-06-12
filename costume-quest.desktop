@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Costume Quest
+GenericName=Costume Quest
+Comment=Halloween themed 3D action adventure
+Icon=/opt/costume-quest/CostumeQuest.png
+Exec=/usr/bin/costume-quest
+Path=/opt/costume-quest
+Categories=Game;

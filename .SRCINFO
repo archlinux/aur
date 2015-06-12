@@ -1,0 +1,15 @@
+pkgbase = costume-quest-hib
+	pkgdesc = A halloween themed 3D action adventure (Humble Bundle)
+	pkgver = 2013_06_04
+	pkgrel = 1
+	url = http://www.doublefine.com/
+	arch = i686
+	arch = x86_64
+	license = custom:commercial
+	source = hib://CostumeQuest-Linux-2013-06-04-setup.bin
+	source = costume-quest.desktop
+	sha512sums = f0c2252002570981958a1aca54e2d86ddab00e8d4135f0baade780cdcd165befbe072c9e55ff90e655ad6667aa5f1e5959026b09b269bbed795ab934009581c2
+	sha512sums = 4da27b4d4d672637f5dcd51d2aebc15f6e1ded6690cf7e91a17c565d2e570fca6ade90bb984a9db83ea2e08bbe463e5b197c077324dec72d6716bbfbee14e2f3
+
+pkgname = costume-quest-hib
+
