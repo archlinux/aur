@@ -1,0 +1,14 @@
+pkgbase = xspin
+	pkgdesc = Tcl/Tk GUI for spin
+	pkgver = 5.2.5
+	pkgrel = 1
+	url = http://spinroot.com/
+	arch = any
+	license = custom
+	depends = spin
+	depends = tk
+	source = http://spinroot.com/spin/Src/xspin525.tcl
+	md5sums = 4b41ff53c1834168aa183def9036bbb7
+
+pkgname = xspin
+
