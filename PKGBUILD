@@ -1,13 +1,13 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 pkgname=mingw-w64-recode
 pkgver=3.6
-pkgrel=9
+pkgrel=10
 pkgdesc="Converts files between various character sets and usages (mingw-w64)"
 arch=('any')
 url="http://recode.progiciels-bpi.ca/index.html"
 license=('GPL' 'LGPL')
 depends=('mingw-w64-crt' 'mingw-w64-gettext')
-options=('!strip !buildflags staticlibs')
+options=('!strip' '!buildflags' 'staticlibs')
 makedepends=('mingw-w64-gcc')
 source=(recode-${pkgver}.tar.gz::"https://github.com/pinard/recode/tarball/v${pkgver}"
         'http://ftp.de.debian.org/debian/pool/main/r/recode/recode_3.6-17.diff.gz'
