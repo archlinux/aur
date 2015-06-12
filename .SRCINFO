@@ -1,0 +1,22 @@
+pkgbase = apiextractor-git
+	pkgdesc = Collects information about libraries from its header files and merges it with user written files (typesystem) describing how the library should be exposed as a binding on the target language.
+	pkgver = 0.3.2.322.g744d018
+	pkgrel = 1
+	url = http://www.pyside.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = git
+	depends = qt4>=4.7
+	depends = openssl
+	depends = libxslt
+	depends = libxml2
+	provides = apiextractor
+	conflicts = apiextractor
+	source = apiextractor-git::git://github.com/PySide/Apiextractor.git
+	md5sums = SKIP
+
+pkgname = apiextractor-git
+
