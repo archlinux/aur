@@ -1,0 +1,18 @@
+pkgbase = hy-git
+	pkgdesc = Python <--> Lisp layer
+	pkgver = 0.11.0.r1.g685688f
+	pkgrel = 1
+	url = http://hylang.org/
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-rply-git
+	depends = python-astor-git
+	depends = python-clint
+	depends = python-args-git
+	options = !emptydirs
+	source = git://github.com/hylang/hy.git
+	md5sums = SKIP
+
+pkgname = hy-git
+
