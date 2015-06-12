@@ -1,0 +1,24 @@
+pkgbase = airoscript-ng
+	pkgdesc = A gui mainly for aircrack-ng. Automates cracking of WEP and WPA
+	pkgver = 1.2rc3
+	pkgrel = 7
+	url = https://code.google.com/p/airoscript/
+	arch = any
+	license = GPL2
+	depends = aircrack-ng
+	depends = macchanger
+	optdepends = mdk3: bruteforce and deauth support
+	optdepends = sslstrip: HTTPS MITM plugin support
+	optdepends = dsniff: sniffing and spoofing support
+	optdepends = zenity: additional graphical dialog support
+	optdepends = john: fast password cracking support
+	options = !makeflags
+	options = !emptydirs
+	backup = etc/airoscript-ng/airoscript-ng.conf
+	backup = etc/airoscript-ng/airoscript-ng_advanced.conf
+	backup = etc/airoscript-ng/screenrc.airoscript
+	source = https://airoscript.googlecode.com/files/airoscript-ng-1.2-3.tar.gz
+	sha512sums = 77056023e1671ae8ad719495cfef7189882e0ee3ed5db965e4798e13b75835afe700828be99efb8d3c6b95e11658aad768df0c7357f5e43f12ac13918ef49fd1
+
+pkgname = airoscript-ng
+
