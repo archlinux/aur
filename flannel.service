@@ -1,0 +1,9 @@
+[Unit]
+Requires=etcd.service
+After=etcd.service
+
+[Service]
+ExecStart=/usr/bin/flannel
+
+[Install]
+WantedBy=multi-user.target
