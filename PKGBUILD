@@ -2,7 +2,7 @@
 pkgname=symengine-git
 _pkgname=symengine
 pkgver=r1937.a4b2c77
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast symbolic manipulation library, written in C++"
 url="http://sympy.org/"
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ license=('MIT')
 depends=('gmp' 'arb' 'boost-libs' 'gperftools')
 makedepends=('cmake' 'git' 'boost')
 optdepends=('python2')
-replaces=('csympy')
-conflicts=('csympy')
+replaces=('csympy-git')
+conflicts=('csympy-git')
 source=($_pkgname::git+https://github.com/sympy/symengine.git)
 md5sums=('SKIP')
 
