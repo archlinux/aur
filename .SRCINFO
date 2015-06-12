@@ -1,0 +1,14 @@
+pkgbase = pho
+	pkgdesc = a lightweight image viewer
+	pkgver = 0.9.8
+	pkgrel = 2
+	url = http://www.shallowsky.com/software/pho/
+	arch = i686
+	arch = x86_64
+	license = GPL-2
+	depends = gtk2
+	source = http://www.shallowsky.com/software/pho/pho-0.9.8.tar.gz
+	md5sums = 7de71d1723c5bfec0efb2d6cf79a3df5
+
+pkgname = pho
+
