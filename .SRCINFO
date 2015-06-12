@@ -1,0 +1,21 @@
+pkgbase = go-for-it-bzr
+	pkgdesc = A stylish to-do list with built-in productivity timer.
+	pkgver = r101
+	pkgrel = 1
+	url = https://code.launchpad.net/~mank319/+junk/go-for-it
+	install = go-for-it.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = vala
+	makedepends = bzr
+	makedepends = cmake
+	depends = gtk3
+	depends = libnotify
+	provides = go-for-it-bzr
+	conflicts = go-for-it-bzr
+	source = bzr+lp:~mank319/+junk/go-for-it
+	sha256sums = SKIP
+
+pkgname = go-for-it-bzr
+
