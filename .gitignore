@@ -1,0 +1,5 @@
+*.pkg.tar.xz
+pkg
+src
+raccoon-git
+*.jar
