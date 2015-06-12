@@ -1,0 +1,21 @@
+pkgbase = xfce4-linelight-plugin
+	pkgdesc = A simple frontend for the locate search.
+	pkgver = 0.1.7
+	pkgrel = 8
+	url = http://goodies.xfce.org/projects/panel-plugins/xfce4-linelight-plugin
+	install = xfce4-linelight-plugin.install
+	arch = i686
+	arch = x86_64
+	groups = xfce4-goodies
+	license = GPL2
+	depends = xfce4-panel
+	depends = libxfcegui4
+	depends = mlocate
+	options = !libtool
+	source = http://ftp.de.debian.org/debian/pool/main/x/xfce4-linelight-plugin/xfce4-linelight-plugin_0.1.7.orig.tar.bz2
+	source = http://lionel.lefolgoc.net/misc/01_port-to-xfcerc.patch
+	md5sums = 1915cd661aafd09c08e04d65775a78ce
+	md5sums = 8b04c70513ecbf74412ea3ed230c46a3
+
+pkgname = xfce4-linelight-plugin
+
