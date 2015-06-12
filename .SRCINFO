@@ -1,0 +1,16 @@
+pkgbase = editphotos
+	pkgdesc = displays thumbnails of JPEG files and enables to alter the orientation EXIF tag and comments.
+	pkgver = 0.3
+	pkgrel = 3
+	url = http://freshmeat.net/projects/editphotos/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = perl
+	depends = perl-image-metadata-jpeg
+	depends = perl-tk
+	source = https://dl.dropboxusercontent.com/u/29095940/oss/editphotos-0.3.tar.gz
+	md5sums = a8844964513424a8243f0edd9627301e
+
+pkgname = editphotos
+
