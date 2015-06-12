@@ -1,0 +1,14 @@
+pkgbase = travis-lint
+	pkgdesc = travis-lint is a tool that check your .travis.yml for possible issues, deprecations and so on.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/travis-ci/travis-lint
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = travis-lint-2.0.0.gem
+	source = https://rubygems.org/downloads/travis-lint-2.0.0.gem
+	sha256sums = 1918261232d278d6c371ab3ace1d43a13408af799ed62fcb62bd866654c2eaea
+
+pkgname = travis-lint
+
