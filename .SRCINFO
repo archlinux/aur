@@ -1,0 +1,14 @@
+pkgbase = python-zope-deprecation
+	pkgdesc = Zope 3 Deprecation Infrastructure
+	pkgver = 4.1.2
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/zope.deprecation
+	arch = any
+	license = ZPL
+	makedepends = python-distribute
+	depends = python
+	source = http://pypi.python.org/packages/source/z/zope.deprecation/zope.deprecation-4.1.2.tar.gz
+	md5sums = e9a663ded58f4f9f7881beb56cae2782
+
+pkgname = python-zope-deprecation
+
