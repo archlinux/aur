@@ -1,0 +1,14 @@
+pkgbase = touchtyper
+	pkgdesc = typing trainer - an application suite for training and exercising touchtyping
+	pkgver = 1.0rc2
+	pkgrel = 1
+	url = http://typingtrainer.sourceforge.net/
+	arch = i686
+	license = GPL-2
+	depends = kdelibs3
+	depends = hicolor-icon-theme
+	source = http://downloads.sourceforge.net/project/typingtrainer/touchtyper/1.0rc2/touchtyper-1.0rc2.tar.gz
+	md5sums = a979c193039b994b81e0553034f91115
+
+pkgname = touchtyper
+
