@@ -1,0 +1,20 @@
+pkgbase = simpmd-git
+	pkgdesc = Full emulator of PMD85 (git)
+	pkgver = r1.4472469
+	pkgrel = 1
+	url = http://dsrg.mff.cuni.cz/~ceres/prj/SimPMD/
+	arch = i686
+	arch = x86_64
+	license = apache
+	depends = sdl
+	depends = python
+	depends = popt
+	depends = doxygen
+	replaces = simpmd-svn
+	source = simpmd-git::git+https://github.com/jose1711/simpmd.git
+	source = simpmd.desktop
+	md5sums = SKIP
+	md5sums = 8fba184b70c9eea6cbe63a9b567fd8b7
+
+pkgname = simpmd-git
+

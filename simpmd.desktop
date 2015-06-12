@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=SimPMD
+Comment=PMD85 emulator
+Exec=simpmd
+Categories=System;Emulator;
