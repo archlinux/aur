@@ -1,0 +1,53 @@
+--- vinetto
++++ vinetto
+***************
+*** 32,38 ****
+  import sys
+  import os
+  import StringIO
+! import md5
+  import vinreport
+  
+  from optparse import OptionParser
+--- 32,38 ----
+  import sys
+  import os
+  import StringIO
+! import hashlib
+  import vinreport
+  
+  from optparse import OptionParser
+***************
+*** 149,155 ****
+      outputdir += "/"
+      
+      try:
+!         import Image
+          PIL = "imported"
+      except ImportError, e:
+          print >> sys.stderr, ""
+--- 149,155 ----
+      outputdir += "/"
+      
+      try:
+!         from PIL import Image
+          PIL = "imported"
+      except ImportError, e:
+          print >> sys.stderr, ""
+***************
+*** 164,170 ****
+      if htmlrep == True:
+          report = vinreport.HtRep(tDBfname, outputdir, getencodings(), __version__ + " (r" + \
+                                   __revision__[11:-2] +")")
+!         md5tDB = md5.new(thumbsDB).hexdigest()
+          report.SetFileSection(longueur, md5tDB)
+  
+  # -----------------------------------------------------------------------------
+--- 164,170 ----
+      if htmlrep == True:
+          report = vinreport.HtRep(tDBfname, outputdir, getencodings(), __version__ + " (r" + \
+                                   __revision__[11:-2] +")")
+!         md5tDB = hashlib.md5(thumbsDB).hexdigest()
+          report.SetFileSection(longueur, md5tDB)
+  
+  # -----------------------------------------------------------------------------
