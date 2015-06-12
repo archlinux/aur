@@ -1,0 +1,17 @@
+pkgbase = xwit
+	pkgdesc = a utility that allows to call some X11 functions from CLI or shell script
+	pkgver = 3.4
+	pkgrel = 3
+	url = http://packages.debian.org/unstable/x11/xwit
+	arch = i686
+	arch = armv6h
+	arch = x86_64
+	license = other
+	depends = libx11
+	source = http://ftp.de.debian.org/debian/pool/main/x/xwit/xwit_3.4.orig.tar.gz
+	source = http://ftp.de.debian.org/debian/pool/main/x/xwit/xwit_3.4-13.debian.tar.gz
+	md5sums = bac527aab86715fcd76f44d9cf970ade
+	md5sums = 4e90f8a687a7a9cf0180b5c35c13a2d0
+
+pkgname = xwit
+
