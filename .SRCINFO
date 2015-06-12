@@ -1,0 +1,17 @@
+pkgbase = ttf-noto
+	pkgdesc = Fonts support all languages/characters in Unicode
+	pkgver = 20150612
+	pkgrel = 1
+	url = http://www.google.com/get/noto
+	install = ttf-noto.install
+	arch = any
+	license = apache
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	provides = ttf-font
+	source = http://storage.googleapis.com/noto-website/pkgs/Noto-hinted.zip
+	md5sums = 077a9978839e37b29af710819fb17729
+
+pkgname = ttf-noto
+
