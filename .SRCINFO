@@ -1,0 +1,14 @@
+pkgbase = or1ksim-git
+	pkgdesc = OpenRISC simulator
+	pkgver = 20150224
+	pkgrel = 1
+	url = https://github.com/openrisc/or1ksim
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	source = git://github.com/openrisc/or1ksim
+	md5sums = SKIP
+
+pkgname = or1ksim-git
+
