@@ -1,0 +1,12 @@
+pkgbase = fi
+	pkgdesc = f-irc is an irc terminal client
+	pkgver = 1.36
+	pkgrel = 1
+	url = http://www.vanheusden.com/fi/
+	arch = i686
+	license = unknown
+	depends = ncurses
+	source = http://www.vanheusden.com/f-irc/fi-1.36.tgz
+
+pkgname = fi
+
