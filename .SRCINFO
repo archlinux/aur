@@ -1,0 +1,16 @@
+pkgbase = python-rply-git
+	pkgdesc = A pure Python Lex/Yacc that works with RPython
+	pkgver = v0.7.3.r3.g700daa7
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/rply
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	provides = python-rply
+	options = !emptydirs
+	source = git+https://github.com/alex/rply.git
+	md5sums = SKIP
+
+pkgname = python-rply-git
+
