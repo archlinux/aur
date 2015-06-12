@@ -1,0 +1,20 @@
+pkgbase = key-mon
+	pkgdesc = A small utility to display your current keyboard and mouse status. Useful for screencasts.
+	pkgver = 1.17
+	pkgrel = 1
+	url = http://code.google.com/p/key-mon/
+	install = key-mon.install
+	arch = any
+	license = Apache 2.0
+	makedepends = python2-distribute
+	depends = pygtk
+	depends = dbus-glib
+	depends = python2-dbus
+	depends = python2-xlib
+	source = http://key-mon.googlecode.com/files/key-mon-1.17.tar.gz
+	source = key-mon.install
+	md5sums = 68bfe1ff8765878cf7d100759d433473
+	md5sums = bb92b6ada97430e35595ca0f7e48b931
+
+pkgname = key-mon
+
