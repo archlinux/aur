@@ -1,0 +1,17 @@
+pkgbase = python2-libtiff-svn
+	pkgdesc = A wrapper to the libtiff library to Python using ctypes
+	pkgver = r107
+	pkgrel = 1
+	url = http://code.google.com/p/pylibtiff/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = python2
+	depends = libtiff
+	provides = python2-libtiff
+	conflicts = python2-libtiff
+	source = python2-libtiff-svn::svn+http://pylibtiff.googlecode.com/svn/trunk/
+	md5sums = SKIP
+
+pkgname = python2-libtiff-svn
+
