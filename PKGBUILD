@@ -3,7 +3,7 @@
 
 pkgname=checkhash
 pkgver=1.0.4
-pkgrel=3
+pkgrel=1
 pkgdesc="GUI wrapper of GNU Coreutils sha1sum"
 arch=('i686' 'x86_64')
 url="https://github.com/filipe-marques/check-hash"
