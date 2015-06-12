@@ -1,0 +1,21 @@
+pkgbase = lets-encrypt-preview-git
+	pkgdesc = A utility that works alongside Apache and nginx to automatically obtain a certificate and convert a website to HTTPS
+	pkgver = 2096.bd130a8
+	pkgrel = 1
+	url = https://letsencrypt.org/
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = python
+	depends = python-augeas
+	depends = python-setuptools
+	depends = dialog
+	depends = openssl
+	depends = gcc
+	depends = swig
+	depends = libffi
+	source = letsencrypt::git+https://github.com/letsencrypt/lets-encrypt-preview
+	md5sums = SKIP
+
+pkgname = lets-encrypt-preview-git
+
