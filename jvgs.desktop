@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=jvgs
+GenericName=Platform Game
+Comment=Minimalistic platform game
+Exec=jvgs
+Icon=jvgs.png
+Categories=Game;ArcadeGame;
