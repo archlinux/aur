@@ -1,0 +1,18 @@
+pkgbase = libappstore-bzr
+	pkgdesc = Provides access to the Ubuntu app store through PackageKit
+	pkgver = 22
+	pkgrel = 1
+	url = http://launchpad.net/libappstore
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	depends = packagekit
+	depends = sqlheavy
+	depends = libgee
+	depends = gtk3
+	conflicts = libappstore
+	replaces = libappstore
+
+pkgname = libappstore-bzr
+
