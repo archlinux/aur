@@ -1,0 +1,16 @@
+pkgbase = pymol-autodock
+	pkgdesc = Autodock/Vina plugin for PyMOL
+	pkgver = 2.1.1
+	pkgrel = 2
+	url = http://wwwuser.gwdg.de/~dseelig/adplugin
+	arch = any
+	license = custom
+	depends = pymol
+	depends = autodocksuite
+	depends = autodock-vina
+	depends = mgltools
+	source = http://wwwuser.gwdg.de/~dseelig/autodock.py
+	md5sums = 763a44d9ba512dc28809978e81929ca9
+
+pkgname = pymol-autodock
+
