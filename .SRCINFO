@@ -1,0 +1,15 @@
+pkgbase = sem
+	pkgdesc = an unfinished 3d worms/scorched 3d clone
+	pkgver = 0.4
+	pkgrel = 2
+	url = http://hippo.nipax.cz/download.cz.php?id=69
+	arch = i686
+	license = GPL-2
+	depends = sdl
+	depends = sdl_ttf
+	depends = sdl_image
+	source = http://hippo.nipax.cz/src/sem-0.4-src.tar.gz
+	md5sums = 4f69ac684cf3f9a2d3bd70ec7a05ec51
+
+pkgname = sem
+
