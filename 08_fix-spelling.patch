@@ -1,0 +1,17 @@
+Description: Fix spelling error in manpage
+Origin: vendor
+Forwarded: no
+Author: Alessandro Ghedini <ghedo@debian.org>
+Last-Update: 2014-09-10
+
+--- a/docs/curl.1
++++ b/docs/curl.1
+@@ -1637,7 +1637,7 @@
+ still.
+ 
+ When using Kerberos V5 with a Windows based server you should include the
+-Windows domain name in the user name, in order for the server to succesfully
++Windows domain name in the user name, in order for the server to successfully
+ obtain a Kerberos Ticket. If you don't then the initial authentication
+ handshake may fail.
+ 

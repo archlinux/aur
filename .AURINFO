@@ -1,0 +1,31 @@
+pkgbase = libcurl-gnutls
+	pkgdesc = An URL retrieval utility and library
+	pkgver = 7.38.0
+	pkgrel = 1
+	url = http://curl.haxx.se
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = ca-certificates
+	depends = libssh2
+	depends = zlib
+	depends = gnutls
+	source = http://curl.haxx.se/download/curl-7.38.0.tar.gz
+	source = http://curl.haxx.se/download/curl-7.38.0.tar.gz.asc
+	source = curlbuild.h
+	source = 01_runtests_gdb.patch
+	source = 02_art_http_scripting.patch
+	source = 03_keep_symbols_compat.patch
+	source = 04_workaround_as_needed_bug.patch
+	source = 06_always-disable-valgrind.patch
+	source = 07_do-not-disable-debug-symbols.patch
+	source = 08_fix-spelling.patch
+	source = 09_libtoolize_check.patch
+	source = 10_fix-resolver.patch
+	source = 90_gnutls.patch
+	source = 99_nss.patch
+	options = !libtool
+	options = !strip
+
+pkgname = libcurl-gnutls
+
