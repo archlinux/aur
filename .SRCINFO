@@ -1,0 +1,19 @@
+pkgbase = python2-stochpy
+	pkgdesc = Stochastic simulation algorithms for SBML and PySCeS models
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = http://stompy.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	license = GPL
+	depends = python2
+	optdepends = libsbml
+	optdepends = python2-pysces
+	optdepends = python2-matplotlib
+	optdepends = libxml2
+	source = http://sourceforge.net/projects/stochpy/files/StochPy-1.1/StochPy-1.1.5.tar.bz2
+	md5sums = 502308cba7e2786443b4b353ec26ae54
+
+pkgname = python2-stochpy
+
