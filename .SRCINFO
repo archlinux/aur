@@ -1,0 +1,13 @@
+pkgbase = ozunity-wallpapers
+	pkgdesc = Background images and Logos for Oz Unity
+	pkgver = 0.1
+	pkgrel = 4
+	url = http://www.ultimateeditionoz.com
+	arch = any
+	license = CCPL
+	makedepends = intltool
+	source = git://github.com/ryanvade/ozunity-wallpapers.git
+	md5sums = SKIP
+
+pkgname = ozunity-wallpapers
+
