@@ -1,0 +1,18 @@
+pkgbase = bootcleanse
+	pkgdesc = Cleanse your system from old MBR codes and boot flags
+	pkgver = 2
+	pkgrel = 1
+	url = https://github.com/maandree/bootcleanse
+	arch = any
+	license = GPL3
+	makedepends = texinfo
+	makedepends = gzip
+	depends = python3
+	depends = sudo
+	depends = sh
+	depends = coreutils
+	source = https://github.com/maandree/bootcleanse/archive/2.tar.gz
+	sha256sums = aed2f962a8b337263bfcc1aa215fc875babb1d5713143a9887d4cf8c3194b179
+
+pkgname = bootcleanse
+
