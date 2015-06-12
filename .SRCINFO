@@ -1,0 +1,18 @@
+pkgbase = python2-socks
+	pkgdesc = Routes sockets of any TCP service through a SOCKS4, SOCKS5 or HTTP proxy (Anorov fork PySocks replaces socksipy)
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = http://socksipy.sourceforge.net/
+	arch = any
+	license = BSD
+	depends = python2
+	provides = socksipy
+	provides = python2-socksipy-branch
+	conflicts = socksipy
+	conflicts = python2-socksipy-branch
+	replaces = python2-socksipy-branch
+	source = https://github.com/Anorov/PySocks/archive/1.5.0.tar.gz
+	md5sums = e18e8ffd800a9b04c3ec3ccdfc4b71e5
+
+pkgname = python2-socks
+
