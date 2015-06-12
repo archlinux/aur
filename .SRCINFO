@@ -1,0 +1,16 @@
+pkgbase = robombs_bin
+	pkgdesc = a free LAN game inspired by Bomberman
+	pkgver = 1.02
+	pkgrel = 2
+	url = http://jpct.de/robombs.game/
+	arch = i686
+	license = custom
+	depends = java-runtime
+	options = !strip
+	source = http://jpct.de/download/robombs.zip
+	source = robombs.desktop
+	md5sums = c842b2525b94478da8a883c8872c7ea2
+	md5sums = 61b9520f7c8e601c721e11176763471e
+
+pkgname = robombs_bin
+

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Robombs
+GenericName=Action Game
+Comment=Bomberman clone
+Exec=robombs
+Categories=Game;ActionGame;
