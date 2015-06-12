@@ -1,16 +1,20 @@
 pkgbase = xxd
 	pkgdesc = Hexadecimal dump and undump utility
 	pkgver = 1.10
-	pkgrel = 3
+	pkgrel = 4
 	url = http://grail.cba.csuohio.edu/~somos/
 	arch = i686
 	arch = x86_64
-	license = CUSTOM
+	arch = armv6h
+	license = custom
+	depends = gcc-libs
 	conflicts = vim
 	conflicts = gvim
 	options = zipman
 	source = http://grail.cba.csuohio.edu/~somos/xxd-1.10.tar.gz
+	source = LICENSE
 	md5sums = 604cf64093fddc30adf41f1f371c9032
+	md5sums = 292c31826ef1ef3f6ba7ecdd0a891a73
 
 pkgname = xxd
 
