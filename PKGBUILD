@@ -14,6 +14,7 @@ license=('MIT')
 depends=('qt4' 'miniupnpc' 'boost-libs')
 makedepends=('boost' 'gcc' 'make' 'git')
 provides=('dogecoindark-qt')
+conflicts=('dogecoindark-qt')
 install=$pkgname.install
 sha256sums=('ebf7090ca1202e2c2ccd1aa5bb03e6ac911c458141a1cedda9b41f9c26c2602c' '02fb4dfe9469629ed43afe64ab3b5c7d702da8c78865c529c942d5c347281b66' 'SKIP')
 
