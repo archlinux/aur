@@ -1,0 +1,55 @@
+--- MadShaders_030_linux/madshaders.py.orig	2015-02-03 11:47:51.654642198 -0200
++++ MadShaders_030_linux/madshaders.py	2015-02-03 11:49:48.343629214 -0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ #
+ # Simple GUI (graphical user interface) for MadShaders.
+ # (c)2013 Geeks3D - http://www.geeks3d.com
+@@ -87,7 +87,7 @@
+   if (demo_file == ""):
+     g_command_line = ""
+   else:
+-	g_command_line = "./GLSLHacker /demofile=\'\"%s\"\' /width=%d /height=%d /no_menubar /disable_tcpip_server" % (demo_file, g_width, g_height)
++	g_command_line = "/usr/bin/glslhacker /demofile=\'\"/usr/share/madshaders/%s\"\' /width=%d /height=%d /no_menubar /disable_tcpip_server" % (demo_file, g_width, g_height)
+ 	if (fullscreen.get() == 1):
+ 		g_command_line += " /fullscreen"
+ 
+--- mad-shaders-frontend/mad-shaders-frontend.py.orig	2015-02-03 11:52:31.844611023 -0200
++++ mad-shaders-frontend/mad-shaders-frontend.py	2015-02-03 11:55:00.511594482 -0200
+@@ -37,7 +37,7 @@
+ OPT_WIDTH      = ' /width='
+ OPT_HEIGHT     = ' /height='
+ OPT_DEMO       = ' /demofile='
+-DEMO_CMD       = './GLSLHacker /no_menubar /disable_tcpip_server'
++DEMO_CMD       = '/usr/bin/glslhacker /no_menubar /disable_tcpip_server'
+ 
+ class FrontendUI:
+ 	def onDemosComboBoxChanged (self, widget, data=None):
+@@ -47,7 +47,7 @@
+ 			entry, desc, url, demo = model[iter][:4]
+ 			self.labelDescription.set_text (desc)
+ 			self.linkHomepage.set_uri (url)
+-			self.demo = "\\\"" + demo + "\\\""
++			self.demo = "\\\"/usr/share/madshaders/" + demo + "\\\""
+ 
+ 	def onCheckbuttonFullscreenToggled (self, widget, data=None):
+ 		if (widget.get_active ()):
+@@ -90,7 +90,7 @@
+ 	def __init__(self):
+ 		# setup/load glade UI-description filie
+ 		self.builder = Gtk.Builder ()
+-		self.builder.add_from_file ("./mad-shaders-frontend.glade")
++		self.builder.add_from_file ("/usr/share/madshaders/mad-shaders-frontend.glade")
+ 
+ 		handlers = {
+ 			"onDemosComboBoxChanged": self.onDemosComboBoxChanged,
+@@ -115,7 +115,7 @@
+ 		self.labelInfo = self.builder.get_object("labelInfo")
+ 
+ 		self.mainWindow.set_title ("Geeks3D MadShaders 0.3.0")
+-		self.mainWindow.set_icon_from_file ("mad-shaders-frontend-icon.png")
++		self.mainWindow.set_icon_from_file ("/usr/share/madshaders/mad-shaders-frontend-icon.png")
+ 		self.mainWindow.show_all ()
+ 		self.linkHomepage.set_uri ("https://www.shadertoy.com/view/4df3Wj?from=geeks3dmadshaders")
+ 		self.linkHomepage.set_label ("visit Demo's Homepage")

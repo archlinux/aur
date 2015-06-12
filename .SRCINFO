@@ -1,0 +1,21 @@
+pkgbase = madshaders
+	pkgdesc = cross-platform GPU stress test and OpenGL benchmark.
+	pkgver = 0.3.0
+	pkgrel = 3
+	url = http://www.geeks3d.com/madshaders/
+	arch = any
+	license = custom
+	makedepends = unzip
+	depends = glslhacker
+	optdepends = tk: for madshaders-tk frontend
+	optdepends = python2: for madshaders-tk frontend
+	optdepends = python-gobject: for madshaders-gtk frontend
+	source = http://www.ozone3d.net/glslhacker/demos/MadShaders_030_linux.zip
+	source = http://www.ozone3d.net/dl/201404/mad-shaders-frontend-linux.tar.bz2
+	source = fix_paths.patch
+	md5sums = b5478d7416b0c1c50bb49d21ffdc69f1
+	md5sums = dfb4b7f03b9e3e8deda0bedddda408bf
+	md5sums = 59784bfabfedc113561a55d2f1a6bf53
+
+pkgname = madshaders
+
