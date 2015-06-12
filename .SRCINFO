@@ -1,0 +1,13 @@
+pkgbase = glslhacker-sample-pack
+	pkgdesc = GLSLHacker code sample pack
+	pkgver = 2.30.0
+	pkgrel = 1
+	url = http://www.geeks3d.com/glslhacker/
+	arch = any
+	license = custom
+	makedepends = unzip
+	source = http://www.ozone3d.net/glslhacker/dl/GLSLHacker_CodeSamplePack_DEV.zip
+	md5sums = 94fc780d87beaa12ea3af8ed41687b44
+
+pkgname = glslhacker-sample-pack
+
