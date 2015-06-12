@@ -1,0 +1,16 @@
+pkgbase = csympy-git
+	pkgdesc = Fast symbolic manipulation library, written in C++
+	pkgver = r1741.8993cc7
+	pkgrel = 1
+	url = http://sympy.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = python2
+	source = csympy-git::git+https://github.com/sympy/csympy.git
+	md5sums = SKIP
+
+pkgname = csympy-git
+
