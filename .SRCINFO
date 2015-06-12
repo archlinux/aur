@@ -1,0 +1,19 @@
+pkgbase = emboss
+	pkgdesc = A collection of molecular biology applications
+	pkgver = 6.6.0
+	pkgrel = 1
+	url = http://emboss.sourceforge.net/
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	depends = gd
+	depends = pcre
+	depends = java-runtime
+	optdepends = libmysqlclient
+	optdepends = postgresql-libs
+	options = !libtool
+	source = ftp://emboss.open-bio.org/pub/EMBOSS/EMBOSS-6.6.0.tar.gz
+	md5sums = cc3fca80cb0618deb10fa0d29fe90e4b
+
+pkgname = emboss
+
