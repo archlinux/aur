@@ -1,0 +1,13 @@
+--- angle/src/common/platform.h.orig	2014-12-30 22:25:05.452862806 +0100
++++ angle/src/common/platform.h	2014-12-30 22:25:23.828052663 +0100
+@@ -63,9 +63,9 @@
+ #       include <d3d10.h>
+ #       include <d3d11.h>
+ #       include <dxgi.h>
++#       include <dxgi1_2.h>
+ #      if defined(_MSC_VER) && (_MSC_VER >= 1700)
+ #       include <d3d11_1.h>
+-#       include <dxgi1_2.h>
+ #      endif
+ #      if !defined(COMPILER_IMPLEMENTATION)
+ #       include <d3dcompiler.h>

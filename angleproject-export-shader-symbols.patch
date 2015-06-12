@@ -1,0 +1,36 @@
+--- angle/src/libGLESv2/libGLESv2.def.orig	2014-12-30 12:59:07.560620988 +0100
++++ angle/src/libGLESv2/libGLESv2.def	2014-12-30 13:00:22.381399755 +0100
+@@ -294,3 +294,15 @@
+     glBindTexImage                  @158 NONAME
+     glCreateRenderer                @177 NONAME
+     glDestroyRenderer               @178 NONAME
++
++    ; WebKit dependencies
++    ShInitBuiltInResources          @300 NONAME
++    ShInitialize                    @301 NONAME
++    ShDestruct                      @302 NONAME
++    ShGetInfo                       @303 NONAME
++    ShGetInfoLog                    @304 NONAME
++    ShGetVariableInfo               @305 NONAME
++    ShGetObjectCode                 @306 NONAME
++    ShCompile                       @307 NONAME
++    ShConstructCompiler             @308 NONAME
++
+--- angle/src/libGLESv2/libGLESv2_mingw32.def.orig	2014-12-30 12:59:07.561620998 +0100
++++ angle/src/libGLESv2/libGLESv2_mingw32.def	2014-12-30 13:01:37.782182097 +0100
+@@ -294,3 +294,15 @@
+     glBindTexImage@4                         @158 NONAME
+     glCreateRenderer                         @177 NONAME
+     glDestroyRenderer                        @178 NONAME
++
++    ; WebKit dependencies
++    ShInitBuiltInResources                   @300 NONAME
++    ShInitialize                             @301 NONAME
++    ShDestruct                               @302 NONAME
++    ShGetInfo                                @303 NONAME
++    ShGetInfoLog                             @304 NONAME
++    ShGetVariableInfo                        @305 NONAME
++    ShGetObjectCode                          @306 NONAME
++    ShCompile                                @307 NONAME
++    ShConstructCompiler                      @308 NONAME
++

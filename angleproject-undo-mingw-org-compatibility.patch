@@ -1,0 +1,11 @@
+--- angle/src/common/platform.h.orig	2014-12-29 14:28:40.707691427 +0100
++++ angle/src/common/platform.h	2014-12-29 14:28:57.662866462 +0100
+@@ -82,7 +82,7 @@
+ #       endif
+ #   endif
+ 
+-#  if defined(__MINGW32__) // Missing defines on MinGW
++#  if defined(__MINGW32__) && 0 // Missing defines on MinGW
+ typedef enum D3D11_MAP_FLAG
+ {
+     D3D11_MAP_FLAG_DO_NOT_WAIT = 0x100000L
