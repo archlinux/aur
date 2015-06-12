@@ -1,0 +1,16 @@
+pkgbase = gwcd-git
+	pkgdesc = Whereigo files (.gwc) decompiler (git)
+	pkgver = r6.2481325
+	pkgrel = 1
+	url = https://github.com/driquet/gwcd
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = python
+	source = gwcd-git::git+https://github.com/driquet/gwcd.git
+	source = gwcd
+	md5sums = SKIP
+	md5sums = e21172d23a5cc196684fda686b8679ee
+
+pkgname = gwcd-git
+
