@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Tamagotchi Boxing
+Comment=Train your pet to become a boxer
+Exec=tamagotchi_boxing
+Categories=Game;StrategyGame;

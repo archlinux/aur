@@ -1,0 +1,20 @@
+pkgbase = tamagotchi_boxing
+	pkgdesc = A game where you train a virtual pet to become a boxer
+	pkgver = 0.1
+	pkgrel = 3
+	url = http://code.google.com/p/tamagotchi-boxing/
+	install = tamagotchi_boxing.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = sge
+	depends = sdl_ttf
+	depends = gcc-libs
+	source = http://tamagotchi-boxing.googlecode.com/files/tamagotchi_boxing-0.1.tar.gz
+	source = tamagotchi_boxing.desktop
+	md5sums = f0dae22511c2ba74bef53cae64df78fd
+	md5sums = 1a42aaa10b608438ccf7fd0eebded929
+
+pkgname = tamagotchi_boxing
+

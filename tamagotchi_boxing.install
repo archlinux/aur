@@ -1,0 +1,20 @@
+post_install() {
+  chgrp games /usr/share/tamagotchi_boxing
+  chmod 675 /usr/share/tamagotchi_boxing
+
+  echo "Add user to group games to enable game saving. Please note that this application is not multiuser friendly."
+  /bin/true
+}
+
+post_upgrade() {
+/bin/true
+}
+
+pre_remove() {
+/bin/true
+}
+
+op=$1
+shift
+
+$op "$@"
