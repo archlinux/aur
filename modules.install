@@ -1,0 +1,11 @@
+KERNEL_VERSION=4.0.0-usermodelinux
+
+post_install() {
+  echo ">>> Updating module dependencies. Please wait ..."
+  depmod ${KERNEL_VERSION}
+}
+
+post_upgrade() {
+  echo ">>> Updating module dependencies. Please wait ..."
+  depmod ${KERNEL_VERSION}
+}
