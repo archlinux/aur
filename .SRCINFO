@@ -1,0 +1,34 @@
+pkgbase = blueshift
+	pkgdesc = An extensible and highly configurable alternative to redshift
+	pkgver = 1.90.3
+	pkgrel = 1
+	url = https://github.com/maandree/blueshift
+	install = blueshift.install
+	arch = i686
+	arch = x86_64
+	license = AGPL3
+	license = GPL3
+	license = custom:GFDL1.3
+	makedepends = cython
+	makedepends = gcc
+	makedepends = python3
+	makedepends = libxcb
+	makedepends = make
+	makedepends = coreutils
+	makedepends = sed
+	makedepends = zip
+	makedepends = texinfo
+	makedepends = auto-auto-complete
+	depends = python3
+	depends = solar-python
+	depends = argparser
+	depends = pylibgamma
+	depends = libxcb
+	optdepends = adjbacklight: for backlight adjustments without root requirements
+	optdepends = linux: for backlight support
+	optdepends = wget: for weather support, default command
+	source = https://github.com/maandree/blueshift/archive/1.90.3.tar.gz
+	sha256sums = 70bac54b6d8fad0bd2f88dff0d7dca94d3fd316541f23b3326dbbd70982c0698
+
+pkgname = blueshift
+
