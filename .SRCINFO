@@ -1,0 +1,16 @@
+pkgbase = fotbal
+	pkgdesc = a simple 2d soccer game
+	pkgver = 1
+	pkgrel = 4
+	url = http://hippo.nipax.cz/download.cz.php?id=41
+	arch = i686
+	arch = x86_64
+	license = GPL-2
+	depends = allegro
+	source = http://hippo.nipax.cz/src/fotbal-src.tar.gz
+	source = fotbal.desktop
+	md5sums = ed4146b05c3a074cd63c483bb685b1ed
+	md5sums = 3a8909900f3778dbed46a5008dd9eda9
+
+pkgname = fotbal
+
