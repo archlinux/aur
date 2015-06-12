@@ -1,0 +1,19 @@
+pkgbase = staden
+	pkgdesc = Tools for DNA sequence assembly (Gap4/5), editing and analysis (Spin)
+	pkgver = 2.0.0b10
+	pkgrel = 1
+	url = http://staden.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = staden-io_lib
+	depends = tklib
+	optdepends = iwidgets: gap5 prefinish
+	optdepends = xz: better gap5 compression
+	optdepends = libpng: gap5 Report Mutations
+	options = !emptydirs
+	source = http://sourceforge.net/projects/staden/files/staden/2.0.0b10/staden-2.0.0b10-src.tar.gz
+	md5sums = 81ad0b840253774e41d3089fca7af688
+
+pkgname = staden
+
