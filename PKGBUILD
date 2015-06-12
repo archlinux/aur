@@ -1,0 +1,48 @@
+# This is an example PKGBUILD file. Use this as a start to creating your own,
+# and remove these comments. For more information, see 'man PKGBUILD'.
+# NOTE: Please fill out the license field for your package! If it is unknown,
+# then please put 'unknown'.
+
+#Maintainer: Felice Murolo <linuxboy@fel.hopto.org>
+pkgname=kencfs
+pkgver=1.5.0
+pkgrel=1
+#epoch=
+pkgdesc="GUI frontend for encfs. Create, mount, umount and delete your encrypted fs."
+arch=('i686' 'x86_64')
+url="http://kde-apps.org/content/show.php/KEncFS?content=134003"
+license=('(L)GPL')
+#groups=()
+depends=('encfs>=1.7.4-8' 'fuse>=2.9.2-1' 'kdelibs')
+#makedepends=()
+#checkdepends=()
+#optdepends=()
+#provides=()
+#conflicts=()
+#replaces=()
+#backup=()
+#options=()
+#install=
+#changelog=
+source=($pkgname-$pkgver.tar.gz)
+noextract=()
+md5sums=('cbcde8d0eb3eb351a6de5f7e706ae424') #generate with 'makepkg -g'
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  qmake-qt4
+  make
+}
+
+check() {
+  cd "$srcdir/$pkgname-$pkgver"
+  make -k check
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+  #make DESTDIR="$pkgdir/" install
+  make INSTALL_ROOT=$pkgdir install || return 1
+}
+
+# vim:set ts=2 sw=2 et:
