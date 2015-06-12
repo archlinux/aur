@@ -1,0 +1,16 @@
+pkgbase = analyse-gamma
+	pkgdesc = Gamma adjustment analysis tool
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/maandree/analyse-gamma
+	arch = any
+	license = GPL3
+	makedepends = make
+	makedepends = coreutils
+	depends = python3
+	depends = pylibgamma
+	source = https://github.com/maandree/analyse-gamma/archive/1.0.tar.gz
+	sha256sums = 16e4171462a9685bf8ef0970a4ce2b2a768fcc7ba6e598310e4deb2eb3facf38
+
+pkgname = analyse-gamma
+
