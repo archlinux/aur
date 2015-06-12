@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=GAdmin OpenVPN Server
+GenericName=GAdmin OpenVPN Server
+Comment=OpenVPN Server Administration
+Exec=gksu gadmin-openvpn-server
+Icon=gadmin-openvpn-server
+Terminal=false
+Type=Application
+Categories=Application;Network;X-Red-Hat-ServerConfig;X-Red-Hat-Base;

@@ -1,0 +1,20 @@
+pkgbase = gadmin-openvpn-server
+	pkgdesc = A GTK+ graphical user interface for OpenVPN (server)
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = http://dalalven.dtdns.net/linux/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pkgconfig
+	depends = openvpn
+	depends = bridge-utils
+	depends = gksu
+	options = !libtool
+	source = http://dalalven.dtdns.net/linux/gadmin-openvpn/server/gadmin-openvpn-server-0.1.6.tar.gz
+	source = gadmin-openvpn-server.desktop
+	md5sums = a42b18d6b58d319bb00c043ffa8347a5
+	md5sums = ff53aac86b1dc11486ba119f91366a01
+
+pkgname = gadmin-openvpn-server
+
