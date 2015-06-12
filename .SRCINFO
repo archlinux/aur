@@ -1,0 +1,20 @@
+pkgbase = python-rpy2-hg
+	pkgdesc = A simple, robust Python interface to the R Programming Language.
+	pkgver = 2542.d0b42a0bee6c
+	pkgrel = 1
+	url = http://rpy.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = LGPL
+	makedepends = mercurial
+	depends = python-numpy
+	depends = r
+	provides = python-rpy2
+	conflicts = python-rpy2
+	source = python-rpy2-hg::hg+https://bitbucket.org/rpy2/rpy2
+	md5sums = SKIP
+
+pkgname = python-rpy2-hg
+
