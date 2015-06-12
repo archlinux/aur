@@ -1,0 +1,15 @@
+pkgbase = gimp-fix-ca
+	pkgdesc = A Gimp plugin for correcting chromatic aberration (CA)
+	pkgver = 3.0.2
+	pkgrel = 3
+	url = http://kcd.sourceforge.net/fix-ca.php
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	depends = gimp
+	source = http://kcd.sourceforge.net/fix-ca.c
+	md5sums = 8cf2fb2e731ac0785dda0064bce11e24
+
+pkgname = gimp-fix-ca
+
