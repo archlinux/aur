@@ -1,0 +1,14 @@
+pkgbase = fbctrl
+	pkgdesc = a lightweight utility to switch the windows or desktops on top of any compatible window manager like fluxbox, blackbox or openbox
+	pkgver = 0.1.1
+	pkgrel = 5
+	url = https://babelize.org/fbctrl.php
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = libx11
+	source = http://babelize.org/download/fbctrl/fbctrl-0.1.1.tar.gz
+	md5sums = 92a052ee0e2fb79826144bffb3cd31f6
+
+pkgname = fbctrl
+
