@@ -1,4 +1,4 @@
-pkgbase = java7-openjdk
+pkgbase = java7-openjdk-infinality
 	pkgver = 7.u79_2.5.5
 	pkgrel = 1
 	url = http://icedtea.classpath.org

@@ -6,7 +6,7 @@
 # Upstream: https://projects.archlinux.org/svntogit/packages.git/?h=packages/java7-openjdk
 
 pkgname=('jre7-openjdk-headless-infinality' 'jre7-openjdk-infinality' 'jdk7-openjdk-infinality')
-pkgbase=java7-openjdk
+pkgbase=java7-openjdk-infinality
 _java_ver=7
 _icedtea_ver=2.5.5
 _updatever=79
