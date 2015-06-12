@@ -1,0 +1,18 @@
+pkgbase = pcre-static
+	pkgdesc = A library that implements Perl 5-style regular expressions
+	pkgver = 8.36
+	pkgrel = 1
+	url = http://www.pcre.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = gcc-libs
+	options = staticlibs
+	options = !libtool
+	source = ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.36.tar.bz2
+	source = ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.36.tar.bz2.sig
+	md5sums = b767bc9af0c20bc9c1fe403b0d41ad97
+	md5sums = SKIP
+
+pkgname = pcre-static
+
