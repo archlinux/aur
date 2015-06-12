@@ -1,0 +1,22 @@
+pkgbase = superlu
+	pkgdesc = Set of subroutines to solve a sparse linear system
+	pkgver = 4.3
+	pkgrel = 1
+	url = http://crd.lbl.gov/~xiaoye/SuperLU/
+	install = superlu.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = gcc-fortran
+	makedepends = tcsh
+	depends = gcc-libs
+	depends = blas
+	source = http://crd.lbl.gov/~xiaoye/SuperLU/superlu_4.3.tar.gz
+	source = http://crd.lbl.gov/~xiaoye/SuperLU/License.txt
+	source = http://crd.lbl.gov/~xiaoye/SuperLU/superlu_ug.pdf
+	md5sums = b72c6309f25e9660133007b82621ba7c
+	md5sums = f78e2ac527dbb50f53766475a9c542bd
+	md5sums = 0097d559fa73f8fc182ac05635537454
+
+pkgname = superlu
+
