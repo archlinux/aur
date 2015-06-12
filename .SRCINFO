@@ -1,0 +1,20 @@
+pkgbase = python-imagehash-git
+	pkgdesc = A Python Perceptual Image Hashing Module
+	pkgver = r1
+	pkgrel = 1
+	url = https://github.com/JohannesBuchner/imagehash
+	arch = any
+	license = custom:BSD
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-pillow
+	provides = imagehash
+	conflicts = imagehash
+	source = imagehash::git+https://github.com/JohannesBuchner/imagehash.git
+	sha512sums = SKIP
+
+pkgname = python-imagehash-git
+
