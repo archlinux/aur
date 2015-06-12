@@ -1,0 +1,17 @@
+pkgbase = bennugd-modules
+	pkgdesc = a programming language to create games (Fenix successor) - modules
+	pkgver = latest
+	pkgrel = 2
+	url = http://sourceforge.net/projects/bennugd/
+	arch = i686
+	license = GPL
+	depends = zlib
+	depends = libdes
+	depends = bennugd-core
+	depends = sdl_mixer
+	depends = libpng
+	source = http://bennugd.svn.sourceforge.net/viewvc/bennugd.tar.gz?view=tar
+	md5sums = fba4d4c464d50730b3a39890df63c241
+
+pkgname = bennugd-modules
+
