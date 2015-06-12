@@ -1,0 +1,14 @@
+pkgbase = kulic
+	pkgdesc = 2d shooting game
+	pkgver = 1.1
+	pkgrel = 2
+	url = http://hippo.nipax.cz/download.cz.php?id=59
+	arch = i686
+	license = GPL-2
+	depends = allegro
+	depends = libjpeg
+	source = http://hippo.nipax.cz/src/kulic-1.1.tar.gz
+	md5sums = 16aff4bded3ae1c6712ca71d4d429730
+
+pkgname = kulic
+
