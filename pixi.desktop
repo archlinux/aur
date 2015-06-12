@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Pixi
+Type=Application
+Comment=Pixi by DigiPen
+Terminal=false
+Exec=pixi
+Icon=/usr/share/pixi/pixi.png
+Categories=Game;
+GenericName=Pixi

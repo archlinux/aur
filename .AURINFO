@@ -1,0 +1,19 @@
+pkgbase = wine-pixi
+	pkgdesc = Digipen Freshman Game - Showcase in IGF 2012
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://appdb.winehq.org/objectManager.php?sClass=version&iId=25412
+	arch = any
+	license = Free to use and share
+	depends = wine
+	depends = lib32-openal
+	depends = lib32-libpng
+	depends = lib32-mpg123
+	source = http://www.wyrdysm.com/th15Stuf/Pixi_IGFv1.1.zip
+	source = LICENSE
+	source = pixi.desktop
+	source = pixi.png
+	source = pixi.sh
+
+pkgname = wine-pixi
+
