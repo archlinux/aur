@@ -1,4 +1,4 @@
-# Maintainer: David Seus <internetkram at posteo.de>
+# Maintainer: David Seus <archstuff at archlinux.net>
 # Contributor: Vincent Szolnoky <ippytraxx at installgentoo.com>
 # Contributor: Trevor Turner <turn3r.tr3v0r at gmail.com>
 
