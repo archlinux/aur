@@ -1,0 +1,15 @@
+pkgbase = kate-syntax-llvm
+	pkgdesc = LLVM syntax highlighting for Katepart.
+	pkgver = 1.00.r239600
+	pkgrel = 1
+	url = http://llvm.org/
+	arch = any
+	license = custom:University of Illinois/NCSA Open Source License
+	depends = katepart4
+	source = llvm.xml::https://llvm.org/svn/llvm-project/llvm/trunk/utils/kate/llvm.xml?p=239600
+	source = LICENSE.TXT::https://llvm.org/svn/llvm-project/llvm/trunk/LICENSE.TXT?p=239600
+	sha256sums = 9ceb9a61a8c35a5bad144804a63eed5caff397c5f730299b3ea4c4b2d94fc856
+	sha256sums = 721cb11de618fcf9bbb7d25a389207bf2227357e6694bc326ab32a6699f9b951
+
+pkgname = kate-syntax-llvm
+
