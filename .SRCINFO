@@ -1,0 +1,17 @@
+pkgbase = choosewm
+	pkgdesc = Choose WM gui tool. Run it from ~/.xsession or ~/.xinitrc.
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = http://packages.debian.org/unstable/x11/choosewm
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	options = zipman
+	source = http://ftp.de.debian.org/debian/pool/main/c/choosewm/choosewm_0.1.6.orig.tar.gz
+	source = http://ftp.de.debian.org/debian/pool/main/c/choosewm/choosewm_0.1.6-1.diff.gz
+	md5sums = f0a14f52a54ffdda40b64d1a43e6caaf
+	md5sums = 8fa9e7e2ea406cf0b6348bb1cbde837e
+
+pkgname = choosewm
+
