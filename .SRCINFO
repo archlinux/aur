@@ -1,0 +1,14 @@
+pkgbase = libobj
+	pkgdesc = A modern C++ library for parsing the Wavefront OBJ file format.
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://people.cs.kuleuven.be/~ares.lagae/libobj/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gcc-libs
+	source = http://people.cs.kuleuven.be/~ares.lagae/libobj/obj-0.1.tar.gz
+	md5sums = 078f08cb2cd9b40dd8ff2e0c940f37fb
+
+pkgname = libobj
+
