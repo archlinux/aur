@@ -1,5 +1,5 @@
 diff --git a/CPP/7zip/Archive/Zip/ZipIn.cpp b/CPP/7zip/Archive/Zip/ZipIn.cpp
-index 345fbf5..d170707 100644
+index 345fbf5..7a92415 100644
 --- a/CPP/7zip/Archive/Zip/ZipIn.cpp
 +++ b/CPP/7zip/Archive/Zip/ZipIn.cpp
 @@ -2,6 +2,9 @@
@@ -37,10 +37,10 @@ index 345fbf5..d170707 100644
  }
  
 +void CInArchive::RecodeFileName(CItem &item) {
-+  char *p;
++  if (item.IsUtf8()) return;
 +
 +  /* Convert filename from archive charset to current locale's charset */
-+  p = natspec_convert(item.Name.Ptr(), NULL, archive_oem_charset, 0);
++  char *p = natspec_convert(item.Name.Ptr(), NULL, archive_oem_charset, 0);
 +  if (p) {
 +    item.Name = p;
 +    free(p);
@@ -81,7 +81,7 @@ index f6b349b..834d3f5 100644
    
  }}
 diff --git a/CPP/7zip/Archive/Zip/ZipOut.cpp b/CPP/7zip/Archive/Zip/ZipOut.cpp
-index 2a1ba2c..afd1fde 100644
+index 2a1ba2c..a8e7edd 100644
 --- a/CPP/7zip/Archive/Zip/ZipOut.cpp
 +++ b/CPP/7zip/Archive/Zip/ZipOut.cpp
 @@ -2,10 +2,15 @@
@@ -111,10 +111,10 @@ index 2a1ba2c..afd1fde 100644
  }
  
 +void COutArchive::RecodeFileName(CItem &item) {
-+  char *p;
++  if (item.IsUtf8()) return;
 +
 +  /* Convert filename from current locale charset to archive charset. */
-+  p = natspec_convert(item.Name.Ptr(), archive_oem_charset, NULL, 0);
++  char *p = natspec_convert(item.Name.Ptr(), archive_oem_charset, NULL, 0);
 +  if (p) {
 +    item.Name = p;
 +    free(p);
