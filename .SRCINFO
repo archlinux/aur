@@ -1,0 +1,24 @@
+pkgbase = markmywords-bzr
+	pkgdesc = A markdown editor.
+	pkgver = r108
+	pkgrel = 1
+	url = https://launchpad.net/~voldyman/markmywords
+	install = markmywords.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = vala
+	makedepends = gobject-introspection
+	makedepends = cmake
+	makedepends = bzr
+	depends = gtksourceview3
+	depends = glib2
+	depends = gtk3
+	depends = webkit2gtk
+	provides = markmywords
+	conflicts = markmywords
+	source = bzr+lp:markmywords
+	sha256sums = SKIP
+
+pkgname = markmywords-bzr
+
