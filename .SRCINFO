@@ -1,0 +1,13 @@
+pkgbase = python2-simpy
+	pkgdesc = Event discrete, process based simulation for Python.
+	pkgver = 3.0.5
+	pkgrel = 1
+	url = http://simpy.readthedocs.org/en/latest/
+	arch = any
+	license = MIT
+	depends = python2-setuptools
+	source = https://pypi.python.org/packages/source/s/simpy/simpy-3.0.5.tar.gz
+	md5sums = 19262488f1b0e6b77556820dd2b42d67
+
+pkgname = python2-simpy
+
