@@ -1,0 +1,35 @@
+pkgbase = steelstorm2-hib
+	pkgdesc = a classic top down shooter, rife with explosions and things to explode, with a distinct visual style (version included in Humble Indie Bundle No 3)
+	pkgver = 2.00.02818
+	pkgrel = 10000
+	epoch = 4
+	url = http://www.steel-storm.com/
+	install = steelstorm.install
+	arch = i686
+	arch = x86_64
+	license = commercial
+	depends = curl
+	depends = sdl_image
+	depends = sdl_ttf
+	depends = sdl_mixer
+	depends = libvorbis
+	depends = libogg
+	depends = libmodplug
+	depends = freetype2
+	conflicts = steelstorm2
+	conflicts = steelstorm
+	conflicts = steelstorm-beta
+	replaces = steelstorm
+	source = steelstorm-br-2.00.02818-release.tar.gz::hib://steelstorm-br-2.00.02818-release.tar.gz
+	source = steelstorm.desktop
+	source = steelstorm.sh
+	source = steelstorm-dedicated.desktop
+	source = steelstorm-dedicated.sh
+	md5sums = dc3e88ac4efd12e88037af140aa803ca
+	md5sums = 21848d410d35f60f227cc8cf662251e4
+	md5sums = 73d596ac67fb34ebc28df1f89b789dc2
+	md5sums = 1ec8024f637b9608732c3d9b72dba226
+	md5sums = 565ec1b72aff78bd2e311c289b65e2d5
+
+pkgname = steelstorm2-hib
+

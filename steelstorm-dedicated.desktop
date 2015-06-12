@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Steel Storm Episode 2 (Dedicated)
+GenericName=a classic top down shooter, rife with explosions and things to explode, with a distinct visual style.
+TryExec=steelstorm-dedicated
+Exec=steelstorm-dedicated
+Icon=steelstorm
+Categories=Application;Game;
+StartupNotify=true

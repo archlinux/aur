@@ -1,0 +1,7 @@
+post_install() {
+	cat <<- EOF
+                     IF YOU HAD EPISODE 1 version 1.00.01723 or earlier version, THE PROGRESS
+                     WILL NOT BE PASSED to Steel Storm: Burning Retribution. Please delete all
+                     user data from \$HOME/.steelstorm
+	EOF
+}
