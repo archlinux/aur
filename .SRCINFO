@@ -1,0 +1,24 @@
+pkgbase = autopasswd
+	pkgdesc = Reproducable password generator
+	pkgver = 2
+	pkgrel = 1
+	url = https://github.com/maandree/autopasswd
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = glibc
+	makedepends = libpassphrase
+	makedepends = argparser
+	makedepends = libkeccak
+	makedepends = make
+	makedepends = coreutils
+	makedepends = gcc
+	depends = glibc
+	depends = libpassphrase
+	depends = argparser
+	depends = libkeccak
+	source = https://github.com/maandree/autopasswd/archive/2.tar.gz
+	sha256sums = 7bdad6b035c198808ce650a3b78bd6476fbcf9663a4913b2d6e1a68ef0b1c270
+
+pkgname = autopasswd
+
