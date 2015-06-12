@@ -1,0 +1,15 @@
+pkgbase = join-python
+	pkgdesc = Join-calculus for Python
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/maandree/join-python
+	install = join-python.install
+	arch = any
+	license = GPL3
+	makedepends = texinfo
+	depends = python3
+	source = https://github.com/maandree/join-python/archive/1.1.tar.gz
+	sha256sums = 9e463fe40789877e5e9a806f1111c077a29ea01bdc75d8c8913f876ff244b938
+
+pkgname = join-python
+
