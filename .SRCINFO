@@ -1,0 +1,18 @@
+pkgbase = cpuled
+	pkgdesc = It's a program to let the keyboard LEDs indicate CPU load.
+	pkgver = 0.1
+	pkgrel = 3
+	url = http://web.archive.org/web/20011210154318/www.sudac.org/~napolium/linux/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://lara.craft.net.br/cpuled-0.1.tar.gz
+	source = fix-warnings.patch
+	source = makefile_update.patch
+	md5sums = 9b84e1903f2eb555006de0a5cb243c56
+	md5sums = 5bcf6651c1d14457dab7c4ed564fffaa
+	md5sums = 7d54f422517caa23d355483495558f19
+
+pkgname = cpuled
+

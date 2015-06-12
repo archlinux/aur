@@ -1,0 +1,23 @@
+--- Makefile.orig	2012-07-29 02:06:22.819373027 -0300
++++ Makefile	2012-07-29 02:07:19.739370225 -0300
+@@ -1,5 +1,8 @@
++prefix = /usr
++bindir = $(prefix)/bin
+ CC = gcc
+-CFLAGS = -O2 #-DDEBUG -g
++INSTALL = install
++CFLAGS = -O2 -Wall #-DDEBUG -g
+ OBJFILES = cpuled.o
+ PROGRAM = cpuled
+ VERSION = 0.1
+@@ -7,6 +10,10 @@
+ all: $(OBJFILES)
+ 	$(CC) $(CFLAGS) $(OBJFILES) -o $(PROGRAM)
+ 
++install: all
++	$(INSTALL) -d $(DESTDIR)$(bindir)
++	$(INSTALL) -m755 $(PROGRAM) $(DESTDIR)$(bindir)/$(PROGRAM)
++
+ clean:
+ 	-rm $(OBJFILES)
+ 	-rm cpuled

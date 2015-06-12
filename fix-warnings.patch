@@ -1,0 +1,40 @@
+--- cpuled.c.orig	2000-08-06 19:37:20.000000000 -0300
++++ cpuled.c	2012-07-28 22:15:03.873389569 -0300
+@@ -25,7 +25,9 @@
+ #include <fcntl.h>
+ #include <linux/kd.h>
+ #include <sys/utsname.h>
++#include <sys/ioctl.h>
+ #include <signal.h>
++#include <stdlib.h>
+ #include <unistd.h>
+ 
+ const char *banner = 
+@@ -96,7 +98,7 @@
+ 	last_total_ticks = cur_total_ticks;
+ 	last_ticks = cur_ticks;
+ 	
+-	sscanf(b,"cpu  %u %u %u %lu",
++	sscanf(b,"cpu  %lu %lu %lu %lu",
+ 		&utime,&ntime,&stime,&jiffies);
+ 
+ 	#ifdef DEBUG
+@@ -112,7 +114,7 @@
+ 
+ void update_leds(char status)
+ {
+-	char temp;
++	unsigned char temp;
+ 	unsigned char leds[3] = {LED_NUM,LED_CAP,LED_SCR};
+ 	
+ 	for(temp=0;temp < 3;temp++)
+@@ -152,8 +154,8 @@
+ int main(int argc, char *argv[])
+ {
+ 	unsigned long int time_dummy = 0;
++	unsigned char arg_dummy;
+ 	char tty[20] = "/dev/";
+-	char arg_dummy;
+ 	
+ 	if(argc < 2)
+ 	{
