@@ -1,0 +1,20 @@
+pkgbase = midifilter.lv2-git
+	pkgdesc = LV2 plugins to filter MIDI events
+	pkgver = 0.3.0.r2.g335d5ba
+	pkgrel = 3
+	url = https://github.com/x42/midifilter.lv2
+	changelog = ChangeLog
+	arch = i686
+	arch = x86_64
+	groups = lv2-plugins
+	license = GPL2
+	makedepends = git
+	makedepends = lv2
+	depends = glibc
+	provides = midifilter.lv2
+	conflicts = midifilter.lv2
+	source = midifilter.lv2::git://github.com/x42/midifilter.lv2.git
+	md5sums = SKIP
+
+pkgname = midifilter.lv2-git
+
