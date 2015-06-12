@@ -1,0 +1,14 @@
+pkgbase = py3-bsddb
+	pkgdesc = Python bindings for the excellent Oracle Berkeley DB.
+	pkgver = 6.0.0
+	pkgrel = 1
+	url = http://www.jcea.es/programacion/pybsddb.htm
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = python3
+	source = http://pypi.python.org/packages/source/b/bsddb3/bsddb3-6.0.0.tar.gz
+	md5sums = 5c963bb3bcb1fe92cd195bf056aa28c2
+
+pkgname = py3-bsddb
+
