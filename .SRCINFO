@@ -1,0 +1,19 @@
+pkgbase = dunnart-git
+	pkgdesc = A constrained-based diagram editor
+	pkgver = r198.c91f67b
+	pkgrel = 1
+	url = http://www.csse.monash.edu.au/~mwybrow/dunnart/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = qt5-base
+	provides = adaptagrams-git
+	conflicts = adaptagrams-git
+	source = dunnart-git::git+https://github.com/mjwybrow/dunnart.git
+	source = dunnart.sh
+	md5sums = SKIP
+	md5sums = 00995a6a00f2798333181ef416e442a1
+
+pkgname = dunnart-git
+
