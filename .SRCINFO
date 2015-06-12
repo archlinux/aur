@@ -1,0 +1,15 @@
+pkgbase = android-sdk-build-tools-17
+	pkgdesc = Build-Tools for Google Android SDK (aapt, aidl, dexdump, dx, llvm-rs-cc)
+	pkgver = r17
+	pkgrel = 1
+	url = http://developer.android.com/sdk/index.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gcc-libs
+	depends = zlib
+	source = http://dl-ssl.google.com/android/repository/build-tools_r17-linux.zip
+	sha256sums = 4c8444972343a19045236f6924bd7f12046287c70dace96ab88b2159c8ec0e74
+
+pkgname = android-sdk-build-tools-17
+
