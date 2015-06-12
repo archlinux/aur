@@ -1,0 +1,19 @@
+pkgbase = pythonmagick
+	pkgdesc = Object-oriented Python bindings for the ImageMagick library
+	pkgver = 0.9.11
+	pkgrel = 2
+	url = http://www.imagemagick.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = perl
+	makedepends = automake
+	depends = boost
+	depends = python
+	depends = imagemagick
+	options = !libtool
+	source = http://www.imagemagick.org/download/python/PythonMagick-0.9.11.tar.gz
+	md5sums = 8af559d540a8e976d830ede9c79c683e
+
+pkgname = pythonmagick
+
