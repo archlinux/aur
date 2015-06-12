@@ -1,0 +1,13 @@
+pkgbase = geany-theme-slushpoppies
+	pkgdesc = Port of the Slush and Poppies from gedit-themes
+	pkgver = 1
+	pkgrel = 3
+	url = http://lara.craft.net.br
+	arch = any
+	license = GPL
+	depends = geany
+	source = http://lara.craft.net.br/Geany/slushpoppies.conf
+	md5sums = a698b884463fe273db11ed75933b4ab2
+
+pkgname = geany-theme-slushpoppies
+
