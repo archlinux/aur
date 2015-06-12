@@ -1,0 +1,15 @@
+pkgbase = ponymenu
+	pkgdesc = Quick terminal based application menu
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/maandree/ponymenu
+	arch = any
+	license = GPL3
+	depends = python>=3
+	provides = ponymenu
+	conflicts = ponymenu
+	source = https://github.com/maandree/ponymenu/tarball/1.2.1
+	sha256sums = 5e541b1deaafa0fa226a2a0e9b8dd6f252cee057d50ff230e4cfbafa1c8843ec
+
+pkgname = ponymenu
+
