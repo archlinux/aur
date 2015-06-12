@@ -1,0 +1,13 @@
+pkgbase = swet
+	pkgdesc = cpu/ram benchmark tool
+	pkgver = 1.4.63
+	pkgrel = 1
+	url = http://swet.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://sourceforge.net/projects/swet/files/swet-1.4.63-src.tar.gz
+	md5sums = f5b1c36f087cf290bef8738530f24acb
+
+pkgname = swet
+
