@@ -1,0 +1,17 @@
+pkgbase = vok
+	pkgdesc = Vogo's Keyboard for Xorg 7 (Czech)
+	pkgver = 1.0
+	pkgrel = 9
+	url = http://www.abclinuxu.cz/blog/origami/2006/12/21/162644
+	install = vok.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = grep
+	depends = qizxopen
+	depends = perl
+	source = http://vogo.unas.cz/files/vok/vok-1.0.tar.bz2
+	md5sums = f8e4a38568e42d21a6903fe4755eec2d
+
+pkgname = vok
+
