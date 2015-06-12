@@ -1,0 +1,14 @@
+pkgbase = rhythmbox-plugin-radio-browser-git
+	pkgdesc = Rhythmbox plugin that shows the radio station lists of icecast and shoutcast directly in rhythmbox
+	pkgver = 3.0
+	pkgrel = 2
+	url = http://www.radio-browser.info
+	arch = any
+	license = GPL3
+	depends = rhythmbox
+	depends = streamripper
+	source = rhythmbox-plugin-radio-browser-git::git+https://github.com/fossfreedom/radio-browser.git#branch=rb3
+	md5sums = SKIP
+
+pkgname = rhythmbox-plugin-radio-browser-git
+
