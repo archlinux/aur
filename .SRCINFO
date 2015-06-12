@@ -1,0 +1,16 @@
+pkgbase = opulus
+	pkgdesc = A Petri net editor/simulator
+	pkgver = 0.9
+	pkgrel = 1
+	url = http://opulus.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = qt4
+	depends = graphviz
+	source = http://downloads.sourceforge.net/opulus/opulus-0.9.tar.bz2
+	md5sums = 655b754ac62b4dac8f4861ae9cf0af14
+
+pkgname = opulus
+
