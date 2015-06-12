@@ -1,0 +1,19 @@
+pkgbase = ozunity-welcome
+	pkgdesc = The Oz Unity fork of the Manjaro Welcome utility provides a simple interface for accessing all the relevant information for a new user of Oz Unity Manjaro Editon.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/ryanvade/ozunity-welcome
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python-gobject
+	depends = pywebkitgtk
+	depends = ozunity-wallpapers
+	provides = manjaro-welcome
+	conflicts = manjaro-welcome
+	options = !emptydirs
+	source = git+https://github.com/ryanvade/ozunity-welcome.git
+	sha256sums = SKIP
+
+pkgname = ozunity-welcome
+
