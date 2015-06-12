@@ -1,15 +1,15 @@
 pkgbase = python-bibtexparser
 	pkgdesc = Bibtex parser in Python
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bibtexparser.readthedocs.org/
 	arch = any
 	license = LGPL3
 	checkdepends = python-nose
 	makedepends = python-setuptools
 	depends = python
-	source = http://source.sciunto.org/bibtexparser/bibtexparser-0.6.0.tar.bz2
-	md5sums = 2141c782baa9881db30ae93039075737
+	source = https://pypi.python.org/packages/source/b/bibtexparser/bibtexparser-0.6.0.tar.gz
+	sha256sums = 0f58ee599de7c01a8e9dd723c2a8d7405cca75bf02ce28c60ada23350d48dfa6
 
 pkgname = python-bibtexparser
 
