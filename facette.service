@@ -1,0 +1,10 @@
+[Unit]
+Description=Facette
+
+[Service]
+User=facette
+Group=facette
+Type=simple
+ExecStart=/usr/local/bin/facette -c /etc/facette/facette.json
+RuntimeDirectory=facette
+RuntimeDirectoryMode=0755

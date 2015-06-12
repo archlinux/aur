@@ -1,0 +1,21 @@
+post_install() {
+	post_upgrade
+	passwd -l facette &>/dev/null
+}
+
+post_upgrade() {
+	# create user/group that the daemon will run as by default, do not delete this on uninstall, as it will own files
+	getent group facette >/dev/null || groupadd facette
+	getent passwd facette >/dev/null || useradd -c 'facette' -g facette -b '/var/lib' -m -s /bin/false facette
+
+	chown facette:facette /etc/facette
+  chmod 755 /etc/facette
+  chmod 644 /etc/facette/facette.json
+  chmod 755 /etc/facette/providers
+
+	chown facette:facette /var/run/facette
+  chmod 755 /var/run/facette
+
+	chown facette:facette /var/log/facette
+  chmod 755 /var/log/facette
+}
