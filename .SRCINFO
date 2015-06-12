@@ -1,0 +1,18 @@
+pkgbase = eyeocr
+	pkgdesc = Java-based text (ocr) recognizer
+	pkgver = 0.0.10
+	pkgrel = 1
+	url = http://eyeocr.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = java-runtime
+	source = http://sourceforge.net/projects/eyeocr/files/eye-alpha-10.zip
+	source = eyeocr.desktop
+	source = eyeocr
+	md5sums = 7bca29959c25158f983ee6e1c9db009b
+	md5sums = 2b3d7bbe6a5d70586d73dc64e06fae45
+	md5sums = 1325fb061bca4ca318be8e2d1b9995a5
+
+pkgname = eyeocr
+

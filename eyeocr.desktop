@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Eye
+GenericName=OCR text recognizer
+Exec=eyeocr
+Categories=Graphics;OCR;
