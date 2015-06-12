@@ -1,0 +1,17 @@
+pkgbase = gish-demo
+	pkgdesc = side scrolling tar ball fun game (demo)
+	pkgver = 1
+	pkgrel = 4
+	url = http://www.chroniclogic.com/
+	arch = i686
+	arch = x86_64
+	license = other
+	makedepends = imagemagick
+	depends = openal
+	source = http://s159260531.onlinehome.us/demos/gishdemo.tar.gz
+	source = gish-demo.desktop
+	md5sums = 144b79a7200355b5c274bd395e016c1e
+	md5sums = cd35c84b59a2a0628c068e4d1ebc9b12
+
+pkgname = gish-demo
+

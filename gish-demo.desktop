@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Gish (demo)
+GenericName=Platform Game
+Comment=2D platform game
+Exec=gish-demo
+Icon=gish.png
+Categories=Game;LogicGame;
