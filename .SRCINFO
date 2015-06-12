@@ -1,0 +1,17 @@
+pkgbase = pinkie-pie
+	pkgdesc = Madame Pinkie Pie: ponified fortune cookies
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/maandree/pinkie-pie
+	arch = any
+	license = Public Domain
+	depends = fortune-mod
+	depends = ponypipe
+	depends = sh
+	provides = pinkie-pie
+	conflicts = pinkie-pie
+	source = https://github.com/maandree/pinkie-pie/archive/1.1.tar.gz
+	sha256sums = 3700b8e1d8d359c06ca584b08b8b5ce59d906163cd5ca86801d6b52412aa7aa0
+
+pkgname = pinkie-pie
+
