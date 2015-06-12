@@ -1,6 +1,6 @@
 pkgbase = linux-drm-intel-nightly
-	pkgdesc = drm-intel-nightly is the "stable" testing branch for the intel graphics driver (i915)
-	pkgver = drm_intel_nightly_20150222
+	pkgdesc = The "stable" testing branch for the Intel graphics driver (i915)
+	pkgver = 20150612
 	pkgrel = 1
 	url = http://www.freedesktop.org/
 	arch = i686
@@ -12,8 +12,6 @@ pkgbase = linux-drm-intel-nightly
 	makedepends = inetutils
 	makedepends = bc
 	makedepends = git
-	makedepends = linux-firmware
-	makedepends = mkinitcpio
 	options = !strip
 	source = drm-intel::git://anongit.freedesktop.org/drm-intel#branch=drm-intel-nightly
 	source = config
@@ -21,33 +19,33 @@ pkgbase = linux-drm-intel-nightly
 	source = linux-drm-intel-nightly.install
 	source = linux-drm-intel-nightly.preset
 	sha256sums = SKIP
-	sha256sums = 2e66cb3106e04ab6c60592d917c5e1e0680efd43e5ba5b3afe9ef26fa245ce60
-	sha256sums = 951affaf649b7f951ac35a0b092f4e585ab5563155c4198740d5475535849cf9
-	sha256sums = 29860d79d55a4043588bc1aa2202040687d1f2dd1569090ee43d0c80d18added
+	sha256sums = e8d639582697f22333a96aa1614bcf5d9bcf2e6683a3d5296f9cfc64843606f1
+	sha256sums = 5dadd75693e512b77f87f5620e470405b943373613eaf4df561037e9296453be
+	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
 	sha256sums = 6ff6459f3703ed9ab7a90be96b17ddcc30fc4eb9d4b36c9cfed9b5f67e66fd4e
 
 pkgname = linux-drm-intel-nightly
-	pkgdesc = The Linux kernel and modules (drm-intel nightly)
+	pkgdesc = The Linux-drm-intel-nightly kernel and modules
 	install = linux-drm-intel-nightly.install
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = kernel26-drm-intel-nightly=drm_intel_nightly_20150222
+	provides = kernel26-drm-intel-nightly=20150612
 	conflicts = kernel26-drm-intel-nightly
 	replaces = 
 	backup = etc/mkinitcpio.d/linux-drm-intel-nightly.preset
 
 pkgname = linux-drm-intel-nightly-headers
-	pkgdesc = Header files and scripts for building modules for Linux kernel (drm-intel nightly)
-	provides = kernel26-drm-intel-nightly-headers=drm_intel_nightly_20150222
+	pkgdesc = Header files and scripts for building modules for Linux-drm-intel-nightly kernel
+	provides = kernel26-drm-intel-nightly-headers=20150612
 	conflicts = kernel26-drm-intel-nightly-headers
 	replaces = 
 
 pkgname = linux-drm-intel-nightly-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel ((drm-intel nightly))
-	provides = kernel26-drm-intel-nightly-docs=drm_intel_nightly_20150222
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-drm-intel-nightly kernel
+	provides = kernel26-drm-intel-nightly-docs=20150612
 	conflicts = kernel26-drm-intel-nightly-docs
 	replaces = 
 

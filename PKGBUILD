@@ -4,16 +4,15 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-drm-intel-nightly
-pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
-pkgdesc="drm-intel-nightly is the \"stable\" testing branch for the intel graphics driver (i915)"
 _srcname=drm-intel
-pkgver=drm_intel_nightly_20150222
+pkgver=20150612
+pkgdesc="The \"stable\" testing branch for the Intel graphics driver (i915)"
+
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/"
 license=('GPL2')
-makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils'
-             'bc' 'git' 'linux-firmware' 'mkinitcpio')
+makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git')
 options=('!strip')
 source=('drm-intel::git://anongit.freedesktop.org/drm-intel#branch=drm-intel-nightly'
         # the main kernel config files
@@ -23,9 +22,9 @@ source=('drm-intel::git://anongit.freedesktop.org/drm-intel#branch=drm-intel-nig
         "${pkgbase}.preset"
         )
 sha256sums=('SKIP'
-            '2e66cb3106e04ab6c60592d917c5e1e0680efd43e5ba5b3afe9ef26fa245ce60'
-            '951affaf649b7f951ac35a0b092f4e585ab5563155c4198740d5475535849cf9'
-            '29860d79d55a4043588bc1aa2202040687d1f2dd1569090ee43d0c80d18added'
+            'e8d639582697f22333a96aa1614bcf5d9bcf2e6683a3d5296f9cfc64843606f1'
+            '5dadd75693e512b77f87f5620e470405b943373613eaf4df561037e9296453be'
+            'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
             '6ff6459f3703ed9ab7a90be96b17ddcc30fc4eb9d4b36c9cfed9b5f67e66fd4e')
 
 _kernelname=${pkgbase#linux}
@@ -35,7 +34,7 @@ pkgver() {
   # an upstream tag either. Having a compacted form of the integration manifest
   # would be ideal, but date is probably sufficient for most cases (at most it's
   # off by 1 day based on timezone etc.).
-  echo "drm_intel_nightly_$(date +%Y%m%d)"
+  echo "$(date +%Y%m%d)"
 }
 
 prepare() {
@@ -48,14 +47,17 @@ prepare() {
   fi
 
   if [ "${_kernelname}" != "" ]; then
-    sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"-${pkgver##*.}\"|g" ./.config
+    sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
     sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
   fi
+
+  # set extraversion to pkgrel
+  sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
 
-  make olddefconfig # using old config from previous kernel version
+  make olddefconfig
 
   # get kernel version
   make prepare
@@ -67,8 +69,9 @@ build() {
   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
 
-package_linux-drm-intel-nightly() {
-  pkgdesc="The Linux kernel and modules (drm-intel nightly)"
+_package() {
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
+  [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=("kernel26${_kernelname}=${pkgver}")
@@ -130,8 +133,8 @@ package_linux-drm-intel-nightly() {
   install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
 }
 
-package_linux-drm-intel-nightly-headers() {
-  pkgdesc="Header files and scripts for building modules for Linux kernel (drm-intel nightly)"
+_package-headers() {
+  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
   provides=("kernel26${_kernelname}-headers=${pkgver}")
   conflicts=("kernel26${_kernelname}-headers")
   replaces=()
@@ -248,8 +251,8 @@ package_linux-drm-intel-nightly-headers() {
   rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
 }
 
-package_linux-drm-intel-nightly-docs() {
-  pkgdesc="Kernel hackers manual - HTML documentation that comes with the Linux kernel ((drm-intel nightly))"
+_package-docs() {
+  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
   provides=("kernel26${_kernelname}-docs=${pkgver}")
   conflicts=("kernel26${_kernelname}-docs")
   replaces=()
@@ -264,5 +267,12 @@ package_linux-drm-intel-nightly-docs() {
   # remove a file already in linux package
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 }
+pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
+for _p in ${pkgname[@]}; do
+  eval "package_${_p}() {
+    $(declare -f "_package${_p#${pkgbase}}")
+    _package${_p#${pkgbase}}
+  }"
+done
 
 # vim:set ts=8 sts=2 sw=2 et:
