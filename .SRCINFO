@@ -1,0 +1,19 @@
+pkgbase = pdfedit-bin
+	pkgdesc = Full featured editor for manipulating PDF documents (built from Debian binaries)
+	pkgver = 0.4.5
+	pkgrel = 3
+	url = http://pdfedit.petricek.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt3
+	depends = t1lib
+	depends = gsfonts
+	depends = zlib
+	provides = pdfedit
+	conflicts = pdfedit
+	source = http://ftp.us.debian.org/debian/pool/main/p/pdfedit/pdfedit_0.4.5-1_amd64.deb
+	sha256sums = bc30c4f0727c826851b18879e1c720c62401d8808ec28460bbdd33400fe2c37b
+
+pkgname = pdfedit-bin
+
