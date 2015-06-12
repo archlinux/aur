@@ -1,0 +1,17 @@
+pkgbase = amttool-tng
+	pkgdesc = Utility to manage Intel AMT-aware devices (fork of Gerd Hoffmann's AMTTOOL)
+	pkgver = 1.7.3
+	pkgrel = 1
+	url = http://sourceforge.net/projects/amttool-tng/
+	arch = any
+	license = GPL2
+	depends = perl-soap-lite
+	source = http://downloads.sourceforge.net/project/amttool-tng/1.7/amttool
+	source = http://downloads.sourceforge.net/project/amttool-tng/1.7/README.txt
+	source = http://downloads.sourceforge.net/project/amttool-tng/1.7/amt_traps_v1.4.sh
+	md5sums = e6b55df2a4f4912277103ab36249fe5d
+	md5sums = c012156e1ede183c7a154b0a4b6bd14d
+	md5sums = 222b81a003b8fd096f449d77d1d16614
+
+pkgname = amttool-tng
+
