@@ -1,0 +1,17 @@
+pkgbase = xcape-git
+	pkgdesc = Use modifier pressed/released solo as another key/chord, e.g. CapsLock > Escape
+	pkgver = 1.1.r9.gf3802fc
+	pkgrel = 1
+	url = https://github.com/alols/xcape
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = libxtst
+	provides = xcape
+	conflicts = xcape
+	source = git+https://github.com/alols/xcape
+	sha256sums = SKIP
+
+pkgname = xcape-git
+
