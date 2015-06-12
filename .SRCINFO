@@ -1,0 +1,15 @@
+pkgbase = perl-file-path
+	pkgdesc = File path and name utilities
+	pkgver = 2.09
+	pkgrel = 1
+	url = http://search.cpan.org/~DLAND/File-Path
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	source = http://www.cpan.org/authors/id/D/DL/DLAND/File-Path-2.09.tar.gz
+	md5sums = 423f5ead2727be5270f08a39df53be6c
+
+pkgname = perl-file-path
+
