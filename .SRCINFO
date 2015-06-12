@@ -1,0 +1,14 @@
+pkgbase = tcpconsole
+	pkgdesc = a network emergency console for Linux which uses lowlevel Linux system calls
+	pkgver = 0.2
+	pkgrel = 3
+	url = http://www.vanheusden.com/tcpconsole/
+	install = tcpconsole.install
+	arch = i686
+	license = GPL
+	depends = glibc
+	source = http://www.vanheusden.com/tcpconsole/tcpconsole-0.2.tgz
+	md5sums = 8958a0d5882778290f99d89958413fbc
+
+pkgname = tcpconsole
+

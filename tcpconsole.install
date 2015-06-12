@@ -1,0 +1,20 @@
+post_install() {
+echo "Create /etc/tcpconsole.pw and put password there, then chmod 600 /etc/tcpconsole.pw."
+echo "You may also need to create vcsa device (mknod -m 600 /dev/vcsa c 7 0)."
+echo "Tcpconsole listens on 4095. Use telnet to login."
+echo "More info at http://www.vanheusden.com/tcpconsole/"
+/bin/true
+}
+
+post_upgrade() {
+/bin/true
+}
+
+pre_remove() {
+/bin/true
+}
+
+p=$1
+shift
+
+$op "$@"
