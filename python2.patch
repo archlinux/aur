@@ -1,0 +1,19 @@
+--- Makefile.orig	2014-02-01 21:36:19.264381758 +0000
++++ Makefile	2014-02-01 21:39:38.757210866 +0000
+@@ -1,6 +1,6 @@
+ # Bottleneck Makefile 
+ 
+-PYTHON=python
++PYTHON=python2
+ 
+ srcdir := bottleneck/src
+ 
+@@ -41,7 +41,7 @@ test:
+ 
+ coverage:
+ 	rm -rf .coverage
+-	python -c "import bottleneck; bottleneck.test(coverage=True)"
++	${PYTHON} -c "import bottleneck; bottleneck.test(coverage=True)"
+ 
+ bench:
+ 	${PYTHON} -c "import bottleneck; bottleneck.bench()"

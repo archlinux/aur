@@ -1,0 +1,22 @@
+pkgbase = python2-bottleneck-git
+	pkgdesc = Fast NumPy array functions written in Cython
+	pkgver = 0.8.0.1.g18495e0
+	pkgrel = 1
+	url = http://berkeleyanalytics.com/bottleneck/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cython2
+	depends = python2-numpy
+	optdepends = python2-nose
+	provides = python2-bottleneck
+	conflicts = python2-bottleneck
+	options = !emptydirs
+	source = python2-bottleneck-git::git+https://github.com/kwgoodman/bottleneck.git
+	source = python2.patch
+	md5sums = SKIP
+	md5sums = 8eec121e4bb9f277ca53bfe72811ccbb
+
+pkgname = python2-bottleneck-git
+
