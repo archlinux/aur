@@ -1,0 +1,16 @@
+pkgbase = jpp
+	pkgdesc = Bash based preprocessor for Java
+	pkgver = 4.4
+	pkgrel = 1
+	url = https://github.com/maandree/jpp
+	arch = any
+	license = GPL3
+	depends = java-runtime>=5
+	depends = bash
+	provides = jpp
+	conflicts = jpp
+	source = https://github.com/maandree/jpp/archive/4.4.tar.gz
+	sha256sums = 1e12176d497cc1e6473dd6298cbffbc24cbeb4eac7aa3f8cba87423392421660
+
+pkgname = jpp
+
