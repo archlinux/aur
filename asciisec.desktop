@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Privateer: Ascii Sector
+Comment=Space combat/exploration/trading game
+Exec=asciisec
+Icon=/usr/share/pixmaps/asciisec.png
+Terminal=false
+Type=Application
+Categories=Game;StrategyGame;
+StartupNotify=true

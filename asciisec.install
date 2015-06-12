@@ -1,0 +1,22 @@
+post_install() {
+  grpfiles=("/usr/share/asciisec/log.txt" "/usr/share/asciisec/data/options.txt")
+  touch ${grpfiles[@]}
+  chgrp games ${grpfiles[@]}
+  chmod 664 ${grpfiles[@]}
+
+  echo "Add user to group games to make the game playable. Please note that this application is not multiuser friendly."
+  /bin/true
+}
+
+post_upgrade() {
+/bin/true
+}
+
+pre_remove() {
+/bin/true
+}
+
+op=$1
+shift
+
+$op "$@"
