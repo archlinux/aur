@@ -3,7 +3,7 @@
 
 pkgname=vicky
 pkgver=1.6.2
-pkgrel=2
+pkgrel=1
 pkgdesc="GUI program that converts video files to sound files using ffmpeg"
 arch=('i686' 'x86_64')
 url="https://github.com/filipe-marques/vicky"
