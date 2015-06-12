@@ -1,0 +1,13 @@
+pkgbase = phyml
+	pkgdesc = Builds phylogenies from DNA or protein sequences using a maximum likelihood approach
+	pkgver = 20141029
+	pkgrel = 1
+	url = https://code.google.com/p/phyml/
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	source = https://github.com/stephaneguindon/phyml-downloads/releases/download/development/phyml-20141029.tar.gz
+	sha1sums = 7ac083ae9c9da6198ef9a02ec13c7fb50d02d290
+
+pkgname = phyml
+
