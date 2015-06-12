@@ -1,0 +1,25 @@
+pkgbase = pwsafe-gui
+	pkgdesc = A GUI password manager from cryptologist Bruce Schneier
+	pkgver = 0.95.1BETA
+	pkgrel = 3
+	url = http://passwordsafe.sourceforge.net/index.shtml
+	arch = i686
+	arch = x86_64
+	license = Artistic2.0
+	makedepends = libxt
+	makedepends = zip
+	depends = libxtst
+	depends = wxgtk
+	depends = xerces-c
+	depends = ykpers
+	depends = webkitgtk2
+	conflicts = pwsafe
+	conflicts = passwordsafe-debian
+	conflicts = passwordsafe-git
+	source = http://downloads.sourceforge.net/project/passwordsafe/Linux-BETA/0.95.1/pwsafe-0.95.1BETA-src.tgz
+	source = http://downloads.sourceforge.net/project/passwordsafe/Linux-BETA/0.95.1/pwsafe-0.95.1BETA-src.tgz.sig
+	md5sums = e3e3429d08789b6bde6270d1e6a91608
+	md5sums = SKIP
+
+pkgname = pwsafe-gui
+
