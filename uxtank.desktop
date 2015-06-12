@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=uxTank
+Comment=Tank game for Linux
+Exec=/usr/games/uxtank
+Icon=uxtank
+Categories=Game;ActionGame;

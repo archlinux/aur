@@ -1,0 +1,18 @@
+pkgbase = uxtank
+	pkgdesc = tank game for Linux
+	pkgver = 2.3
+	pkgrel = 3
+	url = https://sites.google.com/site/uxtank/home
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl_mixer
+	depends = gcc-libs
+	depends = libxpm
+	source = http://sites.google.com/site/uxtank/uxtank2.3.tgz
+	source = uxtank.desktop
+	md5sums = eadecd55b58ffb66db6543f282ecdb68
+	md5sums = 313c689409fcd2f1093e5336f98c6960
+
+pkgname = uxtank
+
