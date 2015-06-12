@@ -1,0 +1,16 @@
+pkgbase = alsa-tray
+	pkgdesc = A systray icon and a command line interface for setting the volume of the ALSA Mixers.
+	pkgver = 0.6
+	pkgrel = 2
+	url = http://software.flogisoft.com/alsa-tray/en/
+	arch = any
+	license = GPL3
+	depends = alsa-lib
+	depends = python2
+	depends = pygtk
+	depends = python2-pyalsaaudio
+	source = http://projects.flogisoft.com/alsa-tray/download/alsa-tray_0.6_src.tar.gz
+	md5sums = 59038e18afa94bcf08dc3bec3f19f23a
+
+pkgname = alsa-tray
+
