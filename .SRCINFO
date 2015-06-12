@@ -1,0 +1,18 @@
+pkgbase = timeprefix
+	pkgdesc = Prefix each line with the time it as written
+	pkgver = 1
+	pkgrel = 2
+	url = https://github.com/maandree/timeprefix
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = make
+	makedepends = coreutils
+	makedepends = gcc
+	makedepends = glibc
+	depends = glibc
+	source = https://github.com/maandree/timeprefix/archive/1.tar.gz
+	sha256sums = e8332002540e737dccf1ffa75d336a5a0bf2da6c27d0fd116fe335253cdd2bf6
+
+pkgname = timeprefix
+
