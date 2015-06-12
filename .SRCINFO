@@ -1,0 +1,15 @@
+pkgbase = soundsort
+	pkgdesc = utility that analyzes the audio-files you feed it and does a suggestion on their order by analyzing how the songs are actually sounding
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.vanheusden.com/soundsort/
+	arch = i686
+	license = GPL
+	depends = libsndfile
+	depends = fftw
+	depends = libmad
+	source = http://www.vanheusden.com/soundsort/soundsort-1.0.tgz
+	md5sums = 08a22f610ab48a4ad802d0e5bba8aef7
+
+pkgname = soundsort
+
