@@ -1,0 +1,12 @@
+pkgbase = mx5500-set
+	pkgdesc = Control your Logitech MX 5500 keyboard over hidraw.
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/jsparber/mx5500-set
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+
+pkgname = mx5500-set
+
