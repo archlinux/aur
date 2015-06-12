@@ -1,0 +1,21 @@
+pkgbase = infamousplugins-git
+	pkgdesc = A collection of open-source LV2 plugins
+	pkgver = 262.87434ec
+	pkgrel = 1
+	url = http://infamousplugins.sourceforge.net
+	arch = i686
+	arch = x86_64
+	groups = lv2-plugins
+	license = GPL2
+	makedepends = git
+	makedepends = qt4
+	makedepends = lv2
+	depends = glibc
+	depends = fftw
+	provides = infamousplugins
+	conflicts = infamousplugins
+	source = infamousplugins-code::git://github.com/ssj71/infamousPlugins.git
+	md5sums = SKIP
+
+pkgname = infamousplugins-git
+
