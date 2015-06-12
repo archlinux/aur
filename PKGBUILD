@@ -1,6 +1,6 @@
 # Maintainer: Erdal Mutlu <erdal at sisiya dot org>
 pkgname=sisiya-client-checks
-pkgver=0.6.30.45
+pkgver=0.6.31
 pkgrel=1
 epoch=
 pkgdesc="The SisIYA client programs and checks."
@@ -55,7 +55,7 @@ changelog=
 #source=("$pkgname-$pkgver.tar.gz")
 source=("http://sourceforge.net/projects/sisiya/files/sisiya/$pkgver/pacman/$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('48a4bd5d3f2ddff6b86c10cec90a1773') #generate with 'makepkg -g'
+md5sums=('3a1da6799c7932b7b0a6537bf8f2e252') #generate with 'makepkg -g'
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
