@@ -1,0 +1,17 @@
+pkgbase = railroadrampage
+	pkgdesc = an action tower defence-type game
+	pkgver = 1.2
+	pkgrel = 3
+	url = http://neotron-games.blogspot.com/
+	install = railroadrampage.install
+	arch = i686
+	license = custom:unknown
+	depends = bennugd-core
+	depends = bennugd-modules
+	source = http://stuffz.l33t.in/mirror/RailroadRampage_Linux_1.2.zip
+	source = railroadrampage.desktop
+	md5sums = da592c555ebf2c1c890f4ac443896794
+	md5sums = 3eb28b43b6984d3158d2443c8603aabd
+
+pkgname = railroadrampage
+

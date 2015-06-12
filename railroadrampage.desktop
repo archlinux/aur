@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Railroad rampage
+GenericName=Action Game
+Comment=Tower-defense game
+Exec=railroadrampage
+Icon=railroadrampage
+Categories=Game;ActionGame;

@@ -1,0 +1,22 @@
+post_install() {
+  chmod 775 /usr/share/railroadrampage
+  chgrp games /usr/share/railroadrampage
+  chmod 664 /usr/share/railroadrampage/score.dat
+  chgrp games /usr/share/railroadrampage/score.dat
+
+  echo "Add user to group games to make the game playable. Please note that this application is not multiuser friendly."
+  /bin/true
+}
+
+post_upgrade() {
+/bin/true
+}
+
+pre_remove() {
+/bin/true
+}
+
+op=$1
+shift
+
+$op "$@"
