@@ -1,0 +1,15 @@
+pkgbase = perl-math-polygon
+	pkgdesc = polygon mathematics
+	pkgver = 1.03
+	pkgrel = 1
+	url = http://search.cpan.org/~MARKOV/Math-Polygon
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	source = http://www.cpan.org/authors/id/M/MA/MARKOV/Math-Polygon-1.03.tar.gz
+	md5sums = 11b20ad4c55744c3cf8e3aa516d1d4fc
+
+pkgname = perl-math-polygon
+
