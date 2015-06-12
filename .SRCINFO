@@ -1,0 +1,19 @@
+pkgbase = perl-gtk2-sourceview
+	pkgdesc = Perl interface to the GtkSourceView library
+	pkgver = 1.000
+	pkgrel = 1
+	url = http://search.cpan.org/~EBASSI/Gtk2-SourceView
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl-gnome2-print>=0.60
+	depends = glib-perl>=1.100
+	depends = perl-extutils-depends>=0.2
+	depends = gtk2-perl>=1.100
+	depends = perl-extutils-pkgconfig>=1.0
+	options = !emptydirs
+	source = http://www.cpan.org/authors/id/E/EB/EBASSI/Gtk2-SourceView-1.000.tar.gz
+	md5sums = 35f859153d9c8a41260f98ad969fcb78
+
+pkgname = perl-gtk2-sourceview
+
