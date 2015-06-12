@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Value=1.0
+Type=Application
+Name=Aquaria
+GenericName=Aquaria
+Comment=Underwater exploration adventure video game
+Icon=/opt/aquaria/aquaria.png
+Exec="/opt/aquaria/aquaria"
+Categories=Games
+Name[de_DE]=aquaria
