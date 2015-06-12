@@ -1,0 +1,14 @@
+pkgbase = python2-orient
+	pkgdesc = Python 2 bindings for OrientDB
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/mogui/pyorient
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://pypi.python.org/packages/source/p/pyorient/pyorient-1.4.2.tar.gz
+	sha256sums = 9ef4b5122f0f602aabf1d99ccc17b50e4bd5b4ed51caae477d6bf9db2b729259
+
+pkgname = python2-orient
+
