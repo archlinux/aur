@@ -1,0 +1,32 @@
+update_doc() {
+	echo -n "Updating vim help tags..."
+	/usr/bin/vim --noplugins -u NONE -U NONE \
+		--cmd ":helptags /usr/share/vim/vimfiles/doc" --cmd ":q" > /dev/null 2>&1
+	echo "done."
+}
+
+post_install() {
+	update_doc
+
+/bin/cat << EOF
+===>
+===> Shared library has already been put in /usr/lib
+===> There is no need to change LD_LIBRARY_PATH.
+===> run cmd: [vim -c "tab h gdbmgr.txt | tabn | q"] 
+===> for more information
+===>
+===>
+===> WARNING: This vim plugin has not been released yet,
+===> It is not stable enough. Use at your own RISK!
+===>
+EOF
+
+}
+
+post_upgrade() {
+	update_doc
+}
+
+post_remove() {
+	update_doc
+}

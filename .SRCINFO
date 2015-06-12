@@ -1,0 +1,18 @@
+pkgbase = vim-gdbmgr
+	pkgdesc = GDB (Gnu Debugger) Manager for Vim
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.vim.org/scripts/script.php?script_id=4104
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = custom
+	depends = vim
+	depends = gdb
+	source = gdbmgr.tar.gz::http://www.vim.org/scripts/download_script.php?src_id=18153
+	source = gdbmgr.diff
+	md5sums = f5f537f59f064be7d858c37cba8f2bcb
+	md5sums = 74068b491216c9eb81e6544144663d88
+
+pkgname = vim-gdbmgr
+

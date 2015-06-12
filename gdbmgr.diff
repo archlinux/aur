@@ -1,0 +1,28 @@
+diff -Nru gdbmgr/autoload/gdbmgr.vim gdbmgr-fix//autoload/gdbmgr.vim
+--- gdbmgr/autoload/gdbmgr.vim	2010-11-24 01:16:17.000000000 +0800
++++ gdbmgr-fix//autoload/gdbmgr.vim	2011-08-16 13:54:40.259742496 +0800
+@@ -3322,9 +3322,9 @@
+   " save user's options and maps
+   call s:GdbMgrOptionSave()
+   if a:0 > 0
+-   let curfile= expand(a:1)
++   let curfile= getcwd()."/".expand(a:1)
+   else
+-   let curfile= expand("%")
++   let curfile= expand("%:p")
+   endif
+ 
+   " examine the command line arguments, if any
+@@ -3333,10 +3333,10 @@
+   "                          :DI pgmname core...  :DI winctrl pgmname core...
+   if curfile != '--attaching--'
+ "   call Decho("initialization: is curfile<".curfile."> executable? ------------------")
+-   if executable(substitute(curfile,'\.[^.]\+$','','')) && !isdirectory(curfile)
++   if executable(substitute(curfile,'\.[^./]\+$','','')) && !isdirectory(curfile)
+     " if current file, less its suffix, is executable, assume that the "curfile" is the program to be debugged
+ "    call Decho("case: curfile<".curfile."> is executable")
+-    let gdbcmd= substitute(curfile,'\.[^.]\+$','','')
++    let gdbcmd= substitute(curfile,'\.[^./]\+$','','')
+ "    call Decho("curfile<".curfile."> is executable, assuming its the pgm to be debugged")
+    else
+ "    call Decho("case: curfile<".curfile."> is not executable")
