@@ -1,0 +1,19 @@
+pkgbase = python-wiringpi2-git
+	pkgdesc = Python-wrapped version of Gordon Henderson's WiringPI version 2.
+	pkgver = 20140604
+	pkgrel = 1
+	url = https://github.com/WiringPi/WiringPi2-Python
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	license = GPLv3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = python-wiringpi2
+	conflicts = python-wiringpi2
+	source = git+https://github.com/WiringPi/WiringPi2-Python.git
+	md5sums = SKIP
+
+pkgname = python-wiringpi2-git
+
