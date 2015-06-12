@@ -1,0 +1,14 @@
+pkgbase = owncloud-app-mozilla_sync
+	pkgdesc = Mozilla Sync server for owncloud
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://owncloud.org/
+	arch = any
+	license = GPL
+	depends = owncloud
+	options = !strip
+	source = owncloud-app-mozilla_sync-1.4.tar.gz::https://github.com/owncloud/mozilla_sync/archive/v1.4.tar.gz
+	md5sums = e98fdb10ff4139b4259e2a183a88975a
+
+pkgname = owncloud-app-mozilla_sync
+
