@@ -1,4 +1,4 @@
-# Maintainer: David Seus <internetkram at posteo.de>
+# Maintainer: David Seus <archstuff at archlinux.net>
 # Contributor Max Meyer <dev at [f}edux d0t org>
 pkgname=geteltorito
 pkgver=0.6
