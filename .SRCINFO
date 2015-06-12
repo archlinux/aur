@@ -1,0 +1,14 @@
+pkgbase = genromfs
+	pkgdesc = tool for creating romfs images
+	pkgver = 0.5.2
+	pkgrel = 2
+	url = http://romfs.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://downloads.sourceforge.net/project/romfs/genromfs/0.5.2/genromfs-0.5.2.tar.gz
+	md5sums = 2a91463c56f9e042edc330c063a0cf5a
+
+pkgname = genromfs
+
