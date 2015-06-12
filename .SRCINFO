@@ -1,0 +1,20 @@
+pkgbase = libsbgn-svn
+	pkgdesc = Systems Biology Graphical Notation library
+	pkgver = r276
+	pkgrel = 1
+	url = http://www.libsbgn.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = Apache
+	makedepends = apache-ant
+	depends = xsd
+	depends = java-environment
+	depends = xerces-c
+	provides = libsbgn
+	conflicts = libsbgn
+	source = libsbgn-svn::svn+https://libsbgn.svn.sourceforge.net/svnroot/libsbgn/trunk
+	md5sums = SKIP
+
+pkgname = libsbgn-svn
+
