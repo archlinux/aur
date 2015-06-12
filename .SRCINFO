@@ -1,0 +1,15 @@
+pkgbase = socket-relay
+	pkgdesc = A framework application for host multiplexion
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/maandree/socket-relay
+	install = socket-relay.install
+	arch = any
+	license = GPL3
+	makedepends = texinfo
+	depends = python3
+	source = https://github.com/maandree/socket-relay/archive/1.1.1.tar.gz
+	sha256sums = c4268fc733440d679658cf3e8d37d7036bfaee6668bd6a109cddbac115498678
+
+pkgname = socket-relay
+
