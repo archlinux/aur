@@ -1,0 +1,15 @@
+pkgbase = scikits-bootstrap-git
+	pkgdesc = Bootstrap confidence interval estimation
+	pkgver = r34.1d785c7
+	pkgrel = 1
+	url = https://github.com/cgevans/scikits-bootstrap
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = python2-distribute
+	optdepends = python2-scipy
+	source = scikits-bootstrap-git::git+https://github.com/cgevans/scikits-bootstrap.git
+	md5sums = SKIP
+
+pkgname = scikits-bootstrap-git
+
