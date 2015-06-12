@@ -1,0 +1,19 @@
+pkgbase = libjpeg-droppatch
+	pkgdesc = Library of JPEG support with an additional drop patch
+	pkgver = 8.0.2
+	pkgrel = 2
+	url = http://sylvana.net/jpegcrop/jpegtran/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = libtool
+	depends = glibc
+	replaces = libjpeg
+	options = !libtool
+	source = http://www.ijg.org/files/jpegsrc.v8c.tar.gz
+	source = http://sylvana.net/jpegcrop/droppatch.v8.tar.gz
+	md5sums = a2c10c04f396a9ce72894beb18b4e1f9
+	md5sums = 7c6eff51b148d979bc53f947724889e3
+
+pkgname = libjpeg-droppatch
+
