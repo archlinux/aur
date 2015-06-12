@@ -1,0 +1,15 @@
+pkgbase = gcrontab
+	pkgdesc = a crontab editor with GUI
+	pkgver = 0.8
+	pkgrel = 3
+	url = http://www.arquired.es/users/aldelgado/proy/gcrontab/
+	arch = i686
+	license = GPL
+	depends = gtk
+	source = http://web.archive.org/web/20120427151653/http://www.arquired.es/users/aldelgado/proy/gcrontab/gcrontab-0.8.0.tgz
+	source = gcrontab.desktop
+	md5sums = acd0797153d3aabe2242cc4dd61b1787
+	md5sums = 3d8a3522ef84fdafb785f730691091c6
+
+pkgname = gcrontab
+

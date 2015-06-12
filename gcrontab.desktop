@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Gcrontab
+Comment=Crontab editor
+Exec=gcrontab
+Icon=gcrontab.xpm
+Categories=Utility;
