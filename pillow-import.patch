@@ -1,0 +1,16 @@
+diff --git a/flacsync/encoder.py b/flacsync/encoder.py
+index afdffc3..9822346 100644
+--- a/flacsync/encoder.py
++++ b/flacsync/encoder.py
+@@ -15,7 +15,10 @@ import os
+ import shutil
+ import subprocess as sp
+ import tempfile
+-import Image
++try:
++  import Image
++except ImportError:
++  import PIL.Image as Image
+ 
+ from . import util
+ 
