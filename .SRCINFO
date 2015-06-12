@@ -1,0 +1,20 @@
+pkgbase = brickd
+	pkgdesc = a brick daemon for tinkerforge brick(let)s
+	pkgver = 2.2.1hf1
+	pkgrel = 2
+	url = http://www.tinkerforge.com/
+	arch = armv6h
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = libusbx
+	source = https://github.com/Tinkerforge/brickd/archive/v2.2.1-hf1.zip
+	source = https://github.com/Tinkerforge/daemonlib/archive/brickd-2.2.1-hf1.zip
+	source = brickd.service
+	md5sums = 0f4b4823950124751483d36993fd31b9
+	md5sums = 48419e36ef3bbd75384716519e669b1d
+	md5sums = e2ac9b32b8282d25ecc1ed8fc7f5cd73
+
+pkgname = brickd
+

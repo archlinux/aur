@@ -1,0 +1,12 @@
+[Unit]
+Description=Brickd daemon (TinkerForge.com)
+
+[Service]
+Type=forking
+User=%i
+ExecStart=/usr/bin/brickd --daemon
+PIDFile=/var/run/brickd.pid
+#PIDFile=%h/.brickd/brickd.pid
+
+[Install]
+WantedBy=multi-user.target
