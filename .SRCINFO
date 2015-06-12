@@ -1,0 +1,27 @@
+pkgbase = bedup
+	pkgdesc = Offline deduplication utility for the BTRFS filesystem
+	pkgver = 0.9.0
+	pkgrel = 5
+	url = https://github.com/g2p/bedup
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = btrfs-progs
+	depends = python
+	depends = python-distribute
+	depends = python-alembic
+	depends = python-cffi
+	depends = python-sqlalchemy
+	depends = python-xdg
+	depends = python-mako
+	conflicts = bedup-git
+	source = https://pypi.python.org/packages/source/b/bedup/bedup-0.9.0.tar.gz
+	source = bedup-contextlib2.patch
+	source = bedup-update-current-rev.patch
+	md5sums = 7b743397e2186e2540a83c857185c28a
+	md5sums = 1795a0ececd0c06ecbf22b0845ba34bb
+	md5sums = f5eb55bdd4416aac5ae42be771a81c93
+
+pkgname = bedup
+

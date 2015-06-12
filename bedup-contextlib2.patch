@@ -1,0 +1,50 @@
+diff -aur bedup-0.9.0.orig/bedup/__main__.py bedup-0.9.0/bedup/__main__.py
+--- bedup-0.9.0.orig/bedup/__main__.py	2013-04-19 18:25:13.000000000 +0200
++++ bedup-0.9.0/bedup/__main__.py	2013-05-16 09:53:48.190419843 +0200
+@@ -27,8 +27,7 @@
+ import xdg.BaseDirectory  # pyxdg, apt:python-xdg
+ 
+ from collections import defaultdict, OrderedDict
+-from contextlib import closing
+-from contextlib2 import ExitStack
++from contextlib import closing, ExitStack
+ from sqlalchemy.orm import sessionmaker
+ from sqlalchemy.pool import SingletonThreadPool
+ from uuid import UUID
+diff -aur bedup-0.9.0.orig/bedup/tracking.py bedup-0.9.0/bedup/tracking.py
+--- bedup-0.9.0.orig/bedup/tracking.py	2013-04-20 18:20:23.000000000 +0200
++++ bedup-0.9.0/bedup/tracking.py	2013-05-16 09:53:30.217053847 +0200
+@@ -28,8 +28,7 @@
+ import threading
+ 
+ from collections import defaultdict, namedtuple
+-from contextlib import closing, contextmanager
+-from contextlib2 import ExitStack
++from contextlib import closing, contextmanager, ExitStack
+ from itertools import groupby
+ from sqlalchemy.sql import and_, select, func, literal_column
+ from uuid import UUID
+diff -aur bedup-0.9.0.orig/bedup.egg-info/requires.txt bedup-0.9.0/bedup.egg-info/requires.txt
+--- bedup-0.9.0.orig/bedup.egg-info/requires.txt	2013-04-20 19:21:42.000000000 +0200
++++ bedup-0.9.0/bedup.egg-info/requires.txt	2013-05-16 09:42:21.642588851 +0200
+@@ -2,7 +2,6 @@
+ cffi >= 0.4.2
+ pyxdg
+ SQLAlchemy
+-contextlib2
+ 
+ [interactive]
+-ipdb
+\ No newline at end of file
++ipdb
+diff -aur bedup-0.9.0.orig/setup.py bedup-0.9.0/setup.py
+--- bedup-0.9.0.orig/setup.py	2013-04-20 18:57:10.000000000 +0200
++++ bedup-0.9.0/setup.py	2013-05-16 09:57:27.247495982 +0200
+@@ -48,7 +48,6 @@
+     'cffi >= 0.4.2',
+     'pyxdg',
+     'SQLAlchemy',
+-    'contextlib2',
+ ]
+ 
+ if version_info < (2, 7):
