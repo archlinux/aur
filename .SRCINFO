@@ -1,0 +1,17 @@
+pkgbase = airhockey-git
+	pkgdesc = (single|multi)-player game written in OpenGL
+	pkgver = 20120414
+	pkgrel = 1
+	url = https://github.com/cosmiczilch/AirHockey
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = sdl_image
+	depends = sdl_net
+	depends = freeglut
+	depends = sdl_mixer
+	source = airhockey.desktop
+	md5sums = 91dc383c109507d242e5e3585ad697d6
+
+pkgname = airhockey-git
+
