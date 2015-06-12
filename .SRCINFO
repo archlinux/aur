@@ -1,0 +1,14 @@
+pkgbase = logsend
+	pkgdesc = tool for sending e-mail notifications about changes in (log) files
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://logsend.sourceforge.net
+	arch = any
+	license = GPL
+	depends = bash
+	depends = inotify-tools
+	source = http://downloads.sourceforge.net/logsend/logsend-1.0.tar.gz
+	md5sums = e6de052161c3d553391f99620027a33b
+
+pkgname = logsend
+
