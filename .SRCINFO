@@ -1,0 +1,28 @@
+pkgbase = ssvnc
+	pkgdesc = SSL/SSH VNC viewer
+	pkgver = 1.0.29
+	pkgrel = 6
+	url = http://www.karlrunge.com/x11vnc/ssvnc.html
+	arch = i686
+	arch = x86_64
+	groups = network
+	license = GPL
+	makedepends = imake
+	makedepends = java-environment
+	depends = libjpeg>=7
+	depends = libxaw
+	depends = openssl
+	depends = java-runtime
+	depends = tk
+	depends = tcl
+	depends = stunnel
+	optdepends = perl
+	optdepends = xterm
+	optdepends = smbclient
+	optdepends = avahi
+	optdepends = stunnel
+	source = http://downloads.sf.net/sourceforge/ssvnc/ssvnc-1.0.29.src.tar.gz
+	md5sums = 52201aeb0417c2a0fe83639e52da6ae5
+
+pkgname = ssvnc
+
