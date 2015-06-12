@@ -1,0 +1,23 @@
+pkgbase = libkeccak
+	pkgdesc = Keccak-family hashing library
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/maandree/libkeccak
+	arch = i686
+	arch = x86_64
+	license = AGPL3
+	checkdepends = glibc
+	checkdepends = valgrind
+	checkdepends = make
+	checkdepends = coreutils
+	makedepends = glibc
+	makedepends = gcc
+	makedepends = make
+	makedepends = coreutils
+	makedepends = binutils
+	depends = glibc
+	source = https://github.com/maandree/libkeccak/archive/0.1.tar.gz
+	sha256sums = 04be42a6c4b53f9846efb235ecb636ddf0fa63dd33a1f20ea74a24bf74f8c3b3
+
+pkgname = libkeccak
+
