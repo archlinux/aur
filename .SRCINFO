@@ -1,0 +1,16 @@
+pkgbase = cellprofiler-analyst-git
+	pkgdesc = Analysis software for cellular images
+	pkgver = 20121017
+	pkgrel = 1
+	url = http://www.cellprofiler.org/
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = git
+	makedepends = python2-distribute
+	depends = cellprofiler-git
+	provides = cellprofiler-analyst
+	conflicts = cellprofiler-analyst
+
+pkgname = cellprofiler-analyst-git
+
