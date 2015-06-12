@@ -1,0 +1,15 @@
+pkgbase = ocempgui
+	pkgdesc = GUI engine for Pygame and more
+	pkgver = 0.2.9
+	pkgrel = 1
+	url = http://ocemp.sourceforge.net/
+	arch = i686
+	license = BSD
+	depends = python2
+	depends = python2-pygame
+	optdepends = atk
+	source = http://sourceforge.net/projects/ocemp/files/ocempgui/0.2.9/OcempGUI-0.2.9.tar.gz/download
+	md5sums = 433a49ec5bdc690d2fc11b0ad56b2749
+
+pkgname = ocempgui
+
