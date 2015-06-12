@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=DogeCoinDark
+Comment=DogeCoinDark P2P Cryptocurrency
+Exec=/usr/bin/dogecoindark-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/dogecoindark.png
+MimeType=x-scheme-handler/dogecoindark;
+Categories=Network;
+Name[en_US.UTF-8]=DogeCoinDark

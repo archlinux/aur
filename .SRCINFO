@@ -1,0 +1,27 @@
+pkgbase = dogecoindark-qt-git
+	pkgdesc = DogeCoinDark is a new coin, that already fulfills the original ideals of crypto-currency: Decentralization, Anonymity, and just plain doge fun! GUI-QT version
+	pkgver = 1
+	pkgrel = 1
+	epoch = 1
+	url = http://dogecoindark.net/
+	install = dogecoindark-qt-git.install
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = boost
+	makedepends = gcc
+	makedepends = make
+	makedepends = git
+	depends = qt4
+	depends = miniupnpc
+	depends = boost-libs
+	provides = dogecoindark-qt
+	source = dogecoindark-qt-git.install
+	source = dogecoindark.desktop
+	source = git+https://github.com/doged/dogedsource.git
+	sha256sums = ebf7090ca1202e2c2ccd1aa5bb03e6ac911c458141a1cedda9b41f9c26c2602c
+	sha256sums = 02fb4dfe9469629ed43afe64ab3b5c7d702da8c78865c529c942d5c347281b66
+	sha256sums = SKIP
+
+pkgname = dogecoindark-qt-git
+
