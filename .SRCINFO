@@ -1,0 +1,18 @@
+pkgbase = enemylines7
+	pkgdesc = Enemy lines - computer game series
+	pkgver = 0.8
+	pkgrel = 3
+	url = http://proj.phk.at/el/7/
+	arch = i686
+	license = GPL-3
+	depends = sdl
+	depends = sdl_mixer
+	depends = sdl_image
+	depends = mesa
+	source = http://proj.phk.at/el/7/enelin7-0.8.zip
+	source = enelin7.desktop
+	md5sums = ec94352523c9679d6b0cc3678a510283
+	md5sums = 3ddc3e95f3c475719380fe14147b44ef
+
+pkgname = enemylines7
+
