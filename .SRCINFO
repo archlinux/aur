@@ -1,28 +1,23 @@
 pkgbase = atom-editor-git
 	pkgdesc = Chrome-based text editor from Github
-	pkgver = 0.198.0.r32.gf1f8c3d
-	pkgrel = 1
+	pkgver = 0.209.0.r18.g01be252
+	pkgrel = 2
 	url = https://github.com/atom/atom
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = npm
-	depends = alsa-lib
 	depends = gconf
-	depends = gtk2
-	depends = libgnome-keyring
-	depends = libnotify
-	depends = libxtst
+	depends = base-devel
 	depends = nodejs
-	depends = nss
+	depends = libgnome-keyring
 	depends = python2
 	provides = atom-editor
 	conflicts = atom-editor
+	conflicts = atom-editor-bin
 	source = atom::git+git://github.com/atom/atom
-	source = atom-python.patch
 	md5sums = SKIP
-	md5sums = d4e6137fbdea39d0abe2016d4640b0cf
 
 pkgname = atom-editor-git
 

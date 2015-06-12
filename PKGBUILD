@@ -1,35 +1,32 @@
-# Contributor: Timofey Titovets <nefelim4ag@gmail.com>
-# Contributor: John Reese <john@noswap.com>
+# Maintainer: Andya <ap_9@outlook.com>
+# Submitter: John Reese <john@noswap.com>
 # Upstream URL: https://github.com/atom/atom
 
-# Please do mind that it will automagically update
+# Please do mind that pkgbuild will automagically update
 # to latest tagged release, there’s no need to manually change pkgver.
 # Please don’t flag out-of-date!
 pkgname=atom-editor-git
-pkgver=0.198.0.r32.gf1f8c3d
-pkgrel=1
+pkgver=0.209.0.r18.g01be252
+pkgrel=2
 pkgdesc="Chrome-based text editor from Github"
 arch=('i686' 'x86_64')
 url="https://github.com/atom/atom"
 license=('MIT')
 provides=('atom-editor')
-conflicts=('atom-editor')
-depends=('alsa-lib' 'gconf' 'gtk2' 'libgnome-keyring' 'libnotify' 'libxtst' 'nodejs' 'nss' 'python2')
+conflicts=('atom-editor' 'atom-editor-bin')
+depends=('gconf' 'base-devel' 'nodejs' 'libgnome-keyring' 'python2')
 makedepends=('git' 'npm')
-source=("atom::git+git://github.com/atom/atom"
-    "atom-python.patch")
-md5sums=('SKIP'
-         'd4e6137fbdea39d0abe2016d4640b0cf')
+source=("atom::git+git://github.com/atom/atom")
+md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/atom"
-  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/v//'
+
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd "$srcdir/atom"
-
-  patch -Np0 -i "$srcdir/atom-python.patch"
 
   sed -e "s/<%= description %>/$pkgdesc/" \
     -e "s|<%= executable %>|/usr/bin/atom|"\
