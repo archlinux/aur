@@ -1,0 +1,24 @@
+pkgbase = correctpony
+	pkgdesc = Passphrase generator based on http://xkcd.com/936/
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/maandree/correctpony
+	arch = any
+	license = AGPL3
+	makedepends = java-environment>=6
+	makedepends = argparser
+	makedepends = make
+	makedepends = sed
+	makedepends = coreutils
+	makedepends = auto-auto-complete
+	makedepends = texinfo
+	makedepends = gzip
+	depends = java-runtime>=6
+	depends = argparser
+	provides = correctpony
+	conflicts = correctpony
+	source = https://github.com/maandree/correctpony/archive/2.1.tar.gz
+	sha256sums = 265f9fb11759e0a7245b96cbaa34f42b0fe2ee00f2f6721e1e53f7d25f4d5f0e
+
+pkgname = correctpony
+
