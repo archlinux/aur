@@ -1,0 +1,14 @@
+pkgbase = jsctags-tern-git
+	pkgdesc = jsctags generator using tern
+	pkgver = 0474181
+	pkgrel = 1
+	url = https://github.com/ramitos/jsctags
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = nodejs
+	source = jsctags-tern-git::git://github.com/ramitos/jsctags.git
+	md5sums = SKIP
+
+pkgname = jsctags-tern-git
+
