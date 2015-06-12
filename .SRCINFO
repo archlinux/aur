@@ -1,0 +1,19 @@
+pkgbase = auto-auto-complete
+	pkgdesc = Autogenerate shell auto-completion scripts
+	pkgver = 7.1
+	pkgrel = 1
+	url = https://github.com/maandree/auto-auto-complete
+	install = auto-auto-complete.install
+	arch = any
+	license = GPL3
+	makedepends = make
+	makedepends = sed
+	makedepends = coreutils
+	makedepends = python3
+	makedepends = texinfo
+	depends = python3
+	source = https://github.com/maandree/auto-auto-complete/archive/7.1.tar.gz
+	sha256sums = 02639d1031c28529d247765587fdbb7afd6bed3a75381eae4846c747555cf24e
+
+pkgname = auto-auto-complete
+
