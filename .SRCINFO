@@ -36,6 +36,7 @@ pkgname = oyranos-qt4-git
 	depends = cairo
 	depends = libcups
 	provides = oyranos
+	provides = oyranos-qt4
 	conflicts = oyranos-qt5-git
 
 pkgname = oyranos-qt5-git
@@ -52,5 +53,6 @@ pkgname = oyranos-qt5-git
 	depends = libcups
 	depends = libxrandr
 	provides = oyranos
+	provides = oyranos-qt5
 	conflicts = oyranos-qt4-git
 

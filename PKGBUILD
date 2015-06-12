@@ -40,7 +40,7 @@ build() {
 package_oyranos-qt4-git() {
   pkgdesc="A Colour Management System (CMS) on operating system level. build with Qt4 tools (GIT version)"
   conflicts=('oyranos-qt5-git')
-  provides=('oyranos')
+  provides=('oyranos' 'oyranos-qt4')
   depends=('qt4' 'exiv2' 'elektra-git' 'libxcm-git' 'libraw' 'fltk' 'xcalib' 'cairo' 'libcups')
   install=oyranos-git.install
 
@@ -56,7 +56,7 @@ package_oyranos-qt4-git() {
 package_oyranos-qt5-git() {
   pkgdesc="A Colour Management System (CMS) on operating system level. build with Qt5 tools (GIT version)"
   conflicts=('oyranos-qt4-git')
-  provides=('oyranos')
+  provides=('oyranos' 'oyranos-qt5')
   depends=('qt5-x11extras' 'exiv2' 'elektra-git' 'libxcm-git' 'libraw' 'fltk' 'xcalib' 'cairo' 'libcups' 'libxrandr')
   install=oyranos-git.install
 
