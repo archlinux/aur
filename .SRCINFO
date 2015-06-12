@@ -1,0 +1,16 @@
+pkgbase = pam_sasl
+	pkgdesc = pam sasl auth module
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = http://sourceforge.net/projects/pam-sasl/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = pam
+	depends = libsasl
+	options = !libtool
+	source = http://downloads.sourceforge.net/project/pam-sasl/pam_sasl-0.1.2.tar.gz
+	md5sums = 414404d756da70a7a786351092efae1d
+
+pkgname = pam_sasl
+
