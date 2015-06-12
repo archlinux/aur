@@ -1,0 +1,20 @@
+pkgbase = relink
+	pkgdesc = A simple utility that modifies your symlinks
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/maandree/relink
+	install = relink.install
+	arch = any
+	license = GPL3
+	makedepends = make
+	makedepends = coreutils
+	makedepends = texinfo
+	makedepends = auto-auto-complete
+	depends = python3
+	depends = argparser
+	depends = coreutils
+	source = https://github.com/maandree/relink/archive/1.1.tar.gz
+	sha256sums = 45def302c0fe2e0d7376b519faacefc67c75feb10b694613cf38d784af1328fa
+
+pkgname = relink
+
