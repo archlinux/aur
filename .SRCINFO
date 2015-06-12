@@ -1,0 +1,23 @@
+pkgbase = scrotty
+	pkgdesc = Screenshot program for Linux's TTY
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/maandree/scrotty
+	install = scrotty.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = custom:GFDL1.3
+	makedepends = make
+	makedepends = coreutils
+	makedepends = glibc
+	makedepends = gcc
+	makedepends = texinfo
+	depends = linux
+	depends = glibc
+	depends = imagemagick
+	source = https://github.com/maandree/scrotty/archive/1.0.1.tar.gz
+	sha256sums = a2f19969c84a9bd3751f4e04a9ada6ff6f0ef8b64028e63986ba317b55bdba1b
+
+pkgname = scrotty
+
