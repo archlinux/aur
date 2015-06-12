@@ -1,0 +1,15 @@
+pkgbase = python2-eureqa-git
+	pkgdesc = Python bindings for the Eureqa API
+	pkgver = 33.dec8991
+	pkgrel = 1
+	url = https://github.com/marcin-franc/eureqa_python
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = eureqa-api
+	source = python2-eureqa-git::git+https://github.com/marcin-franc/eureqa_python.git
+	md5sums = SKIP
+
+pkgname = python2-eureqa-git
+
