@@ -2,7 +2,7 @@ pkgbase = oyranos-git
 	pkgdesc = A Colour Management System (CMS) on operating system level. (GIT version)
 	pkgver = 0.9.5.625.gb685ebf
 	pkgrel = 1
-	url = http://www.oyranos.org/kolormanager/
+	url = http://www.oyranos.org/kolormanager
 	arch = i686
 	arch = x86_64
 	license = BSD
@@ -37,6 +37,7 @@ pkgname = oyranos-qt4-git
 	depends = libcups
 	provides = oyranos
 	provides = oyranos-qt4
+	provides = oryanos-git
 	conflicts = oyranos-qt5-git
 
 pkgname = oyranos-qt5-git
@@ -54,5 +55,6 @@ pkgname = oyranos-qt5-git
 	depends = libxrandr
 	provides = oyranos
 	provides = oyranos-qt5
+	provides = oryanos-git
 	conflicts = oyranos-qt4-git
 
