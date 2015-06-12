@@ -1,0 +1,12 @@
+pkgbase = python2-copasi-bin
+	pkgdesc = Python bindings for the COmplex PAthway SImulator (COPASI)
+	pkgver = 4.8
+	pkgrel = 1
+	url = http://www.copasi.org/
+	arch = i686
+	arch = x86_64
+	license = Artistic 2.0
+	depends = python2>=2.7
+
+pkgname = python2-copasi-bin
+
