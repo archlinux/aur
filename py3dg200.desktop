@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Py3DG200
+Comment=GlobalSat DG200 Manager
+Exec=Py3DG200
+Terminal=false
+Type=Application
+Categories=Utility;
+StartupNotify=true
