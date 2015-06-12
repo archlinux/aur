@@ -1,0 +1,24 @@
+pkgbase = sniproxy
+	pkgdesc = TLS SNI proxy
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = https://github.com/dlundquist/sniproxy
+	install = sniproxy.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = libev
+	depends = pcre
+	depends = udns
+	backup = etc/sniproxy.conf
+	source = sniproxy-0.3.6.tar.gz::https://github.com/dlundquist/sniproxy/archive/0.3.6.tar.gz
+	source = sniproxy.service
+	source = sniproxy.conf
+	source = sniproxy.tmpfiles.d
+	md5sums = 52a01eb55ac7712de2dd13f1ba6260e4
+	md5sums = 4aa83e863200de912b3415daa1adeca0
+	md5sums = 86deda1006d9b0ac4bb9f057b517f59b
+	md5sums = 985de392ad947f91a5e3ec4d5e53c087
+
+pkgname = sniproxy
+
