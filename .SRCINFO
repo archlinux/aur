@@ -1,0 +1,36 @@
+pkgbase = vice-sdl
+	pkgdesc = The Versatile Commodore 8-bit Emulator, SDL version
+	pkgver = 2.4
+	pkgrel = 3
+	url = http://vice-emu.sourceforge.net
+	install = vice-sdl.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = xorg-font-utils
+	depends = sdl
+	depends = giflib
+	depends = libpng
+	depends = libpcap
+	provides = vice=2.4
+	conflicts = vice
+	conflicts = vice-gnomeui
+	conflicts = vice-gtkglext
+	conflicts = vice-svn
+	replaces = vice
+	options = !makeflags
+	source = http://downloads.sourceforge.net/project/vice-emu/releases/vice-2.4.tar.gz
+	source = vice-2.4-x11video.patch
+	source = vice-2.4-no-fc-cache-no-lib64.patch
+	source = vice-2.4-notexi-notxt.patch
+	source = vice-2.4-zlib-1.2.7.patch
+	source = vice-2.4-giflib-5.1.0.patch
+	md5sums = b017647a0c159bbe43cdb81762d1c577
+	md5sums = 99931efcb779734c9df069e94f0b38a5
+	md5sums = b0d1392664decd3169740baf90661710
+	md5sums = 877f93db1550ea81386aae7c3b578442
+	md5sums = 9d9f62f05a967a5926df496e86404148
+	md5sums = 94563e3023d804341f1d252c0e6d1384
+
+pkgname = vice-sdl
+

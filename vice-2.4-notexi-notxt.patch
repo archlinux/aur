@@ -1,0 +1,28 @@
+--- a/doc/Makefile.am	2012-10-20 01:32:30.000000000 +0200
++++ b/doc/Makefile.am	2012-11-03 18:29:03.000000000 +0100
+@@ -79,19 +79,6 @@
+ 	$(srcdir)/fixdox.sh txt <vicetmp.txt | sed 's/ \+$$//' >$(builddir)/vice.txt
+ 	rm -f vicetmp.txt
+ 
+-$(builddir)/vice.pdf:	$(srcdir)/vice.texi
+-if BUILD_PDF
+-	sed 's/@heading NO WARRANTY/@center NO WARRANTY/g' <$(srcdir)/vice.texi >vicepdf.texi
+-	$(TEXI2DVI) -q --clean --pdf -o $(builddir)/vice.pdf vicepdf.texi
+-	rm -f vicepdf.texi
+-
+-PDF_DEPS=$(builddir)/vice.pdf
+-else
+-	touch $(builddir)/vice.pdf
+-
+-PDF_DEPS=
+-endif
+-
+ $(builddir)/vice.guide:	$(srcdir)/vice.texi
+ if BUILD_AMIGAGUIDE
+ 	$(srcdir)/texi2guide.sh $(MAKEGUIDE) $(builddir)/vice.guide $(srcdir)/vice.texi
+@@ -148,4 +135,4 @@
+ 	touch $(builddir)/vice.info
+ 	$(MAKEINFO) -o $(builddir)/vice.info --no-split $(srcdir)/vice.texi
+ 
+-INFO_DEPS = $(builddir)/vice.txt $(builddir)/vice.info $(PDF_DEPS) $(GUIDE_DEPS) $(HLP_DEPS) $(CHM_DEPS) $(IPF_DEPS)
++INFO_DEPS = $(builddir)/vice.info $(PDF_DEPS) $(GUIDE_DEPS) $(HLP_DEPS) $(CHM_DEPS) $(IPF_DEPS)

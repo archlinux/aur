@@ -1,0 +1,25 @@
+--- a/configure.in	2012-11-01 16:37:51.000000000 +0100
++++ b/configure.in	2012-11-03 18:07:35.000000000 +0100
+@@ -2090,12 +2090,7 @@
+ 
+ fi
+ 
+-AC_PATH_PROGS(FCCACHE, fc-cache, false)
+-if test x"$FCCACHE" = "xfalse"; then
+-  AM_CONDITIONAL(HAVE_FC_CACHE, false)
+-else
+-  AM_CONDITIONAL(HAVE_FC_CACHE, true)
+-fi
++AM_CONDITIONAL(HAVE_FC_CACHE, false)
+ 
+ if test x"$is_amigaos4" = "xyes"; then
+   if test x"$enable_sdlui" != "xyes"; then
+@@ -3424,7 +3419,7 @@
+     ;;
+   linux*)
+     if test x"$host_cpu" = "xx86_64"; then
+-      VICEDIR="$PREFIX/lib64/vice"
++      VICEDIR="$PREFIX/lib/vice"
+       AM_CONDITIONAL(ALTERNATE_DOCDIR, false)
+     else
+       VICEDIR="$PREFIX/lib/vice"
