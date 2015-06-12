@@ -1,0 +1,21 @@
+pkgbase = sisiya-webui-php
+	pkgdesc = The SisIYA daemon.
+	pkgver = 0.6.31
+	pkgrel = 1
+	url = http://www.sisiya.org
+	install = sisiya-webui-php.install
+	arch = any
+	license = GPL2
+	depends = php
+	depends = php-gd
+	depends = php-pgsql
+	depends = sisiya-webui-images
+	backup = etc/sisiya/sisiya-webui-php/dbconf.php
+	backup = etc/sisiya/sisiya-webui-php/sisiya_admin_conf.php
+	backup = etc/sisiya/sisiya-webui-php/sisiya_common_conf.php
+	backup = etc/sisiya/sisiya-webui-php/sisiya_gui_conf.php
+	source = http://sourceforge.net/projects/sisiya/files/sisiya/0.6.31/pacman/sisiya-webui-php-0.6.31.tar.gz
+	md5sums = 5abee8382a7f6690e0b6c482bbce2891
+
+pkgname = sisiya-webui-php
+
