@@ -1,0 +1,14 @@
+pkgbase = xmacro
+	pkgdesc = Recording and replaying keyboard and mouse events on an X server
+	pkgver = 0.4.6
+	pkgrel = 1
+	url = http://download.sarine.nl/xmacro/Description.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = xorg-server
+	source = http://download.sarine.nl/xmacro/xmacro-0.4.6.tar.gz
+	md5sums = c1648529aab8d65a92ad43513b9815c5
+
+pkgname = xmacro
+
