@@ -1,0 +1,43 @@
+pkgbase = gtk3-light
+	pkgdesc = GTK3 without colord.
+	pkgver = 3.16.4
+	pkgrel = 1
+	url = http://www.gtk.org/
+	install = gtk3.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = gobject-introspection
+	makedepends = libcanberra
+	depends = atk
+	depends = cairo
+	depends = gtk-update-icon-cache
+	depends = libcups
+	depends = libxcursor
+	depends = libxinerama
+	depends = libxrandr
+	depends = libxi
+	depends = libepoxy
+	depends = libxcomposite
+	depends = libxdamage
+	depends = pango
+	depends = shared-mime-info
+	depends = at-spi2-atk
+	depends = wayland
+	depends = libxkbcommon
+	depends = adwaita-icon-theme
+	depends = json-glib
+	depends = rest
+	depends = gtk-update-icon-cache
+	optdepends = libcanberra: gtk3-widget-factory demo
+	provides = gtk3=3.16.4
+	conflicts = gtk3
+	options = !docs
+	backup = etc/gtk-3.0/settings.ini
+	source = https://download.gnome.org/sources/gtk+/3.16/gtk+-3.16.4.tar.xz
+	source = settings.ini
+	sha256sums = 1ee5dbd7a4cb81a91eaa1b7ae64ba5a3eab6a3c0a764155583ab96524590fc8e
+	sha256sums = 01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202
+
+pkgname = gtk3-light
+
