@@ -1,0 +1,14 @@
+pkgbase = paper-skin
+	pkgdesc = A simple Python script for making Minecraft player skins into printable paper crafts
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/xordspar0/paper-skin
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pillow
+	source = https://github.com/xordspar0/paper-skin/archive/0.1.1.tar.gz
+	md5sums = b33148bead36b30cdf56c19612bb5e9c
+
+pkgname = paper-skin
+
