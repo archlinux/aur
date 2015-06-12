@@ -1,0 +1,17 @@
+pkgbase = vok_sk
+	pkgdesc = Vogo's Keyboard for Xorg 7 (Slovak)
+	pkgver = 1.0
+	pkgrel = 8
+	url = http://www.abclinuxu.cz/blog/origami/2006/12/21/162644
+	install = vok_sk.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = grep
+	depends = qizxopen
+	depends = perl
+	source = https://github.com/vogo/vok/raw/master/xorg/vok_sk
+	md5sums = 2a99ad4873dda74f1a44e16e5d603df1
+
+pkgname = vok_sk
+
