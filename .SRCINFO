@@ -1,0 +1,21 @@
+pkgbase = generatorrunner-git
+	pkgdesc = A binding generator
+	pkgver = 0.6.13.17.gbbb7d41
+	pkgrel = 1
+	url = http://www.pyside.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = git
+	depends = apiextractor-git
+	depends = qt4>=4.7
+	depends = openssl
+	provides = generatorrunner
+	conflicts = generatorrunner
+	source = generatorrunner-git::git://github.com/PySide/Generatorrunner.git
+	md5sums = SKIP
+
+pkgname = generatorrunner-git
+
