@@ -1,0 +1,15 @@
+pkgbase = opencv-docs
+	pkgdesc = Open Source Computer Vision Library docs
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = http://opencv.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = python2-numpy
+	makedepends = doxygen
+	source = http://downloads.sourceforge.net/opencvlibrary/opencv-3.0.0.zip
+	md5sums = 09004c275d8092cbdf5b61675cecd399
+
+pkgname = opencv-docs
+
