@@ -1,0 +1,13 @@
+pkgbase = create-pcr-script
+	pkgdesc = Bash script to create local repository from pacman cache. (Pacman Cache Repository)
+	pkgver = 1.39.1
+	pkgrel = 1
+	url = https://github.com/yadieet/pcr
+	arch = any
+	license = GPLv2
+	depends = bash
+	source = create-pcr-1.39.1::https://raw.github.com/yadieet/pcr/34b8fb15f1b9d38aae57559b923205846ff050eb/create-pcr
+	md5sums = 5c3a9ecac307ffeee04578ff6cdb4427
+
+pkgname = create-pcr-script
+
