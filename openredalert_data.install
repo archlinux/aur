@@ -1,0 +1,20 @@
+post_install() {
+  echo "Setting MAIN.MIX to point to Soviet DataDisc. If you want to change this, just delete the symbolic link and recreate it so it points to MAIN-AlliedDisc.mix"
+  ln -s /usr/share/openredalert/data/mix/REDALERT-SovietAlliedDisc.mix /usr/share/openredalert/data/mix/REDALERT.MIX
+  ln -s /usr/share/openredalert/data/mix/MAIN-SovietDisc.mix /usr/share/openredalert/data/mix/MAIN.MIX
+  /bin/true
+}
+
+post_upgrade() {
+/bin/true
+}
+
+pre_remove() {
+rm /usr/share/openredalert/data/mix/MAIN.MIX /usr/share/openredalert/data/mix/REDALERT.MIX
+/bin/true
+}
+
+op=$1
+shift
+
+$op "$@"

@@ -1,0 +1,18 @@
+pkgbase = openredalert_full_version_data
+	pkgdesc = Data files for OpenRedAlert from full version of the game (Soviet/Allied Disc)
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.ea.com/redalert/news-detail.jsp?id=62
+	install = openredalert_data.install
+	arch = i686
+	license = EULA
+	makedepends = unrar
+	makedepends = uniso
+	depends = openredalert_bin
+	source = http://na.llnet.cnc3tv.ea.com/u/f/eagames/cnc3/cnc3tv/RedAlert/RedAlert1_SovietDisc.rar
+	source = http://na.llnet.cnc3tv.ea.com/u/f/eagames/cnc3/cnc3tv/RedAlert/RedAlert1_AlliedDisc.rar
+	md5sums = 0035bad1775dfe3a7cf4de807b41a135
+	md5sums = 0a528b4d12d01b9076c16687ebf821b0
+
+pkgname = openredalert_full_version_data
+
