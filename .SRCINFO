@@ -1,0 +1,15 @@
+pkgbase = interbench
+	pkgdesc = Emulates and measures CPU scheduling latency and jitter
+	pkgver = 0.31
+	pkgrel = 4
+	url = http://users.on.net/~ckolivas/interbench/
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	depends = glibc
+	options = !strip
+	source = http://ck.kolivas.org/apps/interbench/interbench-0.31.tar.bz2
+	md5sums = 832254d7fd1255c548ebea7b97f01015
+
+pkgname = interbench
+
