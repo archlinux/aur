@@ -1,0 +1,21 @@
+pkgbase = taxi-bzr
+	pkgdesc = A simple to use FTP client, designed for elementary OS.
+	pkgver = r142
+	pkgrel = 1
+	url = https://launchpad.net/taxi
+	install = taxi.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = bzr
+	makedepends = vala
+	makedepends = cmake
+	depends = granite
+	depends = gtk3
+	provides = taxi
+	conflicts = taxi
+	source = bzr+lp:taxi
+	sha256sums = SKIP
+
+pkgname = taxi-bzr
+
