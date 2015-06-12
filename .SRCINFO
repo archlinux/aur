@@ -1,0 +1,15 @@
+pkgbase = paradigm-git
+	pkgdesc = A factor graph framework for pathway inference on high-throughput genomic data
+	pkgver = 0.1.12.g2f49715
+	pkgrel = 1
+	url = http://sbenz.github.com/Paradigm/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = libdai
+	source = paradigm-git::git+https://github.com/aduong/Paradigm.git
+	md5sums = SKIP
+
+pkgname = paradigm-git
+
