@@ -1,0 +1,14 @@
+pkgbase = django-templatetag-sugar
+	pkgdesc = Django social authentication made simple..
+	pkgver = 0.1
+	pkgrel = 2
+	url = http://pypi.python.org/pypi/django-templatetag-sugar/
+	arch = any
+	license = BSD
+	makedepends = python2-distribute
+	depends = python2
+	source = http://pypi.python.org/packages/source/d/django-templatetag-sugar/django-templatetag-sugar-0.1.tar.gz
+	md5sums = f5b8bf6e4cb82f8affa761574bf3dae4
+
+pkgname = django-templatetag-sugar
+
