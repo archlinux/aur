@@ -1,0 +1,26 @@
+pkgbase = influxdb
+	pkgdesc = Scalable datastore for metrics, events, and real-time analytics
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = http://influxdb.org/
+	install = influxdb.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = autoconf
+	makedepends = protobuf
+	makedepends = bison
+	makedepends = flex
+	makedepends = go
+	makedepends = gawk
+	makedepends = mercurial
+	makedepends = git
+	provides = influxdb
+	backup = etc/influxdb.conf
+	source = influxdb.service
+	source = influxdb.install
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = influxdb
+
