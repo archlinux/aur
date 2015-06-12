@@ -1,0 +1,20 @@
+--- setup.py	2012-07-24 17:11:26.000000000 +0100
++++ setup.py.fixed	2013-04-07 20:51:30.338344945 +0100
+@@ -154,7 +154,7 @@
+ if pitcon:
+     print '\nBuilding pitcon'
+     extpath = os.path.join(local_path, 'pysces', 'pitcon')
+-    pitcon = Extension('pysces.pitcon.pitcon',[os.path.join(extpath,'pitcon.pyf'),os.path.join(extpath,'pcon61subd.f'),os.path.join(extpath,'dpcon61.f'),os.path.join(extpath,'dpcon61w.f')])
++    pitcon = Extension('pysces.pitcon.pitcon',[os.path.join(extpath,'pitcon.pyf'),os.path.join(extpath,'pcon61subd.f'),os.path.join(extpath,'dpcon61.f'),os.path.join(extpath,'dpcon61w.f')],extra_link_args=['-shared'])
+     mymodules.append(pitcon)
+     #mydata_files.append((os.path.join('pysces','pitcon'), [os.path.join(local_path, 'pysces', 'pitcon','readme.txt'), os.path.join(local_path, 'pysces', 'pitcon','readme.txt')]))
+ else:
+@@ -177,7 +177,7 @@
+             os.path.join(extpath,'nleq2.f'), os.path.join(extpath,'linalg_nleq2.f'),\
+             os.path.join(extpath,'zibmon.f'), os.path.join(extpath,'zibsec.f'),\
+             os.path.join(extpath,'zibconst.f'), os.path.join(extpath,'wnorm.f')
+-            ])
++            ],extra_link_args=['-shared'])
+     mymodules.append(nleq2)
+     mypackages.append('pysces.nleq2')
+ else:

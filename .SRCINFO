@@ -1,0 +1,25 @@
+pkgbase = python2-pysces
+	pkgdesc = Python simulator for Cellular Systems
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = http://pysces.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	license = GPL
+	makedepends = gcc-fortran
+	depends = python2-scipy
+	depends = python2-matplotlib
+	optdepends = gnuplot: as an alternative plotting back-end and 3D plots
+	optdepends = ipython2: for interactive modelling sessions (highly recommended)
+	optdepends = libsbml: for SBML import and export
+	optdepends = python2-pysundials: for CVODE and Events support
+	optdepends = python2-pysces-metatool: for elementary mode support
+	replaces = pysces
+	source = http://sourceforge.net/projects/pysces/files/pysces/pysces-0.9/pysces-0.9.0.tar.gz
+	source = setup.py.patch
+	md5sums = d325c6e35011f614d8be90b94f7f7110
+	md5sums = 0a85b753d42fc5ed037f96df8f199b76
+
+pkgname = python2-pysces
+
