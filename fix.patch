@@ -1,0 +1,25 @@
+*** retrobreak.c	2011-06-14 21:27:19.000000000 +0200
+--- retrobreak.c.new	2014-05-03 11:34:25.000000000 +0200
+***************
+*** 353,359 ****
+--- 353,362 ----
+  	Game.difficult=1;
+  	Game.lives = 3;
+      Game.status = 1;
++     Game.player_score = 0;
+      bricks = COLS * 6; // number of bricks
++     indexB = 0;
++     k = 0;
+  
+  	for (i = 0; i <6; i++)
+  	{
+***************
+*** 364,369 ****
+--- 367,373 ----
+  			Brick[indexB].w=BRICK_WIDTH;
+  			Brick[indexB].h=BRICK_HEIGHT;
+  			Brick[indexB].color=k;		
++ 			Brick[indexB].hit=0;
+  			indexB++;
+  		}
+       k++;

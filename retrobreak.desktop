@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Retrobreak
+GenericName=Simple breakout remake
+Exec=retrobreak
+Terminal=false
+StartupNotify=false
+Categories=Game;ActionGame;

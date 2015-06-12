@@ -1,0 +1,20 @@
+pkgbase = retrobreak
+	pkgdesc = a simple breakout remake
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://sourceforge.net/projects/retropong/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = sdl_mixer
+	depends = sdl_ttf
+	depends = bash
+	source = http://downloads.sourceforge.net/project/retropong/retrobreak.tar.gz
+	source = retrobreak.desktop
+	source = fix.patch
+	md5sums = af360923372fa28c99c2fade157fd841
+	md5sums = 2a09f3a67150b6c7f7ee4e33cc4d04de
+	md5sums = 6d4c0260fabdffce91b9dcba0bcb8749
+
+pkgname = retrobreak
+
