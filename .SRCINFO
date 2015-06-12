@@ -1,0 +1,15 @@
+pkgbase = unluac
+	pkgdesc = a decompiler for Lua 5.1
+	pkgver = 205_04_12
+	pkgrel = 1
+	url = http://sourceforge.net/projects/unluac/
+	arch = any
+	license = MIT
+	depends = java-runtime
+	source = http://sourceforge.net/projects/unluac/files/latest
+	source = unluac.sh
+	md5sums = 0d26eba888c13e4525ccc884c5c7306a
+	md5sums = f86eb01199590ec711691c2c0f5ac539
+
+pkgname = unluac
+
