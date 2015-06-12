@@ -4,11 +4,11 @@
 
 pkgname=mingw-w64-enca
 pkgver=1.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Charset analyser and converter (mingw-w64)"
 arch=('any')
 url="http://cihar.com/software/enca/"
-options=('!strip !buildflags staticlibs')
+options=('!strip' '!buildflags' 'staticlibs')
 license=('GPL')
 depends=('mingw-w64-crt' 'mingw-w64-recode')
 makedepends=('mingw-w64-gcc' 'wine')
