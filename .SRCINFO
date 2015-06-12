@@ -1,0 +1,19 @@
+pkgbase = quantlib
+	pkgdesc = A free/open-source library for quantitative finance.
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://quantlib.org
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = make
+	makedepends = boost
+	makedepends = gcc
+	depends = boost-libs
+	depends = sh
+	options = !libtool
+	source = http://downloads.sourceforge.net/project/quantlib/QuantLib/1.5/QuantLib-1.5.tar.gz
+	md5sums = 8dd8d74cfe5c9dafc554b18830b34855
+
+pkgname = quantlib
+
