@@ -1,0 +1,25 @@
+pkgbase = fastoggenc
+	pkgdesc = A parallelized Python script which converts MP3, M4A, WMA, WAV into OGG Vorbis
+	pkgver = 0.1.4
+	pkgrel = 3
+	url = http://sourceforge.net/projects/fastoggenc/
+	arch = any
+	license = GPLv3
+	depends = mplayer
+	depends = mpg123
+	depends = lame
+	depends = flac
+	depends = faad2
+	depends = vorbis-tools
+	depends = wavpack
+	depends = musepack-tools
+	depends = cdparanoia
+	depends = cdrkit
+	depends = mutagen
+	source = http://downloads.sourceforge.net/project/fastoggenc/0.1.4/fastoggenc-0.1.4.tar.gz
+	md5sums = db8576f9d49741680c06a23940a38885
+	sha1sums = 91f78e026762a08ccf468de5c2e89bed717d5f96
+	sha256sums = d781b558c7848f27a61362fd7abcd4065e1feb711916292d0e8e828e2a6e2a12
+
+pkgname = fastoggenc
+
