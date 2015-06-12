@@ -1,0 +1,15 @@
+pkgbase = perl-proc-parallelloop
+	pkgdesc = Parallel looping constructs for Perl programs
+	pkgver = 0.5
+	pkgrel = 2
+	url = http://search.cpan.org/~bdarrah/Proc-ParallelLoop
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	source = http://www.cpan.org/authors/id/B/BD/BDARRAH/Proc-ParallelLoop-0.5.tgz
+	md5sums = cc60f8a69454d64cc5a0f0b57171b13c
+
+pkgname = perl-proc-parallelloop
+
