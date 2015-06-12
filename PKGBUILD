@@ -16,17 +16,17 @@ source=(https://pypi.python.org/packages/source/C/CiteBib/${_pkgname}-${pkgver}.
 sha256sums=('987a7ce0927eb2ccd4d67d7ba1a4811f3012515f506894dab25f83caa2ecea06')
 
 build() {
-  cd "${srcdir}"
+  cd "${_pkgname}-${pkgver}"
   python setup.py build
 }
 
 check() {
-  cd "${srcdir}"
+  cd "${_pkgname}-${pkgver}"
   nosetests3
 }
 
 package() {
-  cd "${srcdir}"
+  cd "${_pkgname}-${pkgver}"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
