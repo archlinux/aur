@@ -1,0 +1,15 @@
+pkgbase = deadspace
+	pkgdesc = a utility that prohibits mouse from entering dead space when screen spans over multiple monitors
+	pkgver = 1
+	pkgrel = 3
+	url = http://www.abclinuxu.cz/blog/Joseho_blog/2009/9/najde-sa-niekto-na-napisanie-patchu
+	arch = i686
+	license = custom:beerware
+	depends = libx11
+	source = http://eeg.cz/=forro=/dead_space.tar.gz
+	source = new_xorg.patch
+	md5sums = bf60dd4bb85b834ca701705f0b30f553
+	md5sums = ea73283dba6472683d79c8c8281fd4f6
+
+pkgname = deadspace
+

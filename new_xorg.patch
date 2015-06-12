@@ -1,0 +1,6 @@
+57,58c57,58
+< 
+<         select(xfd + 1, &fdset, NULL, NULL, NULL);
+---
+> 	struct timeval tv = {.tv_sec = 0, .tv_usec = 5000};
+>         select(xfd + 1, &fdset, NULL, NULL, &tv);
