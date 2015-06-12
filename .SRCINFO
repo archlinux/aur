@@ -1,0 +1,17 @@
+pkgbase = argparser
+	pkgdesc = Command line argument parser library, like getopt, except better.
+	pkgver = 5.1
+	pkgrel = 2
+	url = https://github.com/maandree/argparser
+	arch = any
+	license = AGPL3
+	makedepends = coreutils
+	makedepends = sed
+	makedepends = java-environment
+	makedepends = gcc
+	makedepends = texinfo
+	source = https://github.com/maandree/argparser/archive/5.1.tar.gz
+	sha256sums = 10cbff3d7c17d5c8e99dab20e5b425e1da7625dd4090d6c904c944b8bb64195f
+
+pkgname = argparser
+
