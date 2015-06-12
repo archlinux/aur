@@ -1,0 +1,19 @@
+pkgbase = topcat
+	pkgdesc = Tool for OPerations on Catalogues And Tables
+	pkgver = 4.2.3
+	pkgrel = 1
+	url = http://www.star.bris.ac.uk/~mbt/topcat/
+	arch = any
+	license = GPL
+	depends = java-environment
+	depends = sh
+	noextract = topcat-full.jar
+	source = ftp://andromeda.star.bris.ac.uk/pub/star/topcat/v4.2-3/topcat-full.jar
+	source = topcat
+	source = tc3.gif
+	md5sums = a432b814b0b0c9952cd967ac111c4a82
+	md5sums = 5f2df6a05c72b5641bf6a2b1c29173ed
+	md5sums = 7ff53d3f87a464f70e5de7c8531cb2df
+
+pkgname = topcat
+
