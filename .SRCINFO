@@ -1,0 +1,16 @@
+pkgbase = imagej-plugins-embl
+	pkgdesc = ImageJ plugin collection by the EMBL
+	pkgver = 20130120
+	pkgrel = 1
+	url = http://www.embl.de/almf/almf_services/services/downloads/imageJ/
+	arch = any
+	license = GPL
+	makedepends = unzip
+	depends = imagej
+	optdepends = java-environment
+	noextract = EMBL_ImageJ_plugins.zip
+	source = http://www.embl.de/download/almf/EMBL_ImageJ_plugins.zip
+	md5sums = 097f778d804c2506dbd8a1219267dc3b
+
+pkgname = imagej-plugins-embl
+
