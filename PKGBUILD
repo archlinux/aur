@@ -2,16 +2,16 @@
 # Contributor: A Rojas < nqn1976 @ gmail.com >
 
 pkgname=partitionmanager-git
-pkgver=1.2.1.r922.b651d8d
+pkgver=1.2.1.r923.11b0971
 pkgrel=1
 pkgdesc="A KDE utility that allows you to manage disks, partitions, and file systems"
 arch=('i686' 'x86_64')
 url='http://kde.org/applications/system/kdepartitionmanager/'
 license=('GPL2')
-depends=('kmpcore-git' 'hicolor-icon-theme')
+depends=('kpmcore-git' 'hicolor-icon-theme')
 conflicts=('partitionmanager')
 provides=('partitionmanager')
-makedepends=('cmake' 'git' 'extra-cmake-modules' 'kdoctools' 'python')
+makedepends=('extra-cmake-modules' 'kdoctools' 'git' 'python')
 optdepends=('e2fsprogs: ext2/3/4 support'
             'xfsprogs: XFS support'
             'jfsutils: JFS support'
