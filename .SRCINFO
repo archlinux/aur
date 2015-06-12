@@ -1,0 +1,13 @@
+pkgbase = geben-on-emacs
+	pkgdesc = interfaces Emacs to DBGp protocol with which you can debug running scripts interactively
+	pkgver = 0.26
+	pkgrel = 1
+	url = http://code.google.com/p/geben-on-emacs/
+	arch = any
+	license = GPL2
+	depends = emacs
+	source = http://geben-on-emacs.googlecode.com/files/geben-0.26.tar.gz
+	md5sums = 521f06b7ef8da949e1897c8f70a39e66
+
+pkgname = geben-on-emacs
+
