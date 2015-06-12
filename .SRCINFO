@@ -1,0 +1,14 @@
+pkgbase = django-social-auth-trello
+	pkgdesc = A Sentry plugin that integrats with Trello.
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/django-social-auth-trello
+	arch = any
+	license = GPL
+	makedepends = python2-distribute
+	depends = python2
+	source = http://pypi.python.org/packages/source/d/django-social-auth-trello/django-social-auth-trello-1.0.3.tar.gz
+	md5sums = 71eec6f84bad80c366fccc5a682d061a
+
+pkgname = django-social-auth-trello
+
