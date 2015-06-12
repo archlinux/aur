@@ -1,0 +1,13 @@
+pkgbase = jslint
+	pkgdesc = Command-line JSLint, installed through npm
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/reid/node-jslint
+	arch = any
+	license = custom:BSD and modified MIT
+	depends = nodejs
+	source = https://github.com/reid/node-jslint/archive/v0.6.1.tar.gz
+	sha256sums = b1e9fc4f9e17e954c45c2fcae729691e64df1367c322f3451af9cd204f3354c5
+
+pkgname = jslint
+
