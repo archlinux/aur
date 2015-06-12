@@ -1,0 +1,14 @@
+pkgbase = latex-mathabx
+	pkgdesc = Mathematical symbols not included in the standard distribution
+	pkgver = 2005.05.18
+	pkgrel = 1
+	url = http://www.ctan.org/tex-archive/fonts/mathabx
+	install = latex-mathabx.install
+	arch = any
+	license = unknown
+	depends = texlive-core
+	source = http://mirror.ctan.org/fonts/mathabx.zip
+	md5sums = 82eecbe10d9f5593e01d257523a03c42
+
+pkgname = latex-mathabx
+
