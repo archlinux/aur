@@ -1,0 +1,16 @@
+pkgbase = oscill8
+	pkgdesc = Time course, parameter scan and bifurcation analysis of ODE systems
+	pkgver = 2.0.11
+	pkgrel = 1
+	url = http://oscill8.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = mono
+	source = http://sourceforge.net/projects/oscill8/files/oscill8/2.0.11/oscill8_mac_manual_setup.zip/download
+	source = oscill8_starter
+	md5sums = 53bf86373bb4245414ac6c67a3cfe99c
+	md5sums = 4411a2ae23364fabb6aae78862894daa
+
+pkgname = oscill8
+
