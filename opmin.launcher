@@ -1,0 +1,81 @@
+#!/usr/bin/env bash
+
+OPMIN_CFG="$HOME/.microemulator"
+MICRO_EMU=/usr/share/java/microemulator
+
+if [[ ! -d "$OPMIN_CFG" ]]
+then
+    mkdir "$OPMIN_CFG"
+fi
+
+if [[ ! -f "$OPMIN_CFG/config2.xml" ]]
+then
+    cat << EOF > "$OPMIN_CFG/config2.xml"
+<config>
+	<files>
+		<recent MAXCAPACITY="10">
+			<midlet>
+				<name>Opera Mini 4</name>
+				<url>file:///usr/share/java/microemulator/apps/opera-mini-4.5.33867-advanced-en.jar</url>
+			</midlet>
+		</recent>
+	</files>
+	<system-properties>
+		<system-property VALUE="MIDP-2.0" NAME="microedition.profiles"/>
+		<system-property VALUE="CLDC-1.0" NAME="microedition.configuration"/>
+		<system-property VALUE="true" NAME="avetana.forceNativeLibrary"/>
+	</system-properties>
+	<devices>
+		<device>
+			<name>1280x768</name>
+			<filename>opmin.zip</filename>
+			<descriptor>opmin/org/microemu/device/1280x768/device.xml</descriptor>
+		</device>
+		<device default="true">
+			<name>1024x705</name>
+			<filename>opmin.zip</filename>
+			<descriptor>opmin/org/microemu/device/1024x705/device.xml</descriptor>
+		</device>
+		<device>
+			<name>800x385</name>
+			<filename>opmin.zip</filename>
+			<descriptor>opmin/org/microemu/device/800x385/device.xml</descriptor>
+		</device>
+		<device>
+			<name>1200x600</name>
+			<filename>opmin.zip</filename>
+			<descriptor>opmin/org/microemu/device/1200x600/device.xml</descriptor>
+		</device>
+		<device>
+			<name>800x505</name>
+			<filename>opmin.zip</filename>
+			<descriptor>opmin/org/microemu/device/800x505/device.xml</descriptor>
+		</device>
+		<device>
+			<name>1200x705</name>
+			<filename>opmin.zip</filename>
+			<descriptor>opmin/org/microemu/device/1200x705/device.xml</descriptor>
+		</device>
+	</devices>
+	<windows>
+		<main ONSTART="true">
+			<x>204</x>
+			<y>54</y>
+			<width>1026</width>
+			<height>781</height>
+		</main>
+	</windows>
+</config>
+EOF
+fi
+
+if [[ ! -f "$OPMIN_CFG/opmin.zip" ]]
+then
+    cp "$MICRO_EMU/devices/opmin.zip" "$OPMIN_CFG"/
+fi
+
+cd "$MICRO_EMU"
+
+exec java -cp microemulator.jar:lib/microemu-jsr-75.jar org.microemu.app.Main --impl org.microemu.cldc.file.FileSystem org.microemu.examples.fcview.FCViewMIDlet apps/opera-mini-latest-advanced-en.jar "$@"
+
+exit $?

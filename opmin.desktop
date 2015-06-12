@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Opera Mini 4
+Icon=opera
+GenericName=Web Browser                                                                                                                         
+Comment=Opera Mini v4 J2ME Edition
+TryExec=/usr/bin/opmin
+Exec=opmin
+Categories=Application;Network;
+StartupNotify=false
+MimeType=text/html
+Name[en_US]=opmin.desktop
