@@ -1,0 +1,22 @@
+pkgbase = camlidl
+	pkgdesc = A stub code generator and COM binding for Objective Caml (OCaml)
+	pkgver = 1.05
+	pkgrel = 5
+	url = http://caml.inria.fr/pub/old_caml_site/camlidl/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = ocaml
+	options = staticlibs
+	source = http://caml.inria.fr/pub/old_caml_site/distrib/bazar-ocaml/camlidl-1.05.tar.gz
+	source = arch-build-system-fix.patch
+	source = META.camlidl
+	md5sums = 4cfb863bc3cbdc1af2502042c45cc675
+	md5sums = 050c117fbddf73e7f7ca64cf1c17c644
+	md5sums = c8239780b7303f02b86ca6efc644640c
+	sha1sums = 2a0d5ba70fea8c1de1c5387f8b2058357b2177df
+	sha1sums = a7869f04e83a279ad8327f7cade60b1e470cd24a
+	sha1sums = cdabd68036a1f52c8ba8cfb22bde5a034ff8b620
+
+pkgname = camlidl
+
