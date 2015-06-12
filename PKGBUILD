@@ -3,7 +3,7 @@
 pkgbase=evince
 pkgname=evince-light
 pkgver=3.16.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME document viewer, built with minimal dependencies"
 url="https://wiki.gnome.org/Apps/Evince"
 arch=('i686' 'x86_64')
@@ -12,7 +12,8 @@ depends=('desktop-file-utils'
          'gnome-icon-theme'
          'gsettings-desktop-schemas'
          'gtk3'
-         'libsm')
+         'libsm'
+         'libarchive')
 # Add to depends:
 #        'poppler-glib' for PDF
 #        'libspectre' for PostScript
@@ -21,9 +22,6 @@ depends=('desktop-file-utils'
 #        'libgxps' for XPS
 #        'gvfs' for bookmark and annotations
 makedepends=('itstool' 'intltool')
-optdepends=('p7zip: cbz and cb7 compressed comic books'
-            'tar: cbt compressed comic books'
-            'unrar: cbr compressed comic books')
 provides=("${pkgbase}")
 conflicts=("${pkgbase}")
 install=${pkgbase}.install
