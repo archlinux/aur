@@ -1,0 +1,27 @@
+post_install() {
+  chgrp -R games /usr/share/PlayCatan
+  chmod -R g+w /usr/share/PlayCatan
+
+  echo '--------------------------------------------------'
+  echo 'You *MUST* read and agree to the license stored in'
+  echo '/usr/share/COW-Client/COW-EULA_english.txt before'
+  echo 'using it.'
+  echo '--------------------------------------------------'
+
+  echo "Add user to group games so that game settings could be saved. Please note that this application is not multi user friendly."
+  /bin/true
+}
+
+post_upgrade() {
+/bin/true
+}
+
+pre_remove() {
+/bin/true
+}
+
+op=$1
+shift
+
+$op "$@"
+

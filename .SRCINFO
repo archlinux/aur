@@ -1,0 +1,16 @@
+pkgbase = catan-cow-client
+	pkgdesc = Catan Online World Linux Client
+	pkgver = 4.1148
+	pkgrel = 1
+	url = http://www.playcatan.com/cow-download.html
+	install = catan-cow-client.install
+	arch = i686
+	arch = x86_64
+	license = custom:eula
+	depends = libx11
+	depends = java-runtime
+	source = http://www.catan.com/en/download/?PlayCatan_4_1148_eng_linux.tgz
+	md5sums = 8fb9339e4dbc3ef1c1ad0d667dfae776
+
+pkgname = catan-cow-client
+
