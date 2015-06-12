@@ -1,0 +1,26 @@
+pkgbase = hedgewars-hg
+	pkgdesc = Free Worms-like turn based strategy game (development version - mercurial)
+	pkgver = 1
+	pkgrel = 1
+	url = http://hedgewars.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom
+	makedepends = fpc
+	makedepends = cmake
+	makedepends = mercurial
+	depends = qt
+	depends = sdl_mixer
+	depends = sdl_image
+	depends = sdl_net
+	depends = sdl_ttf
+	depends = lua
+	conflicts = hedgewars
+	source = hedgewars.desktop
+	source = hedgewars.png
+	md5sums = 48c66a3204d4fa0a69e9aa46f7c31e0c
+	md5sums = eeb14d50df39063549ac5eca9dbc65d1
+
+pkgname = hedgewars-hg
+
