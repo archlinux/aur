@@ -1,0 +1,13 @@
+pkgbase = jessyink2
+	pkgdesc = JavaScript that turns a layered Inkscape SVG image into a presentation
+	pkgver = 2.0.0.alpha.1
+	pkgrel = 1
+	url = http://code.google.com/p/jessyink/
+	arch = any
+	license = GPL
+	depends = inkscape
+	source = http://jessyink.googlecode.com/files/JessyInk_2_0_0_alpha_1.svg
+	md5sums = eb4fe6851e772d9963e96f539af724d8
+
+pkgname = jessyink2
+
