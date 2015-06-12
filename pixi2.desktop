@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=2.0
+Name=Pixi 2
+Type=Application
+Comment=Pixi by DigiPen
+Terminal=false
+Exec=pixi2
+Icon=/usr/share/pixi2/pixilogo.ico
+Categories=Game;
+GenericName=Pixi2
