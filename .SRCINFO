@@ -1,0 +1,11 @@
+pkgbase = regxml-git
+	pkgdesc = NetBSD xmltools (git)
+	pkgver = 20110708
+	pkgrel = 1
+	url = http://git.huoc.org:13080/?p=regxml.git;a=summary
+	arch = i686
+	license = custom
+	depends = expat
+
+pkgname = regxml-git
+
