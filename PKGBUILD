@@ -11,7 +11,7 @@ pkgdesc="Lync & Skype for business on Linux"
 
 arch=(
     'x86_64'
-   'i686' 
+#    'i686' 
 )
 if [[ $CARCH == 'x86_64' ]]; then
     _arch=64
@@ -31,10 +31,10 @@ optdepends=('ibus: Intelligent Input Bus (IBus) support')
 makedepends=('binutils' 'chrpath')
 
 source_x86_64=("http://tel.red/linux/sky_ubuntu64_v${pkgver}.deb")
-source_i686=("http://tel.red/linux/sky_ubuntu32_v${pkgver}.deb")
+# source_i686=("http://tel.red/linux/sky_ubuntu32_v${pkgver}.deb")
 
 sha256sums_x86_64=('4a716713f3d836a59ba8e7411200a7b9d884812e73ced2ee8fe54b00a35a6867')
-sha256sums_i686=('6ee4ed6f140aea508dadd325a04bffb86971434de35172eda9c58ff36e7117b2')
+# sha256sums_i686=('6ee4ed6f140aea508dadd325a04bffb86971434de35172eda9c58ff36e7117b2')
 
 package() {
     cd "${srcdir}"
