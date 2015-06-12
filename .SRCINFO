@@ -1,0 +1,15 @@
+pkgbase = registrator
+	pkgdesc = a tool for noise reduction or resolution quadrupling by adding more photos together
+	pkgver = 1.0
+	pkgrel = 4
+	url = http://ronja.twibright.com/registrator.php
+	arch = i686
+	license = GPL-2
+	makedepends = libjpeg
+	makedepends = libpng
+	depends = libpng
+	source = http://ronja.twibright.com/utils/registrator.tgz
+	md5sums = d192412cbde2c59953a785259667cd3b
+
+pkgname = registrator
+
