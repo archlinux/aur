@@ -1,0 +1,20 @@
+pkgbase = osgg
+	pkgdesc = a 2D game inspired by lunar lander with sweet 70's style vector graphics
+	pkgver = 0.99
+	pkgrel = 3
+	url = http://osgg.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL-3
+	depends = sdl_image
+	depends = gcc-libs
+	depends = sdl_ttf
+	depends = libgl
+	depends = sdl_mixer
+	source = http://downloads.sourceforge.net/osgg/osgg-0.99.tar.bz2
+	source = osgg.desktop
+	md5sums = a0115ead6a4e4ff972c00cb0648e5f4d
+	md5sums = bc8c813dbc1ac6605e691ab9cbb52f84
+
+pkgname = osgg
+

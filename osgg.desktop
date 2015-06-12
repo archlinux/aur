@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=OldSkoolGravityGame
+Comment=Lunar lander skillgame
+Exec=osgg
+Icon=osgg.png
+Categories=Game;ArcadeGame;
