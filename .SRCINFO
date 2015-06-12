@@ -1,0 +1,17 @@
+pkgbase = python2-pymix
+	pkgdesc = Data mining applications with basic and extended mixture model
+	pkgver = 0.8a
+	pkgrel = 1
+	url = http://www.pymix.org/pymix/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python2-distribute
+	depends = python2-numpy
+	source = http://www.pymix.org/pymix-0.8a.tar.gz
+	source = setup.patch
+	md5sums = 4e2b7db99251d9ce6d0527528224a45b
+	md5sums = 8ece81a85bff5443f7d0abd3d9414a25
+
+pkgname = python2-pymix
+

@@ -1,0 +1,12 @@
+--- setup.py	2013-05-22 20:35:40.600716564 +0100
++++ setup.py.fixed	2013-05-22 20:36:01.894050859 +0100
+@@ -29,7 +29,8 @@
+ #
+ #
+ ################################################################################
+-from distutils.core import setup, Extension,DistutilsExecError
++from distutils.core import setup, Extension
++from distutils.errors import DistutilsExecError
+ import os
+ import sys
+ 
