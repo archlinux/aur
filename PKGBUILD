@@ -22,7 +22,7 @@ build() {
 	[[ $CARCH == "x86_64" ]] && BIT="--enable-64bit"
 	./configure --prefix=/usr --mandir=/usr/share/man --enable-threads $BIT --with-tcl=/usr/lib/tcl8.5 --includedir=/usr/include/tk8.5
 	
-	make
+	make CFLAGS="-I/usr/include/tcl8.5"
 }
 
 package() {
