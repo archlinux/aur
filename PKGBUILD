@@ -1,5 +1,5 @@
 pkgname=wcgbrowser-git
-pkgver=r117.ab48482
+pkgver=r122.0f8740c
 pkgrel=3
 pkgdesc="A web browser for kiosk systems."
 arch=('any')
