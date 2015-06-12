@@ -1,0 +1,15 @@
+pkgbase = happycamel
+	pkgdesc = a script that analyzes a GPS-tracklog to find the position where digital images were taken
+	pkgver = 1.b3
+	pkgrel = 5
+	url = http://happycamel.sourceforge.net/
+	arch = any
+	license = GPL
+	depends = python2
+	depends = perl-exiftool
+	depends = python-imaging
+	source = https://sourceforge.net/projects/happycamel/files/happycamel/v1-beta3/happycamel-v1-beta3.tar.gz
+	md5sums = 16ef03495707b37acbd7a4015af37745
+
+pkgname = happycamel
+
