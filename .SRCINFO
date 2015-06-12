@@ -1,0 +1,14 @@
+pkgbase = untrunc-git
+	pkgdesc = restore a damaged (truncated) mp4, m4v, mov, 3gp video
+	pkgver = r30.c74920f
+	pkgrel = 1
+	url = https://github.com/ponchio/untrunc
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	depends = ffmpeg
+	source = untrunc-git::git+https://github.com/ponchio/untrunc.git
+	md5sums = SKIP
+
+pkgname = untrunc-git
+
