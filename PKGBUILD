@@ -1,4 +1,6 @@
 # Maintainer: Andya <ap_9@outlook.com>
+# Contributor: oozyslug <oozyslug@gmail.com>
+# Contributor: Timofey Titovets <nefelim4ag@gmail.com>
 # Submitter: John Reese <john@noswap.com>
 # Upstream URL: https://github.com/atom/atom
 
