@@ -1,0 +1,18 @@
+pkgbase = python2-pydstool
+	pkgdesc = Simulation and analysis environment for dynamical systems
+	pkgver = 0.88.111221
+	pkgrel = 1
+	url = http://www2.gsu.edu/~matrhc/ProjectOverview.html
+	arch = any
+	license = BSD
+	makedepends = dos2unix
+	depends = python2-numpy
+	depends = python2-scipy
+	optdepends = python2-sloppycell
+	replaces = pydstool
+	options = !emptydirs
+	source = http://sourceforge.net/projects/pydstool/files/pydstool/0.88/PyDSTool-0.88.111221.zip
+	md5sums = a58422c0b5755f31340f5707874a4629
+
+pkgname = python2-pydstool
+
