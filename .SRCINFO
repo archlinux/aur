@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-liblo
+	pkgdesc = A lightweight OSC (Open Sound Control) implementation (mingw-w64)
+	pkgver = 0.28
+	pkgrel = 3
+	url = http://liblo.sourceforge.net/
+	changelog = ChangeLog
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://downloads.sourceforge.net/project/liblo/liblo/0.28/liblo-0.28.tar.gz
+	md5sums = e2a4391a08b49bb316c03e2034e06fa2
+
+pkgname = mingw-w64-liblo
+
