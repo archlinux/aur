@@ -1,0 +1,32 @@
+post_install() {
+  grpfiles=("/usr/share/caster-demo/status" "/usr/share/caster-demo/checks.log" "/usr/share/caster-demo/log.txt")
+  grpdirs=("/usr/share/caster-demo/save/" "/usr/share/caster-demo/")
+  touch ${grpfiles[@]}
+  touch ${grpdirs[@]}
+  chgrp games ${grpfiles[@]} ${grpdirs[@]}
+  chmod 664 ${grpfiles[@]}
+  chmod 775 ${grpdirs[@]}
+
+  echo '--------------------------------------------------'
+  echo 'You *MUST* read and agree to the license stored in'
+  echo '/usr/share/caster-demo/LICENSE.txt before using it'
+  echo '--------------------------------------------------'
+
+  echo "Add user to group games to make the game playable. Please note that this application is not multi user friendly."
+  echo "Note: If you purchased a full version of the game just overwrite the files in /usr/share/caster/demo/data and optionally edit /usr/share/applications/caster-demo.desktop"
+  /bin/true
+}
+
+post_upgrade() {
+/bin/true
+}
+
+pre_remove() {
+/bin/true
+}
+
+op=$1
+shift
+
+$op "$@"
+

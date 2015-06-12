@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Value=1.0
+Type=Application
+Name=Caster Demo
+GenericName=Caster Demo
+Comment=Caster, a third-person shooter from Elecorn
+Icon=caster_icon.png
+Exec=caster-demo
+Categories=Game
