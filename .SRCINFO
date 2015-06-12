@@ -1,0 +1,16 @@
+pkgbase = smplayer-skins-svn
+	pkgdesc = Skins for SMPlayer
+	pkgver = 15.2.0.r6889
+	pkgrel = 1
+	url = http://smplayer.sourceforge.net/
+	arch = any
+	license = GPL
+	makedepends = subversion
+	depends = smplayer
+	provides = smplayer-skins
+	conflicts = smplayer-skins
+	source = smplayer-skins-svn::svn+https://subversion.assembla.com/svn/smplayer/smplayer-skins/trunk/
+	sha256sums = SKIP
+
+pkgname = smplayer-skins-svn
+
