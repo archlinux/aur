@@ -1,21 +1,20 @@
 # Maintainer: lava <lava.mailbox@gmail.com>
 
 pkgname=mc-skin-modarin-debian
-pkgver=1.2
-pkgrel=2
-_debian_mc_version=4.8.1-3
-pkgdesc='Debian Wheezy version of 256-color skin for Midnight Commander (only extends the original skin with additional thin skins)'
+pkgver=1.3
+pkgrel=1
+_debian_mc_version=4.8.13-3
+pkgdesc='Debian Jessie version of 256-color skin for Midnight Commander (only extends the original skin with additional thin skins)'
 arch=(any)
 depends=(mc)
 license=('GPL')
-optdepends=('mc-skin-modarin: Original skin for mc < 4.8.9-1')
 url=("https://launchpad.net/debian/+source/mc/3:$_debian_mc_version")
-source=("http://launchpad.net/debian/+archive/primary/+files/mc_$_debian_mc_version.debian.tar.gz")
-md5sums=('4e7a86e379ddf05cc1d5ead120203b79')
+source=("https://launchpad.net/debian/+archive/primary/+files/mc_$_debian_mc_version.debian.tar.xz")
+sha256sums=('c3878b83ce8cea7b7f138ef80bec8703f8d2f6d07e041de9ddaa90f1eb5a71f7')
 
 package() {
     cd $srcdir
     mkdir -p $pkgdir/usr/share/mc/skins
-    cp $srcdir/debian/skins/modarin-$pkgver-thin/* $pkgdir/usr/share/mc/skins/
+    cp $srcdir/debian/skins/modarin-1.2-thin/* $pkgdir/usr/share/mc/skins/
 }
 

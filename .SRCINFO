@@ -1,14 +1,13 @@
 pkgbase = mc-skin-modarin-debian
-	pkgdesc = Debian Wheezy version of 256-color skin for Midnight Commander (only extends the original skin with additional thin skins)
-	pkgver = 1.2
-	pkgrel = 2
-	url = https://launchpad.net/debian/+source/mc/3:4.8.1-3
+	pkgdesc = Debian Jessie version of 256-color skin for Midnight Commander (only extends the original skin with additional thin skins)
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://launchpad.net/debian/+source/mc/3:4.8.13-3
 	arch = any
 	license = GPL
 	depends = mc
-	optdepends = mc-skin-modarin: Original skin for mc < 4.8.9-1
-	source = http://launchpad.net/debian/+archive/primary/+files/mc_4.8.1-3.debian.tar.gz
-	md5sums = 4e7a86e379ddf05cc1d5ead120203b79
+	source = https://launchpad.net/debian/+archive/primary/+files/mc_4.8.13-3.debian.tar.xz
+	sha256sums = c3878b83ce8cea7b7f138ef80bec8703f8d2f6d07e041de9ddaa90f1eb5a71f7
 
 pkgname = mc-skin-modarin-debian
 
