@@ -5,7 +5,7 @@ _pkgname=nginx
 provides=('nginx')
 conflicts=('nginx')
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline, with ngx_pagespeed, Naxsi, GeoIP (GeoIP Legacy) and YubiKey Auth Support builtin.'
 arch=('i686' 'x86_64')
 url='http://nginx.org'
@@ -54,8 +54,8 @@ build() {
     --http-fastcgi-temp-path=/var/lib/nginx/fastcgi \
     --http-scgi-temp-path=/var/lib/nginx/scgi \
     --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
-    --with-imap \
-    --with-imap_ssl_module \
+    --with-mail \
+    --with-mail_ssl_module \
     --with-ipv6 \
     --with-pcre-jit \
     --with-file-aio \
