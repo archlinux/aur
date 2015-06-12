@@ -1,0 +1,25 @@
+pkgbase = nasc-bzr
+	pkgdesc = Do maths like a normal person.
+	pkgver = r35
+	pkgrel = 1
+	url = http://parnold-x.github.io/nasc/
+	install = nasc.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = vala
+	makedepends = bzr
+	depends = gtk3
+	depends = libqalculate
+	depends = granite
+	depends = glib2
+	depends = libgee
+	depends = gtksourceview3
+	depends = libsoup
+	provides = nasc-bzr
+	conflicts = nasc-bzr
+	source = bzr+lp:nasc
+	sha256sums = SKIP
+
+pkgname = nasc-bzr
+
