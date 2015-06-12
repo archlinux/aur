@@ -1,5 +1,5 @@
 # Maintainer: vorpalblade77@gmail.com
-# Maintainer (-git): b.klettbach@gmail.com
+# Contributor: b.klettbach@gmail.com
 
 pkgname=multimc5
 pkgver=0.4.7
@@ -10,6 +10,7 @@ url="http://multimc.org/"
 license=('Apache')
 depends=('qt5-base' 'qt5-x11extras' 'java-runtime' 'qt5-svg')
 makedepends=('git' 'cmake' 'qt5-tools' 'qt5-x11extras' 'java-environment')
+optdepends=('mcedit: Allows editing of minecraft worlds')
 conflicts=('multimc5-git')
 source=("https://github.com/MultiMC/MultiMC5/archive/${pkgver}.tar.gz"
   'multimc5.sh'

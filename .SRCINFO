@@ -15,6 +15,7 @@ pkgbase = multimc5
 	depends = qt5-x11extras
 	depends = java-runtime
 	depends = qt5-svg
+	optdepends = mcedit: Allows editing of minecraft worlds
 	conflicts = multimc5-git
 	source = https://github.com/MultiMC/MultiMC5/archive/0.4.7.tar.gz
 	source = multimc5.sh
