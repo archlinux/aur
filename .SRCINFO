@@ -1,0 +1,17 @@
+pkgbase = gpxviewer-bzr
+	pkgdesc = a simple program to visualize a gpx file
+	pkgver = 247
+	pkgrel = 1
+	url = http://blog.sarine.nl/gpx-viewer/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = bzr
+	depends = vala
+	depends = libchamplain
+	depends = intltool
+	depends = gdl
+	conflicts = gpxviewer
+
+pkgname = gpxviewer-bzr
+
