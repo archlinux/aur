@@ -1,0 +1,10 @@
+post_install() {
+  cat <<EOF
+---------------------------------------------------------------
+If you wish to use slimlock without having slim installed, copy
+/usr/share/slimlock/example-slim.conf to /etc/slim.conf then
+edit /etc/slim.conf to use the theme you want slimlock to use
+(plenty are available in the AUR)
+---------------------------------------------------------------
+EOF
+}
