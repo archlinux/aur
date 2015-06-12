@@ -1,0 +1,13 @@
+pkgbase = nmonmerge
+	pkgdesc = Filter to join two nmon output files into one
+	pkgver = 2
+	pkgrel = 2
+	url = http://www-941.haw.ibm.com/collaboration/wiki/display/WikiPtype/nmon
+	arch = i686
+	license = custom
+	depends = glibc
+	source = http://www.ibm.com/developerworks/wikis/download/attachments/53871937/nmonmerge2.tar.gz?version=1
+	md5sums = 6e3e0dd9b3c873a0bd472d1c72a3a261
+
+pkgname = nmonmerge
+
