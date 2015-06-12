@@ -1,0 +1,16 @@
+pkgbase = ksar_bin
+	pkgdesc = a sar grapher written in java
+	pkgver = 5.0.6
+	pkgrel = 4
+	url = http://sourceforge.net/projects/ksar/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = java-runtime
+	source = http://sourceforge.net/projects/ksar/files/ksar/5.0.6/kSar-5.0.6.zip
+	source = kSar.desktop
+	md5sums = f887da3ab710db037a970d9f0b9f053c
+	md5sums = 21d3cf5f5e953605cf2d49c83c705ee7
+
+pkgname = ksar_bin
+
