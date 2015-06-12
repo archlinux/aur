@@ -1,0 +1,20 @@
+pkgbase = canabalt
+	pkgdesc = It's going to be quite some time before you find something so simple so thrilling again.
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://canabalt.com/
+	arch = any
+	license = custom
+	depends = adobe-air
+	noextract = Canabalt2P_AIR-1331587946.air
+	source = hib://Canabalt2P_AIR-1331587946.air
+	source = launcher.sh
+	source = Canabalt.png
+	source = canabalt.desktop
+	md5sums = 715cc145adef541ba1587665fee4ed62
+	md5sums = 4f86401733018352edfc40991e3b5b93
+	md5sums = dd560da377827bf764cce40e141198db
+	md5sums = a9ebbb589499fd1565a6a1b2cc659ff0
+
+pkgname = canabalt
+
