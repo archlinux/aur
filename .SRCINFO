@@ -1,0 +1,15 @@
+pkgbase = wikiquote-fortune
+	pkgdesc = Generate fortune cookies from Wikiquote
+	pkgver = 1.4
+	pkgrel = 2
+	url = https://github.com/maandree/wikiquote-fortune
+	arch = any
+	license = GPL3
+	makedepends = coreutils
+	depends = python
+	depends = wget
+	source = https://github.com/maandree/wikiquote-fortune/archive/1.4.tar.gz
+	sha256sums = d4aec7f278c3ceff6effc19cdb31472dab7efc26de90d7d7e62f9009fb2aa382
+
+pkgname = wikiquote-fortune
+
