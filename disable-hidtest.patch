@@ -1,0 +1,11 @@
+--- a/Makefile.am	2013-10-07 00:43:37.000000000 +0200
++++ b/Makefile.am	2014-01-12 16:45:43.463262352 +0100
+@@ -31,8 +31,6 @@
+ SUBDIRS += windows
+ endif
+ 
+-SUBDIRS += hidtest
+-
+ if BUILD_TESTGUI
+ SUBDIRS += testgui
+ endif
