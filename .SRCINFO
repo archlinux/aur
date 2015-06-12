@@ -1,0 +1,15 @@
+pkgbase = photo-uploader-svn
+	pkgdesc = Python script for uploading photos to photolabs (SVN version)
+	pkgver = 20110518
+	pkgrel = 1
+	url = http://cz.cihar.com/software/photo-uploader/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python-pycurl
+	depends = python2
+	provides = photo-uploader
+	conflicts = photo-uploader
+
+pkgname = photo-uploader-svn
+
