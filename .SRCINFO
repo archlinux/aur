@@ -1,0 +1,15 @@
+pkgbase = django-openid-auth
+	pkgdesc = OpenID integration for django.contrib.auth.
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://launchpad.net/django-openid-auth
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-openid
+	source = http://pypi.python.org/packages/source/d/django-openid-auth/django-openid-auth-0.5.tar.gz
+	md5sums = 75277ad166be391fbc4ca87666bf64d1
+
+pkgname = django-openid-auth
+
