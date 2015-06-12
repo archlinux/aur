@@ -1,0 +1,20 @@
+pkgbase = flac2mp3-git
+	pkgdesc = a perl script to convert FLAC files to MP3 format
+	pkgver = r165.16da5f5
+	pkgrel = 2
+	url = https://github.com/robinbowes/flac2mp3
+	arch = any
+	license = GPL
+	depends = perl
+	depends = perl-data-dump
+	depends = perl-file-find-rule
+	depends = perl-audio-flac-header
+	depends = perl-file-which
+	depends = perl-mp3-tag
+	depends = perl-proc-parallelloop
+	depends = perl-parallel-forkmanager
+	source = flac2mp3-git::git://github.com/robinbowes/flac2mp3
+	md5sums = SKIP
+
+pkgname = flac2mp3-git
+
