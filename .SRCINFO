@@ -1,0 +1,19 @@
+pkgbase = mendeleydesktop
+	pkgdesc = Academic software for managing and sharing research papers (desktop client)
+	pkgver = 1.13.8
+	pkgrel = 1
+	url = http://www.mendeley.com/release-notes/
+	install = mendeleydesktop.install
+	arch = i686
+	arch = x86_64
+	license = custom:mendeley_eula
+	depends = python2
+	depends = qtwebkit
+	depends = gconf
+	source = http://desktop-download.mendeley.com/download/linux/mendeleydesktop-1.13.8-linux-.tar.bz2
+	source = mendeleydesktop.install
+	md5sums = 850dc2c604d8cd09ffaf1fd8d5cda615
+	md5sums = 44c54032370c2a7cbc6667af6d19acf7
+
+pkgname = mendeleydesktop
+
