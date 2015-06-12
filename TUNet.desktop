@@ -1,0 +1,10 @@
+
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Name=TUNet
+Comment=TUNet
+Type=Application
+Exec=/opt/TUNet/TUNet64
+Icon=/opt/TUNet/log.png
+GenericName[en_US.UTF-8]=TUNet
