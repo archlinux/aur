@@ -1,0 +1,13 @@
+pkgbase = gedit-rust-git
+	pkgdesc = Rust syntax highlighting for Gedit.
+	pkgver = 20150612
+	pkgrel = 1
+	url = https://github.com/rust-lang/gedit-config
+	arch = any
+	license = MIT
+	makedepends = git
+	source = gedit-rust-git::git+https://github.com/rust-lang/gedit-config.git
+	sha256sums = SKIP
+
+pkgname = gedit-rust-git
+
