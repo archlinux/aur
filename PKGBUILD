@@ -1,6 +1,6 @@
 # Maintainer: Josh VanderLinden <arch@cloudlery.com>
 pkgname=execline
-pkgver=2.1.2.0
+pkgver=2.1.2.2
 pkgrel=1
 pkgdesc="A (non-interactive) scripting language, like sh"
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url="http://skarnet.org/software/${pkgname}/"
 license=('ISC')
 depends=('skalibs')
 source=("http://skarnet.org/software/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('f28cd71f2aeb83307763afa46712168e504c2de42ff823476b3ddf58d7649417')
+sha256sums=('aea08c2c1b986c91f300d40737dd43067b91705d2c729859344ec65f989aec06')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
