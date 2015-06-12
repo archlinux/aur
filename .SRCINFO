@@ -1,6 +1,6 @@
 pkgbase = netradiant-git
 	pkgdesc = A Stabilized Q3 Map Editor - git version
-	pkgver = r1351.e995cc8
+	pkgver = r1355.e38c7bf
 	pkgrel = 1
 	epoch = 1
 	url = http://dev.xonotic.org/projects/xonotic/wiki/Netradiant

@@ -5,3 +5,9 @@
 		- Redid PKGBUILD
 		- Added Changelog
 		- New pkgver format, set epoch
+
+2015-03-27 | J0k3r <moebius282@gmail.com>
+
+	* netradiant-git-1:r1351.e995cc8-2:
+		- Fixed the configs of some of the included gamepacks to work with the
+		  official or AUR packages of these games (nexuiz,  warsow, xonotic)
