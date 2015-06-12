@@ -7,25 +7,34 @@
 # Contributor: evr <evanroman at gmail>
 
 pkgname=agedu
-pkgver=20141026
-_pkghash=a2b5efc
+pkgver=20150422
+_pkghash=3922ffe
 pkgrel=1
-epoch=1
 pkgdesc="Track down wasted disk space"
-arch=(i686 x86_64)
+arch=(i686 x86_64 armv6h)
 url="http://www.chiark.greenend.org.uk/~sgtatham/agedu/"
-license=(MIT)
+license=('mit')
+depends=('gcc-libs')
 
-source=("http://www.chiark.greenend.org.uk/~sgtatham/$pkgname/$pkgname-$pkgver.$_pkghash.tar.gz")
-md5sums=('ecbf3d66e1cb952f8719ec40b8ce39df')
+source=("http://www.chiark.greenend.org.uk/~sgtatham/$pkgname/$pkgname-$pkgver.$_pkghash.tar.gz"
+        'LICENSE')
+# SKIP because the upstream server changes the file all the time.
+# That is a very strange behaviour... but I can't find anything suspect
+md5sums=('SKIP'
+         'add724d40e3f60ec98edadf497ec62e0')
 
 build() {
     cd $pkgname-$pkgver.$_pkghash
+
     ./configure --prefix=/usr
+
     make
 }
 
 package() {
 	cd $pkgname-$pkgver.$_pkghash
+
 	make DESTDIR="$pkgdir" install
+
+	install -Dm655 "$srcdir"/LICENSE "$pkgdir"/usr/share/licenses/agedu/LICENSE
 }
