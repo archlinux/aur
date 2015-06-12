@@ -1,0 +1,28 @@
+pkgbase = vocal-stable
+	pkgdesc = Vocal Podcast Manager. Simple Podcast Client for the Modern Desktop.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.vocalproject.net/
+	install = vocal.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = bzr
+	makedepends = vala
+	makedepends = cmake
+	depends = libnotify
+	depends = libunity
+	depends = libxml2
+	depends = granite
+	depends = gtk3
+	depends = gstreamer
+	depends = sqlite3
+	depends = clutter-gtk
+	depends = icu
+	provides = vocal
+	conflicts = vocal
+	source = bzr+lp:vocal/1.x
+	sha256sums = SKIP
+
+pkgname = vocal-stable
+
