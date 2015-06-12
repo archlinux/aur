@@ -1,0 +1,16 @@
+pkgbase = python-bus
+	pkgdesc = Python 3 module for bus
+	pkgver = 3.1
+	pkgrel = 1
+	url = https://github.com/maandree/python-bus
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cython
+	depends = bus
+	depends = python
+	source = https://github.com/maandree/python-bus/archive/3.1.tar.gz
+	sha256sums = 1fd60b900076c119742905c2636728c08ba55d733ca8ca2d55f941aa2aed4fa6
+
+pkgname = python-bus
+
