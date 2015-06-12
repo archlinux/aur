@@ -1,0 +1,15 @@
+pkgbase = plascolin
+	pkgdesc = A tool to create and to view anaglyph stereo images and to display the left and right image on output devices
+	pkgver = 2.02
+	pkgrel = 1
+	url = http://www.schrammel.org/stereo-plascolin.php
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	depends = cairo
+	source = http://home.p5n.pp.ru/~sergej/dl/2014/plascolin_2.02.tgz
+	md5sums = 56e741d7cae3993d49fc0ee3588e9349
+
+pkgname = plascolin
+
