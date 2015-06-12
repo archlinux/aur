@@ -1,0 +1,35 @@
+# Colored makepkg-like functions
+note_blue() {
+    printf "${blue}::${bold} $1${all_off}\n"
+}
+
+note_yellow() {
+    printf "${yellow}::${bold} $1${all_off}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+_update() {
+    note_blue "Updating desktop MIME database..."
+    update-desktop-database -q
+
+    note_blue "Updating icon cache.."
+    xdg-icon-resource forceupdate --theme hicolor &>/dev/null
+}
+
+post_install() {
+    _update
+
+    note_yellow "For video playback, install either 'mplayer(-svn)' or 'mpv(-git)'."
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    _update
+}

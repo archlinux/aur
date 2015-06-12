@@ -1,0 +1,26 @@
+pkgbase = smplayer-svn
+	pkgdesc = Advanced front-end for MPlayer/MPV
+	pkgver = 14.9.0.r6889
+	pkgrel = 1
+	url = http://smplayer.sourceforge.net/
+	install = smplayer-svn.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = qt5-tools
+	makedepends = subversion
+	depends = qt5-script
+	depends = libxkbcommon-x11
+	depends = hicolor-icon-theme
+	optdepends = smplayer-themes-svn: icon themes collection
+	optdepends = smplayer-skins-svn: skin themes collection
+	optdepends = smtube-svn: browse and play YouTube videos
+	optdepends = mplayer: backend for video playback
+	optdepends = mpv: alternative modern backend, based on MPlayer/MPlayer2
+	provides = smplayer
+	conflicts = smplayer
+	source = smplayer-svn::svn+https://subversion.assembla.com/svn/smplayer/smplayer/trunk/
+	sha256sums = SKIP
+
+pkgname = smplayer-svn
+
