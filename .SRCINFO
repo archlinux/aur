@@ -1,0 +1,12 @@
+pkgbase = youdao-qt-git
+	pkgdesc = openyoudao dictionary client qt version
+	pkgver = 20130313
+	pkgrel = 1
+	url = http://openyoudao.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt4
+
+pkgname = youdao-qt-git
+
