@@ -1,0 +1,17 @@
+pkgbase = ponypipe
+	pkgdesc = Ponify and deponify text
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/maandree/ponypipe
+	arch = any
+	license = Public Domain
+	makedepends = java-environment>=6
+	makedepends = bash
+	depends = java-runtime>=6
+	provides = ponypipe
+	conflicts = ponypipe
+	source = https://github.com/maandree/ponypipe/tarball/v1.2.2
+	md5sums = 5c91cf26c035333f711b81296cf6dedc
+
+pkgname = ponypipe
+
