@@ -1,0 +1,14 @@
+pkgbase = python-log_colorizer
+	pkgdesc = A color formater for python logging
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://github.com/Kozea/log_colorizer
+	arch = any
+	license = BSD
+	makedepends = python3
+	depends = python
+	source = https://pypi.python.org/packages/source/l/log_colorizer/log_colorizer-1.6.tar.gz
+	md5sums = f052908c63a1bfb0cda4287414f43bef
+
+pkgname = python-log_colorizer
+
