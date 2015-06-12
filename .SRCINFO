@@ -1,0 +1,16 @@
+pkgbase = vba-sdl-h
+	pkgdesc = VisualBoyAdvance SDL for Hackers.
+	pkgver = 1.7.2
+	pkgrel = 2
+	url = https://www.github.com/cosarara97/vba-sdl-h
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl
+	depends = minizip
+	depends = libpng
+	source = https://github.com/cosarara97/vba-sdl-h/releases/download/1.7.2/vba-sdl-h-1.7.2.tar.gz
+	md5sums = ab7329ed751295da16bca2e6a96f815e
+
+pkgname = vba-sdl-h
+
