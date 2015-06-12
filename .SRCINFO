@@ -1,0 +1,17 @@
+pkgbase = python2-newrelic
+	pkgdesc = Python agent for the New Relic web application performance monitoring service.
+	pkgver = 2.52.0.40
+	pkgrel = 1
+	url = http://newrelic.com/docs/python/new-relic-for-python
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = python2-setuptools
+	depends = python2
+	source = http://download.newrelic.com/python_agent/release/newrelic-2.52.0.40.tar.gz
+	source = LICENSE
+	sha512sums = 0cd6c54b45fb0d33c3eee325666256ab2ad3f04815ac80bf8f9974cf934ab708f29ed58b7d71f7866e4dcf8295ff3f562e47ddaccdc6293f639db7b28585ae24
+	sha512sums = a9d8e4cf71c6bbb372aeb62fca5ced760ea00f406938d28cff57b9d9097abff1580649585f760e0131d59ff764aa2f5249b0ef19233981800211ede66633402b
+
+pkgname = python2-newrelic
+
