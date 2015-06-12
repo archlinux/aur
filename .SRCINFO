@@ -1,0 +1,16 @@
+pkgbase = flac2ogg
+	pkgdesc = a python script to convert FLAC files to OGG format
+	pkgver = 0.6
+	pkgrel = 5
+	url = http://members.fortunecity.com/stateq/flac2ogg.html
+	arch = any
+	license = GPL
+	depends = python2
+	depends = vorbis-tools
+	depends = flac
+	optdepends = shntool
+	source = http://web.archive.org/web/20120320093211/http://members.fortunecity.com/stateq/scripts/flac2ogg-0.6.zip
+	md5sums = 8676a347aaebe92e997eb4226b9e5b73
+
+pkgname = flac2ogg
+
