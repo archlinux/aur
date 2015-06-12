@@ -1,0 +1,34 @@
+pkgbase = icecream
+	pkgdesc = Icecream takes compile jobs from your build and distributes it to remote machines allowing a parallel build on several machines.
+	pkgver = 1.1rc1
+	pkgrel = 2
+	url = http://en.opensuse.org/Icecream
+	install = icecream.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = gcc
+	depends = bash
+	depends = libcap-ng
+	optdepends = iceberg-git: A QT based monitor for icecream nodes
+	optdepends = ccache: ccache enabled remote builds.
+	provides = icecream
+	conflicts = icecream-git
+	backup = etc/icecream.conf
+	source = https://github.com/icecc/icecream/archive/1.1rc1/icecream-1.1rc1.tar.gz
+	source = icecream.conf
+	source = icecream.service
+	source = icecream-scheduler.service
+	source = icecreamd
+	source = icecream-schedulerd
+	source = ld-icecream.conf
+	sha256sums = 95bdb66228cc8f5d97a829f1ee4e3f2d32caf064e9614919e8af0f708a13c654
+	sha256sums = a170a26e8e12181bf491cfc238e60158088b660ce6139faca502a400365a3632
+	sha256sums = 538797a229695d4c36e83c78c712b300bbc294238ec7964f427a73ecdf23aadc
+	sha256sums = 81a549dcf071cef98ea8a0fdab1aee0686555eb3c67c709a9d90c1e2c9e4b685
+	sha256sums = e9bf8f0bb2b32c34fe99786fe82a058c4a326149d5f58dd1e3dc8f26e7d2fa04
+	sha256sums = 461c8445438cf9688684ef547cad61f3c389dbc160086e214a28adba97d5afa1
+	sha256sums = 2221f16c3293dfd86e4d0442745b104380a4a1623ca3c9eb6bfe5771552fac65
+
+pkgname = icecream
+

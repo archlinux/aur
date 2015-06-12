@@ -1,0 +1,10 @@
+[Unit]
+Description=icecream scheduler
+Wants=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/lib/icecream/icecream-schedulerd
+
+[Install]
+Alias=multi-user.target.wants/icecream-scheduler.service

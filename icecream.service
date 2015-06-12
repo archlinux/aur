@@ -1,0 +1,10 @@
+[Unit]
+Description=icecream worker
+Wants=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/lib/icecream/icecreamd
+
+[Install]
+Alias=multi-user.target.wants/icecream.service
