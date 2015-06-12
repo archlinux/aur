@@ -1,0 +1,18 @@
+pkgbase = retropong
+	pkgdesc = a simple pong remake
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://sourceforge.net/projects/retropong/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = sdl_mixer
+	depends = sdl_ttf
+	depends = bash
+	source = http://downloads.sourceforge.net/project/retropong/retropong.tar.gz
+	source = retropong.desktop
+	md5sums = cf5b70d1960419261530152243ee60d0
+	md5sums = e065c2ebfa1d76cddc163811d1fb8fba
+
+pkgname = retropong
+
