@@ -1,0 +1,27 @@
+pkgbase = keepassx-http
+	pkgdesc = KeePassX + keepasshttp + autotype
+	pkgver = 2.0.alpha5.r254.g4008e6a
+	pkgrel = 1
+	url = https://github.com/jdachtera/keepassx.git
+	install = keepassx.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = intltool
+	makedepends = cmake
+	makedepends = libmicrohttpd
+	depends = libxtst
+	depends = qt4
+	depends = shared-mime-info
+	conflicts = keepassx-svn
+	conflicts = keepassx
+	conflicts = keepassx2-git
+	conflicts = keepassx2
+	conflicts = keepassx-git
+	conflicts = keepassx
+	source = git+https://github.com/Ivan0xFF/keepassx.git
+	md5sums = SKIP
+
+pkgname = keepassx-http
+
