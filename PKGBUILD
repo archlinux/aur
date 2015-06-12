@@ -1,6 +1,6 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=ttt2
-pkgver=1.14
+pkgver=1.15
 pkgrel=1
 pkgdesc="An automatic termination prover for term rewrite systems (TRS)"
 arch=('i686' 'x86_64')
@@ -21,5 +21,6 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('7926caffad7b15c3b6c58d09d97f2687')
-sha1sums=('e658607ab0b09f3c75e0d63703c39caa76c337a2')
+sha1sums=('36c05cf56372399a5bb480a7df50aa308fdc1841')
+sha256sums=('ebe50cd81f6851abeb9046423fb55ef140c81656d5282a3ebe36433c5a93d7e2')
+md5sums=('aaf7071b00a425a94df8dc213ffe03bf')
