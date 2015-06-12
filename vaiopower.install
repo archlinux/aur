@@ -1,0 +1,11 @@
+post_install() {
+  echo ">>> Disable the devices set in /etc/vaiopower.conf."
+  echo ">>> Activate service systemctl enable vaiopower.service"
+}
+
+post_remove() {
+  # System is unable to resume if it has been suspended with DVD off.
+  # So make sure DVD is on when we remove the package.
+  DEVICE="/sys/devices/platform/sony-laptop"
+  [ -w $DEVICE/cdpower ] && [ "$(cat $DEVICE/cdpower)" = 0 ] && echo 1 > $DEVICE/cdpower
+}

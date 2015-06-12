@@ -1,0 +1,19 @@
+pkgbase = vaiopower
+	pkgdesc = Tool for power management of Sony Vaio laptop devices
+	pkgver = 0.5.0
+	pkgrel = 3
+	url = http://vaio-utils.org/power/
+	install = vaiopower.install
+	arch = any
+	license = custom:ISC
+	depends = pciutils
+	depends = udev
+	depends = dmidecode
+	optdepends = pm-utils: restore settings on hibernate or suspend
+	backup = etc/vaiopower.conf
+	source = http://vaio-utils.org/download/vaiopower-0.5.0.tar.xz
+	md5sums = 959fea9b89747fc25d017b3bef75da9c
+	sha256sums = 3b48cbf57c635fc7e0c84dd33202984025ed09008452a5b68eb2d68216986259
+
+pkgname = vaiopower
+
