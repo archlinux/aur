@@ -1,0 +1,16 @@
+pkgbase = linchat
+	pkgdesc = simple chat program for local Unix users
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://www.butschek.de/2009/04/linchat/
+	arch = i686
+	license = GPL
+	depends = ncurses
+	depends = gcc-libs
+	source = http://www.butschek.de/files/stuff/linchat/linchat-1.0.tar.gz
+	source = http://www.butschek.de/files/stuff/linchat/linchat-1.0-cpp_fixes.patch
+	md5sums = 9022b988c4c32b073da291eb888ec688
+	md5sums = f3b11840091a6b16db22b83a29509b08
+
+pkgname = linchat
+
