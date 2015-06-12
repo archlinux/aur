@@ -7,7 +7,7 @@
 # Check this file for alternative mirrors!
 pkgname=('hadoop')
 pkgver=2.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Hadoop - MapReduce implementation and distributed filesystem"
 arch=('i686' 'x86_64')
 url="http://hadoop.apache.org"
@@ -21,7 +21,7 @@ source=(
 	# "http://apache.openmirror.de/hadoop/common/hadoop-$pkgver/hadoop-$pkgver.tar.gz"
 	# "http://mirror.serversupportforum.de/apache/hadoop/common/hadoop-$pkgver/hadoop-$pkgver.tar.gz"
 	# "http://mirror.arcor-online.net/www.apache.org/hadoop/common/hadoop-$pkgver/hadoop-$pkgver.tar.gz"
-	# "http://ftp-stud.hs-esslingen.de/pub/Mirrors/ftp.apache.org/dist/hadoop/common/hadoop-$pkgver/hadoop-$pkgver.tar.gz"
+	"http://ftp-stud.hs-esslingen.de/pub/Mirrors/ftp.apache.org/dist/hadoop/common/hadoop-$pkgver/hadoop-$pkgver.tar.gz"
 	# "http://apache.imsam.info/hadoop/common/hadoop-$pkgver/hadoop-$pkgver.tar.gz"
 	# "http://apache.lehtivihrea.org/hadoop/common/hadoop-$pkgver/hadoop-$pkgver.tar.gz"
 	# "http://mirror.synyx.de/apache/hadoop/common/hadoop-$pkgver/hadoop-$pkgver.tar.gz"
@@ -33,7 +33,7 @@ source=(
 	# "http://mirror.netcologne.de/apache.org/hadoop/common/hadoop-$pkgver/hadoop-$pkgver.tar.gz"
 	# "http://mirror.softaculous.com/apache/hadoop/common/hadoop-$pkgver/hadoop-$pkgver.tar.gz"
 	# "http://mirror.derwebwolf.net/apache/hadoop/common/hadoop-$pkgver/hadoop-$pkgver.tar.gz"
-        "http://apache.spd.co.il/hadoop/common/hadoop-$pkgver/hadoop-$pkgver.tar.gz"
+        # "http://apache.spd.co.il/hadoop/common/hadoop-$pkgver/hadoop-$pkgver.tar.gz"
 	#"http://apache.mirror.iphh.net/hadoop/common/hadoop-$pkgver/hadoop-$pkgver.tar.gz"
 	"hadoop.profile"
 	"hadoop-conf"
