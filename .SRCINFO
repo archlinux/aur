@@ -1,0 +1,26 @@
+pkgbase = mgltools
+	pkgdesc = Visualization and analysis of molecular structures; includes AutoDockTools, Vision and PythonMoleculeViewer
+	pkgver = 1.5.6
+	pkgrel = 1
+	url = http://mgltools.scripps.edu/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = swig
+	depends = tk
+	depends = python2-numpy
+	depends = python2-imaging
+	depends = python2-pmw
+	depends = glut
+	depends = zsi
+	depends = python2-simpy
+	depends = libxmu
+	optdepends = autodocksuite
+	options = !emptydirs
+	source = http://mgltools.scripps.edu/downloads/tars/releases/REL1.5.6/mgltools_source_1.5.6.tar.gz
+	source = opengltk.patch
+	md5sums = e37ceac50fd46bd89abb2ba44a812a65
+	md5sums = 357fe047c8edcd89d9cf1b8f7f70d258
+
+pkgname = mgltools
+
