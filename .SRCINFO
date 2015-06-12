@@ -1,0 +1,17 @@
+pkgbase = augustus
+	pkgdesc = A eucaryotic gene prediction program
+	pkgver = 2.5.5
+	pkgrel = 1
+	url = http://augustus.gobics.de/
+	arch = i686
+	arch = x86_64
+	license = custom:Artistic-2.0
+	depends = perl
+	options = !strip
+	source = http://augustus.gobics.de/binaries/augustus.2.5.5.tar.gz
+	source = http://augustus.gobics.de/binaries/LICENCE.TXT
+	md5sums = 234adc8fe4c2ff0b70715fbf00173668
+	md5sums = 7e2216d2af60d1644c220cbad40b0e36
+
+pkgname = augustus
+
