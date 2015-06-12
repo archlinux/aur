@@ -1,0 +1,14 @@
+pkgbase = scrabble3d
+	pkgdesc = Highly customizable Scrabble game (classic, SuperScrabble, 3D games)
+	pkgver = 3.1.0_29
+	pkgrel = 1
+	url = http://scrabble.game-server.cc/wiki
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	source = http://downloads.sourceforge.net/project/scrabble/Main_Program/Linux/Scrabble3D-x86_64.deb
+	md5sums = 643bdf9c38471e2116c6687540765b0c
+
+pkgname = scrabble3d
+
