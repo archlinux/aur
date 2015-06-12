@@ -1,0 +1,13 @@
+pkgbase = crrcsim-models
+	pkgdesc = additional models for CRRCsim
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://crrcsim.berlios.de/wiki/
+	arch = any
+	license = GPL
+	depends = crrcsim
+	source = http://prdownloads.sourceforge.net/crrcsim/crrcsim-addon-models-0.2.0.zip
+	md5sums = 5f512ce85fc36def17572749886be649
+
+pkgname = crrcsim-models
+
