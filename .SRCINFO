@@ -1,0 +1,23 @@
+pkgbase = algodoo
+	pkgdesc = A physics simulator program for education and fun (based on phun)
+	pkgver = 1.x.x.latest
+	pkgrel = 2
+	url = http://www.algodoo.com/
+	arch = i686
+	license = custom:commercial
+	makedepends = lynx
+	depends = boost-libs
+	depends = curl
+	depends = glew
+	depends = libjpeg6
+	depends = libpng12
+	depends = libzip
+	depends = mesa
+	depends = pango
+	depends = sdl_image
+	depends = libcurl-gnutls
+	source = algodoo.desktop
+	md5sums = c1baec0f7e0ae085a7b41116d7500912
+
+pkgname = algodoo
+

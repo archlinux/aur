@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Algodoo
+Comment=A physics simulation program
+Exec=algodoo
+Icon=/usr/share/pixmaps/algodoo.bmp
+Terminal=false
+Type=Application
+Categories=Game;LogicGame;
+StartupNotify=true
