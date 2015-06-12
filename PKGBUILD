@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=adchpp
 pkgver=2.11.2
