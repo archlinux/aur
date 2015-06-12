@@ -1,0 +1,16 @@
+pkgbase = ariadne
+	pkgdesc = A package for comparison protein sequences and profiles
+	pkgver = 1.3
+	pkgrel = 2
+	url = http://www.well.ox.ac.uk/ariadne/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glibc
+	source = http://www.well.ox.ac.uk/ariadne/ariadne-1.3.tar.Z
+	source = ariadne-1.3-gcc4.patch
+	md5sums = 240dc8b278a02b0fcdf56cd186d9b0ec
+	md5sums = 85fea40cfa602b59790ef65c90cd23b6
+
+pkgname = ariadne
+
