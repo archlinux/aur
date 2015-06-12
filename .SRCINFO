@@ -1,0 +1,16 @@
+pkgbase = smplayer-themes-svn
+	pkgdesc = Themes for SMPlayer
+	pkgver = 14.12.0.r6889
+	pkgrel = 1
+	url = http://smplayer.sourceforge.net/
+	arch = any
+	license = GPL
+	makedepends = subversion
+	depends = smplayer
+	provides = smplayer-themes
+	conflicts = smplayer-themes
+	source = smplayer-themes-svn::svn+https://subversion.assembla.com/svn/smplayer/smplayer-themes/trunk/
+	sha256sums = SKIP
+
+pkgname = smplayer-themes-svn
+
