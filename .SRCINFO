@@ -1,0 +1,25 @@
+pkgbase = envelope-git
+	pkgdesc = Personal budget application for the Elementary OS desktop
+	pkgver = 386.97c1a25
+	pkgrel = 1
+	url = http://nlaplante.github.io/envelope/
+	install = envelope.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = vala
+	makedepends = cmake
+	depends = granite
+	depends = gtk3
+	depends = libgee
+	depends = glib2
+	depends = glib-networking
+	depends = sqlheavy
+	provides = envelope
+	conflicts = envelope
+	source = git+https://github.com/nlaplante/envelope.git
+	sha256sums = SKIP
+
+pkgname = envelope-git
+
