@@ -1,0 +1,15 @@
+pkgbase = discwrapper
+	pkgdesc = a cover designer for home-made discs
+	pkgver = 1.2.2
+	pkgrel = 2
+	url = http://sourceforge.net/projects/discwrapper
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = wxgtk
+	depends = shared-mime-info
+	source = http://downloads.sourceforge.net/discwrapper/discwrapper-1.2.2.tar.gz
+	md5sums = 6003fef596dcda6e6771bfdddda646fd
+
+pkgname = discwrapper
+
