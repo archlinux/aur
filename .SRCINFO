@@ -1,0 +1,22 @@
+pkgbase = diodon
+	pkgdesc = GTK+ clipboard manager
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://launchpad.net/diodon
+	install = diodon.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = vala0.16
+	depends = gconf
+	depends = libgee06
+	depends = libpeas
+	depends = libunique3
+	depends = libxtst
+	depends = dconf
+	depends = libappindicator3
+	source = http://launchpad.net/diodon/trunk/1.0.3/+download/diodon-1.0.3.tar.gz
+	md5sums = fe61103cd9f436cbea6b52794dbb930e
+
+pkgname = diodon
+
