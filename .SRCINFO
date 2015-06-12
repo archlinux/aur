@@ -1,0 +1,16 @@
+pkgbase = openredalert_bin
+	pkgdesc = Westwood red alert game engine
+	pkgver = r462
+	pkgrel = 1
+	url = http://www.ohloh.net/projects/openredalert
+	install = openredalert.install
+	arch = i686
+	license = GPL-2
+	depends = sdl_mixer
+	source = http://downloads.sourceforge.net/openredalert/openredalert-r462-linux.tar.gz
+	source = ftp://ftp.westwood.com/pub/redalert/previews/demo/ra95demo.zip
+	md5sums = e6939e2f199fabaa9cbf9b057e46e577
+	md5sums = b44ab9ec1bc634ea755587d1988e3722
+
+pkgname = openredalert_bin
+

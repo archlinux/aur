@@ -1,0 +1,22 @@
+post_install() {
+  echo "#!/bin/bash
+  cd /usr/share/openredalert
+  ./openredalert" > /usr/bin/openredalert
+  chmod 755 /usr/bin/openredalert
+  echo "Build and install openredalert_full_version_data if you want to play with data from the full game (freeware)"
+  /bin/true
+}
+
+post_upgrade() {
+/bin/true
+}
+
+pre_remove() {
+rm /usr/bin/openredalert
+/bin/true
+}
+
+op=$1
+shift
+
+$op "$@"
