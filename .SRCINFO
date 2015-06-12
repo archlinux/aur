@@ -1,0 +1,13 @@
+pkgbase = geany-theme-gedit
+	pkgdesc = Port of the oficial gedit theme
+	pkgver = 1
+	pkgrel = 3
+	url = http://lara.craft.net.br
+	arch = any
+	license = GPL
+	depends = geany
+	source = http://lara.craft.net.br/Geany/gedit.conf
+	md5sums = cff5659021919f07eddf7c1c5cd8ab2c
+
+pkgname = geany-theme-gedit
+
