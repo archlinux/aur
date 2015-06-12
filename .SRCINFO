@@ -1,0 +1,27 @@
+pkgbase = my-little-investigations
+	pkgdesc = An Ace Attorney like game based on My Little Pony : Friendship is Magic
+	pkgver = 1.0.10
+	pkgrel = 1
+	url = http://www.equestriandreamers.com/
+	install = mli.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_ttf
+	depends = sdl2_mixer
+	depends = ffmpeg
+	depends = crypto++
+	replaces = my-little-investigation
+	source = git+https://github.com/GabuEx/my-little-investigations.git
+	source = http://www.art-software.fr/files/MLI/common_data-1.0.10.tar.xz
+	source = http://www.art-software.fr/files/MLI/needed_to_package-1.0.10.tar.xz
+	md5sums = SKIP
+	md5sums = 31979e9fbd4c3d8cc8f263e7cbab9250
+	md5sums = 51618407c55334d4cf6be38ec51318e6
+
+pkgname = my-little-investigations
+

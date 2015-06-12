@@ -1,0 +1,5 @@
+*
+!.gitignore
+!mli.install
+!PKGBUILD
+!.SRCINFO

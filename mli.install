@@ -1,0 +1,32 @@
+move_saves_one_user()
+{
+	user="$1"
+	base_path="$2""/test"
+	src_path="$base_path""/.local/share/EquestrianDreamers/MyLittleInvestigations"
+	dest_path="$base_path""/.MyLittleInvestigations"
+
+	[ -d "$src_path" -a ! -e "$dest_path" ] &&										\
+	{
+		cp --preserve -r "$src_path" "$dest_path" &&								\
+		rm "$src_path" -r
+	}
+}
+
+move_saves()
+{
+	A=" "
+	cut -d: -f1,6 /etc/passwd |														\
+	grep -v '^//' |																	\
+	while [ "$A" != "" ]
+	do
+		read A
+		[[ "$A" != "" ]] &&															\
+			move_saves_one_user "${A%:*}" "${A#*:}"
+	done
+}
+
+post_upgrade()
+{
+	[[ $1 < "1.0.5-1" ]] && [[ $2 > "1.0.4-1" ]] && move_saves
+	return 0
+}
