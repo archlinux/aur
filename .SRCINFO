@@ -1,0 +1,14 @@
+pkgbase = fasta
+	pkgdesc = Fast protein or a fast nucleotide comparison
+	pkgver = 36.3.6d
+	pkgrel = 2
+	url = http://fasta.bioch.virginia.edu/fasta_www2/fasta_list2.shtml
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = zlib
+	source = http://faculty.virginia.edu/wrpearson/fasta/CURRENT/fasta-36.3.6d.tar.gz
+	md5sums = 15917e115b117d7dda937abc326eaa94
+
+pkgname = fasta
+
