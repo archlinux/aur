@@ -1,0 +1,13 @@
+pkgbase = puppy
+	pkgdesc = Communication with a Topfield TF5000 or TF6000 PVRs via a USB port
+	pkgver = 1.14
+	pkgrel = 1
+	url = http://www.nslu2-linux.org/wiki/Puppy/HomePage
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://prdownloads.sourceforge.net/sourceforge/puppy/puppy_1.14_src.tar.bz2
+	md5sums = a7a53da5b8ba4fdb15e2fc8e1531b82c
+
+pkgname = puppy
+
