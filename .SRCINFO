@@ -1,0 +1,14 @@
+pkgbase = avinfo
+	pkgdesc = a utility for displaying AVI, MPEG (1 and 2), OGM, MKV, and IFO (DVD) information
+	pkgver = 1.0a15
+	pkgrel = 5
+	url = http://shounen.ru/soft/avinfo/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = bison
+	source = http://shounen.ru/soft/avinfo/avinfo-1.0a15.zip
+	md5sums = dd4a92aa945f026dc4756ce38f4cf40e
+
+pkgname = avinfo
+
