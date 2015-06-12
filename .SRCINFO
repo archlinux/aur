@@ -1,0 +1,13 @@
+pkgbase = openbox-menu-git
+	pkgdesc = Generate an openbox menu from *.desktop files with icon support.
+	pkgver = 0.r9.5a278b2
+	pkgrel = 1
+	url = https://github.com/woho/openbox-menu
+	arch = any
+	license = GPL
+	depends = python
+	source = git+https://github.com/woho/openbox-menu
+	md5sums = SKIP
+
+pkgname = openbox-menu-git
+
