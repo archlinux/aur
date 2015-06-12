@@ -1,0 +1,13 @@
+pkgbase = yakuake-skin-breeze-dark
+	pkgdesc = A Breeze Dark skin for Yakuake (KDE4)
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = http://opendesktop.org/content/content=170330
+	arch = any
+	license = GPL
+	depends = yakuake
+	source = breeze-dark.tar.xz::https://copy.com/jWvNPzWQFBDAlInB/breeze-dark.tar.xz?download=1
+	sha256sums = ea2fa363d9b8f2bb8e7a4cb5abbaa5f15f97e6868c152d9fb6f67ff0d032d882
+
+pkgname = yakuake-skin-breeze-dark
+
