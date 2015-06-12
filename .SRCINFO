@@ -1,0 +1,15 @@
+pkgbase = python-xlib-git
+	pkgdesc = Python 3 port of Xlib. the same as python-xlib, but python-xlib can not install correctly if you are using python2 as the default python.
+	pkgver = 0.15rc1
+	pkgrel = 1
+	url = https://github.com/LiuLang/python3-xlib
+	arch = any
+	license = GPL2
+	depends = python
+	provides = python-xlib
+	conflicts = python-xlib
+	source = git+https://github.com/LiuLang/python3-xlib.git
+	md5sums = SKIP
+
+pkgname = python-xlib-git
+
