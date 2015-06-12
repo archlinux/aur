@@ -1,0 +1,13 @@
+pkgbase = osmosis
+	pkgdesc = Command line Java application for processing OSM data.
+	pkgver = 0.43.1
+	pkgrel = 1
+	url = http://wiki.openstreetmap.org/wiki/Osmosis
+	arch = any
+	license = GPL
+	depends = java-runtime
+	source = http://bretth.dev.openstreetmap.org/osmosis-build/osmosis-0.43.1.tgz
+	md5sums = e4a4cdecdc464ec669ec71f8439d59c6
+
+pkgname = osmosis
+
