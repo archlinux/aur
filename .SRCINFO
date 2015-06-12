@@ -1,0 +1,16 @@
+pkgbase = arprec
+	pkgdesc = An arbitrary precision math library for C++ and Fortran-90.
+	pkgver = 2.2.17
+	pkgrel = 1
+	url = http://crd.lbl.gov/~dhbailey/mpdist/
+	changelog = arprec.changelog
+	arch = x86_64
+	arch = i686
+	license = custom:BSD-LBNL
+	source = http://crd.lbl.gov/~dhbailey/mpdist/arprec-2.2.17.tar.gz
+	source = http://crd.lbl.gov/~dhbailey/mpdist/BSD-LBNL-License.doc
+	sha512sums = d10f7d3e3d61274a36d253d2b50004bbf15447be3ffbd37bb0334ba62bd624e27fb9e26364fa1b89c1d4dfbb4136ab93d865f990ce123ecf94d9614e3ac567d1
+	sha512sums = 5db2d242c249ccd6ed4e7fc59a6ebba7c83274b1cf330d0d12e97da32ea0da9b9b0b0c1f51c58f809658ea92f7afbf5d3a1c75d899f94ec38a0d91926608cf85
+
+pkgname = arprec
+

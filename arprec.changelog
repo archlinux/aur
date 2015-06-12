@@ -1,0 +1,75 @@
+Changes for 2.2.17
+  - Added an input parameter mpstrlen to mp_inp.f.
+
+Changes for 2.2.15
+  - Fixed intermittent memory problem in dotd.cpp.
+
+Changes for 2.2.6
+  - Fixed F-format bug in Fortran file mp_mod.f.
+  - Fixed mpread bug in Fortran file mp_modx.f
+
+Changes for 2.2.2
+  - Clean up mp_mod.f, added mpeq_xz (assignment to complex)
+    and cmplx (creation of mp_complex).
+  - Fix dble to be more accurate, and avoid spurious underflow.
+  - Make C++ I/O of mp_real closer to standard C++ I/O.
+  - Added to_string function.
+
+Changes for 2.2.1
+  - Some bug fixes for Cygwin environment.
+
+Changes for 2.2.0
+This is a major update to ARPREC, there are several API incompatibilities.
+  - Moved C++ main entry in libqdmod.a to libarprec_f_main.a.
+    This allows to link Fortran code using ARPREC with custom C++
+    main function.  Pure Fortran code will need to be linked with
+    arprec_f_main library in addition to arprecmod and arprec library.
+  - Constructor taking integers now just initializes the data.
+    For example "x = mp_real(35)" now initializes x to 35, instead
+    of creating an mp_real with 35 words.  To get the old behaviour,
+    do something like mp_real(0.0, 35).
+  - String output routines write and to_string routines now takes a single
+    fmtflags.
+  - Members are now all public, making it a plain-old-data type.
+  - Removed mpr_location, set/getData accessors.
+  - mp_real(double *) constructors are now explicit.
+  - Renamed several static variables in class mp to more descriptive names.
+  - Various constants are now in mp_real class (mp_real::_pi, _log2,
+    _log10, and _eps).
+
+Changes for 2.1.104
+  - Fixed bug in division and increments for mp_int.
+  - Output correct number of digits in c_mpwrite / c_mpout.
+  - Fixed compilation errors and warnings.
+
+Changes for 2.1.103
+  - Minor changes to accomodate Windows build.
+
+Changes for 2.1.102
+  - Ignore CC compiler on Apple systems.
+  - Fix C++ pslq demos to print out integers when appropriate.
+  - Fix dependency of Fortran modules to allow parallel make.
+  - Fix bug in mp_real::mpnorm that was accessing past end of an array.
+
+Changes for 2.1.101
+  - Added third display option in math toolkit.
+  - Bug fix in math toolkit.
+
+Changes for 2.1.100
+  - Added fortran/Makefile.sample, a sample Makefile for using ARPREC
+    library with Fortran programs.
+  - Fixed bug in arprec-config where --fcflags had an extra @.
+
+Changes for 2.1.99
+  - Added read_binary and write_binary for binary I/O.
+  - Fixed bug where decimal point and minus sign was not printed correctly 
+    in certain cases.
+  - General improvements in I/O routines, including adjustable exponent 
+    width and column width.
+  - Added mp_real constructor accepting std::string.
+  - Perform some I/O tests during "make check".
+
+Changes for 2.2.3
+  - Removed dynamic precision from quadgs routine of Fortran and C++
+    versions of the Gaussian quadrature demonstration program.
+  - Fixed some bugs in the erf and erfc routines.
