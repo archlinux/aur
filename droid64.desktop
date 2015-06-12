@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Icon=droid64
+Exec=/usr/bin/droid64
+StartupNotify=true
+Name=droiD64 filemanager
+Categories=Emulator;Utility;FileTools;FileManager;

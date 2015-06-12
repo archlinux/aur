@@ -1,0 +1,18 @@
+pkgbase = droid64
+	pkgdesc = A graphical filemanager for D64 files (Commodore 64 and others)
+	pkgver = 0.05b
+	pkgrel = 1
+	url = http://droid64.sourceforge.net
+	arch = any
+	license = GPL2
+	depends = java-runtime
+	depends = vlc
+	depends = mplayer
+	optdepends = vice
+	source = http://prdownloads.sourceforge.net/droid64/droiD64-0.05b-bin.jar
+	source = http://droid64.sourceforge.net/data/droiD64_icons.tar.gz
+	md5sums = 358baed4fb8003dde1f010b1e7ce0f88
+	md5sums = 192bdd2f5ba6b1a1fcb197eb435da958
+
+pkgname = droid64
+
