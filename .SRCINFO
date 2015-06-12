@@ -1,0 +1,15 @@
+pkgbase = ocaml-objsize
+	pkgdesc = A small OCaml library for computing size of OCaml values.
+	pkgver = 0.16
+	pkgrel = 1
+	url = http://forge.ocamlcore.org/projects/objsize/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = ocaml-findlib
+	depends = ocaml
+	source = https://forge.ocamlcore.org/frs/download.php/442/objsize-0.16.tar.gz
+	md5sums = 66f550c611d3a3499454ff906d60b42d
+
+pkgname = ocaml-objsize
+
