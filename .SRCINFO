@@ -1,0 +1,22 @@
+pkgbase = orphan-reaper
+	pkgdesc = Place subreapers in your process tree to keep it structured
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/maandree/orphan-reaper
+	install = orphan-reaper.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = glibc
+	makedepends = gcc
+	makedepends = make
+	makedepends = coreutils
+	makedepends = texinfo
+	makedepends = auto-auto-complete
+	depends = glibc
+	depends = linux>=3.4
+	source = https://github.com/maandree/orphan-reaper/archive/2.1.tar.gz
+	sha256sums = 916748575fa6d675cd6631d35afc1407a17fd4635de7a8f2e1f4109b78045409
+
+pkgname = orphan-reaper
+
