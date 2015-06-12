@@ -1,0 +1,12 @@
+pkgbase = dugroup
+	pkgdesc = commandline tool for (visual) grouping of files with same extensions. useful in combination with tdu.
+	pkgver = 2008_05_07
+	pkgrel = 1
+	url = http://webonastick.com/tdu/
+	arch = any
+	license = GPL
+	source = http://webonastick.com/tdu/dugroup-2008-05-07.tar.gz
+	md5sums = 7f0379b8ffd8937d486a32faede70cb4
+
+pkgname = dugroup
+
