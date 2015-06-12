@@ -1,0 +1,19 @@
+pkgbase = stilts
+	pkgdesc = Starlink Tables Infrastructure Library Tool Set
+	pkgver = 3.0.3
+	pkgrel = 1
+	url = http://www.star.bris.ac.uk/~mbt/stilts/
+	arch = any
+	license = GPL
+	depends = java-environment
+	depends = sh
+	noextract = stilts.jar
+	source = ftp://andromeda.star.bris.ac.uk/pub/star/stilts/v3.0-3/stilts.jar
+	source = stilts
+	source = stilts4.gif
+	md5sums = ec8ef2e07238a6783fa417e63771869f
+	md5sums = 4f7dd76969e791b934cfd8eb59822bf2
+	md5sums = 574cb973184b3b7562f84c3e171244dd
+
+pkgname = stilts
+
