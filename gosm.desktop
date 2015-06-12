@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=GOSM OpenStreetMap Viewer
+Comment=View maps    
+Comment[de_DE]=Straßenkartenmaterial betrachten
+Icon=/usr/share/gosm/icons/gosm.png
+Exec=gosm
+Type=Application
+Categories=Application;Network;

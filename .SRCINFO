@@ -1,0 +1,20 @@
+pkgbase = gosm
+	pkgdesc = the Gtk OpenStreetMap Tool
+	pkgver = 0.09
+	pkgrel = 6
+	url = http://sourceforge.net/projects/gosm
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libwebkit
+	depends = libsvg-cairo
+	depends = curl
+	depends = libpng12
+	options = !strip
+	source = http://downloads.sourceforge.net/project/gosm/gosm/0.09/gosm.0.0.9.tar.gz
+	source = gosm.desktop
+	md5sums = 0401cf7022ec86b109bf5faa9291cb38
+	md5sums = 585f1b5c37496815d7d7c1edc69ec2cb
+
+pkgname = gosm
+
