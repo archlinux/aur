@@ -1,5 +1,5 @@
 # $Id: PKGBUILD 179889 2013-03-11 02:36:11Z dan $
-# Maintainer: Dan McGee <dan@archlinux.org>
+# Maintainer: Michael Beasley <youvegotmoxie@gmail.com
 # Contributor: Daniele Paolella <dp@mcrservice.it>
 
 pkgname='pypy-virtualenv'
