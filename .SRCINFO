@@ -1,0 +1,20 @@
+pkgbase = flac2mp3
+	pkgdesc = a perl script to convert FLAC files to MP3 format
+	pkgver = 0.3.0rc3
+	pkgrel = 5
+	url = http://freshmeat.net/projects/flac2mp3/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = perl
+	depends = perl-data-dump
+	depends = perl-file-find-rule
+	depends = perl-audio-flac-header
+	depends = perl-file-which
+	depends = perl-mp3-tag
+	depends = perl-proc-parallelloop
+	source = http://projects.robinbowes.com/download/flac2mp3/flac2mp3-0.3.0rc3.tar.gz
+	md5sums = b4fe3c038ce5b251964e9920fc376d22
+
+pkgname = flac2mp3
+
