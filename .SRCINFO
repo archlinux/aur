@@ -1,0 +1,35 @@
+pkgbase = pydance
+	pkgdesc = python ddr game
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://icculus.org/pyddr/
+	arch = i686
+	license = GPL
+	depends = python2-pygame
+	source = http://icculus.org/pyddr/pydance-1.1.0.tar.gz
+	source = http://icculus.org/pyddr/6jan-banner.png
+	source = http://icculus.org/pyddr/6jan-bg.jpg
+	source = http://icculus.org/pyddr/6jan.ogg
+	source = http://icculus.org/pyddr/6jan.dance
+	source = http://icculus.org/pyddr/forkbomb-banner.png
+	source = http://icculus.org/pyddr/forkbomb-bg.jpg
+	source = http://icculus.org/pyddr/forkbomb.ogg
+	source = http://icculus.org/pyddr/forkbomb.dance
+	source = http://icculus.org/pyddr/synrg-bg.png
+	source = http://icculus.org/pyddr/synrg.dance
+	source = http://icculus.org/pyddr/synrg.ogg
+	md5sums = b509dbcd29630f8fb96559c55a995402
+	md5sums = 8293cc45536dcad3e6e0ccf15974527f
+	md5sums = a290e913ece03317a46ff77cb7986a1d
+	md5sums = 1d854704c96c9af57517390b37765627
+	md5sums = 4bdd8d369fd5aef577a614316c0de61a
+	md5sums = 20d27c6cd45f2bbd4b12d8a1f211d501
+	md5sums = f440c9820c5a3604f5f93be64bef7e9f
+	md5sums = 0ca7527a0b792fe0b597322d69e675d7
+	md5sums = e62aab2b2d39adf172a74d229acedb23
+	md5sums = 89baa4d0af462938256222269412df33
+	md5sums = 70156d4215aa26ad2a823a36a12a7627
+	md5sums = 66df8b9049aad5bb3a1689a7943e9108
+
+pkgname = pydance
+
