@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Categories=Game;
+Name=Bridge Constructor Playground
+Comment=Merge Games
+Icon=bridge-constructor-playground
+Exec=/usr/bin/bridge-constructor-playground
+Terminal=false
