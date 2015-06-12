@@ -1,0 +1,26 @@
+pkgbase = gpsprune
+	pkgdesc = a java application for viewing, editing and converting coordinate data from GPS systems
+	pkgver = 17.2
+	pkgrel = 1
+	url = http://sourceforge.net/projects/prune-gps/
+	arch = any
+	license = GPL
+	makedepends = java-environment
+	makedepends = java3d
+	depends = java-runtime
+	optdepends = povray
+	optdepends = exiftool
+	optdepends = gpsbabel
+	optdepends = gnuplot
+	conflicts = gpsprune_bin
+	conflicts = prune_dev_bin
+	noextract = gpsprune_17.2.jar
+	source = http://activityworkshop.net/software/gpsprune/gpsprune_17.2_source.tar.bz2
+	source = http://activityworkshop.net/software/gpsprune/prunelogo.png
+	source = gpsprune.desktop
+	md5sums = 2f01e9b168b2a277f34019f804d273cc
+	md5sums = 0dce06ef7eec27ecff78eb0a83c0b123
+	md5sums = 000b0d3ba573fedf4eaf92ac6c1829dd
+
+pkgname = gpsprune
+

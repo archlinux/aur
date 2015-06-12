@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Prune
+Comment=GPS data processor
+Exec=gpsprune
+Icon=gpsprune
+Terminal=false
+Type=Application
+Categories=Utility;DataVisualization;
+StartupNotify=true
