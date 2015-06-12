@@ -1,0 +1,15 @@
+pkgbase = monsters_and_mushrooms-git
+	pkgdesc = A Millipede remake written in Python using Pygame
+	pkgver = r2.fd68f10
+	pkgrel = 1
+	url = https://github.com/machinezilla/monsters_and_mushrooms
+	arch = any
+	license = GPL2
+	depends = python2-pygame
+	source = monsters_and_mushrooms::git+https://github.com/machinezilla/monsters_and_mushrooms.git
+	source = monsters_and_mushrooms.desktop
+	md5sums = SKIP
+	md5sums = 106a7a4738e9db5075fa96895e93ed48
+
+pkgname = monsters_and_mushrooms-git
+

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Monsters and Mushrooms
+Comment=Millipede remake written in Python
+Exec=/usr/bin/monsters_and_mushrooms
+Terminal=false
+Type=Application
+Categories=Game;ArcadeGame;
+StartupNotify=true
