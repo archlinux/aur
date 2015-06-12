@@ -1,0 +1,36 @@
+pkgbase = cellprofiler-git
+	pkgdesc = Analysis software for cellular images
+	pkgver = 11504.36df52d
+	pkgrel = 1
+	url = http://www.cellprofiler.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = python2-pytz
+	makedepends = python2-nose
+	makedepends = python2-h5py
+	depends = python2-libtiff-svn
+	depends = python2-numpy
+	depends = python2-scipy
+	depends = wxpython
+	depends = python2-decorator
+	depends = mysql-python
+	depends = python2-matplotlib
+	depends = cython2
+	depends = python2-imaging
+	depends = python2-altgraph
+	optdepends = ilastik
+	optdepends = python2-nuageux
+	optdepends = python2-pytz
+	optdepends = python2-nose
+	optdepends = python2-h5py
+	provides = cellprofiler
+	conflicts = cellprofiler
+	source = cellprofiler-git::git+https://github.com/CellProfiler/CellProfiler.git
+	source = cellprofiler.sh
+	md5sums = SKIP
+	md5sums = 006f8305fd90dd9658727d2c9fb82e18
+
+pkgname = cellprofiler-git
+
