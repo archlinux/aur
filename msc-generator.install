@@ -1,0 +1,11 @@
+infodir=/usr/share/info
+
+## arg 1:  the new package version
+post_install() {
+	install-info $infodir/msc-gen.info.gz $infodir/dir
+}
+
+## arg 1:  the old package version
+pre_remove() {
+	install-info --delete $infodir/msc-gen.info.gz $infodir/dir
+}
