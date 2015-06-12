@@ -1,0 +1,19 @@
+pkgbase = qtoctave
+	pkgdesc = Qt4 frontend for octave
+	pkgver = 0.10.1
+	pkgrel = 3
+	url = https://forja.rediris.es/projects/csl-qtoctave/
+	install = qtoctave.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = qt4
+	depends = octave
+	options = !libtool
+	options = !emptydirs
+	source = http://forja.rediris.es/frs/download.php/2054/qtoctave-0.10.1.tar.gz
+	md5sums = f23afd8eb850b950f51b65f256a83835
+
+pkgname = qtoctave
+
