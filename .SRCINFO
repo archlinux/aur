@@ -1,0 +1,14 @@
+pkgbase = zendframework
+	pkgdesc = An object-oriented web-application framework for PHP projects
+	pkgver = 1.12.13
+	pkgrel = 1
+	url = http://framework.zend.com/
+	arch = any
+	license = BSD
+	depends = php>=5.2.11
+	options = !strip
+	source = http://framework.zend.com/releases/ZendFramework-1.12.13/ZendFramework-1.12.13.zip
+	sha256sums = e11cba9f186cd42eebc0595cf68e8733c94ff9b9d27c3223848242b04fd0ae55
+
+pkgname = zendframework
+
