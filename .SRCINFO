@@ -1,0 +1,24 @@
+pkgbase = carla-bridges-win64-git
+	pkgdesc = Carla win64 bridge
+	pkgver = 2631.03f5746
+	pkgrel = 1
+	url = http://kxstudio.sf.net/carla
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = mingw-w64-gcc
+	depends = mingw-w64-crt
+	depends = mingw-w64-winpthreads
+	depends = mingw-w64-pkg-config
+	depends = wine
+	depends = carla-git
+	provides = carla-bridges-win64
+	conflicts = carla-bridges-win64
+	source = carla-bridges-win64-git::git://github.com/falkTX/Carla.git
+	source = http://www.steinberg.net/sdk_downloads/vstsdk360_22_11_2013_build_100.zip
+	md5sums = SKIP
+	md5sums = 1ac422ebb4aa2e86061278412c347b55
+
+pkgname = carla-bridges-win64-git
+
