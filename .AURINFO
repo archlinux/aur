@@ -1,0 +1,35 @@
+pkgbase = xware-desktop-git
+	pkgdesc = An attempt to bring Xware (Xunlei on routers) to desktop Linux.
+	pkgver = 486.4e4b0e7
+	pkgrel = 1
+	url = https://github.com/Xinkai/XwareDesktop
+	install = xware-desktop.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom
+	makedepends = git
+	makedepends = python-pyqt5
+	makedepends = coffee-script
+	makedepends = chrpath
+	makedepends = findutils
+	makedepends = gcc
+	depends = python-pyqt5
+	depends = qt5-webkit
+	depends = qt5-multimedia
+	depends = libcap
+	depends = python-requests
+	depends = python-pyinotify
+	depends = desktop-file-utils
+	depends = glibc
+	depends = zlib
+	conflicts = xware-desktop
+	conflicts = xware_desktop
+	conflicts = xware_desktop-git
+	replaces = xware-desktop
+	replaces = xware_desktop
+	replaces = xware_desktop-git
+	source = XwareDesktop::git+https://github.com/Xinkai/XwareDesktop.git
+
+pkgname = xware-desktop-git
+
