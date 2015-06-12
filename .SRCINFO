@@ -1,0 +1,23 @@
+pkgbase = jlibgamma
+	pkgdesc = Display server abstraction layer for gamma ramps and Java
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/maandree/jlibgamma
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = java-environment>=1.5
+	makedepends = libgamma>=0.3
+	makedepends = glibc
+	makedepends = gcc
+	makedepends = make
+	makedepends = coreutils
+	makedepends = sed
+	depends = java-runtime-headless>=1.5
+	depends = libgamma>=0.3
+	depends = glibc
+	source = https://github.com/maandree/jlibgamma/archive/1.0.1.tar.gz
+	sha256sums = b2b4fff21270162a7faa3cc95f511261acf128a28e35f24c6c24a1b8492bb175
+
+pkgname = jlibgamma
+
