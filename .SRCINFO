@@ -1,0 +1,19 @@
+pkgbase = python-imread
+	pkgdesc = Read images to numpy arrays
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/imread/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = libpng
+	depends = libtiff
+	depends = libwebp
+	depends = python-numpy
+	provides = python-imread
+	source = https://pypi.python.org/packages/source/i/imread/imread-0.5.1.tar.gz
+	sha256sums = c72d05d6099e17c45ec00b6629f432e70de7e555daa48de84e94199c22ff2ec7
+
+pkgname = python-imread
+
