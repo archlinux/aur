@@ -1,0 +1,13 @@
+pkgbase = bugzilla-l10n-ru
+	pkgdesc = russian localization for bugzilla
+	pkgver = 4.4.4
+	pkgrel = 1
+	url = http://sourceforge.net/projects/bugzilla-ru/
+	arch = any
+	license = GPL
+	depends = bugzilla
+	source = http://downloads.sourceforge.net/project/bugzilla-ru/bugzilla-4.4-ru/4.4.4/bugzilla-4.4.4-ru-20140422.tar.gz
+	md5sums = ddbb32cd91f365592ea074283f0e07e8
+
+pkgname = bugzilla-l10n-ru
+
