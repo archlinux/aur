@@ -1,0 +1,14 @@
+pkgbase = taginfo
+	pkgdesc = A quick implementation of the taglib API for use in the music jukebox program Room Juice
+	pkgver = 1.2
+	pkgrel = 3
+	url = http://freshmeat.net/projects/taginfo
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = taglib>=1.4
+	source = http://grecni.com/software/taginfo/taginfo-1.2.tar.bz2
+	md5sums = b709dd6be61260c01d2bbdcb482cc1a6
+
+pkgname = taginfo
+
