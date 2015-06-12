@@ -1,0 +1,17 @@
+pkgbase = libdai
+	pkgdesc = Implementations of approximate inference methods for discrete graphical models
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = http://cs.ru.nl/~jorism/libDAI/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = boost-libs
+	depends = gmp
+	optdepends = doxygen
+	optdepends = graphviz
+	source = http://cs.ru.nl/~jorism/libDAI/libDAI-0.3.1.tar.gz
+	md5sums = f9ae3e01ec0f829b7d00556a134763ec
+
+pkgname = libdai
+
