@@ -1,0 +1,62 @@
+pkgbase = linux-rt-uksm
+	pkgver = 4.0.5_rt3
+	pkgrel = 4
+	url = http://kerneldedup.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	options = !strip
+	source = http://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.sign
+	source = http://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.5.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.5.sign
+	source = http://www.kernel.org/pub/linux/kernel/projects/rt/4.0/patch-4.0.5-rt3.patch.xz
+	source = http://www.kernel.org/pub/linux/kernel/projects/rt/4.0/patch-4.0.5-rt3.patch.sign
+	source = uksm-0.1.2.4-beta-for-linux-v4.0.patch
+	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.0.0-v7r8/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r8-4.0.patch
+	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.0.0-v7r8/0002-block-introduce-the-BFQ-v7r8-I-O-sched-for-4.0.patch
+	source = http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.0.0-v7r8/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-4.0.0.patch
+	source = http://repo-ck.com/source/gcc_patch/enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch.gz
+	source = linux-rt-uksm.preset
+	source = change-default-console-loglevel.patch
+	source = config
+	source = config.x86_64
+	source = fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch
+	sha512sums = ce13d2c1c17908fd9a4aa42bb6348a0cb13dd22e560bd54c61b8bfdf62726d6095f130c59177a2fe4793b7dc399481bf10d3556d1d571616000f180304e5a995
+	sha512sums = SKIP
+	sha512sums = 377371371752eb706053282ee296f82b3af0c3cf84c346091b1e347c8d00fcf6787c5b51c76955af3f61e9c20c30035b110368ee3ba2587871f0dbc92826de32
+	sha512sums = SKIP
+	sha512sums = bdddcb8cb67fc24f1fdee9bcf0ef09f1df3fc884c1d4e802efd8c7f3959e75955d91d9ee559ce536ad8f1be25db8aac3df43b6e991ad9f76cf778f0dd7e5ef9c
+	sha512sums = SKIP
+	sha512sums = ce46c47a1685f5014f4ada55b9ee6292255a383f83c04ac84ae922d16fef0687ebf09e7a6b211f23c6d1156312ef812c950805979893792f3e19b6c643d2fb81
+	sha512sums = 1a08e834c4e90a7f9da77460bda1ed0efa9b331811521520402b0d094de3a1155d6e7ddbcbfcbefeef92b5468c56960750f6568cd73114a2a87a9d8a39a63fe8
+	sha512sums = 46cb51684ca5fd9ba9460c8a62be22e99169de1b5e87ac47f9782f52123993de61fe9563ffec062a9b7c2024d08b1d5f57e09a09dbd7841faa3d149f346f5464
+	sha512sums = 879ab2364ae09993f8dcd17f3c44584967cf26d26f8376611a9eb7824cf78cadf4cdae58d18f3b493d0ec48395888f1ca1395563e52501dc79f559369c931371
+	sha512sums = 76bf6a9f22b023ab8f780884f595dac1801d150ecd94f88da229c5c9ea98d2c3ef8add01ff7e18e4cbbfa5e6e9c022c4042ee62c779a8485203c1b0e082b8ccc
+	sha512sums = 6c6ed09e1392bbc554aa112dfbfba9bd33df84e3b74862129c91e2eabcee00b9ceed54967dcbfeeffabcfb370bb929e5596b3eb77ca1cb00649e217a50691fb4
+	sha512sums = d9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8
+	sha512sums = 786df194b79d5e666174ba12ad777151a34a36f8ed48248205b9d8d2654c93e15db9c59cde10dccbe69eb337e007c64e6aa34fc8826d5d3c76704027fb20f95a
+	sha512sums = a5dd0abc7a57b9c92ea85b7455ba9d8ea3ec96ec15d131cf3a3704c4aaa82b76980d30543ed812cee526236aa34ed1452b64d58c886c84964842f00531275b69
+	sha512sums = 326dc571c072d4c47381852f16c00c8a7b27d11a5e6ff0f60f5e3a21d4a833c1e467dda1c2a5c04a6611af48bb6ef017f9183ea4ee578aab1a07e91e44d4e528
+
+pkgname = linux-rt-uksm
+	pkgdesc = Linux Kernel and modules with the RT patch, the UKSM patchset featuring the v1.2.4 and BFQ scheduler.
+	install = linux-rt-uksm.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
+	backup = etc/mkinitcpio.d/linux-rt-uksm.preset
+
+pkgname = linux-rt-uksm-headers
+	pkgdesc = Header files and scripts to build modules for linux-rt-uksm.
+	depends = linux-rt-uksm
+
+pkgname = linux-rt-uksm-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the linux-rt-uksm kernel
+	depends = linux-rt-uksm
+
