@@ -1,0 +1,17 @@
+pkgbase = adjbacklight
+	pkgdesc = Convient method for adjusting the backlight on your portable computer
+	pkgver = 7.2.1
+	pkgrel = 1
+	url = https://github.com/maandree/adjbacklight
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = gcc
+	makedepends = make
+	makedepends = coreutils
+	depends = linux
+	source = https://github.com/maandree/adjbacklight/archive/7.2.1.tar.gz
+	sha256sums = 76a429548e3b58d9cc2c98088c70d9a5d4e640bdd8ee8a17ef50a6693a903709
+
+pkgname = adjbacklight
+
