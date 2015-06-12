@@ -1,0 +1,18 @@
+pkgbase = wxbase2.8
+	pkgdesc = wxWidgets base libraries for no X install (2.8 branch stable version)
+	pkgver = 2.8.12
+	pkgrel = 4
+	url = http://wxwidgets.org
+	arch = i686
+	arch = x86_64
+	license = custom:wxWindows
+	makedepends = git
+	provides = wxbase=2.8.12
+	conflicts = wxgtk
+	conflicts = wxwidgets
+	conflicts = wxbase
+	source = git+git://github.com/wxWidgets/wxWidgets.git
+	md5sums = SKIP
+
+pkgname = wxbase2.8
+
