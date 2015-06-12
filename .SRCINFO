@@ -1,0 +1,29 @@
+pkgbase = zendstudio
+	pkgdesc = ZendStudio is the leading PHP IDE for development
+	pkgver = 12.5.1
+	pkgrel = 1
+	url = http://www.zend.com/en/products/studio/
+	install = zendstudio.install
+	arch = i686
+	arch = x86_64
+	license = Custom
+	makedepends = zip
+	depends = java-environment
+	depends = gtk2
+	depends = unzip
+	depends = libwebkit
+	depends = libxtst
+	depends = svnkit
+	depends = mariadb-clients
+	options = !strip
+	source = http://downloads.zend.com/studio-eclipse/12.5.1/ZendStudio-12.5.1-linux.gtk.x86_64.tar.gz
+	source = zendstudio.sh
+	source = zendstudio.desktop
+	source = zendstudio.png
+	sha256sums = 0fd14e251eb0b193ef518bfa57f8584cf1437187f55c68d4579ccd011300ecee
+	sha256sums = 99b9dd1daf408b634ec46fb9dafb5553b98a0a6e590ea0d1c3c86a54383c4e3e
+	sha256sums = f4089b8074161e3dce8e135e6cce33db59cbf06c67bf9dfc1b1e6f6308a23b0a
+	sha256sums = 71ff3b80efe5c65e3733f002af64e7ed29c08118cf20e5d0b6e581e6ed7e4ffe
+
+pkgname = zendstudio
+

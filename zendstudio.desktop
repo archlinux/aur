@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Zend Studio
+GenericName=A PHP Development Environment based on Eclipse
+Comment=A PHP Development Environment based on Eclipse
+Icon=/usr/share/icons/hicolor/64x64/apps/zendstudio.png
+Exec=/usr/share/zendstudio/ZendStudio
+Terminal=false
+Type=Application
+Categories=Development;IDE;PHP;
+StartupNotify=true
+
