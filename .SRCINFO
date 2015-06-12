@@ -1,0 +1,15 @@
+pkgbase = eureqa-api
+	pkgdesc = API for detecting equations and hidden mathematical relationships in your data
+	pkgver = 1.08.0
+	pkgrel = 1
+	url = http://code.google.com/p/eureqa-api/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = boost-libs
+	depends = openssl
+	source = http://eureqa-api.googlecode.com/files/eureqa_api_1_08_0.zip
+	md5sums = ef6bd82e5569c52efb04a3f1123d0a3c
+
+pkgname = eureqa-api
+
