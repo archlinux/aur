@@ -1,0 +1,15 @@
+pkgbase = geany-theme-fluffy
+	pkgdesc = Port of the Fluffy theme from gedit-themes
+	pkgver = 1
+	pkgrel = 3
+	url = http://lara.craft.net.br
+	arch = any
+	license = custom
+	depends = geany
+	source = http://lara.craft.net.br/Geany/fluffy.conf
+	source = Copyright.txt
+	md5sums = 3752d67c34860874a20f0110cb0fcec6
+	md5sums = e9553ad48d92f168471595c40be8da8a
+
+pkgname = geany-theme-fluffy
+
