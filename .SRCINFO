@@ -1,0 +1,19 @@
+pkgbase = perl-gnome2-vte
+	pkgdesc = Perl interface to the Virtual Terminal Emulation library
+	pkgver = 0.11
+	pkgrel = 2
+	url = http://search.cpan.org/~TSCH/Gnome2-Vte
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl-extutils-pkgconfig>=1.03
+	depends = gtk2-perl>=1.00
+	depends = glib-perl>=1.01
+	depends = perl-extutils-depends>=0.20
+	depends = vte
+	options = !emptydirs
+	source = http://cpan.metacpan.org/authors/id/X/XA/XAOC/Gnome2-Vte-0.11.tar.gz
+	md5sums = 1cb5cdfcd41873e55e923e72e64d922c
+
+pkgname = perl-gnome2-vte
+
