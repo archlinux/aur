@@ -1,0 +1,16 @@
+pkgbase = sundials23
+	pkgdesc = Suite of nonlinear differential/algebraic equation solvers
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://computation.llnl.gov/casc/sundials/main.html
+	arch = i686
+	arch = x86_64
+	license = BSD
+	provides = sundials
+	conflicts = sundials
+	options = !libtool
+	source = http://computation.llnl.gov/casc/sundials/download/code/sundials-2.3.0.tar.gz
+	md5sums = c236f2a7e0e6a03b8fab3d189471b933
+
+pkgname = sundials23
+
