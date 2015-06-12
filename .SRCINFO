@@ -1,0 +1,14 @@
+pkgbase = python2-path
+	pkgdesc = path.py provides a class (path) for working with files and directories. Less typing than os.path, more fun, a few new tricks
+	pkgver = 5.1
+	pkgrel = 2
+	url = https://pypi.python.org/pypi/path.py
+	arch = any
+	license = MIT
+	depends = python2
+	options = !emptydirs
+	source = http://pypi.python.org/packages/source/p/path.py/path.py-5.1.zip
+	sha256sums = 976b1392527c77383eb827de7fd44dacaf1297a63aa0df526f47af302f479d54
+
+pkgname = python2-path
+
