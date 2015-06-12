@@ -1,0 +1,31 @@
+pkgbase = glib2-static
+	pkgdesc = Common C routines used by GTK+ and other libs
+	pkgver = 2.44.0
+	pkgrel = 1
+	url = http://www.gtk.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = pkg-config
+	makedepends = python2
+	makedepends = libxslt
+	makedepends = docbook-xml
+	makedepends = pcre
+	makedepends = libffi
+	makedepends = elfutils
+	depends = pcre
+	depends = libffi
+	depends = glib2
+	optdepends = python2: for gdbus-codegen and gtester-report
+	optdepends = elfutils: gresource inspection tool
+	options = !docs
+	options = !libtool
+	options = !emptydirs
+	options = staticlibs
+	source = http://ftp.gnome.org/pub/GNOME/sources/glib/2.44/glib-2.44.0.tar.xz
+	source = revert-warn-glib-compile-schemas.patch
+	sha256sums = f2d362b106a08fa801770d41829a06fcfe287a00421018869eebf5efc796f5b9
+	sha256sums = 049240975cd2f1c88fbe7deb28af14d4ec7d2640495f7ca8980d873bb710cc97
+
+pkgname = glib2-static
+
