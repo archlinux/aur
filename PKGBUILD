@@ -14,9 +14,9 @@ _log_path="/var/log/${_pkgname}"
 
 pkgname=nginx-libressl
 pkgver=1.8.0
-pkgrel=2
+pkgrel=3
 librever=2.1.7
-pkgdesc="lightweight HTTP server and IMAP/POP3 proxy server with standard, additional and 3d party modules"
+pkgdesc="lightweight HTTP server, statically linked against LibreSSL."
 arch=('i686' 'x86_64')
 
 depends=('pcre' 'zlib' 'pam' 'gd' 'hardening-wrapper' 'libxslt')

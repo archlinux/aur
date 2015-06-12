@@ -1,7 +1,7 @@
 pkgbase = nginx-libressl
-	pkgdesc = lightweight HTTP server and IMAP/POP3 proxy server with standard, additional and 3d party modules
+	pkgdesc = lightweight HTTP server, statically linked against LibreSSL.
 	pkgver = 1.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://nginx.org
 	arch = i686
 	arch = x86_64
