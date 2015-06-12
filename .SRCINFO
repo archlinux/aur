@@ -1,0 +1,25 @@
+pkgbase = imagej
+	pkgdesc = Image manipulation software for scientists
+	pkgver = 1.49o
+	pkgrel = 1
+	epoch = 2
+	url = http://rsbweb.nih.gov/ij/index.html
+	arch = any
+	license = Public Domain
+	makedepends = unzip
+	depends = java-runtime
+	optdepends = java-environment-common
+	noextract = ij148.zip
+	source = http://rsbweb.nih.gov/ij/download/zips/ij148.zip
+	source = http://imagej.nih.gov/ij/upgrade/ij.jar
+	source = imagej.sh
+	source = imagej.desktop
+	source = microscope.xpm
+	md5sums = 57b5b52a5a6ce5a21f1553cf7a02b4a5
+	md5sums = SKIP
+	md5sums = 7dc3fd02120f699204b3d85a7e383082
+	md5sums = 9d60878b6adad0e1895ce875bf299147
+	md5sums = e7a7cef1b44ad3a8752ba63885fd88fb
+
+pkgname = imagej
+
