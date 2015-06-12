@@ -1,0 +1,11 @@
+[Unit]
+Description=Amule - ED2K (Edonkey) client
+After=syslog.target network.target
+
+[Service]
+User=amule
+Group=amule
+ExecStart=/usr/bin/amuled
+
+[Install]
+WantedBy=multi-user.target

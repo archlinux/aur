@@ -1,0 +1,32 @@
+post_install() {
+  getent group amule &>/dev/null || groupadd -r -g 129 amule >/dev/null
+  getent passwd amule &>/dev/null || useradd -r -u 129 -g amule -d /var/lib/amule -s /bin/false -c amule amule  >/dev/null
+  systemd-tmpfiles --create amuled.conf
+
+  echo "=> amuled files stored in /var/lib/amule"
+  echo "see https://wiki.archlinux.org/index.php/AMule to configure"
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  getent passwd amule &>/dev/null && userdel amule
+  getent group amule &>/dev/null && groupdel amule
+  true
+
+  paths=(/var/lib/amule)
+
+  first=true
+  for path in ${paths[@]}; do
+    if [ -d $path ]; then
+      if $first; then
+        first=false
+        echo "==> Leftover Paths:"
+      fi
+      echo "==> $path"
+    fi
+  done
+}
+
