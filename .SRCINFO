@@ -1,0 +1,19 @@
+pkgbase = golly
+	pkgdesc = A simulator for Conway's Game of Life and other cellular automata
+	pkgver = 2.7
+	pkgrel = 2
+	url = http://golly.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gendesk
+	makedepends = perl
+	makedepends = python2
+	depends = wxgtk>=2.8
+	optdepends = perl: for Perl scripting support
+	optdepends = python2: for Python scripting support
+	source = http://downloads.sourceforge.net/golly/golly-2.7-src.tar.gz
+	sha256sums = 4ee86e42e16c09e41aa8492f66e5a4a1ea7a130c5abc43d962e2f1d5604bd971
+
+pkgname = golly
+
