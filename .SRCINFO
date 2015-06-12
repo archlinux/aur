@@ -1,0 +1,17 @@
+pkgbase = red-alien-git
+	pkgdesc = A script compiler and editor for Pokémon GBA ROMs
+	pkgver = r103.dceefbd
+	pkgrel = 1
+	url = https://github.com/cosarara97/red-alien
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python
+	depends = python-qscintilla-qt5
+	depends = python-pyqt5
+	options = !emptydirs
+	source = red-alien-git::git+https://github.com/cosarara97/red-alien.git
+	md5sums = SKIP
+
+pkgname = red-alien-git
+
