@@ -1,0 +1,16 @@
+pkgbase = wp2git-git
+	pkgdesc = A tool to download and import a Wikipedia page to a Git repository
+	pkgver = 20120918
+	pkgrel = 2
+	url = https://github.com/CyberShadow/wp2git
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = gdc
+	makedepends = d-stdlib
+	depends = curl
+	depends = git
+
+pkgname = wp2git-git
+
