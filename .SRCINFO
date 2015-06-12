@@ -1,0 +1,21 @@
+pkgbase = tmux-git
+	pkgdesc = A terminal multiplexer
+	pkgver = 2.0.r156.g83a7017
+	pkgrel = 1
+	url = http://tmux.github.io
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = ncurses
+	depends = libevent
+	optdepends = libutempter: Record user sessions to utmp and wtmp files (add to depends array and rebuild to enable)
+	provides = tmux
+	conflicts = tmux
+	source = git+https://github.com/tmux/tmux.git
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 71601bc37fa44e4395580b321963018e
+
+pkgname = tmux-git
+
