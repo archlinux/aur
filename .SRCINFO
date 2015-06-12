@@ -1,0 +1,15 @@
+pkgbase = uniso
+	pkgdesc = a tool to extract a file hierarchy from an iso image
+	pkgver = 0.1.06
+	pkgrel = 4
+	url = http://sourceforge.net/projects/uniso/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2
+	depends = cdrkit
+	source = http://downloads.sourceforge.net/uniso/uniso-0.1.06.tar.bz2
+	md5sums = a0b45a86999b3b305e8e81ad846398c8
+
+pkgname = uniso
+
