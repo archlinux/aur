@@ -1,0 +1,16 @@
+pkgbase = bridge-constructor
+	pkgdesc = Become an appraised bridge engineer and architect in Bridge Constructor
+	pkgver = 2.6
+	pkgrel = 1
+	url = http://www.bridgeconstructor.com/
+	arch = any
+	license = custom
+	source = hib://bridgeconstructor_linux_1390863101.zip
+	source = launcher.sh
+	source = bridge-constructor.desktop
+	md5sums = 717e29d38044294e818c65faf1efec41
+	md5sums = f532d185e70f1c279a67131f535e9ec5
+	md5sums = bd8b4f4038bff824151bdec25adfb6ab
+
+pkgname = bridge-constructor
+
