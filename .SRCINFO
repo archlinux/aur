@@ -1,0 +1,13 @@
+pkgbase = libdes
+	pkgdesc = library for DES encryption
+	pkgver = 4.04b
+	pkgrel = 1
+	url = http://linux.maruhn.com/sec/libdes.html
+	arch = i686
+	license = custom
+	depends = glibc
+	source = ftp://ftp.kfki.hu/pub/packages/security/ssh/ossh/libdes-4.04b.tar.gz
+	md5sums = c8d5c69f86c2eedb485583b0305284a1
+
+pkgname = libdes
+
