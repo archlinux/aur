@@ -1,0 +1,15 @@
+pkgbase = express-git
+	pkgdesc = EFL-based IRC Client which operates similar to the Terminology interface
+	pkgver = 0+263_d07544a
+	pkgrel = 1
+	url = https://git.enlightenment.org/devs/devilhorns/express.git/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = elementary
+	source = git+http://git.enlightenment.org/devs/devilhorns/express.git
+	md5sums = SKIP
+
+pkgname = express-git
+
