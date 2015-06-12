@@ -1,0 +1,23 @@
+pkgbase = mlbviewer
+	pkgdesc = A collection of tools to view and listen to streaming baseball games from MLB.TV.
+	pkgver = 2015_sf_1
+	pkgrel = 1
+	url = http://sourceforge.net/projects/mlbviewer
+	install = mlbviewer.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = subversion
+	depends = libconfig
+	depends = curl
+	depends = python2
+	depends = rtmpdump
+	optdepends = mpv: lightweight streaming media player
+	optdepends = python2-gdata: MLB classics
+	source = http://downloads.sourceforge.net/project/mlbviewer/mlbviewer/2015/mlbviewer2015-sf-1.tar.gz
+	source = mlbhls::git+https://github.com/thegryghost/mlbtv-hls-nexdef#branch=experimental
+	sha1sums = e3b7e85dd2c113c990810db0f59154ed1ce81f44
+	sha1sums = SKIP
+
+pkgname = mlbviewer
+

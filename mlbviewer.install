@@ -1,0 +1,4 @@
+post_install() {
+  echo "A default configuration file ~/.mlb/config will be created on first run of mlbviewer."
+  echo "Documentation has been installed to /usr/share/doc/mlbviewer."
+}
