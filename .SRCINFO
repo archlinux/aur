@@ -1,0 +1,16 @@
+pkgbase = batti-git
+	pkgdesc = Nepal load-shedding schedule for terminal
+	pkgver = 1.2.r0.g33feb57
+	pkgrel = 1
+	url = https://github.com/foss-np/batti
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = wget
+	depends = poppler
+	depends = sed
+	source = git+https://github.com/foss-np/batti.git
+	md5sums = SKIP
+
+pkgname = batti-git
+
