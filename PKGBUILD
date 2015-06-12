@@ -4,7 +4,7 @@
 
 _gitname=libgcrypt
 pkgname=libgcrypt-git
-pkgver=1.6.0+164+gceaa97f
+pkgver=1.6.0+230+ga36ee75
 pkgrel=1
 pkgdesc="General purpose cryptographic library based on the code from GnuPG"
 arch=(i686 x86_64)
