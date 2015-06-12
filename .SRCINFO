@@ -1,0 +1,29 @@
+pkgbase = eradio-git
+	pkgdesc = A minimalist and powerfull radio player for elementary OS.
+	pkgver = 115.7f6453f
+	pkgrel = 1
+	url = https://github.com/DreamDevel/eRadio
+	install = eradio.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = vala
+	makedepends = cmake
+	depends = granite-bzr
+	depends = gtk3
+	depends = gstreamer0.10
+	depends = sqlite
+	depends = libgee
+	depends = libnotify
+	depends = json-glib
+	depends = libsoup
+	depends = libxml2
+	depends = sqlheavy
+	provides = eradio
+	conflicts = eradio
+	source = git+https://github.com/DreamDevel/eRadio.git
+	sha256sums = SKIP
+
+pkgname = eradio-git
+
