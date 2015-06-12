@@ -1,0 +1,14 @@
+pkgbase = chgrep
+	pkgdesc = Fast pattern replacement utility, grep style
+	pkgver = 1.2.4
+	pkgrel = 3
+	url = http://linux.softpedia.com/progDownload/Chgrep-Download-23787.html
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = glibc
+	source = http://www.sfr-fresh.com/unix/privat/chgrep-1.2.4.tgz
+	md5sums = 9c4306a51550fca58ca4b29c0d31bd79
+
+pkgname = chgrep
+
