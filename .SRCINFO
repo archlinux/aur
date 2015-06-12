@@ -1,0 +1,15 @@
+pkgbase = secnote
+	pkgdesc = Secure note taking
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/maandree/secnote
+	arch = any
+	license = GNUAllPermissiveLicense
+	depends = gnupg
+	provides = secnote
+	conflicts = secnote
+	source = https://github.com/maandree/secnote/tarball/1.1
+	md5sums = 899f0415f35480480b458794091e2fb5
+
+pkgname = secnote
+
