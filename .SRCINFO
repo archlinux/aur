@@ -1,0 +1,16 @@
+pkgbase = python2-gcat-git
+	pkgdesc = Interacting with Google Drive spreadsheets from python or the command-line
+	pkgver = r61.f88aa8f
+	pkgrel = 1
+	url = https://github.com/embr/gcat
+	arch = any
+	license = custom
+	makedepends = git
+	depends = python2-yaml
+	depends = python2-google-api-python-client
+	depends = python2-pandas
+	source = python2-gcat-git::git+https://github.com/embr/gcat.git
+	md5sums = SKIP
+
+pkgname = python2-gcat-git
+
