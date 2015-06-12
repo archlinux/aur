@@ -33,7 +33,6 @@ pkgname = python-nikola-git
 	optdepends = python-requests: for theme and plugin installation, and various web services
 	optdepends = python-markdown: for Markdown support
 	optdepends = python-jinja: for Jinja2 themes
-	optdepends = python-livereload==2.3.2: for automatically refreshing browsers
 	optdepends = python-pyphen>=0.9.1: for hyphenation
 	optdepends = python-pygal==1.7.0: for SVG graph plotting
 	optdepends = python-typogrify>=2.0.4: for typographical enhancements
@@ -64,7 +63,6 @@ pkgname = python2-nikola-git
 	optdepends = python2-requests: for theme and plugin installation, and various web services
 	optdepends = python2-markdown: for Markdown support
 	optdepends = python2-jinja: for Jinja2 themes
-	optdepends = python2-livereload==2.3.2: for automatically refreshing browsers
 	optdepends = python2-pyphen>=0.9.1: for hyphenation
 	optdepends = python2-pygal==1.7.0: for SVG graph plotting
 	optdepends = python2-typogrify>=2.0.4: for typographical enhancements
