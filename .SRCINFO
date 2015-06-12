@@ -1,0 +1,21 @@
+pkgbase = fastd
+	pkgdesc = Fast and secure tunneling daemon
+	pkgver = 17
+	pkgrel = 1
+	url = https://projects.universe-factory.net/projects/fastd
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = bison
+	makedepends = pkg-config
+	depends = libcap
+	depends = gcc-libs
+	depends = libuecc>=5
+	depends = libsodium
+	depends = json-c
+	source = https://projects.universe-factory.net/attachments/download/81/fastd-17.tar.xz
+	sha512sums = 6bdf5df1d75c462d52a8709718c183dfe173b5d56a4c29592d4cbb4c35f9f31efa900bb575490384b878a421e1d197454036b39d9b93154b6ae8c876f30f30c2
+
+pkgname = fastd
+
