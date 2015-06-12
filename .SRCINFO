@@ -1,0 +1,19 @@
+pkgbase = lemonbar-git
+	pkgdesc = A featherweight, lemon-scented, bar based on xcb.
+	pkgver = 170.25c3441
+	pkgrel = 1
+	url = https://github.com/LemonBoy/bar
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libxcb
+	provides = lemonbar
+	conflicts = lemonbar-xft-git
+	conflicts = bar-aint-recursive-git
+	conflicts = bar-aint-recursive-xft-git
+	source = bar::git+https://github.com/Lemonboy/bar.git#branch=master
+	sha256sums = SKIP
+
+pkgname = lemonbar-git
+
