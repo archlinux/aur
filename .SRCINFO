@@ -1,0 +1,21 @@
+pkgbase = brother-dcpj725dw
+	pkgdesc = Driver for the Brother DCP-J725DW wifi multifuncional printer
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/index.html
+	install = brother-dcpj725dw.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother
+	makedepends = rpmextract
+	depends = a2ps
+	depends = cups
+	source = fix_lp.patch
+	source = http://www.brother.com/pub/bsc/linux/dlf/dcpj725dwlpr-3.0.0-1.i386.rpm
+	source = http://www.brother.com/pub/bsc/linux/dlf/dcpj725dwcupswrapper-3.0.0-1.i386.rpm
+	md5sums = ff7c5a545e7064fa033d385544c7912f
+	md5sums = 76ad1e0f9ca7f68660bd0964aeb4cc90
+	md5sums = 7c81204a9e078f86cb292ad556e8c76a
+
+pkgname = brother-dcpj725dw
+

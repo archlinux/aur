@@ -1,0 +1,27 @@
+post_install() {
+	# lpr
+	/opt/brother/Printers/dcpj725dw/inf/setupPrintcapij dcpj725dw -i
+	
+	# cupswrapper
+	/opt/brother/Printers/dcpj725dw/cupswrapper/cupswrapperdcpj725dw
+	
+	systemctl restart cups
+}
+
+post_upgrade() {
+	/bin/true
+}
+
+pre_remove() {
+	# lpr
+	/opt/brother/Printers/dcpj725dw/inf/setupPrintcapij dcpj725dw -e
+	
+	# cupswrapper
+	/opt/brother/Printers/dcpj725dw/cupswrapper/cupswrapperdcpj725dw -e
+}
+
+op=$1
+shift
+
+$op "$@"
+
