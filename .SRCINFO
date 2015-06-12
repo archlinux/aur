@@ -1,0 +1,17 @@
+pkgbase = cellware
+	pkgdesc = Cellware is design environment and simulation engine for metabolic pathways
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = http://www.bii.a-star.edu.sg/achievements/applications/cellware/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = java-runtime
+	noextract = cellware_3_0_1.tar.gz
+	source = http://www.bii.a-star.edu.sg/docs/sbg/cellware/cellware_3_0_1.tar.gz
+	source = starter.sh
+	md5sums = 9ab7ec149136ed3789ce7af939f05078
+	md5sums = c8f9fc6beb32ffd0b1ab3202202385a6
+
+pkgname = cellware
+
