@@ -1,0 +1,13 @@
+pkgbase = perl-locale-po
+	pkgdesc = Perl/CPAN Module Locale::PO: PO parser
+	pkgver = 0.27
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Locale-PO
+	arch = any
+	license = GPL
+	license = Artistic
+	source = http://search.cpan.org/CPAN/authors/id/C/CO/COSIMO/Locale-PO-0.27.tar.gz
+	md5sums = 81545852a510f8e5332ea1e9d6b64a39
+
+pkgname = perl-locale-po
+
