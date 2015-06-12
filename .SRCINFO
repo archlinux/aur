@@ -1,0 +1,22 @@
+pkgbase = shiboken-git
+	pkgdesc = Support library for Python bindings
+	pkgver = 0.4.0.1373.g9536f13
+	pkgrel = 1
+	url = http://www.pyside.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = generatorrunner-git
+	depends = python2>=2.7
+	depends = qt4>=4.8
+	depends = openssl
+	optdepends = python-sphinx: Documentation
+	provides = shiboken
+	conflicts = shiboken
+	source = shiboken-git::git+https://github.com/PySide/Shiboken.git
+	md5sums = SKIP
+
+pkgname = shiboken-git
+
