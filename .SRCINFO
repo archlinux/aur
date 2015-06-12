@@ -1,0 +1,18 @@
+pkgbase = setpgrp
+	pkgdesc = Commands providing access to the setpgrp and getpgrp system calls
+	pkgver = 1
+	pkgrel = 2
+	url = https://github.com/maandree/setpgrp
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = make
+	makedepends = coreutils
+	makedepends = gcc
+	makedepends = glibc
+	depends = glibc
+	source = https://github.com/maandree/setpgrp/archive/1.tar.gz
+	sha256sums = d058c523e26390851afb309cfa5293ed83df04440506275981615b23cb7ef886
+
+pkgname = setpgrp
+
