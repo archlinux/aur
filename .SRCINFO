@@ -1,0 +1,14 @@
+pkgbase = gl-z
+	pkgdesc = cross-platform GL info tool
+	pkgver = 0.1.0
+	pkgrel = 2
+	url = http://www.geeks3d.com/20141121/gl-z-opengl-information-utility-extensions-viewer-for-windows-linux-and-os-x/
+	arch = any
+	license = custom
+	makedepends = unzip
+	depends = glslhacker
+	source = http://www.ozone3d.net/dl/201411/GL-Z-010-linux64.zip
+	md5sums = 1993c3ca62f723609c1b43e69d4513eb
+
+pkgname = gl-z
+
