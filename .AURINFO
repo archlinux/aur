@@ -1,0 +1,13 @@
+pkgbase = nmon2rrd
+	pkgdesc = Filter to convert nmon output files to rrdtool format
+	pkgver = 17a
+	pkgrel = 1
+	url = http://www-941.haw.ibm.com/collaboration/wiki/display/WikiPtype/nmon
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glibc
+	source = https://www.ibm.com/developerworks/community/wikis/form/anonymous/api/wiki/61ad9cf2-c6a3-4d2c-b779-61ff0266d32a/page/190cda06-6ee0-48c7-9cb1-eeb0d14897ad/attachment/135bb742-4bcb-40d3-beb5-aba44d769f23/media/nmon2rrdv17a.tar
+
+pkgname = nmon2rrd
+
