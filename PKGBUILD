@@ -20,7 +20,6 @@ pkgver() {
 
 build() {
   cd "$srcdir/${_pkgname}"
-  sed -i -e '1iQT += webkitwidgets\' qrigol.pro
   qmake
   make
 }
@@ -29,6 +28,13 @@ package() {
   cd "$srcdir/${_pkgname}"
   install -d "$pkgdir/usr/bin"
   install -m 755 "$srcdir/${_pkgname}/qrigol" "$pkgdir/usr/bin/qrigol"
+# Udev rules
   install -d "$pkgdir/usr/lib/udev/rules.d/"
   install -m 644 "$srcdir/40-rigol.rules" "${pkgdir}/usr/lib/udev/rules.d/"
+# Desktop file
+  install -d "$pkgdir/usr/share/applications"
+  install -m 644 "$srcdir/${_pkgname}/qrigol.desktop" $pkgdir/usr/share/applications/
+# Desktop icon
+  install -d "$pkgdir/usr/share/icons/"
+  install -m 644 "$srcdir/${_pkgname}/icons/main.png" $pkgdir/usr/share/icons/qrigol.png
 }
