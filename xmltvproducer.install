@@ -1,0 +1,23 @@
+post_install() {
+cat << _EOF
+Configure before first use!
+  - change into /usr/share/xmltvproducer
+  - do cp sample-xmltvproducer_env_config.php config.php
+    (as root)
+  - modify config.php to your needs (\$xmltv_cache_params,
+    \$xmltv_output,..)
+  - uncomment extension=curl.so in /etc/php/php.ini
+  - append /usr/share/xmltvproducer/ to open_basedir= line
+    in /etc/php/php.ini
+
+Run grabxmltv.sh to check if everything works fine.
+_EOF
+}
+
+post_upgrade() {
+	post_install
+}
+
+op=$1
+shift
+$op $*

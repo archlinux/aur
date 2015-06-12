@@ -1,0 +1,13 @@
+pkgbase = xmltvproducer-svn
+	pkgdesc = a php engine to grab tv/radio listings from websites and produce XMLTV output
+	pkgver = 36
+	pkgrel = 1
+	url = http://xmltvproducer.sourceforge.net/
+	install = xmltvproducer.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = php
+
+pkgname = xmltvproducer-svn
+
