@@ -1,0 +1,13 @@
+pkgbase = csvprintf
+	pkgdesc = a simple csv file parser for command line
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://code.google.com/p/csvprintf/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	source = https://csvprintf.googlecode.com/files/csvprintf-1.0.3.tar.gz
+	md5sums = 30a1a7bf0d15ce1e73a63d19e40d0596
+
+pkgname = csvprintf
+
