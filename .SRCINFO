@@ -1,0 +1,12 @@
+pkgbase = qscrabble3d
+	pkgdesc = Highly customizable Scrabble game (classic, SuperScrabble, 3D games) - Qt version
+	pkgver = 3.1.0_29
+	pkgrel = 1
+	url = http://scrabble.game-server.cc/wiki
+	arch = x86_64
+	license = GPL
+	source = http://downloads.sourceforge.net/project/scrabble/Main_Program/Linux/QScrabble3D-x86_64.deb
+	md5sums = 214952f52e8fc4ca38fcc8d9167a1721
+
+pkgname = qscrabble3d
+
