@@ -1,0 +1,8 @@
+post_install() {
+   echo "This game requires you to be added to the games group."
+   echo "You can do this by: 'usermod -a -G games <your_username>'"
+}
+
+post_remove() {
+   rm -rf /opt/triptych
+}

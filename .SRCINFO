@@ -1,0 +1,28 @@
+pkgbase = triptych-bin
+	pkgdesc = A physics tetris-like game with bouncy blocks, requires unlock code for stages 4+
+	pkgver = 1.6
+	pkgrel = 3
+	url = http://www.chroniclogic.com/triptych.htm
+	install = triptych-bin.install
+	arch = i686
+	arch = x86_64
+	license = proprietary
+	source = http://s159260531.onlinehome.us/demos/triptych.tar.gz
+	source = triptych.sh
+	source = triptych.xpm
+	source = triptych-setup.sh
+	source = triptych.desktop
+	source = triptych-setup.desktop
+	md5sums = dfd8b505f6dbbd1f28f35399f7b55e34
+	md5sums = cc8d59a73f2354b9137e008ce7ea0aa6
+	md5sums = 3bff4dc65864b7ed9876be34ea8a121a
+	md5sums = dbb82b9889d19dcf5b81ee56a6d156e9
+	md5sums = f3777040bb98867c59ff9ef3db46c708
+	md5sums = b4e47bf8c3f456e616531c52432a7abd
+	depends_i686 = libgl
+	depends_i686 = sdl
+	depends_x86_64 = lib32-libgl
+	depends_x86_64 = lib32-sdl
+
+pkgname = triptych-bin
+

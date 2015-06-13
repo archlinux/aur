@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Triptych setup
+GenericName=Bouncy tetris
+Comment=A physics tetris-like game with bouncy blocks setup
+Icon=triptych
+Exec=triptych-setup
+Terminal=false
+Categories=Application;Game;
