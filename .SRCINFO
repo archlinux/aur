@@ -1,0 +1,13 @@
+pkgbase = v4l2vd
+	pkgdesc = Route video output to V4L2 input.
+	pkgver = 2010.03.29
+	pkgrel = 1
+	url = http://v4l2vd.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://v4l2vd.cvs.sourceforge.net/viewvc/v4l2vd/?view=tar
+	md5sums = 1f411d8baebd6249ecc3298cae457b43
+
+pkgname = v4l2vd
+
