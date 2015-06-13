@@ -1,0 +1,16 @@
+pkgbase = gforth
+	pkgdesc = Fast and portable implementation of the ANS Forth language
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = http://www.gnu.org/software/gforth/
+	install = gforth.install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = GPL3
+	depends = libtool
+	source = http://www.complang.tuwien.ac.at/forth/gforth/gforth-0.7.3.tar.gz
+	options = libtool
+
+pkgname = gforth
+
