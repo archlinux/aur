@@ -1,0 +1,16 @@
+pkgbase = mbrola-voices-fr4
+	pkgdesc = A French female voice for the MBROLA synthesizer
+	pkgver = 990521
+	pkgrel = 3
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-fr
+	groups = mbrola-voices
+	groups = gespeaker-mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/fr4/fr4-990521.zip
+	md5sums = df96c40b56b537f330cc6a22ed0307f1
+
+pkgname = mbrola-voices-fr4
+
