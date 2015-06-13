@@ -1,0 +1,18 @@
+pkgbase = gnuradio-ra-blocks-svn
+	pkgdesc = Essential radio astronomy tools for Gnuradio.
+	pkgver = r1248
+	pkgrel = 1
+	url = https://www.cgran.org/browser/projects/gr-ra_blocks
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = svn
+	makedepends = cmake
+	makedepends = boost
+	makedepends = swig
+	depends = gnuradio
+	source = svn+https://www.cgran.org/svn/projects/gr-ra_blocks
+	md5sums = SKIP
+
+pkgname = gnuradio-ra-blocks-svn
+
