@@ -1,0 +1,21 @@
+pkgbase = antimony-git
+	pkgdesc = Graph-based 3D CSG CAD modeller
+	pkgver = 20150529
+	pkgrel = 1
+	url = http://www.mattkeeter.com/projects/antimony/3/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = git
+	depends = qt5-base
+	depends = boost-libs
+	depends = python
+	depends = libpng
+	provides = antimony
+	conflicts = antimony
+	source = git+https://github.com/mkeeter/antimony.git
+	md5sums = SKIP
+
+pkgname = antimony-git
+
