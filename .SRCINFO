@@ -1,0 +1,34 @@
+pkgbase = server-jre
+	pkgdesc = Oracle Server Java Runtime Environment
+	pkgver = 8u45
+	pkgrel = 1
+	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
+	install = server-jre.install
+	arch = x86_64
+	license = custom
+	makedepends = pacman>=4.2.0
+	depends = ca-certificates-java
+	depends = java-runtime-common
+	provides = java-runtime=8
+	provides = java-runtime-headless=8
+	provides = java-runtime-jre=8
+	provides = java-runtime-headless-jre=8
+	backup = etc/java-server-jre8/amd64/jvm.cfg
+	backup = etc/java-server-jre8/images/cursors/cursors.properties
+	backup = etc/java-server-jre8/management/jmxremote.access
+	backup = etc/java-server-jre8/management/management.properties
+	backup = etc/java-server-jre8/security/java.policy
+	backup = etc/java-server-jre8/security/java.security
+	backup = etc/java-server-jre8/content-types.properties
+	backup = etc/java-server-jre8/flavormap.properties
+	backup = etc/java-server-jre8/fontconfig.properties.src
+	backup = etc/java-server-jre8/logging.properties
+	backup = etc/java-server-jre8/net.properties
+	backup = etc/java-server-jre8/psfont.properties.ja
+	backup = etc/java-server-jre8/psfontj2d.properties
+	backup = etc/java-server-jre8/sound.properties
+	source = http://download.oracle.com/otn-pub/java/jdk/8u45-b14/server-jre-8u45-linux-x64.tar.gz
+	sha256sums = c5d7f339b0cefcbfa9fc228f816d767f786922745192553dc0f6901485b85aba
+
+pkgname = server-jre
+
