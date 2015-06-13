@@ -1,0 +1,18 @@
+pkgbase = ghost-bin
+	pkgdesc = Xboard compatible chess engine - Precompiled binary from the official website
+	pkgver = 2_0_2
+	pkgrel = 1
+	url = http://www.ghostchess.de
+	install = install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = sh
+	optdepends = xboard: graphical user interface
+	source = http://www.ghostchess.de/ghost2/linux/ghost2_x86_linux_v2_0_2.tgz
+	source = LICENSE
+	sha256sums = e63ba38ebe48a77401dd9fb9207bd2c312141e2561bc9d2c2a4faa4767a2398b
+	sha256sums = SKIP
+
+pkgname = ghost-bin
+
