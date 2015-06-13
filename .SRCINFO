@@ -1,6 +1,6 @@
 pkgbase = picard-tools
 	pkgdesc = set of tools for working with next generation sequencing data in the BAM format
-	pkgver = 1.133
+	pkgver = 1.134
 	pkgrel = 1
 	url = https://github.com/broadinstitute/picard
 	arch = i686
@@ -8,10 +8,10 @@ pkgbase = picard-tools
 	license = GPL2
 	depends = bash
 	depends = java-runtime>=6
-	source = https://github.com/broadinstitute/picard/releases/download/1.133/picard-tools-1.133.zip
+	source = https://github.com/broadinstitute/picard/releases/download/1.134/picard-tools-1.134.zip
 	source = picard-profile.sh
 	source = picard.sh
-	md5sums = 93a987e67ce4a05ac68559515a1352f2
+	md5sums = aa868087b05fe870226c559609d1c40d
 	md5sums = ebcda2d2c55df6d05994252cf22a68c2
 	md5sums = 0987aa56f62f5e843bfa788cc93626c8
 
