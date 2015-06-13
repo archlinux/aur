@@ -1,0 +1,18 @@
+pkgbase = xye
+	pkgdesc = Puzzle game in which the objective is to help a character that looks like a green circle to get all the gems in the room.
+	pkgver = 0.12.2
+	pkgrel = 1
+	url = http://xye.sourceforge.net/
+	install = xye.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl_image
+	depends = sdl_ttf
+	depends = xdg-utils
+	depends = desktop-file-utils
+	source = http://downloads.sourceforge.net/xye/xye-0.12.2.tar.gz
+	md5sums = f8a464fe0e67d8292dd32ef18e14ea18
+
+pkgname = xye
+
