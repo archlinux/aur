@@ -1,0 +1,27 @@
+pkgbase = faust2-git
+	pkgdesc = The latest development version of Faust featuring additional backends for LLVM, C, Java, JavaScript etc.
+	pkgver = 5965.3b6e4e3
+	pkgrel = 1
+	url = http://faust.grame.fr/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gvim
+	depends = llvm35
+	depends = clang35
+	depends = ruby
+	depends = libsndfile
+	depends = libmicrohttpd
+	depends = openssl
+	provides = faust
+	conflicts = faust
+	options = strip
+	options = staticlibs
+	source = faust2-git::git+git://git.code.sf.net/p/faudiostream/code
+	source = git+https://github.com/rukano/emacs-faust-mode.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = faust2-git
+
