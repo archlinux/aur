@@ -1,0 +1,14 @@
+pkgbase = frozendepths
+	pkgdesc = A roguelike game with a cold theme.
+	pkgver = 1.05
+	pkgrel = 1
+	url = http://frozendepths.net/
+	arch = i686
+	arch = x86_64
+	license = closed
+	depends = ncurses
+	source = http://frozendepths.net/FD105Lin.tar.gz
+	source = frozendepths
+
+pkgname = frozendepths
+
