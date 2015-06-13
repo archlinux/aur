@@ -1,0 +1,6 @@
+[Unit]
+Description=Help user keep battery between 40 and 80%
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/batterylife

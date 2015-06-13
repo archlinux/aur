@@ -1,0 +1,30 @@
+#! /bin/bash
+BELOWFILE=/tmp/batblo
+ABOVEFILE=/tmp/batabo
+MIN=40
+MAX=80
+
+notify-send-all(){
+    for p in $(pgrep gconf-helper); do
+        dbus=$(grep -z DBUS_SESSION_BUS_ADDRESS /proc/$p/environ | sed 's/DBUS_SESSION_BUS_ADDRESS=//')
+        user=$(grep -m 1 -z USER /proc/$p/environ | sed 's/USER=//')
+        dply=$(grep -z DISPLAY /proc/$p/environ | sed 's/DISPLAY=//')
+        sudo -u $user sh -c "DBUS_SESSION_BUS_ADDRESS=\"$dbus\" DISPLAY=\"$dply\" notify-send $@"
+    done
+}
+
+if [ `acpi|grep -Po "[0-9]+(?=%)"` -le $MIN ]; then
+    if [ ! -f $BELOWFILE ]; then
+        notify-send-all "-i battery \"Battery at $MIN%\" \"Do you want to plug it in?\""
+        touch $BELOWFILE
+        rm $ABOVEFILE 2>/dev/null
+    fi
+elif [ `acpi|grep -Po "[0-9]+(?=%)"` -ge $MAX ]; then
+    if [ ! -f $ABOVEFILE ]; then
+        notify-send-all "-i battery \"Battery at $MAX%\" \"Do you want to unplug it?\""
+        rm $BELOWFILE 2>/dev/null
+        touch $ABOVEFILE
+    fi
+else
+    rm $BELOWFILE $ABOVEFILE 2>/dev/null
+fi

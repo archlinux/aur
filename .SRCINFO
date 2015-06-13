@@ -1,0 +1,20 @@
+pkgbase = batterylife
+	pkgdesc = Help user keep battery between 40 and 80%
+	pkgver = 1
+	pkgrel = 1
+	url = https://bbs.archlinux.org/viewtopic.php?pid=1431917
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = pulseaudio
+	depends = acpi
+	depends = libnotify
+	source = batterylife
+	source = batterylife.timer
+	source = batterylife.service
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = batterylife
+

@@ -1,0 +1,10 @@
+[Unit]
+Description=Help user keep battery between 40 and 80%
+
+[Timer]
+OnBootSec=10m
+OnUnitInactiveSec=60
+Unit=batterylife.service
+
+[Install]
+WantedBy=multi-user.target
