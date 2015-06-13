@@ -1,0 +1,13 @@
+pkgbase = gimp-plugin-create-layer-mask-from
+	pkgdesc = Create layer mask from another layer mask.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://some-gimp-plugins.com/contents/en/extensions/003/
+	arch = any
+	license = GPL
+	depends = gimp
+	source = http://some-gimp-plugins.com/contents/en/extensions/003/create-layer-mask-from.zip
+	md5sums = 693d63044b39ad7996adee71a7157d90
+
+pkgname = gimp-plugin-create-layer-mask-from
+
