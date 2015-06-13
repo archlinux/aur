@@ -1,0 +1,22 @@
+pkgbase = logkeys
+	pkgdesc = Simple keylogger supporting also USB keyboards.
+	pkgver = 0.1.1a
+	pkgrel = 12
+	url = http://logkeys.googlecode.com/
+	install = logkeys.install
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	optdepends = logkeys-keymaps: for additional keymaps
+	backup = etc/conf.d/logkeysd
+	source = http://logkeys.googlecode.com/files/logkeys-0.1.1a.tar.gz
+	source = logkeys-stdout.patch
+	source = logkeysd.conf
+	source = logkeys.service
+	md5sums = 19362a382b65e89c66ea4c5642297589
+	md5sums = c11258ab13560081c2cdb56ccd31c6cd
+	md5sums = c05608a47e303e8f604f46d1ed22aa4a
+	md5sums = bd70a5e5601168bbf7bf7f91ee530d14
+
+pkgname = logkeys
+
