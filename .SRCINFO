@@ -1,0 +1,14 @@
+pkgbase = python-tempita
+	pkgdesc = A lightweight unicode templating language
+	pkgver = 0.5.1
+	pkgrel = 2
+	url = http://pythonpaste.org/tempita/
+	arch = any
+	license = MIT
+	makedepends = python-distribute
+	depends = python
+	source = http://pypi.python.org/packages/source/T/Tempita/Tempita-0.5.1.tar.gz
+	md5sums = f75bdfeabd2f3755f1ff32d582a574a4
+
+pkgname = python-tempita
+
