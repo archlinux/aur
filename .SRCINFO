@@ -1,0 +1,22 @@
+pkgbase = ilbc
+	pkgdesc = A free speech codec suitable for robust VoIP
+	pkgver = rfc3951
+	pkgrel = 6
+	url = http://www.ilbcfreeware.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = awk
+	depends = glibc
+	options = strip
+	source = http://www.ietf.org/rfc/rfc3951.txt
+	source = http://www.ilbcfreeware.org/documentation/extract-cfile.txt
+	source = Makefile
+	source = gips_iLBClicense.txt
+	md5sums = 984affd9bf2053064d744a2ccec82289
+	md5sums = 25f44e2e725ed2a7504238aaeb4a89e7
+	md5sums = 833675ff45c04be62bc9d6b2fb6fa508
+	md5sums = b738390e4108560b8b593454607ddc2b
+
+pkgname = ilbc
+

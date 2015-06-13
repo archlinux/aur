@@ -1,0 +1,287 @@
+                                                             NOTICE
+All use of the Original Code (GIPS iLBC, and code provided by GIPS as part of any related IETF Standard or draft standard) is
+subject to the complete Global IP Solutions iLBC Public License, IETF Standard, Limited Commercial Use (the (“License”). By
+accessing the Original Code You agree to the License terms. PLEASE SEE THE COMPLETE LICENSE BELOW FOR
+ADDITIONAL TERMS. In general:
+-      Personal, non-commercial use is generally permitted.
+-      Commercialization is permitted with certain limitations; for example, to ensure that every iLBC decoder can decode
+       every iLBC-encoded payload, commercial “Deployment” must comply with the applicable IETF Standard/draft, and the
+       format of the bitstream may not be modified.
+-      You are provided no warranty or support, and all liability is disclaimed.
+-      You must register this license with GIPS prior to any commercial Deployment.
+
+The License is available from http://www.gipscorp.com/legal/licenses/ilbc; or from Global IP Solutions (GIPS) AB, Magnus
+Ladulåsgatan 63B, SE-118 27, Stockholm, Sweden, +46.8.545.5.30.40 tel, +46.8.545.5.30.49 fax; or from Global IP Solutions,
+Inc., 642 Harrison Street, 2nd Floor, San Francisco, California 94107 USA, +1 415.397.2555 tel, +1 415.397.2577 fax; or by
+sending a request to info@gipscorp.com.
+
+The current IETF Standards can also be found at http://www.ietf.org/rfc/rfc3951.txt plus
+http://www.ietf.org/rfc/rfc3952.txt. The initial developer of the Original Code is Global IP Solutions, Inc. Portions Copyright
+(C) 1999-2004, All Rights Reserved.
+
+iLBC is a trademark of Global IP Solutions. All redistribution is subject to the License; source code must include this Notice.
+
+
+
+
+                                         Global IP Solutions iLBC Public License, v3.0
+                                           IETF Version - Limited Commercial Use
+
+PLEASE READ THIS LICENSE AGREEMENT. This is a legal agreement (“License”) between any user (“You”) and Global
+IP Solutions, Inc. (“GIPS”). By using the software, you agree to the following terms and conditions. You are also asked to
+sign and return the attached acknowledgment of this agreement or accept a “popup” license in a form that registers Your use with
+GIPS. The Original Code is licensed by GIPS for use only on the terms of this License.
+
+1      DEFINITIONS.
+1.1 “Covered Code” means any of the Original Code, alone or in combination with Modifications.
+1.2 “Deploy” means any use, licensing, or distribution of Covered Code other than for Personal Use.
+1.3 “Executable” means Covered Code in any form other than Source Code.
+1.4 “GIPS” means Global IP Solutions, Inc. and its officers, directors, employees, agents, subsidiaries and affiliates.
+1.5 “IETF Standard” means the iLBC standard as submitted by GIPS to the Internet Engineering Task Force (IETF), including
+all draft and other intermediate documents filed with the IETF during the standards process. The current IETF RFC standard is
+available at http://www.ietf.org/rfc/rfc3951.txt plus http://www.ietf.org/rfc/rfc3952.txt.
+1.6 “Larger Work” means a work that combines any Covered Code with code not governed by the terms of this License.
+1.7 “Modification” means any change, addition to, or deletion from the substance or structure of the Original Code, previous
+Modifications, or combinations of Original Code and previous Modifications.
+1.8 “Original Code” means (a) the iLBC Source Code, including code made available by GIPS in an IETF iLBC draft,
+originally made available by GIPS under this License, including any updates or upgrades to such programs or works made
+available by GIPS under this License; (b) the object code compiled from such Source Code; and (c) related documentation.
+
+
+
+public-ilbc-v0-081009.doc
+                                                                                                                              D-1
+1.9 “Patent Rights” means, where GIPS is the grantor of rights, claims of patents that are now or hereafter acquired, owned by,
+or assigned to GIPS that cover subject matter contained in the Original Code, but only to the extent necessary to use, reproduce,
+or distribute the Original Code without infringement.
+1.10 “Personal Use” means use of Covered Code by an individual solely for personal, private, and non-commercial purposes. Use
+of Covered Code in an individual’s capacity as an officer, employee, member, independent contractor, or agent of a corporation,
+business, or organization (commercial or non-commercial) does not qualify as Personal Use.
+1.11 “Source Code” means the human-readable or other preferred form for making modifications to Covered Code, including all
+modules it contains; associated interface definition files; and scripts used to control compilation and installation of an Executable.
+1.12 “You” (or “Your”) means an individual or legal entity exercising rights under this License. For legal entities, “You”
+includes any entity that controls, is controlled by, or is under common control with You, where “control” means (a) the power,
+direct or indirect, to cause the direction or management of such entity, whether by contract or otherwise, or (b) ownership of
+more than Fifty Percent of the outstanding shares or beneficial ownership of such entity.
+
+2      PERMITTED USES, CONDITIONS, AND RESTRICTIONS.
+2.1 Grant. Subject to the terms and conditions of this License, GIPS hereby grants You the following worldwide, royalty-free,
+non-exclusive license, subject to third party intellectual property claims, to the extent of GIPS’s applicable Patent Rights and
+copyrights covering the Original Code:
+       (A) Personal Use: You may use, reproduce, display, perform, modify and distribute Original Code, with or without
+       Modifications, solely for Your Personal Use; but you must retain and reproduce in all copies of Covered Code and
+       documentation (i) the copyright and other proprietary notices and disclaimers of GIPS as they appear in the Original Code,
+       (ii) all notices that refer to this License, (iii) the notice and acknowledgment in Appendix A in each file of the Source Code
+       or in a location (such as a relevant directory) where a user would be likely to look for such a notice, and (iv) this License;
+       and You may not offer or impose any terms on such Source Code that alter or restrict this License or the recipients’ rights
+       hereunder, except as permitted under Section 3.2.
+       (B) Deployment: You may use, reproduce, display, perform, modify, and Deploy Covered Code, provided that
+              1. You must satisfy all the conditions of Section 2.1(A), and
+              2. Covered Code may be Deployed only in compliance with the then-applicable IETF Standard, and Modifications
+              must not change the format of the bitstream.
+       (C) You may create a Larger Work by combining Covered Code with other code and distribute the Larger Work as a single
+       product; but You must ensure that the requirements of this License, including Section 2.1(B)(2), are fulfilled.
+2.2 Application Of License To Modifications. The Modifications that You create or to which You contribute are governed by
+the terms of this License. The Source Code version of Covered Code may be distributed only under the terms of this License or a
+future version of this License released under Section 2.6, and You must include a copy of this License with every copy of the
+Source Code You distribute. However, You may include an additional document offering the additional rights described in
+Section 3.2.
+2.3 Limitations. Except as expressly stated in Section 2.1, no other rights (including patent rights), express or implied, are
+granted by GIPS. Modifications and Larger Works of GIPS may require additional patent and other licenses from GIPS which
+GIPS may grant in its sole discretion. You expressly acknowledge and agree that no assurances are provided by GIPS that the
+Covered Code does not infringe the patent or other intellectual property rights of any other entity, and GIPS disclaims any
+liability to You for claims brought by any other entity based on infringement of intellectual property rights or otherwise. As a
+condition to exercising the rights and licenses granted hereunder, You hereby assume sole responsibility to secure any other
+intellectual property rights needed, if any.
+2.4 Registration. You must register Your Deployment (non-personal) use of the Original Code and acceptance of this License by
+completing Appendix A and returning it to GIPS as indicated (or providing equivalent information to GIPS).
+2.5 Your Grants. In consideration of and as a condition to the licenses granted to You, You hereby grant to GIPS, under Your
+applicable patent and other intellectual property rights, an unrestricted, non-exclusive, worldwide, royalty-free, perpetual, and
+irrevocable license to (a) Your Modifications and (b) any error reports or other feedback you provide to GIPS regarding the
+Original Code.
+2.6 New Versions. GIPS may publish revised or new versions of the License. Once Covered Code has been published under a
+particular version of the License, You may always continue to use it under the terms of that version, or You may choose to use
+such Covered Code under the terms of any subsequent version of the License published by GIPS. No one other than GIPS has the
+right to modify the terms applicable to Covered Code created under this License. The current version of this License will be
+posted at www.gipscorp.com/legal/licenses/ilbcfreeware.
+
+
+
+
+public-ilbc-v0-081009.doc
+                                                                                                                                  D-2
+2.7 Derivative Works. If You create or use a modified version of this License (which You may only do in order to apply it to
+code that is not already Covered Code governed by this License), You must (a) rename the license and (b) otherwise make it
+clear that Your version of the license contains terms which differ from this License.
+
+3      OBLIGATIONS REGARDING DISTRIBUTION.
+3.1 Distribution of Executable Versions. You may distribute Covered Code in Executable form only if the requirements of
+Section 2.1 above have been met; in addition You must conspicuously set forth, in documentation or collateral in which You
+describe recipients' rights in any Executable version, a notice stating that the Source Code version of the Original Code is
+available under the terms of this License.
+3.2 Your Distribution License. You may choose to offer, and to charge a fee for, warranty, support, indemnity, or liability
+obligations and other rights consistent with the scope of this License (“Additional Terms”) to recipients of Covered Code,
+provided, however, that: (a) You may do so only on Your own behalf and as Your sole responsibility, and not on behalf of GIPS;
+(b) You must make it absolutely clear that Additional Terms are offered by You alone, and not by GIPS; and (c) the license may
+not limit or alter the recipient's rights in Original Code version from the rights set forth in this License. You hereby agree to
+defend and indemnify GIPS regarding any claims asserted against GIPS relating to any Additional Terms.
+
+4      NO WARRANTY OR SUPPORT.
+COVERED CODE IS PROVIDED UNDER THIS LICENSE “AS IS” AND WITHOUT WARRANTY OF ANY KIND EITHER EXPRESSED OR IMPLIED,
+INCLUDING WITHOUT LIMITATION WARRANTIES THAT COVERED CODE IS FREE OF DEFECTS, MERCHANTABLE, FIT FOR A PARTICULAR
+PURPOSE, OR NON-INFRINGING. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE COVERED CODE IS WITH YOU.
+SHOULD ANY COVERED CODE PROVE DEFECTIVE IN ANY RESPECT, YOU (NOT GIPS) ASSUME THE COST OF ANY NECESSARY SERVICING,
+REPAIR OR CORRECTION. THIS DISCLAIMER OF WARRANTY CONSTITUTES AN ESSENTIAL PART OF THIS LICENSE; NO USE OF ANY
+COVERED CODE IS AUTHORIZED HEREUNDER EXCEPT UNDER THIS DISCLAIMER.
+The Covered Code may be incomplete; contain pre-release, untested, or not-fully-tested works; and may contain errors that could
+cause failures or loss of data. You expressly acknowledge and agree that use of any Covered Code is at Your sole and entire risk.
+No upgrades or support are provided under this License.
+
+5      LIMITATION OF LIABILITY.
+TO THE EXTENT NOT PROHIBITED BY LAW, IN NO EVENT IS GIPS OR ANY OF ITS SUPPLIERS LIABLE UNDER ANY LEGAL THEORY,
+WHETHER TORT (INCLUDING NEGLIGENCE), CONTRACT, PRODUCTS LIABILITY, OR OTHERWISE, FOR ANY DIRECT, INDIRECT,
+INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES OF ANY KIND ARISING OUT OF OR RELATING TO THIS LICENSE OR
+THE USE OR INABILITY TO USE THE COVERED CODE OR ANY PORTION THEREOF, INCLUDING BUT NOT LIMITED DAMAGES FOR LOSS OF
+GOODWILL, WORK STOPPAGE, COMPUTER FAILURE OR MALFUNCTION, LOSS OF USE, LOST DATA, LOST PROFITS, BUSINESS
+INTERRUPTION, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES, OR ANY OTHER DAMAGES OR LOSSES, EVEN IF GIPS HAS BEEN
+ADVISED OF THE POSSIBILITY OF SUCH DAMAGES, AND NOTWITHSTANDING THE FAILURE OF ESSENTIAL PURPOSE OF ANY REMEDY.
+SOME JURISDICTIONS DO NOT ALLOW THE LIMITATION OF LIABILITY OF INCIDENTAL OR CONSEQUENTIAL DAMAGES, SO THIS
+LIMITATION MAY NOT APPLY TO YOU. IN NO EVENT DOES GIPS'S TOTAL LIABILITY TO YOU FOR ALL DAMAGES (OTHER THAN AS MAY
+BE REQUIRED BY APPLICABLE LAW) UNDER THIS LICENSE EXCEED THE AMOUNT OF FIFTY US DOLLARS (US$50.00).
+
+
+6      TRADEMARKS.
+This License does not grant any right or license to use the trademarks or trade names “Global IP Solutions”, “GIPS”, “iLBC”,
+“MediaWare”, “GIPS VoiceEngine, GIPS VideoEngine NetEQ, iSAC, iPCM-wb, GIPS Enhanced G.711, Remote Extension,
+Click-to-Talk or any other GIPS trademarks, trade names, design marks, or logos (collectively, “GIPS Marks”), except that
+“iLBC” may be used in reference to the IETF Standard. No GIPS Marks may be used to endorse or promote products derived
+from the Original Code other than as permitted by and in strict compliance with GIPS's trademark usage guidelines.
+
+7      OWNERSHIP.
+GIPS retains all interests in the Original Code and any Modifications made by or on behalf of GIPS (“GIPS Modifications”).
+GIPS Modifications are not automatically subject to this License; GIPS may, at its sole discretion, choose to license such GIPS
+Modifications under this License or on different terms from those contained in this License, or may choose not to license them.
+
+8      TERMINATION.
+8.1 This License terminates automatically if You fail to comply with its terms and fail to cure such breach within 28 days of
+becoming aware of the breach.
+
+
+
+
+public-ilbc-v0-081009.doc
+                                                                                                                                D-3
+8.2 If You initiate a patent infringement claim (excluding declaratory judgment actions) against GIPS alleging that the Original
+Code or any GIPS Modification directly or indirectly infringes any patent, then any rights granted to You under this License
+terminate upon 60 days notice from GIPS unless You either (i) agree in writing to pay GIPS a mutually agreeable reasonable
+royalty for Your past and future use of Original Code and GIPS Modifications or (ii) withdraw Your litigation claim.
+8.3 Effect of Termination. Upon termination, You agree to immediately stop any further use, reproduction, modification,
+sublicensing, and distribution of the Covered Code, and to destroy all copies of the Covered Code that are in Your possession or
+control. Provisions that by their nature should remain in effect beyond the termination of this License, including but not limited to
+Sections 2.2 “Limitations, 2.5 “Your Grants”, 4 “No Warranty Or Support”, 5 “Limitation Of Liability”, 7 “Ownership”, 8.3
+“Effect Of Termination”, 10.3 “Independent Development”, and other applicable provisions of Section 10, survive its
+termination. All end user license agreements to the Covered Code (excluding distributors and resellers), if validly granted prior to
+termination, survive any termination of this License. No party is liable to any other for compensation, indemnity, or damages of
+any sort solely as a result of terminating this License in accordance with its terms, and termination of this License is without
+prejudice to any other right or remedy of any party.
+
+9      U.S. GOVERNMENT END USERS.
+The Covered Code is a “commercial item”, as that term is defined in 48 C.F.R. 2.101 (Oct. 1995), consisting of “commercial
+computer software” and “commercial computer software documentation”, as such terms are used in 48 C.F.R. 12.212 (Sept.
+1995). Consistent with 48 C.F.R. 12.212 and 48 C.F.R. 227.7202-1 through 227.7202-4 (June 1995), all U.S. Government End
+Users acquire Covered Code with only those rights set forth in this License.
+
+10     MISCELLANEOUS.
+10.1 Relationship. This License may not be construed as creating an agency, partnership, joint venture, or any other legal
+association between You and GIPS, and You may not represent to the contrary, whether expressly, by implication, or otherwise.
+10.2 Inability To Comply. If it is impossible for You to comply with any term of this License due to statute, judicial order, or
+regulation, then You must: (a) comply with the terms of this License to the maximum extent possible and (b) describe the
+limitations and the code they affect. Such description must be included with all distributions of Source Code, and should be
+sufficiently detailed for a recipient of ordinary skill to be able to understand it.
+10.3 Independent Development. Nothing in this License impairs GIPS's right to acquire, license, develop, have others develop for
+it, market, or distribute technology or products that perform the same or similar functions as, or otherwise compete with, Original
+Code, Covered Code, Modifications, Larger Works, or technology or products You may develop, produce, market, or distribute.
+10.4 Waiver; Construction. Failure by GIPS to enforce any provision of this License may not be deemed a waiver of future
+enforcement of that or any other provision. Any law or regulation that provides that the language of a contract is construed
+against the drafter does not apply to this License.
+10.5 Severability. If any provision of this License is unenforceable, that provision will be enforced to the maximum extent
+permissible and reformed only to the extent necessary to make it enforceable so as to effect the intent of the parties, and the
+remainder of this License continues in full force and effect. Notwithstanding the foregoing, if You are unable to comply fully
+with Section 2.1 or 2.5, this License terminates immediately and You must immediately discontinue any use of the Covered Code
+and destroy all copies of it that are in Your possession or control.
+10.6 Dispute Resolution; Governing Law. This License is governed by the laws of the United States and the State of California.
+Choice of law rules do not apply, regardless of jurisdiction. Any litigation relating to this License is subject to the jurisdiction of
+the Federal Courts of the Northern District of California, with venue in San Francisco County, California, and You and GIPS
+hereby consent to personal jurisdiction and venue therein with respect to this License. Application of the United Nations
+Convention On Contracts For The International Sale Of Goods is expressly excluded. The losing party in any litigation is
+responsible for all costs, reasonable attorneys' fees, and expenses.
+10.7 Entire Agreement. This License is the parties’ entire agreement with respect to its subject matter.
+10.8 If You are located in the province of Quebec, Canada, the following clause applies: The parties hereby confirm that they
+have requested that this License and all related documents be drafted in English. Les parties ont exigé que le présent contrat et
+tous les documents connexes soient rédigés en anglais.
+
+
+
+
+public-ilbc-v0-081009.doc
+                                                                                                                                   D-4
+                                 Appendix A - Global IP Solutions iLBC Public License, v3 .0
+                                         IETF Version - Limited Commercial Use
+
+This file is subject to the Global IP Solutions iLBC Public License, v3.0 - IETF Version - Limited Commercial Use (the
+“License”). Please obtain a copy of the License and read it carefully before using or redistributing the software; by
+downloading or using the software You accept and agree to the terms of the License. If You are agreeing to the License on
+behalf of a company, You represent that You are authorized to bind the company to such a license; if You do not meet this
+criterion, or You do not agree to any of the terms of the License, do not download, access, or use the software, and destroy any
+copies.
+
+                                                             NOTICE
+All use of the Original Code (GIPS iLBC , and code provided by GIPS as part of any related IETF Standard or draft standard) is
+subject to the complete Global IP Solutions iLBC Public License, IETF Standard, Limited Commercial Use (the (“License”). By
+accessing the Original Code You agree to the License terms. PLEASE SEE THE COMPLETE LICENSE BELOW FOR
+ADDITIONAL TERMS. In general:
+-      Personal, non-commercial use is generally permitted.
+-      Commercialization is permitted with certain limitations; for example, to ensure that every iLBC decoder can decode
+       every iLBC-encoded payload, commercial “Deployment” must comply with the applicable IETF Standard/draft, and the
+       format of the bitstream may not be modified.
+-      You are provided no warranty or support, and all liability is disclaimed.
+-      You must register this license with GIPS prior to any commercial Deployment.
+
+The License is available from http://www.gipscorp.com/legal/licenses/ilbc; or from Global IP Solutions (GIPS) AB, Magnus
+Ladulåsgatan 63B SE-118 27, Stockholm, Sweden, +46.8.545.5.30.40 tel, +46.8.545.5.30.49 fax; or from Global IP Solutions,
+Inc., 642 Brannan Street, 2nd Floor, San Francisco, California 94107 USA, +1 415.397.2555 tel, +1 415.397.2577 fax; or by
+sending a request to info@gipscorp.com.
+
+The current IETF Standards can also be found at http://www.ietf.org/rfc/rfc3951.txt plus
+http://www.ietf.org/rfc/rfc3952.txt. The initial developer of the Original Code is Global IP Solutions, Inc. Portions Copyright
+© 1999-2004, All Rights Reserved.
+
+iLBC is a trademark of Global IP Solutions. All redistribution is subject to the License; source code must include this Notice.
+I have read and understood, and I agree to, the terms and conditions of the Global IP Solutions iLBC Public License v3.0, IETF
+Version, Limited Commercial Use.
+
+Signature:                                                       Date:
+
+Name:                                                            Title:
+
+Company                                                          Address:
+
+Telephone                                                        Fax:
+
+Email:
+
+Intended Use:
+
+
+            Please send to Global IP Solutions (GIPS) AB, Magnus Ladulåsgatan 63B, SE-118 27, Stockholm, Sweden
+                                            +46.8.545.5.30.40 tel, +46.8.545.5.30.49 fax
+                                                       info@gipscorp.com
+                                                           Attn: Legal
+                                            Cc: GIPS Legal, via fax to +1.415.397.2577
+
+
+
+
+public-ilbc-v0-081009.doc
+                                                                                                                              D-5
+
