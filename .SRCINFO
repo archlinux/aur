@@ -1,0 +1,26 @@
+pkgbase = rekonq-git
+	pkgdesc = A WebKit based web browser for KDE, git version
+	pkgver = 2.3.2.39.g489dbe4.2013.11.10
+	pkgrel = 1
+	url = http://rekonq.kde.org
+	install = rekonq-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = git
+	makedepends = docbook-xsl
+	makedepends = bc
+	depends = kdebase-keditbookmarks
+	depends = qoauth
+	depends = qtwebkit
+	optdepends = kdebase-konqueror: search engines support
+	optdepends = qca-ossl: to use the sync handler
+	source = rekonq::git://anongit.kde.org/rekonq
+	source = patch
+	md5sums = SKIP
+	md5sums = 5b81227b06f793322e9b854965803886
+
+pkgname = rekonq-git
+
