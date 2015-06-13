@@ -1,0 +1,16 @@
+pkgbase = phyml-git
+	pkgdesc = Phylogenetic estimation using (Maximum) Likelihood
+	pkgver = r121.ab59039
+	pkgrel = 1
+	url = https://github.com/stephaneguindon/phyml/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	provides = phyml
+	conflicts = phyml
+	source = phyml-git::git+https://github.com/stephaneguindon/phyml
+	md5sums = SKIP
+
+pkgname = phyml-git
+
