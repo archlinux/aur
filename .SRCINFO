@@ -1,0 +1,17 @@
+pkgbase = ttf-averia-serif
+	pkgdesc = The Average Font, serif version.
+	pkgver = 20111103
+	pkgrel = 1
+	url = http://iotic.com/averia/
+	install = ttf-averia-serif.install
+	arch = any
+	license = GPL
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = ttf-averia-serif-20111103::http://openfontlibrary.org/assets/downloads/averia-serif/51e3ae7cf61b932c613416e6e0a05e40/averia-serif.zip
+	sha1sums = 17b43620d2ebe661523adc46ffab89e1744f6b54
+
+pkgname = ttf-averia-serif
+
