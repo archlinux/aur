@@ -1,0 +1,7 @@
+41a42,47
+> /* GCC 4.7
+>  */
+> #if __GNU_LIBOBJC__ >= 20100911
+> #  define sel_eq(__A__,__B__) sel_isEqual(__A__,__B__)
+> #endif
+> 

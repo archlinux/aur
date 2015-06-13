@@ -1,0 +1,24 @@
+pkgbase = cenon
+	pkgdesc = GNUstep vector editor for EPS, DXF, Gerber, HPGL. Includes docs and examples.
+	pkgver = 4.0.2
+	pkgrel = 1
+	url = http://www.cenon.info
+	arch = i686
+	arch = x86_64
+	license = custom:vhfPL
+	makedepends = gnustep-make
+	makedepends = gcc-objc
+	depends = gnustep-base
+	depends = gnustep-gui
+	options = !strip
+	source = http://www.cenon.zone/download/source/Cenon-4.0.2.tar.bz2
+	source = http://www.cenon.zone/download/source/CenonLibrary-4.0.0-1.tar.bz2
+	source = http://www.cenon.zone/download/doc/Cenon-4.0_gb.pdf
+	source = gcc47.patch
+	md5sums = ba6519d09106a250cbec72b28f970bbc
+	md5sums = 5d7542f054b4ac3eb630c360d3752aa8
+	md5sums = SKIP
+	md5sums = 015e2c1538788eb42c1320353a2da6e5
+
+pkgname = cenon
+
