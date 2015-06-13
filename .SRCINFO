@@ -1,0 +1,15 @@
+pkgbase = mbrola-voices-nz1
+	pkgdesc = A Maori male voice for the MBROLA synthesizer
+	pkgver = 000911
+	pkgrel = 1
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-nz
+	groups = mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/nz1/nz1-000911.zip
+	md5sums = 9c9ac4a5295fd8a9eb16f0723545a97b
+
+pkgname = mbrola-voices-nz1
+
