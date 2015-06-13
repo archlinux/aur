@@ -1,0 +1,16 @@
+pkgbase = cataclysm-git
+	pkgdesc = A post-apocalyptic roguelike.
+	pkgver = 20130706
+	pkgrel = 1
+	url = http://en.cataclysmdda.com/
+	install = cataclysm-git.install
+	arch = i686
+	arch = x86_64
+	license = CCPL:by-sa
+	makedepends = git
+	depends = ncurses
+	source = git://github.com/CleverRaven/Cataclysm-DDA.git
+	md5sums = SKIP
+
+pkgname = cataclysm-git
+
