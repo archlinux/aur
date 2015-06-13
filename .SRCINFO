@@ -1,0 +1,17 @@
+pkgbase = pure-tk
+	pkgdesc = This is a much improved port of the Q Tk module which lets you develop GUI applications with Tcl/Tk. The module embeds a Tcl/Tk interpreter in your Pure programs.
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://purelang.bitbucket.org/
+	arch = i686
+	arch = x86_64
+	groups = pure-complete
+	groups = pure-graphics
+	license = BSD
+	depends = pure
+	depends = tk
+	source = https://bitbucket.org/purelang/pure-lang/downloads/pure-tk-0.5.tar.gz
+	sha1sums = 03128c5a37238596ab740cdb0b4484fabfb8e493
+
+pkgname = pure-tk
+
