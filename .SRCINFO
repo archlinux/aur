@@ -1,0 +1,15 @@
+pkgbase = pure-docs-hg
+	pkgdesc = Pure Language and Library Documentation, latest snapshot
+	pkgver = 39.c45a07b
+	pkgrel = 1
+	url = http://purelang.bitbucket.org/
+	arch = any
+	license = FDL
+	makedepends = git
+	provides = pure-docs=0.58
+	conflicts = pure-docs
+	source = git+https://bitbucket.org/puredocs/puredocs.bitbucket.org
+	md5sums = SKIP
+
+pkgname = pure-docs-hg
+
