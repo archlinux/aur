@@ -1,0 +1,13 @@
+pkgbase = safauri
+	pkgdesc = Hunt down those wild new apps. Returns the most recently added AUR packages.
+	pkgver = 20111229
+	pkgrel = 1
+	url = http://kmkeen.com/safauri/
+	arch = any
+	license = GPL
+	depends = python2
+	source = http://kmkeen.com/safauri/safauri-20111229.tar.gz
+	md5sums = 9806f47735be5f629398643734073911
+
+pkgname = safauri
+
