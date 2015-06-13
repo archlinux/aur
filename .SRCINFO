@@ -1,0 +1,16 @@
+pkgbase = mbrola-voices-de4
+	pkgdesc = A German male voice for the MBROLA synthesizer
+	pkgver = 1
+	pkgrel = 1
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-de
+	groups = mbrola-voices
+	groups = gespeaker-mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/de4/de4.zip
+	md5sums = 3b67ba970415d509c8b3eeb9bae87023
+
+pkgname = mbrola-voices-de4
+
