@@ -1,8 +1,10 @@
 pkgbase = msgpack-c-0.5
 	pkgdesc = An efficient object serialization library. Legacy version.
 	pkgver = 0.5.9
-	pkgrel = 3
+	pkgrel = 4
 	url = http://msgpack.org/
+	arch = i686
+	arch = x86_64
 	license = Apache
 	checkdepends = gtest
 	depends = gcc-libs
