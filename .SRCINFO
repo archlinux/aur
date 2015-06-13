@@ -1,0 +1,13 @@
+pkgbase = gimp-plugin-duplicate-to-another-image
+	pkgdesc = Duplicate layer, layer with mask, or layer group from one image to another.
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://some-gimp-plugins.com/contents/en/extensions/004/
+	arch = any
+	license = GPL
+	depends = gimp
+	source = http://some-gimp-plugins.com/contents/en/extensions/004/duplicate-to-another-image.zip
+	md5sums = 8c21299a717458d32a270ac2ca541681
+
+pkgname = gimp-plugin-duplicate-to-another-image
+
