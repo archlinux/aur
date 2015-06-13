@@ -1,0 +1,14 @@
+pkgbase = xbmc-addons-chinese
+	pkgdesc = Addon scripts, plugins, and skins for kodi(XBMC) Media Center. Special for chinese laguage.
+	pkgver = 1.2.0
+	pkgrel = 2
+	url = https://github.com/taxigps/xbmc-addons-chinese/
+	install = install
+	arch = any
+	license = GPLv2
+	depends = xbmc
+	source = https://github.com/taxigps/xbmc-addons-chinese/raw/master/repo/repository.xbmc-addons-chinese/repository.xbmc-addons-chinese-1.2.0.zip
+	md5sums = dbe8eff47bebb0634d32fdd88a0b0b8b
+
+pkgname = xbmc-addons-chinese
+

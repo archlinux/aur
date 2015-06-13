@@ -1,0 +1,7 @@
+post_install() {
+    echo "you'd better restart XBMC."
+}
+
+post_upgrade() {
+    post_install
+}
