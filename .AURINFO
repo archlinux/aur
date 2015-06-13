@@ -1,0 +1,20 @@
+pkgbase = pure-meta-multimedia
+	pkgdesc = Pure programming language, multimedia package -- interfaces to audio, MIDI, OSC, Faust, Pd
+	pkgver = 1
+	pkgrel = 3
+	url = http://purelang.bitbucket.org/
+	arch = any
+	groups = pure-meta
+	license = custom
+	depends = faust2pd
+	depends = pd-faust
+	depends = pd-pure
+	depends = pure-audio
+	depends = pure-liblo
+	depends = pure-lilv
+	depends = pure-lv2
+	depends = pure-midi
+	depends = pure-faust
+
+pkgname = pure-meta-multimedia
+
