@@ -1,0 +1,16 @@
+pkgbase = structuresynth
+	pkgdesc = Graphics tool to make 3D structures from sets of rules, similar to Context Free.
+	pkgver = 1.5.0
+	pkgrel = 4
+	url = http://structuresynth.sourceforge.net
+	install = structuresynth.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = qt5-script
+	depends = qt5-base
+	source = http://downloads.sourceforge.net/structuresynth/StructureSynth-Source-v1.5.0.zip
+	md5sums = 862705c5bc9e778094046399f44d6c26
+
+pkgname = structuresynth
+
