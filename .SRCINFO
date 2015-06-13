@@ -1,0 +1,14 @@
+pkgbase = tbclock
+	pkgdesc = Displays a full screen binary clock in your terminal.
+	pkgver = 1.10
+	pkgrel = 1
+	url = http://tamentis.com/projects/tbclock/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	source = http://tamentis.com/projects/tbclock/files/tbclock-1.10.tar.gz
+	md5sums = 0a0b499120603776a05daf283d18cb38
+
+pkgname = tbclock
+
