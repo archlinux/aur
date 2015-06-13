@@ -1,0 +1,13 @@
+pkgbase = iceglass-icons
+	pkgdesc = Iconset for dark color schemes
+	pkgver = 4.12
+	pkgrel = 1
+	url = http://kde-look.org/content/show.php/Iceglass?content=121145
+	arch = any
+	license = GPL
+	options = !strip
+	source = https://dl.dropbox.com/u/4514366/AUR/Iceglass-4.12.tar.xz
+	sha1sums = 09363cd8b6015d377a7f1b3bd4d0b46a76c4ea79
+
+pkgname = iceglass-icons
+
