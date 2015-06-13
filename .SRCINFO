@@ -1,0 +1,18 @@
+pkgbase = agclient
+	pkgdesc = A client to connect to an Appgate server.
+	pkgver = 10.2
+	pkgrel = 1
+	url = http://tech.cryptzone.com/
+	arch = i686
+	arch = x86_64
+	license = BCL
+	depends = java-runtime
+	source = http://tech.cryptzone.com/download/AppGate-10.2/appliance/Clients/Linux/agclient.i386.tar.bz2
+	source = agclient.desktop
+	source = agcicon.gif
+	sha256sums = d365bc1d7613285ddfd11603e7c947404789238c5c5787feafa49babf041796d
+	sha256sums = 4f9e4828a6e54d05815d134139b0ee6ca3d68d3c7dc5a64f1cd4f5dd29cc6b31
+	sha256sums = cd3f533e61b5627f63bc8b56e2f23aaf4ab8cf98184d483338d9c30b51a6cb4b
+
+pkgname = agclient
+

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Icon=agcicon.gif
+Exec=agclient
+Terminal=false
+StartupNotify=false
+
+Name=Appgate Client
+Comment=a client to connect to an Appgate Server
+
+Categories=Network;
