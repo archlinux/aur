@@ -1,0 +1,15 @@
+pkgbase = python2-fancycompleter
+	pkgdesc = Colorful TAB completion for Python prompt
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://bitbucket.org/antocuni/fancycompleter
+	install = python2-fancycompleter.install
+	arch = any
+	license = GPL
+	depends = python2
+	depends = pyrepl
+	source = http://pypi.python.org/packages/source/f/fancycompleter/fancycompleter-0.4.tar.gz
+	md5sums = 44667c62c6db6318ca6482f3e0781d31
+
+pkgname = python2-fancycompleter
+

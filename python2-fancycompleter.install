@@ -1,0 +1,10 @@
+post_install() {
+    cat << EOF
+==> To use automatically fancycompleter with python2 interpreter,
+==> just create a ~/.pythonrc file containing :
+==> import fancycompleter
+==> fancycompleter.interact()
+==> and export PYTHONSTARTUP=~/.pythonrc
+EOF
+
+}
