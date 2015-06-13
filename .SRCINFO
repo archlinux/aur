@@ -1,0 +1,25 @@
+pkgbase = fish-git
+	pkgdesc = User friendly shell intended mostly for interactive use (gitorius.org legacy version).
+	pkgver = 2012.01.31
+	pkgrel = 1
+	epoch = 1
+	url = http://gitorious.org/fish-shell
+	install = fish.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = BSD
+	license = MIT
+	makedepends = doxygen
+	makedepends = git
+	depends = ncurses
+	depends = bc
+	optdepends = python2: make_completions script
+	provides = fish
+	conflicts = fish
+	source = git://gitorious.org/fish-shell/fish-shell.git
+	md5sums = SKIP
+
+pkgname = fish-git
+
