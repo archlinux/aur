@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Fuse ZX Spectrum Emulator
+Comment=Emulator of the 1980s ZX Spectrum home computer
+Icon=fuse-emulator
+Exec=fuse %f
+Terminal=false
+Categories=Utility;Emulator;
