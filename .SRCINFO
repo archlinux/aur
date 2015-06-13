@@ -1,0 +1,25 @@
+pkgbase = cd
+	pkgdesc = C platform-independent graphics library.
+	pkgver = 5.7
+	pkgrel = 2
+	url = http://www.tecgraf.puc-rio.br/cd/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = freetype2
+	makedepends = libx11
+	makedepends = libxpm
+	makedepends = libxmu
+	makedepends = libxft
+	makedepends = gtk2
+	makedepends = lua
+	depends = ftgl
+	depends = im>=3.7
+	depends = gtk2
+	depends = pangox-compat
+	optdepends = lua: bindings for Lua are available
+	source = http://downloads.sourceforge.net/project/canvasdraw/5.7/Docs%20and%20Sources/cd-5.7_Sources.tar.gz
+	sha1sums = 370f6e3f595554197f71536f527533f910c509eb
+
+pkgname = cd
+
