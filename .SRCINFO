@@ -1,0 +1,15 @@
+pkgbase = qtools
+	pkgdesc = The qtools package contains utilities for use with qmail, typically as part of .qmail command processing
+	pkgver = 0.56
+	pkgrel = 00
+	url = http://www.superscript.com/qtools
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://www.superscript.com/qtools/qtools-0.56.tar.gz
+	source = qtools-0.56-errno.patch
+	sha512sums = 2016ca4f77fc370f6caac56f447325461018dff1f8a61fad305744578f0c26f0495c26d6cba6a8a9d5c86c6ef86635edd69705e9af88f70477a3f6ed121e6085
+	sha512sums = ca8fc0fc14724a1dfc9931e24071f0b72ba8bdc3c13c3dc84a597b73e92541043526a288ceb2e260dfb8ab8ce4f970b6505b323458817e499188cc4c6680ba22
+
+pkgname = qtools
+
