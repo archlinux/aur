@@ -1,0 +1,21 @@
+pkgbase = perl-moo
+	pkgdesc = Minimalist Object Orientation (with Moose compatiblity)
+	pkgver = 2.000001
+	pkgrel = 1
+	url = https://metacpan.org/release/Moo
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-fatal>=-0.003
+	depends = perl-class-method-modifiers>=1.1
+	depends = perl-devel-globaldestruction>=0.11
+	depends = perl-import-into>=1.002
+	depends = perl-module-runtime>=0.014
+	depends = perl-role-tiny>=2
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/H/HA/HAARG/Moo-2.000001.tar.gz
+	md5sums = 61cfeb965736736e7c5687a28d097ac0
+	sha512sums = e2261239ab60ab62058d4e57db92e3d6d7f93a22dd98589c7a392e213c5a653957bfdb9582bfd54dd3880553dfe8573e025ff799fdf9803df465a4303d59a62b
+
+pkgname = perl-moo
+
