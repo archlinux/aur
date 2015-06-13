@@ -1,7 +1,52 @@
-diff -Nur rtorrent-tar/rak/socket_address.h rtorrent-tar-ipv6/rak/socket_address.h
---- rtorrent-tar/rak/socket_address.h	2012-01-19 23:18:01.000000000 +1300
-+++ rtorrent-tar-ipv6/rak/socket_address.h	2014-07-04 10:45:16.990399678 +1200
-@@ -145,7 +145,7 @@
+diff --git a/AUTHORS b/AUTHORS
+index 195fc22..f9bdb53 100644
+--- a/AUTHORS
++++ b/AUTHORS
+@@ -1 +1 @@
+-Jari Sundell <jaris@ifi.uio.no>
++Jari Sundell <sundell.software@gmail.com>
+diff --git a/README b/README
+index 6db6b25..1dbceaa 100644
+--- a/README
++++ b/README
+@@ -32,5 +32,10 @@ DEPENDENCIES
+ 
+ CONTACT
+ 
+- Send bug reports, suggestions and patches to <jaris@ifi.uio.no> or
+-to the mailinglist.
++ Jari Sundell
++
++ Skomakerveien 33
++ 3185 Skoppum, NORWAY
++
++ Send bug reports, suggestions and patches to
++<sundell.software@gmail.com> or to the mailinglist.
+diff --git a/rak/socket_address.h b/rak/socket_address.h
+index 25fdb37..d1d5b72 100644
+--- a/rak/socket_address.h
++++ b/rak/socket_address.h
+@@ -109,13 +109,11 @@ public:
+   const sockaddr*     c_sockaddr() const                      { return &m_sockaddr; }
+   const sockaddr_in*  c_sockaddr_inet() const                 { return &m_sockaddrInet; }
+ 
+-#ifdef RAK_USE_INET6
+   socket_address_inet6*       sa_inet6()                      { return reinterpret_cast<socket_address_inet6*>(this); }
+   const socket_address_inet6* sa_inet6() const                { return reinterpret_cast<const socket_address_inet6*>(this); }
+ 
+   sockaddr_in6*       c_sockaddr_inet6()                      { return &m_sockaddrInet6; }
+   const sockaddr_in6* c_sockaddr_inet6() const                { return &m_sockaddrInet6; }
+-#endif
+ 
+   // Copy a socket address which has the length 'length. Zero out any
+   // extranous bytes and ensure it does not go beyond the size of this
+@@ -139,13 +137,11 @@ private:
+   union {
+     sockaddr            m_sockaddr;
+     sockaddr_in         m_sockaddrInet;
+-#ifdef RAK_USE_INET6
+     sockaddr_in6        m_sockaddrInet6;
+-#endif
    };
  };
  
@@ -10,51 +55,73 @@ diff -Nur rtorrent-tar/rak/socket_address.h rtorrent-tar-ipv6/rak/socket_address
  
  class socket_address_inet {
  public:
-@@ -185,6 +185,10 @@
+@@ -184,6 +180,8 @@ public:
+ 
    const sockaddr*     c_sockaddr() const                      { return reinterpret_cast<const sockaddr*>(&m_sockaddr); }
    const sockaddr_in*  c_sockaddr_inet() const                 { return &m_sockaddr; }
- 
-+#ifdef RAK_USE_INET6
++  
 +  socket_address_inet6 to_mapped_address() const;
-+#endif
-+
+ 
    bool                operator == (const socket_address_inet& rhs) const;
    bool                operator < (const socket_address_inet& rhs) const;
- 
-@@ -192,6 +196,52 @@
+@@ -192,48 +190,47 @@ private:
    struct sockaddr_in  m_sockaddr;
  };
  
-+#ifdef RAK_USE_INET6
-+// Remember to set the AF_INET6.
-+
+-// Unique key for the address, excluding port numbers etc.
+-class socket_address_key {
 +class socket_address_inet6 {
-+public:
+ public:
+-//   socket_address_host_key() {}
 +  bool                is_any() const                          { return is_port_any() && is_address_any(); }
 +  bool                is_valid() const                        { return !is_port_any() && !is_address_any(); }
 +  bool                is_port_any() const                     { return port() == 0; }
 +  bool                is_address_any() const                  { return std::memcmp(&m_sockaddr.sin6_addr, &in6addr_any, sizeof(in6_addr)) == 0; }
-+
+ 
+-  socket_address_key(const socket_address& sa) {
+-    *this = sa;
+-  }
 +  void                clear()                                 { std::memset(this, 0, sizeof(socket_address_inet6)); set_family(); }
-+
+ 
+-  socket_address_key& operator = (const socket_address& sa) {
+-    if (sa.family() == 0) {
+-      std::memset(this, 0, sizeof(socket_address_key));
 +  uint16_t            port() const                            { return ntohs(m_sockaddr.sin6_port); }
 +  uint16_t            port_n() const                          { return m_sockaddr.sin6_port; }
 +  void                set_port(uint16_t p)                    { m_sockaddr.sin6_port = htons(p); }
 +  void                set_port_n(uint16_t p)                  { m_sockaddr.sin6_port = p; }
-+
+ 
+-    } else if (sa.family() == socket_address::af_inet) {
+-      // Using hardware order as we use operator < to compare when
+-      // using inet only.
+-      m_addr.s_addr = sa.sa_inet()->address_h();
 +  in6_addr            address() const                         { return m_sockaddr.sin6_addr; }
++  const in6_addr*     address_ptr() const                     { return &m_sockaddr.sin6_addr; }
 +  std::string         address_str() const;
 +  bool                address_c_str(char* buf, socklen_t size) const;
-+
+ 
+-    } else {
+-      // When we implement INET6 handling, embed the ipv4 address in
+-      // the ipv6 address.
+-      throw std::logic_error("socket_address_key(...) received an unsupported protocol family.");
+-    }
 +  void                set_address(in6_addr a)                 { m_sockaddr.sin6_addr = a; }
 +  bool                set_address_str(const std::string& a)   { return set_address_c_str(a.c_str()); }
 +  bool                set_address_c_str(const char* a);
-+
+ 
+-    return *this;
+-  }
 +  void                set_address_any()                       { set_port(0); set_address(in6addr_any); }
-+
+ 
+-//   socket_address_key& operator = (const socket_address_key& sa) {
+-//   }
 +  sa_family_t         family() const                          { return m_sockaddr.sin6_family; }
 +  void                set_family()                            { m_sockaddr.sin6_family = AF_INET6; }
-+
+ 
+-  bool operator < (const socket_address_key& sa) const {
+-    // Compare the memory area instead.
+-    return m_addr.s_addr < sa.m_addr.s_addr;
+-  }    
 +  sockaddr*           c_sockaddr()                            { return reinterpret_cast<sockaddr*>(&m_sockaddr); }
 +  sockaddr_in6*       c_sockaddr_inet6()                      { return &m_sockaddr; }
 +
@@ -65,149 +132,129 @@ diff -Nur rtorrent-tar/rak/socket_address.h rtorrent-tar-ipv6/rak/socket_address
 +
 +  bool                operator == (const socket_address_inet6& rhs) const;
 +  bool                operator < (const socket_address_inet6& rhs) const;
-+
-+private:
+ 
+ private:
+-  union {
+-    in_addr m_addr;
+-// #ifdef RAK_USE_INET6
+-//     in_addr6 m_addr6;
+-// #endif
+-  };
 +  struct sockaddr_in6 m_sockaddr;
-+};
-+#endif
-+
- // Unique key for the address, excluding port numbers etc.
- class socket_address_key {
- public:
-@@ -241,8 +291,10 @@
+ };
+ 
+ inline bool
+@@ -241,8 +238,8 @@ socket_address::is_valid() const {
    switch (family()) {
    case af_inet:
      return sa_inet()->is_valid();
 -//   case af_inet6:
 -//     return sa_inet6().is_valid();
-+#ifdef RAK_USE_INET6
 +  case af_inet6:
 +    return sa_inet6()->is_valid();
-+#endif
    default:
      return false;
    }
-@@ -253,6 +305,10 @@
+@@ -253,6 +250,8 @@ socket_address::is_bindable() const {
    switch (family()) {
    case af_inet:
      return !sa_inet()->is_address_any();
-+#ifdef RAK_USE_INET6
 +  case af_inet6:
 +    return !sa_inet6()->is_address_any();
-+#endif
    default:
      return false;
    }
-@@ -263,6 +319,10 @@
+@@ -263,6 +262,8 @@ socket_address::is_address_any() const {
    switch (family()) {
    case af_inet:
      return sa_inet()->is_address_any();
-+#ifdef RAK_USE_INET6
 +  case af_inet6:
 +    return sa_inet6()->is_address_any();
-+#endif
    default:
      return true;
    }
-@@ -273,6 +333,10 @@
+@@ -273,6 +274,8 @@ socket_address::port() const {
    switch (family()) {
    case af_inet:
      return sa_inet()->port();
-+#ifdef RAK_USE_INET6
 +  case af_inet6:
 +    return sa_inet6()->port();
-+#endif
    default:
      return 0;
    }
-@@ -283,6 +347,10 @@
+@@ -283,6 +286,8 @@ socket_address::set_port(uint16_t p) {
    switch (family()) {
    case af_inet:
      return sa_inet()->set_port(p);
-+#ifdef RAK_USE_INET6
 +  case af_inet6:
 +    return sa_inet6()->set_port(p);
-+#endif
    default:
      break;
    }
-@@ -293,6 +361,10 @@
+@@ -293,6 +298,8 @@ socket_address::address_str() const {
    switch (family()) {
    case af_inet:
      return sa_inet()->address_str();
-+#ifdef RAK_USE_INET6
 +  case af_inet6:
 +    return sa_inet6()->address_str();
-+#endif
    default:
      return std::string();
    }
-@@ -303,6 +375,10 @@
+@@ -303,6 +310,8 @@ socket_address::address_c_str(char* buf, socklen_t size) const {
    switch (family()) {
    case af_inet:
      return sa_inet()->address_c_str(buf, size);
-+#ifdef RAK_USE_INET6
 +  case af_inet6:
 +    return sa_inet6()->address_c_str(buf, size);
-+#endif
    default:
      return false;
    }
-@@ -314,6 +390,12 @@
+@@ -314,6 +323,10 @@ socket_address::set_address_c_str(const char* a) {
      sa_inet()->set_family();
      return true;
  
-+#ifdef RAK_USE_INET6
 +  } else if (sa_inet6()->set_address_c_str(a)) {
 +    sa_inet6()->set_family();
 +    return true;
-+#endif
 +
    } else {
      return false;
    }
-@@ -325,6 +407,10 @@
+@@ -325,6 +338,8 @@ socket_address::length() const {
    switch(family()) {
    case af_inet:
      return sizeof(sockaddr_in);
-+#ifdef RAK_USE_INET6
 +  case af_inet6:
 +    return sizeof(sockaddr_in6);
-+#endif
    default:
      return 0;
    }      
-@@ -349,8 +435,10 @@
+@@ -349,8 +364,8 @@ socket_address::operator == (const socket_address& rhs) const {
    switch (family()) {
    case af_inet:
      return *sa_inet() == *rhs.sa_inet();
 -//   case af_inet6:
 -//     return *sa_inet6() == *rhs.sa_inet6();
-+#ifdef RAK_USE_INET6
 +  case af_inet6:
 +    return *sa_inet6() == *rhs.sa_inet6();
-+#endif
    default:
      throw std::logic_error("socket_address::operator == (rhs) invalid type comparison.");
    }
-@@ -364,8 +452,10 @@
+@@ -364,8 +379,8 @@ socket_address::operator < (const socket_address& rhs) const {
    switch (family()) {
    case af_inet:
      return *sa_inet() < *rhs.sa_inet();
 -//   case af_inet6:
 -//     return *sa_inet6() < *rhs.sa_inet6();
-+#ifdef RAK_USE_INET6
 +  case af_inet6:
 +    return *sa_inet6() < *rhs.sa_inet6();
-+#endif
    default:
      throw std::logic_error("socket_address::operator < (rhs) invalid type comparison.");
    }
-@@ -391,6 +481,23 @@
+@@ -391,6 +406,21 @@ socket_address_inet::set_address_c_str(const char* a) {
    return inet_pton(AF_INET, a, &m_sockaddr.sin_addr);
  }
  
-+#ifdef RAK_USE_INET6
 +inline socket_address_inet6
 +socket_address_inet::to_mapped_address() const {
 +  uint32_t addr32[4];
@@ -215,24 +262,21 @@ diff -Nur rtorrent-tar/rak/socket_address.h rtorrent-tar-ipv6/rak/socket_address
 +  addr32[1] = 0;
 +  addr32[2] = htonl(0xffff);
 +  addr32[3] = m_sockaddr.sin_addr.s_addr;
-+
++  
 +  socket_address_inet6 sa;
 +  sa.clear();
 +  sa.set_address(*reinterpret_cast<in6_addr *>(addr32));
 +  sa.set_port_n(m_sockaddr.sin_port);
 +  return sa;
 +}
-+#endif
 +
  inline bool
  socket_address_inet::operator == (const socket_address_inet& rhs) const {
    return
-@@ -406,6 +513,59 @@
+@@ -406,6 +436,55 @@ socket_address_inet::operator < (const socket_address_inet& rhs) const {
       m_sockaddr.sin_port < rhs.m_sockaddr.sin_port);
  }
  
-+#ifdef RAK_USE_INET6
-+
 +inline std::string
 +socket_address_inet6::address_str() const {
 +  char buf[INET6_ADDRSTRLEN];
@@ -282,80 +326,73 @@ diff -Nur rtorrent-tar/rak/socket_address.h rtorrent-tar-ipv6/rak/socket_address
 +     m_sockaddr.sin6_port < rhs.m_sockaddr.sin6_port);
 +}
 +
-+#endif
-+
  }
  
  #endif
-diff -Nur rtorrent-tar/src/command_download.cc rtorrent-tar-ipv6/src/command_download.cc
---- rtorrent-tar/src/command_download.cc	2014-05-15 02:30:51.000000000 +1200
-+++ rtorrent-tar-ipv6/src/command_download.cc	2014-07-04 10:45:16.990399678 +1200
-@@ -308,7 +308,13 @@
+diff --git a/src/command_download.cc b/src/command_download.cc
+index 5a1b2ed..3694066 100644
+--- a/src/command_download.cc
++++ b/src/command_download.cc
+@@ -308,7 +308,10 @@ apply_d_add_peer(core::Download* download, const std::string& arg) {
    if (download->download()->info()->is_private())
      throw torrent::input_error("Download is private.");
  
-+#ifdef RAK_USE_INET6
+-  ret = std::sscanf(arg.c_str(), "%1023[^:]:%i%c", host, &port, &dummy);
 +  ret = std::sscanf(arg.c_str(), "[%64[^]]]:%i%c", host, &port, &dummy);
++
 +  if (ret < 1)
 +    ret = std::sscanf(arg.c_str(), "%1023[^:]:%i%c", host, &port, &dummy);
-+#else
-   ret = std::sscanf(arg.c_str(), "%1023[^:]:%i%c", host, &port, &dummy);
-+#endif
  
    if (ret == 1)
      port = 6881;
-@@ -318,7 +324,11 @@
+@@ -318,7 +321,7 @@ apply_d_add_peer(core::Download* download, const std::string& arg) {
    if (port < 1 || port > 65535)
      throw torrent::input_error("Invalid port number.");
  
-+#ifdef RAK_USE_INET6
+-  torrent::connection_manager()->resolver()(host, (int)rak::socket_address::pf_inet, SOCK_STREAM, call_add_d_peer_t(download, port));
 +  torrent::connection_manager()->resolver()(host, (int)rak::socket_address::pf_unspec, SOCK_STREAM, call_add_d_peer_t(download, port));
-+#else
-   torrent::connection_manager()->resolver()(host, (int)rak::socket_address::pf_inet, SOCK_STREAM, call_add_d_peer_t(download, port));
-+#endif
  }
  
  torrent::Object
-diff -Nur rtorrent-tar/src/command_network.cc rtorrent-tar-ipv6/src/command_network.cc
---- rtorrent-tar/src/command_network.cc	2014-05-15 02:30:51.000000000 +1200
-+++ rtorrent-tar-ipv6/src/command_network.cc	2014-07-04 10:45:16.990399678 +1200
-@@ -172,8 +172,13 @@
+diff --git a/src/command_network.cc b/src/command_network.cc
+index 93af73b..dc61997 100644
+--- a/src/command_network.cc
++++ b/src/command_network.cc
+@@ -170,8 +170,9 @@ apply_scgi(const std::string& arg, int type) {
          lt_log_print(torrent::LOG_RPC_EVENTS,
                       "The SCGI socket has not been bound to any address and likely poses a security risk.");
  
-+#ifdef RAK_USE_INET6
+-      } else if (std::sscanf(arg.c_str(), "%1023[^:]:%i%c", address, &port, &dummy) == 2) {
+-        if ((err = rak::address_info::get_address_info(address, PF_INET, SOCK_STREAM, &ai)) != 0)
 +      } else if (std::sscanf(arg.c_str(), "%1023[^:]:%i%c", address, &port, &dummy) == 2 ||
 +                 std::sscanf(arg.c_str(), "[%64[^]]]:%i%c", address, &port, &dummy) == 2) { // [xx::xx]:port format
-+#else
-       } else if (std::sscanf(arg.c_str(), "%1023[^:]:%i%c", address, &port, &dummy) == 2) {
--        if ((err = rak::address_info::get_address_info(address, PF_INET, SOCK_STREAM, &ai)) != 0)
-+#endif
 +        if ((err = rak::address_info::get_address_info(address,PF_UNSPEC, SOCK_STREAM, &ai)) != 0)
            throw torrent::input_error("Could not bind address: " + std::string(rak::address_info::strerror(err)) + ".");
  
          saPtr = ai->address();
-diff -Nur rtorrent-tar/src/command_peer.cc rtorrent-tar-ipv6/src/command_peer.cc
---- rtorrent-tar/src/command_peer.cc	2014-05-15 02:30:51.000000000 +1200
-+++ rtorrent-tar-ipv6/src/command_peer.cc	2014-07-04 10:45:16.990399678 +1200
-@@ -69,7 +69,13 @@
+diff --git a/src/command_peer.cc b/src/command_peer.cc
+index 0cf103b..0b0e7a6 100644
+--- a/src/command_peer.cc
++++ b/src/command_peer.cc
+@@ -69,7 +69,12 @@ retrieve_p_id_html(torrent::Peer* peer) {
  
  torrent::Object
  retrieve_p_address(torrent::Peer* peer) {
 -  return rak::socket_address::cast_from(peer->peer_info()->socket_address())->address_str();
 +  const rak::socket_address *addr = rak::socket_address::cast_from(peer->peer_info()->socket_address());
-+#ifdef RAK_USE_INET6
++
 +  if (addr->family() == rak::socket_address::af_inet6)
 +    return "[" + addr->address_str() + "]";
 +  else
-+#endif
-+  return addr->address_str();
++    return addr->address_str();
  }
  
  torrent::Object
-diff -Nur rtorrent-tar/src/core/curl_get.cc rtorrent-tar-ipv6/src/core/curl_get.cc
---- rtorrent-tar/src/core/curl_get.cc	2014-05-15 02:30:51.000000000 +1200
-+++ rtorrent-tar-ipv6/src/core/curl_get.cc	2014-07-04 10:45:16.990399678 +1200
-@@ -91,8 +91,13 @@
+diff --git a/src/core/curl_get.cc b/src/core/curl_get.cc
+index 3179b73..30e461b 100644
+--- a/src/core/curl_get.cc
++++ b/src/core/curl_get.cc
+@@ -91,9 +91,13 @@ CurlGet::start() {
    curl_easy_setopt(m_handle, CURLOPT_NOSIGNAL,       (long)1);
    curl_easy_setopt(m_handle, CURLOPT_FOLLOWLOCATION, (long)1);
    curl_easy_setopt(m_handle, CURLOPT_MAXREDIRS,      (long)5);
@@ -364,184 +401,187 @@ diff -Nur rtorrent-tar/src/core/curl_get.cc rtorrent-tar-ipv6/src/core/curl_get.
 +  curl_easy_setopt(m_handle, CURLOPT_IPRESOLVE,      CURL_IPRESOLVE_WHATEVER);
 +
    curl_easy_setopt(m_handle, CURLOPT_ENCODING,       "");
-+#ifdef RAK_USE_INET6
-+  m_ipv6 = false;
-+#endif
  
++  m_ipv6 = false;
++
    m_stack->add_get(this);
  }
-@@ -110,6 +115,17 @@
-   m_handle = NULL;
+ 
+@@ -111,6 +115,17 @@ CurlGet::close() {
  }
  
-+#ifdef RAK_USE_INET6
-+void
+ void
 +CurlGet::retry_ipv6() {
 +  CURL* nhandle = curl_easy_duphandle(m_handle);
++
 +  curl_easy_setopt(nhandle, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V6);
 +  curl_easy_cleanup(m_handle);
++
 +  m_handle = nhandle;
 +  m_ipv6 = true;
 +}
-+#endif
 +
- void
++void
  CurlGet::receive_timeout() {
    return m_stack->transfer_done(m_handle, "Timed out");
-diff -Nur rtorrent-tar/src/core/curl_get.h rtorrent-tar-ipv6/src/core/curl_get.h
---- rtorrent-tar/src/core/curl_get.h	2013-08-27 02:17:56.000000000 +1200
-+++ rtorrent-tar-ipv6/src/core/curl_get.h	2014-07-04 10:45:16.990399678 +1200
-@@ -57,6 +57,10 @@
- 
+ }
+diff --git a/src/core/curl_get.h b/src/core/curl_get.h
+index 88339c8..4ecedb9 100644
+--- a/src/core/curl_get.h
++++ b/src/core/curl_get.h
+@@ -58,6 +58,9 @@ public:
    void               start();
    void               close();
-+#ifdef RAK_USE_INET6
+ 
 +  bool               is_using_ipv6()    { return m_ipv6; }
 +  void               retry_ipv6();
-+#endif
- 
++
    bool               is_busy() const    { return m_handle; }
    bool               is_active() const  { return m_active; }
-@@ -75,6 +79,9 @@
+ 
+@@ -75,6 +78,7 @@ private:
    void               receive_timeout();
  
    bool               m_active;
-+#ifdef RAK_USE_INET6
 +  bool               m_ipv6;
-+#endif
  
    rak::priority_item m_taskTimeout;
    
-diff -Nur rtorrent-tar/src/core/curl_stack.cc rtorrent-tar-ipv6/src/core/curl_stack.cc
---- rtorrent-tar/src/core/curl_stack.cc	2014-05-15 02:30:51.000000000 +1200
-+++ rtorrent-tar-ipv6/src/core/curl_stack.cc	2014-07-04 10:45:16.990399678 +1200
-@@ -131,6 +131,20 @@
+diff --git a/src/core/curl_stack.cc b/src/core/curl_stack.cc
+index e220fcc..05b628e 100644
+--- a/src/core/curl_stack.cc
++++ b/src/core/curl_stack.cc
+@@ -132,8 +132,23 @@ CurlStack::process_done_handle() {
    if (msg->msg != CURLMSG_DONE)
      throw torrent::internal_error("CurlStack::receive_action() msg->msg != CURLMSG_DONE.");
  
-+#ifdef RAK_USE_INET6
-+        if (msg->data.result == CURLE_COULDNT_RESOLVE_HOST) {
-+          iterator itr = std::find_if(begin(), end(), rak::equal(msg->easy_handle, std::mem_fun(&CurlGet::handle)));
+-  transfer_done(msg->easy_handle,
+-                msg->data.result == CURLE_OK ? NULL : curl_easy_strerror(msg->data.result));
++  if (msg->data.result == CURLE_COULDNT_RESOLVE_HOST) {
++    iterator itr = std::find_if(begin(), end(), rak::equal(msg->easy_handle, std::mem_fun(&CurlGet::handle)));
++ 
++    if (itr == end())
++      throw torrent::internal_error("Could not find CurlGet when calling CurlStack::receive_action.");
++ 
++    if (!(*itr)->is_using_ipv6()) {
++      (*itr)->retry_ipv6();
 +
-+          if (itr == end())
-+            throw torrent::internal_error("Could not find CurlGet when calling CurlStack::receive_action.");
++      if (curl_multi_add_handle((CURLM*)m_handle, (*itr)->handle()) > 0)
++        throw torrent::internal_error("Error calling curl_multi_add_handle.");
++    }
 +
-+          if (!(*itr)->is_using_ipv6()) {
-+            (*itr)->retry_ipv6();
-+            if (curl_multi_add_handle((CURLM*)m_handle, (*itr)->handle()) > 0)
-+              throw torrent::internal_error("Error calling curl_multi_add_handle.");
-+          }
-+        } else
-+#endif
-   transfer_done(msg->easy_handle,
-                 msg->data.result == CURLE_OK ? NULL : curl_easy_strerror(msg->data.result));
++  } else {
++    transfer_done(msg->easy_handle,
++                  msg->data.result == CURLE_OK ? NULL : curl_easy_strerror(msg->data.result));
++  }
  
-diff -Nur rtorrent-tar/src/core/manager.cc rtorrent-tar-ipv6/src/core/manager.cc
---- rtorrent-tar/src/core/manager.cc	2014-05-15 02:30:51.000000000 +1200
-+++ rtorrent-tar-ipv6/src/core/manager.cc	2014-07-04 10:45:16.990399678 +1200
-@@ -223,7 +223,13 @@
+   return remaining_msgs != 0;
+ }
+diff --git a/src/core/manager.cc b/src/core/manager.cc
+index 2c2bd3b..b00fe6d 100644
+--- a/src/core/manager.cc
++++ b/src/core/manager.cc
+@@ -228,7 +228,8 @@ Manager::set_bind_address(const std::string& addr) {
    int err;
    rak::address_info* ai;
  
-+
-+#ifdef RAK_USE_INET6
+-  if ((err = rak::address_info::get_address_info(addr.c_str(), PF_INET, SOCK_STREAM, &ai)) != 0)
 +  if ((err = rak::address_info::get_address_info(addr.c_str(), PF_INET, SOCK_STREAM, &ai)) != 0 &&
 +      (err = rak::address_info::get_address_info(addr.c_str(), PF_INET6, SOCK_STREAM, &ai)) != 0)
-+#else
-   if ((err = rak::address_info::get_address_info(addr.c_str(), PF_INET, SOCK_STREAM, &ai)) != 0)
-+#endif
      throw torrent::input_error("Could not set bind address: " + std::string(rak::address_info::strerror(err)) + ".");
    
    try {
-@@ -257,7 +263,12 @@
+@@ -262,7 +263,8 @@ Manager::set_local_address(const std::string& addr) {
    int err;
    rak::address_info* ai;
  
-+#ifdef RAK_USE_INET6
+-  if ((err = rak::address_info::get_address_info(addr.c_str(), PF_INET, SOCK_STREAM, &ai)) != 0)
 +  if ((err = rak::address_info::get_address_info(addr.c_str(), PF_INET, SOCK_STREAM, &ai)) != 0 &&
 +      (err = rak::address_info::get_address_info(addr.c_str(), PF_INET6, SOCK_STREAM, &ai)) != 0)
-+#else
-   if ((err = rak::address_info::get_address_info(addr.c_str(), PF_INET, SOCK_STREAM, &ai)) != 0)
-+#endif
      throw torrent::input_error("Could not set local address: " + std::string(rak::address_info::strerror(err)) + ".");
    
    try {
-diff -Nur rtorrent-tar/src/display/window_peer_list.cc rtorrent-tar-ipv6/src/display/window_peer_list.cc
---- rtorrent-tar/src/display/window_peer_list.cc	2012-01-19 23:18:01.000000000 +1300
-+++ rtorrent-tar-ipv6/src/display/window_peer_list.cc	2014-07-04 10:45:16.990399678 +1200
-@@ -68,7 +68,11 @@
+diff --git a/src/display/window_peer_list.cc b/src/display/window_peer_list.cc
+index db3fbba..aa1701d 100644
+--- a/src/display/window_peer_list.cc
++++ b/src/display/window_peer_list.cc
+@@ -68,7 +68,7 @@ WindowPeerList::redraw() {
    int x = 2;
    int y = 0;
  
 -  m_canvas->print(x, y, "IP");     x += 16;
-+#ifdef RAK_USE_INET6
 +  m_canvas->print(x, y, "IP");      x += 25;
-+#else
-+  m_canvas->print(x, y, "IP");      x += 16;
-+#endif
    m_canvas->print(x, y, "UP");      x += 7;
    m_canvas->print(x, y, "DOWN");    x += 7;
    m_canvas->print(x, y, "PEER");    x += 7;
-@@ -99,10 +103,21 @@
+@@ -99,10 +99,16 @@ WindowPeerList::redraw() {
  
      x = 0;
  
 +    std::string ip_address = rak::socket_address::cast_from(p->address())->address_str();
-+#ifdef RAK_USE_INET6
++
 +    if (ip_address.size() >= 24) {
 +      ip_address.replace(ip_address.begin() + 21, ip_address.end(), "...");
 +    }
-+#endif
 +
      m_canvas->print(x, y, "%c %s",
                      range.first == *m_focus ? '*' : ' ',
 -                    rak::socket_address::cast_from(p->address())->address_str().c_str());
+-    x += 18;
 +                    ip_address.c_str());
-+#ifdef RAK_USE_INET6
 +    x += 27;
-+#else
-     x += 18;
-+#endif
  
      m_canvas->print(x, y, "%.1f", (double)p->up_rate()->rate() / 1024); x += 7;
      m_canvas->print(x, y, "%.1f", (double)p->down_rate()->rate() / 1024); x += 7;
-diff -Nur rtorrent-tar/src/utils/socket_fd.cc rtorrent-tar-ipv6/src/utils/socket_fd.cc
---- rtorrent-tar/src/utils/socket_fd.cc	2012-01-19 23:18:01.000000000 +1300
-+++ rtorrent-tar-ipv6/src/utils/socket_fd.cc	2014-07-04 10:45:16.990399678 +1200
-@@ -71,6 +71,11 @@
+diff --git a/src/main.cc b/src/main.cc
+index 5f4e2c3..99ac1e7 100644
+--- a/src/main.cc
++++ b/src/main.cc
+@@ -273,6 +273,7 @@ main(int argc, char** argv) {
+ 
+        "method.set_key = event.download.resumed,   !_timestamp, ((d.timestamp.started.set_if_z, ((system.time)) ))\n"
+        "method.set_key = event.download.finished,  !_timestamp, ((d.timestamp.finished.set_if_z, ((system.time)) ))\n"
++       "method.set_key = event.download.hash_done, !_timestamp, {(branch,((d.complete)),((d.timestamp.finished.set_if_z,(system.time))))}\n"
+ 
+        "method.insert.c_simple = group.insert_persistent_view,"
+        "((view.add,((argument.0)))),((view.persistent,((argument.0)))),((group.insert,((argument.0)),((argument.0))))\n"
+diff --git a/src/utils/socket_fd.cc b/src/utils/socket_fd.cc
+index 338519d..e30594d 100644
+--- a/src/utils/socket_fd.cc
++++ b/src/utils/socket_fd.cc
+@@ -71,7 +71,10 @@ SocketFd::set_priority(priority_type p) {
    check_valid();
    int opt = p;
  
-+#ifdef RAK_USE_INET6
+-  return setsockopt(m_fd, IPPROTO_IP, IP_TOS, &opt, sizeof(opt)) == 0;
 +  if (m_ipv6_socket)
 +    return setsockopt(m_fd, IPPROTO_IPV6, IPV6_TCLASS, &opt, sizeof(opt)) == 0;
 +  else
-+#endif
-   return setsockopt(m_fd, IPPROTO_IP, IP_TOS, &opt, sizeof(opt)) == 0;
++    return setsockopt(m_fd, IPPROTO_IP, IP_TOS, &opt, sizeof(opt)) == 0;
  }
  
-@@ -130,12 +135,36 @@
+ bool
+@@ -130,12 +133,30 @@ SocketFd::get_error() const {
  
  bool
  SocketFd::open_stream() {
-+#ifdef RAK_USE_INET6
+-  return (m_fd = socket(rak::socket_address::pf_inet, SOCK_STREAM, IPPROTO_TCP)) != -1;
 +  m_fd = socket(rak::socket_address::pf_inet6, SOCK_STREAM, IPPROTO_TCP);
++
 +  if (m_fd == -1) {
 +    m_ipv6_socket = false;
 +    return (m_fd = socket(rak::socket_address::pf_inet, SOCK_STREAM, IPPROTO_TCP)) != -1;
 +  }
++
 +  m_ipv6_socket = true;
 +
 +  int zero = 0;
 +  return setsockopt(m_fd, IPPROTO_IPV6, IPV6_V6ONLY, &zero, sizeof(zero)) != -1;
-+#else
-   return (m_fd = socket(rak::socket_address::pf_inet, SOCK_STREAM, IPPROTO_TCP)) != -1;
-+#endif
  }
  
  bool
  SocketFd::open_datagram() {
-+#ifdef RAK_USE_INET6
+-  return (m_fd = socket(rak::socket_address::pf_inet, SOCK_DGRAM, 0)) != -1;
 +  m_fd = socket(rak::socket_address::pf_inet6, SOCK_DGRAM, 0);
 +  if (m_fd == -1) {
 +    m_ipv6_socket = false;
@@ -551,48 +591,42 @@ diff -Nur rtorrent-tar/src/utils/socket_fd.cc rtorrent-tar-ipv6/src/utils/socket
 +
 +  int zero = 0;
 +  return setsockopt(m_fd, IPPROTO_IPV6, IPV6_V6ONLY, &zero, sizeof(zero)) != -1;
-+#else
-   return (m_fd = socket(rak::socket_address::pf_inet, SOCK_DGRAM, 0)) != -1;
-+#endif
  }
  
  bool
-@@ -153,6 +182,12 @@
+@@ -153,6 +174,11 @@ bool
  SocketFd::bind(const rak::socket_address& sa) {
    check_valid();
  
-+#ifdef RAK_USE_INET6
 +  if (m_ipv6_socket && sa.family() == rak::socket_address::pf_inet) {
 +    rak::socket_address_inet6 sa_mapped = sa.sa_inet()->to_mapped_address();
 +    return !::bind(m_fd, sa_mapped.c_sockaddr(), sizeof(sa_mapped));
 +  }
-+#endif
++
    return !::bind(m_fd, sa.c_sockaddr(), sa.length());
  }
  
-@@ -160,6 +195,12 @@
+@@ -160,6 +186,11 @@ bool
  SocketFd::bind(const rak::socket_address& sa, unsigned int length) {
    check_valid();
  
-+#ifdef RAK_USE_INET6
 +  if (m_ipv6_socket && sa.family() == rak::socket_address::pf_inet) {
 +    rak::socket_address_inet6 sa_mapped = sa.sa_inet()->to_mapped_address();
 +    return !::bind(m_fd, sa_mapped.c_sockaddr(), sizeof(sa_mapped));
 +  }
-+#endif
++
    return !::bind(m_fd, sa.c_sockaddr(), length);
  }
  
-@@ -167,10 +208,34 @@
+@@ -167,10 +198,31 @@ bool
  SocketFd::connect(const rak::socket_address& sa) {
    check_valid();
  
-+#ifdef RAK_USE_INET6
 +  if (m_ipv6_socket && sa.family() == rak::socket_address::pf_inet) {
 +    rak::socket_address_inet6 sa_mapped = sa.sa_inet()->to_mapped_address();
 +    return !::connect(m_fd, sa_mapped.c_sockaddr(), sizeof(sa_mapped)) || errno == EINPROGRESS;
 +  }
-+#endif
++
    return !::connect(m_fd, sa.c_sockaddr(), sa.length()) || errno == EINPROGRESS;
  }
  
@@ -605,11 +639,9 @@ diff -Nur rtorrent-tar/src/utils/socket_fd.cc rtorrent-tar-ipv6/src/utils/socket
 +    return false;
 +  }
 +
-+#ifdef RAK_USE_INET6
 +  if (m_ipv6_socket && sa->family() == rak::socket_address::af_inet6) {
 +    *sa = sa->sa_inet6()->normalize_address();
 +  }
-+#endif
 +
 +  return true;
 +}
@@ -618,11 +650,11 @@ diff -Nur rtorrent-tar/src/utils/socket_fd.cc rtorrent-tar-ipv6/src/utils/socket
  SocketFd::listen(int size) {
    check_valid();
  
-@@ -182,7 +247,18 @@
+@@ -182,7 +234,14 @@ SocketFd::accept(rak::socket_address* sa) {
    check_valid();
    socklen_t len = sizeof(rak::socket_address);
  
-+#ifdef RAK_USE_INET6
+-  return SocketFd(::accept(m_fd, sa != NULL ? sa->c_sockaddr() : NULL, &len));
 +  if (sa == NULL) {
 +    return SocketFd(::accept(m_fd, NULL, &len));
 +  }
@@ -631,16 +663,14 @@ diff -Nur rtorrent-tar/src/utils/socket_fd.cc rtorrent-tar-ipv6/src/utils/socket
 +    *sa = sa->sa_inet6()->normalize_address();
 +  }
 +  return SocketFd(fd);
-+#else
-   return SocketFd(::accept(m_fd, sa != NULL ? sa->c_sockaddr() : NULL, &len));
-+#endif
  }
  
  // unsigned int
-diff -Nur rtorrent-tar/src/utils/socket_fd.h rtorrent-tar-ipv6/src/utils/socket_fd.h
---- rtorrent-tar/src/utils/socket_fd.h	2012-01-19 23:18:01.000000000 +1300
-+++ rtorrent-tar-ipv6/src/utils/socket_fd.h	2014-07-04 10:45:16.990399678 +1200
-@@ -80,6 +80,7 @@
+diff --git a/src/utils/socket_fd.h b/src/utils/socket_fd.h
+index 1376653..6010182 100644
+--- a/src/utils/socket_fd.h
++++ b/src/utils/socket_fd.h
+@@ -80,6 +80,7 @@ public:
    bool                bind(const rak::socket_address& sa);
    bool                bind(const rak::socket_address& sa, unsigned int length);
    bool                connect(const rak::socket_address& sa);
@@ -648,13 +678,11 @@ diff -Nur rtorrent-tar/src/utils/socket_fd.h rtorrent-tar-ipv6/src/utils/socket_
  
    bool                listen(int size);
    SocketFd            accept(rak::socket_address* sa);
-@@ -91,6 +92,9 @@
+@@ -91,6 +92,7 @@ private:
    inline void         check_valid() const;
  
    int                 m_fd;
-+#ifdef RAK_USE_INET6
 +  bool                m_ipv6_socket;
-+#endif
  };
  
  }

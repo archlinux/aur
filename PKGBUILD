@@ -6,7 +6,7 @@
 _pkgname=rtorrent
 pkgname=rtorrent-ipv6
 pkgver=0.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Ncurses BitTorrent client based on libTorrent, with IPv6 patch'
 url='http://rakshasa.github.io/rtorrent/'
 license=('GPL')
@@ -15,13 +15,13 @@ depends=('libtorrent=0.13.4' 'curl' 'xmlrpc-c' 'libsigc++')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 source=("https://github.com/rakshasa/${_pkgname}/archive/${pkgver}.tar.gz"
-        "rtorrent-0.9.4_ipv6.patch")
+        "${_pkgname}-ipv6.patch")
 sha1sums=('c1f0b27425f6b025db550cf5ce1997a16af6ff7b'
-          'aba9a7edf277924ec3e45317122d5a84c646ac36')
+          'bcf7b6b330517b3d577309d52d03395c938d878b')
 
 build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
-    patch -uNp1 -i "${srcdir}/${_pkgname}-${pkgver}_ipv6.patch"
+    patch -uNp1 -i "${srcdir}/${_pkgname}-ipv6.patch"
 	sed '/AM_PATH_CPPUNIT/d' -i configure.ac
 	./autogen.sh
 

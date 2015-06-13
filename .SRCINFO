@@ -1,7 +1,7 @@
 pkgbase = rtorrent-ipv6
 	pkgdesc = Ncurses BitTorrent client based on libTorrent, with IPv6 patch
 	pkgver = 0.9.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://rakshasa.github.io/rtorrent/
 	arch = i686
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = rtorrent-ipv6
 	provides = rtorrent
 	conflicts = rtorrent
 	source = https://github.com/rakshasa/rtorrent/archive/0.9.4.tar.gz
-	source = rtorrent-0.9.4_ipv6.patch
+	source = rtorrent-ipv6.patch
 	sha1sums = c1f0b27425f6b025db550cf5ce1997a16af6ff7b
-	sha1sums = aba9a7edf277924ec3e45317122d5a84c646ac36
+	sha1sums = bcf7b6b330517b3d577309d52d03395c938d878b
 
 pkgname = rtorrent-ipv6
 
