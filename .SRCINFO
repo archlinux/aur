@@ -1,0 +1,17 @@
+pkgbase = libqxt
+	pkgdesc = provides a suite of cross-platform utility classes to add functionality not readily available in the Qt toolkit
+	pkgver = 0.6.2
+	pkgrel = 4
+	url = http://www.libqxt.org
+	arch = i686
+	arch = x86_64
+	license = CPL
+	depends = qt4
+	depends = openssl
+	depends = db
+	optdepends = avahi
+	source = http://bitbucket.org/libqxt/libqxt/get/v0.6.2.tar.bz2
+	md5sums = a859a1757dc0aaf010df1a0783e3e001
+
+pkgname = libqxt
+
