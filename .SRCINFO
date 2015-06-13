@@ -1,0 +1,13 @@
+pkgbase = fortune-mod-discworld
+	pkgdesc = Fortune cookies from the "Discworld" novels by Terry Pratchett.
+	pkgver = 0
+	pkgrel = 3
+	url = http://www.splitbrain.org/projects/fortunes/discworld
+	arch = any
+	license = copyright
+	depends = fortune-mod
+	source = http://www.splitbrain.org/_media/projects/fortunes/fortune-discworld.tgz
+	md5sums = 4e00763163ae6ca76f7f23e435edbe08
+
+pkgname = fortune-mod-discworld
+
