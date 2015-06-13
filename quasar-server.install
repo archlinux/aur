@@ -1,0 +1,110 @@
+
+
+pre_install() {
+  # Add the quasar group
+  line=$(grep quasar /etc/group)
+  if [ "$line" == "" ]; then
+      groupadd quasar >/dev/null 2>/dev/null
+  fi
+
+  # Add the quasar user
+  line=$(grep quasar /etc/passwd)
+  if [ "$line" == "" ]; then
+      useradd -g quasar -d /opt/quasar -s /bin/bash -c Quasar quasar 2>/dev/null
+  fi
+}
+
+
+post_install() {
+  # check if postgresql is configured
+  # it configured the database as ASCII even though my local is set to UTF-8
+  if [ ! "$(ls -A /var/lib/postgres/data)" ]; then
+      su - postgres -c "initdb --locale en_US.UTF-8 -E UTF8 -D '/var/lib/postgres/data'"
+  fi
+
+  # If PostgreSQL is installed, try to start it
+  [ $(systemctl is-enabled postgresql) = 'disabled' ] && systemctl enable postgresql
+  [ $(systemctl is-active postgresql) = 'inactive' ] && systemctl start postgresql
+
+  # Create a "quasar" user/role
+  if [ -x /usr/bin/createuser ]; then
+      su - postgres -c "/usr/bin/createuser -s quasar"
+      if [ $? != 0 ]; then
+	  su - postgres -c "/usr/bin/createuser -a -d quasar"
+      fi
+  fi
+
+  # Generate the postgresql.cfg file
+  if [ ! -e /opt/quasar/config/postgresql.cfg ]; then
+  # Figure out library location
+      if [ -e /usr/lib64/libpq.so ]; then
+	  PQ_LIB=/usr/lib64/libpq.so
+      elif [ -e /usr/lib/libpq.so ]; then
+	  PQ_LIB=/usr/lib/libpq.so
+      else
+	  FILES=$(ls /usr/lib64/libpq.so* 2>/dev/null)
+	  if [ $? = 0 ]; then
+	      PQ_LIB=$(ls /usr/lib64/libpq.so* | head -1)
+	  else
+	      FILES=$(ls /usr/lib/libpq.so* 2>/dev/null)
+	      if [ $? = 0 ]; then
+		  PQ_LIB=$(ls /usr/lib/libpq.so* | head -1)
+	      fi
+	  fi
+      fi
+
+      # Write PostgreSQL config file
+      echo -e "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE PostgresqlConfig>\n<PostgresqlConfig>\n <hostname></hostname>\n <port>5432</port>\n <library>$PQ_LIB</library>\n <dbaUsername>quasar</dbaUsername>\n <dbaPassword></dbaPassword>\n <username>quasar</username>\n <password></password>\n <charSet>UNICODE</charSet>\n</PostgresqlConfig>" >/opt/quasar/config/postgresql.cfg
+      chmod 640 /opt/quasar/config/postgresql.cfg
+  fi
+
+  # Create log file directory
+  if [ ! -e /var/log/quasar ]; then
+      mkdir /var/log/quasar
+  fi
+  # Set ownership
+  chown -R quasar:quasar /var/log/quasar
+  chown -R quasar:quasar /opt/quasar
+
+  # Create the xinetd.d entry
+  if [ ! -e /etc/xinetd.d/quasard ]; then
+      echo -e "service quasard\n{\n        type = UNLISTED\n        flags = KEEPALIVE NODELAY\n        socket_type = stream\n        port = 3599\n        wait = yes\n        user = quasar\n        group = quasar\n        instances = UNLIMITED\n        server = /opt/quasar/bin/quasard\n        server_args = -xinetd\n#       server_args = -xinetd -debug\n        disable = no\n}\n" >/etc/xinetd.d/quasard
+  fi
+
+  # check if xinetd is enabled
+  if [ $(systemctl is-enabled xinetd) = 'disabled' ]; then
+      systemctl enable xinetd
+      systemctl start xinetd
+  fi
+  
+  # Restart xinetd so it finds the new entries
+  if [ $(systemctl is-active xinetd) = 'active' ]; then
+      systemctl restart xinetd
+  else
+      echo "Error: missing /etc/init.d/xinetd script so xinetd is"
+      echo "likely not installed.  You need to install xinetd to"
+      echo "use Quasar"
+  fi
+}
+
+
+pre_remove() {
+  # Remove xinetd.d entries
+  if [ -e /etc/xinetd.d/quasard ]; then
+      rm /etc/xinetd.d/quasard
+  fi
+
+  # Restart xinetd so it forgets about quasar entries
+  if [ $(systemctl is-active xinetd) = 'active' ]; then
+      systemctl restart xinetd
+  fi
+
+  # Shut down quasard
+  /usr/bin/killall -q quasard
+}
+
+
+post_remove() {
+  # Delete the log files
+  rm -rf /var/log/quasar
+}
