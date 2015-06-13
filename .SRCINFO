@@ -1,0 +1,15 @@
+pkgbase = ttf-lacartoonerie
+	pkgdesc = Fancy cartoon style font created by laCartoonerie.com.
+	pkgver = 2007.04.23
+	pkgrel = 1
+	url = http://www.lacartoonerie.com/
+	install = ttf.install
+	arch = any
+	license = Free for personal use
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://img.dafont.com/dl/?f=lacartoonerie
+	md5sums = f9088e1f2881edced5d4f3fbe8bb27f0
+
+pkgname = ttf-lacartoonerie
+
