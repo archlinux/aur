@@ -1,0 +1,16 @@
+pkgbase = vim-command-t
+	pkgdesc = an extremely fast, intuitive mechanism for opening files and buffers with a minimal number of keystrokes
+	pkgver = 1.11.4
+	pkgrel = 1
+	url = https://wincent.com/products/command-t
+	install = vimdoc.install
+	arch = i686
+	arch = x86_64
+	groups = vim-plugins
+	license = BSD
+	depends = vim
+	depends = ruby
+	source = https://github.com/wincent/Command-T/archive/1.11.4.tar.gz
+
+pkgname = vim-command-t
+

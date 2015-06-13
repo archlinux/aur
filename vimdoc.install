@@ -1,0 +1,20 @@
+## arg 1:  the new package version
+post_install() {
+  printf "%s" "Updating vim help tags..."
+  usr/bin/vim --noplugins -u NONE -U NONE \
+    --cmd ":helptags /usr/share/vim/vimfiles/doc" --cmd ":q" > /dev/null 2>&1
+  printf "%s\n" "done."
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  post_install "$1"
+}
+
+## arg 1:  the old package version
+post_remove() {
+  post_install
+}
+
+# vim:set ts=2 sw=2 et:
