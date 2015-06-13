@@ -1,0 +1,15 @@
+pkgbase = cube-perf
+	pkgdesc = Performance report explorer for displaying a multi-dimensional performance space.
+	pkgver = 4.3.1
+	pkgrel = 1
+	url = http://www.scalasca.org/software/cube-4.x/download.html
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = qt4
+	options = !makeflags
+	source = http://apps.fz-juelich.de/scalasca/releases/cube/4.3/dist/cube-4.3.1.tar.gz
+	sha1sums = 5fa473a02a4aa37bf813e26f2b66066fccfb332f
+
+pkgname = cube-perf
+
