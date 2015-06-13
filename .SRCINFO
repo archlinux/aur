@@ -1,0 +1,17 @@
+pkgbase = pure-readline
+	pkgdesc = A simple interface to the GNU readline and BSD editline libraries for Pure
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://purelang.bitbucket.org/
+	arch = i686
+	arch = x86_64
+	groups = pure-complete
+	groups = pure-util
+	license = custom
+	depends = pure
+	depends = readline
+	source = https://bitbucket.org/purelang/pure-lang/downloads/pure-readline-0.3.tar.gz
+	sha1sums = ddf4f591b5f8ec9ed7c87509b7c9e4570843eb6a
+
+pkgname = pure-readline
+
