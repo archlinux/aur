@@ -1,0 +1,15 @@
+pkgbase = nd-git
+	pkgdesc = A network diagnostics utility
+	pkgver = 20110401
+	pkgrel = 1
+	url = https://github.com/benruijl/nd
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	depends = iproute2
+	depends = dnsutils
+	depends = diffutils
+
+pkgname = nd-git
+
