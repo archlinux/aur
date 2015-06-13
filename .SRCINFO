@@ -1,0 +1,16 @@
+pkgbase = celestia-addon-vaders_tie_fighter
+	pkgdesc = Celestia addon: Fictional: Star Wars: Vader's Tie fighter
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.celestiamotherlode.net/catalog/show_addon_details.php?addon_id=164
+	arch = any
+	license = unknown, free
+	makedepends = unzip
+	depends = celestia
+	depends = celestia-addon-tatooine_endor_deathstar
+	conflicts = celestia-addon-vaders-tie-fighter
+	source = http://celestiamotherlode.net/creators/jestr/SW-VaderTie.zip
+	md5sums = 878b01a99a206795283c7aced408d93e
+
+pkgname = celestia-addon-vaders_tie_fighter
+
