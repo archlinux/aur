@@ -1,0 +1,15 @@
+pkgbase = mbelib
+	pkgdesc = Voice codecs for P25, ProVoice, Half Rate
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = https://github.com/szechyjs/mbelib
+	arch = i686
+	arch = x86_64
+	license = custom:copyright
+	makedepends = cmake
+	depends = glibc
+	source = https://github.com/szechyjs/mbelib/archive/v1.2.5.tar.gz
+	md5sums = 6a609b494a4dfff281a4a6605a3b406f
+
+pkgname = mbelib
+
