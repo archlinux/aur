@@ -1,4 +1,4 @@
-# Maintainer: vmalloc support@cyborg-connect.de
+# Maintainer: vmalloc vmalloc@cyborg-connect.de
 pkgname=cisco-regex
 pkgver=0.92
 pkgrel=00
