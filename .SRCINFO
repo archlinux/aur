@@ -1,0 +1,15 @@
+pkgbase = python-pyftpdlib
+	pkgdesc = Python FTP server library
+	pkgver = 1.4.0
+	pkgrel = 3
+	url = https://github.com/giampaolo/pyftpdlib
+	arch = any
+	license = MIT
+	depends = python
+	optdepends = python-pyopenssl: required for SSL/TLS connections
+	optdepends = python-pysendfile: required for using the sendfile() call
+	source = https://github.com/giampaolo/pyftpdlib/archive/release-1.4.0.tar.gz
+	md5sums = 43ef0dd20d65443d296dc27f128a6998
+
+pkgname = python-pyftpdlib
+
