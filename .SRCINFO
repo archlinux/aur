@@ -1,0 +1,23 @@
+pkgbase = perl-json-any
+	pkgdesc = Wrapper Class for the various JSON classes.
+	pkgver = 1.38
+	pkgrel = 1
+	url = http://search.cpan.org/dist/JSON-Any
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-fatal
+	makedepends = perl-test-requires
+	makedepends = perl-test-warnings>=0.009
+	makedepends = perl-test-without-module
+	depends = perl-json>=2.02
+	depends = perl-json-xs>=2.3
+	depends = perl-yaml-syck
+	depends = perl-namespace-clean
+	options = !emptydirs
+	source = http://cpan.metacpan.org/authors/id/E/ET/ETHER/JSON-Any-1.38.tar.gz
+	md5sums = 8f86b73f560a964d022e9198dc13110e
+	sha512sums = ad847fe9b8787c467536873d7f5061a74d4d6d5488ba053dca1c677c98e69349027ab1734601e8334f1c1c20ee0952754d2562a00694bbd0eb65dee8c333f4d4
+
+pkgname = perl-json-any
+
