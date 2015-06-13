@@ -1,4 +1,4 @@
-# Maintainer: Philipp Claßen <philipp.classen@gmx.net>
+# Maintainer: Philipp Claßen <philipp.classen@posteo.de>
 pkgname=ghost-bin
 pkgver=2_0_2
 pkgrel=1
