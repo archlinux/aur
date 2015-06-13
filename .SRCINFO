@@ -1,0 +1,19 @@
+pkgbase = revbayes-git
+	pkgdesc = bayesian phylogenetic inference using probabilistic graphical models and an interpreted language
+	pkgver = r4177.93b7c7c
+	pkgrel = 1
+	url = https://github.com/revbayes/revbayes
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = boost
+	makedepends = cmake
+	makedepends = git
+	depends = gcc-libs
+	provides = revbayes
+	conflicts = revbayes
+	source = revbayes-git::git+https://github.com/revbayes/revbayes
+	md5sums = SKIP
+
+pkgname = revbayes-git
+
