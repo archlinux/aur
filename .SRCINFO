@@ -1,0 +1,22 @@
+pkgbase = pandoc-cabal
+	pkgdesc = Conversion between markup formats (cabal sandbox build)
+	pkgver = 1.14.0.4
+	pkgrel = 1
+	url = http://johnmacfarlane.net/pandoc/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = ghc
+	makedepends = cabal-install>=1.18
+	makedepends = happy
+	makedepends = alex
+	optdepends = pandoc-citeproc: automatic generation of citations and bibliographies
+	provides = pandoc=1.14.0.4
+	conflicts = pandoc
+	conflicts = haskell-pandoc
+	options = !makeflags
+	source = http://hackage.haskell.org/package/pandoc-1.14.0.4/pandoc-1.14.0.4.tar.gz
+	md5sums = 03eef88935f7940a2f403559966b92df
+
+pkgname = pandoc-cabal
+
