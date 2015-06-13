@@ -1,0 +1,16 @@
+pkgbase = zapm
+	pkgdesc = A science fiction roguelike, Nethack in space.
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = http://zapm.org/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = ncurses
+	source = http://zapm.org/zapm-0.8.1.linux.tar.gz
+	source = launcher
+	md5sums = c0f10ad593be7c22d6da336cf8de9cbc
+	md5sums = bf4b75ae17d4c95fabcda50bae47fa80
+
+pkgname = zapm
+
