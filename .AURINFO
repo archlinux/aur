@@ -1,0 +1,12 @@
+pkgbase = soundfont-generaluser
+	pkgdesc = A small and well balanced GM/GS soundbank for many styles of music.
+	pkgver = 1.44
+	pkgrel = 1
+	url = http://www.schristiancollins.com/generaluser.php
+	arch = any
+	groups = soundfonts
+	license = custom
+	source = http://www.schristiancollins.com/soundfonts/GeneralUser_GS_1.44-FluidSynth.zip
+
+pkgname = soundfont-generaluser
+
