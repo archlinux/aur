@@ -1,0 +1,15 @@
+pkgbase = pure-meta-graphics
+	pkgdesc = Pure programming language, graphics package -- interfaces for graphics and GUI programming
+	pkgver = 1
+	pkgrel = 1
+	url = http://purelang.bitbucket.org/
+	arch = any
+	groups = pure-meta
+	license = custom
+	depends = pure-g2
+	depends = pure-gl
+	depends = pure-gtk
+	depends = pure-tk
+
+pkgname = pure-meta-graphics
+
