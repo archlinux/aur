@@ -11,7 +11,7 @@ pkgbase = python-dockerpty-git
 	depends = python-six
 	provides = python-dockerpty
 	conflicts = python-dockerpty
-	source = python-dockerpty::git+https://github.com/d11wtq/dockerpty.git
+	source = dockerpty::git+https://github.com/d11wtq/dockerpty.git
 	sha512sums = SKIP
 
 pkgname = python-dockerpty-git

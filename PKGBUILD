@@ -1,5 +1,5 @@
 pkgname=('python-dockerpty-git')
-srcname='python-dockerpty'
+srcname='dockerpty'
 pkgver='r1'
 pkgrel='1'
 pkgdesc='Pseudo-tty handler for docker Python client'
