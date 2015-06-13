@@ -1,0 +1,15 @@
+pkgbase = mongo_fdw
+	pkgdesc = PostgreSQL foreign data wrapper for MongoDB
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://github.com/citusdata/mongo_fdw
+	install = mongo_fdw.install
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	depends = postgresql
+	source = https://github.com/citusdata/mongo_fdw/archive/v3.0.tar.gz
+	md5sums = c2b9267c21199852ddd1989d447fd413
+
+pkgname = mongo_fdw
+
