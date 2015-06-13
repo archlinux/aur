@@ -1,0 +1,20 @@
+pkgbase = perl-ppix-regexp
+	pkgdesc = Represent a regular expression of some sort
+	pkgver = 0.037
+	pkgrel = 1
+	url = https://metacpan.org/release/PPIx-Regexp
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	depends = perl-list-moreutils
+	depends = perl-params-util
+	depends = perl-readonly
+	depends = perl-task-weaken
+	depends = perl-ppi
+	options = !emptydirs
+	source = http://cpan.metacpan.org/authors/id/W/WY/WYANT/PPIx-Regexp-0.037.tar.gz
+	sha256sums = f68d88c008e6a6f2b438048e9c3cfe3cfab3225ba8b55ed3cf07f7161702ef37
+
+pkgname = perl-ppix-regexp
+
