@@ -1,0 +1,7 @@
+post_install() {
+	echo --------------------------------------------------------------------------------
+	echo "For personalised settings, copy /etc/alan/tree.conf to ~/.config/alan/tree.conf"
+	echo "If you don't have Gnome installed then: hide_settings_menus = True"
+	echo "otherwise an error will be shown in the Applications menu."
+	echo --------------------------------------------------------------------------------
+}

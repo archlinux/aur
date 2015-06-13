@@ -1,0 +1,23 @@
+pkgbase = alan-bzr
+	pkgdesc = Openbox menu framework. Comes by default with Semplice linux.
+	pkgver = 113
+	pkgrel = 1
+	epoch = 1
+	url = https://launchpad.net/alan
+	install = alan.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = bzr
+	depends = python2
+	depends = gnome-menus2
+	provides = alan
+	conflicts = alan
+	backup = etc/alan/tree.conf
+	source = alan::bzr+http://bazaar.launchpad.net/~semplice-devs/alan/trunk/
+	source = bzr+http://bazaar.launchpad.net/~semplice-devs/semplice/laiv-setup/
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = alan-bzr
+
