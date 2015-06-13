@@ -1,0 +1,14 @@
+pkgbase = iat
+	pkgdesc = Detects and converts DVD/CD images from BIN/MDF/PDI/CDI/NRG/B5I to ISO-9660
+	pkgver = 0.1.7
+	pkgrel = 4
+	url = http://iat.berlios.de/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = glibc
+	source = http://www.mirrorservice.org/sites/download.sourceforge.net/pub/sourceforge/i/project/ia/iat.berlios/iat-0.1.7.tar.bz2
+	md5sums = 5e1ffd82000ea4c80ffb2d63ae55120c
+
+pkgname = iat
+
