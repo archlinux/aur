@@ -1,0 +1,13 @@
+pkgbase = vim-ferm
+	pkgdesc = Vim syntax highlighting for ferm scripts
+	pkgver = 0.04
+	pkgrel = 2
+	url = http://www.vim.org/scripts/script.php?script_id=4390
+	arch = any
+	license = unknown
+	depends = vim-runtime
+	source = vim-ferm-0.04.zip::http://www.vim.org/scripts/download_script.php?src_id=19344
+	md5sums = 467b4869bd8f0454e17089e294c70f82
+
+pkgname = vim-ferm
+
