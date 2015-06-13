@@ -1,0 +1,12 @@
+pkgbase = words-insane
+	pkgdesc = A really big wordlist with 670k entries, based on SCOWL.
+	pkgver = 7.1
+	pkgrel = 1
+	url = http://wordlist.sourceforge.net/
+	arch = any
+	license = custom:copyright
+	source = http://downloads.sourceforge.net/wordlist/scowl-7.1.tar.gz
+	md5sums = 49f3ad788f94c8c0008398f5d284771b
+
+pkgname = words-insane
+
