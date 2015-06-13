@@ -1,0 +1,13 @@
+--- game/game.1.c    2010-12-22 20:33:14.000000000 +0100
++++ game/game.c      2013-11-28 00:22:58.405945051 +0100
+@@ -2052,8 +2052,8 @@
+         if (( CAM_TURN_GOOD == PCamera->turn_mode && 1 == local_numlpla ) ||
+             !control_is_pressed( INPUT_DEVICE_KEYBOARD, CONTROL_CAMERA ) )
+         {
+-            joy_pos.x = ( control_is_pressed( INPUT_DEVICE_KEYBOARD,  CONTROL_RIGHT ) - control_is_pressed( INPUT_DEVICE_KEYBOARD,  CONTROL_LEFT ) );
+-            joy_pos.y = ( control_is_pressed( INPUT_DEVICE_KEYBOARD,  CONTROL_DOWN ) - control_is_pressed( INPUT_DEVICE_KEYBOARD,  CONTROL_UP ) );
++            joy_pos.x = ( (int)control_is_pressed( INPUT_DEVICE_KEYBOARD,  CONTROL_RIGHT ) - (int)control_is_pressed( INPUT_DEVICE_KEYBOARD,  CONTROL_LEFT ) );
++            joy_pos.y = ( (int)control_is_pressed( INPUT_DEVICE_KEYBOARD,  CONTROL_DOWN ) - (int)control_is_pressed( INPUT_DEVICE_KEYBOARD,  CONTROL_UP ) );
+ 
+             if ( CAM_TURN_GOOD == PCamera->turn_mode &&
+                  1 == local_numlpla )  joy_pos.x = 0;

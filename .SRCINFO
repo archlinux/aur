@@ -1,0 +1,26 @@
+pkgbase = egoboo
+	pkgdesc = An action RPG/dungeon crawling adventure with OpenGL 3D graphics.
+	pkgver = 2.8.1
+	pkgrel = 5
+	url = http://egoboo.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = sdl_ttf
+	depends = physfs
+	depends = enet
+	depends = mesa
+	conflicts = egoboo-data
+	source = http://downloads.sourceforge.net/egoboo/egoboo-2.8.1.tar.gz
+	source = keyboard_directions.patch
+	source = egoboo.png
+	source = egoboo.desktop
+	md5sums = e6f3130695d297dcd9fe74e50bd59b68
+	md5sums = d3eea226065d9a244b59cd960c5c8878
+	md5sums = 7019f17b607fd45acf0d48ade746326a
+	md5sums = b81e0c8f3e0b9d8640d0cfc9b6d320a8
+
+pkgname = egoboo
+
