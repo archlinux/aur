@@ -1,0 +1,13 @@
+pkgbase = python2-googl-hg
+	pkgdesc = Simple python wrapper for the goo.gl api
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://code.google.com/p/python-googl/
+	arch = any
+	license = MIT
+	depends = python2
+	source = python-googl::hg+http://code.google.com/p/python-googl/
+	md5sums = SKIP
+
+pkgname = python2-googl-hg
+

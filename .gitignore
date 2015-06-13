@@ -1,0 +1,7 @@
+## Ignore everything
+*.zip
+*.xz
+*.gz
+*.bz2
+*.7z
+*/*
