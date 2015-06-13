@@ -1,0 +1,20 @@
+pkgbase = gnocl-builder
+	pkgdesc = Tcl/GTK+ bindings, GnoclBuilder module
+	pkgver = 0.9.96+20130128
+	pkgrel = 1
+	url = http://www.gnocl.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gnocl
+	depends = tcl
+	depends = gtk2
+	depends = libglade
+	depends = libgnomeui
+	source = https://launchpad.net/~dr-graef/+archive/gnocl.precise/+files/gnocl-builder_0.9.96+20130128.orig.tar.bz2
+	source = gnocl-builder-0.9.96+20130128.patch
+	md5sums = d5ae4c3fd45554be4840e0434e544445
+	md5sums = a3b9f8373b60c75bf112ff07d47388ce
+
+pkgname = gnocl-builder
+

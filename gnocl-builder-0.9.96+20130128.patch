@@ -1,0 +1,235 @@
+diff -rupN gnoclBuilder-0.9.96.orig/README gnoclBuilder-0.9.96/README
+--- gnoclBuilder-0.9.96.orig/README	2013-01-28 17:35:52.000000000 +0100
++++ gnoclBuilder-0.9.96/README	2013-09-09 23:57:24.658402302 +0200
+@@ -2,8 +2,8 @@
+ OVERVIEW
+ ---------------------------------------------------------------------------------------------------------
+ 
+-Gnocl::SpellCheck is a Tcl binding to the gtkspellcheck library. It provides a
+-general purpose spellchecker extension for the gnocl::text widget.
++Gnocl::Builder is a Tcl binding to the Glade and GtkBuilder libraries. It lets
++you construct GTK user interfaces created with the Glade GUI builder.
+ 
+ ---------------------------------------------------------------------------------------------------------
+ DEPENDENCIES
+diff -rupN gnoclBuilder-0.9.96.orig/demo/buttontest-builder.tcl gnoclBuilder-0.9.96/demo/buttontest-builder.tcl
+--- gnoclBuilder-0.9.96.orig/demo/buttontest-builder.tcl	1970-01-01 01:00:00.000000000 +0100
++++ gnoclBuilder-0.9.96/demo/buttontest-builder.tcl	2013-09-09 23:57:24.658402302 +0200
+@@ -0,0 +1,16 @@
++
++package require Gnocl
++package require GnoclBuilder
++
++set widgets [gnocl::builder file buttontest.builder]
++
++foreach item $widgets {
++    foreach {gnocl glade} $item {}
++    set $glade $gnocl
++}
++
++$window1 configure -onDestroy {exit}
++$button1 configure -onClicked {puts "Hi there!"}
++
++$window1 show
++gnocl::mainLoop
+diff -rupN gnoclBuilder-0.9.96.orig/demo/buttontest-glade.tcl gnoclBuilder-0.9.96/demo/buttontest-glade.tcl
+--- gnoclBuilder-0.9.96.orig/demo/buttontest-glade.tcl	1970-01-01 01:00:00.000000000 +0100
++++ gnoclBuilder-0.9.96/demo/buttontest-glade.tcl	2013-09-09 23:57:24.658402302 +0200
+@@ -0,0 +1,16 @@
++
++package require Gnocl
++package require GnoclBuilder
++
++set widgets [gnocl::glade file buttontest.glade]
++
++foreach item $widgets {
++    foreach {gnocl glade} $item {}
++    set $glade $gnocl
++}
++
++$window1 configure -onDestroy {exit}
++$button1 configure -onClicked {puts "Hi there!"}
++
++$window1 show
++gnocl::mainLoop
+diff -rupN gnoclBuilder-0.9.96.orig/demo/buttontest.builder gnoclBuilder-0.9.96/demo/buttontest.builder
+--- gnoclBuilder-0.9.96.orig/demo/buttontest.builder	1970-01-01 01:00:00.000000000 +0100
++++ gnoclBuilder-0.9.96/demo/buttontest.builder	2013-09-09 23:57:24.658402302 +0200
+@@ -0,0 +1,14 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<interface>
++  <requires lib="gtk+" version="2.24"/>
++  <!-- interface-naming-policy project-wide -->
++  <object class="GtkWindow" id="window1">
++    <property name="default_width">200</property>
++    <property name="default_height">100</property>
++    <child>
++      <object class="GtkButton" id="button1">
++        <property name="label" translatable="yes">Hello</property>
++      </object>
++    </child>
++  </object>
++</interface>
+diff -rupN gnoclBuilder-0.9.96.orig/demo/buttontest.glade gnoclBuilder-0.9.96/demo/buttontest.glade
+--- gnoclBuilder-0.9.96.orig/demo/buttontest.glade	1970-01-01 01:00:00.000000000 +0100
++++ gnoclBuilder-0.9.96/demo/buttontest.glade	2013-09-09 23:57:24.658402302 +0200
+@@ -0,0 +1,14 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<glade-interface>
++  <!-- interface-requires gtk+ 2.24 -->
++  <!-- interface-naming-policy project-wide -->
++  <widget class="GtkWindow" id="window1">
++    <property name="default_width">200</property>
++    <property name="default_height">100</property>
++    <child>
++      <widget class="GtkButton" id="button1">
++        <property name="label" translatable="yes">Hello</property>
++      </widget>
++    </child>
++  </widget>
++</glade-interface>
+diff -rupN gnoclBuilder-0.9.96.orig/demo/buttontest.tcl gnoclBuilder-0.9.96/demo/buttontest.tcl
+--- gnoclBuilder-0.9.96.orig/demo/buttontest.tcl	1970-01-01 01:00:00.000000000 +0100
++++ gnoclBuilder-0.9.96/demo/buttontest.tcl	2013-09-09 23:57:24.658402302 +0200
+@@ -0,0 +1,11 @@
++
++package require Gnocl
++
++set button1 [gnocl::button -text "Hello"]
++set window1 [gnocl::window -defaultWidth 200 -defaultHeight 100 -child $button1]
++
++$window1 configure -onDestroy {exit}
++$button1 configure -onClicked {puts "Hi there!"}
++
++$window1 show
++gnocl::mainLoop
+diff -rupN gnoclBuilder-0.9.96.orig/src/Makefile gnoclBuilder-0.9.96/src/Makefile
+--- gnoclBuilder-0.9.96.orig/src/Makefile	2013-01-28 17:35:52.000000000 +0100
++++ gnoclBuilder-0.9.96/src/Makefile	2013-09-09 23:57:24.658402302 +0200
+@@ -11,7 +11,7 @@ DEVELOPER_NAME := wjgiddings
+ PROJECT_NAME := gnocl
+ UPLOAD_PATH := g/gn/gnocl/Gnocl-Nightly-Build/0.9.96
+ 
+-PACKAGE_NAME := gnoclSpellCheck
++PACKAGE_NAME := gnoclBuilder
+ PACKAGE_REQUIRE_NAME := GnoclBuilder
+ VERSION := 0.9.96
+ SUFFIX  :=
+@@ -27,12 +27,16 @@ ADDCFLAGS := -DVERSION=\"$(VERSION)\" \
+     -I/usr/include/libglade-2.0 \
+     -I/usr/local/include
+ 
+-LIBS := $(shell pkg-config \
+-    --libs gtk+-2.0 libglade-2.0) \
+-    -ltclstub$(TCL_VERSION) -lgnocl-$(GNOCL_VERSION)
++#LIBS := $(shell pkg-config \
++#    --libs gtk+-2.0 libglade-2.0) \
++#    -ltclstub$(TCL_VERSION) -lgnocl-$(GNOCL_VERSION)
++
++LIBS := /usr/lib/tcl8.6/gnocl$(GNOCL_VERSION)/gnocl.so \
++    $(shell pkg-config --libs gtk+-2.0 libglade-2.0) \
++    -ltclstub$(TCL_VERSION)
+ 
+ GTK_OBJ := \
+-   gnoclSpellCheck.o
++   gnoclBuilder.o
+ 
+ 
+ EXCLFILES := -name "CVS" -o -name ".??*" -o -name "qqq*"
+@@ -53,10 +57,10 @@ clean:
+ 	rm -f $(GTK_OBJ) $(PACKAGE_NAME).so
+ 
+ install:
+-	./install.tcl $(PACKAGE_REQUIRE_NAME) $(VERSION) $(PACKAGE_NAME) install
++	./install.tcl $(PACKAGE_REQUIRE_NAME) $(VERSION) $(PACKAGE_NAME) install $(DESTDIR)
+ 
+ uninstall:
+-	./install.tcl $(PACKAGE_REQUIRE_NAME) $(VERSION) $(PACKAGE_NAME) uninstall
++	./install.tcl $(PACKAGE_REQUIRE_NAME) $(VERSION) $(PACKAGE_NAME) uninstall $(DESTDIR)
+ 
+ test:
+ 	( \
+diff -rupN gnoclBuilder-0.9.96.orig/src/gnoclBuilder.c gnoclBuilder-0.9.96/src/gnoclBuilder.c
+--- gnoclBuilder-0.9.96.orig/src/gnoclBuilder.c	2013-01-28 17:35:52.000000000 +0100
++++ gnoclBuilder-0.9.96/src/gnoclBuilder.c	2013-09-09 23:57:24.661735636 +0200
+@@ -33,7 +33,7 @@ int Gnoclbuilder_Init ( Tcl_Interp *inte
+ {
+ 
+ #ifdef DEBUG_BUILDER
+-	printf ( "Initializing gnocl bindings to GtkSpell libraries, version %s\n", VERSION );
++	printf ( "Initializing gnocl bindings to GtkBuilder libraries, version %s\n", VERSION );
+ #endif
+ 
+ 	if ( Tcl_InitStubs ( interp, "8.3", 0 ) == NULL )
+@@ -395,12 +395,10 @@ int setGtkWidgetFunc ( Tcl_Interp *inter
+ 					char		*align;
+ 					GtkAlignment *alignment;
+ 				*/
+-				g_print ( "HERE\n" );
+ 
+ 				proc = buttonFunc;
+ 
+ 				Tcl_CreateObjCommand ( interp, para->name, proc, para, NULL );
+-				g_print ( "THERE\n" );
+ 			}
+ 			break;
+ 		case GtkCheckButtonIdx:
+diff -rupN gnoclBuilder-0.9.96.orig/src/install.tcl gnoclBuilder-0.9.96/src/install.tcl
+--- gnoclBuilder-0.9.96.orig/src/install.tcl	2013-01-28 17:35:52.000000000 +0100
++++ gnoclBuilder-0.9.96/src/install.tcl	2013-09-09 23:57:49.051736981 +0200
+@@ -36,13 +36,13 @@ proc date { {i date} } {
+ }
+ 
+ # error checking
+-if { $argc != 4 } {
++if { $argc < 4 || $argc > 5 } {
+    set name [file tail $argv0]
+    error "Wrong number of args.\nUsage: $name package version install/uninstall"
+ }
+ 
+ # get parameters
+-foreach {package version name what} $argv { break }
++foreach {package version name what dest} $argv { break }
+ 
+ # get installation directory
+ set dir [info library]
+@@ -51,7 +51,7 @@ set dir [info library]
+ set destDir [file join $dir $name$version]
+ switch -- $what {
+    "install"   {
+-       if { [file exists $destDir] } {
++       if { [file exists $dest$destDir] } {
+            puts "$destDir exists already. Aborting installation."
+            exit -1
+            }
+@@ -70,20 +70,20 @@ switch -- $what {
+            puts $fp "package ifneeded $package $version \[list load \[file join \$dir $name.so\]\]"
+            close $fp
+            puts "Creating $destDir"
+-           file mkdir $destDir
++           file mkdir $dest$destDir
+            set files [glob *.so]
+            lappend files pkgIndex.tcl
+            foreach file $files {
+                puts "Copying $file"
+-               file copy $file $destDir
+-               }
+-        }
++               file copy $file $dest$destDir
++	   }
++   }
+    "uninstall" {
+-                  puts "Deleting $destDir"
+-                  file delete -force $destDir
+-               }
+-   default     {
+-                  error "unknown type \"$what\" must be install, test or uninstall"
+-               }
++       puts "Deleting $destDir"
++       file delete -force $dest$destDir
++   }
++   default {
++       error "unknown type \"$what\" must be install, test or uninstall"
++   }
+ }
+ 
