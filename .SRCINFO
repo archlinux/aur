@@ -1,0 +1,18 @@
+pkgbase = gkrellm-themes
+	pkgdesc = Themes from muhri.net for GKrellM
+	pkgver = 20030109
+	pkgrel = 1
+	url = http://www.muhri.net/gkrellm/
+	arch = any
+	license = GPL
+	depends = gkrellm
+	options = !emptydirs
+	options = !strip
+	options = libtool
+	options = staticlibs
+	options = !zipman
+	source = http://www.muhri.net/gkrellm/GKrellM-Skins.tar.gz
+	sha256sums = a0d2d00410cc2290df6c89cba9a204a0592e8c18ba9e13e967dbf021937d30d1
+
+pkgname = gkrellm-themes
+
