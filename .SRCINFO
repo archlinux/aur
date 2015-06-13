@@ -1,0 +1,15 @@
+pkgbase = mbrola-voices-bz1
+	pkgdesc = A Breton female voice for the MBROLA synthesizer
+	pkgver = 980116
+	pkgrel = 2
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-bz
+	groups = mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/bz1/bz1-980116.zip
+	md5sums = c5aa8870c07fc07a0c2282c6b5c36505
+
+pkgname = mbrola-voices-bz1
+
