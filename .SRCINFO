@@ -1,0 +1,21 @@
+pkgbase = i3lock-color-scale-git
+	pkgdesc = An improved screenlocker based upon XCB and PAM with color configuration and image scaling support
+	pkgver = 20120807
+	pkgrel = 1
+	url = https://github.com/kunev/i3lock-color-scale
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = xcb-util-image
+	depends = xcb-util-keysyms
+	depends = pam
+	depends = libev
+	depends = libx11
+	depends = cairo
+	provides = i3lock
+	conflicts = i3lock
+	conflicts = i3lock-git
+
+pkgname = i3lock-color-scale-git
+
