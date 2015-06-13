@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=Ryzom
+Type=Application
+GenericName=ryzom
+Comment=Ryzom
+Exec=/usr/bin/ryzom
+Icon=/usr/share/ryzom/data/ryzom.png
+Terminal=false
+Hidden=false
+Categories=Game;RolePlaying;
