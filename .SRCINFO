@@ -1,7 +1,7 @@
 pkgbase = pngcheck
 	pkgdesc = Verifies the integrity of PNG, JNG and MNG files by checking the CRCs and decompressing the image data
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.libpng.org/pub/png/apps/pngcheck.html
 	arch = i686
 	arch = x86_64
