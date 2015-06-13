@@ -1,0 +1,14 @@
+pkgbase = clockywock
+	pkgdesc = Analog clock, with alarm and color, for command line.
+	pkgver = 0.3.1a
+	pkgrel = 1
+	url = http://soomka.com/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = ncurses
+	source = http://soomka.com/clockywock-0.3.1a.tar.gz
+	md5sums = 8423ff1b7056dd12ddcf00fb63d96b60
+
+pkgname = clockywock
+
