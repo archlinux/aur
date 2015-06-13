@@ -1,0 +1,16 @@
+pkgbase = pure-doc
+	pkgdesc = A simple source documentation and literate programming utility for Pure
+	pkgver = 0.7
+	pkgrel = 1
+	url = http://purelang.bitbucket.org/
+	arch = i686
+	arch = x86_64
+	groups = pure-complete
+	groups = pure-util
+	license = GPL3
+	depends = pure
+	source = https://bitbucket.org/purelang/pure-lang/downloads/pure-doc-0.7.tar.gz
+	sha1sums = d4efdc05bf1bd835bc861ac21bff490bc4fba102
+
+pkgname = pure-doc
+
