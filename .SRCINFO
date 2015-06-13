@@ -1,0 +1,17 @@
+pkgbase = celestia-addon-deep_impact_spacecraft
+	pkgdesc = Celestia addon: Spacecraft: Other: Deep Impact Spacecraft
+	pkgver = 1
+	pkgrel = 2
+	url = http://www.celestiamotherlode.net/catalog/show_addon_details.php?addon_id=22
+	arch = any
+	license = unknown, free
+	makedepends = unzip
+	depends = celestia
+	conflicts = celestia-addon-deep-impact-spacecraft
+	source = http://celestiamotherlode.net/creators/jackhiggins/deepimpact_impactormodel.zip
+	source = http://celestiamotherlode.net/creators/jackhiggins/deepimpact_impactor.zip
+	md5sums = 0cd6cb849b2b6dc15ce7f103f8a959dc
+	md5sums = 2d33062963ca8c521016112887d43474
+
+pkgname = celestia-addon-deep_impact_spacecraft
+
