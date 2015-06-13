@@ -1,0 +1,18 @@
+pkgbase = legend-of-kyrandia-1
+	pkgdesc = A classic adventure game from Abandonia, played in ScummVM.
+	pkgver = 1.0
+	pkgrel = 7
+	url = http://www.abandonia.com/en/games/88/Legend+of+Kyrandia+1,+The.html
+	install = kyrandia1.install
+	arch = any
+	license = custom-freeware
+	license = Abandonware
+	depends = scummvm
+	optdepends = abandonia-menu
+	source = http://files.abandonia.com/download.php?game=Legend+of+Kyrandia+1%2C+The&secure=ae25b70ce9dc58743433d6dbfc2a706e&td=1297713450
+	source = http://scummvm.svn.sourceforge.net/svnroot/scummvm/scummvm/tags/release-1-2-1/dists/engine-data/kyra.dat
+	md5sums = a83967cfda7dbc1ad88512876305f742
+	md5sums = a81223603341f8c59285753e91665e2f
+
+pkgname = legend-of-kyrandia-1
+
