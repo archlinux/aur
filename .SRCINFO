@@ -1,0 +1,18 @@
+pkgbase = perl-class-method-modifiers
+	pkgdesc = provides Moose-like method modifiers
+	pkgver = 2.11
+	pkgrel = 2
+	url = http://search.cpan.org/dist/Class-Method-Modifiers
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-fatal
+	makedepends = perl-test-requires
+	depends = perl
+	options = !emptydirs
+	source = http://cpan.metacpan.org/authors/id/E/ET/ETHER/Class-Method-Modifiers-2.11.tar.gz
+	md5sums = c6982e9e89325713d5afaff82cfe1744
+	sha512sums = 668efc01207034f850d411936fc4e5b6900030710a25dda46cb6c5d6d8e081d0d37327945f1bf17e7cda34add1b33e5be3bc7c37b28eeab6a2275d0fbefd9285
+
+pkgname = perl-class-method-modifiers
+
