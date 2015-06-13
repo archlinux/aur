@@ -1,0 +1,16 @@
+pkgbase = mbrola-voices-br1
+	pkgdesc = A Brazilian Portuguese male voice for the MBROLA synthesizer
+	pkgver = 971105
+	pkgrel = 5
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-br
+	groups = mbrola-voices
+	groups = gespeaker-mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/br1/br1-971105.zip
+	md5sums = c027c1b1bc08b247bc9267b3cb44cc2f
+
+pkgname = mbrola-voices-br1
+
