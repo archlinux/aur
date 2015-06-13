@@ -1,0 +1,13 @@
+pkgbase = netwag
+	pkgdesc = GUI for a kit of 222 network tools.
+	pkgver = 5.39.0
+	pkgrel = 1
+	url = http://www.laurentconstantin.com/en/netw/netwag/
+	arch = any
+	license = GPL
+	depends = netwox=5.39.0
+	depends = tk
+	source = http://sourceforge.net/projects/ntwag/files/netwag/5.39/netwag-5.39.0-src.tgz
+
+pkgname = netwag
+
