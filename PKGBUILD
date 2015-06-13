@@ -23,6 +23,7 @@ package() {
 	rm $pkgdir/usr/share/ogar/Launch.bat
 	rm $pkgdir/usr/share/ogar/src/Start.bat
 	rm $pkgdir/usr/share/ogar/.gitignore
+	chmod -R 755 $pkgdir/usr/share/ogar
 
 	install -Dm 644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 
