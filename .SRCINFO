@@ -1,0 +1,20 @@
+pkgbase = pronounce-git
+	pkgdesc = A command line interface for English words pronunciation
+	pkgver = v1.1.0.1.gd18cb7f
+	pkgrel = 1
+	url = https://github.com/momeni/pronounce
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = ffmpeg
+	depends = wget
+	depends = coreutils
+	optdepends = w3m: viewing definition of words in w3m; a CLI browser
+	optdepends = firefox: viewing definition of words in Mozilla Firefox
+	provides = pronounce
+	conflicts = pronounce
+	source = git+https://github.com/momeni/pronounce.git
+	sha256sums = SKIP
+
+pkgname = pronounce-git
+
