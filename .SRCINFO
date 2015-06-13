@@ -1,0 +1,20 @@
+pkgbase = trimage-git
+	pkgdesc = A GUI based lossless image compressor.
+	pkgver = 20110928
+	pkgrel = 1
+	url = http://trimage.org
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python2-pyqt
+	depends = optipng
+	depends = advancecomp
+	depends = jpegoptim
+	depends = pngcrush
+	provides = trimage
+	conflicts = trimage
+	source = git://github.com/Kilian/Trimage.git
+	md5sums = SKIP
+
+pkgname = trimage-git
+
