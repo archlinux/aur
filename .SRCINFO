@@ -1,0 +1,19 @@
+pkgbase = pure-gtk
+	pkgdesc = A collection of bindings to use the GTK+ 2.x with Pure
+	pkgver = 0.13
+	pkgrel = 1
+	url = http://purelang.bitbucket.org/
+	arch = i686
+	arch = x86_64
+	groups = pure-complete
+	groups = pure-graphics
+	license = LGPL3
+	makedepends = pure-gen
+	depends = pure
+	depends = gtk2
+	depends = pure-ffi
+	source = https://bitbucket.org/purelang/pure-lang/downloads/pure-gtk-0.13.tar.gz
+	sha1sums = 8792a79539c52a4e55e9787aa99da379b5544eab
+
+pkgname = pure-gtk
+
