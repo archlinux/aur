@@ -1,0 +1,20 @@
+pkgbase = aster
+	pkgdesc = Code-Aster
+	pkgver = 11.7.0
+	pkgrel = 1
+	url = http://www.code-aster.org/
+	install = aster.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2
+	depends = astk>=1.13.4
+	depends = metis4
+	depends = med>=3.0.7
+	depends = mumps>=4.10.0-7
+	options = !strip
+	source = http://www.code-aster.org/FICHIERS/aster-full-src-11.7.0-1.noarch.tar.gz
+	md5sums = 469a89d443d8a7ea6d95a2e5671628a8
+
+pkgname = aster
+
