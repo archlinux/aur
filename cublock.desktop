@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Cublock
+GenericName=3D tetris
+Comment=Java implementation of 3D tetris like game, similar to Blockout a generalized version of the original game
+Exec=cublock
+Icon=/usr/share/pixmaps/cublock.xpm
+Type=Application
+Terminal=false
+Categories=Application;Game
