@@ -1,0 +1,17 @@
+pkgbase = yaffs2utils-svn
+	pkgdesc = A collection of utilities to make/extract a YAFFS2/YAFFS1 image for Linux.
+	pkgver = 51
+	pkgrel = 1
+	url = http://code.google.com/p/yaffs2utils
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = svn
+	makedepends = gcc
+	depends = glibc
+	conflicts = yaffs2utils-latest
+	conflicts = yaffs2utils
+	options = strip
+
+pkgname = yaffs2utils-svn
+
