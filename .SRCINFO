@@ -1,0 +1,15 @@
+pkgbase = waffles
+	pkgdesc = Comprehensive collection of CLI tools for machine learning and data mining.
+	pkgver = 2013.04.06
+	pkgrel = 1
+	url = http://waffles.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = libpng
+	depends = gcc-libs
+	source = http://downloads.sourceforge.net/project/waffles/waffles/2013-04-06/waffles-2013-04-06-source.zip
+	md5sums = 1f0db8fb278014dcca3fdf90a1b6022c
+
+pkgname = waffles
+
