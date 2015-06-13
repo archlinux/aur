@@ -1,0 +1,25 @@
+pkgbase = jaziku-devel
+	pkgdesc = Jaziku is statistical inference software for the teleconnections analysis
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://hg.ideam.gov.co:8000/meteorologia/jaziku/summary
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	depends = python2
+	depends = python2-distribute
+	depends = python2-scipy
+	depends = python2-dateutil
+	depends = python2-matplotlib
+	depends = python2-numpy
+	depends = python2-pillow
+	depends = python2-clint
+	depends = imagemagick
+	depends = hpgl
+	depends = ncl
+	depends = dos2unix
+	source = https://docs.google.com/uc?id=0B2KQf7Dbx7DUakRMcEM3WUstMFE&export=download
+	md5sums = 2c33714ec0494b8a2624c0d00f0add16
+
+pkgname = jaziku-devel
+
