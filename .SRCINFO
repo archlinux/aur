@@ -1,7 +1,7 @@
 pkgbase = fs2-knossos
 	pkgdesc = A simple mod manager for FreeSpace 2 Open
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ngld/knossos
 	install = fs2-knossos.install
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = fs2-knossos
 	depends = python-six
 	depends = python-requests
 	depends = python-pyside
+	depends = python-semantic-version
 	depends = p7zip
 	depends = openal
 	depends = sdl2
