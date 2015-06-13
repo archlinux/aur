@@ -1,0 +1,15 @@
+pkgbase = plasma-theme-helium
+	pkgdesc = Transparent theme based on air and eleonora. but giving it an extra touch
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = http://kde-look.org/content/show.php/Helium?content=125471
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = kdebase-workspace
+	conflicts = plasma-theme-gremix
+	source = http://kde-look.org/CONTENT/content-files/125471-Helium.tar.xz
+	md5sums = f0a03eaa13b09e19d8f5d75001a8dae1
+
+pkgname = plasma-theme-helium
+
