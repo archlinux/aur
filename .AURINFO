@@ -1,0 +1,16 @@
+pkgbase = pure-csv
+	pkgdesc = A Pure module for reading and writing Comma Separated Value (CSV) files
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://purelang.bitbucket.org/
+	arch = i686
+	arch = x86_64
+	groups = pure-complete
+	groups = pure-web
+	license = custom
+	depends = pure
+	source = https://bitbucket.org/purelang/pure-lang/downloads/pure-csv-1.6.tar.gz
+	sha1sums = 147b736cc81be1d68221104ba16cd276947d9e5b
+
+pkgname = pure-csv
+
