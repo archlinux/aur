@@ -1,0 +1,15 @@
+pkgbase = mxml-dc
+	pkgdesc = An older version of a small XML parsing library for Dreamchess
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = http://www.minixml.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	provides = mxml
+	conflicts = mxml
+	source = http://www.msweet.org/files/project3/mxml-2.2.2.tar.gz
+	md5sums = ef69862ad30ef2fe66457415db5b5ab4
+
+pkgname = mxml-dc
+
