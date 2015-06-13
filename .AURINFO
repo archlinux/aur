@@ -1,0 +1,17 @@
+pkgbase = edelib
+	pkgdesc = Component construction library for Equinox Desktop Environment
+	pkgver = 2.1
+	pkgrel = 1
+	url = http://equinox-project.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = ftjam
+	depends = fltk
+	depends = dbus-core
+	depends = libstdc++5
+	depends = python
+	source = http://downloads.sourceforge.net/project/ede/edelib/2.1/edelib-2.1.tar.gz
+
+pkgname = edelib
+
