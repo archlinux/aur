@@ -3,11 +3,18 @@
 This repository holds instructions for building an Arch Linux package for propieatary
 PKCS #11 driver for CryptoTech smart cards by CryptoTech.
 
-## Building aurball
+## Pushing to AUR
 
-To build a tarball containing all the required files for the AUR use:
+First generate `.SRCINFO` by:
 
 ```
 sudo pacman -S pkgbuild-introspection
-mkaurball
+mksrcinfo
+```
+
+Then push to AUR git repository by:
+
+```
+git remote add aur ssh://aur@aur.archlinux.org/ccpkip11.git
+git push aur
 ```
