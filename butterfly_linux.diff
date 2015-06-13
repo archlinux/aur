@@ -1,0 +1,113 @@
+diff --git a/display_init.c b/display_init.c
+index c6dcd8f..14ffd16 100644
+--- a/display_init.c
++++ b/display_init.c
+@@ -268,6 +268,7 @@ void prepare_circles(void)
+  int i, j;
+ 
+  BITMAP *temp_bitmap;
++ BITMAP *temp_bitmap2;
+ 
+  for (i = 0; i < RLE_BCIRCLES; i ++)
+  {
+@@ -632,38 +633,38 @@ void prepare_circles(void)
+  for (i = 0; i < RLE_RINGS; i ++)
+  {
+   rad = i + 3;
+-  temp_bitmap = new_bitmap((rad + 1) * 2, (rad + 1) * 2, "prepare rings");
+-  clear_bitmap(temp_bitmap);
++  temp_bitmap2 = new_bitmap((rad + 1) * 2, (rad + 1) * 2, "prepare rings");
++  clear_bitmap(temp_bitmap2);
+   //for (j = 0; j < 3; j ++)
+   {
+-   circlefill(temp_bitmap, rad + 1, rad + 1, rad, TRANS_RED1);
+-   circlefill(temp_bitmap, rad + 1, rad + 1, rad - 1, TRANS_RED2);
+-   circlefill(temp_bitmap, rad + 1, rad + 1, rad - 2, TRANS_RED1);
+-   circlefill(temp_bitmap, rad + 1, rad + 1, rad - 3, 0);
++   circlefill(temp_bitmap2, rad + 1, rad + 1, rad, TRANS_RED1);
++   circlefill(temp_bitmap2, rad + 1, rad + 1, rad - 1, TRANS_RED2);
++   circlefill(temp_bitmap2, rad + 1, rad + 1, rad - 2, TRANS_RED1);
++   circlefill(temp_bitmap2, rad + 1, rad + 1, rad - 3, 0);
+ 
+-   RLE_ring [i] = get_rle_sprite(temp_bitmap);
++   RLE_ring [i] = get_rle_sprite(temp_bitmap2);
+   }
+-  destroy_bitmap(temp_bitmap);
++  destroy_bitmap(temp_bitmap2);
+  }
+ 
+ 
+  for (i = 0; i < RLE_RINGS; i ++)
+  {
+   rad = i + 3;
+-  temp_bitmap = new_bitmap((rad + 1) * 2, (rad + 1) * 2, "prepare bright rings");
+-  clear_bitmap(temp_bitmap);
++  temp_bitmap2 = new_bitmap((rad + 1) * 2, (rad + 1) * 2, "prepare bright rings");
++  clear_bitmap(temp_bitmap2);
+   //for (j = 0; j < 3; j ++)
+   {
+-   circlefill(temp_bitmap, rad + 1, rad + 1, rad, TRANS_RED1);
+-   circlefill(temp_bitmap, rad + 1, rad + 1, rad - 1, TRANS_RED2);
+-   circlefill(temp_bitmap, rad + 1, rad + 1, rad - 2, TRANS_RED3);
+-   circlefill(temp_bitmap, rad + 1, rad + 1, rad - 3, TRANS_RED2);
+-   circlefill(temp_bitmap, rad + 1, rad + 1, rad - 4, TRANS_RED1);
+-   circlefill(temp_bitmap, rad + 1, rad + 1, rad - 5, 0);
+-
+-   RLE_bright_ring [i] = get_rle_sprite(temp_bitmap);
++   circlefill(temp_bitmap2, rad + 1, rad + 1, rad, TRANS_RED1);
++   circlefill(temp_bitmap2, rad + 1, rad + 1, rad - 1, TRANS_RED2);
++   circlefill(temp_bitmap2, rad + 1, rad + 1, rad - 2, TRANS_RED3);
++   circlefill(temp_bitmap2, rad + 1, rad + 1, rad - 3, TRANS_RED2);
++   circlefill(temp_bitmap2, rad + 1, rad + 1, rad - 4, TRANS_RED1);
++   circlefill(temp_bitmap2, rad + 1, rad + 1, rad - 5, 0);
++
++   RLE_bright_ring [i] = get_rle_sprite(temp_bitmap2);
+   }
+-  destroy_bitmap(temp_bitmap);
++  destroy_bitmap(temp_bitmap2);
+  }
+ 
+   destroy_bitmap(temp_bitmap);
+diff --git a/input.c b/input.c
+index 956830f..77e65a3 100644
+--- a/input.c
++++ b/input.c
+@@ -4,6 +4,7 @@
+ #include "allegro.h"
+ 
+ #include <math.h>
++#include <stdio.h>
+ 
+ #include "globvars.h"
+ #include "pbullet.h"
+@@ -74,7 +75,6 @@ static int sshot_counter = 0;
+ 
+ 
+  char sfile [20];
+- char istr [20];
+ 
+  if (sshot_counter > 0)
+   sshot_counter --;
+@@ -85,9 +85,7 @@ static int sshot_counter = 0;
+    scrshot_bmp = create_bitmap(600, 600);
+    blit(screen, scrshot_bmp, 100,0,0,0,600,600);
+ 
+-  strcpy(sfile, "sshot");
+-  strcat(sfile, itoa(scrs, istr, 10));
+-  strcat(sfile, ".bmp");
++  sprintf(sfile, "sshot%d.bmp", scrs);
+   save_bitmap(sfile, scrshot_bmp, palet);
+   rectfill(screen, 100, 0, 700, 0, COL_WHITE);
+ //  clear_to_color(screen, COL_WHITE);
+diff --git a/main.c b/main.c
+index 85dfebf..3d6f18c 100644
+--- a/main.c
++++ b/main.c
+@@ -12,6 +12,7 @@ I keep forgetting this and doing it by accident.
+ 
+ #include <string.h>
+ #include <math.h>
++#include <stdio.h>
+ 
+ #include "globvars.h"
+ #include "stuff.h"

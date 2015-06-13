@@ -1,0 +1,20 @@
+pkgbase = whitebutterfly
+	pkgdesc = Wreak destruction through three pastel-shaded shmup stages.
+	pkgver = 1.1
+	pkgrel = 3
+	url = http://www.allegro.cc/depot/WhiteButterfly
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = allegro4
+	source = http://downloads.sourceforge.net/project/whitebutterfly/whitebutterfly/version%201.1/Butterfly_v11_src.zip
+	source = http://downloads.sourceforge.net/project/whitebutterfly/whitebutterfly/version%201.1/Butterfly_v11_win.zip
+	source = butterfly_linux.diff
+	source = whitebutterfly
+	md5sums = d253471dd7c6142354f948b0b7939276
+	md5sums = 2bab11426cc29c11b4b463f0dfb8a990
+	md5sums = 428981b72350dd6c21cbf87a324368cd
+	md5sums = 439b5d3a55341960172c8134f789d439
+
+pkgname = whitebutterfly
+
