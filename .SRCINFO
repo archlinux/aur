@@ -1,0 +1,18 @@
+pkgbase = python2-llfuse
+	pkgdesc = A set of Python bindings for the low level FUSE API.
+	pkgver = 0.40
+	pkgrel = 3
+	url = https://bitbucket.org/nikratio/python-llfuse/
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = pkg-config
+	depends = python2
+	depends = python2-setuptools
+	depends = fuse
+	options = !emptydirs
+	source = https://bitbucket.org/nikratio/python-llfuse/downloads/llfuse-0.40.tar.bz2
+	md5sums = bd8d07ddb6061ab03816e636efa37b5b
+
+pkgname = python2-llfuse
+
