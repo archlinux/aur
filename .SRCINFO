@@ -1,0 +1,17 @@
+pkgbase = flatzebra
+	pkgdesc = A generic game engine for 2D double-buffering animation
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = http://perso.b2b2c.ca/sarrazip/dev/burgerspace.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gcc-libs
+	depends = sdl_image>=1.2
+	depends = sdl_mixer
+	options = !libtool
+	source = http://perso.b2b2c.ca/sarrazip/dev/flatzebra-0.1.6.tar.gz
+	md5sums = 68cbaa37b88de639ceb6e4c46807fc01
+
+pkgname = flatzebra
+
