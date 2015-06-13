@@ -1,0 +1,20 @@
+pkgbase = aster-hg
+	pkgdesc = Code-aster (Mercurial version)
+	pkgver = 3646
+	pkgrel = 1
+	url = http://www.code-aster.org
+	install = aster-hg.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = med
+	depends = metis4
+	depends = python2-numpy
+	depends = qt4
+	depends = mumps>=4.10.0-5
+	options = !strip
+	source = aster::hg+https://bitbucket.org/code_aster/codeaster-src
+	md5sums = SKIP
+
+pkgname = aster-hg
+
