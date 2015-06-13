@@ -1,0 +1,20 @@
+pkgbase = mingw-w64-qt5-quick1
+	pkgdesc = Qt5 for Windows -- QtQuick1 module (mingw-w64)
+	pkgver = 5.4.2
+	pkgrel = 1
+	url = http://qt-project.org/
+	arch = any
+	license = GPL3
+	license = LGPL
+	makedepends = mingw-w64-gcc
+	depends = mingw-w64-qt5-base
+	depends = mingw-w64-qt5-script
+	depends = mingw-w64-qt5-tools
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://download.qt-project.org/official_releases/qt/5.4/5.4.2/submodules/qtquick1-opensource-src-5.4.2.tar.xz
+	md5sums = 8275c3ca1f962905baf1f19310e1b6e4
+
+pkgname = mingw-w64-qt5-quick1
+
