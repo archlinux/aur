@@ -1,0 +1,15 @@
+pkgbase = boost-build-nightly
+	pkgdesc = Boost build system, Nightly build
+	pkgver = 20140102
+	pkgrel = 1
+	url = http://www.boost.org/doc/tools/build/
+	arch = any
+	license = custom:boost
+	depends = lib32-glibc
+	depends = python
+	conflicts = boost-build
+	source = http://www.boost.org/LICENSE_1_0.txt
+	md5sums = e4224ccaecb14d942c71d31bef20d78c
+
+pkgname = boost-build-nightly
+
