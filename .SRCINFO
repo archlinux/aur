@@ -1,0 +1,15 @@
+pkgbase = mbrola-voices-hb1
+	pkgdesc = A Hebrew male voice for the MBROLA synthesizer
+	pkgver = 000308
+	pkgrel = 2
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-hb
+	groups = mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/hb1/hb1-000308.zip
+	md5sums = c702dd7210fdd8225bf79456839c2d6f
+
+pkgname = mbrola-voices-hb1
+
