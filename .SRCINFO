@@ -1,6 +1,6 @@
 pkgbase = discourse
 	pkgdesc = A simple, flat forum, where replies flow down the page in a line
-	pkgver = 1.3.1
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = http://www.discourse.org/
 	install = discourse.install
@@ -35,7 +35,7 @@ pkgbase = discourse
 	optdepends = optipng: needed to do optimizations on stored images
 	backup = etc/webapps/discourse/unicorn.conf.rb
 	backup = etc/webapps/discourse/discourse.conf
-	source = discourse::git+https://github.com/discourse/discourse.git#tag=v1.3.1
+	source = discourse::git+https://github.com/discourse/discourse.git#tag=v1.3.2
 	source = discourse-sidekiq.service
 	source = discourse-unicorn.service
 	source = discourse-kill.service
