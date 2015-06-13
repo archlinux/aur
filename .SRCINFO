@@ -1,0 +1,21 @@
+pkgbase = s3ql
+	pkgdesc = A full-featured file system for online data storage.
+	pkgver = 2.13
+	pkgrel = 1
+	url = https://bitbucket.org/nikratio/s3ql/overview
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	depends = python
+	depends = python-apsw
+	depends = python-crypto
+	depends = python-defusedxml
+	depends = python-dugong>=3.2
+	depends = python-llfuse>=0.40-3
+	depends = python-requests
+	source = https://bitbucket.org/nikratio/s3ql/downloads/s3ql-2.13.tar.bz2
+	md5sums = 361f74730a1bdc6644e4a1ba23d8782b
+
+pkgname = s3ql
+
