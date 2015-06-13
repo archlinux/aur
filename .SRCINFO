@@ -1,0 +1,28 @@
+pkgbase = polly-b-gone-git
+	pkgdesc = 3D physics platform game that tells the story of a plucky wheeled robot named Poll.
+	pkgver = 2013.01.30
+	pkgrel = 1
+	epoch = 1
+	url = http://cs.stanford.edu/people/mbostock/polly/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = sdl_mixer
+	depends = sdl_image
+	depends = freeglut
+	depends = glew
+	depends = libgl
+	depends = tinyxml
+	provides = polly-b-gone
+	conflicts = polly-b-gone
+	source = polly-b-gone.sh
+	source = polly-b-gone.png
+	source = polly-b-gone.desktop
+	source = git://github.com/SanskritFritz/polly-b-gone.git
+	md5sums = 9b1efa13bd8db4bf118a9c688be677f9
+	md5sums = e7d7277f263b4f9c5d6cd0032555f591
+	md5sums = d016d837be0f3317c74833dc8b7fc028
+	md5sums = SKIP
+
+pkgname = polly-b-gone-git
+

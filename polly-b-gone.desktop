@@ -1,0 +1,10 @@
+
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Polly-B-Gone
+GenericName=Polly-B-Gone
+Comment=3D physics platform game that tells the story of a plucky wheeled robot named Poll.
+Exec=/usr/bin/polly-b-gone
+Categories=Game;ArcadeGame;
+Icon=/usr/share/pixmaps/polly-b-gone.png
