@@ -1,0 +1,22 @@
+pkgbase = elvis
+	pkgdesc = A vi clone with optional X support. Stable or beta version.
+	pkgver = 2.2_0
+	pkgrel = 3
+	url = http://elvis.the-little-red-haired-girl.org/
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	depends = glibc
+	depends = ncurses
+	depends = fontconfig
+	depends = expat
+	depends = zlib
+	replaces = elvis_patched-withx
+	replaces = elvis_slack
+	source = http://www.the-little-red-haired-girl.org/pub/elvis/elvis-2.2_0.tar.gz
+	source = http://cvsweb.netbsd.org/bsdweb.cgi/~checkout~/pkgsrc/editors/elvis/patches/patch-ref.c
+	source = http://cvsweb.netbsd.org/bsdweb.cgi/~checkout~/pkgsrc/editors/elvis/patches/patch-ae
+	source = ftp://ftp.slackware.com/pub/slackware/slackware-13.0/source/a/elvis/elvis.clr
+
+pkgname = elvis
+
