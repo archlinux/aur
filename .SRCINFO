@@ -1,0 +1,29 @@
+pkgbase = kphotoalbum-git
+	pkgdesc = KDE Photo Album, picture collection manager - latest git version.
+	pkgver = 2013.10.11
+	pkgrel = 1
+	epoch = 1
+	url = http://www.kphotoalbum.org/
+	install = kphotoalbum.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = kdeedu-marble
+	makedepends = kdemultimedia-mplayerthumbs
+	makedepends = git
+	depends = kdebase-runtime
+	depends = libkipi
+	depends = libkexiv2
+	depends = libkdcraw
+	optdepends = kdeedu-marble: integration with Marble
+	optdepends = kipi-plugins: add extra functionality
+	optdepends = kdemultimedia-mplayerthumbs: video thumbnails
+	provides = kphotoalbum
+	conflicts = kphotoalbum
+	source = kphotoalbum::git://anongit.kde.org/kphotoalbum.git
+	md5sums = SKIP
+
+pkgname = kphotoalbum-git
+
