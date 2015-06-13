@@ -1,0 +1,14 @@
+pkgbase = wmspaceclock
+	pkgdesc = Dockapp showing antialiased analog clock.
+	pkgver = 1.2d
+	pkgrel = 4
+	url = http://wmspaceclock.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	depends = gdk-pixbuf
+	source = http://sourceforge.net/projects/wmspaceclock/files/wmspaceclock/1.2d/spaceclock-1.2d.tar.bz2
+	md5sums = 97bcf9cc8a5518f8b37752beba9a7a9c
+
+pkgname = wmspaceclock
+
