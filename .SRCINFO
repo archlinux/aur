@@ -1,0 +1,18 @@
+pkgbase = gwenrename
+	pkgdesc = GwenRename is a renaming tool. It was created as an external tool for GwenView, but it can be used from Dolphin, Konqueror with service menu or as command line parameters.
+	pkgver = 1.1_beta7
+	pkgrel = 1
+	url = http://www.kde-apps.org/content/show.php/GwenRename?content=11844
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdebase-runtime
+	source = http://members.hellug.gr/sng/gwenrename/gwenrename-1.1-beta7.tar.gz
+	source = patch
+	md5sums = d7cb53880767c1ff6f81e4d171dcd312
+	md5sums = e0f051555da4ea09a5d105ec9f2433c8
+
+pkgname = gwenrename
+

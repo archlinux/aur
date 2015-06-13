@@ -1,0 +1,9 @@
+--- doc/index.docbook	2012-01-03 08:53:03.539828843 -0500
++++ doc/index.docbook.new	2012-01-03 08:43:08.000000000 -0500
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" ?>
+-<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.1.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
++<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
+   <!ENTITY GwenRename "<application>GwenRename 1.1-beta5</application>">
+   <!ENTITY kappname "GwenRename"><!-- Do *not* replace kappname-->
+   <!ENTITY package "playground-utils"><!-- kdebase, kdeadmin, etc -->
