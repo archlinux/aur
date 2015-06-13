@@ -1,0 +1,19 @@
+pkgbase = netctltray
+	pkgdesc = Tray icon to switch netctl profiles.
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/dopefishh/netctl-tray
+	install = netctltray.install
+	arch = any
+	license = custom
+	depends = python
+	depends = python-pyside
+	optdepends = x11-ssh-askpass: Graphical password entry
+	optdepends = sudo: Get permission to run netctl
+	source = netctltray.install
+	source = https://github.com/dopefishh/netctl-tray/archive/0.2a.tar.gz
+	md5sums = 8d4a5c22de4ae9c1c3dcdea32d2359e4
+	md5sums = 74b877fb907b2e74183416e0dfcb17e6
+
+pkgname = netctltray
+

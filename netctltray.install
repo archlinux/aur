@@ -1,0 +1,7 @@
+post_install() {
+	echo "Post install"
+}
+
+post_remove() {
+	echo "Remove"
+}
