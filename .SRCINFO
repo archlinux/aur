@@ -1,0 +1,15 @@
+pkgbase = mbrola-voices-ma1
+	pkgdesc = A Malay female voice for the MBROLA synthesizer
+	pkgver = 1
+	pkgrel = 2
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-ma
+	groups = mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/ma1/ma1.zip
+	md5sums = 3985335d4157d1fb38524c145de5a80d
+
+pkgname = mbrola-voices-ma1
+
