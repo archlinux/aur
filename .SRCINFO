@@ -1,0 +1,32 @@
+pkgbase = ultravnc-viewer
+	pkgdesc = A powerful VNC Client with a lot of features, compatible with Windows' UltraVNC servers
+	pkgver = 1.2.0.5
+	pkgrel = 1
+	url = http://www.uvnc.com
+	install = ultravnc-viewer.install
+	arch = any
+	license = GPL
+	makedepends = unzip
+	depends = wine
+	depends = gtk-update-icon-cache
+	source = http://www.uvnc.eu/download/1205/Uvnc_1205_bin.zip
+	source = ultravnc-viewer
+	source = ultravnc-viewer-16.png
+	source = ultravnc-viewer-24.png
+	source = ultravnc-viewer-32.png
+	source = ultravnc-viewer-48.png
+	source = ultravnc-viewer-256.png
+	source = ultravnc-viewer.desktop
+	source = ultravnc-viewer-listen.desktop
+	sha256sums = b1760a91ca0d53777e65942185f94c5e0a3a5c7f20cb5fd84c2503f2d12d039e
+	sha256sums = 1738d173c1cb89e46207c70fda6a36b7eeea9ba31b469a0cce10bbd9e8deb9b0
+	sha256sums = 5386feaf65fff389db4e4e30950f97d64803815b1e1a219d45bf41c2bde45e21
+	sha256sums = 098876231f8006bb89fc54986175ec6d938fae2c9e4a6dafe9b5c9d36f7fb3a2
+	sha256sums = 48025bb333be1ab9ebf875ced00d98b5701bbd81bad361d34712bc00b2e3c0df
+	sha256sums = 26b29f4a99cc40e3c119eae0f3ae9195d41f57cb2377f1add3e4c771f752aaa2
+	sha256sums = 1106710eab5b5603c15a1c216ad181e60110e8dc17f6442985e24f631b6f5f1b
+	sha256sums = c2a3cb12b9fdbd06fc9faf9907a591d7988233dd5e0046ccba625f5f8b3b367d
+	sha256sums = 6eefe94d1dacc0ca414a1e2ff5cc0fb2c272d3743b39240247000e5d03e6d9f2
+
+pkgname = ultravnc-viewer
+

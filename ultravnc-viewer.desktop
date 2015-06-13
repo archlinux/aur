@@ -1,0 +1,7 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=UltraVNC Viewer
+Type=Application
+Exec=ultravnc-viewer
+Icon=ultravnc-viewer
+Categories=Network;
