@@ -1,6 +1,6 @@
 pkgbase = osc2midi-git
 	pkgdesc = OSC2MIDI is a highly configurable OSC to jack MIDI (and back) bridge for linux (git version)
-	pkgver = 117.ef8b94c
+	pkgver = 150.9882013
 	pkgrel = 1
 	url = http://sourceforge.net/projects/osc2midi/
 	arch = x86_64
