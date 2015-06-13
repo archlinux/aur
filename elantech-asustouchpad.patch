@@ -1,0 +1,13 @@
+--- a/elantech.c	2015-01-25 13:49:10.472048236 -0500
++++ b/elantech.c	2015-01-25 13:52:07.533395792 -0500
+@@ -1363,6 +1363,10 @@
+ 	if (param[0] == 0x46 && (param[1] & 0xef) == 0x0f && param[2] < 40)
+ 		return true;
+ 
++	/* Check for ASUS Touchpad. (TP300L) */
++	if (param[0] == 0x38 && (param[1] & 0xef) == 0x0f && param[2] < 40)
++		return true;
++
+ 	for (i = 0; i < ARRAY_SIZE(rates); i++)
+ 		if (param[2] == rates[i])
+ 			return false;
