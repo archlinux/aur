@@ -1,0 +1,17 @@
+pkgbase = erusfont
+	pkgdesc = A bitmap font for programming and terminal/tty use, greatly inspired from montecarlo and gohufont, many thanks to their creator
+	pkgver = 0.7
+	pkgrel = 1
+	url = http://perdu.com/
+	install = erusfont.install
+	arch = any
+	license = custom:WTFPL
+	depends = xorg-fonts-encodings
+	depends = xorg-fonts-alias
+	depends = xorg-font-utils
+	depends = fontconfig
+	source = http://kmkeen.com/tmp/erusfont.src.tar.gz
+	md5sums = b9b47d2d6743c608b709a4a5dce86033
+
+pkgname = erusfont
+
