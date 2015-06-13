@@ -1,0 +1,15 @@
+pkgbase = ttrk
+	pkgdesc = Tektracker is a console based MIDI tracker/sequencer. Requires /dev/midi.
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = http://vektor.ca/audio/ttrk/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = slang
+	depends = zlib
+	source = http://vektor.ca/audio/ttrk/ttrk-0.7.0.tar.gz
+	md5sums = 168dde66d1b8e0d3cb44b70c4c541537
+
+pkgname = ttrk
+
