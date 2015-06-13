@@ -1,0 +1,17 @@
+pkgbase = libxs
+	pkgdesc = Fast messaging system built on sockets. Fork of ZeroMQ, Aka Crossroads IO.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/crossroads-io/libxs
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = gcc-libs
+	depends = util-linux
+	provides = zeromq
+	conflicts = zeromq
+	source = http://ftp.de.debian.org/debian/pool/main/libx/libxs/libxs_1.2.0.orig.tar.gz
+	md5sums = aac1264bb0d03704bd2126419b981fd5
+
+pkgname = libxs
+
