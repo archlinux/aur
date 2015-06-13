@@ -1,0 +1,5 @@
+post_install() {
+  msg2 "run sudo wartool -m -v -r /media/cdrom/data /usr/share/games/stratagus/wargus to convert& copy original date"
+  msg2 "only works with originial dos cd"
+}
+

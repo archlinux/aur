@@ -1,0 +1,19 @@
+pkgbase = wargus
+	pkgdesc = Warcraft2 Mod that allows you to play Warcraft2 with the Stratagus engine
+	pkgver = 2.2.7
+	pkgrel = 3
+	url = http://wargus.sourceforge.net/
+	install = wargus.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = stratagus=2.2.7
+	depends = ffmpeg2theora
+	depends = cdparanoia
+	depends = timidity++
+	depends = gtk2
+	source = http://launchpad.net/wargus/trunk/2.2.7/+download/wargus_2.2.7.orig.tar.gz
+	md5sums = 115ad5f85d6e6e2078bafb2f95599d6b
+
+pkgname = wargus
+
