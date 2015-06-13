@@ -1,0 +1,41 @@
+pkgbase = wpsforlinux
+	pkgver = 9.1.0.4961_a18p1
+	pkgrel = 1
+	url = http://wps-community.org/
+	arch = any
+	groups = wpsforlinux
+	license = custom:Kingsoft
+	conflicts = wps-office
+	conflicts = kingsoft-office
+	options = !emptydirs
+	options = !strip
+	source = http://kdl.cc.ksosoft.com/wps-community/download/a18/wps-office_9.1.0.4961~a18p1_amd64.deb
+	source = wps-office.xml
+	source = check_data.sh
+	sha1sums = 8c593dd34baf0e481378ed696334e3d7f853906a
+	sha1sums = dfa2ae8b74ac763d6d7e1d28e33dcb289bca9112
+	sha1sums = 1819bae14fa888f92c29c9fd01b59246f53e6937
+
+pkgname = wpsoffice-common
+	pkgdesc = Common files and license for WPS office.
+	arch = any
+
+pkgname = wpsoffice
+	pkgdesc = WPS Office, including Writer, Presentation and Spreadsheets, is a powerful office productivity suite. (no fonts)
+	install = wpsoffice.install
+	arch = i686
+	arch = x86_64
+	depends = fontconfig
+	depends = libpng12
+	depends = glib2
+	depends = libsm
+	depends = libxext
+	depends = libxrender
+	depends = libxml2
+	depends = desktop-file-utils
+	depends = shared-mime-info
+	depends = xdg-utils
+	depends = wpsoffice-common=9.1.0.4961_a18p1
+	optdepends = cups: for printing support
+	optdepends = pango: for complex (right-to-left) text support
+

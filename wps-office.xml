@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+    <mime-type type="application/wps-office.wps">
+        <comment>WPS Writer Document</comment>
+        <comment xml:lang="zh_CN">WPS文字 文档</comment>
+        <alias type="application/vnd.ms-works"/>
+        <generic-icon name="wps-office-wps"/>
+        <glob pattern="*.wps" weight="60"/>
+    </mime-type>
+    <mime-type type="application/wps-office.wpt">
+        <comment>WPS Writer Template</comment>
+        <comment xml:lang="zh_CN">WPS文字 模板</comment>
+        <generic-icon name="wps-office-wpt"/>
+        <glob pattern="*.wpt" weight="60"/>
+    </mime-type>
+    <mime-type type="application/wps-office.dps">
+        <comment>WPS Presentation File</comment>
+        <comment xml:lang="zh_CN">WPS演示 演示文稿</comment>
+        <generic-icon name="wps-office-dps"/>
+        <glob pattern="*.dps" weight="60"/>
+    </mime-type>
+    <mime-type type="application/wps-office.dpt">
+        <comment>WPS Presentation Template</comment>
+        <comment xml:lang="zh_CN">WPS演示 模板</comment>
+        <generic-icon name="wps-office-dpt"/>
+        <glob pattern="*.dpt" weight="60"/>
+    </mime-type>
+    <mime-type type="application/wps-office.et">
+        <comment>WPS Spreadsheets Workbook</comment>
+        <comment xml:lang="zh_CN">WPS表格 工作簿</comment>
+        <generic-icon name="wps-office-et"/>
+        <glob pattern="*.et" weight="60"/>
+    </mime-type>
+    <mime-type type="application/wps-office.ett">
+        <comment>WPS Spreadsheets Template</comment>
+        <comment xml:lang="zh_CN">WPS表格 模板</comment>
+        <generic-icon name="wps-office-ett"/>
+        <glob pattern="*.ett" weight="60"/>
+    </mime-type>
+</mime-info>
