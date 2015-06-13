@@ -1,0 +1,25 @@
+pkgbase = gkrellm-git
+	pkgdesc = System monitor package for GTK2
+	pkgver = 20141122.4263ff1
+	pkgrel = 1
+	url = http://gkrellm.srcbox.net/
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = gettext
+	makedepends = git
+	makedepends = make
+	depends = gtk2
+	depends = libsm
+	depends = lm_sensors
+	provides = gkrellm
+	conflicts = gkrellm
+	options = emptydirs
+	backup = etc/gkrellmd.conf
+	source = gkrellm.service
+	source = git://git.srcbox.net/gkrellm
+	md5sums = 63c78daed61c82b933f558177f6d3721
+	md5sums = SKIP
+
+pkgname = gkrellm-git
+
