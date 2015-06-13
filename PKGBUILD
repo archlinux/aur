@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url='http://www.digikam.org/sharedlibs'
 license=('GPL' 'LGPL' 'FDL')
 depends=('kio' 'hicolor-icon-theme')
-makedepends=('extra-cmake-modules' 'kdoctools' 'git')
+makedepends=('extra-cmake-modules' 'kdoctools' 'git' 'python')
 conflicts=('kronometer')
 source=('git://anongit.kde.org/kronometer.git#branch=frameworks')
 sha1sums=('SKIP')

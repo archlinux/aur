@@ -12,6 +12,7 @@ pkgbase = kronometer-frameworks-git
 	makedepends = extra-cmake-modules
 	makedepends = kdoctools
 	makedepends = git
+	makedepends = python
 	depends = kio
 	depends = hicolor-icon-theme
 	conflicts = kronometer
