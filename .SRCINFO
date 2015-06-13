@@ -1,0 +1,18 @@
+pkgbase = burgerspace
+	pkgdesc = A clone of the 1982 BurgerTime video game by Data East
+	pkgver = 1.9.2
+	pkgrel = 1
+	url = http://perso.b2b2c.ca/sarrazip/dev/burgerspace.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = autoconf
+	makedepends = automake
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = flatzebra>=0.1.6
+	source = http://perso.b2b2c.ca/sarrazip/dev/burgerspace-1.9.2.tar.gz
+	md5sums = 8675449bb1c3c014bc51837b60f6cc47
+
+pkgname = burgerspace
+
