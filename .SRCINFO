@@ -1,0 +1,13 @@
+pkgbase = python-grapevine
+	pkgdesc = Iterator pipelines for Python
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://jwilk.net/software/python-grapevine
+	arch = any
+	license = MIT
+	depends = python
+	source = https://pypi.python.org/packages/source/g/grapevine/grapevine-1.0+py3k.tar.gz
+	md5sums = 5db4fcac854b4919abe22da8f1eb9cdb
+
+pkgname = python-grapevine
+
