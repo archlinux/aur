@@ -2,6 +2,7 @@
 # Contributor: Nuno Araujo <nuno.araujo@russo79.com>
 # Contributor: Xpander <xpander0@gmail.com>
 # Contributor: Stefan Achatz <erazor_de@users.soruceforge.net>
+# Contributor: Zachary Lund <admin@computerquip.com>
 
 pkgname=('roccat-tools-common'
          'roccat-tools-arvo'
@@ -23,7 +24,7 @@ pkgname=('roccat-tools-common'
          'roccat-tools-tyon')
 pkgbase=roccat-tools
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Userland applications to configure and make extended use of ROCCAT devices'
 arch=('i686' 'x86_64')
 url='http://roccat.sourceforge.net'
@@ -45,7 +46,11 @@ build() {
   # https://sourceforge.net/p/roccat/bugs/51/
   patch -p1 -i ../udev-compilation-error-fix.patch
 
-  cmake . -DCMAKE_INSTALL_PREFIX=/usr -DUDEVDIR=/usr/lib/udev/rules.d -DWITHOUT_PYTHON=TRUE
+  cmake \
+	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DUDEVDIR=/usr/lib/udev/rules.d \
+	-DWITHOUT_PYTHON=TRUE \
+	-DLIBDIR="/usr/lib"
   make
 }
 
@@ -201,7 +206,7 @@ package_roccat-tools-ryosmk() {
 
 package_roccat-tools-ryostkl() {
   pkgdesc='Userland applications to configure and make extended use of ROCCAT RyosTKL devices'
-  depends=('roccat-tools-common')
+  depends=('roccat-tools-common' 'roccat-tools-ryosmk')
 
   cd "$srcdir/$pkgbase-$pkgver/ryostkl"
   make DESTDIR="$pkgdir/" install
