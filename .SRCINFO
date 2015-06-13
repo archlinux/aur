@@ -1,0 +1,14 @@
+pkgbase = pylisp-git
+	pkgdesc = Python compatible, Scheme-like with CL style macros and w/o continuations.
+	pkgver = 20110926
+	pkgrel = 1
+	url = https://github.com/pavpanchekha/pylisp
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python2
+	source = git://github.com/pavpanchekha/pylisp.git
+	md5sums = SKIP
+
+pkgname = pylisp-git
+
