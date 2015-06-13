@@ -1,0 +1,17 @@
+pkgbase = enchant-hspell
+	pkgdesc = An enchant provider plugin which adds support for Hspell backend
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = http://www.abisource.com/enchant/
+	arch = any
+	license = LGPL
+	depends = enchant-pure
+	depends = hspell
+	options = !libtool
+	source = http://www.abisource.com/downloads/enchant/1.6.0/enchant-1.6.0.tar.gz
+	source = warnings-fix.patch
+	sha1sums = 321f9cf0abfa1937401676ce60976d8779c39536
+	sha1sums = 8e23f2b350e77c2a2e9accf1ce1b9a18aefb69ff
+
+pkgname = enchant-hspell
+

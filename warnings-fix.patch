@@ -1,0 +1,33 @@
+diff -aur enchant-1.6.0/src/enchant.c enchant-1.6.0.new/src/enchant.c
+--- enchant-1.6.0/src/enchant.c	2010-04-02 01:23:37.000000000 +0430
++++ enchant-1.6.0.new/src/enchant.c	2013-07-31 23:26:05.244144048 +0430
+@@ -208,7 +208,9 @@
+ 	GSList *module_dirs = NULL;
+ 
+ 	char * module_dir = NULL;
++#ifndef ENCHANT_GLOBAL_MODULE_DIR
+ 	char * prefix = NULL;
++#endif
+ 
+ 	{
+ 		char* user_module_dir;
+@@ -840,6 +842,7 @@
+ 	size_t i, j;
+ 
+ 	session = ((EnchantDictPrivateData*)dict->enchant_private_data)->session;
++	(void) session; // unused
+ 
+ 	for(i = 0; i < n_new_suggs; i++)
+ 		{
+diff -aur enchant-1.6.0/src/pwl.c enchant-1.6.0.new/src/pwl.c
+--- enchant-1.6.0/src/pwl.c	2010-04-02 01:23:37.000000000 +0430
++++ enchant-1.6.0.new/src/pwl.c	2013-07-31 23:27:14.200816371 +0430
+@@ -282,7 +282,7 @@
+ {
+ 	char buffer[BUFSIZ];
+ 	char* line;
+-	size_t line_number = 1;
++	unsigned int line_number = 1;
+ 	FILE *f;
+ 	struct stat stats;
+ 
