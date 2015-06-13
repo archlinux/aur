@@ -1,0 +1,14 @@
+pkgbase = tcltrf
+	pkgdesc = Trf is an extension library to the script language Tcl, as created by John Ousterhout.
+	pkgver = 2.1.4
+	pkgrel = 2
+	url = http://tcltrf.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = tcl
+	source = http://downloads.sourceforge.net/project/tcltrf/tcltrf/2.1.4/trf2.1.4.tar.bz2
+	md5sums = 624dc7b112886fd006664ac377da2391
+
+pkgname = tcltrf
+
