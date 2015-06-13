@@ -1,0 +1,15 @@
+pkgbase = transifex-client-beta
+	pkgdesc = The Transifex command-line tool to download and upload translations from Transifex (beta version)
+	pkgver = 0.11.1
+	pkgrel = 1
+	url = https://github.com/transifex/transifex-client
+	arch = any
+	license = GPL2
+	depends = python2
+	depends = python2-distribute
+	conflicts = transifex-client
+	source = transifex-client-beta-0.11.1.tar.gz::https://github.com/transifex/transifex-client/archive/0.11.1-beta.tar.gz
+	sha256sums = f93bc7069ed9259f805cdd40e3ec55102fbfeb2e1b2a22b544a31e682d546859
+
+pkgname = transifex-client-beta
+
