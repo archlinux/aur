@@ -1,0 +1,344 @@
+diff -r -u xfwm4-4.10.1/settings-dialogs/xfwm4-settings.c xfwm4-tiling-4.10.1/settings-dialogs/xfwm4-settings.c
+--- xfwm4-4.10.1/settings-dialogs/xfwm4-settings.c	2013-05-05 11:58:42.000000000 -0400
++++ xfwm4-tiling-4.10.1/settings-dialogs/xfwm4-settings.c	2014-02-20 21:02:54.861828056 -0500
+@@ -282,6 +282,10 @@
+   { N_("Tile window to the bottom"), "tile_down_key", NULL, },
+   { N_("Tile window to the left"), "tile_left_key", NULL, },
+   { N_("Tile window to the right"), "tile_right_key", NULL, },
++  { N_("Tile window to the top-left"), "tile_up_left_key", NULL, },
++  { N_("Tile window to the top-right"), "tile_up_right_key", NULL, },
++  { N_("Tile window to the bottom-left"), "tile_down_left_key", NULL, },
++  { N_("Tile window to the bottom-right"), "tile_down_right_key", NULL, },
+   { N_("Show desktop"), "show_desktop_key", NULL },
+   { N_("Upper workspace"), "up_workspace_key", NULL },
+   { N_("Bottom workspace"), "down_workspace_key", NULL },
+diff -r -u xfwm4-4.10.1/src/client.c xfwm4-tiling-4.10.1/src/client.c
+--- xfwm4-4.10.1/src/client.c	2013-05-05 11:58:42.000000000 -0400
++++ xfwm4-tiling-4.10.1/src/client.c	2014-02-20 21:02:54.864828027 -0500
+@@ -3106,6 +3106,23 @@
+             wc->height = c->old_height;
+         }
+     }
++
++    // TODO: replace this with a clientNewTileState
++    if (FLAG_TEST (mode, CLIENT_FLAG_TILED))
++    {
++        if (!FLAG_TEST (c->flags, CLIENT_FLAG_TILED))
++        {
++            FLAG_SET (c->flags, CLIENT_FLAG_TILED);
++        }
++        else
++        {
++            FLAG_UNSET (c->flags, CLIENT_FLAG_TILED);
++            wc->x = c->old_x;
++            wc->y = c->old_y;
++            wc->width = c->old_width;
++            wc->height = c->old_height;
++        }   
++    }
+ }
+ 
+ static gboolean
+@@ -3178,7 +3195,9 @@
+             case TILE_LEFT:
+                 tmp_x = full_x;
+                 tmp_w = full_w / 2;
++                DBG("%d %d %d %d", tmp_x, tmp_w, full_y, full_h);
+                 clientMaxSpace (screen_info, &tmp_x, &full_y, &tmp_w, &full_h);
++                DBG("%d %d %d %d", tmp_x, tmp_w, full_y, full_h);
+                 wc->x = tmp_x + frameLeft (c);
+                 wc->width = tmp_w - frameLeft (c) - frameRight (c);
+                 break;
+@@ -3200,6 +3219,71 @@
+         return (wc->height <= c->size->max_height);
+     }
+ 
++    if (FLAG_TEST (c->flags, CLIENT_FLAG_TILED))
++    {
++        /* Adjust size to the tallest size available, for the current horizontal position/width */
++        switch (tile)
++        {
++            case TILE_UP_LEFT:
++                tmp_x = full_x / 2;
++                tmp_y = full_y / 2;
++                tmp_w = full_w / 2;
++                tmp_h = full_h / 2;
++                DBG("%d %d %d %d", tmp_x, tmp_w, tmp_y, tmp_h);
++                clientMaxSpace (screen_info, &tmp_x, &tmp_y, &tmp_w, &tmp_h);
++                DBG("%d %d %d %d", tmp_x, tmp_w, tmp_y, tmp_h);
++                wc->x = tmp_x + frameLeft (c);
++                wc->y = tmp_y + frameTop (c);
++                wc->width = tmp_w - frameLeft (c) - frameRight (c);
++                wc->height = tmp_h - frameTop (c) - frameBottom (c);
++                break;
++            case TILE_UP_RIGHT:
++                tmp_x = full_x + (full_w / 2);
++                tmp_y = full_y / 2;
++                tmp_w = full_w / 2;
++                tmp_h = full_h / 2;
++                DBG("%d %d %d %d", tmp_x, tmp_w, tmp_y, tmp_h);
++                clientMaxSpace (screen_info, &tmp_x, &tmp_y, &tmp_w, &tmp_h);
++                DBG("%d %d %d %d", tmp_x, tmp_w, tmp_y, tmp_h);
++                wc->x = tmp_x + frameLeft (c);
++                wc->y = tmp_y + frameTop (c);
++                wc->width = tmp_w - frameLeft (c) - frameRight (c);
++                wc->height = tmp_h - frameTop (c) - frameBottom (c);
++                break;
++            case TILE_DOWN_LEFT:
++                tmp_x = full_x / 2;
++                tmp_y = full_y + (full_h / 2);
++                tmp_w = full_w / 2;
++                tmp_h = full_h / 2;
++                DBG("%d %d %d %d", tmp_x, tmp_w, tmp_y, tmp_h);
++                clientMaxSpace (screen_info, &tmp_x, &tmp_y, &tmp_w, &tmp_h);
++                DBG("%d %d %d %d", tmp_x, tmp_w, tmp_y, tmp_h);
++                wc->x = tmp_x + frameLeft (c);
++                wc->y = tmp_y + frameTop (c);
++                wc->width = tmp_w - frameLeft (c) - frameRight (c);
++                wc->height = tmp_h - frameTop (c) - frameBottom (c);
++                break;
++            case TILE_DOWN_RIGHT:
++                tmp_x = full_x  + (full_w / 2);
++                tmp_y = full_y  + (full_h / 2);
++                tmp_w = full_w / 2;
++                tmp_h = full_h / 2;
++                DBG("%d %d %d %d", tmp_x, tmp_w, tmp_y, tmp_h);
++                clientMaxSpace (screen_info, &tmp_x, &tmp_y, &tmp_w, &tmp_h);
++                DBG("%d %d %d %d", tmp_x, tmp_w, tmp_y, tmp_h);
++                wc->x = tmp_x + frameLeft (c);
++                wc->y = tmp_y + frameTop (c);
++                wc->width = tmp_w - frameLeft (c) - frameRight (c);
++                wc->height = tmp_h - frameTop (c) - frameBottom (c);
++                break;
++            default:
++                clientMaxSpace (screen_info, &full_x, &tmp_y, &full_w, &tmp_h);
++                break;
++        }
++
++        return (wc->height <= c->size->max_height);
++    }    
++
+     return TRUE;
+ }
+ 
+@@ -3316,18 +3400,25 @@
+         case TILE_DOWN:
+             mode = CLIENT_FLAG_MAXIMIZED_HORIZ;
+             break;
++        case TILE_UP_LEFT:
++        case TILE_UP_RIGHT:
++        case TILE_DOWN_LEFT:
++        case TILE_DOWN_RIGHT:
++            DBG("Got corner tile");
++            mode = CLIENT_FLAG_TILED;
++            break;
+         default:
+             return FALSE;
+             break;
+     }
+ 
+-    if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
++    if (!FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED | CLIENT_FLAG_TILED))
+     {
+         clientSaveSizePos (c);
+     }
+ 
+     old_flags = c->flags;
+-    FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED);
++    FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED | CLIENT_FLAG_TILED);
+     clientNewMaxState (c, &wc, mode);
+     if (!clientNewMaxSize (c, &wc, &rect, tile))
+     {
+diff -r -u xfwm4-4.10.1/src/client.h xfwm4-tiling-4.10.1/src/client.h
+--- xfwm4-4.10.1/src/client.h	2013-05-05 11:58:42.000000000 -0400
++++ xfwm4-tiling-4.10.1/src/client.h	2014-02-20 21:02:54.864828027 -0500
+@@ -152,15 +152,16 @@
+ #define CLIENT_FLAG_MAXIMIZED_HORIZ     (1L<<9)
+ #define CLIENT_FLAG_MAXIMIZED           (CLIENT_FLAG_MAXIMIZED_VERT | \
+                                          CLIENT_FLAG_MAXIMIZED_HORIZ)
+-#define CLIENT_FLAG_SHADED              (1L<<10)
+-#define CLIENT_FLAG_SKIP_PAGER          (1L<<11)
+-#define CLIENT_FLAG_SKIP_TASKBAR        (1L<<12)
+-#define CLIENT_FLAG_STATE_MODAL         (1L<<13)
+-#define CLIENT_FLAG_STICKY              (1L<<15)
+-#define CLIENT_FLAG_NAME_CHANGED        (1L<<16)
+-#define CLIENT_FLAG_DEMANDS_ATTENTION   (1L<<17)
+-#define CLIENT_FLAG_HAS_SHAPE           (1L<<18)
+-#define CLIENT_FLAG_FULLSCREN_MONITORS  (1L<<19)
++#define CLIENT_FLAG_TILED               (1L<<10)
++#define CLIENT_FLAG_SHADED              (1L<<11)
++#define CLIENT_FLAG_SKIP_PAGER          (1L<<12)
++#define CLIENT_FLAG_SKIP_TASKBAR        (1L<<13)
++#define CLIENT_FLAG_STATE_MODAL         (1L<<14)
++#define CLIENT_FLAG_STICKY              (1L<<16)
++#define CLIENT_FLAG_NAME_CHANGED        (1L<<17)
++#define CLIENT_FLAG_DEMANDS_ATTENTION   (1L<<18)
++#define CLIENT_FLAG_HAS_SHAPE           (1L<<19)
++#define CLIENT_FLAG_FULLSCREN_MONITORS  (1L<<20)
+ 
+ #define WM_FLAG_DELETE                  (1L<<0)
+ #define WM_FLAG_INPUT                   (1L<<1)
+@@ -244,7 +245,11 @@
+     TILE_LEFT,
+     TILE_RIGHT,
+     TILE_DOWN,
+-    TILE_UP
++    TILE_UP,
++    TILE_UP_LEFT,
++    TILE_UP_RIGHT,
++    TILE_DOWN_LEFT,
++    TILE_DOWN_RIGHT
+ }
+ tilePositionType;
+ 
+diff -r -u xfwm4-4.10.1/src/events.c xfwm4-tiling-4.10.1/src/events.c
+--- xfwm4-4.10.1/src/events.c	2013-05-05 11:58:42.000000000 -0400
++++ xfwm4-tiling-4.10.1/src/events.c	2014-02-20 21:02:54.864828027 -0500
+@@ -450,6 +450,26 @@
+                                frameY (c) + frameHeight (c) / 2,
+                                TILE_UP, TRUE);
+                 break;
++            case KEY_TILE_UP_LEFT:
++                clientTile (c, frameX (c) + frameWidth (c) / 2,
++                               frameY (c) + frameHeight (c) / 2,
++                               TILE_UP_LEFT, TRUE);
++                break;
++            case KEY_TILE_UP_RIGHT:
++                clientTile (c, frameX (c) + frameWidth (c) / 2,
++                               frameY (c) + frameHeight (c) / 2,
++                               TILE_UP_RIGHT, TRUE);
++                break;
++            case KEY_TILE_DOWN_LEFT:
++                clientTile (c, frameX (c) + frameWidth (c) / 2,
++                               frameY (c) + frameHeight (c) / 2,
++                               TILE_DOWN_LEFT, TRUE);
++                break;
++            case KEY_TILE_DOWN_RIGHT:
++                clientTile (c, frameX (c) + frameWidth (c) / 2,
++                               frameY (c) + frameHeight (c) / 2,
++                               TILE_DOWN_RIGHT, TRUE);
++                break;
+             default:
+                 break;
+         }
+diff -r -u xfwm4-4.10.1/src/moveresize.c xfwm4-tiling-4.10.1/src/moveresize.c
+--- xfwm4-4.10.1/src/moveresize.c	2013-05-05 11:58:42.000000000 -0400
++++ xfwm4-tiling-4.10.1/src/moveresize.c	2014-02-20 21:02:54.864828027 -0500
+@@ -55,7 +55,7 @@
+     ButtonReleaseMask | \
+     LeaveWindowMask
+ 
+-#define TILE_DISTANCE 2
++#define TILE_DISTANCE 4
+ 
+ typedef struct _MoveResizeData MoveResizeData;
+ struct _MoveResizeData
+@@ -784,14 +784,43 @@
+     layout = screen_info->desktop_layout;
+     dist = MIN (TILE_DISTANCE, frameDecorationTop (screen_info) / 2);
+ 
++    if (!screen_info->params->wrap_windows || ((layout.rows < 2) && (layout.cols < 2)))
++    {
++        // top left
++        if ((x >= disp_x - 1) && (x < disp_x + dist) &&
++            (y >= disp_y - 1) && (y < disp_y + dist))
++        {
++            return clientTile (c, x, y, TILE_UP_LEFT, !screen_info->params->box_move);
++        }
++        // top right
++        if ((x >= disp_max_x - dist) && (x < disp_max_x + 1) &&
++            (y >= disp_y - 1) && (y < disp_y + dist))
++        {
++            return clientTile (c, x, y, TILE_UP_RIGHT, !screen_info->params->box_move);
++        }
++        // bottom left
++        if ((x >= disp_x - 1) && (x < disp_x + dist) &&
++            (y >= disp_max_y - dist) && (y < disp_max_y + 1))
++        {
++            return clientTile (c, x, y, TILE_DOWN_LEFT, !screen_info->params->box_move);
++        }
++        // bottom right
++        if ((x >= disp_max_x - dist) && (x < disp_max_x + 1) &&
++            (y >= disp_max_y - dist) && (y < disp_max_y + 1))
++        {
++            return clientTile (c, x, y, TILE_DOWN_RIGHT, !screen_info->params->box_move);
++        }
++    }
++
+     if (!screen_info->params->wrap_windows || layout.cols < 2)
+     {
++        // left
+         if ((x >= disp_x - 1) && (x < disp_x + dist) &&
+             (y >= disp_y - 1) && (y < disp_max_y + 1))
+         {
+             return clientTile (c, x, y, TILE_LEFT, !screen_info->params->box_move);
+         }
+-
++        // right
+         if ((x >= disp_max_x - dist) && (x < disp_max_x + 1) &&
+             (y >= disp_y - 1) && (y < disp_max_y + 1))
+         {
+@@ -801,12 +830,13 @@
+ 
+     if (!screen_info->params->wrap_windows || layout.rows < 2)
+     {
++        // top
+         if ((x >= disp_x - 1) && (x < disp_max_x + 1) &&
+             (y >= disp_y - 1) && (y < disp_y + dist))
+         {
+             return clientTile (c, x, y, TILE_UP, !screen_info->params->box_move);
+         }
+-
++        // bottom
+         if ((x >= disp_x - 1) && (x < disp_max_x + 1) &&
+             (y >= disp_max_y - dist) && (y < disp_max_y + 1))
+         {
+@@ -1007,7 +1037,7 @@
+                 passdata->move_resized = TRUE;
+             }
+         }
+-        else if (!clientMoveTile (c, (XMotionEvent *) xevent))
++        if (!clientMoveTile (c, (XMotionEvent *) xevent))
+         {
+             clientConstrainPos(c, FALSE);
+         }
+Only in xfwm4-tiling-4.10.1/src: moveresize.c.orig
+diff -r -u xfwm4-4.10.1/src/settings.c xfwm4-tiling-4.10.1/src/settings.c
+--- xfwm4-4.10.1/src/settings.c	2013-05-05 11:58:42.000000000 -0400
++++ xfwm4-tiling-4.10.1/src/settings.c	2014-02-20 21:02:54.864828027 -0500
+@@ -201,7 +201,7 @@
+     if (!parseRc ("defaults", PACKAGE_DATADIR, rc))
+     {
+         g_warning ("Missing defaults file");
+-        exit (1);
++        //exit (1);
+     }
+     homedir = xfce_resource_save_location (XFCE_RESOURCE_CONFIG,
+                                            "xfce4" G_DIR_SEPARATOR_S "xfwm4",
+@@ -615,6 +615,12 @@
+     parseShortcut (screen_info, KEY_TILE_LEFT, "tile_left_key", shortcuts);
+     parseShortcut (screen_info, KEY_TILE_RIGHT, "tile_right_key", shortcuts);
+     parseShortcut (screen_info, KEY_TILE_UP, "tile_up_key", shortcuts);
++
++    parseShortcut (screen_info, KEY_TILE_UP_LEFT, "tile_up_left_key", shortcuts);
++    parseShortcut (screen_info, KEY_TILE_UP_RIGHT, "tile_up_right_key", shortcuts);
++    parseShortcut (screen_info, KEY_TILE_DOWN_LEFT, "tile_down_left_key", shortcuts);
++    parseShortcut (screen_info, KEY_TILE_DOWN_RIGHT, "tile_down_right_key", shortcuts);
++
+     parseShortcut (screen_info, KEY_TOGGLE_ABOVE, "above_key", shortcuts);
+     parseShortcut (screen_info, KEY_TOGGLE_FULLSCREEN, "fullscreen_key", shortcuts);
+     parseShortcut (screen_info, KEY_UP_WORKSPACE, "up_workspace_key", shortcuts);
+diff -r -u xfwm4-4.10.1/src/settings.h xfwm4-tiling-4.10.1/src/settings.h
+--- xfwm4-4.10.1/src/settings.h	2013-05-05 11:58:42.000000000 -0400
++++ xfwm4-tiling-4.10.1/src/settings.h	2014-02-20 21:12:30.276585267 -0500
+@@ -104,6 +104,10 @@
+     KEY_TILE_LEFT,
+     KEY_TILE_RIGHT,
+     KEY_TILE_UP,
++    KEY_TILE_UP_LEFT,
++    KEY_TILE_UP_RIGHT,
++    KEY_TILE_DOWN_LEFT,
++    KEY_TILE_DOWN_RIGHT,
+     KEY_TOGGLE_ABOVE,
+     KEY_TOGGLE_FULLSCREEN,
+     KEY_UP_WORKSPACE,

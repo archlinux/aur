@@ -1,0 +1,25 @@
+pkgbase = xfwm4-tiling
+	pkgdesc = Xfce window manager with corner tiling patch
+	pkgver = 4.10.1
+	pkgrel = 2
+	url = http://www.xfce.org/
+	install = xfwm4-tiling.install
+	arch = i686
+	arch = x86_64
+	groups = xfce4
+	license = GPL2
+	makedepends = intltool
+	depends = libxfce4ui
+	depends = libwnck
+	depends = hicolor-icon-theme
+	provides = xfwm4=4.10.1
+	conflicts = xfwm4
+	replaces = xfwm4
+	options = !libtool
+	source = http://archive.xfce.org/src/xfce/xfwm4/4.10/xfwm4-4.10.1.tar.bz2
+	source = xfwm4-tiling-4.10.1-2.patch
+	sha256sums = 380c44fba6eb779e34be0fe94f3726cfa131803014d6073c45aec8a1257fa740
+	sha256sums = 585a14790072ae6f7bffa8c65069c91fd03f10fbffbcd4cc73096a794608ffd6
+
+pkgname = xfwm4-tiling
+
