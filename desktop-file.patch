@@ -1,0 +1,14 @@
+--- src/usr/share/applications/Foxit-Reader.desktop.orig	2015-05-17 02:01:09.630191333 +0200
++++ src/usr/share/applications/Foxit-Reader.desktop	2015-05-17 02:01:53.756857680 +0200
+@@ -5,9 +5,9 @@
+ Type=Application
+ GenericName=Foxit PDF Reader
+ Comment=Read PDF Document
+-Exec=FoxitReader %F
++Exec=foxitreader %F
+ StartupNotify=true
+-Icon=/usr/share/pixmaps/fx-icon.png
++Icon=foxitreader
+ Terminal=false
+ Categories=GNOME;GTK;Application;Office;Viewer;
+ MimeType=application/pdf;application/x-bzpdf;application/x-gzpdf;
