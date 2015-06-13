@@ -1,0 +1,13 @@
+
+[Desktop Entry]
+Version=1.0
+Type=Application
+Icon=/usr/share/pixmaps/orthorobot.svg
+Exec=orthorobot
+Terminal=false
+StartupNotify=false
+Name=Orthorobot
+GenericName=Arcade Game
+Comment=Perspective based puzzle game, where you flatten the view to move across gaps
+Categories=Game;ArcadeGame;
+Name[en_GB]=orthorobot

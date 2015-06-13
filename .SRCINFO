@@ -1,0 +1,21 @@
+pkgbase = orthorobot
+	pkgdesc = Perspective based puzzle game, where you flatten the view to move across gaps
+	pkgver = 1.0
+	pkgrel = 4
+	url = http://stabyourself.net/orthorobot/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = unzip
+	depends = love07
+	source = http://stabyourself.net/dl.php?file=orthorobot/orthorobot-linux.zip
+	source = https://bitbucket.org/rude/love/raw/0.7.0/platform/unix/app.svg
+	source = orthorobot.sh
+	source = orthorobot.desktop
+	md5sums = 3ba42cd5058660d6750cdbcb3cf477df
+	md5sums = a1e19f91420cc519a683af360f5b1120
+	md5sums = 4b43b2f28fe7af330b78152131fc8772
+	md5sums = 4d5757d30b2b07c9062d3fe02ce65a57
+
+pkgname = orthorobot
+
