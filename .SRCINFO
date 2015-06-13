@@ -1,0 +1,15 @@
+pkgbase = dirindex
+	pkgdesc = Create an HTML index starting from a directory using templates for the resulting pages
+	pkgver = 0.3.1
+	pkgrel = 3
+	url = https://github.com/muflone/dirindex
+	arch = any
+	license = GPL3
+	depends = python2
+	depends = python-magic
+	noextract = dirindex-0.3.1.tar.gz
+	source = dirindex-0.3.1.tar.gz::https://github.com/muflone/dirindex/tarball/0.3.1
+	md5sums = b7d0621d034e3988940f79ff157f34cb
+
+pkgname = dirindex
+
