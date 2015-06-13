@@ -1,0 +1,16 @@
+pkgbase = mbrola-voices-cr1
+	pkgdesc = A Croation male voice for the MBROLA synthesizer
+	pkgver = 981028
+	pkgrel = 4
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-cr
+	groups = mbrola-voices
+	groups = gespeaker-mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/cr1/cr1-981028.zip
+	md5sums = c2a9be187e0c1d6dec17af909f099fdb
+
+pkgname = mbrola-voices-cr1
+
