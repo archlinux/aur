@@ -1,0 +1,14 @@
+pkgbase = smtpclient-qt5-git
+	pkgdesc = An SMTP Client writen in C++ for Qt.
+	pkgver = r76.781fd40
+	pkgrel = 1
+	url = https://github.com/bluetiger9/SmtpClient-for-Qt
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = qt5-base
+	source = smtpclient::git+https://github.com/bluetiger9/SmtpClient-for-Qt.git
+
+pkgname = smtpclient-qt5-git
+
