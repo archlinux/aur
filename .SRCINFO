@@ -1,0 +1,22 @@
+pkgbase = gptrace-git
+	pkgdesc = Trace the activities of an external application
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = http://www.muflone.com/gptrace/
+	install = gptrace-git.install
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = gtk3
+	depends = gobject-introspection
+	depends = python2-xdg
+	depends = python2-gobject
+	depends = python2-ptrace
+	depends = gtk-update-icon-cache
+	provides = gptrace
+	conflicts = gptrace
+	source = git+https://github.com/muflone/gptrace.git
+	sha256sums = SKIP
+
+pkgname = gptrace-git
+
