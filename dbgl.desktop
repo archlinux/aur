@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=DOSBox Game Launcher
+Comment=A graphical frontend for DOSBox
+Exec=dbgl
+Icon=dbgl
+Terminal=false
+StartupNotify=false
+Categories=Application;Game;

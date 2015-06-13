@@ -1,0 +1,20 @@
+pkgbase = dbgl
+	pkgdesc = An open-source, free, multi-platform frontend for DOSBox (DOSBox binaries not included)
+	pkgver = 0.79
+	pkgrel = 1
+	url = http://members.quicknet.nl/blankendaalr/dbgl/
+	install = dbgl.install
+	arch = any
+	license = GPL
+	depends = java-runtime>=7
+	depends = gtk2
+	optdepends = dosbox: necessary to run DOS games
+	source = http://members.quicknet.nl/blankendaalr/dbgl/download/dbgl079_generic.tar.gz
+	source = dbgl.desktop
+	source = dbgl.sh
+	md5sums = c1b91a3fc8106024912096be62f51888
+	md5sums = aaf6ffc4a18ab0e5444cb37422a4e3ee
+	md5sums = 897eb9e309e2b30820a2be439292b799
+
+pkgname = dbgl
+
