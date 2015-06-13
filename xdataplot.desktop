@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=xdataplot
+Comment=Software for scientific visualization, statistical analysis, and non-linear modeling.
+Exec=xdataplot
+Icon=xdataplot
+Terminal=false
+Type=Application
+Categories=Science;

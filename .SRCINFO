@@ -1,0 +1,36 @@
+pkgbase = dataplot
+	pkgdesc = Software for scientific visualization, statistical analysis, and non-linear modeling.
+	pkgver = 2009_08_21
+	pkgrel = 4
+	url = http://www.itl.nist.gov/div898/software/dataplot.html/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	makedepends = gcc-fortran
+	depends = gd
+	depends = gcc-libs
+	depends = fontconfig
+	depends = expat
+	depends = libpng
+	depends = zlib
+	depends = libjpeg
+	depends = libx11
+	depends = freetype2
+	depends = tcsh
+	noextract = dpsrc_2009_08_21.tar.gz
+	noextract = dplib.2009_08_21.tar.gz
+	backup = usr/share/dataplot/frscript/xdpConfig
+	source = ftp://ftp.nist.gov/pub/dataplot/unix/dpsrc_2009_08_21.tar.gz
+	source = ftp://ftp.nist.gov/pub/dataplot/unix/dplib.2009_07_15.tar.gz
+	source = ftp://ftp.nist.gov/pub/dataplot/unix/dataplot_command.2009_06_21.tar.gz
+	source = dataplot.sh
+	source = xdataplot.desktop
+	md5sums = d69caec4a853043dc6c4390da61cc34f
+	md5sums = 6f978d7df658207bf64a08c1edb57b6b
+	md5sums = ba4d5a06ca69fa8878c559f4ad6ba73b
+	md5sums = d212f5842a9bab712d6353dbb66198d8
+	md5sums = 5cd4b7779bbfb926bf9daf27d0bd5faf
+
+pkgname = dataplot
+
