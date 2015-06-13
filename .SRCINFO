@@ -1,0 +1,17 @@
+pkgbase = pure-odbc
+	pkgdesc = A Pure module to access to all ODBC-capable databases
+	pkgver = 0.10
+	pkgrel = 1
+	url = http://purelang.bitbucket.org/
+	arch = i686
+	arch = x86_64
+	groups = pure-complete
+	groups = pure-web
+	license = LGPL3
+	depends = pure
+	depends = unixodbc
+	source = https://bitbucket.org/purelang/pure-lang/downloads/pure-odbc-0.10.tar.gz
+	sha1sums = 5e915c26d9584f84efd2b8e92d2c7811cf2ab952
+
+pkgname = pure-odbc
+
