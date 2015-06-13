@@ -1,0 +1,14 @@
+pkgbase = kusemono
+	pkgdesc = Sneak into a mutant ant hive and stab them.
+	pkgver = 20120519
+	pkgrel = 1
+	url = http://www.interq.or.jp/libra/oohara/kusemono/index.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = ncurses
+	source = http://www.interq.or.jp/libra/oohara/kusemono/kusemono-20120519.tar.gz
+	md5sums = a16a153d64e5959e00e13921a411a766
+
+pkgname = kusemono
+
