@@ -1,0 +1,14 @@
+pkgbase = python2-trollius
+	pkgdesc = Port of the Tulip project (asyncio module, PEP 3156) on Python 2.7
+	pkgver = 1.0.4
+	pkgrel = 2
+	url = https://bitbucket.org/enovance/trollius
+	arch = any
+	license = APACHE
+	depends = python2
+	depends = python2-futures
+	source = http://pypi.python.org/packages/source/t/trollius/trollius-1.0.4.tar.gz
+	md5sums = 3631a464d49d0cbfd30ab2918ef2b783
+
+pkgname = python2-trollius
+
