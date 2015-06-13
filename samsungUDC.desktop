@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Samsung Unified Driver Configurator
+Name[C]=Samsung Unified Driver Configurator
+Comment=Scan with and configure Samsung printers
+Comment[C]=Scan with and configure Samsung printers
+Categories=System;Scanning;Qt
+Exec=/usr/bin/SamsungConfigurator
+Path=/opt/Samsung/mfp/bin
+Icon=/opt/Samsung/mfp/share/images/Configurator.png
+Terminal=0
+X-KDE-SubstituteUID=false
+X-KDE-Username=
