@@ -1,0 +1,19 @@
+# Author: Björn Bidar <theodorstormgrade@gmail.com>
+# Date: 07.04.2013
+# test for $UBUNTU_MENUPROXY == libappmenu.so instead of $XDG_CURRENT_DESTOP == Unity
+
+
+
+--- a/jayatana/jayatana/src/org/java/ayatana/AyatanaDesktop.java	2013-04-07 21:53:52.535074670 +0200
++++ b/jayatana/jayatana/src/org/java/ayatana/AyatanaDesktop.java	2013-04-07 21:54:27.665074191 +0200
+@@ -81,8 +81,8 @@
+ 				!"true".equals(System.getenv("JAYATANA_FORCE"))) {
+ 			if (!System.getProperty("os.name").contains("Linux"))
+ 				return false;
+-			if (!"Unity".equals(System.getenv("XDG_CURRENT_DESKTOP")))
+-				return false;
++			if (!"libappmenu.so".equals(System.getenv("UBUNTU_MENUPROXY")))
++			    return false;
+ 			String version = System.getProperty("java.version");
+ 			version = version.substring(0, version.indexOf(".", version.indexOf(".")+1));
+ 			try {

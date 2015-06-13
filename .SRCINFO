@@ -1,0 +1,20 @@
+pkgbase = java-swing-globalmenu
+	pkgdesc = Globalmenu support for swing
+	pkgver = 165
+	pkgrel = 5
+	url = http://code.google.com/p/java-swing-ayatana
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = jdk7-openjdk
+	makedepends = svn
+	makedepends = apache-ant
+	makedepends = lsb-release
+	depends = java-runtime=7
+	depends = libunity
+	depends = appmenu-gtk2
+	source = globalmenu_detect.enhance.patch
+	md5sums = ab85e011eace696f9e9a36919faf60f3
+
+pkgname = java-swing-globalmenu
+
