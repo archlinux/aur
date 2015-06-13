@@ -1,0 +1,15 @@
+pkgbase = netwib
+	pkgdesc = A network library. It is oriented towards developers.
+	pkgver = 5.39.0
+	pkgrel = 1
+	url = http://www.laurentconstantin.com/en/netw/netwib/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = libpcap
+	makedepends = libnet
+	source = http://downloads.sourceforge.net/project/ntwib/netwib/5.39/netwib-5.39.0-src.tgz
+	options = staticlibs
+
+pkgname = netwib
+
