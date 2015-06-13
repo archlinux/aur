@@ -1,0 +1,19 @@
+pkgbase = gptrace
+	pkgdesc = Trace the activities of an external application
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = http://www.muflone.com/gptrace/
+	install = gptrace.install
+	arch = any
+	license = GPL2
+	depends = gtk3
+	depends = gobject-introspection
+	depends = python2-xdg
+	depends = python2-gobject
+	depends = python2-ptrace
+	depends = gtk-update-icon-cache
+	source = gptrace-0.4.2.tar.gz::https://github.com/muflone/gptrace/archive/0.4.2.tar.gz
+	sha256sums = 3dfe39680e3e10beedee89a095c231d53efca74c0b6a79703f547b9287566b89
+
+pkgname = gptrace
+
