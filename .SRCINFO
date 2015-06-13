@@ -1,0 +1,14 @@
+pkgbase = stardict-computer-ru
+	pkgdesc = English-Russian dictionary of computer terms for StarDict
+	pkgver = 2.4.2
+	pkgrel = 3
+	url = http://stardict.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = stardict
+	source = http://downloads.sourceforge.net/xdxf/stardict-comn_sdict05_eng_rus_comp-2.4.2.tar.bz2
+	md5sums = 96e6beeaee403c6946218d9b4c631eca
+
+pkgname = stardict-computer-ru
+
