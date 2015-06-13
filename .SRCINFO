@@ -1,0 +1,14 @@
+pkgbase = pyspeed
+	pkgdesc = Add progress bars with easy pythonic wrapper iterators. Py2 and Py3
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://launchpad.net/pyspeed
+	arch = any
+	license = MIT
+	depends = python2
+	optdepends = python
+	source = http://launchpad.net/pyspeed/trunk/initial/+download/PySpeed-0.1.1.tar.gz
+	md5sums = 9d24be9fd3635d5e6299da313a69a26b
+
+pkgname = pyspeed
+
