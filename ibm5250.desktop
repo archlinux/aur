@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=IBM iSeries Access Emulator
+Type=Application
+Exec=ibm5250
+Icon=ibm5250.png
+Hidden=false
+Categories=Network;
+Comment=IBM iSeries Access Emulator for 5250 and AS400
+Keywords=IBM;iseries;as400;emulator;5250;telnet
