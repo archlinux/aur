@@ -1,0 +1,14 @@
+pkgbase = gpgkeymgr
+	pkgdesc = a tool to clean up the GnuPG keyring
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://nudin.github.io/GnuPGP-Tools/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = gpgme
+	source = http://nudin.github.io/GnuPGP-Tools/gpgkeymgr/gpgkeymgr-0.4.tar.gz
+	md5sums = cdefc0f36bd0c38905f1b55591207ebc
+
+pkgname = gpgkeymgr
+
