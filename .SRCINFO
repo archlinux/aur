@@ -1,0 +1,15 @@
+pkgbase = mbrola-voices-nl1
+	pkgdesc = A small Dutch male voice for the MBROLA synthesizer
+	pkgver = 980609
+	pkgrel = 2
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-nl
+	groups = mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/nl1/nl1-980609.zip
+	md5sums = 711ccc96832ada58a0482ef4441a1507
+
+pkgname = mbrola-voices-nl1
+
