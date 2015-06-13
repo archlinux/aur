@@ -1,0 +1,16 @@
+pkgbase = mbrola-voices-pl1
+	pkgdesc = A Polish female voice for the MBROLA synthesizer
+	pkgver = 1
+	pkgrel = 3
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-pl
+	groups = mbrola-voices
+	groups = gespeaker-mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/pl1/pl1.zip
+	md5sums = 2e67625c2d10da642466f6290bdecb8d
+
+pkgname = mbrola-voices-pl1
+
