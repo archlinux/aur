@@ -1,0 +1,22 @@
+pkgbase = perl-mail-audit
+	pkgdesc = library for creating easy mail filters
+	pkgver = 2.228
+	pkgrel = 3
+	url = http://search.cpan.org/dist/Mail-Audit
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-file-homedir>=0.61
+	depends = perl-file-tempdir
+	depends = perl-mailtools
+	depends = perl-mail-pop3client
+	depends = perl-mime-entity
+	depends = perl-mime-parser
+	depends = perl-parse-recdescent
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Mail-Audit-2.228.tar.gz
+	md5sums = 92b3911cf6d71d8fa0ccb1359711c48b
+	sha512sums = fa54f065db7aeedb0df7e59bbf2c9ef5972834f86ddce8193066f4806ee4cea629c724c434de244c2bdf4e6fc0a81309583369730d43c541118348a6f264eebf
+
+pkgname = perl-mail-audit
+
