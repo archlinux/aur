@@ -1,0 +1,26 @@
+pkgbase = ruby-middleman-core
+	pkgdesc = Hand-crafted frontend development
+	pkgver = 3.3.12
+	pkgrel = 1
+	url = http://middlemanapp.com
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-bundler
+	depends = ruby-rack
+	depends = ruby-tilt-1
+	depends = ruby-erubis
+	depends = ruby-hooks
+	depends = ruby-rack-test
+	depends = ruby-thor
+	depends = ruby-activesupport-4.1
+	depends = ruby-padrino-helpers
+	depends = ruby-listen
+	depends = ruby-i18n
+	noextract = middleman-core-3.3.12.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/middleman-core-3.3.12.gem
+	sha512sums = 51125cd7581ff417fc70d804e971023034f2dffdebfe76e3b8f1f71bfcd594466341ec864304c3466cc96c530b86691bfa7e9eccb6945ca1673ea4a813de5a1e
+
+pkgname = ruby-middleman-core
+
