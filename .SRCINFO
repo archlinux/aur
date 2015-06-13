@@ -1,0 +1,21 @@
+pkgbase = python2-pywavelets-git
+	pkgdesc = PyWavelets, wavelet transform module. From rgommers branch
+	pkgver = 0.2.2.r410.7ea3e91
+	pkgrel = 1
+	url = https://github.com/rgommers/pywt
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python2-distribute
+	makedepends = cython2
+	makedepends = unzip
+	depends = python2
+	provides = python2-pywavelets
+	conflicts = python2-pywavelets
+	options = !emptydirs
+	source = python2-pywavelets-git::git://github.com/rgommers/pywt.git#branch=master
+	sha256sums = SKIP
+	sha512sums = SKIP
+
+pkgname = python2-pywavelets-git
+
