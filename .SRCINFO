@@ -1,0 +1,14 @@
+pkgbase = cant
+	pkgdesc = The Canterbury Distribution Package Manager
+	pkgver = 0.8.15
+	pkgrel = 1
+	url = http://www.archlinux.org/
+	arch = any
+	license = GPL
+	depends = pacman
+	depends = bash
+	source = cant
+	md5sums = 85d758dec094ac48c5a2345c5a6a163e
+
+pkgname = cant
+
