@@ -1,0 +1,91 @@
+diff -rup gnocl-0.9.96.orig/src/Makefile gnocl-0.9.96/src/Makefile
+--- gnocl-0.9.96.orig/src/Makefile	2013-01-31 10:52:21.000000000 +0100
++++ gnocl-0.9.96/src/Makefile	2013-09-09 22:58:42.511541653 +0200
+@@ -142,15 +142,15 @@ clean:
+ 	rm -f $(GTK_OBJ) $(PACKAGE_NAME).so
+ 
+ install:
+-	./install.tcl $(PACKAGE_REQUIRE_NAME) $(VERSION) $(PACKAGE_NAME) install
++	./install.tcl $(PACKAGE_REQUIRE_NAME) $(VERSION) $(PACKAGE_NAME) install $(DESTDIR)
+ 
+ 
+ uninstall:
+-	./install.tcl $(PACKAGE_REQUIRE_NAME) $(VERSION) $(PACKAGE_NAME) uninstall
++	./install.tcl $(PACKAGE_REQUIRE_NAME) $(VERSION) $(PACKAGE_NAME) uninstall $(DESTDIR)
+ 
+ reinstall:
+-	./install.tcl $(PACKAGE_REQUIRE_NAME) $(VERSION) $(PACKAGE_NAME) uninstall
+-	./install.tcl $(PACKAGE_REQUIRE_NAME) $(VERSION) $(PACKAGE_NAME) install
++	./install.tcl $(PACKAGE_REQUIRE_NAME) $(VERSION) $(PACKAGE_NAME) uninstall $(DESTDIR)
++	./install.tcl $(PACKAGE_REQUIRE_NAME) $(VERSION) $(PACKAGE_NAME) install $(DESTDIR)
+ 
+ test:
+ 	( \
+@@ -161,10 +161,12 @@ test:
+ 
+ devinstall:
+ 	ar cr libgnocl-$(VERSION).a $(GTK_OBJ)
+-	cp gnocl*.h /usr/include
+-	cp libgnocl*.a /usr/lib
++	test -d $(DESTDIR)/usr/include || mkdir -p $(DESTDIR)/usr/include
++	cp gnocl.h gnoclparams.h $(DESTDIR)/usr/include
++	test -d $(DESTDIR)/usr/lib || mkdir -p $(DESTDIR)/usr/lib
++	cp libgnocl*.a $(DESTDIR)/usr/lib
+ 	rm libgnocl*.a
+ 
+ devuninstall:
+-	rm /usr/include/gnocl*.h
+-	rm /usr/lib/libgnocl*.a
++	rm -f $(DESTDIR)/usr/include/gnocl*.h
++	rm -f $(DESTDIR)/usr/lib/libgnocl*.a
+diff -rup gnocl-0.9.96.orig/src/install.tcl gnocl-0.9.96/src/install.tcl
+--- gnocl-0.9.96.orig/src/install.tcl	2013-01-31 10:52:21.000000000 +0100
++++ gnocl-0.9.96/src/install.tcl	2013-09-09 23:01:54.721552241 +0200
+@@ -36,13 +36,13 @@ proc date { {i date} } {
+ }
+ 
+ # error checking
+-if { $argc != 4 } {
++if { $argc < 4 || $argc > 5 } {
+    set name [file tail $argv0]
+    error "Wrong number of args.\nUsage: $name package version install/uninstall"
+ }
+ 
+ # get parameters
+-foreach {package version name what} $argv { break }
++foreach {package version name what dest} $argv { break }
+ 
+ # get installation directory
+ set dir [info library]
+@@ -51,7 +51,7 @@ set dir [info library]
+ set destDir [file join $dir $name$version]
+ switch -- $what {
+    "install"   {
+-       if { [file exists $destDir] } {
++       if { [file exists $dest$destDir] } {
+            puts "$destDir exists already. Aborting installation."
+            exit -1
+            }
+@@ -70,18 +70,18 @@ switch -- $what {
+            puts $fp "package ifneeded $package $version \[list load \[file join \$dir $name.so\]\]"
+            close $fp
+            puts "Creating $destDir"
+-           file mkdir $destDir
++           file mkdir $dest$destDir
+            set files [glob *.so]
+            lappend files pkgIndex.tcl
+            foreach file $files {
+                puts "Copying $file"
+-               file copy $file $destDir
+-               exec chmod 444 $file
++               file copy $file $dest$destDir
++               exec chmod 644 $file
+                }
+         }
+    "uninstall" {
+        puts "Deleting $destDir"
+-       file delete -force $destDir
++       file delete -force $dest$destDir
+        }
+    default {
+        error "unknown type \"$what\" must be install, test or uninstall"
