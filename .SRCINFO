@@ -1,0 +1,15 @@
+pkgbase = udm
+	pkgdesc = A micro display manager similar to cdm, tdm etc. having 26 SLOC in POSIX shell without any dependencies.
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://aur.archlinux.org
+	arch = any
+	license = GPL
+	depends = sh
+	provides = udm
+	conflicts = cdm
+	conflicts = cdm-simple
+	conflicts = tdm
+
+pkgname = udm
+
