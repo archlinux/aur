@@ -1,0 +1,17 @@
+pkgbase = libhdf5
+	pkgdesc = HDF5 - static library
+	pkgver = 1.8.15
+	pkgrel = 1
+	url = http://www.hdfgroup.org/HDF5/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = time
+	depends = zlib
+	depends = sh
+	options = !libtool
+	source = ftp://ftp.hdfgroup.org/HDF5/releases/hdf5-1.8.15/src/hdf5-1.8.15.tar.bz2
+	md5sums = c3cfd7aeca8ca15160d9784af6748ac4
+
+pkgname = libhdf5
+
