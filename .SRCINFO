@@ -1,0 +1,15 @@
+pkgbase = ttf-lobsang-monlam
+	pkgdesc = A Tibetan font, Monlam Bod-Yig
+	pkgver = 1
+	pkgrel = 1
+	url = http://lobsangmonlam.org/
+	install = ttf-lobsang-monlam.install
+	arch = any
+	license = Apache
+	depends = xorg-font-utils
+	depends = fontconfig
+	source = http://monlam-dictionary.googlecode.com/files/monlambodyig.ttf
+	md5sums = e5da214e2c392d00f29af696c813b63e
+
+pkgname = ttf-lobsang-monlam
+
