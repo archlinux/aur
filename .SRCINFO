@@ -1,0 +1,20 @@
+pkgbase = tome2-git
+	pkgdesc = A dungeon crawler similar to Angband, based on the works of Tolkien.
+	pkgver = 20121104
+	pkgrel = 1
+	url = http://forums.te4.org/viewforum.php?f=28
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	depends = libx11
+	depends = ncurses
+	depends = jansson
+	source = git://gitorious.org/tome2/tome2.git
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 74183fd3880704df6ab64e4c2887b852
+
+pkgname = tome2-git
+
