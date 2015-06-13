@@ -1,0 +1,16 @@
+pkgbase = lddot-hg
+	pkgdesc = A wrapper over ldd, which produces output in Graphviz format.
+	pkgver = 3.a8e5d44f104a
+	pkgrel = 1
+	url = http://jwilk.net/software/lddot
+	arch = any
+	license = MIT
+	makedepends = mercurial
+	depends = python
+	optdepends = graphviz: Graph visualization software for lddot output
+	optdepends = perl-graph-easy: Convert or render graphs to ASCII/Image
+	source = lddot::hg+https://bitbucket.org/jwilk/lddot
+	md5sums = SKIP
+
+pkgname = lddot-hg
+
