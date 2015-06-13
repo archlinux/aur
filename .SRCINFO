@@ -1,0 +1,18 @@
+pkgbase = osc2midi
+	pkgdesc = OSC2MIDI is a highly configurable OSC to jack MIDI (and back) bridge for linux (git version)
+	pkgver = 0.1.04
+	pkgrel = 1
+	url = http://sourceforge.net/projects/osc2midi/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = cmake
+	depends = jack
+	depends = liblo
+	provides = osc2midi
+	conflicts = osc2midi-git
+	source = http://download.sourceforge.net/project/osc2midi/osc2midi_0.1.04.tar.bz2
+	md5sums = 2f4efaa2575d7ddb88b44f9ac3f44dc5
+
+pkgname = osc2midi
+
