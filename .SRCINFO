@@ -1,6 +1,6 @@
 pkgbase = python-vitalus
 	pkgdesc = Python rsync wrapper for backup
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/sciunto/Vitalus
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-vitalus
 	depends = python
 	depends = python-psutil
 	depends = rsync
-	source = http://source.sciunto.org/vitalus/vitalus-0.4.0.tar.bz2
-	md5sums = a648b8c0ee18443d55346b1565fb332b
+	source = https://pypi.python.org/packages/source/V/Vitalus/Vitalus-0.4.1.tar.gz
+	sha256sums = a8fa40e8691d0416d4d30c3c9d900ff575b9dfdec3f954c193b2b23dd766ae77
 
 pkgname = python-vitalus
 

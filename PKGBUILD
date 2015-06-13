@@ -2,7 +2,7 @@
 # Maintainer: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=python-vitalus
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Python rsync wrapper for backup"
 arch=('any')
@@ -11,24 +11,17 @@ license=('GPL3')
 depends=('python' 'python-psutil' 'rsync')
 makedepends=('python-setuptools')
 checkdepends=('python-nose')
-source=(http://source.sciunto.org/vitalus/vitalus-${pkgver}.tar.bz2)
-
-
-build() {
-  cd "$srcdir"
-  python setup.py build
-}
+source=(https://pypi.python.org/packages/source/V/Vitalus/Vitalus-${pkgver}.tar.gz)
+sha256sums=('a8fa40e8691d0416d4d30c3c9d900ff575b9dfdec3f954c193b2b23dd766ae77')
 
 check() {
-  cd "$srcdir"
+  cd "$srcdir/Vitalus-$pkgver"
   nosetests3
 }
 
 package() {
-  cd "$srcdir"
-  python setup.py install --root="${pkgdir}"
-  install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "$srcdir/Vitalus-$pkgver"
+  python setup.py install --root="$pkgdir/" --optimize=1
 }
 
 # vim:ts=2:sw=2:et:
-md5sums=('a648b8c0ee18443d55346b1565fb332b')
