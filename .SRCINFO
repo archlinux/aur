@@ -1,0 +1,18 @@
+pkgbase = shpp-git
+	pkgdesc = preprocessor written for posix shell
+	pkgver = 33439b2
+	pkgrel = 1
+	url = https://github.com/Thaodan/shpp
+	arch = any
+	license = GPL2
+	depends = sh
+	depends = coreutils
+	depends = sed
+	depends = bc
+	provides = shpp
+	conflicts = sh-make-tools
+	source = git+https://github.com/Thaodan/shpp
+	md5sums = SKIP
+
+pkgname = shpp-git
+
