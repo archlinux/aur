@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Areca Backup
+Comment=Advanced personal backup tool
+Exec=bash -c "JAVA_PROGRAM_DIR=/usr/bin/ areca"
+Icon=areca_72x72
+Terminal=false
+Categories=Application;System;
+StartupNotify=true
