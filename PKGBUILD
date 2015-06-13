@@ -1,8 +1,8 @@
 # Maintainer: Raphael Scholer <rascholer@gmail.com>
 _pkgname='python-obpm'
 pkgname="${_pkgname}-git"
-pkgver=2.0_3_g4a66207
-pkgrel=2
+pkgver=2.0_41_gb6be647
+pkgrel=1
 pkgdesc="Python bindings for creating openbox pipe menus"
 arch=('any')
 url="http://github.com/rscholer/${_pkgname}"
@@ -15,7 +15,6 @@ optdepends=('alsa-utils: for alsa pipe menu'
             'exo: for opening applications'
             'python-moc: for mocp pipe menus'
             'python-pyalsaaudio: for alsa pipe menu'
-            'python-setuptools: for running scripts'
 )
 source=("git+${url}")
 sha256sums=('SKIP')
