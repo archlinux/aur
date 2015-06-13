@@ -1,0 +1,24 @@
+pkgbase = ntpdate
+	pkgdesc = Client for the Network Time Protocol (NTP)
+	pkgver = 4.2.8.p1
+	pkgrel = 1
+	url = http://www.ntp.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = perl-html-parser
+	depends = openssl
+	conflicts = ntp
+	conflicts = ntpdate-dev
+	backup = etc/conf.d/ntpdate.conf
+	source = http://archive.ntp.org/ntp4/ntp-4.2.8p1.tar.gz
+	source = ntpdate.conf
+	source = ntpdate.service
+	source = restore-html2man.patch
+	sha256sums = 948274b88f1ed002d867ced6aaefdfd0999668b11285ac2b3a67ff2629d59d88
+	sha256sums = 1ddbf0f51e030c6ec48d50e1b0eb6682f2d51567fbbb8fdd695a0e38a6036fd7
+	sha256sums = 2267e19120de4a73703ed0d83a4a0088309600ce3fed88c3c17a950fa0c1aa85
+	sha256sums = 59571e06242a224c7cacaec7395b7fd25078ab469abb035ea0eb6fbecab8fd65
+
+pkgname = ntpdate
+
