@@ -1,0 +1,227 @@
+diff -u -r nemiver-0.9.5/configure.ac nemiver-0.9.5-vte2.91/configure.ac
+--- nemiver-0.9.5/configure.ac	2013-05-20 21:04:42.000000000 +0200
++++ nemiver-0.9.5-vte2.91/configure.ac	2014-09-28 23:52:45.123979923 +0200
+@@ -353,7 +353,7 @@
+ DEP_UICOMMON=" gtkmm-3.0 >= $LIBGTKMM_VERSION \
+                gtk+-3.0 >= $LIBGTK_VERSION \
+                gtksourceviewmm-3.0 >= $LIBGTKSOURCEVIEWMM_VERSION \
+-               vte-2.90 >= $LIBVTE_VERSION"
++               vte-2.91 >= $LIBVTE_VERSION"
+ 
+ PKG_CHECK_MODULES(NEMIVERUICOMMON, $DEP_UICOMMON $DEP_COMMON $DEP_MEMORYVIEW)
+ NEMIVERUICOMMON_CFLAGS="$NEMIVERUICOMMON_CFLAGS $CPPUNIT_CFLAGS"
+@@ -376,7 +376,7 @@
+ 
+ dnl library dependencies for the nemiver debug perspective plugin
+ DEP_PERSP="gtksourceviewmm-3.0 >= $LIBGTKSOURCEVIEWMM_VERSION \
+-           vte-2.90 >= $LIBVTE_VERSION"
++           vte-2.91 >= $LIBVTE_VERSION"
+ 
+ PKG_CHECK_MODULES(NEMIVERDBGPERSP, $DEP_UICOMMON $DEP_VFS $DEP_PERSP $DEP_MEMORYVIEW $DEP_DYNAMICLAYOUT)
+ NEMIVERDBGPERSP_LIBS="$NEMIVERDBGPERSP_LIBS $CPPUNIT_LIBS"
+diff -u -r nemiver-0.9.5/src/common/nmv-safe-ptr-utils.h nemiver-0.9.5-vte2.91/src/common/nmv-safe-ptr-utils.h
+--- nemiver-0.9.5/src/common/nmv-safe-ptr-utils.h	2013-01-21 13:05:35.000000000 +0100
++++ nemiver-0.9.5-vte2.91/src/common/nmv-safe-ptr-utils.h	2014-09-28 23:53:20.317162220 +0200
+@@ -30,7 +30,7 @@
+ #ifndef __NMV_SAFE_PTR_UTILS_H__
+ #define __NMV_SAFE_PTR_UTILS_H__
+ 
+-#include <glib.h>
++#include <glib-object.h>
+ #include "nmv-object.h"
+ #include "nmv-safe-ptr.h"
+ #include "nmv-namespace.h"
+@@ -99,13 +99,50 @@
+     }
+ };
+ 
+-typedef SafePtr <gchar, CharsRef, GCharUnref> GCharSafePtr;
+-typedef SafePtr <Object, ObjectRef, ObjectUnref> ObjectSafePtr;
+-typedef SafePtr <gchar, CharsRef, DelCharsUnref> CharSafePtr;
+-typedef SafePtr <gunichar, UnicharsRef, DelUnicharsUnref> UnicharSafePtr;
++struct GErrorRef {
++    void
++    operator () (GError *)
++    {}
++};
++
++struct GErrorUnref {
++    void
++    operator () (GError *a_error)
++    {
++        if (a_error) {
++            g_error_free (a_error);
++        }
++    }
++};
++
++struct RefGObjectNative {
++    void operator () (void *a_object)
++    {
++        if (a_object && G_IS_OBJECT (a_object)) {
++            g_object_ref (G_OBJECT (a_object));
++        }
++    }
++};
++
++struct UnrefGObjectNative {
++    void operator () (void *a_object)
++    {
++        if (a_object && G_IS_OBJECT (a_object)) {
++            g_object_unref (G_OBJECT (a_object));
++        }
++    }
++};
++
++typedef SafePtr<gchar, CharsRef, GCharUnref> GCharSafePtr;
++typedef SafePtr<Object, ObjectRef, ObjectUnref> ObjectSafePtr;
++typedef SafePtr<gchar, CharsRef, DelCharsUnref> CharSafePtr;
++typedef SafePtr<gunichar, UnicharsRef, DelUnicharsUnref> UnicharSafePtr;
++typedef SafePtr<GError, GErrorRef, GErrorUnref> GErrorSafePtr;
++typedef SafePtr<void*,
++                RefGObjectNative,
++                UnrefGObjectNative> NativeGObjectSafePtr;
+ 
+ NEMIVER_END_NAMESPACE(common)
+ NEMIVER_END_NAMESPACE(nemiver)
+ 
+ #endif
+-
+diff -u -r nemiver-0.9.5/src/common/nmv-ustring.cc nemiver-0.9.5-vte2.91/src/common/nmv-ustring.cc
+--- nemiver-0.9.5/src/common/nmv-ustring.cc	2013-01-21 13:05:35.000000000 +0100
++++ nemiver-0.9.5-vte2.91/src/common/nmv-ustring.cc	2014-09-28 23:52:02.300830408 +0200
+@@ -479,21 +479,6 @@
+     return *this;
+ }
+ 
+-struct GErrorRef {
+-    void operator () (GError *)
+-    {
+-    }
+-};
+-
+-struct GErrorUnref {
+-    void operator () (GError *a_err)
+-    {
+-        if (a_err) {
+-            g_error_free (a_err);
+-        }
+-    }
+-};
+-
+ bool
+ wstring_to_ustring (const WString &a_wstr,
+                     UString &a_ustr)
+@@ -504,7 +489,7 @@
+     utf8_buf.reset (g_ucs4_to_utf8 (a_wstr.c_str (),
+                                     a_wstr.size (), &wstr_len,
+                                     &utf8_bytes_len, &err));
+-    SafePtr<GError, GErrorRef, GErrorUnref> error;
++    GErrorSafePtr error;
+     error.reset (err);
+     if (error) {
+         LOG_ERROR ("got error conversion error: '" << error->message << "'");
+@@ -531,7 +516,7 @@
+                                 &utf8_bytes_len,
+                                 &wstr_len,
+                                 &err));
+-    SafePtr<GError, GErrorRef, GErrorUnref> error;
++    GErrorSafePtr error;
+     error.reset (err);
+     if (error) {
+         LOG_ERROR ("got error conversion error: '" << error->message << "'");
+diff -u -r nemiver-0.9.5/src/confmgr/nmv-gconf-mgr.cc nemiver-0.9.5-vte2.91/src/confmgr/nmv-gconf-mgr.cc
+--- nemiver-0.9.5/src/confmgr/nmv-gconf-mgr.cc	2013-01-21 13:05:35.000000000 +0100
++++ nemiver-0.9.5-vte2.91/src/confmgr/nmv-gconf-mgr.cc	2014-09-28 23:52:02.300830408 +0200
+@@ -92,16 +92,6 @@
+ 
+ //static const char * NEMIVER_KEY_DIR = "/app/nemiver";
+ 
+-struct GErrorRef {
+-    void operator () (GError *a_error) {if (a_error) {}}
+-};
+-
+-struct GErrorUnref {
+-    void operator () (GError *a_error) {if (a_error) {g_error_free (a_error);}}
+-};
+-
+-typedef SafePtr<GError, GErrorRef, GErrorUnref> GErrorSafePtr;
+-
+ void
+ client_notify_func (GConfClient *a_client,
+                     const char* a_key,
+diff -u -r nemiver-0.9.5/src/persp/dbgperspective/nmv-dbg-perspective.cc nemiver-0.9.5-vte2.91/src/persp/dbgperspective/nmv-dbg-perspective.cc
+--- nemiver-0.9.5/src/persp/dbgperspective/nmv-dbg-perspective.cc	2013-12-01 20:44:54.000000000 +0100
++++ nemiver-0.9.5-vte2.91/src/persp/dbgperspective/nmv-dbg-perspective.cc	2014-09-28 23:52:31.764037271 +0200
+@@ -836,24 +836,6 @@
+     }
+ };
+ 
+-struct RefGObjectNative {
+-    void operator () (void *a_object)
+-    {
+-        if (a_object && G_IS_OBJECT (a_object)) {
+-            g_object_ref (G_OBJECT (a_object));
+-        }
+-    }
+-};
+-
+-struct UnrefGObjectNative {
+-    void operator () (void *a_object)
+-    {
+-        if (a_object && G_IS_OBJECT (a_object)) {
+-            g_object_unref (G_OBJECT (a_object));
+-        }
+-    }
+-};
+-
+ static
+ void gio_file_monitor_cb (const Glib::RefPtr<Gio::File>& file,
+                           const Glib::RefPtr<Gio::File>& other_file,
+diff -u -r nemiver-0.9.5/src/uicommon/nmv-terminal.cc nemiver-0.9.5-vte2.91/src/uicommon/nmv-terminal.cc
+--- nemiver-0.9.5/src/uicommon/nmv-terminal.cc	2013-10-12 08:40:37.000000000 +0200
++++ nemiver-0.9.5-vte2.91/src/uicommon/nmv-terminal.cc	2014-09-28 23:52:45.123979923 +0200
+@@ -46,6 +46,7 @@
+ #include <gtkmm/menu.h>
+ #include <gtkmm/builder.h>
+ #include <gtkmm/uimanager.h>
++#include <pangomm/fontdescription.h>
+ #include <vte/vte.h>
+ #include <glib/gi18n.h>
+ #include "common/nmv-exception.h"
+@@ -133,12 +134,12 @@
+         vte = VTE_TERMINAL (w);
+         THROW_IF_FAIL (vte);
+ 
+-        // Mandatory for vte 0.14	
+-        vte_terminal_set_font_from_string (vte, "monospace");
++        // Mandatory for vte >= 0.14
++        Pango::FontDescription font_desc ("monospace");
++        vte_terminal_set_font (vte, font_desc.gobj());
+ 
+         vte_terminal_set_scroll_on_output (vte, TRUE);
+         vte_terminal_set_scrollback_lines (vte, 1000);
+-        vte_terminal_set_emulation (vte, "xterm");
+ 
+         widget = Glib::wrap (w);
+         THROW_IF_FAIL (widget);
+@@ -264,7 +265,13 @@
+         THROW_IF_FAIL (slave_pty);
+         THROW_IF_FAIL (master_pty);
+ 
+-        vte_terminal_set_pty (vte, master_pty);
++        GError *err = 0;
++        VtePty *p = vte_pty_new_foreign_sync (master_pty, 0, &err);
++        GErrorSafePtr error (err);
++        SafePtr<VtePty, RefGObjectNative, UnrefGObjectNative> pty (p);
++        THROW_IF_FAIL2 (!error, error->message);
++
++        vte_terminal_set_pty (vte, pty.get());
+         return true;
+     }
+ };//end Terminal::Priv
+@@ -338,4 +345,3 @@
+ 
+ 
+ NEMIVER_END_NAMESPACE(nemiver)
+-
