@@ -1,7 +1,7 @@
 pkgbase = yaourt-gui
 	pkgdesc = A bash GUI for yaourt
-	pkgver = 1.1
-	pkgrel = 4
+	pkgver = 1.2
+	pkgrel = 1
 	url = http://alexiobash.com/yaourt-gui-a-bash-gui-per-yaourt-3/
 	arch = any
 	license = GPL
@@ -9,7 +9,7 @@ pkgbase = yaourt-gui
 	depends = sudo
 	optdepends = pacmind: a gtkdialog frontend gui for the package manager, inspired to yaourt-gui
 	optdepends = aurvote: Tool to vote for favorite AUR packages
-	source = http://mirror.alexiobash.com/alexiobash/project/yaourt-gui/yaourt-gui-1.1.tar.gz
+	source = http://mirror.alexiobash.com/alexiobash/project/yaourt-gui/yaourt-gui-1.2.tar.gz
 
 pkgname = yaourt-gui
 
