@@ -1,0 +1,22 @@
+pkgbase = erebus-git
+	pkgdesc = 2D real-time role-playing game.
+	pkgver = 2013.11.24
+	pkgrel = 1
+	epoch = 1
+	url = http://erebusrpg.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = qt4
+	makedepends = git
+	depends = phonon
+	depends = qtwebkit
+	provides = erebus
+	conflicts = erebus
+	source = erebusrpg-code::git://git.code.sf.net/p/erebusrpg/code
+	source = http://launchpad.net/erebus/trunk/0.10/+download/erebussrc.zip
+	md5sums = SKIP
+	md5sums = a96fcd43d5741ba11c6b7b9bea38c0f3
+
+pkgname = erebus-git
+
