@@ -1,0 +1,33 @@
+pkgbase = ultravnc-viewer-i18n
+	pkgver = 1.1.8.0
+	pkgrel = 1
+	url = http://www.uvnc.com
+	arch = any
+	license = GPL
+	depends = ultravnc-viewer
+	provides = ultravnc-viewer-i18n
+	conflicts = ultravnc-viewer-i18n
+	source = Uvnc_translations-1.1.8.0.zip::http://support1.uvnc.com/download/1180/translations.zip
+	sha256sums = 77b442c4d911be9e34bd50c6aad7ec50cef8368d8e3d8f59e312385e3896c34d
+
+pkgname = ultravnc-viewer-i18n-ca
+	pkgdesc = Catalan translation for UltraVNC Viewer
+
+pkgname = ultravnc-viewer-i18n-de
+	pkgdesc = German translation for UltraVNC Viewer
+
+pkgname = ultravnc-viewer-i18n-fr
+	pkgdesc = French translation for UltraVNC Viewer
+
+pkgname = ultravnc-viewer-i18n-ja
+	pkgdesc = Japanese translation for UltraVNC Viewer
+
+pkgname = ultravnc-viewer-i18n-pt
+	pkgdesc = Portuguese translation for UltraVNC Viewer
+
+pkgname = ultravnc-viewer-i18n-ru
+	pkgdesc = Russian translation for UltraVNC Viewer
+
+pkgname = ultravnc-viewer-i18n-es
+	pkgdesc = Spanish translation for UltraVNC Viewer
+
