@@ -1,0 +1,16 @@
+pkgbase = python2-pyftpdlib
+	pkgdesc = Complete asynchronous FTP server library in Python
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = http://pyftpdlib.googlecode.com
+	arch = any
+	license = MIT
+	depends = python2
+	optdepends = python2-sendfile: used to speedup transfers
+	optdepends = python2-pyopenssl: used for SSL support
+	conflicts = pyftpdlib
+	source = https://pypi.python.org/packages/source/p/pyftpdlib/pyftpdlib-1.4.0.tar.gz
+	md5sums = 5aeda8287f4e5ba263e48a79f2a246fd
+
+pkgname = python2-pyftpdlib
+
