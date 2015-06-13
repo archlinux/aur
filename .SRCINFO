@@ -1,0 +1,26 @@
+pkgbase = openscad-git
+	pkgdesc = The programmers solid 3D CAD modeller
+	pkgver = 20150518
+	pkgrel = 1
+	url = http://openscad.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = boost
+	makedepends = eigen
+	makedepends = imagemagick
+	depends = qt5-base
+	depends = qscintilla-qt5
+	depends = cgal
+	depends = opencsg
+	depends = boost-libs
+	provides = openscad
+	conflicts = openscad
+	source = git+https://github.com/openscad/openscad.git
+	source = git+https://github.com/openscad/MCAD.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = openscad-git
+
