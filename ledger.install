@@ -1,0 +1,20 @@
+infodir=/usr/share/info
+infofiles=(ledger3.info.gz ledger-mode.info.gz)
+
+post_install() {
+    [ -x usr/bin/install-info ] || return 0
+    for file in ${infofiles[@]}; do
+        install-info $infodir/$file $infodir/dir 2> /dev/null
+    done
+}
+
+post_upgrade() {
+    post_install $1
+}
+
+pre_remove() {
+    [ -x usr/bin/install-info ] || return 0
+    for file in ${infofiles[@]}; do
+        install-info --delete $infodir/$file $infodir/dir 2> /dev/null
+    done
+}

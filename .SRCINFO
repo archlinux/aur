@@ -1,0 +1,26 @@
+pkgbase = ledger-git
+	pkgdesc = A double-entry accounting system with a command-line reporting interface
+	pkgver = 20150609
+	pkgrel = 1
+	url = http://ledger-cli.org
+	install = ledger.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = boost
+	makedepends = git
+	makedepends = sed
+	makedepends = python2
+	makedepends = cmake
+	makedepends = texinfo
+	makedepends = texlive-plainextra
+	depends = mpfr
+	depends = boost-libs
+	depends = libedit
+	provides = ledger
+	conflicts = ledger
+	source = ledger::git://github.com/ledger/ledger.git#branch=next
+	sha256sums = SKIP
+
+pkgname = ledger-git
+
