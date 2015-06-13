@@ -1,0 +1,19 @@
+pkgbase = incursion
+	pkgdesc = A freeware roguelike with very detailed characters.
+	pkgver = 0.6.9H4L
+	pkgrel = 1
+	url = http://www.incursion-roguelike.net/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = gcc-libs
+	depends = libxau
+	depends = libxfixes
+	depends = libxrender
+	depends = libxcursor
+	depends = libxpm
+	source = http://www.incursion-roguelike.org/Incursion%200.6.9H4L.tar.gz
+	md5sums = 32073f76643b3046dde068cbb6330860
+
+pkgname = incursion
+
