@@ -1,0 +1,15 @@
+pkgbase = miniracer
+	pkgdesc = An OpenGL car racing game, based on ID's famous Quake engine
+	pkgver = 1.04
+	pkgrel = 7
+	url = http://miniracer.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = sdl_mixer
+	depends = libgl
+	source = http://downloads.sourceforge.net/sourceforge/miniracer/miniracer-1.04.tar.gz
+	md5sums = 9078a3820bda65fac66e8cfc8270c102
+
+pkgname = miniracer
+
