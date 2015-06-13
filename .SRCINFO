@@ -1,0 +1,32 @@
+pkgbase = python2-gudev-git
+	pkgdesc = Python (PyGObject) bindings to the GUDev library
+	pkgver = 147.2.1.g780b007
+	pkgrel = 2
+	url = http://github.com/nzjrs/python-gudev
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	depends = systemd
+	depends = python2
+	provides = python2-gudev
+	provides = python-gudev
+	conflicts = python2-gudev
+	conflicts = python-gudev
+	replaces = conduit-svn
+	options = !libtool
+	source = git://github.com/nzjrs/python-gudev.git
+	source = configure.patch
+	source = makefile.patch
+	md5sums = SKIP
+	md5sums = 0ab9c9f78c88023b86703d503630da10
+	md5sums = 5e610a3a114df81b8598d91e2ed46f30
+	sha1sums = SKIP
+	sha1sums = f12d3a0849205d55b43106d3bc088a89ce21d290
+	sha1sums = 517dd3bbe346b1627745d1dc5affc04786b16ec1
+	sha256sums = SKIP
+	sha256sums = 5db0bd5945e6564cb8c602a5f3b63168b85e483eccf286ed294e6df571c3f62b
+	sha256sums = e3b6be0db49b4f90d2e89fbb4dff0f194d8514a2d1577ee81a76c5e4dc2e50bc
+
+pkgname = python2-gudev-git
+

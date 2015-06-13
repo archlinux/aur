@@ -1,0 +1,11 @@
+--- python-gudev-build/Makefile.am	2013-03-05 20:45:33.476890335 +0200
++++ python-gudev-build/Makefile.am	2013-03-05 20:38:29.431926745 +0200
+@@ -3,7 +3,7 @@
+ 
+ ACLOCAL_AMFLAGS = -I m4
+ 
+-INCLUDES = \
++AM_CPPFLAGS = \
+ 	$(GUDEV_CFLAGS) \
+ 	$(GOBJECT_CFLAGS) \
+ 	$(PYGOBJECT_CFLAGS) \
