@@ -1,0 +1,23 @@
+pkgbase = packer-git
+	pkgdesc = Bash wrapper for pacman and aur
+	pkgver = 292.bc9976d
+	pkgrel = 1
+	url = https://github.com/gavinhungry/packer
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = grep
+	depends = sed
+	depends = bash
+	depends = curl
+	depends = pacman
+	depends = jshon
+	optdepends = sudo: install and update packages as non-root
+	optdepends = customizepkg: apply customizepkg modifications
+	provides = packer
+	conflicts = packer
+	source = packer-git::git+https://github.com/gavinhungry/packer
+	sha256sums = SKIP
+
+pkgname = packer-git
+
