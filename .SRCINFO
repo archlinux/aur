@@ -1,0 +1,29 @@
+pkgbase = fish-shell-git
+	pkgdesc = User friendly shell intended mostly for interactive use.
+	pkgver = 2.1.1.r1203.gd7ba6e4
+	pkgrel = 1
+	epoch = 2
+	url = http://fishshell.com
+	install = fish-shell.install
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = GPL
+	license = LGPL
+	license = BSD
+	license = MIT
+	makedepends = doxygen
+	makedepends = git
+	makedepends = ncurses
+	depends = bc
+	optdepends = python: fish_update_completions and other tools
+	optdepends = pkgfile: for command-not-found handler
+	provides = fish
+	provides = fish-shell
+	conflicts = fish
+	conflicts = fish-shell
+	source = git://github.com/fish-shell/fish-shell.git
+	md5sums = SKIP
+
+pkgname = fish-shell-git
+
