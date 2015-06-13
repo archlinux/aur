@@ -1,0 +1,13 @@
+pkgbase = liblfds
+	pkgdesc = Lock free data structures for C.
+	pkgver = 6.1.1
+	pkgrel = 1
+	url = http://www.liblfds.org/
+	arch = i686
+	arch = x86_64
+	license = custom:none
+	depends = glibc
+	source = http://www.liblfds.org/downloads/liblfds%20release%206.1.1%20source.tar.bz2
+
+pkgname = liblfds
+
