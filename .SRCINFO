@@ -1,0 +1,16 @@
+pkgbase = atomiks
+	pkgdesc = Atomiks is a faithful remake of, and a tribute to, Atomix, a classic puzzle game
+	pkgver = 1.0.4.1
+	pkgrel = 1
+	url = http://sourceforge.net/projects/atomiks/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = sdl2_mixer
+	source = http://downloads.sourceforge.net/project/atomiks/v1.0.4.1/atomiks-1.0.4.1.tar.gz
+	source = atomiks.desktop
+	md5sums = 1922f6b08e2e537b6ffdce3bf8e4721d
+	md5sums = e1e54d118bf749bcaff89a2a18800b14
+
+pkgname = atomiks
+

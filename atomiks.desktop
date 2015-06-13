@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Atomiks
+GenericName=Puzzle game
+Comment=Atomiks is a faithful remake of, and a tribute to, Atomix, a classic puzzle game
+Exec=atomiks
+Icon=/usr/share/pixmaps/atomiks.png
+Type=Application
+Terminal=false
+Categories=Application;Game
