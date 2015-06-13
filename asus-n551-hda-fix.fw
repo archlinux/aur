@@ -1,0 +1,8 @@
+[codec]
+0x10ec0668 0x1043177d 0
+
+[model]
+asus-mode8
+
+[pincfg]
+0x1a 0x90170151
