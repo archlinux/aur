@@ -1,0 +1,16 @@
+pkgbase = rickyd
+	pkgdesc = An easily moddable clone of Rick Dangerous
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://sourceforge.net/projects/rickyd/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = sdl2_ttf
+	source = http://downloads.sourceforge.net/sourceforge/rickyd/rickyd-src-0.2.0.tar.gz
+	md5sums = 3775f51ad19c81602d8c211c838ee69a
+
+pkgname = rickyd
+
