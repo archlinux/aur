@@ -1,0 +1,17 @@
+pkgbase = python-websocket-client-git
+	pkgdesc = Websocket client for python
+	pkgver = r1
+	pkgrel = 1
+	url = https://github.com/liris/websocket-client
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-six
+	provides = python-websocket-client
+	conflicts = python-websocket-client
+	source = websocket-client::git+https://github.com/liris/websocket-client.git
+	sha512sums = SKIP
+
+pkgname = python-websocket-client-git
+
