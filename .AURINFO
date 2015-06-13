@@ -1,0 +1,16 @@
+pkgbase = python2-scoop
+	pkgdesc = Scalable Concurrent Operations in Python, is a distributed task module allowing concurrent parallel programming on various environments, from heterogeneous grids to supercomputers.
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://scoop.googlecode.com
+	arch = any
+	license = LGPL
+	depends = python2
+	depends = python2-setuptools
+	depends = python2-greenlet
+	depends = python2-pyzmq
+	depends = openssh
+	source = https://pypi.python.org/packages/source/s/scoop/scoop-0.7.1.release.tar.gz
+
+pkgname = python2-scoop
+
