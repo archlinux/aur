@@ -1,0 +1,17 @@
+pkgbase = mythryl-git
+	pkgdesc = A modern typesafe, threadsafe, stackless ML.
+	pkgver = 20100319
+	pkgrel = 1
+	url = http://mythryl.com/
+	arch = i686
+	license = GPL3
+	makedepends = git
+	depends = gtk2
+	depends = gtkglext
+	provides = mythryl
+	conflicts = mythryl
+	source = git://github.com/mythryl/mythryl.git
+	md5sums = SKIP
+
+pkgname = mythryl-git
+
