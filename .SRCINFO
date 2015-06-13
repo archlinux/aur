@@ -1,0 +1,24 @@
+pkgbase = cirkuit
+	pkgdesc = Cirkuit is a KDE4 GUI for the Circuit macros by Dwight Aplevich, for drawing high-quality line diagrams to include in TeX, LaTeX, for similar documents.
+	pkgver = 0.4.3
+	pkgrel = 4
+	url = http://wwwu.uni-klu.ac.at/magostin/cirkuit.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdebase-runtime
+	depends = texlive-core
+	depends = m4
+	depends = ghostscript
+	depends = texlive-pstricks
+	depends = netpbm
+	depends = poppler-qt
+	optdepends = dpic: improved circuit macros support
+	optdepends = gnuplot: Gnuplot backend
+	source = http://wwwu.uni-klu.ac.at/magostin/src/cirkuit-0.4.3.tar.bz2
+	md5sums = dccdb6bdb6f1afb99cbebe4780f96b49
+
+pkgname = cirkuit
+
