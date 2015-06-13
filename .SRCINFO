@@ -1,0 +1,30 @@
+pkgbase = fpc-svn
+	pkgver = 3.1.1.r31028
+	pkgrel = 1
+	url = http://www.freepascal.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = custom
+	makedepends = fpc
+	depends = ncurses
+	depends = zlib
+	depends = expat
+	source = fpcbuild::svn+http://svn.freepascal.org/svn/fpcbuild/trunk
+	sha1sums = SKIP
+
+pkgname = fpc-svn
+	pkgdesc = The Free Pascal Compiler is a Turbo Pascal 7.0 and Delphi compatible 32bit Pascal Compiler. It comes with fully TP 7.0 compatible run-time library.
+	provides = fpc
+	conflicts = fpc
+	options = zipman
+	options = staticlibs
+	backup = etc/fpc.cfg
+
+pkgname = fpc-src-svn
+	pkgdesc = Sources for the FreePascal compiler (required by the Lazarus IDE)
+	provides = fpc-src
+	conflicts = fpc-src
+	options = !strip
+
