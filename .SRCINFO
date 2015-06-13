@@ -1,0 +1,18 @@
+pkgbase = shellsql
+	pkgdesc = ShellSQL is a suite of programs designed to enable LINUX/UNIX shell scripts to connect to SQL engines and execute SQL queries and commands in a simple way enabling intergration with the rest of the script, support DB: postgres, mysql, sqlite3 and odbc
+	pkgver = 0.7.7
+	pkgrel = 1
+	url = http://shellsql.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	depends = gcc
+	optdepends = postgresql
+	optdepends = mysql
+	optdepends = sqlite3
+	source = http://sourceforge.net/projects/shellsql/files/shellsql/0.7.7/shellsql-0.7.7.tgz/download
+	md5sums = 5b9e714048aa892d312408f401b5bc62
+
+pkgname = shellsql
+
