@@ -1,0 +1,14 @@
+pkgbase = gistit
+	pkgdesc = Send content from console/file to GitHub gist
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/jrbasso/gistit
+	arch = any
+	license = GPL2
+	depends = curl
+	depends = jansson
+	source = gistit-0.1.3.tar.gz::https://github.com/jrbasso/gistit/archive/v0.1.3.tar.gz
+	md5sums = 536cca086b1c36023a0d177f874b7727
+
+pkgname = gistit
+
