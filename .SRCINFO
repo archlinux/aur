@@ -9,7 +9,6 @@ pkgbase = atom-editor-git
 	makedepends = git
 	makedepends = npm
 	depends = gconf
-	depends = base-devel
 	depends = nodejs
 	depends = libgnome-keyring
 	depends = python2
