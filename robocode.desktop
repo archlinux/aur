@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=RoboCode
+GenericName=RoboCode
+Comment=
+Exec=/usr/bin/robocode
+Icon=/opt/robocode/robocode.ico
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Game
