@@ -1,0 +1,22 @@
+post_install() {
+  /usr/NX/scripts/setup/nxnode --install arch
+  /usr/NX/scripts/setup/nxserver --install arch
+}
+
+pre_upgrade() {
+  /usr/NX/scripts/setup/nxserver --stop > /dev/null 2>&1
+  /usr/NX/scripts/setup/nxserver --broadcast "NX is being upgraded" > /dev/null 2>&1
+}
+
+post_upgrade() {
+  echo "post_upgrade"
+  /usr/NX/scripts/setup/nxserver --update arch
+  /usr/NX/scripts/setup/nxnode --update arch
+}
+
+pre_remove() {
+  pre_upgrade
+  /usr/NX/scripts/setup/nxserver --uninstall
+  /usr/NX/scripts/setup/nxnode --uninstall
+}
+
