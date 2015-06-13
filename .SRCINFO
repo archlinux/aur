@@ -1,8 +1,8 @@
 pkgbase = openocd-git
 	pkgdesc = Debugging, in-system programming and boundary-scan testing for embedded target devices (git version)
-	pkgver = 6734.09ca5af
+	pkgver = 70a14db
 	pkgrel = 1
-	url = http://openocd.sourceforge.net/
+	url = http://openocd.org
 	install = openocd-git.install
 	arch = i686
 	arch = x86_64
@@ -17,18 +17,13 @@ pkgbase = openocd-git
 	depends = libftdi-compat
 	depends = libusb
 	depends = libusb-compat
-	optdepends = libftdi: support devices using this FTDI implementation
-	optdepends = libftd2xx: support devices using this FTDI implementation
-	optdepends = hidapi: support CMSIS-DAP compliant devices
+	depends = hidapi
 	provides = openocd
 	conflicts = openocd
 	options = !strip
-	source = openocd::git://git.code.sf.net/p/openocd/code
-	source = openocd-0.9.0-exit-clean.patch
+	source = openocd-git::git://git.code.sf.net/p/openocd/code
 	md5sums = SKIP
-	md5sums = 72f43470849c08d298a8de6b4598ba3b
 	sha1sums = SKIP
-	sha1sums = 5456bd27e1bdb466a3df12f163efb8b6128429b9
 
 pkgname = openocd-git
 

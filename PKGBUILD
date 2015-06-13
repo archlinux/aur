@@ -7,17 +7,14 @@
 # Contributor: Samuel Tardieu <sam@rfc1149.net>
 
 pkgname=openocd-git
-_gitname=openocd
-pkgver=6734.09ca5af
+_gitname=openocd-git
+pkgver=70a14db
 pkgrel=1
 pkgdesc="Debugging, in-system programming and boundary-scan testing for embedded target devices (git version)"
 arch=('i686' 'x86_64' 'arm')
-url="http://openocd.sourceforge.net/"
+url="http://openocd.org"
 license=('GPL')
-depends=('libftdi' 'libftdi-compat' 'libusb' 'libusb-compat')
-optdepends=('libftdi: support devices using this FTDI implementation'
-            'libftd2xx: support devices using this FTDI implementation'
-            'hidapi: support CMSIS-DAP compliant devices')
+depends=('libftdi' 'libftdi-compat' 'libusb' 'libusb-compat' 'hidapi' )
 makedepends=('git' 'automake>=1.11' 'autoconf' 'libtool' 'tcl')
 options=(!strip)
 install=openocd-git.install
@@ -26,24 +23,52 @@ conflicts=('openocd')
 
 source=(
     "${_gitname}::git://git.code.sf.net/p/openocd/code"
-    "openocd-0.9.0-exit-clean.patch"
+    #"openocd-0.9.0-exit-clean.patch"
     )
 md5sums=(
     'SKIP'
-    '72f43470849c08d298a8de6b4598ba3b'
     )
 sha1sums=(
     'SKIP'
-    '5456bd27e1bdb466a3df12f163efb8b6128429b9'
     )
 
 # Specify desired features and device support here. A list can be
 # obtained by running ./configure in the source directory.
 _features=(
-    sysfsgpio amtjtagaccel arm-jtag-ew at91rm9200 buspirate ep93xx ftdi gw16012 jlink
-    oocd_trace opendous osbdm parport presto_libftdi remote-bitbang rlink stlink ti-icdi
-    ulink usbprog vsllink
-    arm-jtag-ew dummy
+    aice
+    amtjtagaccel
+    armjtagew
+    at91rm9200
+    bcm2835gpio
+    buspirate
+    cmsis-dap
+    dummy
+    ep93xx
+    ftdi
+    gw16012
+    ioutil
+    jlink
+    jtag_vpi
+    legacy-ft2232_libftdi
+    oocd_trace
+    opendous
+    openjtag_ftdi
+    osbdm
+    parport
+    presto_libftdi
+    remote-bitbang
+    rlink
+    stlink
+    sysfsgpio
+    ti-icdi
+    ulink
+    usb-blaster-2
+    usb_blaster_libftdi
+    usbprog
+    vsllink
+    #parport-giveio
+    #zy1000
+    #zy1000-master
     )
 
 pkgver_git() {
@@ -67,7 +92,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${_gitname}"
-  patch -p1 <$srcdir/openocd-0.9.0-exit-clean.patch
+  #patch -p1 <$srcdir/openocd-0.9.0-exit-clean.patch
 }
 
 build() {
@@ -78,16 +103,15 @@ build() {
     --enable-maintainer-mode \
     --disable-werror \
     ${_features[@]/#/--enable-} \
-    --enable-legacy-ft2232_libftdi \
-    --enable-usb_blaster_libftdi \
     $(NULL)
 
+  #make clean
   make
 }
 
 package() {
   cd "$srcdir/${_gitname}"
   make DESTDIR=${pkgdir} install
-  #rm -rf ${srcdir}/$_gitname-build
-  #rm -rf $pkgdir/usr/share/info/dir
+  rm -rf ${srcdir}/$_gitname-build
+  rm -rf $pkgdir/usr/share/info/dir
 }
