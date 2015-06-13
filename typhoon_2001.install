@@ -1,0 +1,6 @@
+post_install() {
+   echo "To change the game mode, you have to manually edit /usu/share/typhoon_2001/typhoon.cfg"
+   echo "Other settings work from inside the game"
+
+}
+

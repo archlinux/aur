@@ -1,0 +1,33 @@
+pkgbase = typhoon_2001
+	pkgdesc = A fast paced 3D shoot-em-up based on Tempest 2000
+	pkgver = r3992
+	pkgrel = 4
+	url = http://www.kuto.de/projekte_typhoon.html
+	install = typhoon_2001.install
+	arch = i686
+	arch = x86_64
+	license = unknown freeware
+	options = !strip
+	source = https://dl.dropboxusercontent.com/u/13181650/typhoon_2001_r3992.tar.gz
+	source = https://dl.dropboxusercontent.com/u/13181650/typhoon_add.tar.gz
+	md5sums = d83d89570a18ef121776442baef00647
+	md5sums = b02d2ea8fcfed6f065cf1837723c03da
+	depends_i686 = flac
+	depends_i686 = glu
+	depends_i686 = libpulse
+	depends_i686 = libvorbis
+	depends_i686 = libxcursor
+	depends_i686 = libxpm
+	depends_i686 = libxrender
+	depends_i686 = mesa
+	depends_x86_64 = lib32-flac
+	depends_x86_64 = lib32-glu
+	depends_x86_64 = lib32-libpulse
+	depends_x86_64 = lib32-libvorbis
+	depends_x86_64 = lib32-libxcursor
+	depends_x86_64 = lib32-libxpm
+	depends_x86_64 = lib32-libxrender
+	depends_x86_64 = lib32-mesa
+
+pkgname = typhoon_2001
+
