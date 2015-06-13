@@ -1,0 +1,18 @@
+pkgbase = tophat
+	pkgdesc = fast splice junction mapper for RNA-Seq reads
+	pkgver = 2.0.14
+	pkgrel = 1
+	url = http://ccb.jhu.edu/software/tophat/index.shtml
+	arch = x86_64
+	arch = i686
+	license = PerlArtistic
+	makedepends = boost
+	makedepends = clang
+	depends = boost-libs
+	depends = bowtie2
+	depends = python2
+	source = http://ccb.jhu.edu/software/tophat/downloads/tophat-2.0.14.tar.gz
+	md5sums = 509f72082c98f116131e976681578a9f
+
+pkgname = tophat
+
