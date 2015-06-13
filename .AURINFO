@@ -1,0 +1,18 @@
+pkgbase = partitionfinder
+	pkgdesc = discovers optimal partitioning schemes for DNA sequences
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/brettc/partitionfinder
+	arch = i686
+	arch = x86_64
+	depends = python2
+	depends = raxml
+	source = partitionfinder-1.1.1.tar.gz::https://github.com/brettc/partitionfinder/archive/v1.1.1.tar.gz
+	source = partitionfinder.sh
+	source = partitionfinder-protein.sh
+	md5sums = 3129ea6fe0067cbd239099c071dc3db0
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = partitionfinder
+
