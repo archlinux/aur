@@ -1,0 +1,15 @@
+pkgbase = python2-starpy
+	pkgdesc = Twisted Protocols for interaction with Asterisk PBX
+	pkgver = 1.0.0a13
+	pkgrel = 2
+	url = http://www.vrplumber.com/programming/starpy/
+	arch = any
+	license = custom:"StarPy License"
+	makedepends = python2-distribute
+	depends = python2-twisted
+	depends = python2-basicproperty
+	source = http://downloads.sourceforge.net/starpy/starpy-1.0.0a13.tar.gz
+	md5sums = 00661caec56e54974a804daf5d2f172d
+
+pkgname = python2-starpy
+
