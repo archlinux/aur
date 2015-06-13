@@ -1,0 +1,16 @@
+pkgbase = mbrola-voices-es1
+	pkgdesc = A Spanish male voice for the MBROLA synthesizer
+	pkgver = 980610
+	pkgrel = 3
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-es
+	groups = mbrola-voices
+	groups = gespeaker-mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/es1/es1-980610.zip
+	md5sums = d3bb71fb1012fe972b1cabe2d1582c04
+
+pkgname = mbrola-voices-es1
+
