@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=xnec2c
+Name[en_US]=xnec2c
+Comment=GTK+ nec Viewer
+Comment[en_US]=GTK+ nec Viewer
+Exec=xnec2c.sh
+Icon=xnec2c
+MimeType=text/plain;
+StartupNotify=true
+Type=Application
+Categories=Network;HamRadio;
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false

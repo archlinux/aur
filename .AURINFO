@@ -1,0 +1,16 @@
+pkgbase = xnec2c
+	pkgdesc = GTK+ Antenna EM Modeling Client
+	pkgver = 3.2
+	pkgrel = 1
+	url = http://www.qsl.net/5b4az/pkg/nec2/xnec2c/doc/xnec2c.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	source = http://www.qsl.net/5b4az/pkg/nec2/xnec2c/xnec2c-3.2.tar.bz2
+	source = xnec2c.desktop
+	source = xnec2c.sh
+	source = http://bjensen.fedorapeople.org/pkgs/hams/icon/Ham_Icon-1-48.png
+
+pkgname = xnec2c
+
