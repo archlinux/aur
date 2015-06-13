@@ -4,9 +4,9 @@
 pkgname=lua51-event
 _pkgbase=luaevent
 pkgver=0.4.3
-pkgrel=3
+pkgrel=4
 pkgdesc="libevent binding for Lua"
-arch=('i686' 'x86_64' 'armv6h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/harningt/luaevent"
 license=('LGPL2.1')
 makedepends=('lua51' 'lua51-socket')
