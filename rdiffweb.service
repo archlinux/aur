@@ -1,0 +1,12 @@
+[Unit]
+Description=Web interface for rdiff-backup
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/rdiffweb --pid-file=/run/rdiffweb.pid -d --background 
+ExecStartPre=/bin/rm -f /run/rdiffweb.pid
+PIDFile=/run/rdiffweb.pid
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,21 @@
+--- setup.py	2015-04-01 01:55:50.000000000 +0200
++++ setup.py.pkg	2015-05-05 21:27:02.183333367 +0200
+@@ -85,11 +85,14 @@
+      sub_commands = build_.sub_commands[:]
+      sub_commands.insert(0, ('compile_all_catalogs', None))
+ 
+-_data_files = [('/etc/init.d', ['extras/init/rdiffweb']),
+-            ('/etc/logrotate.d', ['extras/logrotate/rdiffweb']),
++_data_files = [('/etc/logrotate.d', ['extras/logrotate/rdiffweb']),
+            ]
+-if not os.path.isfile("/etc/rdiffweb/rdw.conf"):
+-  _data_files.append(('/etc/rdiffweb', ['rdw.conf']))
++
++# This test is broken when packaging : there is no need to do it
++# We will let the backup=() array of the PKGBUILD to do the job
++# We always want to provide the rdw.conf
++
++_data_files.append(('/etc/rdiffweb', ['rdw.conf']))
+ 
+ setup(name='rdiffweb',
+       version='0.7.0',

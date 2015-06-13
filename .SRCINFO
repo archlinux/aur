@@ -1,0 +1,25 @@
+pkgbase = rdiffweb
+	pkgdesc = Web interface for browsing and restoring from rdiff-backup repositories.
+	pkgver = 0.7.0
+	pkgrel = 2
+	url = http://www.rdiffweb.org/wiki/index.php?title=Main_Page
+	arch = any
+	license = GPL
+	depends = python2
+	depends = python2-cherrypy
+	depends = python2-pysqlite
+	depends = python2-jinja
+	depends = python2-setuptools
+	depends = python2-babel
+	depends = rdiff-backup
+	optdepends = pyopenssl: for https support
+	backup = etc/rdiffweb/rdw.conf
+	source = https://github.com/ikus060/rdiffweb/archive/v0.7.0.tar.gz
+	source = setup.py.patch
+	source = rdiffweb.service
+	sha256sums = 0c374524f770e44af8a4176447a1cc4e6bb83bf8bac825275b90cd94e6119243
+	sha256sums = 52c796cb96a70184dbcab6de079fae87232e50f33f100ba83946764e85741de1
+	sha256sums = cb70f474dabbcb9f1f52ffd11158ab66068e0edf6313589ee523524e796fb455
+
+pkgname = rdiffweb
+
