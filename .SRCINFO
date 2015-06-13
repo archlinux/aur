@@ -1,0 +1,17 @@
+pkgbase = yokadi
+	pkgdesc = Not your grandma TODO list
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = http://yokadi.github.io
+	install = yokadi.install
+	arch = any
+	license = GPL3
+	depends = python2-sqlobject
+	depends = python2-dateutil
+	depends = python2-crypto
+	depends = hicolor-icon-theme
+	source = http://yokadi.github.io/download/yokadi-0.14.0.tar.bz2
+	md5sums = c6b300aa478adde6012bc35bad5a8a4f
+
+pkgname = yokadi
+
