@@ -1,0 +1,15 @@
+pkgbase = proxydriver
+	pkgdesc = Sets GNOME or KDE proxy settings using NetworkManager's informations
+	pkgver = 1.61
+	pkgrel = 2
+	url = http://marin.jb.free.fr/proxydriver/
+	arch = any
+	license = GPL
+	depends = networkmanager
+	optdepends = gconf
+	optdepends = kdebase-runtime
+	source = http://downloads.sourceforge.net/sourceforge/proxydriver/proxydriver_1.61_all.deb
+	md5sums = 0c27ce986156e8842747c07bec85876a
+
+pkgname = proxydriver
+
