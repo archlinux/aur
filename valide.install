@@ -1,0 +1,16 @@
+post_install() {
+  gtk-update-icon-cache -q /usr/share/icons/hicolor/
+  xdg-icon-resource forceupdate
+  xdg-desktop-menu forceupdate
+  update-mime-database /usr/share/mime
+  update-desktop-database -q
+}
+
+post_update() {
+  post_install
+}
+
+post_remove() {
+  post_install
+}
+

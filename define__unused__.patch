@@ -1,0 +1,12 @@
+diff -Naur src/~tarnyko/valide/trunk/ctags-vala/ctags/general.h src/~tarnyko-patched/valide/trunk/ctags-vala/ctags/general.h
+--- src/~tarnyko/valide/trunk/ctags-vala/ctags/general.h	2012-12-26 17:07:38.000000000 +0100
++++ src/~tarnyko-patched/valide/trunk/ctags-vala/ctags/general.h	2013-11-13 17:59:52.958836828 +0100
+@@ -57,7 +57,7 @@
+  *  to prevent warnings about unused variables.
+  */
+ #if (__GNUC__ > 2  ||  (__GNUC__ == 2  &&  __GNUC_MINOR__ >= 7)) && !defined (__GNUG__)
+-# define __unused__  __attribute__((unused))
++# define __unused__
+ # define __printf__(s,f)  __attribute__((format (printf, s, f)))
+ #else
+ # define __unused__

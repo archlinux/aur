@@ -1,0 +1,33 @@
+pkgbase = valide
+	pkgdesc = Val(a)IDE is an Integrated Development Environment for the Vala programming language (Tarnyko branch).
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = http://www.tarnyko.net/en/?q=node/24
+	install = valide.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = gdl2
+	depends = vala
+	depends = vala0.12
+	depends = gtksourceview2
+	depends = intltool
+	depends = libunique
+	depends = python
+	depends = desktop-file-utils
+	options = !emptydirs
+	source = http://www.tarnyko.net/valaide/valide-0.7.2_(TARNYKO).tgz
+	source = define__unused__.patch
+	source = valide-16.png
+	source = valide-32.png
+	source = valide-48.png
+	source = valide-64.png
+	md5sums = ff490ddd4fd6a0ea66799936a546ec89
+	md5sums = d06532619522fca4509e5bf053f785d0
+	md5sums = aac4e39f03d8009c156243b1a6d6f985
+	md5sums = 014678cfc8101cfe558d7ec72d9feaa2
+	md5sums = 71ca8aedf3cea5b0086f36885f5f9902
+	md5sums = 1399e82ad864f32b9b50eece09a54b90
+
+pkgname = valide
+
