@@ -1,7 +1,7 @@
 # Maintainer: ant32 <antreimer@gmail.com>
 
 pkgname=mingw-w64-quazip-qt4
-pkgver=0.7
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="C++ wrapper for the Gilles Vollant's ZIP/UNZIP C package (mingw-w64)"
 url="http://sourceforge.net/projects/quazip/"
@@ -12,7 +12,7 @@ conflicts=('mingw-w64-quazip-qt5')
 source=("http://downloads.sourceforge.net/project/quazip/quazip/$pkgver/quazip-$pkgver.tar.gz")
 options=('!strip' '!buildflags' 'staticlibs')
 license=('LGPL')
-md5sums=('52a9d807934ce4e9c30ead677a3148d2')
+md5sums=('3b99effb2a9417707d463e6f19cf2629')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
