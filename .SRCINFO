@@ -1,0 +1,21 @@
+pkgbase = gtkparasite-git
+	pkgdesc = GTK+ debugging and development tool for GTK+3 applications
+	pkgver = 0.3.0.r95.445cd7a
+	pkgrel = 2
+	url = http://chipx86.github.io/gtkparasite/
+	install = gtkparasite-git.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gnome-common
+	depends = python2
+	depends = gtksourceview3
+	depends = gsettings-desktop-schemas
+	options = !libtool
+	source = gtkparasite-git::git://github.com/chipx86/gtkparasite.git
+	sha256sums = SKIP
+	sha512sums = SKIP
+
+pkgname = gtkparasite-git
+
