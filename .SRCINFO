@@ -1,0 +1,16 @@
+pkgbase = glass
+	pkgdesc = A cross-platform assembler for the Z80 processor
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://bitbucket.org/grauw/glass
+	arch = any
+	license = Apache
+	depends = java-runtime
+	noextract = glass-0.4.jar
+	source = https://bitbucket.org/grauw/glass/downloads/glass-0.4.jar
+	source = glass
+	md5sums = 7b1e56de3ec590a6a021b127a21bae55
+	md5sums = 3fa2766909bdc108dfdfdeac01f6bb04
+
+pkgname = glass
+
