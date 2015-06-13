@@ -1,0 +1,17 @@
+pkgbase = pkgbuild-watch
+	pkgdesc = Monitor upstream for updates.
+	pkgver = 20120622
+	pkgrel = 1
+	url = http://kmkeen.com/pkgbuild-watch
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash
+	depends = curl
+	depends = html2text
+	depends = expac
+	source = git+https://github.com/keenerd/pkgbuild-watch
+	md5sums = SKIP
+
+pkgname = pkgbuild-watch
+
