@@ -1,0 +1,20 @@
+pkgbase = enchant-pure
+	pkgdesc = A wrapper library for pure and generic spell checking for all languages, supporting Aspell and Myspell/Hunspell engines
+	pkgver = 1.6.0
+	pkgrel = 3
+	url = http://www.abisource.com/enchant/
+	arch = any
+	license = LGPL
+	depends = aspell>=0.50.0
+	depends = dbus-glib>=0.62
+	depends = hunspell
+	provides = enchant
+	conflicts = enchant
+	options = !libtool
+	source = http://www.abisource.com/downloads/enchant/1.6.0/enchant-1.6.0.tar.gz
+	source = warnings-fix.patch
+	sha1sums = 321f9cf0abfa1937401676ce60976d8779c39536
+	sha1sums = 8e23f2b350e77c2a2e9accf1ce1b9a18aefb69ff
+
+pkgname = enchant-pure
+
