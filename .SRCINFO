@@ -1,0 +1,15 @@
+pkgbase = python2-htseq
+	pkgdesc = framework to process and analyze data from high-throughput sequencing assays
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = http://www-huber.embl.de/users/anders/HTSeq/doc/overview.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2-matplotlib
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/H/HTSeq/HTSeq-0.6.1p1.tar.gz
+	md5sums = c44d7b256281a8a53b6fe5beaeddd31c
+
+pkgname = python2-htseq
+
