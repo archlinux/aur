@@ -1,0 +1,16 @@
+pkgbase = hyperrogue
+	pkgdesc = You are a lone outsider in a strange, non-Euclidean hyperbolic world. Optional music.
+	pkgver = 5.5a
+	pkgrel = 1
+	url = http://www.roguetemple.com/z/hyper.php
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = sdl_gfx
+	depends = sdl_ttf
+	depends = sdl_mixer
+	depends = mesa
+	source = http://www.roguetemple.com/z/hyper/hyperrogue-55-nomusic.zip
+
+pkgname = hyperrogue
+
