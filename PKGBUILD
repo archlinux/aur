@@ -1,4 +1,6 @@
-# Maintainer: Thomas Weißschuh <thomas_weissschuh lavabit com>
+# Contributer: Thomas Weißschuh <thomas_weissschuh lavabit com>
+# Contributer: ShadowKyogre <shadowkyogre dot public at gmail dot com>
+# Maintainer: ShadowKyogre <shadowkyogre dot public at gmail dot com>
 
 pkgname=ttf-averia-serif
 pkgver=20111103
