@@ -1,0 +1,34 @@
+pkgbase = djbdns-djb
+	pkgdesc = djbdns is a DNS package by DJ Bernstein including tinydnssec
+	pkgver = 1.05
+	pkgrel = 00
+	url = http://cr.yp.to/djbdns.html
+	install = djbdns.install
+	arch = i686
+	arch = x86_64
+	license = Public domain
+	makedepends = wget
+	makedepends = gawk
+	depends = daemontools
+	depends = ucspi-tcp
+	source = http://cr.yp.to/djbdns/djbdns-1.05.tar.gz
+	source = http://www.fefe.de/dns/djbdns-1.05-test25.diff.bz2
+	source = http://www.fefe.de/dns/djbdns-1.05-ixfr.diff.gz
+	source = http://smarden.org/pape/djb/manpages/djbdns-1.05-man.tar.gz
+	source = http://www.internic.net/domain/named.root
+	source = http://www.tinydnssec.org/download/tinydnssec-1.05-1.3.tar.bz2
+	source = ipv6intremove.patch
+	source = axfred.patch
+	source = nsd-xfr.patch
+	sha512sums = 20f066402801d7bec183cb710a5bc51e41f1410024741e5803e26f68f2c13567e48eba793f233dfab903459c3335bc169e24b99d66a4c64e617e1f0779732fa9
+	sha512sums = 41cca597dba971010b9844071e0349d3a4b25cc4b144e12721b0bc8250589fb374e40ece8908f1081762597048179b1177e88b9a5f97be0b47b63e3183e654bb
+	sha512sums = 17ce9553b301482daa57c18317aa147c8f0e9e8e6b323c577c05b5edb625fa2f55143ff956443d78ab908d60cd9c78c0ffaa2aa446d52be0a18fbef75965790a
+	sha512sums = 98af7bd9033a2205fbbc0f23b7eab45b9756f6ceff5199a62952e19c89c9fe3c03495cb6f8621d388f883c40650309a1509095417df3f54af21a71350c4aa183
+	sha512sums = 3911564a7d82e4c9a9426725caeeaf7b6844eefe1bfaa14b88d4627280591cef3e72da2ce2e0641f9d9d40edaac2e405c7dd5eb1c15a513c4edc6aafa91dc117
+	sha512sums = dab020db0234ad5fa82f7a4d150ec3755c482a0b7a21a8389eaf7ff74162cfa12869cc4b4215a55cfa9221cd422ac39bf5a6a8facce579a7997a107d5e0afe8a
+	sha512sums = 06038ec74879221375bf04c6f358a174da69574e5690a65aa04a57c7808c9e6fe520a296aae5ed999c7484139d1d8b85404403ba75fbb6691ffa2d4934ceff88
+	sha512sums = 625a4937d94d268389255e7369b356ac64657a987771714226ecc999ea8f065ac09d1522bf9b8ec464c726f1562bba306bf47ace6fe233fa15efcbcae10a28c2
+	sha512sums = 98d6226827957dda03200d3eef6fa467026a5eeef00a12d536cd836ca0243b853fd11615c8d24f0a28eef12c51079561269ae92d772574f2f59cb4e45dfc3757
+
+pkgname = djbdns-djb
+

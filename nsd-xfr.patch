@@ -1,0 +1,12 @@
+*** axfrdns.c.orig	2009-03-29 18:37:47.714863878 +0000
+--- axfrdns.c	2009-03-29 18:38:14.888862901 +0000
+***************
+*** 344,350 ****
+      netread(buf,len);
+  
+      pos = dns_packet_copy(buf,len,0,header,12); if (!pos) die_truncated();
+-     if (header[2] & 254) strerr_die2x(111,FATAL,"bogus query");
+      if (header[4] || (header[5] != 1)) strerr_die2x(111,FATAL,"bogus query");
+  
+      pos = dns_packet_getname(buf,len,pos,&zone); if (!pos) die_truncated();
+--- 344,349 ----

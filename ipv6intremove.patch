@@ -1,0 +1,73 @@
+diff --git a/dns.h b/dns.h
+index 5398e2b..99bcdfd 100644
+--- a/dns.h
++++ b/dns.h
+@@ -88,7 +88,6 @@ extern int dns_ip4_qualify(stralloc *,stralloc *,const stralloc *);
+ extern int dns_ip6_qualify_rules(stralloc *,stralloc *,const stralloc *,const stralloc *);
+ extern int dns_ip6_qualify(stralloc *,stralloc *,const stralloc *);
+ 
+-#define DNS_IP6_INT 0
+ #define DNS_IP6_ARPA 1
+ 
+ extern int dns_name6_domain(char *,const char *,int);
+diff --git a/dns_name.c b/dns_name.c
+index 518a0c0..3a4af22 100644
+--- a/dns_name.c
++++ b/dns_name.c
+@@ -65,6 +65,5 @@ int dns_name6(stralloc *out,const char ip[16])
+   if (ip6_isv4mapped(ip))
+     return dns_name4(out,ip+12);
+   if (dns_name6_inner(out,ip,DNS_IP6_ARPA)) return -1;
+-  if (!out->len) return dns_name6_inner(out,ip,DNS_IP6_INT);
+   return 0;
+ }
+diff --git a/dns_nd6.c b/dns_nd6.c
+index 6dbeb89..3142d93 100644
+--- a/dns_nd6.c
++++ b/dns_nd6.c
+@@ -1,3 +1,4 @@
++
+ #include "byte.h"
+ #include "fmt.h"
+ #include "dns.h"
+@@ -5,7 +6,6 @@
+ /* RFC1886:
+  *   4321:0:1:2:3:4:567:89ab
+  * ->
+- *   b.a.9.8.7.6.5.0.4.0.0.0.3.0.0.0.2.0.0.0.1.0.0.0.0.0.0.0.1.2.3.4.IP6.INT.
+  *   b.a.9.8.7.6.5.0.4.0.0.0.3.0.0.0.2.0.0.0.1.0.0.0.0.0.0.0.1.2.3.4.IP6.ARPA.
+  */
+ 
+@@ -25,9 +25,7 @@ int dns_name6_domain(char name[DNS_NAME6_DOMAIN],const char ip[16],int t)
+     name[j*4+2]=1;
+     name[j*4+3]=tohex((unsigned char)ip[15-j] >> 4);
+   }
+-  if (t==DNS_IP6_INT)
+-    byte_copy(name + 4*16,9,"\3ip6\3int\0");
+-  else if (t==DNS_IP6_ARPA)
++  if (t==DNS_IP6_ARPA)
+     byte_copy(name + 4*16,10,"\3ip6\4arpa\0");
+   else return 0;
+   return 4*16+9+t;
+diff --git a/tinydns-data.c b/tinydns-data.c
+index a84c6d1..8b59134 100644
+--- a/tinydns-data.c
++++ b/tinydns-data.c
+@@ -355,16 +355,12 @@ int main()
+ 	  rr_add(ip6,16);
+ 	  rr_finish(d1);
+ 
+-	  if (line.s[0] == '6') {	/* emit both .ip6.arpa and .ip6.int */
++	  if (line.s[0] == '6') {	/* emit .ip6.arpa */
+ 	    dns_name6_domain(d6ptr,ip6,DNS_IP6_ARPA);
+ 	    rr_start(DNS_T_PTR,ttl,ttd,loc);
+ 	    rr_addname(d1);
+ 	    rr_finish(d6ptr);
+ 
+-	    dns_name6_domain(d6ptr,ip6,DNS_IP6_INT);
+-	    rr_start(DNS_T_PTR,ttl,ttd,loc);
+-	    rr_addname(d1);
+-	    rr_finish(d6ptr);
+ 	  }
+ 	}
+ 	break;

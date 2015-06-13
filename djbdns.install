@@ -1,0 +1,54 @@
+post_install() {
+  groupadd -r djbdns
+  useradd -r -g djbdns -d / -s /bin/false dnslog
+  useradd -r -g djbdns -d / -s /bin/false tinydns
+  useradd -r -g djbdns -d / -s /bin/false dnscache  
+cat << EOF
+>>> Configure and run dnscache:
+	dnscache-conf dnscache dnslog /etc/dnscache [myip]
+	ln -s /etc/dnscache /service
+
+>>> Configure and run tinydns:
+	tinydns-conf tinydns dnslog /etc/tinydns myip
+	ln -s /etc/tinydns /service
+
+Note: Change myip to your public ip. If [myip] omitted dnscache will run on localhost.
+      More help can be found at http://cr.yp.to/djbdns.html
+
+EOF
+}
+
+post_remove() {
+  if [ -e /service/dnscache ]; then
+    cd /service/dnscache
+    rm /service/dnscache
+    echo Stopping dnscache ... done.
+    svc -dx . log
+  fi
+  if [ -e /service/tinydns ]; then
+    cd /service/tinydns
+    rm /service/tinydns
+    echo Stopping tinydns ... done.
+    svc -dx . log
+  fi
+  userdel dnslog
+  userdel tinydns
+  userdel dnscache
+  groupdel djbdns
+}
+
+post_upgrade() {
+  if [ -e /service/dnscache ]; then
+      echo Restarting dnscache ... done.
+      svc -t /service/dnscache
+  fi
+  if [ -e /service/tinydns ]; then
+      echo Restarting tinydns ... done.
+      svc -t /service/tinydns
+  fi
+  if [ -e /service/axfrdns ]; then
+      echo Restarting axfrdns ... done.
+      svc -t /service/axfrdns
+  fi
+
+}
