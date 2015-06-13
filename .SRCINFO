@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-qt5-translations
+	pkgdesc = Qt5 for Windows -- QtTranslations module (mingw-w64)
+	pkgver = 5.4.2
+	pkgrel = 1
+	url = http://qt-project.org/
+	arch = any
+	license = GPL3
+	license = LGPL
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-qt5-tools
+	depends = mingw-w64-qt5-base
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://download.qt-project.org/official_releases/qt/5.4/5.4.2/submodules/qttranslations-opensource-src-5.4.2.tar.xz
+	md5sums = 35151a736e3b720de4f5128386f9c834
+
+pkgname = mingw-w64-qt5-translations
+
