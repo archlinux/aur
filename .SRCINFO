@@ -1,0 +1,17 @@
+pkgbase = ttf-tengwar-annatar
+	pkgdesc = The Tengwar Annatar ttf font family. (Tolkein Elvish)
+	pkgver = 1.20
+	pkgrel = 1
+	url = http://tengwar.art.pl/tengwar/fonty.php
+	install = ttf.install
+	arch = any
+	license = custom: tengwar-annatar
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://tengwar.art.pl/tengwar/zip/tngan120.zip
+	source = COPYING
+	md5sums = 8833d945ed5e512f136d27fad6c985d5
+	md5sums = aaf041d42dd102899bf03407fd1dc8a0
+
+pkgname = ttf-tengwar-annatar
+
