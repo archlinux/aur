@@ -1,0 +1,14 @@
+pkgbase = kproxyswitch
+	pkgdesc = A simple bash script, which makes setting the proxy server easier in KDE
+	pkgver = 1.03
+	pkgrel = 1
+	url = http://kde-apps.org/content/show.php?content=34605
+	arch = any
+	license = GPL
+	depends = bash
+	depends = kdelibs
+	source = http://patrick-nagel.net/scripts/kproxyswitch/kproxyswitch.sh
+	md5sums = 023990efbaa02ce002b6195e62dee7ce
+
+pkgname = kproxyswitch
+
