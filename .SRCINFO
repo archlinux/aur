@@ -1,0 +1,19 @@
+pkgbase = mate-tweak-git
+	pkgdesc = Mate desktop configuration tool
+	pkgver = 3.4.7.r0.2d912fa
+	pkgrel = 1
+	url = https://bitbucket.org/ubuntu-mate/mate-tweak
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python2-setuptools
+	makedepends = python2-distutils-extra
+	depends = python2
+	depends = wmctrl
+	provides = mate-tweak
+	conflicts = mate-tweak
+	source = mate-tweak::git+https://bitbucket.org/ubuntu-mate/mate-tweak.git
+	md5sums = SKIP
+
+pkgname = mate-tweak-git
+
