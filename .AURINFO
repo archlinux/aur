@@ -1,0 +1,21 @@
+pkgbase = packer
+	pkgdesc = Bash wrapper for pacman and aur
+	pkgver = 20140810
+	pkgrel = 1
+	url = http://github.com/keenerd/packer
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = grep
+	depends = sed
+	depends = bash
+	depends = curl
+	depends = pacman
+	depends = jshon
+	depends = expac
+	optdepends = sudo: install and update packages as non-root
+	optdepends = customizepkg: apply customizepkg modifications
+	source = git+https://github.com/keenerd/packer.git
+
+pkgname = packer
+
