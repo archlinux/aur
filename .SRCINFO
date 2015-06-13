@@ -1,0 +1,17 @@
+pkgbase = forkstat-git
+	pkgdesc = Logs process fork(), exec() and exit() activity.
+	pkgver = 20140319
+	pkgrel = 1
+	url = http://kernel.ubuntu.com/~cking/forkstat/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = glibc
+	provides = forkstat
+	conflicts = forkstat
+	source = git://kernel.ubuntu.com/cking/forkstat.git
+	md5sums = SKIP
+
+pkgname = forkstat-git
+
