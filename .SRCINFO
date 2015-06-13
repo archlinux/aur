@@ -1,0 +1,17 @@
+pkgbase = gcc-dragonegg-plugin
+	pkgdesc = integrates the LLVM optimizers and code generator with the GCC parsers
+	pkgver = 3.4
+	pkgrel = 1
+	url = http://dragonegg.llvm.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gcc>=4.8.2
+	depends = llvm>=3.4
+	source = http://llvm.org/releases/3.4/dragonegg-3.4.src.tar.gz
+	source = http://llvm.org/releases/3.4/dragonegg-3.4.src.tar.gz.sig
+	md5sums = 5a8004d0a3b6aeb89dd1265d899b681a
+	md5sums = bc377f54c5b1d70896edce2689ba41a5
+
+pkgname = gcc-dragonegg-plugin
+
