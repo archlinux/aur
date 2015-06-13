@@ -1,0 +1,24 @@
+
+pre_install() {
+  if test -f /opt/vidyo/VidyoDesktop/VidyoDesktop ; then
+    killall VidyoDesktop 2>/dev/null
+    sleep 1
+  fi
+}
+
+post_install() {
+  if test ! -f /usr/bin/pulseaudio ; then
+    echo "Pulseaudio not detected - you may need to manually enable ALSA:"
+    echo " export VIDYO_AUDIO_FRAMEWORK=ALSA"
+  fi
+}
+
+pre_upgrade() {
+  pre_install
+}
+
+pre_remove() {
+  pre_install
+  rm -f /opt/vidyo/VidyoDesktop/lic/* 2>/dev/null
+}
+
