@@ -1,0 +1,18 @@
+pkgbase = mangonel-git
+	pkgdesc = Simple but fast application launcher.
+	pkgver = 2012.12.12
+	pkgrel = 1
+	epoch = 1
+	url = http://www.tarmack.eu/mangonel.html
+	arch = i686
+	arch = x86_64
+	license = Apache 2.0
+	makedepends = git
+	makedepends = automoc4
+	provides = mangonel
+	conflicts = mangonel
+	source = git://github.com/tarmack/Mangonel.git
+	md5sums = SKIP
+
+pkgname = mangonel-git
+
