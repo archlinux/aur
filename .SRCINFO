@@ -1,0 +1,15 @@
+pkgbase = hapsembler
+	pkgdesc = haplotype-specific genome assembly toolkit
+	pkgver = 2.21
+	pkgrel = 1
+	url = http://compbio.cs.toronto.edu/hapsembler/
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	depends = bash
+	depends = perl
+	source = http://compbio.cs.toronto.edu/hapsembler/hapsembler-2.21.tar.gz
+	md5sums = 27969b4d70acc14feef01837cb3275ca
+
+pkgname = hapsembler
+
