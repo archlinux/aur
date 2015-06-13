@@ -1,7 +1,7 @@
 # Maintainer: Troels Jacobsen <tkjacobsen@gmail.com>
 pkgname=evernote-sdk-python
 pkgver=1.25.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Evernote SDK for Python'
 arch=(any)
 url="https://github.com/evernote/$pkgname"
@@ -12,7 +12,7 @@ conflicts=("$pkgname-git")
 source=("$url/archive/$pkgver.tar.gz"
         "$pkgname-$pkgver-thrift.patch")
 sha256sums=('f438f430bafa1d5113d39426100bdbda5876bde1e8877e3b29929e2dbc8d9979'
-            '9dcbccc42a0aaf7a08e3e6d06ff87fad7f1f674e16e767f80f9d1b8c2d649da8')
+            'f8a3a22bd22606920e140f894d57d52f6fd137cdbb88078564ca9854c160081a')
 
 build () {
 	cd "$pkgname-$pkgver"
