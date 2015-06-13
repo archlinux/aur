@@ -1,0 +1,15 @@
+pkgbase = mbrola
+	pkgdesc = A phoneme-to-audio converter used by many TTS (Text-to-speech) programs
+	pkgver = 3.0.1h
+	pkgrel = 5
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = i686
+	arch = x86_64
+	license = custom:Mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/bin/pclinux/mbr301h.zip
+	sha256sums = df402fad97c823206fce68837c1d716b9c0466a4cfb554dfb244df7da5589d6e
+	depends_i686 = glibc
+	depends_x86_64 = lib32-glibc
+
+pkgname = mbrola
+
