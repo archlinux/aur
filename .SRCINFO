@@ -1,0 +1,15 @@
+pkgbase = bwa
+	pkgdesc = Burrows-Wheeler Aligner maps low-divergent sequences against a large reference genome
+	pkgver = 0.7.12
+	pkgrel = 1
+	url = http://bio-bwa.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = perl
+	depends = zlib
+	source = http://downloads.sourceforge.net/bio-bwa/0.7.12/bwa-0.7.12.tar.bz2
+	md5sums = 075704634146ec8cc7543c0dee8960e7
+
+pkgname = bwa
+
