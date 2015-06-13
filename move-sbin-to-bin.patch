@@ -1,0 +1,12 @@
+diff -Naur sbackup-0.11.6.orig/Makefile sbackup-0.11.6/Makefile
+--- sbackup-0.11.6.orig/Makefile	2013-09-17 20:49:58.000000000 +0200
++++ sbackup-0.11.6/Makefile	2015-01-14 11:44:12.630963188 +0100
+@@ -47,7 +47,7 @@
+ 
+ datadir=$(DESTDIR)/share
+ bindir=$(DESTDIR)/bin
+-sbindir=$(DESTDIR)/sbin
++sbindir=$(DESTDIR)/bin
+ 
+ libdir=$(datadir)/$(PKGNAME)
+ helpdir=$(datadir)/gnome/help/$(PKGNAME)

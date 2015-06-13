@@ -1,0 +1,28 @@
+pkgbase = sbackup
+	pkgdesc = Simple backup solution intended for desktop use
+	pkgver = 0.11.6
+	pkgrel = 2
+	url = https://launchpad.net/sbackup
+	install = sbackup.install
+	arch = any
+	license = GPL
+	makedepends = python2-distribute
+	depends = python2-gconf
+	depends = python2-libgnome
+	depends = python2-notify
+	depends = gvfs
+	depends = dbus-python
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	optdepends = python-pexpect: for ssh fuse plugin
+	optdepends = sshfs: for ssh plugin
+	optdepends = curlftpfs: for ftp and sftp fuse plugins
+	source = http://launchpad.net/sbackup/0.11/0.11.6/+download/sbackup_0.11.6.tar.gz
+	source = sbackup.conf
+	source = move-sbin-to-bin.patch
+	sha256sums = a7684837ac2dba199ae0e3a6e6af972b0ef328db0bb79c847e289e4c6418887d
+	sha256sums = d354338c794088c3e7c62162c414394bee339f05535f2316d00bc19c0f1af9b9
+	sha256sums = a0e7302d5053b44e36439d45e954c89689c0f826761c3bae8fdbd67037a54d43
+
+pkgname = sbackup
+
