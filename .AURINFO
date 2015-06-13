@@ -1,0 +1,18 @@
+pkgbase = perl-file-flock
+	pkgdesc = file locking with flock
+	pkgver = 2014.01
+	pkgrel = 1
+	url = http://search.cpan.org/dist/File-Flock
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-file-slurp
+	makedepends = perl-test-sharedfork
+	depends = perl-anyevent
+	depends = perl-data-structure-util
+	depends = perl-io-event>=0.812
+	source = http://cpan.metacpan.org/authors/id/M/MU/MUIR/modules/File-Flock-2014.01.tar.gz
+	options = !emptydirs
+
+pkgname = perl-file-flock
+
