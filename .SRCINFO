@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-quazip-qt4
+	pkgdesc = C++ wrapper for the Gilles Vollant's ZIP/UNZIP C package (mingw-w64)
+	pkgver = 0.7
+	pkgrel = 1
+	url = http://sourceforge.net/projects/quazip/
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-gcc
+	depends = mingw-w64-crt
+	depends = mingw-w64-qt4
+	conflicts = mingw-w64-quazip-qt5
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://downloads.sourceforge.net/project/quazip/quazip/0.7/quazip-0.7.tar.gz
+	md5sums = 52a9d807934ce4e9c30ead677a3148d2
+
+pkgname = mingw-w64-quazip-qt4
+
