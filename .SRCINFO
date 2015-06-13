@@ -1,0 +1,15 @@
+pkgbase = ttf-orthodox-herbertarian
+	pkgdesc = The Dune Font
+	pkgver = 1
+	pkgrel = 2
+	url = http://dunefont.dribble-sponge.co.uk/?p=109
+	install = ttf.install
+	arch = any
+	license = custom:Public domain
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://dunefont.dribble-sponge.co.uk/ccount/click.php?id=2
+	md5sums = 1a084c983b5136e35914a4981ce87644
+
+pkgname = ttf-orthodox-herbertarian
+
