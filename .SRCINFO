@@ -1,0 +1,15 @@
+pkgbase = wdfs
+	pkgdesc = A webdav filesystem based on FUSE
+	pkgver = 1.4.2
+	pkgrel = 3
+	url = http://noedler.de/projekte/wdfs/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = fuse
+	depends = neon
+	source = http://noedler.de/projekte/wdfs/wdfs-1.4.2.tar.gz
+	md5sums = 628bb44194d04c1cf8aacc446ed0a230
+
+pkgname = wdfs
+
