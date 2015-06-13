@@ -1,0 +1,16 @@
+pkgbase = elicit
+	pkgdesc = A GTK color chooser with zoom.
+	pkgver = 2.2
+	pkgrel = 1
+	url = http://rephorm.com/code/elicit/
+	arch = any
+	license = GPL
+	depends = pygtk
+	depends = python2-numpy
+	depends = gnome-python
+	depends = python2-xdg
+	source = http://rephorm.com/files/elicit/elicit_2.2.tar.gz
+	md5sums = 14f6cd58cb34e2d02738b6c53d715a7b
+
+pkgname = elicit
+
