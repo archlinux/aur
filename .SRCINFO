@@ -1,0 +1,36 @@
+pkgbase = quasar-single
+	pkgdesc = Business accounting software (Server, Client, Sample Company, Help, Tools)
+	pkgver = 2.2.1
+	pkgrel = 2
+	url = http://www.linuxcanada.com
+	install = quasar-single.install
+	arch = x86_64
+	arch = i686
+	license = Commercial
+	depends = icu52
+	depends = tcl
+	depends = qt3
+	depends = xinetd
+	depends = postgresql
+	optdepends = polymer: KDE QT style Plastik
+	provides = quasar-server
+	provides = quasar-client
+	provides = quasar-sample-company
+	provides = quasar-help-en-ca
+	provides = quasar-tools
+	conflicts = quasar-server
+	conflicts = quasar-client
+	conflicts = quasar-sample-comp${_arch}any
+	conflicts = quasar-help-en-ca
+	conflicts = quasar-tools
+	source = Quasar.desktop
+	source = QuasarAdmin.desktop
+	md5sums = 5f4ced3487aa7c1d15f4277dc4323ea5
+	md5sums = b176984b3719c47f231737215da45bf1
+	source_x86_64 = ftp://linuxcanada.com/pub/Quasar/2.2.1/binaries/x86_64/Kubuntu-14.04/quasar-single_2.2.1-1_amd64.deb
+	md5sums_x86_64 = 8d6212a0ae746b4ed6b447277d3f081d
+	source_i686 = ftp://linuxcanada.com/pub/Quasar/2.2.1/binaries/i386-i586/Kubuntu-14.04/quasar-single_2.2.1-1_i386.deb
+	md5sums_i686 = b067509b58f09858ce996b8def59c38a
+
+pkgname = quasar-single
+
