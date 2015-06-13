@@ -29,5 +29,5 @@ pkgver() {
 package() {
 	cd "${pkgname%-git}"
 	install -Dm755 "${pkgname%-git}.sh" "$pkgdir/usr/bin/${pkgname%-git}"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"	
+	install -Dm644 "${pkgname%-git}.1" "$pkgdir/usr/share/man/man1/"${pkgname%-git}"
 }
