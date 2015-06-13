@@ -1,0 +1,14 @@
+pkgbase = punt-git
+	pkgdesc = A simple sexp-based programming language.
+	pkgver = 20090731
+	pkgrel = 1
+	url = https://bbs.archlinux.org/viewtopic.php?id=73888
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	source = git+https://github.com/peasantoid/punt.git
+	md5sums = SKIP
+
+pkgname = punt-git
+
