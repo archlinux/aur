@@ -1,0 +1,21 @@
+pkgbase = mingw-w64-libircclient
+	pkgdesc = Small but powerful library, which implements client-server IRC protocol (mingw-w64)
+	pkgver = 1.8
+	pkgrel = 1
+	url = http://www.ulduzsoft.com/libircclient/
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	options = !libtool
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = http://downloads.sourceforge.net/sourceforge/libircclient/libircclient-1.8.tar.gz
+	source = Makefile
+	sha256sums = 2cf8523ac683588f2785b08159a2df3e4d15939ee655c0024aa86334149de8f6
+	sha256sums = SKIP
+
+pkgname = mingw-w64-libircclient
+
