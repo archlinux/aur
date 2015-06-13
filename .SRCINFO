@@ -1,0 +1,17 @@
+pkgbase = python2-deap
+	pkgdesc = Distributed Evolutionary Algorithms in Python
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/DEAP/deap
+	arch = any
+	license = LGPL
+	depends = python2
+	depends = python2-pysqlite
+	optdepends = python2-numpy: for CMA-ES
+	optdepends = python2-matplotlib: for visualization
+	optdepends = python2-scoop: for computation distribution
+	source = https://pypi.python.org/packages/source/d/deap/deap-1.0.2.post2.tar.gz
+	md5sums = ccf5ed7562e4d6236c9416e3b5a9d941
+
+pkgname = python2-deap
+
