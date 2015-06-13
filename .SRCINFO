@@ -1,0 +1,28 @@
+pkgbase = pure-pcre-hg
+	pkgdesc = Pure is a modern-style functional programming language based on term rewriting (variant with Perl regex support).
+	pkgver = 5592.c229999c496e
+	pkgrel = 1
+	url = http://purelang.bitbucket.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = LGPL3
+	makedepends = mercurial
+	depends = llvm35
+	depends = gmp
+	depends = mpfr
+	depends = pcre
+	depends = readline
+	optdepends = pure-docs-hg: online documentation
+	optdepends = w3m: access to help in interactive mode
+	optdepends = emacs-pure-mode: editing Pure files from Emacs
+	optdepends = texmacs-pure: embedding Pure sessions in TeXmacs
+	provides = pure
+	provides = pure-hg
+	conflicts = pure
+	conflicts = pure-hg
+	source = hg+https://bitbucket.org/purelang/pure-lang
+	md5sums = SKIP
+
+pkgname = pure-pcre-hg
+
