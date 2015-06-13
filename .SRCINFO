@@ -1,0 +1,21 @@
+pkgbase = openmsx-catapult
+	pkgdesc = Front-end for openMSX: the MSX emulator that aims for perfection.
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = http://openmsx.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python2
+	depends = libxml2
+	depends = wxgtk2.8
+	depends = zlib
+	depends = libjpeg
+	depends = libpng
+	depends = libtiff
+	depends = openmsx=0.11.0
+	source = http://downloads.sourceforge.net/openmsx/openmsx-catapult-0.11.0.tar.gz
+	md5sums = f112f679923f13a2e548a647b593c763
+
+pkgname = openmsx-catapult
+
