@@ -1,0 +1,14 @@
+pkgbase = pdextended-pure
+	pkgdesc = Loader plugin for the Pure programming language, Pd-Extended version
+	pkgver = 0.20
+	pkgrel = 1
+	url = http://purelang.bitbucket.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = pd-extended
+	depends = pure
+	source = https://bitbucket.org/purelang/pure-lang/downloads/pd-pure-0.20.tar.gz
+
+pkgname = pdextended-pure
+
