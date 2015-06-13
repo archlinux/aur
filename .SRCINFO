@@ -1,0 +1,17 @@
+pkgbase = connman-ui-git
+	pkgdesc = A full-featured GTK based trayicon UI for ConnMan (git version)
+	pkgver = r33.1e1fd69
+	pkgrel = 1
+	url = https://github.com/tbursztyka/connman-ui
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = intltool
+	depends = connman
+	depends = gtk3
+	source = git+https://github.com/tbursztyka/connman-ui.git
+	md5sums = SKIP
+
+pkgname = connman-ui-git
+
