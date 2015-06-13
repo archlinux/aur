@@ -1,0 +1,18 @@
+pkgbase = audiothumbs
+	pkgdesc = Plugin for KDE file managers (Dolphin and Konqueror) to preview cover arts embedded in audio (MP3, FLAC, OGG, M4A) files tags as thumbnails.
+	pkgver = 0.2
+	pkgrel = 4
+	url = http://kde-look.org/content/show.php/AudioThumbs?content=145088
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = flac
+	depends = taglib
+	depends = kdebase-dolphin
+	source = http://kde-look.org/CONTENT/content-files/145088-AudioThumbs-0.2.tar.gz
+	sha1sums = 0bb42b0697fc51c0b95860d02ca81807f622db37
+
+pkgname = audiothumbs
+
