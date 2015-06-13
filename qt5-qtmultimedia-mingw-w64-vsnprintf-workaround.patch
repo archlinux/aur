@@ -1,0 +1,30 @@
+--- src/multimedia/video/qvideosurfaceformat.h.orig	2013-07-14 01:14:41.813669200 +0200
++++ src/multimedia/video/qvideosurfaceformat.h	2013-07-14 01:14:58.463944255 +0200
+@@ -46,6 +46,7 @@
+ #include <QtCore/qpair.h>
+ #include <QtCore/qshareddata.h>
+ #include <QtCore/qsize.h>
++#include <QtCore/qstring.h>
+ #include <QtGui/qimage.h>
+ #include <QtMultimedia/qvideoframe.h>
+ 
+--- src/plugins/directshow/player/directshowmediatypelist.h.orig	2013-07-14 01:16:07.098077974 +0200
++++ src/plugins/directshow/player/directshowmediatypelist.h	2013-07-14 01:16:28.175426132 +0200
+@@ -43,6 +43,7 @@
+ #define DIRECTSHOWMEDIATYPELIST_H
+ 
+ #include <QtCore/qvector.h>
++#include <QtCore/qstring.h>
+ 
+ #include <dshow.h>
+ 
+--- src/plugins/directshow/player/directshowglobal.h.orig	2013-07-14 01:13:12.324190974 +0200
++++ src/plugins/directshow/player/directshowglobal.h	2013-07-14 01:13:25.434407537 +0200
+@@ -43,6 +43,7 @@
+ #define DIRECTSHOWGLOBAL_H
+ 
+ #include <QtCore/qglobal.h>
++#include <QtCore/qstring.h>
+ 
+ #include <dshow.h>
+ 

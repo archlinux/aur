@@ -1,0 +1,24 @@
+pkgbase = mingw-w64-qt5-multimedia
+	pkgdesc = Classes for audio, video, radio and camera functionality (mingw-w64)
+	pkgver = 5.4.2
+	pkgrel = 1
+	url = http://qt-project.org
+	arch = any
+	groups = mingw-w64-qt
+	groups = mingw-w64-qt5
+	license = custom, FDL, GPL3, LGPL
+	makedepends = mingw-w64-gcc
+	depends = mingw-w64-qt5-base
+	depends = mingw-w64-qt5-declarative
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://download.qt-project.org/official_releases/qt/5.4/5.4.2/submodules/qtmultimedia-opensource-src-5.4.2.tar.xz
+	source = qt5-qtmultimedia-mingw-w64-vsnprintf-workaround.patch
+	source = qtmultimedia-dont-use-case-sensitive-headers.patch
+	md5sums = b94baed3effda9187d71300b3e37d2d5
+	md5sums = c21ff895212a17dc0a748aeadb67601d
+	md5sums = 7ecd5ee2735440472fae4b7d7a32879e
+
+pkgname = mingw-w64-qt5-multimedia
+

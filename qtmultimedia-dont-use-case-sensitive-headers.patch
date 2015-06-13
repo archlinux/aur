@@ -1,0 +1,22 @@
+--- qtmultimedia-opensource-src-5.2.0-rc1/config.tests/wshellitem/main.cpp.orig	2013-11-21 11:29:48.845013461 +0100
++++ qtmultimedia-opensource-src-5.2.0-rc1/config.tests/wshellitem/main.cpp	2013-11-21 11:29:55.980132333 +0100
+@@ -39,7 +39,7 @@
+ **
+ ****************************************************************************/
+ 
+-#include <ShlObj.h>
++#include <shlobj.h>
+ 
+ int main(int, char**)
+ {
+--- qtmultimedia-opensource-src-5.2.0-rc1/src/plugins/directshow/player/directshowmetadatacontrol.cpp.orig	2013-11-21 11:34:00.866215162 +0100
++++ qtmultimedia-opensource-src-5.2.0-rc1/src/plugins/directshow/player/directshowmetadatacontrol.cpp	2013-11-21 11:34:11.361390182 +0100
+@@ -57,7 +57,7 @@
+ #endif
+ 
+ #ifndef QT_NO_SHELLITEM
+-#include <ShlObj.h>
++#include <shlobj.h>
+ #include <propkeydef.h>
+ #include <private/qsystemlibrary_p.h>
+ 
