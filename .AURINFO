@@ -1,0 +1,20 @@
+pkgbase = gnocl-canvas
+	pkgdesc = Tcl/GTK+ bindings, GnoclCanvas module
+	pkgver = 0.9.95
+	pkgrel = 1
+	url = http://www.gnocl.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gnocl
+	depends = tcl
+	depends = gtk2
+	depends = libglade
+	depends = libgnomecanvas
+	source = https://launchpad.net/~dr-graef/+archive/gnocl.precise/+files/gnocl-canvas_0.9.95.orig.tar.gz
+	source = gnocl-canvas-0.9.95.patch
+	md5sums = 091225b21c23d112cb721fb2c16dec2f
+	md5sums = 4e40ef50e5f3df3330bda2278e402ebe
+
+pkgname = gnocl-canvas
+
