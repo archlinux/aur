@@ -1,0 +1,17 @@
+pkgbase = pngcheck
+	pkgdesc = Verifies the integrity of PNG, JNG and MNG files by checking the CRCs and decompressing the image data
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = http://www.libpng.org/pub/png/apps/pngcheck.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = libpng
+	depends = libpng
+	source = http://sourceforge.net/projects/png-mng/files/pngcheck/2.3.0/pngcheck-2.3.0.tar.gz
+	source = makefile.patch
+	md5sums = 980bd6d9a3830fdce746d7fe3c9166ee
+	md5sums = bd6f2e05f4914e9e271e3b844b489c40
+
+pkgname = pngcheck
+
