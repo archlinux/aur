@@ -1,0 +1,32 @@
+pkgbase = d1x-rebirth
+	pkgdesc = An enhanced engine to play with Descent1 datas
+	pkgver = 0.58.1
+	pkgrel = 1
+	url = http://www.dxx-rebirth.com/
+	install = d1x-rebirth.install
+	arch = i686
+	arch = x86_64
+	license = custom:D1x
+	license = LGPL
+	license = custom:as-is
+	makedepends = scons
+	makedepends = unzip
+	depends = sdl
+	depends = sdl_mixer
+	depends = mesa
+	depends = physfs
+	noextract = d1xr-hires.dxa
+	noextract = d1xr-sc55-music.dxa
+	source = http://www.dxx-rebirth.com/download/dxx/d1x-rebirth_v0.58.1-src.tar.gz
+	source = d1x-rebirth.desktop
+	source = d1x-rebirth.install
+	source = http://www.dxx-rebirth.com/download/dxx/res/d1xr-hires.dxa
+	source = http://www.dxx-rebirth.com/download/dxx/res/d1xr-sc55-music.dxa
+	md5sums = 8f43e66191fdedd0c7ff9278719accf1
+	md5sums = ded1f8c2deb3825134e1a984985684cb
+	md5sums = 78c79b2b82175ebd4073edf257a9bd68
+	md5sums = 7d978ce3875995e54cbf426167e88b94
+	md5sums = bf54b45a648052b2531bbb95c001403b
+
+pkgname = d1x-rebirth
+
