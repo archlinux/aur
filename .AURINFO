@@ -1,0 +1,14 @@
+pkgbase = perl-getopt-mixed
+	pkgdesc = Library for getopt processing with both long and short options
+	pkgver = 1.12
+	pkgrel = 2
+	url = http://search.cpan.org/~cjm/Getopt-Mixed/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	source = http://search.cpan.org/CPAN/authors/id/C/CJ/CJM/Getopt-Mixed-1.12.tar.gz
+	options = !emptydirs
+
+pkgname = perl-getopt-mixed
+
