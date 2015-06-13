@@ -1,0 +1,16 @@
+pkgbase = dothost-hg
+	pkgdesc = dothost is a DNS lookup utility, which produces output in Graphviz format.
+	pkgver = 3.385591fa3319
+	pkgrel = 1
+	url = http://jwilk.net/software/dothost
+	arch = any
+	license = MIT
+	makedepends = mercurial
+	depends = python
+	optdepends = graphviz: Graph visualization software for lddot output
+	optdepends = perl-graph-easy: Convert or render graphs to ASCII/Image
+	source = dothost::hg+https://bitbucket.org/jwilk/dothost
+	md5sums = SKIP
+
+pkgname = dothost-hg
+
