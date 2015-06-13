@@ -1,0 +1,14 @@
+pkgbase = perl-unix-syslog
+	pkgdesc = Interface to syslog functions in a C-library
+	pkgver = 1.1
+	pkgrel = 4
+	url = http://search.cpan.org/dist/Unix-Syslog
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	source = http://search.cpan.org/CPAN/authors/id/M/MH/MHARNISCH/Unix-Syslog-1.1.tar.gz
+	options = !emptydirs
+
+pkgname = perl-unix-syslog
+
