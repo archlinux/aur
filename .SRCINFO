@@ -1,0 +1,16 @@
+pkgbase = albumbler
+	pkgdesc = Like StumbleUpon for your music, it learns what you don't like.
+	pkgver = 20110511
+	pkgrel = 2
+	url = http://kmkeen.com/albumbler/
+	arch = any
+	license = GPL
+	depends = python2
+	optdepends = mocp: for music
+	optdepends = cmus: for music
+	optdepends = mpd: for music
+	source = http://kmkeen.com/albumbler/albumbler
+	md5sums = 948cc2e77f49eb5263aa688f321ceb44
+
+pkgname = albumbler
+
