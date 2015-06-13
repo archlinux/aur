@@ -1,0 +1,15 @@
+pkgbase = lunchbox
+	pkgdesc = An innovative (and beta) hybrid floating/tiling WM.
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = http://code.google.com/p/lunchbox/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = cairo
+	depends = libxcursor
+	source = http://lunchbox.googlecode.com/files/lunchbox_0.3-3.tar.gz
+	md5sums = accb26993329f919560f0dee19224653
+
+pkgname = lunchbox
+
