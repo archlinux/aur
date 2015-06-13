@@ -1,0 +1,14 @@
+pkgbase = openscad-libraries
+	pkgdesc = For now just Write.scad, please request additions.
+	pkgver = 20131231
+	pkgrel = 1
+	url = http://www.thingiverse.com/thing:16193
+	arch = any
+	license = unknown
+	depends = openscad
+	noextract = WriteScad.zip
+	source = WriteScad.zip::http://thingiverse.com/download:54849
+	md5sums = 77801032662e321df4d2ae808fcaef06
+
+pkgname = openscad-libraries
+
