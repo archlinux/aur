@@ -1,0 +1,5 @@
+post_install() {
+echo "If you have not use KDE, to make in work 
+	you need chmod +x ~/.tardis/TARDIS.pl and create a 
+	~/.tardis/tardis.conf with options and a cron job"
+}

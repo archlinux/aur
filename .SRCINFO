@@ -1,0 +1,19 @@
+pkgbase = tardis
+	pkgdesc = Backup system that makes your disc bigger on the inside than on the outside
+	pkgver = 0.07
+	pkgrel = 3
+	url = http://sourceforge.net/p/ktardis/wiki/Home/
+	install = tardis.install
+	arch = any
+	license = custom:SpongWare
+	depends = python2
+	depends = perl
+	depends = perl-datetime
+	depends = perl-filesys-df
+	depends = perl-module-implementation
+	optdepends = kde
+	source = http://sourceforge.net/projects/ktardis/files/tardis-0.07.zip/download
+	md5sums = 969287290a254a0201a1b9f069c595e1
+
+pkgname = tardis
+
