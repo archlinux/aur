@@ -2,10 +2,10 @@
 
 pkgname=lsi-msm
 pkgver=15.03.01.00
-pkgrel=1
+pkgrel=2
 pkgdesc="LSI Logic MegaRAID Storage Manager Suite"
 arch=('i686' 'x86_64')
-url="http://www.lsi.com/"
+url='http://www.lsi.com'
 license=('custom:LSI' 'Custom:TOG')
 depends=('libxtst' 'alsa-lib' 'libnet' 'unixodbc' 'net-snmp' 'perl-net-snmp' 'perl-term-readkey' 'xdg-utils')
 depends_i686=('libxi' 'libxft' 'libpng12' 'libxinerama' 'libjpeg6-turbo') # 'xerces-c'
@@ -22,31 +22,35 @@ DLAGENTS=('https::/usr/bin/wget -c -t 3 --waitretry=3 -O %o %u'
 # The download gate remains open about 15 minutes before needed download the token/files again.
 wget "http://www.lsi.com/magic.axd?x=e&file=http%3A//www.lsi.com/downloads/Public/MegaRAID%2520Common%2520Files/${pkgver}_Linux-x86_MSM.txt" -q -O /dev/null
 
-source=('https://collaboration.opengroup.org/pegasus/documents/29160/pegasus-2.13.0.tar.gz'
-        #'https://collaboration.opengroup.org/pegasus/documents/32557/pegasus-2.14.0.tar.gz'
-        #'https://collaboration.opengroup.org/pegasus/documents/32572/pegasus-2.14.1.tar.gz'
+source=( #'https://collaboration.opengroup.org/pegasus/documents/29160/pegasus-2.13.0.tar.gz'
+        'https://collaboration.opengroup.org/pegasus/documents/32572/pegasus-2.14.1.tar.gz'
         'msm_profile.sh'
         'LSI_StorSNMP.ini'
         'lsi_msm.service'
         'lsi_mrdsnmpd.service'
         'ld.so.lsi-msm.conf'
-        'License.html'
+        'http://www.lsi.com/downloads/Public/Advanced%20Software/Advanced%20Software%20Common%20Files/SLA_AdvancedSoftware.pdf'
         'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.9.0-no-rpath.patch'
-        'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.7.0-PIE.patch')
-source_i686=("${pkgver}_Linux-x86_MSM.gz::http://www.lsi.com/downloads/Public/RAID%20Controllers/RAID%20Controllers%20Common%20Files/${pkgver}_Linux-x86_MXM.gz")
-source_x86_64=("${pkgver}_Linux-x64_MSM.gz::http://www.lsi.com/downloads/Public/RAID%20Controllers/RAID%20Controllers%20Common%20Files/${pkgver}_Linux-64_MSM.gz")
-sha1sums=('c1daaf01defe9f9556290250857da3523124944f'
+        'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.7.0-PIE.patch'
+        'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.13.0-gcc5-build.patch'
+        'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.14.1-build-fixes.patch'
+        'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.14.1-ssl-include.patch')
+source_i686=("${pkgver}_Linux-x86_MSM.gz::http://www.lsi.com/downloads/Public/Syncro%20Shared%20Storage/downloads/${pkgver}_Linux-32_MXM.gz")
+source_x86_64=("${pkgver}_Linux-x64_MSM.gz::http://www.lsi.com/downloads/Public/Syncro%20Shared%20Storage/downloads/${pkgver}_Linux-64_MSM.gz")
+sha1sums=('c832eaf240f6dfba843c4937f7a935382d48b9be'
           '0e5d7b71435760e3ef7c1e132ba05145ccbd1268'
           '79fbe24898030db50295a6254e7c4627e2b51b7c'
-          'a48e4ea5bf759b164f8b81880fa704afd1049814'
-          'cf0b8f00bad6545082af177d13511bec41fc4b4e'
+          'e52a1be05599cd7e5ecf1085311c00c7e16e4b43'
+          '08e484f4c1f177a81587d5e12f2b806baddcf199'
           '73b553200ae2ccae980701d7324681529f551fc9'
-          '4243c765b47ecf525a91720fa6fe8d7f22dc988e'
+          '8f7da07466346443acc24df3608744a7d80a9124'
           '236728c6ebdcad97bec03cb99221577e086401ad'
-          '262dd8efae4025516cc23a14c6854a49af650245')
+          '262dd8efae4025516cc23a14c6854a49af650245'
+          'e8c0cea2589daebcd94ec2baf726391d4cd516cd'
+          'a4d642b7be3c3400539dac5014f66463dc567221'
+          '1eadb4d032cb7e7367317e61fee6a6e1f9f68868')
 sha1sums_i686=('26d1693eee4f2d397b7344c36492ec3ca8888f99')
 sha1sums_x86_64=('95e854133b338e2d7c0166095bb870ec8b6b1e33')
-
 install=lsi-msm.install
 backup=('etc/lsi_mrdsnmp/LSI_StorSNMP.ini'
         'etc/lsi_mrdsnmp/sas/sas_TrapDestination.conf'
@@ -68,10 +72,13 @@ create_links() {
 }
 
 prepare() {
-  cd pegasus
-  patch -p1 -i ../pegasus-2.9.0-no-rpath.patch
-  patch -p1 -i ../pegasus-2.7.0-PIE.patch
-  sed 's|libbase=lib64|libbase=lib|g' -i configure
+  patch -d pegasus -p1 -i ../pegasus-2.7.0-PIE.patch
+  patch -d pegasus -p1 -i ../pegasus-2.9.0-no-rpath.patch
+  patch -d pegasus -p1 -i ../pegasus-2.13.0-gcc5-build.patch
+  patch -d pegasus -p1 -i ../pegasus-2.14.1-build-fixes.patch
+  patch -d pegasus -p1 -i ../pegasus-2.14.1-ssl-include.patch
+
+  sed 's|libbase=lib64|libbase=lib|g' -i pegasus/configure
 }
 
 build() {
@@ -114,10 +121,10 @@ package() {
   ln -sf /etc/lsi_mrdsnmp/lsi_mrdsnmpagent usr/bin/lsi_mrdsnmpagent
   ln -sf /etc/lsi_mrdsnmp/lsi_mrdsnmpmain usr/bin/lsi_mrdsnmpmain
 
-  # Remove RH/SuSe path remains and change '$MSM_HOME' variables to hardcoded path in scripts
-  for i in "$(find . -type f -name '*.sh' -o -name 'popup')"; do sed -e '/msm_profile/d' -e 's|$MSM_HOME|/usr/share/MegaRAID_Storage_Manager|g' -i ${i}; done
+  # Remove RH/SuSe path remains
+  for i in "$(find . -type f -name '*.sh' -o -name 'popup')"; do sed -e '/msm_profile/d' -i ${i}; done
 
-  # Standarized /usr/share/MegaRAID_Storage_Manager/start{,monitor}help.sh whit xdg-open ## need make patch instead sed
+  # Standarized /usr/share/MegaRAID_Storage_Manager/start{,monitor}help.sh whit xdg-open ## Someday, I'll create a patch instead sed
   sed -e '13,20d' -e 's|mozilla|xdg-open|g' -e 's|/firefox||g' -i usr/share/MegaRAID_Storage_Manager/startmonitorhelp.sh
   sed -e '28,35d' -e 's|mozilla|xdg-open|g' -e 's|/firefox||g' -i usr/share/MegaRAID_Storage_Manager/starthelp.sh
 
@@ -137,9 +144,6 @@ package() {
   install -Dm755 "${srcdir}/msm_profile.sh" etc/profile.d/msm.sh
 
   install -Dm644 "${srcdir}/LSI_StorSNMP.ini"  etc/lsi_mrdsnmp/LSI_StorSNMP.ini
-
-  install -Dm644 "${srcdir}/License.html" "usr/share/licenses/${pkgname}/License.html"
-  install -Dm644 "${srcdir}/pegasus/OpenPegasusNOTICE.txt" "usr/share/licenses/${pkgname}/OpenPegasusNOTICE.txt"
 
   # Remove unused files
   find . -name '*.log' -delete
@@ -200,4 +204,8 @@ package() {
 
   #remove Megapopup system launcher. because eats tons of RAM
   rm -fr "${pkgdir}/etc/X11"
+
+  # Install licenses
+  install -Dm644 "${srcdir}/SLA_AdvancedSoftware.pdf" "usr/share/licenses/${pkgname}/SLA_AdvancedSoftware.pdf"
+  install -Dm644 "${srcdir}/pegasus/OpenPegasusNOTICE.txt" "usr/share/licenses/${pkgname}/OpenPegasusNOTICE.txt"
 }

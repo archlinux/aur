@@ -4,6 +4,7 @@ Requires=snmpd.service lsi_msm.service
 
 [Service]
 Type=forking
+EnvironmentFile=/etc/profile.d/msm.sh
 ExecStart=/usr/bin/lsi_mrdsnmpagent -c /etc/snmp/snmpd.conf
 
 [Install]

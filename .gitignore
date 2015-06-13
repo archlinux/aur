@@ -2,7 +2,6 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
-!License.html
 !lsi_mrdsnmpd.service
 !lsi_msm.service
 !LSI_StorSNMP.ini

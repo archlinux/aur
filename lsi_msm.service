@@ -2,6 +2,7 @@
 Description=LSI MegaRAID Storage Manager Framework
 
 [Service]
+EnvironmentFile=/etc/profile.d/msm.sh
 ExecStart=/usr/bin/sh /usr/share/MegaRAID_Storage_Manager/Framework/startup.sh
 ExecStop=/usr/bin/sh /usr/share/MegaRAID_Storage_Manager/Framework/shutdown.sh
 

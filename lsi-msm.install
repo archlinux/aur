@@ -79,22 +79,22 @@ post_remove() {
     if [ -d $path ]; then
       if $first; then
         first=false
-        printf "${yellow}==>${all_off} ${bold}Leftover Paths:${all_off}\n"
+        printf "${green}==>${all_off} ${bold}Leftover Paths:${all_off}\n"
       fi
-      echo "    $paths"
+      printf "${blue}  -> ${all_off} ${bold}$path${all_off}\n"
     fi
   done
 
   files=(/etc/SlAsyncAddpCfg*.cfg)
 
   first=true
-  for files in ${files[@]}; do
-    if [ -f $files ]; then
+  for file in ${files[@]}; do
+    if [ -d $file ]; then
       if $first; then
         first=false
-        printf "${yellow}==>${all_off} ${bold}Leftover Files:${all_off}\n"
+        printf "${green}==>${all_off} ${bold}Leftover files:${all_off}\n"
       fi
-      echo "    $files"
+      printf "${blue}  -> ${all_off} ${bold}$files${all_off}\n"
     fi
   done
 }
