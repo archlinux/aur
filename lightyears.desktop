@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Light Years
+Comment=20,000 Light Years Into Space
+Exec=lightyears
+Icon=/usr/share/lightyears/data/city1.png
+Terminal=false
+Type=Application
+Categories=Application;Game;

@@ -1,0 +1,15 @@
+pkgbase = lightyears
+	pkgdesc = A single-player real-time strategy game with a science-fiction theme.
+	pkgver = 1.4
+	pkgrel = 2
+	url = http://www.jwhitham.org/20kly
+	arch = any
+	license = GPL
+	depends = python2-pygame
+	source = http://www.jwhitham.org/20kly/lightyears-1.4.tar.bz2
+	source = lightyears.desktop
+	md5sums = 1211f6c9f368e3d8053965b3e42dcdcd
+	md5sums = 7775f7aa7790999139d12c94bb31e244
+
+pkgname = lightyears
+
