@@ -1,0 +1,23 @@
+pkgbase = j4status-plugins-git
+	pkgdesc = Plugins for j4status
+	pkgver = 30.98a8146
+	pkgrel = 1
+	url = http://j4status.j4tools.org/j4status-plugins/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = docbook-xsl
+	depends = glibc
+	depends = j4status
+	optdepends = alsa-lib: Audio status
+	optdepends = i3ipc-glib: i3 focus
+	provides = j4status-plugins
+	options = !libtool
+	source = git://github.com/j4tools/j4status-plugins.git
+	source = git://github.com/sardemff7/libgwater.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = j4status-plugins-git
+
