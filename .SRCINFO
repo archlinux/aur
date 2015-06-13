@@ -1,0 +1,21 @@
+pkgbase = sphinxbase
+	pkgdesc = Common library for sphinx speech recognition.
+	pkgver = 0.8
+	pkgrel = 4
+	url = http://cmusphinx.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = bison
+	depends = python2
+	depends = cython2
+	depends = lapack
+	depends = alsa-lib
+	depends = libpulse
+	depends = libsamplerate
+	options = !libtool
+	source = http://downloads.sourceforge.net/cmusphinx/sphinxbase-0.8.tar.gz
+	md5sums = 7335d233f7ad4ecc4b508aec7b5dc101
+
+pkgname = sphinxbase
+
