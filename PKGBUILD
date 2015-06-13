@@ -1,5 +1,5 @@
+# Maintainer: Denis Kasak <dkasak|AT|termina.org.uk>
 # Contributor: Piotr Beling <qwak@stud.ics.p.lodz.pl>
-# Maintainer: Denis Kasak <reversed(moc.liamg@kasak.sined)>
 
 pkgname=qtstalker
 pkgver=0.36
