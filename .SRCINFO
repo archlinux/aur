@@ -1,0 +1,32 @@
+pkgbase = baudline-bin
+	pkgdesc = Time-frequency browser designed for scientific visualization of the spectral domain.
+	pkgver = 1.08
+	pkgrel = 3
+	url = http://www.baudline.com/
+	install = baudline-bin.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	depends = libxp
+	depends = jack
+	depends = libxmu
+	depends = libxxf86vm
+	depends = xorg-fonts-75dpi
+	depends = xorg-fonts-100dpi
+	optdepends = gzip
+	optdepends = bzip2
+	optdepends = flac
+	optdepends = sox
+	optdepends = mpg123
+	optdepends = vorbis-tools
+	provides = baudline
+	source = http://www.baudline.com/baudline_1.08_linux_.tar.gz
+	source = baudline.desktop
+	source = baudline_jack.desktop
+	md5sums = a400669fe11e5189e5d9d9db18dae70d
+	md5sums = d334c058230811a402104f75afcfaeed
+	md5sums = 2c1ff5a60782815167bb43e735305e0e
+
+pkgname = baudline-bin
+

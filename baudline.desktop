@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=baudline
+Comment=Time-frequency browser designed for scientific visualization of the spectral domain.
+Exec=baudline
+Icon=baudline
+Terminal=false
+Type=Application
+Categories=AudioVideo;

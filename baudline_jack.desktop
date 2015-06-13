@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=baudline_jack
+Comment=Time-frequency browser designed for scientific visualization of the spectral domain. With JACK suppport.
+Exec=baudline_jack
+Icon=baudline_jack
+Terminal=false
+Type=Application
+Categories=AudioVideo;

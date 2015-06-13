@@ -1,0 +1,19 @@
+post_install() {
+	echo "==>> By the mere act of downloading the program, you are actually" 
+	echo "==>> accepting the license of the program, which has been installed in:"
+	echo "==>> /usr/share/licenses/baudline-bin/README"
+	echo "==>> If you don't accept it, remove the program from your system immediately."
+}
+
+
+post_upgrade() {
+	/bin/true
+}
+
+post_remove() {
+	/bin/true
+}
+
+op=$1
+shift
+$op $*
