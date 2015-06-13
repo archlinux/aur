@@ -1,0 +1,25 @@
+pkgbase = springlobby-git
+	pkgdesc = A free cross-platform lobby client for the Spring RTS project, development version.
+	pkgver = 0.224.40.g813a0bb
+	pkgrel = 1
+	url = https://github.com/springlobby/springlobby/wiki
+	install = springlobby.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	depends = wxgtk
+	depends = boost-libs
+	depends = libnotify
+	depends = curl
+	depends = hicolor-icon-theme
+	depends = alure
+	provides = springlobby
+	conflicts = springlobby
+	source = git://github.com/springlobby/springlobby.git
+	md5sums = SKIP
+
+pkgname = springlobby-git
+
