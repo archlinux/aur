@@ -1,0 +1,14 @@
+pkgbase = cmfinder
+	pkgdesc = A Covariance Model Based RNA Motif Finding Algorithm
+	pkgver = 0.2
+	pkgrel = 2
+	url = http://bio.cs.washington.edu/yzizhen/CMfinder/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = perl
+	source = http://bio.cs.washington.edu/yzizhen/CMfinder/CMfinder_0.2.tgz
+	md5sums = f4ff2c87b9cb29dc79e56ac30c9c30a5
+
+pkgname = cmfinder
+
