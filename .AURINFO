@@ -1,0 +1,18 @@
+pkgbase = airspy-git
+	pkgdesc = Host code for Airspy SDR.
+	pkgver = 20141216
+	pkgrel = 1
+	url = http://www.airspy.com
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = libusb>=1.0
+	provides = airspy
+	conflicts = airspy
+	source = git+https://github.com/airspy/host
+	source = airspy.conf
+
+pkgname = airspy-git
+
