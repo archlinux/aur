@@ -1,0 +1,72 @@
+pkgbase = llvm-pypy-stm
+	pkgver = 201645
+	pkgrel = 2
+	url = http://llvm.org
+	arch = i686
+	arch = x86_64
+	license = custom:University of Illinois
+	makedepends = subversion
+	makedepends = libffi
+	makedepends = python2
+	makedepends = python-sphinx
+	makedepends = chrpath
+	options = staticlibs
+	options = !strip
+	source = llvm::svn+http://llvm.org/svn/llvm-project/llvm/trunk#revision=201645
+	source = clang::svn+http://llvm.org/svn/llvm-project/cfe/trunk#revision=201645
+	source = clang-tools-extra::svn+http://llvm.org/svn/llvm-project/clang-tools-extra/trunk#revision=201645
+	source = compiler-rt::svn+http://llvm.org/svn/llvm-project/compiler-rt/trunk#revision=201645
+	source = addrspacecast-in-constant.diff
+	source = no-introduce-bogus-cast-in-combine.diff
+	source = no-memset-creation-with-addrspace.diff
+	source = llvm-Config-config.h
+	source = llvm-Config-llvm-config.h
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = d5e624c8921802b2096f0b0279fb2ef3973dad0ca009d416ac15c839c8dea91f
+	sha256sums = 3113e118aa01968997639dd747b25ba9b5bcaa38415eae0cb9a8e63c703db44b
+	sha256sums = 16dd8e9cc3794189ebde5ee39a99e1a5014185f3ecb369e3ca1d2d22032a1576
+	sha256sums = 312574e655f9a87784ca416949c505c452b819fad3061f2cde8aced6540a19a3
+	sha256sums = 597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48
+
+pkgname = llvm-pypy-stm
+	pkgdesc = Low Level Virtual Machine, patched for pypy-stm
+	depends = llvm-libs-pypy-stm
+	depends = perl
+	provides = llvm
+	conflicts = llvm
+
+pkgname = llvm-libs-pypy-stm
+	pkgdesc = Low Level Virtual Machine (runtime library), patched for pypy-stm
+	depends = gcc-libs
+	depends = zlib
+	depends = libffi
+	depends = ncurses
+	provides = llvm-libs
+	conflicts = llvm-libs
+
+pkgname = clang-pypy-stm
+	pkgdesc = C language family frontend for LLVM, patched for pypy-stm
+	url = http://clang.llvm.org/
+	depends = llvm-pypy-stm
+	depends = gcc
+	provides = clang
+	conflicts = clang
+
+pkgname = clang-analyzer-pypy-stm
+	pkgdesc = A source code analysis framework, patched for pypy-stm
+	url = http://clang-analyzer.llvm.org/
+	depends = clang-pypy-stm
+	depends = python2
+	provides = clang-analyzer
+	conflicts = clang-analyzer
+
+pkgname = clang-tools-extra-pypy-stm
+	pkgdesc = Extra tools built using Clang's tooling APIs, patched for pypy-stm
+	url = http://clang.llvm.org/
+	depends = clang-pypy-stm
+	provides = clang-tools-extra
+	conflicts = clang-tools-extra
+
