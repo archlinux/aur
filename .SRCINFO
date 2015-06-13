@@ -1,0 +1,29 @@
+pkgbase = kicad-bzr
+	pkgdesc = Electronic schematic and printed circuit board (PCB) design tools
+	pkgver = r4835
+	pkgrel = 1
+	url = http://iut-tice.ujf-grenoble.fr/kicad/
+	install = kicad.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = bzr
+	makedepends = zlib
+	makedepends = mesa
+	makedepends = boost
+	depends = glew
+	depends = wxgtk
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	depends = boost-libs
+	optdepends = kicad-docs-bzr: for documentation
+	optdepends = kicad-library-bzr: for footprints
+	optdepends = git: github pcb plugin
+	provides = kicad
+	conflicts = kicad
+	source = bzr+lp:kicad
+	md5sums = SKIP
+
+pkgname = kicad-bzr
+
