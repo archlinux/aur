@@ -1,0 +1,15 @@
+pkgbase = fb2toepub
+	pkgdesc = converter from fb2 to epub
+	pkgver = 1.0_4
+	pkgrel = 1
+	url = http://code.google.com/p/fb2-to-epub-converter/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://fb2-to-epub-converter.googlecode.com/files/fb2toepub-1.0_4.zip
+	source = error.cpp.patch
+	sha1sums = 06a10c4ede420ba813bdd9f74d3f58456e381770
+	sha1sums = c36b701c87a8c91c55a97597bdc0505a8cc48d41
+
+pkgname = fb2toepub
+

@@ -1,0 +1,28 @@
+--- fb2toepub/error.cpp.orig	2010-12-31 14:41:34.000000000 +0200
++++ fb2toepub/error.cpp	2012-02-06 10:54:00.000000000 +0200
+@@ -22,6 +22,7 @@
+ 
+ #include "error.h"
+ #include <sstream>
++#include <iostream>
+ 
+ namespace Fb2ToEpub
+ {
+@@ -93,6 +94,7 @@
+ void IOException::Raise(const String &file, const String &what)
+ {
+     throw IOExceptionImpl(file, what);
++    
+ }
+ 
+ 
+@@ -122,7 +124,8 @@
+ };
+ void ParserException::Raise(const String &file, const Loc &loc, const String &what)
+ {
+-    throw ParserExceptionImpl(file, loc, what);
++    //throw ParserExceptionImpl(file, loc, what);
++    std::cout << "skip: " << file << ": " << what << "\n";
+ }
+ 
+ 
