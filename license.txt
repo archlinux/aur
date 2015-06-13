@@ -1,0 +1,8 @@
+listadmin - process messages held by Mailman for approval
+Written 2003 - 2007 by
+Kjetil Torgrim Homme <kjetilho+listadmin@ifi.uio.no>
+
+Thank you, Sam Watkins and Bernie Hoeneisen, for contributions and
+feedback.
+
+Released into public domain.

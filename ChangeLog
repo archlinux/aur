@@ -1,0 +1,11 @@
+2012-09-19  Moritz Bunkus  <moritz@bunkus.org>
+
+	* 2.40-2 :
+	Added three patches from Debian's package: "discard" action;
+	better handling of newer mailman versions/of different languages;
+	don't try to write log files.
+
+2011-04-05 Raphael Kubo da Costa <kubito@gmail.com>
+
+	* 2.40-1 :
+	Package created.

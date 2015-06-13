@@ -1,0 +1,13 @@
+--- listadmin.pl	2012-09-24 09:45:19.776566605 +0200
++++ listadmin.pl.patched	2012-09-24 09:45:42.501226539 +0200
+@@ -1640,8 +1640,8 @@
+     my $params = mailman_params ($user, $pw);
+ 
+     my $log = log_timestamp ($list);
+-    # Expand {list}, {subdomain} and {domain}
+-    $logfile = mailman_url($list, $logfile);
++    # Expand {list}, {subdomain} and {domain}, if there is something to expand
++    $logfile = mailman_url($list, $logfile) if $logfile;
+ 
+     for my $id (sort { $a <=> $b } keys %{$change}) {
+ 	my ($what, $text) = @{$change->{$id}};

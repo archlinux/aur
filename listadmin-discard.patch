@@ -1,0 +1,55 @@
+--- listadmin.pl	2007-10-07 22:13:15.000000000 +0200
++++ listadmin.pl.patched	2012-09-19 09:28:11.568585059 +0200
+@@ -254,7 +254,7 @@
+     }
+     my $count = keys (%subscribers);
+     my $def = $config->{"subdefault"};
+-    my $prompt = 'Accept/Reject/Skip/Quit';
++    my $prompt = 'Accept/Discard/Reject/Skip/Quit';
+     $prompt .= " [" . uc($def) . "]" if $def;
+     $prompt .= " ? ";
+ 
+@@ -281,6 +281,9 @@
+ 	    } elsif ($ans eq "a") {
+ 		$change->{$id} = [ "sa" ];
+ 		last;
++	    } elsif ($ans eq "d") {
++		$change->{$id} = [ "sd" ]; 
++		last; 
+ 	    } elsif ($ans eq "r") {
+ 		my $r = prompt ("Why do you reject? [optional] ");
+ 		unless (defined $r) {
+@@ -295,6 +298,7 @@
+ 
+   a  Accept    -- allow the user to join the mailing list
+   r  Reject    -- notify sender that the request was turned down
++  d  Discard   -- silently discard the request
+   s  Skip      -- do not decide now, leave it for later
+   q  Quit      -- go on to approving messages
+ 
+@@ -1082,6 +1086,7 @@
+ 					 "d" => 3,
+ 					 "sa" => 4, # subscribe approve
+ 					 "sr" => 2, # subscribe reject
++					 "sd" => 3, # subsribe discard
+ 				     };
+     } else {
+ 	$data->{"global"}{"actions"} = { "a" => 0,
+@@ -1116,7 +1121,7 @@
+ 
+     my %act = ("approve" => "a", "discard" => "d",
+ 	       "reject" => "r", "skip" => "s", "none" => "");
+-    my %sact = ("accept" => "a",
++    my %sact = ("accept" => "a", "discard" => "d", 
+ 		"reject" => "r", "skip" => "s", "none" => "");
+ 
+     return undef unless open (CONF, $file);
+@@ -1346,7 +1351,7 @@
+     for my $id (sort { $a <=> $b } keys %{$change}) {
+ 	my ($what, $text) = @{$change->{$id}};
+ 	$params->{$id} = $action->{$what};
+-	unless ($what =~ /^s[ar]$/) {
++	unless ($what =~ /^s[ard]$/) {
+ 	    # we don't log subscription approval or rejects
+ 	    $log .= sprintf ("%s D:[%s] F:[%s] S:[%s]\n",
+ 			     $what,

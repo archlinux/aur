@@ -1,0 +1,380 @@
+--- listadmin.pl	2012-09-24 09:40:53.412571168 +0200
++++ listadmin.pl.patched	2012-09-24 09:41:24.788602950 +0200
+@@ -722,7 +722,7 @@
+     }
+ 
+     my $data;
+-    if ($mmver eq "2.1") {
++    if ($mmver ge "2.1") {
+ 	my $parse_appr = HTML::TokeParser->new(\$page_appr) || die;
+ 	$data = parse_pages_mm_2_1($mmver, $config, $parse, $parse_appr);
+     } else {
+@@ -768,14 +768,26 @@
+     my %data = ();
+     my $headline;
+ 
++    # some (newer?) servers show only 1 <hr> tag when there is no subscriptions
++    # Try resolve first seen <hr> as subscription, and fall back to approvals
+     $parse_subs->get_tag ("hr");
+     if ($parse_subs->get_tag ("h2")) {
+-	parse_subscriptions ($mmver, $config, $parse_subs, \%data);
+-    }
+-
+-    $parse_appr->get_tag ("hr");
+-    if ($parse_appr->get_tag ("h2")) {
+-	parse_approvals ($mmver, $config, $parse_appr, \%data);
++	my $title = $parse_subs->get_trimmed_text ("/h2") || die;
++	if ($title =~ get_trans_re("subscriptions")) {
++	    parse_subscriptions ($mmver, $config, $parse_subs, \%data);
++
++	    $parse_appr->get_tag ("hr");
++	    if ($parse_appr->get_tag ("h2")) {
++		parse_approvals ($mmver, $config, $parse_appr, \%data);
++	    }
++	} else {
++	    parse_approvals ($mmver, $config, $parse_appr, \%data);
++	}
++    } else {
++	$parse_appr->get_tag ("hr");
++	if ($parse_appr->get_tag ("h2")) {
++	    parse_approvals ($mmver, $config, $parse_appr, \%data);
++	}
+     }
+     return (\%data);
+ }
+@@ -833,42 +845,325 @@
+     #
+     # Please send additions if you have them.
+ 
++    # Below strings are found in source of Mailman 2.1.10 and "washed":
++    # * high-bit chars and html ligatures in latin charsets replaced with .*
++    #   (\S would be better but for some reason the code chokes on that)
++    # * non-latin charsets included as-is and (if not already) as utf-8
++    # * trailing punctuation stripped (to allow small changes to locales)
+     my %translations =
++	     # grep -ri -- '<title>' templates/*/admlogin.html
+ 	    ("authentication" =>
+ 	     {
+-	      "en" => "authentication",
+-	      "de" => "Authentifikation",
+-	      "fr" => "authentification",
++	      "ar" => "التحقق من الشخصية لـ .* للقائمة",
++	      "ca" => "Authentication",
++	      "cs" => "p.*ihl.*en.*",
++	      "da" => "Login",
++	      # include old string (possibly bogusly grabbed from PO file)
++	      "de" => "Anmeldung|Authentifikation",
++	      "en" => "Authentication",
++	      "es" => "Autentificaci.*n",
++	      "et" => "autoriseerimine",
++	      "eu" => "Zerrendako .* Identifikatzen",
++	      "fi" => "Authentication",
++	      "fr" => "Authentification",
++	      "gl" => "Autenticaci.*n",
++	      "he" => "האימות של",
++	      "hr" => "Autentikacija",
++	      "hu" => "Azonos.*t.*s",
++	      "ia" => "Authentication",
++	      "it" => "Autenticazione",
++	      # | recode EUC-JP..utf8
++	      "ja" => "ǧ��|認証",
++	      # | recode EUC-KR..utf8
++	      "ko" => "������ ����|관리자 인증",
++	      "lt" => "prisijungimas",
++	      "nl" => "inloggen",
++	      "no" => "Innlogging",
++	      "pl" => "%(listname)s",
++	      "pt" => "Authentication",
++	      "pt_BR" => "Autentica.*o",
++	      "ro" => "Autentificare",
++	      # | recode koi8-r..utf8
++	      "ru" => "��������������|Аутентификация",
++	      "sk" => "prihlásenie",
++	      "sl" => "Avtentikacija",
++	      "sr" => "Authentication",
++	      "sv" => "Inloggning",
++	      "tr" => "Giri.*i",
++	      "uk" => "Автентифікація",
++	      "vi" => "Xác th.*c",
++	      "zh_CN" => "Authentication",
++	      "zh_TW" => "論壇 壇主驗證",
++	     },
++	     # grep -r -A 1 'msgid "Subscription Requests"' messages/*
++	     "subscriptions" =>
++	     {
++	      "C" => "Subscription Requests",
++	      "ar" => "طلبات التسجيل",
++	      "ca" => "Petici.* de Subscripci.*",
++	      "cs" => "Po.*adavky na p.*ihl.*en",
++	      "da" => "Anmoder om medlemskab",
++	      "de" => "Abonnement-Anfragen",
++	      "es" => "Peticiones de suscripci.*n",
++	      "et" => "Liitumisssoovid",
++	      "eu" => "Harpidetza Eskakizunak",
++	      "fi" => "Liittymispyynt.*j.*",
++	      "fr" => "Requ.*tes d'abonnement",
++	      "gl" => "Solicitudes de subscrici.*n",
++	      "he" => "בקשות מנוי",
++	      "hr" => "Zahtjevi za Pretplatom",
++	      "hu" => "Feliratkozási k.*relmek",
++	      "ia" => "Requestas de abonamento",
++	      "it" => "Richieste di iscrizione",
++	      # | recode EUC-JP..utf8
++	      "ja" => "������|入会申請",
++	      # | recode EUC-KR..utf8
++	      "ko" => "���� ��|가입 결과",
++	      "lt" => "Uþsisakymo Pra.*ymas",
++	      "nl" => "Aanmeldingsverzoeken",
++	      "no" => "S.*knader om medlemskap",
++	      "pl" => "Pro.*by o zapisanie",
++	      "pt" => "Pedidos de inscri.*o",
++	      "pt_BR" => "Requisi.*es de Inscri.*o",
++	      "ro" => "Cereri de abonare",
++	      # | recode koi8-r..utf8
++	      "ru" => "������� �� �������|Запросы на подписку",
++	      "sk" => ".*iadosti o prihl.*senie",
++	      "sl" => "Zahteve za prijavo",
++	      "sr" => "Захтјеви за упис",
++	      "sv" => "Ans.*kningar om medlemskap",
++	      "tr" => "Listeye .*yelik .*stekleri",
++	      "uk" => "Запити на підписку",
++	      "vi" => "Y.*u c.*u .*ng k.*",
++	      "zh_CN" => "订阅请求",
++	      "zh_TW" => "訂閱申請",
+ 	     },
++	     # grep -r -A 1 'msgid "Successfully \(subscribed\|Unsubscribed\|Removed\):"' messages/*
+ 	     "subscr_success" =>
+ 	     {
+-	      "en" => "Successfully ((un)?subscribed|Removed)",
+-	      "de" => "Erfolgreich (ein|aus)getragen",
++	      # include old (mistyped, or are these case-insensitive?) uppercase
++	      "C" => "Successfully (([uU]n)?subscribed|Removed)",
++	      "ar" => "تم اشتراكه بنجاح|خطأ في تسجيل الاشتراك|تمت إزالته بنجاح",
++	      "ca" => "Subscrit satisfact.*riament|Subscripci.* Cancel.*lada Satisfact.*riament|Eliminat satisfact.*riament",
++	      "cs" => ".*sp.*n.* p.*ihl.*eni|.*sp.*n.* odhl.*eni|.*sp.*n.* odstran.*ni",
++	      "da" => "Tilmelding er sket|Framelding udf.*rt|Framelding udf.*rt",
++	      "de" => "Erfolgreich (eingetragen|beendete Abonnements|entfernt)",
++	      "es" => "(Subscritos|Ha anulado su suscripci.*n|Ha sido borrado) satisfactoriamente",
++	      "et" => "Lisati aadressid|Tellimus l.*petati|Edukalt eemaldatud",
++	      "eu" => "Behar bezala harpidetuta|Behar Bezala Ezabatuta|Arrakastaz ezabatua",
++	      "fi" => "Onnistuneesti liitetty|Erotettu onnistuneesti|Poistettu onnistuneesti",
++	      "fr" => "Abonnement r.*ussi|R.*siliation r.*ussie|Abonnement r.*sili.* avec succ.*s",
++	      "gl" => "Subscribiuse con éxito|Anulou a súa subscrición satisfactoriamente|Eliminouse satisfactoriamente",
++	      "he" => "נרשם בהצלחה|מנוי בוטל בהצלחה|הוסר בהצלחה",
++	      "hr" => "Uspje.*no (pretpla.*eni|Odjavljeni|Maknut)",
++	      "hu" => "Sikeresen (fel.*rva|t.*r.*lve|t.*r.*lve)",
++	      "ia" => "(Abonate|Disabonate|Removite) con successo",
++	      "it" => "(Iscritti|Cancellati|Rimosso) con successo",
++	      # | recode EUC-JP..utf8
++	      "ja" => "(��|��|��)���³����λ|(入|退|退)会手続き完了",
++	      # | recode EUC-KR..utf8
++	      "ko" => "���������� (���Ե�|Ż���|���ŵ�) ����|성공적으로 (가입된|탈퇴된|제거된) 명단",
++	      "lt" => "S.*kmingai (u.*sisak.*|atsisak.*|pa.*alinti)",
++	      "nl" => "Met succes (aangemeld|afgemeld|verwijderd)",
++	      "no" => "(P.*melding|Utmelding) utf.*rt",
++	      "pl" => "Pomy.*lnie (zapisano|wypisano|usuni.*to)",
++	      "pt" => "(Inscrito|Inscri.*o anulada|Removido) co?m sucesso",
++	      "pt_BR" => "(Inscrito|Descadastrado|Removido) com [sS]ucesso",
++	      "ro" => "Au fost (abona.*i|dezabona.*i) cu succes",
++	      # | recode koi8-r..utf8
++	      "ru" => "������� (���������|������� �������� ����|������)|Успешно (подписаны|удалена подписка для|удалены)",
++	      "sk" => "Úspe.*ne (prihlásení|odhlásení|zmazaní)",
++	      "sl" => "Uspe.*no (prijavljeni|odjavljen|odstranjeni)",
++	      "sr" => "Успјешно (уписани|исписани|уклоњени)",
++	      "sv" => "(Anm.*lan|Avanmlan) gjord",
++	      "tr" => "Ba.*ar.*yla (.*ye yap.*ld.*|.*yelikten .*kar.*ld.*|Silindi)",
++	      "uk" => "Успішно (підписано|видалено підписку|видалено)",
++	      "vi" => "Đã đăng ký được|Đã bỏ đăng ký được|Đã gỡ bỏ được",
++	      "zh_CN" => "成功订阅|成功取消订阅|成功删除",
++	      "zh_TW" => "訂閱成功|退訂成功|成功除名",
+ 	     },
++	     # grep -r -A 1 'msgid "Error \(subscribing\|Unsubscribing\):"' messages/*
+ 	     "subscr_error" =>
+ 	     {
+-	      "en" => "Error (un)?subscribing",
++	      # include old (mistyped, or are these case-insensitive?) uppercase
++	      "C" => "Error ([uU]n)?subscribing",
++	      "ar" => "خطأ في (الاشتراك|إلغاء الاشتراك)",
++	      "ca" => "Error (subscrivint|cancel.*lant la subscripci.*)",
++	      "cs" => "Chyba p.*i (p.*ihla.*ov.*n.*|odhla.*ov.*n.*)",
++	      "da" => "Fejl under (tilmelding|framelding)",
++	      "de" => "Fehler beim (Abonnieren|Beenden des Abonnement)",
++	      "es" => "Error dando de (alta|baja) la suscripci.*n",
++	      "et" => "Viga aadresside lisamisel|Viga aadressi kustutamisel",
++	      "eu" => "Errorea harpidetzan|Zerrenda uztean errorea",
++	      "fi" => "Virhe (liitt.*ess.*|eroamisessa)",
++	      "fr" => "Erreur lors de (l'abonnement|la r.*siliation)",
++	      "gl" => "(Houbo un erro ao dar de alta|Produciuse un erro ao dar de baixa) a subscrición",
++	      "he" => "שגיאה (ברישום|בביטול המנוי)",
++	      "hr" => "Gre.*ka kod (pretpla.*ivanja|Odjavljivanja)",
++	      "hu" => "Hiba a (feliratkoz.*skor|t*rl*sn*l)",
++	      "ia" => "Error in (abonar|disabonar)",
++	      "it" => "Errore durante (l'iscrizione|la cancellazione)",
++	      # | recode EUC-JP..utf8
++	      "ja" => "(��|��)���³���Υ��顼|(入|退)会手続きのエラー",
++	      # | recode EUC-KR..utf8
++	      "ko" => "(����|Ż��) ����|(가입|탈퇴) 에러",
++	      "lt" => "Nes.*kmingai u.*sisakin.*jo|Klaida atsisakant",
++	      "nl" => "Fout bij (het aanmelden|afmelden)",
++	      "no" => "Feil under (p.*melding|utmelding)",
++	      "pl" => "B.*dy przy (za|wy)pisywaniu",
++	      "pt" => "Erro (inscrevendo|ao cancelar a inscri.*o)",
++	      "pt_BR" => "Erro ao (inscrever|descadastrar)",
++	      "ro" => "Eroare la (abonare|dezabonare)",
++	      # | recode koi8-r..utf8
++	      "ru" => "��������� �� ����|������ �������� ��������|Подписаны НЕ были|Ошибка удаления подписки",
++	      "sk" => "Chyba pri (prihlasovan.*|odhlasovan.*)",
++	      "sl" => "Napaka pri (prijavljanju|odjavi)",
++	      "sr" => "Грешка при (у|uc)пису",
++	      "sv" => "Fel under (anm.*lan|avanm.*lan)",
++	      "tr" => "(.*ye yaparken|.*yelikten .*kar.*l.*rken) hata oldu",
++	      "uk" => "Помилка (при спробі|видалення) підписки",
++	      "vi" => "Lỗi đăng ký|Lỗi bỏ đăng ký",
++	      "zh_CN" => "错误(取)?订阅",
++	      "zh_TW" => "訂閱失敗|退訂時出錯",
+ 	     },
++	     # grep -r -A 1 'msgid "No such list .*"' messages/*
+ 	     "no_such_list" =>
+ 	     {
+-	      "en" => "Mailman Admindb Error.*No such list:",
++	      "C" => "No such list",
++	      "ar" => "لا يوجد قائمة بالإسم",
++	      "ca" => "La llista .* no existeix",
++	      "cs" => "Nenalezl jsem konferenci",
++	      "da" => "Listen findes ikke",
++	      "de" => "(Keine Liste mit Namen .* vorhanden|Liste nicht vorhanden)",
++	      "es" => "(La lista .* no existe|No existe tal lista)",
++	      "et" => "(Sellist listi pole|Selle nimega listi pole)",
++	      "eu" => "(zerrendarik ez dago|Zerrenda ezezaguna)",
++	      "fi" => "(Listaa .* ei ole olemassa|Lista on jo olemassa)",
++	      "fr" => "(Liste inexistante|Liste introuvable)",
++	      "gl" => "(A rolda .* non existe|Non existe esa rolda)",
++	      "he" => "(אין רשימה בשם|אין כזו רשימה)",
++	      "hr" => "Takva lista ne postoji <em>%(safelistname)s</em>",
++	      "hu" => "Nincs .* nev.* lista",
++	      "ia" => "(Le lista .* non existe|Nulle tal lista)",
++	      "it" => "Non esiste .*la lista",
++	      # | recode EUC-JP..utf8
++	      "ja" => "�Ȥ����ꥹ�ȤϤ���ޤ���|というリストはありません",
++	      # | recode EUC-KR..utf8
++	      "ko" => "��� ���ϸ� ����Ʈ�� �������� �ʽ��ϴ�|라는 메일링 리스트가 존재하지 않습니다.",
++	      "lt" => "N.*ra forumo",
++	      "nl" => "Er is geen lijst met de naam",
++	      "no" => "Listen finnes ikke",
++	      "pl" => "Nie znaleziono listy|Nie ma takiej listy",
++	      "pt" => "N.*o existe essa lista|Lista inexistente",
++	      "pt_BR" => "Lista .*inexistente",
++	      "ro" => "Nu exist.* lista|Lista aceata nu exist.*",
++	      # | recode koi8-r..utf8
++	      "ru" => "������ �������� .*�� ����������|Список рассылки .*не существует",
++	      "sk" => "Neznáma .*konferencia",
++	      "sl" => "Seznam .*ne obstaja",
++	      "sr" => "Нема листе",
++	      "sv" => "Listan finns inte",
++	      "tr" => "ad.*nda bir liste yok",
++	      "uk" => "Список розсилки .*не існує",
++	      "vi" => "Không có hộp thư (chung|như vậy)",
++	      "zh_CN" => "没有类似的列表|没有这个列表",
++	      "zh_TW" => "(沒有.*這個|無此)論壇",
+ 	     },
++	     # head -n 2 templates/*/admindbsummary.html
++	     # grep -r -A 1 'msgid "There are no pending requests."' messages/*
+ 	     "pending_req" =>
+ 	     {
+-	      "en" => "(current set of administrative|pending request)",
+-	      "de" => "(gegenw&auml;rtigen administrativen|unbearbeiteten Anfragen)",
++	      "C" => "There are no pending requests",
++	      "ar" => "تحتوي هذه الصفحة على تلخيص للطلبات الإشرافية|لا يوجد طلبات معلقة",
++	      "ca" => "Aquesta p.*gina cont.* un sumari del conjunt actual de peticions administratives|No hi ha peticions pendents",
++	      "cs" => "P.*ehled po.*adavk.* pro konferenci|.*dn.* po.*adavky ne.*ekaj.* na vy.*zen.*",
++	      "da" => "Her finder du en oversigt over anmodninger der skal vurderes for maillisten|Der venter ingen anmodninger",
++	      "de" => "Diese Seite zeigt eine .*bersicht der gegenw.*rtigen administrativen|Keine unbearbeiteten Anfragen",
++	      "en" => "This page contains a summary of the current set of administrative",
++	      "es" => "Esta página contiene un sumario de las solicitudes administrativas que|No hay peticiones pendientes",
++	      "et" => "Sellel lehel on ülevaade kõigist||Taotlusi pole",
++	      "eu" => "Orri honetan .* posta zerrendan|Ez dago eskaerarik zain",
++	      "fi" => "Tällä sivulla on lista toimiasi vaativista|Ei odottavia pyynt.*j.*",
++	      "fr" => "Cette page contient un r.*sum.* de l'ensemble des requ.*tes|Pas de requ.*tes en instance",
++	      "gl" => "Esta páxina cont.*n un sumario das solicitudes administrativas que|Non hai ningunha solicitude pendente",
++	      "he" => "עמוד זה מכיל סיכום של קבוצת כל הבקשות המנהלתיות שדורשות|אין בקשות ממתינות",
++	      "hr" => "Ova stranica sadr.*i sa.*etak trenutnog skupa administrativnih zahtjeva|Nema zahtjeva na .*ekanju",
++	      "hu" => "Ezen az oldalon .* levelezõlistához.* tartozó beavatkozásra|Nincsen beavatkoz.*sra v.*r.* teend.*",
++	      "ia" => "Iste pagina contine un summario del collection del requestas|Il non ha requestas pendente",
++	      "it" => "Questa pagina contiene la lista delle richieste amministrative|Non ci sono richieste in attesa",
++	      "ja" => "���Υڡ�����|このページは|��α��ο����Ϥ���ޤ���|保留中の申請はありません",
++	      "ko" => "�� �������� .* ���ϸ� ����Ʈ|이 페이지는 .* 메일링 리스트|������� ��û�� �����ϴ�|대기중인 요청이 없습니다",
++	      "lt" => "Sprendimo laukian.*i.* lai.*k.* santrauka|There are no pending requests",
++	      "nl" => "Deze pagina toont een overzicht van alle administratieve verzoeken m.b.t. de .* maillijst die wachten op uw goedkeuring|Er zijn geen wachtende verzoeken",
++	      "no" => "Her finner du en oversikt over foresp.*rsler som skal vurderes for epostlisten|Det venter ingen foresp.*rsler eller s.*knader",
++	      "pl" => "This page contains a summary of the current set of administrative|Brak skolejkowanych zada.*",
++	      "pt" => "Esta p.*gina cont.*m um sum.*rio dos pedidos administrativos da lista|N.*o h.* pedidos pendentes",
++	      "pt_BR" => "Esta p.*gina cont.*m um resumo do conjunto atual de requisi.*es|N.*o existem requisi.*es pendentes",
++	      "ro" => "Aceast.* pagin.* con.*ine un sumar al setului curent de cereri administrative|Nu sunt cereri .*n a.*teptare",
++	      "ru" => "��� �������� �������� ������� ������ ��������� ��������� ����������������|Эта страница содержит сводный список требующих обработки административных|��� ��������, ��������� ���������|Нет запросов, требующих обработки",
++	      "sk" => "Preh.*ad po.*iadaviek pre konferenciu|.*iadne .*iadosti ne.*akaj.* na spracovanie",
++	      "sl" => "Ta stran vsebuje povzetek trenutnih skrbni.*kih zahtev, ki .*akajo|Ni .*akajo.*ih zahtev",
++	      "sr" => "﻿Ова страна садржи преглед тренутних услова за ваше укључење у листу слања|Нема захтјева на чекању",
++	      "sv" => "H.*r finns en .*versikt .*ver f.*rfr.*gningar som ska avg.*ras f.*r e-postlistan|Inga ans.*kningar v.*ntar",
++	      "tr" => "Bu sayfa|Bekleyen istek yok",
++	      "uk" => "Ця сторінка містить загальний список адміністративних запитів|Відсутні запити, що очікують рішень",
++	      "vi" => "Trang này chứa bản tóm tắt các yêu cầu quản trị cần thiết bạn tán thành cho|Không có yêu cầu bị hoãn nào",
++	      "zh_CN" => "此页面包含.*邮件列表|没有挂起的请求",
++	      "zh_TW" => "沒有待決的事項",
+ 	     },
++	     # TODO: get strings from older Mailman (pre 2.1) containing this one
+ 	     "headline_subscr" =>
+ 	     {
+ 	      "en" => "subscription",
++	      "da" => "medlemskab",
+ 	     },
++	     # TODO: get strings from older Mailman (pre 2.1) containing this one
+ 	     "held_for_approval" =>
+ 	     {
+ 	      "en" => "held for approval",
+ 	     },
++	     # grep -r -A 1 'msgid "Already a member"' messages/*
+ 	     "already_member" =>
+ 	     {
+-	      "en" => "Already a member",
++	      "C" => "Already a member",
++	      "ar" => "مشترك أصلاً",
++	      "ca" => "Ja ets membre",
++	      "cs" => "Je ji.* .*astn.*kem",
++	      "da" => "Allerede medlem",
++	      "de" => "Bereits Mitglied",
++	      "es" => "Ya est.* suscrito",
++	      "et" => "On juba liige",
++	      "eu" => "Dagoeneko harpidetuta",
++	      "fi" => "Jo j.*sen",
++	      "fr" => "D.*j.* abonn.*",
++	      "gl" => "Xa está subscrito",
++	      "he" => "הנו כבר מנוי",
++	      "hr" => "Ve.* je .*lan",
++	      "hu" => "M.*r tag",
++	      "ia" => "Ja es un membro",
++	      "it" => "Gi.* iscritto",
++	      # | recode EUC-JP..utf8
++	      "ja" => "���˲���Ǥ�|既に会員です",
++	      # | recode EUC-KR..utf8
++	      "ko" => "�̹� ȸ���Դϴ�|이미 회원입니다",
++	      "lt" => "Jau dalyvis",
++	      "nl" => "Is al lid",
++	      "no" => "Allerede medlem",
++	      "pl" => "Ju.* jest zapisany",
++	      "pt" => "J.* .* um membro",
++	      "pt_BR" => "J.* .* um membro",
++	      "ro" => "Este membru deja",
++	      # | recode koi8-r..utf8
++	      "ru" => "��� �������� �����������|Уже является подписчиком",
++	      "sk" => "Je už účastníkom",
++	      "sl" => "Je .*e .*lan",
++	      "sr" => "Корисник је већ учлањен.",
++	      "sv" => "Redan medlem",
++	      "tr" => "Zaten listeye .*ye",
++	      "uk" => "Вже є учасником",
++	      "vi" => "Đã thành viên",
++	      "zh_CN" => "已经是成员了",
++	      "zh_TW" => "已是訂戶",
+ 	     },
+ 	    );
+ 
