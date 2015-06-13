@@ -1,7 +1,7 @@
 # Maintainer:  Daniel YC Lin <dlin.tw@gmail.com>
 
 pkgname=sockperf-git
-pkgver=257
+pkgver=r145.e12372b
 pkgrel=1
 pkgdesc='A benchmarking utility for measuring network performance (latency and throughput) over socket API, with focus on high performance systems'
 url='https://github.com/mellanox/sockperf'
@@ -13,7 +13,7 @@ depends=('bash' gawk )
 makedepends=(doxygen)
 pkgver() {
   cd repo
-  git describe --long | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 build() {
   cd repo
