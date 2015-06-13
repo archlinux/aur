@@ -1,0 +1,19 @@
+pkgbase = dark-oberon
+	pkgdesc = An open source real-time strategy game similar to Warcraft II
+	pkgver = 1.0.2rc2
+	pkgrel = 2
+	url = http://dark-oberon.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = CCPL
+	depends = glfw
+	depends = mesa
+	depends = sdl_mixer
+	source = dark-oberon.png
+	source = dark-oberon.desktop
+	md5sums = c5943968757bcfe5a15d532fc2e61caa
+	md5sums = 073062bada4cde2cb1f0ba67dcc16955
+
+pkgname = dark-oberon
+

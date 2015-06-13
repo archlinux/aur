@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Dark Oberon
+Comment=An open source real-time strategy game similar to Warcraft II
+Exec=dark-oberon
+Icon=dark-oberon
+Terminal=false
+Categories=Game;StrategyGame;
