@@ -1,0 +1,16 @@
+pkgbase = pure-mpfr
+	pkgdesc = An interface to the GNU mpfr library for performing multiprecision floating point arithmetic with proper rounding.
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://purelang.bitbucket.org/
+	arch = i686
+	arch = x86_64
+	groups = pure-complete
+	groups = pure-math
+	license = LGPL3
+	depends = pure
+	source = https://bitbucket.org/purelang/pure-lang/downloads/pure-mpfr-0.5.tar.gz
+	md5sums = 0fb879739b5cdcaea6007a3c64a10f61
+
+pkgname = pure-mpfr
+
