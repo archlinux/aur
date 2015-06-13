@@ -1,0 +1,14 @@
+pkgbase = tn5250j-plugin-itext
+	pkgdesc = Support for spool and text transformation in tn5250j
+	pkgver = 4.2.0
+	pkgrel = 1
+	url = https://github.com/ymasory/iText-4.2.0/
+	arch = any
+	license = LGPL
+	depends = tn5250j
+	noextract = iText-4.2.0.jar
+	source = https://github.com/downloads/ymasory/iText-4.2.0/iText-4.2.0.jar
+	md5sums = b2c1f84b9960ba3cc336ef25a4fa3c65
+
+pkgname = tn5250j-plugin-itext
+
