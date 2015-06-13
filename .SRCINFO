@@ -1,0 +1,16 @@
+pkgbase = codecs
+	pkgdesc = Non-linux native codec pack.
+	pkgver = 20071007
+	pkgrel = 1
+	url = http://www.mplayerhq.hu/design7/dload.html
+	arch = i686
+	license = unknown
+	depends = libstdc++5
+	conflicts = codecs-extra
+	replaces = codecs-extra
+	options = !strip
+	source = http://www.mplayerhq.hu/MPlayer/releases/codecs/all-20071007.tar.bz2
+	md5sums = 0407e8ad132e37ccd3f932448ca201c5
+
+pkgname = codecs
+
