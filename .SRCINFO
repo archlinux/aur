@@ -1,0 +1,16 @@
+pkgbase = nerolinux
+	pkgdesc = Nero Burning ROM for linux
+	pkgver = 4.0.0.0
+	pkgrel = 5
+	url = http://www.nero.com/eng/linux4.html
+	install = nerolinux.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = rpmextract
+	depends = gtk2
+	source = http://www.archlinuxcn.org/download/nerolinux-4.0.0.0b-x86.rpm
+	md5sums = f49f49c588729c2afdbecb546d9b6041
+
+pkgname = nerolinux
+

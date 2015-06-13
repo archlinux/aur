@@ -1,0 +1,26 @@
+# arg 1:  the new package version
+post_install() {
+  echo "For Nero to be able to detect CD/DVD drives,"
+  echo "add yourself to the 'optical' group."
+  echo "If you have HAL installed it needs to be"
+  echo "running or Nero will fail to start."
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  echo "For Nero to be able to detect CD/DVD drives,"
+  echo "add yourself to the 'optical' group."
+  echo "If you have HAL installed it needs to be"
+  echo "running or Nero will fail to start."
+}
+
+# arg 1:  the old package version
+pre_remove() {
+  /bin/true
+}
+
+op=$1
+shift
+
+$op $*
