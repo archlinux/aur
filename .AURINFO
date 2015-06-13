@@ -1,0 +1,9 @@
+pkgbase = kissplayer
+	pkgdesc = KISS Player
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = http://sourceforge.net/projects/kissplayer/
+	install = kissplayer.install
+
+pkgname = kissplayer
+
