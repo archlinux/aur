@@ -1,0 +1,21 @@
+pkgbase = greenfoot
+	pkgdesc = Allows easy development of two-dimensional graphical applications, such as simulations and interactive games.
+	pkgver = 2.4.2
+	pkgrel = 2
+	url = http://www.greenfoot.org
+	arch = any
+	license = GPL2
+	license = BSD
+	makedepends = libarchive
+	depends = sh
+	depends = java-runtime
+	depends = java-environment
+	source = http://www.greenfoot.org/download/files/Greenfoot-generic-242.jar
+	source = greenfoot
+	source = greenfoot.desktop
+	sha256sums = 07618c3f2e7d19863b52f4c2eb6bcc875a908147836c992c854eb88c404f0754
+	sha256sums = 16f8bf45c11bd5abe50a672082ed0b3e6da2cb09b89c91a5cdde6459f500475b
+	sha256sums = d302cfba475646f7030c8353be8637e1601b1ec512a07cbdf936793ff67338d8
+
+pkgname = greenfoot
+

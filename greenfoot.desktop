@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Exec=/usr/bin/greenfoot %F
+Name=Greenfoot
+GenericName=Java IDE
+Icon=/usr/share/java/greenfoot/images/greenfoot-icon-48.png
+Terminal=false
+Type=Application
+Categories=Java;Development
+Mimetype=application/x-greenfoot
