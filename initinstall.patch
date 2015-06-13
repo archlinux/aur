@@ -1,0 +1,25 @@
+diff -rupN a/usr/bin/archipel-initinstall b/usr/bin/archipel-initinstall
+--- a/usr/bin/archipel-initinstall	2013-03-31 14:45:53.000000000 +0200
++++ b/usr/bin/archipel-initinstall	2013-03-31 15:02:07.286479421 +0200
+@@ -245,16 +245,16 @@ def get_data_files(prefix):
+     @type prefix: string
+     @param prefix: the installation prefix
+     """
+-    init_script = resource_filename(Requirement.parse("archipel-agent"),"install/etc/init.d/archipel")
+-    systemd_script = resource_filename(Requirement.parse("archipel-agent"),"install/usr/lib/systemd/system/archipel-agent.service")
+-    conf_folder = resource_filename(Requirement.parse("archipel-agent"),"install/etc/archipel")
+-    lib_folder = resource_filename(Requirement.parse("archipel-agent"),"install/var/lib/archipel")
++    init_script = ""
++    systemd_script = ""
++    conf_folder = ""
++    lib_folder = ""
+ 
+     # we are in the case of RPM installation
+     if not os.path.exists(init_script):
+         init_script = "%s/usr/install/etc/init.d/archipel" % prefix
+     if not os.path.exists(systemd_script):
+-        systemd_script = "%s/usr/lib/systemd/system/archipel-agent.service" % prefix
++        systemd_script = "%s/usr/install/usr/lib/systemd/system/archipel-agent.service" % prefix
+     if not os.path.exists(conf_folder):
+         conf_folder = "%s/usr/install/etc/archipel" % prefix
+     if not os.path.exists(lib_folder):

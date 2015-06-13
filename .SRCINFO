@@ -1,0 +1,35 @@
+pkgbase = archipel-agent
+	pkgdesc = A solution to manage and supervise virtual machines. (Agent)
+	pkgver = 0.6.0.beta
+	pkgrel = 4
+	url = http://archipelproject.org/
+	install = archipel-agent.install
+	arch = any
+	license = AGPL
+	makedepends = python2-distribute
+	depends = python2
+	depends = python2-apscheduler
+	depends = python2-sqlalchemy
+	depends = python2-numpy
+	depends = python2-magic
+	depends = python2-ctypes
+	depends = python2-pubsub
+	depends = python2-imaging
+	depends = libvirt
+	depends = libvirt-python
+	depends = qemu
+	depends = xmpppy
+	depends = dnsmasq
+	optdepends = ejabberd: An XMPP Server used by archipel for communication with VMs
+	options = !strip
+	options = !emptydirs
+	backup = etc/archipel/archipel.conf
+	source = https://github.com/ArchipelProject/Archipel/zipball/@beta6
+	source = systemd.fix728.patch
+	source = initinstall.patch
+	md5sums = 5e17b2f807ccfe6ed528587bbb28af6a
+	md5sums = 806b4169371ba03f36e0ac21b76bd944
+	md5sums = 5be3048be2978421705b65f3e04e7768
+
+pkgname = archipel-agent
+

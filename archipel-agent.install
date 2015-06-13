@@ -1,0 +1,23 @@
+post_install()
+{
+	cat <<- EOF
+        ==> You now need to edit /etc/archipel/archipel.conf top match your informations
+		==> To start archipel just run
+		# systemctl start archipel-agent
+		==> To enable archipel on boot:
+		# systemctl enable archipel-agent
+	EOF
+}
+
+post_upgrade()
+{
+	post_install $1
+}
+
+post_remove()
+{
+	cat <<- EOF
+		==> You may safely delete Archipel Agent config and files:
+		# rm -rf /etc/archipel /var/lib/archipel
+	EOF
+}
