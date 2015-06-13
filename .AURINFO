@@ -1,0 +1,12 @@
+pkgbase = aliensrl
+	pkgdesc = Based on the Aliens movie and from the creator of DoomRL.
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = http://alien.chaosforge.org/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = sdl_mixer
+
+pkgname = aliensrl
+
