@@ -1,0 +1,17 @@
+pkgbase = phyml-beagle-git
+	pkgdesc = Phylogenetic estimation using (Maximum) Likelihood
+	pkgver = r121.ab59039
+	pkgrel = 1
+	url = https://github.com/stephaneguindon/phyml/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = beagle-lib
+	provides = phyml-beagle
+	conflicts = phyml-beagle
+	source = phyml-git::git+https://github.com/stephaneguindon/phyml
+	md5sums = SKIP
+
+pkgname = phyml-beagle-git
+
