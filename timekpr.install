@@ -1,0 +1,16 @@
+
+post_install() {
+	/usr/bin/timekpr.postinst
+
+	echo "Your su command (gksu|gksudo|kdesu|kdesudo etc) for starting timekpr-gui as root: "
+	read su_command;
+	sed -i "s/gksu/${su_command}/" "/usr/share/applications/timekpr.desktop"
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+	/usr/bin/timekpr.postrm purge
+}

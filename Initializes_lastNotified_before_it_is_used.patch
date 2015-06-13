@@ -1,0 +1,10 @@
+--- a/timekpr-client.py	2011-04-15 13:17:59.000000000 +0200
++++ b/timekpr-client.py	2011-04-15 13:19:06.000000000 +0200
+@@ -40,6 +40,7 @@
+         self.conffile = self.VAR['TIMEKPRDIR'] + '/' + self.username
+         self.limits, self.bfrom, self.bto = readusersettings(self.username, self.conffile)
+         self.timer = None
++        self.lastNotified = datetime.datetime.fromtimestamp(0);
+         self.checkLimits()
+         #Add a gobject loop to check limits:
+         self.timer = gobject.timeout_add(self.checkInterval * 1000, self.checkLimits)
