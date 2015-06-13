@@ -1,0 +1,21 @@
+pkgbase = imview
+	pkgdesc = View and analyze scientific images
+	pkgver = 1.1.9h
+	pkgrel = 2
+	url = http://hugues.zahlt.info/software_imview.html
+	arch = any
+	license = GPL2
+	depends = libjpeg
+	depends = libtiff
+	depends = libpng12
+	depends = fltk
+	depends = imagemagick
+	source = http://hugues.zahlt.info/assets/logiciel/imview-current.tar.bz2
+	source = imview.desktop
+	source = imview.xpm
+	md5sums = b8039b290e15668dca4ee8eb93c0ecf8
+	md5sums = 9aa1896313c7826b2a598b125e8e5efb
+	md5sums = 4a2773a692cc209b3f7b2eaa9c1ae6d7
+
+pkgname = imview
+

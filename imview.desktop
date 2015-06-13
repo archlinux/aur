@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.1
+Name=Imview Image Viewer
+GenericName=Image Viewer
+Comment=View and analyze scientific images
+Comment[en_GB]=View and analyse scientific images
+Type=Application
+Exec=imview
+Icon=imview
+Categories=Education;Science;Graphics;
