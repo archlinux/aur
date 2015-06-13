@@ -1,0 +1,18 @@
+pkgbase = gnome-themes-extras
+	pkgdesc = Extra themes for GNOME2
+	pkgver = 2.22.0
+	pkgrel = 3
+	url = http://www.gnome.org
+	arch = any
+	license = GPL
+	makedepends = intltool
+	makedepends = icon-naming-utils
+	depends = gtk-engines>=2.18.4
+	depends = librsvg>=2.26.0
+	source = http://ftp.gnome.org/pub/gnome/sources/gnome-themes-extras/2.22/gnome-themes-extras-2.22.0.tar.bz2
+	source = darklooks-gtkrc.patch
+	md5sums = 3c24a31bf43d4dbb97bc8712b8cd72b3
+	md5sums = a6a32d2f8f978831064723ddf9c80ab5
+
+pkgname = gnome-themes-extras
+
