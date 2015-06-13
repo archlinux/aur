@@ -1,0 +1,15 @@
+pkgbase = mbrola-voices-in1
+	pkgdesc = A Hindi male voice for the MBROLA synthesizer
+	pkgver = 010206
+	pkgrel = 2
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-in
+	groups = mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/in1/in1-010206.zip
+	md5sums = a86eaae6a2fca6c8282339c5780d7373
+
+pkgname = mbrola-voices-in1
+
