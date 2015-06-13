@@ -1,0 +1,18 @@
+pkgbase = pure-gen
+	pkgdesc = A C interface generator for Pure
+	pkgver = 0.20
+	pkgrel = 1
+	url = http://purelang.bitbucket.org/
+	arch = i686
+	arch = x86_64
+	groups = pure-complete
+	groups = pure-util
+	license = custom
+	makedepends = ghc
+	depends = pure
+	depends = haskell-language-c
+	source = https://bitbucket.org/purelang/pure-lang/downloads/pure-gen-0.20.tar.gz
+	sha1sums = 20807ac0c4f725e3430675327c7bc5fb6fbb2982
+
+pkgname = pure-gen
+
