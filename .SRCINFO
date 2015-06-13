@@ -1,0 +1,19 @@
+pkgbase = spindown
+	pkgdesc = Daemon that spins down idle disks
+	pkgver = 0.4.0
+	pkgrel = 6
+	url = http://code.google.com/p/spindown/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = sg3_utils
+	backup = etc/spindown.conf
+	source = http://spindown.googlecode.com/files/spindown-0.4.0.tar.gz
+	source = spindown.service
+	source = spindown.tmpfiles
+	md5sums = 9ec7400cdd6540a404039492291f41cf
+	md5sums = 3dbf50c10ab13964ee7b044ed9006165
+	md5sums = a0b4ea847c00b8f363a521039c0f86cd
+
+pkgname = spindown
+

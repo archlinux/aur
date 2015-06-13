@@ -1,0 +1,9 @@
+[Unit]
+Description=Spindown Daemon
+
+[Service]
+ExecStart=/usr/bin/spindownd -d -f /run/spindown/spindownd.fifo -c /etc/spindown.conf -p /run/spindown/spindown.pid
+PIDFile=/run/spindown/spindown.pid
+
+[Install]
+WantedBy=multi-user.target
