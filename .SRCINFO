@@ -1,0 +1,18 @@
+pkgbase = gboggle
+	pkgdesc = A simple version of the classic game Boggle.
+	pkgver = 1.1.4
+	pkgrel = 3
+	url = http://gboggle.sourceforge.net
+	install = gboggle.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gconf
+	depends = gtk2
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	source = http://downloads.sourceforge.net/project/gboggle/1.1.4/gboggle-1.1.4.tar.gz
+	md5sums = 4eef546c2f851deb6991848646d6d322
+
+pkgname = gboggle
+
