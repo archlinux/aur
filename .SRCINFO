@@ -1,0 +1,15 @@
+pkgbase = icat
+	pkgdesc = outputs images in 256-color capable terminals
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/atextor/icat
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = imlib2
+	conflicts = icat-git
+	source = https://github.com/atextor/icat/archive/v0.4.tar.gz
+	md5sums = 29f6901d61cc09d27cef8affb917dd85
+
+pkgname = icat
+
