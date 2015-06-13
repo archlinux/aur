@@ -1,0 +1,27 @@
+pkgbase = smile
+	pkgdesc = Slideshow Maker In Linux Environnement
+	pkgver = 1.0
+	pkgrel = 4
+	url = http://smile.tuxfamily.org/
+	install = smile.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qtwebkit
+	depends = mesa
+	depends = sox
+	depends = mplayer
+	depends = imagemagick
+	depends = perl
+	depends = desktop-file-utils
+	source = http://repository.slacky.eu/slackware-13.0/multimedia/smile/1.0/src/smile-1.0.tar.gz
+	source = smile.desktop
+	md5sums = 7f1fa1b1e0ab661d5a74ac4b8ee02511
+	md5sums = aefd88b769e18f5406647539ed953937
+	sha1sums = d8b962c11d6dac657fd722f2ec1467a159379265
+	sha1sums = fbf44a3550412024d4de40d515f7a2e1f8a5ad1d
+	sha256sums = d6a6f5a2c7bce2dff174c4cb7f09a6326a926416c1ea47c6bdfc592b9cece9bf
+	sha256sums = 43d0e301533d27ede195fdfa7ce7b9b0bedafe8d6ae76c0edcf840f35cfea868
+
+pkgname = smile
+

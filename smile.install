@@ -1,0 +1,37 @@
+# arg 1:  the new package version
+post_install() {
+  update-desktop-database -q
+  echo ">>> You can find documentation at /usr/share/smile/BIB_ManSlide/Help/doc_en.html"
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  if [ `vercmp $2 0.8.0` -lt 0 ]; then
+    echo ">>>"
+    echo ">>> You appear to upgrading SMILE from a version lower than 0.8.0"
+    echo ">>> to version 0.8.0 or above."
+    echo ">>> If this is really your situation, you shouldn't use your old"
+    echo ">>> project files because new format."
+    echo ">>>"
+  fi
+  if [ `vercmp $2 1.0` -lt 0 ]; then
+    echo "********************* IMPORTANT UPGRADE NOTICE *********************"
+    echo "*                                                                  *"
+    echo "* You appear to be upgrading SMILE from a version lower than 1.0   *"
+    echo "* to version 1.0 (or higher).                                      *" 
+    echo "* If this is really your situation, you must remove the file       *"
+    echo "* .smile.cnf from your home directory BEFORE USING THE APLICATION  *"
+    echo "*                                                                  *"
+    echo "********************************************************************"
+    echo "*                                                                  *"
+    echo "* You can do it by executing (logged as your normal user):         *"
+    echo "*                      rm ~/.smile.cnf                             *"
+    echo "*                                                                  *"
+    echo "********************************************************************"
+  fi
+}
+
+op=$1
+shift
+$op $*
