@@ -1,0 +1,16 @@
+pkgbase = scalastyle
+	pkgdesc = Examines your Scala code and indicates potential problems with it.
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = http://www.scalastyle.org/
+	arch = any
+	license = Apache
+	depends = java-environment
+	depends = bash
+	source = https://oss.sonatype.org/content/repositories/releases/org/scalastyle/scalastyle-batch_2.10/0.5.0/scalastyle-batch_2.10-0.5.0-distribution.zip
+	source = scalastyle.sh
+	md5sums = SKIP
+	md5sums = 4180c97ade523d5c83c33c487352ef2b
+
+pkgname = scalastyle
+
