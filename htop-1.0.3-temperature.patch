@@ -1,0 +1,259 @@
+diff -urN htop-1.0.3-orig/CRT.c htop-1.0.3/CRT.c
+--- htop-1.0.3-orig/CRT.c	2014-11-04 14:10:29.500604247 +0100
++++ htop-1.0.3/CRT.c	2014-11-04 14:11:01.916663508 +0100
+@@ -60,6 +60,9 @@
+    UPTIME,
+    BATTERY,
+    TASKS_RUNNING,
++   TEMPERATURE_COOL,
++   TEMPERATURE_MEDIUM,
++   TEMPERATURE_HOT,
+    SWAP,
+    PROCESS,
+    PROCESS_SHADOW,
+@@ -270,6 +273,9 @@
+       CRT_colors[METER_VALUE] = A_BOLD;
+       CRT_colors[LED_COLOR] = A_NORMAL;
+       CRT_colors[TASKS_RUNNING] = A_BOLD;
++      CRT_colors[TEMPERATURE_COOL] = A_DIM;
++      CRT_colors[TEMPERATURE_MEDIUM] = A_NORMAL;
++      CRT_colors[TEMPERATURE_HOT] = A_BOLD;
+       CRT_colors[PROCESS] = A_NORMAL;
+       CRT_colors[PROCESS_SHADOW] = A_DIM;
+       CRT_colors[PROCESS_TAG] = A_BOLD;
+@@ -333,6 +339,9 @@
+       CRT_colors[METER_VALUE] = ColorPair(Black,White);
+       CRT_colors[LED_COLOR] = ColorPair(Green,White);
+       CRT_colors[TASKS_RUNNING] = ColorPair(Green,White);
++      CRT_colors[TEMPERATURE_COOL] = ColorPair(Green,White);
++      CRT_colors[TEMPERATURE_MEDIUM] = ColorPair(Yellow,White);
++      CRT_colors[TEMPERATURE_HOT] = A_BOLD | ColorPair(Red,White);
+       CRT_colors[PROCESS] = ColorPair(Black,White);
+       CRT_colors[PROCESS_SHADOW] = A_BOLD | ColorPair(Black,White);
+       CRT_colors[PROCESS_TAG] = ColorPair(White,Blue);
+@@ -396,6 +405,9 @@
+       CRT_colors[METER_VALUE] = ColorPair(Black,Black);
+       CRT_colors[LED_COLOR] = ColorPair(Green,Black);
+       CRT_colors[TASKS_RUNNING] = ColorPair(Green,Black);
++      CRT_colors[TEMPERATURE_COOL] = ColorPair(Green,Black);
++      CRT_colors[TEMPERATURE_MEDIUM] = ColorPair(Yellow,Black);
++      CRT_colors[TEMPERATURE_HOT] = A_BOLD | ColorPair(Red,Black);
+       CRT_colors[PROCESS] = ColorPair(Black,Black);
+       CRT_colors[PROCESS_SHADOW] = A_BOLD | ColorPair(Black,Black);
+       CRT_colors[PROCESS_TAG] = ColorPair(White,Blue);
+@@ -459,6 +471,9 @@
+       CRT_colors[METER_VALUE] = A_BOLD | ColorPair(Cyan,Blue);
+       CRT_colors[LED_COLOR] = ColorPair(Green,Blue);
+       CRT_colors[TASKS_RUNNING] = A_BOLD | ColorPair(Green,Blue);
++      CRT_colors[TEMPERATURE_COOL] = ColorPair(Green,Blue);
++      CRT_colors[TEMPERATURE_MEDIUM] = ColorPair(Yellow,Blue);
++      CRT_colors[TEMPERATURE_HOT] = A_BOLD | ColorPair(Red,Blue);
+       CRT_colors[PROCESS] = ColorPair(White,Blue);
+       CRT_colors[PROCESS_SHADOW] = A_BOLD | ColorPair(Black,Blue);
+       CRT_colors[PROCESS_TAG] = A_BOLD | ColorPair(Yellow,Blue);
+@@ -522,6 +537,9 @@
+       CRT_colors[METER_VALUE] = ColorPair(Green,Black);
+       CRT_colors[LED_COLOR] = ColorPair(Green,Black);
+       CRT_colors[TASKS_RUNNING] = A_BOLD | ColorPair(Green,Black);
++      CRT_colors[TEMPERATURE_COOL] = ColorPair(Cyan,Black);
++      CRT_colors[TEMPERATURE_MEDIUM] = ColorPair(Yellow,Black);
++      CRT_colors[TEMPERATURE_HOT] = A_BOLD | ColorPair(Red,Black);
+       CRT_colors[PROCESS] = ColorPair(Cyan,Black);
+       CRT_colors[PROCESS_SHADOW] = A_BOLD | ColorPair(Black,Black);
+       CRT_colors[PROCESS_TAG] = A_BOLD | ColorPair(Yellow,Black);
+@@ -586,6 +604,9 @@
+       CRT_colors[METER_VALUE] = A_BOLD | ColorPair(Cyan,Black);
+       CRT_colors[LED_COLOR] = ColorPair(Green,Black);
+       CRT_colors[TASKS_RUNNING] = A_BOLD | ColorPair(Green,Black);
++      CRT_colors[TEMPERATURE_COOL] = A_BOLD | ColorPair(Green,Black);
++      CRT_colors[TEMPERATURE_MEDIUM] = A_BOLD | ColorPair(Yellow,Black);
++      CRT_colors[TEMPERATURE_HOT] = A_BOLD | ColorPair(Red,Black);
+       CRT_colors[PROCESS] = A_NORMAL;
+       CRT_colors[PROCESS_SHADOW] = A_BOLD | ColorPair(Black,Black);
+       CRT_colors[PROCESS_TAG] = A_BOLD | ColorPair(Yellow,Black);
+diff -urN htop-1.0.3-orig/Header.c htop-1.0.3/Header.c
+--- htop-1.0.3-orig/Header.c	2014-11-04 14:10:29.496604239 +0100
++++ htop-1.0.3/Header.c	2014-11-04 14:11:01.916663508 +0100
+@@ -12,6 +12,7 @@
+ #include "MemoryMeter.h"
+ #include "SwapMeter.h"
+ #include "TasksMeter.h"
++#include "TemperatureMeter.h"
+ #include "LoadAverageMeter.h"
+ #include "UptimeMeter.h"
+ #include "BatteryMeter.h"
+@@ -150,6 +151,7 @@
+    }
+    Vector_add(this->leftMeters, Meter_new(this->pl, 0, (MeterClass*) Class(MemoryMeter)));
+    Vector_add(this->leftMeters, Meter_new(this->pl, 0, (MeterClass*) Class(SwapMeter)));
++   Vector_add(this->leftMeters, Meter_new(this->pl, 0, (MeterClass*) Class(TemperatureMeter)));
+    Vector_add(this->rightMeters, Meter_new(this->pl, 0, (MeterClass*) Class(TasksMeter)));
+    Vector_add(this->rightMeters, Meter_new(this->pl, 0, (MeterClass*) Class(LoadAverageMeter)));
+    Vector_add(this->rightMeters, Meter_new(this->pl, 0, (MeterClass*) Class(UptimeMeter)));
+diff -urN htop-1.0.3-orig/Makefile.am htop-1.0.3/Makefile.am
+--- htop-1.0.3-orig/Makefile.am	2014-11-04 14:10:29.499604245 +0100
++++ htop-1.0.3/Makefile.am	2014-11-04 14:12:23.748812438 +0100
+@@ -20,7 +20,7 @@
+ BatteryMeter.c Process.c ProcessList.c RichString.c ScreenManager.c Settings.c \
+ IOPriorityPanel.c SignalsPanel.c String.c SwapMeter.c TasksMeter.c TraceScreen.c \
+ UptimeMeter.c UsersTable.c Vector.c AvailableColumnsPanel.c AffinityPanel.c \
+-HostnameMeter.c OpenFilesScreen.c Affinity.c IOPriority.c IncSet.c
++HostnameMeter.c OpenFilesScreen.c Affinity.c IOPriority.c TemperatureMeter.c IncSet.c
+
+ myhtopheaders = AvailableColumnsPanel.h AvailableMetersPanel.h \
+ CategoriesPanel.h CheckItem.h ClockMeter.h ColorsPanel.h ColumnsPanel.h \
+@@ -29,7 +29,7 @@
+ BatteryMeter.h Meter.h MetersPanel.h Object.h Panel.h ProcessList.h RichString.h \
+ ScreenManager.h Settings.h SignalsPanel.h String.h SwapMeter.h TasksMeter.h \
+ TraceScreen.h UptimeMeter.h UsersTable.h Vector.h Process.h AffinityPanel.h \
+-HostnameMeter.h OpenFilesScreen.h Affinity.h IOPriority.h IncSet.h
++HostnameMeter.h OpenFilesScreen.h Affinity.h IOPriority.h TemperatureMeter.h
+
+ SUFFIXES = .h
+
+diff -urN htop-1.0.3-orig/Meter.c htop-1.0.3/Meter.c
+--- htop-1.0.3-orig/Meter.c	2014-11-04 14:10:29.499604245 +0100
++++ htop-1.0.3/Meter.c	2014-11-04 14:11:01.917663509 +0100
+@@ -11,6 +11,7 @@
+ #include "MemoryMeter.h"
+ #include "SwapMeter.h"
+ #include "TasksMeter.h"
++#include "TemperatureMeter.h"
+ #include "LoadAverageMeter.h"
+ #include "UptimeMeter.h"
+ #include "BatteryMeter.h"
+@@ -134,6 +135,7 @@
+    &MemoryMeter_class,
+    &SwapMeter_class,
+    &TasksMeter_class,
++   &TemperatureMeter_class,
+    &UptimeMeter_class,
+    &BatteryMeter_class,
+    &HostnameMeter_class,
+diff -urN htop-1.0.3-orig/TemperatureMeter.c htop-1.0.3/TemperatureMeter.c
+--- htop-1.0.3-orig/TemperatureMeter.c	1970-01-01 01:00:00.000000000 +0100
++++ htop-1.0.3/TemperatureMeter.c	2014-11-04 14:11:01.917663509 +0100
+@@ -0,0 +1,100 @@
++/*
++htop - TemperatureMeter.c
++(C) 2013 Ralf Stemmer
++(C) 2014 Blair Bonnett
++Released under the GNU GPL, see the COPYING file
++in the source distribution for its full text.
++*/
++
++#include "TemperatureMeter.h"
++
++#include "ProcessList.h"
++#include "CRT.h"
++
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include <limits.h>
++
++/*{
++#include "Meter.h"
++}*/
++
++int TemperatureMeter_attributes[] = {
++   TEMPERATURE_COOL,
++   TEMPERATURE_MEDIUM,
++   TEMPERATURE_HOT,
++};
++
++static void TemperatureMeter_setValues(Meter* this, char* buffer, int len) {
++   ProcessList* pl = this->pl;
++   this->total = pl->totalTasks;
++   this->values[0] = pl->runningTasks;
++   snprintf(buffer, len, "%d/%d", (int) this->values[0], (int) this->total);
++}
++
++static void TemperatureMeter_display(Object* cast, RichString* out) {
++   FILE *p;
++   p = popen("sensors", "r");
++   if(p == NULL) return 1;
++
++   int textColor   = CRT_colors[METER_TEXT];
++   int coolColor   = CRT_colors[TEMPERATURE_COOL];
++   int mediumColor = CRT_colors[TEMPERATURE_MEDIUM];
++   int hotColor    = CRT_colors[TEMPERATURE_HOT];
++
++   size_t read, len;
++   char *line = NULL;
++   char *entry = NULL;
++   char *tstart = NULL, *tend = NULL;
++   int  temperature;
++   while ((read = getline(&line, &len, p)) != -1) {
++      // contains this line a core-temperature?
++      entry = strstr(line, "Core ");
++      if (entry == NULL) continue;
++
++      // find the begin of the temperature value
++      tstart = strchr(entry, '+'); // no negative temperatures expected :)
++      if (tstart == NULL) continue;
++      tstart++; // jump over the '+'
++
++      // find the end of the temperature. Remember, it can be above 99°C ;)
++      tend = strchr(tstart, '.'); // just the integer
++      if (tend == NULL) continue;
++
++      // convert the string into an integer, this is necessary for further steps
++      temperature = strtol(tstart, &tend, 10);
++      if (temperature == LONG_MAX || temperature == LONG_MIN) continue;
++      if (tstart == tend) continue;
++
++      // choose the color for the temperature
++      int tempColor;
++      if      (temperature < 80)                      tempColor = coolColor;
++      else if (temperature >= 80 && temperature < 90) tempColor = mediumColor;
++      else                                            tempColor = hotColor;
++
++      // output the temperature
++      char buffer[20];
++      sprintf(buffer, "%d", temperature);
++      RichString_append(out, tempColor, buffer);
++      RichString_append(out, textColor, "°C ");
++   }
++
++   free(line);
++   pclose(p);
++}
++
++MeterClass TemperatureMeter_class = {
++   .super = {
++      .extends = Class(Meter),
++      .display = TemperatureMeter_display,
++      .delete = Meter_delete,
++   },
++   .setValues = TemperatureMeter_setValues,
++   .defaultMode = TEXT_METERMODE,
++   .total = 100.0,
++   .attributes = TemperatureMeter_attributes,
++   .name = "Temperature",
++   .uiName = "Temperature Sensors",
++   .caption = "Temperature: "
++};
+diff -urN htop-1.0.3-orig/TemperatureMeter.h htop-1.0.3/TemperatureMeter.h
+--- htop-1.0.3-orig/TemperatureMeter.h	1970-01-01 01:00:00.000000000 +0100
++++ htop-1.0.3/TemperatureMeter.h	2014-11-04 14:11:01.917663509 +0100
+@@ -0,0 +1,19 @@
++/* Do not edit this file. It was automatically generated. */
++
++#ifndef HEADER_TemperatureMeter
++#define HEADER_TemperatureMeter
++/*
++htop - TemperatureMeter.h
++(C) 2013 Ralf Stemmer
++(C) 2014 Blair Bonnett
++Released under the GNU GPL, see the COPYING file
++in the source distribution for its full text.
++*/
++
++#include "Meter.h"
++
++extern int TemperatureMeter_attributes[];
++
++extern MeterClass TemperatureMeter_class;
++
++#endif

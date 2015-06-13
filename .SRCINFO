@@ -1,0 +1,23 @@
+pkgbase = htop-temperature
+	pkgdesc = Interactive process viewer with added support for CPU temperature
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = http://htop.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python2
+	depends = ncurses
+	depends = lm_sensors
+	optdepends = lsof: show files opened by a process
+	optdepends = strace: attach to a running process
+	provides = htop
+	conflicts = htop
+	options = !emptydirs
+	source = http://hisham.hm/htop/releases/1.0.3/htop-1.0.3.tar.gz
+	source = htop-1.0.3-temperature.patch
+	sha256sums = 055c57927f75847fdc222b5258b079a9542811a9dcf5421c615c7e17f55d1829
+	sha256sums = 6b52b5b5c0cce04ab71d8603409927dffb77433526b08a35087eb028bab0a5cf
+
+pkgname = htop-temperature
+
