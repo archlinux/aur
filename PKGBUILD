@@ -1,4 +1,4 @@
-# Maintainer: vmalloc support@cyborg-connect.de
+# Maintainer: vmalloc vmalloc@cyborg-connect.de
 # Contributor: Yejun Yang  yejunx AT gmail DOT com
 # The PKGBUILD and install files are based upon those created by Yejun
 # This version contains an important bugfix regarding failures on DNSSEC-enabled queries on unsigned domains where the 
