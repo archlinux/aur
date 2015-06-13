@@ -1,0 +1,18 @@
+pkgbase = diffmerge
+	pkgdesc = SourceGear DiffMerge is an application to visually compare and merge files.
+	pkgver = 4.2.0.697
+	pkgrel = 1
+	url = http://www.sourcegear.com/diffmerge/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gtk2
+	depends = libpng15
+	depends = curl
+	source_i686 = http://download-us.sourcegear.com/DiffMerge/4.2.0/diffmerge-4.2.0.697.stable-1.i686.rpm
+	md5sums_i686 = 461659a788785e4b1979ba81ee4ed8f3
+	source_x86_64 = http://download-us.sourcegear.com/DiffMerge/4.2.0/diffmerge-4.2.0.697.stable-1.x86_64.rpm
+	md5sums_x86_64 = 230a8ce57ae5ef88f79113ceb39b839f
+
+pkgname = diffmerge
+
