@@ -1,0 +1,17 @@
+pkgbase = ccal
+	pkgdesc = A console program which writes a calendar together with Chinese calendar to standard output.
+	pkgver = 2.5.3
+	pkgrel = 2
+	url = http://ccal.chinesebay.com/ccal/ccal.htm
+	arch = i686
+	arch = x86_64
+	arch = sh4
+	license = GPL
+	makedepends = gcc
+	depends = gcc-libs
+	depends = bash
+	source = http://ccal.chinesebay.com/ccal/ccal-2.5.3.tar.gz
+	sha1sums = b44d73804ef3ba9129ae196887509f99b508401c
+
+pkgname = ccal
+
