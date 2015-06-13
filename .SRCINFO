@@ -1,0 +1,33 @@
+pkgbase = xmobar-volume-git
+	pkgdesc = A minimalistic status bar, with the volume plugin enabled.
+	pkgver = 0.23.1.r12.g1b46609
+	pkgrel = 1
+	url = http://projects.haskell.org/xmobar/
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	makedepends = ghc
+	makedepends = haskell-alsa-mixer
+	makedepends = haskell-http
+	makedepends = haskell-mtl
+	makedepends = haskell-parsec
+	makedepends = haskell-regex-compat
+	makedepends = haskell-stm
+	makedepends = haskell-utf8-string
+	makedepends = haskell-x11
+	makedepends = haskell-x11-xft
+	makedepends = git
+	depends = alsa-lib
+	depends = gmp
+	depends = libxft
+	depends = libxinerama
+	depends = libxrandr
+	depends = wireless_tools
+	conflicts = xmobar
+	conflicts = xmobar-darcs
+	conflicts = xmobar-git
+	source = xmobar-volume-git::git+https://github.com/jaor/xmobar.git
+	md5sums = SKIP
+
+pkgname = xmobar-volume-git
+
