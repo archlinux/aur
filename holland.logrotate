@@ -1,0 +1,8 @@
+/var/log/holland.log /var/log/holland/holland.log {
+    rotate 4
+    weekly
+    compress
+    missingok
+    create root adm
+}
+

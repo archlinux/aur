@@ -1,0 +1,11 @@
+--- holland-1.0.10/plugins/holland.lib.mysql/holland/lib/mysql/client/base.py.orig	2013-07-29 16:49:37.000000000 -0500
++++ holland-1.0.10/plugins/holland.lib.mysql/holland/lib/mysql/client/base.py	2014-12-11 21:36:42.154264669 -0600
+@@ -178,7 +178,7 @@
+                "LEFT JOIN INFORMATION_SCHEMA.ENGINES USING (ENGINE) "
+                "WHERE TABLE_SCHEMA = %s")
+         cursor = self.cursor()
+-        cursor.execute(sql, (database))
++        cursor.execute(sql, (database,))
+         names = [info[0] for info in cursor.description]
+         all_rows = cursor.fetchall()
+         result = [dict(zip(names, row)) for row in all_rows]

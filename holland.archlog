@@ -1,0 +1,20 @@
+2014-12-13 Troy Engel <troyengel+arch@gmail.com>
+	* 1.0.10-4
+	Update depends of children to require same version as parent
+
+2014-12-13 Troy Engel <troyengel+arch@gmail.com>
+	* 1.0.10-4
+	Fix BSD license location, stop including GPL2 licenses
+
+2014-12-12 Troy Engel <troyengel+arch@gmail.com>
+	* 1.0.10-3
+	Peer review changes for better PKGBUILD
+	Move logrotate to a source file
+
+2014-12-11 Troy Engel <troyengel+arch@gmail.com>
+	* 1.0.10-2
+	Create patch for MySQL cursor.execute() bug (fixed upstream)
+
+2014-12-11 Troy Engel <troyengel+arch@gmail.com>
+	* 1.0.10-1
+	Initial release
