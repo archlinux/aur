@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-kerio-firewall-admin">
+    <glob pattern="*.bkwf"/>
+    <icon name="kerio-firewall-admin"/>
+    <comment>Kerio Administration Console for Kerio Firewall</comment>
+    <comment xml:lang="en">Kerio Administration Console for Kerio Firewall</comment>
+    <comment xml:lang="cs">Administrační program pro Kerio Firewall</comment>
+    <comment xml:lang="de">Verwaltungskonsole für Kerio Firewall</comment>
+    <comment xml:lang="es">Consola de administración para Kerio Firewall</comment>
+    <comment xml:lang="fr">Console d’administration pour Kerio Firewall</comment>
+    <comment xml:lang="hr">Administracijska konzola za Kerio Firewall</comment>
+    <comment xml:lang="it">Console di amministrazione per Kerio Firewall</comment>
+    <comment xml:lang="ja">Kerio Firewall 用管理コンソール</comment>
+    <comment xml:lang="nl">Beheerconsole voor Kerio Firewall</comment>
+    <comment xml:lang="pl">Konsola administracyjna zapory Kerio Firewall</comment>
+    <comment xml:lang="pt">Administration Console para Kerio Firewall</comment>
+    <comment xml:lang="ru">Консоль администрирования межсетевого экрана Kerio Firewall</comment>
+    <comment xml:lang="sk">Administračný program pre Kerio Firewall</comment>
+    <comment xml:lang="sv">Hanteringskonsol för Kerio Firewall</comment>
+    <comment xml:lang="zh">Kerio Firewall 的管理控制台</comment>
+  </mime-type>
+</mime-info>
