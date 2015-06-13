@@ -1,0 +1,25 @@
+pkgbase = perl-rose-db
+	pkgdesc = A DBI wrapper and abstraction layer
+	pkgver = 0.777
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Rose-DB/
+	arch = any
+	license = PerlArtistic
+	depends = perl-bit-vector>=6.4
+	depends = perl-clone-pp
+	depends = perl-datetime
+	depends = perl-datetime-format-mysql
+	depends = perl-datetime-format-oracle
+	depends = perl-datetime-format-pg>=0.11
+	depends = perl-dbi
+	depends = perl-rose-datetime>=0.532
+	depends = perl-rose-object>=0.854
+	depends = perl-sql-reservedwords
+	depends = perl-time-clock
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JS/JSIRACUSA/Rose-DB-0.777.tar.gz
+	md5sums = 80f6550fefb1f1ac08fe904550753b48
+	sha512sums = 01668905c1beb4ce8a68b11aefb330d1eff33e074282d76da0151b70facad458414878fb82a44942f6ee30dd2b7e58afd3f5a5b90ef3d667bd3e906b0c4dfffc
+
+pkgname = perl-rose-db
+
