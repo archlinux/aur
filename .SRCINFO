@@ -1,0 +1,16 @@
+pkgbase = am335x-pru-git
+	pkgdesc = The PASM assembler and prussdrv library for the BBB (beaglebone black) PRU.
+	pkgver = 20140124
+	pkgrel = 2
+	url = http://processors.wiki.ti.com/index.php/Category:PRU
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = copyright
+	makedepends = git
+	optdepends = python: for python prussdrv wrapper
+	source = git+https://github.com/beagleboard/am335x_pru_package.git
+	md5sums = SKIP
+
+pkgname = am335x-pru-git
+
