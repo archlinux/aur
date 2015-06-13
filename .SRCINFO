@@ -1,0 +1,19 @@
+pkgbase = pushover
+	pkgdesc = Clone of the puzzle game Pushover (Amiga).
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = http://pushover.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	depends = sdl_mixer
+	depends = sdl_ttf
+	depends = lua
+	source = http://prdownloads.sourceforge.net/pushover/pushover-0.0.5.tar.gz
+	source = pushover.desktop
+	md5sums = cb88df3192677543bfc0a0179d176806
+	md5sums = c7150a9f3542689ad3056301e9f3e9fd
+
+pkgname = pushover
+

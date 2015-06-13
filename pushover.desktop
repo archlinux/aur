@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Pushover
+Comment=Clone of the puzzle game pushover (Amiga)
+Exec=pushover
+Icon=/usr/share/pushover/pushover.ico
+Categories=Game;PuzzleGame;
+Terminal=false
