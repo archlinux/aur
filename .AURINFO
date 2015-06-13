@@ -1,0 +1,18 @@
+pkgbase = perl-audio-scan
+	pkgdesc = Fast C metadata and tag reader for all common audio file formats
+	pkgver = 0.93
+	pkgrel = 7
+	url = http://search.cpan.org/dist/Audio-Scan
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-warn
+	depends = perl
+	depends = zlib>=1.2.5
+	source = http://search.cpan.org/CPAN/authors/id/A/AG/AGRUNDMA/Audio-Scan-0.93.tar.gz
+	options = !emptydirs
+
+pkgname = perl-audio-scan
+
