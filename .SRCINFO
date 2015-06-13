@@ -1,0 +1,18 @@
+pkgbase = libspectrum
+	pkgdesc = ZX Spectrum emulator support library
+	pkgver = 1.1.1
+	pkgrel = 2
+	url = http://fuse-emulator.sourceforge.net/libspectrum.php
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = bzip2
+	depends = zlib
+	depends = libgcrypt
+	depends = glib2
+	depends = audiofile
+	source = http://downloads.sourceforge.net/sourceforge/fuse-emulator/libspectrum-1.1.1.tar.gz
+	md5sums = 1bf15e02fe6c29c6247738c7aadbb1df
+
+pkgname = libspectrum
+
