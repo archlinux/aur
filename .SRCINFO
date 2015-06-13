@@ -1,0 +1,15 @@
+pkgbase = wmnd
+	pkgdesc = Dockapp for monitoring network interfaces.
+	pkgver = 0.4.17
+	pkgrel = 1
+	url = http://www.thregr.org/~wavexx/software/wmnd/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	depends = net-snmp
+	source = http://www.thregr.org/~wavexx/software/wmnd/releases/wmnd-0.4.17.tar.gz
+	md5sums = dbf6d6c42ab3e036388d261d2e7bea16
+
+pkgname = wmnd
+
