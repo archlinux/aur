@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-qt5-svg
+	pkgdesc = Qt5 for Windows -- QtSvg module (mingw-w64)
+	pkgver = 5.4.2
+	pkgrel = 1
+	url = http://qt-project.org/
+	arch = any
+	license = GPL3
+	license = LGPL
+	makedepends = mingw-w64-gcc
+	depends = mingw-w64-qt5-base
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://download.qt-project.org/official_releases/qt/5.4/5.4.2/submodules/qtsvg-opensource-src-5.4.2.tar.xz
+	md5sums = 5c7019682fdf37721b8477d69800559a
+
+pkgname = mingw-w64-qt5-svg
+
