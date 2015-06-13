@@ -2,8 +2,8 @@
 # Contributor: Filip Brcic <brcha@gna.org>
 # Contributor: jellysheep <max.mail@dameweb.de>
 pkgname=mingw-w64-qt5-base-static
-pkgver=5.4.1
-pkgrel=3
+pkgver=5.4.2
+pkgrel=1
 pkgdesc="A cross-platform application and UI framework (mingw-w64)"
 arch=(i686 x86_64)
 url="http://qt-project.org"
@@ -19,6 +19,7 @@ depends=(
   mingw-w64-libdbus
   mingw-w64-pcre
   mingw-w64-harfbuzz
+  mingw-w64-glib2
 )
 groups=(mingw-w64-qt mingw-w64-qt5)
 optdepends=(
@@ -53,7 +54,7 @@ source=("http://download.qt-project.org/official_releases/qt/5.4/${pkgver}/submo
         "qt-5.1.x-win_flex-replace.patch"
         "fix-opengl-to-many-sections.patch"
         "fix-static-psql-mysql.patch")
-md5sums=('9507825e558c980fed602de1f16ec7ae'
+md5sums=('67a95eec79ffc4a14f516ad6f3d24c96'
          'f51eb2b176b10af943831d33925c1251'
          '8c6bda3ce8aca368b1f50f57e5f25aa7'
          'af4ac76fb9d1ea383359ea881ffcd8e3'
