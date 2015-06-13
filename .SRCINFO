@@ -1,0 +1,18 @@
+pkgbase = pica-pica-client
+	pkgdesc = Pica Pica is a distributed instant messaging software that employs strong cryptography for communication protection
+	pkgver = 0.6dev.git540e7dc
+	pkgrel = 1
+	url = http://picapica.im/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = make
+	depends = qt4
+	optdepends = pica-pica-node
+	source = http://picapica.im/pica-pica_0.6dev.git540e7dc.orig.tar.gz
+	source = pica-pica-client.desktop
+	md5sums = 38bc8ed5d3aed899dc8339045efd9676
+	md5sums = 12eec102b252188793458cddda5a19ab
+
+pkgname = pica-pica-client
+

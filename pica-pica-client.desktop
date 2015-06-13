@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Pica-pica
+GenericName=P2P IM Client
+GenericName[ru]=P2P клиент мгновенных сообщений
+Exec=pica-client
+Icon=picapica-icon-sit
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Network;InstantMessaging;Qt;
