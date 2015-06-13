@@ -1,0 +1,34 @@
+pkgbase = btsync-1.4
+	pkgdesc = BitTorrent Sync - automatically sync files via secure, distributed technology (beta version)
+	pkgver = 1.4.111
+	pkgrel = 1
+	url = http://www.bittorrent.com/sync
+	install = btsync.install
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = custom:btsync
+	optdepends = btsync-autoconfig: Auto-create users' config files if needed
+	conflicts = btsync
+	backup = etc/btsync.conf
+	source = btsync.service
+	source = btsync_user.service
+	source = btsync.conf
+	sha1sums = 05038b03a673dd0207b2758a2e01db5d28c409d1
+	sha1sums = d30deb7e41ba1d163b4a5e442b8d8118758d312a
+	sha1sums = bf7d6bd7ffe2d23cce51a51e92fac3b82a7c87bb
+	source_i686 = http://syncapp.bittorrent.com/1.4.111/btsync_i386-1.4.111.tar.gz
+	sha1sums_i686 = 5e09a31fab0cf5032e22df12e4d67651bfe9edfe
+	source_x86_64 = http://syncapp.bittorrent.com/1.4.111/btsync_x64-1.4.111.tar.gz
+	sha1sums_x86_64 = bb2dec020e5d8ec3a0ce18a38ae08ddabd2a7750
+	source_arm = http://syncapp.bittorrent.com/1.4.111/btsync_arm-1.4.111.tar.gz
+	sha1sums_arm = 00769d20b05e816a43c797f32a690f0fb8cd5dd5
+	source_armv6h = http://syncapp.bittorrent.com/1.4.111/btsync_arm-1.4.111.tar.gz
+	sha1sums_armv6h = 00769d20b05e816a43c797f32a690f0fb8cd5dd5
+	source_armv7h = http://syncapp.bittorrent.com/1.4.111/btsync_arm-1.4.111.tar.gz
+	sha1sums_armv7h = 00769d20b05e816a43c797f32a690f0fb8cd5dd5
+
+pkgname = btsync-1.4
+
