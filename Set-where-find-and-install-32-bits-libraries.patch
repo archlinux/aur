@@ -1,0 +1,54 @@
+From 1d01cfbe5efc8f7e594a38fe7ef37aa552059c7b Mon Sep 17 00:00:00 2001
+From: Javier Tia <javier.tia@hp.com>
+Date: Wed, 25 Mar 2015 09:33:09 -0600
+Subject: [PATCH] Set where find and install 32-bits libraries
+
+---
+ CMakeLists.txt               | 2 +-
+ cmake/Modules/FindPCAP.cmake | 2 +-
+ src/CMakeLists.txt           | 4 ++--
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 726d6ce..16643db 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -107,7 +107,7 @@ CONFIGURE_FILE(
+ )
+ 
+ # Support for pkg-config
+-set(CMAKE_INSTALL_LIBDIR lib)
++set(CMAKE_INSTALL_LIBDIR lib32)
+ set(pkgconfig_prefix      ${CMAKE_INSTALL_PREFIX})
+ set(pkgconfig_exec_prefix ${CMAKE_INSTALL_PREFIX})
+ set(pkgconfig_libdir      ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR})
+diff --git a/cmake/Modules/FindPCAP.cmake b/cmake/Modules/FindPCAP.cmake
+index b3a3075..651f638 100644
+--- a/cmake/Modules/FindPCAP.cmake
++++ b/cmake/Modules/FindPCAP.cmake
+@@ -30,7 +30,7 @@ find_path(PCAP_INCLUDE_DIR
+ 
+ find_library(PCAP_LIBRARY
+     NAMES pcap wpcap
+-    HINTS ${PCAP_ROOT_DIR}/lib
++    HINTS ${PCAP_ROOT_DIR}/lib32
+ )
+ 
+ include(FindPackageHandleStandardArgs)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 25a93ce..73605c6 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -69,7 +69,7 @@ SET_TARGET_PROPERTIES(tins PROPERTIES VERSION ${LIBTINS_VERSION} SOVERSION ${LIB
+ INSTALL( 
+     TARGETS tins
+     EXPORT libtinsTargets
+-    LIBRARY DESTINATION lib
+-    ARCHIVE DESTINATION lib
++    LIBRARY DESTINATION lib32
++    ARCHIVE DESTINATION lib32
+     COMPONENT dev
+ )
+-- 
+2.3.3
+
