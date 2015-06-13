@@ -1,0 +1,15 @@
+pkgbase = vim-dotoutlinetree
+	pkgdesc = DotOutlineTree - Helps you edit structured text
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = http://www.vim.org/scripts/script.php?script_id=1225
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = unknown
+	depends = vim>=7.0
+	source = http://www.vim.org/scripts/download_script.php?src_id=16393
+	md5sums = 8028a7571dd465e8f2f261dd649db4c5
+
+pkgname = vim-dotoutlinetree
+

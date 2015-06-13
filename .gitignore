@@ -1,0 +1,8 @@
+## Ignore everything
+dot.vim
+*.zip
+*.xz
+*.gz
+*.bz2
+*.7z
+*/*
