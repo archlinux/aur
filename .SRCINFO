@@ -1,0 +1,18 @@
+pkgbase = geanypy-git
+	pkgdesc = Python bindings for Geany Plugin API and plugins.
+	pkgver = 0.01.r150.438ea69
+	pkgrel = 1
+	url = http://codebrainz.github.com/geanypy
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = git
+	depends = geany
+	depends = pygtk
+	provides = geanypy=0.01.r150.438ea69
+	conflicts = geanypy
+	source = git://github.com/codebrainz/geanypy.git
+	sha256sums = SKIP
+
+pkgname = geanypy-git
+
