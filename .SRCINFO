@@ -1,0 +1,16 @@
+pkgbase = lsw
+	pkgdesc = List window names
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://tools.suckless.org/lsw
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libx11
+	source = http://dl.suckless.org/tools/lsw-0.3.tar.gz
+	source = makefile.patch
+	md5sums = 3ae42c41a7ceda8ddf6e0fbab0866f79
+	md5sums = ae850a6a044a11f01a73f56c2f1c5520
+
+pkgname = lsw
+
