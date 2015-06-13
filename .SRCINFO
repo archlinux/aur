@@ -1,0 +1,15 @@
+pkgbase = threadpool
+	pkgdesc = a cross-platform C++ thread pool library
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = http://threadpool.sourceforge.net/
+	arch = any
+	license = custom
+	depends = boost
+	source = http://downloads.sourceforge.net/threadpool/threadpool-0_2_5-src.zip
+	source = fix_pool_schedule.patch
+	sha256sums = ab5a78d0f6ed7bd258a6095b3ba1854b40932e0e655fa492607bd2a940898889
+	sha256sums = 54c939715de85434326ad2388af025164c566942a564bea85cc66d313c18d3bb
+
+pkgname = threadpool
+

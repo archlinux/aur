@@ -1,0 +1,12 @@
+diff -aur threadpool-0_2_5-src.orig/threadpool/boost/threadpool/pool_adaptors.hpp threadpool-0_2_5-src/threadpool/boost/threadpool/pool_adaptors.hpp
+--- threadpool-0_2_5-src.orig/threadpool/boost/threadpool/pool_adaptors.hpp	2015-03-17 21:42:28.561832318 -0700
++++ threadpool-0_2_5-src/threadpool/boost/threadpool/pool_adaptors.hpp	2015-03-17 21:42:49.575073838 -0700
+@@ -35,7 +35,7 @@
+     template<typename Pool, typename Runnable>
+     bool schedule(Pool& pool, shared_ptr<Runnable> const & obj)
+     {
+-      return pool->schedule(bind(&Runnable::run, obj));
++      return pool.schedule(bind(&Runnable::run, obj));
+     }
+
+     /*! Schedules a task for asynchronous execution. The task will be executed once only.
