@@ -1,0 +1,20 @@
+pkgbase = legend-of-kyrandia-3
+	pkgdesc = A classic adventure game, played in ScummVM.
+	pkgver = 3.0
+	pkgrel = 7
+	url = http://www.emuparadise.me/ScummVM_Games/The_Legend_of_Kyrandia_3_Malcolm%27s_Revenge_(CD_DOS,_Multilanguage)/96018
+	install = kyrandia3.install
+	arch = any
+	license = custom-freeware
+	license = Abandonware
+	depends = scummvm
+	noextract = legend-of-kyrandia-3.zip
+	source = legend-of-kyrandia-3.zip::http://50.7.161.234/bks/new/ScummVM/Working/The%20Legend%20of%20Kyrandia%203%20Malcolm's%20Revenge%20(CD%20DOS,%20Multilanguage).zip
+	source = Kyrandia3.jpg
+	source = http://scummvm.svn.sourceforge.net/svnroot/scummvm/scummvm/tags/release-1-2-1/dists/engine-data/kyra.dat
+	sha1sums = c54ef1f6feea67081b77f49c5c2a641d4968f680
+	sha1sums = 9ef63a5de779052aec25bda3fdfec1feac4488b8
+	sha1sums = 1827c7532174322f02c2683c8a15dbc7d1d69412
+
+pkgname = legend-of-kyrandia-3
+

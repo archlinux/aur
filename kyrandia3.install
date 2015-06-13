@@ -1,0 +1,10 @@
+post_install() {
+	post_upgrade;
+}
+
+post_upgrade() {
+	echo "This game release with direct link was generously provided by emuparadise.me. Thanks!"
+	echo
+	echo "==> To play the game simply type"
+	echo "==> Kyrandia3"
+}
