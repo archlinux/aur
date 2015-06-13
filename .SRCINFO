@@ -1,0 +1,20 @@
+pkgbase = netplug
+	pkgdesc = A Linux daemon that manages network interfaces in response to network cables being plugged in and out
+	pkgver = 1.2.9.2
+	pkgrel = 3
+	url = http://www.red-bean.com/~bos/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = iproute2>=2.4.7
+	backup = etc/netplug.d/netplugd.conf
+	backup = etc/netplug.d/netplug
+	source = http://www.red-bean.com/~bos/netplug/netplug-1.2.9.2.tar.bz2
+	source = http://pkgs.fedoraproject.org/cgit/netplug.git/plain/netplugd.service
+	source = http://pkgs.fedoraproject.org/cgit/netplug.git/plain/netplug-1.2.9.2-man.patch
+	md5sums = 1d6db99536bdf875ce441f2c0e45ebf2
+	md5sums = 4482ef8c71bfb0b0335e9426d2852056
+	md5sums = 7c44d211426ef68af4b4896b2b870882
+
+pkgname = netplug
+
