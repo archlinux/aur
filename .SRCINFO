@@ -1,0 +1,17 @@
+pkgbase = tome2
+	pkgdesc = A dungeon crawler similar to Angband, based on the works of Tolkien.
+	pkgver = 235
+	pkgrel = 1
+	url = http://www.t-o-m-e.net
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libx11
+	depends = ncurses
+	source = http://www.mirrorservice.org/sites/www.ibiblio.org/gentoo/distfiles/tome-235-src.tar.bz2
+	source = LICENSE
+	md5sums = 751ea71973413d3b54644cf86b20758f
+	md5sums = 74183fd3880704df6ab64e4c2887b852
+
+pkgname = tome2
+
