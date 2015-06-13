@@ -1,0 +1,32 @@
+pkgbase = libavutil-52
+	pkgdesc = Compatibility package for ffmpeg to provide versions 52 of libavutil not anymore provided by the ffmpeg package
+	pkgver = 2.3.4
+	pkgrel = 1
+	url = http://ffmpeg.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = yasm
+	makedepends = gsm
+	makedepends = lame
+	makedepends = opencore-amr
+	makedepends = openjpeg
+	makedepends = opus
+	makedepends = rtmpdump
+	makedepends = schroedinger
+	makedepends = speex
+	makedepends = v4l-utils
+	makedepends = xvidcore
+	makedepends = libpulse
+	makedepends = libvpx
+	makedepends = libx264
+	makedepends = libtheora
+	makedepends = libvdpau
+	makedepends = libass
+	makedepends = libbluray
+	makedepends = libmodplug
+	source = http://ffmpeg.org/releases/ffmpeg-2.3.4.tar.bz2
+	sha256sums = 2f7dece56ea72a22c7cf49e50b58eaadef340457404395cc0479c843b42344f8
+
+pkgname = libavutil-52
+
