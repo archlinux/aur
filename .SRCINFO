@@ -1,0 +1,18 @@
+pkgbase = python-ptrace
+	pkgdesc = Python binding of ptrace library to trace processes and syscalls.
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = http://bitbucket.org/haypo/python-ptrace
+	arch = any
+	license = GPL2
+	makedepends = python
+	makedepends = python2
+	source = http://pypi.python.org/packages/source/p/python-ptrace/python-ptrace-0.8.1.tar.gz
+	sha256sums = 779e04c7bdc00150b739e7d49c9c61b7f36f17afd26355f91b10cd0e7d55d19f
+
+pkgname = python-ptrace
+	depends = python
+
+pkgname = python2-ptrace
+	depends = python2
+
