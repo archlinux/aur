@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=pzl games Sumpuzzle
+Comment=Sumpuzzle (pzl games)
+Categories=Game;LogicGame
+Exec=python2 /usr/share/pzl_games/sumpuzzle.pyw
+Terminal=false
+Icon=/usr/share/pixmaps/pzl_games/sumpuzzle_icon.png
+Type=Application

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=pzl games Boggle
+Comment=Boggle (pzl games)
+Categories=Game;LogicGame
+Exec=python2 /usr/share/pzl_games/boggle.pyw
+Terminal=false
+Icon=/usr/share/pixmaps/pzl_games/boggle_icon.png
+Type=Application

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=pzl games Sokoban
+Comment=Sokoban (pzl games)
+Categories=Game;LogicGame
+Exec=python2 /usr/share/pzl_games/sokoban.pyw
+Terminal=false
+Icon=/usr/share/pixmaps/pzl_games/sokoban_icon.png
+Type=Application

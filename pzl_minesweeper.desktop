@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=pzl games Minesweeper
+Comment=Minesweeper (pzl games)
+Categories=Game;LogicGame
+Exec=python2 /usr/share/pzl_games/minesweeper.pyw
+Terminal=false
+Icon=/usr/share/pixmaps/pzl_games/minesweeper_icon.png
+Type=Application

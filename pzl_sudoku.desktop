@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=pzl games Sudoku
+Comment=Sudoku (pzl games)
+Categories=Game;LogicGame
+Exec=python2 /usr/share/pzl_games/sudoku.pyw
+Terminal=false
+Icon=/usr/share/pixmaps/pzl_games/sudoku_icon.png
+Type=Application
