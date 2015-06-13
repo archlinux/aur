@@ -1,0 +1,16 @@
+[Unit]
+Description=WIDE-DHCPv6 Client on interface %I
+After=network.target
+Requires=network.target
+Before=dnsmasq.service
+Before=NetworkManager.service
+Documentation=man:dhcp6c(8) man:dhcp6c.conf(5)
+
+[Service]
+EnvironmentFile=/etc/conf.d/startpd.conf
+ExecStart=/usr/bin/dhcp6c -c /etc/wide-dhcpv6/dhcp6c.conf -fp /var/run/dhcp6c.pid %I
+ExecReload=/usr/bin/kill -s SIGHUP $MAINPID
+ExecStop=/usr/bin/kill -s SIGTERM $MAINPID
+
+[Install]
+WantedBy=multi-user.target

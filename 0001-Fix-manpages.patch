@@ -1,0 +1,168 @@
+From e9fd60840eb125dcd55aab859dd838a47c02931f Mon Sep 17 00:00:00 2001
+From: Jeremie Corbier <jeremie+debian@famille-corbier.net>
+Date: Tue, 6 Apr 2010 15:51:03 +0200
+Subject: [PATCH] Fix manpages
+
+This patch fixes wide-dhcpv6 manpages (paths, typos, ...).
+
+Signed-off-by: Jeremie Corbier <jeremie@famille-corbier.net>
+---
+ dhcp6c.8      |    8 ++++----
+ dhcp6c.conf.5 |    4 ++--
+ dhcp6ctl.8    |   13 ++++++-------
+ dhcp6relay.8  |    1 -
+ dhcp6s.8      |   10 +++++-----
+ dhcp6s.conf.5 |    2 +-
+ 6 files changed, 18 insertions(+), 20 deletions(-)
+
+diff --git a/dhcp6c.8 b/dhcp6c.8
+index 6824ae0..1d69c9d 100644
+--- a/dhcp6c.8
++++ b/dhcp6c.8
+@@ -114,13 +114,13 @@ In either case,
+ will send DHCPv6 Release messages to release resources assigned from servers.
+ .\"
+ .Sh FILES
+-.Bl -tag -width /usr/local/etc/dhcp6c.conf -compact
++.Bl -tag -width /etc/wide-dhcpv6/dhcp6c.conf -compact
+ .It Pa /var/run/dhcp6c.pid
+ is the default file that contains pid of the currently running
+ .Nm dhcp6c .
+-.It Pa /usr/local/etc/dhcp6c.conf
++.It Pa /etc/wide-dhcpv6/dhcp6c.conf
+ is the default configuration file.
+-.It Pa /var/db/dhcp6c_duid
++.It Pa /var/lib/dhcpv6/dhcp6c_duid
+ is the file to store the client's DUID.
+ .El
+ .Sh Configuration Script
+@@ -203,6 +203,6 @@ command first appeared in WIDE/KAME IPv6 protocol stack kit.
+ is incomplete and violates DHCPv6 protocol spec, in several aspects.
+ In particular, temporary address assignment is intentionally omitted.
+ .Pp
+-Information Refresh Time Option is not recognied in Info-req mode, since
++Information Refresh Time Option is not recognized in Info-req mode, since
+ .Nm
+ terminates after it receives a REPLY message.
+diff --git a/dhcp6c.conf.5 b/dhcp6c.conf.5
+index 611ab4f..5fc03d3 100644
+--- a/dhcp6c.conf.5
++++ b/dhcp6c.conf.5
+@@ -36,7 +36,7 @@
+ .Nd DHCPv6 client configuration file
+ .\"
+ .Sh SYNOPSIS
+-.Pa /usr/local/etc/dhcp6c.conf
++.Pa /etc/wide-dhcpv6/dhcp6c.conf
+ .\"
+ .Sh DESCRIPTION
+ The
+@@ -630,7 +630,7 @@ execute the
+ .Xr openssl 1
+ command (when available) as follows,
+ .Bd -literal -offset
+-% openssl rand -base64 16
++% openssl rand \-base64 16
+ .Ed
+ .Pp
+ and copy the output to the
+diff --git a/dhcp6ctl.8 b/dhcp6ctl.8
+index 86ea0e1..e11889b 100644
+--- a/dhcp6ctl.8
++++ b/dhcp6ctl.8
+@@ -85,12 +85,11 @@ Use
+ .Ar keyfile
+ to provide the shared secret to communicate with the process.
+ The default file name used when unspecified is
+-.Pa /usr/local/etc/dhcp6cctlkey
++.Pa /etc/wide-dhcpv6/dhcp6cctlkey
+ with a client,
+ and
+-.Pa /usr/local/etc/dhcp6sctlkey
++.Pa /etc/wide-dhcpv6/dhcp6sctlkey
+ with a server.
+-
+ .It Fl p Ar port
+ Specify
+ .Ar port
+@@ -99,7 +98,7 @@ The default port number used when unspecified is 5546 for a client,
+ and 5547 for a server.
+ .It Fl s Ar address
+ Specify
+-.A address
++.Ar address
+ as the listening address of the process.
+ The default address used when unspecified is ::1.
+ .El
+@@ -183,10 +182,10 @@ information (if any) and exits.
+ .El
+ .\"
+ .Sh FILES
+-.Bl -tag -width /usr/local/etc/dhcp6cctlkey -compact
+-.It Pa /usr/local/etc/dhcp6cctlkey
++.Bl -tag -width /etc/wide-dhcpv6/dhcp6cctlkey -compact
++.It Pa /etc/wide-dhcpv6/dhcp6cctlkey
+ is the default key file to communicate with a client.
+-.It Pa /usr/local/etc/dhcp6sctlkey
++.It Pa /etc/wide-dhcpv6/dhcp6sctlkey
+ is the default key file to communicate with a server.
+ .El
+ .\"
+diff --git a/dhcp6relay.8 b/dhcp6relay.8
+index 4f761b0..7ad8ada 100644
+--- a/dhcp6relay.8
++++ b/dhcp6relay.8
+@@ -107,7 +107,6 @@ to dump the process ID of
+ is the default file that contains pid of the currently running
+ .Nm .
+ .El
+-
+ .Sh SEE ALSO
+ .Xr dhcp6c 8 ,
+ .Xr dhcp6s 8
+diff --git a/dhcp6s.8 b/dhcp6s.8
+index 888117a..29dcc7b 100644
+--- a/dhcp6s.8
++++ b/dhcp6s.8
+@@ -102,7 +102,7 @@ Use
+ to store the shared secret to authenticate the communication with
+ .Nm dhcp6ctl .
+ The default file name used when unspecified is
+-.Pa /usr/local/etc/dhcp6sctlkey .
++.Pa /etc/wide-dhcpv6/dhcp6sctlkey .
+ The default name is intentionally same as that for
+ .Nm dhcp6ctl
+ so that the server and the control command can share the file when
+@@ -122,12 +122,12 @@ to dump the process ID of
+ .El
+ .\"
+ .Sh FILES
+-.Bl -tag -width /usr/local/etc/dhcp6s.conf -compact
+-.It Pa /usr/local/etc/dhcp6s.conf
++.Bl -tag -width /etc/wide-dhcpv6/dhcp6s.conf -compact
++.It Pa /etc/wide-dhcpv6/dhcp6s.conf
+ is the default configuration file.
+-.It Pa /var/db/dhcp6s_duid
++.It Pa /var/lib/dhcpv6/dhcp6s_duid
+ is the default file to store the server's DUID.
+-.It Pa /usr/local/etc/dhcp6sctlkey
++.It Pa /etc/wide-dhcpv6/dhcp6sctlkey
+ is the default key file to communicate with the control command.
+ See
+ .Xr dhcp6ctl 8
+diff --git a/dhcp6s.conf.5 b/dhcp6s.conf.5
+index 1206764..2cb08ce 100644
+--- a/dhcp6s.conf.5
++++ b/dhcp6s.conf.5
+@@ -36,7 +36,7 @@
+ .Nd DHCPv6 server configuration file
+ .\"
+ .Sh SYNOPSIS
+-.Pa /usr/local/etc/dhcp6s.conf
++.Pa /etc/wide-dhcpv6/dhcp6s.conf
+ .\"
+ .Sh DESCRIPTION
+ The
+-- 
+1.5.6.5
+

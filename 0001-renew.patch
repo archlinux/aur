@@ -1,0 +1,11 @@
+--- dir_orig/addrconf.c	2008-06-15 09:48:40.000000000 +0200
++++ dir_release/addrconf.c	2013-02-13 10:35:59.000000000 +0100
+@@ -173,7 +173,7 @@
+ 	    sacreate ? "create" : "update",
+ 	    in6addr2str(&addr->addr, 0), addr->pltime, addr->vltime);
+ 
+-	if (sa->addr.vltime != 0)
++	if ((sa->addr.vltime != 0) && sacreate)
+ 		if (na_ifaddrconf(IFADDRCONF_ADD, sa) < 0)
+ 			return (-1);
+ 
