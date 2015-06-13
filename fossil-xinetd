@@ -1,0 +1,23 @@
+service fossil
+{
+#better not change any of these
+type = UNLISTED
+socket_type = stream
+protocol = tcp
+wait = no
+user = root
+server = /usr/bin/fossil
+
+#only change these
+#http port, fossil will listen
+port = 8055
+
+#change this path to where your fossil repositories are
+server_args = http /var/fossil
+
+#comment next line to enable remote access
+only_from = 127.0.0.1 localhost
+
+#change to `no` to activate fossil
+disable = yes
+}

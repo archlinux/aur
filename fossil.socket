@@ -1,0 +1,10 @@
+[Unit]
+Description=Fossil socket
+
+[Socket]
+# TCP port to listen on
+ListenStream=8055
+Accept=yes
+
+[Install]
+WantedBy=sockets.target

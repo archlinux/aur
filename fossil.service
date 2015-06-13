@@ -1,0 +1,11 @@
+[Unit]
+Description=Fossil service
+
+[Service]
+# /var/fossil is the default path to fossil repositories
+ExecStart=-/usr/bin/fossil http /var/fossil
+StandardInput=socket
+# Uncomment this line to use fossil with URL prefix
+# This allows fossil to generate correct hyperlinks and redirects when
+# hosted within virtual directory (e.g. nginx reverse-proxy setups)
+#Environment=SCRIPT_NAME=/fossil
