@@ -1,0 +1,14 @@
+pkgbase = vim-pep8
+	pkgdesc = A PEP 8 Python source file checker for Vim
+	pkgver = 0.3.1
+	pkgrel = 2
+	url = http://www.vim.org/scripts/script.php?script_id=2914
+	arch = any
+	groups = vim-plugins
+	license = unknown
+	depends = vim
+	depends = pep8
+	source = pep8.vim::http://www.vim.org/scripts/download_script.php?src_id=14366
+
+pkgname = vim-pep8
+
