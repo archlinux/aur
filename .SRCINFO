@@ -1,0 +1,16 @@
+pkgbase = mbrola-voices-af1
+	pkgdesc = An Afrikaans male voice for the MBROLA synthesizer
+	pkgver = 1
+	pkgrel = 5
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-af
+	groups = mbrola-voices
+	groups = gespeaker-mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/af1/af1.zip
+	md5sums = 1391c7745585f12f423e0d9bb04fcc5a
+
+pkgname = mbrola-voices-af1
+
