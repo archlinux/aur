@@ -1,0 +1,23 @@
+pkgbase = libkolab-frameworks-git
+	pkgdesc = Advanced Kolab Object Handling Library. KF5 Frameworks branch. (GIT Version)
+	pkgver = 1.0.r357.779b8f9
+	pkgrel = 1
+	url = https://kolab.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = kdoctools
+	makedepends = boost
+	makedepends = swig
+	depends = libkolabxml-frameworks-git
+	depends = kdepimlibs-git
+	depends = kcontacts-git
+	depends = kcalutils-git
+	conflicts = libkolab
+	source = git+https://git.kolab.org/diffusion/LK/libkolab.git#branch=dev/frameworks
+	sha1sums = SKIP
+
+pkgname = libkolab-frameworks-git
+
