@@ -1,5 +1,5 @@
 pkgname=sslmate
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Buy and manage SSL certs from the command line"
 arch=('any')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=(perl perl-uri perl-term-readkey perl-libwww perl-lwp-protocol-https)
 optdepends=('python2-boto: Route 53 DNS approval support')
 source=("https://packages.sslmate.com/other/sslmate-${pkgver}.tar.gz") 
-sha1sums=('fa5de9a52bcc8e9131653a3c4d3219457affab74')
+sha1sums=('539c4425001c68db5e2e50a911b4caf2b0b309e1')
 
 package() {
 	cd $srcdir/${pkgname}-${pkgver}
