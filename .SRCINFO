@@ -1,0 +1,16 @@
+pkgbase = hellspider
+	pkgdesc = Overhead physics shmup with an evolving enemy.
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://www.allegro.cc/depot/TransdimensionalHellspider
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = allegro4
+	source = http://downloads.sourceforge.net/project/hellspider/hellspider_src10.zip
+	source = http://downloads.sourceforge.net/project/hellspider/hellspider_win_10.zip
+	md5sums = ae414bc87d5678f8bf38cfabfd2dd4d4
+	md5sums = 3dd4e7ee1aaa16c1ac01a4062949cb1d
+
+pkgname = hellspider
+
