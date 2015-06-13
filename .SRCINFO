@@ -1,0 +1,14 @@
+pkgbase = nasal
+	pkgdesc = A very small but feature rich scripting language.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://plausible.org/nasal/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://plausible.org/nasal/nasal-1.0.1.tar.gz
+	md5sums = fa7e1e45934e1942062d2793903f2925
+
+pkgname = nasal
+
