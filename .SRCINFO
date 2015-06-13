@@ -1,0 +1,24 @@
+pkgbase = polly-b-gone
+	pkgdesc = 3D physics platform game that tells the story of a plucky wheeled robot named Poll
+	pkgver = 1.0
+	pkgrel = 7
+	url = http://cs.stanford.edu/people/mbostock/polly/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = sdl_mixer
+	depends = sdl_image
+	depends = freeglut
+	depends = glew
+	depends = libgl
+	source = http://danym.org/archlinux/files/polly-src.tar.bz2
+	source = polly-b-gone.png
+	source = polly-b-gone.desktop
+	source = lGLU.patch
+	md5sums = a6075c233fcc5a3c0bbf5d9f16683bdc
+	md5sums = e7d7277f263b4f9c5d6cd0032555f591
+	md5sums = 086ab9c4274900488530cc2e70514a19
+	md5sums = 9c94fd547535ee7e5280eae2042508a7
+
+pkgname = polly-b-gone
+
