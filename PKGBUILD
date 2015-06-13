@@ -30,6 +30,8 @@ pkgver() {
 prepare() {
   cd "$srcdir/atom"
 
+  patch -Np0 -i "$srcdir/atom-python.patch"
+
   sed -e "s/<%= description %>/$pkgdesc/" \
     -e "s|<%= executable %>|/usr/bin/atom|"\
     -e "s|<%= iconName %>|atom|"\
