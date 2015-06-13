@@ -1,0 +1,14 @@
+pkgbase = tn5250
+	pkgdesc = A 5250 terminal emulator for IBM iSeries and AS400
+	pkgver = 0.17.4
+	pkgrel = 6
+	url = http://tn5250.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = LGPL 2.1
+	depends = openssl
+	source = http://downloads.sourceforge.net/project/tn5250/tn5250/0.17.4/tn5250-0.17.4.tar.gz
+	md5sums = d1eb7c5a2e15cd2f43a1c115e2734153
+
+pkgname = tn5250
+
