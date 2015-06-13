@@ -1,0 +1,14 @@
+pkgbase = greed
+	pkgdesc = The strategy game of Greed.
+	pkgver = 3.11
+	pkgrel = 1
+	url = http://www.catb.org/~esr/greed/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	source = http://www.catb.org/~esr/greed/greed-3.11.tar.gz
+	md5sums = 81e9e57ea26fad2bcd3e3fcdd0b7a8f6
+
+pkgname = greed
+
