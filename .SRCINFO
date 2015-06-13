@@ -1,0 +1,23 @@
+pkgbase = 4kvideodownloader
+	pkgdesc = Quickly download videos from YouTube in high-quality.
+	pkgver = 3.5.5.1700
+	pkgrel = 1
+	url = http://www.4kdownload.com/products/product-videodownloader
+	arch = i686
+	arch = x86_64
+	license = custom:eula
+	depends = qt5-script
+	depends = portaudio
+	depends = ffmpeg-compat
+	depends = ffmpeg-compat-55>=2.3.4-2
+	source = 4kvideodownloader.desktop
+	source = 4kvideodownloader.png
+	sha256sums = 6ab39088bde330267b43f87878f6bd47a215c732e17d417a99fc23ac4c568952
+	sha256sums = 56b851ef96aade0612f236b8763ccaf2def8acdd49f37bbefdd79e1d5f6e68be
+	source_i686 = http://downloads.4kdownload.com/app/4kvideodownloader_3.5_i386.tar.bz2
+	sha256sums_i686 = f8dfccba34970f2ac439ea80b58a31d87a1b55c544872930d53bc1547907b46b
+	source_x86_64 = http://downloads.4kdownload.com/app/4kvideodownloader_3.5_amd64.tar.bz2
+	sha256sums_x86_64 = be635c525552b0c1dfe2db5b65a78b24d54dbb2d37e5b68f2f36886658fc7284
+
+pkgname = 4kvideodownloader
+

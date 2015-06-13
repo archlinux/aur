@@ -1,0 +1,11 @@
+
+[Desktop Entry]
+Name=4K Video Downloader
+GenericName=4K Video Downloader
+Comment=Download online video
+Exec=4kvideodownloader
+Terminal=false
+Type=Application
+Icon=4kvideodownloader.png
+Categories=Network;Qt;
+
