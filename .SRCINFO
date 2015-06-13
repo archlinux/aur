@@ -1,0 +1,22 @@
+pkgbase = magento
+	pkgdesc = Magento Community Edition 1.9.1.1 - PHP based e-commerce
+	pkgver = 1.9.1.1
+	pkgrel = 1
+	url = http://www.magentocommerce.com/
+	install = magento.install
+	arch = any
+	license = OSL3
+	depends = php>=5.3.24
+	depends = php-mcrypt
+	depends = php-gd
+	depends = mariadb-clients
+	depends = curl
+	depends = gd
+	optdepends = redis
+	optdepends = php-redis
+	options = !strip
+	source = http://www.magentocommerce.com/downloads/assets/1.9.1.1/magento-1.9.1.1.tar.bz2
+	sha256sums = 011f8a9ae9a370e0d758e0395cfcd03e91be5b48fbfaad90d745ccf76a9d0083
+
+pkgname = magento
+

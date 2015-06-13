@@ -1,0 +1,16 @@
+post_install() {
+  chown http:http /etc/webapps/magento/etc
+  chown -R http:http /usr/share/webapps/magento/var
+  chown -R http:http /usr/share/webapps/magento/media
+
+  cat > /etc/httpd/conf/extra/webapps_magento.conf <<EOF
+#    Alias /magento "/usr/share/webapps/magento"
+#    <Directory "/usr/share/webapps/magento">
+#        AllowOverride All
+#        Options FollowSymlinks
+#        Order allow,deny
+#        Allow from all
+#        php_admin_value open_basedir "/srv/:/tmp/:/usr/share/webapps/magento/:/etc/webapps:/usr/share/pear/"
+#    </Directory>
+EOF
+}
