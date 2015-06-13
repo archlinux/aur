@@ -1,0 +1,20 @@
+pkgbase = primerl
+	pkgdesc = A sci-fi roguelike, based on ZAPM.
+	pkgver = 2.4a
+	pkgrel = 1
+	url = http://pesky-reticulans.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = fpc
+	depends = ncurses
+	depends = gcc-libs
+	depends = libsigsegv
+	depends = lua51
+	depends = sdl_net
+	depends = sdl_mixer
+	source = http://pesky-reticulans.org/game/prime_src-2.4a.tar.bz2
+	md5sums = 321beb1cff617d41b37ca33968512442
+
+pkgname = primerl
+
