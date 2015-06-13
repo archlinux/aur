@@ -1,0 +1,4 @@
+post_install() {
+	echo "This software is free but copyright ©1998-2011 by Forschungszentrum Jülich GmbH, Germany, ©2009-2011 by German Research School for Simulation Sciences GmbH, Germany, and ©2003-2008 by University of Tennessee, United States of America."
+	echo "By downloading and using this software you automatically agree to comply with the regulations as described in the license agreement."
+}
