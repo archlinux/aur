@@ -1,0 +1,19 @@
+pkgbase = simplecv
+	pkgdesc = Framework for computer (machine) vision in Python, providing a unified, Pythonic interface to image aquisition, conversion, manipulation, and feature extraction.
+	pkgver = 1.3
+	pkgrel = 2
+	url = http://simplecv.org/
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = opencv
+	depends = python2-pillow
+	depends = python2-pygame
+	depends = python2-scipy
+	optdepends = ipython2: for using SimpleCV with the IPython Notebook
+	conflicts = simplecv-git
+	source = http://downloads.sourceforge.net/project/simplecv/1.3/SimpleCV-1.3.tar.gz
+	sha256sums = 7a0aaf61f357a78429ff4409f75d4ac67b9924f06013245706a3ccfcff8c92b0
+
+pkgname = simplecv
+
