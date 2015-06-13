@@ -1,0 +1,15 @@
+pkgbase = perl-datetime-format-oracle
+	pkgdesc = Parse and format Oracle dates and timestamps
+	pkgver = 0.06
+	pkgrel = 2
+	url = http://search.cpan.org/dist/DateTime-Format-Oracle/
+	arch = any
+	license = PerlArtistic
+	depends = perl-datetime
+	depends = perl-datetime-format-builder
+	depends = perl-convert-nlsdateformat
+	source = http://search.cpan.org/CPAN/authors/id/K/KO/KOLIBRIE/DateTime-Format-Oracle-0.06.tar.gz
+	options = !emptydirs
+
+pkgname = perl-datetime-format-oracle
+
