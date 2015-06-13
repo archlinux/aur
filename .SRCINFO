@@ -1,0 +1,16 @@
+pkgbase = mbrola-voices-tr1
+	pkgdesc = A Turkish male voice for the MBROLA synthesizer
+	pkgver = 010209
+	pkgrel = 3
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-tr
+	groups = mbrola-voices
+	groups = gespeaker-mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/tr1/tr1-010209.zip
+	md5sums = 79fabdd56d0e361941d98a2b40fc4631
+
+pkgname = mbrola-voices-tr1
+
