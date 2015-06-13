@@ -1,0 +1,28 @@
+pkgbase = passqr
+	pkgdesc = Generate 2D barcodes from password-store entries
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://github.com/emlun/passqr
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = pass
+	depends = qrencode
+	optdepends = feh: fast image viewer
+	optdepends = gpicview: fast image viewer
+	optdepends = imagemagick: fast image viewer
+	optdepends = nomacs: fast image viewer
+	optdepends = qiv: fast image viewer
+	optdepends = xv: fast image viewer
+	optdepends = gimmage: image viewer
+	optdepends = mirage: image viewer
+	optdepends = ristretto: image viewer
+	optdepends = viewnior: image viewer
+	optdepends = fbida: console image viewer
+	optdepends = fbv: console image viewer
+	backup = etc/passqr.conf
+	source = passqr::git+https://github.com/emlun/passqr.git#tag=1.3.2
+	md5sums = SKIP
+
+pkgname = passqr
+
