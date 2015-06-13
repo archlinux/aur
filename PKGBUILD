@@ -1,8 +1,8 @@
 # Maintainer: Olaf Bauer <hydro@freenet.de>
 
 pkgname=makemkv
-pkgver=1.9.3
-pkgrel=2
+pkgver=1.9.4
+pkgrel=1
 pkgdesc="DVD and Blu-ray to MKV converter and network streamer"
 arch=('i686' 'x86_64')
 url="http://www.makemkv.com"
@@ -17,8 +17,8 @@ source=(${url}/download/${pkgname}-bin-${pkgver}.tar.gz
         makemkv.1
         makemkvcon.1
         mmdtsdec.1)
-md5sums=('a865be4b09eab415667722bdf84aa083'
-         '8e93c75748ce1460ac96c86cb838f144'
+md5sums=('3ec48cd40e06301dde48d72623ddbcc2'
+         '10343016cd76df74c771f16b16cd5f0a'
          '1f9b3a91427a2015434e501542443f4c'
          '7f4b112c5178860cc2eb25059ae1af2a'
          '9476154228bf1b1f983178ba8565ac44')
