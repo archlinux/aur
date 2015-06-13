@@ -1,0 +1,13 @@
+pkgbase = ncurses-life
+	pkgdesc = Random Conway's game of life in your terminal.
+	pkgver = 20091024
+	pkgrel = 2
+	url = http://csiuo.com/drupal/content/ncurses-life
+	arch = any
+	license = custom:copyright
+	depends = perl-curses
+	source = http://csiuo.com/drupal/content/ncurses-life
+	md5sums = f55af73a004b6c049e8da97173fefb7d
+
+pkgname = ncurses-life
+
