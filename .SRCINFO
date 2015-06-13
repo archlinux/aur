@@ -1,0 +1,14 @@
+pkgbase = texlive-acrotex
+	pkgdesc = A LaTeX bundle for webpages, pdf forms and includin JavaSript into LaTeX
+	pkgver = 6.7p
+	pkgrel = 1
+	url = http://www.ctan.org/tex-archive/macros/latex/contrib/acrotex
+	install = texlive-acrotex.install
+	arch = any
+	license = GPL
+	depends = texlive-core
+	source = http://mirrors.ctan.org/macros/latex/contrib/acrotex.zip
+	md5sums = b4973e088d36d403b14f26327680aa24
+
+pkgname = texlive-acrotex
+
