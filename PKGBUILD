@@ -11,7 +11,7 @@ _srcname=linux-4.0
 _pkgver=4.0.5
 _rtpatchver=rt3
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -119,7 +119,7 @@ _package() {
   conflicts=("kernel26${_kernelname}")
   replaces=("kernel26${_kernelname}")
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
-  install=("${pkgbase}.install")
+  install="${pkgbase}.install"
 
   cd "${srcdir}/${_srcname}"
 
