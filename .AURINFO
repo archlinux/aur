@@ -1,0 +1,17 @@
+pkgbase = teapot
+	pkgdesc = Table Editor and Planner. A 3D curses based spreadsheet for mathy people.
+	pkgver = 2.3.0
+	pkgrel = 2
+	url = http://www.syntax-k.de/projekte/teapot/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = ncurses
+	optdepends = fltk: for gui
+	conflicts = mesa-demos
+	source = http://www.syntax-k.de/projekte/teapot/teapot-2.3.0.tar.gz
+	source = http://www.syntax-k.de/projekte/teapot/Teapot-2.3.0-win32.zip
+
+pkgname = teapot
+
