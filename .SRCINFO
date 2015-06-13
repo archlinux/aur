@@ -1,0 +1,25 @@
+pkgbase = rhvoice-git
+	pkgdesc = free and open source speech synthesizer for Russian language
+	pkgver = 20141006
+	pkgrel = 1
+	url = https://github.com/Olga-Yakovleva/RHVoice
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = scons
+	makedepends = gcc
+	depends = expat
+	depends = pcre
+	depends = sox
+	depends = libunistring
+	depends = flite-full>=1.4
+	depends = python2
+	depends = portaudio
+	depends = glibmm
+	optdepends = alsa-utils: for using aplay
+	provides = rhvoice
+	replaces = rhvoice
+	backup = etc/RHVoice/RHVoice.conf
+
+pkgname = rhvoice-git
+
