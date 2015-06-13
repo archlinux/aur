@@ -1,0 +1,14 @@
+pkgbase = stardict-slang-eng-rus
+	pkgdesc = English-Russian slang dictionary
+	pkgver = 2.4.2
+	pkgrel = 1
+	url = http://stardict.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = stardict
+	source = http://downloads.sourceforge.net/xdxf/stardict-comn_sdict_axm05_eng_rus_slang-2.4.2.tar.bz2
+	md5sums = dd7464f82387e4b22f3553f1998debcd
+
+pkgname = stardict-slang-eng-rus
+
