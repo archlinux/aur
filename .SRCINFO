@@ -1,0 +1,16 @@
+pkgbase = libxml-ruby
+	pkgdesc = Provides Ruby language bindings for the GNOME Libxml2 XML toolkit
+	pkgver = 2.7.0
+	pkgrel = 2
+	url = http://xml4r.github.com/libxml-ruby
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ruby
+	depends = libxml2
+	noextract = libxml-ruby-2.7.0.gem
+	source = http://rubygems.org/downloads/libxml-ruby-2.7.0.gem
+	sha256sums = f1f8a3538a064923d8f718748f8771bf088a154c2967f1b7a0cd82d6cd15a9d8
+
+pkgname = libxml-ruby
+
