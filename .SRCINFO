@@ -1,0 +1,15 @@
+pkgbase = mbrola-voices-lt1
+	pkgdesc = A Lithuanian male voice for the MBROLA synthesizer
+	pkgver = 1
+	pkgrel = 2
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-lt
+	groups = mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/lt1/lt1.zip
+	md5sums = 9293674e01dc29bd92e4a251c09d215a
+
+pkgname = mbrola-voices-lt1
+
