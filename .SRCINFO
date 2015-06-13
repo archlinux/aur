@@ -1,0 +1,13 @@
+pkgbase = aur-git
+	pkgdesc = ABS-like command line tool to sync with the AUR git repository
+	pkgver = 20121208
+	pkgrel = 1
+	url = https://github.com/keenerd/aur
+	arch = any
+	license = MIT
+	makedepends = git
+	source = git://github.com/keenerd/aur.git
+	md5sums = SKIP
+
+pkgname = aur-git
+
