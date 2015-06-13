@@ -1,0 +1,23 @@
+pkgbase = xeroxprtdrv
+	pkgdesc = Xerox Unix Print Drivers
+	pkgver = 5.15.551.3277
+	pkgrel = 4
+	url = http://www.xerox.com
+	install = xeroxprtdrv.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gcc-libs
+	depends = libxinerama
+	depends = libxcursor
+	depends = libxdamage
+	depends = libx11
+	depends = libxau
+	depends = libxdmcp
+	depends = xorg-xhost
+	options = emptydirs
+	source = xeroxprtdrv.license
+	md5sums = 0a8eb0c1480a6ccc1ddab7cbb5e1bde4
+
+pkgname = xeroxprtdrv
+

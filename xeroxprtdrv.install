@@ -1,0 +1,6 @@
+
+post_install() {
+  echo "As root run the following to detect the printing subsystem:"
+  echo "# cd /opt/Xerox/prtsys; /opt/Xerox/prtsys/xeroxquemgr -setprtsubsys"
+}
+
