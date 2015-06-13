@@ -1,0 +1,9 @@
+post_install() {
+    cat << EOF
+==> Plugins had been installed in /usr/bin/pymunin-*
+==> To start using them with munin, just create symbolic links in the munin
+==> plugins configuration directory (/etc/munin/plugins) then configure them
+==> in /etc/munin/plugin-conf.d
+EOF
+}
+# vim:set ts=2 sw=2 et:

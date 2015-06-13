@@ -1,0 +1,16 @@
+pkgbase = pymunin
+	pkgdesc = Python Module for developing Munin Multigraph Monitoring Plugins.
+	pkgver = 0.9.27
+	pkgrel = 2
+	url = http://aouyar.github.com/PyMunin/
+	install = pymunin.install
+	arch = any
+	license = GPL3
+	makedepends = python2-setuptools
+	depends = python2
+	depends = munin-node
+	source = http://pypi.python.org/packages/source/P/PyMunin/PyMunin-0.9.27.tar.gz
+	md5sums = 2694c500de4b63f75b62ed5d06f8dd05
+
+pkgname = pymunin
+
