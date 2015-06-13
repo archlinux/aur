@@ -1,0 +1,17 @@
+pkgbase = python2-rpc4django
+	pkgdesc = Handles JSONRPC and XMLRPC requests easily with Django
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://rpc4django.readthedocs.org/
+	arch = any
+	license = BSD
+	depends = python2
+	depends = python2-django
+	depends = python2-defusedxml
+	optdepends = python2-docutils
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/r/rpc4django/rpc4django-0.3.0.tar.gz
+	md5sums = fd1169715ed0995fefae815906741e49
+
+pkgname = python2-rpc4django
+
