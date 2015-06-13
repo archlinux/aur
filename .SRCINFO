@@ -1,0 +1,22 @@
+pkgbase = easymp3gain-gtk2-bin
+	pkgdesc = GTK2 Graphical User Interface (GUI) for MP3Gain, VorbisGain and AACGain (binary package)
+	pkgver = 0.5.0
+	pkgrel = 6
+	url = http://easymp3gain.sourceforge.net/
+	install = easymp3gain.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	optdepends = mp3gain: for MP3 support
+	optdepends = vorbisgain: for OGG support
+	optdepends = aacgain: for AAC suport
+	provides = easymp3gain
+	conflicts = easymp3gain-gtk2
+	conflicts = easymp3gain-qt4
+	conflicts = easymp3gain-qt4-bin
+	source = http://sourceforge.net/projects/easymp3gain/files/easymp3gain%20i386/easymp3gain-0.5.0/easymp3gain-gtk2_0.5.0_i386.tar.gz
+	md5sums = 69b5a186022678955086134d06db74a6
+
+pkgname = easymp3gain-gtk2-bin
+
