@@ -1,4 +1,4 @@
-# Maintainer: vmalloc support@cyborg-connect.de
+# Maintainer: vmalloc vmalloc@cyborg-connect.de
 pkgname=qtools
 pkgver=0.56
 pkgrel=00
