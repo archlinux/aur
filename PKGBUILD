@@ -1,0 +1,27 @@
+# Maintainer: Ben Ruijl <benruyl at gmail>
+
+pkgname=couchpotato-git
+_gitname=CouchPotatoServer
+pkgver=2054.fc8db13
+pkgrel=1
+pkgdesc="Automatic Movie Downloading via NZBs & Torrent"
+arch=('any')
+url="http://couchpota.to/"
+license=('GPL3')
+depends=('python2')
+makedepends=('git')
+install='couchpotato.install'
+source=('git://github.com/RuudBurger/CouchPotatoServer.git' 'couchpotato.service')
+md5sums=('SKIP' '82813cd00a17dd78f10756d71c7eb848')
+
+pkgver() {
+  cd $_gitname
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  mkdir -p "${pkgdir}/opt/"
+  cp -r "$srcdir/$_gitname" "${pkgdir}/opt/couchpotato"
+
+  install -Dm644 "${srcdir}/couchpotato.service" "${pkgdir}/usr/lib/systemd/system/couchpotato.service"
+}

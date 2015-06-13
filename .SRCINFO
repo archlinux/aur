@@ -1,0 +1,17 @@
+pkgbase = couchpotato-git
+	pkgdesc = Automatic Movie Downloading via NZBs & Torrent
+	pkgver = 2054.fc8db13
+	pkgrel = 1
+	url = http://couchpota.to/
+	install = couchpotato.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python2
+	source = git://github.com/RuudBurger/CouchPotatoServer.git
+	source = couchpotato.service
+	md5sums = SKIP
+	md5sums = 82813cd00a17dd78f10756d71c7eb848
+
+pkgname = couchpotato-git
+
