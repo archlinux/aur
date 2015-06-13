@@ -1,0 +1,16 @@
+pkgbase = nickle-git
+	pkgdesc = A C-like language with the functionality of bc/dc/expr in much-improved form.
+	pkgver = 20101024
+	pkgrel = 1
+	url = http://nickle.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	provides = nickle
+	conflicts = nickle
+	source = git://keithp.com/git/nickle
+	md5sums = SKIP
+
+pkgname = nickle-git
+
