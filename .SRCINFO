@@ -1,0 +1,14 @@
+pkgbase = upgradepic
+	pkgdesc = A script to show pacman full system upgrade in SVG picture
+	pkgver = 1
+	pkgrel = 3
+	url = http://aur.archlinux.org
+	arch = any
+	license = CDDL
+	depends = gnuplot
+	optdepends = chromium: for display svg file
+	source = upgradepic.sh
+	md5sums = 923383169c55c9a62cce5fc213c25d8a
+
+pkgname = upgradepic
+
