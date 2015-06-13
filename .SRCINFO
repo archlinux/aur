@@ -1,0 +1,17 @@
+pkgbase = pure-gsl
+	pkgdesc = A Pure module which aims to provide a complete interface to the GNU Scientific Library
+	pkgver = 0.12
+	pkgrel = 1
+	url = http://purelang.bitbucket.org/
+	arch = i686
+	arch = x86_64
+	groups = pure-complete
+	groups = pure-math
+	license = LGPL3
+	depends = pure
+	depends = gsl
+	source = https://bitbucket.org/purelang/pure-lang/downloads/pure-gsl-0.12.tar.gz
+	sha1sums = 6e686e704fc35fb0029f810a5d39dc50b878b59e
+
+pkgname = pure-gsl
+
