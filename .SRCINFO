@@ -1,0 +1,23 @@
+pkgbase = monkey-bubble
+	pkgdesc = A Puzzle Bobble clone for one or two players
+	pkgver = 0.4.0
+	pkgrel = 2
+	url = http://www.happypenguin.org/show?Monkey%20Bubble
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gnome-doc-utils
+	makedepends = perl-xml-parser
+	depends = esound
+	depends = gstreamer0.10
+	depends = libgnomeui
+	depends = librsvg
+	source = http://home.gna.org/monkeybubble/downloads/monkey-bubble-0.4.0.tar.gz
+	source = desktop-fixes.patch
+	source = fix-xml.patch
+	md5sums = 0de8a05c8c15e08326d244534dc30f22
+	md5sums = 7c747f07e295e2c20313e920180710f0
+	md5sums = ead203bdc023d3ff69e4355064a2cbea
+
+pkgname = monkey-bubble
+

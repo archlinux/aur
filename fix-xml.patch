@@ -1,0 +1,57 @@
+Description: Add role="maintiner" attribute to <author> node - Fixes FTBFS.
+ Add <abstract role="description>" node.
+Author: Barry deFreese <bddebian@comcast.net>
+--- monkey-bubble-0.4.0.orig/help/fr/monkey-bubble.xml
++++ monkey-bubble-0.4.0/help/fr/monkey-bubble.xml
+@@ -22,7 +22,7 @@
+       <publishername>Projet de documentation GNOME</publishername> 
+     </publisher> 
+     <authorgroup> 
+-      <author> 
++      <author role="maintainer"> 
+ 	<firstname>Thomas</firstname> 
+ 	<surname>Cataldo</surname> 
+ 	<affiliation> 
+@@ -47,6 +47,9 @@
+       <title>Votre avis</title> 
+       <para>Pour signaler un probl&egrave;me ou faire une suggestion concernant l'application Monkey Bubble ou le pr&eacute;sent manuel, proc&eacute;dez comme indiqu&eacute;&agrave; la <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>.</para>
+     </legalnotice> 
++    <abstract role="description">
++      <para>A user manual describing the use of monkey-bubble.</para>
++    </abstract>
+   </articleinfo> 
+ 
+   <indexterm> 
+--- monkey-bubble-0.4.0.orig/help/C/monkey-bubble.xml
++++ monkey-bubble-0.4.0/help/C/monkey-bubble.xml
+@@ -23,7 +23,7 @@
+       <publishername>GNOME Documentation Project</publishername> 
+     </publisher> 
+     <authorgroup> 
+-      <author> 
++      <author role="maintainer"> 
+ 	<firstname>Thomas</firstname> 
+ 	<surname>Cataldo</surname> 
+ 	<affiliation> 
+@@ -40,6 +40,9 @@
+ 	  <para role="author">
+ 	    Thomas Cataldo
+ 	  </para>
++	  <para role="maintainer">
++	    Thomas Cataldo
++	  </para>
+ 	  <para role="publisher">
+ 	    GNOME Documentation Project 
+ 	  </para>
+@@ -54,7 +57,10 @@
+       <para> To report a bug or make a suggestion regarding the &app; application or this
+ 	manual, follow the directions in the 
+ 	<ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. </para>
+-    </legalnotice> 
++    </legalnotice>
++		<abstract role="description">
++			<para>A user manual describing the use of monkey-bubble.</para> 
++		</abstract>
+   </articleinfo> 
+ 
+   <indexterm> 
