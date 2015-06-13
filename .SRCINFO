@@ -1,0 +1,29 @@
+pkgbase = pioneer-bin
+	pkgdesc = A freeform single player space adventure in the spirit of Frontier: Elite II.
+	pkgver = 20141231
+	pkgrel = 1
+	url = http://pioneerspacesim.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libsigc++
+	depends = libvorbis
+	depends = sdl2_image
+	depends = freetype2
+	optdepends = libtxc_dxtn: may prevent crashes on ATI hardware
+	provides = pioneer
+	conflicts = pioneer
+	conflicts = pioneer-git
+	source = pioneer.png
+	source = pioneer.desktop
+	source = pioneer.sh
+	md5sums = 46e51941124eb3cf1af9233820223478
+	md5sums = 1f05200234c41b4320f59de80534669c
+	md5sums = 9e61ce70a75f6b9ad0fd5cab5d0b7420
+	source_i686 = http://sourceforge.net/projects/pioneerspacesim/files/pioneer-20141231-linux32.tar.bz2
+	md5sums_i686 = 2ab07cf7dc359c4fb0c8878ed784ee39
+	source_x86_64 = http://sourceforge.net/projects/pioneerspacesim/files/pioneer-20141231-linux64.tar.bz2
+	md5sums_x86_64 = e31e97662c093ef114f6a6d682ee9355
+
+pkgname = pioneer-bin
+
