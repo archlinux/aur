@@ -1,0 +1,41 @@
+2015-03-08 Troy Engel <troyengel+arch@gmail.com>
+	* 1.0.5-1 :
+	Version 1.0.5
+	Migrate PKGBUILD to use all Makefile targets
+	Use SKIP for md5sum to make github tagging/release easier
+
+2014-12-01 Troy Engel <troyengel+arch@gmail.com>
+	* 1.0.4-1 :
+	Version 1.0.4
+
+2014-11-24 Troy Engel <troyengel+arch@gmail.com>
+	* 1.0.3-1 :
+	Version 1.0.3
+	Add new man page and README.pod, deprecate README.md
+
+2014-11-22 Troy Engel <troyengel+arch@gmail.com>
+	* 1.0.2-3 :
+	Fix PKGBUILD optdepends
+
+	* 1.0.2-2 :
+	Fix PKGBUILD weirdness
+
+	* 1.0.2-1 :
+	Version 1.0.2
+	Add petrified-systemd subpackage
+	Add packaging changelog
+	Move examples to extra/ in doc dir
+	Logrotate config is no longer installed system-wide
+
+	* 1.0.1-2 :
+	Convert PKGBUILD to use tagged download from Github
+
+2014-09-07 Troy Engel <troyengel+arch@gmail.com>
+	* 1.0.1-1 :
+	Version 1.0.1
+
+	* 1.0-2 :
+	Fixing lograte and some other things
+
+	* 1.0-1 :
+	Initial release

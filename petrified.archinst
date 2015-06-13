@@ -1,0 +1,5 @@
+
+pre_remove() {
+  rm -f /var/cache/petrified/lastip.dat 2>/dev/null
+}
+
