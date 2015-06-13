@@ -1,0 +1,36 @@
+pkgbase = ffmpeg-compat-55
+	pkgdesc = Compatibility package for ffmpeg to provide versions 55 of libavcodec, libavdevice and libavformat, not anymore provided by the ffmpeg package
+	pkgver = 2.3.4
+	pkgrel = 2
+	url = http://ffmpeg.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = yasm
+	makedepends = libass
+	depends = gsm
+	depends = lame
+	depends = opencore-amr
+	depends = openjpeg
+	depends = opus
+	depends = rtmpdump
+	depends = libvpx
+	depends = schroedinger
+	depends = speex
+	depends = v4l-utils
+	depends = xvidcore
+	depends = libpulse
+	depends = libx264
+	depends = libtheora
+	depends = libbluray
+	depends = libmodplug
+	depends = libva
+	depends = libxv
+	depends = sdl
+	depends = jack
+	depends = libavutil-52
+	source = http://ffmpeg.org/releases/ffmpeg-2.3.4.tar.bz2
+	sha256sums = 2f7dece56ea72a22c7cf49e50b58eaadef340457404395cc0479c843b42344f8
+
+pkgname = ffmpeg-compat-55
+
