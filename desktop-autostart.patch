@@ -1,0 +1,19 @@
+diff -aur cuttlefish.orig/cuttlefish/PreferencesCuttlefishDialog.py cuttlefish-build/cuttlefish/PreferencesCuttlefishDialog.py
+--- cuttlefish.orig/cuttlefish/PreferencesCuttlefishDialog.py	2012-10-06 15:20:01.000000000 +0200
++++ cuttlefish-build/cuttlefish/PreferencesCuttlefishDialog.py	2012-10-06 15:22:07.939424977 +0200
+@@ -70,13 +70,13 @@
+         else:        	
+ 	        self._autostart.add_section('Desktop Entry', )
+ 			self._autostart.set('Desktop Entry', 'Type', 'Application')
+-			self._autostart.set('Desktop Entry', 'Exec', '/opt/extras.ubuntu.com/cuttlefish/bin/cuttlefish --hidden')
++			self._autostart.set('Desktop Entry', 'Exec', '/usr/bin/cuttlefish --hidden')
+ 			self._autostart.set('Desktop Entry', 'Hidden', 'false')
+ 			self._autostart.set('Desktop Entry', 'NoDisplay', 'false')
+ 			self._autostart.set('Desktop Entry', 'X-GNOME-Autostart-enabled', 'false')
+ 			self._autostart.set('Desktop Entry', 'Name', 'Cuttlefish')
+ 			self._autostart.set('Desktop Entry', 'Categories', 'GNOME;Utility;')
+-			self._autostart.set('Desktop Entry', 'Icon', '/opt/extras.ubuntu.com/cuttlefish/share/cuttlefish/media/tentacle.svg')
++			self._autostart.set('Desktop Entry', 'Icon', '/usr/share/cuttlefish/media/tentacle.svg')
+ 			self._autostart.set('Desktop Entry', 'Comment', 'Cuttlefish Autostart Entry')
+ 			
+ 		self.ui.togAutostart.set_active(self._autostart.getboolean('Desktop Entry', 'X-GNOME-Autostart-enabled'))

@@ -1,0 +1,30 @@
+pkgbase = cuttlefish-bzr
+	pkgdesc = Adapt your computer's appearance and settings according to the environment.
+	pkgver = 76
+	pkgrel = 5
+	url = https://launchpad.net/cuttlefish
+	install = cuttlefish-bzr.install
+	arch = any
+	license = GPL
+	makedepends = bzr
+	depends = python2
+	depends = python2-distutils-extra
+	depends = python2-psutil
+	depends = python2-udev
+	depends = gnome-menus
+	depends = libwnck3
+	source = cuttlefish::bzr+https://code.launchpad.net/~noneed4anick/cuttlefish/trunk
+	source = plugins-use-site-packages.patch
+	source = desktop-autostart.patch
+	md5sums = SKIP
+	md5sums = 7c631a9a83197b4d2ae5274d53b5ec73
+	md5sums = b555d227e909a61788a4d2c8acd3120d
+	sha1sums = SKIP
+	sha1sums = 43cd8935b8db879fb383164358d0dcd1d59cfd69
+	sha1sums = 3498c050110cb84fe36706c627ac232652afb4b3
+	sha256sums = SKIP
+	sha256sums = e7cf831a5083655a29a765626a765fe44069b05c31f5749ca76f6d9f22160480
+	sha256sums = 26a91ab2ff6c21f8f3e8eb3474396ec8940313f158778b1fd8711f2643357a5d
+
+pkgname = cuttlefish-bzr
+
