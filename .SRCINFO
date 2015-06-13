@@ -1,0 +1,15 @@
+pkgbase = mbrola-voices-jp1
+	pkgdesc = A Japanese male voice for the MBROLA synthesizer
+	pkgver = 000314
+	pkgrel = 2
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-jp
+	groups = mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/jp1/jp1-000314.zip
+	md5sums = bec254d4a5427ec5ea492d801a69be28
+
+pkgname = mbrola-voices-jp1
+
