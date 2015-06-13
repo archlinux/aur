@@ -1,0 +1,14 @@
+pkgbase = mygtkmenui-git
+	pkgdesc = myGtkMenu improved; GTK2, GTK3 standalone & lightweight menu written in C
+	pkgver = 15.6c0a589
+	pkgrel = 1
+	url = https://github.com/dumblob/mygtkmenui
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk3
+	source = mygtkmenui::git+https://github.com/dumblob/mygtkmenui
+	sha256sums = SKIP
+
+pkgname = mygtkmenui-git
+
