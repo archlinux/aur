@@ -1,0 +1,40 @@
+pkgbase = celestia-addon-international_space_station
+	pkgdesc = Celestia addon: Spacecraft: Earth Orbit: International Space Station
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.celestiamotherlode.net/catalog/show_addon_details.php?addon_id=293
+	arch = any
+	license = free
+	makedepends = unzip
+	depends = celestia
+	source = http://www.celestiamotherlode.net/creators/orion_nebula/isstextures.zip
+	source = http://www.celestiamotherlode.net/creators/orion_nebula/iss1.zip
+	source = http://www.celestiamotherlode.net/creators/orion_nebula/iss2.zip
+	source = http://www.celestiamotherlode.net/creators/orion_nebula/iss3.zip
+	source = http://www.celestiamotherlode.net/creators/orion_nebula/iss4.zip
+	source = http://www.celestiamotherlode.net/creators/orion_nebula/iss5.zip
+	source = http://www.celestiamotherlode.net/creators/orion_nebula/iss6.zip
+	source = http://www.celestiamotherlode.net/creators/orion_nebula/iss7.zip
+	source = http://www.celestiamotherlode.net/creators/orion_nebula/iss8.zip
+	source = http://www.celestiamotherlode.net/creators/orion_nebula/iss9.zip
+	source = http://www.celestiamotherlode.net/creators/orion_nebula/iss10.zip
+	source = http://www.celestiamotherlode.net/creators/orion_nebula/iss11.zip
+	source = http://www.celestiamotherlode.net/creators/orion_nebula/iss12.zip
+	source = http://www.celestiamotherlode.net/creators/orion_nebula/isscomplete.zip
+	md5sums = 8c29bee1e981f08d9003947fbc7dd91a
+	md5sums = 3a9d4ff9e21d2f889af13c5226c38f76
+	md5sums = 215d0012f6e7aae3c8ed4bd0a068e16a
+	md5sums = 0113aa6e4301e475cb44803d40c508fc
+	md5sums = 28d7679e01d413cee649ef8b861d0f63
+	md5sums = 971295392a8b17fa24d2b50174c278d0
+	md5sums = 57c4a342d3a228bde03080ba94f4be75
+	md5sums = d93807f3201644046bc8ca071807a18a
+	md5sums = 0f25f3af177771128aa52f69965bda83
+	md5sums = cab2af968385f8a5f94c91adc5a02c37
+	md5sums = 2836ce2ceb9e1dc80f47b716d3e78cfa
+	md5sums = cbfeca74474ea2be0eb2ffb052bc6942
+	md5sums = aa0d3b51b595b79c761bcdcdb2b3731a
+	md5sums = 2ea57b66709eae748f8a6f96ffcf0854
+
+pkgname = celestia-addon-international_space_station
+
