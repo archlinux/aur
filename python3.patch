@@ -1,0 +1,229 @@
+--- a/language/python/gpibinter.c	2014-12-13 12:27:49.000000000 +0200
++++ b/language/python/gpibinter.c	2015-03-12 17:20:57.712141182 +0200
+@@ -98,7 +98,7 @@
+ 		_SetGpibError("find");
+ 		return NULL;
+ 	}
+-	return PyInt_FromLong(ud);
++	return PyLong_FromLong(ud);
+ }
+ 
+ static char gpib_dev__doc__[] =
+@@ -126,7 +126,7 @@
+ 		_SetGpibError("dev");
+ 		return NULL;
+ 	}
+-	return PyInt_FromLong(ud);
++	return PyLong_FromLong(ud);
+ }
+ 
+ 
+@@ -149,7 +149,7 @@
+ 		return NULL;
+ 	}
+ 
+-	return PyInt_FromLong(result);
++	return PyLong_FromLong(result);
+ }
+ 
+ 
+@@ -177,7 +177,7 @@
+ 		return NULL;
+ 	}
+ 
+-	return PyInt_FromLong(sta);
++	return PyLong_FromLong(sta);
+ }
+ 
+ static char gpib_listener__doc__[] =
+@@ -220,7 +220,7 @@
+ 	   No copying needed, more efficient. (yes, this is legal, see
+ 	   http://www.python.org/doc/current/api/stringObjects.html) */
+ 
+-	retval = PyString_FromStringAndSize(NULL, len);
++	retval = PyUnicode_FromStringAndSize(NULL, len);
+ 	if(retval == NULL)
+ 	{
+ 		PyErr_SetString(GpibError, "Read Error: can't get Memory.");
+@@ -228,7 +228,7 @@
+ 	}
+ 
+ 	Py_BEGIN_ALLOW_THREADS
+-	sta = ibrd(device, PyString_AS_STRING(retval), len);
++	sta = ibrd(device, PyUnicode_AS_UNICODE(retval), len);
+ 	Py_END_ALLOW_THREADS
+ 
+ 	if( sta & ERR )
+@@ -238,7 +238,7 @@
+ 		return NULL;
+ 	}
+ 
+-	_PyString_Resize(&retval, ThreadIbcntl());
++	PyUnicode_Resize(&retval, ThreadIbcntl());
+ 	return retval;
+ }
+ 
+@@ -265,7 +265,7 @@
+ 		return NULL;
+ 	}
+ 
+-	return PyInt_FromLong(sta);
++	return PyLong_FromLong(sta);
+ }
+ 
+ static char gpib_write_async__doc__[] =
+@@ -291,7 +291,7 @@
+ 		return NULL;
+ 	}
+ 
+-	return PyInt_FromLong(sta);
++	return PyLong_FromLong(sta);
+ }
+ 
+ 
+@@ -318,7 +318,7 @@
+ 		return NULL;
+ 	}
+ 
+-	return PyInt_FromLong(sta);
++	return PyLong_FromLong(sta);
+ }
+ 
+ static char gpib_remote_enable__doc__[] =
+@@ -343,7 +343,7 @@
+ 		return NULL;
+ 	}
+ 
+-	return PyInt_FromLong(sta);
++	return PyLong_FromLong(sta);
+ }
+ 
+ 
+@@ -368,7 +368,7 @@
+ 		return NULL;
+ 	}
+ 
+-	return PyInt_FromLong(sta);
++	return PyLong_FromLong(sta);
+ }
+ 
+ 
+@@ -393,7 +393,7 @@
+ 		return NULL;
+ 	}
+ 
+-	return PyInt_FromLong(sta);
++	return PyLong_FromLong(sta);
+ }
+ 
+ 
+@@ -418,7 +418,7 @@
+ 		return NULL;
+ 	}
+ 
+-	return PyInt_FromLong(sta);
++	return PyLong_FromLong(sta);
+ }
+ 
+ 
+@@ -443,7 +443,7 @@
+ 		return NULL;
+ 	}
+ 
+-	return PyInt_FromLong(sta);
++	return PyLong_FromLong(sta);
+ }
+ 
+ static char gpib_wait__doc__[] =
+@@ -468,7 +468,7 @@
+ 		return NULL;
+ 	}
+ 
+-	return PyInt_FromLong(sta);
++	return PyLong_FromLong(sta);
+ }
+ 
+ static char gpib_timeout__doc__[] =
+@@ -492,7 +492,7 @@
+ 		_SetGpibError("tmo");
+ 		return NULL;
+ 	}
+-	return PyInt_FromLong(sta);
++	return PyLong_FromLong(sta);
+ }
+ 
+ static char gpib_serial_poll__doc__[] =
+@@ -541,7 +541,7 @@
+ 		return NULL;
+ 	}
+ 
+-	return PyInt_FromLong(sta);
++	return PyLong_FromLong(sta);
+ }
+ 
+ static char gpib_ibsta__doc__[] =
+@@ -550,7 +550,7 @@
+ 
+ static PyObject* gpib_ibsta(PyObject *self, PyObject *args)
+ {
+-	return PyInt_FromLong(ThreadIbsta());
++	return PyLong_FromLong(ThreadIbsta());
+ }
+ 
+ static char gpib_ibcnt__doc__[] =
+@@ -559,7 +559,7 @@
+ 
+ static PyObject* gpib_ibcnt(PyObject *self, PyObject *args)
+ {
+-	return PyInt_FromLong(ThreadIbcntl());
++	return PyLong_FromLong(ThreadIbcntl());
+ }
+ 
+ /* List of methods defined in the module */
+@@ -598,13 +598,24 @@
+ 	"As in the C API, all functions return the value of ibsta,\n"
+ 	"except where otherwise specified.";
+ 
+-void initgpib(void)
++static struct PyModuleDef moduledef = {
++	PyModuleDef_HEAD_INIT,
++	"gpib",
++	gpib_module_documentation,
++	-1,
++	gpib_methods,
++	NULL,
++	NULL,
++	NULL,
++	NULL,
++};
++
++PyMODINIT_FUNC PyInit_gpib(void)
+ {
+ 	PyObject *m;
+ 
+ 	/* Create the module and add the functions */
+-	m = Py_InitModule4("gpib", gpib_methods, gpib_module_documentation,
+-		(PyObject*)NULL, PYTHON_API_VERSION);
++	m = PyModule_Create(&moduledef);
+ 
+ 	/* Add GpibError exception to the module */
+ 	GpibError = PyErr_NewException("gpib.GpibError", NULL, NULL);
+@@ -697,4 +708,6 @@
+ 	/* Check for errors */
+ 	if (PyErr_Occurred())
+ 		Py_FatalError("can't initialize module gpib");
++
++	return m;
+ }
+ 
+--- a/language/python/Gpib.py	(original)
++++ b/language/python/Gpib.py	(refactored)
+@@ -17,7 +17,7 @@
+ 
+ 	def __init__(self, name = 'gpib0', pad = None, sad = 0, timeout = 13, send_eoi = 1, eos_mode = 0):
+ 		self._own = False
+-		if isinstance(name, basestring):
++		if isinstance(name, str):
+ 			self.id = gpib.find(name)
+ 			self._own = True
+ 		elif pad is None:
