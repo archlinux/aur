@@ -1,0 +1,17 @@
+pkgbase = wahcade
+	pkgdesc = Wah!Cade, Front-end software for arcade cabinets
+	pkgver = 0.99pre8
+	pkgrel = 4
+	url = http://www.anti-particle.com/wahcade.shtml
+	arch = any
+	license = GPL
+	depends = pygtk
+	depends = python2-chardet
+	optdepends = pil: required for image rotation in layouts
+	optdepends = gstreamer0.10: required for video & music playback
+	optdepends = python2-pygame: required for joystick support
+	source = http://www.anti-particle.com/projects/wahcade/wahcade-0.99pre8.tar.gz
+	md5sums = 88873138a885cdab832e5af67863c945
+
+pkgname = wahcade
+
