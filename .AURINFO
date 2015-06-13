@@ -1,0 +1,16 @@
+pkgbase = perl-context-preserve
+	pkgdesc = run code after a subroutine call, preserving the context the subroutine would have seen if it were the last statement in the caller
+	pkgver = 0.01
+	pkgrel = 4
+	url = http://search.cpan.org/dist/Context-Preserve
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-exception
+	makedepends = perl-test-use-ok
+	depends = perl
+	source = http://search.cpan.org/CPAN/authors/id/J/JR/JROCKWAY/Context-Preserve-0.01.tar.gz
+	options = !emptydirs
+
+pkgname = perl-context-preserve
+
