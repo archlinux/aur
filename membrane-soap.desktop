@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Membrane SOAP client
+GenericName==Membrane SOAP client
+Exec=membrane-soap
+Terminal=false
+Type=Application
+Icon=membrane-soap.png
+Categories=Network;
+StartupWMClass=Membrane-SOAP-Client

@@ -1,0 +1,18 @@
+pkgbase = membrane-soap
+	pkgdesc = Generic SOAP client with a dynamic form generator for SOAP requests.
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = http://www.membrane-soa.org/soap-client/
+	install = membrane-soap.install
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	depends = java-runtime
+	depends = desktop-file-utils
+	source = http://mirror.predic8.com/membrane/client/linux-x86/membrane-client-linux.gtk.x86-1.3.1.tar
+	source = membrane-soap.desktop
+	md5sums = 25a96915b83e3b6e7922c822a81abf0d
+	md5sums = fac69611ec1ae412cebac29545399c26
+
+pkgname = membrane-soap
+
