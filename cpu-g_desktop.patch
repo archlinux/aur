@@ -1,0 +1,13 @@
+--- cpu-g.desktop	2015-03-15 19:21:01.819119000 +0100
++++ cpu-g.desktop.orig	2015-03-15 19:22:34.689120205 +0100
+@@ -3,8 +3,8 @@
+ Encoding=UTF-8
+ Name=CPU-G
+ Comment=CPU-G collects and displays information about your CPU, RAM, Motherboard
+-Exec=python /usr/bin/cpu-g.py
+-Icon=/usr/share/pixmaps/cpu-g_128.png
++Exec=cpu-g
++Icon=cpu-g
+ Terminal=false
+ Type=Application
+ StartupNotify=true

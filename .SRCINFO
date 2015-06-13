@@ -1,0 +1,26 @@
+pkgbase = cpu-g-bzr
+	pkgdesc = An application that shows useful information about your CPU, Motherboard and some general information about your system.
+	pkgver = r13
+	pkgrel = 1
+	epoch = 1
+	url = http://cpug.sourceforge.net/
+	install = cpu-g-bzr.install
+	arch = any
+	license = GPL3
+	makedepends = bzr
+	depends = python
+	depends = pygtk
+	depends = pciutils
+	depends = hicolor-icon-theme
+	optdepends = mesa-demos: get information about the graphic driver and OpenGL support
+	provides = cpu-g
+	conflicts = cpu-g
+	source = bzr+lp:/cpug
+	source = cpu-g_desktop.patch
+	source = xorg_version.patch
+	sha256sums = SKIP
+	sha256sums = dbe89f2fd631880dc2fd6239fc035fe16b91543a5a80acc57c2ec407d8e00a34
+	sha256sums = 6a3af8148005bb255591681fc8a32568c07eee705012116f8a80a356130fcc42
+
+pkgname = cpu-g-bzr
+

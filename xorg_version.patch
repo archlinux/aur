@@ -1,0 +1,11 @@
+--- cpu-g.py.orig	2015-03-15 19:34:44.627931000 +0100
++++ cpu-g.py	2015-03-15 19:35:31.935819377 +0100
+@@ -350,7 +350,7 @@
+             return 'N/A'
+ 
+     def xver(self):
+-        command = subprocess.Popen(['Xorg', '-version'],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
++        command = subprocess.Popen(['/usr/lib/xorg-server/Xorg', '-version'],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+         stdout, stderr = command.communicate()
+         return re.findall("X\.Org X Server (.*)", stderr)[0]
+ 
