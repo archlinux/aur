@@ -1,0 +1,16 @@
+pkgbase = perl-eval-linenumbers
+	pkgdesc = Add line numbers to hereis blocks that contain perl source code
+	pkgver = 0.34
+	pkgrel = 2
+	url = http://search.cpan.org/dist/Eval-LineNumbers
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MU/MUIR/modules/Eval-LineNumbers-0.34.tar.gz
+	md5sums = dc78f98c8de437a8cad2cd4236df68ed
+	sha512sums = db99b5c431c634142d6f0e030c332285ad8d40fbece7b12a57524d24e6fca6039203648a6112c065196ff2b85f031bc527ad444dbc4e369d2d65832744b7a053
+
+pkgname = perl-eval-linenumbers
+
