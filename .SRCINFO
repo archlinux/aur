@@ -1,0 +1,14 @@
+pkgbase = devismaker
+	pkgdesc = Program that can generate invoices and estimates
+	pkgver = 2.5.2
+	pkgrel = 1
+	url = http://en.congelli.eu/prog_info_devismaker.html
+	arch = x86_64
+	arch = i686
+	license = GPLv3
+	depends = wxgtk
+	source = http://fr.congelli.eu/directdl/devismaker/devismaker-2.5.2.tar.gz
+	md5sums = bc955acadc7c9abd620c02b3eb545ea1
+
+pkgname = devismaker
+
