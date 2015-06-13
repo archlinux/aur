@@ -1,0 +1,19 @@
+do_update() {
+  update-mime-database /usr/share/mime > /dev/null
+  gtk-update-icon-cache -f -q /usr/share/icons/hicolor/
+  update-desktop-database -q
+}
+
+post_install() {
+  do_update
+  echo 'To obtain a valid free serial number please visit'
+  echo 'http://www.freeoffice.com/en/download'
+}
+
+post_upgrade() {
+  do_update
+}
+
+post_remove() {
+  do_update
+}
