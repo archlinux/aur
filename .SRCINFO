@@ -1,0 +1,19 @@
+pkgbase = wmdia
+	pkgdesc = Dockapp to show pictures, films, webcam.
+	pkgver = 1.04
+	pkgrel = 2
+	url = http://wmdia.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = AGPLv3
+	depends = libxcb
+	depends = xcb-util
+	depends = xcb-util-wm
+	optdepends = imagemagick: for showing pictures
+	optdepends = mplayer: for playing movies
+	optdepends = xorg-xprop: for showing tooltips
+	source = http://wmdia.sourceforge.net/wmdia-2011-04-29-19.tar.bz2
+	md5sums = 1d85c460d64a22d67037eb7f933447fd
+
+pkgname = wmdia
+
