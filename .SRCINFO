@@ -1,0 +1,17 @@
+pkgbase = super
+	pkgdesc = A setuid-root program - provides restricted access to setuid-root commands, and a safe execution environment for scripts
+	pkgver = 3.30.0
+	pkgrel = 3
+	url = http://www.ucolick.org/~will/#super
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = Artistic License
+	depends = glibc
+	depends = pam
+	backup = etc/super/super.tab
+	source = http://www.ucolick.org/~will/RUE/super/super-3.30.0-tar.gz
+	md5sums = 87e965eb56577d6ce32b8560aa16d097
+
+pkgname = super
+
