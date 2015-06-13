@@ -1,0 +1,18 @@
+pkgbase = celestia-addon-apollo_soyuz
+	pkgdesc = Celestia addon: Spacecraft: Earth Orbit: Apollo-Soyuz Test Project
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.celestiamotherlode.net/catalog/show_addon_details.php?addon_id=269
+	install = celestia-addon-apollo_soyuz.install
+	arch = any
+	license = unknown, free
+	makedepends = unzip
+	depends = celestia
+	conflicts = celestia-addon-apollo-soyuz
+	source = http://celestiamotherlode.net/creators/jackhiggins/astpmodel.zip
+	source = http://celestiamotherlode.net/creators/jackhiggins/astp.zip
+	md5sums = 05997e0ff88353d2078bba0f593ce0d1
+	md5sums = 917491d80393e6a4f339bbb3f17bb41f
+
+pkgname = celestia-addon-apollo_soyuz
+
