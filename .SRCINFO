@@ -1,0 +1,15 @@
+pkgbase = ttf-game-fonts
+	pkgdesc = Some +200 fonts from classic video games.
+	pkgver = 20111126
+	pkgrel = 3
+	url = http://www.thealmightyguru.com/GameFonts/Index.html
+	install = ttf-game-fonts.install
+	arch = any
+	license = custom
+	makedepends = wget
+	makedepends = unzip
+	depends = xorg-font-utils
+	depends = fontconfig
+
+pkgname = ttf-game-fonts
+
