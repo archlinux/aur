@@ -1,0 +1,6 @@
+## Ignore everything
+*.zip
+*.xz
+*.gz
+src/*
+pkg/*
