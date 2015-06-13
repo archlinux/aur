@@ -1,0 +1,17 @@
+pkgbase = pure-lilv
+	pkgdesc = LV2 plugin host interface for Pure (lilv bindings)
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://purelang.bitbucket.org/
+	arch = i686
+	arch = x86_64
+	groups = pure-complete
+	groups = pure-multimedia
+	license = BSD
+	depends = pure
+	depends = lilv
+	source = https://bitbucket.org/purelang/pure-lang/downloads/pure-lilv-0.4.tar.gz
+	md5sums = 6213cdf3add09fc5b2fd349adf5d541f
+
+pkgname = pure-lilv
+
