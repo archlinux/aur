@@ -1,0 +1,20 @@
+pkgbase = rarcrack
+	pkgdesc = Use brute force algorithm to find the correct password for rar, 7z, zip archives.
+	pkgver = 0.2
+	pkgrel = 4
+	url = http://rarcrack.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxml2
+	optdepends = unrar: to crack rar archives
+	optdepends = unrar-free: to crack rar archives
+	optdepends = p7zip: to crack 7z archives
+	optdepends = unzip: to crack zip archives
+	source = http://sourceforge.net/projects/rarcrack/files/rarcrack-0.2/%5BUnnamed%20release%5D/rarcrack-0.2.tar.bz2
+	source = file-type-detection.patch
+	md5sums = 62d0cf77c6c4edc7204305649f8b7362
+	md5sums = 5866a692fe1ea4bcd8df85fd914c51aa
+
+pkgname = rarcrack
+
