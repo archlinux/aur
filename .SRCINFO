@@ -1,0 +1,16 @@
+pkgbase = ciopfs
+	pkgdesc = Mounts a normal directory in case insensitive fashion
+	pkgver = 0.4
+	pkgrel = 2
+	url = http://www.brain-dump.org/projects/ciopfs/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = attr
+	depends = glib2
+	depends = fuse
+	source = http://www.brain-dump.org/projects/ciopfs/ciopfs-0.4.tar.gz
+	md5sums = 1798fc043034f292efd887c05fc4ea1e
+
+pkgname = ciopfs
+
