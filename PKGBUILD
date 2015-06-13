@@ -4,6 +4,7 @@
 pkgname=xcape-git
 pkgver=1.1.r9.gf3802fc
 pkgrel=1
+epoch=1
 pkgdesc="Use modifier pressed/released solo as another key/chord, e.g. CapsLock > Escape"
 arch=('i686' 'x86_64')
 url="https://github.com/alols/xcape"
