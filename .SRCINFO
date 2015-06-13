@@ -1,0 +1,16 @@
+pkgbase = tmux-mem-cpu-load-git
+	pkgdesc = CPU, RAM memory, and load monitor for use with tmux
+	pkgver = 2.2.1.r3.g660481f
+	pkgrel = 2
+	url = https://github.com/thewtex/tmux-mem-cpu-load
+	arch = i686
+	arch = x86_64
+	arch = sh4
+	license = APACHE
+	makedepends = cmake>=2.6
+	depends = gcc-libs
+	source = repo::git+https://github.com/thewtex/tmux-mem-cpu-load
+	md5sums = SKIP
+
+pkgname = tmux-mem-cpu-load-git
+
