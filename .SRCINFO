@@ -1,0 +1,16 @@
+pkgbase = xxdiff
+	pkgdesc = A graphical browser for file and directory differences.
+	pkgver = 4.0
+	pkgrel = 2
+	url = http://furius.ca/xxdiff
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = flex>=2.5.31
+	makedepends = bison27
+	depends = qt4
+	source = http://downloads.sourceforge.net/sourceforge/xxdiff/xxdiff-4.0.tar.bz2
+	md5sums = 4025fe852ea408adbfa70ec77d09efc9
+
+pkgname = xxdiff
+
