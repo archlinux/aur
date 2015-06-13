@@ -1,0 +1,22 @@
+pkgbase = namcap-git
+	pkgdesc = A Pacman package analyzer (git)
+	pkgver = 3.2.1.23.ga8f17d1
+	pkgrel = 1
+	url = http://projects.archlinux.org/namcap.git/
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python-distribute
+	depends = python
+	depends = pyalpm-git
+	depends = licenses
+	depends = binutils
+	depends = elfutils
+	depends = python-pyelftools
+	provides = namcap
+	conflicts = namcap
+	source = namcap-git::git+http://projects.archlinux.org/git/namcap.git
+	sha256sums = SKIP
+
+pkgname = namcap-git
+
