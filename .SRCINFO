@@ -1,0 +1,15 @@
+pkgbase = ttf-nanumgothic_coding
+	pkgdesc = Nanum series fixed width TrueType fonts
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://dev.naver.com/projects/nanumfont
+	install = ttf.install
+	arch = any
+	license = OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://dev.naver.com/frs/download.php/441/NanumGothicCoding-2.0.zip
+	md5sums = 6214a5844454c96faeac9a60539c7daf
+
+pkgname = ttf-nanumgothic_coding
+
