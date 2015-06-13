@@ -10,22 +10,31 @@ url="http://www.google.com/chrome"
 license=('custom:chrome')
 depends=('gcc-libs')
 options=('!strip')
-
-[ "${CARCH}" = "i686" ] && _rpm_arch="i386"
-[ "${CARCH}" = "x86_64" ] && _rpm_arch="x86_64"
-
 source=('https://www.google.com/chrome/intl/en/eula_text.html')
 sha1sums=('1ffba5152cb749300a016efec909b828eba9a64a')
-_metadata="$(curl -sL "https://dl.google.com/linux/chrome/rpm/stable/${_rpm_arch}/repodata/other.xml.gz" | gzip -df)"
-_rpm_ver="$(echo "${_metadata}" | grep -e unstable | awk -v FS='ver="' -v RS='" ' '$0=$2'  | head -n 1)"
-_rpm_rel="$(echo "${_metadata}" | grep -e unstable | awk -v FS='rel="' -v RS='"/' '$0=$2' | head -n 1)"
-_rpm_sha1sum="$(echo "${_metadata}" | grep -e unstable | awk -v FS='pkgid="' -v RS='" ' '$0=$2' | head -n 1)"
-source+=("http://dl.google.com/linux/chrome/rpm/stable/${_rpm_arch}/google-chrome-unstable-${_rpm_ver}-${_rpm_rel}.${_rpm_arch}.rpm")
-sha1sums+=("${_rpm_sha1sum}")
-noextract=("google-chrome-unstable-${_rpm_ver}-${_rpm_rel}.${_rpm_arch}.rpm")
+#-i686
+_metadata_i686="$(curl -sL "https://dl.google.com/linux/chrome/rpm/stable/i386/repodata/other.xml.gz" | gzip -df)"
+_rpm_ver_i686="$(echo "${_metadata_i686}" | grep -m1 -e unstable | awk -v FS='ver="' -v RS='" ' '$0=$2')"
+_rpm_rel_i686="$(echo "${_metadata_i686}" | grep -m1 -e unstable | awk -v FS='rel="' -v RS='"/' '$0=$2')"
+_rpm_sha1sum_i686="$(echo "${_metadata_i686}" | grep -m1 -e unstable | awk -v FS='pkgid="' -v RS='" ' '$0=$2')"
+source_i686=("http://dl.google.com/linux/chrome/rpm/stable/i386/google-chrome-unstable-${_rpm_ver_i686}-${_rpm_rel_i686}.i386.rpm")
+sha1sums_i686=("${_rpm_sha1sum_i686}")
+#-x86_64
+_metadata_x86_64="$(curl -sL "https://dl.google.com/linux/chrome/rpm/stable/x86_64/repodata/other.xml.gz" | gzip -df)"
+_rpm_ver_x86_64="$(echo "${_metadata_x86_64}" | grep -m1 -e unstable | awk -v FS='ver="' -v RS='" ' '$0=$2')"
+_rpm_rel_x86_64="$(echo "${_metadata_x86_64}" | grep -m1 -e unstable | awk -v FS='rel="' -v RS='"/' '$0=$2')"
+_rpm_sha1sum_x86_64="$(echo "${_metadata_x86_64}" | grep -m1 -e unstable | awk -v FS='pkgid="' -v RS='" ' '$0=$2')"
+source_x86_64=("http://dl.google.com/linux/chrome/rpm/stable/x86_64/google-chrome-unstable-${_rpm_ver_x86_64}-${_rpm_rel_x86_64}.x86_64.rpm")
+sha1sums_x86_64=("${_rpm_sha1sum_x86_64}")
+noextract=("google-chrome-unstable-${_rpm_ver_i686}-${_rpm_rel_i686}.i386.rpm"
+           "google-chrome-unstable-${_rpm_ver_x86_64}-${_rpm_rel_x86_64}.x86_64.rpm")
 
 pkgver() {
-  bsdtar -xf "google-chrome-unstable-${_rpm_ver}-${_rpm_rel}.${_rpm_arch}.rpm" opt/google/chrome-unstable/{chrome,libwidevinecdm.so}
+  if [ "${CARCH}" = "i686" ]; then
+  bsdtar -xf "google-chrome-unstable-${_rpm_ver_i686}-${_rpm_rel_i686}.i386.rpm" opt/google/chrome-unstable/{chrome,libwidevinecdm.so}
+  elif [ "${CARCH}" = "x86_64" ]; then
+  bsdtar -xf "google-chrome-unstable-${_rpm_ver_x86_64}-${_rpm_rel_x86_64}.x86_64.rpm" opt/google/chrome-unstable/{chrome,libwidevinecdm.so}
+  fi
   echo "$(strings opt/google/chrome-unstable/chrome | sed -n '/ (version:/{n;p}')"
 }
 
