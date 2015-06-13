@@ -1,0 +1,29 @@
+pkgbase = transabyss
+	pkgdesc = de novo assembly of RNA-Seq data using ABySS
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = http://www.bcgsc.ca/platform/bioinfo/software/trans-abyss
+	install = transabyss.install
+	arch = any
+	license = custom
+	depends = abyss
+	depends = blat
+	depends = bowtie2
+	depends = gawk
+	depends = gmap-gsnap
+	depends = python2-biopython
+	depends = python2-igraph
+	depends = python2-pysam
+	depends = samtools
+	backup = etc/transabyss/job_script.cfg
+	backup = etc/transabyss/model_matcher.cfg
+	backup = etc/transabyss/transcriptome.cfg
+	source = transabyss-1.5.3.zip::https://github.com/bcgsc/transabyss/archive/1.5.3.zip
+	source = transabyss.install
+	source = transabyss-profile.sh
+	md5sums = 8323e601face2f5b65f2ff667ae5853e
+	md5sums = 9c5d33c3294e31dedada51553fa91dee
+	md5sums = 8367c572ac97d29bfee8b2920cfb957b
+
+pkgname = transabyss
+
