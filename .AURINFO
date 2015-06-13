@@ -1,0 +1,15 @@
+pkgbase = perl-dbix-log4perl
+	pkgdesc = Extension for DBI to log via Log::Log4perl
+	pkgver = 0.26
+	pkgrel = 3
+	url = http://search.cpan.org/dist/DBIx-Log4perl
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-dbi>=1.5
+	depends = perl-log-log4perl>=1.04
+	source = http://search.cpan.org/CPAN/authors/id/M/MJ/MJEVANS/DBIx-Log4perl-0.26.tar.gz
+	options = !emptydirs
+
+pkgname = perl-dbix-log4perl
+
