@@ -1,0 +1,17 @@
+pkgbase = perl-time-clock
+	pkgdesc = Twenty-four hour clock object with nanosecond precision.
+	pkgver = 1.03
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Time-Clock/
+	arch = i686
+	arch = x86_64
+	license = perl
+	makedepends = perl-extutils-makemaker
+	depends = perl>=5.6.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JS/JSIRACUSA/Time-Clock-1.03.tar.gz
+	md5sums = e287f85f0ca0b4e1ef202849cec911fe
+	sha256sums = 35e8a8bbfcdb35d86dd4852a9cd32cfb455a9b42e22669186e920c8aca017aef
+
+pkgname = perl-time-clock
+
