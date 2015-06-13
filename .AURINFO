@@ -1,0 +1,12 @@
+pkgbase = dosage
+	pkgdesc = A comic downloader and archiver
+	pkgver = 2.15
+	pkgrel = 1
+	url = http://wummel.github.io/dosage
+	arch = any
+	license = GPL
+	depends = python-requests
+	source = https://pypi.python.org/packages/source/d/dosage/dosage-2.15.tar.gz
+
+pkgname = dosage
+
