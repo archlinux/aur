@@ -1,0 +1,14 @@
+pkgbase = python2-clint
+	pkgdesc = Module for developing commandline applications
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/clint/
+	arch = any
+	license = ISC
+	depends = python2
+	conflicts = python2-clint-git
+	source = http://pypi.python.org/packages/source/c/clint/clint-0.4.1.tar.gz
+	sha256sums = 3a9e7ba7ceaa10276bcfe85110a04633813344406ec6181063cd79210b2804a8
+
+pkgname = python2-clint
+
