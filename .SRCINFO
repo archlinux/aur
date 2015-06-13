@@ -1,0 +1,20 @@
+pkgbase = magic
+	pkgdesc = A VLSI layout system
+	pkgver = 8.0.206
+	pkgrel = 1
+	url = http://opencircuitdesign.com/magic/
+	changelog = magic.changelog
+	arch = i686
+	arch = x86_64
+	license = custom:copyright
+	makedepends = tcsh
+	depends = tcl
+	depends = tk
+	depends = libx11
+	optdepends = mesa: for better graphics
+	optdepends = blt: to create a tree diagram of the cell hierarchy in a design
+	source = http://opencircuitdesign.com/magic/archive/magic-8.0.206.tgz
+	md5sums = c153fbde29fcf589a58dc23889ebf064
+
+pkgname = magic
+

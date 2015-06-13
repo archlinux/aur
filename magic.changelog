@@ -1,0 +1,48 @@
+2015-05-03 Kyle Keen <keenerd@gmail.com>
+	* 8.0.206
+	- Version bump
+
+2013-10-21 Kyle Keen <keenerd@gmail.com>
+	* 7.5.233
+	- Version bump
+	- license var
+	- arch var
+
+2013-01-29 Kyle Keen <keenerd@gmail.com>
+	* 7.5.230
+	- Version bump
+	- Fix jdk7-openjdk conflict
+	- Quoting
+
+2010-09-21 Jared Casper <jaredcasper@gmail.com>
+	* 7.5.207-1
+	- Version bump
+	- use changelog variable
+	- split build() and package()
+	- remove || return 1
+	- mkdir/cp -> install
+	- correct man directory
+
+2010-04-07 Jared Casper <jaredcasper@gmail.com>
+	* 7.5.190-1
+	- Version bump
+	- builddepends -> makedepends in PKGBUILD
+
+2010-01-08 Jared Casper <jaredcasper@gmail.com>
+	* 7.5.188-1
+	- Version bump (finally)
+
+2008-09-28 Jared Casper <jaredcasper@gmail.com>
+	* 7.5.151-1
+	- Version Bump
+	- Removed sed from PKGBUILD that was now unnecessary and causing problems
+
+2008-06-08 Jared Casper <jaredcasper@gmail.com>
+
+	* 7.5.143-1
+	- Version bump
+
+2008-05-15 Jared Casper <jaredcasper@gmail.com>
+
+	* 7.5.137-1
+	- Initial package
