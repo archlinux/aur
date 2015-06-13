@@ -1,0 +1,14 @@
+pkgbase = meritous
+	pkgdesc = An action-adventure dungeon crawl game
+	pkgver = v12
+	pkgrel = 1
+	url = http://www.asceai.net/meritous/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = sdl_image
+	depends = sdl_mixer
+	source = http://www.asceai.net/files/meritous_v12_src.tar.bz2
+
+pkgname = meritous
+
