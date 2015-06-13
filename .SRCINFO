@@ -1,0 +1,16 @@
+pkgbase = vcat
+	pkgdesc = outputs a video on a 256-color enabled terminal with UTF-8 locale
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/GeeckoDev/vcat
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = ffmpeg
+	provides = vcat
+	conflicts = vcat-git
+	source = https://github.com/GeeckoDev/vcat/archive/0.3.tar.gz
+	md5sums = 7982f6d7601fad8b89c178719617c9bf
+
+pkgname = vcat
+
