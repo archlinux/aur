@@ -1,0 +1,17 @@
+pkgbase = pure-liblo
+	pkgdesc = Complete Pure bindings of liblo
+	pkgver = 0.9
+	pkgrel = 1
+	url = http://purelang.bitbucket.org/
+	arch = i686
+	arch = x86_64
+	groups = pure-complete
+	groups = pure-multimedia
+	license = LGPL3
+	depends = pure
+	depends = liblo
+	source = https://bitbucket.org/purelang/pure-lang/downloads/pure-liblo-0.9.tar.gz
+	md5sums = ec47202a5c83014be0312184e21f352e
+
+pkgname = pure-liblo
+
