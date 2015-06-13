@@ -1,0 +1,15 @@
+pkgbase = perl-net-sslglue
+	pkgdesc = Adds/extends SSL support for common Perl modules
+	pkgver = 1.054
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Net-SSLGlue/
+	arch = any
+	license = PerlArtistic
+	depends = perl-io-socket-ssl>=1.19
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SU/SULLR/Net-SSLGlue-1.054.tar.gz
+	md5sums = 24d2a830169f2bab7dad08daa0f1922f
+	sha512sums = 33f4920a623ba8af8ed181cf8b2c80c2a7f27dcbc6899ea3f243536b152d36dcf21b91bfba1b4bea079e2c064ad793d2d8a6d5d360c734a635b8a081f36b5668
+
+pkgname = perl-net-sslglue
+
