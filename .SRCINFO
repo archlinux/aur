@@ -1,0 +1,14 @@
+pkgbase = nfs4-acl-tools
+	pkgdesc = commandline ACL utilities for the Linux NFSv4 client
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = http://www.citi.umich.edu/projects/nfsv4/linux/nfs4-acl-tools/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = attr
+	source = http://www.citi.umich.edu/projects/nfsv4/linux/nfs4-acl-tools/nfs4-acl-tools-0.3.3.tar.gz
+	md5sums = ece4d5599c3b8470990ee1adbe22e047
+
+pkgname = nfs4-acl-tools
+
