@@ -1,0 +1,15 @@
+pkgbase = mbrola-voices-it1
+	pkgdesc = An Italian male voice for the MBROLA synthesizer
+	pkgver = 010213
+	pkgrel = 2
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-it
+	groups = mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/it1/it1-010213.zip
+	md5sums = 8a356360b8f6f6c65597c50d237836db
+
+pkgname = mbrola-voices-it1
+
