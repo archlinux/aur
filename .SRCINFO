@@ -1,0 +1,13 @@
+pkgbase = wmdf
+	pkgdesc = Dockapp for monitoring disk space on partitions.
+	pkgver = 1.6
+	pkgrel = 2
+	url = http://web.archive.org/web/20121031043853/http://dockapps.windowmaker.org/file.php/id/175
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = wmdf-0.1.6.tar.gz
+	md5sums = 159bf4bbf90eaffcf8db53d7e1e57a35
+
+pkgname = wmdf
+
