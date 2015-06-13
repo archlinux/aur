@@ -1,0 +1,16 @@
+pkgbase = mbrola-voices-us2
+	pkgdesc = An American English male voice for the MBROLA synthesizer
+	pkgver = 980812
+	pkgrel = 2
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-us
+	groups = mbrola-voices
+	groups = gespeaker-mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/us2/us2-980812.zip
+	md5sums = 185045d55456694f4f104173e43bbb89
+
+pkgname = mbrola-voices-us2
+
