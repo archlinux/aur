@@ -1,0 +1,13 @@
+pkgbase = wmmp
+	pkgdesc = Dockapp for interfacing MPD.
+	pkgver = 0.10.0
+	pkgrel = 3
+	url = http://mpd.wikia.com/wiki/Client:WMmp
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	source = http://www.musicpd.org/download/WMmp/0.10.0/WMmp-0.10.0.tar.gz
+	md5sums = 846c3d66d360d50e792377cdb5f0b572
+
+pkgname = wmmp
+
