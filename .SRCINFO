@@ -1,0 +1,18 @@
+pkgbase = perl-datetime-format-pg
+	pkgdesc = 'Parse and format PostgreSQL dates and times'
+	pkgver = 0.16010
+	pkgrel = 1
+	url = http://search.cpan.org/~dmaki/DateTime-Format-Pg
+	arch = i686
+	arch = x86_64
+	license = perl
+	depends = perl-datetime-format-builder>=0.72
+	depends = perl-datetime-timezone>=0.05
+	depends = perl-datetime>=0.10
+	options = !emptydirs
+	source = http://cpan.metacpan.org/authors/id/D/DM/DMAKI/DateTime-Format-Pg-0.16010.tar.gz
+	md5sums = 776d8f64f48e2bebe34f80383a032ede
+	sha512sums = a7b2e7d28627d1d5abbf37e4a47321d497b95147aa6fd6be9b39de20c62e931ef5a5aed7c77bf5b02d82ab821436b77acad34c77f786f7c16403ba01405d1264
+
+pkgname = perl-datetime-format-pg
+
