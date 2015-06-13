@@ -1,0 +1,27 @@
+pkgbase = bonita-bpm-community-bin
+	pkgdesc = Bonita BPM Studio with embedded Engine + Portal
+	pkgver = 6.5.1
+	pkgrel = 2
+	url = http://www.bonitasoft.com/how-we-do-it#how-we-do-it_bonita-bpm
+	install = bonita-bpm-community.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = ffmpeg-compat
+	depends = java-environment
+	depends = libxslt
+	depends = python
+	depends = gtk2
+	optdepends = jre7-openjdk-headless: PROVIDES libverify.so libjli.so libfontmanager.so libjava.so libawt.so libnio.so libjvm.so libnet.so libmawt.so
+	optdepends = openjdk6: PROVIDES libverify.so libjli.so libfontmanager.so libjava.so libawt.so libnio.so libjvm.so libnet.so libmawt.so
+	optdepends = cuda-toolkit: PROVIDES libverify.so libjli.so libfontmanager.so libjava.so libawt.so libnio.so libjvm.so libnet.so libmawt.so libJdbcOdbc.so
+	optdepends = libnet: PROVIDES libnet.so
+	optdepends = jre7-openjdk: PROVIDES libmawt.so
+	provides = bonita-bpm-community
+	source_i686 = http://download.forge.objectweb.org/bonita/BonitaBPMCommunity-6.5.1-x86.run
+	sha256sums_i686 = e5327b36d94f571688f4066d937abd49072c5b818b1ef54eb7f124725461adda
+	source_x86_64 = http://download.forge.objectweb.org/bonita/BonitaBPMCommunity-6.5.1-x86_64.run
+	sha256sums_x86_64 = a8155e2cba09ae9ccde426be80ac1f0360548fba0945e33e9b99759ec0b07f53
+
+pkgname = bonita-bpm-community-bin
+
