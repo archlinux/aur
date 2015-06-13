@@ -1,0 +1,14 @@
+pkgbase = celestia-addon-ulysses
+	pkgdesc = Celestia addon: Spacecraft: Other: Ulysses
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://www.celestiamotherlode.net/catalog/show_addon_details.php?addon_id=351
+	arch = any
+	license = unknown, free
+	makedepends = unzip
+	depends = celestia
+	source = http://www.celestiamotherlode.net/creators/fsgregs/jackhiggins_spacecraft/Ulysses-full.zip
+	md5sums = 07a637f2d5da8c1af71bdfaaa4679761
+
+pkgname = celestia-addon-ulysses
+
