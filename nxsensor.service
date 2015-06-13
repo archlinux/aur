@@ -1,0 +1,9 @@
+[Unit]
+Description=NoMachine nxsensor service
+
+[Service]
+ExecStart=/usr/NX/bin/nxsensor "-a" "127.0.0.1" "-a" "::ffff:127.0.0.1" "-P" "19250"
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

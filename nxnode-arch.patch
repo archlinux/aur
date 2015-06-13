@@ -1,0 +1,40 @@
+--- a/usr/NX/scripts/setup/nxnode	2012-05-19 04:24:46.000000000 -0600
++++ b/usr/NX/scripts/setup/nxnode	2012-11-16 09:18:10.801770960 -0700
+@@ -1301,6 +1301,10 @@
+ }
+
+ removeNXinit () {
++  if [ "$system" = "arch" ]; then
++    systemctl disable nxsensor
++    return 0
++  fi
+
+   if [ "$system" = "fedora" ] || [ "$system" = "redhat" ] || [ "$system" = "suse" ];
+   then
+@@ -1505,6 +1509,10 @@
+
+
+ addNXinit () {
++ if [ "$system" = "arch" ]; then
++  systemctl enable nxsensor
++  return 0
++ fi
+
+  runCommand "cat $NODE_ROOT/scripts/init/nxsensor > /etc/init.d/nxsensor" "Unable to create: '/etc/init.d/nxsensor'" "warn"
+  runCommand "chmod +x /etc/init.d/nxsensor" "Cannot set permissions of '/etc/init.d/nxsensor' file" "warn"
+@@ -2479,6 +2487,7 @@
+   echo "       debian       Debian Woody 3.0, Unstable, Ubuntu, etc."
+   echo "       solaris      Sun Solaris 8.0, 9.0, 10.0, etc."
+   echo "       fedora       Fedora Core 1, 2, 3, 4, 5, etc. "
++  echo "       arch         Arch Linux"
+
+   echo "$errMsg"
+
+@@ -2589,6 +2598,7 @@
+     "fedora"             ) ;;
+     "debian"             ) ;;
+     "solaris"             ) ;;
++    "arch"               ) ;;
+     ""                 ) ARGS=-1 && errMsg="$PREFIX $ERROR ERROR: Unable to autodetect the operating system type, please specify it" ;;
+     *                  ) ARGS=-1 && errMsg="$PREFIX $ERROR ERROR: Unsupported operating system '$system'" ;;
+   esac
