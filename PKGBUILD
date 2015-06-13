@@ -6,8 +6,8 @@ pkgdesc="High-dynamic-range (HDR) photo manager"
 arch=('i686' 'x86_64')
 url="http://www.ceng.metu.edu.tr/~akyuz/bracket/bracket.html"
 license=('custom')
-depends=('libx11')
-[ $CARCH = "x86_64" ] && depends=('lib32-gcc-libs' 'lib32-libx11')
+depends_i686=('libx11')
+depends_x86_64=('lib32-gcc-libs' 'lib32-libx11')
 source=(http://www.ceng.metu.edu.tr/~akyuz/bracket/bracket.tgz \
         bracket.sh bracket.desktop LICENSE)
 # it's easier to package when it's not extracted because
