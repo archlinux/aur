@@ -9,7 +9,7 @@ post_install() {
 }
 
 post_upgrade() {
-  systemd-sysusers prosody.conf
+  systemd-sysusers adchpp.conf
   systemd-tmpfiles --create adchpp.conf
 
   install -dm744 -o adchpp -g adchpp /var/log/adchpp
@@ -26,7 +26,7 @@ post_remove() {
         first=false
         printf "${green}==>${all_off} ${bold}Leftover Paths:${all_off}\n"
       fi
-      printf "${blue}  -> ${all_off} ${bold}$path${all_off}"
+      printf "${blue}  -> ${all_off} ${bold}$path${all_off}\n"
     fi
   done
 }
