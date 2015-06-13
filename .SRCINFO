@@ -1,0 +1,27 @@
+pkgbase = xvidcap
+	pkgdesc = A small tool to capture things going on on an X-Windows display to either individual frames or an MPEG video
+	pkgver = 1.1.7
+	pkgrel = 7
+	url = http://xvidcap.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = rarian
+	depends = dbus-glib
+	depends = lame
+	depends = libxmu
+	depends = libglade
+	depends = ffmpeg
+	source = http://downloads.sourceforge.net/xvidcap/xvidcap-1.1.7.tar.gz
+	source = xextproto-7.1.1.patch
+	source = xvidcap-ffmpeg.patch
+	source = neomorphs.patch
+	source = ffmpeg-0.8.patch
+	md5sums = b39a682d3ef9fcbf424af771936780e2
+	md5sums = fbde2b076c5ea05723883b87f3ef2a65
+	md5sums = f18817da1c0dada05fa791ae53193b2c
+	md5sums = 73533c0dd38c4d4de748417e6b6c7b38
+	md5sums = 6e4dfab56b877362757092f55ad6b337
+
+pkgname = xvidcap
+

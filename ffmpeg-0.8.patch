@@ -1,0 +1,82 @@
+diff -aur xvidcap-1.1.7/src/xtoffmpeg.c xvidcap-1.1.7.new/src/xtoffmpeg.c
+--- xvidcap-1.1.7/src/xtoffmpeg.c	2008-05-25 22:01:54.000000000 +0000
++++ xvidcap-1.1.7.new/src/xtoffmpeg.c	2011-10-31 20:41:08.259171263 +0000
+@@ -361,7 +361,7 @@
+     }
+     // put sample parameters
+     au_c->codec_id = xvc_audio_codecs[job->au_targetCodec].ffmpeg_id;
+-    au_c->codec_type = CODEC_TYPE_AUDIO;
++    au_c->codec_type = AVMEDIA_TYPE_AUDIO;
+     au_c->bit_rate = target->sndsize;
+     au_c->sample_rate = target->sndrate;
+     au_c->channels = target->sndchannels;
+@@ -567,7 +567,7 @@
+                     av_rescale_q (enc->coded_frame->pts, enc->time_base,
+                                   ost->st->time_base);
+             }
+-            pkt.flags |= PKT_FLAG_KEY;
++            pkt.flags |= AV_PKT_FLAG_KEY;
+             pkt.stream_index = ost->st->index;
+ 
+             pkt.data = audio_out;
+@@ -627,7 +627,7 @@
+             pkt.pts =
+                 av_rescale_q (enc->coded_frame->pts, enc->time_base,
+                               ost->st->time_base);
+-        pkt.flags |= PKT_FLAG_KEY;
++        pkt.flags |= AV_PKT_FLAG_KEY;
+         av_interleaved_write_frame (s, &pkt);
+     }
+ 
+@@ -681,7 +681,7 @@
+     if (ret <= 0) {
+         ret = avcodec_encode_audio (enc, bit_buffer, bit_buffer_size, NULL);
+     }
+-    pkt.flags |= PKT_FLAG_KEY;
++    pkt.flags |= AV_PKT_FLAG_KEY;
+ 
+     if (samples) {
+         av_free (samples);
+@@ -905,7 +905,7 @@
+                               ost->time_base);
+         }
+         if (enc->coded_frame->key_frame)
+-            pkt.flags |= PKT_FLAG_KEY;
++            pkt.flags |= AV_PKT_FLAG_KEY;
+     }
+ 
+     pkt.stream_index = ost->index;
+@@ -1157,7 +1157,7 @@
+     }
+ 
+     st->codec->codec_id = codec_id;
+-    st->codec->codec_type = CODEC_TYPE_VIDEO;
++    st->codec->codec_type = AVMEDIA_TYPE_VIDEO;
+ 
+     // find the video encoder
+     codec = avcodec_find_encoder (st->codec->codec_id);
+@@ -1439,13 +1439,13 @@
+         // guess AVOutputFormat
+         if (job->target >= CAP_MF)
+             file_oformat =
+-                guess_format (xvc_formats[job->target].ffmpeg_name, NULL, NULL);
++                av_guess_format (xvc_formats[job->target].ffmpeg_name, NULL, NULL);
+         else {
+             char tmp_fn[30];
+ 
+             snprintf (tmp_fn, 29, "test-%%d.%s",
+                       xvc_formats[job->target].extensions[0]);
+-            file_oformat = guess_format (NULL, tmp_fn, NULL);
++            file_oformat = av_guess_format (NULL, tmp_fn, NULL);
+         }
+         if (!file_oformat) {
+             fprintf (stderr,
+@@ -1466,7 +1466,7 @@
+ #endif     // DEBUG
+ 
+         // prepare AVFormatContext
+-        output_file = av_alloc_format_context ();
++        output_file = avformat_alloc_context();
+         if (!output_file) {
+             fprintf (stderr,
+                      _

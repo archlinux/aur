@@ -1,0 +1,105 @@
+Index: src/codecs.c
+===================================================================
+--- src/codecs.c	(revision 319)
++++ src/codecs.c	(working copy)
+@@ -43,8 +43,8 @@
+ #include <locale.h>
+ 
+ #ifdef USE_FFMPEG
+-#include <ffmpeg/avcodec.h>
+-#include <ffmpeg/avformat.h>
++#include <libavcodec/avcodec.h>
++#include <libavformat/avformat.h>
+ #endif     // USE_FFMPEG
+ 
+ #include "app_data.h"
+Index: src/xtoffmpeg.c
+===================================================================
+--- src/xtoffmpeg.c	(revision 319)
++++ src/xtoffmpeg.c	(working copy)
+@@ -56,13 +56,13 @@
+ #include "xvidcap-intl.h"
+ 
+ // ffmpeg stuff
+-#include <ffmpeg/avcodec.h>
+-#include <ffmpeg/avformat.h>
+-#include <ffmpeg/avdevice.h>
++#include <libavcodec/avcodec.h>
++#include <libavformat/avformat.h>
++#include <libavdevice/avdevice.h>
+ //#include <ffmpeg/dsputil.h>
+-#include <ffmpeg/swscale.h>
+-#include <ffmpeg/rgb2rgb.h>
+-#include <ffmpeg/fifo.h>
++#include <libswscale/swscale.h>
++#include <libavutil/pixfmt.h>
++#include <libavutil/fifo.h>
+ #define swscale_isRGB(x) ((x)==PIX_FMT_BGR32 || (x)==PIX_FMT_RGB24 \
+                         || (x)==PIX_FMT_RGB565 || (x)==PIX_FMT_RGB555 \
+                         || (x)==PIX_FMT_RGB8 || (x)==PIX_FMT_RGB4 \
+@@ -96,9 +96,10 @@
+                         || (x)==PIX_FMT_YUVJ420P || (x)==PIX_FMT_YUVJ422P \
+                         || (x)==PIX_FMT_YUVJ444P)
+ 
+-#define PIX_FMT_ARGB32 PIX_FMT_RGBA32  /* this is just my personal
+-                                        * convenience */
++#define PIX_FMT_ARGB32 PIX_FMT_RGB32   /* this is just my personal
++                                         * convenience */
+ 
++
+ /*
+  * file globals
+  */
+@@ -1248,7 +1249,11 @@
+     st->codec->flags |= CODEC_FLAG2_FAST;
+     // there is no trellis quantiser in libav* for mjpeg
+     if (st->codec->codec_id != CODEC_ID_MJPEG)
++#if LIBAVCODEC_VERSION_INT < ((52<<16)+(0<<8)+0)
+         st->codec->flags |= CODEC_FLAG_TRELLIS_QUANT;
++#else
++	st->codec->trellis = 1;
++#endif
+     st->codec->flags &= ~CODEC_FLAG_OBMC;
+     // some formats want stream headers to be seperate
+     if (oc->oformat->flags & AVFMT_GLOBALHEADER)
+@@ -1498,11 +1503,10 @@
+         // add the video stream and initialize the codecs
+         //
+         // prepare stream
+-        out_st =
+-            add_video_stream (output_file, image,
+-                              (input_pixfmt ==
+-                               PIX_FMT_PAL8 ? PIX_FMT_RGB24 : input_pixfmt),
+-                              xvc_codecs[job->targetCodec].ffmpeg_id, job);
++        fprintf(stderr, "The current pixfmt is %d, but the choosen one is %d\n", input_pixfmt, (input_pixfmt == PIX_FMT_PAL8 ? PIX_FMT_RGB24 : input_pixfmt));
++        out_st = add_video_stream (output_file, image,
++                     (input_pixfmt == PIX_FMT_PAL8 ? PIX_FMT_RGB24 : input_pixfmt),
++                      xvc_codecs[job->targetCodec].ffmpeg_id, job);
+ 
+         // FIXME: set params
+         // memset (p_fParams, 0, sizeof(*p_fParams));
+Index: src/main.c
+===================================================================
+--- src/main.c	(revision 319)
++++ src/main.c	(working copy)
+@@ -45,7 +45,7 @@
+ #include <locale.h>
+ 
+ #ifdef USE_FFMPEG
+-#include <ffmpeg/avcodec.h>
++#include <libavcodec/avcodec.h>
+ #endif     // USE_FFMPEG
+ 
+ #include "control.h"
+@@ -217,9 +217,6 @@
+ 
+     if (app)
+         xvc_appdata_free (app);
+-#ifdef USE_FFMPEG
+-    av_free_static ();
+-#endif
+ }
+ 
+ /**
+
+ 	  	 
