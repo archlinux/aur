@@ -1,0 +1,23 @@
+pkgbase = capt-src
+	pkgdesc = Canon CAPT Printer Driver for Linux. Compiled from source code.
+	pkgver = 2.60
+	pkgrel = 3
+	url = http://support-asia.canon-asia.com/
+	install = capt-src.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = cups
+	depends = libglade
+	depends = libxml2
+	depends = popt
+	optdepends = gtk2: for gui
+	options = !strip
+	options = !zipman
+	source = http://gdlp01.c-wss.com/gds/6/0100004596/03/Linux_CAPT_PrinterDriver_V260_uk_EN.tar.gz
+	source = ccpd.service
+	md5sums = 356fe6abed036f107eaaca92186e0c56
+	md5sums = 4a6e0263535e96c119feafdbfd62cdd0
+
+pkgname = capt-src
+
