@@ -1,0 +1,14 @@
+pkgbase = qboot-git
+	pkgdesc = Minimal x86 firmware for booting Linux kernels.
+	pkgver = r42.ac9a37f
+	pkgrel = 1
+	url = https://github.com/bonzini/qboot
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	source = git://github.com/bonzini/qboot.git
+	md5sums = SKIP
+
+pkgname = qboot-git
+
