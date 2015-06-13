@@ -1,0 +1,24 @@
+pkgbase = astk-hg
+	pkgdesc = ASTK (Mercurial version)
+	pkgver = 2351
+	pkgrel = 1
+	url = http://www.code-aster.org
+	install = astk-hg.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2
+	depends = tk
+	provides = astk=1.13.4
+	conflicts = astk
+	source = astk::hg+https://bitbucket.org/code_aster/codeaster-frontend
+	source = astk-ssh
+	source = astk.png
+	source = astk.desktop
+	md5sums = SKIP
+	md5sums = 6fba5ebcdf75cccea2122c85df5a6306
+	md5sums = 3d432dfac21b5351cf96ac80ae55811d
+	md5sums = 79e3e1cf77a476d0b9e9d9aa21a1e723
+
+pkgname = astk-hg
+
