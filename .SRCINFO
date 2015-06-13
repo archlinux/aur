@@ -1,0 +1,20 @@
+pkgbase = fix8-git
+	pkgdesc = Open Source C++ FIX Engine
+	pkgver = 0.9.4.2.g8f3836f
+	pkgrel = 2
+	url = https://fix8.org
+	arch = x86
+	arch = x86_64
+	license = LGPL3
+	makedepends = doxygen
+	makedepends = libtool
+	depends = poco
+	depends = gperftools
+	depends = intel-tbb
+	provides = fix8
+	options = !libtool
+	source = fix8::git+https://github.com/dakka/fix8.git
+	md5sums = SKIP
+
+pkgname = fix8-git
+
