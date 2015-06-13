@@ -1,0 +1,13 @@
+pkgbase = parlance
+	pkgdesc = A framework for playing the Diplomacy board game over a network
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/Parlance
+	arch = any
+	license = Artistic License 2.0
+	depends = python2
+	source = https://pypi.python.org/packages/source/P/Parlance/Parlance-1.4.1.tar.gz
+	md5sums = c6e79a31cd9bb7ecdc3f8142712a9daf
+
+pkgname = parlance
+
