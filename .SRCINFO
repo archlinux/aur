@@ -1,0 +1,14 @@
+pkgbase = soapdenovo-trans
+	pkgdesc = de novo transcriptome assembler
+	pkgver = 1.04
+	pkgrel = 1
+	url = http://soap.genomics.org.cn/SOAPdenovo-Trans.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	source = soapdenovo-trans-1.04.zip::http://downloads.sourceforge.net/project/soapdenovotrans/SOAPdenovo-Trans/src/v1.04/SOAPdenovo-Trans-src-v1.04.zip
+	md5sums = be5fc908051bffd95a9499a497ccd3fa
+
+pkgname = soapdenovo-trans
+
