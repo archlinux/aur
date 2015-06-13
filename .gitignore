@@ -1,0 +1,12 @@
+pkg/
+src/
+basic.dat
+categorize.dat
+forcedassoc.dat
+leftassoc.dat
+nullsubexpr.dat
+repetition.dat
+rightassoc.dat
+testregex-*-*-*.pkg.tar.xz
+testregex.c
+testregex.html

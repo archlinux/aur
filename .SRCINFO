@@ -1,0 +1,30 @@
+pkgbase = testregex
+	pkgdesc = The AT&T Research regression test harness for the X/Open regex pattern match interface
+	pkgver = 20040531
+	pkgrel = 1
+	url = http://www2.research.att.com/~astopen/testregex/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	source = http://www2.research.att.com/~astopen/testregex/testregex.c
+	source = http://www2.research.att.com/~astopen/man/man1/testregex.html
+	source = http://www2.research.att.com/~astopen/testregex/basic.dat
+	source = http://www2.research.att.com/~astopen/testregex/categorize.dat
+	source = http://www2.research.att.com/~astopen/testregex/nullsubexpr.dat
+	source = http://www2.research.att.com/~astopen/testregex/leftassoc.dat
+	source = http://www2.research.att.com/~astopen/testregex/rightassoc.dat
+	source = http://www2.research.att.com/~astopen/testregex/forcedassoc.dat
+	source = http://www2.research.att.com/~astopen/testregex/repetition.dat
+	sha1sums = a5a7ef57a3f74ca815575413be7eb30fe3cfce43
+	sha1sums = 04e2cab4d3a66eb958e310113b577e9f6836c170
+	sha1sums = 5141d8137ea32e3b1bfe5b48717ca6d3a15e8474
+	sha1sums = caa616186ff066fc2109c3344881ae86ce6c4e92
+	sha1sums = e23bcae3bce2cfea0ea9fe239fca5d6abbeb2ff4
+	sha1sums = aef51decc245bc37c8f6c25b694403b0e0a50d6e
+	sha1sums = 3037bdadbd52b3951e8e632b1cfcced1197db8f7
+	sha1sums = e2f121f57a813b09293432b6be0dfebca350a629
+	sha1sums = 362485685397c26b1e3a6dec6bf2607a4e5b87de
+
+pkgname = testregex
+
