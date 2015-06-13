@@ -1,0 +1,18 @@
+pkgbase = sl-git
+	pkgdesc = Steam Locomotive runs across your terminal when you type "sl" as you meant to type "ls"
+	pkgver = 5.02.r0.g0fd8d6f
+	pkgrel = 1
+	url = http://www.tkl.iis.u-tokyo.ac.jp/~toyoda/index_e.html
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = free
+	makedepends = git
+	depends = ncurses
+	provides = sl
+	conflicts = sl
+	source = git://github.com/mtoyoda/sl.git
+	md5sums = SKIP
+
+pkgname = sl-git
+
