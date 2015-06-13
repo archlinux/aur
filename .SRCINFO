@@ -1,0 +1,17 @@
+pkgbase = boost-build
+	pkgdesc = Boost.Build makes it easy to build C++ projects, everywhere.
+	pkgver = 2014.10
+	pkgrel = 1
+	url = http://www.boost.org/build/
+	arch = any
+	license = custom:boost
+	depends = boost
+	depends = gcc
+	depends = python
+	source = https://github.com/boostorg/build/releases/download/2014.10/boost-build-2014-10.tar.bz2
+	source = http://www.boost.org/LICENSE_1_0.txt
+	md5sums = 76431f8fba21d2ea83d185bec7c93d81
+	md5sums = e4224ccaecb14d942c71d31bef20d78c
+
+pkgname = boost-build
+
