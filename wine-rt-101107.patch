@@ -1,0 +1,264 @@
+From 1dceb627db51a239a63ed5276f7e8911be6751bc Mon Sep 17 00:00:00 2001
+From: Joakim B Hernberg <jhernberg@alchemy.lu>
+Date: Sun, 7 Nov 2010 19:10:49 +0100
+Subject: [PATCH] 3:rd wine-rt patch 101107
+
+---
+ README.WINE-RT  |   27 +++++++++++++++++
+ server/main.c   |   60 ++++++++++++++++++++++++++++++++++++++
+ server/thread.c |   87 ++++++++++++++++++++++++++++++++++++++++++------------
+ 3 files changed, 154 insertions(+), 20 deletions(-)
+ create mode 100644 README.WINE-RT
+
+diff --git a/README.WINE-RT b/README.WINE-RT
+new file mode 100644
+index 0000000..3f3f2c1
+--- /dev/null
++++ b/README.WINE-RT
+@@ -0,0 +1,27 @@
++What is it?
++The Wine-RT patch allows programs that use windows' concept of thread priority to gain similar functionality under linux.  It maps windows priority levels to linux scheduling policies.  THREAD_PRIORITY_ABOVE_NORMAL, THREAD_PRIORITY_HIGHEST and THREAD_PRIORITY_TIME_CRITICAL levels which are made to run as linux SCHED_FIFO threads at priority levels that are defined by the WINERT variable.  THREAD_PRIORITY_NORMAL threads are run as normal linux threads (as all threads are without the patch), and the priorities below normal (THREAD_PRIORITY_BELOW_NORMAL, THREAD_PRIORITY_LOWEST) are run as SCHED_BATCH.  THREAD_PRIORITY_IDLE threads are run as SCHED_IDLE.
++Windows' concept of priority classes is not implemented at all.
++
++Please note that threads running SCHED_FIFO might hang your entire system, so please exercise caution! 
++
++How does it work?
++When a windows program asks for a thread to be run at a higher priority, Wine will ask the linux system to schedule it as a SCHED_FIFO thread, which means that the tread will keep on executing until it has either finished, voluntarily yields execution or gets preempted by a higher priority SCHED_FIFO thread.  This is already done by many linux audio applications, to ensure less xruns on lower buffer sizes.  With Wine-RT, the same thing can be done for Wine applications.
++ 
++How to use it?
++The Wine-RT functionality is not enabled by default. Instead it is controlled by 2 environment variables "WINE_RT" and "WINE_SRV_RT".
++
++The "WINE_RT" variable has 2 purposes, it has to be set in order to activate the patch, and it determines the priority of the SCHED_FIFO threads, Its value can be set from 1 to your system's rtprio max value minus 10, as set in limits.conf or limits.d/audio.conf. (In Debian, Ubuntu and KXStudio this value is 99). THREAD_PRIORITY_ABOVE_NORMAL threads will run at this  priority level, THREAD_PRIORITY_HIGHEST threads at this level + 5, and THREAD_PRIORITY_TIME_CRITICAL threads at this level + 10.
++
++WINE_SRV_RT makes the wineserver main thread run SCHED_FIFO.  Valid values range from 1 to your system's rtprio max value.
++
++We can set these variables in 2 simple ways.
++First one is using a terminal with "exports", like this:
++export WINE_RT=#
++export WINE_SRV_RT=#
++wine <app>
++
++or just prefix your application with 'env VARIABLE=value', like this:
++env WINE_RT=# WINE_SRV_RT=# wine <app>
++
++A recommended starting point might be "env WINE_RT=15 WINE_SRV_RT=10 wine appname.exe".
++
+diff --git a/server/main.c b/server/main.c
+index 2d841e8..a89d1e0 100644
+--- a/server/main.c
++++ b/server/main.c
+@@ -27,10 +27,18 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <sys/time.h>
++#include <sys/resource.h>
++#include <sys/mman.h>
+ #include <unistd.h>
+ #ifdef HAVE_GETOPT_H
+ # include <getopt.h>
+ #endif
++#ifdef HAVE_SCHED_H
++#include <sched.h>
++#ifndef SCHED_NORMAL
++#define SCHED_NORMAL SCHED_OTHER
++#endif
++#endif
+ 
+ #include "object.h"
+ #include "file.h"
+@@ -44,6 +52,9 @@ int foreground = 0;
+ timeout_t master_socket_timeout = 3 * -TICKS_PER_SEC;  /* master socket timeout, default is 3 seconds */
+ const char *server_argv0;
+ 
++/* global variable used here and in thread.c to determine whether wine runs with rt threads and at what base value */
++int base_rt_priority = -1;
++
+ /* parse-line args */
+ 
+ static void usage(void)
+@@ -125,6 +136,51 @@ static void sigterm_handler( int signum )
+     exit(1);  /* make sure atexit functions get called */
+ }
+ 
++#ifdef HAVE_SCHED_H
++void init_rt_scheduling( void )
++{
++    struct sched_param param;
++    struct rlimit limit;
++    int priority_max, policy, wine_server_rt_priority;
++    char *enviroment, *endptr;
++
++    getrlimit( RLIMIT_RTPRIO, &limit );
++    priority_max = limit.rlim_max;
++
++    /* check for realtime mode and set the base priority level */
++
++    if (!(enviroment = getenv( "WINE_RT" )))
++        return;
++    base_rt_priority = (int) strtol( enviroment, &endptr, 10 );
++    if (enviroment == endptr || base_rt_priority == 0 || base_rt_priority > priority_max - 10)
++    {
++        fprintf( stderr, "Unable to run WINE in rt mode, WINE_RT values supported on this system range from 1 to  %i\n", priority_max - 10 );
++        base_rt_priority = -1;
++        return;
++    }
++    fprintf( stderr, "WINE realtime scheduling hack enabled, realtime base priority has been set to %i\n", base_rt_priority );
++
++    /* determine scheduling policy for the main wineserver thread */
++
++    if (!(enviroment = getenv( "WINE_SRV_RT" )))
++    {
++        fprintf( stderr, "wineserver running SCHED_NORMAL\n" );
++        return;
++    }
++    wine_server_rt_priority = (int) strtol( enviroment, &endptr, 10 );
++    if (enviroment == endptr || wine_server_rt_priority == 0 || wine_server_rt_priority > priority_max)
++    {
++        fprintf( stderr, "Unable to run the wineserver SCHED_FIFO, valid WINE_SRV_RT values range from 1 to %i\n", priority_max );
++        return;
++    }
++    fprintf( stderr, "wineserver running SCHED_FIFO at priority %i\n", wine_server_rt_priority );
++    policy = SCHED_FIFO;
++    param.sched_priority = wine_server_rt_priority;
++    if (sched_setscheduler ( 0, policy, &param) != 0)
++        fprintf (stderr, "Error scheduling wineserver as SCHED_FIFO\n");
++}
++#endif
++
+ int main( int argc, char *argv[] )
+ {
+     setvbuf( stderr, NULL, _IOLBF, 0 );
+@@ -138,6 +194,10 @@ int main( int argc, char *argv[] )
+     signal( SIGTERM, sigterm_handler );
+     signal( SIGABRT, sigterm_handler );
+ 
++#ifdef HAVE_SCHED_H
++    init_rt_scheduling();
++#endif
++    mlockall(MCL_FUTURE);
+     sock_init();
+     open_master_socket();
+ 
+diff --git a/server/thread.c b/server/thread.c
+index 05e4121..2d103b4 100644
+--- a/server/thread.c
++++ b/server/thread.c
+@@ -32,11 +32,18 @@
+ #include <sys/types.h>
+ #include <unistd.h>
+ #include <time.h>
+-#ifdef HAVE_POLL_H
+-#include <poll.h>
+-#endif
+ #ifdef HAVE_SCHED_H
+ #include <sched.h>
++#ifndef SCHED_NORMAL
++#define SCHED_NORMAL SCHED_OTHER
++#endif
++#ifndef SCHED_IDLE
++#define SCHED_IDLE 5 /* missing from my glibc, taken from linux/sched.h */
++#endif
++#endif
++
++#ifdef HAVE_POLL_H
++#include <poll.h>
+ #endif
+ 
+ #include "ntstatus.h"
+@@ -164,6 +171,8 @@ static const struct fd_ops thread_fd_ops =
+ 
+ static struct list thread_list = LIST_INIT(thread_list);
+ 
++extern int base_rt_priority;
++
+ /* initialize the structure for a newly allocated thread */
+ static inline void init_thread_structure( struct thread *thread )
+ {
+@@ -432,29 +441,67 @@ int set_thread_affinity( struct thread *thread, affinity_t affinity )
+     return ret;
+ }
+ 
+-#define THREAD_PRIORITY_REALTIME_HIGHEST 6
+-#define THREAD_PRIORITY_REALTIME_LOWEST -7
++void set_thread_priority( struct thread *thread, int priority )
++{
++#ifdef HAVE_SCHED_H
++    struct sched_param param;
++    int policy;
++
++    if (base_rt_priority == -1 || (thread->unix_tid == -1)) return;
++
++    switch (priority)
++    {
++      case THREAD_PRIORITY_TIME_CRITICAL:
++        param.sched_priority = base_rt_priority + 10;
++        policy = SCHED_FIFO;
++        fprintf( stderr, "Thread %i at THREAD_PRIORITY_TIME_CRITICAL set to SCHED_FIFO - priority %i\n", thread->unix_tid, param.sched_priority );
++        break;
++      case THREAD_PRIORITY_HIGHEST:
++        param.sched_priority = base_rt_priority + 5;
++        policy = SCHED_FIFO;
++        fprintf( stderr, "Thread %i at THREAD_PRIORITY_HIGHEST set to SCHED_FIFO - priority %i\n", thread->unix_tid, param.sched_priority );
++        break;
++      case THREAD_PRIORITY_ABOVE_NORMAL:
++        param.sched_priority = base_rt_priority;
++        policy = SCHED_FIFO;
++        fprintf( stderr, "Thread %i at THREAD_PRIORITY_ABOVE_NORMAL set to SCHED_FIFO - priority %i\n", thread->unix_tid, param.sched_priority );
++        break;
++      case THREAD_PRIORITY_NORMAL:
++        param.sched_priority = 0;
++        policy = SCHED_NORMAL;
++        fprintf( stderr, "Setting thread %i at level THREAD_PRIORITY_NORMAL to SCHED_NORMAL\n", thread->unix_tid );
++	break;
++      case THREAD_PRIORITY_BELOW_NORMAL:
++        param.sched_priority = 0;
++        policy = SCHED_BATCH;
++        fprintf( stderr, "Setting thread %i at level THREAD_PRIORITY_BELOW_NORMAL to SCHED_BATCH\n", thread->unix_tid );
++        break;
++      case THREAD_PRIORITY_LOWEST:
++        param.sched_priority = 0;
++        policy = SCHED_BATCH;
++        fprintf( stderr, "Setting thread %i at THREAD_PRIORITY_LOWEST level to SCHED_BATCH\n", thread->unix_tid );
++        break;
++      case THREAD_PRIORITY_IDLE:
++        param.sched_priority = 0;
++        policy = SCHED_IDLE;
++        fprintf( stderr, "Setting thread %i with level THREAD_PRIORITY_IDLE to SCHED_IDLE\n", thread->unix_tid );
++        break;
++      default:
++        fprintf( stderr, "Error setting scheduling priority level, unknown should never come here\n" );
++        return;
++    }
++    if (sched_setscheduler (thread->unix_tid, policy, &param) != 0) fprintf (stderr, "Error setting priorities\n");
++    thread->priority = priority;
++    return;
++#endif
++}
+ 
+ /* set all information about a thread */
+ static void set_thread_info( struct thread *thread,
+                              const struct set_thread_info_request *req )
+ {
+     if (req->mask & SET_THREAD_INFO_PRIORITY)
+-    {
+-        int max = THREAD_PRIORITY_HIGHEST;
+-        int min = THREAD_PRIORITY_LOWEST;
+-        if (thread->process->priority == PROCESS_PRIOCLASS_REALTIME)
+-        {
+-            max = THREAD_PRIORITY_REALTIME_HIGHEST;
+-            min = THREAD_PRIORITY_REALTIME_LOWEST;
+-        }
+-        if ((req->priority >= min && req->priority <= max) ||
+-            req->priority == THREAD_PRIORITY_IDLE ||
+-            req->priority == THREAD_PRIORITY_TIME_CRITICAL)
+-            thread->priority = req->priority;
+-        else
+-            set_error( STATUS_INVALID_PARAMETER );
+-    }
++        set_thread_priority( thread, req->priority );
+     if (req->mask & SET_THREAD_INFO_AFFINITY)
+     {
+         if ((req->affinity & thread->process->affinity) != req->affinity)
+-- 
+1.7.3.2
+
