@@ -1,0 +1,14 @@
+pkgbase = perl-file-tempdir
+	pkgdesc = Extensible and flexible object <-> relational mapper.
+	pkgver = 0.02
+	pkgrel = 2
+	url = http://search.cpan.org/dist/File-Tempdir
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	source = http://search.cpan.org/CPAN/authors/id/N/NA/NANARDON/File-Tempdir-0.02.tar.gz
+	options = !emptydirs
+
+pkgname = perl-file-tempdir
+
