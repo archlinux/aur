@@ -1,0 +1,15 @@
+pkgbase = tmenu-git
+	pkgdesc = Fuzzy completion for anything in the terminal, like dmenu.
+	pkgver = 20140614
+	pkgrel = 1
+	url = https://github.com/dhamidi/tmenu
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = glibc
+	source = git+https://github.com/dhamidi/tmenu
+	md5sums = SKIP
+
+pkgname = tmenu-git
+
