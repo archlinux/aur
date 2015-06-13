@@ -1,0 +1,18 @@
+pkgbase = pure-meta-complete
+	pkgdesc = Pure programming language, complete package -- the whole shebang
+	pkgver = 1
+	pkgrel = 2
+	url = http://purelang.bitbucket.org/
+	arch = any
+	groups = pure-meta
+	license = custom
+	depends = pure-meta-base
+	depends = pure-meta-graphics
+	depends = pure-meta-math
+	depends = pure-meta-multimedia
+	depends = pure-meta-util
+	depends = pure-meta-web
+	depends = pure-pandoc
+
+pkgname = pure-meta-complete
+
