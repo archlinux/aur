@@ -1,0 +1,13 @@
+pkgbase = vdmfec
+	pkgdesc = Save and recover data from unreliable media
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://members.tripod.com/professor_tom/archives/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://members.tripod.com/professor_tom/archives/vdmfec-1.0.tgz
+	md5sums = 3f4544593359e87674f81a881f16298d
+
+pkgname = vdmfec
+
