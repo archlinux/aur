@@ -1,0 +1,12 @@
+[Unit]
+Description=nbviewer webservice rendering ipynb to static HTML
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+ExecStart=/usr/bin/python -m nbviewer --port=8080
+User=nobody
+
+[Install]
+WantedBy=multi-user.target
