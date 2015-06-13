@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Defcon
+GenericName=Global Thermonuclear War
+Comment=The World's first Genocide 'em up
+Exec=defcon
+Terminal=false
+Type=Application
+Icon=defcon
+Categories=Application;Game;StrategyGame;
