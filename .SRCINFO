@@ -11,13 +11,16 @@ pkgbase = chromium-pepper-flash-dev
 	provides = chromium-pepper-flash
 	conflicts = chromium-pepper-flash
 	conflicts = chromium-pepper-flash-stable
-	noextract = google-chrome-unstable--..rpm
+	noextract = google-chrome-unstable-45.0.2427.7-1.i386.rpm
+	noextract = google-chrome-unstable-45.0.2427.7-1.x86_64.rpm
 	options = !emptydirs
 	options = !strip
 	source = https://www.google.com/chrome/intl/en/eula_text.html
-	source = http://dl.google.com/linux/chrome/rpm/stable//google-chrome-unstable--..rpm
 	sha1sums = 1ffba5152cb749300a016efec909b828eba9a64a
-	sha1sums = 
+	source_i686 = http://dl.google.com/linux/chrome/rpm/stable/i386/google-chrome-unstable-45.0.2427.7-1.i386.rpm
+	sha1sums_i686 = f5a31ca05342ca3ecd175c40937225df375eb3eb
+	source_x86_64 = http://dl.google.com/linux/chrome/rpm/stable/x86_64/google-chrome-unstable-45.0.2427.7-1.x86_64.rpm
+	sha1sums_x86_64 = f4d3942dc7f6bd5cd7b0758b764a69c5f0edda20
 
 pkgname = chromium-pepper-flash-dev
 
