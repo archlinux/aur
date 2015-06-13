@@ -1,0 +1,18 @@
+pkgbase = libsh-git
+	pkgdesc = shell script with some usefull functions
+	pkgver = 215b1ab
+	pkgrel = 1
+	url = https://github.com/Thaodan/libsh
+	arch = any
+	license = GPL2
+	makedepends = shpp
+	depends = sh
+	depends = bash
+	depends = coreutils
+	depends = sed
+	provides = libsh
+	source = git+https://github.com/Thaodan/libsh
+	md5sums = SKIP
+
+pkgname = libsh-git
+
