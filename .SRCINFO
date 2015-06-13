@@ -1,7 +1,7 @@
 pkgbase = python2-liblarch
 	pkgdesc = Python library to easily handle data structure
 	pkgver = 2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/action/show/Projects/liblarch
 	arch = any
 	license = LGPL3

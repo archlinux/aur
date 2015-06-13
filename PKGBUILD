@@ -3,7 +3,7 @@
 
 pkgname=python2-liblarch
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library to easily handle data structure"
 arch=('any')
 url="https://wiki.gnome.org/action/show/Projects/liblarch"
@@ -24,7 +24,7 @@ check() {
 
 package() {
   cd "$srcdir/liblarch-${pkgver}"
-  python2 setup.py install --root="${pkgdir}"
+  python2 setup.py install --root="$pkgdir/" --optimize=1
   find "$pkgdir"/usr/lib/python2.7/site-packages/liblarch -name '*.py' | \
   xargs sed -i "s|#!/usr/bin/env python|#!/usr/bin/env python2|"
 }
