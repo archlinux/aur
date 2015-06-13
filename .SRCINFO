@@ -1,0 +1,23 @@
+pkgbase = perl-rose-db-object
+	pkgdesc = Extensible, high performance object-relational mapper (ORM)
+	pkgver = 0.815
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Rose-DB-Object/
+	arch = any
+	license = PerlArtistic
+	depends = perl-bit-vector
+	depends = perl-clone>=0.29
+	depends = perl-datetime
+	depends = perl-dbi>=1.40
+	depends = perl-list-moreutils
+	depends = perl-rose-datetime>=0.532
+	depends = perl-rose-db>=0.763
+	depends = perl-rose-object>=0.854
+	depends = perl-time-clock>=1.00
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/J/JS/JSIRACUSA/Rose-DB-Object-0.815.tar.gz
+	md5sums = fd6a2fbdc3bc72601d349fd707d41feb
+	sha512sums = ea6a482edf4b303a9d044d253e4072ced361a07f6b2a7cabccfd6d388344d85627b5122b5a5f9a01a34978320abbc9ae1f6a42ce0013c9711531fea806123289
+
+pkgname = perl-rose-db-object
+
