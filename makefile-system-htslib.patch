@@ -1,0 +1,96 @@
+diff -aur samtools-1.2/Makefile samtools-1.2-patched/Makefile
+--- samtools-1.2/Makefile	2015-02-02 16:18:41.000000000 +0100
++++ samtools-1.2-patched/Makefile	2015-02-04 11:58:14.059908160 +0100
+@@ -25,7 +25,7 @@
+ CPPFLAGS = $(DFLAGS) $(INCLUDES)
+ CFLAGS   = -g -Wall -O2
+ LDFLAGS  =
+-LDLIBS   =
++LDLIBS   = -lhts
+ DFLAGS=     -D_FILE_OFFSET_BITS=64 -D_LARGEFILE64_SOURCE -D_CURSES_LIB=1
+ LOBJS=      bam_aux.o bam.o bam_import.o sam.o \
+             sam_header.o bam_plbuf.o
+@@ -82,10 +82,8 @@
+ 
+ 
+ # Adjust $(HTSDIR) to point to your top-level htslib directory
+-HTSDIR = ../htslib
+-include $(HTSDIR)/htslib.mk
+-HTSLIB = $(HTSDIR)/libhts.a
+-BGZIP  = $(HTSDIR)/bgzip
++HTSDIR = /usr/include
++BGZIP  = bgzip
+ 
+ 
+ PACKAGE_VERSION = 1.2
+@@ -121,8 +119,8 @@
+ libbam.a:$(LOBJS)
+ 	$(AR) -csru $@ $(LOBJS)
+ 
+-samtools: $(AOBJS) libbam.a $(HTSLIB)
+-	$(CC) -pthread $(LDFLAGS) -o $@ $(AOBJS) libbam.a $(HTSLIB) $(LDLIBS) $(LIBCURSES) -lm -lz
++samtools: $(AOBJS) libbam.a
++	$(CC) -pthread $(LDFLAGS) -o $@ $(AOBJS) libbam.a $(LDLIBS) $(LIBCURSES) -lm -lz
+ 
+ bam_h = bam.h $(htslib_bgzf_h) $(htslib_sam_h)
+ bam2bcf_h = bam2bcf.h $(htslib_vcf_h) errmod.h
+@@ -178,7 +176,7 @@
+ # For tests that might use it, set $REF_PATH explicitly to use only reference
+ # areas within the test suite (or set it to ':' to use no reference areas).
+ # (regression.sh sets $REF_PATH to a subdirectory itself.)
+-check test: samtools $(BGZIP) $(BUILT_TEST_PROGRAMS)
++check test: samtools $(BUILT_TEST_PROGRAMS)
+ 	REF_PATH=: test/test.pl --exec bgzip=$(BGZIP)
+ 	test/merge/test_bam_translate test/merge/test_bam_translate.tmp
+ 	test/merge/test_pretty_header
+@@ -191,32 +189,32 @@
+ 	test/split/test_parse_args
+ 
+ 
+-test/merge/test_bam_translate: test/merge/test_bam_translate.o test/test.o $(HTSLIB)
+-	$(CC) -pthread $(LDFLAGS) -o $@ test/merge/test_bam_translate.o test/test.o $(HTSLIB) $(LDLIBS) -lz
++test/merge/test_bam_translate: test/merge/test_bam_translate.o test/test.o
++	$(CC) -pthread $(LDFLAGS) -o $@ test/merge/test_bam_translate.o test/test.o $(LDLIBS) -lz
+ 
+-test/merge/test_pretty_header: test/merge/test_pretty_header.o $(HTSLIB)
+-	$(CC) -pthread $(LDFLAGS) -o $@ test/merge/test_pretty_header.o $(HTSLIB) $(LDLIBS) -lz
++test/merge/test_pretty_header: test/merge/test_pretty_header.o
++	$(CC) -pthread $(LDFLAGS) -o $@ test/merge/test_pretty_header.o $(LDLIBS) -lz
+ 
+-test/merge/test_rtrans_build: test/merge/test_rtrans_build.o $(HTSLIB)
+-	$(CC) -pthread $(LDFLAGS) -o $@ test/merge/test_rtrans_build.o $(HTSLIB) $(LDLIBS) -lz
++test/merge/test_rtrans_build: test/merge/test_rtrans_build.o
++	$(CC) -pthread $(LDFLAGS) -o $@ test/merge/test_rtrans_build.o $(LDLIBS) -lz
+ 
+-test/merge/test_trans_tbl_init: test/merge/test_trans_tbl_init.o $(HTSLIB)
+-	$(CC) -pthread $(LDFLAGS) -o $@ test/merge/test_trans_tbl_init.o $(HTSLIB) $(LDLIBS) -lz
++test/merge/test_trans_tbl_init: test/merge/test_trans_tbl_init.o
++	$(CC) -pthread $(LDFLAGS) -o $@ test/merge/test_trans_tbl_init.o $(LDLIBS) -lz
+ 
+-test/split/test_count_rg: test/split/test_count_rg.o test/test.o $(HTSLIB)
+-	$(CC) -pthread $(LDFLAGS) -o $@ test/split/test_count_rg.o test/test.o $(HTSLIB) $(LDLIBS) -lz
++test/split/test_count_rg: test/split/test_count_rg.o test/test.o
++	$(CC) -pthread $(LDFLAGS) -o $@ test/split/test_count_rg.o test/test.o $(LDLIBS) -lz
+ 
+-test/split/test_expand_format_string: test/split/test_expand_format_string.o test/test.o $(HTSLIB)
+-	$(CC) -pthread $(LDFLAGS) -o $@ test/split/test_expand_format_string.o test/test.o $(HTSLIB) $(LDLIBS) -lz
++test/split/test_expand_format_string: test/split/test_expand_format_string.o test/test.o
++	$(CC) -pthread $(LDFLAGS) -o $@ test/split/test_expand_format_string.o test/test.o $(LDLIBS) -lz
+ 
+-test/split/test_filter_header_rg: test/split/test_filter_header_rg.o test/test.o $(HTSLIB)
+-	$(CC) -pthread $(LDFLAGS) -o $@ test/split/test_filter_header_rg.o test/test.o $(HTSLIB) $(LDLIBS) -lz
++test/split/test_filter_header_rg: test/split/test_filter_header_rg.o test/test.o
++	$(CC) -pthread $(LDFLAGS) -o $@ test/split/test_filter_header_rg.o test/test.o $(LDLIBS) -lz
+ 
+-test/split/test_parse_args: test/split/test_parse_args.o test/test.o $(HTSLIB)
+-	$(CC) -pthread $(LDFLAGS) -o $@ test/split/test_parse_args.o test/test.o $(HTSLIB) $(LDLIBS) -lz
++test/split/test_parse_args: test/split/test_parse_args.o test/test.o
++	$(CC) -pthread $(LDFLAGS) -o $@ test/split/test_parse_args.o test/test.o $(LDLIBS) -lz
+ 
+-test/vcf-miniview: test/vcf-miniview.o $(HTSLIB)
+-	$(CC) -pthread $(LDFLAGS) -o $@ test/vcf-miniview.o $(HTSLIB) $(LDLIBS) -lz
++test/vcf-miniview: test/vcf-miniview.o
++	$(CC) -pthread $(LDFLAGS) -o $@ test/vcf-miniview.o $(LDLIBS) -lz
+ 
+ test_test_h = test/test.h $(htslib_sam_h)
+ 
