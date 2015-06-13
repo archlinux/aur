@@ -1,0 +1,55 @@
+pkgbase = gcc-multilib-trunk-git
+	pkgdesc = The GNU Compiler Collection developmental snapshot
+	pkgver = 6.0.138554.e919451
+	pkgrel = 1
+	url = http://gcc.gnu.org
+	arch = any
+	license = GPL3
+	license = LGPL
+	license = custom
+	checkdepends = dejagnu
+	checkdepends = inetutils
+	makedepends = binutils>=2.25
+	makedepends = libmpc
+	makedepends = doxygen
+	makedepends = lib32-glibc>=2.20
+	options = !emptydirs
+	source = git+git://gcc.gnu.org/git/gcc.git#branch=trunk
+	md5sums = SKIP
+
+pkgname = gcc-multilib-git
+	pkgdesc = The GNU Compiler Collection - C and C++ frontends for multilib
+	install = gcc.install
+	groups = multilib-devel
+	depends = gcc-libs-multilib-git=6.0.138554.e919451-1
+	depends = binutils>=2.25
+	depends = libmpc
+	provides = gcc=6.0.138554.e919451-1
+	provides = gcc-multilib=6.0.138554.e919451-1
+	conflicts = gcc
+	options = staticlibs
+
+pkgname = gcc-libs-multilib-git
+	pkgdesc = Runtime libraries shipped by GCC for multilib
+	install = gcc-libs.install
+	depends = glibc>=2.20
+	depends = lib32-gcc-libs-git=6.0.138554.e919451-1
+	provides = gcc-libs=6.0.138554.e919451-1
+	conflicts = gcc-libs
+	options = !emptydirs
+	options = !strip
+
+pkgname = lib32-gcc-libs-git
+	pkgdesc = Runtime libraries shipped by GCC (32-bit)
+	depends = lib32-glibc>=2.20
+	provides = lib32-gcc-libs=6.0.138554.e919451-1
+	conflicts = lib32-gcc-libs
+	options = !emptydirs
+	options = !strip
+
+pkgname = gcc-objc-multilib-git
+	pkgdesc = Objective-C front-end for GCC for multilib
+	depends = gcc-multilib-git=6.0.138554.e919451-1
+	provides = gcc-objc=6.0.138554.e919451-1
+	conflicts = gcc-objc
+
