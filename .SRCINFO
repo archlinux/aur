@@ -1,0 +1,14 @@
+pkgbase = cachedir
+	pkgdesc = Utility for tagging directories as cache directories.
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://liw.fi/cachedir/
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	depends = python2-cliapp
+	source = http://code.liw.fi/debian/pool/main/c/cachedir/cachedir_1.2-1.tar.gz
+	md5sums = 69b83d4d99e70a4d9cc30992c6e5b8be
+
+pkgname = cachedir
+
