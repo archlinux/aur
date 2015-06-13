@@ -1,6 +1,6 @@
 pkgbase = samsung-unified-driver
 	pkgdesc = Unified Linux Driver for Samsung printers and scanners.
-	pkgver = 1.00.21
+	pkgver = 1.00.29
 	pkgrel = 3
 	url = http://www.samsung.com
 	arch = i686
@@ -10,14 +10,17 @@ pkgbase = samsung-unified-driver
 	depends = libxml2
 	depends = libusb-compat
 	depends = cups
-	depends = ghostscript
 	depends = sane
-	depends = avahi
-	depends = openssl
-	provides = samsung-unified-driver
+	noextract = http://www.bchemnet.com/suldr/pool/debian/extra/su/suld-driver2-1.00.29_1.00.29-2_amd64.deb
+	noextract = http://www.bchemnet.com/suldr/pool/debian/extra/su/suld-ppd-4_1.00.29-1_all.deb
+	noextract = http://www.bchemnet.com/suldr/pool/debian/extra/su/suld-driver2-common-1_1-4_all.deb
 	options = !strip
-	source = http://www.bchemnet.com/suldr/driver/UnifiedLinuxDriver-1.00.21.tar.gz
-	sha512sums = 087dde382015f85e4b7f485b382089441b2fa7258d396a86cdb68b280f7675b7e120cf4c513a61c516910e32cd7deefef306528ba167e706c3aea98643065e80
+	source = http://www.bchemnet.com/suldr/pool/debian/extra/su/suld-driver2-1.00.29_1.00.29-2_amd64.deb
+	source = http://www.bchemnet.com/suldr/pool/debian/extra/su/suld-ppd-4_1.00.29-1_all.deb
+	source = http://www.bchemnet.com/suldr/pool/debian/extra/su/suld-driver2-common-1_1-4_all.deb
+	sha512sums = 1e93944fb5f52c2cee1f0e1ccca7f2bc0d1058eded742f97454074c43cef2941b370911338c872e32d59cba0ec93f313b9a094a80851c35869517c1bc11b0bb2
+	sha512sums = 2dfc7e51e40bad6de51215b81f19dab8dd5d27893a28a46f310d09a531f17711472e25641c35dfeb053d3e7ebcefcb93b821f34b0305389d36c4e866f8e60ab0
+	sha512sums = dc14d68ce68f26d26b89041d94e87ebf88aebaf155e5ba3aeb5b0ca151433dcfe60f753e945e989a9499a3764a3f401e97f24b638588f80258c0cbbd7b84248a
 
 pkgname = samsung-unified-driver
 

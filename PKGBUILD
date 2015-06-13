@@ -1,116 +1,80 @@
 # Maintainer: Bernd Amend <berndamend gmail com>
 
 pkgname=samsung-unified-driver
-pkgver=1.00.21
+pkgver=1.00.29
 pkgrel=3
 
 pkgdesc="Unified Linux Driver for Samsung printers and scanners."
 arch=(i686 x86_64 armel)
 url="http://www.samsung.com"
 license=('custom:samsung')
-depends=('libxml2' 'libusb-compat' 'cups' 'ghostscript' 'sane' 'avahi' 'openssl')
-provides=('samsung-unified-driver')
+depends=('libxml2' 'libusb-compat' 'cups' 'sane')
 
 options=(!strip)
 
-source=("http://www.bchemnet.com/suldr/driver/UnifiedLinuxDriver-${pkgver}.tar.gz")
-
-sha512sums=('087dde382015f85e4b7f485b382089441b2fa7258d396a86cdb68b280f7675b7e120cf4c513a61c516910e32cd7deefef306528ba167e706c3aea98643065e80')
-
 if [ "$CARCH" = "i686" ]; then
 	CARCHCUSTOM="i386"
+	sha512sums=('bc8a30579e6521b8f1a8a769109d2301de002716654e01b4bd3252e94613ce1aa2825c548af4b6724634dcbd18d780cbb06373d1aa52e73535e981da83b024a9' '2dfc7e51e40bad6de51215b81f19dab8dd5d27893a28a46f310d09a531f17711472e25641c35dfeb053d3e7ebcefcb93b821f34b0305389d36c4e866f8e60ab0' 'dc14d68ce68f26d26b89041d94e87ebf88aebaf155e5ba3aeb5b0ca151433dcfe60f753e945e989a9499a3764a3f401e97f24b638588f80258c0cbbd7b84248a'
+	)
 elif [ "$CARCH" = "armel" ]; then
-	CARCHCUSTOM="arm"
+	CARCHCUSTOM="armel"
+	sha512sums=('536b4287440c7850a94c0d8eb64581fa7532df2dcde52f6cdf7ca2360cd3cfd485772aea779f94c79ba3d15ba33ad47c1bbc945625fd7aa6c65f7cc3d9c316b2' '2dfc7e51e40bad6de51215b81f19dab8dd5d27893a28a46f310d09a531f17711472e25641c35dfeb053d3e7ebcefcb93b821f34b0305389d36c4e866f8e60ab0' 'dc14d68ce68f26d26b89041d94e87ebf88aebaf155e5ba3aeb5b0ca151433dcfe60f753e945e989a9499a3764a3f401e97f24b638588f80258c0cbbd7b84248a'
+	)
 else
-	CARCHCUSTOM="$CARCH"
+	CARCHCUSTOM="amd64"
+	sha512sums=('1e93944fb5f52c2cee1f0e1ccca7f2bc0d1058eded742f97454074c43cef2941b370911338c872e32d59cba0ec93f313b9a094a80851c35869517c1bc11b0bb2' '2dfc7e51e40bad6de51215b81f19dab8dd5d27893a28a46f310d09a531f17711472e25641c35dfeb053d3e7ebcefcb93b821f34b0305389d36c4e866f8e60ab0' 'dc14d68ce68f26d26b89041d94e87ebf88aebaf155e5ba3aeb5b0ca151433dcfe60f753e945e989a9499a3764a3f401e97f24b638588f80258c0cbbd7b84248a'
+	)
 fi
 
-# TODO: install the license file
+suld_arch="suld-driver2-${pkgver}_${pkgver}-2_${CARCHCUSTOM}.deb"
+suld_ppd="suld-ppd-4_${pkgver}-1_all.deb"
+suld_common="suld-driver2-common-1_1-4_all.deb"
 
-package_general() {
-	DIST_DIR="${noarchsrcdir}/../"
-	SCRIPT_DIR="${noarchsrcdir}"
-
-	OEM_FILE="${noarchsrcdir}/oem.conf"
-	INSTALL_LOG_FILE="${srcdir}/install.log"
-	. "${noarchsrcdir}/scripting_utils"
-	. "${noarchsrcdir}/package_utils"
-	. "${noarchsrcdir}/scanner-script.pkg"
-
-	install -d "${pkgdir}/etc/udev/rules.d"
-	fill_full_template "${noarchsrcdir}/etc/smfp.rules.in" "${pkgdir}/etc/udev/rules.d/60_smfp_samsung.rules"
-}
-
-package_cups() {
-# noarch
-	# ppd
-	install -d "${pkgdir}/usr/share/cups/model/suld"
-	install -m 644 -t "${pkgdir}/usr/share/cups/model/suld/" ${noarchsrcdir}/share/ppd/*.ppd
-	find "${pkgdir}/usr/share/cups/model/suld/" -name "*.ppd" | xargs gzip -9
-
-	# cms
-	install -d "${pkgdir}/usr/share/cups/model/suld/cms"
-	install -m 444 -t "${pkgdir}/usr/share/cups/model/suld/cms/" ${noarchsrcdir}/share/ppd/cms/*
-
-# binaries
-	cupsdir="${pkgdir}/usr/lib/cups"
-
-	# backend
-	cupsbackenddir="${cupsdir}/backend"
-	install -d "${cupsbackenddir}"
-	install -m 755 "${archsrcdir}/smfpnetdiscovery" "${cupsbackenddir}"
-
-	# filter
-	cupsfilterdir="${cupsdir}/filter"
-	install -d "${cupsfilterdir}"
-	install -m 755 "${archsrcdir}/pstosecps" "${archsrcdir}/rastertospl" "${cupsfilterdir}"
-
-	cd "${cupsfilterdir}"
-	ln -s rastertospl rastertosplc
-	cd -
-
-	# libscmssc.so
-	install -d "${pkgdir}/usr/lib"
-	install -m 755 "${archsrcdir}/libscmssc.so" "${pkgdir}/usr/lib/"
-}
-
-package_sane() {
-# noarch
-	install -d "${pkgdir}/etc/sane.d/"
-	install -m 644 "${noarchsrcdir}/etc/smfp.conf" "${pkgdir}/etc/sane.d/"
-
-	install -d "${pkgdir}/etc/sane.d/dll.d"
-	echo "smfp" > "${pkgdir}/etc/sane.d/dll.d/smfp"
-	chmod 644 "${pkgdir}/etc/sane.d/dll.d/smfp"
-
-# binaries
-	install -d "${pkgdir}/usr/lib/sane"
-	install -m 755 "${archsrcdir}/libsane-smfp.so.1.0.1" "${pkgdir}/usr/lib/sane/"
-
-	# TODO: how can we automatically create them?
-	#create symbolic links
-	cd "${pkgdir}/usr/lib/sane"
-	ln -s libsane-smfp.so.1.0.1 libsane-smfp.so.1
-	ln -s libsane-smfp.so.1 libsane-smfp.so
-	cd -
-
-# The following is copied from the bchemnet.com debian packages
-# It is required to scan using sane
-	echo "xerox_mfp-smfp" > "${pkgdir}/etc/sane.d/dll.d/smfp-scanner-fix"
-	chmod 644 "${pkgdir}/etc/sane.d/dll.d/smfp-scanner-fix"
-
-	# TODO: Can we extract the following information from the samsung package e.g. oem.conf?
-	# The following information is taken from the old driver package
-	echo -e "#xerox_mfp-smfp.conf\n\n# Samsung CLX-2160\nusb 0x04e8 0x3425\n\n# Samsung CLX-3170FN & CLX-3175FW\nusb 0x04e8 0x342a\n\n# Samsung CLX-3185\nusb 0x04e8 0x343d\n\n# Samsung CLX-3300\nusb 0x04e8 0x3456\n\n# Samsung SCX-3200 & SCX-3205W\nusb 0x04e8 0x3441\n\n# Samsung SCX-3405W\nusb 0x04e8 0x344f\n\n# Samsung SCX-4100\nusb 0x04e8 0x3413\n\n# Samsung SCX-4200\nusb 0x04e8 0x341b\n\n# Samsung SCX-4216F\nusb 0x04e8 0x3409\n\n# Samsung SCX-4300\nusb 0x04e8 0x342e\n\n# Samsung SCX-4500\nusb 0x04e8 0x3426\n\n# Samsung SCX-4500W\nusb 0x04e8 0x342b\n\n# Samsung SCX-4521F\nusb 0x04e8 0x3419\n\n# Samsung SCX-4600\nusb 0x04e8 0x3433\n\n# Samsung SCX-4623\nusb 0x04e8 0x3434\n\n# Samsung SCX-4623FW\nusb 0x04e8 0x3440\n\n# Samsung SCX-4725FN\nusb 0x04e8 0x341f\n\n# Samsung SCX-4824\nusb 0x04e8 0x342c\n\n# Samsung SCX-4825FN\nusb 0x04e8 0x343c\n\n# Samsung SCX-4828FN (4x28 Series)\nusb 0x04e8 0x342d\n\n# Samsung SCX-4833FD\nusb 0x04e8 0x344b" > "${pkgdir}/etc/sane.d/xerox_mfp-smfp"
-
-	chmod 644 "${pkgdir}/etc/sane.d/xerox_mfp-smfp"
-}
+source=("http://www.bchemnet.com/suldr/pool/debian/extra/su/${suld_arch}"
+	"http://www.bchemnet.com/suldr/pool/debian/extra/su/${suld_ppd}"
+	"http://www.bchemnet.com/suldr/pool/debian/extra/su/${suld_common}"
+	)
+noextract=("${source[@]%%::*}")
 
 package() {
-	noarchsrcdir="${srcdir}/uld/noarch"
-	archsrcdir="${srcdir}/uld/${CARCHCUSTOM}"
+	# common
+	rm -rf common
+	mkdir common
+	cd common
+	ar x "../${suld_common}"
+	tar xf data.tar.xz
+	install -d "${pkgdir}/usr/lib/udev/rules.d"
+	install -m 644 -t "${pkgdir}/usr/lib/udev/rules.d/" etc/udev/rules.d/60_smfp_samsung.rules
 
-	package_general
-	package_cups
-	package_sane
+	install -d "${pkgdir}/etc/sane.d/dll.d"
+	install -m 644 -t "${pkgdir}/etc/sane.d/" etc/sane.d/xerox_mfp-smfp.conf
+	install -m 644 -t "${pkgdir}/etc/sane.d/dll.d" etc/sane.d/dll.d/*
+
+	install -d "${pkgdir}/usr/share/licenses/samsung-unified-driver"
+	install -m 644 -t "${pkgdir}/usr/share/licenses/samsung-unified-driver" usr/share/doc/suld-driver2/eula-fr.txt usr/share/doc/suld-driver2/copyright.gz
+	install -m 644 usr/share/doc/suld-driver2/eula.txt "${pkgdir}/usr/share/licenses/samsung-unified-driver/LICENSE"
+
+	install -d "${pkgdir}/usr/share/locale/fr/LC_MESSAGES/"
+	install -m 644 -t "${pkgdir}/usr/share/locale/fr/LC_MESSAGES/" usr/share/locale/fr/LC_MESSAGES/sane-smfp.mo
+
+	install -d "${pkgdir}/usr/share/doc/samsung-unified-driver/"
+	install -m 644 -t "${pkgdir}/usr/share/doc/samsung-unified-driver/" usr/share/doc/suld-driver2/changelog.gz
+	cd ..
+
+	# ppd
+	rm -rf ppd
+	mkdir ppd
+	cd ppd
+	ar x "../${suld_ppd}"
+	tar xf data.tar.xz -C "${pkgdir}"
+	cd ..
+
+	# arch
+	rm -rf arch
+	mkdir arch
+	cd arch
+	ar x "../${suld_arch}"
+	tar xf data.tar.xz -C "${pkgdir}"
+	chmod 644 "${pkgdir}/etc/sane.d/smfp.conf"
+	cd ..
 }
