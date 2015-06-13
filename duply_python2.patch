@@ -1,0 +1,13 @@
+--- ./duply.old
++++ ./duply
+@@ -367,6 +367,10 @@
+ 
+   $(using_info)
+ END
++}
++
++function python {
++  python2 "$@"
+ }
+ 
+ function using_info {
