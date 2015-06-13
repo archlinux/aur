@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=0.1.0
+Type=Application
+Name=jstest-gtk
+Categories=Game;Utility;GTK;
+GenericName=Joystick Configuration
+Comment=Configuration utility for joysticks
+Exec=/usr/bin/jstest-gtk
+Icon=/usr/share/icons/jstest-gtk.png
+StartupNotify=false
