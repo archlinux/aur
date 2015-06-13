@@ -1,0 +1,11 @@
+[Unit]
+Description=Flexible user timeout daemon
+
+[Service]
+Type=forking
+GuessMainPID=yes
+ExecStart=/usr/bin/timeoutd
+ExecStop=pkill timeoutd
+     
+[Install]
+WantedBy=multi-user.target

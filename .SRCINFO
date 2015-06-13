@@ -1,0 +1,23 @@
+pkgbase = timeoutd
+	pkgdesc = Flexible user timeout daemon. Enforces user login restrictions.
+	pkgver = 1.5deb10.1
+	pkgrel = 2
+	url = http://packages.debian.org/squeeze/timeoutd
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libx11
+	depends = libxext
+	depends = libxss
+	backup = etc/timeouts
+	source = http://ftp.de.debian.org/debian/pool/main/t/timeoutd/timeoutd_1.5.orig.tar.gz
+	source = http://ftp.de.debian.org/debian/pool/main/t/timeoutd/timeoutd_1.5-10.1.diff.gz
+	source = makefile_arch.patch
+	source = timeoutd.service
+	md5sums = 0be669e0111575fc5bbc8f20e27e4f88
+	md5sums = 2c1ecc3417d81cda99705078244bd3e7
+	md5sums = 6f8a7ac7b8abdd40f04264ad132a81e6
+	md5sums = 8ced5cbe1e96e0f35e240858c1b21fb6
+
+pkgname = timeoutd
+

@@ -1,0 +1,11 @@
+--- Makefile	2012-10-29 16:51:14.540335584 +0100
++++ Makefile.new	2012-10-29 16:54:26.742910007 +0100
+@@ -2,7 +2,7 @@
+ timeoutd:	timeoutd.c Makefile
+ 	#$(CC) $(CFLAGS) -o timeoutd timeoutd.c
+ 	$(CC) $(CFLAGS) -o timeoutd.o -c timeoutd.c -DTIMEOUTDX11
+-	$(CC) $(CFLAGS) -o timeoutd -L/usr/X11R6/lib timeoutd.o -lXss -lXext
++	$(CC) $(CFLAGS) -o timeoutd -L/usr/lib timeoutd.o -lXss -lXext -lX11
+ 	
+ 
+ install:
