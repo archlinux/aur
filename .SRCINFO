@@ -1,0 +1,16 @@
+pkgbase = hdx-512-git
+	pkgdesc = High Definition Expansion photorealistic, comprehensive texture pack for Minetest
+	pkgver = 74.35e493e
+	pkgrel = 1
+	url = https://forum.minetest.net/viewtopic.php?id=1583
+	arch = any
+	license = GFDL
+	makedepends = git
+	depends = minetest
+	optdepends = hdx-normalmaps-512: matching high resolution normal maps
+	provides = hdx-512
+	source = hdx-512-git::git://github.com/VanessaE/hdx-512.git
+	md5sums = SKIP
+
+pkgname = hdx-512-git
+
