@@ -1,0 +1,15 @@
+pkgbase = python2-jaydebeapi
+	pkgdesc = A bridge from JDBC database drivers to Python DB-API
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://launchpad.net/jaydebeapi
+	arch = any
+	license = GPL3
+	makedepends = python2
+	depends = python2
+	depends = jpype
+	source = https://pypi.python.org/packages/source/J/JayDeBeApi/JayDeBeApi-0.1.4.tar.gz
+	md5sums = 71db1776c90d2ba77d889aeb4b193627
+
+pkgname = python2-jaydebeapi
+
