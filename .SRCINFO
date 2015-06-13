@@ -1,0 +1,15 @@
+pkgbase = ficl
+	pkgdesc = Forth Inspired Command Language
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = http://ficl.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = custom:ficl
+	depends = glibc
+	optdepends = rlwrap: for a decent repl
+	source = http://downloads.sourceforge.net/project/ficl/ficl-all/ficl4.1/ficl-4.1.0.tar.gz?download
+	md5sums = 668f12c0006b2d338c3087c53311e658
+
+pkgname = ficl
+
