@@ -1,0 +1,15 @@
+pkgbase = python2-basicproperty
+	pkgdesc = Core data-types and property classes
+	pkgver = 0.6.12a
+	pkgrel = 2
+	url = http://basicproperty.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = custom:"Basicproperty License"
+	makedepends = python2-distribute
+	depends = python2
+	source = http://downloads.sourceforge.net/basicproperty/basicproperty-0.6.12a.tar.gz
+	md5sums = 58ac527fa1b5bb120b0b936cbbc6a2c6
+
+pkgname = python2-basicproperty
+
