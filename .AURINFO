@@ -1,0 +1,22 @@
+pkgbase = bibletime-git
+	pkgdesc = Bible study tool for KDE4.
+	pkgver = v2.10_rc1.r162.g6748de7
+	pkgrel = 1
+	epoch = 2
+	url = http://www.bibletime.info/
+	install = bibletime-git.install
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	depends = sword
+	depends = openssl
+	depends = clucene
+	depends = qtwebkit
+	provides = bibletime
+	conflicts = bibletime
+	source = git://github.com/bibletime/bibletime.git
+
+pkgname = bibletime-git
+
