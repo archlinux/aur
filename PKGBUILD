@@ -1,5 +1,5 @@
 pkgname=('python-docker-py-git')
-srcname='python-docker-py'
+srcname='docker-py'
 pkgver='r1'
 pkgrel='1'
 pkgdesc='An API client for docker written in Python'
@@ -12,7 +12,7 @@ makedepends=('git' 'python-setuptools')
 provides=('python-docker-py')
 conflicts=('python-docker-py')
 
-source=("${srcname}::git+https://github.com/docker/docker-py.git#tag=1.2.1")
+source=("${srcname}::git+https://github.com/docker/docker-py.git")
 sha512sums=('SKIP')
 
 pkgver() {

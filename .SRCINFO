@@ -12,7 +12,7 @@ pkgbase = python-docker-py-git
 	depends = python-requests
 	provides = python-docker-py
 	conflicts = python-docker-py
-	source = python-docker-py::git+https://github.com/docker/docker-py.git#tag=1.2.1
+	source = docker-py::git+https://github.com/docker/docker-py.git
 	sha512sums = SKIP
 
 pkgname = python-docker-py-git
