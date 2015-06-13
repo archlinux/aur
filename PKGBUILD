@@ -1,17 +1,17 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kwalletmanager-git
-pkgver=r818.bd78050
+pkgver=r842.b27f412
 pkgrel=1
 pkgdesc='Wallet management tool'
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url='http://www.kde.org/applications/system/kwalletmanager/'
-license=('LGPL')
-depends=('kwallet' 'kdelibs4support')
-makedepends=('extra-cmake-modules' 'git' 'python' 'kdoctools')
-conflicts=('kwalletmanager' 'kdeutils-kwalletmanager')
-provides=('kwalletmanager')
-source=('git://anongit.kde.org/kwalletmanager.git#branch=frameworks')
+license=(LGPL)
+depends=(kdelibs4support hicolor-icon-theme)
+makedepends=(extra-cmake-modules git python kdoctools)
+conflicts=(kwalletmanager kdeutils-kwalletmanager)
+provides=(kwalletmanager)
+source=('git://anongit.kde.org/kwalletmanager.git')
 install=$pkgname.install
 md5sums=('SKIP')
 
