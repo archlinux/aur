@@ -1,0 +1,13 @@
+pkgbase = libcli
+	pkgdesc = A shared library for including a Cisco-like command-line interface into other software.
+	pkgver = 1.9.7
+	pkgrel = 2
+	url = https://github.com/dparrish/libcli
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = https://github.com/dparrish/libcli/archive/v1.9.7.tar.gz
+	md5sums = f33e0fdb8ae8e14e66036424704b201b
+
+pkgname = libcli
+
