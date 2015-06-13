@@ -1,0 +1,18 @@
+pkgbase = rpncalc
+	pkgdesc = A calculator similar to dc, but uses readline and shows the stack visually.
+	pkgver = 1.36.8
+	pkgrel = 2
+	url = http://homepage.hispeed.ch/david.frey/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = bison
+	makedepends = flex
+	makedepends = gettext
+	makedepends = ed
+	depends = readline
+	source = http://ftp.de.debian.org/debian/pool/main/r/rpncalc/rpncalc_1.36.8.tar.gz
+	md5sums = 53c56b3cc539f214c2c26d5af62d878d
+
+pkgname = rpncalc
+
