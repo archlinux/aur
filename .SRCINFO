@@ -1,0 +1,27 @@
+pkgbase = tuxonice-userui
+	pkgdesc = TuxOnIce userspace user interface
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/NigelCunningham/Tuxonice-Userui
+	install = tuxonice-userui.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = bash
+	depends = libmng
+	depends = libpng
+	depends = freetype2
+	options = !makeflags
+	source = https://github.com/gdamjan/Tuxonice-Userui/archive/v1.1.1.tar.gz
+	source = initcpio-install
+	source = initcpio-hook
+	source = pm-utils-hook
+	source = systemd-hook
+	md5sums = a04ea588012974beec16209a018677dc
+	md5sums = a8e8ecb03e319321713652e25bc34a98
+	md5sums = 96a359994273ab0e8baa198914ef0433
+	md5sums = 9f647880008584b7751c3f9ecec7945b
+	md5sums = 44dcb2f1318ecac4155e275d28f1f443
+
+pkgname = tuxonice-userui
+

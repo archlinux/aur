@@ -1,0 +1,16 @@
+build ()
+{
+    if [ -d /etc/splash/tuxonice ]; then
+        add_full_dir /etc/splash/tuxonice
+    fi
+    add_binary /usr/sbin/tuxoniceui
+    SCRIPT="userui"
+}
+
+help ()
+{
+cat <<HELPEOF
+  This hook adds the tuxonice userui to your initramfs. If
+  /etc/splash/tuxonice exists, it will also add that directory.
+HELPEOF
+}
