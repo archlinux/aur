@@ -1,0 +1,15 @@
+pkgbase = celestia-addon-spaceman_spiff
+	pkgdesc = Celestia addon: Fictional: Craft and Stations: Spaceman Spiff
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.celestiamotherlode.net/catalog/show_addon_details.php?addon_id=825
+	arch = any
+	license = Free
+	makedepends = unzip
+	depends = celestia
+	conflicts = celestia-addon-spaceman-spiff
+	source = http://www.celestiamotherlode.net/creators/lukr/Spiff.zip
+	md5sums = eebbe406fd453e0fe51c9a9ca5793d27
+
+pkgname = celestia-addon-spaceman_spiff
+
