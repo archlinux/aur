@@ -1,0 +1,17 @@
+pkgbase = pure-avahi
+	pkgdesc = An Avahi/Zeroconf interface for Pure
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://purelang.bitbucket.org/
+	arch = i686
+	arch = x86_64
+	groups = pure-complete
+	groups = pure-util
+	license = LGPL3
+	depends = pure
+	depends = avahi
+	source = https://bitbucket.org/purelang/pure-lang/downloads/pure-avahi-0.3.tar.gz
+	sha1sums = 7f8d1b5420af698c2e6cd9f393268e8becc1ae3d
+
+pkgname = pure-avahi
+
