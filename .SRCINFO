@@ -1,0 +1,18 @@
+pkgbase = gnome-encfs-hg
+	pkgdesc = GNOME Keyring integration for EncFS folders
+	pkgver = 30
+	pkgrel = 1
+	url = https://bitbucket.org/obensonne/gnome-encfs
+	arch = any
+	license = GPL3
+	makedepends = mercurial
+	depends = encfs
+	depends = python2
+	depends = python2-gnomekeyring
+	depends = python2-xdg
+	depends = python2-gnomekeyring
+	source = gnome-encfs::hg+https://bitbucket.org/obensonne/gnome-encfs
+	md5sums = SKIP
+
+pkgname = gnome-encfs-hg
+
