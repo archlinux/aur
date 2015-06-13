@@ -1,0 +1,25 @@
+pkgbase = ruby-middleman
+	pkgdesc = Hand-crafted frontend development
+	pkgver = 3.3.12
+	pkgrel = 1
+	url = http://middlemanapp.com
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-middleman-core
+	depends = ruby-middleman-sprockets
+	depends = ruby-haml
+	depends = ruby-sass
+	depends = ruby-compass-import-once
+	depends = ruby-compass
+	depends = ruby-uglifier
+	depends = ruby-coffee-script
+	depends = ruby-execjs
+	depends = ruby-kramdown
+	noextract = middleman-3.3.12.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/middleman-3.3.12.gem
+	sha512sums = 9a3e0a6a1c571f496953ac85de1bba174536e30f72cdd914bc3ada2b8bdf1f830a3b56c03d5f52378c39eaa113d996159479e3d84a0d6ed1f83584b2b4f02b84
+
+pkgname = ruby-middleman
+
