@@ -1,0 +1,15 @@
+pkgbase = joymouse
+	pkgdesc = Control mice with the joystick.
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://sourceforge.net/projects/joymouse-linux/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libx11
+	depends = libxtst
+	source = http://downloads.sourceforge.net/project/joymouse-linux/joymouse/joymouse-0.5/joymouse-0.5.tar.gz
+	md5sums = 083696c9c8cfd222ce6d9a72fdbb40b5
+
+pkgname = joymouse
+
