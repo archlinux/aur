@@ -1,0 +1,16 @@
+pkgbase = python-dugong
+	pkgdesc = A Python HTTP 1.1 client library designed for RESTful protocols.
+	pkgver = 3.4
+	pkgrel = 2
+	url = https://bitbucket.org/nikratio/python-dugong
+	arch = any
+	license = PSF
+	license = Apache
+	depends = python
+	depends = python-setuptools
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/d/dugong/dugong-3.4.tar.bz2
+	md5sums = 20c42591c597c1059fa5d5ce713520e6
+
+pkgname = python-dugong
+
