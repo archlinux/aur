@@ -1,4 +1,4 @@
-# Maintainer: vmalloc support@cyborg-connect.de
+# Maintainer: vmalloc vmalloc@cyborg-connect.de
 pkgname=clockspeed
 pkgver=0.62
 pkgrel=00
