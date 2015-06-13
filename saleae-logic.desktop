@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Saleae-Logic
+GenericName=Logic Analyser
+Comment=A proprietary Logic Analyser
+Exec=logic
+Icon=SaleaeLogic
+Terminal=false
+Categories=Development
