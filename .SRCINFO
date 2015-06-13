@@ -1,0 +1,22 @@
+pkgbase = anamnesis-bzr
+	pkgdesc = Clipboard manager that stores all clipboard history and offers an interface to do a full-text search.
+	pkgver = 59
+	pkgrel = 2
+	epoch = 1
+	url = http://anamnesis.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = bzr
+	depends = pygtk
+	depends = python2-xdg
+	depends = sqlite3
+	optdepends = xclip: for clipboard_implementation=gtk_xclip
+	provides = anamnesis
+	conflicts = anamnesis
+	backup = usr/share/anamnesis/anamnesis.cfg
+	source = anamnesis::bzr://anamnesis.bzr.sourceforge.net/bzrroot/anamnesis/
+	md5sums = SKIP
+
+pkgname = anamnesis-bzr
+
