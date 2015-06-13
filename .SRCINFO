@@ -1,0 +1,17 @@
+pkgbase = lua51-event
+	pkgdesc = libevent binding for Lua
+	pkgver = 0.4.3
+	pkgrel = 3
+	url = https://github.com/harningt/luaevent
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = LGPL2.1
+	makedepends = lua51
+	makedepends = lua51-socket
+	depends = libevent>=1.4
+	source = luaevent-0.4.3.tar.gz::https://github.com/harningt/luaevent/archive/v0.4.3.tar.gz
+	sha512sums = 5f02c9d40e59589a2b932b49d27230ca6650174feeda2cf412769c33af056c9df52d38fdd5fc12f0f6318b788e29a2deef54f11beb4becc48818edd27185f161
+
+pkgname = lua51-event
+
