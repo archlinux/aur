@@ -1,0 +1,34 @@
+pkgbase = git-annex-cabal
+	pkgdesc = manage files with git, without checking their contents into git (cabal sandbox build)
+	pkgver = 5.20150528
+	pkgrel = 1
+	url = http://git-annex.branchable.com/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = ghc
+	makedepends = cabal-install>=1.18
+	makedepends = happy
+	makedepends = alex
+	makedepends = dbus
+	depends = curl
+	depends = git
+	depends = gmp
+	depends = gnupg
+	depends = gsasl
+	depends = libidn
+	depends = libxml2
+	depends = lsof
+	depends = nss-mdns
+	depends = openssh
+	depends = rsync
+	depends = util-linux
+	provides = git-annex=5.20150528
+	conflicts = git-annex-git
+	conflicts = git-annex
+	options = !makeflags
+	source = git-annex::git://git.kitenet.net/git-annex#tag=5.20150528
+	sha256sums = SKIP
+
+pkgname = git-annex-cabal
+
