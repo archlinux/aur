@@ -1,0 +1,14 @@
+pkgbase = dreamchess-music
+	pkgdesc = Music Pack for DreamChess
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.dreamchess.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = dreamchess
+	source = dreamchess-music-1.0.run.tar.gz::http://sourceforge.net/projects/dreamchess/files/music/0.1/dreamchess-music-1.0.run.tar/download
+	md5sums = e05eb5a140acefc99b984868f1f13039
+
+pkgname = dreamchess-music
+
