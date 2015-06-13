@@ -1,0 +1,21 @@
+pkgbase = libkolabxml-frameworks-git
+	pkgdesc = Kolab XML Format Schema Definitions Library. KF5 Frameworks branch. (GIT Version)
+	pkgver = 1.1.r556.8f2a9e6
+	pkgrel = 1
+	url = https://kolab.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	makedepends = xsd
+	makedepends = swig
+	depends = xerces-c
+	depends = boost-libs
+	conflicts = libkolabxml
+	source = git+https://git.kolab.org/diffusion/LKX/libkolabxml.git#branch=dev/frameworks
+	sha1sums = SKIP
+
+pkgname = libkolabxml-frameworks-git
+
