@@ -1,0 +1,18 @@
+pkgbase = python-dockerpty
+	pkgdesc = Pseudo-tty handler for docker Python client
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/d11wtq/dockerpty
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-six
+	provides = python-dockerpty
+	conflicts = python-dockerpty
+	source = dockerpty::git+https://github.com/d11wtq/dockerpty.git#tag=v0.3.4
+	sha512sums = SKIP
+
+pkgname = python-dockerpty
+
