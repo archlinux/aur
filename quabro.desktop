@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.5
+Type=Application
+Encoding=UTF-8
+Name=Quabro
+Exec=/usr/bin/quabro
+Icon=/usr/share/pixmaps/quabro.png
+Categories=Application;Game;ArcadeGame
