@@ -1,5 +1,5 @@
+# Maintainer: Denis Kasak <dkasak|AT|termina.org.uk>
 # Contributor: Ameysh <trader9@gmail.com>
-# Maintainer: Denis Kasak <reversed(moc.liamg@kasak.sined)>
 pkgname=ta-lib
 pkgver=0.4.0
 pkgrel=3
