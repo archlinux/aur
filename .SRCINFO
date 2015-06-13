@@ -1,0 +1,14 @@
+pkgbase = cd-hit
+	pkgdesc = clustering DNA/protein sequence database at high identity with tolerance
+	pkgver = 4.6.1
+	pkgrel = 1
+	url = https://code.google.com/p/cdhit/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = perl
+	source = https://cdhit.googlecode.com/files/cd-hit-v4.6.1-2012-08-27.tgz
+	sha1sums = 744be987a963e368ad46efa59227ea313c35ef5d
+
+pkgname = cd-hit
+
