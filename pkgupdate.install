@@ -1,0 +1,11 @@
+post_install() {
+  echo "As of version 0.5a1 (revision 8f66762d) a new dedicated"
+  echo "configuration file is supplied (/etc/pkgupdate.conf) which"
+  echo "provides the same defaults as the previous rc script did."
+  echo "$(tput bold)The /etc/conf.d/pkgupdate.conf script is dropped.$(tput sgr0)"
+  echo "$(tput bold)Use the new configuration file (/etc/pkgupdate.conf) instead.$(tput sgr0)"
+}
+
+post_upgrade() {
+  post_install $1
+}

@@ -1,0 +1,24 @@
+pkgbase = pkgupdate-git
+	pkgdesc = Simple monitor server for pacman and AUR updates
+	pkgver = 117.d87c556
+	pkgrel = 1
+	url = https://github.com/foucault/pkgupdate
+	install = pkgupdate.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = python-docutils
+	depends = python
+	depends = cron
+	optdepends = pygtk: for the gtk+ client
+	optdepends = gtk3: for the gtk+ 3 client
+	optdepends = python-gobject: for the gtk+ 3 client
+	optdepends = gnome-icon-theme: for the gtk+ clients
+	conflicts = pkgupdate
+	backup = etc/pkgupdate.conf
+	source = pkgupdate::git://github.com/foucault/pkgupdate.git
+	md5sums = SKIP
+
+pkgname = pkgupdate-git
+
