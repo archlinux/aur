@@ -1,0 +1,15 @@
+pkgbase = mbrola-voices-hn1
+	pkgdesc = A Korean male voice for the MBROLA synthesizer
+	pkgver = 990923
+	pkgrel = 1
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-hn
+	groups = mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/hn1/hn1-990923.zip
+	md5sums = 29aa2ad017882c9791db704801409a24
+
+pkgname = mbrola-voices-hn1
+
