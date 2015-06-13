@@ -1,0 +1,19 @@
+pkgbase = pr-downloader-git
+	pkgdesc = spring download tool
+	pkgver = 0.7.176.gdfb39db
+	pkgrel = 1
+	url = https://github.com/spring/pr-downloader
+	arch = i686
+	arch = x86_64
+	license = GPL-2
+	makedepends = git
+	makedepends = cmake
+	depends = curl
+	provides = pr-downloader
+	conflicts = pr-downloader
+	conflicts = spring
+	source = git://github.com/spring/pr-downloader.git
+	md5sums = SKIP
+
+pkgname = pr-downloader-git
+
