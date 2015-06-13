@@ -1,0 +1,23 @@
+pkgbase = logkeys-git
+	pkgdesc = Simple keylogger supporting also USB keyboards.
+	pkgver = 2012.02.06
+	pkgrel = 4
+	url = http://logkeys.googlecode.com/
+	install = logkeys.install
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	optdepends = logkeys-keymaps-git: for additional keymaps
+	provides = logkeys
+	conflicts = logkeys
+	backup = etc/conf.d/logkeysd
+	source = logkeysd.conf
+	source = logkeys.service
+	source = logkeys::git+http://logkeys.googlecode.com/git/
+	md5sums = c05608a47e303e8f604f46d1ed22aa4a
+	md5sums = bd70a5e5601168bbf7bf7f91ee530d14
+	md5sums = SKIP
+
+pkgname = logkeys-git
+
