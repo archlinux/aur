@@ -1,0 +1,14 @@
+pkgbase = bulk77i-git
+	pkgdesc = mar77i's basic C datatypes collection
+	pkgver = v0.2.4.g4b04119
+	pkgrel = 1
+	url = https://github.com/mar77i/bulk77i
+	arch = x686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	source = git+https://github.com/mar77i/bulk77i.git
+	md5sums = SKIP
+
+pkgname = bulk77i-git
+
