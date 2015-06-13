@@ -1,0 +1,17 @@
+pkgbase = bandicoot-git
+	pkgdesc = A relational set based programming system.
+	pkgver = 20110702
+	pkgrel = 1
+	url = http://bandilab.org/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	depends = glibc
+	provides = bandicoot
+	conflicts = bandicoot
+	source = git://github.com/bandilab/bandicoot.git
+	md5sums = SKIP
+
+pkgname = bandicoot-git
+
