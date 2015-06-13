@@ -1,0 +1,14 @@
+pkgbase = xstdcmap
+	pkgdesc = A X standard colormap utility
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = http://xorg.freedesktop.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxmu
+	source = http://xorg.freedesktop.org/releases/individual/app/xstdcmap-1.0.3.tar.bz2
+	md5sums = eb5473acaef15a5db9b50df29c6a7f90
+
+pkgname = xstdcmap
+
