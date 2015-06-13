@@ -1,0 +1,13 @@
+pkgbase = vim-auctex
+	pkgdesc = Macros for latex.
+	pkgver = 2.2.15
+	pkgrel = 1
+	url = http://www.vim.org/scripts/script.php?script_id=162
+	arch = any
+	license = custom
+	depends = vim
+	source = vim-auctex.vim::http://www.vim.org/scripts/download_script.php?src_id=21996
+	md5sums = 397d2d6998b18f944ade1c905caae36d
+
+pkgname = vim-auctex
+
