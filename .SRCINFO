@@ -1,0 +1,33 @@
+pkgbase = ncl-highres
+	pkgdesc = High-resolution coastlines for NCL, RANGS (Regionally Accessible Nested Global Shorelines) and GSHHS (Global Self-consistent Hierarchical High-resolution Shoreline)
+	pkgver = 0.1
+	pkgrel = 2
+	url = http://www.ncl.ucar.edu/Document/Graphics/rangs.shtml
+	arch = any
+	license = public domain
+	makedepends = unzip
+	depends = ncl
+	provides = ncl-highres
+	source = http://www2008.io-warnemuende.de/homepages/rfeistel/download/rangs(0).zip
+	source = http://www2008.io-warnemuende.de/homepages/rfeistel/download/rangs(1).zip
+	source = http://www2008.io-warnemuende.de/homepages/rfeistel/download/rangs(2).zip
+	source = http://www2008.io-warnemuende.de/homepages/rfeistel/download/rangs(3).zip
+	source = http://www2008.io-warnemuende.de/homepages/rfeistel/download/rangs(4).zip
+	source = http://www2008.io-warnemuende.de/homepages/rfeistel/download/gshhs(0).zip
+	source = http://www2008.io-warnemuende.de/homepages/rfeistel/download/gshhs(1).zip
+	source = http://www2008.io-warnemuende.de/homepages/rfeistel/download/gshhs(2).zip
+	source = http://www2008.io-warnemuende.de/homepages/rfeistel/download/gshhs(3).zip
+	source = http://www2008.io-warnemuende.de/homepages/rfeistel/download/gshhs(4).zip
+	md5sums = d50c74655c45329e5fd264f06f070451
+	md5sums = cb65f487221fb4f7381f3c5922d40116
+	md5sums = ded26282ff5f32d5aea0cce0e18f40d2
+	md5sums = c0873f44cae1e84d0fc470e6f6ee88db
+	md5sums = 025b5d31bcd21e404a5092b777b5ed38
+	md5sums = 4815e9edbdae713cf24c859dd4de3019
+	md5sums = 26807b25f942cc7f9ebb56359f6b0b0c
+	md5sums = 068babc759152d538d648cf7b035efcb
+	md5sums = 73e263f0e38359849b3130abb2ac147e
+	md5sums = 5a3903ffd8ccc42c298050362f55b958
+
+pkgname = ncl-highres
+
