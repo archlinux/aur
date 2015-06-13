@@ -1,0 +1,16 @@
+pkgbase = bdflib-git
+	pkgdesc = A Python library for reading, writing and modifying bitmap fonts in BDF format
+	pkgver = 20101119
+	pkgrel = 1
+	url = http://gitorious.org/bdflib
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = python2
+	provides = bdflib
+	conflicts = bdflib
+	source = git://gitorious.org/bdflib/mainline.git
+	md5sums = SKIP
+
+pkgname = bdflib-git
+
