@@ -1,0 +1,17 @@
+pkgbase = tsl
+	pkgdesc = The Slimy Lichmummy, a fantasy/cyberpunk roguelike
+	pkgver = 0.40
+	pkgrel = 2
+	url = http://www.happyponyland.net/roguelike.php
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = ncurses
+	depends = allegro
+	source = http://www.happyponyland.net/files/tsl-0.40.tar.gz
+	source = tsl.sh
+	md5sums = 8cd6942d09357e27591b0cbcc06a43b2
+	md5sums = 9d6664d3fc124d5afadb48ce60de890b
+
+pkgname = tsl
+
