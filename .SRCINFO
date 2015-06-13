@@ -1,0 +1,15 @@
+pkgbase = colornant
+	pkgdesc = NAnt output colorizer
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://colornant.googlepages.com
+	arch = any
+	license = GPL2
+	depends = nant
+	depends = perl
+	backup = etc/colornantrc
+	source = http://colornant.googlecode.com/files/colornant-1.0.0.tar.gz
+	md5sums = a83a71fa82f6eee178d01fab853575ee
+
+pkgname = colornant
+
