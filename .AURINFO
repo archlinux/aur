@@ -1,0 +1,21 @@
+pkgbase = sdrangelove-git
+	pkgdesc = A high speed SDR waterfall display.
+	pkgver = 20140824
+	pkgrel = 1
+	url = http://sdr.osmocom.org/trac/wiki/sdrangelove
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	depends = qt5-multimedia
+	depends = gnuradio-osmosdr
+	depends = libpulse
+	depends = boost-libs
+	optdepends = pulseaudio: sound output
+	conflicts = sdrangelove
+	source = git://git.osmocom.org/sdrangelove.git
+
+pkgname = sdrangelove-git
+
