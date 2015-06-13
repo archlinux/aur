@@ -2,7 +2,7 @@
 
 pkgname=4kslideshowmaker
 pkgver=1.5.6.903
-pkgrel=1
+pkgrel=2
 pkgdesc="A straightforward and easy-to-use app to create slideshows from music and photos, with Instagram support."
 arch=('i686' 'x86_64')
 url="http://www.4kdownload.com/products/product-slideshowmaker"
@@ -18,7 +18,6 @@ sha256sums_i686=('3913bb6472788a0abd1ed4a07a877564fb832d86f490a33b60e04f7188db9a
 sha256sums_x86_64=('839571673959539347f4157e0e2e77f5f14078d75bd78961210f11f560c268cd')
 
 package() {
-  echo $PWD
   # Install executable file
   install -m 755 -d "${pkgdir}/usr/bin"
   install -m 755 "${pkgname}/${pkgname}-bin" "${pkgdir}/usr/bin/${pkgname}"
