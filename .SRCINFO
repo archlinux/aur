@@ -1,0 +1,16 @@
+pkgbase = mbrola-voices-ee1
+	pkgdesc = An Estonian male voice for the MBROLA synthesizer
+	pkgver = 1
+	pkgrel = 4
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-ee
+	groups = mbrola-voices
+	groups = gespeaker-mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/ee1/ee1.zip
+	md5sums = 38377e171c4a3d3d30e9b214798d3d8c
+
+pkgname = mbrola-voices-ee1
+
