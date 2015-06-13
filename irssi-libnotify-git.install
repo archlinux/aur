@@ -1,0 +1,34 @@
+post_install() { cat << EOF
+
+Plugin Activation
+-----------------
+
+To enable this plugin for your local user account, link it to your
+irssi autorun scripts:
+
+    ln -s /usr/share/irssi/scripts/notify.pl ~/.irssi/scripts/autorun/
+
+Remote Access
+-------------
+
+If you are running irssi remotely, currently your remote machine account
+will need to be able to ssh to your local machine without a passphrase.
+You will need to set that up yourself, e.g. by using:
+
+    ssh-copy-id
+
+Then, to activate the remote notification in irssi, use:
+
+    /SET notify_remote <HOST>
+
+Replace <HOST> with the name or IP address of the local machine you are
+on, as it would be known to the remote machine. This is most useful if
+you are on the same local network with the other box (firewalls or other
+non-local routing will probably make it difficult to use this feature).
+
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
