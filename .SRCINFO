@@ -1,0 +1,23 @@
+pkgbase = git-cola
+	pkgdesc = A powerful GUI for Git
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = http://git-cola.github.com/
+	arch = any
+	license = GPL
+	makedepends = asciidoc
+	makedepends = docbook-xsl
+	makedepends = rsync
+	makedepends = xmlto
+	makedepends = python-sphinx>=1.1.3
+	depends = git
+	depends = python-pyqt4>=4.4
+	depends = icu
+	optdepends = python-pyinotify>=0.7.1: for inotify support
+	optdepends = tk: to use the built-in ssh-askpass handler
+	options = !makeflags
+	source = https://github.com/git-cola/git-cola/archive/v2.1.2.zip
+	sha256sums = 16fff73d2fd30bebdecce6f6179e87d6a03304e98819177de06055ead74d0f69
+
+pkgname = git-cola
+
