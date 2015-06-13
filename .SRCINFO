@@ -1,0 +1,17 @@
+pkgbase = kfilebox
+	pkgdesc = KDE4 Dropbox client (with own daemon)
+	pkgver = 0.4.10
+	pkgrel = 1
+	url = https://github.com/gtgt/kfilebox
+	install = kfilebox.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gettext
+	provides = dropbox
+	noextract = kfilebox-0.4.10.tar.gz}
+	source = https://github.com/gtgt/kfilebox/archive/0.4.10.tar.gz
+	md5sums = 79d58aab7a342851cd961a0f784caefd
+
+pkgname = kfilebox
+
