@@ -1,0 +1,35 @@
+diff -Naur ncl_ncarg-6.2.0_orig/common/src/fontcap/yMakefile ncl_ncarg-6.2.0/common/src/fontcap/yMakefile
+--- ncl_ncarg-6.2.0_orig/common/src/fontcap/yMakefile	2014-03-31 21:23:03.000000000 -0500
++++ ncl_ncarg-6.2.0/common/src/fontcap/yMakefile	2014-04-14 22:23:26.040827514 -0500
+@@ -43,7 +43,7 @@
+ # Rule for processing fontcaps
+ .SUFFIXES: .fc
+ 
+-.fc:
++.fc: $(FONTC)
+ 	@echo "	Processing fontcap $@"
+ 	@$(FONTC) $< $@
+ 
+diff -Naur ncl_ncarg-6.2.0_orig/ncarg2d/src/libncarg/ezmap/mapngb.c ncl_ncarg-6.2.0/ncarg2d/src/libncarg/ezmap/mapngb.c
+--- ncl_ncarg-6.2.0_orig/ncarg2d/src/libncarg/ezmap/mapngb.c	2014-03-31 21:22:31.000000000 -0500
++++ ncl_ncarg-6.2.0/ncarg2d/src/libncarg/ezmap/mapngb.c	2014-04-14 22:23:26.040827514 -0500
+@@ -1,6 +1,7 @@
+ /*
+  * C routines needed to read a PNG file.
+  */
++#define int_p_NULL (int*)NULL
+ 
+ #include <math.h>
+ #include <ncarg/c.h>
+diff -Naur ncl_ncarg-6.2.1_orig/config/Template ncl_ncarg-6.2.1/config/Template
+--- ncl_ncarg-6.2.1_orig/config/Template        2014-09-02 11:34:55.000000000 -0500
++++ ncl_ncarg-6.2.1/config/Template     2014-09-06 13:43:20.742634609 -0500
+@@ -496,7 +496,7 @@
+ #endif /* LexCommand */
+ 
+ #ifndef        LexLibrary
+-#define        LexLibrary      -ll
++#define        LexLibrary      -lfl
+ #endif /* LexLibrary */
+ 
+ #ifndef        YaccCommand

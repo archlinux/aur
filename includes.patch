@@ -1,0 +1,503 @@
+--- ncl_ncarg-5.0.0/common/src/bin/ncargpath/ncargpath.c.includes	2000-08-21 22:04:15.000000000 -0600
++++ ncl_ncarg-5.0.0/common/src/bin/ncargpath/ncargpath.c	2008-03-21 11:02:16.000000000 -0600
+@@ -41,6 +41,7 @@
+  */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ #include <ncarg/c.h>
+ 
+--- ncl_ncarg-5.0.0/ncarg2d/src/libncarg/plotchar/bofred.c.includes	2000-08-22 09:05:20.000000000 -0600
++++ ncl_ncarg-5.0.0/ncarg2d/src/libncarg/plotchar/bofred.c	2008-03-21 11:04:17.000000000 -0600
+@@ -25,6 +25,10 @@
+ ************************************************************************/
+ 
+ 
++#include <sys/types.h>
++#include <sys/stat.h>
++#include <fcntl.h>
++#include <stdlib.h>
+ #include <stdio.h>
+ #include <ncarg/c.h>
+ 
+--- ncl_ncarg-5.0.0/ncarg2d/src/libncarg/areasC/c_argeti.c.includes	2000-08-22 09:02:06.000000000 -0600
++++ ncl_ncarg-5.0.0/ncarg2d/src/libncarg/areasC/c_argeti.c	2008-03-21 11:05:46.000000000 -0600
+@@ -24,6 +24,7 @@
+ *                                                                       *
+ ************************************************************************/
+ 
++#include <string.h>
+ #include <ncarg/ncargC.h>
+ 
+ extern void NGCALLF(argeti,ARGETI)(NGstring,int*,int);
+--- ncl_ncarg-5.0.0/ncarg2d/src/libncarg/ncargC.h.includes	2008-03-21 11:10:43.000000000 -0600
++++ ncl_ncarg-5.0.0/ncarg2d/src/libncarg/ncargC.h	2008-03-21 11:10:25.000000000 -0600
+@@ -176,6 +176,12 @@
+ #endif
+ );
+ 
++extern void NGCALLF(agback,AGBACK)(
++#ifdef  NeedFuncProto
++    void
++#endif
++);
++
+ extern char *c_agbnch(
+ #ifdef  NeedFuncProto
+     int idsh
+--- ncl_ncarg-5.0.0/ncarview/src/lib/libncarg_ras/raster.c.includes	2000-08-22 09:12:16.000000000 -0600
++++ ncl_ncarg-5.0.0/ncarview/src/lib/libncarg_ras/raster.c	2008-04-10 14:53:26.000000000 -0600
+@@ -48,6 +48,7 @@
+  *		
+  */
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ #include <fcntl.h>
+ #include <errno.h>
+@@ -518,6 +519,7 @@
+  *		RAS_ERROR or RAS_EOF if something went wrong.
+  *		
+  *********************************************************************/
++int
+ RasterLoadPalette(ras, colors)
+ 	Raster		*ras;
+ 	unsigned char	colors[768];
+--- ncl_ncarg-5.0.0/ncarview/src/lib/libncarg_ras/misc.c.includes	2000-08-22 09:12:12.000000000 -0600
++++ ncl_ncarg-5.0.0/ncarview/src/lib/libncarg_ras/misc.c	2008-04-10 14:57:14.000000000 -0600
+@@ -71,6 +71,7 @@
+ 
+ /* Swiped from John Clyne */
+ 
++void
+ _swapshort (bp, n)
+     register char *bp;
+     register unsigned n;
+@@ -86,6 +87,7 @@
+     }
+ }
+ 
++void
+ _swaplong (bp, n)
+     register char *bp;
+     register unsigned n;
+@@ -112,6 +114,7 @@
+  *
+  *	Return the number of images in a file. Return -1 on error
+  */
++int
+ ImageCount_(name, format)
+ 	char	*name;
+ 	char	*format;
+--- ncl_ncarg-5.0.0/ncarview/src/lib/libncarg_ras/misc.h.includes	2008-04-10 14:57:41.000000000 -0600
++++ ncl_ncarg-5.0.0/ncarview/src/lib/libncarg_ras/misc.h	2008-04-10 15:00:16.000000000 -0600
+@@ -0,0 +1,41 @@
++/*
++ *	$Id: ncl-5.1.0-includes.patch,v 1.1 2009/03/10 14:58:16 orion Exp $
++ */
++/************************************************************************
++*                                                                       *
++*                Copyright (C)  2000                                    *
++*        University Corporation for Atmospheric Research                *
++*                All Rights Reserved                                    *
++*                                                                       *
++* This file is free software; you can redistribute it and/or modify     *
++* it under the terms of the GNU General Public License as published     *
++* by the Free Software Foundation; either version 2 of the License, or  *
++* (at your option) any later version.                                   *
++*                                                                       *
++* This software is distributed in the hope that it will be useful, but  *
++* WITHOUT ANY WARRANTY; without even the implied warranty of            *
++* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU     *
++* General Public License for more details.                              *
++*                                                                       *
++* You should have received a copy of the GNU General Public License     *
++* along with this software; if not, write to the Free Software         *
++* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307   *
++* USA.                                                                  *
++*                                                                       *
++************************************************************************/
++
++/***********************************************************************
++*                                                                      *
++*                          Copyright (C)  1991                         *
++*            University Corporation for Atmospheric Research           *
++*                          All Rights Reserved                         *
++*                                                                      *
++*                                                                      *
++***********************************************************************/
++/*	File:	misc.h
++ */
++
++int read_swap(FILE *fp, int nb, char *buf, int swapflag);
++void _swapshort (register char *bp, register unsigned n);
++void _swaplong (register char *bp, register unsigned n);
++int ImageCount_(char *name, char *format);
+--- ncl_ncarg-5.0.0/ncarview/src/lib/libctrans/buffer.c.includes	2008-04-10 15:29:16.000000000 -0600
++++ ncl_ncarg-5.0.0/ncarview/src/lib/libctrans/buffer.c	2008-04-10 15:28:57.000000000 -0600
+@@ -76,7 +76,7 @@
+ /*
+  *	Flushes out the output buffer. Called at the end of a picture.
+  */
+-flush()
++void	flush()
+ {
+ 	(void)write(outFD,outbuf,outbufnum);
+ 	outbufnum = 0;
+@@ -86,7 +86,7 @@
+  *	Copies the "count" number of chars from "str" into the output buffer,
+  *	flushing the buffer if need be.
+  */
+-buffer(str,count)
++void	buffer(str,count)
+ 	SignedChar 	*str;
+ 	int  		count;
+ {
+--- ncl_ncarg-5.0.0/ncarview/src/lib/libctrans/buffer.h.includes	2008-04-10 15:29:29.000000000 -0600
++++ ncl_ncarg-5.0.0/ncarview/src/lib/libctrans/buffer.h	2008-04-10 15:31:08.000000000 -0600
+@@ -0,0 +1,37 @@
++/*
++ *	$Id: ncl-5.1.0-includes.patch,v 1.1 2009/03/10 14:58:16 orion Exp $
++ */
++/************************************************************************
++*                                                                       *
++* This file is free software; you can redistribute it and/or modify     *
++* it under the terms of the GNU General Public License as published     *
++* by the Free Software Foundation; either version 2 of the License, or  *
++* (at your option) any later version.                                   *
++*                                                                       *
++* This software is distributed in the hope that it will be useful, but  *
++* WITHOUT ANY WARRANTY; without even the implied warranty of            *
++* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU     *
++* General Public License for more details.                              *
++*                                                                       *
++* You should have received a copy of the GNU General Public License     *
++* along with this software; if not, write to the Free Software         *
++* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307   *
++* USA.                                                                  *
++*                                                                       *
++************************************************************************/
++
++/***********************************************************************
++*                                                                      *
++*                          Copyright (C)  1990                         *
++*            University Corporation for Atmospheric Research           *
++*                          All Rights Reserved                         *
++*                                                                      *
++*                      NCAR View V3.01 - UNIX Release                  *
++*                                                                      *
++***********************************************************************/
++
++#include "ctrandef.h"
++
++int	GcapOpenBuffer(char *file);
++void	flush(void);
++void	buffer(SignedChar *str, int count);
+--- ncl_ncarg-5.0.0/ncarview/src/lib/libctrans/default.c.includes	2000-08-22 09:11:45.000000000 -0600
++++ ncl_ncarg-5.0.0/ncarview/src/lib/libctrans/default.c	2008-04-10 15:15:45.000000000 -0600
+@@ -99,7 +99,7 @@
+ 
+ 
+ 
+-InitDefault()
++void	InitDefault()
+ {
+ 	static	boolean	isInit = FALSE;
+ 	int	max_intensity = (1 << DCP) - 1;
+@@ -173,7 +173,7 @@
+ 	colorLUTable.damage = FALSE;
+ }
+ 
+-SetInPic(value)
++void	 SetInPic(value)
+ boolean		value;
+ {
+ 	int	i;
+@@ -1290,7 +1290,7 @@
+ /*
+  *	set mininum line width
+  */
+-SetMinLineWidthDefault(line_width)
++void SetMinLineWidthDefault(line_width)
+ 	float	line_width;
+ {
+ 
+@@ -1315,7 +1315,7 @@
+ /*
+  *	Set Maximum line width.
+  */
+-SetMaxLineWidthDefault(line_width)
++void SetMaxLineWidthDefault(line_width)
+ 	float	line_width;
+ {
+ 	defaulttable.line_width = MIN(line_width, defaulttable.line_width);
+@@ -1330,7 +1330,7 @@
+ /*
+  *	set additional line scaling
+  */
+-SetAdditionalLineScale(line_scale)
++void SetAdditionalLineScale(line_scale)
+ 	float	line_scale;
+ {
+ 	LINE_WIDTH_DAMAGE = TRUE;
+@@ -1344,7 +1344,7 @@
+ /*
+  *	set rgb intensity scaling
+  */
+-SetRGBIntensityScale(rgb_scale)
++void SetRGBIntensityScale(rgb_scale)
+ 	float	rgb_scale;
+ {
+ 	COLOUR_TABLE_DAMAGE = TRUE;
+--- ncl_ncarg-5.0.0/ncarview/src/lib/libctrans/default.h.includes	2000-08-21 21:30:26.000000000 -0600
++++ ncl_ncarg-5.0.0/ncarview/src/lib/libctrans/default.h	2008-04-10 15:26:23.000000000 -0600
+@@ -454,3 +454,73 @@
+ #define	COLOUR_INDEX_RED(I)	(clut->ce[(I)].rgb.red)
+ #define	COLOUR_INDEX_GREEN(I)	(clut->ce[(I)].rgb.green)
+ #define	COLOUR_INDEX_BLUE(I)	(clut->ce[(I)].rgb.blue)
++
++void	InitDefault(void);
++void	_CtDefNoColorDefault(void);
++void	 SetInPic(boolean  value);
++int MFVersion(CGMC *c);
++int MFDesc(CGMC *c);
++int VDCType(CGMC *c);
++int IntergerPrec(CGMC *c);
++int RealPrec(CGMC *c);
++int IndexPrec(CGMC *c);
++int ColrPrec(CGMC *c);
++int ColrIndexPrec(CGMC *c);
++int MaxColrIndex(CGMC *c);
++int ColrValueExt(CGMC *c);
++int MFElemList(CGMC *c);
++int MFDefaults(CGMC *c);
++int CharSetList(CGMC *c);
++int CharCoding(CGMC *c);
++int ScaleMode(CGMC *c);
++int ColrMode(CGMC *c);
++int LineWidthMode(CGMC *c);
++int MarkerSizeMode(CGMC *c);
++int EdgeWidthMode(CGMC *c);
++int VDCExt(CGMC *c);
++int BackColr(CGMC *c);
++int VDCIntergerPrec(CGMC *c);
++int VDCRealPrec(CGMC *c);
++int AuxColr(CGMC *c);
++int Transparency(CGMC *c);
++int ClipRect(CGMC *c);
++int Clip(CGMC *c);
++int LineIndex(CGMC *c);
++int LineType(CGMC *c);
++int LineWidth(CGMC *c);
++int LineColr(CGMC *c);
++int MarkerIndex(CGMC *c);
++int MarkerType(CGMC *c);
++int MarkerSize(CGMC *c);
++int MarkerColr(CGMC *c);
++int TextIndex(CGMC *c);
++int TextFontIndex(CGMC *c);
++int TextPrec(CGMC *c);
++int CharExpan(CGMC *c);
++int CharSpace(CGMC *c);
++int TextColr(CGMC *c);
++int CharHeight(CGMC *c);
++int CharOri(CGMC *c);
++int TextPath(CGMC *c);
++int TextAlign(CGMC *c);
++int CharSetIndex(CGMC *c);
++int AltCharSetIndex(CGMC *c);
++int FillIndex(CGMC *c);
++int IntStyle(CGMC *c);
++int FillColr(CGMC *c);
++int HatchIndex(CGMC *c);
++int PatIndex(CGMC *c);
++int EdgeIndex(CGMC *c);
++int EdgeType(CGMC *c);
++int EdgeWidth(CGMC *c);
++int EdgeColr(CGMC *c);
++int EdgeVis(CGMC *c);
++int FillRefPt(CGMC *c);
++int PatTable(CGMC *c);
++int PatSize(CGMC *c);
++int ColrTable(CGMC *c);
++int ASF(CGMC *c);
++void SetMinLineWidthDefault(float line_width);
++void SetMaxLineWidthDefault(float line_width);
++void SetAdditionalLineScale(float line_scale);
++void SetRGBIntensityScale(float rgb_scale);
+--- ncl_ncarg-5.0.0/ncarview/src/lib/libctrans/gcaprast.c.includes	2000-08-22 09:11:48.000000000 -0600
++++ ncl_ncarg-5.0.0/ncarview/src/lib/libctrans/gcaprast.c	2008-04-10 15:32:49.000000000 -0600
+@@ -44,6 +44,7 @@
+ 
+ #include	<stdio.h>
+ #include	<stdlib.h>
++#include	<string.h>
+ #include	<errno.h>
+ #include	<ncarg/c.h>
+ #include	"cgmc.h"
+@@ -52,9 +53,8 @@
+ #include	"ctrandef.h"
+ #include	"translate.h"
+ #include	"bitops.h"
+-
+-
+-
++#include	"buffer.h"
++#include	"format.h"
+ 
+ static	boolean	Runlength;	/* true if device wants run length encoded
+ 				 * pixel map
+--- ncl_ncarg-5.0.0/ncarview/src/lib/libctrans/in.h.includes	2008-04-10 15:08:11.000000000 -0600
++++ ncl_ncarg-5.0.0/ncarview/src/lib/libctrans/in.h	2008-04-10 15:08:42.000000000 -0600
+@@ -29,6 +29,9 @@
+ *                      NCAR View V3.00 - UNIX Release                  *
+ *                                                                      *
+ ***********************************************************************/
++
++#include "cgmc.h"
++
+ #define	BUFSIZE 	1440	/*size of CGM buffer in bytes	*/
+ #define N 		-1	/*flag indicating any integer value	*/
+ #define STDIN		0
+@@ -72,4 +75,5 @@
+ 				 */
+          };
+ 
++int Instr_Dec(CGMC *cgmc);
+ 
+--- ncl_ncarg-5.0.0/ncarview/src/lib/libctrans/misc.c.includes	2000-08-22 09:11:50.000000000 -0600
++++ ncl_ncarg-5.0.0/ncarview/src/lib/libctrans/misc.c	2008-04-10 15:09:55.000000000 -0600
+@@ -36,7 +36,7 @@
+  *	Description:	miscellaneous ctrans funcions
+  */
+ 
+-CoordStringToInt(s, llx, lly, urx, ury)
++int CoordStringToInt(s, llx, lly, urx, ury)
+ 	char	*s;
+ 	int	*llx, *lly, *urx, *ury;
+ {
+--- ncl_ncarg-5.0.0/ncarview/src/lib/libctrans/misc.h.includes	2008-04-10 15:10:15.000000000 -0600
++++ ncl_ncarg-5.0.0/ncarview/src/lib/libctrans/misc.h	2008-04-10 15:11:11.000000000 -0600
+@@ -0,0 +1,31 @@
++/*
++ *      $Id: ncl-5.1.0-includes.patch,v 1.1 2009/03/10 14:58:16 orion Exp $
++ */
++/************************************************************************
++*                                                                       *
++*                          Copyright (C)  1992                          *
++*            University Corporation for Atmospheric Research            *
++*                          All Rights Reserved                          *
++*                                                                       *
++* This file is free software; you can redistribute it and/or modify     *
++* it under the terms of the GNU General Public License as published     *
++* by the Free Software Foundation; either version 2 of the License, or  *
++* (at your option) any later version.                                   *
++*                                                                       *
++* This software is distributed in the hope that it will be useful, but  *
++* WITHOUT ANY WARRANTY; without even the implied warranty of            *
++* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU     *
++* General Public License for more details.                              *
++*                                                                       *
++* You should have received a copy of the GNU General Public License     *
++* along with this software; if not, write to the Free Software         *
++* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307   *
++* USA.                                                                  *
++*                                                                       *
++************************************************************************/
++
++/*
++ *	File:		misc.h
++ */
++
++int CoordStringToInt(char *s, int *llx, int *lly, int *urx, int *ury);
+--- ncl_ncarg-5.0.0/ncarview/src/lib/libctrans/rast.c.includes	2005-08-03 15:14:16.000000000 -0600
++++ ncl_ncarg-5.0.0/ncarview/src/lib/libctrans/rast.c	2008-04-10 16:02:40.000000000 -0600
+@@ -30,6 +30,7 @@
+ *                                                                      *
+ ***********************************************************************/
+ 		
++#include "in.h"
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+@@ -44,6 +45,7 @@
+ #include "ctrandef.h"
+ #include "default.h"
+ #include "devices.h"
++#include "misc.h"
+ 
+ extern	boolean	*softFill;
+ extern	boolean	deviceIsInit;
+@@ -104,7 +106,7 @@
+ Raster	*rastGrid;		/* struct for creating output file	*/
+ boolean	rasIsDirect;		/* direct encoded image?		*/
+ 
+-static	build_ras_arg(ras_argc, ras_argv, rast_opts)
++static	int build_ras_arg(ras_argc, ras_argv, rast_opts)
+ 	int	*ras_argc;
+ 	char	**ras_argv;
+ 	struct	Opts rast_opts;
+@@ -166,7 +168,7 @@
+ }
+ 
+ 
+-static	clear_grid(grid)
++static	void clear_grid(grid)
+ 	Raster	*grid;
+ {
+ 	if (rasIsDirect) {
+@@ -184,7 +186,7 @@
+ 	}
+ }
+ 
+-static	init_color_tab()
++static	void init_color_tab()
+ {
+ 
+ 	/*
+@@ -198,7 +200,7 @@
+ 	
+ #define DEFAULT_WIDTH   512	/* default raster width         */
+ #define DEFAULT_HEIGHT  512	/* default raster height        */
+-get_resolution(dev_extent, opts, name)
++void get_resolution(dev_extent, opts, name)
+ 	CoordRect	*dev_extent;
+ 	struct	Opts opts;
+ 	char	*name;
+--- ncl_ncarg-5.0.0/ncarview/src/lib/libncarg_ras/sunraster.c.includes	2000-08-22 09:12:19.000000000 -0600
++++ ncl_ncarg-5.0.0/ncarview/src/lib/libncarg_ras/sunraster.c	2008-04-10 17:02:27.000000000 -0600
+@@ -59,8 +59,10 @@
+ #include <fcntl.h>
+ #include <string.h>
+ #include <stdlib.h>
++#include <unistd.h>
+ #include "ncarg_ras.h"
+ #include "sunraster.h"
++#include "misc.h"
+ 
+ static char	*FormatName = "sun";
+ 
+@@ -235,18 +237,18 @@
+ 		dep = (SunInfo *) ras->dep;
+ 	}
+ 
+-	nb = write(ras->fd, (char *) dep, sizeof(SunInfo));
++	nb = write(ras->fd, dep, sizeof(SunInfo));
+ 	if (nb != sizeof(SunInfo)) return(RAS_EOF);
+ 
+ 	/* Write the color table. */
+ 
+-	nb = write(ras->fd, (char *) ras->red, ras->ncolor);
++	nb = write(ras->fd, ras->red, ras->ncolor);
+ 	if (nb != ras->ncolor) return(RAS_EOF);
+ 
+-	nb = write(ras->fd, (char *) ras->green, ras->ncolor);
++	nb = write(ras->fd, ras->green, ras->ncolor);
+ 	if (nb != ras->ncolor) return(RAS_EOF);
+ 
+-	nb = write(ras->fd, (char *) ras->blue, ras->ncolor);
++	nb = write(ras->fd, ras->blue, ras->ncolor);
+ 	if (nb != ras->ncolor) return(RAS_EOF);
+ 
+ 	/*

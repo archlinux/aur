@@ -1,0 +1,12 @@
+diff -up ncl_ncarg-6.0.0/ncarview/src/bin/ictrans/yMakefile.libs ncl_ncarg-6.0.0/ncarview/src/bin/ictrans/yMakefile
+--- ncl_ncarg-6.0.0/ncarview/src/bin/ictrans/yMakefile.libs	2011-05-27 12:53:51.000000000 -0600
++++ ncl_ncarg-6.0.0/ncarview/src/bin/ictrans/yMakefile	2012-07-16 15:29:08.141021676 -0600
+@@ -29,6 +29,8 @@ DEP_LIBS	=	$(DEPICTRANSLIB) $(DEPCTRANSL
+ 
+ #ifdef  IRIX
+ MORE_LIBS	= -lmalloc
++#else
++MORE_LIBS	= -lm
+ #endif
+ 
+ EXTRA_LIBS	= $(X11LIBS) $(SUNLIBS) $(NETCDFLIB) $(HDFLIB) $(CTOFLIBS)
