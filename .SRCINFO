@@ -1,0 +1,25 @@
+pkgbase = python35
+	pkgdesc = Next generation of the python high-level scripting language
+	pkgver = 3.5.0b2
+	pkgrel = 1
+	url = http://www.python.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = tk
+	makedepends = sqlite
+	makedepends = valgrind
+	depends = expat
+	depends = bzip2
+	depends = gdbm
+	depends = openssl
+	depends = libffi
+	depends = zlib
+	optdepends = tk: for tkinter
+	optdepends = sqlite
+	options = !makeflags
+	source = http://www.python.org/ftp/python/3.5.0/Python-3.5.0b2.tar.xz
+	sha256sums = 8bbbe3e574773971a74b2ae11c9712c0b6e6c3287ab63763a3e3e868511b0953
+
+pkgname = python35
+
