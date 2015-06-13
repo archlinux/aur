@@ -1,0 +1,26 @@
+--- android2po-1.2.0/requirements.pip	2012-03-18 12:27:30.000000000 +0100
++++ android2po-1.2.0.min/requirements.pip	2015-05-04 12:44:34.254492413 +0200
+@@ -1,7 +1,6 @@
+ # Install using pip install -r requirements.pip
+ 
+ lxml
+-argparse==1.1
+ 
+ # This is a custom build of th dev version that has context support
+-http://elsdoerfer.name/download/android2po/files/Babel-1.0dev.tar.gz
++babel>=1.0
+--- android2po-1.2.0/setup.py	2012-03-18 12:27:30.000000000 +0100
++++ android2po-1.2.0.min/setup.py	2015-05-04 12:49:57.447827505 +0200
+@@ -45,9 +45,6 @@
+       license='BSD',
+       packages=['android2po'],
+       package_dir = {'android2po': 'android2po'},
+-      install_requires = ['lxml', 'argparse==1.1', 'babel==1.0dev'],
+-      dependency_links = [
+-          "http://elsdoerfer.name/download/android2po/files/Babel-1.0dev.tar.gz"
+-      ],
++      install_requires = ['lxml', 'babel>=1.0'],
+       **kw
+-      )
+\ No newline at end of file
++      )
