@@ -1,0 +1,14 @@
+pkgbase = cavez-of-phear
+	pkgdesc = A Boulder Dash like game for consoles/terminals. Level editor included.
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = http://www.x86.no/cavezofphear/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	source = http://www.x86.no/cavezofphear/phear-0.5.1.tar.bz2
+	md5sums = c9b3751dc52d332aaf04cbed4addf7c1
+
+pkgname = cavez-of-phear
+
