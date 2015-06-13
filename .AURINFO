@@ -1,0 +1,15 @@
+pkgbase = excellent-bifurcation
+	pkgdesc = A shmup with an evil twist.
+	pkgver = 0.0.20071015
+	pkgrel = 4
+	url = http://www.allegro.cc/depot/ExcellentBifurcation
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = allegro4
+	depends = libxdg-basedir
+	source = http://ftp.de.debian.org/debian/pool/main/e/excellent-bifurcation/excellent-bifurcation_0.0.20071015.orig.tar.gz
+	source = http://ftp.de.debian.org/debian/pool/main/e/excellent-bifurcation/excellent-bifurcation_0.0.20071015-6.debian.tar.xz
+
+pkgname = excellent-bifurcation
+
