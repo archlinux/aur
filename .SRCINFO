@@ -1,0 +1,18 @@
+pkgbase = perl-io-event
+	pkgdesc = Tied Filehandles for Nonblocking IO with Object Callbacks
+	pkgver = 0.813
+	pkgrel = 2
+	url = http://search.cpan.org/dist/IO-Event
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-anyevent
+	makedepends = perl-event
+	depends = perl-list-moreutils
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MU/MUIR/modules/IO-Event-0.813.tar.gz
+	md5sums = a18be32ce73a2f5e7a1cf24dea86a035
+	sha512sums = 234fe3037e9600b843b7db094b2bb67ff6d573d5a8cf48cec813d5cf6a996ae32bfde0eb35f8593c0cfe4d2d56a56882183e5fa291498df845a3c9fcb0ba7293
+
+pkgname = perl-io-event
+
