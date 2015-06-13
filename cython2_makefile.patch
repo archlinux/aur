@@ -1,0 +1,9 @@
+--- pocketsphinx-0.8/python/Makefile.am	2015-05-30 11:56:43.247774183 +0200
++++ pocketsphinx-0.8/python/Makefile.am.cython2_fix	2015-05-30 11:58:15.540146568 +0200
+@@ -40,5 +40,5 @@
+ 
+ if BUILD_CYTHON
+ $(srcdir)/pocketsphinx.c: $(srcdir)/pocketsphinx.pyx $(srcdir)/pocketsphinx.pxd
+-	cython2 -o $@ $< $(CPPFLAGS) -I$(sphinxbase)/python
++	cython2 -o $@ $< $(SphinxBase_CFLAGS)
+ endif

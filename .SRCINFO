@@ -1,0 +1,21 @@
+pkgbase = pocketsphinx
+	pkgdesc = Lightweight speech recognition engine, specifically tuned for handheld and mobile devices, though it works equally well on the desktop.
+	pkgver = 0.8
+	pkgrel = 5
+	url = http://cmusphinx.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = sphinxbase>=0.8
+	depends = python2
+	depends = gstreamer0.10-base
+	depends = libpulse
+	depends = libsamplerate
+	options = !libtool
+	source = http://downloads.sourceforge.net/cmusphinx/pocketsphinx-0.8.tar.gz
+	source = cython2_makefile.patch
+	md5sums = 9f6fb6277d57fb33d2c49d4184587d26
+	md5sums = 7524229c5d82c49a5c4afabd7f891a65
+
+pkgname = pocketsphinx
+
