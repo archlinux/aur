@@ -1,0 +1,16 @@
+pkgbase = vim-tabular-git
+	pkgdesc = Vim script for text filtering and alignment
+	pkgver = r29.60f2564
+	pkgrel = 1
+	url = https://github.com/godlygeek/tabular
+	install = vim-plugin.install
+	arch = any
+	license = custom:BSD 3-Clause
+	makedepends = git
+	depends = vim
+	provides = vim-tabular
+	source = repo::git+https://github.com/godlygeek/tabular.git
+	md5sums = SKIP
+
+pkgname = vim-tabular-git
+
