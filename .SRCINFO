@@ -1,0 +1,17 @@
+pkgbase = python2-cyclone-git
+	pkgdesc = Twisted based Tornado framework clone
+	pkgver = r742.b8d3f1c
+	pkgrel = 1
+	url = http://github.com/fiorix/cyclone
+	arch = any
+	license = apache
+	makedepends = git
+	makedepends = python2-distribute
+	depends = python2-twisted
+	provides = python2-cyclone
+	conflicts = python2-cyclone
+	source = git://github.com/fiorix/cyclone.git
+	md5sums = SKIP
+
+pkgname = python2-cyclone-git
+
