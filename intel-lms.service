@@ -1,0 +1,12 @@
+[Unit]
+Description=Intel Local Manageability Service
+Documentation=https://software.intel.com/en-us/articles/download-the-latest-intel-amt-open-source-drivers/
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/var/run/lms.pid
+ExecStart=/usr/sbin/lms
+
+[Install]
+WantedBy=multi-user.target

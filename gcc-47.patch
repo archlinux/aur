@@ -1,0 +1,11 @@
+diff -ur lms-8.0.0-7.orig lms-8.0.0-7
+--- lms-8.0.0-7.orig/src/tools/ATVersion.cpp 2011-06-29 11:45:54.000000000 +0200
++++ lms-8.0.0-7/src/tools/ATVersion.cpp 2015-02-22 19:08:00.607146747 +0100
+@@ -40,6 +40,7 @@
+ #include <cerrno>
+ #include <fstream>
+ #include <dirent.h>
++#include <unistd.h>
+ 
+ #define AT_VERSION_ARGUMENT "--version"
+ #define AT_VERSION_MAXSIZE 40

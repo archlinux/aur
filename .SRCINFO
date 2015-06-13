@@ -1,0 +1,18 @@
+pkgbase = intel-lms
+	pkgdesc = Intel Local Manageability Service
+	pkgver = 8.0.0.7
+	pkgrel = 1
+	url = https://software.intel.com/en-us/articles/download-the-latest-intel-amt-open-source-drivers/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = gcc-libs
+	source = https://software.intel.com/sites/default/files/lms-8.0.0-7.tar.gz
+	source = intel-lms.service
+	source = gcc-47.patch
+	md5sums = 3cbd027a0e6e9ced8238478b24cde3c6
+	md5sums = d344fa672b31ce6e065ef46d4dabac60
+	md5sums = a6e645b4abe32bfd7206c246a6b9ae83
+
+pkgname = intel-lms
+
