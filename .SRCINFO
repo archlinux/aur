@@ -1,0 +1,15 @@
+pkgbase = libjtopen
+	pkgdesc = Open Source version of the IBM Toolbox for Java, a series of tools to easily access to IBM AS/400 and iSeries data and resources
+	pkgver = 8.5
+	pkgrel = 1
+	url = http://jt400.sourceforge.net/
+	arch = any
+	license = custom
+	depends = java-environment
+	conflicts = jtopen
+	replaces = jtopen
+	source = http://downloads.sourceforge.net/project/jt400/JTOpen-full/8.5/jtopen_8_5.zip
+	sha256sums = 6ed86a818792eeb23dd359a5430f825cd58a784326d6079f04d40ae53e1e0e06
+
+pkgname = libjtopen
+
