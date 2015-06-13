@@ -1,0 +1,14 @@
+pkgbase = ryzom-data
+	pkgdesc = Ryzom game data sync
+	pkgver = 1200
+	pkgrel = 4
+	url = http://www.ryzom.com/
+	arch = any
+	license = CCPL:by-sa
+	depends = rsync
+	provides = ryzom-data
+	source = ryzom_sync
+	md5sums = 7b1172e41d04483ff9d4762662e65a32
+
+pkgname = ryzom-data
+
