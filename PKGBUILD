@@ -1,4 +1,4 @@
-# Maintainer: Denis Kasak <reversed(moc.liamg@kasak.sined)>
+# Maintainer: Denis Kasak <dkasak|AT|termina.org.uk>
 # Contributor: Allan McRae <allan@archlinux.org>
 
 pkgname=gnulib-git
