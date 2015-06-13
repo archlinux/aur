@@ -1,0 +1,26 @@
+pkgbase = python2-pyngl
+	pkgdesc = PyNGL is a Python language module used to visualize scientific visualization and data analysis, with an emphasis on high quality 2D visualizations. A working knowledge of Python is assumed.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = http://www.pyngl.ucar.edu
+	arch = i686
+	arch = x86_64
+	license = custom:PyNGL Source Code License
+	makedepends = glibc
+	makedepends = gcc
+	makedepends = gcc-fortran
+	makedepends = zlib
+	makedepends = libpng
+	makedepends = libx11
+	makedepends = freetype2
+	depends = ncl
+	depends = cairo
+	depends = python2-pynio
+	depends = python2
+	depends = python2-numpy
+	provides = pyngl
+	source = http://dl.dropbox.com/u/3383807/PyNGL-1.4.0.tar.gz
+	md5sums = 12bf3c977619fa065dcfeec9f2b247c9
+
+pkgname = python2-pyngl
+
