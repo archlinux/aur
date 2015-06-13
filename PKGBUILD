@@ -8,6 +8,8 @@ url="https://github.com/nbdsp/pacliner.git"
 license=('GPL')
 groups=()
 depends=('bash','perl')
+optdepends=('pacgraph: package information'
+	    'expack: package information')
 makedepends=('git')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
@@ -23,4 +25,5 @@ md5sums=('SKIP')
 package() {
 	cd "${pkgname}"
 	install -Dm755 "${pkgname}.sh" "$pkgdir/usr/bin/${pkgname}"
+	install -Dm644 "${pkgname}.1" "$pkgdir/usr/share/man/man1/${pkgname}.1"
 }
