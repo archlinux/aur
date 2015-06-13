@@ -1,0 +1,15 @@
+pkgbase = smart-kobold
+	pkgdesc = Kobolds in this roguelike are smarter than your average kobold.
+	pkgver = 002
+	pkgrel = 1
+	url = http://www.zincland.com/7drl/kobold/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = libtcod
+	depends = sdl_mixer
+	source = http://www.zincland.com/7drl/kobold/kobold002.zip
+	md5sums = c2feb1e7202fdd8cf4e740f47faac301
+
+pkgname = smart-kobold
+
