@@ -10,6 +10,7 @@ pkgbase = yaourt-gui
 	optdepends = pacmind: a gtkdialog frontend gui for the package manager, inspired to yaourt-gui
 	optdepends = aurvote: Tool to vote for favorite AUR packages
 	source = http://mirror.alexiobash.com/alexiobash/project/yaourt-gui/yaourt-gui-1.2.tar.gz
+	md5sums = c20bce0f2488193c038952c95d500dfe
 
 pkgname = yaourt-gui
 

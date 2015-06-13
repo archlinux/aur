@@ -13,6 +13,7 @@ optdepends=(
     'aurvote: Tool to vote for favorite AUR packages'
 )
 source=("http://mirror.alexiobash.com/alexiobash/project/yaourt-gui/$pkgname-$pkgver.tar.gz")
+md5sums=('c20bce0f2488193c038952c95d500dfe')
 
 package() {
 	cd $srcdir/$pkgname-$pkgver
