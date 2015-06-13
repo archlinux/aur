@@ -1,0 +1,16 @@
+pkgbase = libxc
+	pkgdesc = library of exchange-correlation functionals for density-functional theory
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = http://www.tddft.org/programs/octopus/wiki/index.php/Libxc
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = gcc
+	makedepends = gcc-fortran
+	options = staticlibs
+	source = http://www.tddft.org/programs/octopus/download/libxc/libxc-2.1.2.tar.gz
+	sha1sums = d77180aac4e452f74608572db1eba0218af8c599
+
+pkgname = libxc
+
