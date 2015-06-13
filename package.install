@@ -1,0 +1,74 @@
+do_install() {
+  update-desktop-database -q
+  # Add libodbc.so.1 symlink
+  if [ ! -e /usr/lib/libodbc.so.1 ]
+  then
+    ln -s libodbc.so /usr/lib/libodbc.so.1
+    echo 'Missing /usr/lib/libodbc.so.1, symlinked libodbc.so.1 => libodbc.so'
+  fi
+  if [ $(uname -m) = 'x86_64' -a ! -e /usr/lib32/libodbc.so.1 ]
+  then
+    ln -s libodbc.so /usr/lib32/libodbc.so.1
+    echo 'Missing /usr/lib32/libodbc.so.1, symlinked libodbc.so.1 => libodbc.so'
+  fi
+
+  # Add libodbcinst.so.1 symlink
+  if [ ! -e /usr/lib/libodbcinst.so.1 ]
+  then
+    ln -s libodbcinst.so /usr/lib/libodbcinst.so.1
+    echo 'Missing /usr/lib/libodbcinst.so.1, symlinked libodbcinst.so.1 => libodbcinst.so'
+  fi
+  if [ $(uname -m) = 'x86_64' -a ! -e /usr/lib32/libodbcinst.so.1 ]
+  then
+    ln -s libodbcinst.so /usr/lib32/libodbcinst.so.1
+    echo 'Missing /usr/lib32/libodbcinst.so.1, symlinked libodbcinst.so.1 => libodbcinst.so'
+  fi
+
+  # Add libXm.so.3 symlink
+  if [ $(uname -m) = 'x86_64' ]
+  then
+    if [ ! -e /usr/lib32/libXm.so.3 ]
+    then
+      ln -s libXm.so /usr/lib32/libXm.so.3
+      echo 'Missing /usr/lib32/libXm.so.3, symlinked libXm.so.3 => libXm.so'
+    fi
+  else
+    if [ ! -e /usr/lib/libXm.so.3 ]
+    then
+      ln -s libXm.so /usr/lib/libXm.so.3
+      echo 'Missing /usr/lib/libXm.so.3, symlinked libXm.so.3 => libXm.so'
+    fi
+  fi
+}
+
+post_install() {
+  echo 'If have just installed the xorg-fonts-75dpi and xorg-fonts-100dpi packages as'
+  echo 'dependencies then you have to restart your X session to use the new fonts.'
+  echo
+  echo 'The localized version of setup5250 and ibm5250 requires the use of a not UTF-8'
+  echo 'locale, like en_US ISO-8859-1 so you need to enable such locale in '
+  echo '/etc/locale.gen and then launch locale-gen (as root).'
+  echo
+  # Register ODBC driver
+  if [ $(uname -m) = 'x86_64' ]
+  then
+    odbcinst -i -d -f /opt/ibm/iSeriesAccess/unixodbcregistration64 > /dev/null
+  else
+    odbcinst -i -d -f /opt/ibm/iSeriesAccess/unixodbcregistration > /dev/null
+  fi
+  do_install
+}
+
+post_upgrade() {
+  do_install
+}
+
+post_remove() {
+  update-desktop-database -q
+
+  odbcinst -u -d -n 'iSeries Access ODBC Driver' > /dev/null
+  if [ $(uname -m) = 'x86_64' ]
+  then
+    odbcinst -u -d -n 'iSeries Access ODBC Driver 64-bit' > /dev/null
+  fi
+}
