@@ -1,0 +1,15 @@
+pkgbase = cpu-monitor-extension-lxpanel-plugin
+	pkgdesc = Adds memory and swap usage to the default cpu usage monitor plugin in lxde panel.
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://github.com/danamlund/cpu-monitor-extension-lxpanel-plugin
+	arch = i686
+	arch = x86_64
+	groups = lxde
+	license = GPL2
+	depends = lxpanel
+	source = https://github.com/danamlund/cpu-monitor-extension-lxpanel-plugin/archive/v1.5.tar.gz
+	md5sums = babca791069c502b977264c2aa0e6f94
+
+pkgname = cpu-monitor-extension-lxpanel-plugin
+
