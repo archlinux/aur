@@ -1,0 +1,14 @@
+pkgbase = pure-meta-base
+	pkgdesc = Pure programming language, base package -- interpreter, standard library, documentation and emacs mode
+	pkgver = 1
+	pkgrel = 1
+	url = http://purelang.bitbucket.org/
+	arch = any
+	groups = pure-meta
+	license = custom
+	depends = pure
+	depends = pure-docs
+	depends = emacs-pure-mode
+
+pkgname = pure-meta-base
+
