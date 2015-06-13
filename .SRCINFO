@@ -1,0 +1,16 @@
+pkgbase = scm
+	pkgdesc = An R5RS Scheme (IEEE P1178). Written in C and runs under many OSes.
+	pkgver = 5f1
+	pkgrel = 2
+	url = http://people.csail.mit.edu/jaffer/SCM
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = slib
+	optdepends = rlwrap: for a decent repl
+	provides = gnu-scm
+	source = http://groups.csail.mit.edu/mac/ftpdir/scm/scm-5f1.zip
+	md5sums = 98be8275f5c69d234c55a8a995a500dd
+
+pkgname = scm
+
