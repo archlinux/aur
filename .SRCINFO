@@ -1,0 +1,17 @@
+pkgbase = garden
+	pkgdesc = Garden of coloured lights, a game by Linley Henzell, is a vertical shoot-em-up that is a piece of art
+	pkgver = 1.0.8
+	pkgrel = 4
+	url = http://garden.sourceforge.net
+	install = garden.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = allegro4
+	depends = hicolor-icon-theme
+	provides = garden
+	source = http://sourceforge.net/projects/garden/files/garden/1.0.8/garden-1.0.8.tar.gz
+	md5sums = 42966f2c457d71a3ff0dd30522801ade
+
+pkgname = garden
+
