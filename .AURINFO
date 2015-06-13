@@ -1,0 +1,16 @@
+pkgbase = perl-hash-merge
+	pkgdesc = Merges arbitrarily deep hashes into a single hash
+	pkgver = 0.200
+	pkgrel = 2
+	url = http://search.cpan.org/dist/Hash-Merge
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	depends = perl-clone
+	source = http://search.cpan.org/CPAN/authors/id/R/RE/REHSACK/Hash-Merge-0.200.tar.gz
+	options = !emptydirs
+
+pkgname = perl-hash-merge
+
