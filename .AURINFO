@@ -1,0 +1,17 @@
+pkgbase = hd-idle-cvs
+	pkgdesc = a utility program for spinning-down external disks
+	pkgver = 20140406
+	pkgrel = 1
+	url = http://hd-idle.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cvs
+	depends = glibc
+	provides = hd-idle
+	conflicts = hd-idle
+	source = hd-idle.service
+	backup = etc/conf.d/hd-idle
+
+pkgname = hd-idle-cvs
+
