@@ -1,0 +1,18 @@
+pkgbase = eminent-awesome34-git
+	pkgdesc = Effortless wmii-style dynamic tagging for the awesome window manager version 3.4
+	pkgver = 2010.10.06.gf7a4803
+	pkgrel = 2
+	url = http://git.glacicle.org/eminent
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = lua
+	depends = awesome34
+	provides = eminent
+	conflicts = eminent
+	source = git://github.com/GGLucas/eminent.git
+	md5sums = SKIP
+
+pkgname = eminent-awesome34-git
+
