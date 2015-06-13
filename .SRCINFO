@@ -1,0 +1,19 @@
+pkgbase = bootp
+	pkgdesc = A BOOTP server
+	pkgver = 2.4.3_18
+	pkgrel = 1
+	url = http://packages.ubuntu.com/trusty/bootp
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glibc
+	backup = etc/bootptab
+	source = http://archive.ubuntu.com/ubuntu/pool/universe/b/bootp/bootp_2.4.3.orig.tar.gz
+	source = http://archive.ubuntu.com/ubuntu/pool/universe/b/bootp/bootp_2.4.3-18.diff.gz
+	source = LICENSE
+	md5sums = 2a12d862f11908acf84652387be4e03b
+	md5sums = 27ca3263bc57db7635851ce1599e0ee9
+	md5sums = 73d382f2d16e5e7e5306bbca14062613
+
+pkgname = bootp
+
