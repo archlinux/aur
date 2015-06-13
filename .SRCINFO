@@ -1,0 +1,33 @@
+pkgbase = ruby-veewee
+	pkgdesc = A tool for building custom Vagrant base boxes and virtual machine images.
+	pkgver = 0.4.5.1
+	pkgrel = 1
+	url = https://github.com/jedi4ever/veewee
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-ansi-1.3
+	depends = ruby-childprocess
+	depends = ruby-fission
+	depends = ruby-fog>=1.8
+	depends = ruby-grit
+	depends = ruby-highline
+	depends = ruby-json
+	depends = ruby-mime-types-1>=1.16
+	depends = ruby-i18n
+	depends = ruby-net-ssh>=2.2.0
+	depends = ruby-os>=0.9.6
+	depends = ruby-popen4>=0.1.2
+	depends = ruby-progressbar
+	depends = ruby-ruby-vnc-1.0
+	depends = ruby-ruby-vnc>=1.0.0
+	depends = ruby-thor>=0.15
+	depends = ruby-to_slug
+	provides = veewee
+	conflicts = veewee
+	noextract = veewee-0.4.5.1.gem
+	source = http://rubygems.org/downloads/veewee-0.4.5.1.gem
+	sha512sums = 06e4bdca3d8efc92677662329a1efa047c6e0cf777721dcaaffe2a437f4b4ad523bca93cdbaf2f6f21fa95f56896e69d449b3ab86d1152b15efa517192564ac8
+
+pkgname = ruby-veewee
+
