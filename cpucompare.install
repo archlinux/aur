@@ -1,0 +1,13 @@
+post_install() {
+    xdg-icon-resource forceupdate
+    xdg-desktop-menu forceupdate
+}
+
+post_update() {
+    post_install
+}
+
+post_remove() {
+    post_install
+}
+
