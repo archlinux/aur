@@ -1,0 +1,11 @@
+pkgbase = cheat
+	pkgdesc = A minimal unit testing framework for the C programming language.
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/Tuplanolla/cheat
+	arch = any
+	license = BSD
+	source = https://github.com/Tuplanolla/cheat/archive/1.0.3.tar.gz
+
+pkgname = cheat
+
