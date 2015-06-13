@@ -1,0 +1,5 @@
+KERNEL=="gpib[0-9]*", SUBSYSTEM=="gpib_common", MODE="0660", GROUP="gpib"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="3923", ATTRS{idProduct}=="709b", RUN+="/usr/bin/gpib_config --minor 0"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="3923", ATTRS{idProduct}=="702a", RUN+="/usr/bin/gpib_config --minor 0"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="0957", ATTRS{idProduct}=="0107", RUN+="/usr/bin/gpib_config --minor 0"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="0957", ATTRS{idProduct}=="0718", RUN+="/usr/bin/gpib_config --minor 0"

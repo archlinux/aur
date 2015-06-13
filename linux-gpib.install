@@ -1,0 +1,17 @@
+post_install() {
+/bin/cat << EOF
+===> You must load gpib modules manually before starting gpib_config
+===> For example:
+===> # modprobe ni_usb_gpib
+EOF
+    depmod $(uname -r)
+}
+
+post_upgrade() {
+    depmod $(uname -r)
+    echo 'In order to use the new version, reload all gpib modules manually.'
+}
+
+post_remove() {
+    depmod $(uname -r)
+}

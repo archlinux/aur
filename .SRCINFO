@@ -1,0 +1,26 @@
+pkgbase = linux-gpib
+	pkgdesc = A support package for GPIB (IEEE 488) hardware.
+	pkgver = 3.2.21
+	pkgrel = 7
+	url = http://linux-gpib.sourceforge.net/
+	install = linux-gpib.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = perl
+	makedepends = linux-headers
+	makedepends = bison
+	depends = bash
+	depends = linux>=4.0
+	depends = linux<4.1
+	source = http://downloads.sourceforge.net/project/linux-gpib/linux-gpib%20for%203.x.x%20and%202.6.x%20kernels/3.2.21/linux-gpib-3.2.21.tar.gz
+	source = gpib_build.patch
+	source = linux_api_3.19.patch
+	source = 99-gpib.rules
+	md5sums = 91e15d1a30c6e3fd79fc6762e8c1120e
+	md5sums = 70e4d8fcdf37cb0db61fd515b1d49651
+	md5sums = 842cc665ec1286276dbd413914d276c4
+	md5sums = e57d143633ca8b66b9905d02b657419c
+
+pkgname = linux-gpib
+
