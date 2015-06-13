@@ -1,0 +1,19 @@
+pkgbase = minestein
+	pkgdesc = A version of the famous Minesweeper game which will always produce puzzles that can be solved using logic.
+	pkgver = 1
+	pkgrel = 10
+	url = http://sourgumdrop.org.uk/minestein_1.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = unzip
+	depends = glibc
+	depends = python2
+	depends = tk
+	source = Minestein.zip
+	source = minestein.desktop
+	md5sums = 636769163002a521bcf884bd40bc7e73
+	md5sums = 3a01e2b1acba45e4404a80f6eeac7e89
+
+pkgname = minestein
+

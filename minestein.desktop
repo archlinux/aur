@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Minestein
+GenericName=Minestein
+Comment=A version of the famous Minesweeper game which will always produce puzzles that can be solved using logic
+Icon=minestein.png
+Exec=minestein
+Categories=Game;LogicGame
