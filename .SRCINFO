@@ -1,0 +1,19 @@
+pkgbase = graphclust
+	pkgdesc = structural clustering of RNA sequences
+	pkgver = 0.7.6
+	pkgrel = 2
+	url = http://www.bioinf.uni-freiburg.de/Software/GraphClust/
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	depends = infernal>=1.0.2
+	depends = infernal<1.1
+	depends = rnaz
+	depends = rnashapes
+	depends = zlib
+	depends = cmfinder
+	source = http://www.bioinf.uni-freiburg.de/Software/GraphClust/GraphClust-0.7.6.tar.gz
+	md5sums = e8a2a0ad87a36accc0bbcfac09b4ff78
+
+pkgname = graphclust
+
