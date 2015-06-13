@@ -1,0 +1,11 @@
+--- moneydance.desktop.old	2013-01-23 13:12:49.821414467 +0100
++++ moneydance.desktop	2013-01-23 13:12:58.194702439 +0100
+@@ -2,7 +2,7 @@
+ Version=1.0
+ Terminal=false
+ Exec=moneydance
+-Icon=moneydance_icon512.png
++Icon=moneydance.png
+ Type=Application
+ Categories=Application;Office;
+ StartupNotify=false
