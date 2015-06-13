@@ -1,0 +1,20 @@
+pkgbase = hdf-eos2
+	pkgdesc = The HDF-EOS2 is a software library designed built on HDF4 to support EOS-specific data structures, namely Grid, Point, and Swath.
+	pkgver = 2.19
+	pkgrel = 3
+	url = http://www.hdfeos.org/software/library.php
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = szip
+	depends = hdf5
+	depends = hdf4-nonetcdf
+	depends = gdal
+	depends = hdf-eos-common
+	options = libtool
+	options = staticlibs
+	source = ftp://edhs1.gsfc.nasa.gov/edhs/hdfeos/latest_release/HDF-EOS2.19v1.00.tar.Z
+	md5sums = b8648484fc78a2db7073dd603f3fb251
+
+pkgname = hdf-eos2
+
