@@ -1,0 +1,16 @@
+pkgbase = netwox
+	pkgdesc = Toolbox netwox helps to find and solve network problems.
+	pkgver = 5.39.0
+	pkgrel = 1
+	url = http://www.laurentconstantin.com/en/netw/netwox/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = netwib
+	makedepends = libnet
+	depends = libpcap
+	source = http://netcologne.dl.sourceforge.net/project/ntwox/netwox%20only/5.39/netwox-5.39.0-src.tgz
+	md5sums = 1bf65761b39fa8328f2d072fa526edce
+
+pkgname = netwox
+
