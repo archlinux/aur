@@ -2,9 +2,8 @@
 # Contributor: skydrome <skydrome@i2pmail.org>
 
 pkgname=('rutorrent-git')
-pkgver=r1464.961d9bd
-pkgrel=1
-epoch=1
+pkgver=r1526.74f207a
+pkgrel=2
 pkgdesc="Web frontend to rTorrent in PHP designed to resemble uTorrent"
 url="https://github.com/Novik/ruTorrent"
 license=('GPL')
@@ -13,12 +12,9 @@ arch=('any')
 install=rutorrent.install
 options=(!strip)
 
-depends=('php' 'curl')
+depends=('php' 'curl' 'mktorrent')
 makedepends=('git' 'subversion')
-optdepends=('mktorrent: create torrent files with mktorrent'
-            'buildtorrent: create torrent files with buildtorrent'
-            'transmission-cli: create torrent files with transmission'
-            'php-geoip: enable geoip plugin'
+optdepends=('php-geoip: enable geoip plugin'
             'geoip: enable geoip plugin'
             'unrar: enable unpack plugin'
             'unzip: enable unpack plugin')
@@ -31,7 +27,7 @@ backup=("${_webdir}/rutorrent/conf/config.php"
         "${_webdir}/rutorrent/conf/access.ini"
         "${_webdir}/rutorrent/conf/plugins.ini")
 
-_plugins=('chat' 'filemanager' 'fileshare' 'fileupload' 'mediastream' 'titlebar')
+_plugins=('filemanager' 'fileshare' 'fileupload' 'mediastream' 'titlebar')
 
 source=("plugins.ini"
         "https://raw.githubusercontent.com/weixiyen/jquery-filedrop/master/jquery.filedrop.js"
@@ -40,12 +36,10 @@ source=("plugins.ini"
         "filemanager::svn+http://svn.rutorrent.org/svn/filemanager/trunk/filemanager"
         "fileshare::svn+http://svn.rutorrent.org/svn/filemanager/trunk/fileshare"
         "fileupload::svn+http://svn.rutorrent.org/svn/filemanager/trunk/fileupload"
-        "mediastream::svn+http://svn.rutorrent.org/svn/filemanager/trunk/mediastream"
-        "chat::svn+https://rutorrent-chat.googlecode.com/svn/trunk")
+        "mediastream::svn+http://svn.rutorrent.org/svn/filemanager/trunk/mediastream")
 
 md5sums=('a3efa833b362ac7f3ff69ddaa720de81'
          '020b0c3fc1220d490992473a75485add'
-         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -68,6 +62,24 @@ prepare() {
         -e "s:\$topDirectory .*:\$topDirectory = '/home';:" \
         -e "s:\$XMLRPCMountPoint .*:\$XMLRPCMountPoint = \"/rutorrent/RPC1\";:" \
         -e "s:\$tempDirectory .*:\$tempDirectory = '/${_webdir}/rutorrent/tmp';:"
+
+
+    for i in php stat curl id gzip; do
+        sed -i conf/config.php \
+            -e "s:\"$i\".*=> ''.*:\"$i\"   => \'$(which $i)\',:"
+    done
+
+    for i in rar zip unzip unrar tar; do
+        sed -i ../filemanager/conf.php \
+            -e "s:\$pathToExternals\['$i'\] = '':\$pathToExternals\['$i'\] = '$(which $i)':"
+        sed -i plugins/unpack/conf.php \
+            -e "s:\$pathToExternals\['$i'\] = '':\$pathToExternals\['$i'\] = '$(which $i)':"
+    done
+
+    sed -i plugins/create/conf.php \
+        -e "s:\$useExternal = false:\$useExternal = true:" \
+        -e "s:\$pathToCreatetorrent = '':\$pathToCreatetorrent = '$(which mktorrent)':"
+
     sed -i php/settings.php \
         -e "s:'/tmp:'/${_webdir}/rutorrent/tmp/:"
 
