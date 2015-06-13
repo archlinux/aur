@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Crates
+GenericName=Crates
+Comment=Challenging and fun three dimensional puzzle game.
+Exec=/usr/bin/crates.sh
+Categories=Game;ArcadeGame;
+Icon=crates.ico
