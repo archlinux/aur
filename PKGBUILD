@@ -1,5 +1,5 @@
+# Maintainer: Denis Kasak <dkasak|AT|termina.org.uk>
 # Submitter: Damir Jelic <poljarinho@gmail.com>
-# Maintainer: Denis Kasak <reversed(ku.gro.animret@kasakd)>
 _pack=nnet
 pkgname=octave-$_pack
 pkgver=0.1.13
