@@ -1,0 +1,19 @@
+pkgbase = mkdn-git
+	pkgdesc = Markdown previewer
+	pkgver = 2e43ac2
+	pkgrel = 1
+	url = https://github.com/rupa/mkdn
+	arch = any
+	license = custom:WTFPL
+	makedepends = git
+	depends = pywebkitgtk
+	depends = python2-markdown
+	conflicts = python2-mkdn-git
+	replaces = python2-mkdn-git
+	source = mkdn::git://github.com/rupa/mkdn
+	source = license::http://www.wtfpl.net/txt/copying/
+	md5sums = SKIP
+	md5sums = 8365d07beeb5f39d87e846dca3ae7b64
+
+pkgname = mkdn-git
+
