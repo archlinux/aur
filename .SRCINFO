@@ -1,0 +1,14 @@
+pkgbase = docx2txt
+	pkgdesc = Recovers text from DOCX files, with good formatting.
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://docx2txt.sourceforge.net
+	arch = any
+	license = GPL
+	depends = perl
+	depends = unzip
+	source = http://downloads.sourceforge.net/docx2txt/docx2txt-1.4.tgz
+	md5sums = 780f468c16d547b02723b98aadc52c63
+
+pkgname = docx2txt
+
