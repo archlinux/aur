@@ -1,0 +1,30 @@
+pkgbase = easymp3gain-gtk2
+	pkgdesc = GTK2 Graphical User Interface (GUI) for MP3Gain, VorbisGain and AACGain
+	pkgver = 0.5.0
+	pkgrel = 8
+	url = http://easymp3gain.sourceforge.net/
+	install = easymp3gain.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = lazarus
+	depends = gtk2
+	optdepends = mp3gain: for MP3 support
+	optdepends = vorbisgain: for OGG support
+	optdepends = aacgain: for AAC suport
+	conflicts = easymp3gain-gtk2-bin
+	conflicts = easymp3gain-qt4
+	conflicts = easymp3gain-qt4-bin
+	source = http://downloads.sourceforge.net/project/easymp3gain/easymp3gain%20source/easymp3gain-0.5.0/easymp3gain-0.5.0.src.tar.gz
+	source = bug_3556716.patch
+	source = fix_missing_overload_on_AddTask.diff
+	source = fix_missing_LazarusDir.diff
+	source = environmentoptions.xml
+	md5sums = b89c3a49ac571eed19b0985990749419
+	md5sums = 1611000e9b03b0539619c28dab30bde2
+	md5sums = 518ae86ddd399d1c81e720fa94821a76
+	md5sums = 36e61f07c3319c343d26519f2be4e5d4
+	md5sums = c44d393470cabf301543332fce365348
+
+pkgname = easymp3gain-gtk2
+

@@ -1,0 +1,16 @@
+diff -aur easymp3gain-0.5.0.orig/make.sh easymp3gain-0.5.0/make.sh
+--- easymp3gain-0.5.0.orig/make.sh	2009-12-30 17:14:08.000000000 +0100
++++ easymp3gain-0.5.0/make.sh	2013-06-12 01:05:00.070560109 +0200
+@@ -30,10 +30,10 @@
+ mkdir -p ./bin/qt4
+ mkdir -p ./bin/gtk2
+ if [ "$WIDGET" == "qt4" ]; then
+-lazbuild -B --ws=qt easymp3gain.lpr
++lazbuild -B --ws=qt --primary-config-path=lazarus-build easymp3gain.lpr
+ mv ./bin/easymp3gain ./bin/qt4/
+ else
+-lazbuild -B --ws=gtk2 easymp3gain.lpr
++lazbuild -B --ws=gtk2 --primary-config-path=lazarus-build easymp3gain.lpr
+ mv ./bin/easymp3gain ./bin/gtk2/
+ fi
+ 

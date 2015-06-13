@@ -1,0 +1,11 @@
+diff -aur easymp3gain-0.5.0.pristine/easymp3gain.lpi easymp3gain-0.5.0/easymp3gain.lpi
+--- easymp3gain-0.5.0.pristine/easymp3gain.lpi	2012-08-12 16:19:33.146704395 +0000
++++ easymp3gain-0.5.0/easymp3gain.lpi	2012-08-12 16:20:33.650039836 +0000
+@@ -490,7 +490,6 @@
+     </Parsing>
+     <CodeGeneration>
+       <SmartLinkUnit Value="True"/>
+-      <TargetCPU Value="x86_64"/>
+       <TargetOS Value="Linux"/>
+     </CodeGeneration>
+     <Linking>

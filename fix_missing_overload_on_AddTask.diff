@@ -1,0 +1,12 @@
+diff -aur easymp3gain-0.5.0.orig/unitmain.pas easymp3gain-0.5.0/unitmain.pas
+--- easymp3gain-0.5.0.orig/unitmain.pas	2009-12-30 23:19:56.000000000 +0100
++++ easymp3gain-0.5.0/unitmain.pas	2013-05-31 00:16:24.991257996 +0200
+@@ -169,7 +169,7 @@
+     procedure AddFileAndDirectoryList(SL: TStringList; sublevels: Integer);
+     procedure UpdateFileCount;
+     procedure SortListView(Lv:TListView; Index:integer; Reverse: Boolean);
+-    function AddTask(ASongItem: TSongItem; AMediaGainAction: TMediaGainAction; AVolume: Double): Integer;
++    function AddTask(ASongItem: TSongItem; AMediaGainAction: TMediaGainAction; AVolume: Double): Integer; overload;
+     function FitsTaskType(ATask: TMediaGainTask; AMediaGainAction: TMediaGainAction; ASongItem: TSongItem): Boolean;
+     { private declarations }
+   public
