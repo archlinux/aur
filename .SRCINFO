@@ -1,0 +1,21 @@
+pkgbase = asignify-git
+	pkgdesc = Yet another signify tool
+	pkgver = 20150220
+	pkgrel = 1
+	url = https://github.com/vstakhov/asignify
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = binutils
+	makedepends = gcc
+	makedepends = git
+	makedepends = make
+	makedepends = pkg-config
+	depends = openssl
+	provides = asignify
+	conflicts = asignify
+	source = git+https://github.com/vstakhov/asignify
+	sha256sums = SKIP
+
+pkgname = asignify-git
+
