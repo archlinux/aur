@@ -1,7 +1,7 @@
 pkgbase = passwordsafe
 	pkgdesc = Simple & Secure Password Management
-	pkgver = 0.95.1BETA
-	pkgrel = 3
+	pkgver = 0.96BETA
+	pkgrel = 1
 	url = http://sourceforge.net/projects/passwordsafe/
 	install = passwordsafe.install
 	arch = i686
@@ -19,12 +19,10 @@ pkgbase = passwordsafe
 	conflicts = passwordsafe-debian
 	conflicts = passwordsafe-git
 	conflicts = pwsafe
-	source = http://downloads.sourceforge.net/project/passwordsafe/Linux-BETA/0.95.1/pwsafe-0.95.1BETA-src.tgz
-	source = http://downloads.sourceforge.net/project/passwordsafe/Linux-BETA/0.95.1/pwsafe-0.95.1BETA-src.tgz.sig
-	source = 0001-Fix-for-Fedora-22-applicable-to-all-Linux-builds.patch
-	md5sums = e3e3429d08789b6bde6270d1e6a91608
+	source = http://downloads.sourceforge.net/project/passwordsafe/Linux-BETA/0.96/pwsafe-0.96BETA-src.tgz
+	source = http://downloads.sourceforge.net/project/passwordsafe/Linux-BETA/0.96/pwsafe-0.96BETA-src.tgz.sig
+	md5sums = 0da54dd106895e18dcff5ed370843884
 	md5sums = SKIP
-	md5sums = 2f8e962b4437f72c88493ede8cf6fcf5
 
 pkgname = passwordsafe
 

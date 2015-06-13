@@ -2,9 +2,9 @@
 
 _pkgname=pwsafe
 pkgname=passwordsafe
-_pkgver=0.95.1
+_pkgver=0.96
 pkgver="$_pkgver"BETA
-pkgrel=3
+pkgrel=1
 pkgdesc="Simple & Secure Password Management"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/passwordsafe/"
@@ -14,18 +14,15 @@ depends=('libxtst' 'wxgtk' 'webkitgtk2' 'ykpers' 'xerces-c')
 makedepends=('git' 'zip' 'libxt')
 optdepends=('xvkbd: virtual-keyboard support')
 conflicts=('passwordsafe-debian' 'passwordsafe-git' 'pwsafe')
-source=(http://downloads.sourceforge.net/project/$pkgname/Linux-BETA/$_pkgver/$_pkgname-$pkgver-src.tgz{,.sig}
-	0001-Fix-for-Fedora-22-applicable-to-all-Linux-builds.patch)
+source=(http://downloads.sourceforge.net/project/$pkgname/Linux-BETA/$_pkgver/$_pkgname-$pkgver-src.tgz{,.sig})
 
 install='passwordsafe.install'
 validpgpkeys=('A703C1328EABC7B201753BA3919464515CCF8BB3')  #Rony Shapiro
-md5sums=('e3e3429d08789b6bde6270d1e6a91608'
-         'SKIP'
-         '2f8e962b4437f72c88493ede8cf6fcf5')
+md5sums=('0da54dd106895e18dcff5ed370843884'
+         'SKIP')
 
 prepare() {
 	cd "$_pkgname-$pkgver"
-	patch -p1 -i ../0001-Fix-for-Fedora-22-applicable-to-all-Linux-builds.patch
 }
 
 build() {
