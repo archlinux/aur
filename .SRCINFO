@@ -1,0 +1,15 @@
+pkgbase = silence
+	pkgdesc = An information management tool.
+	pkgver = 0.2.1
+	pkgrel = 2
+	url = http://silence.sekalura.net
+	arch = i686
+	arch = x86_64
+	license = GPL2 only
+	makedepends = cmake
+	depends = kdebase-runtime
+	source = http://silence.sekalura.net/silence-0.2.1.tar.gz
+	md5sums = b69d906abf321e29c3b8957e4fd4b9cb
+
+pkgname = silence
+
