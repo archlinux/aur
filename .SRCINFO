@@ -1,0 +1,20 @@
+pkgbase = gnocl-gconf
+	pkgdesc = Tcl/GTK+ bindings, GnoclGconf module
+	pkgver = 0.9.95
+	pkgrel = 1
+	url = http://www.gnocl.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gnocl
+	depends = tcl
+	depends = gtk2
+	depends = libglade
+	depends = libgnomeui
+	source = https://launchpad.net/~dr-graef/+archive/gnocl.precise/+files/gnocl-gconf_0.9.95.orig.tar.gz
+	source = gnocl-gconf-0.9.95.patch
+	md5sums = 67e59d0cf87b537debfca38d83e27dad
+	md5sums = 436a48474e9f28abf403c6659744cd99
+
+pkgname = gnocl-gconf
+

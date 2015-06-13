@@ -1,0 +1,126 @@
+diff -rupN gnoclGconf-0.9.95.orig/demo/testGConf.tcl gnoclGconf-0.9.95/demo/testGConf.tcl
+--- gnoclGconf-0.9.95.orig/demo/testGConf.tcl	2010-04-21 12:28:54.000000000 +0200
++++ gnoclGconf-0.9.95/demo/testGConf.tcl	2013-09-10 00:16:09.968464279 +0200
+@@ -1,3 +1,7 @@
++#!/bin/sh
++# the next line restarts using tclsh \
++exec tclsh "$0" "$@"
++
+ #---------------
+ # testGConf.tcl
+ #---------------
+@@ -5,10 +9,6 @@
+ # 06-Dec-2009
+ #---------------
+ 
+-#!/bin/sh
+-# the next line restarts using tclsh \
+-exec tclsh "$0" "$@"
+-
+ package require Gnocl
+ package require GnoclGconf
+ 
+diff -rupN gnoclGconf-0.9.95.orig/src/Makefile gnoclGconf-0.9.95/src/Makefile
+--- gnoclGconf-0.9.95.orig/src/Makefile	2010-04-21 12:28:54.000000000 +0200
++++ gnoclGconf-0.9.95/src/Makefile	2013-09-10 00:17:09.925134248 +0200
+@@ -19,7 +19,7 @@ DEFINE:= "NONE"
+ CFLAGS += -D$(DEFINE) -Wall -pedantic -fPIC -w
+ 
+ TCL_VERSION := $(shell echo 'puts $$tcl_version' | tclsh)
+-GNOCL_VERSION := 0.9.95
++GNOCL_VERSION := 0.9.96
+ 
+ ADDCFLAGS := -DVERSION=\"$(VERSION)\" \
+     -DUSE_TCL_STUBS $(shell pkg-config --cflags gtk+-2.0 libgnomeui-2.0) \
+@@ -27,9 +27,18 @@ ADDCFLAGS := -DVERSION=\"$(VERSION)\" \
+     -I/usr/include/libglade-2.0 \
+     -I/usr/local/include
+ 
+-LIBS := $(shell pkg-config \
+-    --libs gtk+-2.0 libgnomeui-2.0 ) \
+-    -ltclstub$(TCL_VERSION) -lgnocl-$(GNOCL_VERSION)
++# Note that linking against libgnocl.a doesn't work, as there are some global
++# data structures in gnocl (e.g., the global widget hash table) which need to
++# be shared between gnocl and the different addon modules. To work around this
++# problem, we simply link against the installed gnocl.so Tcl module instead.
++
++#LIBS := -Wl,--no-as-needed $(shell pkg-config \
++#    --libs gtk+-2.0 libglade-2.0 libgnomeui-2.0 ) \
++#    -ltclstub$(TCL_VERSION) -lgnocl-$(GNOCL_VERSION)
++
++LIBS := /usr/lib/tcl8.6/gnocl$(GNOCL_VERSION)/gnocl.so \
++    $(shell pkg-config --libs gtk+-2.0 libglade-2.0 libgnomeui-2.0 ) \
++    -ltclstub$(TCL_VERSION)
+ 
+ GTK_OBJ := \
+    gnoclGconf.o
+@@ -54,10 +63,10 @@ clean:
+ 
+ 
+ install:
+-	./install.tcl $(PACKAGE_REQUIRE_NAME) $(VERSION) $(PACKAGE_NAME) install
++	./install.tcl $(PACKAGE_REQUIRE_NAME) $(VERSION) $(PACKAGE_NAME) install $(DESTDIR)
+ 
+ uninstall:
+-	./install.tcl $(PACKAGE_REQUIRE_NAME) $(VERSION) $(PACKAGE_NAME) uninstall
++	./install.tcl $(PACKAGE_REQUIRE_NAME) $(VERSION) $(PACKAGE_NAME) uninstall $(DESTDIR)
+ 
+ test:
+ 	( \
+diff -rupN gnoclGconf-0.9.95.orig/src/install.tcl gnoclGconf-0.9.95/src/install.tcl
+--- gnoclGconf-0.9.95.orig/src/install.tcl	2010-04-21 00:37:20.000000000 +0200
++++ gnoclGconf-0.9.95/src/install.tcl	2013-09-10 00:16:52.611799962 +0200
+@@ -36,13 +36,13 @@ proc date { {i date} } {
+ }
+ 
+ # error checking
+-if { $argc != 4 } {
++if { $argc < 4 || $argc > 5 } {
+    set name [file tail $argv0]
+    error "Wrong number of args.\nUsage: $name package version install/uninstall"
+ }
+ 
+ # get parameters
+-foreach {package version name what} $argv { break }
++foreach {package version name what dest} $argv { break }
+ 
+ # get installation directory
+ set dir [info library]
+@@ -51,7 +51,7 @@ set dir [info library]
+ set destDir [file join $dir $name$version]
+ switch -- $what {
+    "install"   {
+-       if { [file exists $destDir] } {
++       if { [file exists $dest$destDir] } {
+            puts "$destDir exists already. Aborting installation."
+            exit -1
+            }
+@@ -70,20 +70,20 @@ switch -- $what {
+            puts $fp "package ifneeded $package $version \[list load \[file join \$dir $name.so\]\]"
+            close $fp
+            puts "Creating $destDir"
+-           file mkdir $destDir
++           file mkdir $dest$destDir
+            set files [glob *.so]
+            lappend files pkgIndex.tcl
+            foreach file $files {
+                puts "Copying $file"
+-               file copy $file $destDir
++               file copy $file $dest$destDir
+                }
+         }
+    "uninstall" {
+-                  puts "Deleting $destDir"
+-                  file delete -force $destDir
+-               }
+-   default     {
+-                  error "unknown type \"$what\" must be install, test or uninstall"
+-               }
++       puts "Deleting $destDir"
++       file delete -force $dest$destDir
++       }
++   default {
++       error "unknown type \"$what\" must be install, test or uninstall"
++       }
+ }
+ 
