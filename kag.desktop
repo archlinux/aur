@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=King Arthur's Gold
+Comment=Game to build castles and destroy your enemies, inspired by Soldat and Minecraft
+Exec=kag
+Icon=kag
+Terminal=false
+StartupNotify=false
+Categories=Game;ArcadeGame;

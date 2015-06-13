@@ -1,0 +1,28 @@
+pkgbase = kag
+	pkgdesc = King Arthur's Gold Classic is a game about building castles and destroying your enemies (inspired by Soldat and Minecraft)
+	pkgver = 0.91A
+	pkgrel = 2
+	url = http://kag2d.com/
+	install = kag.install
+	arch = any
+	license = custom
+	depends = desktop-file-utils
+	depends = xdg-utils
+	depends = libgl
+	depends = freetype2
+	depends = libstdc++5
+	depends = libpng15
+	conflicts = kag
+	source = http://dl.kag2d.com/kag-linux32-latest.tar.gz
+	source = kag
+	source = kag.desktop
+	source = irrlicht_1_32x32x24.png
+	source = LICENSE
+	md5sums = 097a49c01c162ff1edb7ffef9dc5d06a
+	md5sums = 4b26f563e978acee99d4fe91e28b368c
+	md5sums = 3d3b3ea71998582cc88269d3f2da4863
+	md5sums = 81f2bae53e67f9220802b1187b8f398f
+	md5sums = 35cae9aeae1c2d561677230795d0d827
+
+pkgname = kag
+
