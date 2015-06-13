@@ -1,0 +1,88 @@
+diff -up qtwebkit-opensource-src-5.0.1/Source/JavaScriptCore/JavaScriptCore.pri.debuginfo qtwebkit-opensource-src-5.0.1/Source/JavaScriptCore/JavaScriptCore.pri
+--- qtwebkit-opensource-src-5.0.1/Source/JavaScriptCore/JavaScriptCore.pri.debuginfo	2013-01-29 13:03:49.000000000 -0600
++++ qtwebkit-opensource-src-5.0.1/Source/JavaScriptCore/JavaScriptCore.pri	2013-02-23 13:54:22.578460045 -0600
+@@ -7,6 +7,12 @@
+ 
+ SOURCE_DIR = $${ROOT_WEBKIT_DIR}/Source/JavaScriptCore
+ 
++#equals(QT_ARCH, s390)|equals(QT_ARCH, arm)|equals(QT_ARCH, mips)|equals(QT_ARCH, i386)|equals(QT_ARCH, i686)|equals(QT_ARCH, x86_64) {
++#    message("JavaScriptCore workaround for QtWebkit: do not build with -g, but with -g1")
++#    QMAKE_CXXFLAGS -= -g
++#    QMAKE_CXXFLAGS += -g1
++#}
++
+ JAVASCRIPTCORE_GENERATED_SOURCES_DIR = $${ROOT_BUILD_DIR}/Source/JavaScriptCore/$${GENERATED_SOURCES_DESTDIR}
+ 
+ INCLUDEPATH += \
+diff -up qtwebkit-opensource-src-5.0.1/Source/WebCore/WebCore.pri.debuginfo qtwebkit-opensource-src-5.0.1/Source/WebCore/WebCore.pri
+--- qtwebkit-opensource-src-5.0.1/Source/WebCore/WebCore.pri.debuginfo	2013-01-29 13:03:41.000000000 -0600
++++ qtwebkit-opensource-src-5.0.1/Source/WebCore/WebCore.pri	2013-02-23 13:57:16.984279672 -0600
+@@ -7,6 +7,12 @@
+ 
+ SOURCE_DIR = $${ROOT_WEBKIT_DIR}/Source/WebCore
+ 
++equals(QT_ARCH, s390)|equals(QT_ARCH, arm)|equals(QT_ARCH, mips)|equals(QT_ARCH, i386)|equals(QT_ARCH, i686)|equals(QT_ARCH, x86_64) {
++    message("WebCore workaround for QtWebkit: do not build with -g, but with -g1")
++    QMAKE_CXXFLAGS -= -g
++    QMAKE_CXXFLAGS += -g1
++}
++
+ QT *= network sql core-private gui-private
+ 
+ WEBCORE_GENERATED_SOURCES_DIR = $${ROOT_BUILD_DIR}/Source/WebCore/$${GENERATED_SOURCES_DESTDIR}
+@@ -302,6 +308,7 @@
+ unix:!mac:*-g++*:QMAKE_CXXFLAGS += -fdata-sections
+ unix:!mac:*-g++*:QMAKE_LFLAGS += -Wl,--gc-sections
+ linux*-g++*:QMAKE_LFLAGS += $$QMAKE_LFLAGS_NOUNDEF
++win32:!equals(QT_ARCH, powerpc):!equals(QT_ARCH, s390):!equals(QT_ARCH, mips):!equals(QT_ARCH, arm):QMAKE_LFLAGS += -Wl,--no-keep-memory -Wl,--reduce-memory-overheads
+ 
+ enable_fast_mobile_scrolling: DEFINES += ENABLE_FAST_MOBILE_SCROLLING=1
+ 
+diff -up qtwebkit-opensource-src-5.0.1/Source/WebKit2/WebKit2.pri.debuginfo qtwebkit-opensource-src-5.0.1/Source/WebKit2/WebKit2.pri
+--- qtwebkit-opensource-src-5.0.1/Source/WebKit2/WebKit2.pri.debuginfo	2013-01-29 13:03:39.000000000 -0600
++++ qtwebkit-opensource-src-5.0.1/Source/WebKit2/WebKit2.pri	2013-02-23 13:54:22.579460033 -0600
+@@ -9,6 +9,12 @@ SOURCE_DIR = $${ROOT_WEBKIT_DIR}/Source/
+ 
+ WEBKIT2_GENERATED_SOURCES_DIR = $${ROOT_BUILD_DIR}/Source/WebKit2/$${GENERATED_SOURCES_DESTDIR}
+ 
++#equals(QT_ARCH, s390)|equals(QT_ARCH, arm)|equals(QT_ARCH, mips)|equals(QT_ARCH, i386)|equals(QT_ARCH, i686)|equals(QT_ARCH, x86_64) {
++#    message("WebKit2 workaround for QtWebkit: do not build with -g, but with -g1")
++#    QMAKE_CXXFLAGS -= -g
++#    QMAKE_CXXFLAGS += -g1
++#}
++
+ INCLUDEPATH += \
+     $$SOURCE_DIR \
+     $$SOURCE_DIR/Platform \
+diff -up qtwebkit-opensource-src-5.0.1/Source/WebKit/WebKit1.pri.debuginfo qtwebkit-opensource-src-5.0.1/Source/WebKit/WebKit1.pri
+--- qtwebkit-opensource-src-5.0.1/Source/WebKit/WebKit1.pri.debuginfo	2013-01-29 13:03:54.000000000 -0600
++++ qtwebkit-opensource-src-5.0.1/Source/WebKit/WebKit1.pri	2013-02-23 13:54:22.579460033 -0600
+@@ -7,6 +7,12 @@
+ 
+ SOURCE_DIR = $${ROOT_WEBKIT_DIR}/Source/WebKit
+ 
++#equals(QT_ARCH, s390)|equals(QT_ARCH, arm)|equals(QT_ARCH, mips)|equals(QT_ARCH, i386)|equals(QT_ARCH, i686)|equals(QT_ARCH, x86_64) {
++#    message("WebKit workaround for QtWebkit: do not build with -g, but with -g1")
++#    QMAKE_CXXFLAGS -= -g
++#    QMAKE_CXXFLAGS += -g1
++#}
++
+ INCLUDEPATH += \
+     $$SOURCE_DIR/qt/Api \
+     $$SOURCE_DIR/qt/WebCoreSupport \
+diff -up qtwebkit-opensource-src-5.0.1/Source/WTF/WTF.pri.debuginfo qtwebkit-opensource-src-5.0.1/Source/WTF/WTF.pri
+--- qtwebkit-opensource-src-5.0.1/Source/WTF/WTF.pri.debuginfo	2013-01-29 13:03:38.000000000 -0600
++++ qtwebkit-opensource-src-5.0.1/Source/WTF/WTF.pri	2013-02-23 13:56:23.584947256 -0600
+@@ -8,6 +8,12 @@
+ # All external modules should include WTF headers by prefixing with "wtf" (#include <wtf/some/thing.h>).
+ INCLUDEPATH += $$PWD
+ 
++#equals(QT_ARCH, s390)|equals(QT_ARCH, arm)|equals(QT_ARCH, mips)|equals(QT_ARCH, i386)|equals(QT_ARCH, i686)|equals(QT_ARCH, x86_64) {
++#    message("WTF workaround for QtWebkit: do not build with -g, but with -g1")
++#    QMAKE_CXXFLAGS -= -g
++#    QMAKE_CXXFLAGS += -g1
++#}
++
+ mac {
+     # Mac OS does ship libicu but not the associated header files.
+     # Therefore WebKit provides adequate header files.
