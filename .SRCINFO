@@ -1,0 +1,14 @@
+pkgbase = bash-fuzzy-clock
+	pkgdesc = Script to display the time in natural language. English, French, German and Spanish
+	pkgver = 20140201
+	pkgrel = 4
+	url = https://sourceforge.net/projects/bashfuzzyclock/
+	arch = any
+	license = GPL
+	depends = bash
+	provides = bash-fuzzy-clock
+	source = https://downloads.sourceforge.net/project/bashfuzzyclock/bash-fuzzy-clock.tar.gz
+	md5sums = 5ebd39555f2d6b887d7c3ac02b98c638
+
+pkgname = bash-fuzzy-clock
+
