@@ -1,0 +1,20 @@
+pkgbase = bcftools
+	pkgdesc = Reading/writing BCF2/VCF/gVCF files and calling/filtering/summarising SNP and short indel sequence variants
+	pkgver = 1.2
+	pkgrel = 3
+	url = http://samtools.github.io/bcftools/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gsl
+	depends = htslib
+	depends = perl
+	source = bcftools-1.2.tar.gz::https://github.com/samtools/bcftools/archive/1.2.tar.gz
+	source = bcftools-profile.sh
+	source = makefile-system-htslib.patch
+	md5sums = 87efbd0092b6e4828c17842c9ae57ec9
+	md5sums = 50efd8fdb3f4c11a5dff7748c666d90e
+	md5sums = 5ae8f6433b42acf1f4bc7b7658a10805
+
+pkgname = bcftools
+
