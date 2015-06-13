@@ -1,0 +1,14 @@
+pkgbase = cpc
+	pkgdesc = Continuation passing C compiler.
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = http://www.pps.univ-paris-diderot.fr/~kerneis/software/cpc/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = ocaml
+	source = http://www.pps.univ-paris-diderot.fr/~kerneis/software/files/cpc-0.9.1.tar.gz
+	md5sums = d8a9114d5d8f084cd8d703a2849c0cc3
+
+pkgname = cpc
+
