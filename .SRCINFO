@@ -1,0 +1,14 @@
+pkgbase = libpsl
+	pkgdesc = A Publix Suffic List library
+	pkgver = 0.7.1
+	pkgrel = 3
+	url = https://github.com/rockdaboot/libpsl
+	arch = i386
+	arch = x86_64
+	license = MIT
+	depends = icu>=55.1-1
+	source = https://github.com/rockdaboot/libpsl/releases/download/libpsl-0.7.1/libpsl-0.7.1.tar.gz
+	md5sums = 775d12ff0a3e8684200c2149be74d58e
+
+pkgname = libpsl
+
