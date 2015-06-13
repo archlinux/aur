@@ -1,0 +1,23 @@
+pkgbase = flobby-git
+	pkgdesc = spring lobby client
+	pkgver = 0.2.52.ga72974c
+	pkgrel = 1
+	url = https://github.com/cleanrock/flobby
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	depends = fltk
+	depends = jsoncpp
+	depends = imagemagick
+	depends = libxpm
+	depends = libxss
+	depends = boost-libs
+	depends = curl
+	source = git://github.com/cleanrock/flobby.git
+	md5sums = SKIP
+
+pkgname = flobby-git
+
