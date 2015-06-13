@@ -1,0 +1,14 @@
+pkgbase = gnu-apl
+	pkgdesc = an (almost) complete implementation of ISO standard 13751
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://www.gnu.org/software/apl/
+	install = info.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	source = ftp://ftp.gnu.org/gnu/apl/apl-1.5.tar.gz
+	md5sums = 7302a67330ebdc2224212a1639927bc8
+
+pkgname = gnu-apl
+
