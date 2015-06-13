@@ -1,0 +1,16 @@
+pkgbase = java3d
+	pkgdesc = High-level constructs to create and manipulate 3D geometry
+	pkgver = 1.5.2
+	pkgrel = 8
+	url = https://java3d.java.net/
+	arch = i686
+	arch = x86_64
+	license = custom:"JRL"
+	makedepends = unzip
+	depends = java-runtime
+	depends = libgl
+	source = http://download.java.net/media/java3d/builds/release/1.5.2/j3d-1_5_2-linux-amd64.zip
+	md5sums = 541d5038c54bbec2f1d311dfc5f68890
+
+pkgname = java3d
+
