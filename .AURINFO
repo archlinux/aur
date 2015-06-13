@@ -1,0 +1,18 @@
+pkgbase = durdraw-git
+	pkgdesc = Frame based ASCII and ANSI drawing and playback program
+	pkgver = 20150227
+	pkgrel = 1
+	url = http://cmang.org/durdraw/
+	arch = any
+	license = custom
+	makedepends = git
+	depends = python2
+	optdepends = ansilove: png export, animated gif export
+	optdepends = python2-pillow: animated gif export
+	optdepends = images2gif: animated gif export
+	provides = durdraw
+	conflicts = durdraw
+	source = git+https://github.com/cmang/durdraw.git
+
+pkgname = durdraw-git
+
