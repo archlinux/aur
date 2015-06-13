@@ -1,0 +1,16 @@
+pkgbase = erebus
+	pkgdesc = 2D real-time role-playing game.
+	pkgver = 0.10
+	pkgrel = 1
+	url = http://erebusrpg.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = qt4
+	depends = phonon
+	depends = qtwebkit
+	source = http://launchpad.net/erebus/trunk/$pkgver/+download/erebussrc.zip
+	md5sums = a96fcd43d5741ba11c6b7b9bea38c0f3
+
+pkgname = erebus
+
