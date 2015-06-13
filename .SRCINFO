@@ -1,0 +1,22 @@
+pkgbase = xscreensaver-hacks
+	pkgdesc = Standalone apps from xscreensaver, including phosphor and apple2 terminals.
+	pkgver = 5.32
+	pkgrel = 1
+	url = http://www.jwz.org/xscreensaver/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = bc
+	depends = libxxf86vm
+	depends = libglade
+	depends = mesa
+	depends = pam
+	depends = libxmu
+	conflicts = xscreensaver
+	source = http://www.jwz.org/xscreensaver/xscreensaver-5.32.tar.gz
+	source = LICENSE
+	sha1sums = 3131d45295b9a18a2901737c9b95f1c5434f53a6
+	sha1sums = 4209ea586b204fd1d81c382a0522c654f9fd9134
+
+pkgname = xscreensaver-hacks
+
