@@ -1,0 +1,30 @@
+pkgbase = rust-gnome-git
+	pkgdesc = Rust bindings and wrappers for gnome libraries
+	pkgver = r902.caf1a79
+	pkgrel = 2
+	url = https://github.com/rust-gnome
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	makedepends = gtk3
+	makedepends = glib2
+	depends = rust
+	depends = gtk3
+	depends = glib2
+	options = !strip
+	source = git+https://github.com/rust-gnome/gtk.git
+	source = git+https://github.com/rust-gnome/cairo.git
+	source = git+https://github.com/rust-gnome/glib.git
+	source = git+https://github.com/rust-gnome/gdk.git
+	source = git+https://github.com/rust-gnome/pango.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = rust-gnome-git
+
