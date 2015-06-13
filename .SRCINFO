@@ -1,0 +1,12 @@
+pkgbase = setl
+	pkgdesc = High level dynamic set based language.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = http://setl.org/setl/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+
+pkgname = setl
+
