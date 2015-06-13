@@ -1,0 +1,23 @@
+pkgbase = firehol
+	pkgdesc = The iptables stateful packet filtering firewall builder.
+	pkgver = 2.0.3
+	pkgrel = 1
+	epoch = 2
+	url = http://firehol.sourceforge.net
+	install = firehol.install
+	arch = any
+	license = GPL
+	depends = iptables
+	depends = gawk
+	depends = iproute
+	backup = etc/firehol/firehol.conf
+	backup = etc/firehol/fireqos.conf
+	source = http://firehol.org/download/releases/v2.0.3/firehol-2.0.3.tar.xz
+	source = firehol.service
+	source = fireqos.service
+	md5sums = 454f4fa026874500be8876b2560899cb
+	md5sums = 6c6571af548273e1f172313e366532df
+	md5sums = ae9fc18b19a69149108e9f4ab9ba5de9
+
+pkgname = firehol
+

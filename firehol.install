@@ -1,0 +1,8 @@
+post_upgrade() {
+echo " Version 2.0.0 or later brings fireqos:"
+echo " https://github.com/ktsaou/firehol/wiki/FireQOS-Tutorial"
+echo
+echo " The configuration version of FireHOL 2.0.0-pre6 "
+echo " and later has been updated from 5 to 6:"
+echo " http://firehol.org/upgrade/#config-version-6"
+}
