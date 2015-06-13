@@ -1,0 +1,20 @@
+pkgbase = xchat-otr
+	pkgdesc = Off-the-Record Messaging (OTR) plugin for the XChat IRC client
+	pkgver = 0.3
+	pkgrel = 2
+	url = http://irssi-otr.tuxfamily.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = pkgconfig
+	makedepends = python
+	depends = xchat
+	depends = libotr3
+	source = ftp://download.tuxfamily.org/irssiotr/xchat-otr-0.3.tar.gz
+	source = http://xchat.org/docs/xchat-plugin.h
+	md5sums = 49706959af491c721a8a5a62bd224670
+	md5sums = 5ee7da5abedc78a30b90e737370d8f0b
+
+pkgname = xchat-otr
+
