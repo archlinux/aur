@@ -1,4 +1,4 @@
-# Maintainer: Philipp Claßen <philipp.classen@gmx.net>
+# Maintainer: Philipp Claßen <philipp.classen@posteo.de>
 pkgname=livius-git
 pkgver=r16.d5c10b5
 pkgrel=1
