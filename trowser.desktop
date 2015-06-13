@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Categories=Development;Utility;
+Name=Trowser
+Comment=A browser for large text files
+NoDisplay=true
+Icon=trowser
+Exec=trowser.tcl %f
+MimeType=text/plain;text/html;text/css;text/x-python;application/x-shellscript;text/x-tcl;text/x-shellscript;text/x-lua;text/xml;application/xml;text/x-changelog;text/x-copying;text/x-log;text/x-readme;application/x-mozilla-bookmarks;

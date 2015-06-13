@@ -1,0 +1,14 @@
+pkgbase = trowser
+	pkgdesc = A browser for large line-oriented text files, implemented in Tcl/Tk
+	pkgver = 1.3
+	pkgrel = 3
+	url = http://www.nefkom.net/tomzo/prj/trowser/
+	install = trowser.install
+	arch = any
+	license = GPL3
+	depends = tk
+	source = http://www.nefkom.net/tomzo/prj/trowser/trowser-1.3.tar.gz
+	md5sums = a8dd31314f1c0026cb747d1f9cd9bf45
+
+pkgname = trowser
+
