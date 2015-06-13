@@ -1,0 +1,29 @@
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+red="${bold}$(tput setaf 1)"
+yellow="${bold}$(tput setaf 3)"
+blue="${bold}$(tput setaf 4)"
+
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+warning() {
+    printf "${blue}==>${red} WARNING:${bold} $1${all_off}\n"
+}
+
+post_install() {
+    note "Passenger configuration quick start: https://github.com/t-richards/aur-nginx-passenger#configuration"
+}
+
+post_upgrade() {
+    warning "BREAKING CHANGES FOR NGINX-PASSENGER (Now with Passenger 5!)"
+    echo "Lots of files in this package have changed locations. As such, please"
+    echo "update your passenger_root directive(s) before restarting nginx! The"
+    echo "new passenger_root directive should look something like this:"
+    echo ""
+    echo "passenger_root /usr/lib/ruby/vendor_ruby/phusion_passenger/locations.ini;"
+    echo ""
+    echo "For more information about configuration please visit:"
+    echo "https://github.com/t-richards/aur-nginx-passenger#configuration"
+}

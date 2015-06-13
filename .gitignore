@@ -1,0 +1,10 @@
+#editor
+*.swp
+
+#package
+*.tar
+*.xz
+*.gz
+*.zip
+pkg/
+src/
