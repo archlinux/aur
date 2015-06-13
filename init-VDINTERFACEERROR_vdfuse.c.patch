@@ -1,0 +1,20 @@
+--- src/debian/vdfuse/vdfuse.c.orig	2013-03-31 20:28:32.000000000 +0200
++++ src/debian/vdfuse/vdfuse.c	2013-07-09 13:31:47.824978337 +0200
+@@ -126,8 +126,6 @@
+ PVDINTERFACE     pVDifs = NULL;
+ VDINTERFACE      vdError;
+ VDINTERFACEERROR vdErrorCallbacks = {
+-   .cbSize = sizeof(VDINTERFACEERROR),
+-   .enmInterface = VDINTERFACETYPE_ERROR,
+    .pfnError = vdErrorCallback };
+ 
+ // Partition table information
+@@ -270,7 +268,7 @@
+    // *** Open the VDI, parse the MBR + EBRs and connect to the fuse service ***
+    //
+    if (RT_FAILURE(VDInterfaceAdd(&vdError, "VD Error", VDINTERFACETYPE_ERROR,
+-     &vdErrorCallbacks, NULL, &pVDifs)))
++     &vdErrorCallbacks, sizeof(vdErrorCallbacks), &pVDifs)))
+        usageAndExit("invalid initialisation of VD interface");
+    if (RT_FAILURE(VDCreate(&vdError, VDTYPE_HDD, &hdDisk)))
+      usageAndExit("invalid initialisation of VD interface");

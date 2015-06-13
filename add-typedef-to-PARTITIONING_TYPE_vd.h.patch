@@ -1,0 +1,16 @@
+--- src/virtualbox-includes-20130709/VBox/vd.h	2013-07-09 13:18:10.000000000 +0200
++++ src/includes/VBox/vd.h	2013-07-09 13:29:00.628312242 +0200
+@@ -154,11 +154,11 @@
+  * Auxiliary data structure for difference between GPT and MBR
+  * disks.
+  */
+-enum PARTITIONING_TYPE
++typedef enum PARTITIONING_TYPE
+ {
+     MBR,
+     GPT
+-};
++} PARTITIONING_TYPE;
+ 
+ /**
+  * Auxiliary data structure for creating raw disks.
