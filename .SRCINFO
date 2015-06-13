@@ -1,0 +1,22 @@
+pkgbase = libdesktop-agnostic-git
+	pkgdesc = Provides an extensible config API, a unified virtual fs API, and a desktop item editor for GLib-based projects.
+	pkgver = 2013.11.01
+	pkgrel = 1
+	url = https://github.com/p12tic/libdesktop-agnostic
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = intltool
+	makedepends = vala
+	makedepends = gobject-introspection
+	depends = pygtk
+	optdepends = gconf: gconf configuration backend
+	provides = libdesktop-agnostic
+	conflicts = libdesktop-agnostic
+	backup = etc/xdg/libdesktop-agnostic/desktop-agnostic.ini
+	source = git://github.com/p12tic/libdesktop-agnostic.git
+	md5sums = SKIP
+
+pkgname = libdesktop-agnostic-git
+
