@@ -1,0 +1,20 @@
+pkgbase = kartograph-git
+	pkgdesc = A Python library that generates SVG maps from ESRI shapefiles.
+	pkgver = 20130927
+	pkgrel = 1
+	url = http://kartograph.org
+	arch = any
+	license = AGPL
+	makedepends = git
+	depends = python2
+	depends = gdal
+	depends = python2-psycopg2
+	depends = python2-lxml
+	depends = python2-pyproj
+	depends = python2-tinycss
+	depends = python2-shapely
+	source = git://github.com/kartograph/kartograph.py.git
+	md5sums = SKIP
+
+pkgname = kartograph-git
+
