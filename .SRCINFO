@@ -1,0 +1,14 @@
+pkgbase = edena
+	pkgdesc = de novo short reads assembler
+	pkgver = 3.131028
+	pkgrel = 1
+	url = http://www.genomic.ch/edena.php
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = gcc-libs
+	source = edena-3.131028.tar.gz::http://www.genomic.ch/edena/EdenaV3.131028.tar.gz
+	md5sums = e2e9797446043bfb522099a5774b8d7a
+
+pkgname = edena
+
