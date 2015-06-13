@@ -1,0 +1,15 @@
+pkgbase = oclhashcat-nvidia
+	pkgdesc = Worlds fastest password cracker with dictionary mutation engine
+	pkgver = 1.36
+	pkgrel = 1
+	url = http://hashcat.net/oclhashcat/
+	arch = i686
+	arch = x86_64
+	license = custom
+	optdepends = nvidia-utils>=346: For for gpu support via Nvidia CUDA
+	options = !strip
+	source = http://hashcat.net/files/cudaHashcat-1.36.7z
+	sha512sums = 28ed89d22698978ce3f84120019699cca4afe6a7e5264de06a3d3b12f451e41539a0a93f58ce3279cffcd5c67e6029c27a70b3db9eb80dbc0aed25c4f8372f59
+
+pkgname = oclhashcat-nvidia
+
