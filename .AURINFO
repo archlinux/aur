@@ -1,0 +1,15 @@
+pkgbase = micropython
+	pkgdesc = Python3 for microcontrollers, unix version.
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = http://micropython.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python
+	depends = readline
+	depends = libffi
+	source = https://github.com/micropython/micropython/archive/v1.4.2.tar.gz
+
+pkgname = micropython
+
