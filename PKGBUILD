@@ -1,6 +1,6 @@
 # Maintainer: Philipp Claßen <philipp.classen@posteo.de>
 pkgname=cppqc-git
-pkgver=r36.1dab618
+pkgver=r59.d20b952
 pkgrel=1
 pkgdesc="QuickCheck-like property based automated testing tool for C++"
 arch=('i686' 'x86_64')
