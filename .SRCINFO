@@ -1,0 +1,14 @@
+pkgbase = rott
+	pkgdesc = A high quality first-person perspective 3D action game
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = http://icculus.org/rott/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl_mixer
+	source = http://icculus.org/rott/releases/rott-1.1.2.tar.gz
+	md5sums = d523c7c6c97f95ba84b8cf4deae7db38
+
+pkgname = rott
+
