@@ -1,0 +1,13 @@
+pkgbase = bmpanel2-elementary-theme
+	pkgdesc = A matching bmpanel2 theme for elementary gtk2 & openbox themes
+	pkgver = 20100515
+	pkgrel = 1
+	url = http://box-look.org/content/show.php/?content=124796
+	arch = any
+	license = GPL
+	depends = bmpanel2
+	source = bmpanel2-elementary-theme-20100515.tar.gz::http://box-look.org/CONTENT/content-files/124796-elementary.tar.gz
+	md5sums = 3974aeb77c0c1b38b7dac12f36960b9e
+
+pkgname = bmpanel2-elementary-theme
+
