@@ -1,0 +1,20 @@
+pkgbase = littleutils
+	pkgdesc = Utils for image optimization, finding file dups, cleaning source.
+	pkgver = 1.0.33
+	pkgrel = 1
+	url = http://littleutils.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = perl
+	depends = bash
+	depends = libpng
+	optdepends = gifsicle: for opt-gif
+	optdepends = pngcrush: for opt-png
+	optdepends = lzip: for to-lzip
+	optdepends = python2: for zip2tarcat
+	source = http://downloads.sourceforge.net/project/littleutils/littleutils-source/1.0.33/littleutils-1.0.33.tar.bz2
+	md5sums = 6d382376e676d5f2bc9c5c652f15c697
+
+pkgname = littleutils
+
