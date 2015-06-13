@@ -1,0 +1,18 @@
+pkgbase = python2-clusterpy
+	pkgdesc = Clusterpy is a librery of spatially constrained clustering algorithms.
+	pkgver = 0.9.9
+	pkgrel = 1
+	url = http://www.rise-group.org/risem/clusterpy/
+	arch = any
+	license = GPL
+	makedepends = python2-distribute
+	depends = python2
+	depends = python2-numpy
+	depends = python2-nose
+	depends = python2-scipy
+	depends = python2-polygon
+	source = https://github.com/clusterpy/clusterpy/releases/download/v0.9.9/clusterPy-0.9.9.tar.gz
+	md5sums = 392beb2c03b14f710055c33547ec7ced
+
+pkgname = python2-clusterpy
+
