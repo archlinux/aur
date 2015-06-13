@@ -1,0 +1,16 @@
+pkgbase = mbrola-voices-sw1
+	pkgdesc = A Swedish male voice for the MBROLA synthesizer
+	pkgver = 980623
+	pkgrel = 3
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-sw
+	groups = mbrola-voices
+	groups = gespeaker-mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/sw1/sw1-980623.zip
+	md5sums = 520793ee2c81a7ab9d222f2982e620a0
+
+pkgname = mbrola-voices-sw1
+
