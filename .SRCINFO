@@ -1,0 +1,18 @@
+pkgbase = mbkp-hg
+	pkgdesc = Provides modular backups using duplicity.
+	pkgver = 102
+	pkgrel = 1
+	epoch = 1
+	url = https://bitbucket.org/elifarley/mbkp/wiki/Home
+	arch = any
+	license = GPL
+	makedepends = mercurial
+	makedepends = perl
+	depends = duplicity
+	provides = mbkp
+	conflicts = mbkp
+	source = mbkp::hg+https://bitbucket.org/elifarley/mbkp
+	md5sums = SKIP
+
+pkgname = mbkp-hg
+
