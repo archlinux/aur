@@ -1,0 +1,35 @@
+pkgbase = astk
+	pkgdesc = Tcl/Tk interface to run Code-Aster (prepare and start calculations).
+	pkgver = 1.13.5
+	pkgrel = 1
+	url = http://www.code-aster.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = desktop-file-utils
+	makedepends = sed
+	makedepends = patch
+	depends = python
+	depends = tcl
+	depends = tk
+	depends = openssh
+	depends = x11-ssh-askpass
+	optdepends = inetutils: if you want to connect to aster server with rsh
+	optdepends = eficas>=6.6.0: to edit Code_Aster command files
+	optdepends = gibi>=2000: to generate and post-process meshes
+	optdepends = gmsh: to generate and post-process mesh
+	optdepends = gnuplot: to plot outputs to X11, PostScript, PNG, GIF, and others
+	optdepends = grace: to plot outputs in 2D graphs
+	optdepends = tkpng: to display better colors
+	backup = opt/aster/etc/codeaster/aster
+	source = http://www.code-aster.org/FICHIERS/aster-full-src-11.7.0-1.noarch.tar.gz
+	source = astk-ssh
+	source = astk.png
+	source = astk.desktop
+	md5sums = 469a89d443d8a7ea6d95a2e5671628a8
+	md5sums = 6fba5ebcdf75cccea2122c85df5a6306
+	md5sums = 3d432dfac21b5351cf96ac80ae55811d
+	md5sums = 79e3e1cf77a476d0b9e9d9aa21a1e723
+
+pkgname = astk
+

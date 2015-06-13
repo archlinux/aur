@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=ASTK
+Comment=Tcl/Tk interface to run Code_Aster
+Icon=astk
+Exec=astk-ssh
+Encoding=UTF-8
+Terminal=false
+Type=Application
+Categories=Engineering;Education;Science;Math;NumericalAnalysis;
