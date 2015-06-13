@@ -1,0 +1,24 @@
+pkgbase = faustlive-git
+	pkgdesc = A graphical frontend to the Faust compiler.
+	pkgver = 633.116467c
+	pkgrel = 1
+	url = http://faust.grame.fr/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = faust2-git
+	depends = qt4
+	depends = jack2
+	depends = qrencode
+	depends = libmicrohttpd
+	depends = openssl
+	depends = liblo
+	depends = curl
+	provides = faustlive
+	conflicts = faustlive
+	source = faustlive-git::git+git://git.code.sf.net/p/faudiostream/faustlive
+	md5sums = SKIP
+
+pkgname = faustlive-git
+
