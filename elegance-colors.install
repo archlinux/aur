@@ -1,5 +1,6 @@
 post_install() {
   gtk-update-icon-cache -q /usr/share/icons/hicolor
+  update-desktop-database -q
 
   echo -e "\e[34;1m==>\e[39;1m NOTE: Start the elegance-colors daemon process prior to configuring a theme. \e[0m"
   echo -e "\e[34;1m==>\e[39;1m Do so by running "elegance-colors" in a terminal. \e[0m"
@@ -11,4 +12,5 @@ post_upgrade() {
 
 post_remove() {
   gtk-update-icon-cache -q /usr/share/icons/hicolor
+  update-desktop-database -q
 }
