@@ -1,0 +1,12 @@
+pkgbase = perl-rose-object
+	pkgdesc = A simple object base class
+	pkgver = 0.860
+	pkgrel = 2
+	url = http://search.cpan.org/dist/Rose-Object/
+	arch = any
+	license = PerlArtistic
+	source = http://search.cpan.org/CPAN/authors/id/J/JS/JSIRACUSA/Rose-Object-0.860.tar.gz
+	options = !emptydirs
+
+pkgname = perl-rose-object
+
