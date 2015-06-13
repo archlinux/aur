@@ -1,0 +1,23 @@
+pkgbase = pd-faust
+	pkgdesc = Run Faust signal processors in Pd
+	pkgver = 0.9
+	pkgrel = 2
+	url = http://purelang.bitbucket.org/
+	arch = i686
+	arch = x86_64
+	groups = pure-complete
+	groups = pure-multimedia
+	license = LGPL3
+	makedepends = faust
+	depends = pd
+	depends = pure
+	depends = pd-pure
+	depends = pure-faust
+	depends = pure-audio
+	depends = pure-midi
+	depends = pure-stldict
+	source = https://bitbucket.org/purelang/pure-lang/downloads/pd-faust-0.9.tar.gz
+	md5sums = 60b4a820517f6fd3e0e9c1abd1bb37e0
+
+pkgname = pd-faust
+
