@@ -1,0 +1,20 @@
+pkgbase = sctp-refimpl-svn
+	pkgdesc = Reference implementation for SCTP in user space.
+	pkgver = r9101
+	pkgrel = 1
+	url = https://sctp-refimpl.googlecode.com/svn/trunk/KERN/usrsctp/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = subversion
+	makedepends = libtool
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = gcc
+	makedepends = make
+	depends = glibc
+	source = svn+https://sctp-refimpl.googlecode.com/svn/trunk/KERN/usrsctp/
+	md5sums = SKIP
+
+pkgname = sctp-refimpl-svn
+
