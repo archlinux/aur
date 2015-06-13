@@ -1,0 +1,460 @@
+--- dreamchess-0.2.0/config.h.in.orig	2007-11-16 13:42:30.000000000 +0100
++++ dreamchess-0.2.0/config.h.in	2008-02-16 03:22:28.000000000 +0100
+@@ -24,9 +24,6 @@
+ /* Define to 1 if you have the <inttypes.h> header file. */
+ #undef HAVE_INTTYPES_H
+ 
+-/* Define to 1 if you have the `mxml' library (-lmxml). */
+-#undef HAVE_LIBMXML
+-
+ /* Define to 1 if you have the `shlwapi' library (-lshlwapi). */
+ #undef HAVE_LIBSHLWAPI
+ 
+--- dreamchess-0.2.0/configure.orig	2007-11-16 13:42:29.000000000 +0100
++++ dreamchess-0.2.0/configure	2008-02-16 03:22:28.000000000 +0100
+@@ -665,7 +665,6 @@
+ INSTALL_PROGRAM
+ INSTALL_SCRIPT
+ INSTALL_DATA
+-am__isrc
+ CYGPATH_W
+ PACKAGE
+ VERSION
+@@ -1931,8 +1930,7 @@
+   test "$program_prefix$program_suffix$program_transform_name" = \
+     NONENONEs,x,x, &&
+   program_prefix=${target_alias}-
+-am__api_version='1.10'
+-
++am__api_version="1.9"
+ # Find a good install program.  We prefer a C program (faster),
+ # so one script is as good as another.  But avoid the broken or
+ # incompatible versions:
+@@ -2084,53 +2082,38 @@
+ echo "$as_me: WARNING: \`missing' script is too old or missing" >&2;}
+ fi
+ 
+-{ echo "$as_me:$LINENO: checking for a thread-safe mkdir -p" >&5
+-echo $ECHO_N "checking for a thread-safe mkdir -p... $ECHO_C" >&6; }
+-if test -z "$MKDIR_P"; then
+-  if test "${ac_cv_path_mkdir+set}" = set; then
+-  echo $ECHO_N "(cached) $ECHO_C" >&6
+-else
+-  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+-for as_dir in $PATH$PATH_SEPARATOR/opt/sfw/bin
+-do
+-  IFS=$as_save_IFS
+-  test -z "$as_dir" && as_dir=.
+-  for ac_prog in mkdir gmkdir; do
+-	 for ac_exec_ext in '' $ac_executable_extensions; do
+-	   { test -f "$as_dir/$ac_prog$ac_exec_ext" && $as_test_x "$as_dir/$ac_prog$ac_exec_ext"; } || continue
+-	   case `"$as_dir/$ac_prog$ac_exec_ext" --version 2>&1` in #(
+-	     'mkdir (GNU coreutils) '* | \
+-	     'mkdir (coreutils) '* | \
+-	     'mkdir (fileutils) '4.1*)
+-	       ac_cv_path_mkdir=$as_dir/$ac_prog$ac_exec_ext
+-	       break 3;;
+-	   esac
+-	 done
+-       done
+-done
+-IFS=$as_save_IFS
+-
+-fi
+-
+-  if test "${ac_cv_path_mkdir+set}" = set; then
+-    MKDIR_P="$ac_cv_path_mkdir -p"
++if mkdir -p --version . >/dev/null 2>&1 && test ! -d ./--version; then
++  # We used to keeping the `.' as first argument, in order to
++  # allow $(mkdir_p) to be used without argument.  As in
++  #   $(mkdir_p) $(somedir)
++  # where $(somedir) is conditionally defined.  However this is wrong
++  # for two reasons:
++  #  1. if the package is installed by a user who cannot write `.'
++  #     make install will fail,
++  #  2. the above comment should most certainly read
++  #     $(mkdir_p) $(DESTDIR)$(somedir)
++  #     so it does not work when $(somedir) is undefined and
++  #     $(DESTDIR) is not.
++  #  To support the latter case, we have to write
++  #     test -z "$(somedir)" || $(mkdir_p) $(DESTDIR)$(somedir),
++  #  so the `.' trick is pointless.
++  mkdir_p='mkdir -p --'
++else
++  # On NextStep and OpenStep, the `mkdir' command does not
++  # recognize any option.  It will interpret all options as
++  # directories to create, and then abort because `.' already
++  # exists.
++  for d in ./-p ./--version;
++  do
++    test -d $d && rmdir $d
++  done
++  # $(mkinstalldirs) is defined by Automake if mkinstalldirs exists.
++  if test -f "$ac_aux_dir/mkinstalldirs"; then
++    mkdir_p='$(mkinstalldirs)'
+   else
+-    # As a last resort, use the slow shell script.  Don't cache a
+-    # value for MKDIR_P within a source directory, because that will
+-    # break other packages using the cache if that directory is
+-    # removed, or if the value is a relative name.
+-    test -d ./--version && rmdir ./--version
+-    MKDIR_P="$ac_install_sh -d"
++    mkdir_p='$(install_sh) -d'
+   fi
+ fi
+-{ echo "$as_me:$LINENO: result: $MKDIR_P" >&5
+-echo "${ECHO_T}$MKDIR_P" >&6; }
+-
+-mkdir_p="$MKDIR_P"
+-case $mkdir_p in
+-  [\\/$]* | ?:[\\/]*) ;;
+-  */*) mkdir_p="\$(top_builddir)/$mkdir_p" ;;
+-esac
+ 
+ for ac_prog in gawk mawk nawk awk
+ do
+@@ -2213,16 +2196,12 @@
+ fi
+ rmdir .tst 2>/dev/null
+ 
+-if test "`cd $srcdir && pwd`" != "`pwd`"; then
+-  # Use -I$(srcdir) only when $(srcdir) != ., so that make's output
+-  # is not polluted with repeated "-I."
+-  am__isrc=' -I$(srcdir)'
+-  # test to see if srcdir already configured
+-  if test -f $srcdir/config.status; then
+-    { { echo "$as_me:$LINENO: error: source directory already configured; run \"make distclean\" there first" >&5
++# test to see if srcdir already configured
++if test "`cd $srcdir && pwd`" != "`pwd`" &&
++   test -f $srcdir/config.status; then
++  { { echo "$as_me:$LINENO: error: source directory already configured; run \"make distclean\" there first" >&5
+ echo "$as_me: error: source directory already configured; run \"make distclean\" there first" >&2;}
+    { (exit 1); exit 1; }; }
+-  fi
+ fi
+ 
+ # test whether we have cygpath
+@@ -2265,7 +2244,7 @@
+ 
+ MAKEINFO=${MAKEINFO-"${am_missing_run}makeinfo"}
+ 
+-install_sh=${install_sh-"\$(SHELL) $am_aux_dir/install-sh"}
++install_sh=${install_sh-"$am_aux_dir/install-sh"}
+ 
+ # Installed binaries are usually stripped using `strip' when the user
+ # run `make install-strip'.  However `strip' might not be the right
+@@ -2369,7 +2348,7 @@
+ fi
+ 
+ fi
+-INSTALL_STRIP_PROGRAM="\$(install_sh) -c -s"
++INSTALL_STRIP_PROGRAM="\${SHELL} \$(install_sh) -c -s"
+ 
+ # We need awk for the "check" target.  The system "awk" is bad on
+ # some platforms.
+@@ -3359,7 +3338,9 @@
+   am_depcomp="$ac_aux_dir/depcomp"
+   AMDEPBACKSLASH='\'
+ fi
+- if test "x$enable_dependency_tracking" != xno; then
++
++
++if test "x$enable_dependency_tracking" != xno; then
+   AMDEP_TRUE=
+   AMDEP_FALSE='#'
+ else
+@@ -3369,6 +3350,7 @@
+ 
+ 
+ 
++
+ depcc="$CC"   am_compiler_list=
+ 
+ { echo "$as_me:$LINENO: checking dependency style of $depcc" >&5
+@@ -3436,7 +3418,6 @@
+        depfile=sub/conftest.Po tmpdepfile=sub/conftest.TPo \
+        $SHELL ./depcomp $depcc -c -o sub/conftest.${OBJEXT-o} sub/conftest.c \
+          >/dev/null 2>conftest.err &&
+-       grep sub/conftst1.h sub/conftest.Po > /dev/null 2>&1 &&
+        grep sub/conftst6.h sub/conftest.Po > /dev/null 2>&1 &&
+        grep sub/conftest.${OBJEXT-o} sub/conftest.Po > /dev/null 2>&1 &&
+        ${MAKE-make} -s -f confmf > /dev/null 2>&1; then
+@@ -3466,7 +3447,9 @@
+ echo "${ECHO_T}$am_cv_CC_dependencies_compiler_type" >&6; }
+ CCDEPMODE=depmode=$am_cv_CC_dependencies_compiler_type
+ 
+- if
++
++
++if
+   test "x$enable_dependency_tracking" != xno \
+   && test "$am_cv_CC_dependencies_compiler_type" = gcc3; then
+   am__fastdepCC_TRUE=
+@@ -4067,20 +4050,21 @@
+ 
+ 
+   if test x$sdl_exec_prefix != x ; then
+-     sdl_args="$sdl_args --exec-prefix=$sdl_exec_prefix"
+-     if test x${SDL_CONFIG+set} != xset ; then
+-        SDL_CONFIG=$sdl_exec_prefix/bin/sdl-config
+-     fi
++    sdl_args="$sdl_args --exec-prefix=$sdl_exec_prefix"
++    if test x${SDL_CONFIG+set} != xset ; then
++      SDL_CONFIG=$sdl_exec_prefix/bin/sdl-config
++    fi
+   fi
+   if test x$sdl_prefix != x ; then
+-     sdl_args="$sdl_args --prefix=$sdl_prefix"
+-     if test x${SDL_CONFIG+set} != xset ; then
+-        SDL_CONFIG=$sdl_prefix/bin/sdl-config
+-     fi
++    sdl_args="$sdl_args --prefix=$sdl_prefix"
++    if test x${SDL_CONFIG+set} != xset ; then
++      SDL_CONFIG=$sdl_prefix/bin/sdl-config
++    fi
+   fi
+ 
+-
+-  PATH="$prefix/bin:$prefix/usr/bin:$PATH"
++  if test "x$prefix" != xNONE; then
++    PATH="$prefix/bin:$prefix/usr/bin:$PATH"
++  fi
+   # Extract the first word of "sdl-config", so it can be a program name with args.
+ set dummy sdl-config; ac_word=$2
+ { echo "$as_me:$LINENO: checking for $ac_word" >&5
+@@ -4140,8 +4124,10 @@
+            sed 's/\([0-9]*\).\([0-9]*\).\([0-9]*\)/\3/'`
+     if test "x$enable_sdltest" = "xyes" ; then
+       ac_save_CFLAGS="$CFLAGS"
++      ac_save_CXXFLAGS="$CXXFLAGS"
+       ac_save_LIBS="$LIBS"
+       CFLAGS="$CFLAGS $SDL_CFLAGS"
++      CXXFLAGS="$CXXFLAGS $SDL_CFLAGS"
+       LIBS="$LIBS $SDL_LIBS"
+       rm -f conf.sdltest
+       if test "$cross_compiling" = yes; then
+@@ -4246,6 +4232,7 @@
+ 
+ 
+        CFLAGS="$ac_save_CFLAGS"
++       CXXFLAGS="$ac_save_CXXFLAGS"
+        LIBS="$ac_save_LIBS"
+      fi
+   fi
+@@ -4267,6 +4254,7 @@
+        else
+           echo "*** Could not run SDL test program, checking why..."
+           CFLAGS="$CFLAGS $SDL_CFLAGS"
++          CXXFLAGS="$CXXFLAGS $SDL_CFLAGS"
+           LIBS="$LIBS $SDL_LIBS"
+           cat >conftest.$ac_ext <<_ACEOF
+ /* confdefs.h.  */
+@@ -4331,6 +4319,7 @@
+ rm -f core conftest.err conftest.$ac_objext conftest_ipa8_conftest.oo \
+       conftest$ac_exeext conftest.$ac_ext
+           CFLAGS="$ac_save_CFLAGS"
++          CXXFLAGS="$ac_save_CXXFLAGS"
+           LIBS="$ac_save_LIBS"
+        fi
+      fi
+@@ -5683,7 +5672,9 @@
+ 	SDL_LIBS="${SDL_IMAGE_LIBS} ${SDL_LIBS}"
+ fi
+ 
+- if test x"$with_ui_sdlgl" = xyes; then
++
++
++if test x"$with_ui_sdlgl" = xyes; then
+   UI_SDLGL_TRUE=
+   UI_SDLGL_FALSE='#'
+ else
+@@ -6839,6 +6830,70 @@
+ fi
+ 
+ 
++{ echo "$as_me:$LINENO: checking for pthread_create in -lpthread" >&5
++echo $ECHO_N "checking for pthread_create in -lpthread... $ECHO_C" >&6; }
++if test "${ac_cv_lib_pthread_pthread_create+set}" = set; then
++  echo $ECHO_N "(cached) $ECHO_C" >&6
++else
++  ac_check_lib_save_LIBS=$LIBS
++LIBS="-lpthread  $LIBS"
++cat >conftest.$ac_ext <<_ACEOF
++/* confdefs.h.  */
++_ACEOF
++cat confdefs.h >>conftest.$ac_ext
++cat >>conftest.$ac_ext <<_ACEOF
++/* end confdefs.h.  */
++
++/* Override any GCC internal prototype to avoid an error.
++   Use char because int might match the return type of a GCC
++   builtin and then its argument prototype would still apply.  */
++#ifdef __cplusplus
++extern "C"
++#endif
++char pthread_create ();
++int
++main ()
++{
++return pthread_create ();
++  ;
++  return 0;
++}
++_ACEOF
++rm -f conftest.$ac_objext conftest$ac_exeext
++if { (ac_try="$ac_link"
++case "(($ac_try" in
++  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
++  *) ac_try_echo=$ac_try;;
++esac
++eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
++  (eval "$ac_link") 2>conftest.er1
++  ac_status=$?
++  grep -v '^ *+' conftest.er1 >conftest.err
++  rm -f conftest.er1
++  cat conftest.err >&5
++  echo "$as_me:$LINENO: \$? = $ac_status" >&5
++  (exit $ac_status); } && {
++	 test -z "$ac_c_werror_flag" ||
++	 test ! -s conftest.err
++       } && test -s conftest$ac_exeext &&
++       $as_test_x conftest$ac_exeext; then
++  ac_cv_lib_pthread_pthread_create=yes
++else
++  echo "$as_me: failed program was:" >&5
++sed 's/^/| /' conftest.$ac_ext >&5
++
++	ac_cv_lib_pthread_pthread_create=no
++fi
++
++rm -f core conftest.err conftest.$ac_objext conftest_ipa8_conftest.oo \
++      conftest$ac_exeext conftest.$ac_ext
++LIBS=$ac_check_lib_save_LIBS
++fi
++{ echo "$as_me:$LINENO: result: $ac_cv_lib_pthread_pthread_create" >&5
++echo "${ECHO_T}$ac_cv_lib_pthread_pthread_create" >&6; }
++if test $ac_cv_lib_pthread_pthread_create = yes; then
++  PTHREAD_LIB="-lpthread"
++fi
+ 
+ { echo "$as_me:$LINENO: checking for mxmlLoadFile in -lmxml" >&5
+ echo $ECHO_N "checking for mxmlLoadFile in -lmxml... $ECHO_C" >&6; }
+@@ -6846,7 +6901,7 @@
+   echo $ECHO_N "(cached) $ECHO_C" >&6
+ else
+   ac_check_lib_save_LIBS=$LIBS
+-LIBS="-lmxml  $LIBS"
++LIBS="-lmxml ${PTHREAD_LIB} $LIBS"
+ cat >conftest.$ac_ext <<_ACEOF
+ /* confdefs.h.  */
+ _ACEOF
+@@ -6902,12 +6957,7 @@
+ { echo "$as_me:$LINENO: result: $ac_cv_lib_mxml_mxmlLoadFile" >&5
+ echo "${ECHO_T}$ac_cv_lib_mxml_mxmlLoadFile" >&6; }
+ if test $ac_cv_lib_mxml_mxmlLoadFile = yes; then
+-  cat >>confdefs.h <<_ACEOF
+-#define HAVE_LIBMXML 1
+-_ACEOF
+-
+-  LIBS="-lmxml $LIBS"
+-
++  MXML_LIB="lmxml"
+ else
+   { { echo "$as_me:$LINENO: error: Cannot find Mini-XML library." >&5
+ echo "$as_me: error: Cannot find Mini-XML library." >&2;}
+@@ -6915,7 +6965,9 @@
+ fi
+ 
+ 
+- if test x"$beos_rc" = x"yes"; then
++
++
++if test x"$beos_rc" = x"yes"; then
+   BEOS_RC_TRUE=
+   BEOS_RC_FALSE='#'
+ else
+@@ -8007,7 +8059,6 @@
+ ac_pwd='$ac_pwd'
+ srcdir='$srcdir'
+ INSTALL='$INSTALL'
+-MKDIR_P='$MKDIR_P'
+ _ACEOF
+ 
+ cat >>$CONFIG_STATUS <<\_ACEOF
+@@ -8247,7 +8298,6 @@
+ INSTALL_PROGRAM!$INSTALL_PROGRAM$ac_delim
+ INSTALL_SCRIPT!$INSTALL_SCRIPT$ac_delim
+ INSTALL_DATA!$INSTALL_DATA$ac_delim
+-am__isrc!$am__isrc$ac_delim
+ CYGPATH_W!$CYGPATH_W$ac_delim
+ PACKAGE!$PACKAGE$ac_delim
+ VERSION!$VERSION$ac_delim
+@@ -8292,6 +8342,7 @@
+ SDL_CFLAGS!$SDL_CFLAGS$ac_delim
+ SDL_LIBS!$SDL_LIBS$ac_delim
+ UI_LIBS!$UI_LIBS$ac_delim
++UI_SDLGL_TRUE!$UI_SDLGL_TRUE$ac_delim
+ _ACEOF
+ 
+   if test `sed -n "s/.*$ac_delim\$/X/p" conf$$subs.sed | grep -c X` = 97; then
+@@ -8333,7 +8384,6 @@
+ ac_delim='%!_!# '
+ for ac_last_try in false false false false false :; do
+   cat >conf$$subs.sed <<_ACEOF
+-UI_SDLGL_TRUE!$UI_SDLGL_TRUE$ac_delim
+ UI_SDLGL_FALSE!$UI_SDLGL_FALSE$ac_delim
+ DREAMER_SDL_CFLAGS!$DREAMER_SDL_CFLAGS$ac_delim
+ PIPE_LIB!$PIPE_LIB$ac_delim
+@@ -8356,7 +8406,7 @@
+ LTLIBOBJS!$LTLIBOBJS$ac_delim
+ _ACEOF
+ 
+-  if test `sed -n "s/.*$ac_delim\$/X/p" conf$$subs.sed | grep -c X` = 21; then
++  if test `sed -n "s/.*$ac_delim\$/X/p" conf$$subs.sed | grep -c X` = 20; then
+     break
+   elif $ac_last_try; then
+     { { echo "$as_me:$LINENO: error: could not make $CONFIG_STATUS" >&5
+@@ -8583,11 +8633,6 @@
+   [\\/$]* | ?:[\\/]* ) ac_INSTALL=$INSTALL ;;
+   *) ac_INSTALL=$ac_top_build_prefix$INSTALL ;;
+   esac
+-  ac_MKDIR_P=$MKDIR_P
+-  case $MKDIR_P in
+-  [\\/$]* | ?:[\\/]* ) ;;
+-  */*) ac_MKDIR_P=$ac_top_build_prefix$MKDIR_P ;;
+-  esac
+ _ACEOF
+ 
+ cat >>$CONFIG_STATUS <<\_ACEOF
+@@ -8641,7 +8686,6 @@
+ s&@abs_builddir@&$ac_abs_builddir&;t t
+ s&@abs_top_builddir@&$ac_abs_top_builddir&;t t
+ s&@INSTALL@&$ac_INSTALL&;t t
+-s&@MKDIR_P@&$ac_MKDIR_P&;t t
+ $ac_datarootdir_hack
+ " $ac_file_inputs | sed -f "$tmp/subs-1.sed" | sed -f "$tmp/subs-2.sed" >$tmp/out
+ 
+@@ -8806,9 +8850,8 @@
+   # some people rename them; so instead we look at the file content.
+   # Grep'ing the first line is not enough: some people post-process
+   # each Makefile.in and add a new line on top of each file to say so.
+-  # Grep'ing the whole file is not good either: AIX grep has a line
+-  # limit of 2048, but all sed's we know have understand at least 4000.
+-  if sed 10q "$mf" | grep '^#.*generated by automake' > /dev/null 2>&1; then
++  # So let's grep whole file.
++  if grep '^#.*generated by automake' $mf > /dev/null 2>&1; then
+     dirpart=`$as_dirname -- "$mf" ||
+ $as_expr X"$mf" : 'X\(.*[^/]\)//*[^/][^/]*/*$' \| \
+ 	 X"$mf" : 'X\(//\)[^/]' \| \
+--- dreamchess-0.2.0.orig/configure.ac.orig	2007-11-15 23:08:22.000000000 +0100
++++ dreamchess-0.2.0/configure.ac	2008-02-16 03:22:11.000000000 +0100
+@@ -293,7 +293,8 @@
+ fi
+ 
+ AC_CHECK_HEADER([mxml.h], [], [AC_MSG_ERROR([Cannot find Mini-XML header file.])])
+-AC_CHECK_LIB(mxml, mxmlLoadFile, [], [AC_MSG_ERROR([Cannot find Mini-XML library.])])
++AC_CHECK_LIB(pthread, pthread_create, PTHREAD_LIB="-lpthread")
++AC_CHECK_LIB(mxml, mxmlLoadFile, [MXML_LIB="lmxml"], [AC_MSG_ERROR([Cannot find Mini-XML library.])], [${PTHREAD_LIB}])
+ 
+ AM_CONDITIONAL(BEOS_RC, test x"$beos_rc" = x"yes")
+ AC_SUBST(DREAMCHESS_LIBS)

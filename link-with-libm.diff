@@ -1,0 +1,15 @@
+Description: Add libm to LIBS to ensure correct linking.
+Author: Ilya Barygin <barygin@gmail.com>
+Bug: http://developer.berlios.de/patch/?func=detailpatch&patch_id=3142&group_id=1625
+Bug-Debian: http://bugs.debian.org/554498
+--- a/configure.ac
++++ b/configure.ac
+@@ -89,7 +89,7 @@
+ 	[have_sdl_opengl_h="yes"], [have_sdl_opengl_h="no"]
+ 	)
+ 
+-AC_CHECK_LIB(m, sqrt, [have_m="yes" M_LIBS="-lm"], [have_m="no"])
++AC_CHECK_LIB(m, sqrt, [have_m="yes" M_LIBS="-lm" LIBS="${M_LIBS} ${LIBS}"], [have_m="no"])
+ 
+ AC_CHECK_LIB(z, compress, [have_z="yes" Z_LIBS="-lz"],
+ 	[have_z="no"]
