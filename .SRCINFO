@@ -1,0 +1,15 @@
+pkgbase = mbrola-voices-ir1
+	pkgdesc = An Iranian male voice for the MBROLA synthesizer
+	pkgver = 1
+	pkgrel = 2
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-ir
+	groups = mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/ir1/ir1.zip
+	md5sums = 466f2ee8aedd6f78a3ab30fbdd2f98cb
+
+pkgname = mbrola-voices-ir1
+
