@@ -2,9 +2,9 @@
 
 pkgname=gerty-git
 pkgver=e9db8d7
-pkgrel=2
+pkgrel=3
 pkgdesc="Automation tool for network operation tasks"
-depends=('perl-expect' 'perl-net-snmp' 'perl' 'perl-xml-libxml')
+depends=('perl-expect' 'perl-net-snmp' 'perl' 'perl-xml-libxml' 'perl-config-any')
 makedepends=('git' 'pandoc')
 conflicts=('gerty')
 provides=('gerty')
