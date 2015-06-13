@@ -1,0 +1,13 @@
+pkgbase = pyrepl
+	pkgdesc = A Python library for building flexible command line interfaces
+	pkgver = 0.8.4
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/pyrepl
+	arch = any
+	license = MIT
+	depends = python2
+	source = http://pypi.python.org/packages/source/p/pyrepl/pyrepl-0.8.4.tar.gz
+	md5sums = 9f02a9cc56162e2df647283d9180d7da
+
+pkgname = pyrepl
+
