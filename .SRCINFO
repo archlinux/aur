@@ -1,0 +1,16 @@
+pkgbase = codec2-svn
+	pkgdesc = Open source 2400 bit/s speech codec
+	pkgver = 2027
+	pkgrel = 1
+	url = http://codec2.org/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = subversion
+	makedepends = cmake
+	depends = glibc
+	source = svn+https://freetel.svn.sourceforge.net/svnroot/freetel/codec2
+	md5sums = SKIP
+
+pkgname = codec2-svn
+
