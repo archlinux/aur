@@ -1,0 +1,16 @@
+pkgbase = genseat-git
+	pkgdesc = Generate script for Xephyr multiseat on demand
+	pkgver = 20130617
+	pkgrel = 1
+	url = https://github.com/dlintw/genseat
+	arch = x86
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = go
+	depends = xorg-server-xephyr
+	depends = xorg-xinput
+	depends = xorg-setxkbmap
+
+pkgname = genseat-git
+
