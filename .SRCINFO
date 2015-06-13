@@ -1,0 +1,21 @@
+pkgbase = perl-class-c3-componentised
+	pkgdesc = Load mix-ins or components to your C3-based class
+	pkgver = 1.001000
+	pkgrel = 3
+	url = http://search.cpan.org/dist/Class-C3-Componentised
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-exception
+	makedepends = perl-test-pod-coverage
+	depends = perl
+	depends = perl-class-c3
+	depends = perl-class-inspector
+	depends = perl-mro-compat
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/F/FR/FREW/Class-C3-Componentised-1.001000.tar.gz
+	md5sums = 5ab792bbcf6fc72468c06bf9faa3427d
+	sha512sums = 860b7cd09b1add6f252fddc0934e9f542231be90a57cf36afcab55684aca2fdb667777248c3583ad955ce0b76db44297515f56194ed2ec444dd8c801a01b5713
+
+pkgname = perl-class-c3-componentised
+
