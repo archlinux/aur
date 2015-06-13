@@ -1,0 +1,26 @@
+pkgbase = perl-devel-repl
+	pkgdesc = a modern perl interactive shell
+	pkgver = 1.003026
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Devel-REPL/
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-checkdeps>=0.007
+	makedepends = perl-test-fatal
+	depends = perl-b-keywords
+	depends = perl-data-dump-streamer
+	depends = perl-file-homedir
+	depends = perl-lexical-persistence
+	depends = perl-module-runtime
+	depends = perl-moose>=0.93
+	depends = perl-moosex-getopt>=0.18
+	depends = perl-moosex-object-pluggable>=0.0009
+	depends = perl-namespace-autoclean
+	depends = perl-ppi
+	depends = perl-task-weaken
+	source = http://cpan.metacpan.org/authors/id/E/ET/ETHER/Devel-REPL-1.003026.tar.gz
+	options = !emptydirs
+
+pkgname = perl-devel-repl
+
