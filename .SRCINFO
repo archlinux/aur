@@ -1,0 +1,33 @@
+pkgbase = wget-git
+	pkgdesc = A network utility to retrieve files from the Web
+	pkgver = 1.16.3.r60.gfd3a324
+	pkgrel = 1
+	url = http://www.gnu.org/software/wget/wget.html
+	install = wget.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	checkdepends = perl
+	checkdepends = perl-http-daemon
+	checkdepends = perl-io-socket-ssl
+	checkdepends = python
+	makedepends = git
+	makedepends = perl
+	makedepends = rsync
+	depends = libutil-linux
+	depends = gnutls
+	depends = libidn
+	depends = pcre
+	depends = libpsl>=0.7.1-3
+	optdepends = ca-certificates: HTTPS Downloads,
+	optdepends = libmetalink: Metalink support.
+	provides = wget
+	conflicts = wget
+	backup = etc/wgetrc
+	source = git://git.savannah.gnu.org/wget.git
+	source = git://git.savannah.gnu.org/gnulib.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = wget-git
+
