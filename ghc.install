@@ -1,0 +1,10 @@
+pre_upgrade() {
+  echo '==> Unregistering cabalized packages...'
+  [[ -d /usr/share/haskell-ghc-7.6 ]] && find /usr/share/haskell-ghc-7.6 -maxdepth 2 -name 'unregister.sh' -exec {} \;
+  echo '==> Done.'
+}
+
+post_upgrade() {
+  echo '==> All cabalized packages need to be reinstalled now.'
+  echo '==> See /usr/share/haskell-ghc-7.6/ and ghc-pkg-7.6 list --user for a tentative list of affected packages.'
+}
