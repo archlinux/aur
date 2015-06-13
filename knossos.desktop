@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Knossos
+Icon=/usr/lib/python3.4/site-packages/knossos/data/hlp.png
+Exec=knossos %U
+Terminal=false
+MimeType=x-scheme-handler/fso;
