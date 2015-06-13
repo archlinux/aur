@@ -1,0 +1,15 @@
+pkgbase = logkeys-keymaps-git
+	pkgdesc = Keymaps pack for logkeys.
+	pkgver = 2012.12.11
+	pkgrel = 1
+	url = http://code.google.com/p/logkeys/
+	arch = any
+	license = GPL3
+	provides = logkeys-keymaps
+	conflicts = logkeys-keymap
+	conflicts = logkeys-keymaps
+	source = logkeys-keymaps::git+http://wiki.logkeys.googlecode.com/git/
+	md5sums = SKIP
+
+pkgname = logkeys-keymaps-git
+
