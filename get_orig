@@ -1,0 +1,4 @@
+#!/bin/sh
+
+PKGURL=https://aur.archlinux.org/packages/li/linux-pf
+wget $PKGURL/PKGBUILD -O PKGBUILD.orig

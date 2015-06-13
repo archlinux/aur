@@ -1,0 +1,60 @@
+pkgbase = linux-pf
+	pkgdesc = Linux kernel and modules with the pf-kernel patch [-ck patchset (BFS included), TuxOnIce, BFQ] and aufs3
+	pkgver = 4.0.5
+	pkgrel = 1
+	url = http://pf.natalenko.name/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = xz
+	makedepends = bc
+	makedepends = kmod
+	options = !strip
+	source = ftp://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.xz
+	source = config
+	source = config.x86_64
+	source = linux.preset
+	source = change-default-console-loglevel.patch
+	source = http://pf.natalenko.name/sources/4.0/patch-4.0-pf5.xz
+	source = git+https://github.com/sfjro/aufs4-standalone#branch=aufs4.0
+	sha256sums = 0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991
+	sha256sums = 6322689b2406d1d616069386c3b40e5ce91c27f73722b6475212fc094a2a586d
+	sha256sums = 95c3c52baa69325f348d82ab2ec3a8e38e7e8dba52d74b0efa28d51995ac1540
+	sha256sums = 82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864
+	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
+	sha256sums = 04130aad729bf0639041a7b27bed309653760862c0a6ef2cd5efcb94d0c8683d
+	sha256sums = SKIP
+
+pkgname = linux-pf
+	pkgdesc = Linux kernel and modules with the pf-kernel patch [-ck patchset (BFS included), TuxOnIce, BFQ] and aufs3
+	install = linux.install
+	groups = base
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod>=9-2
+	depends = mkinitcpio>=0.7
+	optdepends = linux-docs: Kernel hackers manual - HTML documentation that comes with the Linux kernel.
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = pm-utils: utilities and scripts for suspend and hibernate power management
+	optdepends = tuxonice-userui: TuxOnIce userspace user interface
+	optdepends = hibernate-script: set of scripts for managing TuxOnIce, hibernation and suspend to RAM
+	optdepends = nvidia-pf: NVIDIA drivers for linux-pf
+	optdepends = nvidia-beta-all: NVIDIA drivers for all installed kernels
+	optdepends = modprobed_db: Keeps track of EVERY kernel module that has ever been probed. Useful for make localmodconfig.
+	provides = linux-pf=4.0
+	provides = aufs3
+	conflicts = linux-pf
+	conflicts = kernel26-pf
+	replaces = kernel26-pf
+	replaces = aufs3
+	backup = etc/mkinitcpio.d/linux-pf.preset
+
+pkgname = linux-pf-headers
+	pkgdesc = Header files and scripts for building modules for linux-pf kernel.
+	depends = linux-pf
+	provides = linux-pf-headers
+	conflicts = linux-pf-headers-
+

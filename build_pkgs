@@ -1,0 +1,26 @@
+#!/bin/bash
+# default config
+# default build arches
+CPU_ARCHES=( SANDYBRIDGE IVYBRIDGE HASWELL GENERIC)
+
+# init build dir 
+mkdir -p build/src
+# copy all sources to build dir
+for src in PKGBUILD linux.install linux.preset config config.x86_64 *.patch ; do
+    ln -s ../$src build/$src
+done
+# load local build script if found to apply gpg settings or alike, if existing
+if [ -e build_pkgs.local ] ; then
+    source build_pkgs.local
+fi
+
+cd build
+# start building 
+
+for cpu in ${CPU_ARCHES[*]} ; do
+    mkdir src
+    echo "CPU=$cpu" > src/batch_opts
+    # use our config file for makepkg
+    makepkg  --config makepkg.conf -f
+    rm -rf {src,pkg}
+done
