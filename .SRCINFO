@@ -1,0 +1,24 @@
+pkgbase = mingw-w64-qt5-systems-git
+	pkgdesc = Qt5 for Windows -- Qt Service Framework (mingw-w64)
+	pkgver = 5.0.0.beta1.112.g44f70d9
+	pkgrel = 1
+	url = http://qt-project.org/
+	arch = any
+	license = GPL3
+	license = LGPL
+	makedepends = mingw-w64-gcc
+	makedepends = git
+	depends = mingw-w64-qt5-base
+	depends = mingw-w64-qt5-declarative
+	provides = mingw-w64-qt5-systems
+	conflicts = mingw-w64-qt5-systems
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = git://gitorious.org/qt/qtsystems.git
+	source = qt5-qtsystems-fix-gcc49-compatibility.patch
+	md5sums = SKIP
+	md5sums = ec1bc57a6ee2264e9c92e1f0701c31ba
+
+pkgname = mingw-w64-qt5-systems-git
+

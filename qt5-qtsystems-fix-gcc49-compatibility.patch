@@ -1,0 +1,41 @@
+--- src/serviceframework/qservicereply.h.orig	2014-05-30 17:43:14.131200835 +0200
++++ src/serviceframework/qservicereply.h	2014-05-30 17:51:31.890174763 +0200
+@@ -91,17 +91,8 @@
+ {
+     Q_OBJECT
+     public:
+-    QServiceReply(QObject *p = 0)
+-        : QServiceReplyBase(p),
+-          m_proxyObject(0)
+-    {
+-        // nothing to do
+-    }
+-
+-    ~QServiceReply()
+-    {
+-        // nothing to do
+-    }
++    QServiceReply(QObject *p = 0);
++    ~QServiceReply();
+ 
+     QObject *proxyObject() const
+     {
+--- src/serviceframework/qservicereply.cpp.orig	2014-05-30 17:46:50.227663534 +0200
++++ src/serviceframework/qservicereply.cpp	2014-05-30 17:51:08.046792856 +0200
+@@ -259,3 +259,16 @@
+     Q_ASSERT(!d->running);
+ #endif
+ }
++
++QServiceReply::QServiceReply(QObject *p)
++        : QServiceReplyBase(p),
++          m_proxyObject(0)
++{
++    // nothing to do
++}
++
++QServiceReply::~QServiceReply()
++{
++    // nothing to do
++}
++
