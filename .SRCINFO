@@ -1,0 +1,16 @@
+pkgbase = hdx-normalmaps-512-git
+	pkgdesc = High Definition Expansion comprehensive normal maps for Minetest
+	pkgver = 19.143b608
+	pkgrel = 1
+	url = https://forum.minetest.net/viewtopic.php?id=1583
+	arch = any
+	license = GFDL
+	makedepends = git
+	depends = hdx-512
+	depends = minetest
+	provides = hdx-normalmaps-512
+	source = hdx-normalmaps-512-git::git://github.com/VanessaE/hdx-normalmaps-512.git
+	md5sums = SKIP
+
+pkgname = hdx-normalmaps-512-git
+
