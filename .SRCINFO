@@ -1,0 +1,20 @@
+pkgbase = pure-audio
+	pkgdesc = Digital audio interface for Pure
+	pkgver = 0.6
+	pkgrel = 1
+	url = http://purelang.bitbucket.org/
+	arch = i686
+	arch = x86_64
+	groups = pure-complete
+	groups = pure-multimedia
+	license = BSD
+	depends = pure
+	depends = portaudio
+	depends = fftw
+	depends = libsndfile
+	depends = libsamplerate
+	source = https://bitbucket.org/purelang/pure-lang/downloads/pure-audio-0.6.tar.gz
+	md5sums = 5c061e1b4085321832726a81b400dc4b
+
+pkgname = pure-audio
+
