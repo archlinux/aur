@@ -1,0 +1,13 @@
+pkgbase = sickle
+	pkgdesc = Windowed Adaptive Trimming for fastq files using quality
+	pkgver = 1.33
+	pkgrel = 1
+	url = https://github.com/najoshi/sickle
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = zlib
+	source = https://github.com/najoshi/sickle/archive/v1.33.tar.gz
+
+pkgname = sickle
+
