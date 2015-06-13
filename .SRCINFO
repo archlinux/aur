@@ -1,0 +1,33 @@
+pkgbase = kupfer-adds-git
+	pkgdesc = An interface for quick and convenient access to applications and their documents. Forked by Karol Bedkowski.
+	pkgver = 2013.10.26
+	pkgrel = 4
+	epoch = 1
+	url = https://github.com/KarolBedkowski/kupfer-adds
+	install = kupfer-adds-git.install
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = gnome-doc-utils
+	makedepends = docutils
+	makedepends = intltool
+	depends = python2-xdg
+	depends = pygtk
+	depends = python2-dbus
+	depends = python2-gconf
+	depends = python2-keybinder2
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	optdepends = gnome-python-desktop: enables all plugins and gnome integration
+	optdepends = python2-keyring: gnome keyring integration
+	optdepends = python2-wnck: tracks running applications
+	optdepends = python2-setproctitle: set process name
+	optdepends = python-gdata: google services
+	optdepends = xautomation: enables the Send Keys plugin
+	provides = kupfer
+	conflicts = kupfer
+	source = kupfer-adds::git://github.com/KarolBedkowski/kupfer-adds.git
+	md5sums = SKIP
+
+pkgname = kupfer-adds-git
+
