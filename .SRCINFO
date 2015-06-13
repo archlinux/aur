@@ -1,0 +1,18 @@
+pkgbase = silence-git
+	pkgdesc = An information management tool.
+	pkgver = 2012.10.07
+	pkgrel = 1
+	url = http://silence.sekalura.net
+	arch = i686
+	arch = x86_64
+	license = GPL2 only
+	makedepends = cmake
+	makedepends = git
+	depends = kdebase-runtime
+	provides = silence
+	conflicts = silence
+	source = git://gitorious.org/silence/silence.git
+	md5sums = SKIP
+
+pkgname = silence-git
+
