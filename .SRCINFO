@@ -1,0 +1,15 @@
+pkgbase = mbrola-voices-ca1
+	pkgdesc = A Canadian French male voice for the MBROLA synthesizer
+	pkgver = 1
+	pkgrel = 2
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-ca
+	groups = mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/ca1/ca1.zip
+	md5sums = 98c31362757892aca7940ad4d8db7873
+
+pkgname = mbrola-voices-ca1
+
