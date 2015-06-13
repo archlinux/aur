@@ -1,0 +1,16 @@
+pkgbase = pdextended-lv2plugin-git
+	pkgdesc = LV2 plugin host for Pd, Pd-Extended version
+	pkgver = 14.539522c
+	pkgrel = 1
+	url = https://bitbucket.org/agraef/pd-lv2plugin/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = pd-extended
+	depends = pdextended-pure
+	depends = pure-lilv
+	source = git+https://bitbucket.org/agraef/pd-lv2plugin
+	md5sums = SKIP
+
+pkgname = pdextended-lv2plugin-git
+
