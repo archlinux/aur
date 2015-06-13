@@ -1,0 +1,46 @@
+--- old/tools/CMakeLists.txt	2015-05-14 10:01:50.311020939 +0200
++++ new/tools/CMakeLists.txt	2015-05-14 10:01:42.569021316 +0200
+@@ -3,24 +3,24 @@
+ FILE(GLOB T_COMMONSRC common/*.cc)
+ ADD_LIBRARY(lcbtools OBJECT ${T_COMMONSRC})
+ 
+-ADD_EXECUTABLE(cbc cbc.cc
++ADD_EXECUTABLE(couchbase-cbc cbc.cc
+     $<TARGET_OBJECTS:lcbtools> $<TARGET_OBJECTS:cliopts>)
+-TARGET_LINK_LIBRARIES(cbc couchbase)
++TARGET_LINK_LIBRARIES(couchbase-cbc couchbase)
+ 
+ ADD_EXECUTABLE(cbc-pillowfight cbc-pillowfight.cc
+     $<TARGET_OBJECTS:lcbtools> $<TARGET_OBJECTS:cliopts>)
+ 
+ TARGET_LINK_LIBRARIES(cbc-pillowfight couchbase)
+ 
+-INSTALL(TARGETS cbc cbc-pillowfight RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
++INSTALL(TARGETS couchbase-cbc cbc-pillowfight RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+ 
+ # Set this before INSTALL_PDBS in order to set the correct output name
+ IF(MSVC)
+-    SET_TARGET_PROPERTIES(cbc PROPERTIES DEBUG_OUTPUT_NAME cbc_d)
++    SET_TARGET_PROPERTIES(couchbase-cbc PROPERTIES DEBUG_OUTPUT_NAME cbc_d)
+     SET_TARGET_PROPERTIES(cbc-pillowfight PROPERTIES DEBUG_OUTPUT_NAME cbc-pillowfight_d)
+ ENDIF()
+ 
+-INSTALL_PDBS(cbc)
++INSTALL_PDBS(couchbase-cbc)
+ INSTALL_PDBS(cbc-pillowfight)
+ 
+ SET_TARGET_PROPERTIES(lcbtools PROPERTIES COMPILE_FLAGS "${LCB_CORE_CXXFLAGS}")
+@@ -31,10 +31,10 @@
+         admin bucket-create bucket-delete cat cp create decr hash incr lock mcflush
+         rm stats unlock verbosity verify version verbosity view)
+     FOREACH(subcmd IN ITEMS ${CBC_SUBCOMMANDS})
+-        ADD_CUSTOM_COMMAND(TARGET cbc POST_BUILD
+-                           COMMAND ln -sf cbc "cbc-${subcmd}"
++        ADD_CUSTOM_COMMAND(TARGET couchbase-cbc POST_BUILD
++                           COMMAND ln -sf couchbase-cbc "cbc-${subcmd}"
+                            WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
+-                           COMMENT "Linking cbc -> cbc-${subcmd}")
++                           COMMENT "Linking couchbase-cbc -> cbc-${subcmd}")
+         INSTALL(FILES ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/cbc-${subcmd}
+                 DESTINATION ${CMAKE_INSTALL_BINDIR})
+     ENDFOREACH()
