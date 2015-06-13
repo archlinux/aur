@@ -1,0 +1,21 @@
+--- a/firehol.sh	2011-01-25 12:54:55.000000000 +0100
++++ b/firehol.sh	2011-09-12 22:31:09.893272704 +0200
+@@ -5731,18 +5731,6 @@
+ 	exit 0
+ fi
+ 
+-KERNELMAJ=`${UNAME_CMD} -r | ${SED_CMD}                   -e 's,\..*,,'`
+-KERNELMIN=`${UNAME_CMD} -r | ${SED_CMD} -e 's,[^\.]*\.,,' -e 's,\..*,,'`
+-
+-if [ "$KERNELMAJ" -lt 2 ] ; then
+-	echo >&2 "FireHOL requires a kernel version higher than 2.3."
+-	exit 0
+-fi
+-if [ "$KERNELMAJ" -eq 2 -a "$KERNELMIN" -lt 3 ] ; then
+-	echo >&2 "FireHOL requires a kernel version higher than 2.3."
+-	exit 0
+-fi
+-
+ if  ${LSMOD_CMD} 2>/dev/null | ${GREP_CMD} -q ipchains ; then
+ 	# Don't do both
+ 	echo >&2 "ipchains is loaded in the kernel. Please remove ipchains to run iptables."

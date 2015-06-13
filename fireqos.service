@@ -1,0 +1,11 @@
+[Unit]
+Description=FireQOS, a TC based bandwidth shaper
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/fireqos start
+ExecStop=/usr/bin/fireqos stop
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
