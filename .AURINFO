@@ -1,0 +1,16 @@
+pkgbase = freetype2-demos
+	pkgdesc = Freetype2 utilities such as ftdump and ftview.
+	pkgver = 2.5.5
+	pkgrel = 1
+	url = http://www.freetype.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libx11
+	depends = zlib
+	depends = freetype2
+	source = http://download.savannah.gnu.org/releases/freetype/ft2demos-2.5.5.tar.bz2
+	source = http://downloads.sourceforge.net/sourceforge/freetype/freetype-2.5.5.tar.bz2
+
+pkgname = freetype2-demos
+
