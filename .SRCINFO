@@ -1,0 +1,15 @@
+pkgbase = mbrola-voices-fr2
+	pkgdesc = A French female voice for the MBROLA synthesizer
+	pkgver = 980806
+	pkgrel = 1
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-fr
+	groups = mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/fr2/fr2-980806.zip
+	md5sums = 1488ea8ef76e97f1cf8af67963accf42
+
+pkgname = mbrola-voices-fr2
+
