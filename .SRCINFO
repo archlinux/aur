@@ -1,0 +1,14 @@
+pkgbase = pure-docs
+	pkgdesc = Pure Language and Library Documentation
+	pkgver = 0.64
+	pkgrel = 1
+	url = http://purelang.bitbucket.org/
+	arch = any
+	groups = pure-complete
+	groups = pure-base
+	license = FDL
+	source = https://bitbucket.org/purelang/pure-lang/downloads/pure-docs-0.64.tar.gz
+	md5sums = b1ec4450cdcbc5af67105b16fc8b0531
+
+pkgname = pure-docs
+
