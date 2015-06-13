@@ -1,0 +1,17 @@
+pkgbase = pure-octave
+	pkgdesc = embed an Octave interpreter into Pure.
+	pkgver = 0.6
+	pkgrel = 1
+	url = http://purelang.bitbucket.org/
+	arch = i686
+	arch = x86_64
+	groups = pure-complete
+	groups = pure-math
+	license = GPL3
+	depends = pure
+	depends = octave
+	source = https://bitbucket.org/purelang/pure-lang/downloads/pure-octave-0.6.tar.gz
+	sha1sums = 24e92f43b1315263a570f3a3be1c77866b5c395a
+
+pkgname = pure-octave
+
