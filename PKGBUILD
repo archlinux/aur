@@ -1,4 +1,4 @@
-# Maintainer: vmalloc support@cyborg-connect.de
+# Maintainer: vmalloc vmalloc@cyborg-connect.de
 pkgname=shttpd
 pkgver=0.53
 pkgrel=00
