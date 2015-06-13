@@ -18,10 +18,8 @@ pkgbase = docker-compose-git
 	depends = python-setuptools
 	provides = docker-compose
 	conflicts = docker-compose
-	source = docker-compose::git+https://github.com/docker/compose.git#tag=1.2.0
-	source = version.patch
+	source = compose::git+https://github.com/docker/compose.git
 	sha512sums = SKIP
-	sha512sums = d716f03591b720f178599bb9b4d3ac31d7fde4a20637d5edf626f517f159fd38dd3e47b1f8dfa303ff2523b54b729363c6be0b887c260581663b8e63e0005e43
 
 pkgname = docker-compose-git
 
