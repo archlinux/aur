@@ -1,0 +1,15 @@
+pkgbase = exabayes
+	pkgdesc = bayesian tree inference
+	pkgver = 1.4.1
+	pkgrel = 2
+	url = http://sco.h-its.org/exelixis/web/software/exabayes/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = gcc-libs
+	conflicts = exabayes-mpi
+	source = http://sco.h-its.org/exelixis/material/exabayes/1.4.1/exabayes-1.4.1-src.tar.gz
+	md5sums = 1d49d78705b6dab3b4fa4c602edae21f
+
+pkgname = exabayes
+
