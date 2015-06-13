@@ -1,0 +1,18 @@
+pkgbase = dropbox-index
+	pkgdesc = Creates index.html for directory contents shared publicly on Dropbox. That way you can easily share whole content of the directory without the need to send separate links for all the shared files.
+	pkgver = 0.4.3
+	pkgrel = 4
+	url = http://code.google.com/p/kosciak-misc/wiki/DropboxIndex
+	arch = any
+	license = Apache
+	makedepends = subversion
+	depends = python
+	depends = dropbox
+	conflicts = dropbox-index-svn
+	source = use_python3.patch
+	source = http://pypi.python.org/packages/source/d/dropbox-index/dropbox-index-0.4.3.tar.gz
+	md5sums = 64c39149c591419d8cb0d98aa47fb840
+	md5sums = 17af3dc3983770287237f49551c98341
+
+pkgname = dropbox-index
+
