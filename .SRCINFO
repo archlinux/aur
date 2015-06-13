@@ -1,0 +1,16 @@
+pkgbase = pure-meta-web
+	pkgdesc = Pure programming language, web package -- interfaces for database and web programming
+	pkgver = 1
+	pkgrel = 1
+	url = http://purelang.bitbucket.org/
+	arch = any
+	groups = pure-meta
+	license = custom
+	depends = pure-csv
+	depends = pure-fastcgi
+	depends = pure-odbc
+	depends = pure-sql3
+	depends = pure-xml
+
+pkgname = pure-meta-web
+
