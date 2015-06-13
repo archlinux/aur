@@ -1,0 +1,16 @@
+pkgbase = celestia-addon-star_destroyer
+	pkgdesc = Celestia addon: Fictional: Star Wars: Star Destroyer
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.celestiamotherlode.net/catalog/show_addon_details.php?addon_id=162
+	arch = any
+	license = unknown, free
+	makedepends = unzip
+	depends = celestia
+	depends = celestia-addon-tatooine_endor_deathstar
+	conflicts = celestia-addon-star-destroyer
+	source = http://celestiamotherlode.net/creators/jestr/SW-StarDestroyer(big).zip
+	md5sums = 670ea607572cc9335bd3cfa7f10aabf8
+
+pkgname = celestia-addon-star_destroyer
+
