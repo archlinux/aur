@@ -1,0 +1,24 @@
+pkgbase = python-netcdf4
+	pkgdesc = A python3 library for reading, manpiulating and creating netcdf files
+	pkgver = 1.1.8
+	pkgrel = 1
+	url = https://unidata.github.io/netcdf4-python/
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = cython
+	depends = python
+	depends = python-numpy
+	depends = netcdf>=4.1.2
+	depends = hdf5
+	depends = curl
+	depends = zlib
+	depends = libssh2
+	depends = openssl
+	depends = python-dateutil
+	optdepends = python2-netcdf4: python 2 version, includes docs and examples
+	source = https://github.com/Unidata/netcdf4-python/archive/v1.1.8rel.tar.gz
+	md5sums = 1c63b736e8479b263832690b399a7660
+
+pkgname = python-netcdf4
+
