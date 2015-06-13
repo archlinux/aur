@@ -1,6 +1,6 @@
 pkgbase = 4kyoutubetomp3
 	pkgdesc = Extract audio from YouTube, Vimeo, Facebook and other online video hosting services.
-	pkgver = 2.10.4.1435
+	pkgver = 2.10.5.1455
 	pkgrel = 1
 	url = http://www.4kdownload.com/products/product-youtubetomp3
 	arch = i686
@@ -9,15 +9,15 @@ pkgbase = 4kyoutubetomp3
 	depends = qt5-script
 	depends = portaudio
 	depends = ffmpeg-compat
-	depends = ffmpeg-compat-55>=2.3.4-2
+	depends = ffmpeg-compat-55
 	source = 4kyoutubetomp3.desktop
 	source = 4kyoutubetomp3.png
 	sha256sums = 386dfa4085efcd9403c4387c7be4dd0f9762c726555b5ebd0126dcd225bcf828
 	sha256sums = b25f830bb1fe559ea9f0b35cc9eb8ab75e2e40d09b8755f937451f5ddeeec2fd
 	source_i686 = http://downloads.4kdownload.com/app/4kyoutubetomp3_2.10_i386.tar.bz2
-	sha256sums_i686 = c35fa49cbe8ac4a247e4a638ec4fbf720da90c8816b29f26d72ecff04868a763
+	sha256sums_i686 = 59829f03030e06e6f6d8e0f8378b52219b292ff94d03bc2ad16e0547583c5ca7
 	source_x86_64 = http://downloads.4kdownload.com/app/4kyoutubetomp3_2.10_amd64.tar.bz2
-	sha256sums_x86_64 = 75f2dc088966e0c006478c867ae8ba274b739c8c8bfb45e70abeba7f43259a05
+	sha256sums_x86_64 = 5b1052fd8b67e21d42e604c2a02794e0a4a42ad3fa1ccb24175f1a0f2320e147
 
 pkgname = 4kyoutubetomp3
 
