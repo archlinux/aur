@@ -1,0 +1,18 @@
+pkgbase = bassmod-xmms
+	pkgdesc = A plugin for XMMS, using BASSMOD for playback, and UNMO3 for MO3 support
+	pkgver = 0.2
+	pkgrel = 3
+	url = http://www.un4seen.com/bassmod.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = xmms
+	noextract = bassmod-xmms.zip
+	noextract = bassmod20-linux.zip
+	source = http://us.un4seen.com/files/bassmod-xmms.zip
+	source = http://us.un4seen.com/files/bassmod20-linux.zip
+	md5sums = f7bb90f7782ef96cf97d14d2a006afb5
+	md5sums = fa33074a2274dee787655dd31d17bc31
+
+pkgname = bassmod-xmms
+
