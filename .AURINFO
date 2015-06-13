@@ -1,0 +1,15 @@
+pkgbase = perl-rose-datetime
+	pkgdesc = DateTime helper functions and objects
+	pkgver = 0.540
+	pkgrel = 2
+	url = http://search.cpan.org/dist/Rose-DateTime/
+	arch = any
+	license = PerlArtistic
+	makedepends = perl-test-pod
+	depends = perl-datetime
+	depends = perl-rose-object>=0.82
+	source = http://search.cpan.org/CPAN/authors/id/J/JS/JSIRACUSA/Rose-DateTime-0.540.tar.gz
+	options = !emptydirs
+
+pkgname = perl-rose-datetime
+
