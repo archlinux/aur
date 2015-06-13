@@ -1,14 +1,14 @@
 pkgbase = ninekey
 	pkgdesc = A barebones hotkey/launcher application
-	pkgver = 0.1
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/xordspar0/ninekey
 	arch = any
 	license = MIT
 	depends = python
 	depends = python-pyqt4
-	source = https://github.com/xordspar0/ninekey/archive/v0.1.tar.gz
-	sha256sums = dcc8b4f63bbaa9af444dddb960b24e57f3a91e0d6620d8fad8e9d89a16fe6c0e
+	source = https://github.com/xordspar0/ninekey/archive/v0.1.1.tar.gz
+	sha256sums = 3651539f2b4850e4e979afefba77dc5d7729dfd72d316c2c8d49dff14ae55eca
 
 pkgname = ninekey
 
