@@ -1,0 +1,15 @@
+pkgbase = kbdd
+	pkgdesc = Simple daemon and library to make per window layout.
+	pkgver = 0.7
+	pkgrel = 3
+	url = https://github.com/qnikst/kbdd
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = libx11
+	depends = dbus-glib
+	source = https://github.com/qnikst/kbdd/archive/v0.7.tar.gz
+	md5sums = 0d8abb1d70c2dd43c041ecafd8324133
+
+pkgname = kbdd
+
