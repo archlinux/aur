@@ -1,0 +1,35 @@
+pkgbase = spectrwm-git
+	pkgdesc = A minimalistic dynamic tiling window manager that tries to stay out of the way.
+	pkgver = 20140826
+	pkgrel = 1
+	url = http://www.spectrwm.org
+	arch = i686
+	arch = x86_64
+	license = custom:ISC
+	makedepends = git
+	depends = dmenu
+	depends = xcb-util
+	depends = xcb-util-wm
+	depends = xcb-util-keysyms
+	depends = libxft
+	depends = profont
+	optdepends = scrot: screenshots
+	optdepends = xlockmore: screenlocking
+	optdepends = terminus-font: great font
+	provides = scrotwm
+	provides = spectrwm
+	conflicts = scrotwm
+	conflicts = spectrwm
+	replaces = scrotwm
+	backup = etc/spectrwm.conf
+	source = git://opensource.conformal.com/spectrwm.git
+	source = http://opensource.conformal.com/snapshots/spectrwm/spectrwm-2.5.1.tgz
+	source = LICENSE
+	source = baraction.sh
+	md5sums = SKIP
+	md5sums = d9aec3342920e31cbe60f1032571043a
+	md5sums = a67cfe51079481e5b0eab1ad371379e3
+	md5sums = 950d663692e1da56e0ac864c6c3ed80e
+
+pkgname = spectrwm-git
+
