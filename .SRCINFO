@@ -1,0 +1,16 @@
+pkgbase = perl-time-period
+	pkgdesc = A Perl module to deal with time periods
+	pkgver = 1.25
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Time-Period/
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PB/PBOYD/Time-Period-1.25.tar.gz
+	md5sums = 92f33afda0f440be7335a163ac246ab1
+	sha512sums = 528dc8c31692da61170362df8d32c81d4811edfa8388752c82452e57f2349f9345b7ee4611c4cf48bfe7aae19cdad50513f9ce6347768be61970c507c0c0e98d
+
+pkgname = perl-time-period
+
