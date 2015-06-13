@@ -1,0 +1,22 @@
+pkgbase = kronometer-frameworks-git
+	pkgdesc = A stopwatch application for KDE KF5 Frameworks branch (GIT version)
+	pkgver = 1.5.2.r274.6225d13
+	pkgrel = 1
+	url = http://www.digikam.org/sharedlibs
+	install = kronometer-frameworks-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	makedepends = git
+	depends = kio
+	depends = hicolor-icon-theme
+	conflicts = kronometer
+	source = git://anongit.kde.org/kronometer.git#branch=frameworks
+	sha1sums = SKIP
+
+pkgname = kronometer-frameworks-git
+
