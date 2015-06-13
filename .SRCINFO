@@ -1,0 +1,17 @@
+pkgbase = plyvel
+	pkgdesc = Plyvel, a fast and feature-rich Python interface to LevelDB
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://github.com/wbolster/plyvel
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cython
+	makedepends = python-setuptools
+	depends = python
+	depends = leveldb
+	source = https://github.com/wbolster/plyvel/archive/0.9.tar.gz
+	md5sums = f507bcdb8a8187bf75deb22f000695fa
+
+pkgname = plyvel
+
