@@ -1,0 +1,15 @@
+pkgbase = kicad-library-ab2-git
+	pkgdesc = The schematic and 3D libraries supported by AB2 tech
+	pkgver = 669.86efa0c
+	pkgrel = 1
+	url = https://github.com/ab2tech/KiCad
+	arch = any
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	conflicts = kicad-library-bzr
+	source = git+https://github.com/ab2tech/KiCad.git
+	md5sums = SKIP
+
+pkgname = kicad-library-ab2-git
+
