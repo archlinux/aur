@@ -1,0 +1,17 @@
+pkgbase = elektra
+	pkgdesc = Elektra is a universal hierarchical configuration store
+	pkgver = 0.8.9
+	pkgrel = 2
+	url = http://freedesktop.org/wiki/Software/Elektra
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = docbook-xsl
+	makedepends = texlive-latexextra
+	makedepends = cmake
+	depends = libxml2
+	source = ftp://ftp.markus-raab.org/elektra/releases/elektra-0.8.9.tar.gz
+	md5sums = 001c4ec67229046509a0cb9eda223dc6
+
+pkgname = elektra
+
