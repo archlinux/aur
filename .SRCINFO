@@ -1,0 +1,17 @@
+pkgbase = archipel-client
+	pkgdesc = A solution to manage and supervise virtual machines. (GUI)
+	pkgver = 0.6.0.beta
+	pkgrel = 1
+	url = http://archipelproject.org/
+	install = archipel-client.install
+	arch = any
+	license = AGPL
+	source = http://updates.archipelproject.org/archipel-gui-beta6.zip
+	source = archipel.desktop
+	source = archipel.svg
+	md5sums = 692a35e0880645fca37dc4f5627c7ed8
+	md5sums = cf9d5e382bfebd10b183fad369da1454
+	md5sums = a5fce1cc61847b4a5220a9b1ed4d4f3d
+
+pkgname = archipel-client
+

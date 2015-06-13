@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Exec=xdg-open "file:///usr/share/archipel/index.html"
+Name=Archipel Client GUI
+Comment=Client GUI for connecting to Archipel XMPP Server
+Icon=archipel
+Terminal=false
+StartupNotify=true
+Categories=System;
