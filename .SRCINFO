@@ -1,0 +1,33 @@
+pkgbase = python2-pandas-git
+	pkgdesc = R-like data analysis library for Python.
+	pkgver = 8848.7e2f7bc
+	pkgrel = 1
+	url = http://pandas.pydata.org
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cython2
+	depends = python2
+	depends = python2-numpy
+	depends = python2-dateutil
+	optdepends = python2-numexpr: for accelerating certain numerical operations (recommended)
+	optdepends = python2-bottleneck: for accelerating certain types of nan evaluations (recommended)
+	optdepends = python2-scipy: for miscellaneous statistical functions
+	optdepends = python2-pytables: for HDF5-based storage
+	optdepends = python2-matplotlib: for plotting
+	optdepends = scikits-statsmodels: for parts of pandas.stats
+	optdepends = python2-openpyxl>=1.6.1: for Excel I/O
+	optdepends = python2-xlrd: for Excel I/O
+	optdepends = python2-xlwt: for Excel I/O
+	optdepends = python2-boto: for Amazon S3 access
+	optdepends = python2-beautifulsoup4: for read_html function
+	optdepends = python2-html5lib: for read_html function
+	optdepends = python2-lxml: for read_html function
+	provides = python2-pandas
+	conflicts = python2-pandas
+	source = pandas::git+git://github.com/pydata/pandas
+	md5sums = SKIP
+
+pkgname = python2-pandas-git
+
