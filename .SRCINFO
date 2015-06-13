@@ -1,0 +1,14 @@
+pkgbase = python2-grs-git
+	pkgdesc = Fetch TWSE stock data
+	pkgver = v0.4.2.r0.g0b7989d
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/grs
+	arch = any
+	license = custom
+	depends = python2
+	depends = python2-dateutil
+	source = grs::git+https://github.com/toomore/grs
+	md5sums = SKIP
+
+pkgname = python2-grs-git
+
