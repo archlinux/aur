@@ -1,0 +1,17 @@
+pkgbase = solarwolf-widescreen
+	pkgdesc = Scramble through 60 levels collecting space boxes while dodging obstacles. Widescreen fork.
+	pkgver = 1.5
+	pkgrel = 4
+	url = http://posor.hostingkunde.de/solarwolf/solarwolf.htm
+	arch = any
+	license = LGPL
+	depends = python2-pygame
+	provides = solarwolf
+	conflicts = solarwolf
+	source = http://posor.hostingkunde.de/solarwolf/solarwolf_we.tar.bz2
+	source = solarwolf-wide.desktop
+	md5sums = 41858897fbe0ad39c9152ec6c10d503c
+	md5sums = 8c5a88274360238cb970bc451c6873df
+
+pkgname = solarwolf-widescreen
+
