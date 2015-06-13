@@ -1,0 +1,34 @@
+pkgbase = virt-manager-qt
+	pkgdesc = Qt Virtual Machine Manager provides a graphical tool for administering virtual machines for QEMU/KVM, Xen, and LXC and other Virtual Entities. Uses libvirt as the backend management API.
+	pkgver = 0.10.21
+	pkgrel = 1
+	url = https://github.com/F1ash/qt-virt-manager
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = qt4
+	makedepends = qtermwidget-q4
+	makedepends = qt5-base
+	makedepends = qt5-svg
+	makedepends = qtermwidget
+	depends = libvirt
+	depends = scrub
+	source = git+https://github.com/F1ash/qt-virt-manager.git#tag=0.10.21
+	md5sums = SKIP
+
+pkgname = virt-manager-qt4
+	pkgdesc = Qt Virtual Machine Manager provides a graphical tool for administering virtual machines for QEMU/KVM, Xen, and LXC and other Virtual Entities. Uses libvirt as the backend management API. qt4
+	depends = libvirt
+	depends = scrub
+	depends = qt4
+	depends = qtermwidget-q4
+
+pkgname = virt-manager-qt5
+	pkgdesc = Qt Virtual Machine Manager provides a graphical tool for administering virtual machines for QEMU/KVM, Xen, and LXC and other Virtual Entities. Uses libvirt as the backend management API. qt5
+	depends = libvirt
+	depends = scrub
+	depends = qt5-base
+	depends = qt5-svg
+	depends = qtermwidget
+
