@@ -1,0 +1,20 @@
+pkgbase = usenew-git
+	pkgdesc = wine prefix manager with some libs around it written for POSIX shells and in some parts for bash shell
+	pkgver = e8098e6
+	pkgrel = 1
+	url = https://github.com/Thaodan/usenew
+	arch = any
+	license = GPL2
+	makedepends = shpp
+	depends = sh
+	depends = bash
+	depends = coreutils
+	depends = sed
+	depends = wine
+	depends = libsh
+	provides = usenew
+	source = git+https://github.com/Thaodan/usenew
+	md5sums = SKIP
+
+pkgname = usenew-git
+
