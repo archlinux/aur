@@ -1,0 +1,15 @@
+pkgbase = mbrola-voices-fr5
+	pkgdesc = A French Belgian voice for the MBROLA synthesizer
+	pkgver = 991020
+	pkgrel = 1
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-fr
+	groups = mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/fr5/fr5-991020.zip
+	md5sums = 2ebf4105702ab2aa037491338ed05ebb
+
+pkgname = mbrola-voices-fr5
+
