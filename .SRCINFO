@@ -1,0 +1,15 @@
+pkgbase = celestia-addon-atlantis_2
+	pkgdesc = Celestia addon: Spacecraft: Earth Orbit: Atlantis with Flight Deck
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://www.celestiamotherlode.net/catalog/show_addon_details.php?addon_id=861
+	arch = any
+	license = Creative Commons, some rights reserved
+	makedepends = unzip
+	depends = celestia
+	conflicts = celestia-addon-atlantis-2
+	source = http://www.celestiamotherlode.net/creators/elchristou/EC_Atlantis_FD.zip
+	md5sums = 08e74b20c0969c998ce230be8a0061a2
+
+pkgname = celestia-addon-atlantis_2
+
