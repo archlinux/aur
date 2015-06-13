@@ -1,0 +1,15 @@
+pkgbase = haserl
+	pkgdesc = Tiny dynamic CGI web server with your shell or Lua.
+	pkgver = 0.9.33
+	pkgrel = 1
+	url = http://haserl.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = sh
+	depends = lua
+	source = http://downloads.sourceforge.net/haserl/haserl-0.9.33.tar.gz
+	md5sums = a9decddb508944d56f71dd2f821e2ec5
+
+pkgname = haserl
+
