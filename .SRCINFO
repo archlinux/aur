@@ -1,0 +1,13 @@
+pkgbase = tn5250j-plugin-kunststoff
+	pkgdesc = Support for Kunststoff look and feel in tn5250j
+	pkgver = 2.0.2
+	pkgrel = 2
+	url = http://kunstoff.incors.com/archive/
+	arch = any
+	license = LGPL
+	depends = tn5250j
+	source = http://kunstoff.incors.com/archive/kunststoff-2_0_2.zip
+	md5sums = d6103e5a570560d0624ca8f515c78e66
+
+pkgname = tn5250j-plugin-kunststoff
+
