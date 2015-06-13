@@ -1,0 +1,17 @@
+pkgbase = pure-glpk
+	pkgdesc = A feature complete GLPK interface for the Pure programming language.
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://purelang.bitbucket.org/
+	arch = i686
+	arch = x86_64
+	groups = pure-complete
+	groups = pure-math
+	license = GPL3
+	depends = pure
+	depends = glpk
+	source = https://bitbucket.org/purelang/pure-lang/downloads/pure-glpk-0.5.tar.gz
+	sha1sums = cf7146328d8ebbaefedc92ea8fe8b3eb84083ab4
+
+pkgname = pure-glpk
+
