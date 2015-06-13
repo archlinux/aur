@@ -1,0 +1,15 @@
+pkgbase = mbrola-voices-hb2
+	pkgdesc = A Hebrew female voice for the MBROLA synthesizer
+	pkgver = 1
+	pkgrel = 2
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-hb
+	groups = mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/hb2/hb2.zip
+	md5sums = 479d927422ee026d7bb08cfbeb752d3a
+
+pkgname = mbrola-voices-hb2
+
