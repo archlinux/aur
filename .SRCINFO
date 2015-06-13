@@ -1,0 +1,17 @@
+pkgbase = wannier90
+	pkgdesc = Compute maximally-localised Wannier functions (MLWFs).
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = http://www.wannier.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-fortran
+	depends = lapack
+	depends = blas
+	options = staticlibs
+	source = http://www.wannier.org/code/wannier90-2.0.0.tar.gz
+	sha1sums = 1d257c542327cdcf7481450170fb5887a90673a0
+
+pkgname = wannier90
+
