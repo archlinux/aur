@@ -1,0 +1,18 @@
+pkgbase = antimony
+	pkgdesc = Graph-based 3D CSG CAD modeller
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = http://www.mattkeeter.com/projects/antimony/3/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	depends = qt5-base
+	depends = boost-libs
+	depends = python
+	depends = libpng
+	source = https://github.com/mkeeter/antimony/archive/0.8.0.tar.gz
+	md5sums = cf3873907a46cc6230de78c66e12c66d
+
+pkgname = antimony
+
