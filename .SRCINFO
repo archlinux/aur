@@ -1,0 +1,13 @@
+pkgbase = plasma-theme-tilain
+	pkgdesc = Tilain is a simple theme for the KDE Plasma
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = http://kde-look.org/content/show.php/Tilain+Plasma?content=162768
+	arch = any
+	license = CCPL
+	depends = kdebase-workspace
+	source = http://q.gs/4869882/tilainplasma
+	md5sums = 129556d61fa30bf1d004d280ae3f5260
+
+pkgname = plasma-theme-tilain
+
