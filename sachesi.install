@@ -1,0 +1,7 @@
+## arg 1:  the new package version
+post_install() {
+  echo "==> NOTICE: In order to connect to your BlackBerry device,"
+  echo "==> you may need to run:"
+  echo "==> # systemctl start dhcpcd@usb0"
+  echo "==> _usb0_ is your BB usb interface, this may vary between PCs"
+}
