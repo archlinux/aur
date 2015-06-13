@@ -1,0 +1,14 @@
+pkgbase = ruby-to_slug
+	pkgdesc = Extends ruby's String class and adds a 'to_slug' method. It makes ugly strings URL friendly.
+	pkgver = 1.0.8
+	pkgrel = 3
+	url = https://github.com/ericboehs/to_slug
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = to_slug-1.0.8.gem
+	source = http://rubygems.org/downloads/to_slug-1.0.8.gem
+	sha512sums = 84d6736e062f3c9ba67736dda593e88f38b92315951b4b837bacc2c62970e6366356f3716483d4ecb9e4c0b8ebdb288004e9a922368c7bd519666f20f95353db
+
+pkgname = ruby-to_slug
+
