@@ -1,0 +1,19 @@
+pkgbase = ii-net
+	pkgdesc = russian fido-like messaging system with web interface
+	pkgver = 03
+	pkgrel = 6
+	url = http://ii.51t.ru
+	arch = any
+	license = custom
+	depends = python2
+	source = http://ii-net.tk/files/ii-03.tar.gz
+	source = http://ii-net.tk/files/iiclient-03.tar.gz
+	source = http://ii-net.tk/files/iitxt-03.tar.gz
+	source = http://ii-net.tk/files/scripts.tar.gz
+	md5sums = 5d294fa75f9dd75882cc643885a98e7a
+	md5sums = e03e272a91ea5e9f3ac74aa63c7508bd
+	md5sums = 19bc53a1dbc3219ab6411a6b03cf2532
+	md5sums = 82e83f28a3c00362df71cfd200cac923
+
+pkgname = ii-net
+
