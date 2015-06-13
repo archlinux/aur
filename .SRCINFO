@@ -1,0 +1,14 @@
+pkgbase = libhid
+	pkgdesc = A library for accessing USB HID devices
+	pkgver = 0.2.16
+	pkgrel = 4
+	url = http://libhid.alioth.debian.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = libusb-compat
+	source = http://distcache.FreeBSD.org/ports-distfiles/libhid-0.2.16.tar.gz
+	md5sums = f2a427a6d6b98a5db8d17e2777173af7
+
+pkgname = libhid
+
