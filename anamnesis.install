@@ -1,0 +1,9 @@
+
+post_install() {
+	ln -s /usr/share/anamnesis/anamnesis.py /usr/bin/anamnesis
+}
+
+post_remove() {
+	rm /usr/bin/anamnesis
+}
+
