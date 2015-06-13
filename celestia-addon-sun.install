@@ -1,0 +1,21 @@
+
+post_install() {
+	echo "WARNING: This plugin overwrites the following Celestia file:"
+	echo "/usr/share/celestia/textures/medres/gstar.jpg"
+	echo "It will be restored from the gstar-original.jpg file"
+	echo "when you uninstall the celestia-addon-sun package."
+
+	mv --verbose "/usr/share/celestia/textures/medres/gstar.jpg" "/usr/share/celestia/textures/medres/gstar-original.jpg"
+	mv --verbose "/tmp/gstar.jpg" "/usr/share/celestia/textures/medres/"
+}
+
+post_upgrade() {
+	post_install
+}
+
+
+post_remove() {
+	echo "Restore the original Celestia file:"
+	echo "/usr/share/celestia/textures/medres/gstar.jpg"
+	mv --verbose "/usr/share/celestia/textures/medres/gstar-original.jpg" "/usr/share/celestia/textures/medres/gstar.jpg"
+}
