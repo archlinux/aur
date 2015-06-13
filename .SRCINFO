@@ -1,0 +1,16 @@
+pkgbase = python-cutadapt
+	pkgdesc = trim adapters from high-throughput sequencing reads
+	pkgver = 1.8
+	pkgrel = 1
+	url = http://code.google.com/p/cutadapt/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = python
+	provides = cutadapt
+	conflicts = python2-cutadapt
+	source = https://pypi.python.org/packages/source/c/cutadapt/cutadapt-1.8.tar.gz
+	md5sums = 73cc9c52d1b14883c24a4c29b16e0b61
+
+pkgname = python-cutadapt
+
