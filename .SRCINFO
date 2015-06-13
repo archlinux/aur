@@ -1,0 +1,15 @@
+pkgbase = yadsync
+	pkgdesc = YADSync (yet another directories sync, PyKDE/PyGTK GUI for rsync) is a simple tool to easy synchronize a set of directories.
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://yadsync.le-web.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = rsync
+	depends = python2
+	source = http://yadsync.le-web.org/download/yadsync/yadsync-1.0_src.tar.gz
+	md5sums = 39d20bf058c17aaa7545d12e41f840a5
+
+pkgname = yadsync
+
