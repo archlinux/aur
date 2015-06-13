@@ -1,0 +1,16 @@
+pkgbase = huggle-git
+	pkgdesc = Huggle Anti-Vandalism tool for Wikipedia
+	pkgver = r.
+	pkgrel = 1
+	url = https://en.wikipedia.org/wiki/Wikipedia:Huggle
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = GPL
+	makedepends = git
+	makedepends = qconf
+	source = git+https://github.com/huggle/huggle3-qt-lx.git
+	md5sums = SKIP
+
+pkgname = huggle-git
+
