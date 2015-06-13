@@ -1,0 +1,18 @@
+pkgbase = python-liblarch
+	pkgdesc = Python library to easily handle data structure
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://wiki.gnome.org/action/show/Projects/liblarch
+	arch = any
+	license = LGPL3
+	checkdepends = python-nose
+	makedepends = python
+	makedepends = python-distribute
+	depends = python
+	provides = python-liblarch_gtk
+	conflicts = python-liblarch_gtk
+	source = https://github.com/liblarch/liblarch/archive/v3.0.tar.gz
+	sha256sums = 3d8b337d7a71ea84387e90196b465f617649b59a1c8f0b0c49e6655987ac730c
+
+pkgname = python-liblarch
+
