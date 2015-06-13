@@ -1,0 +1,14 @@
+pkgbase = cba
+	pkgdesc = Continuous beam analysis - calculates member forces and support reactions of a continuous beam
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = http://cbeam.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = wxgtk
+	source = http://downloads.sourceforge.net/sourceforge/cbeam/cba-0.3.6-linux.tar.gz
+	md5sums = ef9d12b03918e8b75fdc3b1525412b5c
+
+pkgname = cba
+
