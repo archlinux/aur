@@ -1,0 +1,15 @@
+pkgbase = mbrola-voices-gr1
+	pkgdesc = A Greek male voice for the MBROLA synthesizer
+	pkgver = 990610
+	pkgrel = 2
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-gr
+	groups = mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/gr1/gr1-990610.zip
+	md5sums = 2a066550b3caa8038230bf1a335f073d
+
+pkgname = mbrola-voices-gr1
+
