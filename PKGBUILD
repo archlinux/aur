@@ -8,10 +8,10 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt             # Build kernel with a different name
 _srcname=linux-4.0
-_pkgver=4.0.4
-_rtpatchver=rt1
+_pkgver=4.0.5
+_rtpatchver=rt3
 pkgver=${_pkgver}_${_rtpatchver}
-pkgrel=3
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -25,25 +25,19 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar."{xz,sign}
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset"
         'change-default-console-loglevel.patch'
-        'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch'
-        'md-raid0-fix-restore-to-sector-variable-in-raid0_mak.patch'
-        'i915-bogus-warning-from-i915-when-running-on-PREEMPT_RT.patch'
-        'fix-typo-in-intel-sst.patch')
+        'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch')
 
 sha256sums=('0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991'
             'SKIP'
-            'c268985a82483fe75f0f397217208e262f85a356d1d9f34b9e22255e549d7ce9'
+            '60b691210a9e412710e29eac6468d64b6c4d1efc53a6e22878dd51044001adf0'
             'SKIP'
-            'd69e0a95e30acc679343593a0c9d8eb9caf874cc2a97ae599691aef4e5a589f7'
+            '508e57f15acfcc0cb01163c8238fe2c85998cbe5d091b6c85c6e3d6a54cf6f7d'
             'SKIP'
             '7db363fd3001c5235a6ec499310ecec6f552faa3c2872954ccbb9d02e6e8e817'
             'cb290ad42aed7f297d90b112227af533e37cfeabbf8bff8a9df4674647b461ab'
             '2abb6e506e4a687723d6a6dc21703f5d2b42a8956fbc3313e3da2b03c718c80d'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '7a42d16108eb9a8eacadef3603527fa1beab857cc4db3bd228858488fb1f3fda'
-            'b8911ed02e9f463bdff9dfe0dde84f0b3a9650aa989a5e9a6c4fad67a0ce19c9'
-            '396e6adf67143770881d0609633e40a8bf3e462ca6e539773466a561940d84d8'
-            'a2bb8b48f0ddcd432f2ac62bef731357c29d106f2d32efa92ef571476d722216')
+            '7a42d16108eb9a8eacadef3603527fa1beab857cc4db3bd228858488fb1f3fda')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -75,18 +69,6 @@ prepare() {
   # Stops X from hanging on certain NVIDIA cards
   msg "fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch"
   patch -p1 -i "${srcdir}/fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch"
-
-  # Fix a problem with raid0
-  msg "md-raid0-fix-restore-to-sector-variable-in-raid0_mak.patch"
-  patch -p1 -i "${srcdir}/md-raid0-fix-restore-to-sector-variable-in-raid0_mak.patch"
-
-  # stop a bogus WARN_ON with i915
-  msg "applying i915-bogus-warning-from-i915-when-running-on-PREEMPT_RT.patch"
-  patch -p1 -i "${srcdir}/i915-bogus-warning-from-i915-when-running-on-PREEMPT_RT.patch"
-
-  # fix a typo in soc/intel/sst//sst.c
-  msg "applying fix-typo-in-intel-sst.patch"
-  patch -p1 -i "${srcdir}/fix-typo-in-intel-sst.patch"
 
   msg "All patches have successfully been applied"
 
