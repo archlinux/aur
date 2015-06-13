@@ -1,0 +1,22 @@
+pkgbase = lib32-js
+	pkgdesc = JavaScript interpreter and libraries (32-bit)
+	pkgver = 24.2.0
+	pkgrel = 2
+	url = https://developer.mozilla.org/En/SpiderMonkey/24
+	arch = x86_64
+	license = MPL
+	makedepends = python2
+	makedepends = zip
+	makedepends = lib32-libffi
+	makedepends = gcc-multilib
+	depends = js
+	depends = lib32-nspr
+	depends = lib32-readline
+	depends = lib32-zlib
+	depends = gcc-libs-multilib
+	options = !staticlibs
+	source = http://ftp.mozilla.org/pub/mozilla.org/js/mozjs-24.2.0.tar.bz2
+	sha1sums = ce779081cc11bd0c871c6f303fc4a0091cf4fe66
+
+pkgname = lib32-js
+
