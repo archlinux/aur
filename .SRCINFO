@@ -1,0 +1,12 @@
+pkgbase = csslint
+	pkgdesc = Automated linting of Cascading Stylesheets
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/stubbornella/csslint
+	arch = any
+	license = GPL
+	depends = nodejs
+	conflicts = csslint-git
+
+pkgname = csslint
+
