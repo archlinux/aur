@@ -1,0 +1,15 @@
+pkgbase = ttf-kibitaki-git
+	pkgdesc = Japanese TrueType font obtained by mixing M+ and Source Code Pro
+	pkgver = 20140710
+	pkgrel = 1
+	url = http://kibitaki.lindwurm.biz/
+	install = ttf.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = git+https://github.com/Koruri/Kibitaki.git
+	md5sums = SKIP
+
+pkgname = ttf-kibitaki-git
+
