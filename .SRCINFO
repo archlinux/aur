@@ -1,0 +1,18 @@
+pkgbase = brogue
+	pkgdesc = A 26-level dungeon crawl to the Amulet of Yendor.
+	pkgver = 1.7.4
+	pkgrel = 1
+	url = http://sites.google.com/site/broguegame/
+	install = brogue.install
+	arch = i686
+	arch = x86_64
+	license = AGPL3
+	depends = sdl
+	depends = libtcod
+	source = https://sites.google.com/site/broguegame/brogue-1.7.4-linux-i386.tbz2
+	source = brogue.sh
+	md5sums = 8ef1d4b985b4e73685f52db80200262c
+	md5sums = 9de3fa32ba7fe562b0224417eaea5c26
+
+pkgname = brogue
+
