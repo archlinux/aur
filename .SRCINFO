@@ -1,0 +1,14 @@
+pkgbase = pclock
+	pkgdesc = Dockapp showing a simple analog clock.
+	pkgver = 0.13.1
+	pkgrel = 8
+	url = http://web.archive.org/web/20121130081327/http://dockapps.windowmaker.org/file.php/id/7
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	source = pclock-0.13.1.tgz
+	md5sums = c700933e3ec53beed738c5167fc255c1
+
+pkgname = pclock
+
