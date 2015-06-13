@@ -1,0 +1,27 @@
+--- frox-0.7.18/src/ftp-cmds.c.orig	2006-11-27 16:08:04.000000000 +0100
++++ frox-0.7.18/src/ftp-cmds.c	2006-11-27 17:07:31.000000000 +0100
+@@ -156,6 +156,10 @@ void port_parse(sstr * cmd, sstr * arg)
+ 	rclose(&info->server_listen);
+ 	rclose(&info->client_listen);
+ 
++	if(!config.transdata)
++		get_local_address(info->client_control.fd,
++				  &info->apparent_server_address);
++
+ 	if(config.apconv) {
+ 		info->mode = APCONV;
+ 		write_log(VERBOSE, "Rewriting PORT command to PASV");
+--- frox-0.7.18/src/data.c.orig	2006-11-27 15:26:10.000000000 +0100
++++ frox-0.7.18/src/data.c	2006-11-27 16:24:24.000000000 +0100
+@@ -220,8 +220,9 @@ int connect_client_data()
+ 	else {
+ 		info->client_data.fd =
+ 			connect_to_socket(&info->client_data.address,
+-					  config.listen.s_addr ? &config.
+-					  listen : NULL, config.actvports);
++					  config.listen.s_addr ? &config.listen :
++					  &info->apparent_server_address.sin_addr,
++					  config.actvports);
+ 	}
+ 	if(info->client_data.fd == -1) {
+ 		write_log(ERROR, "Failed to contact client data port");

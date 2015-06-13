@@ -1,0 +1,20 @@
+pkgbase = frox
+	pkgdesc = A transparent ftp proxy that optionally supports caching
+	pkgver = 0.7.18
+	pkgrel = 5
+	url = http://frox.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	backup = etc/frox.conf
+	source = http://downloads.sourceforge.net/frox/frox-0.7.18.tar.gz
+	source = frox.service
+	source = frox-0.7.18-clientdata_socket.patch
+	source = frox.conf.patch
+	md5sums = d4ba3a22db472922c71b0e63ca64b10b
+	md5sums = 022f05592f19e05895fa36541fb9b514
+	md5sums = 4f69c821c75d870837baa7f4d0af75a7
+	md5sums = 774646b5c80f1b22be6c3f48e130c5df
+
+pkgname = frox
+

@@ -1,0 +1,12 @@
+[Unit]
+Description=A transparent ftp proxy that optionally supports caching
+Documentation=man:frox(8)
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/var/run/frox.pid
+ExecStart=/usr/sbin/frox
+
+[Install]
+WantedBy=multi-user.target
