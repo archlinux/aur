@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=0.2.0
+Type=Application
+Encoding=UTF-8
+Name=XScorch
+Comment=A clone of the classic DOS game Scorched Earth
+Icon=xscorch-icon.xpm
+Exec=xscorch
+Terminal=false
+Categories=Application;Game;

@@ -1,0 +1,17 @@
+pkgbase = xscorch
+	pkgdesc = A clone of the classic DOS game Scorched Earth
+	pkgver = 0.2.1
+	pkgrel = 2
+	url = http://xscorch.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = gtk2
+	depends = libmikmod
+	source = http://xscorch.org/releases/xscorch-0.2.1.tar.gz
+	source = xscorch.desktop
+	md5sums = 9c3a08cc97242ff9a1fad010dc40d9a7
+	md5sums = 31b8021889053c13058b13c79af87d48
+
+pkgname = xscorch
+
