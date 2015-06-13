@@ -1,0 +1,16 @@
+pkgbase = gnome-nds-thumbnailer
+	pkgdesc = A thumbnailer for GNOME that will make thumbnails for Nintendo DS roms by extracting their preview icon.
+	pkgver = 3.0.0
+	pkgrel = 4
+	url = http://www.hadess.net
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = gdk-pixbuf2
+	depends = glib2>=2.16
+	optdepends = nautilus: required for better use of the schema
+	source = http://ftp.gnome.org/pub/gnome/sources/gnome-nds-thumbnailer/3.0/gnome-nds-thumbnailer-3.0.0.tar.xz
+	md5sums = 04efed71fd5311a844040630f07f4167
+
+pkgname = gnome-nds-thumbnailer
+
