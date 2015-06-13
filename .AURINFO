@@ -1,0 +1,16 @@
+pkgbase = perl-module-install-autolicense
+	pkgdesc = A Module::Install extension to automagically generate LICENSE files
+	pkgver = 0.08
+	pkgrel = 2
+	url = http://search.cpan.org/dist/Module-Install-AutoLicense
+	arch = any
+	license = PerlArtistic
+	depends = perl
+	depends = perl-capture-tiny
+	depends = perl-software-license
+	depends = perl-module-install
+	source = http://search.cpan.org/CPAN/authors/id/B/BI/BINGOS/Module-Install-AutoLicense-0.08.tar.gz
+	options = !emptydirs
+
+pkgname = perl-module-install-autolicense
+
