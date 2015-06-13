@@ -1,0 +1,19 @@
+pkgbase = perl-data-page
+	pkgdesc = help when paging through sets of results
+	pkgver = 2.02
+	pkgrel = 3
+	url = http://search.cpan.org/dist/Data-Page
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	depends = perl-class-accessor-chained
+	depends = perl-test-exception
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LB/LBROCARD/Data-Page-2.02.tar.gz
+	md5sums = 57f9aed8a79687a2712adf7bf2f9cc4d
+	sha512sums = 22b5b8b80672bfd20a1552ee9d41e5150262eb37be6d903d67465be472d1802668ac898b9172b76fe2747f25ff9ad2025257b215f763f2ba5793abb46eb2343f
+
+pkgname = perl-data-page
+
