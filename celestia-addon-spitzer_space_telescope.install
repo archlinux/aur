@@ -1,0 +1,9 @@
+ 
+post_install() {
+	echo
+	echo "The trajectory included in this Addon is valid only for the Julian dates"
+	echo "Beginning 2452876.772222222 # 12aug03"
+	echo "Ending 2455195.795793577 # 17dec09"
+	echo "You must set Celestia's date to some time between those dates in order to see the spacecraft. "
+	echo
+}
