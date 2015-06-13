@@ -1,0 +1,13 @@
+pkgbase = python-keyboardleds
+	pkgdesc = A library to interact with your keyboard's LEDs (scroll lock, caps lock, num lock).
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = http://jwilk.net/software/python-keyboardleds
+	arch = any
+	license = MIT
+	depends = python
+	source = http://pypi.python.org/packages/source/p/python-keyboardleds/python-keyboardleds-0.3.3.tar.gz
+	md5sums = 7db3710e665269f07dc61a20cd5441e2
+
+pkgname = python-keyboardleds
+
