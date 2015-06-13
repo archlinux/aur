@@ -1,0 +1,12 @@
+diff -Naur awn-extras-0.4.0.orig/applets/maintained/notification-daemon/daemon.c awn-extras-0.4.0/applets/maintained/notification-daemon/daemon.c
+--- awn-extras-0.4.0.orig/applets/maintained/notification-daemon/daemon.c	2010-04-10 01:26:20.000000000 +0200
++++ awn-extras-0.4.0/applets/maintained/notification-daemon/daemon.c	2011-12-16 00:23:45.488215715 +0100
+@@ -1487,7 +1487,7 @@
+   if (fork() == 0)
+   {
+     notify_init("notify-send");
+-    notify = notify_notification_new(summary, body, icon_str, NULL);
++    notify = notify_notification_new(summary, body, icon_str);
+     notify_notification_set_category(notify, type);
+     notify_notification_set_urgency(notify, urgency);
+     notify_notification_set_timeout(notify, expire_timeout);

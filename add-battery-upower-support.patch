@@ -1,0 +1,200 @@
+=== modified file 'applets/maintained/battery/battery.py'
+--- applets/maintained/battery/battery.py	2010-08-12 19:00:37 +0000
++++ applets/maintained/battery/battery.py	2010-09-12 22:24:21 +0000
+@@ -1,6 +1,6 @@
+ #!/usr/bin/python
+ # Copyright (c) 2007 - 2008  Randal Barlow <im.tehk at gmail.com>
+-#                      2008 - 2009  onox <denkpadje@gmail.com>
++#               2008 - 2010  onox <denkpadje@gmail.com>
+ #
+ # This library is free software; you can redistribute it and/or
+ # modify it under the terms of the GNU Lesser General Public
+@@ -223,11 +223,11 @@
+             return
+ 
+         charge_percentage = self.backend.get_capacity_percentage()
+-
+-        charge_message = "Computer running on %s power" % ("AC", "battery")[self.backend.is_discharging()]
++        power_type = "AC" if self.backend.is_on_ac_power() else "battery"
++        charge_message = "Computer running on %s power" % power_type
+ 
+         if self.backend.is_charged():
+-            charge_message += "\nBattery charged"
++            charge_message += "\n" + "Battery charged"
+             icon = os.path.join(themes_dir, self.settings["theme"], "battery-charged.svg")
+         else:
+             is_charging = self.backend.is_charging()
+@@ -343,6 +343,148 @@
+         return self.get_remaining_capacity() <= self.get_warning_capacity()
+ 
+ 
++class UPowerBackend(AbstractBackend):
++
++    """Backend that uses UPower via DBus.
++
++    Reference: http://upower.freedesktop.org/docs/Device.html
++
++    """
++
++    device_iface_name = "org.freedesktop.UPower.Device"
++
++    devices = None
++
++    def __init__(self):
++        self.__system_bus = dbus.SystemBus()
++
++        self.udi = UPowerBackend.get_batteries().keys()[0]
++        self.__set_dbus_interface(self.udi)
++
++    @staticmethod
++    def backend_useable():
++        return dbus is not None and len(UPowerBackend.get_batteries()) > 0
++
++    @staticmethod
++    def get_batteries():
++        udi_models = {}
++
++        try:
++            system_bus = dbus.SystemBus()
++
++            proxy = system_bus.get_object("org.freedesktop.UPower", "/org/freedesktop/UPower")
++            interface = dbus.Interface(proxy, "org.freedesktop.UPower")
++
++            UPowerBackend.devices = list(interface.EnumerateDevices())
++
++            for udi in UPowerBackend.devices:
++                device_iface = UPowerBackend.__get_dbus_interface(system_bus, udi)
++
++                # Type 2 is battery (1 is AC, 3 is UPS)
++                device_type = int(UPowerBackend.__get_property(device_iface, "Type"))
++                is_present = bool(UPowerBackend.__get_property(device_iface, "IsPresent"))
++
++                if device_type == 2 and is_present:
++                    udi_models[str(udi)] = str(UPowerBackend.__get_property(device_iface, "Model"))
++        except dbus.DBusException, e:
++            print e.message
++        finally:
++            return udi_models
++
++    def set_active_udi(self, udi):
++        udi_models = UPowerBackend.get_batteries()
++
++        assert udi in udi_models
++
++        self.udi = udi
++        self.__set_dbus_interface(udi)
++
++    @staticmethod
++    def __get_dbus_interface(system_bus, udi):
++        proxy = system_bus.get_object("org.freedesktop.UPower", udi)
++        return dbus.Interface(proxy, "org.freedesktop.DBus.Properties")
++
++    def __set_dbus_interface(self, udi):
++        self.__battery = UPowerBackend.__get_dbus_interface(self.__system_bus, udi)
++    
++    @staticmethod
++    def __get_property(interface, property_name):
++        return interface.Get(UPowerBackend.device_iface_name, property_name)
++
++    def get_active_udi(self):
++        return self.udi
++
++    def is_present(self):
++        return bool(UPowerBackend.__get_property(self.__battery, "IsPresent"))
++
++    def is_charging(self):
++        # State 1 is charging
++        return int(UPowerBackend.__get_property(self.__battery, "State")) == 1
++
++    def is_discharging(self):
++        # State 2 is discharging
++        return int(UPowerBackend.__get_property(self.__battery, "State")) == 2
++
++    def get_last_full_capacity(self):
++        # Measured in Wh
++        return int(UPowerBackend.__get_property(self.__battery, "EnergyFull"))
++
++    def get_remaining_capacity(self):
++        # Measured in Wh
++        return int(UPowerBackend.__get_property(self.__battery, "Energy"))
++
++    def get_charge_rate(self):
++        # Measured in W. Original value positive if being discharged, negative if being charged
++        return abs(int(UPowerBackend.__get_property(self.__battery, "EnergyRate")))
++
++    def get_capacity_percentage(self):
++        # Percentage in range 0 .. 100
++        return int(UPowerBackend.__get_property(self.__battery, "Percentage"))
++
++    def get_warning_capacity(self):
++        # Measured in Wh
++        return int(int(UPowerBackend.__get_property(self.__battery, "EnergyFullDesign")) * (warning_percentage / 100.))
++
++    def get_charge_time(self):
++        assert self.is_charging()
++
++        # Charge time in seconds
++        time = int(UPowerBackend.__get_property(self.__battery, "TimeToFull"))
++
++        if time == 0:
++            return super(UPowerBackend, self).get_charge_time()
++
++        hours = time / 3600
++        seconds = time % 3600
++        return (hours, int(round(seconds / 60.0)))
++
++    def get_remaining_time(self):
++        assert self.is_discharging()
++
++        # Discharge time in seconds
++        time = int(UPowerBackend.__get_property(self.__battery, "TimeToEmpty"))
++
++        if time == 0:
++            return super(UPowerBackend, self).get_discharge_time()
++
++        hours = time / 3600
++        seconds = time % 3600
++        return (hours, int(round(seconds / 60.0)))
++
++    def is_charged(self):
++        # State 4 is fully charged
++        return int(UPowerBackend.__get_property(self.__battery, "State")) == 4
++
++    def is_on_ac_power(self):
++        for udi in UPowerBackend.devices:
++            device_iface = UPowerBackend.__get_dbus_interface(self.__system_bus, udi)
++
++            # Property "Online" only has a value for AC power device
++            if bool(UPowerBackend.__get_property(device_iface, "Online")):
++                return True
++        return False
++
++
+ class HalBackend(AbstractBackend):
+ 
+     """Backend that uses HAL via DBus.
+@@ -372,7 +514,7 @@
+             return udi_models
+         except dbus.DBusException, e:
+             print e.message
+-            return {}
++            return udi_models
+ 
+     def set_active_udi(self, udi):
+         udi_models = HalBackend.get_batteries()
+@@ -416,8 +558,12 @@
+         except dbus.DBusException:
+             return int(int(self.__hal_battery.GetProperty("battery.charge_level.design")) * (warning_percentage / 100.))
+ 
+-
+-backends = [HalBackend]
++    def is_on_ac_power(self):
++        # TODO Should check that _all_ batteries are not discharging
++        return not self.is_discharging()
++
++
++backends = [UPowerBackend, HalBackend]
+ 
+ 
+ if __name__ == "__main__":
+

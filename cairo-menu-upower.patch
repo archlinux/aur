@@ -1,0 +1,51 @@
+diff -Naur awn-extras-0.4.0.orig/applets/maintained/cairo-menu/gnome-menu-builder.c awn-extras-0.4.0/applets/maintained/cairo-menu/gnome-menu-builder.c
+--- awn-extras-0.4.0.orig/applets/maintained/cairo-menu/gnome-menu-builder.c	2010-04-10 01:26:19.000000000 +0200
++++ awn-extras-0.4.0/applets/maintained/cairo-menu/gnome-menu-builder.c	2012-12-29 05:46:45.971364855 +0100
+@@ -104,7 +104,7 @@
+ 
+   if (have_gnome_session_manager)
+   {
+-    add_special_item (menu,_("Logout"),"gnome-logout","gnome-session-save","--logout-dialog --gui");
++    add_special_item (menu,_("Logout"),"gnome-logout","gnome-session-quit","--logout");
+   }
+   else if (dbus_service_exists ("org.xfce.SessionManager") )
+   {
+@@ -121,35 +121,13 @@
+   {
+     add_special_item (menu,_("Lock Screen"),"system-lock-screen","xscreensaver-command","-lock");
+   }
+-  if (dbus_service_exists ("org.freedesktop.PowerManagement"))
+-  {
+-    if (!add_special_item (menu,_("Suspend"),"gnome-session-suspend","gnome-power-cmd","suspend"))
+-    {
+-      add_special_item (menu,_("Suspend"),"gnome-session-suspend","dbus-send","--session --dest=org.freedesktop.PowerManagement --type=method_call --print-reply --reply-timeout=2000 /org/freedesktop/PowerManagement org.freedesktop.PowerManagement.Suspend");
+-    }
+-    
+-    if (!add_special_item (menu,_("Hibernate"),"gnome-session-hibernate","gnome-power-cmd","hibernate"))
+-    {
+-      add_special_item (menu,_("Hibernate"),"gnome-session-hibernate","dbus-send","--session --dest=org.freedesktop.PowerManagement --type=method_call --print-reply --reply-timeout=2000 /org/freedesktop/PowerManagement org.freedesktop.PowerManagement.Hibernate");
+-    }
+ 
+-  }
+-  else if (dbus_service_exists ("org.gnome.PowerManagement"))
+-  {
+-    if (!add_special_item (menu,_("Suspend"),"gnome-session-suspend","gnome-power-cmd","suspend"))
+-    {
+-
+-    }
+-      
+-    if (!add_special_item (menu,_("Hibernate"),"gnome-session-hibernate","gnome-power-cmd","hibernate"))
+-    {
++  add_special_item (menu,_("Suspend"),"gnome-session-suspend","dbus-send","--system --dest=org.freedesktop.UPower --type=method_call --print-reply --reply-timeout=2000 /org/freedesktop/UPower org.freedesktop.UPower.Suspend");
++  add_special_item (menu,_("Hibernate"),"gnome-session-hibernate","dbus-send","--system --dest=org.freedesktop.UPower --type=method_call --print-reply --reply-timeout=2000 /org/freedesktop/UPower org.freedesktop.UPower.Hibernate");
+ 
+-    }
+-  }
+-  
+   if (have_gnome_session_manager)
+   {
+-    add_special_item (menu,_("Shutdown"),"gnome-logout","gnome-session-save","--shutdown-dialog --gui");  
++    add_special_item (menu,_("Shutdown"),"gnome-shutdown","gnome-session-quit","--power-off");  
+   }
+   gtk_widget_show_all (menu);
+   return FALSE;

@@ -1,0 +1,71 @@
+diff -Naur awn-extras-0.4.0.orig/applets/maintained/comics/comics.py awn-extras-0.4.0/applets/maintained/comics/comics.py
+--- awn-extras-0.4.0.orig/applets/maintained/comics/comics.py	2010-03-26 17:14:53.000000000 +0100
++++ awn-extras-0.4.0/applets/maintained/comics/comics.py	2012-11-15 17:28:52.045595715 +0100
+@@ -30,7 +30,7 @@
+ from awn.extras import _
+ 
+ # Import Comics! modules, but check dependencies first
+-awn.check_dependencies(globals(), 'feedparser', 'pynotify')
++awn.check_dependencies(globals(), 'feedparser', 'pynotify', 'rsvg')
+ from pynotify import init as notify_init, Notification
+ 
+ import comics_manage
+diff -Naur awn-extras-0.4.0.orig/applets/maintained/media-player/media_player.py awn-extras-0.4.0/applets/maintained/media-player/media_player.py
+--- awn-extras-0.4.0.orig/applets/maintained/media-player/media_player.py	2010-01-06 00:01:33.000000000 +0100
++++ awn-extras-0.4.0/applets/maintained/media-player/media_player.py	2012-11-15 17:28:54.925659573 +0100
+@@ -17,13 +17,15 @@
+ import os
+ import sys
+ 
++import awn
++awn.check_dependencies(globals(), 'pygst')
++
+ import pygst
+ pygst.require("0.10")
+ import gst
+ import gtk
+ import gobject
+ 
+-import awn
+ from desktopagnostic import config
+ 
+ 
+diff -Naur awn-extras-0.4.0.orig/applets/maintained/slickswitcher/slickswitcher.py awn-extras-0.4.0/applets/maintained/slickswitcher/slickswitcher.py
+--- awn-extras-0.4.0.orig/applets/maintained/slickswitcher/slickswitcher.py	2010-04-08 14:31:25.000000000 +0200
++++ awn-extras-0.4.0/applets/maintained/slickswitcher/slickswitcher.py	2012-11-15 17:31:32.025809983 +0100
+@@ -25,6 +25,9 @@
+ import gobject
+ 
+ import cairo
++
++awn.check_dependencies(globals(), 'wnck')
++
+ import drawing, switch, settings
+ from os.path import exists, isdir
+ import os
+diff -Naur awn-extras-0.4.0.orig/applets/maintained/volume-control/volume-control.py awn-extras-0.4.0/applets/maintained/volume-control/volume-control.py
+--- awn-extras-0.4.0.orig/applets/maintained/volume-control/volume-control.py	2010-01-06 00:01:34.000000000 +0100
++++ awn-extras-0.4.0/applets/maintained/volume-control/volume-control.py	2012-11-15 17:28:26.368359913 +0100
+@@ -30,6 +30,9 @@
+ 
+ from awn.extras import awnlib, __version__
+ 
++import awn
++awn.check_dependencies(globals(), 'pygst')
++
+ import pygst
+ pygst.require("0.10")
+ import gst
+diff -Naur awn-extras-0.4.0.orig/applets/unmaintained/stacks/stacks_applet.py awn-extras-0.4.0/applets/unmaintained/stacks/stacks_applet.py
+--- awn-extras-0.4.0.orig/applets/unmaintained/stacks/stacks_applet.py	2009-11-16 00:31:16.000000000 +0100
++++ awn-extras-0.4.0/applets/unmaintained/stacks/stacks_applet.py	2012-11-15 17:28:41.778701431 +0100
+@@ -25,6 +25,9 @@
+ import pango
+ import awn
+ import cairo
++
++awn.check_dependencies(globals(), 'gnome.ui', 'gnomedesktop')
++
+ import gnome.ui
+ import gnomedesktop
+ import time

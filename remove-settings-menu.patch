@@ -1,0 +1,229 @@
+diff -Naur awn-extras-0.4.0.orig/applets/maintained/cairo-menu/gnome-menu-builder.c awn-extras-0.4.0/applets/maintained/cairo-menu/gnome-menu-builder.c
+--- awn-extras-0.4.0.orig/applets/maintained/cairo-menu/gnome-menu-builder.c	2010-04-10 01:26:19.000000000 +0200
++++ awn-extras-0.4.0/applets/maintained/cairo-menu/gnome-menu-builder.c	2011-12-16 20:34:22.612913317 +0100
+@@ -34,7 +34,6 @@
+ #include "cairo-menu-applet.h"
+ 
+ GMenuTree *  main_menu_tree = NULL;
+-GMenuTree *  settings_menu_tree = NULL;    
+ 
+ GtkWidget *  menu_build (MenuInstance * instance);
+ static GtkWidget * submenu_build (MenuInstance * instance);
+@@ -749,19 +748,10 @@
+   gmenu_tree_remove_monitor (main_menu_tree,(GMenuTreeChangedFunc)_submenu_modified_cb,instance);
+ }
+ 
+-static void 
+-_remove_settings_submenu_cb(MenuInstance * instance,GObject *where_the_object_was)
+-{
+-  g_debug ("%s",__func__);  
+-  GMenuTreeDirectory *main_root;
+-  gmenu_tree_remove_monitor (settings_menu_tree,(GMenuTreeChangedFunc)_submenu_modified_cb,instance);
+-}
+-
+ static GtkWidget *
+ submenu_build (MenuInstance * instance)
+ {
+   GMenuTreeDirectory *main_root;
+-  GMenuTreeDirectory *settings_root;
+   GtkWidget * menu = NULL;
+   /*
+    if the menu is set then clear any menu items (except for places or recent)
+@@ -771,10 +761,6 @@
+   {
+     main_menu_tree = gmenu_tree_lookup("applications.menu", GMENU_TREE_FLAGS_NONE);
+   }
+-  if (!settings_menu_tree)
+-  {
+-    settings_menu_tree = gmenu_tree_lookup("settings.menu", GMENU_TREE_FLAGS_NONE);
+-  }
+   g_assert (main_menu_tree);
+   /*
+    get_places_menu() and get_recent_menu() are 
+@@ -808,7 +794,6 @@
+     main_root = gmenu_tree_get_root_directory(main_menu_tree);
+     g_assert (gmenu_tree_item_get_type( (GMenuTreeItem*)main_root) == GMENU_TREE_ITEM_DIRECTORY);
+     g_assert (main_root);
+-    settings_root = gmenu_tree_get_root_directory(settings_menu_tree);
+     if ( menu_dir = find_menu_dir (instance,main_root) )
+     {
+       /* if instance->menu then we're refreshing in a monitor callback*/
+@@ -817,22 +802,11 @@
+       menu = fill_er_up(instance,menu_dir,instance->menu);
+       g_object_weak_ref (G_OBJECT(menu), (GWeakNotify)_remove_main_submenu_cb,instance);
+     }
+-    else if ( settings_root && (menu_dir = find_menu_dir (instance,settings_root)) )
+-    {
+-      gmenu_tree_remove_monitor (main_menu_tree,(GMenuTreeChangedFunc)_submenu_modified_cb,instance);
+-      gmenu_tree_add_monitor (main_menu_tree,(GMenuTreeChangedFunc)_submenu_modified_cb,instance);
+-      menu = fill_er_up(instance,menu_dir,instance->menu);
+-      g_object_weak_ref (G_OBJECT(menu), (GWeakNotify)_remove_settings_submenu_cb,instance);
+-    }
+     if (menu_dir)
+     {      
+       gmenu_tree_item_unref(menu_dir);
+     }
+     gmenu_tree_item_unref(main_root);
+-    if (settings_root)
+-    {
+-      gmenu_tree_item_unref(settings_root);
+-    }
+   }
+   return instance->menu = menu;
+ }
+@@ -862,10 +836,6 @@
+   {
+     main_menu_tree = gmenu_tree_lookup("applications.menu", GMENU_TREE_FLAGS_NONE);
+   }
+-  if (!settings_menu_tree)
+-  {
+-    settings_menu_tree = gmenu_tree_lookup("settings.menu", GMENU_TREE_FLAGS_NONE);
+-  }
+ 
+   if (main_menu_tree)
+   {
+@@ -884,44 +854,6 @@
+       menu_item = gtk_separator_menu_item_new ();
+       gtk_menu_shell_append(GTK_MENU_SHELL(instance->menu),menu_item);  
+   }
+-  if (settings_menu_tree)
+-  {
+-    root = gmenu_tree_get_root_directory(settings_menu_tree);
+-    gmenu_tree_remove_monitor (settings_menu_tree,(GMenuTreeChangedFunc)_menu_modified_cb,instance);
+-    gmenu_tree_add_monitor (settings_menu_tree,(GMenuTreeChangedFunc)_menu_modified_cb,instance);
+-    if (!instance->menu)
+-    {
+-      g_debug ("%s:  No applications menu????",__func__);
+-      instance->menu = fill_er_up(instance,root,instance->menu);
+-    }
+-    else
+-    {
+-      sub_menu = fill_er_up (instance, root,instance->menu);
+-#if 0      
+-      sub_menu = fill_er_up(instance,root,NULL);
+-      c = g_malloc0 (sizeof(CallbackContainer));        
+-      c->icon_name = g_strdup(gmenu_tree_directory_get_icon (root));
+-      image = get_gtk_image (c->icon_name);
+-      txt = gmenu_tree_entry_get_name((GMenuTreeEntry*)root);        
+-      menu_item = cairo_menu_item_new_with_label (txt?txt:"unknown");        
+-      gtk_menu_item_set_submenu (GTK_MENU_ITEM(menu_item),sub_menu);
+-      if (image)
+-      {
+-        gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (menu_item),image);
+-      }        
+-      gtk_menu_shell_append(GTK_MENU_SHELL(instance->menu),menu_item);
+-      c->file_path = g_strdup(gmenu_tree_directory_get_desktop_file_path (root));
+-      c->display_name = g_strdup ("Settings");
+-      drop_data = g_strdup_printf("cairo_menu_item_dir:///@@@%s@@@%s@@@%s\n",c->file_path,c->display_name,c->icon_name);
+-      cairo_menu_item_set_source (AWN_CAIRO_MENU_ITEM(menu_item),drop_data);
+-      g_free (drop_data);
+-      c->instance = instance;
+-      g_signal_connect (menu_item, "button-press-event",G_CALLBACK(_button_press_dir),c);
+-      g_object_weak_ref (G_OBJECT(menu_item),(GWeakNotify)_free_callback_container,c);
+-#endif
+-    }
+-    gmenu_tree_item_unref(root);    
+-  }
+     
+     /*TODO Check to make sure it is needed. Should not be displayed if 
+       all flags are of the NO persuasion.*/
+diff -Naur awn-extras-0.4.0.orig/applets/maintained/yama/yama.py awn-extras-0.4.0/applets/maintained/yama/yama.py
+--- awn-extras-0.4.0.orig/applets/maintained/yama/yama.py	2010-03-31 16:21:24.000000000 +0200
++++ awn-extras-0.4.0/applets/maintained/yama/yama.py	2011-12-16 20:37:48.243326388 +0100
+@@ -113,7 +113,6 @@
+ 
+     def build_menu(self):
+         self.applications_items = []
+-        self.settings_items = []
+         self.session_items = []
+ 
+         """ Applications """
+@@ -126,11 +125,6 @@
+         """ Places """
+         self.create_places_submenu(self.menu)
+ 
+-        """ System """
+-        tree = gmenu.lookup_tree("settings.menu")
+-        self.append_directory(tree.root, self.menu, item_list=self.settings_items)
+-        tree.add_monitor(self.menu_changed_cb, self.settings_items)
+-
+         """ Session actions """
+         if dbus is not None:
+             self.append_session_actions(self.menu)
+@@ -227,7 +221,7 @@
+                 for i in xrange(len(items)):
+                     items.pop().destroy()
+ 
+-                index = len(self.applications_items) + 2 if items is self.settings_items else 0  # + 2 = separator + Places
++                index = len(self.applications_items) + 0
+                 self.append_directory(tree.root, self.menu, index=index, item_list=items)
+                 # Refresh menu to re-initialize the widget
+                 self.menu.show_all()
+diff -Naur awn-extras-0.4.0.orig/applets/unmaintained/main-menu/applet.c awn-extras-0.4.0/applets/unmaintained/main-menu/applet.c
+--- awn-extras-0.4.0.orig/applets/unmaintained/main-menu/applet.c	2009-10-27 20:45:03.000000000 +0100
++++ awn-extras-0.4.0/applets/unmaintained/main-menu/applet.c	2011-12-16 20:27:28.792248015 +0100
+@@ -43,7 +43,6 @@
+   GMenuTree *tree;
+   GMenuTreeDirectory *root;
+   GMenuTreeDirectory *apps;
+-  GMenuTreeDirectory *settings;
+ 
+ } Menu;
+ 
+@@ -243,8 +242,6 @@
+ {
+   GMenuTreeDirectory *temp= menu->root;
+   menu->root = gmenu_tree_item_get_parent (GMENU_TREE_ITEM (temp));
+-  if (menu->root == menu->settings)
+-    menu->root = gmenu_tree_get_root_directory (menu->tree); 
+   populate (menu);
+ }
+ 
+@@ -299,8 +296,6 @@
+   if (app->root == GMENU_TREE_DIRECTORY(gmenu_tree_get_root_directory ((GMenuTree*)app->apps)))
+   {
+     list = g_slist_copy (apps);
+-    sets = g_slist_copy (gmenu_tree_directory_get_contents (app->settings));
+-    list = g_slist_concat (list, sets);
+     list = g_slist_sort (list, (GCompareFunc)_compare);
+   }
+   else
+@@ -419,13 +414,6 @@
+     g_warning ("Unable to find applications.menu");
+     return FALSE;
+   }
+-  app->settings = gmenu_tree_get_root_directory (
+-                  gmenu_tree_lookup ("settings.menu", GMENU_TREE_FLAGS_NONE));
+-  if (!app->settings)
+-  {
+-    g_warning ("Unable to find settings.menu");
+-    return FALSE;
+-  }
+   app->tree =  (GMenuTree*)app->apps;
+ 
+   app->menu = awn_applet_create_default_menu (app->applet);
+diff -Naur awn-extras-0.4.0.orig/applets/unmaintained/MiMenu/menus.py awn-extras-0.4.0/applets/unmaintained/MiMenu/menus.py
+--- awn-extras-0.4.0.orig/applets/unmaintained/MiMenu/menus.py	2009-08-14 14:29:59.000000000 +0200
++++ awn-extras-0.4.0/applets/unmaintained/MiMenu/menus.py	2011-12-16 20:30:42.060104523 +0100
+@@ -12,8 +12,6 @@
+ class MenuDateStore:
+     MENUCORE = gmenu.lookup_tree('applications.menu')
+     MENUROOT = MENUCORE.get_root_directory()
+-    SYSTEMMENUCORE = gmenu.lookup_tree('settings.menu')
+-    SYSTEMMENUROOT = SYSTEMMENUCORE.get_root_directory()
+     PATH = []
+ 
+ 
+diff -Naur awn-extras-0.4.0.orig/applets/unmaintained/MiMenu/mimenu.py awn-extras-0.4.0/applets/unmaintained/MiMenu/mimenu.py
+--- awn-extras-0.4.0.orig/applets/unmaintained/MiMenu/mimenu.py	2009-10-27 20:45:47.000000000 +0100
++++ awn-extras-0.4.0/applets/unmaintained/MiMenu/mimenu.py	2011-12-16 20:30:35.897158422 +0100
+@@ -69,8 +69,7 @@
+         tree1.set_headers_visible (0)
+         tree1.append_column(column1)
+         tree1.append_column(column2)
+-        lst1,self.objlist1 = menus.get_menus(menus.data.MENUROOT,
+-                                             root2=menus.data.SYSTEMMENUROOT)
++        lst1,self.objlist1 = menus.get_menus(menus.data.MENUROOT)
+         model = menus.set_model(tree1,lst1,self.theme,self.location_icon)
+         tree1.connect('cursor_changed', self.treeclick,
+                       tree1,self.objlist1,False)

@@ -1,0 +1,226 @@
+=== modified file 'applets/maintained/awnterm/keybinder.h'
+--- applets/maintained/awnterm/keybinder.h	2009-12-04 15:32:54 +0000
++++ applets/maintained/awnterm/keybinder.h	2012-04-28 13:17:10 +0000
+@@ -24,7 +24,7 @@
+ #ifndef __AWN_KEY_BINDER_H__
+ #define __AWN_KEY_BINDER_H__
+ 
+-#include <glib/gtypes.h>
++#include <glib.h>
+ 
+ G_BEGIN_DECLS
+ 
+
+=== modified file 'applets/maintained/notification-daemon/daemon.h'
+--- applets/maintained/notification-daemon/daemon.h	2009-11-18 20:13:53 +0000
++++ applets/maintained/notification-daemon/daemon.h	2012-04-28 13:17:10 +0000
+@@ -31,8 +31,6 @@
+ 
+ #include <libawn/awn-applet.h>
+ #include <libawn/awn-applet-simple.h>
+-#include <glib/gmacros.h>
+-#include <glib/gerror.h>
+ 
+ #include <libawn/awn-dialog.h>
+ #include <libawn/awn-cairo-utils.h>
+
+=== modified file 'applets/maintained/notification-daemon/engines.c'
+--- applets/maintained/notification-daemon/engines.c	2010-04-10 17:06:17 +0000
++++ applets/maintained/notification-daemon/engines.c	2012-04-28 13:17:10 +0000
+@@ -38,8 +38,7 @@
+ 
+ 
+ #include <libawn/awn-applet.h>
+-#include <glib/gmacros.h>
+-#include <glib/gerror.h>
++#include <glib.h>
+ 
+ #include <libawn/awn-dialog.h>
+ #include <libawn/awn-applet-simple.h>
+@@ -50,7 +49,6 @@
+ 
+ #include <string.h>
+ #include <gtk/gtk.h>
+-#include <glib.h>
+ #ifndef HAVE_GTK_URL_LABEL
+ #include <libsexy/sexy-url-label.h>
+ #endif
+
+=== modified file 'applets/unmaintained/awnsystemmonitor/awnsystemmonitor.h'
+--- applets/unmaintained/awnsystemmonitor/awnsystemmonitor.h	2009-04-22 03:44:36 +0000
++++ applets/unmaintained/awnsystemmonitor/awnsystemmonitor.h	2012-04-28 13:17:10 +0000
+@@ -25,7 +25,7 @@
+ //#include <libawn/awn-title.h>
+ #include <libawn/awn-tooltip.h>
+ 
+-#include <glib/gtypes.h>
++#include <glib.h>
+ #include <glibtop/cpu.h>
+ #include <gconf/gconf-client.h>
+ 
+
+=== modified file 'applets/unmaintained/awnsystemmonitor/awntop_cairo_component.c'
+--- applets/unmaintained/awnsystemmonitor/awntop_cairo_component.c	2010-04-01 14:25:40 +0000
++++ applets/unmaintained/awnsystemmonitor/awntop_cairo_component.c	2012-04-28 13:17:10 +0000
+@@ -43,13 +43,11 @@
+ 
+ 
+ #include <libawn/awn-applet.h>
+-#include <glib/gmacros.h>
+-#include <glib/gerror.h>
++#include <glib.h>
+ #include <gconf/gconf-value.h>
+ 
+ #include <libawn/awn-dialog.h>
+ #include <libawn/awn-applet-simple.h>
+-#include <glib.h>
+ #include <gtk/gtk.h>
+ 
+ 
+
+=== modified file 'applets/unmaintained/awnsystemmonitor/cpu_component.c'
+--- applets/unmaintained/awnsystemmonitor/cpu_component.c	2009-08-27 20:20:33 +0000
++++ applets/unmaintained/awnsystemmonitor/cpu_component.c	2012-04-28 13:17:10 +0000
+@@ -18,13 +18,11 @@
+  */
+ 
+ #include <libawn/awn-applet.h>
+-#include <glib/gmacros.h>
+-#include <glib/gerror.h>
++#include <glib.h>
+ #include <gconf/gconf-value.h>
+ 
+ #include <libawn/awn-dialog.h>
+ #include <libawn/awn-applet-simple.h>
+-#include <glib.h>
+ #include <gtk/gtk.h>
+ #include <gdk/gdk.h>
+ #include <string.h>
+
+=== modified file 'applets/unmaintained/awnsystemmonitor/cpumetergconf.c'
+--- applets/unmaintained/awnsystemmonitor/cpumetergconf.c	2009-04-22 03:44:36 +0000
++++ applets/unmaintained/awnsystemmonitor/cpumetergconf.c	2012-04-28 13:17:10 +0000
+@@ -20,13 +20,10 @@
+  * Boston, MA 02111-1307, USA.
+  */
+ #include <string.h>
+-#include <glib/gmacros.h>
+-#include <glib/gerror.h>
++#include <glib.h>
+ #include <gconf/gconf-value.h>
+ 
+ #include <libawn/awn-applet.h>
+-#include <glib/gmacros.h>
+-#include <glib/gerror.h>
+ #include <gconf/gconf-value.h>
+ 
+ #include "cairo-utils.h"
+
+=== modified file 'applets/unmaintained/awnsystemmonitor/dashboard.h'
+--- applets/unmaintained/awnsystemmonitor/dashboard.h	2009-04-22 03:44:36 +0000
++++ applets/unmaintained/awnsystemmonitor/dashboard.h	2012-04-28 13:17:10 +0000
+@@ -23,13 +23,11 @@
+ 
+ 
+ #include <libawn/awn-applet.h>
+-#include <glib/gmacros.h>
+-#include <glib/gerror.h>
++#include <glib.h>
+ #include <gconf/gconf-value.h>
+ 
+ #include <libawn/awn-dialog.h>
+ #include <libawn/awn-applet-simple.h>
+-#include <glib.h>
+ #include <gtk/gtk.h>
+ 
+ #include <glibtop/mem.h>
+
+=== modified file 'applets/unmaintained/awnsystemmonitor/date_time_component.c'
+--- applets/unmaintained/awnsystemmonitor/date_time_component.c	2009-07-07 20:10:17 +0000
++++ applets/unmaintained/awnsystemmonitor/date_time_component.c	2012-04-28 13:17:10 +0000
+@@ -19,13 +19,11 @@
+ 
+ 
+ #include <libawn/awn-applet.h>
+-#include <glib/gmacros.h>
+-#include <glib/gerror.h>
++#include <glib.h>
+ #include <gconf/gconf-value.h>
+ 
+ #include <libawn/awn-dialog.h>
+ #include <libawn/awn-applet-simple.h>
+-#include <glib.h>
+ #include <gtk/gtk.h>
+ #include <gdk/gdk.h>
+ #include <string.h>
+
+=== modified file 'applets/unmaintained/awnsystemmonitor/loadavg_component.c'
+--- applets/unmaintained/awnsystemmonitor/loadavg_component.c	2009-07-07 20:10:17 +0000
++++ applets/unmaintained/awnsystemmonitor/loadavg_component.c	2012-04-28 13:17:10 +0000
+@@ -19,13 +19,11 @@
+ 
+ #include <glibtop/loadavg.h>
+ #include <libawn/awn-applet.h>
+-#include <glib/gmacros.h>
+-#include <glib/gerror.h>
++#include <glib.h>
+ #include <gconf/gconf-value.h>
+ 
+ #include <libawn/awn-dialog.h>
+ #include <libawn/awn-applet-simple.h>
+-#include <glib.h>
+ #include <gtk/gtk.h>
+ #include <gdk/gdk.h>
+ #include <string.h>
+
+=== modified file 'applets/unmaintained/awnsystemmonitor/sysmem_component.c'
+--- applets/unmaintained/awnsystemmonitor/sysmem_component.c	2009-08-27 20:20:33 +0000
++++ applets/unmaintained/awnsystemmonitor/sysmem_component.c	2012-04-28 13:17:10 +0000
+@@ -19,13 +19,11 @@
+ 
+ #include <glibtop/mem.h>
+ #include <libawn/awn-applet.h>
+-#include <glib/gmacros.h>
+-#include <glib/gerror.h>
++#include <glib.h>
+ #include <gconf/gconf-value.h>
+ 
+ #include <libawn/awn-dialog.h>
+ #include <libawn/awn-applet-simple.h>
+-#include <glib.h>
+ #include <gtk/gtk.h>
+ #include <gdk/gdk.h>
+ #include <string.h>
+
+=== modified file 'applets/unmaintained/awnsystemmonitor/uptime_component.c'
+--- applets/unmaintained/awnsystemmonitor/uptime_component.c	2009-07-07 20:10:17 +0000
++++ applets/unmaintained/awnsystemmonitor/uptime_component.c	2012-04-28 13:17:10 +0000
+@@ -1,12 +1,10 @@
+ 
+ #include <libawn/awn-applet.h>
+-#include <glib/gmacros.h>
+-#include <glib/gerror.h>
++#include <glib.h>
+ #include <gconf/gconf-value.h>
+ 
+ #include <libawn/awn-dialog.h>
+ #include <libawn/awn-applet-simple.h>
+-#include <glib.h>
+ 
+ #include <glibtop/uptime.h>
+ #include <glibtop/cpu.h>
+
+=== modified file 'applets/unmaintained/main-menu/applet.c'
+--- applets/unmaintained/main-menu/applet.c	2011-12-28 11:09:45 +0000
++++ applets/unmaintained/main-menu/applet.c	2012-04-28 13:17:10 +0000
+@@ -23,8 +23,7 @@
+ 
+ #include <string.h>
+ 
+-#include <glib/gmacros.h>
+-#include <glib/gerror.h>
++#include <glib.h>
+ #include <glib/gi18n.h>
+ #include <gtk/gtk.h>
+ #include <libdesktop-agnostic/fdo.h>
+

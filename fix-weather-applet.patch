@@ -1,0 +1,48 @@
+diff -Naur awn-extras-0.4.0.orig/applets/maintained/weather/weather.py awn-extras-0.4.0/applets/maintained/weather/weather.py
+--- awn-extras-0.4.0.orig/applets/maintained/weather/weather.py	2012-03-07 00:20:03.094411287 +0100
++++ awn-extras-0.4.0/applets/maintained/weather/weather.py	2010-03-21 13:58:03.000000000 +0100
+@@ -570,7 +570,7 @@
+ 
+     class NetworkHandler(ThreadQueue):
+ 
+-        __ws_key = "&prod=xoap&par=1048871467&key=12daac2f3a67cb39&link=xoap"
++        __ws_key = "&prod=xml&par=1287722164&key=e11ec82daa20d876"
+ 
+         def dict_from_xml(self, rootNode, keys, paths):
+             """Given an XML node, iterate over keys and paths, grabbing the
+@@ -590,7 +590,7 @@
+         @async_method
+         @network_exception
+         def get_locations(self, text):
+-            url = "http://xoap.weather.com/search/search?where=" + urllib2.quote(text)
++            url = "http://xml.weather.com/search/search?where=" + urllib2.quote(text)
+             with closing(urllib2.urlopen(url)) as usock:
+                 with unlink_xml(usock) as xmldoc:
+                     locations_list = []
+@@ -604,7 +604,7 @@
+         @with_overlays
+         @network_exception
+         def get_conditions(self, location_code):
+-            url = "http://xoap.weather.com/weather/local/" + location_code + "?cc=*" + self.__ws_key
++            url = "http://xml.weather.com/weather/local/" + location_code + "?cc=*" + self.__ws_key
+             with closing(urllib2.urlopen(url)) as usock:
+                 with unlink_xml(usock) as xmldoc:
+                     names = ['CITY', 'SUNRISE', 'SUNSET', 'DESCRIPTION', 'CODE', 'TEMP', 'FEELSLIKE', 'BAR', 'BARDESC', 'WINDSPEED', 'WINDGUST', 'WINDDIR', 'HUMIDITY', 'MOONPHASE']
+@@ -619,7 +619,7 @@
+         def get_weather_map(self, location_code):
+             map_url = "http://www.weather.com/outlook/travel/businesstraveler/map/%s" % location_code
+             with closing(urllib2.urlopen(map_url)) as usock:
+-                mapExp = """<IMG NAME="mapImg" SRC="([^\"]+)" WIDTH=([0-9]+) HEIGHT=([0-9]+) BORDER"""
++                mapExp = """<img name="mapImg" src="([^\"]+)" width="([0-9]+)" height="([0-9]+)" border"""
+                 result = re.findall(mapExp, usock.read())
+                 if not result or len(result) != 1:
+                     raise NetworkException("Couldn't parse weather map")
+@@ -635,7 +635,7 @@
+         @with_overlays
+         @network_exception
+         def get_forecast(self, location_code):
+-            url = "http://xoap.weather.com/weather/local/" + location_code + "?dayf=5" + self.__ws_key
++            url = "http://xml.weather.com/weather/local/" + location_code + "?dayf=5" + self.__ws_key
+             with closing(urllib2.urlopen(url)) as usock:
+                 with unlink_xml(usock) as xmldoc:
+                     try:

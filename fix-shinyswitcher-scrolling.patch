@@ -1,0 +1,96 @@
+=== modified file 'applets/maintained/shiny-switcher/shinyswitcherapplet.c'
+--- applets/maintained/shiny-switcher/shinyswitcherapplet.c	2010-09-12 16:15:07 +0000
++++ applets/maintained/shiny-switcher/shinyswitcherapplet.c	2010-11-02 13:52:43 +0000
+@@ -769,7 +769,7 @@
+ 
+ 
+ static gboolean 
+-_scroll_event(GtkWidget *widget, GdkEventMotion *event, AwnShinySwitcher *shinyswitcher)
++_scroll_event(GtkWidget *widget, GdkEventScroll *event, AwnShinySwitcher *shinyswitcher)
+ {
+   AwnShinySwitcherPrivate * priv = GET_PRIVATE (shinyswitcher);
+   WnckWorkspace *cur_space = wnck_screen_get_active_workspace(priv->wnck_screen);
+@@ -779,7 +779,7 @@
+   {
+     if (event->type == GDK_SCROLL)
+     {
+-      WnckMotionDirection direction1, direction2;
++      WnckMotionDirection left, right, up, down;
+ 
+       switch (priv->mousewheel)
+       {
+@@ -787,8 +787,10 @@
+         case 1:
+ 
+         case 3:
+-          direction1 =  WNCK_MOTION_LEFT;
+-          direction2 =  WNCK_MOTION_RIGHT;
++          left =  WNCK_MOTION_LEFT;
++          right =  WNCK_MOTION_RIGHT;
++          up = WNCK_MOTION_UP;
++          down = WNCK_MOTION_DOWN;
+           break;
+ 
+         case 2:
+@@ -796,22 +798,52 @@
+         case 4:
+ 
+         default:
+-          direction1 =  WNCK_MOTION_RIGHT;
+-          direction2 =  WNCK_MOTION_LEFT;
+-
++          left =  WNCK_MOTION_RIGHT;
++          right =  WNCK_MOTION_LEFT;
++          up = WNCK_MOTION_DOWN;
++          down = WNCK_MOTION_UP;
+       }
+ 
+-      if (event->state & GDK_SHIFT_MASK)
++      if ( (event->direction == GDK_SCROLL_UP) ||
++            (event->direction == GDK_SCROLL_LEFT) )
+       {
+-        new_space = wnck_workspace_get_neighbor(cur_space, WNCK_MOTION_RIGHT);
++        new_space = wnck_workspace_get_neighbor(cur_space, left);
++        if (new_space == NULL)
++        {
++          new_space = wnck_workspace_get_neighbor(cur_space, up);
++          if (new_space)
++          {
++            for (cur_space = new_space; cur_space; )
++            {
++              cur_space = wnck_workspace_get_neighbor(cur_space, right);
++              if (cur_space)
++              {
++                new_space = cur_space;
++              }
++            }
++          }
++        }
+       }
+       else
+       {
+-        new_space = wnck_workspace_get_neighbor(cur_space, WNCK_MOTION_LEFT);
+-
++        new_space = wnck_workspace_get_neighbor(cur_space, right);
++        if (!new_space)
++        {
++          new_space = wnck_workspace_get_neighbor(cur_space, down);
++          if (new_space)
++          {
++            for (cur_space = new_space; cur_space; )
++            {
++              cur_space = wnck_workspace_get_neighbor(cur_space, left);
++              if (cur_space)
++              {
++                new_space = cur_space;
++              }
++            }
++          }
++        }
+       }
+     }
+-
+     if (new_space)
+     {
+       wnck_workspace_activate(new_space, event->time); /* FIXME */
+
