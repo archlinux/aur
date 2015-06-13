@@ -2,7 +2,7 @@
 
 pkgname=mopidy-musicbox
 _pypiname=Mopidy-MusicBox-Webclient
-pkgver=1.0.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Web Client for Mopidy Music Server and the Pi MusicBox"
 arch=('any')
@@ -11,7 +11,7 @@ license=('APACHE')
 depends=('python2' 'mopidy>=0.19')
 makedepends=('python2' 'python2-setuptools')
 source=("https://pypi.python.org/packages/source/M/${_pypiname}/${_pypiname}-${pkgver}.tar.gz")
-md5sums=('6a709cb058a6d30beb86e5204a8441b3')
+sha256sums=('acc5e3ac183032865430af400ac6c9dbc38bcd947231c70114232a2a2858f82d')
 
 package() {
   cd "${srcdir}/${_pypiname}-${pkgver}"
