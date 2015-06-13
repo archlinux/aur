@@ -1,0 +1,14 @@
+pkgbase = pythoncad
+	pkgdesc = Aka Pycad. A simple and scriptable 2D cad.
+	pkgver = r38.alpha4
+	pkgrel = 1
+	url = http://pythoncad.sourceforge.net/dokuwiki/doku.php
+	arch = any
+	license = GPL2
+	depends = python2-pyqt
+	depends = python2-sympy
+	source = http://downloads.sourceforge.net/project/pythoncad/pythoncad/R38%20PyQT/Pre%20Alfa/PythonCAD_Alfa_04.zip
+	md5sums = e988cfc2eeeb8daa14822e36bed804c2
+
+pkgname = pythoncad
+
