@@ -1,0 +1,16 @@
+pkgbase = perl-devel-trace
+	pkgdesc = Print out each line before it is executed (like sh -x)
+	pkgver = 0.12
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Devel-Trace/Trace.pm
+	arch = any
+	license = custom
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MJ/MJD/Devel-Trace-0.12.tar.gz
+	source = LICENSE
+	md5sums = 6cea68e7e12f99cb94c7802346f15ab3
+	md5sums = b9137859038cf848c1d932fc3a00468d
+
+pkgname = perl-devel-trace
+
