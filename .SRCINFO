@@ -1,0 +1,21 @@
+pkgbase = tksqlite
+	pkgdesc = TkSQLite is a GUI database manager for SQLite implemented by Tcl/Tk.
+	pkgver = 0.5.11
+	pkgrel = 1
+	url = http://reddog.s35.xrea.com/wiki/TkSQLite.html
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = tcl>=8.5.0
+	depends = tk>=8.5.0
+	depends = tktable>=2.9
+	depends = tktreectrl>=2.1
+	depends = sqlite-tcl
+	optdepends = tkimg: for reading image data
+	optdepends = tcltrf: for crypt functions
+	optdepends = tcllib: for crypt functions
+	source = http://reddog.s35.xrea.com/software/tksqlite-0.5.11.tar.gz
+	md5sums = cd861d386fbacc94dd473ebe51815ea0
+
+pkgname = tksqlite
+
