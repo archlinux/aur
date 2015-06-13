@@ -1,0 +1,15 @@
+pkgbase = transparency
+	pkgdesc = A transparent application suite with clock, calendar, and system load applets.
+	pkgver = 2.7.4
+	pkgrel = 1
+	url = http://hugo.pereira.free.fr/software/index.php?page=package&package_list=software_list_qt4&package=transparency&full=0
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = qt4
+	source = http://hugo.pereira.free.fr/software/tgz/transparency-2.7.4.tar.gz
+	md5sums = a0181920032f97d7c71afa91fe309ba8
+
+pkgname = transparency
+
