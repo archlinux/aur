@@ -5,7 +5,7 @@ pre_install() {
 
 post_install() {
 	echo "	==> Set up your network interface before you reboot."
-	local _url="http://www.gentoo.org/doc/en/handbook/handbook-x86.xml?part=4"
+	local _url="https://wiki.gentoo.org/wiki/Handbook:X86/Full/Networking"
 	echo "	==> Visit ${_url}"
 	#rc-update -u
 }
