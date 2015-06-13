@@ -1,0 +1,15 @@
+pkgbase = mbrola-voices-nl3
+	pkgdesc = A Dutch female voice for the MBROLA synthesizer
+	pkgver = 001013
+	pkgrel = 2
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-nl
+	groups = mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/nl3/nl3-001013.zip
+	md5sums = 07d682951901e438c8ffc6de25f4569f
+
+pkgname = mbrola-voices-nl3
+
