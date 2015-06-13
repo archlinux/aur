@@ -1,0 +1,93 @@
+diff -Npur ../aria2-1.16.0.ori/src/HttpSkipResponseCommand.cc ./src/HttpSkipResponseCommand.cc
+--- ../aria2-1.16.0.ori/src/HttpSkipResponseCommand.cc	2012-12-16 10:59:30.274471789 +0700
++++ ./src/HttpSkipResponseCommand.cc	2012-12-16 11:06:09.824474859 +0700
+@@ -11,7 +11,7 @@
+  *
+  * This program is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See th	e
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+@@ -209,7 +209,7 @@ bool HttpSkipResponseCommand::processRes
+     } else if(statusCode == 404) {
+       throw DL_ABORT_EX2(MSG_RESOURCE_NOT_FOUND,
+                          error_code::RESOURCE_NOT_FOUND);
+-    } else if(statusCode == 503) {
++    } else if(statusCode == 503 or statusCode == 502 or statusCode == 403) {
+       // Only retry if pretry-wait > 0. Hammering 'busy' server is not
+       // a good idea.
+       if(getOption()->getAsInt(PREF_RETRY_WAIT) > 0) {
+diff -Npur ../aria2-1.16.0.ori/src/OptionHandlerFactory.cc ./src/OptionHandlerFactory.cc
+--- ../aria2-1.16.0.ori/src/OptionHandlerFactory.cc	2012-12-16 10:59:30.284471787 +0700
++++ ./src/OptionHandlerFactory.cc	2012-12-16 11:04:24.561140718 +0700
+@@ -480,8 +480,8 @@ std::vector<OptionHandler*> OptionHandle
+     OptionHandler* op(new NumberOptionHandler
+                       (PREF_MAX_CONNECTION_PER_SERVER,
+                        TEXT_MAX_CONNECTION_PER_SERVER,
+-                       "1",
+-                       1, 16,
++                       "128",
++                       1, -1,
+                        'x'));
+     op->addTag(TAG_BASIC);
+     op->addTag(TAG_FTP);
+@@ -546,8 +546,8 @@ std::vector<OptionHandler*> OptionHandle
+     OptionHandler* op(new UnitNumberOptionHandler
+                       (PREF_MIN_SPLIT_SIZE,
+                        TEXT_MIN_SPLIT_SIZE,
+-                       "20M",
+-                       1024*1024, 1024*1024*1024,
++                       "16K",
++                       1024, 1024*1024*1024,
+                        'k'));
+     op->addTag(TAG_BASIC);
+     op->addTag(TAG_FTP);
+@@ -859,7 +859,7 @@ std::vector<OptionHandler*> OptionHandle
+     OptionHandler* op(new NumberOptionHandler
+                       (PREF_CONNECT_TIMEOUT,
+                        TEXT_CONNECT_TIMEOUT,
+-                       "60",
++                       "30",
+                        1, 600));
+     op->addTag(TAG_FTP);
+     op->addTag(TAG_HTTP);
+@@ -910,7 +910,7 @@ std::vector<OptionHandler*> OptionHandle
+     OptionHandler* op(new NumberOptionHandler
+                       (PREF_MAX_TRIES,
+                        TEXT_MAX_TRIES,
+-                       "5",
++                       "0",
+                        0, -1,
+                        'm'));
+     op->addTag(TAG_FTP);
+@@ -954,8 +954,8 @@ std::vector<OptionHandler*> OptionHandle
+     OptionHandler* op(new UnitNumberOptionHandler
+                       (PREF_PIECE_LENGTH,
+                        TEXT_PIECE_LENGTH,
+-                       "1M",
+-                       1024*1024,
++                       "16K",
++                       1024,
+                        1024*1024*1024));
+     op->addTag(TAG_ADVANCED);
+     op->addTag(TAG_FTP);
+@@ -982,7 +982,7 @@ std::vector<OptionHandler*> OptionHandle
+     OptionHandler* op(new NumberOptionHandler
+                       (PREF_RETRY_WAIT,
+                        TEXT_RETRY_WAIT,
+-                       "0",
++                       "4",
+                        0, 600));
+     op->addTag(TAG_FTP);
+     op->addTag(TAG_HTTP);
+@@ -1040,7 +1040,7 @@ std::vector<OptionHandler*> OptionHandle
+     OptionHandler* op(new NumberOptionHandler
+                       (PREF_SPLIT,
+                        TEXT_SPLIT,
+-                       "5",
++                       "8",
+                        1, -1,
+                        's'));
+     op->addTag(TAG_BASIC);

@@ -1,0 +1,23 @@
+pkgbase = aria2-fast
+	pkgdesc = Aria2 Download utility with little patch to maximize aria2 download connections
+	pkgver = 1.19.0
+	pkgrel = 1
+	url = http://aria2.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	checkdepends = cppunit
+	depends = gnutls
+	depends = libxml2
+	depends = sqlite
+	depends = c-ares
+	depends = ca-certificates
+	provides = aria2
+	conflicts = aria2
+	source = http://downloads.sourceforge.net/aria2/aria2-1.19.0.tar.bz2
+	source = aria2-1.16.patch
+	md5sums = ad6eb57511a05ce823e194eb71a7e9fa
+	md5sums = b4e0837bd7c255b645c9a8bbdd550e3f
+
+pkgname = aria2-fast
+
