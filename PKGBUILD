@@ -3,7 +3,7 @@
 
 pkgname=python-pyftpdlib
 pkgver=1.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Python FTP server library"
 arch=('any')
 url="https://github.com/giampaolo/pyftpdlib"
@@ -11,7 +11,7 @@ license=('MIT')
 source=("https://github.com/giampaolo/pyftpdlib/archive/release-${pkgver}.tar.gz")
 depends=('python')
 optdepends=("python-pyopenssl: required for SSL/TLS connections"
-            "python-pysendfile: required for using the sendfile() call")
+            "python-sendfile: required for using the sendfile() call")
 md5sums=('43ef0dd20d65443d296dc27f128a6998')
 
 build(){
