@@ -1,0 +1,16 @@
+pkgbase = pure-g2
+	pkgdesc = 2D graphics interface for the Pure programming language
+	pkgver = 0.3
+	pkgrel = 2
+	url = http://purelang.bitbucket.org/
+	arch = any
+	groups = pure-complete
+	groups = pure-graphics
+	license = BSD
+	depends = pure
+	depends = g2
+	source = https://bitbucket.org/purelang/pure-lang/downloads/pure-g2-0.3.tar.gz
+	sha1sums = 75bf1aa42c3eeb39fa0395871bad6ac232b719b5
+
+pkgname = pure-g2
+
