@@ -1,0 +1,16 @@
+pkgbase = mbrola-voices-id1
+	pkgdesc = An Indonesian male voice for the MBROLA synthesizer
+	pkgver = 001010
+	pkgrel = 1
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-id
+	groups = mbrola-voices
+	groups = gespeaker-mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/id1/id1-001010.zip
+	md5sums = 33cd63ec6d231ac91b8156485a381207
+
+pkgname = mbrola-voices-id1
+
