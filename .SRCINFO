@@ -1,7 +1,7 @@
 pkgbase = 4kslideshowmaker
 	pkgdesc = A straightforward and easy-to-use app to create slideshows from music and photos, with Instagram support.
 	pkgver = 1.5.6.903
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.4kdownload.com/products/product-slideshowmaker
 	arch = i686
 	arch = x86_64
