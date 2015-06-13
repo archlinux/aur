@@ -1,0 +1,15 @@
+pkgbase = mbrola-voices-fr6
+	pkgdesc = A French male voice for the MBROLA synthesizer
+	pkgver = 010330
+	pkgrel = 1
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-fr
+	groups = mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/fr6/fr6-010330.zip
+	md5sums = ef58ccab7da88cbe582062a9468a4fb8
+
+pkgname = mbrola-voices-fr6
+
