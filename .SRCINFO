@@ -1,0 +1,19 @@
+pkgbase = open-sankore
+	pkgdesc = An interactive white board that uses a free standard format
+	pkgver = 2.5.1
+	pkgrel = 1
+	url = http://open-sankore.org/en/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = python2
+	depends = libpaper
+	depends = phonon
+	depends = gstreamer0.10-base
+	depends = qtwebkit
+	depends = libdbusmenu-qt
+	source = http://www.cndp.fr/open-sankore/OpenSankore/Releases/v2.5.1/Open-Sankore_Ubuntu_12.04_2.5.1_i386.zip
+	sha256sums = ab061305e1de21ebf8af02a3cb26bc0327f7fcd06fa42977013e98e286dbc213
+
+pkgname = open-sankore
+
