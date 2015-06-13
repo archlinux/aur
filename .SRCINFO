@@ -1,0 +1,17 @@
+pkgbase = pyshapelib
+	pkgdesc = Python library for reading and writing ESRI Shapefiles
+	pkgver = 0.3
+	pkgrel = 2
+	url = http://ftp.intevation.de/users/bh/pyshapelib
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = python2-distribute
+	depends = python2
+	source = http://ftp.intevation.de/users/bh/pyshapelib/pyshapelib-0.3.zip
+	source = http://dl.maptools.org/dl/shapelib/shapelib-1.2.10.tar.gz
+	md5sums = 970232a523aba1a4d20377fee5b86a46
+	md5sums = 4d96bd926167193d27bf14d56e2d484e
+
+pkgname = pyshapelib
+
