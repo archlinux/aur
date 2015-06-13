@@ -1,6 +1,6 @@
 # PKCS #11 driver for CryptoTech smart cards
 
-This repository holds instructions for building an Arch Linux package for propieatary
+This repository holds instructions for building an Arch Linux package for proprietary
 PKCS #11 driver for CryptoTech smart cards by CryptoTech.
 
 ## Pushing to AUR
