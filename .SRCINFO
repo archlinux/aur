@@ -1,0 +1,16 @@
+pkgbase = libstdc++296
+	pkgdesc = Standard C++ libraries for Red Hat 7.3 backwards compatibility compiler. With additions from OpenSUSE 13.1. Provides libstdc++-libc6.2-2.so.3
+	pkgver = 2.96.126
+	pkgrel = 3
+	url = http://rpmfind.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = rpmextract
+	source_i686 = libstdc++296_32.rpm::ftp://rpmfind.net/linux/opensuse/distribution/13.1/repo/oss/suse/i586/compat-2010.1.31-17.1.2.i586.rpm
+	md5sums_i686 = 6048df58c6459b5d4cf43528dfe9d0a3
+	source_x86_64 = libstdc++296_64.rpm::ftp://rpmfind.net/linux/opensuse/distribution/13.1/repo/oss/suse/x86_64/compat-32bit-2010.1.31-17.1.2.x86_64.rpm
+	md5sums_x86_64 = 4048275024eb4663f920833dfd2de4b1
+
+pkgname = libstdc++296
+
