@@ -1,0 +1,12 @@
+pkgbase = tn5250j-plugin-jython
+	pkgdesc = Support for Python scripting in tn5250j
+	pkgver = 2.5.3
+	pkgrel = 1
+	url = http://www.jython.org/
+	arch = any
+	license = GPL
+	depends = tn5250j
+	depends = jython
+
+pkgname = tn5250j-plugin-jython
+
