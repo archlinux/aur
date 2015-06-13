@@ -1,0 +1,16 @@
+pkgbase = im
+	pkgdesc = Toolkit for Digital Imaging.
+	pkgver = 3.8.2
+	pkgrel = 2
+	url = http://www.tecgraf.puc-rio.br/im/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = lua
+	depends = gcc-libs
+	depends = zlib
+	source = http://sourceforge.net/projects/imtoolkit/files/3.8.2/Docs%20and%20Sources/im-3.8.2_Sources.tar.gz
+	sha1sums = 1fd36cdef7c704ca6269fb2de697d439d361c9ba
+
+pkgname = im
+
