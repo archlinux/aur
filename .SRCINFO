@@ -1,0 +1,13 @@
+pkgbase = gimp-plugin-scale-layer-to-image-size
+	pkgdesc = Scales the contents of the layer, or layer group, to image size.
+	pkgver = 1.3
+	pkgrel = 1
+	url = http://some-gimp-plugins.com/contents/en/extensions/001/
+	arch = any
+	license = GPL
+	depends = gimp
+	source = http://some-gimp-plugins.com/contents/en/extensions/001/scale-layer-to-image-size.zip
+	md5sums = 693d63044b39ad7996adee71a7157d90
+
+pkgname = gimp-plugin-scale-layer-to-image-size
+
