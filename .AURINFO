@@ -1,0 +1,17 @@
+pkgbase = pure-faust
+	pkgdesc = Run Faust-generated signal processing modules in Pure
+	pkgver = 0.11
+	pkgrel = 1
+	url = http://purelang.bitbucket.org/
+	arch = i686
+	arch = x86_64
+	groups = pure-complete
+	groups = pure-multimedia
+	license = LGPL3
+	makedepends = faust
+	depends = pure
+	source = https://bitbucket.org/purelang/pure-lang/downloads/pure-faust-0.11.tar.gz
+	md5sums = adaa4bba235b03bfc03dc4e1a0e079fe
+
+pkgname = pure-faust
+
