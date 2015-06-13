@@ -1,0 +1,16 @@
+pkgbase = mbrola-voices-vz1
+	pkgdesc = A Venezuelan Spanish voice for the MBROLA synthesizer
+	pkgver = 1
+	pkgrel = 3
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-vz
+	groups = mbrola-voices
+	groups = gespeaker-mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/vz1/vz1.zip
+	md5sums = 9fe85b878516254d9157bc8c47a0f08b
+
+pkgname = mbrola-voices-vz1
+
