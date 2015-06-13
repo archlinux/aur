@@ -1,0 +1,17 @@
+pkgbase = pure-gl
+	pkgdesc = Pure's interface to OpenGL
+	pkgver = 0.9
+	pkgrel = 1
+	url = http://purelang.bitbucket.org/
+	arch = i686
+	arch = x86_64
+	groups = pure-complete
+	groups = pure-graphics
+	license = BSD
+	depends = pure
+	depends = freeglut
+	source = https://bitbucket.org/purelang/pure-lang/downloads/pure-gl-0.9.tar.gz
+	md5sums = c110eaa39126507fdd73bc678e8730cb
+
+pkgname = pure-gl
+
