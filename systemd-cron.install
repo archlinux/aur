@@ -1,0 +1,13 @@
+_post_install_or_upgrade() {
+    touch /run/crond.reboot
+    touch /run/crond.bootdir
+}
+
+post_install() {
+    _post_install_or_upgrade
+}
+
+post_upgrade() {
+    _post_install_or_upgrade
+}
+

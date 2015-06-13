@@ -1,0 +1,19 @@
+pkgbase = systemd-cron
+	pkgdesc = systemd units to run cron scripts
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = https://github.com/systemd-cron/systemd-cron
+	install = systemd-cron.install
+	arch = any
+	license = MIT
+	depends = systemd>=217
+	depends = run-parts
+	depends = python
+	optdepends = smtp-forwarder: sending emails
+	provides = cron
+	conflicts = cron
+	source = https://github.com/systemd-cron/systemd-cron/archive/v1.5.3.tar.gz
+	md5sums = 15da1cb2e1171d24927e3241de6f7969
+
+pkgname = systemd-cron
+
