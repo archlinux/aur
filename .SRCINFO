@@ -1,0 +1,17 @@
+pkgbase = wxformbuilder-svn
+	pkgdesc = Designer, GUI builder, and RAD tool For wxWidgets
+	pkgver = 3.5.1.RC1.r2203
+	pkgrel = 1
+	url = http://wxformbuilder.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	depends = wxgtk
+	provides = wxformbuilder
+	conflicts = wxformbuilder
+	source = wxformbuilder::svn+http://svn.code.sf.net/p/wxformbuilder/code/3.x/trunk
+	md5sums = SKIP
+
+pkgname = wxformbuilder-svn
+
