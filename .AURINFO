@@ -1,0 +1,15 @@
+pkgbase = spectemu
+	pkgdesc = Fast and accurate emulator of the original 48k ZX Spectrum.
+	pkgver = 0.99.3
+	pkgrel = 5
+	url = http://sourceforge.net/projects/spectemu/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxxf86vm
+	depends = readline
+	source = http://downloads.sourceforge.net/spectemu/spectemu-0.99.3.tar.gz
+	md5sums = ef47b553acc9436768eaa99b2b6de7d7
+
+pkgname = spectemu
+
