@@ -1,0 +1,19 @@
+diff -ur a/eclipse/eclipse.ini b/eclipse/eclipse.ini
+--- a/eclipse/eclipse.ini	2012-06-14 20:50:32.000000000 +0300
++++ b/eclipse/eclipse.ini	2012-09-20 23:02:43.000000000 +0300
+@@ -9,7 +9,7 @@
+ -showsplash
+ org.eclipse.platform
+ --launcher.XXMaxPermSize
+-256m
++512m
+ --launcher.defaultAction
+ openFile
+ -vmargs
+@@ -17,4 +17,5 @@
+ -Dhelp.lucene.tokenizer=standard
+ -XX:MaxPermSize=256m
+ -Xms40m
+--Xmx512m
++-Xmx768m
++-Dosgi.configuration.area=@user.home/.config/eclipse
