@@ -1,0 +1,18 @@
+pkgbase = legend-of-kyrandia-2
+	pkgdesc = A classic adventure game from Abandonia, played in ScummVM.
+	pkgver = 2.0
+	pkgrel = 7
+	url = http://www.abandonia.com/en/games/292/Legend+of+Kyrandia+2+-+Hand+of+Fate,+The.html
+	install = kyrandia2.install
+	arch = any
+	license = custom-freeware
+	license = Abandonware
+	depends = scummvm
+	optdepends = abandonia-menu
+	source = http://files.abandonia.com/download.php?game=Legend+of+Kyrandia+2+-+Hand+of+Fate%2C+The&secure=155bd57dc343f2682b5ad70f03253a14&td=1297714059
+	source = http://scummvm.svn.sourceforge.net/svnroot/scummvm/scummvm/tags/release-1-2-1/dists/engine-data/kyra.dat
+	md5sums = 07b796be342c04c34cf7b1151aa71656
+	md5sums = a81223603341f8c59285753e91665e2f
+
+pkgname = legend-of-kyrandia-2
+
