@@ -1,6 +1,6 @@
 # Maintainer: Rudy Matela <rudy@matela.com.br>
 pkgname=nfdump
-pkgver=1.6.12
+pkgver=1.6.13
 pkgrel=1
 pkgdesc="A set of tools to collect and process netflow data."
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('BSD')
 depends=('glibc')
 makedepends=('flex' 'bison')
 source=("http://downloads.sourceforge.net/nfdump/$pkgname-$pkgver.tar.gz")
-md5sums=('e55a9130c93cfb9ed24b01bccd691bcb')
+md5sums=('f5e916049aec1b531c63303b92270d42')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
