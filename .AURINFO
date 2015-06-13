@@ -1,0 +1,15 @@
+pkgbase = perl-cpan-meta-check
+	pkgdesc = Verify requirements in a CPAN::Meta object
+	pkgver = 0.009
+	pkgrel = 1
+	url = http://search.cpan.org/dist/CPAN-Meta-Check
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-deep
+	depends = perl
+	source = http://cpan.metacpan.org/authors/id/L/LE/LEONT/CPAN-Meta-Check-0.009.tar.gz
+	options = !emptydirs
+
+pkgname = perl-cpan-meta-check
+
