@@ -1,6 +1,6 @@
 pkgbase = cppqc-git
 	pkgdesc = QuickCheck-like property based automated testing tool for C++
-	pkgver = r36.1dab618
+	pkgver = r59.d20b952
 	pkgrel = 1
 	url = https://github.com/grogers0/CppQuickCheck
 	arch = i686
