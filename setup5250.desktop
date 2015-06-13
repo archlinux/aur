@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=IBM iSeries Access Configuration
+Type=Application
+Exec=setup5250
+Icon=setup5250.png
+Hidden=false
+Categories=Network;
+Comment=Configure 5250 terminal sessions for IBM iSeries and AS400
+Keywords=IBM;iseries;as400;emulator;5250;telnet
