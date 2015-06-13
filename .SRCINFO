@@ -1,0 +1,16 @@
+pkgbase = cputnik
+	pkgdesc = Dockapp showing a simple CPU and memory monitor.
+	pkgver = 0.2.0
+	pkgrel = 8
+	url = http://web.archive.org/web/20121031043853/http://dockapps.windowmaker.org/file.php/id/273
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	optdepends = xorg-xkill: for right click - killing apps by window
+	optdepends = gnome-system-monitor: for left click - start system monitor
+	source = cputnik-0.2.0.tar.gz
+	md5sums = 54df4b3b22a06ac8e0913ee54d121c18
+
+pkgname = cputnik
+
