@@ -1,0 +1,16 @@
+pkgbase = splat
+	pkgdesc = A RF Signal Propagation, Loss, And Terrain analysis tool for the spectrum between 20 MHz and 20 GHz
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = http://www.qsl.net/kd2bd/splat.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gcc-libs
+	depends = zlib
+	depends = bzip2
+	depends = gnuplot
+	source = http://www.qsl.net/kd2bd/splat-1.4.2.tar.bz2
+
+pkgname = splat
+
