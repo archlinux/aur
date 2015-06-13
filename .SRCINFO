@@ -1,0 +1,14 @@
+pkgbase = jpgcrush
+	pkgdesc = Lossless jpeg re-compressor.
+	pkgver = 0.0.0
+	pkgrel = 2
+	url = http://akuvian.org/
+	arch = any
+	license = custom:publicdomain
+	depends = perl-file-slurp
+	depends = libjpeg
+	source = http://akuvian.org/src/jpgcrush.tar.gz
+	md5sums = c3c5fb5f228e3f5cced70c6982e0a38e
+
+pkgname = jpgcrush
+
