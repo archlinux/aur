@@ -1,0 +1,26 @@
+pkgbase = texworks
+	pkgdesc = A TeX IDE inspired by TeXShop.
+	pkgver = 0.4.6
+	pkgrel = 2
+	url = http://tug.org/texworks
+	install = texworks.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = hardening-wrapper
+	makedepends = lua
+	makedepends = python
+	depends = poppler-qt4
+	depends = hunspell
+	depends = desktop-file-utils
+	optdepends = texlive-core: Support for typesetting
+	optdepends = lua: Support for Lua scripting/plugins
+	optdepends = python: Support for Python scripting/plugins
+	provides = texworks
+	conflicts = texworks-svn
+	source = https://github.com/TeXworks/texworks/archive/release-0.4.6.tar.gz
+	sha256sums = 58650574c1e3234c38cddc3375f8043a83cc65075839030fc7089471af6a3bde
+
+pkgname = texworks
+
