@@ -3,7 +3,7 @@
 _pkgbasename=memtest86
 pkgname=$_pkgbasename-efi
 pkgver=6.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, thorough, stand alone memory test as an EFI application"
 arch=('i686' 'x86_64')
 url="http://www.memtest86.com"
@@ -15,7 +15,7 @@ source=("$_pkgbasename-$pkgver.iso.tar.gz::http://www.memtest86.com/downloads/$_
 	"memtest86-efi"
 	"memtest86-efi.conf")
 md5sums=('b81b2090c1172cdb238fc3af415522af'
-         '1d2591c66ec002619f236da72d797a30'
+         '2e9d85634c741588f050d214137b6137'
          '6c096df3f55baf3e27c3bd605a418aa2')
 
 prepare() {

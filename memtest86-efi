@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 
+export LC_ALL=C
 CONFFILE=/etc/memtest86-efi.conf
 source $CONFFILE
 [[ "$(uname -m)" == "i686" ]]   && ARCH=ia32
@@ -12,7 +13,8 @@ install() {
 	fi
 
 	partition=$(fdisk -l | grep "EFI System" | awk '{print $1}' | tail -n1)
-	echo -e  "Welcome in $0. This script is to easily use MemTest86 with your UEFI. \033[1;31mNote: this can be dangerous! \033[0m\n"
+	echo -e "Welcome in $0. This script is to easily use MemTest86 with your UEFI, as an EFI application."
+	echo -e "\033[1;31mThis script is unofficial, written by an AUR user. Use it at your own risk.\033[0m\n"
 	echo -en "If \033[1m$partition\033[0m is your ESP partition, press Enter. Else, enter device, then press Enter: "
 	read choice
 	[[ -n $choice ]] && partition=$choice
@@ -21,8 +23,8 @@ install() {
 	[[ -z $esp ]] && echo -e "\033[1;31mNo ESP mounted found !\033[0m" && exit 1
 
 	echo "Please, how do you want to use $0 ?"
-	echo -e "\033[1m1\033[0m: From \033[1mLaunch EFI Shell\033[0m (in UEFI Setup)"
-	echo -e "\033[1m2\033[0m: Add a new boot entry"
+	echo -e "\033[1m1\033[0m: From \033[1mLaunch EFI Shell\033[0m (in UEFI Setup), e.g. as shellx64.efi on ESP's root (bit safe)"
+	echo -e "\033[1m2\033[0m: Add a new boot entry (more safe)"
 	echo -e "\033[1m3: Cancel\033[0m"
 	choice=0; while [[ $choice < 1 ]] || [[ $choice > 3 ]]; do
 		read choice
@@ -41,6 +43,7 @@ install() {
 		mkdir -pv "$esp/EFI/memtest86"
 		cp -v "$MEMTEST86_PATH/"*		"$esp/EFI/memtest86/" # Move files in memtest ESP directory
 		mv -v "$esp/EFI/memtest86/boot$ARCH.efi" "$esp/EFI/memtest86/memtest$ARCH.efi" # Rename .efi file
+		echo
 		efibootmgr -c -d ${partition:0:8} -p ${partition:8} -w -L "MemTest86" -l "\EFI\memtest86\memtest$ARCH.efi" # Manage efi entry
 	elif [[ $choice == 3 ]]; then
 		# Do nothing and quit
@@ -54,7 +57,7 @@ install() {
 	sed -i "s|@CHOICE@|$choice|g" "$CONFFILE"
 	sed -i "s|install=0|install=1|g" "$CONFFILE"
 
-	echo -e "MemTest86 has been installed in ESP."
+	echo -e "\nMemTest86 has been installed in ESP."
 }
 
 update() {
@@ -63,7 +66,7 @@ update() {
 		exit 1
 	fi
 
-	if [[ $choice == 1 ]]; then 
+	if [[ $choice == 1 ]]; then
 		echo -e "MemTest86 will be updated in \033[1m$esp\033[0m."
 		cp -fv "$MEMTEST86_PATH/"*		"$esp/"
 		mv -fv "$esp/boot$ARCH.efi"		"$esp/shell$ARCH.efi"
@@ -73,7 +76,7 @@ update() {
 		mv -fv "$esp/EFI/memtest86/boot$ARCH.efi" "$esp/EFI/memtest86/memtest$ARCH.efi"
 	fi
 
-	echo -e "MemTest86 has been updated in ESP."
+	echo -e "\nMemTest86 has been updated in ESP."
 }
 
 remove() {
@@ -89,6 +92,7 @@ remove() {
 	elif [[ $choice == 2 ]]; then
 		echo -e "MemTest86 will be removed from \033[1m$esp/EFI/memtest86\033[0m."
 		rm -rfv "$esp/EFI/memtest86/"
+		echo
 		efibootmgr -b $(efibootmgr | grep MemTest86 | cut -c 5-8) -B
 	fi
 
@@ -98,7 +102,7 @@ remove() {
 	sed -i "s|$choice|@CHOICE@|g" "/etc/memtest86-efi.conf"
 	sed -i "s|install=1|install=0|g" "/etc/memtest86-efi.conf"
 
-	echo -e "MemTest86 has been removed from ESP."
+	echo -e "\nMemTest86 has been removed from ESP."
 }
 
 if [[ $EUID -ne 0 ]]; then
