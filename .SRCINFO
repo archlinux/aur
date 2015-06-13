@@ -1,0 +1,17 @@
+pkgbase = emacs-pure-mode
+	pkgdesc = An Emacs major mode for the Pure programming language
+	pkgver = 0.64
+	pkgrel = 1
+	url = http://purelang.bitbucket.org/
+	arch = i686
+	arch = x86_64
+	groups = pure-complete
+	groups = pure-base
+	license = LGPL3
+	depends = emacs
+	depends = pure
+	source = https://bitbucket.org/purelang/pure-lang/downloads/pure-0.64.tar.gz
+	md5sums = 399b0a5cb6bbf0042ce42f9a857e332e
+
+pkgname = emacs-pure-mode
+
