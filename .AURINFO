@@ -1,0 +1,13 @@
+pkgbase = reed
+	pkgdesc = A text pager to display etexts, with bookmarks, autoscrolling and more
+	pkgver = 5.4
+	pkgrel = 1
+	url = http://web.archive.org/web/20040217010815/www.sacredchao.net/software/reed/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	source = http://distcache.freebsd.org/ports-distfiles/reed-5.4.tar.gz
+
+pkgname = reed
+
