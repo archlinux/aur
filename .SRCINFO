@@ -1,0 +1,17 @@
+pkgbase = pd-pure
+	pkgdesc = Loader plugin for the Pure programming language which lets you write external Pd objects in Pure
+	pkgver = 0.20
+	pkgrel = 1
+	url = http://purelang.bitbucket.org/
+	arch = i686
+	arch = x86_64
+	groups = pure-complete
+	groups = pure-multimedia
+	license = BSD
+	depends = pd
+	depends = pure
+	source = https://bitbucket.org/purelang/pure-lang/downloads/pd-pure-0.20.tar.gz
+	md5sums = a11b26543f3f865aa80b113e89ba6be8
+
+pkgname = pd-pure
+
