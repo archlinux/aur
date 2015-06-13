@@ -1,0 +1,16 @@
+pkgbase = gbdk
+	pkgdesc = GAMEBOY Developers Kit
+	pkgver = 2.96a
+	pkgrel = 2
+	url = http://gbdk.sourceforge.net/
+	install = gbdk.install
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = lib32-glibc
+	conflicts = lcc
+	source = http://downloads.sourceforge.net/project/gbdk/gbdk/2.96/gbdk-2.96a-i586-pc-linux2.2.tar.gz
+	md5sums = 1d10b9192974c442abc3ddceb8145a13
+
+pkgname = gbdk
+

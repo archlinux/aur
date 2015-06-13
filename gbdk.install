@@ -1,0 +1,12 @@
+post_install() {
+  echo
+  echo "#########################"
+  echo "To set GBDKDIR add:"
+  echo
+  echo "export GBDKDIR=/opt/gbdk/"
+  echo
+  echo "in your .bashrc"
+  echo
+  echo "#########################"
+  echo
+}
