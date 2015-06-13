@@ -1,0 +1,24 @@
+pkgbase = snis-git
+	pkgdesc = Space Nerds in Space open source spaceship bridge simulator.
+	pkgver = 2545.b01de0d
+	pkgrel = 1
+	url = http://smcameron.github.io/space-nerds-in-space/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = openscad
+	makedepends = sdl
+	depends = gtkglext
+	depends = lua
+	depends = portaudio
+	optdepends = sdl: for using mesh_viewer
+	provides = snis
+	provides = ssgl
+	provides = ssgl-git
+	conflicts = snis
+	source = snis-git::git://github.com/smcameron/space-nerds-in-space.git
+	md5sums = SKIP
+
+pkgname = snis-git
+
