@@ -1,0 +1,13 @@
+pkgbase = discus
+	pkgdesc = A text-mode disk space usage program which aims to make df(1) prettier
+	pkgver = 0.2.9
+	pkgrel = 3
+	url = http://www.debianhelp.co.uk/discus.htm
+	arch = any
+	license = GPL
+	depends = python2
+	source = http://kmkeen.com/tmp/discus-0.2.9.tar.gz
+	md5sums = bcc4a08d03a0952b0b744655c45b04b8
+
+pkgname = discus
+
