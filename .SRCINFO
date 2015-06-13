@@ -1,0 +1,12 @@
+pkgbase = nodejs-hexo
+	pkgdesc = A fast, simple & powerful blog framework, powered by Node.js.
+	pkgver = 2.8.3
+	pkgrel = 1
+	url = http://hexo.io
+	arch = any
+	license = MIT
+	depends = nodejs
+	options = !strip
+
+pkgname = nodejs-hexo
+
