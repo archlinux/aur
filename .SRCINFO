@@ -1,0 +1,17 @@
+pkgbase = pure-ffi
+	pkgdesc = An interface to libffi which enables you to call C functions from Pure and vice versa.
+	pkgver = 0.14
+	pkgrel = 1
+	url = http://purelang.bitbucket.org/
+	arch = i686
+	arch = x86_64
+	groups = pure-complete
+	groups = pure-util
+	license = LGPL3
+	depends = pure
+	depends = libffi
+	source = https://bitbucket.org/purelang/pure-lang/downloads/pure-ffi-0.14.tar.gz
+	sha1sums = 65a217e7950ac38f8633bb9bbb58903c541bfa29
+
+pkgname = pure-ffi
+
