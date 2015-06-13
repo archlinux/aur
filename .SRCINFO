@@ -1,0 +1,15 @@
+pkgbase = mbrola-voices-it2
+	pkgdesc = An Italian female voice for the MBROLA synthesizer
+	pkgver = 010406
+	pkgrel = 2
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-it
+	groups = mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/it2/it2-010406.zip
+	md5sums = 4203134bfbc7002278e54cf4456f1b0a
+
+pkgname = mbrola-voices-it2
+
