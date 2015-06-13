@@ -1,0 +1,12 @@
+pkgbase = tn5250j-plugin-jtopen
+	pkgdesc = Support for export of spool files and data files in tn5250j
+	pkgver = 8.3
+	pkgrel = 2
+	url = http://jt400.sourceforge.net/
+	arch = any
+	license = GPL
+	depends = tn5250j
+	depends = libjtopen
+
+pkgname = tn5250j-plugin-jtopen
+
