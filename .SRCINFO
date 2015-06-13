@@ -1,0 +1,19 @@
+pkgbase = ruby-middleman-sprockets
+	pkgdesc = Sprockets support for Middleman
+	pkgver = 3.4.2
+	pkgrel = 1
+	url = https://github.com/middleman/middleman-sprockets
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-middleman-core
+	depends = ruby-sprockets-2
+	depends = ruby-sprockets-sass
+	depends = ruby-sprockets-helpers
+	noextract = middleman-sprockets-3.4.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/middleman-sprockets-3.4.2.gem
+	sha512sums = 08c1e1765a79eb86923533f56a39858621dcd2ce895da68a068e251f30661588516ea5bfd9f21c1a27a480250d8326e6cb70fcddc492a44d57c1efab9e2674bd
+
+pkgname = ruby-middleman-sprockets
+
