@@ -1,0 +1,11 @@
+--- src/jstest-gtk/src/joystick_list_widget.cpp	2015-03-29 21:14:20.241884909 -0600
++++ src/jstest-gtk/src/joystick_list_widget.cpp	2015-03-29 21:21:27.835219758 -0600
+@@ -123,7 +123,7 @@
+   for(std::vector<JoystickDescription>::const_iterator i = joysticks.begin(); i != joysticks.end(); ++i)
+   {
+     Gtk::ListStore::iterator it = device_list->append();
+-    (*it)[DeviceListColumns::instance().icon] = Gdk::Pixbuf::create_from_file(Main::current()->get_data_directory() + "generic.png");
++    (*it)[DeviceListColumns::instance().icon] = Gdk::Pixbuf::create_from_file("/usr/share/jstest-gtk/data/generic.png");
+     (*it)[DeviceListColumns::instance().path] = i->filename;
+ 
+     std::ostringstream out;
