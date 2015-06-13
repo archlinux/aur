@@ -1,0 +1,13 @@
+pkgbase = pyprocessing
+	pkgdesc = Code up images, animation and interactions. Uses Python and Pyglet, not Java.
+	pkgver = 0.1.3.22
+	pkgrel = 1
+	url = http://code.google.com/p/pyprocessing/
+	arch = any
+	license = BSD
+	depends = pyglet
+	source = http://pyprocessing.googlecode.com/files/pyprocessing-0.1.3.22.tar.gz
+	md5sums = d10a1a6fa758754d47586a8e1a44efb8
+
+pkgname = pyprocessing
+
