@@ -2,7 +2,7 @@
 
 pkgname=flattr-icon-theme
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Flattr is an icon theme for Linux desktops, the set is inspired by the latest flat design trend."
 url="http://nitrux.in/store/flattr-icon-theme/"
 arch=('any')
