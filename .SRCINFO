@@ -1,0 +1,14 @@
+pkgbase = thunderbird-theme-adwaita
+	pkgdesc = Adwaita theme for Thunderbird (Matches the default Gnome Shell theme)
+	pkgver = 31.0
+	pkgrel = 1
+	url = https://addons.mozilla.org/en-US/thunderbird/addon/adwaita-thunderbird
+	arch = any
+	license = MPL
+	makedepends = unzip
+	depends = thunderbird
+	source = thunderbird-theme-adwaita-31.0.zip::https://github.com/gnome-integration-team/thunderbird-gnome/archive/0284aedcc3c6ca908e1083647ab4589c2bbd84be.zip
+	sha256sums = b0bf6b5ebb6942af16d09696684d95d924e69b0980b15ae4de76e54b8704cb01
+
+pkgname = thunderbird-theme-adwaita
+
