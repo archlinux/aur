@@ -1,0 +1,14 @@
+pkgbase = python2-pytvdbapi
+	pkgdesc = A clean, resource friendly and easy to use Python API for thetvdb.com
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/fuzzycode/pytvdbapi
+	arch = any
+	license = LGPL3
+	depends = python2
+	depends = python2-httplib2
+	source = https://pypi.python.org/packages/source/p/pytvdbapi/pytvdbapi-0.5.0.tar.gz
+	options = !emptydirs
+
+pkgname = python2-pytvdbapi
+
