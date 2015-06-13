@@ -1,0 +1,15 @@
+pkgbase = vicious-orcs
+	pkgdesc = A Seven Day Roguelike written by Jeff Lait.
+	pkgver = 001
+	pkgrel = 1
+	url = http://www.zincland.com/7drl/orcs/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = libtcod
+	depends = sdl_mixer
+	source = http://www.zincland.com/7drl/orcs/orcs001.zip
+	md5sums = 7dce0344741f8c05d2459cd0a00b1e21
+
+pkgname = vicious-orcs
+
