@@ -1,0 +1,14 @@
+--- makemeasandwich-git/lib/makemeasandwich.js
++++ makemeasandwich-nosudo-git/lib/makemeasandwich.js
+@@ -1,11 +1,3 @@
+-// Require sudo on unix platforms
+-if(process.platform !== 'win32'){
+-  if(process.env.USER !== "root"){
+-    console.log("What? Make it yourself.");
+-    process.exit();
+-  }
+-}
+-
+ // Require the libraries.
+ var async =   require('async'),
+     $ =       require('jquerygo'),
