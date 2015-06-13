@@ -1,0 +1,10 @@
+post_install() {
+	openssl req -x509 -batch -nodes -newkey rsa:1024 \
+		-keyout /usr/share/janus/certs/mycert.key \
+		-out /usr/share/janus/certs/mycert.pem
+}
+
+pre_remove() {
+	rm -f /usr/share/janus/certs/mycert.{key,pem}
+}
+

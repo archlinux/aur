@@ -1,0 +1,6 @@
+src/
+pkg/
+*.src.tar.*
+*.pkg.tar.*
+*.log
+janus-gateway/
