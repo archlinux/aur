@@ -1,0 +1,13 @@
+pkgbase = soundfont-unison
+	pkgdesc = A lean and clean GM/GS soundbank
+	pkgver = 1.00
+	pkgrel = 3
+	url = http://www.personalcopy.com
+	arch = any
+	groups = soundfonts
+	license = custom
+	source = ftp://ftp.personalcopy.net/pub/Unison.sf2.gz
+	md5sums = 6775aad100fd758dc8300c511e4cc09f
+
+pkgname = soundfont-unison
+
