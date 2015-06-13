@@ -1,0 +1,14 @@
+pkgbase = celestia-addon-global_water_volume
+	pkgdesc = Celestia addon: Earth: Surface Map Textures: Global Water Volume
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.celestiamotherlode.net/catalog/show_addon_details.php?addon_id=1635
+	arch = any
+	license = n/a
+	makedepends = unzip
+	depends = celestia
+	source = http://www.celestiamotherlode.net/creators/particlegrasp/GlobalWaterVolume.zip
+	md5sums = 7f20d63d094ecd9b486f711b212ce27f
+
+pkgname = celestia-addon-global_water_volume
+
