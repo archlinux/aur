@@ -1,0 +1,11 @@
+
+[Desktop Entry]
+Name=4K Stogram
+GenericName=4K Stogram
+Comment=View instagram photos
+Exec=4kstogram
+Terminal=false
+Type=Application
+Icon=4kstogram.png
+Categories=Network;Qt;
+
