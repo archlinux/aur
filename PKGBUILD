@@ -1,14 +1,14 @@
-# Maintaner: Dennis Börm <allspark@wormhole.eu
+# Maintaner: Dennis Börm <allspark@wormhole.eu>
 pkgname=('shorewall6-lite')
-pkgver=4.6.10
+pkgver=4.6.10.1
 pkgrel=1
 arch=('any')
 url="http://www.shorewall.net/"
 license=('GPL')
 pkgdesc="An iptables-based firewall for Linux systems (with IPv6 support) ('lite' version)"
-depends=('iptables' 'iproute2' 'shorewall-core=4.6.10')
-source=(http://www.shorewall.net/pub/shorewall/4.6/shorewall-$pkgver/shorewall6-lite-$pkgver.tar.bz2)
-sha256sums=('651120aa33bf9177b226e75bf7f8f1b3a2cf7050ac6d6038899aaf795d2ed1d5')
+depends=('iptables' 'iproute2' "shorewall-core=${pkgver}")
+source=(http://www.shorewall.net/pub/shorewall/4.6/shorewall-4.6.10/shorewall6-lite-$pkgver.tar.bz2)
+sha256sums=('ce19583541f5eb39acad33099af087d030374d467eb64aa4415ac9b18e65c5a8')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
