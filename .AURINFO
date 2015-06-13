@@ -1,0 +1,19 @@
+pkgbase = pure-stllib
+	pkgdesc = An 'umbrella' package that contains a pair of Pure addons, pure-stlvec and pure-stlmap. These addons provide Pure interfaces to a selection of containers provided by the C++ Standard Library, specialized to hold pointers to arbitrary Pure expressions.
+	pkgver = 0.6
+	pkgrel = 1
+	url = http://purelang.bitbucket.org/
+	arch = i686
+	arch = x86_64
+	groups = pure-complete
+	groups = pure-util
+	license = BSD
+	depends = pure
+	depends = libstdc++5
+	provides = pure-stlvec
+	conflicts = pure-stlvec
+	source = https://bitbucket.org/purelang/pure-lang/downloads/pure-stllib-0.6.tar.gz
+	sha1sums = 47584905c29b662178c954587970b1ef0a2f977a
+
+pkgname = pure-stllib
+
