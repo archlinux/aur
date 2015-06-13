@@ -1,0 +1,17 @@
+pkgbase = pure-fastcgi
+	pkgdesc = Pure FastCGI interface
+	pkgver = 0.6
+	pkgrel = 1
+	url = http://purelang.bitbucket.org/
+	arch = i686
+	arch = x86_64
+	groups = pure-complete
+	groups = pure-web
+	license = custom
+	depends = pure
+	depends = fcgi
+	source = https://bitbucket.org/purelang/pure-lang/downloads/pure-fastcgi-0.6.tar.gz
+	sha1sums = 8a68aad2e3058a05f845fc196c8fc49fc2cc1fc1
+
+pkgname = pure-fastcgi
+
