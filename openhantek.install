@@ -1,0 +1,10 @@
+post_install() {
+  echo "Please add your user to the plugdev group."
+  echo "# groupadd plugdev"
+  echo "# usermod -a -G plugdev USER"
+  echo "log out and back in again"
+}
+
+post_upgrade() {
+  post_install $1
+}
