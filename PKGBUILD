@@ -1,7 +1,7 @@
 # Maintainer: Stefan Tatschner <stefan@sevenbyte.org>
 
 pkgname=syncthing-inotify
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="Inotify file watcher for Syncthing"
 url="https://github.com/syncthing/syncthing-inotify"
