@@ -1,0 +1,11 @@
+
+[Desktop Entry]
+Name=4K Video to MP3
+GenericName=4K Video to MP3
+Comment=Download online video
+Exec=4kvideotomp3
+Terminal=false
+Type=Application
+Icon=4kvideotomp3.png
+Categories=AudioVideo;Qt;
+
