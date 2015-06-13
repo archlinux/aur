@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=V2C
+GenericName=BBS Browser
+Comment=Viewer/Writer for BBS like 2ch
+Icon=/opt/v2c/v2cicon.png
+Exec=/opt/v2c/v2c
+Terminal=0
+Type=Application
+Categories=Application;Network;Java;
