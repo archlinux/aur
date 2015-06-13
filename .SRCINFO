@@ -1,0 +1,16 @@
+pkgbase = mbrola-voices-sw2
+	pkgdesc = A Swedish female voice for the MBROLA synthesizer
+	pkgver = 140102
+	pkgrel = 3
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-sw
+	groups = mbrola-voices
+	groups = gespeaker-mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/sw2/sw2-140102.zip
+	md5sums = 889d1be2915850aab74f0de1cbccbf0d
+
+pkgname = mbrola-voices-sw2
+
