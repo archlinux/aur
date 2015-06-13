@@ -1,0 +1,17 @@
+pkgbase = globonote
+	pkgdesc = Create sticky notes, to-do lists, reminders and other notes in one place.
+	pkgver = 1.4.1
+	pkgrel = 2
+	url = http://globonote.info/
+	arch = any
+	license = GPLv2
+	depends = java-runtime
+	source = http://sourceforge.net/projects/globonote/files/globonote/GloboNote-1.4.1/globonote-1.4.1.tar.gz
+	source = globonote.sh
+	source = globonote.desktop
+	md5sums = ae395cfd5705c87cf26f0b24e344a3d3
+	md5sums = 6355ec8b0545e8853e3a441a7caaf200
+	md5sums = 3d72cd1aa49d00c9820033201170bd17
+
+pkgname = globonote
+

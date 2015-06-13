@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=GloboNote
+GenericName=GloboNote
+Comment=Create sticky notes, to-do lists, reminders and other notes in one place
+Exec=/usr/bin/globonote
+Categories=Office
+Icon=/usr/share/java/globonote/doc/images/globonote16.png
