@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=WinSCP
+GenericName=SFTP, SCP and FTP client
+GenericName[cs]=SFTP, SCP a FTP klient
+Comment=safe copying of files between a local and a remote computer
+Comment[cs]=bezpečné kopírování souboru mezi místním a vzdáleným počítačem
+Exec=winscp
+StartupNotify=true
+Icon=winscp
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Categories=Network;
