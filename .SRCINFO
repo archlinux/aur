@@ -1,0 +1,17 @@
+pkgbase = rtirq
+	pkgdesc = Realtime IRQ thread system tuning.
+	pkgver = 20150216
+	pkgrel = 1
+	url = http://www.rncbc.org/jack/
+	install = rtirq.install
+	arch = any
+	groups = multimedia
+	license = GPL
+	depends = bash
+	backup = etc/conf.d/rtirq
+	backup = usr/lib/systemd/system/rtirq.service
+	source = http://www.rncbc.org/jack/rtirq-20150216.tar.gz
+	md5sums = 59e8b012c16b1e879ce8648f537400c5
+
+pkgname = rtirq
+
