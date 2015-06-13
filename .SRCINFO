@@ -1,0 +1,19 @@
+pkgbase = voximp
+	pkgdesc = Control your desktop with your voice
+	pkgver = 0.0.1
+	pkgrel = 4
+	url = http://voximp.googlecode.com
+	install = voximp.install
+	arch = any
+	license = GPL
+	depends = gstreamer0.10-python
+	depends = gstreamer0.10-base-plugins
+	depends = python2
+	depends = pygtk
+	depends = pocketsphinx
+	depends = xdotool
+	source = http://voximp.googlecode.com/files/voximp-0.0.1.tar.gz
+	md5sums = 4e2b0d3a88257999866ad0028dd69c04
+
+pkgname = voximp
+

@@ -1,0 +1,14 @@
+post_install() {
+    cat << EOF
+==> Copy all the files in /usr/share/voximp/sample_configs to ~/.config/voximp
+==> Rename ~/.config/voximp/voximpconf.py.sample to ~/.config/voximp/voximpconf.py
+==> Edit the config file if you want, but remember, if you edit, you have to re-create language model.
+====> Insturctions for this can be found in the config file itself.
+==> Also, remember, the more commands you have, the less accurate it'll be.
+EOF
+
+}
+
+op=$1
+shift
+$op $*
