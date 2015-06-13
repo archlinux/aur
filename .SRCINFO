@@ -1,0 +1,12 @@
+pkgbase = ubuntu-sounds
+	pkgdesc = Ubuntu's GNOME audio theme
+	pkgver = 0.13
+	pkgrel = 3
+	url = https://launchpad.net/ubuntu/+source/ubuntu-sounds
+	arch = any
+	license = Creative Commons Attribution Share-Alike
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/ubuntu-sounds_0.13.tar.gz
+	md5sums = b5eb40f5a675f8b21e40638bb242ec4f
+
+pkgname = ubuntu-sounds
+
