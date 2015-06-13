@@ -1,0 +1,16 @@
+pkgbase = sysexxer
+	pkgdesc = A tool to send and receive MIDI SysEx data
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://www.christeck.de/wp/products/simple-sysexxer/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	makedepends = gcc
+	depends = qt4
+	source = http://downloads.sourceforge.net/project/sysexxer/SimpleSysexxer-0.3/SimpleSysexxer-0.3.tar.gz
+	md5sums = 59c1b91089bb15050e3a58aa602332db
+
+pkgname = sysexxer
+
