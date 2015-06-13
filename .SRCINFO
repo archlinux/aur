@@ -1,0 +1,19 @@
+pkgbase = python2-labjackpython-git
+	pkgdesc = Python module for communicating with LabJack devices
+	pkgver = 417.d821117
+	pkgrel = 1
+	url = http://labjack.com/support/labjackpython
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python2
+	depends = labjack-exodriver
+	provides = python2-labjackpython
+	conflicts = python2-labjackpython
+	source = LabJackPython::git+git://github.com/labjack/LabJackPython
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 6b654d05134aa959b7db1f4b05c7f33d
+
+pkgname = python2-labjackpython-git
+
