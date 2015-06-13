@@ -1,0 +1,15 @@
+pkgbase = python-sendfile
+	pkgdesc = A Python interface to sendfile(2)
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/giampaolo/pysendfile
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python-distribute
+	depends = python
+	source = https://github.com/giampaolo/pysendfile/archive/release-2.0.1.tar.gz
+	md5sums = 928b468e0676c3f90a824b472fbaf4b3
+
+pkgname = python-sendfile
+
