@@ -1,0 +1,26 @@
+pkgbase = pidgin-libnotify-notify-osd
+	pkgdesc = Patched pidgin-libnotify version for notify-osd
+	pkgver = 0.14
+	pkgrel = 6
+	url = http://gaim-libnotify.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	depends = pidgin
+	depends = libnotify
+	depends = perl-xml-parser
+	depends = gettext
+	provides = pidgin-libnotify
+	conflicts = pidgin-libnotify
+	conflicts = pidgin-libnotify-ubuntu
+	options = !libtool
+	source = http://downloads.sourceforge.net/sourceforge/gaim-libnotify/pidgin-libnotify-0.14.tar.gz
+	source = pidgin-libnotify-notify-osd.patch
+	source = language_fixes.patch
+	md5sums = bfb5368b69c02d429b2b17c00a6673c0
+	md5sums = e77341ecd8a9da3720c91e38781e72ae
+	md5sums = e9bdbb3c7faa61f062fc64277457b6c0
+
+pkgname = pidgin-libnotify-notify-osd
+

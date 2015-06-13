@@ -1,0 +1,105 @@
+diff -aur pidgin-libnotify-0.14/src/pidgin-libnotify.c pidgin-libnotify-0.14.new/src/pidgin-libnotify.c
+--- pidgin-libnotify-0.14/src/pidgin-libnotify.c	2008-12-14 18:45:51.000000000 +0100
++++ pidgin-libnotify-0.14.new/src/pidgin-libnotify.c	2011-03-17 17:02:59.000000000 +0100
+@@ -254,6 +254,32 @@
+ 	return purple_status_is_online (status) && purple_status_is_available (status);
+ }
+ 
++static gboolean
++notify_supports_actions ()
++{
++	GList *caps;
++	gint i = 0;
++	
++	caps = notify_get_server_caps ();
++	
++	do
++	{
++		if (g_strcmp0 (caps->data, "actions") == 0)
++		{
++			g_list_free (caps);
++			return TRUE;
++		}
++		
++		if (caps->next != NULL)
++			caps = g_list_next (caps);
++
++	} while (caps->next != NULL);
++	
++	g_list_free (caps);
++	
++	return FALSE;
++}
++
+ static void
+ notify (const gchar *title,
+ 		const gchar *body,
+@@ -286,7 +312,7 @@
+ 		g_free (tr_body);
+ 		return;
+ 	}
+-	notification = notify_notification_new (title, tr_body, NULL, NULL);
++	notification = notify_notification_new (title, tr_body, NULL);
+ 	purple_debug_info (PLUGIN_ID, "notify(), new: "
+ 					 "title: '%s', body: '%s', buddy: '%s'\n",
+ 					 title, tr_body, best_name (buddy));
+@@ -316,8 +342,12 @@
+ 	g_signal_connect (notification, "closed", G_CALLBACK(closed_cb), NULL);
+ 
+ 	notify_notification_set_urgency (notification, NOTIFY_URGENCY_NORMAL);
+-
+-	notify_notification_add_action (notification, "show", _("Show"), action_cb, NULL, NULL);
++	
++	/* Check if notification server can use actions */
++	if (notify_supports_actions ())
++	{
++		notify_notification_add_action (notification, "show", _("Show"), action_cb, NULL, NULL);
++	}
+ 
+ 	if (!notify_notification_show (notification, NULL)) {
+ 		purple_debug_error (PLUGIN_ID, "notify(), failed to send notification\n");
+@@ -329,7 +359,7 @@
+ notify_buddy_signon_cb (PurpleBuddy *buddy,
+ 						gpointer data)
+ {
+-	gchar *tr_name, *title;
++	gchar *tr_name;
+ 	gboolean blocked;
+ 
+ 	g_return_if_fail (buddy);
+@@ -349,19 +379,16 @@
+ 
+ 	tr_name = truncate_escape_string (best_name (buddy), 25);
+ 
+-	title = g_strdup_printf (_("%s signed on"), tr_name);
+-
+-	notify (title, NULL, buddy);
++	notify (tr_name, "Signed on", buddy);
+ 
+ 	g_free (tr_name);
+-	g_free (title);
+ }
+ 
+ static void
+ notify_buddy_signoff_cb (PurpleBuddy *buddy,
+ 						 gpointer data)
+ {
+-	gchar *tr_name, *title;
++	gchar *tr_name;
+ 	gboolean blocked;
+ 
+ 	g_return_if_fail (buddy);
+@@ -381,12 +408,9 @@
+ 
+ 	tr_name = truncate_escape_string (best_name (buddy), 25);
+ 
+-	title = g_strdup_printf (_("%s signed off"), tr_name);
+-
+-	notify (title, NULL, buddy);
++	notify (tr_name, "Signed off", buddy);
+ 
+ 	g_free (tr_name);
+-	g_free (title);
+ }
+ 
+ static void
