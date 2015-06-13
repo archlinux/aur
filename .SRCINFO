@@ -1,0 +1,15 @@
+pkgbase = mbrola-voices-jp3
+	pkgdesc = A Japanese female voice for the MBROLA synthesizer
+	pkgver = 1
+	pkgrel = 2
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-jp
+	groups = mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/jp3/jp3.zip
+	md5sums = 8e01d49d5f51d02e16638f1477f76ecc
+
+pkgname = mbrola-voices-jp3
+
