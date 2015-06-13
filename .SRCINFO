@@ -1,0 +1,19 @@
+pkgbase = pure-meta-util
+	pkgdesc = Pure programming language, util package -- basic support utilities and libraries
+	pkgver = 1
+	pkgrel = 2
+	url = http://purelang.bitbucket.org/
+	arch = any
+	groups = pure-meta
+	license = custom
+	depends = pure-avahi
+	depends = pure-doc
+	depends = pure-gen
+	depends = pure-ffi
+	depends = pure-readline
+	depends = pure-sockets
+	depends = pure-stldict
+	depends = pure-stllib
+
+pkgname = pure-meta-util
+
