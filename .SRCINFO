@@ -1,0 +1,14 @@
+pkgbase = python-pubsub
+	pkgdesc = Python Publish-Subscribe Package
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/PyPubSub
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = https://downloads.sf.net/project/pubsub/pubsub/3.3.0/PyPubSub-3.3.0.zip
+	sha256sums = 05e301917a8489f4fdf71bf5a717526a44c4f908e93809df366accec2886a84b
+
+pkgname = python-pubsub
+
