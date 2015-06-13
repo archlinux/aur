@@ -1,0 +1,18 @@
+pkgbase = gnumeric-pure-hg
+	pkgdesc = Gnumeric plugin for the Pure programming language
+	pkgver = 5445.6b7c8b14cb4b
+	pkgrel = 1
+	url = http://purelang.bitbucket.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = mercurial
+	depends = gnumeric>=1.12.4
+	depends = pure
+	provides = gnumeric-pure=0.13
+	conflicts = gnumeric-pure
+	source = hg+https://bitbucket.org/purelang/pure-lang
+	md5sums = SKIP
+
+pkgname = gnumeric-pure-hg
+
