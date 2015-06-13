@@ -1,0 +1,13 @@
+pkgbase = tn5250j-plugin-log4j
+	pkgdesc = Support for logging in tn5250j
+	pkgver = 1.2.15
+	pkgrel = 1
+	url = http://logging.apache.org/log4j
+	arch = any
+	license = GPL
+	depends = tn5250j
+	source = https://archive.apache.org/dist/logging/log4j/1.2.15/apache-log4j-1.2.15.tar.gz
+	md5sums = 10f04abe4d68d5a89e8eb167e4e45e1a
+
+pkgname = tn5250j-plugin-log4j
+
