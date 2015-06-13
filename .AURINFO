@@ -1,0 +1,14 @@
+pkgbase = tty-clock
+	pkgdesc = Analog clock in ncurses
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://github.com/xorg62/tty-clock
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	depends = ncurses
+	source = git://github.com/xorg62/tty-clock.git#tag=v0.1
+
+pkgname = tty-clock
+
