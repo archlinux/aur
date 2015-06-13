@@ -1,0 +1,19 @@
+pkgbase = fragview-git
+	pkgdesc = Analyze disk content and files fragmentation by displaying its map
+	pkgver = 0.1.16.gaf55f55
+	pkgrel = 1
+	url = https://github.com/i-rinat/fragview
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = boost
+	makedepends = sqlite
+	makedepends = cmake
+	depends = gtkmm3
+	optdepends = sqlite: to open fragmentator.db databases created by fragdb
+	source = git://github.com/i-rinat/fragview.git
+	md5sums = SKIP
+
+pkgname = fragview-git
+
