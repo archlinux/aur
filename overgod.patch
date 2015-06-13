@@ -1,0 +1,285 @@
+diff -rupN overgod-original//displ_in.c overgod-1.0//displ_in.c
+--- overgod-original//displ_in.c	2010-07-08 05:54:55.000000000 +0200
++++ overgod-1.0//displ_in.c	2010-07-06 07:43:09.000000000 +0200
+@@ -143,7 +143,7 @@ void init_display(void)
+  RGB temp_palette [256];
+  RGB temp_palette3 [1024];
+ 
+- DATAFILE *datf = load_datafile("gfx//data.dat");
++ DATAFILE *datf = load_datafile("//usr//share//overgod//gfx//data.dat");
+  if (datf == NULL)
+  {
+   set_gfx_mode(GFX_TEXT, 0, 0, 0, 0);
+@@ -166,7 +166,7 @@ progress_update("Data.dat");
+ 
+ //rest(1000);
+ 
+- BITMAP *temp_bitmap = load_bitmap("gfx//gb_si.bmp", temp_palette);
++ BITMAP *temp_bitmap = load_bitmap("//usr//share//overgod//gfx//gb_si.bmp", temp_palette);
+  if (temp_bitmap == NULL)
+  {
+   bitmap_error("temp_bitmap (ships)");
+@@ -321,8 +321,8 @@ progress_update("Data.dat");
+ #ifdef FIX_FONT
+ 
+  RGB font_palette [256];
+-// BITMAP *fbmp = load_bitmap("gfx//font_cel.bmp", font_palette);
+- BITMAP *fbmp = load_bitmap("gfx//font_oc.bmp", font_palette);
++// BITMAP *fbmp = load_bitmap("//usr//share//overgod//gfx//font_cel.bmp", font_palette);
++ BITMAP *fbmp = load_bitmap("//usr//share//overgod//gfx//font_oc.bmp", font_palette);
+  if (temp_bitmap == NULL)
+  {
+   bitmap_error("temp_bitmap (font_cel)");
+@@ -395,7 +395,7 @@ progress_update("Data.dat");
+ #ifdef GENERATE_SHIPS
+ 
+ 
+- temp_bitmap = load_bitmap("gfx//gb_ship.bmp", temp_palette);
++ temp_bitmap = load_bitmap("//usr//share//overgod//gfx//gb_ship.bmp", temp_palette);
+  if (temp_bitmap == NULL)
+  {
+   bitmap_error("gb_ship");
+@@ -472,7 +472,7 @@ progress_update("More Vehicles");
+ 
+ // Load in enemy bitmaps:
+ 
+- temp_bitmap = load_bitmap("gfx//gb_nme1.bmp", temp_palette);
++ temp_bitmap = load_bitmap("//usr//share//overgod//gfx//gb_nme1.bmp", temp_palette);
+  if (temp_bitmap == NULL)
+  {
+   bitmap_error("temp_bitmap (gb_nme1.bmp not loaded correctly?)");
+@@ -496,7 +496,7 @@ progress_update("More Vehicles");
+  progress_update("Enemies 1");
+ 
+ 
+- temp_bitmap = load_bitmap("gfx//gb_nme2.bmp", temp_palette);
++ temp_bitmap = load_bitmap("//usr//share//overgod//gfx//gb_nme2.bmp", temp_palette);
+  if (temp_bitmap == NULL)
+  {
+   bitmap_error("temp_bitmap (gb_nme2.bmp not loaded correctly?)");
+@@ -519,7 +519,7 @@ progress_update("More Vehicles");
+ //extern BITMAP *enemy_bmps [ENEMY_BMPS];
+ 
+ 
+- temp_bitmap = load_bitmap("gfx//gb_nmebm.bmp", temp_palette);
++ temp_bitmap = load_bitmap("//usr//share//overgod//gfx//gb_nmebm.bmp", temp_palette);
+  if (temp_bitmap == NULL)
+  {
+   bitmap_error("temp_bitmap (gb_nmebm.bmp not loaded correctly?)");
+@@ -533,7 +533,7 @@ progress_update("More Vehicles");
+ 
+  progress_update("Enemies 3");
+ 
+- temp_bitmap = load_bitmap("gfx//gb_big1.bmp", temp_palette);
++ temp_bitmap = load_bitmap("//usr//share//overgod//gfx//gb_big1.bmp", temp_palette);
+  if (temp_bitmap == NULL)
+  {
+   bitmap_error("temp_bitmap (gb_big1.bmp not loaded correctly?)");
+@@ -548,7 +548,7 @@ progress_update("More Vehicles");
+ 
+  progress_update("Enemies 4");
+ 
+- temp_bitmap = load_bitmap("gfx//gb_big2.bmp", temp_palette);
++ temp_bitmap = load_bitmap("//usr//share//overgod//gfx//gb_big2.bmp", temp_palette);
+  if (temp_bitmap == NULL)
+  {
+   bitmap_error("temp_bitmap (gb_big2.bmp not loaded correctly?)");
+@@ -564,7 +564,7 @@ progress_update("More Vehicles");
+ 
+  progress_update("Enemies 5");
+ 
+- temp_bitmap = load_bitmap("gfx//gb_big3.bmp", temp_palette);
++ temp_bitmap = load_bitmap("//usr//share//overgod//gfx//gb_big3.bmp", temp_palette);
+  if (temp_bitmap == NULL)
+  {
+   bitmap_error("temp_bitmap (gb_big3.bmp not loaded correctly?)");
+@@ -580,7 +580,7 @@ progress_update("More Vehicles");
+  progress_update("Enemies 6");
+ 
+ 
+- temp_bitmap = load_bitmap("gfx//gb_med1.bmp", temp_palette);
++ temp_bitmap = load_bitmap("//usr//share//overgod//gfx//gb_med1.bmp", temp_palette);
+  if (temp_bitmap == NULL)
+  {
+   bitmap_error("temp_bitmap (gb_med1.bmp not loaded correctly?)");
+@@ -597,7 +597,7 @@ progress_update("More Vehicles");
+ 
+  progress_update("Enemies 7");
+ 
+-/* temp_bitmap = load_bitmap("gfx//enemy3.bmp", temp_palette);
++/* temp_bitmap = load_bitmap("//usr//share//overgod//gfx//enemy3.bmp", temp_palette);
+  if (temp_bitmap == NULL)
+  {
+   bitmap_error("temp_bitmap (enemy3.bmp not loaded correctly?)");
+@@ -621,7 +621,7 @@ progress_update("More Vehicles");
+ 
+ /* progress_update("Enemy3 Loaded");
+ 
+- temp_bitmap = load_bitmap("gfx//small1.bmp", temp_palette);
++ temp_bitmap = load_bitmap("//usr//share//overgod//gfx//small1.bmp", temp_palette);
+  if (temp_bitmap == NULL)
+  {
+   bitmap_error("temp_bitmap (small1.bmp not loaded correctly?)");
+@@ -635,7 +635,7 @@ progress_update("More Vehicles");
+  
+  progress_update("Small1 Loaded");
+ */
+- temp_bitmap = load_bitmap("gfx//gb_small.bmp", temp_palette);
++ temp_bitmap = load_bitmap("//usr//share//overgod//gfx//gb_small.bmp", temp_palette);
+  if (temp_bitmap == NULL)
+  {
+   bitmap_error("temp_bitmap (gm_small.bmp not loaded correctly?)");
+@@ -682,7 +682,7 @@ progress_update("More Vehicles");
+ 
+  progress_update("Small Things");
+ 
+- temp_bitmap = load_bitmap("gfx//gb_small2.bmp", temp_palette);
++ temp_bitmap = load_bitmap("//usr//share//overgod//gfx//gb_small2.bmp", temp_palette);
+  if (temp_bitmap == NULL)
+  {
+   bitmap_error("temp_bitmap (gm_small2.bmp not loaded correctly?)");
+@@ -733,7 +733,7 @@ progress_update("More Vehicles");
+ 
+ 
+ /*
+- temp_bitmap = load_bitmap("gfx//small2.bmp", temp_palette);
++ temp_bitmap = load_bitmap("//usr//share//overgod//gfx//small2.bmp", temp_palette);
+  if (temp_bitmap == NULL)
+  {
+   bitmap_error("temp_bitmap (small2.bmp not loaded correctly?)");
+@@ -748,7 +748,7 @@ progress_update("More Vehicles");
+ 
+  progress_update("Small3 Loaded");
+ 
+- temp_bitmap = load_bitmap("gfx//enemy2.bmp", temp_palette);
++ temp_bitmap = load_bitmap("//usr//share//overgod//gfx//enemy2.bmp", temp_palette);
+  if (temp_bitmap == NULL)
+  {
+   bitmap_error("temp_bitmap (enemy2.bmp not loaded correctly?)");
+@@ -763,7 +763,7 @@ progress_update("More Vehicles");
+  
+  progress_update("Enemy2 Loaded");
+ */
+- temp_bitmap = load_bitmap("gfx//gb_lsh.bmp", temp_palette);
++ temp_bitmap = load_bitmap("//usr//share//overgod//gfx//gb_lsh.bmp", temp_palette);
+  if (temp_bitmap == NULL)
+  {
+   bitmap_error("temp_bitmap (gb_lsh.bmp not loaded correctly?)");
+@@ -1138,7 +1138,7 @@ void make_bmp_tiles(void)
+  RGB temp_palette [256];
+ // RGB temp_palette3 [1024];
+  
+- BITMAP *temp_bitmap = load_bitmap("gfx//gb_tiles.bmp", temp_palette);
++ BITMAP *temp_bitmap = load_bitmap("//usr//share//overgod//gfx//gb_tiles.bmp", temp_palette);
+ 
+  if (temp_bitmap == NULL)
+  {
+@@ -1164,7 +1164,7 @@ void make_bmp_tiles(void)
+ 
+  destroy_bitmap(temp_bitmap);
+ 
+- temp_bitmap = load_bitmap("gfx//gb_maze.bmp", temp_palette);
++ temp_bitmap = load_bitmap("//usr//share//overgod//gfx//gb_maze.bmp", temp_palette);
+ 
+  if (temp_bitmap == NULL)
+  {
+diff -rupN overgod-original//main.c overgod-1.0//main.c
+--- overgod-original//main.c	2010-07-08 05:54:54.000000000 +0200
++++ overgod-1.0//main.c	2010-07-06 19:32:12.000000000 +0200
+@@ -101,8 +101,8 @@ display.h
+ 
+ //#include <conio.h>
+ #include <string.h>
+-//#include <stdlib.h>
+-//#include <stdio.h>
++#include <stdlib.h>
++#include <stdio.h>
+ //#include <pc.h>
+ #include <math.h>
+ 
+@@ -253,8 +253,14 @@ void init_at_startup(void)
+    install_int (tickover, 30);
+ 
+    set_color_depth(8);
+-
+-   set_config_file("overgod.cfg");
++   
++   char *home, config_file[4096];
++   home = getenv("HOME");
++   if(!home)
++     home = ".";
++   snprintf(config_file, 4095, "%s/.overgod.cfg", home);
++   config_file[4095] = '\0';
++   set_config_file(config_file);
+ 
+    options.resolution = get_config_int("Options", "Resolution", 0);
+    
+diff -rupN overgod-original//menu.c overgod-1.0//menu.c
+--- overgod-original//menu.c	2010-07-08 05:54:54.000000000 +0200
++++ overgod-1.0//menu.c	2010-07-06 07:44:06.000000000 +0200
+@@ -414,7 +414,7 @@ void init_menus_once_only(void)
+ 
+  destroy_bitmap(temp_bmp);
+ */
+- BITMAP *temp_bmp = load_bitmap("gfx//gb_title.bmp", temp_palette);
++ BITMAP *temp_bmp = load_bitmap("//usr//share//overgod//gfx//gb_title.bmp", temp_palette);
+ 
+  if (!temp_bmp)
+  {
+@@ -464,7 +464,7 @@ void init_menus_once_only(void)
+  destroy_bitmap(temp_bmp);*/
+  
+ /*
+- temp_bmp = load_bitmap("gfx//title_s.bmp", temp_palette);
++ temp_bmp = load_bitmap("//usr//share//overgod//gfx//title_s.bmp", temp_palette);
+ 
+  if (!temp_bmp)
+  {
+@@ -484,7 +484,7 @@ void init_menus_once_only(void)
+ 
+  destroy_bitmap(temp_bmp);
+ */
+-/* upgrade_box1 = load_bitmap("gfx//upg_box.bmp", temp_palette);
++/* upgrade_box1 = load_bitmap("//usr//share//overgod//gfx//upg_box.bmp", temp_palette);
+ 
+  if (!upgrade_box1)
+  {
+@@ -493,7 +493,7 @@ void init_menus_once_only(void)
+       exit(1);
+  }
+ 
+- upgrade_box2 = load_bitmap("gfx//upg_box2.bmp", temp_palette);
++ upgrade_box2 = load_bitmap("//usr//share//overgod//gfx//upg_box2.bmp", temp_palette);
+ 
+  if (!upgrade_box2)
+  {
+@@ -502,7 +502,7 @@ void init_menus_once_only(void)
+       exit(1);
+  }
+ 
+- upgrade_box3 = load_bitmap("gfx//upg_box3.bmp", temp_palette);
++ upgrade_box3 = load_bitmap("//usr//share//overgod//gfx//upg_box3.bmp", temp_palette);
+ 
+  if (!upgrade_box3)
+  {
+diff -rupN overgod-original//sound.c overgod-1.0//sound.c
+--- overgod-original//sound.c	2010-07-08 05:54:55.000000000 +0200
++++ overgod-1.0//sound.c	2010-07-08 07:24:40.000000000 +0200
+@@ -448,7 +448,7 @@ void load_new_sample_in(int samp, const
+ 
+  char sfile_name [50];
+ 
+- strcpy(sfile_name, ".//wavs//");
++ strcpy(sfile_name, "//usr//share//overgod//wavs//");
+  strcat(sfile_name, sfile);
+  strcat(sfile_name, ".wav");
+ 
+@@ -1547,7 +1547,7 @@ void load_beat_sample_in(int samp, const
+ 
+  char sfile_name [50];
+ 
+- strcpy(sfile_name, ".//wavs//beat//");
++ strcpy(sfile_name, "//usr/share//overgod//wavs//beat//");
+  strcat(sfile_name, sfile);
+  strcat(sfile_name, ".wav");
+ 

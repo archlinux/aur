@@ -1,0 +1,16 @@
+pkgbase = overgod
+	pkgdesc = overgod is a shoot em up space game
+	pkgver = 1.0
+	pkgrel = 4
+	url = http://www.allegro.cc/depot/Overgod
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = allegro4
+	source = http://downloads.sourceforge.net/project/overgod/overgod/Overgod%201.0/overgod.tar.gz
+	source = overgod.patch
+	md5sums = 3bddd8d4e96c5e69ec07236de145799a
+	md5sums = 5ab7c521b19d67f6c15aad496fa9d503
+
+pkgname = overgod
+
