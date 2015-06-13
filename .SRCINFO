@@ -1,0 +1,14 @@
+pkgbase = ruby-andand
+	pkgdesc = Maybe Monad in idiomatic Ruby
+	pkgver = 1.3.3
+	pkgrel = 2
+	url = http://andand.rubyforge.org/
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = andand-1.3.3.gem
+	source = http://rubygems.org/downloads/andand-1.3.3.gem
+	sha256sums = 483d8a01e0d02dfc55de7759527d20c167edf0607983fc4e50a7c3583709346c
+
+pkgname = ruby-andand
+
