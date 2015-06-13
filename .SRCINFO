@@ -1,24 +1,23 @@
 pkgbase = samsung-unified-driver
 	pkgdesc = Unified Linux Driver for Samsung printers and scanners.
-	pkgver = 4.00.39
-	pkgrel = 5
+	pkgver = 1.00.06
+	pkgrel = 2
 	url = http://www.samsung.com
 	arch = i686
 	arch = x86_64
+	arch = armel
 	license = custom:samsung
-	depends = libstdc++5
-	depends = libjpeg6
+	depends = libxml2
+	depends = libusb-compat
 	depends = cups
 	depends = ghostscript
 	depends = sane
-	conflicts = samsungmfp-configurator-qt4
+	depends = avahi
+	depends = openssl
+	provides = samsung-unified-driver
 	options = !strip
-	source = http://www.bchemnet.com/suldr/driver/UnifiedLinuxDriver-4.00.39.tar.gz
-	source = 99_smfpautoconf.rules
-	source = samsungUDC.desktop
-	sha1sums = a222506f2c8a6cc3cbf81ec781506c1d7aabb43e
-	sha1sums = 29ee51d7bcb2541967f34c36c72ac62ecc621a1e
-	sha1sums = e2e337d2e22cab41071e5af585f04dcf9e779c7b
+	source = http://www.bchemnet.com/suldr/driver/UnifiedLinuxDriver-1.00.06.tar.gz
+	sha512sums = 303d772779679c190e779d0dea982a8e7faa20be7b75cfc8abf22a7e55a389238b6cb0225137ac73195a45db9aba3bb3e514c8ec2d4a731d43b5f35d543832a8
 
 pkgname = samsung-unified-driver
 

@@ -1,139 +1,108 @@
+# Maintainer: Bernd Amend <berndamend gmail com>
+
 pkgname=samsung-unified-driver
-pkgver=4.00.39
-pkgrel=5
+pkgver=1.00.06
+pkgrel=2
 
 pkgdesc="Unified Linux Driver for Samsung printers and scanners."
-arch=(i686 x86_64)
+arch=(i686 x86_64 armel)
 url="http://www.samsung.com"
 license=('custom:samsung')
-depends=('libstdc++5' 'libjpeg6' 'cups' 'ghostscript' 'sane')
-conflicts=('samsungmfp-configurator-qt4')
+depends=('libxml2' 'libusb-compat' 'cups' 'ghostscript' 'sane' 'avahi' 'openssl')
+provides=('samsung-unified-driver')
 
 options=(!strip)
 
-source=("http://www.bchemnet.com/suldr/driver/UnifiedLinuxDriver-${pkgver}.tar.gz"
-	'99_smfpautoconf.rules' 'samsungUDC.desktop')
+source=("http://www.bchemnet.com/suldr/driver/UnifiedLinuxDriver-${pkgver}.tar.gz")
 
-sha1sums=(
-			'a222506f2c8a6cc3cbf81ec781506c1d7aabb43e'
-			'29ee51d7bcb2541967f34c36c72ac62ecc621a1e'
-			'e2e337d2e22cab41071e5af585f04dcf9e779c7b')
+sha512sums=('303d772779679c190e779d0dea982a8e7faa20be7b75cfc8abf22a7e55a389238b6cb0225137ac73195a45db9aba3bb3e514c8ec2d4a731d43b5f35d543832a8')
 
-if [ "$CARCH" = "x86_64" ]; then
-	CARCHCUSTOM="$CARCH"
-	LIBDIRCUSTOM="lib64"
-else
+if [ "$CARCH" = "i686" ]; then
 	CARCHCUSTOM="i386"
-	LIBDIRCUSTOM="lib"
+elif [ "$CARCH" = "armel" ]; then
+	CARCHCUSTOM="arm"
+else
+	CARCHCUSTOM="$CARCH"
 fi
 
-package() {
-# mpf
+# TODO: install the license file
+
+package_general() {
+	DIST_DIR="${noarchsrcdir}/../"
+	SCRIPT_DIR="${noarchsrcdir}"
+
+	. "${noarchsrcdir}/packet.sh"
+	. "${noarchsrcdir}/install-scanner-script"
+
+	install -d "${pkgdir}/etc/udev/rules.d"
+	fill_full_template "${noarchsrcdir}/etc/smfp.rules.in" "${pkgdir}/etc/udev/rules.d/60_smfp_samsung.rules"
+}
+
+package_cups() {
+# noarch
+	# ppd
+	install -d "${pkgdir}/usr/share/cups/model/suld"
+	install -m 644 -t "${pkgdir}/usr/share/cups/model/suld/" ${noarchsrcdir}/share/ppd/*.ppd
+	find "${pkgdir}/usr/share/cups/model/suld/" -name "*.ppd" | xargs gzip -9
+
+	# cms
+	install -d "${pkgdir}/usr/share/cups/model/suld/cms"
+	install -m 444 -t "${pkgdir}/usr/share/cups/model/suld/cms/" ${noarchsrcdir}/share/ppd/cms/*
+
+# binaries
+	cupsdir="${pkgdir}/usr/lib/cups"
+
+	# backend
+	cupsbackenddir="${cupsdir}/backend"
+	install -d "${cupsbackenddir}"
+	install -m 755 "${archsrcdir}/smfpnetdiscovery" "${cupsbackenddir}"
+
+	# filter
+	cupsfilterdir="${cupsdir}/filter"
+	install -d "${cupsfilterdir}"
+	install -m 755 "${archsrcdir}/pstospl" "${archsrcdir}/pstosplc" "${archsrcdir}/rastertospl" "${archsrcdir}/rastertosplc" "${cupsfilterdir}"
+
+	# libscmssc.so
 	install -d "${pkgdir}/usr/lib"
-	install -d "${pkgdir}/usr/bin"
-	install -d "${pkgdir}/etc/udev/rules.d/"
+	install -m 755 "${archsrcdir}/libscmssc.so" "${pkgdir}/usr/lib/"
+}
 
-	install -m 755 "${srcdir}/cdroot/Linux/${CARCHCUSTOM}/at_root/usr/${LIBDIRCUSTOM}/libmfp.so.1.0.1" \
-	"${pkgdir}/usr/lib/libmfp.so.1.0.1"
-	install -m 755 "${srcdir}/cdroot/Linux/${CARCHCUSTOM}/at_root/opt/smfp-common/lib/libnetsnmp.so.10.0.2" \
-	"${pkgdir}/usr/lib/libnetsnmp.so.10.0.2"
+package_sane() {
+# noarch
+	install -d "${pkgdir}/etc/sane.d/"
+	install -m 644 "${noarchsrcdir}/etc/smfp.conf" "${pkgdir}/etc/sane.d/"
 
-	install -m 644 "${srcdir}/99_smfpautoconf.rules" "${pkgdir}/etc/udev/rules.d/99_smfpautoconf.rules"
-
-# cups
-	install -d "${pkgdir}/usr/lib/cups/filter"
-	install -d "${pkgdir}/usr/lib/cups/backend/"
-	install -d "${pkgdir}/etc/cups/"
-	install -d "${pkgdir}/usr/share/cups/model/samsung/cms"
-
-	install -m 444 -t "${pkgdir}/usr/share/cups/model/samsung/cms/" ${srcdir}/cdroot/Linux/noarch/at_opt/share/ppd/cms/*
-
-	install -m 644 -t "${pkgdir}/usr/share/cups/model/" ${srcdir}/cdroot/Linux/noarch/at_opt/share/ppd/*.ppd
-	find "${pkgdir}/usr/share/cups/model/" -name "*.ppd" | xargs gzip -9
-	
-
-	install -m 755 "${srcdir}/cdroot/Linux/${CARCHCUSTOM}/at_root/usr/${LIBDIRCUSTOM}/cups/backend/mfp" \
-	"${pkgdir}/usr/lib/cups/backend/mfp"
-	install -m 755 -t "${pkgdir}/usr/lib/cups/filter/" ${srcdir}/cdroot/Linux/${CARCHCUSTOM}/at_root/usr/${LIBDIRCUSTOM}/cups/filter/*
-
-	install -m 755 "${srcdir}/cdroot/Linux/${CARCHCUSTOM}/at_root/usr/${LIBDIRCUSTOM}/cups/filter/smfpautoconf" \
-	"${pkgdir}/usr/lib/cups/filter/smfpautoconf"
-
-
-	install -m 644 -t "${pkgdir}/etc/cups/" ${srcdir}/cdroot/Linux/noarch/at_root/etc/cups/*
-
-	install -d "${pkgdir}/usr/lib/sane/"
 	install -d "${pkgdir}/etc/sane.d/dll.d"
+	echo "smfp" > "${pkgdir}/etc/sane.d/dll.d/smfp"
+	chmod 644 "${pkgdir}/etc/sane.d/dll.d/smfp"
 
-	install -m 644 "${srcdir}/cdroot/Linux/noarch/at_root/etc/sane.d/smfp.conf" "${pkgdir}/etc/sane.d/smfp.conf"
+# binaries
+	install -d "${pkgdir}/usr/lib/sane"
+	install -m 755 "${archsrcdir}/libsane-smfp.so.1.0.1" "${pkgdir}/usr/lib/sane/"
 
-	install -m 755 "${srcdir}/cdroot/Linux/${CARCHCUSTOM}/at_root/usr/${LIBDIRCUSTOM}/sane/libsane-smfp.so.1.0.1" \
-	"${pkgdir}/usr/lib/sane/libsane-smfp.so.1.0.1"
-
-	install -d "${pkgdir}/opt/Samsung/mfp/bin/"
-	install -m 755 "${srcdir}/cdroot/Linux/${CARCHCUSTOM}/at_opt/bin/netdiscovery" "${pkgdir}/opt/Samsung/mfp/bin/netdiscovery"
-
-	install -d "${pkgdir}/usr/bin/"
-	install -m 755 "${srcdir}/cdroot/Linux/${CARCHCUSTOM}/at_root/usr/sbin/smfpd" "${pkgdir}/usr/bin/smfpd"
-
-	install -d "${pkgdir}/opt/Samsung/mfp/share/"
-	install -m 644 "${srcdir}/cdroot/Linux/OEM.ini" "${pkgdir}/opt/Samsung/mfp/share/OEM.ini"
-
-#create symbolic links
-# mpf
-	cd "${pkgdir}/usr/lib"
-	ln -s ./libmfp.so.1.0.1 ./libmfp.so.1
-	ln -s ./libmfp.so.1.0.1 ./libmfp.so
-
-# 
+	# TODO: how can we automatically create them?
+	#create symbolic links
 	cd "${pkgdir}/usr/lib/sane"
 	ln -s libsane-smfp.so.1.0.1 libsane-smfp.so.1
 	ln -s libsane-smfp.so.1 libsane-smfp.so
+	cd -
 
-	echo "smfp" >> "${pkgdir}/etc/sane.d/dll.d/smfp"
-	chmod 644 "${pkgdir}/etc/sane.d/dll.d/smfp"
-	
-# samsungmfp-configurator-qt4
-	install -d "${pkgdir}/opt/Samsung/mfp/bin/"
-	install -d "${pkgdir}/opt/Samsung/mfp/lib/"
-	install -d "${pkgdir}/opt/Samsung/mfp/share/"
-	install -d "${pkgdir}/opt/Samsung/mfp/share/help/"
-	install -d "${pkgdir}/opt/Samsung/mfp/share/images/"
-	install -d "${pkgdir}/opt/Samsung/mfp/share/tr/"
-	install -d "${pkgdir}/opt/Samsung/mfp/share/ui/"
-	install -d "${pkgdir}/opt/Samsung/mfp/share/utils/"
-	install -d "${pkgdir}/usr/share/applications/"
+# The following is copied from the bchemnet.com debian packages
+# It is required to scan using sane
+	echo "xerox_mfp-smfp" > "${pkgdir}/etc/sane.d/dll.d/smfp-scanner-fix"
+	chmod 644 "${pkgdir}/etc/sane.d/dll.d/smfp-scanner-fix"
 
-	install -m 755 -t "${pkgdir}/opt/Samsung/mfp/bin/" ${srcdir}/cdroot/Linux/${CARCHCUSTOM}/qt4/at_opt/bin/*
-	install -m 644 -t "${pkgdir}/opt/Samsung/mfp/lib/" ${srcdir}/cdroot/Linux/${CARCHCUSTOM}/qt4/at_opt/lib/*
-	install -m 644 -t "${pkgdir}/opt/Samsung/mfp/share/" ${srcdir}/cdroot/Linux/noarch/at_opt/share/eula.htm
-	install -m 644 -t "${pkgdir}/opt/Samsung/mfp/share/" ${srcdir}/cdroot/Linux/noarch/at_opt/share/VERSION-Common_LINUX
-	install -m 644 -t "${pkgdir}/opt/Samsung/mfp/share/" ${srcdir}/cdroot/Linux/noarch/at_opt/share/VERSION-Common_LINUX_Script
-	install -m 644 -t "${pkgdir}/opt/Samsung/mfp/share/" ${srcdir}/cdroot/Linux/noarch/at_opt/share/VERSION-Printer_LINUX
-	install -m 644 -t "${pkgdir}/opt/Samsung/mfp/share/" ${srcdir}/cdroot/Linux/noarch/at_opt/share/VERSION-Printer_LINUX-Script
-	install -m 644 -t "${pkgdir}/opt/Samsung/mfp/share/" ${srcdir}/cdroot/Linux/noarch/at_opt/share/VERSION-Scanner_LINUX
-	install -m 644 -t "${pkgdir}/opt/Samsung/mfp/share/" ${srcdir}/cdroot/Linux/noarch/at_opt/share/VERSION-Scanner_LINUX-Script
-	install -m 644 -t "${pkgdir}/opt/Samsung/mfp/share/help/" ${srcdir}/cdroot/Linux/noarch/at_opt/share/help/*
-	install -m 644 -t "${pkgdir}/opt/Samsung/mfp/share/images/" ${srcdir}/cdroot/Linux/noarch/at_opt/share/images/*
-	install -m 644 -t "${pkgdir}/opt/Samsung/mfp/share/utils/" ${srcdir}/cdroot/Linux/noarch/at_opt/share/utils/*
-	install -m 644 -t "${pkgdir}/opt/Samsung/mfp/share/tr/" ${srcdir}/cdroot/Linux/noarch/qt4/at_opt/share/tr/*
-	install -m 644 -t "${pkgdir}/opt/Samsung/mfp/share/ui/" ${srcdir}/cdroot/Linux/noarch/qt4/at_opt/share/ui/*
-	
-	install -m 644 "${startdir}/samsungUDC.desktop" "${pkgdir}/usr/share/applications/samsungUDC.desktop"
+	# TODO: Can we extract the following information from the samsung package?
+	echo "#xerox_mfp-smfp.conf\n\n# Samsung CLX-2160\nusb 0x04e8 0x3425\n\n# Samsung CLX-3170FN & CLX-3175FW\nusb 0x04e8 0x342a\n\n# Samsung CLX-3185\nusb 0x04e8 0x343d\n\n# Samsung CLX-3300\nusb 0x04e8 0x3456\n\n# Samsung SCX-3200 & SCX-3205W\nusb 0x04e8 0x3441\n\n# Samsung SCX-3405W\nusb 0x04e8 0x344f\n\n# Samsung SCX-4100\nusb 0x04e8 0x3413\n\n# Samsung SCX-4200\nusb 0x04e8 0x341b\n\n# Samsung SCX-4216F\nusb 0x04e8 0x3409\n\n# Samsung SCX-4300\nusb 0x04e8 0x342e\n\n# Samsung SCX-4500\nusb 0x04e8 0x3426\n\n# Samsung SCX-4500W\nusb 0x04e8 0x342b\n\n# Samsung SCX-4521F\nusb 0x04e8 0x3419\n\n# Samsung SCX-4600\nusb 0x04e8 0x3433\n\n# Samsung SCX-4623\nusb 0x04e8 0x3434\n\n# Samsung SCX-4623FW\nusb 0x04e8 0x3440\n\n# Samsung SCX-4725FN\nusb 0x04e8 0x341f\n\n# Samsung SCX-4824\nusb 0x04e8 0x342c\n\n# Samsung SCX-4825FN\nusb 0x04e8 0x343c\n\n# Samsung SCX-4828FN (4x28 Series)\nusb 0x04e8 0x342d\n\n# Samsung SCX-4833FD\nusb 0x04e8 0x344b" > "${pkgdir}/etc/sane.d/xerox_mfp-smfp"
 
-	install -m 644 -t "${pkgdir}/opt/Samsung/mfp/lib/" ${srcdir}/cdroot/Linux/${CARCHCUSTOM}/qt4/at_root/opt/smfp-common/lib/*
-	
-	echo "LD_LIBRARY_PATH=/opt/Samsung/mfp/lib/:\$LD_LIBRARY_PATH /opt/Samsung/mfp/bin/Configurator" >> "${pkgdir}/usr/bin/SamsungConfigurator"
-	chmod 555 "${pkgdir}/usr/bin/SamsungConfigurator"
-	
-	echo "LD_LIBRARY_PATH=/opt/Samsung/mfp/lib/:\$LD_LIBRARY_PATH /opt/Samsung/mfp/bin/ImageManager" >> "${pkgdir}/usr/bin/SamsungImageManager"
-	chmod 555 "${pkgdir}/usr/bin/SamsungImageManager"
-	
-	echo "LD_LIBRARY_PATH=/opt/Samsung/mfp/lib/:\$LD_LIBRARY_PATH /opt/Samsung/mfp/bin/smfpscan" >> "${pkgdir}/usr/bin/smfpscan"
-	chmod 555 "${pkgdir}/usr/bin/smfpscan"
-	
-	mkdir -p "${srcdir}/libtiff/"
-	tar xzf "${srcdir}/cdroot/Linux/noarch/libtiff-3-${CARCHCUSTOM}.tar.gz" -C "${srcdir}/libtiff"
-	install -m 644 -t "${pkgdir}/opt/Samsung/mfp/lib/" ${srcdir}/libtiff/usr/${LIBDIRCUSTOM}/*
+	chmod 644 "${pkgdir}/etc/sane.d/xerox_mfp-smfp"
 }
 
+package() {
+	noarchsrcdir="${srcdir}/uld/noarch"
+	archsrcdir="${srcdir}/uld/${CARCHCUSTOM}"
+
+	package_general
+	package_cups
+	package_sane
+}
