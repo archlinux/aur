@@ -1,0 +1,11 @@
+
+[Desktop Entry]
+Name=4K YouTube to MP3
+GenericName=4K YouTube to MP3
+Comment=Download online audio
+Exec=4kyoutubetomp3
+Terminal=false
+Type=Application
+Icon=4kyoutubetomp3.png
+Categories=Network;Qt;
+
