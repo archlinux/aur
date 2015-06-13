@@ -1,0 +1,16 @@
+pkgbase = lib32-openmotif
+	pkgdesc = Open Motif for x86_64 architecture
+	pkgver = 2.3.4
+	pkgrel = 4
+	url = http://www.motifzone.org/
+	arch = x86_64
+	license = GPL
+	depends = lib32-libxp
+	depends = lib32-libxft
+	depends = lib32-libxmu
+	depends = lib32-libjpeg-turbo
+	source = http://mirrors.kernel.org/archlinux/community/os/i686/openmotif-2.3.4-3-i686.pkg.tar.xz
+	sha256sums = 05d0baa8c77eee1dde1cbf59626211d675515d2f570850e94f2d6238e30af525
+
+pkgname = lib32-openmotif
+
