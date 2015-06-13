@@ -1,0 +1,15 @@
+pkgbase = sisiyad
+	pkgdesc = The SisIYA daemon.
+	pkgver = 0.6.31
+	pkgrel = 1
+	url = http://www.sisiya.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = sisiya-edbc-libs
+	backup = etc/sisiya/sisiyad/sisiyad.conf
+	source = http://sourceforge.net/projects/sisiya/files/sisiya/0.6.31/pacman/sisiyad-0.6.31.tar.gz
+	md5sums = bed85c288b6f8680aac2dfe4ee31b8cc
+
+pkgname = sisiyad
+
