@@ -1,0 +1,16 @@
+pkgbase = man-pages-pacman-fr
+	pkgdesc = Pages francophone de manuel de Pacman-3.3
+	pkgver = 20090803
+	pkgrel = 3
+	url = https://archlinux.fr
+	arch = any
+	groups = manpagesfr
+	license = GPL
+	depends = pacman>=3.3
+	conflicts = pacman.manfr
+	replaces = pacman.manfr
+	source = http://poiroud.free.fr/linux/archlinux/pacman.manfr/pacman.manfr-20090803.tar.gz
+	md5sums = 10aaf58f5d3eeb6de78c099d6a880d2b
+
+pkgname = man-pages-pacman-fr
+
