@@ -1,0 +1,13 @@
+pkgbase = vgrep
+	pkgdesc = Reimpementation of the ancient cgvg perl scripts
+	pkgver = 15.06
+	pkgrel = 1
+	url = https://github.com/vrothberg/vgrep
+	arch = any
+	license = GPLv3
+	depends = python2
+	source = https://github.com/vrothberg/vgrep/archive/15.06.tar.gz
+	md5sums = a10c277790bbaae0504e7746c588bf3b
+
+pkgname = vgrep
+
