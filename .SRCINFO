@@ -1,0 +1,14 @@
+pkgbase = embutils
+	pkgdesc = embutils - small system utilities for embedded systems
+	pkgver = 0.19
+	pkgrel = 0.1
+	url = http://www.fefe.de/embutils/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = dietlibc
+	source = http://dl.fefe.de/embutils-0.19.tar.bz2
+	sha512sums = ab74aa98c2f93ffb3bfb83353e09f5a5c342cc577d7f19d2789f4c4f2e716c3654a3a1a711bc2dfddbe9955ef370f80d6b62a3d564363855797609e9cb027705
+
+pkgname = embutils
+
