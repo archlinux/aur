@@ -1,0 +1,15 @@
+pkgbase = gnuradio-simple-ra-svn
+	pkgdesc = Simple radio astronomy for Gnuradio.
+	pkgver = r1252
+	pkgrel = 1
+	url = http://sdr.osmocom.org/trac/
+	arch = any
+	license = GPL
+	makedepends = svn
+	depends = python2-pyserial
+	depends = python2-pyephem
+	depends = gnuradio-ra-blocks-svn
+	source = svn+https://www.cgran.org/svn/projects/simple_ra
+
+pkgname = gnuradio-simple-ra-svn
+
