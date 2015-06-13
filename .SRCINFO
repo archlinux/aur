@@ -1,0 +1,17 @@
+pkgbase = parano
+	pkgdesc = A GNOME frontend for creating/editing/checking MD5 and SFV files
+	pkgver = 0.3.5
+	pkgrel = 6
+	url = http://sourceforge.net/projects/parano.berlios/
+	install = parano.install
+	arch = any
+	license = GPL
+	makedepends = intltool
+	depends = python2-libgnome
+	depends = shared-mime-info
+	depends = desktop-file-utils
+	source = http://ftp.cc.uoc.gr/mirrors/linux/frugalware/frugalware-testing/source/gnome-extra/parano/parano-0.3.5.tar.gz
+	md5sums = 126cc42492c1dcf4c5e1b4a3c616acb6
+
+pkgname = parano
+
