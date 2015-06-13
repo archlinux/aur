@@ -1,0 +1,13 @@
+pkgbase = hdf-eos-common
+	pkgdesc = Common headers files for HDF-EOS2 and HDF-EOS5
+	pkgver = 1.15
+	pkgrel = 1
+	url = http://www.hdfeos.org/software/library.php
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = ftp://edhs1.gsfc.nasa.gov/edhs/hdfeos5/latest_release/HDF-EOS5.1.15.tar.Z
+	md5sums = 5d607a13dd42e559bfc90e278a8ec919
+
+pkgname = hdf-eos-common
+
