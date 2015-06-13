@@ -1,0 +1,19 @@
+pkgbase = pure-reduce
+	pkgdesc = Computer Algebra with Pure: A Reduce Interface
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://purelang.bitbucket.org/
+	arch = i686
+	arch = x86_64
+	groups = pure-complete
+	groups = pure-math
+	license = BSD
+	license = LGPL
+	depends = pure
+	source = https://bitbucket.org/purelang/pure-lang/downloads/pure-reduce-0.4.tar.gz
+	source = https://bitbucket.org/purelang/pure-lang/downloads/reduce-algebra-csl-r2204.tar.bz2
+	md5sums = 403aecde59914857c7b5ffb5e1edb1de
+	md5sums = dafc1f135921aa7f161fb2ff45675e65
+
+pkgname = pure-reduce
+
