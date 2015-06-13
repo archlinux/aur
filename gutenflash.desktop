@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.1
+Name=Gutenflash
+GenericName=Speed reader
+Comment=RSVP streaming text reader for python/gtk (speed reader)
+Type=Application
+Exec=gutenflash
+Icon=gutenflash
+Categories=Education;Office;

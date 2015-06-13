@@ -1,0 +1,19 @@
+pkgbase = gutenflash
+	pkgdesc = RSVP streaming text reader for python/gtk (speed reader)
+	pkgver = 0.8.5
+	pkgrel = 1
+	url = http://toykeeper.net/programs/flash/
+	arch = any
+	license = GPL2
+	depends = gtk2
+	depends = pygtk
+	depends = python2
+	source = http://toykeeper.net/programs/flash/files/gutenflash-0.8.5.tar.gz
+	source = gutenflash.xpm
+	source = gutenflash.desktop
+	md5sums = 2eb075caf9efc9eb79b7213048cf9660
+	md5sums = 4338f9ac2ed887cb17e6df1ab2864aed
+	md5sums = 6da8f3ac45cfbc9b8715a6688edd2a0c
+
+pkgname = gutenflash
+
