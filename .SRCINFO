@@ -1,7 +1,7 @@
 pkgbase = pica-pica-node
 	pkgdesc = Pica Pica is a distributed instant messaging software that employs strong cryptography for communication protection
-	pkgver = 0.5.3
-	pkgrel = 2
+	pkgver = 0.6dev.git540e7dc
+	pkgrel = 1
 	url = http://picapica.im/
 	arch = i686
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = pica-pica-node
 	optdepends = pica-pica-client
 	conflicts = pica-pica
 	backup = etc/pica-node.conf
-	source = http://picapica.im/pica-pica-0.5.3.tar.gz
+	source = http://picapica.im/pica-pica_0.6dev.git540e7dc.orig.tar.gz
 	source = pica-node-rc.d
 	source = pica-node.service
-	md5sums = 5504d31cd3b309f61a77cf00415c30ad
+	md5sums = 38bc8ed5d3aed899dc8339045efd9676
 	md5sums = e49ad457bbfc51558a14ec64ad329728
 	md5sums = 475db57d6074c734fec67be4419e7e51
 
