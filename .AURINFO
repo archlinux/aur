@@ -1,0 +1,15 @@
+pkgbase = perl-latex-encode
+	pkgdesc = Encode characters for LaTeX formatting
+	pkgver = 0.091.6
+	pkgrel = 1
+	url = http://search.cpan.org/dist/LaTeX-Encode/
+	arch = any
+	license = PerlArtistic
+	makedepends = perl-carp-always
+	depends = perl-html-parser
+	depends = perl-readonly
+	source = http://search.cpan.org/CPAN/authors/id/E/EI/EINHVERFR/LaTeX-Encode-0.091.6.tar.gz
+	options = !emptydirs
+
+pkgname = perl-latex-encode
+
