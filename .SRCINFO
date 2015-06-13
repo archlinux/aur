@@ -1,0 +1,18 @@
+pkgbase = asignify
+	pkgdesc = Yet another signify tool
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/vstakhov/asignify
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = binutils
+	makedepends = gcc
+	makedepends = make
+	makedepends = pkg-config
+	depends = openssl
+	source = asignify-1.0.tar.gz::https://codeload.github.com/vstakhov/asignify/tar.gz/1.0
+	sha256sums = 81272713900b51049633139549181fa23e56eeb580e0ea0325546d2fe7ca503d
+
+pkgname = asignify
+
