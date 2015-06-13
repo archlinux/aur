@@ -1,0 +1,15 @@
+pkgbase = yeganesh-cabal
+	pkgdesc = dmenu with a sense of history (cabal sandbox build)
+	pkgver = 2.5
+	pkgrel = 1
+	url = http://dmwit.com/yeganesh/
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	makedepends = ghc
+	depends = dmenu
+	source = http://dmwit.com/yeganesh/yeganesh-2.5.tar.gz
+	md5sums = 1f64542082d61b9004bc42f80ce9ebac
+
+pkgname = yeganesh-cabal
+
