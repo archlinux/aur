@@ -1,0 +1,13 @@
+pkgbase = gimp-plugin-layer-via-copy-cut
+	pkgdesc = Copy and move the selected area to a new layer in the same position.
+	pkgver = 1.6
+	pkgrel = 1
+	url = http://some-gimp-plugins.com/contents/en/extensions/002/
+	arch = any
+	license = GPL
+	depends = gimp
+	source = http://some-gimp-plugins.com/contents/en/extensions/002/layer-via-copy-cut.zip
+	md5sums = 8407b941be70215af707672a3bd13110
+
+pkgname = gimp-plugin-layer-via-copy-cut
+
