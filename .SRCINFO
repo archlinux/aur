@@ -1,0 +1,14 @@
+pkgbase = rnashapes
+	pkgdesc = a runtime heuristic to speed up the computation of accumulated shape probabilities
+	pkgver = 2.1.6
+	pkgrel = 2
+	url = http://bibiserv.techfak.uni-bielefeld.de/rnashapes/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libedit
+	source = http://bibiserv.techfak.uni-bielefeld.de/spool/download/bibiserv_1421311114_27465/RNAshapes-2.1.6.tar.gz
+	md5sums = 8f86b93771914662e54483ea0f734111
+
+pkgname = rnashapes
+
