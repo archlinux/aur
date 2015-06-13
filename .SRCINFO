@@ -1,0 +1,15 @@
+pkgbase = delay
+	pkgdesc = Execute a command after a specified period of time or until a time has reached
+	pkgver = 1.6
+	pkgrel = 2
+	url = http://onegeek.org/~tom/software/delay/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://onegeek.org/~tom/software/delay/dl/delay-1.6.tar.gz
+	source = add-stdlib_h.patch
+	sha256sums = 3097a25fc0d0091402fc9dbc6aa395fd5141028bcdc99baa5d3438ca04f78ca2
+	sha256sums = a3dc18a07618361e7cdeeea9e15bb50ea70fe1d97ea3402928a1d4ceef712b0b
+
+pkgname = delay
+

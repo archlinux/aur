@@ -1,0 +1,11 @@
+diff -Naur delay-1.6.orig/delay.c delay-1.6/delay.c
+--- delay-1.6.orig/delay.c	2002-02-09 16:26:39.000000000 +0100
++++ delay-1.6/delay.c	2015-03-15 18:32:29.980536243 +0100
+@@ -17,6 +17,7 @@
+ */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <time.h>
+ #include <sys/time.h>
+ #include <unistd.h>
