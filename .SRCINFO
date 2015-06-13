@@ -1,0 +1,20 @@
+pkgbase = nethack4
+	pkgdesc = A modern fork of Nethack
+	pkgver = 4.3.0.beta1
+	pkgrel = 1
+	url = http://nethack4.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = sdl2
+	makedepends = libpng
+	makedepends = chrpath
+	depends = jansson
+	depends = gcc-libs
+	optdepends = sdl2: tiles
+	optdepends = libpng: tiles
+	source = http://nethack4.org/media/releases/nethack4-4.3.0-beta1-source.tar.gz
+	md5sums = 4b382dfca5553fce173291cc9840c2e5
+
+pkgname = nethack4
+
