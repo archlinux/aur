@@ -1,0 +1,11 @@
+--- qtdeclarative-opensource-src-5.1.0/src/qmldevtools/qmldevtools.pro.orig	2013-08-02 01:25:48.928675488 +0200
++++ qtdeclarative-opensource-src-5.1.0/src/qmldevtools/qmldevtools.pro	2013-08-02 01:25:58.679832023 +0200
+@@ -1,7 +1,7 @@
+ option(host_build)
+ TARGET     = QtQmlDevTools
+ QT         = core
+-CONFIG += static no_module_headers internal_module qmldevtools_build
++CONFIG += no_module_headers internal_module qmldevtools_build
+ 
+ MODULE_INCLUDES = \
+     \$\$QT_MODULE_INCLUDE_BASE \
