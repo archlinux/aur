@@ -1,0 +1,19 @@
+pkgbase = ksvnupdater
+	pkgdesc = ksvnupdater is a utility oriented KDE translation teams. Through it you can have various local copies of repository, generating projects for Lokalize, checks and corrections using Pology and more.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = http://www.eloihr.net/ksvnupdater
+	install = ksvnupdater.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = docbook-xsl
+	depends = kdebase-runtime
+	depends = pology
+	source = http://www.eloihr.net/ksvnupdater/files/ksvnupdater-1.4.0.tar.bz2
+	md5sums = 430d498645dca2fd77fafed29e4c9ac8
+
+pkgname = ksvnupdater
+
