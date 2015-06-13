@@ -1,6 +1,6 @@
-pkgbase = pacliner-git
+pkgbase = pacliner
 	pkgdesc = Archlinux package management helper.
-	pkgver = 0.1.r1
+	pkgver = 0.1
 	pkgrel = 1
 	url = https://github.com/nbdsp/pacliner.git
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = pacliner-git
 	depends = bash,perl
 	provides = pacliner
 	conflicts = pacliner
-	source = pacliner::git+https://github.com/nbdsp/pacliner.git#branch=master
+	source = pacliner::git+https://github.com/nbdsp/pacliner.git#tag=v0.1
 	md5sums = SKIP
 
-pkgname = pacliner-git
+pkgname = pacliner
 
