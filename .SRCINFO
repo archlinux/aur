@@ -1,0 +1,28 @@
+pkgbase = touchosc-editor
+	pkgdesc = Graphical editor to create and customise layouts for TouchOSC
+	pkgver = 1.7.0
+	pkgrel = 2
+	url = http://hexler.net/
+	install = touchosc-editor.install
+	arch = any
+	license = custom
+	depends = java-runtime
+	depends = shared-mime-info
+	depends = xdg-utils
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	source = touchosc-editor.sh
+	source = touchosc-editor.png
+	source = touchosc-layout.png
+	source = touchosc-editor.desktop
+	source = touchosc-layout.xml
+	source = http://hexler.net/pub/touchosc/touchosc-editor-1.7.0-noarch.zip
+	md5sums = 995e06cdb089cb2d06e5acfbc52b08ae
+	md5sums = da2cdaa9f48b2de1294200286d465387
+	md5sums = caa18a80902f10ced5062b2407c797ee
+	md5sums = 7dbf615862f6e99e76e97ac2864531fc
+	md5sums = 68b65fc0a09478d1b055d8c5efc59e58
+	md5sums = a5ccf8b74cb031f7e475534b261d8b6a
+
+pkgname = touchosc-editor
+

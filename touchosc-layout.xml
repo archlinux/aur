@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/touchosc">
+         <comment>TouchOSC layout</comment>
+         <comment xml:lang="de">TouchOSC-Layout</comment>
+         <comment xml:lang="fr">Maquette de TouchOSC</comment>
+         <sub-class-of type="application/zip"/>
+	 <generic-icon name="touchosc-layout"/>
+         <glob pattern="*.touchosc"/>
+  </mime-type>
+</mime-info>
