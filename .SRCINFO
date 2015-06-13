@@ -1,0 +1,24 @@
+pkgbase = pythagora-git
+	pkgdesc = MPD frontend using Qt, supports Shoutcast and Icecast (legally).
+	pkgver = 2014.07.02
+	pkgrel = 2
+	epoch = 1
+	url = http://www.tarmack.eu/pythagora.html
+	arch = i686
+	arch = x86_64
+	license = Apache 2.0
+	makedepends = git
+	depends = python2-pyqt4
+	depends = python2-mpd
+	optdepends = python2-dbus: for notification support
+	provides = pythagora
+	conflicts = pythagora
+	source = pythagora.sh
+	source = Pythagora.desktop
+	source = git+https://github.com/tarmack/Pythagora.git
+	md5sums = 8be1898b3f9b46cc8407d2e69e4be5b0
+	md5sums = 96ddb5394ec4b6d29eb6b7d979106792
+	md5sums = SKIP
+
+pkgname = pythagora-git
+

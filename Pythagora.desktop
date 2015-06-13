@@ -1,0 +1,20 @@
+[Desktop Entry]
+Categories=Qt;KDE;AudioVideo;
+Comment[en_US]=QT frontend for MPD
+Comment=QT frontend for MPD
+Exec=pythagora
+GenericName[en_US]=Pythagora
+GenericName=Pythagora
+Icon=/usr/share/Pythagora/ui/icons/Pythagora.png
+MimeType=
+Name[en_US]=Pythagora
+Name=Pythagora
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
