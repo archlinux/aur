@@ -1,0 +1,21 @@
+pkgbase = sdl-ball
+	pkgdesc = A Breakout clone with pretty graphics
+	pkgver = 1.02
+	pkgrel = 2
+	url = http://sdl-ball.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gimp>=2
+	depends = libgl
+	depends = sdl_mixer
+	depends = sdl_ttf
+	depends = sdl_image
+	depends = mesa
+	source = sdl-ball-1.02.tar.bz2::http://sourceforge.net/projects/sdl-ball/files/sdl-ball/1.02/sdl-ball-1.02.tar.bz2/download
+	source = sdl-ball.desktop
+	md5sums = be7f662206b8bc02e07370826c7fb730
+	md5sums = eb9fb4483bd01020c8aba0db74c6cbff
+
+pkgname = sdl-ball
+

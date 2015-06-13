@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=SDL-Ball
+Exec=sdl-ball
+Icon=sdl-ball
+Type=Application
+Comment=A Breakout clone
+Categories=Game;ActionGame;ArcadeGame;
