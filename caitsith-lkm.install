@@ -1,0 +1,20 @@
+#! /bin/bash
+
+post_install() {
+	KERNEL_VERSION=$(uname -r)
+	depmod $KERNEL_VERSION
+    echo
+    echo " * Append \"init=/sbin/caitsith-init\" to the kernel boot options"
+    echo "   and reboot in order to activate CaitSith."
+    echo
+}
+
+post_upgrade() {
+	KERNEL_VERSION=$(uname -r)
+	depmod $KERNEL_VERSION
+}
+
+post_remove() {
+	KERNEL_VERSION=$(uname -r)
+	depmod $KERNEL_VERSION
+}
