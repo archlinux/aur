@@ -1,0 +1,21 @@
+pkgbase = snd-gtk-jack-cvs
+	pkgdesc = A sound editor with JACK enabled and GTK GUI. CVS version
+	pkgver = 15.6
+	pkgrel = 1
+	url = http://ccrma.stanford.edu/software/snd/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = ladspa
+	makedepends = cvs
+	depends = fftw
+	depends = gsl
+	depends = gtk3
+	depends = jack
+	provides = snd-ls
+	provides = snd
+	conflicts = snd-ls
+	conflicts = snd
+
+pkgname = snd-gtk-jack-cvs
+
