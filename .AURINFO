@@ -1,0 +1,15 @@
+pkgbase = perl-xml-simpleobject-libxml
+	pkgdesc = simple(r) object representation of an XML::LibXML DOM object
+	pkgver = 0.60
+	pkgrel = 2
+	url = http://search.cpan.org/dist/XML-SimpleObject-LibXML
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	depends = perl-xml-libxml
+	source = http://search.cpan.org/CPAN/authors/id/D/DB/DBRIAN/XML-SimpleObject-LibXML-0.60.tar.gz
+	options = !emptydirs
+
+pkgname = perl-xml-simpleobject-libxml
+
