@@ -1,0 +1,19 @@
+do_install() {
+  xdg-icon-resource forceupdate
+  xdg-desktop-menu forceupdate
+  update-desktop-database -q
+}
+
+post_install() {
+  do_install
+  echo "If -data argument is unspecified, the default workspace is located under \$HOME/.local/share/rpgng"
+}
+
+post_update() {
+  post_install
+}
+
+post_remove() {
+  do_install
+}
+

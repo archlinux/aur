@@ -1,0 +1,25 @@
+pkgbase = rpgng
+	pkgdesc = RPG Next Gen Editor is a lightweight RPG (Report Program Generator) editor based on the Eclipse platform.
+	pkgver = 0.5.5
+	pkgrel = 1
+	url = http://rpgnextgen.sourceforge.net/
+	install = rpgng.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = java-environment
+	depends = libxext
+	depends = libxrender
+	depends = fontconfig
+	depends = xdg-utils
+	source = http://downloads.sourceforge.net/project/rpgnextgen/rpgng/rpgng-0.5/rpgng-0.5.5-linux.gtk.x86.zip
+	source = rpgng.sh
+	source = rpgng.png
+	source = rpgng.desktop
+	md5sums = 86f430c34be140b230ec50ff034bcadb
+	md5sums = 7aef7fd3d1cdd55593fdffe3bf31afcb
+	md5sums = 38ef35d53c9d4fbd60e2645377aaeaf7
+	md5sums = 625bfd5c838cfb11c75ab609764163a5
+
+pkgname = rpgng
+

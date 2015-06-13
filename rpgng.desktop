@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=RPG Next Gen
+GenericName=RPG Next Gen
+Comment=RPG Next Gen Editor based on Eclipse
+Exec=rpgng
+Terminal=false
+Type=Application
+Icon=rpgng
+Categories=Development;
+
