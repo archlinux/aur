@@ -1,0 +1,29 @@
+
+post_install() {
+	echo
+	echo "Dead Cyborg comes with several starter scripts located in /opt/dead-cyborg-episode1"
+	echo "Please choose which one you want to use for the Games menu (1-6):"
+	echo "[1] start-game.sh"
+	echo "[2] start-game_fullscreen.sh"
+	echo "[3] start-game_pulseaudio.sh"
+	echo "[4] start-game_pulseaudio_fullscreen.sh"
+	echo "[5] start-game_oss.sh"
+	echo "[6] start-game_oss_fullscreen.sh"
+	read nr;
+	case $nr in
+		1) startgame="start-game" ;;
+		2) startgame="start-game_fullscreen" ;;
+		3) startgame="start-game_pulseaudio" ;;
+		4) startgame="start-game_pulseaudio_fullscreen" ;;
+		5) startgame="start-game_oss" ;;
+		6) startgame="start-game_oss_fullscreen" ;;
+		*) startgame="start-game" ;;
+	esac
+	sed -i "s/start-game/${startgame}/g" /usr/bin/dead-cyborg-episode1
+	echo "Dead Cyborg will be started with ${startgame}.sh"
+	echo
+}
+
+post_upgrade() {
+	post_install
+}

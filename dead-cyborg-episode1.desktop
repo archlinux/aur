@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Dead Cyborg - Episode 1
+GenericName=Dead Cyborg - Episode 1
+Comment=Dead Cyborg - Episode 1
+Encoding=UTF-8
+Type=Application
+Terminal=false
+Icon=dead-cyborg-episode1.png
+Exec=dead-cyborg-episode1
+Categories=Game;

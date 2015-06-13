@@ -1,0 +1,35 @@
+pkgbase = dead-cyborg-episode1
+	pkgdesc = Free, donation based oldskool sci-fi adventure game with 3D first person view
+	pkgver = 002
+	pkgrel = 6
+	url = http://deadcyborg.com/
+	install = dead-cyborg-episode1.install
+	arch = i686
+	arch = x86_64
+	license = freeware
+	license = donationware
+	depends = openal
+	depends = sdl
+	depends = ffmpeg
+	depends = libpng
+	depends = libtiff
+	depends = libjpeg6
+	depends = zlib
+	depends = python
+	optdepends = alsa-oss: for ALSA support through OSS.
+	options = !strip
+	source = http://deadcyborg.com/deadcyborg-episode1-linux_v002.tar.bz2
+	source = dead-cyborg-episode1.png
+	source = dead-cyborg-episode1.desktop
+	source = dead-cyborg-episode1.sh
+	source = start-game_oss_fullscreen.sh
+	source = start-game_oss.sh
+	md5sums = 29d5b8c3b16d449f9b63d605a6619785
+	md5sums = 7e09a96ce0c4837308ac3eb2d660f64e
+	md5sums = 64503e992b5ac5aa2ec38b276d748d6e
+	md5sums = bd15b4713bd18876a0717b5627a28cfd
+	md5sums = 852547068515d132baee2cc9ca8fabfa
+	md5sums = 89b7e8b0a15575e817471f1842a3806e
+
+pkgname = dead-cyborg-episode1
+
