@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Bracket
+Comment=HDR photo manager
+Exec=bracket %f
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Categories=Graphics;2DGraphics;Photography;

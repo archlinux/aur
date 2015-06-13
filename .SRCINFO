@@ -1,0 +1,21 @@
+pkgbase = bracket
+	pkgdesc = High-dynamic-range (HDR) photo manager
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = http://www.ceng.metu.edu.tr/~akyuz/bracket/bracket.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libx11
+	noextract = bracket.tgz
+	source = http://www.ceng.metu.edu.tr/~akyuz/bracket/bracket.tgz
+	source = bracket.sh
+	source = bracket.desktop
+	source = LICENSE
+	md5sums = 29651962bc79ee06f226f74a7fa2ec95
+	md5sums = 44843e54070c6ceb3edfd1a40733fa84
+	md5sums = 2329f492f602dbe473d5bc61beef8c9a
+	md5sums = cff557f101a7d2c7e5b066f4687df3f1
+
+pkgname = bracket
+
