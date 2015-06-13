@@ -1,0 +1,16 @@
+pkgbase = nfdump
+	pkgdesc = A set of tools to collect and process netflow data.
+	pkgver = 1.6.12
+	pkgrel = 1
+	url = http://nfdump.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = flex
+	makedepends = bison
+	depends = glibc
+	source = http://downloads.sourceforge.net/nfdump/nfdump-1.6.12.tar.gz
+	md5sums = e55a9130c93cfb9ed24b01bccd691bcb
+
+pkgname = nfdump
+
