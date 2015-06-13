@@ -1,0 +1,18 @@
+pkgbase = lander
+	pkgdesc = A Lunar Lander clone.
+	pkgver = 0.6.6
+	pkgrel = 1
+	url = http://www.doof.me.uk/lunar-lander/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = boost
+	depends = sdl_mixer
+	depends = sdl_image
+	depends = glu
+	depends = boost-libs
+	source = http://www.nickg.me.uk/files/lander-0.6.6.tar.gz
+	md5sums = 8ab1d2e426eb430db4641e780d16656d
+
+pkgname = lander
+
