@@ -1,0 +1,24 @@
+pkgbase = dkms-frandom
+	pkgdesc = A very fast random number generator kernel module (DKMS version)
+	pkgver = 1.1
+	pkgrel = 4
+	url = http://frandom.sourceforge.net/
+	install = dkms-frandom.install
+	arch = any
+	license = GPL
+	depends = dkms
+	depends = linux-headers
+	provides = frandom=1.1
+	conflicts = frandom
+	options = !strip
+	source = http://prdownloads.sourceforge.net/frandom/frandom-1.1.tar.gz
+	source = frandom.udev.patch
+	source = dkms.conf
+	source = Makefile
+	md5sums = aade48078496da7439eda41937a34e61
+	md5sums = f9a36f3a3c7f9caaae6475f6edea079c
+	md5sums = 6b6ac64454740d8ba7d065a1ae903701
+	md5sums = 1e94254311f05274035b5e41ff5a7a33
+
+pkgname = dkms-frandom
+

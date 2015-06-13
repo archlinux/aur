@@ -1,0 +1,8 @@
+--- frandom-1.1-old/10-frandom.rules	2011-11-27 10:38:08.830232235 -0800
++++ frandom-1.1/10-frandom.rules	2011-11-27 10:38:30.737847480 -0800
+@@ -5,4 +5,4 @@
+ # 50-udev.rules (0600) is too restrictive.
+ #
+ 
+-KERNEL=="[ef]random", NAME="%k", MODE="444", OPTIONS="last_rule"
++KERNEL=="[ef]random", MODE="444", OPTIONS="last_rule"
