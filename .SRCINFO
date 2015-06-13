@@ -1,0 +1,15 @@
+pkgbase = simple-indicators
+	pkgdesc = Dockapp for system performance indicators.
+	pkgver = 1.02
+	pkgrel = 2
+	url = http://web.archive.org/web/20121031043853/http://dockapps.windowmaker.org/file.php/id/358
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = imake
+	depends = libdockapp
+	source = simple-indicators-1.02-1.src.tar.gz
+	md5sums = 8d497a78d15aeb99effbd37d4718f577
+
+pkgname = simple-indicators
+
