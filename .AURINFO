@@ -1,0 +1,20 @@
+pkgbase = pure-meta-math
+	pkgdesc = Pure programming language, math package -- interfaces to various 3rd party mathematical software
+	pkgver = 1
+	pkgrel = 3
+	url = http://purelang.bitbucket.org/
+	arch = any
+	groups = pure-meta
+	license = custom
+	depends = pure-glpk
+	depends = pure-gplot
+	depends = pure-gsl
+	depends = pure-mpfr
+	depends = pure-octave
+	depends = pure-rational
+	depends = pure-reduce
+	depends = gnumeric-pure
+	depends = texmacs-pure
+
+pkgname = pure-meta-math
+
