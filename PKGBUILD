@@ -18,8 +18,10 @@ provides=('atom-editor')
 conflicts=('atom-editor' 'atom-editor-bin')
 depends=('gconf' 'nodejs' 'libgnome-keyring' 'python2')
 makedepends=('git' 'npm')
-source=("atom::git+git://github.com/atom/atom")
-md5sums=('SKIP')
+source=("atom::git+git://github.com/atom/atom"
+        "atom-python.patch")
+md5sums=('SKIP'
+         'd4e6137fbdea39d0abe2016d4640b0cf')
 
 pkgver() {
   cd "$srcdir/atom"

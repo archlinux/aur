@@ -16,7 +16,9 @@ pkgbase = atom-editor-git
 	conflicts = atom-editor
 	conflicts = atom-editor-bin
 	source = atom::git+git://github.com/atom/atom
+	source = atom-python.patch
 	md5sums = SKIP
+	md5sums = d4e6137fbdea39d0abe2016d4640b0cf
 
 pkgname = atom-editor-git
 
