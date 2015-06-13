@@ -1,0 +1,16 @@
+pkgbase = tuneroid
+	pkgdesc = Tuner for variety of musical instruments (especially guitar)
+	pkgver = 0.9.5
+	pkgrel = 2
+	url = http://zyzstar.kosoru.com/?tuneroid
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = kdelibs
+	depends = alsa-lib
+	depends = qt3
+	source = http://zyzstar.kosoru.com/projects/tuneroid/downloads/tuneroid-0.9.5.tar.bz2
+	md5sums = d50f940041aa4f3a505c97eae8411382
+
+pkgname = tuneroid
+
