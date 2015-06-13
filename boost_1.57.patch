@@ -1,0 +1,22 @@
+--- luabind-0.91/luabind/object.hpp	2010-08-31 15:24:52.000000000 +0200
++++ luabind-0.91/luabind/object.hpp.fix	2015-05-30 09:40:59.212520185 +0200
+@@ -536,6 +536,8 @@
+       handle m_key;
+   };
+ 
++#if BOOST_VERSION < 105700
++
+ // Needed because of some strange ADL issues.
+ 
+ #define LUABIND_OPERATOR_ADL_WKND(op) \
+@@ -557,7 +559,9 @@
+   LUABIND_OPERATOR_ADL_WKND(!=)
+ 
+ #undef LUABIND_OPERATOR_ADL_WKND
+- 
++
++#endif
++
+ } // namespace detail
+ 
+ namespace adl

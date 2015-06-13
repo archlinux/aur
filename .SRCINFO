@@ -1,0 +1,22 @@
+pkgbase = luabind
+	pkgdesc = A library that helps you create bindings between C++ and Lua
+	pkgver = 0.9.1
+	pkgrel = 5
+	url = http://www.rasterbar.com/products/luabind.html
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = unzip
+	makedepends = boost
+	makedepends = boost-build
+	depends = lua51
+	depends = gcc-libs
+	source = http://downloads.sourceforge.net/luabind/luabind-0.9.1.tar.gz
+	source = luabind_boost.patch
+	source = boost_1.57.patch
+	md5sums = 8a323fb51d07dad5cfdb12c432793d55
+	md5sums = d62ae6fc635300bc659df9dbb587ac53
+	md5sums = 92450a08bc1eed7957109a6c712b1d45
+
+pkgname = luabind
+
