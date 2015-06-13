@@ -1,0 +1,15 @@
+pkgbase = pure-rational
+	pkgdesc = A rational number library, originally written by Rob Hubbard for Q, ported to Pure by Jiri Spitz.
+	pkgver = 0.1
+	pkgrel = 2
+	url = http://purelang.bitbucket.org/
+	arch = any
+	groups = pure-complete
+	groups = pure-math
+	license = GPL3
+	depends = pure
+	source = https://bitbucket.org/purelang/pure-lang/downloads/pure-rational-0.1.tar.gz
+	md5sums = 2c72ea03876f1142c2b954b59dbcbbac
+
+pkgname = pure-rational
+
