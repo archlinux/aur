@@ -1,0 +1,19 @@
+pkgbase = mozjpeg-git
+	pkgdesc = A fork of libjpeg-turbo with jpgcrush built in.
+	pkgver = 20131001
+	pkgrel = 1
+	url = https://github.com/mozilla/mozjpeg/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = nasm
+	provides = libjpeg=8.0.2
+	provides = turbojpeg
+	provides = libjpeg-turbo
+	conflicts = libjpeg-turbo
+	source = git+https://github.com/mozilla/mozjpeg.git
+	md5sums = SKIP
+
+pkgname = mozjpeg-git
+
