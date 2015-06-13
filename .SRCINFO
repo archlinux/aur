@@ -1,0 +1,15 @@
+pkgbase = sisiya-edbc-libs
+	pkgdesc = The SisIYA EDBC libraries.
+	pkgver = 0.6.31
+	pkgrel = 1
+	url = http://www.sisiya.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = libmariadbclient
+	depends = postgresql-libs
+	source = http://sourceforge.net/projects/sisiya/files/sisiya/0.6.31/pacman/sisiya-edbc-libs-0.6.31.tar.gz
+	md5sums = 82a7f3dfa787b00ef920663704da25e1
+
+pkgname = sisiya-edbc-libs
+
