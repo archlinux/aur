@@ -1,0 +1,14 @@
+pkgbase = allpathslg
+	pkgdesc = short read genome assembler
+	pkgver = 51875
+	pkgrel = 1
+	url = http://www.broadinstitute.org/software/allpaths-lg/blog/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = perl
+	source = ftp://ftp.broadinstitute.org/pub/crd/ALLPATHS/Release-LG/latest_source_code/allpathslg-51875.tar.gz
+	md5sums = 79c6b6e634db0ae2d01fa475d55eef58
+
+pkgname = allpathslg
+
