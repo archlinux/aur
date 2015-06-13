@@ -1,0 +1,15 @@
+pkgbase = ttf-vlkoruri
+	pkgdesc = Japanese TrueType font obtained by mixing VL P Gothic and Open Sans
+	pkgver = 20140915
+	pkgrel = 1
+	url = http://osdn.jp/projects/koruri
+	install = ttf.install
+	arch = any
+	license = CUSTOM
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = VlKoruri-20140915.tar.xz::http://osdn.jp/frs/redir.php?m=iij&f=%2Fkoruri%2F61965%2FVlKoruri-20140915.tar.xz
+	md5sums = 28831b09019e2bac953833aba6ef85be
+
+pkgname = ttf-vlkoruri
+
