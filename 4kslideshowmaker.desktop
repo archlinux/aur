@@ -1,0 +1,11 @@
+
+[Desktop Entry]
+Name=4K Slideshow Maker
+GenericName=4K Slideshow Maker
+Comment=Create impressive slideshows, save your memories
+Exec=4kslideshowmaker
+Terminal=false
+Type=Application
+Icon=4kslideshowmaker.png
+Categories=Multimedia;Qt;
+
