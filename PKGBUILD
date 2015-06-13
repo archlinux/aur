@@ -56,7 +56,7 @@ build() {
 
 package_roccat-tools-common() {
   pkgdesc='ROCCAT tools common files'
-install=roccat-tools.install
+  install=roccat-tools.install
 
   for i in icons sounds libroccat libroccathelper libroccatwidget roccateventhandler; do
     cd $srcdir/$pkgbase-$pkgver/$i
