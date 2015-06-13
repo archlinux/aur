@@ -1,0 +1,14 @@
+pkgbase = joy
+	pkgdesc = A purely functional concatenative language.
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.kevinalbrecht.com/code/joy-mirror/joy.html
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = glibc
+	source = http://www.kevinalbrecht.com/code/joy-mirror/joy.tar.gz
+	md5sums = f37c0bd7cb1263d6b842bd4a346e7442
+
+pkgname = joy
+
