@@ -1,0 +1,18 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Wacom Control Panel
+Type=Application
+Exec=python2 /usr/share/wacom-utility/wacom_utility.py
+Terminal=false
+Icon=/usr/share/wacom-utility/images/generic.png
+Comment=Utility to configure wacom pen tablets
+Categories=GNOME;GTK;X-XFCE;Settings;HardwareSettings;
+OnlyShowIn=GNOME;Settings;XFCE
+Hidden=false
+Name[en_CA]=Wacom Control Panel
+Comment[en_CA]=Utility to configure wacom pen tablets
+X-GNOME-Autostart-enabled=false
+GenericName=
