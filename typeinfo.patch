@@ -1,0 +1,11 @@
+diff -aur c++/include/corelib/ncbistl.hpp c++.new/include/corelib/ncbistl.hpp
+--- c++/include/corelib/ncbistl.hpp	2013-09-06 20:29:54.000000000 +0200
++++ c++.new/include/corelib/ncbistl.hpp	2014-06-05 11:04:30.533234506 +0200
+@@ -37,6 +37,7 @@
+ 
+ #include <common/ncbi_export.h>
+ #include <string>
++#include <typeinfo>
+ 
+ 
+ // Get rid of some warnings in MSVC++
