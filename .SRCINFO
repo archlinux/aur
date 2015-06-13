@@ -1,0 +1,16 @@
+pkgbase = since
+	pkgdesc = A stateful tail command
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://welz.org.za/projects/since
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	depends = glibc
+	source = http://welz.org.za/projects/since/since-1.1.tar.gz
+	md5sums = 7a6cfe573d0d2ec7b6f53fe9432a486b
+	sha256sums = 739b7f161f8a045c1dff184e0fc319417c5e2deb3c7339d323d4065f7a3d0f45
+
+pkgname = since
+
