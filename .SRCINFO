@@ -1,0 +1,16 @@
+pkgbase = pacliner-git
+	pkgdesc = Archlinux package management helper.
+	pkgver = 0.1.r1
+	pkgrel = 1
+	url = https://github.com/nbdsp/pacliner.git
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash,perl
+	provides = pacliner
+	conflicts = pacliner
+	source = pacliner::git+https://github.com/nbdsp/pacliner.git#branch=master
+	md5sums = SKIP
+
+pkgname = pacliner-git
+
