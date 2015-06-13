@@ -1,0 +1,15 @@
+pkgbase = rhyme
+	pkgdesc = Rhyming dictionary for the console.
+	pkgver = 0.9
+	pkgrel = 2
+	url = http://rhyme.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	depends = gdbm
+	depends = readline
+	source = http://downloads.sourceforge.net/project/rhyme/rhyme/0.9/rhyme-0.9.tar.gz
+	md5sums = dd5d6b94d5881e411c86c9a6daabaa70
+
+pkgname = rhyme
+
