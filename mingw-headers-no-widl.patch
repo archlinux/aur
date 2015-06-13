@@ -1,0 +1,22 @@
+--- mingw-w64-headers/configure.ac.orig	2014-03-30 15:23:08.248186613 +0200
++++ mingw-w64-headers/configure.ac	2014-03-30 15:24:15.775316204 +0200
+@@ -27,7 +27,7 @@
+   [AS_VAR_SET([with_widl],[no])])
+ AC_MSG_RESULT([$with_widl])
+ 
+-AS_VAR_IF([with_widl],[no],[],[
++AS_VAR_IF([with_widl],[no],[unset WIDL],[
+   AS_VAR_IF([srcdir],[.],[],
+     [AC_MSG_WARN([--with-widl used in out of the tree compilation.  Existing generated files will not be modified.])])
+   AC_PATH_PROGS([WIDL], [$host-widl widl], [], [$with_widl])
+--- mingw-w64-headers/configure.orig	2014-03-30 15:24:23.969453233 +0200
++++ mingw-w64-headers/configure	2014-03-30 15:24:26.479495205 +0200
+@@ -2565,7 +2473,7 @@
+ $as_echo "$with_widl" >&6; }
+ 
+ if test "x$with_widl" = xno; then :
+-
++  unset WIDL
+ else
+ 
+   if test "x$srcdir" = x.; then :
