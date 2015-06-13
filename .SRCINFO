@@ -1,0 +1,17 @@
+pkgbase = emma
+	pkgdesc = A platform-independent mysql administrator frontend using python and gtk+
+	pkgver = 0.6
+	pkgrel = 4
+	url = http://www.fastflo.de/projects/emma
+	arch = any
+	license = GPL
+	depends = python2
+	depends = pygtk
+	depends = mysql-python
+	source = http://www.fastflo.de/files/emma/downloads/python_src/emma-0.6.tar.gz
+	source = emma.desktop
+	md5sums = da3bd1d1f4ee75d02a4c8637e28fd732
+	md5sums = 2c1a3d150735ea8be085c44e6f406771
+
+pkgname = emma
+

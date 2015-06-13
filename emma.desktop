@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Categories=GNOME;Application;Development
+Comment=Database Administration
+Comment[en_US]=Database Administration
+Exec=emma
+Icon=emma
+Icon[en_US]=emma
+Name=Emma
+Name[en_US]=Emma
+Terminal=false
