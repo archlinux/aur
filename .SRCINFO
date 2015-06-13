@@ -1,0 +1,15 @@
+pkgbase = python2-regex-hg
+	pkgdesc = Alternative regular expression module, to replace re.
+	pkgver = 111.7ee84d1a19dd
+	pkgrel = 1
+	url = https://code.google.com/p/mrab-regex-hg/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = mercurial
+	depends = python2
+	source = hg+https://code.google.com/p/mrab-regex-hg
+	md5sums = SKIP
+
+pkgname = python2-regex-hg
+
