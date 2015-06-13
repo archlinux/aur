@@ -1,0 +1,75 @@
+diff -Naur vis5d+-1.2.1//src/misc.c vis5d+-1.2.1_new//src/misc.c
+--- vis5d+-1.2.1//src/misc.c	2001-11-07 06:53:12.000000000 -0500
++++ vis5d+-1.2.1_new//src/misc.c	2010-10-16 23:26:10.000000000 -0500
+@@ -144,10 +144,10 @@
+ 
+ 
+ 
+-/*** round ************************************************************
++/*** roundv5d ************************************************************
+    Round off x to a 'nice' value.
+ **********************************************************************/
+-float round( float x )
++float roundv5d( float x )
+ {
+    float base, fudge;
+    int temp;
+@@ -273,7 +273,7 @@
+       ctx->Variable[var]->HSliceRequest->Interval = 0.0;
+    }
+    else {
+-      ctx->Variable[var]->HSliceRequest->Interval = round( (ctx->Variable[var]->MaxVal - ctx->Variable[var]->MinVal)
++      ctx->Variable[var]->HSliceRequest->Interval = roundv5d( (ctx->Variable[var]->MaxVal - ctx->Variable[var]->MinVal)
+                                         / 10.0 );
+    }
+ 
+@@ -309,7 +309,7 @@
+       ctx->Variable[var]->VSliceRequest->Interval = 0.0;
+    }
+    else {
+-      ctx->Variable[var]->VSliceRequest->Interval = round( (ctx->Variable[var]->MaxVal - ctx->Variable[var]->MinVal)
++      ctx->Variable[var]->VSliceRequest->Interval = roundv5d( (ctx->Variable[var]->MaxVal - ctx->Variable[var]->MinVal)
+                                         / 10.0 );
+    }
+ 
+diff -Naur vis5d+-1.2.1//src/misc.h vis5d+-1.2.1_new//src/misc.h
+--- vis5d+-1.2.1//src/misc.h	2001-11-07 06:53:12.000000000 -0500
++++ vis5d+-1.2.1_new//src/misc.h	2010-10-16 23:26:28.000000000 -0500
+@@ -37,7 +37,7 @@
+ 
+ extern void die( char *msg );
+ 
+-extern float round( float x );
++extern float roundv5d( float x );
+ 
+ extern int which( char *file, char *fullpath );
+ 
+diff -Naur vis5d+-1.2.1//src/work.c vis5d+-1.2.1_new//src/work.c
+--- vis5d+-1.2.1//src/work.c	2001-11-07 06:53:30.000000000 -0500
++++ vis5d+-1.2.1_new//src/work.c	2010-10-16 23:27:16.000000000 -0500
+@@ -6791,7 +6791,7 @@
+ 		  request->HighLimit = floor(request->HighLimit*factor)/(float) factor;
+ 		}
+ 	 }
+-	 request->Interval = round((request->HighLimit - request->LowLimit)/5.0);
++	 request->Interval = roundv5d((request->HighLimit - request->LowLimit)/5.0);
+ 	 
+   }
+ }
+--- vis5d+-1.2.1/util/kludge.f  2001-10-24 12:46:49.000000000 +0200
++++ vis5d+-1.2.1.new/util/kludge.f      2011-04-28 14:41:00.883619139 +0200
+@@ -51,9 +51,13 @@
+       SUBROUTINE GETDAY(I)
+       IMPLICIT INTEGER (A-Z)
+       INTEGER MTBL(12)
++      INTEGER TARRAY(3)
+       DATA MTBL/0,31,59,90,120,151,181,212,243,273,304,334/
+ C
+-      CALL IDATE(MON,IDAY,IYEAR)
++      CALL IDATE(TARRAY)
++      IDAY = TARRAY(1)
++      MON = TARRAY(2)
++      IYEAR = TARRAY(3)
+       IF (IDAY.LT.1.OR.IDAY.GT.31) RETURN
+       IF (MON.LT.1.OR.MON.GT.12) RETURN
+       IDDD=IDAY+MTBL(MON)

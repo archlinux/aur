@@ -1,0 +1,18 @@
+pkgbase = vis5d+
+	pkgdesc = A system for interactive visualization of large 5-D gridded data sets
+	pkgver = 1.2.1
+	pkgrel = 8
+	url = http://vis5d.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = netcdf
+	depends = xorg-server
+	depends = mesa
+	source = http://downloads.sourceforge.net/vis5d/vis5d+-1.2.1.tar.bz2
+	source = patch
+	md5sums = 15a8b09ba8ae57b753e724d0825e40c1
+	md5sums = a1d73b709e03ca09fe2ce5954ac4f914
+
+pkgname = vis5d+
+
