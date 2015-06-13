@@ -1,0 +1,18 @@
+pkgbase = pdextended-touchosc-git
+	pkgdesc = A TouchOSC MIDI bridge for Pd, Pd-Extended version
+	pkgver = 44.443c793
+	pkgrel = 1
+	url = https://bitbucket.org/agraef/pd-touchosc/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = pd-extended
+	depends = pdextended-pure
+	depends = pure-avahi
+	depends = pure-stldict
+	depends = pure-xml
+	source = git+https://bitbucket.org/agraef/pd-touchosc
+	md5sums = SKIP
+
+pkgname = pdextended-touchosc-git
+
