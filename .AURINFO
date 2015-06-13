@@ -1,0 +1,15 @@
+pkgbase = perl-datetime-format-mysql
+	pkgdesc = Parse and format MySQL dates and times
+	pkgver = 0.05
+	pkgrel = 2
+	url = http://search.cpan.org/~drolsky/DateTime-Format-MySQL
+	arch = i686
+	arch = x86_64
+	license = perl
+	depends = perl-datetime
+	depends = perl-datetime-format-builder
+	source = https://cpan.metacpan.org/authors/id/X/XM/XMIKEW/DateTime-Format-MySQL-0.05.tar.gz
+	options = !emptydirs
+
+pkgname = perl-datetime-format-mysql
+
