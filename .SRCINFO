@@ -1,0 +1,18 @@
+pkgbase = lis.to
+	pkgdesc = A task manager for mobilistas. Unique organisation scheme, the power of tags with the simplicity of folders.
+	pkgver = 0.9.7.36
+	pkgrel = 3
+	url = http://code.google.com/p/listo/
+	arch = any
+	license = GPL
+	makedepends = unzip
+	depends = java-runtime
+	source = http://listo.googlecode.com/files/listo.0.9.7.36.jar.zip
+	source = listo.sh
+	source = listo.desktop
+	md5sums = 90e305d34cfa2642c01ca2a7ed4621c1
+	md5sums = 53091d842ee778fd7dc7770f246f00bc
+	md5sums = 64322dac513a48b8a240b45848a14f33
+
+pkgname = lis.to
+

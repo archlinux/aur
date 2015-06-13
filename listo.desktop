@@ -1,0 +1,14 @@
+[Desktop Entry]
+Comment=
+Exec=listo
+GenericName=lis.to
+Icon=/usr/share/pixmaps/listo.png
+Name=lis.to
+NoDisplay=false
+StartupNotify=true
+Terminal=0
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=
+Categories=Office;
