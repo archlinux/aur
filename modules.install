@@ -1,0 +1,10 @@
+post_install() {
+    echo 'Please run the following command for every user of Modules package'
+    echo '  /usr/local/Modules/default/bin/add.modules'
+    echo 'You will likely have to log out and in again to have the environment'
+    echo 'configured properly'
+}
+
+post_upgrade() {
+    post_install $1
+}

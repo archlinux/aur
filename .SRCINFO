@@ -1,0 +1,16 @@
+pkgbase = modules
+	pkgdesc = The Environment Modules package provides for the dynamic modification of a user's environment via modulefiles
+	pkgver = 3.2.10
+	pkgrel = 1
+	url = http://modules.sourceforge.net/
+	install = modules.install
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = dejagnu
+	depends = tcl>=8
+	source = http://sourceforge.net/projects/modules/files/Modules/modules-3.2.10/modules-3.2.10.tar.bz2
+	md5sums = 7db43a0e272574219d68bd2a2683f25f
+
+pkgname = modules
+
