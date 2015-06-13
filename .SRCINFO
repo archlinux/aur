@@ -1,0 +1,15 @@
+pkgbase = ruby-coffee-script-source
+	pkgdesc = The CoffeeScript Compiler
+	pkgver = 1.9.1.1
+	pkgrel = 1
+	url = http://jashkenas.github.com/coffee-script/
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = coffee-script-source-1.9.1.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/coffee-script-source-1.9.1.1.gem
+	sha512sums = 4d37f65b2e5e4aeb8692d7022a2d048ae49520cc247fcb3da7fabb620270982d537d68b17619842f357ed00bcb297e9709362b3a56ad8325a7dd9a820956cdcc
+
+pkgname = ruby-coffee-script-source
+
