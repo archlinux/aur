@@ -23,11 +23,13 @@ pkgbase = psp-gcc
 	source = ftp://ftp.gmplib.org/pub/gmp-5.1.3/gmp-5.1.3.tar.bz2
 	source = http://www.multiprecision.org/mpc/download/mpc-1.0.2.tar.gz
 	source = http://www.mpfr.org/mpfr-3.1.2/mpfr-3.1.2.tar.bz2
+	source = patch-gcc_cp_cfns.h
 	md5sums = b407a3d1480c11667f293bfb1f17d1a4
 	md5sums = fde0c20f56e608715ec13d5d8b8c8e59
 	md5sums = a082867cbca5e898371a97bb27b31fea
 	md5sums = 68fadff3358fb3e7976c7a398a0af4c3
 	md5sums = ee2c3ac63bf0c2359bf08fc3ee094c19
+	md5sums = cc8bac293c0f0c6e127e7d242237f875
 
 pkgname = psp-gcc
 
