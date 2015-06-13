@@ -1,0 +1,43 @@
+pkgbase = soundkonverter-frameworks-git
+	pkgdesc = Front-end to various audio converters
+	pkgver = v2.1.90.r25.gdf74e99
+	pkgrel = 1
+	url = http://www.kde-apps.org/content/show.php?content=29024
+	install = soundkonverter-frameworks-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = kdoctools
+	makedepends = extra-cmake-modules
+	makedepends = cmake
+	depends = kdelibs4support
+	depends = libkcddb-frameworks-git
+	depends = cdparanoia
+	depends = taglib
+	optdepends = cdrkit: cdda2wav backend
+	optdepends = faac: faac backend
+	optdepends = faad2: faad backend
+	optdepends = ffmpeg: ffmpeg backend
+	optdepends = flac: flac backend
+	optdepends = fluidsynth: flouidsynth backend
+	optdepends = lame: lame backend
+	optdepends = mac: mac backend
+	optdepends = mplayer: mplayer backend
+	optdepends = mp3gain: mp3gain backend
+	optdepends = opus-tools: opus backend
+	optdepends = speex: speexenc, speexdec backends
+	optdepends = timidity++: midi backend
+	optdepends = twolame: twolame backend
+	optdepends = vorbisgain: vorbisgain backend
+	optdepends = vorbis-tools: vorbis tools backend
+	optdepends = wavpack: wavpack backend
+	optdepends = sox: sox plugin (change sample rate, various effects)
+	provides = soundkonverter
+	provides = soundkonverter-frameworks
+	conflicts = soundkonverter
+	conflicts = soundkonverter-frameworks
+	source = soundkonverter::git+https://github.com/valeth/soundkonverter#branch=frameworks
+	sha512sums = SKIP
+
+pkgname = soundkonverter-frameworks-git
+
