@@ -1,0 +1,21 @@
+pkgbase = python-gist
+	pkgdesc = Command line interface for working with GitHub gists.
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/jdowner/gist
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-docopt
+	depends = python-gnupg
+	depends = python-requests
+	depends = python-simplejson
+	provides = gist
+	conflicts = gist
+	conflicts = gist-git
+	conflicts = ruby-gist
+	source = https://pypi.python.org/packages/source/p/python-gist/python-gist-0.3.2.tar.gz
+	md5sums = 47b0b5f32501d0bf0ae4a8a0810a5917
+
+pkgname = python-gist
+
