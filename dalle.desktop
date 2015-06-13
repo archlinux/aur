@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=dalle
+Comment=File splitter & merger which supports lots of formats
+Exec=dalle-gtk
+Icon=dalle
+Terminal=false
+Type=Application
+Categories=Utility;

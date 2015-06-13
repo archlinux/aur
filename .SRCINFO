@@ -1,0 +1,20 @@
+pkgbase = dalle
+	pkgdesc = File splitter & merger which supports lots of formats
+	pkgver = 0.10.10
+	pkgrel = 1
+	url = http://dalle.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = nant
+	makedepends = findutils
+	depends = mono
+	depends = gtk-sharp-2
+	depends = gnome-sharp
+	source = http://downloads.sourceforge.net/dalle/dalle-0.10.10.tar.bz2
+	source = dalle.desktop
+	md5sums = 4046f067ff37e02df867f27b003e314e
+	md5sums = 71b89282bfc687fa41836b6268aa3f2f
+
+pkgname = dalle
+
