@@ -1,0 +1,15 @@
+pkgbase = ttf-glass-tty
+	pkgdesc = Hacking with style: ttf VT220
+	pkgver = 1
+	pkgrel = 2
+	url = http://sensi.org/~svo/glasstty/
+	install = ttf-glass-tty.install
+	arch = any
+	license = custom:copyright
+	depends = xorg-font-utils
+	depends = fontconfig
+	source = http://www.spacerogue.net/images/Glass_TTY_VT220.ttf
+	md5sums = 7342d5c4c32ea4aa69c5d22d2f461fbb
+
+pkgname = ttf-glass-tty
+
