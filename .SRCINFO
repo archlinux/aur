@@ -1,0 +1,18 @@
+pkgbase = perl-class-accessor-grouped
+	pkgdesc = Lets you build groups of accessors
+	pkgver = 0.10012
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Class-Accessor-Grouped
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-exception>=0.31
+	depends = perl
+	depends = perl-module-runtime>=0.012
+	options = !emptydirs
+	source = http://cpan.metacpan.org/authors/id/R/RI/RIBASUSHI/Class-Accessor-Grouped-0.10012.tar.gz
+	md5sums = cd9fad3112c315d60b5fca5b17e98996
+	sha512sums = 195c4b1f9897b50753231ab6c893987a3e49e6283713175d612843651428c8cb2eb791a5385e25607a1db189861811efade33f94ef33c36cd41624e793ca20d1
+
+pkgname = perl-class-accessor-grouped
+
