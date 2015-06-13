@@ -1,0 +1,17 @@
+pkgbase = scduply-git
+	pkgdesc = A duplicity frontend for managing dedicated server backups via configuration files and simple commands.
+	pkgver = 2011.11.30
+	pkgrel = 1
+	epoch = 1
+	url = http://en.skycover.ru/opensource/scduply/
+	arch = any
+	license = GPLv2
+	makedepends = git
+	depends = duplicity
+	provides = scduply
+	conflicts = scduply
+	source = git://github.com/skycover/scduply.git
+	md5sums = SKIP
+
+pkgname = scduply-git
+
