@@ -1,0 +1,27 @@
+pkgbase = avant-window-navigator
+	pkgdesc = AWN is a customisable dock-like bar at the edge of the screen.
+	pkgver = 0.4.2
+	pkgrel = 4
+	url = https://launchpad.net/awn
+	install = avant-window-navigator.install
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = gtk-doc
+	makedepends = vala
+	makedepends = intltool
+	depends = libdesktop-agnostic
+	depends = libwnck
+	depends = libgtop
+	depends = gconf
+	depends = python2-dbus
+	depends = pygtk
+	depends = python2-xdg
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	depends = gtkmm
+	source = http://launchpad.net/awn/0.4/0.4.2/+download/avant-window-navigator-0.4.2.tar.gz
+	options = !libtool
+
+pkgname = avant-window-navigator
+
