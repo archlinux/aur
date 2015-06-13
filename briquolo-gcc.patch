@@ -1,0 +1,24 @@
+--- src/Constante.cpp~	2008-03-22 10:40:33.000000000 +0100
++++ src/Constante.cpp	2008-04-20 21:46:12.000000000 +0200
+@@ -22,0 +23 @@
++#include <stdlib.h>
+
+--- src/MOGL/MOGL_EnsembleObjet.cpp~	2008-03-24 14:12:36.000000000 +0100
++++ src/MOGL/MOGL_EnsembleObjet.cpp	2008-04-20 21:05:41.000000000 +0200
+@@ -27,0 +28 @@
++#include <cstring>
+
+--- src/MOGL/MOGL_GestionnaireObjet.cpp~	2008-03-24 13:56:13.000000000 +0100
++++ src/MOGL/MOGL_GestionnaireObjet.cpp	2008-04-20 21:06:23.000000000 +0200
+@@ -23,0 +24 @@
++#include <cstring>
+
+--- src/MOGL/MOGL_Objet.cpp~	2008-04-20 21:07:10.000000000 +0200
++++ src/MOGL/MOGL_Objet.cpp	2008-04-20 21:09:43.000000000 +0200
+@@ -22,0 +23 @@
++#include <stdlib.h>
+
+--- src/MOGL/MOGL_Peau.cpp~	2006-03-07 21:31:24.000000000 +0100
++++ src/MOGL/MOGL_Peau.cpp	2008-04-20 21:40:50.000000000 +0200
+@@ -22,0 +23 @@
++#include <stdlib.h>

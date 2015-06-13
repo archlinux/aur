@@ -1,0 +1,34 @@
+pkgbase = briquolo
+	pkgdesc = An addictive block game
+	pkgver = 0.5.7
+	pkgrel = 5
+	url = http://briquolo.free.fr/
+	install = briquolo.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = patch
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = cvs
+	depends = sdl
+	depends = sdl_mixer
+	depends = libpng
+	depends = sdl_ttf
+	depends = mesa
+	depends = desktop-file-utils
+	depends = glu
+	options = !makeflags
+	source = http://briquolo.free.fr/download/briquolo-0.5.7.tar.bz2
+	source = briquolo.desktop
+	source = briquolo.png
+	source = briquolo-gcc.patch
+	source = briquolo-libpng.patch
+	md5sums = e24d22d2d719d64c231d3d76f9291d6e
+	md5sums = 0fb2744c4bb0e36bf9599a77a54183d7
+	md5sums = 6a310dfa94225c9e16571e4e25eebfb3
+	md5sums = d3077d1a57e531bbe8d1b15dae09969f
+	md5sums = f9b3afa24803a02d23616b859d880b1d
+
+pkgname = briquolo
+

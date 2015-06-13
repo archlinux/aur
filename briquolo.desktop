@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Exec=briquolo
+Icon=briquolo
+Name=Briquolo
+Name[fr]=Briquolo
+Comment=An OpenGL breakout
+Comment[fr]=Un casse brique OpenGL
+Comment[cs]=OpenGL breakout
+Categories=ArcadeGame;Game;
+GenericName=BreakOut
+GenericName[fr]=Casse Briques
+GenericName[cs]=Breakout
