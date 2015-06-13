@@ -1,0 +1,14 @@
+pkgbase = diradm
+	pkgdesc = A simple bash script for managing posix users and groups stored in a LDAP directory
+	pkgver = 1.3
+	pkgrel = 1
+	url = http://www.hits.at/diradm/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = openldap
+	source = http://www.hits.at/diradm/diradm-1.3.tar.gz
+	md5sums = a63bdc87694e57626721f1b602ef8872
+
+pkgname = diradm
+
