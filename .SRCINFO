@@ -1,0 +1,23 @@
+pkgbase = tinyproxy-git
+	pkgdesc = A light-weight HTTP proxy daemon for POSIX operating systems.
+	pkgver = 1.8.0.118.g24087f7
+	pkgrel = 1
+	epoch = 2
+	url = https://banu.com/tinyproxy/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = asciidoc
+	makedepends = git
+	provides = tinyproxy
+	conflicts = tinyproxy
+	backup = etc/tinyproxy/tinyproxy.conf
+	source = tinyproxy.tmpfiles.conf
+	source = tinyproxy.service
+	source = git://git.banu.com/tinyproxy.git
+	md5sums = 3c2764578f26581346fe312da0519a3e
+	md5sums = 8e97b05cc8c87f7efefbf957e77c7f18
+	md5sums = SKIP
+
+pkgname = tinyproxy-git
+

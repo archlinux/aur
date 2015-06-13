@@ -1,0 +1,10 @@
+[Unit]
+Description=Tinyproxy Web Proxy Server
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/tinyproxy -c /etc/tinyproxy/tinyproxy.conf
+
+[Install]
+WantedBy=multi-user.target
