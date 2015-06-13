@@ -1,0 +1,16 @@
+pkgbase = open-invaders
+	pkgdesc = A clone of Space Invaders
+	pkgver = 0.3
+	pkgrel = 2
+	url = http://sourceforge.net/projects/open-invaders/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = dumb
+	depends = allegro4
+	depends = gcc-libs
+	source = http://downloads.sourceforge.net/project/open-invaders/open-invaders-0.3/open-invaders-0.3.tar.gz
+	md5sums = 35c0d8ec3beacfc97389d38eef3555b2
+
+pkgname = open-invaders
+
