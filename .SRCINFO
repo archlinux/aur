@@ -1,0 +1,14 @@
+pkgbase = funcparserlib
+	pkgdesc = Small and fast python (2&3) based parser. Inspired from EBNF and Haskell.
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = http://code.google.com/p/funcparserlib/
+	arch = any
+	license = MIT
+	depends = python2
+	depends = python
+	source = http://pypi.python.org/packages/source/f/funcparserlib/funcparserlib-0.3.6.tar.gz
+	md5sums = 3aba546bdad5d0826596910551ce37c0
+
+pkgname = funcparserlib
+
