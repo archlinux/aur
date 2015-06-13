@@ -1,0 +1,18 @@
+pkgbase = konoha
+	pkgdesc = A high speed static scripting language.
+	pkgver = 1.0.0.952
+	pkgrel = 1
+	url = http://code.google.com/p/konoha/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = sqlite3
+	depends = curl
+	depends = libffi
+	depends = pcre
+	source = http://konoha.googlecode.com/files/konoha-1.0.0-952.tar.gz
+	md5sums = 40c59114a0d09ac5b8e933fa336c67b5
+
+pkgname = konoha
+
