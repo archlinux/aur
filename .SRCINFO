@@ -1,0 +1,16 @@
+pkgbase = summon
+	pkgdesc = Rapid prototyping of 2D visualizations for Python.
+	pkgver = 1.8.9
+	pkgrel = 1
+	url = http://people.csail.mit.edu/rasmus/summon/index.shtml
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = python2
+	depends = sdl
+	depends = glut
+	source = http://people.csail.mit.edu/rasmus/summon/download/summon-1.8.9.tar.gz
+	md5sums = 118a77ee431535dfe97bbd425b6dc09a
+
+pkgname = summon
+
