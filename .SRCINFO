@@ -1,0 +1,16 @@
+pkgbase = python-polygon
+	pkgdesc = Python package that handles polygonal shapes in 2D
+	pkgver = 3.0.7
+	pkgrel = 1
+	url = http://www.j-raedler.de/projects/polygon/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = custom
+	depends = python-numpy
+	options = !libtool
+	source = https://bitbucket.org/jraedler/polygon3/downloads/Polygon3-3.0.7.zip
+	md5sums = 0888ada8c5db95ae33de7d330551fd27
+
+pkgname = python-polygon
+
