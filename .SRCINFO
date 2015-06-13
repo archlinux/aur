@@ -1,0 +1,157 @@
+pkgbase = calligra-frameworks-git
+	pkgver = 3.0_Pre_Alpha.r97194.469aabd
+	pkgrel = 1
+	url = http://www.calligra-suite.org/
+	arch = i686
+	arch = x86_64
+	groups = calligra-frameworks-git
+	license = FDL1.2
+	license = GPL2
+	license = LGPL
+	makedepends = cmake
+	makedepends = boost-libs
+	makedepends = marble-git
+	makedepends = kdelibs4support
+	makedepends = libkdcraw-frameworks-git
+	makedepends = poppler-qt5
+	makedepends = knotifyconfig
+	makedepends = qca-qt5
+	makedepends = qt5-quick1
+	makedepends = kdiagram-git
+	makedepends = lcms2
+	makedepends = libmariadbclient
+	makedepends = freetds
+	makedepends = xbase
+	makedepends = libwpg
+	makedepends = libwps
+	makedepends = opencolorio
+	makedepends = gsl
+	makedepends = glew
+	makedepends = fftw
+	makedepends = libodfgen
+	makedepends = openjpeg
+	makedepends = pstoedit
+	makedepends = vc
+	makedepends = libvisio
+	makedepends = hicolor-icon-theme
+	makedepends = libetonyek
+	makedepends = libpqxx
+	makedepends = libspnav
+	makedepends = eigen
+	makedepends = postgresql
+	makedepends = cauchy-hg
+	source = git://anongit.kde.org/calligra#branch=frameworks
+	source = http://pkgs.fedoraproject.org/cgit/calligra.git/plain/0001-adapt-to-libwps-0.4.patch
+	sha1sums = SKIP
+	sha1sums = 7f338b6f68582ea4639d45e1794707b56e368433
+
+pkgname = calligra-devtools-frameworks-git
+	pkgdesc = Calligra developer tools. KF5 Frameworks branch. (GIT version)
+	depends = calligra-libs-frameworks-git
+	depends = poppler-qt5
+	conflicts = calligra-devtools
+
+pkgname = calligra-extras-frameworks-git
+	pkgdesc = Calligra suite extras. KF5 Frameworks branch. (GIT version)
+	install = calligra-frameworks-git.install
+	depends = calligra-libs-frameworks-git
+	optdepends = 
+	conflicts = calligra-extras
+
+pkgname = calligra-filters-frameworks-git
+	pkgdesc = Filters for the Calligra office suite. KF5 Frameworks branch. (GIT version)
+	install = calligra-frameworks-git.install
+	depends = libodfgen
+	depends = khtml
+	optdepends = libwpg: Corel WordPerfect Graphics image importer
+	optdepends = libwps: Microsoft Works file word processor format import
+	optdepends = libvisio: Microsoft Visio import filter
+	optdepends = libetonyek: Apple Keynote import filter
+	optdepends = poppler: PDF import filter
+	conflicts = calligra-filters
+
+pkgname = calligra-gemini-frameworks-git
+	pkgdesc = QML interface for Calligra Words and Stage. KF5 Frameworks branch. (GIT version)
+	install = calligra-frameworks-git.install
+	depends = calligra-words-frameworks-git
+	depends = calligra-stage-frameworks-git
+	depends = qt5-quick1
+	conflicts = calligra-gemini
+
+pkgname = calligra-karbon-frameworks-git
+	pkgdesc = Create scalable vector drawings. KF5 Frameworks branch. (GIT version)
+	install = calligra-frameworks-git.install
+	depends = calligra-libs-frameworks-git
+	depends = pstoedit
+	depends = hicolor-icon-theme
+	optdepends = calligra-filters-frameworks-git: import/export filters
+	optdepends = calligra-extras-frameworks-git: extra calligra tools
+	conflicts = calligra-karbon
+
+pkgname = calligra-krita-frameworks-git
+	pkgdesc = Edit and paint images. KF5 Frameworks branch. (GIT version)
+	install = calligra-frameworks-git.install
+	depends = calligra-plugins-frameworks-git
+	depends = exiv2
+	depends = openexr
+	depends = glew
+	depends = fftw
+	depends = opencolorio
+	depends = gsl
+	depends = poppler-qt5
+	optdepends = libkdcraw-frameworks-git: Open RAW images
+	conflicts = calligra-krita-doc
+
+pkgname = calligra-libs-frameworks-git
+	pkgdesc = Libraries for the Calligra office suite. KF5 Frameworks branch. (GIT version)
+	depends = kdepimlibs-git
+	depends = kactivities
+	depends = qca-qt5
+	depends = ilmbase
+	conflicts = calligra-libs
+
+pkgname = calligra-plan-frameworks-git
+	pkgdesc = Calligra Project Management Component. KF5 Frameworks branch. (GIT version)
+	install = calligra-frameworks-git.install
+	depends = calligra-words-frameworks-git
+	conflicts = calligra-plan
+
+pkgname = calligra-plugins-frameworks-git
+	pkgdesc = Plugins for the Calligra office suite. KF5 Frameworks branch. (GIT version)
+	install = calligra-frameworks-git.install
+	depends = calligra-libs-frameworks-git
+	depends = calligra-filters-frameworks-git
+	depends = kdiagram-git
+	depends = libspnav
+	optdepends = ilmbase: ILM for OpenEXR plugin
+	optdepends = cauchy-hg: Math plugin
+	optdepends = lcms2: Color management plugin
+	conflicts = calligra-plugins
+
+pkgname = calligra-sheets-frameworks-git
+	pkgdesc = Write spreadsheet documents. KF5 Frameworks branch. (GIT version)
+	install = calligra-frameworks-git.install
+	depends = calligra-libs-frameworks-git
+	depends = knotifyconfig
+	depends = gsl
+	depends = hicolor-icon-theme
+	optdepends = calligra-filters-frameworks-git: import/export filters
+	optdepends = calligra-plugins-frameworks-git: extra calligra plugins
+	optdepends = calligra-extras-frameworks-git: extra calligra tools
+	conflicts = calligra-sheets
+
+pkgname = calligra-stage-frameworks-git
+	pkgdesc = Write presentation documents. KF5 Frameworks branch. (GIT version)
+	install = calligra-frameworks-git.install
+	depends = calligra-plugins-frameworks-git
+	depends = hicolor-icon-theme
+	conflicts = calligra-stage
+
+pkgname = calligra-words-frameworks-git
+	pkgdesc = Word Processor. KF5 Frameworks branch. (GIT version)
+	install = calligra-frameworks-git.install
+	depends = calligra-plugins-frameworks-git
+	depends = hicolor-icon-theme
+	optdepends = calligra-extras-frameworks-git: extra calligra tools
+	conflicts = calligra-words
+
