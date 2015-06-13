@@ -1,0 +1,15 @@
+pkgbase = slurm
+	pkgdesc = Monitoring traffic statistics in realtime
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/mattthias/slurm/wiki
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = scons
+	depends = ncurses
+	source = https://github.com/mattthias/slurm/archive/upstream/0.4.2.tar.gz
+	md5sums = b949aca331c25bf5c225faafc1948069
+
+pkgname = slurm
+
