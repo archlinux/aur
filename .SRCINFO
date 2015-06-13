@@ -1,0 +1,19 @@
+pkgbase = sga
+	pkgdesc = de novo sequence assembler using string graphs
+	pkgver = 0.10.13
+	pkgrel = 1
+	url = https://github.com/jts/sga
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = sparsehash
+	depends = bamtools
+	depends = jemalloc
+	depends = python
+	source = sga-0.10.13.tar.gz::https://github.com/jts/sga/archive/v0.10.13.tar.gz
+	source = configure-rpath.patch
+	md5sums = d4f6aefc48c940dba96cc6513649ecdd
+	md5sums = SKIP
+
+pkgname = sga
+

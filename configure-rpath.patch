@@ -1,0 +1,34 @@
+--- configure.ac	2014-01-17 21:16:36.000000000 +0100
++++ /tmp/configure.ac.patched	2014-11-07 14:04:25.882803929 +0100
+@@ -32,8 +32,8 @@
+ 	[specify directory containing the bamtools library (http://github.com/pezmaster31/bamtools)]))
+ 
+ if test "$with_bamtools" -a -d "$with_bamtools"; then
+-    bamtools_ldflags="-Wl,-rpath,$with_bamtools/lib -L$with_bamtools/lib -Wl,-rpath,$with_bamtools/lib/bamtools -L$with_bamtools/lib/bamtools"
+-    bamtools_include="-I$with_bamtools/include -I$with_bamtools/include/bamtools"
++    bamtools_ldflags=""
++    bamtools_include="-I$with_bamtools/include/bamtools"
+ fi
+ 
+ # Support for tcmalloc/jemalloc/hoard
+@@ -52,17 +52,17 @@
+ 
+ # Set library path to user-selected allocator
+ if test "$with_hoard" -a -d "$with_hoard"; then
+-	external_malloc_ldflags="-Wl,-rpath,$with_hoard -L$with_hoard"
++	external_malloc_ldflags=""
+     enable_hoard=1
+ fi
+ 
+ if test "$with_tcmalloc" -a -d "$with_tcmalloc"; then
+-	external_malloc_ldflags="-Wl,-rpath,$with_tcmalloc -L$with_tcmalloc"
++	external_malloc_ldflags=""
+     enable_tcmalloc=1
+ fi
+ 
+ if test "$with_jemalloc" -a -d "$with_jemalloc"; then
+-	external_malloc_ldflags="-Wl,-rpath,$with_jemalloc -L$with_jemalloc"
++	external_malloc_ldflags=""
+     enable_jemalloc=1
+ fi
+ 
