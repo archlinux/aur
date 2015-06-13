@@ -1,0 +1,14 @@
+pkgbase = opari2
+	pkgdesc = Instrumentation tool for OpenMP and hybrid codes.
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = http://www.vi-hps.org/projects/score-p/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = gcc-fortran
+	source = http://www.vi-hps.org/upload/packages/opari2/opari2-1.1.3.tar.gz
+	sha1sums = f39170c3cb5a4c9e63750026e426e61dbe7bc240
+
+pkgname = opari2
+
