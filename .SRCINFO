@@ -1,0 +1,15 @@
+pkgbase = datastat-git
+	pkgdesc = Simple command line statistics
+	pkgver = 20131228
+	pkgrel = 1
+	url = http://sourceforge.net/projects/datastat/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = readline
+	source = git://git.code.sf.net/p/datastat/code
+	md5sums = SKIP
+
+pkgname = datastat-git
+
