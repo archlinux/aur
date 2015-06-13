@@ -1,0 +1,14 @@
+pkgbase = vadorz
+	pkgdesc = An addicting ncurses space-invaders game.
+	pkgver = 40
+	pkgrel = 1
+	url = http://code.google.com/p/vadorz
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = ncurses
+	source = http://vadorz.googlecode.com/files/vadorz40.tar.gz
+	md5sums = fb96fe182c95c97888db45d99d920cd6
+
+pkgname = vadorz
+
