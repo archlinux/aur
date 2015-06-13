@@ -1,0 +1,13 @@
+pkgbase = shttpd
+	pkgdesc = Simple HTTP daemons: a framework for deploying single-purpose daemons running on separate addresses.
+	pkgver = 0.53
+	pkgrel = 00
+	url = http://www.superscript.com/shttpd/index.html
+	arch = i686
+	arch = x86_64
+	license = public domain
+	source = http://www.superscript.com/shttpd/shttpd-0.53.tar.gz
+	sha512sums = 35cbe2cd85a90c55c2ada2b13f75b8cf06f0123abfb4609271134c2d7deff99dc9752db37fb3ca1ae2b7131da53285c7a4f5a996edb37cebcdab912396c0b599
+
+pkgname = shttpd
+
