@@ -1,0 +1,16 @@
+pkgbase = mbrola-voices-hu1
+	pkgdesc = A Hungarian female voice for the MBROLA synthesizer
+	pkgver = 1
+	pkgrel = 3
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-hu
+	groups = mbrola-voices
+	groups = gespeaker-mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/hu1/hu1.zip
+	md5sums = 60d1442be32c3c5b87b7a9cea8e1c24a
+
+pkgname = mbrola-voices-hu1
+
