@@ -1,0 +1,16 @@
+pkgbase = fileteasend-git
+	pkgdesc = Easy file transfer using FileTea service, CLI interface
+	pkgver = 20131219
+	pkgrel = 1
+	url = https://github.com/brechin/FileTeaSend.git
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python2
+	depends = python2-requests
+	source = git+https://github.com/brechin/FileTeaSend.git
+	md5sums = SKIP
+	sha1sums = SKIP
+
+pkgname = fileteasend-git
+
