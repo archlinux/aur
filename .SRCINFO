@@ -1,0 +1,17 @@
+pkgbase = python-pysmell
+	pkgdesc = An autocompletion library for Python
+	pkgver = 0.7.3
+	pkgrel = 4
+	url = http://pypi.python.org/pypi/pysmell
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = setuptools
+	depends = python2
+	optdepends = pymacs: for emacs integration
+	optdepends = vim: for vim integration
+	source = http://pypi.python.org/packages/source/p/pysmell/pysmell-0.7.3.zip
+	md5sums = 4161fa810a8e7147a35a94abfb28d9cd
+
+pkgname = python-pysmell
+
