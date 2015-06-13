@@ -1,4 +1,4 @@
-# Maintainer: Denis Kasak <reversed(moc.liamg@kasak.sined)>
+# Maintainer: Denis Kasak <dkasak|AT|termina.org.uk>
 
 pkgname=ttf-inconsolata-dz
 pkgver=20091202
