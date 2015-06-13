@@ -1,0 +1,18 @@
+# -*- sh -*-
+__inst_depmod()
+{
+    EXTRAMODULES='extramodules-4.0-pf'
+    depmod $(cat /usr/lib/modules/${EXTRAMODULES}/version)
+}
+post_install() {
+    __inst_depmod
+    echo 'In order to use nvidia module, reboot the system.'
+}
+
+post_upgrade() {
+    __inst_depmod
+}
+
+post_remove() {
+    __inst_depmod
+}
