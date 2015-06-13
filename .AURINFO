@@ -1,0 +1,16 @@
+pkgbase = perl-daemon-generic
+	pkgdesc = framework to provide start/stop/reload for a daemon
+	pkgver = 0.84
+	pkgrel = 2
+	url = http://search.cpan.org/dist/Daemon-Generic
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-file-flock>=2013.06
+	depends = perl-file-slurp
+	source = http://search.cpan.org/CPAN/authors/id/M/MU/MUIR/modules/Daemon-Generic-0.84.tar.gz
+	options = !emptydirs
+
+pkgname = perl-daemon-generic
+
