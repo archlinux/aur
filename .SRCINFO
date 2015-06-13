@@ -1,0 +1,26 @@
+pkgbase = areca
+	pkgdesc = Personal file backup software supporting compression, encryption and incremental backups.
+	pkgver = 7.4.9
+	pkgrel = 2
+	url = http://www.areca-backup.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = apache-ant
+	depends = java-runtime
+	depends = swt
+	source = http://sourceforge.net/projects/areca/files/areca-stable/areca-7.4.9/areca-7.4.9-src.tar.gz
+	source = areca.sh
+	source = areca_cl.sh
+	source = areca_decrypt.sh
+	source = areca_dezip.sh
+	source = areca.desktop
+	md5sums = 7788151e36daa015a4f0ad99b7e9e0c0
+	md5sums = 024e3fe74c518a9dee889f3ea1ff9f71
+	md5sums = 662d65e44fe0806cff69850dae55f107
+	md5sums = 8e0088445454ab80a9f04c84b3363814
+	md5sums = 2f1bd15c94600065c43366f440cc0c37
+	md5sums = 5e978edc20d715cefec098e3e77a3721
+
+pkgname = areca
+
