@@ -1,0 +1,15 @@
+pkgbase = celestia-addon-xwing
+	pkgdesc = Celestia addon: Fictional: Star Wars: X-Wing
+	pkgver = 1
+	pkgrel = 2
+	url = http://www.celestiamotherlode.net/catalog/show_addon_details.php?addon_id=154
+	arch = any
+	license = unknown, free
+	makedepends = unzip
+	depends = celestia
+	depends = celestia-addon-tatooine_endor_deathstar
+	source = http://celestiamotherlode.net/creators/jestr/SW-X-wing.zip
+	md5sums = e44fb103d654a50446fbb6e37ab5eb0c
+
+pkgname = celestia-addon-xwing
+
