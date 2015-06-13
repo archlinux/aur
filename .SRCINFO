@@ -1,0 +1,19 @@
+pkgbase = pygtk-object-browser
+	pkgdesc = Browse and inspect gtk and gdk objects
+	pkgver = 0.9.9
+	pkgrel = 1
+	url = http://code.google.com/p/pygtk-object-browser/
+	install = pygtk-object-browser.install
+	arch = any
+	license = GPL2
+	depends = pygtk
+	depends = xdg-utils
+	source = http://pygtk-object-browser.googlecode.com/svn/trunk/releases/PyGtkObjectBrowser-0.9.9.tar.bz2
+	source = pygtk-object-browser.desktop
+	source = pygtk-object-browser.sh
+	md5sums = 76ca6b7f260c4d22ff362a854c7655e0
+	md5sums = 7fb90afaa228f25b62deacbdb5a2a1fe
+	md5sums = 9e1f1a19c5700b726b74aefd255a6bea
+
+pkgname = pygtk-object-browser
+

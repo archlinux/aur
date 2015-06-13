@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Name=PyGTK Object Browser
+Comment=Browse and inspect gtk and gdk objects
+Icon=pygtk-object-browser
+Exec=pygtk-object-browser
