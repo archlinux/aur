@@ -1,0 +1,15 @@
+pkgbase = epub-thumbnailer-git
+	pkgdesc = Creates thumbnail for EPUB files.
+	pkgver = 1.0r39.5d6e2ff
+	pkgrel = 1
+	url = https://github.com/marianosimone/epub-thumbnailer
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python2
+	depends = python2-imaging
+	source = git://github.com/marianosimone/epub-thumbnailer.git
+	md5sums = SKIP
+
+pkgname = epub-thumbnailer-git
+
