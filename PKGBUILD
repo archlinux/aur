@@ -1,4 +1,4 @@
-# Maintainer: Denis Kasak <reversed(moc.liamg@kasak.sined)>
+# Maintainer: Denis Kasak <dkasak|AT|termina.org.uk>
 # Contributor: Hilton Medeiros <medeiros.hilton at gmail tod com>
 # Contributor: Tony Dodd <arch@recalcitrance.net>
 # Contributor: Mark Taylor <skymt0@gmail.com>
