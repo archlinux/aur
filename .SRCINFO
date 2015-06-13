@@ -1,0 +1,17 @@
+pkgbase = wuala-daemon
+	pkgdesc = Run wuala as daemon. Needs wuala installed.
+	pkgver = 20140719
+	pkgrel = 1
+	url = http://www.wuala.com/
+	install = wualad.install
+	arch = any
+	license = WTFPL
+	depends = wuala
+	backup = etc/conf.d/wualad
+	source = wualad.conf
+	source = wuala.service
+	md5sums = 1a9172cd02d468f80e74f6d7e3b76b6c
+	md5sums = 446a111e8440877096137cc90211950f
+
+pkgname = wuala-daemon
+

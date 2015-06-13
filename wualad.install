@@ -1,0 +1,16 @@
+
+post_install() {
+	echo
+	echo "Your Linux username Wuala will be started with: "
+	read linux_user;
+	linux_group=`id -gn $linux_user`
+	chown $linux_user:$linux_group /etc/conf.d/wualad
+	sed -i "s/_LinuxLoginName/$linux_user/g" /etc/conf.d/wualad
+	echo
+	echo Wuala daemon relies on autologin, so please login to Wuala once and enable autologin.
+	echo Done installing wuala-daemon.
+}
+
+post_upgrade() {
+  post_install $1
+}

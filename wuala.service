@@ -1,0 +1,11 @@
+[Unit]
+Description=Wuala as service
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/conf.d/wualad
+ExecStart=/usr/bin/su --command "wualacmd" $LinuxLoginName
+ExecStop=/usr/bin/su --command "wualacmd shutdown" $LinuxLoginName
+
+[Install]
+WantedBy=multi-user.target
