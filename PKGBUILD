@@ -42,6 +42,7 @@ md5sums=('33c8fb279e981274f485fd91da77e94a'
          'SKIP'
          'ee1c04072154826870848d8b218d7b04'
          'SKIP')
+validpgpkeys=(7C0135FB088AAF6C66C650B9BB5869F064EA74AB)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
