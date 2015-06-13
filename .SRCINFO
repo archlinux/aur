@@ -1,0 +1,25 @@
+pkgbase = worldofpadman
+	pkgdesc = Cartoon-style multiplayer first-person shooter
+	pkgver = 1.6
+	pkgrel = 4
+	url = http://www.worldofpadman.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom
+	makedepends = unzip
+	depends = curl
+	depends = libogg
+	depends = libvorbis
+	depends = mesa
+	depends = openal
+	depends = sdl
+	source = worldofpadman.desktop
+	source = wop-1.5-unified.zip::http://downloads.sourceforge.net/project/worldofpadman/wop-1.5-unified.zip
+	source = wop-1.5.x-to-1.6-patch-unified.zip::http://downloads.sourceforge.net/project/worldofpadman/wop-1.5.x-to-1.6-patch-unified.zip
+	md5sums = 30a9fe2dfa9362a2ef9266fd37e9461c
+	md5sums = 8871affc2a36f23aa22044454c834923
+	md5sums = 86ab95804ec6b1f0c81078f083c0fcda
+
+pkgname = worldofpadman
+
