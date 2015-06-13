@@ -1,0 +1,21 @@
+pkgbase = mingw-w64-qt5-3d-git
+	pkgdesc = Qt5 for Windows -- Qt3d module (mingw-w64)
+	pkgver = 5.0.0.beta1.84.g8a9723d
+	pkgrel = 1
+	url = http://qt-project.org/
+	arch = any
+	license = GPL3
+	license = LGPL
+	makedepends = mingw-w64-gcc
+	makedepends = git
+	depends = mingw-w64-qt5-base
+	depends = mingw-w64-qt5-declarative
+	depends = mingw-w64-qt5-quick1
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = git://gitorious.org/qt/qt3d.git
+	sha256sums = SKIP
+
+pkgname = mingw-w64-qt5-3d-git
+
