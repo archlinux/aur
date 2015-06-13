@@ -1,0 +1,29 @@
+pkgbase = python2-pynio
+	pkgdesc = PyNIO is a Python programming language module that allows read and/or write access to a variety of data formats using an interface modelled on netCDF.
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = http://www.pyngl.ucar.edu/Nio.shtml
+	arch = i686
+	arch = x86_64
+	license = custom:PyNIO Source Code License
+	makedepends = glibc
+	makedepends = gcc
+	makedepends = gcc-fortran
+	makedepends = libjpeg
+	makedepends = jasper
+	makedepends = zlib
+	makedepends = unzip
+	depends = netcdf
+	depends = hdf5
+	depends = hdf-eos2
+	depends = hdf-eos5
+	depends = hdf4-nonetcdf
+	depends = python2
+	depends = g2clib
+	depends = gdal
+	provides = pynio
+	source = http://dl.dropbox.com/u/3383807/PyNIO-1.4.1.tar.gz
+	md5sums = eec7b6b7ed960de253632d0636d0cc2d
+
+pkgname = python2-pynio
+
