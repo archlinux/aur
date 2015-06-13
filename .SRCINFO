@@ -1,0 +1,17 @@
+pkgbase = gnumeric-pure
+	pkgdesc = A Gnumeric extension which lets you use Pure functions in Gnumeric, the Gnome spreadsheet.
+	pkgver = 0.14
+	pkgrel = 1
+	url = http://docs.pure-lang.googlecode.com/hg/pd-pure.html
+	arch = i686
+	arch = x86_64
+	groups = pure-complete
+	groups = pure-math
+	license = custom
+	depends = gnumeric>=1.12.4
+	depends = pure
+	source = https://bitbucket.org/purelang/pure-lang/downloads/gnumeric-pure-0.14.tar.gz
+	md5sums = ce6b29eec4ea1d2319b77137f09a367a
+
+pkgname = gnumeric-pure
+
