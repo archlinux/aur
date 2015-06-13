@@ -1,0 +1,11 @@
+--- notification-daemon-0.4.0.orig/src/daemon/Makefile.am	2012-08-14 18:48:46.188596766 +0300
++++ notification-daemon-0.4.0/src/daemon/Makefile.am	2012-08-14 18:49:02.088077812 +0300
+@@ -10,7 +10,7 @@
+ 	sound.c \
+ 	sound.h
+ 
+-notification_daemon_LDADD = $(NOTIFICATION_DAEMON_LIBS) $(GSTREAMER_LIBS)
++notification_daemon_LDADD = $(NOTIFICATION_DAEMON_LIBS) $(GSTREAMER_LIBS) -lX11
+ 
+ BUILT_SOURCES = notificationdaemon-dbus-glue.h
+ 

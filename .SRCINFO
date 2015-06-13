@@ -1,0 +1,30 @@
+pkgbase = notification-daemon-engine-ubuntu
+	pkgdesc = Ubuntu engine for notification-daemon (from Ubuntu patches)
+	pkgver = 0.4.0
+	pkgrel = 4
+	url = http://www.galago-project.org/specs/notification/
+	install = notification-daemon-engine-ubuntu.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	makedepends = gnome-common
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	makedepends = intltool
+	depends = notification-daemon>=0.4
+	depends = libsexy
+	options = !libtool
+	options = !emptydirs
+	source = http://www.galago-project.org/files/releases/source/notification-daemon/notification-daemon-0.4.0.tar.bz2
+	source = ubuntu_theme.patch
+	source = libnotify.patch
+	source = fix_makefile.patch
+	md5sums = e61eff9782551d81045bb53e8a801d58
+	md5sums = 667a4255630bc9f3cfefcf1ecef56fd0
+	md5sums = febf7bd932394b4131da4f4316bde266
+	md5sums = 5e04d7e67628fa4e999ee7105a2c1715
+
+pkgname = notification-daemon-engine-ubuntu
+

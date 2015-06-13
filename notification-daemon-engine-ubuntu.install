@@ -1,0 +1,15 @@
+post_install() {
+    echo ">"
+    echo "> Run 'gconftool-2 -s /apps/notification-daemon/theme -t string ubuntu' for setting ubuntu theme"
+    echo "> or use notification-properties for a GUI."
+    echo ">"
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+op=$1
+shift
+
+$op $*

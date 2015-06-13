@@ -1,0 +1,12 @@
+--- notification-daemon-0.4.0.orig/src/capplet/notification-properties.c	2008-11-20 12:46:16.000000000 +0200
++++ notification-daemon-0.4.0/src/capplet/notification-properties.c	2011-09-11 00:04:29.000000000 +0300
+@@ -434,8 +434,7 @@
+ 
+ 	dialog->preview = notify_notification_new(_("Notification Test"),
+ 											  _("Just a test"),
+-											  "gnome-util",
+-											  NULL);
++											  "gnome-util");
+ 
+ 	if (!notify_notification_show(dialog->preview, &error))
+ 	{
