@@ -1,0 +1,15 @@
+[Unit]
+Description=CherryMusic server
+Requires=network.target
+After=network.target
+
+[Service]
+User=%I
+Type=simple
+ExecStart=/usr/bin/cherrymusic
+StandardOutput=null
+PrivateTmp=true
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

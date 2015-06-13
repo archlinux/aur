@@ -1,0 +1,20 @@
+# arg 1:  the new package version
+post_install() {
+  echo 'NOTE: On first startup CherryMusic generates the file'
+  echo '      "$XDG_CONFIG_HOME/cherrymusic/cherrymusic.conf" and exits. Edit this file'
+  echo '      and restart CherryMusic.'
+  echo '      Alternatively, start CherryMusic with the "--setup --port 8080" switch on'
+  echo '      first startup. This will walk you throught the most important'
+  echo '      configuration options in your web browser, when you open "localhost:8080".'
+  echo '      Please only use the provided systemd service file _after_ you started'
+  echo '      CherryMusic once manually with one of the methods above, so that the'
+  echo '      configuration files will be created and CherryMusic is set up properly.'
+  echo '      '
+  echo 'NOTE: This PKGBUILD provides a systemd service file. To start CherryMusic'
+  echo '      immediately and on boot using systemd, do (as root user):'
+  echo '      systemctl start cherrymusic@USER.service \ '
+  echo '      && systemctl enable cherrymusic@USER.service'
+  echo '      Where "USER" is the user that should run CherryMusic (do not use root!).'
+}
+
+# vim:set ts=2 sw=2 et:

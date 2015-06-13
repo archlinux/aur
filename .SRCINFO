@@ -1,0 +1,31 @@
+pkgbase = cherrymusic
+	pkgdesc = A standalone HTML5 (with Flash fallback) music streaming server based on CherryPy and jPlayer.
+	pkgver = 0.35.2
+	pkgrel = 1
+	url = http://fomori.org/cherrymusic
+	install = cherrymusic.install
+	arch = any
+	license = GPL3
+	makedepends = python
+	depends = python>=3
+	depends = python-cherrypy>=3
+	depends = sqlite>=3
+	optdepends = python3-stagger-svn
+	optdepends = lame
+	optdepends = vorbis-tools
+	optdepends = flac
+	optdepends = faad2
+	optdepends = mpg123
+	optdepends = opus-tools
+	optdepends = ffmpeg
+	optdepends = imagemagick
+	optdepends = python-unidecode
+	optdepends = python-gobject
+	options = !emptydirs
+	source = cherrymusic-0.35.2.tar.gz::https://github.com/devsnd/cherrymusic/archive/0.35.2.tar.gz
+	source = cherrymusic@.service
+	sha512sums = 220f24a4b3344e0fe3d383cb809cf6e0c3e6b6fd2716f09b9c1165cb26e051ad416d91ade8566a6f90adbb501bdcb55e65f6f56de4e6529ffcc98654dc3713cf
+	sha512sums = 9d336a06492df0bb5718848f161895922d08171ab637b54fffad42fc5c12cd22d00f2408dabffc3617f0a59512276e38553f1c63a0ea68028982076b7f115165
+
+pkgname = cherrymusic
+
