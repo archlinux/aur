@@ -1,0 +1,25 @@
+From 4d1cb9ae3b29749929b690af6eaa23ffac488cf8 Mon Sep 17 00:00:00 2001
+From: Sven Schober <sven.schober@uni-ulm.de>
+Date: Mon, 12 Aug 2013 09:36:18 +0200
+Subject: [PATCH] fix loader3 location
+
+---
+ wuala | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/wuala b/wuala
+index be1825a..9dc6385 100755
+--- a/wuala
++++ b/wuala
+@@ -17,7 +17,7 @@ function launchWuala() {
+   fi
+   echo $JAVA
+   pushd "$(dirname $0)" > /dev/null
+-  $JAVA -ea -Xmx$MAX_HEAP_SIZE -Djava.net.preferIPv4Stack=true -jar loader3.jar -installed "$@"
++  $JAVA -ea -Xmx$MAX_HEAP_SIZE -Djava.net.preferIPv4Stack=true -jar /usr/share/java/wuala/loader3.jar -installed "$@"
+   popd > /dev/null
+ }
+ 
+-- 
+1.8.3.4
+

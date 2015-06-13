@@ -1,0 +1,25 @@
+pkgbase = wuala
+	pkgdesc = A new way of storing, sharing and publishing files on the Internet. It's free, simple and secure.
+	pkgver = 1
+	pkgrel = 20150323
+	epoch = 1
+	url = http://www.wuala.com/
+	arch = any
+	license = custom
+	depends = java-runtime
+	depends = rpcbind
+	depends = nfs-utils
+	options = !emptydirs
+	source = http://cdn.wuala.com/repo/other/wuala.tar.gz
+	source = 0001-fix-loader3-location.patch
+	source = wuala.png
+	source = wuala.desktop
+	source = LICENSE
+	md5sums = 91192a3bc4d345a034b86e2fe95d3dd7
+	md5sums = 37f5021c623c4b2fcad6d274a05de0dd
+	md5sums = 5c0d0ec01eaa7075fc7e3197d2a0a2ee
+	md5sums = 6073b5fdda17ab8b423bde329adfa80f
+	md5sums = 1085f1b2c391b8c72cb4b53b15191336
+
+pkgname = wuala
+
