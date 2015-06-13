@@ -1,0 +1,19 @@
+pkgbase = kdeplasma-applets-embed-win-svn
+	pkgdesc = Displays any application in a plasmoid window.
+	pkgver = 1348299
+	pkgrel = 1
+	url = http://ksvladimir.blogspot.com/2008/06/converting-any-window-into-plasmoid.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = gcc>=4.*
+	makedepends = automoc4
+	makedepends = subversion
+	depends = kdelibs
+	depends = kdebase-workspace
+	source = svn://anonsvn.kde.org/home/kde/trunk/playground/base/plasma/applets/embed-win
+	md5sums = SKIP
+
+pkgname = kdeplasma-applets-embed-win-svn
+
