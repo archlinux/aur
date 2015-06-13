@@ -1,0 +1,16 @@
+pkgbase = qtrans
+	pkgdesc = QTrans is a word translator for KDE4. It uses Babylon (*.dic) dictionaries and translates many languages.
+	pkgver = 0.2.2.6
+	pkgrel = 2
+	url = http://www.kde-apps.org/content/show.php/QTrans?content=74876
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdebase-runtime
+	source = http://www.kde-apps.org/CONTENT/content-files/74876-qtrans-0.2.2.6.tar.gz
+	md5sums = 403742e73f9c95d75314a73a820cee45
+
+pkgname = qtrans
+
