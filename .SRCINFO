@@ -1,0 +1,15 @@
+pkgbase = qodem
+	pkgdesc = A re-implementation of the DOS-era Qmodem serial communications package.
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = http://qodem.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	depends = libx11
+	source = http://downloads.sourceforge.net/project/qodem/qodem/0.3.2/qodem-0.3.2.tar.gz
+	md5sums = 36f0effbde999f7138eb94d773c0412d
+
+pkgname = qodem
+
