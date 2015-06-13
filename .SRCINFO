@@ -1,0 +1,18 @@
+pkgbase = vala0.12
+	pkgdesc = Compiler for the GObject type system - version 0.12
+	pkgver = 0.12.1
+	pkgrel = 1
+	url = http://live.gnome.org/Vala
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	checkdepends = libx11
+	makedepends = gobject-introspection
+	makedepends = libxslt
+	depends = glib2
+	options = !libtool
+	source = http://ftp.gnome.org/pub/gnome/sources/vala/0.12/vala-0.12.1.tar.xz
+	sha512sums = 7f783aaf5b5a39f6d9d425a6c0ced10451454a7bc975c019dcbba83ea7c0cf381fc5647d3ac8dc5b3f94f611185ec7a30337c53ab68641513ba7c5bae31f7a0f
+
+pkgname = vala0.12
+
