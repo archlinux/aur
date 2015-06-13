@@ -1,0 +1,17 @@
+pkgbase = pure-midi
+	pkgdesc = MIDI interface for pure.
+	pkgver = 0.6
+	pkgrel = 1
+	url = http://purelang.bitbucket.org/
+	arch = i686
+	arch = x86_64
+	groups = pure-complete
+	groups = pure-multimedia
+	license = BSD
+	depends = pure
+	depends = portmidi
+	source = https://bitbucket.org/purelang/pure-lang/downloads/pure-midi-0.6.tar.gz
+	md5sums = 6cf29d69499d3fc5056294b92b9f8d24
+
+pkgname = pure-midi
+
