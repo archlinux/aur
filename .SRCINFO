@@ -1,0 +1,21 @@
+pkgbase = hdf-eos5
+	pkgdesc = The HDF-EOS5 is a software library designed built on HDF5 to support the same Grid/Point/Swath functionality in HDF-EOS 2 and to the extent possible it will be built with the same calling sequences as the original HDF-EOS 2 library.
+	pkgver = 1.15
+	pkgrel = 3
+	url = http://www.hdfeos.org/software/library.php
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = szip
+	depends = hdf5
+	depends = gdal
+	depends = hdf-eos-common
+	options = libtool
+	options = staticlibs
+	source = ftp://edhs1.gsfc.nasa.gov/edhs/hdfeos5/latest_release/HDF-EOS5.1.15.tar.Z
+	source = patches.tar.gz
+	md5sums = 5d607a13dd42e559bfc90e278a8ec919
+	md5sums = 0d0285e6f81f24a961adf9d9f84973ce
+
+pkgname = hdf-eos5
+
