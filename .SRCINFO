@@ -1,0 +1,16 @@
+pkgbase = mbrola-voices-pt1
+	pkgdesc = An European Portuguese female voice for the MBROLA synthesizer
+	pkgver = 000509
+	pkgrel = 3
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-pt
+	groups = mbrola-voices
+	groups = gespeaker-mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/pt1/pt1-000509.zip
+	md5sums = 99f6f1299403ba85438a883470aa0b02
+
+pkgname = mbrola-voices-pt1
+
