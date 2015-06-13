@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=IBM i Access Client Solutions
+Type=Application
+Exec=iacs
+Icon=iacs
+Hidden=false
+Categories=Java;Network;Office;TerminalEmulator;FileTransfer;Viewer;
+Keywords=IBM;iseries;as400;emulator;5250;telnet;printer;solutions

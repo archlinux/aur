@@ -1,0 +1,23 @@
+pkgbase = iacs
+	pkgdesc = IBM i Access Client Solutions provides a Java based, platform-independent interface for IBM iAccess/iSeries (formerly known as AS400).
+	pkgver = 1.1.4.5161
+	pkgrel = 1
+	url = http://www.ibm.com/systems/power/software/i/access/solutions.html
+	install = iacs.install
+	arch = any
+	license = custom
+	depends = java-runtime
+	depends = gtk-update-icon-cache
+	source = ftp://ftp.software.ibm.com/as400/products/clientaccess/solutions/updates/IBMiAccess_v1r1m4_Update1.zip
+	source = ftp://ftp.software.ibm.com/as400/products/clientaccess/solutions/updates/Readme.txt
+	source = ftp://ftp.software.ibm.com/as400/products/clientaccess/solutions/GettingStarted_en.html
+	source = iacs
+	source = iacs.desktop
+	sha256sums = 50879a348c4a7cf785b025a8b29a7cfd59da37f63e19c7bb7bea8f0564a3629f
+	sha256sums = 00d05d6cf50e08e030710e0e219d09ce941b0168a4a424ee2bb9ff742344db7b
+	sha256sums = 60a55eb0929b63f9be28fdb813c1e76dac04c8a77a11b769a07138d568894108
+	sha256sums = ab45ad56ae32d11ad8372c5313db3cfe810551fe84cfa093a677ca423ad51ab2
+	sha256sums = 282ac5df2bd9db62e7684ea05ab249379b3cdc8776983d71a55956de85e79128
+
+pkgname = iacs
+
