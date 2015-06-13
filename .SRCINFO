@@ -1,0 +1,13 @@
+pkgbase = weather
+	pkgdesc = CLI tool which shows weather forecasts from METAR data
+	pkgver = 2.0
+	pkgrel = 2
+	url = http://fungi.yuggoth.org/weather/
+	arch = any
+	license = custom:BSD2
+	depends = python2
+	source = http://fungi.yuggoth.org/weather/src/weather-2.0.tar.gz
+	md5sums = be49f38f2da59dfc4716e2370f029a65
+
+pkgname = weather
+
