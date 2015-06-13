@@ -1,0 +1,17 @@
+pkgbase = hoh
+	pkgdesc = Remake of the 80's 8-bit classic Head over Heels
+	pkgver = 1.01
+	pkgrel = 8
+	url = http://retrospec.sgn.net/game/hoh
+	install = hoh.install
+	arch = any
+	license = freeware
+	license = closed source
+	makedepends = curl
+	source = http://retrospec.sgn.net/games/hoh/bin/hohlin-101.tar.bz2
+	source = http://retrospec.sgn.net/games/hoh/bin/hoh-update-101.tar.bz2
+	md5sums = 927d1a1dee927b5c495bfd39b0458a45
+	md5sums = c63b99a7ec19dfee278801231e9a1ce8
+
+pkgname = hoh
+
