@@ -1,0 +1,15 @@
+pkgbase = freelib
+	pkgdesc = Home library with librusec/flibusta support
+	pkgver = 4.8.2
+	pkgrel = 1
+	url = http://sourceforge.net/projects/freelibdesign/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = freeLib.desktop
+	source = http://sourceforge.net/projects/freelibdesign/files/4.8.2/freeLib4.8.2.tar.gz
+	sha1sums = fe6f56d29dea9a973bf90fec7f0f44fb7b2d8287
+	sha1sums = cc746f3c9d792fc8b56c32eeceffb27087ee949e
+
+pkgname = freelib
+
