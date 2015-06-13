@@ -1,0 +1,12 @@
+pkgbase = poster
+	pkgdesc = Scales or tiles a postscript image to print on multiple pages
+	pkgver = 20060221
+	pkgrel = 1
+	url = http://directory.fsf.org/wiki/Poster
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://download.kde.org/printing/poster.tar.bz2
+
+pkgname = poster
+
