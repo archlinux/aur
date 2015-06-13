@@ -1,0 +1,16 @@
+pkgbase = vmware-ovftool
+	pkgdesc = VMware Open Virtualization Format tool
+	pkgver = 4.1.0.2459827
+	pkgrel = 2
+	url = https://www.vmware.com/support/developer/ovf/
+	arch = i686
+	arch = x86_64
+	license = custom:vmware
+	depends = curl
+	source_i686 = https://dl.dropboxusercontent.com/u/99802211/external_sources/VMware%20OVFTool/VMware-ovftool-4.1.0-2459827-lin.i386.bundle
+	sha256sums_i686 = cd931c83ceac41f9859e5414fafe4717a1d4a49c32b11afdf4f575ac2515eba2
+	source_x86_64 = https://dl.dropboxusercontent.com/u/99802211/external_sources/VMware%20OVFTool/VMware-ovftool-4.1.0-2459827-lin.x86_64.bundle
+	sha256sums_x86_64 = a21ce600f92321a71cde5de1bb947ca9aa62d898c81cefcba4066b756b43993f
+
+pkgname = vmware-ovftool
+
