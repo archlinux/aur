@@ -1,0 +1,13 @@
+pkgbase = outguess
+	pkgdesc = A universal steganographic tool
+	pkgver = 0.2
+	pkgrel = 2
+	url = http://www.outguess.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://ftp.mirrorservice.org/sites/ftp.wiretapped.net/pub/security/steganography/outguess/outguess-0.2.tar.gz
+	md5sums = 321f23dc0badaba4350fa66b59829064
+
+pkgname = outguess
+
