@@ -1,0 +1,14 @@
+pkgbase = eggwm
+	pkgdesc = A simple and light Qt4 WM. 100% compatible with the EWMH and ICCCM standards.
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://code.google.com/p/eggwm/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qt4
+	source = http://eggwm.googlecode.com/files/eggwm-0.2.tar.gz
+	md5sums = 3442e56d9a78a44c349f9e83f15c8eac
+
+pkgname = eggwm
+
