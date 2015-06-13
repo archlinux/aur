@@ -5,8 +5,8 @@
 # Upstream URL: https://github.com/atom/atom
 
 # Please do mind that pkgbuild will automagically update
-# to latest tagged release, there’s no need to manually change pkgver.
-# Please don’t flag out-of-date!
+# to latest tagged release, there's no need to manually change pkgver.
+# Please don't flag out-of-date!
 pkgname=atom-editor-git
 pkgver=0.209.0.r18.g01be252
 pkgrel=2
