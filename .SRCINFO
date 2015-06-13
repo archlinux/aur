@@ -1,0 +1,16 @@
+pkgbase = mbrola-voices-fr1
+	pkgdesc = A French male voice for the MBROLA synthesizer
+	pkgver = 990204
+	pkgrel = 2
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-fr
+	groups = mbrola-voices
+	groups = gespeaker-mbrola-voices
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/fr1/fr1-990204.zip
+	md5sums = 6031c6a97d2a7344e7ae42de294ae00b
+
+pkgname = mbrola-voices-fr1
+
