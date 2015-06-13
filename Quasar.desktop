@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Quasar Accounting
+Comment=Business accounting software
+TryExec=/opt/quasar/bin/quasar
+Exec=/opt/quasar/bin/quasar
+Icon=/opt/quasar/pixmaps/quasar.xpm
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Office;

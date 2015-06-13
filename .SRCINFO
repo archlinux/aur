@@ -1,0 +1,21 @@
+pkgbase = quasar-client
+	pkgdesc = Business accounting software
+	pkgver = 2.2.1
+	pkgrel = 2
+	url = http://www.linuxcanada.com
+	arch = x86_64
+	arch = i686
+	license = Commercial
+	depends = tcl
+	depends = icu52
+	depends = qt3
+	optdepends = polymer: KDE QT style Plastik
+	source = Quasar.desktop
+	md5sums = 5f4ced3487aa7c1d15f4277dc4323ea5
+	source_x86_64 = ftp://linuxcanada.com/pub/Quasar/2.2.1/binaries/x86_64/Kubuntu-14.04/quasar-client_2.2.1-1_amd64.deb
+	md5sums_x86_64 = 0eb96ef652e89be2601aa91aecd3eca1
+	source_i686 = ftp://linuxcanada.com/pub/Quasar/2.2.1/binaries/i386-i586/Kubuntu-14.04/quasar-client_2.2.1-1_i386.deb
+	md5sums_i686 = e202722ce4b7af9a47afcb85a9a51726
+
+pkgname = quasar-client
+
