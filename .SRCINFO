@@ -1,0 +1,15 @@
+pkgbase = an
+	pkgdesc = Anagram Generator
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://alioth.debian.org/projects/anagram/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = words
+	depends = icu
+	source = an-1.2.tar.bz2::http://ftp.debian.org/debian/pool/main/a/an/an_1.2.orig.tar.xz
+	md5sums = 1f3465bfe2cc4458f75a7a42037b475c
+
+pkgname = an
+
