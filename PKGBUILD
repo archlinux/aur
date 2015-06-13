@@ -10,7 +10,7 @@ url='http://www.grpc.io/'
 license=('BSD')
 depends=('openssl' 'protobuf3')
 source=(https://github.com/$pkgname/$pkgname/archive/release-$_pkgver.tar.gz)
-md5sums=('5d5aa48b07e9316d1633eda5c2f61d96')
+md5sums=('0a5c7d44987f6bbfa3b819b4a65bade3')
 
 build() {
   cd $pkgname-release-$_pkgver

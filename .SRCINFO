@@ -9,7 +9,7 @@ pkgbase = grpc
 	depends = openssl
 	depends = protobuf3
 	source = https://github.com/grpc/grpc/archive/release-0_9_1.tar.gz
-	md5sums = 5d5aa48b07e9316d1633eda5c2f61d96
+	md5sums = 0a5c7d44987f6bbfa3b819b4a65bade3
 
 pkgname = grpc
 
