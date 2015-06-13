@@ -1,0 +1,16 @@
+pkgbase = fortunelock
+	pkgdesc = A simple, program to lock a terminal while showing fortunes.
+	pkgver = 0.1.2
+	pkgrel = 3
+	url = http://www.freshports.org/sysutils/fortunelock/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = fortune-mod
+	depends = ncurses
+	depends = glibc
+	source = ftp://ftp.freebsd.org/pub/FreeBSD/ports/local-distfiles/dannyboy/fortunelock-0.1.2.tar.bz2
+	md5sums = 3df38afc59800db77e7cf77b0239a480
+
+pkgname = fortunelock
+
