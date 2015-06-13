@@ -1,0 +1,16 @@
+pkgbase = xfce4-embed-plugin
+	pkgdesc = Plugin that enables embedding of any application window into the Xfce panel.
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = http://goodies.xfce.org/projects/panel-plugins/xfce4-embed-plugin
+	arch = i686
+	arch = x86_64
+	groups = xfce4-goodies
+	license = GPL
+	makedepends = intltool
+	depends = xfce4-panel
+	source = http://archive.xfce.org/src/panel-plugins/xfce4-embed-plugin/1.4/xfce4-embed-plugin-1.4.1.tar.bz2
+	md5sums = 6d1021c0af861241d73971085cde5e52
+
+pkgname = xfce4-embed-plugin
+
