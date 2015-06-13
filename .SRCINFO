@@ -1,0 +1,18 @@
+pkgbase = lua-xonstat-git
+	pkgdesc = Lua client library for the stats.xonotic.org API
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/2ion/lua-xonstat
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = lua
+	depends = lua-socket
+	depends = lua-luajson
+	provides = lua-xonstat
+	conflicts = lua-xonstat
+	source = git+https://github.com/lua-xonstat.git#branch=master
+	md5sums = SKIP
+
+pkgname = lua-xonstat-git
+
