@@ -1,0 +1,16 @@
+pkgbase = pure-sockets
+	pkgdesc = A Pure interface to the Berkeley socket functions.
+	pkgver = 0.7
+	pkgrel = 1
+	url = http://purelang.bitbucket.org/
+	arch = i686
+	arch = x86_64
+	groups = pure-complete
+	groups = pure-util
+	license = GPL3
+	depends = pure
+	source = https://bitbucket.org/purelang/pure-lang/downloads/pure-sockets-0.7.tar.gz
+	md5sums = f123201e0242d0028e441f9b5b3cf5e0
+
+pkgname = pure-sockets
+
