@@ -1,0 +1,15 @@
+pkgbase = opium
+	pkgdesc = pseudopotential generator for density functional theory
+	pkgver = 3.8
+	pkgrel = 1
+	url = http://opium.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = gcc-fortran
+	source = http://downloads.sourceforge.net/project/opium/opium/opium-v3.8/opium-v3.8-src.tgz
+	sha1sums = 9649e79e2393fe35e7575ab31dffd2b1f0437e71
+
+pkgname = opium
+
