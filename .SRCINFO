@@ -1,0 +1,14 @@
+pkgbase = josl
+	pkgdesc = An interpreted, GC'd, dynamic, modern and practical stack based language.
+	pkgver = 0.5.6
+	pkgrel = 1
+	url = https://web.archive.org/web/20121022001053/http://www.josl.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glibc
+	source = http://www.josl.org/releases/josl-0.5.6.tar.gz
+	md5sums = dc777715c8b7f5c484be197dcad8f5c0
+
+pkgname = josl
+
