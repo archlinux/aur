@@ -1,0 +1,8 @@
+[Desktop Entry]
+Exec=/usr/lib/jvm/java-7-jre/jre/bin/policytool
+Icon=sun-java-jre7
+Name=Java 7 Policy Settings
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Settings;Java;
