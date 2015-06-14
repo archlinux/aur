@@ -1,0 +1,9 @@
+[Desktop Entry]
+Exec=/usr/lib32/jvm/java32-6-jdk/bin/jvisualvm
+GenericName=Java 6 Monitoring and Performance Monitoring Tool (32-bit)
+Icon=sun-java32-jdk6
+Name=Java 6 VisualVM (32-bit)
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Development;Java;

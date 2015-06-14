@@ -1,0 +1,8 @@
+[Desktop Entry]
+Exec=/usr/lib32/jvm/java32-6-jdk/bin/jmc
+Icon=sun-java32-jdk6
+Name=Java 6 Mission Control (32-bit)
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Development;Java;

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Exec=/usr/lib32/jvm/java32-6-jdk/jre/bin/policytool
+Icon=sun-java32-jdk6
+Name=Java 6 Policy Settings (32-bit)
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Settings;Java;
