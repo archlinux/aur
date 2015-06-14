@@ -1,0 +1,23 @@
+pkgbase = perl-cpan-testers-report
+	pkgdesc = CPAN::Testers::Report - CPAN Testers report object
+	pkgver = 1.999002
+	pkgrel = 1
+	url = http://search.cpan.org/dist/CPAN-Testers-Report/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-metabase-fact
+	depends = perl-metabase-fact
+	provides = perl-cpan-testers-fact-installedmodules
+	provides = perl-cpan-testers-fact-legacyreport
+	provides = perl-cpan-testers-fact-perlconfig
+	provides = perl-cpan-testers-fact-prereqs
+	provides = perl-cpan-testers-fact-testenvironment
+	provides = perl-cpan-testers-fact-testoutput
+	provides = perl-cpan-testers-fact-testsummary
+	provides = perl-cpan-testers-fact-testercomment
+	source = http://search.cpan.org/CPAN/authors/id/D/DA/DAGOLDEN/CPAN-Testers-Report-1.999002.tar.gz
+	options = !emptydirs
+
+pkgname = perl-cpan-testers-report
+
