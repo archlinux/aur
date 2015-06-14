@@ -1,0 +1,14 @@
+pkgbase = bike4win
+	pkgdesc = Free daily cycle in which the parameters can save routes traveled by bicycle.
+	pkgver = 5.04.005
+	pkgrel = 2
+	url = http://www.bike4win.pl
+	install = bike4win.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt4
+	options = !strip
+
+pkgname = bike4win
+
