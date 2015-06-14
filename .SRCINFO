@@ -1,6 +1,6 @@
 pkgbase = gitary-git
 	pkgdesc = A diary using git as its backend
-	pkgver = 13.10
+	pkgver = 15.03
 	pkgrel = 1
 	url = http://www.uninformativ.de/projects/?q=gitary
 	arch = any
