@@ -1,6 +1,6 @@
 --- src/setup.py.orig	2014-11-16 10:34:05.521441703 +0100
 +++ src/setup.py	2014-11-16 10:34:16.054812569 +0100
-@@ -581,20 +581,6 @@
+@@ -585,19 +585,6 @@
  
  
  #########################################################
@@ -16,8 +16,7 @@
 -    clean_install_dir(output_dir, python_packages, python_modules, ext_modules)
 -print('Finished cleaning, time: %.2f seconds.' % (time.time() - t))
 -
--
 -#########################################################
- ### Distutils
+ ### Extra files to install
  #########################################################
  

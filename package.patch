@@ -1,11 +1,11 @@
 --- src/sage/misc/package.py.orig	2014-11-23 15:58:13.000000000 +0100
 +++ src/sage/misc/package.py	2015-01-22 20:32:25.651383902 +0100
-@@ -194,7 +194,7 @@
-         sage: is_package_installed('sage')
-         True
+@@ -204,7 +204,7 @@
+     Otherwise, installing "pillow" will cause this function to think
+     that "pil" is installed, for example.
      """
--    return any(p.startswith(package) for p in install_package())
+-    return any(p.split('-')[0] == package for p in install_package())
 +    return True
  
- def standard_packages():
-     """
+ def package_versions(package_type, local=False):
+     r"""

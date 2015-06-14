@@ -1,22 +1,26 @@
 --- src/sage/env.py.orig	2014-06-25 10:47:25.827203554 +1200
 +++ src/sage/env.py	2014-06-25 10:49:07.667402821 +1200
-@@ -86,21 +86,18 @@
+@@ -87,24 +87,21 @@
  _add_variable_or_fallback('LOCAL_IDENTIFIER','$HOSTNAME.%s'%os.getpid())
  
  # bunch of sage directories and files
 -_add_variable_or_fallback('SAGE_ROOT',       None)
 -_add_variable_or_fallback('SAGE_LOCAL',      opj('$SAGE_ROOT', 'local'))
 -_add_variable_or_fallback('SAGE_ETC',        opj('$SAGE_LOCAL', 'etc'))
+-_add_variable_or_fallback('SAGE_INC',        opj('$SAGE_LOCAL', 'include'))
 -_add_variable_or_fallback('SAGE_SHARE',      opj('$SAGE_LOCAL', 'share'))
 +_add_variable_or_fallback('SAGE_ROOT',       '/usr')
 +_add_variable_or_fallback('SAGE_LOCAL',      '/usr')
 +_add_variable_or_fallback('SAGE_ETC',        '/etc/sage')
++_add_variable_or_fallback('SAGE_INC',        opj('$SAGE_LOCAL', 'include', 'sage'))
 +_add_variable_or_fallback('SAGE_SHARE',      opj('$SAGE_LOCAL', 'share', 'sage'))
  
  _add_variable_or_fallback('SAGE_SRC',        opj('$SAGE_ROOT', 'src'))
 -_add_variable_or_fallback('SITE_PACKAGES',   site.getsitepackages())
 +_add_variable_or_fallback('SITE_PACKAGES',   site.getsitepackages()+['/usr/lib/sage/site-packages'])
  _add_variable_or_fallback('SAGE_LIB',        SITE_PACKAGES[0])
+ 
+ _add_variable_or_fallback('SAGE_CYTHONIZED', opj('$SAGE_SRC', 'build', 'cythonized'))
  
 -_add_variable_or_fallback('SAGE_EXTCODE',    opj('$SAGE_SHARE', 'sage', 'ext'))
 -_add_variable_or_fallback('SAGE_LOGS',       opj('$SAGE_ROOT', 'logs', 'pkgs'))
