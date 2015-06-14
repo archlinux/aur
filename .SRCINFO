@@ -1,6 +1,6 @@
 pkgbase = fakepkg
 	pkgdesc = A tool to reassemble installed packages from its deliverd files. It comes in handy if there is no internet connection available and you have no access to an up-to-date package cache.
-	pkgver = 1.01.0
+	pkgver = 1.21.0
 	pkgrel = 1
 	url = https://github.com/Edenhofer/bin
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = fakepkg
 	depends = pacman
 	depends = tar
 	depends = gzip
+	depends = parallel
 	source = https://raw.githubusercontent.com/Edenhofer/bin/master/fakepkg
 	md5sums = SKIP
 
