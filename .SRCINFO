@@ -1,0 +1,17 @@
+pkgbase = quake3-rally
+	pkgdesc = A car driving and car combat mod for Quake III Arena/OpenArena
+	pkgver = 1.33
+	pkgrel = 1
+	url = http://www.moddb.com/mods/quake-3-rally
+	arch = any
+	license = unknown
+	makedepends = unrar
+	depends = quake3
+	noextract = q3rally_v132.rar
+	source = http://ioquake3.org/files/mods/q3rally_v132.rar
+	source = http://media1.gamefront.com/moddb/2010/02/01/qvms.7z
+	sha256sums = 89cc44cad536af96c84acb4f3286accc4e143169991e69474aca8bd6ea592f2a
+	sha256sums = 11ac74670b094c065903b62faea76b0d861990e630ea3044cc5b1c397109f151
+
+pkgname = quake3-rally
+
