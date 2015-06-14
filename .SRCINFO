@@ -1,0 +1,15 @@
+pkgbase = ruby-hiera-puppet
+	pkgdesc = Puppet query interface and backend for Hiera
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/puppetlabs/hiera-puppet
+	arch = any
+	depends = ruby
+	depends = ruby-hiera-1
+	noextract = hiera-puppet-1.0.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/hiera-puppet-1.0.0.gem
+	sha512sums = 026360185ed6c172713a543ab8296d835d878487dc74533edd038c7c7fd6211dc9fa3edd6abba6e3aff9ceb5f8ce5d5228f599c3b4546c51758e73fbcf1f531f
+
+pkgname = ruby-hiera-puppet
+
