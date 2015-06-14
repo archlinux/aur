@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Thunderbird - Safe Mode (Mercurial version)
+Comment=Read Mail & News in Safe Mode (Mercurial version)
+GenericName=Mail Client & News Reader - Safe Mode (Mercurial version)
+Exec=thunderbird-hg -safe-mode %u
+Icon=thunderbird-hg
+Terminal=false
+Type=Application
+Categories=Network;Email;
+MimeType=message/rfc822;x-scheme-handler/mailto;
+StartupNotify=true
