@@ -1,4 +1,4 @@
-# Maintainer: Babets
+# Maintainer: fbabetto
 
 pkgname=perl-template-plugin-multimarkdown
 pkgver=0.12
