@@ -1,0 +1,14 @@
+pkgbase = python-bcm2835-git
+	pkgdesc = Python wrapper for the bcm2835 library
+	pkgver = r8.cfce6e0
+	pkgrel = 1
+	url = https://github.com/rpodgorny/PyBCM2835
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python
+	source = git+https://github.com/rpodgorny/PyBCM2835
+	md5sums = SKIP
+
+pkgname = python-bcm2835-git
+
