@@ -3,7 +3,7 @@
 _pkgname=fs-uae
 pkgname=fs-uae-devel
 pkgver=2.5.32dev
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform Amiga emulator based on UAE/WinUAE (development version)."
 arch=("i686" "x86_64")
 url="http://fs-uae.net/download-devel"

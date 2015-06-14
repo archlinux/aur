@@ -1,5 +1,6 @@
 post_install() {
   xdg-icon-resource forceupdate --theme hicolor
+  update-mime-database usr/share/mime &> /dev/null
 }
 
 post_upgrade() {
