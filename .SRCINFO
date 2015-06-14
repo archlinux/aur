@@ -1,0 +1,17 @@
+pkgbase = perl-perl6-export
+	pkgdesc = Perl6::Export - Implements the Perl 6 'is export(...)' trait
+	pkgver = 0.07
+	pkgrel = 2
+	url = http://search.cpan.org/~dconway/Perl6-Export/
+	arch = any
+	groups = perl6
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DC/DCONWAY/Perl6-Export-0.07.tar.gz
+	md5sums = cd44b18fd589cee60aca6cfbe58f9c2e
+
+pkgname = perl-perl6-export
+
