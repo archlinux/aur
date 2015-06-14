@@ -1,0 +1,16 @@
+pkgbase = xproto-git
+	pkgdesc = X11 core wire protocol and auxiliary headers - Git version
+	pkgver = 7.0.27.1.r246.g70cf8ac
+	pkgrel = 1
+	url = http://cgit.freedesktop.org/xorg/proto/xproto/
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = xorg-util-macros
+	provides = xproto=7.0.27.1.r246.g70cf8ac
+	conflicts = xproto
+	source = git://anongit.freedesktop.org/xorg/proto/xproto
+	md5sums = SKIP
+
+pkgname = xproto-git
+
