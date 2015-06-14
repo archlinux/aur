@@ -1,0 +1,27 @@
+pkgbase = rutorrent
+	pkgdesc = Yet another web front-end for rTorrent
+	pkgver = 3.7
+	pkgrel = 4
+	url = http://code.google.com/p/rutorrent/
+	arch = any
+	license = GPL
+	depends = php
+	depends = curl
+	depends = gzip
+	depends = coreutils
+	optdepends = mod_scgi: for SCGI protocol
+	conflicts = rutorrent-plugins
+	options = emptydirs
+	options = !strip
+	backup = etc/webapps/rutorrent/conf/config.php
+	backup = etc/webapps/rutorrent/conf/plugins.ini
+	backup = etc/webapps/rutorrent/conf/access.ini
+	source = rutorrent-3.7.zip::http://dl.bintray.com/novik65/generic/ruTorrent-3.7.zip
+	source = apache.example.conf
+	source = apache.example.site.conf
+	sha256sums = c1fb86317231c8e8fa9e1a7dea450ce4687d94caad22d763bc68d90c56d0749f
+	sha256sums = 79b5aab7ef928727b3ec2aa0f1b0869310adde11cd774d148c03025deb6dec0c
+	sha256sums = 9afe7d2a9aadb5fd6a0fcd907f7f46bdc3630c369a5a684c51bbeeb5b4d354aa
+
+pkgname = rutorrent
+
