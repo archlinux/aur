@@ -1,0 +1,19 @@
+pkgbase = vim-syntastic-git
+	pkgdesc = Syntax checking hacks for vim
+	pkgver = 3.6.0_94_gb8682c3
+	pkgrel = 1
+	url = https://github.com/scrooloose/syntastic
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = WTFPLv2
+	makedepends = git
+	makedepends = rake
+	depends = vim-runtime
+	provides = vim-syntastic
+	conflicts = vim-syntastic
+	source = git+https://github.com/scrooloose/syntastic.git
+	sha1sums = SKIP
+
+pkgname = vim-syntastic-git
+
