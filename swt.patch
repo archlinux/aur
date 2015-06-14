@@ -1,0 +1,19 @@
+diff -uN -aur misc/paths.txt misc.new/paths.txt
+--- misc/paths.txt	2014-03-03 10:47:56.000000000 -0300
++++ misc.new/paths.txt	2014-05-01 17:50:31.947297346 -0300
+@@ -24,10 +24,13 @@
+ 
+ # Where the settings are stored:
+ #settings=C:\\path\\to\\settings\\folder
++settings=${user.home}/.docfetcher
+ 
+ # Where the indexes are stored. Note: The DocFetcher daemon currently ignores
+ # this setting.
+ #indexes=C:\\path\\to\\indexes\\folder
++indexes=${user.home}/.docfetcher
+ 
+ # Where the SWT library files will be written to:
+-#swt=C:\\path\\to\\swt-libs
+\ No newline at end of file
++#swt=C:\\path\\to\\swt-libs
++swt=${user.home}/.docfetcher

@@ -1,0 +1,19 @@
+pkgbase = docfetcher
+	pkgdesc = A java open source desktop search application
+	pkgver = 1.1.14
+	pkgrel = 1
+	url = http://docfetcher.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = EPL
+	makedepends = unzip
+	depends = java-runtime>=1.6
+	source = https://downloads.sourceforge.net/project/docfetcher/docfetcher/1.1.14/docfetcher-1.1.14-portable.zip
+	source = docfetcher
+	source = swt.patch
+	md5sums = 9336e517d3cc12f47b6a1932eb2c99c3
+	md5sums = 6a798b893868bf6b5e78093143654b39
+	md5sums = 4ee9dd7e1af40f45708423e297c42bd3
+
+pkgname = docfetcher
+
