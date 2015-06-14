@@ -1,0 +1,10 @@
+post_install() {
+  . /etc/makepkg.conf
+  if [[ "$CARCH" = i686 ]]; then
+    echo "Please run \"regsvr32 wineasio.dll\" to register 32bit wineasio in your prefix (~/.wine)"
+  else
+    echo "Please run \"regsvr32 wineasio.dll\" to register 32bit wineasio in your prefix (~/.wine)" and
+    echo "please run \"wine64 regsvr32 wineasio.dll\" to register 64bit wineasio in your prefix (~/.wine)"
+  fi
+}
+# vim:set ts=2 sw=2 et:
