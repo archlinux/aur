@@ -1,7 +1,7 @@
 pkgbase = hubicfuse-git
 	pkgdesc = A fuse filesystem to access HubiC cloud storage (git)
 	pkgver = 20150614
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TurboGit/hubicfuse
 	arch = i686
 	arch = x86_64

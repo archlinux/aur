@@ -3,7 +3,7 @@
 pkgname=hubicfuse-git
 _gitname=hubicfuse
 pkgver=20150614
-pkgrel=1
+pkgrel=2
 pkgdesc="A fuse filesystem to access HubiC cloud storage (git)"
 arch=('i686' 'x86_64')
 url='https://github.com/TurboGit/hubicfuse'
@@ -17,16 +17,16 @@ source=("$pkgname"::'git+https://github.com/TurboGit/hubicfuse.git')
 sha256sums=('SKIP')
 
 build() {
-	cd "$srcdir/$_gitname"
+	cd "$srcdir/$pkgname"
 	./configure --prefix=/usr
 	make -j $(nproc)
 }
 
 package() {
-	cd "$srcdir/$_gitname"
+	cd "$srcdir/$pkgname"
 	make DESTDIR="$pkgdir" install
 	
-	  install -D -m755 "$srcdir/$_gitname/hubic_token" "$pkgdir/usr/bin/hubic_token"
+	  install -D -m755 "$srcdir/$pkgname/hubic_token" "$pkgdir/usr/bin/hubic_token"
   echo "##################################################################"
   echo "For setup, please refer to https://github.com/TurboGit/hubicfuse"
   echo "##################################################################"
