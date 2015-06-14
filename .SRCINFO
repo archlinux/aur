@@ -1,0 +1,13 @@
+pkgbase = drun
+	pkgdesc = A GTK run dialog
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = http://drun.sourceforge.net
+	arch = any
+	license = GPL
+	depends = ruby-gtk2
+	source = http://downloads.sourceforge.net/drun/drun-1.0.3.tar.gz
+	sha256sums = 950700c8af9bb65079f794608929090dd829ec0098236a257c8049777e023c90
+
+pkgname = drun
+
