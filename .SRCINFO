@@ -1,0 +1,27 @@
+pkgbase = sqlitestudio
+	pkgdesc = Database manager for SQLite
+	pkgver = 3.0.6
+	pkgrel = 3
+	url = http://sqlitestudio.pl/
+	install = sqlitestudio.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = chrpath
+	makedepends = qtchooser
+	makedepends = qt5-svg
+	makedepends = qt5-tools
+	depends = termcap
+	depends = sqlite2
+	depends = tcl
+	depends = qt5-script
+	depends = libxkbcommon-x11
+	source = http://sqlitestudio.pl/files/sqlitestudio3/complete/tar/sqlitestudio-3.0.6.tar.gz
+	source = sqlitestudio.desktop
+	source = tclconfig.diff
+	sha256sums = 7b376b0adb3ec2b284d7dbea3115a436f4d567c1e43e28f36cf872355978b3d5
+	sha256sums = c5a26a9b9003b04274887a0e0febda13eea49bb46c618eaad0b5b5c88b1cc1d2
+	sha256sums = f63b112d42bc670ab95a264ee1d82acdefad34733c18554b17801fa5c2f56bae
+
+pkgname = sqlitestudio
+

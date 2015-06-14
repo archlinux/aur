@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Sqlitestudio
+Comment=Database manager for SQLite
+Exec=sqlitestudio
+Icon=sqlitestudio
+Terminal=false
+StartupNotify=false
+Categories=Application;Development

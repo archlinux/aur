@@ -1,0 +1,13 @@
+diff --git a/Plugins/ScriptingTcl/ScriptingTcl.pro b/Plugins/ScriptingTcl/ScriptingTcl.pro
+index 7197a11..98df34d 100644
+--- a/Plugins/ScriptingTcl/ScriptingTcl.pro
++++ b/Plugins/ScriptingTcl/ScriptingTcl.pro
+@@ -35,7 +35,7 @@ linux: {
+ 
+     # Find tclConfig.sh
+     TCL_CONFIG_DIR = $$system(echo "puts [info library]" | tclsh)
+-    TCL_CONFIG = $$TCL_CONFIG_DIR/tclConfig.sh
++    TCL_CONFIG = $$TCL_CONFIG_DIR/../tclConfig.sh
+     message("Looking for $$TCL_CONFIG")
+     !exists($$TCL_CONFIG) {
+ 	# Debian case
