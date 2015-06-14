@@ -1,0 +1,18 @@
+pkgbase = autonumlock
+	pkgdesc = Automatically enables Numlock for external keyboard. Can also execute custom commands, like 'xmodmap'.
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/MightyPork/autonumlock
+	arch = any
+	license = MIT
+	depends = bash
+	depends = usbutils
+	depends = numlockx
+	provides = autonumlock
+	replaces = autonumlock
+	replaces = autonumlock-git
+	source = https://github.com/MightyPork/autonumlock/archive/1.1.2.zip
+	md5sums = 95e7e1670ce216b88f9fb6aca45c6756
+
+pkgname = autonumlock
+
