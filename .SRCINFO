@@ -1,0 +1,25 @@
+pkgbase = outspline
+	pkgdesc = Outliner and personal time organizer to manage todo lists, schedule tasks, remind events.
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://kynikos.github.io/outspline/
+	install = outspline.install
+	arch = any
+	license = GPL3
+	depends = wxpython<3.1
+	optdepends = python2-dbus: prevent opening multiple instances with the same configuration file
+	optdepends = dbus-glib: prevent opening multiple instances with the same configuration file
+	optdepends = libnotify: for desktop notifications (notify plugin)
+	optdepends = python2-gobject: for desktop notifications (notify plugin)
+	optdepends = outspline-extra: extra addons
+	optdepends = outspline-experimental: experimental addons
+	optdepends = outspline-development: development tools for beta testers
+	conflicts = organism
+	conflicts = organism-organizer
+	replaces = organism
+	replaces = organism-organizer
+	source = http://downloads.sourceforge.net/project/outspline/main/outspline-0.8.2.tar.bz2
+	sha256sums = 525613e0f8a36831c9af03714d4124ebcc1462f574fa498d5e28b533d4bfe71b
+
+pkgname = outspline
+
