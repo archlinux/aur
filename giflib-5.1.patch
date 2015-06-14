@@ -1,0 +1,38 @@
+diff -ur mplayer2/libmpdemux/demux_gif.c mplayer2-patched/libmpdemux/demux_gif.c
+--- mplayer2/libmpdemux/demux_gif.c	2014-06-15 23:14:22.159745049 +0400
++++ mplayer2-patched/libmpdemux/demux_gif.c	2014-06-15 23:18:06.329743015 +0400
+@@ -311,7 +311,15 @@
+ {
+   gif_priv_t *priv = demuxer->priv;
+   if (!priv) return;
++#if GIFLIB_MAJOR == 5
++  #if GIFLIB_MINOR >= 1
++  if (priv->gif && DGifCloseFile(priv->gif, NULL) == GIF_ERROR)
++  #else
++    if (priv->gif && DGifCloseFile(priv->gif) == GIF_ERROR)
++  #endif
++#else
+   if (priv->gif && DGifCloseFile(priv->gif) == GIF_ERROR)
++#endif
+     PrintGifError();
+   free(priv->refimg);
+   free(priv);
+diff -ur mplayer2/libvo/vo_gif89a.c mplayer2-patched/libvo/vo_gif89a.c
+--- mplayer2/libvo/vo_gif89a.c	2014-06-15 23:16:34.426410512 +0400
++++ mplayer2-patched/libvo/vo_gif89a.c	2014-06-15 23:15:41.833077660 +0400
+@@ -370,7 +370,15 @@
+ 			MPLAYER_VERSION, VO_GIF_REVISION,
+ 			"joey@nicewarrior.org");
+ 		EGifPutComment(new_gif, temp);
++#if GIFLIB_MAJOR == 5
++  #if GIFLIB_MINOR >= 1
++		EGifCloseFile(new_gif, NULL); // also frees gif storage space.
++  #else
+ 		EGifCloseFile(new_gif); // also frees gif storage space.
++  #endif
++#else
++		EGifCloseFile(new_gif); // also frees gif storage space.
++#endif
+ 	}
+ 
+ 	// free our allocated ram

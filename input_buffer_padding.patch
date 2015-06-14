@@ -1,0 +1,13 @@
+diff -Naur mplayer2.old/libmpdemux/demuxer.h mplayer2/libmpdemux/demuxer.h
+--- mplayer2.old/libmpdemux/demuxer.h	2014-07-27 12:52:23.710581692 +0200
++++ mplayer2/libmpdemux/demuxer.h	2014-07-27 12:54:10.541535634 +0200
+@@ -121,7 +121,7 @@
+ #define SEEK_BACKWARD (1 << 3)
+ 
+ // demux_lavf can pass lavf buffers using FF_INPUT_BUFFER_PADDING_SIZE instead
+-#define MP_INPUT_BUFFER_PADDING_SIZE 16
++#define MP_INPUT_BUFFER_PADDING_SIZE 32
+ 
+ typedef struct demux_stream {
+     int buffer_pos;        // current buffer position
+
