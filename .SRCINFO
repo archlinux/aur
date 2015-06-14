@@ -1,0 +1,17 @@
+pkgbase = claws-mail-tango-theme
+	pkgdesc = Tango-theme for claws
+	pkgver = 1.2.1
+	pkgrel = 3
+	url = http://www.claws-mail.org/themes.php
+	arch = any
+	license = public domain
+	depends = claws-mail
+	depends = tango-icon-theme
+	conflicts = claws-mail-themes
+	options = !strip
+	options = !zipman
+	source = http://www.claws-mail.org/download.php?file=themes/png/claws-mail-theme_Tango_1.2.1.tar.gz
+	md5sums = cae47d9b8663e28f3a00810919d96177
+
+pkgname = claws-mail-tango-theme
+
