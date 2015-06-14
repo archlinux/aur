@@ -1,0 +1,16 @@
+pkgbase = xf86dgaproto-git
+	pkgdesc = X11 Direct Graphics Access extension wire protocol - Git version
+	pkgver = 2.1.12.r45.g199f7ae
+	pkgrel = 1
+	url = http://cgit.freedesktop.org/xorg/proto/xf86dgaproto/
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = xorg-util-macros
+	provides = xf86dgaproto=2.1.12.r45.g199f7ae
+	conflicts = xf86dgaproto
+	source = git://anongit.freedesktop.org/xorg/proto/xf86dgaproto
+	md5sums = SKIP
+
+pkgname = xf86dgaproto-git
+
