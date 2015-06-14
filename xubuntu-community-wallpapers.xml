@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE wallpapers SYSTEM "gnome-wp-list.dtd">
+<wallpapers>
+  <wallpaper>
+    <name>Balance</name>
+    <filename>/usr/share/xfce4/backdrops/balance.jpg</filename>
+    <options>zoom</options>
+    <pcolor>#ffffff</pcolor>
+    <scolor>#000000</scolor>
+    <shade_type>solid</shade_type>
+  </wallpaper>
+
+  <wallpaper>
+    <name>Bubbles</name>
+    <filename>/usr/share/xfce4/backdrops/bubbles.jpg</filename>
+    <options>zoom</options>
+    <pcolor>#ffffff</pcolor>
+    <scolor>#000000</scolor>
+    <shade_type>solid</shade_type>
+  </wallpaper>
+
+  <wallpaper>
+    <name>Cloud Breaker</name>
+    <filename>/usr/share/xfce4/backdrops/cloudbreaker.jpg</filename>
+    <options>zoom</options>
+    <pcolor>#ffffff</pcolor>
+    <scolor>#000000</scolor>
+    <shade_type>solid</shade_type>
+  </wallpaper>
+
+  <wallpaper>
+    <name>Just Rocks</name>
+    <filename>/usr/share/xfce4/backdrops/justrocks.jpg</filename>
+    <options>zoom</options>
+    <pcolor>#ffffff</pcolor>
+    <scolor>#000000</scolor>
+    <shade_type>solid</shade_type>
+  </wallpaper>
+
+  <wallpaper>
+    <name>Solitude</name>
+    <filename>/usr/share/xfce4/backdrops/solitude.jpg</filename>
+    <options>zoom</options>
+    <pcolor>#ffffff</pcolor>
+    <scolor>#000000</scolor>
+    <shade_type>solid</shade_type>
+  </wallpaper>
+
+  <wallpaper>
+    <name>Traslasierra</name>
+    <filename>/usr/share/xfce4/backdrops/traslasierra.jpg</filename>
+    <options>zoom</options>
+    <pcolor>#ffffff</pcolor>
+    <scolor>#000000</scolor>
+    <shade_type>solid</shade_type>
+  </wallpaper>
+
+</wallpapers>
