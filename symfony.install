@@ -1,0 +1,10 @@
+post_install() {
+  echo "you should add /usr/share/symfony to the 'open_basedir' configuration" \
+       "option in your php.ini"
+  echo "to effectively use this package, symlink /usr/share/symfony to " \
+       "\$PROJECTDIR/lib/vendor/symfony"
+}
+
+post_upgrade() {
+    post_install $@
+}

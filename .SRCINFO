@@ -1,0 +1,19 @@
+pkgbase = symfony
+	pkgdesc = A web-application framework for PHP projects
+	pkgver = 1.4.20
+	pkgrel = 2
+	url = http://symfony-project.org/
+	install = symfony.install
+	arch = any
+	license = MIT
+	depends = php
+	optdepends = php-xsl: for compatibility with Propel
+	options = !emptydirs
+	options = !strip
+	source = symfony-1.4.20.tgz::http://pear.symfony-project.com/get/symfony-1.4.20.tgz
+	source = symfony.bash::https://raw.github.com/wyrfel/Symfony-Bash-Completion-Script/master/etc/bash_completion.d/symfony
+	md5sums = 474dd85b665c64ddc08f320e35546b84
+	md5sums = 2772cb1b65cc83a90e25122dbc526078
+
+pkgname = symfony
+
