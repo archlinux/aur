@@ -1,0 +1,19 @@
+pkgbase = mp4joiner
+	pkgdesc = A simple free tool to join multiple MP4 files into one without reencoding and without quality loss.
+	pkgver = 2.2
+	pkgrel = 2
+	url = http://www.mp4joiner.org/
+	install = mp4joiner.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gpac
+	depends = wxsvg>=1.1.13
+	depends = desktop-file-utils
+	source = mp4joiner.desktop
+	source = MP4Joiner-2.2.tar.bz2::http://sourceforge.net/projects/mp4joiner/files/MP4Joiner/2.2/MP4Joiner-2.2.tar.bz2/download?nowrap
+	md5sums = 74f6b25d675f138700af9b8b2491f506
+	md5sums = b674c7cd25b546b9f48d73e24597e166
+
+pkgname = mp4joiner
+

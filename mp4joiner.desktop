@@ -1,0 +1,20 @@
+[Desktop Entry]
+Comment[en_US]=
+Comment=
+Exec=/usr/bin/mp4joiner
+GenericName[en_US]=
+GenericName=
+Icon=/usr/share/icons/hicolor/48x48/apps/mp4joiner.png
+MimeType=
+Name[en_US]=MP4Joiner
+Name=MP4Joiner
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
+Categories=Audio;AudioVideoEditing;AudioVideo;Video;
