@@ -1,0 +1,12 @@
+pkgbase = seqan
+	pkgdesc = SeqAn is an open source C++ library of efficient algorithms and data structures for the analysis of sequences with the focus on biological data
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = http://www.seqan.de
+	arch = any
+	license = BSD
+	source = http://packages.seqan.de/seqan-library/seqan-library-2.0.0.tar.bz2
+	sha512sums = 7dc1adb9596c940f3b8fb71bb5b23c5789ddbc215d14c614e8220acd91ba9da3c7ecba48fbdb38bd2d1010870452d9b161eb3b41fd88183e10331247a5365070
+
+pkgname = seqan
+
