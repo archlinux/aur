@@ -1,0 +1,21 @@
+pkgbase = netrider-bin
+	pkgdesc = Webkit based browser
+	pkgver = 0.94
+	pkgrel = 1
+	url = https://sourceforge.net/projects/netrider/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = libarchive
+	depends = libxft
+	depends = libxinerama
+	depends = gcc
+	depends = sqlite
+	depends = curl
+	depends = libxslt
+	depends = libxtst
+	source = http://downloads.sourceforge.net/project/netrider/NetRider-0.94-1..rpm
+	md5sums = SKIP
+
+pkgname = netrider-bin
+
