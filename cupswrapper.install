@@ -1,0 +1,19 @@
+# Install file for brother-ql500-cupswrapper
+
+pre_install() {
+	echo "You must connect and turn on your QL-570 printer before installing this package"
+	echo "Your QL-570 printer installation will be automatic"
+}
+
+post_install() {
+	/usr/share/brother/PTouch/ql570/cupswrapper/cupswrapperql570pt1
+	systemctl restart cups
+}
+
+pre_remove() {
+	/usr/share/brother/PTouch/ql570/cupswrapper/cupswrapperql570pt1 -e
+}
+
+post_remove() {
+	systemctl restart cups
+}

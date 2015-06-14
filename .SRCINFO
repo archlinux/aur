@@ -1,0 +1,22 @@
+pkgbase = brother-ql570-cupswrapper
+	pkgdesc = LPR-to-CUPS wrapper for Brother P-Touch QL-570 labelprinter (metric)
+	pkgver = 1.0.1
+	pkgrel = 0
+	url = http://solutions.brother.com/linux/en_us/
+	install = cupswrapper.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = rpmextract
+	depends = cups
+	depends = ghostscript
+	depends = glibc
+	depends = brother-ql570-lpr
+	noextract = ql570cupswrapper-1.0.1-0.i386.rpm
+	source = http://www.brother.com/pub/bsc/linux/dlf/ql570cupswrapper-1.0.1-0.i386.rpm
+	source = cupswrapper.install
+	md5sums = 9245b4bb5a51aa342c0ca4181bff078a
+	md5sums = 0d68b60c5cd5b14de5533d5544102614
+
+pkgname = brother-ql570-cupswrapper
+
