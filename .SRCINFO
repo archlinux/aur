@@ -1,0 +1,13 @@
+pkgbase = brother-mfc-j430w
+	pkgdesc = LPR and CUPS driver for the Brother MFC-J430W
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
+	install = brother-mfc-j430w.install
+	arch = any
+	license = unknown
+	source = https://www.schaeferdiek.eu/downloads/Linux/AUR/brother-mfc-j430w-3.0.1-1.tar.gz
+	md5sums = adcf866f27c2fa13f81286874f7f8204
+
+pkgname = brother-mfc-j430w
+
