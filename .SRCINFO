@@ -1,0 +1,16 @@
+pkgbase = nagiosql
+	pkgdesc = NagiosQL - nagios configurator
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = http://www.nagiosql.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = php
+	depends = mysql
+	depends = nagios
+	source = http://downloads.sourceforge.net/project/nagiosql/nagiosql/NagiosQL%203.2.0/.tar.gz
+	md5sums = 6a0a533fa220cce7a6123d8481d99b61
+
+pkgname = nagiosql
+
