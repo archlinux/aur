@@ -1,4 +1,8 @@
 # Maintainer: Piotr Rogoza <rogoza dot piotr at gmail dot com>
+# Contributor: Andreas Wallberg "korpenkraxar" andreas.wallberg at gmail.cöm
+# Contributor: Christian Sturm <reezer@reezer.org>
+# Contributor: David Trail <napalm (eval (add 5 5]) @ gmail . com<
+# Contributor: Justin Davis <jrcd83@gmail.com>
 
 _perlmod=Padre
 _author='P/PL/PLAVEN'
