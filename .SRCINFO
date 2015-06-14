@@ -1,0 +1,14 @@
+pkgbase = python-gnupg
+	pkgdesc = This module allows easy access to GnuPG's key management, encryption and signature functionality from Python programs.
+	pkgver = 0.3.7
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/python-gnupg
+	arch = any
+	license = BSD
+	depends = python
+	depends = gnupg
+	source = https://pypi.python.org/packages/source/p/python-gnupg/python-gnupg-0.3.7.tar.gz
+	md5sums = ce600421b8168bd7d9470d6b451594d5
+
+pkgname = python-gnupg
+
