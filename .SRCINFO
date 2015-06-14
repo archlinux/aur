@@ -1,0 +1,18 @@
+pkgbase = argtable
+	pkgdesc = An ANSI C command line parser
+	pkgver = 2.13
+	pkgrel = 1
+	url = http://argtable.sourceforge.net/
+	changelog = argtable.changelog
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://downloads.sourceforge.net/argtable/argtable2-13.tar.gz
+	sha1sums = bce828c64c35e16f4c3f8e1f355e4a2a97fe3289
+
+pkgname = argtable
+	depends = glibc
+	options = !libtool
+
+pkgname = argtable-docs
+
