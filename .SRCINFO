@@ -1,0 +1,42 @@
+pkgbase = firefox-beta-bin
+	pkgdesc = Standalone web browser from mozilla.org - Beta
+	pkgver = 39.0b5
+	pkgrel = 1
+	url = https://www.mozilla.org/en-US/firefox/channel/#beta
+	install = firefox-beta-bin.install
+	arch = i686
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = LGPL
+	makedepends = pacman>=4.2.0
+	depends = alsa-lib
+	depends = dbus-glib
+	depends = desktop-file-utils
+	depends = gtk2
+	depends = hicolor-icon-theme
+	depends = icu
+	depends = libevent
+	depends = libvpx
+	depends = libxt
+	depends = mime-types
+	depends = nss
+	depends = sqlite
+	optdepends = gstreamer0.10-base: vorbis decoding, ogg demuxing
+	optdepends = gstreamer0.10-good: webm and mp4 demuxing
+	optdepends = gstreamer0.10-bad: aac, vp8 and opus decoding
+	optdepends = gstreamer0.10-ugly: h.264 and mp3 decoding
+	optdepends = gstreamer0.10-ffmpeg: more decoders
+	optdepends = libpulse: PulseAudio driver
+	optdepends = networkmanager: Location detection via available WiFi networks
+	source = firefox-beta-bin.desktop
+	source = firefox-beta-bin-safe.desktop
+	md5sums = 13bd50c37f55a83539a680ce83162468
+	md5sums = a85c53ccb2b78514f37833d288a20ba2
+	source_i686 = https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/39.0b5/linux-i686/en-US/firefox-39.0b5.tar.bz2
+	md5sums_i686 = 8dfd426e1aae4cad68d83af4c1fa8cbf
+	source_x86_64 = https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/39.0b5/linux-x86_64/en-US/firefox-39.0b5.tar.bz2
+	md5sums_x86_64 = ed397d8f0c9f3a72eb6ae695e370ae45
+
+pkgname = firefox-beta-bin
+
