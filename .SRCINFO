@@ -1,0 +1,14 @@
+pkgbase = perl-tie-stdscalar
+	pkgdesc = A dummy package for Tie::StdScalar
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://www.perl.org
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	source = StdScalar.pm
+	md5sums = 86fd54cdadec099fe8dbd0b64fb34795
+
+pkgname = perl-tie-stdscalar
+
