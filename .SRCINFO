@@ -1,0 +1,19 @@
+pkgbase = connman-ncurses-git
+	pkgdesc = Simple ncurses UI for ConnMan
+	pkgver = 20150614
+	pkgrel = 1
+	url = https://github.com/eurogiciel-oss/connman-json-client
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = json-c
+	depends = ncurses
+	depends = connman
+	provides = connman-ncurses=20150614
+	source = git://github.com/eurogiciel-oss/connman-json-client.git
+	source = pull_request_14.patch
+	sha256sums = SKIP
+	sha256sums = ab14231b763d67eb0767da0600cbe5c9e94bbedfa52d374a12c374706887da41
+
+pkgname = connman-ncurses-git
+

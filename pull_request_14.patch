@@ -1,0 +1,96 @@
+From 1722b1b196acb0d8d30f08a4677791f2f66f605f Mon Sep 17 00:00:00 2001
+From: Thibault Guittet <guittet.thibault[at]gmail.com>
+Date: Wed, 13 May 2015 17:37:51 +0200
+Subject: [PATCH 1/2] Address Sanitizer detected a memory leak in main_items
+
+---
+ configure.ac |  8 ++++++++
+ renderers.c  | 12 ++++++++++++
+ run-me.sh    |  2 +-
+ 3 files changed, 21 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index fa521e7..7e3307f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -41,6 +41,14 @@ AC_ARG_ENABLE(debug, AC_HELP_STRING([--enable-debug],
+ 	fi
+ ])
+ 
++AC_ARG_ENABLE(asan, AC_HELP_STRING([--enable-asan],
++			[enable Address Sanitizer]), [
++	if (test "${enableval}" = "yes" &&
++				test "${ac_cv_prog_cc_g}" = "yes"); then
++		CFLAGS="$CFLAGS -g -fsanitize=address -fno-omit-frame-pointer"
++	fi
++])
++
+ AC_CONFIG_HEADERS([config.h:config.h.in])
+ 
+ PKG_CHECK_MODULES(JSON, [json-c],,
+diff --git a/renderers.c b/renderers.c
+index 14e4783..7793008 100644
+--- a/renderers.c
++++ b/renderers.c
+@@ -763,6 +763,7 @@ void __renderers_free_services(void)
+ {
+ 	int i;
+ 	struct userptr_data *data;
++	const char *item_name_desc = NULL;
+ 
+ 	if (main_menu == NULL)
+ 		return;
+@@ -774,6 +775,17 @@ void __renderers_free_services(void)
+ 		free((void *) data->dbus_name);
+ 		free((void *) data->pretty_name);
+ 		free(data);
++
++		item_name_desc = item_name(main_items[i]);
++
++		if (item_name_desc != NULL)
++			free((void *) item_name_desc);
++
++		item_name_desc = item_description(main_items[i]);
++
++		if (item_name_desc != NULL)
++			free((void *) item_name_desc);
++
+ 		free_item(main_items[i]);
+ 	}
+ 
+diff --git a/run-me.sh b/run-me.sh
+index 65b3f14..c4281d1 100755
+--- a/run-me.sh
++++ b/run-me.sh
+@@ -2,6 +2,6 @@
+ 
+ autoreconf -i -f
+ 
+-./configure --disable-optimization --enable-debug #--disable-silent-rules
++./configure --disable-optimization --enable-debug #--enable-asan --disable-silent-rules
+ 
+ make -B
+
+From f9243375fc19feeb76f7f3ca108e23d5c2106a09 Mon Sep 17 00:00:00 2001
+From: Thibault Guittet <alan-mushi@users.noreply.github.com>
+Date: Thu, 14 May 2015 13:09:23 +0200
+Subject: [PATCH 2/2] Wrong keyword
+
+Not detected previously because FIELD and ITEM have the same size.
+---
+ renderers.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/renderers.c b/renderers.c
+index 7793008..c531a1e 100644
+--- a/renderers.c
++++ b/renderers.c
+@@ -507,7 +507,7 @@ static void renderers_service_config(struct json_object *serv_array)
+ 			json_object_array_get_idx(serv_array, 0));
+ 
+ 	longest_key_len = 25 + 4; // len("Nameservers.Configuration") + padding
+-	main_fields = malloc(sizeof(ITEM *) * max_nb_fields); // 113 = #fields + #labels + 1
++	main_fields = malloc(sizeof(FIELD *) * max_nb_fields); // 113 = #fields + #labels + 1
+ 	i = 0;
+ 
+ 	str_field[0] = '\0';
