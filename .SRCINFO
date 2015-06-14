@@ -1,0 +1,20 @@
+pkgbase = perl-sort-key
+	pkgdesc = Sort::Key - the fastest way to sort anything in Perl
+	pkgver = 1.33
+	pkgrel = 1
+	url = http://search.cpan.org/dist/sort-sort/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	provides = perl-sort-key-maker
+	provides = perl-sort-key-multi
+	provides = perl-sort-key-natural
+	provides = perl-sort-key-register
+	provides = perl-sort-key-types
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SA/SALVA/Sort-Key-1.33.tar.gz
+	sha256sums = ed6a4ccfab094c9cd164f564024e98bd21d94f4312ccac4d6246d22b34081acf
+
+pkgname = perl-sort-key
+
