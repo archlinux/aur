@@ -1,0 +1,15 @@
+pkgbase = perl-clone-pp
+	pkgdesc = Clone::PP - Recursively copy Perl datatypes
+	pkgver = 1.06
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Clone-PP/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/Clone-PP-1.06.tar.gz
+	sha256sums = 4ccf74174a83543787946e5c06a0b3c56f4b3bd29e21632f74d11ade30b9b7e7
+
+pkgname = perl-clone-pp
+
