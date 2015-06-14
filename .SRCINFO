@@ -1,0 +1,16 @@
+pkgbase = qscintilla-qt3
+	pkgdesc = A port to Qt3 of Neil Hodgson's Scintilla C++ editor class
+	pkgver = 1.7.1
+	pkgrel = 6
+	url = http://www.riverbankcomputing.co.uk/software/qscintilla/intro/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = qt3
+	source = http://downloads.sourceforge.net/pyqt/QScintilla-1.71-gpl-1.7.1.tar.gz
+	source = pro.patch
+	md5sums = dfa047b45d4f09ae8d4a8a431ba88a5a
+	md5sums = 30b7f6bd33f73679872ab2a95c32baba
+
+pkgname = qscintilla-qt3
+
