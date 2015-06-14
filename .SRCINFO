@@ -1,0 +1,16 @@
+pkgbase = ruby-net-scp
+	pkgdesc = A pure Ruby implementation of the SCP client protocol
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/net-ssh/net-scp
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-net-ssh
+	noextract = net-scp-1.2.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/net-scp-1.2.1.gem
+	sha512sums = 64645a4517d6e408e3acfdb24576c8ded3b6ff981035ca10a2e081f9e3ab093f97b4848da4acca03ade364483766677e31296d09a31db4c81eb40123fc966829
+
+pkgname = ruby-net-scp
+
