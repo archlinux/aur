@@ -1,6 +1,6 @@
 pkgbase = asciiworld-git
 	pkgdesc = ASCII world map and tools
-	pkgver = 15.02
+	pkgver = 15.03
 	pkgrel = 1
 	url = https://github.com/vain/asciiworld
 	arch = i686

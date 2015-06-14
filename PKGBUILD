@@ -1,6 +1,6 @@
 # Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
 pkgname=asciiworld-git
-pkgver=15.02
+pkgver=15.03
 pkgrel=1
 pkgdesc="ASCII world map and tools"
 arch=('i686' 'x86_64')
