@@ -1,0 +1,14 @@
+pkgbase = pyreb
+	pkgdesc = Python Regular Expression Builder is a wxPython GUI to the re python module
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = http://pyreb.nongnu.org/
+	arch = any
+	license = GPL
+	depends = wxpython
+	depends = python2-setuptools
+	source = http://download.savannah.nongnu.org/releases/pyreb/Pyreb-0.1.6.tar.gz
+	md5sums = 4ac72cb016429e91f20edc9e4e1fe30f
+
+pkgname = pyreb
+
