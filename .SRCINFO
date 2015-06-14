@@ -1,0 +1,29 @@
+pkgbase = xf86-input-evdev-git
+	pkgdesc = X.org evdev input driver - Git version
+	pkgver = 2.9.1.6.r644.gb370ccd
+	pkgrel = 1
+	url = http://cgit.freedesktop.org/xorg/driver/xf86-input-evdev/
+	arch = i686
+	arch = x86_64
+	groups = xorg
+	groups = xorg-drivers
+	license = custom
+	makedepends = xorg-server-devel
+	makedepends = resourceproto
+	makedepends = scrnsaverproto
+	makedepends = git
+	makedepends = libevdev
+	depends = glibc
+	depends = systemd-tools
+	depends = mtdev
+	provides = xf86-input-evdev=2.9.1.6.r644.gb370ccd
+	conflicts = xorg-server<1.16.0
+	conflicts = X-ABI-XINPUT_VERSION!=21
+	conflicts = xf86-input-evdev
+	options = !libtool
+	options = !makeflags
+	source = git://anongit.freedesktop.org/xorg/driver/xf86-input-evdev
+	md5sums = SKIP
+
+pkgname = xf86-input-evdev-git
+
