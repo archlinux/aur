@@ -1,0 +1,16 @@
+pkgbase = scrnsaverproto-git
+	pkgdesc = X11 Screen Saver extension wire protocol - Git version
+	pkgver = 1.2.2.3.r58.g5cf9455
+	pkgrel = 1
+	url = http://cgit.freedesktop.org/xorg/proto/scrnsaverproto/
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = xorg-util-macros
+	provides = scrnsaverproto=1.2.2.3.r58.g5cf9455
+	conflicts = scrnsaverproto
+	source = git://anongit.freedesktop.org/xorg/proto/scrnsaverproto
+	md5sums = SKIP
+
+pkgname = scrnsaverproto-git
+
