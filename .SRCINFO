@@ -1,0 +1,16 @@
+pkgbase = geant4-realsurfacedata
+	pkgdesc = Data files for measured optical surface reflectance
+	pkgver = 1.0
+	pkgrel = 3
+	url = http://geant4.cern.ch/
+	install = geant4-realsurfacedata.install
+	arch = any
+	license = GPL
+	depends = geant4>=9.6.2
+	source = http://geant4.cern.ch/support/source/RealSurface.1.0.tar.gz
+	source = geant4-realsurfacedata.install
+	md5sums = 0dde95e00fcd3bcd745804f870bb6884
+	md5sums = d2030f605f24c1e7a9ec6c7754ab25eb
+
+pkgname = geant4-realsurfacedata
+
