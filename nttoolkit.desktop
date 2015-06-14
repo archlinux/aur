@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=0.9.4
+Name=NTToolKit
+Comment=Monitor IP traffic to the local host for troubleshooting and monitoring purposes
+Icon=/opt/nttoolkit/ipmonplus.png
+Exec=gksu /opt/nttoolkit/ipmonplus
+Terminal=false
+Path=/opt/nttoolkit
+Type=Application
+Categories=Application;Network;Qt

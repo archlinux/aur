@@ -1,0 +1,192 @@
+Definitions
+
+"Software" includes, but is not limited to, any combination (suite) of the following products:  
+
+NTToolkit is a set of small and useful utilities designed to help network administrators with their daily administrative tasks. The NTToolkit contains mostly command-line application, but also applications with a user interface and applications that run as a service. The NTToolkit is freeware and continuously being enhanced.
+
+EventSentry is a monitoring solution that runs on Windows 2000, Windows 2003 Server, WinXP, Windows Vista, Windows 7 and Windows Server 2008 that actively monitors your server's (or workstation's) event log, log files, system health and network. Configure EventSentry to notify you if important events matching your filter criteria occur or consolidate your event logs into one central location such as a central ODBC database. Through EventSentry, you can be actively notified in several ways when events take place including email, ASCII file, ODBC, Unix syslog, SNMP, network (net send), process, sound and desktop. EventSentry will also monitor performance, system services, disk space, (memory consumption of) processes and the addition/removal of applications and autorun registry entries.
+
+AutoAdministrator is a toolkit designed to help network and server administrators working with Windows based servers perform certain administrative tasks on multiple servers in a batch mode.  This helps administrators save time, as they do not have to perform tasks that are included in AutoAdministrator anymore.
+
+"Licensed Accounts" means the number of computers on which the Software may be installed. For such purposes, a workstation and a server shall each be treated as one computer.
+
+
+1. License
+
+In accordance with the terms of this Agreement, LICENSOR grants to Licensee and Licensee accepts a fully paid, limited, non-exclusive, non-transferable license, without right of sublicense, to use and install the Product(s) identified above including computer programs in machine-readable form, any revisions or updates provided pursuant to the Software Maintenance Plan attached as Exhibit A to this Agreement and related user manuals, hereinafter collectively referred to as "Product(s)", to operate only on the computers for which a license was purchased for. This Agreement does not entitle Licensee to any custom programs or custom developed modifications, improvements or enhancements developed by NETIKUS for other licensees.
+
+Licensee has no right to sublicense, rent, lease, loan, modify or create derivative works based upon the Software, in whole or in part. Licensee may install and use the Software only in object code format. Licensee may not decompile, reverse engineer or disassemble the Software. Licensee may install and use the Software solely for the purpose of network and server monitoring. In any event, the number of Licensed Accounts using the Software may not exceed the number of Licensed Accounts set forth in the product invoice.
+
+
+2. Term
+
+This Agreement and the license granted hereby shall be effective upon delivery of Product(s) to Licensee and shall continue perpetually, subject to termination pursuant to Section 8.
+
+
+3. Fee
+
+The license fees shall be fully paid upon LICENSOR'S receipt of the amounts set forth in the invoice.
+
+4. Maintenance
+
+Upon delivery of the Product(s), LICENSOR shall provide maintenance of all the Product(s) for one year in accordance with Software Maintenance Plan attached as Exhibit A to this Agreement ("Maintenance") which by this reference is incorporated herein and made a part hereof. Subsequent years of Maintenance are available, at the option of Licensee, for an annual charge of 18% of the then current license fee. If Exhibit A is not included in this agreement then current pricing for EventSentry is also available on the Internet at http://www.eventsentry.com/buying_pricing.php.
+
+
+5. Title
+
+Title to the Product(s) will remain with NETIKUS. Licensee shall keep the Product(s) free and clear of all claims. Upon termination of this Agreement Licensee will return the Product(s) to NETIKUS.
+
+
+6. Assignment
+
+[NETIKUS may assign this Agreement provided that the assignee assumes all of the obligations of NETIKUS hereunder and NETIKUS remains jointly and severally liable for such obligations. Licensee may assign its rights, without obtaining NETIKUS consent, to a wholly owned subsidiary or parent corporation or in the event of a merger, sale of substantially all of such party's assets or stock, or similar event to such merging or acquiring entity.  Licensee shall provide NETIKUS with thirty (30) days advance written notice of an assignment in any such event.
+
+7. Proprietary Information
+
+Licensee agrees that any information, whether or not protected by patent or copyright, which is identified as being proprietary to NETIKUS shall be treated by Licensee as being proprietary to NETIKUS and shall not be disclosed to any third party without prior written consent given by NETIKUS' duly authorized representative.
+
+Title, copyrights and other intellectual property rights in and to the Software, any accompanying documentation, as well as any copies Licensee is permitted to make pursuant to this Agreement, are owned exclusively by NETIKUS. The Software is not being sold to Licensee. Under the terms of this Agreement, Licensee receives only a limited right to use the Software. The Software is protected by U.S. copyright laws and international copyright treaties, as well as other intellectual property laws and treaties. 
+
+
+8. Default
+
+In the event of a Default (as defined hereinafter), LICENSOR may terminate this Agreement by giving written notice to Licensee of its intent to do so. Upon receipt of such written notice, Licensee shall immediately cease using the Product(s) and shall, at Licensee's expense, return the Product(s) and any copies thereof in Licensee's possession to NETIKUS.
+
+For purposes of this Agreement "Default" shall mean (i) Licensee's failure to pay any undisputed amount within thirty (30) days after notice to Licensee that the same is thirty (30) days or more delinquent; (ii) an assignment, sale, mortgage, sublease or sublicense of the Product(s) is made or attempted except as otherwise authorized under this Agreement; (iii) any breach of the terms of this Agreement by Licensee which is not cured within thirty (30) days of notice of such breach.
+
+
+9. Loss or Damage
+
+The Licensee shall bear the entire risk of loss, theft, destruction of, or damage to the media containing the Product(s) from any cause whatsoever. In the event of loss or damage, and provided that Licensee is not in Default, under the terms of this Agreement, LICENSOR shall upon the written request of Licensee, replace the Product(s) at the cost of the media containing the Product(s) which will be billable to Licensee.
+
+
+10. Severability
+
+If any provision of this Agreement is invalid under any applicable law, it is to that extent deemed omitted.
+
+
+11. Non-Waiver
+
+No delay or failure of LICENSOR in exercising any right hereunder and no partial or single exercise thereof shall be deemed of itself to constitute a waiver of such right or any other rights hereunder.
+
+
+12. Warranties
+
+LICENSOR warrants that the Software will perform substantially in accordance with printed materials and/or online or electronic documentation provided to Licensee for a period of sixty (60) days from the date of receipt unless otherwise specifically covered by Maintenance. 
+
+THE FOREGOING WARRANTY IS IN LIEU OF ALL OTHER WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+
+LICENSOR DOES NOT WARRANT THAT THE FUNCTIONS CONTAINED IN THE SOFTWARE WILL MEET LICENSEE'S REQUIREMENTS OR THAT THE OPERATION OF THE SOFTWARE WILL BE UNINTERRUPTED OR ERROR FREE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE SOFTWARE IS WITH LICENSEE. SHOULD THE PROGRAM PROVE DEFECTIVE, LICENSEE (AND NOT LICENSOR OR NETIKUS) ASSUMES THE ENTIRE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION. 
+
+LICENSOR AND NETIKUS DISCLAIM ALL OTHER WARRANTIES, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE, WITH REGARD TO THE SOFTWARE.
+
+
+13. Licensee Remedies
+
+LICENSOR'S AND NETIKUS' entire liability and Licensee's exclusive remedy shall be, at LICENSOR'S discretion, either (i) a return of all amounts paid by Licensee to LICENSOR, or (ii) repair or replacement of the Software that does not meet the requirements of LICENSOR'S limited warranty. This limited warranty is void if failure of the Software has resulted from accident, abuse or misapplication. Any replacement Software will be warranted for the remainder of the original warranty period or thirty (30) days, whichever is longer.
+
+
+14. Infringement
+
+LICENSOR shall indemnify, defend, and hold harmless Licensee and its directors, officers, employees and agents against all third party claims, demands, liabilities, damages, attorneys' fees and costs arising out of a violation or alleged violation of any patent, copyright, trademark, trade name, trade secret or other proprietary right (collectively, "Infringement Claims"), it being understood that LICENSOR is indemnified by NETIKUS for Infringement Claims.
+
+
+15. Limitation of Liability
+
+EXCEPT FOR LIABILITY FOR INFRINGEMENT CLAIMS, LICENSEE AGREES THAT (i) LICENSOR'S AND NETIKUS' LIABILITY UNDER THIS AGREEMENT SHALL NOT EXCEED THE AMOUNTS PAYABLE TO LICENSOR BY LICENSEE IN CONNECTION WITH THIS AGREEMENT; (ii) NEITHER LICENSOR NOR NETIKUS WILL BE LIABLE FOR LOST PROFITS, OR FOR ANY CLAIM OR DEMAND AGAINST LICENSEE BY ANY OTHER PARTY, EXCEPT FOR INFRINGEMENT CLAIMS; AND (iii) IN NO EVENT WILL LICENSOR OR NETIKUS BE LIABLE FOR CONSEQUENTIAL DAMAGES EVEN IF LICENSOR OR NETIKUS HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+
+16. General
+
+The term "Agreement" as used herein includes any future written amendments, modification, or supplements made in accordance herewith. The Licensee agrees that its acceptance of future delivery of any update or enhancement to the Product(s) from LICENSOR or NETIKUS is evidence of its acknowledgement that the license for such update or enhancement to the Product(s) is governed by the terms of this Agreement.
+
+
+17. Governing Law
+
+This Agreement will be governed by the laws of the United States of America and the State of Illinois both as to interpretation and performance.
+
+
+18. Integration Clause
+
+The Licensee's remedies in this Agreement are exclusive.
+
+
+19. Taxes
+
+All tariffs, duties, sales or use tax on the Product(s) (except for taxes on the gross revenue, net income or property of LICENSOR are the responsibility of the Licensee.
+
+
+20. Entire Agreement
+
+ENTIRE AGREEMENT; MODIFICATION OR AMENDMENT. THE LICENSEE ACKNOWLEDGES THAT IT HAS READ THIS AGREEMENT, UNDERSTANDS IT, AND AGREES TO BE BOUND BY ITS TERMS AND CONDITIONS AND, FURTHER, AGREES THAT IT IS THE COMPLETE AND EXCLUSIVE STATEMENT OF THE AGREEMENT BETWEEN THE PARTIES, WHICH SUPERSEDES ALL PROPOSALS, ORAL OR WRITTEN, AND ALL OTHER COMMUNICATION BETWEEN THE PARTIES RELATING TO THE SUBJECT MATTER OF THIS AGREEMENT. THIS AGREEMENT, UNLESS OTHERWISE PROVIDED HEREIN, CAN ONLY BE MODIFIED IN WRITING SIGNED BY BOTH LICENSEE AND LICENSOR.
+
+
+21. Third Parties
+
+Any rights granted to Licensee pursuant to this Agreement, may, in Licensee's reasonable discretion, be exercised through its employees and contractors of Licensee, provided that such employees and contractors shall be under an obligation to maintain the confidentiality of and to protect LICENSOR'S NETIKUS' and Licensee's proprietary rights specified hereunder. 
+
+
+22. Export Restrictions
+
+Licensee agrees not to export or re-export the Software to any country, person, entity or end user subject to U.S.A. export regulations. Licensee warrants and represents that neither the U.S.A. Bureau of Export Administration nor any other federal agency has suspended, revoked or denied its export privileges.
+
+
+23. Government End Users
+
+If Licensee is acquiring the Software on behalf of any unit or agency of the United States Government, the following provisions apply. The Government agrees: If the Software and fonts are supplied to any unit or agency of the United States Government other than NASA, the Government's rights in the Software, its documentation and fonts will be as identified in Clause 52.227-19(c)(2) of the FAR; and if the Software and fonts are supplied to NASA, in Clause 18-52.227-86(d) of the NASA Supplement to the FAR. 
+
+
+24. Affiliates
+
+For purposes of this Agreement, "Affiliates" shall mean all persons and/or entities directly or indirectly controlling or controlled by or under direct or indirect common control with Licensee. For purposes of this definition, "control" when used with any person or entity means the possession, directly or indirectly, of the power to direct or cause the direction of the management and policies of such person or entity, whether through the ownership of voting securities, by contract, or otherwise.
+
+25. Return Policy
+
+If an EventSentry feature advertised by NETIKUS.NET ltd does not work as described or documented, and you report this problem within 60 days after the receipt of the license key(s) (see http://www.eventsentry.com or the Help document for details on features), then you are eligible for a refund provided that NETIKUS.NET ltd is not able to provide a fix within 20 working days.
+
+Exhibit A
+
+NETIKUS SOFTWARE MAINTENANCE PLAN
+
+DEFINITIONS. "Software" has the meaning set forth on the first page ("Definitions") of the License Agreement to which this Exhibit A is attached, unless Software is identified as freeware. "Software Maintenance Plan" or "Maintenance" means this Exhibit A. "Software Upgrades" means software upgrades, including new major versions of Software or other software products with substantially the same features and functionality as the Software. "Software Updates" means maintenance software releases, bug fixes, and patches.
+
+LICENSOR agrees to provide software maintenance for Software as set forth in this Software Maintenance Plan. Purchase of Maintenance does not in any way extend, modify, or enhance the original software product warranty, if any, for the Software except as specifically set forth in this Software Maintenance Plan.
+
+A Licensee must have the current version of the Software in order to purchase Maintenance. NETIKUS is only obligated to maintain and support the then most-current release of the Software. It is the responsibility of Licensee to keep its computer hardware current with the latest release of the Software. Licensee acknowledges that use of Software Upgrades or Software Updates may require new hardware and/or third party software and/or upgrades.
+
+This Agreement does not cover any Software that has been modified, amended, or deleted by a party other than NETIKUS. 
+
+The duration of this Software Maintenance Plan shall be for a period of twelve (12) months from the date of the underlying license agreement between Licensee and LICENSOR.
+
+TECHNICAL SUPPORT. Telephone and e-mail technical support is available only for Software covered under this Software Maintenance Plan. Technical support is limited to telephone and e-mail support and is restricted to questions on NETIKUS Software installation, configuration, and usage. Notwithstanding the foregoing, LICENSOR shall provide, at no cost to Licensee, unlimited telephone and e-mail technical support for defects in the Software.
+
+Telephone and e-mail support is offered during regular business hours, Monday through Friday 8:00 a.m. to 5:00 p.m. Central time, except holidays.
+
+Technical support is provided to Licensee on a "best efforts" basis with a response time of twenty-four (24) hours. 
+
+When requesting technical support, Licensee shall identify the Order Number available from the email confirmation or the order receipt received when the order was placed. 
+
+SOFTWARE UPDATES AND UPGRADES. When NETIKUS, in its sole discretion, releases Software Updates, LICENSOR shall provide such Software Updates and Upgrades to any Licensee with a valid Software Maintenance Plan free of charge. Such Software Upgrades and Updates will be provided by LICENSOR when NETIKUS makes them generally available to the market. Licensee will be notified by e-mail about new Software Updates and Upgrades.
+
+It is NETIKUS' policy to utilize the Internet for software distribution. Licensees requiring CD-media and/or hard copies of documentation will be responsible for CD-media, hard copies of documentation, and shipping costs. Software Updates and Upgrades are made available to Licensee on NETIKUS' Web site. The license key file issued to Licensee contains information about the Software Maintenance Plan and should be utilized when installing Software Updates and Upgrades.
+
+All Software Updates and Upgrades provided, including documentation and program materials, are subject to this Agreement and the applicable License Agreement.
+
+MAINTENANCE RENEWAL. A Software Maintenance Plan renewal quote ("Renewal Quote") will be mailed to Licensee thirty (30) days prior to Maintenance expiration. The Renewal Quote will include the maintenance renewal dollar amount and billing and shipping information. This Software Maintenance Plan will be considered renewed once a purchase order has been issued or payment is received. If Maintenance has not been renewed, an invoice will be sent thirty (30) days prior to the expiration date, and again on the due date. Maintenance will be terminated if a purchase order or a payment is not received within 30 days after the due date. 
+
+TERMINATION. This Software Maintenance Plan may be terminated by Licensee subject to the thirty (30) days' advance written notice.
+
+FORCE MAJEURE. LICENSOR will not be liable for any failure to perform due to unforeseen circumstances or causes beyond LICENSOR'S reasonable control, including, but not limited to, acts of God, war, riot, embargoes, acts of civil or military authorities, fire, flood, accident, strikes, inability to secure transportation, facilities, fuel, energy, labor, or materials.
+
+LIMITED WARRANTY. 
+
+(1)	LICENSOR warrants that (a) the services performed hereunder shall be performed by qualified personnel in a skillful, competent and workmanlike manner consistent with good practices in the information technology services industry; and (b) the Software will perform substantially in accordance with printed materials and/or online or electronic documentation provided to Licensee for a period of sixty (60) days from the date of receipt, unless otherwise covered by maintenance. THE FOREGOING WARRANTY IS IN LIEU OF ALL OTHER WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+
+(2)	LICENSOR AND NETIKUS DO NOT WARRANT THAT THE FUNCTIONS CONTAINED IN THE SOFTWARE WILL MEET LICENSEE'S REQUIREMENTS OR THAT THE OPERATION OF THE SOFTWARE WILL BE UNINTERRUPTED OR ERROR FREE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE SOFTWARE IS WITH LICENSEE. SHOULD THE PROGRAM PROVE DEFECTIVE, LICENSEE (AND NOT LICENSOR OR NETIKUS) ASSUMES THE ENTIRE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION. LICENSOR AND NETIKUS DISCLAIM ALL OTHER WARRANTIES, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE, WITH REGARD TO THE SOFTWARE.
+
+LIMITATION OF LIABILITY. EXCEPT FOR LIABILITY FOR INFRINGEMENT CLAIMS, LICENSEE AGREES THAT (i) LICENSOR'S AND NETIKUS' LIABILITY UNDER THIS AGREEMENT SHALL NOT EXCEED THE AMOUNTS PAYABLE TO LICENSOR BY LICENSEE IN CONNECTION WITH THIS AGREEMENT; (ii) LICENSOR AND NETIKUS WILL NOT BE LIABLE FOR LOST PROFITS, OR FOR ANY CLAIM OR DEMAND AGAINST LICENSEE BY ANY OTHER PARTY, EXCEPT FOR INFRINGEMENT CLAIMS; AND (iii) IN NO EVENT WILL LICENSOR OR NETIKUS BE LIABLE FOR CONSEQUENTIAL DAMAGES EVEN IF LICENSOR OR NETIKUS HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+LICENSEE'S REMEDIES. LICENSOR'S AND NETIKUS' entire liability and Licensee's exclusive remedy shall be, at LICENSOR'S discretion, either (a) return of all amounts paid by Licensee to LICENSOR, or (b) repair or replacement of the Software or hardware that does not meet the requirements of LICENSOR'S limited warranty. This limited warranty is void if failure of the Software or hardware has resulted from accident, abuse, or misapplication. Any replacement Software will be warranted for the remainder of the original warranty period or thirty (30) days, whichever is longer.
+
+This Software Maintenance Plan together with the License Agreement constitutes the entire agreement between the parties with respect to the subject matter hereof, supersedes all prior and contemporaneous agreements and negotiations, oral or written, express or implied, and may only be modified in writing and signed by authorized representatives of both parties. No waiver of any breach hereof shall be held to be a waiver of any other or subsequent breach.
+

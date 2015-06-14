@@ -1,0 +1,21 @@
+pkgbase = nttoolkit
+	pkgdesc = Utilities designed to help network administrators with their daily administrative tasks (on linux limited version)
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://www.netikus.net/products_nttoolkit.html
+	install = nttoolkit.install
+	arch = i686
+	arch = x86_64
+	license = custom:NTToolKit
+	depends = unixodbc
+	depends = qt
+	depends = gksu
+	source = http://www.netikus.net/downloads/products/nttoolkit/nttoolkit_v200_linux_setup.bin
+	source = nttoolkit.desktop
+	source = license.txt
+	md5sums = 2322482047bd2182c22a392107d3d5b6
+	md5sums = 185d64aaf4cec45ef5cddded57cae369
+	md5sums = 8f723f4be3e98e88b27487b07c9aa820
+
+pkgname = nttoolkit
+
