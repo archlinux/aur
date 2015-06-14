@@ -1,0 +1,17 @@
+pkgbase = ruby-twitter-stream
+	pkgdesc = Twitter realtime API client
+	pkgver = 0.1.16
+	pkgrel = 1
+	url = http://github.com/voloko/twitter-stream
+	arch = any
+	depends = ruby
+	depends = ruby-eventmachine
+	depends = ruby-simple_oauth-0.1
+	depends = ruby-http_parser.rb-0.5
+	noextract = twitter-stream-0.1.16.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/twitter-stream-0.1.16.gem
+	sha512sums = 604ec4b22899d1c487681c8834d12b2683bc4e44cbe5dfb8d24249f3fd36fb62c201270997b5b7814e66f57e0ce3342de9f56a6fefa6731cb3bf9d4e9e713fdc
+
+pkgname = ruby-twitter-stream
+
