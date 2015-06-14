@@ -1,7 +1,7 @@
 pkgbase = nvidia-340xx-rt
 	pkgdesc = NVIDIA 340xx drivers for linux-rt.
 	pkgver = 340.76
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.nvidia.com/
 	install = nvidia.install
 	arch = i686
