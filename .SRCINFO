@@ -1,0 +1,16 @@
+pkgbase = xylib
+	pkgdesc = Portable C++ library for reading files that contain x-y data from powder diffraction, spectroscopy or other experimental methods.
+	pkgver = 1.4
+	pkgrel = 3
+	url = http://xylib.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = boost
+	depends = wxgtk
+	options = !libtool
+	source = https://github.com/wojdyr/xylib/releases/download/v1.4/xylib-1.4.tar.bz2
+	md5sums = e6434e8ff897106c9e5b41999794b5ad
+
+pkgname = xylib
+
