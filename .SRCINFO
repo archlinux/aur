@@ -1,0 +1,16 @@
+pkgbase = geant4-neutronhpdata
+	pkgdesc = Neutron data files with thermal cross sections
+	pkgver = 4.5
+	pkgrel = 1
+	url = http://geant4.cern.ch/
+	install = geant4-neutronhpdata.install
+	arch = any
+	license = GPL
+	depends = geant4>=10.01
+	source = http://geant4.cern.ch/support/source/G4NDL.4.5.tar.gz
+	source = geant4-neutronhpdata.install
+	md5sums = fd29c45fe2de432f1f67232707b654c0
+	md5sums = f3fc5a858e4bd049f95046bf1e1b3d10
+
+pkgname = geant4-neutronhpdata
+
