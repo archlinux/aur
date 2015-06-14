@@ -7,6 +7,8 @@ pkgdesc="The new Lighty: A small, secure, scalable, flexible webserver"
 arch=(i686 x86_64)
 url="http://redmine.lighttpd.net/wiki/lighttpd2/"
 license=('MIT')
+provides=('lighttpd2')
+conflicts=('lighttpd2')
 depends=("libev" "ragel" "lua51" "zlib" "bzip2" "openssl" "glib2")
 optdepends=("valgrind: for deep debuggins")
 makedepends=("pkg-config" "git")
@@ -22,10 +24,6 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${pkgname}"
-
-	#
-	# BUILD HERE	
-	#
 	
 	export LUA_LIBS=$(pkg-config --libs lua5.1)
 	export LUA_CFLAGS=$(pkg-config --cflags lua5.1)
