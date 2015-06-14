@@ -1,0 +1,15 @@
+pkgbase = ruby-addressable
+	pkgdesc = URI Implementation
+	pkgver = 2.3.8
+	pkgrel = 1
+	url = https://github.com/sporkmonger/addressable
+	arch = any
+	license = Apache License 2.0
+	depends = ruby
+	noextract = addressable-2.3.8.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/addressable-2.3.8.gem
+	sha512sums = 56c3f4b95a78af3b35fa0813cc0b010f89c698fefb0c79865af553ba5c2a162b936921de40b2659498812efc1692ed49e95f9984a044c0ed42f96a26b666b5fc
+
+pkgname = ruby-addressable
+
