@@ -1,0 +1,17 @@
+pkgbase = mopidy-radio-de
+	pkgdesc = Mopidy extension to listen to internet radio stations and podcasts listed at radio.de, rad.io, radio.fr, and radio.at.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/hechtus/mopidy-radio-de
+	arch = any
+	license = APACHE
+	makedepends = python2
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-dateutil
+	depends = mopidy>=0.18
+	source = https://pypi.python.org/packages/source/M/Mopidy-radio-de/Mopidy-radio-de-0.2.0.tar.gz
+	md5sums = 6c4974d2d9530104599b51e7d2b052bb
+
+pkgname = mopidy-radio-de
+
