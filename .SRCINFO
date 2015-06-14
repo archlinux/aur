@@ -1,0 +1,13 @@
+pkgbase = quake3-edawn
+	pkgdesc = A Quake III Arena mod with numerous improvements
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://edawn-mod.org/
+	arch = any
+	license = unknown
+	depends = quake3
+	source = http://edawn-mod.org/binaries/edawn-1.4-1.zip
+	sha256sums = c72bcc13fd5f887c59afd42995fb2f6091b16ac4c4f4b41b9745aaa018fe4d34
+
+pkgname = quake3-edawn
+
