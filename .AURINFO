@@ -1,0 +1,21 @@
+pkgbase = perl-parse-functions
+	pkgdesc = Parse-Functions - list all the functions in source code
+	pkgver = 0.01
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Parse-Functions/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	checkdepends = perl
+	makedepends = perl
+	depends = perl
+	provides = perl-parse-functions-csharp
+	provides = perl-parse-functions-java
+	provides = perl-parse-functions-perl
+	provides = perl-parse-functions-python
+	provides = perl-parse-functions-ruby
+	source = http://search.cpan.org/CPAN/authors/id/S/SZ/SZABGAB/Parse-Functions-0.01.tar.gz
+	options = !emptydirs
+
+pkgname = perl-parse-functions
+
