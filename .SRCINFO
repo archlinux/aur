@@ -1,0 +1,17 @@
+pkgbase = dialog-doc
+	pkgdesc = Samples for the dialog, a tool to display dialog boxes from shell scripts
+	pkgver = 1.2_20130928
+	pkgrel = 1
+	url = http://invisible-island.net/dialog/
+	arch = any
+	license = GPL
+	depends = sh
+	depends = bash
+	depends = dialog>=1.1_20110118
+	source = ftp://invisible-island.net/dialog/dialog-1.2-20130928.tgz
+	source = ftp://invisible-island.net/dialog/dialog-1.2-20130928.tgz.asc
+	sha256sums = 6fcf8daa50335e4d08da9f4f5ea5e1025efe84c3a719a56e871eb83ed0fd2b4c
+	sha256sums = SKIP
+
+pkgname = dialog-doc
+
