@@ -1,6 +1,6 @@
 pkgbase = rtspeccy-git
 	pkgdesc = Real time spectrum analyzer (audio)
-	pkgver = 13.06
+	pkgver = 15.03
 	pkgrel = 1
 	url = http://www.uninformativ.de/projects/?q=rtspeccy
 	arch = i686

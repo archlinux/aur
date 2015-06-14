@@ -2,7 +2,7 @@
 # Contributor: Army
 _pkgname=rtspeccy
 pkgname=$_pkgname-git
-pkgver=13.06
+pkgver=15.03
 pkgrel=1
 pkgdesc="Real time spectrum analyzer (audio)"
 arch=('i686' 'x86_64')
