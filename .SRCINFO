@@ -1,0 +1,15 @@
+pkgbase = dvb-tevii-fw
+	pkgdesc = Firmware for Tevii DVB-S/S2 cards and boxes
+	pkgver = 20140428
+	pkgrel = 1
+	url = http://www.tevii.com
+	arch = any
+	license = unknown
+	makedepends = tar
+	conflicts = dvb-fe-ds3000-fw
+	conflicts = dvb-tevii-s482-fw
+	source = http://www.tevii.com/Tevii_Product_20140428_media_build_b6.tar.bz2.rar
+	sha1sums = b81a4f7b6406c8dc9705904869e57240d489c1e2
+
+pkgname = dvb-tevii-fw
+
