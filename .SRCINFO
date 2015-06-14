@@ -1,0 +1,17 @@
+pkgbase = ruby-rspec_junit_formatter
+	pkgdesc = RSpec JUnit XML formatter
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = http://github.com/sj26/rspec_junit_formatter
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-rspec-core
+	depends = ruby-builder
+	noextract = rspec_junit_formatter-0.2.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rspec_junit_formatter-0.2.3.gem
+	sha512sums = fe01f7e1039ed033df250b8a2b65ee2c3eb6141a81891d544a1b9bcde3ea7235a5880895d966aef158d322ee4acf46452f6a7e066d71380c32e7c5895ab4989b
+
+pkgname = ruby-rspec_junit_formatter
+
