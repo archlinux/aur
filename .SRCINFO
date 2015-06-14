@@ -1,0 +1,14 @@
+pkgbase = python2-texthistory
+	pkgdesc = Python2 undo/redo engine for plain text and wxPython TextCtrl
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/kynikos/lib.py.text-history
+	arch = any
+	license = GPL3
+	depends = python2
+	optdepends = wxpython: support for wx.TextCtrl
+	source = http://downloads.sourceforge.net/project/kynikos/lib.py.text-history/python2-texthistory-1.0.1.tar.bz2
+	sha256sums = 938f40c0cedb824550296fd1501f3ba1d4715126b645515c8672858efbd2a3b4
+
+pkgname = python2-texthistory
+
