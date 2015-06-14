@@ -1,0 +1,4 @@
+post_install(){
+	echo "Examples of files: sessionrc, toolrc, menurc and contextrc have been installed to /usr/share/gimp-paint-studio."
+	echo "Copy these files to your ~/.gimp-'version of gimp/'"
+}

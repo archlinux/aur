@@ -1,0 +1,21 @@
+pkgbase = gimp-paint-studio
+	pkgdesc = Collection of brushes and accompanying tool presets intended to speed up repetitive tasks by avoiding the need to manually reset tool options after each change
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://code.google.com/p/gps-gimp-paint-studio
+	install = gps.install
+	arch = any
+	license = custom:Artistic License
+	license = GPL
+	license = CCPL
+	depends = gimp
+	options = !strip
+	source = gimp-paint-studio-2.0.zip::http://gps-gimp-paint-studio.googlecode.com/files/GPS%202_0%20final.zip
+	source = LICENSE
+	source = http://gps-gimp-paint-studio.googlecode.com/files/sessionrc
+	md5sums = 6ce9b9ec4fea8c2f4f78837f53cf9096
+	md5sums = 6aa6d7145a6041193bcca0f915152ef0
+	md5sums = 72e1b69685fdc6c3f8053e90c392ff93
+
+pkgname = gimp-paint-studio
+
