@@ -1,0 +1,19 @@
+pkgbase = ogmrip-dirac
+	pkgdesc = Plugin for OGMRip which enables transcoding to dirac for ogmrip
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://ogmrip.sourceforge.net/en/plugins.html
+	arch = i686
+	arch = x86_64
+	groups = ogmrip
+	license = LGPL
+	makedepends = intltool>=0.35
+	depends = ogmrip>=0.13
+	depends = dirac>=0.9
+	source = http://downloads.sourceforge.net/sourceforge/ogmrip/ogmrip-dirac-0.2.tar.gz
+	source = http://downloads.sourceforge.net/project/ogmrip/ogmrip-dirac/0.2/README
+	md5sums = 0c46f74198f66c3c43b9ac653ba64a90
+	md5sums = f0e57c95c50814cf7594dc128ba074d6
+
+pkgname = ogmrip-dirac
+
