@@ -1,0 +1,26 @@
+pkgbase = notepadqq-bin
+	pkgdesc = A Linux clone of Notepad++
+	pkgver = 0.46.0
+	pkgrel = 1
+	url = http://notepadqq.altervista.org/wp/
+	install = notepadqq-bin.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = pacman>=4.2.0
+	depends = qt5-webkit
+	depends = desktop-file-utils
+	optdepends = notepadqq-common: Common UI libs
+	optdepends = notepadqq-gtk: enables GTK style on startup
+	provides = notepadqq=0.46.0
+	conflicts = notepadqq-git
+	conflicts = notepadqq
+	options = !strip
+	source_i686 = http://ppa.launchpad.net/notepadqq-team/notepadqq/ubuntu/pool/main/n/notepadqq/notepadqq_0.46.0-0~utopic1_i386.deb
+	md5sums_i686 = 22510e23dfc296f8fd18132145c00a1d
+	source_x86_64 = http://ppa.launchpad.net/notepadqq-team/notepadqq/ubuntu/pool/main/n/notepadqq/notepadqq_0.46.0-0~utopic1_amd64.deb
+	depends_x86_64 = gcc-libs-multilib
+	md5sums_x86_64 = 60d53acd548c32fc7a71144ae523e100
+
+pkgname = notepadqq-bin
+
