@@ -1,0 +1,17 @@
+pkgbase = pyqt3
+	pkgdesc = A set of Python bindings for the Qt3 toolkit
+	pkgver = 3.18.1
+	pkgrel = 14
+	url = http://www.riverbankcomputing.com/software/pyqt/intro
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2-sip
+	depends = qscintilla-qt3
+	source = http://downloads.sourceforge.net/project/pyqt/PyQt3/PyQt-x11-gpl-3.18.1.tar.gz
+	source = sip415_fix.patch
+	md5sums = f1d120495d1aaf393819e988c0a7bb7e
+	md5sums = d695dc23d2211a97d3631ec82d8afd67
+
+pkgname = pyqt3
+
