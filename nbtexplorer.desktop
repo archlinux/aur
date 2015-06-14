@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=NBTExplorer
+GenericName=NBTExplorer
+Comment=A Minecraft NBT file editor for editing world and player files.
+Exec=nbtexplorer
+Icon=/usr/share/pixmaps/nbtexplorer.png
+Terminal=false
+Type=Application
+Categories=Game;
