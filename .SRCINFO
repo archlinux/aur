@@ -1,0 +1,24 @@
+pkgbase = perl-orlite-migrate
+	pkgdesc = ORLite::Migrate - Extremely light weight SQLite-specific schema migration'
+	pkgver = 1.10
+	pkgrel = 2
+	url = http://search.cpan.org/dist/ORLite-Migrate
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-file-pushd
+	depends = perl-dbd-sqlite
+	depends = perl>=5.10.1
+	depends = perl-params-util
+	depends = perl-probe-perl
+	depends = perl-ipc-run3
+	depends = perl-dbi
+	depends = perl-orlite
+	provides = perl-orlite-migrate-patch
+	provides = perl-orlite-migrate-timeline
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/ORLite-Migrate-1.10.tar.gz
+	md5sums = a397c8cecde0ed2ecbe5461f8064bbcb
+
+pkgname = perl-orlite-migrate
+
