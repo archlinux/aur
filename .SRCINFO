@@ -1,0 +1,21 @@
+pkgbase = perl-config-std
+	pkgdesc = Config::Std - Load and save configuration files in a standard format
+	pkgver = 0.901
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Config-Std
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-class-std
+	depends = perl-class-std
+	provides = perl-config-std-block
+	provides = perl-config-std-comment
+	provides = perl-config-std-gap
+	provides = perl-config-std-hash
+	provides = perl-config-std-keyval
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BR/BRICKER/Config-Std-0.901.tar.gz
+	md5sums = e18f550af8d402e245edb7927c73fd4c
+
+pkgname = perl-config-std
+
