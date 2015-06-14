@@ -1,0 +1,19 @@
+pkgbase = ogmrip-nero-aac
+	pkgdesc = Plugin which adds support for Nero-AAC audio codec for ogmrip
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://ogmrip.sourceforge.net/en/plugins.html
+	arch = i686
+	arch = x86_64
+	groups = ogmrip
+	license = LGPL
+	depends = ogmrip>=0.13
+	depends = mplayer>=0.92
+	depends = neroaacenc
+	source = http://downloads.sourceforge.net/sourceforge/ogmrip/ogmrip-nero-aac-0.5.tar.gz
+	source = http://downloads.sourceforge.net/project/ogmrip/ogmrip-nero-aac/0.5/README
+	md5sums = 209c2e4c77e2593e9092f7326f0fab75
+	md5sums = fd19295854fea0d9f7a3ab6666f6f262
+
+pkgname = ogmrip-nero-aac
+
