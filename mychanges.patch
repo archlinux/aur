@@ -1,0 +1,829 @@
+diff -aur cnijfilter-source-3.20-1/backend/src/cnij_usb.c cnijfilter-source-3.20-1.new/backend/src/cnij_usb.c
+--- cnijfilter-source-3.20-1/backend/src/cnij_usb.c	2009-04-30 11:10:20.000000000 +0430
++++ cnijfilter-source-3.20-1.new/backend/src/cnij_usb.c	2013-07-26 00:12:36.279988102 +0430
+@@ -91,15 +91,15 @@
+ main(int  argc,		/* I - Number of command-line arguments (6 or 7) */
+      char *argv[])	/* I - Command-line arguments */
+ {
+-	char	method[255],			/* Method in URI 				   	*/
+-			hostname[1024],			/* Hostname 						*/
+-			username[255],			/* Username info (not used) 		*/
+-			resource[1024],			/* Resource info (device and options) */
+-			*options;				/* Pointer to options 				*/
+-	int		port;					/* Port number (not used) 			*/
+-	FILE	*fp;					/* Print file 						*/
+-	int		copies;					/* Number of copies to print 		*/
+-	int		fd;						/* USB device 						*/
++//	char	method[255];			/* Method in URI 			*/
++//	char	hostname[1024];			/* Hostname 				*/
++//	char	username[255];			/* Username info (not used) 		*/
++	char	resource[1024];			/* Resource info (device and options) 	*/
++	char	*options;			/* Pointer to options 			*/
++//	int	port;				/* Port number (not used) 		*/
++	FILE	*fp;				/* Print file 				*/
++	int	copies;				/* Number of copies to print 		*/
++	int	fd;				/* USB device 				*/
+ 	char	*noent_mes = "INFO: Printer cable not connected or printer power off; will retry in 30 seconds...\n";
+ 	char	*busy_mes = "INFO: USB port busy; will retry in 30 seconds...\n";
+ 	short	noentmes_len = strlen( noent_mes ) + 1;
+@@ -237,11 +237,11 @@
+ 	int	i;			/* Looping var */
+ 	int	fd;			/* File descriptor */
+ 	char	device[255];		/* Device filename */
+-	FILE	*probe;			/* /proc/bus/usb/devices file */
+-	char	line[1024],		/* Line from file */
+-	*delim,			/* Delimiter in file */
+-	make[IPP_MAX_NAME],	/* Make from file */
+-	model[IPP_MAX_NAME];	/* Model from file */
++//	FILE	*probe;			/* /proc/bus/usb/devices file */
++//	char	line[1024];		/* Line from file */
++//	char	*delim;			/* Delimiter in file */
++//	char	make[IPP_MAX_NAME];	/* Make from file */
++//	char	model[IPP_MAX_NAME];	/* Model from file */
+ 	/* Ver.3.20 */
+ 	char  des_s[1024];
+ 	short model_found = 0;
+diff -aur cnijfilter-source-3.20-1/backendnet/backend/cnijnet.c cnijfilter-source-3.20-1.new/backendnet/backend/cnijnet.c
+--- cnijfilter-source-3.20-1/backendnet/backend/cnijnet.c	2009-04-06 14:19:22.000000000 +0430
++++ cnijfilter-source-3.20-1.new/backendnet/backend/cnijnet.c	2013-07-26 00:12:36.279988102 +0430
+@@ -94,14 +94,14 @@
+ main(int  argc,		/* I - Number of command-line arguments (6 or 7) */
+      char *argv[])	/* I - Command-line arguments */
+ {
+-	char	method[255],			/* Method in URI 				   	*/
+-			hostname[1024],			/* Hostname 						*/
+-			username[255],			/* Username info (not used) 		*/
+-			resource[1024],			/* Resource info (device and options) */
+-			*options;				/* Pointer to options 				*/
+-	int		port;					/* Port number (not used) 			*/
+-	FILE	*fp;					/* Print file 						*/
+-	int		copies;					/* Number of copies to print 		*/
++//	char	method[255];			/* Method in URI 			*/
++//	char	hostname[1024];			/* Hostname 				*/
++//	char	username[255];			/* Username info (not used) 		*/
++	char	resource[1024];			/* Resource info (device and options) 	*/
++	char	*options;			/* Pointer to options 			*/
++//	int	port;				/* Port number (not used) 		*/
++	FILE	*fp;				/* Print file 				*/
++	int	copies;				/* Number of copies to print 		*/
+ 	int 	rtn=0;
+ 	
+  /*
+diff -aur cnijfilter-source-3.20-1/backendnet/backend/cnijnetlm.c cnijfilter-source-3.20-1.new/backendnet/backend/cnijnetlm.c
+--- cnijfilter-source-3.20-1/backendnet/backend/cnijnetlm.c	2009-05-21 14:21:18.000000000 +0430
++++ cnijfilter-source-3.20-1.new/backendnet/backend/cnijnetlm.c	2013-07-26 00:12:36.279988102 +0430
+@@ -79,7 +79,7 @@
+ #endif /* HAVE_SIGACTION && !HAVE_SIGSET */
+ 
+ 	int sts ;									/* function status		*/
+-	int utilbyte = 0;
++//	int utilbyte = 0;
+ 
+ /*
+ * When a signal (SIGTERM/SIGPIPE) is received, printing process
+@@ -145,7 +145,7 @@
+ int		net_lgmon_exec( int argc, int mode, FILE *fp, int copies , char *resource, char *user, char *document, char *options ) {
+ 	int		rtn ;								/* return status buffer		*/
+ 	int		pipe_fds[2] ;						/* pipe disripter			*/
+-	struct  sigaction action;
++//	struct  sigaction action;
+ 	
+ 	char model_number[64];
+ 	int is_direct=0;
+@@ -172,7 +172,7 @@
+ 	else if ( g_pid == 0 ) {					/* child process 			*/
+ 		static	int		cmd_argv_cnt = 0 ;		/* argument counter			*/
+ 		static	char	*cmd_argv[16] ;			/* command argument beffer	*/
+-		static  char	*cmd_sh_path = "/bin/sh";	/* shell path			*/
++//		static  char	*cmd_sh_path = "/bin/sh";	/* shell path			*/
+ 		static	char	str_msg[128] ;			/* message beffer			*/
+ 		memset( str_msg, 0x00, sizeof(str_msg) ) ;
+ 		
+@@ -256,6 +256,7 @@
+ 		
+ 		// waitpid( g_pid, NULL, 0) ;		/* child process wait		*/
+ 		child_pid = wait(&child_status);
++		(void) child_pid;
+ 		
+ 		if (!WIFEXITED(child_status)){
+ 			return( CANON_STS_NG ) ;
+@@ -365,6 +366,10 @@
+ 			fds.events = POLLOUT;
+ 			
+ 			pollst = poll(&fds, 1, polltime);
++			if (pollst == -1) {
++				goto error;
++			}
++
+ 			
+ 			if (fds.revents & POLLOUT){
+ 				fseek(tempfp, read_position, SEEK_SET);
+diff -aur cnijfilter-source-3.20-1/backendnet/lmonitor/cnijnetchk.c cnijfilter-source-3.20-1.new/backendnet/lmonitor/cnijnetchk.c
+--- cnijfilter-source-3.20-1/backendnet/lmonitor/cnijnetchk.c	2009-06-08 15:19:07.000000000 +0430
++++ cnijfilter-source-3.20-1.new/backendnet/lmonitor/cnijnetchk.c	2013-07-26 00:12:36.283321388 +0430
+@@ -66,7 +66,7 @@
+ 	get_packet_size
+ ********************************************************************************/
+ int get_packet_size(int model){
+-	int i=0;
++//	int i=0;
+ 	PACKETSIZE_TABLE *p=NULL;
+ 	PACKETSIZE_TABLE size_table[] = {
+ 		{360,	10},
+@@ -153,7 +153,8 @@
+ 	sendData
+ ********************************************************************************/
+ int sendData(CNNLHANDLE hnd, void *buffer, unsigned long size, int sendmode, FILE *fp){
+-	unsigned long wsize=0, res_size=0, req_size=0, rsize=0;
++	unsigned long wsize=0, res_size=0, req_size=0;
++//	unsigned long rsize=0;
+ 	int ret, status;
+ 	time_t lastchecktime=0;
+ 	
+@@ -194,7 +195,8 @@
+ 	char command_buffer[CNCL_MAKECOMMAND_BUF_LEN];
+ 	char read_buffer[2048];
+ 	static char job_id[16];
+-	int dispatch_repeat,i, ret;
++//	int dispatch_repeat, i;
++	int ret;
+ 	
+ 	memset(command_buffer, 0x00, sizeof(command_buffer));
+ 	
+@@ -288,7 +290,7 @@
+ 	bufsize = (src[0] << 8) + src[1]; 
+ 	buf = (char*)&(src[2]);
+ 
+-	len = strlen(buf);
++	len = strnlen(buf, bufsize);
+ 	if (len > 1023) len = 1023;
+ 	
+ 	keylen = strlen(key);
+diff -aur cnijfilter-source-3.20-1/backendnet/lmonitor/cnijnetprn.c cnijfilter-source-3.20-1.new/backendnet/lmonitor/cnijnetprn.c
+--- cnijfilter-source-3.20-1/backendnet/lmonitor/cnijnetprn.c	2009-06-15 11:39:28.000000000 +0430
++++ cnijfilter-source-3.20-1.new/backendnet/lmonitor/cnijnetprn.c	2013-07-26 00:12:36.283321388 +0430
+@@ -211,10 +211,11 @@
+ ){
+ 	int  errcode = 0;
+ 	char ipaddr[STRING_SHORT], hostname[STRING_SHORT];
+-	unsigned long written_size=0;
++//	unsigned long written_size=0;
+ 	char *rbuffer, *p=NULL;
+-	uint32_t len=0, wlen=0;
+-	int ret;
++	uint32_t len=0;
++//	uint32_t wlen=0;
++//	int ret;
+ 	void *lib_handle = NULL;
+ 	char library_path[512];
+ 	
+@@ -255,6 +256,8 @@
+ 		if (CNNL_Config(hnd, CNNL_CONFIG_SET_VERSION, &latest_version, &param_size) != CNNL_RET_SUCCESS){
+ 			goto error_open;
+ 		}
++
++		goto find_printer;
+ 		
+ find_printer:
+ 		/* ---------------------------------------------------------------------
+@@ -652,7 +655,7 @@
+ 	unsigned long d_time;
+ 	fd_set  fds;
+ 	struct timeval timeout;
+-	int errorcount=0;
++//	int errorcount=0;
+ 	
+ 	while (!(mode & CNNL_JOB_CANCELLED)){
+ 		timeout.tv_sec = 3;
+@@ -677,7 +680,7 @@
+ 				mode |= CNNL_JOB_ERROR;
+ 				return 0;
+ 			} else {
+-				errorcount=0;
++//				errorcount=0;
+ 			}
+ 		}
+ 	}
+diff -aur cnijfilter-source-3.20-1/cngpij/cngpij/getipc.c cnijfilter-source-3.20-1.new/cngpij/cngpij/getipc.c
+--- cnijfilter-source-3.20-1/cngpij/cngpij/getipc.c	2009-04-23 14:26:50.000000000 +0430
++++ cnijfilter-source-3.20-1.new/cngpij/cngpij/getipc.c	2013-07-26 00:12:36.283321388 +0430
+@@ -61,12 +61,18 @@
+ 
+ 	while( (client_fd = accept(server_fd, (struct sockaddr *)&sun, &len)) >= 0 )
+ 	{
++#define READ_FD_AND_BREAK_UPON_ERROR(FD, BUF, LEN) \
++		if ( read(FD, BUF, LEN) == -1 ) \
++		{ \
++			ret = RET_ERROR; \
++			break; \
++		}
+ 		/* read command first */
+-		read(client_fd, buf, IPCCMDLEN);
++		READ_FD_AND_BREAK_UPON_ERROR(client_fd, buf, IPCCMDLEN);
+ 
+ 		if( strcmp(buf, "PRINT") == 0 )
+ 		{											/* PRINT command */
+-			read(client_fd, pipc, sizeof(IPCU));
++			READ_FD_AND_BREAK_UPON_ERROR(client_fd, pipc, sizeof(IPCU));
+ 			close(client_fd);
+ 			ret = RET_PRINT;
+ 			break;
+@@ -79,28 +85,28 @@
+ 		}
+ 		else if( strcmp(buf, "PDATA") == 0 )
+ 		{											/* PDATA command (for maintenance) */
+-			read(client_fd, pipc, sizeof(IPCU));
++			READ_FD_AND_BREAK_UPON_ERROR(client_fd, pipc, sizeof(IPCU));
+ 			close(client_fd);
+ 			ret = RET_PDATA;
+ 			break;
+ 		}
+ 		else if( strcmp(buf, "POWEROFF") == 0 )
+ 		{											/* POWEROFF (for maintenance. added in 09_2h) */
+-			read(client_fd, pipc, sizeof(IPCU));
++			READ_FD_AND_BREAK_UPON_ERROR(client_fd, pipc, sizeof(IPCU));
+ 			close(client_fd);
+ 			ret = RET_POWEROFF;
+ 			break;
+ 		}
+ 		else if( strcmp(buf, "FDATA") == 0 )
+ 		{											/* FDATA command (for maintenance) */
+-			read(client_fd, pipc, sizeof(IPCU));
++			READ_FD_AND_BREAK_UPON_ERROR(client_fd, pipc, sizeof(IPCU));
+ 			close(client_fd);
+ 			ret = RET_FDATA;
+ 			break;
+ 		}
+ 		else if( strcmp(buf, "WDATA") == 0 )
+ 		{											/* WDATA command (for maintenance) */
+-			read(client_fd, pipc, sizeof(IPCU));
++			READ_FD_AND_BREAK_UPON_ERROR(client_fd, pipc, sizeof(IPCU));
+ 			close(client_fd);
+ 			ret = RET_WDATA;
+ 			break;
+diff -aur cnijfilter-source-3.20-1/cngpijmon/cnijnpr/cnijnpr/cnijnpr.c cnijfilter-source-3.20-1.new/cngpijmon/cnijnpr/cnijnpr/cnijnpr.c
+--- cnijfilter-source-3.20-1/cngpijmon/cnijnpr/cnijnpr/cnijnpr.c	2009-06-08 11:42:52.000000000 +0430
++++ cnijfilter-source-3.20-1.new/cngpijmon/cnijnpr/cnijnpr/cnijnpr.c	2013-07-26 00:12:36.283321388 +0430
+@@ -85,7 +85,7 @@
+ /*		argv[6]: modelID                      */
+ /*                                            */
+ /**********************************************/
+-int main (int argc, const char **argv)
++int main (int argc, char *argv[])
+ {
+ 	int		rtn = 0 ;
+ 	int		wrtn = 0 ;
+diff -aur cnijfilter-source-3.20-1/cngpijmon/src/bjcupsmon_ui.c cnijfilter-source-3.20-1.new/cngpijmon/src/bjcupsmon_ui.c
+--- cnijfilter-source-3.20-1/cngpijmon/src/bjcupsmon_ui.c	2009-07-28 11:03:03.000000000 +0430
++++ cnijfilter-source-3.20-1.new/cngpijmon/src/bjcupsmon_ui.c	2013-07-26 00:12:36.283321388 +0430
+@@ -26,6 +26,7 @@
+ 	#include  "support.h"
+ #endif
+ 
++#include "interface.h"
+ #include "bjcupsmon_common.h"
+ #include "bjcupsmon_ui.h"
+ #include "bjcupsmon_funcprot.h"
+diff -aur cnijfilter-source-3.20-1/cnijfilter/src/bjfimage.c cnijfilter-source-3.20-1.new/cnijfilter/src/bjfimage.c
+--- cnijfilter-source-3.20-1/cnijfilter/src/bjfimage.c	2009-03-26 09:41:05.000000000 +0430
++++ cnijfilter-source-3.20-1.new/cnijfilter/src/bjfimage.c	2013-07-26 00:12:36.286654674 +0430
+@@ -40,6 +40,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <png.h>
++#include <string.h>
+ 
+ #include "cpktypes.h"
+ #include "cncl.h"
+diff -aur cnijfilter-source-3.20-1/cnijfilter/src/getipc.c cnijfilter-source-3.20-1.new/cnijfilter/src/getipc.c
+--- cnijfilter-source-3.20-1/cnijfilter/src/getipc.c	2009-03-26 09:41:05.000000000 +0430
++++ cnijfilter-source-3.20-1.new/cnijfilter/src/getipc.c	2013-07-26 00:12:36.286654674 +0430
+@@ -63,12 +63,19 @@
+ 	if (listen(s, 5))
+ 		return RET_ERROR;
+ 
+-	while ((c = accept(s, (struct sockaddr *)&sun, &adrlen)) >= 0) {
++	while ((c = accept(s, (struct sockaddr *)&sun, &adrlen)) >= 0)
++	{
++#define READ_FD_AND_BREAK_UPON_ERROR(FD, BUF, LEN) \
++		if ( read(FD, BUF, LEN) == -1 ) \
++		{ \
++			ret = RET_ERROR; \
++			break; \
++		}
+ 		/* read command first */
+-		read(c, buf, IPCCMDLEN);
++		READ_FD_AND_BREAK_UPON_ERROR(c, buf, IPCCMDLEN);
+ 
+ 		if (strcmp(buf, "PRINT") == 0) {			/* PRINT command */
+-			read(c, pipc, sizeof(IPCU));
++			READ_FD_AND_BREAK_UPON_ERROR(c, pipc, sizeof(IPCU));
+ 			close(c);
+ 			ret = RET_PRINT;
+ 			break;
+@@ -79,13 +86,13 @@
+ 			break;
+ 		}
+ 		else if (strcmp(buf, "PDATA") == 0) {		/* PDATA command (for maintenance) */
+-			read(c, pipc, sizeof(IPCU));
++			READ_FD_AND_BREAK_UPON_ERROR(c, pipc, sizeof(IPCU));
+ 			close(c);
+ 			ret = RET_PDATA;
+ 			break;
+ 		}
+ 		else if (strcmp(buf, "FDATA") == 0) {		/* FDATA command (to print testpattern) */
+-			read(c, pipc, sizeof(IPCU));
++			READ_FD_AND_BREAK_UPON_ERROR(c, pipc, sizeof(IPCU));
+ 			close(c);
+ 			ret = RET_FDATA;
+ 			break;
+diff -aur cnijfilter-source-3.20-1/lgmon/src/560ifunc.c cnijfilter-source-3.20-1.new/lgmon/src/560ifunc.c
+--- cnijfilter-source-3.20-1/lgmon/src/560ifunc.c	2009-04-24 10:49:35.000000000 +0430
++++ cnijfilter-source-3.20-1.new/lgmon/src/560ifunc.c	2013-07-26 00:12:36.286654674 +0430
+@@ -103,7 +103,7 @@
+   	}
+   	
+   }
+-  return(OK);
++  return ret;
+ }
+ 
+ 
+diff -aur cnijfilter-source-3.20-1/lgmon/src/850ifunc.c cnijfilter-source-3.20-1.new/lgmon/src/850ifunc.c
+--- cnijfilter-source-3.20-1/lgmon/src/850ifunc.c	2009-04-24 10:49:35.000000000 +0430
++++ cnijfilter-source-3.20-1.new/lgmon/src/850ifunc.c	2013-07-26 00:12:36.286654674 +0430
+@@ -103,7 +103,7 @@
+   	}
+   	
+   }
+-  return(OK);
++  return ret;
+ }
+ 
+ 
+diff -aur cnijfilter-source-3.20-1/lgmon/src/860ifunc.c cnijfilter-source-3.20-1.new/lgmon/src/860ifunc.c
+--- cnijfilter-source-3.20-1/lgmon/src/860ifunc.c	2009-04-24 10:49:35.000000000 +0430
++++ cnijfilter-source-3.20-1.new/lgmon/src/860ifunc.c	2013-07-26 00:12:36.286654674 +0430
+@@ -103,7 +103,7 @@
+   	}
+   	
+   }
+-  return(OK);
++  return ret;
+ }
+ 
+ 
+diff -aur cnijfilter-source-3.20-1/lgmon/src/950ifunc.c cnijfilter-source-3.20-1.new/lgmon/src/950ifunc.c
+--- cnijfilter-source-3.20-1/lgmon/src/950ifunc.c	2009-04-24 10:49:35.000000000 +0430
++++ cnijfilter-source-3.20-1.new/lgmon/src/950ifunc.c	2013-07-26 00:12:36.286654674 +0430
+@@ -145,7 +145,7 @@
+   	}
+   	
+   }
+-  return(OK);
++  return ret;
+ }
+ 
+ 
+diff -aur cnijfilter-source-3.20-1/lgmon/src/990ifunc.c cnijfilter-source-3.20-1.new/lgmon/src/990ifunc.c
+--- cnijfilter-source-3.20-1/lgmon/src/990ifunc.c	2009-04-24 10:49:35.000000000 +0430
++++ cnijfilter-source-3.20-1.new/lgmon/src/990ifunc.c	2013-07-26 00:12:36.286654674 +0430
+@@ -145,7 +145,7 @@
+   	}
+   	
+   }
+-  return(OK);
++  return ret;
+ }
+ 
+ 
+diff -aur cnijfilter-source-3.20-1/lgmon/src/bscc2sts.c cnijfilter-source-3.20-1.new/lgmon/src/bscc2sts.c
+--- cnijfilter-source-3.20-1/lgmon/src/bscc2sts.c	2009-04-24 10:49:35.000000000 +0430
++++ cnijfilter-source-3.20-1.new/lgmon/src/bscc2sts.c	2013-07-26 00:12:36.289987934 +0430
+@@ -202,7 +202,8 @@
+   ,{"MP560",		processformp540}
+   ,{"MP640",		processformp630}
+   ,{"IP4700",		processformp630}
+-  ,{ENDTAG, 0}
++//  ,{ENDTAG, 0}
++  ,{"\0", 0}
+ };
+ 
+ 
+@@ -236,7 +237,7 @@
+ };
+ 
+  /* MAXMODELNUM delete */
+-  for(i=0; i<modeltable[i].prnname!=ENDTAG; i++){
++  for(i=0; *(modeltable[i].prnname); i++){
+ 	if( strncmp(p_tbl->pr_name, modeltable[i].prnname, strlen(modeltable[i].prnname))==0 ){
+ 	  ret = (*modeltable[i].model)(&storeset[0], p_tbl, p_bsccbuf);
+ 	  return(ret);
+diff -aur cnijfilter-source-3.20-1/lgmon/src/ip3100func.c cnijfilter-source-3.20-1.new/lgmon/src/ip3100func.c
+--- cnijfilter-source-3.20-1/lgmon/src/ip3100func.c	2009-04-24 10:49:35.000000000 +0430
++++ cnijfilter-source-3.20-1.new/lgmon/src/ip3100func.c	2013-07-26 00:12:36.289987934 +0430
+@@ -103,7 +103,7 @@
+   	}
+   	
+   }
+-  return(OK);
++  return ret;
+ }
+ 
+ 
+diff -aur cnijfilter-source-3.20-1/lgmon/src/ip4100func.c cnijfilter-source-3.20-1.new/lgmon/src/ip4100func.c
+--- cnijfilter-source-3.20-1/lgmon/src/ip4100func.c	2009-04-24 10:49:35.000000000 +0430
++++ cnijfilter-source-3.20-1.new/lgmon/src/ip4100func.c	2013-07-26 00:12:36.289987934 +0430
+@@ -103,7 +103,7 @@
+   	}
+   	
+   }
+-  return(OK);
++  return ret;
+ }
+ 
+ 
+diff -aur cnijfilter-source-3.20-1/lgmon/src/ip8600func.c cnijfilter-source-3.20-1.new/lgmon/src/ip8600func.c
+--- cnijfilter-source-3.20-1/lgmon/src/ip8600func.c	2009-04-24 10:49:35.000000000 +0430
++++ cnijfilter-source-3.20-1.new/lgmon/src/ip8600func.c	2013-07-26 00:12:36.289987934 +0430
+@@ -145,7 +145,7 @@
+   	}
+   	
+   }
+-  return(OK);
++  return ret;
+ }
+ 
+ 
+diff -aur cnijfilter-source-3.20-1/lgmon/src/langmon.c cnijfilter-source-3.20-1.new/lgmon/src/langmon.c
+--- cnijfilter-source-3.20-1/lgmon/src/langmon.c	2009-05-01 05:29:17.000000000 +0430
++++ cnijfilter-source-3.20-1.new/lgmon/src/langmon.c	2013-07-26 00:12:36.289987934 +0430
+@@ -49,7 +49,9 @@
+ int command_type = NORMAL_COMMAND;
+ int ivec_poweroff_flag = NORMAL_POWEROFF;
+ 
++#if 0
+ static int   data_end  = 0;             /* print data outputed flag */
++#endif
+ static int   do_cancel = 0;		/* print cancel flag */
+ static pid_t data_pid  = 0;		/* data output process id */
+ static pid_t stat_pid  = 0;		/* status get process id */
+@@ -68,7 +70,9 @@
+ static int print_normal(void);
+ static int lm_main_fork(void);
+ static int lm_main_cups(void);
++#if 0
+ static int check_signal(void);
++#endif
+ static int check_signal_arrive(void);
+ #if 0 /*not use*/
+ static int do_prn_com(int, lmsm_socket, int);
+@@ -180,7 +184,7 @@
+ 
+ static int wait_forked_procs()
+ {
+-	int child_sm;
++//	int child_sm;
+ 	int child_stat;
+ 	int child_data;
+ 
+@@ -246,7 +250,7 @@
+ 	return 0;
+ }
+ 
+-
++#if 0
+ static int check_signal()
+ {
+ 	/* SIGTERM/SIGCHILD/SIGINT arrive? */
+@@ -255,10 +259,11 @@
+ 
+ 	return 0;
+ }
++#endif
+ 
+ static int print_normal()
+ {
+-	int error = 0;
++//	int error = 0;
+ 	int r_size;
+ 	int w_size;
+ 	char *buf;
+@@ -274,7 +279,7 @@
+ 			w_size = write(PRNT_PATH, ptr, r_size);
+ 			if(w_size < 0){
+ 				/* write error */
+-				error = -1;
++//				error = -1;
+ 				goto print_normal_exit;
+ 			}
+ 			ptr += w_size;
+diff -aur cnijfilter-source-3.20-1/lgmon/src/lm_print.c cnijfilter-source-3.20-1.new/lgmon/src/lm_print.c
+--- cnijfilter-source-3.20-1/lgmon/src/lm_print.c	2009-05-18 09:44:51.000000000 +0430
++++ cnijfilter-source-3.20-1.new/lgmon/src/lm_print.c	2013-07-26 00:12:36.289987934 +0430
+@@ -245,13 +245,17 @@
+ 		ptr = buf;
+ 		/* data print(output) loop */
+ 		for(;r_size > 0;r_size -= w_size){
++#ifdef DEBUG
+ 			int err;
++#endif
+ 
+ 			signal_block(sigmask);   /* signal block */
+ 			get_printer_sem(sem_id); /* printer lock */
+ 
+ 			w_size = p_dvacs->ptdev_write(dev_path, ptr, r_size); /* data write -> printer */
++#ifdef DEBUG
+ 			err = errno;
++#endif
+ #ifdef DATA_LOG
+ 			if(log_hand >=0 && w_size > 0)
+ 				write(log_hand, ptr, w_size);
+diff -aur cnijfilter-source-3.20-1/lgmon/src/lm_status.c cnijfilter-source-3.20-1.new/lgmon/src/lm_status.c
+--- cnijfilter-source-3.20-1/lgmon/src/lm_status.c	2009-07-28 12:46:33.000000000 +0430
++++ cnijfilter-source-3.20-1.new/lgmon/src/lm_status.c	2013-07-26 00:12:36.289987934 +0430
+@@ -104,7 +104,7 @@
+ static int setup_bscc(int dev_path, char *jobIDStr)
+ //static int setup_bscc(int dev_path)
+ {
+-	int i;
++//	int i;
+ 	int error = 0;
+ 	int sta = 0;
+ 	int count;
+@@ -293,7 +293,7 @@
+ {
+ 	char *ptr;
+ 	unsigned char val = 0;
+-	unsigned char work[2];
++	char work[2];
+ 	unsigned int  wk;
+ 
+ //	ptr = strstr(buf, STR_BST);
+@@ -303,13 +303,13 @@
+ 
+ 	ptr += strlen(STR_BST);
+ 	work[0] = *ptr;
+-	work[1] = 0x00;
++	work[1] = '\0';
+ 	sscanf(work, "%x", &wk); /* conv Hex string to value(Hi) */
+ 	val = (char)(wk<<4);
+ 
+ 	ptr++;
+ 	work[0] = *ptr;
+-	work[1] = 0x00;
++	work[1] = '\0';
+ 	sscanf(work, "%x", &wk); /* conv HEX string to value(Lo) */
+ 	val |= (char)wk;
+ 
+@@ -402,19 +402,19 @@
+ 		if ((ivec = strstr(devid+2, STR_STA)) != NULL){
+ 			{
+ 				int val = 0;
+-				unsigned char work[2];
++				char work[2];
+ 				unsigned int  wk;
+ 
+ 				ivec = ivec + strlen(STR_STA);
+ 
+ 				work[0] = *ivec;
+-				work[1] = 0x00;
++				work[1] = '\0';
+ 				sscanf(work, "%x", &wk); /* conv Hex string to value(Hi) */
+ 				val = (char)(wk<<4);
+ 
+ 				ivec++;
+ 				work[0] = *ivec;
+-				work[1] = 0x00;
++				work[1] = '\0';
+ 				sscanf(work, "%x", &wk); /* conv HEX string to value(Lo) */
+ 				val |= (char)wk;
+ #ifdef DEBUG
+@@ -445,7 +445,9 @@
+ 	int dev_path = PRNT_PATH;
+ 	short	cnclerr = -1;
+ 	char *cmd_wrbuf = NULL;
++#ifdef DEBUG
+ 	short i=0;
++#endif
+ 
+ 	/* write command buffer */
+ 	cmd_wrbuf = (char *)malloc(MAX_STATBUF); /* 4096 */
+@@ -506,7 +508,9 @@
+ 
+ 		/* wait "CNCL_CHECK_START2:response" */
+ 		cnclerr = -1;
++#ifdef DEBUG
+ 		i = 0;
++#endif
+ 		while( cnclerr != CNCL_OK ){
+ #ifdef DEBUG
+ 			fprintf(log_path, "CNCL_CHECK_START2:response @  i : %d\n",i);
+diff -aur cnijfilter-source-3.20-1/lgmon/src/lm_sub.c cnijfilter-source-3.20-1.new/lgmon/src/lm_sub.c
+--- cnijfilter-source-3.20-1/lgmon/src/lm_sub.c	2009-07-28 12:46:33.000000000 +0430
++++ cnijfilter-source-3.20-1.new/lgmon/src/lm_sub.c	2013-07-26 00:12:36.289987934 +0430
+@@ -788,7 +788,8 @@
+ 		//fflush(log_path);
+ #endif
+ 		if( ret3 == CNCL_OK ){
+-			memset( buf, 0, sizeof(buf) );
++//			memset( buf, 0, sizeof(buf) );
++			memset( buf, 0, MAX_STATBUF );
+ 			memcpy( &buf[0], &buf2[0], MAX_STATBUF );
+ 		}
+ 		else
+diff -aur cnijfilter-source-3.20-1/Makefile cnijfilter-source-3.20-1.new/Makefile
+--- cnijfilter-source-3.20-1/Makefile	2009-04-06 14:19:22.000000000 +0430
++++ cnijfilter-source-3.20-1.new/Makefile	2013-07-26 00:12:36.289987934 +0430
+@@ -14,3 +14,24 @@
+ install :
+ 	target=install; $(scripts)
+ 
++mp550 :
++	for dir in "libs" "cngpij" "pstocanonij" "backend" "backendnet"; do \
++	  (cd $$dir; ./autogen.sh --prefix=/usr --enable-progpath=/usr/bin --libdir=/usr/lib32; make) || exit 1; \
++	done; \
++	(cd lgmon; ./autogen.sh --prefix=/usr --program-suffix=mp550 --enable-progpath=/usr/bin --libdir=/usr/lib32; make) || exit 1; \
++	(cd cngpijmon/cnijnpr; LIBS="-ldl" ./autogen.sh --prefix=/usr --enable-progpath=/usr/bin --libdir=/usr/lib32; make) || exit 1; \
++	for dir in "ppd" "cnijfilter" "printui" "cngpijmon"; do \
++	  (cd $$dir; ./autogen.sh --prefix=/usr --program-suffix=mp550 --enable-progpath=/usr/bin --libdir=/usr/lib32; make) || exit 1; \
++	done
++
++installcommon :
++	for dir in "libs" "cngpij" "pstocanonij" "backend" "backendnet" "cngpijmon/cnijnpr"; do \
++	  (cd $$dir; make install DESTDIR=${PACKAGEDIR}) || exit 1; \
++	done
++
++installmp550 :
++	(cd ppd; make install DESTDIR=${PACKAGEDIR}) || exit 1; \
++	for dir in "cnijfilter" "printui" "lgmon" "cngpijmon"; do \
++	  (cd $$dir; make install DESTDIR=${PACKAGEDIR}) || exit 1; \
++	done
++
+diff -aur cnijfilter-source-3.20-1/ppd/canonmp550.ppd cnijfilter-source-3.20-1.new/ppd/canonmp550.ppd
+--- cnijfilter-source-3.20-1/ppd/canonmp550.ppd	2009-06-08 07:12:09.000000000 +0430
++++ cnijfilter-source-3.20-1.new/ppd/canonmp550.ppd	2013-07-26 00:14:14.439987972 +0430
+@@ -60,7 +60,12 @@
+ 
+ *OpenUI *Resolution/Output Resolution: PickOne
+ *DefaultResolution: 600dpi
+-*Resolution 600dpi/600 dpi: "<</HWResolution[600 600]>>setpagedevice"
++*Resolution 300dpi/300 dpi: "«/HWResolution[300 300]»setpagedevice"
++*Resolution 600dpi/600 dpi: "«/HWResolution[600 600]»setpagedevice"
++*Resolution 1200dpi/1200 dpi: "«/HWResolution[1200 1200]»setpagedevice"
++*Resolution 2400dpi/2400 dpi: "«/HWResolution[2400 2400]»setpagedevice"
++*Resolution 4800dpi/4800 dpi: "«/HWResolution[4800 4800]»setpagedevice"
++*Resolution 9600dpi/9600 dpi: "«/HWResolution[9600 9600]»setpagedevice"
+ *CloseUI: *Resolution
+ 
+ *OpenUI *ColorModel/Color Model: PickOne
+@@ -485,3 +490,16 @@
+ *%
+ *% internalversion : 3.20.01.001
+ *%
++
++*OpenUI *CNQuality/Quality: PickOne
++*DefaultCNQuality: 3
++*CNQuality 2/High: "2"
++*CNQuality 3/Normal: "3"
++*CNQuality 4/Standard: "4"
++*CloseUI: *CNQuality
++
++*OpenUI *CNGrayscale/Grayscale: PickOne
++*DefaultCNGrayscale: false
++*CNGrayscale false/Off: "false"
++*CNGrayscale true/On: "true"
++*CloseUI: *CNGrayscale
+diff -aur cnijfilter-source-3.20-1/printui/src/comdb.c cnijfilter-source-3.20-1.new/printui/src/comdb.c
+--- cnijfilter-source-3.20-1/printui/src/comdb.c	2009-04-22 09:20:08.000000000 +0430
++++ cnijfilter-source-3.20-1.new/printui/src/comdb.c	2013-07-26 00:12:36.293321227 +0430
+@@ -291,8 +291,8 @@
+ short GetCurrentInkCartridgeSettings()
+ {
+ 	int cartridge = GetCurrentnValue(CNCL_INKCARTRIDGESETTINGS);
+-	int media_type = GetCurrentnValue(CNCL_MEDIATYPE);
+-	int margin_type = GetCurrentnValue(CNCL_MARGINTYPE);
++//	int media_type = GetCurrentnValue(CNCL_MEDIATYPE);
++//	int margin_type = GetCurrentnValue(CNCL_MARGINTYPE);
+ 
+ 	/* Ver.2.70 */
+ 	if( cartridge == -1 )
+diff -aur cnijfilter-source-3.20-1/printui/src/usrsizedlg.c cnijfilter-source-3.20-1.new/printui/src/usrsizedlg.c
+--- cnijfilter-source-3.20-1/printui/src/usrsizedlg.c	2009-08-28 11:19:09.000000000 +0430
++++ cnijfilter-source-3.20-1.new/printui/src/usrsizedlg.c	2013-07-26 00:12:36.293321227 +0430
+@@ -33,6 +33,7 @@
+ #	include <glade/glade.h>
+ #endif
+ #include <stdio.h>
++#include <stdlib.h>
+ 
+ #include "callbacks.h"
+ #ifndef	USE_LIB_GLADE
+diff -aur cnijfilter-source-3.20-1/printui/src/utility.c cnijfilter-source-3.20-1.new/printui/src/utility.c
+--- cnijfilter-source-3.20-1/printui/src/utility.c	2009-07-31 09:26:49.000000000 +0430
++++ cnijfilter-source-3.20-1.new/printui/src/utility.c	2013-07-26 00:12:36.296654567 +0430
+@@ -1329,6 +1329,7 @@
+ 	return (RegiInfo[index].regi[page].cnt);
+ }
+ 
++void DrawTestPrintPage(GtkWidget *regi_dialog, GdkPixmap *pixmap, HOTSPOT *hotspot, CTRLITEM *ctrlitem, short *items, short group, short kindcnt, short isOddHeight);
+ 
+ void DrawTestPrintPage2(
+ 	GtkWidget *regi_dialog,			
+@@ -3984,6 +3985,7 @@
+ 	roller_cleaning_type_a_value = ROLLER_CLENING_TYPE_A_REARTRAY;
+ }
+ 
++#if 0
+ static void SetRollerCleaningTypeARadiobutton(GtkWidget *widget,short radio_button_value )
+ {
+ 	GtkWidget	*radio_button = NULL;
+@@ -3994,6 +3996,7 @@
+ 									roller_cleaning_type_a_button_name[radio_button_value]);
+ 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(radio_button), TRUE);  
+ }
++#endif
+ 
+ gboolean
+ on_roller_cleaning_type_a1_dialog_delete_event
+diff -aur cnijfilter-source-3.20-1/printui/src/utility.h cnijfilter-source-3.20-1.new/printui/src/utility.h
+--- cnijfilter-source-3.20-1/printui/src/utility.h	2009-04-06 15:36:02.000000000 +0430
++++ cnijfilter-source-3.20-1.new/printui/src/utility.h	2013-07-26 00:12:36.296654567 +0430
+@@ -38,6 +38,7 @@
+ void UtilPlateCleaning(LPUIDB uidb);
+ void UtilInkCartridgeSet( LPUIDB uidb );
+ int UtilMessageBox(char *message, char *title, unsigned int flag);
++void UtilPaperSourceSetting(LPUIDB uidb);
+ 
+ void init_autopower_settings(void);			
+ void init_autopower_type2_settings(void);	
+@@ -53,6 +54,9 @@
+ void init_nozzle_check_type_a_value( void );
+ void init_permit_cancel_dialog_value( void );
+ 
++void init_head_alignment_type_a_value( void );
++void init_check_type_a_value( void );
++
+ #define	ID_OK		1
+ #define	ID_CANCEL	2
+ #define	ID_ABORT	3
+diff -aur cnijfilter-source-3.20-1/pstocanonij/filter/pstocanonij.c cnijfilter-source-3.20-1.new/pstocanonij/filter/pstocanonij.c
+--- cnijfilter-source-3.20-1/pstocanonij/filter/pstocanonij.c	2009-04-23 14:29:38.000000000 +0430
++++ cnijfilter-source-3.20-1.new/pstocanonij/filter/pstocanonij.c	2013-07-26 00:12:36.296654567 +0430
+@@ -245,7 +245,7 @@
+ 		}
+ 
+ 		// Retain the PS data in the buffer list.
+-		bl = buflist_new(read_buf, read_bytes);
++		bl = buflist_new((unsigned char *) read_buf, read_bytes);
+ 
+ 		if( *ps_data == NULL )
+ 			*ps_data = bl;
+@@ -295,7 +295,7 @@
+ 			{
+ 				if( !IS_BLANK(*p_code)  )
+ 					break;
+-				*p_code++;
++				p_code++;
+ 			}
+ 			while( *p_code != '\0' )
+ 			{
+@@ -381,7 +381,7 @@
+ 
+ 	while( (read_bytes = read_line(-1, read_buf, DATA_BUF_SIZE - 1)) > 0 )
+ 	{
+-		BufList *bl = buflist_new(read_buf, read_bytes);
++		BufList *bl = buflist_new((unsigned char *) read_buf, read_bytes);
+ 
+ 		if( *ps_data == NULL )
+ 			*ps_data = bl;
+@@ -916,8 +916,8 @@
+ 				/* Ver.2.70 : If unit is  "mm" or "cm" , replace pw_mm and pl_mm with lpr command option parameter "p_cups_opt" */
+ 				if( !strcmp( lpr_custom_unit , "mm") && ret >= 0 )		/* unit = mm */
+ 				{
+-					sscanf( lpr_custom_width , "%ld.%2s" , &pw_mm ,&pw_ss_S );
+-					sscanf( lpr_custom_height , "%ld.%2s" , &pl_mm , &pl_ss_S );
++					sscanf( lpr_custom_width , "%ld.%2s" , &pw_mm , pw_ss_S );
++					sscanf( lpr_custom_height , "%ld.%2s" , &pl_mm , pl_ss_S );
+ 
+ 					switch( strlen(pw_ss_S) ){
+ 						case 1:
+@@ -946,8 +946,8 @@
+ 				}
+ 				else if( !strcmp( lpr_custom_unit , "cm") && ret >= 0 )	/* unit = cm */
+ 				{
+-					sscanf( lpr_custom_width , "%ld.%3s" , &pw_mm ,&pw_ss_S );
+-					sscanf( lpr_custom_height , "%ld.%3s" , &pl_mm , &pl_ss_S );
++					sscanf( lpr_custom_width , "%ld.%3s" , &pw_mm ,pw_ss_S );
++					sscanf( lpr_custom_height , "%ld.%3s" , &pl_mm , pl_ss_S );
+ 					
+ 					switch( strlen(pw_ss_S) ){
+ 						case 1:
+@@ -1198,6 +1198,7 @@
+ 			close(fds[0]);
+ 		}
+ 	}
++	(void) status;
+ 	return child_pid;
+ }
+ 

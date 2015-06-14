@@ -1,0 +1,14 @@
+diff -aur cnijfilter-source-3.20-1/printui/po/id.po cnijfilter-source-3.20-1.new/printui/po/id.po
+--- cnijfilter-source-3.20-1/printui/po/id.po	2009-08-31 04:33:13.000000000 +0200
++++ cnijfilter-source-3.20-1.new/printui/po/id.po	2012-02-10 09:44:56.469023809 +0100
+@@ -2073,8 +2073,8 @@
+ "Paper Source: %s is not available for the selected Media Type.\n"
+ "Paper Source setting has been changed to %s."
+ msgstr ""
+-"Setelan Sumber Kertas saat ini tidak tersedia untuk Tipe Media yang dipilih.\n"
+-"Setelan Sumber Kertas telah diubah."
++"Setelan Sumber Kertas %s saat ini tidak tersedia untuk Tipe Media yang dipilih.\n"
++"Setelan Sumber Kertas telah diubah %s."
+ 
+ #. bkenh_enh
+ #: po/keystr.h:290

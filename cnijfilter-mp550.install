@@ -1,0 +1,22 @@
+post_install() {
+	if [ -x /sbin/ldconfig ]; then
+	  /sbin/ldconfig /usr/lib32
+	fi
+	echo "You need to add the printer by visiting <http://localhost:631/> after starting the cups service."
+}
+post_upgrade() {
+	if [ -x /sbin/ldconfig ]; then
+	  /sbin/ldconfig /usr/lib32
+	fi
+}
+post_remove() {
+	if [ -x /sbin/ldconfig ]; then
+	  /sbin/ldconfig /usr/lib32
+	fi
+	MODELNUM=359
+	for LIBS in "libcnbpcmcm" "libcnbpcnclapi" "libcnbpcnclbjcmd" "libcnbpcnclui" "libcnbpess" "libcnbpo"; do
+	  if [ -h /usr/lib32/${LIBS}${MODELNUM}.so ]; then
+	    rm -f /usr/lib32/${LIBS}${MODELNUM}.so
+	  fi
+	done
+}

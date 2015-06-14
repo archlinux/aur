@@ -1,0 +1,20 @@
+post_install() {
+	if [ -x /sbin/ldconfig ]; then
+	  /sbin/ldconfig /usr/lib32
+	fi
+}
+post_upgrade() {
+	if [ -x /sbin/ldconfig ]; then
+	  /sbin/ldconfig /usr/lib32
+	fi
+}
+post_remove() {
+	if [ -x /sbin/ldconfig ]; then
+	  /sbin/ldconfig /usr/lib32
+	fi
+	for LIBS in "libcnnet"; do
+	  if [ -h /usr/lib32/${LIBS}.so ]; then
+	    rm -f /usr/lib32/${LIBS}.so
+	  fi
+	done
+}
