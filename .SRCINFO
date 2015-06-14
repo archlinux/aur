@@ -1,0 +1,14 @@
+pkgbase = biojava
+	pkgdesc = BioJava is an open-source project dedicated to providing a Java framework for processing biological data
+	pkgver = 3.0.8
+	pkgrel = 1
+	url = http://biojava.org/wiki/Main_Page
+	arch = any
+	license = LGPL2.1
+	depends = jdk7-openjdk
+	depends = sh
+	source = http://www.biojava.org/download/bj3.0.8/biojava-3.0.8-all.tar.gz
+	md5sums = aaf838d98d5972f9fe409aac335c5396
+
+pkgname = biojava
+
