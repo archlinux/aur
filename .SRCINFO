@@ -1,0 +1,19 @@
+pkgbase = gournal
+	pkgdesc = A note-taking application written for usage on Tablet-PCs
+	pkgver = 0.5.1.1
+	pkgrel = 1
+	url = http://www.adebenham.com/old-stuff/gournal/
+	install = gournal.install
+	arch = any
+	license = GPL
+	depends = gnomecanvas-perl
+	depends = perl-gnome2-print
+	depends = perl-xml-mini
+	options = !strip
+	source = http://www.adebenham.com/debian/gournal_0.5.1-1.tar.gz
+	source = gournal.desktop
+	md5sums = 1a62fcf5acef439f975c689ef2617517
+	md5sums = 8d1cc9cd524a8bc4fe3ee2a2cef88fd0
+
+pkgname = gournal
+

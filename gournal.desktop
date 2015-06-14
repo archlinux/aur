@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Gournal
+Comment=A note-taking application written for usage on Tablet-PCs
+Exec=gournal
+Icon=gournal
+Terminal=false
+StartupNotify=false
+Categories=Application;
