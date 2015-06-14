@@ -3,7 +3,7 @@
 
 pkgname=stardict-full-eng-rus
 pkgver=2.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Large english-russian dictionary for Stardict"
 license=('GPL')
 optdepends=(
