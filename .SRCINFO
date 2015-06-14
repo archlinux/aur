@@ -1,0 +1,25 @@
+pkgbase = gegl-seamless-clone-git
+	pkgdesc = GEGL (Generic Graphics Library) is a graph based image processing framework - seamless-clone branch
+	pkgver = GEGL_0_2_0.925.gecc1061
+	pkgrel = 1
+	url = http://www.gegl.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = intltool
+	depends = babl-git
+	depends = ruby
+	depends = libopenraw
+	depends = libspiro
+	depends = ffmpeg
+	depends = librsvg
+	depends = openexr
+	provides = gegl
+	provides = gegl-seamless-clone
+	conflicts = gegl-git
+	conflicts = gegl
+	options = !libtool
+
+pkgname = gegl-seamless-clone-git
+
