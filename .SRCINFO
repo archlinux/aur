@@ -16,6 +16,7 @@ pkgbase = teiler-git
 	depends = rofi
 	optdepends = fb-client: Upload to paste.xinu.at (or selfhosted filebin)
 	optdepends = openssh: Upload to SSH server
+	optdepends = copyq: Copy Images to Clipboard
 	optdepends = imgur: Upload images to imgur.com
 	provides = teiler
 	conflicts = teiler
