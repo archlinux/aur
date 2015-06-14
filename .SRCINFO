@@ -1,0 +1,14 @@
+pkgbase = cpptest
+	pkgdesc = Portable and powerful unit testing framework for handling automated tests in C++
+	pkgver = 1.1.2
+	pkgrel = 2
+	url = http://cpptest.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = gcc-libs
+	source = http://downloads.sourceforge.net/cpptest/cpptest-1.1.2.tar.gz
+	md5sums = 79b9bff371d182f11a3235969f84ccb6
+
+pkgname = cpptest
+
