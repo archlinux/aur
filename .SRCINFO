@@ -1,0 +1,21 @@
+pkgbase = csync
+	pkgdesc = A file synchronizer especially designed for you, the normal user. Not to be confused with csync2; related to ocsync.
+	pkgver = 0.50.0
+	pkgrel = 2
+	url = http://www.csync.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = sqlite3>=3.3.9
+	optdepends = libssh: sftp support
+	optdepends = smbclient: SMB support
+	optdepends = neon: ownCloud support
+	conflicts = ocsync
+	backup = etc/csync/csync.conf
+	backup = etc/csync/csync_exclude.conf
+	source = ftp://gentoo.mirrors.pair.com/distfiles/csync-0.50.0.tar.xz
+	md5sums = 4f022aaa19ecd8008b03876dd65a9df2
+
+pkgname = csync
+
