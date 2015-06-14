@@ -1,8 +1,8 @@
 # Maintainer : Jo De Boeck <deboeck.jo@gmail.com>
 
 pkgname=purple-skypeweb-git
-pkgver=0.0.1.r3.gdbcb241de04b0e
-pkgrel=2
+pkgver=0.0.1.r4.gdbcb241de04b0e
+pkgrel=4
 arch=(x86_64 i686)
 license=('GPLv3')
 pkgdesc="SkypeWeb Plugin for Pidgin"
@@ -23,5 +23,6 @@ build() {
 }
 
 package() {
-    install -D -m 644 "$srcdir/$pkgname/skypeweb/libskypeweb.so" "$pkgdir/usr/lib/purple-2/libskypeweb.so"
+    cd "$srcdir/$pkgname/skypeweb"
+    make DESTDIR="$pkgdir" install
 }
