@@ -1,0 +1,19 @@
+pkgbase = perl-app-rad
+	pkgdesc = App::Rad - Rapid (and easy!) creation of command line applications
+	pkgver = 1.05
+	pkgrel = 1
+	url = http://search.cpan.org/dist/App-Rad/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	provides = perl-app-rad-config
+	provides = perl-app-rad-exclude
+	provides = perl-app-rad-help
+	provides = perl-app-rad-include
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GA/GARU/App-Rad-1.05.tar.gz
+	md5sums = 407c3d4f8343a2c4337d5c351fd46a91
+
+pkgname = perl-app-rad
+
