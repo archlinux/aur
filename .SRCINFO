@@ -1,0 +1,14 @@
+pkgbase = vimpdb
+	pkgdesc = A vim script for debugging python.
+	pkgver = 0.beta
+	pkgrel = 3
+	url = http://code.google.com/p/vimpdb/
+	arch = any
+	license = GPL3
+	depends = vim-runtime
+	depends = python
+	source = http://vimpdb.googlecode.com/files/VimPdb.tar
+	md5sums = ba777bb3f8f2dd991958f3011779c082
+
+pkgname = vimpdb
+
