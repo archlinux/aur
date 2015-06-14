@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Zeronoise
+Comment=HDR, get tiff from several shots without noise and a lot of dynamic range
+Exec=zeronoise
+Icon=zeronoise
+Terminal=false
+StartupNotify=false
+Categories=Application;Graphics;Photography;

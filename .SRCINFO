@@ -1,0 +1,23 @@
+pkgbase = zeronoise
+	pkgdesc = HDR, get tiff from several shots without noise and a lot of dynamic range
+	pkgver = 1.04.4
+	pkgrel = 1
+	url = http://www.guillermoluijk.com/tutorial/zeronoise/index.htm
+	install = zeronoise.install
+	arch = i686
+	arch = x86_64
+	license = custom:freeware
+	depends = hicolor-icon-theme
+	depends = wxgtk
+	depends = gsl
+	depends = libpng12
+	depends = libtiff
+	options = !strip
+	source = https://sites.google.com/site/zeronoiselinux/file-cabinet/zeronoise-1.04.4_.deb
+	source = zeronoise.desktop
+	source = zeronoise_64x64.png
+	md5sums = 8244f0d3f656b329ea744f6a4bdc1b57
+	md5sums = 45396c7b617e1d7cdb65303a24255e7f
+
+pkgname = zeronoise
+

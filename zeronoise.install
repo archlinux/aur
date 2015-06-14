@@ -1,0 +1,17 @@
+post_install() {
+    if which update-desktop-database &>/dev/null; then
+        update-desktop-database -q usr/share/applications
+    fi
+    if which gtk-update-icon-cache &>/dev/null; then
+        gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+    fi
+}
+
+post_upgrade() {
+  post_install $
+}
+
+post_remove() {
+  post_install $
+}
+
