@@ -1,0 +1,12 @@
+pkgbase = celestia-m42-plugin
+	pkgdesc = Celestia Plugin for M42 (The Orion Nebula)
+	pkgver = 1
+	pkgrel = 1
+	url = http://celestiamotherlode.net/catalog/messiernebulae.php
+	arch = any
+	license = unknown
+	depends = celestia
+	source = http://celestiamotherlode.net/creators/praesepe/M42.zip
+
+pkgname = celestia-m42-plugin
+
