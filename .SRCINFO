@@ -1,0 +1,37 @@
+pkgbase = tor-browser-pl
+	pkgdesc = Tor Browser Bundle: Anonymous browsing using firefox and tor
+	pkgver = 4.5.1
+	pkgrel = 1
+	url = https://www.torproject.org/projects/torbrowser.html.en
+	install = tor-browser-pl.install
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = bash
+	optdepends = zenity: simple dialog boxes
+	optdepends = kdebase-kdialog: KDE dialog boxes
+	optdepends = libnotify: Gnome dialog boxes
+	noextract = tor-browser-linux-4.5.1_pl.tar.xz
+	source_x86_64 = https://torproject.org/dist/torbrowser/4.5.1/tor-browser-linux64-4.5.1_pl.tar.xz
+	source_x86_64 = https://torproject.org/dist/torbrowser/4.5.1/tor-browser-linux64-4.5.1_pl.tar.xz.asc
+	source_x86_64 = tor-browser-pl.desktop
+	source_x86_64 = tor-browser-pl.png
+	source_x86_64 = tor-browser-pl.sh
+	sha256sums_x86_64 = cf129f3b140a85487da5a791dbde1d21b6b3d309d2e3f5c2577100863b117089
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = 3d5fc01f2cfbae0a00b7117b0b0a24028d1686e6f81a347809f74de2d8522ff7
+	sha256sums_x86_64 = 17fc2f5784d080233aca16e788d62ab6fe3e57cf781b123cfe32767de97d6d3b
+	sha256sums_x86_64 = f25fedfa77b19a96488529e6d387411fb49a82e99e3a1a9708b88ad8b6e7d2aa
+	source_i686 = https://torproject.org/dist/torbrowser/4.5.1/tor-browser-linux32-4.5.1_pl.tar.xz
+	source_i686 = https://torproject.org/dist/torbrowser/4.5.1/tor-browser-linux32-4.5.1_pl.tar.xz.asc
+	source_i686 = tor-browser-pl.desktop
+	source_i686 = tor-browser-pl.png
+	source_i686 = tor-browser-pl.sh
+	sha256sums_i686 = a6071a76a613a4955139ddd28d790f8d5d645ce17dde802d1a4ac9fb5465ac1c
+	sha256sums_i686 = SKIP
+	sha256sums_i686 = 3d5fc01f2cfbae0a00b7117b0b0a24028d1686e6f81a347809f74de2d8522ff7
+	sha256sums_i686 = 17fc2f5784d080233aca16e788d62ab6fe3e57cf781b123cfe32767de97d6d3b
+	sha256sums_i686 = f25fedfa77b19a96488529e6d387411fb49a82e99e3a1a9708b88ad8b6e7d2aa
+
+pkgname = tor-browser-pl
+
