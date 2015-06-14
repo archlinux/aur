@@ -1,0 +1,20 @@
+pkgbase = mopidy-tpa2016d2-git
+	pkgdesc = Mopidy extension for controlling volume using an external tpa2016d2 amplifier
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/klomp/mopidi-tpa2016d2
+	arch = any
+	license = APACHE
+	makedepends = python2
+	makedepends = git
+	depends = python2
+	depends = mopidy>=0.19
+	provides = mopidy-tpa2016d2
+	conflicts = mopidy-tpa2016d2
+	source = git+https://github.com/avanc/mopidy-tpa2016d2.git
+	source = i2c.rules
+	md5sums = SKIP
+	md5sums = fb0e3ffcaa8841f352d9435978ec792d
+
+pkgname = mopidy-tpa2016d2-git
+
