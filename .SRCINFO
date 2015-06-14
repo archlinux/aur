@@ -1,0 +1,16 @@
+pkgbase = perl-padre-plugin-wxwidgets
+	pkgdesc = Padre::Plugin::WxWidgets - wxWidgets support for Padre
+	pkgver = 0.05
+	pkgrel = 2
+	url = http://search.cpan.org/~azawawi/Padre-Plugin-WxWidgets/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl
+	depends = perl-padre
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AZ/AZAWAWI/Padre-Plugin-WxWidgets-0.05.tar.gz
+	md5sums = f4b499fb7ca666f032b18f7eafca39ed
+
+pkgname = perl-padre-plugin-wxwidgets
+
