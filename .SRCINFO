@@ -1,0 +1,14 @@
+pkgbase = perthon
+	pkgdesc = Automatically translate Python into human-readable Perl using Perl
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://perthon.sourceforge.net/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl-parse-recdescent
+	source = http://sourceforge.net/projects/perthon/files/perthon/0.1/perthon-0.1-20031201.tar.gz
+	sha256sums = 8e895fe56287b36bbccd558047119ddd929c19a96d5a30144d12a859c1b96412
+
+pkgname = perthon
+
