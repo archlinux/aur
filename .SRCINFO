@@ -1,0 +1,15 @@
+pkgbase = libsigrokdecode
+	pkgdesc = Client software that supports various hardware logic analyzers, protocol decoders library
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = http://www.sigrok.org/wiki/Libsigrokdecode
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = glib2
+	depends = python
+	source = http://sigrok.org/download/source/libsigrokdecode/libsigrokdecode-0.3.0.tar.gz
+	md5sums = c2c134355a0c50404e692335ce5b4c6e
+
+pkgname = libsigrokdecode
+
