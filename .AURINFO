@@ -1,0 +1,19 @@
+pkgbase = perl-data-guid
+	pkgdesc = Data::GUID - globally unique identifiers
+	pkgver = 0.048
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Data-GUID/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-data-uuid
+	makedepends = perl-sub-exporter
+	makedepends = perl-sub-install
+	depends = perl-data-uuid
+	depends = perl-sub-exporter
+	depends = perl-sub-install
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Data-GUID-0.048.tar.gz
+	options = !emptydirs
+
+pkgname = perl-data-guid
+
