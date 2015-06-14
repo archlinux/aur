@@ -1,7 +1,7 @@
 pkgbase = nvidia-pf
 	pkgdesc = NVIDIA drivers for linux-pf-haswell.
 	pkgver = 352.09
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nvidia.com/
 	install = nvidia.install
 	arch = i686
