@@ -1,0 +1,14 @@
+pkgbase = python-yappi-hg
+	pkgdesc = Yet Another Python Profiler, but this time Thread-Aware
+	pkgver = 312.699a2820b1fc
+	pkgrel = 1
+	url = https://code.google.com/p/yappi/
+	arch = any
+	license = MIT
+	makedepends = mercurial
+	depends = python
+	source = hg+https://bitbucket.org/sumerc/yappi
+	md5sums = SKIP
+
+pkgname = python-yappi-hg
+
