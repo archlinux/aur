@@ -1,0 +1,18 @@
+pkgbase = xextproto-git
+	pkgdesc = X11 various extension wire protocol - Git version
+	pkgver = 7.3.0.0.r138.g66afec3
+	pkgrel = 1
+	url = http://cgit.freedesktop.org/xorg/proto/xextproto/
+	arch = any
+	license = custom
+	makedepends = docbook-xsl
+	makedepends = git
+	makedepends = xmlto
+	makedepends = xorg-util-macros
+	provides = xextproto=7.3.0.0.r138.g66afec3
+	conflicts = xextproto
+	source = git://anongit.freedesktop.org/xorg/proto/xextproto
+	md5sums = SKIP
+
+pkgname = xextproto-git
+
