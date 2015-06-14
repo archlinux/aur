@@ -1,0 +1,16 @@
+pkgbase = grun
+	pkgdesc = GTK run dialog
+	pkgver = 0.9.3
+	pkgrel = 3
+	url = http://code.google.com/p/grun
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = gtk2
+	backup = etc/consfile
+	backup = etc/gassoc
+	source = http://grun.googlecode.com/files/grun-0.9.3.tar.gz
+	md5sums = 7788783e5a18221ae591606075d3a8ee
+
+pkgname = grun
+
