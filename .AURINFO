@@ -1,0 +1,15 @@
+pkgbase = perl-devel-autoflush
+	pkgdesc = Devel::Autoflush - Set autoflush from the command line
+	pkgver = 0.06
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Devel-Autoflush/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-io-captureoutput
+	depends = perl-io-captureoutput
+	source = http://search.cpan.org/CPAN/authors/id/D/DA/DAGOLDEN/Devel-Autoflush-0.06.tar.gz
+	options = !emptydirs
+
+pkgname = perl-devel-autoflush
+
