@@ -1,0 +1,9 @@
+pre_remove() {
+    /bin/true
+}
+
+post_remove() {
+    echo ">>> To complete the uninstallation remove the doom3 data directory:"
+    echo ">>>    rm -r /opt/doom3/"
+    echo ">>>"
+}

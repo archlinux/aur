@@ -1,0 +1,13 @@
+pkgbase = doom3-data-steam
+	pkgdesc = Doom 3 data via Steam
+	pkgver = 1
+	pkgrel = 2
+	url = http://store.steampowered.com/app/9050
+	install = doom3-data-steam.install
+	arch = any
+	license = GPL
+	depends = steamcmd
+	provides = doom3-data
+
+pkgname = doom3-data-steam
+
