@@ -1,0 +1,15 @@
+pkgbase = vim-tlib
+	pkgdesc = Utility functions for VIM plugins
+	pkgver = 1.04
+	pkgrel = 2
+	url = http://www.vim.org/scripts/script.php?script_id=1863
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = GPL
+	depends = vim
+	source = vim-tlib-1.04.vba::http://www.vim.org/scripts/download_script.php?src_id=19179
+	md5sums = b64ce6764f39f40bfc95f3916bbb0057
+
+pkgname = vim-tlib
+
