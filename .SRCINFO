@@ -1,0 +1,18 @@
+pkgbase = perl-test-expect
+	pkgdesc = Test::Expect - Automated driving and testing of terminal-based programs
+	pkgver = 0.31
+	pkgrel = 3
+	url = http://search.cpan.org/~lbrocard/Test-Expect/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-expect
+	depends = perl
+	depends = perl-expect-simple
+	depends = perl-class-accessor-chained
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LB/LBROCARD/Test-Expect-0.31.tar.gz
+	sha256sums = 48a0b892d4e63ec5328b85ef7e1804304b4ca63c345c84a233734b3aa312f3cd
+
+pkgname = perl-test-expect
+
