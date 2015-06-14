@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=PDF Studio 9
+Comment=Views and Edits Adobe PDF (acrobat) files
+Exec=pdfstudio %f
+Terminal=false
+Type=Application
+Icon=pdfstudio
+Categories=Office;
+MimeType=application/pdf;
