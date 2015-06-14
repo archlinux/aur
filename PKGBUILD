@@ -1,7 +1,7 @@
 # Maintainer: Jonne Haß <me@mrzyx.de>
 pkgbase=diaspora
 pkgname=('diaspora-mysql' 'diaspora-postgresql')
-pkgver=0.5.0.1
+pkgver=0.5.1.0
 pkgrel=1
 pkgdesc="A distributed privacy aware social network"
 arch=('i686' 'x86_64')
@@ -59,6 +59,7 @@ _package() {
 
   msg "Bundle dependencies"
   echo "gem: --no-rdoc --no-ri --no-user-install" > $_srcdir/.gemrc
+  HOME=$_srcdir DB=$_db $_bundle config --local build.sigar '--with-cppflags="-fgnu89-inline"'
   HOME=$_srcdir DB=$_db $_bundle install \
     --without development test heroku --path vendor/bundle
   HOME=$_srcdir DB=$_db $_bundle clean
@@ -145,9 +146,9 @@ package_diaspora-postgresql() {
   _package postgres
 }
 
-sha256sums=('b5a5799f9db3a57802f19644276e0f5f7d40d9e42edbadee18ae3859c3a329a4'
+sha256sums=('5a40378431ec62c291cc3f9e6c0d0a194ce606bfeb6b2b7965da215c4ea986d9'
             'aae126c4b1bcba6265d3d925dc3845bb034defa5606385c22dfb053111b57685'
             'f1770d7cfa2b3344e697ee664f5ab49e7cdeb50e93230a358a1ab5776824c81b'
-            '8864dc640545f53f5491a8edbda21d883c9731f8f6909d6a59c71e5fed49f2ca'
+            '26ae975338c5ab3fc506bd7bdb13d1b9f853ac0b9d8e591babf63c22a502d3be'
             'a3e17221e8cdbe5a8073f4725960f794c31208b0098177a296356af293b14596'
             '29cfd5116e919d8851ff70b8b82af8d4a6c8243a9d1ca555981a1a695e2d7715')

@@ -1,6 +1,6 @@
 pkgbase = diaspora
 	pkgdesc = A distributed privacy aware social network
-	pkgver = 0.5.0.1
+	pkgver = 0.5.1.0
 	pkgrel = 1
 	url = http://diasporafoundation.org
 	install = diaspora.install
@@ -24,16 +24,16 @@ pkgbase = diaspora
 	backup = etc/webapps/diaspora/diaspora.yml
 	backup = etc/webapps/diaspora/database.yml
 	backup = etc/webapps/diaspora/secret_token.rb
-	source = diaspora-0.5.0.1.tar.gz::https://github.com/diaspora/diaspora/tarball/v0.5.0.1
+	source = diaspora-0.5.1.0.tar.gz::https://github.com/diaspora/diaspora/tarball/v0.5.1.0
 	source = diaspora.install
 	source = diaspora.service
 	source = diaspora.tmpfiles.d.conf
 	source = diaspora.bashrc
 	source = diaspora.bash_profile
-	sha256sums = b5a5799f9db3a57802f19644276e0f5f7d40d9e42edbadee18ae3859c3a329a4
+	sha256sums = 5a40378431ec62c291cc3f9e6c0d0a194ce606bfeb6b2b7965da215c4ea986d9
 	sha256sums = aae126c4b1bcba6265d3d925dc3845bb034defa5606385c22dfb053111b57685
 	sha256sums = f1770d7cfa2b3344e697ee664f5ab49e7cdeb50e93230a358a1ab5776824c81b
-	sha256sums = 8864dc640545f53f5491a8edbda21d883c9731f8f6909d6a59c71e5fed49f2ca
+	sha256sums = 26ae975338c5ab3fc506bd7bdb13d1b9f853ac0b9d8e591babf63c22a502d3be
 	sha256sums = a3e17221e8cdbe5a8073f4725960f794c31208b0098177a296356af293b14596
 	sha256sums = 29cfd5116e919d8851ff70b8b82af8d4a6c8243a9d1ca555981a1a695e2d7715
 
