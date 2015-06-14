@@ -2,7 +2,7 @@
 pkgbase=python-pyroma
 pkgname=('python-pyroma' 'python2-pyroma')
 _pyname=pyroma
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="Test your project's packaging friendliness"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
 options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('d9d471be51bae92619a37d6edfdff89d')
+md5sums=('7490b824c1bf3713660746f06ed1c68b')
 
 prepare() {
   cd "${srcdir}/${_pyname}-${pkgver}"
