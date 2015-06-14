@@ -1,0 +1,14 @@
+pkgbase = adflite-git
+	pkgdesc = Library to handle (replay) of Agata Data Format
+	pkgver = 20130304
+	pkgrel = 3
+	url = http://www.fair-center.de/de/fuer-nutzer/experimente/nustar/newsview-nustar/article/agata.html
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = gcc-libs
+	provides = adflite
+	options = !libtool
+
+pkgname = adflite-git
+
