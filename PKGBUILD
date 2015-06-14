@@ -1,4 +1,4 @@
-# Maintainer: Andreas B. Wagner <AndreasBWagner@pointfree.net>
+# Maintainer: Andreas B. Wagner <andreas.wagner@lowfatcomputing.org>
 # Contributor: Doug Newgard <scimmia22 at outlook dot com>
 # Contributor: Matt Parnell/ilikenwf <parwok@gmail.com>
 
