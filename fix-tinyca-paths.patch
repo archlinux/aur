@@ -1,0 +1,29 @@
+--- tinyca2/tinyca2.orig	2010-05-04 17:03:50.572478056 +0300
++++ tinyca2/tinyca2	2010-05-04 17:35:14.065631756 +0300
+@@ -18,7 +18,7 @@
+ # along with this program; if not, write to the Free Software
+ # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111, USA.
+ 
+-BEGIN { unshift(@INC, './lib'); # put here the location of the modules
++BEGIN { unshift(@INC, '/usr/lib/tinyca2'); # put here the location of the modules
+ }
+ 
+ use strict;
+@@ -46,7 +46,7 @@
+ use TCONFIG;
+ 
+ setlocale(LC_MESSAGES, "");
+-bindtextdomain("tinyca2", "./locale/");
++bindtextdomain("tinyca2", "/usr/share/locale/");
+ textdomain("tinyca2");
+ 
+ # https://bugs.gentoo.org/show_bug.cgi?id=78576
+@@ -76,7 +76,7 @@
+ }
+ 
+ # directory with the templates
+-$init->{'templatedir'} = "./templates";
++$init->{'templatedir'} = "/etc/tinyca2";
+ 
+ if(not -d $init->{'templatedir'}) {
+    print gettext("Can't find templatedir.\n");

@@ -1,0 +1,431 @@
+@@ -0,0 +1 @@
++1.0
+--- tinyca2/tinyca2.1.man.orig
++++ tinyca2/tinyca2.1.man
+@@ -0,0 +1,52 @@
++.\"                                      Hey, EMACS: -*- nroff -*-
++.\" First parameter, NAME, should be all caps
++.\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
++.\" other parameters are allowed: see man(7), man(1)
++.TH TINYCA 1 "July  9, 2003"
++.\" Please adjust this date whenever revising the manpage.
++.\"
++.\" Some roff macros, for reference:
++.\" .nh        disable hyphenation
++.\" .hy        enable hyphenation
++.\" .ad l      left justify
++.\" .ad b      justify to both left and right margins
++.\" .nf        disable filling
++.\" .fi        enable filling
++.\" .br        insert line break
++.\" .sp <n>    insert n+1 empty lines
++.\" for manpage-specific macros, see man(7)
++.SH NAME
++tinyca \- Very simple Certification Authority
++.SH SYNOPSIS
++.B tinyca
++.SH DESCRIPTION
++This manual page documents briefly the
++.B tinyca
++command.
++This manual page was written for the Debian distribution
++because the original program does not have a manual page.
++.PP
++.\" TeX users may be more comfortable with the \fB<whatever>\fP and
++.\" \fI<whatever>\fP escape sequences to invode bold face and italics, 
++.\" respectively.
++\fBtinyca\fP is a very simple Certification Authority.  It features a graphical
++interface to create Certificate Requests, sign them with the key of the
++Certificate Authority and export the signed certificate and the corresponding
++keys in various formats.
++.PP
++Upon first invocation, information for a new Certificate Authority is generated.
++.SH OPTIONS
++Tinyca has no commandline options.
++.SH FILES
++.PP
++.IP "/etc/tinyca/openssl.cnf"
++Openssl configuration for tinyca
++.IP "~/.TinyCA/"
++Storage place for the different CAs
++.SH SEE ALSO
++.PP
++.BR openssl(1).
++.SH AUTHOR
++.PP
++This manual page was written by Ulrich Scholler <scholler@fnb.tu-darmstadt.de>,
++for the Debian GNU/Linux system (but may be used by others).
+--- tinyca2/install.sh.orig
++++ tinyca2/install.sh
+@@ -1,9 +1,15 @@
+ #!/bin/bash
+ 
++rm -rf locale
++
+ mkdir -p locale/de/LC_MESSAGES
+ mkdir -p locale/es/LC_MESSAGES
+ mkdir -p locale/cs/LC_MESSAGES
++mkdir -p locale/fr/LC_MESSAGES
++mkdir -p locale/sv/LC_MESSAGES
+ 
+ msgfmt po/de.po -o locale/de/LC_MESSAGES/tinyca2.mo
+ msgfmt po/es.po -o locale/es/LC_MESSAGES/tinyca2.mo
+ msgfmt po/cs.po -o locale/cs/LC_MESSAGES/tinyca2.mo
++msgfmt po/fr.po -o locale/fr/LC_MESSAGES/tinyca2.mo
++msgfmt po/sv.po -o locale/sv/LC_MESSAGES/tinyca2.mo
+--- tinyca2/lib/GUI.pm.orig
++++ tinyca2/lib/GUI.pm
+@@ -978,7 +978,7 @@
+    $piter = $store->append($root);
+    $store->set($piter, 0 => $t);
+ 
+-   for my $l qw(CN EMAIL O OU C ST L) {
++   for my $l (qw(CN EMAIL O OU C ST L)) {
+       if(defined($parsed->{$l})) {
+          if($l eq "OU") {
+             foreach my $ou (@{$parsed->{'OU'}}) {
+@@ -1003,7 +1003,7 @@
+       $piter = $store->append($root);
+       $store->set($piter, 0 => $t);
+    
+-      for my $l qw(CN EMAIL O OU C ST L) {
++      for my $l (qw(CN EMAIL O OU C ST L)) {
+          if(defined($parsed->{'ISSUERDN'}->{$l})) {
+             if($l eq "OU") {
+                foreach my $ou (@{$parsed->{'ISSUERDN'}->{'OU'}}) {
+@@ -1029,7 +1029,7 @@
+       $piter = $store->append($root);
+       $store->set($piter, 0 => $t);
+    
+-      for my $l qw(STATUS NOTBEFORE NOTAFTER) {
++      for my $l (qw(STATUS NOTBEFORE NOTAFTER)) {
+          if(defined($parsed->{$l})) {
+             $citer = $store->append($piter);
+             $store->set($citer, 
+@@ -1045,7 +1045,7 @@
+    $store->set($piter, 0 => $t);
+ 
+ 
+-   for my $l qw(STATUS SERIAL KEYSIZE PK_ALGORITHM SIG_ALGORITHM TYPE) {
++   for my $l (qw(STATUS SERIAL KEYSIZE PK_ALGORITHM SIG_ALGORITHM TYPE)) {
+       if(defined($parsed->{$l})) {
+          $citer = $store->append($piter);
+          $store->set($citer, 
+@@ -1060,7 +1060,7 @@
+       $piter = $store->append($root);
+       $store->set($piter, 0 => $t);
+    
+-      for my $l qw(FINGERPRINTMD5 FINGERPRINTSHA1) {
++      for my $l (qw(FINGERPRINTMD5 FINGERPRINTSHA1)) {
+          if(defined($parsed->{$l})) {
+             $citer = $store->append($piter);
+             $store->set($citer, 
+@@ -1249,7 +1249,7 @@
+    # table for request data
+    my $cc=0;
+    my $ous = 1;
+-   if(defined($opts->{'OU'})) {
++   if(defined($opts->{'OU'}) and ref($opts->{'OU'}) eq 'ARRAY') {
+       $ous = @{$opts->{'OU'}} - 1;
+    }
+    $reqtable = Gtk2::Table->new(1, 13 + $ous, 0);
+@@ -1297,7 +1297,7 @@
+          _("Organization Name (eg. company):"),
+          \$opts->{'O'}, $reqtable, 10, 1);
+ 
+-   if(defined($opts->{'OU'})) {
++   if(defined($opts->{'OU'}) and ref($opts->{'OU'}) eq 'ARRAY') {
+       foreach my $ou (@{$opts->{'OU'}}) {
+          $entry = GUI::HELPERS::entry_to_table(
+                _("Organizational Unit Name (eg. section):"),
+@@ -2521,7 +2521,7 @@
+    my ($aboutdialog, $href, $label);
+ 
+    $aboutdialog = Gtk2::AboutDialog->new();
+-   $aboutdialog->set_name("TinyCA2");
++   $aboutdialog->set_program_name("TinyCA2");
+    $aboutdialog->set_version($main->{'version'});
+    $aboutdialog->set_copyright("2002-2006 Stephan Martin");
+    $aboutdialog->set_license("GNU Public License (GPL)");
+@@ -2534,6 +2534,8 @@
+          _("French: Thibault Le Meur <Thibault.Lemeur\@supelec.fr>"));
+ 
+    $aboutdialog->show_all();
++   $aboutdialog->run;
++   $aboutdialog->destroy;
+ 
+    return;
+ }
+@@ -2634,7 +2636,7 @@
+ 
+    my ($box, $button_ok, $button_cancel, $t);
+ 
+-   $t = _("The Certificate will be longer valid than your CA!");
++   $t = _("The certificate will be valid longer than its CA!");
+    $t .= "\n";
+    $t .= _("This may cause problems with some software!!");
+ 
+@@ -3094,9 +3096,9 @@
+    for $value (keys %values) {
+       my $display_name = $values{$value};
+       my $key = Gtk2::RadioButton->new($previous_key, $display_name);
+-      $key->set_active(1) if(defined($$var) && $$var eq $value);
+       $key->signal_connect('toggled' =>
+ 			   sub{GUI::CALLBACK::toggle_to_var($key, $var, $value)});
++      $key->set_active(1) if(defined($$var) && $$var eq $value);
+       $radiobox->add($key);
+       $previous_key = $key;
+    }
+--- tinyca2/lib/GUI/X509_browser.pm.orig
++++ tinyca2/lib/GUI/X509_browser.pm
+@@ -624,7 +624,7 @@
+ 
+   $dir = $self->{'actdir'};
+   # cut off the last directory name to provide the ca-directory
+-  $dir =~ s/\/certs|\/req|\/keys$//;
++  $dir =~ s/(\/certs|\/req|\/keys)$//;
+   return($dir);
+ }
+ 
+--- tinyca2/lib/OpenSSL.pm.orig
++++ tinyca2/lib/OpenSSL.pm
+@@ -22,6 +22,7 @@
+ 
+ use POSIX;
+ use IPC::Open3;
++use IO::Select;
+ use Time::Local;
+ 
+ sub new {
+@@ -41,7 +42,7 @@
+    close(TEST);
+ 
+    # set version (format: e.g. 0.9.7 or 0.9.7a)
+-   if($v =~ /\b(0\.9\.[678][a-z]?)\b/) {
++   if($v =~ /\b(0\.9\.[6-9][a-z]?)\b/ || $v =~ /\b(1\.0\.[01][a-z]?)\b/) {
+       $self->{'version'} = $1;
+    }
+ 
+@@ -817,7 +818,7 @@
+    my $self = shift;
+    my $opts = { @_ };
+    
+-   my ($tmp, $ext, $ret, $file, $pid, $cmd);
++   my ($tmp, $ext, $ret, $file, $pid, $cmd, $cmdout, $cmderr);
+    $file = HELPERS::mktmp($self->{'tmp'}."/data");
+ 
+    $cmd = "$self->{'bin'} $opts->{'cmd'}";
+@@ -830,16 +831,7 @@
+       $cmd .= " -outform $opts->{'outform'}";
+    }
+ 
+-   my($rdfh, $wtfh);
+-   $ext = "$cmd\n\n";
+-   $pid = open3($wtfh, $rdfh, $rdfh, $cmd);
+-   print $wtfh "$opts->{'data'}\n";
+-   while(<$rdfh>){
+-      $ext .= $_;
+-      # print STDERR "DEBUG: cmd ret: $_";
+-   };
+-   waitpid($pid, 0);
+-   $ret = $?>>8;
++   ($ret, $tmp, $ext) = _run_with_fixed_input($cmd, $opts->{'data'});
+ 
+    if($self->{'broken'}) {
+        if(($ret != 0 && $opts->{'cmd'} ne 'crl') ||
+@@ -859,14 +851,15 @@
+       }
+    }
+ 
+-   open(IN, $file) || do {
+-      my $t = sprintf(_("Can't open file %s: %s"), $file, $!);
+-      GUI::HELPERS::print_warning($t);
+-      return;
+-   };
+-   $tmp .= $_ while(<IN>);
+-   close(IN);
+-
++   if (-s $file) { # If the file is empty, the payload is in $tmp (via STDOUT of the called process).
++      open(IN, $file) || do {
++         my $t = sprintf(_("Can't open file %s: %s"), $file, $!);
++         GUI::HELPERS::print_warning($t);
++         return;
++      };
++      $tmp .= $_ while(<IN>);
++      close(IN);
++   }
+    unlink($file);
+ 
+    return($ret, $tmp, $ext);
+@@ -1076,4 +1069,72 @@
+    }
+ }
+    
++
++=over
++
++=item _run_with_fixed_input($cmd, $input)
++
++This function runs C<$cmd> and writes the C<$input> to STDIN of the
++new process (all at once).
++
++While the command runs, all of its output to STDOUT and STDERR is
++collected.
++
++After the command terminates (closes both STDOUT and STDIN) the
++function returns the command's return value as well as everything it
++wrote to its STDOUT and STDERR in a list.
++
++=back
++
++=cut
++
++sub _run_with_fixed_input {
++   my $cmd = shift;
++   my $input = shift;
++
++   my ($wtfh, $rdfh, $erfh, $pid, $sel, $ret, $stdout, $stderr);
++   $erfh = Symbol::gensym; # Must not be false, otherwise it is lumped together with rdfh
++
++   # Run the command
++   $pid = open3($wtfh, $rdfh, $erfh, $cmd);
++   print $wtfh $input, "\n";
++
++   $stdout = '';
++   $stderr = '';
++   $sel = new IO::Select($rdfh, $erfh);
++   while (my @fhs = $sel->can_read()) {
++      foreach my $fh (@fhs) {
++         if ($fh == $rdfh) { # STDOUT
++            my $bytes_read = sysread($fh, my $buf='', 1024);
++            if ($bytes_read == -1) {
++               warn("Error reading from child's STDOUT: $!\n");
++               $sel->remove($fh);
++             } elsif ($bytes_read == 0) {
++               # print("Child's STDOUT closed.\n");
++               $sel->remove($fh);
++             } else {
++               $stdout .= $buf;
++             }
++         }
++         elsif ($fh == $erfh) { # STDERR
++            my $bytes_read = sysread($fh, my $buf='', 1024);
++            if ($bytes_read == -1) {
++               warn("Error reading from child's STDERR: $!\n");
++               $sel->remove($fh);
++            } elsif ($bytes_read == 0) {
++               # print("Child's STDERR closed.\n");
++               $sel->remove($fh);
++            } else {
++              $stderr .= $buf;
++            }
++         }
++      }
++   }
++
++   waitpid($pid, 0);
++   $ret = $?>>8;
++
++   return ($ret, $stdout, $stderr)
++   }
++
+ 1
+--- tinyca2/po/cs.po.orig
++++ tinyca2/po/cs.po
+@@ -1257,7 +1257,7 @@
+ msgstr "pokud odpovídající certifikát je stále platný"
+ 
+ #: ../lib/GUI.pm:2636
+-msgid "The Certificate will be longer valid than your CA!"
++msgid "The certificate will be valid longer than its CA!"
+ msgstr "Certifikát bude platný déle než Vaše CA!"
+ 
+ #: ../lib/GUI.pm:2638
+--- tinyca2/po/de.po.orig
++++ tinyca2/po/de.po
+@@ -1245,7 +1245,7 @@
+ msgstr "falls das Zertifikat noch gültig ist"
+ 
+ #: ../lib/GUI.pm:2636
+-msgid "The Certificate will be longer valid than your CA!"
++msgid "The certificate will be valid longer than its CA!"
+ msgstr "Das Zertifikat wird länger gültig sein als die CA!"
+ 
+ #: ../lib/GUI.pm:2638
+--- tinyca2/po/es.po.orig
++++ tinyca2/po/es.po
+@@ -1260,7 +1260,7 @@
+ msgstr "�Si el Certificado correspondiente no ha caducado o ha sido revocado "
+ 
+ #: ../lib/GUI.pm:2636
+-msgid "The Certificate will be longer valid than your CA!"
++msgid "The certificate will be valid longer than its CA!"
+ msgstr "�El Certificado tendr� mayor duraci�n que la CA!"
+ 
+ #: ../lib/GUI.pm:2638
+--- tinyca2/po/fr.po.orig
++++ tinyca2/po/fr.po
+@@ -1257,7 +1257,7 @@
+ msgstr "Si le Certificat correspondant est tjours valide"
+ 
+ #: ../lib/GUI.pm:2636
+-msgid "The Certificate will be longer valid than your CA!"
++msgid "The certificate will be valid longer than its CA!"
+ msgstr ""
+ "La date de validit� du Certificat d�passe la date de validit� de la CA!"
+ 
+--- tinyca2/po/sv.po.orig
++++ tinyca2/po/sv.po
+@@ -1,19 +1,23 @@
+ # Swedish translation of tinyca.
+ # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+ # This file is distributed under the same license as the tinyca package.
++#
+ # Daniel Nylander <po@danielnylander.se>, 2006.
++# Marcus Better <marcus@better.se>, 2009.
+ #
+ msgid ""
+ msgstr ""
+ "Project-Id-Version: tinyca\n"
+ "Report-Msgid-Bugs-To: \n"
+ "POT-Creation-Date: 2005-06-05 18:44+0200\n"
+-"PO-Revision-Date: 2006-07-10 16:23+0100\n"
+-"Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
++"PO-Revision-Date: 2009-10-19 12:02+0200\n"
++"Last-Translator: Marcus Better <marcus@better.se>\n"
+ "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=utf-8\n"
+ "Content-Transfer-Encoding: 8bit\n"
++"X-Generator: Lokalize 1.0\n"
++"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+ 
+ #: ../lib/CA.pm:45
+ msgid "error: can't open basedir: "
+@@ -253,7 +257,7 @@
+ #: ../lib/CA.pm:766
+ #: ../lib/CA.pm:912
+ msgid "Can't open Index file: "
+-msgstr "Kan inte öppna Index-fil: "
++msgstr "Kan inte öppna indexfil: "
+ 
+ #: ../lib/CA.pm:774
+ #: ../lib/CA.pm:919
+@@ -652,7 +656,7 @@
+ 
+ #: ../lib/GUI.pm:246
+ msgid "Keys"
+-msgstr "Tangenter"
++msgstr "Nycklar"
+ 
+ #: ../lib/GUI.pm:289
+ msgid "Requests"
+@@ -1383,7 +1387,7 @@
+ msgstr "om det korresponderande certifikatet är giltigt fortfarande"
+ 
+ #: ../lib/GUI.pm:2675
+-msgid "The Certificate will be longer valid than your CA!"
++msgid "The certificate will be valid longer than its CA!"
+ msgstr "Certifikatet kommer vara giltigt längre än ditt CA!"
+ 
+ #: ../lib/GUI.pm:2677

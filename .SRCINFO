@@ -1,0 +1,21 @@
+pkgbase = tinyca2
+	pkgdesc = Simple graphical user interface to manage a small CA (Certification Authority)
+	pkgver = 0.7.5
+	pkgrel = 2
+	url = http://tinyca.sm-zone.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2-perl
+	depends = perl-locale-gettext
+	depends = openssl
+	optdepends = zip
+	source = tinyca2::git://github.com/glennie/tinyca2
+	source = fix-tinyca-paths.patch
+	source = stolen-from-debian.patch
+	md5sums = SKIP
+	md5sums = d0b8fc9e3fc312ed9fbd98bf2dacbfea
+	md5sums = d5ad0010db954820837a3d09c90d018d
+
+pkgname = tinyca2
+
