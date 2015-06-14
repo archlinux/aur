@@ -1,0 +1,16 @@
+pkgbase = robot-karol
+	pkgdesc = A programming environment for introducing children to programming and algorithm design.
+	pkgver = 2.3
+	pkgrel = 4
+	url = https://www.mebis.bayern.de/medien/faecher/mint/informatik/robot-karol/
+	arch = any
+	license = custom
+	makedepends = innoextract
+	makedepends = icoutils
+	makedepends = imagemagick
+	depends = wine
+	source = https://www.mebis.bayern.de/wp-content/uploads/2013/11/Robot_Karol_setup.zip
+	md5sums = 91149127108be600bd5dd084d67444b3
+
+pkgname = robot-karol
+
