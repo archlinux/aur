@@ -1,0 +1,34 @@
+pkgbase = dolphin-emu-vr-git
+	pkgdesc = A GameCube / Wii / Triforce emulator, with Oculus Rift VR support
+	pkgver = 4.0.2.r6926.5eb7305
+	pkgrel = 2
+	url = http://www.dolphin-emu.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	depends = bluez-libs
+	depends = ffmpeg
+	depends = libao
+	depends = lzo
+	depends = miniupnpc
+	depends = polarssl
+	depends = portaudio
+	depends = sdl2
+	depends = sfml
+	depends = soundtouch
+	depends = wxgtk
+	depends = xdg-utils
+	depends = oculus-rift-sdk>=0.5.0.1
+	optdepends = pulseaudio: PulseAudio backend
+	optdepends = oculus-udev: Rules to let users access the Oculus Rift
+	provides = dolphin-emu
+	conflicts = dolphin-emu
+	options = !emptydirs
+	source = dolphin-emu::git+https://github.com/feilen/dolphin.git#branch=VR-Hydra
+	source = dolphin-emu.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = dolphin-emu-vr-git
+
