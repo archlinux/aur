@@ -1,0 +1,27 @@
+pkgbase = libtsm-patched-git
+	pkgdesc = Terminal-emulator State Machine. Patched flavor (using patches from http://github.com/Aetf/libtsm)
+	pkgver = 3.r17.gb73acb4
+	pkgrel = 3
+	url = http://www.fredesktop.org/wiki/Software/kmscon/libtsm
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = libxkbcommon
+	depends = glibc
+	provides = libtsm-patched
+	provides = libtsm
+	conflicts = libtsm
+	conflicts = libtsm-patched
+	options = !libtool
+	source = git://people.freedesktop.org/~dvdhrm/libtsm
+	source = addon-underline.patch
+	source = addon-soft-black.patch
+	source = addon-true-color.patch
+	sha256sums = SKIP
+	sha256sums = 7103869ea6d8b7151d1b6b0fa0852b66da10e3a59454e4d761cb9e6ddfef6958
+	sha256sums = 0d1635f90bd95915665e87e46fa4f3abd8ed3dfe193851d2598ba8b6d37e4e3e
+	sha256sums = 25f43bc1021cca1bbdab505938e6ca8f64675dc3014c24e0210a90f2524e1858
+
+pkgname = libtsm-patched-git
+

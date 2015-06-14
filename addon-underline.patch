@@ -1,0 +1,30 @@
+diff --git a/src/tsm/tsm-render.c b/src/tsm/tsm-render.c
+index cb6c7d7..dcd4d69 100644
+--- a/src/tsm/tsm-render.c
++++ b/src/tsm/tsm-render.c
+@@ -52,6 +52,7 @@ tsm_age_t tsm_screen_draw(struct tsm_screen *con, tsm_screen_draw_cb draw_cb,
+ 	struct tsm_screen_attr attr;
+ 	int ret, warned = 0;
+ 	const uint32_t *ch;
++	uint32_t id;
+ 	size_t len;
+ 	bool in_sel = false, sel_start = false, sel_end = false;
+ 	bool was_sel = false;
+@@ -161,10 +162,15 @@ tsm_age_t tsm_screen_draw(struct tsm_screen *con, tsm_screen_draw_cb draw_cb,
+ 					age = con->age;
+ 			}
+ 
++			if (attr.underline)
++				id = cell->ch | (TSM_UCS4_MAX+1);
++			else
++				id = cell->ch;
++
+ 			ch = tsm_symbol_get(con->sym_table, &cell->ch, &len);
+-			if (cell->ch == ' ' || cell->ch == 0)
++			if (cell->ch == 0 || (cell->ch == ' ' && !attr.underline))
+ 				len = 0;
+-			ret = draw_cb(con, cell->ch, ch, len, cell->width,
++			ret = draw_cb(con, id, ch, len, cell->width,
+ 				      j, i, &attr, age, data);
+ 			if (ret && warned++ < 3) {
+ 				llog_debug(con,

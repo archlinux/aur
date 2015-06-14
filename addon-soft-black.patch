@@ -1,0 +1,42 @@
+diff --git a/src/tsm/tsm-vte.c b/src/tsm/tsm-vte.c
+index ec8a936..abadd51 100644
+--- a/src/tsm/tsm-vte.c
++++ b/src/tsm/tsm-vte.c
+@@ -293,6 +293,28 @@ static uint8_t color_palette_solarized_white[COLOR_NUM][3] = {
+ 	[COLOR_BACKGROUND]    = { 238, 232, 213 }, /* light grey */
+ };
+ 
++static uint8_t color_palette_soft_black[COLOR_NUM][3] = {
++	[COLOR_BLACK]         = { 0x3f, 0x3f, 0x3f }, /* black */
++	[COLOR_RED]           = { 0x70, 0x50, 0x50 }, /* red */
++	[COLOR_GREEN]         = { 0x60, 0xb4, 0x8a }, /* green */
++	[COLOR_YELLOW]        = { 0xdf, 0xaf, 0x8f }, /* yellow */
++	[COLOR_BLUE]          = { 0x9a, 0xb8, 0xd7 }, /* blue */
++	[COLOR_MAGENTA]       = { 0xdc, 0x8c, 0xc3 }, /* magenta */
++	[COLOR_CYAN]          = { 0x8c, 0xd0, 0xd3 }, /* cyan */
++	[COLOR_LIGHT_GREY]    = { 0xff, 0xff, 0xff }, /* light grey */
++	[COLOR_DARK_GREY]     = { 0x70, 0x90, 0x80 }, /* dark grey */
++	[COLOR_LIGHT_RED]     = { 0xdc, 0xa3, 0xa3 }, /* light red */
++	[COLOR_LIGHT_GREEN]   = { 0x72, 0xd5, 0xa3 }, /* light green */
++	[COLOR_LIGHT_YELLOW]  = { 0xf0, 0xdf, 0xaf }, /* light yellow */
++	[COLOR_LIGHT_BLUE]    = { 0x94, 0xbf, 0xf3 }, /* light blue */
++	[COLOR_LIGHT_MAGENTA] = { 0xec, 0x93, 0xd3 }, /* light magenta */
++	[COLOR_LIGHT_CYAN]    = { 0x93, 0xe0, 0xe3 }, /* light cyan */
++	[COLOR_WHITE]         = { 0xdc, 0xdc, 0xcc }, /* white */
++
++	[COLOR_FOREGROUND]    = { 0xdc, 0xdc, 0xcc }, /* white */
++	[COLOR_BACKGROUND]    = { 0x2c, 0x2c, 0x2c }, /* light grey */
++};
++
+ static uint8_t (*get_palette(struct tsm_vte *vte))[3]
+ {
+ 	if (!vte->palette_name)
+@@ -304,6 +326,8 @@ static uint8_t (*get_palette(struct tsm_vte *vte))[3]
+ 		return color_palette_solarized_black;
+ 	if (!strcmp(vte->palette_name, "solarized-white"))
+ 		return color_palette_solarized_white;
++	if (!strcmp(vte->palette_name, "soft-black"))
++		return color_palette_soft_black;
+ 
+ 	return color_palette;
+ }
