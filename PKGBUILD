@@ -11,12 +11,10 @@ pkgdesc="a simple screenshot/screencast tool written in bash"
 arch=('any')
 url='https://github.com/carnager/teiler'
 license=('GPL')
-depends=('ffmpeg' 'maim' 'slop' 'xclip' 'xininfo-git' 'dzen2-xft-xpm-xinerama-git')
+depends=('ffmpeg' 'maim' 'slop' 'xclip' 'xininfo-git' 'dzen2-xft-xpm-xinerama-git' 'rofi')
 optdepends=('fb-client:         Upload to paste.xinu.at (or selfhosted filebin)'
             'openssh:           Upload to SSH server'
-            'imgur:             Upload images to imgur.com'
-            'dmenu2:            Backend for teiler'
-            'rofi-git:          Alternative backend for teiler')
+            'imgur:             Upload images to imgur.com')
 
 options=(!strip)
 install="teiler.install"
