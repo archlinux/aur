@@ -1,0 +1,16 @@
+pkgbase = perl-yape-regex-explain
+	pkgdesc = YAPE::Regex::Explain - explanation of a regular expression
+	pkgver = 4.01
+	pkgrel = 2
+	url = http://search.cpan.org/~gsullivan/YAPE-Regex-Explain/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl
+	depends = perl-yape-regex
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GS/GSULLIVAN/YAPE-Regex-Explain-4.01.tar.gz
+	md5sums = 8da1f721e79ef85f7e8bbc931309f493
+
+pkgname = perl-yape-regex-explain
+
