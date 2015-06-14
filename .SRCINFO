@@ -1,0 +1,15 @@
+pkgbase = gentoo
+	pkgdesc = A lightweight file manager for GTK
+	pkgver = 0.20.4
+	pkgrel = 1
+	url = http://www.obsession.se/gentoo/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = gtk3
+	depends = gamin
+	source = http://downloads.sourceforge.net/gentoo/gentoo-0.20.4.tar.gz
+	md5sums = 9e10f5ad00613b63eb02cde89506153d
+
+pkgname = gentoo
+
