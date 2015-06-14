@@ -1,6 +1,6 @@
 # Maintainer: Dicebot <public@dicebot.lv>
 pkgname=dlang-digger
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc="A tool to build D and bisect old D versions"
 arch=('i686' 'x86_64')
