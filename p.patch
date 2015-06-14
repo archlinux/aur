@@ -1,0 +1,22 @@
+diff --git a/inc/Module/Build/Scintilla.pm b/inc/Module/Build/Scintilla.pm
+index de71aaf..0da4676 100644
+--- a/inc/Module/Build/Scintilla.pm
++++ b/inc/Module/Build/Scintilla.pm
+@@ -47,7 +47,7 @@ sub stc_wxconfig {
+ 	# not available on windows
+ 	return $self->{_wxstc_config_wxconfig} if $self->{_wxstc_config_wxconfig};
+ 	my $binpathconfig;
+-	my $sympathconfig = Alien::wxWidgets->prefix . '/bin/wx-config';
++	my $sympathconfig = Alien::wxWidgets->prefix . '/usr/bin/wx-config-2.8';
+ 
+ 	# sometimes the symlink is broken - if there has been relocation etc.
+ 	# but we know where it should be if installed by Alien::wxWidgets
+@@ -60,7 +60,7 @@ sub stc_wxconfig {
+ 		$binpathconfig = $testpath if -f $testpath;
+ 	};
+ 
+-	my $wxconfig = $binpathconfig || 'wx-config';
++	my $wxconfig = $binpathconfig || 'wx-config-2.8';
+ 	my $configtest = qx($wxconfig --version);
+ 	if ( $configtest !~ /^\d+\.\d+\.\d+/ ) {
+ 		die
