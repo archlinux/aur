@@ -1,0 +1,28 @@
+pkgbase = dslogic
+	pkgdesc = Client software that supports the DreamSourceLab logic analyzer
+	pkgver = 0.4
+	pkgrel = 6
+	url = http://www.dreamsourcelab.com/
+	install = dslogic.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = boost
+	depends = boost-libs
+	depends = qt4
+	depends = libsigrok4dslogic
+	depends = libsigrokdecode
+	conflicts = dslogic
+	source = git+https://github.com/DreamSourceLab/DSLogic.git#commit=7c8b0b19d3c049497612a21500340c0e52dc9a92
+	source = decode.patch
+	source = path.patch
+	source = udev.rules
+	source = dslogic.desktop
+	md5sums = SKIP
+	md5sums = 241f8b2a57576edf82aad808ee23169d
+	md5sums = 82097feb211342f1f6f6344a9660aaf2
+	md5sums = af6d97ba0fbea628e320bdb4b469b766
+	md5sums = de092f197a97096aaf05da997cd55ea9
+
+pkgname = dslogic
+

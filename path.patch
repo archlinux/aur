@@ -1,0 +1,35 @@
+diff -Naur a/CMakeLists.txt b/DSLogic-gui/CMakeLists.txt
+--- a/CMakeLists.txt	2015-01-31 06:14:50.805916000 +0100
++++ b/CMakeLists.txt	2015-01-31 06:35:16.341419132 +0100
+@@ -346,9 +346,9 @@
+ 
+ # Install the executable.
+ install(TARGETS ${PROJECT_NAME} DESTINATION bin/)
+-install(FILES res/DSLogic.fw DESTINATION bin/res/)
+-install(FILES res/DSLogic33.bin DESTINATION bin/res/)
+-install(FILES res/DSLogic50.bin DESTINATION bin/res/)
++install(FILES res/DSLogic.fw    DESTINATION share/dslogic/)
++install(FILES res/DSLogic33.bin DESTINATION share/dslogic/)
++install(FILES res/DSLogic50.bin DESTINATION share/dslogic/)
+ 
+ #===============================================================================
+ #= Packaging (handled by CPack)
+diff -Naur a/pv/devicemanager.cpp b/DSLogic-gui/pv/devicemanager.cpp
+--- a/pv/devicemanager.cpp	2015-01-31 06:14:50.809249000 +0100
++++ b/pv/devicemanager.cpp	2015-01-31 06:34:08.962014722 +0100
+@@ -103,11 +103,15 @@
+ 
+     // Check If DSLogic driver
+     if (strcmp(driver->name, "DSLogic") == 0) {
++        /*
+         QDir dir(QCoreApplication::applicationDirPath());
+         if (!dir.cd("res"))
+             return driver_devices;
+         std::string str = dir.absolutePath().toStdString() + "/";
+         strcpy(config_path, str.c_str());
++        */
++        // dirty
++        strcpy(config_path, "/usr/share/dslogic/");
+     }
+ 
+ 	// Do the scan

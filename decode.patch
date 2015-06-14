@@ -1,0 +1,11 @@
+--- a/pv/data/decode/annotation.cpp	2015-01-27 23:04:17.161010481 +0100
++++ b/pv/data/decode/annotation.cpp	2015-01-27 23:51:11.983185545 +0100
+@@ -40,7 +40,7 @@
+ 		(const srd_proto_data_annotation*)pdata->data;
+ 	assert(pda);
+ 
+-	_format = pda->ann_class;
++	_format = pda->ann_format;
+ 
+ 	const char *const *annotations = (char**)pda->ann_text;
+ 	while(*annotations) {
