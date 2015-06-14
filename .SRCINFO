@@ -1,0 +1,13 @@
+pkgbase = outspline-extra
+	pkgdesc = Extra addons for Outspline
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://kynikos.github.io/outspline/
+	arch = any
+	license = GPL3
+	depends = outspline
+	source = http://downloads.sourceforge.net/project/outspline/extra/outspline-extra-0.8.1.tar.bz2
+	sha256sums = 164fa3d80087855e177e366697d48393605f986cfbb96f8036146b19f8f02759
+
+pkgname = outspline-extra
+
