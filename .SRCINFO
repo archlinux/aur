@@ -1,0 +1,26 @@
+pkgbase = libgweather2
+	pkgdesc = Provides access to weather information from the net (legacy version)
+	pkgver = 2.30.3
+	pkgrel = 2
+	url = http://www.gnome.org/
+	install = libgweather.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	makedepends = intltool
+	makedepends = gtk-doc
+	makedepends = gobject-introspection
+	makedepends = gnome-common
+	depends = gconf
+	depends = libsoup-gnome
+	depends = gtk2
+	provides = libgweather
+	conflicts = libgweather
+	options = !libtool
+	options = !emptydirs
+	source = http://ftp.gnome.org/pub/GNOME/sources/libgweather/2.30/libgweather-2.30.3.tar.bz2
+	md5sums = bf6a0a05051341ecb250f332e3edfb88
+
+pkgname = libgweather2
+
