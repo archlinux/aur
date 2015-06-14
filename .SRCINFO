@@ -1,0 +1,19 @@
+pkgbase = libkdeaccessibilityclient-git
+	pkgdesc = A screen magnifier. KF5 Frameworks branch (GIT version)
+	pkgver = r242.f98b97b
+	pkgrel = 1
+	url = http://kde.org/applications/utilities/libkdeaccessibilityclient
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = cmake
+	makedepends = git
+	depends = qt5-base
+	provides = libkdeaccessibilityclient
+	conflicts = libkdeaccessibilityclient
+	source = git://anongit.kde.org/libkdeaccessibilityclient
+	sha1sums = SKIP
+
+pkgname = libkdeaccessibilityclient-git
+
