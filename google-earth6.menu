@@ -1,0 +1,6 @@
+?package(google-earth):needs="x11" \
+  section="Applications/Network/Web Browsing" \
+  hints="Web browsers" \
+  title="Google Earth (Legacy)" \
+  icon="/opt/google/earth/legacy/product_logo_32.xpm" \
+  command="/opt/google/earth/legacy/google-earth"

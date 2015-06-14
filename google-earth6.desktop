@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Name=Google Earth Legacy
+GenericName=Legacy 3D planet viewer
+Comment=Explore, search and discover the planet
+Exec=/opt/google/earth/legacy/google-earth %f
+Terminal=false
+MultipleArgs=false
+Icon=google-earth6
+Type=Application
+Categories=Application;Network
+MimeType=application/vnd.google-earth.kml+xml;application/vnd.google-earth.kmz;application/earthviewer;application/keyhole
