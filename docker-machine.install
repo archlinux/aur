@@ -1,0 +1,3 @@
+post_install(){
+    echo "Required Linux modules for VirtualBox: vboxdrv vboxnetadp vboxnetflt"
+}
