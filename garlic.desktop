@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Name=Garlic
+Exec=garlic
+Icon=garlic
+Terminal=false
+Type=Application
+GenericName=A molecular visualization program
+Comment=Visualize and investigate proteins and some geometric objects
+Categories=Science;Biology;Chemistry;Education;

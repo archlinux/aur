@@ -1,0 +1,25 @@
+pkgbase = garlic
+	pkgver = 1.6
+	pkgrel = 6
+	url = http://www.zucic.org/garlic/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	source = http://www.zucic.org/sources/garlic-1.6/garlic.1.gz
+	source = http://www.zucic.org/sources/garlic-1.6/garlic-1.6.tar.gz
+	source = http://www.zucic.org/sources/garlic-1.6/garlic-1.6-doc.tar.gz
+	source = garlic.desktop
+	md5sums = 5b91358ce8a48e12e6c1d3650aa6ebb4
+	md5sums = 5fac1f13733d9700925a0cb9a407c651
+	md5sums = 08ec479898102062250ebd60700e102c
+	md5sums = da42765ab5a03e78121c7e7729b609ca
+
+pkgname = garlic
+	pkgdesc = Molecular visualization program
+	depends = libx11
+
+pkgname = garlic-doc
+	pkgdesc = Documentation for garlic
+	arch = any
+	depends = garlic
+
