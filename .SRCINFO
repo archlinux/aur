@@ -1,0 +1,29 @@
+pkgbase = mosquitto-hg
+	pkgdesc = An Open Source MQTT v3.1 Broker
+	pkgver = 3070.db5147ce80f1
+	pkgrel = 2
+	url = http://mosquitto.org/
+	install = mosquitto-hg.install
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = BSD
+	makedepends = mercurial
+	makedepends = python
+	makedepends = docbook-xsl
+	depends = openssl
+	provides = mosquitto
+	conflicts = mosquitto
+	source = mosquitto::hg+https://bitbucket.org/oojah/mosquitto#branch=1.2
+	source = mosquitto.service
+	source = docbook.patch
+	source = usr_move.patch
+	md5sums = SKIP
+	md5sums = bac7f1ff5c13b9e04e82c875c5f2c422
+	md5sums = 8e1c14e99d7eba210b874e80b5153f0d
+	md5sums = b37551bbdccf751cdc5ea5b25afd2f5a
+
+pkgname = mosquitto-hg
+

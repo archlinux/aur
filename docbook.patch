@@ -1,0 +1,10 @@
+--- a/man/manpage.xsl	2013-06-02 17:22:59.958307000 +0200
++++ b/man/manpage.xsl	2013-06-02 17:34:17.441551534 +0200
+@@ -1,6 +1,6 @@
+ <!-- Set parameters for manpage xsl -->
+ <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+-	<xsl:import href="/usr/share/xml/docbook/stylesheet/docbook-xsl/manpages/docbook.xsl"/>
++	<xsl:import href="/usr/share/xml/docbook/xsl-stylesheets-1.78.1/manpages/docbook.xsl"/>
+ 	<!-- Don't display notes list of link urls. -->
+ 	<xsl:param name="man.endnotes.list.enabled">0</xsl:param>
+ 	<xsl:param name="man.endnotes.are.numbered">0</xsl:param>
