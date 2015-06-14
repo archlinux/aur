@@ -1,0 +1,19 @@
+pkgbase = netmon-git
+	pkgdesc = A lightweight tray network monitor useful with netctl
+	pkgver = 0.r12.9b6a452
+	pkgrel = 1
+	url = http://github.com/chmduquesne/netmon
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python2
+	depends = iproute2
+	depends = iputils
+	depends = wpa_supplicant
+	depends = pygtk
+	provides = netmon
+	source = netmon-git::git+http://github.com/chmduquesne/netmon.git
+	md5sums = SKIP
+
+pkgname = netmon-git
+
