@@ -1,0 +1,17 @@
+post_install() {
+	kh_link=/etc/ssh/ssh_known_hosts
+	kh_dest=/var/lib/openssh-known-hosts/ssh_known_hosts
+	[ -L $kh_link ] || [ -e $kh_link ] || ln -s $kh_dest $kh_link
+	if [ "`readlink $kh_link`" != $kh_dest ]; then
+		echo "$kh_link already exists, please set up the link to"
+		echo "$kh_dest yourself or point to it"
+		echo "with GlobalKnownHostsFile in ssh_config(5)."
+	fi
+}
+
+pre_remove() {
+	if [ -L /etc/ssh/ssh_known_hosts ] && \
+	[ "`readlink /etc/ssh/ssh_known_hosts`" = /var/lib/openssh-known-hosts/ssh_known_hosts ]; then
+		rm /etc/ssh/ssh_known_hosts
+	fi
+}
