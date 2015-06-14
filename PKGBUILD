@@ -1,7 +1,7 @@
 # Maintainer: Chris Sakalis <chrissakalis@gmail.com>
 
 pkgname="minutor-git"
-pkgver=2.0.1.r4.gdadf0ee
+pkgver=2.0.1.r91.g4ec245b
 pkgrel=1
 pkgdesc="A minimalistic map generator for minecraft."
 arch=('i686' 'x86_64')
