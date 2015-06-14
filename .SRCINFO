@@ -1,0 +1,23 @@
+pkgbase = deepin-terminal
+	pkgdesc = Awesome terminal for Linux Deepin
+	pkgver = 1.1.20141230110750
+	pkgrel = 1
+	url = https://gitcafe.com/Deepin/deepin-terminal
+	install = deepin-terminal.install
+	arch = any
+	groups = deepin-extra
+	license = GPL3
+	makedepends = deepin-gettext-tools
+	depends = deepin-vte
+	depends = python2-dbus
+	depends = python2-scipy
+	source = http://packages.linuxdeepin.com/deepin/pool/main/d/deepin-terminal/deepin-terminal_1.1+20141230110750~bc441b7aae.tar.gz
+	sha256sums = e8f756064def8b69a2e3c63f8cb0e1070082da997862ee0ecaa2b5b84be1d1e7
+
+pkgname = deepin-terminal
+	depends = deepin-vte
+	depends = python2-dbus
+	depends = python2-scipy
+	depends = python2-deepin-ui
+	depends = gtk-update-icon-cache
+
