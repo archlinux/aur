@@ -1,0 +1,14 @@
+pkgbase = ruby-log4r
+	pkgdesc = Log4r, logging framework for ruby
+	pkgver = 1.1.10
+	pkgrel = 1
+	url = http://log4r.rubyforge.org
+	arch = any
+	depends = ruby
+	noextract = log4r-1.1.10.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/log4r-1.1.10.gem
+	sha512sums = a3a9e6c9ef5b388106afc4d402455ec480729cb58054794e6ff6c963b4d819776bf5b57ef5ab7499ddc9a6b3c10f299a133f3f5986d94ee0a438b64ede5bc143
+
+pkgname = ruby-log4r
+
