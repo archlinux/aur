@@ -23,10 +23,8 @@ pkgver() {
 prepare() {
   mkdir -p build
 
-  sed '110d' -i krusader/krusader/CMakeLists.txt
-  sed '110d' -i krusader/krusader/CMakeLists.txt
   sed 's|              krviewer.rc|install(FILES krviewer.rc|g' -i krusader/krusader/CMakeLists.txt
-  sed -e '119iinstall(FILES krusaderui.rc\n              krusaderlisterui.rc\n        DESTINATION ${KXMLGUI_INSTALL_DIR}/krusader)' -i krusader/krusader/CMakeLists.txt
+  sed -e '111i\ \ \ \ \ \ \ \ \DESTINATION ${KXMLGUI_INSTALL_DIR}/krusader)' -i krusader/krusader/CMakeLists.txt
 }
 
 build() {
