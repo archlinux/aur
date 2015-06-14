@@ -1,0 +1,15 @@
+pkgbase = perl-devel-ptkdb
+	pkgdesc = Devel::ptkdb - Perl debugger using a Tk GUI
+	pkgver = 1.1091
+	pkgrel = 4
+	url = http://search.cpan.org/dist/Devel-ptkdb
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl-tk
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AE/AEPAGE/Devel-ptkdb-1.1091.tar.gz
+	md5sums = 50675b617d0d3c31e5b219d0fc08dce3
+
+pkgname = perl-devel-ptkdb
+
