@@ -1,0 +1,20 @@
+pkgbase = perl-module-install
+	pkgdesc = Module::Install - Standalone, extensible Perl module installer
+	pkgver = 1.14
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Module-Install
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-yaml-tiny
+	depends = perl-file-remove
+	depends = perl-json
+	depends = perl-module-scandeps
+	depends = perl-par-dist
+	depends = perl-parse-cpan-meta
+	depends = perl-yaml-tiny
+	source = http://search.cpan.org/CPAN/authors/id/B/BI/BINGOS/Module-Install-1.14.tar.gz
+	options = !emptydirs
+
+pkgname = perl-module-install
+
