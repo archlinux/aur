@@ -8,6 +8,8 @@ url="http://solutions.brother.com/linux/en_us/"
 arch=('i686' 'x86_64')
 license=("GPL2")
 depends=('cups' 'ghostscript' 'glibc' 'brother-ql570-lpr')
+depends_x86_64=('cups' 'ghostscript' 'lib32-glibc' 'brother-ql570-lpr')
+
 makedepends=('rpmextract')
 source=("http://www.brother.com/pub/bsc/linux/dlf/${_pkgname}-${pkgver}-0.i386.rpm"
         "cupswrapper.install")
