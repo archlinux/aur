@@ -1,0 +1,21 @@
+pkgbase = openbsd-rescueboot
+	pkgdesc = Script to add OpenBSD iso images to the grub2 boot menu
+	pkgver = 5.6
+	pkgrel = 1
+	url = http://www.openbsd.org/
+	arch = any
+	license = GPL
+	depends = grub
+	noextract = cd56.iso
+	source = http://openbsd.c3sl.ufpr.br/openbsd/5.6/amd64/cd56.iso
+	source = openbsd-rescueboot
+	source = 42_openbsd
+	md5sums = 65854da3159e33042fc7b741e9389f07
+	md5sums = e2e7fc488506dff30b82ecc75a8f78ee
+	md5sums = 9d63b37935946bf4074b83cfaf83c41c
+	sha256sums = 99623a7a8c2fd26d8058a6c5b873b4e271ca97a2e8f0897209c53fea0c741b63
+	sha256sums = 318ade6bf826c05142815dc2a22be75d2d37404aaaa465d91dbf11d2d36ae53b
+	sha256sums = fa57e40f9a1cacc915004b3dc3bb000294934f17a4396a2837ad2d971674a5ec
+
+pkgname = openbsd-rescueboot
+

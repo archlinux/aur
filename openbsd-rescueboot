@@ -1,0 +1,8 @@
+## Configuration file for package openbsd-rescueboot.
+
+# Location of ISOs:
+# ISO_LOCATION="/boot/openbsd/"
+
+# To set any specific bootoptions for rescue images
+# present in /boot/openbsd just set and enable the following option:
+# CUSTOM_BOOTOPTIONS="ssh=password lang=de"
