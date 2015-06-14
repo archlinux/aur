@@ -1,0 +1,37 @@
+pkgbase = google-earth
+	pkgdesc = A 3D interface to view satellite images of Earth and other objects
+	pkgver = 7.1.4.1529
+	pkgrel = 1
+	url = https://www.google.com/earth/index.html
+	install = google-earth.install
+	arch = i686
+	arch = x86_64
+	license = custom:earth
+	makedepends = pacman>=4.2.0
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = ld-lsb>=3-5
+	depends = lib32-fontconfig
+	depends = lib32-glu
+	depends = lib32-libgl
+	depends = lib32-libsm
+	depends = lib32-libxrender
+	depends = lib32-mesa
+	depends = shared-mime-info
+	depends = xdg-utils
+	optdepends = lib32-catalyst-utils: For AMD Catalyst
+	optdepends = lib32-nvidia-utils: For the NVIDIA driver
+	options = !emptydirs
+	source = google-earth-stable_7.1.4.1529_i386.deb::https://dl.google.com/earth/client/current/google-earth-stable_current_i386.deb
+	source = googleearth
+	source = google-earth-mimetypes.xml
+	source = baifaao.cpp
+	md5sums = b8847cb867bdb3ff892149f0fd68f036
+	md5sums = e84f5d51ea3545c131d1794f89f6464a
+	md5sums = e3c67b8d05c3de50535bd7e45eee728e
+	md5sums = 598d579a1c3199c77850d86ba78f7b44
+	source_x86_64_unstable = google-earth-stable_7.1.4.1529_amd64.deb::https://dl.google.com/earth/client/current/google-earth-stable_current_amd64.deb
+	md5sums_x86_64_unstable = 7bbba9d4d64f2a9b38752e259d849bda
+
+pkgname = google-earth
+
