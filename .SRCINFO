@@ -1,0 +1,17 @@
+pkgbase = polyml
+	pkgdesc = A full implementation of Standard ML (SML)
+	pkgver = 5.5.2
+	pkgrel = 1
+	url = http://www.polyml.org/
+	install = polyml.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = gmp
+	depends = libffi
+	options = !libtool
+	source = http://downloads.sourceforge.net/sourceforge/polyml/polyml/5.5.2/polyml.5.5.2.tar.gz
+	md5sums = c935fd2d17749c1e127098215da990c9
+
+pkgname = polyml
+

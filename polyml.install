@@ -1,0 +1,7 @@
+post_upgrade() {
+  cat << EOF
+If you compile executables using Poly/ML, you should use
+the new polyc script, as this automatically passes the
+correct libraries to the linker.
+EOF
+}
