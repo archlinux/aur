@@ -1,0 +1,45 @@
+enable_def_module(){
+  a2enmod -q log_config  
+  a2enmod -q alias
+  a2enmod -q autoindex
+  a2enmod -q dir
+  a2enmod -q env
+  a2enmod -q mime
+  a2enmod -q negotiation
+  a2enmod -q setenvif
+  a2enmod -q status
+  a2enmod -q auth_basic
+  a2enmod -q deflate
+
+  # Those come from mod_auth:
+  a2enmod -q authz_default
+  a2enmod -q authz_user
+  a2enmod -q authz_groupfile
+  a2enmod -q authn_file
+
+  # This comes from mod_access:
+  a2enmod -q authz_host
+
+  # enable default site
+  a2ensite -q default
+}
+post_install() {
+    cat <<- HERE
+    Now you can modify the /etc/httpd/conf/httpd.conf.example and rename to /etc/httpd/conf/httpd.conf
+    To test the configuration use apachectl -t.
+    For more read: man 8 a2ensite a2enmod.
+HERE
+  enable_def_module
+}
+
+post_upgrade() {
+  echo ""
+#  enable_def_module
+}
+
+op=$1
+shift
+
+$op $*
+
+# vi:set ts=2 sw=2 et:
