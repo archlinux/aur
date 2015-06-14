@@ -1,0 +1,20 @@
+pkgbase = npapi-vlc-git
+	pkgdesc = The modern VLC Mozilla (NPAPI) plugin
+	pkgver = 2.2.1.95.r1444.gd5accd8
+	pkgrel = 1
+	url = http://git.videolan.org/?p=npapi-vlc.git;a=summary
+	arch = i686
+	arch = x86_64
+	license = LGPL-2.1
+	makedepends = git
+	makedepends = gtk2
+	makedepends = npapi-sdk
+	depends = vlc
+	provides = npapi-vlc=2.2.1.95.r1444.gd5accd8
+	conflicts = npapi-vlc
+	options = !libtool
+	source = git://git.videolan.org/npapi-vlc.git
+	md5sums = SKIP
+
+pkgname = npapi-vlc-git
+
