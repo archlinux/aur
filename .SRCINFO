@@ -7,6 +7,7 @@ pkgbase = xd
 	arch = x86_64
 	license = custom
 	makedepends = gcc
+	depends = glibc
 	options = zipman
 	source = http://www.fourmilab.ch/xd/xd.zip
 	source = COPYING
