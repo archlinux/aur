@@ -1,6 +1,6 @@
 pkgbase = fmod
 	pkgdesc = Interface for programmers to load FMOD Studio projects and play them back in realtime
-	pkgver = 1.06.03
+	pkgver = 1.06.04
 	pkgrel = 1
 	url = http://www.fmod.org/download/
 	changelog = revision.txt
@@ -9,8 +9,8 @@ pkgbase = fmod
 	arch = arm
 	arch = armhf
 	license = custom
-	source = http://www.fmod.org/download/fmodstudio/api/Linux/fmodstudioapi10603linux.tar.gz
-	sha256sums = 7ce0cd6453b1c4d57ea0bc50f7ee9d1fa48809f1465db30ad1a0b7496dcd28ad
+	source = http://www.fmod.org/download/fmodstudio/api/Linux/fmodstudioapi10604linux.tar.gz
+	sha256sums = 65072ea78c4c1fba58c9fd9c47361c3189eaa805e1153912446373ef0e5fca8a
 
 pkgname = fmod
 

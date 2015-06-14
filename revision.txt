@@ -5,7 +5,44 @@
                               http://www.fmod.org
 ===============================================================================
 
-22/05/15 1.06.03 - Studio API patch release (build 64399)
+09/06/15 1.06.04 - Studio API patch release (build 64800)
+----------------------------------------------------
+
+Features:
+* Studio API   - Added tempo and marker event callbacks.  See 
+                 FMOD_STUDIO_EVENT_CALLBACK_TIMELINE_MARKER and
+                 FMOD_STUDIO_EVENT_CALLBACK_TIMELINE_BEAT.
+* LowLevel API - Add FMOD_DSP_DESCRIPTION::sys_register, sys_deregister and
+                 sys_mix for DSP plugin developers, to allow a per type (not 
+                 instance) level init/shutdown/mix callback for a plugin.
+
+Fixes:
+* Lowlevel API - Fixed MIDI playback not correctly handling CC1 (mod wheel).
+* Studio API   - Fixed livelock when scheduling nested events in a playlist that
+                 have 0 duration.
+* Studio API   - Fixed events staying active when they have active but idle
+                 nested events on parameters.  Events now finish once their 
+                 nested parameter events go idle.
+* Studio API   - Fixed Scatterer sounds not being spatialized properly.
+                 Introduced in 1.06.00.
+* FSBank       - Fix bug that prevented selection of FMOD ADPCM in the tool.
+* LowLevel API - Fix set3DPanLevel not respecting reverb mix when pan level 
+                 was approaching 0.
+* LowLevel API - Fix 2d channels not having the wet mix scaled for reverb when 
+                 parent ChannelGroup volume/mute functions were called.
+* Unity        - Remove warnings about banks already loaded
+* Unity        - Fix Unity Editor crashing when using FMOD_LIVEUPDATE and 
+                 FMOD_DEBUG pre-processor commands simultaneously.
+
+Notes:
+* Studio API   - Added a warning for events that haven't finished because they
+                 are waiting for a DSP effect to go idle.
+* Lowlevel API - WiiU - To comply with LotCheck requirements only the logging version
+                        of FMOD will link with networking APIs
+* Xbox One - Now built with May 2015 QFE 1 XDK.
+* WiiU - Now built with SDK 2.12.13.
+
+22/05/15 1.06.03 - Studio API patch release
 ----------------------------------------------------
 
 Features:
