@@ -1,0 +1,29 @@
+pkgbase = entangle
+	pkgdesc = Entangle provides a graphical interface for “tethered shooting”, aka taking photographs with a digital camera completely controlled from the computer.
+	pkgver = 0.7.0
+	pkgrel = 3
+	url = http://entangle-photo.org/
+	install = entangle.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	depends = dbus-glib>=0.60
+	depends = gdk-pixbuf2
+	depends = gtk3
+	depends = libgphoto2
+	depends = libsystemd
+	depends = dbus-glib
+	depends = gobject-introspection
+	depends = lcms
+	depends = libpeas
+	depends = libgexiv2
+	depends = libraw
+	depends = gnome-icon-theme-symbolic
+	depends = itstool
+	depends = yelp-tools
+	source = http://entangle-photo.org/download/sources/entangle-0.7.0.tar.gz
+	md5sums = bdb5fab70276ea27c4614fecfa5c1d86
+
+pkgname = entangle
+
