@@ -1,4 +1,4 @@
-# Maintainer: Andreas B. Wagner <AndreasBWagner@pointfree.net>
+# Maintainer: Andreas B. Wagner <andreas.wagner@lowfatcomputing.org>
 pkgname=vttest
 pkgver=20140305
 pkgrel=2
