@@ -1,0 +1,15 @@
+pkgbase = perl-sort-versions
+	pkgdesc = Sort::Versions - a perl 5 module for sorting of revision-like numbers
+	pkgver = 1.5
+	pkgrel = 2
+	url = http://search.cpan.org/~edavis/Sort-Versions/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/E/ED/EDAVIS/Sort-Versions-1.5.tar.gz
+	md5sums = 5434f948fdea6406851c77bebbd0ed19
+
+pkgname = perl-sort-versions
+
