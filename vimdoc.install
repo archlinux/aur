@@ -1,0 +1,24 @@
+updating_help_tags() {
+    echo -n "Updating vim help tags..."
+    /usr/bin/vim --noplugins -u NONE -U NONE \
+        --cmd ":helptags /usr/share/vim/vimfiles/doc" --cmd ":q" > /dev/null 2>&1
+    echo "done."
+}
+post_install() {
+    updating_help_tags $1
+    echo 'After install create directory ~/.vim/skeletons'
+}
+
+post_upgrade() {
+    updating_help_tags $1
+    echo 'After install create directory ~/.vim/skeletons'
+}
+
+post_remove() {
+    updating_help_tags $1
+}
+
+op=$1
+shift
+
+$op $*
