@@ -11,7 +11,6 @@ license=('MIT')
 arch=('any')
 conflicts=('python2-foolscap')
 provides=('python2-foolscap')
-replaces=('python-foolscap-i2p')
 options=(!emptydirs)
 
 depends=('twisted'
@@ -23,7 +22,9 @@ source=("http://foolscap.lothar.com/releases/foolscap-${pkgver}.tar.gz"
         "http://foolscap.lothar.com/releases/foolscap-${pkgver}.tar.gz.asc"
         #"0001-proxy-support.patch"
         #"0002-recognize-i2p-dests.patch"
-        "http://killyourtv.i2p.me/tahoe-lafs/patches/foolscap-i2p-${_patchver}.patch")
+        "http://killyourtv.i2p.us/tahoe-lafs/patches/foolscap-i2p-${_patchver}.patch")
+
+validpgpkeys=('734145FEBE70E5D059C7EDCD3E8692AFAF1B4A2A')
 
 sha256sums=('74b283dd68a3c9d68ebf4e9b4ebf5cfb37480915b6a808ac930fe858a66f8d99'
             'SKIP'
