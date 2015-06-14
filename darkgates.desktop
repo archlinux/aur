@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Darkgates
+Comment=You lead your team of 6 heroes into dungeon where they will fight their way trough in order to destroy Dark Gates and evil mage who is the master of the dungeon
+Exec=darkgates
+Icon=darkgates
+Terminal=false
+StartupNotify=false
+Categories=Application;Game;ArcadeGame;

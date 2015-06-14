@@ -1,0 +1,22 @@
+pkgbase = darkgates
+	pkgdesc = You lead your team of 6 heroes into dungeon where they will fight their way trough in order to destroy Dark Gates and evil mage who is the master of the dungeon
+	pkgver = alpha_0.2.0
+	pkgrel = 1
+	url = http://darkgates.dfourgames.com/
+	install = darkgates.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = sh
+	depends = zlib
+	depends = hicolor-icon-theme
+	options = !strip
+	source = http://darkgates.dfourgames.com/download/DarkGates_alpha_0.2.0.tar.gz
+	source = darkgates.sh
+	source = darkgates.desktop
+	md5sums = 2b1737b6556e489a19268694aa858a4a
+	md5sums = 2e828dccefa0e6018601e73e8c697e1f
+	md5sums = 3430ccb16bb6494d4d81ef139cd15383
+
+pkgname = darkgates
+
