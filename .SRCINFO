@@ -1,0 +1,43 @@
+pkgbase = google-chrome
+	pkgdesc = An attempt at creating a safer, faster, and more stable browser (Stable Channel)
+	pkgver = 43.0.2357.125
+	pkgrel = 1
+	url = https://www.google.com/chrome/index.html
+	install = google-chrome.install
+	arch = i686
+	arch = x86_64
+	license = custom:chrome
+	makedepends = pacman>=4.2.0
+	depends = alsa-lib
+	depends = desktop-file-utils
+	depends = flac
+	depends = gconf
+	depends = gtk2
+	depends = harfbuzz
+	depends = harfbuzz-icu
+	depends = hicolor-icon-theme
+	depends = icu
+	depends = libpng
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	depends = opus
+	depends = snappy
+	depends = speech-dispatcher
+	depends = ttf-font
+	depends = xdg-utils
+	optdepends = kdebase-kdialog: needed for file dialogs in KDE
+	optdepends = ttf-liberation: fix fonts for some PDFs
+	provides = google-chrome
+	provides = pepper-flash
+	options = !emptydirs
+	options = !strip
+	source = eula_text.html
+	md5sums = b7e752f549b215ac77f284b6486794b6
+	source_i686 = google-chrome-stable_43.0.2357.125_i386.deb::https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb
+	md5sums_i686 = a89a58600a84505fd166c5589ddaf452
+	source_x86_64 = google-chrome-stable_43.0.2357.125_amd64.deb::https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+	md5sums_x86_64 = e5a12acb25bdaed780d1febbf9812088
+
+pkgname = google-chrome
+
