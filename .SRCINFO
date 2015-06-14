@@ -1,0 +1,25 @@
+pkgbase = jdk-docs
+	pkgdesc = Java SE Development Kit Documentation 8
+	pkgver = 8u45
+	pkgrel = 1
+	url = http://www.oracle.com/technetwork/java/index.html
+	arch = any
+	license = custom
+	noextract = jdk-8u45-docs-all.zip
+	noextract = javafx-8u45-apidocs.zip
+	options = !strip
+	options = docs
+	options = libtool
+	options = staticlibs
+	options = !zipman
+	source = http://download.oracle.com/otn-pub/java/jdk/8u45-b14/jdk-8u45-docs-all.zip
+	source = http://download.oracle.com/otn-pub/java/javafx/8.0.45-b13/javafx-8u45-apidocs.zip
+	source = Java SE Development Kit 8 Documentation License Agreement
+	source = Oracle Legal Notices
+	sha256sums = bc83053e6730779a97077cf1246e7c57e46600294357ab37675555c1c6a11cbc
+	sha256sums = ca3fa0ea160de1c3761c88cec3bc7925ef7cf1c260e76e700ea16f319f1e83b2
+	sha256sums = 14dc1953902010f7b48891e795183b39c048b19881815eec6a57cf3d62631ab7
+	sha256sums = 63626da8084eec01f7702aab6c62227fb4ddf249a428397da031be39940b689d
+
+pkgname = jdk-docs
+
