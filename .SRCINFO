@@ -1,0 +1,15 @@
+pkgbase = perl-file-find-rule-vcs
+	pkgdesc = File::Find::Rule::VCS - Exclude files/directories for Version Control Systems
+	pkgver = 1.08
+	pkgrel = 1
+	url = http://search.cpan.org/dist/File-Find-Rule-VCS/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/File-Find-Rule-VCS-1.08.tar.gz
+	md5sums = 2e4031812450dc6510270cf88834d80c
+
+pkgname = perl-file-find-rule-vcs
+
