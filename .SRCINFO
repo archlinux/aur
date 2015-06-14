@@ -1,0 +1,13 @@
+pkgbase = daemonize-git
+	pkgdesc = Command-line utility for running any arbitrary program as a Unix daemon
+	pkgver = 20150110
+	pkgrel = 1
+	url = http://software.clapper.org/daemonize/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = glibc
+	provides = daemonize
+
+pkgname = daemonize-git
+
