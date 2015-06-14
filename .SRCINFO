@@ -1,6 +1,6 @@
 pkgbase = lua-yaml-git
 	pkgdesc = Lua bindings for YAML using the LibYAML library
-	pkgver = 4.8.g00ed42d
+	pkgver = 5.1.4.2.g35c1164
 	pkgrel = 1
 	url = http://yaml.luaforge.net/
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = lua-yaml-git
 	license = custom
 	depends = lua
 	depends = libyaml
+	depends = specl
 	options = !makeflags
 	source = lua-yaml::git+https://github.com/gvvaughan/lyaml.git
 	md5sums = SKIP
