@@ -1,0 +1,23 @@
+pkgbase = deepin-qml-widgets
+	pkgdesc = Deepin QML widgets
+	pkgver = 0.0.2.20150423102550
+	pkgrel = 1
+	url = https://gitcafe.com/Deepin/deepin-qml-widgets
+	arch = i686
+	arch = x86_64
+	groups = deepin
+	license = GPL3
+	depends = qt5-multimedia
+	depends = qt5-webkit
+	depends = qt5-imageformats
+	depends = qt5-graphicaleffects
+	depends = qt5-x11extras
+	provides = dde-qml-gettext-plugin
+	conflicts = dde-qml-gettext-plugin
+	replaces = dde-qml-gettext-plugin
+	options = !emptydirs
+	source = http://packages.linuxdeepin.com/deepin/pool/main/d/deepin-qml-widgets/deepin-qml-widgets_0.0.2+20150423102550~daef82ffb6.tar.gz
+	sha256sums = 861340d0ca269f34cde2ddc2ed6262a4b966c269886f5d764686df8a3bc6e13d
+
+pkgname = deepin-qml-widgets
+
