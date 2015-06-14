@@ -1,0 +1,19 @@
+pkgbase = icemon
+	pkgdesc = Icecream GUI monitor.
+	pkgver = 3.0.0
+	pkgrel = 2
+	url = https://github.com/icecc/icemon
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = docbook2x
+	depends = icecc
+	depends = qt5-base>=5.2
+	provides = icemon
+	conflicts = icemon-git
+	source = https://github.com/icecc/icemon/archive/v3.0.0.tar.gz
+	md5sums = 7ba23d812db4bdd32d52e947c5749217
+
+pkgname = icemon
+
