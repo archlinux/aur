@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Thunderbird - Safe Mode (Beta)
+Comment=Read Mail & News in Safe Mode (Beta)
+GenericName=Mail Client & News Reader - Safe Mode (Beta)
+Exec=thunderbird-beta -safe-mode %u
+Icon=thunderbird-beta-bin
+Terminal=false
+Type=Application
+Categories=Network;Email;
+MimeType=message/rfc822;x-scheme-handler/mailto;
+StartupNotify=true

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Thunderbird (Beta)
+Comment=Read Mail & News (Beta)
+GenericName=Mail Client & News Reader (Beta)
+Exec=thunderbird-beta %u
+Icon=thunderbird-beta-bin
+Terminal=false
+Type=Application
+Categories=Network;Email;
+MimeType=message/rfc822;x-scheme-handler/mailto;
+StartupNotify=true
