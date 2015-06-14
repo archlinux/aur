@@ -1,0 +1,18 @@
+pkgbase = ogmrip-webm
+	pkgdesc = A plugin for OGMRip which adds support for the OGG container
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://ogmrip.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	groups = ogmrip
+	license = LGPL
+	depends = ogmrip>=0.13
+	depends = mkvtoolnix
+	source = http://downloads.sourceforge.net/sourceforge/ogmrip/ogmrip-webm-0.1.tar.gz
+	source = http://sourceforge.net/projects/ogmrip/files/ogmrip-webm/0.1/README
+	md5sums = 69f0d142d7dcca0a9575a18901a2938a
+	md5sums = dfab449e242386460992217cbe0015fb
+
+pkgname = ogmrip-webm
+
