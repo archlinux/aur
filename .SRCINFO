@@ -1,0 +1,23 @@
+pkgbase = impose+
+	pkgdesc = A set of utilities for manipulating DSC compliant postscript
+	pkgver = 0.2
+	pkgrel = 5
+	url = http://freshmeat.net/projects/impose/
+	arch = any
+	license = GPL
+	depends = perl
+	source = http://ftp.de.debian.org/debian/pool/main/i/impose+/impose+_0.2.orig.tar.gz
+	source = http://ftp.de.debian.org/debian/pool/main/i/impose+/impose+_0.2-12.diff.gz
+	source = impose.1
+	source = fixtd.1
+	source = psbl.1
+	source = bboxx.1
+	md5sums = 0aed00e591065cc808d6645950f18022
+	md5sums = dcbaf0e6b414580771a7a84ea1aa7219
+	md5sums = 5cb8e86f85c2f7b75131acba3535e717
+	md5sums = d25dad12ac9f3c0e39ac3904507a67e5
+	md5sums = 963edbaffa48059c1b53334391a95750
+	md5sums = cfc449ca27234b802c4ee51009dbe626
+
+pkgname = impose+
+
