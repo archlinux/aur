@@ -1,0 +1,16 @@
+pkgbase = pidgin-nudge-svn
+	pkgdesc = A Pidgin plugin for shaking the conversation window on nudges/buzzes (SVN)
+	pkgver = r9
+	pkgrel = 1
+	url = https://code.google.com/p/pidgin-nudge/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = subversion
+	depends = pidgin
+	conflicts = pidgin-nudge
+	source = pidgin-nudge-read-only::svn+https://pidgin-nudge.googlecode.com/svn/trunk/
+	md5sums = SKIP
+
+pkgname = pidgin-nudge-svn
+
