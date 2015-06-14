@@ -1,0 +1,20 @@
+pkgbase = patacrep
+	pkgdesc = Engine for LaTeX songbooks
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = http://www.patacrep.com
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	depends = python-ply
+	depends = python-jinja
+	depends = python-chardet
+	depends = python-unidecode
+	depends = texlive-fontsextra
+	depends = lilypond
+	source = https://github.com/patacrep/patacrep/archive/v4.0.0.tar.gz
+	sha256sums = 76bcec90e3326ea152d500f35719509268ea5a26996800ea5118c7e924ea726b
+
+pkgname = patacrep
+
