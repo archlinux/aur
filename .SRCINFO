@@ -1,0 +1,14 @@
+pkgbase = bdf2c
+	pkgdesc = Convert BDF font to C source code
+	pkgver = 20100924
+	pkgrel = 1
+	url = http://sourceforge.net/projects/bdf2c/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://downloads.sourceforge.net/project/bdf2c/Source/bdf2c-2010-09-24-17.tar.bz2
+	md5sums = 554dbc94321ad17ab2d00a80b64f5125
+
+pkgname = bdf2c
+
