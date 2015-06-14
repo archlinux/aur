@@ -1,5 +1,5 @@
 diff --git a/CPP/7zip/Archive/Zip/ZipIn.cpp b/CPP/7zip/Archive/Zip/ZipIn.cpp
-index 345fbf5..7a92415 100644
+index 345fbf5..2ef43a8 100644
 --- a/CPP/7zip/Archive/Zip/ZipIn.cpp
 +++ b/CPP/7zip/Archive/Zip/ZipIn.cpp
 @@ -2,6 +2,9 @@
@@ -16,7 +16,7 @@ index 345fbf5..7a92415 100644
  
  #include "ZipIn.h"
  
-+#include "myPrivate.h"	// global_use_utf16_conversion
++#include "myPrivate.h" // global_use_utf16_conversion
 +
  #define Get16(p) GetUi16(p)
  #define Get32(p) GetUi32(p)
@@ -32,7 +32,7 @@ index 345fbf5..7a92415 100644
    return S_OK;
  }
  
-@@ -445,6 +454,17 @@ void CInArchive::ReadFileName(unsigned size, AString &s)
+@@ -445,6 +454,19 @@ void CInArchive::ReadFileName(unsigned size, AString &s)
    s.ReleaseBuffer();
  }
  
@@ -43,6 +43,8 @@ index 345fbf5..7a92415 100644
 +  char *p = natspec_convert(item.Name.Ptr(), NULL, archive_oem_charset, 0);
 +  if (p) {
 +    item.Name = p;
++    item.SetUtf8(true);
++    USING_UTF8 = true;
 +    free(p);
 +  }
 +}
@@ -50,7 +52,7 @@ index 345fbf5..7a92415 100644
  bool CInArchive::ReadExtra(unsigned extraSize, CExtraBlock &extraBlock,
      UInt64 &unpackSize, UInt64 &packSize, UInt64 &localHeaderOffset, UInt32 &diskStartNumber)
  {
-@@ -565,6 +585,7 @@ bool CInArchive::ReadLocalItem(CItemEx &item)
+@@ -565,6 +587,7 @@ bool CInArchive::ReadLocalItem(CItemEx &item)
    }
    if (item.Name.Len() != nameSize)
      return false;
@@ -58,7 +60,7 @@ index 345fbf5..7a92415 100644
    return item.LocalFullHeaderSize <= ((UInt32)1 << 16);
  }
  
-@@ -738,6 +759,7 @@ HRESULT CInArchive::ReadCdItem(CItemEx &item)
+@@ -738,6 +761,7 @@ HRESULT CInArchive::ReadCdItem(CItemEx &item)
    item.ExternalAttrib = Get32(p + 34);
    item.LocalHeaderPos = Get32(p + 38);
    ReadFileName(nameSize, item.Name);
@@ -80,8 +82,34 @@ index f6b349b..834d3f5 100644
  };
    
  }}
+diff --git a/CPP/7zip/Archive/Zip/ZipItem.cpp b/CPP/7zip/Archive/Zip/ZipItem.cpp
+index 3aba259..f6ceef8 100644
+--- a/CPP/7zip/Archive/Zip/ZipItem.cpp
++++ b/CPP/7zip/Archive/Zip/ZipItem.cpp
+@@ -10,6 +10,8 @@
+ namespace NArchive {
+ namespace NZip {
+ 
++bool USING_UTF8 = true;
++
+ using namespace NFileHeader;
+ 
+ bool CExtraSubBlock::ExtractNtfsTime(unsigned index, FILETIME &ft) const
+diff --git a/CPP/7zip/Archive/Zip/ZipItem.h b/CPP/7zip/Archive/Zip/ZipItem.h
+index d50c3ae..d770907 100644
+--- a/CPP/7zip/Archive/Zip/ZipItem.h
++++ b/CPP/7zip/Archive/Zip/ZipItem.h
+@@ -15,6 +15,8 @@
+ namespace NArchive {
+ namespace NZip {
+ 
++extern bool USING_UTF8;
++
+ struct CVersion
+ {
+   Byte Version;
 diff --git a/CPP/7zip/Archive/Zip/ZipOut.cpp b/CPP/7zip/Archive/Zip/ZipOut.cpp
-index 2a1ba2c..a8e7edd 100644
+index 2a1ba2c..c720bd3 100644
 --- a/CPP/7zip/Archive/Zip/ZipOut.cpp
 +++ b/CPP/7zip/Archive/Zip/ZipOut.cpp
 @@ -2,10 +2,15 @@
@@ -100,7 +128,7 @@ index 2a1ba2c..a8e7edd 100644
  namespace NArchive {
  namespace NZip {
  
-@@ -18,9 +23,23 @@ HRESULT COutArchive::Create(IOutStream *outStream)
+@@ -18,9 +23,24 @@ HRESULT COutArchive::Create(IOutStream *outStream)
    m_OutBuffer.SetStream(outStream);
    m_OutBuffer.Init();
  
@@ -111,12 +139,13 @@ index 2a1ba2c..a8e7edd 100644
  }
  
 +void COutArchive::RecodeFileName(CItem &item) {
-+  if (item.IsUtf8()) return;
++  if (USING_UTF8) return;
 +
 +  /* Convert filename from current locale charset to archive charset. */
 +  char *p = natspec_convert(item.Name.Ptr(), archive_oem_charset, NULL, 0);
 +  if (p) {
 +    item.Name = p;
++    item.SetUtf8(false);
 +    free(p);
 +  }
 +}
@@ -139,35 +168,19 @@ index eaaa032..d3a7f33 100644
  
  }}
 diff --git a/CPP/7zip/Archive/Zip/ZipUpdate.cpp b/CPP/7zip/Archive/Zip/ZipUpdate.cpp
-index 38f41b9..09d521a 100644
+index 38f41b9..522e542 100644
 --- a/CPP/7zip/Archive/Zip/ZipUpdate.cpp
 +++ b/CPP/7zip/Archive/Zip/ZipUpdate.cpp
-@@ -32,12 +32,12 @@ using namespace NSynchronization;
- namespace NArchive {
- namespace NZip {
- 
-+/*
-+ * Create DOS-compatible archives on both UNIX and Windows, to force unpackers
-+ * to not recode file names from OEM to Windows encoding.
-+ */
- static const Byte kHostOS =
--  #ifdef _WIN32
-   NFileHeader::NHostOS::kFAT;
--  #else
--  NFileHeader::NHostOS::kUnix;
--  #endif
- 
- static const Byte kMadeByHostOS = kHostOS;
- static const Byte kExtractHostOS = kHostOS;
-@@ -83,6 +83,7 @@ static void SetFileHeader(
-     item.Ntfs_ATime = ui.Ntfs_ATime;
-     item.Ntfs_CTime = ui.Ntfs_CTime;
-     item.NtfsTimeIsDefined = ui.NtfsTimeIsDefined;
-+    archive.RecodeFileName(item);
+@@ -86,6 +86,8 @@ static void SetFileHeader(
    }
    else
      isDir = item.IsDir();
-@@ -353,6 +354,7 @@ static HRESULT UpdateItemOldData(
++  
++  archive.RecodeFileName(item);
+ 
+   item.LocalHeaderPos = archive.GetCurPos();
+   item.MadeByVersion.HostOS = kMadeByHostOS;
+@@ -353,6 +355,7 @@ static HRESULT UpdateItemOldData(
      item.Ntfs_ATime = ui.Ntfs_ATime;
      item.Ntfs_CTime = ui.Ntfs_CTime;
      item.NtfsTimeIsDefined = ui.NtfsTimeIsDefined;
@@ -175,6 +188,15 @@ index 38f41b9..09d521a 100644
  
      item.CentralExtra.RemoveUnknownSubBlocks();
      item.LocalExtra.RemoveUnknownSubBlocks();
+@@ -367,6 +370,8 @@ static HRESULT UpdateItemOldData(
+   {
+     CUpdateRange range(inArchive->GetOffsetInStream(itemEx.LocalHeaderPos), itemEx.GetLocalFullSize());
+     
++    archive.RecodeFileName(item);
++    
+     // set new header position
+     item.LocalHeaderPos = archive.GetCurPos();
+     
 diff --git a/makefile.linux_amd64_asm b/makefile.linux_amd64_asm
 index 95ac8ab..7f0c360 100644
 --- a/makefile.linux_amd64_asm
