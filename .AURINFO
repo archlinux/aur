@@ -1,0 +1,13 @@
+pkgbase = vim-misc-xolox-git
+	pkgdesc = Miscellaneous auto-load Vim scripts
+	pkgver = 6ce98ee
+	pkgrel = 1
+	url = http://peterodding.com/code/vim/misc
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = vim-misc-xolox
+	conflicts = vim-misc-xolox
+
+pkgname = vim-misc-xolox-git
+
