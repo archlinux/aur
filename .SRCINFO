@@ -1,0 +1,15 @@
+pkgbase = ruby-xapian-full
+	pkgdesc = xapian-core + Ruby xapian-bindings
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://rubygems.org/gems/xapian-full
+	arch = i686
+	arch = x86_64
+	depends = ruby
+	noextract = xapian-full-1.2.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/xapian-full-1.2.3.gem
+	sha512sums = f69d0020a6d56ae3e01db476ca7a6822635669cb669a2d5ea2ee01567de670d321f4fb7f6aa3eeff73bca7dde18accd022331bab9b05efb4f48b034b58fa1aca
+
+pkgname = ruby-xapian-full
+
