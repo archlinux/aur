@@ -1,0 +1,26 @@
+pkgbase = bin32-flashplayer-standalone
+	pkgdesc = Macromedia standalone flash player (nonfree)
+	pkgver = 11.2.202.460
+	pkgrel = 1
+	url = http://www.adobe.com/support/flashplayer/downloads.html
+	install = flashplayer-standalone.install
+	arch = x86_64
+	license = custom
+	depends = lib32-gtk2
+	depends = lib32-libxt
+	depends = lib32-nss
+	depends = lib32-curl
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	provides = flashplayer-standalone
+	conflicts = flashplayer-standalone
+	options = !strip
+	source = http://fpdownload.macromedia.com/pub/flashplayer/updaters/11/flashplayer_11_sa.i386.tar.gz
+	source = http://www.adobe.com/products/eulas/pdfs/PlatformClients_PC_WWEULA-MULTI-20110809_1357.pdf
+	source = flashplayer.desktop
+	sha256sums = efa74f4466e368956f072eaefd42999a343fe773850b29b64d1904a0534f6929
+	sha256sums = d30b03c0f70f7c4a7837751286bab579d5033f2e7a1548279a9c09ea905b2849
+	sha256sums = 78e4589aa9a3aa1fbf3813dda8c74da45ca363721ad34e2dd53dc3f096c579d7
+
+pkgname = bin32-flashplayer-standalone
+
