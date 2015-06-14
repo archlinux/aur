@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=Application
+Name=Oculus Rift Service
+Exec=/usr/bin/ovrd

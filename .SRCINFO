@@ -1,0 +1,20 @@
+pkgbase = oculus-rift-sdk
+	pkgdesc = Oculus Rift SDK official version.
+	pkgver = 0.5.0.1
+	pkgrel = 1
+	url = https://developer.oculus.com
+	arch = x86_64
+	license = custom
+	optdepends = libudev.so.0: The closed config utility is linked against libudev.so.0
+	optdepends = oculus-udev: Udev rule to make the rift sensors usable to the user "plugdev"
+	conflicts = oculus-rift-sdk-jherico-git
+	options = staticlibs
+	source = http://static.oculus.com/sdk-downloads/ovr_sdk_linux_0.5.0.1.tar.xz
+	source = OculusWorldDemo.sh
+	source = ovrd.desktop
+	md5sums = a57b71f94d9a2eca9629a3ec63ea2cf4
+	md5sums = 7878667978694c58e6691df1c86b071f
+	md5sums = 2f10af2067a3201d4d460226f4cfb43a
+
+pkgname = oculus-rift-sdk
+
