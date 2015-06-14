@@ -1,0 +1,20 @@
+pkgbase = autoleveller
+	pkgdesc = Java based software for 'levelling' GCode file for use on a CNC machine
+	pkgver = 0.8.5
+	pkgrel = 1
+	url = http://www.autoleveller.co.uk/
+	install = autoleveller.install
+	arch = any
+	license = GPL2
+	makedepends = maven
+	depends = bash
+	depends = java-environment
+	source = autoleveller::hg+https://daedelus1982@bitbucket.org/daedelus1982/autoleveller#tag=v0.8.5
+	source = autoleveller.desktop
+	source = autoleveller.sh
+	md5sums = SKIP
+	md5sums = c0c05b30eb02b27372c110cadcee6db0
+	md5sums = 9e25681c62ab3ecb2cda5b62ded72563
+
+pkgname = autoleveller
+
