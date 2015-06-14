@@ -10,3 +10,4 @@
 !include-samba-4.0.patch
 !libquvi-0.9.patch
 !stream_dvdnav.diff
+!vo_gl_locale_fix.patch

@@ -17,18 +17,21 @@ provides=('mplayer' 'mplayer2')
 conflicts=('mplayer' 'mplayer2')
 replaces=('mplayer' 'mplayer2')
 options=('!emptydirs')
-source=('http://ftp.mplayer2.org/pub/release/mplayer2-2.0.tar.xz'
-        'git://git.mplayer2.org/mplayer2-build.git'
-        'git://git.mplayer2.org/mplayer2.git'
+source=('https://dl.dropboxusercontent.com/u/6596386/mplayer2/mplayer2-2.0.tar.xz'
+        'git+http://repo.or.cz/mplayer2-build.git'
+        'git+http://repo.or.cz/mplayer2.git'
         'libav::git://repo.or.cz/FFMpeg-mirror/mplayer-patches.git'
         'git+https://github.com/libass/libass.git'
-        'http://devel.mplayer2.org/raw-attachment/ticket/265/0004-use-pkg-config-for-dvdnav.patch'
-        'http://devel.mplayer2.org/raw-attachment/ticket/265/0005-switch_title-switch-to-next-title-if-no-parameter-pa.patch'
+        '0004-use-pkg-config-for-dvdnav.patch'
+        '0005-switch_title-switch-to-next-title-if-no-parameter-pa.patch'
         'stream_dvdnav.diff'
         'giflib-5.0.patch'
         'giflib-5.1.patch'
         'libquvi-0.9.patch'
-        'include-samba-4.0.patch')
+        'include-samba-4.0.patch'
+        'vo_gl_locale_fix.patch'
+        'patch-libmpcodecs-vd_theora.patch::https://svnweb.freebsd.org/ports/head/multimedia/mplayer2/files/patch-libmpcodecs-vd_theora.c?view=co'
+        'patch-libmpdemux-demux_ogg.patch::https://svnweb.freebsd.org/ports/head/multimedia/mplayer2/files/patch-libmpdemux-demux_ogg.c?view=co')
 sha1sums=('0df8d4e5484128b7b28029273b7704ab5d5419bc'
           'SKIP'
           'SKIP'
@@ -40,17 +43,20 @@ sha1sums=('0df8d4e5484128b7b28029273b7704ab5d5419bc'
           'f8b33a47c4aae10fdd6de246667dd0f7900a3142'
           '85d54b02f6f59fa9bd785d403c852031dcb517af'
           '06919a6dc0ae8db9e8ab50b55bb83a26445de51d'
-          '8c2fc1526a413cd821b46fd48ea08364abbf5c4c')
+          '8c2fc1526a413cd821b46fd48ea08364abbf5c4c'
+          '703825cd187fe90c449a299ced54710ced494ed7'
+          'e06f326f1e44c79fb2825c6d486f6be9b66de32a'
+          'cf498ba02cfdfd6e005808a2418adaf8adae0e28')
 install=mplayer2-build-git.install
 noextract=('mplayer2-2.0.tar.xz')
 
 pkgver() {
-  cd "${srcdir}/mplayer2"
+  cd mplayer2
   echo "$(git describe --always | tr - . | tr -d v)"
 }
 
 prepare() {
-  cd "${_gitname}"
+  cd mplayer2-build
   git submodule init
   git config submodule.mplayer.url "${srcdir}/mplayer2"
   git config submodule.libass.url "${srcdir}/libass"
@@ -59,7 +65,7 @@ prepare() {
 
 
   # Install language sources to "i18n"
-  bsdtar -xf "${srcdir}/mplayer2-2.0.tar.xz" mplayer2-2.0/po
+  bsdtar -xf ../mplayer2-2.0.tar.xz mplayer2-2.0/po
   rm -fr mplayer/po
   mv mplayer2-2.0/po mplayer/po
   rm -fr mplayer2-2.0
@@ -71,10 +77,7 @@ prepare() {
   patch -p1 -i ../../0005-switch_title-switch-to-next-title-if-no-parameter-pa.patch
 
   # Fix build with libdvdnav-git
-  if [ "$(pkg-config --modversion dvdnav)" != "4.2.1" ]; then
-    msg2 "libdvdnav-git is installed: patching sources"
-    patch -p1 -i ../../stream_dvdnav.diff
-  fi
+  patch -p1 -i ../../stream_dvdnav.diff
 
   # Fix build with giflib 5.1.x
   patch -p1 -i ../../giflib-5.0.patch
@@ -86,6 +89,12 @@ prepare() {
   # Fix samba includes
   patch -p1 -i ../../include-samba-4.0.patch
 
+  # Fix brawbraw (?)
+  patch -p1 -i ../../vo_gl_locale_fix.patch
+
+  # Fix vd_theora
+  patch -p0 -i ../../patch-libmpcodecs-vd_theora.patch
+  patch -p0 -i ../../patch-libmpdemux-demux_ogg.patch
 
   # Make Mplayer2 build flags
   echo '--confdir=/etc/mplayer
@@ -97,7 +106,7 @@ prepare() {
 }
 
 build() {
-  make -C mplayer2-build
+  LDFLAGS+=" -ltheoradec" make -C mplayer2-build
 }
 
 package() {

@@ -1,0 +1,26 @@
+The generated output may use something other than "." for decimal
+point, which GLSL requires. This is caused by locale. C uses ".", 
+so locale is temporaily set to "C" when sprinting floats. 
+diff -Naur mplayer2.old/libvo/gl_common.c mplayer2/libvo/gl_common.c
+--- mplayer2.old/libvo/gl_common.c	2014-02-24 21:57:13.493418840 +0100
++++ mplayer2/libvo/gl_common.c	2014-02-24 22:00:25.136048921 +0100
+@@ -39,6 +39,7 @@
+ #include <ctype.h>
+ #include <stdbool.h>
+ #include <math.h>
++#include <locale.h>
+ #include "talloc.h"
+ #include "gl_common.h"
+ #include "old_vo_wrapper.h"
+@@ -823,7 +824,10 @@
+ 
+ static void replace_var_float(char **text, const char *name, float replace)
+ {
++    char *tmp = setlocale(LC_NUMERIC, NULL);
++    setlocale(LC_NUMERIC, "C");
+     char *s = talloc_asprintf(NULL, "%e", replace);
++    setlocale(LC_NUMERIC, tmp);
+     replace_var_str(text, name, s);
+     talloc_free(s);
+ }
+

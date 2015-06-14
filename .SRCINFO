@@ -60,18 +60,21 @@ pkgbase = mplayer2-build-git
 	options = !emptydirs
 	backup = etc/mplayer/codecs.conf
 	backup = etc/mplayer/input.conf
-	source = http://ftp.mplayer2.org/pub/release/mplayer2-2.0.tar.xz
-	source = git://git.mplayer2.org/mplayer2-build.git
-	source = git://git.mplayer2.org/mplayer2.git
+	source = https://dl.dropboxusercontent.com/u/6596386/mplayer2/mplayer2-2.0.tar.xz
+	source = git+http://repo.or.cz/mplayer2-build.git
+	source = git+http://repo.or.cz/mplayer2.git
 	source = libav::git://repo.or.cz/FFMpeg-mirror/mplayer-patches.git
 	source = git+https://github.com/libass/libass.git
-	source = http://devel.mplayer2.org/raw-attachment/ticket/265/0004-use-pkg-config-for-dvdnav.patch
-	source = http://devel.mplayer2.org/raw-attachment/ticket/265/0005-switch_title-switch-to-next-title-if-no-parameter-pa.patch
+	source = 0004-use-pkg-config-for-dvdnav.patch
+	source = 0005-switch_title-switch-to-next-title-if-no-parameter-pa.patch
 	source = stream_dvdnav.diff
 	source = giflib-5.0.patch
 	source = giflib-5.1.patch
 	source = libquvi-0.9.patch
 	source = include-samba-4.0.patch
+	source = vo_gl_locale_fix.patch
+	source = patch-libmpcodecs-vd_theora.patch::https://svnweb.freebsd.org/ports/head/multimedia/mplayer2/files/patch-libmpcodecs-vd_theora.c?view=co
+	source = patch-libmpdemux-demux_ogg.patch::https://svnweb.freebsd.org/ports/head/multimedia/mplayer2/files/patch-libmpdemux-demux_ogg.c?view=co
 	sha1sums = 0df8d4e5484128b7b28029273b7704ab5d5419bc
 	sha1sums = SKIP
 	sha1sums = SKIP
@@ -84,6 +87,9 @@ pkgbase = mplayer2-build-git
 	sha1sums = 85d54b02f6f59fa9bd785d403c852031dcb517af
 	sha1sums = 06919a6dc0ae8db9e8ab50b55bb83a26445de51d
 	sha1sums = 8c2fc1526a413cd821b46fd48ea08364abbf5c4c
+	sha1sums = 703825cd187fe90c449a299ced54710ced494ed7
+	sha1sums = e06f326f1e44c79fb2825c6d486f6be9b66de32a
+	sha1sums = cf498ba02cfdfd6e005808a2418adaf8adae0e28
 
 pkgname = mplayer2-build-git
 
