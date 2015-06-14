@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=xsoldier
+Comment=A 2D shoot 'em up single-player game
+Exec=xsoldier
+Icon=xsoldier
+Terminal=false
+Categories=Game;ArcadeGame;

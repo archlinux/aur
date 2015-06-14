@@ -1,0 +1,7 @@
+post_install() {
+  echo "==> You need to be in the 'games' group to use the scores file."
+}
+
+post_upgrade() {
+  post_install "$1"
+}

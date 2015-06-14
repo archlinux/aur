@@ -1,0 +1,49 @@
+diff -aur xsoldier-1.8.orig/Makefile.in xsoldier-1.8/Makefile.in
+--- xsoldier-1.8.orig/Makefile.in	2011-08-12 20:34:49.000000000 +0600
++++ xsoldier-1.8/Makefile.in	2012-05-25 00:42:09.335487087 +0600
+@@ -778,22 +778,22 @@
+ 
+ install-exec-local:
+ # install pixmap
+-	$(mkinstalldirs) $(DESTDIR)$(datadir)/games/xsoldier/
++	$(mkinstalldirs) $(DESTDIR)$(datadir)/xsoldier/
+ 	$(INSTALL_DATA) pixmap/*.xpm \
+-  $(DESTDIR)$(datadir)/games/xsoldier/
++  $(DESTDIR)$(datadir)/xsoldier/
+ # install score file
+-	$(mkinstalldirs) $(DESTDIR)$(localstatedir)/games/xsoldier/
+-	test -e $(DESTDIR)$(localstatedir)/games/xsoldier/xsoldier.scores \
++	$(mkinstalldirs) $(DESTDIR)$(localstatedir)/lib/xsoldier/
++	test -e $(DESTDIR)$(localstatedir)/lib/xsoldier/xsoldier.scores \
+   || $(INSTALL_DATA) scorefile.txt \
+-  $(DESTDIR)$(localstatedir)/games/xsoldier/xsoldier.scores
++  $(DESTDIR)$(localstatedir)/lib/xsoldier/xsoldier.scores
+ 
+ uninstall-local:
+ # uninstall pixmap
+-	-rm -f $(DESTDIR)$(datadir)/games/xsoldier/*.xpm
+-	-rmdir $(DESTDIR)$(datadir)/games/xsoldier/
++	-rm -f $(DESTDIR)$(datadir)/xsoldier/*.xpm
++	-rmdir $(DESTDIR)$(datadir)/xsoldier/
+ # uninstall score file
+-	-rm -f $(DESTDIR)$(localstatedir)/games/xsoldier/xsoldier.scores
+-	-rmdir $(DESTDIR)$(localstatedir)/games/xsoldier/
++	-rm -f $(DESTDIR)$(localstatedir)/lib/xsoldier/xsoldier.scores
++	-rmdir $(DESTDIR)$(localstatedir)/lib/xsoldier/
+ 
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
+diff -aur xsoldier-1.8.orig/xsoldier.h xsoldier-1.8/xsoldier.h
+--- xsoldier-1.8.orig/xsoldier.h	2009-11-08 10:47:15.000000000 +0500
++++ xsoldier-1.8/xsoldier.h	2012-05-25 00:42:09.795487085 +0600
+@@ -33,8 +33,8 @@
+ #define WAIT 35000
+ #endif /* WAIT */
+ 
+-#define PIXMAP DATADIR "/games/xsoldier/"
+-#define SCORE LOCALSTATEDIR "/games/xsoldier/"
++#define PIXMAP DATADIR "/xsoldier/"
++#define SCORE LOCALSTATEDIR "/lib/xsoldier/"
+ #define SCOREFILE "xsoldier.scores"
+ 
+ #define MaxStage 8
