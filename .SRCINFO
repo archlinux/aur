@@ -1,0 +1,18 @@
+pkgbase = deepin-menu
+	pkgdesc = Deepin menu service for building beautiful menus.
+	pkgver = 1.1.20150415155150
+	pkgrel = 1
+	url = https://gitcafe.com/Deepin/deepin-menu
+	arch = i686
+	arch = x86_64
+	groups = deepin
+	license = GPL3
+	makedepends = python2-setuptools
+	makedepends = qt5-declarative
+	makedepends = qt5-x11extras
+	depends = python2-pyqt5
+	source = http://packages.linuxdeepin.com/deepin/pool/main/d/deepin-menu/deepin-menu_1.1+20150415155150~faffe35053.tar.gz
+	sha256sums = 9e7e8c95d02543b1be339d53a2a77a6a0b3797d6d9d49e1abf41f65d95b2f8e1
+
+pkgname = deepin-menu
+
