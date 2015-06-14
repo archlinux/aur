@@ -1,0 +1,15 @@
+pkgbase = deepin-gettext-tools
+	pkgdesc = Deepin Internationalization utilities
+	pkgver = 0.0.1.20141216200739
+	pkgrel = 1
+	url = https://gitcafe.com/Deepin/deepin-gettext-tools
+	arch = any
+	groups = deepin-dev
+	license = GPL3
+	source = http://packages.linuxdeepin.com/deepin/pool/main/d/deepin-gettext-tools/deepin-gettext-tools_0.0.1+20141216200739~6ba50ecb9c.tar.gz
+	sha256sums = 3ab3dab041ac8902e6ca50c1282fea2deec794cdd208972dbc56f4f5eaba539b
+
+pkgname = deepin-gettext-tools
+	depends = gettext
+	depends = python2
+
