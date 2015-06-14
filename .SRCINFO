@@ -1,6 +1,6 @@
 pkgbase = explain-git
 	pkgdesc = Annotate commands using a simple markup language
-	pkgver = 13.11.1.g717040c
+	pkgver = 15.02
 	pkgrel = 1
 	url = http://www.uninformativ.de/projects/?q=explain
 	arch = any

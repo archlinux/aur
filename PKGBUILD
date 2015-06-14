@@ -1,7 +1,7 @@
 # Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
 _pkgname=explain
 pkgname=$_pkgname-git
-pkgver=13.11.1.g717040c
+pkgver=15.02
 pkgrel=1
 pkgdesc="Annotate commands using a simple markup language"
 arch=('any')
