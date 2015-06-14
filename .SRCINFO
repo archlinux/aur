@@ -1,6 +1,6 @@
 pkgbase = sawfish-git
 	pkgdesc = A window manager extensible using a Lisp-based scripting language.
-	pkgver = 1.11.27.gb642629
+	pkgver = 1.11.29.g89799ca
 	pkgrel = 1
 	url = http://sawfish.wikia.com
 	install = sawfish.install
