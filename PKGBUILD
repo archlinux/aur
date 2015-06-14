@@ -19,11 +19,11 @@ elif [ "${CARCH}" = 'i686' ]; then
   _archname="i586"
 fi
 
-source=("http://downloads.sourceforge.net/project/netrider/NetRider-$pkgver-$pkgrel.$_archname.rpm")
+source=("http://downloads.sourceforge.net/project/netrider/NetRider-$pkgver-$pkgrel.${_archname}rpm")
 
 build() {
   cd "${srcdir}"
-  bsdtar -xf "NetRider-$pkgver-$pkgrel.$_archname.rpm"
+  bsdtar -xf "NetRider-$pkgver-$pkgrel.${_archname}rpm"
 }
 
 package() {
