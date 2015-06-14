@@ -1,0 +1,17 @@
+pkgbase = zita-ajbridge-gui
+	pkgdesc = A simple GUI frontend for zita-ajbridge
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://bitbucket.org/leledumbo/zita-aj-bridge-gui
+	install = zita-ajbridge-gui.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk2
+	source = zitaajbridgegui.png
+	source = zitaajbridgegui.desktop
+	md5sums = 3c5fbbb345957fa0748e1fdd9a82a0a8
+	md5sums = c118638bd836b4cbf055fe615ad6ffbd
+
+pkgname = zita-ajbridge-gui
+

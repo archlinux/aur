@@ -1,0 +1,19 @@
+[Desktop Entry]
+Comment[en_US]=
+Comment=
+Exec=/usr/bin/zitaajbridgegui
+GenericName[en_US]=
+GenericName=
+Icon=/usr/share/icons/hicolor/128x128/apps/zitaajbridgegui.png
+MimeType=
+Name[en_US]=Zita AJBridge GUI
+Name=Zita AJBridge GUI
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
