@@ -3,8 +3,8 @@
 # Contributor: Martin Stolpe <martinstolpe@gmail.com>
 
 pkgname=lib32-libjpeg6-turbo
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.4.1
+pkgrel=1
 pkgdesc='libjpeg derivative with accelerated baseline JPEG compression and decompression'
 arch=('x86_64')
 url='http://libjpeg-turbo.virtualgl.org/'
@@ -13,8 +13,8 @@ depends=('lib32-glibc')
 makedepends=('nasm' 'gcc-multilib')
 provides=('lib32-libjpeg6')
 conflicts=('lib32-libjpeg6')
-source=("http://sourceforge.net/projects/libjpeg-turbo/files/${pkgver}/libjpeg-turbo-${pkgver}.tar.gz")
-sha256sums=('c132907417ddc40ed552fe53d6b91d5fecbb14a356a60ddc7ea50d6be9666fb9')
+source=("http://downloads.sourceforge.net/project/libjpeg-turbo/${pkgver}/libjpeg-turbo-${pkgver}.tar.gz")
+sha256sums=('4bf5bad4ce85625bffbbd9912211e06790e00fb982b77724af7211034efafb08')
 
 build() {
   cd libjpeg-turbo-${pkgver}
@@ -36,7 +36,7 @@ package() {
 
   make DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}"/usr/{bin,include,share}
-  rm "${pkgdir}"/usr/lib32/lib{jpeg.so,turbojpeg.so*}
+  rm "${pkgdir}"/usr/lib32/lib{jpeg.{a,so},turbojpeg.{a,so*}}
 
   install -dm 755 "${pkgdir}"/usr/share/licenses/lib32-libjpeg6-turbo
   install -m 644 README{,-turbo.txt} "${pkgdir}"/usr/share/licenses/lib32-libjpeg6-turbo/
