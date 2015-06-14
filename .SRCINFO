@@ -1,0 +1,19 @@
+pkgbase = oktopi-git
+	pkgdesc = A fork of Pacman’s GUI Octopi for Chakra.
+	pkgver = 7eb4ed6
+	pkgrel = 2
+	url = http://gitorious.org/chakra/oktopi
+	install = oktopi-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = kdelibs
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdebase-runtime
+	provides = oktopi
+	conflicts = oktopi
+
+pkgname = oktopi-git
+
