@@ -1,0 +1,15 @@
+pkgbase = mfile
+	pkgdesc = System independent reading and writing of n-dimensional spectra
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = http://www.ikp.uni-koeln.de/misc/doc/Tv_user-manual/node223.html
+	arch = x86_64
+	arch = i686
+	license = custom
+	depends = glibc
+	options = !emptydirs
+	source = http://www.ikp.uni-koeln.de/src/libmfile-1.0.7.tar.gz
+	md5sums = 558259d6fd032f7ad99afe365fb355f8
+
+pkgname = mfile
+
