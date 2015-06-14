@@ -13,7 +13,7 @@ optdepends=('python-pylast: last.fm support')
 install=lollypop.install
 source=(https://github.com/gnumdk/lollypop/releases/download/$pkgver/$pkgname-$pkgver.tar.xz)
 
-sha256sums=('1002119ce8a6f658a550c00ccf2c715f0a2b5aa193d8aa071dd4a81224696961')
+sha256sums=('342a123095b86c2970519903f7e6bdddd9d1413c7220c501a8d177016fc6bbf3')
 
 build() {
   cd $pkgname-$pkgver
