@@ -1,6 +1,6 @@
 # Maintainer: BrainDamage
 pkgname="openssl-af_alg-git"
-pkgrel=1
+pkgrel=2
 pkgver=20150614.1851bbb
 pkgdesc="af_alg is an openssl module which uses the kernel's AF_ALG crypto api to accelerate encryption"
 arch=('x86' 'x86_64' 'armv6h' 'armv7h')
@@ -30,4 +30,8 @@ package() {
 	install -D libaf_alg.so "$pkgdir/usr/lib/engines/libaf_alg.so"
 	install -D -m644 README "$pkgdir/usr/share/doc/openssl-af_alg/README"
 	install -D -m644 ../LICENSE "$pkgdir/usr/share/licenses/openssl-af_alg/LICENSE"
+}
+
+post_install() {
+	printf "The installed module won't be enabled by default, see /usr/share/doc/openssl-af_alg/README for instructions how to use it\n"
 }
