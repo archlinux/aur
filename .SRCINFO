@@ -1,0 +1,16 @@
+pkgbase = perl-regexp-matchcontext
+	pkgdesc = Regexp::MatchContext - replace (and improve) variables MATCH, PREMATCH, and POSTMATCH
+	pkgver = 0.0.2
+	pkgrel = 2
+	url = http://search.cpan.org/~dconway/Regexp-MatchContext/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DC/DCONWAY/Regexp-MatchContext-0.0.2.tar.gz
+	md5sums = dded815903de6fe437a9e67d6048606e
+
+pkgname = perl-regexp-matchcontext
+
