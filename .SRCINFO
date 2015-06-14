@@ -1,0 +1,15 @@
+pkgbase = ruby-hiera
+	pkgdesc = Light weight hierarchical data store
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/puppetlabs/hiera
+	arch = any
+	depends = ruby
+	depends = ruby-json_pure
+	noextract = hiera-2.0.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/hiera-2.0.0.gem
+	sha512sums = 153f75d4c6dd45920841c065f3f4808b28a30d1e0370a8a96866d20451b225e9434017134c48d96fc244cfeca5fdbaa8f325225644d5b151933bb45383d64a23
+
+pkgname = ruby-hiera
+
