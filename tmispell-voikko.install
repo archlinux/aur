@@ -1,0 +1,29 @@
+post_install() {
+  echo ">>> If you want to use tmispell as a replacement for "
+	echo ">>> ispell (for example in KDE), do the following as root: "
+	echo "    1. Rename the ispell binary /usr/bin/ispell to ispell.real"
+	echo "       cd /usr/bin"
+	echo "       mv ispell ispell.real"
+	echo
+	echo "    2. Add a symbolic link."
+	echo "       ln -s tmispell ispell"
+	echo 
+	echo ">>> Go to the KDE Control Center and "
+	echo ">>> change the spellchecker to use ispell."
+	echo ">>> dictionary should be "suomi" and encoding \"UTF-8\"."
+	echo
+	echo ">>> Every time you update ispell, do the above."
+	echo
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+	echo ">>> If you moved the ispell binary, remember to move it back again."
+  echo "       mv /usr/bin/ispell.real /usr/bin/ispell"
+	echo
+}
+
+# vim:set ts=2 sw=2 et:

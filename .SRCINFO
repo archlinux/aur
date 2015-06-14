@@ -1,0 +1,17 @@
+pkgbase = tmispell-voikko
+	pkgdesc = An Ispell compatible front-end for spell-checking modules
+	pkgver = 0.7.1
+	pkgrel = 2
+	url = http://voikko.sourceforge.net
+	install = tmispell-voikko.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = libvoikko
+	depends = glibmm
+	depends = ncurses
+	source = http://downloads.sourceforge.net/voikko/tmispell-voikko-0.7.1.tar.gz
+	md5sums = 0bf0e9a650367e10430a47fcc9c4f3fe
+
+pkgname = tmispell-voikko
+
