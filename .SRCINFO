@@ -1,0 +1,15 @@
+pkgbase = ruby-nice-ffi
+	pkgdesc = Convenience layer atop Ruby-FFI
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://github.com/jacius/nice-ffi/
+	arch = any
+	depends = ruby
+	depends = ruby-ffi
+	noextract = nice-ffi-0.4.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/nice-ffi-0.4.gem
+	sha512sums = d09e95b16be839a28454fc57525b47d6d28f47a0aae3c40fcfe7dfa05744e01826616040276dbbbb27d7c69f4440f6f29dbe8bac2117c72f2a407dc38ee93fdc
+
+pkgname = ruby-nice-ffi
+
