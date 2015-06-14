@@ -1,0 +1,15 @@
+pkgbase = perl-io-null
+	pkgdesc = IO::Null - class for null filehandles
+	pkgver = 1.01
+	pkgrel = 3
+	url = http://search.cpan.org/dist/IO-Null/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SB/SBURKE/IO-Null-1.01.tar.gz
+	md5sums = 54d6084398f8b4e7062660b9ccc835a8
+
+pkgname = perl-io-null
+
