@@ -4,7 +4,7 @@
 _basename=dao
 
 pkgname=${_basename}-git
-pkgver=1489.2c135a5
+pkgver=1491.50c0ac2
 pkgrel=1
 pkgdesc='A very lightweight, portable, optionally typed programming language and VM written in C featuring blazingly fast real concurrency, defer, OOP, AOP, LLVM JIT, bytecode, BNF macros, many advanced modules & bindings and much more!'
 url='http://www.daovm.net/'
@@ -95,6 +95,7 @@ optdepends=(
 
 provides=('dao')
 conflicts=('dao')
+replaces=('dao-lang-git')
 
 build() {
   mv "$_basename-tools/"*   "$_basename/tools/"

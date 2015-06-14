@@ -1,0 +1,11 @@
+DaoGObject/
+DaoGSL/
+DaoGenomeTools/
+DaoGraphics/
+DaoOpenGL/
+DaoSDL/
+DaoSQL/
+dao-git-*.pkg.tar.xz
+dao-modules/
+dao-tools/
+dao/
