@@ -1,0 +1,18 @@
+pkgbase = ruby-padrino-helpers
+	pkgdesc = Helpers for padrino
+	pkgver = 0.12.5
+	pkgrel = 1
+	url = http://www.padrinorb.com
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-padrino-support
+	depends = ruby-tilt-1
+	depends = ruby-i18n
+	noextract = padrino-helpers-0.12.5.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/padrino-helpers-0.12.5.gem
+	sha512sums = 62ffe0df870ecbf4e7c4a9b69c668558c9c480fb4a54de9c83b441f8d7890f1b1b3e0a308bcbee15a805ab92922ddba4b3c7d71a11d2b367628c31f32fece933
+
+pkgname = ruby-padrino-helpers
+
