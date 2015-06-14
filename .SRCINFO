@@ -1,0 +1,15 @@
+pkgbase = tufao0
+	pkgdesc = An asynchronous web framework for C++ built on top of Qt
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://github.com/vinipsmaker/tufao
+	arch = i686
+	arch = x86_64
+	license = LGPL2
+	makedepends = cmake
+	depends = qt4
+	source = https://github.com/vinipsmaker/tufao/archive/0.8.2.tar.gz
+	md5sums = 24f6d66a987c797fab9506ef8f480475
+
+pkgname = tufao0
+
