@@ -1,0 +1,20 @@
+pkgbase = michel-git
+	pkgdesc = push/pull flat text files to gtasks
+	pkgver = 0.r25.d789243
+	pkgrel = 1
+	url = http://github.com/chmduquesne/michel
+	arch = any
+	license = Public Domain
+	makedepends = python2-distribute
+	makedepends = git
+	depends = python2-google-api-python-client
+	depends = python2-gflags
+	depends = python2-httplib2
+	depends = pyxdg
+	depends = python2-oauth2
+	provides = michel
+	source = michel-git::git+http://github.com/chmduquesne/michel.git
+	md5sums = SKIP
+
+pkgname = michel-git
+
