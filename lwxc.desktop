@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=LWXC
+Comment=XMMS2 client written in pygtk
+Exec=lwxc
+Terminal=false
+Type=Application
+Icon=lwxc
+Categories=AudioVideo;Player;GTK;
+StartupNotify=false

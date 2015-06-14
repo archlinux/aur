@@ -1,0 +1,22 @@
+pkgbase = lwxc-git
+	pkgdesc = le wild xmms2 client, a simple media library browser
+	pkgver = c656d4d
+	pkgrel = 1
+	url = http://phragment.github.com/lwxc/
+	install = lwxc.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = python-dbus
+	depends = xmms2-git
+	provides = lwxc
+	conflicts = lwxc
+	source = lwxc::git+https://github.com/phragment/lwxc.git
+	source = lwxc.desktop
+	md5sums = SKIP
+	md5sums = 9d7b791ebfa705392f963373789c0671
+
+pkgname = lwxc-git
+
