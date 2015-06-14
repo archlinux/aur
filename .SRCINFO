@@ -1,0 +1,15 @@
+pkgbase = perl-perl-osnames
+	pkgdesc = Perl-osnames - List possible $^O () values, with description
+	pkgver = 0.11
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Perl-osnames/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PE/PERLANCAR/Perl-osnames-0.11.tar.gz
+	sha256sums = fb22a1ed59dc2311f7f1ffca5685d90c0600020467f624f57b4dd3dba5bc659b
+
+pkgname = perl-perl-osnames
+
