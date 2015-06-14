@@ -1,0 +1,18 @@
+pkgbase = perl-text-multimarkdown
+	pkgdesc = Perl/CPAN Module Text-MultiMarkdown
+	pkgver = 1.000035
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Text-MultiMarkdown/
+	arch = any
+	license = BSD
+	checkdepends = perl-test-exception
+	checkdepends = perl-test-pod
+	checkdepends = perl-test-pod-coverage
+	makedepends = perl-list-moreutils
+	depends = perl
+	depends = perl-text-markdown
+	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/Text-MultiMarkdown-1.000035.tar.gz
+	md5sums = dba21e6489e2a83a7534fe5b5b0daa8c
+
+pkgname = perl-text-multimarkdown
+
