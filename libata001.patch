@@ -1,0 +1,267 @@
+diff --git a/drivers/ata/acard-ahci.c b/drivers/ata/acard-ahci.c
+index 12489ce..0029229 100644
+--- a/drivers/ata/acard-ahci.c
++++ b/drivers/ata/acard-ahci.c
+@@ -476,6 +476,9 @@ static int acard_ahci_init_one(struct pci_dev *pdev, const struct pci_device_id
+ 		ata_port_pbar_desc(ap, AHCI_PCI_BAR,
+ 				   0x100 + ap->port_no * 0x80, "port");
+ 
++		rc = ahci_setup_port_privdata(ap);
++		if (rc)
++			return rc;
+ 		/* set initial link pm policy */
+ 		/*
+ 		ap->pm_policy = NOT_AVAILABLE;
+diff --git a/drivers/ata/ahci.c b/drivers/ata/ahci.c
+index c7a92a7..0f875e2 100644
+--- a/drivers/ata/ahci.c
++++ b/drivers/ata/ahci.c
+@@ -1436,6 +1436,9 @@ static int ahci_init_one(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 		if (ap->flags & ATA_FLAG_EM)
+ 			ap->em_message_type = hpriv->em_msg_type;
+ 
++		rc = ahci_setup_port_privdata(ap);
++		if (rc)
++			return rc;
+ 
+ 		/* disabled/not-implemented port */
+ 		if (!(hpriv->port_map & (1 << i)))
+diff --git a/drivers/ata/ahci.h b/drivers/ata/ahci.h
+index 71262e0..c1a4b6a 100644
+--- a/drivers/ata/ahci.h
++++ b/drivers/ata/ahci.h
+@@ -313,6 +313,12 @@ struct ahci_port_priv {
+ 	/* enclosure management info per PM slot */
+ 	struct ahci_em_priv	em_priv[EM_MAX_SLOTS];
+ 	char			*irq_desc;	/* desc in /proc/interrupts */
++	bool			init_alpe;	/* alpe enabled by default */
++	bool			init_asp;	/* asp enabled by default */
++	bool			init_devslp;	/* devslp enabled by default */
++	u32			init_dito;	/* initial dito configuration */
++	u32			init_deto;	/* initial deto configuration */
++	u32			init_mdat;	/* initial mdat configuration */
+ };
+ 
+ struct ahci_host_priv {
+@@ -371,6 +377,7 @@ extern struct ata_port_operations ahci_platform_ops;
+ extern struct ata_port_operations ahci_pmp_retry_srst_ops;
+ 
+ unsigned int ahci_dev_classify(struct ata_port *ap);
++int ahci_setup_port_privdata(struct ata_port *ap);
+ void ahci_fill_cmd_slot(struct ahci_port_priv *pp, unsigned int tag,
+ 			u32 opts);
+ void ahci_save_initial_config(struct device *dev,
+diff --git a/drivers/ata/libahci.c b/drivers/ata/libahci.c
+index 61a9c07..f0c7120 100644
+--- a/drivers/ata/libahci.c
++++ b/drivers/ata/libahci.c
+@@ -2212,19 +2212,53 @@ static int ahci_port_suspend(struct ata_port *ap, pm_message_t mesg)
+ }
+ #endif
+ 
++/*
++ * Allocate port privdata and read back initial power management configuration
++ */
++int ahci_setup_port_privdata(struct ata_port *ap)
++{
++	struct ahci_port_priv *pp;
++	u32 cmd, devslp;
++	void __iomem *port_mmio = ahci_port_base(ap);
++
++	pp = kzalloc(sizeof(*pp), GFP_KERNEL);
++	if (!pp)
++		return -ENOMEM;
++
++	ap->private_data = pp;
++
++	cmd = readl(port_mmio + PORT_CMD);
++
++	if (cmd & PORT_CMD_ALPE)
++		pp->init_alpe = true;
++
++	if (cmd & PORT_CMD_ASP)
++		pp->init_asp = true;
++
++	devslp = readl(port_mmio + PORT_DEVSLP);
++
++	/* devslp unsupported or disabled */
++	if (!(devslp & PORT_DEVSLP_DSP) || !(devslp & PORT_DEVSLP_ADSE))
++		return 0;
++
++	pp->init_devslp = true;
++	pp->init_dito = (devslp >> PORT_DEVSLP_DITO_OFFSET) & 0x3ff;
++	pp->init_deto = (devslp >> PORT_DEVSLP_DETO_OFFSET) & 0xff;
++	pp->init_mdat = (devslp >> PORT_DEVSLP_MDAT_OFFSET) & 0x1f;
++
++	return 0;
++}
++EXPORT_SYMBOL_GPL(ahci_setup_port_privdata);
++
+ static int ahci_port_start(struct ata_port *ap)
+ {
+ 	struct ahci_host_priv *hpriv = ap->host->private_data;
++	struct ahci_port_priv *pp = ap->private_data;
+ 	struct device *dev = ap->host->dev;
+-	struct ahci_port_priv *pp;
+ 	void *mem;
+ 	dma_addr_t mem_dma;
+ 	size_t dma_sz, rx_fis_sz;
+ 
+-	pp = devm_kzalloc(dev, sizeof(*pp), GFP_KERNEL);
+-	if (!pp)
+-		return -ENOMEM;
+-
+ 	if (ap->host->n_ports > 1) {
+ 		pp->irq_desc = devm_kzalloc(dev, 8, GFP_KERNEL);
+ 		if (!pp->irq_desc) {
+@@ -2303,8 +2337,6 @@ static int ahci_port_start(struct ata_port *ap)
+ 		ap->lock = &pp->lock;
+ 	}
+ 
+-	ap->private_data = pp;
+-
+ 	/* engage engines, captain */
+ 	return ahci_port_resume(ap);
+ }
+diff --git a/drivers/ata/libahci_platform.c b/drivers/ata/libahci_platform.c
+index d89305d..39946d4 100644
+--- a/drivers/ata/libahci_platform.c
++++ b/drivers/ata/libahci_platform.c
+@@ -563,6 +563,10 @@ int ahci_platform_init_host(struct platform_device *pdev,
+ 		if (ap->flags & ATA_FLAG_EM)
+ 			ap->em_message_type = hpriv->em_msg_type;
+ 
++		rc = ahci_setup_port_privdata(ap);
++		if (rc)
++			return rc;
++
+ 		/* disabled/not-implemented port */
+ 		if (!(hpriv->port_map & (1 << i)))
+ 			ap->ops = &ata_dummy_port_ops;
+diff --git a/drivers/ata/libata-core.c b/drivers/ata/libata-core.c
+index f6cb1f1..c037f33 100644
+--- a/drivers/ata/libata-core.c
++++ b/drivers/ata/libata-core.c
+@@ -2024,6 +2024,9 @@ retry:
+ 		}
+ 	}
+ 
++	if (id[79] & SATA_DIPM)
++		dev->init_dipm = true;
++
+ 	*p_class = class;
+ 
+ 	return 0;
+@@ -5583,11 +5586,11 @@ void ata_link_init(struct ata_port *ap, struct ata_link *link, int pmp)
+ }
+ 
+ /**
+- *	sata_link_init_spd - Initialize link->sata_spd_limit
+- *	@link: Link to configure sata_spd_limit for
++ *	sata_link_init_config - Initialize link->sata_spd_limit and init_lpm
++ *	@link: Link to configure sata_spd_limit and init_lpm for
+  *
+- *	Initialize @link->[hw_]sata_spd_limit to the currently
+- *	configured value.
++ *	Initialize @link->[hw_]sata_spd_limit and @link->init_lpm to the
++ *	currently configured value.
+  *
+  *	LOCKING:
+  *	Kernel thread context (may sleep).
+@@ -5595,7 +5598,7 @@ void ata_link_init(struct ata_port *ap, struct ata_link *link, int pmp)
+  *	RETURNS:
+  *	0 on success, -errno on failure.
+  */
+-int sata_link_init_spd(struct ata_link *link)
++int sata_link_init_config(struct ata_link *link)
+ {
+ 	u8 spd;
+ 	int rc;
+@@ -5612,6 +5615,8 @@ int sata_link_init_spd(struct ata_link *link)
+ 
+ 	link->sata_spd_limit = link->hw_sata_spd_limit;
+ 
++	link->init_lpm = (link->saved_scontrol >> 8) & 0x7;
++
+ 	return 0;
+ }
+ 
+@@ -6161,9 +6166,9 @@ int ata_host_register(struct ata_host *host, struct scsi_host_template *sht)
+ 			ap->cbl = ATA_CBL_SATA;
+ 
+ 		/* init sata_spd_limit to the current value */
+-		sata_link_init_spd(&ap->link);
++		sata_link_init_config(&ap->link);
+ 		if (ap->slave_link)
+-			sata_link_init_spd(ap->slave_link);
++			sata_link_init_config(ap->slave_link);
+ 
+ 		/* print per-port info to dmesg */
+ 		xfer_mask = ata_pack_xfermask(ap->pio_mask, ap->mwdma_mask,
+diff --git a/drivers/ata/libata-pmp.c b/drivers/ata/libata-pmp.c
+index 7ccc084..b9f7ce8 100644
+--- a/drivers/ata/libata-pmp.c
++++ b/drivers/ata/libata-pmp.c
+@@ -531,7 +531,7 @@ int sata_pmp_attach(struct ata_device *dev)
+ 		ap->ops->pmp_attach(ap);
+ 
+ 	ata_for_each_link(tlink, ap, EDGE)
+-		sata_link_init_spd(tlink);
++		sata_link_init_config(tlink);
+ 
+ 	return 0;
+ 
+diff --git a/drivers/ata/libata.h b/drivers/ata/libata.h
+index a998a17..35016d6 100644
+--- a/drivers/ata/libata.h
++++ b/drivers/ata/libata.h
+@@ -99,7 +99,7 @@ extern bool ata_phys_link_online(struct ata_link *link);
+ extern bool ata_phys_link_offline(struct ata_link *link);
+ extern void ata_dev_init(struct ata_device *dev);
+ extern void ata_link_init(struct ata_port *ap, struct ata_link *link, int pmp);
+-extern int sata_link_init_spd(struct ata_link *link);
++extern int sata_link_init_config(struct ata_link *link);
+ extern int ata_task_ioctl(struct scsi_device *scsidev, void __user *arg);
+ extern int ata_cmd_ioctl(struct scsi_device *scsidev, void __user *arg);
+ extern struct ata_port *ata_port_alloc(struct ata_host *host);
+diff --git a/drivers/ata/sata_highbank.c b/drivers/ata/sata_highbank.c
+index 24e311f..a2adf3f 100644
+--- a/drivers/ata/sata_highbank.c
++++ b/drivers/ata/sata_highbank.c
+@@ -556,6 +556,10 @@ static int ahci_highbank_probe(struct platform_device *pdev)
+ 		if (ap->flags & ATA_FLAG_EM)
+ 			ap->em_message_type = hpriv->em_msg_type;
+ 
++		rc = ahci_setup_port_privdata(ap);
++		if (rc)
++			goto err0;
++
+ 		/* disabled/not-implemented port */
+ 		if (!(hpriv->port_map & (1 << i)))
+ 			ap->ops = &ata_dummy_port_ops;
+diff --git a/include/linux/libata.h b/include/linux/libata.h
+index 8dad4a3..31c149b 100644
+--- a/include/linux/libata.h
++++ b/include/linux/libata.h
+@@ -724,6 +724,8 @@ struct ata_device {
+ 	int			spdn_cnt;
+ 	/* ering is CLEAR_END, read comment above CLEAR_END */
+ 	struct ata_ering	ering;
++	/* Initial DIPM configuration */
++	bool			init_dipm;
+ };
+ 
+ /* Fields between ATA_DEVICE_CLEAR_BEGIN and ATA_DEVICE_CLEAR_END are
+@@ -795,6 +797,8 @@ struct ata_link {
+ 	struct ata_device	device[ATA_MAX_DEVICES];
+ 
+ 	unsigned long		last_lpm_change; /* when last LPM change happened */
++
++	u8					init_lpm; /* initial lpm configuration */
+ };
+ #define ATA_LINK_CLEAR_BEGIN		offsetof(struct ata_link, active_tag)
+ #define ATA_LINK_CLEAR_END		offsetof(struct ata_link, device[0])
+-- 
+2.3.5
+
+  

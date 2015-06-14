@@ -81,9 +81,9 @@ source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         "${_bfqpath}/0002-block-introduce-the-BFQ-v7r7-I-O-sched-for-3.18.patch"
         "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r7-for-3.18.0.patch"
         "haswell-performance.patch::https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/patch/?id=944115934436b1ff6cf773a9e9123858ea9ef3da"
-        "libata001.patch::https://lkml.org/lkml/diff/2015/4/18/77/1"
-        "libata002.patch::https://lkml.org/lkml/diff/2015/4/18/78/1"
-        "libata003.patch::https://lkml.org/lkml/diff/2015/4/18/79/1")
+        "libata001.patch"
+        "libata002.patch"
+        "libata003.patch")
 
 sha256sums=('becc413cc9e6d7f5cc52a3ce66d65c3725bc1d1cc1001f4ce6c32b69eb188cbd'
             'SKIP'
@@ -100,7 +100,7 @@ sha256sums=('becc413cc9e6d7f5cc52a3ce66d65c3725bc1d1cc1001f4ce6c32b69eb188cbd'
             '68045bcff777bc175e9f17ba46e0a8b13450c4546c6c9db3d9b9e2ed31af812d'
             'cda196f911af55f8c26e711040a66637aed03df9dfdc149aaf7fdbecf1bb19da'
             '89471fa9d8671c031f96b15b29c7a3b9f7d82171ab97b29a29638b1c8a052cff'
-            '3de82c788c631392cacc13dd336a2a10e9d4729659932527646365937b97d540'
+            '1fbed1c8355363636b8c492c42703ac32a28ca10ef82d150f2bdef20b27215a7'
             'bbd16086fd0ffb23549f4256dff4d0452a007b89b150fcf080972a20ff1266c2'
             '58ac21cb7cae40b55928326fc267bf72988e190ed2193e438d5a494d5506c623')
 validpgpkeys=(
