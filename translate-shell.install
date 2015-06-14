@@ -1,0 +1,9 @@
+post_upgrade() {
+  echo 'If you use zsh with grml-zsh-config,'
+  echo 'then run `translate-shell` instead of `trans`.'
+  echo 'Alternatively, run `/usr/bin/trans` directly.'
+}
+
+post_install() {
+  post_upgrade
+}
