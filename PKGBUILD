@@ -4,7 +4,7 @@ _name="mkdocs"
 
 pkgname="${_name}"
 pkgver="0.14.0"
-pkgrel="3"
+pkgrel="4"
 pkgdesc="Project documentation with Markdown."
 arch=("any")
 url="http://www.mkdocs.org"
@@ -19,9 +19,9 @@ build() {
 }
 
 package() {
-    depends=("livereload>=2.3.2"
-             "python-click>=4.0"
+    depends=("python-click>=4.0"
              "python-jinja>=2.7.1"
+             "python-livereload>=2.3.2"
              "python-markdown>=2.3.1"
              "python-six>=1.4.0"
              "python-tornado>=4.1"

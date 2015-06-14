@@ -1,7 +1,7 @@
 pkgbase = mkdocs
 	pkgdesc = Project documentation with Markdown.
 	pkgver = 0.14.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.mkdocs.org
 	arch = any
 	license = BSD
@@ -10,9 +10,9 @@ pkgbase = mkdocs
 	sha256sums = 5c182d3c5b148fa574d0f9be4900480a9e8ceab5d1f89e49f5a2bae0245a493a
 
 pkgname = mkdocs
-	depends = livereload>=2.3.2
 	depends = python-click>=4.0
 	depends = python-jinja>=2.7.1
+	depends = python-livereload>=2.3.2
 	depends = python-markdown>=2.3.1
 	depends = python-six>=1.4.0
 	depends = python-tornado>=4.1
