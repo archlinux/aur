@@ -1,0 +1,13 @@
+pkgbase = vmedrv
+	pkgdesc = VME device driver for Linux 2.x & 3.x
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = http://www.awa.tohoku.ac.jp/~sanshiro/kinoko-e/vmedrv/
+	arch = x86_64
+	license = LGPL2
+	makedepends = linux-headers
+	source = http://www.awa.tohoku.ac.jp/~sanshiro/kinoko-download/files/vmedrv-1.2.1.tar.gz
+	md5sums = 9d16b32f29388d82431951e663519f93
+
+pkgname = vmedrv
+
