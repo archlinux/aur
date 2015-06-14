@@ -1,0 +1,13 @@
+pkgbase = rabbitmqadmin
+	pkgdesc = A command-line tool for managing RabbitMQ server (requires "management" plugin)
+	pkgver = 3.5.3
+	pkgrel = 1
+	url = http://www.rabbitmq.com/management-cli.html
+	arch = any
+	license = MPL
+	depends = python
+	source = https://raw.githubusercontent.com/rabbitmq/rabbitmq-management/rabbitmq_v3_5_3/bin/rabbitmqadmin
+	sha256sums = SKIP
+
+pkgname = rabbitmqadmin
+
