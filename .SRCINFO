@@ -1,0 +1,22 @@
+pkgbase = vim-latex-support
+	pkgdesc = Latex-IDE, menu support the latex programming
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://vim.sourceforge.net/scripts/script.php?script_id=4405
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = GPL2
+	depends = vim-vim-support
+	optdepends = texlive-latexextra: to generate DVI, PDF, PS
+	optdepends = luximono: to generate DVI
+	optdepends = gv: to view ps
+	optdepends = texlive-bin: to view DVI, to run lacheck, to run makeindex
+	optdepends = texlive-bibtexextra: to run bibtex
+	optdepends = acroread: default PDF file viewer
+	options = !strip
+	source = vim-latex-support-1.0.zip::http://vim.sourceforge.net/scripts/download_script.php?src_id=19411
+	md5sums = 078222233395652bb0313f20ac04329b
+
+pkgname = vim-latex-support
+
