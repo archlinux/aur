@@ -1,0 +1,15 @@
+pkgbase = perl-linux-distribution
+	pkgdesc = Linux::Distribution - Perl extension to detect on which Linux distribution we are running
+	pkgver = 0.22
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Linux-Distribution/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CH/CHORNY/Linux-Distribution-0.22.tar.gz
+	sha256sums = 0443af872db14764461797741f100b1d5969871d3a9b403406363e8bb6db58ad
+
+pkgname = perl-linux-distribution
+
