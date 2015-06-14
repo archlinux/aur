@@ -1,0 +1,12 @@
+diff -aur sleepyhead-code/sleepyhead/sleepyhead.pro sleepyhead-code2/sleepyhead/sleepyhead.pro
+--- sleepyhead-code/sleepyhead/sleepyhead.pro	2014-09-27 08:22:20.940889023 -0500
++++ sleepyhead-code2/sleepyhead/sleepyhead.pro	2014-09-27 08:23:12.687558557 -0500
+@@ -7,7 +7,7 @@
+ QT += core gui network xml serialport
+ 
+ greaterThan(QT_MAJOR_VERSION,4) {
+-    QT += widgets webkitwidgets
++    QT += widgets webkitwidgets printsupport
+ } else { # qt4
+     QT += webkit
+ }
