@@ -1,0 +1,29 @@
+pkgbase = ut2004-steam
+	pkgdesc = Popular first person shooter, native Linux version, installing data files from Steam (requires you having had purchased the Steam version).
+	pkgver = 3369_2
+	pkgrel = 4
+	epoch = 1
+	url = http://www.unrealtournament2004.com
+	install = ut2004.install
+	changelog = ChangeLog
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = sdl
+	depends = openal
+	depends = steamcmd
+	depends = libstdc++5
+	conflicts = ut2004
+	source = https://github.com/demon012/archlinux-package-ut2004-steam/raw/master/ut2004-lnxpatch3369-2.tar.bz2
+	source = ut2004.desktop
+	source = ut2004-install.sh
+	source = ut2004-update.sh
+	source = ut2004.sh
+	md5sums = 0fa447e05fe5a38e0e32adf171be405e
+	md5sums = b4ca5855b8fc6d283b49c8df469d61c2
+	md5sums = 5608b9b891788ae3d6a53afaf2a370d2
+	md5sums = 1119a2bbec7211ee11c939941af3cb48
+	md5sums = 85623fe9fecd0678e4f12902c22d7272
+
+pkgname = ut2004-steam
+

@@ -1,0 +1,14 @@
+post_install() {
+
+    echo "To complete installation, run /opt/ut2004/Scripts/ut2004-install as root. This prompts for the CD key and then triggers the update script to install and update ut2004.
+This requires approximately 6G of disk space."
+}
+
+post_remove() {
+
+    # Cleaning up the post install files.
+    rm -r /opt/ut2004 >& /dev/null
+}
+
+
+# vim:set ts=2 sw=2 et:
