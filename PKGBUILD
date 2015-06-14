@@ -3,7 +3,7 @@ pkgbase=diaspora-git
 _projectname=diaspora
 pkgname=('diaspora-mysql-git' 'diaspora-postgresql-git')
 pkgver=0.5.0.1.r380.gb0de392
-pkgrel=1
+pkgrel=2
 pkgdesc="A distributed privacy aware social network (development head)"
 arch=('i686' 'x86_64')
 url="http://diasporafoundation.org"
@@ -155,6 +155,6 @@ package_diaspora-postgresql-git() {
 sha256sums=('SKIP'
             'e619b842b16fce0006e9273ad299058e4e2e2c81b9694055c2acd5c745985f1c'
             'ecc9b0ca36fd277a5d9b2fa2df11feef877ffb2b2ac4c6012e23db28ced05ee6'
-            '8864dc640545f53f5491a8edbda21d883c9731f8f6909d6a59c71e5fed49f2ca'
+            '26ae975338c5ab3fc506bd7bdb13d1b9f853ac0b9d8e591babf63c22a502d3be'
             '86ea685b6989ce855e6371dbb4de615e2b8d939643676e8e4e07326bc5220c87'
             '29cfd5116e919d8851ff70b8b82af8d4a6c8243a9d1ca555981a1a695e2d7715')
