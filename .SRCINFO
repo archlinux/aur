@@ -1,0 +1,19 @@
+pkgbase = libtsm-git
+	pkgdesc = Terminal-emulator State Machine
+	pkgver = 3.r17.gb73acb4
+	pkgrel = 2
+	url = http://www.fredesktop.org/wiki/Software/kmscon/libtsm
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = libxkbcommon
+	depends = glibc
+	provides = libtsm
+	conflicts = libtsm
+	options = !libtool
+	source = git://people.freedesktop.org/~dvdhrm/libtsm
+	sha256sums = SKIP
+
+pkgname = libtsm-git
+
