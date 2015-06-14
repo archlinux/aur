@@ -1,0 +1,16 @@
+pkgbase = ruby-fog-local
+	pkgdesc = Module for the 'fog' gem to support local filesystem storage.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/fog/fog-local
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-fog-core
+	noextract = fog-local-0.2.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/fog-local-0.2.1.gem
+	sha512sums = 77dcc92d6b546ebc971e4a0b04f06e1f337a17d5eb54737d399ce1e887cdf68b5be24dcaac7af8778a010097ff46c89b454944ddd00316d3898bf8dcae61e12f
+
+pkgname = ruby-fog-local
+
