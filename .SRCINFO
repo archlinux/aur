@@ -1,0 +1,24 @@
+pkgbase = ktimer-git
+	pkgdesc = A little tool to execute programs after some time. (GIT version)
+	pkgver = r264.a3d42f7
+	pkgrel = 1
+	url = https://www.kde.org/applications/utilities/ktimer
+	install = ktimer-git.install
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	makedepends = git
+	makedepends = python
+	depends = kio
+	depends = hicolor-icon-theme
+	provides = ktimer
+	conflicts = kdeutils-ktimer
+	conflicts = ktimer
+	source = git://anongit.kde.org/ktimer.git
+	sha1sums = SKIP
+
+pkgname = ktimer-git
+
