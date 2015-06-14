@@ -1,0 +1,36 @@
+pkgbase = ruby-chef
+	pkgdesc = A systems integration framework, built to bring the benefits of configuration management to your entire infrastructure.
+	pkgver = 12.3.0
+	pkgrel = 1
+	url = http://www.getchef.com
+	arch = any
+	license = Apache-2.0
+	depends = ruby
+	depends = ruby-mixlib-config
+	depends = ruby-mixlib-cli
+	depends = ruby-mixlib-log
+	depends = ruby-mixlib-authentication
+	depends = ruby-mixlib-shellout
+	depends = ruby-ohai
+	depends = ruby-ffi-yajl
+	depends = ruby-net-ssh
+	depends = ruby-net-ssh-multi
+	depends = ruby-highline
+	depends = ruby-erubis
+	depends = ruby-diff-lcs
+	depends = ruby-chef-zero
+	depends = ruby-pry
+	depends = ruby-plist
+	depends = ruby-rspec-core
+	depends = ruby-rspec-expectations
+	depends = ruby-rspec-mocks
+	depends = ruby-rspec_junit_formatter
+	depends = ruby-serverspec
+	depends = ruby-specinfra
+	noextract = chef-12.3.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/chef-12.3.0.gem
+	sha512sums = bc8c621e0dfca3c8292e59162f78ce9082798ba073f1dee3c8984e8d8298a0c5798659882c4454dcf315c200ca69b7a7b64422f4b3de349358325da42429d97b
+
+pkgname = ruby-chef
+
