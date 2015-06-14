@@ -1,0 +1,19 @@
+pkgbase = ogmrip-ac3
+	pkgdesc = This plugin enables transcoding to AC-3.
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://ogmrip.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	groups = ogmrip
+	license = LGPL
+	depends = ogmrip
+	depends = mplayer
+	depends = aften
+	source = http://downloads.sourceforge.net/sourceforge/ogmrip/ogmrip-ac3-0.3.tar.gz
+	source = http://sourceforge.net/projects/ogmrip/files/ogmrip-ac3/0.3/README
+	md5sums = e2fb08d4f01e60b388f7f73a81d54d80
+	md5sums = 4010d2697f0b1916f56c9032cec49525
+
+pkgname = ogmrip-ac3
+
