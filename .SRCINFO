@@ -1,0 +1,16 @@
+pkgbase = perl-data-alias
+	pkgdesc = Data::Alias - Comprehensive set of aliasing operations
+	pkgver = 1.16
+	pkgrel = 3
+	url = http://search.cpan.org/dist/Data-Alias/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/Z/ZE/ZEFRAM/Data-Alias-1.16.tar.gz
+	md5sums = f53a4f654d57671fe0bd2cdcd6974e41
+
+pkgname = perl-data-alias
+
