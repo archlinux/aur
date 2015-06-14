@@ -2,7 +2,7 @@
 pkgname=openhantek
 pkgver=0.2.0
 _fwpkgver=0.7.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Qt4 UI for Hantek DSO-2090/2150/2250/5200/5200A oscilloscopes. Includes firmware"
 arch=('i686' 'x86_64')
 url="http://www.openhantek.org/"
@@ -51,8 +51,10 @@ package() {
   
   cd "$srcdir/$pkgname-extractfw"
   make DESTDIR="$pkgdir" install
-  for h in firmware/*.hex; do
+  pushd firmware
+  for h in *.hex; do
     install -Dm644 "$h" "$pkgdir/usr/share/hantek/${h/x86/}"
   done
+  popd
   install -Dm644 90-hantek.rules "$pkgdir/usr/lib/udev/rules.d/90-hantek.rules"
 }

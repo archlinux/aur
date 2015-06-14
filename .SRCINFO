@@ -1,7 +1,7 @@
 pkgbase = openhantek
 	pkgdesc = Qt4 UI for Hantek DSO-2090/2150/2250/5200/5200A oscilloscopes. Includes firmware
 	pkgver = 0.2.0
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.openhantek.org/
 	install = openhantek.install
 	arch = i686
