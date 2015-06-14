@@ -1,0 +1,15 @@
+pkgbase = go4
+	pkgdesc = Object-oriented system (GSI Object Oriented On-line Off-line system) based on ROOT
+	pkgver = 4.7.0
+	pkgrel = 2
+	url = http://www-win.gsi.de/go4/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = root5
+	depends = qt4
+	source = http://web-docs.gsi.de/~go4/download/go4-4.7.0.tar.gz
+	md5sums = bfcc2d82a2b51a7bd1b3a4e929af5603
+
+pkgname = go4
+
