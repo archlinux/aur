@@ -1,12 +1,12 @@
-# Contributor: jose <jose1711 [at] gmail (dot) com>
+# Maintainer: jose <jose1711 [at] gmail (dot) com>
 
 pkgname=redeemer
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="3d shooting game"
 url=('http://hippo.nipax.cz/download.cz.php?id=65')
 arch=('i686')
-license="GPL-2"
+license=("GPL-2")
 depends=('allegro')
 source=("http://hippo.nipax.cz/src/${pkgname}-src.tar.gz" "redeemer.desktop")
 md5sums=('ad8e5344ac4278c393828e8046867418'
@@ -14,14 +14,16 @@ md5sums=('ad8e5344ac4278c393828e8046867418'
 
 build() {
 cd $srcdir/${pkgname}-src
-mkdir -p $pkgdir/usr/{bin,share/redeemer/{cfg,models,scenes,textures}}
 # some patching needed here
 patch < ../../ph.patch src/ph.h
 
 cd src/
 g++ *.cpp -Wall -lGL -lGLU -lSDL_image `sdl-config --libs --cflags` -o ../data/redeemer -O3
+}
 
-cd ../data
+package() {
+cd $srcdir/${pkgname}-src/data
+mkdir -p $pkgdir/usr/{bin,share/redeemer/{cfg,models,scenes,textures}}
 install -D -m644 cfg/* $pkgdir/usr/share/redeemer/cfg
 install -D -m644 models/* $pkgdir/usr/share/redeemer/models
 install -D -m644 scenes/* $pkgdir/usr/share/redeemer/scenes
@@ -32,5 +34,5 @@ install -D -m755 redeemer $pkgdir/usr/share/redeemer/redeemer
 cd /usr/share/redeemer
 ./redeemer" ) > $pkgdir/usr/bin/redeemer
 chmod 755 $pkgdir/usr/bin/redeemer
-install -D -m644 $srcdir/redeemer.desktop $pkgdir/usr/share/applications/redeemer.desktop || return 1
+install -D -m644 $srcdir/redeemer.desktop $pkgdir/usr/share/applications/redeemer.desktop
 }
