@@ -1,4 +1,4 @@
-# Maintainer: Andreas B. Wagner <AndreasBWagner@pointfree.net>
+# Maintainer: Andreas B. Wagner <andreas.wagner@lowfatcomputing.org>
 # Contributor: Kaos < gianlucaatlas_AT_gmail_DOT_com >
 
 pkgname=xf86-input-synaptics-git
