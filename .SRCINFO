@@ -1,0 +1,14 @@
+pkgbase = xoctave
+	pkgdesc = Free Trial of XOctave application.
+	pkgver = 3.5
+	pkgrel = 1
+	url = http://www.xoctave.com/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = rpmextract
+	source = http://www.xoctave.com/demo/xoctave-3.5-demo-linux-i386.rpm
+	md5sums = 62b658ab60233fd8a9980382aab0bd10
+
+pkgname = xoctave
+
