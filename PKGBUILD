@@ -2,17 +2,17 @@
 
 pkgname=hubicfuse-git
 _gitname=hubicfuse
-pkgver=20150317
+pkgver=20150614
 pkgrel=1
 pkgdesc="A fuse filesystem to access HubiC cloud storage (git)"
 arch=('i686' 'x86_64')
+url='https://github.com/TurboGit/hubicfuse'
 conflicts=("hubicfuse")
 provides=("hubicfuse")
-url='https://github.com/TurboGit/hubicfuse'
 license=('MIT')
 depends=('fuse' 'libxml2' 'json-c')
 makedepends=('git' 'gcc' 'libxml2' 'pkg-config' 'make')
-source=("git+https://github.com/TurboGit/hubicfuse.git")
+source=("$pkgname"::'git+https://github.com/TurboGit/hubicfuse.git')
 
 sha256sums=('SKIP')
 
