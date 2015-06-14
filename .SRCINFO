@@ -1,0 +1,16 @@
+pkgbase = ruby-childprocess
+	pkgdesc = This gem aims at being a simple and reliable solution for controlling external programs running in the background on any Ruby / OS combination.
+	pkgver = 0.5.6
+	pkgrel = 1
+	url = http://github.com/jarib/childprocess
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-ffi
+	noextract = childprocess-0.5.6.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/childprocess-0.5.6.gem
+	sha512sums = b4e7c7095028d03002d54d6cf05c43fb6792a3284cb879d1a29090219b6eea9e945b06f9906c308f4f1c73bb79bece178c67c17da22a1a78ad30b8f96b67df04
+
+pkgname = ruby-childprocess
+
