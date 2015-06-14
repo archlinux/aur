@@ -1,0 +1,17 @@
+pkgbase = perl-perl6-form
+	pkgdesc = Perl6::Form - Implements the Perl 6 'form' built-in
+	pkgver = 0.04
+	pkgrel = 2
+	url = http://search.cpan.org/~dconway/Perl6-Form
+	arch = any
+	groups = perl6
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl
+	depends = perl-perl6-export
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DC/DCONWAY/Perl6-Form-0.04.tar.gz
+	md5sums = e3109dc701d99ed81f4d39a2605ac86a
+
+pkgname = perl-perl6-form
+
