@@ -2,8 +2,8 @@
 # Contributor: Kaos < gianlucaatlas_AT_gmail_DOT_com >
 
 pkgname=xf86-input-synaptics-git
-pkgver=20121007
-pkgrel=2
+pkgver=1.8.0.r25.gfc9f490
+pkgrel=1
 pkgdesc="Synaptics driver for notebook touchpads"
 arch=('i686' 'x86_64')
 url="http://xorg.freedesktop.org/wiki/"
@@ -14,38 +14,29 @@ provides=('synaptics' 'xf86-input-synaptics')
 conflicts=('synaptics')
 groups=('xorg-input-drivers')
 options=('!libtool' 'zipman')
-source=('50-synaptics.conf.patch')
-sha1sums=('587b85127187a515345f81bb3e363cba64ac11a8')
+source=('50-synaptics.conf.patch'
+        "$pkgname::git://anongit.freedesktop.org/xorg/driver/xf86-input-synaptics")
+sha512sums=('a99c0f652d810a39297180e6a5e860ddf48fa9cc27dbc21a05255d53091d4f0d8dfe4fbae6cb55023370a0def1e7cb980703139745a511ea4c8e6a1d518fbdba'
+            'SKIP')
 
-_gitroot="git://anongit.freedesktop.org/xorg/driver/xf86-input-synaptics"
-_gitname="xf86-input-synaptics"
+pkgver() {
+	cd "$pkgname"
+	# cutting off 'xf86.input.synaptics.' prefix
+	git describe --long | sed 's/^xf86.input.synaptics.//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
-	cd "$srcdir"
-	msg "Connecting to GIT server...."
-
-	if [ -d $_gitname ] ; then
-		cd $_gitname && git pull origin
-		msg "The local files are updated."
-	else
-		git clone $_gitroot
-	fi
-
-	msg "GIT checkout done or server timeout"
-	msg "Starting make..."
-
-	rm -rf "$srcdir/$_gitname-build"
-	git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-	cd "$srcdir/$_gitname-build"
-
+	cd "$srcdir/$pkgname"
 	./autogen.sh
 	./configure --prefix=/usr --with-xorg-conf-dir=/etc/X11/xorg.conf.d
 	make
 	patch conf/50-synaptics.conf < $srcdir/50-synaptics.conf.patch
 }
+
 package() {
-	cd "$srcdir/$_gitname-build"
+	cd "$srcdir/$pkgname"
 	make DESTDIR="${pkgdir}" install
 	install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
 	install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
 } 
+
