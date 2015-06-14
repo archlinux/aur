@@ -1,0 +1,27 @@
+post_install() {
+  if [[ ! -d /etc/vuurmuur/textdir ]]; then
+    # copy default firewall setup
+    cp -R /usr/share/vuurmuur/textdir /etc/vuurmuur/
+
+    # set permissions and ownership
+    chown -R root:root /etc/vuurmuur
+    chmod -R o=rwX,go= /etc/vuurmuur
+    chown -R root:root /var/log/vuurmuur
+    chmod -R o=rwX,go= /var/log/vuurmuur
+
+    echo
+    echo "Default firewall setup has been installed in /etc/vuurmuur/textdir"
+    echo
+    echo "You can now setup your network topology and firewall rules using vuurmuur_conf"
+    echo "Don't forget to add 'vuurmuur' in /etc/rc.conf"
+    echo
+    echo "Usefull documentation can be found at http://www.vuurmuur.org"
+    echo
+  fi
+}
+
+post_remove () {
+  echo
+  echo "Your firewall setup has been left unchanged in /etc/vuurmuur/textdir"
+  echo
+}

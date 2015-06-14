@@ -1,0 +1,35 @@
+pkgbase = vuurmuur-devel
+	pkgdesc = powerful front-end for iptables aimed at system-administrators who need a decent firewall, but dont have netfilter specific knowledge - development release
+	pkgver = 0.8rc1
+	pkgrel = 1
+	url = http://www.vuurmuur.org
+	install = vuurmuur.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = iptables
+	depends = ncurses
+	depends = libjpeg
+	optdepends = conntrack-tools: for connection tracking
+	optdepends = iproute2: for traffic shapping
+	optdepends = iptrafvol: for traffic volume logging
+	provides = vuurmuur
+	conflicts = vuurmuur
+	backup = etc/vuurmuur/config.conf
+	backup = etc/vuurmuur/modules.conf
+	backup = etc/vuurmuur/vuurmuur_conf.conf
+	backup = etc/vuurmuur/plugins/textdir.conf
+	backup = etc/logrotate.d/vuurmuur
+	source = ftp://ftp.vuurmuur.org/releases/0.8rc1/Vuurmuur-0.8rc1.tar.gz
+	source = modules.conf
+	source = vuurmuur.rc
+	source = vuurmuur.service
+	source = vuurmuur.script
+	md5sums = f5293d074a8cb1e4a68bd5c1272babcd
+	md5sums = e7e07db3cf65dbb7bebfd6ca3fde0e56
+	md5sums = 214161fa924d6817ba6919862af37fbd
+	md5sums = ba3a1c90289a42c5c29bdf06e0045c5e
+	md5sums = 718f0384b915db99b2d93ab9792cc92d
+
+pkgname = vuurmuur-devel
+
