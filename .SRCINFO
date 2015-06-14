@@ -1,0 +1,18 @@
+pkgbase = shogun
+	pkgdesc = Shogun - A Large Scale Machine Learning Toolbox with the python interface
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = http://www.shogun-toolbox.org
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	depends = cblas
+	depends = lapack
+	depends = swig
+	depends = python-numpy
+	depends = libcl
+	source = http://shogun-toolbox.org/archives/shogun/releases/4.0/sources/shogun-4.0.0.tar.bz2
+	md5sums = 57370e869f3b24f74ce9c7b8741000b0
+
+pkgname = shogun
+
