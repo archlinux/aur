@@ -1,7 +1,7 @@
 # Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
 pkgname=lariza-git
-pkgver=15.01.2.gfeb90a2
-pkgrel=2
+pkgver=15.02.3.g30034c3
+pkgrel=1
 pkgdesc="Simple WebKit2GTK+ Browser"
 arch=('i686' 'x86_64')
 url="https://github.com/vain/lariza"
