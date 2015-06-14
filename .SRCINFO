@@ -1,0 +1,26 @@
+pkgbase = nvidia-beta
+	pkgdesc = NVIDIA driver for linux (beta)
+	pkgver = 352.09
+	pkgrel = 1
+	url = http://www.nvidia.com/
+	install = nvidia-beta.install
+	arch = i686
+	arch = x86_64
+	license = custom:NVIDIA
+	makedepends = linux-headers
+	makedepends = pacman>=4.2.0
+	depends = linux
+	depends = nvidia-utils-beta=352.09
+	depends = libgl
+	provides = nvidia
+	conflicts = nvidia-96xx
+	conflicts = nvidia-173xx
+	conflicts = nvidia
+	options = !strip
+	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/352.09/NVIDIA-Linux-x86-352.09.run
+	md5sums_i686 = 0e009686400c522209eaa8ab835ff81f
+	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/352.09/NVIDIA-Linux-x86_64-352.09-no-compat32.run
+	md5sums_x86_64 = eb5ad6a07dc03e0a19d5f6fa069c494b
+
+pkgname = nvidia-beta
+
