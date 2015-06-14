@@ -1,0 +1,16 @@
+pkgbase = perl-perl6-doc
+	pkgdesc = Perl6::Doc - Perl 6 documentation
+	pkgver = 0.47
+	pkgrel = 2
+	url = http://search.cpan.org/~hinrik/Perl6-Doc/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/H/HI/HINRIK/Perl6-Doc-0.47.tar.gz
+	md5sums = ae8574d17a95e612692bf092ad515b9c
+
+pkgname = perl-perl6-doc
+
