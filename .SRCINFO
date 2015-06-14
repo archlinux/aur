@@ -1,0 +1,16 @@
+pkgbase = geant4-abladata
+	pkgdesc = Data files for nuclear shell effects in INCL/ABLA hadronic mode
+	pkgver = 3.0
+	pkgrel = 1
+	url = http://geant4.cern.ch/
+	install = geant4-abladata.install
+	arch = any
+	license = GPL
+	depends = geant4>=10.0.0
+	source = http://geant4.cern.ch/support/source/G4ABLA.3.0.tar.gz
+	source = geant4-abladata.install
+	md5sums = d7049166ef74a592cb97df0ed4b757bd
+	md5sums = 74b0812ebdd78e45551d5d6f7b92c1bb
+
+pkgname = geant4-abladata
+
