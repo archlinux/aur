@@ -1,0 +1,21 @@
+pkgbase = perl-devel-platform-info
+	pkgdesc = Devel::Platform::Info - Unified framework for obtaining common platform metadata
+	pkgver = 0.15
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Devel-Platform-Info/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	provides = perl-devel-platform-info-bsd
+	provides = perl-devel-platform-info-irix
+	provides = perl-devel-platform-info-linux
+	provides = perl-devel-platform-info-mac
+	provides = perl-devel-platform-info-sco
+	provides = perl-devel-platform-info-solaris
+	provides = perl-devel-platform-info-win32
+	source = http://search.cpan.org/CPAN/authors/id/B/BA/BARBIE/Devel-Platform-Info-0.15.tar.gz
+	options = !emptydirs
+
+pkgname = perl-devel-platform-info
+
