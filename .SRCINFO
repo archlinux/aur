@@ -1,0 +1,20 @@
+pkgbase = lib32-minizip
+	pkgdesc = ZIP file extraction library (32-bit)
+	pkgver = 1.2.8
+	pkgrel = 1
+	url = http://www.winimage.com/zLibDll/minizip.html
+	arch = x86_64
+	license = ZLIB
+	license = custom
+	makedepends = gcc-multilib
+	makedepends = libtool-multilib
+	depends = lib32-glibc
+	depends = minizip
+	depends = lib32-zlib
+	options = !libtool
+	source = http://zlib.net/current/zlib-1.2.8.tar.gz
+	md5sums = 44d667c142d7cda120332623eab69f40
+	sha1sums = a4d316c404ff54ca545ea71a27af7dbc29817088
+
+pkgname = lib32-minizip
+
