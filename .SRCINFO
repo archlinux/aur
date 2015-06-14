@@ -1,0 +1,30 @@
+pkgbase = perl-module-release
+	pkgdesc = Module::Releases - automate software releases
+	pkgver = 2.11
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Module-Release/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-test-output
+	makedepends = perl-test-pod-coverage
+	makedepends = perl-mojolicious
+	depends = perl-configreader-simple
+	depends = perl-io-null
+	depends = perl-test-without-module
+	optdepends = perl-cacertorg-ca
+	optdepends = perl-lwp-protocol-https: for https support for LWP::UserAgent
+	optdepends = perl-test-prereq: to check prereqs
+	provides = perl-module-release-ftp
+	provides = perl-module-release-kwalitee
+	provides = perl-module-release-manifest
+	provides = perl-module-release-pause
+	provides = perl-module-release-prereq
+	provides = perl-module-release-svn
+	provides = perl-module-release-webupload-mojo
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BD/BDFOY/Module-Release-2.11.tar.gz
+	sha256sums = e76ab4dcf80ac202b41073604d531855c6b7e9b014b2b44fd22b7f50680b7eb9
+
+pkgname = perl-module-release
+
