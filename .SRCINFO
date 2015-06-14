@@ -1,0 +1,13 @@
+pkgbase = gimp-palletes-davidrevoy
+	pkgdesc = Palettes for Gimp made by Davide Revoy
+	pkgver = 2
+	pkgrel = 1
+	url = http://www.davidrevoy.com/article27/palettes-for-gimp-mypaint-or-krita
+	arch = any
+	license = CCPL:by
+	optdepends = gimp: to use these palettes
+	source = gimp-palletes-davidrevoy-2.tar.gz::http://www.davidrevoy.com/data/documents/davidrevoy-palettes-v2.tar.gz
+	md5sums = 8d1bd77f5c67e011690322fef8b29189
+
+pkgname = gimp-palletes-davidrevoy
+
