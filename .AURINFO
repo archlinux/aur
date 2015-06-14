@@ -1,0 +1,19 @@
+pkgbase = perl-text-hunspell
+	pkgdesc = Text::Hunspell - Perl interface to the GNU Hunspell library
+	pkgver = 2.09
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Text-Hunspell/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl
+	makedepends = hunspell
+	makedepends = perl-extutils-pkgconfig
+	depends = perl
+	depends = hunspell
+	source = http://search.cpan.org/CPAN/authors/id/C/CO/COSIMO/Text-Hunspell-2.09.tar.gz
+	options = !emptydirs
+
+pkgname = perl-text-hunspell
+
