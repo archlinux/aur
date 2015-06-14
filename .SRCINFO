@@ -1,0 +1,13 @@
+pkgbase = python-smartypants
+	pkgdesc = Python with the SmartyPants
+	pkgver = 1.8.6
+	pkgrel = 1
+	url = https://bitbucket.org/livibetter/smartypants.py
+	arch = any
+	license = BSD
+	depends = python
+	source = https://pypi.python.org/packages/source/s/smartypants/smartypants-1.8.6.tar.gz
+	md5sums = 97484a618fc35508ca2961445f4aa597
+
+pkgname = python-smartypants
+
