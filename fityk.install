@@ -1,0 +1,10 @@
+post_install() {
+	       update-mime-database usr/share/mime
+	       update-desktop-database -q
+}
+
+post_remove() {
+	       update-mime-database usr/share/mime
+	       update-desktop-database -q
+}
+

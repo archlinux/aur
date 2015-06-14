@@ -1,0 +1,25 @@
+pkgbase = fityk-git
+	pkgdesc = A program for nonlinear fitting of analytical functions to data.
+	pkgver = 20140531
+	pkgrel = 1
+	url = http://fityk.nieto.pl/
+	install = fityk.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = boost
+	makedepends = desktop-file-utils
+	makedepends = git
+	makedepends = python2-sphinx
+	makedepends = swig
+	depends = lua
+	depends = wxgtk
+	depends = xylib
+	depends = ruby
+	depends = python
+	optdepends = gnuplot: can be used with the CLI
+	provides = fityk
+	options = !libtool
+
+pkgname = fityk-git
+
