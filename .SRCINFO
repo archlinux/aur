@@ -1,0 +1,18 @@
+pkgbase = vmtouch-systemd-git
+	pkgdesc = Systemd support for vmtouch.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/dracorp/vmtouch-systemd
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash
+	depends = libui-sh
+	depends = vmtouch
+	provides = vmtouch-systemd
+	conflicts = vmtouch-systemd
+	backup = etc/vmtouch.conf
+	backup = etc/default/vmtouch
+
+pkgname = vmtouch-systemd-git
+
