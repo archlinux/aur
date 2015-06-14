@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=xdg-traymenu
-pkgver=0.01.40
+pkgver=0.01.41
 pkgrel=1
 pkgdesc="XDG compliant system tray and root menu generator"
 arch=('any')
