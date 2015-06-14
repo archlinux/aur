@@ -1,0 +1,36 @@
+pkgbase = deepin-music
+	pkgdesc = Awesome music player with brilliant and tweakful UI Deepin-UI based.
+	pkgver = 1.1.20150413165956
+	pkgrel = 1
+	url = https://gitcafe.com/Deepin/deepin-music
+	install = deepin-music.install
+	arch = any
+	groups = deepin-extra
+	license = GPL3
+	makedepends = deepin-gettext-tools
+	depends = python2
+	provides = deepin-music-player
+	conflicts = deepin-music-player
+	replaces = deepin-music-player
+	source = http://packages.linuxdeepin.com/deepin/pool/main/d/deepin-music-player/deepin-music-player_1.1+20150413165956~fa225d345b.tar.gz
+	sha256sums = ff74ed6d7e574ce3fded5523429eafe172bb92f18acba1ef817960cd8c86b777
+
+pkgname = deepin-music
+	depends = gstreamer0.10-python
+	depends = gstreamer0.10-bad-plugins
+	depends = gstreamer0.10-good-plugins
+	depends = gstreamer0.10-ugly-plugins
+	depends = mutagen
+	depends = python2-chardet
+	depends = python2-pyquery
+	depends = python2-cssselect
+	depends = python2-dbus
+	depends = sonata
+	depends = cddb-py
+	depends = python2-scipy
+	depends = python2-pycurl
+	depends = python2-xlib
+	depends = python2-keybinder2
+	depends = python2-deepin-music-player
+	depends = desktop-file-utils
+
