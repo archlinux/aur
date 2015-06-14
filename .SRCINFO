@@ -1,0 +1,24 @@
+pkgbase = private-internet-access-vpn
+	pkgdesc = Installs VPN profiles for Private Internet Access Service
+	pkgver = 1.3
+	pkgrel = 4
+	url = https://www.privateinternetaccess.com/
+	arch = any
+	license = GPL
+	depends = python
+	optdepends = networkmanager: Enables PIA for Network Manager
+	optdepends = openvpn: Allows running configurations from command-line
+	noextract = openvpn.zip
+	source = https://www.privateinternetaccess.com/openvpn/openvpn.zip
+	source = https://raw.githubusercontent.com/masterkorp/openvpn-update-resolv-conf/master/update-resolv-conf.sh
+	source = source.tar.gz
+	source = pia-auto-login.py
+	source = pia-auto-login.py.8.gz
+	sha256sums = 88aff6f0fdd2c87523eb1044787287883a0692e94574644260065823ea5a5dfc
+	sha256sums = 6d3bdc9531f16cc1ad199913a71554a0b50aea87e140b28d079c4ab4c0b8c51b
+	sha256sums = c09bf706dd14b6c89441e204c05656562066029e97a44f9176a9ed29408c40c0
+	sha256sums = f7062497a64d27aed797c088c7250028d0754963ccd3e8c8c1aff6898092045a
+	sha256sums = 445eaad874754485741fa717842a479c57d9725e81f023f8f6f970349cd2a3b5
+
+pkgname = private-internet-access-vpn
+
