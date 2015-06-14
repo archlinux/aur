@@ -1,0 +1,22 @@
+pkgbase = pycarddav-git
+	pkgdesc = pyCardDAV is a simple to use CardDAV CLI client
+	pkgver = 20150615
+	pkgrel = 1
+	url = http://lostpackets.de/pycarddav/
+	arch = any
+	license = Expat/MIT
+	makedepends = python-docutils
+	makedepends = python2-distribute
+	depends = python2
+	depends = python2-vobject
+	depends = python2-requests
+	depends = python2-lxml
+	depends = python2-urwid
+	depends = python2-xdg
+	provides = pycarddav
+	conflicts = pycarddav
+	source = git+https://github.com/geier/pycarddav.git
+	md5sums = SKIP
+
+pkgname = pycarddav-git
+
