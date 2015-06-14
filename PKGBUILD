@@ -1,4 +1,4 @@
-# Maintainer: Andreas B. Wagner <AndreasBWagner@pointfree.net>
+# Maintainer: Andreas B. Wagner <andreas.wagner@lowfatcomputing.org>
 # Contributor: Michael Blum <michaeldblum@earthlink.net>
 pkgname=xd
 pkgver=1
