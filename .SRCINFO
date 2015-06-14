@@ -1,0 +1,14 @@
+pkgbase = textadept-common-git
+	pkgdesc = Some functions, key commands and modifications that change Textadept's default behaviour
+	pkgver = 20150118.8de20fb
+	pkgrel = 1
+	url = https://rgieseke.github.io/ta-common/
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = textadept
+	source = https://github.com/rgieseke/ta-common/archive/master.tar.gz
+	sha256sums = SKIP
+
+pkgname = textadept-common-git
+
