@@ -1,0 +1,15 @@
+pkgbase = ruby-zurb-foundation-5
+	pkgdesc = ZURB Foundation on Sass/Compass
+	pkgver = 5.2.2
+	pkgrel = 1
+	url = http://foundation.zurb.com
+	arch = any
+	depends = ruby
+	depends = ruby-sass
+	noextract = zurb-foundation-5-5.2.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/zurb-foundation-5-5.2.2.gem
+	sha512sums = cd38cd4aea76ae60115b7262104da0d53074f04211c367a4415309af226bb2e4595145b6f3e5a22d173abb9f52693a29f40c50a5d209d8f33ef2b06da6613021
+
+pkgname = ruby-zurb-foundation-5
+
