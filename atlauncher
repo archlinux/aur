@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# fix for users of special IM modules
+unset XMODIFIERS GTK_IM_MODULE QT_IM_MODULE
+
+mkdir -p ${HOME}/.local/share/atlauncher
+cd ${HOME}/.local/share/atlauncher
+ln -sf /usr/share/atlauncher/Downloads ${HOME}/.local/share/atlauncher/Downloads
+cp /usr/share/java/atlauncher/ATLauncher.jar .
+exec java -jar ATLauncher.jar $@ >/dev/null

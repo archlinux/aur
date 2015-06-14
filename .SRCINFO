@@ -1,0 +1,23 @@
+pkgbase = atlauncher
+	pkgdesc = ATLauncher is a Launcher for Minecraft which integrates multiple different ModPacks to allow you to download and install ModPacks easily and quickly. Installs latest released jar.
+	pkgver = 3.2.2.1
+	pkgrel = 2
+	url = http://www.atlauncher.com/
+	arch = any
+	license = CCPL
+	depends = java-runtime
+	depends = xorg-server-utils
+	depends = openal
+	provides = atlauncher
+	noextract = jar
+	source = http://www.atlauncher.com/download/jar
+	source = atlauncher
+	source = atlauncher.desktop
+	source = atlauncher.png
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = bb6c25c948b8d2341a27803c123df453
+	md5sums = 8ab8a70ca8c7dbff0dc23bec40a5a923
+
+pkgname = atlauncher
+
