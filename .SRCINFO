@@ -1,0 +1,16 @@
+pkgbase = vim-syslog
+	pkgdesc = Adds syntax color to log files created by sysklogd
+	pkgver = 1.1
+	pkgrel = 2
+	url = http://www.vim.org/scripts/script.php?script_id=419
+	arch = any
+	groups = vim-syntax
+	license = custom:vim
+	depends = vim-runtime
+	source = vim-syslog.vim::http://www.vim.org/scripts/download_script.php?src_id=1215
+	source = ftdetect.vim
+	md5sums = 660833d71e7fb34555b2c71ea8bca25e
+	md5sums = e116363b944f08333cec2b04475f2766
+
+pkgname = vim-syslog
+
