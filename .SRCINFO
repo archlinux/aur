@@ -1,0 +1,19 @@
+pkgbase = vim-vjde
+	pkgdesc = Just a Development Environment for VIM
+	pkgver = 2.6.18
+	pkgrel = 4
+	url = http://vim.org/scripts/script.php?script_id=1213
+	install = vimdoc.install
+	arch = i686
+	arch = x86_64
+	groups = vim-plugins
+	license = GPL
+	depends = vim-runtime
+	optdepends = ctags: to replace readtags
+	optdepends = jdk: to install java-runtime and java-environment
+	optdepends = jre: to install java-runtime
+	source = vim-vjde-2.6.18.tgz::http://www.vim.org/scripts/download_script.php?src_id=17026
+	md5sums = 29fa90a0ec504ed2b5587d401455ba1e
+
+pkgname = vim-vjde
+
