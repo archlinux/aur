@@ -1,0 +1,19 @@
+pkgbase = dvbstreamer
+	pkgdesc = console based application to stream DVB/ATSC service(s) over UDP or to a file.
+	pkgver = 2.1.0
+	pkgrel = 4
+	url = http://sourceforge.net/projects/dvbstreamer/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sqlite3
+	depends = readline
+	depends = libltdl
+	depends = libyaml
+	depends = libev
+	source = http://downloads.sourceforge.net/dvbstreamer/dvbstreamer-2.1.0.tar.bz2
+	source = https://raw.githubusercontent.com/ccdale/dvbstreamer-patches/master/dvbstreamer-2.1.0-libev4.patch
+	source = https://raw.githubusercontent.com/ccdale/dvbstreamer-patches/master/dvbstreamer-2.1.0-daemon_pidfile.patch
+
+pkgname = dvbstreamer
+
