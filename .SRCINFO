@@ -32,7 +32,7 @@ pkgbase = linux-xps13
 	sha256sums = f7723d4a2e07da82b3698fb4edb5cf1ca0ccbbc3e789247118fcb7a44d89cdf2
 
 pkgname = linux-xps13
-	pkgdesc = 
+	pkgdesc = Linux Kernel and modules with the multitouch patches for the Cypress PS2 Trackpad found in the Dell XPS 13 Ultrabook. 
 	install = linux-xps13.install
 	depends = coreutils
 	depends = linux-firmware
@@ -45,7 +45,7 @@ pkgname = linux-xps13
 	backup = etc/mkinitcpio.d/linux-xps13.preset
 
 pkgname = linux-xps13-headers
-	pkgdesc = 
+	pkgdesc = Header files and scripts to build modules for linux-xps13.
 	depends = linux-xps13
 	provides = linux-xps13-headers=4.0.5
 	provides = linux-headers=4.0.5
