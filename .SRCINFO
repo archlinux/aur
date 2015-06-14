@@ -1,0 +1,16 @@
+pkgbase = xineramaproto-git
+	pkgdesc = X11 Xinerama extension wire protocol - Git version
+	pkgver = 1.2.1.4.r48.g441b8d8
+	pkgrel = 1
+	url = http://cgit.freedesktop.org/xorg/proto/xineramaproto/
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = xorg-util-macros
+	provides = xineramaproto=1.2.1.4.r48.g441b8d8
+	conflicts = xineramaproto
+	source = git://anongit.freedesktop.org/xorg/proto/xineramaproto
+	md5sums = SKIP
+
+pkgname = xineramaproto-git
+
