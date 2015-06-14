@@ -1,0 +1,17 @@
+pkgbase = xd
+	pkgdesc = a utility for dumping files in hex, decimal, or octal
+	pkgver = 1
+	pkgrel = 3
+	url = http://www.fourmilab.ch/xd
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = gcc
+	options = zipman
+	source = http://www.fourmilab.ch/xd/xd.zip
+	source = COPYING
+	md5sums = 304184cb2bd79900c4750dcab481033a
+	md5sums = 5cf61120e8516a804a13731920518974
+
+pkgname = xd
+
