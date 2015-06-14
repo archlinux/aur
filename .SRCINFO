@@ -1,0 +1,13 @@
+pkgbase = top-c
+	pkgdesc = A Package for Easily Writing Parallel Applications for both Distributed and Shared Memory Architectures
+	pkgver = 2.5.2
+	pkgrel = 1
+	url = http://www.ccs.neu.edu/home/gene/topc.html
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	source = ftp://ftp.ccs.neu.edu/pub/people/gene/topc/topc.tar.gz
+	md5sums = d92435bcd977265d18bd1845758645ee
+
+pkgname = top-c
+
