@@ -1,0 +1,15 @@
+diff --git a/configure.in b/configure.in
+index fa9733d..4218018 100644
+--- a/configure.in
++++ b/configure.in
+@@ -16,6 +16,10 @@ AC_SUBST(OGMRIP_PROFDIR)
+ 
+ dnl **************************************************************
+ 
++GETTEXT_PACKAGE=ogmrip-profiles
++AC_SUBST(GETTEXT_PACKAGE)
++AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [GetText Package])
++
+ AM_GLIB_GNU_GETTEXT
+ IT_PROG_INTLTOOL([0.35.0])
+ 
