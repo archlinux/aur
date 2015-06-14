@@ -1,0 +1,16 @@
+pkgbase = shifty-git
+	pkgdesc = Dynamic tagging library for Awesome window manager
+	pkgver = 20140817
+	pkgrel = 6
+	url = http://awesome.naquadah.org/wiki/Shifty
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = awesome
+	provides = shifty
+	conflicts = shifty
+	source = git://github.com/cdump/awesome-shifty.git
+	md5sums = SKIP
+
+pkgname = shifty-git
+
