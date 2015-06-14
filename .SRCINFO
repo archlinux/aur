@@ -1,0 +1,16 @@
+pkgbase = renderproto-git
+	pkgdesc = X11 Render extension wire protocol - Git version
+	pkgver = 0.11.1.4.r68.g9c2a896
+	pkgrel = 1
+	url = http://cgit.freedesktop.org/xorg/proto/renderproto/
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = xorg-util-macros
+	provides = renderproto=0.11.1.4.r68.g9c2a896
+	conflicts = renderproto
+	source = git://anongit.freedesktop.org/xorg/proto/renderproto
+	md5sums = SKIP
+
+pkgname = renderproto-git
+
