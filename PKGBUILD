@@ -1,6 +1,6 @@
 # Maintainer: ssfdust <ssfdust@gmail.com>
 pkgname=ycm-generator-git
-pkgbase=ycm-generator
+pkgbase=ycm-generator-git
 pkgver=stable57.6aecb04
 pkgrel=1
 pkgdesc="Generates config files for YouCompleteMe (https://github.com/Valloric/YouCompleteMe)"

@@ -1,4 +1,4 @@
-pkgbase = ycm-generator
+pkgbase = ycm-generator-git
 	pkgdesc = Generates config files for YouCompleteMe (https://github.com/Valloric/YouCompleteMe)
 	pkgver = stable57.6aecb04
 	pkgrel = 1
