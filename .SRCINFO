@@ -1,0 +1,19 @@
+pkgbase = adios
+	pkgdesc = Simple, versatile session exit dialog, inspired by cb-exit.
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/MightyPork/adios
+	arch = any
+	license = MIT
+	depends = python3
+	depends = python-gobject
+	depends = python-docopt
+	depends = gtk3
+	depends = pm-utils
+	provides = adios
+	conflicts = adios-git
+	source = https://github.com/MightyPork/adios/releases/download/0.2.3/adios-0.2.3-1.tar.gz
+	md5sums = 644eff4c35d624ca40092cb7e7a0271c
+
+pkgname = adios
+
