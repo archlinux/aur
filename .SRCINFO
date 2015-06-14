@@ -1,0 +1,13 @@
+pkgbase = chicken-readline
+	pkgdesc = An interface to the GNU readline library
+	pkgver = 3.1.1
+	pkgrel = 2
+	url = http://wiki.call-cc.org/eggref/4/readline
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = chicken
+	depends = readline
+
+pkgname = chicken-readline
+
