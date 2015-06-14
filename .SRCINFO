@@ -1,0 +1,13 @@
+pkgbase = gitcheck-git
+	pkgdesc = Check status of multiple git repositories in one pass
+	pkgver = 96.27697a0
+	pkgrel = 1
+	url = https://github.com/badele/gitcheck
+	arch = any
+	license = MIT
+	depends = python
+	source = git://github.com/badele/gitcheck.git
+	md5sums = SKIP
+
+pkgname = gitcheck-git
+
