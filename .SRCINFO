@@ -1,7 +1,7 @@
 pkgbase = keepass-ru
 	pkgdesc = Russian locale for KeePass
 	pkgver = 2.29
-	pkgrel = 3
+	pkgrel = 4
 	url = http://keepass.info/translations.html
 	arch = any
 	license = GPL2

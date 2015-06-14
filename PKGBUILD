@@ -2,7 +2,7 @@
 
 pkgname=keepass-ru
 pkgver=2.29
-pkgrel=3
+pkgrel=4
 pkgdesc="Russian locale for KeePass"
 license=('GPL2')
 depends=("keepass>=${pkgver}")
