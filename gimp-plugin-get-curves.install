@@ -1,0 +1,8 @@
+pkgname=gimp-plugin-get-curves
+post_install(){
+    echo "Plugin get-curves: the curve will be saved in GIMP's curves folder (~/.gimp-version/curves/) and can be opened by GIMP's color curve tool"
+    echo "You can copy example curves from /usr/share/$pkgname/examples/curves to your curves folder."
+}
+post_upgrade(){
+    post_install
+}

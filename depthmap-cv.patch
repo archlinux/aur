@@ -1,0 +1,12 @@
+diff --git a/elsamuko-depthmap-cv/elsamuko-depthmap-cv.c b/elsamuko-depthmap-cv/elsamuko-depthmap-cv.c
+index 56c959a..8da530b 100644
+--- a/elsamuko-depthmap-cv/elsamuko-depthmap-cv.c
++++ b/elsamuko-depthmap-cv/elsamuko-depthmap-cv.c
+@@ -20,6 +20,7 @@
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <cv.h>
++#include <opencv2/legacy/legacy.hpp>
+ #include <highgui.h>
+ 
+ // #include <sys/types.h>

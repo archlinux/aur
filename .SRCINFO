@@ -1,0 +1,73 @@
+pkgbase = gimp-elsamuko-plugins
+	pkgdesc = Varoius Gimp plugins made by elsamuko
+	pkgver = 0.1
+	pkgrel = 4
+	url = https://sites.google.com/site/elsamuko/gimp
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gimp
+	makedepends = opencv
+	makedepends = unzip
+	makedepends = cimg
+	depends = gimp
+	noextract = AlienSkin-examples.zip
+	source = https://sites.google.com/site/elsamuko/gimp/depthmap/elsamuko-depthmap-cv.tar.gz
+	source = depthmap-cv.patch
+	source = https://sites.google.com/site/elsamuko/forensics/clone-detection/elsamuko-copy-move.c
+	source = https://sites.google.com/site/elsamuko/gimp/gimp-octave/elsamuko-gimp-octave.c
+	source = https://sites.google.com/site/elsamuko/gimp/gimp-octave/filter_pack.tar.gz
+	source = https://sites.google.com/site/elsamuko/gimp/temperature/elsamuko-temperature.c
+	source = https://sites.google.com/site/elsamuko/gimp/eaw-sharpen/elsamuko-eaw-sharpen.tar.gz
+	source = eaw-sharpen.patch
+	source = https://sites.google.com/site/elsamuko/gimp/facedetect/elsamuko-facedetect-cv.tar.gz
+	source = face-detect-cv.patch
+	source = https://sites.google.com/site/elsamuko/gimp/get-curves/elsamuko-get-curves.c
+	source = https://sites.google.com/site/elsamuko/gimp/get-curves/AlienSkin-examples.zip
+	source = https://sites.google.com/site/elsamuko/gimp/get-curves/elsamuko-kodachrome
+	source = https://sites.google.com/site/elsamuko/gimp/heatmap/elsamuko-heatmap.c
+	source = https://sites.google.com/site/elsamuko/forensics/hsv-analysis/elsamuko-hsv-analysis.c
+	source = https://sites.google.com/site/elsamuko/forensics/lab-analysis/elsamuko-lab-analysis.tar.gz
+	source = cimg.patch
+	sha256sums = 37081258b6401bcc095d86b3a313b8fc4691f2f70b75e60d6f96be26ab1eb963
+	sha256sums = 70c9ef3ab10a5fdbf389266e2bcd30047191ac520740b196da93caefa4621be8
+	sha256sums = 2cfa1516ab49d1f8d94168c694219be940c2154f4128e3b3e77a8a24e8940312
+	sha256sums = 890e94b870278f49c1291eeb56efdcb6bffdfd8a5e6cba210dc7b47947f5bf2a
+	sha256sums = 20c8ec08587d61d87e91989a9655d693904eb56f402c1eb574c5e4c3a13d4ad1
+	sha256sums = e548334b3aebc039a2ac92d1f24d0323ced5163acdfa47399e727a7853f469ed
+	sha256sums = 382f1c7f5fbdb653fcaccb95c84416ba68163c7fba74edff0e62c885005620a5
+	sha256sums = de9312250d598cc4f599958edb45f2219779bb17cf2f834215cc53ee4d72f770
+	sha256sums = f06daefe35132d87734b3854a58fa0847b7b313b86ae9f076883b651a0592d16
+	sha256sums = d1fed09664684d4436902d261d4202b71b8f54ab58bcbdcde000ed51d8e65859
+	sha256sums = 58a136880bc4c83b768663caf28bd9aedfc3dca2bfb845d44d3f099926e98a80
+	sha256sums = 14cca94597b688aa6f2d4fff2bf807a3f9a0e7163dff897129dc685148029f6f
+	sha256sums = c8ccb4ee657e24d89ff9e3bb279cc6f552d8d4e3e3e8d76a107c763eafd58d91
+	sha256sums = f3514a0a99c2e9ebe318402f8bf1800cd11845f286763bbc5b33de38b22141d4
+	sha256sums = 6437349ceba4a7923bb66eae5d69f0a8077137fa340d4460d71295dbaa1bdbec
+	sha256sums = 2aa644462f919e77f8dd370dd3ed7a72f1c875f4227e99f520c89dd9a9186884
+	sha256sums = 2cbc494ac75df79f9c783fdbf5faf5ce69548a3c711b023e300cddb7047264bf
+
+pkgname = gimp-elsamuko-plugins
+
+pkgname = gimp-plugin-depthmap
+
+pkgname = gimp-plugin-copy-move
+
+pkgname = gimp-plugin-octave
+	install = gimp-plugin-octave.install
+
+pkgname = gimp-plugin-temperature
+
+pkgname = gimp-plugin-eaw-sharpen
+
+pkgname = gimp-plugin-facedetect
+
+pkgname = gimp-plugin-get-curves
+	install = gimp-plugin-get-curves.install
+
+pkgname = gimp-plugin-heatmap
+
+pkgname = gimp-plugin-hsv-analysis
+
+pkgname = gimp-plugin-lab-analysis
+

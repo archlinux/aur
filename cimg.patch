@@ -1,0 +1,13 @@
+diff --git a/elsamuko-lab-analysis.c b/elsamuko-lab-analysis.c
+index 31c2e3e6..083b4adc 100644
+--- a/elsamuko-lab-analysis.c
++++ b/elsamuko-lab-analysis.c
+@@ -27,7 +27,7 @@
+ #include <glib.h>
+ #include <glib/gprintf.h>
+ 
+-#include "CImg.h"
++#include <CImg.h>
+ 
+ #define PLUG_IN_PROC    "elsamuko-lab-analysis"
+ #define PLUG_IN_BINARY  "elsamuko-lab-analysis"

@@ -1,0 +1,7 @@
+pkgname=gimp-plugin-octave
+post_install(){
+    echo "If you want use Octave plugin then install octave-image package and copy example files from /usr/share/$pkgname/examples/filter_pack to the ~/.gimp-octave"
+}
+post_upgrade(){
+    post_install
+}

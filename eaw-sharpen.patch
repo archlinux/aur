@@ -1,0 +1,13 @@
+diff --git a/elsamuko-eaw-sharpen/Makefile b/elsamuko-eaw-sharpen/Makefile
+index 6e4f8ee..37f3fa0 100644
+--- a/elsamuko-eaw-sharpen/Makefile
++++ b/elsamuko-eaw-sharpen/Makefile
+@@ -10,7 +10,7 @@ all: elsamuko-eaw-sharpen
+ 
+ elsamuko-eaw-sharpen: elsamuko-eaw-sharpen.o
+ 	$(CXX) $(FLAGS) $(GIMP_FLAGS) elsamuko-eaw-sharpen.o -o elsamuko-eaw-sharpen $(GIMP_LIBS)
+-	$(GIMPTOOL) --install-bin elsamuko-eaw-sharpen
++#	$(GIMPTOOL) --install-bin elsamuko-eaw-sharpen
+ 
+ elsamuko-eaw-sharpen.o: elsamuko-eaw-sharpen.c equalizer_eaw.h
+ 	$(CXX) $(FLAGS) $(GIMP_FLAGS) -c elsamuko-eaw-sharpen.c $(GIMP_LIBS)

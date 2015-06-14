@@ -1,0 +1,37 @@
+diff --git a/elsamuko-facedetect-cv/Makefile b/elsamuko-facedetect-cv/Makefile
+index 7a7611e..59ef44c 100644
+--- a/elsamuko-facedetect-cv/Makefile
++++ b/elsamuko-facedetect-cv/Makefile
+@@ -4,7 +4,7 @@ GIMPTOOL=gimptool-2.0
+ GIMP_FLAGS=`$(GIMPTOOL) --cflags`
+ GIMP_LIBS=`$(GIMPTOOL) --libs`
+ CV_FLAGS=`pkg-config --cflags opencv`
+-CV_LIBS=`pkg-config --libs opencv`
++CV_LIBS=`pkg-config --libs opencv` -lm
+ 
+ RM=rm -f
+ 
+@@ -12,8 +12,8 @@ all: elsamuko-facedetect-cv
+ 
+ elsamuko-facedetect-cv: elsamuko-facedetect-cv.o
+ 	$(CXX) $(GIMP_FLAGS) $(CV_FLAGS) elsamuko-facedetect-cv.o -o elsamuko-facedetect-cv $(GIMP_LIBS) $(CV_LIBS)
+-	$(GIMPTOOL) --install-bin elsamuko-facedetect-cv
+-	$(GIMPTOOL) --install-bin haarcascade_frontalface_alt.xml 
++#	$(GIMPTOOL) --install-bin elsamuko-facedetect-cv
++#	$(GIMPTOOL) --install-bin haarcascade_frontalface_alt.xml
+ 
+ elsamuko-facedetect-cv.o: elsamuko-facedetect-cv.c
+ 	$(CXX) $(GIMP_FLAGS) $(CV_FLAGS) -c elsamuko-facedetect-cv.c $(GIMP_LIBS) $(CV_LIBS)
+diff --git a/elsamuko-facedetect-cv/elsamuko-facedetect-cv.c b/elsamuko-facedetect-cv/elsamuko-facedetect-cv.c
+index 141e158..0722897 100644
+--- a/elsamuko-facedetect-cv/elsamuko-facedetect-cv.c
++++ b/elsamuko-facedetect-cv/elsamuko-facedetect-cv.c
+@@ -320,7 +320,7 @@ facedetect_region (GimpPixelRgn *srcPR,
+     gint  i,j;
+     gint  value;
+     CvSeq* faces = 0;
+-    const char* gimp_local_path = gimp_directory();
++    const char* gimp_local_path = gimp_plug_in_directory();
+     char  plugin_path[PATH_MAX + 1];
+     sprintf (plugin_path, "%s/%s/%s", gimp_local_path, PLUG_IN_DIR, FACE_XML);
+ 
