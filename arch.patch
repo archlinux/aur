@@ -1,0 +1,64 @@
+--- lib/Linux/Distribution/Packages.pm	2006-04-19 22:18:09.000000000 +0200
++++ lib/Linux/Distribution/Packages.pm.new	2011-11-29 23:18:56.000000000 +0100
+@@ -17,6 +17,7 @@
+     'slackware'             => 'pkgtool',
+     'suse'                  => 'rpm',
+     'ubuntu'                => 'dpkg',
++    'arch'                  => 'pacman',
+ );
+ 
+ our @EXPORT_OK = qw(distribution_packages distribution_write format);
+@@ -99,7 +100,7 @@
+     if (defined $self->{'output_file'}){
+         require IO::File;
+         $output = new IO::File(">$self->{'output_file'}");
+-	$writer_options->{'OUTPUT'} = $output;
++	    $writer_options->{'OUTPUT'} = $output;
+     }
+     if ($self->{'format'} =~ m/xml/i){
+         $writer = new XML::Writer(%{$writer_options});
+@@ -183,6 +184,44 @@
+     }
+ }
+ 
++return 1;
++
++package Linux::Distribution::Packages::pacman;
++use base qw(Linux::Distribution::Packages);
++
++sub _command {
++    my $self = shift;
++    $self->SUPER::_command('pacman -Qs');
++}
++
++sub _parse {
++    my $self = shift;
++    my @data = split '\n', $self->{_data};
++    my $writer=shift;
++    my $count = 1;
++    my ($pkg, $ver, $desc);
++    PACKAGE:
++    foreach my $row (@data){
++        if ( $count % 2 ){
++            # odd rows with program name and version
++            ($pkg, $ver) = $row =~ m{^local/([\S]+)\s([\S]+)}xms;
++        }
++        else {
++            # even rows with description
++            chomp $row;
++            ($desc) = $row =~ m{^\s+(.*)$}xms;
++            if ($self->{'format'} =~ m/xml/i){ 
++                $writer->emptyTag('package', 'name' => $pkg, 'version' => $ver , 'description' => $desc);
++                $count++;
++                next PACKAGE;
++            }
++            my $row_func='_row_' . $self->{'format'};
++            $self->$row_func($pkg, $ver, $desc);
++        }
++        $count++;
++    }
++}
++
+ return 1;
+ 
+ package Linux::Distribution::Packages::dpkg;
