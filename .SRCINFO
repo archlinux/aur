@@ -1,0 +1,21 @@
+pkgbase = perl-imdb-film
+	pkgdesc = IMDB::Film - OO Perl interface to the movies database IMDB
+	pkgver = 0.53
+	pkgrel = 2
+	url = http://search.cpan.org/dist/IMDB-Film/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-text-unidecode
+	makedepends = perl-cache-cache
+	depends = perl-html-parser
+	depends = perl-libwww
+	depends = perl-cache-cache
+	provides = perl-imdb-baseclass
+	provides = perl-imdb-persons
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/ST/STEPANOV/IMDB-Film-0.53.tar.gz
+	md5sums = 7db6bcc1f5c705215745c157bb39f020
+
+pkgname = perl-imdb-film
+
