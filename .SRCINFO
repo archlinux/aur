@@ -1,0 +1,25 @@
+pkgbase = kmag-frameworks-git
+	pkgdesc = A screen magnifier. KF5 Frameworks branch (GIT version)
+	pkgver = r457.98e532e
+	pkgrel = 1
+	url = http://kde.org/applications/utilities/kmag
+	install = kmag-frameworks-git.install
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	makedepends = git
+	makedepends = python
+	depends = kio
+	depends = libkdeaccessibilityclient-git
+	depends = hicolor-icon-theme
+	provides = kmag
+	conflicts = kdegraphics-kmag
+	conflicts = kmag
+	source = git://anongit.kde.org/kmag#branch=frameworks
+	sha1sums = SKIP
+
+pkgname = kmag-frameworks-git
+
