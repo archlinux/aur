@@ -1,0 +1,16 @@
+pkgbase = psol
+	pkgdesc = PageSpeed Optimization Library
+	pkgver = 1.9.32.1
+	pkgrel = 2
+	url = https://developers.google.com/speed/pagespeed/psol
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = Apache
+	options = !strip
+	options = staticlibs
+	source = psol-1.9.32.1.tar.gz::https://dl.google.com/dl/page-speed/psol/1.9.32.1.tar.gz
+	sha256sums = ecfac41808ba14af3574d3ed6e3f0fbb47da8e4a9b3786b056fc6caec19f1839
+
+pkgname = psol
+
