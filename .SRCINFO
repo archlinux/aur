@@ -1,0 +1,13 @@
+pkgbase = outspline-experimental
+	pkgdesc = Experimental addons for Outspline
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://kynikos.github.io/outspline/
+	arch = any
+	license = GPL3
+	depends = outspline
+	source = http://downloads.sourceforge.net/project/outspline/experimental/outspline-experimental-0.8.1.tar.bz2
+	sha256sums = 7e0c48f12d9f69860888520ed8b3b486ccc89c4a9a46652085ff2eed399d234c
+
+pkgname = outspline-experimental
+
