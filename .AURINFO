@@ -1,0 +1,15 @@
+pkgbase = perl-tie-tk-text
+	pkgdesc = Tie::Tk::Text - Access Tk text widgets as arrays
+	pkgver = 0.92
+	pkgrel = 1
+	url = http://search.cpan.org/dist/perl-Tie-Tk-Text/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-tk
+	depends = perl-tk
+	source = http://search.cpan.org/CPAN/authors/id/M/MJ/MJCARMAN/Tie-Tk-Text-0.92.tar.gz
+	options = !emptydirs
+
+pkgname = perl-tie-tk-text
+
