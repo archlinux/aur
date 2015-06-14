@@ -1,0 +1,16 @@
+pkgbase = perl-pod-coverage-trustpod
+	pkgdesc = Pod::Coverage::TrustPod - allow a module's pod to contain Pod::Coverage hints
+	pkgver = 0.100003
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Pod-Coverage-TrustPod/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl-pod-eventual
+	depends = perl-pod-coverage
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Pod-Coverage-TrustPod-0.100003.tar.gz
+	sha256sums = 3f0c42c4656cf22dab0e7c92c9006eb90a4a3068d6950938c4773c5854619ea6
+
+pkgname = perl-pod-coverage-trustpod
+
