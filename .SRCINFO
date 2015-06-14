@@ -1,0 +1,16 @@
+pkgbase = bigreqsproto-git
+	pkgdesc = X11 Big Requests extension wire protocol - Git version
+	pkgver = 1.1.2.4.r57.g869dca1
+	pkgrel = 1
+	url = http://cgit.freedesktop.org/xorg/proto/bigreqsproto/
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = xorg-util-macros
+	provides = bigreqsproto=1.1.2.4.r57.g869dca1
+	conflicts = bigreqsproto
+	source = git://anongit.freedesktop.org/xorg/proto/bigreqsproto
+	md5sums = SKIP
+
+pkgname = bigreqsproto-git
+
