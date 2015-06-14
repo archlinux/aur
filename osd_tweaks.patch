@@ -1,0 +1,16 @@
+--- a/openbox-3/themerc	2007-09-15 20:12:28.000000000 -0500
++++ b/openbox-3/themerc	2015-06-14 16:07:54.294732125 -0500
+@@ -112,3 +112,12 @@ window.inactive.button.disabled.image.co
+ 
+ !! window.inactive.button.toggled.bg:			flat solid
+ !! window.inactive.button.toggled.bg.color:		#444438
++
++!!---------------------------------------------------------------------------
++!! On-screen dialogs by DivineAnt
++
++osd.border.width: 1
++osd.hilight.bg: flat solid
++osd.hilight.bg.color: #272c30
++osd.unhilight.bg: flat solid
++osd.unhilight.bg.color: #9394a2
+\ No newline at end of file
