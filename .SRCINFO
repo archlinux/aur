@@ -1,0 +1,25 @@
+pkgbase = ruby-ohai
+	pkgdesc = Ohai profiles your system and emits JSON
+	pkgver = 8.4.0
+	pkgrel = 1
+	url = https://docs.getchef.com/ohai.html
+	arch = any
+	license = Apache-2.0
+	depends = ruby
+	depends = ruby-mime-types
+	depends = ruby-systemu
+	depends = ruby-ffi-yajl
+	depends = ruby-mixlib-cli
+	depends = ruby-mixlib-config
+	depends = ruby-mixlib-log
+	depends = ruby-mixlib-shellout
+	depends = ruby-ipaddress
+	depends = ruby-wmi-lite
+	depends = ruby-ffi
+	noextract = ohai-8.4.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/ohai-8.4.0.gem
+	sha512sums = fa9872c4ec8b3f4d22ef277b198aec80e3e47b44caf58fdb6dc923fa8777c63ba7828deb972ba392c15d9f6797fa5fbe6266bbe4ec72f51bb0a82eb831bdd0ce
+
+pkgname = ruby-ohai
+
