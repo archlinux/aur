@@ -1,0 +1,17 @@
+pkgbase = ruby-fog-xml
+	pkgdesc = XML parsing for fog providers
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/fog/fog-xml
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-fog-core
+	depends = ruby-nokogiri
+	noextract = fog-xml-0.1.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/fog-xml-0.1.2.gem
+	sha512sums = 5607ade34515389eabe237506ebf846d5b79e150fe80373f9ea74752a2bce9d074fc1656b42e8435286543e221d055107a595cf93efd72b334a7944cb6703701
+
+pkgname = ruby-fog-xml
+
