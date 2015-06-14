@@ -1,0 +1,16 @@
+pkgbase = perl-pod-text-ansi
+	pkgdesc = Pod::Text::Ansi - Convert POD to ANSI-colored text
+	pkgver = 0.05
+	pkgrel = 2
+	url = http://search.cpan.org/~hinrik/Pod-Text-Ansi/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/H/HI/HINRIK/Pod-Text-Ansi-0.05.tar.gz
+	md5sums = abc697b4d7ba9fa1b96a4c21a1809a24
+
+pkgname = perl-pod-text-ansi
+
