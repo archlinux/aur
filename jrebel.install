@@ -1,0 +1,11 @@
+post_install() {
+  echo ""
+  echo "The jrebel package is licensed software."
+  echo "You MUST read and agree to the license stored in"
+  echo "/usr/share/licenses/jrebel/License.txt before using it."
+  echo ""
+
+  echo "Please relogin to include JREBEL_PATH into your environment."
+  echo ""
+}
+
