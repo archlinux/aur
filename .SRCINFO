@@ -1,0 +1,17 @@
+pkgbase = ttf-coolvetica
+	pkgdesc = Coolvetica font (taken from Garry's Mod)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/garrynewman/garrysmod/
+	install = ttf-coolvetica.install
+	arch = any
+	license = unknown
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://github.com/garrynewman/garrysmod/raw/master/garrysmod/resource/fonts/coolvetica.ttf
+	source = https://raw.github.com/garrynewman/garrysmod/master/garrysmod/resource/fonts/coolvetica.txt
+	md5sums = df7be7ddc6446f1f376fb9b7a1cf72a6
+	md5sums = ca90b93f23ae14f68b365e7641ba0186
+
+pkgname = ttf-coolvetica
+
