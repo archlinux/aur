@@ -1,0 +1,23 @@
+pkgbase = global
+	pkgdesc = A source code tag system
+	pkgver = 6.4
+	pkgrel = 1
+	url = http://www.gnu.org/software/global/
+	install = global.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libltdl
+	depends = bash
+	depends = perl
+	optdepends = idutils
+	optdepends = ctags
+	optdepends = python2-pygments
+	options = !emptydirs
+	options = !libtool
+	source = http://tamacom.com/global/global-6.4.tar.gz
+	md5sums = 34987ce863661bfceddc1ac016d19195
+	sha256sums = 315bf69bf2b4dbe661ff2800967e5f1171edfb83a0f17424612baa673aff248e
+
+pkgname = global
+
