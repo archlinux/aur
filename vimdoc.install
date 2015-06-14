@@ -1,0 +1,12 @@
+post_install() {
+    echo "After installation, create the directory ~/.vim/templates and copy into it files from /usr/share/vim/vimfiles/templates/"
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+op=$1
+shift
+
+$op $*

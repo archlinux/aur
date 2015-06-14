@@ -1,0 +1,15 @@
+pkgbase = vim-file-templates
+	pkgdesc = File templates for VIM
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://sites.google.com/site/abudden/contents/Vim-Scripts/file-templates
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = custom:vim
+	depends = vim-runtime
+	source = vim-file-templates-1.0.vba::https://sites.google.com/site/abudden/contents/Vim-Scripts/file-templates/file_templates.vba?attredirects=0
+	md5sums = 8c49c07c77f160f30794509025132d03
+
+pkgname = vim-file-templates
+
