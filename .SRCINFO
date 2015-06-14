@@ -1,0 +1,20 @@
+pkgbase = ruby-wikicloth
+	pkgdesc = An implementation of the mediawiki markup in ruby
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = http://github.com/nricciar/wikicloth
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-builder
+	depends = ruby-expression_parser
+	depends = ruby-twitter-text
+	depends = ruby-nokogiri
+	depends = ruby-htmlentities
+	noextract = wikicloth-0.8.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/wikicloth-0.8.3.gem
+	sha512sums = 7d2a5dba2ea615ffec96ff82b45bfabae0ffdf7b9739156dce847964a23d94f5b511ce37bf5c8cc95c1c846eaef817fa401658e4e8e3a93b9e9fc9d47966c801
+
+pkgname = ruby-wikicloth
+
