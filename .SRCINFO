@@ -1,6 +1,6 @@
 pkgbase = sgopherd-git
 	pkgdesc = A gopher server written in Bash
-	pkgver = 13.01
+	pkgver = 15.03
 	pkgrel = 1
 	url = https://github.com/vain/sgopherd
 	arch = any

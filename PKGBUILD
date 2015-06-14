@@ -1,7 +1,7 @@
 # Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
 _pkgname=sgopherd
 pkgname=$_pkgname-git
-pkgver=13.01
+pkgver=15.03
 pkgrel=1
 pkgdesc="A gopher server written in Bash"
 arch=('any')
