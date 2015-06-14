@@ -1,0 +1,14 @@
+pkgbase = pcb2gcode
+	pkgdesc = Gerber to gcode file converter
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = http://sourceforge.net/apps/mediawiki/pcb2gcode/index.php?title=Main_Page
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gerbv=2.6.0
+	source = http://downloads.sourceforge.net/pcb2gcode/pcb2gcode-1.1.4-git2012-07-02.tar.gz
+	md5sums = 52c49627b04013fef16fedba2917efed
+
+pkgname = pcb2gcode
+
