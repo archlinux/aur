@@ -1,0 +1,15 @@
+pkgbase = perl-docs
+	pkgdesc = Set of HTML documentation for Perl.
+	pkgver = 5.20.1
+	pkgrel = 1
+	url = http://perldoc.perl.org/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	source = http://perldoc.perl.org/perldoc-html.tar.gz
+	options = docs
+	options = !strip
+
+pkgname = perl-docs
+
