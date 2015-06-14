@@ -1,8 +1,8 @@
 # Maintainer: ninian <mcfadzean.org.uk ta linux>
 
 pkgname=whippet
-pkgver=2.0.2
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="A launcher and xdg-open replacement for control freaks. Opens files and URLs with applications associated by name and/or mimetype. Applications and associations may be customized using an SQLite database."
 arch=('any')
 url="http://mcfadzean.org.uk/appstogo/linux.html#whippet"
@@ -10,7 +10,7 @@ license=('custom:MPL2')
 depends=('bash' 'dmenu' 'sqlite' 'libnotify' 'file')
 optdepends=('perl-file-mimeinfo: to better determine mimetypes' 'sqlitebrowser: to manage database' 'sudo: to run applications as root' 'gxmessage: to view .desktop files')
 source=("http://mcfadzean.org.uk/appstogo/dl/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('dc837db7270c891b31dfc07c2ca3a7e3')
+md5sums=('9ca1fdde2ac07396081eab6a8fee8e03')
 
 package() {
   cd "$srcdir/${pkgname}-$pkgver"
@@ -28,5 +28,5 @@ package() {
   install -Dm755 xdg-open                    "$pkgdir/usr/share/doc/${pkgname}/xdg-open"
   msg "Copy sample configuration file /usr/share/doc/${pkgname}/${pkgname}.conf and customize per user"
   msg "Also see '${pkgname} -h' and /usr/share/doc/${pkgname}/README for more information"
-  msg ">>>> Database format changed in versions >= 2.0.0 - see /usr/share/doc/${pkgname}/CHANGELOG <<<<"
+  msg ">>>> Database format changed in versions >= 2.1.0 - see /usr/share/doc/${pkgname}/CHANGELOG <<<<"
 }
