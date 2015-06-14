@@ -1,0 +1,15 @@
+pkgbase = ruby-systemu
+	pkgdesc = systemu
+	pkgver = 2.6.5
+	pkgrel = 1
+	url = https://github.com/ahoward/systemu
+	arch = any
+	license = Ruby
+	depends = ruby
+	noextract = systemu-2.6.5.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/systemu-2.6.5.gem
+	sha512sums = 1755e1d24f6d93fd07578859873b94d3fbc855f86c94bf9eb0389959837e94e432883c638ed188e75254312c2ac66eee2041d8b13eff428b473ddf8a8105461f
+
+pkgname = ruby-systemu
+
