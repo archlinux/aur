@@ -1,0 +1,14 @@
+pkgbase = gimp-plugin-instagram-effects
+	pkgdesc = Collections of plug-ins who can recreate (as closely as possible) Instagram's effects
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://registry.gimp.org/node/28613
+	arch = any
+	license = GPL
+	depends = gimp
+	depends = python
+	source = http://registry.gimp.org/files/gimp_instagram_effects.zip
+	sha256sums = a4c49cb1baa858171a29e25cbd8bb09f95848483859d1ebfba52991e69a651df
+
+pkgname = gimp-plugin-instagram-effects
+
