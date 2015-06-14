@@ -1,0 +1,17 @@
+pkgbase = perl-padre-plugin-regexexplain
+	pkgdesc = Padre::Plugin::RegexExplain - A Padre plugin for Regex explainations
+	pkgver = 0.02
+	pkgrel = 2
+	url = http://search.cpan.org/~reneeb/Padre-Plugin-RegexExplain
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl
+	depends = perl-padre
+	depends = perl-yape-regex-explain
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RE/RENEEB/Padre-Plugin-RegexExplain-0.02.tar.gz
+	md5sums = f7517ca0b8ea1d8d8544bff905c93f1c
+
+pkgname = perl-padre-plugin-regexexplain
+
