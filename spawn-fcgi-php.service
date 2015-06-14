@@ -1,0 +1,14 @@
+# vi: ft=systemd
+[Unit]
+Description=Script to provide simple cgi-php support for nginx http daemon
+After=syslog.target network.target
+
+[Service]
+Type=forking
+EnvironmentFile=/etc/conf.d/spawn-fcgi-php.conf
+ExecStart=/usr/lib/systemd/scripts/spawn-fcgi-php start
+ExecStop=/usr/lib/systemd/scripts/spawn-fcgi-php stop
+ExecReload=/usr/lib/systemd/scripts/spawn-fcgi-php restart
+
+[Install]
+WantedBy=multi-user.target

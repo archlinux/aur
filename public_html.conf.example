@@ -1,0 +1,17 @@
+# vi: ft=nginx
+location ~ ^/~([^/]+)(/?.*)$ {
+	set $username $1;
+    alias /home/$1/public_html/$2;
+    autoindex on; 
+	location ~ \.php {
+		#fastcgi_pass  127.0.0.1:9000;
+		# or for multiusers, one port per user
+		fastcgi_pass  127.0.0.1:$port;
+		# or for unix domain sockets
+		#fastcgi_pass unix:/run/spawn-fcgi/spawn-fcgi.$username.sock;
+		fastcgi_index  index.php;
+		include /etc/nginx/fastcgi_params;
+        #moved to /etc/nginx/fastcgi_params
+		#fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+	}
+}
