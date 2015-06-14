@@ -1,0 +1,18 @@
+pkgbase = python2-deepin-gsettings
+	pkgdesc = deepin gsettings python bindings
+	pkgver = 0.1.git20131206094009
+	pkgrel = 1
+	url = https://gitcafe.com/Deepin/deepin-gsettings
+	arch = i686
+	arch = x86_64
+	groups = deepin
+	license = GPL3
+	depends = python2-setuptools
+	provides = deepin-gsettings
+	conflicts = deepin-gsettings
+	replaces = deepin-gsettings
+	source = http://packages.linuxdeepin.com/deepin/pool/main/d/deepin-gsettings/deepin-gsettings_0.1+git20131206094009~a64de3ac19.tar.gz
+	sha256sums = 39225381934750aed1f768702c6c58307954eb329b617facb64f067d17a25e26
+
+pkgname = python2-deepin-gsettings
+
