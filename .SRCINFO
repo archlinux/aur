@@ -16,7 +16,6 @@ pkgbase = epson-alc1100-filter
 	depends_i686 = grep
 	depends_i686 = gawk
 	depends_i686 = bc
-	depends_x86_64 = lib32-gcc-libs
 	depends_x86_64 = lib32-libstdc++5
 	depends_x86_64 = ghostscript
 	depends_x86_64 = psutils

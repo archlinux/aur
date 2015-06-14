@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('custom:EAPL')
 depends_i686=('libstdc++5' 'ghostscript' 'psutils' 'sed' 'grep' 'gawk' 'bc')
-depends_x86_64=('lib32-gcc-libs' 'lib32-libstdc++5' 'ghostscript' 'psutils' 'sed' 'grep' 'gawk' 'bc')
+depends_x86_64=('lib32-libstdc++5' 'ghostscript' 'psutils' 'sed' 'grep' 'gawk' 'bc')
 makedepends=()
 optdepends=('cups: printing support')
 source=("http://a1227.g.akamai.net/f/1227/40484/1d/download.ebz.epson.net/dsc/f/01/00/01/58/64/87f759442ccaa26a3be70620d1aab13e7f713d60/Epson-ALC1100-filter-${pkgver}.tar.gz")
