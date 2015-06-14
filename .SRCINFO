@@ -1,0 +1,29 @@
+pkgbase = perl-padre-plugin-perl6
+	pkgdesc = Padre::Plugin::Perl6 - Perl 6 Support for Padre
+	pkgver = 0.71
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Padre-Plugin-Perl6/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl
+	depends = perl-padre
+	depends = perl-grok
+	depends = perl-perl6-doc
+	depends = perl-syntax-highlight-perl6
+	provides = perl-padre-plugin-perl6-colorizer
+	provides = perl-padre-plugin-perl6-document
+	provides = perl-padre-plugin-perl6-help
+	provides = perl-padre-plugin-perl6-outline
+	provides = perl-padre-plugin-perl6-preferences
+	provides = perl-padre-plugin-perl6-quickfix
+	provides = perl-padre-plugin-perl6-stdcolorizer
+	provides = perl-padre-plugin-perl6-stdcolorizertask
+	provides = perl-padre-plugin-perl6-syntax
+	provides = perl-padre-plugin-perl6-util
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AZ/AZAWAWI/Padre-Plugin-Perl6-0.71.tar.gz
+	md5sums = 7cb9b3cc1d65b53048215d791be34cc3
+
+pkgname = perl-padre-plugin-perl6
+
