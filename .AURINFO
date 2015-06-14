@@ -1,0 +1,20 @@
+pkgbase = perl-file-find-object
+	pkgdesc = File::Find::Object - An object oriented File::Find replacement
+	pkgver = v0.2.12
+	pkgrel = 1
+	url = http://search.cpan.org/dist/File-Find-Object/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-class-xsaccessor
+	depends = perl
+	provides = perl-file-find-object-base
+	provides = perl-file-find-object-deeppath
+	provides = perl-file-find-object-pathcomp
+	provides = perl-file-find-object-result
+	provides = perl-file-find-object-toppath
+	source = http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/File-Find-Object-v0.2.12.tar.gz
+	options = !emptydirs
+
+pkgname = perl-file-find-object
+
