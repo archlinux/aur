@@ -1,0 +1,17 @@
+pkgbase = ruby-rspec-mocks
+	pkgdesc = rspec-mocks-3.3.0
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = http://github.com/rspec/rspec-mocks
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-rspec-support
+	depends = ruby-diff-lcs
+	noextract = rspec-mocks-3.3.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rspec-mocks-3.3.0.gem
+	sha512sums = 84fb495a1f9afa2a9071f70e5a83df0847e6ba37c983848493fbd8f61a5fb9570a275960b9c9259113a825dd7f592ae3105f3b0102636fead6499cd577931336
+
+pkgname = ruby-rspec-mocks
+
