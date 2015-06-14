@@ -1,0 +1,18 @@
+# Install file for brother-ql570-lpr
+
+post_install() {
+	useradd -s /bin/false -g lp lp
+	mkdir -p /var/spool/lpd/ql570
+	ln -s /usr/share/brother/ /opt/
+	chown lp:lp /usr/share/brother/PTouch/ql570/inf
+	chmod 775 /usr/share/brother/PTouch/ql570/inf
+	chown lp:lp /usr/share/brother/PTouch/ql570/inf/brql570rc
+	chmod 664 /usr/share/brother/PTouch/ql570/inf/brql570rc
+	/usr/share/brother/PTouch/ql570/inf/setupPrintcappt1 ql570 -i USB
+}
+
+pre_remove() {
+	rm -rf /var/spool/lpd/ql570
+	rm -f /opt/brother
+	/usr/share/brother/PTouch/ql570/inf/setupPrintcappt1 ql570 -e
+}
