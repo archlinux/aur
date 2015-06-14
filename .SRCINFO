@@ -1,0 +1,24 @@
+pkgbase = urjtag-git
+	pkgdesc = Enhanced, modern tool for communicating over JTAG with flash chips, CPUs,and many more
+	pkgver = r1789.7ba12da
+	pkgrel = 1
+	url = http://urjtag.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	makedepends = git
+	makedepends = gcc
+	makedepends = libftd2xx
+	makedepends = flex
+	makedepends = bison
+	depends = libftd2xx
+	conflicts = urjtag
+	options = !strip
+	source = urjtag-git::git://git.code.sf.net/p/urjtag/git
+	source = urjtag_libftd2xx.patch
+	sha512sums = SKIP
+	sha512sums = c17acc473aa5c4ce849ee6404a6d17b80b9933c227fa5e33009188f2b8b51e0e2cb6778324b12aa3348ad34f8d083a8602439bdfe3ec6bb0959cb398bd8acdc9
+
+pkgname = urjtag-git
+

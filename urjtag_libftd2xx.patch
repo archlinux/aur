@@ -1,0 +1,20 @@
+--- urjtag/src/tap/usbconn/libftd2xx.c.ORIG	2011-10-31 10:00:34.746529359 +0100
++++ urjtag/src/tap/usbconn/libftd2xx.c	2011-10-31 10:03:43.009128467 +0100
+@@ -172,7 +172,7 @@
+ 
+     urj_log (URJ_LOG_LEVEL_COMM,
+              "%sflush end: status %ld, xferred %ld, recvd %ld\n", module,
+-            status, xferred, recvd);
++            (long int) status, (long int) xferred, (long int) recvd);
+ 
+     return status != FT_OK ? -1 : xferred;
+ }
+@@ -225,7 +225,7 @@
+     }
+ 
+     urj_log (URJ_LOG_LEVEL_COMM, "%sread end  : status %ld, length %d\n",
+-             module, status, cpy_len + len);
++             module, (long int) status, (int) cpy_len + len);
+ 
+     return status != FT_OK ? -1 : cpy_len + len;
+ }
