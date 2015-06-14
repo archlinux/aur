@@ -1,0 +1,23 @@
+pkgbase = scummvm-git
+	pkgdesc = A 'virtual machine' for several classic graphical point-and-click adventure games.
+	pkgver = 20131209
+	pkgrel = 4
+	url = http://www.scummvm.org
+	install = scummvm.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = sdl
+	depends = libmad
+	depends = fluidsynth
+	depends = libgl
+	depends = libtheora
+	depends = faad2
+	provides = scummvm
+	conflicts = scummvm
+	source = scummvm::git+https://github.com/scummvm/scummvm.git
+	md5sums = SKIP
+
+pkgname = scummvm-git
+
