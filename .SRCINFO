@@ -1,0 +1,23 @@
+pkgbase = perl-critic-more
+	pkgdesc = Perl::Critic::More - Supplemental policies for Perl::Critic
+	pkgver = 1.003
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Perl-Critic-More/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl
+	depends = perl
+	provides = perl-perl-critic-policy-codelayout-requireascii
+	provides = perl-perl-critic-policy-editor-requireemacsfilevariables
+	provides = perl-perl-critic-policy-errorhandling-requireuseofexceptions
+	provides = perl-perl-critic-policy-modules-perlminimumversion
+	provides = perl-perl-critic-policy-modules-requireperlversion
+	provides = perl-perl-critic-policy-valuesandexpressions-requireconstantonleftsideofequality
+	provides = perl-perl-critic-policy-valuesandexpressions-restrictlongstrings
+	options = !emptydirs
+	source = http://cpan.perl.org/modules/by-authors/id/T/TH/THALJEF/Perl-Critic-More-1.003.tar.gz
+	sha256sums = 69e2acff61b7bead745721991e2b83c88624ae8239d4371a785a3ce2d967187b
+
+pkgname = perl-critic-more
+
