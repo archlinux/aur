@@ -1,0 +1,28 @@
+pkgbase = perl-padre-plugin-spellcheck
+	pkgdesc = Padre::Plugin::SpellCheck - Check spelling in Padre, The Perl IDE
+	pkgver = 1.33
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Padre-Plugin-SpellCheck
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl
+	depends = perl-padre
+	depends = perl-module-util
+	depends = perl-text-aspell
+	depends = perl-text-hunspell
+	depends = perl-class-accessor
+	depends = perl-file-which
+	depends = perl-try-tiny
+	optdepends = aspell-lang-code: additional dictonaries
+	optdepends = hunspell-lang-code: additional dictonaries
+	provides = perl-padre-plugin-spellcheck-checker
+	provides = perl-padre-plugin-spellcheck-engine
+	provides = perl-padre-plugin-spellcheck-fbp-checker
+	provides = perl-padre-plugin-spellcheck-fbp-preferences
+	provides = perl-padre-plugin-spellcheck-preferences
+	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOWTIE/Padre-Plugin-SpellCheck-1.33.tar.gz
+	options = !emptydirs
+
+pkgname = perl-padre-plugin-spellcheck
+
