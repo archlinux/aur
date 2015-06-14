@@ -1,0 +1,13 @@
+pkgbase = vimwiki2org-git
+	pkgdesc = A simple tool to convert vimwiki file to emacs org-mode file - Git version
+	pkgver = 20130910
+	pkgrel = 1
+	url = https://github.com/fasheng/vimwiki2org
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = perl>=5.14
+	provides = vimwiki2org
+
+pkgname = vimwiki2org-git
+
