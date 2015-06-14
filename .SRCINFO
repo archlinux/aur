@@ -1,0 +1,15 @@
+pkgbase = ruby-slop-3
+	pkgdesc = Simple Lightweight Option Parsing
+	pkgver = 3.6.0
+	pkgrel = 1
+	url = http://github.com/leejarvis/slop
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = slop-3.6.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/slop-3.6.0.gem
+	sha512sums = 876e5a9413c412648d7dc04472014858a566f923c58a076c7cbd03a347074b3912a97a7b7ed16b1fdefab00e6f322675b60e816dea574b7abbf635abe7c8946b
+
+pkgname = ruby-slop-3
+
