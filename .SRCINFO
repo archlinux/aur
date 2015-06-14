@@ -1,0 +1,29 @@
+pkgbase = deepin-vte
+	pkgdesc = Virtual Terminal Emulator widget for use with GTK2 - with several patches
+	pkgver = 0.28.2
+	pkgrel = 8
+	epoch = 1
+	url = https://developer.gnome.org/vte/
+	arch = i686
+	arch = x86_64
+	groups = deepin-extra
+	license = GPL3
+	makedepends = deepin-pygtk
+	makedepends = intltool
+	makedepends = gobject-introspection
+	makedepends = pygobject2-devel
+	depends = gtk2
+	provides = vte=0.28.2
+	provides = deepin-vte-plus
+	conflicts = vte
+	conflicts = deepin-vte-plus
+	replaces = deepin-vte-plus
+	options = !libtool
+	options = !emptydirs
+	source = http://packages.linuxdeepin.com/deepin/pool/main/v/vte/vte_0.28.2.orig.tar.xz
+	source = http://packages.linuxdeepin.com/deepin/pool/main/v/vte/vte_0.28.2-6deepin7~saucy.debian.tar.gz
+	sha256sums = ee52b91ecab31d0a64399896ce0c3515e579ea8ac212a00eb9b0895c58f001fe
+	sha256sums = b63a344541f0feebddac0232a8d7196d22d4819ec32cbd6cb39e33b2ba50e940
+
+pkgname = deepin-vte
+
