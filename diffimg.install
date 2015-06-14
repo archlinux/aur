@@ -1,0 +1,14 @@
+post_install(){
+    echo "Program diffimg (and man page) has been renamed as DiffImg because it conflicts with graphviz"
+    #which xdg-icon-resource >/dev/null 2>&1 && xdg-icon-resource forceupdate || true
+    echo "update desktop mime database..."
+    update-desktop-database -q
+}
+post_upgrade(){
+    post_install
+}
+post_remove(){
+    #which xdg-icon-resource >/dev/null 2>&1 && xdg-icon-resource forceupdate || true
+    echo "update desktop mime database..."
+    update-desktop-database -q
+}    

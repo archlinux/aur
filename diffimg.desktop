@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=DiffImg
+Comment=Simple image comparison tool
+Exec=DiffImg
+Icon=/usr/share/pixmaps/res/diffimg.ico
+Terminal=false
+StartupNotify=false
+Categories=Application;Graphics

@@ -1,0 +1,22 @@
+pkgbase = diffimg
+	pkgdesc = Simple image comparison tool
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = http://sourceforge.net/projects/diffimg/
+	install = diffimg.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = qt4
+	makedepends = qwt
+	makedepends = opencv
+	depends = qt4
+	depends = qwt
+	depends = opencv
+	source = http://sourceforge.net/projects/diffimg/files/2.0.1/diffimg-2.0.1.zip
+	source = diffimg.desktop
+	md5sums = 1b60f8d121761b8b77fe152a3fbd5639
+	md5sums = 1f924268b20847374b6b260f2b7f1f7d
+
+pkgname = diffimg
+
