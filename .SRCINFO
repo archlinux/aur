@@ -1,0 +1,30 @@
+pkgbase = perl-grok
+	pkgdesc = App::Grok - Does most of grok's heavy lifting
+	pkgver = 0.26
+	pkgrel = 1
+	url = http://search.cpan.org/dist/grok/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl
+	depends = perl-io-socket-ssl
+	depends = perl-perl6-doc
+	depends = perl-perl6-perldoc
+	depends = perl-perl6-perldoc-to-ansi
+	depends = perl-pod-text-ansi
+	depends = perl-pod-xhtml
+	provides = perl-app-grok
+	provides = perl-app-grok-common
+	provides = perl-app-grok-parser-pod5
+	provides = perl-app-grok-parser-pod6
+	provides = perl-app-grok-resource-file
+	provides = perl-app-grok-resource-functions
+	provides = perl-app-grok-resource-spec
+	provides = perl-app-grok-resource-tablet
+	provides = perl-app-grok-resource-u4x
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/H/HI/HINRIK/grok-0.26.tar.gz
+	md5sums = 16e75598958bf3266d10b8f95c4249d8
+
+pkgname = perl-grok
+
