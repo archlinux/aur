@@ -1,0 +1,16 @@
+pkgbase = ruby-psych
+	pkgdesc = Psych is a YAML parser and emitter
+	pkgver = 2.0.13
+	pkgrel = 1
+	url = http://github.com/tenderlove/psych
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = ruby
+	noextract = psych-2.0.13.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/psych-2.0.13.gem
+	sha512sums = d2b54408c3860f7260022d091fbeb8daeec1a206ba5e99c8f2677f68112c24f4bad85c37244b6f6e6efd55e429499f6750b29102aa1c1c79ba1da4963690b9e9
+
+pkgname = ruby-psych
+
