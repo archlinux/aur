@@ -1,7 +1,7 @@
 pkgbase = mt7630-pcie-wifi-dkms
 	pkgdesc = MT7630e PCIe Wifi (DKMS)
 	pkgver = 20140625
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.mediatek.com/en/downloads/mt7630-pcie/
 	install = MT7630e-wifi.install
 	arch = i686
@@ -13,10 +13,12 @@ pkgbase = mt7630-pcie-wifi-dkms
 	source = dkms.conf
 	source = MT7630E-3.15.patch
 	source = MT7630E-4.0.patch
+	source = Makefile
 	md5sums = d8583926d6c8ba8c3a1a8dd0b44a066e
-	md5sums = aa288cf135a28dcb2bc90e8f80ea4f97
+	md5sums = f3537d4e8347cbcfe00a277a8818a458
 	md5sums = 561dc16b3df8f48aa15c2ce1ce1e6d3b
 	md5sums = 2997d0c6492e62f25050e92b3643d853
+	md5sums = d727dd9c28d0831c66c776e9af8993cf
 
 pkgname = mt7630-pcie-wifi-dkms
 
