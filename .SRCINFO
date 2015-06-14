@@ -1,0 +1,15 @@
+pkgbase = perl-expect-simple
+	pkgdesc = Expect::Simple - wrapper around the Expect module
+	pkgver = 0.04
+	pkgrel = 3
+	url = http://search.cpan.org/dist/Expect-Simple/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DJ/DJERIUS/Expect-Simple-0.04.tar.gz
+	md5sums = bf185be42e59996021f088788168f9ab
+
+pkgname = perl-expect-simple
+
