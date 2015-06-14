@@ -3,6 +3,7 @@ pkgbase = paman
 	pkgver = 0.9.4
 	pkgrel = 5
 	url = http://0pointer.de/lennart/projects/paman
+	changelog = ChangeLog
 	arch = i686
 	arch = x86_64
 	license = GPL
