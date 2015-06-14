@@ -1,0 +1,16 @@
+pkgbase = geant4-levelgammadata
+	pkgdesc = Data files for photon evaporation
+	pkgver = 3.1
+	pkgrel = 1
+	url = http://geant4.cern.ch/
+	install = geant4-levelgammadata.install
+	arch = any
+	license = GPL
+	depends = geant4>=10.01
+	source = http://geant4.cern.ch/support/source/G4PhotonEvaporation.3.1.tar.gz
+	source = geant4-levelgammadata.install
+	md5sums = e7870c5ef18ba702e68c22b62233cbb8
+	md5sums = bd1232c6c7ddf00c66e4936fa79a6757
+
+pkgname = geant4-levelgammadata
+
