@@ -1,0 +1,22 @@
+pre_install() {
+  getent group www-data > /dev/null
+  if [ $? -ne 0 ];then
+    echo 'Adding group www-data'
+    groupadd  -r www-data
+  fi
+  id www-data > /dev/null
+  if [ $? -ne 0 ];then
+    echo 'Adding user www-data'
+    useradd -r www-data -g www-data
+  fi
+}
+
+post_install() {
+  echo "Lighttpd2 is installed, start with
+		systemctl start lighttpd2
+		or 
+        /usr/sbin/lighttpd2 -c /etc/lighttpd2/angel.conf or link /etc/sv/lighttpd2 to your 
+        supervised runit directory." 
+}
+
+# vim:set ts=2 sw=2 et:
