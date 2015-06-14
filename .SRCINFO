@@ -1,0 +1,14 @@
+pkgbase = kpdftool
+	pkgdesc = GUI interface for GhostView and ImageMagick for operations with PDF and PostScript
+	pkgver = 0.23
+	pkgrel = 2
+	url = http://kde-apps.org/content/show.php/KPDFTool?content=33194
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qt4
+	source = http://kde-apps.org/CONTENT/content-files/33194-kpdftool-0.23-Qt4.zip
+	md5sums = 243a6fe1da8e942d6e1ab2bc76ec4536
+
+pkgname = kpdftool
+
