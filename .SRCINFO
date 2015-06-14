@@ -1,0 +1,14 @@
+pkgbase = go-goopt
+	pkgdesc = A getopt-like processor of command-line flags.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/droundy/goopt
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = go
+	depends = bash
+
+pkgname = go-goopt
+
