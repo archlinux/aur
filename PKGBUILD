@@ -11,19 +11,19 @@ license=('custom:AVASYS')
 depends=('iscan')
 makedepends=('rpmextract')
 install=gt-s600.install
-
-if [ "$CARCH" = "x86_64" ]
-then
-	_arch=$CARCH
-	md5sums=('9e36fd80b1f8ffa3f658b6a025d5e186')
-	source=(http://a1227.g.akamai.net/f/1227/40484/1d/download.ebz.epson.net/dsc/f/01/00/01/58/35/e7b4314a66167d0b48ef370bb428dd298482cef2/$pkgname-${pkgver//_/-}.$_arch.rpm)
-else
-	_arch=i386
-	md5sums=('0a3a83dbbb2630c5e9453cc78983ab81')
-	source=(http://a1227.g.akamai.net/f/1227/40484/1d/download.ebz.epson.net/dsc/f/01/00/01/58/35/77bf4c0a885f42e920ab9dd0a4ef2404e8863425/$pkgname-${pkgver//_/-}.$_arch.rpm)
-fi
+md5sums_x86_64=('9e36fd80b1f8ffa3f658b6a025d5e186')
+source_x86_64=(http://a1227.g.akamai.net/f/1227/40484/7d/download.ebz.epson.net/dsc/f/01/00/01/58/35/e7b4314a66167d0b48ef370bb428dd298482cef2/iscan-plugin-gt-s600-2.1.2-1.x86_64.rpm)
+md5sums_i686=('0a3a83dbbb2630c5e9453cc78983ab81')
+source_i686=(http://a1227.g.akamai.net/f/1227/40484/7d/download.ebz.epson.net/dsc/f/01/00/01/58/35/77bf4c0a885f42e920ab9dd0a4ef2404e8863425/iscan-plugin-gt-s600-2.1.2-1.i386.rpm)
 
 package() {
+	if [ "$CARCH" = "i686" ]
+	then
+		_arch=i386
+	else
+		_arch=$CARCH
+	fi
+
 	cd "$srcdir"
 	rpmextract.sh "$pkgname-${pkgver//_/-}.$_arch.rpm"
 	mv usr "$pkgdir"
