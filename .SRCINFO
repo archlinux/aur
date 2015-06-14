@@ -1,0 +1,18 @@
+pkgbase = fairyspec-git
+	pkgdesc = Flexible Analysis of IRradiation Yields
+	pkgver = 20140505
+	pkgrel = 1
+	url = http://sourceforge.net/p/fairyspec/code/ci/master/tree/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = gsl
+	depends = fftw
+	depends = gtkmm
+	provides = fairyspec
+	options = !libtool
+	options = !emptydirs
+
+pkgname = fairyspec-git
+
