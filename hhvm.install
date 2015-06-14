@@ -1,0 +1,11 @@
+post_install() {
+	if [[ ! -d run/hhvm ]]; then
+		usr/bin/systemd-tmpfiles --create hhvm.conf
+	fi
+
+    echo  Run 'systemctl start hhvm@server.service' to start the server.
+}
+
+post_upgrade() {
+	post_install
+}
