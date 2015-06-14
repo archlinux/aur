@@ -1,0 +1,22 @@
+pkgbase = herrie
+	pkgdesc = Minimalistic music player for the command line
+	pkgver = 2.2
+	pkgrel = 4
+	url = http://herrie.info
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libmodplug
+	depends = libsndfile
+	depends = libid3tag
+	depends = libxspf
+	depends = libmad
+	depends = curl
+	depends = glib2
+	provides = herrie-git
+	conflicts = herrie-git
+	source = http://herrie.info/distfiles/herrie-2.2.tar.bz2
+	md5sums = 88832b10298ab89473730eb0c93b6ddf
+
+pkgname = herrie
+
