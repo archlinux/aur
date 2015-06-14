@@ -1,19 +1,19 @@
 pkgbase = mingw-w64-libjpeg
 	pkgdesc = JPEG image compression (mingw-w64)
-	pkgver = 9
+	pkgver = 9a
 	pkgrel = 1
 	url = http://www.infai.org/jpeg
 	arch = any
 	license = custom
-	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-configure
 	depends = mingw-w64-crt
 	provides = mingw-w64-libjpeg-turbo
 	conflicts = mingw-w64-libjpeg-turbo
 	options = !libtool
 	options = !strip
 	options = !buildflags
-	source = http://www.ijg.org/files/jpegsrc.v9.tar.gz
-	md5sums = b397211ddfd506b92cd5e02a22ac924d
+	source = http://www.ijg.org/files/jpegsrc.v9a.tar.gz
+	md5sums = 3353992aecaee1805ef4109aadd433e7
 
 pkgname = mingw-w64-libjpeg
 
