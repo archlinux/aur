@@ -1,6 +1,6 @@
 pkgbase = lua51-posix-git
 	pkgdesc = POSIX library for Lua
-	pkgver = 33.0.0.18.ge7dee4d
+	pkgver = 33.2.1.62.g11cc8a2
 	pkgrel = 1
 	url = https://github.com/luaposix/luaposix
 	arch = x86_64

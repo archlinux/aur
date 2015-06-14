@@ -6,7 +6,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=lua51-posix-git
-pkgver=33.0.0.18.ge7dee4d
+pkgver=33.2.1.62.g11cc8a2
 pkgrel=1
 pkgdesc='POSIX library for Lua'
 arch=('x86_64' 'i686')
@@ -22,6 +22,11 @@ _gitname=luaposix
 pkgver() {
   cd "$_gitname"
   git describe --always | sed 's+^v++'| sed 's+-+.+g'
+}
+
+prepare() {
+  cd "$_gitname"
+  sed -i '16,21d' bootstrap.conf
 }
 
 build() {
