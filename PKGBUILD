@@ -2,7 +2,7 @@
 
 pkgname=openbox-theme-surreal
 pkgver=20070916
-pkgrel=2
+pkgrel=3
 pkgdesc='A dark gray theme for Openbox.'
 arch=('any')
 url='http://box-look.org/content/show.php?content=66397'

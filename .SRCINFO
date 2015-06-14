@@ -1,7 +1,7 @@
 pkgbase = openbox-theme-surreal
 	pkgdesc = A dark gray theme for Openbox.
 	pkgver = 20070916
-	pkgrel = 2
+	pkgrel = 3
 	url = http://box-look.org/content/show.php?content=66397
 	arch = any
 	license = GPL3
