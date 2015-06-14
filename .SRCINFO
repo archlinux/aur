@@ -1,0 +1,19 @@
+pkgbase = automake-1.7
+	pkgdesc = A GNU tool for automatically creating Makefiles
+	pkgver = 1.7.9
+	pkgrel = 1
+	url = http://www.gnu.org/software/automake
+	install = automake.install
+	arch = any
+	groups = base-devel
+	license = GPL
+	makedepends = autoconf
+	depends = perl
+	depends = bash
+	provides = automake=1.7
+	options = !emptydirs
+	source = ftp://ftp.gnu.org/gnu/automake/automake-1.7.9.tar.gz
+	md5sums = eb25355e3cf00aac83c580dde970a0b4
+
+pkgname = automake-1.7
+
