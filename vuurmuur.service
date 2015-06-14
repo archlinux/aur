@@ -1,0 +1,13 @@
+# vi: ft=systemd
+[Unit]
+Description=Powerful front-end for iptables 
+After=syslog.target network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/lib/systemd/scripts/vuurmuur start
+ExecStop=/usr/lib/systemd/scripts/vuurmuur stop
+ExecReload=/usr/lib/systemd/scripts/vuurmuur restart
+
+[Install]
+WantedBy=multi-user.target
