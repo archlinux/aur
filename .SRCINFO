@@ -1,0 +1,22 @@
+pkgbase = zthread
+	pkgdesc = A platform-independent, multi-threading and synchronization library for C++
+	pkgver = 2.3.2
+	pkgrel = 1
+	url = http://zthread.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = automake=1.10
+	depends = bash
+	depends = gcc-libs
+	options = !emptydirs
+	options = libtool
+	source = zthread-2.3.2.tar.gz::http://prdownloads.sourceforge.net/zthread/ZThread-2.3.2.tar.gz
+	source = zthread.patch
+	source = https://raw.github.com/freddix/pkgs.old/master/ZThread/ZThread-destdir.patch
+	md5sums = f2782d19b8ed6f1ff2ab8824dd4ba48e
+	md5sums = 060cca98aa08f5ebed17d6a1650ddc07
+	md5sums = bd43a630a11380918e048f471b8f937a
+
+pkgname = zthread
+
