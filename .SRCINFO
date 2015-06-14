@@ -1,6 +1,6 @@
 pkgbase = gcc-multilib-trunk-git
 	pkgdesc = The GNU Compiler Collection developmental snapshot
-	pkgver = 6.0.138554.e919451
+	pkgver = 6.0.139276.6f5a4f4
 	pkgrel = 1
 	url = http://gcc.gnu.org
 	arch = any
@@ -21,11 +21,11 @@ pkgname = gcc-multilib-git
 	pkgdesc = The GNU Compiler Collection - C and C++ frontends for multilib
 	install = gcc.install
 	groups = multilib-devel
-	depends = gcc-libs-multilib-git=6.0.138554.e919451-1
+	depends = gcc-libs-multilib-git=6.0.139276.6f5a4f4-1
 	depends = binutils>=2.25
 	depends = libmpc
-	provides = gcc=6.0.138554.e919451-1
-	provides = gcc-multilib=6.0.138554.e919451-1
+	provides = gcc=6.0.139276.6f5a4f4-1
+	provides = gcc-multilib=6.0.139276.6f5a4f4-1
 	conflicts = gcc
 	options = staticlibs
 
@@ -33,8 +33,8 @@ pkgname = gcc-libs-multilib-git
 	pkgdesc = Runtime libraries shipped by GCC for multilib
 	install = gcc-libs.install
 	depends = glibc>=2.20
-	depends = lib32-gcc-libs-git=6.0.138554.e919451-1
-	provides = gcc-libs=6.0.138554.e919451-1
+	depends = lib32-gcc-libs-git=6.0.139276.6f5a4f4-1
+	provides = gcc-libs=6.0.139276.6f5a4f4-1
 	conflicts = gcc-libs
 	options = !emptydirs
 	options = !strip
@@ -42,14 +42,14 @@ pkgname = gcc-libs-multilib-git
 pkgname = lib32-gcc-libs-git
 	pkgdesc = Runtime libraries shipped by GCC (32-bit)
 	depends = lib32-glibc>=2.20
-	provides = lib32-gcc-libs=6.0.138554.e919451-1
+	provides = lib32-gcc-libs=6.0.139276.6f5a4f4-1
 	conflicts = lib32-gcc-libs
 	options = !emptydirs
 	options = !strip
 
 pkgname = gcc-objc-multilib-git
 	pkgdesc = Objective-C front-end for GCC for multilib
-	depends = gcc-multilib-git=6.0.138554.e919451-1
-	provides = gcc-objc=6.0.138554.e919451-1
+	depends = gcc-multilib-git=6.0.139276.6f5a4f4-1
+	provides = gcc-objc=6.0.139276.6f5a4f4-1
 	conflicts = gcc-objc
 
