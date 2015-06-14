@@ -1,0 +1,17 @@
+pkgbase = ruby-pusher-client
+	pkgdesc = Client for consuming WebSockets from http://pusher.com
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = http://github.com/pusher/pusher-ruby-client
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-websocket
+	depends = ruby-json
+	noextract = pusher-client-0.6.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/pusher-client-0.6.2.gem
+	sha512sums = 1d4a81027f08065c840c89098d562787c73c0f39fa986152bf22ee43fb222b8a26782fc4be3cf01acb9a62c5237cccb8515d2bfc6c4a4d9d1dc53b853599a30d
+
+pkgname = ruby-pusher-client
+
