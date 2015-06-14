@@ -1,0 +1,14 @@
+pkgbase = dawncut
+	pkgdesc = Tool to generate a 3D DAWN scene data clipped with an arbitrary plane.
+	pkgver = 1.54a
+	pkgrel = 3
+	url = http://geant4.kek.jp/~tanaka/DAWN/About_DAWNCUT.html
+	arch = x86_64
+	arch = i686
+	license = unknown
+	depends = dawn
+	source = http://geant4.kek.jp/~tanaka/src/dawncut_1_54a.taz
+	md5sums = 0c9f52f80c3fae6c37c58c6fd79bbb6b
+
+pkgname = dawncut
+
