@@ -1,0 +1,15 @@
+pkgbase = ruby-cabin
+	pkgdesc = Experiments in structured and contextual logging
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/jordansissel/ruby-cabin
+	arch = any
+	license = Apache License (2.0)
+	depends = ruby
+	noextract = cabin-0.7.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/cabin-0.7.1.gem
+	sha512sums = 6d99e7bdcaaa30f350e997e663d7f2a992326ed36b29ae7afb125bb135207c538ed2b886191669c34f771da97f95712542105c952ca107e8dae3b9410e654259
+
+pkgname = ruby-cabin
+
