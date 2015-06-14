@@ -1,7 +1,7 @@
 pkgbase = redeemer
 	pkgdesc = 3d shooting game
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://hippo.nipax.cz/download.cz.php?id=65
 	arch = i686
 	license = GPL-2
