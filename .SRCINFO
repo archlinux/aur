@@ -1,0 +1,16 @@
+pkgbase = vim-c
+	pkgdesc = C/C++ IDE -- Write and run programs. Insert statements, idioms, comments etc.
+	pkgver = 6.1.1
+	pkgrel = 2
+	url = http://www.vim.org/scripts/script.php?script_id=213
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = GPL2
+	depends = vim-vim-support>=2.3
+	provides = vim-c-support
+	source = vim-c-6.1.1.zip::http://www.vim.org/scripts/download_script.php?src_id=21803
+	sha256sums = 431a24b4548ed74314f517daca18e687a6b6ed39ef40a5df2fee77e2468bd663
+
+pkgname = vim-c
+
