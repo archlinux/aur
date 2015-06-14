@@ -1,0 +1,24 @@
+pkgbase = perl-bash-completion
+	pkgdesc = Bash::Completion - Extensible system to provide bash completion
+	pkgver = 0.008
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Bash-Completion/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	checkdepends = perl-test-deep
+	depends = perl-list-moreutils
+	depends = perl-module-pluggable
+	optdepends = perl-bash-completion-plugins-: install plugins that you need
+	provides = perl-app-bashcomplete
+	provides = perl-bash-completion-plugin
+	provides = perl-bash-completion-plugins-bashcomplete
+	provides = perl-bash-completion-plugins-perldoc
+	provides = perl-bash-completion-request
+	provides = perl-bash-completion-utils
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/ME/MELO/Bash-Completion-0.008.tar.gz
+	md5sums = fcb7e1c405d1a193fb7fa8cbe22fda37
+
+pkgname = perl-bash-completion
+
