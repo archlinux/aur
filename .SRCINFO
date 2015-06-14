@@ -1,0 +1,20 @@
+pkgbase = gerbv-git
+	pkgdesc = An open source Gerber file (RS-274X only) viewer
+	pkgver = r1310.9ef643e
+	pkgrel = 1
+	url = http://gerbv.geda-project.org/
+	install = gerbv-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gettext
+	depends = gtk2
+	optdepends = cairo: for better graphics
+	provides = gerbv
+	conflicts = gerbv
+	source = gerbv::git://git.geda-project.org/gerbv.git
+	md5sums = SKIP
+
+pkgname = gerbv-git
+
