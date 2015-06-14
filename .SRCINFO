@@ -1,0 +1,18 @@
+pkgbase = tufao-git
+	pkgdesc = An asynchronous web framework for C++ built on top of Qt
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/vinipsmaker/tufao
+	arch = i686
+	arch = x86_64
+	license = LGPL2
+	makedepends = cmake
+	depends = qt5-base
+	provides = tufao
+	conflicts = tufao
+	options = debug
+	source = tufao-git::git+https://github.com/vinipsmaker/tufao.git#branch=master
+	md5sums = SKIP
+
+pkgname = tufao-git
+
