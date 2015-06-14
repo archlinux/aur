@@ -1,0 +1,16 @@
+pkgbase = ruby-hooks
+	pkgdesc = Generic hooks with callbacks for Ruby.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = http://nicksda.apotomo.de/2010/09/hooks-and-callbacks-for-ruby-but-simple/
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-uber
+	noextract = hooks-0.4.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/hooks-0.4.0.gem
+	sha512sums = 9bf9c2d9910781cb814798bdd3c17fc706a9e151a47225f8e10612ffa5df54f0ec3a0a495adab448a5d1aa5d00e47f4bcdcff5e4a7d3de31d22e50497520c6c5
+
+pkgname = ruby-hooks
+
