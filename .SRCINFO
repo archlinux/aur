@@ -1,0 +1,19 @@
+pkgbase = ruby-ftw
+	pkgdesc = For The Web. Trying to build a solid and sane API for client and server web stuff. Client and Server operations for HTTP, WebSockets, SPDY, etc.
+	pkgver = 0.0.42
+	pkgrel = 1
+	url = http://github.com/jordansissel/ruby-ftw
+	arch = any
+	license = Apache License (2.0)
+	depends = ruby
+	depends = ruby-cabin
+	depends = ruby-http_parser.rb
+	depends = ruby-addressable
+	depends = ruby-backports
+	noextract = ftw-0.0.42.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/ftw-0.0.42.gem
+	sha512sums = a4cb0ca683a95f460c039a04f947ab68cc9e64ec00643a78fa0322e557f1babe4aae67bba5954d67a46035c21a8fd8711184c5f9216b90486fe73e7fcbecda17
+
+pkgname = ruby-ftw
+
