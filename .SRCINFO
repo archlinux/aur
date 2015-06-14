@@ -1,0 +1,15 @@
+pkgbase = outspline-development
+	pkgdesc = Development component for Outspline
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://kynikos.github.io/outspline/
+	arch = any
+	license = GPL3
+	depends = outspline
+	conflicts = organism-development
+	replaces = organism-development
+	source = http://downloads.sourceforge.net/project/outspline/development/outspline-development-0.8.1.tar.bz2
+	sha256sums = 8b81c7fe3168ff83f5b1ccb198a5c225abb5026c90449dda327e5b4966c65d3d
+
+pkgname = outspline-development
+
