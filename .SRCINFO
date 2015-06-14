@@ -1,0 +1,13 @@
+pkgbase = vim-misc-xolox
+	pkgdesc = Miscellaneous auto-load Vim scripts
+	pkgver = 1.17.4
+	pkgrel = 2
+	url = http://peterodding.com/code/vim/misc
+	arch = any
+	license = MIT
+	conflicts = vim-misc-xolox-git
+	source = vim-misc-xolox-1.17.4.zip::http://www.vim.org/scripts/download_script.php?src_id=23119
+	sha256sums = ee1c5026afedf584db8bdd49e9020e9ab5cd3e2f05af34a75530b1737e6f1f88
+
+pkgname = vim-misc-xolox
+
