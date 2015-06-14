@@ -1,8 +1,8 @@
 pkgbase = libkdeaccessibilityclient-git
-	pkgdesc = A screen magnifier. KF5 Frameworks branch (GIT version)
+	pkgdesc = Helper to make writing accessibility tools easier. Used by screen readers for example. (GIT version)
 	pkgver = r242.f98b97b
 	pkgrel = 1
-	url = http://kde.org/applications/utilities/libkdeaccessibilityclient
+	url = https://projects.kde.org/projects/playground/accessibility/libkdeaccessibilityclient
 	arch = x86_64
 	license = GPL
 	license = LGPL
