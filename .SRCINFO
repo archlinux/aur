@@ -1,0 +1,14 @@
+pkgbase = python-pybtex
+	pkgdesc = A BibTeX-compatible bibliography processor in Python
+	pkgver = 0.18
+	pkgrel = 1
+	url = http://pybtex.org/
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	source = http://pypi.python.org/packages/source/p/pybtex/pybtex-0.18.tar.bz2
+	md5sums = 306457c18eb861ec3f644a7e2df98ae4
+
+pkgname = python-pybtex
+
