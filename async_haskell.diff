@@ -1,0 +1,21 @@
+diff --git a/syntax_checkers/haskell.vim b/syntax_checkers/haskell.vim
+index 45e97db..dcc6db2 100644
+--- a/syntax_checkers/haskell.vim
++++ b/syntax_checkers/haskell.vim
+@@ -13,6 +13,7 @@ if exists("loaded_haskell_syntax_checker")
+     finish
+ endif
+ let loaded_haskell_syntax_checker = 1
++let async_haskell_syntax_checker = 1
+ 
+ "bail if the user doesnt have ghc-mod installed
+ if !executable("ghc-mod")
+@@ -34,7 +35,7 @@ function! SyntaxCheckers_haskell_GetLocList()
+                 \ '%f:%l:%c: %trror: %m,%f:%l:%c: %tarning: %m,%f:%l:%c:%m,'.
+                 \ '%E%f:%l:%c:,%Z%m,'
+ 
+-    return SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat })
++    return SyntasticMake({ 'checker': 'haskell', 'makeprg': makeprg, 'errorformat': errorformat })
+ endfunction
+ 
+ function! SyntaxCheckers_lhaskell_GetLocList()

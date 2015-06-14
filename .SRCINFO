@@ -1,0 +1,21 @@
+pkgbase = vim-syntastic-async-git
+	pkgdesc = Syntax checking hacks for vim
+	pkgver = r674.65091e5
+	pkgrel = 1
+	url = https://github.com/daniel-walker/syntastic
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = WTFPLv2
+	makedepends = git
+	makedepends = rake
+	depends = vim-runtime
+	depends = vim-async-command-git
+	provides = vim-syntastic
+	source = vim-syntastic-async-git::git+https://github.com/daniel-walker/syntastic.git
+	source = async_haskell.diff
+	md5sums = SKIP
+	md5sums = 050b24f11c4fbcb8a9a606628e0ff47a
+
+pkgname = vim-syntastic-async-git
+
