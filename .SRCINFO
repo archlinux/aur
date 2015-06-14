@@ -1,0 +1,15 @@
+pkgbase = geheim
+	pkgdesc = Simple password manager which tries to follow the Unix principles, written in Bash and using Tar and GnuPG to store passwords.
+	pkgver = 0.1.1
+	pkgrel = 2
+	url = http://malte-bublitz.de/geheim
+	arch = any
+	license = BSD
+	makedepends = make
+	depends = gnupg
+	depends = tar
+	source = geheim-0.1.1.tar.gz::https://github.com/malte70/geheim/archive/0.1.1.tar.gz
+	sha256sums = e3153bcd7ccbeb7ed37446073f6a61c3ecc2afd7ddbb4950a6b45ee441a5dbcc
+
+pkgname = geheim
+
