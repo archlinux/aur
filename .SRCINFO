@@ -1,0 +1,19 @@
+pkgbase = perl-perl6-perldoc
+	pkgdesc = Perl6::Perldoc - Use Perl 6 documentation in a Perl 5 program
+	pkgver = 0.000009
+	pkgrel = 1
+	url = http://search.cpan.org/~dconway/Perl6-Perldoc/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl
+	depends = perl
+	provides = perl-perl6-perldoc-parser
+	provides = perl-perl6-perldoc-to-text
+	provides = perl-perl6-perldoc-to-xhtml
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DC/DCONWAY/Perl6-Perldoc-0.000009.tar.gz
+	md5sums = 2ad1abf8df325d2c5bd5b2b4d235676d
+
+pkgname = perl-perl6-perldoc
+
