@@ -1,3 +1,5 @@
+pkg/
 src/
-gnucash-*.tar.bz2
+gnucash-*.pkg.tar.xz
 gnucash-*.src.tar.gz
+gnucash-*.tar.bz2
