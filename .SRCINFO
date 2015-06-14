@@ -1,0 +1,16 @@
+pkgbase = kbproto-git
+	pkgdesc = X11 XKB extension wire protocol - Git version
+	pkgver = 1.0.6.7.r68.g5e40da7
+	pkgrel = 1
+	url = http://cgit.freedesktop.org/xorg/proto/kbproto/
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = xorg-util-macros
+	provides = kbproto=1.0.6.7.r68.g5e40da7
+	conflicts = kbproto
+	source = git://anongit.freedesktop.org/xorg/proto/kbproto
+	md5sums = SKIP
+
+pkgname = kbproto-git
+
