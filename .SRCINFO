@@ -1,0 +1,14 @@
+pkgbase = logapp
+	pkgdesc = Text output coloring utility
+	pkgver = 0.15
+	pkgrel = 1
+	url = http://sourceforge.net/projects/logapp
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://downloads.sourceforge.net/project/logapp/logapp/logapp-0.15/logapp-0.15.tar.gz
+	md5sums = 6f27a959730687160c197b09e43bdad6
+
+pkgname = logapp
+
