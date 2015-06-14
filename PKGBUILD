@@ -2,18 +2,21 @@
 
 _gitname=CuteMarkEd
 pkgname=cutemarked-git
-pkgver=0.10.1.r94.g73adcab
-pkgrel=1
+pkgver=0.0.0
+pkgrel=2
 pkgdesc="Qt Markdown Editor"
 url="https://github.com/cloose/CuteMarkEd"
 arch=('i686' 'x86_64')
 license=( "GPL2" )
-depends=( "qt5-webkit" "hunspell" "discount>=2.1.7" )
+depends=( "qt5-webkit" "hunspell" "discount>=2.1.7" "desktop-file-utils" "hicolor-icon-theme")
 makedepends=( 'git' 'qt5-tools' )
 provides=('cutemarked')
 conflicts=('cutemarked')
-source=( "git://github.com/cloose/CuteMarkEd.git" )
-md5sums=('SKIP')
+source=( "git://github.com/cloose/CuteMarkEd.git"
+         "$pkgname.install")
+md5sums=('SKIP'
+         'c864bddb8fb532fe2ac27cd20de55b10')
+install=$pkgname.install
 
 pkgver() {
   cd $srcdir/$_gitname
