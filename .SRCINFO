@@ -3,7 +3,6 @@ pkgbase = coverlovin-funk
 	pkgver = 20130603
 	pkgrel = 1
 	url = https://launchpad.net/coverlovin
-	changelog = changelog
 	arch = any
 	license = GPL3
 	depends = python2

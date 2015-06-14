@@ -14,7 +14,6 @@ depends=('python2' 'python2-simplejson' 'mutagen')
 provides=('coverlovin')
 conflicts=('coverlovin')
 replaces=('coverlovin')
-changelog=changelog
 source=('https://launchpadlibrarian.net/141574171/coverlovin.py')
 md5sums=('2206e9f4f394cca8735669b3b75240d7')
 
