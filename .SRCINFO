@@ -1,0 +1,15 @@
+pkgbase = ruby-simple_oauth
+	pkgdesc = Simply builds and verifies OAuth headers
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/laserlemon/simple_oauth
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = simple_oauth-0.3.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/simple_oauth-0.3.1.gem
+	sha512sums = 206512ba643b60de3601d11add691c0f6386ea62e8516651d525b5956ca7d8009e167f8acd8375ba07ae8ec598dcf115bc6813c4028a836827b618db9ce6939a
+
+pkgname = ruby-simple_oauth
+
