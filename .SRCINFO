@@ -1,0 +1,25 @@
+pkgbase = perl-xml-mini
+	pkgdesc = XML::Mini - Perl implementation of the XML::Mini XML create/parse interface
+	pkgver = 1.38
+	pkgrel = 2
+	url = http://search.cpan.org/~pdeegan/XML-Mini/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl
+	depends = perl
+	provides = perl-xml-mini-document
+	provides = perl-xml-mini-element
+	provides = perl-xml-mini-element-cdata
+	provides = perl-xml-mini-element-comment
+	provides = perl-xml-mini-element-doctype
+	provides = perl-xml-mini-element-entity
+	provides = perl-xml-mini-element-header
+	provides = perl-xml-mini-node
+	provides = perl-xml-mini-treecomponent
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PD/PDEEGAN/XML-Mini-1.38.tar.gz
+	md5sums = 0262295a6812f4ea1a4c13aefa9067c4
+
+pkgname = perl-xml-mini
+
