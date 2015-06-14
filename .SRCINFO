@@ -1,0 +1,17 @@
+pkgbase = ruby-fog-json
+	pkgdesc = JSON parsing for fog providers
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://github.com/fog/fog-json
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-fog-core
+	depends = ruby-multi_json
+	noextract = fog-json-1.0.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/fog-json-1.0.2.gem
+	sha512sums = 7b57c2caa8f8ccccf2225d308ab77b35ed00f43937086d59c9d5431b221d6e2a7f2b79db9dc9e924399db213844066fc9a147fab1c177e2468c8609bc4b8ad84
+
+pkgname = ruby-fog-json
+
