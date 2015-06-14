@@ -1,0 +1,13 @@
+post_install() {
+    systemctl daemon-reload
+
+    echo "You should edit /etc/systemd/system/getty@.service.d/solarized.conf if you wish to use the light theme"
+}
+
+post_upgrade() {
+     systemctl daemon-reload
+}
+
+post_remove() {
+     systemctl daemon-reload
+}
