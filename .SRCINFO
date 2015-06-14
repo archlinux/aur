@@ -1,0 +1,16 @@
+pkgbase = perl-padre-plugin-viewinbrowser
+	pkgdesc = Padre::Plugin::ViewInBrowser - view selected doc in default browser for Padre
+	pkgver = 0.07
+	pkgrel = 2
+	url = http://search.cpan.org/~fayland/Padre-Plugin-ViewInBrowser/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl
+	depends = perl-padre
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/F/FA/FAYLAND/Padre-Plugin-ViewInBrowser-0.07.tar.gz
+	md5sums = e8509f979f94712ecfec702bce2c1e96
+
+pkgname = perl-padre-plugin-viewinbrowser
+
