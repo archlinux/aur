@@ -1,0 +1,70 @@
+# Maintainer: andmars < andreas.marschall @ unitybox.de >
+# Contributor: PyroPeter < googlemail.com @ abi1789 >
+
+pkgname=hplip-plugin
+pkgver=3.15.6
+pkgrel=1
+pkgdesc="Binary plugin for HPs hplip printer driver library"
+arch=('i686' 'x86_64')
+url="http://hplipopensource.com/node/309"
+license=('custom:proprietary')
+depends=("hplip>=$pkgver" 'hplip<3.15.7')
+backup=(var/lib/hp/hplip.state)
+#source=("http://www.openprinting.org/download/printdriver/auxfiles/HP/plugins/hplip-$pkgver-plugin.run")
+source=("http://hplipopensource.com/hplip-web/plugin/hplip-$pkgver-plugin.run")
+md5sums=('43460d5e203237c4f79526ae17647981')
+
+prepare() {
+	sh hplip-$pkgver-plugin.run --target "$srcdir/hplip-$pkgver-plugin" --noexec
+}
+
+build(){
+    # Untargziping the makeself selfextracting archive
+    cd $srcdir
+    sh hplip-$pkgver-plugin.run --tar xvf
+}
+
+package(){
+    if [ $CARCH = "i686" ]; then
+        _arch='x86_32'
+    elif [ $CARCH = "x86_64" ]; then
+        _arch='x86_64'
+    fi
+
+    # Create folders
+    install -d $pkgdir/usr/share/hplip/data/firmware
+    install -d $pkgdir/usr/share/hplip/fax/plugins
+    install -d $pkgdir/usr/share/hplip/prnt/plugins
+    install -d $pkgdir/usr/share/hplip/scan/plugins
+    install -d $pkgdir/usr/share/licenses/hplip-plugin
+    install -d $pkgdir/var/lib/hp
+
+    # Copy files
+    cd $srcdir
+    install -m644 plugin.spec                  $pkgdir/usr/share/hplip/
+    install -m644 hp_laserjet_*.fw.gz          $pkgdir/usr/share/hplip/data/firmware/
+    install -m755 fax_marvell-"$_arch".so      $pkgdir/usr/share/hplip/fax/plugins/
+    install -m755 hbpl1-"$_arch".so            $pkgdir/usr/share/hplip/prnt/plugins/
+    install -m755 lj-"$_arch".so               $pkgdir/usr/share/hplip/prnt/plugins/
+    install -m755 bb_*-"$_arch".so             $pkgdir/usr/share/hplip/scan/plugins/
+    install -m644 license.txt                  $pkgdir/usr/share/licenses/hplip-plugin/
+
+    # Create hplip.state used by hplip-tools
+    cat << EOF > hplip.state
+[plugin]
+installed = 1
+eula = 1
+version = $pkgver
+EOF
+    install -m644 hplip.state $pkgdir/var/lib/hp
+
+    # Create symlinks
+    for f in $(find $pkgdir/usr/share/hplip -type f -name "*.so"); do
+        cd $pkgdir/usr/share/hplip
+        cd $(dirname $f)
+        link_name="$(basename $f | cut -d- -f1).so"
+        ln -s $(basename $f) $link_name
+    done
+}
+
+# Note: to check the install, perform: hp-diagnose_plugin
