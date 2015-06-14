@@ -1,0 +1,16 @@
+pkgbase = perl-perl6-perldoc-to-ansi
+	pkgdesc = Perl6::Perldoc::To::Ansi - ANSI-colored text renderer for Perl6::Perldoc
+	pkgver = 0.11
+	pkgrel = 2
+	url = http://search.cpan.org/~hinrik/Perl6-Perldoc-To-Ansi/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl
+	depends = perl-perl6-perldoc
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/H/HI/HINRIK/Perl6-Perldoc-To-Ansi-0.11.tar.gz
+	md5sums = da4ac20196daf242452d2da1ed404adc
+
+pkgname = perl-perl6-perldoc-to-ansi
+
