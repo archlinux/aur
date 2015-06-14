@@ -1,0 +1,15 @@
+pkgbase = gtk-theme-futura
+	pkgdesc = A flat gtk theme inspired by Windows8 interface.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://nale12.deviantart.com/art/Futura-1-1-0-356531951
+	arch = any
+	license = GPL3
+	depends = gnome-themes-standard
+	depends = gtk-engines
+	depends = gtk-engine-murrine
+	source = http://fc04.deviantart.net/fs71/f/2013/059/9/1/futura_1_1_0_by_nale12-d5w9ptb.zip
+	sha1sums = 372e5752958173fa9cee0fc06130ea241043a54a
+
+pkgname = gtk-theme-futura
+
