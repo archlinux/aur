@@ -11,7 +11,11 @@ depends=('gtk2' 'desktop-file-utils' 'nss' 'libxt' 'dbus-glib' 'alsa-lib')
 install=${pkgname}.install
 arch=('i686' 'x86_64')
 source=("http://cznic.dl.sourceforge.net/project/${pkgname}/${pkgver/.0}/${pkgname/firefox}-${pkgver}.en-US.linux-${CARCH}.rpm")
-md5sums=('15ddd9e80e162917474313496d195ac7')
+if [[ "${CARCH}" == "x86_64" ]]; then
+  md5sums=('15ddd9e80e162917474313496d195ac7')
+elif [[ "${CARCH}" == "i686" ]]; then
+  md5sums=('b50b7d4244752d07e9a9b630c010a6b9')
+fi
 
 build()
 {

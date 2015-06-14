@@ -15,7 +15,6 @@ pkgbase = lightfirefox
 	depends = dbus-glib
 	depends = alsa-lib
 	source = http://cznic.dl.sourceforge.net/project/lightfirefox/38/light-38.0.en-US.linux-.rpm
-	md5sums = 15ddd9e80e162917474313496d195ac7
 
 pkgname = lightfirefox
 
