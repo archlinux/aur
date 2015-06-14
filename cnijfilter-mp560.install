@@ -1,0 +1,19 @@
+post_install() {
+	ln -s /usr/lib/cups/filter/pstocanonijmp560 /usr/lib/cups/filter/pstocanonij
+
+	if [ -x /sbin/ldconfig ]; then
+		/sbin/ldconfig
+	fi
+}
+post_upgrade() {
+	if [ -x /sbin/ldconfig ]; then
+                /sbin/ldconfig
+        fi
+}
+post_remove() {
+	rm /usr/lib/cups/filter/pstocanonij
+
+        if [ -x /sbin/ldconfig ]; then
+                /sbin/ldconfig
+        fi
+}

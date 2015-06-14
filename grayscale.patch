@@ -1,0 +1,15 @@
+--- canonmp560.ppd	2010-10-09 11:52:34.706399908 +0200
++++ canonmp560.ppd	2010-10-09 11:57:01.831203052 +0200
+@@ -68,6 +68,12 @@
+ *ColorModel rgb/RGB: "<</cupsColorOrder 0/cupsColorSpace 1/cupsCompression 0/cupsBitsPerColor 8>>setpagedevice"
+ *CloseUI: *ColorModel
+ 
++*OpenUI *CNGrayscale/Grayscale: Boolean
++*DefaultCNGrayscale: False
++*CNGrayscale True/Yes: True
++*CNGrayscale False/No: False
++*CloseUI: *CNGrayscale
++
+ *OpenUI *PageSize/Page Size: PickOne
+ *DefaultPageSize: A4
+ *PageSize Letter/Letter 8.5"x11" 215.9x279.4mm: "<</CNPageSizeName(Letter)/PageSize[612 792]/ImagingBBox null>>setpagedevice"

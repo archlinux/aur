@@ -1,0 +1,12 @@
+diff -aur cnijfilter-source-3.20-1/cngpij/cngpij/bjcups.c cnijfilter-source-3.20-1.new/cngpij/cngpij/bjcups.c
+--- cnijfilter-source-3.20-1/cngpij/cngpij/bjcups.c	2009-06-11 06:10:32.000000000 +0200
++++ cnijfilter-source-3.20-1.new/cngpij/cngpij/bjcups.c	2015-01-21 23:07:04.416457760 +0100
+@@ -20,7 +20,7 @@
+ #if HAVE_CONFIG_H
+ #include	<config.h>
+ #endif	// HAVE_CONFIG_H
+-
++#define _IPP_PRIVATE_STRUCTURES 1
+ #include <cups/cups.h>
+ #include <cups/language.h>
+ #include <cups/ppd.h>

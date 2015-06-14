@@ -1,0 +1,22 @@
+diff -aur cnijfilter-source-3.20-1/backend/src/cnij_backend_common.c cnijfilter-source-3.20-1.new/backend/src/cnij_backend_common.c
+--- cnijfilter-source-3.20-1/backend/src/cnij_backend_common.c	2009-05-27 07:46:41.000000000 +0200
++++ cnijfilter-source-3.20-1.new/backend/src/cnij_backend_common.c	2011-08-29 10:14:36.237186319 +0200
+@@ -38,6 +38,7 @@
+ // CUPS Header
+ #include <cups/cups.h>
+ #include <cups/ipp.h>
++#include <cups/ppd.h>
+ 
+ // Header file for CANON
+ #include "cnij_backend_common.h"
+diff -aur cnijfilter-source-3.20-1/cngpijmon/src/bjcupsmon_cups.c cnijfilter-source-3.20-1.new/cngpijmon/src/bjcupsmon_cups.c
+--- cnijfilter-source-3.20-1/cngpijmon/src/bjcupsmon_cups.c	2009-04-24 08:12:49.000000000 +0200
++++ cnijfilter-source-3.20-1.new/cngpijmon/src/bjcupsmon_cups.c	2011-08-29 10:17:27.667192257 +0200
+@@ -19,6 +19,7 @@
+ 
+ /*** Includes ***/
+ #include <cups/cups.h>
++#include <cups/ppd.h>
+ #include <cups/language.h>
+ #include <sys/types.h>
+ #include <unistd.h>

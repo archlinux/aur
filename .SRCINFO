@@ -1,0 +1,42 @@
+pkgbase = cnijfilter-mp560
+	pkgdesc = Canon IJ Printer Driver (MP560 series)
+	pkgver = 3.20
+	pkgrel = 4
+	url = http://software.canon-europe.com/products/0010756.asp
+	install = cnijfilter-mp560.install
+	arch = i686
+	license = custom
+	makedepends = autoconf>=2.13
+	makedepends = automake>=1.6
+	makedepends = tar
+	makedepends = make
+	makedepends = gcc
+	depends = patch
+	depends = libcups
+	depends = cups
+	depends = popt
+	depends = ghostscript
+	depends = gsfonts
+	depends = atk>=1.9.0
+	depends = gtk2>=2.8.0
+	depends = pango>=1.12.3
+	depends = libpng>=1.2.8
+	depends = libtiff
+	depends = cairo>=1.0.2
+	depends = libxml2>=2.6.24
+	depends = fontconfig>=2.3.0
+	depends = libxinerama
+	conflicts = cnijfilter-common
+	source = http://gdlp01.c-wss.com/gds/7/0100002367/01/cnijfilter-source-3.20-1.tar.gz
+	source = grayscale.patch
+	source = cups.patch
+	source = libpng15.patch
+	source = cnij.patch
+	md5sums = 0a40b46016511d59d1d0a3d3d9a653dd
+	md5sums = f3d01db16494ae9ca16d9be8e9cd193b
+	md5sums = abd0c2ee747e20558adcf327bb3a8633
+	md5sums = e75b117cd7a399c0861c4e8e10c30294
+	md5sums = 20e5efa2627f7176a3aa5984e44f1807
+
+pkgname = cnijfilter-mp560
+
