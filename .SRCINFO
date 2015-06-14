@@ -1,0 +1,19 @@
+pkgbase = perl-test-reporter
+	pkgdesc = Test::Reporter - sends test results to cpan-testers@perl.org
+	pkgver = 1.60
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Test-Reporter/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl
+	depends = perl>=5.10.0
+	provides = perl-test-reporter-transport
+	provides = perl-test-reporter-transport-file
+	provides = perl-test-reporter-transport-null
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DA/DAGOLDEN/Test-Reporter-1.60.tar.gz
+	sha256sums = 604810ca4ba2171dd1c0369c2f918450304eec7ecc858c81e297bc569903980d
+
+pkgname = perl-test-reporter
+
