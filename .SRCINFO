@@ -1,0 +1,15 @@
+pkgbase = otf-source-han-code-jp
+	pkgdesc = Japanese OpenType font for developers by mixing Source Han Sans and Source Code Pro
+	pkgver = 1.002
+	pkgrel = 1
+	url = https://github.com/adobe-fonts/source-han-code-jp
+	install = otf-source-han-code-jp.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://github.com/adobe-fonts/source-han-code-jp/archive/1.002R.tar.gz
+	md5sums = 1d37c3c58bbcdb0c64dd76be983ddd91
+
+pkgname = otf-source-han-code-jp
+
