@@ -1,0 +1,16 @@
+pkgbase = jdk6-docs
+	pkgdesc = Documentation for Oracle Java 6 Development Kit
+	pkgver = 6u30
+	pkgrel = 1
+	url = https://www.java.com/en/download/faq/java_6.xml
+	arch = any
+	license = custom:Oracle
+	optdepends = java-environment>=6: Compile and run the examples
+	options = !strip
+	source = http://download.oracle.com/otn-pub/java/jdk/6u30-b12/jdk-6u30-apidocs.zip
+	source = LICENSE
+	md5sums = a8805b35af0d9b2aa14fe0d1212355b7
+	md5sums = fd05f7d59d6335a1e3f12706ae59dbdb
+
+pkgname = jdk6-docs
+
