@@ -1,0 +1,15 @@
+pkgbase = ruby-slop
+	pkgdesc = Simple Lightweight Option Parsing
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = http://github.com/leejarvis/slop
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = slop-4.1.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/slop-4.1.0.gem
+	sha512sums = 5d894afcfba7313ecee0f429089a0584a55ce14d4e969f8f5ae8dde0db7653829c453b55f66bc2a6570499c0ff24b94401f95d2af6b65e1eb1eb012ff3036f40
+
+pkgname = ruby-slop
+
