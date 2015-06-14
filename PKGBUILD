@@ -1,5 +1,5 @@
-# Maintainer: Pyro Devil <p dot devil at gmail dot com>
-# Contributor: Jefferson Gonzalez <jgmdev@gmail.com>
+# Maintainer: Jefferson Gonzalez <jgmdev@gmail.com>
+# Contributor: Pyro Devil <p dot devil at gmail dot com>
 
 pkgname=codelite-git
 _gitname=codelite
