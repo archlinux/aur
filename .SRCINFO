@@ -1,0 +1,18 @@
+pkgbase = tamanoir-svn
+	pkgdesc = Image processing tool to remove dust from picture scans
+	pkgver = 281
+	pkgrel = 1
+	url = http://code.google.com/p/tamanoir/
+	install = tamanoir.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = opencv
+	makedepends = qt4
+	depends = opencv
+	depends = qt4
+	source = tamanoir.desktop
+	md5sums = 72f4fab857d9ddb7ec39693657b21060
+
+pkgname = tamanoir-svn
+

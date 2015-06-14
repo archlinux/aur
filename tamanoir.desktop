@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Terminal=false
+Icon[en_US]=/usr/share/pixmaps/tamanoir.png
+Exec=tamanoir
+Name[en_US]=Tamanoir
+Name=Tamanoir
+Icon=/usr/share/pixmaps/tamanoir.png
+StartupNotify=false
+Categories=Application;Graphics;Photography;
