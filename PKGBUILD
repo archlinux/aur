@@ -8,12 +8,12 @@ pkgname=nvidia-340xx-rt
 pkgver=340.76
 _extramodules=extramodules-3.18-rt
 _kernver="$(cat /lib/modules/${_extramodules}/version)"
-pkgrel=2
+pkgrel=3
 pkgdesc="NVIDIA 340xx drivers for linux-rt."
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-rt>=3.18' 'linux-rt<3.19' "nvidia-340xx-utils")
-makedepends=('linux-rt>=3.18' 'linux-rt<3.19')
+depends=('linux-rt>=4.0' 'linux-rt<4.1' "nvidia-340xx-utils")
+makedepends=('linux-rt>=4.0' 'linux-rt<4.1')
 conflicts=('nvidia-96xx' 'nvidia-173xx' 'nvidia-rt' 'nvidia-last-rt')
 license=('custom')
 install=nvidia.install

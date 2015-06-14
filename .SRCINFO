@@ -1,16 +1,16 @@
 pkgbase = nvidia-340xx-rt
 	pkgdesc = NVIDIA 340xx drivers for linux-rt.
 	pkgver = 340.76
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.nvidia.com/
 	install = nvidia.install
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = linux-rt>=3.18
-	makedepends = linux-rt<3.19
-	depends = linux-rt>=3.18
-	depends = linux-rt<3.19
+	makedepends = linux-rt>=4.0
+	makedepends = linux-rt<4.1
+	depends = linux-rt>=4.0
+	depends = linux-rt<4.1
 	depends = nvidia-340xx-utils
 	conflicts = nvidia-96xx
 	conflicts = nvidia-173xx
