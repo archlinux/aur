@@ -1,0 +1,14 @@
+pkgbase = mini-xfwm4-theme
+	pkgdesc = Very thin theme for Xfce to keep space for windows.
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://xfce-look.org/content/show.php?content=154240
+	arch = any
+	license = GPL3
+	depends = xfwm4>=4.8
+	optdepends = xfce4-notifyd>=0.2
+	source = mini-xfwm4-theme-1.2.tar.gz::https://github.com/cedl38/mini-xfwm4-theme/archive/v1.2.tar.gz
+	sha256sums = a3b768c857d1ce2324843263f79fd0b7e81767b4506d80d0b68e57811a81ef4d
+
+pkgname = mini-xfwm4-theme
+
