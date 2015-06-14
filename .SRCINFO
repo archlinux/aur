@@ -1,0 +1,19 @@
+pkgbase = avr-libc-svn
+	pkgdesc = The C runtime library for the AVR family of microcontrollers
+	pkgver = 2454
+	pkgrel = 1
+	url = http://savannah.nongnu.org/projects/avr-libc/
+	arch = any
+	license = BSD
+	makedepends = svn
+	depends = avr-gcc
+	provides = avr-libc
+	conflicts = avr-libc
+	options = !strip
+	options = libtool
+	options = staticlibs
+	source = avr-libc::svn+http://svn.savannah.nongnu.org/svn/avr-libc/trunk/avr-libc/
+	md5sums = SKIP
+
+pkgname = avr-libc-svn
+
