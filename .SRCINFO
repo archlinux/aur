@@ -1,0 +1,29 @@
+pkgbase = pdfstudio
+	pkgdesc = Review, annotate, and edit PDF Documents
+	pkgver = 10.0.0
+	pkgrel = 3
+	url = http://www.qoppa.com/pdfstudio/
+	install = pdfstudio.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = pacman>=4.2.0
+	depends = java-runtime
+	depends = desktop-file-utils
+	provides = pdfstudio
+	conflicts = pdfstudio8
+	conflicts = pdfstudio9
+	source = pdfstudio.desktop
+	source = pdfstudio.install
+	source = pdfstudio.png
+	sha256sums = 576e81cf3f760370f435060d765b1e58044e594eaa2099dd0dcbba5e92c59958
+	sha256sums = b82acfb50e1e15a43c54aba7a0712b6c710c10ae74280a26a451343720e965e3
+	sha256sums = 0a3c1c337a22228f3df28412ca65d45d0d8067b508cf7b1cf93810fc17c9b447
+	source_i686 = http://www.qoppa.com/files/pdfstudio/demo/downloads/version10/PDFStudio_v10_0_0_linux.deb
+	sha256sums_i686 = 3e7a01b0cdf970e744fa9c0798abbb21fe87bb99164a5e6c84278fd879eb85f6
+	source_x86_64 = http://www.qoppa.com/files/pdfstudio/demo/downloads/version10/PDFStudio_v10_0_0_linux64.deb
+	depends_x86_64 = gcc-libs-multilib
+	sha256sums_x86_64 = b6690292f1b0dc67794f0f17d81541d85edd140ca0714b626bbc885263759198
+
+pkgname = pdfstudio
+
