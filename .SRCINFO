@@ -1,0 +1,18 @@
+pkgbase = scid
+	pkgdesc = A Free Chess Database Application
+	pkgver = 4.6.1
+	pkgrel = 2
+	url = http://scid.sourceforge.net
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = python
+	depends = tk
+	optdepends = snack: for sound support
+	optdepends = tkimg: for using some alternate sets of pieces
+	options = !emptydirs
+	source = http://sourceforge.net/projects/scid/files/Scid/Scid%204.6/scid-v4.6.1.zip
+	md5sums = cb241937ce0df20f5b75893da4743971
+
+pkgname = scid
+
