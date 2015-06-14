@@ -1,0 +1,14 @@
+pkgbase = ruby-backports
+	pkgdesc = Backports of Ruby features for older Ruby.
+	pkgver = 3.6.4
+	pkgrel = 1
+	url = http://github.com/marcandre/backports
+	arch = any
+	depends = ruby
+	noextract = backports-3.6.4.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/backports-3.6.4.gem
+	sha512sums = 589e25994675acc96568c94abd5af8dcdd02550e280693158f54e2519ca61b04be11026c5c73a9f8316b1959b15e330acba8454f72a8a5b1f2d6fe984c99d90c
+
+pkgname = ruby-backports
+
