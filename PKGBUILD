@@ -1,29 +1,28 @@
 # Maintainer: jason ryan <jasonwryan@gmail.com>
-# Contributor: TDY <tdy@archlinux.info>
+# Contributor: TDY <tdy@gmx.com>
 
 pkgname=perl-text-autoformat
-_perlname=Text-Autoformat
-pkgver=1.71
+_cpanname=Text-Autoformat
+pkgver=1.72
 pkgrel=1
 pkgdesc="A Perl module for automatic text wrapping and reformatting"
 arch=('any')
-url="http://search.cpan.org/dist/Text-Autoformat/"
+url="https://metacpan.org/pod/Text::Autoformat"
 license=('GPL' 'PerlArtistic')
 depends=('perl-text-reform')
 options=('!emptydirs')
-source=("https://cpan.metacpan.org/authors/id/N/NE/NEILB/${_perlname}-${pkgver}.tar.gz")
-sha256sums=('80ea45fcadfb6f4846d01e67db7800a4a2e2bdca2dfc9cf04859d98cda3db42d')
+source=(https://cpan.metacpan.org/authors/id/N/NE/NEILB/${_cpanname}-${pkgver}.tar.gz)
+md5sums=('ebb9d3b1c74776870d65d2b66046876e')
 
 build() {
-  cd "$srcdir/${_perlname}-${pkgver}"
+  cd "$srcdir/${_cpanname}-${pkgver}"
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
   make
 }
 
 package() {
-  cd "$srcdir/${_perlname}-${pkgver}"
+  cd "$srcdir/${_cpanname}-${pkgver}"
   make install DESTDIR="$pkgdir"
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
 # vim:set ts=2 sw=2 et:

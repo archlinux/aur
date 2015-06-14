@@ -1,15 +1,15 @@
 pkgbase = perl-text-autoformat
 	pkgdesc = A Perl module for automatic text wrapping and reformatting
-	pkgver = 1.71
+	pkgver = 1.72
 	pkgrel = 1
-	url = http://search.cpan.org/dist/Text-Autoformat/
+	url = https://metacpan.org/pod/Text::Autoformat
 	arch = any
 	license = GPL
 	license = PerlArtistic
 	depends = perl-text-reform
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/N/NE/NEILB/Text-Autoformat-1.71.tar.gz
-	sha256sums = 80ea45fcadfb6f4846d01e67db7800a4a2e2bdca2dfc9cf04859d98cda3db42d
+	source = https://cpan.metacpan.org/authors/id/N/NE/NEILB/Text-Autoformat-1.72.tar.gz
+	md5sums = ebb9d3b1c74776870d65d2b66046876e
 
 pkgname = perl-text-autoformat
 
