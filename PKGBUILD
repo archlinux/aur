@@ -8,7 +8,7 @@ true && pkgname=('cnijfilter-common' 'cnijfilter-mp550')
 _pkgname=cnijfilter
 
 pkgver=3.20
-pkgrel=7
+pkgrel=8
 _pkgreview=1
 
 pkgdesc="Canon Printer Driver (For Multifunction MP550 series)"
@@ -32,11 +32,12 @@ source=("http://files.canon-europe.com/files/soft37280/Software/IJ_Linux_Printer
 	"cups.patch"
 	"libpng15.patch"
 	"mychanges.patch")
-sha1sums=('4d4307845331ab9f0f4ea2ea3b9d1256f2beb91e'
-          '1275088852e2c2a6840358ed49658c084f965630'
-          'bb9d063ff971dc134bf92557070555fd2607e01f'
-          'ab4a736d6dfabed6d7e4386497261bd7bf9b6108'
-          '0e1c4ff15b4847e5d3168928b3ac3f2fa1353bfe')
+sha512sums=('28a82d08d3b8a233b89a17e0e029510fc5b3cede97300eb71a9af03c9a15cca4355167d8706e66c34eb47b6c98202a80d73f80626803c9ff6fa41bdd8c87f235'
+            'b75cdbdadac5fb396458dc9f14529c5e39a4fa47f97cd6a21a69b0dbac73f1b8dd90780068f6a348fcfb15939d0866dde1a1cf1ff7faaf0c443d2205a242ccd5'
+            'f1f8cc44d7892eb50b44e0fe9d5be877fa5d8f8783aedf494d739eee20c147befac4f4776959f42cdb9cfd9f766522635fc2aae2626fdaf0c4465226a66dcc0e'
+            '0d8310867f45721150a870170172d3a0688bfba0267f627a630c105ff965d31f25dbcc31d3795874325bcb8eaeee395bf32b0648a743ff663dea6f977ab9070e'
+            '0e9dd821289f34da20e7d978583edeccde2cbfca8f0f78273bd2f4de63f7eab4e017d5c60395bc229fceea85c64c916e04be9b227b9af018b9d387e26a5a2b99')
+
 prepare() {
   cd ${srcdir}
   tar xzf ${_pkgname}-source-${pkgver}-${_pkgreview}.tar.gz
