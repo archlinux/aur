@@ -1,0 +1,18 @@
+pkgbase = perl-std
+	pkgdesc = The STD.pm6 command line multitool
+	pkgver = 20101111
+	pkgrel = 2
+	url = http://search.cpan.org/~sorear/STD/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl
+	depends = perl-moose
+	depends = perl-yaml-libyaml
+	depends = perl-file-sharedir
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SO/SOREAR/STD-20101111.tar.gz
+	md5sums = a8ebd8d331d14789cf39e58eeada85e4
+
+pkgname = perl-std
+
