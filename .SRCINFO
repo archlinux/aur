@@ -1,0 +1,21 @@
+pkgbase = deepin-game-center
+	pkgdesc = Game center for Linuxdeepin
+	pkgver = 1.0.1.20141230144448
+	pkgrel = 1
+	url = https://gitcafe.com/Deepin/deepin-game
+	install = deepin-game-center.install
+	arch = any
+	groups = deepin-extra
+	license = GPL3
+	makedepends = deepin-gettext-tools
+	depends = python2
+	source = http://packages.linuxdeepin.com/deepin/pool/main/d/deepin-game-center/deepin-game-center_1.0.1+20141230144448~4e7bbbfda6.tar.gz
+	sha256sums = cefa9548840757af0fa6c07b98924de2a9860327d85b0d86f4cca710ff8f8a3f
+
+pkgname = deepin-game-center
+	depends = python2-deepin-ui
+	depends = flashplugin
+	depends = hicolor-icon-theme
+	depends = python2-scipy
+	depends = python2-jswebkit
+
