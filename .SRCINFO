@@ -1,0 +1,22 @@
+pkgbase = deepin-screenshot
+	pkgdesc = Easy-to-use screenshot tool for linuxdeepin desktop environment
+	pkgver = 3.0.20150508154858
+	pkgrel = 1
+	url = https://gitcafe.com/Deepin/deepin-screenshot
+	install = deepin-screenshot.install
+	arch = any
+	groups = deepin-extra
+	license = GPL3
+	makedepends = deepin-gettext-tools
+	source = http://packages.linuxdeepin.com/deepin/pool/main/d/deepin-screenshot/deepin-screenshot_3.0+20150508154858~a5ed48140f.tar.gz
+	sha256sums = be7b95af98b0830c107c20814e9ac25419defe951a211499ee7530b3d7d44e5a
+
+pkgname = deepin-screenshot
+	depends = deepin-menu
+	depends = deepin-qml-widgets
+	depends = deepin-pygtk
+	depends = python2
+	depends = python2-pyqt5
+	depends = python2-wnck
+	depends = xpybutil
+
