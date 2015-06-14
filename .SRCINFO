@@ -1,0 +1,33 @@
+pkgbase = php-wxwidgets-git
+	pkgdesc = PHP bindings to the cross-platform wxWidgets GUI Toolkit library.
+	pkgver = v3.0.2.0.r5.gb1ea750
+	pkgrel = 1
+	url = http://wxphp.org
+	install = php-wxwidgets-git.install
+	arch = i686
+	arch = x86_64
+	license = PHP
+	makedepends = mesa
+	makedepends = glu
+	makedepends = libxt
+	makedepends = gstreamer
+	makedepends = sdl
+	makedepends = sdl_sound
+	makedepends = php
+	makedepends = webkitgtk
+	depends = gtk3
+	depends = libgl
+	depends = libxxf86vm
+	depends = libsm
+	depends = sdl
+	depends = sdl_sound
+	depends = gstreamer
+	depends = php
+	depends = webkitgtk
+	source = http://downloads.sourceforge.net/wxwindows/wxWidgets-3.0.2.tar.bz2
+	source = git://github.com/wxphp/wxphp.git
+	sha1sums = 6461eab4428c0a8b9e41781b8787510484dea800
+	sha1sums = SKIP
+
+pkgname = php-wxwidgets-git
+
