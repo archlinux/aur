@@ -2,8 +2,8 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-dbus2vdr
-pkgver=23
-pkgrel=2
+pkgver=25
+pkgrel=1
 _vdrapi=2.2.0
 pkgdesc="Expose some methods via DBus to control the vdr"
 url="https://github.com/flensrocker/vdr-plugin-dbus2vdr"
@@ -18,7 +18,7 @@ source=("https://github.com/flensrocker/vdr-plugin-dbus2vdr/archive/v$pkgver.tar
 backup=('etc/dbus-1/system.d/de.tvdr.vdr.conf'
         "etc/vdr/conf.avail/50-$_plugname.conf"
         "var/lib/vdr/plugins/$_plugname/network.conf")
-md5sums=('818e18b98fff2b2a937e2368226529b9'
+md5sums=('bdbcd274939f8ee292fb74e220c5f166'
          '52f40de6d5a5ca72528f5d65f573ccd2')
 
 build() {
