@@ -1,0 +1,16 @@
+pkgbase = ruby-rubysdl
+	pkgdesc = The simple ruby extension library to use SDL
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = http://www.kmc.gr.jp/~ohai/rubysdl.en.html
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = ruby
+	noextract = rubysdl-2.2.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rubysdl-2.2.0.gem
+	sha512sums = 92eb5f1fb5d28a1feb213ed78dfd0978b9027e471ff773e954963c6d392ae330d224c87d09e85e1d7e66e6c565d1da6abd93f343ea7e2c1e40869cdfd21b0712
+
+pkgname = ruby-rubysdl
+
