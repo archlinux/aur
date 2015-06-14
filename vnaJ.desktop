@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=vnaJ
+Comment=MiniVNA MAX6 network analyzer software 
+Icon=vnaJ
+Exec=vnaJ
+Terminal=false
+Type=Application
+Categories=Development;HamRadio;
+StartupNotify=true

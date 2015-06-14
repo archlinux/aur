@@ -1,0 +1,24 @@
+pkgbase = vna_j
+	pkgdesc = HAMRADIO MiniVNA MAX6 network analyser software
+	pkgver = 2.8.6f
+	pkgrel = 1
+	url = http://dl2sba.com/index.php?option=com_content&view=article&id=39&Itemid=29
+	install = vna_j.install
+	arch = any
+	license = custom
+	makedepends = imagemagick
+	depends = java-environment
+	depends = hicolor-icon-theme
+	depends = bash
+	optdepends = xdg-utils: desktop & menu shortcut support
+	source = http://download.dl2sba.com/vnaj/2.8.6f/vnaJ.2.8.6f.jar
+	source = vnaJ.sh
+	source = vnaJ.desktop
+	source = http://download.dl2sba.com/vnaj/2.8.6f/logo.ico
+	md5sums = 9f126a96eedfe17788e097f12c9c40e4
+	md5sums = 305963e8e79cbab0741a535207020e2c
+	md5sums = e1f40625326a65e5df479f4eae742041
+	md5sums = 9f3eed2cc9491779155f111d9e3d6bfd
+
+pkgname = vna_j
+
