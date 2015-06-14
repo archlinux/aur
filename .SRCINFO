@@ -1,0 +1,21 @@
+pkgbase = gog-train-fever
+	pkgdesc = Railroad-focused business simulation game with procedural content and a sophisticated city simulation.
+	pkgver = 1.1.0.3
+	pkgrel = 1
+	url = http://www.gog.com/game/train_fever
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = GOG.com EULA
+	depends = gcc-libs>=5.1.0
+	depends = libvorbis>=1.3.5
+	depends = openal>=1.16.0-1
+	depends = freealut>=1.1.0
+	depends = sdl2>=2.0.3
+	depends = glu>=9.0.0
+	options = !strip
+	source = gog://gog_train_fever_1.1.0.3.tar.gz
+	md5sums = 67aa246494420f7f92a09a79447138af
+
+pkgname = gog-train-fever
+
