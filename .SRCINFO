@@ -1,0 +1,22 @@
+pkgbase = perl-module-extractuse
+	pkgdesc = Module::ExtractUse - Find out what modules are used
+	pkgver = 0.33
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Module-ExtractUse
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-parse-recdescent
+	depends = perl-pod-strip
+	depends = perl-test-deep
+	depends = perl-test-nowarnings
+	depends = perl-test-pod
+	depends = perl-test-pod-coverage
+	depends = perl-universal-require
+	provides = perl-module-extractuse-grammar
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DO/DOMM/Module-ExtractUse-0.33.tar.gz
+	sha256sums = a65e3fcd8aee997e0c0eb0a826175758f47d5873fceddcfa450ab881ad1ce59f
+
+pkgname = perl-module-extractuse
+
