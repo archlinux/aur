@@ -17,24 +17,18 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/proto"
-
   git describe --long | sed 's/-/.r/;s/-/./g'
 }
 
 build() {
   cd "$srcdir/proto"
-
   ./autogen.sh --prefix=/usr
-
   make
 }
 
 package() {
   cd "$srcdir/proto"
-
   make DESTDIR="$pkgdir" install
-
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-
   sed -i 's/\t/    /g' "$pkgdir/usr/lib/python3.3/site-packages/xcbgen/xtypes.py"
 }
