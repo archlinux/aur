@@ -1,0 +1,8 @@
+[Desktop Entry]
+Exec=/usr/lib/jvm/java-6-jre/jre/bin/policytool
+Icon=sun-java-jre6
+Name=Java 6 Policy Settings
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Settings;Java;
