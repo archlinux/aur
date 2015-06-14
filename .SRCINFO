@@ -1,0 +1,17 @@
+pkgbase = ruby-uglifier
+	pkgdesc = Ruby wrapper for UglifyJS JavaScript compressor
+	pkgver = 2.7.1
+	pkgrel = 1
+	url = http://github.com/lautis/uglifier
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-execjs
+	depends = ruby-json
+	noextract = uglifier-2.7.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/uglifier-2.7.1.gem
+	sha512sums = 36725b6b60d0a57160d623604a05d89414bf5c9b5eb0a2d58282dd6b62e34c012d7c25af32f1ea748091000f92a478ff87e228f7eb7e1947eafcd3bb2b4bfd59
+
+pkgname = ruby-uglifier
+
