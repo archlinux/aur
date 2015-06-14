@@ -1,0 +1,19 @@
+pkgbase = perl-tk-difftext
+	pkgdesc = TK-DiffText - Perl/Tk composite widget for colorized diffs
+	pkgver = 0.19
+	pkgrel = 1
+	url = http://search.cpan.org/dist/perl-tk-difftext/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-tk
+	makedepends = perl-algorithm-diff
+	makedepends = perl-tie-tk-text
+	depends = perl-tk
+	depends = perl-algorithm-diff
+	depends = perl-tie-tk-text
+	source = http://search.cpan.org/CPAN/authors/id/M/MJ/MJCARMAN/Tk-DiffText-0.19.zip
+	options = !emptydirs
+
+pkgname = perl-tk-difftext
+
