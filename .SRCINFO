@@ -1,7 +1,7 @@
 pkgbase = mt7630-pcie-wifi-dkms
 	pkgdesc = MT7630e PCIe Wifi (DKMS)
-	pkgver = 20140625
-	pkgrel = 6
+	pkgver = 13.c326378
+	pkgrel = 1
 	url = http://www.mediatek.com/en/downloads/mt7630-pcie/
 	install = MT7630e-wifi.install
 	arch = i686
@@ -9,16 +9,10 @@ pkgbase = mt7630-pcie-wifi-dkms
 	license = GPL
 	depends = dkms
 	optdepends = linux-headers: If running standard kernel, otherwise find matching headers for your kernel
-	source = http://www.mediatek.com/AmazonS3/Downloads/linux/MT7630E_Wi-Fi_BT_Source_V3.14_20140625_v2.tar.gz
+	source = mt7630e::git+https://github.com/benjarobin/MT7630E.git#tag=v2.3.1
 	source = dkms.conf
-	source = MT7630E-3.15.patch
-	source = MT7630E-4.0.patch
-	source = Makefile
-	md5sums = d8583926d6c8ba8c3a1a8dd0b44a066e
-	md5sums = f3537d4e8347cbcfe00a277a8818a458
-	md5sums = 561dc16b3df8f48aa15c2ce1ce1e6d3b
-	md5sums = 2997d0c6492e62f25050e92b3643d853
-	md5sums = d727dd9c28d0831c66c776e9af8993cf
+	md5sums = SKIP
+	md5sums = 3703bf6c0d619bfda618a5d7c98179e3
 
 pkgname = mt7630-pcie-wifi-dkms
 
