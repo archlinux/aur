@@ -1,7 +1,7 @@
 # Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
 _pkgname=slinp
 pkgname=$_pkgname-git
-pkgver=13.06.3.g540504d
+pkgver=15.03
 pkgrel=1
 pkgdesc="PDF presentation tool chest"
 arch=('i686' 'x86_64')
