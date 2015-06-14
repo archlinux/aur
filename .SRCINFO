@@ -1,0 +1,34 @@
+pkgbase = codelite-git
+	pkgdesc = Open-source, cross platform IDE for the C/C++ programming languages
+	pkgver = 8.0.1.r162.g36ea786
+	pkgrel = 1
+	url = http://www.codelite.org/
+	install = codelite-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	makedepends = cmake
+	depends = wxgtk
+	depends = curl
+	depends = webkitgtk2
+	depends = libssh
+	depends = xterm
+	depends = python2
+	depends = libedit
+	depends = ncurses
+	depends = valgrind
+	optdepends = graphviz: callgraph visualization
+	optdepends = lldb-svn: debugger used by the lldb plugin
+	provides = codelite
+	conflicts = codelite
+	conflicts = codelite-bin
+	conflicts = codelite4-svn
+	noextract = wxgui.zip
+	source = git://github.com/eranif/codelite.git
+	source = http://repos.codelite.org/wxCrafterLibs/wxgui.zip
+	md5sums = SKIP
+	md5sums = 093485fcae62073ca8d0ba6ff3a5cb69
+
+pkgname = codelite-git
+
