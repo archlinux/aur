@@ -1,0 +1,21 @@
+pkgbase = perl-test-reporter-transport-metabase
+	pkgdesc = Test::Reporter::Transport::Metabase - Metabase transport for Test::Reporter
+	pkgver = 1.999008
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Test-Reporter-Transport-Metabase/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-json
+	makedepends = perl-cpan-testers-report
+	depends = perl-cpan-testers-report
+	depends = perl-json
+	depends = perl-metabase-client-simple
+	depends = perl-metabase-fact
+	depends = perl-test-reporter
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DA/DAGOLDEN/Test-Reporter-Transport-Metabase-1.999008.tar.gz
+	md5sums = b3a03287e42b3e2ba95b8937d65ce597
+
+pkgname = perl-test-reporter-transport-metabase
+
