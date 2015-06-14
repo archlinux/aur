@@ -7,7 +7,7 @@ pkgbase = bitsquare
 	license = AGPL3
 	provides = bitsquare
 	source_x86_64 = https://github.com/bitsquare/bitsquare/releases/download/v0.2.1/bitsquare-0.2.1.deb
-	sha256sums_x86_64 = 103913e6ec4d42a26069646c892a87bb14b9e88afd6bbe8a2d18ba99bff18c45
+	md5sums_x86_64 = b327f6c83e34b85dbd0f2b4926f4f3aa
 
 pkgname = bitsquare
 
