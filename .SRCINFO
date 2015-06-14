@@ -1,0 +1,19 @@
+pkgbase = i3lock-wrapper
+	pkgdesc = A simple wrapper around i3lock which blurs the current desktop
+	pkgver = 2015.04.28.g93a888c
+	pkgrel = 2
+	url = https://github.com/ashinkarov/i3-extras/
+	arch = any
+	groups = i3
+	license = ISC
+	makedepends = git
+	depends = i3lock
+	depends = scrot
+	depends = imagemagick
+	optdepends = bc: for using the -l option
+	optdepends = ghostscript: for using the -l option
+	source = git+https://github.com/ashinkarov/i3-extras
+	md5sums = SKIP
+
+pkgname = i3lock-wrapper
+
