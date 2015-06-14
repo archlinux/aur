@@ -1,0 +1,19 @@
+pkgbase = ogmrip-flac
+	pkgdesc = Plugin which adds support for the FLAC audio codec for ogmrip
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://ogmrip.sourceforge.net/en/plugins.html
+	arch = i686
+	arch = x86_64
+	groups = ogmrip
+	license = LGPL
+	depends = ogmrip>=0.13
+	depends = mplayer>=0.92
+	depends = flac
+	source = http://downloads.sourceforge.net/sourceforge/ogmrip/ogmrip-flac-0.2.tar.gz
+	source = http://downloads.sourceforge.net/project/ogmrip/ogmrip-flac/0.2/README
+	md5sums = 98f769b1a24bd69e563bb0408f161ea4
+	md5sums = e638a00b8ffe49071ccf496fa4143f28
+
+pkgname = ogmrip-flac
+
