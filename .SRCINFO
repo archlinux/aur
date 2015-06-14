@@ -1,0 +1,18 @@
+pkgbase = perl-pod-xhtml
+	pkgdesc = Pod::Xhtml - Generate well-formed XHTML documents from POD format documentation
+	pkgver = 1.61
+	pkgrel = 3
+	url = http://search.cpan.org/~bbc/Pod-Xhtml/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl
+	depends = perl-test-assertions
+	depends = perl-uri
+	provides = perl-pod-hyperlink-bounceurl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BB/BBC/Pod-Xhtml-1.61.tar.gz
+	md5sums = 51e17843d0c91592ed10d21dec5ed60f
+
+pkgname = perl-pod-xhtml
+
