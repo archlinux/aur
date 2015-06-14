@@ -1,0 +1,18 @@
+pkgbase = clhep
+	pkgdesc = A Class library for High Energy Physics
+	pkgver = 2.2.0.4
+	pkgrel = 1
+	url = http://proj-clhep.web.cern.ch/
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = cmake
+	makedepends = texlive-core
+	depends = bash
+	depends = gcc-libs
+	options = !emptydirs
+	source = http://proj-clhep.web.cern.ch/proj-clhep/DISTRIBUTION/tarFiles/clhep-2.2.0.4.tgz
+	md5sums = 71d2c7c2e39d86a0262e555148de01c1
+
+pkgname = clhep
+
