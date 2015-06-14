@@ -1,12 +1,12 @@
 pkgbase = flip
 	pkgdesc = Utility program to convert text files between UNIX or Mac newlines and DOS linefeed + newlines.
 	pkgver = 20130224
-	pkgrel = 3
-	url = http://www-ccrma.stanford.edu/~craig/utility/flip/
+	pkgrel = 4
+	url = http://ccrma.stanford.edu/~craig/utility/flip/
 	arch = i686
 	arch = x86_64
 	license = unknown
-	source = http://www-ccrma.stanford.edu/~craig/utility/flip/flip.cpp
+	source = http://ccrma.stanford.edu/~craig/utility/flip/flip.cpp
 	md5sums = 21dc9256584eceffcfc27e137b3f8bc5
 
 pkgname = flip
