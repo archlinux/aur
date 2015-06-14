@@ -1,0 +1,11 @@
+--- Makefile	2012-02-02 11:49:43.000000000 -0500
++++ ../../Makefile	2012-02-02 11:50:42.000000000 -0500
+@@ -14,7 +14,7 @@
+ WISH = wish
+ 
+ ### Directory where to install executable files
+-INSTALL_DIR = /usr/bin
++INSTALL_DIR = $(DESTDIR)/usr/bin
+ 
+ 
+ 

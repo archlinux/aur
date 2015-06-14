@@ -1,0 +1,43 @@
+--- configure	2010-08-21 08:22:18.000000000 -0500
++++ ../../configure	2012-02-02 11:48:23.000000000 -0500
+@@ -11,24 +11,28 @@
+ 
+ ##### INPUT #####
+ #----- C++ compiler name
+-echo "Input C++ compiler name (e.g. g++, no default)."
+-echo -n " :"
+-set cpp_compiler=$<
++#echo "Input C++ compiler name (e.g. g++, no default)."
++#echo -n " :"
++set cpp_compiler=g++
++#echo ""
+ 
+ #----- Optimization option of the C++ compiler
+-echo     "Input optimization option (e.g. -O2, no default)"
+-echo -n  " :"
+-set optimize=$<
++#echo     "Input optimization option (e.g. -O2, no default)"
++#echo -n  " :"
++set optimize=-O2
++#echo ""
+ 
+ #----- Input Tcl/Tk window shell name
+-echo    "Input Tcl/Tk window shell name"
+-echo -n "  (e.g. wish, no default): "
+-set wish=$<
++#echo    "Input Tcl/Tk window shell name"
++#echo -n "  (e.g. wish, no default): "
++set wish=wish
++#echo ""
+ 
+ #----- Input directory name to install dawn and DAWN_GUI
+-echo    "Input directory to install executable files"
+-echo -n "  (e.g. /usr/local/bin, no default ): "
+-set install_dir=$<
++#echo    "Input directory to install executable files"
++#echo -n "  (e.g. /usr/local/bin, no default ): "
++set install_dir=/usr/bin
++#echo ""
+ 
+ 
+ ##### DELETE #####

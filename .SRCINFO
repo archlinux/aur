@@ -1,0 +1,22 @@
+pkgbase = dawn
+	pkgdesc = 3D geometrical postscript renderer
+	pkgver = 3.90b
+	pkgrel = 3
+	url = http://geant4.kek.jp/~tanaka/DAWN/About_DAWN.html
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = texlive-core
+	depends = tcsh
+	depends = tk
+	depends = libx11
+	depends = gv
+	source = http://geant4.kek.jp/~tanaka/src/dawn_3_90b.tgz
+	source = dawn-3.90b-no-interactive.patch
+	source = make_DESTDIR.patch
+	md5sums = 3017f35db5c1ba7f7e95bff6f2d8bd46
+	md5sums = 7bb06c81f2f1ac5475939a40dd7cbc80
+	md5sums = 4128a7eb7ea6395e754cc3a02259425e
+
+pkgname = dawn
+
