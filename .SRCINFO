@@ -1,0 +1,16 @@
+pkgbase = bgpq3
+	pkgdesc = bgp filtering automation for Cisco and Juniper routers
+	pkgver = 0.1.29
+	pkgrel = 1
+	url = https://github.com/snar/bgpq3
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = glibc
+	source = https://github.com/snar/bgpq3/archive/v0.1.29.tar.gz
+	source = bgpq3_man_install.patch
+	sha512sums = 41ddbac345cc1b9da79b35bd6beda1ec803f675b1aa2504737f0d964a9e93388dd885d227ffd70141e83fb53e6b65ec0afc43535bfa402d20579c88148306029
+	sha512sums = 70abefa578c24f31aef6bedce19f427760fbb0c90fca09bcea977291b65b93f0d6b153aebbf9ea549b338f2c52902c5e5cf055124229be7d0745c7a37b268526
+
+pkgname = bgpq3
+

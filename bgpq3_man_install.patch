@@ -1,0 +1,14 @@
+diff -aur bgpq3-0.1.29.pristine/Makefile.in bgpq3-0.1.29.new/Makefile.in
+--- bgpq3-0.1.29.pristine/Makefile.in	2015-05-04 13:30:06.000000000 +0200
++++ bgpq3-0.1.29.new/Makefile.in	2015-06-14 16:34:00.317278051 +0200
+@@ -31,8 +31,8 @@
+ 
+ install: bgpq3
+ 	${INSTALL} -c -s -m 755 bgpq3 @bindir@
+-	if test ! -d @prefix@/man/man8 ; then mkdir -p @prefix@/man/man8 ; fi
+-	${INSTALL} -m 644 bgpq3.8 @prefix@/man/man8
++	if test ! -d @mandir@/man8 ; then mkdir -p @mandir@/man8 ; fi
++	${INSTALL} -m 644 bgpq3.8 @mandir@/man8
+ 
+ depend: 
+ 	makedepend -- $(CFLAGS) -- $(SRCS)
