@@ -2,7 +2,7 @@
 
 _pkgname=fs-uae
 pkgname=fs-uae-devel
-pkgver=2.5.31dev
+pkgver=2.5.32dev
 pkgrel=1
 pkgdesc="Cross-platform Amiga emulator based on UAE/WinUAE (development version)."
 arch=("i686" "x86_64")
@@ -15,7 +15,7 @@ source=("http://fs-uae.net/devel/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 #source=("http://ppa.launchpad.net/fengestad/devel/ubuntu/pool/main/f/${_pkgname}/${_pkgname}_${pkgver}.orig.tar.gz")
 provides=("fs-uae")
 conflicts=("fs-uae")
-md5sums=('f1c35b4d21475d60e6cee2c1aa87230d')
+md5sums=('0ff24bf59a3442312ff8c063d663d9e0')
 
 #MAKEFLAGS="-j1"
 
