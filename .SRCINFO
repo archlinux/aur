@@ -1,7 +1,7 @@
 pkgbase = craftbukkit-spigot
 	pkgdesc = CraftBukkit & Spigot Minecraft servers
 	pkgver = 1.8.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.spigotmc.org/
 	install = craftbukkit-spigot.install
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = craftbukkit-spigot
 	conflicts = bukkit
 	conflicts = craftbukkit
 	conflicts = craftbukkit-stable
-	source = https://hub.spigotmc.org/jenkins/job/BuildTools/38/artifact/target/BuildTools.jar
+	source = https://hub.spigotmc.org/jenkins/job/BuildTools/40/artifact/target/BuildTools.jar
 	source = minecraft.service
 	source = craftbukkit.service
 	source = spigot.service

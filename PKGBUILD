@@ -2,8 +2,8 @@
 
 pkgname=craftbukkit-spigot
 pkgver=1.8.7
-pkgbuild=38
-pkgrel=1
+pkgbuild=40
+pkgrel=2
 pkgdesc="CraftBukkit & Spigot Minecraft servers"
 arch=(any)
 url="http://www.spigotmc.org/"
@@ -21,7 +21,7 @@ source=("https://hub.spigotmc.org/jenkins/job/BuildTools/${pkgbuild}/artifact/ta
         "stop_server.sh"
         "backup.sh"
         "readme.md")
-md5sums=('162fb5b90a51fca3408cd17aa885e819'
+md5sums=('b106aba4468638bc80df962d0ab6397d'
          '8ac1ef7ff8be744fa0312ebb608fda42'
          '5bddd0dff4f3d25fd86c240f81078174'
          '32c6641316b0adc7e1f63e3cc8033700'
