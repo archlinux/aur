@@ -1,0 +1,16 @@
+pkgbase = ruby-ffi
+	pkgdesc = Ruby FFI
+	pkgver = 1.9.8
+	pkgrel = 1
+	url = http://wiki.github.com/ffi/ffi
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = ruby
+	noextract = ffi-1.9.8.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/ffi-1.9.8.gem
+	sha512sums = 0b5f2b7045fdf3daaab9d97a69a64d76fa3487666ca6031d1d9672a5020224421d4250fca45a7f5b3551ec7cb8e7075ea19bd38f1966f477a0ed42fc89137eca
+
+pkgname = ruby-ffi
+
