@@ -1,0 +1,12 @@
+diff -aur burp-2.0.16-pristine/Makefile.in burp-2.0.16-new/Makefile.in
+--- burp-2.0.16-pristine/Makefile.in	2015-03-28 05:21:54.000000000 -0500
++++ burp-2.0.16-new/Makefile.in	2015-04-12 15:27:27.900119024 -0500
+@@ -102,7 +102,7 @@
+ 	$(MKDIR) $(DESTDIR)$(sbindir)
+ 	$(MKDIR) $(DESTDIR)$(sysconfdir)
+ 	$(MKDIR) $(DESTDIR)$(sysconfdir)/CA-client
+-	$(MKDIR) $(DESTDIR)/var/run
++	$(MKDIR) $(DESTDIR)/run
+ 	$(MKDIR) $(DESTDIR)/var/spool/burp
+ 	$(MKDIR) $(DESTDIR)$(sysconfdir)/clientconfdir
+ 	$(MKDIR) $(DESTDIR)$(sysconfdir)/clientconfdir/incexc
