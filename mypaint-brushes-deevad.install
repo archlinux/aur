@@ -1,0 +1,51 @@
+pre_install() {
+{
+echo "# mypaint-brushes-deevad start."
+echo "Group: deevad-v6
+deevad-v6/rough
+deevad-v6/4H_pencil
+deevad-v6/2B_pencil
+deevad-v6/pen
+deevad-v6/kneaded_eraser
+deevad-v6/kneaded_eraser_large
+deevad-v6/large_hard_eraser
+deevad-v6/thin_hard_eraser
+deevad-v6/basic_digital_brush
+deevad-v6/basic_digital_brush_smudging
+deevad-v6/basic_digital_knife
+deevad-v6/basic_digital_knife_smudging
+deevad-v6/detail_brush_large
+deevad-v6/detail_brush_large_glazing
+deevad-v6/detail_brush_thin
+deevad-v6/detail_brush_thin_glazing
+deevad-v6/rigger_brush
+deevad-v6/rigger_brush_thin
+deevad-v6/thin_watercolor
+deevad-v6/large_watercolor_fringe
+deevad-v6/watercolor_glazing
+deevad-v6/watercolor_expressive
+deevad-v6/only_water_fringe
+deevad-v6/sponge_smudging
+deevad-v6/ballpen
+deevad-v6/pen-note
+deevad-v6/soft-dip-pen
+deevad-v6/liner
+deevad-v6/brush
+deevad-v6/fill
+deevad-v6/spray
+deevad-v6/spray2
+deevad-v6/chalk
+deevad-v6/grainy_blending
+deevad-v6/blending
+deevad-v6/airbrush"
+echo "# mypaint-brushes-deevad end."
+} >> /usr/share/mypaint/brushes/order.conf
+}
+
+pre_upgrade() {
+sed "/^# mypaint-brushes-deevad start.$/,/^# mypaint-brushes-deevad end.$/d" -i /usr/share/mypaint/brushes/order.conf
+}
+
+pre_remove() {
+pre_upgrade 
+}

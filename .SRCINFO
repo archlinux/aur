@@ -1,0 +1,14 @@
+pkgbase = mypaint-brushes-deevad
+	pkgdesc = Mypaint brushkit by David Revoy
+	pkgver = 6
+	pkgrel = 2
+	url = http://www.davidrevoy.com/article142/mypaint-v6-brushkit
+	install = mypaint-brushes-deevad.install
+	arch = any
+	license = CCPL:by
+	depends = mypaint>1.0.0
+	source = mypaint-brushes-deevad-6.zip::http://fc02.deviantart.net/fs70/f/2012/303/9/a/mypaint_v6_brushkit_by_deevad-d5jhhbb.zip
+	md5sums = b1f7eab7b919c475ecd4d872363787b1
+
+pkgname = mypaint-brushes-deevad
+
