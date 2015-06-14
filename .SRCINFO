@@ -1,0 +1,19 @@
+pkgbase = perl-padre-plugin-experimento
+	pkgdesc = Padre::Plugin::Experimento - Provides experimental features to Padre
+	pkgver = 0.02
+	pkgrel = 2
+	url = http://search.cpan.org/~azawawi/Padre-Plugin-Experimento
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl
+	depends = perl-padre
+	depends = perl-io-string
+	depends = perl-wx-scintilla
+	depends = perl-modern-perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AZ/AZAWAWI/Padre-Plugin-Experimento-0.02.tar.gz
+	md5sums = 594216e7a337bf9e20667b1503a23e0c
+
+pkgname = perl-padre-plugin-experimento
+
