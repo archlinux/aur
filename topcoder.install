@@ -1,0 +1,11 @@
+post_install() {
+  echo "To integrate plug-ins with the arena, you should follow this"
+  echo "tutorial http://topblogcoder.com/tutorials/kawigiedit-tutorial/"
+  echo
+  echo "To get the entrypoints, see "
+  echo "http://community.topcoder.com/tc?module=Static&d1=applet&d2=plugins"
+}
+
+post_upgrade() {
+  post_install
+}

@@ -1,0 +1,20 @@
+pkgbase = topcoder-arena
+	pkgdesc = TopCoder Arena
+	pkgver = 1
+	pkgrel = 5
+	url = http://community.topcoder.com/tc
+	install = topcoder.install
+	arch = i686
+	arch = x86_64
+	license = custom:unknown
+	depends = java-runtime
+	noextract = KawigiEdit.jar
+	source = http://www.topcoder.com/contest/arena/ContestAppletProd.jnlp
+	source = http://community.topcoder.com/contest/classes/KawigiEdit/KawigiEdit.jar
+	source = topcoder-arena
+	md5sums = fadd41b6db7722df8dbd59d07ed198a5
+	md5sums = eb26a5e1b7a72d79a5f1a10bd71bcad2
+	md5sums = dfea72c31a518992dc0b64338468dafa
+
+pkgname = topcoder-arena
+
