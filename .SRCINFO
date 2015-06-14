@@ -1,0 +1,16 @@
+pkgbase = itk-cvs
+	pkgdesc = a framework for building mega-widgets using the [incr Tcl] object system.
+	pkgver = 3.4
+	pkgrel = 2
+	url = http://incrtcl.sourceforge.net/itk/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = cvs
+	depends = glibc
+	provides = itk=3.4-2
+	conflicts = itk
+	options = !emptydirs
+
+pkgname = itk-cvs
+
