@@ -1,0 +1,25 @@
+pkgbase = python-bcrypt
+	pkgdesc = Modern password hashing for your software and your servers
+	pkgver = 1.1.1
+	pkgrel = 2
+	url = https://github.com/dstufft/bcrypt/
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/b/bcrypt/bcrypt-1.1.1.tar.gz
+	md5sums = 43c5871c6bc7da1efe6a8bae25f90ad8
+
+pkgname = python-bcrypt
+	pkgdesc = Modern password hashing for your software and your servers (for Python 3.x)
+	depends = python
+	depends = python-cffi
+	depends = python-six
+
+pkgname = python2-bcrypt
+	pkgdesc = Modern password hashing for your software and your servers (for Python 2.x)
+	depends = python2
+	depends = python2-cffi
+	depends = python2-six
+
