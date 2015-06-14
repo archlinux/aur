@@ -1,0 +1,63 @@
+pkgbase = bin32-jdk
+	pkgdesc = Oracle Java Development Kit (32-bit)
+	pkgver = 8u45
+	pkgrel = 1
+	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
+	install = bin32-jdk.install
+	arch = x86_64
+	license = custom
+	provides = java32-runtime=8
+	provides = java32-runtime-headless=8
+	provides = java32-web-start=8
+	provides = java32-environment=8
+	provides = java32-runtime-jre=8
+	provides = java32-runtime-headless-jre=8
+	provides = java32-web-start-jre=8
+	provides = java32-environment-jdk=8
+	options = !strip
+	backup = etc/java32-jdk8/i386/jvm.cfg
+	backup = etc/java32-jdk8/images/cursors/cursors.properties
+	backup = etc/java32-jdk8/management/jmxremote.access
+	backup = etc/java32-jdk8/management/management.properties
+	backup = etc/java32-jdk8/security/java.policy
+	backup = etc/java32-jdk8/security/java.security
+	backup = etc/java32-jdk8/security/javaws.policy
+	backup = etc/java32-jdk8/content-types.properties
+	backup = etc/java32-jdk8/flavormap.properties
+	backup = etc/java32-jdk8/fontconfig.properties.src
+	backup = etc/java32-jdk8/logging.properties
+	backup = etc/java32-jdk8/net.properties
+	backup = etc/java32-jdk8/psfont.properties.ja
+	backup = etc/java32-jdk8/psfontj2d.properties
+	backup = etc/java32-jdk8/sound.properties
+	source = jconsole32-jdk8.desktop
+	source = jmc32-jdk8.desktop
+	source = jvisualvm32-jdk8.desktop
+	source = policytool32-jdk8.desktop
+	md5sums = 30d35416b403c621fb02d0dc0b115c05
+	md5sums = 9dfed511010a54eb377b692638d17585
+	md5sums = 915f23fd70bb5a6bbfbd7160a35ab035
+	md5sums = 65d3a4147634b7cf0923caafed7edda4
+	source_x86_64 = http://download.oracle.com/otn-pub/java/jdk/8u45-b14/jdk-8u45-linux-i586.tar.gz
+	depends_x86_64 = ca-certificates-java
+	depends_x86_64 = desktop-file-utils
+	depends_x86_64 = hicolor-icon-theme
+	depends_x86_64 = java32-environment-common
+	depends_x86_64 = java32-runtime-common
+	depends_x86_64 = lib32-glibc
+	depends_x86_64 = lib32-libjpeg-turbo
+	depends_x86_64 = lib32-lcms2
+	depends_x86_64 = lib32-libxrender
+	depends_x86_64 = lib32-libxtst
+	depends_x86_64 = lib32-nss
+	depends_x86_64 = shared-mime-info
+	depends_x86_64 = xdg-utils
+	optdepends_x86_64 = eclipse: "Oracle Java Mission Control" plugins for Eclipse
+	optdepends_x86_64 = lib32-alsa-lib: for basic sound support
+	optdepends_x86_64 = lib32-gtk2: for Gtk+ look and feel (desktop)
+	optdepends_x86_64 = ttf-font: fonts
+	makedepends_x86_64 = pacman>=4.2.0
+	md5sums_x86_64 = e68241caf30cb81ae4e985be7218bb6d
+
+pkgname = bin32-jdk
+

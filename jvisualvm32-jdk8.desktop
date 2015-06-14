@@ -1,0 +1,9 @@
+[Desktop Entry]
+Exec=/usr/lib32/jvm/java32-8-jdk/bin/jvisualvm
+GenericName=Java Monitoring and Performance Monitoring Tool (32-bit)
+Icon=sun-java32-jdk8
+Name=Java VisualVM (32-bit)
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Development;Java;
