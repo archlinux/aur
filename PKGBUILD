@@ -1,7 +1,7 @@
 # Maintainer: Aetf <7437103@gmail.com>
 pkgname=libtsm-patched-git
 _gitname=libtsm
-pkgver=3.r17.gb73acb4
+pkgver=0.0.0
 pkgrel=3
 pkgdesc="Terminal-emulator State Machine. Patched flavor (using patches from http://github.com/Aetf/libtsm)"
 arch=('i686' 'x86_64')
