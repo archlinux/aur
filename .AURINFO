@@ -1,0 +1,13 @@
+pkgbase = apache-html-manual
+	pkgdesc = Apache manual html pages
+	pkgver = 2.4.10
+	pkgrel = 1
+	url = http://www.apache.org/dist/httpd
+	arch = any
+	license = APACHE
+	source = http://www.apache.org/dist/httpd/httpd-2.4.10.tar.bz2
+	source = http://www.apache.org/dist/httpd/httpd-2.4.10.tar.bz2.asc
+	options = emptydirs
+
+pkgname = apache-html-manual
+

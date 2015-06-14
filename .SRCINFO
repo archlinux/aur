@@ -1,0 +1,15 @@
+pkgbase = apache-html-manual
+	pkgdesc = Apache manual html pages
+	pkgver = 2.4.10
+	pkgrel = 1
+	url = http://www.apache.org/dist/httpd
+	arch = any
+	license = APACHE
+	options = emptydirs
+	source = http://www.apache.org/dist/httpd/httpd-2.4.10.tar.bz2
+	source = http://www.apache.org/dist/httpd/httpd-2.4.10.tar.bz2.asc
+	sha256sums = 176c4dac1a745f07b7b91e7f4fd48f9c48049fa6f088efe758d61d9738669c6a
+	sha256sums = SKIP
+
+pkgname = apache-html-manual
+
