@@ -1,0 +1,37 @@
+pkgbase = lastpass
+	pkgdesc = The Universal LastPass installer for Firefox, Chrome, and Opera
+	pkgver = 3.1.95
+	pkgrel = 1
+	url = https://lastpass.com
+	install = lastpass.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libxcb
+	optdepends = chromium: for Chromium
+	optdepends = chromium-dev: for Chromium (Dev Channel) (AUR)
+	optdepends = firefox: for Mozilla Firefox
+	optdepends = firefox-beta-bin: for Mozilla Firefox (Beta) (AUR)
+	optdepends = firefox-nightly: for Mozilla Firefox (Nightly) (AUR)
+	optdepends = google-chrome: for Google Chrome (AUR)
+	optdepends = google-chrome-beta: for Google Chrome (Beta Channel) (AUR)
+	optdepends = google-chrome-dev: for Google Chrome (Dev Channel) (AUR)
+	optdepends = opera: for Opera
+	optdepends = opera-beta: for Opera Beta (AUR)
+	optdepends = opera-developer: for Opera Developer (AUR)
+	noextract = lp_linux_3.1.95-2.xpi
+	source = lpchrome_linux_3.2.11-1.crx::https://lastpass.com/lpchrome_linux.crx
+	source = lplinux_3.1.95.tar.bz2::https://lastpass.com/lplinux.tar.bz2
+	source = com.lastpass.nplastpass.json
+	source = lastpass_policy.json
+	source = lp_linux_3.1.95-2.xpi::https://lastpass.com/lp_linux.xpi
+	source = profiles.ini
+	md5sums = c1555f5a573ffaf18d769beee1ccf730
+	md5sums = 560746ff6a325200de014a0a599a69bb
+	md5sums = 151251e415bccdffc1dc0df592d1d7e1
+	md5sums = 9af777d2eea8e67ad332235718a7653d
+	md5sums = c3a18d917ce157ee0d0932c2acccaf7d
+	md5sums = d0f555a644484baccf649f7969794ece
+
+pkgname = lastpass
+
