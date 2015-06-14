@@ -1,0 +1,15 @@
+pkgbase = ruby-rack-cache
+	pkgdesc = HTTP Caching for Rack
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://tomayko.com/src/rack-cache/
+	arch = any
+	depends = ruby
+	depends = ruby-rack
+	noextract = rack-cache-1.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rack-cache-1.2.gem
+	sha512sums = 510e0b98af47170b9030578feadf534132ae473b093df3f1fce6022fb97883b4c56dee441dd06df50e0ea06c4f0a1d00e11bf63f165e29d1e451f28ee8c17177
+
+pkgname = ruby-rack-cache
+
