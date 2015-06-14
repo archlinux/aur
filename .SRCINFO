@@ -1,0 +1,16 @@
+pkgbase = videoproto-git
+	pkgdesc = X11 Video extension wire protocol - Git version
+	pkgver = 2.3.2.1.r47.g3841508
+	pkgrel = 1
+	url = http://cgit.freedesktop.org/xorg/proto/videoproto/
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = xorg-util-macros
+	provides = videoproto=2.3.2.1.r47.g3841508
+	conflicts = videoproto
+	source = git://anongit.freedesktop.org/xorg/proto/videoproto
+	md5sums = SKIP
+
+pkgname = videoproto-git
+
