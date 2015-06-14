@@ -1,0 +1,15 @@
+pkgbase = gimp-ultimate-web-gradients
+	pkgdesc = The complete 130 Ultimate Web 2.0 Gradients for Gimp!
+	pkgver = 1
+	pkgrel = 1
+	url = http://gimp-tutorials.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = unzip
+	depends = gimp>2.4
+	source = http://gimp-tutorials.net/files/130-UltimateWeb2-0-Gradients-for-Gimp.zip
+	md5sums = 13e560f14898042b30f8a71212400089
+
+pkgname = gimp-ultimate-web-gradients
+
