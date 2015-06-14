@@ -1,0 +1,18 @@
+pkgbase = ruby-fog-brightbox
+	pkgdesc = This library can be used as a module for `fog` or as standalone provider to use the Brightbox Cloud in applications
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://rubygems.org/gems/fog-brightbox
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-fog-core
+	depends = ruby-fog-json
+	depends = ruby-inflecto
+	noextract = fog-brightbox-0.7.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/fog-brightbox-0.7.1.gem
+	sha512sums = f53fc806350644263927aa5f6df8a644522a31edd7243c1357a182bf50144a981d15abd3c44c443a7cca37f9bca632ba1cf7136e9fe6671c40c6f91baa3c9385
+
+pkgname = ruby-fog-brightbox
+
