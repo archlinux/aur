@@ -1,0 +1,16 @@
+pkgbase = geant4-ledata
+	pkgdesc = Data files for low energy electromagnetic processes
+	pkgver = 6.41
+	pkgrel = 1
+	url = http://geant4.cern.ch/
+	install = geant4-ledata.install
+	arch = any
+	license = GPL
+	depends = geant4>=10.01
+	source = http://geant4.cern.ch/support/source/G4EMLOW.6.41.tar.gz
+	source = geant4-ledata.install
+	md5sums = b9b2e455d08375ca9cc5201236db6d7d
+	md5sums = 3afc50f79401b3b1600fdff66801427d
+
+pkgname = geant4-ledata
+
