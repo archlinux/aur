@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=uTorrent
+GenericName=The world's most popular BitTorrent client (Wine version)
+Icon=uTorrent
+Exec=uTorrent %U
+MimeType=application/x-bittorrent;x-scheme-handler/magnet;
+Categories=Network;FileTransfer;P2P;
+Terminal=false
+StartupWMClass=uTorrent.exe

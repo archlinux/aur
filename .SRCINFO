@@ -1,0 +1,34 @@
+pkgbase = utorrent
+	pkgdesc = The world's most popular BitTorrent client (Wine version)
+	pkgver = 3.4.3.40298
+	pkgrel = 1
+	url = https://www.utorrent.com/
+	install = utorrent.install
+	arch = i686
+	arch = x86_64
+	license = freeware
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	depends = wine
+	source = uTorrent-3.4.3.40298.exe::http://download-new.utorrent.com/endpoint/utorrent/os/windows/track/stable/
+	source = uTorrent
+	source = uTorrent.desktop
+	source = uTorrent_16.png
+	source = uTorrent_24.png
+	source = uTorrent_32.png
+	source = uTorrent_48.png
+	source = uTorrent_128.png
+	source = uTorrent_256.png
+	md5sums = SKIP
+	md5sums = 7a546b182bd179a0042bee3ebf565e3e
+	md5sums = 04e26013823d543a66160a1ce80eb781
+	md5sums = 297643387d8248b51880e376f226fa27
+	md5sums = 9cc7a34a18f015eb6d416d18ced29560
+	md5sums = 6b693c028c27dacf3a8ca735000f98fd
+	md5sums = 8a3b547675b039c8eedf307f1cd4bcc9
+	md5sums = 24519eea2d1078524c724b62004a1ef8
+	md5sums = a112a1f05bb4e6ef5212b56bc5a2b58e
+
+pkgname = utorrent
+

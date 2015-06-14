@@ -1,0 +1,21 @@
+_update() {
+    xdg-icon-resource forceupdate --theme hicolor
+    update-desktop-database -q
+}
+
+post_install() {
+    _update
+    echo ":: uTorrent locates in ~/.uTorrent/"
+    echo ":: For compatiblity info, see: https://appdb.winehq.org/objectManager.php?sClass=version&iId=22031"
+    echo ":: To make uTorrent the default torrent application:
+   $ xdg-mime default uTorrent.desktop application/x-bittorrent x-scheme-handler/magnet
+   (see: https://wiki.archlinux.org/index.php/Xdg-open)"
+}
+
+post_upgrade() {
+    _update
+}
+
+post_remove() {
+    _update
+}
