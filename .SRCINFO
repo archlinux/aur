@@ -1,0 +1,18 @@
+pkgbase = notepadqq-common
+	pkgdesc = A Linux clone of Notepad++ Common files
+	pkgver = 0.46.0
+	pkgrel = 1
+	url = http://notepadqq.altervista.org/wp/
+	install = notepadqq-common.install
+	arch = any
+	license = GPL3
+	depends = hicolor-icon-theme
+	optdepends = notepadqq-gtk: enables GTK style on startup
+	conflicts = notepadqq-git
+	options = !strip
+	options = !emptydirs
+	source = http://ppa.launchpad.net/notepadqq-team/notepadqq/ubuntu/pool/main/n/notepadqq/notepadqq-common_0.46.0-0~utopic1_all.deb
+	sha256sums = f39c4137d48e8532487c08ad4fcff7d5aa2eadc28fb68798690bf2fab3d9c459
+
+pkgname = notepadqq-common
+
