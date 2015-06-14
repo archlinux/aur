@@ -1,0 +1,20 @@
+pkgbase = depixelize-bzr
+	pkgdesc = The depixelize binary provided with libdepixelize
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://launchpad.net/libdepixelize
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = bzr
+	makedepends = cmake
+	makedepends = boost
+	depends = lib2geom
+	depends = popt
+	depends = boost-libs
+	source = bzr+lp:libdepixelize
+	md5sums = SKIP
+
+pkgname = depixelize-bzr
+
