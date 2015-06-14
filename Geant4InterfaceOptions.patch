@@ -1,0 +1,49 @@
+--- src/geant4.10.00.p02/cmake/Modules/Geant4InterfaceOptions.cmake	2014-06-19 11:56:29.000000000 +0200
++++ Geant4InterfaceOptions.cmake	2014-10-26 19:04:58.407396452 +0100
+@@ -88,29 +88,29 @@
+   find_package(Qt5OpenGL QUIET)
+   find_package(Qt5PrintSupport QUIET)
+ 
+-  if(Qt5Core_FOUND
+-      AND Qt5Gui_FOUND
+-      AND Qt5Widgets_FOUND
+-      AND Qt5OpenGL_FOUND
+-      AND Qt5PrintSupport_FOUND)
+-    # Compatibility
+-    macro(qt4_wrap_cpp)
+-      qt5_wrap_cpp(${ARGN})
+-    endmacro()
+-    set(Qt5_USE_FILE_IN "${PROJECT_SOURCE_DIR}/cmake/Templates/Geant4UseQt5.cmake.in")
+-    set(QT_USE_FILE "${PROJECT_BINARY_DIR}/Geant4UseQt5.cmake")
+-    configure_file("${Qt5_USE_FILE_IN}" "${QT_USE_FILE}" @ONLY)
+-    get_target_property(QT_QMAKE_EXECUTABLE ${Qt5Core_QMAKE_EXECUTABLE} IMPORTED_LOCATION)
+-    set(G4QTLIBLIST "-lQt5PrintSupport -lQt5Widgets -lQt5Gui -lQt5Core")
+-    set(G4GLQTLIBLIST "-lQt5OpenGL ${G4QTLIBLIST}")
+-  else()
++#  if(Qt5Core_FOUND
++#      AND Qt5Gui_FOUND
++#      AND Qt5Widgets_FOUND
++#      AND Qt5OpenGL_FOUND
++#      AND Qt5PrintSupport_FOUND)
++#    # Compatibility
++#    macro(qt4_wrap_cpp)
++#      qt5_wrap_cpp(${ARGN})
++#    endmacro()
++#    set(Qt5_USE_FILE_IN "${PROJECT_SOURCE_DIR}/cmake/Templates/Geant4UseQt5.cmake.in")
++#    set(QT_USE_FILE "${PROJECT_BINARY_DIR}/Geant4UseQt5.cmake")
++#    configure_file("${Qt5_USE_FILE_IN}" "${QT_USE_FILE}" @ONLY)
++#    get_target_property(QT_QMAKE_EXECUTABLE ${Qt5Core_QMAKE_EXECUTABLE} IMPORTED_LOCATION)
++#    set(G4QTLIBLIST "-lQt5PrintSupport -lQt5Widgets -lQt5Gui -lQt5Core")
++#    set(G4GLQTLIBLIST "-lQt5OpenGL ${G4QTLIBLIST}")
++#  else()
+     unset(Qt5Core_DIR CACHE)
+     unset(Qt5Gui_DIR CACHE)
+     unset(Qt5Widgets_DIR CACHE)
+     unset(Qt5OpenGL_DIR CACHE)
+     unset(Qt5PrintSupport_DIR CACHE)
+     find_package(Qt4 REQUIRED COMPONENTS QtCore QtGui QtOpenGL)
+-  endif()
++#  endif()
+ 
+   find_package(OpenGL REQUIRED)
+ 
