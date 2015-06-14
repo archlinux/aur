@@ -1,0 +1,26 @@
+pkgbase = python2-deepin-utils
+	pkgdesc = Basic utils for all project in Linux Deepin.
+	pkgver = 0.0.2.20140703165416
+	pkgrel = 1
+	url = https://gitcafe.com/Deepin/deepin-utils
+	arch = i686
+	arch = x86_64
+	groups = deepin
+	license = GPL3
+	makedepends = python2-setuptools
+	depends = deepin-pygtk
+	depends = python2-cairo
+	depends = freetype2
+	depends = webkitgtk2
+	depends = python2-xlib
+	depends = pywebkitgtk
+	provides = deepin-utils
+	conflicts = deepin-utils
+	conflicts = deepin-utils-git
+	replaces = deepin-utils
+	replaces = deepin-utils-git
+	source = http://packages.linuxdeepin.com/deepin/pool/main/d/deepin-utils/deepin-utils_0.0.2+20140703165416~8aaf2a6f00.tar.gz
+	sha256sums = 823380c71cba9d3ccb7815e6c445d0c2e4955d88164551c3e3c4ba7d084cf51b
+
+pkgname = python2-deepin-utils
+
