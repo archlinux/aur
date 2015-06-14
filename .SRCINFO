@@ -1,0 +1,14 @@
+pkgbase = doctotext-bin
+	pkgdesc = A powerful utility that can convert documents in many formats to plain text.
+	pkgver = 4.0
+	pkgrel = 1
+	url = http://silvercoders.com/en/products/doctotext/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxml2
+	depends = gcc-libs
+	options = !strip
+
+pkgname = doctotext-bin
+
