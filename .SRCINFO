@@ -1,0 +1,15 @@
+pkgbase = ruby-coderay
+	pkgdesc = Fast syntax highlighting for selected languages.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://coderay.rubychan.de
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = coderay-1.1.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/coderay-1.1.0.gem
+	sha512sums = 3d06b4e1026489d5a9a9e5d31c41e3c6af84ac29f7d4e8cc29cca54f764209982a3257b5a4493bfdee44738c1c7eb3b020e43e1313c715ccccdc4734a66013d9
+
+pkgname = ruby-coderay
+
