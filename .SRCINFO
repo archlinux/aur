@@ -1,0 +1,17 @@
+pkgbase = perl-test-without-module
+	pkgdesc = Test::Without::Module - Test fallback behaviour in absence of modules
+	pkgver = 0.18
+	pkgrel = 2
+	url = http://search.cpan.org/dist/Test-Without-Module/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	checkdepends = perl-file-slurp
+	makedepends = perl
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CO/CORION/Test-Without-Module-0.18.tar.gz
+	sha256sums = e2c3360b171d7db518ac39a0e1dcb285c784ea393c11708914a0655d66138c7f
+
+pkgname = perl-test-without-module
+
