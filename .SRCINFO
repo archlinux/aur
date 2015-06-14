@@ -3,7 +3,6 @@ pkgbase = ipmiutil
 	pkgver = 2.9.5
 	pkgrel = 1
 	url = http://sourceforge.net/projects/ipmiutil/
-	changelog = CHANGELOG
 	arch = i686
 	arch = x86_64
 	license = BSD

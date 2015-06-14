@@ -12,7 +12,6 @@ url="http://sourceforge.net/projects/ipmiutil/"
 license=('BSD')
 depends=('openssl')
 options=('!emptydirs')
-changelog=CHANGELOG
 source=("http://prdownloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('cbfcb548493bc43abe165e34b874b3b3')
 
