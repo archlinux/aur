@@ -1,0 +1,16 @@
+pkgbase = libsigrok
+	pkgdesc = Client software that supports various hardware logic analyzers, core library
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = http://www.sigrok.org/wiki/Libsigrok
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = libzip
+	depends = libftdi-compat
+	depends = libserialport
+	source = http://sigrok.org/download/source/libsigrok/libsigrok-0.3.0.tar.gz
+	md5sums = 6bc9fa9da9b791b8da961003244adeec
+
+pkgname = libsigrok
+
