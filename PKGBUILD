@@ -9,8 +9,8 @@ license=('GPL')
 optdepends=(
 'stardict: for viewing this dictionary'
 )
-url="http://abloz.com/huzheng/stardict-dic/ru/"
-source=("http://abloz.com/huzheng/stardict-dic/ru/$pkgname-$pkgver.tar.bz2")
+url=('http://getfr.no-ip.org/pub/dc/software/stardict-ru/')
+source=("http://getfr.no-ip.org/pub/dc/software/stardict-ru/$pkgname-$pkgver.tar.bz2")
 md5sums=('9d6eff29898a47f5c12c5bc9836a03eb')
 arch=(any)
 package() {
