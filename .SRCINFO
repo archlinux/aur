@@ -1,0 +1,15 @@
+pkgbase = perl-cacertorg-ca
+	pkgdesc = CACertOrg::CA - CACert.org's CA root certificate in PEM format
+	pkgver = 20110724.004
+	pkgrel = 1
+	url = http://search.cpan.org/dist/CACertOrg-CA/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BD/BDFOY/CACertOrg-CA-20110724.004.tar.gz
+	sha256sums = 17eede0e3f5449ac1879c3d5e8edb8ddd37caca33e302567ff4a03131ba78fbb
+
+pkgname = perl-cacertorg-ca
+
