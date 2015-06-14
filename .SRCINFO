@@ -1,0 +1,14 @@
+pkgbase = ruby-formatador
+	pkgdesc = Ruby STDOUT text formatting
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = http://github.com/geemus/formatador
+	arch = any
+	depends = ruby
+	noextract = formatador-0.2.5.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/formatador-0.2.5.gem
+	sha512sums = bed5285d3880ae4973f499e2408e555e9da33f44b77e9467c5c455e87f907850758b215808cf127fe4161207fdb69394dddaceaf0cebb3d5fa20500f1820b821
+
+pkgname = ruby-formatador
+
