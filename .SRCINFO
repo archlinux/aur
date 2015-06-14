@@ -1,0 +1,15 @@
+pkgbase = abr2gbr
+	pkgdesc = Converts PhotoShop .ABR and Paint Shop Pro .JBR brushes to GIMP .GBR.
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://the.sunnyspot.org/gimp/tools.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = glib
+	depends = glib
+	source = abr2gbr-1.0.2.tar.gz::http://the.sunnyspot.org/gimp/tools/abr2gbr-1.0.2.tgz
+	md5sums = edecc74a3df1ce858ec641de9a098cdf
+
+pkgname = abr2gbr
+
