@@ -1,0 +1,31 @@
+pkgbase = perl-padre-plugin-cookbook
+	pkgdesc = Padre::Plugin::Cookbook - Cookbook contains recipes to assist you in makeing your own Padre::Plugin
+	pkgver = 0.24
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Padre-Plugin-Cookbook/
+	arch = any
+	groups = perl-padre-plugins
+	license = GPL
+	license = PerlArtistic
+	depends = perl-data-printer>=0.3
+	depends = perl-moose
+	depends = perl-namespace-autoclean>=0.13
+	depends = perl-padre>=0.96
+	provides = perl-padre-plugin-cookbook-recipe01-fbp-mainfb
+	provides = perl-padre-plugin-cookbook-recipe01-main
+	provides = perl-padre-plugin-cookbook-recipe02-fbp-mainfb
+	provides = perl-padre-plugin-cookbook-recipe02-main
+	provides = perl-padre-plugin-cookbook-recipe03-about
+	provides = perl-padre-plugin-cookbook-recipe03-fbp-aboutfb
+	provides = perl-padre-plugin-cookbook-recipe03-fbp-mainfb
+	provides = perl-padre-plugin-cookbook-recipe03-main
+	provides = perl-padre-plugin-cookbook-recipe04-about
+	provides = perl-padre-plugin-cookbook-recipe04-fbp-aboutfb
+	provides = perl-padre-plugin-cookbook-recipe04-fbp-mainfb
+	provides = perl-padre-plugin-cookbook-recipe04-main
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOWTIE/Padre-Plugin-Cookbook-0.24.tar.gz
+	md5sums = 78845ba61f315a6e7ff3bae77f51a0f7
+
+pkgname = perl-padre-plugin-cookbook
+
