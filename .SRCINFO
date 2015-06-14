@@ -1,0 +1,21 @@
+pkgbase = tikzit
+	pkgdesc = Allows the creation and modification of TeX diagrams written using the pgf/TikZ macro library
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://sourceforge.net/projects/tikzit/
+	install = tikzit.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc-objc>=4.6.0
+	depends = gnustep-base>=1.18.0
+	depends = gtk2>=2.18.0
+	depends = poppler-glib>=0.10
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	optdepends = texlive-core: previews
+	source = http://downloads.sourceforge.net/sourceforge/tikzit/tikzit-1.0.tar.bz2
+	md5sums = 5d7fc5a74500b8eb2545d0c4fece62a5
+
+pkgname = tikzit
+
