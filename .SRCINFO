@@ -1,0 +1,21 @@
+pkgbase = perl-devel-nytprof
+	pkgdesc = Devel::NYTProf - Powerful fast feature-rich perl source code profiler
+	pkgver = 5.07
+	pkgrel = 3
+	url = http://search.cpan.org/dist/Devel-NYTProf
+	arch = i686
+	arch = x86_64
+	license = GPL
+	checkdepends = perl-test-pod-coverage
+	makedepends = perl-extutils-makemaker
+	depends = perl-json-any
+	depends = perl-getopt-long
+	depends = perl-test-simple
+	depends = perl-xsloader
+	depends = perl-test-differences
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TI/TIMB/Devel-NYTProf-5.07.tar.gz
+	sha1sums = a6608e7ba2814960efeb8f364bd0f6894fd1b6b9
+
+pkgname = perl-devel-nytprof
+
