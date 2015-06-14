@@ -1,0 +1,15 @@
+pkgbase = clearlooks-phenix-gtk-theme
+	pkgdesc = GTK3 theme visually close to Clearlooks
+	pkgver = 6.0.3
+	pkgrel = 1
+	url = https://github.com/jpfleury/clearlooks-phenix
+	arch = any
+	license = GPL3
+	depends = gtk-engines
+	optdepends = mist-icon-theme: a visually compatible icon theme
+	conflicts = clearlooks-phenix-gtk-theme-git
+	source = https://github.com/jpfleury/clearlooks-phenix/archive/6.0.3.zip
+	sha256sums = 4e13d8ece62e7b68c6c0692c49c9c4065f604616c7ef821f78fc9f740aaacae9
+
+pkgname = clearlooks-phenix-gtk-theme
+
