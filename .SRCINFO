@@ -1,6 +1,6 @@
 pkgbase = lib32-libx264-stable-git
 	pkgdesc = Free library for encoding H264/AVC video streams, lib32
-	pkgver = 142.r2495.6a301b6
+	pkgver = 144.r2533.c8a773e
 	pkgrel = 1
 	url = http://www.videolan.org/developers/x264.html
 	arch = x86_64

@@ -4,8 +4,8 @@
 pkgname=lib32-libx264-stable-git
 _pkgbase=x264
 _pkgname=libx264
-_pkgver=142
-pkgver=142.r2495.6a301b6
+_pkgver=144
+pkgver=144.r2533.c8a773e
 pkgrel=1
 pkgdesc='Free library for encoding H264/AVC video streams, lib32'
 arch=('x86_64')
