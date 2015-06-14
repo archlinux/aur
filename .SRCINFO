@@ -1,0 +1,18 @@
+pkgbase = ogmrip-video-copy
+	pkgdesc = This plugin enables the extraction of a video title without any encoding.
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://ogmrip.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	groups = ogmrip
+	license = LGPL
+	depends = ogmrip>=0.13
+	depends = mplayer>=0.92
+	source = http://downloads.sourceforge.net/sourceforge/ogmrip/ogmrip-video-copy-0.4.tar.gz
+	source = http://sourceforge.net/projects/ogmrip/files/ogmrip-video-copy/0.4/README
+	md5sums = 09068727de2f756f360bc5c2e06f016d
+	md5sums = e60354c51110019a4dffdd1bb1867f29
+
+pkgname = ogmrip-video-copy
+
