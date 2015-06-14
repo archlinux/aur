@@ -1,0 +1,24 @@
+pkgbase = tp-battery-icon-git
+	pkgdesc = A simple yet powerful tray icon, using tp_smapi or acpi_call.
+	pkgver = 20121115
+	pkgrel = 2
+	url = https://github.com/phragment/tp-battery-icon
+	install = tp-battery-icon.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	optdepends = tp_smapi: support for pre Sandy Bridge ThinkPads
+	optdepends = acpi_call: support for newer ThinkPads
+	provides = tp-battery-icon
+	conflicts = tp-battery-icon
+	source = tp-battery-icon.desktop
+	source = 90-tp_smapi.rules
+	source = 90-acpi_call.rules
+	md5sums = 55013014907d603bc3b1621cbf17f92c
+	md5sums = db0364032a7d0625bcc27f519428f9ff
+	md5sums = 67f7ee0c792f515195fba26d26449ca6
+
+pkgname = tp-battery-icon-git
+

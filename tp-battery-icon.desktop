@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=ThinkPad Battery Icon
+Comment=A simple yet powerful tray icon, using tp_smapi or acpi_call.
+Exec=tp-battery-icon
+Terminal=false
+Type=Application
+Icon=tp-battery-icon
+Categories=GTK;
+StartupNotify=false

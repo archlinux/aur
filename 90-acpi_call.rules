@@ -1,0 +1,1 @@
+SUBSYSTEM=="module", DEVPATH=="/module/acpi_call", RUN+="/bin/sh -c 'find /proc/acpi -name call | xargs /bin/chmod 666'" 

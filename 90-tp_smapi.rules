@@ -1,0 +1,4 @@
+DRIVER=="smapi", RUN+="/bin/sh -c 'find /sys/devices/platform/smapi/ -name force_discharge | xargs /bin/chmod 666'"
+DRIVER=="smapi", RUN+="/bin/sh -c 'find /sys/devices/platform/smapi/ -name start_charge_thresh | xargs /bin/chmod 666'"
+DRIVER=="smapi", RUN+="/bin/sh -c 'find /sys/devices/platform/smapi/ -name stop_charge_thresh | xargs /bin/chmod 666'"
+
