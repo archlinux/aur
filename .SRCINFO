@@ -62,7 +62,6 @@ pkgbase = sagemath-git
 	optdepends = jmol: 3D plots
 	optdepends = sage-notebook: Browser-based (flask) notebook interface
 	optdepends = sagemath-doc: Documentation and inline help
-	optdepends = sagemath-src: source files needed to build cython code
 	optdepends = ipython2-notebook: IPython notebook interface
 	optdepends = mathjax: IPython notebook interface
 	optdepends = coin-or-cbc: COIN backend for numerical computations
