@@ -1,0 +1,16 @@
+pkgbase = perl-file-tools
+	pkgdesc = File::Tools - UNIX tools implemented as Perl Modules and made available to other platforms as well
+	pkgver = 0.06
+	pkgrel = 2
+	url = http://search.cpan.org/dist/File-Tools/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-test-nowarnings
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SZ/SZABGAB/File-Tools-0.06.tar.gz
+	md5sums = 295110e229c9d06126774ff5740b2678
+
+pkgname = perl-file-tools
+
