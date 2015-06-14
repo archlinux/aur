@@ -1,0 +1,16 @@
+pkgbase = ruby-arr-pm
+	pkgdesc = RPM reader and writer library
+	pkgver = 0.0.10
+	pkgrel = 1
+	url = https://rubygems.org/gems/arr-pm
+	arch = any
+	license = Apache 2
+	depends = ruby
+	depends = ruby-cabin
+	noextract = arr-pm-0.0.10.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/arr-pm-0.0.10.gem
+	sha512sums = db1563686c82f9c5c7cd0a110a0c6402215d3bffa565f7cf1719c16e0d3e88c277f86b6bb184e1125f2a52d28ae6770151ffe3ea2394fdd14889ace1a081d67e
+
+pkgname = ruby-arr-pm
+
