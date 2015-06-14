@@ -1,0 +1,13 @@
+pkgbase = zramswap
+	pkgdesc = Sets up zram-based swap devices on boot
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://en.wikipedia.org/wiki/ZRam
+	arch = any
+	license = GPL
+	depends = bash
+	source = zramctrl
+	source = zramswap.service
+
+pkgname = zramswap
+
