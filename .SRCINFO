@@ -1,0 +1,26 @@
+pkgbase = rasterbator
+	pkgdesc = Create huge, rasterized images from any picture.
+	pkgver = 1.21
+	pkgrel = 2
+	url = http://arje.net/rasterbator
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = mono
+	source = http://arje.net/files/Rasterbator_Standalone_1.21.zip
+	source = http://www.gnu.org/licenses/agpl-3.0.txt
+	source = readme.licenses
+	source = rasterbator.patch
+	source = rasterbator
+	source = rasterbator.png
+	source = rasterbator.desktop
+	md5sums = 426ed9e545433d6d4b83ce555539c48a
+	md5sums = 73f1eb20517c55bf9493b7dd6e480788
+	md5sums = 1da706012a634ece69c0ad83f0321640
+	md5sums = d60a3b969f3e413584a4be1b7cd19114
+	md5sums = d26d0e432dc4ec0f80bac0cda5978efa
+	md5sums = 49753e22af9b3268d31825bc2c502a18
+	md5sums = 679d0dbd73404815d6e6b0b35c3910b7
+
+pkgname = rasterbator
+

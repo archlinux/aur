@@ -1,0 +1,20 @@
+@@ -1407,8 +1407,8 @@
+ 		
+ 		void MainFormLoad(object sender, System.EventArgs e) {
+ 		  ApplicationDirectory=Assembly.GetExecutingAssembly().CodeBase;
+-		  ApplicationDirectory=ApplicationDirectory.Replace("file:///","").Replace("/","\\");
+-		  ApplicationDirectory=ApplicationDirectory.Substring(0, ApplicationDirectory.LastIndexOf("\\")+1);
++		  ApplicationDirectory=ApplicationDirectory.Replace("file:///","/").Replace("%20", " ");
++		  ApplicationDirectory=ApplicationDirectory.Substring(0, ApplicationDirectory.LastIndexOf("/")+1);
+ 		  if(!CheckFile(ApplicationDirectory, "itextsharp.dll")) {
+ 		    Close();
+ 		    return;
+@@ -1713,7 +1713,7 @@
+ 		
+ 		void Button9Click(object sender, System.EventArgs e)
+ 		{
+-		  string WorkDir=textBox2.Text.Substring(0, textBox2.Text.LastIndexOf("\\")+1);
++		  string WorkDir=textBox2.Text.Substring(0, textBox2.Text.LastIndexOf("/")+1);
+ 		  try {
+   		  Directory.CreateDirectory(WorkDir);
+ 		  } catch(Exception E) {

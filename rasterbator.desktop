@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=Graphics
+Comment=Create huge, rasterized images from any picture.
+Exec=rasterbator
+GenericName=Rasterbator
+Icon=rasterbator
+Name=Rasterbator
+StartupNotify=true
+Terminal=false
+Type=Application
