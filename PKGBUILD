@@ -3,15 +3,15 @@
 
 pkgname=stardict-full-rus-eng
 pkgver=2.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Large russian-english dictionary for Stardict"
 license=('GPL')
 optdepends=(
 'stardict: for viewing this dictionary'
 )
-url="http://abloz.com/huzheng/stardict-dic/ru/"
+url=('http://getfr.no-ip.org/pub/dc/software/stardict-ru/')
+source=("http://getfr.no-ip.org/pub/dc/software/stardict-ru/$pkgname-$pkgver.tar.bz2")
 md5sums=('91465d9fa5c469c088eb2e63a423f7bb')
-source=("http://abloz.com/huzheng/stardict-dic/ru/$pkgname-$pkgver.tar.bz2")
 arch=(any)
 package() {
     cd $srcdir/$pkgname-$pkgver/

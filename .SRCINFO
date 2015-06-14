@@ -1,12 +1,12 @@
 pkgbase = stardict-full-rus-eng
 	pkgdesc = Large russian-english dictionary for Stardict
 	pkgver = 2.4.2
-	pkgrel = 1
-	url = http://abloz.com/huzheng/stardict-dic/ru/
+	pkgrel = 2
+	url = http://getfr.no-ip.org/pub/dc/software/stardict-ru/
 	arch = any
 	license = GPL
 	optdepends = stardict: for viewing this dictionary
-	source = http://abloz.com/huzheng/stardict-dic/ru/stardict-full-rus-eng-2.4.2.tar.bz2
+	source = http://getfr.no-ip.org/pub/dc/software/stardict-ru/stardict-full-rus-eng-2.4.2.tar.bz2
 	md5sums = 91465d9fa5c469c088eb2e63a423f7bb
 
 pkgname = stardict-full-rus-eng
