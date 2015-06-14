@@ -1,0 +1,17 @@
+pkgbase = zimsearch-git
+	pkgdesc = GNOME Shell search provider for Zim Desktop Wiki pages
+	pkgver = r16.a9c1893
+	pkgrel = 1
+	url = https://github.com/dsboger/zimsearch
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = zim
+	depends = gnome-shell
+	provides = zimsearch
+	conflicts = zimsearch
+	source = git+https://github.com/dsboger/zimsearch
+	md5sums = SKIP
+
+pkgname = zimsearch-git
+
