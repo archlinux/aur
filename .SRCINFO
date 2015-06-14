@@ -1,0 +1,21 @@
+pkgbase = artha
+	pkgdesc = A free cross-platform English thesaurus based on WordNet
+	pkgver = 1.0.3
+	pkgrel = 4
+	url = http://artha.sourceforge.net/wiki/index.php/Home
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = wordnet
+	depends = gtk2
+	depends = dbus-glib
+	optdepends = enchant: spell checking support
+	optdepends = libnotify: notification support
+	optdepends = galago-daemon: notification support
+	optdepends = aspell-en: to show suggestion with aspell in English
+	options = !emptydirs
+	source = http://downloads.sourceforge.net/sourceforge/artha/artha-1.0.3.tar.bz2
+	md5sums = 9bc69f5666a1f494e21a0a0add9ebb16
+
+pkgname = artha
+
