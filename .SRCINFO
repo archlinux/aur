@@ -1,0 +1,70 @@
+pkgbase = gimp-elsamuko-scripts
+	pkgdesc = Varoius Gimp scripts made by elsamuko
+	pkgver = 0.24
+	pkgrel = 1
+	url = https://sites.google.com/site/elsamuko/gimp
+	arch = any
+	license = GPL
+	depends = gimp
+	options = !strip
+	source = elsamuko-scripts.zip::https://sites.google.com/site/elsamuko/gimp/elsamuko.zip
+	source = https://sites.google.com/site/elsamuko/forensics/up-down-curve/elsamuko-up-down.scm
+	source = https://sites.google.com/site/elsamuko/forensics/up-down-curve/up-down
+	source = https://sites.google.com/site/elsamuko/forensics/ela/elsamuko-error-level-analysis.scm
+	md5sums = 98e744676f0cff65ed9a0a7b45b06cee
+	md5sums = 0fd5e89b6c247026f83233e69fa9bca7
+	md5sums = 25e4391f2b85b35e0e0ebf5c797916b4
+	md5sums = e93607bf48438f77d2e53dda4bc19408
+
+pkgname = gimp-elsamuko-scripts
+
+pkgname = gimp-script-error-level-analysis
+
+pkgname = gimp-script-up-down
+
+pkgname = gimp-script-antique-border
+
+pkgname = gimp-script-che-guevara
+
+pkgname = gimp-script-color-tint
+
+pkgname = gimp-script-cyanotype
+
+pkgname = gimp-script-difference-layers
+
+pkgname = gimp-script-erosion-sharpen
+
+pkgname = gimp-script-escape-lines
+
+pkgname = gimp-script-glass-displacement
+
+pkgname = gimp-script-film-grain
+
+pkgname = gimp-script-lomo
+
+pkgname = gimp-script-movie-300
+
+pkgname = gimp-script-national-geographic
+
+pkgname = gimp-script-obama-hope
+
+pkgname = gimp-script-first-photo-border
+
+pkgname = gimp-script-photochrom
+
+pkgname = gimp-script-rainy-landscape
+
+pkgname = gimp-script-sprocket-hole
+
+pkgname = gimp-script-sunny-landscape
+
+pkgname = gimp-script-technicolor-2-color
+
+pkgname = gimp-script-technicolor-3-color
+
+pkgname = gimp-script-white-balance-puzzle
+
+pkgname = gimp-script-vintage-look
+
+pkgname = gimp-script-split-tone
+
