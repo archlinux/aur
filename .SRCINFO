@@ -1,0 +1,18 @@
+pkgbase = libtomcrypt-git
+	pkgdesc = A fairly comprehensive, modular and portable cryptographic toolkit.
+	pkgver = 1.17.r379.gaeaa6d4
+	pkgrel = 1
+	url = http://www.libtom.net
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = gmp
+	depends = gmp
+	provides = libtomcrypt
+	conflicts = libtomcrypt
+	source = git+https://github.com/libtom/libtomcrypt.git
+	md5sums = SKIP
+
+pkgname = libtomcrypt-git
+
