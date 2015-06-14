@@ -1,0 +1,27 @@
+pkgbase = get_iplayer
+	pkgdesc = Allows you to download or stream any iPlayer programme from the BBC in H.264 (Quicktime/mp4) format, any radio programmes in MP3 or RealAudio format
+	pkgver = 2.94
+	pkgrel = 1
+	url = http://www.infradead.org/get_iplayer/html/get_iplayer.html
+	arch = any
+	license = GPL3
+	depends = perl-libwww
+	depends = perl-html-parser
+	depends = perl-www-mechanize
+	depends = perl-http-cookies
+	depends = perl-net-http
+	optdepends = rtmpdump: record high-quality flash-based content
+	optdepends = flvstreamer: download files that are in flash (flv) format
+	optdepends = ffmpeg: convert flash (flv) files
+	optdepends = atomicparsley: add tags to MP4 files
+	optdepends = id3v2: add basic tags to MP3 files (if perl-mp3-tag not installed)
+	optdepends = lame: re-encode Real files into MP3
+	optdepends = mplayer: download files that are in Real or WMA format
+	optdepends = perl-mp3-tag: add tags to MP3 files
+	optdepends = perl-xml-simple: Series and Brand pid parsing
+	optdepends = vlc: download files in that are n95 format
+	source = ftp://ftp.infradead.org/pub/get_iplayer/get_iplayer-2.94.tar.gz
+	md5sums = 180883975710fa3548f1e3359e21d5e2
+
+pkgname = get_iplayer
+
