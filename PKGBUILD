@@ -17,7 +17,7 @@ _use_pax=0             # If set 1 to change PaX permisions in executables NOTE: 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=45.0.2421.0
+pkgver=45.0.2427.7
 _launcher_ver=2
 pkgrel=1
 pkgdesc='The open-source project behind Google Chrome (Dev Channel)'
@@ -34,7 +34,6 @@ optdepends=('chromium-pepper-flash-dev: PPAPI Flash Player (Dev Channel)'
             'kdialog-frameworks-git: Needed for file dialogs in KF5'
             'kwalletmanager-git: Needed for storing passwords in KWallet in KF5'
             'libappindicator-gtk2: Needed for show systray icon in the panel in plasma-next (KF5)')
-install=chromium-dev.install
 backup=('etc/chromium-dev/default')
 source=("https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
         "chromium-launcher-${_launcher_ver}.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v${_launcher_ver}.tar.gz"
@@ -60,9 +59,7 @@ md5sums=("$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?mark
 
          )
 options=('!strip')
-if [ "${CARCH}" = "x86_64" ]; then
-  warning "To build in x86_64 systems, need to have activated the repository [multilib]. If not , the build will fail"
-fi
+install=chromium-dev.install
 
 ################################################
 ## -- Don't touch anything below this line -- ##
@@ -225,7 +222,6 @@ _necesary=('base/third_party/dmg_fp'
            'third_party/zlib/google'
            'url/third_party/mozilla'
            'v8/src/third_party/fdlibm'
-           'v8/src/third_party/vtune'
            'v8/src/third_party/valgrind'
            )
 
@@ -421,7 +417,7 @@ build() {
       export CXXFLAGS="${CXXFLAGS} -Wno-unknown-warning-option"
     elif [ "${_use_bundled_clang}" = "1" ]; then
       msg2 "Setup and build bundled Clang"
-      sh tools/clang/scripts/update.sh --force-local-build --without-android
+      python2 tools/clang/scripts/update.py --force-local-build --without-android
       if [ "${_use_ccache}" = "0" ]; then
         export CC="${_bundled_clang_path}/clang -Qunused-arguments"
         export CXX="${_bundled_clang_path}/clang++ -Qunused-arguments"
