@@ -1,0 +1,22 @@
+pkgbase = psi-plus-plugins-git
+	pkgdesc = Additional plugins for Psi+
+	pkgver = 0.15.448
+	pkgrel = 1
+	url = http://psi-plus.com
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = libotr
+	makedepends = tidyhtml
+	depends = qt4
+	depends = qtwebkit
+	depends = psi-plus-git
+	optdepends = libotr: for OTR plugin
+	optdepends = tidyhtml: for OTR plugin
+	source = psi-plus-plugins::git://github.com/psi-plus/plugins.git
+	source = psiplugin.pri
+	md5sums = SKIP
+	md5sums = bbe29ce7c37a0511212798f17993c7dd
+
+pkgname = psi-plus-plugins-git
+
