@@ -5,9 +5,9 @@ pkgname=archlinux-artwork
 pkgver=1.6
 pkgrel=3
 pkgdesc='Official logos, icons, CD labels and other artwork for Arch Linux'
-arch=('any')
+arch=("any")
 url="http://www.archlinux.org/"
-license=('CCPL:cc-by-nc-sa' 'custom:TRADEMARKS')
+license=("CCPL:cc-by-nc-sa" "custom:TRADEMARKS")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jristz/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=('ce4aefa72574465eb74e4d0a795aee5a')
 
@@ -26,5 +26,3 @@ package() {
   # add the custom license
   install -D -m644 TRADEMARKS $pkgdir/usr/share/licenses/$pkgname/TRADEMARKS
 }
-
-# vim:set ts=2 sw=2 et:
