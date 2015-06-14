@@ -1,0 +1,14 @@
+pkgbase = bing-ip2hosts
+	pkgdesc = Enumerate hostnames for an IP using bing.com
+	pkgver = 0.4
+	pkgrel = 1
+	url = http://www.morningstarsecurity.com/research/bing-ip2hosts
+	arch = any
+	license = GPL3
+	depends = bash
+	options = !strip
+	source = bing-ip2hosts-0.4.tar.gz::http://www.morningstarsecurity.com/downloads/bing-ip2hosts-0.4.tar.gz
+	sha256sums = 9dedb3e6914170fb86b515b8405a38a1577f7119c5265ed94b9d7ac2fb6fc2df
+
+pkgname = bing-ip2hosts
+
