@@ -1,0 +1,19 @@
+pkgbase = perl-template-plugin-multimarkdown
+	pkgdesc = MultiMarkdown plugin for Template-Toolkit
+	pkgver = 0.12
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Template-Plugin-MultiMarkdown/
+	arch = any
+	license = PerlArtistic
+	checkdepends = perl-test-pod
+	checkdepends = perl-test-pod-coverage
+	depends = perl
+	depends = perl-template-toolkit
+	depends = perl-text-multimarkdown
+	optdepends = perl-text-multimarkdown-xs
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BA/BARBIE/Template-Plugin-MultiMarkdown-0.12.tar.gz
+	md5sums = 085fb3110599df5243eab4e884874a65
+
+pkgname = perl-template-plugin-multimarkdown
+
