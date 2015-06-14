@@ -1,8 +1,8 @@
 # Maintainer: twilinx <twilinx@mesecons.net>
 
 pkgname=gtk3-typeahead
-pkgver=3.16.3
-pkgrel=2
+pkgver=3.16.4
+pkgrel=1
 conflicts=(gtk3)
 provides=(gtk3)
 pkgdesc="GTK+ 3 with typeahead feature enabled for the file chooser widget"
@@ -11,12 +11,14 @@ url="http://www.gtk.org/"
 install=gtk3.install
 depends=(atk cairo libcups libxcursor libxinerama libxrandr libxi libepoxy gdk-pixbuf2
          libxcomposite libxdamage pango shared-mime-info colord at-spi2-atk wayland libxkbcommon
-         adwaita-icon-theme json-glib rest)
-makedepends=(gobject-introspection libcanberra)
+         adwaita-icon-theme json-glib rest gtk-update-icon-cache)
 optdepends=('libcanberra: gtk3-widget-factory demo')
+makedepends=(gobject-introspection libcanberra)
 license=(LGPL)
-source=(https://download.gnome.org/sources/gtk+/${pkgver:0:4}/gtk+-$pkgver.tar.xz)
-sha256sums=('2943fd4a6b02c2a9b2edd231c1d8f7a1d2f8d36996f14310d34f503dca9ebea4')
+source=(https://download.gnome.org/sources/gtk+/${pkgver:0:4}/gtk+-$pkgver.tar.xz
+	settings.ini)
+sha256sums=('1ee5dbd7a4cb81a91eaa1b7ae64ba5a3eab6a3c0a764155583ab96524590fc8e'
+            '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202')
 
 prepare() {
     cd gtk+-$pkgver
@@ -35,6 +37,8 @@ build() {
 
     #https://bugzilla.gnome.org/show_bug.cgi?id=655517
     sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+
+    # Typeahead-specific changes
     sed -i "s/<property name=\"enable-search\">False<\/property>/<property name=\"enable-search\">True<\/property>/" gtk/ui/gtkfilechooserwidget.ui
     sed -i "/gtk_tree_view_set_search_column (GTK_TREE_VIEW (priv->browse_files_tree_view), -1);/d" gtk/gtkfilechooserwidget.c
     sed -i "/gtk_tree_view_columns_autosize (GTK_TREE_VIEW (priv->browse_files_tree_view));/a gtk_tree_view_set_search_column (GTK_TREE_VIEW (priv->browse_files_tree_view), MODEL_COL_NAME);" gtk/gtkfilechooserwidget.c
@@ -43,7 +47,10 @@ build() {
 }
 
 package() {
+    install=gtk3.install
+
     cd "gtk+-$pkgver"
     make DESTDIR="$pkgdir" install
-    rm -f "$pkgdir/usr/bin/gtk-update-icon-cache"
+    rm $pkgdir/usr/bin/gtk-update-icon-cache
+    install -Dm644 ../settings.ini "$pkgdir/usr/share/gtk-3.0/settings.ini"
 }
