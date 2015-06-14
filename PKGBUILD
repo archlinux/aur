@@ -1,20 +1,21 @@
+# CPAN Name  : DateTime-Format-Epoch
 # Contributor: Anonymous
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-datetime-format-epoch'
-pkgver='0.13'
+pkgver='0.16'
 pkgrel='1'
-pkgdesc="Convert dates to seconds since epoch, for arbritrary epochs"
+pkgdesc="Convert DateTimes to/from epoch seconds"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-datetime>=0.31' 'perl-params-validate')
+depends=('perl-datetime>=0.31' 'perl-params-validate>=0')
 makedepends=()
-url='http://search.cpan.org/dist/DateTime-Format-Epoch'
-source=('http://search.cpan.org/CPAN/authors/id/C/CH/CHORNY/DateTime-Format-Epoch-0.13.tar.gz')
-md5sums=('f42982ea634401df953f88ce5eec1b7d')
-sha512sums=('f750126b7609c00e746b5a2c9c0aa5db0e906fbeacfadb065eb5746873ec2bc33bdb209f2359bd1b0e18406053c4e6c87b54623a2d74c1053767643a2da17a1a')
-_distdir="DateTime-Format-Epoch-0.13"
+url='https://metacpan.org/release/DateTime-Format-Epoch'
+source=('http://search.cpan.org/CPAN/authors/id/C/CH/CHORNY/DateTime-Format-Epoch-0.16.tar.gz')
+md5sums=('856d6048f42724f49835fb96f66bab3d')
+sha512sums=('61667e07eb5ae0d93ac37a84816be3095ed880d8c4e28ba6cd5f700723de6750f70a8ed00027dfe7cb6a8b7798c8b381a0f1f3dee03cef343a010255aed0c345')
+_distdir="DateTime-Format-Epoch-0.16"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,6 +40,7 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
+
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
