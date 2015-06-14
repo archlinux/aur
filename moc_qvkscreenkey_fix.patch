@@ -1,0 +1,13 @@
+--- a/screenkey/QvkScreenkey.h	2015-06-14 17:14:13.276872940 -0500
++++ b/screenkey/QvkScreenkey.h	2015-06-14 17:15:21.356869542 -0500
+@@ -9,6 +9,10 @@
+ #include <stdio.h>
+ #include <string.h>
+
++#ifdef Bool
++#undef Bool
++#endif
++
+ class QvkScreenkey: public QObject
+ { 
+ Q_OBJECT
