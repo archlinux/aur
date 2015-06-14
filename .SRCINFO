@@ -1,0 +1,13 @@
+pkgbase = neuropolitical-ttf
+	pkgdesc = Neuropolitical custom font
+	pkgver = 1.0
+	pkgrel = 4
+	url = http://www.dafont.com/neuropolitical.font
+	install = neuropolitical-ttf.install
+	arch = any
+	license = custom
+	source = neuropolitical.zip::http://dl.dafont.com/dl/?f=neuropolitical
+	md5sums = ec37003c45f0cbeb2f7c05c9a7b49818
+
+pkgname = neuropolitical-ttf
+
