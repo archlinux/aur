@@ -1,0 +1,25 @@
+pkgbase = quartus-free
+	pkgdesc = Quartus II Web Edition design software for Altera FPGA's
+	pkgver = 15.0.0.145
+	pkgrel = 1
+	url = https://dl.altera.com/?edition=web
+	install = quartus.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = bash
+	options = !strip
+	options = !upx
+	source = http://download.altera.com/akdlm/software/acdsinst/15.0/145/ib_tar/Quartus-web-15.0.0.145-linux.tar
+	source = quartus.sh
+	source = quartus.desktop
+	source = 51-usbblaster.rules
+	source = quartus.install
+	md5sums = 6bbe995747baf100d7f5bc04246971d7
+	md5sums = 067c444cae7fe31d3608245712b43ce8
+	md5sums = 32b17cb8b992fc2dccd33d87f0dcd8ce
+	md5sums = f5744dc4820725b93917e3a24df13da9
+	md5sums = a331a81c44aed062a7af6d28542c3d82
+
+pkgname = quartus-free
+
