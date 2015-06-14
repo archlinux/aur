@@ -6,7 +6,7 @@ pkgbase = stardict-wordnet
 	arch = any
 	license = GPL
 	depends = stardict
-	source = http://abloz.com/huzheng/stardict-dic/dict.org/stardict-dictd_www.dict.org_wn-2.4.2.tar.bz2
+	source = http://pkgs.fedoraproject.org/repo/pkgs/stardict-dic/stardict-dictd_www.dict.org_wn-2.4.2.tar.bz2/f164dcb24b1084e1cfa2b1cb63d590e6/stardict-dictd_www.dict.org_wn-2.4.2.tar.bz2
 	md5sums = f164dcb24b1084e1cfa2b1cb63d590e6
 
 pkgname = stardict-wordnet

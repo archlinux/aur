@@ -10,7 +10,8 @@ depends=('stardict')
 url="http://stardict.sourceforge.net"
 license=('GPL')
 #source=(http://yeelou.com/huzheng/stardict-dic/dict.org/stardict-dictd_www.dict.org_wn-$pkgver.tar.bz2)
-source=(http://abloz.com/huzheng/stardict-dic/dict.org/stardict-dictd_www.dict.org_wn-$pkgver.tar.bz2)
+#source=(http://abloz.com/huzheng/stardict-dic/dict.org/stardict-dictd_www.dict.org_wn-$pkgver.tar.bz2)
+source=("http://pkgs.fedoraproject.org/repo/pkgs/stardict-dic/stardict-dictd_www.dict.org_wn-2.4.2.tar.bz2/f164dcb24b1084e1cfa2b1cb63d590e6/stardict-dictd_www.dict.org_wn-2.4.2.tar.bz2")
 md5sums=('f164dcb24b1084e1cfa2b1cb63d590e6')
 
 # this is not a perfect mirror, but the best I could find 
