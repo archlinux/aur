@@ -1,0 +1,15 @@
+pkgbase = ruby-arel
+	pkgdesc = Arel Really Exasperates Logicians Arel is a SQL AST manager for Ruby
+	pkgver = 6.0.0
+	pkgrel = 1
+	url = https://github.com/rails/arel
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = arel-6.0.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/arel-6.0.0.gem
+	sha512sums = 72cd0b6d26fc7dd7239c56e4fed379c496a41f463afb8e258e468cb4bd382eb03a92ae0514295cfa71f13e63562923578adf496aeb9f4ff36325b766733a18ad
+
+pkgname = ruby-arel
+
