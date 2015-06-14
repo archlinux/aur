@@ -2,7 +2,7 @@
 
 pkgname=wingpanel-indicator-session-bzr
 pkgver=r18
-pkgrel=1
+pkgrel=2
 pkgdesc='Session indicator for Wingpanel'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/wingpanel-indicator-session'
@@ -12,7 +12,6 @@ depends=('wingpanel-rewrite-x11-bzr')
 makedepends=('bzr' 'cmake' 'vala')
 provides=('wingpanel-indicator-session')
 conflicts=('wingpanel-indicator-session')
-install='wingpanel.install'
 source=('bzr+lp:wingpanel-indicator-session')
 sha256sums=('SKIP')
 
@@ -20,13 +19,6 @@ pkgver() {
   cd wingpanel-indicator-session
 
   echo "r$(bzr revno)"
-}
-
-prepare() {
-  cd wingpanel-indicator-session
-
-  mkdir vapi && cd vapi
-  cp /usr/share/vala-0.28/vapi/{gio,gobject}-2.0.vapi .
 }
 
 build() {
@@ -39,7 +31,7 @@ build() {
 
   cmake .. \
     -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DGSETTINGS_COMPILE='FALSE'
+    -DCMAKE_INSTALL_LIBDIR='/usr/lib'
   make
 }
 

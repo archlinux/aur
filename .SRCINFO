@@ -1,9 +1,8 @@
 pkgbase = wingpanel-indicator-session-bzr
 	pkgdesc = Session indicator for Wingpanel
 	pkgver = r18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/wingpanel-indicator-session
-	install = wingpanel.install
 	arch = i686
 	arch = x86_64
 	groups = pantheon-unstable
