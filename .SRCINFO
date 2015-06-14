@@ -1,0 +1,21 @@
+pkgbase = lib2geom
+	pkgdesc = a library developed to provide a robust computational geometry framework
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://lib2geom.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = boost
+	depends = gtkmm
+	depends = gsl
+	depends = blas
+	depends = boost-libs
+	source = http://downloads.sourceforge.net/project/lib2geom/lib2geom/0.2/lib2geom-0.2.0.tar.gz
+	source = fix.patch
+	md5sums = 983941e4b115a3af9ee95ab2d9cc35e5
+	md5sums = eaf3e1f1739cd96a179d25ad23502b36
+
+pkgname = lib2geom
+

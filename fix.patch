@@ -1,0 +1,70 @@
+diff -ru old/src/2geom/sbasis-math.cpp new/src/2geom/sbasis-math.cpp
+--- old/src/2geom/sbasis-math.cpp	2013-08-09 21:48:31.294925000 -0300
++++ new/src/2geom/sbasis-math.cpp	2013-08-09 21:50:31.641730914 -0300
+@@ -38,12 +38,12 @@
+ //#define ZERO 1e-3
+ 
+ 
+-namespace Geom {
+-
+-
+ #include <stdio.h>
+ #include <math.h>
+ 
++namespace Geom {
++
++
+ //-|x|-----------------------------------------------------------------------
+ /** Return the absolute value of a function pointwise.
+  \param f function
+Only in new/src/2geom: .#utils.cpp
+diff -ru old/src/2geom/utils.cpp new/src/2geom/utils.cpp
+--- old/src/2geom/utils.cpp	2013-08-09 22:00:41.292540903 -0300
++++ new/src/2geom/utils.cpp	2013-08-09 22:04:49.403191178 -0300
+@@ -37,27 +37,27 @@
+ {
+ 
+ // return a vector that contains all the binomial coefficients of degree n 
+-void binomial_coefficients(std::vector<size_t>& bc, size_t n)
++void binomial_coefficients(std::vector<std::size_t>& bc, std::size_t n)
+ {
+-    size_t s = n+1;
++    std::size_t s = n+1;
+     bc.clear();
+     bc.resize(s);
+     bc[0] = 1;
+-    size_t k;
+-    for (size_t i = 1; i < n; ++i)
++    std::size_t k;
++    for (std::size_t i = 1; i < n; ++i)
+     {
+         k = i >> 1;
+         if (i & 1u)
+         {
+             bc[k+1] = bc[k] << 1;
+         }
+-        for (size_t j = k; j > 0; --j)
++        for (std::size_t j = k; j > 0; --j)
+         {
+             bc[j] += bc[j-1];
+         }
+     }
+     s >>= 1;
+-    for (size_t i = 0; i < s; ++i)
++    for (std::size_t i = 0; i < s; ++i)
+     {
+         bc[n-i] = bc[i];
+     }
+Only in new/src/2geom: .#utils.h
+diff -ru old/src/2geom/utils.h new/src/2geom/utils.h
+--- old/src/2geom/utils.h	2013-08-09 21:58:02.340283241 -0300
++++ new/src/2geom/utils.h	2013-08-09 21:58:32.088482082 -0300
+@@ -80,7 +80,7 @@
+ }
+ 
+ 
+-void binomial_coefficients(std::vector<size_t>& bc, size_t n);
++void binomial_coefficients(std::vector<std::size_t>& bc, std::size_t n);
+ 
+ }
+ 
