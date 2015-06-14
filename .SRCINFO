@@ -1,0 +1,15 @@
+pkgbase = mbseventapi
+	pkgdesc = C functions to read/write events to/from GSI MBS
+	pkgver = 45.2
+	pkgrel = 3
+	url = http://www-win.gsi.de/lea/eventapi.htm
+	arch = i686
+	arch = x86_64
+	license = unknown
+	options = staticlibs
+	options = !emptydirs
+	source = http://www-linux.gsi.de/~mbs/download/MBSeventAPIv45-2.tar.gz
+	md5sums = bf2df34158b4e853f8400763934f9df1
+
+pkgname = mbseventapi
+
