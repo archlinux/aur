@@ -1,0 +1,14 @@
+pkgbase = gitwatch-git
+	pkgdesc = A bash script to watch a file or folder and commit changes to a git repo
+	pkgver = r66.61c1aac
+	pkgrel = 1
+	url = https://github.com/nevik/gitwatch
+	arch = any
+	license = GPL3
+	depends = git
+	depends = inotify-tools
+	source = git+https://github.com/nevik/gitwatch.git
+	md5sums = SKIP
+
+pkgname = gitwatch-git
+
