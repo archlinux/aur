@@ -1,0 +1,17 @@
+pkgbase = jskat
+	pkgdesc = Free implementation of the German card game Skat in Java.
+	pkgver = 0.14.4
+	pkgrel = 1
+	url = http://www.jskat.org
+	arch = any
+	license = GPL3
+	depends = java-runtime
+	depends = bash
+	noextract = JSkat-0.14.4.jar
+	source = http://downloads.sourceforge.net/project/jskat/jskat/0.14.4/JSkat-0.14.4.jar
+	source = jskat.png::http://www.jskat.org/img/jskat_logo.png
+	md5sums = e8800b48e4dfb8da0e61165955490eda
+	md5sums = 22e53ed5478bc77a1c0c565d913dcc5b
+
+pkgname = jskat
+
