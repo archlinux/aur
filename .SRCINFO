@@ -1,0 +1,18 @@
+pkgbase = libsigrok4dslogic
+	pkgdesc = Client software that supports the DSLogic DreamSourceLab logic analyzer
+	pkgver = 0.4
+	pkgrel = 5
+	url = http://www.dreamsourcelab.com/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = boost
+	depends = libzip
+	depends = libusb
+	depends = libserialport
+	conflicts = libsigrok4dslogic
+	source = git+https://github.com/DreamSourceLab/DSLogic.git#commit=7c8b0b19d3c049497612a21500340c0e52dc9a92
+	md5sums = SKIP
+
+pkgname = libsigrok4dslogic
+
