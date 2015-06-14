@@ -22,16 +22,15 @@ DLAGENTS=('https::/usr/bin/wget -c -t 3 --waitretry=3 -O %o %u'
 # The download gate remains open about 15 minutes before needed download the token/files again.
 wget "http://www.lsi.com/magic.axd?x=e&file=http%3A//www.lsi.com/downloads/Public/MegaRAID%2520Common%2520Files/${pkgver}_Linux-x86_MSM.txt" -q -O /dev/null
 
-source=( #'https://collaboration.opengroup.org/pegasus/documents/29160/pegasus-2.13.0.tar.gz'
-        'https://collaboration.opengroup.org/pegasus/documents/32572/pegasus-2.14.1.tar.gz'
+source=('https://collaboration.opengroup.org/pegasus/documents/32572/pegasus-2.14.1.tar.gz'
         'msm_profile.sh'
         'LSI_StorSNMP.ini'
         'lsi_msm.service'
         'lsi_mrdsnmpd.service'
         'ld.so.lsi-msm.conf'
         'http://www.lsi.com/downloads/Public/Advanced%20Software/Advanced%20Software%20Common%20Files/SLA_AdvancedSoftware.pdf'
-        'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.9.0-no-rpath.patch'
         'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.7.0-PIE.patch'
+        'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.9.0-no-rpath.patch'
         'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.13.0-gcc5-build.patch'
         'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.14.1-build-fixes.patch'
         'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.14.1-ssl-include.patch')
@@ -44,8 +43,8 @@ sha1sums=('c832eaf240f6dfba843c4937f7a935382d48b9be'
           '08e484f4c1f177a81587d5e12f2b806baddcf199'
           '73b553200ae2ccae980701d7324681529f551fc9'
           '8f7da07466346443acc24df3608744a7d80a9124'
-          '236728c6ebdcad97bec03cb99221577e086401ad'
           '262dd8efae4025516cc23a14c6854a49af650245'
+          '236728c6ebdcad97bec03cb99221577e086401ad'
           'e8c0cea2589daebcd94ec2baf726391d4cd516cd'
           'a4d642b7be3c3400539dac5014f66463dc567221'
           '1eadb4d032cb7e7367317e61fee6a6e1f9f68868')
@@ -72,6 +71,7 @@ create_links() {
 }
 
 prepare() {
+  # Patch pegasus-toc sources
   patch -d pegasus -p1 -i ../pegasus-2.7.0-PIE.patch
   patch -d pegasus -p1 -i ../pegasus-2.9.0-no-rpath.patch
   patch -d pegasus -p1 -i ../pegasus-2.13.0-gcc5-build.patch
@@ -82,7 +82,7 @@ prepare() {
 }
 
 build() {
-  msg2 "Build Pegasus frameworks"
+  msg2 "Build Pegasus-TOG framework"
   cd pegasus
   ./configure
   make -f GNUmakefile
@@ -104,7 +104,7 @@ package() {
   install -Dm644 usr/share/MegaRAID_Storage_Manager/MSMHelp.desktop.SuSE usr/share/applications/MSMHelp.desktop
   install -Dm644 usr/share/MegaRAID_Storage_Manager/MSMStartupUI.desktop.SuSE usr/share/applications/MSMStartupUI.desktop
 
-  # Set correct path in launchers and fix entries
+  # Set correct path in desktop launchers and fix entries
   sed -e 's|local/MegaRAID Storage Manager|share/MegaRAID_Storage_Manager|g' \
       -e 's|SystemSetup||g' \
       -i usr/share/applications/*.desktop
@@ -121,7 +121,7 @@ package() {
   ln -sf /etc/lsi_mrdsnmp/lsi_mrdsnmpagent usr/bin/lsi_mrdsnmpagent
   ln -sf /etc/lsi_mrdsnmp/lsi_mrdsnmpmain usr/bin/lsi_mrdsnmpmain
 
-  # Remove RH/SuSe path remains
+  # Remove RH/SuSe paths remains
   for i in "$(find . -type f -name '*.sh' -o -name 'popup')"; do sed -e '/msm_profile/d' -i ${i}; done
 
   # Standarized /usr/share/MegaRAID_Storage_Manager/start{,monitor}help.sh whit xdg-open ## Someday, I'll create a patch instead sed
@@ -151,9 +151,9 @@ package() {
          etc/lsi_mrdsnmp/lsi_mrdsnmpd.{rh,suse} \
          etc/lsi_mrdsnmp/sas{,-ir}/{install,uninstall} \
          usr/share/MegaRAID_Storage_Manager/{*desktop.{SuSE,redhat},{uninstaller,pwd,.__uninst}.sh,vmware{35,40},installtype} \
-         opt/lsi/Pegasus
 
   # Instal compiled Pegasus framework libraries
+  rm -fr opt/lsi/Pegasus
   local _pegasus_lib=('libpegclient.so.1'
                       'libpegcommon.so.1'
                       'libpegconfig.so.1'
@@ -200,9 +200,9 @@ package() {
 
   # Add /opt/lsi/msm/lib, /opt/lsi/Pegasus and /opt/lsi/snmp/lib to ldconf search path
   install -d "${pkgdir}/etc/ld.so.conf.d"
-  install -Dm644  "${srcdir}/ld.so.lsi-msm.conf" "${pkgdir}/etc/ld.so.conf.d/lsi.conf"
+  install -Dm644 "${srcdir}/ld.so.lsi-msm.conf" "${pkgdir}/etc/ld.so.conf.d/lsi.conf"
 
-  #remove Megapopup system launcher. because eats tons of RAM
+  # Remove Megapopup system launcher. because eats tons of RAM
   rm -fr "${pkgdir}/etc/X11"
 
   # Install licenses
