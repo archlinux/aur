@@ -1,6 +1,6 @@
 pkgbase = opensimulator-osgrid
 	pkgdesc = OSGrid's distribution of OpenSimulator, preconfigured to connect with OSGrid
-	pkgver = 20150523.v0.8.2.abb3bb6
+	pkgver = 20150606.v0.8.2.81ef7b5
 	pkgrel = 1
 	url = http://www.osgrid.org
 	install = opensimulator-osgrid.install
@@ -12,9 +12,9 @@ pkgbase = opensimulator-osgrid
 	depends = sqlite
 	backup = opt/opensimulator-osgrid/bin/OpenSim.ini
 	backup = opt/opensimulator-osgrid/bin/config-include/GridCommon.ini
-	source = http://danbanner.onikenkon.com/osgrid//osgrid-opensim-05232015.v0.8.2.abb3bb6.zip
+	source = http://danbanner.onikenkon.com/osgrid//osgrid-opensim-06062015.v0.8.2.81ef7b5.zip
 	source = osgrid.sh
-	md5sums = 6d9be12328d73be1bc8f1dbd6394d26d
+	md5sums = b69b183f2a319227e68b61dd500d15fb
 	md5sums = 8ad5aab5c434aef00d12b08343a5da5a
 
 pkgname = opensimulator-osgrid
