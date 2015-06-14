@@ -1,0 +1,15 @@
+pkgbase = ejabberd-mod_mam
+	pkgdesc = Message Archive Management for ejabberd
+	pkgver = 20150518
+	pkgrel = 1
+	url = http://www.ejabberd.im/ejabberd-modules
+	arch = any
+	license = GPL
+	makedepends = erlang-nox
+	makedepends = git
+	depends = ejabberd
+	source = git://github.com/processone/ejabberd-contrib.git
+	sha1sums = SKIP
+
+pkgname = ejabberd-mod_mam
+
