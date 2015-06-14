@@ -1,0 +1,17 @@
+pkgbase = extcalc
+	pkgdesc = A multifunctional scientific graphic calculator
+	pkgver = 0.9.3_1
+	pkgrel = 3
+	url = http://extcalc-linux.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc>=3
+	makedepends = cmake
+	depends = mesa
+	depends = qt4>=4.3
+	source = http://downloads.sourceforge.net/extcalc-linux/extcalc-0.9.3-1.tar.gz
+	md5sums = efe53d36c8f1f1811ab46ed1a6e0e240
+
+pkgname = extcalc
+
