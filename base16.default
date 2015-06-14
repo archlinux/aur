@@ -1,0 +1,5 @@
+# The default theme to use for an application
+THEME="default"
+
+# The variant of the theme to use (light or dark)
+VARIANT="dark"

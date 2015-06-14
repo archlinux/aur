@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "Available base16 templates:"
+cat /usr/share/base16/index

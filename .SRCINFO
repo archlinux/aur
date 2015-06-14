@@ -1,0 +1,23 @@
+pkgbase = base16-git
+	pkgdesc = A series of color schemes
+	pkgver = r492.d2773ce
+	pkgrel = 1
+	url = http://chriskempson.github.io/base16
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = ruby
+	provides = base16
+	conflicts = base16
+	options = !strip
+	source = base16::git+https://github.com/chriskempson/base16-builder.git
+	source = base16-template-for
+	source = base16-list-schemes
+	source = base16.default
+	sha256sums = SKIP
+	sha256sums = c1008db7487d261306db1cd20ba6258a1862b899fefaf7e6fd623ca58f31b4ad
+	sha256sums = ebfd99c08bb03ce3029d3b792ffbee63b861300ab1aafb07e0a80ca380df0607
+	sha256sums = 32c165ee997851934f5d254887c3e9b176ea088675edd492c5005d441c63a31c
+
+pkgname = base16-git
+

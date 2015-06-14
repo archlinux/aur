@@ -1,0 +1,67 @@
+#!/bin/sh
+
+THEME='tomorrow'
+VARIANT='dark'
+
+CONFIG_LOCS="/etc/default/base16"
+. /etc/default/base16
+
+if [ -e "$HOME/.config/base16.conf" ]; then
+    . $HOME/.config/base16.conf
+    CONFIG_LOCS+=" $HOME/.config/base16.conf"
+fi
+
+if [ -n "$XDG_CONFIG_HOME" ] && [ -e "$XDG_CONFIG_HOME/base16.conf" ]; then
+    . $XDG_CONFIG_HOME/base16.conf
+    CONFIG_LOCS+="$XDG_CONFIG_HOME/base16.conf"
+fi
+
+BASEDIR="/usr/share/base16"
+
+# Perform validity checks on themes
+if [ -z $(cat $BASEDIR/index | grep $THEME) ]; then
+    echo "Theme $THEME does not exist! Check one of: $CONFIG_LOCS"
+    exit 2
+fi
+
+case "$VARIANT" in
+    light|dark)
+        ;;
+    *)
+        echo "Variant must be either light or dark! You provided $VARIANT"
+        exit 2
+        ;;
+esac
+
+
+# Now we get to the actual input
+if [ $# -lt 2 ]; then
+    echo "Not enough arguments! Usage: $0 <template> <extension>"
+    exit 1
+fi
+
+TEMPLATE=$1
+EXTENSION="$2"
+
+if [ ! -d "$BASEDIR/$TEMPLATE" ]; then
+    echo "Template $TEMPLATE is not valid. Valid templates are ${/opt/base16/*}"
+    exit 2
+fi
+
+FILE="$BASEDIR/$TEMPLATE/base16-${THEME}.${VARIANT}.${EXTENSION}"
+
+# Handle some formats where the editor controls variant, like vim. This might warrant extra handling in the future (for editor configs?)
+NOVARIANT_FILE="$BASEDIR/$TEMPLATE/base16-$THEME.$EXTENSION"
+
+if [ ! -e "$FILE" ]; then
+    if [ -e "$NOVARIANT_FILE" ]; then
+        echo $NOVARIANT_FILE
+    else
+        echo "File $FILE does not exist. Check theme, variant, and extension!"
+        exit 2
+    fi
+else
+    echo $FILE
+fi
+
+
