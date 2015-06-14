@@ -1,0 +1,8 @@
+[Unit]
+Description=nginx socket
+
+[Socket]
+ListenStream=80
+
+[Install]
+WantedBy=multi-user.target
