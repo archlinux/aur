@@ -1,0 +1,12 @@
+pkgbase = udev-polish-man
+	pkgdesc = Udev Polish man pages
+	pkgver = 128
+	pkgrel = 1
+	url = http://www.linux.pl/?id=news&show=4939
+	arch = any
+	license = GPL
+	source = http://linux.pl/users/arctgx/man/udev-polish-man.tar.gz
+	md5sums = afed519802bb612eead1c3d915baa8c7
+
+pkgname = udev-polish-man
+
