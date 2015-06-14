@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=eXtended screenshot
+Comment=A tool for capture, edit, share and exchange screenshots between people via the internet.
+Exec=/usr/bin/xscreenshot
+Terminal=false
+Type=Application
+Categories=Application;Graphics

@@ -1,0 +1,22 @@
+pkgbase = xscreenshot
+	pkgdesc = A tool for capture, edit, share and exchange screenshots between people via the internet
+	pkgver = 3.1
+	pkgrel = 1
+	url = http://xscreenshot.com/
+	install = xscreenshot.install
+	arch = i686
+	arch = x86_64
+	license = custom:xscreenshot
+	depends = gcc-libs
+	depends = libxext
+	depends = libxrender
+	depends = fontconfig
+	source = http://xscreenshot.com/downloads/xscreenshot-linux-i386.tar.gz
+	source = LICENSE
+	source = xscreenshot.desktop
+	md5sums = 2A5296336572F702C38BAA0314FFD0DA
+	md5sums = d03f35823a7b68b7663750f7d063ce5b
+	md5sums = fae75179ffcb2a7d0757ddfb69ea9095
+
+pkgname = xscreenshot
+
