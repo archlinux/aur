@@ -1,0 +1,15 @@
+pkgbase = ruby-rubygame
+	pkgdesc = Clean and powerful library for game programming
+	pkgver = 2.6.4
+	pkgrel = 1
+	url = http://rubygame.org/
+	arch = any
+	depends = ruby
+	depends = ruby-ruby-sdl-ffi
+	noextract = rubygame-2.6.4.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rubygame-2.6.4.gem
+	sha512sums = e45d9e3807e218045ba63fc26189b6f7bd16d8d5efe207c752d4e5e0d6bf34f4e09a70565571c11daaac585f24a1a85f7cc524b4a92d0cb8f2f0c4c76c716581
+
+pkgname = ruby-rubygame
+
