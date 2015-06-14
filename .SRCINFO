@@ -1,0 +1,20 @@
+pkgbase = ruby-chef-zero
+	pkgdesc = Self-contained, easy-setup, fast-start in-memory Chef server for testing and solo setup purposes
+	pkgver = 4.2.2
+	pkgrel = 1
+	url = http://www.opscode.com
+	arch = any
+	license = Apache 2.0
+	depends = ruby
+	depends = ruby-mixlib-log
+	depends = ruby-hashie-2
+	depends = ruby-uuidtools
+	depends = ruby-ffi-yajl
+	depends = ruby-rack
+	noextract = chef-zero-4.2.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/chef-zero-4.2.2.gem
+	sha512sums = b3498339941174ec45b8e3137291dbd20e302ac2a2ae4f91a02e9aaef31809f659c0932989ff3318820dfe9bbbd4ad53d990de6d4ae2347d30be5a0e43431469
+
+pkgname = ruby-chef-zero
+
