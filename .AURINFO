@@ -1,0 +1,16 @@
+pkgbase = quicktile-git
+	pkgdesc = Lightweight standalone alternative to Compiz Grid plugin
+	pkgver = 20140626
+	pkgrel = 1
+	url = https://github.com/ssokolow/quicktile
+	arch = any
+	license = GPLv2
+	makedepends = git
+	depends = python2
+	depends = pygtk
+	depends = python2-xlib
+	depends = python2-wnck
+	optdepends = python2-dbus
+
+pkgname = quicktile-git
+
