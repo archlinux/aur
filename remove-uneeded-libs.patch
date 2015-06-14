@@ -1,0 +1,15 @@
+diff --git a/inc/Module/Build/Scintilla/GTK.pm b/inc/Module/Build/Scintilla/GTK.pm
+index 3894bd8..e910d79 100644
+--- a/inc/Module/Build/Scintilla/GTK.pm
++++ b/inc/Module/Build/Scintilla/GTK.pm
+@@ -83,9 +83,7 @@ sub stc_prebuild_check {
+ 
+ sub stc_extra_scintilla_libs {
+ 	my $self   = shift;
+-	my $extras = '-lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lpangoft2-1.0 ';
+-	$extras .= '-lgdk_pixbuf-2.0 -lm -lpango-1.0 -lfreetype -lfontconfig -lgobject-2.0 ';
+-	$extras .= '-lgmodule-2.0 -lgthread-2.0 -lglib-2.0';
++	my $extras = '-lm';
+ 	return $extras;
+ }
+ 

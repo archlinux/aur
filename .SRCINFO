@@ -1,0 +1,33 @@
+pkgbase = perl-wx-scintilla-dev
+	pkgdesc = Wx::Scintilla - Scintilla source code editing component for wxWidgets - Developer Release
+	pkgver = 0.40_02
+	pkgrel = 1
+	url = http://search.cpan.org/~azawawi/Wx-Scintilla/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-alien-wxwidgets
+	makedepends = perl-extutils-xspp
+	makedepends = perl-test-simple
+	makedepends = perl-wx
+	makedepends = perl-module-build
+	depends = perl
+	depends = wxgtk2.8
+	provides = perl-wx-scintilla=0.40_02
+	provides = perl-wx-scintilla-constant
+	provides = perl-wx-scintilla-textctrl
+	provides = perl-wx-scintilla-textevent
+	provides = perl-wx-scintillatextctrl
+	provides = perl-wx-scintillatextevent
+	conflicts = perl-wx-scintilla
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AZ/AZAWAWI/Wx-Scintilla-0.40_02.tar.gz
+	source = remove-uneeded-libs.patch
+	source = p.patch
+	sha256sums = 4772ef1502ce332a8a91f1a53518616498b9a8f5d16a296052cc86fa622f270e
+	sha256sums = 53d8f6018affd735b4deb5d80128c9a0106185ddab5ed53f1409975319188e52
+	sha256sums = f75b4ba5bb44e74a49df386ae4a6a9aa27f25eacdc8bbc7ff0a59f34984ad7d0
+
+pkgname = perl-wx-scintilla-dev
+
