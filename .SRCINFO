@@ -1,0 +1,18 @@
+pkgbase = tv
+	pkgdesc = Spectra- and matrix-analysis program developed at IKP, Köln, Germany
+	pkgver = 1.9.13
+	pkgrel = 4
+	url = http://www.ikp.uni-koeln.de/misc/doc/Tv_user-manual/Tv_user-manual.html
+	arch = x86_64
+	arch = i686
+	license = custon
+	makedepends = latex2html
+	depends = mfile
+	depends = xaw3d
+	depends = readline
+	options = !emptydirs
+	source = http://www.ikp.uni-koeln.de/src/tv-1.9.13.tar.gz
+	md5sums = 5b739a811abe604cbe4160e4402796dc
+
+pkgname = tv
+
