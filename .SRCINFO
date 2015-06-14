@@ -1,0 +1,17 @@
+pkgbase = perl-padre-plugin-perlcritic
+	pkgdesc = Padre::Plugin::PerlCritic - Analyze perl files with Perl::Critic
+	pkgver = 0.12
+	pkgrel = 2
+	url = http://search.cpan.org/~azawawi/Padre-Plugin-PerlCritic
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl
+	depends = perl-padre
+	depends = perl-critic
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AZ/AZAWAWI/Padre-Plugin-PerlCritic-0.12.tar.gz
+	md5sums = a77ebe6f08cb314d1d3420b444c0ddf1
+
+pkgname = perl-padre-plugin-perlcritic
+
