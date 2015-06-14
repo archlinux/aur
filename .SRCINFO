@@ -1,0 +1,17 @@
+pkgbase = perl-yape-regex
+	pkgdesc = YAPE::Regex - Yet Another Parser/Extractor for Regular Expressions
+	pkgver = 4.00
+	pkgrel = 2
+	url = http://search.cpan.org/~gsullivan/YAPE-Regex/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl
+	depends = perl
+	provides = perl-yape-regex-element
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GS/GSULLIVAN/YAPE-Regex-4.00.tar.gz
+	md5sums = df98f5d4b0cdf34736ecf5813b3d0dfc
+
+pkgname = perl-yape-regex
+
