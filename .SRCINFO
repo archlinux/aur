@@ -1,0 +1,16 @@
+pkgbase = ruby-rdoc
+	pkgdesc = RDoc produces HTML and command-line documentation for Ruby projects
+	pkgver = 4.2.0
+	pkgrel = 1
+	url = http://docs.seattlerb.org/rdoc
+	arch = any
+	license = Ruby
+	depends = ruby
+	depends = ruby-json
+	noextract = rdoc-4.2.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rdoc-4.2.0.gem
+	sha512sums = d58aebd7969fa8ea795fd4a2b35ba92d0f7368526ae0fc7fa64956db4e3d80c1b61f472384fe7e5eaa628e9c1ee637c967caf1a52362422cb7c2757e486594de
+
+pkgname = ruby-rdoc
+
