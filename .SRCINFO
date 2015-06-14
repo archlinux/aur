@@ -12,8 +12,8 @@ pkgbase = vim-syntastic-git
 	depends = vim-runtime
 	provides = vim-syntastic
 	conflicts = vim-syntastic
-	source = git+https://github.com/scrooloose/syntastic.git
-	sha1sums = SKIP
+	source = vim-syntastic-git::git+https://github.com/scrooloose/syntastic.git
+	sha512sums = SKIP
 
 pkgname = vim-syntastic-git
 
