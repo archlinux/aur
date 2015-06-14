@@ -1,7 +1,7 @@
 pkgbase = virtualbox-modules-pf
 	pkgdesc = Host linux-pf kernel modules for VirtualBox
 	pkgver = 4.3.28
-	pkgrel = 1
+	pkgrel = 2
 	url = http://virtualbox.org
 	install = virtualbox-modules-pf.install
 	arch = i686
