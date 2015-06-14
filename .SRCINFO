@@ -1,0 +1,12 @@
+pkgbase = emacs-monky-git
+	pkgdesc = Emacs extension that provides an interactive interface for mercurial hg
+	pkgver = 20130402
+	pkgrel = 1
+	url = http://ananthakumaran.in/monky/index.html
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = emacs
+
+pkgname = emacs-monky-git
+
