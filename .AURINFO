@@ -1,0 +1,19 @@
+pkgbase = perl-padre-plugin-yaml
+	pkgdesc = Padre::Plugin::YAML - YAML support for Padre, The Perl IDE
+	pkgver = 0.10
+	pkgrel = 1
+	url = http://search.cpan.org/~bowtie/Padre-Plugin-YAML/
+	install = 
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl-yaml-libyaml
+	depends = perl-padre
+	depends = perl-try-tiny
+	provides = perl-padre-plugin-yaml-document
+	provides = perl-padre-plugin-yaml-syntax
+	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOWTIE/Padre-Plugin-YAML-0.10.tar.gz
+	options = !emptydirs
+
+pkgname = perl-padre-plugin-yaml
+
