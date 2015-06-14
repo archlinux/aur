@@ -1,0 +1,11 @@
+diff -rupN vmmon-only/include/vm_assert.h vmmon-only/include/vm_assert.h
+--- vmmon-only/include/vm_assert.h      2014-03-31 18:49:14.835009422 +0100
++++ vmmon-only/include/vm_assert.h      2014-03-31 18:49:21.380009439 +0100
+@@ -256,6 +256,7 @@ void WarningThrottled(uint32 *count, con
+                                        __FILE__, __LINE__, __FUNCTION__, \
+                                        _fix))
+ #else
++   #undef DEPRECATED /* in <linux/printk.h> since 3.14.0 */
+    #define DEPRECATED(_fix) do {} while (0)
+ #endif
+ 

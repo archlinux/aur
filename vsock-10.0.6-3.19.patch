@@ -1,0 +1,53 @@
+diff --git vsock-only/linux/af_vsock.c vsock-only/linux/af_vsock.c
+index 4d0c6c3..1c29976 100644
+--- vsock-only/linux/af_vsock.c
++++ vsock-only/linux/af_vsock.c
+@@ -4285,7 +4285,7 @@ VSockVmciDgramSendmsg(struct kiocb *kiocb,          // UNUSED
+       goto out;
+    }
+ 
+-   memcpy_fromiovec(VMCI_DG_PAYLOAD(dg), msg->msg_iov, len);
++   memcpy_fromiovec(VMCI_DG_PAYLOAD(dg), &msg->msg_iter.iov, len);
+ 
+    dg->dst = VMCI_MAKE_HANDLE(remoteAddr->svm_cid, remoteAddr->svm_port);
+    dg->src = VMCI_MAKE_HANDLE(vsk->localAddr.svm_cid, vsk->localAddr.svm_port);
+@@ -4645,7 +4645,7 @@ VSockVmciStreamSendmsg(struct kiocb *kiocb,          // UNUSED
+        * able to send.
+        */
+ 
+-      written = vmci_qpair_enquev(vsk->qpair, msg->msg_iov,
++      written = vmci_qpair_enquev(vsk->qpair, &msg->msg_iter.iov,
+                                   len - totalWritten, 0);
+       if (written < 0) {
+          err = -ENOMEM;
+@@ -4704,6 +4704,7 @@ VSockVmciDgramRecvmsg(struct kiocb *kiocb,          // UNUSED
+    VMCIDatagram *dg;
+    size_t payloadLen;
+    struct sk_buff *skb;
++   struct iov_iter to;
+ 
+    sk = sock->sk;
+    noblock = flags & MSG_DONTWAIT;
+@@ -4742,7 +4743,9 @@ VSockVmciDgramRecvmsg(struct kiocb *kiocb,          // UNUSED
+    }
+ 
+    /* Place the datagram payload in the user's iovec. */
+-   err = skb_copy_datagram_iovec(skb, sizeof *dg, msg->msg_iov, payloadLen);
++   // err = skb_copy_datagram_iovec(skb, sizeof *dg, msg->msg_iter, payloadLen);
++   iov_iter_init(&to, READ, &msg->msg_iter.iov, 1, payloadLen);
++   err = skb_copy_datagram_iter(skb, 0, &to, payloadLen);
+    if (err) {
+       goto out;
+    }
+@@ -4888,9 +4891,9 @@ VSockVmciStreamRecvmsg(struct kiocb *kiocb,          // UNUSED
+          }
+ 
+          if (flags & MSG_PEEK) {
+-            read = vmci_qpair_peekv(vsk->qpair, msg->msg_iov, len - copied, 0);
++            read = vmci_qpair_peekv(vsk->qpair, &msg->msg_iter.iov, len - copied, 0);
+          } else {
+-            read = vmci_qpair_dequev(vsk->qpair, msg->msg_iov, len - copied, 0);
++            read = vmci_qpair_dequev(vsk->qpair, &msg->msg_iter.iov, len - copied, 0);
+          }
+ 
+          if (read < 0) {

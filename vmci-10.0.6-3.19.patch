@@ -1,0 +1,27 @@
+diff --git vmci-only/linux/vmciKernelIf.c vmci-only/linux/vmciKernelIf.c
+index a51bef8..8143425 100644
+--- vmci-only/linux/vmciKernelIf.c
++++ vmci-only/linux/vmciKernelIf.c
+@@ -40,7 +40,7 @@
+ #include <linux/socket.h>       /* For memcpy_{to,from}iovec(). */
+ #include <linux/vmalloc.h>
+ #include <linux/wait.h>
+-
++#include <linux/skbuff.h>
+ #include "compat_highmem.h"
+ #include "compat_interrupt.h"
+ #include "compat_mm.h"
+@@ -1300,11 +1300,11 @@ __VMCIMemcpyFromQueue(void *dest,             // OUT:
+       }
+ 
+       if (isIovec) {
+-         struct iovec *iov = (struct iovec *)dest;
++         struct msghdr *msg = dest;
+          int err;
+ 
+          /* The iovec will track bytesCopied internally. */
+-         err = memcpy_toiovec(iov, (uint8 *)va + pageOffset, toCopy);
++         err = memcpy_to_msg(msg, (uint8 *)va + pageOffset, toCopy);
+          if (err != 0) {
+             if (!kernelIf->isDataMapped) {
+                kunmap(kernelIf->page[pageIndex]);

@@ -1,0 +1,14 @@
+[Unit]
+Description=VMware daemon
+Requires=vmware-usbarbitrator.service
+Before=vmware-usbarbitrator.service
+After=network.target
+
+[Service]
+ExecStart=/etc/init.d/vmware start
+ExecStop=/etc/init.d/vmware stop
+PIDFile=/var/lock/subsys/vmware
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

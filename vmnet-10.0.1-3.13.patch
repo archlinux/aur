@@ -1,0 +1,21 @@
+diff -u vmnet-only.a/filter.c vmnet-only/filter.c
+--- vmnet-only.a/filter.c 2014-04-02 21:34:26.935944394 +0300
++++ vmnet-only/filter.c        2013-10-18 22:11:55.000000000 +0300
+@@ -203,7 +203,7 @@
+ #endif
+ 
+ static unsigned int
+-VNetFilterHookFn(unsigned int hooknum,                 // IN:
++VNetFilterHookFn(const struct nf_hook_ops *ops,        // IN:
+ #ifdef VMW_NFHOOK_USES_SKB
+                  struct sk_buff *skb,                  // IN:
+ #else
+@@ -252,7 +252,7 @@
+ 
+    /* When the host transmits, hooknum is VMW_NF_INET_POST_ROUTING. */
+    /* When the host receives, hooknum is VMW_NF_INET_LOCAL_IN. */
+-   transmit = (hooknum == VMW_NF_INET_POST_ROUTING);
++   transmit = (ops->hooknum == VMW_NF_INET_POST_ROUTING);
+ 
+    packetHeader = compat_skb_network_header(skb);
+    ip = (struct iphdr*)packetHeader;

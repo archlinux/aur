@@ -1,0 +1,33 @@
+diff -rupN vsock-only/linux/notify.c vsock-only/linux/notify.c
+--- vsock-only/linux/notify.c	2014-04-15 03:11:41.000000000 +0530
++++ vsock-only/linux/notify.c	2014-05-27 21:36:56.713291909 +0530
+@@ -516,7 +516,7 @@ VSockVmciHandleWrote(struct sock *sk,
+    PKT_FIELD(vsk, sentWaitingRead) = FALSE;
+ #endif
+ 
+-   sk->sk_data_ready(sk, 0);
++   sk->sk_data_ready(sk);
+ }
+ 
+ 
+diff -rupN vsock-only/linux/notifyQState.c vsock-only/linux/notifyQState.c
+--- vsock-only/linux/notifyQState.c	2014-04-15 03:11:41.000000000 +0530
++++ vsock-only/linux/notifyQState.c	2014-05-27 21:38:52.561286734 +0530
+@@ -164,7 +164,7 @@ VSockVmciHandleWrote(struct sock *sk,
+                      struct sockaddr_vm *dst,    // IN: unused
+                      struct sockaddr_vm *src)    // IN: unused
+ {
+-   sk->sk_data_ready(sk, 0);
++   sk->sk_data_ready(sk);
+ }
+ 
+ 
+@@ -566,7 +566,7 @@ VSockVmciNotifyPktRecvPostDequeue(struct
+       }
+ 
+       /* See the comment in VSockVmciNotifyPktSendPostEnqueue */
+-      sk->sk_data_ready(sk, 0);
++      sk->sk_data_ready(sk);
+    }
+ 
+    return err;

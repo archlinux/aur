@@ -1,0 +1,12 @@
+diff -ur vmnet-only.a/netif.c vmnet-only/netif.c
+--- vmnet-only.a/netif.c	2014-10-10 03:23:08.585920012 +0300
++++ vmnet-only/netif.c	2014-10-10 03:23:09.245920008 +0300
+@@ -149,7 +149,7 @@
+    memcpy(deviceName, devName, sizeof deviceName);
+    NULL_TERMINATE_STRING(deviceName);
+ 
+-   dev = alloc_netdev(sizeof *netIf, deviceName, VNetNetIfSetup);
++   dev = alloc_netdev(sizeof *netIf, deviceName, NET_NAME_UNKNOWN, VNetNetIfSetup);
+    if (!dev) {
+       retval = -ENOMEM;
+       goto out;

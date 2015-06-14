@@ -1,0 +1,52 @@
+# Colored makepkg-like functions
+msg_blue() {
+    printf "${blue}==>${bold} $1${all_off}\n"
+}
+
+note_blue() {
+    printf "${blue}==>${yellow} Note $1)${bold} $2${all_off}\n"
+}
+
+note_green() {
+    printf "${green}==>${yellow} Note:${bold} $1${all_off}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+green="${bold}$(tput setaf 2)"
+yellow="${bold}$(tput setaf 3)"
+
+_common() {
+    vmware-patch
+
+    echo
+    note_blue 1 "Enabling the main service is *required* to automatically load modules on boot:
+            # systemctl enable vmware"
+    note_blue 2 "To patch VMware sources in the future, re-run the script 'vmware-patch' as root.
+            Changes can be reverted with 'vmware-unpatch' (only required to apply other
+            patching methods)."
+    note_blue 3 "For further reading see the relevant sections in the Wiki:
+            https://wiki.archlinux.org/index.php/Vmware#Tips_and_tricks
+            https://wiki.archlinux.org/index.php/Vmware#Troubleshooting"
+    echo
+}
+
+post_install() {
+    msg_blue "Running 'vmware-patch' for the first time.."
+
+    _common
+}
+
+post_upgrade() {
+    msg_blue "Re-running 'vmware-patch'.."
+
+    _common
+}
+
+post_remove() {
+    if [[ -d /usr/lib/vmware/modules/source-* ]]; then
+        echo
+        note_green "Left '$(ls -d /usr/lib/vmware/modules/source-*/)' as backup.\n"
+    fi
+}

@@ -1,0 +1,23 @@
+diff -rupN vsock-only/shared/vm_assert.h vsock-only/shared/vm_assert.h
+--- vsock-only/shared/vm_assert.h       2014-03-31 18:49:14.839009422 +0100
++++ vsock-only/shared/vm_assert.h       2014-03-31 18:49:21.382009439 +0100
+@@ -256,6 +256,7 @@ void WarningThrottled(uint32 *count, con
+                                        __FILE__, __LINE__, __FUNCTION__, \
+                                        _fix))
+ #else
++   #undef DEPRECATED /* in <linux/printk.h> since 3.14.0 */
+    #define DEPRECATED(_fix) do {} while (0)
+ #endif
+ 
+diff -rupN vsock-only/linux/af_vsock.c vsock-only/linux/af_vsock.c
+--- vsock-only/linux/af_vsock.c 2014-03-31 18:49:14.837009422 +0100
++++ vsock-only/linux/af_vsock.c 2014-03-31 18:49:21.381009439 +0100
+@@ -2869,7 +2869,7 @@ __VSockVmciCreate(struct net *net,
+       vsk->connectTimeout = psk->connectTimeout;
+    } else {
+       vsk->trusted = capable(CAP_NET_ADMIN);
+-      vsk->owner = current_uid();
++      vsk->owner = from_kuid(current_user_ns(), current_uid());
+       vsk->queuePairSize = VSOCK_DEFAULT_QP_SIZE;
+       vsk->queuePairMinSize = VSOCK_DEFAULT_QP_SIZE_MIN;
+       vsk->queuePairMaxSize = VSOCK_DEFAULT_QP_SIZE_MAX;

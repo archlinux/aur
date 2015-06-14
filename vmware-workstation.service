@@ -1,0 +1,12 @@
+[Unit]
+Description=VMware Workstation Server daemon
+Requires=vmware.service
+After=vmware.service
+
+[Service]
+ExecStart=/etc/init.d/vmware-workstation-server start
+ExecStop=/etc/init.d/vmware-workstation-server stop
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

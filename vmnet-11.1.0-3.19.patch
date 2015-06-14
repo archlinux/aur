@@ -1,0 +1,58 @@
+diff -ur vmnet-only.a/driver.c vmnet-only/driver.c
+--- vmnet-only.a/driver.c	2014-11-20 20:13:56.000000000 -0500
++++ vmnet-only/driver.c	2015-02-09 15:40:10.916640592 -0500
+@@ -265,10 +265,17 @@
+ {
+    int ret = -ENOTTY;
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 19, 0)
+    if (filp && filp->f_op && filp->f_op->ioctl == VNetFileOpIoctl) {
+       ret = VNetFileOpIoctl(filp->f_dentry->d_inode, filp, iocmd, ioarg);
+    }
+    return ret;
++#else 
++   if (filp && filp->f_op && filp->f_op->ioctl == VNetFileOpIoctl) {
++      ret = VNetFileOpIoctl(filp->f_path.dentry->d_inode, filp, iocmd, ioarg);
++   }
++   return ret;
++#endif
+ }
+ 
+ 
+@@ -1191,11 +1198,19 @@
+    struct inode *inode = NULL;
+    long err;
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 19, 0)
+    if (filp && filp->f_dentry) {
+       inode = filp->f_dentry->d_inode;
+    }
+    err = VNetFileOpIoctl(inode, filp, iocmd, ioarg);
+    return err;
++#else 
++   if (filp && filp->f_path.dentry) {
++      inode = filp->f_path.dentry->d_inode;
++   }
++   err = VNetFileOpIoctl(inode, filp, iocmd, ioarg);
++   return err;
++#endif
+ }
+ #endif
+ 
+diff -ur vmnet-only.a/userif.c vmnet-only/userif.c
+--- vmnet-only.a/userif.c	2014-11-20 20:13:56.000000000 -0500
++++ vmnet-only/userif.c	2015-02-09 15:41:02.150847338 -0500
+@@ -523,7 +523,13 @@
+       .iov_base = buf,
+       .iov_len  = len,
+    };
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 19, 0)
+    return skb_copy_datagram_iovec(skb, 0, &iov, len);
++#else
++   struct iov_iter to;
++   iov_iter_init(&to, READ, &iov, 1, len);
++   return skb_copy_datagram_iter(skb, 0, &to, len);
++#endif
+ }
+ 
+ 

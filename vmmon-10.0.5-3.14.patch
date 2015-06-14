@@ -1,0 +1,14 @@
+diff -rupN vmmon-only/linux/driver.c vmmon-only/linux/driver.c
+--- vmmon-only/linux/driver.c   2014-03-31 18:49:14.834009422 +0100
++++ vmmon-only/linux/driver.c   2014-03-31 18:49:21.379009439 +0100
+@@ -1338,7 +1338,9 @@ LinuxDriverReadTSC(void *data,   // OUT:
+  *-----------------------------------------------------------------------------
+  */
+ 
+-__attribute__((always_inline)) static Bool
++#include <linux/compiler-gcc.h>
++
++__always_inline static Bool
+ LinuxDriverSyncReadTSCs(uint64 *delta) // OUT: TSC max - TSC min
+ {
+    TSCDelta tscDelta;
