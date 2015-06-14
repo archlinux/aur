@@ -1,0 +1,14 @@
+pkgbase = flexbar
+	pkgdesc = flexible barcode and adapter removal for sequencing platforms
+	pkgver = 2.5
+	pkgrel = 1
+	url = http://sourceforge.net/projects/flexbar
+	arch = any
+	license = GPL3
+	depends = seqan
+	depends = cmake
+	source = http://downloads.sourceforge.net/project/flexbar/2.5/flexbar_v2.5_src.tgz
+	sha512sums = 4ffd5444c2dc1de3dcd33bcd674376c007bd6bc2acfc94ff25fbd73ea6aabc963d4344f51f4a597b59b4965711a68f7900efcead1229ba9c2d3659c5b55c9a30
+
+pkgname = flexbar
+
