@@ -1,0 +1,16 @@
+pkgbase = xcmiscproto-git
+	pkgdesc = X11 XC-Miscellaneous extension wire protocol - Git version
+	pkgver = 1.2.2.3.r53.gc27c825
+	pkgrel = 1
+	url = http://cgit.freedesktop.org/xorg/proto/xcmiscproto/
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = xorg-util-macros
+	provides = xcmiscproto=1.2.2.3.r53.gc27c825
+	conflicts = xcmiscproto
+	source = git://anongit.freedesktop.org/xorg/proto/xcmiscproto
+	md5sums = SKIP
+
+pkgname = xcmiscproto-git
+
