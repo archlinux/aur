@@ -1,0 +1,15 @@
+pkgbase = ruby-rack-mount
+	pkgdesc = Stackable dynamic tree based Rack router
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://github.com/josh/rack-mount
+	arch = any
+	depends = ruby
+	depends = ruby-rack
+	noextract = rack-mount-0.8.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rack-mount-0.8.3.gem
+	sha512sums = 993d1d3335ed3b7aed2665726969021119865b3b5310829ed8cf005a8ad2779d386afa75741880800e22ffc484e8837517a584e8072a6f8c3048cff9413093a6
+
+pkgname = ruby-rack-mount
+
