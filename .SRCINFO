@@ -1,0 +1,14 @@
+pkgbase = python-espeak
+	pkgdesc = Python bindings for eSpeak.
+	pkgver = 0.5
+	pkgrel = 2
+	url = https://launchpad.net/python-espeak
+	arch = any
+	license = GPL3
+	depends = espeak
+	depends = python
+	source = http://launchpad.net/python-espeak/trunk/0.5/+download/python-espeak-0.5.tar.gz
+	md5sums = 28dd6d2eff6aca10e259e02a81834245
+
+pkgname = python-espeak
+
