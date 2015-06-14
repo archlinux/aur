@@ -1,0 +1,18 @@
+pkgbase = radiod
+	pkgdesc = Bash script for listening internet radio via mplayer, controlled by the dialog program
+	pkgver = 1.4.3
+	pkgrel = 1
+	url = http://dracorp.one.pl/source/radiod
+	arch = any
+	license = GPL
+	makedepends = gettext
+	makedepends = make
+	depends = dialog
+	depends = mplayer
+	depends = screen
+	backup = etc/radiod.pls
+	source = http://downloads.sourceforge.net/sourceforge/dradio/radiod-1.4.3.tar.gz
+	md5sums = 618ac72196aa9fcfe2c39068fa958500
+
+pkgname = radiod
+
