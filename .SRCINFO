@@ -1,0 +1,17 @@
+pkgbase = perl-padre-plugin-perltidy
+	pkgdesc = Padre::Plugin::PerlTidy - Format perl files using Perl::Tidy
+	pkgver = 0.22
+	pkgrel = 2
+	url = http://search.cpan.org/~azawawi/Padre-Plugin-PerlTidy
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl
+	depends = perl-tidy
+	depends = perl-padre
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AZ/AZAWAWI/Padre-Plugin-PerlTidy-0.22.tar.gz
+	md5sums = 6abf5f869a860dcd06b2b56a007574fe
+
+pkgname = perl-padre-plugin-perltidy
+
