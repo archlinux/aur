@@ -1,0 +1,20 @@
+--- Makefile.common	2011-04-14 13:16:13.000000000 -0500
++++ ../../../Makefile.common	2012-03-04 17:42:48.975097462 -0500
+@@ -2,7 +2,7 @@
+ 
+ EXE = 4dg8r 4play addesc addmat algndiag calib_ascii combine divide \
+       dixie_gls drawstring effit encal energy escl8r foldout gf3 gf3x gls \
+-      gls_conv incub8r legft levit8r lufwhm make4cub pedit plot plot2ps \
++      gls_conv incub8r legft levit8r lufwhm make4cub pedit plotrw plot2ps \
+       pro3d pro4d pslice sdgen split4cub slice Source spec_ascii statft \
+       subbgm2 subbgmat symmat unfold unfoldesc unix2unix vms2unix win2tab \
+       gtkgls gtkesc gtklev gtk4dg \
+@@ -111,7 +111,7 @@
+ pedit: pedit.o menu_x.o caskx.o getfloat.o drawstring.o util.a minig.a
+ 	$(CC) $(CFLAGS) -o $@ pedit.o menu_x.o caskx.o getfloat.o \
+          drawstring.o util.a minig.a $(LIB_PATHS) $(LIBS)
+-plot: plot.o getfloat.o util.a
++plotrw: plot.o getfloat.o util.a
+ 	$(CC) $(CFLAGS) -o $@ plot.o getfloat.o util.a $(LIB_PATHS) $(LIBS)
+ plot2ps: plot2ps.o getfloat.o util.a drawstr_ps.o
+ 	$(CC) $(CFLAGS) -o $@ plot2ps.o getfloat.o util.a drawstr_ps.o $(LIB_PATHS) $(LIBS)

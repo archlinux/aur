@@ -1,0 +1,35 @@
+--- Makefile.install_ucb	2002-03-15 14:01:20.000000000 -0500
++++ ../../../Makefile.install_ucb	2012-03-04 11:31:03.312604316 -0500
+@@ -3,22 +3,22 @@
+ 
+ install-dir:
+ 	-mkdir -p $(INSTALL_DIR)/bin
+-	-mkdir -p $(INSTALL_DIR)/font
+-	-mkdir -p $(INSTALL_DIR)/icc
+-	-mkdir -p $(INSTALL_DIR)/demo
+-	-mkdir -p $(INSTALL_DIR)/doc
++	-mkdir -p $(INSTALL_DIR)/share/fonts/radware
++	-mkdir -p $(INSTALL_DIR)/share/radware/icc
++	-mkdir -p $(INSTALL_DIR)/share/radware/doc/demo
++	-mkdir -p $(INSTALL_DIR)/share/radware/doc
+ install-dat: install-dir
+ 	$(INSTALL) ./.radwarerc $(INSTALL_DIR)/.radwarerc
+ 	$(INSTALL) ./.radware.bashrc $(INSTALL_DIR)/.radware.bashrc
+-	$(INSTALL) ../font/font.dat $(INSTALL_DIR)/font/font.dat
+-	$(INSTALL) ../font/font_ps.dat $(INSTALL_DIR)/font/font_ps.dat
++	$(INSTALL) ../font/font.dat $(INSTALL_DIR)/share/fonts/radware/font.dat
++	$(INSTALL) ../font/font_ps.dat $(INSTALL_DIR)/share/fonts/radware/font_ps.dat
+ install-icc: install-dir
+-	$(INSTALL) ../icc/iccndx.dat $(INSTALL_DIR)/icc/iccndx.dat
+-	$(INSTALL) ../icc/icctbl.dat $(INSTALL_DIR)/icc/icctbl.dat
++	$(INSTALL) ../icc/iccndx.dat $(INSTALL_DIR)/share/radware/icc/iccndx.dat
++	$(INSTALL) ../icc/icctbl.dat $(INSTALL_DIR)/share/radware/icc/icctbl.dat
+ install-demo: install-dir
+-	$(INSTALL) ../demo/*.* $(INSTALL_DIR)/demo
++	$(INSTALL) ../demo/*.* $(INSTALL_DIR)/share/radware/doc/demo
+ install-doc: install-dir
+-	$(INSTALL) ../doc/*.* $(INSTALL_DIR)/doc
++	$(INSTALL) ../doc/*.* $(INSTALL_DIR)/share/radware/doc
+ install-bin: install-dir
+ 	for program in $(EXE) ; \
+ 	   do $(INSTALL_BIN) $$program $(INSTALL_DIR)/bin; \

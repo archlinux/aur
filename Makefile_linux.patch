@@ -1,0 +1,31 @@
+--- Makefile.linux	2011-04-12 19:20:18.000000000 -0500
++++ ../../../Makefile.linux	2012-03-05 23:28:28.843179977 -0500
+@@ -20,13 +20,13 @@
+ #------------------------------------------------------------------------
+ #    CHANGE  the next 3 lines to suit your installation preferences
+ 
+-    INSTALL_DIR = ${HOME}/rw_current
+-        INSTALL = /usr/bin/install -m 0644 -o radfordd -g users
+-    INSTALL_BIN = /usr/bin/install -m 0755 -o radfordd -g users
++    INSTALL_DIR = ${DESTINATION_DIR}
++        INSTALL = /usr/bin/install -m 0644
++    INSTALL_BIN = /usr/bin/install -m 0755
+ 
+ #------------------------------------------------------------------------
+ 
+-             CC = cc
++             CC = gcc
+              FC = $(CC)
+          CFLAGS = -O2 -Wall -I$(MOTIF_TOP)/include -DHAVE_GNU_READLINE
+ 
+@@ -43,8 +43,8 @@
+ #  UNCOMMENT and CHANGE (if necessary)  the line defining HISLIBS
+ #  if you have orphlib.a on your system, and you want to be able to read .his files.
+ #  UNCOMMENT the line defining FC as gcc if orphlib was compiled using gcc
+-#        HISLIBS = /usr/hhirf/orphlib.a
+-#             FC = g77
++        HISLIBS = /usr/lib/orphlib.a
++             FC = gfortran
+ 
+ #------------------------------------------------------------------------
+ 
