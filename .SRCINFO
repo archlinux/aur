@@ -1,0 +1,51 @@
+pkgbase = jre-devel
+	pkgdesc = Oracle Java 9 Runtime Environment Snapshot
+	pkgver = 9b68
+	pkgrel = 1
+	url = https://jdk9.java.net/
+	install = jre-devel.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = pacman>=4.2.0
+	depends = ca-certificates-java
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = java-runtime-common
+	depends = libxrender
+	depends = libxtst
+	depends = shared-mime-info
+	depends = xdg-utils
+	optdepends = alsa-lib: for basic sound support
+	optdepends = gtk2: for Gtk+ look and feel (desktop)
+	optdepends = ttf-font: fonts
+	provides = java-runtime=9
+	provides = java-runtime-headless=9
+	provides = java-web-start=9
+	provides = java-runtime-jre=9
+	provides = java-runtime-headless-jre=9
+	provides = java-web-start-jre=9
+	backup = etc/java-jre9/amd64/jvm.cfg
+	backup = etc/java-jre9/images/cursors/cursors.properties
+	backup = etc/java-jre9/management/jmxremote.access
+	backup = etc/java-jre9/management/management.properties
+	backup = etc/java-jre9/security/java.policy
+	backup = etc/java-jre9/security/java.security
+	backup = etc/java-jre9/security/javaws.policy
+	backup = etc/java-jre9/fontconfig.properties.src
+	backup = etc/java-jre9/logging.properties
+	backup = etc/java-jre9/net.properties
+	backup = etc/java-jre9/psfont.properties.ja
+	backup = etc/java-jre9/psfontj2d.properties
+	backup = etc/java-jre9/sound.properties
+	source = policytool-jre9.desktop
+	source = OTN-Early-Adopter-License-Terms.txt
+	md5sums = 855a74ddead31f8b30943ac1a7d3a7a6
+	md5sums = f09947a67691a2d78d20a3885889981c
+	source_i686 = http://download.java.net/jdk9/archive/b68/binaries/jre-9-ea-bin-b68-linux-i586-10_jun_2015.tar.gz
+	md5sums_i686 = d5b24acc18e88b2249956a8a489dc5b7
+	source_x86_64 = http://download.java.net/jdk9/archive/b68/binaries/jre-9-ea-bin-b68-linux-x64-10_jun_2015.tar.gz
+	md5sums_x86_64 = 0cebd16643506984261806082d62fce9
+
+pkgname = jre-devel
+

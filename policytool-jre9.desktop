@@ -1,0 +1,8 @@
+[Desktop Entry]
+Exec=/usr/lib/jvm/java-9-jre/jre/bin/policytool
+Icon=sun-java-jre9
+Name=Java 9 Policy Settings
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Settings;Java;
