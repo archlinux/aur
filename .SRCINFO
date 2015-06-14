@@ -1,0 +1,63 @@
+pkgbase = bin32-jdk7
+	pkgdesc = Oracle Java 7 Development Kit (32-bit) (public release - end of support)
+	pkgver = 7u79
+	pkgrel = 1
+	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
+	install = bin32-jdk7.install
+	arch = x86_64
+	license = custom
+	provides = java32-runtime=7
+	provides = java32-runtime-headless=7
+	provides = java32-web-start=7
+	provides = java32-environment=7
+	provides = java32-runtime-jre=7
+	provides = java32-runtime-headless-jre=7
+	provides = java32-web-start-jre=7
+	provides = java32-environment-jdk=7
+	options = !strip
+	backup = etc/java32-jdk7/i386/jvm.cfg
+	backup = etc/java32-jdk7/images/cursors/cursors.properties
+	backup = etc/java32-jdk7/management/jmxremote.access
+	backup = etc/java32-jdk7/management/management.properties
+	backup = etc/java32-jdk7/security/java.policy
+	backup = etc/java32-jdk7/security/java.security
+	backup = etc/java32-jdk7/security/javaws.policy
+	backup = etc/java32-jdk7/content-types.properties
+	backup = etc/java32-jdk7/flavormap.properties
+	backup = etc/java32-jdk7/fontconfig.properties.src
+	backup = etc/java32-jdk7/logging.properties
+	backup = etc/java32-jdk7/net.properties
+	backup = etc/java32-jdk7/psfont.properties.ja
+	backup = etc/java32-jdk7/psfontj2d.properties
+	backup = etc/java32-jdk7/sound.properties
+	source = jconsole32-jdk7.desktop
+	source = jmc32-jdk7.desktop
+	source = jvisualvm32-jdk7.desktop
+	source = policytool32-jdk7.desktop
+	md5sums = 721fa304a1f1057c7079330308772ca4
+	md5sums = 8a9ff08e43c75c4d7460790dff7dfd4a
+	md5sums = a16f78eb4c0002fc0e57d95ac9f503f3
+	md5sums = 28afaff6decb032e3cce3d88f2fca0d7
+	source_x86_64 = http://download.oracle.com/otn-pub/java/jdk/7u79-b15/jdk-7u79-linux-i586.tar.gz
+	depends_x86_64 = ca-certificates-java
+	depends_x86_64 = desktop-file-utils
+	depends_x86_64 = hicolor-icon-theme
+	depends_x86_64 = java32-environment-common
+	depends_x86_64 = java32-runtime-common
+	depends_x86_64 = lib32-glibc
+	depends_x86_64 = lib32-libjpeg-turbo
+	depends_x86_64 = lib32-lcms2
+	depends_x86_64 = lib32-libxrender
+	depends_x86_64 = lib32-libxtst
+	depends_x86_64 = lib32-nss
+	depends_x86_64 = shared-mime-info
+	depends_x86_64 = xdg-utils
+	optdepends_x86_64 = eclipse: "Oracle Java Mission Control" plugins for Eclipse
+	optdepends_x86_64 = lib32-alsa-lib: for basic sound support
+	optdepends_x86_64 = lib32-gtk2: for Gtk+ look and feel (desktop)
+	optdepends_x86_64 = ttf-font: fonts
+	makedepends_x86_64 = pacman>=4.2.0
+	md5sums_x86_64 = b0ed59147c77a6d3e63a7b340e4e1d28
+
+pkgname = bin32-jdk7
+

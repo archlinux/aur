@@ -1,0 +1,8 @@
+[Desktop Entry]
+Exec=/usr/lib32/jvm/java32-7-jdk/jre/bin/policytool
+Icon=sun-java32-jdk7
+Name=Java 7 Policy Settings (32-bit)
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Settings;Java;
