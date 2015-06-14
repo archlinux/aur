@@ -1,0 +1,29 @@
+diff -aur package.pristine/src/Makefile.am package.new/src/Makefile.am
+--- package.pristine/src/Makefile.am	2014-05-23 18:15:48.536268233 +0200
++++ package.new/src/Makefile.am	2014-05-23 18:17:59.556444065 +0200
+@@ -21,14 +21,6 @@
+ 	$(top_builddir)/matrix/src/liblamatrixpp.la \
+ 	$(top_builddir)/blaspp/src/libblaspp.la
+ 
+-# if IS_WINDOWS
+-if IS_WINDOWS
+-# Dependencies for Windows
+-liblapackpp_la_DEPENDENCIES += ressource.o
+-ressource_ldflags = -Wl,ressource.o -Wl,-export-all-symbols
+-endif
+-# IS_WINDOWS
+-
+ # Linker flags
+ liblapackpp_la_LDFLAGS = -no-undefined \
+   -version-info \
+@@ -40,9 +32,3 @@
+   $(top_builddir)/blaspp/src/libblaspp.la \
+   $(LAPACK_LIBS) $(BLAS_LIBS) $(FLIBS)
+ 
+-# ressource must be packages here because MSVC won't run configure
+-EXTRA_DIST = ressource.rc
+-
+-ressource.o: ressource.rc
+-	$(RC) -i $< -o $@
+-
+

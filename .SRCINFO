@@ -1,0 +1,20 @@
+pkgbase = mingw-w64-lapackpp
+	pkgdesc = C++ library for high performance linear algebra computations. (mingw-w64)
+	pkgver = 2.5.4
+	pkgrel = 0
+	url = http://lapackpp.sourceforge.net/
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-gcc
+	makedepends = automake-1.11
+	depends = mingw-w64-lapack
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://sourceforge.net/projects/lapackpp/files/lapackpp-2.5.4.tar.gz
+	source = package.patch
+	sha256sums = 776c4b2b09412479e1559bcec08a71cfbb162dfbe3f6fbd4da52cef3039cddbc
+	sha256sums = 5196f3de40ed7a5a06d043b1987b89a208141d7a2c7571f930c3e9041d5e15de
+
+pkgname = mingw-w64-lapackpp
+
