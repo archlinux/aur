@@ -1,0 +1,16 @@
+pkgbase = david
+	pkgdesc = DAwn's Visual Intersection Debugger
+	pkgver = 1.36a
+	pkgrel = 3
+	url = http://geant4.kek.jp/~tanaka/DAWN/About_DAVID.html
+	arch = x86_64
+	arch = i686
+	license = unknown
+	depends = dawn
+	source = http://geant4.kek.jp/~tanaka/src/david_1_36a.taz
+	source = make_DESTDIR.patch
+	md5sums = 520f056cea955295431ed8a1e9268f4b
+	md5sums = b8ce4a6fd298f16468739986e098b25a
+
+pkgname = david
+

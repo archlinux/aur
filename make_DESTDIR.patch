@@ -1,0 +1,11 @@
+--- Makefile	2005-05-31 04:04:59.000000000 -0500
++++ ../../Makefile	2012-02-02 12:47:25.000000000 -0500
+@@ -6,7 +6,7 @@
+ CC     = g++
+ CFLAGS =-O2 -Wall
+ 
+-INSTALL_DIR = /usr/local/bin
++INSTALL_DIR = ${DESTDIR}/usr/bin
+ LIBS        = -lm
+ #################################
+ 
