@@ -1,0 +1,16 @@
+pkgbase = vmware-systemd-services
+	pkgdesc = A collection of systemd services to interface with VMWare /etc/init.d scripts.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/VMware
+	arch = any
+	groups = vmware
+	license = ISC
+	depends = systemd
+	source = vmware.service
+	source = vmware-USBArbitrator.service
+	md5sums = 0f540eca927f18646646eb32c3c23951
+	md5sums = 876c623915264a82420737a50a76919f
+
+pkgname = vmware-systemd-services
+

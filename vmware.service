@@ -1,0 +1,14 @@
+[Unit]
+Description=VMware daemon
+Requires=vmware-USBArbitrator.service
+After=vmware-USBArbitrator.service
+
+[Service]
+ExecStart=/etc/init.d/vmware start
+ExecStop=/etc/init.d/vmware stop
+PIDFile=/var/lock/subsys/vmware
+TimeoutSec=0
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
