@@ -1,0 +1,25 @@
+pkgbase = ruby-travis
+	pkgdesc = Travis CI client
+	pkgver = 1.7.7
+	pkgrel = 1
+	url = https://github.com/travis-ci/travis.rb
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-faraday
+	depends = ruby-faraday_middleware
+	depends = ruby-highline
+	depends = ruby-backports
+	depends = ruby-gh
+	depends = ruby-launchy
+	depends = ruby-pry-0.9
+	depends = ruby-typhoeus
+	depends = ruby-pusher-client
+	depends = ruby-addressable
+	noextract = travis-1.7.7.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/travis-1.7.7.gem
+	sha512sums = 9c5c015ebba4fdd2e9a5ad5fc3f65bd1aaa82c9d58a96a1344db1accb27cada4b34f02fef199271de5cf294f08827350f7e216b732ca8d95a4769389d714c1b3
+
+pkgname = ruby-travis
+
