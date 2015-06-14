@@ -1,0 +1,21 @@
+pkgbase = rotary-encoder-git
+	pkgdesc = Input device for rotary encoders connected using GPIOs.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/klomp/rotary-encoder
+	arch = any
+	license = APACHE
+	makedepends = python2
+	makedepends = git
+	depends = python2
+	depends = python2-evdev
+	depends = python2-raspberry-gpio
+	provides = rotary-encoder
+	conflicts = rotary-encoder
+	source = git+https://github.com/avanc/rotary-encoder
+	source = rotary-encoder.service
+	md5sums = SKIP
+	md5sums = 39733f6e13afd0d4a05209767aebc652
+
+pkgname = rotary-encoder-git
+

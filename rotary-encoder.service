@@ -1,0 +1,8 @@
+[Unit]
+Description=Rotary Encoder
+
+[Service]
+ExecStart=/usr/bin/rotary-encoder --config /etc/rotencoder.cfg
+
+[Install]
+WantedBy=multi-user.target
