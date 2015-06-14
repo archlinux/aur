@@ -1,0 +1,21 @@
+pkgbase = qwbfs
+	pkgdesc = Cross platform WBFS file system manager
+	pkgver = 1.2.5
+	pkgrel = 2
+	url = https://github.com/pasnox/qwbfsmanager
+	install = qwbfs.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = qt5-base
+	depends = hicolor-icon-theme
+	source = qwbfs::git+https://github.com/pasnox/qwbfsmanager.git#tag=v1.2.5
+	source = fresh::git+https://github.com/pasnox/fresh.git#commit=cd735c55c54ca8917704d231022e1ed46c3b42a8
+	source = qmake-extensions::git+https://github.com/pasnox/qmake-extensions.git#commit=b60b99bccbfda40136c8aa1a54770543519feda8
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+
+pkgname = qwbfs
+
