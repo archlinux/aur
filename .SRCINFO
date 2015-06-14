@@ -1,0 +1,18 @@
+pkgbase = fundamental-theme
+	pkgdesc = Fundamental BMPanel2/GTK+2.0/Openbox3/PekWM/XFWM4 Theme
+	pkgver = 20100102
+	pkgrel = 1
+	url = http://weakhead.deviantart.com/art/Fundamental-148956109
+	arch = any
+	license = GPL
+	depends = gtk-engines
+	depends = gtk-engine-murrine>=0.98.0
+	optdepends = bmpanel2: BMPanel2 theme
+	optdepends = openbox: Openbox theme
+	optdepends = pekwm: PekWM theme
+	optdepends = xfwm4: XFWM4 theme
+	source = http://orig00.deviantart.net/1690/f/2010/002/8/8/fundamental_by_weakhead.zip
+	md5sums = 2a6db561c63c00149a75e2c890102174
+
+pkgname = fundamental-theme
+
