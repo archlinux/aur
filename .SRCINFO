@@ -1,0 +1,14 @@
+pkgbase = quake3-cpma-maps
+	pkgdesc = Challenge ProMode Arena (CPMA) Official Mappack (Can be used in any Quake 3 Mod).
+	pkgver = 20121121
+	pkgrel = 2
+	url = http://eu.promode.ru
+	arch = any
+	license = custom
+	depends = quake3
+	depends = quake3-cpma
+	source = http://users.mrlazyinc.com/gaiia/cpma-mappack-full.zip
+	md5sums = 4f170d3a4c184897dbc34f48f2be810d
+
+pkgname = quake3-cpma-maps
+
