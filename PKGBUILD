@@ -1,8 +1,8 @@
 # Maintainer: zml <zml@aoeu.xyz>
 pkgname=base16-git # '-bzr', '-git', '-hg' or '-svn'
 pkgver=r492.d2773ce
-pkgrel=1
-pkgdesc="Base16 provides carefully chosen syntax highlighting and a default set of sixteen colors suitable for a wide range of applications. Base16 is both a color scheme and a template."
+pkgrel=2
+pkgdesc="A color scheme and template for color schemes"
 arch=('any')
 url="http://chriskempson.github.io/base16"
 license=('MIT')
