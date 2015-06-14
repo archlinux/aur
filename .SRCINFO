@@ -1,0 +1,14 @@
+pkgbase = giieditor-git
+	pkgdesc = It's the official animation editor of the BlowThemAll game.
+	pkgver = 20110830
+	pkgrel = 1
+	url = http://code.google.com/p/blowthemall/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = qt>=4.7.0
+	options = strip
+
+pkgname = giieditor-git
+
