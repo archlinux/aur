@@ -1,0 +1,26 @@
+pkgbase = perl-cpan-reporter
+	pkgdesc = CPAN::Reporter - Adds CPAN Testers reporting to CPAN.pm
+	pkgver = 1.2011
+	pkgrel = 1
+	url = http://search.cpan.org/dist/CPAN-Reporter/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	checkdepends = perl-file-copy-recursive
+	checkdepends = perl-file-pushd
+	checkdepends = perl-io-captureoutput
+	makedepends = perl-capture-tiny
+	makedepends = perl-config-tiny
+	makedepends = perl-devel-autoflush
+	makedepends = perl-test-reporter
+	depends = perl-capture-tiny
+	depends = perl-config-tiny
+	depends = perl-devel-autoflush
+	depends = perl-test-reporter
+	optdepends = perl-test-reporter-transport-metabase: Metabase transport
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DA/DAGOLDEN/CPAN-Reporter-1.2011.tar.gz
+	sha256sums = 0154f3cf6af5f20002fea34ae3b69a0300dcfc52000fea729aac4a3fa91f08fb
+
+pkgname = perl-cpan-reporter
+
