@@ -1,0 +1,12 @@
+pkgbase = pkgbuildup-git
+	pkgdesc = A helper tool for AUR package maintainer to automatic update PKGBUILD files - Git version
+	pkgver = 20131218
+	pkgrel = 1
+	url = https://github.com/fasheng/pkgbuildup
+	arch = any
+	license = GPL3
+	makedepends = git
+	provides = pkgbuildup
+
+pkgname = pkgbuildup-git
+
