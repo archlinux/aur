@@ -1,0 +1,15 @@
+pkgbase = psi-plus-resources-git
+	pkgdesc = Additional iconsets, themes and sounds for Psi+
+	pkgver = 20140502
+	pkgrel = 1
+	url = http://psi-plus.com
+	arch = any
+	license = GPL2
+	depends = psi-plus-git
+	options = !strip
+	options = !zipman
+	source = psi-plus-resources::git://github.com/psi-plus/resources.git
+	md5sums = SKIP
+
+pkgname = psi-plus-resources-git
+
