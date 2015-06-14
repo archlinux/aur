@@ -1,0 +1,18 @@
+pkgbase = perl-bash-completion-plugins-cpanm
+	pkgdesc = Bash::Completion::Plugins::cpanm - Bash completion for cpanm and cpanf
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Bash-Completion-Plugins-cpanm/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl-bash-completion
+	depends = perl-http-message
+	depends = perl-json
+	depends = perl-libwww
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PE/PERLER/Bash-Completion-Plugins-cpanm-0.0.2.tar.gz
+	md5sums = ba7d72454c84f94e93713423661929fb
+
+pkgname = perl-bash-completion-plugins-cpanm
+
