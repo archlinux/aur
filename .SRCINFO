@@ -1,0 +1,18 @@
+pkgbase = perl-devel-fastprof
+	pkgdesc = Devel::FastProf - "fast" perl per-line profiler
+	pkgver = 0.08
+	pkgrel = 3
+	url = http://search.cpan.org/dist/Devel-FastProf/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = PerlArtistic
+	depends = perl-sort-key
+	depends = perl-time-hires
+	provides = perl-devel-fastprof-reader
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SA/SALVA/Devel-FastProf-0.08.tar.gz
+	md5sums = f8185d084e0323b96ad69fc24775aa94
+
+pkgname = perl-devel-fastprof
+
