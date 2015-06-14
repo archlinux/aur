@@ -1,0 +1,14 @@
+# Created by https://www.gitignore.io
+
+### ArchLinuxPackages ###
+*.tar
+*.tar.*
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+
+pkg/
+src/
+lfm/

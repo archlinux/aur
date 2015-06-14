@@ -1,0 +1,16 @@
+pkgbase = lfm-hg
+	pkgdesc = A powerful file manager for the UNIX console. This package downloads the latest source from version control.
+	pkgver = 20150522
+	pkgrel = 1
+	url = https://bitbucket.org/inigoserna/lfm
+	arch = any
+	license = GPL3
+	makedepends = mercurial
+	depends = ncurses>=5.0
+	depends = python2>=2.6
+	conflicts = lfm
+	source = hg+https://bitbucket.org/inigoserna/lfm
+	md5sums = SKIP
+
+pkgname = lfm-hg
+
