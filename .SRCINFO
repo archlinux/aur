@@ -1,0 +1,25 @@
+pkgbase = xf86-input-synaptics-git
+	pkgdesc = Synaptics driver for notebook touchpads
+	pkgver = 20121007
+	pkgrel = 2
+	url = http://xorg.freedesktop.org/wiki/
+	arch = i686
+	arch = x86_64
+	groups = xorg-input-drivers
+	license = custom
+	makedepends = pkgconfig
+	makedepends = xorg-server
+	makedepends = git
+	makedepends = xorg-server-devel
+	depends = libxi>=1.2.1
+	depends = libxtst
+	provides = synaptics
+	provides = xf86-input-synaptics
+	conflicts = synaptics
+	options = !libtool
+	options = zipman
+	source = 50-synaptics.conf.patch
+	sha1sums = 587b85127187a515345f81bb3e363cba64ac11a8
+
+pkgname = xf86-input-synaptics-git
+
