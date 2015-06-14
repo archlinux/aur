@@ -1,0 +1,17 @@
+pkgbase = ruby-rspec-expectations
+	pkgdesc = rspec-expectations-3.3.0
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = http://github.com/rspec/rspec-expectations
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-rspec-support
+	depends = ruby-diff-lcs
+	noextract = rspec-expectations-3.3.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rspec-expectations-3.3.0.gem
+	sha512sums = 0a121c052065539f877e3f1f7c58196f44484f26dfbb4b0d102d1a1496f6a1026c5c202dab844b7b024ca155d9a5d2bc209e4599bb11069bc523c99dcf6fd5c4
+
+pkgname = ruby-rspec-expectations
+
