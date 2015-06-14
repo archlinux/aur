@@ -1,0 +1,42 @@
+pkgbase = perl-devel-ebug
+	pkgdesc = Devel::ebug - A simple, extensible Perl debugger
+	pkgver = 0.55
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Devel-ebug/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-yaml
+	depends = perl-test-expect
+	depends = perl-class-accessor-chained
+	depends = perl-proc-background
+	depends = perl-string-koremutake
+	depends = perl-devel-stacktrace>=1.27
+	provides = perl-devel-ebug-backend-plugin-actionpoints
+	provides = perl-devel-ebug-backend-plugin-basic
+	provides = perl-devel-ebug-backend-plugin-codelines
+	provides = perl-devel-ebug-backend-plugin-commands
+	provides = perl-devel-ebug-backend-plugin-eval
+	provides = perl-devel-ebug-backend-plugin-filenames
+	provides = perl-devel-ebug-backend-plugin-output
+	provides = perl-devel-ebug-backend-plugin-pad
+	provides = perl-devel-ebug-backend-plugin-ping
+	provides = perl-devel-ebug-backend-plugin-run
+	provides = perl-devel-ebug-backend-plugin-stacktrace
+	provides = perl-devel-ebug-console
+	provides = perl-devel-ebug-plugin-actionpoints
+	provides = perl-devel-ebug-plugin-basic
+	provides = perl-devel-ebug-plugin-codelines
+	provides = perl-devel-ebug-plugin-eval
+	provides = perl-devel-ebug-plugin-filenames
+	provides = perl-devel-ebug-plugin-output
+	provides = perl-devel-ebug-plugin-pad
+	provides = perl-devel-ebug-plugin-run
+	provides = perl-devel-ebug-plugin-stacktrace
+	provides = perl-db-fake
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AW/AWWAIID/Devel-ebug-0.55.tar.gz
+	md5sums = 44697667bb9603483e1e9c33314df259
+
+pkgname = perl-devel-ebug
+
