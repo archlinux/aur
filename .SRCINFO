@@ -14,8 +14,8 @@ pkgbase = vim-syntastic-async-git
 	provides = vim-syntastic
 	source = vim-syntastic-async-git::git+https://github.com/daniel-walker/syntastic.git
 	source = async_haskell.diff
-	md5sums = SKIP
-	md5sums = 050b24f11c4fbcb8a9a606628e0ff47a
+	sha512sums = SKIP
+	sha512sums = 549592a7c54144e3e17d85db43bab002868504525da77c10248e3d14b9f29f43a58aed1db747f77962f9c1db55eb1148ac5171d05f03e022f19db8773d42ee33
 
 pkgname = vim-syntastic-async-git
 
