@@ -1,0 +1,25 @@
+pkgbase = libpurple-meanwhile
+	pkgdesc = Pidgin Instant Messenger plugin for Sametime support
+	pkgver = 2.10.11
+	pkgrel = 1
+	url = http://pidgin.im/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	makedepends = libtool
+	makedepends = pkg-config
+	makedepends = glib2
+	makedepends = libxml2
+	makedepends = meanwhile
+	makedepends = libpurple
+	depends = glib2
+	depends = meanwhile
+	depends = libpurple
+	provides = libpurple-meanwhile
+	options = !libtool
+	source = http://downloads.sourceforge.net/pidgin/pidgin-2.10.11.tar.bz2
+	sha256sums = f2ae211341fc77efb9945d40e9932aa535cdf3a6c8993fe7919fca8cc1c04007
+
+pkgname = libpurple-meanwhile
+
