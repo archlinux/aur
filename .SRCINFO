@@ -1,0 +1,15 @@
+pkgbase = perl-bash-completion-plugins-perlbrew
+	pkgdesc = Bash::Completion::Plugins::perlbrew - Bash completion for perlbrew
+	pkgver = 0.10
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Bash-Completion-Plugins-perlbrew/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl-bash-completion
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RH/RHOELZ/Bash-Completion-Plugins-perlbrew-0.10.tar.gz
+	md5sums = 024f147359214d10630c2c7a4ae4ad78
+
+pkgname = perl-bash-completion-plugins-perlbrew
+
