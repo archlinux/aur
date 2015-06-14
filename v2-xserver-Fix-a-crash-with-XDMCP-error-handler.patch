@@ -1,0 +1,23 @@
+diff --git a/os/xdmcp.c b/os/xdmcp.c
+index b6e97c9..0e9e625 100644
+--- a/os/xdmcp.c
++++ b/os/xdmcp.c
+@@ -1409,8 +1409,16 @@ recv_alive_msg(unsigned length)
+ static void
+ XdmcpFatal(const char *type, ARRAY8Ptr status)
+ {
+-    FatalError("XDMCP fatal error: %s %*.*s\n", type,
+-               status->length, status->length, status->data);
++    char *error_message;
++
++    /* error_message is leaked, but that's fine, we're aborting */
++    error_message = malloc (status->length + 1);
++    if (!error_message)
++        FatalError("XDMCP fatal error: %s", type);
++
++    memcpy(error_message, status->data, status->length);
++    error_message[status->length] = '\0';
++    FatalError("XDMCP fatal error: %s %s\n", type, error_message);
+ }
+ 
+ static void

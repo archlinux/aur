@@ -1,0 +1,30 @@
+diff --git a/os/access.c b/os/access.c
+index 28f2d32..fe6e831 100644
+--- a/os/access.c
++++ b/os/access.c
+@@ -1390,14 +1390,23 @@ InvalidHost(register struct sockaddr *saddr, int len, ClientPtr client)
+         else
+             return 0;
+     }
++
++    /* An empty address requires both a NULL addr *and* a zero length
++     * as the address comparison functions call memcmp with both
++     * parameters. Make sure they agree here
++     */
++    if (addr == NULL)
++        len = 0;
++    if (len == 0)
++        addr = NULL;
+     for (host = validhosts; host; host = host->next) {
+         if (host->family == FamilyServerInterpreted) {
+-            if (addr && siAddrMatch(family, addr, len, host, client)) {
++            if (siAddrMatch(family, addr, len, host, client)) {
+                 return 0;
+             }
+         }
+         else {
+-            if (addr && addrEqual(family, addr, len, host))
++            if (addrEqual(family, addr, len, host))
+                 return 0;
+         }
+

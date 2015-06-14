@@ -1,0 +1,134 @@
+From 7504fbd2239257f1a00a1a15d02862eea81f167c Mon Sep 17 00:00:00 2001
+From: Peter Hutterer <peter.hutterer@who-t.net>
+Date: Tue, 5 May 2015 14:48:41 +1000
+Subject: [PATCH] dix: hook up the unaccelerated valuator masks
+
+If present, access the unaccelerated valuator mask values for DGA and XI2 raw
+events.
+
+Signed-off-by: Peter Hutterer <peter.hutterer@who-t.net>
+Reviewed-by: Hans de Goede <hdegoede@redhat.com>
+---
+ dix/getevents.c                | 31 ++++++++++++++++++++++---------
+ hw/xfree86/common/xf86Xinput.c |  4 ++++
+ 2 files changed, 26 insertions(+), 9 deletions(-)
+
+diff --git a/dix/getevents.c b/dix/getevents.c
+index 6fb12c5..64bf76e 100644
+--- a/dix/getevents.c
++++ b/dix/getevents.c
+@@ -213,14 +213,25 @@ init_raw(DeviceIntPtr dev, RawDeviceEvent *event, Time ms, int type, int detail)
+ }
+ 
+ static void
+-set_raw_valuators(RawDeviceEvent *event, ValuatorMask *mask, double *data)
++set_raw_valuators(RawDeviceEvent *event, ValuatorMask *mask,
++                  BOOL use_unaccel, double *data)
+ {
+     int i;
+ 
++    use_unaccel = use_unaccel && valuator_mask_has_unaccelerated(mask);
++
+     for (i = 0; i < valuator_mask_size(mask); i++) {
+         if (valuator_mask_isset(mask, i)) {
++            double v;
++
+             SetBit(event->valuators.mask, i);
+-            data[i] = valuator_mask_get_double(mask, i);
++
++            if (use_unaccel)
++                v = valuator_mask_get_unaccelerated(mask, i);
++            else
++                v = valuator_mask_get_double(mask, i);
++
++            data[i] = v;
+         }
+     }
+ }
+@@ -1138,11 +1149,11 @@ GetKeyboardEvents(InternalEvent *events, DeviceIntPtr pDev, int type,
+     valuator_mask_copy(&mask, mask_in);
+ 
+     init_raw(pDev, raw, ms, type, key_code);
+-    set_raw_valuators(raw, &mask, raw->valuators.data_raw);
++    set_raw_valuators(raw, &mask, TRUE, raw->valuators.data_raw);
+ 
+     clipValuators(pDev, &mask);
+ 
+-    set_raw_valuators(raw, &mask, raw->valuators.data);
++    set_raw_valuators(raw, &mask, FALSE, raw->valuators.data);
+ 
+     event = &events->device_event;
+     init_device_event(event, pDev, ms);
+@@ -1423,9 +1434,11 @@ fill_pointer_events(InternalEvent *events, DeviceIntPtr pDev, int type,
+         num_events++;
+ 
+         init_raw(pDev, raw, ms, type, buttons);
+-        set_raw_valuators(raw, &mask, raw->valuators.data_raw);
++        set_raw_valuators(raw, &mask, TRUE, raw->valuators.data_raw);
+     }
+ 
++    valuator_mask_drop_unaccelerated(&mask);
++
+     /* valuators are in driver-native format (rel or abs) */
+ 
+     if (flags & POINTER_ABSOLUTE) {
+@@ -1438,7 +1451,7 @@ fill_pointer_events(InternalEvent *events, DeviceIntPtr pDev, int type,
+         transformAbsolute(pDev, &mask);
+         clipAbsolute(pDev, &mask);
+         if ((flags & POINTER_NORAW) == 0 && raw)
+-            set_raw_valuators(raw, &mask, raw->valuators.data);
++            set_raw_valuators(raw, &mask, FALSE, raw->valuators.data);
+     }
+     else {
+         transformRelative(pDev, &mask);
+@@ -1446,7 +1459,7 @@ fill_pointer_events(InternalEvent *events, DeviceIntPtr pDev, int type,
+         if (flags & POINTER_ACCELERATE)
+             accelPointer(pDev, &mask, ms);
+         if ((flags & POINTER_NORAW) == 0 && raw)
+-            set_raw_valuators(raw, &mask, raw->valuators.data);
++            set_raw_valuators(raw, &mask, FALSE, raw->valuators.data);
+ 
+         moveRelative(pDev, flags, &mask);
+     }
+@@ -1951,7 +1964,7 @@ GetTouchEvents(InternalEvent *events, DeviceIntPtr dev, uint32_t ddx_touchid,
+         events++;
+         num_events++;
+         init_raw(dev, raw, ms, type, client_id);
+-        set_raw_valuators(raw, &mask, raw->valuators.data_raw);
++        set_raw_valuators(raw, &mask, TRUE, raw->valuators.data_raw);
+     }
+ 
+     event = &events->device_event;
+@@ -2013,7 +2026,7 @@ GetTouchEvents(InternalEvent *events, DeviceIntPtr dev, uint32_t ddx_touchid,
+         screeny = dev->spriteInfo->sprite->hotPhys.y;
+     }
+     if (need_rawevent)
+-        set_raw_valuators(raw, &mask, raw->valuators.data);
++        set_raw_valuators(raw, &mask, FALSE, raw->valuators.data);
+ 
+     /* Indirect device touch coordinates are not used for cursor positioning.
+      * They are merely informational, and are provided in device coordinates.
+diff --git a/hw/xfree86/common/xf86Xinput.c b/hw/xfree86/common/xf86Xinput.c
+index 1fb5b16..5ce4c71 100644
+--- a/hw/xfree86/common/xf86Xinput.c
++++ b/hw/xfree86/common/xf86Xinput.c
+@@ -1137,12 +1137,16 @@ xf86CheckMotionEvent4DGA(DeviceIntPtr device, int is_absolute,
+                 dx = valuator_mask_get(mask, 0);
+                 if (is_absolute)
+                     dx -= device->last.valuators[0];
++                else if (valuator_mask_has_unaccelerated(mask))
++                    dx = valuator_mask_get_unaccelerated(mask, 0);
+             }
+ 
+             if (valuator_mask_isset(mask, 1)) {
+                 dy = valuator_mask_get(mask, 1);
+                 if (is_absolute)
+                     dy -= device->last.valuators[1];
++                else if (valuator_mask_has_unaccelerated(mask))
++                    dy = valuator_mask_get_unaccelerated(mask, 1);
+             }
+ 
+             if (DGAStealMotionEvent(device, idx, dx, dy))
+-- 
+2.4.1
+
