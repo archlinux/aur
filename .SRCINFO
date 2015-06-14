@@ -1,0 +1,45 @@
+pkgbase = nvidia-utils-beta
+	pkgver = 352.09
+	pkgrel = 1
+	url = http://www.nvidia.com/
+	arch = i686
+	arch = x86_64
+	license = custom:NVIDIA
+	makedepends = pacman>=4.2.0
+	options = !strip
+	source = 20-nvidia.conf
+	md5sums = 2640eac092c220073f0668a7aaff61f7
+	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/352.09/NVIDIA-Linux-x86-352.09.run
+	md5sums_i686 = 0e009686400c522209eaa8ab835ff81f
+	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/352.09/NVIDIA-Linux-x86_64-352.09-no-compat32.run
+	md5sums_x86_64 = eb5ad6a07dc03e0a19d5f6fa069c494b
+
+pkgname = nvidia-utils-beta
+	pkgdesc = NVIDIA libraries and utilities (beta)
+	install = nvidia-utils-beta.install
+	depends = xorg-server
+	optdepends = gtk2: nvidia-settings (GTK+ v2)
+	optdepends = gtk3: nvidia-settings (GTK+ v3)
+	optdepends = opencl-nvidia-beta: OpenCL support
+	optdepends = xorg-server-devel: nvidia-xconfig
+	provides = nvidia-utils=352.09
+	conflicts = nvidia-utils
+	backup = etc/X11/xorg.conf.d/20-nvidia.conf
+
+pkgname = nvidia-libgl-beta
+	pkgdesc = NVIDIA library symlinks (beta)
+	depends = nvidia-utils-beta
+	provides = libgl
+	provides = nvidia-libgl
+	conflicts = libgl
+	conflicts = nvidia-libgl
+	conflicts = mesa<10.1.0-2
+
+pkgname = opencl-nvidia-beta
+	pkgdesc = OpenCL implemention for NVIDIA (beta)
+	depends = libcl
+	depends = zlib
+	optdepends = opencl-headers: headers necessary for OpenCL development
+	provides = opencl-nvidia
+	conflicts = opencl-nvidia
+
