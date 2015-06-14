@@ -1,0 +1,15 @@
+pkgbase = perl-configreader-simple
+	pkgdesc = ConfigReader::Simple - simple configuration file parser
+	pkgver = 1.28
+	pkgrel = 3
+	url = http://search.cpan.org/dist/ConfigReader-Simple/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BD/BDFOY/ConfigReader-Simple-1.28.tar.gz
+	md5sums = 2b6b97fdc4c2082c15d9c4c0300747cb
+
+pkgname = perl-configreader-simple
+
