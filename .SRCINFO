@@ -1,0 +1,15 @@
+pkgbase = ruby-fastthread
+	pkgdesc = Optimized replacement for thread.rb primitives
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://rubygems.org/gems/fastthread
+	arch = i686
+	arch = x86_64
+	depends = ruby
+	noextract = fastthread-1.0.7.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/fastthread-1.0.7.gem
+	sha512sums = 71c6901ba691e3a4b6f77ad29f02be1fb0c4144226d0cd915b428301ca52f3e23ce23cd1e90696dbc31960ae8e9582eb751a5eeacf24386ac033ffab08807ad5
+
+pkgname = ruby-fastthread
+
