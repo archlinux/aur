@@ -1,0 +1,16 @@
+pkgbase = libxspf
+	pkgdesc = Library that helps applications to read and write XSPF playlists
+	pkgver = 1.2.0
+	pkgrel = 4
+	url = http://libspiff.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = uriparser
+	depends = expat
+	depends = gcc-libs
+	source = http://downloads.sourceforge.net/libspiff/libxspf-1.2.0.tar.bz2
+	md5sums = eceb3bf8fd4af3b09ea06c5c029cd647
+
+pkgname = libxspf
+
