@@ -1,0 +1,17 @@
+pkgbase = beamerscape-git
+	pkgdesc = Tools for integrating Inkscape and LaTeX beamer
+	pkgver = 0.5
+	pkgrel = 2
+	url = https://github.com/jbohren/beamerscape
+	arch = any
+	license = BSD
+	depends = texlive-publishers
+	depends = perl-xml-libxml
+	depends = inkscape
+	optdepends = cmake>=2.8.3: to generate a large number of presentations
+	provides = beamerscape
+	conflicts = beamerscape_hg
+	replaces = beamerscape_hg
+
+pkgname = beamerscape-git
+
