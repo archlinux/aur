@@ -1,0 +1,15 @@
+pkgbase = fimpp-git
+	pkgdesc = Interpreter for FIM++, an esoteric programming language inspired by the TV show My Little Pony: Friendship is Magic.
+	pkgver = r15.61c4103
+	pkgrel = 1
+	url = https://github.com/KarolS/fimpp
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = scala
+	depends = java-runtime
+	source = git://github.com/KarolS/fimpp.git
+	md5sums = SKIP
+
+pkgname = fimpp-git
+
