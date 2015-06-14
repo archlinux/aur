@@ -1,0 +1,24 @@
+pkgbase = deepin-pygtk
+	pkgdesc = Python bindings for the GTK widget set - with patches to fix memory leak for deepin-ui
+	pkgver = 2.24.0
+	pkgrel = 6
+	url = http://www.pygtk.org/
+	arch = i686
+	arch = x86_64
+	groups = deepin
+	license = LGPL
+	depends = libglade
+	depends = python2-cairo
+	depends = pygobject
+	optdepends = python2-numpy
+	provides = pygtk=2.24.0
+	conflicts = pygtk
+	source = http://packages.linuxdeepin.com/deepin/pool/main/p/pygtk/pygtk_2.24.0.orig.tar.gz
+	source = http://packages.linuxdeepin.com/deepin/pool/main/p/pygtk/pygtk_2.24.0-4~saucy.debian.tar.gz
+	source = python27.patch
+	sha256sums = 6e3e54fa6e65a69ac60bd58cb2e60a57f3346ac52efe995f3d10b6c38c972fd8
+	sha256sums = 7a70c1f680ee7c4cb326dad86c73a5473c8111deb92e43b6527c8dba03fa9544
+	sha256sums = 39a30456cba055a452bb55c74ef1ff2f5f7bfaad22855b4dd569ab009b56b682
+
+pkgname = deepin-pygtk
+
