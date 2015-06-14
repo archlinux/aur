@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=soundconverter-git
-pkgver=2.1.5.1.g8c0b59e
+pkgver=2.1.5.3.gdbdc065
 pkgrel=1
 pkgdesc="A simple sound converter application for GNOME from git repo"
 arch=('any')
