@@ -1,0 +1,37 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4c29924..eab2481 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -99,9 +99,8 @@ if(OPENMP_FOUND AND CMAKE_COMPILER_IS_GNUCXX)
+ endif()
+ 
+ set(OPENANN_COMPILER_FLAGS "${OPENANN_COMPILER_FLAGS} ${OPENANN_OPTIMIZATION_FLAGS}")
+-add_subdirectory(lib)
+ 
+-include_directories(. ${EIGEN3_INCLUDE_DIRS} lib/CMA-ESpp lib/ALGLIB test/lib/CPP-Test)
++include_directories(. ${EIGEN3_INCLUDE_DIRS} lib/CMA-ESpp ${CMAKE_INSTALL_PREFIX}/include/libalglib test/lib/CPP-Test)
+ add_subdirectory(src)
+ option(EXCLUDE_TESTS_FROM_ALL "Exclude examples, benchmarks and test suite from standard target." ON)
+ if(EXCLUDE_TESTS_FROM_ALL)
+diff --git a/lib/setup.sh b/lib/setup.sh
+index e336ca9..4ae106c 100644
+--- a/lib/setup.sh
++++ b/lib/setup.sh
+@@ -1,5 +1,5 @@
+-if [ $# -ne 2 ]; then
+-  echo "usage: setup.sh TARGET_CMAES TARGET_ALGLIB" 1>&2
++if [ $# -gt 2 ]; then
++  echo "usage: setup.sh TARGET_CMAES [TARGET_ALGLIB]" 1>&2
+   exit 1
+ fi
+ 
+@@ -29,6 +29,9 @@ rm master
+ mv *-CMA-ESpp-* ${TARGET_CMAES}
+ echo "Successfully installed CMA-ESpp."
+ 
++if [ "${TARGET_ALGLIB}x" = "x" ]; then
++    exit
++fi
+ if [ -d "${TARGET_ALGLIB}" ]; then
+   echo "Removing current ALGLIB library."
+   rm -r ${TARGET_ALGLIB}

@@ -1,0 +1,34 @@
+pkgbase = openann-git
+	pkgdesc = An open source library for artificial neural networks. Git version
+	pkgver = 0.0.0
+	pkgrel = 2
+	url = https://github.com/OpenANN/OpenANN
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = unzip
+	makedepends = wget
+	makedepends = git
+	makedepends = cmake>=2.8
+	makedepends = doxygen
+	makedepends = graphviz
+	depends = eigen
+	depends = alglib
+	provides = openann
+	conflicts = openann
+	source = git://github.com/OpenANN/OpenANN.git
+	source = use-system-alglib.patch
+	md5sums = SKIP
+	md5sums = 62c7c1e3e493bd35e1913a60e9da1a9e
+
+pkgname = openann-git
+
+pkgname = openann-doc-git
+	pkgdesc = Documentation for OpenANN, an open source library for artificial neural networks. Git version
+	url = https://github.com/OpenANN/OpenANN
+	arch = any
+	license = GPL3
+	depends = 
+	provides = 
+	conflicts = 
+
