@@ -1,0 +1,16 @@
+pkgbase = ruby-compass-import-once
+	pkgdesc = Speed up your Sass compilation by making @import only import each file once.
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/chriseppstein/compass/tree/master/import-once
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-sass
+	noextract = compass-import-once-1.0.5.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/compass-import-once-1.0.5.gem
+	sha512sums = 2ef723803341892b34a4bbe691b32ddd266a125c5e3faf8034c473566d70c7a8c0931f1a02abe64c243fe62f2a204cc8e53b951dd88c440eada4ec2dfc19856b
+
+pkgname = ruby-compass-import-once
+
