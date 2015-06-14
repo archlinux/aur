@@ -1,0 +1,22 @@
+pkgbase = calendar-indicator-bzr
+	pkgdesc = An indicator for google calendar.
+	pkgver = 44
+	pkgrel = 1
+	url = http://www.atareao.es/tag/calendar-indicator/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = bzr
+	makedepends = python2-distutils-extra
+	makedepends = python2-polib
+	depends = python
+	depends = shared-mime-info
+	depends = python-beautifulsoup4
+	depends = python-jinja
+	depends = python-requests
+	provides = calendar-indicator
+	source = calendar-indicator::bzr+https://code.launchpad.net/~lorenzo-carbonell/calendar-indicator/trunk
+	sha256sums = SKIP
+
+pkgname = calendar-indicator-bzr
+
