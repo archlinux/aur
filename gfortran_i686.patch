@@ -1,0 +1,46 @@
+--- src/upak/Makefile	2012-07-24 12:56:59.786829293 -0500
++++ nsrc/upak/Makefile	2012-07-24 12:59:29.556410520 -0500
+@@ -8,7 +8,7 @@
+ #  Mac/Intel Pentium = 32
+ #  Intel Pentium64 = 64
+ #  Dec ALPHA = 64
+-export PTRSIZE=64
++export PTRSIZE=32
+ #
+ ###-BYTEORDER-###
+ #  The byte order is processor dependent
+@@ -32,22 +32,22 @@
+ #
+ #--Gfortran - must be gcc >=4.2  (gcc42 and gcc42-shlibs on Mac Fink)
+ # MacOS version 
+-export F77= gfortran
+-export CC=/sw/bin/gcc-4
+-export OPT= -O
+-export FARGS= $(FENDIAN) -DGFORTRAN -fno-automatic -fsecond-underscore -fno-range-check
+-export CARGS= $(FENDIAN)
+-export FLIBS= -L/sw/lib -lgfortran -lgcc
+-export INSTALLDIR= ../../hhirf
+-#
+-#--Gfortran - must be gcc >=4.2  
+-# LINUX version
+ #export F77= gfortran
+-#export CC=gcc
++#export CC=/sw/bin/gcc-4
+ #export OPT= -O
+ #export FARGS= $(FENDIAN) -DGFORTRAN -fno-automatic -fsecond-underscore -fno-range-check
+ #export CARGS= $(FENDIAN)
+-#export FLIBS= -lgfortran -lgcc
++#export FLIBS= -L/sw/lib -lgfortran -lgcc
++#export INSTALLDIR= ../../hhirf
++#
++#--Gfortran - must be gcc >=4.2  
++# LINUX version
++export F77= gfortran
++export CC=gcc
++export OPT= -O
++export FARGS= $(FENDIAN) -DGFORTRAN -fno-automatic -fsecond-underscore -fno-range-check
++export CARGS= $(FENDIAN)
++export FLIBS= -lgfortran -lgcc
+ #export INSTALLDIR= /usr/hhirf
+ #
+ #--G77  

@@ -1,0 +1,23 @@
+pkgbase = upak
+	pkgdesc = HRIBF Data Acquisition and analysis.
+	pkgver = 10.6.8
+	pkgrel = 5
+	url = ftp://ftp.phy.ornl.gov/pub/upak/README.html
+	install = upak.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = gcc-fortran>=4.2
+	depends = libx11
+	depends = gcc-libs
+	depends = tcsh
+	depends = bash
+	source = ftp://ftp.phy.ornl.gov/pub/upak/upak-src.tgz
+	source = gfortran_x86_64.patch
+	source = gfortran_i686.patch
+	source = upak.install
+	options = staticlibs
+	options = emptydirs
+
+pkgname = upak
+
