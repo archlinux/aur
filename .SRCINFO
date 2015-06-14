@@ -1,0 +1,22 @@
+pkgbase = illum-git
+	pkgdesc = A daemon that responds to brightness keys by changing the backlight level
+	pkgver = v0.2.r5.g8cce610
+	pkgrel = 1
+	url = https://github.com/jmesmon/illum
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	makedepends = ninja
+	makedepends = sh
+	makedepends = pkg-config
+	depends = libevdev
+	depends = libev
+	provides = illum
+	conflicts = illum
+	source = git+https://github.com/jmesmon/illum
+	source = git+https://github.com/jmesmon/ccan
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = illum-git
+
