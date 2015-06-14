@@ -1,0 +1,54 @@
+pkgbase = bin32-jre6
+	pkgdesc = Oracle Java 6 Runtime Environment (32-bit) (public release - end of support)
+	pkgver = 6u45
+	pkgrel = 3
+	url = https://www.java.com/en/download/faq/java_6.xml
+	install = bin32-jre6.install
+	arch = x86_64
+	license = custom
+	provides = java32-runtime=6
+	provides = java32-runtime-headless=6
+	provides = java32-web-start=6
+	provides = java32-runtime-jre=6
+	provides = java32-runtime-headless-jre=6
+	provides = java32-web-start-jre=6
+	backup = etc/java32-jre6/i386/jvm.cfg
+	backup = etc/java32-jre6/images/cursors/cursors.properties
+	backup = etc/java32-jre6/management/jmxremote.access
+	backup = etc/java32-jre6/management/management.properties
+	backup = etc/java32-jre6/security/java.policy
+	backup = etc/java32-jre6/security/java.security
+	backup = etc/java32-jre6/security/javaws.policy
+	backup = etc/java32-jre6/content-types.properties
+	backup = etc/java32-jre6/flavormap.properties
+	backup = etc/java32-jre6/fontconfig.properties.src
+	backup = etc/java32-jre6/logging.properties
+	backup = etc/java32-jre6/net.properties
+	backup = etc/java32-jre6/psfont.properties.ja
+	backup = etc/java32-jre6/psfontj2d.properties
+	backup = etc/java32-jre6/sound.properties
+	source = javaws-launcher
+	source = policytool32-jre6.desktop
+	md5sums = 45c15a6b4767288f2f745598455ea2bf
+	md5sums = a95f75efd82036a440f14cd7f09ac1fc
+	source_x86_64 = http://download.oracle.com/otn-pub/java/jdk/6u45-b06/jre-6u45-linux-i586.bin
+	depends_x86_64 = ca-certificates-java
+	depends_x86_64 = desktop-file-utils
+	depends_x86_64 = hicolor-icon-theme
+	depends_x86_64 = java32-runtime-common
+	depends_x86_64 = lib32-glibc
+	depends_x86_64 = lib32-libjpeg-turbo
+	depends_x86_64 = lib32-lcms2
+	depends_x86_64 = lib32-libxrender
+	depends_x86_64 = lib32-libxtst
+	depends_x86_64 = lib32-nss
+	depends_x86_64 = shared-mime-info
+	depends_x86_64 = xdg-utils
+	optdepends_x86_64 = lib32-alsa-lib: for basic sound support
+	optdepends_x86_64 = lib32-gtk2: for Gtk+ look and feel (desktop)
+	optdepends_x86_64 = ttf-font: fonts
+	makedepends_x86_64 = pacman>=4.2.0
+	md5sums_x86_64 = 1d8001ef61a2e3a11fe7b9eec9f08948
+
+pkgname = bin32-jre6
+
