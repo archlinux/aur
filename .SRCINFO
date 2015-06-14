@@ -1,0 +1,14 @@
+pkgbase = git-annex-utils
+	pkgdesc = A set of utilities that are handy to use with git-annex repositories
+	pkgver = 0.04
+	pkgrel = 1
+	url = http://git.mysteryvortex.com/?p=git-annex-utils.git;a=summary
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = gmp
+	source = git-annex-utils-0.04.tar.gz::http://git.mysteryvortex.com/?p=git-annex-utils.git;a=snapshot;h=1b596a7;sf=tgz
+	sha1sums = d00b253a30b895a9111d1bc8a60cdc6ba64a0e0e
+
+pkgname = git-annex-utils
+
