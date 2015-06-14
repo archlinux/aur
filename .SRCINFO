@@ -1,6 +1,6 @@
 pkgbase = python-pyroma-hg
 	pkgdesc = Test your project's packaging friendliness (hg version)
-	pkgver = 20150606
+	pkgver = 158.70566accf97f
 	pkgrel = 1
 	url = https://bitbucket.org/regebro/pyroma
 	arch = any
