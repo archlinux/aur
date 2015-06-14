@@ -14,7 +14,7 @@ pkgbase = netrider-bin
 	depends = curl
 	depends = libxslt
 	depends = libxtst
-	source = http://downloads.sourceforge.net/project/netrider/NetRider-0.94-1.rpm
+	source = http://downloads.sourceforge.net/project/netrider/NetRider-0.94-1.x86_64.rpm
 	md5sums = SKIP
 
 pkgname = netrider-bin
