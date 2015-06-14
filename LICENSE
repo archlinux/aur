@@ -1,0 +1,4 @@
+; vi: ft=help
+The VIM LICENSE applies to unicode.vim and unicode.txt
+(see |copyright|) except use unicode instead of "Vim".
+NO WARRANTY, EXPRESS OR IMPLIED.  USE AT-YOUR-OWN-RISK.
