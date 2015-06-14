@@ -1,0 +1,12 @@
+# Maintainer: Harley Wiltzer <harleyw@hotmail.com>
+pkgname=('savant-test')
+pkgver=0.1.3
+pkgrel=1
+pkgdesc="CLI calculator that allows variable storage and has graphing functionality with SDL2"
+arch=('any')
+license=('BSD')
+depends=('sdl2')
+source=("https://github.com/DestructiveReasoning/savant")
+
+
+md5sums=('0770b5fe7831a9a8f51a19669dac6bfb')

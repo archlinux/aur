@@ -1,0 +1,15 @@
+pkgbase = savant-git
+	pkgdesc = A CLI based calculator that supports variables and uses SDL2 to do graphs.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/DestructiveReasoning/savant
+	install = savant-git.install
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = sdl2
+	source = savant-git::git+https://github.com/DestructiveReasoning/Savant.git
+	md5sums = SKIP
+
+pkgname = savant-git
+
