@@ -1,0 +1,14 @@
+pkgbase = emacs-apache-mode
+	pkgdesc = A major mode for editing apache config files with emacs
+	pkgver = 2.0
+	pkgrel = 2
+	url = http://www.emacswiki.org/cgi-bin/wiki/apache-mode.el
+	install = emacs-apache-mode.install
+	arch = any
+	license = GPL
+	depends = emacs
+	source = http://www.emacswiki.org/cgi-bin/wiki/download/apache-mode.el
+	md5sums = 0162d6f7fc33467948415006e5c4e323
+
+pkgname = emacs-apache-mode
+

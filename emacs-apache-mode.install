@@ -1,0 +1,17 @@
+#!/bin/sh
+
+post_install() {
+  cat << EOF
+==> Put this in your '~/.emacs' file to enable autoloading of apache-mode
+==> and auto-recognition of "httpd.conf" files:
+
+(autoload 'apache-mode "apache-mode.el" "Apache conf mode." t)
+(setq auto-mode-alist (cons '("/httpd.conf$" . apache-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("^/etc/httpd/conf/.*\\.conf" . apache-mode) auto-mode-alist))
+
+EOF
+}
+
+post_upgrade() {
+  post_install $1
+}
