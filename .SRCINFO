@@ -1,0 +1,16 @@
+pkgbase = ruby-haml
+	pkgdesc = An elegant, structured (X)HTML/XML templating engine.
+	pkgver = 4.0.6
+	pkgrel = 1
+	url = http://haml.info/
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-tilt
+	noextract = haml-4.0.6.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/haml-4.0.6.gem
+	sha512sums = a58d3de9efb6ac80a504152a4ca71914681a334d802301c9c8954890e97b031d771f4ac5127713d5e1c1e051d6c74fb7c9d55b6b6e7166743e95ed33685be1c4
+
+pkgname = ruby-haml
+
