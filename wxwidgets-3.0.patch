@@ -1,0 +1,35 @@
+diff -Naur a/gui/usbprogFrm.cc b/gui/usbprogFrm.cc
+--- a/gui/usbprogFrm.cc	2010-01-05 16:23:51.000000000 +0100
++++ b/gui/usbprogFrm.cc	2014-01-27 21:25:20.400519593 +0100
+@@ -296,7 +296,7 @@
+ 
+     // file dialog
+ 	m_fileDialog = new wxFileDialog(m_panel, wxT("Choose a file"),
+-            wxT(""), wxT(""), wxT("*.bin"), wxOPEN);
++            wxT(""), wxT(""), wxT("*.bin"), wxFD_OPEN);
+ 
+     m_topBox->Add(topSizer, wxEXPAND, wxALL, 10);
+ 
+@@ -670,7 +670,7 @@
+         dbg->setFileHandle(NULL);
+     } else {
+         wxFileDialog fdg(m_panel, wxT("Choose a file"),
+-            wxT(""), wxT(""), wxT("*.log"), wxSAVE);
++            wxT(""), wxT(""), wxT("*.log"), wxFD_SAVE);
+         if (fdg.ShowModal() != wxID_OK)
+             dbg->setFileHandle(stderr);
+         else {
+diff -Naur a/gui/viewer_posix.cc b/gui/viewer_posix.cc
+--- a/gui/viewer_posix.cc	2010-01-03 22:42:00.000000000 +0100
++++ b/gui/viewer_posix.cc	2014-01-27 22:45:25.998278951 +0100
+@@ -39,8 +39,8 @@
+     }
+ 
+     const wxChar *args[] = {
+-        wxString::FromUTF8(VIEWER_COMMAND),
+-        file,
++        wxString::FromUTF8(VIEWER_COMMAND).wc_str(),
++        file.wc_str(),
+         NULL
+     };
+ 

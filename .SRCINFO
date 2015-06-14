@@ -1,0 +1,18 @@
+pkgbase = usbprog
+	pkgdesc = Flashtool for the USBprog Programming Adapter
+	pkgver = 0.2.0
+	pkgrel = 3
+	url = http://www.embedded-projects.net/usbprog/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libusb-compat
+	depends = curl
+	depends = wxgtk
+	source = http://bwalle.de/programme/usbprog/usbprog-0.2.0.tar.bz2
+	source = wxwidgets-3.0.patch
+	md5sums = 114d7c3e1b3fa41391438fbf26cd2216
+	md5sums = a88ba5fa56cf08da3fb05ab46c21ce43
+
+pkgname = usbprog
+
