@@ -1,0 +1,19 @@
+pkgbase = ogmrip-mpeg
+	pkgdesc = This plugin provides support for the Mpeg-1 and Mpeg-2 video codecs and the Mpeg container. It can be used to author DVDs, VCDs and SVCDs.
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://ogmrip.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	groups = ogmrip
+	license = LGPL
+	depends = ogmrip
+	depends = mplayer
+	depends = mjpegtools
+	source = http://downloads.sourceforge.net/sourceforge/ogmrip/ogmrip-mpeg-0.3.tar.gz
+	source = http://sourceforge.net/projects/ogmrip/files/ogmrip-mpeg/0.3/README
+	md5sums = c04f6ae45168147a15b04411c886d80e
+	md5sums = 896ce3c5b3d041a06444297ad4034ef5
+
+pkgname = ogmrip-mpeg
+
