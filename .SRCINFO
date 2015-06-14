@@ -1,0 +1,21 @@
+pkgbase = vdr-mpv
+	pkgdesc = mpv player plugin for VDR
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = http://www.vdr-portal.de/board1-news/board2-vdr-news/126741-announce-mpv-plugin-0-0-2/
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = AGPL3
+	depends = mpv
+	depends = vdr-api=2.2.0
+	backup = etc/vdr/conf.avail/50-mpv.conf
+	source = vdr-mpv-0.0.2.tar.bz2::http://www.vdr-portal.de/index.php?page=Attachment&attachmentID=38361
+	source = 50-mpv.conf
+	md5sums = 5026ce63061e7390fa51b13c8df98e0f
+	md5sums = d1f90a5bc8d735b48764e12384324750
+
+pkgname = vdr-mpv
+
