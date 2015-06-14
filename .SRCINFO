@@ -1,0 +1,19 @@
+pkgbase = perl-metabase-client-simple
+	pkgdesc = Metabase::Client::Simple - a client that submits to Metabase servers
+	pkgver = 0.009
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Metabase-Client-Simple/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-metabase-fact
+	depends = perl-http-message
+	depends = perl-json
+	depends = perl-libwww
+	depends = perl-uri
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DA/DAGOLDEN/Metabase-Client-Simple-0.009.tar.gz
+	md5sums = 96a9b347ed8354a2ee4e9ba58d888be1
+
+pkgname = perl-metabase-client-simple
+
