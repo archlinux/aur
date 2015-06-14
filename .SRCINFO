@@ -1,0 +1,14 @@
+pkgbase = ruby-mpd
+	pkgdesc = MPD controller library.
+	pkgver = 0.17.0
+	pkgrel = 1
+	url = http://github.com/meh/ruby-mpd
+	arch = any
+	depends = ruby
+	noextract = mpd-0.17.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/mpd-0.17.0.gem
+	sha512sums = 2255ce43aed5484ae6f62d5e7b0e92011399d6a244d2cc7167d0cef0f51e01042a69ed4903e46cefe37af1b7beb5c106eeb4c7e5179d7a5736ef89c78c4c72b4
+
+pkgname = ruby-mpd
+
