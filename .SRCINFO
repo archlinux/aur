@@ -1,0 +1,18 @@
+pkgbase = vim-cecutil
+	pkgdesc = save/restore window position, mark position, selected user maps
+	pkgver = 17
+	pkgrel = 2
+	url = http://www.vim.org/scripts/script.php?script_id=1066
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = custom:vim
+	depends = vim-runtime
+	depends = vim-align
+	source = vim-cecutil.vba.gz::http://www.vim.org/scripts/download_script.php?src_id=7618
+	source = LICENSE
+	md5sums = 7c06938a0636b8ed20ff0e9d52366008
+	md5sums = 4b731124dd6b469f22d64d8236c4ff87
+
+pkgname = vim-cecutil
+
