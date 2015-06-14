@@ -1,0 +1,14 @@
+pkgbase = nicstat
+	pkgdesc = Network traffic statics utility
+	pkgver = 1.92
+	pkgrel = 3
+	url = http://nicstat.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = Artistic2.0
+	depends = bash
+	source = nicstat-1.92.tar.gz::http://sourceforge.net/projects/nicstat/files/nicstat-src-1.92.tar.gz/download
+	md5sums = c1bf0a98f27830462f81894bfb447fd8
+
+pkgname = nicstat
+
