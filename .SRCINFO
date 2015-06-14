@@ -1,0 +1,15 @@
+pkgbase = ruby-rubyforge
+	pkgdesc = A script which automates a limited set of rubyforge operations
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = http://codeforpeople.rubyforge.org/rubyforge/
+	arch = any
+	depends = ruby
+	depends = ruby-json_pure
+	noextract = rubyforge-2.0.4.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rubyforge-2.0.4.gem
+	sha512sums = d63456b49f052e5e1f9f570f0bf5ee42d34294a5a7c22443195f076527b83c3fa946b6b42e1c27375ab06e0a181066a62e8ebbc304ab7f3c3e2b24ef7e421ed3
+
+pkgname = ruby-rubyforge
+
