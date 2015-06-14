@@ -1,0 +1,29 @@
+pkgbase = ruby-lolcommits
+	pkgdesc = Capture webcam image on git commit for lulz.
+	pkgver = 0.5.9
+	pkgrel = 1
+	url = http://mroth.github.com/lolcommits/
+	arch = any
+	license = LGPL-3
+	depends = ruby
+	depends = ruby-rest-client-1.6
+	depends = ruby-mini_magick-3
+	depends = ruby-mime-types-1
+	depends = ruby-httparty-0.11
+	depends = ruby-git-1.2.8
+	depends = ruby-choice-0.1
+	depends = ruby-launchy
+	depends = ruby-methadone-1.8
+	depends = ruby-open4
+	depends = ruby-twitter-5.13
+	depends = ruby-oauth
+	depends = ruby-yam
+	depends = ruby-json
+	depends = ruby-httmultiparty
+	noextract = lolcommits-0.5.9.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/lolcommits-0.5.9.gem
+	sha512sums = 8e37ce0faa9d3fa846ebfaaa467ebdddd581f123597a6ddf2398f4551d800477bf988b930c90d1424012692c90e529669666c770f9d39bf4a92120efbcb48de0
+
+pkgname = ruby-lolcommits
+
