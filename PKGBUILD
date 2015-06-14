@@ -9,6 +9,7 @@ arch=('any')
 url="https://pypi.python.org/pypi/ghp-import"
 license=(custom)
 depends=('python')
+makedepends=('python-setuptools')
 replaces=('ghp-import')
 conflicts=('ghp-import')
 source=("http://pypi.python.org/packages/source/g/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")

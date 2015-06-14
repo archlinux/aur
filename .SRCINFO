@@ -5,6 +5,7 @@ pkgbase = python-ghp-import
 	url = https://pypi.python.org/pypi/ghp-import
 	arch = any
 	license = custom
+	makedepends = python-setuptools
 	depends = python
 	conflicts = ghp-import
 	replaces = ghp-import
