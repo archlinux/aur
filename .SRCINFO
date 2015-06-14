@@ -1,0 +1,17 @@
+pkgbase = perl-proc-background
+	pkgdesc = Proc::Background - generic interface to Unix and Win32 background process management
+	pkgver = 1.10
+	pkgrel = 3
+	url = http://search.cpan.org/dist/Proc-Background/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	provides = perl-proc-background-unix
+	provides = perl-proc-background-win32
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BZ/BZAJAC/Proc-Background-1.10.tar.gz
+	md5sums = 4f9d850e31c4131d1a28ffe0d26ef4e2
+
+pkgname = perl-proc-background
+
