@@ -1,0 +1,27 @@
+post_install() {
+cat << EOF
+Invaders is a kernel game. For using it please modify your bootloaders.
+
+==> GRUB: add this to /boot/grub/grub.cfg
+menuentry "invaders" {
+        set root=YOURROOTDEVICE
+        multiboot /boot/invaders
+        boot
+}
+
+==> Lilo: add this to lilo.conf
+image  = ${_boot}/invaders
+label  = "Invaders"
+
+EOF
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+cat << EOF
+Please remove your additions from your bootloaders.
+EOF
+}
