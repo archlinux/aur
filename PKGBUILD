@@ -164,14 +164,10 @@ package_xorg-server-dev() {
   depends=(libepoxy libxdmcp libxfont libpciaccess libdrm pixman libgcrypt libxau xorg-server-common-dev xf86-input-evdev libxshmfence libgl)
   # see src/xorg-server-*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
   # and /usr/lib/pkgconfig/xorg-server.pc in xorg-server-devel-dev pkg
-  _ABI_VIDEODRV="$(grep -Po "VIDEODRV_V.*\(\K[^)]*" ${_pkgbase}-${pkgver}/hw/xfree86/common/xf86Module.h | sed "s/, /./")"
-  _ABI_XINPUT="$(grep -Po "XINPUT_V.*\(\K[^)]*" ${_pkgbase}-${pkgver}/hw/xfree86/common/xf86Module.h | sed "s/, /./")"
-  _ABI_EXTENSION="$(grep -Po "EXTENSION_V.*\(\K[^)]*" ${_pkgbase}-${pkgver}/hw/xfree86/common/xf86Module.h | sed "s/, /./")"
-  provides=("X-ABI-VIDEODRV_VERSION=$_ABI_VIDEODRV"
-            #"X-ABI-XINPUT_VERSION=$_ABI_XINPUT"
-            'X-ABI-XINPUT_VERSION=21.1'
-            "X-ABI-EXTENSION_VERSION=$_ABI_EXTENSION"
-            'x-server' 'xorg-server')
+  for VAR in VIDEODRV XINPUT EXTENSION; do
+    provides+=("X-ABI-${VAR}_VERSION=$(grep -Po "${VAR}_V.*\(\K[^)]*" "${_pkgbase}-${pkgver}/hw/xfree86/common/xf86Module.h" |& sed 's/, /./')")
+  done
+  provides+=('x-server' 'xorg-server')
   groups=('xorg')
   conflicts=('nvidia-utils<=331.20' 'glamor-egl' 'xf86-video-modesetting' 'xorg-server')
   replaces=('glamor-egl' 'xf86-video-modesetting')
