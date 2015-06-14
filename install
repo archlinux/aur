@@ -1,0 +1,5 @@
+
+post_install() {
+  unbound-anchor -a "/etc/unbound/getdns-root.key"
+  return 0
+}
