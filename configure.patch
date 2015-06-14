@@ -1,0 +1,20 @@
+--- configure~	2011-07-15 20:30:52.000000000 +0200
++++ configure	2012-02-29 17:34:40.124817561 +0100
+@@ -347,7 +347,7 @@
+ includedir='${prefix}/include'
+ oldincludedir='/usr/include'
+ infodir='${prefix}/info'
+-mandir='${prefix}/man'
++mandir='${prefix}/share/man'
+ 
+ ac_prev=
+ for ac_option
+@@ -6474,7 +6474,7 @@
+ 	    esac
+ 	    result="Using ${TCL_INCLUDES}"
+ 	else
+-	    if test ! -f "${TCL_SRC_DIR}/generic/tclInt.h" ; then
++	    if test ! -f "/usr/include/tclInt.h" ; then
+ 		{ { echo "$as_me:$LINENO: error: Cannot find private header tclInt.h in ${TCL_SRC_DIR}" >&5
+ echo "$as_me: error: Cannot find private header tclInt.h in ${TCL_SRC_DIR}" >&2;}
+    { (exit 1); exit 1; }; }

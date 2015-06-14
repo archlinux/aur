@@ -1,0 +1,19 @@
+pkgbase = itcl3
+	pkgdesc = Provides the extra language support needed to build large Tcl/Tk applications, version 3.4
+	pkgver = 3.4.1
+	pkgrel = 1
+	url = http://incrtcl.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glibc
+	depends = tcl
+	provides = itcl
+	conflicts = itcl
+	source = http://downloads.sourceforge.net/project/incrtcl/%5BIncr%20Tcl_Tk%5D-source/3.4.1/itcl3.4.1.tar.gz
+	source = configure.patch
+	md5sums = e7c98e0f69df1a675073ddd3344f0b7f
+	md5sums = a4ed1f57b041ea8b0a9094d303f5f9ff
+
+pkgname = itcl3
+
