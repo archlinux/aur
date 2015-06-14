@@ -1,0 +1,17 @@
+pkgbase = ruby-rspec-its
+	pkgdesc = Provides "its" method formerly part of rspec-core
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/rspec/rspec-its
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-rspec-core
+	depends = ruby-rspec-expectations
+	noextract = rspec-its-1.2.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rspec-its-1.2.0.gem
+	sha512sums = 6b390f92654f8e6482f0da30d4e721ee127f628eb305268e474d4c9fb14fca1d0fb8922cabc9a8c1372976b5a52349c5a5a774e3026f32d8050c5aea2bc9ccae
+
+pkgname = ruby-rspec-its
+
