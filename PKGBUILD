@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://physics.princeton.edu/pulsar/k1jt/wsjtx.html"
 license=('GPL-3')
 mkdepends=(cmake asciidoc)
-depends=(qt5-base qt5-multimedia qt5-serialport libusb libusb-compat kvasd-bin)
+depends=(qt5-base qt5-multimedia qt5-serialport libusb libusb-compat gcc-fortran libpulse libpng kvasd-bin)
 source=(http://physics.princeton.edu/pulsar/K1JT/$pkgname-$pkgver.tgz)
 md5sums=('7d4ef9ac09533a110a7aa2991c80c327')
 
