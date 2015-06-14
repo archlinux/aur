@@ -1,0 +1,8 @@
+post_install() {
+  echo 'For the complete set of 32-bit Java binaries to be available in your PATH,'
+  echo 'you need to re-login or source /etc/profile.d/jre32.sh'
+}
+
+post_upgrade() {
+  archlinux-java32 fix
+}

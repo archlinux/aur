@@ -1,0 +1,24 @@
+pkgbase = java32-common
+	pkgver = 2
+	pkgrel = 2
+	arch = any
+	license = GPL
+	source = archlinux-java32
+	source = jre32.csh
+	source = jre32.sh
+	sha256sums = cc36abf878c488f5426a6ad5584874c0d7af53d4b6b0ff4d1fc9e28d34285278
+	sha256sums = aca3bf98c4ceb765ea873c36f64a123a2c4a50e7d8c30ee00c34b86b75f029a0
+	sha256sums = 11fc4c32d52c5672fee764b25de133e243db0cace8a470ad816de7e6b33d962d
+
+pkgname = java32-runtime-common
+	pkgdesc = Common files for 32-bit Java Runtime Environments
+	url = https://www.archlinux.org/packages/extra/any/java32-runtime-common/
+	install = java32-runtime-common.install
+	backup = etc/profile.d/jre32.sh
+	backup = etc/profile.d/jre32.csh
+
+pkgname = java32-environment-common
+	pkgdesc = Common files for 32-bit Java Development Kits
+	url = https://www.archlinux.org/packages/extra/any/java32-environment-common/
+	depends = java32-runtime-common
+
