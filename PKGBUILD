@@ -5,7 +5,7 @@
 # Upstream URL: http://messengerfordesktop.com/
 
 pkgname=messengerfordesktop
-pkgver=v1.4.2
+pkgver=v1.4.3
 pkgrel=1
 pkgdesc="Beautiful desktop client for Facebook Messenger. Chat without being distracted by your feed or notifications."
 PKGEXT='.pkg.tar'
@@ -17,9 +17,9 @@ depends_x86_64=('gcc-libs-multilib')
 depends_i686=('gcc-libs')
 depends=('cairo' 'libxtst' 'alsa-lib' 'gtk2' 'gconf' 'libnotify' 'fontconfig' 'nss')
 install=$pkgname.install
-md5sums_x86_64=('ecd39fb8e481d144397c485e56ff4871')
+md5sums_x86_64=('5c8862382e96c32a1878ce6f25a5b8da')
 source_x86_64=("https://github.com/Aluxian/Facebook-Messenger-Desktop/releases/download/$pkgver/Messenger_linux64.deb")
-md5sums_i686=('59b5dd605127dc0e9b73ccb922db4ecb')
+md5sums_i686=('0e7cd18730933f97aa2f23cf1fef5933')
 source_i686=("https://github.com/Aluxian/Facebook-Messenger-Desktop/releases/download/$pkgver/Messenger_linux32.deb")
 package() {
   bsdtar xf data.tar.gz
