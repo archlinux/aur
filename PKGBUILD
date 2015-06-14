@@ -1,4 +1,4 @@
-# Maintainer: Det <nimetonmaili g-mail>
+# Maintainer: Det <nimetonmaili g mail>
 # Contributor: Andrea Scarpino <bash.lnx@gmail.com>
 
 pkgname=jdk6-docs
