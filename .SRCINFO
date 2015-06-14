@@ -1,0 +1,19 @@
+pkgbase = mopidy-headless-git
+	pkgdesc = Mopidy extension for controlling Mopidy using generic input devices
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/klomp/mopidi-headless
+	arch = any
+	license = APACHE
+	makedepends = python2
+	makedepends = git
+	depends = python2
+	depends = python2-evdev
+	depends = mopidy>=0.19
+	provides = mopidy-headless
+	conflicts = mopidy-headless
+	source = git+https://github.com/avanc/mopidy-headless
+	md5sums = SKIP
+
+pkgname = mopidy-headless-git
+
