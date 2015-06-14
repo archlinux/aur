@@ -1,0 +1,27 @@
+diff -Naur imgSeek-0.8.6.orig/imgSeek imgSeek-0.8.6.new/imgSeek
+--- imgSeek-0.8.6.orig/imgSeek	2009-10-18 18:14:05.000000000 +0200
++++ imgSeek-0.8.6.new/imgSeek	2010-10-16 21:30:33.000000000 +0200
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#! /usr/bin/env python2
+ """
+ /***************************************************************************
+                                  imgSeek
+diff -Naur imgSeek-0.8.6.orig/setup-magick.py imgSeek-0.8.6.new/setup-magick.py
+--- imgSeek-0.8.6.orig/setup-magick.py	2009-10-18 18:14:05.000000000 +0200
++++ imgSeek-0.8.6.new/setup-magick.py	2010-10-16 21:30:16.000000000 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ #############################[ Parameters you should change if install failed ]#########################################
+ # qtdir should point to the directory where QT is installed. (Inside this dir you should have a lib and include dir)
+diff -Naur imgSeek-0.8.6.orig/setup.py imgSeek-0.8.6.new/setup.py
+--- imgSeek-0.8.6.orig/setup.py	2010-10-16 21:46:31.000000000 +0200
++++ imgSeek-0.8.6.new/setup.py	2010-10-16 21:46:40.000000000 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ #############################[ Parameters you should change if install failed ]#########################################
+ # qtdir should point to the directory where QT is installed. (Inside this dir you should have a lib and include dir)

@@ -1,0 +1,23 @@
+diff -aur imgSeek-0.8.6.orig/imgSeekLib/haar.cpp imgSeek-0.8.6.new/imgSeekLib/haar.cpp
+--- imgSeek-0.8.6.orig/imgSeekLib/haar.cpp	2009-07-25 06:29:00.000000000 +0200
++++ imgSeek-0.8.6.new/imgSeekLib/haar.cpp	2009-07-25 06:30:42.000000000 +0200
+@@ -49,6 +49,7 @@
+ #include <math.h> 
+ #include <stdio.h> 
+ #include <stdlib.h> 
++#include <cstring>
+ 
+ /* imgSeek Includes */
+ #include "haar.h"
+diff -aur imgSeek-0.8.6.orig/setup.py imgSeek-0.8.6.new/setup.py
+--- imgSeek-0.8.6.orig/setup.py	2009-07-25 06:29:00.000000000 +0200
++++ imgSeek-0.8.6.new/setup.py	2009-07-25 06:31:25.000000000 +0200
+@@ -2,7 +2,7 @@
+ 
+ #############################[ Parameters you should change if install failed ]#########################################
+ # qtdir should point to the directory where QT is installed. (Inside this dir you should have a lib and include dir)
+-qtdir=["/usr/share/qt3/"]      # ["/usr/qt/3/"] if you have a Gentoo system
++qtdir=["/opt/qt/"]      # ["/usr/qt/3/"] if you have a Gentoo system
+ 
+ # python_dir should point to the directory where Python header files may be found.. (Inside this dir you should have a Python.h)
+ python_dir="/usr/include/python"

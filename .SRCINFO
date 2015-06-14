@@ -1,0 +1,20 @@
+pkgbase = imgseek
+	pkgdesc = a photo collection manager and viewer with content-based search and many other features
+	pkgver = 0.8.6
+	pkgrel = 9
+	url = http://www.imgseek.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = pyqt3
+	depends = imagemagick
+	depends = python-imaging
+	source = http://downloads.sourceforge.net/sourceforge/imgseek/imgSeek-0.8.6.tar.bz2
+	source = python27.patch
+	source = make_it_work.patch
+	md5sums = 4b311475b51be649deb45afd6a12eaa2
+	md5sums = 18757ccbd513081228e993d6221060c1
+	md5sums = efab62e2f1b21196060e07293fe2dc1c
+
+pkgname = imgseek
+
