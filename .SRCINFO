@@ -1,0 +1,19 @@
+pkgbase = zen-gtk-themes
+	pkgdesc = A gtk2/gtk3 theme for Xfce, LXDE and gnome that attempt to keep it simple, consistent and being visually appealing.
+	pkgver = 0.16.0
+	pkgrel = 1
+	url = http://opendesktop.org/content/show.php/Zen+suite?content=149883
+	arch = any
+	license = GPL3
+	depends = gtk-engines
+	depends = gtk-engine-murrine
+	optdepends = alinea-themes
+	optdepends = mini-xfwm4-theme
+	optdepends = xfce4-notifyd
+	optdepends = gtk3>=3.8.0
+	optdepends = libreoffice-patch.sh: script to increase sheet tabs for LibreOffice. See README or http://opendesktop.org/content/show.php/Zen+suite?content=149883 for more infos
+	source = zen-gtk-themes-0.16.0.tar.gz::https://github.com/cedl38/zen-gtk-themes/archive/v0.16.0.tar.gz
+	md5sums = 95aac1cd969a84065b4532ffdd153016
+
+pkgname = zen-gtk-themes
+
