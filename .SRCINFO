@@ -1,0 +1,20 @@
+pkgbase = plasma-mediacenter-git
+	pkgdesc = A mediacenter user interface based on KDE Plasma components
+	pkgver = 5.3.0.r21.gce76a79
+	pkgrel = 1
+	url = http://community.kde.org/Plasma/Plasma_Media_Center/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = baloo
+	depends = plasma-workspace-git
+	depends = baloo
+	provides = plasma-mediacenter
+	conflicts = plasma-mediacenter
+	source = git://anongit.kde.org/plasma-mediacenter.git
+	md5sums = SKIP
+
+pkgname = plasma-mediacenter-git
+
