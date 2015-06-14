@@ -1,0 +1,5 @@
+# vi: ft=help
+Copyright: (c) 2004-2011 by Charles E. Campbell, Jr.    *manpageview-copyright*
+           The VIM LICENSE applies to ManPageView.vim and ManPageView.txt
+           (see |copyright|) except use "ManPageView" instead of "Vim"
+            no warranty, express or implied.  use at-your-own-risk.

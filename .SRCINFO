@@ -1,0 +1,21 @@
+pkgbase = vim-manpageview
+	pkgdesc = Viewer for manpages, gnu info, perldoc, and php (unix/linux/cygwin)
+	pkgver = 25o
+	pkgrel = 1
+	url = http://www.drchip.org/astronaut/vim/index.html#MANPAGEVIEW
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = custom:vim
+	depends = vim-runtime
+	depends = vim-align
+	options = !strip
+	source = manpageview-25o.vba.gz::http://www.drchip.org/astronaut/vim/vbafiles/manpageview.vba.gz
+	source = license.txt
+	source = manpageview.vim.diff
+	sha256sums = 5611fd67a743c7b2fa25e8822e092443219d5d70921e008eb65bd4038771edd8
+	sha256sums = bce42e8c4290de3b4262045a48e0d794436b57f0c666f811b4b8021db4c1c603
+	sha256sums = 631b1740fe13d016d234a2475ef0d0f8665a2e967b1a92b32291468a5b3d3713
+
+pkgname = vim-manpageview
+
