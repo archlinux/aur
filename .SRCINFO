@@ -78,9 +78,9 @@ pkgname = xorg-server-git
 	depends = xf86-input-evdev
 	depends = libxshmfence
 	depends = libgl
-	provides = X-ABI-VIDEODRV_VERSION=
-	provides = X-ABI-XINPUT_VERSION=
-	provides = X-ABI-EXTENSION_VERSION=
+	provides = X-ABI-VIDEODRV_VERSION=19.0
+	provides = X-ABI-XINPUT_VERSION=22.1
+	provides = X-ABI-EXTENSION_VERSION=9.0
 	provides = x-server
 	provides = xorg-server
 	conflicts = nvidia-utils<=331.20
