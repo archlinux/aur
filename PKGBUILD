@@ -1,7 +1,7 @@
 # Maintainer: David Parrish <daveparrish@gmail.com>
 
 pkgname=bitsquare-git
-pkgver=v0.3.1.r6.g6db8157
+pkgver=v0.3.1.r7.gda50622
 pkgrel=1
 pkgdesc="Bitsquare is a cross-platform desktop application that allows users to trade national currency (dollars, euros, etc) for bitcoin without relying on centralized exchanges"
 arch=('x86_64')
