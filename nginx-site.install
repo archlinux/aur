@@ -1,0 +1,10 @@
+post_install() {
+    echo "Run 'nginx-ensite [site] [priority]' to enable a site"
+    echo "Run 'nginx-dissite [site]' to disable a site"
+    echo "If you do not specify the name of a site you will be asked to do so."
+    echo -e "\nThe configuration is stored in the '/etc/conf.d/nginx-site.conf'"
+    echo "If you modify nginx-site.conf check /etc/bash_completion.d/nginx-site"
+}
+post_upgrade() {
+    post_install
+}

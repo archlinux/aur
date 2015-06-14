@@ -1,0 +1,20 @@
+pkgbase = nginx-site
+	pkgdesc = Enable/disable sites on nginx
+	pkgver = 0.1
+	pkgrel = 2
+	url = https://aur.archlinux.org/packages/nginx-site/
+	install = nginx-site.install
+	arch = any
+	license = GPL
+	depends = bash
+	options = !strip
+	backup = etc/conf.d/nginx-site.conf
+	source = nginx-site
+	source = nginx-site.conf
+	source = bash_completion
+	md5sums = c365c41b600ba4d09889f2439d0823ec
+	md5sums = e5ac33d2c5132a3d454354795859f111
+	md5sums = 51f4b595e0b47a6ce89912c2c5977c7e
+
+pkgname = nginx-site
+

@@ -1,0 +1,31 @@
+# vi ft=sh
+# bash completion for nginx configuration tools
+_nginx_modsites()
+{
+       COMPREPLY=( $( compgen -W '$( command ls /etc/nginx/$1 2>/dev/null \
+               | sed -e 's/[.]conf$//' )' -- $cur  ) )
+}
+
+_nginx-ensite()
+{
+       local cur
+
+       COMPREPLY=()
+       cur=${COMP_WORDS[COMP_CWORD]}
+
+       _nginx_modsites sites-available
+
+}
+complete -F _nginx-ensite nginx-ensite
+
+_nginx-dissite()
+{
+       local cur
+
+       COMPREPLY=()
+       cur=${COMP_WORDS[COMP_CWORD]}
+
+       _nginx_modsites sites-enabled
+
+}
+complete -F _nginx-dissite nginx-dissite
