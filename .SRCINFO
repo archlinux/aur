@@ -1,0 +1,15 @@
+pkgbase = vim-matchit
+	pkgdesc = The matchit.vim script allows you to configure % to match more than just single characters
+	pkgver = 1.13.2
+	pkgrel = 2
+	url = http://www.vim.org/scripts/script.php?script_id=39
+	install = vim-matchit.install
+	arch = any
+	groups = vim-plugins
+	license = custom:vim
+	depends = vim-runtime
+	source = vim-matchit.zip::http://www.vim.org/scripts/download_script.php?src_id=8196
+	sha256sums = 94c89edc419e115b333f4acc55ba4a3fd3cd76f2bcc6c69f9ae02cb8824475ad
+
+pkgname = vim-matchit
+
