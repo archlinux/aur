@@ -1,0 +1,22 @@
+pkgbase = ttf-mathtype
+	pkgdesc = Fonts supplied with MathType
+	pkgver = 6.9
+	pkgrel = 1
+	url = http://www.dessci.com/en/dl/fonts/
+	install = ttf.install
+	arch = any
+	license = custom
+	makedepends = cabextract
+	depends = fontconfig
+	depends = xorg-font-utils
+	noextract = DS_Fonts_6.9_(TT).exe
+	noextract = DS_Fonts_6.9_(PS).exe
+	source = http://www.dessci.com/en/dl/DS_Fonts_6.9_(TT).exe
+	source = http://www.dessci.com/en/dl/DS_Fonts_6.9_(PS).exe
+	source = license.txt
+	md5sums = cfd1577b68103fd8479a2561aa3f7d0c
+	md5sums = 26b94334992529dd9000b3c491245526
+	md5sums = 662f7c87498d513571148913ae09313b
+
+pkgname = ttf-mathtype
+

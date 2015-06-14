@@ -1,0 +1,36 @@
+MathType Font License Agreement
+
+
+License Grant
+
+This Font Installer and the Fonts it installs ("Software") are products
+of Design Science, Inc., and protected under U.S. and international
+copyright law. By continuing this installation process, you are
+agreeing to abide by the restrictions described in this agreement.
+
+Design Science grants you a non-exclusive license to use the Software.
+You are permitted to make copies of the Fonts to install into printers.
+You may distribute unlimited copies of the Software to third parties,
+including copies for commercial distribution, as long as each copy is
+unmodified from the original. Such third parties are required to abide
+by this license agreement.
+
+You may not reverse assemble, reverse compile, or otherwise translate
+the Software. You may not modify the Software or create derived works
+from the Software. You are not permitted to distribute the Software with
+any implementation of the TeX typesetting system as defined by The TeX
+Book, by Donald Knuth. This restriction does not apply to software
+products that convert the TeX language to or from other languages or
+word processing document file formats.
+
+
+
+Limited Warranty
+
+Design Science makes no warranties, including warranties of
+merchantability and fitness for a particular purpose. There are no
+remedies under this warranty. Design Science is not responsible for any
+damages incurring from the use of the Software. Some states do not allow
+limitations on implied warranties, so some of the above limitations may
+not apply to you.
+
