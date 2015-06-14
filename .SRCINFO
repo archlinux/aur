@@ -1,0 +1,17 @@
+pkgbase = gnome-keyring-query
+	pkgdesc = Provides limited command-line access to the Gnome keyring
+	pkgver = 0.1
+	pkgrel = 5
+	url = http://www.gentoo-wiki.info/HOWTO_Use_gnome-keyring_to_store_SSH_passphrases
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = libgnome-keyring
+	depends = gnome-keyring
+	source = gnome-keyring-query.c
+	source = COPYING
+	md5sums = c3a6272c5c53a1d37e15c068f771dbb3
+	md5sums = f247d0bc021bcee8051ee84ccd12f514
+
+pkgname = gnome-keyring-query
+
