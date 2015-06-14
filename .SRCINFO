@@ -1,0 +1,16 @@
+pkgbase = gnuscope
+	pkgdesc = The next evolution of the scope fit family of functions with improved graphics and greater functionality. For use with PGAM and GS92 data. Designed for ease of use.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://sourceforge.net/projects/gnuscope/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = gtk
+	source = gnuscope.tar.gz::http://sourceforge.net/projects/gnuscope/files/latest/download/
+	source = gnuscope.patch
+	md5sums = 105060e7e8a0e3594f2be9c1a9cb4f3b
+	md5sums = 0109aa771dfec6b01a770b611e7fd6cc
+
+pkgname = gnuscope
+

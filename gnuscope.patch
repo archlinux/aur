@@ -1,0 +1,1483 @@
+--- src/dialogboxes.c	2003-05-31 14:03:29.000000000 -0500
++++ nsrc/dialogboxes.c	2012-08-27 16:31:50.464758574 -0500
+@@ -485,7 +485,8 @@
+     break;
+     
+    default:
+-    /* --- do nothing --- */
++     /* --- do nothing --- */
++     break;
+   }
+   gtk_text_thaw(GTK_TEXT(text));  // have to unfreeze the text when we are done
+ 
+--- src/projectionbox.c	2003-04-20 22:44:59.000000000 -0500
++++ nsrc/projectionbox.c	2012-08-27 16:35:36.585636311 -0500
+@@ -453,6 +453,7 @@
+       break;
+     default:
+       /* --- do nothing --- */
++      break;
+     }
+   }
+ 
+--- src/gainshift.c	2003-04-20 22:37:17.000000000 -0500
++++ nsrc/gainshift.c	2012-08-27 17:01:02.475786482 -0500
+@@ -19,7 +19,7 @@
+ 
+ int spectra;
+ int currentrange[2];
+-float globalcalibration[3],calibration[254][3];
++//float globalcalibration[3],calibration[254][3]; // already at gnuscopeglobals 1028 instead of 254
+ GtkWidget *gainshiftentry1,*gainshiftentry3,*gainshiftentry5;
+ GtkWidget *gainshiftentry2,*gainshiftentry4,*gainshiftentry6;
+ GtkWidget *gainshiftwindow = NULL;
+--- src/display.c	2003-06-25 10:34:25.000000000 -0500
++++ nsrc/display.c	2012-08-27 17:04:34.996737352 -0500
+@@ -1121,8 +1121,7 @@
+ 	}
+       }
+       if (j == -1) {
+-       GetMessageDialog("The program got confused and could not figure out 
+-                which spectrum was currently active.\n");
++	GetMessageDialog("The program got confused and could not figure out which spectrum was currently active.\n");
+       } else {
+ 	spectra = spectradisplayed[(j-1)][0];
+ 	graph = graphsdisplayed[(j-1)];
+--- src/pgam.c	2003-06-23 18:24:04.000000000 -0500
++++ nsrc/pgam.c	2012-08-27 17:06:29.045696281 -0500
+@@ -1608,6 +1608,7 @@
+       PrevTwod();
+       break;
+     default:
++      break;
+       // do nothing
+     } //end switch
+     return(1);
+
+--- src/pgamsort.c	2003-05-30 11:10:39.000000000 -0500
++++ nsrc/pgamsort.c	2012-08-27 17:14:07.041522949 -0500
+@@ -227,16 +227,16 @@
+   char dummystr[80];
+   
+   /* --- set all gate and output types to zero (false) --- */
+- pgamsortgatenone = pgamsortgatetac = pgamsortgatepart= 0;
+- pgamsortgategamma = pgamsortoutputhists = pgamsortoutputpart= 0;
+- pgamsortoutputtac = pgamsortoutputgg = pgamsortoutputsqr = 0;
+- pgamsortoutputggtype = 0;
+- pgamsortgateparten =  0;
+- pgamsortgategammatypefile = 0;
+- pgamsortgategammatypeentry = 1;
+- pgamsortgateveto = 0;
+- pgamsortgaterequires = 0;
+- selfsuppressclovers = 0;
++  pgamsortgatenone = pgamsortgatetac = pgamsortgatepart= 0;
++  pgamsortgategamma = pgamsortoutputhists = pgamsortoutputpart= 0;
++  pgamsortoutputtac = pgamsortoutputgg = pgamsortoutputsqr = 0;
++  pgamsortoutputggtype = 0;
++  pgamsortgateparten =  0;
++  pgamsortgategammatypefile = 0;
++  pgamsortgategammatypeentry = 1;
++  pgamsortgateveto = 0;
++  pgamsortgaterequires = 0;
++  selfsuppressclovers = 0;
+ 
+   /* --- spawn the window --- */
+ 
+@@ -299,7 +299,7 @@
+   gtk_signal_connect(GTK_OBJECT(localbutton),"clicked",
+ 		     GTK_SIGNAL_FUNC(RawSinglesSort),NULL);
+   gtk_signal_connect(GTK_OBJECT(localbutton),"clicked",
+-			    GTK_SIGNAL_FUNC(CloseWidgetPgamSort),GTK_OBJECT(localwindow));
++		     GTK_SIGNAL_FUNC(CloseWidgetPgamSort),GTK_OBJECT(localwindow));
+   gtk_container_add(GTK_CONTAINER(localmainbox),localbutton);
+ 
+   /* --- make the button to sort --- */
+@@ -308,7 +308,7 @@
+   gtk_signal_connect(GTK_OBJECT(localbutton),"clicked",
+ 		     GTK_SIGNAL_FUNC(PgamSortCallback),NULL);
+   gtk_signal_connect(GTK_OBJECT(localbutton),"clicked",
+-			    GTK_SIGNAL_FUNC(CloseWidgetPgamSort),GTK_OBJECT(localwindow));
++		     GTK_SIGNAL_FUNC(CloseWidgetPgamSort),GTK_OBJECT(localwindow));
+   gtk_container_add(GTK_CONTAINER(localmainbox),localbutton);
+ 
+   /* --- make a cancel button --- */
+@@ -452,8 +452,8 @@
+   localbutton = gtk_button_new_with_label("Browse");
+   gtk_container_add(GTK_CONTAINER(localhbox2),localbutton);
+   gtk_signal_connect(GTK_OBJECT(localbutton),"clicked",
+-		    GTK_SIGNAL_FUNC(PgamSortBrowse15),
+-		    NULL);
++		     GTK_SIGNAL_FUNC(PgamSortBrowse15),
++		     NULL);
+ 
+   /* --- make buttons for output --- */
+   
+@@ -741,34 +741,34 @@
+   pgamsortgategamma = pgamsortoutputhists = pgamsortoutputpart= 0;
+   pgamsortoutputtac = pgamsortoutputgg = pgamsortoutputsqr = 0;
+ 
+-    if (strstr(gtk_entry_get_text(GTK_ENTRY(pgamentry8)),"all") != NULL) {
+-      runmin = 0;
+-      runmax = 1000000;
+-    } else {
+-      test = sscanf(gtk_entry_get_text(GTK_ENTRY(pgamentry8)),"%d",&i);
+-      if (test == 1) runmin = i;
+-      test = sscanf(gtk_entry_get_text(GTK_ENTRY(pgamentry9)),"%d",&i);
+-      if (test == 1) runmax = i;
+-    }
+-
+-    //    printf("runs from %d to %d",runmin,runmax);
+-    /* --- now records --- */
+-
+-    if (strstr(gtk_entry_get_text(GTK_ENTRY(pgamentry6)),"all") != NULL) {
+-      sortrecords = 1;
+-    } else {
+-      sortrecords  = 0;
+-      test = sscanf(gtk_entry_get_text(GTK_ENTRY(pgamentry6)),"%d",&i);
+-      if (test == 1) recordmin = i;
+-      test = sscanf(gtk_entry_get_text(GTK_ENTRY(pgamentry7)),"%d",&i);
+-      if (test == 1) recordmax = i;
+-    }
++  if (strstr(gtk_entry_get_text(GTK_ENTRY(pgamentry8)),"all") != NULL) {
++    runmin = 0;
++    runmax = 1000000;
++  } else {
++    test = sscanf(gtk_entry_get_text(GTK_ENTRY(pgamentry8)),"%d",&i);
++    if (test == 1) runmin = i;
++    test = sscanf(gtk_entry_get_text(GTK_ENTRY(pgamentry9)),"%d",&i);
++    if (test == 1) runmax = i;
++  }
++
++  //    printf("runs from %d to %d",runmin,runmax);
++  /* --- now records --- */
++
++  if (strstr(gtk_entry_get_text(GTK_ENTRY(pgamentry6)),"all") != NULL) {
++    sortrecords = 1;
++  } else {
++    sortrecords  = 0;
++    test = sscanf(gtk_entry_get_text(GTK_ENTRY(pgamentry6)),"%d",&i);
++    if (test == 1) recordmin = i;
++    test = sscanf(gtk_entry_get_text(GTK_ENTRY(pgamentry7)),"%d",&i);
++    if (test == 1) recordmax = i;
++  }
+     
+-    if (sortrecords == 0) {
+-      //printf("records from %d to %d");
+-    }
++  if (sortrecords == 0) {
++    //printf("records from %d to %d");
++  }
+     
+-    PgamSort();
++  PgamSort();
+ }
+ 
+ void CloverMinMultipolarityToggle(GtkWidget *widget, gpointer *data)
+@@ -1309,7 +1309,7 @@
+       
+       hpges = (struct detector_info *) malloc(num_adcs * sizeof(struct detector_info));
+       
+-    /* --- now we read in the information for the adcs being used --- */
++      /* --- now we read in the information for the adcs being used --- */
+       
+       for (i = 0; i < num_adcs; i++) {
+ 	fgets(dummystr,40,infile);
+@@ -1339,7 +1339,7 @@
+ 		   hpges[i].overflow,hpges[i].angle);
+ 	  }
+ 	}
+-	  fgets(dummystr,80,infile);
++	fgets(dummystr,80,infile);
+ 
+ 
+ 	if (sscanf(dummystr,"%f,%f,%f",
+@@ -1388,7 +1388,7 @@
+ 	/* --- the two formats for the E detectors is differentiated by
+ 	   --- wheither or not the "(" character appears before the "," character --- */
+ 	if ((strstr(dummystr,",") <
+-	    strstr(dummystr,"(")) || (strstr(dummystr,"(") == NULL)) {
++	     strstr(dummystr,"(")) || (strstr(dummystr,"(") == NULL)) {
+ 	  /* --- this is the case where the comma occurs before the parentasis --- */
+ 	  /* --- therefore the Eadc is what is before the comma --- */
+ 	  telescopes[i].e_adc = strtol(dummystr,&cptr,10);
+@@ -1641,7 +1641,7 @@
+   int *detector_info_map;  // a map of the in-memory adc location (adc_map) 
+                            // to the hpge which stores the relevant info.
+   int max_channels; // will be the most channels in an adc.  used
+-                        //for tac memory allocation and raw singles sort
++  //for tac memory allocation and raw singles sort
+   int telescopes_hit;
+   int clover_multiplicity;
+   uint *pair_flags;
+@@ -1683,7 +1683,7 @@
+   passpartgate = 1;
+   writes = 0;
+   for (i = 0; i < 254; i++) {
+-  //  temphist[i] = NULL;
++    //  temphist[i] = NULL;
+     temphistsize[i] = 0;
+   }
+   xaxisgate = NULL;
+@@ -1830,87 +1830,87 @@
+ 	}
+       }
+     }
+-      /* --- allocating memory for all other cases --- */
+-      /* --- first if the pgamsortoutputhists is true --- */
+-      if (pgamsortoutputhists) {
+-	/* --- in the case of singles we will need sufficient histograms and a big data struct --- */
+-	for (i = 0; (i <= max_adcs);  i++ ) { // histogram creation loop
+-	  ObliterateHistogram(i);
+-	  histloc[i] = malloc((sizeof(int) * fin_chans));
+-	  histsize[i] = fin_chans;
+-	  histid[i] = i;
+-	  sprintf(field1[i],"");
+-	  sprintf(field2[i],"",i);
+-	  sprintf(field3[i],"");
+-	  /* --- initialize histogram --- */
+-	  for (j = 0; j < histsize[i]; j++) {
+-	    *(histloc[i] +j) = 0;
+-	  }
+-	} // end creation histogram loop
+-	/* --- we need the "float" type temporary histograms as well --- */
+-	for (i = 0; i <= max_adcs; i++) {
+-	  temphistsize[i] = max_channels;
+-	  //temphist[i] = (float *) malloc( sizeof(float) * max_channels);
+-	  for (j = 0; j < max_channels; j++) {
+-	    *(temphist[i] + j) = 0;
+-	  }      
++    /* --- allocating memory for all other cases --- */
++    /* --- first if the pgamsortoutputhists is true --- */
++    if (pgamsortoutputhists) {
++      /* --- in the case of singles we will need sufficient histograms and a big data struct --- */
++      for (i = 0; (i <= max_adcs);  i++ ) { // histogram creation loop
++	ObliterateHistogram(i);
++	histloc[i] = malloc((sizeof(int) * fin_chans));
++	histsize[i] = fin_chans;
++	histid[i] = i;
++	sprintf(field1[i],"");
++	sprintf(field2[i],"",i);
++	sprintf(field3[i],"");
++	/* --- initialize histogram --- */
++	for (j = 0; j < histsize[i]; j++) {
++	  *(histloc[i] +j) = 0;
+ 	}
++      } // end creation histogram loop
++	/* --- we need the "float" type temporary histograms as well --- */
++      for (i = 0; i <= max_adcs; i++) {
++	temphistsize[i] = max_channels;
++	//temphist[i] = (float *) malloc( sizeof(float) * max_channels);
++	for (j = 0; j < max_channels; j++) {
++	  *(temphist[i] + j) = 0;
++	}      
+       }
+-      /* --- now if pgamsortoutputpart is true --- */
+-      if (pgamsortoutputpart) {
+-	if (big_data_info == NULL) {
+-	  big_data_info = (struct bigdata **) malloc(sizeof(struct bigdata *) * most_telescopes);
+-	} else {
+-	  big_data_info = (struct bigdata **) realloc(big_data_info,
+-						     sizeof(struct bigdata *) *
+-						     (pgammax + most_telescopes));
+-	}
+-	for (j = pgammax; j < (pgammax + most_telescopes); j++) {
+-	  big_data_info[j] = BigDataStructNew(edesize,edesize);
+-	}
+-	for (j = 0; j < most_telescopes; j++) {
+-	  sprintf(twodtitles[j+pgammax],telescopes[j].totaltitle);
+-	}
+-	pgammax += most_telescopes;
+-      }
+-      /* --- if pgamsortoutputsqr is true --- */
+-      /* --- also if pgamsortoutputpairsqr --- */
+-      if ((pgamsortoutputsqr) || (pgamsortoutputpairsqr)) {
+-	/* --- in addition to the obvious stuff, we need
+-	   --- write the information which will be used 
+-	   --- when writing to a file --- */
+-	pgammatrixdata.headbuffer[0] = 12;
+-	pgammatrixdata.headbuffer[1] = 12;
+-	pgammatrixdata.size = fin_chans;
+-	pgammatrixdata.what = 0;
+-	pgammatrixdata.type = 0;  // type is 0 for a "real" square
+-	pgammatrixdata.databuffer[0] = pgammatrixdata.databuffer[1] =
+-	  sizeof(float) * pgammatrixdata.size * pgammatrixdata.size;
+-	if (pgammatrixdata.data == NULL) {
+-	  pgammatrixdata.data = (float *) malloc(pgammatrixdata.databuffer[0]);
+-	} else {
+-	  pgammatrixdata.data = (float *) realloc(pgammatrixdata.data,
+-						  pgammatrixdata.databuffer[0]);
+-	}
+-	for ( l = 0 ; l < (pgammatrixdata.databuffer[0] / (float) sizeof(float)); l++) {
+-	  *(pgammatrixdata.data + l) = 0;
+-	}
+-	/* --- because the adc_map could change between setup files, we should
+-	   --- set up the pair_flags and pairs when we get there --- */
++    }
++    /* --- now if pgamsortoutputpart is true --- */
++    if (pgamsortoutputpart) {
++      if (big_data_info == NULL) {
++	big_data_info = (struct bigdata **) malloc(sizeof(struct bigdata *) * most_telescopes);
++      } else {
++	big_data_info = (struct bigdata **) realloc(big_data_info,
++						    sizeof(struct bigdata *) *
++						    (pgammax + most_telescopes));
++      }
++      for (j = pgammax; j < (pgammax + most_telescopes); j++) {
++	big_data_info[j] = BigDataStructNew(edesize,edesize);
++      }
++      for (j = 0; j < most_telescopes; j++) {
++	sprintf(twodtitles[j+pgammax],telescopes[j].totaltitle);
++      }
++      pgammax += most_telescopes;
++    }
++    /* --- if pgamsortoutputsqr is true --- */
++    /* --- also if pgamsortoutputpairsqr --- */
++    if ((pgamsortoutputsqr) || (pgamsortoutputpairsqr)) {
++      /* --- in addition to the obvious stuff, we need
++	 --- write the information which will be used 
++	 --- when writing to a file --- */
++      pgammatrixdata.headbuffer[0] = 12;
++      pgammatrixdata.headbuffer[1] = 12;
++      pgammatrixdata.size = fin_chans;
++      pgammatrixdata.what = 0;
++      pgammatrixdata.type = 0;  // type is 0 for a "real" square
++      pgammatrixdata.databuffer[0] = pgammatrixdata.databuffer[1] =
++	sizeof(float) * pgammatrixdata.size * pgammatrixdata.size;
++      if (pgammatrixdata.data == NULL) {
++	pgammatrixdata.data = (float *) malloc(pgammatrixdata.databuffer[0]);
++      } else {
++	pgammatrixdata.data = (float *) realloc(pgammatrixdata.data,
++						pgammatrixdata.databuffer[0]);
+       }
+-      /* --- if pgamsortoutputgg is true --- */
+-      if (pgamsortoutputgg) {
+-	/* --- in addition to the obvious stuff, we need to 
+-	   --- write the information which will be used 
+-	   --- when writing to a file  --- */
+-	/* --- this should be handled slightly differently if we
+-	   --- are outputting to a square or triangle --- */
+-	pgammatrixdata.headbuffer[0] = 12;
+-	pgammatrixdata.headbuffer[1] = 12;
+-	pgammatrixdata.size = fin_chans;
+-	pgammatrixdata.what = 0;
+-	switch (pgamsortoutputggtype) {
+-	case 1:
++      for ( l = 0 ; l < (pgammatrixdata.databuffer[0] / (float) sizeof(float)); l++) {
++	*(pgammatrixdata.data + l) = 0;
++      }
++      /* --- because the adc_map could change between setup files, we should
++	 --- set up the pair_flags and pairs when we get there --- */
++    }
++    /* --- if pgamsortoutputgg is true --- */
++    if (pgamsortoutputgg) {
++      /* --- in addition to the obvious stuff, we need to 
++	 --- write the information which will be used 
++	 --- when writing to a file  --- */
++      /* --- this should be handled slightly differently if we
++	 --- are outputting to a square or triangle --- */
++      pgammatrixdata.headbuffer[0] = 12;
++      pgammatrixdata.headbuffer[1] = 12;
++      pgammatrixdata.size = fin_chans;
++      pgammatrixdata.what = 0;
++      switch (pgamsortoutputggtype) {
++      case 1:
+ 	pgammatrixdata.type = 3;  // type is 3 for a "real" triangle
+ 	pgammatrixdata.databuffer[0] = pgammatrixdata.databuffer[1] = 
+ 	  (float) sizeof(float) / (float) 2 * (float) pgammatrixdata.size * 
+@@ -1946,7 +1946,7 @@
+ 	}
+ 	pgammatrixdata.type = 0;  // type is 0 for a "real" square
+ 	pgammatrixdata.databuffer[0] = pgammatrixdata.databuffer[1] = 
+-	   sizeof(float) * pgammatrixdata.size * pgammatrixdata.size;
++	  sizeof(float) * pgammatrixdata.size * pgammatrixdata.size;
+ 	isize = 2 * pgammatrixdata.size + 1;
+ 	if (pgammatrixdata.data == NULL) {
+ 	  pgammatrixdata.data = (float *) malloc(pgammatrixdata.databuffer[0]);
+@@ -1998,31 +1998,31 @@
+     for ( k = 0; k < max_adcs; k++) {
+       detector_info_map[k] = -1;
+     }
+-      for ( k = 0; k < max_adcs; k++) {
+-	for (l = 0; l < num_adcs; l++) {
+-	  if (adc_map[hpges[l].adc] == k) detector_info_map[k] = l;
+-	}
++    for ( k = 0; k < max_adcs; k++) {
++      for (l = 0; l < num_adcs; l++) {
++	if (adc_map[hpges[l].adc] == k) detector_info_map[k] = l;
+       }
+-      printf("Made detector info map.\n");
++    }
++    printf("Made detector info map.\n");
+ 
+-      /* --- need to set up the clover gates and telescope gates --- */
++    /* --- need to set up the clover gates and telescope gates --- */
+ 
+-      if (clover_gates == NULL) {
+-	clover_gates = (int *) malloc(max_adcs * sizeof(int));
+-      } else {
+-	clover_gates = (int *) realloc(clover_gates,max_adcs * sizeof(int));
+-      }
+-      for ( k = 0; k < max_adcs; k++) {
+-	clover_gates[k] = 0;
+-      }
+-      for (k = 0; k < num_clovers; k++) {
+-	for (l = 0; l < clovers[k].num_adcs; l++) {
+-	  if (adc_map[clovers[k].adcs[l]] != -1) {
+-	    clover_gates[adc_map[clovers[k].adcs[l]]] |= ((uint) 1 << k);
+-	    //	    clover_gates[adc_map[clovers[k].adcs[l]]] = k + 1;
+-	    // the value of clover_gates will be a positive real integer
+-	    // for adc's that map to a clover, the clover
+-	    // they map to is the one stored at clovers[k-1];
++    if (clover_gates == NULL) {
++      clover_gates = (int *) malloc(max_adcs * sizeof(int));
++    } else {
++      clover_gates = (int *) realloc(clover_gates,max_adcs * sizeof(int));
++    }
++    for ( k = 0; k < max_adcs; k++) {
++      clover_gates[k] = 0;
++    }
++    for (k = 0; k < num_clovers; k++) {
++      for (l = 0; l < clovers[k].num_adcs; l++) {
++	if (adc_map[clovers[k].adcs[l]] != -1) {
++	  clover_gates[adc_map[clovers[k].adcs[l]]] |= ((uint) 1 << k);
++	  //	    clover_gates[adc_map[clovers[k].adcs[l]]] = k + 1;
++	  // the value of clover_gates will be a positive real integer
++	  // for adc's that map to a clover, the clover
++	  // they map to is the one stored at clovers[k-1];
+ 	}
+       }
+     }
+@@ -2061,7 +2061,7 @@
+       special_telescope_gate = (unsigned long long *) malloc((max_adcs + 1) * sizeof(unsigned long long));
+     } else {
+       special_telescope_gate = (unsigned long long *) realloc(special_telescope_gate,
+-					       (max_adcs + 1) * sizeof(unsigned long long));
++							      (max_adcs + 1) * sizeof(unsigned long long));
+     }
+     for (k = 0; k < max_adcs; k++) special_telescope_gate[k] = 0;
+     for (k = 0; k < num_telescopes; k++) {
+@@ -2077,7 +2077,7 @@
+       detelescope_gate = (unsigned long long *) malloc((max_adcs+1) * sizeof(unsigned long long));
+     } else {
+       detelescope_gate = (unsigned long long *) realloc(detelescope_gate ,
+-					 (max_adcs + 1) * sizeof(unsigned long long));
++							(max_adcs + 1) * sizeof(unsigned long long));
+     }
+     for (k = 0; k <= max_adcs; k++) {
+       detelescope_gate[k] = 0;
+@@ -2116,19 +2116,19 @@
+ 
+     /* --- is-a-tac flag --- */
+ 
+-      if (tacgate == NULL) {
+-	tacgate = (int *) malloc(sizeof(int) * max_adcs);
+-      } else {
+-	tacgate = (int *) realloc(tacgate,sizeof(int) * max_adcs);
+-      }
+-      for (l = 0; l < max_adcs; l++) {
+-	tacgate[l] = 0;
+-      }
+-      if (num_tacs) {
+-	for (l = 0; l < num_tacs; l++) {
+-	  tacgate[adc_map[tacs[l].adc]] = l+1;
+-	}
++    if (tacgate == NULL) {
++      tacgate = (int *) malloc(sizeof(int) * max_adcs);
++    } else {
++      tacgate = (int *) realloc(tacgate,sizeof(int) * max_adcs);
++    }
++    for (l = 0; l < max_adcs; l++) {
++      tacgate[l] = 0;
++    }
++    if (num_tacs) {
++      for (l = 0; l < num_tacs; l++) {
++	tacgate[adc_map[tacs[l].adc]] = l+1;
+       }
++    }
+ 
+     /* --- let's also take a moment to set the titles of the histograms 
+        --- if we have them --- */
+@@ -2519,13 +2519,13 @@
+ 		  if (k >= numshorts) goto bufferdone;
+ 		  if ((numadc >= 2) && (numadc <= num_adcs)) { // second adc check
+ 		    /* --- now we deal with the second event --- */
+-		  m = (float) (head & (short int) 15872) / (float) 512;
+-		  /* --- gain m is the adc that fired --- */
++		    m = (float) (head & (short int) 15872) / (float) 512;
++		    /* --- gain m is the adc that fired --- */
+ 		  
+-		  if ((adc_map[m] >= 0) && (adc_map[m] < max_adcs) && (m <= biggest_adc)) {
+-		    event_adcs[1] = adc_map[m];
+-		    event_channel[1] = buffer[k] - 1;
+-		  }
++		    if ((adc_map[m] >= 0) && (adc_map[m] < max_adcs) && (m <= biggest_adc)) {
++		      event_adcs[1] = adc_map[m];
++		      event_channel[1] = buffer[k] - 1;
++		    }
+ 		  } else {
+ 		    goto writevent;
+ 		  } // done second adc check
+@@ -2702,9 +2702,9 @@
+ 	      for (l = 0; l < numadc; l++) {
+ 
+ 
+-	      /* --- let's make sure that if there are any
+-		 --- signals past the overflow bit they are not
+-		 --- added into whatever output there is --- */
++		/* --- let's make sure that if there are any
++		   --- signals past the overflow bit they are not
++		   --- added into whatever output there is --- */
+ 		uchanm[l] = (float) (((hpges[detector_info_map[event_adcs[l]]].calib[0]+
+ 				       hpges[detector_info_map[event_adcs[l]]].calib[1] *
+ 				       ((float)event_channel[l] - 0.5) +
+@@ -2722,7 +2722,7 @@
+ 				     (float) (1 + beta * 
+ 					      cos(hpges[detector_info_map[event_adcs[l]]].angle * 0.01745329))) ;
+ 		
+-		}
++	      }
+ 	      /* --- done unpacking the event --- */
+ 
+ 
+@@ -2770,7 +2770,7 @@
+ 		      if (detelescope_gate[event_adcs[z]] & telescope_gate[event_adcs[l]] & 
+ 			  (unsigned long long) ((unsigned long long)1 << ll)) {
+ 			tellook = LongBitLog2((detelescope_gate[event_adcs[z]] & telescope_gate[event_adcs[l]]) &
+-					  (unsigned long long)((unsigned long long )1 << ll));
++					      (unsigned long long)((unsigned long long )1 << ll));
+ 			//if (tellook > 32) {
+ 			// printf("Just a trap.\n");
+ 			//}
+@@ -2873,16 +2873,17 @@
+ 		    } // done cycling through all the possible telescopes
+ 		  } // done with making sure it is in a telescope gate
+ 		nextlpresortpart:
++		  break;
+ 		} // done cycling through the event
+ 	      }
+ 	      /* --- done unpacking telescope events --- */
+ 	      
+-	    /* --- first use tac gating --- */
+-	    /* --- the tac gating should probably be changed to a similar method
+-	       --- to the clover_gates and the telescope-gate and the gamma_gate etc.
+-	       --- at some point --- */
+-	    /* --- but since we don't have sufficient TACs to actually do
+-	       --- tac gates properly... we can do this the slow way for now --- */
++	      /* --- first use tac gating --- */
++	      /* --- the tac gating should probably be changed to a similar method
++		 --- to the clover_gates and the telescope-gate and the gamma_gate etc.
++		 --- at some point --- */
++	      /* --- but since we don't have sufficient TACs to actually do
++		 --- tac gates properly... we can do this the slow way for now --- */
+ 	      if (pgamsortgatetac){
+ 		int passtacgatea,passtacgateb;
+ 		passtacgatea = 0;
+@@ -2891,18 +2892,18 @@
+ 		if (num_tacs > 0) {
+ 		  for (l = 0; l < numadc; l++) {
+ 		    for (m = 0; m < num_tacs; m++) {
+-		    if (event_adcs[l] == adc_map[tacs[m].adc]) {
+-		      for (n = 0; n < tacs[m].num_adcs; n++) {
+-			int zzz;
+-			for (zzz = 0; zzz < numadc; zzz++) {
+-			  if ((event_adcs[zzz] == adc_map[tacs[m].gates[n].adc]) &&
+-			      (event_channel[l] >= tacs[m].gates[n].min) && 
+-			      (event_channel[l] <= tacs[m].gates[n].max) ) {
+-			    passtacgatea = 1;
+-			    goto passtacgatea;
++		      if (event_adcs[l] == adc_map[tacs[m].adc]) {
++			for (n = 0; n < tacs[m].num_adcs; n++) {
++			  int zzz;
++			  for (zzz = 0; zzz < numadc; zzz++) {
++			    if ((event_adcs[zzz] == adc_map[tacs[m].gates[n].adc]) &&
++				(event_channel[l] >= tacs[m].gates[n].min) && 
++				(event_channel[l] <= tacs[m].gates[n].max) ) {
++			      passtacgatea = 1;
++			      goto passtacgatea;
++			    }
+ 			  }
+ 			}
+-			}
+ 		      }
+ 		    }
+ 		  }
+@@ -2981,7 +2982,7 @@
+ 		    if ((0 < scope_x[l]) && (scope_x[l] < gate_info->axes[0]) &&
+ 			(0 < scope_y[l]) && (scope_y[l] < gate_info->axes[1])) {
+ 		      if (GateDataStructTest(gate_info,scope_addr[l],scope_x[l],scope_y[l])) {
+-		      //if (BigDataStructGetVal(gate_info,scope_x[l],scope_y[l]) & (uint)((uint)1 << scope_addr[l])) {
++			//if (BigDataStructGetVal(gate_info,scope_x[l],scope_y[l]) & (uint)((uint)1 << scope_addr[l])) {
+ 			passpartgate = 1;
+ 			goto passpartgate;
+ 		      }
+@@ -3018,12 +3019,12 @@
+ 			 (float) (1 + beta * 
+ 				  cos(hpges[detector_info_map[event_adcs[l]]].angle * 0.01745329)));
+ 		      //printf("gamma energy %f.\n",anewm);
+-		    for (m = 0; m < pgamgammagates.num; m++) {
+-		      if ((anewm >= pgamgammagates.min[m]) && (anewm <= pgamgammagates.max[m])) {
+-			passgammagate++;
++		      for (m = 0; m < pgamgammagates.num; m++) {
++			if ((anewm >= pgamgammagates.min[m]) && (anewm <= pgamgammagates.max[m])) {
++			  passgammagate++;
++			}
+ 		      }
+ 		    }
+-		    }
+ 		  } // done looping through the event
+ 		}
+ 	      passedgammagate:
+@@ -3077,19 +3078,19 @@
+ 			for (n = 0; n < numadc; n++) {
+ 			  if (n != l) {
+ 			    if (clover_gates[event_adcs[n]]) {
+-				/* --- due to compiler issues, the following space should not 
+-				   --- be removed --- */
++			      /* --- due to compiler issues, the following space should not 
++				 --- be removed --- */
+ 			      
+ 			      if (clover_gates[event_adcs[n]] 
+ 				  & clover_gates[event_adcs[l]]) {
+-				  clover_hit[BitLog2(clover_gates[event_adcs[l]])] += 1;
+-				  if (selfsuppressclovers) {
+-				    anewm = anewp = -1;
+-				    anewm2 = anewp2 = -1;
+-				  } else {
+-				    anewm2 += uchanm[n];
+-				    anewp2 += uchanp[n];
+-				  }
++				clover_hit[BitLog2(clover_gates[event_adcs[l]])] += 1;
++				if (selfsuppressclovers) {
++				  anewm = anewp = -1;
++				  anewm2 = anewp2 = -1;
++				} else {
++				  anewm2 += uchanm[n];
++				  anewp2 += uchanp[n];
++				}
+ 			      }
+ 			    }
+ 			  }
+@@ -3154,35 +3155,36 @@
+ 			if (tp > ((float) m + 0.5)) tp = ((float)m + 0.5);
+ 			if (event_adcs[l] >= 0)
+ 			  *(temphist[event_adcs[l]] + m) = *(temphist[event_adcs[l]] + m) + (frac * (tp - tm));
+-				/* --- also want to write to telescope and multicrystal
+-				   --- hpge total virtual adcs --- */
++			/* --- also want to write to telescope and multicrystal
++			   --- hpge total virtual adcs --- */
+ 		      }  
+ 		    }
+ 		  }
+-				  
++		  
+ 		nextlhist:
++		  break;
+ 		}
+ 
+-		  /* --- particle telescopes --- */
+-		  if ((num_scopes) && (telescopes_hit >= 1)) {
+-		    for (ll = 0; ll < num_scopes; ll++) {
+-		      newm = (int) scope_newm[ll];
+-		      newp = (int) scope_newp[ll];
+-		      if ((scope_newm[ll] - newm) > 0.5) newm++;
+-		      if ((scope_newp[ll] - newp) > 0.5) newp++;
+-		      if ((newm > 0) && (newp < fin_chans)) {
+-			if (scope_newm[ll] != scope_newp[ll]) 
+-			  frac = 1.0 / (scope_newp[ll] - scope_newm[ll]);
+-			for (m = newm;m <= newp; m++) {
+-			  tm = scope_newm[ll];
+-			  tp = scope_newp[ll];
+-			  if (tm < ((float) m - 0.5)) tm = ((float) m - 0.5);
+-			  if (tp < ((float) m + 0.5)) tp = ((float) m + 0.5);
+-			  *(temphist[scope_adcs[ll]] + m) += (frac * (tp - tm));
+-			}
++		/* --- particle telescopes --- */
++		if ((num_scopes) && (telescopes_hit >= 1)) {
++		  for (ll = 0; ll < num_scopes; ll++) {
++		    newm = (int) scope_newm[ll];
++		    newp = (int) scope_newp[ll];
++		    if ((scope_newm[ll] - newm) > 0.5) newm++;
++		    if ((scope_newp[ll] - newp) > 0.5) newp++;
++		    if ((newm > 0) && (newp < fin_chans)) {
++		      if (scope_newm[ll] != scope_newp[ll]) 
++			frac = 1.0 / (scope_newp[ll] - scope_newm[ll]);
++		      for (m = newm;m <= newp; m++) {
++			tm = scope_newm[ll];
++			tp = scope_newp[ll];
++			if (tm < ((float) m - 0.5)) tm = ((float) m - 0.5);
++			if (tp < ((float) m + 0.5)) tp = ((float) m + 0.5);
++			*(temphist[scope_adcs[ll]] + m) += (frac * (tp - tm));
+ 		      }
+-		    } // done cycling through scope events
+-		  }
++		    }
++		  } // done cycling through scope events
++		}
+ 	      }
+ 	      
+ 	      /* --- deal with tac output --- */
+@@ -3274,7 +3276,7 @@
+ 		    }
+ 		    g_num++;
+ 		  } // end of codition where it is only a gamma detector
+-		  } // done getting the gamma energies
++		} // done getting the gamma energies
+ 	      
+ 		/* --- at this point we have both the gamma info and the part info --- */
+ 		for (l = 0; l < g_num; l++) {
+@@ -3287,38 +3289,40 @@
+ 		  for (m = 0; m < num_scopes; m++) {
+ 		    /* --- first let's deal with the energy particle gate --- */
+ 		    if ((scope_newm[m] >= partenergies[0]) && (scope_newp[m] <= partenergies[1]) && pgamsortgateparten) goto nextpartpartsqr;
+-		      newm = (int) g_newm[l];
+-		      newp = (int) g_newp[l];
+-		      if ((g_newm[l] - newm) > 0.5) newm++;
+-		      if ((g_newp[l] - newp) > 0.5) newp++;
+-		      if ((newm > 0) && (newp < pgammatrixdata.size)) {
+-			if (g_newp[l] != g_newm[l]) frac = 1.0 / (g_newp[l] - g_newm[l]);
+-			else frac = 0;
+-			newme = (int) scope_newm[m];
+-			newpe = (int) scope_newp[m];
+-			if ((scope_newm[m] - newme) > 0.5) newme++;
+-			if ((scope_newp[m] - newpe) > 0.5) newpe++;
+-			if ((newme > 0) && (newpe < pgammatrixdata.size)) {
+-			  if (scope_newm[m] != scope_newp[m]) frace = 1.0 / (scope_newp[m] - scope_newm[m]);
+-			  else frace = 0;
+-			  for (n = newm; n <= newp; n++) {
+-			    tm = g_newm[l];
+-			    tp = g_newp[l];
+-			    if (tm < ((float) n - 0.5)) tm = ((float) n - 0.5);
+-			    if (tp > ((float) n + 0.5)) tp = ((float) n + 0.5);
+-			    for (o = newme; o <= newpe; o++) {
+-			      tme = scope_newm[m];
+-			      tpe = scope_newp[m];
+-			      if (tme < ((float) o - 0.5)) tme = ((float) o - 0.5);
+-			      if (tpe > ((float) o + 0.5)) tpe = ((float) o + 0.5);
+-			      *(pgammatrixdata.data + pgammatrixdata.size * n + o) += frac * frace * (tp - tm) * (tpe - tme);
+-			    }
++		    newm = (int) g_newm[l];
++		    newp = (int) g_newp[l];
++		    if ((g_newm[l] - newm) > 0.5) newm++;
++		    if ((g_newp[l] - newp) > 0.5) newp++;
++		    if ((newm > 0) && (newp < pgammatrixdata.size)) {
++		      if (g_newp[l] != g_newm[l]) frac = 1.0 / (g_newp[l] - g_newm[l]);
++		      else frac = 0;
++		      newme = (int) scope_newm[m];
++		      newpe = (int) scope_newp[m];
++		      if ((scope_newm[m] - newme) > 0.5) newme++;
++		      if ((scope_newp[m] - newpe) > 0.5) newpe++;
++		      if ((newme > 0) && (newpe < pgammatrixdata.size)) {
++			if (scope_newm[m] != scope_newp[m]) frace = 1.0 / (scope_newp[m] - scope_newm[m]);
++			else frace = 0;
++			for (n = newm; n <= newp; n++) {
++			  tm = g_newm[l];
++			  tp = g_newp[l];
++			  if (tm < ((float) n - 0.5)) tm = ((float) n - 0.5);
++			  if (tp > ((float) n + 0.5)) tp = ((float) n + 0.5);
++			  for (o = newme; o <= newpe; o++) {
++			    tme = scope_newm[m];
++			    tpe = scope_newp[m];
++			    if (tme < ((float) o - 0.5)) tme = ((float) o - 0.5);
++			    if (tpe > ((float) o + 0.5)) tpe = ((float) o + 0.5);
++			    *(pgammatrixdata.data + pgammatrixdata.size * n + o) += frac * frace * (tp - tm) * (tpe - tme);
+ 			  }
+ 			}
+ 		      }
++		    }
+ 		  nextpartpartsqr:
++		    break;
+ 		  }		  
+ 		nextgammapartsqr:
++		  break;
+ 		}
+ 	      }	    
+ 	      /* --- done dealing with particle - gamma squares --- */
+@@ -3364,8 +3368,8 @@
+ 			  
+ 			  /* --- this is the case where the event was 
+ 			     --- already used in a addback --- */
+-			     anewm = -1;
+-			     anewp = -1;
++			  anewm = -1;
++			  anewp = -1;
+ 
+ 			} else {
+ 			  
+@@ -3383,7 +3387,7 @@
+ 			    /* --- avoid double counting --- */
+ 			    if (n != l) {
+ 
+-			    /* --- first check to see if n was in the same clover as l --- */
++			      /* --- first check to see if n was in the same clover as l --- */
+ 			      if (clover_gates[event_adcs[n]] & clover_gates[event_adcs[l]]) {
+ 
+ 				/* --- if n is in the same clover as l, 
+@@ -3393,8 +3397,8 @@
+ 				  anewm = -1;
+ 				  anewp = -1;
+ 				} else {
+-				anewm += uchanm[n];
+-				anewp += uchanp[n];
++				  anewm += uchanm[n];
++				  anewp += uchanp[n];
+ 				} // done with selfsuppressclovers;
+ 
+ 				/* --- that should do it --- */
+@@ -3461,10 +3465,10 @@
+ 		      /* --- now we need to unpack the events on the y axis --- */
+ 		      /* --- to avoid double counting in the triangle case we need 
+ 			 --- to start from m = l+1; --- */
+-			 if (pgamsortoutputggtype == 1) {
+-			 o = l + 1;
+-			 } else
+-			 o = 0;
++		      if (pgamsortoutputggtype == 1) {
++			o = l + 1;
++		      } else
++			o = 0;
+ 		      for (m = o; m < numadc; m++) {
+ 			
+ 			/* --- first we need to make sure that this event
+@@ -3492,7 +3496,7 @@
+ 			     --- addback loop.  However, this can be corrected
+ 			     --- by including an or --- */
+ 			  if ((((clover_gates[event_adcs[l]] &
+-				clover_gates[event_adcs[m]]) == 0)
++				 clover_gates[event_adcs[m]]) == 0)
+ 			       || (!(num_clovers)))) {
+ 			    
+ 			    /* --- now we can unpack events on the y-axis --- */
+@@ -3535,7 +3539,7 @@
+ 					  anewm3 = -1;
+ 					  anewp3 = -1;
+ 					} else {
+-					/* --- now do the adding --- */
++					  /* --- now do the adding --- */
+ 					  anewm3 += uchanm[n];
+ 					  anewp3 += uchanp[n];
+ 
+@@ -3584,9 +3588,9 @@
+ 
+ 				if (clover_hit2[BitLog2(clover_gates[event_adcs[m]])] 
+ 				    < min_clover_multipolarity) { 
+-				goto nextlcloverminpolarityb;
++				  goto nextlcloverminpolarityb;
++				}
+ 			      }
+-			    }
+ 			      /* --- this is where the events are added to the
+ 				 --- gamma-gamma matricies --- */
+ 			      
+@@ -3598,13 +3602,13 @@
+ 			      if ((anewm3 - newm3) > 0.5) newm3++;
+ 			      if ((anewp3 - newp3) > 0.5) newp3++;
+ 			      //      printf(" (%d,%d): (%d,%d:%d,%d)\n",
+-				//     event_adcs[l],event_adcs[m],newm,newp,newm3,newp3);
++			      //     event_adcs[l],event_adcs[m],newm,newp,newm3,newp3);
+ 			      if (anewp3 != anewm3) frac3 = 1.0 / (anewp3 - anewm3);
+ 			      if ((newm >=0 ) && (newp < pgammatrixdata.size) &&
+ 				  (newm3 >= 0) && (newp3 < pgammatrixdata.size)) {
+ 				
+ 				for (n = newm; n <= newp; n++) {
+-				/* --- x-axis variables --- */
++				  /* --- x-axis variables --- */
+ 				  tm = anewm;
+ 				  tp = anewp;
+ 				  if (tm < ((float) n - 0.5)) tm = ((float) n - 0.5);
+@@ -3654,8 +3658,9 @@
+ 				  
+ 				} // done with x axis writting loop
+ 				
+-			     } // done with writting loope violation check
+-			    nextlcloverminpolarityb: 
++			      } // done with writting loope violation check
++			    nextlcloverminpolarityb:
++			      break;
+ 			    } // done with checking that uaxis unpacked ok
+ 			    
+ 			  } // done with double count avoidance
+@@ -3663,21 +3668,23 @@
+ 			} // done with y-axis event not in telescope check
+ 			
+ 		      nextmgg:
++			break;
+ 			
+ 		      } // done cycling through the events on the y axis
+ 		    minpolaritynextla:
++		      break;
+ 		    } // done checking that the x-axis events were propper
+-
++		    
+ 		  } // end of x-axis event not in telescope check
+-
++		  
+ 		nextlgg:
+-
++		  break;
+ 		}  // done looping through events on the x-axis
+-
++		
+ 	      }  // end of pgamsortoutputgg switch
+-
++	      
+ 	      /* --- done dealing with gamma-gamma matricies --- */
+-
++	      
+ 	      /* --- now we need to deal with pair squares --- */
+ 	      /* --- pretty much this requires at least 3 gamma-ray adcs firing --- */
+ 	      
+@@ -3715,7 +3722,7 @@
+ 			
+ 			/* --- now we need to check to see if n is in the same pair as l --- */
+ 			if ((((uint) (1 << event_adcs[l])) | ((uint) (1 << event_adcs[n]))) ==
+-			  pair_flags[m]) {
++			    pair_flags[m]) {
+ 
+ 			  /* --- at this point we know that both l and n are in the same pair --- */
+ 			  /* --- therefore let's do the add-back thingy --- */
+@@ -3746,10 +3753,10 @@
+ 			      /* --- there now that is initialized --- */
+ 			      for (o = 0; o < numadc; o++) {
+ 				
+-				  /* --- we don't want a telescope, or tac --- */
++				/* --- we don't want a telescope, or tac --- */
+ 				if ((o!=l) && (o!=n) && (((!(telescope_gate[event_adcs[o]])) &&
+-				    (!(detelescope_gate[event_adcs[o]]))) || special_telescope_gate[event_adcs[o]]) &&
+-				     (!(tacgate[event_adcs[o]]))) {
++							  (!(detelescope_gate[event_adcs[o]]))) || special_telescope_gate[event_adcs[o]]) &&
++				    (!(tacgate[event_adcs[o]]))) {
+ 				  
+ 				  /* --- start by unpacking the event assuming 1 crystal --- */
+ 				  anewm2 = uchanm[o];
+@@ -3835,8 +3842,8 @@
+ 					  tp2 = anewp2;
+ 					  if (tm2 < ((float) q - 0.5)) tm2 = ((float) q - 0.5);
+ 					  if (tp2 > ((float) q + 0.5)) tp2 = ((float) q + 0.5);
+-					    *(pgammatrixdata.data + p + q * pgammatrixdata.size) +=
+-					      frac * frac2 * (tp - tm) * (tp2 - tm2);
++					  *(pgammatrixdata.data + p + q * pgammatrixdata.size) +=
++					    frac * frac2 * (tp - tm) * (tp2 - tm2);
+ 					}
+ 				      }
+ 
+@@ -3844,6 +3851,7 @@
+ 				    
+ 
+ 				  nextminclovermultipolarityc:
++				    break;
+ 				  } // done with should we write check
+ 
+ 				} // done with making sure we arn't double counting
+--- src/fits.c	2003-04-20 22:36:39.000000000 -0500
++++ nsrc/fits.c	2012-08-27 17:18:36.263542549 -0500
+@@ -26,7 +26,7 @@
+ int yscale,ybin,yscaleforce,ybinforce;
+ long double displayused;
+ int background;
+-int globalcalibration[3],calibration[254][3];
++//int globalcalibration[3],calibration[254][3]; already in gnuscopeglobals.h
+ int numspectra;
+ GtkWidget *box1,*graphsdisplayed[16];
+ int displaygaussian,displaydoublegaussian;
+--- src/gs92.c	2003-04-20 22:38:05.000000000 -0500
++++ nsrc/gs92.c	2012-08-27 17:33:49.516380720 -0500
+@@ -6,6 +6,7 @@
+  */
+ 
+ /* --- includes --- */
++#include <unistd.h>
+ 
+ #include <stdio.h>
+ #include <sys/types.h>
+@@ -80,7 +81,11 @@
+ void TwdProject(int addlower, int addupper, 
+ 		      int subtractlower, int subtractupper, int desthist, int add);
+ void SqrProject(int addlower, int addupper, 
+-		      int subtractlower, int subtractupper, int desthist, int add,int xory);
++		int subtractlower, int subtractupper, int desthist, int add,int xory);
++
++void NewSqrProject(int addlower, int addupper, int subtractlower, int subtractupper,
++		   int histdest, int add, int xory, char *name);
++
+ void MakeGateArrays();
+ void GetDialog(int type);
+ void SortTypePrompt(GtkWidget *text);
+@@ -750,7 +755,7 @@
+ {
+   int sortall,sortrecords,recordmin,recordmax,runmin,runmax;
+   char dummystr[80];
+-  int i,j,k,l,m;
++  int i,j,k,l,m,close;
+   int abort;
+   char filename[80];
+   FILE *infile;
+@@ -786,18 +791,17 @@
+     /* --- Get the appropriate information from the user --- */
+     printf("Would you like to sort all of the gs92 runs? (yes,no) [no]");
+     scanf("%s",&dummystr);
+-    if (strstr(&dummystr,"y") != NULL){ 
++    if (strstr(&dummystr,"y") != 0){ 
+       abort = 0;
+       sortall = 1;
+     }
+     if (sortall == 0) {
+-      printf("Enter the number of records to sort. 
+-        (0 for all, -1 to abort or sort in the middle of the run)\n");
++      printf("Enter the number of records to sort. (0 for all, -1 to abort or sort in the middle of the run)\n");
+       scanf("%d",&sortrecords);
+       if (sortrecords < -1) {
+ 	printf("Do you want to abort the sort?.");
+ 	scanf("%s",&dummystr);
+-	if (strstr(&dummystr,"y") == NULL) abort = 1;
++	if (strstr(&dummystr,"y") == 0) abort = 1;
+ 	else {
+ 	  printf("Type first and last records to sort.");
+ 	  scanf("%d %d",&recordmin, &recordmax);
+@@ -1105,6 +1109,8 @@
+ 						*(twoddata.data + ix * twoddata.size + iy) + 1;
+ 					      break;
+ 					    default:
++					      close=0;
++					      break;
+ 					    } // end twd or sqr
+ 					  } //done adding
+ 					  if (subtractarray[mg]) { //subtracting
+@@ -1122,6 +1128,8 @@
+ 						*(twoddata.data + ix * twoddata.size + iy) - 1;
+ 					      break;
+ 					    default:
++					      close=0;
++					      break;
+ 					    } // end twd or sqr
+ 					  } // done subtracting
+ 					} // done writting the event
+@@ -1167,10 +1175,13 @@
+ 			    } // end first stat condition
+ 			break;
+ 		      default:
++			close=0;
++			break;
+ 		      } // end switch
+ 		    } // end pchannel and badness check
+ 		  jumpend:
+-
++		    close=0;
++		    break;
+ 		  } // end event test
+ 		} // end interpreting loop
+ 		
+@@ -1277,6 +1288,7 @@
+     break;
+   default:
+     printf("There does not seem to be a gs92 .twd or .sqr in memory.\n");
++    break;
+   }
+ }
+ 
+@@ -1290,20 +1302,19 @@
+  */
+ void ManualProject()
+ {
+-
++  
+   /* --- local variables --- */
+   int addlower,addupper,subtractlower,subtractupper,histdest,add,xory;
+   int lasthist;
+   char dummystr[3];
+-
++  
+   printf("What is the range of the add gate?");
+   scanf("%d %d",&addlower,&addupper);
+-  printf("What is the range of the subtract gate?
+-          (or \"-<counts> 0\" to subtract a fraction of the total projection).");
++  printf("What is the range of the subtract gate? (or \"-<counts> 0\" to subtract a fraction of the total projection).");
+   scanf("%d %d",&subtractlower,&subtractupper);
+   printf("What is the destination histogram and a constant to add?");
+   scanf("%d %d",&histdest,&add);
+-
++  
+   /* --- make sure that the destination histogram is at most one more than the
+      --- last histogram in memory */
+   lasthist = GetLastSpectrum();
+@@ -1311,10 +1322,10 @@
+     histdest = lasthist +1;
+     printf("Destination histogram changed to %d.\n",histdest);
+   }
+-
+-
++  
++  
+   /* --- prompt for nessasary information --- */
+-
++  
+   switch (twoddata.filetype) {
+   case 1:
+     TwdProject(addlower,addupper,subtractlower,subtractupper,histdest,add);
+@@ -1322,8 +1333,8 @@
+   case 2:
+     printf("Project from the x or y axis?");
+     scanf("%s",&dummystr);
+-    if (strstr(&dummystr,"x") !=NULL) xory = 0;
+-    if (strstr(&dummystr,"y") !=NULL) xory = 1;
++    if (strstr(&dummystr,"x") !=0) xory = 0;
++    if (strstr(&dummystr,"y") !=0) xory = 1;
+     SqrProject(addlower,addupper,subtractlower,subtractupper,histdest,add,xory);
+     break;
+   default:
+@@ -1352,13 +1363,13 @@
+   int subcounts;
+   float frac;
+   float asratio;
+-
++  
+   g_return_if_fail(twoddata.data != NULL);
+   g_return_if_fail((addlower >=0) && (addlower < twoddata.size));
+   g_return_if_fail((addupper >= addlower) && (addupper < twoddata.size));
+   //  g_return_if_fail((subtractlower >= 0) && (subtractlower < twoddata.size));
+   g_return_if_fail((subtractupper >= subtractlower) && (subtractupper < twoddata.size));
+-
++  
+   /* --- initialize --- */
+   counts = 0;
+   for (i = 0; i < 8192; i++ ) temphist[i] = 0;
+@@ -1369,7 +1380,7 @@
+     asratio = (fabs(addlower - addupper) / fabs(subtractlower - subtractupper));
+   else
+     asratio = 1;
+-
++  
+   /* --- if subtractlower is less than zero we are going to need
+      --- the number of counts in histogram 0 */
+   if (subtractlower < 0) {
+@@ -1463,6 +1474,7 @@
+   float frac;
+   int counter,maxcounter;
+   float asratio;
++  int count;
+ 
+   g_return_if_fail(twoddata.data != NULL);
+   g_return_if_fail((addlower >=0) && (addlower < twoddata.size));
+@@ -1561,9 +1573,144 @@
+   currentrange[1] = histsize[histdest] - 1;
+   spectradisplayed[0][0] = spectra;
+   DisplayCurrentRange();
++  //for(count=0; count< 8192; count++){
++  //printf("%d \t %d \n",count,temphist[count]);}
++  //printf("%d \t %d \t %d \t %d \t %d \t %d \t %d \n",addlower,addupper,subtractlower,subtractupper,histdest,add,xory);
++   //for(count=0; count< 3000; count++){
++   //  printf("%d \t %d \n",count,temphist[count]);
++   // }
+ }
+ 
+ 
++
++/* 
++ * New SqrProject
++ */
++
++void NewSqrProject(int addlower, int addupper, int subtractlower, int subtractupper,
++		   int histdest, int add, int xory, char *name)
++{
++  /* --- local variables --- */
++  int i,j,k;
++  int temphist[8192];
++  int newmemsize,lasthist;
++  long int subcounts;
++  float frac;
++  int counter,maxcounter;
++  float asratio;
++  int count;
++  FILE * file_descriptor;
++
++  g_return_if_fail(twoddata.data != NULL);
++  g_return_if_fail((addlower >=0) && (addlower < twoddata.size));
++  g_return_if_fail((addupper >= addlower) && (addupper < twoddata.size));
++  //  g_return_if_fail((subtractlower >= 0) && (subtractlower < twoddata.size));
++  g_return_if_fail((subtractupper >= subtractlower) && (subtractupper < twoddata.size));
++
++  /* --- initialization --- */
++  for (i = 0; i < 8192; i++) temphist[i] = 0;
++  subcounts = 0;
++  if (subtractlower != subtractupper)
++    asratio = (fabs(addlower - addupper) / fabs(subtractlower - subtractupper));
++  else
++    asratio = 1;
++  
++  /* --- if subtractlower is negative we are going to want to know the number
++     --- of counts in or reference histogram */
++  if (subtractlower < 0) {
++    for (i = 0; i < histsize[xory]; i++) {
++      subcounts = subcounts + *(histloc[xory] + i);
++    } 
++  }
++  /* --- there we should have the number of counts to subtract --- */
++
++  /* --- Now to generate the appropriate histogram --- */
++  /* --- add gate first --- */
++  maxcounter = twoddata.size * (addupper - addlower + 1);
++  StartProgress();
++  for (i = addlower; i <= addupper; i++) {
++    for (j = 0; j < twoddata.size; j++) {
++	counter = twoddata.size * i + j;
++	UpdateProgress(counter,maxcounter);
++      if (xory == 0) temphist[j] = temphist[j] + (int) *(twoddata.data + twoddata.size * i + j);
++      if (xory == 1) temphist[j] = temphist[j] + (int) *(twoddata.data + twoddata.size * j + i);
++    }
++  }
++  EndProgress();
++  /* --- subtract gate second --- */
++  /* --- first the more traditional subtract gate --- */
++  if (subtractlower > 0) {
++    maxcounter = twoddata.size * (subtractupper - subtractlower+1);
++    StartProgress();
++    for (i = subtractlower; i <= subtractupper; i ++) {
++      for (j = 0; j < twoddata.size; j++) {
++	counter = twoddata.size * i + j;
++	UpdateProgress(counter,maxcounter);
++	if (xory == 0) temphist[j] = temphist[j] - (int) *(twoddata.data + twoddata.size * i + j) * asratio;
++	if (xory == 1) temphist[j] = temphist[j] - (int) *(twoddata.data + twoddata.size * j + i) * asratio;
++      }
++    }
++    EndProgress();
++  } else {
++    if (subtractlower < 0) {
++      frac = (float) (addupper - addlower + 1) * abs(subtractlower) / (float) subcounts;
++      //   frac = - (float)subtractlower / (float)subcounts;
++      for (i = 0; i < histsize[xory]; i++) {
++	temphist[i] = temphist[i] - *(histloc[xory] + i) * frac;
++      }
++    }
++  }
++  /* --- do the add --- */
++  if (add != 0) {
++    for (i = 0; i < twoddata.size; i++) {
++      temphist[i] = temphist[i] + add;
++    }
++  }
++  /* --- get rid of the zeros --- */
++  for (i = 0; i < twoddata.size; i++) {
++    if (temphist[i] < 0) temphist[i] = 0;
++  }
++  /* --- write out the darned thing --- */
++    newmemsize = (int) twoddata.size * sizeof(int);
++  ObliterateHistogram(histdest);
++  /* --- Write identifying information --- */
++  histsize[histdest] = (int) twoddata.size;
++  histid[histdest] = histdest;
++  sprintf(field1[histdest],"");
++  sprintf(field2[histdest],"Gamma");
++  sprintf(field3[histdest],"");
++  
++  //  printf("histsize[%d]: %d",his\tdest,histsize[histdest]);
++  histloc[histdest] = (int *) malloc(newmemsize);
++  for (i = 0; i < twoddata.size; i++) {
++    if (temphist > 0) {
++      *(histloc[histdest] + i) = (int) temphist[i];
++    } else {
++      *(histloc[histdest] + i) = 0;
++    }
++  }
++  
++  //  printf("Projection completed, attempting to display.\n");
++  //  printf("Size of new spectra : %d.\n",histsize[a]);
++  /* --- display our new histogram --- */
++  spectra = histdest;
++  currentrange[0] = 0;
++  currentrange[1] = histsize[histdest] - 1;
++  spectradisplayed[0][0] = spectra;
++  
++  if((file_descriptor=fopen(name,"w"))!=0){
++    for(count=0; count< 3000; count++){
++      fprintf(file_descriptor,"%d \t %d \n",count,temphist[count]);
++    }
++    //sleep(1);
++  }
++  
++  fclose(file_descriptor);
++ 
++}
++
++
++
+ /* 
+  * Max
+  *
+@@ -1600,11 +1747,11 @@
+  */
+ void DopplerCorrect(int *energy,int detector) 
+ {
+-  int i;
++  int i,close;
+   float theta;
+   float cosang;
+   theta = 90;
+-
++  
+   switch (detector) {
+   case 1:
+   case 2:
+@@ -1749,8 +1896,11 @@
+   case 108:
+   case 110:
+     theta = 2.8400931;
++    break;
+   default:
++    close=0;
+     /* --- unknown detector angle, do nothing --- */
++    break;
+   }
+   cosang = 1 - beta * cos(theta);
+   *energy = (int) *energy * cosang;
+--- src/analysis.c	2003-04-21 20:16:05.000000000 -0500
++++ nsrc/analysis.c	2012-08-27 17:41:25.236031264 -0500
+@@ -16,7 +16,7 @@
+ int background;
+ int backgroundpolydeg;
+ int currentmax;
+-float globalcalibration[3],calibration[254][3];
++//float globalcalibration[3],calibration[254][3]; already in gnuscopeglobals.h
+ int globalcalibrationset;
+ int ybinforce,yscaleforce;
+ int ybin,yscale;
+--- src/manipulate.c	2003-04-20 22:38:59.000000000 -0500
++++ nsrc/manipulate.c	2012-08-27 17:43:38.972182445 -0500
+@@ -9,7 +9,7 @@
+ int intype,spectra,plottype;
+ GtkWidget *graph;
+ int markers[4],binsize,offset;
+-float globalcalibration[3],calibration[254][3];
++//float globalcalibration[3],calibration[254][3]; already in gnuscopeglobals.h
+ int background;
+ int backgroundploydeg;
+ int oldscope;
+--- src/main.c	2003-06-25 10:45:10.000000000 -0500
++++ nsrc/main.c	2012-08-27 17:55:18.280199713 -0500
+@@ -1373,7 +1373,8 @@
+   /* --- freeze the text widget --- */
+   gtk_text_freeze (GTK_TEXT (text));
+   //printf("%s\n",getenv("HOME"));
+-  sprintf(dummystr,"%s/.gnuscopehelp.txt",getenv("HOME"));
++  //sprintf(dummystr,"%s/.gnuscopehelp.txt",getenv("HOME"));
++  sprintf(dummystr,"/home/nathalie/.gnuscopehelp.txt");
+   //printf("%s\n",dummystr);
+   if ((helpfile = fopen(dummystr,"r")) != NULL){
+     while ((nchar = fread(buffer,1,8000,helpfile)) > 0) {
+@@ -1520,13 +1521,17 @@
+  *
+  * Hopefully this can interpret command files
+  */
++//................................................................
+ void CommandFileHandler(char *sFilename)
+ {
+   FILE *infile;
+-  char dummystr[120];
+-  char dummystr2[120];
++  char dummystr[1000];
++  char dummystr2[1000];
++  char name[120];
+   int i,j,k,l;
+   float a,b,c,d,e;
++  int addlower,  addupper,  subtractlower,  subtractupper,
++    histdest,  add,  xory;
+ 
+   /* --- let's make sure that we have some way to have comments --- */
+   /* --- we'll do it the dumb way and 
+@@ -1581,6 +1586,41 @@
+ 	    WriteMainText("Error determining which file to read.\n");
+ 	  }
+ 	}
++
++/* --- start with call Projection Funtion --- */
++	if (strstr(dummystr,"FPCommand") != NULL) {
++	  if (sscanf(dummystr,"FPCommand %s %s",
++		     dummystr2, name) == 2) 
++	    {
++	      ReadAutoMatrix(dummystr2);
++	      printf("\n%s %s \n",dummystr2, name);
++	      NewSqrProject( 0, 2999, 0 , 0 , 0 , 0, 0 ,name);
++	      NewSqrProject( 0, 2999, 0 , 0 , 1, 0 , 1 ,
++			     strcat(name,"_1"));
++	      
++	    } else {
++	    WriteMainText("Error determining which file to read.\n");
++	  }
++ 	  
++	}
++	
++
++	/* --- start with call Projection  --- */
++	if (strstr(dummystr,"project") != NULL) {
++	  if (sscanf(dummystr,"project %s %s %d %d %d  %d ",dummystr2,name, &addlower, &addupper, &subtractlower,&subtractupper) == 6) {
++	    ReadAutoMatrix(dummystr2);
++	    printf("\n %s %s %d %d %d %d \n",dummystr2, name,addlower, addupper, subtractlower,subtractupper); 
++
++	    NewSqrProject( addlower, addupper,subtractlower,subtractupper,3, 0, 0 ,name);
++
++	  } else {
++	    WriteMainText(" bad command assignment .\n");
++	  }
++ 	  
++	}
++
++
++
+ 	/* --- set calibrations --- */
+ 	if (strstr(dummystr,"cal") != NULL) {
+ 	  if (sscanf(dummystr,"cal %d %f %f %f",&i, &a, &b, &c) == 4)
+@@ -1782,7 +1822,7 @@
+  */
+ void CommandLineHandler(int argc, char *argv[])
+ {
+-  int i,j,k;
++  int i,j,k, close;
+   char dummystr[120];
+   /* --- cycle through the command line options 
+      --- looking for stuff we recognize --- */
+@@ -1914,6 +1954,7 @@
+     }
+   }
+  stopreadingcommand:
++  close=0;
+ }
+ 
+ /* ConfigFileSearcher
+@@ -1925,14 +1967,16 @@
+   FILE *infile;
+   char dummystr[120];
+   char homedir[120];
+-
++  //char *algo;
++  // algo=getenv("HOME");
+   /* --- first look for a configuration file in the local directory --- */
+   if ((infile = fopen(".gnuscopeconfig","r")) != NULL) {
+     ConfigFileHandler(infile);
+     fclose(infile);
+   } else {
+     /* --- otherwise let us see if it is in the main directory --- */
+-    sprintf(dummystr,"%s/.gnuscopeconfig",getenv("HOME"));
++
++    sprintf(dummystr,"/home/nathalie/.gnuscopeconfig");
+     if ((infile = fopen(dummystr,"r")) != NULL) {
+       ConfigFileHandler(infile);
+       fclose(infile);
+@@ -1943,7 +1987,9 @@
+ /* ConfigFileHandler
+  *
+  * This function handles the interpretation of configuration files
++
+  */
++//...................................................................................................
+ void ConfigFileHandler(FILE *infile)
+ {
+   //  FILE *infile;
+--- src/peakfit.c	2003-04-20 22:39:45.000000000 -0500
++++ nsrc/peakfit.c	2012-08-27 18:07:05.975657141 -0500
+@@ -58,7 +58,7 @@
+ int background;
+ int backgroundploydeg;
+ int currentmax;
+-float globalcalibration[3],calibration[254][3];
++//float globalcalibration[3],calibration[254][3]; already in gnuscopeglobals.h
+ int globalcalibrationset;
+ int ybinforce,yscaleforce;
+ float ybin,yscale;
