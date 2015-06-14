@@ -1,0 +1,8 @@
+[Desktop Entry]
+Exec=/usr/lib32/jvm/java32-8-jre/jre/bin/policytool
+Icon=sun-java32-jre8
+Name=Java Policy Settings (32-bit)
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Settings;Java;
