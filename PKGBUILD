@@ -3,6 +3,7 @@ pkgname=pycarddav-git
 _pkgname=pycarddav
 pkgver=20150615
 pkgrel=1
+epoch=1
 pkgdesc="pyCardDAV is a simple to use CardDAV CLI client"
 arch=any
 url="http://lostpackets.de/pycarddav/"

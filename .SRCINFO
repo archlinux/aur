@@ -2,6 +2,7 @@ pkgbase = pycarddav-git
 	pkgdesc = pyCardDAV is a simple to use CardDAV CLI client
 	pkgver = 20150615
 	pkgrel = 1
+	epoch = 1
 	url = http://lostpackets.de/pycarddav/
 	arch = any
 	license = Expat/MIT
