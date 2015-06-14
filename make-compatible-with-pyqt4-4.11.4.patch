@@ -1,0 +1,22 @@
+--- ffmulticonverter-1.7.0/ffmulticonverter/audiovideotab.py.old	2015-06-14 13:17:17.141921225 +0300
++++ ffmulticonverter-1.7.0/ffmulticonverter/audiovideotab.py	2015-06-14 13:20:22.085067124 +0300
+@@ -183,7 +183,7 @@
+         line.setFrameShape(QFrame.HLine)
+         line.setFrameShadow(QFrame.Sunken)
+         self.moreQPB = QPushButton(QApplication.translate('Tab', 'More'))
+-        self.moreQPB.setSizePolicy(QSizePolicy(QSizePolicy.Fixed))
++        self.moreQPB.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+         self.moreQPB.setCheckable(True)
+         hlayout3 = utils.add_to_layout('h', line, self.moreQPB)
+
+--- ffmulticonverter-1.7.0/ffmulticonverter/progress.py.old	2015-06-14 13:01:24.662991040 +0300
++++ ffmulticonverter-1.7.0/ffmulticonverter/progress.py	2015-06-14 13:24:31.447864509 +0300
+@@ -75,7 +75,7 @@
+         self.cancelQPB = QPushButton(self.tr('Cancel'))
+
+         detailsQPB = QCommandLinkButton(self.tr('Details'))
+-        detailsQPB.setSizePolicy(QSizePolicy(QSizePolicy.Fixed))
++        detailsQPB.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+         detailsQPB.setCheckable(True)
+         detailsQPB.setMaximumWidth(113)
+         line = QFrame()
