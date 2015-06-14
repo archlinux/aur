@@ -1,0 +1,19 @@
+pkgbase = detoul
+	pkgdesc = a declarative tool for creating integration branches in git
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/ramonsnir/detoul
+	arch = any
+	license = MIT
+	depends = git>=2
+	depends = grep>=2.19
+	depends = perl>=5.18
+	depends = sed
+	depends = coreutils
+	optdepends = bash-completion: for auto-completion in bash
+	provides = git-pwd
+	source = https://github.com/ramonsnir/detoul/archive/v0.1.3.tar.gz
+	md5sums = 75dbe95906450083ce63461a7f1cfd9a
+
+pkgname = detoul
+
