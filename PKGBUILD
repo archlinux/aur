@@ -9,6 +9,7 @@ arch=('any')
 url="https://pypi.python.org/pypi/livereload"
 license=('BSD')
 depends=('python-six' 'python-tornado')
+makedepends=('python-setuptools')
 replaces=('livereload')
 conflicts=('livereload')
 source=("https://pypi.python.org/packages/source/l/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")

@@ -5,6 +5,7 @@ pkgbase = python-livereload
 	url = https://pypi.python.org/pypi/livereload
 	arch = any
 	license = BSD
+	makedepends = python-setuptools
 	depends = python-six
 	depends = python-tornado
 	conflicts = livereload
