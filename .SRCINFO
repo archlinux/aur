@@ -1,0 +1,17 @@
+pkgbase = perl-text-multimarkdown-xs
+	pkgdesc = Perl/CPAN Module Text-MultiMarkdown-XS
+	pkgver = 0.001_03
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Text-MultiMarkdown-XS/
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	checkdepends = perl-test-pod
+	checkdepends = perl-test-pod-coverage
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AN/ANDREWF/Text-MultiMarkdown-XS-0.001_03.tar.gz
+	md5sums = 9e931643fd76ad32c9c96871ba2cb36b
+
+pkgname = perl-text-multimarkdown-xs
+
