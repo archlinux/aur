@@ -1,33 +1,33 @@
 # Maintainer : Martin Wimpress <code@flexion.org>
 
-pkgname=mate-session-manager-upower
-_pkgname=mate-session-manager
-pkgver=1.8.1
-pkgrel=4
-pkgdesc="The MATE Session Handler with upower (i.e. no-systemd) support"
+_ver=1.10
+_pkgbase=mate-session-manager
+pkgname=(${_pkgbase}-upower)
+pkgver=${_ver}.1
+pkgrel=1
+pkgdesc="The MATE Session Handler (GTK2 version) with upower (i.e. no-systemd) support"
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
-depends=('dbus-glib' 'gtk2' 'libsm' 'libxtst' 'mate-desktop' 'mate-polkit'
-         'mate-settings-daemon' 'ttf-dejavu' 'xdg-user-dirs' 'upower-pm-utils')
-makedepends=('mate-common' 'pangox-compat' 'perl-xml-parser' 'xmlto')
-optdepends=('lightdm-gtk2-greeter: A lightweight display manager'
+depends=('dbus-glib' 'gtk2' 'libsm' 'libxtst' 'mate-desktop>=1.10'
+         'mate-polkit>=1.10' 'mate-settings-daemon>=1.10' 'ttf-dejavu'
+         'xdg-user-dirs')
+makedepends=('mate-common' 'pangox-compat' 'xmlto')
+optdepends=('mdm-nosystemd: The MDM Display Manager with consolekit support for non-systemd setups'
             'onboard: On-screen keyboard useful for mobility impaired users'
             'orca: Screen reader for blind or visually impaired individuals'
-            'xdg-user-dirs-gtk: Add autostart that prompts to rename user directories when switching locales'
-            'yelp: for reading MATE help documents')
-conflicts=(${_pkgname})
-provides=(${_pkgname})
+            'xdg-user-dirs-gtk: Add autostart that prompts to rename user directories when switching locales')
+conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
+provides=(${_pkgbase})
 groups=('mate')
-source=("http://pub.mate-desktop.org/releases/1.8/${_pkgname}-${pkgver}.tar.xz")
-sha1sums=('af07f12aaad1c6fd7626dfcf95c01c519bde3819')
-install=${pkgname}.install
+source=("http://pub.mate-desktop.org/releases/1.10/${_pkgbase}-${pkgver}.tar.xz")
+install=${_pkgbase}.install
 
 build() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "${srcdir}/${_pkgbase}-${pkgver}"
     ./configure \
         --prefix=/usr \
-        --libexecdir=/usr/lib/${_pkgname} \
+        --libexecdir=/usr/lib/${_pkgbase} \
         --sysconfdir=/etc \
         --localstatedir=/var \
         --with-gtk=2.0 \
@@ -36,6 +36,9 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "${srcdir}/${_pkgbase}-${pkgver}"
     make DESTDIR="${pkgdir}" install
 }
+
+##
+sha256sums=('8b46a5223e3bb6b12c418e8b2f6cf7b9eea397c6e0859fc65ea52999d3908dfe')
