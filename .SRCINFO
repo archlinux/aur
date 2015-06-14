@@ -1,0 +1,15 @@
+pkgbase = poly2tri-c-git
+	pkgdesc = A C library for generating constrained delaunay triangulations and refining them.
+	pkgver = p2tc.0.1.0.2.gc55fabf
+	pkgrel = 1
+	url = https://code.google.com/p/poly2tri-c/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = glib2
+	provides = poly2tri-c
+	options = !libtool
+
+pkgname = poly2tri-c-git
+
