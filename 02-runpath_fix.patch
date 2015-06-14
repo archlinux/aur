@@ -1,0 +1,12 @@
+diff -aur burp.pristine/Makefile.in burp.new/Makefile.in
+--- burp.pristine/Makefile.in	2014-01-27 10:55:47.000000000 +0000
++++ burp.new/Makefile.in	2015-03-29 13:30:33.141852508 +0000
+@@ -90,7 +90,7 @@
+ 	$(MKDIR) $(DESTDIR)$(sbindir)
+ 	$(MKDIR) $(DESTDIR)$(sysconfdir)
+ 	$(MKDIR) $(DESTDIR)$(sysconfdir)/CA-client
+-	$(MKDIR) $(DESTDIR)/var/run
++	$(MKDIR) $(DESTDIR)/run
+ 	$(MKDIR) $(DESTDIR)/var/spool/burp
+ 	@if [ ! -d $(DESTDIR)$(sysconfdir)/clientconfdir ] ; then $(MKDIR) $(DESTDIR)$(sysconfdir)/clientconfdir ; cp configs/server/clientconfdir/testclient $(DESTDIR)$(sysconfdir)/clientconfdir/testclient ; fi
+ 	@if [ ! -d $(DESTDIR)$(sysconfdir)/clientconfdir/incexc ] ; then $(MKDIR) $(DESTDIR)$(sysconfdir)/clientconfdir/incexc ; cp configs/server/clientconfdir/incexc $(DESTDIR)$(sysconfdir)/clientconfdir/incexc/example ; fi

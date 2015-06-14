@@ -1,0 +1,7 @@
+[Unit]
+Description=Burp backup client
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/burp -a t
+SuccessExitStatus=3

@@ -1,0 +1,11 @@
+[Unit]
+Description=Burp backup and restore server.
+
+[Service]
+User=root
+Type=forking
+KillMode=process
+ExecStart=/usr/sbin/burp -c /etc/burp/burp-server.conf
+
+[Install]
+WantedBy=multi-user.target

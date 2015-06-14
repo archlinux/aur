@@ -1,0 +1,39 @@
+diff -aur burp.pristine/src/backup_phase2_server.c burp.new/src/backup_phase2_server.c
+--- burp.pristine/src/backup_phase2_server.c	2014-01-27 10:55:47.000000000 +0000
++++ burp.new/src/backup_phase2_server.c	2015-03-29 14:30:45.905800143 +0000
+@@ -480,7 +480,11 @@
+ 	free(curpath);
+ 
+ 	blocklen=get_librsync_block_len(cb->endfile);
++ #ifdef RS_DEFAULT_STRONG_LEN
+ 	if(!(p1b->sigjob=rs_sig_begin(blocklen, RS_DEFAULT_STRONG_LEN)))
++ #else
++        if(!(p1b->sigjob=rs_sig_begin(blocklen, 8, RS_MD4_SIG_MAGIC)))
++ #endif
+ 	{
+ 		logp("could not start signature job.\n");
+ 		return -1;
+diff -aur burp.pristine/src/backup_phase4_server.c burp.new/src/backup_phase4_server.c
+--- burp.pristine/src/backup_phase4_server.c	2014-01-27 10:56:18.000000000 +0000
++++ burp.new/src/backup_phase4_server.c	2015-03-29 14:30:45.905800143 +0000
+@@ -38,7 +38,7 @@
+ 	}
+ 	result=rs_sig_gzfile(dstfp, dstzp, sigp,
+ 		get_librsync_block_len(endfile),
+-		RS_DEFAULT_STRONG_LEN, NULL, cntr);
++		8, NULL, cntr);
+ 	gzclose_fp(&dstzp);
+ 	close_fp(&dstfp);
+ 	if(close_fp(&sigp))
+diff -aur burp.pristine/src/rs_buf.c burp.new/src/rs_buf.c
+--- burp.pristine/src/rs_buf.c	2014-01-27 10:55:47.000000000 +0000
++++ burp.new/src/rs_buf.c	2015-03-29 14:30:45.905800143 +0000
+@@ -497,7 +497,7 @@
+     rs_job_t        *job;
+     rs_result       r;
+ 
+-    job = rs_sig_begin(new_block_len, strong_len);
++    job = rs_sig_begin(new_block_len, strong_len, RS_MD4_SIG_MAGIC);
+     r = rs_whole_gzrun(job, old_file, old_zfile, sig_file, NULL, cntr);
+ /*
+     if (stats)

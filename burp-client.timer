@@ -1,0 +1,12 @@
+[Unit]
+Description=Checks every 20 minutes whether a backup is needed.
+
+[Timer]
+# Time to wait after booting before we run first time
+OnBootSec=5min
+# Time between running each consecutive time
+OnUnitActiveSec=20min
+Unit=burp-client.service
+
+[Install]
+WantedBy=multi-user.target
