@@ -1,0 +1,17 @@
+post_install() {
+    echo "Add to your ~/.vimrc:"
+    echo "let g:vbookmark_bookmarkSaveFile = \$HOME . '/.vimbookmark'"
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  post_install
+}
+
+op=$1
+shift
+
+$op $*

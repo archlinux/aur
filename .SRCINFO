@@ -1,0 +1,17 @@
+pkgbase = vim-vbookmark
+	pkgdesc = A bookmark plugin
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = http://vim.org/scripts/script.php?script_id=4299>
+	install = vim-vbookmark.install
+	arch = any
+	groups = vim-plugins
+	license = BSD
+	depends = vim-runtime
+	source = vim-vbookmark-0.3.0.vim::http://www.vim.org/scripts/download_script.php?src_id=18943
+	source = LICENSE
+	md5sums = ddcd373a1557e21275ca1225215de751
+	md5sums = 5c37619c721935e35467e511c61e59d6
+
+pkgname = vim-vbookmark
+
