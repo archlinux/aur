@@ -1,0 +1,24 @@
+--- unsermake-20060706.orig/unsermake	2006-07-07 01:07:51.000000000 +0800
++++ unsermake-20060706/unsermake	2007-07-24 11:35:39.000000000 +0800
+@@ -1,16 +1,12 @@
+-#! /bin/sh
++#!/bin/bash
+ 
+-self="$0"
+-if test -L "$self"; then
+-    try=`readlink $self 2>/dev/null` && self=$try
+-fi
+-mods=`dirname $self`
+-directory=`dirname $mods`
+-mod=`basename $mods`
++mods=/usr/lib/python__version__/site-packages/unsermake
++directory=/usr/lib/python__version__/site-packages/unsermake
++mod=unsermake
+ if test -n "$PYTHONPATH"; then
+    export PYTHONPATH=$directory:$PYTHONPATH
+ else
+    export PYTHONPATH=$directory
+ fi
+-exec python -c "import $mod; $mod.main()" --modules $mods "$@"
++exec python2.6 -c "import $mod; $mod.main()" --modules $mods "$@"
+ 

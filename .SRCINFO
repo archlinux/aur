@@ -1,0 +1,16 @@
+pkgbase = unsermake
+	pkgdesc = A replacement for automake
+	pkgver = 20070824
+	pkgrel = 4
+	url = http://wiki.kde.org/tiki-index.php?page=unsermake
+	arch = any
+	license = GPL
+	makedepends = python2>=2.6
+	depends = python2>=2.6
+	source = http://ranger.befunk.com/fink/unsermake/unsermake-20070824.tar.bz2
+	source = unsermake-python2.patch
+	md5sums = b794f83bdc3f6205d1fd731da4e96d89
+	md5sums = 101fca1c17ef31d928065f5bc646af9f
+
+pkgname = unsermake
+
