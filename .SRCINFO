@@ -1,0 +1,37 @@
+pkgbase = ruby-fog
+	pkgdesc = brings clouds to you
+	pkgver = 1.31.0
+	pkgrel = 1
+	url = http://github.com/fog/fog
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-fog-core
+	depends = ruby-fog-json
+	depends = ruby-fog-xml
+	depends = ruby-ipaddress
+	depends = ruby-nokogiri
+	depends = ruby-fog-atmos
+	depends = ruby-fog-aws
+	depends = ruby-fog-brightbox
+	depends = ruby-fog-ecloud
+	depends = ruby-fog-google
+	depends = ruby-fog-local
+	depends = ruby-fog-powerdns
+	depends = ruby-fog-profitbricks
+	depends = ruby-fog-radosgw
+	depends = ruby-fog-riakcs
+	depends = ruby-fog-sakuracloud
+	depends = ruby-fog-serverlove
+	depends = ruby-fog-softlayer
+	depends = ruby-fog-storm_on_demand
+	depends = ruby-fog-terremark
+	depends = ruby-fog-vmfusion
+	depends = ruby-fog-voxel
+	noextract = fog-1.31.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/fog-1.31.0.gem
+	sha512sums = 15fa011054b6eeb386e99d88b6131539015ae5a10b7cecfcbf813b48932f0b531b2dcb5521861ed9044fffbd6d7547b1bed72821729de127cc2aeba31c108832
+
+pkgname = ruby-fog
+
