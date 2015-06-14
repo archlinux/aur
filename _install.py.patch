@@ -1,0 +1,68 @@
+--- Komodo-Edit-__VERSION__-linux-__ARCH__/support/_install.py2013-10-17 05:13:	50.000000000 +0200
++++ src/Komodo-Edit-__VERSION__-linux-__ARCH__/support/_install.py2013-11-18 18:39:56.767640864 +0100
+@@ -349,10 +349,7 @@
+      	       log.warn("unexpected error creating fallback .desktop file "
+                      "'%s': %s", fallbackPath, ex2)
+         else:
+-            log.warn("did not install desktop shortcut: %s "
+-                     "(a Komodo .desktop file has been created in '%s' "
+-                     "that you may install manually)",
+-                     ex, fallbackPath)
++            pass
+     else:
+         log.info("'Komodo Edit 8' desktop shortcut created at '%s'",
+                  shortcutPath)
+@@ -440,19 +437,23 @@
+     absInstallDir = abspath(normInstallDir)
+     pyInstallDir = join(absInstallDir, "lib", "python")
+     mozInstallDir = join(absInstallDir, "lib", "mozilla")
+-    log.info("Installing ActiveState Komodo to '%s'...", normInstallDir)
++    print("Installing ActiveState Komodo to '%s'..." % normInstallDir)
+     _validateInstallDir(absInstallDir)
+     log.debug("redirect userDataDir to '%s'", userDataDir)
+     log.debug("user environment: %s", pprint.pformat(dict(os.environ)))
+ 
+     # "destDir", if defined, is the ultimate final install location. We
+     # want to relocate to that dir.
++    absRelocDir = absInstallDir
++    pyRelocDir = pyInstallDir
+     if destDir is None:
+-        absRelocDir = absInstallDir
+-        pyRelocDir = pyInstallDir
++        absRelocDestDir = absInstallDir
++        pyRelocDestDir = pyInstallDir
+     else:
+-        absRelocDir = abspath(normpath(expanduser(destDir)))
+-        pyRelocDir = join(absRelocDir, "lib", "python")
++        absRelocDestDir = abspath(normpath(expanduser(destDir)))
++        pyRelocDestDir = join(absRelocDestDir, "lib", "python")
++
++    print("Python relocation directory : '%s'" % pyRelocDestDir)
+ 
+     # copy the entire "Komodo" tree to the installDir
+     if not exists(absInstallDir):
+@@ -466,7 +467,7 @@
+ 
+     log.debug("Preparing internal Python...")
+     import activestate
+-    activestate.relocate_python(pyRelocDir,
++    activestate.relocate_python(pyRelocDir, dest_prefix=pyRelocDestDir,
+                                 verbose=log.isEnabledFor(logging.DEBUG))
+ 
+     # Make sure that we use symlinks for libpython.so, bug 98337
+@@ -696,6 +697,7 @@
+             suppressShortcut = True
+         elif opt in ("--dest-dir",):
+             destDir = optarg
++            print("Opt destDir = %s" % destDir)
+     if destDir and not installDir:
+         log.error("must use -I|--install-dir to use --dest-dir")
+         return 1
+@@ -704,6 +706,7 @@
+         if installDir is None:
+             interactiveInstall(suppressShortcut)
+         else:
++            print("Installation destDir = %s" % destDir)
+             install(installDir, suppressShortcut, destDir=destDir)
+     except (EnvironmentError, Error), ex:
+         log.error(str(ex))

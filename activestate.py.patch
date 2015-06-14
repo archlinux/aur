@@ -1,0 +1,34 @@
+--- Komodo-Edit-__VERSION__-linux-__ARCH__/INSTALLDIR/lib/python/lib/python2.7/activestate.py2013-08-15 00:21:03.000000000 +0200
++++ 	src/Komodo-Edit-__VERSION__-linux-__ARCH__/INSTALLDIR/lib/python/lib/python2.7/activestate.py2013-11-18 18:27:07.902501347 +0100
+@@ -182,7 +182,7 @@
+     os	.chmod(path, perm) # restore permissions
+ 
+ 
+-def relocate_python(install_prefix, verbose=False):
++def relocate_python(install_prefix, dest_prefix=None, verbose=False):
+     """Relocate this Python installation.
+     
+     "Relocation" involves updating hardcoded shebang lines in Python scripts
+@@ -210,16 +210,19 @@
+                            % (install_prefix, len(install_prefix),
+                                shortest_original_prefix_length))
+ 
+-    log("relocate this Python to '%s'" % install_prefix)
++    if dest_prefix is None:
++        dest_prefix = install_prefix
++
++    print("relocate this Python to '%s'" % dest_prefix)
+     for prefix in prefixes:
+-        if prefix == install_prefix:
++        if prefix == dest_prefix:
+             continue
+         for dirpath, dirnames, filenames in os.walk(install_prefix):
+             for filename in filenames:
+                 if splitext(filename)[1] in (".pyo", ".pyc"):
+                     continue
+                 _relocate_path(join(dirpath, filename),
+-                               prefix, install_prefix, log)
++                               prefix, dest_prefix, log)
+ 
+ 
+ #---- mainline
