@@ -1,0 +1,19 @@
+pkgbase = perl-archive-any-lite
+	pkgdesc = Archive::Any::Lite - simple CPAN package extractor
+	pkgver = 0.10
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Archive-Any-Lite/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	checkdepends = perl-test-useallmodules
+	makedepends = perl-archive-zip
+	makedepends = perl-extutils-makemaker-cpanfile
+	makedepends = perl-module-cpanfile
+	depends = perl-archive-zip
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/I/IS/ISHIGAKI/Archive-Any-Lite-0.10.tar.gz
+	sha256sums = b97fd4b61c8ff4a0d1dd2be50799fa1430add0bb55c1d35598874cd6974d68c5
+
+pkgname = perl-archive-any-lite
+
