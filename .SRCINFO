@@ -1,0 +1,14 @@
+pkgbase = vim-toggle
+	pkgdesc = Toggles between values: on/off, true/false, yes/no, define/undef, +/-, >/<, &&/||, &/| and positive and negative numbers by pressing <C-T> or +
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://vim.org/scripts/script.php?script_id=895
+	arch = any
+	groups = vim-plugins
+	license = custom:vim
+	depends = vim-runtime
+	source = vim-toggle-0.5.vim::http://www.vim.org/scripts/download_script.php?src_id=13834
+	md5sums = 384333222fa486bf82707621fd77f87c
+
+pkgname = vim-toggle
+
