@@ -1,0 +1,21 @@
+pkgbase = bitsquare-git
+	pkgdesc = Bitsquare is a cross-platform desktop application that allows users to trade national currency (dollars, euros, etc) for bitcoin without relying on centralized exchanges
+	pkgver = v0.3.1.r6.g6db8157
+	pkgrel = 1
+	url = https://bitsquare.io/
+	arch = x86_64
+	license = AGPL3
+	makedepends = maven
+	makedepends = openjfx
+	depends = bash
+	depends = java-runtime-openjdk=8
+	provides = bitsquare
+	source = bitsquare-git::git+https://github.com/bitsquare/bitsquare.git
+	source = bitsquare.sh
+	source = bitsquare.desktop
+	sha256sums = SKIP
+	sha256sums = b2e5e85f842f0bc9910087d62f78f5fd9fc1b6232849b59e785acbec5d8955cf
+	sha256sums = 15592a05a2a4d6cb65c757e9eec5e3818bf38e7397a3b98e7651a8a3b51f9ba9
+
+pkgname = bitsquare-git
+
