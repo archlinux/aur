@@ -11,8 +11,8 @@ provides=('lighthouse')
 conflicts=('lighthouse-git')
 source_x86_64=("https://s3-eu-west-1.amazonaws.com/vinumeris/lighthouse/lighthouse-64bit.deb")
 source_i686=("https://s3-eu-west-1.amazonaws.com/vinumeris/lighthouse/lighthouse-32bit.deb")
-sha256sums_x86_64=("7463ce42d2af1eea62c853cda198bc27638ed824a34924707d909b23ffe7a3ff")
-sha256sums_i686=("ca3457f225d5db72580a6e9d0f2e3fadb4d5dee94a5fa5cdfc01e77fc3a554b3")
+md5sums_i686=('1be86a9dd0c9e6ddd501a8faf8719caa')
+md5sums_x86_64=('0f2c633c72dab8ffc2e052fa9fae3249')
 _binname=lighthouse
 
 prepare() {
