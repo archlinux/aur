@@ -1,0 +1,15 @@
+pkgbase = ruby-websocket
+	pkgdesc = Universal Ruby library to handle WebSocket protocol
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = http://github.com/imanel/websocket-ruby
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = websocket-1.2.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/websocket-1.2.2.gem
+	sha512sums = a79e87a317a60c021f988edcf51a1fe2e0eaba44a152db1d74d81ac0208ffaa9483959bb162d56cd5c7b916da224bae9598b42510fa24fdcc64ad34e46c406c8
+
+pkgname = ruby-websocket
+
