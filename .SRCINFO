@@ -1,7 +1,7 @@
 pkgbase = linux-xps13
 	pkgdesc = Linux Kernel and modules with the multitouch patches for the Cypress PS2 Trackpad found in the Dell XPS 13 Ultrabook.
-	pkgver = 4.0.4
-	pkgrel = 2
+	pkgver = 4.0.5
+	pkgrel = 1
 	url = https://github.com/gunzy83/linux-xps13-archlinux
 	arch = i686
 	arch = x86_64
@@ -14,22 +14,20 @@ pkgbase = linux-xps13
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.0.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.4.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.4.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.5.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.0.5.sign
 	source = config
 	source = config.x86_64
 	source = linux-xps13.preset
-	source = md-raid0-fix-restore-to-sector-variable-in-raid0_mak.patch
 	source = change-default-console-loglevel.patch
 	source = xps13.patch
 	sha256sums = 0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991
 	sha256sums = SKIP
-	sha256sums = c268985a82483fe75f0f397217208e262f85a356d1d9f34b9e22255e549d7ce9
+	sha256sums = 60b691210a9e412710e29eac6468d64b6c4d1efc53a6e22878dd51044001adf0
 	sha256sums = SKIP
 	sha256sums = e8d639582697f22333a96aa1614bcf5d9bcf2e6683a3d5296f9cfc64843606f1
 	sha256sums = 5dadd75693e512b77f87f5620e470405b943373613eaf4df561037e9296453be
 	sha256sums = bf7ccd0ca928dc47b7e2a87d08d8f19faafbb21ff957e22f1ee78a180961047e
-	sha256sums = bc83293e64653d60793708a0e277741f57c018f5ea3551a8aff3a220df917ceb
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
 	sha256sums = f7723d4a2e07da82b3698fb4edb5cf1ca0ccbbc3e789247118fcb7a44d89cdf2
 
@@ -41,7 +39,7 @@ pkgname = linux-xps13
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux-xps13=4.0.4
+	provides = linux-xps13=4.0.5
 	conflicts = kernel26-xps13
 	replaces = kernel26-xps13
 	backup = etc/mkinitcpio.d/linux-xps13.preset
@@ -49,8 +47,8 @@ pkgname = linux-xps13
 pkgname = linux-xps13-headers
 	pkgdesc = 
 	depends = linux-xps13
-	provides = linux-xps13-headers=4.0.4
-	provides = linux-headers=4.0.4
+	provides = linux-xps13-headers=4.0.5
+	provides = linux-headers=4.0.5
 	conflicts = kernel26-xps13-headers
 	replaces = kernel26-xps13-headers
 

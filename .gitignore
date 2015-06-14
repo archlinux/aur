@@ -1,0 +1,22 @@
+# ignore everything
+*
+!.gitignore
+ 
+# except PKGBUILD and kernel files
+!PKGBUILD
+!*.install
+!*.preset
+!config
+!config.x86_64
+!ChangeLog
+!README.md
+!COPYING
+!.SRCINFO
+ 
+# differences and patches
+!*.diff
+!*.patch
+
+# scripts
+!*.py
+!*.sh
