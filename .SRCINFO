@@ -1,0 +1,16 @@
+pkgbase = perl-scriptdist
+	pkgdesc = Create a distribution for a perl script
+	pkgver = 0.22
+	pkgrel = 1
+	url = http://search.cpan.org/dist/scriptdist/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BD/BDFOY/scriptdist-0.22.tar.gz
+	md5sums = 76b81e50a15c330266fd8de3b294eba0
+
+pkgname = perl-scriptdist
+
