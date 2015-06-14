@@ -10,7 +10,7 @@ _minor=0
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-pf
-_pfrel=5
+_pfrel=6
 _kernelname=-pf
 _pfpatchhome="http://pf.natalenko.name/sources/${_basekernel}/"
 _pfpatchname="patch-${_basekernel}${_kernelname}${_pfrel}"
@@ -28,7 +28,7 @@ _CPUSUFFIXES=( core2 k7 k8 k10 barcelona bobcat
 # taken from graysky linux-ck see: https://aur.archlinux.org/packages/linux-ck
 # Set these variables to ANYTHING (yes or no or 1 or 0 or "I like icecream") to enable them
 #
-_NUMA_off=yes		# Disable NUMA in kernel config
+#_NUMA_off=yes		# Disable NUMA in kernel config
 
 # batch mode:
 # enable batch mode to stop the pkgbuild from asking you what to do and just use defaults
@@ -689,9 +689,9 @@ pkgdesc="Linux kernel and modules with the pf-kernel patch [-ck patchset (BFS in
 
 # makepkg -g >>PKGBUILD
 sha256sums=('0f2f7d44979bc8f71c4fc5d3308c03499c26a824dd311fdf6eef4dee0d7d5991'
-            '6322689b2406d1d616069386c3b40e5ce91c27f73722b6475212fc094a2a586d'
-            '95c3c52baa69325f348d82ab2ec3a8e38e7e8dba52d74b0efa28d51995ac1540'
+            'd42f4bcc6b952ce677b1ad34f85119c6c9ccaa5582a16c8be1a197ae6057184c'
+            'cc16e46d5b85175aa67cb31f7922f74d6036633f0fa425b8bcd340de84d5d198'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '04130aad729bf0639041a7b27bed309653760862c0a6ef2cd5efcb94d0c8683d'
+            'e45747d19034cab60928fe5c90c570ef0d6a8a95b34b2026d9fcf94efafccd25'
             'SKIP')
