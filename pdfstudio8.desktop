@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=PDF Studio 8
+Comment=Views and Edits Adobe PDF (acrobat) files
+Exec=pdfstudio8 %f
+Terminal=false
+Type=Application
+Icon=pdfstudio8
+Categories=Office;
+MimeType=application/pdf;
