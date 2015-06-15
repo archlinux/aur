@@ -23,7 +23,7 @@ source=('chromium-snapshot-bin'
         'chromium-snapshot-bin.desktop'
         'LICENSE')
 md5sums=('1ac561e11601b7229942bede39fcfb54'
-         '793b3dca6ae19d15a830e7de7e1f6fd3'
+         '65607114be4390c9ecc90fc133157d3c'
          '537e0b52077bf0a616d0a0c8a79bc9d5')
 
 [[ $CARCH = x86_64 ]] && _64="_x64"
