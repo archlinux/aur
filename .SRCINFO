@@ -1,0 +1,13 @@
+pkgbase = mounter2-git
+	pkgdesc = A simple gtk app to mount iso files
+	pkgver = f254a261.4.2
+	pkgrel = 2
+	url = https://sourceforge.net/projects/mounter2/
+	arch = any
+	license = GPL 2.1
+	makedepends = git
+	depends = udevil
+	depends = gtk2
+
+pkgname = mounter2-git
+
