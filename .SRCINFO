@@ -9,6 +9,7 @@ pkgbase = iojs
 	license = MIT
 	makedepends = python2
 	makedepends = git
+	depends = icu
 	depends = openssl
 	depends = zlib
 	optdepends = npm: nodejs package manager

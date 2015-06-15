@@ -3,12 +3,12 @@
 pkgname=iojs
 pkgver=2.3.0
 _foldername=iojs-v${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Evented I/O for V8 JavaScript - Node.js fork'
 url='http://iojs.org/'
 license=('MIT')
 arch=('i686' 'x86_64')
-depends=('openssl' 'zlib')
+depends=('icu' 'openssl' 'zlib')
 makedepends=('python2' 'git')
 optdepends=('npm: nodejs package manager')
 provides=('nodejs')
