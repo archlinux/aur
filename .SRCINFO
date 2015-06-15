@@ -1,0 +1,21 @@
+pkgbase = afew-git
+	pkgdesc = afew is an initial tagging script for notmuch mail
+	pkgver = 0.203.d5d0dde
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/teythoon/afew
+	arch = any
+	license = custom:BSD
+	makedepends = git
+	depends = python
+	depends = notmuch
+	depends = dbacl
+	depends = python-chardet
+	depends = python-setuptools
+	source = LICENSE
+	source = git://github.com/teythoon/afew.git
+	md5sums = 295b245540aa61538f9a3556c4be846c
+	md5sums = SKIP
+
+pkgname = afew-git
+
