@@ -1,6 +1,6 @@
 # Maintainer: Jenya Sovetkin <e.sovetkin@gmail.com>
 pkgname=mkinitcpio-shredkeyfiles
-pkgver=0.0.0
+pkgver=0.0.1
 pkgrel=1
 pkgdesc="mkinitcpio hook to shred keyfiles during the boot"
 arch=(any)
