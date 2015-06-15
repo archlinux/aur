@@ -1,0 +1,15 @@
+pkgbase = ttf-c64
+	pkgdesc = The best available C64 TrueType representation to date
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://style64.org/c64-truetype
+	install = ttf-c64.install
+	arch = any
+	license = http://style64.org/c64-truetype/license
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://style64.org/file/C64_TrueType_v1.2-STYLE.zip
+	md5sums = b4e97f5c33671a2dc88a22b16b67b232
+
+pkgname = ttf-c64
+
