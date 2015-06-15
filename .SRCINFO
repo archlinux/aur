@@ -1,20 +1,23 @@
 pkgbase = mkdocs
 	pkgdesc = Project documentation with Markdown.
 	pkgver = 0.14.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.mkdocs.org
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	source = https://pypi.python.org/packages/source/m/mkdocs/mkdocs-0.14.0.tar.gz
+	source = https://raw.githubusercontent.com/mkdocs/mkdocs/master/LICENSE
+	source = mkdocs.bash_completion
 	sha256sums = 5c182d3c5b148fa574d0f9be4900480a9e8ceab5d1f89e49f5a2bae0245a493a
+	sha256sums = b3869f379fafec1da2acb1d830817c73cc57549090a8c09b4402301fa7318d19
+	sha256sums = 1ed624fb056230b57e5a833b3467f648b99153dc1058f11c13ce25313c76e197
 
 pkgname = mkdocs
 	depends = python-click>=4.0
 	depends = python-jinja>=2.7.1
 	depends = python-livereload>=2.3.2
-	depends = python-markdown>=2.3.1
-	depends = python-six>=1.4.0
+	depends = python-markdown>=2.5
 	depends = python-tornado>=4.1
 	depends = python-yaml>=3.10
 
