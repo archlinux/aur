@@ -1,0 +1,12 @@
+pkgbase = xcursor-ghost
+	pkgdesc = Subtle grey cursors with soft edges
+	pkgver = 20040711
+	pkgrel = 1
+	url = http://gnome-look.org/content/show.php/Ghost+Cursors?content=13090
+	arch = any
+	license = GPL
+	source = http://gnome-look.org/CONTENT/content-files/13090-ghost.tar.bz2
+	md5sums = 0090c9f3cfca07a1110964790a0084d2
+
+pkgname = xcursor-ghost
+
