@@ -1,14 +1,17 @@
 pkgbase = bzr-gtk
 	pkgdesc = Plugin for Bazaar that aims to provide GTK+ interfaces to most Bazaar operations.
 	pkgver = 0.104.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://bazaar-vcs.org/bzr-gtk
+	install = bzr-gtk.install
 	arch = any
 	license = GPL
 	depends = python2>=2.4
 	depends = python2-gobject2
 	depends = bzr>=2
 	depends = bzr<3
+	depends = desktop-file-utils
+	depends = gtk-update-icon-cache
 	optdepends = python2-cairo: Graphs in the visualisation tool
 	optdepends = pygtksourceview2: Syntax-highlighted diffs
 	optdepends = python2-nautilus: Nautilus integration
