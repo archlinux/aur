@@ -1,0 +1,19 @@
+pkgbase = pumpa-git
+	pkgdesc = A simple pump.io client written in C++ and Qt, git version
+	pkgver = git
+	pkgrel = 2
+	url = https://pumpa.branchable.com/
+	install = pumpa-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	depends = aspell
+	depends = tidyhtml
+	depends = libxkbcommon-x11
+	source = pumpa-git.desktop
+	md5sums = SKIP
+
+pkgname = pumpa-git
+

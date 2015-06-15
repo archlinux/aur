@@ -1,0 +1,10 @@
+
+[Desktop Entry]
+Exec=pumpa
+Name=pumpa - A simple pump.io client written in C++ and Qt, git version
+Type=Application
+Terminal=false
+Icon=pumpa.png
+Caption=A simple pump.io client written in C++ and Qt
+Categories=Application;Network
+Name[en_US]=pumpa-git
