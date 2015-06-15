@@ -1,0 +1,13 @@
+[Unit]
+Description=Access server for BGBilling
+Requires=activemq.service
+After=activemq.service
+
+[Service]
+EnvironmentFile=/etc/conf.d/bgbilling
+Type=forking
+ExecStart=/opt/bginetaccess/access_start.sh
+ExecStop=/opt/bginetaccess/access_stop.sh
+
+[Install]
+WantedBy=multi-user.target

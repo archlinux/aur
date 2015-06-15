@@ -1,0 +1,20 @@
+pkgbase = bginetaccess
+	pkgdesc = Access server for BGBilling
+	pkgver = 6.1.23
+	pkgrel = 1
+	url = http://bgbilling.ru
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	makedepends = dos2unix
+	depends = bgbilling
+	source = ftp://bgbilling.ru/pub/bgbilling/6.1/data/BGInetAccess_6.1_23.zip
+	source = bginetaccess.service
+	source = setenv.sh.patch
+	md5sums = f2bae56657087a2e1e431465e7d96a04
+	md5sums = acb8868e7ee91338d3395cc536e2a52a
+	md5sums = dae4f113fa23e562270e1d935a2a3a12
+
+pkgname = bginetaccess
+
