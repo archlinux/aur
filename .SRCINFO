@@ -1,0 +1,20 @@
+pkgbase = openvr-git
+	pkgdesc = API and runtime that allows access to VR hardware from multiple vendors. Contains API and samples. The runtime is under SteamVR in Tools on Steam. Note: There's no compositor for linux, so try with hellovr -nocompositor
+	pkgver = 10.e9c7d19
+	pkgrel = 1
+	url = https://github.com/ValveSoftware/openvr
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	depends = libgl
+	optdepends = oculus-udev: Udev rule to make the rift sensors usable to the user "plugdev"
+	optdepends = steam: For SteamVR (Duh)
+	provides = openvr
+	options = !strip
+	options = staticlibs
+	source = git+https://github.com/ChristophHaag/openvr.git
+	md5sums = SKIP
+
+pkgname = openvr-git
+
