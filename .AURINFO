@@ -1,0 +1,25 @@
+pkgbase = trustedqsl
+	pkgdesc = TrustedQSL - Logbook of the World
+	pkgver = 2.0.3
+	pkgrel = 1
+	epoch = 
+	url = http://lotw.arrl.org/
+	arch = x86_64
+	arch = i686
+	license = ARRL
+	makedepends = openssl
+	makedepends = expat
+	makedepends = zlib
+	makedepends = wxgtk
+	makedepends = curl
+	makedepends = cmake
+	depends = openssl
+	depends = expat
+	depends = zlib
+	depends = wxgtk
+	depends = curl
+	replaces = tsql
+	source = http://www.arrl.org/files/file/LoTW%20Instructions/tqsl-2.0.3.tgz
+
+pkgname = trustedqsl
+
