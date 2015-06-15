@@ -1,0 +1,13 @@
+pkgbase = db4.5
+	pkgdesc = The Berkeley DB embedded database system 4.5
+	pkgver = 4.5.20
+	pkgrel = 2
+	url = http://www.oracle.com/technology/software/products/berkeley-db/index.html
+	arch = any
+	license = custom:db4.5
+	source = http://download.oracle.com/berkeley-db/db-4.5.20.tar.gz
+	options = !libtool
+	options = !makeflags
+
+pkgname = db4.5
+
