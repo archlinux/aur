@@ -1,14 +1,14 @@
 pkgbase = czmq
 	pkgdesc = High-level C binding for 0MQ
-	pkgver = 3.0.0
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = http://czmq.zeromq.org
 	arch = i686
 	arch = x86_64
 	license = MPL2
 	depends = zeromq>=4.0
-	source = https://github.com/zeromq/czmq/archive/v3.0.0.tar.gz
-	sha1sums = 8ceec4058e8176c34c638f5fc33e0bda2c1dad46
+	source = https://github.com/zeromq/czmq/archive/v3.0.2.tar.gz
+	sha1sums = 7dab11e439b3767eaaa3ace2ad63a92c6fb4d781
 
 pkgname = czmq
 
