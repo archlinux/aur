@@ -1,0 +1,24 @@
+pkgbase = smtube-qt4
+	pkgdesc = Search, download and play videos from YouTube.
+	pkgver = 15.5.17
+	pkgrel = 1
+	url = http://smtube.sourceforge.net
+	install = smtube.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qtwebkit
+	optdepends = mplayer: play media with MPlayer
+	optdepends = smplayer: play media with SMPlayer
+	optdepends = gnome-mplayer: play media with GNOME MPlayer
+	optdepends = kdemultimedia-dragonplayer: play media with Dragon Player
+	optdepends = totem: play media with Totem
+	optdepends = vlc: play media with VLC
+	optdepends = mpv: play media with mpv
+	provides = smtube
+	conflicts = smtube
+	source = http://downloads.sourceforge.net/smtube/smtube-15.5.17.tar.bz2
+	md5sums = 577ebdf5fbcd3d17959294e688c124b4
+
+pkgname = smtube-qt4
+
