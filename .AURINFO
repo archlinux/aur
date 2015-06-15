@@ -1,0 +1,17 @@
+pkgbase = affinity
+	pkgdesc = Affinity is a desktop search tool which provides a front-end to various desktop information
+	pkgver = 0.1
+	pkgrel = 5
+	url = http://code.google.com/p/affinity-search/
+	arch = any
+	license = GPL
+	depends = orbit2
+	depends = gnome-vfs
+	depends = gnome-desktop
+	depends = gtk2
+	depends = cairo
+	depends = gconf
+	source = http://affinity-search.googlecode.com/files/affinity-0.1.tar.gz
+
+pkgname = affinity
+
