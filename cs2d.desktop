@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Icon=cs2d
+Exec=cs2d
+Name=Counter-Strike 2D
+Comment=Multiplayer 2D FPS shooter
+Categories=Game;ArcadeGame;
+Terminal=false
+StartupNotify=false
