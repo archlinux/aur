@@ -1,0 +1,16 @@
+pkgbase = multivnc-git
+	pkgdesc = MultiVNC is a cross-platform Multicast-enabled VNC viewer using wxWidgets and libvncclient
+	pkgver = 1.6.4.r4.g18c96f6
+	pkgrel = 1
+	url = http://github.com/bk138/multivnc
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	provides = multivnc
+	conflicts = multivnc
+	source = multivnc-git::git+https://github.com/bk138/multivnc.git
+	md5sums = SKIP
+
+pkgname = multivnc-git
+
