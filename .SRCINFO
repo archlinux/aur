@@ -1,0 +1,23 @@
+pkgbase = zip-natspec
+	pkgdesc = Creates PKZIP-compatible .zip files for non-latin filenames, using libnatspec patch from AltLinux.
+	pkgver = 3.0
+	pkgrel = 2
+	url = http://www.info-zip.org/pub/infozip/Zip.html
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	license = BSD
+	depends = glibc
+	depends = bzip2
+	depends = libnatspec
+	provides = zip
+	conflicts = zip
+	options = !makeflags
+	source = ftp://ftp.info-zip.org/pub/infozip/src/zip30.tgz
+	source = zip30-natspec-asdos-mod.diff
+	md5sums = 7b74551e63f8ee6aab6fbc86676c0d37
+	md5sums = 89e224906ea45b6ed80fcd6c11cbd605
+
+pkgname = zip-natspec
+

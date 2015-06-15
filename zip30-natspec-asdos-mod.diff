@@ -1,0 +1,160 @@
+diff -pur zip30orig/fileio.c zip30/fileio.c
+--- zip30orig/fileio.c	2008-05-29 04:13:24.000000000 +0400
++++ zip30/fileio.c	2010-11-29 10:39:54.000000000 +0300
+@@ -929,7 +929,7 @@ int newname(name, isdir, casesensitive)
+   }
+   if ((zname = in2ex(iname)) == NULL)
+     return ZE_MEM;
+-#ifdef UNICODE_SUPPORT
++#if defined(UNICODE_SUPPORT) && !defined(UNIX)
+   /* Convert name to display or OEM name */
+   oname = local_to_display_string(iname);
+ #else
+diff -pur zip30orig/globals.c zip30/globals.c
+--- zip30orig/globals.c	2008-05-25 21:26:38.000000000 +0400
++++ zip30/globals.c	2010-11-28 17:30:37.000000000 +0300
+@@ -32,7 +32,7 @@ int pathput = 1;        /* 1=store path 
+ int scanimage = 1;      /* 1=scan through image files */
+ #endif
+ int method = BEST;      /* one of BEST, DEFLATE (only), or STORE (only) */
+-int dosify = 0;         /* 1=make new entries look like MSDOS */
++int dosify = 1;         /* 1=make new entries look like MSDOS */
+ int verbose = 0;        /* 1=report oddities in zip file structure */
+ int fix = 0;            /* 1=fix the zip file, 2=FF, 3=ZipNote */
+ int filesync = 0;       /* 1=file sync, delete entries not on file system */
+diff -pur zip30orig/unix/Makefile zip30/unix/Makefile
+--- zip30orig/unix/Makefile	2008-05-07 10:33:56.000000000 +0400
++++ zip30/unix/Makefile	2010-11-27 18:09:40.000000000 +0300
+@@ -38,7 +38,7 @@ BINFLAGS = 755
+ MANFLAGS = 644
+ 
+ # target directories - where to install executables and man pages to
+-prefix = /usr/local
++prefix = /usr
+ BINDIR = $(prefix)/bin
+ MANEXT=1
+ MANDIR = $(prefix)/man/man$(MANEXT)
+@@ -61,6 +61,7 @@ CFLAGS_NOOPT = -I. -DUNIX $(LOCAL_ZIP)
+ CFLAGS = -O2 $(CFLAGS_NOOPT)
+ LFLAGS1 =
+ LFLAGS2 = -s
++LDADD = -lnatspec
+ 
+ # object file lists
+ OBJZ = zip.o zipfile.o zipup.o fileio.o util.o globals.o crypt.o ttyio.o \
+@@ -125,7 +126,7 @@ zips: $(ZIPS)
+ zipsman: $(ZIPS) $(ZIPMANUALs)
+ 
+ zip$E: $(OBJZ) $(OBJI) $(OBJA) $(LIB_BZ)
+-	$(BIND) -o zip$E $(LFLAGS1) $(OBJZ) $(OBJI) $(OBJA) $(LFLAGS2)
++	$(BIND) -o zip$E $(LFLAGS1) $(OBJZ) $(OBJI) $(OBJA) $(LFLAGS2) $(LDADD)
+ zipnote$E: $(OBJN)
+ 	$(BIND) -o zipnote$E $(LFLAGS1) $(OBJN) $(LFLAGS2)
+ zipcloak$E: $(OBJC) $(OCRCTB)
+diff -pur zip30orig/unix/osdep.h zip30/unix/osdep.h
+--- zip30orig/unix/osdep.h	2005-07-12 10:41:08.000000000 +0400
++++ zip30/unix/osdep.h	2010-11-27 18:03:39.000000000 +0300
+@@ -78,3 +78,6 @@
+ #if !defined(NO_EF_UT_TIME) && !defined(USE_EF_UT_TIME)
+ #  define USE_EF_UT_TIME
+ #endif
++
++/* Set Windows code as archive type */
++#  define OS_CODE  0xb00
+diff -pur zip30orig/unix/unix.c zip30/unix/unix.c
+--- zip30orig/unix/unix.c	2008-06-19 08:26:18.000000000 +0400
++++ zip30/unix/unix.c	2010-11-27 18:03:39.000000000 +0300
+@@ -14,6 +14,11 @@
+ 
+ #include <time.h>
+ 
++#ifdef UNIX
++#  include <natspec.h>
++#  include <locale.h>
++#endif
++
+ #if defined(MINIX) || defined(__mpexl)
+ #  ifdef S_IWRITE
+ #    undef S_IWRITE
+@@ -60,6 +65,7 @@ local time_t label_utim = 0;
+ 
+ /* Local functions */
+ local char *readd OF((DIR *));
++local const char *oem_charset = NULL;
+ 
+ 
+ #ifdef NO_DIR                    /* for AT&T 3B1 */
+@@ -262,6 +268,16 @@ int *pdosflag;          /* output: force
+   if (!pathput)
+     t = last(t, PATH_END);
+ 
++#ifdef UNIX
++  if (!oem_charset) {
++    setlocale(LC_CTYPE, "");
++    oem_charset = natspec_get_charset_by_locale(NATSPEC_DOSCS, "");
++  }
++  /* Convert to internal encoding */
++  if ((n = natspec_convert(t, oem_charset, 0, 0)) == NULL)
++    return NULL;
++  return n;
++#else
+   /* Malloc space for internal name and copy it */
+   if ((n = malloc(strlen(t) + 1)) == NULL)
+     return NULL;
+@@ -269,6 +285,7 @@ int *pdosflag;          /* output: force
+ 
+   if (dosify)
+     msname(n);
++#endif
+ 
+ #ifdef EBCDIC
+   strtoasc(n, n);       /* here because msname() needs native coding */
+@@ -289,8 +306,19 @@ char *n;                /* internal file
+ {
+   char *x;              /* external file name */
+ 
++#ifdef UNIX
++  if (!oem_charset) {
++    oem_charset = natspec_get_charset_by_locale(NATSPEC_DOSCS, "");
++    setlocale(LC_CTYPE, "");
++  }
++  /* Convert to internal encoding */
++  if ((x = natspec_convert(n, 0, oem_charset, 0)) == NULL)
++    return NULL;
++  return x;
++#else
+   if ((x = malloc(strlen(n) + 1 + PAD)) == NULL)
+     return NULL;
++#endif
+ #ifdef EBCDIC
+   strtoebc(x, n);
+ #else
+diff -pur zip30orig/zip.c zip30/zip.c
+--- zip30orig/zip.c	2008-07-05 20:34:06.000000000 +0400
++++ zip30/zip.c	2010-11-29 09:29:57.000000000 +0300
+@@ -2025,6 +2025,7 @@ struct option_struct far options[] = {
+ #endif /* ?MACOS */
+     {"J",  "junk-sfx",    o_NO_VALUE,       o_NOT_NEGATABLE, 'J',  "strip self extractor from archive"},
+     {"k",  "DOS-names",   o_NO_VALUE,       o_NOT_NEGATABLE, 'k',  "force use of 8.3 DOS names"},
++    {"K",  "no DOS-names",o_NO_VALUE,       o_NOT_NEGATABLE, 'K',  "no use 8.3 DOS names"},
+     {"l",  "to-crlf",     o_NO_VALUE,       o_NOT_NEGATABLE, 'l',  "convert text file line ends - LF->CRLF"},
+     {"ll", "from-crlf",   o_NO_VALUE,       o_NOT_NEGATABLE, o_ll, "convert text file line ends - CRLF->LF"},
+     {"lf", "logfile-path",o_REQUIRED_VALUE, o_NOT_NEGATABLE, o_lf, "log to log file at path (default overwrite)"},
+@@ -2289,7 +2290,7 @@ char **argv;            /* command line 
+   dispose = 0;         /* 1=remove files after put in zip file */
+   pathput = 1;         /* 1=store path with name */
+   method = BEST;       /* one of BEST, DEFLATE (only), or STORE (only) */
+-  dosify = 0;          /* 1=make new entries look like MSDOS */
++  dosify = 1;          /* 1=make new entries look like MSDOS */
+   verbose = 0;         /* 1=report oddities in zip file structure */
+   fix = 0;             /* 1=fix the zip file */
+   adjust = 0;          /* 1=adjust offsets for sfx'd file (keep preamble) */
+@@ -2859,6 +2860,8 @@ char **argv;            /* command line 
+           junk_sfx = 1;  break;
+         case 'k':   /* Make entries using DOS names (k for Katz) */
+           dosify = 1;  break;
++        case 'K':   /* Make entries using DOS names (K for Kompat) */
++          dosify = 0;  break;
+         case 'l':   /* Translate end-of-line */
+           translate_eol = 1; break;
+         case o_ll:
