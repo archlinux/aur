@@ -1,0 +1,15 @@
+diff -aur gmvault.orig/etc/scripts/gmvault gmvault.new/etc/scripts/gmvault
+--- gmvault.orig/etc/scripts/gmvault	2012-08-16 17:44:55.768266132 +0100
++++ gmvault.new/etc/scripts/gmvault	2012-08-16 17:45:39.659760866 +0100
+@@ -25,9 +25,9 @@
+     #set pythonhome but it should not be necessary
+     export PYTHONHOME="$GMVAULT_HOME/lib/python-lib"
+ 
+-elif [ -f "$GMVAULT_HOME/bin/python" ]; then
++elif [ -f "$GMVAULT_HOME/bin/python2" ]; then
+     #installed from src distribution (python bin is in the same dir as gmvault script)
+-    PYTHON_BIN="$GMVAULT_HOME/bin/python"
++    PYTHON_BIN="$GMVAULT_HOME/bin/python2"
+ 
+ else
+     #look for python2.7 first otherwise try python2.6
