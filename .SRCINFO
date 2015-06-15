@@ -1,0 +1,16 @@
+pkgbase = python2-sauce
+	pkgdesc = SAUCE record parser
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/tehmaze/sauce
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = python2
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/s/sauce/sauce-0.1.1.tar.gz
+	md5sums = ea17431679c95a86d6c06e8f07591d25
+	sha1sums = 08cd4a8ba6eb01e5bb06eab05fed729763eab833
+
+pkgname = python2-sauce
+
