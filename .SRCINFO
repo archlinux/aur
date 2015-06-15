@@ -1,0 +1,14 @@
+pkgbase = splashy-theme-darch
+	pkgdesc = Splashy theme for ArchLinux
+	pkgver = 0.4.1
+	pkgrel = 5
+	url = https://sourceforge.net/projects/splashy-darch/
+	arch = any
+	license = custom
+	depends = splashy
+	conflicts = splashy-themes
+	source = http://sourceforge.net/projects/splashy-darch/files/0.4.1/splashy-theme-darch-0.4.1.tar.gz
+	sha512sums = a1b25401a341d23d2df2468638b631e17586d9d11d064c9930e8d23e154631f328b8d54832d1ebb175d801bf7d6b50033cdae1dc7eafadb888fa4bb64328865a
+
+pkgname = splashy-theme-darch
+
