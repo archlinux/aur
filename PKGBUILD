@@ -1,6 +1,6 @@
 # Maintainer: Ramana Kumar <firstname at member dot fsf dot org>
 pkgname=polyml-svn
-pkgver=1952
+pkgver=2023
 pkgrel=1
 pkgdesc="Poly/ML implementation of Standard ML"
 url="http://www.polyml.org"
