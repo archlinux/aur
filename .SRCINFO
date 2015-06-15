@@ -1,6 +1,6 @@
 pkgbase = wingpanel-indicator-network-bzr
 	pkgdesc = Network indicator for Wingpanel
-	pkgver = r14
+	pkgver = r21
 	pkgrel = 1
 	url = https://launchpad.net/wingpanel-indicator-network
 	install = wingpanel-indicator-network.install
@@ -10,6 +10,7 @@ pkgbase = wingpanel-indicator-network-bzr
 	license = GPL3
 	makedepends = bzr
 	makedepends = cmake
+	makedepends = libnm-gtk
 	makedepends = vala
 	depends = wingpanel-rewrite-x11-bzr
 	provides = wingpanel-indicator-network
