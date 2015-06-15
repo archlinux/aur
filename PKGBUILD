@@ -1,6 +1,6 @@
 # Maintainer: Joost Bremmer <toost dot b at gmail dot com >
 pkgname=steam-appmanifest-git
-pkgver=1.0.r2.gfe03ddc
+pkgver=1.0.r5.gc690470
 pkgrel=1
 pkgdesc="a short python script that tricks Steam for Linux into downloading non-Linux apps."
 arch=(any)
