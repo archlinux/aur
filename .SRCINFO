@@ -1,0 +1,23 @@
+pkgbase = easymp3gain-qt4-bin
+	pkgdesc = Qt Graphical User Interface (GUI) for MP3Gain, VorbisGain and AACGain (binary package)
+	pkgver = 0.5.0
+	pkgrel = 7
+	url = http://easymp3gain.sourceforge.net/
+	install = easymp3gain.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt4
+	depends = qt4pas
+	optdepends = mp3gain: for MP3 support
+	optdepends = vorbisgain: for OGG support
+	optdepends = aacgain: for AAC suport
+	provides = easymp3gain
+	conflicts = easymp3gain-gtk2
+	conflicts = easymp3gain-gtk2-bin
+	conflicts = easymp3gain-qt4
+	source = http://sourceforge.net/projects/easymp3gain/files/easymp3gain%20i386/easymp3gain-0.5.0/easymp3gain-qt4_0.5.0_i386.tar.gz
+	sha512sums = b862917898488d4a21a31c9a806695e6d32358775717de5246ffc8c8288603c3cc2bb726c8fcc9bfdf8e4d2ef8e2ec8b3208d577c1d2dcc42602bfde96bb6724
+
+pkgname = easymp3gain-qt4-bin
+
