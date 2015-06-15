@@ -1,0 +1,12 @@
+post_install () {
+  echo "To use childsplay with your own language, use"
+  echo "childsplay --language={choose from ar bg ca cs de el en es fr it lt nb nl pl pt ro ru sl sk sv uk vi}"
+}
+
+post_upgrade () {
+  post_install
+}
+
+post_remove () {
+  rm -rf /usr/bin/childsplay
+}

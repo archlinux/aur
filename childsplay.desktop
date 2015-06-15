@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Childsplay
+GenericName=Childsplay
+Comment=Suite of educational games for young children
+Comment[ca]=Conjunt de jocs educatius per a xiquets
+Comment[es]=Conjunto de juegos educativos para niños
+Icon=childsplay
+Exec=childsplay
+Terminal=false
+StartupNotify=false
+Categories=Game;Education;KidsGame;2DGraphics;

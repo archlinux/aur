@@ -1,0 +1,24 @@
+pkgbase = childsplay-git
+	pkgdesc = A suite of educational games for young children (git)
+	pkgver = r19.b61e8ed
+	pkgrel = 1
+	url = http://www.childsplay.mobi
+	install = childsplay.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = python2-pygame
+	depends = pygtk
+	depends = python2-sqlalchemy
+	depends = python2-numpy
+	conflicts = childsplay
+	source = childsplay-git::git://git.savannah.nongnu.org/childsplay.git
+	source = childsplay.desktop
+	source = childsplay.sh
+	md5sums = SKIP
+	md5sums = 3aa3a801911797bf61a10e4cb7fd5e5a
+	md5sums = 877612c362a8d282a689f63cb19a8083
+
+pkgname = childsplay-git
+
