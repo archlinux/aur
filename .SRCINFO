@@ -1,0 +1,16 @@
+pkgbase = polyml-svn
+	pkgdesc = Poly/ML implementation of Standard ML
+	pkgver = 1952
+	pkgrel = 1
+	url = http://www.polyml.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = svn
+	depends = gmp
+	provides = polyml
+	conflicts = polyml
+	options = staticlibs
+
+pkgname = polyml-svn
+
