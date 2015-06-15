@@ -1,0 +1,13 @@
+pkgbase = hyphen-ca
+	pkgdesc = Catalan hyphenation rules
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://riuraueditors.cat/web/content/12-eines
+	arch = any
+	license = GPLv3
+	optdepends = hyphen: offers hyphenation library functions
+	source = http://riuraueditors.cat/particio_de_mots/hyph_ca_ES.dic
+	sha512sums = c86482576fd93ae5c91d47201af872f996fd8013d0f1c6242aa8843958b6ead63d90ff203ba52cfd4ed25da32d3cf48eea6690f0d3b7e2de0c20f2f2ef0fd465
+
+pkgname = hyphen-ca
+
