@@ -1,10 +1,11 @@
-# Submitter: Carlos Eduardo Moreira dos Santos (cemsbr) <cems at domain cemshost.com.br>
+# Contributor: Johannes Dewender  arch at JonnyJD dot net
+# Contributor: iosonofabio Fabio Zanini <fabio.zanini@fastmail.fm>
 # Contributor: Javier ‘Phrodo_00‘ Aravena <phrodo.00@gmail.com>
-# Mantainer: iosonofabio Fabio Zanini <fabio.zanini@fastmail.fm>
+# Submitter: Carlos Eduardo Moreira dos Santos (cemsbr) <cems at domain cemshost.com.br>
 
 pkgname=bzr-gtk-bzr
 pkgver=20110404
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Bazaar that aims to provide GTK+ interfaces to most Bazaar operations. It downloads source from launchpad bazaar repository, using the last commit."
 arch=('i686' 'x86_64')
 url="http://bazaar-vcs.org/bzr-gtk"
@@ -12,6 +13,8 @@ license=('GPL')
 depends=('pygtk' 'bzr' 'pycairo' 'libglade' 'bzr-stats')
 provides=('bzr-gtk')
 conflicts=('bzr-gtk')
+source=('no_credits.patch')
+sha256sums=('de6273817a433d3c2e64ed0f8339c7a3cdc60fec60772a6d57b4c14f94cb2cdf')
 
 _bzrname="bzr-gtk"
 
@@ -35,6 +38,7 @@ build() {
       sed -i 's_^#!.*/usr/bin/python_#!/usr/bin/python2_' $file
       sed -i 's_^#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
   done
+  patch -p0 < ../no_credits.patch
 
   msg "Ready to install..."
 
