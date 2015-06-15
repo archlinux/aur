@@ -1,0 +1,7 @@
+/var/log/tomoyo/*.log {
+	weekly
+	rotate 4
+	missingok
+	notifempty
+	nocreate
+}

@@ -1,0 +1,14 @@
+#! /bin/bash
+
+post_install () {
+  echo
+  echo " * Add 'ccs-auditd' to DAEMONS to enable logging"
+  echo
+  echo " * systemd users can use the ccs-auditd.service unit"
+  echo
+  echo " * The configuration file for this daemon is located in"
+  echo "   /etc/ccs/tools/auditd.conf"
+  echo
+  echo " * Logrotate options can be changed in /etc/logrotate.d/tomoyo"
+  echo
+}

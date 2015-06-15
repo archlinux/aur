@@ -1,0 +1,19 @@
+pkgbase = ccs-tools
+	pkgdesc = TOMOYO Linux 1.8.x userspace tools
+	pkgver = 1.8.3.20140601
+	pkgrel = 1
+	url = http://tomoyo.sourceforge.jp/
+	install = ccs-tools.install
+	arch = any
+	license = GPL
+	depends = ncurses
+	conflicts = tomoyo-tools
+	source = http://sourceforge.jp/frs/redir.php?f=/tomoyo/49693/ccs-tools-1.8.3-20140601.tar.gz
+	source = ccs-auditd.service
+	source = tomoyo.logrotate
+	sha512sums = 3e4d3a0abaa2bebcad7388522bcd40a2979a6579ce271e2d61fc37c4a47f5b010ae730658c975c17c9917a28a5e1fb95361931ab757e9cd7c18d3cd8e55c7f29
+	sha512sums = 4052b12950027a45ae7b061fb8da20fd3abca567f38aa8aefb0f2b9b77decd3c14f7f543ced315e065ca885dee431dd424602434a84f07fbbf3c8d7100b26164
+	sha512sums = 8965822d88ce23eb6a0ed9f2be98cab703d3baa0235d31edb7ae053206f7a30a65ce737bb55570aabe6dd81ca5e2c3516e25078eea44fd8410417cedf00a0667
+
+pkgname = ccs-tools
+
