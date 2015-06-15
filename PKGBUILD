@@ -1,7 +1,7 @@
 # Maintainer: ant32 <antreimer@gmail.com>
 pkgname=mingw-w64-poppler
-pkgver=0.31.0
-pkgrel=2
+pkgver=0.33.0
+pkgrel=1
 pkgdesc="PDF rendering library based on xpdf 3.0 (mingw-w64)"
 arch=(any)
 url="http://poppler.freedesktop.org"
@@ -19,24 +19,10 @@ optdepends=("mingw-w64-glib2: libpoppler-glib"
             "mingw-w64-qt5-base: libpoppler-qt5"
             "mingw-w64-qt4: libpoppler-qt4")
 options=('!strip' '!buildflags' 'staticlibs')
-source=("http://poppler.freedesktop.org/poppler-${pkgver}.tar.xz"
-        "give-cc-to-gir-scanner.mingw.patch"
-        'poppler_pkgconfig_private_libs.patch')
-md5sums=('b631498668562ba47732785e54808468'
-         '727c1b414987f6ee2ba841d9db57a967'
-         'd3a63b8eeb2a023e62b572bd836b82e6')
+source=("http://poppler.freedesktop.org/poppler-${pkgver}.tar.xz")
+md5sums=('69927d1614d6704021c0b0dd0ee6a852')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
-
-prepare() {
-  cd "$srcdir/poppler-$pkgver"
-
-  patch -p1 -i ../give-cc-to-gir-scanner.mingw.patch
-  # Add Libs.private sections to pkg-config
-  patch -p1 -i ../poppler_pkgconfig_private_libs.patch
-
-  autoreconf -fi
-}
 
 build() {
   cd "$srcdir/poppler-$pkgver"
@@ -48,6 +34,7 @@ build() {
       --enable-cairo-output \
       --enable-poppler-qt4 \
       --enable-poppler-qt5 \
+      --enable-xpdf-headers \
       --enable-poppler-glib \
       --enable-libjpeg \
       --enable-libopenjpeg=openjpeg1 \
@@ -57,7 +44,7 @@ build() {
       --disable-utils \
       --disable-gtk-doc-html \
       --with-font-configuration=win32
-    make
+    make V=1
     popd
   done
 }
