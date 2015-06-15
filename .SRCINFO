@@ -1,0 +1,24 @@
+pkgbase = jpcsp-git
+	pkgdesc = JAVA PSP Emulator
+	pkgver = r3741.e28be06
+	pkgrel = 1
+	url = http://jpcsp.org/
+	install = jpcsp.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = apache-ant
+	depends = jogl
+	provides = jpcsp
+	conflicts = jpcsp
+	conflicts = jpcsp-svn
+	source = git+https://github.com/jpcsp/jpcsp.git
+	source = jpcsp.sh
+	source = jpcsp.desktop
+	md5sums = SKIP
+	md5sums = d2551a7c28d10151caf535d8a035124f
+	md5sums = cd39aad03798576eb5228ed4184885c8
+
+pkgname = jpcsp-git
+
