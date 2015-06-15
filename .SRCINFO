@@ -1,0 +1,18 @@
+pkgbase = kdeplasma-applets-quickaccess
+	pkgdesc = KDE Plasma widget for quick access to folders.
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = http://kde-look.org/content/show.php?content=163309
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdebase-workspace
+	depends = kdebase-plasma
+	conflicts = quickaccess-plasmoid
+	source = http://kde-look.org/CONTENT/content-files/163309-plasma-widget-quickaccess-0.8.3.tar.gz
+	sha1sums = d9174ca63e80cfc661fcdbc1d730a5986e7c8e2f
+
+pkgname = kdeplasma-applets-quickaccess
+
