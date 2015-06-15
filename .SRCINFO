@@ -1,0 +1,16 @@
+pkgbase = yapan
+	pkgdesc = Yet Another Package mAnager Notifier.
+	pkgver = 0.4.3
+	pkgrel = 2
+	url = https://code.google.com/p/arch-yapan/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt4
+	depends = phonon
+	optdepends = libnotify: to use notify-send.
+	source = https://arch-yapan.googlecode.com/files/yapan-0.4.3.tar.lzma
+	sha256sums = 97df42269a58af63db1f0afafedd227bd5b8a6fb5241199b6c359096226ac9d9
+
+pkgname = yapan
+
