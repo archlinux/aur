@@ -1,0 +1,23 @@
+pkgbase = gnomad2
+	pkgdesc = GTK client program for the NOMAD Jukebox with MTP support
+	pkgver = 2.9.6
+	pkgrel = 3
+	url = http://gnomad2.sourceforge.net
+	install = gnomad2.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	depends = desktop-file-utils
+	depends = libusb
+	depends = libnjb
+	depends = libid3tag
+	depends = gtk2
+	depends = libmtp
+	depends = taglib
+	optdepends = dbus-glib: for device autodetection
+	source = http://downloads.sourceforge.net/gnomad2/gnomad2-2.9.6.tar.gz
+	sha512sums = 10f025ac38089ebc4a063ac25a262d3e2f6b72336c4566877fae311a873923b55d532d210fd2ec8a29013c06c806ddacc50f042546e4aaa5cf23228d09d854a1
+
+pkgname = gnomad2
+
