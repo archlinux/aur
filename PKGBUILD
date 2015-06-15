@@ -7,14 +7,15 @@
 
 pkgname=jgoodies-looks
 pkgver=2.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Java Swing look and feel library"
 arch=('any')
 url="http://www.jgoodies.com/"
 license=('BSD')
 groups=('jgoodies')
 depends=('java-runtime')
-source=("http://www.jgoodies.com/download/libraries/looks/jgoodies-looks-${pkgver//./_}-20150402.zip")
+#source=("http://www.jgoodies.com/download/libraries/looks/jgoodies-looks-${pkgver//./_}-20150402.zip")
+source=("https://www.dropbox.com/s/88cjnlxecs9qsf1/jgoodies-looks-2_8_0-20150402.zip?dl=1")
 md5sums=('89a28c43d742142869077e3ebeb109c9')
 
 package() {
