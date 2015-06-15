@@ -1,0 +1,28 @@
+pkgbase = alienarena-svn
+	pkgdesc = Multiplayer retro sci-fi deathmatch game based on Quake3
+	pkgver = r4297
+	pkgrel = 2
+	url = http://icculus.org/alienarena/rpa/
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = GPL
+	makedepends = subversion
+	depends = curl
+	depends = freetype2
+	depends = ode
+	depends = libgl
+	depends = libjpeg
+	depends = libvorbis
+	depends = libxxf86dga
+	depends = libxxf86vm
+	depends = libgl sdl
+	depends = openal
+	depends = alienarena-data
+	provides = alienarena
+	conflicts = alienarena
+	source = svn://svn.icculus.org/alienarena/trunk
+	source = alienarena.desktop
+
+pkgname = alienarena-svn
+
