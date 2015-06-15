@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-icontopbar
+	pkgdesc = A gnome shell extension that places the tray icons of apps on the top bar.
+	pkgver = 3.6.3
+	pkgrel = 1
+	url = https://extensions.gnome.org/extension/495/topicons
+	arch = any
+	license = GPL2
+	conflicts = gnome-shell-extension-gnome2-notifications-git
+	source = metadata.json
+	source = extension.js
+	md5sums = 352116d9fb76c8e81d9bba3224ddddcc
+	md5sums = 2875ed67b0ea16b151c8c4c046d8606d
+
+pkgname = gnome-shell-extension-icontopbar
+
