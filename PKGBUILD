@@ -2,8 +2,8 @@
 
 pkgname=cmd-markdown
 _pkgname="${pkgname/-/_}"
-pkgver=1.1.0
-pkgrel=1
+pkgver=1.2.0
+pkgrel=0
 pkgdesc='An enhanced Markdown editor with MathJax, flowchart & sequence-diagram support'
 arch=('x86_64' 'i686')
 url=('https://www.zybuluo.com/cmd')
@@ -14,8 +14,8 @@ source=("${pkgname}.desktop")
 source_x86_64=('http://home.ustc.edu.cn/~knight42/cmd_markdown_linux64.tar.gz')
 source_i686=('http://home.ustc.edu.cn/~knight42/cmd_markdown_linux32.tar.gz')
 md5sums=('c1596b758328bb4797d867dfdb7d2633')
-md5sums_x86_64=('d9fa018bf3de63c09df600ed66023f6e')
-md5sums_i686=('5bb1cdecdef76f29b422b274de5dbb49')
+md5sums_x86_64=('024adc86966d8219a2fcc2706206606a')
+md5sums_i686=('169d1c24a85d98bf86562233cd67e11e')
 options=(!strip)
 
 if [ "$CARCH" == "x86_64" ]; then
@@ -27,7 +27,7 @@ fi
 prepare(){
     cd "$srcdir/$DIR"
     mv 'Cmd Markdown' Cmd-Markdown
-    chmod 644 libffmpegsumo.so
+    chmod 644 libffmpegsumo.so nw.pak icudtl.dat
 }
 
 package(){
