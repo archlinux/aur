@@ -1,0 +1,17 @@
+pkgbase = oclint
+	pkgdesc = static code analysis tool for improving quality and reducing defects
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = http://oclint.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = subversion
+	makedepends = python2
+	makedepends = libxml2
+	source = http://archives.oclint.org/releases/0.8/oclint-0.8.1-src.tar.gz
+	md5sums = 58567911cb0a93858de8ad76590d769a
+
+pkgname = oclint
+
