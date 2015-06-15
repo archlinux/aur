@@ -28,5 +28,5 @@ package() {
   make -C jxrlib SHARED=1 DIR_INSTALL="${pkgdir}/usr" install
 
   # fix the prefix in libjxr.pc
-  sed "s|${pkgdir}||g" -i ${pkgdir}/usr/lib/pkgconfig/libjxr.pc
+  sed "s|${pkgdir}||g" -i "${pkgdir}/usr/lib/pkgconfig/libjxr.pc"
 }
