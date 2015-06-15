@@ -1,0 +1,12 @@
+pkgbase = dnstwist-git
+	pkgdesc = simple tool to look for registered domains similar to your own, only distinguished by typos. useful for detection of fraud and fishing attacs
+	pkgver = r6.5560dc3
+	pkgrel = 1
+	url = https://github.com/elceef/dnstwist
+	arch = any
+	license = unknown
+	source = git+https://github.com/elceef/dnstwist
+	md5sums = SKIP
+
+pkgname = dnstwist-git
+
