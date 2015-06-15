@@ -2,8 +2,8 @@
 
 pkgname=cmd-markdown
 _pkgname="${pkgname/-/_}"
-pkgver=1.2.0
-pkgrel=0
+pkgver=2.0
+pkgrel=1
 pkgdesc='An enhanced Markdown editor with MathJax, flowchart & sequence-diagram support'
 arch=('x86_64' 'i686')
 url=('https://www.zybuluo.com/cmd')
