@@ -12,7 +12,7 @@ backup=('etc/encrypt2.conf')
 source=('encrypt2.hook'
         'encrypt2.install'
         'encrypt2.conf')
-md5sums=('ac1b3ad839f3461bd3bc967c58a804be'
+md5sums=('63e87e6efeb02e56568c2c3891750100'
          '6c4f19ba9a331e5b40825f7857bb40cd'
          '50030f303d861649cfdc9f2ce7d9bb75')
 
