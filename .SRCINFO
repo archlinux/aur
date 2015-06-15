@@ -1,0 +1,18 @@
+pkgbase = advancemame
+	pkgdesc = A port of the MAME emulator for video hardware like TVs, Arcade monitors, PC monitors and LCD screens
+	pkgver = 1.2
+	pkgrel = 2
+	url = http://advancemame.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl
+	depends = alsa-lib
+	depends = expat
+	depends = freetype2
+	depends = slang
+	source = http://downloads.sourceforge.net/sourceforge/advancemame/advancemame-1.2.tar.gz
+	md5sums = ef0cfd38e7c8859bc03ada60f51295c6
+
+pkgname = advancemame
+
