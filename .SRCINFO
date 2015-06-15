@@ -1,0 +1,21 @@
+pkgbase = python-argparse
+	pkgver = 1.3.0
+	pkgrel = 2
+	url = https://pypi.python.org/pypi/argparse
+	arch = any
+	license = CUSTOM
+	makedepends = python2
+	makedepends = python2-setuptools
+	makedepends = python
+	makedepends = python-setuptools
+	source = https://pypi.python.org/packages/source/a/argparse/argparse-1.3.0.tar.gz
+	md5sums = 9bcf7f612190885c8c85e30ba41db3c7
+
+pkgname = python-argparse
+	pkgdesc = Python3 command-line parsing library
+	depends = python
+
+pkgname = python2-argparse
+	pkgdesc = Python2 command-line parsing library
+	depends = python2
+
