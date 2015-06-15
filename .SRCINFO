@@ -1,0 +1,18 @@
+pkgbase = lib32-libfiu
+	pkgdesc = userspace fault injection framework
+	pkgver = 0.93
+	pkgrel = 1
+	url = https://blitiri.com.ar/p/libfiu/
+	install = lib32-libfiu-0.93.install
+	arch = x86_64
+	license = custom
+	makedepends = make
+	makedepends = gcc
+	depends = libfiu
+	source = https://blitiri.com.ar/p/libfiu/files/0.93/libfiu-0.93.tar.gz
+	source = lib32-libfiu-0.93.patch
+	md5sums = 8d8126a05a0fd7e833544c6a73deb256
+	md5sums = 91b295e1fbf4bd0a2bf73bb97a6ed91b
+
+pkgname = lib32-libfiu
+
