@@ -1,0 +1,21 @@
+post_install() {
+    red='\033[1;31m'
+    blue='\033[1;34m'
+    stp='\033[0m'
+
+    echo " ";  
+    echo -e "$red==>   $blue Download new weapons and stuff from the community:$stp";
+    echo -e "$red==>   $blue http://www.unrealsoftware.de/files.php?g=6&lan=2$stp";
+    echo " "; 
+}
+
+post_upgrade() {
+    red='\033[1;31m'
+    blue='\033[1;34m'
+    stp='\033[0m'
+
+    echo " ";  
+    echo -e "$red==>   $blue Download new weapons and stuff from the community:$stp";
+    echo -e "$red==>   $blue http://www.unrealsoftware.de/files.php?g=6&lan=2$stp";
+    echo " "; 
+}

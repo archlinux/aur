@@ -1,0 +1,19 @@
+pkgbase = carnagecontest
+	pkgdesc = A free 2D turn based multiplayer shooter with fully destructible terrain
+	pkgver = 0.1.0.1
+	pkgrel = 2
+	url = http://carnagecontest.com/
+	install = carnagecontest.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	makedepends = curl
+	source = cc_b0101_linux.zip::http://www.unrealsoftware.de/get.php?get=cc_b0101_linux.zip&p=1&cid=get.php?get=cc_b0101_linux.zip&p=1&cid=16515
+	source = cc_b0101_win.zip::http://www.unrealsoftware.de/get.php?get=cc_b0101_win.zip&p=1&cid=get.php?get=cc_b0101_linux.zip&p=1&cid=16515
+	source = carnagecontest.desktop
+	noextract = cc_b0101_linux.zip
+	noextract = cc_b0101_win.zip
+
+pkgname = carnagecontest
+

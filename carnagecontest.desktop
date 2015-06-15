@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Icon=carnagecontest
+Exec=carnagecontest
+Terminal=false
+StartupNotify=false
+
+Name=Carnage Contest
+GenericName=Arcade Game
+Comment=A free 2D turn based multiplayer shooter with fully destructible terrain
+
+Categories=Game;ArcadeGame;
