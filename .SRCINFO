@@ -1,0 +1,23 @@
+pkgbase = kde-gtk-config-kde4
+	pkgdesc = GTK2 and GTK3 Configurator for KDE4
+	pkgver = 2.2.1
+	pkgrel = 2
+	url = https://projects.kde.org/kde-gtk-config
+	install = kde-gtk-config-kde4.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = gtk2
+	makedepends = gtk3
+	depends = kdelibs
+	optdepends = gtk2: GTK+ v2 support
+	optdepends = gtk3: GTK+ v3 support
+	provides = kde-gtk-config
+	conflicts = kde-gtk-config
+	source = http://download.kde.org/stable/kde-gtk-config/2.2.1/src/kde-gtk-config-2.2.1.tar.xz
+	md5sums = d155ed431d509e54a60383a70b700e1c
+
+pkgname = kde-gtk-config-kde4
+
