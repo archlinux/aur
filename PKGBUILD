@@ -7,7 +7,7 @@ _icon="default"
 pkgname=vuze-extreme-mod
 pkgver=5.6.1.3
 _ver=5612
-pkgrel=1
+pkgrel=2
 pkgdesc="A modded version of the Vuze BitTorrent client with multiple spoofing capabilities"
 arch=('i686' 'x86_64')
 url="http://www.sb-innovation.de/f41/"
@@ -17,7 +17,6 @@ optdepends=('vuze-plugin-countrylocator: Country flags for the "Peers" tab'
             'vuze-plugin-mldht: The alternative Distributed Hash Table implementation (DHT) used by µTorrent'
             'xulrunner192: Needed for the channels GUI')
 provides=('vuze')
-conflicts=('vuze')
 options=('!strip')
 install=$pkgname.install
 source=("http://downloads.sourceforge.net/project/azureus/vuze/Vuze_${_ver}/Vuze_${_ver}_linux.tar.bz2"
@@ -39,22 +38,21 @@ package() {
   cd vuze
 
   msg2 "Creating directory structure..."
+  install -d "$pkgdir"/opt/vuze-extreme-mod/
   install -d "$pkgdir"/usr/bin/
-  install -d "$pkgdir"/usr/lib/vuze-extreme-mod/
   install -d "$pkgdir"/usr/share/applications/
   install -d "$pkgdir"/usr/share/gconf/schemas/
   install -d "$pkgdir"/usr/share/licenses/vuze-extreme-mod/
   install -d "$pkgdir"/usr/share/pixmaps/
 
   msg2 "Moving stuff in place..."
-  # Launchers
+  # Launcher
   mv vuze "$pkgdir"/usr/bin/vuze-extreme-mod
-  ln -s vuze-extreme-mod "$pkgdir"/usr/bin/vuze
 
   # swt.jar
   case "$CARCH" in
-    i686)   mv swt/swt32.jar "$pkgdir"/usr/lib/vuze-extreme-mod/swt.jar ;;
-    x86_64) mv swt/swt64.jar "$pkgdir"/usr/lib/vuze-extreme-mod/swt.jar ;;
+    i686)   mv swt/swt32.jar "$pkgdir"/opt/vuze-extreme-mod/swt.jar ;;
+    x86_64) mv swt/swt64.jar "$pkgdir"/opt/vuze-extreme-mod/swt.jar ;;
   esac
 
   # Icon, desktop and schemas
@@ -67,7 +65,6 @@ package() {
   mv GPLv3.txt    "$pkgdir"/usr/share/licenses/vuze-extreme-mod/
   mv LICENSES.txt "$pkgdir"/usr/share/licenses/vuze-extreme-mod/
   mv TOS.txt      "$pkgdir"/usr/share/licenses/vuze-extreme-mod/
-  ln -s vuze-extreme-mod/ "$pkgdir"/usr/share/licenses/vuze
 
   # Remove redundancies
   rm -r swt/
@@ -76,11 +73,11 @@ package() {
   rm    README.txt
 
   # Move main stuff
-  mv * "$pkgdir"/usr/lib/vuze-extreme-mod/
+  mv * "$pkgdir"/opt/vuze-extreme-mod/
 
   msg2 "Tweaking paths"
   # Launcher
-  sed 's|#PROGRAM_DIR=.*|PROGRAM_DIR="/usr/lib/vuze-extreme-mod"|' \
+  sed 's|#PROGRAM_DIR=.*|PROGRAM_DIR="/opt/vuze-extreme-mod"|' \
       -i "$pkgdir"/usr/bin/vuze-extreme-mod
 
   # Desktop
@@ -91,7 +88,7 @@ package() {
       -i "$pkgdir"/usr/share/applications/vuze-extreme-mod.desktop
 
   msg2 "Installing Extreme Mod..."
-  bsdtar -xf "$srcdir"/$(basename ${source[1]}) -C "$pkgdir"/usr/lib/vuze-extreme-mod/
+  bsdtar -xf "$srcdir"/$(basename ${source[1]}) -C "$pkgdir"/opt/vuze-extreme-mod/
 
   # Different icons for menus and systray
   if [[ $_icon = blue ]] || [[ $_icon = gray ]]; then
@@ -117,6 +114,6 @@ package() {
     jar cf Azureus2.jar ./*/
 
     # Install
-    install -m644 Azureus2.jar "$pkgdir"/usr/lib/vuze-extreme-mod/
+    install -m644 Azureus2.jar "$pkgdir"/opt/vuze-extreme-mod/
   fi
 }

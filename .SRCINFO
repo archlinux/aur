@@ -1,7 +1,7 @@
 pkgbase = vuze-extreme-mod
 	pkgdesc = A modded version of the Vuze BitTorrent client with multiple spoofing capabilities
 	pkgver = 5.6.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.sb-innovation.de/f41/
 	install = vuze-extreme-mod.install
 	arch = i686
@@ -14,7 +14,6 @@ pkgbase = vuze-extreme-mod
 	optdepends = vuze-plugin-mldht: The alternative Distributed Hash Table implementation (DHT) used by µTorrent
 	optdepends = xulrunner192: Needed for the channels GUI
 	provides = vuze
-	conflicts = vuze
 	noextract = 15477d1434194241-vuze-extreme-mod-sb-innovation-5-6-1-3-vpem_5613-01.zip
 	options = !strip
 	source = http://downloads.sourceforge.net/project/azureus/vuze/Vuze_5612/Vuze_5612_linux.tar.bz2
