@@ -1,0 +1,29 @@
+# vim:set ts=2 sw=2 et:
+
+# Colors
+note() {
+    printf "${BLUE}==>${ALL_OFF}${BOLD} NOTE:${ALL_OFF} ${1}\n"
+}
+ALL_OFF="$(tput sgr0)"
+BOLD="$(tput bold)"
+BLUE="${BOLD}$(tput setaf 4)"
+GREEN="${BOLD}$(tput setaf 2)"
+
+post_install() {
+  echo
+  echo ">>> Running depmod..."
+  depmod -a
+  echo "OK"
+  echo
+  note "For more information, see the /usr/share/doc/ipt_netflow/{README,README.promisc}";
+}
+ 
+post_upgrade() {
+  echo
+  echo ">>> Running depmod..."
+  depmod -a
+  echo "OK"
+  echo
+  note "For more information, see the /usr/share/doc/ipt_netflow/{README,README.promisc}";
+}
+# vim:set ts=2 sw=2 et:

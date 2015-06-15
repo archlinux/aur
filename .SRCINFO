@@ -1,0 +1,20 @@
+pkgbase = ipt_netflow-git
+	pkgdesc = Netflow capture module for iptables (netfilter). GIT version.
+	pkgver = 20140710
+	pkgrel = 3
+	url = http://sourceforge.net/projects/ipt-netflow/
+	install = ipt_netflow.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = wget
+	depends = iptables
+	conflicts = ipt_netflow-cvs
+	source = modprobe.conf
+	source = modules.conf
+	md5sums = ce5b763e857a38dab5f22ad77e0c248e
+	md5sums = 0e3c6d2164bd07a2603f0ad123ac68a8
+
+pkgname = ipt_netflow-git
+
