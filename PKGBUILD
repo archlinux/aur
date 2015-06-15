@@ -2,7 +2,7 @@
 
 pkgname=gb-git
 _name="${pkgname/-git/}"
-pkgver=242c807
+pkgver=e677e20
 pkgrel=1
 pkgdesc="The project based build tool for Go"
 url="https://github.com/constabulary/${_name}"
