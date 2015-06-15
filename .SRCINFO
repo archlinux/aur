@@ -1,0 +1,15 @@
+pkgbase = plasma-theme-caledonia
+	pkgdesc = An elegant and minimalistic dark theme for KDE Plasma
+	pkgver = 2.0
+	pkgrel = 2
+	url = http://sourceforge.net/projects/caledonia/
+	arch = any
+	license = CCPL
+	optdepends = kdebase-workspace: KDE 4 (Plasma 1)
+	optdepends = plasma-workspace: Plasma 5
+	conflicts = caledonia-bundle
+	source = http://sourceforge.net/projects/caledonia/files/Caledonia%20%28Plasma-KDE%20Theme%29/Caledonia-2.0.tar.gz
+	sha256sums = 3d855b7806d23ad3f748a30e9b0fa94c8ad7ec489fd19a4c026276b3045c5bcc
+
+pkgname = plasma-theme-caledonia
+
