@@ -1,0 +1,20 @@
+#! /bin/bash
+
+post_install() {
+	KERNEL_VERSION=$(uname -r)
+	depmod $KERNEL_VERSION
+    echo
+    echo " * Append \"init=/sbin/ccs-init\" to the kernel boot options"
+    echo "   and reboot in order to activate AKARI."
+    echo
+}
+
+post_upgrade() {
+	KERNEL_VERSION=$(uname -r)
+	depmod $KERNEL_VERSION
+}
+
+post_remove() {
+	KERNEL_VERSION=$(uname -r)
+	depmod $KERNEL_VERSION
+}
