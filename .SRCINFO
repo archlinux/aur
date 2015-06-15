@@ -1,7 +1,7 @@
 pkgbase = deadspace
 	pkgdesc = a utility that prohibits mouse from entering dead space when screen spans over multiple monitors
 	pkgver = 1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.abclinuxu.cz/blog/Joseho_blog/2009/9/najde-sa-niekto-na-napisanie-patchu
 	arch = i686
 	license = custom:beerware
