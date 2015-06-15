@@ -1,0 +1,13 @@
+[Unit]
+Description=Data loader service for the billing system BGBilling
+Requires=activemq.service
+After=activemq.service
+
+[Service]
+EnvironmentFile=/etc/conf.d/bgbilling
+Type=forking
+ExecStart=/opt/bgbilling/data_loader.sh -estart
+ExecStop=/opt/bgbilling/data_loader.sh -estop
+
+[Install]
+WantedBy=multi-user.target

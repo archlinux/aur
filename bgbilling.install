@@ -1,0 +1,22 @@
+# Colors
+note() {
+    printf "${BLUE}==>${ALL_OFF}${BOLD} NOTE:${ALL_OFF} ${1}\n"
+}
+
+ALL_OFF="$(tput sgr0)"
+BOLD="$(tput bold)"
+BLUE="${BOLD}$(tput setaf 4)"
+GREEN="${BOLD}$(tput setaf 2)"
+
+post_install() {
+
+    echo
+    note "Select the correct path to your JAVA_HOME in /etc/conf.d/bgbilling
+          Create database: mysql < dump.sql"
+}
+
+post_upgrade() {
+
+    echo
+    note "Select the correct path to your JAVA_HOME in /etc/conf.d/bgbilling"
+}

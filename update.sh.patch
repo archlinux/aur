@@ -1,0 +1,50 @@
+--- update.sh.orig	2015-03-04 19:50:24.000000000 +1000
++++ update.sh	2015-03-06 15:27:45.895433090 +1000
+@@ -2,11 +2,12 @@
+ 
+ cd ${0%${0##*/}}.
+ 
+-SERVER=/etc/init.d/bgbilling
+-SCHEDULER=/etc/init.d/bgscheduler
+-DATALOADER=/etc/init.d/bgdataloader
++SERVER=bgbilling
++SCHEDULER=bgscheduler
++DATALOADER=bgdataloader
+ TEE=/usr/bin/tee
+ DATE=/bin/date
++DATALOADER_STATUS=`systemctl status bgdataloader | grep run | wc -l`
+ 
+ snapshot=`find ./snapshots -type f -mtime 0 | tail -1`
+ 
+@@ -19,23 +20,23 @@
+ 
+ time=`${DATE} +%d_%H:%M:%S`
+ 
+-if [ -e ${DATALOADER} ]; then
++if [ "${DATALOADER_STATUS}" -eq "1" ]; then
+     echo "# Stopping DataLoader"
+-    ${DATALOADER} stop
++    systemctl stop ${DATALOADER}
+ fi
+ echo "# Stopping Scheduler"
+-${SCHEDULER} stop
++systemctl stop ${SCHEDULER}
+ echo "# Stopping Server"
+-${SERVER} stop
++systemctl stop ${SERVER}
+ echo "# Start Updating"
+  ./bg_installer.sh update | ${TEE} ./log_update_${time}
+ echo "# Starting Server"
+-${SERVER} start
++systemctl start ${SERVER}
+ echo "# Starting Scheduler"
+-${SCHEDULER} start
+-if [ -e ${DATALOADER} ]; then
++systemctl start ${SCHEDULER}
++if [ "${DATALOADER_STATUS}" -eq "0" ]; then
+     echo "# Starting DataLoader"
+-    ${DATALOADER} start
++    systemctl start ${DATALOADER}
+ fi
+ 
+ if [ -e .bgclient_keystore_user -o -e .bgclient_keystore ]; then

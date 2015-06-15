@@ -1,0 +1,30 @@
+pkgbase = bgbilling
+	pkgdesc = The billing system BGBilling
+	pkgver = 6.2.1047
+	pkgrel = 3
+	url = http://bgbilling.ru
+	install = bgbilling.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	makedepends = dos2unix
+	makedepends = patch
+	depends = activemq
+	depends = java-runtime=7
+	depends = pbzip2
+	depends = percona-server-clients
+	optdepends = percona-server
+	backup = opt/bgbilling/data/lic.properties
+	source = ftp://bgbilling.ru/pub/bgbilling/6.2/data/BGBillingServer_6.2_1047.zip
+	source = bgbilling.conf
+	source = bgbilling.service
+	source = bgdataloader.service
+	source = bgscheduler.service
+	source = setenv.sh.patch
+	source = update.sh.patch
+
+pkgname = bgbilling
+	backup = opt/bgbilling/data/lic.properties
+	backup = etc/conf.d/
+

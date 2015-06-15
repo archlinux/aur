@@ -1,0 +1,13 @@
+[Unit]
+Description=BGBilling Server daemon
+Requires=activemq.service
+After=activemq.service
+
+[Service]
+EnvironmentFile=/etc/conf.d/bgbilling
+Type=forking
+ExecStart=/opt/bgbilling/server.sh start
+ExecStop=/opt/bgbilling/server.sh stop
+
+[Install]
+WantedBy=multi-user.target
