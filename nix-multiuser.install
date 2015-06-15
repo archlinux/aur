@@ -1,0 +1,67 @@
+pre_install () {
+    # Check that the group and users don't already exist
+    if [[ -n $(cut -d: -f1 /etc/group | grep -w nixbld) ]]; then
+        echo "The nixbld group already exists.  This install cannot proceed."
+        exit 1
+    fi
+
+    for i in {1..10}; do
+        if [[ -n $(cut -d: -f1 /etc/passwd | grep -w nixbld$i) ]]; then
+            echo "The nixbld$i user already exists.  This install cannot proceed."
+            exit 1
+        fi
+    done
+}
+
+post_install () {
+    # Create a nixbld group.  -f means that this command will not
+    # fail, and that a different gid will be selected if 30000 is
+    # already taken
+    groupadd -f -g 30000 nixbld
+
+    # Create 10 nixbld{i} users
+    for i in {1..10}; do
+        useradd -g nobody -G nixbld -K UID_MIN=30000 -M -d /var/empty -s /sbin/nologin nixbld$i
+    done
+
+    # Alter nix store permissions
+    chown root.nixbld /nix/store
+    chmod 1775 /nix/store
+    
+    # Tell the user to update the config file and start the daemon
+    echo "You need to add the following line to /etc/nix/nix.conf:"
+    echo
+    echo "    build-users-group = nixbld"
+    echo
+    echo "If /etc/nix/nix.conf does not exist, you should create it with root ownership."
+    echo
+    echo "Once you have done that, you are ready to start the nix daemon. You can do with the following commands:"
+    echo
+    echo "    systemctl enable nix-daemon  # Sets the daemon to start on next boot"
+    echo "    systemctl start nix-daemon   # Starts the daemon for the current boot only"
+    echo
+    echo "Finally, you need to start a new login shell, or otherwise source /etc/profile.d/nix-multiuser.sh"
+    echo
+    echo "Once your environment is set-up, you will need to add some channels.  You can see how to do that here: https://nixos.org/wiki/Installing_Nix_on_Debian#Setup_root_account"
+}
+
+pre_remove () {
+    # Restore folder permissions
+    chmod 755 /nix/store
+    chown root.root /nix/store
+
+    # Remove the users
+    for i in {1..10}; do
+        userdel nixbld$i
+    done
+
+    # Remove the group
+    groupdel nixbld
+}
+
+post_remove () {
+    echo "If you are still using Nix, but without multiuser mode, you will need to do some clean-up:"
+    echo
+    echo " - remove the 'build-users-group = nixbld' from /etc/nix/nix.conf"
+    echo " - Stop/disable the nix-daemon systemd service" 
+}

@@ -1,0 +1,12 @@
+pkgbase = nix-multiuser
+	pkgdesc = Set up multi-user environment for the Nix package manager
+	pkgver = 1.7
+	pkgrel = 1
+	url = http://nixos.org/nix/manual/#ssec-multi-user
+	install = nix-multiuser.install
+	arch = any
+	license = MIT
+	depends = nix>=1.7
+
+pkgname = nix-multiuser
+
