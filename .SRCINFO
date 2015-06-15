@@ -1,0 +1,15 @@
+pkgbase = squolem
+	pkgdesc = Skolemization-based Quantified Boolean Formula (QBF) solver that generates certificates
+	pkgver = 2.02
+	pkgrel = 1
+	url = http://www.cprover.org/qbv/
+	arch = i686
+	arch = x86_64
+	license = custom:qbv
+	source = http://www.cprover.org/qbv/download/squolem-2.02-linux.tgz
+	source = http://www.cprover.org/qbv/LICENSE.txt
+	md5sums = 3c142f4412a7e764bad4378627cbd4cf
+	md5sums = 38a6fbe518e813958238518ce2cff077
+
+pkgname = squolem
+
