@@ -1,0 +1,13 @@
+pkgbase = zygrib-maps
+	pkgdesc = High resolution maps for zyGrib
+	pkgver = 2.4
+	pkgrel = 3
+	url = http://www.zygrib.org/
+	arch = any
+	license = GPL
+	depends = zygrib
+	source = zygrib_maps2.4.tgz::http://www.zygrib.org/getfile.php?file=zyGrib_maps2.4.tgz
+	md5sums = 43324f8e8c7e9aa4e2f12dea4ae25d49
+
+pkgname = zygrib-maps
+
