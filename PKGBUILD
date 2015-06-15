@@ -2,6 +2,7 @@
 # Maintainer:  Tom Vincent <http://tlvince.com/contact>
 # Contributor: Xavion <Xavion (dot) 0 (at) Gmail (dot) com>
 
+pkgbase=python2-inotifyx
 pkgname=python2-inotifyx
 _pkgname=inotifyx
 pkgver=0.2.0
