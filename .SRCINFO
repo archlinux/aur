@@ -1,0 +1,20 @@
+pkgbase = mikutter
+	pkgdesc = a moest twitter client
+	pkgver = 3.2.4
+	pkgrel = 1
+	url = http://mikutter.hachune.net/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = ruby-gtk2>=2.2.3
+	depends = ruby-moneta
+	depends = ruby-nokogiri
+	depends = ruby-httpclient
+	optdepends = libnotify: notify support
+	source = http://mikutter.hachune.net/bin/mikutter.3.2.4.tar.gz
+	source = mikutter.desktop
+	md5sums = 3d194513638984db636bf89810b47adb
+	md5sums = 18e28a76097af88457462b08752382df
+
+pkgname = mikutter
+
