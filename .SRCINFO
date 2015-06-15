@@ -1,5 +1,5 @@
 pkgbase = nvidia-full-beta-all
-	pkgver = 352.09
+	pkgver = 352.21
 	pkgrel = 1
 	url = http://www.nvidia.com/
 	arch = i686
@@ -10,17 +10,15 @@ pkgbase = nvidia-full-beta-all
 	options = !strip
 	source = 20-nvidia.conf
 	md5sums = 2640eac092c220073f0668a7aaff61f7
-	source_i686 = ftp://download.nvidia.com/XFree86/Linux-x86/352.09/NVIDIA-Linux-x86-352.09.run
-	md5sums_i686 = 0e009686400c522209eaa8ab835ff81f
-	source_x86_64 = ftp://download.nvidia.com/XFree86/Linux-x86_64/352.09/NVIDIA-Linux-x86_64-352.09-no-compat32.run
-	md5sums_x86_64 = eb5ad6a07dc03e0a19d5f6fa069c494b
-	source_x86_64_full = ftp://download.nvidia.com/XFree86/Linux-x86_64/352.09/NVIDIA-Linux-x86_64-352.09.run
-	md5sums_x86_64_full = 1fd89728cda5f5a68411a04bda1d22e4
+	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/352.21/NVIDIA-Linux-x86-352.21.run
+	md5sums_i686 = c91760a04f658845722380f6c7fd4709
+	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/352.21/NVIDIA-Linux-x86_64-352.21-no-compat32.run
+	md5sums_x86_64 = 4eea308a1b04553f720f82fd2fac79d3
 
 pkgname = nvidia-full-beta-all
 	pkgdesc = NVIDIA drivers for linux (beta)
 	install = nvidia-full-beta-all.install
-	depends = nvidia-utils-full-beta=352.09
+	depends = nvidia-utils-full-beta=352.21
 	depends = libgl
 	provides = nvidia
 	conflicts = nvidia-96xx
@@ -35,8 +33,8 @@ pkgname = nvidia-utils-full-beta-all
 	optdepends = gtk3: nvidia-settings (GTK+ v3)
 	optdepends = opencl-nvidia-beta: OpenCL support
 	optdepends = xorg-server-devel: nvidia-xconfig
-	provides = nvidia-utils=352.09
-	provides = nvidia-utils-full-beta=352.09
+	provides = nvidia-utils=352.21
+	provides = nvidia-utils-full-beta=352.21
 	conflicts = nvidia-utils
 	conflicts = nvidia-utils-full-beta
 	backup = etc/X11/xorg.conf.d/20-nvidia.conf
@@ -46,7 +44,7 @@ pkgname = nvidia-libgl-full-beta-all
 	depends = nvidia-utils-full-beta
 	provides = libgl
 	provides = nvidia-libgl
-	provides = nvidia-libgl-full-beta=352.09
+	provides = nvidia-libgl-full-beta=352.21
 	conflicts = libgl
 	conflicts = nvidia-libgl
 	conflicts = mesa<10.1.0-2
@@ -58,7 +56,7 @@ pkgname = opencl-nvidia-full-beta-all
 	depends = zlib
 	optdepends = opencl-headers: headers necessary for OpenCL development
 	provides = opencl-nvidia
-	provides = opencl-nvidia-full-beta=352.09
+	provides = opencl-nvidia-full-beta=352.21
 	conflicts = opencl-nvidia
 	conflicts = opencl-nvidia-full-beta
 
