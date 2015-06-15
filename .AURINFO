@@ -1,0 +1,15 @@
+pkgbase = kde-servicemenus-video-dl
+	pkgdesc = Servicemenu for KDE to download videos and extract its audio
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = http://kde-apps.org/content/show.php/kde-service-menu-video-dl+?content=157943
+	arch = any
+	license = GPL
+	depends = kdebase-workspace>=4.10.1
+	depends = mawk
+	depends = kde-servicemenus-youtube
+	depends = ffmpeg
+	source = https://kde-peace-settings.googlecode.com/git/kde-services-menu/kde-service-menu-video-dl/kde-service-menu-video-dl_0.3.3.tar.gz
+
+pkgname = kde-servicemenus-video-dl
+
