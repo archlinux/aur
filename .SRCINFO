@@ -1,0 +1,17 @@
+pkgbase = catlooking-git
+	pkgdesc = A text writer with clear and simple interface allowing you to concentrate on your text
+	pkgver = 20130526
+	pkgrel = 1
+	url = http://catlooking.com/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = qt4
+	provides = catlooking
+	conflicts = catlooking
+	source = git://github.com/sychev/catlooking.git
+	md5sums = SKIP
+
+pkgname = catlooking-git
+
