@@ -1,3 +1,4 @@
+
 # Maintainer: grepper<grepper@gmail.com>
 # Submitter: grepper<grepper@gmail.com>
 # Contributor: CRT<crt.011@gmail.com>
@@ -5,7 +6,7 @@
 # Contributor: Jeremie Lasalle Ratelle <lasallej@iro.umontreal.ca>
 pkgname=tovid
 pkgver=0.35.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A suite of tools for creating video DVDs"
 depends=('mplayer' 'mjpegtools' 'ffmpeg' 'python2' 'tix' \
 'imagemagick' 'dvdauthor' 'dvd+rw-tools' 'sox' 'normalize' 'bc')
@@ -15,11 +16,11 @@ arch=('i686' 'x86_64')
 url='http://tovid.wikia.com'
 license=('GPL')
 conflicts=('tovid-svn' tovid-git)
-source=(https://github.com/tovid-suite/tovid/archive/${pkgname}-${pkgver}.tar.gz)
+source=(https://github.com/tovid-suite/tovid/archive/$pkgname-$pkgver.tar.gz)
 sha256sums=('be6f540d7f36bd44bf19814fc4457a1586ffe5975a7b6cc324c377597624e674')
 
-
 build() {
+  mv ${srcdir}/${pkgname}-${pkgname}-${pkgver} ${srcdir}/${pkgname}-${pkgver}
   cd ${srcdir}/${pkgname}-${pkgver}
 
   for file in setup.py src/titleset-wizard; do
