@@ -1,0 +1,14 @@
+pkgbase = pandoc-rstudio
+	pkgdesc = Links in /usr/bin to the prebuilt binaries bundled with rstudio
+	pkgver = 1.13.1
+	pkgrel = 1
+	url = http://www.pandoc.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = rstudio-desktop-bin
+	provides = haskell-pandoc
+	conflicts = haskell-pandoc
+
+pkgname = pandoc-rstudio
+
