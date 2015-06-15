@@ -1,0 +1,19 @@
+pkgbase = lib32-libunwind-git
+	pkgdesc = Portable and efficient C programming interface (API) to determine the call-chain of a program
+	pkgver = 65ac867
+	pkgrel = 1
+	url = http://www.nongnu.org/libunwind/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = texlive-core
+	depends = glibc
+	depends = libunwind-git
+	provides = lib32-libunwind
+	conflicts = lib32-libunwind
+	source = lib32-libunwind-git::git+git://git.sv.gnu.org/libunwind.git
+	sha1sums = SKIP
+
+pkgname = lib32-libunwind-git
+
