@@ -1,0 +1,16 @@
+pkgbase = qtresistors
+	pkgdesc = Calculate resistance value and tolerance of resistors by their color codes.
+	pkgver = 0.1.3
+	pkgrel = 2
+	url = https://github.com/goetzc/qtResistors
+	install = qtResistors.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt5-base
+	depends = libxkbcommon-x11
+	source = https://github.com/goetzc/qtResistors/archive/0.1.3.tar.gz
+	sha256sums = 806982cd62f7ac29f71141e318acbd79791aa279697d04226cfb8109647e838d
+
+pkgname = qtresistors
+
