@@ -1,0 +1,14 @@
+pkgbase = relic
+	pkgdesc = RELIC is an Efficient Library for Cryptography
+	pkgver = 0.3.5
+	pkgrel = 1
+	epoch = 
+	url = https://code.google.com/p/relic-toolkit/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = cmake
+	source = https://relic-toolkit.googlecode.com/files/relic-0.3.5.tar.gz
+
+pkgname = relic
+
