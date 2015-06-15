@@ -1,0 +1,33 @@
+pkgbase = ryu-git
+	pkgdesc = Ryu component-based software defined networking framework
+	pkgver = v3.14
+	pkgrel = 4
+	url = http://osrg.github.io/ryu/
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = Apache License 2.0
+	makedepends = git
+	makedepends = sed
+	depends = python2
+	depends = python2-setuptools
+	depends = python2-pip
+	depends = python2-lxml
+	depends = python2-greenlet
+	depends = python2-webob
+	depends = python2-six
+	depends = python2-routes
+	depends = python2-paramiko
+	depends = python2-oslo-config
+	depends = python2-msgpack
+	depends = python2-netaddr
+	depends = python2-eventlet
+	depends = python2-pbr
+	depends = python2-stevedore
+	provides = ryu
+	conflicts = ryu
+	source = ryu::git+https://github.com/osrg/ryu.git
+	md5sums = SKIP
+
+pkgname = ryu-git
+
