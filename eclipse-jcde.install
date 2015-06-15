@@ -1,0 +1,3 @@
+post_install() {
+  echo "Set the path (Eclipse -> Java Card -> Preferences) to '/opt/java/lib/java-card-development-kit'"
+}

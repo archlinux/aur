@@ -1,0 +1,19 @@
+pkgbase = eclipse-jcde
+	pkgdesc = Eclipse plugins for the Java Card Development Kit
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://sourceforge.net/projects/eclipse-jcde/
+	install = eclipse-jcde.install
+	arch = any
+	license = EPL
+	license = GPL
+	makedepends = unzip
+	depends = java-environment>=6
+	depends = eclipse>=3.6.2
+	depends = java-card-development-kit>=2.2.2
+	options = !strip
+	source = http://downloads.sourceforge.net/project/eclipse-jcde/eclipse-jcde/eclipse-jcde-0.2.zip
+	md5sums = f1f48c1f58dacfe07d380c1f5d4c7465
+
+pkgname = eclipse-jcde
+
