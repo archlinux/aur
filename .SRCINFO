@@ -1,7 +1,7 @@
 pkgbase = gkrellm-fmonitor
 	pkgdesc = A simple but useful gkrellm plugin displaying lines from a text file
 	pkgver = 2.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sites.google.com/site/makovick/gkrellm-plugins
 	arch = i686
 	arch = x86_64
