@@ -1,0 +1,14 @@
+pkgbase = kopete-history-merger
+	pkgdesc = Frontend to merge kopete histories from different computers
+	pkgver = 0.1
+	pkgrel = 4
+	url = https://github.com/azat/kopete_history
+	arch = any
+	license = MIT
+	depends = kdenetwork-kopete
+	depends = qt4
+	source = https://github.com/azat/kopete_history/archive/master.zip
+	sha512sums = be0fc19dceb257d6e7c02b9e97494d1a473c65ed7708242d50751d4a9aa9a76a56e426a5408202eb4784a9f990b3db2ae1ae8864e5098a987e818f29e60dbaf9
+
+pkgname = kopete-history-merger
+
