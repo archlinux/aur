@@ -1,0 +1,19 @@
+pkgbase = smartscope
+	pkgdesc = SmartScope App
+	pkgver = 0.0.8.3
+	pkgrel = 1
+	url = https://www.lab-nation.com/
+	arch = x86_64
+	arch = i686
+	license = unknown
+	makedepends = tar
+	depends = mono
+	depends = sdl_mixer
+	depends = libusb
+	source = SmartScope-Linux-0-0-8-3.deb::https://www.lab-nation.com/package/smartscope/linux/latest/get
+	source = smartscope.sh
+	md5sums = 6327d62a18fb03dae7866a75ce7d5a28
+	md5sums = 4e63224a3a40e165cf4bd2f777d288dc
+
+pkgname = smartscope
+
