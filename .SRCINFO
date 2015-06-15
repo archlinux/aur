@@ -1,0 +1,19 @@
+pkgbase = libslab
+	pkgdesc = Beautification app library file
+	pkgver = 2.30.0
+	pkgrel = 1
+	url = http://en.opensuse.org/GNOME/Slab
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = librsvg
+	makedepends = libsm
+	depends = libbonobo
+	depends = glib2
+	depends = gtk2
+	depends = gnome-panel
+	source = http://ftp.gnome.org/pub/gnome/sources/libslab/2.30/libslab-2.30.0.tar.gz
+	sha512sums = c8377800d7fbf72889adf86c3f3f91057c95d2ebb8f37750a16a2f0a89a0d2d6680ed2005c22ae702da6463cb0653595c9fbabf9f4db1c41482b3331fe83bda5
+
+pkgname = libslab
+
