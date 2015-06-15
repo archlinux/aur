@@ -4,7 +4,7 @@
 pkgname=vuze-plugin-mldht
 _name=mlDHT
 pkgver=1.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A plugin for the alternative Distributed Hash Table implementation (DHT) used by µTorrent"
 arch=('any')
 url="http://azureus.sourceforge.net/plugin_details.php?plugin=${_name}"
