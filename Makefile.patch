@@ -1,0 +1,20 @@
+--- /home/jorge/Descargas/4th-3.62.0/sources/Makefile	2012-12-22 13:26:35.000000000 +0100
++++ /home/jorge/Descargas/4th-3.62.0/sources/Makefile2	2013-02-25 15:44:21.622302210 +0100
+@@ -18,7 +18,7 @@
+ 
+ LIBRARIES=/usr/lib
+ INCLUDES=/usr/include
+-BINARIES=/usr/local/bin
++BINARIES=/usr/bin
+ MANDIR=/usr/share/man
+ DOCDIR=/usr/share/doc
+ SOURCES=../4th
+@@ -128,7 +128,7 @@
+ 
+ install: mostlyinstall
+ 	install -Dm644 ../documentation/4th.1 $(MANDIR)/man1/4th.1
+-	install -Dm644 ../documentation/4tHmanual.txt $(DOCDIR)/4th/
++	install -Dm644 ../documentation/4tHmanual.ps $(DOCDIR)/4th/
+ 
+ uninstall:
+ 	-rm -f $(LIBRARIES)/lib4th.{a,so*}

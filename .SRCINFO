@@ -1,0 +1,15 @@
+pkgbase = 4th
+	pkgdesc = A Forth Compiler
+	pkgver = 3.62.0
+	pkgrel = 4
+	url = http://www.xs4all.nl/~thebeez/4tH/index.html
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	source = https://4th.googlecode.com/files/4th-3.62.0-i586.tar.gz
+	source = Makefile.patch
+	sha512sums = 80dbe8f3c54baa9150226b7f555e37c0183695dec77adb562262bbad10572f60966b47f5c5db133184a00052a42aed48363a00be7f1ed6bf7d891e619e7eff30
+	sha512sums = 80d5b2da61b419be13c96cb5a89066a54c0d5abde85300eda625fd106ee73b82978f9897aff9f427f9518dad2ccee1301172d9c93074bb83aaaad070b52eab1a
+
+pkgname = 4th
+
