@@ -1,0 +1,27 @@
+pkgbase = l2tp-ipsec-vpn-daemon
+	pkgdesc = A daemon to manage L2TP over IPsec virtual private network connections.
+	pkgver = 0.9.9
+	pkgrel = 2
+	url = https://launchpad.net/l2tp-ipsec-vpn
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = ctemplate
+	depends = openswan
+	depends = xl2tpd
+	depends = qt4
+	depends = rsyslog
+	depends = pcsclite
+	source = https://launchpad.net/l2tp-ipsec-vpn/trunk/1.0.7/+download/l2tp-ipsec-vpn-daemon_0.9.9.tar.gz
+	source = l2tp-ipsec-vpn-daemon.service
+	source = 0001-Update-COMMANDS.patch
+	source = 0002-Qt4.patch
+	source = l2tp-ipsec-vpn-daemon.tmpfiles.d.conf
+	md5sums = caf8728d035d17bc0b3f971f6d4e76eb
+	md5sums = 5f85836da92d56a7455380bffc920338
+	md5sums = eeafc465e496fa4d8da9178ce35d75b5
+	md5sums = 4476db63b5eaacb3ad175db313d716f8
+	md5sums = d5cf15ac235b1245202bc90c3cbb76f8
+
+pkgname = l2tp-ipsec-vpn-daemon
+

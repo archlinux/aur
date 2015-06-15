@@ -1,0 +1,25 @@
+From 32eb26778fa4312f33eebf0b542b064bd79febae Mon Sep 17 00:00:00 2001
+From: Red54
+Date: Fri, 6 Jun 2014 02:11:23 +0200
+Subject: [PATCH] Use qt4
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 37996e3..089d37f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -37,7 +37,7 @@ GENDIR = src/generated
+ DISTDIR = dist/${CONF}
+ 
+ # Distribution specific configurations
+-QMAKE      := $(firstword $(wildcard /usr/bin/qmake /usr/bin/qmake-qt4))
++QMAKE      := $(firstword $(wildcard /usr/bin/qmake-qt4 /usr/bin/qmake))
+ CHKCONFIG  := $(wildcard /sbin/chkconfig)
+ UPDATE_RCD := $(wildcard /usr/sbin/update-rc.d)
+ 
+-- 
+2.0.0
+

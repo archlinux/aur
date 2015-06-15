@@ -1,0 +1,39 @@
+From bbcd86e10c396a3e7f2ca1a607bbd803bfda48ba Mon Sep 17 00:00:00 2001
+From: Moritz Lipp <mlq@pwmt.org>
+Date: Wed, 7 Aug 2013 22:57:20 +0200
+Subject: [PATCH] Update COMMANDS
+
+---
+ src/VpnClientConnection.cpp | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/src/VpnClientConnection.cpp b/src/VpnClientConnection.cpp
+index a74dbae..baf2bd8 100644
+--- a/src/VpnClientConnection.cpp
++++ b/src/VpnClientConnection.cpp
+@@ -49,14 +49,14 @@ struct
+ }
+ static COMMANDS[] =
+ {
+-   {"service pcscd start", 0, PROCESS, NULL},
+-   {"service pcscd stop", 0, PROCESS, NULL},
+-   {"ipsec setup start", 0, PROCESS, NULL},
+-   {"ipsec setup stop", 0, PROCESS, NULL},
+-   {"service xl2tpd start", 0, PROCESS, NULL},
+-   {"service xl2tpd stop", 0, PROCESS, NULL},
+-   {"service rsyslog start", 0, PROCESS, NULL},
+-   {"service rsyslog stop", 0, PROCESS, NULL},
++   {"systemctl start pcscd.service", 0, PROCESS, NULL},
++   {"systemctl stop pcscd.service", 0, PROCESS, NULL},
++   {"systemctl start openswan.service", 0, PROCESS, NULL},
++   {"systemctl stop openswan.service", 0, PROCESS, NULL},
++   {"systemctl start xl2tpd.service", 0, PROCESS, NULL},
++   {"systemctl stop xl2tpd.service", 0, PROCESS, NULL},
++   {"systemctl start rsyslog.service", 0, PROCESS, NULL},
++   {"systemctl stop rsyslog.service", 0, PROCESS, NULL},
+    {"ipsec auto --ready", 0, PROCESS, NULL},
+    {"ipsec auto --up", 1, PROCESS, NULL},
+    {"ipsec auto --down", 1, PROCESS, NULL},
+-- 
+1.8.3.4
+

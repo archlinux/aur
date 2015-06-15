@@ -1,0 +1,10 @@
+[Unit]
+Description=L2TP over IPsec VPN daemon
+
+[Service]
+Type=forking
+PIDFile=/var/run/L2tpIPsecVpnControlDaemon.pid
+ExecStart=/usr/bin/L2tpIPsecVpnControlDaemon
+ExecStop=/usr/bin/kill -9 $MAINPID
+ExecReload=/usr/bin/kill -HUP $MAINPID
+KillMode=process
