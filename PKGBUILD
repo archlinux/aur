@@ -2,13 +2,14 @@
 
 pkgname=puzsion
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="a little bejeweled-like game"
 arch=('any')
 url="http://www.gp32x.com/board/index.php?/topic/52332-wiz-bennugdgph-contest-winners/page__p__823581"
 license="custom:unknown"
 install="puzsion.install"
-source=("http://betatester.bennugd.org/contest-2009-bennugd-wiz/Wiz/PUZSION%20(hokutoy).zip" "puzsion.desktop")
+#source=("http://betatester.bennugd.org/contest-2009-bennugd-wiz/Wiz/PUZSION%20(hokutoy).zip" "puzsion.desktop")
+source=("https://dl.dropboxusercontent.com/u/29095940/oss/PUZSION%2520(hokutoy).zip" "puzsion.desktop")
 md5sums=('3df808edaec385285609c1179ab03c4d'
          'dc1ce1453069244df465f6ee0bb51619')
 depends=('bennugd-core' 'bennugd-modules')
