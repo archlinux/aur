@@ -1,7 +1,7 @@
 pkgbase = python-dask
 	pkgdesc = Minimal task scheduling abstraction
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dask.readthedocs.org/
 	arch = any
 	license = BSD
@@ -11,6 +11,10 @@ pkgbase = python-dask
 	depends = python-numpy
 	depends = python-dill
 	depends = python-pandas
+	depends = python-toolz
+	depends = python-psutil
+	depends = python-pyzmq
+	depends = python-bcolz
 	source = https://pypi.python.org/packages/source/d/dask/dask-0.5.0.tar.gz
 	sha256sums = 733834fc78aee8423c616349f225f197cfcf6451c3bf0a4fdeb412bca57b59b3
 
