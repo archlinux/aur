@@ -1,0 +1,18 @@
+diff --git a/preload/posix/Makefile b/preload/posix/Makefile
+index b269781..8cadde1 100644
+--- a/preload/posix/Makefile
++++ b/preload/posix/Makefile
+@@ -28,11 +28,11 @@ OBJS = codegen.o $(GEN_OBJS) $(CUSTOM_OBJS)
+ 
+ ifneq ($(V), 1)
+ 	NICE_CC = @echo "  CC  $@"; $(CC)
+-	NICE_GEN = @echo "  GEN $@"; ./generate
++	NICE_GEN = @echo "  GEN $@"; python2 ./generate
+ 	Q = @
+ else
+ 	NICE_CC = $(CC)
+-	NICE_GEN = ./generate
++	NICE_GEN = python2 ./generate
+ 	Q =
+ endif
+ 
