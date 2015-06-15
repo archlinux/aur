@@ -1,0 +1,37 @@
+pkgbase = colord-git
+	pkgdesc = System daemon for managing color devices
+	pkgver = 1.2.1.r14.g5a9987b
+	pkgrel = 1
+	url = http://www.freedesktop.org/software/colord
+	install = colord.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = intltool
+	makedepends = gobject-introspection
+	makedepends = vala
+	makedepends = docbook2x
+	makedepends = sane
+	makedepends = bash-completion
+	makedepends = perl-xml-libxml
+	makedepends = perl-file-which
+	depends = lcms2
+	depends = libgusb
+	depends = polkit
+	depends = sqlite
+	depends = systemd
+	depends = dconf
+	depends = dbus
+	optdepends = sane: scanner support
+	provides = colord
+	conflicts = colord
+	replaces = shared-color-profiles
+	source = colord::git+git://github.com/hughsie/colord.git
+	source = colord.install
+	source = colord-git-docbook.patch
+	sha1sums = SKIP
+	sha1sums = e06950f0c75ffedd2977ff12945cfbf5a947899d
+	sha1sums = ce6b0953a669abe228a309028ee9168c0f11f51c
+
+pkgname = colord-git
+

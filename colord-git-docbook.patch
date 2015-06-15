@@ -1,0 +1,36 @@
+diff --git a/man/cd-create-profile.sgml b/man/cd-create-profile.sgml
+index 4933c86..cf92fb3 100644
+--- a/man/cd-create-profile.sgml
++++ b/man/cd-create-profile.sgml
+@@ -1,4 +1,6 @@
+-<!doctype refentry PUBLIC "-//OASIS//DTD DocBook V4.1//EN" [
++<?xml version="1.0" encoding="utf-8"?>
++<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook V4.1//EN"
++   "http://www.oasis-open.org/docbook/xml/4.1/docbookx.dtd" [
+   <!-- Please adjust the date whenever revising the manpage. -->
+   <!ENTITY date        "<date>8 April,1011</date>">
+   <!ENTITY package     "cd-create-profile">
+diff --git a/man/cd-fix-profile.sgml b/man/cd-fix-profile.sgml
+index 23c21b0..308f551 100644
+--- a/man/cd-fix-profile.sgml
++++ b/man/cd-fix-profile.sgml
+@@ -1,4 +1,6 @@
+-<!doctype refentry PUBLIC "-//OASIS//DTD DocBook V4.1//EN" [
++<?xml version="1.0" encoding="utf-8"?>
++<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook V4.1//EN"
++   "http://www.oasis-open.org/docbook/xml/4.1/docbookx.dtd" [
+   <!-- Please adjust the date whenever revising the manpage. -->
+   <!ENTITY date        "<date>8 April,1011</date>">
+   <!ENTITY package     "cd-fix-profile">
+diff --git a/man/colormgr.sgml b/man/colormgr.sgml
+index fbb6511..de6ca16 100644
+--- a/man/colormgr.sgml
++++ b/man/colormgr.sgml
+@@ -1,4 +1,6 @@
+-<!doctype refentry PUBLIC "-//OASIS//DTD DocBook V4.1//EN" [
++<?xml version="1.0" encoding="utf-8"?>
++<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook V4.1//EN"
++   "http://www.oasis-open.org/docbook/xml/4.1/docbookx.dtd" [
+   <!-- Please adjust the date whenever revising the manpage. -->
+   <!ENTITY date        "<date>18 June,2013</date>">
+   <!ENTITY package     "colormgr">
