@@ -3,19 +3,25 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgbase=digikam
-pkgname=('digikam' 'kipi-plugins' 'libkvkontakte' 'libmediawiki')
-pkgver=4.9.0
-pkgrel=2
+pkgname=('digikam' 'kipi-plugins' 'libmediawiki')
+pkgver=4.11.0
+pkgrel=1
 pkgdesc="Digital photo management application for KDE"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.digikam.org/"
 makedepends=('kdepimlibs' 'libkexiv2' 'libkdcraw' 'libkipi' 'libksane' 'liblqr'
-             'kdeedu-marble' 'opencv' 'boost' 'libgpod' 'qjson' 'hugin' 'libgphoto2'
+             'kdeedu-marble' 'opencv' 'boost' 'libgpod' 'libkvkontakte' 'hugin' 'libgphoto2'
              'cmake' 'automoc4' 'doxygen' 'lensfun' 'qt-gstreamer' 'imagemagick' 'eigen' 
 	     'libbaloo4' 'libpgf' 'libusb-compat' 'libkface' 'libkgeomap')
 source=("http://download.kde.org/stable/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha1sums=('d44ab133f152b84599507dd6a02aef4b22033dd4')
+sha1sums=('8fa6e277b775b615f10403b30a1b6d45c957ff3c')
+
+prepare() {
+# Remove internal FindLibKVkontakte.cmake
+  cd $pkgname-$pkgver
+  rm cmake/modules/FindLibKVkontakte.cmake
+}
 
 build() {
   mkdir build
@@ -25,7 +31,6 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_SKIP_RPATH=ON \
     -DBUILD_tests=OFF \
-    -DDIGIKAMSC_COMPILE_LIBKVKONTAKTE=ON \
     -DDIGIKAMSC_COMPILE_LIBMEDIAWIKI=ON 
   make
 }
@@ -52,14 +57,6 @@ package_digikam() {
   #rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/libkgeomap*.mo
   # Fix conflicts with kde-l10n-* (FS#33762)
   rm "${pkgdir}"/usr/share/locale/kde4/*/LC_MESSAGES/libkipi.mo
-}
-
-package_libkvkontakte() {
-  pkgdesc="KDE C++ library for asynchronous interaction with vkontakte.rusocial network"
-  depends=('kdelibs' 'qjson')
-
-  cd build/extra/libkvkontakte
-  make DESTDIR="${pkgdir}" install
 }
 
 package_libmediawiki() {
