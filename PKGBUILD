@@ -3,7 +3,7 @@
 pkgname=vuze-plugin-countrylocator
 _name=CountryLocator
 pkgver=1.8.7
-pkgrel=1
+pkgrel=2
 pkgdesc='A plugin to include country flags in the "Peers" tab'
 arch=('any')
 url="http://azureus.sourceforge.net/plugin_details.php?plugin=${_name}"
