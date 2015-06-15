@@ -1,5 +1,5 @@
 pkgname=mingw-w64-hmat-oss
-pkgver=1.0.7
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A hierarchical matrix C/C++ library (mingw-w64)"
 license=('GPL')
@@ -9,7 +9,7 @@ depends=('mingw-w64-cblas' 'mingw-w64-lapack')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' 'staticlibs' '!strip')
 source=("https://github.com/jeromerobert/hmat-oss/archive/${pkgver}.tar.gz")
-md5sums=('9317e4cc96686798127a51779dc02021')
+md5sums=('b4525676859f005f64e8d708356e404a')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -18,12 +18,12 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch}-static && pushd build-${_arch}-static
     ${_arch}-cmake \
-      -DBUILD_SHARED_LIBS=OFF \
+      -DBUILD_SHARED_LIBS=OFF -DINSTALL_INCLUDE_DIR=/usr/${_arch}/include/hmat \
       ..
     make
     popd
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake \
+    ${_arch}-cmake -DINSTALL_INCLUDE_DIR=/usr/${_arch}/include/hmat \
       ..
     make
     popd
