@@ -1,0 +1,16 @@
+[Desktop Entry]
+Name=Linrad
+Name[en_US]=Linrad
+Comment=Software defined radio interface
+Comment[en_US]=Software defined radio interface
+Encoding=UTF-8
+Exec=/opt/linrad/linrad-03.45/xlinrad
+Icon=linrad.png
+MimeType=text
+StartupNotify=true
+Terminal=true
+TerminalOptions=
+Type=Application
+Categories=Application;HamRadio
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false

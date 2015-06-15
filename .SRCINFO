@@ -1,0 +1,28 @@
+pkgbase = linrad
+	pkgdesc = Software defined radio receiver for x11
+	pkgver = 04.06
+	pkgrel = 1
+	url = http://www.sm5bsz.com/linuxdsp/linrad.htm
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = nasm
+	makedepends = autoconf
+	depends = portaudio
+	depends = libxext
+	depends = libusb-compat
+	depends = svgalib
+	provides = linrad,
+	provides = linrad-svga
+	source = http://www.sm5bsz.com/linuxdsp/archive/lir04-06.tbz
+	source = linrad.png
+	source = linrad.desktop
+	md5sums = a3866d9041cb7fe19dc7a4b142cb61cd
+	md5sums = 9e25fa8914f415a1d9f6d60801752b6a
+	md5sums = 47578a7ca15fb9ab6e931f018c0db0ca
+	sha1sums = 3d71170e8d14aeaef384eb1a63ad6f602aaf9df4
+	sha1sums = 6a39ed2cb87309c4810acb943ab4de6dc1512708
+	sha1sums = 517451f795e7ae45a073800fa04367ffec91ebc9
+
+pkgname = linrad
+
