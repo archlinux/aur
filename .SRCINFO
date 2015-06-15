@@ -1,0 +1,15 @@
+pkgbase = reactivision
+	pkgdesc = A toolkit for tangible multi-touch surfaces
+	pkgver = 1.5
+	pkgrel = 2
+	url = http://reactivision.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libdc1394
+	depends = sdl2
+	source = http://downloads.sourceforge.net/reactivision/reacTIVision-1.5-src.zip
+	md5sums = 5480848dae6bc9e098da5f8e22b0c500
+
+pkgname = reactivision
+
