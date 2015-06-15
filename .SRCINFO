@@ -1,0 +1,17 @@
+pkgbase = python-sqlparse-git
+	pkgdesc = Non-validating SQL parser for Python. Git version
+	pkgver = 0.1.9.27.geebde5b
+	pkgrel = 1
+	url = http://code.google.com/p/python-sqlparse/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = python2
+	provides = python-sqlparse
+	conflicts = python-sqlparse
+	replaces = python-sqlparse
+	source = git+https://github.com/andialbrecht/sqlparse.git
+	sha256sums = SKIP
+
+pkgname = python-sqlparse-git
+
