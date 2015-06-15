@@ -1,7 +1,7 @@
 # Maintainer:  Tristan Webb <tristan@fpcomplete.com>
 pkgname=haskell-stack-git
 _pkgname=stack
-pkgver=20150609.527642d
+pkgver=20150615.c63b8b9
 pkgrel=1
 pkgdesc="The Haskell Tool Stack"
 arch=('i686' 'x86_64')
@@ -22,6 +22,8 @@ prepare() {
   cabal sandbox init
   rm -f cabal.config
   wget https://www.stackage.org/nightly/cabal.config
+  echo "Removing stack constraint in the stackage snapshot"
+  sed -i -e "/^\s*stack ==/d" cabal.config
   cabal update
   cabal clean
   cabal install --only-dependencies --reorder-goals --enable-tests
