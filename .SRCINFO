@@ -4,6 +4,7 @@ pkgbase = gnome-shell-pomodoro
 	pkgrel = 1
 	url = https://github.com/codito/gnome-shell-pomodoro/
 	install = gschemas.install
+	changelog = NEWS
 	arch = i686
 	arch = x86_64
 	license = GPL3
