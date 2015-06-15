@@ -1,0 +1,26 @@
+post_install() {
+	local version=${1%%-*}
+	dkms=$(which dkms)
+	$dkms install -m input-wacom -v $version
+	echo -e "\n"
+	echo "#####################################"
+	echo -e "\n"
+	echo "To avoid conflict with the original modules provided by the kernel, the dkms modules were renamed to 'wacom_dkms' and 'wacom_w8001_dkms'."
+	echo "Should you need to manually load the module, use 'modprobe wacom_dkms' or 'modprobe wacom_w8001_dkms'."
+	echo "To remove the modules, use 'rmmod wacom' or 'rmmod wacom_w8001' instead."
+    	echo -e "\n"
+}
+
+pre_upgrade() {
+	pre_remove $2
+}
+
+post_upgrade() {
+	post_install $1
+}
+
+pre_remove() {
+	local version=${1%%-*}
+	dkms=$(which dkms)
+	$dkms remove -m input-wacom -v $version --all
+}
