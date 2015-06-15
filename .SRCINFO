@@ -1,0 +1,19 @@
+pkgbase = dnf-plugins-extras
+	pkgdesc = Extras DNF Plugins
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = https://github.com/rpm-software-management/dnf-plugins-extras
+	arch = any
+	license = GPL2
+	checkdepends = python-nose
+	makedepends = cmake
+	depends = dnf
+	depends = python
+	optdepends = createrepo_c: for local plugin
+	optdepends = snapper: for snapper plugin
+	optdepends = tracer: for tracer plugin
+	source = dnf-plugins-extras-0.0.8.tar.gz::https://github.com/rpm-software-management/dnf-plugins-extras/archive/dnf-plugins-extras-0.0.8-1.tar.gz
+	md5sums = 2a6a1af9401db50c81ccf7dc49a30007
+
+pkgname = dnf-plugins-extras
+
