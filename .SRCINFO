@@ -1,0 +1,17 @@
+pkgbase = omnikey_cardman_5x2x
+	pkgdesc = Driver for OMNIKEY Cardman 3x21, 5x2x, 6x2x, Smart@Key, Smart@Link
+	pkgver = 4.1.5
+	pkgrel = 2
+	url = http://www.hidglobal.com
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = libusb>=1.0.8
+	depends = pcsclite>1.5.5
+	source_i686 = http://www.hidglobal.com/sites/hidglobal.com/files/drivers/ifdokccid_linux_i686-v4.1.5.tar.gz
+	md5sums_i686 = 6dc30b82972cae89e8217a065c721152
+	source_x86_64 = http://www.hidglobal.com/sites/hidglobal.com/files/drivers/ifdokccid_linux_x86_64-v4.1.5.tar.gz
+	md5sums_x86_64 = 1ba7d54cfa38a659db6e369b3c5f87dd
+
+pkgname = omnikey_cardman_5x2x
+
