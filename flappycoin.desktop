@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=FlappyCoin
+Comment=FlappyCoin P2P Cryptocurrency
+Exec=/usr/bin/flappycoin-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/flappycoin.png
+MimeType=x-scheme-handler/flappycoin;
+Categories=Network;Finance;P2P

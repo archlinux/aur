@@ -1,0 +1,32 @@
+pkgbase = flappycoin-qt
+	pkgdesc = Cryptocurrency
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = http://flappycoin.info/
+	install = flappycoin.install
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = boost
+	makedepends = gcc
+	makedepends = make
+	makedepends = git
+	makedepends = miniupnpc
+	makedepends = boost-libs
+	makedepends = protobuf
+	makedepends = openssl
+	makedepends = db
+	depends = qt5-base
+	depends = miniupnpc
+	depends = boost-libs
+	depends = protobuf
+	depends = openssl
+	depends = db
+	provides = flappycoin-qt
+	source = https://github.com/FlappycoinDEV/flappycoin/archive/v4.0.tar.gz
+	source = flappycoin.desktop
+	sha512sums = bde1d421ab46dabc86792112be5f69bc49a21d8b3a13be99fe54b0600c9cd6c4ac72bd2867a66541b864f09288e63124366f3fb4b4d41ebe69176d3b50c9153a
+	sha512sums = 166004f5dfbbfc1e389140f9b26f9d7a17b300642338db458045d0bbfe07caeaee4723812cdb9177cdc3fa63505582d7fb7de5af5c7c276146765948310c9bb1
+
+pkgname = flappycoin-qt
+
