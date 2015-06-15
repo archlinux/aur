@@ -136,7 +136,7 @@ package() {
     return version
 
 def commit(version):
-    os.system('git commit -m "update git-annex-bin to %s" PKGBUILD' % version)
+    os.system('mksrcinfo && git commit -m "update git-annex-bin to %s" PKGBUILD .SRCINFO' % version)
 
 if __name__ == '__main__':
     version = make_pkgbuild()
