@@ -1,0 +1,21 @@
+--- a/src/Makefile	2015-02-18 02:44:09.000000000 +0100
++++ a/src/Makefile	2015-02-20 17:15:30.180477359 +0100
+@@ -102,15 +102,15 @@
+ 	${CROSS_COMPILE}${CC} $(CFLAGS) ${CPPFLAGS} -c $< -o $@
+ 
+ install : all
+-	$(INSTALL) -d ${DESTDIR}$(prefix)/sbin
+-	$(INSTALL) -s --strip-program=${CROSS_COMPILE}${STRIP} mosquitto ${DESTDIR}${prefix}/sbin/mosquitto
++	$(INSTALL) -d ${DESTDIR}$(prefix)/bin
++	$(INSTALL) -s --strip-program=${CROSS_COMPILE}${STRIP} mosquitto ${DESTDIR}${prefix}/bin/mosquitto
+ 	$(INSTALL) mosquitto_plugin.h ${DESTDIR}${prefix}/include/mosquitto_plugin.h
+ ifeq ($(WITH_TLS),yes)
+ 	$(INSTALL) -s --strip-program=${CROSS_COMPILE}${STRIP} mosquitto_passwd ${DESTDIR}${prefix}/bin/mosquitto_passwd
+ endif
+ 
+ uninstall :
+-	-rm -f ${DESTDIR}${prefix}/sbin/mosquitto
++	-rm -f ${DESTDIR}${prefix}/bin/mosquitto
+ 	-rm -f ${DESTDIR}${prefix}/include/mosquitto_plugin.h
+ 	-rm -f ${DESTDIR}${prefix}/bin/mosquitto_passwd
+ 

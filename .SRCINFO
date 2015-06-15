@@ -1,0 +1,32 @@
+pkgbase = mosquitto
+	pkgdesc = An Open Source MQTT v3.1 Broker
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = http://mosquitto.org/
+	install = mosquitto.install
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = BSD
+	makedepends = python
+	makedepends = docbook-xsl
+	makedepends = c-ares
+	depends = openssl
+	depends = c-ares
+	provides = mosquitto
+	conflicts = mosquitto-hg
+	source = http://mosquitto.org/files/source/mosquitto-1.4.2.tar.gz
+	source = http://mosquitto.org/files/source/mosquitto-1.4.2.tar.gz.asc
+	source = mosquitto.service
+	source = mosquitto.install
+	source = usr_move.patch
+	sha256sums = 5ebc3800a0018bfbec62dcc3748fb29f628df068acd39c62c4ef651d9276647e
+	sha256sums = SKIP
+	sha256sums = b09c9852b5b438bad8dd54b3ac665bb0d05d1a9e4daf8c920956457c83622b64
+	sha256sums = 877ce99413301b0525f40adb5322dc50e69e2f90092138bf495c393dec65d449
+	sha256sums = c436bcc5a61d923ab36d5b3f24e5f628bf18ef14c2f351633d58ca983b5f655c
+
+pkgname = mosquitto
+

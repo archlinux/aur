@@ -1,0 +1,15 @@
+post_install() {
+  getent group mosquitto > /dev/null || groupadd mosquitto
+  getent passwd mosquitto > /dev/null || useradd -c 'Mosquitto MQTT Broker daemon' -d /etc/mosquitto -s /bin/false -g mosquitto mosquitto
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  post_install $1
+  echo "You may want to remove mosquitto user and group"
+}
+
+# vim:set ts=2 sw=2 et:
