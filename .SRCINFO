@@ -1,0 +1,18 @@
+pkgbase = plasma5-applets-active-window-control-git
+	pkgdesc = Plasmoid for Plasma 5. Allowes advanced control of active window.
+	pkgver = r21.963125b
+	pkgrel = 1
+	url = https://github.com/kotelnik/plasma-applet-active-window-control
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = plasma-workspace
+	depends = qt5-graphicaleffects
+	provides = plasma5-applets-active-window-control
+	conflicts = plasma5-applets-active-window-control
+	source = git://github.com/kotelnik/plasma-applet-active-window-control.git
+	md5sums = SKIP
+
+pkgname = plasma5-applets-active-window-control-git
+
