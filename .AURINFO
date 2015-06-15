@@ -1,0 +1,32 @@
+pkgbase = desmume-jit-svn
+	pkgdesc = Nintendo DS emulator, svn version with jit patch
+	pkgver = r5043
+	pkgrel = 1
+	url = http://desmume.org/
+	install = desmume.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = intltool
+	makedepends = pkg-config
+	makedepends = subversion
+	depends = agg
+	depends = gtkglext
+	depends = libglade
+	depends = libpcap
+	depends = mesa
+	depends = openal
+	depends = sdl
+	depends = soundtouch
+	provides = desmume
+	conflicts = desmume
+	conflicts = desmume-sourceforge
+	conflicts = desmume-svn
+	source = svn://svn.code.sf.net/p/desmume/code/trunk
+	source = enable-jit.patch
+	source = glx_3Demu.patch
+
+pkgname = desmume-jit-svn
+

@@ -1,0 +1,15 @@
+post_install() {
+  update-desktop-database -q
+	echo " ";
+	echo -e "\033[1;33m==>\033[1;31m If you are having problems to run desmume with jit\033[0m";
+	echo -e "\033[1;33m==>\033[1;31m try with --cpu-mode=0 or install 'desmume-svn'\033[0m";
+	echo " ";
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  post_install
+}

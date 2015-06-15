@@ -1,0 +1,13 @@
+--- src/gtk/glx_3Demu.cpp	2014-07-09 14:46:31.136163214 +0200
++++ src/gtk/glx_3Demu2.cpp	2014-07-09 14:58:15.719487000 +0200
+@@ -45,10 +45,6 @@
+ 
+         XCloseDisplay(dpy);
+ 
+-        return true;
+-    }
+-
+-    return false;
+ }
+ 
+ int init_glx_3Demu(void) 
