@@ -1,0 +1,6 @@
+pkgname=doclifter
+pkgver=2.15
+pkgrel=1
+pkgdesc="translate troff requests into docbook"
+url="http://www.catb.org/~esr/doclifter/"
+license='BSD'

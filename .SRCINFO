@@ -1,0 +1,15 @@
+pkgbase = doclifter
+	pkgdesc = translate troff requests into docbook
+	pkgver = 2.15
+	pkgrel = 1
+	url = http://www.catb.org/~esr/doclifter/
+	arch = any
+	license = BSD
+	depends = python2
+	source = .AURINFO
+	source = http://www.catb.org/~esr/doclifter/doclifter-2.15.tar.gz
+	md5sums = 67e46e0c737399cc04d5b4ca766864dc
+	md5sums = b4bb10a03c6f9953295c2e92742d342a
+
+pkgname = doclifter
+
