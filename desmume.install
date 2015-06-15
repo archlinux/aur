@@ -1,0 +1,14 @@
+post_install() {
+  update-desktop-database -q
+}
+
+post_upgrade() {
+  post_install
+	echo " ";
+	echo -e "\033[1;33m==>\033[1;31m Jit is now disabled, to enable use "--cpu-mode=1" or install desmume-jit-svn\033[0m";
+	echo " ";
+}
+
+post_remove() {
+  post_install
+}
