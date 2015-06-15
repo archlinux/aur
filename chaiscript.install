@@ -1,0 +1,7 @@
+post_install() {
+    echo "samples and unittests can be found in /usr/share/chaiscript"
+}
+
+post_upgrade() {
+    echo "samples and unittests can be found in /usr/share/chaiscript"
+}
