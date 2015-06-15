@@ -1,0 +1,31 @@
+pkgbase = influxdb08
+	pkgdesc = Scalable datastore for metrics, events, and real-time analytics
+	pkgver = 0.8.8
+	pkgrel = 1
+	url = http://influxdb.org/
+	install = influxdb.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = autoconf
+	makedepends = protobuf
+	makedepends = bison
+	makedepends = flex
+	makedepends = go
+	makedepends = gawk
+	makedepends = mercurial
+	depends = leveldb
+	depends = rocksdb
+	provides = influxdb
+	conflicts = influxdb
+	replaces = influxdb
+	backup = etc/influxdb.conf
+	source = http://s3.amazonaws.com/influxdb/influxdb-0.8.8.src.tar.gz
+	source = influxdb.service
+	source = influxdb.install
+	md5sums = e7e86914b417f7ff5f70e097d3d681e2
+	md5sums = c59b9926d74776d5990889bd48f98543
+	md5sums = b4203001919b80999f18ebfa564ae6e3
+
+pkgname = influxdb08
+
