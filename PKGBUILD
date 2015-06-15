@@ -1,0 +1,35 @@
+# Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
+_imapver='2007f'
+pkgname='mailsync'
+pkgdesc='Synchronizes a collection of mailboxes using a 3-way diff'
+url='http://mailsync.sourceforge.net/'
+pkgver='5.2.1'
+pkgrel='1'
+license=('GPL')
+arch=('x86_64' 'i686')
+depends=('pam')
+options=('zipman')
+source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}_${pkgver}.orig.tar.gz"
+        "ftp://ftp.cac.washington.edu/imap/imap-${_imapver}.tar.gz")
+sha512sums=('9282cbb6a4ed70ac003ceeace933fda92da3fd6f5bf1058016c138cd81f29918c59ceed615a8f05761f3fd1b32c5b04a0087116cbb75ecf56b8d66ab2c47d14b'
+            '7c3e1d9927872001e768ff2ddbcf3af74078243efe58dd70e01d966856b7611134e4b579818691a954bade9acaeeda6f2f30f40d812b8aa20990de5cb90d5d35')
+
+build () {
+  cd "${srcdir}/imap-${_imapver}"
+  yes | make ldb
+
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  ./configure --with-c-client="${srcdir}/imap-${_imapver}" \
+  	--prefix=/usr --sysconfdir=/etc --with-openssl
+  make
+}
+
+package () {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make install DESTDIR="${pkgdir}"
+
+  # Move manual page to a proper location
+  install -m755 -d "${pkgdir}/usr/share/man/man1"
+  mv "${pkgdir}/usr/share/doc/mailsync/mailsync.1" \
+     "${pkgdir}/usr/share/man/man1"
+}
