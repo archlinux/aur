@@ -14,14 +14,10 @@ license=(GPL)
 conflicts=(gcc-gcj)
 depends=(zlib)
 
-if [[ $CARCH == i686 ]]; then
-  _DEBARCH=i386
-  sha1sums=('d5bee2fbd5517274d6f53f0029e6ee9d570703a0')
-else
-  _DEBARCH=amd64
-  sha1sums=('69dc5de81bfd1266b326121124f43ee5a8d9f729')
-fi
-source=(http://ftp.debian.org/debian/pool/main/g/gcc-4.9/$pkgname${pkgver%_*}-${pkgver##*_}_${_DEBARCH}.deb)
+source_i686=(http://ftp.debian.org/debian/pool/main/g/gcc-4.9/$pkgname${pkgver%_*}-${pkgver##*_}_i386.deb)
+source_x86_64=(http://ftp.debian.org/debian/pool/main/g/gcc-4.9/$pkgname${pkgver%_*}-${pkgver##*_}_amd64.deb)
+sha1sums_i686=('d5bee2fbd5517274d6f53f0029e6ee9d570703a0')
+sha1sums_x86_64=('69dc5de81bfd1266b326121124f43ee5a8d9f729')
 
 prepare() {
   tar xf data.tar.*
