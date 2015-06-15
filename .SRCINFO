@@ -1,5 +1,5 @@
 pkgbase = smplayer-qt4
-	pkgdesc = Complete front-end for MPlayer
+	pkgdesc = Complete front-end for MPlayer/MPV
 	pkgver = 14.9.0.6690
 	pkgrel = 1
 	url = http://smplayer.sourceforge.net/
@@ -13,7 +13,7 @@ pkgbase = smplayer-qt4
 	optdepends = smplayer-skins: skin themes collection
 	optdepends = smtube: browse and play youtube videos
 	optdepends = mpv: video player based on MPlayer/mplayer2
-	provides = smplayer=$pkgver
+	provides = smplayer
 	conflicts = smplayer
 	source = http://downloads.sourceforge.net/sourceforge/smplayer/smplayer-14.9.0.6690.tar.bz2
 	sha256sums = 5ec8a1d2912828e9b19f800e338029e6757fc30e3974cf62a21b67f46632bc5a

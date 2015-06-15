@@ -1,7 +1,7 @@
 pkgname=smplayer-qt4
 pkgver=14.9.0.6690
 pkgrel=1
-pkgdesc="Complete front-end for MPlayer"
+pkgdesc="Complete front-end for MPlayer/MPV"
 arch=('i686' 'x86_64')
 url="http://smplayer.sourceforge.net/"
 license=('GPL')
@@ -10,7 +10,7 @@ optdepends=('smplayer-themes: icon themes collection'
             'smplayer-skins: skin themes collection'
             'smtube: browse and play youtube videos'
             'mpv: video player based on MPlayer/mplayer2')
-provides=('smplayer=$pkgver')
+provides=('smplayer')
 conflicts=('smplayer')
 install=smplayer.install
 source=("http://downloads.sourceforge.net/sourceforge/smplayer/smplayer-$pkgver.tar.bz2")
