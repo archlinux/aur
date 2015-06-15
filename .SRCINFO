@@ -1,0 +1,20 @@
+pkgbase = pycarddav
+	pkgdesc = pyCardDAV is a simple to use CardDAV CLI client
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = http://lostpackets.de/pycarddav/
+	arch = any
+	license = Expat/MIT
+	makedepends = python-docutils
+	makedepends = python2-distribute
+	depends = python2
+	depends = python2-vobject
+	depends = python2-requests
+	depends = python2-lxml
+	depends = python2-urwid
+	depends = python2-xdg
+	source = http://lostpackets.de/pycarddav/downloads/pyCardDAV-0.7.0.tar.gz
+	md5sums = c99e1a3182c90366e3936339c4cc661b
+
+pkgname = pycarddav
+
