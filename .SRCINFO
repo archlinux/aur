@@ -1,0 +1,31 @@
+pkgbase = subtitleeditor-svn
+	pkgdesc = GTK+3 tool to create and edit subtitles.
+	pkgver = 0.41.0.r887
+	pkgrel = 1
+	url = http://home.gna.org/subtitleeditor/
+	install = subtitleeditor.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = svn
+	makedepends = intltool
+	makedepends = mm-common
+	depends = desktop-file-utils
+	depends = enchant
+	depends = gst-plugins-base
+	depends = gst-libav
+	depends = gstreamermm>=1.0
+	depends = gtk3
+	depends = gtkmm3
+	depends = hicolor-icon-theme
+	depends = libsigc++
+	depends = libxml++
+	depends = xdg-utils
+	optdepends = gst-plugins-ugly: to be able to view movies inside the subtitleeditor
+	provides = subtitleeditor
+	conflicts = subtitleeditor
+	source = subtitleeditor-svn::svn+http://svn.gna.org/svn/subtitleeditor/trunk
+	sha256sums = SKIP
+
+pkgname = subtitleeditor-svn
+
