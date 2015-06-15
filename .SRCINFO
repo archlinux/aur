@@ -1,0 +1,13 @@
+pkgbase = rhythmbox-doubanfm
+	pkgdesc = Douban FM plugin for Rhythmbox music player
+	pkgver = 0.007
+	pkgrel = 1
+	url = http://code.google.com/p/dbfmplugin/
+	arch = any
+	license = GPL
+	depends = rhythmbox
+	source = http://dbfmplugin.googlecode.com/files/DoubanFMPlugin_v0_007.tar.gz
+	md5sums = 5a08273ca72227fa3ebd75757500ac5b
+
+pkgname = rhythmbox-doubanfm
+
