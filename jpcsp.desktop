@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=JPCSP
+Comment=PSP emulator
+Exec=jpcsp
+#Icon=jpcsp
+Type=Application
+Categories=Game;
+Terminal=false

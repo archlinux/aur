@@ -1,0 +1,19 @@
+pkgbase = jpcsp
+	pkgdesc = Java PSP Emulator
+	pkgver = 0.7
+	pkgrel = 1
+	url = http://jpcsp.org/
+	install = jpcsp.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = p7zip
+	depends = jogl
+	depends = java-runtime
+	options = !strip
+	source = jpcsp0.7.7z::http://jpcsp.googlecode.com/files/jpcsp-3262-linux-x86.7z
+	source = jpcsp.sh
+	source = jpcsp.desktop
+
+pkgname = jpcsp
+
