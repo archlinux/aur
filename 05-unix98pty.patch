@@ -1,0 +1,81 @@
+05-unix98pty.patch by Christoph Thielecke <crissi99@gmx.de>
+
+http://sourceforge.net/tracker/index.php?func=detail&aid=1692526&group_id=2947&atid=102947
+
+DP: Patch to allow the use of unix 98 pts
+
+Index: vtun-3.0.3/generic/pty_dev.c
+===================================================================
+--- vtun-3.0.3.orig/generic/pty_dev.c	2012-10-07 20:12:25.000000000 +0200
++++ vtun-3.0.3/generic/pty_dev.c	2012-10-07 20:12:29.777305003 +0200
+@@ -31,6 +31,8 @@
+ #include <string.h>
+ #include <syslog.h>
+ 
++#include <pty.h>
++
+ #include "vtun.h"
+ #include "lib.h"
+ 
+@@ -57,31 +59,29 @@
+ 
+ #else
+ 
+-    char ptyname[] = "/dev/ptyXY";
+-    char ch[] = "pqrstuvwxyz";
+-    char digit[] = "0123456789abcdefghijklmnopqrstuv";
++    char ptyname[1024];
+     int  l, m;
++    int master, slave;
++
++    /* This algorithm works for UNIX98 PTS */	
+ 
+-    /* This algorithm should work for almost all standard Unices */	
+-    for(l=0; ch[l]; l++ ) {
+-        for(m=0; digit[m]; m++ ) {
+-	 	ptyname[8] = ch[l];
+-		ptyname[9] = digit[m];
+-		/* Open the master */
+-		if( (mr_fd=open(ptyname, O_RDWR)) < 0 )
+-	 	   continue;
++    /* Open the master */
++    mr_fd = openpty(&master, &slave, ptyname, NULL, NULL);
++    if (mr_fd == -1)
++    {
++      printf("error open pty");
++      return -1;
++    }
++    else
++    {
+ 		/* Check the slave */
+-		ptyname[5] = 't';
+ 		if( (access(ptyname, R_OK | W_OK)) < 0 ){
+-		   close(mr_fd);
+-		   ptyname[5] = 'p';
+-		   continue;
++		   /* close(mr_fd); */
++		   return -1;
+ 		}
+ 		strcpy(sl_name,ptyname);
+-		return mr_fd;
+-	    }
+-	}
+-	return -1;
++		return master;
++   }
+ #endif
+ }
+ 
+Index: vtun-3.0.3/Makefile.in
+===================================================================
+--- vtun-3.0.3.orig/Makefile.in	2012-10-07 20:12:25.000000000 +0200
++++ vtun-3.0.3/Makefile.in	2012-10-07 20:14:08.745307653 +0200
+@@ -19,7 +19,7 @@
+ #  
+ CC = @CC@
+ CFLAGS = @CFLAGS@ @CPPFLAGS@
+-LDFLAGS = @LDFLAGS@ @LIBS@
++LDFLAGS = @LDFLAGS@ @LIBS@ -lutil
+ 
+ YACC = @YACC@
+ YACCFLAGS = -d

@@ -1,0 +1,122 @@
+04-implicit-pointer-conversions.dpatch by Martín Ferrari <martin.ferrari@gmail.com>
+
+http://sourceforge.net/support/tracker.php?aid=1744571
+
+ Patch for correct declaration of types and functions. Missing includes,
+ forward declarations and also I had to replace getpt with posix_openpt,
+ because for some obscure reason it was not being defined. Anyway,
+ posix_openpt is the portable way of doing it.
+
+@DPATCH@
+Index: vtun-3.0.3/generic/pty_dev.c
+===================================================================
+--- vtun-3.0.3.orig/generic/pty_dev.c	2008-01-07 23:36:13.000000000 +0100
++++ vtun-3.0.3/generic/pty_dev.c	2012-10-07 20:11:02.469302665 +0200
+@@ -19,7 +19,9 @@
+ /*
+  * $Id: pty_dev.c,v 1.4.2.2 2008/01/07 22:36:13 mtbishop Exp $
+  */ 
+-
++/* Althought differing from documentation, this is necessary to have
++ * posix_openpt in GNU libc */
++#define _XOPEN_SOURCE 600
+ #include "config.h"
+ 
+ #include <unistd.h>
+@@ -39,10 +41,10 @@
+ int pty_open(char *sl_name)
+ {
+     int  mr_fd;
+-#if defined (HAVE_GETPT) && defined (HAVE_GRANTPT) && defined (HAVE_UNLOCKPT) && defined (HAVE_PTSNAME)
++#if defined (HAVE_POSIX_OPENPT) && defined (HAVE_GRANTPT) && defined (HAVE_UNLOCKPT) && defined (HAVE_PTSNAME)
+     char *ptyname;
+ 
+-    if((mr_fd=getpt()) < 0)
++    if((mr_fd=posix_openpt(O_RDWR|O_NOCTTY)) < 0)
+  	return -1;
+     if(grantpt(mr_fd) != 0)
+ 	return -1;
+Index: vtun-3.0.3/lfd_encrypt.c
+===================================================================
+--- vtun-3.0.3.orig/lfd_encrypt.c	2012-10-07 20:10:50.000000000 +0200
++++ vtun-3.0.3/lfd_encrypt.c	2012-10-07 20:11:02.469302665 +0200
+@@ -44,6 +44,7 @@
+ #include <strings.h>
+ #include <string.h>
+ #include <time.h>
++#include <arpa/inet.h>
+ 
+ #include "vtun.h"
+ #include "linkfd.h"
+@@ -101,6 +102,11 @@
+ static EVP_CIPHER_CTX ctx_enc_ecb;	/* sideband ecb encrypt */
+ static EVP_CIPHER_CTX ctx_dec_ecb;	/* sideband ecb decrypt */
+ 
++static int send_msg(int len, char *in, char **out);
++static int send_ib_mesg(int *len, char **in);
++static int recv_msg(int len, char *in, char **out);
++static int recv_ib_mesg(int *len, char **in);
++
+ static int prep_key(char **key, int size, struct vtun_host *host)
+ {
+    int tmplen, halflen;
+Index: vtun-3.0.3/lfd_lzo.c
+===================================================================
+--- vtun-3.0.3.orig/lfd_lzo.c	2012-07-09 03:01:08.000000000 +0200
++++ vtun-3.0.3/lfd_lzo.c	2012-10-07 20:12:15.517304622 +0200
+@@ -37,7 +37,6 @@
+ 
+ #include "lzoutil.h"
+ #include "lzo1x.h"
+-#include "lzoutil.h"
+ 
+ static lzo_byte *zbuf;
+ static lzo_voidp wmem;
+Index: vtun-3.0.3/lfd_shaper.c
+===================================================================
+--- vtun-3.0.3.orig/lfd_shaper.c	2008-01-07 23:35:36.000000000 +0100
++++ vtun-3.0.3/lfd_shaper.c	2012-10-07 20:11:02.469302665 +0200
+@@ -31,6 +31,7 @@
+ #include "vtun.h"
+ #include "linkfd.h"
+ #include "lib.h"
++#include <time.h>
+ 
+ /* 
+  * Shaper module. 
+Index: vtun-3.0.3/lib.c
+===================================================================
+--- vtun-3.0.3.orig/lib.c	2008-01-07 23:35:40.000000000 +0100
++++ vtun-3.0.3/lib.c	2012-10-07 20:11:02.469302665 +0200
+@@ -38,6 +38,7 @@
+ #include "vtun.h"
+ #include "linkfd.h"
+ #include "lib.h"
++#include <time.h>
+ 
+ volatile sig_atomic_t __io_canceled = 0;
+ 
+Index: vtun-3.0.3/lib.h
+===================================================================
+--- vtun-3.0.3.orig/lib.h	2008-01-07 23:35:41.000000000 +0100
++++ vtun-3.0.3/lib.h	2012-10-07 20:11:02.469302665 +0200
+@@ -23,6 +23,7 @@
+ #define _VTUN_LIB_H
+ 
+ #include "config.h"
++#include <unistd.h>
+ #include <sys/types.h>
+ #include <signal.h>
+ #include <errno.h>
+Index: vtun-3.0.3/lock.c
+===================================================================
+--- vtun-3.0.3.orig/lock.c	2008-01-07 23:35:50.000000000 +0100
++++ vtun-3.0.3/lock.c	2012-10-07 20:11:02.469302665 +0200
+@@ -37,6 +37,7 @@
+ #include "linkfd.h"
+ #include "lib.h" 
+ #include "lock.h"
++#include <time.h>
+ 
+ int create_lock(char * file)
+ {

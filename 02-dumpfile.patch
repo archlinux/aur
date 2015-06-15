@@ -1,0 +1,20 @@
+02-dumpfile.patch by Martín Ferrari <martin.ferrari@gmail.com>
+
+http://sourceforge.net/support/tracker.php?aid=1744569
+
+ Patch to add an extension to dump files, so they can be managed by
+ logrotate
+
+Index: vtun-3.0.3/linkfd.c
+===================================================================
+--- vtun-3.0.3.orig/linkfd.c	2012-10-07 20:42:53.000000000 +0200
++++ vtun-3.0.3/linkfd.c	2012-10-07 20:43:26.289354719 +0200
+@@ -415,7 +415,7 @@
+         sa.sa_handler=sig_usr1;
+         sigaction(SIGUSR1,&sa,NULL);
+ 
+-	sprintf(file,"%s/%.20s", VTUN_STAT_DIR, host->host);
++	sprintf(file,"%s/%.20s.dump", VTUN_STAT_DIR, host->host);
+ 	if( (host->stat.file=fopen(file, "a")) ){
+ 	   setvbuf(host->stat.file, NULL, _IOLBF, 0);
+ 	} else

@@ -1,0 +1,105 @@
+Tunnel-configurer version 1.6.1
+ Client-server IP tunnel configuration via the same IP tunnel.
+
+-- vtund.conf --
+ # ifconfig replacement by wrapper
+options {
+ ...
+ #ifconfig /sbin/ifconfig;
+ ifconfig /usr/bin/tun-cfg;
+ ...
+
+ # Usual ifconfig example (tun-cfg doesn't break it):
+ # On server
+host0 {
+ passwd K@bI$D0x;
+ up {
+   ifconfig "%d 10.10.0.1 pointopoint 10.10.8.8";
+ };
+}
+
+ # On client
+host0 {
+ passwd K@bI$D0x;
+ up {
+   ifconfig "%d 10.10.8.8 pointopoint 10.10.0.1";
+   ip "route add 10.10.10.0/24 dev %d";
+   ip "route add 10.10.0.0/24 dev %d";
+ };
+}
+
+ # And same one with parameters transmission:
+ # Server example #1, without tun-cfg.conf and names
+host1 {
+ passwd K@bI$D0x;
+ up {
+   ifconfig "-tun %d local 10.10.0.1 send 10.10.10.5 10.10.10.0/24 10.10.0.0/24";
+ };
+}
+
+ # Server example #2, with tun-cfg.conf and client's domain name
+host1 {
+ passwd K@bI$D0x;
+ up {
+   ifconfig "-tun %d send host1.vpn";
+ };
+}
+
+ # Client example, getting all parameters from server
+host1 {
+ passwd K@bI$D0x;
+ up {
+   ifconfig "-tun %d get metric 100";
+ };
+}
+
+-- Common definion's file /etc/tun-cfg.conf (useful for server) --
+ # defaults
+PORT=68
+MTU=1500
+TIMEOUT=10
+ # the address of server for all hosts (example)
+LOCAL=server.vpn
+ # routes for sending to clients (example)
+ROUTES='10.10.10.0/24 10.10.0.0/24'
+
+-- Command-line description --
+ifconfig wrapper:
+ tun-cfg <'ifconfig' options>
+Server:
+ tun-cfg -tun <interface> send|-s <client_addr> [OPTIONS] [<client-side routes>]
+Client:
+ tun-cfg -tun <interface> get|-g|listen [OPTIONS] [<'ip route' options>][-6|v6 <options>]
+
+Addresses of client and server may be specified by IP, by name, or by
+ comma-separated list of IPv4,IPv6,names with v4,v6,no4,no6 modifiers.
+ All names will be resolved on server side, and only first IPv4 and IPv6 will be used:
+
+ 10.1.0.1               -> 10.1.0.1
+ 10.1.0.1,fc00::1001:1  -> 10.1.0.1  fc00::1001:1
+ host.vpn               -> 10.1.0.4  fc00::1001:4
+ host.vpn,v4            -> 10.1.0.4
+ host.vpn,v6            ->           fc00::1001:4
+
+Routes may be specified by IPv4/mask, IPv6/mask,
+ default (for IPv4), defaultv6 or default6 (for IPv6).
+
+OPTIONS:
+    port|-P <port>  : default=68
+     mtu|-m <MTU>   : default=1500, 0=no change
+forcemtu|+m <MTU>   : Don't get MTU from server (client only)
+   local|-l <addr>|-: Force/skip local address (server only)
+  noaddr|-a         : Don't modify any IPv4 addresses on interface
+ no6addr|-A         : Don't modify any IPv6 addresses on interface
+  nopeer|-p         : Don't set peer address (IPv4)
+    peer|+p         : Add a route to peer instead of peer address (IPv4)
+noroutes|-r         : server - Don't send any routes from config
+                    : client - Don't get IPv4 routes from server
+no6routes|-R        : Don't get IPv6 routes from server (client only)
+ timeout|-t <sec>   : default=10, 0=endless
+  nofork|-B  | nobg | nobackground
+
+NOTE:
+ By default, tun-cfg forks to background to prevent vtund from endless waiting
+ for tun-cfg termination, if the connection fails during configuration progress.
+

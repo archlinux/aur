@@ -1,0 +1,635 @@
+Description: Enable transport in IPv4 and in IPv6 tunnels.
+ A migration to use 'struct sockaddr_storage' makes it possible
+ to establish a carrier tunnel using either IPv4 or IPv6.
+ .
+ Command line options '-4' and '-6' determines these.
+ The default is to use IPv4. Observe that either family
+ can be tunneled inside the tunnel, independently of
+ the wrapping address family.
+ .
+ It is by intention the carrier is of one kind for each
+ server instance. The options section can use 'ipv4' and
+ 'ipv6' to choose either.
+Author: Mats Erik Andersson <debian@gisladisker.se>
+Forwarded: no
+Last-Update: 2010-05-15
+diff -pur 1/vtun.h 2/vtun.h
+--- 1/vtun.h	2014-11-02 13:23:20.578322446 +0300
++++ 2/vtun.h	2014-11-02 13:19:39.268602630 +0300
+@@ -23,6 +23,7 @@
+ #ifndef _VTUN_H
+ #define _VTUN_H
+ 
++#include <sys/socket.h>     /* We need 'sa_family_t'. */
+ #include "llist.h"
+ 
+ /* Default VTUN port */
+@@ -219,6 +220,7 @@ struct vtun_opts {
+    char *fwall; 	 /* Command to configure FireWall */
+    char *iproute;	 /* iproute command */
+ 
++   sa_family_t transport_af; /* Preferred address family for transport. */
+    char *svr_name;       /* Server's host name */
+    char *svr_addr;       /* Server's address (string) */
+    struct vtun_addr bind_addr;	 /* Server should listen on this address */
+diff -pur 1/main.c 2/main.c
+--- 1/main.c	2014-11-02 13:23:29.111516450 +0300
++++ 2/main.c	2014-11-02 13:21:20.713612915 +0300
+@@ -39,7 +39,7 @@
+ #include "lib.h"
+ #include "compat.h"
+ 
+-#define OPTSTRING "mif:P:L:t:npq"
++#define OPTSTRING "mif:P:L:t:npq46"
+ #ifdef HAVE_WORKING_FORK
+ #  define SERVOPT_STRING "s"
+ #else
+@@ -80,6 +80,7 @@ int main(int argc, char *argv[], char *e
+      vtun.persist = -1;
+      vtun.timeout = -1;
+      vtun.sslauth = -1;
++     vtun.transport_af = AF_INET;
+ 	
+      /* Dup strings because parser will try to free them */
+      vtun.ppp   = strdup("/usr/sbin/pppd");
+@@ -147,6 +148,12 @@ int main(int argc, char *argv[], char *e
+ 	    case 'q':
+ 		vtun.quiet = 1;
+ 		break;
++	    case '4':
++		vtun.transport_af = AF_INET;
++	        break;
++	    case '6':
++		vtun.transport_af = AF_INET6;
++	        break;
+ 	    default:
+ 		usage();
+ 	        exit(1);
+diff -pur 1/netlib.h 2/netlib.h
+--- 1/netlib.h	2008-01-08 01:35:58.000000000 +0300
++++ 2/netlib.h	2014-11-02 13:19:39.268602630 +0300
+@@ -32,12 +32,14 @@
+ #include <netinet/in.h>
+ #endif
+ 
+-unsigned long getifaddr(char * ifname);
++int getifaddr(struct sockaddr_storage *addr, char * ifname, sa_family_t af);
+ int connect_t(int s, struct sockaddr *svr, time_t timeout); 
+ int udp_session(struct vtun_host *host); 
+ 
+-int local_addr(struct sockaddr_in *addr, struct vtun_host *host, int con);
+-int server_addr(struct sockaddr_in *addr, struct vtun_host *host);
+-int generic_addr(struct sockaddr_in *addr, struct vtun_addr *vaddr);
++int local_addr(struct sockaddr_storage *addr, struct vtun_host *host, int con);
++int server_addr(struct sockaddr_storage *addr, struct vtun_host *host);
++int generic_addr(struct sockaddr_storage *addr, struct vtun_addr *vaddr);
++in_port_t get_port(struct sockaddr_storage *addr);
++void set_port(struct sockaddr_storage *addr, in_port_t port);
+ 
+ #endif /* _VTUN_NETDEV_H */
+diff -pur 1/netlib.c 2/netlib.c
+--- 1/netlib.c	2014-11-02 13:24:05.370924411 +0300
++++ 2/netlib.c	2014-11-02 13:19:39.271935909 +0300
+@@ -38,6 +38,7 @@
+ #include <sys/ioctl.h>
+ #include <net/if.h>
+ #include <errno.h>
++#include <ifaddrs.h>
+ 
+ #ifdef HAVE_SYS_SOCKIO_H
+ #include <sys/sockio.h>
+@@ -81,7 +82,7 @@ int connect_t(int s, struct sockaddr *sv
+ #if defined(VTUN_SOCKS) && VTUN_SOCKS == 2
+      /* Some SOCKS implementations don't support
+       * non blocking connect */
+-     return connect(s,svr,sizeof(struct sockaddr));
++     return connect(s,svr,sizeof(struct sockaddr_storage));
+ #else
+      int sock_flags;
+      fd_set fdset;
+@@ -93,7 +94,7 @@ int connect_t(int s, struct sockaddr *sv
+      if( fcntl(s,F_SETFL,O_NONBLOCK) < 0 )
+         return -1;
+ 
+-     if( connect(s,svr,sizeof(struct sockaddr)) < 0 && errno != EINPROGRESS)
++     if( connect(s,svr,sizeof(struct sockaddr_storage)) < 0 && errno != EINPROGRESS)
+         return -1;
+ 
+      FD_ZERO(&fdset);
+@@ -114,28 +115,78 @@ int connect_t(int s, struct sockaddr *sv
+ #endif
+ }
+ 
++/* Get port number, independently of address family. */
++in_port_t get_port(struct sockaddr_storage *addr)
++{
++	switch (addr->ss_family) {
++		case AF_INET6:
++			return ntohs(((struct sockaddr_in6 *) addr)->sin6_port);
++			break;
++		case AF_INET:
++			return ntohs(((struct sockaddr_in *) addr)->sin_port);
++			break;
++		default:
++			return 0;
++	}
++} /* get_port(struct sockaddr_storage *) */
++
++/* Set port number, independently of address family. */
++void set_port(struct sockaddr_storage *addr, in_port_t port)
++{
++	switch (addr->ss_family) {
++		case AF_INET6:
++			((struct sockaddr_in6 *) addr)->sin6_port = htons(port);
++			break;
++		case AF_INET:
++			((struct sockaddr_in *) addr)->sin_port = htons(port);
++		default:
++			break;
++	}
++} /* set_port(struct sockaddr_storage *, in_port_t) */
++
+ /* Get interface address */
+-unsigned long getifaddr(char * ifname) 
++int getifaddr(struct sockaddr_storage *addr, char * ifname, sa_family_t af) 
+ {
+-     struct sockaddr_in addr;
+-     struct ifreq ifr;
+-     int s;
++     struct ifaddrs *ifas, *ifa;
+ 
+-     if( (s = socket(AF_INET, SOCK_DGRAM, 0)) == -1 )
++     if( getifaddrs(&ifas) < 0 )
+         return -1;
+ 
+-     strncpy(ifr.ifr_name, ifname, sizeof(ifr.ifr_name)-1);
+-     ifr.ifr_name[sizeof(ifr.ifr_name)-1]='\0';
++     for (ifa = ifas; ifa; ifa = ifa->ifa_next) {
++        if( ifa->ifa_addr->sa_family != af ||
++               strcmp(ifname, ifa->ifa_name) )
++           continue;
++
++        /* Correct address family and interface name!
++         * Locate a useful candidate. */
++
++        /* For IPv4, the first address works. */
++        if( (ifa->ifa_addr->sa_family == AF_INET) &&
++               (ifa->ifa_flags & IFF_UP) )
++           break; /* Good address. */
++
++        /* IPv6 needs some obvious exceptions. */
++        if( ifa->ifa_addr->sa_family == AF_INET6 ) {
++           if( IN6_IS_ADDR_LINKLOCAL(&((struct sockaddr_in6 *) addr)->sin6_addr.s6_addr)
++              || IN6_IS_ADDR_SITELOCAL(&((struct sockaddr_in6 *) addr)->sin6_addr.s6_addr) )
++              continue;
++           else
++              /* Successful search at this point, which
++               * only standard IPv6 can reach. */
++              break;
++        }
++     }
+ 
+-     if( ioctl(s, SIOCGIFADDR, &ifr) < 0 ){
+-        close(s);
++     if( ifa == NULL ) {
++        freeifaddrs(ifas);
+         return -1;
+      }
+-     close(s);
+ 
+-     addr = *((struct sockaddr_in *) &ifr.ifr_addr);
++     /* Copy the found address. */
++     memcpy(addr, ifa->ifa_addr, sizeof(*addr));
++     freeifaddrs(ifas);
+ 
+-     return addr.sin_addr.s_addr;
++     return 0;
+ }
+ 
+ /* 
+@@ -144,13 +195,16 @@ unsigned long getifaddr(char * ifname)
+  */
+ int udp_session(struct vtun_host *host) 
+ {
+-     struct sockaddr_in saddr; 
++     struct sockaddr_storage saddr; 
+      short port;
+      int s;
+      socklen_t opt;
+      extern int is_rmt_fd_connected;
+ 
+-     if( (s=socket(AF_INET,SOCK_DGRAM,0))== -1 ){
++     /* Set local address and port */
++     local_addr(&saddr, host, 1);
++
++     if( (s=socket(saddr.ss_family,SOCK_DGRAM,0))== -1 ){
+         vtun_syslog(LOG_ERR,"Can't create socket");
+         return -1;
+      }
+@@ -158,8 +212,6 @@ int udp_session(struct vtun_host *host)
+      opt=1;
+      setsockopt(s, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt)); 
+     
+-     /* Set local address and port */
+-     local_addr(&saddr, host, 1);
+      if( bind(s,(struct sockaddr *)&saddr,sizeof(saddr)) ){
+         vtun_syslog(LOG_ERR,"Can't bind to the socket");
+         return -1;
+@@ -172,7 +224,7 @@ int udp_session(struct vtun_host *host)
+      }
+ 
+      /* Write port of the new UDP socket */
+-     port = saddr.sin_port;
++     port = get_port(&saddr);
+      if( write_n(host->rmt_fd,(char *)&port,sizeof(short)) < 0 ){
+         vtun_syslog(LOG_ERR,"Can't write port number");
+         return -1;
+@@ -191,7 +243,7 @@ int udp_session(struct vtun_host *host)
+         return -1;
+      }
+ 
+-     saddr.sin_port = port;
++     set_port(&saddr, port);
+ 
+      /* if the config says to delay the UDP connection, we wait for an
+ 	incoming packet and then force a connection back.  We need to
+@@ -219,91 +271,103 @@ int udp_session(struct vtun_host *host)
+ }
+ 
+ /* Set local address */
+-int local_addr(struct sockaddr_in *addr, struct vtun_host *host, int con)
++int local_addr(struct sockaddr_storage *addr, struct vtun_host *host, int con)
+ {
+      socklen_t opt;
++     char *ip = (char *) calloc(INET6_ADDRSTRLEN, sizeof(char));
++
++     memset(addr, '\0', sizeof(*addr));
+ 
+      if( con ){
+         /* Use address of the already connected socket. */
+-        opt = sizeof(struct sockaddr_in);
++        opt = sizeof(*addr);
+         if( getsockname(host->rmt_fd, (struct sockaddr *)addr, &opt) < 0 ){
+            vtun_syslog(LOG_ERR,"Can't get local socket address");
+            return -1; 
+         }
+      } else {
++        addr->ss_family = vtun.transport_af;
+         if (generic_addr(addr, &host->src_addr) < 0)
+                  return -1;
+               }
+ 
+-     host->sopt.laddr = strdup(inet_ntoa(addr->sin_addr));
++     getnameinfo((struct sockaddr *) addr, sizeof(*addr),
++		 ip, INET6_ADDRSTRLEN, NULL, 0, NI_NUMERICHOST);
++     host->sopt.laddr = ip;
+ 
+      return 0;
+ }
+ 
+-int server_addr(struct sockaddr_in *addr, struct vtun_host *host)
++int server_addr(struct sockaddr_storage *addr, struct vtun_host *host)
+ {
+      struct addrinfo hints, *aiptr;
++     char *ip, portstr[12];
++
++     ip = (char *) calloc(INET6_ADDRSTRLEN, sizeof(char));
++
++     memset(addr, '\0', sizeof(*addr));
+ 
+-     memset(addr,0,sizeof(struct sockaddr_in));
+      memset(&hints, '\0', sizeof(hints));
+-     hints.ai_family = AF_INET;
++     hints.ai_family = vtun.transport_af;
++     hints.ai_flags = AI_ADDRCONFIG | AI_NUMERICSERV;
++
++     snprintf(portstr, sizeof(portstr), "%u", vtun.bind_addr.port);
+ 
+      /* Lookup server's IP address.
+       * We do it on every reconnect because server's IP 
+       * address can be dynamic.
+       */
+-     if( getaddrinfo(vtun.svr_name, NULL, &hints, &aiptr) ){
+-        vtun_syslog(LOG_ERR, "Can't resolv server address: %s", vtun.svr_name);
+-        return -1;
++     if (getaddrinfo(vtun.svr_name, portstr, &hints, &aiptr)) {
++         vtun_syslog(LOG_ERR, "Can't resolv server address: %s", vtun.svr_name);
++         return -1;
+      }
++
+      memcpy(addr, aiptr->ai_addr, aiptr->ai_addrlen);
+-     addr->sin_port = htons(vtun.bind_addr.port);
+      freeaddrinfo(aiptr);
+-
+-     host->sopt.raddr = strdup(inet_ntoa(addr->sin_addr));
++     getnameinfo((struct sockaddr *) addr, sizeof(*addr),
++		 ip, INET6_ADDRSTRLEN, NULL, 0, NI_NUMERICHOST);
++     host->sopt.raddr = ip;
+      host->sopt.rport = vtun.bind_addr.port;
+ 
+      return 0; 
+ }
+ 
+ /* Set address by interface name, ip address or hostname */
+-int generic_addr(struct sockaddr_in *addr, struct vtun_addr *vaddr)
++int generic_addr(struct sockaddr_storage *addr, struct vtun_addr *vaddr)
+ {
++     sa_family_t use_af = addr->ss_family;
+      struct addrinfo hints, *aiptr;
+ 
+-     memset(addr, 0, sizeof(struct sockaddr_in));
++     memset(addr, '\0', sizeof(*addr)); /* Implicitly setting INADDR_ANY. */
+      memset(&hints, '\0', sizeof(hints));
+-     hints.ai_family = AF_INET;
+-  
+-     addr->sin_family = AF_INET;
+   
+      switch (vaddr->type) {
+         case VTUN_ADDR_IFACE:
+-	 if (!(addr->sin_addr.s_addr =
+-	       getifaddr(vaddr->name))) {
+-	    vtun_syslog(LOG_ERR,
+-	                "Can't get address of interface %s",
+-	                vaddr->name);
+-	    return -1;
+-	 }
+-           break;
++            if (getifaddr(addr, vaddr->name, use_af)) {
++		vtun_syslog(LOG_ERR, "Can't get address of interface %s", vaddr->name);
++		return -1;
++            }
++	    break;
+         case VTUN_ADDR_NAME:
+-	 if( getaddrinfo(vaddr->name, NULL, &hints, &aiptr) ){
+-	    vtun_syslog(LOG_ERR,
+-	                "Can't resolv local address %s",
+-	                vaddr->name);
+-	    return -1;
+-           }
+-	 memcpy(addr, aiptr->ai_addr, aiptr->ai_addrlen);
+-	 freeaddrinfo(aiptr);
+-           break;
+-        default:
+-           addr->sin_addr.s_addr = INADDR_ANY;
+-           break;
++	    memset(&hints, '\0', sizeof(hints));
++	    hints.ai_family = use_af;
++	    hints.ai_flags = AI_ADDRCONFIG;
++
++	    if (getaddrinfo(vaddr->name, NULL, &hints, &aiptr)) {
++		vtun_syslog(LOG_ERR, "Can't resolv local address %s", vaddr->name);
++		return -1;
++	    }
++	    memcpy(addr, aiptr->ai_addr, aiptr->ai_addrlen);
++	    freeaddrinfo(aiptr);
++	    break;
++	default:
++	    /* INADDR_ANY has already been implicitly set, when erasing. */
++	    addr->ss_family = use_af;
++            break;
+      }
+   
+      if (vaddr->port)
+-        addr->sin_port = htons(vaddr->port);
++        set_port(addr, vaddr->port);
+ 
+      return 0; 
+ }
+diff -pur 1/client.c 2/client.c
+--- 1/client.c	2012-07-08 09:32:57.000000000 +0400
++++ 2/client.c	2014-11-02 13:19:39.271935909 +0300
+@@ -55,7 +55,7 @@ static void sig_term(int sig)
+ 
+ void client(struct vtun_host *host)
+ {
+-     struct sockaddr_in my_addr,svr_addr;
++     struct sockaddr_storage my_addr,svr_addr;
+      struct sigaction sa;
+      int s, opt, reconnect;	
+ 
+@@ -101,7 +101,7 @@ void client(struct vtun_host *host)
+ 	 * we want to connect, since STREAM sockets 
+ 	 * can be successfully connected only once.
+ 	 */
+-        if( (s = socket(AF_INET,SOCK_STREAM,0))==-1 ){
++        if( (s = socket(my_addr.ss_family,SOCK_STREAM,0))==-1 ){
+ 	   vtun_syslog(LOG_ERR,"Can't create socket. %s(%d)", 
+ 		strerror(errno), errno);
+ 	   continue;
+@@ -138,9 +138,7 @@ void client(struct vtun_host *host)
+ 	      vtun_syslog(LOG_INFO,"Session %s[%s] opened",host->host,vtun.svr_name);
+ 
+  	      host->rmt_fd = s;
+-
+-	      /* Start the tunnel */
+-	      client_term = tunnel(host);
++/* Start the tunnel */ client_term = tunnel(host);
+ 
+ 	      vtun_syslog(LOG_INFO,"Session %s[%s] closed",host->host,vtun.svr_name);
+ 	   } else {
+diff -pur 1/server.c 2/server.c
+--- 1/server.c	2014-11-02 13:23:39.974672411 +0300
++++ 2/server.c	2014-11-02 13:19:39.271935909 +0300
+@@ -30,6 +30,7 @@
+ #include <fcntl.h>
+ #include <syslog.h>
+ #include <sys/socket.h>
++#include <netdb.h>
+ 
+ #ifdef HAVE_NETINET_IN_H
+ #include <netinet/in.h>
+@@ -60,24 +61,30 @@ static void sig_term(int sig)
+ 
+ static void connection(int sock)
+ {
+-     struct sockaddr_in my_addr, cl_addr;
++     struct sockaddr_storage my_addr, cl_addr;
+      struct vtun_host *host;
+      struct sigaction sa;
+-     char *ip;
++     char *cl_ip, *my_ip;
+      socklen_t opt;
+ 
+-     opt = sizeof(struct sockaddr_in);
++     cl_ip = calloc(INET6_ADDRSTRLEN, sizeof(char));
++     my_ip = calloc(INET6_ADDRSTRLEN, sizeof(char));
++
++     opt = sizeof(cl_addr);
+      if( getpeername(sock, (struct sockaddr *) &cl_addr, &opt) ){
+         vtun_syslog(LOG_ERR, "Can't get peer name");
+         exit(1);
+      }
+-     opt = sizeof(struct sockaddr_in);
++     opt = sizeof(my_addr);
+      if( getsockname(sock, (struct sockaddr *) &my_addr, &opt) < 0 ){
+         vtun_syslog(LOG_ERR, "Can't get local socket address");
+         exit(1); 
+      }
+ 
+-     ip = strdup(inet_ntoa(cl_addr.sin_addr));
++     getnameinfo((struct sockaddr *) &cl_addr, sizeof(cl_addr),
++                 cl_ip, INET6_ADDRSTRLEN, NULL, 0, NI_NUMERICHOST);
++     getnameinfo((struct sockaddr *) &my_addr, sizeof(my_addr),
++                 my_ip, INET6_ADDRSTRLEN, NULL, 0, NI_NUMERICHOST);
+ 
+      io_init();
+ 
+@@ -86,14 +93,14 @@ static void connection(int sock)
+ 	sa.sa_flags=SA_NOCLDWAIT;;
+         sigaction(SIGHUP,&sa,NULL);
+ 
+-	vtun_syslog(LOG_INFO,"Session %s[%s:%d] opened", host->host, ip, 
+-					ntohs(cl_addr.sin_port) );
++        vtun_syslog(LOG_INFO,"Session %s[%s:%d] opened", host->host, cl_ip, 
++					get_port(&cl_addr) );
+         host->rmt_fd = sock; 
+ 	
+-        host->sopt.laddr = strdup(inet_ntoa(my_addr.sin_addr));
++        host->sopt.laddr = my_ip;
+         host->sopt.lport = vtun.bind_addr.port;
+-        host->sopt.raddr = strdup(ip);
+-	host->sopt.rport = ntohs(cl_addr.sin_port);
++        host->sopt.raddr = strdup(cl_ip);
++        host->sopt.rport = get_port(&cl_addr);
+ 
+ 	/* Start tunnel */
+ 	tunnel(host);
+@@ -103,8 +110,8 @@ static void connection(int sock)
+ 	/* Unlock host. (locked in auth_server) */	
+ 	unlock_host(host);
+      } else {
+-        vtun_syslog(LOG_INFO,"Denied connection from %s:%d", ip,
+-					ntohs(cl_addr.sin_port) );
++        vtun_syslog(LOG_INFO,"Denied connection from %s:%d", cl_ip,
++					get_port(&cl_addr) );
+      }
+      close(sock);
+ 
+@@ -115,21 +122,22 @@ static void connection(int sock)
+ static void listener(void)
+ {
+      struct sigaction sa;
+-     struct sockaddr_in my_addr, cl_addr;
++     struct sockaddr_storage my_addr, cl_addr;
+      int s, s1;
+      socklen_t opt;
+ 
+      memset(&my_addr, 0, sizeof(my_addr));
+-     my_addr.sin_family = AF_INET;
+ 
+      /* Set listen address */
++     my_addr.ss_family = vtun.transport_af;
++
+      if( generic_addr(&my_addr, &vtun.bind_addr) < 0)
+      {
+         vtun_syslog(LOG_ERR, "Can't fill in listen socket");
+         exit(1);
+      }
+ 
+-     if( (s=socket(AF_INET,SOCK_STREAM,0))== -1 ){
++     if( (s=socket(my_addr.ss_family,SOCK_STREAM,0))== -1 ){
+ 	vtun_syslog(LOG_ERR,"Can't create socket");
+ 	exit(1);
+      }
+@@ -189,7 +197,7 @@ void server(int sock)
+      sigaction(SIGUSR1,&sa,NULL);
+ 
+      vtun_syslog(LOG_INFO,"VTUN server ver %s (%s)", VTUN_VER,
+-		 vtun.svr_type == VTUN_INETD ? "inetd" : "stand" );
++		 vtun.svr_type == VTUN_INETD ? "inetd" : "standalone" );
+ 
+      switch( vtun.svr_type ){
+ 	case VTUN_STAND_ALONE:
+diff -pur 1/vtund.8 2/vtund.8
+--- 1/vtund.8	2012-07-08 09:32:57.000000000 +0400
++++ 2/vtund.8	2014-11-02 13:19:39.271935909 +0300
+@@ -13,6 +13,9 @@ vtund \- VTun(Virtual Tunnel) daemon.
+ <
+ .I -s  
+ >
++{
++.IR -4 | -6
++}
+ [ 
+ .I -i 
+ ] 
+@@ -27,6 +30,9 @@ vtund \- VTun(Virtual Tunnel) daemon.
+ ]
+ .LP
+ .B vtund 
++{
++.IR -4 | -6
++}
+ [ 
+ .I -f file 
+ ] 
+@@ -71,6 +77,14 @@ to any kernel parts.
+ 
+ .SH OPTIONS
+ .TP
++.I -4
++Use \fBIPv4\fR for transport, and for listening socket. This is the default choice.
++Any of the addressing modes IPv4 or IPv6 can passed inside the tunnel.
++The decision to use either is made by the \fIifconfig\fR and \fIip\fR commands.
++.TP
++.I -6
++Choose \fBIPv6\fR as transport layer, and server listening socket.
++.TP
+ .I -f file 
+ Read config information from the
+ .I file
+diff -pur 1/cfg_kwords.h 2/cfg_kwords.h
+--- 1/cfg_kwords.h	2014-11-02 13:23:20.578322446 +0300
++++ 2/cfg_kwords.h	2014-11-02 13:19:39.271935909 +0300
+@@ -32,6 +32,8 @@ struct kword cfg_keyword[] = {
+    { "default",  K_DEFAULT },
+    { "up",	 K_UP },
+    { "down",	 K_DOWN },
++   { "ipv4",     K_IPV4 },
++   { "ipv6",     K_IPV6 },
+    { "port",     K_PORT }, 
+    { "srcaddr",  K_SRCADDR }, 
+    { "addr",  	 K_ADDR }, 
+diff -pur 1/cfg_file.y 2/cfg_file.y
+--- 1/cfg_file.y	2014-11-02 13:23:20.578322446 +0300
++++ 2/cfg_file.y	2014-11-02 13:19:39.271935909 +0300
+@@ -73,7 +73,7 @@ int yyerror(char *s);
+ 
+ %token K_OPTIONS K_DEFAULT K_PORT K_BINDADDR K_PERSIST K_TIMEOUT
+ %token K_PASSWD K_PROG K_PPP K_SPEED K_IFCFG K_FWALL K_ROUTE K_DEVICE 
+-%token K_MULTI K_SRCADDR K_IFACE K_ADDR
++%token K_MULTI K_SRCADDR K_IFACE K_ADDR K_IPV4 K_IPV6
+ %token K_TYPE K_PROT K_NAT_HACK K_COMPRESS K_ENCRYPT K_KALIVE K_STAT K_SSLAUTH
+ %token K_UP K_DOWN K_SYSLOG K_IPROUTE
+ 
+@@ -191,6 +191,14 @@ option:  '\n'
+ 
+   | K_SYSLOG  syslog_opt
+ 
++  | K_IPV4		{
++			  vtun.transport_af = AF_INET;
++			}
++
++  | K_IPV6		{
++			  vtun.transport_af = AF_INET6;
++			}
++
+   | K_ERROR		{
+ 			  cfg_error("Unknown option '%s'",$1);
+ 			  YYABORT;
+diff -pur 1/vtund.conf.5 2/vtund.conf.5
+--- 1/vtund.conf.5	2013-07-08 00:36:52.000000000 +0400
++++ 2/vtund.conf.5	2014-11-02 13:19:39.271935909 +0300
+@@ -51,6 +51,12 @@ server type. \fBvtund\fR(8) can operate
+ mode (\fBstand\fR), that is the default, or be invoked from
+ .BR inetd (8).
+ 
++.IP \fBipv4\fR
++use IPv4 as transport medium. This is the default. Inside the tunnel other types are of course usable.
++
++.IP \fBipv6\fR
++use IPv6 as transport medium.
++
+ .IP \fBport\ \fIportnumber\fR
+ server port number to listen on or connect to.
+ By default, \fBvtund\fR(8) uses port 5000.

@@ -1,0 +1,13 @@
+_news_post() {
+ echo "This package contain the 'tun-cfg' util.
+ It can get client's IP/MTU/routes configuration from server.
+ See 'tun-cfg --help' or /usr/share/doc/vtun/README.tun-cfg"
+}
+
+post_install() {
+ _news_post
+}
+
+post_upgrade() {
+ _news_post
+}

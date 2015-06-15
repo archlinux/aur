@@ -1,0 +1,73 @@
+Description: Replace gethostbyname() with getaddrinfo().
+ In recent versions of glibc, a call to gethostbyname()
+ will be default return an IPv6 reference as first entry.
+ This completely breaks communication between the vtund
+ server instance and the vtund client instance.
+ .
+ The solution to this clash is to migrate the code in
+ 'netlib.c' to use getaddrinfo(), since this function
+ can easily be configured to only return IPv4 addresses.
+Author: Mats Erik Andersson <debian@gisladisker.se>
+Forwarded: no
+Last-Update: 2010-05-13
+--- vtun-3.0.2.debian/netlib.c
++++ vtun-3.0.2/netlib.c
+@@ -229,21 +229,23 @@ int local_addr(struct sockaddr_in *addr,
+ 
+ int server_addr(struct sockaddr_in *addr, struct vtun_host *host)
+ {
+-     struct hostent * hent;
++     struct addrinfo hints, *aiptr;
+ 
+      memset(addr,0,sizeof(struct sockaddr_in));
+-     addr->sin_family = AF_INET;
+-     addr->sin_port = htons(vtun.bind_addr.port);
++     memset(&hints, '\0', sizeof(hints));
++     hints.ai_family = AF_INET;
+ 
+      /* Lookup server's IP address.
+       * We do it on every reconnect because server's IP 
+       * address can be dynamic.
+       */
+-     if( !(hent = gethostbyname(vtun.svr_name)) ){
++     if( getaddrinfo(vtun.svr_name, NULL, &hints, &aiptr) ){
+         vtun_syslog(LOG_ERR, "Can't resolv server address: %s", vtun.svr_name);
+         return -1;
+      }
+-     addr->sin_addr.s_addr = *(unsigned long *)hent->h_addr; 
++     memcpy(addr, aiptr->ai_addr, aiptr->ai_addrlen);
++     addr->sin_port = htons(vtun.bind_addr.port);
++     freeaddrinfo(aiptr);
+ 
+      host->sopt.raddr = strdup(inet_ntoa(addr->sin_addr));
+      host->sopt.rport = vtun.bind_addr.port;
+@@ -254,8 +256,11 @@ int server_addr(struct sockaddr_in *addr
+ /* Set address by interface name, ip address or hostname */
+ int generic_addr(struct sockaddr_in *addr, struct vtun_addr *vaddr)
+ {
+-     struct hostent *hent;
++     struct addrinfo hints, *aiptr;
++
+      memset(addr, 0, sizeof(struct sockaddr_in));
++     memset(&hints, '\0', sizeof(hints));
++     hints.ai_family = AF_INET;
+   
+      addr->sin_family = AF_INET;
+   
+@@ -270,13 +275,14 @@ int generic_addr(struct sockaddr_in *add
+ 	 }
+            break;
+         case VTUN_ADDR_NAME:
+-	 if (!(hent = gethostbyname(vaddr->name))) {
++	 if( getaddrinfo(vaddr->name, NULL, &hints, &aiptr) ){
+ 	    vtun_syslog(LOG_ERR,
+ 	                "Can't resolv local address %s",
+ 	                vaddr->name);
+ 	    return -1;
+            }
+-	 addr->sin_addr.s_addr = *(unsigned long *) hent->h_addr;
++	 memcpy(addr, aiptr->ai_addr, aiptr->ai_addrlen);
++	 freeaddrinfo(aiptr);
+            break;
+         default:
+            addr->sin_addr.s_addr = INADDR_ANY;

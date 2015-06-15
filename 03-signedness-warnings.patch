@@ -1,0 +1,217 @@
+03-signedness-warnings.dpatch by Martín Ferrari <martin.ferrari@gmail.com>
+
+http://sourceforge.net/support/tracker.php?aid=1744570
+
+ Various explicit casts to stop gcc from complaining. It'd be better to
+ fix the prototypes, but that's much more intrusive.
+
+Index: vtun-3.0.3/auth.c
+===================================================================
+--- vtun-3.0.3.orig/auth.c	2012-10-07 20:07:28.000000000 +0200
++++ vtun-3.0.3/auth.c	2012-10-07 20:09:57.853300935 +0200
+@@ -89,7 +89,7 @@
+ 
+ void gen_chal(char *buf)
+ {
+-   RAND_bytes(buf, VTUN_CHAL_SIZE);
++   RAND_bytes((unsigned char *)buf, VTUN_CHAL_SIZE);
+ }
+ 
+ void ssl_encrypt_chal(char *chal, char *pwd)
+@@ -98,10 +98,10 @@
+    BF_KEY key;
+ 
+    syslog(LOG_INFO, "Use SSL-aware challenge/response");
+-   BF_set_key(&key, 16, MD5(pwd,strlen(pwd),NULL));
++   BF_set_key(&key, 16, MD5((unsigned char *)pwd,strlen(pwd),NULL));
+ 
+    for(i=0; i < VTUN_CHAL_SIZE; i += 8 )
+-      BF_ecb_encrypt(chal + i,  chal + i, &key, BF_ENCRYPT);
++      BF_ecb_encrypt((unsigned char *)chal + i,  (unsigned char *)chal + i, &key, BF_ENCRYPT);
+ }
+ 
+ void ssl_decrypt_chal(char *chal, char *pwd)
+@@ -110,10 +110,10 @@
+    BF_KEY key;
+ 
+    syslog(LOG_INFO, "Use SSL-aware challenge/response");
+-   BF_set_key(&key, 16, MD5(pwd,strlen(pwd),NULL));
++   BF_set_key(&key, 16, MD5((unsigned char *)pwd,strlen(pwd),NULL));
+ 
+    for(i=0; i < VTUN_CHAL_SIZE; i += 8 )
+-      BF_ecb_encrypt(chal + i,  chal + i, &key, BF_DECRYPT);
++      BF_ecb_encrypt((unsigned char *)chal + i,  (unsigned char *)chal + i, &key, BF_DECRYPT);
+ }
+ 
+ #else /* HAVE_SSL */
+Index: vtun-3.0.3/lfd_encrypt.c
+===================================================================
+--- vtun-3.0.3.orig/lfd_encrypt.c	2008-01-07 23:35:32.000000000 +0100
++++ vtun-3.0.3/lfd_encrypt.c	2012-10-07 20:09:57.853300935 +0200
+@@ -118,12 +118,12 @@
+       tmplen = strlen(host->passwd);
+       if (tmplen != 0) halflen = tmplen>>1;
+       else halflen = 0;
+-      MD5(host->passwd, halflen, hashkey);
+-      MD5((host->passwd)+halflen, tmplen-halflen, hashkey+16);
++      MD5((unsigned char *)host->passwd, halflen, (unsigned char *)hashkey);
++      MD5((unsigned char *)(host->passwd)+halflen, tmplen-halflen, (unsigned char *)hashkey+16);
+    }
+    else if (size == 16)
+    {
+-      MD5(host->passwd,strlen(host->passwd), hashkey);
++      MD5((unsigned char *)host->passwd,strlen(host->passwd), (unsigned char *)hashkey);
+    }
+    else
+    {
+@@ -163,7 +163,7 @@
+       return -1;
+    }
+ 
+-   RAND_bytes((char *)&sequence_num, 4);
++   RAND_bytes((unsigned char *)&sequence_num, 4);
+    gibberish = 0;
+    gib_time_start = 0;
+    phost = host;
+@@ -263,8 +263,8 @@
+       EVP_CIPHER_CTX_set_key_length(pctx_enc, keysize);
+       EVP_CIPHER_CTX_set_key_length(pctx_dec, keysize);
+    }
+-   EVP_EncryptInit_ex(pctx_enc, NULL, NULL, pkey, NULL);
+-   EVP_DecryptInit_ex(pctx_dec, NULL, NULL, pkey, NULL);
++   EVP_EncryptInit_ex(pctx_enc, NULL, NULL, (unsigned char *)pkey, NULL);
++   EVP_DecryptInit_ex(pctx_dec, NULL, NULL, (unsigned char *)pkey, NULL);
+    EVP_CIPHER_CTX_set_padding(pctx_enc, 0);
+    EVP_CIPHER_CTX_set_padding(pctx_dec, 0);
+    if (sb_init)
+@@ -317,8 +317,8 @@
+    memset(in_ptr+len, pad, pad);
+    outlen=len+pad;
+    if (pad == blocksize)
+-      RAND_bytes(in_ptr+len, blocksize-1);
+-   EVP_EncryptUpdate(&ctx_enc, out_ptr, &outlen, in_ptr, len+pad);
++      RAND_bytes((unsigned char *)in_ptr+len, blocksize-1);
++   EVP_EncryptUpdate(&ctx_enc, (unsigned char *)out_ptr, &outlen, (unsigned char *)in_ptr, len+pad);
+    *out = enc_buf;
+ 
+    sequence_num++;
+@@ -338,7 +338,7 @@
+ 
+    outlen=len;
+    if (!len) return 0;
+-   EVP_DecryptUpdate(&ctx_dec, out_ptr, &outlen, in_ptr, len);
++   EVP_DecryptUpdate(&ctx_dec, (unsigned char *)out_ptr, &outlen, (unsigned char *)in_ptr, len);
+    recv_ib_mesg(&outlen, &out_ptr);
+    if (!outlen) return 0;
+    tmp_ptr = out_ptr + outlen; tmp_ptr--;
+@@ -430,8 +430,8 @@
+    EVP_EncryptInit_ex(&ctx_enc, cipher_type, NULL, NULL, NULL);
+    if (var_key)
+       EVP_CIPHER_CTX_set_key_length(&ctx_enc, keysize);
+-   EVP_EncryptInit_ex(&ctx_enc, NULL, NULL, pkey, NULL);
+-   EVP_EncryptInit_ex(&ctx_enc, NULL, NULL, NULL, iv);
++   EVP_EncryptInit_ex(&ctx_enc, NULL, NULL, (unsigned char *)pkey, NULL);
++   EVP_EncryptInit_ex(&ctx_enc, NULL, NULL, NULL, (unsigned char *)iv);
+    EVP_CIPHER_CTX_set_padding(&ctx_enc, 0);
+    if (enc_init_first_time)
+    {
+@@ -520,8 +520,8 @@
+    EVP_DecryptInit_ex(&ctx_dec, cipher_type, NULL, NULL, NULL);
+    if (var_key)
+       EVP_CIPHER_CTX_set_key_length(&ctx_dec, keysize);
+-   EVP_DecryptInit_ex(&ctx_dec, NULL, NULL, pkey, NULL);
+-   EVP_DecryptInit_ex(&ctx_dec, NULL, NULL, NULL, iv);
++   EVP_DecryptInit_ex(&ctx_dec, NULL, NULL, (unsigned char *)pkey, NULL);
++   EVP_DecryptInit_ex(&ctx_dec, NULL, NULL, NULL, (unsigned char *)iv);
+    EVP_CIPHER_CTX_set_padding(&ctx_dec, 0);
+    if (dec_init_first_time)
+    {
+@@ -542,7 +542,7 @@
+       case CIPHER_INIT:
+          in_ptr = in - blocksize*2;
+          iv = malloc(blocksize);
+-         RAND_bytes(iv, blocksize);
++         RAND_bytes((unsigned char *)iv, blocksize);
+          strncpy(in_ptr,"ivec",4);
+          in_ptr += 4;
+          memcpy(in_ptr,iv,blocksize);
+@@ -550,12 +550,12 @@
+          cipher_enc_init(iv);
+ 
+          memset(iv,0,blocksize); free(iv); iv = NULL;
+-         RAND_bytes(in_ptr, in - in_ptr);
++         RAND_bytes((unsigned char *)in_ptr, in - in_ptr);
+ 
+          in_ptr = in - blocksize*2;
+          outlen = blocksize*2;
+-         EVP_EncryptUpdate(&ctx_enc_ecb, in_ptr, 
+-            &outlen, in_ptr, blocksize*2);
++         EVP_EncryptUpdate(&ctx_enc_ecb, (unsigned char *)in_ptr, 
++            &outlen, (unsigned char *)in_ptr, blocksize*2);
+          *out = in_ptr;
+          len = outlen;
+          cipher_enc_state = CIPHER_SEQUENCE;
+@@ -581,7 +581,7 @@
+          in_ptr = in;
+          iv = malloc(blocksize);
+          outlen = blocksize*2;
+-         EVP_DecryptUpdate(&ctx_dec_ecb, in_ptr, &outlen, in_ptr, blocksize*2);
++         EVP_DecryptUpdate(&ctx_dec_ecb, (unsigned char *)in_ptr, &outlen, (unsigned char *)in_ptr, blocksize*2);
+          
+          if ( !strncmp(in_ptr, "ivec", 4) )
+          {
+Index: vtun-3.0.3/netlib.c
+===================================================================
+--- vtun-3.0.3.orig/netlib.c	2009-03-29 12:44:02.000000000 +0200
++++ vtun-3.0.3/netlib.c	2012-10-07 20:10:25.281301670 +0200
+@@ -99,7 +99,7 @@
+      FD_ZERO(&fdset);
+      FD_SET(s,&fdset);
+      if( select(s+1,NULL,&fdset,NULL,timeout?&tv:NULL) > 0 ){
+-        int l=sizeof(errno);	 
++        socklen_t l=sizeof(errno);	 
+         errno=0;
+         getsockopt(s,SOL_SOCKET,SO_ERROR,&errno,&l);
+      } else
+@@ -146,7 +146,8 @@
+ {
+      struct sockaddr_in saddr; 
+      short port;
+-     int s,opt;
++     int s;
++     socklen_t opt;
+      extern int is_rmt_fd_connected;
+ 
+      if( (s=socket(AF_INET,SOCK_DGRAM,0))== -1 ){
+@@ -220,7 +221,7 @@
+ /* Set local address */
+ int local_addr(struct sockaddr_in *addr, struct vtun_host *host, int con)
+ {
+-     int opt;
++     socklen_t opt;
+ 
+      if( con ){
+         /* Use address of the already connected socket. */
+Index: vtun-3.0.3/server.c
+===================================================================
+--- vtun-3.0.3.orig/server.c	2012-07-09 03:01:08.000000000 +0200
++++ vtun-3.0.3/server.c	2012-10-07 20:09:57.853300935 +0200
+@@ -64,7 +64,7 @@
+      struct vtun_host *host;
+      struct sigaction sa;
+      char *ip;
+-     int opt;
++     socklen_t opt;
+ 
+      opt = sizeof(struct sockaddr_in);
+      if( getpeername(sock, (struct sockaddr *) &cl_addr, &opt) ){
+@@ -115,7 +115,8 @@
+ {
+      struct sigaction sa;
+      struct sockaddr_in my_addr, cl_addr;
+-     int s, s1, opt;
++     int s, s1;
++     socklen_t opt;
+ 
+      memset(&my_addr, 0, sizeof(my_addr));
+      my_addr.sin_family = AF_INET;

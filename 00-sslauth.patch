@@ -1,0 +1,272 @@
+00-sslauth.patch by Artur R. Czechowski <arturcz@hell.pl>
+http://sourceforge.net/support/tracker.php?aid=1744566
+
+ This patch allows ssl-enabled clients to connect to 
+ non-ssl-enabled servers and vice versa. It also enables use 
+ of /dev/random based encryption instead of C's built-in 
+ (and rather weak) rand() function.
+
+Index: vtun-3.0.3/auth.c
+===================================================================
+--- vtun-3.0.3.orig/auth.c	2012-10-07 20:22:53.425321705 +0200
++++ vtun-3.0.3/auth.c	2012-10-07 20:41:25.545351485 +0200
+@@ -23,6 +23,10 @@
+ /*
+  * Challenge based authentication. 
+  * Thanx to Chris Todd<christ@insynq.com> for the good idea.
++ *
++ * Artur R. Czechowski <arturcz@hell.pl>, 02/17/2002
++ * 	Add support for connectin ssl to non-ssl vtuns (sslauth option)
++ * 	Use /dev/random in non-ssl gen_chal  (if possible)
+  */ 
+ 
+ #include "config.h"
+@@ -55,34 +59,57 @@
+ #include "lock.h"
+ #include "auth.h"
+ 
+-/* Encryption and Decryption of the challenge key */
+ #ifdef HAVE_SSL
+ 
+ #include <openssl/md5.h>
+ #include <openssl/blowfish.h>
+ #include <openssl/rand.h>
+ 
++#endif /* HAVE_SSL */
++
++/* Okay, start the "blue-wire" non-ssl auth patch stuff */
++static void nonssl_encrypt_chal(char *chal, char *pwd)
++{
++   char *xor_msk = pwd;
++   register int i, xor_len = strlen(xor_msk);
++
++   syslog(LOG_INFO, "Use nonSSL-aware challenge/response");
++   for(i=0; i < VTUN_CHAL_SIZE; i++)
++      chal[i] ^= xor_msk[i%xor_len];
++}
++
++static inline void nonssl_decrypt_chal(char *chal, char *pwd)
++{
++   nonssl_encrypt_chal(chal, pwd);
++}
++/* Mostly ended here, other than a couple replaced #ifdefs */
++
++/* Encryption and Decryption of the challenge-key */
++#ifdef HAVE_SSL
++
+ static void gen_chal(char *buf)
+ {
+    RAND_bytes(buf, VTUN_CHAL_SIZE);
+ }
+ 
+-static void encrypt_chal(char *chal, char *pwd)
++static void ssl_encrypt_chal(char *chal, char *pwd)
+ { 
+    register int i;
+    BF_KEY key;
+ 
++   syslog(LOG_INFO, "Use SSL-aware challenge/response");
+    BF_set_key(&key, 16, MD5(pwd,strlen(pwd),NULL));
+ 
+    for(i=0; i < VTUN_CHAL_SIZE; i += 8 )
+       BF_ecb_encrypt(chal + i,  chal + i, &key, BF_ENCRYPT);
+ }
+ 
+-static void decrypt_chal(char *chal, char *pwd)
++static void ssl_decrypt_chal(char *chal, char *pwd)
+ { 
+    register int i;
+    BF_KEY key;
+ 
++   syslog(LOG_INFO, "Use SSL-aware challenge/response");
+    BF_set_key(&key, 16, MD5(pwd,strlen(pwd),NULL));
+ 
+    for(i=0; i < VTUN_CHAL_SIZE; i += 8 )
+@@ -91,30 +118,43 @@
+ 
+ #else /* HAVE_SSL */
+ 
+-static void encrypt_chal(char *chal, char *pwd)
+-{ 
+-   char * xor_msk = pwd;
+-   register int i, xor_len = strlen(xor_msk);
+-
+-   for(i=0; i < VTUN_CHAL_SIZE; i++)
+-      chal[i] ^= xor_msk[i%xor_len];
+-}
+-
+-static void inline decrypt_chal(char *chal, char *pwd)
+-{ 
+-   encrypt_chal(chal, pwd);
+-}
+-
+ /* Generate PSEUDO random challenge key. */
+ static void gen_chal(char *buf)
+ {
+    register int i;
+- 
+-   srand(time(NULL));
++   unsigned int seed;
++   char *pseed;
++   int fd,cnt,len;
++
++   if((fd=open("/dev/random",O_RDONLY))!=-1) {
++      pseed=(char *)&seed;
++      len=cnt=sizeof(seed);
++      while(cnt>0) {
++         cnt=read(fd,pseed,len);
++         len=len-cnt;
++         pseed=pseed+cnt;
++      }
++   } else {
++      seed=time(NULL);
++   }
++   srand(seed);
+ 
+    for(i=0; i < VTUN_CHAL_SIZE; i++)
+       buf[i] = (unsigned int)(255.0 * rand()/RAND_MAX);
+ }
++
++static void ssl_encrypt_chal(char *chal, char *pwd)
++{
++	syslog(LOG_ERR,"Cannot use `sslauth yes' without SSL support - fallback to `sslauth no'");
++	nonssl_encrypt_chal(chal,pwd);
++}
++
++static void ssl_decrypt_chal(char *chal, char *pwd)
++{
++	syslog(LOG_ERR,"Cannot use `sslauth yes' without SSL support - fallback to `sslauth no'");
++	nonssl_decrypt_chal(chal,pwd);
++}
++
+ #endif /* HAVE_SSL */
+ 
+ /* 
+@@ -358,7 +398,11 @@
+ 		   if( !(h = find_host(host)) )
+ 		      break;
+ 
+-		   decrypt_chal(chal_res, h->passwd);   		
++		   if (h->sslauth) {
++		      ssl_decrypt_chal(chal_res, h->passwd);   		
++		   } else {
++		      nonssl_decrypt_chal(chal_res, h->passwd);   		
++		   }
+ 	
+ 		   if( !memcmp(chal_req, chal_res, VTUN_CHAL_SIZE) ){
+ 		      /* Auth successeful. */
+@@ -410,7 +454,11 @@
+ 		   if( !strncmp(buf,"OK",2) && cs2cl(buf,chal)){
+ 		      stage = ST_CHAL;
+ 					
+-		      encrypt_chal(chal,host->passwd);
++		      if (host->sslauth) {
++		         ssl_encrypt_chal(chal,host->passwd);
++		      } else {
++		         nonssl_encrypt_chal(chal,host->passwd);
++		      }
+ 		      print_p(fd,"CHAL: %s\n", cl2cs(chal));
+ 
+ 		      continue;
+Index: vtun-3.0.3/cfg_file.y
+===================================================================
+--- vtun-3.0.3.orig/cfg_file.y	2012-10-07 20:22:53.425321705 +0200
++++ vtun-3.0.3/cfg_file.y	2012-10-07 20:41:25.545351485 +0200
+@@ -74,7 +74,7 @@
+ %token K_OPTIONS K_DEFAULT K_PORT K_BINDADDR K_PERSIST K_TIMEOUT
+ %token K_PASSWD K_PROG K_PPP K_SPEED K_IFCFG K_FWALL K_ROUTE K_DEVICE 
+ %token K_MULTI K_SRCADDR K_IFACE K_ADDR
+-%token K_TYPE K_PROT K_NAT_HACK K_COMPRESS K_ENCRYPT K_KALIVE K_STAT
++%token K_TYPE K_PROT K_NAT_HACK K_COMPRESS K_ENCRYPT K_KALIVE K_STAT K_SSLAUTH
+ %token K_UP K_DOWN K_SYSLOG K_IPROUTE
+ 
+ %token <str> K_HOST K_ERROR
+@@ -284,6 +284,13 @@
+ 			}
+ 			compress
+ 
++  | K_SSLAUTH NUM 	{ 
++	      		  parse_host->sslauth = $2;
++
++			  if(vtun.sslauth == -1) 
++			     vtun.sslauth = $2; 	
++			}
++
+   | K_ENCRYPT NUM 	{  
+ 			  if( $2 ){
+ 			     parse_host->flags |= VTUN_ENCRYPT;
+Index: vtun-3.0.3/cfg_kwords.h
+===================================================================
+--- vtun-3.0.3.orig/cfg_kwords.h	2012-10-07 20:22:53.425321705 +0200
++++ vtun-3.0.3/cfg_kwords.h	2012-10-07 20:41:25.545351485 +0200
+@@ -37,6 +37,7 @@
+    { "addr",  	 K_ADDR }, 
+    { "iface",  	 K_IFACE }, 
+    { "bindaddr", K_BINDADDR },
++   { "sslauth",	 K_SSLAUTH }, 
+    { "persist",	 K_PERSIST }, 
+    { "multi",	 K_MULTI }, 
+    { "iface",    K_IFACE }, 
+Index: vtun-3.0.3/main.c
+===================================================================
+--- vtun-3.0.3.orig/main.c	2012-10-07 20:22:53.425321705 +0200
++++ vtun-3.0.3/main.c	2012-10-07 20:41:25.549351485 +0200
+@@ -66,6 +66,7 @@
+      vtun.cfg_file = VTUN_CONFIG_FILE;
+      vtun.persist = -1;
+      vtun.timeout = -1;
++     vtun.sslauth = -1;
+ 	
+      /* Dup strings because parser will try to free them */
+      vtun.ppp   = strdup("/usr/sbin/pppd");
+@@ -88,6 +89,11 @@
+      default_host.ka_interval = 30;
+      default_host.ka_maxfail  = 4;
+      default_host.loc_fd = default_host.rmt_fd = -1;
++#ifdef HAVE_SSL
++     default_host.sslauth = 1;
++#else	/* HAVE_SSL */
++     default_host.sslauth = 0;
++#endif	/* HAVE_SSL */
+ 
+      /* Start logging to syslog and stderr */
+      openlog("vtund", LOG_PID | LOG_NDELAY | LOG_PERROR, LOG_DAEMON);
+@@ -166,6 +172,16 @@
+ 	vtun.persist = 0;
+      if(vtun.timeout == -1)
+ 	vtun.timeout = VTUN_TIMEOUT;
++    /* 
++     * Want to save behaviour from older version: stronger authentication
++     * if compiled with --enable-ssl, weaker otherwise
++     */
++     if(vtun.sslauth == -1)
++#ifdef HAVE_SSL
++	vtun.sslauth = 1;
++#else	/* HAVE_SSL */
++	vtun.sslauth = 0;
++#endif	/* HAVE_SSL */
+ 
+      switch( vtun.svr_type ){
+ 	case -1:
+Index: vtun-3.0.3/vtun.h
+===================================================================
+--- vtun-3.0.3.orig/vtun.h	2012-10-07 20:22:53.425321705 +0200
++++ vtun-3.0.3/vtun.h	2012-10-07 20:41:25.549351485 +0200
+@@ -99,6 +99,9 @@
+    int  rmt_fd;
+    int  loc_fd;
+ 
++   /* SSL strong auth */
++   int  sslauth;
++
+    /* Persist mode */
+    int  persist;
+ 
+@@ -204,6 +207,7 @@
+ struct vtun_opts {
+    int  timeout;
+    int  persist;
++   int  sslauth;
+ 
+    char *cfg_file;
+ 

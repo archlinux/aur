@@ -1,0 +1,11 @@
+diff -pur vtun-3.0.3.orig/lib.c vtun-3.0.3/lib.c
+--- vtun-3.0.3.orig/lib.c	2014-11-07 12:20:42.853056115 +0300
++++ vtun-3.0.3/lib.c	2014-11-07 12:24:34.997563433 +0300
+@@ -362,6 +362,7 @@ void vtun_syslog (int priority, char *fo
+       vsnprintf(buf, sizeof(buf)-1, format, ap);
+       syslog(priority, "%s", buf);
+       closelog();
++      openlog("vtund", LOG_PID|LOG_NDELAY|LOG_PERROR, vtun.syslog);
+       va_end(ap);
+ 
+       in_syslog = 0;

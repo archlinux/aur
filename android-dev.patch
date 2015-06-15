@@ -1,0 +1,12 @@
+diff -pur 1/linux/tun_dev.c 2/linux/tun_dev.c
+--- 1/linux/tun_dev.c	2008-01-08 01:36:22.000000000 +0300
++++ 2/linux/tun_dev.c	2013-07-04 20:04:33.630722649 +0400
+@@ -87,7 +87,7 @@ static int tun_open_common(char *dev, in
+     struct ifreq ifr;
+     int fd;
+ 
+-    if ((fd = open("/dev/net/tun", O_RDWR)) < 0)
++    if ( (fd = open("/dev/net/tun", O_RDWR)) < 0 && (fd = open("/dev/tun", O_RDWR)) < 0 )
+        return tun_open_common0(dev, istun);
+ 
+     memset(&ifr, 0, sizeof(ifr));

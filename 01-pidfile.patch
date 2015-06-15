@@ -1,0 +1,89 @@
+01-pidfile.patch by Morgon Kanter <morgon@surgo.net> and Martín Ferrari
+http://sourceforge.net/support/tracker.php?aid=762822
+
+<martin.ferrari@gmail.com>
+ This patch changes main.c so clients write their PID-file as
+ well as servers. It also allows a tag to be added to the filename.
+
+diff -pur 1/Makefile.in 2/Makefile.in
+--- 1/Makefile.in	2013-07-08 00:36:44.000000000 +0400
++++ 2/Makefile.in	2014-11-02 12:41:42.746487973 +0300
+@@ -39,12 +39,12 @@ MAN_DIR  = @mandir@
+ ETC_DIR  = @sysconfdir@
+ VAR_DIR  = @localstatedir@
+ 
+-PID_FILE = ${VAR_DIR}/run/vtund.pid
++PID_DIR = ${VAR_DIR}/run
+ CFG_FILE = ${ETC_DIR}/vtund.conf
+ STAT_DIR = ${VAR_DIR}/log/vtund
+ LOCK_DIR = ${VAR_DIR}/lock/vtund
+ 
+-DEFS = -DVTUN_CONFIG_FILE=\"$(CFG_FILE)\" -DVTUN_PID_FILE=\"$(PID_FILE)\" \
++DEFS = -DVTUN_CONFIG_FILE=\"$(CFG_FILE)\" -DVTUN_PID_DIR=\"$(PID_DIR)\" \
+        -DVTUN_STAT_DIR=\"$(STAT_DIR)\" -DVTUN_LOCK_DIR=\"$(LOCK_DIR)\"
+ 
+ OBJS = main.o cfg_file.tab.o cfg_file.lex.o server.o client.o lib.o \
+diff -pur 1/main.c 2/main.c
+--- 1/main.c	2014-11-02 12:56:00.021701942 +0300
++++ 2/main.c	2014-11-02 12:53:57.520368795 +0300
+@@ -50,7 +50,7 @@
+ struct vtun_opts vtun;
+ struct vtun_host default_host;
+ 
+-static void write_pid(void);
++static void write_pid(char *, char *);
+ static void reread_config(int sig);
+ static void usage(void);
+ 
+@@ -240,7 +240,7 @@ int main(int argc, char *argv[], char *e
+ 
+ 	if( vtun.svr_type == VTUN_STAND_ALONE ){
+ #ifdef HAVE_WORKING_FORK
+-	   write_pid();
++	   write_pid("server", NULL);
+ #else
+ 	   vtun_syslog(LOG_ERR,"Standalone server is not supported. Use -i");
+ 	   exit(1);
+@@ -250,6 +250,7 @@ int main(int argc, char *argv[], char *e
+ 	server(sock);
+      } else {	
+         init_title(argc,argv,env,"vtund[c]: ");
++       	write_pid(host->host, vtun.svr_name);
+         client(host);
+      }
+ 
+@@ -260,15 +261,29 @@ int main(int argc, char *argv[], char *e
+ 
+ /* 
+  * Very simple PID file creation function. Used by server.
+- * Overrides existing file. 
++ * Overrides existing file. Optionally adds session name and host name to the
++ * pidfile name (this naming is very confusing, as the session is referred as
++ * host most of the time)
+  */
+-static void write_pid(void)
++static void write_pid(char *session, char *host)
+ {
++     char fn[1024];
+      FILE *f;
+ 
+-     if( !(f=fopen(VTUN_PID_FILE,"w")) ){
+-        vtun_syslog(LOG_ERR,"Can't write PID file");
+-        return;
++     if(session != NULL && host != NULL) {
++	  snprintf(fn, sizeof(fn), "%s/vtund.%s-%s.pid", VTUN_PID_DIR, session,
++			  host);
++     } else if(session != NULL) {
++	  snprintf(fn, sizeof(fn), "%s/vtund.%s.pid", VTUN_PID_DIR, session);
++     } else {
++          snprintf(fn, sizeof(fn), "%s/vtund.pid", VTUN_PID_DIR);
++     }
++     /* Make sure the PID file is not there before opening it for writing. */
++     unlink(fn);
++
++     if( !(f = fopen(fn, "w")) ) {
++          syslog(LOG_ERR, "Can't write PID file %s: %s", fn, strerror(errno));
++          return;
+      }
+ 
+      fprintf(f,"%d",(int)getpid());
