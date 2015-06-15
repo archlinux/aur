@@ -31,7 +31,8 @@ build() {
       --disable-libpng \
       --enable-cms=none \
       --disable-cairo-output \
-      --disable-libjpeg
+      --disable-libjpeg \
+      --enable-libopenjpeg=none
   make
 }
 
