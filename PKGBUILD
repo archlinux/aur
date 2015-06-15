@@ -1,5 +1,6 @@
+# Contributor: Johannes Dewender  arch at JonnyJD dot net
+# Contributor: iosonofabio Fabio Zanini <fabio.zanini@fastmail.fm>
 # Contributor: Javier ‘Phrodo_00‘ Aravena <phrodo.00@gmail.com>
-# Mantainer: iosonofabio Fabio Zanini <fabio.zanini@fastmail.fm>
 pkgname=bzr-gtk
 pkgver=0.104.0
 pkgrel=1
@@ -14,15 +15,16 @@ optdepends=(
     'python2-nautilus: Nautilus integration'
     # 'pywin32: Olive'
 )
-makedepends=('bzr-stats')
-source=("https://launchpad.net/bzr-gtk/gtk3/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz")
-md5sums=('5e6694b57662c338d5eb2d85d4cd2357')
+#makedepends=('bzr-stats')	# currently not; build_credits disabled
+source=("https://launchpad.net/bzr-gtk/gtk3/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz"
+	no_credits.patch)
+md5sums=('5e6694b57662c338d5eb2d85d4cd2357'
+         'c85a317ac3129c24bac710ce71afc4e7')
 
-source+=(bzr_handle_patch_open_display.patch bzr_notify_open_display.patch)
-md5sums+=(
-  '384f7ad2131b581342566fa78d041c85'
-  '3aaf3786033d97f488425aa718d7d314'
-)
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -p0 < ../no_credits.patch
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -32,9 +34,10 @@ build() {
       sed -i 's_^#!.*/usr/bin/python_#!/usr/bin/python2_' $file
       sed -i 's_^#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
   done
+  python2 setup.py build
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  python2 setup.py install --prefix'=/usr' --root="${pkgdir}"
+  python2 setup.py install --skip-build --root="${pkgdir}"
 }

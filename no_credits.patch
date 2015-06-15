@@ -1,0 +1,27 @@
+=== modified file 'setup.py'
+--- setup.py	2012-07-09 15:23:26 +0000
++++ setup.py	2015-06-15 16:57:40 +0000
+@@ -104,12 +104,10 @@
+ 
+ class BuildData(build):
+     sub_commands = build.sub_commands[:]
+-    sub_commands.append(('build_credits', is_versioned))
+ 
+ 
+ class SourceDist(sdist):
+     sub_commands = sdist.sub_commands[:]
+-    sub_commands.append(('build_credits', is_versioned))
+ 
+ 
+ class InstallData(install_data):
+@@ -166,8 +164,7 @@
+             "bzrlib.plugins.gtk.branchview",
+             "bzrlib.plugins.gtk.preferences",
+         ],
+-        data_files=[('share/bzr-gtk', ['credits.pickle']),
+-                    ('share/bzr-gtk/icons', ['icons/commit.png',
++        data_files=[('share/bzr-gtk/icons', ['icons/commit.png',
+                                              'icons/commit16.png',
+                                              'icons/diff.png',
+                                              'icons/diff16.png',
+

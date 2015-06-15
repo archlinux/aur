@@ -5,7 +5,6 @@ pkgbase = bzr-gtk
 	url = http://bazaar-vcs.org/bzr-gtk
 	arch = any
 	license = GPL
-	makedepends = bzr-stats
 	depends = python2>=2.4
 	depends = python2-gobject2
 	depends = bzr>=2
@@ -14,11 +13,9 @@ pkgbase = bzr-gtk
 	optdepends = pygtksourceview2: Syntax-highlighted diffs
 	optdepends = python2-nautilus: Nautilus integration
 	source = https://launchpad.net/bzr-gtk/gtk3/0.104.0/+download/bzr-gtk-0.104.0.tar.gz
-	source = bzr_handle_patch_open_display.patch
-	source = bzr_notify_open_display.patch
+	source = no_credits.patch
 	md5sums = 5e6694b57662c338d5eb2d85d4cd2357
-	md5sums = 384f7ad2131b581342566fa78d041c85
-	md5sums = 3aaf3786033d97f488425aa718d7d314
+	md5sums = c85a317ac3129c24bac710ce71afc4e7
 
 pkgname = bzr-gtk
 
