@@ -1,0 +1,30 @@
+pkgbase = splashy-full
+	pkgdesc = A boot splashing system
+	pkgver = c2c9cc2
+	pkgrel = 1
+	url = http://anonscm.debian.org/gitweb/?p=splashy/splashy;a=summary
+	install = splashy-full.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = mkinitcpio
+	depends = sysfsutils
+	depends = glib2
+	depends = directfb
+	provides = splashy
+	source = splashy::git+https://alioth.debian.org/anonscm/git/splashy/splashy.git
+	source = splash.conf
+	source = splash-initscripts
+	source = splashy-functions
+	source = initcpio_hook
+	source = initcpio_install
+	source = automake.patch
+	source = configure.ac.patch
+	options = !libtool
+	options = !distcc
+	options = !makeflags
+	backup = etc/splash.conf
+	backup = etc/splashy/config.xml
+
+pkgname = splashy-full
+

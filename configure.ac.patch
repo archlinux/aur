@@ -1,0 +1,11 @@
+--- configure.ac	2013-03-02 20:04:29.015197612 +0100
++++ configure2.ac	2013-03-02 20:05:38.999613236 +0100
+@@ -3,7 +3,7 @@
+ 
+ AC_INIT([splashy], [0.3.14], [splashy-devel@alioth.debian.org])
+ AC_CONFIG_SRCDIR(src/splashy_main.c)
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADER(config.h)
+ AM_INIT_AUTOMAKE([splashy], [0.3.14], [splashy-devel@alioth.debian.org])
+ 
+ AC_PREREQ(2.59)

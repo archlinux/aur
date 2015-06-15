@@ -1,0 +1,15 @@
+pkgname=splashy
+
+post_install() {
+  cat << _EOF 
+
+==> To check out the Wiki see:
+==> http://wiki.archlinux.org/index.php/Splashy
+
+_EOF
+}
+
+pre_upgrade() {
+  echo ""
+  echo "automake1.10 dependence not needed any more, you can remove it ==> pacman -Rscn automake1.10"
+}

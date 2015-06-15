@@ -1,0 +1,310 @@
+#
+# initscripts-splash functions
+#
+
+. /etc/splash.conf
+
+if [ "$SPLASH_DEBUG" = "true" ]; then
+	if ! [ -d /var/log/splash ]; then
+		mkdir -p /var/log/splash
+	fi
+	if ! [ -f /var/log/splash/splash.log ]; then
+		mount -ns -t tmpfs -o size=1M tmpfs /var/log/splash
+		echo "Hello damned debugger" > /var/log/splash/splash.log
+	fi
+fi
+
+debug_log() {
+	[ "$SPLASH_DEBUG" = "true" ] || return 1
+
+	echo "$1" >> /var/log/splash/splash.log
+}
+
+splash_enabled_cmdline() { debug_log "$0 ${FUNCNAME}"
+	local ENABLE=false
+	local SINGLE=false
+
+	for x in $CMDLINE; do
+		case $x in
+			single)
+				SINGLE=true
+			;;
+			splash)
+				ENABLE=true
+			;;
+			nosplash)
+				ENABLE=false
+			;;
+		esac
+	done
+
+	[ "${SINGLE}" = "false" ] || return 1
+	[ "${ENABLE}" = "true" ] || return 1
+
+	return 0
+}
+
+splash_enabled_config() { debug_log "$0 ${FUNCNAME}"
+	if [[ -n ${SPLASH} && -f /etc/rc.d/${SPLASH}-functions ]]; then
+		return 0
+	else
+		if [[ -f /etc/rc.d/splashy-functions ]]; then
+			SPLASH="splashy"
+			return 0
+		else
+			return 1
+		fi
+	fi
+}
+
+if [ -z "$RUNLEVEL" ]; then
+	return 0
+fi
+
+if ! splash_enabled_cmdline; then
+	return 0
+fi
+
+if ! splash_enabled_config; then
+	return 0
+fi
+
+count_daemons() {
+	local COUNT=0
+	for daemon in "${DAEMONS[@]}"; do
+		if [ "$daemon" = "${daemon#!}" ]; then
+			((COUNT++))
+		fi
+	done
+
+	echo ${COUNT}
+}
+
+count_stats() {
+	local COUNT=$(grep -e status -e stat_busy /etc/${1} | grep -c -v \#)
+
+	if ! [ "$USELVM" = "yes" -o "$USELVM" = "YES" ]; then
+		((COUNT--))
+	fi
+	if ! [ -f /etc/crypttab -a -n "$(/bin/grep -v ^# /etc/crypttab | /bin/grep -v ^$)" ]; then
+		((COUNT--))
+	fi
+
+	echo ${COUNT}
+}
+
+set_sysinit() { debug_log "$0 ${FUNCNAME}"
+	SPLASH_PROGRESS_STATS=$(count_stats rc.sysinit)
+	SPLASH_PROGRESS_DAEMONS=$(count_daemons)
+	SPLASH_PROGRESS_TOTAL=$(($SPLASH_PROGRESS_STATS+$SPLASH_PROGRESS_DAEMONS))
+	SPLASH_PROGRESS_COUNT=0
+	SPLASH_AUTORUN_COMMAND="splash_sysinit"
+
+	debug_log "SPLASH_PROGRESS_TOTAL=$SPLASH_PROGRESS_TOTAL SPLASH_AUTORUN_COMMAND=$SPLASH_AUTORUN_COMMAND"
+}
+
+set_multi() { debug_log "$0 ${FUNCNAME}"
+	SPLASH_PROGRESS_STATS=$(count_stats rc.sysinit)
+	SPLASH_PROGRESS_DAEMONS=$(count_daemons)
+	SPLASH_PROGRESS_TOTAL=$(($SPLASH_PROGRESS_STATS+$SPLASH_PROGRESS_DAEMONS))
+	SPLASH_PROGRESS_COUNT=$(($SPLASH_PROGRESS_STATS-1))
+	SPLASH_AUTORUN_COMMAND="splash_multi"
+
+	debug_log "SPLASH_PROGRESS_TOTAL=$SPLASH_PROGRESS_TOTAL SPLASH_AUTORUN_COMMAND=$SPLASH_AUTORUN_COMMAND"
+}
+
+set_shutdown() { debug_log "$0 ${FUNCNAME}"
+	SPLASH_PROGRESS_STATS=$(count_stats rc.shutdown)
+	SPLASH_RUNNING_DAEMONS=(`/bin/ls /var/run/daemons`)
+	SPLASH_PROGRESS_DAEMONS=${#SPLASH_RUNNING_DAEMONS[*]}
+	SPLASH_PROGRESS_TOTAL=$(($SPLASH_PROGRESS_STATS+$SPLASH_PROGRESS_DAEMONS))
+	SPLASH_PROGRESS_COUNT=0
+	SPLASH_AUTORUN_COMMAND="splash_shutdown"
+
+	debug_log "SPLASH_PROGRESS_TOTAL=$SPLASH_PROGRESS_TOTAL SPLASH_AUTORUN_COMMAND=$SPLASH_AUTORUN_COMMAND"
+}
+
+if [ -z "${SPLASH_INIT_DONE}" ]; then
+	export SPLASH_INIT_DONE="true"
+
+	debug_log "$0 Running initscript..."
+
+	case "$RUNLEVEL" in
+		S)
+			set_sysinit
+			SPLASH_STATUS_MESSAGE="Booting Arch Linux..."
+			;;
+		3)
+			set_multi
+			SPLASH_STATUS_MESSAGE="Loading daemons..."
+			;;
+		5)
+			set_multi
+			SPLASH_STATUS_MESSAGE="Loading daemons..."
+			;;
+		6)
+			set_shutdown
+			SPLASH_STATUS_MESSAGE="Rebooting Arch Linux..."
+			;;
+		0)
+			set_shutdown
+			SPLASH_STATUS_MESSAGE="Shutting down Arch Linux..."
+			;;
+	esac
+fi
+
+. /etc/rc.d/${SPLASH}-functions
+
+# splash functions:
+
+splash_progress() { debug_log "$0 ${FUNCNAME}"
+	if [ -n "$SPLASH_PROGRESS_COUNT" ]; then
+		${SPLASH}_progress $SPLASH_PROGRESS_COUNT $SPLASH_PROGRESS_TOTAL
+		((SPLASH_PROGRESS_COUNT++))
+	fi
+}
+
+splash_print() { debug_log "$0 ${FUNCNAME}"
+	${SPLASH}_print "${1}"
+
+	debug_log "$1"
+}
+
+splash_exit() { debug_log "$0 ${FUNCNAME}"
+	${SPLASH}_exit ${DEFAULT_TTY} ${SWITCH_TTY}
+}
+
+splash_sysinit() { debug_log "$0 ${FUNCNAME}"
+	${SPLASH}_sysinit ${DEFAULT_TTY}
+}
+
+splash_multi() { debug_log "$0 ${FUNCNAME}"
+	${SPLASH}_multi
+
+	trap splash_exit 0
+	splash_progress
+}
+
+splash_shutdown() { debug_log "$0 ${FUNCNAME}"
+	${SPLASH}_shutdown ${DEFAULT_TTY}
+
+	if [ -n "`pidof $SPLASH`" ]; then
+		export KILLALL5_OPTS="-o `pidof $SPLASH`"
+	fi
+}
+
+if [ -n "${SPLASH_AUTORUN_COMMAND}" ]; then
+	$SPLASH_AUTORUN_COMMAND
+	splash_print "${SPLASH_STATUS_MESSAGE}"
+	sleep 0.5
+fi
+
+# functions:
+
+deltext() { debug_log "$0 ${FUNCNAME}"
+	if [ "$CONSOLE_PRINT" == "true" ]; then
+		printf "${DEL_TEXT}"
+	else
+		return 0
+	fi
+}
+
+printhl() { debug_log "$0 ${FUNCNAME}"
+	if [ "$CONSOLE_PRINT" == "true" ]; then
+		printf "${C_OTHER}${PREFIX_HL} ${C_H1}${1}${C_CLEAR} \n"
+	else
+		return 0
+	fi
+}
+
+printsep() { debug_log "$0 ${FUNCNAME}"
+	if [ "$CONSOLE_PRINT" == "true" ]; then
+		printf "\n${C_SEPARATOR}   ------------------------------\n"
+	else
+		return 0
+	fi
+}
+
+stat_bkgd() { debug_log "$0 ${FUNCNAME}"
+	if [ "$CONSOLE_PRINT" == "true" ]; then
+		printf "${C_OTHER}${PREFIX_REG} ${C_MAIN}${1}${C_CLEAR} "
+		deltext
+		printf "   ${C_OTHER}[${C_BKGD}BKGD${C_OTHER}]${C_CLEAR} "
+	fi
+}
+
+stat_busy() { debug_log "$0 ${FUNCNAME}"
+	if [ "$CONSOLE_PRINT" == "true" ]; then
+		printf "${C_OTHER}${PREFIX_REG} ${C_MAIN}${1}${C_CLEAR} "
+		printf "${SAVE_POSITION}"
+		deltext
+		printf "   ${C_OTHER}[${C_BUSY}BUSY${C_OTHER}]${C_CLEAR} "
+	fi
+	splash_print "${1}"
+}
+
+stat_append() { debug_log "$0 ${FUNCNAME}"
+	if [ "$CONSOLE_PRINT" == "true" ]; then
+		printf "${RESTORE_POSITION}"
+		printf "${C_MAIN}${1}${C_CLEAR}"
+		printf "${SAVE_POSITION}"
+	else
+		return 0
+	fi
+}
+
+stat_done() { debug_log "$0 ${FUNCNAME}"
+	if [ "$CONSOLE_PRINT" == "true" ]; then
+		deltext
+		printf "   ${C_OTHER}[${C_DONE}DONE${C_OTHER}]${C_CLEAR} \n"
+	fi
+	splash_progress
+}
+
+stat_fail() { debug_log "$0 ${FUNCNAME}"
+	if [ "$CONSOLE_PRINT" == "true" ]; then
+		printf "   ${C_OTHER}[${C_FAIL}FAIL${C_OTHER}]${C_CLEAR} \n"
+	fi
+	splash_print "Something failed, killing splash..."
+	sleep 2
+	splash_exit
+}
+
+#daemons:
+
+log_daemon() { debug_log "$0 ${FUNCNAME}"
+	case $1 in
+		?dm|slim)
+			splash_exit
+		;;
+	esac
+}
+
+start_daemon() { debug_log "$0 ${FUNCNAME}"
+	log_daemon $1
+	splash_progress
+	/etc/rc.d/$1 start
+}
+
+start_daemon_bkgd() { debug_log "$0 ${FUNCNAME}"
+	if [ "$CONSOLE_PRINT" == "true" ]; then
+		stat_bkgd "Starting $1"
+	fi
+	log_daemon $1
+	(/etc/rc.d/$1 start) &>/dev/null &
+	splash_progress
+}
+
+stop_daemon() { debug_log "$0 ${FUNCNAME}"
+	/etc/rc.d/$1 stop
+
+	for daemon in ${SPLASH_RUNNING_DAEMONS[@]}; do
+		if [ "$daemon" = "$1" ]; then
+			splash_progress
+			break
+		fi
+	done
+}
+
+# End of file
+# vim: set ts=2 noet:

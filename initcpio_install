@@ -1,0 +1,51 @@
+# vim: set ft=sh:
+build() {
+[ -x /sbin/splashy ] || return 1
+
+THEMES_DIR="$(splashy_config --get-key /splashy/themes 2> /dev/null)"
+CURRENT_THEME="$(splashy_config --get-key /splashy/current_theme 2> /dev/null)"
+
+add_binary "/sbin/splashy"
+add_file "/sbin/splashy_chvt"
+add_file "/etc/splashy/config.xml"
+add_full_dir "${THEMES_DIR}/${CURRENT_THEME}"
+
+#shared libraries needed by splashy
+add_file "/usr/lib/libsplashycnf.so"
+add_file "/usr/lib/libsplashy.so"
+add_file "/usr/lib/libglib-2.0.so"
+add_file "/usr/lib/libdirectfb.so"
+add_file "/usr/lib/libfusion.so"
+add_file "/usr/lib/libdirect.so"
+add_file "/usr/lib/libpng.so"
+add_file "/usr/lib/libjpeg.so"
+add_file "/usr/lib/libfreetype.so"
+add_file "/lib/libm.so.6"
+add_file "/lib/libpthread.so.0"
+add_file "/usr/lib/libz.so"
+add_file "/lib/libdl.so.2"
+add_file "/lib/libc.so.6"
+add_file "/usr/lib/libpcre.so"
+add_file "/lib/libsysfs.so.2"
+add_file "/usr/lib/directfb-1.6-0/wm/libdirectfbwm_default.so"
+add_file "/usr/lib/directfb-1.6-0/systems/libdirectfb_fbdev.so"
+add_file "/usr/lib/directfb-1.6-0/inputdrivers/libdirectfb_keyboard.so"
+add_file "/usr/lib/directfb-1.6-0/interfaces/IDirectFBFont/libidirectfbfont_ft2.so"
+# add_file "/usr/lib/directfb-1.6-0/interfaces/IDirectFBFont/libidirectfbfont_default.so"
+add_file "/usr/lib/directfb-1.6-0/interfaces/IDirectFBImageProvider/libidirectfbimageprovider_png.so"
+add_file "/usr/lib/directfb-1.6-0/interfaces/IDirectFBImageProvider/libidirectfbimageprovider_jpeg.so"
+
+if [ "$(uname -m)" = "x86_64" ];then
+add_file "/lib/ld-linux-x86-64.so.2"
+else
+add_file "/lib/ld-linux.so.2"
+fi
+
+SCRIPT="splashy"
+}
+
+help() {
+echo "This hook includes Splashy in the initramfs image."
+}
+
+#EOF

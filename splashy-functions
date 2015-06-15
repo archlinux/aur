@@ -1,0 +1,92 @@
+#
+# splashy functions
+#
+
+# functions:
+
+splashy_wait_till_ready() { debug_log "$0 ${FUNCNAME}"
+	local tries=50
+
+	/sbin/splashy_update "print" 2> /dev/null
+
+	while [ $? -ne 0 ]; do
+		[ $tries -ne 0 ] || return 1
+		((tries--))
+		sleep 0.1
+		/sbin/splashy_update "print" 2> /dev/null
+	done
+
+	debug_log "tries=$((50-$tries))"
+}
+
+splashy_print() { debug_log "$0 ${FUNCNAME}"
+	/sbin/splashy_update "print ${1}" 2> /dev/null
+}
+
+splashy_sysinit() { debug_log "$0 ${FUNCNAME}"
+	splashy_wait_till_ready
+}
+
+splashy_multi() { debug_log "$0 ${FUNCNAME}"
+	return 0
+}
+
+splashy_shutdown() { debug_log "$0 ${FUNCNAME}"
+	clear > /dev/tty${1}
+	/sbin/splashy_chvt ${1}
+
+	splashy shutdown 2> /dev/null
+
+	splashy_wait_till_ready
+}
+
+splashy_kill() { debug_log "$0 ${FUNCNAME}"
+	local tries=50
+	while pidof splashy > /dev/null; do
+		[ $tries -ne 0 ] || return 1
+		((tries--))
+
+		kill -15 `pidof splashy`
+		sleep 0.2
+		pidof splashy > /dev/null || break
+		kill -9 `pidof splashy`
+		sleep 0.2
+	done
+	debug_log "tries=$((50-$tries))"
+}
+
+splashy_exit() { debug_log "$0 ${FUNCNAME}"
+	pidof splashy > /dev/null || return 1
+
+	/usr/bin/setterm -cursor off > /dev/tty8
+	
+	/sbin/splashy_update "progress 100" 2> /dev/null
+	sleep 0.3
+	/sbin/splashy_update "exit" 2> /dev/null
+	sleep 0.3
+
+	splashy_kill
+
+	if [ "$(fgconsole 2>/dev/null)" = "${1}" ]; then
+		clear > /dev/tty${1} || true
+	fi
+
+	/usr/bin/setterm -cursor off > /dev/tty7
+
+	if [ -n "${2}" ]; then
+		if [ "$(fgconsole 2>/dev/null)" != "${2}" ]; then 
+			/sbin/splashy_chvt ${2} || true
+		else
+			# fall back to tty1
+			/sbin/splashy_chvt 1 || true
+		fi
+	fi
+}
+
+splashy_progress() { debug_log "$0 ${FUNCNAME}"
+	PROGRESS=$(((${1}*100)/${2}))
+	/sbin/splashy_update "progress ${PROGRESS}" 2> /dev/null
+}
+
+# End of file
+# vim: set ts=2 noet:

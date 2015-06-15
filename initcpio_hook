@@ -1,0 +1,48 @@
+# vim: set ft=sh:
+run_hook() {
+	[ -x /sbin/splashy ] || return
+
+	SPLASH=false
+	SINGLE=false
+
+	for x in $(cat /proc/cmdline); do
+	    case $x in
+		single)
+		    SINGLE=true
+		;;
+		splash)
+		    SPLASH=true
+		;;
+		nosplash)
+		    SPLASH=false
+		;;
+	    esac
+	done
+
+	[ "${SINGLE}" = "false" ] || return
+	[ "${SPLASH}" = "true" ] || return
+
+#if [ -s /proc/fb ]; then
+#        while read fbno desc; do
+#                mknod /dev/fb${fbno} c 29 ${fbno}
+#        done < /proc/fb
+#else
+#        mknod /dev/fb0 c 29 0
+#fi
+
+#for i in 0 1 2 3 4 5 6 7 8; do
+#	test -c /dev/tty${i} || \
+#            mknod /dev/tty${i} c 4 ${i}
+#done
+
+	msg -n ":: Loading Splashy..."
+
+	if [ -x /sbin/splashy_chvt ]; then
+		/sbin/splashy_chvt 8
+	fi
+
+	/sbin/splashy boot
+	sleep 1 #we need a better solution
+
+	msg "done."
+}
