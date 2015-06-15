@@ -1,0 +1,14 @@
+pkgbase = fftw-bettersimd
+	pkgdesc = Fast Fourier Transform with GROMACS Enhancements
+	pkgver = 3.3.4
+	pkgrel = 1
+	url = http://www.fftw.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	options = !libtool
+	source = ftp://ftp.gromacs.org/pub/beta/fftw-3.3.4-bettersimd.tar.gz
+	sha1sums = 87b6bf32627795002dffaaee2a0ee2d9d70d8006
+
+pkgname = fftw-bettersimd
+
