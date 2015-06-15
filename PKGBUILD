@@ -1,5 +1,4 @@
-# Maintainer: Peter Reschenhofer <peter.reschenhofer@gmail.com>
-# Former Maintainer: Troy Engel <troyengel+arch@gmail.com>
+# Maintainer: Troy Engel <troyengel+arch@gmail.com>
 # Contributor: William Overstreet <william.ab.overstreet@gmail.com>
 # Contributor: Vinicius de Avila Jorge <vinicius.avila.jorge@gmail.com>
 
