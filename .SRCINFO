@@ -1,0 +1,15 @@
+pkgbase = gpshell
+	pkgdesc = gpshell GlobalPlatform command shell
+	pkgver = 1.4.4
+	pkgrel = 2
+	url = http://sourceforge.net/projects/globalplatform/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	depends = globalplatform
+	source = http://downloads.sourceforge.net/globalplatform/gpshell-1.4.4.tar.gz
+	md5sums = f3e43b0809fe063b36a2d85c6d271c9d
+
+pkgname = gpshell
+
