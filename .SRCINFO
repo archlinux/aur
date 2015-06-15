@@ -5,6 +5,7 @@ pkgbase = nodejs-mkdirp
 	url = https://github.com/substack/node-mkdirp
 	arch = any
 	license = MIT
+	depends = npm,
 	depends = nodejs
 	provides = nodejs-mkdirp
 	source = .AURINFO
