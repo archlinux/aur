@@ -1,0 +1,16 @@
+pkgbase = rtmpsnoop-git
+	pkgdesc = rtmpSnoop lets you to grab the RTMP properties from live or dumped video streams
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/andreafabrizi/rtmpSnoop
+	arch = any
+	license = LGPL
+	makedepends = git
+	depends = python2>=2.7
+	depends = scapy
+	provides = rtmpsnoop
+	conflicts = rtmpsnoop
+	source = rtmpSnoop::git://github.com/andreafabrizi/rtmpSnoop.git
+
+pkgname = rtmpsnoop-git
+
