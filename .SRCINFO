@@ -1,0 +1,31 @@
+pkgbase = firefox-nightly
+	pkgdesc = Standalone web browser from mozilla.org, nightly build
+	pkgver = 41.0a1.20150514
+	pkgrel = 1
+	url = http://www.mozilla.org/projects/firefox
+	arch = i686
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = alsa-lib
+	depends = libxt
+	depends = libnotify
+	depends = mime-types
+	depends = nss
+	depends = gtk2
+	depends = sqlite
+	depends = dbus-glib
+	source = https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-trunk/firefox-41.0a1.en-US.linux-.tar.bz2
+	source = https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-trunk/firefox-41.0a1.en-US.linux-.txt
+	source = firefox-nightly.desktop
+	source = firefox-nightly-safe.desktop
+	source = vendor.js
+	sha512sums = 
+	sha512sums = SKIP
+	sha512sums = d2d836b07288d2a13d01d668399df8a2a15884a58a7051303938bf74a30bdfc23a8bc57395494345727ae24e1dd9cab09c67a640a5c9e7a8df895f987e009dcd
+	sha512sums = 00caf982c072c7499433c494ecf2096542c4ddf368c4b97fb22672fd669683911d009a65a498b8a03da61ae9aa5a4e8bdaa6e58b148c2a5d7c008910b2af26a5
+	sha512sums = bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010
+
+pkgname = firefox-nightly
+
