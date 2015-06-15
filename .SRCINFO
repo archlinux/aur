@@ -1,0 +1,19 @@
+pkgbase = baamanga
+	pkgdesc = Command-line tool to download manga from lots of websites
+	pkgver = 0.5.6
+	pkgrel = 1
+	url = https://github.com/jorge-barroso/baamanga/
+	install = baamanga.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = boost
+	depends = curlcpp-git
+	depends = boost-libs
+	provides = baamanga
+	conflicts = baamanga-git
+	source = http://sourceforge.net/projects/baamanga/files/baamanga-0.5.6.zip
+	sha512sums = 37250dcf203c6c60f2995c781a8c7969e866c51c5be00ecdf511d03f8004dc9630d4ebf5c558c336b6cdb5a45828e31fbf539a2970fd7d9de8b64779acf339ea
+
+pkgname = baamanga
+
