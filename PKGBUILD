@@ -1,6 +1,6 @@
 # Maintainer: Moritz Lipp <mail@mlq.me>
 pkgname=smartscope
-pkgver=0.0.8.3
+pkgver=0.1.0.0
 pkgrel=1
 pkgdesc="SmartScope App"
 arch=('x86_64' 'i686')
@@ -14,7 +14,7 @@ _pkgname=SmartScope-Linux
 
 source=("$_pkgname-$_pkgver.deb::https://www.lab-nation.com/package/smartscope/linux/latest/get"
 "smartscope.sh")
-md5sums=('6327d62a18fb03dae7866a75ce7d5a28'
+md5sums=('97992fb1a26da88da110f95c5e6a733e'
          '4e63224a3a40e165cf4bd2f777d288dc')
 
 package() {
