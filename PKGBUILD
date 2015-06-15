@@ -23,7 +23,7 @@ source=('chromium-continuous-bin'
         'chromium-continuous-bin.desktop'
         'LICENSE')
 md5sums=('c0febff6875a5c700507d752647f8f4f'
-         '3f2bfd12b55b7153b60ad904207599dd'
+         '6203259f7a8fe2fa55b64005a202828d'
          '537e0b52077bf0a616d0a0c8a79bc9d5')
 
 [[ $CARCH = x86_64 ]] && _64="_x64"
