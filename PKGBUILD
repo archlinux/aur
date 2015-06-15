@@ -1,6 +1,6 @@
 # Maintainer: Ramana Kumar <firstname at member.fsf.org>
 pkgname=pacnews-git
-pkgver=20120731
+pkgver=20130814
 pkgrel=1
 pkgdesc="Find .pacnew files and merge them with vimdiff"
 arch=(any)
