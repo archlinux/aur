@@ -1,0 +1,18 @@
+pkgbase = bear
+	pkgdesc = tool to generate compilation database for clang tooling
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://github.com/rizsotto/Bear
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = make
+	depends = python>=2.7
+	provides = bear
+	conflicts = bear
+	source = https://github.com/rizsotto/Bear/archive/2.0.3.tar.gz
+	md5sums = 3d32f78ca4cce5df220c97b950c7a229
+
+pkgname = bear
+
