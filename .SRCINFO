@@ -1,0 +1,11 @@
+pkgbase = pacnews-git
+	pkgdesc = Find .pacnew files and merge them with vimdiff
+	pkgver = 20120731
+	pkgrel = 1
+	url = http://github.com/pbrisbin/scripts/blob/master/pacnews
+	arch = any
+	license = unknown
+	makedepends = git
+
+pkgname = pacnews-git
+
