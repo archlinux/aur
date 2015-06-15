@@ -3,7 +3,7 @@
 # Based on [extra]'s nvidia: https://www.archlinux.org/packages/extra/x86_64/nvidia/
 
 pkgname=nvidia-beta
-pkgver=352.09
+pkgver=352.21
 pkgrel=1
 pkgdesc="NVIDIA driver for linux (beta)"
 arch=('i686' 'x86_64')
@@ -27,8 +27,8 @@ esac
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/NVIDIA-Linux-x86_64-$pkgver-no-compat32.run")
 #md5sums=('fb510521aae27ebc91c0f3065ba73f11')
-md5sums_i686=('0e009686400c522209eaa8ab835ff81f')
-md5sums_x86_64=('eb5ad6a07dc03e0a19d5f6fa069c494b')
+md5sums_i686=('c91760a04f658845722380f6c7fd4709')
+md5sums_x86_64=('4eea308a1b04553f720f82fd2fac79d3')
 
 prepare() {
   # Remove previous builds
