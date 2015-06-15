@@ -1,0 +1,21 @@
+pkgbase = gambatte-git
+	pkgdesc = An accuracy-focused Game Boy Color emulator
+	pkgver = f3c548d
+	pkgrel = 1
+	url = https://github.com/sinamas/gambatte
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = scons
+	depends = gcc-libs
+	depends = sdl
+	depends = zlib
+	optdepends = gambatte-qt: Qt4 frontend
+	provides = gambatte
+	conflicts = gambatte
+	source = git://github.com/sinamas/gambatte.git
+	md5sums = SKIP
+
+pkgname = gambatte-git
+
