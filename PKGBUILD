@@ -1,7 +1,7 @@
 # Maintainer: Cedric Girard <girard.cedric@gmail.com>
 
 pkgname=libplatform-git
-pkgver=1.0.1
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="Platform support library used by libCEC and binary add-ons for Kodi"
 arch=('i686' 'x86_64')
