@@ -1,0 +1,17 @@
+pkgbase = mocp-scrobbler
+	pkgdesc = Last.fm scrobbler for MOC audio player
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/fluxid/mocp-scrobbler
+	install = mocp-scrobbler.install
+	arch = any
+	license = GPL
+	depends = python
+	depends = moc
+	source = https://raw.githubusercontent.com/fluxid/mocp-scrobbler/master/mocp-scrobbler.py
+	source = config.example
+	md5sums = f5aa370d01fcb088d123f1d6c522e7fe
+	md5sums = f8ac0e62a30c03bbf90761fc7d5ba624
+
+pkgname = mocp-scrobbler
+

@@ -1,0 +1,5 @@
+[scrobbler]
+login = YOUR_LASTFM_LOGIN
+password = YOUR_PASSWORD
+streams = true
+hostname = post.audioscrobbler.com

@@ -1,0 +1,11 @@
+post_install() {
+  echo
+  echo "  Copy the example file  /usr/share/doc/mocp-scrobbler/config.example"
+  echo "  to  ~/.mocpscrob/config"
+  echo
+  echo "  Replace login and password. The password variable will be replaced with"
+  echo "  password_md5 on the first run. Its value will be the original value"
+  echo "  hashed using MD5 algorithm. If you want to change password, just add" 
+  echo "  again password with you new password, password_md5 will be replaced."
+  echo 
+}
