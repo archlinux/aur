@@ -1,0 +1,17 @@
+pkgbase = python-vlc-git
+	pkgdesc = Python bindings for VLC
+	pkgver = r238.3a66100
+	pkgrel = 1
+	url = https://wiki.videolan.org/Python_bindings
+	arch = any
+	license = GPLv2
+	makedepends = python-distribute
+	depends = python
+	depends = vlc
+	source = git://git.videolan.org/vlc/bindings/python.git
+	source = setup.py
+	sha1sums = SKIP
+	sha1sums = d5aa28f55600795e71a9a28e0d633d20ad2cc0ee
+
+pkgname = python-vlc-git
+
