@@ -1,0 +1,22 @@
+pkgbase = radicale
+	pkgdesc = A Simple Calendar Server
+	pkgver = 0.10
+	pkgrel = 1
+	url = http://www.radicale.org/
+	install = radicale.install
+	arch = any
+	license = GPL3
+	depends = python>=3.2
+	optdepends = python-pam: For PAM authentication
+	optdepends = python-requests: For HTTP authentication
+	optdepends = python-ldap: For LDAP authentication
+	backup = etc/radicale/config
+	source = http://pypi.python.org/packages/source/R/Radicale/Radicale-0.10.tar.gz
+	source = radicale.service
+	source = radicale.install
+	md5sums = 32655d8893962956ead0ad690cca6044
+	md5sums = 62af2e07ad32a0fcece32fae68e92daf
+	md5sums = 5613eec93efc5ef2ef68abd124fb6b61
+
+pkgname = radicale
+
