@@ -10,7 +10,7 @@
         depends=('boost' 'gmp' 'libgcrypt' 'qt4' 'qtwebkit' 'python2')
         makedepends=('cmake')
         replaces=('readesm' 'readesm-fr' )
-        source=(http://switch.dl.sourceforge.net/project/readesmfr/readesm-fr/readesm-fr.2.4.tar.gz)		
+        source=(http://sourceforge.net/project/readesmfr/readesm-fr/readesm-fr.2.4.tar.gz)		
         sha256sums=(e4a016d3654646f4bb4cc5e1fc708e2208ff8efa6bcfc588d61d498165167412)
 
         build() {
@@ -28,3 +28,4 @@
         cd "$srcdir/readesm-fr.2.4/build"
         make DESTDIR="$pkgdir" install
        }
+
