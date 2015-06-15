@@ -8,14 +8,16 @@ _pkgname=bzr-gtk
 pkgver=r796
 pkgrel=1
 pkgdesc="Plugin for Bazaar that aims to provide GTK+ interfaces to most Bazaar operations. It downloads source from launchpad bazaar repository, using the last commit."
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://bazaar-vcs.org/bzr-gtk"
 license=('GPL')
-depends=('pygtk' 'bzr' 'pycairo' 'libglade' 'bzr-stats')
-# TODO: bzr-stats still necessary? a makedepends?
-makedepends=('bzr')
+depends=('pygtk' 'bzr' 'pycairo' 'libglade'
+         'desktop-file-utils' 'gtk-update-icon-cache')
+#makedepends=('bzr' 'bzr-stats')
+makedepends=('bzr') # bzr-stats currently not used due to workaround
 provides=('bzr-gtk')
 conflicts=('bzr-gtk')
+install=${_pkgname}.install
 source=("$_pkgname::bzr+http://bazaar.launchpad.net/~$_pkgname/$_pkgname/gtk3/"
         'no_credits.patch')
 sha256sums=('SKIP'
