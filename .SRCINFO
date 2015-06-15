@@ -1,0 +1,29 @@
+pkgbase = mstar-gtk-themes-git
+	pkgdesc = morning_star gtk themes collection
+	pkgver = r6.82b3efe
+	pkgrel = 1
+	url = https://github.com/dreemsoul/gtk-themes
+	arch = any
+	license = GPL
+	makedepends = git
+	source = git://github.com/dreemsoul/gtk-themes
+	md5sums = SKIP
+
+pkgname = gtk-theme-acou-git
+
+pkgname = gtk-theme-boxtrot-git
+
+pkgname = gtk-theme-colby-git
+
+pkgname = gtk-theme-fire-git
+
+pkgname = gtk-theme-ice-git
+
+pkgname = gtk-theme-oreo-git
+
+pkgname = gtk-theme-jibbers-git
+
+pkgname = gtk-theme-plasma-git
+
+pkgname = gtk-theme-drib-git
+
