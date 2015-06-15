@@ -1,0 +1,13 @@
+pkgbase = advancescan
+	pkgdesc = A command line rom manager for MAME, MESS, AdvanceMAME, AdvanceMESS and Raine
+	pkgver = 1.17
+	pkgrel = 1
+	url = http://advancemame.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://downloads.sourceforge.net/sourceforge/advancemame/advancescan-1.17.tar.gz
+	md5sums = 9a231fc4f609b5ad08f79a392eb60c85
+
+pkgname = advancescan
+
