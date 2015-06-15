@@ -1,0 +1,1160 @@
+Binary files amarok-1.4.10.orig/amarok/src/.coverfetcher.h.swp and amarok-1.4.10/amarok/src/.coverfetcher.h.swp differ
+diff -urN amarok-1.4.10.orig/amarok/src/Makefile.am amarok-1.4.10/amarok/src/Makefile.am
+--- amarok-1.4.10.orig/amarok/src/Makefile.am	2009-08-22 11:38:19.885762485 -0400
++++ amarok-1.4.10/amarok/src/Makefile.am	2009-08-22 13:22:31.982159988 -0400
+@@ -125,7 +125,6 @@
+     podcastsettingsbase.ui \
+     prettypopupmenu.cpp \
+     queuemanager.cpp \
+-    refreshimages.cpp \
+     scancontroller.cpp \
+     scriptmanager.cpp \
+     scriptmanagerbase.ui \
+diff -urN amarok-1.4.10.orig/amarok/src/Makefile.in amarok-1.4.10/amarok/src/Makefile.in
+--- amarok-1.4.10.orig/amarok/src/Makefile.in	2009-08-22 11:38:19.885762485 -0400
++++ amarok-1.4.10/amarok/src/Makefile.in	2009-08-22 13:23:46.073894860 -0400
+@@ -95,7 +95,7 @@
+ 	playlistbrowseritem.lo playlistitem.lo playlistloader.lo \
+ 	playlistselection.lo playlistwindow.lo pluginmanager.lo \
+ 	podcastsettings.lo prettypopupmenu.lo queuemanager.lo \
+-	refreshimages.lo scancontroller.lo scriptmanager.lo \
++	scancontroller.lo scriptmanager.lo \
+ 	scrobbler.lo sliderwidget.lo smartplaylisteditor.lo \
+ 	socketserver.lo starmanager.lo statistics.lo systray.lo \
+ 	tagdialog.lo tagguesser.lo threadmanager.lo tooltip.lo \
+@@ -122,7 +122,7 @@
+ 	playlistbrowseritem.lo playlistitem.lo playlistloader.lo \
+ 	playlistselection.lo playlistwindow.lo pluginmanager.lo \
+ 	podcastsettings.lo prettypopupmenu.lo queuemanager.lo \
+-	refreshimages.lo scancontroller.lo scriptmanager.lo \
++	scancontroller.lo scriptmanager.lo \
+ 	scrobbler.lo sliderwidget.lo smartplaylisteditor.lo \
+ 	socketserver.lo starmanager.lo statistics.lo systray.lo \
+ 	tagdialog.lo tagguesser.lo threadmanager.lo tooltip.lo \
+@@ -646,7 +646,6 @@
+ #>-     podcastsettingsbase.ui \
+ #>-     prettypopupmenu.cpp \
+ #>-     queuemanager.cpp \
+-#>-     refreshimages.cpp \
+ #>-     scancontroller.cpp \
+ #>-     scriptmanager.cpp \
+ #>-     scriptmanagerbase.ui \
+@@ -745,7 +744,6 @@
+      \
+     prettypopupmenu.cpp \
+     queuemanager.cpp \
+-    refreshimages.cpp \
+     scancontroller.cpp \
+     scriptmanager.cpp \
+      \
+@@ -1054,7 +1052,6 @@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/podcastsettings.Plo@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/prettypopupmenu.Plo@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/queuemanager.Plo@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/refreshimages.Plo@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/scancontroller.Plo@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/scriptmanager.Plo@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/scrobbler.Plo@am__quote@
+@@ -1611,13 +1608,6 @@
+ mocs: devicemanager.moc
+ 
+ #>+ 3
+-refreshimages.moc: $(srcdir)/refreshimages.h
+-	$(MOC) $(srcdir)/refreshimages.h -o refreshimages.moc
+-
+-#>+ 2
+-mocs: refreshimages.moc
+-
+-#>+ 3
+ app.moc: $(srcdir)/app.h
+ 	$(MOC) $(srcdir)/app.h -o app.moc
+ 
+@@ -2011,10 +2001,10 @@
+ 
+ #>+ 3
+ clean-metasources:
+-	-rm -f  browserbar.moc playlistbrowser.moc statistics.moc hintlineedit.moc mediabrowser.moc moodbar.moc devicemanager.moc refreshimages.moc app.moc prettypopupmenu.moc transferdialog.moc editfilterdialog.moc metabundlesaver.moc starmanager.moc socketserver.moc playlistselection.moc scancontroller.moc equalizerpresetmanager.moc collectiondb.moc deviceconfiguredialog.moc xmlloader_p.moc multitabbar.moc multitabbar_p.moc cuefile.moc mediadevicemanager.moc deletedialog.moc ktrm.moc directorylist.moc mediumpluginmanager.moc enginecontroller.moc tagdialog.moc collectionbrowser.moc xmlloader.moc contextbrowser.moc playlistbrowseritem.moc smartplaylisteditor.moc htmlview.moc mydiroperator.moc podcastsettings.moc mountpointmanager.moc actionclasses.moc filebrowser.moc columnlist.moc scrobbler.moc osd.moc scriptmanager.moc threadmanager.moc configdialog.moc equalizersetup.moc playlistwindow.moc tooltip.moc tracktooltip.moc clicklineedit.moc playlistloader.moc queuemanager.moc playlist.moc covermanager.moc trackpickerdialog.moc playerwindow.moc lastfm.moc pixmapviewer.moc enginebase.moc coverfetcher.moc sliderwidget.moc
++	-rm -f  browserbar.moc playlistbrowser.moc statistics.moc hintlineedit.moc mediabrowser.moc moodbar.moc devicemanager.moc app.moc prettypopupmenu.moc transferdialog.moc editfilterdialog.moc metabundlesaver.moc starmanager.moc socketserver.moc playlistselection.moc scancontroller.moc equalizerpresetmanager.moc collectiondb.moc deviceconfiguredialog.moc xmlloader_p.moc multitabbar.moc multitabbar_p.moc cuefile.moc mediadevicemanager.moc deletedialog.moc ktrm.moc directorylist.moc mediumpluginmanager.moc enginecontroller.moc tagdialog.moc collectionbrowser.moc xmlloader.moc contextbrowser.moc playlistbrowseritem.moc smartplaylisteditor.moc htmlview.moc mydiroperator.moc podcastsettings.moc mountpointmanager.moc actionclasses.moc filebrowser.moc columnlist.moc scrobbler.moc osd.moc scriptmanager.moc threadmanager.moc configdialog.moc equalizersetup.moc playlistwindow.moc tooltip.moc tracktooltip.moc clicklineedit.moc playlistloader.moc queuemanager.moc playlist.moc covermanager.moc trackpickerdialog.moc playerwindow.moc lastfm.moc pixmapviewer.moc enginebase.moc coverfetcher.moc sliderwidget.moc
+ 
+ #>+ 2
+-KDE_DIST=firstrunwizard.ui amarokui_xmms.rc playlistbrowser.h equalizersetup.h refreshimages.h Options2.ui Options5.ui.h trackpickerdialogbase.ui pixmapviewer.h amarok.desktop podcastsettings.h amarok_codecinstall.desktop transferdialog.h mydiroperator.h amarok_addaspodcast.desktop ktrm.h Options4.ui mediadevicemanager.h statistics.h playlistwindow.h amarok.h scriptmanager.h playlistloader.h playlistbrowseritem.h medium.h Options7.ui engineobserver.h hintlineedit.h tagguesserconfigdialog.ui editfilterdialog.h socketserver.h playerwindow.h deletedialogbase.ui hi22-app-amarok.png xmlloader.h Options8.ui queuemanager.h tracktooltip.h tagguesser.h collectionbrowser.h mountpointmanager.h hi128-app-amarok.png browserbar.h newdynamic.ui moodbar.h collectiondb.h playlistitem.h contextbrowser.h enginebase.h amarok_append.desktop playlistselection.h deviceconfiguredialog.h amarok_proxy.rb directorylist.h osd.h debug.h amarok_play_audiocd.desktop hi64-app-amarok.png scrobbler.h qstringx.h Makefile.in amarokpcast.protocol tagdialog.h amarokrc organizecollectiondialog.ui.h organizecollectiondialog.ui lastfm.h xmlloader_p.h starmanager.h pluginmanager.h systray.h enginecontroller.h firstrunwizard.ui.h amarok.profile.xml cuefile.h bcpp.cfg tagdialogbase.ui.h amarok_export.h amaroklastfm.protocol mydirlister.h smartplaylisteditor.h hi32-app-amarok.png tagdialogbase.ui sliderwidget.h tooltip.h actionclasses.h atomicurl.h expression.h Options2.ui.h hi48-app-amarok.png fht.h dynamicmode.h columnlist.h filebrowser.h podcastbundle.h clicklineedit.h xspfplaylist.h equalizergraph.h multitabbar_p.h colorgenerator.h threadmanager.h scriptmanagerbase.ui k3bexporter.h engine_fwd.h playlist.h devicemanager.h multitabbar.h metabundle.h amarok_plugin.desktop amarokui.rc prettypopupmenu.h htmlview.h configdialog.h browserToolBar.h hi16-app-amarok.png podcastsettingsbase.ui dbsetup.ui app.h tagguesserconfigdialog.ui.h deletedialog.h covermanager.h Options1.ui scancontroller.h amarokitpc.protocol kbookmarkhandler.h mediumpluginmanager.h metabundlesaver.h Options8.ui.h mediabrowser.h trackpickerdialog.h equalizerpresetmanager.h tdebug.h Options5.ui Makefile.am coverfetcher.h 
++KDE_DIST=firstrunwizard.ui amarokui_xmms.rc playlistbrowser.h equalizersetup.h Options2.ui Options5.ui.h trackpickerdialogbase.ui pixmapviewer.h amarok.desktop podcastsettings.h amarok_codecinstall.desktop transferdialog.h mydiroperator.h amarok_addaspodcast.desktop ktrm.h Options4.ui mediadevicemanager.h statistics.h playlistwindow.h amarok.h scriptmanager.h playlistloader.h playlistbrowseritem.h medium.h Options7.ui engineobserver.h hintlineedit.h tagguesserconfigdialog.ui editfilterdialog.h socketserver.h playerwindow.h deletedialogbase.ui hi22-app-amarok.png xmlloader.h Options8.ui queuemanager.h tracktooltip.h tagguesser.h collectionbrowser.h mountpointmanager.h hi128-app-amarok.png browserbar.h newdynamic.ui moodbar.h collectiondb.h playlistitem.h contextbrowser.h enginebase.h amarok_append.desktop playlistselection.h deviceconfiguredialog.h amarok_proxy.rb directorylist.h osd.h debug.h amarok_play_audiocd.desktop hi64-app-amarok.png scrobbler.h qstringx.h Makefile.in amarokpcast.protocol tagdialog.h amarokrc organizecollectiondialog.ui.h organizecollectiondialog.ui lastfm.h xmlloader_p.h starmanager.h pluginmanager.h systray.h enginecontroller.h firstrunwizard.ui.h amarok.profile.xml cuefile.h bcpp.cfg tagdialogbase.ui.h amarok_export.h amaroklastfm.protocol mydirlister.h smartplaylisteditor.h hi32-app-amarok.png tagdialogbase.ui sliderwidget.h tooltip.h actionclasses.h atomicurl.h expression.h Options2.ui.h hi48-app-amarok.png fht.h dynamicmode.h columnlist.h filebrowser.h podcastbundle.h clicklineedit.h xspfplaylist.h equalizergraph.h multitabbar_p.h colorgenerator.h threadmanager.h scriptmanagerbase.ui k3bexporter.h engine_fwd.h playlist.h devicemanager.h multitabbar.h metabundle.h amarok_plugin.desktop amarokui.rc prettypopupmenu.h htmlview.h configdialog.h browserToolBar.h hi16-app-amarok.png podcastsettingsbase.ui dbsetup.ui app.h tagguesserconfigdialog.ui.h deletedialog.h covermanager.h Options1.ui scancontroller.h amarokitpc.protocol kbookmarkhandler.h mediumpluginmanager.h metabundlesaver.h Options8.ui.h mediabrowser.h trackpickerdialog.h equalizerpresetmanager.h tdebug.h Options5.ui Makefile.am coverfetcher.h 
+ 
+ #>+ 19
+ clean-ui:
+@@ -2101,11 +2091,11 @@
+ 
+ 
+ #>+ 11
+-libamarok_la.all_cpp.cpp: $(srcdir)/Makefile.in $(srcdir)/actionclasses.cpp $(srcdir)/app.cpp $(srcdir)/atomicstring.cpp $(srcdir)/atomicurl.cpp $(srcdir)/browserbar.cpp $(srcdir)/clicklineedit.cpp $(srcdir)/collectionbrowser.cpp $(srcdir)/collectiondb.cpp $(srcdir)/columnlist.cpp $(srcdir)/configdialog.cpp $(srcdir)/contextbrowser.cpp $(srcdir)/coverfetcher.cpp $(srcdir)/covermanager.cpp $(srcdir)/cuefile.cpp $(srcdir)/deletedialog.cpp $(srcdir)/deviceconfiguredialog.cpp $(srcdir)/devicemanager.cpp $(srcdir)/directorylist.cpp $(srcdir)/dynamicmode.cpp $(srcdir)/enginebase.cpp $(srcdir)/enginecontroller.cpp $(srcdir)/engineobserver.cpp $(srcdir)/equalizergraph.cpp $(srcdir)/equalizerpresetmanager.cpp $(srcdir)/equalizersetup.cpp $(srcdir)/expression.cpp $(srcdir)/fht.cpp $(srcdir)/filebrowser.cpp $(srcdir)/hintlineedit.cpp $(srcdir)/htmlview.cpp $(srcdir)/iconloader.cpp $(srcdir)/k3bexporter.cpp $(srcdir)/kbookmarkhandler.cpp $(srcdir)/ktrm.cpp $(srcdir)/lastfm.cpp $(srcdir)/mediabrowser.cpp $(srcdir)/mediadevicemanager.cpp $(srcdir)/medium.cpp $(srcdir)/mediumpluginmanager.cpp $(srcdir)/metabundle.cpp $(srcdir)/metabundlesaver.cpp $(srcdir)/moodbar.cpp $(srcdir)/mountpointmanager.cpp $(srcdir)/multitabbar.cpp $(srcdir)/mydiroperator.cpp $(srcdir)/osd.cpp $(srcdir)/pixmapviewer.cpp $(srcdir)/playerwindow.cpp $(srcdir)/playlist.cpp $(srcdir)/playlistbrowser.cpp $(srcdir)/playlistbrowseritem.cpp $(srcdir)/playlistitem.cpp $(srcdir)/playlistloader.cpp $(srcdir)/playlistselection.cpp $(srcdir)/playlistwindow.cpp $(srcdir)/pluginmanager.cpp $(srcdir)/podcastsettings.cpp $(srcdir)/prettypopupmenu.cpp $(srcdir)/queuemanager.cpp $(srcdir)/refreshimages.cpp $(srcdir)/scancontroller.cpp $(srcdir)/scriptmanager.cpp $(srcdir)/scrobbler.cpp $(srcdir)/sliderwidget.cpp $(srcdir)/smartplaylisteditor.cpp $(srcdir)/socketserver.cpp $(srcdir)/starmanager.cpp $(srcdir)/statistics.cpp $(srcdir)/systray.cpp $(srcdir)/tagdialog.cpp $(srcdir)/tagguesser.cpp $(srcdir)/threadmanager.cpp $(srcdir)/tooltip.cpp $(srcdir)/trackpickerdialog.cpp $(srcdir)/tracktooltip.cpp $(srcdir)/transferdialog.cpp $(srcdir)/xmlloader.cpp $(srcdir)/xspfplaylist.cpp $(srcdir)/editfilterdialog.cpp Options1.cpp Options2.cpp Options4.cpp Options5.cpp Options7.cpp Options8.cpp dbsetup.cpp deletedialogbase.cpp firstrunwizard.cpp newdynamic.cpp organizecollectiondialog.cpp podcastsettingsbase.cpp scriptmanagerbase.cpp tagdialogbase.cpp tagguesserconfigdialog.cpp trackpickerdialogbase.cpp  playlistbrowser.moc browserbar.moc statistics.moc firstrunwizard.moc hintlineedit.moc moodbar.moc mediabrowser.moc trackpickerdialogbase.moc tagguesserconfigdialog.moc Options2.moc app.moc refreshimages.moc devicemanager.moc Options4.moc prettypopupmenu.moc deletedialogbase.moc Options5.moc Options7.moc transferdialog.moc editfilterdialog.moc metabundlesaver.moc starmanager.moc socketserver.moc playlistselection.moc scancontroller.moc deviceconfiguredialog.moc collectiondb.moc equalizerpresetmanager.moc xmlloader_p.moc tagdialogbase.moc multitabbar.moc multitabbar_p.moc scriptmanagerbase.moc cuefile.moc Options8.moc mediadevicemanager.moc deletedialog.moc ktrm.moc directorylist.moc mediumpluginmanager.moc newdynamic.moc enginecontroller.moc tagdialog.moc dbsetup.moc collectionbrowser.moc xmlloader.moc contextbrowser.moc podcastsettingsbase.moc playlistbrowseritem.moc organizecollectiondialog.moc smartplaylisteditor.moc htmlview.moc mydiroperator.moc podcastsettings.moc mountpointmanager.moc actionclasses.moc filebrowser.moc columnlist.moc Options1.moc scrobbler.moc osd.moc scriptmanager.moc threadmanager.moc configdialog.moc equalizersetup.moc playlistwindow.moc tooltip.moc tracktooltip.moc clicklineedit.moc playlistloader.moc queuemanager.moc covermanager.moc playlist.moc trackpickerdialog.moc lastfm.moc playerwindow.moc coverfetcher.moc enginebase.moc pixmapviewer.moc sliderwidget.moc
++libamarok_la.all_cpp.cpp: $(srcdir)/Makefile.in $(srcdir)/actionclasses.cpp $(srcdir)/app.cpp $(srcdir)/atomicstring.cpp $(srcdir)/atomicurl.cpp $(srcdir)/browserbar.cpp $(srcdir)/clicklineedit.cpp $(srcdir)/collectionbrowser.cpp $(srcdir)/collectiondb.cpp $(srcdir)/columnlist.cpp $(srcdir)/configdialog.cpp $(srcdir)/contextbrowser.cpp $(srcdir)/coverfetcher.cpp $(srcdir)/covermanager.cpp $(srcdir)/cuefile.cpp $(srcdir)/deletedialog.cpp $(srcdir)/deviceconfiguredialog.cpp $(srcdir)/devicemanager.cpp $(srcdir)/directorylist.cpp $(srcdir)/dynamicmode.cpp $(srcdir)/enginebase.cpp $(srcdir)/enginecontroller.cpp $(srcdir)/engineobserver.cpp $(srcdir)/equalizergraph.cpp $(srcdir)/equalizerpresetmanager.cpp $(srcdir)/equalizersetup.cpp $(srcdir)/expression.cpp $(srcdir)/fht.cpp $(srcdir)/filebrowser.cpp $(srcdir)/hintlineedit.cpp $(srcdir)/htmlview.cpp $(srcdir)/iconloader.cpp $(srcdir)/k3bexporter.cpp $(srcdir)/kbookmarkhandler.cpp $(srcdir)/ktrm.cpp $(srcdir)/lastfm.cpp $(srcdir)/mediabrowser.cpp $(srcdir)/mediadevicemanager.cpp $(srcdir)/medium.cpp $(srcdir)/mediumpluginmanager.cpp $(srcdir)/metabundle.cpp $(srcdir)/metabundlesaver.cpp $(srcdir)/moodbar.cpp $(srcdir)/mountpointmanager.cpp $(srcdir)/multitabbar.cpp $(srcdir)/mydiroperator.cpp $(srcdir)/osd.cpp $(srcdir)/pixmapviewer.cpp $(srcdir)/playerwindow.cpp $(srcdir)/playlist.cpp $(srcdir)/playlistbrowser.cpp $(srcdir)/playlistbrowseritem.cpp $(srcdir)/playlistitem.cpp $(srcdir)/playlistloader.cpp $(srcdir)/playlistselection.cpp $(srcdir)/playlistwindow.cpp $(srcdir)/pluginmanager.cpp $(srcdir)/podcastsettings.cpp $(srcdir)/prettypopupmenu.cpp $(srcdir)/queuemanager.cpp $(srcdir)/scancontroller.cpp $(srcdir)/scriptmanager.cpp $(srcdir)/scrobbler.cpp $(srcdir)/sliderwidget.cpp $(srcdir)/smartplaylisteditor.cpp $(srcdir)/socketserver.cpp $(srcdir)/starmanager.cpp $(srcdir)/statistics.cpp $(srcdir)/systray.cpp $(srcdir)/tagdialog.cpp $(srcdir)/tagguesser.cpp $(srcdir)/threadmanager.cpp $(srcdir)/tooltip.cpp $(srcdir)/trackpickerdialog.cpp $(srcdir)/tracktooltip.cpp $(srcdir)/transferdialog.cpp $(srcdir)/xmlloader.cpp $(srcdir)/xspfplaylist.cpp $(srcdir)/editfilterdialog.cpp Options1.cpp Options2.cpp Options4.cpp Options5.cpp Options7.cpp Options8.cpp dbsetup.cpp deletedialogbase.cpp firstrunwizard.cpp newdynamic.cpp organizecollectiondialog.cpp podcastsettingsbase.cpp scriptmanagerbase.cpp tagdialogbase.cpp tagguesserconfigdialog.cpp trackpickerdialogbase.cpp  playlistbrowser.moc browserbar.moc statistics.moc firstrunwizard.moc hintlineedit.moc moodbar.moc mediabrowser.moc trackpickerdialogbase.moc tagguesserconfigdialog.moc Options2.moc app.moc devicemanager.moc Options4.moc prettypopupmenu.moc deletedialogbase.moc Options5.moc Options7.moc transferdialog.moc editfilterdialog.moc metabundlesaver.moc starmanager.moc socketserver.moc playlistselection.moc scancontroller.moc deviceconfiguredialog.moc collectiondb.moc equalizerpresetmanager.moc xmlloader_p.moc tagdialogbase.moc multitabbar.moc multitabbar_p.moc scriptmanagerbase.moc cuefile.moc Options8.moc mediadevicemanager.moc deletedialog.moc ktrm.moc directorylist.moc mediumpluginmanager.moc newdynamic.moc enginecontroller.moc tagdialog.moc dbsetup.moc collectionbrowser.moc xmlloader.moc contextbrowser.moc podcastsettingsbase.moc playlistbrowseritem.moc organizecollectiondialog.moc smartplaylisteditor.moc htmlview.moc mydiroperator.moc podcastsettings.moc mountpointmanager.moc actionclasses.moc filebrowser.moc columnlist.moc Options1.moc scrobbler.moc osd.moc scriptmanager.moc threadmanager.moc configdialog.moc equalizersetup.moc playlistwindow.moc tooltip.moc tracktooltip.moc clicklineedit.moc playlistloader.moc queuemanager.moc covermanager.moc playlist.moc trackpickerdialog.moc lastfm.moc playerwindow.moc coverfetcher.moc enginebase.moc pixmapviewer.moc sliderwidget.moc
+ 	@echo 'creating libamarok_la.all_cpp.cpp ...'; \
+ 	rm -f libamarok_la.all_cpp.files libamarok_la.all_cpp.final; \
+ 	echo "#define KDE_USE_FINAL 1" >> libamarok_la.all_cpp.final; \
+-	for file in actionclasses.cpp app.cpp atomicstring.cpp atomicurl.cpp browserbar.cpp clicklineedit.cpp collectionbrowser.cpp collectiondb.cpp columnlist.cpp configdialog.cpp contextbrowser.cpp coverfetcher.cpp covermanager.cpp cuefile.cpp deletedialog.cpp deviceconfiguredialog.cpp devicemanager.cpp directorylist.cpp dynamicmode.cpp enginebase.cpp enginecontroller.cpp engineobserver.cpp equalizergraph.cpp equalizerpresetmanager.cpp equalizersetup.cpp expression.cpp fht.cpp filebrowser.cpp hintlineedit.cpp htmlview.cpp iconloader.cpp k3bexporter.cpp kbookmarkhandler.cpp ktrm.cpp lastfm.cpp mediabrowser.cpp mediadevicemanager.cpp medium.cpp mediumpluginmanager.cpp metabundle.cpp metabundlesaver.cpp moodbar.cpp mountpointmanager.cpp multitabbar.cpp mydiroperator.cpp osd.cpp pixmapviewer.cpp playerwindow.cpp playlist.cpp playlistbrowser.cpp playlistbrowseritem.cpp playlistitem.cpp playlistloader.cpp playlistselection.cpp playlistwindow.cpp pluginmanager.cpp podcastsettings.cpp prettypopupmenu.cpp queuemanager.cpp refreshimages.cpp scancontroller.cpp scriptmanager.cpp scrobbler.cpp sliderwidget.cpp smartplaylisteditor.cpp socketserver.cpp starmanager.cpp statistics.cpp systray.cpp tagdialog.cpp tagguesser.cpp threadmanager.cpp tooltip.cpp trackpickerdialog.cpp tracktooltip.cpp transferdialog.cpp xmlloader.cpp xspfplaylist.cpp editfilterdialog.cpp Options1.cpp Options2.cpp Options4.cpp Options5.cpp Options7.cpp Options8.cpp dbsetup.cpp deletedialogbase.cpp firstrunwizard.cpp newdynamic.cpp organizecollectiondialog.cpp podcastsettingsbase.cpp scriptmanagerbase.cpp tagdialogbase.cpp tagguesserconfigdialog.cpp trackpickerdialogbase.cpp ; do \
++	for file in actionclasses.cpp app.cpp atomicstring.cpp atomicurl.cpp browserbar.cpp clicklineedit.cpp collectionbrowser.cpp collectiondb.cpp columnlist.cpp configdialog.cpp contextbrowser.cpp coverfetcher.cpp covermanager.cpp cuefile.cpp deletedialog.cpp deviceconfiguredialog.cpp devicemanager.cpp directorylist.cpp dynamicmode.cpp enginebase.cpp enginecontroller.cpp engineobserver.cpp equalizergraph.cpp equalizerpresetmanager.cpp equalizersetup.cpp expression.cpp fht.cpp filebrowser.cpp hintlineedit.cpp htmlview.cpp iconloader.cpp k3bexporter.cpp kbookmarkhandler.cpp ktrm.cpp lastfm.cpp mediabrowser.cpp mediadevicemanager.cpp medium.cpp mediumpluginmanager.cpp metabundle.cpp metabundlesaver.cpp moodbar.cpp mountpointmanager.cpp multitabbar.cpp mydiroperator.cpp osd.cpp pixmapviewer.cpp playerwindow.cpp playlist.cpp playlistbrowser.cpp playlistbrowseritem.cpp playlistitem.cpp playlistloader.cpp playlistselection.cpp playlistwindow.cpp pluginmanager.cpp podcastsettings.cpp prettypopupmenu.cpp queuemanager.cpp scancontroller.cpp scriptmanager.cpp scrobbler.cpp sliderwidget.cpp smartplaylisteditor.cpp socketserver.cpp starmanager.cpp statistics.cpp systray.cpp tagdialog.cpp tagguesser.cpp threadmanager.cpp tooltip.cpp trackpickerdialog.cpp tracktooltip.cpp transferdialog.cpp xmlloader.cpp xspfplaylist.cpp editfilterdialog.cpp Options1.cpp Options2.cpp Options4.cpp Options5.cpp Options7.cpp Options8.cpp dbsetup.cpp deletedialogbase.cpp firstrunwizard.cpp newdynamic.cpp organizecollectiondialog.cpp podcastsettingsbase.cpp scriptmanagerbase.cpp tagdialogbase.cpp tagguesserconfigdialog.cpp trackpickerdialogbase.cpp ; do \
+ 	  echo "#include \"$$file\"" >> libamarok_la.all_cpp.files; \
+ 	  test ! -f $(srcdir)/$$file || egrep '^#pragma +implementation' $(srcdir)/$$file >> libamarok_la.all_cpp.final; \
+ 	done; \
+@@ -2144,7 +2134,6 @@
+ $(srcdir)/covermanager.cpp: Options1.h Options2.h Options4.h Options5.h Options7.h Options8.h dbsetup.h deletedialogbase.h firstrunwizard.h newdynamic.h organizecollectiondialog.h podcastsettingsbase.h scriptmanagerbase.h tagdialogbase.h tagguesserconfigdialog.h trackpickerdialogbase.h 
+ deletedialog.lo: deletedialog.moc 
+ mydiroperator.o: mydiroperator.moc 
+-refreshimages.lo: refreshimages.moc 
+ $(srcdir)/multitabbar.cpp: Options1.h Options2.h Options4.h Options5.h Options7.h Options8.h dbsetup.h deletedialogbase.h firstrunwizard.h newdynamic.h organizecollectiondialog.h podcastsettingsbase.h scriptmanagerbase.h tagdialogbase.h tagguesserconfigdialog.h trackpickerdialogbase.h 
+ equalizerpresetmanager.lo: equalizerpresetmanager.moc 
+ app.lo: app.moc 
+@@ -2155,7 +2144,6 @@
+ $(srcdir)/transferdialog.cpp: Options1.h Options2.h Options4.h Options5.h Options7.h Options8.h dbsetup.h deletedialogbase.h firstrunwizard.h newdynamic.h organizecollectiondialog.h podcastsettingsbase.h scriptmanagerbase.h tagdialogbase.h tagguesserconfigdialog.h trackpickerdialogbase.h 
+ $(srcdir)/prettypopupmenu.cpp: Options1.h Options2.h Options4.h Options5.h Options7.h Options8.h dbsetup.h deletedialogbase.h firstrunwizard.h newdynamic.h organizecollectiondialog.h podcastsettingsbase.h scriptmanagerbase.h tagdialogbase.h tagguesserconfigdialog.h trackpickerdialogbase.h 
+ enginecontroller.o: enginecontroller.moc 
+-refreshimages.o: refreshimages.moc 
+ scrobbler.o: scrobbler.moc 
+ podcastsettings.lo: podcastsettings.moc 
+ collectionbrowser.o: collectionbrowser.moc 
+@@ -2296,7 +2284,6 @@
+ mountpointmanager.o: mountpointmanager.moc 
+ $(srcdir)/Options1.ui.h: Options1.h Options2.h Options4.h Options5.h Options7.h Options8.h dbsetup.h deletedialogbase.h firstrunwizard.h newdynamic.h organizecollectiondialog.h podcastsettingsbase.h scriptmanagerbase.h tagdialogbase.h tagguesserconfigdialog.h trackpickerdialogbase.h 
+ cuefile.lo: cuefile.moc 
+-$(srcdir)/refreshimages.cpp: Options1.h Options2.h Options4.h Options5.h Options7.h Options8.h dbsetup.h deletedialogbase.h firstrunwizard.h newdynamic.h organizecollectiondialog.h podcastsettingsbase.h scriptmanagerbase.h tagdialogbase.h tagguesserconfigdialog.h trackpickerdialogbase.h 
+ browserbar.o: browserbar.moc 
+ $(srcdir)/mediadevicemanager.cpp: Options1.h Options2.h Options4.h Options5.h Options7.h Options8.h dbsetup.h deletedialogbase.h firstrunwizard.h newdynamic.h organizecollectiondialog.h podcastsettingsbase.h scriptmanagerbase.h tagdialogbase.h tagguesserconfigdialog.h trackpickerdialogbase.h 
+ $(srcdir)/playlistbrowseritem.cpp: Options1.h Options2.h Options4.h Options5.h Options7.h Options8.h dbsetup.h deletedialogbase.h firstrunwizard.h newdynamic.h organizecollectiondialog.h podcastsettingsbase.h scriptmanagerbase.h tagdialogbase.h tagguesserconfigdialog.h trackpickerdialogbase.h 
+diff -urN amarok-1.4.10.orig/amarok/src/app.cpp amarok-1.4.10/amarok/src/app.cpp
+--- amarok-1.4.10.orig/amarok/src/app.cpp	2009-08-22 11:38:20.442735663 -0400
++++ amarok-1.4.10/amarok/src/app.cpp	2009-08-22 13:22:21.017638995 -0400
+@@ -41,7 +41,6 @@
+ #include "playlistbrowser.h"
+ #include "playlistwindow.h"
+ #include "pluginmanager.h"
+-#include "refreshimages.h"
+ #include "scriptmanager.h"
+ #include "scrobbler.h"
+ #include "statusbar.h"
+diff -urN amarok-1.4.10.orig/amarok/src/collectionbrowser.cpp amarok-1.4.10/amarok/src/collectionbrowser.cpp
+--- amarok-1.4.10.orig/amarok/src/collectionbrowser.cpp	2009-08-22 11:38:19.648775016 -0400
++++ amarok-1.4.10/amarok/src/collectionbrowser.cpp	2009-08-22 13:49:11.268351838 -0400
+@@ -1471,7 +1471,7 @@
+ 
+         if( (cat == IdAlbum || cat == IdVisYearAlbum) && siblingSelection.count() == 1 ) // cover fetch isn't multiselection capable
+         {
+-            menu.insertItem( SmallIconSet( Amarok::icon( "download" ) ), i18n( "&Fetch Cover From amazon.%1" ).arg( CoverManager::amazonTld() ), this, SLOT( fetchCover() ), 0, FETCH );
++            menu.insertItem( SmallIconSet( Amarok::icon( "download" ) ), i18n( "&Fetch Cover From last.fm" ), this, SLOT( fetchCover() ), 0, FETCH );
+             #ifndef AMAZON_SUPPORT
+             menu.setItemEnabled( FETCH, false );
+             #endif
+diff -urN amarok-1.4.10.orig/amarok/src/collectiondb.cpp amarok-1.4.10/amarok/src/collectiondb.cpp
+--- amarok-1.4.10.orig/amarok/src/collectiondb.cpp	2009-08-22 11:38:20.439736108 -0400
++++ amarok-1.4.10/amarok/src/collectiondb.cpp	2009-08-22 13:44:46.547974864 -0400
+@@ -1029,13 +1029,6 @@
+ void
+ CollectionDB::createPersistentTables()
+ {
+-    // create amazon table
+-    query(          "CREATE TABLE amazon ( "
+-            "asin " + textColumnType(20) + ", "
+-            "locale " + textColumnType(2) + ", "
+-            "filename " + exactTextColumnType(33) + ", "
+-            "refetchdate INTEGER );" );
+-
+     // create lyrics table
+     query( QString( "CREATE TABLE lyrics ("
+             "url " + exactTextColumnType() + ", "
+@@ -1076,13 +1069,6 @@
+ void
+ CollectionDB::createPersistentTablesV12()
+ {
+-    // create amazon table
+-    query(          "CREATE TABLE amazon ( "
+-            "asin " + textColumnType(20) + ", "
+-            "locale " + textColumnType(2) + ", "
+-            "filename " + textColumnType(33) + ", "
+-            "refetchdate INTEGER );" );
+-
+     // create lyrics table
+     query( QString( "CREATE TABLE lyrics ("
+             "url " + textColumnType() + ", "
+@@ -1110,13 +1096,6 @@
+     const QString a( temp ? "TEMPORARY" : "" );
+     const QString b( temp ? "_fix" : "" );
+ 
+-    // create amazon table
+-    query(  QString( "CREATE %1 TABLE amazon%2 ( "
+-            "asin " + textColumnType(20) + ", "
+-            "locale " + textColumnType(2) + ", "
+-            "filename " + exactTextColumnType(33) + ", "
+-            "refetchdate INTEGER );" ).arg( a,b ) );
+-
+     // create lyrics table
+     query( QString( "CREATE %1 TABLE lyrics%2 ("
+             "url " + exactTextColumnType() + ", "
+@@ -1274,7 +1253,6 @@
+ void
+ CollectionDB::dropPersistentTables()
+ {
+-    query( "DROP TABLE amazon;" );
+     query( "DROP TABLE lyrics;" );
+     query( "DROP TABLE playlists;" );
+     query( "DROP TABLE tags_labels;" );
+@@ -1284,7 +1262,6 @@
+ void
+ CollectionDB::dropPersistentTablesV14()
+ {
+-    query( "DROP TABLE amazon;" );
+     query( "DROP TABLE lyrics;" );
+     query( "DROP TABLE label;" );
+     query( "DROP TABLE playlists;" );
+@@ -1865,6 +1842,7 @@
+ bool
+ CollectionDB::setAlbumImage( const QString& artist, const QString& album, const KURL& url )
+ {
++    debug() << url << endl;
+     QString tmpFile;
+     bool success = setAlbumImage( artist, album, fetchImage(url, tmpFile) );
+     KIO::NetAccess::removeTempFile( tmpFile ); //only removes file if it was created with NetAccess
+@@ -1873,7 +1851,7 @@
+ 
+ 
+ bool
+-CollectionDB::setAlbumImage( const QString& artist, const QString& album, QImage img, const QString& amazonUrl, const QString& asin )
++CollectionDB::setAlbumImage( const QString& artist, const QString& album, QImage img )
+ {
+     //show a wait cursor for the duration
+     Amarok::OverrideCursor keep;
+@@ -1885,10 +1863,6 @@
+     removeAlbumImage( artist_, album );
+ 
+     QCString key = md5sum( artist_, album );
+-    newAmazonReloadDate(asin, AmarokConfig::amazonLocale(), key);
+-    // Save Amazon product page URL as embedded string, for later retreival
+-    if ( !amazonUrl.isEmpty() )
+-        img.setText( "amazon-url", 0, amazonUrl );
+ 
+     const bool b = img.save( largeCoverDir().filePath( key ), "PNG");
+     emit coverChanged( artist_, album );
+@@ -2313,7 +2287,6 @@
+ 
+     QCString widthKey = "*@";
+     QCString key = md5sum( artist, album );
+-    query( "DELETE FROM amazon WHERE filename='" + key + '\'' );
+ 
+     // remove scaled versions of images (and add the asterisk for the shadow-caches)
+     QStringList scaledList = cacheCoverDir().entryList( widthKey + key + '*' );
+@@ -4071,9 +4044,9 @@
+ 
+       if( !QFile::exists(path + "/.directory") && !cover.endsWith( "nocover.png" ) )
+       {
+-         //QPixmap thumb;        //Not amazon nice.
+-         //if ( thumb.load( cover ) ){
+-         //thumb.save(path + "/.front.png", "PNG", -1 ); //hide files
++         QPixmap thumb;        //Not amazon nice.
++         if ( thumb.load( cover ) ){
++         thumb.save(path + "/folder.png", "PNG", -1 );
+ 
+          KSimpleConfig config(path + "/.directory");
+          config.setGroup("Desktop Entry");
+@@ -4083,7 +4056,7 @@
+             config.writeEntry( "Icon", cover );
+             config.sync();
+          }
+-         //}         //Not amazon nice.
++         }         //Not amazon nice.
+       }
+    }
+ 
+@@ -4668,39 +4641,6 @@
+     return values[0];
+ }
+ 
+-void CollectionDB::removeInvalidAmazonInfo( const QString& md5sum )
+-{
+-    query( QString( "DELETE FROM amazon WHERE filename='%1'" ).arg( md5sum ) );
+-}
+-
+-void CollectionDB::newAmazonReloadDate( const QString& asin, const QString& locale, const QString& md5sum)
+-{
+-    QStringList values = query(QString("SELECT filename FROM amazon WHERE filename = '%1'")
+-        .arg(md5sum));
+-    if(values.count() > 0)
+-    {
+-        query( QString("UPDATE amazon SET asin = '%1', locale = '%2', refetchdate = '%3' WHERE filename = '%4'")
+-            .arg(asin)
+-            .arg(locale)
+-            .arg(QDateTime::currentDateTime().addDays(80).toTime_t())
+-            .arg(md5sum));
+-    }
+-    else
+-    {
+-        insert( QString( "INSERT INTO amazon ( asin, locale, filename, refetchdate ) VALUES ( '%1', '%2', '%3', '%4');" )
+-         .arg(asin)
+-         .arg(locale)
+-         .arg(md5sum)
+-         .arg(QDateTime::currentDateTime().addDays(80).toTime_t()), NULL );
+-    }
+-}
+-
+-QStringList CollectionDB::staleImages()
+-{
+-    return query(QString("SELECT asin, locale, filename FROM amazon WHERE refetchdate < %1 ;")
+-            .arg(QDateTime::currentDateTime().toTime_t() ));
+-}
+-
+ void
+ CollectionDB::applySettings()
+ {
+@@ -4989,7 +4929,7 @@
+     }
+ 
+     else {
+-        setAlbumImage( fetcher->artist(), fetcher->album(), fetcher->image(), fetcher->amazonURL(), fetcher->asin() );
++        setAlbumImage( fetcher->artist(), fetcher->album(), fetcher->image() );
+         emit coverFetched( fetcher->artist(), fetcher->album() );
+     }
+ 
+@@ -5646,12 +5586,10 @@
+         if ( PersistentVersion.toInt() < 15 )
+         {
+             createPersistentTablesV14( true );
+-            query( "INSERT INTO amazon_fix SELECT asin,locale,filename,refetchdate FROM amazon;" );
+             query( "INSERT INTO lyrics_fix SELECT url,deviceid,lyrics FROM lyrics;" );
+             query( "INSERT INTO playlists_fix SELECT playlist,url,tracknum FROM playlists;" );
+             dropPersistentTablesV14();
+             createPersistentTablesV14( false );
+-            query( "INSERT INTO amazon SELECT * FROM amazon_fix;" );
+             query( "INSERT INTO lyrics SELECT * FROM lyrics_fix;" );
+             query( "INSERT INTO playlists SELECT * FROM playlists_fix;" );
+         }
+diff -urN amarok-1.4.10.orig/amarok/src/collectiondb.h amarok-1.4.10/amarok/src/collectiondb.h
+--- amarok-1.4.10.orig/amarok/src/collectiondb.h	2009-08-22 11:38:19.663776347 -0400
++++ amarok-1.4.10/amarok/src/collectiondb.h	2009-08-22 12:37:54.798174576 -0400
+@@ -434,7 +434,7 @@
+         /** Saves images located on the user's filesystem */
+         bool setAlbumImage( const QString& artist, const QString& album, const KURL& url );
+         /** Saves images obtained from CoverFetcher */
+-        bool setAlbumImage( const QString& artist, const QString& album, QImage img, const QString& amazonUrl = QString::null, const QString& asin = QString::null );
++        bool setAlbumImage( const QString& artist, const QString& album, QImage img );
+ 
+         QString findAmazonImage( const QString &artist, const QString &album, const uint width = 1 );
+         QString findDirectoryImage( const QString& artist, const QString& album, uint width = 0 );
+@@ -484,11 +484,6 @@
+         void setLyrics( const QString& url, const QString& lyrics, const QString &uniqueid = QString::null );
+         QString getLyrics( const QString& url );
+ 
+-        /** Remove from the amazon table the item with the specified md5sum **/
+-        void removeInvalidAmazonInfo( const QString& md5sum );
+-        void newAmazonReloadDate( const QString& asin, const QString& locale, const QString& md5sum );
+-        QStringList staleImages();
+-
+         DbConnection::DbConnectionType getDbConnectionType() const { return m_dbConnType; }
+         bool isConnected();
+         void releasePreviousConnection(QThread *currThread);
+diff -urN amarok-1.4.10.orig/amarok/src/contextbrowser.cpp amarok-1.4.10/amarok/src/contextbrowser.cpp
+--- amarok-1.4.10.orig/amarok/src/contextbrowser.cpp	2009-08-22 11:38:20.437735462 -0400
++++ amarok-1.4.10/amarok/src/contextbrowser.cpp	2009-08-22 13:51:47.817348629 -0400
+@@ -175,9 +175,9 @@
+ QString albumImageTooltip( const QString &albumImage, int size )
+ {
+     if ( albumImage == CollectionDB::instance()->notAvailCover( false, size ) )
+-        return escapeHTMLAttr( i18n( "Click to fetch cover from amazon.%1, right-click for menu." ).arg( CoverManager::amazonTld() ) );
++        return escapeHTMLAttr( i18n( "Click to fetch cover from last.fm, right-click for menu." ) );
+ 
+-    return escapeHTMLAttr( i18n( "Click for information from Amazon, right-click for menu." ) );
++    return escapeHTMLAttr( i18n( "Right-click for menu." ) );
+ }
+ 
+ 
+@@ -474,25 +474,6 @@
+         ScriptManager::instance()->runScript( url.path() );
+     }
+ 
+-    // When left-clicking on cover image, open browser with amazon site
+-    else if ( url.protocol() == "fetchcover" )
+-    {
+-        QString albumPath = CollectionDB::instance()->albumImage(artist, album, false, 0 );
+-        if ( albumPath == CollectionDB::instance()->notAvailCover( false, 0 ) )
+-        {
+-            CollectionDB::instance()->fetchCover( this, artist, album, false );
+-            return;
+-        }
+-
+-        QImage img( albumPath );
+-        const QString amazonUrl = img.text( "amazon-url" );
+-
+-        if ( amazonUrl.isEmpty() )
+-            KMessageBox::information( this, i18n( "<p>There is no product information available for this image.<p>Right-click on image for menu." ) );
+-        else
+-            Amarok::invokeBrowser( amazonUrl );
+-    }
+-
+     /* open konqueror with musicbrainz search result for artist-album */
+     else if ( url.protocol() == "musicbrainz" )
+     {
+diff -urN amarok-1.4.10.orig/amarok/src/coverfetcher.cpp amarok-1.4.10/amarok/src/coverfetcher.cpp
+--- amarok-1.4.10.orig/amarok/src/coverfetcher.cpp	2009-08-22 11:38:20.561728744 -0400
++++ amarok-1.4.10/amarok/src/coverfetcher.cpp	2009-08-22 14:24:39.841020123 -0400
+@@ -17,6 +17,7 @@
+ #include <qlabel.h>
+ #include <qlayout.h>
+ #include <qregexp.h>
++#include <qurl.h>
+ 
+ #include <kapplication.h>
+ #include <kcombobox.h>
+@@ -43,7 +44,7 @@
+         menu.insertTitle( i18n( "Cover Image" ) );
+ 
+         menu.insertItem( SmallIconSet( Amarok::icon( "zoom" ) ), i18n( "&Show Fullsize" ), SHOW );
+-        menu.insertItem( SmallIconSet( Amarok::icon( "download" ) ), i18n( "&Fetch From amazon.%1" ).arg( CoverManager::amazonTld() ), FETCH );
++        menu.insertItem( SmallIconSet( Amarok::icon( "download" ) ), i18n( "&Fetch From last.fm" ), FETCH );
+         menu.insertItem( SmallIconSet( Amarok::icon( "files" ) ), i18n( "Set &Custom Cover" ), CUSTOM );
+         bool disable = !album.isEmpty(); // disable setting covers for unknown albums
+         menu.setItemEnabled( FETCH, disable );
+@@ -130,7 +131,7 @@
+         : QObject( parent, "CoverFetcher" )
+         , m_artist( artist )
+         , m_album( album )
+-        , m_size( 2 )
++        , m_size( 3 )
+         , m_success( true )
+ {
+     DEBUG_FUNC_INFO
+@@ -193,45 +194,40 @@
+ {
+     DEBUG_FUNC_INFO
+ 
+-    // Static license Key. Thanks hydrogen ;-)
+-    const QString LICENSE( "11ZKJS8X1ETSTJ6MT802" );
+-
+     // reset all values
+-    m_coverAmazonUrls.clear();
+-    m_coverAsins.clear();
+     m_coverUrls.clear();
+     m_coverNames.clear();
+     m_xml = QString::null;
+-    m_size = 2;
++    m_size = 3;
+ 
+-    if ( m_queries.isEmpty() ) {
+-        debug() << "m_queries is empty" << endl;
++    QString url = "http://ws.audioscrobbler.com/2.0/";
++    url.append( "?method=album.getinfo" );
++    url.append( "&api_key=402d3ca8e9bc9d3cf9b85e1202944ca5" );
++
++    QString q_album;
++    QString q_artist;
++    if ( !m_queries.isEmpty() ) {
++        QStringList query = QStringList::split( " - ", m_queries[0] );
++        q_artist = query[0]; q_album = query[1];
++    }
++    else if ( m_album.isEmpty() ) {
++        debug() << "m_album is empty" << endl;
+         finishWithError( i18n("No cover found") );
+         return;
+     }
+-    QString query = m_queries.front();
+-    m_queries.pop_front();
+-
+-    // '&' breaks searching
+-    query.remove('&');
++    else if ( m_artist.isEmpty() ) {
++        debug() << "m_artist is empty" << endl;
++        finishWithError( i18n("No cover found") );
++    }
++    else {
++        q_album = m_album;
++        q_artist = m_artist;
++    }
++    QUrl::encode( q_album );
++    url.append( "&album=" ); url.append( q_album );
++    QUrl::encode( q_artist );
++    url.append( "&artist=" ); url.append( q_artist );
+     
+-    QString locale = AmarokConfig::amazonLocale();
+-    QString tld;
+-
+-    if( locale == "us" )
+-        tld = "com";
+-    else if( locale =="uk" )
+-        tld = "co.uk";
+-    else
+-        tld = locale;
+-
+-    int mibenum = 106; // utf-8
+-
+-    QString url;
+-    url = "http://ecs.amazonaws." + tld
+-        + "/onca/xml?Service=AWSECommerceService&Version=2007-10-29&Operation=ItemSearch&AssociateTag=webservices-20&AWSAccessKeyId=" + LICENSE
+-        + "&Keywords=" + KURL::encode_string_no_slash( query, mibenum )
+-        + "&SearchIndex=Music&ResponseGroup=Small,Images";
+     debug() << url << endl;
+ 
+     KIO::TransferJob* job = KIO::storedGet( url, false, false );
+@@ -253,7 +249,7 @@
+     // NOTE: job can become 0 when this method is called from attemptAnotherFetch()
+ 
+     if( job && job->error() ) {
+-        finishWithError( i18n("There was an error communicating with Amazon."), job );
++        finishWithError( i18n("There was an error communicating with last.fm."), job );
+         return;
+     }
+     if ( job ) {
+@@ -263,110 +259,48 @@
+ 
+     QDomDocument doc;
+     if( !doc.setContent( m_xml ) ) {
+-        m_errors += i18n("The XML obtained from Amazon is invalid.");
++        m_errors += i18n("The XML obtained from last.fm is invalid.");
+         startFetch();
+         return;
+     }
+ 
+-    m_coverAsins.clear();
+-    m_coverAmazonUrls.clear();
+     m_coverUrls.clear();
+     m_coverNames.clear();
+ 
+-    // the url for the Amazon product info page
+-    const QDomNodeList list = doc.documentElement().namedItem( "Items" ).childNodes();
++    const QDomNodeList list = doc.documentElement().namedItem( "album" ).childNodes();
+ 
+-    for(int i = 0; i < list.count(); i++ )
++    QString size;
++    switch ( m_size )
++    {
++        case 0:  size = "small";       break;
++        case 1:  size = "medium";      break;
++        case 2:  size = "large";       break;
++        default: size = "extralarge";  break;
++    }
++    QString coverUrl;
++    for ( int i = 0; i < list.count(); i++ )
+     {
+         QDomNode n = list.item( i );
+-        if( n.isElement() && n.nodeName() == "IsValid" )
++        if ( n.nodeName() == "image" )
+         {
+-            if( n.toElement().text() == "False" )
+-            {
+-                warning() << "The XML Is Invalid!";
+-                return;
+-            }
+-        }
+-        else if( list.item( i ).nodeName() == "Item" )
+-        {
+-            const QDomNode node = list.item( i );
+-            parseItemNode( node );
+-        }
+-    }
+-    attemptAnotherFetch();
+-}
+-
+-void CoverFetcher::parseItemNode( const QDomNode &node )
+-{
+-    QDomNode it = node.firstChild();
++            QDomNode node = list.item( i );
+ 
+-    QString size;
+-    switch( m_size )
+-    {
+-        case 0:  size = "Small";  break;
+-        case 1:  size = "Medium"; break;
+-        default: size = "Large";  break;
+-    }
+-    size += "Image";
+-
+-    while ( !it.isNull() ) {
+-        if ( it.isElement() ) {
+-            QDomElement e = it.toElement();
+-            if(e.tagName()=="ASIN")
+-            {
+-                m_asin = e.text();
+-                m_coverAsins += m_asin;
+-            }
+-            else if(e.tagName() == "DetailPageURL" )
+-            {
+-                m_amazonURL = e.text();
+-                m_coverAmazonUrls += m_amazonURL;
+-            }
+-            else if( e.tagName() == size )
+-            {
+-                QDomNode subIt = e.firstChild();
+-                while( !subIt.isNull() )
+-                {
+-                    if( subIt.isElement() )
+-                    {
+-                        QDomElement subE = subIt.toElement();
+-                        if( subE.tagName() == "URL" )
+-                        {
+-                            const QString coverUrl = subE.text();
+-                            m_coverUrls += coverUrl;
+-                            break;
+-                        }
+-                    }
+-                    subIt = subIt.nextSibling();
+-                }
+-            }
+-            else if( e.tagName() == "ItemAttributes" )
+-            {
+-                QDomNodeList nodes = e.childNodes();
+-                QDomNode iter;
+-                QString artist;
+-                QString album;
+-                for( int i = 0; i < nodes.count(); i++ )
+-                {
+-                    iter = nodes.item( i );
+-
+-                    if( iter.isElement() )
+-                    {
+-                        if( iter.nodeName() == "Artist" )
+-                        {
+-                            artist = iter.toElement().text();
+-                        }
+-                        else if( iter.nodeName() == "Title" )
+-                        {
+-                            album = iter.toElement().text();
+-                        }
+-                    }
++            if ( node.hasAttributes() ) {
++                QString imageSize = node.attributes().namedItem( "size" ).nodeValue();
++                if ( imageSize == size && node.isElement() ) {
++                    coverUrl = node.toElement().text();
++                    // remove the following line if you enjoy spending half an
++                    // hour debugging seemingly inexplicible crashes
++                    m_coverNames += QString( m_artist + " - " + m_album);
++                    m_coverUrls += coverUrl;
+                 }
+-                m_coverNames += QString( artist + " - " + album );
+             }
+         }
+-        it = it.nextSibling();
+     }
++
++    if ( coverUrl.isEmpty() )
++        return getUserQuery( i18n("You have seen all the covers last.fm returned using the query below. Perhaps you can refine it:") );
++    attemptAnotherFetch();
+ }
+ 
+ void
+@@ -383,14 +317,7 @@
+ 
+     m_image.loadFromData( static_cast<KIO::StoredTransferJob*>( job )->data() );
+ 
+-    if( m_image.width() <= 1 ) {
+-        //Amazon seems to offer images of size 1x1 sometimes
+-        //Amazon has nothing to offer us for the requested image size
+-        m_errors += i18n("The cover-data produced an invalid image.");
+-        attemptAnotherFetch();
+-    }
+-
+-    else if( m_userCanEditQuery )
++    if( m_userCanEditQuery )
+         //yay! image found :)
+         //lets see if the user wants it
+         showCover();
+@@ -407,7 +334,7 @@
+     DEBUG_BLOCK
+ 
+     if( !m_coverUrls.isEmpty() ) {
+-        // Amazon suggested some more cover URLs to try before we
++        // last.fm suggested some more cover URLs to try before we
+         // try a different query
+ 
+         KIO::TransferJob* job = KIO::storedGet( KURL(m_coverUrls.front()), false, false );
+@@ -419,12 +346,6 @@
+ 
+         m_currentCoverName = m_coverNames.front();
+         m_coverNames.pop_front();
+-
+-        m_amazonURL = m_coverAmazonUrls.front();
+-        m_coverAmazonUrls.pop_front();
+-
+-        m_asin = m_coverAsins.front();
+-        m_coverAsins.pop_front();
+     }
+ 
+     else if( !m_xml.isEmpty() && m_size > 0 ) {
+@@ -443,9 +364,7 @@
+     else if( m_userCanEditQuery ) {
+         // we have exhausted all the predetermined queries
+         // so lets let the user give it a try
+-        getUserQuery( i18n("You have seen all the covers Amazon returned using the query below. Perhaps you can refine it:") );
+-        m_coverAmazonUrls.clear();
+-        m_coverAsins.clear();
++        getUserQuery( i18n("You have seen all the covers last.fm returned using the query below. Perhaps you can refine it:") );
+         m_coverUrls.clear();
+         m_coverNames.clear();
+     }
+@@ -462,28 +381,7 @@
+         EditSearchDialog( QWidget* parent, const QString &text, const QString &keyword, CoverFetcher *fetcher )
+                 : KDialog( parent )
+         {
+-            setCaption( i18n( "Amazon Query Editor" ) );
+-
+-            // amazon combo box
+-            KComboBox* amazonLocale = new KComboBox( this );
+-            amazonLocale->insertItem( i18n("International"), CoverFetcher::International );
+-            amazonLocale->insertItem( i18n("Canada"), CoverFetcher::Canada );
+-            amazonLocale->insertItem( i18n("France"), CoverFetcher::France );
+-            amazonLocale->insertItem( i18n("Germany"), CoverFetcher::Germany );
+-            amazonLocale->insertItem( i18n("Japan"), CoverFetcher::Japan);
+-            amazonLocale->insertItem( i18n("United Kingdom"), CoverFetcher::UK );
+-            if( CoverManager::instance() )
+-                connect( amazonLocale, SIGNAL( activated(int) ),
+-                        CoverManager::instance(), SLOT( changeLocale(int) ) );
+-            else
+-                connect( amazonLocale, SIGNAL( activated(int) ),
+-                        fetcher, SLOT( changeLocale(int) ) );
+-            QHBoxLayout *hbox1 = new QHBoxLayout( 8 );
+-            hbox1->addWidget( new QLabel( i18n( "Amazon Locale: " ), this ) );
+-            hbox1->addWidget( amazonLocale );
+-
+-            int currentLocale = CoverFetcher::localeStringToID( AmarokConfig::amazonLocale() );
+-            amazonLocale->setCurrentItem( currentLocale );
++            setCaption( i18n( "Query Editor" ) );
+ 
+             KPushButton* cancelButton = new KPushButton( KStdGuiItem::cancel(), this );
+             KPushButton* searchButton = new KPushButton( i18n("&Search"), this );
+@@ -494,7 +392,6 @@
+             hbox2->addWidget( cancelButton );
+ 
+             QVBoxLayout *vbox = new QVBoxLayout( this, 8, 8 );
+-            vbox->addLayout( hbox1 );
+             vbox->addWidget( new QLabel( "<qt>" + text, this ) );
+             vbox->addWidget( new KLineEdit( keyword, this, "Query" ) );
+             vbox->addLayout( hbox2 );
+@@ -511,54 +408,12 @@
+         QString query() { return static_cast<KLineEdit*>(child( "Query" ))->text(); }
+     };
+ 
+-QString
+-CoverFetcher::localeIDToString( int id )//static
+-{
+-    switch ( id )
+-    {
+-    case International:
+-        return "us";
+-    case Canada:
+-        return "ca";
+-    case France:
+-        return "fr";
+-    case Germany:
+-        return "de";
+-    case Japan:
+-        return "jp";
+-    case UK:
+-        return "uk";
+-    }
+-
+-    return "us";
+-}
+-
+-int
+-CoverFetcher::localeStringToID( const QString &s )
+-{
+-    int id = International;
+-    if( s == "fr" ) id = France;
+-    else if( s == "de" ) id = Germany;
+-    else if( s == "jp" ) id = Japan;
+-    else if( s == "uk" ) id = UK;
+-    else if( s == "ca" ) id = Canada;
+-
+-    return id;
+-}
+-
+-void
+-CoverFetcher::changeLocale( int id )//SLOT
+-{
+-    QString locale = localeIDToString( id );
+-    AmarokConfig::setAmazonLocale( locale );
+-}
+-
+ 
+ void
+ CoverFetcher::getUserQuery( QString explanation )
+ {
+     if( explanation.isEmpty() )
+-        explanation = i18n("Ask Amazon for covers using this query:");
++        explanation = i18n("Ask last.fm for covers using this query:");
+ 
+     EditSearchDialog dialog(
+             static_cast<QWidget*>( parent() ),
+@@ -638,8 +493,6 @@
+         break;
+     case 1000: //showQueryEditor()
+         getUserQuery();
+-        m_coverAmazonUrls.clear();
+-        m_coverAsins.clear();
+         m_coverUrls.clear();
+         m_coverNames.clear();
+         break;
+diff -urN amarok-1.4.10.orig/amarok/src/coverfetcher.h amarok-1.4.10/amarok/src/coverfetcher.h
+--- amarok-1.4.10.orig/amarok/src/coverfetcher.h	2009-08-22 11:38:19.643818604 -0400
++++ amarok-1.4.10/amarok/src/coverfetcher.h	2009-08-22 13:46:21.224819113 -0400
+@@ -56,17 +56,11 @@
+ 
+     QString artist() const { return m_artist; }
+     QString album() const { return m_album; }
+-    QString amazonURL() const { return m_amazonURL; }
+-    QString asin() const { return m_asin; }
+     QImage image() const { return m_image; }
+ 
+     bool wasError() const { return !m_success; }
+     QStringList errors() const { return m_errors; }
+ 
+-    enum Locale { International=0, France, Germany, Japan, UK, Canada };
+-    static QString localeIDToString( int id );
+-    static int localeStringToID( const QString &locale );
+-
+ signals:
+     /// The CollectionDB can get the cover information using the pointer
+     void result( CoverFetcher* );
+@@ -74,7 +68,6 @@
+ private slots:
+     void finishedXmlFetch( KIO::Job* job );
+     void finishedImageFetch( KIO::Job* job );
+-    void changeLocale( int id );
+ 
+ private:
+     const QString m_artist;
+@@ -84,13 +77,9 @@
+     QString m_userQuery; /// the query from the query edit dialog
+     QString m_xml;
+     QImage  m_image;
+-    QString m_amazonURL;
+-    QString m_asin;
+     int     m_size;
+ 
+     QStringList m_queries;
+-    QStringList m_coverAsins;
+-    QStringList m_coverAmazonUrls;
+     QStringList m_coverUrls;
+     QStringList m_coverNames;
+     QString     m_currentCoverName;
+@@ -102,9 +91,6 @@
+     /// The fetch was successful!
+     void finish();
+ 
+-    /// Parse one <Item> QDomNode and append results.
+-    void parseItemNode( const QDomNode &node );
+-
+     /// The fetch failed, finish up and log an error message
+     void finishWithError( const QString &message, KIO::Job *job = 0 );
+ 
+diff -urN amarok-1.4.10.orig/amarok/src/covermanager.cpp amarok-1.4.10/amarok/src/covermanager.cpp
+--- amarok-1.4.10.orig/amarok/src/covermanager.cpp	2009-08-22 11:38:19.646776054 -0400
++++ amarok-1.4.10/amarok/src/covermanager.cpp	2009-08-22 13:48:38.643794369 -0400
+@@ -163,29 +163,11 @@
+     m_viewMenu->setItemChecked( AllAlbums, true );
+     connect( m_viewMenu, SIGNAL( activated(int) ), SLOT( changeView(int) ) );
+ 
+-    #ifdef AMAZON_SUPPORT
+-    // amazon locale menu
+-    m_amazonLocaleMenu = new KPopupMenu( this );
+-    m_amazonLocaleMenu->insertItem( i18n("International"), CoverFetcher::International );
+-    m_amazonLocaleMenu->insertItem( i18n("Canada"), CoverFetcher::Canada );
+-    m_amazonLocaleMenu->insertItem( i18n("France"), CoverFetcher::France );
+-    m_amazonLocaleMenu->insertItem( i18n("Germany"), CoverFetcher::Germany );
+-    m_amazonLocaleMenu->insertItem( i18n("Japan"), CoverFetcher::Japan);
+-    m_amazonLocaleMenu->insertItem( i18n("United Kingdom"), CoverFetcher::UK );
+-    connect( m_amazonLocaleMenu, SIGNAL( activated(int) ), SLOT( changeLocale(int) ) );
+-    #endif
+-
+     KToolBar* toolBar = new KToolBar( hbox );
+     toolBar->setIconText( KToolBar::IconTextRight );
+     toolBar->setFrameShape( QFrame::NoFrame );
+     toolBar->insertButton( "view_choose", 1, m_viewMenu, true, i18n( "View" ) );
+     #ifdef AMAZON_SUPPORT
+-    toolBar->insertButton( "babelfish", 2, m_amazonLocaleMenu, true, i18n( "Amazon Locale" ) );
+-
+-    QString locale = AmarokConfig::amazonLocale();
+-    m_currentLocale = CoverFetcher::localeStringToID( locale );
+-    m_amazonLocaleMenu->setItemChecked( m_currentLocale, true );
+-
+     //fetch missing covers button
+     m_fetchButton = new KPushButton( KGuiItem( i18n("Fetch Missing Covers"), Amarok::icon( "download" ) ), hbox );
+     connect( m_fetchButton, SIGNAL(clicked()), SLOT(fetchMissingCovers()) );
+@@ -294,21 +276,6 @@
+ }
+ 
+ 
+-QString CoverManager::amazonTld() //static
+-{
+-    if (AmarokConfig::amazonLocale() == "us")
+-        return "com";
+-            else if (AmarokConfig::amazonLocale()== "jp")
+-        return "co.jp";
+-            else if (AmarokConfig::amazonLocale() == "uk")
+-        return "co.uk";
+-            else if (AmarokConfig::amazonLocale() == "ca")
+-        return "ca";
+-            else
+-        return AmarokConfig::amazonLocale();
+-}
+-
+-
+ void CoverManager::fetchMissingCovers() //SLOT
+ {
+     #ifdef AMAZON_SUPPORT
+@@ -499,7 +466,7 @@
+     }
+     else {
+         menu.insertItem( SmallIconSet( Amarok::icon( "zoom" ) ), i18n( "&Show Fullsize" ), SHOW );
+-        menu.insertItem( SmallIconSet( Amarok::icon( "download" ) ), i18n( "&Fetch From amazon.%1" ).arg( CoverManager::amazonTld() ), FETCH );
++        menu.insertItem( SmallIconSet( Amarok::icon( "download" ) ), i18n( "&Fetch From last.fm" ), FETCH );
+         menu.insertItem( SmallIconSet( Amarok::icon( "files" ) ), i18n( "Set &Custom Cover" ), CUSTOM );
+         menu.insertItem( SmallIconSet( Amarok::icon( "add_playlist" ) ), i18n( "&Append to Playlist" ), APPEND );
+         menu.insertSeparator();
+@@ -643,15 +610,6 @@
+     m_currentView = id;
+ }
+ 
+-void CoverManager::changeLocale( int id ) //SLOT
+-{
+-    QString locale = CoverFetcher::localeIDToString( id );
+-    AmarokConfig::setAmazonLocale( locale );
+-    m_amazonLocaleMenu->setItemChecked( m_currentLocale, false );
+-    m_amazonLocaleMenu->setItemChecked( id, true );
+-    m_currentLocale = id;
+-}
+-
+ 
+ void CoverManager::coverFetched( const QString &artist, const QString &album ) //SLOT
+ {
+diff -urN amarok-1.4.10.orig/amarok/src/covermanager.h amarok-1.4.10/amarok/src/covermanager.h
+--- amarok-1.4.10.orig/amarok/src/covermanager.h	2009-08-22 11:38:20.558728891 -0400
++++ amarok-1.4.10/amarok/src/covermanager.h	2009-08-22 13:48:49.188329042 -0400
+@@ -42,13 +42,8 @@
+ 
+         void setStatusText( QString text );
+ 
+-         /**
+-         * Return the top level domain for the current locale
+-         **/
+-        static QString amazonTld();
+     public slots:
+         void updateStatusBar();
+-        void changeLocale( int id );
+ 
+     private slots:
+         void slotArtistSelected( QListViewItem* );
+@@ -79,11 +74,8 @@
+         CoverView      *m_coverView;
+         ClickLineEdit  *m_searchEdit;
+         KPushButton    *m_fetchButton;
+-        KPopupMenu     *m_amazonLocaleMenu;
+         KPopupMenu     *m_viewMenu;
+-        QToolButton    *m_amazonLocaleButton;
+         QToolButton    *m_viewButton;
+-        int             m_currentLocale;
+         int             m_currentView;
+ 
+         //status bar widgets
+diff -urN amarok-1.4.10.orig/amarok/src/refreshimages.cpp amarok-1.4.10/amarok/src/refreshimages.cpp
+--- amarok-1.4.10.orig/amarok/src/refreshimages.cpp	2009-08-22 11:38:19.643818604 -0400
++++ amarok-1.4.10/amarok/src/refreshimages.cpp	1969-12-31 19:00:00.000000000 -0500
+@@ -1,163 +0,0 @@
+-// (c) 2005 Ian Monroe <ian@monroe.nu>
+-// See COPYING file for licensing information.
+-
+-#define DEBUG_PREFIX "RefreshImages"
+-
+-#include "amarok.h"
+-#include "collectiondb.h"
+-#include "debug.h"
+-#include "refreshimages.h"
+-#include "statusbar.h"
+-
+-#include <qdom.h>
+-#include <qimage.h>
+-#include <qmap.h>
+-#include <qobject.h>
+-#include <qstringlist.h>
+-#include <qvaluelist.h>
+-#include <qvariant.h>
+-
+-#include <kio/job.h>
+-#include <kio/jobclasses.h>
+-#include <kio/scheduler.h>
+-
+-#include <klocale.h>
+-
+-
+-RefreshImages::RefreshImages()
+-{
+-    //"SELECT asin, locale, filename FROM amazon WHERE refetchdate > %1 ;"
+-    const QStringList staleImages = CollectionDB::instance()->staleImages();
+-    QStringList::ConstIterator it = staleImages.begin();
+-    QStringList::ConstIterator end = staleImages.end();
+-
+-    while( it != end )
+-    {
+-        QString asin=*it;
+-        it++;
+-        QString locale = *it;
+-        it++;
+-        QString md5sum = *it;
+-        if ( asin.isEmpty() || locale.isEmpty() || md5sum.isEmpty() )
+-        {
+-            //somehow we have entries without ASIN
+-            if ( !md5sum.isEmpty() ) //I've never seen this, just to be sure
+-                CollectionDB::instance()->removeInvalidAmazonInfo(md5sum);
+-            it++;
+-            if ( it==end )
+-                deleteLater();
+-
+-            continue;
+-        }
+-
+-        QString url =
+-            QString("http://webservices.amazon.%1/onca/xml?Service=AWSECommerceService&SubscriptionId=%2&Operation=ItemLookup&ItemId=%3&ResponseGroup=Small,Images")
+-             .arg(localeToTLD(locale))
+-             .arg("0RQSQ0B8CRY7VX2VF3G2") //Ian Monroe
+-             .arg(asin);
+-
+-        debug() << url << endl;
+-
+-        KIO::TransferJob* job = KIO::storedGet( url, false, false );
+-        KIO::Scheduler::scheduleJob( job );
+-
+-        //Amarok::StatusBar::instance()->newProgressOperation( job );
+-        job->setName( md5sum.ascii() );
+-        it++; //iterate to the next set
+-
+-        m_jobInfo[md5sum] = JobInfo( asin, locale, it == end );
+-        connect( job, SIGNAL( result( KIO::Job* ) ), SLOT( finishedXmlFetch( KIO::Job* ) ) );
+-    }
+-}
+-
+-void
+-RefreshImages::finishedXmlFetch( KIO::Job* xmlJob ) //SLOT
+-{
+-    if ( xmlJob->error() )
+-    {
+-        Amarok::StatusBar::instance()->shortMessage( i18n( "There was an error communicating with Amazon." ) );
+-        if ( m_jobInfo[ xmlJob->name() ].m_last )
+-            deleteLater();
+-
+-        return;
+-    }
+-
+-    KIO::StoredTransferJob* const storedJob = static_cast<KIO::StoredTransferJob*>( xmlJob );
+-    const QString xml = QString::fromUtf8( storedJob->data().data(), storedJob->data().size() );
+-
+-    QDomDocument doc;
+-    if ( !doc.setContent( xml ) )
+-      return;
+-
+-    QStringList imageSizes;
+-    imageSizes << "LargeImage" << "MediumImage" << "SmallImage";
+-    QString imageUrl;
+-    foreach( imageSizes )
+-    {
+-        QDomNode imageNode = doc.documentElement()
+-            .namedItem( "Items" )
+-            .namedItem( "Item" )
+-            .namedItem( *it );
+-        if ( !imageNode.isNull() )
+-        {
+-            imageUrl = imageNode.namedItem( "URL" ).firstChild().toText().data();
+-            if( !imageUrl.isEmpty() )
+-                break;
+-        }
+-    }
+-    debug() << imageUrl << endl;
+-    KURL testUrl( imageUrl );
+-    if( !testUrl.isValid() ) //KIO crashs on empty strings!!!
+-    {
+-        //Amazon sometimes takes down covers
+-        CollectionDB::instance()->removeInvalidAmazonInfo(xmlJob->name());
+-        return;
+-    }
+-
+-    KIO::TransferJob* imageJob = KIO::storedGet( imageUrl, false, false );
+-    KIO::Scheduler::scheduleJob(imageJob);
+-    //Amarok::StatusBar::instance()->newProgressOperation( imageJob );
+-    imageJob->setName(xmlJob->name());
+-    //get the URL of the detail page
+-    m_jobInfo[xmlJob->name()].m_detailUrl = doc.documentElement()
+-       .namedItem( "Items" )
+-       .namedItem( "Item" )
+-       .namedItem( "DetailPageURL" ).firstChild().toText().data();
+-    connect( imageJob, SIGNAL( result(KIO::Job*) ), SLOT( finishedImageFetch(KIO::Job*) ) );
+-}
+-
+-void RefreshImages::finishedImageFetch(KIO::Job* imageJob)
+-{
+-   if( imageJob->error() ) {
+-        Amarok::StatusBar::instance()->shortMessage(i18n("There was an error communicating with Amazon."));
+-        if(m_jobInfo[imageJob->name()].m_last)
+-            deleteLater();
+-
+-        return;
+-    }
+-    QImage img;
+-    img.loadFromData(static_cast<KIO::StoredTransferJob*>(imageJob)->data());
+-    img.setText( "amazon-url", 0, m_jobInfo[imageJob->name()].m_detailUrl);
+-    img.save( Amarok::saveLocation("albumcovers/large/") + imageJob->name(), "PNG");
+-
+-    CollectionDB::instance()->newAmazonReloadDate( m_jobInfo[imageJob->name()].m_asin
+-        , m_jobInfo[imageJob->name()].m_locale
+-        , imageJob->name());
+-
+-    if(m_jobInfo[imageJob->name()].m_last)
+-        deleteLater();
+-}
+-
+-QString RefreshImages::localeToTLD(const QString& locale)
+-{
+-    if(locale=="us")
+-        return "com";
+-    else if(locale=="jp")
+-        return "co.jp";
+-    else if(locale=="uk")
+-        return "co.uk";
+-    else
+-        return locale;
+-}
+-
+-#include "refreshimages.moc"
+diff -urN amarok-1.4.10.orig/amarok/src/refreshimages.h amarok-1.4.10/amarok/src/refreshimages.h
+--- amarok-1.4.10.orig/amarok/src/refreshimages.h	2009-08-22 11:38:19.644775619 -0400
++++ amarok-1.4.10/amarok/src/refreshimages.h	1969-12-31 19:00:00.000000000 -0500
+@@ -1,38 +0,0 @@
+-// (c) 2005 Ian Monroe <ian@monroe.nu>
+-// See COPYING file for licensing information.
+-
+-#ifndef AMAROK_REFRESHIMAGES_H
+-#define AMAROK_REFRESHIMAGES_H
+-
+-#include <qobject.h>
+-namespace KIO {
+-    class StoredTransferJob;
+-    class Job;
+-}
+-class QStringList;
+-
+-class JobInfo
+-{
+-  public:
+-    JobInfo() : m_last(false) { } //for QMap
+-    JobInfo(const QString& asin, const QString& locale, bool last) :
+-      m_asin(asin), m_locale(locale), m_last(last) { }
+-    QString m_asin;
+-    QString m_locale;
+-    QString m_detailUrl;
+-    bool m_last;
+-};
+-
+-class RefreshImages : public QObject
+-{
+-    Q_OBJECT
+-  public:
+-    RefreshImages();
+-  private slots:
+-    void finishedXmlFetch( KIO::Job* );
+-    void finishedImageFetch( KIO::Job* );
+-  private:
+-    static QString localeToTLD(const QString& locale);
+-    QMap<QString, JobInfo> m_jobInfo;
+-};
+-#endif

@@ -1,0 +1,11 @@
+--- amarok-1.4.10/amarok/src/contextbrowser.cpp	2008-08-13 23:21:51.000000000 +0200
++++ amarok-1.4.10/amarok/src/contextbrowser.cpp.new	2009-03-01 10:43:09.000000000 +0100
+@@ -4189,7 +4189,7 @@ ContextBrowser::wikiResult( KIO::Job* jo
+     }
+ 
+     // Ok lets remove the top and bottom parts of the page
+-    m_wiki = m_wiki.mid( m_wiki.find( "<h1 class=\"firstHeading\">" ) );
++    m_wiki = m_wiki.mid( m_wiki.find( "<h1 id=\"firstHeading\" class=\"firstHeading\">" ) );
+     m_wiki = m_wiki.mid( 0, m_wiki.find( "<div class=\"printfooter\">" ) );
+     // Adding back license information
+     m_wiki += copyright;

@@ -1,0 +1,48 @@
+pkgbase = amarok1
+	pkgdesc = amaroK - a media player for KDE - v1.4.10 xine engine with wikipedia patch (single package)
+	pkgver = 1.4.10
+	pkgrel = 16
+	url = http://amarok.kde.org
+	install = amarok.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = kdelibs3
+	makedepends = libmtp>=0.2.6.1
+	makedepends = xine-lib>=1.1.8
+	makedepends = sdl>=1.2.12
+	makedepends = gcc43
+	depends = xine-lib>=1.1.3
+	depends = libmysqlclient>=5.0.45
+	depends = libnjb>=2.2.5
+	depends = postgresql-libs>=8.2.4
+	depends = ruby
+	depends = kdelibs3>=3.5.7
+	depends = libgpod>=0.6.0
+	depends = libifp>=1.0.0.2
+	depends = libvisual>=0.4.0
+	depends = libmtp
+	depends = taglib
+	provides = amarok1
+	options = !makeflags
+	source = ftp://ftp.slackware.at/slackware-12.2/source/kde/amarok/amarok-1.4.10.tar.bz2
+	source = amarok_addaspodcast.desktop
+	source = wikipedia.patch
+	source = libmtp.patch
+	source = amarok-1.4.10.coverfetcher.diff
+	source = ruby19_configure2.patch
+	source = ruby19_rstring.patch
+	source = _gem_commands.rb
+	source = mtpmediadevice.patch
+	sha512sums = 96ff4ad7f4348954b31b4e01405d29ca53bc4d44adc15d9e71383bc9e3dad99640d72dea4ce8576b1df3edc3836abcf8846eab2a7bb417629b51e7d903d46f59
+	sha512sums = 70090efd3ef002b8bfca159457252841345fe7e8aa3d467b92bebcf24c1f0a257e10055e2b651c9ba6fc6c6b394331e622d52d69f3dd1b58f45167ef4594987f
+	sha512sums = 565f85bf710e5b68cb6e3fe3d8299f183bffab3a76d0ab55e360c0ba59c92122dbb223b7ad9c262c1876b9552bb10720d4dda6d0d1bf556ccbea25f7a6a2c597
+	sha512sums = a565417c797a64b17ab40d13a99f3e97849fcc9aeff6bd53a59d0c13597069c2d5bc9864074d1cfbcb632d2df37e5692cbd5d0bbfd536649dde33ff938ac854f
+	sha512sums = 80621c473bd87b1b0c0909ea8d3363ea2988900d50b5434211572432497a6980e08836695cdc506d3527daffbedb26d80123c2dde86c2cb3e6dd30eb99b5c2cf
+	sha512sums = e9d5319fc1f6220f838e6c6a5aada96cbd4855d38e78f47545e4d189a06c457faf0ce4d5ea26943036ced53d1239f8432be8176995d0a765114d7eb9dff12623
+	sha512sums = 60aba1ae91195967676102f567aefbcaa4181242e33b433f01df5122727fd82deb8c3e650e7c5ea314e0750ed828ce92e18a3cc97f2a335fc60e26980e14792e
+	sha512sums = 67b633322e79e555ebc27a6a7887600264737444e0b0197e8a3c2c4a4f486dc8b97a8bdfccb6dad538c395ff2a716c733a4cca07b2710bf842853e700085b3fc
+	sha512sums = 22386a3d3b71fa7874ff718ca6f043d81f3227b959338f6b4a1945705e5f796d4846fa1b02e4c829834d872a7b15f9faf5b5dc867079963e3ff235e11c5c8563
+
+pkgname = amarok1
+

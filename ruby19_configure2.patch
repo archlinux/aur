@@ -1,0 +1,13 @@
+--- amarok-1.4.10/configure	2008-08-13 22:22:07.000000000 +0100
++++ amarok-1.4.10/configure.new	2009-11-02 13:16:33.975112548 +0000
+@@ -40866,7 +40866,9 @@
+ 
+ 
+ 
+-ruby_includes=`$RUBY -rrbconfig -e 'puts Config.expand( Config::MAKEFILE_CONFIG["archdir"] )'`
++rubyhdrdir=`$RUBY -rrbconfig -e 'puts Config.expand( Config::MAKEFILE_CONFIG["rubyhdrdir"] )'`
++rubyhdrdirarch=$rubyhdrdir/`$RUBY -rrbconfig -e 'puts Config.expand( Config::MAKEFILE_CONFIG["arch"] )'`
++ruby_includes="$rubyhdrdir -I$rubyhdrdirarch"
+ ruby_ldflags=`$RUBY -rrbconfig -e 'puts Config.expand( Config::MAKEFILE_CONFIG["LIBRUBYARG_SHARED"] )'`
+ 
+ 

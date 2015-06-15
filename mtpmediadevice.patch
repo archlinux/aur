@@ -1,0 +1,12 @@
+--- amarok-1.4.10/amarok/src/mediadevice/mtp/mtpmediadevice.cpp	2012-07-21 17:56:48.952530914 +0200
++++ amarok-1.4.10/amarok/src/mediadevice/mtp/mtpmediadevice_patched.cpp	2012-07-21 18:31:41.169217380 +0200
+@@ -24,6 +24,9 @@
+ 
+ #define DEBUG_PREFIX "MtpMediaDevice"
+ 
++// johndoevodka patch - needed for malloc/realloc/free
++#include <stdlib.h>
++
+ #include <config.h>
+ #include "mtpmediadevice.h"
+ 

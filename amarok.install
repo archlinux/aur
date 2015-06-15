@@ -1,0 +1,33 @@
+# arg 1:  the new package version
+post_install() {
+  post_upgrade
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  echo "==> amarok: advanced feature dependences:"
+  echo "    -------------------------------------"
+  echo "    visualisations: 'sdl' + 'libvisual' + 'libvisual-plugins' >=0.4.0"
+  echo "    advanced scripting:                      'python'     "
+  echo "    collection database:                                  "
+  echo "     \-  MySQL:                              'mysql'      "
+  echo "     \-  PostgreSQL:                         'postgresql' "
+  echo "    media device support:                                 "
+  echo "     \-  iPod:                               'libgpod'    "
+  echo "     \-  iRiver:                             'libifp'     "
+  echo "     \-  Creative Nomad, Dell DJ and others: 'libnjb' >=2.0  "
+  echo "     \-  devices supporting Microsoft MTP:   'libmtp' >=0.2.6.1 "
+  echo "        "
+}
+
+# arg 1:  the old package version
+pre_remove() {
+  /bin/true
+}
+
+op=$1
+shift
+
+$op $*
+

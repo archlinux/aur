@@ -1,0 +1,8 @@
+[Desktop Entry]
+ServiceTypes=text/html,text/xml,application/xml,text/rss
+Actions=addAsPodcast
+[Desktop Action addAsPodcast]
+Name=Add as podcast to amaroK
+Name[de]=Als Podcast zu amaroK hinzufügen
+Icon=amarok
+Exec=dcop amarok playlistbrowser addPodcast %u
