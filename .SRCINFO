@@ -1,0 +1,16 @@
+pkgbase = gisto
+	pkgdesc = Cross-platform gist snippets management desktop application that allows you and your team share code snippets fast and easily. Based on GitHub Gist Infrastructure which means you can use all your existing snippets by connecting your GitHub account.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = http://www.gistoapp.com/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = gconf
+	depends = ttf-ms-fonts
+	options = !strip
+	source = http://download.gistoapp.com/Gisto-0.3.1-Linux_x86.tar.gz
+	md5sums = 278127a3d3367b62f6fec3bfb480171a
+
+pkgname = gisto
+
