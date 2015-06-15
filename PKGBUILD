@@ -1,12 +1,13 @@
 # Maintainer: Wijnand Modderman-Lenstra <maze@pyth0n.org>
 pkgname=pwnypack
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Certified Edible Dinosaurs CTF toolkit"
 arch=('any')
 url="https://github.com/edibledinos/pwnypack"
 license=('MIT')
 depends=(
+  'ipython'
 	'nasm'
 	'python'
 	'python-capstone'
@@ -14,9 +15,6 @@ depends=(
 	'python-six'
 )
 makedepends=('python')
-optdepends=(
-	'ipython: interactive pwnypack repl (shell)'
-)
 options=(!emptydirs)
 install=
 source=(https://pypi.python.org/packages/source/p/${pkgname}/${pkgname}-${pkgver}.tar.gz)
