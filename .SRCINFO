@@ -1,0 +1,20 @@
+pkgbase = l2tp-ipsec-vpn
+	pkgdesc = A GUI to manage L2TP over IPsec virtual private network connections.
+	pkgver = 1.0.9
+	pkgrel = 3
+	url = https://launchpad.net/l2tp-ipsec-vpn
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = ctemplate
+	depends = openswan
+	depends = xl2tpd
+	depends = qt4
+	depends = l2tp-ipsec-vpn-daemon
+	source = https://launchpad.net/l2tp-ipsec-vpn/trunk/1.0.9/+download/l2tp-ipsec-vpn_1.0.9.tar.gz
+	source = 0001-Qt4.patch
+	md5sums = 4679e6fae4e82f285ee39479660ba48f
+	md5sums = df38c669559503a8abb287e081144688
+
+pkgname = l2tp-ipsec-vpn
+
