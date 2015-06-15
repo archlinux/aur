@@ -1,0 +1,14 @@
+pkgbase = rgzip
+	pkgdesc = A wrapper for gzip to make it more rsync friendly
+	pkgver = 0.991119
+	pkgrel = 1
+	url = http://svana.org/~kleptog/rgzip.html
+	install = rgzip.install
+	arch = i686
+	arch = x86_64
+	license = public domain
+	source = http://svana.org/~kleptog/rgzip.c
+	md5sums = dc75d632c8b8e5d90e6bd24e8d416cb0
+
+pkgname = rgzip
+
