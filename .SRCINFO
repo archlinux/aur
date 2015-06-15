@@ -1,0 +1,18 @@
+pkgbase = xmlrpc-c-svn
+	pkgdesc = This library provides a modular implementation of XML-RPC for C and C++
+	pkgver = 2450
+	pkgrel = 1
+	url = http://xmlrpc-c.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = custom:xmlrpc-c
+	makedepends = subversion
+	depends = curl
+	depends = libxml2
+	provides = xmlrpc-c
+	conflicts = xmlrpc-c
+	options = !makeflags
+	options = !libtool
+
+pkgname = xmlrpc-c-svn
+
