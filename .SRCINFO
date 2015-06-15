@@ -1,0 +1,19 @@
+pkgbase = purple-line-git
+	pkgdesc = Line plugin for pidgin (libpurple)
+	pkgver = 20150426
+	pkgrel = 1
+	url = http://altrepo.eu/git/purple-line.git/
+	arch = x86_64
+	arch = i686
+	license = custom
+	makedepends = git
+	makedepends = boost
+	depends = libpurple
+	depends = thrift
+	source = purple-line::git+http://altrepo.eu/git/purple-line.git/
+	source = line-protocol::git+http://altrepo.eu/git/line-protocol.git/
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = purple-line-git
+
