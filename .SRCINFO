@@ -1,11 +1,12 @@
 pkgbase = bzr-gtk-bzr
 	pkgdesc = Plugin for Bazaar that aims to provide GTK+ interfaces to most Bazaar operations. It downloads source from launchpad bazaar repository, using the last commit.
-	pkgver = 20110404
-	pkgrel = 2
+	pkgver = r796
+	pkgrel = 1
 	url = http://bazaar-vcs.org/bzr-gtk
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = bzr
 	depends = pygtk
 	depends = bzr
 	depends = pycairo
@@ -13,7 +14,9 @@ pkgbase = bzr-gtk-bzr
 	depends = bzr-stats
 	provides = bzr-gtk
 	conflicts = bzr-gtk
+	source = bzr-gtk::bzr+http://bazaar.launchpad.net/~bzr-gtk/bzr-gtk/gtk3/
 	source = no_credits.patch
+	sha256sums = SKIP
 	sha256sums = de6273817a433d3c2e64ed0f8339c7a3cdc60fec60772a6d57b4c14f94cb2cdf
 
 pkgname = bzr-gtk-bzr

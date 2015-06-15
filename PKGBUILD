@@ -4,44 +4,46 @@
 # Submitter: Carlos Eduardo Moreira dos Santos (cemsbr) <cems at domain cemshost.com.br>
 
 pkgname=bzr-gtk-bzr
-pkgver=20110404
-pkgrel=2
+_pkgname=bzr-gtk
+pkgver=r796
+pkgrel=1
 pkgdesc="Plugin for Bazaar that aims to provide GTK+ interfaces to most Bazaar operations. It downloads source from launchpad bazaar repository, using the last commit."
 arch=('i686' 'x86_64')
 url="http://bazaar-vcs.org/bzr-gtk"
 license=('GPL')
 depends=('pygtk' 'bzr' 'pycairo' 'libglade' 'bzr-stats')
+# TODO: bzr-stats still necessary? a makedepends?
+makedepends=('bzr')
 provides=('bzr-gtk')
 conflicts=('bzr-gtk')
-source=('no_credits.patch')
-sha256sums=('de6273817a433d3c2e64ed0f8339c7a3cdc60fec60772a6d57b4c14f94cb2cdf')
+source=("$_pkgname::bzr+http://bazaar.launchpad.net/~$_pkgname/$_pkgname/gtk3/"
+        'no_credits.patch')
+sha256sums=('SKIP'
+            'de6273817a433d3c2e64ed0f8339c7a3cdc60fec60772a6d57b4c14f94cb2cdf')
 
-_bzrname="bzr-gtk"
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  printf "r%s" "$(bzr revno)"
+}
 
-build() {
-  cd "${srcdir}"
-
-  msg "Connecting to bazaar server..."
-
-  # Download last commit
-  if [ -d ${_bzrname} ] ; then
-    rm -rf ${_bzrname}
-  fi
-  bzr checkout --lightweight "lp:${_bzrname}"
-
-  msg "bazaar checkout done or server timeout"
-
-  cd "${_bzrname}"
-
+prepare() {
+  cd "$srcdir/$_pkgname"
   # Replace python with python2
   for file in $(find ./ -name '*.py' -print); do
       sed -i 's_^#!.*/usr/bin/python_#!/usr/bin/python2_' $file
       sed -i 's_^#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
   done
   patch -p0 < ../no_credits.patch
-
-  msg "Ready to install..."
-
-  # Install
-  python2 setup.py install --prefix'=/usr' --root="${startdir}/pkg"
 }
+
+build() {
+  cd "$srcdir/$_pkgname"
+  python2 setup.py build
+}
+
+package() {
+  cd "$srcdir/$_pkgname"
+  python2 setup.py install --skip-build --root="$pkgdir"
+}
+
+# vim:set ts=2 sw=2 et:
