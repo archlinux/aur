@@ -1,0 +1,20 @@
+pkgbase = bear-git
+	pkgdesc = tool to generate compilation database for clang tooling
+	pkgver = 1.4.48.g3e0e1ad
+	pkgrel = 1
+	url = https://github.com/rizsotto/Bear
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = pkg-config
+	depends = python>=2.7
+	provides = bear
+	conflicts = bear
+	source = bear::git+https://github.com/rizsotto/Bear.git
+	sha1sums = SKIP
+
+pkgname = bear-git
+
