@@ -1,0 +1,14 @@
+pkgbase = mbrola-voices-cn1
+	pkgdesc = Mandarin Chinese female voice for mbrola.
+	pkgver = 1
+	pkgrel = 1
+	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	arch = any
+	groups = mbrola-voices-cn
+	license = custom
+	depends = mbrola
+	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/cn1/cn1.zip
+	md5sums = a57e9c64a49956ac0bdffdd96b0dbd8d
+
+pkgname = mbrola-voices-cn1
+
