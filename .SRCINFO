@@ -1,0 +1,20 @@
+pkgbase = jumanji-git
+	pkgdesc = a web browser
+	pkgver = r464.f8e04e5
+	pkgrel = 1
+	url = http://pwmt.org/projects/jumanji
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = girara
+	depends = webkitgtk
+	depends = libsoup>=2.36.1
+	depends = sqlite3
+	provides = jumanji
+	conflicts = jumanji
+	source = jumanji::git+git://pwmt.org/jumanji.git#branch=develop
+	md5sums = SKIP
+
+pkgname = jumanji-git
+
