@@ -1,0 +1,19 @@
+pkgbase = yozo-office
+	pkgdesc = Yozo Office - An M$ Office Compatible Office Suit
+	pkgver = 2013.6.1.0418.131ZH.CL01
+	pkgrel = 2
+	url = http://www.yozosoft.com/person/
+	install = yozo-office.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = libxtst
+	depends = libxt
+	optdepends = ttf-ms-fonts: Arial, Times, Courier etc. fonts.
+	optdepends = ttf-ms-fonts-zh_cn: SimSun, SimHei, ,MSYH, Tahoma etc. fonts
+	options = !strip
+	source = http://download.yozosoft.com/free/zh/2013/Yozo_Office_6.1.0418.131ZH.CL01.deb
+	md5sums = 5422a094fa5f7f05707073516917d1a6
+
+pkgname = yozo-office
+
