@@ -1,0 +1,24 @@
+pkgbase = nicotine-plus-git
+	pkgdesc = A fork of nicotine, a Soulseek music-sharing client written in python. Gitversion.
+	pkgver = 037e16c
+	pkgrel = 3
+	url = http://nicotine-plus.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = python2
+	depends = pygtk
+	depends = gtk2
+	optdepends = mutagen: To improve metadata
+	optdepends = python-sexy: To enable spell checking
+	optdepends = python-geoip: To enable Geographical blocker
+	conflicts = nicotine
+	conflicts = nicotine-plus
+	replaces = nicotine
+	replaces = nicotine-plus
+	source = git+https://github.com/eLvErDe/nicotine-plus.git
+	sha512sums = SKIP
+
+pkgname = nicotine-plus-git
+
