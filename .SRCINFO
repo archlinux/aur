@@ -1,0 +1,22 @@
+pkgbase = networkmanager-l2tp
+	pkgdesc = L2TP support for NetworkManager
+	pkgver = 0.9.8.7
+	pkgrel = 1
+	url = https://github.com/seriyps/NetworkManager-l2tp
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = gtk2
+	depends = gconf
+	depends = libgnome-keyring
+	depends = intltool
+	depends = networkmanager
+	depends = xl2tpd
+	optdepends = openswan
+	optdepends = ppp>=2.4.6
+	provides = networkmanager-l2tp
+	source = https://github.com/seriyps/NetworkManager-l2tp/archive/0.9.8.7.tar.gz
+	md5sums = 5626971b69120583f59e1eace54f5371
+
+pkgname = networkmanager-l2tp
+
