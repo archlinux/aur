@@ -2,7 +2,8 @@ run_hook ()
 {
     source encrypt2.conf
     echo "Waiting 10 seconds for device $cryptkey_device ..."
-    sleep 10
+    read dummy
+    unset dummy
     
     mkdir encrypt2_device
     mount $cryptkey_device encrypt2_device &> /dev/null
