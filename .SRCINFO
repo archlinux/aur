@@ -1,0 +1,18 @@
+pkgbase = python-pytty
+	pkgdesc = POSIX serial port access module for Python
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/PyTTY
+	arch = any
+	license = LGPL3
+	makedepends = python2
+	makedepends = python
+	source = http://pypi.python.org/packages/source/P/PyTTY/PyTTY-0.4.tar.bz2
+	sha256sums = c85f73fdb4a428f73c189613c31424f3d3f83894d1d9429af72f09972dc57802
+
+pkgname = python-pytty
+	depends = python
+
+pkgname = python2-pytty
+	depends = python2
+
