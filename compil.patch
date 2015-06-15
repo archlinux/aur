@@ -1,0 +1,20 @@
+diff -crB gambatte_qt/src/framework/framework.pro gambatte_qt.patched/src/framework/framework.pro
+*** gambatte_qt/src/framework/framework.pro	2012-01-20 20:17:18.000000000 +0100
+--- gambatte_qt.patched/src/framework/framework.pro	2012-01-20 20:04:45.000000000 +0100
+***************
+*** 149,155 ****
+          framework/src/fullmodetogglers/xrandr12toggler.h #\
+  #        framework/src/fullmodetogglers/xf86vidmodetoggler.h
+      LIBS += -L/usr/X11R6/lib \
+!         -Wl,--as-needed \
+          -lX11 \
+          -lXext \
+          -lXv \
+--- 149,155 ----
+          framework/src/fullmodetogglers/xrandr12toggler.h #\
+  #        framework/src/fullmodetogglers/xf86vidmodetoggler.h
+      LIBS += -L/usr/X11R6/lib \
+!         -ldl \
+          -lX11 \
+          -lXext \
+          -lXv \

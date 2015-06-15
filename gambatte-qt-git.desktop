@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Gambatte
+Exec=gambatte-qt
+Icon=gambatte
+Type=Application
+Comment=Game Boy Color emulator
+Categories=Emulator;Game;

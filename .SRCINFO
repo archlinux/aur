@@ -1,0 +1,25 @@
+pkgbase = gambatte-qt-git
+	pkgdesc = A Qt4 frontend for the Gambatte emulator
+	pkgver = f3c548d
+	pkgrel = 1
+	url = https://github.com/sinamas/gambatte
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = make
+	depends = qt4
+	depends = libgl
+	depends = alsa-lib
+	depends = gambatte-git
+	provides = gambatte-qt
+	conflicts = gambatte-qt
+	source = git://github.com/sinamas/gambatte.git
+	source = gambatte-qt-git.desktop
+	source = compil.patch
+	md5sums = SKIP
+	md5sums = d74be9dbb91c6b517099f5f1dc46c88e
+	md5sums = e2439ad2809741d89092e8a48d7ef549
+
+pkgname = gambatte-qt-git
+
