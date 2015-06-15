@@ -1,0 +1,16 @@
+pkgbase = danmaku2ass-git
+	pkgdesc = Convert comments from Niconico/AcFun/bilibili to ASS format
+	pkgver = 20140615
+	pkgrel = 1
+	url = https://github.com/m13253/danmaku2ass
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python>=3
+	provides = danmaku2ass
+	conflicts = danmaku2ass
+	source = danmaku2ass::git://github.com/m13253/danmaku2ass.git
+	md5sums = SKIP
+
+pkgname = danmaku2ass-git
+
