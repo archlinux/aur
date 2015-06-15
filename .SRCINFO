@@ -1,6 +1,6 @@
 pkgbase = docker-machine
 	pkgdesc = Machine management for a container-centric world
-	pkgver = 0.3.0_rc2
+	pkgver = 0.3.0_rc3
 	pkgrel = 1
 	url = https://github.com/docker/machine
 	install = docker-machine.install
@@ -9,8 +9,8 @@ pkgbase = docker-machine
 	license = Apache
 	provides = docker-machine
 	conflicts = docker-machine-bin
-	source = docker-machine::https://github.com/docker/machine/releases/download/v0.3.0-rc2/docker-machine_linux-amd64
-	sha256sums = 4804dfb905671e97846d4ec1ac25723de6f3566e2b94d9e0adad89047d9d4b58
+	source = docker-machine::https://github.com/docker/machine/releases/download/v0.3.0-rc3/docker-machine_linux-amd64
+	sha256sums = e659304032dc2df166a377881df64783785ee473e2af7506eb08b7855e70974b
 
 pkgname = docker-machine
 
