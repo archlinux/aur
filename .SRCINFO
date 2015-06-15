@@ -1,0 +1,20 @@
+pkgbase = akamaru-svn
+	pkgdesc = A simple, but fun, physics engine prototype
+	pkgver = r1218
+	pkgrel = 2
+	url = http://www.kiba-dock.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	makedepends = pkgconfig
+	makedepends = intltool
+	makedepends = sed
+	depends = glib2
+	provides = akamaru
+	conflicts = akamaru
+	source = svn://svn.code.sf.net/p/kibadock/code/trunk
+	sha512sums = SKIP
+
+pkgname = akamaru-svn
+
