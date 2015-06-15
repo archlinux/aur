@@ -72,7 +72,7 @@ pkgname=(linux-lts-ck linux-lts-ck-headers)
 _kernelname=-lts-ck
 _srcname=linux-3.14
 pkgver=3.14.44
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
@@ -81,7 +81,7 @@ options=('!strip')
 _ckpatchversion=1
 _ckpatchname="patch-3.14-ck${_ckpatchversion}"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+.patch"
-_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.14.0-v7r7"
+_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/3.14.0-v7r8"
 
 source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
 		"https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.sign"
@@ -97,9 +97,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
 		'0002-module-allow-multiple-calls-to-MODULE_DEVICE_TABLE-p.patch'
 		'0003-module-remove-MODULE_GENERIC_TABLE.patch'
 		'0006-genksyms-fix-typeof-handling.patch'
-		"${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r7-3.14.patch"
-		"${_bfqpath}/0002-block-introduce-the-BFQ-v7r7-I-O-sched-for-3.14.patch"
-		"${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r7-for-3.14.0.patch"
+		"${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r8-3.14.patch"
+		"${_bfqpath}/0002-block-introduce-the-BFQ-v7r8-I-O-sched-for-3.14.patch"
+		"${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-3.14.0.patch"
 		'fix_CPU0_microcode_on_resume.patch'
 		'gcc5_buildfixes.diff')
 
@@ -118,9 +118,9 @@ sha512sums=('5730d83a7a81134c1e77c0bf89e42dee4f8251ad56c1ac2be20c59e26fdfaa7bea5
             'da69065f317212c7937f5c3110afdef6006da7756b0a2a98c4bff94db12eb503dc89040aa3cd7a1655ba1b0641f47dda4e60933309e231eaecbe9bd79cb06ebd'
             '4b9fa6afdd1f4f4f6a3a439380cff3376ef33e782aac0ae92421f4b7c40140d57a04d7bc57dfd9fb59fdefb3a0a55fe7e7d6022314b11ef454a1cae4b75cf264'
             'fdb67e9956d9af1518d0198b86b13150b28f43dd28eb52222a9c43699f7304cd1a56d7f421a0690fa4c0d2c266fd5504da9d6217f83a42d05f35b713fd85e2dd'
-            '71f40010bdd10d7a7a64bed5f85358510fc205ff7585fc0fadcedc3f10afd3416513da9c6f2d05d2048e1a48f50c23388df6991f85eaf2b9ad37584720a82e81'
-            '525c8b1582c84be8075eb6370b1f3efa077347d1cd1fae6126b1bbffc15b85bb563effcc243becef3a471b7874b2b6dbe810474341f1c9578578fb3db98de5b8'
-            '832c5795a39a790179f971dfbaae589bc9baa0400949868191e1f01b1580a0aae574e4fc48973ecf4325fa1d0c8d763e8721da0b8011d287c07a3a52a34f9aba'
+            'edf73585f1363011ba4235919b4265713d3943e3a93996822408ee4c99403a52c81d7cbf23d261aabeefeb41d2bb9b5ad26c4c1a0c6af7e27a4e092654c8e967'
+            '91340f269b2aefb4df0e9999dc3664ded7d1758a7257da1268f95ced5f549a1883127b7260657a2ee0782922e7848fb3fac4ae05d822c793ecc9f2c1be9d4b5f'
+            '9b8f4c92e9e0265e77ec9ad469092d0a1f5d657ec2d6a91c4aed344bc56909acc6e115a21eb9f225fa452432bc4f69c0584e7fc38d4f72a6c711631c0a8105cd'
             '532df1bdcacfb5453dc8b4a0f44c33146cb3c01a28c073a3b8f9900f4e65cb23763c99eeb7128d3448ba1e6f54632c5867f5f3d82ee2ee1b7033ff921ef8e7ba'
             '947997e7719168b176a24193ec0d1d8b9760dfa9335f8c9bd4842730a497787589b8917361af01600d0164b9574911e64ce80395146340a6c352119e6544295c')
 
