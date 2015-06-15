@@ -1,14 +1,14 @@
 pkgbase = lib32-intel-tbb
 	pkgdesc = 32-bit multilib version of Intel's Threaded Building Blocks library
-	pkgver = 4.3u5
+	pkgver = 4.3u6
 	pkgrel = 1
 	url = http://threadingbuildingblocks.org
 	arch = x86_64
 	license = GPL
 	makedepends = gcc-multilib
 	depends = lib32-gcc-libs
-	source = https://www.threadingbuildingblocks.org/sites/default/files/software_releases/source/tbb43_20150424oss_src.tgz
-	sha1sums = 21a3176bf09677b795df2c529065c265a2ad72ae
+	source = https://www.threadingbuildingblocks.org/sites/default/files/software_releases/source/tbb43_20150611oss_src.tgz
+	sha1sums = 5457cd15ad13625442283e67844199a79e88a3a4
 
 pkgname = lib32-intel-tbb
 
