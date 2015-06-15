@@ -1,0 +1,27 @@
+post_install() {
+	useradd --system --create-home --home-dir /var/lib/glimpse \
+		--shell /sbin/nologin glimpse &>/dev/null
+	echo ":: You need to register an account prior to starting the"
+	echo "   service. This can be done with glimpse-console, e.g.:"
+	echo "       glimpse-console --register-anonymous OR"
+	echo "       glimpse-console --register foobar@example.com"
+	echo
+	echo "   If you already have an account you can login with one of"
+	echo "   the following commands. Note that this will not keep"
+	echo "   the application running but just write the settings."
+	echo "       glimpse-console --login foobar@example.com OR"
+	echo "       sudo -u glimpse glimpse-console --login foobar@example.com"
+	echo
+	echo "   To enable/start the probe, run:"
+	echo "       systemctl enable glimpse-probe.service"
+	echo "       systemctl start glimpse-probe.service"
+	echo
+	echo "   Note that glimpse-probe.service runs as user glimpse"
+	echo "   and therefore needs the config to be in /var/lib/glimpse."
+}
+
+post_upgrade() {
+	getent passwd glimpse &>/dev/null || useradd --system \
+		--create-home --home-dir /var/lib/glimpse \
+		--shell /sbin/nologin glimpse &>/dev/null
+}

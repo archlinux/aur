@@ -1,0 +1,16 @@
+pkgbase = glimpse-git
+	pkgdesc = GLIMPSE measurement client.
+	pkgver = 2.3.5.r9.g550d6e1
+	pkgrel = 1
+	url = https://www.measure-it.net
+	install = glimpse-git.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = qt5-base
+	source = git://github.com/HSAnet/glimpse_client.git#branch=master
+	sha256sums = SKIP
+
+pkgname = glimpse-git
+
