@@ -1,0 +1,21 @@
+pkgbase = libzathura-git
+	pkgdesc = A document library.
+	pkgver = 49ca31e
+	pkgrel = 1
+	url = http://pwmt.org/projects/libzathura
+	arch = i686
+	arch = x86_64
+	license = custom
+	checkdepends = check
+	checkdepends = libfiu
+	makedepends = git
+	depends = glib2>=2.28
+	depends = intltool
+	depends = file
+	provides = libzathura
+	conflicts = libzathura
+	source = libzathura::git+git://pwmt.org/libzathura.git#branch=develop
+	md5sums = SKIP
+
+pkgname = libzathura-git
+
