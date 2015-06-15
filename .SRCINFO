@@ -1,0 +1,21 @@
+pkgbase = sile
+	pkgdesc = Modern typesetting system inspired by TeX
+	pkgver = 0.9.0
+	pkgrel = 2
+	url = http://www.sile-typesetter.org/
+	arch = any
+	license = custom
+	depends = lua51-lpeg
+	depends = lua51-lgi
+	depends = lua51-stdlib
+	depends = lua51-expat
+	depends = lua51-inspect
+	depends = lua51-epnf
+	depends = lua51-repl
+	depends = lua51-cassowary
+	depends = pango
+	source = https://github.com/simoncozens/sile/archive/v0.9.0.tar.gz
+	sha512sums = 2752ba3f08e814fede187e90b3c0ea559c682fabef085affc6afe0077b0c85195484b6dfe722040321f75f33dc01a876d15c5b7e37e6ca485ee1901b30e04195
+
+pkgname = sile
+
