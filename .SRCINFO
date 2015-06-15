@@ -1,0 +1,25 @@
+pkgbase = lokalize-git
+	pkgdesc = Computer-Aided Translation System. (GIT version)
+	pkgver = 2.0.r1175.78595a9
+	pkgrel = 1
+	url = https://www.kde.org/applications/development/lokalize
+	install = lokalize-git.install
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	makedepends = git
+	makedepends = hunspell
+	depends = kross
+	depends = hicolor-icon-theme
+	optdepends = hunspell: Spell checker
+	provides = lokalize
+	conflicts = kdesdk-lokalize
+	conflicts = lokalize
+	source = git://anongit.kde.org/lokalize.git
+	sha1sums = SKIP
+
+pkgname = lokalize-git
+
