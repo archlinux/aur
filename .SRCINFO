@@ -1,0 +1,14 @@
+pkgbase = python2-uniconvertor
+	pkgdesc = Universal vector graphics translator
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://sk1project.org/modules.php?name=Products&product=uniconvertor
+	arch = x86_64
+	license = GPL
+	depends = python
+	options = !emptydirs
+	source = http://sk1project.org/dc2.php?target=python-uniconvertor-2.0-rev338_0ubuntu1_13.04_amd64.deb
+	md5sums = 3562a5acf6534f7455c329ecee1fb930
+
+pkgname = python2-uniconvertor
+
