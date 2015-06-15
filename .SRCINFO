@@ -1,0 +1,12 @@
+pkgbase = isl3887usb-firmware
+	pkgdesc = Firmware for p54usb module
+	pkgver = 2.13.25.0
+	pkgrel = 6
+	url = http://wireless.kernel.org/en/users/Drivers/p54
+	arch = any
+	license = GPL
+	source = https://daemonizer.de/prism54/prism54-fw/fw-usb/2.13.25.0.lm87.arm
+	md5sums = 39be687c87544b892e7a8ffe7ffd9371
+
+pkgname = isl3887usb-firmware
+
