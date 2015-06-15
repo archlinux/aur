@@ -1,0 +1,8 @@
+post_install(){
+    cat << \END
+Known bug: If PietCompiler is build on an other system than Linux/x86 it will crash
+in the interpreter mode. But it produces working Linux/x86 executables anyway. So at
+your x64 system you may use PietCompiler to generate a Linux/x86 binary from your
+Piet program and then execute the generated binary seperately.
+END
+}

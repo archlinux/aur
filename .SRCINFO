@@ -1,0 +1,18 @@
+pkgbase = pietcompiler
+	pkgdesc = compiler for Piet esotheric langguare, that processes images - unstable
+	pkgver = 0.6a3
+	pkgrel = 1
+	url = http://www.matthias-ernst.eu/pietcompiler.html
+	install = piet.install
+	arch = x86_64
+	arch = i686
+	license = public domain
+	depends = zlib
+	depends = gcc-libs
+	source = http://www.matthias-ernst.eu/pietc/PietCompiler0.6a3.tar.gz
+	source = piet.install
+	md5sums = faadc1b70cd497b95b5bef41bb1977e9
+	md5sums = 686f9c0926e41b49cf0434b0291e4c6d
+
+pkgname = pietcompiler
+
