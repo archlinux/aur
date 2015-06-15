@@ -1,0 +1,24 @@
+pkgbase = zathura-git
+	pkgdesc = a document viewer
+	pkgver = 0.2.9.2.g1eec4a6
+	pkgrel = 1
+	url = http://pwmt.org/projects/zathura
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = python-docutils
+	makedepends = intltool
+	depends = girara-git
+	depends = gtk3>=3.10
+	depends = cairo>=1.8.8
+	optdepends = zathura-pdf-poppler-git: PDF support by using poppler
+	optdepends = zathura-pdf-mupdf-git: PDF support by using mupdf
+	optdepends = zathura-djvu-git: djvu support by using djvulibre
+	optdepends = zathura-ps-git: PostSctipt support by using libspectre
+	provides = zathura
+	conflicts = zathura
+	source = zathura::git+git://pwmt.org/zathura.git#branch=develop
+
+pkgname = zathura-git
+
