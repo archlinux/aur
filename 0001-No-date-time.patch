@@ -1,0 +1,25 @@
+From cc898d7d27b1cfd2689c8206b5c93c03748404b9 Mon Sep 17 00:00:00 2001
+From: Moritz Lipp <mlq@pwmt.org>
+Date: Wed, 7 May 2014 14:02:54 +0200
+Subject: [PATCH] No date time
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index c193e39..464d066 100644
+--- a/Makefile
++++ b/Makefile
+@@ -20,7 +20,7 @@ endif
+
+ #$(if $(USBNET),,$(error $(KDIR)/$(MDIR)/usbnet.h not found. please refer to readme file for the detailed description))
+
+-EXTRA_CFLAGS = -DEXPORT_SYMTAB
++EXTRA_CFLAGS = -DEXPORT_SYMTAB -Wno-date-time
+ PWD = $(shell pwd)
+ DEST = /lib/modules/$(CURRENT)/kernel/$(MDIR)
+
+--
+1.9.2
+

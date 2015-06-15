@@ -1,0 +1,49 @@
+post_install (){
+    DKMS=$(which dkms)
+
+    $DKMS add -m ax88179_178a-dkms -v 1.14.0
+    $DKMS build -m ax88179_178a-dkms -v 1.14.0
+    $DKMS install -m ax88179_178a-dkms -v 1.14.0
+    
+    echo " >> rmmod ax88179_178a"
+    rmmod ax88179_178a
+    echo " >> depmod -a"
+    depmod -a
+    echo " >> modprobe ax88179_178a-dkms "
+    modprobe ax88179_178a-dkms
+    echo " >> done "
+    
+}
+
+pre_upgrade(){
+    pre_remove "$2"
+}
+
+post_upgrade(){
+    post_install "$1"
+}
+
+pre_remove (){
+    _inmemory=$(/usr/bin/lsmod | /usr/bin/grep asix)
+    if [ ! -z "$_inmemory" ]; then
+        /usr/bin/rmmod ax88179_178a &> /dev/null
+    fi
+
+    DKMS=$(which dkms)
+
+    _line=$($DKMS status -m ax88179_178a-dkms)
+    if echo "$_line" | grep -E 'added|built|installed'; then
+        version=$(echo "$_line" | sed 's/ax88179_178a-dkms,\([^,]*\)[,:].*/\1/;t;d')
+        $DKMS remove -m ax88179_178a-dkms -v $version --all
+    fi
+    
+}
+
+post_remove () {
+    /sbin/depmod -a
+    modprobe ax88179_178a
+}
+
+op=$1
+shift
+$op $*

@@ -1,0 +1,26 @@
+pkgbase = asix-ax88179-dkms
+	pkgdesc = Driver for USB ASIX Ethernet model AX88179
+	pkgver = 1.14.0
+	pkgrel = 1
+	url = http://www.asix.com.tw/products.php?op=pItemdetail&PItemID=131;71;112&PLine=71
+	install = ax88179_178a-dkms.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = dkms
+	depends = linux-headers
+	source = http://www.asix.com.tw/FrootAttach/driver/AX88179_178A_LINUX_DRIVER_v1.14.0_SOURCE.tar.bz2
+	source = dkms.conf
+	source = blacklist-ax88179_178a.conf
+	source = ax88179_178a-dkms.conf
+	source = ax88179_178a-dkms.install
+	source = 0001-No-date-time.patch
+	md5sums = de9e00799d58a5fc2332d31efd045ded
+	md5sums = c579a67d6d7a53f2b4566e66b0db2cb7
+	md5sums = d6005a9e529a254e622b52c17134013f
+	md5sums = 1f0152ac565eb09470fb8dfbb98433e2
+	md5sums = 735c79597b0cb833ad2b779c43b83613
+	md5sums = 6a7e1bd5ec3d1e77cde2c3e2d6d9ddea
+
+pkgname = asix-ax88179-dkms
+
