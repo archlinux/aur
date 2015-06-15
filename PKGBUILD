@@ -9,7 +9,9 @@ url="https://github.com/lra/mackup"
 license=('GPL3')
 depends=('python2')
 
-makedepends=('python2')
+makedepends=(
+			'python2'
+			'python2-docopt')
 
 source=("https://github.com/lra/${pkgname}/archive/${pkgver}.tar.gz")
 

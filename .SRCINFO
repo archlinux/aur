@@ -6,6 +6,7 @@ pkgbase = mackup
 	arch = any
 	license = GPL3
 	makedepends = python2
+	makedepends = python2-docopt
 	depends = python2
 	source = https://github.com/lra/mackup/archive/0.8.5.tar.gz
 	sha256sums = ef1f64ca1df99240662622899d7216e9507e818e17f32a4d8143ff0da2e789b0
