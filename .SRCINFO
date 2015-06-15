@@ -1,0 +1,17 @@
+pkgbase = gimp-plugin-astronomy
+	pkgdesc = Gimp Astronomy Plugins
+	pkgver = 0.8
+	pkgrel = 1
+	url = http://hennigbuam.de/georg/gimp.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = perl-xml-parser
+	depends = gimp
+	depends = gsl
+	depends = fftw
+	source = http://www.hennigbuam.de/georg/downloads/gimp-plugin-astronomy-0.8.tar.bz2
+	md5sums = 8396e97e9f369a5139d0102b5f37b620
+
+pkgname = gimp-plugin-astronomy
+
