@@ -1,0 +1,14 @@
+pkgbase = xcursor-breeze
+	pkgdesc = Breeze standart cursor theme (KDE Plasma 2)
+	pkgver = 20150109
+	pkgrel = 1
+	url = https://kver.wordpress.com/2015/01/09/curses-i-mean-cursors/
+	arch = any
+	license = GPL
+	makedepends = unzip
+	depends = libxcursor
+	source = xcursor-breeze-20150109.zip::https://share.kde.org/public.php?service=files&t=1525897da49fbebacc28e5b6b1836382&download
+	md5sums = edbd19776aa3cbc4c0241fa1728c023f
+
+pkgname = xcursor-breeze
+
