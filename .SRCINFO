@@ -1,0 +1,16 @@
+pkgbase = faience-themes
+	pkgdesc = GTK3, GTK2, Metacity and Gnome-Shell themes based on Faenza
+	pkgver = 0.7
+	pkgrel = 1
+	url = http://tiheum.deviantart.com/art/Gnome-Shell-Faience-255097456
+	arch = any
+	license = GPL3
+	depends = gtk-engine-murrine
+	optdepends = gnome-shell: Shell theme
+	optdepends = gtk-engine-unico: GTK3 theme
+	optdepends = gnome-tweak-tool: Easy theme switcher
+	source = http://fc06.deviantart.net/fs71/f/2014/156/8/3/gtk3_gnome_shell___faience_by_tiheum-d47vmgg.zip
+	md5sums = f02b736c114099e6c4390e5f0d878ca0
+
+pkgname = faience-themes
+
