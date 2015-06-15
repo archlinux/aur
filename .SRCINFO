@@ -1,6 +1,6 @@
 pkgbase = hmat-oss
 	pkgdesc = A hierarchical matrix C/C++ library
-	pkgver = 1.0.7
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/jeromerobert/hmat-oss
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = hmat-oss
 	makedepends = cmake
 	depends = cblas
 	depends = lapack
-	source = https://github.com/jeromerobert/hmat-oss/archive/1.0.7.tar.gz
-	md5sums = 9317e4cc96686798127a51779dc02021
+	source = https://github.com/jeromerobert/hmat-oss/archive/1.1.0.tar.gz
+	md5sums = b4525676859f005f64e8d708356e404a
 
 pkgname = hmat-oss
 
