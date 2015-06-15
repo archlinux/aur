@@ -1,7 +1,7 @@
 # Mantainer: Bruno Galeotti <bgaleotti@gmail.com>
 
 pkgname=php-twig
-pkgver=1.18.1
+pkgver=1.18.2
 pkgrel=1
 pkgdesc='PHP Twig extension.'
 url='http://github.com/twigphp/Twig'
@@ -11,7 +11,7 @@ depends=('php')
 makedepends=('php')
 source=("https://github.com/twigphp/Twig/tarball/v${pkgver}")
 backup=('etc/php/conf.d/twig.ini')
-sha256sums=('486bf49f5cbfe85b575d8e30ce1283d50139d15595753273720b6e82557f6108')
+sha256sums=('e230d655e4a3360e610348311c8362ef13a4109d99eedc6e6c28b44efba28fa2')
 
 build() {
   msg "Starting build"
