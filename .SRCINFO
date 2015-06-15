@@ -1,0 +1,15 @@
+pkgbase = dbacl
+	pkgdesc = Digramic Bayesian classifier
+	pkgver = 1.14.1
+	pkgrel = 1
+	url = http://dbacl.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gawk
+	depends = perl
+	source = http://downloads.sourceforge.net/dbacl/dbacl-1.14.1.tar.gz
+	md5sums = 94eef2cc2731c4807b5ffe5a04ee15e3
+
+pkgname = dbacl
+
