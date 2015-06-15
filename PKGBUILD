@@ -5,7 +5,7 @@
 
 pkgname=pebble-sdk
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Pebble SDK, used to develop applications and watchfaces for the Pebble Smartwatch."
 url="https://developer.getpebble.com/2/getting-started/"
 arch=('i386' 'x86_64')
@@ -36,25 +36,37 @@ optdepends=('python2-pyserial: To connect to the Pebble via serial port')
 conflicts=('pebble-sdk-beta')
 source=("http://assets.getpebble.com.s3-website-us-east-1.amazonaws.com/sdk2/PebbleSDK-${pkgver/_/-}.tar.gz"
         'build-command.patch'
-        'pebble-sdk.install')
+        'pebble-sdk.install'
+        'pflashFix.patch'
+        'python-exec.patch')
 sha1sums=('de170797466b8f981f0189456dfed52d9078a830'
-          '488ab70f3b21ca59e784ed47f45daf853ce94142'
-          '7ea5244f828e682d073434078569fab62a1ad996')
+          '104715902f0bb884130b9b4395343b2f9bffcc88'
+          '7ea5244f828e682d073434078569fab62a1ad996'
+          'f8fde627224b7515856dabed3bfcbfa8c8821fa5'
+          'e4ed6cca5ffa86b1847c7c601b70280c1139b594')
 options=('staticlibs' '!strip')
 
 prepare() {
   cd "$srcdir/PebbleSDK-${pkgver//_/-}"
+
+  # patch for python2 -> python3
   find . -type f \( -path ./bin/pebble -o -path ./Pebble/waf -o \
                     -name '*.py' \) -exec \
     sed -i '1s|^#!/usr/bin/env python$|#!/usr/bin/python2|' {} \;
   patch -p0 -i "$srcdir/build-command.patch"
+
+  # patch phone emulator files to make qemu_micro_flash be accessed readonly
+  patch -p0 -i "$srcdir/pflashFix.patch"
+
+  # patch the python executable stub so it handles newlines
+  patch -p0 -i "$srcdir/python-exec.patch"
+
   # Unpack waf and fix python files
   cd Pebble
   ./waf 2>/dev/null || true
   cd .waf*
   find . -type f -name '*.py' -exec \
     sed -i '1s|^#! /usr/bin/env python$|#!/usr/bin/python2|' {} \;
-  #patch -p0 -i "$srcdir/python-waf.patch"
 }
 
 package() {

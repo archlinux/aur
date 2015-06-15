@@ -1,0 +1,33 @@
+--- tools/pebble/PebbleEmulator.py	2015-06-05 08:50:19.825272654 -0400
++++ tools/pebble/PebbleEmulator.py.new	2015-06-05 08:50:44.689695766 -0400
+@@ -141,11 +141,11 @@
+         cmdline.extend(["-serial", "tcp::{},server,nowait".format(QEMU_DEFAULT_CONSOLE_PORT)])
+         if self.platform == "basalt":
+             cmdline.extend(["-machine", "pebble-snowy-bb", "-cpu", "cortex-m4"])
+-            cmdline.extend(["-pflash", qemu_micro_flash])
++            cmdline.extend(["-drive", "if=pflash,format=raw,readonly,file=" + qemu_micro_flash])
+             cmdline.extend(["-pflash", qemu_spi_flash])
+         else:
+             cmdline.extend(["-machine", "pebble-bb2", "-cpu", "cortex-m3"])
+-            cmdline.extend(["-pflash", qemu_micro_flash])
++            cmdline.extend(["-drive", "if=pflash,format=raw,readonly,file=" + qemu_micro_flash])
+             cmdline.extend(["-mtdblock", qemu_spi_flash])
+ 
+         cmdline.extend(["-pidfile", self.qemu_pid])
+
+--- Pebble/common/phonesim/libpebble/pebble/PebbleEmulator.py	2015-06-05 08:53:41.647456070 -0400
++++ Pebble/common/phonesim/libpebble/pebble/PebbleEmulator.py.new	2015-06-05 08:54:36.506530076 -0400
+@@ -137,11 +137,11 @@
+         cmdline.extend(["-serial", "tcp::{},server,nowait".format(QEMU_DEFAULT_CONSOLE_PORT)])
+         if self.platform == "basalt":
+             cmdline.extend(["-machine", "pebble-snowy-bb", "-cpu", "cortex-m4"])
+-            cmdline.extend(["-pflash", qemu_micro_flash])
++            cmdline.extend(["-drive", "if=pflash,format=raw,readonly,file=" + qemu_micro_flash])
+             cmdline.extend(["-pflash", qemu_spi_flash])
+         else:
+             cmdline.extend(["-machine", "pebble-bb2", "-cpu", "cortex-m3"])
+-            cmdline.extend(["-pflash", qemu_micro_flash])
++            cmdline.extend(["-drive", "if=pflash,format=raw,readonly,file=" + qemu_micro_flash])
+             cmdline.extend(["-mtdblock", qemu_spi_flash])
+ 
+         cmdline.extend(["-pidfile", self.qemu_pid])

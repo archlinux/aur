@@ -1,6 +1,6 @@
---- tools/pebble/PblBuildCommand.py	2015-03-07 00:28:38.599053155 +0300
-+++ tools/pebble/PblBuildCommand.py.new	2015-03-07 00:28:38.782389940 +0300
-@@ -188,21 +188,10 @@
+--- tools/pebble/PblBuildCommand.py.old	2015-06-15 08:44:12.864030199 +0200
++++ tools/pebble/PblBuildCommand.py	2015-06-15 08:46:10.729921559 +0200
+@@ -180,20 +180,9 @@
      def run(self, args):
          self.add_arm_tools_to_path(args)
          
@@ -18,10 +18,9 @@
 -            os.environ['PATH'] = "{}:{}".format(
 -                os.path.join(os.path.normpath(os.path.dirname(__file__))),
 -                os.environ['PATH'])
--            
 +        os.environ['PATH'] = "{}:{}".format(
 +            os.path.join(os.path.normpath(os.path.dirname(__file__))),
 +            os.environ['PATH'])
+             
          # Execute the build command
          cmdLine = '"%s" %s' % (self.waf_path(args), self.waf_cmds)
-         retval = subprocess.call(cmdLine, shell=True)

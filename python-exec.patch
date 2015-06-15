@@ -1,0 +1,7 @@
+--- tools/pebble/python 2015-06-04 14:03:28.136666831 +0300
++++ tools/pebble/python 2015-06-04 14:07:21.125550355 +0300
+@@ -2,5 +2,5 @@
+ # This script insures that we use python version 2 when python3
+ # is the default python executable
+-python2 $@
++exec python2 "$@"
