@@ -6,7 +6,7 @@
 
 _pkgname='influxdb'
 pkgname="$_pkgname-git"
-pkgver=v0.9.0.rc33.r80.ged4d009
+pkgver=v0.9.0.r77.ga78fef9
 pkgrel=1
 epoch=
 pkgdesc='Scalable datastore for metrics, events, and real-time analytics'
@@ -17,8 +17,9 @@ groups=()
 makedepends=('autoconf' 'protobuf' 'bison' 'flex' 'go' 'gawk' 'mercurial' 'git')
 checkdepends=()
 
-conflicts=()
-replaces=()
+provides=('influxdb')
+conflicts=('influxdb')
+replaces=('influxdb')
 backup=('etc/influxdb.conf')
 options=()
 install="$_pkgname.install"
