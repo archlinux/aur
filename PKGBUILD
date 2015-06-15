@@ -4,8 +4,8 @@
 
 pkgname=pycarddav-git
 _pkgname=pycarddav
-pkgver=20150615
-pkgrel=3
+pkgver=0.7.0.24.g64bfcfe
+pkgrel=4
 epoch=1
 pkgdesc="pyCardDAV is a simple to use CardDAV CLI client"
 arch=any
