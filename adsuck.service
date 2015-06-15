@@ -1,0 +1,11 @@
+[Unit]
+Description=A small DNS server that spoofs blacklisted addresses and forwards all other queries.
+After=syslog.target
+Wants=network.target
+Before=network.target
+ 
+[Service]
+ExecStart=/usr/sbin/adsuck -D -c /var/adsuck -f /resolv.conf /hosts -r /filter
+ 
+[Install]
+WantedBy=multi-user.target

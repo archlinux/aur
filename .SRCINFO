@@ -1,0 +1,22 @@
+pkgbase = adsuck
+	pkgdesc = DNS filter
+	pkgver = 2.5.0
+	pkgrel = 4
+	url = http://opensource.conformal.com/wiki/Adsuck
+	install = adsuck.install
+	arch = any
+	license = BSD
+	depends = ldns
+	depends = libevent
+	backup = var/adsuck/filter
+	source = http://opensource.conformal.com/snapshots/adsuck/adsuck-2.5.0.tgz
+	source = 50-adsuck-update
+	source = filter
+	source = adsuck.service
+	sha512sums = 5c4a2747d77c7cafe6115814f342f6f63bc5aac049f3d061e25153727cd1885219b5c826579100e2620f3613de19520231c7472af77b709c0896f1b7f594a1db
+	sha512sums = bed32b5aa6174a7973d2405e6b6f9ab33434e493043222329d6ecf8982a939bb029720b590668276031f0d049cea7b9fd4c127daec502e2b08877cf151476dde
+	sha512sums = b0a76aeb116c058b888d21b119d44a2eccb1410cd7b1987b5167059855091bb6b52b8ec9ebd8504ba9d82a1489e52c8d3a19927f0841161977f7a8d8f3a7e58e
+	sha512sums = 74f33eb005187cb48eca121f8b05001823f0df5c9d244755d53061b91b8dd2bc8e8fa645b183420fc01f938724af8882b40844d797843b6cc16e57f83c1a06ad
+
+pkgname = adsuck
+

@@ -1,0 +1,34 @@
+# computer names
+^count(er)?[0-9]+?\.
+^banners?[0-9]+?\.
+^ad(s|srv|serv|serve|server|v|vert)?[0-9]+?\.
+^clicks?\.
+^[a-z][0-9]+\.[a-z]\.akamaiedge\.net
+^[a-z][0-9]+\.[a-z]\.akastream\.net
+^[a-z][0-9]+\.[a-z]\.akamaitech\.net
+^[a-z][0-9]+\.[a-z]\.a\.yimg\.com
+^[a-z][0-9]+\.[a-z]\.ak\.nbci\.com
+^pub[0-9]\.
+^stats\.
+^s[0-9]\.sitemeter\.com
+^s[0-9]\.cnzz\.com
+^track(er|ing)?\.
+^u.*\.spylog\.com
+# domains
+247realmedia\.com
+\.2o7\.net
+advserv
+adbrite
+adbureau\.net
+adultfriendfinder\.com
+adtech\.com$
+casalemedia
+clickbank
+clickzs\.com$
+cybermonitor\.com
+cqcounter\.com
+liveadvert
+dynamic\.dol\.ru
+doubleclick
+erasercash
+fastclick

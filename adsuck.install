@@ -1,0 +1,33 @@
+#! /bin/bash
+
+post_install() {
+  if [ ! `egrep '^_adsuck:' /etc/group` ]; then
+    echo "Adding adsuck group"
+    groupadd _adsuck
+  fi
+
+  if [ ! `egrep '^_adsuck:' /etc/passwd` ]; then
+    echo "Adding adsuck user"
+    useradd -g _adsuck -d /var/adsuck -s /bin/false _adsuck
+  fi
+  echo 'Now manipulate the regex file /var/adsuck/filter and get your /var/adsuck/hosts file'
+  echo 'Examples: http://www.mvps.org/winhelp2002/hosts.txt'
+  echo '          http://rlwpx.free.fr/WPFF/hosts.htm'
+  echo '          http://pgl.yoyo.org/adservers/serverlist.php?showintro=0;hostformat=hosts'
+  echo 'And make sure your setup with resolv.conf is correct.'
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+pre_remove() {
+  echo "Removing adsuck user and group"
+  groupdel _adsuck &> /dev/null
+  userdel _adsuck &> /dev/null
+}
+
+op=$1
+shift
+
+$op $*
