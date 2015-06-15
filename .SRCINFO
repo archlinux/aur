@@ -1,0 +1,20 @@
+pkgbase = airgraph-ng-svn
+	pkgdesc = Graphing tool for the aircrack-ng suite
+	pkgver = 2112
+	pkgrel = 2
+	url = http://www.aircrack-ng.org
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = subversion
+	depends = python2
+	depends = graphviz
+	optdepends = psyco: JIT compiler for python
+	provides = airgraph
+	conflicts = airgraph-ng
+	conflicts = aircrack-ng-scripts
+	source = svn://trac.aircrack-ng.org/svn/trunk/scripts/airgraph-ng/
+	sha512sums = SKIP
+
+pkgname = airgraph-ng-svn
+
