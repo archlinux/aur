@@ -1,10 +1,10 @@
 pkgbase = puzsion
 	pkgdesc = a little bejeweled-like game
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gp32x.com/board/index.php?/topic/52332-wiz-bennugdgph-contest-winners/page__p__823581
 	install = puzsion.install
-	arch = i686
+	arch = any
 	license = custom:unknown
 	depends = bennugd-core
 	depends = bennugd-modules
