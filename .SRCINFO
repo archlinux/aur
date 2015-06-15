@@ -1,0 +1,17 @@
+pkgbase = node
+	pkgdesc = AX25 node software
+	pkgver = 0.3.2
+	pkgrel = 2
+	url = http://tldp.org/HOWTO/AX25-HOWTO/x1688.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	optdepends = ax25-tools: hamradio modem support
+	optdepends = soundmodem: software packet radio modem
+	source = http://ftp.de.debian.org/debian/pool/main/n/node/node_0.3.2.orig.tar.gz
+	source = node.patch
+	md5sums = e458f3d8d75fd364f7841a296e0a4eae
+	md5sums = a05aeae5c98fa47e30de494809c00a3b
+
+pkgname = node
+
