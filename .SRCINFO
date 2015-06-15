@@ -1,0 +1,14 @@
+pkgbase = stdoutisatty-git
+	pkgdesc = Make programs think their stdout is a tty / terminal.
+	pkgver = 8.04881d0
+	pkgrel = 1
+	url = https://github.com/lilydjwg/stdoutisatty
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	source = stdoutisatty::git://github.com/lilydjwg/stdoutisatty.git
+	md5sums = SKIP
+
+pkgname = stdoutisatty-git
+
