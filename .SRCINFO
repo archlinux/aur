@@ -1,0 +1,21 @@
+pkgbase = mangatux-git
+	pkgdesc = The new and refreshed manga downloader based on LMD. Git version
+	pkgver = 0.9.1.r0.ga9b311f
+	pkgrel = 1
+	url = https://github.com/jorge-barroso/mangatux-git/tree/master
+	install = mtx.install
+	arch = any
+	license = GPL3
+	depends = libnotify
+	depends = gtkdialog
+	depends = wget
+	depends = lynx
+	depends = zenity
+	optdepends = imagemagick: PDF manga download support (only Submanga yet)
+	provides = mangatux
+	conflicts = mangatux
+	source = git+https://github.com/jorge-barroso/mangatux.git
+	sha512sums = SKIP
+
+pkgname = mangatux-git
+
