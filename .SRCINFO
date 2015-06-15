@@ -1,0 +1,27 @@
+pkgbase = winswitch
+	pkgdesc = Window-Switch is a client server tool to start and control virtual desktops
+	pkgver = 0.12.21
+	pkgrel = 1
+	url = https://winswitch.org/
+	install = winswitch.install
+	arch = any
+	license = GPL3
+	depends = pygtk
+	depends = python2-crypto
+	depends = twisted
+	depends = python2-pyasn1
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	optdepends = nautilus: nautilus sendto
+	optdepends = thunar: thunar sendto
+	optdepends = parti-all: xpra support
+	optdepends = nss-mdns: mdns support
+	optdepends = nxproxy: proxy support
+	optdepends = python-netifaces: firewall detection
+	optdepends = java-environment: graphical server signatures
+	options = !emptydirs
+	source = https://winswitch.org/src/winswitch-0.12.21.src.tar.bz2
+	md5sums = 8d1cf9fa65528d6fdbb058b06f68c787
+
+pkgname = winswitch
+
