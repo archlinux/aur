@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Balloons
+Exec=balloons
+Icon=balloons
+Terminal=false
+Categories=Game;LogicGame;
+StartupNotify=false

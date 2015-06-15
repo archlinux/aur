@@ -1,0 +1,14 @@
+
+post_install() {
+  if [ ! -e /usr/share/balloons/HIGH.DAT ]; then
+    install -m777 /usr/share/balloons/data/HIGH.DAT /usr/share/balloons/
+  fi
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  echo "If you do not want to keep your highscores, delete /usr/share/balloons as root."
+}

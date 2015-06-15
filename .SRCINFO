@@ -1,0 +1,22 @@
+pkgbase = balloons
+	pkgdesc = Tile based platform puzzle game.
+	pkgver = 0.1.8.3
+	pkgrel = 5
+	url = http://sourceforge.net/projects/balloons-ng/
+	install = balloons.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl_ttf
+	depends = sdl_mixer
+	source = http://downloads.sourceforge.net/balloons-ng/balloons-0.1.8-3-src.tar.gz
+	source = scoreList.diff
+	source = balloons.desktop
+	source = HIGH.DAT
+	md5sums = afdd815a7c2e9c4c007704473f089f7e
+	md5sums = 5a9c8f36cfc63721c619805f533b8121
+	md5sums = SKIP
+	md5sums = b9a6a247d322bba6c5bd4ff9427f91b8
+
+pkgname = balloons
+
