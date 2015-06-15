@@ -1,0 +1,14 @@
+pkgbase = kde4-ftps-kio
+	pkgdesc = An ftps KIO slave for KDE4, based on rfc4217 and build upon the ftp KIO-slave sources
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://kasablanca.berlios.de/kio-ftps/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = automoc4
+	source = http://kent.dl.sourceforge.net/project/kasablanca.berlios/kio-ftps-0.2.tar.gz
+	md5sums = 33c555a9eee0cdfd68ae9050f6502069
+
+pkgname = kde4-ftps-kio
+
