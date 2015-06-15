@@ -1,0 +1,36 @@
+diff -ur pinball-0.3.1/base/Config.cpp pinball-0.3.1_fixed//base/Config.cpp
+--- pinball-0.3.1/base/Config.cpp	2003-11-21 05:59:09.000000000 -0200
++++ pinball-0.3.1_fixed//base/Config.cpp	2010-11-30 19:27:11.952939021 -0200
+@@ -397,8 +397,8 @@
+ }
+ 
+ ///!+rzr this workaround Full path to relative ones, usefull for windows port
+-bool isAbsolutePath(char const * const argv0 ) ; 
+-bool isAbsolutePath(char const * const argv0 ) 
++bool isAbsolutePath(char * const argv0 ) ; 
++bool isAbsolutePath(char * const argv0 ) 
+ {
+   //EM_COUT(" check root drive c:\\ // absolute path -  check for wine ?", 42);
+   bool t = false;
+@@ -415,7 +415,7 @@
+ }
+ /// TODO; make it more robust for stranges paths 
+ /// (ie "c:\\d/i//r\like\\\\this/\\/") , wine virtual pc etc
+-void Config::setPaths(char const * const argv0) {
++void Config::setPaths(char * const argv0) {
+   // EM_CERR("+ Config::setPath"); 
+   //!+rzr : make it work also in relative paths use
+   // and "/long path/quoted/paths/" etc
+Only in pinball-0.3.1_fixed//base: Config.cpp~
+diff -ur pinball-0.3.1/base/Config.h pinball-0.3.1_fixed//base/Config.h
+--- pinball-0.3.1/base/Config.h	2003-11-20 14:46:16.000000000 -0200
++++ pinball-0.3.1_fixed//base/Config.h	2010-11-30 19:28:17.076265440 -0200
+@@ -87,7 +87,7 @@
+   void loadConfig();
+   void setDefault();
+   /// set RELATIVE path according to current work directory of exec
+-  void setPaths(char const * const argv0);  //!+rzr
++  void setPaths(char * const argv0);  //!+rzr
+ 
+  private:
+   int m_iWidth;

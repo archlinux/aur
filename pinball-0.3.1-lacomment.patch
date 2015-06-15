@@ -1,0 +1,22 @@
+--- src/Makefile.in~	2010-11-15 10:55:51.000000000 -0600
++++ src/Makefile.in	2010-11-15 11:07:27.427255000 -0600
+@@ -505,7 +505,7 @@
+ 	uninstall-pinincludeHEADERS uninstall-pinlibLIBRARIES
+ 
+ 
+-dnl libemilia_pin_la_SOURCES = $(libemilia_pin_a_SOURCES)
++#dnl libemilia_pin_la_SOURCES = $(libemilia_pin_a_SOURCES)
+ 
+ # !+rzr : This trick workaround a bad generated rule (under Linux mingw32)
+ # src/ litool returns:  -L/usr/local//lib /usr/lib/libjpeg.so
+--- test/Makefile.in~	2010-11-15 11:11:07.000000000 -0600
++++ test/Makefile.in	2010-11-15 11:12:46.119254852 -0600
+@@ -621,7 +621,7 @@
+ 	mostlyclean-generic mostlyclean-libtool tags uninstall \
+ 	uninstall-am uninstall-info-am uninstall-testlibLTLIBRARIES
+ 
+-dnl noinst_PROGRAMS = unittest
++#dnl noinst_PROGRAMS = unittest
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
+ .NOEXPORT:

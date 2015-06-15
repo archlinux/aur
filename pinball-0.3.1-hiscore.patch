@@ -1,0 +1,39 @@
+--- pinball-0.3.1/src/Table.cpp~	2006-08-03 14:59:16.000000000 +0200
++++ pinball-0.3.1/src/Table.cpp	2006-08-03 14:59:16.000000000 +0200
+@@ -247,14 +247,9 @@
+   // Clear old high scores
+   m_mapHighScores.clear();
+ 
+-  //!rzr+ : fix w32
+-  string sFileName =  m_sTableName + "/" + HIGH_SCORES_FILENAME;
+-#ifdef RZR_PATHRELATIVE
+-  sFileName = string( Config::getInstance()->getExeDir() )
+-    +"/"+ m_sTableName +".cfg";
+-#else
+-  sFileName = string(EM_HIGHSCORE_DIR) + "/" + sFileName;
+-#endif //!rzr-
++  char *home = getenv("HOME");
++  string sFileName = string(home? home:".") + "/.emilia/" + m_sTableName +
++    ".hiscore";
+ 
+   ifstream file(sFileName.c_str());
+   if (!file) {
+@@ -308,14 +303,10 @@
+     cerr << "No current table name! (the first time is normal...)" << endl;
+     return false;
+   }
+-  //!rzr+ : fix w32
+-  string sFileName =  m_sTableName + "/" + HIGH_SCORES_FILENAME;
+-#ifdef RZR_PATHRELATIVE
+-  sFileName = string( Config::getInstance()->getExeDir() )
+-    +"/"+ m_sTableName +".cfg";
+-#else
+-  sFileName = string(EM_HIGHSCORE_DIR) + "/" + sFileName;
+-#endif //!rzr-
++
++  char *home = getenv("HOME");
++  string sFileName = string(home? home:".") + "/.emilia/" + m_sTableName +
++    ".hiscore";
+ 
+   ofstream file(sFileName.c_str());//, ios_base::out | ios_base::trunc);
+   if (!file) {

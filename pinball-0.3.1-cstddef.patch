@@ -1,0 +1,30 @@
+--- base/Behavior.cpp~	2003-11-20 10:46:16.000000000 -0600
++++ base/Behavior.cpp	2011-02-09 13:19:13.651559002 -0600
+@@ -6,6 +6,7 @@
+     email                : henqvist@excite.com
+  ***************************************************************************/
+ 
++#include <cstddef>
+ #include "Private.h"
+ #include "Behavior.h"
+ #include "Group.h"
+--- base/BehaviorVisitor.cpp~	2003-11-20 10:46:16.000000000 -0600
++++ base/BehaviorVisitor.cpp	2011-02-09 13:26:17.561558995 -0600
+@@ -6,6 +6,7 @@
+     email                : henqvist@excite.com
+  ***************************************************************************/
+ 
++#include <cstddef>
+ #include "BehaviorVisitor.h"
+ #include "Behavior.h"
+ #include "Group.h"
+--- base/SignalSender.cpp~	2003-11-20 10:46:16.000000000 -0600
++++ base/SignalSender.cpp	2011-02-09 13:35:29.151558926 -0600
+@@ -7,6 +7,7 @@
+  ***************************************************************************/
+ 
+ 
++#include <cstddef>
+ #include "Private.h"
+ #include "SignalSender.h"
+ #include "Group.h"

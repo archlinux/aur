@@ -1,0 +1,152 @@
+--- pinball-0.3.1/Makefile.in~	2006-08-03 12:18:40.000000000 +0200
++++ pinball-0.3.1/Makefile.in	2006-08-03 12:18:40.000000000 +0200
+@@ -107,7 +107,7 @@
+ install_sh = @install_sh@
+ AUTOMAKE_OPTIONS = gnu
+ 
+-SUBDIRS = libltdl addon base data src test
++SUBDIRS = addon base data src test
+ 
+ EXTRA_DIST = bootstrap pinball.spec clean pinball.desktop
+ 
+--- pinball-0.3.1/src/Makefile.in~	2006-08-03 12:20:12.000000000 +0200
++++ pinball-0.3.1/src/Makefile.in	2006-08-03 12:20:12.000000000 +0200
+@@ -114,9 +114,9 @@
+ 
+ pinlib_LIBRARIES = libemilia_pin.a
+ 
+-INCLUDES = -I../base -I../addon @INCLTDL@
++INCLUDES = -I../base -I../addon
+ 
+-pinball_LDADD = ../src/libemilia_pin.a ../addon/libemilia_addon.a ../base/libemilia_base.a @LIBLTDL@
++pinball_LDADD = ../src/libemilia_pin.a ../addon/libemilia_addon.a ../base/libemilia_base.a -lltdl
+ pinball_LDFLAGS = -export-dynamic
+ 
+ pinball_SOURCES = Pinball.cpp
+--- pinball-0.3.1/src/Makefile.am~	2006-08-03 12:20:35.000000000 +0200
++++ pinball-0.3.1/src/Makefile.am	2006-08-03 12:20:35.000000000 +0200
+@@ -7,9 +7,9 @@
+ 
+ pinlib_LIBRARIES = libemilia_pin.a
+ 
+-INCLUDES = -I../base -I../addon @INCLTDL@
++INCLUDES = -I../base -I../addon
+ 
+-pinball_LDADD = ../src/libemilia_pin.a ../addon/libemilia_addon.a ../base/libemilia_base.a @LIBLTDL@
++pinball_LDADD = ../src/libemilia_pin.a ../addon/libemilia_addon.a ../base/libemilia_base.a -lltdl
+ pinball_LDFLAGS = -export-dynamic
+ 
+ pinball_SOURCES = Pinball.cpp
+--- pinball-0.3.1/Makefile.am~	2006-08-03 12:18:12.000000000 +0200
++++ pinball-0.3.1/Makefile.am	2006-08-03 12:18:12.000000000 +0200
+@@ -1,6 +1,6 @@
+ AUTOMAKE_OPTIONS = gnu
+ 
+-SUBDIRS = libltdl addon base data src test
++SUBDIRS = addon base data src test
+ 
+ EXTRA_DIST = bootstrap pinball.spec clean pinball.desktop
+ 
+--- pinball-0.3.1/configure.ac~	2006-08-03 12:17:50.000000000 +0200
++++ pinball-0.3.1/configure.ac	2006-08-03 12:17:50.000000000 +0200
+@@ -14,19 +14,13 @@
+ CFLAGS="-g -W -Wall -O2"
+ CXXFLAGS="-g -W -Wall -O2"
+ 
+-AC_CONFIG_SUBDIRS(libltdl)
+-
+ dnl Checks for programs.
+ AC_PROG_CC
+ AC_PROG_CXX
+ AC_PROG_INSTALL
+ AC_LIBTOOL_DLOPEN
+-AC_LIBLTDL_CONVENIENCE
+ AC_PROG_LIBTOOL
+ 
+-AC_SUBST(INCLTDL)
+-AC_SUBST(LIBLTDL)
+-
+ dnl *******************************************
+ dnl PATHS AND DIRS ****************************
+ dnl data dirs, fuck I hate autoconf, spent 4 hours getting this right, had to 
+--- pinball-0.3.1/test/Makefile.in~	2006-08-03 12:21:11.000000000 +0200
++++ pinball-0.3.1/test/Makefile.in	2006-08-03 12:21:11.000000000 +0200
+@@ -112,8 +112,8 @@
+ 
+ noinst_PROGRAMS = scale simple light texture load explode collision signal billboard font thread menu joy sound trans math misc varray unittest
+ 
+-INCLUDES = -I../base -I../addon -I../src @INCLTDL@
+-LDADD = ../src/libemilia_pin.a ../addon/libemilia_addon.a ../base/libemilia_base.a @LIBLTDL@
++INCLUDES = -I../base -I../addon -I../src
++LDADD = ../src/libemilia_pin.a ../addon/libemilia_addon.a ../base/libemilia_base.a -lltdl
+ 
+ testlib_LTLIBRARIES = libModuleTest.la
+ 
+--- pinball-0.3.1/test/Makefile.am~	2006-08-03 12:20:53.000000000 +0200
++++ pinball-0.3.1/test/Makefile.am	2006-08-03 12:20:53.000000000 +0200
+@@ -6,8 +6,8 @@
+ noinst_PROGRAMS = scale simple light texture load explode collision signal billboard font thread menu joy sound trans math misc varray unittest
+ dnl noinst_PROGRAMS = unittest
+ 
+-INCLUDES = -I../base -I../addon -I../src @INCLTDL@
+-LDADD = ../src/libemilia_pin.a ../addon/libemilia_addon.a ../base/libemilia_base.a @LIBLTDL@
++INCLUDES = -I../base -I../addon -I../src
++LDADD = ../src/libemilia_pin.a ../addon/libemilia_addon.a ../base/libemilia_base.a -lltdl
+ 
+ testlib_LTLIBRARIES = libModuleTest.la
+ 
+--- pinball-0.3.1/configure~	2006-08-03 12:16:59.000000000 +0200
++++ pinball-0.3.1/configure	2006-08-03 12:16:59.000000000 +0200
+@@ -431,7 +431,6 @@
+ PACKAGE_STRING='pinball 0.3.1'
+ PACKAGE_BUGREPORT='henqvist@users.sourceforge.net'
+ 
+-ac_subdirs_all="$ac_subdirs_all libltdl"
+ # Factoring default headers for most tests.
+ ac_includes_default="\
+ #include <stdio.h>
+@@ -469,7 +468,7 @@
+ # include <unistd.h>
+ #endif"
+ 
+-ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS build build_cpu build_vendor build_os host host_cpu host_vendor host_os target target_cpu target_vendor target_os INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO AMTAR install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM AWK SET_MAKE subdirs CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE CXX CXXFLAGS ac_ct_CXX CXXDEPMODE LN_S ECHO RANLIB ac_ct_RANLIB CPP EGREP LIBTOOL INCLTDL LIBLTDL EM_DATADIR EM_LIBDIR EM_BUILD_ROOT EM_HIGHSCORE_DIR X_CFLAGS X_PRE_LIBS X_LIBS X_EXTRA_LIBS MATHLIB GL_LIBS SDL_CONFIG SDL_CFLAGS SDL_LIBS ALLEGRO_CONFIG ALLEGRO_CFLAGS ALLEGRO_LIBS CPPUNIT_CONFIG CPPUNIT_CFLAGS CPPUNIT_LIBS LIBOBJS LTLIBOBJS'
++ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS build build_cpu build_vendor build_os host host_cpu host_vendor host_os target target_cpu target_vendor target_os INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO AMTAR install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM AWK SET_MAKE subdirs CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE CXX CXXFLAGS ac_ct_CXX CXXDEPMODE LN_S ECHO RANLIB ac_ct_RANLIB CPP EGREP LIBTOOL EM_DATADIR EM_LIBDIR EM_BUILD_ROOT EM_HIGHSCORE_DIR X_CFLAGS X_PRE_LIBS X_LIBS X_EXTRA_LIBS MATHLIB GL_LIBS SDL_CONFIG SDL_CFLAGS SDL_LIBS ALLEGRO_CONFIG ALLEGRO_CFLAGS ALLEGRO_LIBS CPPUNIT_CONFIG CPPUNIT_CFLAGS CPPUNIT_LIBS LIBOBJS LTLIBOBJS'
+ ac_subst_files=''
+ 
+ # Initialize some variables set by options.
+@@ -1959,7 +1958,6 @@
+ 
+ 
+ 
+-subdirs="$subdirs libltdl"
+ 
+ 
+ ac_ext=c
+@@ -3439,18 +3437,6 @@
+ test -z "$INSTALL_DATA" && INSTALL_DATA='${INSTALL} -m 644'
+ 
+ 
+-  case $enable_ltdl_convenience in
+-  no) { { echo "$as_me:$LINENO: error: this package needs a convenience libltdl" >&5
+-echo "$as_me: error: this package needs a convenience libltdl" >&2;}
+-   { (exit 1); exit 1; }; } ;;
+-  "") enable_ltdl_convenience=yes
+-      ac_configure_args="$ac_configure_args --enable-ltdl-convenience" ;;
+-  esac
+-  LIBLTDL='${top_builddir}/''libltdl'/libltdlc.la
+-  LTDLINCL='-I${top_srcdir}/''libltdl'
+-  # For backwards non-gettext consistent compatibility...
+-  INCLTDL="$LTDLINCL"
+-
+ # Check whether --enable-shared or --disable-shared was given.
+ if test "${enable_shared+set}" = set; then
+   enableval="$enable_shared"
+@@ -11788,8 +11774,6 @@
+ s,@CPP@,$CPP,;t t
+ s,@EGREP@,$EGREP,;t t
+ s,@LIBTOOL@,$LIBTOOL,;t t
+-s,@INCLTDL@,$INCLTDL,;t t
+-s,@LIBLTDL@,$LIBLTDL,;t t
+ s,@EM_DATADIR@,$EM_DATADIR,;t t
+ s,@EM_LIBDIR@,$EM_LIBDIR,;t t
+ s,@EM_BUILD_ROOT@,$EM_BUILD_ROOT,;t t

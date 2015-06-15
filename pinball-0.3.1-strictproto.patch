@@ -1,0 +1,7 @@
+--- base/Config.cpp.orig	2009-03-02 10:46:40.000000000 -0600
++++ base/Config.cpp	2009-03-02 10:46:40.000000000 -0600
+@@ -426,2 +426,2 @@
+-    char* ptr=0; 
+-    char* ptrw = 0;
++    const char* ptr=0; 
++    const char* ptrw = 0;
