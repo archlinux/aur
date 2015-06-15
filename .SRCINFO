@@ -1,0 +1,21 @@
+pkgbase = tilda-git
+	pkgdesc = Linux terminal based on classic terminals from first person shooter games
+	pkgver = 5a6496c
+	pkgrel = 1
+	url = https://github.com/lanoxx/tilda
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = gtk3
+	depends = vte290
+	depends = glib2
+	depends = confuse
+	depends = libglade
+	provides = tilda
+	conflicts = tilda
+	source = git://github.com/lanoxx/tilda.git
+	md5sums = SKIP
+
+pkgname = tilda-git
+
