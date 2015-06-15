@@ -1,0 +1,13 @@
+[Unit]
+Description=Accounting server for BGBilling
+Requires=activemq.service
+After=activemq.service
+
+[Service]
+EnvironmentFile=/etc/conf.d/bgbilling
+Type=forking
+ExecStart=/opt/bginetaccounting/accounting_start.sh
+ExecStop=/opt/bginetaccounting/accounting_stop.sh
+
+[Install]
+WantedBy=multi-user.target

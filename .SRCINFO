@@ -1,0 +1,20 @@
+pkgbase = bginetaccounting
+	pkgdesc = Accounting server for BGBilling
+	pkgver = 6.1.22
+	pkgrel = 2
+	url = http://bgbilling.ru
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	makedepends = dos2unix
+	depends = bgbilling
+	source = ftp://bgbilling.ru/pub/bgbilling/6.1/data/BGInetAccounting_6.1_22.zip
+	source = bginetaccounting.service
+	source = setenv.sh.patch
+	md5sums = d64d30fc7fc20d70b152005151d3d3b2
+	md5sums = d16caf1cc2f0701d3e4625ce21075a50
+	md5sums = dae4f113fa23e562270e1d935a2a3a12
+
+pkgname = bginetaccounting
+
