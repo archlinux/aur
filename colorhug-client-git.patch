@@ -1,0 +1,36 @@
+diff --git a/man/colorhug-ccmx.sgml b/man/colorhug-ccmx.sgml
+index e9ffde2..a330611 100644
+--- a/man/colorhug-ccmx.sgml
++++ b/man/colorhug-ccmx.sgml
+@@ -1,4 +1,6 @@
+-<!doctype refentry PUBLIC "-//OASIS//DTD DocBook V4.1//EN" [
++<?xml version="1.0" encoding="utf-8"?>
++<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook V4.1//EN"
++   "http://www.oasis-open.org/docbook/xml/4.1/docbookx.dtd" [
+   <!-- Please adjust the date whenever revising the manpage. -->
+   <!ENTITY date        "<date>02 January,2012</date>">
+   <!ENTITY package     "colorhug-ccmx">
+diff --git a/man/colorhug-cmd.sgml b/man/colorhug-cmd.sgml
+index 2358e05..837480d 100644
+--- a/man/colorhug-cmd.sgml
++++ b/man/colorhug-cmd.sgml
+@@ -1,4 +1,6 @@
+-<!doctype refentry PUBLIC "-//OASIS//DTD DocBook V4.1//EN" [
++<?xml version="1.0" encoding="utf-8"?>
++<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook V4.1//EN"
++   "http://www.oasis-open.org/docbook/xml/4.1/docbookx.dtd" [
+   <!-- Please adjust the date whenever revising the manpage. -->
+   <!ENTITY date        "<date>07 September,2010</date>">
+   <!ENTITY package     "colorhug-cmd">
+diff --git a/man/colorhug-flash.sgml b/man/colorhug-flash.sgml
+index 376251b..643f54c 100644
+--- a/man/colorhug-flash.sgml
++++ b/man/colorhug-flash.sgml
+@@ -1,4 +1,6 @@
+-<!doctype refentry PUBLIC "-//OASIS//DTD DocBook V4.1//EN" [
++<?xml version="1.0" encoding="utf-8"?>
++<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook V4.1//EN"
++   "http://www.oasis-open.org/docbook/xml/4.1/docbookx.dtd" [
+   <!-- Please adjust the date whenever revising the manpage. -->
+   <!ENTITY date        "<date>07 September,2010</date>">
+   <!ENTITY package     "colorhug-flash">

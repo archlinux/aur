@@ -1,0 +1,30 @@
+pkgbase = colorhug-client-git
+	pkgdesc = Calibration client for the Hughski ColorHug device
+	pkgver = 0.2.1.r12.g7c4bded
+	pkgrel = 1
+	url = http://github.com/hughski/colorhug-client
+	install = colorhug-client.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkg-config
+	makedepends = intltool
+	makedepends = docbook2x
+	depends = glib2>=2.31.10
+	depends = libgusb>=0.1.2
+	depends = gtk3>=2.91.0
+	depends = colord-git
+	depends = colord-gtk>=0.1.24
+	depends = libsoup>=2.4
+	depends = libcanberra>=0.10
+	depends = itstool
+	depends = gnome-common
+	depends = perl-xml-libxml
+	depends = intltool>=0.50
+	provides = colorhug-client
+	conflicts = colorhug-client
+	source = colorhug-client::git+git://github.com/hughski/colorhug-client.git
+	source = colorhug-client-git.patch
+
+pkgname = colorhug-client-git
+
