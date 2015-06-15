@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=TecnoBallZ
+Comment=A Brick Busting game
+Exec=/usr/games/tecnoballz
+Terminal=false
+Type=Application
+Icon=tecnoballz
+Encoding=UTF-8
+Categories=Game;ArcadeGame;BlocksGame;
