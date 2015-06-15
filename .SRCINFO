@@ -1,0 +1,17 @@
+pkgbase = aesthe-svn
+	pkgdesc = 3d modeller
+	pkgver = 164
+	pkgrel = 1
+	url = http://sourceforge.net/projects/aesthe/
+	arch = i686
+	license = unknown
+	makedepends = subversion
+	depends = lua
+	depends = sdl
+	source = Makefile
+	source = Makefile2
+	md5sums = 6d79159605fd7081c3ab844954238977
+	md5sums = 2bb71fb2103af5a039ae8c6f1a6e33a0
+
+pkgname = aesthe-svn
+

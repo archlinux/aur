@@ -1,0 +1,80 @@
+CC = gcc
+
+CFLAGS = -Wall -pedantic
+CFLAGS += -I../inc_priv -I../inc_pub
+CFLAGS += `pkg-config --cflags lua sdl`
+CFLAGS += -g
+CFLAGS += '-DAE_SEARCH_PATH_SHARE="/usr//share/aesthe"'
+#CFLAGS += -DDEBUG_FLAG
+
+LDFLAGS = -lm -lGL -lGLU
+LDFLAGS += `pkg-config --libs lua5.1 sdl`
+
+PROJECT = aesthe
+OBJS = ae_common.o ae_algebra.o ae_list.o ae_kernel.o ae_render.o ae_engine.o ae_console.o ae_image.o ae_texture.o ae_eximport.o ae_net.o ae_main.o
+
+all: usage build
+#all: usage build run
+#all: usage build valgrind
+
+usage:
+	######################### Usage #########################
+	# make all - builds aesthe                              #
+	# make clean - cleans *.o and binary                    #
+	# make run - runs Aesthe                                #
+	# make runexamples - runs Aesthe with examples          #
+	#########################################################
+	# To build Aesthe you need have installed:              #
+	# 1. liblua version 5.1 (development package)           #
+	# 2. SDL (development package)                          #
+	# 3. pkg-config installed and properly configured       #
+	#########################################################
+
+
+# --- Build targets: ---
+
+build: $(PROJECT)
+
+$(PROJECT): $(OBJS)
+	$(CC) $(LDFLAGS) -o $(PROJECT) $(OBJS) $(LDLIBS)
+	mkdir -p ../bin
+	cp $(PROJECT) ../bin
+
+%.o: %.c
+	$(CC) -c $(CFLAGS) $< -o $@
+
+clean:
+	rm -f $(PROJECT) $(OBJS)
+
+
+# --- Run targets: ---
+
+run: build
+	cd ..; bin/$(PROJECT)
+
+runexamples: build
+	cd ..; bin/$(PROJECT) -d1024x768 -sexample/examples
+
+trace: build
+	cd ..; ltrace bin/$(PROJECT) 2>&1 | grep gl
+
+valgrind:
+	#cd ..; valgrind --tool=massif bin/$(PROJECT) 2>&1
+	cd ..; valgrind --tool=memcheck bin/$(PROJECT) 2>&1
+
+
+# --- Other targets: ---
+
+doc: build
+	cd ..; bin/$(PROJECT) -sdoc 2>/dev/null > doc/help.dpp
+	cd ../doc; make
+
+arch: clean
+	cd ..; mkdir -p archive
+	cd ..; tar c '--exclude=*.svn*' inc_priv inc_pub src image script model/example doc win32/Makefile win32/*.bat win32/LICENSE* Makefile README LICENSE | gzip > archive/$(PROJECT)_`date '+%Y-%m-%d_%H-%M-%S'`.tgz
+
+VERSION=`grep VERSION ../inc_priv/ae_common.h | sed -e 's/^[^"]*"\(.*\)\".*/\1/' | tr '.' '-'`
+release: clean
+	tar c -C ../.. '--exclude=*.svn*' aesthe/inc_priv aesthe/inc_pub aesthe/src aesthe/image aesthe/script aesthe/model/example aesthe/doc aesthe/win32/Makefile aesthe/Makefile aesthe/README aesthe/LICENSE | gzip > ../$(PROJECT)_$(VERSION)_unix_source.tgz
+
+
