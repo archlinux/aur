@@ -3,8 +3,8 @@
 # vim: set ts=2 sts=2 et ft=sh tw=79:
 
 pkgname='poppler-minimal'
-pkgver=0.30.0
-pkgrel=2
+pkgver=0.33.0
+pkgrel=1
 arch=(i686 x86_64)
 license=('GPL')
 makedepends=('icu')
@@ -15,7 +15,7 @@ conflicts=("poppler")
 provides=("poppler")
 url="http://poppler.freedesktop.org/"
 source=(http://poppler.freedesktop.org/poppler-${pkgver}.tar.xz)
-sha1sums=('12937666faee80bae397a8338a3357e864d77d53')
+sha1sums=('56c195f2c5e56fa017d32c0507a31b226f48bedb')
 
 build() {
   cd "${srcdir}/poppler-${pkgver}"
@@ -40,4 +40,3 @@ package() {
   cd "${srcdir}/poppler-${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
-sha1sums=('6040e46b5f27e2562227232ba956c815cc2878e2')
