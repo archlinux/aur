@@ -1,0 +1,24 @@
+pkgbase = hamlib
+	pkgdesc = Ham radio equipment control libraries
+	pkgver = 1.2.15.3
+	pkgrel = 2
+	url = http://hamlib.org
+	changelog = hamlib.ChangeLog.markdown
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = libtool
+	makedepends = swig
+	depends = perl
+	depends = python2
+	depends = tcl
+	depends = libxml2
+	depends = libusb
+	options = !emptydirs
+	source = http://downloads.sourceforge.net/project/hamlib/hamlib/1.2.15.3/hamlib-1.2.15.3.tar.gz
+	md5sums = 3cad8987e995a00e5e9d360e2be0eb43
+	sha256sums = a2ca4549e4fd99d6e5600e354ebcb57502611aa63c6921c1b8a825289833f75e
+
+pkgname = hamlib
+
