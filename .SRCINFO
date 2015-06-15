@@ -1,0 +1,12 @@
+pkgbase = 3dslicer
+	pkgdesc = A free, open source software package for image analysis and scientific visualization.
+	pkgver = 4.4.0
+	pkgrel = 1
+	url = http://slicer.org
+	arch = x86_64
+	license = BSD
+	source = http://download.slicer.org/bitstream/263262
+	sha256sums = 9c538a975c0b0b2c47d45868d35be60c69a3c3e82222ca04470052f16d699a02
+
+pkgname = 3dslicer
+
