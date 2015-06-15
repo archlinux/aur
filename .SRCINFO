@@ -1,0 +1,15 @@
+pkgbase = python2-libjio
+	pkgdesc = Python bindings for libjiu, a userspace library to do journaled, transaction-oriented I/O.
+	pkgver = 1.02
+	pkgrel = 1
+	url = https://blitiri.com.ar/p/libjio/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = python2
+	depends = libjio
+	source = https://blitiri.com.ar/p/libjio/files/1.02/libjio-1.02.tar.gz
+	md5sums = b9ad3f5e0cef17632aea0f0de9347225
+
+pkgname = python2-libjio
+
