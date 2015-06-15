@@ -1,0 +1,14 @@
+pkgbase = code-eli-git
+	pkgdesc = Collection of C++ libraries that provide a variety of functionalities.
+	pkgver = 20140913
+	pkgrel = 1
+	url = https://github.com/ddmarshall/Code-Eli
+	arch = i686
+	arch = x86_64
+	license = EPL 1.0
+	makedepends = cmake
+	makedepends = git
+	provides = code-eli
+
+pkgname = code-eli-git
+
