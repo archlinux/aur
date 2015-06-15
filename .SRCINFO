@@ -1,0 +1,15 @@
+pkgbase = python2-gitinspector
+	pkgdesc = The statistical analysis tool for git repositories.
+	pkgver = 0.3.2
+	pkgrel = 2
+	url = http://code.google.com/p/gitinspector/
+	arch = any
+	license = GPL
+	depends = python2
+	depends = python2-setuptools
+	options = !emptydirs
+	source = http://gitinspector.googlecode.com/files/gitinspector_0.3.2.zip
+	md5sums = e1cbc2c5883c161f0deab8eb4cf025ad
+
+pkgname = python2-gitinspector
+
