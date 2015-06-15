@@ -3,7 +3,7 @@
 pkgname=tint2-git
 _pkgname=tint2
 pkgrel=1
-pkgver=v0.12.rc5.r14.g18b0ef2
+pkgver=v0.12.rc6.r8.ge7cfa35
 pkgdesc="Tint2 git official release"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/o9000/tint2"
@@ -17,14 +17,17 @@ source="git+https://gitlab.com/o9000/tint2.git"
 md5sums=('SKIP')
 
 pkgver() {
-  cd "srcdir/$_pkgname"
+  cd "$srcdir/$_pkgname"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
- sed -i 's/\#\!\/usr\/bin\/env python/\#\!\/usr\/bin\/env python2/g' "$srcdir/$_pkgname/src/tint2conf/tintwizard.py"
+ # migrated to /usr/bin/python2 
+ #sed -i 's/\#\!\/usr\/bin\/env python/\#\!\/usr\/bin\/env python2/g' "$srcdir/$_pkgname/src/tint2conf/tintwizard.py"
  cd "$srcdir/$_pkgname"
- cmake . -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_TINT2CONF=1
+ cmake . -DCMAKE_INSTALL_PREFIX=/usr 
+ # enabled by default 
+ # -DENABLE_TINT2CONF=1
  make
 }
 

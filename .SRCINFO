@@ -1,6 +1,6 @@
 pkgbase = tint2-git
 	pkgdesc = Tint2 git official release
-	pkgver = v0.12.rc5.r14.g18b0ef2
+	pkgver = v0.12.rc6.r8.ge7cfa35
 	pkgrel = 1
 	url = https://gitlab.com/o9000/tint2
 	arch = i686
