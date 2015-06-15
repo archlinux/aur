@@ -1,0 +1,7 @@
+post_install() {
+  pecl install --register-only timezonedb
+}
+
+pre_remove() {
+  pecl uninstall --register-only timezonedb
+}

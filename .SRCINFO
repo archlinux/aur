@@ -1,0 +1,15 @@
+pkgbase = pecl-timezonedb
+	pkgdesc = Timezone Database to be used with PHP's date and time functions
+	pkgver = 2015.4
+	pkgrel = 2
+	url = http://pecl.php.net/package/timezonedb
+	arch = i686
+	arch = x86_64
+	license = PHP
+	makedepends = autoconf
+	depends = php-pear
+	source = http://pecl.php.net/get/timezonedb-2015.4.tgz
+	md5sums = 965459fee5cb73f81cbcda57c9da1ca6
+
+pkgname = pecl-timezonedb
+
