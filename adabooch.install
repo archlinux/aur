@@ -1,0 +1,11 @@
+# arg 1:  the new package version
+post_install() {
+    echo "To use components from the Booch library,"
+    echo "you must make gnat aware of it."
+    echo "Here are two examples how to do so."
+    echo
+    echo "Use include path: e.g. gnatmake -I/usr/lib/adabooch ...."
+    echo
+    echo "Set environment variable:"
+    echo ' export ADA_INCLUDE_PATH=${ADA_INCLUDE_PATH}:/usr/lib/adabooch'
+}

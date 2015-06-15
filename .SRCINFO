@@ -1,0 +1,15 @@
+pkgbase = adabooch
+	pkgdesc = The Ada 95 Booch Components
+	pkgver = 20130322
+	pkgrel = 3
+	url = http://sourceforge.net/projects/booch95/
+	install = adabooch.install
+	arch = any
+	license = GPLv2
+	makedepends = gprbuild
+	depends = gcc-ada
+	source = http://downloads.sourceforge.net/booch95/bc-20130322.tgz
+	sha512sums = db572f5c2b4140624e43ac1be6e6a3594c050611e8d0aa4dd53f62c1f0c63ba8e66196e5f60d6151e36639a0bec749d9d2c15b0f6cadb46d761fbd88eafaa085
+
+pkgname = adabooch
+
