@@ -1,0 +1,32 @@
+pkgbase = redmine
+	pkgdesc = A flexible project management web application. Written using the Ruby on Rails, it is cross-platform and cross-database.
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = http://www.redmine.org
+	arch = any
+	license = GPL2
+	optdepends = ruby: a dynamic, interpreted, open source programming language
+	optdepends = rvm: a command line tool to easily manage multiple Ruby environments
+	optdepends = rbenv: another command line tool to easily manage multiple Ruby environments
+	optdepends = apache: a supported application server
+	optdepends = nginx: a supported application server
+	optdepends = tomcat6: a supported application server
+	optdepends = tomcat7: a supported application server
+	optdepends = mariadb: MariaDB database support
+	optdepends = mysql: MySQL database support
+	optdepends = postgresql: PostgreSQL database support
+	optdepends = git: Git repository browsing
+	optdepends = subversion: Subversion repository browsing
+	optdepends = darcs: Darcs repository browsing
+	optdepends = bzr: Bazaar repository browsing
+	optdepends = mercurial: Mercurial repository browsing
+	optdepends = cvs: CVS repository browsing
+	optdepends = imagemagick: Image export support for Gantt
+	provides = redmine
+	backup = usr/share/webapps/redmine/config/configuration.yml
+	backup = usr/share/webapps/redmine/config/database.yml
+	source = http://www.redmine.org/releases/redmine-3.0.2.tar.gz
+	md5sums = edc27c4de4e8ac52f669883617d4dd5d
+
+pkgname = redmine
+
