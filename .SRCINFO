@@ -1,0 +1,13 @@
+pkgbase = mythes-ca
+	pkgdesc = Catalan thesaurus
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = http://www.softcatala.org/wiki/Projectes/Openthesaurus-ca
+	arch = any
+	license = GPL
+	optdepends = libmythes: offers thesaurus library functions
+	source = http://www.softcatala.org/diccionaris/actualitzacions/sinonims/thesaurus-ca.oxt
+	md5sums = 47cb36896e71be0984f5750258d84907
+
+pkgname = mythes-ca
+
