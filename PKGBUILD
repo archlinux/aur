@@ -2,14 +2,14 @@
 
 pkgname=wingpanel-indicator-session-bzr
 pkgver=r18
-pkgrel=2
+pkgrel=3
 pkgdesc='Session indicator for Wingpanel'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/wingpanel-indicator-session'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('wingpanel-rewrite-x11-bzr')
-makedepends=('bzr' 'cmake' 'vala')
+depends=('accountsservice' 'wingpanel-rewrite-x11-bzr')
+makedepends=('bzr' 'cmake' 'gobject-introspection' 'vala')
 provides=('wingpanel-indicator-session')
 conflicts=('wingpanel-indicator-session')
 source=('bzr+lp:wingpanel-indicator-session')
