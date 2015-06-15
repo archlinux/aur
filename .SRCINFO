@@ -1,0 +1,23 @@
+pkgbase = fontconfig-git
+	pkgdesc = A library for configuring and customizing font access
+	pkgver = 2.11.94.r1772
+	pkgrel = 1
+	url = http://www.fontconfig.org/release/
+	install = fontconfig-git.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = gperf
+	makedepends = python
+	depends = expat
+	depends = freetype2
+	provides = fontconfig
+	conflicts = fontconfig
+	options = !libtool
+	source = fontconfig-git::git://anongit.freedesktop.org/fontconfig
+	source = 29-replace-bitmap-fonts.conf
+	sha256sums = SKIP
+	sha256sums = 00911ca1b6e15bb57eb11a5ca5c4f45b721e5bd7a0f57ec2d05091702ae36cde
+
+pkgname = fontconfig-git
+
