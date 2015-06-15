@@ -1,0 +1,16 @@
+pkgbase = bouml
+	pkgdesc = A free UML 2 modeler with C++, Idl, Java, PHP and Python code generation
+	pkgver = 6.8.1
+	pkgrel = 1
+	url = http://bouml.fr/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = rpmextract
+	depends = qt4
+	options = !strip
+	source = http://bouml.free.fr/files/bouml-6.8.1-CentOS6..rpm
+	sha512sums = 9105e732d160454a88a3b7f2c8810dfcb886038b8a79f6983a75921dc25a39f489ca8c350861747cb80284a409ec9ddb5e444b67966d9dcd45149bfd2eb94df9
+
+pkgname = bouml
+
