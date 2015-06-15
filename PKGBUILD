@@ -2,7 +2,7 @@
 # Contributor: V0K3 <v0k3@inventati.org>
 
 pkgname=sasm
-pkgver=3.1.4
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Simple crossplatform IDE for NASM, MASM, GAS, FASM assembly languages"
 arch=('i686' 'x86_64')
