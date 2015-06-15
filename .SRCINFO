@@ -1,0 +1,16 @@
+pkgbase = wolf-data-steam
+	pkgdesc = Return to Castle Wolfenstein native Linux Single Player data via Steam
+	pkgver = 1.41b
+	pkgrel = 3
+	url = ftp://ftp.internat.freebsd.org/pub/FreeBSD/distfiles/
+	install = wolf-data-steam.install
+	arch = any
+	license = GPL
+	depends = steamcmd
+	provides = wolf-data
+	conflicts = wolf-data
+	source = https://dl.dropboxusercontent.com/s/97qyelre9iryv37/wolf-linux-1.41b.x86.run
+	md5sums = 2aa37968aff19d665ed6c001773b2de3
+
+pkgname = wolf-data-steam
+
