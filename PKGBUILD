@@ -5,7 +5,7 @@
 pkgname=pycarddav-git
 _pkgname=pycarddav
 pkgver=20150615
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="pyCardDAV is a simple to use CardDAV CLI client"
 arch=any
@@ -18,6 +18,11 @@ depends=('python2' 'python2-vobject' 'python2-requests' 'python2-lxml'
 makedepends=('python-docutils' 'python2-distribute')
 source=("git+https://github.com/geier/${_pkgname}.git")
 md5sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/$_pkgname"
+  git describe --always | sed -e 's|-|.|g' -e 's|^v||'
+}
 
 build() {
   cd "${srcdir}/$_pkgname/doc/man"
