@@ -1,0 +1,29 @@
+Description: Modified netemul.desktop file
+ This patch modifies netemul.desktop to:
+   * Comply with the FreeDesktop standars in not using an Encoding entry
+   * Change the path of the binary from /usr/local/bin/ to /usr/local
+Author: Lisandro Damián Nicanor Pérez Meyer <perezmeyer@gmail.com>
+---
+Origin: Debian
+
+Index: netemul-git-package/netemul.desktop
+===================================================================
+--- netemul-git-package.orig/netemul.desktop	2009-11-27 22:28:22.000000000 -0300
++++ netemul-git-package/netemul.desktop	2009-11-27 22:29:18.000000000 -0300
+@@ -1,13 +1,12 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+ Name=NetEmul
+ Name[ru]=NetEmul
+ Comment=The LAN network simulator
+ Comment[es]=Simulador de redes de computadoras
+ Comment[ru]=Симулятор работы локольной сети
+ Type=Application
+-Exec=/usr/local/bin/netemul
+-Icon=/usr/local/share/netemul/pixmap/NetEmul.png
++Exec=/usr/bin/netemul
++Icon=/usr/share/netemul/pixmap/NetEmul.png
+ Terminal=false
+-Categories=GNOME;Education;
++Categories=Education;
+ StartupNotify=true

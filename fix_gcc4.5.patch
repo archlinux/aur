@@ -1,0 +1,29 @@
+Description: Fix FTBFS with gcc 4.5
+ This patch should fix compilation with gcc 4.5.
+Author: Stefan Potyra <stefan.potyra@informatik.uni-erlangen.de>
+---
+Origin: Ubuntu
+
+
+--- a/src/tools/scenexmlreader.cpp
++++ b/src/tools/scenexmlreader.cpp
+@@ -48,7 +48,7 @@
+         readNext();
+         if ( isEndElement() ) break;
+         if ( name() == "device" ) {
+-           device::device *item = new ::device(*this);
++           ::device *item = new ::device(*this);
+            item->setMenu(myScene->itemMenu() );
+            myScene->registerDevice(item);
+         }
+--- a/src/tools/scenexmlwriter.cpp
++++ b/src/tools/scenexmlwriter.cpp
+@@ -13,7 +13,7 @@
+     writeStartDocument();
+     writeStartElement("netemul");
+     writeAttribute("version",QCoreApplication::applicationVersion() );
+-    foreach ( device::device *i , myScene->devices() )
++    foreach ( ::device *i , myScene->devices() )
+         i->writeXml(*this);
+     foreach ( textItem *i , myScene->textItems() ) {
+         writeStartElement("textitem");

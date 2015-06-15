@@ -1,13 +1,18 @@
 pkgbase = netemul
 	pkgdesc = a program for simulating computer networks
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/netemul
 	arch = i686
+	arch = x86_64
 	license = GPL
-	depends = qt
+	depends = qt4
 	source = http://sourceforge.net/projects/netemul/files/release-1.0/netemul-1.0.tar.gz
+	source = fix_gcc4.5.patch
+	source = netemul.desktop_fix.patch
 	md5sums = 551c5047cb496d0e29cec692899e6e7c
+	md5sums = 9ba75d825bef9a46fbeecdc209862805
+	md5sums = fe642185e030dd731d42a09a03d3676f
 
 pkgname = netemul
 
