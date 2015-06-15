@@ -1,0 +1,16 @@
+pkgbase = addon-compatibility-reporter
+	pkgdesc = Add-on Compatibility Reporter addon for Firefox Developer Previews & Betas
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = https://addons.mozilla.org/addon/15003/
+	arch = any
+	groups = firefox-essential-addons
+	groups = firefox-best-addons
+	license = MPL
+	license = GPL
+	depends = firefox>=16.0
+	source = https://addons.mozilla.org/firefox/downloads/file/145009/add_on_compatibility_reporter-2.0.4-fx.xpi
+	sha512sums = bc07747cd2c0db56044bde86076cd26bb21a51dcb572792af6ac6607bc3b0aa00b7d1cf18c405ea1c2140fd9953c85b7eeea40417b27ce4f031bd87dc92d51de
+
+pkgname = addon-compatibility-reporter
+
