@@ -1,5 +1,5 @@
 pkgbase = backintime-bzr
-	pkgver = r1087
+	pkgver = r1091
 	pkgrel = 1
 	url = http://backintime.le-web.org
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = backintime-bzr
 
 pkgname = backintime-bzr
 	pkgdesc = Simple backup/snapshot system inspired by Flyback and TimeVault. QT4 GUI version.
-	depends = backintime-cli
+	depends = backintime-cli-bzr
 	depends = libnotify
 	depends = polkit
 	depends = python-dbus
