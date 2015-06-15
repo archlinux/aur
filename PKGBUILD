@@ -13,12 +13,12 @@ _EOF_
 
 pkgname=rstudio-desktop-bin
 pkgver=0.99.442
-pkgrel=1
+pkgrel=2
 pkgdesc="A new integrated development environment (IDE) for R (binary version from RStudio official website)"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.rstudio.org/"
-depends=('r>=2.11.1' 'shared-mime-info' 'qt5-webkit' 'qt5-svg')
+depends=('r>=2.11.1' 'shared-mime-info')
 conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-preview-bin')
 provides=("rstudio-desktop=${pkgver}")
 #options=(!strip)
@@ -42,13 +42,20 @@ install="$pkgname".install
 
 package() {
   msg "Converting debian package..."
+
   cd "$srcdir"
   tar zxpf data.tar.gz -C "$pkgdir"
   install -dm755 "$pkgdir/usr/bin"
-  cd "$pkgdir/usr/lib/rstudio/bin"
-  rm lib*.so.*
+
+  # cd "$pkgdir/usr/lib/rstudio/bin"
+  # rm lib*.so.*
+
+  # cd "$pkgdir/usr/lib/rstudio/bin/rsclang"
+  # ln -sf /usr/lib/libclang.so ./
+
+  find "$pkgdir/usr" -type d -print0 | xargs -0 chmod 755
+
   cd "$pkgdir/usr/bin"
   ln -s -f ../lib/rstudio/bin/rstudio rstudio-bin
-  find "$pkgdir/usr" -type d -print0 | xargs -0 chmod 755
 }
 # vim:ft=sh tabstop=2 expandtab

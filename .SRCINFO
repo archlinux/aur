@@ -1,7 +1,7 @@
 pkgbase = rstudio-desktop-bin
 	pkgdesc = A new integrated development environment (IDE) for R (binary version from RStudio official website)
 	pkgver = 0.99.442
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.rstudio.org/
 	install = rstudio-desktop-bin.install
 	arch = i686
@@ -9,8 +9,6 @@ pkgbase = rstudio-desktop-bin
 	license = GPL
 	depends = r>=2.11.1
 	depends = shared-mime-info
-	depends = qt5-webkit
-	depends = qt5-svg
 	provides = rstudio-desktop=0.99.442
 	conflicts = rstudio-desktop
 	conflicts = rstudio-desktop-git
