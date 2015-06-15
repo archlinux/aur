@@ -1,0 +1,19 @@
+#! /bin/bash
+
+post_install() {
+  xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+}
+
+post_upgrade() {
+  xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+}
+
+pre_remove() {
+  xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+}
+
+post_remove() {
+  xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+}
+
+# vim:set ts=2 sw=2 et:

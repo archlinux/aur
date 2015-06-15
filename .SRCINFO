@@ -1,0 +1,15 @@
+pkgbase = kde-servicemenus-lprinter-qt
+	pkgdesc = Print documents and more from dolphin with an interactive menu
+	pkgver = 0.5.3
+	pkgrel = 2
+	url = http://kde-look.org/content/show.php/lprinter-qt?content=111784
+	install = lprinterqt.install
+	arch = any
+	license = GPL3
+	depends = qt4
+	depends = cups
+	source = http://peace-packages.googlecode.com/files/kde-service-menu-lprinterqt.tar.gz
+	sha512sums = 6bb7f6ddb16f9f28ea7e819f7436ca7ef9921dde589e4e83ea3415c8ddf80a69f4b9f73a0bb763d04ca47fd7176cf42a92ffbc4a4bf2f4231798e8aa68de71fc
+
+pkgname = kde-servicemenus-lprinter-qt
+
