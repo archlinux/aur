@@ -1,0 +1,15 @@
+pkgbase = yaml-cpp-hg
+	pkgdesc = YAML parser and emitter in C++, written around the YAML 1.2 spec
+	pkgver = 553
+	pkgrel = 2
+	url = http://code.google.com/p/yaml-cpp/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = mercurial
+	conflicts = yaml-cpp
+	conflicts = yaml-cpp-experimental-hg
+
+pkgname = yaml-cpp-hg
+
