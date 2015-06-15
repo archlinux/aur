@@ -1,0 +1,22 @@
+pkgbase = gapi-ocaml
+	pkgdesc = A simple OCaml client for Google Services.
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = http://forge.ocamlcore.org/projects/gapi-ocaml/
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = ocaml
+	depends = ocaml-cryptokit
+	depends = ocaml-curl
+	depends = ocaml-extlib
+	depends = ocaml-yojson
+	depends = ocaml-xmlm
+	depends = ocamlnet
+	options = !strip
+	options = staticlibs
+	source = https://github.com/astrada/gapi-ocaml/archive/v0.2.6.tar.gz
+	md5sums = e158c98587681652decdff6302e423b7
+
+pkgname = gapi-ocaml
+
