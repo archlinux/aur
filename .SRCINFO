@@ -1,0 +1,16 @@
+pkgbase = db4.6
+	pkgdesc = The Berkeley DB embedded database system 4.6
+	pkgver = 4.6.21
+	pkgrel = 3
+	url = http://www.oracle.com/technology/software/products/berkeley-db/index.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = gcc-libs
+	options = !libtool
+	options = !makeflags
+	source = http://download.oracle.com/berkeley-db/db-4.6.21.tar.gz
+	sha512sums = 8118218e2eaf9d22e445e551ef184f4610406b81f9257794d14f637d9d12a51a007166b48bf820140c5be287ef61d22a62a16f7702f0d29f385108c40b11ce43
+
+pkgname = db4.6
+
