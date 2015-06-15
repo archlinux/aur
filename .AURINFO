@@ -1,0 +1,17 @@
+pkgbase = aircrack-m4-svn
+	pkgdesc = A GUI for aircrack-ng written in C++ an Qt.
+	pkgver = r18
+	pkgrel = 2
+	url = http://code.google.com/p/aircrackgui-m4/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	depends = qt4
+	depends = aircrack-ng
+	depends = macchanger
+	provides = aircrack-m4
+	source = svn+http://aircrackgui-m4.googlecode.com/svn/trunk/
+
+pkgname = aircrack-m4-svn
+
