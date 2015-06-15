@@ -1,0 +1,18 @@
+pkgbase = kalkun
+	pkgdesc = Open source web based SMS management
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = http://kalkun.sourceforge.net/
+	arch = any
+	license = GPL
+	depends = apache>=2.x
+	depends = php-apache
+	depends = php>=5.x
+	depends = gammu
+	depends = mariadb
+	optdepends = curl
+	source = http://sourceforge.net/projects/kalkun/files/kalkun/0.7.1/kalkun_0.7.1.tar.bz2
+	md5sums = 8d428f96f9339e9027f5c8138294e698
+
+pkgname = kalkun
+
