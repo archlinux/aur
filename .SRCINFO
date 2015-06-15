@@ -1,0 +1,16 @@
+pkgbase = advancemenu
+	pkgdesc = Emulator frontend with sound and animated previews of your games
+	pkgver = 2.7
+	pkgrel = 1
+	url = http://advancemame.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	optdepends = advancemame
+	optdepends = sdlmame
+	optdepends = sdlmess
+	source = http://downloads.sourceforge.net/sourceforge/advancemame/advancemenu-2.7.tar.gz
+	md5sums = aa2dc9fb1f795420c92af8cc4dd5d938
+
+pkgname = advancemenu
+
