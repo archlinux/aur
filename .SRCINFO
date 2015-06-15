@@ -12,6 +12,7 @@ pkgbase = lokalize-git
 	makedepends = kdoctools
 	makedepends = git
 	makedepends = hunspell
+	makedepends = python
 	depends = kross
 	depends = hicolor-icon-theme
 	optdepends = hunspell: Spell checker
