@@ -1,0 +1,24 @@
+diff -pur volumeicon-0.3.0-orig/src/volumeicon.c volumeicon-0.3.0/src/volumeicon.c
+--- volumeicon-0.3.0-orig/src/volumeicon.c	2010-12-19 02:24:30.000000000 +0300
++++ volumeicon-0.3.0/src/volumeicon.c	2011-03-02 23:36:37.329804153 +0300
+@@ -388,7 +388,9 @@ static gboolean scale_timeout(gpointer d
+ static void status_icon_on_button_release(GtkStatusIcon * status_icon,
+ 	GdkEventButton * event, gpointer user_data)
+ {
+-	if(event->button == 1 && config_get_left_mouse_slider() &&
++	if(event->button == 1 && config_get_left_mouse_slider() )
++ {
++  if (
+ 	#if GTK_CHECK_VERSION(2, 20, 0)
+ 		!gtk_widget_get_visible(m_scale_window))
+ 	#else
+@@ -413,6 +415,9 @@ static void status_icon_on_button_releas
+ 		gtk_window_move(GTK_WINDOW(m_scale_window), x, y);
+ 		gtk_window_present_with_time(GTK_WINDOW(m_scale_window), event->time);
+ 		g_timeout_add(TIMER_INTERVAL, scale_timeout, NULL);
++ }
++  else
++   gtk_widget_hide(m_scale_window);
+ 	}
+ 	else if(event->button == 1 ||
+ 		(event->button == 2 && config_get_middle_mouse_mute()))

@@ -1,0 +1,21 @@
+pkgbase = volumeicon-toggle
+	pkgdesc = Volume control for your system tray.
+	pkgver = 0.4.6
+	pkgrel = 3
+	url = http://www.softwarebakery.com/maato/volumeicon.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = gtk2>=2.16.0
+	depends = alsa-lib
+	provides = volumeicon
+	conflicts = volumeicon
+	source = http://www.softwarebakery.com/maato/files/volumeicon/volumeicon-0.4.6.tar.gz
+	source = toggleslider.patch
+	source = glib.patch
+	md5sums = 7fd6dffba823e9c529d151d4789ff992
+	md5sums = d3a05ab6491c9c238a406738196931da
+	md5sums = b2db938600cf4173928b85e2526391ae
+
+pkgname = volumeicon-toggle
+
