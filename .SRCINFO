@@ -1,0 +1,16 @@
+pkgbase = roundup-hg
+	pkgdesc = Issue tracking system.
+	pkgver = r4849.e68920390aad
+	pkgrel = 1
+	url = http://www.roundup-tracker.org
+	arch = any
+	license = PSF
+	makedepends = mercurial
+	makedepends = sed
+	depends = python2
+	conflicts = roundup
+	source = roundup::hg+http://hg.code.sf.net/p/roundup/code
+	sha1sums = SKIP
+
+pkgname = roundup-hg
+
