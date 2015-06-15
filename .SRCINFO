@@ -1,0 +1,15 @@
+pkgbase = gridwars
+	pkgdesc = Grid Wars 2: A clone of Geometry Wars
+	pkgver = 9.3.2006
+	pkgrel = 8
+	url = http://gridwars.marune.de/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = http://gridwars.marune.de/bin/gridwars_lin.zip
+	source = gridwars.desktop
+	sha512sums = 7aac0bbc3b584ccaac5c0ac05e1be14f1b2bada776506ffadc5c45107a13eb4e0b16e7f375d1caa865c6aaa277c2a7a37d8061fed32628d9a0da2f45129ab8dd
+	sha512sums = b085da3b75fefb1d25c3204d5b3b20d5dc6a2b23dbf7e29f9585853df2d31d4dc41a644b94bd9711b43096f12bd776dd51075742a0dcb1c3027e6753bfd35d67
+
+pkgname = gridwars
+

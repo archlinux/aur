@@ -1,0 +1,18 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Encoding=UTF-8
+Name=GridWars 2
+Name[en]=GridWars 2
+Name[fr]=GridWars 2
+GenericName=A Geometry Wars clone
+GenericName[en]=A Geometry Wars clone
+GenericName[fr]=Un clone de Geometry Wars
+Comment=A shoot-them-up taking place on a magnetic grid where you must survive to enemies waves.
+Comment[en]=A shoot-them-up taking place on a magnetic grid where you must survive to enemies waves.
+Comment[fr]=Un shoot-them-up prenant place sur une grille magnétique ou vous devez survivre à de multiples vagues d'ennemies.
+Icon=gridwars
+Exec=gridwars
+Terminal=false
+StartupNotify=false
+Categories=Application;Game;ArcadeGame
