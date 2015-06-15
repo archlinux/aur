@@ -1,0 +1,14 @@
+pkgbase = vim-buftabs
+	pkgdesc = Minimalistic buffer tabs saving screen space
+	pkgver = 0.18
+	pkgrel = 2
+	url = http://www.vim.org/scripts/script.php?script_id=1664
+	arch = any
+	groups = vim-plugins
+	license = GPL
+	depends = vim
+	source = buftabs.vim::http://www.vim.org/scripts/download_script.php?src_id=15439
+	sha1sums = 79c30cd42602681182fdd2667b779bb823695455
+
+pkgname = vim-buftabs
+
