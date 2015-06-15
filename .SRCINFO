@@ -1,0 +1,17 @@
+pkgbase = mhddfs
+	pkgdesc = fuse filesystem that combines several mount points into a single one.
+	pkgver = 0.1.39
+	pkgrel = 2
+	url = http://mhddfs.uvw.ru/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = uthash
+	depends = fuse
+	source = http://mhddfs.uvw.ru/downloads/mhddfs_0.1.39.tar.gz
+	source = pthreads.patch
+	md5sums = efc43fa9b4c1437bb233149bd624a459
+	md5sums = d6476ffcc21897748014815c824652f7
+
+pkgname = mhddfs
+
