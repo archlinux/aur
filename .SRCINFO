@@ -1,0 +1,15 @@
+pkgbase = stockfish
+	pkgdesc = A strong chess engine written by Tord Romstad, Marco Costalba, Joona Kiiski
+	pkgver = 6
+	pkgrel = 2
+	epoch = 1
+	url = http://stockfishchess.org/
+	install = stockfish.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	source = http://stockfish.s3.amazonaws.com/stockfish-6-src.zip
+	md5sums = 85441b396d0c5d650f6afe5608c3a4b2
+
+pkgname = stockfish
+
