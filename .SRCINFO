@@ -1,0 +1,16 @@
+pkgbase = woff2-git
+	pkgdesc = Font compression reference code
+	pkgver = r99.2855ee7
+	pkgrel = 1
+	url = https://github.com/google/woff2
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	provides = woff2
+	conflicts = woff2
+	source = woff2::git+https://github.com/google/woff2.git
+	md5sums = SKIP
+
+pkgname = woff2-git
+
