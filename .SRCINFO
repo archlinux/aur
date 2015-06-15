@@ -1,0 +1,12 @@
+pkgbase = petite-chez-scheme
+	pkgdesc = High-speed Scheme interpreter (non-threaded version)
+	pkgver = 8.4
+	pkgrel = 1
+	url = http://scheme.com/petitechezscheme.html
+	arch = x86_64
+	license = custom
+	source = http://scheme.com/download/pcsv8.4-a6le.tar.gz
+	md5sums = fc6729407dc9c4eca7903b890e26ae29
+
+pkgname = petite-chez-scheme
+
