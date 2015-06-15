@@ -1,0 +1,15 @@
+pkgbase = python2-printdesign
+	pkgdesc = Open-source illustration program
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://sk1project.org
+	arch = any
+	license = GPL
+	depends = python2
+	depends = python2-uniconvertor
+	options = !emptydirs
+	source = http://sk1project.org/dc2.php?target=python-printdesign-1.0-rev497_all.deb
+	md5sums = d4009fa0e71012cb6c6e46f00f111b3b
+
+pkgname = python2-printdesign
+
