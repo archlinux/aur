@@ -1,0 +1,16 @@
+pkgbase = quickfm
+	pkgdesc = A file manager program which it's UI designed via qtquick
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/canatan/quickfm
+	arch = i686
+	arch = x86_64
+	license = PUBLIC
+	makedepends = qt5-quickcontrols
+	depends = qt5-quickcontrols
+	options = strip
+	source = https://www.dropbox.com/s/ecj5ybq8m08seo9/quickfm.txz?dl=0
+	md5sums = SKIP
+
+pkgname = quickfm
+
