@@ -1,0 +1,13 @@
+pkgname=opera-adblock-complete
+
+post_install() {
+  cat << _EOF 
+
+==> IMPORTANT!!!
+==> This provides a urlfilter.ini file in /usr/share/opera-adblock-complete
+==> 
+==> To use it, do the following as the users you use opera with:
+==> ln -s /usr/share/opera-adblock-complete/urlfilter.ini ~/.opera/urlfilter.ini
+
+_EOF
+}

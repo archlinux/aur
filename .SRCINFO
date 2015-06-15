@@ -1,0 +1,14 @@
+pkgbase = opera-adblock-complete
+	pkgdesc = Fanboy's AdBlock Filterset for Opera including Stat/Tracking Filters
+	pkgver = 11.05.2013
+	pkgrel = 1
+	url = http://www.fanboy.co.nz/adblock/opera/
+	install = opera-adblock-complete.install
+	arch = any
+	license = cc-by-3.0
+	depends = opera
+	source = http://www.fanboy.co.nz/adblock/opera/urlfilter.ini
+	sha512sums = 47ef0c7e195f6fcfad1ca7fa7dd8149a2fd3de98680a6da38c45925f4e1a6d5a6dc448d5a6a866e0517a8be95d49d708f9583a5bbb102fa88956f7e519f254dd
+
+pkgname = opera-adblock-complete
+
