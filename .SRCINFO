@@ -1,0 +1,21 @@
+pkgbase = libbson-git
+	pkgdesc = A BSON utility library
+	pkgver = 20130722
+	pkgrel = 1
+	url = https://github.com/mongodb/libbson
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = libtool
+	makedepends = make
+	makedepends = gcc
+	provides = libbson
+	conflicts = libbson
+	source = git://github.com/mongodb/libbson.git
+	md5sums = SKIP
+
+pkgname = libbson-git
+
