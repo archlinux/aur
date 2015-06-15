@@ -4,7 +4,7 @@
 # Contributor: Alexandros Konstantinakis - Karmis <el04092@mail.ntua.gr>
 # Contributor: Jeremie Lasalle Ratelle <lasallej@iro.umontreal.ca>
 pkgname=tovid
-pkgver=0.35.0
+pkgver=0.35.2
 pkgrel=1
 pkgdesc="A suite of tools for creating video DVDs"
 depends=('mplayer' 'mjpegtools' 'ffmpeg' 'python2' 'tix' \
@@ -15,9 +15,9 @@ arch=('i686' 'x86_64')
 url='http://tovid.wikia.com'
 license=('GPL')
 conflicts=('tovid-svn' tovid-git)
-source=(https://github.com/tovid-suite/tovid/releases/download/v${pkgver}/$pkgname-$pkgver.tar.gz)
+source=(https://github.com/tovid-suite/tovid/archive/${pkgname}-${pkgver}.tar.gz)
+sha256sums=('be6f540d7f36bd44bf19814fc4457a1586ffe5975a7b6cc324c377597624e674')
 
-sha256sums=('06f7cb00b213bbe83d72f4f2076b675a662697034e1d2cdc2dce987e35c827bc')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}

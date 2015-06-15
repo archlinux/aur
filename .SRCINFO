@@ -1,6 +1,6 @@
 pkgbase = tovid
 	pkgdesc = A suite of tools for creating video DVDs
-	pkgver = 0.35.0
+	pkgver = 0.35.2
 	pkgrel = 1
 	url = http://tovid.wikia.com
 	arch = i686
@@ -21,8 +21,8 @@ pkgbase = tovid
 	optdepends = transcode: faster for animated submenus (ffmpeg used otherwise)
 	conflicts = tovid-svn
 	conflicts = tovid-git
-	source = https://github.com/tovid-suite/tovid/releases/download/v0.35.0/tovid-0.35.0.tar.gz
-	sha256sums = 06f7cb00b213bbe83d72f4f2076b675a662697034e1d2cdc2dce987e35c827bc
+	source = https://github.com/tovid-suite/tovid/archive/tovid-0.35.2.tar.gz
+	sha256sums = be6f540d7f36bd44bf19814fc4457a1586ffe5975a7b6cc324c377597624e674
 
 pkgname = tovid
 
