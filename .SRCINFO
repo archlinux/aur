@@ -1,0 +1,17 @@
+pkgbase = globalplatform
+	pkgdesc = GlobalPlatform libraries
+	pkgver = 6.0.0
+	pkgrel = 2
+	url = http://sourceforge.net/projects/globalplatform/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	depends = pcsclite
+	depends = openssl
+	options = !libtool
+	source = http://downloads.sourceforge.net/globalplatform/globalplatform-6.0.0.tar.gz
+	md5sums = 881e12663923952fcc94f5eeae47bcd2
+
+pkgname = globalplatform
+
