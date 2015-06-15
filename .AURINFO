@@ -1,0 +1,23 @@
+pkgbase = openfx-io-git
+	pkgdesc = A set of Readers/Writers plugins written using the OpenFX standard.
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/MrKepzie/openfx-io
+	arch = i386
+	arch = x86_64
+	license = BSD
+	makedepends = boost
+	depends = opencolorio
+	depends = openexr
+	depends = openimageio
+	depends = ffmpeg
+	depends = boost-libs
+	provides = openfx-io
+	conflicts = openfx-io
+	source = openfx-io::git://github.com/MrKepzie/openfx-io.git
+	source = devernay-openfx::git://github.com/devernay/openfx.git
+	source = SequenceParsing::git://github.com/MrKepzie/SequenceParsing.git
+	source = tinydir::git://github.com/MrKepzie/tinydir.git
+
+pkgname = openfx-io-git
+
