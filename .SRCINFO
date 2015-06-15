@@ -1,0 +1,24 @@
+pkgbase = brlcad-bin
+	pkgdesc = An extensive 3D solid modeling system.
+	pkgver = 7.24.2
+	pkgrel = 0
+	url = http://brlcad.org
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	license = BSD
+	license = custom:BDL
+	makedepends = bc
+	makedepends = cmake
+	makedepends = libxslt
+	depends = rpmextract
+	depends = boost
+	depends = flex
+	depends = libgl
+	depends = libpng
+	depends = mesa
+	depends = tk
+	depends = zlib
+
+pkgname = brlcad-bin
+
