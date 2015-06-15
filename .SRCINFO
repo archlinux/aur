@@ -1,0 +1,19 @@
+pkgbase = baamanga-git
+	pkgdesc = Command-line tool to download manga from lots of websites. Git version
+	pkgver = 0.5.6.r0.gbbb7604
+	pkgrel = 1
+	url = http://baamanga.tk
+	install = baamanga.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = boost
+	depends = curlcpp-git
+	depends = boost-libs
+	provides = baamanga
+	conflicts = baamanga
+	source = baamanga::git://git.code.sf.net/p/baamanga/code
+	sha512sums = SKIP
+
+pkgname = baamanga-git
+

@@ -1,0 +1,18 @@
+#!/bin/bash
+
+post_install() {
+	echo ""
+	echo -e "\033[1;32m==> Any suggestion, comment, etc.? Please, visit one of the following: \033[1;34m"
+    	echo -e "	=> https://github.com/jorge-barroso/baamanga"
+	echo -e "	=> https://sourceforge.net/projects/baamanga/"
+	echo -e "	=> http://baamanga.tk/"
+	echo ""
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	post_install
+}
