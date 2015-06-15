@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=3.6
+Encoding=UTF-8
+Type=Application
+Name=zyGrib
+Comment=GRIB File Viewer
+Comment[fr]=Visualisation de données météo au format GRIB
+Terminal=false
+Categories=zyGrib;Meteo;Utility
+Icon=zygrib.png
+Exec=/usr/bin/zygrib

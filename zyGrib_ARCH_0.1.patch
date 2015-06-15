@@ -1,0 +1,34 @@
+diff -aur zyGrib-6.2.0/Makefile zyGrib-6.2.0.new/Makefile
+--- zyGrib-6.2.0/Makefile	2013-11-13 23:10:11.000000000 +0200
++++ zyGrib-6.2.0.new/Makefile	2013-11-14 01:55:05.286620242 +0200
+@@ -1,4 +1,4 @@
+-QTBIN=/usr/bin
++QTBIN=/usr/lib/qt4/bin
+ #QTBIN=/opt/qt/qt/bin
+ #QTBIN=/usr/local/Trolltech/Qt-4.7.0/bin
+ 
+@@ -8,8 +8,7 @@
+ 
+ all: zyGrib
+ 
+-SRC= src/*.h src/*.cpp src/*/*.h src/*/*.cpp \
+-      src/qwt*/src/*.cpp src/qwt*/src/*.h
++SRC= src/*.h src/*.cpp src/*/*.h src/*/*.cpp 
+ 
+ mac: $(SRC)
+ 	rm -f  ./zyGrib
+@@ -31,13 +30,11 @@
+ 	rm -fr zyGrib.app
+ 	rm -f  src/zyGrib
+ 	rm -f  src/release/zyGrib.exe
+-	cd src/qwt-6.0.1/src; $(QTBIN)/qmake; make clean
+ 	cd src;	$(QTBIN)/qmake; make clean
+ 
+ zyGrib: $(SRC)
+ 	@ echo
+ 	rm -f ./zyGrib
+-	cd src/qwt-6.0.1/src; $(QTBIN)/qmake; make -j5
+ 	cd src; $(QTBIN)/qmake; make -j5
+ 	@ echo "-----------------------------------"
+ 	@ echo "#!/bin/bash" >> ./zyGrib
+Only in zyGrib-6.2.0.new: Makefile~
