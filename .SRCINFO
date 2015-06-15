@@ -1,0 +1,13 @@
+pkgbase = lib32-sandbox
+	pkgdesc = sandbox'd LD_PRELOAD hack (32-bit)
+	pkgver = 2.6
+	pkgrel = 1
+	url = http://www.gentoo.org/
+	arch = x86_64
+	license = GPL
+	depends = lib32-glibc
+	source = http://distfiles.gentoo.org/distfiles/sandbox-2.6.tar.xz
+	md5sums = 83c63d4959c0ebe89685b83f4bbd9f23
+
+pkgname = lib32-sandbox
+
