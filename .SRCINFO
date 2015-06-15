@@ -1,0 +1,15 @@
+pkgbase = controlscontrol
+	pkgdesc = A simple space shooter with a plot twist - control buttons keep being changed.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://dos.itch.io/controls-control
+	arch = i686
+	arch = x86_64
+	license = GPL2+
+	makedepends = cmake
+	depends = allegro
+	source = http://dosowisko.net/games/ControlsControl-0.1.0-Linux.tar.gz
+	sha256sums = 153076ebe59dccd7265e463e84be358e620944d6349f1154cbb582a6bf4bc2b5
+
+pkgname = controlscontrol
+
