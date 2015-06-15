@@ -1,0 +1,15 @@
+pkgbase = xpmidi
+	pkgdesc = pmidi X frontend
+	pkgver = 3.5
+	pkgrel = 1
+	url = http://www.mellowood.ca/xpmidi/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python
+	depends = tk
+	source = http://www.mellowood.ca/xpmidi/xpmidi-3.5.tar.gz
+	md5sums = 3b48c8e63c5173f672992d7269565afe
+
+pkgname = xpmidi
+
