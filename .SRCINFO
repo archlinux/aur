@@ -1,0 +1,19 @@
+pkgbase = netcat-cpi-git
+	pkgdesc = netcats 'cycles per instruction' album as a kernel module
+	pkgver = 20140424
+	pkgrel = 4
+	url = http://netcat.co
+	install = cpi.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = linux-headers
+	optdepends = vorbis-tools: contains a convenient player (ogg123)
+	source = git+https://github.com/usrbinnc/netcat-cpi-kernel-module.git
+	source = cpi.install
+	md5sums = SKIP
+	md5sums = 967d79015184d7d58963870ff6b8b1a1
+
+pkgname = netcat-cpi-git
+
