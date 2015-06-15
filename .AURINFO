@@ -1,0 +1,15 @@
+pkgbase = aasaver
+	pkgdesc = A kde screensaver featuring aquarium/sea animation in ASCII art
+	pkgver = 0.3.2
+	pkgrel = 4
+	url = http://www.kde-look.org/content/show.php/KDE+Asciiquarium?content=29207
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = kdelibs
+	depends = qt3
+	depends = python
+	source = http://kde-look.org/content/download.php?content=29207&id=1&tan=37657884
+
+pkgname = aasaver
+
