@@ -1,0 +1,15 @@
+pkgbase = iceweasel-sync
+	pkgdesc = Speed up Iceweasel using tmpfs
+	pkgver = 20130304
+	pkgrel = 1
+	url = http://wiki.archlinux.org/index.php/Speed-up_Firefox_using_tmpfs
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = rsync
+	depends = iceweasel
+	source = iceweasel-sync
+	md5sums = 4e7949eaed8f284233d2ecdecc28534c
+
+pkgname = iceweasel-sync
+
