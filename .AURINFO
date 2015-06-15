@@ -1,0 +1,20 @@
+pkgbase = lwqq-git
+	pkgdesc = A library for webqq protocol
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/xiehuc/lwqq
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = curl
+	depends = libev
+	depends = js17
+	depends = sqlite
+	provides = lwqq
+	conflicts = lwqq
+	source = lwqq::git://github.com/xiehuc/lwqq.git
+
+pkgname = lwqq-git
+
