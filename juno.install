@@ -1,0 +1,11 @@
+post_install()
+{
+    ln -s /opt/juno/juno /usr/local/bin/
+    chmod -R 755 /opt/juno/resources/app
+    chmod 755 /opt/juno/resources/app/plugins/Julia-LT/js/*
+}
+
+post_remove()
+{
+    rm /usr/local/bin/juno
+}
