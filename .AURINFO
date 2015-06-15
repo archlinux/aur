@@ -1,0 +1,13 @@
+pkgbase = db5.2
+	pkgdesc = The Berkeley DB embedded database system 4.5
+	pkgver = 5.2.42
+	pkgrel = 2
+	url = http://www.oracle.com/technology/software/products/berkeley-db/index.html
+	arch = any
+	license = custom:db4.5
+	source = http://download.oracle.com/berkeley-db/db-5.2.42.tar.gz
+	options = !libtool
+	options = !makeflags
+
+pkgname = db5.2
+
