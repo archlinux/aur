@@ -1,0 +1,18 @@
+pkgbase = flexibee
+	pkgdesc = Accounting economic system for person and business. Server and client in one package.
+	pkgver = 2015.3.3
+	pkgrel = 1
+	url = http://www.flexibee.eu
+	install = flexibee.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = glibc
+	depends = java-environment
+	source = http://download.flexibee.eu/download/2015.3/2015.3.3/flexibee-2015.3.3.tar.gz
+	source = flexibee
+	sha256sums = 69de471c621d36d98720552f217e0a3821a045030a07aafc7920e525bd3c3bd3
+	sha256sums = 0aaf79ac30bfc5af5e9aba6d1b1189a76019551d3183621bcb9f2bdbe7ea39e3
+
+pkgname = flexibee
+
