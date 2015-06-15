@@ -1,0 +1,16 @@
+pkgbase = jmeter
+	pkgdesc = A Java desktop application designed to load test functional behavior and measure performance
+	pkgver = 2.13
+	pkgrel = 1
+	url = http://jakarta.apache.org/jmeter/
+	arch = any
+	license = apache
+	depends = java-environment>=6
+	options = !strip
+	source = http://www.us.apache.org/dist//jmeter/binaries/apache-jmeter-2.13.tgz
+	source = http://www.us.apache.org/dist//jmeter/binaries/apache-jmeter-2.13.tgz.asc
+	sha256sums = 9fe33d3d6e381103d3ced2962cdef5c164a06fc58c55e247eadf5a5dbcd4d8fe
+	sha256sums = SKIP
+
+pkgname = jmeter
+
