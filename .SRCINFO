@@ -1,0 +1,13 @@
+pkgbase = plymouth-theme-asphyxia-git
+	pkgdesc = Plymouth theme featuring the famous asphyxia picture from starweaver
+	pkgver = 20120923
+	pkgrel = 1
+	url = http://www.laplanche-melv.in
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = plymouth
+	options = !strip
+
+pkgname = plymouth-theme-asphyxia-git
+
