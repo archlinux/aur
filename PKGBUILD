@@ -14,7 +14,7 @@ optdepends=(
 	'nasmx: a collection of macros, include files and examples for linux, x11, gtk, opengl'
 )
 source=("https://github.com/Dman95/SASM/archive/v${pkgver}.tar.gz")
-md5sums=("c7cc0e7b834a8be13286ad48aefbd1a0")
+md5sums=("dcc4d5c1a3e5ef576f51b367925bad34")
 
 build() {
 	cd "${srcdir}/SASM-${pkgver}"
