@@ -1,0 +1,17 @@
+pkgbase = pioneers
+	pkgdesc = A clone of the famous Siedler of Catan game
+	pkgver = 15.3
+	pkgrel = 1
+	url = http://pio.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = pkgconfig
+	makedepends = intltool
+	makedepends = librsvg
+	depends = gtk2
+	source = http://downloads.sourceforge.net/pio/pioneers-15.3.tar.gz
+	md5sums = 00a50e39eb87de293843b33733d40bf9
+
+pkgname = pioneers
+
