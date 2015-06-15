@@ -1,5 +1,5 @@
 pkgname='perl-threads-aur'
-pkgver='1.96'
+pkgver='2.02'
 pkgrel='1'
 pkgdesc="Perl interpreter-based threads"
 arch=('any')
@@ -10,7 +10,7 @@ options=('!emptydirs')
 provides=(perl-threads=${pkgver})
 
 source=("http://search.cpan.org/CPAN/authors/id/J/JD/JDHEDDEN/threads-$pkgver.tar.gz")
-md5sums=('1033d51c013c487c4bdb3e0f60f51377')
+md5sums=('5acb72e77274eab54aac5aef82c261ef')
 
 prepare() {
   export _src_dir="$srcdir/threads-$pkgver"

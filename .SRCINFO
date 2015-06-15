@@ -1,16 +1,16 @@
 pkgbase = perl-threads-aur
 	pkgdesc = Perl interpreter-based threads
-	pkgver = 1.96
+	pkgver = 2.02
 	pkgrel = 1
 	url = https://metacpan.org/release/threads/
 	arch = any
 	license = PerlArtistic
 	license = GPL
 	depends = perl
-	provides = perl-threads=1.96
+	provides = perl-threads=2.02
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/J/JD/JDHEDDEN/threads-1.96.tar.gz
-	md5sums = 1033d51c013c487c4bdb3e0f60f51377
+	source = http://search.cpan.org/CPAN/authors/id/J/JD/JDHEDDEN/threads-2.02.tar.gz
+	md5sums = 5acb72e77274eab54aac5aef82c261ef
 
 pkgname = perl-threads-aur
 
