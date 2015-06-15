@@ -1,0 +1,13 @@
+pkgbase = qkismet-svn
+	pkgdesc = A graphical Kismet client writtent in Qt
+	pkgver = 60
+	pkgrel = 2
+	url = http://qkismet.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = subversion
+	depends = qt4
+
+pkgname = qkismet-svn
+
