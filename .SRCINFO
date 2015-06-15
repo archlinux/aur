@@ -1,0 +1,34 @@
+pkgbase = xpra-winswitch
+	pkgdesc = Modified version of xpra by Winswitch
+	pkgver = 0.15.0
+	pkgrel = 1
+	url = http://xpra.org/
+	install = xpra-winswitch.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = python2-setuptools
+	makedepends = cython2
+	depends = python2
+	depends = pygtk
+	depends = libxtst
+	depends = python2-imaging
+	depends = python2-lz4
+	depends = ffmpeg
+	depends = libvpx
+	depends = xf86-video-dummy
+	depends = libwebp
+	optdepends = x264: Codec
+	provides = parti-all
+	conflicts = parti-all
+	backup = etc/xpra/xpra.conf
+	backup = etc/xpra/xorg.conf
+	source = https://xpra.org/src/xpra-0.15.0.tar.xz
+	source = xpra-winswitch.install
+	source = xpra@.service
+	sha256sums = bfa12806b245697b799a157f7882d0fa6abcb242a9937c3b0837cc779c0c519c
+	sha256sums = 1b1f8c58e1e8e5aa9816bffb1611a8a704a482ddfe789512159d5727035468f0
+	sha256sums = b882f72380ca6bdee9580e839440dd5bd3523b9db804095887127b9cce6cfaf2
+
+pkgname = xpra-winswitch
+
