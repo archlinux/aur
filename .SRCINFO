@@ -1,0 +1,17 @@
+pkgbase = python-bcolz
+	pkgdesc = columnar and compressed data containers.
+	pkgver = 0.9.0
+	pkgrel = 2
+	url = https://bcolz.readthedocs.org/
+	arch = any
+	license = BSD
+	checkdepends = python-nose
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	optdepends = python-numexpr
+	source = https://pypi.python.org/packages/source/b/bcolz/bcolz-0.9.0.tar.gz
+	sha256sums = 086b1ad62accf6b45e9386edfa23ccc9f8a1feaec5803e7f39753139eb016a50
+
+pkgname = python-bcolz
+
