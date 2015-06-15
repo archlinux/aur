@@ -1,0 +1,17 @@
+pkgbase = boswars-addons
+	pkgdesc = Addons for boswars.
+	pkgver = 2.7
+	pkgrel = 1
+	url = http://www.boswars.org/addons/addons.shtml
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = boswars>=2.7
+	source = http://www.boswars.org/addons/greenlands.map.tgz
+	source = http://www.boswars.org/addons/obese.map.tgz
+	source = http://www.boswars.org/addons/obese2.map.tgz
+	source = http://www.boswars.org/addons/wargrounds.map.tgz
+	source = http://www.boswars.org/addons/wetlands03.map.tgz
+
+pkgname = boswars-addons
+
