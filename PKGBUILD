@@ -7,7 +7,7 @@
 pkgname=compiz
 pkgver=0.9.12.1
 _pkgseries=0.9.12
-pkgrel=4
+pkgrel=5
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM (release version)"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/compiz"
@@ -22,11 +22,13 @@ replaces=('compiz-core-devel')
 source=("https://launchpad.net/compiz/${_pkgseries}/${pkgver}/+download/compiz-${pkgver}.tar.bz2"
         "set-gwd-default.patch"
         "focus-prevention-disable.patch"
-        "metacity-3_16.patch")
+        "metacity-3_16.patch"
+        "client-frame-api.patch")
 sha256sums=('8b9d6a72c581c96b820dff182669864aeb8fd1989e95ff56a73203fc478d854e'
             '3aa6cb70f357b3d34d51735f4b5bcb0479086d7c7336de4bd8157569d6c52c08'
             'f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b'
-            '27e7c516c22947a28bb1f34ecc63142fc1a6b8178439a04660f7ae0968bdc57c')
+            '27e7c516c22947a28bb1f34ecc63142fc1a6b8178439a04660f7ae0968bdc57c'
+            '4cb451857a2e6deef15dd04e68ca8bd1d898344b6a175fa1a9f2fb0c11b119d7')
 install='compiz.install'
 
 prepare() {
@@ -46,6 +48,9 @@ prepare() {
 
   # Metacity 3.16 compatibility
   patch -Np1 -i "${srcdir}/metacity-3_16.patch"
+
+  # Fix incorrect extents for GTK+ tooltips, csd etc
+  patch -Np1 -i "${srcdir}/client-frame-api.patch"
 }
 
 build() {

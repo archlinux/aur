@@ -1,0 +1,194 @@
+# Diff from https://code.launchpad.net/~3v1n0/compiz/client-frame-api
+=== modified file 'include/core/abiversion.h'
+--- a/include/core/abiversion.h	2014-01-23 16:44:12 +0000
++++ b/include/core/abiversion.h	2015-02-17 15:00:18 +0000
+@@ -5,6 +5,6 @@
+ #  error Conflicting definitions of CORE_ABIVERSION
+ #endif
+ 
+-#define CORE_ABIVERSION 20140123
++#define CORE_ABIVERSION 20150217
+ 
+ #endif // COMPIZ_ABIVERSION_H
+
+=== modified file 'include/core/atoms.h'
+--- a/include/core/atoms.h	2012-01-19 17:44:32 +0000
++++ b/include/core/atoms.h	2015-02-17 15:00:18 +0000
+@@ -110,6 +110,7 @@
+     extern Atom clientListStacking;
+ 
+     extern Atom frameExtents;
++    extern Atom frameGtkExtents;
+     extern Atom frameWindow;
+ 
+     extern Atom wmState;
+
+=== modified file 'include/core/window.h'
+--- a/include/core/window.h	2014-03-27 15:09:02 +0000
++++ b/include/core/window.h	2015-02-17 15:00:18 +0000
+@@ -217,7 +217,8 @@
+    CompWindowNotifyUnshade,
+    CompWindowNotifyEnterShowDesktopMode,
+    CompWindowNotifyLeaveShowDesktopMode,
+-   CompWindowNotifyBeforeMap
++   CompWindowNotifyBeforeMap,
++   CompWindowNotifyActions,
+ };
+ 
+ /**
+@@ -502,6 +503,7 @@
+ 	const CompWindowExtents & border () const;
+ 	const CompWindowExtents & input () const;
+ 	const CompWindowExtents & output () const;
++	const CompWindowExtents & clientFrame () const;
+ 
+ 	// FIXME: This should return a const reference but grid needs fixing...
+ 	XSizeHints & sizeHints () const;
+
+=== modified file 'src/atoms.cpp'
+--- a/src/atoms.cpp	2012-01-19 17:44:32 +0000
++++ b/src/atoms.cpp	2015-02-17 15:00:18 +0000
+@@ -107,6 +107,7 @@
+     Atom clientListStacking;
+ 
+     Atom frameExtents;
++    Atom frameGtkExtents;
+     Atom frameWindow;
+ 
+     Atom wmState;
+@@ -270,8 +271,9 @@
+ 	clientListStacking =
+ 	    XInternAtom (dpy, "_NET_CLIENT_LIST_STACKING", 0);
+ 
+-	frameExtents = XInternAtom (dpy, "_NET_FRAME_EXTENTS", 0);
+-	frameWindow  = XInternAtom (dpy, "_NET_FRAME_WINDOW", 0);
++	frameExtents    = XInternAtom (dpy, "_NET_FRAME_EXTENTS", 0);
++	frameGtkExtents = XInternAtom (dpy, "_GTK_FRAME_EXTENTS", 0);
++	frameWindow     = XInternAtom (dpy, "_NET_FRAME_WINDOW", 0);
+ 
+ 	wmState        = XInternAtom (dpy, "WM_STATE", 0);
+ 	wmChangeState  = XInternAtom (dpy, "WM_CHANGE_STATE", 0);
+
+=== modified file 'src/event.cpp'
+--- a/src/event.cpp	2014-06-06 09:42:16 +0000
++++ b/src/event.cpp	2015-02-17 15:00:18 +0000
+@@ -1755,6 +1755,12 @@
+ 	    if (w)
+ 		w->priv->updateIconGeometry ();
+ 	}
++	else if (event->xproperty.atom == Atoms::frameGtkExtents)
++	{
++	    w = findWindow (event->xproperty.window);
++	    if (w)
++		w->priv->updateClientFrame ();
++	}
+ 	else if (event->xproperty.atom == Atoms::wmStrut ||
+ 		 event->xproperty.atom == Atoms::wmStrutPartial)
+ 	{
+
+=== modified file 'src/privatewindow.h'
+--- a/src/privatewindow.h	2014-03-27 15:09:02 +0000
++++ b/src/privatewindow.h	2015-02-17 15:00:18 +0000
+@@ -276,6 +276,8 @@
+ 
+ 	void updateIconGeometry ();
+ 
++	void updateClientFrame ();
++
+ 	Window getClientLeader ();
+ 
+ 	char * getStartupId ();
+@@ -429,6 +431,7 @@
+ 	CompWindowExtents lastServerInput;
+ 	CompWindowExtents border;
+ 	CompWindowExtents output;
++	CompWindowExtents clientFrame;
+ 
+ 	CompStruts *struts;
+ 
+
+=== modified file 'src/window.cpp'
+--- a/src/window.cpp	2014-09-16 19:37:23 +0000
++++ b/src/window.cpp	2015-02-17 15:00:18 +0000
+@@ -373,6 +373,38 @@
+     }
+ }
+ 
++void
++PrivateWindow::updateClientFrame ()
++{
++    Atom          actual;
++    int           format;
++    unsigned long n, left;
++    unsigned char *data;
++
++    int result = XGetWindowProperty (screen->dpy (), priv->id,
++				     Atoms::frameGtkExtents,
++				     0L, 65536, False, XA_CARDINAL,
++				     &actual, &format, &n, &left, &data);
++
++    if (result == Success && actual == XA_CARDINAL && data)
++    {
++	if (n == 4)
++	{
++	    unsigned long *extents = reinterpret_cast<unsigned long *>(data);
++	    priv->clientFrame.left = extents[0];
++	    priv->clientFrame.right = extents[1];
++	    priv->clientFrame.top = extents[2];
++	    priv->clientFrame.bottom = extents[3];
++	}
++
++	XFree (data);
++    }
++    else
++    {
++	priv->clientFrame = CompWindowExtents ();
++    }
++}
++
+ Window
+ PrivateWindow::getClientLeaderOfAncestor ()
+ {
+@@ -708,6 +740,7 @@
+     if (actions != priv->actions)
+     {
+ 	priv->actions = actions;
++	windowNotify (CompWindowNotifyActions);
+ 	setWindowActions (screen, actions, priv->id);
+     }
+ }
+@@ -5947,6 +5980,12 @@
+     return priv->output;
+ }
+ 
++const CompWindowExtents &
++CompWindow::clientFrame () const
++{
++    return priv->clientFrame;
++}
++
+ XSizeHints &
+ CompWindow::sizeHints () const
+ {
+@@ -6205,6 +6244,7 @@
+ 
+     recalcActions ();
+     priv->updateIconGeometry ();
++    priv->updateClientFrame ();
+ 
+     if (priv->shaded)
+ 	priv->updateFrameWindow ();
+
+# Diff from https://code.launchpad.net/~albertsmuktupavels/compiz/add-gtk-frame-extents-to-net-supported/+merge/257303
+=== modified file 'src/screen.cpp'
+--- a/src/screen.cpp	2014-12-02 19:37:10 +0000
++++ b/src/screen.cpp	2015-04-23 20:41:24 +0000
+@@ -2362,6 +2362,7 @@
+ 
+     atoms.push_back (Atoms::wmUserTime);
+     atoms.push_back (Atoms::frameExtents);
++    atoms.push_back (Atoms::frameGtkExtents);
+     atoms.push_back (Atoms::frameWindow);
+ 
+     atoms.push_back (Atoms::winState);
+
