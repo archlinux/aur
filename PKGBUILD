@@ -15,8 +15,10 @@ noextract=("${_name}_${pkgver}.jar")
 md5sums=('96a897240b4b2fab707afe9da44deca8')
 
 package () {
-  for i in /usr/lib/vuze*; do
-    install -Dm644 ${_name}_${pkgver}.jar \
-                   "${pkgdir}"/${i}/plugins/${_name}/${_name}_${pkgver}.jar
+  for i in /usr/lib/vuze* /opt/vuze*; do
+    if [[ -f ${i}/Azureus2.jar ]]; then
+      install -Dm644 ${_name}_${pkgver}.jar \
+                     "${pkgdir}"/${i}/plugins/${_name}/${_name}_${pkgver}.jar
+    fi
   done
 }
