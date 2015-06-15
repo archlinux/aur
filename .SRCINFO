@@ -1,0 +1,17 @@
+pkgbase = pkgcacheclean
+	pkgdesc = Application to clean the pacman cache
+	pkgver = 1.8.2
+	pkgrel = 2
+	url = https://bbs.archlinux.org/viewtopic.php?pid=841774
+	arch = i686
+	arch = x86_64
+	arch = armv5
+	arch = armv6
+	arch = armv7
+	license = GPL
+	depends = pacman>=4.1
+	source = pkgcacheclean.c
+	md5sums = d79fac7e27381249774fc8e6f15d7f2e
+
+pkgname = pkgcacheclean
+
