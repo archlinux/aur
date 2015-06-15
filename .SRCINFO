@@ -1,0 +1,14 @@
+pkgbase = imposm-parser-git
+	pkgdesc = Python Lib for Open Street Map files parsing
+	pkgver = 20131009
+	pkgrel = 1
+	url = https://github.com/omniscale/imposm-parser
+	arch = any
+	license = APL2.0
+	makedepends = git
+	makedepends = protobuf
+	makedepends = python2-protobuf
+	depends = python2
+
+pkgname = imposm-parser-git
+
