@@ -1,0 +1,18 @@
+pkgbase = zathura-epub-git
+	pkgdesc = EPUB support for zathura
+	pkgver = 4a2e037
+	pkgrel = 1
+	url = http://pwmt.org/projects/zathura
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = zathura>=0.2.0
+	depends = calibre
+	provides = zathura-epub
+	conflicts = zathura-epub
+	source = zathura-epub::git+git://pwmt.org/zathura-epub.git#branch=develop
+	md5sums = SKIP
+
+pkgname = zathura-epub-git
+
