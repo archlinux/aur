@@ -1,0 +1,27 @@
+pkgbase = google-gadgets-gtk-svn
+	pkgdesc = Google Gadgets for linux (svn version, gtk toolkit)
+	pkgver = 1292
+	pkgrel = 2
+	url = http://code.google.com/p/google-gadgets-for-linux/
+	install = ggl.install
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = subversion
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	makedepends = flex
+	depends = curl
+	depends = libxml2
+	depends = zlib
+	depends = xulrunner
+	depends = dbus
+	depends = cairo
+	depends = gtk2
+	provides = google-gadgets
+	source = svn+http://google-gadgets-for-linux.googlecode.com/svn/trunk/
+	options = !libtool
+
+pkgname = google-gadgets-gtk-svn
+
