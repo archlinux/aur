@@ -1,0 +1,11 @@
+--- src/typotek.cpp	2009-07-03 17:26:40.000000000 +0200
++++ src/typotek2.cpp	2014-07-13 02:44:35.150442000 +0200
+@@ -1063,7 +1063,7 @@
+ void typotek::addFcDirItem(const QString & dirPath)
+ {
+ #ifdef HAVE_FONTCONFIG
+-	QFile fcfile ( QDir::homePath() + "/.fonts.conf" );
++	QFile fcfile ( QDir::homePath() + "/.local/fontconfig/conf.d/.fonts.conf" );
+ 	if ( !fcfile.open ( QFile::ReadWrite ) )
+ 	{
+ 		return;

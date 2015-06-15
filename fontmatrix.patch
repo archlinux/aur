@@ -1,0 +1,18 @@
+--- fontmatrix.1	2009-07-03 17:26:41.000000000 +0200
++++ fontmatrix2.1	2014-07-13 02:50:24.287100000 +0200
+@@ -53,10 +53,13 @@
+ User preferences are stored in $HOME/.fontmatrix/ on Unix or Linux. Most other paths are configurable from the Fontmatrix preferences. 
+ .B $HOME/.fonts/
+ .TP 
+-.B $HOME/.fonts.conf
++.B $HOME/.local/fontconfig/conf.d/.fonts.conf
+ .TP 
+ .B /etc/fonts
+-Fontconfig, the library used by Fontmatrix to locate fonts, is normally configured with files in /etc/fonts, mainly /etc/fonts/fonts.conf and /etc/fonts/local.conf . It may also use a config file $HOME/.fonts.conf and fonts in $HOME/.fonts/ . See fonts.conf(5) and the fontconfig documentation for more information. Note that Fontmatrix may also use its internal font path to locate more fonts \- see the Preferences dialog and fontmatrix help.
++Fontconfig, the library used by Fontmatrix to locate fonts, is normally
++configured with files in /etc/fonts, mainly /etc/fonts/fonts.conf and
++/etc/fonts/local.conf . It may also use a config file
++$HOME/.local/fontconfig/conf.d/.fonts.conf and fonts in $HOME/.fonts/ . See fonts.conf(5) and the fontconfig documentation for more information. Note that Fontmatrix may also use its internal font path to locate more fonts \- see the Preferences dialog and fontmatrix help.
+ .SH "RELATED SOFTWARE AND AFFILIATES"
+ Scribus \- http://www.scribus.net
+ 

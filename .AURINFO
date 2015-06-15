@@ -1,0 +1,22 @@
+pkgbase = fontmatrix
+	pkgdesc = Font manager for Linux
+	pkgver = 0.6.0
+	pkgrel = 5
+	url = http://fontmatrix.be
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = mesa
+	makedepends = cmake
+	depends = qtwebkit
+	depends = qt4
+	depends = harfbuzz
+	depends = icu
+	source = http://fontmatrix.be/archives/fontmatrix-0.6.0-Source.tar.gz
+	source = fmactivateCPP.patch
+	source = fmactivateH.patch
+	source = fontmatrix.patch
+	source = typotek.patch
+
+pkgname = fontmatrix
+
