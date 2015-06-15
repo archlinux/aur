@@ -1,0 +1,13 @@
+pkgbase = popeye
+	pkgdesc = A chess problem solving and testing software
+	pkgver = 4.69
+	pkgrel = 1
+	url = http://sourceforge.net/projects/popeye-chess/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	source = http://downloads.sourceforge.net/project/popeye-chess/Popeye/4.69/popeye-4.69-sources.zip
+	md5sums = 507191b2d95f5937c112541b92f10c26
+
+pkgname = popeye
+
