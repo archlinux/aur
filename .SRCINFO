@@ -1,0 +1,22 @@
+pkgbase = pwnypack
+	pkgdesc = Official Certified Edible Dinosaurs CTF toolkit
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/edibledinos/pwnypack
+	arch = any
+	license = MIT
+	makedepends = python
+	depends = nasm
+	depends = python
+	depends = python-capstone
+	depends = python-nose
+	depends = python-six
+	optdepends = ipython: interactive pwnypack repl (shell)
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/p/pwnypack/pwnypack-0.6.0.tar.gz
+	md5sums = a5d58847eaa35dc6d13e0fa7f444a2ce
+	sha1sums = d51ae658ec2b192af5b33bf0376ae891fae0fbbd
+	sha256sums = fc129e22a078e68bbe96d1afe62d5aa497a75d69eae2c54fb90d2cd4364dc155
+
+pkgname = pwnypack
+
