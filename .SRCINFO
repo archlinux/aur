@@ -1,0 +1,16 @@
+pkgbase = jxrlib-git
+	pkgdesc = Open source implementation of jpegxr (Git version)
+	pkgver = 1.1.r39.e3a873b
+	pkgrel = 1
+	url = https://jxrlib.codeplex.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	provides = jxrlib
+	conflicts = jxrlib
+	source = git+https://git01.codeplex.com/jxrlib
+	sha1sums = SKIP
+
+pkgname = jxrlib-git
+
