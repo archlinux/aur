@@ -1,0 +1,31 @@
+pkgbase = pgmodeler
+	pkgdesc = PostgreSQL Database Modeler: an open source CASE tool for modeling PostgreSQL databases
+	pkgver = 0.8.1_alpha1
+	pkgrel = 1
+	url = http://www.pgmodeler.com.br/
+	install = pgmodeler.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = qt5-svg
+	depends = libxml2
+	depends = libsm
+	depends = libpqxx
+	optdepends = postgresql
+	source = https://github.com/pgmodeler/pgmodeler/archive/v0.8.1-alpha1.tar.gz
+	source = pgmodeler
+	source = pgmodeler-cli
+	source = pgmodeler_logo.png
+	source = pgmodeler_dbm.png
+	source = pgmodeler.desktop
+	sha1sums = b84a198c8c60a936c2cf95c398ee5151d3c6d8b7
+	sha1sums = f11a0b25b747ab0438d4a3fb47af2caa953e3997
+	sha1sums = 01eab1f1a3c0d163289e9b26855775cc5622acab
+	sha1sums = c5bb090a1cbb784cd2ec9e1449cac02af2ba6538
+	sha1sums = 4c4e4260f4b2d2d4c154a8fb5cd7060a6585c83a
+	sha1sums = b19e826b6fb64429df952780b8519100c65b8383
+
+pkgname = pgmodeler
+

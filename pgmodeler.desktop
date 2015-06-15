@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=pgModeler
+Exec=pgmodeler
+Comment=PostgreSQL Database Modeler a CASE tool for modeling PostgreSQL databases.
+Icon=pgmodeler
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Development;

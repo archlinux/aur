@@ -1,0 +1,29 @@
+# Some colored makepkg-like functions
+msg_blue() {
+  printf "${BLUE}==>${ALL_OFF}${BOLD} ${1}${ALL_OFF}\n"
+}
+
+note() {
+  printf "${BLUE}==>${ALL_OFF}${YELLOW} NOTE:${ALL_OFF}${BOLD} ${1}${ALL_OFF}\n"
+}
+
+ALL_OFF="$(tput sgr0)"
+BOLD="$(tput bold)"
+BLUE="${BOLD}$(tput setaf 4)"
+YELLOW="${BOLD}$(tput setaf 3)"
+
+
+post_install() {
+  [ -x usr/bin/update-desktop-database ] && update-desktop-database -q || true
+  note "Please re-login to include PGMODELER in your PATH."
+  note "You can load by hand with: $  source  /etc/profile.d/pgmodeler.sh ;)."
+}
+
+post_upgrade() {
+  [ -x usr/bin/update-desktop-database ] && update-desktop-database -q || true
+}
+
+post_remove() {
+  [ -x usr/bin/update-desktop-database ] && update-desktop-database -q || true
+  note "You can remove your personal pgmodeler config  folder \$HOME/.pgmodeler."
+}
