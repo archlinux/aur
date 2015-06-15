@@ -1,7 +1,7 @@
 pkgbase = dvb-fe-tda10048-1.0.fw
 	pkgdesc = Firmware dvb-fe-tda10048-1.0.fw for Philips TDA10048H DVB-T demodulator
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://linuxtv.org/wiki/index.php/NXP_TDA10048#TDA10048
 	arch = any
 	license = custom
