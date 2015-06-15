@@ -1,0 +1,22 @@
+pkgbase = xboard-git
+	pkgdesc = A graphical user interfaces for chess
+	pkgver = 20150516
+	pkgrel = 1
+	url = http://www.gnu.org/software/xboard/
+	install = xboard.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = gnuchess
+	depends = gtk2
+	depends = desktop-file-utils
+	depends = librsvg
+	provides = xboard
+	conflicts = xboard
+	backup = etc/xboard/xboard.conf
+	source = git://git.savannah.gnu.org/xboard.git
+	md5sums = SKIP
+
+pkgname = xboard-git
+
