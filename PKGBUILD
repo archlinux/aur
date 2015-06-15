@@ -16,21 +16,20 @@ install=$pkgname.install
 
 build() {
   cd $srcdir/${pkgname}-GNOME_MULTI_WRITER_3_16_0
- 
+
   ./autogen.sh --prefix=/usr
- 
+
   # docbook2man expects xml, but file is sgml
   sed -i "s/docbook2man \$?/docbook2man --sgml \$?/g" man/Makefile
-  
+
   make
 }
 
 package(){
   cd $srcdir/${pkgname}-GNOME_MULTI_WRITER_3_16_0
-  
+
   # Remove 'NoDisplay=false' from the .desktop file, otherwise it won't show up in dmenu
   sed -i "s/NoDisplay=false//g" data/org.gnome.MultiWriter.desktop
-  
+
   make DESTDIR=$pkgdir install install-data
 }
-
