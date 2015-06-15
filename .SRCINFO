@@ -1,0 +1,31 @@
+pkgbase = fmbt
+	pkgdesc = Free Model Based tool
+	pkgver = 0.22
+	pkgrel = 1
+	url = https://01.org/fmbt/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = boost
+	depends = flex
+	depends = gnuplot
+	depends = graphviz
+	depends = gts
+	depends = imagemagick
+	depends = leptonica
+	depends = libedit
+	depends = libtool
+	depends = libxml2
+	depends = python-pyside-common
+	depends = python2
+	depends = python2-dbus
+	depends = python2-pexpect
+	depends = python2-pyside
+	depends = python2-shiboken
+	depends = tesseract
+	depends = tesseract-data-eng
+	source = https://github.com/01org/fMBT/archive/v0.22.tar.gz
+	md5sums = febc90273b6d55af019a797b10113031
+
+pkgname = fmbt
+
