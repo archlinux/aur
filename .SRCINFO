@@ -1,5 +1,5 @@
 pkgbase = npapi-vlc
-	pkgdesc = The modern VLC Mozilla (NPAPI) plugin - Git version
+	pkgdesc = The modern VLC Mozilla (NPAPI) plugin
 	pkgver = 2.2.1
 	pkgrel = 1
 	url = http://git.videolan.org/?p=npapi-vlc.git;a=summary
