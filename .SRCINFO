@@ -1,0 +1,21 @@
+pkgbase = zathura-pdf-poppler-git
+	pkgdesc = PDF support for zathura by using the poppler rendering library
+	pkgver = 0.2.5.1.ge16ad0e
+	pkgrel = 1
+	url = http://pwmt.org/projects/zathura-pdf-poppler
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = zathura-git
+	depends = poppler-glib
+	provides = zathura-pdf-poppler-git
+	provides = zathura-pdf-poppler
+	conflicts = zathura-pdf-mupdf
+	conflicts = zathura-pdf-mupdf-git
+	conflicts = zathura-pdf-poppler
+	source = zathura-pdf-poppler::git+git://pwmt.org/zathura-pdf-poppler.git#branch=develop
+	md5sums = SKIP
+
+pkgname = zathura-pdf-poppler-git
+
