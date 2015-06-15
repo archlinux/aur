@@ -1,6 +1,6 @@
 pkgbase = haskell-stack
 	pkgdesc = The Haskell Tool Stack
-	pkgver = 0.0.1.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://www.github.com/commercialhaskell/stack
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = haskell-stack
 	optdepends = docker: Use Docker images to build your project in a temporary container
 	provides = haskell-stack
 	conflicts = haskell-stack-git
-	source = http://download.fpcomplete.com/archlinux/stack_0.0.1.1-.tar.gz
+	source = http://download.fpcomplete.com/archlinux/stack_0.0.2-.tar.gz
 
 pkgname = haskell-stack
 
