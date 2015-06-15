@@ -1,0 +1,13 @@
+pkgbase = fortune-mod-hyakunin-isshu
+	pkgdesc = Fortune cookies: Ogura Hyakunin Isshu poems
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://jti.lib.virginia.edu/japanese/hyakunin/index.html
+	arch = any
+	license = public-domain
+	depends = fortune-mod
+	source = http://jti.lib.virginia.edu/japanese/hyakunin/frames/index/hyaku1eng.html
+	md5sums = a3f5bfe7c1867f094485b2908a8a1e1c
+
+pkgname = fortune-mod-hyakunin-isshu
+
