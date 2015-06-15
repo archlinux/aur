@@ -7,7 +7,7 @@
 
 pkgbase=ppsspp-git
 pkgname=('ppsspp-git' 'ppsspp-qt-git')
-pkgver=1.0.1.r559.403f6ab
+pkgver=1.0.1.r599.0597b92
 pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=('i686' 'x86_64')
@@ -19,13 +19,11 @@ source=('git+https://github.com/hrydgard/ppsspp.git'
         'git+https://github.com/hrydgard/ppsspp-lang.git'
         'ppsspp-native::git+https://github.com/hrydgard/native.git'
         'ppsspp-armips::git+https://github.com/Kingcom/armips.git'
-        'ppsspp-ffmpeg.patch'
         'ppsspp-gcc5.1.patch')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '00ef3d221b3a7e967fc79eaed20664f52fe7d303597130c46198e60b81023f8a'
             '719f6ae3efa533872f1db5131bc9e7245d7c2e40e776c9869a0820be17f0ac9d')
 
 pkgver() {
@@ -43,7 +41,6 @@ prepare() {
     git submodule update ${submodule}
   done
 
-  patch -Np1 -i ../ppsspp-ffmpeg.patch
   patch -Np1 -i ../ppsspp-gcc5.1.patch
 }
 
