@@ -1,0 +1,20 @@
+{
+   "versions": {
+      "client-dev": {
+         "version": "5613",
+         "build": "02",
+         "timestamp": "12 Jun 2015 11:21:08 PM",
+         "name": "Vuze_5613-02",
+         "jar_url": "http://cf1.vuze.com/torrent/files/Azureus5613-B02.jar",
+         "torrent_url": "http://cf1.vuze.com/torrent/torrents/Azureus5613-B02.jar.torrent"
+      },      
+      "client-release": {
+         "version": "5612",
+         "build": "",
+         "timestamp": "08 Jun 2015 01:01:01 AM",
+         "name": "Vuze_5612",
+         "jar_url": "http://downloads.sourceforge.net/project/azureus/vuze/Vuze_5612/Vuze_5612.jar?use_mirror=ovh",
+         "torrent_url": "http://downloads.sourceforge.net/project/azureus/vuze/Vuze_5612/Vuze_5612.jar.torrent?use_mirror=ovh"
+      }
+   }
+}
