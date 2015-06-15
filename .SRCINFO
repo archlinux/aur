@@ -1,0 +1,17 @@
+pkgbase = tweak-hexeditor
+	pkgdesc = Efficient Command Line hex editor
+	pkgver = 3.01
+	pkgrel = 1
+	url = http://www.chiark.greenend.org.uk/~sgtatham/tweak
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = make
+	makedepends = gcc
+	depends = ncurses
+	depends = glibc
+	source = http://mirrors.163.com/debian/pool/main/t/tweak/tweak_3.01.orig.tar.gz
+	md5sums = 3ae8db9fd482b679835a80c4635f71be
+
+pkgname = tweak-hexeditor
+
