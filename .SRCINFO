@@ -1,0 +1,17 @@
+pkgbase = gnome-vfs-obexftp
+	pkgdesc = Browse bluetooth devices through nautilus
+	pkgver = 0.4
+	pkgrel = 6
+	url = http://ftp.gnome.org/pub/GNOME/sources/gnome-vfs-obexftp/
+	arch = any
+	license = GPL
+	depends = gnome-vfs
+	depends = dbus-glib
+	depends = openobex
+	depends = bluez-libs
+	options = !libtool
+	source = http://ftp.gnome.org/pub/GNOME/sources/gnome-vfs-obexftp/0.4/gnome-vfs-obexftp-0.4.tar.bz2
+	sha512sums = 0e5e79d34fd33076d4639d2b4b7dd120b2b3cff9cad28a16214040cf8fb44be85a83180a4f271fdd51ffdbbbe9aeb879f569b59fde15a5391beb6b243977681b
+
+pkgname = gnome-vfs-obexftp
+
