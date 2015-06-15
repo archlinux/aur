@@ -1,0 +1,38 @@
+diff -rupN a/src/_codecompletion.cpp b/src/_codecompletion.cpp
+--- a/src/_codecompletion.cpp	2012-09-22 16:58:08.000000000 -0400
++++ b/src/_codecompletion.cpp	2014-01-05 16:00:08.502740413 -0500
+@@ -623,7 +623,7 @@ QString LaTeXCompletionModel::buildEnvir
+ 	}
+ 
+ 	if(KileConfig::completeCloseEnv() && start != "end") {
+-		s += '\n' + whitespace + "\\end{" + envname + "}\n";
++		s += '\n' + whitespace + "\\end{" + envname + "}";
+ 	}
+ 
+ 	if(parameter.isEmpty()) {
+diff -rupN a/src/editorextension.cpp b/src/editorextension.cpp
+--- a/src/editorextension.cpp	2014-01-05 15:50:42.154710592 -0500
++++ b/src/editorextension.cpp	2014-01-05 16:13:51.622965421 -0500
+@@ -2853,7 +2853,7 @@ bool EditorExtension::eventInsertEnviron
+ 	}
+ 
+ 	int row = view->cursorPosition().line();
+-	int col = view->cursorPositionVirtual().column();
++	int col = view->cursorPosition().column();
+ 	QString line = view->document()->line(row).left(col);
+ 
+ 	int pos = m_regexpEnter.indexIn(line);
+@@ -2868,11 +2868,11 @@ bool EditorExtension::eventInsertEnviron
+ 		QString envname, endenv;
+ 		if(m_regexpEnter.cap(2) == "\\[") {
+ 			envname = m_regexpEnter.cap(2);
+-			endenv = "\\]\n";
++			endenv = "\\]";
+ 		}
+ 		else {
+ 			envname = m_regexpEnter.cap(4);
+-			endenv = m_regexpEnter.cap(2).replace("\\begin","\\end") + '\n';
++			endenv = m_regexpEnter.cap(2).replace("\\begin","\\end");
+ 		}
+ 
+ 		if(shouldCompleteEnv(envname, view)) {

@@ -1,0 +1,22 @@
+pkgbase = kile-autocompletenoblankline
+	pkgdesc = Patched to not insert a black line after autocompleting an environment
+	pkgver = 2.1.3
+	pkgrel = 1
+	url = http://kile.sourceforge.net/
+	install = kile.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = automoc4
+	depends = kdebase-runtime
+	depends = texlive-core
+	depends = kdebase-katepart
+	optdepends = kdebase-konsole: embedded terminal
+	provides = kile-2.1.3
+	conflicts = kile
+	source = http://downloads.sourceforge.net/kile/kile-2.1.3.tar.bz2
+	source = autocomplete_noblankline.patch
+
+pkgname = kile-autocompletenoblankline
+
