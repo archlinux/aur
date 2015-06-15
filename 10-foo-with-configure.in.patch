@@ -1,0 +1,37 @@
+--- a/configure.in
++++ b/configure.in
+@@ -17,6 +17,8 @@
+ # init autoconf (and check for presence fo reconf)
+ AC_INIT(reconf)
+ 
++AC_CONFIG_MACRO_DIR([m4])
++
+ ID3LIB_NAME=id3lib
+ 
+ dnl The following has been adapted from glib (http://www.gtk.org)
+@@ -87,14 +89,14 @@
+ 
+ AM_INIT_AUTOMAKE($PACKAGE,$VERSION)
+ 
++dnl Initialize maintainer mode
++AM_MAINTAINER_MODE
++
+ AC_ISC_POSIX
+ 
+ dnl Initialize libtool
+ AM_PROG_LIBTOOL
+ 
+-dnl Initialize maintainer mode
+-AM_MAINTAINER_MODE
+-
+ #AC_CANONICAL_HOST
+ 
+ dnl figure debugging default, prior to $ac_help setup
+@@ -227,7 +229,6 @@
+ )
+ AC_CHECK_HEADERS(               \
+   string                        \
+-  iomanip.h                     \
+   ,,AC_MSG_ERROR([Missing a vital header file for id3lib])
+ )
+ 

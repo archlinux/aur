@@ -1,0 +1,12 @@
+We don't actually need iomanip.h
+--- id3lib-3.8.3-orig/configure      2008-05-24 23:39:36.000000000 -0400
++++ id3lib-3.8.3/configure   2008-05-24 23:39:57.000000000 -0400
+@@ -10296,8 +10296,7 @@
+ 
+ for ac_header in \
+   string                        \
+-  iomanip.h                     \
+ 
+ do
+ as_ac_Header=`echo "ac_cv_header_$ac_header" | $as_tr_sh`
+ 
