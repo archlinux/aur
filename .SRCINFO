@@ -1,0 +1,16 @@
+pkgbase = perl-term-progressbar-simple
+	pkgdesc = simpler progress bars
+	pkgver = 0.03
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Term-ProgressBar-Simple
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-term-progressbar-quiet
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/E/EV/EVDB/Term-ProgressBar-Simple-0.03.tar.gz
+	md5sums = c684f83c41f615775cca0dcf739561b6
+	sha512sums = 68374d5261ef579d149faac84b829aaf39c29e064e5380e5f403746e89017c226a865d0f454cdf2c8dbc3401ced60215042de43aae43c1c0493027fa8f8f69d7
+
+pkgname = perl-term-progressbar-simple
+
