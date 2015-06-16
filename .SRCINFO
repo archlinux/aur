@@ -1,0 +1,22 @@
+pkgbase = perl-html-wikiconverter
+	pkgdesc = Convert HTML to wiki markup
+	pkgver = 0.68
+	pkgrel = 1
+	url = http://search.cpan.org/dist/HTML-WikiConverter
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-class-data-inheritable>=0.02
+	depends = perl-css>=1.07
+	depends = perl-html-parser
+	depends = perl-html-tagset>=3.04
+	depends = perl-html-tree>=3.18
+	depends = perl-params-validate>=0.77
+	depends = perl-uri>=1.35
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DI/DIBERRI/HTML-WikiConverter-0.68.tar.gz
+	md5sums = e6d8b16c23b6f38c51d8585f3423aca9
+	sha512sums = e80e9053dd01dfbea587ed2816a282abc4083021d3d80b72b1e2ea2d1ce0b45226bcf0c863beddc7a2bc15fece7b8bfa78e33ee409460776a5ef2de57beae7ee
+
+pkgname = perl-html-wikiconverter
+
