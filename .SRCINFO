@@ -1,0 +1,16 @@
+pkgbase = perl-number-format
+	pkgdesc = Perl extension for formatting numbers
+	pkgver = 1.73
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Number-Format
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/W/WR/WRW/Number-Format-1.73.tar.gz
+	md5sums = 3a4188de6e84b04361def285b93dc240
+	sha512sums = 52af1a595d9a62c9aabd57407c1807e71c7f2bfc591a835f73428848162fc0ab5aee7e78a8269304d44fceeb2654b8db40686eed8c6ff83e821b905905c75047
+
+pkgname = perl-number-format
+
