@@ -12,7 +12,7 @@ license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 optdepends=('remoteosd: Add/edit/remove timers on local and peer VDR or move timers between them'
             'remotetimers: Access menu of peer')
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 source=("http://vdr.schmirler.de/$_plugname/$pkgname-$pkgver.tgz")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 md5sums=('6a50045f82d3a5784cb26d7e6cf4fb39')
