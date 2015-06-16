@@ -10,7 +10,7 @@ url="http://www.saunalahti.fi/rahrenbe/vdr/femon/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 source=("http://www.saunalahti.fi/~rahrenbe/vdr/femon/files/$pkgname-$pkgver.tgz")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 md5sums=('9a9d2a553dc72b96a6c8a810ba3c7456')
