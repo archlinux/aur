@@ -1,0 +1,17 @@
+pkgbase = perl-tree-simple
+	pkgdesc = A simple tree object
+	pkgver = 1.18
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Tree-Simple
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-exception>=0.15
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/ST/STEVAN/Tree-Simple-1.18.tar.gz
+	md5sums = 70462938108a8b8658b1b1d2f12dbeab
+	sha512sums = f5918a865667db84800a5ff1a423c118f6e41c1b1930eb323d4afdaaf8a9da5554a0ac85eced3d1b9635065ff045f4ff6aab874c26771b8b4d36511fcc941ac0
+
+pkgname = perl-tree-simple
+
