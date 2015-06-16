@@ -1,0 +1,20 @@
+pkgbase = libdigidoc
+	pkgdesc = Library for creating DigiDoc signature files
+	pkgver = 3.10.0.1197
+	pkgrel = 1
+	url = http://www.id.ee/
+	arch = x86_64
+	arch = i686
+	license = LGPL
+	makedepends = cmake
+	makedepends = pcsclite
+	makedepends = opensc
+	depends = libxml2
+	depends = openssl
+	conflicts = libdigidoc-svn
+	conflicts = sk-libdigidoc-svn
+	source = https://installer.id.ee/media/ubuntu/pool/main/libd/libdigidoc/libdigidoc_3.10.0.1197.orig.tar.gz
+	sha256sums = ffbf29ab8ffb2fac6a457e0c6ed6eb3a2a260d171bc278345f8ad8283d200b3b
+
+pkgname = libdigidoc
+
