@@ -1,0 +1,16 @@
+pkgbase = perl-irc-utils
+	pkgdesc = Common utilities for IRC-related tasks
+	pkgver = 0.12
+	pkgrel = 1
+	url = http://search.cpan.org/dist/IRC-Utils
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/H/HI/HINRIK/IRC-Utils-0.12.tar.gz
+	md5sums = 05e99007ca07dbb9b77e534c71d2a5c1
+	sha512sums = b1b7bae3d374e0755d46c02adf37ee719a8f40b600b39722b6674bcf61e31ca442373e29974e7d458b82af382dca7a65f8f687bd0857eb8c9f27861c380dae29
+
+pkgname = perl-irc-utils
+
