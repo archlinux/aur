@@ -1,0 +1,16 @@
+pkgbase = perl-text-emoticon-yahoo
+	pkgdesc = Emoticon filter of Yahoo! Messenger
+	pkgver = 0.02
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Text-Emoticon-Yahoo
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-text-emoticon>=0.02
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Text-Emoticon-Yahoo-0.02.tar.gz
+	md5sums = 6e732c4dacf0741f8c010da5d397515d
+	sha512sums = 072f8c356e343510c83e9bfc47629a4bbd68bb403ee40a967b5ec8106890965ecef171bdc44bc686c89f546c696b3115564839f342acc472fbca750247e9e9ec
+
+pkgname = perl-text-emoticon-yahoo
+
