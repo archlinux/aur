@@ -1,0 +1,20 @@
+pkgbase = perl-plack-middleware-static-minifier
+	pkgdesc = serves static files and minify CSS and JavaScript
+	pkgver = 0.071
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Plack-Middleware-Static-Minifier
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-http-message
+	depends = perl>=5.8.7
+	depends = perl-css-minifier-xs
+	depends = perl-javascript-minifier-xs
+	depends = perl-plack>=0.9958
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BA/BAYASHI/Plack-Middleware-Static-Minifier-0.071.tar.gz
+	md5sums = 43c122569cab300c517c0a555a646e79
+	sha512sums = b86c817906a7255fd061e6f117473697e82179b7cb0b3cc6be9f02606aadac951702c9579fc2189e921080b89b6523d559aa30fbc3bf9100e0933a983984e7df
+
+pkgname = perl-plack-middleware-static-minifier
+
