@@ -1,0 +1,17 @@
+pkgbase = dl-cli
+	pkgdesc = Command line tool for submitting files into 'dl' download ticket service
+	pkgver = 0.12
+	pkgrel = 1
+	url = http://www.thregr.org/~wavexx/software/dl/
+	install = dl-cli.install
+	arch = any
+	license = GPL2
+	depends = python2>=2.7
+	depends = python2-pycurl
+	source = https://github.com/wavexx/dl/archive/dl-0.12.tar.gz
+	source = use_python2.patch
+	md5sums = 380e05aa8f0049ced1e988857bca0ca3
+	md5sums = cc4936b3fd56320e96568bbe5c8fb290
+
+pkgname = dl-cli
+

@@ -1,0 +1,7 @@
+post_install() {
+    echo "Please read
+    http://www.thregr.org/~wavexx/software/dl/README.html#command-line-client-dl-cli
+    for instructions about client configuration.
+
+    You'll need a properly configured ~/.dl.rc file in order to use this software."
+}
