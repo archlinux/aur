@@ -1,0 +1,16 @@
+pkgbase = perl-net-inet6glue
+	pkgdesc = Make common modules IPv6 ready by hotpatching
+	pkgver = 0.6
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Net-INET6Glue
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-io-socket-inet6>=2.54
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SU/SULLR/Net-INET6Glue-0.6.tar.gz
+	md5sums = bbcb7724b64b7f3156b6cd249a014e25
+	sha512sums = 79fc5eb9bb31ef331b920bf33eb58d5e083de5c70881409d0d18d40f67153c43b40bbb038a5d643c3637bcb390e477716ebe716134cae6e6619c1da64d8e661a
+
+pkgname = perl-net-inet6glue
+
