@@ -1,0 +1,16 @@
+pkgbase = perl-data-uniqid
+	pkgdesc = Perl extension for simple genrating of unique id's
+	pkgver = 0.12
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Data-Uniqid
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MW/MWX/Data-Uniqid-0.12.tar.gz
+	md5sums = 6bab3b5da09fedfdf60ce2629a7367db
+	sha512sums = fd12aae4a810fda88dd0f8296e73760d8d62357cb5ebc675a4b2804d9eee93ebfa01942c7057ad9092e80331504f2a38a3c8a576ccb630de10f5e563752ed6e3
+
+pkgname = perl-data-uniqid
+
