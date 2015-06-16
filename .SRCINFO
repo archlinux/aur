@@ -1,0 +1,16 @@
+pkgbase = perl-module-install-authortests
+	pkgdesc = designate tests only run by module authors
+	pkgver = 0.002
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Module-Install-AuthorTests
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-module-install
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Module-Install-AuthorTests-0.002.tar.gz
+	md5sums = f1b95c8385c1284e281a9bc6a5f10532
+	sha512sums = 13f3c9018171500ec0090f5f634508b3b0b9554fe9b02cf47f008d1e0005358e1b7d65b4b1347c86aff93da6ae60f0e5c1bdcb1f8c01de727231d3481b5b7153
+
+pkgname = perl-module-install-authortests
+
