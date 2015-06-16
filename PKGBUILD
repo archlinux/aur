@@ -4,7 +4,7 @@
 
 pkgname=otcl
 pkgver=1.14
-pkgrel=5
+pkgrel=6
 pkgdesc="An extension to Tcl/Tk for object-oriented programming"
 url="http://otcl-tclcl.sourceforge.net/otcl/"
 license=('MIT')
