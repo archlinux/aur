@@ -1,0 +1,17 @@
+pkgbase = perl-padwalker
+	pkgdesc = play with other peoples' lexical variables
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://metacpan.org/release/PadWalker
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RO/ROBIN/PadWalker-2.0.tar.gz
+	md5sums = 9d602cf26e3e9086865a57708b2a0db2
+	sha512sums = 9ad282f0f37f3dfec5eb93df1c10d75380fdcda2291ad6945e62581a01b7b1ca3b1e3a5633e371068aaa00a58aa925ce79010068fbee2faf14d3d89940b26e51
+
+pkgname = perl-padwalker
+
