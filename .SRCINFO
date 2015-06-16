@@ -1,0 +1,16 @@
+pkgbase = perl-html-stripscripts
+	pkgdesc = Strip scripting constructs out of HTML
+	pkgver = 1.05
+	pkgrel = 1
+	url = http://search.cpan.org/dist/HTML-StripScripts
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DR/DRTECH/HTML-StripScripts-1.05.tar.gz
+	md5sums = e8c51fbfda69efaf94c2937084d2458f
+	sha512sums = e9de1a05721fa74b90168ef36596c4d32d5af365258f1a8b363ac7a2e2f15181e67cbadde1c1dcae1225b6d2850589fa14e252134cf799b84bf506f55f5e050d
+
+pkgname = perl-html-stripscripts
+
