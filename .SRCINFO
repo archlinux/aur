@@ -1,0 +1,24 @@
+pkgbase = perl-catalyst-model-file
+	pkgdesc = File based storage model for Catalyst.
+	pkgver = 0.10
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Catalyst-Model-File
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.8.1
+	depends = perl-catalyst-component-instancepercontext
+	depends = perl-catalyst-runtime
+	depends = perl-moose
+	depends = perl-moosex-types
+	depends = perl-moosex-types-path-class
+	depends = perl-mro-compat
+	depends = perl-namespace-autoclean
+	depends = perl-path-class
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AS/ASH/Catalyst-Model-File-0.10.tar.gz
+	md5sums = a01192bb2a6103ba4b0520289d03da63
+	sha512sums = a8a6f3bbc5b42410be68c6352a94cc3e3f788910a2938304464ca17aff5213a445630b60176e3630255a4784e0dd050aa2f837714a831503006ba2c9800c261d
+
+pkgname = perl-catalyst-model-file
+
