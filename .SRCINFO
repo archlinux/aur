@@ -1,0 +1,11 @@
+pkgbase = ffmpeg-compat-pc
+	pkgdesc = Make ffmpeg-compat work with pkg-config
+	pkgver = 1
+	pkgrel = 1
+	url = http://ffmpeg.org
+	arch = any
+	license = GPL
+	depends = ffmpeg-compat
+
+pkgname = ffmpeg-compat-pc
+
