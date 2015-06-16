@@ -1,7 +1,7 @@
 pkgbase = conky-top
 	pkgdesc = A Top conky-lua for ArchLinux
 	pkgver = 1.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://alexiobash.com/conky-top-monitor-di-sistema-a-pannello/
 	arch = any
 	license = GPL
