@@ -1,0 +1,18 @@
+pkgbase = mp3diags
+	pkgdesc = Identify issues with your MP3 files, fix those issues and make other changes
+	pkgver = 1.2.02
+	pkgrel = 1
+	url = http://mp3diags.sourceforge.net/
+	install = mp3diags.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = boost
+	depends = boost-libs
+	depends = qt4
+	optdepends = mp3gain: MP3 normalization support
+	source = http://downloads.sourceforge.net/project/mp3diags/mp3diags-src/MP3Diags.tar.gz
+	sha1sums = 92b102713ac767ed45476c684f68f0d300fc8354
+
+pkgname = mp3diags
+
