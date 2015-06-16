@@ -1,0 +1,16 @@
+pkgbase = perl-tree-rb
+	pkgdesc = Perl implementation of the Red/Black tree, a type of balanced binary search tree.
+	pkgver = 0.500003
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Tree-RB
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-enum
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AR/ARUNBEAR/Tree-RB-0.500003.tar.gz
+	md5sums = bbb93c117fe73dca1b10e97cda33724f
+	sha512sums = df628ab32d48db7285c393b48fba474bc4fe52521b0bc8424f97120e32cbfe6b4de87ee35098025f34bae8fcf73e1abf40ffb1aa828fc9fa9c6b4a760bd98d27
+
+pkgname = perl-tree-rb
+
