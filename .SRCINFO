@@ -1,0 +1,20 @@
+pkgbase = perl-catalyst-plugin-pagecache
+	pkgdesc = Cache the output of entire pages
+	pkgver = 0.31
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Catalyst-Plugin-PageCache
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-cache-cache>=1.04
+	makedepends = perl-catalyst-plugin-cache>=0.10
+	depends = perl-catalyst-runtime
+	depends = perl-digest-sha1
+	depends = perl-mro-compat>=0.10
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TI/TIMB/Catalyst-Plugin-PageCache-0.31.tar.gz
+	md5sums = 370711313606996a9684a898dc83f449
+	sha512sums = 4ff16a62f9cc3ac9d3daa4fa83c6639e6853aa4fad2f0fcedd2b6f8cf6ef2e2f4e27b703171c65a1361a51fa1b965d697f43f8e5f2c31160e96d940aef7d6c76
+
+pkgname = perl-catalyst-plugin-pagecache
+
