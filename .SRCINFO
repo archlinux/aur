@@ -1,0 +1,19 @@
+pkgbase = perl-mojolicious-plugin-bcrypt
+	pkgdesc = bcrypt your passwords!
+	pkgver = 0.14
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Mojolicious-Plugin-Bcrypt
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-mojolicious
+	makedepends = perl-test-spelling
+	depends = perl-crypt-eksblowfish
+	depends = perl-mojolicious>=4.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MINIMAL/Mojolicious-Plugin-Bcrypt-0.14.tar.gz
+	md5sums = 491927ffe4404afca3ef49c96312357f
+	sha512sums = b34ff823599049f5e1c56f0c16fe558a2547e253d5510ea21699942470325c83f941210543fdc7c27dab27a8e84aaf6fa909931477dcb25a00a4694567c2b53d
+
+pkgname = perl-mojolicious-plugin-bcrypt
+
