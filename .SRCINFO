@@ -1,0 +1,16 @@
+pkgbase = redshiftconf
+	pkgdesc = redshift configuration tool (Qt5)
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://forum.manjaro.org/index.php?topic=22999.0
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = qt5-tools
+	depends = redshift
+	depends = qt5-base
+	source = http://esclapion.free.fr/AUR/redshiftconf-2.1.tar.gz
+	md5sums = a6ea5aa7d717706d6b36ea7496fc4173
+
+pkgname = redshiftconf
+
