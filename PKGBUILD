@@ -16,7 +16,7 @@ optdepends=('vdr-epgsearch: Manage searchtimers'
             'vdr-streamdev: Stream live TV')
 makedepends=('git')
 install="$pkgname.install"
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 source=("git://projects.vdr-developer.org/vdr-plugin-live.git#commit=$_gitver"
         'live-folderstatecookie-v2.diff::http://www.vdr-portal.de/index.php?page=Attachment&attachmentID=34407'
         'live-osd-patch_150221.diff::http://www.vdr-portal.de/index.php?page=Attachment&attachmentID=37780'
