@@ -1,0 +1,16 @@
+pkgbase = perl-pquery
+	pkgdesc = A port of jQuery.js to Perl
+	pkgver = 0.15
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/pQuery
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-html-tree
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/I/IN/INGY/pQuery-0.15.tar.gz
+	md5sums = 1276117144dd7aa0de6ba0790cd9aef6
+	sha512sums = 277f22cfbc296d0cea6388630e3d223b895465b05fd1c7b143e1cfb7db54479279f216085fddca2a40306774e804751befb5d9d294adb3d755ed74103a1572af
+
+pkgname = perl-pquery
+
