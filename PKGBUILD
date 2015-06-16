@@ -12,7 +12,7 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('libupnp' 'tntdb' 'tntnet' "vdr-api=${_vdrapi}")
 makedepends=('boost' 'git')
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 source=("git://projects.vdr-developer.org/vdr-plugin-$_plugname.git#commit=$_gitver"
         'upnp-vdr2.1.2compat.diff'
         "50-$_plugname.conf")
