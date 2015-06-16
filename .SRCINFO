@@ -1,0 +1,16 @@
+pkgbase = perl-datetime-format-duration
+	pkgdesc = Format and parse DateTime::Durations
+	pkgver = 1.03
+	pkgrel = 1
+	url = http://search.cpan.org/dist/DateTime-Format-Duration
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-datetime>=0.3
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RI/RICKM/DateTime-Format-Duration-1.03a.tgz
+	md5sums = f395c9f17d8fe65aa3b3cca6c8fecf17
+	sha512sums = c34a3cbcf156cba7c8bd89e8f50d931fc6b3a313439c56aa5dda44e6445b4cdd35eb780749062d807ed6c0aa951986d40b1a02d4f900778dc2099751335a5d66
+
+pkgname = perl-datetime-format-duration
+
