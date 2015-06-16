@@ -7,20 +7,16 @@ note() {
     printf "${blue}${yellow}::${bold} $1${all_off}\n"
 }
 
-pkgname=vuze-dev
 all_off="$(tput sgr0)"
 bold="${all_off}$(tput bold)"
 blue="${bold}$(tput setaf 4)"
 yellow="${bold}$(tput setaf 3)"
 
 post_install() {
-    msg_blue "Installing GConf Schemas..."
-    gconfpkg --install "$pkgname"
-
     msg_blue "Updating desktop MIME database..."
     update-desktop-database -q
 
-    note "The launcher is called: '$pkgname'"
+    note "The launcher is called: 'vuze-dev'"
 }
 
 post_upgrade() {
@@ -28,9 +24,6 @@ post_upgrade() {
 }
 
 post_remove() {
-    msg_blue "Uninstalling GConf Schemas..."
-    gconfpkg --uninstall "$pkgname"
-
     msg_blue "Updating desktop MIME database..."
     update-desktop-database -q
 }

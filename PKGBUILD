@@ -4,7 +4,7 @@
 _icon="default"
 pkgname=vuze-dev
 pkgver=5.6.1.3_B02
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source Java-based BitTorrent client (previously called 'Azureus') - Development Build"
 arch=('i686' 'x86_64')
 url="http://dev.vuze.com/"
@@ -52,7 +52,6 @@ package() {
   install -d "$pkgdir"/opt/vuze-dev/
   install -d "$pkgdir"/usr/bin/
   install -d "$pkgdir"/usr/share/applications/
-  install -d "$pkgdir"/usr/share/gconf/schemas/
   install -d "$pkgdir"/usr/share/licenses/vuze-dev/
   install -d "$pkgdir"/usr/share/pixmaps/
 
@@ -66,10 +65,9 @@ package() {
     x86_64) mv swt/swt64.jar "$pkgdir"/opt/vuze-dev/swt.jar ;;
   esac
 
-  # Icon, desktop and schemas
+  # Icon and desktop 
   mv vuze.png "$pkgdir"/usr/share/pixmaps/vuze-dev.png
   mv vuze.desktop "$pkgdir"/usr/share/applications/vuze-dev.desktop
-  mv vuze.schemas "$pkgdir"/usr/share/gconf/schemas/vuze-dev.schemas
 
   # Licenses
   mv GPL.txt      "$pkgdir"/usr/share/licenses/vuze-dev/
