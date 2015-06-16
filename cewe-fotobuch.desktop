@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=CeWe Fotobuch
+Comment=Offline client for cewe.de service
+Exec=cewe-fotobuch
+Icon=cewe-fotobuch
+StartupNotify=true
+Categories=Graphics;Photography;
