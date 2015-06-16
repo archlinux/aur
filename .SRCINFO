@@ -1,0 +1,20 @@
+pkgbase = perl-www-curl-simple
+	pkgdesc = A Simpler interface to WWW::Curl
+	pkgver = 0.100191
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/WWW-Curl-Simple
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-exception
+	depends = perl-http-message
+	depends = perl-moose
+	depends = perl-www-curl
+	depends = perl-namespace-clean
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AN/ANDREMAR/WWW-Curl-Simple-0.100191.tar.gz
+	md5sums = 34f7092fd10c6c7e8c267e5bc45a76c6
+	sha512sums = fa8d488c1e6ad48bb6976aae76921101271ceb09c34a58fceaba7d4666723106b7750dc3eebb8e1dcf79a4dca8a0cb61d096fa282208dd32949a58a36ab6cb88
+
+pkgname = perl-www-curl-simple
+
