@@ -1,0 +1,15 @@
+pkgbase = nodejs-css-b64-images
+	pkgdesc = Base64 images in your css
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/Filirom1/css-base64-images
+	arch = any
+	license = MIT
+	depends = nodejs
+	depends = npm
+	noextract = css-b64-images-0.2.5.tgz
+	source = http://registry.npmjs.org/css-b64-images/-/css-b64-images-0.2.5.tgz
+	sha1sums = 42005d83204b2b4a5d93b6b1a5644133b5927a02
+
+pkgname = nodejs-css-b64-images
+
