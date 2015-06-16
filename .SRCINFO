@@ -1,0 +1,21 @@
+pkgbase = stencyl
+	pkgdesc = Create amazing games without code
+	pkgver = 3.3
+	pkgrel = 1
+	url = http://www.stencyl.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	noextract = stencyl.tar.gz
+	options = !strip
+	source = stencyl
+	source = stencyl.desktop
+	source = stencyl.png
+	source = LICENSE
+	md5sums = e97ff31637ae4f223062269bfce3f8ab
+	md5sums = 3018ce0b02399aea78b9417bcc065f6e
+	md5sums = c99ae55db267e86c0936e01662ee12ea
+	md5sums = 986e231db4a39dd7fa59c93a7e06b7c2
+
+pkgname = stencyl
+

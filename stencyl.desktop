@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=3.2
+Name=Stencyl
+Comment=Create amazing games without code
+Exec=stencyl
+Icon=/usr/share/pixmaps/stencyl.png
+Terminal=false
+Categories=Games;Programming
