@@ -1,0 +1,14 @@
+pkgbase = perl-text-glob
+	pkgdesc = match globbing patterns against text
+	pkgver = 0.09
+	pkgrel = 3
+	url = http://search.mcpan.org/dist/Text-Glob
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	source = http://search.mcpan.org/CPAN/authors/id/R/RC/RCLAMP/Text-Glob-0.09.tar.gz
+	options = !emptydirs
+
+pkgname = perl-text-glob
+
