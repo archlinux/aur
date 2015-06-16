@@ -1,0 +1,16 @@
+pkgbase = perl-moosex-iterator
+	pkgdesc = Iterate over collections
+	pkgver = 0.11
+	pkgrel = 1
+	url = http://search.cpan.org/dist/MooseX-Iterator
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-moose>=0.86
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RL/RLB/MooseX-Iterator-0.11.tar.gz
+	md5sums = 55ef6a39886614c5200aabbb4bdd7172
+	sha512sums = ab92f658bea542316c34a04ef4ebf44989f599993154bcfc80b827bacc85b521eb0f00a33c82670adc638fb3fd38920a869495c85524c740d40ca0937b8c03a4
+
+pkgname = perl-moosex-iterator
+
