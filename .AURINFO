@@ -1,0 +1,23 @@
+pkgbase = perl-method-signatures
+	pkgdesc = method and function declarations with signatures and no source filter
+	pkgver = 20140224
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Method-Signatures
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-exception>=0.29
+	checkdepends = perl-test-warn>=0.10
+	depends = perl-any-moose>=0.11
+	depends = perl-const-fast>=0.006
+	depends = perl-devel-declare>=0.006002
+	depends = perl-lexical-sealrequirehints>=0.007
+	depends = perl-mouse>=0.64
+	depends = perl-ppi>=1.203
+	depends = perl-sub-name>=0.03
+	depends = perl
+	source = http://search.mcpan.org/CPAN/authors/id/B/BA/BAREFOOT/Method-Signatures-20140224.tar.gz
+	options = !emptydirs
+
+pkgname = perl-method-signatures
+
