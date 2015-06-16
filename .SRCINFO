@@ -1,0 +1,16 @@
+pkgbase = perl-graph
+	pkgdesc = graph data structures and algorithms
+	pkgver = 0.96
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Graph
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JH/JHI/Graph-0.96.tar.gz
+	md5sums = 24734ad5a6a20023f3950681f8e9b029
+	sha512sums = afcaa154473696e51310a9b0e1b1a48c29ce60fa3462d25c9fba1a5080a8205e2a734a6870a2d1770e3df88ffd5cde144861ea7ab794313df8c2a715e1540c67
+
+pkgname = perl-graph
+
