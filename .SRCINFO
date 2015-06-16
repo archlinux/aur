@@ -1,0 +1,14 @@
+pkgbase = vim-togglemouse
+	pkgdesc = Toggles the mouse focus between Vim and your terminal emulator.
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://www.vim.org/scripts/script.php?script_id=3166
+	arch = any
+	groups = vim-plugins
+	license = unknown
+	depends = vim
+	source = togglemouse.vim::http://www.vim.org/scripts/download_script.php?src_id=13406
+	md5sums = 699bcb6f5d1442d40f8b441fcb16f28e
+
+pkgname = vim-togglemouse
+
