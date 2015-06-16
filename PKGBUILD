@@ -13,7 +13,7 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' 'libdvbcsa' "vdr-api=${_vdrapi}")
 makedepends=('git')
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 source=("git://github.com/manio/vdr-plugin-dvbapi.git#commit=$_gitver")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 sha256sums=('SKIP')
