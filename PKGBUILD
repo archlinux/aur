@@ -5,7 +5,7 @@
 
 pkgname=chromium
 pkgver=43.0.2357.125
-pkgrel=1
+pkgrel=2
 _launcher_ver=2
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
@@ -26,10 +26,12 @@ install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
+        add-build-flag-to-disable-hotwording.patch
         chromium-widevine.patch)
 sha256sums=('af1774d093f90f9ccfd7def3b2b3a8caa109274ac28d4bec0285e50f8a5a5405'
             '7f91c81721092d707d7b94e6555a48bc7fd0bc0e1174df4649bdcd745930e52f'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
+            '3a1c589aa90c0597776d945d34638d43e2d40d93bc1962148815831a5122ac4e'
             '379b746e187de28f80f5a7cd19edcfa31859656826f802a1ede054fcb6dfb221')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -52,6 +54,12 @@ fi
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
 
+  # Add build flag to disable 'Ok Google' hotwording feature
+  # The issue with this functionality is that it downloads a binary blob
+  # and that this behavior cannot be disabled if a user wishes to do so.
+  # https://code.google.com/p/chromium/issues/detail?id=491435
+  patch -Np1 -i ../add-build-flag-to-disable-hotwording.patch
+
   # Enable support for the Widevine CDM plugin
   # The actual libraries are not included, but can be copied over from Chrome:
   #   libwidevinecdmadapter.so
@@ -61,7 +69,7 @@ prepare() {
     patch -Np1
 
   # Remove bundled ICU; its header files appear to get picked up instead of
-  # the system ones, leading to errors during the final link stage
+  # the system ones, leading to errors during the final link stage.
   # https://groups.google.com/a/chromium.org/d/topic/chromium-packagers/BNGvJc08B6Q
   find third_party/icu -type f \! -regex '.*\.\(gyp\|gypi\|isolate\)' -delete
 
@@ -131,6 +139,7 @@ build() {
     -Dusb_ids_path=/usr/share/hwdata/usb.ids
     -Duse_mojo=0
     -Duse_gconf=0
+    -Denable_hotwording=0
     -Ddisable_fatal_linker_warnings=1
     -Ddisable_glibc=1)
 
