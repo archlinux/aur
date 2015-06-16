@@ -1,0 +1,17 @@
+pkgbase = perl-cpanplus-dist-fedora
+	pkgdesc = a cpanplus backend to build Fedora/RedHat rpms
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = http://search.cpan.org/dist/CPANPLUS-Dist-Fedora
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-pod-pom
+	depends = perl-template-toolkit
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/CPANPLUS-Dist-Fedora-v0.0.4.tar.gz
+	md5sums = 136e117c8e73bf445dc7b94fd1d3370a
+	sha512sums = 126c2dcc3e4981048cf49db6fbbb4d748dc1b2b049ce4c37e983a65248e8307c54601a59eeb926c351cd7f4f048783848ca86cf754b1f3218224b2ce16d183b2
+
+pkgname = perl-cpanplus-dist-fedora
+
