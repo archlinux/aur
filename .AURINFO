@@ -1,0 +1,14 @@
+pkgbase = perl-time-parsedate
+	pkgdesc = date parsing both relative and absolute
+	pkgver = 2013.1113
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Time-ParseDate
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	source = http://search.mcpan.org/CPAN/authors/id/M/MU/MUIR/modules/Time-ParseDate-2013.1113.tar.gz
+	options = !emptydirs
+
+pkgname = perl-time-parsedate
+
