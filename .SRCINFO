@@ -1,0 +1,20 @@
+pkgbase = perl-music-tag
+	pkgdesc = Interface for collecting information about music files.
+	pkgver = 0.4103
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Music-Tag
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-config-options>=0.07
+	depends = perl-datetimex-easy>=0.088
+	depends = perl-digest-sha1>=2.11
+	depends = perl-file-slurp>=1
+	depends = perl-readonly>=1
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/E/EA/EALLENIII/Music-Tag-0.4103.tar.gz
+	md5sums = 1f63a539beb57c38723bc431dc12a962
+	sha512sums = 425d6b17f8a3735681e7c89999abce45b7f8f071acb3017f962cd15c7d275383dbed3ad58d6248125d9901635495336babb1c8a665752453b4d0cd82d6017d0a
+
+pkgname = perl-music-tag
+
