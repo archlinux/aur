@@ -1,0 +1,20 @@
+pkgbase = perl-www-scripter-plugin-javascript
+	pkgdesc = JavaScript plugin for WWW::Scripter
+	pkgver = 0.008
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/WWW-Scripter-Plugin-JavaScript
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-css-dom
+	depends = perl-html-dom>=0.027
+	depends = perl-hash-util-fieldhash-compat
+	depends = perl-je>=0.038
+	depends = perl-uri
+	depends = perl-www-scripter>=0.022
+	depends = perl-libwww
+	source = http://search.mcpan.org/CPAN/authors/id/S/SP/SPROUT/WWW-Scripter-Plugin-JavaScript-0.008a.tar.gz
+	options = !emptydirs
+
+pkgname = perl-www-scripter-plugin-javascript
+
