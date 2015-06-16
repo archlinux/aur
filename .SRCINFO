@@ -1,0 +1,16 @@
+pkgbase = perl-acme-travigator
+	pkgdesc = who needs google when you have the travigator
+	pkgver = 0.005
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Acme-Travigator
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/M/MD/MDMONSEN/Acme-Travigator-0.005.tar.gz
+	md5sums = ba35d8f40410f8ccc2c57f46d1c1b1fa
+	sha512sums = 3ac04df83a7a9c439dff6bc4aa459023559747221c7ca9edb936f125315242b55b1ec66e9655a7f5da4a58dbe882e688bf145f34108b8fdacb2bdc557b699356
+
+pkgname = perl-acme-travigator
+
