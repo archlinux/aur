@@ -1,0 +1,16 @@
+pkgbase = perl-class-errorhandler
+	pkgdesc = Base class for error handling
+	pkgver = 0.03
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Class-ErrorHandler
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.008_001
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/T/TO/TOKUHIROM/Class-ErrorHandler-0.03.tar.gz
+	md5sums = 1335940a9467e98abfedd85bc09938d1
+	sha512sums = aefc6497b8ebdd3efe1643a84051b2739879f5472753a484b8eb14a29ba1826806bdc17ddb46efb50e969ceedae309fe7cfa965d9c45054b40fe2fbaed7b60a7
+
+pkgname = perl-class-errorhandler
+
