@@ -1,0 +1,16 @@
+pkgbase = perl-method-signatures-simple
+	pkgdesc = Basic method declarations with signatures, without source filters
+	pkgver = 1.07
+	pkgrel = 1
+	url = https://metacpan.org/release/Method-Signatures-Simple
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-devel-declare>=0.003001
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RH/RHESA/Method-Signatures-Simple-1.07.tar.gz
+	md5sums = 53b315b6debda04b31e9323ff227999b
+	sha512sums = 1ac0374edb7827711c7d760390b6facece85fcf9befa7d76b5fbf08b8b9903474676a0b34181cca4244eea8be5c93706a122833eed38a1f8d4af7017d8f58abe
+
+pkgname = perl-method-signatures-simple
+
