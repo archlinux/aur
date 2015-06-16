@@ -1,0 +1,17 @@
+pkgbase = perl-digest-keccak
+	pkgdesc = Perl interface to the Keccak digest algorithm
+	pkgver = 0.05
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Digest-Keccak
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GR/GRAY/Digest-Keccak-0.05.tar.gz
+	md5sums = 062c32a8ac261a1adffa746ef2b98776
+	sha512sums = 05989a262bd6072d317ef5d6bfade2005450bfb33ee90dda33fd405e5094eb8d43230af01c9c44aa38b57eba29bd0101d3cecee7d1d8e33cdb56eb8e4b2cf96d
+
+pkgname = perl-digest-keccak
+
