@@ -1,0 +1,16 @@
+pkgbase = perl-log-any-adapter-callback
+	pkgdesc = Send Log::Any logs to a subroutine
+	pkgver = 0.09
+	pkgrel = 1
+	url = https://metacpan.org/release/Log-Any-Adapter-Callback
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-log-any
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SH/SHARYANTO/Log-Any-Adapter-Callback-0.09.tar.gz
+	md5sums = 0c805bfdda80fd0157a02f32a76dd158
+	sha512sums = 4a311d68c5b211071e2b3549db846d1f5c3cfe7d933b805a843bfa241751015823a2376ce324386f625349416ea79cca3f91e07f514ae6e15792df50c31f0c68
+
+pkgname = perl-log-any-adapter-callback
+
