@@ -1,0 +1,17 @@
+pkgbase = perl-json-rpc2
+	pkgdesc = Transport-independent implementation of json-rpc 2.0
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/JSON-RPC2
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-exception
+	depends = perl-json-xs
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/P/PO/POWERMAN/JSON-RPC2-1.0.0.tar.gz
+	md5sums = cc009e17eb348a051c3f2de5c3c1668d
+	sha512sums = d212bbe81023ac652ffeb41aacafdb58579b3a8289486fa7e0a68dd18dfaa3bc544e72a4557fbffb516915970b995caa225f29d663e7e9a7391a591387f53e47
+
+pkgname = perl-json-rpc2
+
