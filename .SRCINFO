@@ -1,0 +1,16 @@
+pkgbase = perl-mp3-m3u-parser
+	pkgdesc = MP3 playlist parser.
+	pkgver = 2.31
+	pkgrel = 1
+	url = http://search.cpan.org/dist/MP3-M3U-Parser
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-text-template
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BU/BURAK/MP3-M3U-Parser-2.31.tar.gz
+	md5sums = b55900f7e2783b9ffb66f7a0ca41c02a
+	sha512sums = bf3971b0f55b18eda3af9d5230106c8fac723710598f22ecb9c841c6535a694300c7c259c18c548a56bc45485cae2b9a2c1e3a1246f5c844577abaad988a53ec
+
+pkgname = perl-mp3-m3u-parser
+
