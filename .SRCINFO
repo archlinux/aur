@@ -1,0 +1,17 @@
+pkgbase = perl-class-accessor-fast-xs
+	pkgdesc = XS replacement for Class::Accessor::Fast
+	pkgver = 0.04
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Class-Accessor-Fast-XS
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl-class-accessor
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RU/RUZ/Class-Accessor-Fast-XS-0.04.tar.gz
+	md5sums = 6a927f2b39e6c2c69f4e519f96310779
+	sha512sums = 3fca8097c6e08de64efdc976300120d35e5606daf95a116a2d211753030980c2ffc4556df2ec67abd11047f3af580ca0b6ec05ca5b265cde2523ce29b272027f
+
+pkgname = perl-class-accessor-fast-xs
+
