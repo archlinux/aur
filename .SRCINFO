@@ -1,0 +1,21 @@
+pkgbase = perl-app-cache
+	pkgdesc = Easy application-level caching
+	pkgver = 0.37
+	pkgrel = 1
+	url = http://search.cpan.org/dist/App-Cache
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-class-accessor-chained
+	depends = perl-file-find-rule
+	depends = perl-file-homedir
+	depends = perl-http-cookies
+	depends = perl-libwww
+	depends = perl-path-class
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LB/LBROCARD/App-Cache-0.37.tar.gz
+	md5sums = 9c9f822c684de101bc64dae8fd5805d1
+	sha512sums = 7412b2fb598aafacecc1aa8c887d0c9d8a40bcd2b66b98786cea32818934784b096d52f4cfefcac3d4713e427f6000bddb7e5db225cdf8b649214aaad34afcff
+
+pkgname = perl-app-cache
+
