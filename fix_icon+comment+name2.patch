@@ -1,0 +1,15 @@
+--- amuleadunanza.desktop.orig	2012-06-07 19:36:03.211473241 +0200
++++ amuleadunanza.desktop	2012-06-07 19:40:38.417586425 +0200
+@@ -1,7 +1,10 @@
+ [Desktop Entry]
+-Name=aMule-AdunanzA
++Name=aMule AdunanzA
++GenericName=aMule Client
+ Exec=amule
+-Icon=amuleadunanza
++Icon=amule
+ Terminal=false
+ Type=Application
+ Categories=Network;P2P;
++Comment=Download and share your files via KADU network
++Comment[it]=Scarica e condividi i tuoi file attraverso la rete KADU

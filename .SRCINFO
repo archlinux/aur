@@ -1,0 +1,33 @@
+pkgbase = amule-adnza
+	pkgdesc = aMule patched for Fastweb Network (Italy) by Adunanza forum
+	pkgver = 2012.1
+	pkgrel = 11
+	url = http://amule-adunanza.sourceforge.net/
+	install = amule.install
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	license = GPL
+	depends = wxgtk
+	depends = wxgtk2.8
+	depends = gd
+	depends = geoip
+	depends = libupnp
+	depends = crypto++
+	depends = libsm
+	provides = amule=2.3.1
+	conflicts = amule
+	conflicts = amule-adunanza
+	conflicts = amule-adnza-svn
+	source = http://downloads.sourceforge.net/amule-adunanza/aMule-AdunanzA/Stable/aMule-AdunanzA-2012.1-2.3.1.tar.bz2
+	source = fix_icon+comment+name2.patch
+	source = amuled.systemd
+	source = amuleweb.systemd
+	md5sums = 53283dceb4172e03c6806beda712cf6b
+	md5sums = cef300135ba532b171db957ccff0311a
+	md5sums = 59772c41860e238f1c822feb8ca8d47f
+	md5sums = 05975c5d94bfc41fddb894d98b1115d5
+
+pkgname = amule-adnza
+
