@@ -1,0 +1,14 @@
+pkgbase = perl-test-tinymocker
+	pkgdesc = a very simple tool to mock external modules
+	pkgver = 0.05
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Test-TinyMocker
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	source = http://search.mcpan.org/CPAN/authors/id/S/SU/SUKRIA/Test-TinyMocker-0.05.tar.gz
+	options = !emptydirs
+
+pkgname = perl-test-tinymocker
+
