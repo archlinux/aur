@@ -2,7 +2,7 @@
 
 pkgname=yaourt-gui
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A bash GUI for yaourt"
 arch=('any')
 url="http://alexiobash.com/yaourt-gui-a-bash-gui-per-yaourt-3/"
@@ -16,6 +16,6 @@ source=("http://mirror.alexiobash.com/alexiobash/project/yaourt-gui/$pkgname-$pk
 md5sums=('c20bce0f2488193c038952c95d500dfe')
 
 package() {
-	cd $srcdir/$pkgname-$pkgver
+	cd $srcdir/$pkgname
 	make DESTDIR=${pkgdir} install
 }
