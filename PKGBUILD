@@ -10,7 +10,7 @@ url="http://opensource.holgerbrunn.net/vdr/filebrowser/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL3')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 replaces=("vdr-plugin-$_plugname")
 conflicts=("vdr-plugin-$_plugname")
 source=("http://opensource.holgerbrunn.net/vdr/filebrowser/$pkgname-$pkgver.tgz"
