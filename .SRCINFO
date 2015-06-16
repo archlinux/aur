@@ -1,0 +1,16 @@
+pkgbase = perl-dbix-simple
+	pkgdesc = Very complete easy-to-use OO interface to DBI
+	pkgver = 1.35
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/DBIx-Simple
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-dbi>=1.21
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/J/JU/JUERD/DBIx-Simple-1.35.tar.gz
+	md5sums = 157173cc510f92315806a33abc118504
+	sha512sums = 5b7e9c2f489ac32ac5833ff220dbcb7223ebfc02e3d715477c8b243c92b3563a6f2e661247793fd25764c9dd41914426b7d705bb2bcb09656d3cad552d05d301
+
+pkgname = perl-dbix-simple
+
