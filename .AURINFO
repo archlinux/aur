@@ -1,0 +1,23 @@
+pkgbase = perl-anyevent-inotify-simple
+	pkgdesc = monitor a directory tree in a non-blocking way
+	pkgver = 0.03
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/AnyEvent-Inotify-Simple
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-exception
+	depends = perl-anyevent
+	depends = perl-directory-scratch
+	depends = perl-ev
+	depends = perl-file-next
+	depends = perl-linux-inotify2
+	depends = perl-moose
+	depends = perl-moosex-declare
+	depends = perl-moosex-fileattribute
+	depends = perl-moosex-types-path-class
+	source = http://search.mcpan.org/CPAN/authors/id/R/RO/ROBN/AnyEvent-Inotify-Simple-0.03.tar.gz
+	options = !emptydirs
+
+pkgname = perl-anyevent-inotify-simple
+
