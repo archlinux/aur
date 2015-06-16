@@ -1,0 +1,22 @@
+pkgbase = steam-idle-master-git
+	pkgdesc = Get your Steam Trading Cards the Easy Way
+	pkgver = r3.8b2015e
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/jshackles/idle_master_py
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python2-beautifulsoup4
+	depends = python2-requests
+	depends = python2-pillow
+	depends = python2-colorama
+	depends = tk
+	backup = usr/lib/steam-idle-master/settings.txt
+	source = idle_master_py::git+https://github.com/jshackles/idle_master_py.git
+	source = steam-idle
+	md5sums = SKIP
+	md5sums = 43b8d7e347b72939b4aa6a6b0a90132f
+
+pkgname = steam-idle-master-git
+
