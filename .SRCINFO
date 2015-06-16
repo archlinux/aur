@@ -1,0 +1,17 @@
+pkgbase = perl-expect
+	pkgdesc = automate interactions with command line programs that expose a text terminal interface.
+	pkgver = 1.32
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Expect
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-exception>=0.32
+	depends = perl-io-tty
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/S/SZ/SZABGAB/Expect-1.32.tar.gz
+	md5sums = f71527a34d57f601d5047ad9aa98e4e4
+	sha512sums = 0281d1662a902b99b5131c017b50b0456c3461c176bf4485b4bb383cab009973605514256540c5ddc2e274b5dd92ece5555719f5527d3fb8c35e83f8dc038147
+
+pkgname = perl-expect
+
