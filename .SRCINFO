@@ -1,0 +1,17 @@
+pkgbase = perl-digest-bmw
+	pkgdesc = Perl interface to the Blue Midnight Wish digest algorithm
+	pkgver = 0.04
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Digest-BMW
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GR/GRAY/Digest-BMW-0.04.tar.gz
+	md5sums = 648962037016fae77124b7957c069d76
+	sha512sums = 1ed3df9c5bb3d29f7baf886d3e19c33003b608dea7e3dce6f15b178dcbea17aad7214e35f8fc95748e23a254c316ee429b291baf3dbdabd6f82c9cbf34d04c6a
+
+pkgname = perl-digest-bmw
+
