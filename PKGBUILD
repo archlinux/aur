@@ -14,7 +14,7 @@ license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 optdepends=('msmtp: To send notification mails (Simpler replacement for sendmail)'
             'ssmtp: To send notification mails (Another simpler replacement for sendmail)')
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 source=("git://projects.vdr-developer.org/vdr-plugin-$_plugname.git#commit=$_gitver"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-conflictcheckonly.conf"
