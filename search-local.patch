@@ -1,0 +1,38 @@
+*** nss-mdns-0.10/src/nss.c.orig	2015-02-14 18:27:09.307400597 +0000
+--- nss-mdns-0.10/src/nss.c	2015-02-14 18:28:38.826193854 +0000
+***************
+*** 378,383 ****
+--- 378,410 ----
+          } else
+              status = NSS_STATUS_NOTFOUND;
+      }
++     if (u.count == 0 && avahi_works && !strstr(name, ".")) {
++         const char *p="local";
++         int fullnamesize;
++         char *fullname;
++         fullnamesize = strlen(name) + strlen(p) + 2;
++         if ((fullname = malloc(fullnamesize))){
++             snprintf(fullname, fullnamesize, "%s.%s", name, p);
++             if (verify_name_allowed(fullname)) {
++                 int r;
++                 if ((r = avahi_resolve_name(af, fullname, data)) < 0) {
++                         /* Lookup failed */
++                         avahi_works = 0;
++                     }
++                 else if (r == 0) {
++                     /* Lookup succeeded */
++                     if (af == AF_INET && ipv4_func)
++                        ipv4_func((ipv4_address_t*) data, &u);
++                     if (af == AF_INET6 && ipv6_func)
++                         ipv6_func((ipv6_address_t*)data, &u);
++                     }
++                 else
++                    /* Lookup suceeded, but nothing found */
++                    status = NSS_STATUS_NOTFOUND;
++                 }
++             free(fullname);
++             }
++         }
+  
+  #ifdef HONOUR_SEARCH_DOMAINS
+      if (u.count == 0 && avahi_works && !ends_with(name, ".")) {

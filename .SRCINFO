@@ -1,0 +1,19 @@
+pkgbase = nss-mdns-domainless
+	pkgdesc = glibc plugin providing host name resolution via mDNS (domainless allowed for .local)
+	pkgver = 0.10
+	pkgrel = 6
+	url = http://0pointer.de/lennart/projects/nss-mdns/
+	install = nss-mdns.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = glibc
+	provides = nss-dns=0.10-6
+	conflicts = nss-mdns
+	source = http://pkgs.fedoraproject.org/repo/pkgs/nss-mdns/nss-mdns-0.10.tar.gz/03938f17646efbb50aa70ba5f99f51d7/nss-mdns-0.10.tar.gz
+	source = search-local.patch
+	md5sums = 03938f17646efbb50aa70ba5f99f51d7
+	md5sums = c8b707747ddaeb5c8ed3859e1aa6fa15
+
+pkgname = nss-mdns-domainless
+
