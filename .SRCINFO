@@ -1,0 +1,14 @@
+pkgbase = nodejs-jasmine-runner
+	pkgdesc = Jasmine BDD utility tool and commandline runner
+	pkgver = 0.2.9
+	pkgrel = 1
+	url = http://github.com/jamescarr/jasmine-tool
+	arch = any
+	depends = nodejs
+	depends = npm
+	noextract = jasmine-runner-0.2.9.tgz
+	source = http://registry.npmjs.org/jasmine-runner/-/jasmine-runner-0.2.9.tgz
+	sha1sums = 2e21efc4529bf9ca7ec1564295c8e870a20ed623
+
+pkgname = nodejs-jasmine-runner
+
