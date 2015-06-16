@@ -1,0 +1,4 @@
+157c157
+< 		message(FATAL_ERROR "Cannot build scangui without FLTK !")
+---
+> 		message(WARNING "Cannot build scangui without FLTK !")
