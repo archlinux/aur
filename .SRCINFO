@@ -1,0 +1,16 @@
+pkgbase = perl-class-dbi-plugin-countsearch
+	pkgdesc = get COUNT(*) results from the database with search functionality
+	pkgver = 1.02
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Class-DBI-Plugin-CountSearch
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-class-dbi>=0.95
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/H/HO/HOLBROOK/Class-DBI-Plugin-CountSearch-1.02.tgz
+	md5sums = f030e7d98161a4f9c05bf53a36d9eb3b
+	sha512sums = 9e2db508809bb22caa4379feb9d76021bef2d59cb81b64fe1765635218fb34f1cc68a15af9584649f77bfa33339fa703e93623fa26c25f1314c1e093975da39a
+
+pkgname = perl-class-dbi-plugin-countsearch
+
