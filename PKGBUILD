@@ -3,7 +3,7 @@
 _pkgname=pipework
 pkgname=${_pkgname}-git
 _pkgver=0.1
-pkgver=0.1.13.16f53e6
+pkgver=0.1.123.0e149b2
 pkgrel=1
 pkgdesc="Software-Defined Networking for Linux Containers"
 arch=('i686' 'x86_64')
