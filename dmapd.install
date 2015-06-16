@@ -1,0 +1,3 @@
+post_install() {
+  chown -R daemon:daemon var/cache/dmapd &>/dev/null
+}
