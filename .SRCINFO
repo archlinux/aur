@@ -1,0 +1,16 @@
+pkgbase = perl-html-fillinform
+	pkgdesc = Populates HTML Forms with data.
+	pkgver = 2.20
+	pkgrel = 1
+	url = http://search.cpan.org/dist/HTML-FillInForm
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-html-parser>=3.26
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MA/MARKSTOS/HTML-FillInForm-2.20.tar.gz
+	md5sums = eeae1ef0fb6f7bde4e3db313c7c703a6
+	sha512sums = d00955fae1d9602ccda79e42e4a2863cb04b7070d72bdfe383b3b68ac56cf0a629bf2cbea35aaa042a379fe1c9679d7905407454d0e6c19433f6821dfbd27ebd
+
+pkgname = perl-html-fillinform
+
