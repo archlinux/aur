@@ -1,0 +1,14 @@
+pkgbase = osvr-libfunctionality-git
+	pkgdesc = A minimal library for dynamically-loaded or statically-linked functionality modules.
+	pkgver = v0.1.r12.g7d4f679
+	pkgrel = 1
+	url = https://github.com/OSVR/libfunctionality
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	makedepends = cmake
+	source = libfunctionality::git+https://github.com/OSVR/libfunctionality.git
+	md5sums = SKIP
+
+pkgname = osvr-libfunctionality-git
+
