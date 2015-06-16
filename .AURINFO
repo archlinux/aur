@@ -1,0 +1,16 @@
+pkgbase = perl-net-curl
+	pkgdesc = Perl interface for libcurl
+	pkgver = 0.35
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Net-Curl
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = curl>=7.37.0
+	depends = perl
+	source = http://search.mcpan.org/CPAN/authors/id/S/SY/SYP/Net-Curl-0.35.tar.gz
+	options = !emptydirs
+
+pkgname = perl-net-curl
+
