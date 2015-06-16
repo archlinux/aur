@@ -1,0 +1,25 @@
+pkgbase = perl-catalyst-controller-dbic-api
+	pkgdesc = Provides a DBIx::Class web service automagically
+	pkgver = 2.005001
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Catalyst-Controller-DBIC-API
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-deep>=0.104
+	checkdepends = perl-test-www-mechanize-catalyst>=0.37
+	depends = perl-cgi-expand>=2.02
+	depends = perl-catalyst-action-rest>=0
+	depends = perl-catalyst-model-dbic-schema>=0.20
+	depends = perl-catalyst-runtime>=5.90020
+	depends = perl-dbix-class>=0.08103
+	depends = perl-data-dpath-validator>=0.093411
+	depends = perl-json>=2.50
+	depends = perl-moosex-types-structured>=0.20
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AB/ABRAXXA/Catalyst-Controller-DBIC-API-2.005001.tar.gz
+	md5sums = 87902434404320e1c87c3ef81430f3c2
+	sha512sums = def4ed644b783aab2d389a42464a9b678d528fa8b319c3d7f3fcfd6492e2f84f0820774a2edb89eaf6d9cdb9462a0ef03e2a22df3ae9a4a26ca32c32a4c5a468
+
+pkgname = perl-catalyst-controller-dbic-api
+
