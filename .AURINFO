@@ -1,0 +1,10 @@
+pkgbase = ttf-droid-min
+	pkgdesc = DroidSans, DroidSans-Bold,DroidSansMono
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.droidfonts.com
+	arch = any
+	license = Apache
+
+pkgname = ttf-droid-min
+
