@@ -1,16 +1,16 @@
 pkgbase = python-jsonpickle
 	pkgdesc = Python library for serializing any arbitrary object graph into JSON.
-	pkgver = 0.7.0
+	pkgver = 0.9.2
 	pkgrel = 1
-	url = http://jsonpickle.github.io/
+	url = https://github.com/jsonpickle/jsonpickle
 	arch = i686
 	arch = x86_64
 	license = New BSD
 	depends = python>=3.1
 	provides = python-jsonpickle
 	conflicts = python-jsonpickle
-	source = https://pypi.python.org/packages/source/j/jsonpickle/jsonpickle-0.7.0.tar.gz
-	md5sums = 41418970dcc9b19f698145054fba5549
+	source = https://github.com/jsonpickle/jsonpickle/archive/v0.9.2.tar.gz
+	md5sums = e91211a4d4dfbeb431e062403e46d810
 
 pkgname = python-jsonpickle
 
