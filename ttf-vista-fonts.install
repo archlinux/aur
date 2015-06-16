@@ -1,0 +1,33 @@
+post_install() {
+  echo -n "rebuilding font cache... "
+  fc-cache /usr/share/fonts/TTF
+  mkfontscale /usr/share/fonts/TTF
+  mkfontdir /usr/share/fonts/TTF
+  echo "done."
+}
+
+post_upgrade() {
+  echo -n "rebuilding font cache... "
+  fc-cache /usr/share/fonts/TTF
+  mkfontscale /usr/share/fonts/TTF
+  mkfontdir /usr/share/fonts/TTF
+  echo "done."
+}
+
+pre_remove() {
+  /bin/true
+}
+
+# arg 1:  the old package version
+post_remove() {
+  echo -n "rebuilding font cache... "
+  fc-cache /usr/share/fonts/TTF
+  mkfontscale /usr/share/fonts/TTF
+  mkfontdir /usr/share/fonts/TTF
+  echo "done."
+}
+
+op=$1
+shift
+
+$op $*
