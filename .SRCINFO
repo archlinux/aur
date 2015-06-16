@@ -1,0 +1,19 @@
+pkgbase = perl-template-plugin-json
+	pkgdesc = Adds a .json vmethod for all TT values.
+	pkgver = 0.06
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Template-Plugin-JSON
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-use-ok
+	depends = perl-json>=2.12
+	depends = perl-moose
+	depends = perl-template-toolkit
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/N/NU/NUFFIN/Template-Plugin-JSON-0.06.tar.gz
+	md5sums = a8ea2961cad97a848741a65caad3dad9
+	sha512sums = f687434a583e638c7d06cd733376d432353a5c1628d2a5fe0f625a92b3cbe9a9e213d4a5ec42c05f9748ecd17bffd636eed89a92c12b0c1a95d7bfe48fd11d32
+
+pkgname = perl-template-plugin-json
+
