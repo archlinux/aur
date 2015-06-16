@@ -1,0 +1,32 @@
+pkgbase = perl-moosex-declare
+	pkgdesc = DEPRECATED: Declarative syntax for Moose
+	pkgver = 0.40
+	pkgrel = 1
+	url = https://metacpan.org/release/MooseX-Declare
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-moose
+	checkdepends = perl-test-fatal
+	depends = perl-devel-declare>=0.005011
+	depends = perl-list-moreutils
+	depends = perl-module-runtime
+	depends = perl-moose>=0.90
+	depends = perl-moosex-method-signatures>=0.36
+	depends = perl-moosex-role-parameterized>=0.12
+	depends = perl-moosex-types
+	depends = perl-moosex-types-structured
+	depends = perl-parse-method-signatures
+	depends = perl-sub-exporter
+	depends = perl-sub-install
+	depends = perl-aliased
+	depends = perl-namespace-autoclean>=0.09
+	depends = perl-namespace-clean>=0.11
+	depends = perl>=5.006
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Declare-0.40.tar.gz
+	md5sums = ea405ef8b2f1cedc13f8af8875dd268c
+	sha512sums = 2f6dfbfd6463821634aec7df75d045c915f794b4a541a945a65290788eac450c6359c5e21a1c61522b041ca31e6d6ad3b37ce5cc0679a656ace6d4efabe3ff04
+
+pkgname = perl-moosex-declare
+
