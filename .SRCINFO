@@ -1,0 +1,23 @@
+pkgbase = perl-perl-minimumversion
+	pkgdesc = Find a minimum required version of perl for Perl code
+	pkgver = 1.38
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Perl-MinimumVersion
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-script>=1.03
+	depends = perl-file-find-rule
+	depends = perl-file-find-rule-perl
+	depends = perl-ppi>=1.215
+	depends = perl-ppix-regexp>=0.033
+	depends = perl-params-util>=0.25
+	depends = perl-critic
+	depends = perl
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/N/NE/NEILB/Perl-MinimumVersion-1.38.tar.gz
+	md5sums = 4285a236c64b87d67f0afd14b167cde4
+	sha512sums = 4a1b5a30c1b2c82ebdd5908b667d012376372890278fb3f1a08ead300b8ce02396f511df5250123689611ad5c0b0ad2b41a4c1ebe76c33109f2226eef95c9d4f
+
+pkgname = perl-perl-minimumversion
+
