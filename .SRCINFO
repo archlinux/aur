@@ -1,0 +1,17 @@
+pkgbase = perl-html-tokeparser-simple
+	pkgdesc = Easy to use HTML::TokeParser interface
+	pkgver = 3.16
+	pkgrel = 1
+	url = http://search.cpan.org/dist/HTML-TokeParser-Simple
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-html-parser>=3.25
+	depends = perl-sub-override
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/O/OV/OVID/HTML-TokeParser-Simple-3.16.tar.gz
+	md5sums = c54b6d3a97a4d69959c912bc98c79a6e
+	sha512sums = d13487cc86af7c7e90aa5b9006b989faedd6a8e06279aaf6a0f13bad613a1672b3fa280bf8f369236033104d3c092e62efa177595cc5e5c74cb966e0b12a205a
+
+pkgname = perl-html-tokeparser-simple
+
