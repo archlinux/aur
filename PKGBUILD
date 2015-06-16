@@ -12,7 +12,7 @@ source=("http://mirror.alexiobash.com/alexiobash/project/conky-top/$pkgname-$pkg
 md5sums=('612c6548655ebdfe170c8b28da05973c')
 
 package() {
-	cd $srcdir/$pkgname-$pkgver
+	cd $srcdir/$pkgname
 	make DESTDIR=${pkgdir} install
 }
 
