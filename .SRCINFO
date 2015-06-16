@@ -1,0 +1,12 @@
+pkgbase = lateafternoon-icons
+	pkgdesc = Lateafternoon icon theme
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://manicfold.deviantart.com/art/LateAfternoon-444389530
+	arch = any
+	license = CC BY-NC 3.0
+	source = http://esclapion.free.fr/AUR/LateAfternoon-1.1.tar.gz
+	md5sums = 217325bf85a111bd4c5ad1336520e3f1
+
+pkgname = lateafternoon-icons
+
