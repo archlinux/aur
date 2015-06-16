@@ -1,0 +1,16 @@
+pkgbase = perl-ipc-run3
+	pkgdesc = run a subprocess with input/ouput redirection
+	pkgver = 0.048
+	pkgrel = 1
+	url = http://search.cpan.org/dist/IPC-Run3
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/IPC-Run3-0.048.tar.gz
+	md5sums = 5a8cec571c51a118b265cf6e24e55761
+	sha512sums = 50432850d8dccd2e59aa6684d34f3e3242fd7df3eb4d9a5eb02dae389aa46b5fd68cc54114a157c3fe99956e68e74d575ab3db5009b7bf7d5c325f1f109b1262
+
+pkgname = perl-ipc-run3
+
