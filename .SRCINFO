@@ -1,0 +1,20 @@
+pkgbase = perl-kiokudb-backend-files
+	pkgdesc = One file per object backend
+	pkgver = 0.06
+	pkgrel = 1
+	url = http://search.cpan.org/dist/KiokuDB-Backend-Files
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-tempdir
+	depends = perl-directory-transactional>=0.06
+	depends = perl-kiokudb>=0.24
+	depends = perl-moose
+	depends = perl-moosex-types-path-class
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/N/NU/NUFFIN/KiokuDB-Backend-Files-0.06.tar.gz
+	md5sums = ebda2d19551febae41f6755d3676f49b
+	sha512sums = e4da4d719cd2d5552989830f8e7db0e5adbadc119c2ba2234b4f794e048a9673e7d918816618346789be1109f275b55f38604b41e901ade2f0838b418f4c13ce
+
+pkgname = perl-kiokudb-backend-files
+
