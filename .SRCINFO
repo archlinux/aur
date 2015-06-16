@@ -1,0 +1,13 @@
+pkgbase = imp
+	pkgdesc = A simple command-line image manipulation program
+	pkgver = 1.3.0
+	pkgrel = 2
+	url = http://jangler.info/code/imp
+	arch = any
+	license = MIT
+	makedepends = go
+	source = https://github.com/jangler/imp/archive/1.3.0.tar.gz
+	sha256sums = 154b1c0f6c361de13325ca10956a7ad6f74eb2f03c12a044f128550382762274
+
+pkgname = imp
+
