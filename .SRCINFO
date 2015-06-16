@@ -1,0 +1,16 @@
+pkgbase = perl-crypt-urandom
+	pkgdesc = Provide non blocking randomness
+	pkgver = 0.34
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Crypt-URandom
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/D/DD/DDICK/Crypt-URandom-0.34.tar.gz
+	md5sums = d8f1bed6d188a1e1898a14c55db7617c
+	sha512sums = 02ac4e8e91136fd8c594d3a71cd805b85b9e0706b359e31ad55603763453cccc3ca6fbef1f2a413ae76dd079ab3d50332c43edc7efefb0851cac812e29cce412
+
+pkgname = perl-crypt-urandom
+
