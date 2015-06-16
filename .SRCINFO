@@ -1,0 +1,17 @@
+pkgbase = perl-file-dirwalk
+	pkgdesc = walk through a directory tree and run callbacks on files, symlinks and directories.
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://search.cpan.org/dist/File-DirWalk
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-exception>=0.27
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JE/JENSL/File-DirWalk-0.5.tar.gz
+	md5sums = fe7691c3d81dfd9fdbf94e6b489cde1e
+	sha512sums = 7f5329725035b7ae70ead89c25e01d026a16a30a02919570c533f22261791d511577e100684cc3099698cbba4e5809f0edba3520f6d70d007450ab7a0dafad8f
+
+pkgname = perl-file-dirwalk
+
