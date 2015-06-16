@@ -1,0 +1,17 @@
+pkgbase = perl-input-validator
+	pkgdesc = Input Validator
+	pkgver = 0.001005
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Input-Validator
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-class-load
+	depends = perl-string-camelcase
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/V/VT/VTI/Input-Validator-0.001005.tar.gz
+	md5sums = 0e70625bb34cb4c9b419109a6b226470
+	sha512sums = 91a0fb6efa1ebef19c7de9b3fcf5d725787662856d656ed20aa180fe30ce42dc471ea1fe28010e92739e06ee1c085c02fae97bff6c876816ade63edf8aac2cac
+
+pkgname = perl-input-validator
+
