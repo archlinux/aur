@@ -1,0 +1,21 @@
+pkgbase = perl-catalyst-plugin-cache-http
+	pkgdesc = HTTP/1.1 cache validators for Catalyst
+	pkgver = 0.001000
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Catalyst-Plugin-Cache-HTTP
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-catalyst-runtime
+	makedepends = perl-http-message
+	makedepends = perl-test-use-ok
+	makedepends = perl-test-www-mechanize-catalyst
+	depends = perl-class-accessor
+	depends = perl-mro-compat
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GR/GRAF/Catalyst-Plugin-Cache-HTTP-0.001000.tar.gz
+	md5sums = d94127a5a3c8ac6dcb9efcc6fd7591a9
+	sha512sums = f8ef947921a736a43f2e18ea085f85ecc7acc20d4a7fb68987deb375355ca6a87ad79849d22fd216ad0193444c9b3a74367052290b8ffdcfcdf2e6450992e831
+
+pkgname = perl-catalyst-plugin-cache-http
+
