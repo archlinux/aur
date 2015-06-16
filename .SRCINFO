@@ -1,0 +1,16 @@
+pkgbase = perl-lingua-stem-snowball-da
+	pkgdesc = Porters stemming algorithm for Denmark
+	pkgver = 1.01
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Lingua-Stem-Snowball-Da
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CI/CINE/Lingua-Stem-Snowball-Da-1.01.tar.gz
+	md5sums = e8d9a8285bce0c9e4bedc138cd6a1501
+	sha512sums = dc0d199640417e6c9f0e6bfaa175ae64e288a4879047d4e13060eaadad20fa9590421535a6097aebb3ca1dcc4f2c9ce5a08a6566a0f651c59d57dca169ada7fe
+
+pkgname = perl-lingua-stem-snowball-da
+
