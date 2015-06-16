@@ -1,0 +1,19 @@
+pkgbase = openmprtl-svn
+	pkgdesc = Intel(R) OpenMP* Runtime Library
+	pkgver = r239801
+	pkgrel = 1
+	url = http://openmp.llvm.org/
+	arch = x86_64
+	arch = i686
+	license = MIT
+	license = custom:UIUC
+	makedepends = gcc>=4.6.2
+	makedepends = subversion
+	depends = glibc
+	provides = openmprtl
+	conflicts = openmprtl
+	source = openmp::svn+http://llvm.org/svn/llvm-project/openmp/trunk
+	md5sums = SKIP
+
+pkgname = openmprtl-svn
+
