@@ -7,7 +7,6 @@ pkgdesc="Specialised Bitcoin wallet that uses the advanced smart contracts featu
 arch=('i686' 'x86_64')
 url="https://www.vinumeris.com/lighthouse"
 license=('APACHE')
-provides=('lighthouse')
 conflicts=('lighthouse-git')
 source_x86_64=("https://s3-eu-west-1.amazonaws.com/vinumeris/lighthouse/lighthouse-64bit.deb")
 source_i686=("https://s3-eu-west-1.amazonaws.com/vinumeris/lighthouse/lighthouse-32bit.deb")
