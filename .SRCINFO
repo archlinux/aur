@@ -1,0 +1,16 @@
+pkgbase = perl-validate-tiny
+	pkgdesc = Minimalistic data validation
+	pkgver = 0.984
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Validate-Tiny
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-list-moreutils
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MINIMAL/Validate-Tiny-0.984.tar.gz
+	md5sums = 363d1de0023cc6db962ebc2e49d16538
+	sha512sums = 4eca7035316468e99ed02c97a2b2b8801a94f18db46fa535c2b0267b8fb5d780091357448f6b7b63161cff8c537e2d41c49aff3176a4c0d88db4fa0a55a54b2f
+
+pkgname = perl-validate-tiny
+
