@@ -1,0 +1,21 @@
+pkgbase = perl-catalyst-plugin-session-dynamicexpiry
+	pkgdesc = per-session custom expiry times
+	pkgver = 0.04
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Catalyst-Plugin-Session-DynamicExpiry
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-catalyst-plugin-session>=0.11
+	depends = perl-catalyst-runtime>=5.80
+	depends = perl-moose
+	depends = perl-mro-compat
+	depends = perl-namespace-autoclean
+	depends = perl-try-tiny
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/Catalyst-Plugin-Session-DynamicExpiry-0.04.tar.gz
+	md5sums = 88f15124e1deaf7a9056688059636bfb
+	sha512sums = 8ceb7d46bef80f3a59f35ff6342acff601dc90874df9f828973aa42c1428a1b488fbf7c34b67a1fa7c4882578f095ac088a79c58698b042bac7b1af3617c2db8
+
+pkgname = perl-catalyst-plugin-session-dynamicexpiry
+
