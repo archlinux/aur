@@ -1,0 +1,20 @@
+pkgbase = trainsported-git
+	pkgdesc = A game about writing train AIs.
+	pkgver = r560.f604786
+	pkgrel = 1
+	url = http://trainsportedgame.no-ip.org/
+	arch = any
+	license = custom:WTFPL
+	depends = love
+	options = !strip
+	source = run.sh
+	source = trAInsported.desktop
+	source = trAInsported.png
+	source = trainsported-git::git+https://github.com/Germanunkol/trAInsported.git#branch=master
+	md5sums = 65f1b46ffee8c96914b1f121eb2703a5
+	md5sums = 6ef33bd49969d8bcfda28a0a918f341c
+	md5sums = 5cfd991d4c8680e781176028dc3981d1
+	md5sums = SKIP
+
+pkgname = trainsported-git
+

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=trAInsported
+Comment=Programming game abou running trains with AI
+Exec=trAInsported
+Icon=trAInsported
+Terminal=false
+Categories=Games
