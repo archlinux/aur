@@ -1,0 +1,20 @@
+pkgbase = perl-dist-zilla-plugin-catalyst
+	pkgdesc = set of plugins for working with Catalyst
+	pkgver = 0.15
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Dist-Zilla-Plugin-Catalyst
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-catalyst-devel
+	depends = perl-dist-zilla
+	depends = perl-moose
+	depends = perl-namespace-autoclean
+	depends = perl-path-class
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/X/XE/XENO/Dist-Zilla-Plugin-Catalyst-0.15.tar.gz
+	md5sums = 0de59938722ef96fa02a2a88c3e78b23
+	sha512sums = 35e083e8ea614528f667c2a879607ae88b3ac972a88be9140385e01d0065604251c3b08630af20eabe886067dee4e078ecb37828bb036606b185e15b8c364e66
+
+pkgname = perl-dist-zilla-plugin-catalyst
+
