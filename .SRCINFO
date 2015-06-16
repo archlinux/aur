@@ -1,0 +1,17 @@
+pkgbase = perl-heap-simple-xs
+	pkgdesc = An XS implementation of the Heap::Simple interface
+	pkgver = 0.10
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Heap-Simple-XS
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl-heap-simple>=0.09
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TH/THOSPEL/Heap-Simple-XS-0.10.tar.gz
+	md5sums = 0611ac7984f6ddc3aaa60c75d2257803
+	sha512sums = 269840cf82c501d3d15971f3f901e36d984cc740bbb66f639e168c7bd83e4d6a9fff2c54b1041a1928dd2ea9b295864aad5920728f47ced7cc1b39cbb8cddcbf
+
+pkgname = perl-heap-simple-xs
+
