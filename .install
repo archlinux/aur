@@ -1,0 +1,14 @@
+post_install() {
+  if [ -z `getent group servicemix` ]; then
+    groupadd servicemix
+  fi
+
+  chgrp -R servicemix /etc/servicemix
+  chgrp -R servicemix /var/lib/servicemix
+  
+  printf "\n-> User must be added to 'servicemix' group in order to execute servicemix correctly.\n"
+}
+
+post_remove() {
+  groupdel servicemix 
+}
