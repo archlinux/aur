@@ -10,7 +10,7 @@ url="https://github.com/flensrocker/vdr-plugin-recsearch"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 source=("https://github.com/flensrocker/vdr-plugin-$_plugname/archive/v$pkgver.tar.gz")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 md5sums=('afd1e3d95ac0e4e1e416b8a86ae32f9a')
