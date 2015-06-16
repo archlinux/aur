@@ -1,0 +1,16 @@
+pkgbase = perl-net-iptrie
+	pkgdesc = Perl module for building IPv4 and IPv6 address space hierarchies
+	pkgver = 0.7
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Net-IPTrie
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-netaddr-ip>=4.007
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CV/CVICENTE/Net-IPTrie-0.7.tar.gz
+	md5sums = c465a27fdac74109b34dfbc271adb90d
+	sha512sums = 6f1033f078aeed7d76dfc5f7a5a55c02601205c8b3e1626ecee6205e136c3c736cfb658b4f48cd24fba5491f2cb44a793cd942752f03489f40decbf242f80aad
+
+pkgname = perl-net-iptrie
+
