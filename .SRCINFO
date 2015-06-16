@@ -1,0 +1,16 @@
+pkgbase = perl-perl6-export-attrs
+	pkgdesc = The Perl 6 'is export(...)' trait as a Perl 5 attribute
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Perl6-Export-Attrs
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DC/DCONWAY/Perl6-Export-Attrs-0.0.3.tar.gz
+	md5sums = c8af78c4fec3351178d1de59cc9c8869
+	sha512sums = f722a54c1f95a48c60151106cae8bbeeb2532d18cde1b6ac6b7f2f3d2c0232aae687c4cd79f3a7682090e300bc11e95dec4998a17aa38eac0aa2cee22eea3304
+
+pkgname = perl-perl6-export-attrs
+
