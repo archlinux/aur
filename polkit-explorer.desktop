@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Polkit-explorer
+Comment=Present PolicyKit information in a human-readable form.
+Exec=polkitex
+Icon=emblem-system
+Terminal=false
+StartupNotify=false
+Categories=System;
