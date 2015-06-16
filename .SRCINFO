@@ -1,0 +1,28 @@
+pkgbase = sphinx
+	pkgdesc = Free open-source SQL full-text search engine.
+	pkgver = 2.2.9
+	pkgrel = 1
+	url = http://www.sphinxsearch.com/
+	install = sphinx.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = unixodbc
+	depends = expat
+	depends = libmysqlclient
+	depends = postgresql-libs
+	optdepends = postgresql
+	backup = etc/conf.d/sphinx
+	source = http://sphinxsearch.com/files/sphinx-2.2.9-release.tar.gz
+	source = sphinx.conf.d
+	source = sphinx.rc.d
+	source = sphinx.service
+	source = sphinx.tmpfiles.conf
+	md5sums = 1fcc3d180c0559bdeb93602ef248caf4
+	md5sums = 48e3e1857919d26d5104a48caffb531b
+	md5sums = faaa8310af97ff1dbdaf08612e442020
+	md5sums = fe06a8aff0520a6f75596ee43d2e5935
+	md5sums = 22ec4cd0471a1d52702d57d78614b8d8
+
+pkgname = sphinx
+
