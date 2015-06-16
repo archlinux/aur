@@ -1,0 +1,20 @@
+pkgbase = perl-catalyst-plugin-session-state-cookie
+	pkgdesc = Maintain session IDs using cookies.
+	pkgver = 0.17
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Catalyst-Plugin-Session-State-Cookie
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-moose
+	depends = perl-catalyst-plugin-session>=0.27
+	depends = perl-catalyst-runtime
+	depends = perl-mro-compat
+	depends = perl-namespace-autoclean
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MS/MSTROUT/Catalyst-Plugin-Session-State-Cookie-0.17.tar.gz
+	md5sums = f2a2d43d80777ceb2687b9e682cf5c76
+	sha512sums = 29040a1b6be47152b1604d20d5adcfc38e7b23ec4ab2fa8b8897e64ae294d4a220b0ab53bad69ecc5c0b7ac2982001a032f4fd93ca3f55e1588d4e5ab3721ddc
+
+pkgname = perl-catalyst-plugin-session-state-cookie
+
