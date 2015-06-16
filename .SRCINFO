@@ -1,0 +1,15 @@
+pkgbase = deadbeef-plugins-dvar-svn
+	pkgdesc = ddb vfs archive reader plugin for deadbeef, provides gzip, 7z and rar support
+	pkgver = 8
+	pkgrel = 4
+	url = https://www.assembla.com/code/deadbeef_vfs_archive_reader/subversion/nodes
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	depends = deadbeef
+	source = deadbeef_vfs_archive_reader::svn+https://subversion.assembla.com/svn/deadbeef_vfs_archive_reader/trunk/src
+	md5sums = SKIP
+
+pkgname = deadbeef-plugins-dvar-svn
+
