@@ -1,0 +1,18 @@
+pkgbase = qlogout
+	pkgdesc = Logout application intended for lxqt
+	pkgver = 1.0
+	pkgrel = 2
+	url = https://forum.manjaro.org/index.php?topic=15538.msg144265#msg144265
+	install = 
+	changelog = 
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = qtchooser
+	depends = qt4
+	provides = qlogout
+	conflicts = qtlogout
+	source = http://esclapion.free.fr/AUR/qlogout-1.0.tar.gz
+
+pkgname = qlogout
+
