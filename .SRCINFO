@@ -1,0 +1,38 @@
+pkgbase = perl-git-cpan-patch
+	pkgdesc = Patch CPAN modules using Git
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Git-CPAN-Patch
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-mockobject
+	depends = perl-archive-any
+	depends = perl-archive-extract
+	depends = perl-backpan-index
+	depends = perl-class
+	depends = perl-cpan-parsedistribution
+	depends = perl-cpanplus
+	depends = perl-datetime
+	depends = perl-file-chdir
+	depends = perl-file-chmod
+	depends = perl-git-repository
+	depends = perl-git-repository-plugin-autoload
+	depends = perl-list-pairwise
+	depends = perl-metacpan-api
+	depends = perl-method-signatures-simple>=1.07
+	depends = perl-moose
+	depends = perl-moosex-app>=1.21
+	depends = perl-moosex-role-tempdir
+	depends = perl-moosex-semiaffordanceaccessor
+	depends = perl-path-class
+	depends = perl-libwww
+	depends = perl>=5.10.1
+	depends = git
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/Y/YA/YANICK/Git-CPAN-Patch-2.0.3.tar.gz
+	md5sums = 38fd1c6a78c0e3f090ddd90b9d374e48
+	sha512sums = 951eaba4f3940795041265515fa610d40f172477086c5cb930732b2d126cf9fb9f6657814b3535d5ef1017e1403340e97aac7a2349c7bad9cd3b8f11589a9865
+
+pkgname = perl-git-cpan-patch
+
