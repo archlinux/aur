@@ -1,0 +1,17 @@
+pkgbase = python2-eve-git
+	pkgdesc = An open source Python REST API framework designed for human beings.
+	pkgver = 0.5.r176.g53107c9
+	pkgrel = 1
+	url = http://python-eve.org/
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python2-setuptools
+	provides = python2-eve
+	conflicts = python2-eve
+	options = !emptydirs
+	source = git+https://github.com/nicolaiarocci/eve.git
+	sha256sums = SKIP
+
+pkgname = python2-eve-git
+
