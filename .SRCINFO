@@ -1,0 +1,35 @@
+pkgbase = miro
+	pkgdesc = The free and open source internet TV platform
+	pkgver = 6.0
+	pkgrel = 1
+	url = http://www.getmiro.com
+	install = miro.install
+	arch = any
+	license = GPL2
+	makedepends = boost
+	depends = python2-dbus
+	depends = pyrex
+	depends = pygtk
+	depends = gstreamer0.10
+	depends = python2-gconf
+	depends = python2-pysqlite-legacy
+	depends = pywebkitgtk
+	depends = shared-mime-info
+	depends = desktop-file-utils
+	depends = gstreamer0.10
+	depends = hicolor-icon-theme
+	depends = gstreamer0.10-python
+	depends = python2-notify
+	depends = libtorrent-rasterbar
+	depends = gstreamer0.10-base-plugins
+	depends = gstreamer0.10-good-plugins
+	depends = python2-pycurl
+	depends = gstreamer0.10-ffmpeg
+	depends = ffmpeg
+	depends = mutagen
+	depends = xdg-utils
+	source = http://ftp.osuosl.org/pub/pculture.org/miro/src/miro-6.0.tar.gz
+	sha256sums = 558d194278fe5d602ba4d5d6737035b150e907c57da3344afa2ec462062f026b
+
+pkgname = miro
+
