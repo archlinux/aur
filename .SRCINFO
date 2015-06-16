@@ -1,0 +1,19 @@
+pkgbase = azsmrc
+	pkgdesc = Remote control for Azureus/Vuze. You must have the plugin enabled in Azureus/Vuze to use this on a remote host.
+	pkgver = 1.0.0
+	pkgrel = 4
+	url = http://azsmrc.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = unzip
+	depends = java-environment
+	source = http://downloads.sourceforge.net/azsmrc/AzSMRC_1.0.0.zip
+	source = azsmrc.desktop
+	source = azsmrc
+	md5sums = 0f8a98ea8ad313074c2c4fd1d449e5e4
+	md5sums = 6eded06bf3b4095ba0b230d011e61e59
+	md5sums = 439484e023c44ae948c566404629f97b
+
+pkgname = azsmrc
+
