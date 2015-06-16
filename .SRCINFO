@@ -1,0 +1,17 @@
+pkgbase = perl-syntax
+	pkgdesc = Activate syntax extensions
+	pkgver = 0.004
+	pkgrel = 1
+	url = http://search.cpan.org/dist/syntax
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-data-optlist>=0.104
+	depends = perl-namespace-clean
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PH/PHAYLON/syntax-0.004.tar.gz
+	md5sums = 2bbeda572f7858b8c33bdf3ddf35b390
+	sha512sums = eb9e66027d626d3ac9d371f0f3b59d50b7d7e00ccf0b7af986f60b51f7a879cfd330ec4ca07bab28f5d2eef94171b65b9418b05a4ba28b4b77ab15b4bf2ef2ff
+
+pkgname = perl-syntax
+
