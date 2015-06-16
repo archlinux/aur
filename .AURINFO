@@ -1,0 +1,36 @@
+pkgbase = perl-net-twitter
+	pkgdesc = A perl interface to the Twitter API
+	pkgver = 4.01004
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Net-Twitter
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-fatal
+	checkdepends = perl-test-warn
+	makedepends = perl-libwww
+	depends = perl-carp-clan
+	depends = perl-class-load
+	depends = perl-data-visitor
+	depends = perl-datetime
+	depends = perl-datetime-format-strptime
+	depends = perl-devel-stacktrace
+	depends = perl-html-parser
+	depends = perl-http-message
+	depends = perl-json
+	depends = perl-lwp-protocol-https
+	depends = perl-moose
+	depends = perl-moosex-role-parameterized
+	depends = perl-net-http
+	depends = perl-net-oauth
+	depends = perl-try-tiny
+	depends = perl-uri
+	depends = perl-namespace-autoclean
+	depends = perl>=5.8.1
+	conflicts = perl-net-http=6.04
+	conflicts = perl-net-http=6.05
+	source = http://search.mcpan.org/CPAN/authors/id/M/MM/MMIMS/Net-Twitter-4.01004.tar.gz
+	options = !emptydirs
+
+pkgname = perl-net-twitter
+
