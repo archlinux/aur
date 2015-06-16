@@ -1,0 +1,24 @@
+pkgbase = perl-html-widget
+	pkgdesc = HTML Widget And Validation Framework
+	pkgver = 1.11
+	pkgrel = 1
+	url = http://search.cpan.org/dist/HTML-Widget
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-nowarnings
+	depends = perl-class-accessor
+	depends = perl-class-accessor-chained
+	depends = perl-class-data-accessor
+	depends = perl-date-calc
+	depends = perl-email-valid
+	depends = perl-html-scrubber
+	depends = perl-html-tree
+	depends = perl-module-pluggable-fast
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CF/CFRANKS/HTML-Widget-1.11.tar.gz
+	md5sums = 62f582be030a322b225ced8f03012905
+	sha512sums = 60ce8cca8e9467b206fda1b54df4dfb6f380ff171bc492b0a2dde391a0d118706f69fe5e1b512244ef088b82e46c06ba839c0a7762287da909498cc79421e469
+
+pkgname = perl-html-widget
+
