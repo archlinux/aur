@@ -1,0 +1,16 @@
+pkgbase = perl-mp3-find
+	pkgdesc = Search and sort MP3 files based on their ID3 tags
+	pkgver = 0.07
+	pkgrel = 1
+	url = http://search.cpan.org/dist/MP3-Find
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-mp3-info
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PE/PEICHMAN/MP3-Find-0.07.tar.gz
+	md5sums = 37bdd33c4654a3e19d8cffa22d171b69
+	sha512sums = cc931c99448287aaa028825c6f46d38c8dce9cd5ebdc06992af6a2a0b918a52384da87dd0de56489b40900fab05b470152c528421b6c773072bf1b84ea1d2f94
+
+pkgname = perl-mp3-find
+
