@@ -1,0 +1,17 @@
+pkgbase = perl-datetime-format-http
+	pkgdesc = Date conversion routines
+	pkgver = 0.40
+	pkgrel = 1
+	url = http://search.cpan.org/dist/DateTime-Format-HTTP
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-datetime>=0.17
+	depends = perl-http-date>=1.44
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CK/CKRAS/DateTime-Format-HTTP-0.40.tar.gz
+	md5sums = dac502bc95a4c034ce03dcec7941b308
+	sha512sums = 1884f692e0c8d40ce5dc1786131094d2064270fb1d1e32df3bf8bedaa4ac863f53688ec53e95260a48cd20e878a77af5952eb0d6f03ccd09b4a14d024f7167a0
+
+pkgname = perl-datetime-format-http
+
