@@ -1,0 +1,16 @@
+pkgbase = perl-class-xpath
+	pkgdesc = adds xpath matching to object trees
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Class-XPath
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SA/SAMTREGAR/Class-XPath-1.4.tar.gz
+	md5sums = 22ff3d2536027f3a9f59c6eb849fa610
+	sha512sums = 27cc62d8490c7f0ccb99ade0c3d229a0854540be248acab0f295ef64fdc50898cbfbdcded8a57b68e8b05adaa030265e2816cd49a060062a31620fd61c373a15
+
+pkgname = perl-class-xpath
+
