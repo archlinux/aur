@@ -1,0 +1,24 @@
+pkgbase = python2-pygame-sdl2-git
+	pkgdesc = A new, SDL2-based implementation of the Pygame API (dev channel)
+	pkgver = 219.4babc4e
+	pkgrel = 1
+	url = https://github.com/renpy/pygame_sdl2
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	license = zlib
+	makedepends = git
+	depends = sdl2
+	depends = sdl2_gfx
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = sdl2_ttf
+	provides = python2-pygame-sdl2
+	conflicts = python2-pygame-sdl2
+	source = git://github.com/renpy/pygame_sdl2.git
+	source = cython.patch
+	md5sums = SKIP
+	md5sums = 5d3aee6b640b5e58bf98442eb443eef3
+
+pkgname = python2-pygame-sdl2-git
+

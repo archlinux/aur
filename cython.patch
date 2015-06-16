@@ -1,0 +1,11 @@
+--- setuplib.py	2015-04-05 18:19:36.869928443 +0800
++++ setuplib.py.cur	2015-04-05 18:20:58.253259520 +0800
+@@ -26,7 +26,7 @@
+ import distutils.core
+ 
+ # The cython command.
+-cython_command = "cython"
++cython_command = "cython2"
+ 
+ # The include and library dirs that we compile against.
+ include_dirs = [ ".", "src" ]
