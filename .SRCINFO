@@ -1,0 +1,16 @@
+pkgbase = perl-file-stat-bits
+	pkgdesc = stat(2) bit mask constants
+	pkgver = 1.01
+	pkgrel = 1
+	url = http://search.cpan.org/dist/File-Stat-Bits
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/F/FE/FEDOROV/File-Stat-Bits-1.01.tar.gz
+	md5sums = 9c726b544895267e3e97f09e64793afe
+	sha512sums = 8f9f22e4677baa9b996c0b6228bfd41cfa983b9a6581fc96473c2f3d3e0c79894f31ecb44cb2c371b45be2afcc08f71c9f40d1e15c2f6655b48ef208b33d1218
+
+pkgname = perl-file-stat-bits
+
