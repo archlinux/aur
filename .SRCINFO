@@ -1,0 +1,18 @@
+pkgbase = perl-log-dispatch-config
+	pkgdesc = Log4j for Perl
+	pkgver = 1.04
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Log-Dispatch-Config
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-appconfig>=1.52
+	depends = perl-io-stringy
+	depends = perl-log-dispatch>=2
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Log-Dispatch-Config-1.04.tar.gz
+	md5sums = ac6f91b838743adb3a47cb09bf8defe5
+	sha512sums = 827b767806b206f244955f8f57b7206f84aac75012ec6443fb0c427e0fb0e52cad112cc012bd5c43a1e4a82d9fd49adb7bd024130579754dbe0ad4a2218460ef
+
+pkgname = perl-log-dispatch-config
+
