@@ -1,0 +1,17 @@
+pkgbase = perl-digest-gost
+	pkgdesc = Perl interface to the GOST R 34.11-94 digest algorithm
+	pkgver = 0.06
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Digest-GOST
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GR/GRAY/Digest-GOST-0.06.tar.gz
+	md5sums = d91904e56300d08956ea5f1e174863f3
+	sha512sums = 7df9e5ce9cdc72da417207d197ae41e80ff4405d5fef1f6279a6043708b7688f4ca25c9d634b83a93be633b3ce7e672f6a697bfcc5ffa956379f9375f995e94e
+
+pkgname = perl-digest-gost
+
