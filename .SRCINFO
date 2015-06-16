@@ -1,0 +1,16 @@
+pkgbase = perl-uri-ws
+	pkgdesc = WebSocket support for URI package
+	pkgver = 0.03
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/URI-ws
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-uri
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/P/PL/PLICEASE/URI-ws-0.03.tar.gz
+	md5sums = 00d9aad6c4ac0234a06fd5f953cf056e
+	sha512sums = 138f6605a4cf83d90a2b0b4238ee5112e8b3aa422fa9cdfc98e7d99767c1993200cd4a2487bae982c1adfd0e8574cc866249166ab64afdb2b7631ca220c0fa5a
+
+pkgname = perl-uri-ws
+
