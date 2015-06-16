@@ -1,0 +1,16 @@
+pkgbase = perl-data-validate
+	pkgdesc = common data validation methods
+	pkgver = 0.08
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Data-Validate
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SO/SONNEN/Data-Validate-0.08.tar.gz
+	md5sums = 2ca2c8d5750b5a0725f6b483442e6bc7
+	sha512sums = 869d41dcbb8e97726317076a44836113db1861d825a592e0a6afac0041e5407b9d89a0145caf1ab21404539244081e84de5be1b3043fc169ee07a7098a715031
+
+pkgname = perl-data-validate
+
