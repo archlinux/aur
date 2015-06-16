@@ -1,0 +1,16 @@
+pkgbase = perl-term-readline-perl
+	pkgdesc = Pure Perl Term::Readline
+	pkgver = 1.0303
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Term-ReadLine-Perl
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/I/IL/ILYAZ/modules/Term-ReadLine-Perl-1.0303.tar.gz
+	md5sums = a77ecf4921cc714820fef898c6cb0eaf
+	sha512sums = df6a9f4ff2e02b0b0bc6b990fc2be091be7609322476f74bb6628148543804e30ac44ded991e7f8655bb25ecedf8e53497be6d0ce80b395edce35b9d84ad7937
+
+pkgname = perl-term-readline-perl
+
