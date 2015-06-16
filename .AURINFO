@@ -1,0 +1,36 @@
+pkgbase = perl-html-formhandler
+	pkgdesc = HTML forms using Moose
+	pkgver = 0.40057
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/HTML-FormHandler
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-differences
+	checkdepends = perl-test-exception
+	checkdepends = perl-test-memory-cycle>=1.04
+	depends = perl-class-load>=0.06
+	depends = perl-data-clone
+	depends = perl-datetime
+	depends = perl-datetime-format-strptime
+	depends = perl-email-valid
+	depends = perl-file-sharedir
+	depends = perl-html-tree
+	depends = perl-json
+	depends = perl-list-allutils>=0.07
+	depends = perl-moose>=2.0007
+	depends = perl-moosex-getopt>=0.16
+	depends = perl-moosex-types>=0.20
+	depends = perl-moosex-types-common
+	depends = perl-moosex-types-loadableclass>=0.006
+	depends = perl-padwalker
+	depends = perl-sub-exporter
+	depends = perl-sub-name
+	depends = perl-try-tiny
+	depends = perl-aliased
+	depends = perl-namespace-autoclean>=0.09
+	source = http://search.mcpan.org/CPAN/authors/id/G/GS/GSHANK/HTML-FormHandler-0.40057.tar.gz
+	options = !emptydirs
+
+pkgname = perl-html-formhandler
+
