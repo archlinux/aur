@@ -4,7 +4,7 @@
 
 _pkgname=vokoscreen
 pkgname=${_pkgname}-git
-pkgver=2.3.7.beta.r2.ge9b290c
+pkgver=2.4.1.beta.r0.g41784d9
 pkgrel=1
 pkgdesc='An easy to use screencast creator. Qt5 UI. Development version.'
 arch=('i686' 'x86_64')
@@ -22,12 +22,10 @@ conflicts=("${_pkgname}")
 source=(
 	"git+https://github.com/vkohaupt/${_pkgname}.git"
 	'desktop_file.patch'
-	'qvkscreenkey_fix.patch'
 )
 sha512sums=(
 	'SKIP'
 	'3ddc567f831b9f6e2672997a77a099cf8fdd5a6a1d79157738c1670c9106fd6c4e09d74287a770c19bac23dcb73a19ce69cc1ac893d4988f75c7ac35668f7a90'
-	'7d2a00b13e1a5cada5bc7bf8f701ae2c9437706e84be354a245ac6942d4b0480a330b29c9321d20f0fa45d262a8bad57521031e9f46292e51cc0b613c8966bf8'
 )
 
 pkgver() {
@@ -44,10 +42,6 @@ prepare() {
 	# Patching *.desktop file
 	cd ${srcdir}/${_pkgname}
 	patch ./applications/${_pkgname}.desktop ../desktop_file.patch
-	
-	# Fix QvkScreenkey.h
-	# https://forum.qt.io/topic/41817/expected-unqualified-id-before-int-with-qt5-3-only-for-bool-signal-and-slot/2
-	patch ./screenkey/QvkScreenkey.h ../qvkscreenkey_fix.patch
 
 	# Create build directory
 	mkdir -p ${srcdir}/build
