@@ -1,7 +1,7 @@
 pkgbase = rust-gnome-git
 	pkgdesc = Rust bindings and wrappers for gnome libraries
-	pkgver = r902.caf1a79
-	pkgrel = 2
+	pkgver = r904.170b6ca
+	pkgrel = 3
 	url = https://github.com/rust-gnome
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = rust-gnome-git
 	makedepends = cargo
 	makedepends = gtk3
 	makedepends = glib2
-	depends = rust
 	depends = gtk3
 	depends = glib2
 	options = !strip
