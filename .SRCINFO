@@ -1,0 +1,16 @@
+pkgbase = perl-template-plugin-stash
+	pkgdesc = expose the stash, ideal for Dumpering...
+	pkgver = 1.006
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Template-Plugin-Stash
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-template-toolkit
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PO/PODMASTER/Template-Plugin-Stash-1.006.tar.gz
+	md5sums = 8c640985f5b36a30a5af4cd5ab455b97
+	sha512sums = 156e155ce7b571656f96099580c6cf876d6743c75621b71bf63a2855d448394d845b4fa69e20ed98192e914fd6093ced03c30253f1dc69b4c08288c6ccb87d56
+
+pkgname = perl-template-plugin-stash
+
