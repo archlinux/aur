@@ -1,0 +1,14 @@
+pkgbase = onetime
+	pkgdesc = an open source encrpyiont program that uses the one-time pad method.
+	pkgver = 1.81
+	pkgrel = 2
+	url = http://red-bean.com/onetime/
+	arch = any
+	license = MIT
+	depends = python2
+	provides = onetime
+	source = http://red-bean.com/onetime/onetime-1.81.tar.gz
+	sha256sums = 36a83a83ac9f4018278bf48e868af00f3326b853229fae7e43b38d167e628348
+
+pkgname = onetime
+
