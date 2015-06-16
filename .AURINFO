@@ -1,0 +1,14 @@
+pkgbase = ttf-mac-fonts
+	pkgdesc = Mac fonts including Lucida Grande, Apple Garamond and other fonts from Apple
+	pkgver = 1
+	pkgrel = 7
+	url = http://www.apple.com/safari/
+	install = ttf-mac-fonts.install
+	arch = any
+	license = custom
+	makedepends = subversion
+	makedepends = wget
+	conflicts = macfonts
+
+pkgname = ttf-mac-fonts
+
