@@ -1,0 +1,15 @@
+pkgbase = python2-mcrypt
+	pkgdesc = A comprehensive Python interface to the mcrypt library, which is a library providing a uniform interface to several symmetric encryption algorithms.
+	pkgver = 1.1
+	pkgrel = 2
+	url = http://labix.org/python-mcrypt
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = libmcrypt
+	depends = python2
+	source = http://labix.org/download/python-mcrypt/python-mcrypt-1.1.tar.gz
+	md5sums = 0e9f7cc17545af6b51188b38984fe034
+
+pkgname = python2-mcrypt
+
