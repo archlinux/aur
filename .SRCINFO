@@ -1,0 +1,16 @@
+pkgbase = perl-cgi-application-plugin-redirect
+	pkgdesc = Easy external redirects in CGI::Application
+	pkgver = 1.00
+	pkgrel = 1
+	url = http://search.cpan.org/dist/CGI-Application-Plugin-Redirect
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-cgi-application
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CE/CEESHEK/CGI-Application-Plugin-Redirect-1.00.tar.gz
+	md5sums = 138a1532ea01eb558af768bafa4283c4
+	sha512sums = 7af14c87e0aa36dd78fdf6d669f07f4305a5f3ed4a3a5ccb586dc11a111ed16986e374463c73b293069751d46f1b400d4ae8cfa7072c4c82d52c480e079b12e5
+
+pkgname = perl-cgi-application-plugin-redirect
+
