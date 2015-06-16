@@ -1,0 +1,26 @@
+pkgbase = perl-xml-feed
+	pkgdesc = Syndication feed parser and auto-discovery
+	pkgver = 0.52
+	pkgrel = 1
+	url = http://search.cpan.org/dist/XML-Feed
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-class-errorhandler
+	depends = perl-datetime
+	depends = perl-datetime-format-mail
+	depends = perl-datetime-format-w3cdtf
+	depends = perl-feed-find
+	depends = perl-html-parser
+	depends = perl-libwww
+	depends = perl-uri-fetch
+	depends = perl-xml-atom>=0.38
+	depends = perl-xml-libxml>=1.66
+	depends = perl-xml-rss>=1.47
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DA/DAVECROSS/XML-Feed-0.52.tar.gz
+	md5sums = 9ab88ee2e65bfaa10da4edd626c7e8cb
+	sha512sums = 47416579ddef2d1f21a16662bed1a11a80fce865cc680df78e65b8d0ded66e45f05edbe44ca8bfe6d94c4f5590eda7358c36082be3d8e116f888bb563240dabe
+
+pkgname = perl-xml-feed
+
