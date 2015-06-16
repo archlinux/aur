@@ -1,0 +1,16 @@
+pkgbase = perl-config-crontab
+	pkgdesc = Read/Write Vixie compatible crontab(5) files
+	pkgver = 1.33
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Config-Crontab
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SC/SCOTTW/Config-Crontab-1.33.tar.gz
+	md5sums = d53d47477a7d044b0cf6d54e21aa0215
+	sha512sums = 2545449a30cf575c89bb8e45d199a98042f5cb3bb91117ddb3d8f9c9d1b6e609fde96eca06d3866c3f12a3d438b093df34a7e87a68056bd05c58892dfcf2927a
+
+pkgname = perl-config-crontab
+
