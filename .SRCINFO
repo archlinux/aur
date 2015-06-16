@@ -1,0 +1,23 @@
+pkgbase = perl-lingua-stem
+	pkgdesc = Stemming of words in various languages
+	pkgver = 0.84
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Lingua-Stem
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-lingua-pt-stemmer
+	depends = perl-lingua-stem-fr>=0.02
+	depends = perl-lingua-stem-it
+	depends = perl-lingua-stem-ru
+	depends = perl-lingua-stem-snowball-da>=1.01
+	depends = perl-snowball-norwegian
+	depends = perl-snowball-swedish
+	depends = perl-text-german
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SN/SNOWHARE/Lingua-Stem-0.84.tar.gz
+	md5sums = a236b5d85ac49f84aad447c1383ad2de
+	sha512sums = 9806ef6bf9df8f71fa2c7500f5575560f7be733c8e859a34cfedf8eadb7333d549d76989313dc14b6760f79c0ca0e0f61fe69819ee04cedc5d3b58414ce06388
+
+pkgname = perl-lingua-stem
+
