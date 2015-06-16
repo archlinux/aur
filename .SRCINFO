@@ -1,0 +1,16 @@
+pkgbase = belooted
+	pkgdesc = Belote, a fun GTK card game playing against computer
+	pkgver = 0.1.4.1
+	pkgrel = 1
+	url = http://boby.joe.free.fr/dev/belooted/files/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gnome-common
+	makedepends = intltool
+	depends = gtk2
+	source = http://boby.joe.free.fr/dev/belooted/files/belooted-0.1.4.1.tar.gz
+	md5sums = 311e1f7a6c5b92232f591092d08b9425
+
+pkgname = belooted
+
