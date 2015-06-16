@@ -1,0 +1,16 @@
+pkgbase = perl-heap-simple-perl
+	pkgdesc = A pure perl implementation of the Heap::Simple interface
+	pkgver = 0.14
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Heap-Simple-Perl
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-heap-simple>=0.09
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TH/THOSPEL/Heap-Simple-Perl-0.14.tar.gz
+	md5sums = a2723ab28b7fcb35131037525a5b2f93
+	sha512sums = 806f941d00cde98f1c0352965cce36350527b1f9c40eff97e41b4716cc727f0fffb9f1dbbb95f961d00b6ed95d2fd3ab9cf4af299fcc61be9b338f9b247d2489
+
+pkgname = perl-heap-simple-perl
+
