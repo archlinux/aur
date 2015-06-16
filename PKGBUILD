@@ -1,27 +1,28 @@
 # Maintainer: Martin Kostolný <clearmartin at zoho dot com>
 
 pkgname=plasma5-applets-weather-widget-git
-_pkgname=plasma-applet-weather-widget
+_pkgname=plasma5-applets-weather-widget
+_gitpkgname=plasma-applet-weather-widget
 pkgver=r15.6241400
 pkgrel=1
 pkgdesc="Plasmoid for Plasma 5. Shows weather information from yr.no server."
 arch=('any')
-url="https://github.com/kotelnik/$_pkgname"
+url="https://github.com/kotelnik/$_gitpkgname"
 license=('GPL')
 depends=('plasma-workspace' 'qt5-graphicaleffects')
 makedepends=('git' 'extra-cmake-modules')
-conflicts=("${pkgname%-*}")
-provides=("${pkgname%-*}")
-source=("git://github.com/kotelnik/$_pkgname.git")
+conflicts=("${_pkgname-*}")
+provides=("${_pkgname-*}")
+source=("git://github.com/kotelnik/$_gitpkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
+  cd "${_gitpkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${_pkgname}"
+  cd "${_gitpkgname}"
   
   mkdir -p build
   cd build
@@ -35,7 +36,7 @@ build() {
 }
 
 package() {
-  cd "${_pkgname}"/build
+  cd "${_gitpkgname}"/build
   
   make install DESTDIR="${pkgdir}"
 }
