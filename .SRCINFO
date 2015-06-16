@@ -2,14 +2,14 @@ pkgbase = perl-uri-find
 	pkgdesc = Find URIs in plain text
 	pkgver = 20140709
 	pkgrel = 2
-	url = http://search.cpan.org/dist/URI-Find
+	url = http://metacpan.org/pod/URI::Find
 	arch = any
 	license = PerlArtistic
 	license = GPL
 	depends = perl
 	depends = perl-uri>=1.00
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/M/MS/MSCHWERN/URI-Find-20140709.tar.gz
+	source = http://cpan.metacpan.org/authors/id/M/MS/MSCHWERN/URI-Find-20140709.tar.gz
 	md5sums = a32b1b2e6467b92ee1629f0d4da3c24c
 
 pkgname = perl-uri-find
