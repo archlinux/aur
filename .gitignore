@@ -1,0 +1,4 @@
+*.tar.xz
+uprofiler/*
+pkg/*
+src/*

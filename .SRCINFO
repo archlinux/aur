@@ -1,0 +1,19 @@
+pkgbase = php-uprofiler-git
+	pkgdesc = A passive hierarchichal profiler for PHP.
+	pkgver = r117.483c1e5
+	pkgrel = 1
+	url = https://github.com/FriendsOfPHP/uprofiler
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = make
+	makedepends = git
+	depends = php
+	provides = php-uprofiler
+	source = uprofiler::git://github.com/FriendsOfPHP/uprofiler.git
+	source = uprofiler.ini
+	sha256sums = SKIP
+	sha256sums = 1a4ae4076cef64dd8412831fc5674831c26e8e6db6aec7a7244fde96a1d63fce
+
+pkgname = php-uprofiler-git
+
