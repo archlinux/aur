@@ -1,0 +1,16 @@
+pkgbase = perl-test-time
+	pkgdesc = Overrides the time() and sleep() core functions for testing
+	pkgver = 0.04
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Test-Time
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-test-name-fromline
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SA/SATOH/Test-Time-0.04.tar.gz
+	md5sums = 006c4b2134f33d8dc98ecf545d4f8508
+	sha512sums = 99d258d8257dd858eab5f95211c8bb2c071155c63ec6af577541f7446c75c39329d249e9fd43d9d688d7c30a104953aa0b3774aec9b3ffc0fd96d1947d844c24
+
+pkgname = perl-test-time
+
