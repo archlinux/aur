@@ -1,0 +1,16 @@
+pkgbase = perl-class-std-utils
+	pkgdesc = Utility subroutines for building "inside-out" objects
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Class-Std-Utils
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DM/DMUEY/Class-Std-Utils-v0.0.3.tar.gz
+	md5sums = a919348d36b254aacbabe01d82e831b6
+	sha512sums = 601a56a1b332e500283b2493ac2c46c8b7f88caeb81d771cf50848eda024464fd6b80ee7bd3b852d485001347fa939a383910fbbc2244e92b5c1b3729b0c78d3
+
+pkgname = perl-class-std-utils
+
