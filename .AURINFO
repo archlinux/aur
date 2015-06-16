@@ -1,0 +1,20 @@
+pkgbase = perl-catalyst-controller-actionrole
+	pkgdesc = Apply roles to action instances (DEPRECATED)
+	pkgver = 0.16
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Catalyst-Controller-ActionRole
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-catalyst-action-rest>=0.74
+	depends = perl-catalyst-runtime
+	depends = perl-class-load
+	depends = perl-moose
+	depends = perl-moosex-types
+	depends = perl-string-rewriteprefix>=0.004
+	depends = perl-namespace-clean
+	source = http://search.mcpan.org/CPAN/authors/id/E/ET/ETHER/Catalyst-Controller-ActionRole-0.16.tar.gz
+	options = !emptydirs
+
+pkgname = perl-catalyst-controller-actionrole
+
