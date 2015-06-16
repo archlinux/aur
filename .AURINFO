@@ -1,0 +1,14 @@
+pkgbase = perl-data-compare
+	pkgdesc = compare perl data structures
+	pkgver = 1.24
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Data-Compare
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-file-find-rule>=0.1
+	source = http://search.mcpan.org/CPAN/authors/id/D/DC/DCANTRELL/Data-Compare-1.24.tar.gz
+	options = !emptydirs
+
+pkgname = perl-data-compare
+
