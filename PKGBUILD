@@ -4,7 +4,7 @@
 _pkgname=uzebox
 pkgname=uzem
 pkgver=3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A ${_pkgname^} 8-bit game console emulator"
 url="http://belogic.com/$_pkgname"
 arch=('i686' 'x86_64')
@@ -21,8 +21,8 @@ build() {
 package() {
   cd $srcdir/$_pkgname-$_pkgname-$pkgver
   install -d "$pkgdir/usr/bin"
-  install -Dm644 $srcdir/$_pkgname-$_pkgname-$pkgver/tools/$pkgname/${pkgname}    $pkgdir/usr/bin
-  install -Dm644 $srcdir/$_pkgname-$_pkgname-$pkgver/tools/$pkgname/${pkgname}dbg $pkgdir/usr/bin
+  install -Dm755 $srcdir/$_pkgname-$_pkgname-$pkgver/tools/$pkgname/${pkgname}    $pkgdir/usr/bin
+  install -Dm755 $srcdir/$_pkgname-$_pkgname-$pkgver/tools/$pkgname/${pkgname}dbg $pkgdir/usr/bin
   # license
   install -Dm644 gpl-3.0.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }

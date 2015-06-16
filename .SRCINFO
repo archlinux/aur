@@ -1,7 +1,7 @@
 pkgbase = uzem
 	pkgdesc = A Uzebox 8-bit game console emulator
 	pkgver = 3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://belogic.com/uzebox
 	arch = i686
 	arch = x86_64
