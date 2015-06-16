@@ -1,0 +1,20 @@
+pkgbase = perl-mousex-foreign
+	pkgdesc = Extends non-Mouse classes as well as Mouse classes
+	pkgver = 0.008
+	pkgrel = 1
+	url = http://search.cpan.org/dist/MouseX-Foreign
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-exception>=0
+	checkdepends = perl-test-requires>=0
+	makedepends = perl-any-moose>=0.15
+	depends = perl-mouse>=0.77
+	depends = perl>=5.8.1
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GF/GFUJI/MouseX-Foreign-0.008.tar.gz
+	md5sums = 44ed5d7143d69dce4a2be02ef0cdd9a5
+	sha512sums = e5a7bb942accbe97bee5227d12e8ad898aa5772e5d492d9ea21cf44205b09e8aa93e997e7d131ce2009268ba44b2ff43e5dd028fbc9c0ee04977d6a02b512784
+
+pkgname = perl-mousex-foreign
+
