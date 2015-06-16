@@ -1,0 +1,19 @@
+pkgbase = perl-www-facebook-api
+	pkgdesc = Facebook API implementation
+	pkgver = 0.4.18
+	pkgrel = 1
+	url = http://search.cpan.org/dist/WWW-Facebook-API
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-crypt-ssleay
+	depends = perl-json-any
+	depends = perl-libwww
+	depends = perl-readonly
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/U/UN/UNOBE/WWW-Facebook-API-0.4.18.tar.gz
+	md5sums = 35b2451a131859ddd9b87c61c36c403b
+	sha512sums = 310ead09e234b8ec18f0abcbc771136dc9d86e1880b1134587b5e6372994b1fc6cd78c147e57af7b70209afae21ceb90202a0f2ba6d4954cb8cc3bcc8a558423
+
+pkgname = perl-www-facebook-api
+
