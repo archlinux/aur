@@ -1,0 +1,17 @@
+pkgbase = perl-catalyst-plugin-compress
+	pkgdesc = Compress response
+	pkgver = 0.005
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Catalyst-Plugin-Compress
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-catalyst-runtime>=5.80001
+	depends = perl-mro-compat
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/X/XI/XINMING/Catalyst-Plugin-Compress-0.005.tar.gz
+	md5sums = 16df22840090b768e2a5e5fa69d6109e
+	sha512sums = 9bce2aa53e30150d0989b0c719a3a83b7435e31a66a76168e72fdb80aa20aa5a5048fa478e81e94cbfb4e951a2ed474e86abba30e13a807fad2c118ea4af4824
+
+pkgname = perl-catalyst-plugin-compress
+
