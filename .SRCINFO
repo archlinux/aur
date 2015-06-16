@@ -1,0 +1,18 @@
+pkgbase = perl-moosex-types-json
+	pkgdesc = JSON datatype for Moose
+	pkgver = 0.02
+	pkgrel = 1
+	url = http://search.cpan.org/dist/MooseX-Types-JSON
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-json-xs>=2.00
+	depends = perl-moose>=0.82
+	depends = perl-moosex-types>=0.15
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MILA/MooseX-Types-JSON-0.02.tar.gz
+	md5sums = e6eb8745f38051ff471755759e6006c8
+	sha512sums = b6c072bae945243ee0efb4a230c31bb20d74d7eccddd3a4c5ae106e21e7eca59f85da5b49950d835d5d396d33cd003063e301728bcac846127ac58b7eb8bd451
+
+pkgname = perl-moosex-types-json
+
