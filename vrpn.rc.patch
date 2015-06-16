@@ -1,0 +1,30 @@
+--- vrpn.rc	2013-09-16 20:47:54.000000000 +0200
++++ vrpn.rc	2013-09-18 13:51:22.406432385 +0200
+@@ -8,7 +8,7 @@
+ # description: Starts and stops the vrpn server at boot time and shutdown.
+ #
+ # processname: vrpn_server
+-# config: /usr/local/vrpn/vrpn.cfg
++# config: /etc/vrpn.cfg
+ 
+ # Source function library.
+ . /etc/rc.d/init.d/functions
+@@ -19,14 +19,14 @@
+ # Check that networking is up.
+ [ ${NETWORKING} = "no" ] && exit 0
+ 
+-VRPN_DIR=/usr/local/vrpn
+-VRPN_CFG=vrpn.cfg
+-VRPN_ARGS="-millisleep 1 -f $VRPN_DIR/$VRPN_CFG"
++VRPN_DIR=/usr
++VRPN_CFG=/etc/vrpn.cfg
++VRPN_ARGS="-millisleep 1 -f $VRPN_CFG"
+ VRPN=vrpn_server
+ 
+ export PATH=$VRPN_DIR/bin:$PATH
+ 
+-[ -f $VRPN_DIR/$VRPN_CFG ] || exit 0
++[ -f $VRPN_CFG ] || exit 0
+ [ -x $VRPN_DIR/bin/$VRPN ] || exit 0
+ 
+ # See how we were called.
