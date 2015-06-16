@@ -1,0 +1,16 @@
+pkgbase = perl-test-checkdeps
+	pkgdesc = Check for presence of dependencies
+	pkgver = 0.010
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Test-CheckDeps
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-cpan-meta-check>=0.007
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/Test-CheckDeps-0.010.tar.gz
+	md5sums = c1893b187e9b2efee7d40b1799218576
+	sha512sums = 9683b81aa6bce358fa1abc9b2337b9b15b274742f08a3fd71e80df0bfd20619406cdded191aafdd103db8d514bdc20d36a0b60aefbd72d3de6cb117c17461697
+
+pkgname = perl-test-checkdeps
+
