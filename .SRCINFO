@@ -1,0 +1,18 @@
+pkgbase = perl-meta-builder
+	pkgdesc = Tools for creating Meta objects to track custom metrics.
+	pkgver = 0.003
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Meta-Builder
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-fennec-lite
+	makedepends = perl-test-exception
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/E/EX/EXODIST/Meta-Builder-0.003.tar.gz
+	md5sums = 9d6c9f88fdd1d5cb3e11e852ac105521
+	sha512sums = ee6c9b00116ba075d4e7c4b4f37b68a5f8e021b5e5414c7ee44a995b8820f72d631014185ce5ffc2fa9a0e2ce42db07322fbc1db6c5868426c366e1d7dcd08c7
+
+pkgname = perl-meta-builder
+
