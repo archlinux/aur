@@ -1,0 +1,20 @@
+pkgbase = perl-dbix-class-cursor-cached
+	pkgdesc = cursor class with built-in caching support
+	pkgver = 1.001002
+	pkgrel = 1
+	url = http://search.cpan.org/dist/DBIx-Class-Cursor-Cached
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-cache-cache
+	makedepends = perl-dbd-sqlite>=1.25
+	depends = perl>=5.8.1
+	depends = perl-carp-clan>=6.0
+	depends = perl-dbix-class>=0.08124
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AR/ARCANEZ/DBIx-Class-Cursor-Cached-1.001002.tar.gz
+	md5sums = 814a9613314026d5771e67865a2445e8
+	sha512sums = 95b5fb884610e9d557f12fab9a904c965039b1710c7d07636fae291cd1b3a3e117a19aaf2f224989ee408e7b5a24e38120494de1d17122ad677f4c480299c74c
+
+pkgname = perl-dbix-class-cursor-cached
+
