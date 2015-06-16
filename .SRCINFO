@@ -1,0 +1,17 @@
+pkgbase = perl-socket
+	pkgdesc = networking constants and support functions
+	pkgver = 2.011
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Socket
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.6.1
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PE/PEVANS/Socket-2.011.tar.gz
+	md5sums = b7f7571b505b55502d820eccb49383af
+	sha512sums = 9457520fdf98b7c1db2da4d0f18b634c2f44122ecf81a283f698c6797e187f92e402f14138d5b9cef797ae1ef050c0a4e64398969a7b69ada88c5f58bcd116c9
+
+pkgname = perl-socket
+
