@@ -1,0 +1,21 @@
+pkgbase = perl-net-blogger
+	pkgdesc = an OOP-ish interface for accessing a weblog via the Blogger XML-RPC API.
+	pkgver = 1.02
+	pkgrel = 2
+	url = http://search.cpan.org/dist/Net-Blogger
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-term-readkey>=42
+	makedepends = perl-test-simple>=42
+	depends = perl-error
+	depends = perl-http-cookies
+	depends = perl-soap-lite
+	depends = perl-uri
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CL/CLACO/Net-Blogger-1.02.tar.gz
+	md5sums = ef8d33045999a5fd337583a97e93d9da
+	sha512sums = 2d97eb67e8529e71c4f952a9ca78ef57f80ed4ad78a37cbc85982bd88857cbee7c2662b63cda4f62d4d1c16048a7702317ef68dc0152410058973ddf3a59e670
+
+pkgname = perl-net-blogger
+
