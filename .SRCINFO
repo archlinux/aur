@@ -1,0 +1,17 @@
+pkgbase = perl-ipc-sysv
+	pkgdesc = System V IPC constants and system calls
+	pkgver = 2.04
+	pkgrel = 1
+	url = http://search.cpan.org/dist/IPC-SysV
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MH/MHX/IPC-SysV-2.04.tar.gz
+	md5sums = 8c9b695409fb3b49177529f7c2ec6657
+	sha512sums = 28b173e67873856073c19b5bf8c900c64ffc5bde81e7d02dfc3d907c37418eced170e720d7c3dd3d465751b52bec8d06b6ff9cb48601eda8f7a8ccabcd9a7683
+
+pkgname = perl-ipc-sysv
+
