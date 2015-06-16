@@ -2,7 +2,7 @@
 
 _pkgname=scudcloud
 pkgname=${_pkgname}-git
-pkgver=v1.0.36.r2.gd790e7e
+pkgver=v1.0.39.r7.g92fcaea
 pkgrel=1
 pkgdesc="A Linux client for Slack"
 arch=('any')
