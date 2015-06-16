@@ -1,0 +1,15 @@
+pkgbase = svr
+	pkgdesc = Application for renaming videos and subtitles
+	pkgver = 0.5.0
+	pkgrel = 2
+	url = http://karoljkocmaros.blogspot.com/p/subtitle-video-renamer.html
+	install = svr.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = qt5-base>=5.2
+	source = svr-0.5.0.zip::http://master.dl.sourceforge.net/project/subvidrenamer/source/${pkgver}/svr.zip
+	sha256sums = 96eb3de66d152e1cbde4f539bfc8d698f0d7825d853d84075b55f1579db2b5c3
+
+pkgname = svr
+
