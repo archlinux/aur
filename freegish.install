@@ -1,0 +1,20 @@
+post_install() {
+cat << _EOF
+If you own original assets from purchased version,
+copy the following directories into /usr/share/freegish:
+ * animation
+ * level
+ * music
+ * sound
+ * texture
+ * tile01 ... tile07
+_EOF
+}
+
+post_upgrade() {
+	post_install
+}
+
+op=$1
+shift
+$op $*

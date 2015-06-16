@@ -1,0 +1,13 @@
+--- old/CMakeLists.txt	2013-08-28 09:15:50.793738412 +0000
++++ new/CMakeLists.txt	2013-08-28 09:18:35.696178392 +0000
+@@ -8,8 +8,9 @@
+ # Uncomment this to hardcode the data path. On the command line, you
+ # would actually give -DDATAPATH='"/usr/share/games/gish"' or similar
+ # but CMake does the extra quoting for us.
+-#add_definitions(-DDATAPATH="/usr/share/games/gish")
++add_definitions(-DDATAPATH="/usr/share/freegish")
+ 
++find_library(M_LIB m)
+ find_package(SDL REQUIRED)
+ find_package(OpenAL REQUIRED)
+ find_package(OpenGL REQUIRED)
