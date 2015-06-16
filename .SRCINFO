@@ -1,0 +1,13 @@
+pkgbase = conky-top
+	pkgdesc = A Top conky-lua for ArchLinux
+	pkgver = 1.5
+	pkgrel = 2
+	url = http://alexiobash.com/conky-top-monitor-di-sistema-a-pannello/
+	arch = any
+	license = GPL
+	depends = conky-lua
+	source = http://mirror.alexiobash.com/alexiobash/project/conky-top/conky-top-1.5.tar.gz
+	md5sums = 612c6548655ebdfe170c8b28da05973c
+
+pkgname = conky-top
+
