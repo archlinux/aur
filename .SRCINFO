@@ -1,0 +1,18 @@
+pkgbase = perl-moox-types-mooselike
+	pkgdesc = some Moosish types and a type builder
+	pkgver = 0.27
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/MooX-Types-MooseLike
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-fatal>=0.003
+	depends = perl-module-runtime>=0.012
+	depends = perl-moo>=0.09101
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/M/MA/MATEU/MooX-Types-MooseLike-0.27.tar.gz
+	md5sums = 049e99292aa848454ae1e42b09603fa9
+	sha512sums = bfd221e2dd6b2f292b87b6bb3062fc00fa1f90426961c1c6de0dc266e0745e6ec3a3a9443aec006d8e999912c03f24a0735d01a3a4228803b556e14b608f2153
+
+pkgname = perl-moox-types-mooselike
+
