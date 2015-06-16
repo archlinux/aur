@@ -1,0 +1,18 @@
+pkgbase = perl-lwp-online
+	pkgdesc = Does your process have access to the web
+	pkgver = 1.08
+	pkgrel = 1
+	url = http://search.cpan.org/dist/LWP-Online
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.005
+	depends = perl-libwww
+	depends = perl-uri>=1.35
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/LWP-Online-1.08.tar.gz
+	md5sums = 20e25b3af8b84a493c730249c2a9c50d
+	sha512sums = 2b255f60ee6521757ce3d49cc0720e3985ff17e3db7b7868ced6a9e1c5444dc067c80b7d34dbe7be9679c134f3de1dbe0e9421a1a20ff388c812aacd1d964497
+
+pkgname = perl-lwp-online
+
