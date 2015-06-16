@@ -21,8 +21,8 @@ build() {
 
     sed -i 's/\[1\.14\]/\[1\.15\]/g' configure.ac
 
-    automake --add-missing
     aclocal && autoconf
+    automake --add-missing
 
     ./configure --prefix=/usr \
         --sysconfdir=/etc
