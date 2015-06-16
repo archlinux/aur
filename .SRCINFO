@@ -1,0 +1,16 @@
+pkgbase = perl-crypt-hce-md5
+	pkgdesc = Perl extension implementing one way hash chaining encryption using MD5
+	pkgver = 0.70
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Crypt-HCE_MD5
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/E/EE/EESTABROO/Crypt-HCE_MD5-0.70.tar.gz
+	md5sums = 2fca1b79ee1a83854938f5c7711a19be
+	sha512sums = d67c36389ac1a1d4bcbdb96325bd449a38fdb65d159e8283008b371a020599711666b446b094f59bde21819d5797f6184ea45a491ea7b97eedb1f3f51e0506ae
+
+pkgname = perl-crypt-hce-md5
+
