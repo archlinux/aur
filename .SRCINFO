@@ -1,0 +1,23 @@
+pkgbase = perl-metacpan-client
+	pkgdesc = A comprehensive, DWIM-featured client to the MetaCPAN API
+	pkgver = 1.013000
+	pkgrel = 1
+	url = https://metacpan.org/release/MetaCPAN-Client
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-fatal
+	checkdepends = perl-test-requires
+	depends = perl-json-maybexs
+	depends = perl-moo
+	depends = perl-safe-isa
+	depends = perl-search-elasticsearch>=1.10
+	depends = perl-try-tiny
+	depends = perl>=5.008
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MICKEY/MetaCPAN-Client-1.013000.tar.gz
+	md5sums = 1925e7582467b7b8588ae3fcb26a9390
+	sha512sums = 953291df85616baf60c4ec9f7b5d25aabe25f3b551f36bbb32fd50107b9ecd379b4a68c873e56b0897275aa535d6765c4937c909c36480c13040ceda1e807888
+
+pkgname = perl-metacpan-client
+
