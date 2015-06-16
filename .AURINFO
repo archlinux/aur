@@ -1,0 +1,18 @@
+pkgbase = perl-json-maybexs
+	pkgdesc = use Cpanel::JSON::XS with a fallback to JSON::XS and JSON::PP
+	pkgver = 1.002002
+	pkgrel = 1
+	url = http://search.cpan.org/dist/JSON-MaybeXS
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-without-module>=0.17
+	depends = perl-cpanel-json-xs>=2.3310
+	depends = perl>=5.006
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/JSON-MaybeXS-1.002002.tar.gz
+	md5sums = cb8c66ece7518270ea31ffc4951d5f02
+	sha512sums = a4421abe54ec2b71892f4a1e04794dd3cc99773659cb32e8bf95a89db411eaadc6d90145be0a25da70946edded021962f6eaa48e7d8287773eb5d677ee042e7f
+
+pkgname = perl-json-maybexs
+
