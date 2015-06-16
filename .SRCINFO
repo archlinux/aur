@@ -1,0 +1,16 @@
+pkgbase = pidgin-hide-chat
+	pkgdesc = Pidgin plugin to show/hide chat windows on connect.
+	pkgver = 1.0
+	pkgrel = 2
+	url = http://launchpad.net/pidgin-hide-chat/
+	arch = any
+	license = GPL
+	makedepends = pkgconfig
+	depends = pidgin
+	depends = glibc
+	depends = intltool
+	source = http://launchpad.net/pidgin-hide-chat/trunk/1.0/+download/pidgin-hide-chat-1.0.tar.gz
+	md5sums = 6d37ac9617bc383952ce80a773460dde
+
+pkgname = pidgin-hide-chat
+
