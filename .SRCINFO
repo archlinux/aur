@@ -1,0 +1,19 @@
+pkgbase = perl-search-xapian
+	pkgdesc = Perl XS frontend to the Xapian C++ search library.
+	pkgver = 1.2.19.0
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Search-Xapian
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-devel-leak
+	depends = perl
+	depends = xapian-core
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/O/OL/OLLY/Search-Xapian-1.2.19.0.tar.gz
+	md5sums = e65abe01d551049056ab93be486e3e7f
+	sha512sums = 78ba36f3b8157ef872330b88992012d3f553abc3f2322bbb1d0f3111681dd530e5b57e4989fef645401d19cb4d95f5d284a305c5470efc2911051d1765551a3f
+
+pkgname = perl-search-xapian
+
