@@ -1,26 +1,25 @@
 pkgbase = ultra-flat-icons
 	pkgdesc = A simple flat icon theme, derived from Flattr icon theme.
-	pkgver = 1.3.3
+	pkgver = 1.3.4
 	pkgrel = 1
 	url = http://gnome-look.org/content/show.php?content=167477
 	install = ultra-flat-icons.install
 	arch = any
 	license = CCPL:cc-by-nc-sa-4.0
 	depends = xdg-utils
-	provides = ultra-flat-icons=1.3.3
-	source = https://www.dropbox.com/s/zec6ufraesr0y92/ultra-flat-icons-1.3.3.tar.gz
-	source = https://www.dropbox.com/s/ilw4965lltt86mn/ultra-flat-icons-orange-1.3.3.tar.gz
-	source = https://www.dropbox.com/s/klbt33nhwkvmwbv/ultra-flat-icons-mint-green-1.3.3.tar.gz
+	provides = ultra-flat-icons=1.3.4
+	conflicts = ultra-flat-icons
+	options = !strip
+	options = !emptydirs
+	source = https://www.dropbox.com/s/35k1ckffe17ba8r/ultra-flat-icons-1.3.4.tar.gz
 	source = ultra-flat-icons.install
-	source = index.theme.patch
-	source = dark.index.theme.patch
-	source = orange.index.theme.patch
-	source = orange-dark.index.theme.patch
-	source = green.index.theme.patch
-	source = green-dark.index.theme.patch
-	sha512sums = 028ce873c71176aa9729d2312cf163a105e63ecd9e012566f9ded1f6a260b019bd0d59110b13ae5b719b881dfb194d62c6640e59cd69cb0bfa3a65ed1f5a9d90
-	sha512sums = b6efc86807493771678de85bf7f8afbeea12b40a358c64eeb9f2f8f9f5c5f08c9c12e183554026b782f04f0af915bc8476c73f7c6f03b2106e5e060febeb8ad9
-	sha512sums = 2181a71491a79bc6b8a468e6773861ba42e2974c05bcc99878e23cd318224eff64e144731043b06921875cd9c4a90b3bd0288ffac2052a247fec17b16c2f5d90
+	source = default_theme.patch
+	source = default_dark_theme.patch
+	source = orange_theme.patch
+	source = orange_dark_theme.patch
+	source = green_theme.patch
+	source = green_dark_theme.patch
+	sha512sums = b39093e0ea3d79d01616058a8b03d2aa570e1728b642eac41bd0f0f1dbcd77416ac017fd1378c6118579463a018273cdfd5220712508336bc63b8c147eb5b1a2
 	sha512sums = 214a66945265b3cf304651514792f9f4a32959f2d9f18cfd9c2e2ea4ccf44264a5ccedb4f8790c1e3b6fe6b6b4caf981890759fce7538f003682f98fe5374213
 	sha512sums = 7ddc033e356e8db98075d7e6043ceffb9399af1588ef0ac0db4131a0196ba1ac344abb30b8cc80fd08cbc7a65d50c1f3a80dbd92853ad04c914a5f157afc8467
 	sha512sums = 3a8c48e3255aef9c60ee24b3b0a17c6ec22eb2862b87036b68304c1b6106cd6f956d74d9f9bcc7a336cac602a565fd52d2cdb270cdb62d99b9b4b869ef722c8b
