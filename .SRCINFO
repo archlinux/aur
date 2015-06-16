@@ -1,0 +1,17 @@
+pkgbase = perl-cpanplus-dist-suse
+	pkgdesc = To build RPM files from cpan for SUSE
+	pkgver = 0.03
+	pkgrel = 1
+	url = http://search.cpan.org/dist/CPANPLUS-Dist-SUSE
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-path-class
+	depends = perl-super
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MF/MFW/CPANPLUS-Dist-SUSE-0.03.tar.gz
+	md5sums = 6908260d4dd171c233653b9986277799
+	sha512sums = 90b398f0193a518160e3287c19fcdc2dc5391b6bcf417bb3ac61124f850971bbb863a34851b35ebeed638b1997c063870a47e1c93876e740de937f5e67833a19
+
+pkgname = perl-cpanplus-dist-suse
+
