@@ -1,0 +1,18 @@
+pkgbase = perl-bio-graphics
+	pkgdesc = Generate GD images of Bio::Seq objects
+	pkgver = 2.37
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Bio-Graphics
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-bioperl
+	depends = perl-gd>=2.3
+	depends = perl-statistics-descriptive>=2.6
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LD/LDS/Bio-Graphics-2.37.tar.gz
+	md5sums = f1b0422c8138a79d6c4741024dd182a4
+	sha512sums = f8858f018ece0cf174d6803f0fe1110099ba5b2b6f0a1452db361949320aeccb7738f588fe2ac5c642d2b9b5e449a0c7822c0da1ceda91e5f1ffbac07ce3fcbe
+
+pkgname = perl-bio-graphics
+
