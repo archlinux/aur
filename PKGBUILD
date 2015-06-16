@@ -1,5 +1,4 @@
 # Maintainer: Eugene Dvoretsky <radioxoma from gmail com>
-# Visit https://github.com/radioxoma/aur for pull requests or issue solving.
 # Contributor: dreieck
 
 pkgname="fiji-binary"
