@@ -1,0 +1,17 @@
+pkgbase = perl-module-path
+	pkgdesc = get the full path to a locally installed module
+	pkgver = 0.12
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Module-Path
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-devel-findperl>=0
+	depends = perl>=5.006
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/Module-Path-0.12.tar.gz
+	md5sums = f9a8b2b4b203213ef5be464fa75b0927
+	sha512sums = 841309a89c042964e56eb98a4a02109175b6fc791808c6fe0a8daba3f5f2682ca772f8099ebdd4d2aba5bc8ee265d7c9ca256e7aa4ed6e6ec8100db1d3d09d84
+
+pkgname = perl-module-path
+
