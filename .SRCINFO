@@ -1,0 +1,17 @@
+pkgbase = perl-html-formattext-withlinks-andtables
+	pkgdesc = Converts HTML to Text with tables in tact
+	pkgver = 0.02
+	pkgrel = 1
+	url = http://search.cpan.org/dist/HTML-FormatText-WithLinks-AndTables
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-html-formattext-withlinks>=0
+	depends = perl-html-tree>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SF/SFRYER/HTML-FormatText-WithLinks-AndTables-0.02.tar.gz
+	md5sums = 804146aa9e49a5b1af4f63fecd9b0c28
+	sha512sums = 905bb42cbdf9591418dcf738ee1aaa6b6e1d56c47aaf8c4194bb17b43745cc6d82a4eb65d74ad8c95531940ad67c539329b327d5385f88e80f0a879a6e10bba2
+
+pkgname = perl-html-formattext-withlinks-andtables
+
