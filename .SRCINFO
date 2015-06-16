@@ -1,0 +1,16 @@
+pkgbase = perl-cgi-simple
+	pkgdesc = A Simple totally OO CGI interface that is CGI.pm compliant
+	pkgver = 1.113
+	pkgrel = 1
+	url = http://search.cpan.org/dist/CGI-Simple
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-io-stringy
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AN/ANDYA/CGI-Simple-1.113.tar.gz
+	md5sums = 50c50dbec87b822e3f2285e41cb23519
+	sha512sums = f2a21632ef11f2af81a3284c6f6181be15b512aa2574931bed567a4cecb44a08730193cabb2fe285e5033901838c1eebb67368af173a381bb4072f82cd32fbf0
+
+pkgname = perl-cgi-simple
+
