@@ -1,0 +1,15 @@
+pkgbase = perl-data-dump-streamer
+	pkgdesc = Accurately serialize a data structure as Perl code.
+	pkgver = 2.38
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Data-Dump-Streamer
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl-b-utils
+	source = http://search.mcpan.org/CPAN/authors/id/Y/YV/YVES/Data-Dump-Streamer-2.38.tar.gz
+	options = !emptydirs
+
+pkgname = perl-data-dump-streamer
+
