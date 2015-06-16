@@ -1,0 +1,18 @@
+pkgbase = perl-html-wikiconverter-googlecode
+	pkgdesc = Convert HTML to Google Code wiki markup.
+	pkgver = 0.12
+	pkgrel = 1
+	url = http://search.cpan.org/dist/HTML-WikiConverter-GoogleCode
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-html-wikiconverter>=0.61
+	depends = perl-params-validate
+	depends = perl-uri
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MA/MARTYKUBE/HTML-WikiConverter-GoogleCode-0.12.tar.gz
+	md5sums = b7e2e9e9825edab284ff8992e2d14d57
+	sha512sums = 06cf1e31306f72a300531f7c88cb1c17a998df0ad5710a71c696f33a522bf14f4e941e850d0708d238445d30d43a2eb84fc2dc537f0800b26445d76388e19bff
+
+pkgname = perl-html-wikiconverter-googlecode
+
