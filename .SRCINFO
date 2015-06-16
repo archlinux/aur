@@ -1,0 +1,16 @@
+pkgbase = perl-class-base
+	pkgdesc = useful base class for deriving other modules
+	pkgver = 0.05
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Class-Base
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SZ/SZABGAB/Class-Base-0.05.tar.gz
+	md5sums = 5e0e86dce5dccba4c51063f916bfb270
+	sha512sums = a1e3670680711b401cf6dbbebcb07be277d7177c92f40b2f62775336c8175eac6dffb507acfb5dfab16be82e8568a11deb4c3436fbcdc9b058e4d1c2ceb46421
+
+pkgname = perl-class-base
+
