@@ -2,7 +2,7 @@
 
 pkgname=serf-git
 _pkgver=0.5
-pkgver=0.6.4.r12.g320787d
+pkgver=0.6.4.r21.g816779d
 pkgrel=1
 pkgdesc="Service discovery and orchestration"
 arch=('i686' 'x86_64')
@@ -22,6 +22,8 @@ build()
     # create a temporary go workspace
     mkdir -p src bin
     export GOPATH="${PWD}"
+
+    mv "${srcdir}/${_gitname}" "${srcdir}/src"
 
     cd "${srcdir}/src/${_gitname}"
     make
