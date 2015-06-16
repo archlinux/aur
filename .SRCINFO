@@ -1,0 +1,16 @@
+pkgbase = perl-find-lib
+	pkgdesc = Helper to smartly find libs to use in the filesystem tree
+	pkgver = 1.04
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Find-Lib
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/Y/YA/YANNK/Find-Lib-1.04.tar.gz
+	md5sums = bf5619b4ba1945320eccef69b028c453
+	sha512sums = b2527acce31a88c5855a83cd3e8e8af9b62b2dc6ff4a29264443dc4e85ab921a644f27d8b5774ddbdc755b51fd5dded5fa6fa7bc98dffcf41c4d2bc53fed1e43
+
+pkgname = perl-find-lib
+
