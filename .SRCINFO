@@ -1,0 +1,17 @@
+pkgbase = perl-time-warp
+	pkgdesc = control over the flow of time
+	pkgver = 0.5
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Time-Warp
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JP/JPRIT/Time-Warp-0.5.tar.gz
+	md5sums = 33652a9dfdc11366ddba95efe6432a51
+	sha512sums = d06d3ed03882129f05ed883b532f5f3d05f6eb7d507a2b15f7690317a6f89f8d19b40ae7fe3ad62194df6bb164b6bbaf890348751d521e6a054fc4bd8b586303
+
+pkgname = perl-time-warp
+
