@@ -1,0 +1,18 @@
+pkgbase = perl-www-search-scrape
+	pkgdesc = Scrape search engine results
+	pkgver = 0.08
+	pkgrel = 1
+	url = http://search.cpan.org/dist/WWW-Search-Scrape
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-html-tree
+	depends = perl-html-treebuilder-xpath
+	depends = perl-www-mechanize
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/Q/QS/QSUN/WWW-Search-Scrape-0.08.tar.gz
+	md5sums = 59e830e7f93a77b0b3ed7eab2e10146f
+	sha512sums = f9cffc30070621e0c179a64a2a4ed9033aa2c8113463e25a63c1368987217986e1ef797679dcdd6068567165e6c7c1b2ce684f3a8f44f871200de82d8a2f8c3d
+
+pkgname = perl-www-search-scrape
+
