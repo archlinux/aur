@@ -1,4 +1,5 @@
 # Maintainer: Jack Frost <fbt@fleshless.org>
+# % Trigger: 1434462900 %
 
 pkgname='spark-rc'
 pkgdesc='A simple rc script'
