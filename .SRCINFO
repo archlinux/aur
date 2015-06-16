@@ -1,0 +1,17 @@
+pkgbase = perl-uri-escape-xs
+	pkgdesc = Drop-In replacement for URI::Escape
+	pkgver = 0.10
+	pkgrel = 1
+	url = http://search.cpan.org/dist/URI-Escape-XS
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DA/DANKOGAI/URI-Escape-XS-0.10.tar.gz
+	md5sums = 23453334534498de37a758de3b077793
+	sha512sums = a7288c712cddf2e0a9766d3a0d56bd0c63a078e13c4eb80226fb5b67f0b8d7a7217d65e4bf0b4bb1130c8a0794fa286d808d57283dae6aea994e2c30b86c363b
+
+pkgname = perl-uri-escape-xs
+
