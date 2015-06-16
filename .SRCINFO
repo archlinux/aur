@@ -1,0 +1,15 @@
+pkgbase = glslang-svn
+	pkgdesc = Glslang is the official reference compiler front end for the OpenGL ES and OpenGL shading languages.
+	pkgver = r27423
+	pkgrel = 1
+	url = http://www.khronos.org/opengles/sdk/tools/Reference-Compiler/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	provides = glslang
+	source = svn+https://cvs.khronos.org/svn/repos/ogl/trunk/ecosystem/public/sdk/tools/glslang
+	md5sums = SKIP
+
+pkgname = glslang-svn
+
