@@ -1,0 +1,11 @@
+--- configure.orig	2015-03-20 11:44:35.629898487 -0600
++++ configure	2015-03-20 11:44:44.773121058 -0600
+@@ -5020,7 +5020,7 @@
+ 	    esac
+ 	    result="Using ${TCL_INCLUDES}"
+ 	else
+-	    if test ! -f "${TCL_SRC_DIR}/generic/tclInt.h" ; then
++	    if test ! -f "${TCL_SRC_DIR}/tclInt.h" ; then
+ 		as_fn_error $? "Cannot find private header tclInt.h in ${TCL_SRC_DIR}" "$LINENO" 5
+ 	    fi
+ 	    result="Using srcdir found in tclConfig.sh: ${TCL_SRC_DIR}"

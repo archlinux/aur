@@ -1,0 +1,17 @@
+pkgbase = tcloo
+	pkgdesc = Tcl extension for object oriented programming. Tcl 8.5 Only!!!
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://sourceforge.net/projects/tcl/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	depends = tcl85
+	source = http://downloads.sourceforge.net/project/tcl/TclOO%20Package/1.0.2/TclOO1.0.2.tar.gz
+	source = configure.patch
+	md5sums = 1f0d0a86cbbd4955450b42d754c29f15
+	md5sums = e1a87ff1e902fd95434e5b8abe335258
+
+pkgname = tcloo
+
