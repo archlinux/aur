@@ -1,0 +1,16 @@
+pkgbase = scikits-base
+	pkgdesc = Files common for all SciKits packages
+	pkgver = 1
+	pkgrel = 2
+	url = http://scikits.appspot.com/
+	arch = any
+	license = BSD
+	depends = python2
+	options = !emptydirs
+	source = __init__.py
+	source = LICENSE
+	sha256sums = d6442cf36f96caf84d9abeb3e15124961557309ba5aff38ed915d102a4f8d19e
+	sha256sums = 4e7b871c43c1aa35716986015b012e7858a698896bfbb9510629440c16a92584
+
+pkgname = scikits-base
+
