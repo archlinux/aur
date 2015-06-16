@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Elements Mainchain Bitcoin GUI
+Comment=Bitcoin experiments
+Exec=bitcoin-qt %u
+Terminal=false
+Type=Application
+Icon=bitcoin128
+MimeType=x-scheme-handler/bitcoin;
+Categories=Office;Finance;

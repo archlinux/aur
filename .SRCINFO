@@ -1,0 +1,36 @@
+pkgbase = elements-mainchain-git
+	pkgver = r8258.0b05c94
+	pkgrel = 1
+	url = http://elementsproject.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = automoc4
+	makedepends = qrencode
+	makedepends = miniupnpc
+	makedepends = protobuf
+	source = elements-mainchain-git::git+https://github.com/ElementsProject/elements#branch=mainchain
+	source = elements-bitcoin.desktop
+	sha256sums = SKIP
+	sha256sums = 6737b1733fad150bf70d0b6df10a2e9a1ce0a0ae56d0d30e34f08c1ed1c79977
+
+pkgname = elements-mainchain-cli-git
+	pkgdesc = Bitcoin RPC cli client modified for bitcoin experiments
+	depends = boost-libs
+	depends = openssl
+
+pkgname = elements-mainchain-daemon-git
+	pkgdesc = Bitcoin daemon modified for bitcoin experiments
+	depends = boost-libs
+	depends = miniupnpc
+	depends = openssl
+
+pkgname = elements-mainchain-qt-git
+	pkgdesc = Bitcoin Qt GUI modified for bitcoin experiments
+	depends = boost-libs
+	depends = qt4
+	depends = miniupnpc
+	depends = qrencode
+	depends = protobuf
+
