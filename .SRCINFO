@@ -1,0 +1,18 @@
+pkgbase = perl-wordnet-similarity
+	pkgdesc = WordNet-based measures of semantic relatedness.
+	pkgver = 2.05
+	pkgrel = 1
+	url = http://search.cpan.org/dist/WordNet-Similarity
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-digest-sha1
+	depends = perl-text-similarity>=0.02
+	depends = perl-wordnet-querydata>=1.40
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TP/TPEDERSE/WordNet-Similarity-2.05.tar.gz
+	md5sums = d8aba9c3472e11beb0fc0f0f31911e47
+	sha512sums = 7e8e1338b34fead131d7ce696e46a02e7d5e851644bdde8a0a4a7e8d0b1c38adc86e50e81abd29a0b958195e695b151871f40fb6cce7e7c404702ceabee3bf31
+
+pkgname = perl-wordnet-similarity
+
