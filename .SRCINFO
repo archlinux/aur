@@ -1,0 +1,34 @@
+pkgbase = freeglut-svn
+	pkgver = 1559
+	pkgrel = 1
+	url = http://freeglut.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = subversion
+	makedepends = cmake
+	makedepends = mesa
+	makedepends = glu
+	makedepends = wayland
+	makedepends = libxxf86vm
+	provides = glut
+	provides = freeglut
+	provides = freeglut-svn
+	conflicts = glut
+	conflicts = freeglut
+	conflicts = freeglut-svn
+	source = svn+https://freeglut.svn.sourceforge.net/svnroot/freeglut/trunk/freeglut/freeglut/
+	md5sums = SKIP
+
+pkgname = freeglut-x11-svn
+	pkgdesc = Provides functionality for small OpenGL programs; X11 version
+	depends = libxi
+	depends = libxrandr
+	depends = libgl
+
+pkgname = freeglut-wayland-svn
+	pkgdesc = Provides functionality for small OpenGL programs; Wayland version
+	depends = wayland
+	depends = libxkbcommon
+	depends = libgl
+
