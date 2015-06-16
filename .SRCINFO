@@ -1,0 +1,14 @@
+pkgbase = serf-git
+	pkgdesc = Service discovery and orchestration
+	pkgver = 0.6.4.r12.g320787d
+	pkgrel = 1
+	url = http://www.serfdom.io/
+	arch = i686
+	arch = x86_64
+	license = MPL
+	makedepends = go
+	source = serf::git+https://github.com/hashicorp/serf.git#branch=master
+	sha256sums = SKIP
+
+pkgname = serf-git
+
