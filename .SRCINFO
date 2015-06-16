@@ -1,0 +1,16 @@
+pkgbase = perl-heap
+	pkgdesc = Perl extensions for keeping data partially sorted
+	pkgver = 0.80
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Heap
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JM/JMM/Heap-0.80.tar.gz
+	md5sums = 05fed19a7552dadee11c780cd68c0116
+	sha512sums = 133e2668a90de8cea13302464188415fa30e4a0a85fb51af7409ff2e3466e33a6daf172b2466f046c5275db6ab19bb573e8b2d14acf616b110bdd60869865690
+
+pkgname = perl-heap
+
