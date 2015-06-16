@@ -1,0 +1,16 @@
+pkgbase = perl-http-server-simple-psgi
+	pkgdesc = PSGI handler for HTTP::Server::Simple
+	pkgver = 0.16
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/HTTP-Server-Simple-PSGI
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-http-server-simple>=0.42
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/M/MI/MIYAGAWA/HTTP-Server-Simple-PSGI-0.16.tar.gz
+	md5sums = 4ee6f4dee6fbf895b3fb0bb8bb9e5593
+	sha512sums = 514a61a7d349f02a18b44bd2ef3adbfd457cc61b6ec4eea2e74f1d8f4ffd095b42338552ddf7e9ab2b3ffa79e5c826099665e87c9ca5b08566975101e37b0177
+
+pkgname = perl-http-server-simple-psgi
+
