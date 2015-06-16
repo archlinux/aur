@@ -1,0 +1,19 @@
+pkgbase = perl-gtop
+	pkgdesc = Perl interface to libgtop
+	pkgver = 0.18
+	pkgrel = 1
+	url = http://search.cpan.org/dist/GTop
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = glib2>=2.36.3
+	depends = libgtop>=2.28.4
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MJ/MJH/GTop-0.18.tar.gz
+	md5sums = 5652bdbbe1aed5577ab8e72c88b9740f
+	sha512sums = 478eace21f8836b38434c0521063303117489784567945f940f170aa3022f4a1241ec646368aee0353de6f5a791a79c3de27b273815af5be458e766799b5944f
+
+pkgname = perl-gtop
+
