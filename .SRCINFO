@@ -1,0 +1,16 @@
+pkgbase = perl-text-normalize-naco
+	pkgdesc = Normalize text based on the NACO rules
+	pkgver = 0.13
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Text-Normalize-NACO
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-text-unidecode
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BR/BRICAS/Text-Normalize-NACO-0.13.tar.gz
+	md5sums = f4520a3dca5797b712600e2faa97073a
+	sha512sums = 849ccb0c4d722936a7fbfb727e0bc56dcc7ba90f4f3079f781f68849f56a6c3c0b3e3ac880d00d514b0ecfd56967f10e18747b62a2fb1f8788e749a97d574242
+
+pkgname = perl-text-normalize-naco
+
