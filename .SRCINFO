@@ -1,0 +1,18 @@
+pkgbase = perl-date-pcalc
+	pkgdesc = Gregorian calendar date calculations
+	pkgver = 6.1
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Date-Pcalc
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl-bit-vector>=7.1
+	depends = perl-carp-clan>=5.3
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/ST/STBEY/Date-Pcalc-6.1.tar.gz
+	md5sums = 6a719d8fe10ac673be5d09e003130aa8
+	sha512sums = 3f234e505f068e068608e76f5963f85172c1b04b5770d24d33bff704b2a50f1e4f222cfdf2cc5a992e618078f0bf018838278db2cd00e8037bdb2482eb0907c2
+
+pkgname = perl-date-pcalc
+
