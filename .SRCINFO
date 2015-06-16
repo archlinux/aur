@@ -1,0 +1,20 @@
+pkgbase = perl-text-xslate
+	pkgdesc = Scalable template engine for Perl5
+	pkgver = 3.3.3
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Text-Xslate
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-requires
+	makedepends = perl-file-copy-recursive
+	depends = perl-data-messagepack>=0.38
+	depends = perl-mouse>=0.61
+	depends = perl>=5.8.1
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/S/SY/SYOHEX/Text-Xslate-3.3.3.tar.gz
+	md5sums = 95d1195448276d450e39c696636abb44
+	sha512sums = d20aee0118f3e32c7d4efd2681bcf9af2fd29a2e9f81753804e7fe9bbe5172cf8ed2a8f876661c823505fce27c82a707d39bfb41149a6296da821f140212f8d9
+
+pkgname = perl-text-xslate
+
