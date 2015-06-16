@@ -1,0 +1,17 @@
+pkgbase = perl-class-dbi-plugin-fastdelete
+	pkgdesc = Add to Class::DBI for more fast delete method.
+	pkgver = 0.01
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Class-DBI-Plugin-FastDelete
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-class-dbi
+	depends = perl-sql-abstract
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/N/NE/NEKOKAK/Class-DBI-Plugin-FastDelete-0.01.tar.gz
+	md5sums = 85a508db42adc3e9dc6e59f5019a9f4d
+	sha512sums = dd520b18d7b262726cae85bd09946f977bd4ba335f409e8c581220ac617843b2f7fe5c674e7871b4925015b6578b6aef5fa20c45abdd0509bcb5e20cfcb3c058
+
+pkgname = perl-class-dbi-plugin-fastdelete
+
