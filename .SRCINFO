@@ -1,0 +1,20 @@
+pkgbase = perl-xml-xql
+	pkgdesc = A perl module for querying XML tree structures with XQL
+	pkgver = 0.68
+	pkgrel = 1
+	url = http://search.cpan.org/dist/XML-XQL
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-date-manip>=5.33
+	depends = perl-libwww
+	depends = perl-parse-yapp
+	depends = perl-xml-dom>=1.29
+	depends = perl-xml-parser>=2.30
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TJ/TJMATHER/XML-XQL-0.68.tar.gz
+	md5sums = bb84096fdf8bcc96a35971539ce8c19e
+	sha512sums = a946f4544a70ac71e37769972ed7355697694548b5e348f9469b2506375f83c0506c4e5fef0c5a8ff1b1116026d31963a5f673842bce187e4ccc1c2284f1816f
+
+pkgname = perl-xml-xql
+
