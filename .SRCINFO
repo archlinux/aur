@@ -1,0 +1,17 @@
+pkgbase = perl-git-repository
+	pkgdesc = Perl interface to Git repositories
+	pkgver = 1.313
+	pkgrel = 1
+	url = https://metacpan.org/release/Git-Repository
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-system-command>=1.103
+	depends = perl>=5.006
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOOK/Git-Repository-1.313.tar.gz
+	md5sums = 34f14e6bbfd860d72bb9463a7da9b192
+	sha512sums = 82f9135fc9bc871c3d2f1ea0fd6336b60cbe81509148e4925592858f1e6960e91fea3284260314e578890ee9b6c15d65db19582019f283a6343c1d1b8525f14c
+
+pkgname = perl-git-repository
+
