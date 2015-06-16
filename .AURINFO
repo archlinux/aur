@@ -1,0 +1,16 @@
+pkgbase = perl-javascript-spidermonkey
+	pkgdesc = Perl interface to the JavaScript Engine
+	pkgver = 0.21
+	pkgrel = 1
+	url = http://search.mcpan.org/~tbusch/JavaScript-SpiderMonkey/SpiderMonkey.pm
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	depends = spidermonkey-1.7
+	source = http://search.mcpan.org/CPAN/authors/id/T/TB/TBUSCH/JavaScript-SpiderMonkey-0.21.tar.gz
+	options = !emptydirs
+
+pkgname = perl-javascript-spidermonkey
+
