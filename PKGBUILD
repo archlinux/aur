@@ -2,7 +2,7 @@
 # Maintainer: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=python2-isbntools
-pkgver=3.3.8
+pkgver=4.2.5
 pkgrel=1
 pkgdesc="Extract, clean, transform, hyphenate and metadata for ISBNs"
 arch=('any')
@@ -11,16 +11,11 @@ license=('LGPL3')
 depends=('python2')
 makedepends=('python2-setuptools')
 source=(https://pypi.python.org/packages/source/i/isbntools/isbntools-$pkgver.tar.gz)
-
-build() {
-  cd "$srcdir/isbntools-$pkgver"
-  python2 setup.py build
-}
+sha256sums=('7a89799193fc48da2cefbcb899f87d131333c6fb7919a978c268e4a9d29b172b')
 
 package(){
   cd "$srcdir/isbntools-$pkgver"
-  python2 setup.py install --root="${pkgdir}"
+  python2 setup.py install --root="$pkgdir/" --optimize=1
 }
 
 # vim:ts=2:sw=2:et:
-md5sums=('29992a891b014b539fc58a64f630a309')
