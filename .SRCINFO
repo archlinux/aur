@@ -1,0 +1,17 @@
+pkgbase = perl-cgi-expand
+	pkgdesc = convert flat hash to nested data using TT2's dot convention
+	pkgver = 2.04
+	pkgrel = 1
+	url = http://search.cpan.org/dist/CGI-Expand
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-exception>=0
+	depends = perl>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOWMANBS/CGI-Expand-2.04.tar.gz
+	md5sums = 5825c759e43dac82e082568d1c8f6158
+	sha512sums = fa921d0a4d7be5f2fed448bd4af767bdbb01067d268890d9d39644f39ec41aee3ce95e8642f98d41d4ec5cab10fb6d2a73e48004ccd32e972550b1b90dcdffe4
+
+pkgname = perl-cgi-expand
+
