@@ -13,7 +13,7 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 makedepends=('git')
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 source=("git://projects.vdr-developer.org/vdr-plugin-skinenigmang.git#commit=$_gitver"
         "skinenigmang-newmakefile-vdr1.7.36-2.tgz::http://www.vdr-portal.de/index.php?page=Attachment&attachmentID=32701"
         'skinenigmang-search_for_logos_in_resourcedir.diff'
