@@ -1,0 +1,21 @@
+pkgbase = perl-rest-google
+	pkgdesc = access Google REST (aka AJAX) API from Perl
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = http://search.cpan.org/dist/REST-Google
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.6.1
+	depends = perl-class-accessor>=0.31
+	depends = perl-class-data-inheritable>=0.06
+	depends = perl-json-any>=1.16
+	depends = perl-libwww
+	depends = perl-uri>=1.35
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/E/EJ/EJS/REST-Google-1.0.8.tar.gz
+	md5sums = e4b07546dd6858c772c0820a5edf1d54
+	sha512sums = ba321c1fce8117dbccd83b41da6890e21dc90a8c29398832dc6dd502e7033713f3c730134f6b7c67f1f853b29fafbcaa9ddbd76b138b02752e0c939059ecaa82
+
+pkgname = perl-rest-google
+
