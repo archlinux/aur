@@ -1,0 +1,23 @@
+pkgbase = cairo-dock-themes
+	pkgdesc = Themes for cairo-dock
+	pkgver = 1.6.3.1
+	pkgrel = 4
+	url = http://sourceforge.net/projects/cairo-dock.berlios/files/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = autoconf
+	makedepends = intltool
+	makedepends = automake
+	makedepends = libtool
+	makedepends = perl-xml-parser
+	makedepends = pkgconfig
+	depends = librsvg
+	depends = cairo-dock
+	source = http://downloads.sourceforge.net/project/cairo-dock.berlios/cairo-dock-themes-1.6.3.1.tar.bz2
+	source = fixinstallpath.patch
+	md5sums = ac73b44de2727a384d4c163b31321cca
+	md5sums = 36e03dcdd884d308318ff1042de3e1cb
+
+pkgname = cairo-dock-themes
+

@@ -1,0 +1,11 @@
+--- cairo-dock-themes-1.6.3.1/configure.ac.orig	2015-05-01 17:01:49.614965237 -0600
++++ cairo-dock-themes-1.6.3.1/configure.ac	2015-05-01 17:01:54.844902108 -0600
+@@ -10,7 +10,7 @@
+ AM_INIT_AUTOMAKE([foreign])
+ AC_PROG_LIBTOOL
+ 
+-pkgdatadir=[`pkg-config cairo-dock --variable=themesdir`]
++pkgdatadir=[`pkg-config gldi  --variable=pluginsdatadir | sed -e's/plug-ins/themes/g'`]
+ AC_SUBST(pkgdatadir)
+ 
+ # Checks for libraries.
