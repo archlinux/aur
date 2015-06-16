@@ -1,0 +1,21 @@
+pkgbase = perl-data-dpath-validator
+	pkgdesc = Validate data based on Perl data structure templates
+	pkgver = 0.093411
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Data-DPath-Validator
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-data-dpath>=0.32
+	depends = perl-data-visitor>=0.26
+	depends = perl-moose>=0.93
+	depends = perl-moosex-role-buildinstanceof>=0.02
+	depends = perl-moosex-types>=0.20
+	depends = perl-namespace-autoclean>=0.09
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/N/NP/NPEREZ/Data-DPath-Validator-0.093411.tar.gz
+	md5sums = 7a942f968e958789b6c88e46b2501781
+	sha512sums = 1304fc8c8414b149a3dca36e2b600d4a3f57913d7805a1359c7826b1ec31ef893a5d5e688f422533de62598ad5cdca60bdd750c96689a8ecccfb57a7653df729
+
+pkgname = perl-data-dpath-validator
+
