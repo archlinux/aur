@@ -1,0 +1,20 @@
+pkgbase = perl-flv-info
+	pkgdesc = Extract metadata from Adobe Flash Video files
+	pkgver = 0.24
+	pkgrel = 1
+	url = https://metacpan.org/release/FLV-Info
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-amf-perl>=0.15
+	depends = perl-list-moreutils
+	depends = perl-readonly
+	depends = perl-swf-file>=0.033
+	depends = perl>=5.008
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CD/CDOLAN/FLV-Info-0.24.tar.gz
+	md5sums = 7f8f11619c58f08154c0a18c76df9299
+	sha512sums = d5b149fbfea816037e620492bfd9529697bd10afc6d58ef323db9b20000e53d893e9df0df7e0c28ea30d5ba06eb9427763d48fed69c1eacba7e76a56a256182c
+
+pkgname = perl-flv-info
+
