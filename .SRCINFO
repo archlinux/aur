@@ -1,0 +1,20 @@
+pkgbase = hoomd-blue
+	pkgdesc = A general-purpose particle simulation toolkit using GPUs with CUDA
+	pkgver = v1.0.2.r0.g6413a77
+	pkgrel = 1
+	url = http://codeblue.umich.edu/hoomd-blue/index.html
+	arch = any
+	license = custom: University of Michigan "MIT-Like"
+	makedepends = git
+	depends = python
+	depends = boost
+	depends = cuda
+	depends = cmake
+	depends = openmpi
+	optdepends = nvidia: running simulations on GPU
+	provides = hoomd-blue
+	source = hoomd-blue::git+https://bitbucket.org/glotzer/hoomd-blue#branch=maint
+	md5sums = SKIP
+
+pkgname = hoomd-blue
+
