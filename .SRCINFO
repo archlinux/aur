@@ -1,0 +1,18 @@
+pkgbase = perl-plack-middleware-methodoverride
+	pkgdesc = Override REST methods to Plack apps via POST
+	pkgver = 0.12
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Plack-Middleware-MethodOverride
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-plack
+	depends = perl-uri
+	depends = perl>=5.8.1
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/A/AR/ARISTOTLE/Plack-Middleware-MethodOverride-0.12.tar.gz
+	md5sums = 02971e5e0d3350730a0c30481672ac0b
+	sha512sums = 150aeb8cc940fa83fae81f7b8a20432a48b4e0ba35a04c558e3f7b4dc9eeb24897ae9351492de511ce457623e2190b518c87cfdc189b40559c9009fe9d7b0991
+
+pkgname = perl-plack-middleware-methodoverride
+
