@@ -1,0 +1,19 @@
+pkgbase = perl-xml-treebuilder
+	pkgdesc = Parser that builds a tree of XML::Element objects
+	pkgver = 5.4
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/XML-TreeBuilder
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-html-tagset>=3.02
+	depends = perl-html-tree
+	depends = perl-xml-catalog>=1.02
+	depends = perl-xml-parser
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/J/JF/JFEARN/XML-TreeBuilder-5.4.tar.gz
+	md5sums = bf2d9102b62516f6e76c248acb9e8a2c
+	sha512sums = 0c1b9ebe96d7a5650abb5ba02a65fe674e2ba767e0fd34f38b560e79af4f0ac584cc3027a8c75c5cd9d53c441b5c89bfc48bb86f685a427c13955b8aa8ba5bdd
+
+pkgname = perl-xml-treebuilder
+
