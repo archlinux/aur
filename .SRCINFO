@@ -1,0 +1,18 @@
+pkgbase = perl-uri-db
+	pkgdesc = URI::db - Database URIs
+	pkgver = 0.15
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/URI-db
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-uri>=1.40
+	depends = perl-uri-nested>=0.10
+	depends = perl
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/D/DW/DWHEELER/URI-db-0.15.tar.gz
+	md5sums = 1bcc2205ce7ffd393634127d699bf971
+	sha512sums = 9331c3b7da20e1a8a4500f069f34e04459c214147b116386c4413a0a88a55671a8be42285c4a3ddb5eba5d7d8dbfa4527029a7ccf3444193609777756bf8d3bb
+
+pkgname = perl-uri-db
+
