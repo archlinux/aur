@@ -1,0 +1,16 @@
+pkgbase = perl-module-load-conditional
+	pkgdesc = Looking up module information / loading at runtime
+	pkgver = 0.54
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Module-Load-Conditional
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BI/BINGOS/Module-Load-Conditional-0.54.tar.gz
+	md5sums = 626d90b25bd461388e4706ff7a631d72
+	sha512sums = 52298f34afd9bcc1ac748ccc2fcbc2d06b811e1bfc14d56508842703784b08a372d4b742041dc70689a80c2baad4a0a92bdb95ba7e5ab626c9e7c827f0bfc780
+
+pkgname = perl-module-load-conditional
+
