@@ -1,0 +1,16 @@
+pkgbase = perl-any-uri-escape
+	pkgdesc = Load URI::Escape::XS preferentially over URI::Escape
+	pkgver = 0.01
+	pkgrel = 1
+	url = https://metacpan.org/release/Any-URI-Escape
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-uri
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/P/PH/PHRED/Any-URI-Escape-0.01.tar.gz
+	md5sums = 2a1d051af8842a46bff7001678fedb55
+	sha512sums = 856bf8259b86019a621cce0dae61da2bb4171221b62d5e29d41a65741917c3daae835f8239ff57fa4a7a238bea63cc9b344a9638ed6959b1dba86cde91443d0a
+
+pkgname = perl-any-uri-escape
+
