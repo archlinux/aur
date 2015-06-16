@@ -1,0 +1,16 @@
+pkgbase = perl-rivescript
+	pkgdesc = Rendering Intelligence Very Easily
+	pkgver = 1.28
+	pkgrel = 1
+	url = http://search.cpan.org/dist/RiveScript
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-json>=1
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/K/KI/KIRSLE/RiveScript-1.28.tar.gz
+	md5sums = b1803e448b529fccefdeffe4ec3dd559
+	sha512sums = ea287a4308f09b35d6bae9d65d267e979fa56fb2325e92c539f3ba253c5b07541e5d1cc9f3745338b04f80ff54c13bec3788fb604edd212527d52a3cf4124f65
+
+pkgname = perl-rivescript
+
