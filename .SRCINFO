@@ -1,0 +1,16 @@
+pkgbase = perl-event
+	pkgdesc = Event loop processing
+	pkgver = 1.24
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Event
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/E/ET/ETJ/Event-1.24.tar.gz
+	md5sums = cf44203f30750bfa706c2c8005c38e3b
+
+pkgname = perl-event
+
