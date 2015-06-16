@@ -1,0 +1,32 @@
+pkgbase = perl-catalystx-declare
+	pkgdesc = EXPERIMENTAL Declarative Syntax for Catalyst Applications
+	pkgver = 0.015
+	pkgrel = 1
+	url = http://search.cpan.org/dist/CatalystX-Declare
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-catalyst-runtime
+	makedepends = perl-test-output>=0.16
+	depends = perl>=5.8.8
+	depends = perl-aliased>=0.30
+	depends = perl-catalyst-controller-actionrole>=0.15
+	depends = perl-class>=1.00
+	depends = perl-class-inspector>=1.24
+	depends = perl-data-dump>=1.14
+	depends = perl-data-pond>=0.002
+	depends = perl-devel-declare>=0.006000
+	depends = perl-moose>=1.14
+	depends = perl-moosex-declare>=0.34
+	depends = perl-moosex-method-signatures>=0.36
+	depends = perl-moosex-methodattributes>=0.24
+	depends = perl-moosex-role-parameterized>=0.19
+	depends = perl-moosex-types>=0.24
+	depends = perl-perl6-junction>=1.40000
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JJ/JJNAPIORK/CatalystX-Declare-0.015.tar.gz
+	md5sums = f02e51fd569e8a2562a2af308ef22637
+	sha512sums = 7655a3ca2595e2456d2656c3a244b2e94ffbfd8290071e1dd960a24f0c35c7c245a061347ac97a808291ab6b1bf2ef2be60d09ef14578b115ff07f6698e88235
+
+pkgname = perl-catalystx-declare
+
