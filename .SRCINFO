@@ -1,0 +1,23 @@
+pkgbase = quirky-git
+	pkgdesc = Destined to be a real IRC client for both light and heavyweight IRC users.
+	pkgver = r186.dc3e522
+	pkgrel = 2
+	url = https://github.com/evolve-os/quirky
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = autoconf
+	depends = vala
+	depends = gtk3
+	depends = glib2
+	depends = pango
+	depends = cairo
+	depends = gdk-pixbuf2
+	provides = quirky
+	conflicts = quirky
+	source = quirky-git::git+https://github.com/evolve-os/quirky.git#branch=master
+	md5sums = SKIP
+
+pkgname = quirky-git
+
