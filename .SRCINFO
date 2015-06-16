@@ -1,0 +1,20 @@
+pkgbase = perl-chart-ofc
+	pkgdesc = Generate data files for use with Open Flash Chart
+	pkgver = 0.11
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Chart-OFC
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-requires
+	depends = perl-graphics-colornames
+	depends = perl-list-moreutils
+	depends = perl-moose>=0.56
+	depends = perl-moosex-strictconstructor>=0.07
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DR/DROLSKY/Chart-OFC-0.11.tar.gz
+	md5sums = 255f0d898ba5daeeb5abc1348c7b04ba
+	sha512sums = f1a4ae19e609ea41e080b28932f20dab8c766dfdeae5210650402b440b98dcde149b743ecd3f48f45f49165ff077765bad3621da50b6af34a1a18b75ce777c3a
+
+pkgname = perl-chart-ofc
+
