@@ -1,0 +1,28 @@
+pkgbase = osmium
+	pkgdesc = C++/Javascript framework for working with OSM files
+	pkgver = r888.76cdda0
+	pkgrel = 1
+	url = https://github.com/joto/osmium
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = git
+	makedepends = doxygen
+	depends = osm-binary
+	depends = boost
+	depends = zlib
+	depends = shapelib
+	depends = sqlite
+	depends = gd
+	depends = expat
+	depends = gdal
+	depends = geos
+	depends = sparsehash
+	depends = v8-3.15
+	depends = icu
+	source = git+https://github.com/joto/osmium.git
+	md5sums = SKIP
+
+pkgname = osmium
+
