@@ -1,0 +1,20 @@
+pkgbase = perl-libvorbis-perl
+	pkgdesc = Perl extension for Ogg Vorbis streams
+	pkgver = 0.05
+	pkgrel = 4
+	url = http://search.mcpan.org/dist/libvorbis-perl
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	depends = libogg>=1.3.1
+	depends = libvorbis>=1.3.4
+	depends = libvorbis>=1.3.4
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/F/FO/FOOF/libvorbis-perl-0.05.tar.gz
+	md5sums = 4b1d0f936b029f4390c524db0892a65f
+	sha512sums = a7d543fe65b491da1e133adbc6545cccca0da914e186af4eefa58df83fcd2bb0a3ba8e1c722e9cccc929e4fe06529bb6b9b2f9fe097e7b9e0b4289c0d1c006b4
+
+pkgname = perl-libvorbis-perl
+
