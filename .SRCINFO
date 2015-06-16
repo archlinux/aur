@@ -1,0 +1,21 @@
+pkgbase = ktageditor
+	pkgdesc = KTag Editor is a free and open source Audio tag editor developed in Qt5 framework.
+	pkgver = 0.2.0
+	pkgrel = 5
+	url = http://karoljkocmaros.blogspot.com/p/ktag-editor.html
+	install = ktageditor.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = taglib
+	makedepends = phonon-qt5
+	depends = qt5-base>=5.1.1
+	depends = taglib>=1.8
+	depends = phonon-qt5
+	optdepends = phonon-qt5-vlc: audio output
+	optdepends = phonon-qt5-gstreamer: audio output
+	source = ktageditor-0.2.0.zip::http://master.dl.sourceforge.net/project/ktageditor/Source/0.2.0/ktageditor.zip
+	sha256sums = 20ed748eeea4bdd307b8f8004ffccfd051f11211d55ccfc32fbc1e8a6e1ae39d
+
+pkgname = ktageditor
+
