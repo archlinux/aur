@@ -1,0 +1,17 @@
+pkgbase = perl-scope-upper
+	pkgdesc = Act on upper scopes.
+	pkgver = 0.22
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Scope-Upper
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.6.1
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/V/VP/VPIT/Scope-Upper-0.22.tar.gz
+	md5sums = ad98b934247be411c1cc15d73844bca4
+	sha512sums = 90b4866cbeb2f5149f57ea369e823b9efa89b74922e2195316b999f7db37c9954427a872fedd0b64db3d25b54d02d0b5853354ef79281dc9e6ee981c4424bf66
+
+pkgname = perl-scope-upper
+
