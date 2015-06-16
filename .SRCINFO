@@ -1,0 +1,20 @@
+pkgbase = perl-plack-session-store-redis
+	pkgdesc = Redis based session store for Plack apps.
+	pkgver = 0.05
+	pkgrel = 1
+	url = https://metacpan.org/release/Plack-Session-Store-Redis
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-exception
+	depends = perl-json
+	depends = perl-plack
+	depends = perl-plack-middleware-session
+	depends = perl-redis
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LE/LEEDO/Plack-Session-Store-Redis-0.05.tar.gz
+	md5sums = 6fcde8cfe6576d146559ca934b2d68cc
+	sha512sums = c694e53b727ef44776ad788881345d6bd859884b5ccb1bdb5ecb5e21a807c540e7f6b2a98dba6b06bcf950e55dc13034af217853ca382866cfb2e9ede2964abc
+
+pkgname = perl-plack-session-store-redis
+
