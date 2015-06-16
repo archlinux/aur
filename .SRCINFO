@@ -1,0 +1,16 @@
+pkgbase = perl-test-checkmanifest
+	pkgdesc = Check if your Manifest matches your distro
+	pkgver = 1.28
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Test-CheckManifest
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RE/RENEEB/Test-CheckManifest-1.28.tar.gz
+	md5sums = 5d26d71cede4310f7c8463cac283f5c9
+	sha512sums = 5e77e1259c35be90642ef34f957119de25edf2bdea282bc3f5536cff005e9322d8220db2f3adc4d88ae71fc5e02e8a3da3b2d8341dce38afacc773e117a0ab3b
+
+pkgname = perl-test-checkmanifest
+
