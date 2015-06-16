@@ -10,7 +10,7 @@ url="http://projects.vdr-developer.org/projects/plg-undelete"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 source=("http://projects.vdr-developer.org/attachments/download/1060/$pkgname-$pkgver.tgz"
         "undelete-newmakefile-vdr-1.7.36.tgz::http://www.vdr-portal.de/index.php?page=Attachment&attachmentID=32684"
         'undelete-vdr2.1.2compat.diff'
