@@ -10,7 +10,7 @@ url="http://vdr.schmirler.de/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 source=("http://vdr.schmirler.de/$_plugname/$pkgname-$pkgver.tgz")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 md5sums=('694024ecd7bb813d43620ded63fc3ab4')
