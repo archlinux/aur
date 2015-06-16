@@ -1,0 +1,23 @@
+pkgbase = perl-text-recordparser
+	pkgdesc = read record-oriented files
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Text-RecordParser
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-exception>=0
+	depends = perl-class-accessor>=0
+	depends = perl-io-stringy>=0
+	depends = perl-list-moreutils>=0
+	depends = perl-pod-markdown>=0
+	depends = perl-pod-readme>=0
+	depends = perl-readonly>=0
+	depends = perl-text-autoformat>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/K/KC/KCLARK/Text-RecordParser-v1.6.3.tar.gz
+	md5sums = 86659b7a16726b951870f1025681adc2
+	sha512sums = 3cc7e14998a49282ace755d99fd7118b885dd897e29d522018d8fac3cb81a68482817d3714ff8fb6e54fb66d50c6d14b0d17593d32ef9872247402c171a3ae7e
+
+pkgname = perl-text-recordparser
+
