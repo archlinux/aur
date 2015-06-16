@@ -1,0 +1,16 @@
+pkgbase = perl-dbix-class-introspectablem2m
+	pkgdesc = Introspect many-to-many relationships
+	pkgver = 0.001001
+	pkgrel = 1
+	url = http://search.cpan.org/dist/DBIx-Class-IntrospectableM2M
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-dbix-class
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GR/GRODITI/DBIx-Class-IntrospectableM2M-0.001001.tar.gz
+	md5sums = 9c05959fdb632062ec827ec0c7335eae
+	sha512sums = 14cc300dadcd3687c46fa862196aa6b276493c15783dad5fb2dafcf26d0539c3d9703f6ac2d44494cd3f497d13666ec176bcf590dea38613b597a0367fe59732
+
+pkgname = perl-dbix-class-introspectablem2m
+
