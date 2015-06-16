@@ -1,0 +1,19 @@
+pkgbase = perl-weather-com
+	pkgdesc = fetching weather information from weather.com
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Weather-Com
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-libwww
+	depends = perl-time-format>=1.0
+	depends = perl-uri
+	depends = perl-xml-simple
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/S/SC/SCHNUECK/Weather-Com-0.5.3.tar.gz
+	md5sums = b4432b0e87f9dd53cb06979b2c8a6b1a
+	sha512sums = 4c81349382d329d335ec241525fbb781e3fff82ec470bf6681970d194b661d446ecede1a8b93940d29c16766542bdbc6b7c8ba4eb986f708a7b8416c181a0d7e
+
+pkgname = perl-weather-com
+
