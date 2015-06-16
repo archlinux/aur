@@ -1,0 +1,20 @@
+pkgbase = perl-www-tumblr
+	pkgdesc = Perl bindings for the Tumblr API
+	pkgver = 5.00
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/WWW-Tumblr
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-http-message
+	depends = perl-json
+	depends = perl-moose
+	depends = perl-net-oauth
+	depends = perl-libwww
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DA/DAMOG/WWW-Tumblr-5.00.tar.gz
+	md5sums = a38be3642f4f5dc948601199967e0183
+	sha512sums = 76cefc934176160d19130207389cd6c15788b1dd8bf3f0d8fb2cc95aba4eddc153bd92790cc9de25bbd0820b4247849f7647c71a374116a689a2f96c8b979ec5
+
+pkgname = perl-www-tumblr
+
