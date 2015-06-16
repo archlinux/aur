@@ -1,0 +1,18 @@
+pkgbase = perl-poe-component-pluggable
+	pkgdesc = A base class for creating plugin enabled POE Components
+	pkgver = 1.26
+	pkgrel = 2
+	url = http://search.cpan.org/dist/POE-Component-Pluggable
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	depends = glibc
+	depends = perl-poe
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BI/BINGOS/POE-Component-Pluggable-1.26.tar.gz
+	md5sums = 989a64c6c2939a19ee5844c9d9e87047
+
+pkgname = perl-poe-component-pluggable
+
