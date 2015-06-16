@@ -1,0 +1,17 @@
+pkgbase = perl-proc-wait3
+	pkgdesc = Perl extension for wait3 system call
+	pkgver = 0.04
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Proc-Wait3
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CT/CTILMES/Proc-Wait3-0.04.tar.gz
+	md5sums = d87ce5f3557eb86bfa5bafb9f2e028e3
+	sha512sums = 55108f6abb8c51e23075c2ed7e0e8a112d071b224c6e85e191c1191bdbfd95603d55ae7b3e7be8d72ecffdb3cda8573e393b9da1a852eb236e6fcb9b8ce3a782
+
+pkgname = perl-proc-wait3
+
