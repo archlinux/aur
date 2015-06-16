@@ -1,0 +1,17 @@
+pkgbase = perl-net-address-ip-local
+	pkgdesc = A class for discovering the local system's IP address
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Net-Address-IP-Local
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	depends = perl-error
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JM/JMEHNLE/net-address-ip-local/Net-Address-IP-Local-0.1.2.tar.gz
+	md5sums = 404662cd2b96cbe4a1102bc5d525f727
+	sha512sums = 98f65c05467ce82ab45b6f9ded6a38f5c2ef6c42f94cb59a72f1b8c4660177494b606f8170812fcb37a9b49b0427d31454f6fbd094dab9877b331a24a324fb05
+
+pkgname = perl-net-address-ip-local
+
