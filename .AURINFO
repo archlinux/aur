@@ -1,0 +1,20 @@
+pkgbase = backup-luks
+	pkgdesc = Convenient wrapper for running encrypted backups with rsync
+	pkgver = v5
+	pkgrel = 1
+	url = https://github.com/greenify/backup-luks
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = gdisk
+	depends = bash
+	depends = sh
+	depends = python-gobject
+	optdepends = cronic
+	provides = backup-luks
+	source = git+https://github.com/greenify/backup-luks.git
+	md5sums = SKIP
+
+pkgname = backup-luks
+
