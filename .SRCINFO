@@ -1,0 +1,29 @@
+pkgbase = osvr-core-git
+	pkgdesc = The core libraries, applications, and plugins of the OSVR software platform.
+	pkgver = v0.2.r139.g9c91243
+	pkgrel = 1
+	url = https://github.com/OSVR/OSVR-Core
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	makedepends = cmake
+	depends = jsoncpp
+	depends = markdown
+	depends = boost
+	depends = opencv
+	depends = osvr-libfunctionality-git
+	source = osvr-core::git+https://github.com/OSVR/OSVR-Core.git
+	source = json-schemas::git+https://github.com/OSVR/OSVR-JSON-Schemas.git
+	source = vendor-discount-windows-bins::git+https://github.com/OSVR/discount.git
+	source = vendor-jenkins-ctest-plugin::git+https://github.com/rpavlik/jenkins-ctest-plugin.git
+	source = vendor-vrpn::git+https://github.com/vrpn/vrpn.git
+	source = FindJsonCpp.cmake
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = 2dd82e55b6291d32c611dd899d8a8164
+
+pkgname = osvr-core-git
+
