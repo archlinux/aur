@@ -1,0 +1,17 @@
+pkgbase = perl-cgi-struct
+	pkgdesc = Build structures from CGI data
+	pkgver = 1.21
+	pkgrel = 1
+	url = http://search.cpan.org/dist/CGI-Struct
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-deep>=0
+	depends = perl>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/F/FU/FULLERMD/CGI-Struct-1.21.tar.gz
+	md5sums = 4fd2da8759344f16553c2058bfee3a48
+	sha512sums = 3d202c4b7284789c1352a2625c05d8a004ac410e02268bc8125e8ab568ce3d4111249e4799e3536caf35a1b6c85d76669cb714b2e582bae942e2c8b220e42dcd
+
+pkgname = perl-cgi-struct
+
