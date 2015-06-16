@@ -1,0 +1,16 @@
+pkgbase = perl-hash-moreutils
+	pkgdesc = Provide the stuff missing in Hash::Util
+	pkgver = 0.05
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Hash-MoreUtils
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/R/RE/REHSACK/Hash-MoreUtils-0.05.tar.gz
+	md5sums = 3ad192bffc593aa0048c65be04435a33
+	sha512sums = 7e53dfda0336198b5981be772a0aeb3aa1fdbfa5885bf866032bcd168a73ceb03f92db6de92874d5812f062ab9c03e1fed27732f60a7004944da568c3cb04845
+
+pkgname = perl-hash-moreutils
+
