@@ -1,0 +1,17 @@
+pkgbase = perl-file-sync
+	pkgdesc = Perl access to fsync() and sync() function calls
+	pkgver = 0.11
+	pkgrel = 1
+	url = http://search.cpan.org/dist/File-Sync
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BR/BRIANSKI/File-Sync-0.11.tar.gz
+	md5sums = 8bb0966ff3458699c02fde3d5c799824
+	sha512sums = 32816efa26185f2f26d5a469aa48baf1d22242ec620b663e5fbfdda3ffb360e6d2e1c7349989fa34b8cd84567b7a312863dba2be855cd6e696f67759ef4512b6
+
+pkgname = perl-file-sync
+
