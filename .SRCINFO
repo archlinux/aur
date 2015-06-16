@@ -1,0 +1,16 @@
+pkgbase = perl-gtk2-webkit-mechanize
+	pkgdesc = Mechanize like module using WebKit browser
+	pkgver = 0.01
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Gtk2-WebKit-Mechanize
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-gtk2-webkit
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOSU/Gtk2-WebKit-Mechanize-0.01.tar.gz
+	md5sums = 42f275d630e97d26ccd156e725b934ff
+	sha512sums = 93cc11dfc0cd84d619688d579d3e0e1e98343256be69a8f6c977cf66fc036e3621c4e873d99116fd13f95877124216af609af7d6b527f5b5180dc19cb9ccbe3c
+
+pkgname = perl-gtk2-webkit-mechanize
+
