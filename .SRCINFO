@@ -1,0 +1,23 @@
+pkgbase = perl-ipc-run3-simple
+	pkgdesc = Simple utility module to make the easy to use IPC::Run3 even more easy to use.
+	pkgver = 0.011
+	pkgrel = 1
+	url = http://search.cpan.org/dist/IPC-Run3-Simple
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-checkdeps
+	makedepends = perl-test-most
+	makedepends = perl-test-nowarnings
+	makedepends = perl-test-requires
+	makedepends = perl-test-useallmodules
+	depends = perl>=5.004
+	depends = perl-capture-tiny
+	depends = perl-ipc-run3
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AY/AYOUNG/IPC-Run3-Simple-0.011.tar.gz
+	md5sums = aa4f5fbe05905d5908fd8b0d44f09565
+	sha512sums = 8244f3db9f1d23ef571657b4fb7484c6767a476e7574a34f70c2e002b2a8dfa235cf8f27cecf367d2ad84844157199cb7e80b713700df2d2a706c0aee7cdd2fd
+
+pkgname = perl-ipc-run3-simple
+
