@@ -1,0 +1,20 @@
+pkgbase = perl-catalyst-plugin-cache
+	pkgdesc = Flexible caching support for Catalyst.
+	pkgver = 0.12
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Catalyst-Plugin-Cache
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-deep
+	makedepends = perl-test-exception
+	depends = perl-catalyst-runtime
+	depends = perl-mro-compat
+	depends = perl-task-weaken
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/Catalyst-Plugin-Cache-0.12.tar.gz
+	md5sums = c97f0b2426cfa63d843695f328b790ab
+	sha512sums = 02938e34758340d39b8c268e92d2e38763821e8c0aafad9fb9211911a5c6855ac992a86c29d9f43cf94d6f30e490c87750c8c9d1358a7d19714711c38547eb30
+
+pkgname = perl-catalyst-plugin-cache
+
