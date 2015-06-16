@@ -1,0 +1,19 @@
+pkgbase = perl-psh
+	pkgdesc = Perl Shell
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/psh
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	depends = perl-term-readline-gnu
+	depends = perl-term-readline-perl
+	depends = perl-bsd-resource
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/G/GR/GREGOR/psh-1.8.1.tar.gz
+	md5sums = 0b992dbfb907b571249923b51b213133
+	sha512sums = 20ac6d6d39ff0820eee6314e73c02f18b9362ef3dde6e2c6cd68094d1ebc435d26bf3528e858042b95372916821077e5a4e5d4b376aac68caf6d8fc629a61c07
+
+pkgname = perl-psh
+
