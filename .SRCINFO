@@ -1,0 +1,22 @@
+pkgbase = perl-perl-tags
+	pkgdesc = Generate (possibly exuberant) Ctags style tags for Perl sourcecode
+	pkgver = 0.32
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Perl-Tags
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-exception
+	checkdepends = perl-test-longstring
+	checkdepends = perl-test-strict
+	depends = perl-capture-tiny
+	depends = perl-file-find-rule
+	depends = perl-module-locate
+	depends = perl-path-tiny
+	options = !emptydirs
+	source = http://search.mcpan.org/CPAN/authors/id/O/OS/OSFAMERON/Perl-Tags-0.32.tar.gz
+	md5sums = 932784defc0460075130c42f48e5b198
+	sha512sums = e2042b6c0e54a4c296f182446a1de21d5a1da367bc5f9d0362f4b133e226624b81eed85fd27cdd4bd618349bf447893a1c96a6aede2e22b5db234d67d20fb0fc
+
+pkgname = perl-perl-tags
+
