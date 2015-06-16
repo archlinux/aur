@@ -1,0 +1,16 @@
+pkgbase = perl-email-valid
+	pkgdesc = Check validity of Internet email addresses
+	pkgver = 1.194
+	pkgrel = 1
+	url = http://search.mcpan.org/dist/Email-Valid
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-mailtools
+	depends = perl-net-dns
+	depends = perl>=5.006
+	source = http://search.mcpan.org/CPAN/authors/id/R/RJ/RJBS/Email-Valid-1.194.tar.gz
+	options = !emptydirs
+
+pkgname = perl-email-valid
+
