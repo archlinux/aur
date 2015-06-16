@@ -1,0 +1,20 @@
+pkgbase = lugaru-mods
+	pkgdesc = Mods of Lugaru, includes Empire, the Seven Tasks and Reluctant Assassin
+	pkgver = 20130606
+	pkgrel = 1
+	url = http://www.wolfire.com/lugaru/mods
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = lugaruhd-hg
+	source = http://cdn.wolfire.com/legacy/LugaruEmpire.zip
+	source = http://cdn.wolfire.com/mods/lugaru/SevenTasks.zip
+	source = http://cdn.wolfire.com/mods/lugaru/ReluctantAssassin.zip
+	source = http://forums.wolfire.com/download/file.php?id=990
+	sha256sums = 679b9e31e51ca555c287c5a0abdd3670b46bfc6c7af766a29f50a5a468f89355
+	sha256sums = 735f70f0bb97ef2d73dc0150c2011d861e479a29c65c8cef997543b971649b23
+	sha256sums = edbb46be77afe540f554742ccea5ea8840f41b5fa73d05f65692abfe2caba42d
+	sha256sums = df89c08670f865284c2595bba39e9c000c8161fdc3a46bfc04828b70777378a1
+
+pkgname = lugaru-mods
+
