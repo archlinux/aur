@@ -1,0 +1,17 @@
+pkgbase = weather-app
+	pkgdesc = QuickForecast : qt-labs/weather application
+	pkgver = 1.0
+	pkgrel = 3
+	url = https://qt.gitorious.org/qt-labs/weather-app
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = qtchooser
+	depends = qt5-base
+	depends = qt5-quickcontrols
+	provides = weather-app
+	source = http://esclapion.free.fr/AUR/weather-app.tar.gz
+	md5sums = 1ea9c9717ae82571c3b0e51a2817eb98
+
+pkgname = weather-app
+
