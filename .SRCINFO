@@ -1,0 +1,16 @@
+pkgbase = perl-class
+	pkgdesc = Alias for __PACKAGE__
+	pkgver = 1.00
+	pkgrel = 1
+	url = http://search.cpan.org/dist/CLASS
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MS/MSCHWERN/CLASS-1.00.tar.gz
+	md5sums = 834b888b9c8a936b12de2c168798b618
+	sha512sums = 6e6f782cc7d86e5a5e5f052fbc598374451ce0600a238480275c462f1782b70b68e0b4cc968efa349bfdf1736d587b9f8d21b95361ad0a0f22bb46b324c08451
+
+pkgname = perl-class
+
