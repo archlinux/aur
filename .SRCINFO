@@ -1,0 +1,12 @@
+pkgbase = rawk
+	pkgdesc = A static site generator written in the bourne shell.
+	pkgver = 1.0
+	pkgrel = 4
+	url = http://rawk.brokenlcd.net
+	arch = any
+	license = ISC
+	source = http://downloads.sourceforge.net/project/rawk-sh/rawk-1.0.tgz
+	sha256sums = 3c0818f582e448d4ff5a9340da2387baea558ac15f1aa2bc57dc1490405285d2
+
+pkgname = rawk
+
