@@ -1,0 +1,17 @@
+pkgbase = sndcut
+	pkgdesc = Let's you generated LPs that you can laser cut from audio files. sndcut is a program the generates LP records from audio files - it generates a SVG file that you can laser cut.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/kallaballa/sndcut
+	arch = x86
+	arch = x86_64
+	license = GPL2
+	makedepends = boost
+	depends = libsndfile
+	depends = libsamplerate
+	depends = boost-libs
+	source = https://github.com/kallaballa/sndcut/archive/v1.0.zip
+	sha1sums = 162f8191e81e374742be6e9117f8a9c97f29bfdf
+
+pkgname = sndcut
+
