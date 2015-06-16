@@ -1,0 +1,16 @@
+pkgbase = perl-jcode
+	pkgdesc = Japanese Charset Handler
+	pkgver = 2.07
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Jcode
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/D/DA/DANKOGAI/Jcode-2.07.tar.gz
+	md5sums = f6c52253ff69a44c38a9183c469f6eb0
+	sha512sums = 821a917e24eda21bea3fe1188597b48463948c2ef75071882574eff1c1c8e3322aab8ff1ace0028bbc3340416cbaa834a6f0c9f82b18579206ba0cfe7b55062d
+
+pkgname = perl-jcode
+
