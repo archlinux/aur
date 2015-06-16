@@ -1,0 +1,16 @@
+pkgbase = perl-data-temporarybag
+	pkgdesc = Handle long size data using temporary file .
+	pkgver = 0.09
+	pkgrel = 1
+	url = https://metacpan.org/release/Data-TemporaryBag
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/Y/YS/YSAS/Data-TemporaryBag-0.09.tar.gz
+	md5sums = a0045c0cc1fe92dd54ead9a682a83f08
+	sha512sums = 255a2dad0ad829dd499e62d8b2382d4f3297e1f494b384aa36bbfbc50ac165436814d83507d74e0eb81d15ebe1567d4e4dcbd5d9484db054a087857c6c1d5807
+
+pkgname = perl-data-temporarybag
+
