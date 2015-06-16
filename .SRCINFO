@@ -1,0 +1,22 @@
+pkgbase = perl-form-sensible
+	pkgdesc = A sensible way to handle form based user interface
+	pkgver = 0.20023
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Form-Sensible
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-datetime
+	depends = perl-datetime-format-natural
+	depends = perl-datetime-set
+	depends = perl-file-sharedir
+	depends = perl-moose
+	depends = perl-namespace-autoclean
+	depends = perl-template-toolkit
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JA/JAYK/Form-Sensible-0.20023.tar.gz
+	md5sums = 99e320a535d15bf34254e36b15825728
+	sha512sums = ff781c064951924497cd90e4b172119f44affa1bc0e505780632aad876a9d03ef437545eb9071fc7c77842c7e31c037615e8868b4f9e50d9c8afb215de071e42
+
+pkgname = perl-form-sensible
+
