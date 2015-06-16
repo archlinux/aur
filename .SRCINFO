@@ -1,0 +1,16 @@
+pkgbase = python-oursql
+	pkgdesc = new set of MySQL bindings for python3
+	pkgver = 0.9.4
+	pkgrel = 2
+	url = https://launchpad.net/oursql
+	arch = i386
+	arch = x86_64
+	license = BSD
+	makedepends = python-setuptools
+	depends = python>=3.1
+	depends = libmysqlclient
+	source = http://launchpad.net/oursql/py3k/py3k-0.9.4/+download/oursql-0.9.4.zip
+	sha1sums = fdc853d1020c227bd5bda08ecb368746d3ed5b6d
+
+pkgname = python-oursql
+
