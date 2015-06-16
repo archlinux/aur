@@ -1,0 +1,19 @@
+pkgbase = perl-dist-zilla-plugin-notabstests
+	pkgdesc = Release tests making sure hard tabs aren't used
+	pkgver = 0.01
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Dist-Zilla-Plugin-NoTabsTests
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-notabs
+	depends = perl-dist-zilla
+	depends = perl-moose
+	depends = perl-namespace-autoclean
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/F/FL/FLORA/Dist-Zilla-Plugin-NoTabsTests-0.01.tar.gz
+	md5sums = 8304e0878b035c02b774dc851bf6448d
+	sha512sums = b2fbaf24eb5d60f1345f527bfb5f931679c77c7e72fb5b125992dd60a133124fda68e073756c30fc04a467961d23b71388a04c715bdc9e2e15e0ff43563e0a07
+
+pkgname = perl-dist-zilla-plugin-notabstests
+
