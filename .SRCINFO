@@ -1,0 +1,17 @@
+pkgbase = perl-unicode-map
+	pkgdesc = V0.112 - maps charsets from and to utf16 unicode
+	pkgver = 0.112
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Unicode-Map
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/M/MS/MSCHWARTZ/Unicode-Map-0.112.tar.gz
+	md5sums = edaa8fc5ddf0e5d805e274283dd0625d
+	sha512sums = f66961ee84db7316289176cf43ddb8366ecfaf614130f8b1018931a92b96d16a97f231da6fdd1d8c1bd95ddd50f4b93d82ff87affbbd1162c894b1f302f27d4f
+
+pkgname = perl-unicode-map
+
