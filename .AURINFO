@@ -1,0 +1,16 @@
+pkgbase = w3perl
+	pkgdesc = W3Perl is a free and comprehensive logfile analyzer for Web / FTP / Squid and Mail servers.
+	pkgver = 3.19
+	pkgrel = 0
+	url = http://www.w3perl.com
+	install = w3perl.install
+	arch = any
+	license = GPL3
+	depends = perl
+	depends = fly
+	optdepends = perl-geo-ipfree
+	source = http://www.w3perl.com/download/w3perl.tar.gz
+	source = w3perl.install
+
+pkgname = w3perl
+

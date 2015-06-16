@@ -1,0 +1,24 @@
+# Message displayed for a fresh install.
+post_install()
+{
+  echo "================================================================="
+  echo "Per Arch Packaging Standards, this package is not installed in"
+  echo "/srv/http, so you'll need to config your httpd to point to the"
+  echo "installation directory. For lighttpd, this is done by adding"
+  echo "alias.url=\"/w3perl\" => \"/usr/share/webapps/w3perl\") in its"
+  echo "configuration file."
+  echo ""
+  echo "Important:"
+  echo "Read /usr/share/webapps/w3perl/INSTALL on how to configure w3perl"
+  echo "after installation."
+  echo "================================================================="
+}
+
+# Message for an update.
+post_upgrade()
+{
+  echo "================================================================="
+  echo "Run the upgrade.pl script from /usr/share/webapps/w3perl, to"
+  echo "update the installation."
+  echo "================================================================="
+}
