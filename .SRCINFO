@@ -1,0 +1,17 @@
+pkgbase = perl-business-onlinepayment
+	pkgdesc = Perl extension for online payment processing
+	pkgver = 3.02
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Business-OnlinePayment
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-net-https-any
+	depends = perl-tie-ixhash
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/I/IV/IVAN/Business-OnlinePayment-3.02.tar.gz
+	md5sums = a5a0482cacb2837d9d03400136d31a21
+	sha512sums = a5cdf7897edfd5ff789bf8d8b7b0c19091c69288f602373decd629f0e0cd8f62a1ff3004e93e41b5964eb4af0adf6b4bb9bd439576048b4e00f5cfd5c388c3d3
+
+pkgname = perl-business-onlinepayment
+
