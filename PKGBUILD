@@ -11,7 +11,7 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('iproute2' 'lm_sensors' 'hddtemp' "vdr-api=${_vdrapi}")
 #install="$pkgname.install"
-_plugname=$(echo $pkgname | sed 's/vdr-//g')
+_plugname=${pkgname//vdr-/}
 source=("http://firefly.vdr-developer.org/systeminfo/${pkgname}-${pkgver}.tar.bz2"
         'systeminfo.sh'
         "50-$_plugname.conf")
