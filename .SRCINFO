@@ -1,0 +1,14 @@
+pkgbase = esteidcerts
+	pkgdesc = Estonian ID card root, intermediate and OCSP certificates
+	pkgver = 3.8.0.9128
+	pkgrel = 1
+	url = http://www.id.ee/
+	arch = any
+	license = LGPL
+	source = https://installer.id.ee/media/sources/esteidcerts-3.8.0.9128.tar.gz
+	source = https://installer.id.ee/media/sources/esteidcerts-3.8.0.9128.tar.gz.asc
+	sha256sums = 1c3b685b46350a409d209acb93b8966ef2e3ab48526bc5945183d167357b96de
+	sha256sums = SKIP
+
+pkgname = esteidcerts
+
