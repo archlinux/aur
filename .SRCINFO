@@ -1,0 +1,21 @@
+pkgbase = perl-lingua-en-inflect-phrase
+	pkgdesc = Inflect short English Phrases
+	pkgver = 0.18
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Lingua-EN-Inflect-Phrase
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-nowarnings
+	depends = perl-lingua-en-findnumber
+	depends = perl-lingua-en-inflect
+	depends = perl-lingua-en-inflect-number
+	depends = perl-lingua-en-number-isordinal
+	depends = perl-lingua-en-tagger
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/R/RK/RKITOVER/Lingua-EN-Inflect-Phrase-0.18.tar.gz
+	md5sums = 6e6ac3451913946ca93e0ebfd4881e52
+	sha512sums = e56c19981001ab67e159d08c97f1fb44d65e00a165c8b281a3dbe1e837d54bc7506f3494a53f5499b82db667d5307873e8df10cad069857553151937fce804eb
+
+pkgname = perl-lingua-en-inflect-phrase
+
