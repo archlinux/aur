@@ -1,0 +1,19 @@
+pkgbase = perl-chi-driver-berkeleydb
+	pkgdesc = Using BerkeleyDB for cache
+	pkgver = 0.03
+	pkgrel = 1
+	url = http://search.cpan.org/dist/CHI-Driver-BerkeleyDB
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-class
+	makedepends = perl-test-most
+	depends = perl-berkeleydb>=0.30
+	depends = perl-chi>=0.25
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JS/JSWARTZ/CHI-Driver-BerkeleyDB-0.03.tar.gz
+	md5sums = 9afd8c2bd0df14ca81bc5fedd827ae62
+	sha512sums = 6cebf9ded4c65b7bda44826cd50872662a7f3980daf635ac31627658914dccc6bc8af95037b44695a65de156bc565c5a9814f4f635ee96bf4c18b520ec12e1b0
+
+pkgname = perl-chi-driver-berkeleydb
+
