@@ -1,0 +1,17 @@
+pkgbase = perl-xml-flow
+	pkgdesc = Store (restore) perl data structures in XML stream.
+	pkgver = 0.86
+	pkgrel = 1
+	url = http://search.cpan.org/dist/XML-Flow
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-xml-parser
+	depends = perl-xml-writer
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/Z/ZA/ZAG/XML-Flow-0.86.tar.gz
+	md5sums = 4c3c180d5e1d9724586b88dba22aaf41
+	sha512sums = 522e08cb117ca529e4abc81a1eb56ac8a9fd92923f6f92783af9359cf42934c63ae8475f32164676f0b179656edef2c6d417c5edda700403344627c8abe0be5e
+
+pkgname = perl-xml-flow
+
