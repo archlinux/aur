@@ -1,15 +1,15 @@
 pkgbase = vimb
 	pkgdesc = The vim-like browser
-	pkgver = 2.9
-	pkgrel = 3
+	pkgver = 2.10
+	pkgrel = 1
 	url = http://fanglingsu.github.io/vimb
 	arch = any
 	license = GPL3
 	makedepends = hardening-wrapper
 	depends = libsoup
 	depends = webkitgtk
-	source = vimb-2.9.tar.gz::https://github.com/fanglingsu/vimb/archive/2.9.tar.gz
-	sha256sums = 179024e07c133b049d9fb7c487bed9b9a8512b633e1d857e038b26a01d2e3541
+	source = vimb-2.10.tar.gz::https://github.com/fanglingsu/vimb/archive/2.10.tar.gz
+	sha256sums = a46ee9530ec8da62feb3972a80e270c216bc6fb363bb729ceaae1c892513df58
 
 pkgname = vimb
 
