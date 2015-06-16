@@ -1,0 +1,17 @@
+pkgbase = perl-crypt-ciphersaber
+	pkgdesc = Perl module implementing CipherSaber encryption.
+	pkgver = 1.00
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Crypt-CipherSaber
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-test-warn
+	depends = perl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CH/CHROMATIC/Crypt-CipherSaber-1.00.tar.gz
+	md5sums = a00b3e2591cc5f880a110cc53a0b2c7b
+	sha512sums = a946e6bf34b25212321611d1a68134bb931046d2de9cb39ac4e6f8c79e25ac575b421ae6bb672a4a9c318ffc5ebca11569b6a38d60b303502edd01c7b8878439
+
+pkgname = perl-crypt-ciphersaber
+
