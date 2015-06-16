@@ -1,0 +1,31 @@
+pkgbase = ttf-arabeyes-fonts
+	pkgdesc = A collection of free Arabic and Farsi TrueType fonts
+	pkgver = 20150617
+	pkgrel = 1
+	url = http://www.arabeyes.org/project.php?proj=Khotot
+	install = ttf-arabeyes-fonts.install
+	arch = any
+	license = GPL
+	depends = fontconfig
+	depends = xorg-font-utils
+	conflicts = fonts-arabeyes
+	replaces = fonts-arabeyes
+	source = http://downloads.sourceforge.net/project/arabeyes/Fonts/ae_fonts/ae_fonts_decorative-2.1.tar.bz2
+	source = http://downloads.sourceforge.net/project/arabeyes/Fonts/farsi_fonts/farsi_fonts_0.4.tar.bz2
+	source = http://downloads.sourceforge.net/project/arabeyes/kacst_fonts/kacst_fonts_2.01.tar.bz2
+	source = http://downloads.sourceforge.net/project/arabeyes/kacst_fonts/kacst_one_5.0.tar.bz2
+	source = http://downloads.sourceforge.net/project/arabeyes/Fonts/lateef.shaikh_fonts/lateef.shaikh_fonts.tar.bz2
+	source = http://downloads.sourceforge.net/project/arabeyes/Fonts/Mothanna%200.02/Mothanna-0.02.tar.gz
+	source = http://downloads.sourceforge.net/project/arabeyes/Fonts/sharif.univ/sharif.univ_ttf.bz2
+	source = http://downloads.sourceforge.net/project/arabeyes/Fonts/Thabit%200.02/Thabit-0.02.tar.gz
+	md5sums = 6bfe75ec3e73cc8b3900b4facb84418e
+	md5sums = 1086b47dbbc42e6239881a4217ffc85f
+	md5sums = c8bc5b4cad7f2127d1aa32f399d660d2
+	md5sums = 0a7ad4538d3b97adfbefa4c5cf8c2660
+	md5sums = b0bc9c302e0ad006a15618885b521d44
+	md5sums = b95aee9d0ace5f2a3796097cb871563a
+	md5sums = 69d35fce17bb1278bd57759bc618d74b
+	md5sums = 51462160b22fadeae6cb5dd18da3dfb3
+
+pkgname = ttf-arabeyes-fonts
+
